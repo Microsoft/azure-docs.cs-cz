@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 8b56151ae56de44cbab3003743ce6df33ec89612
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 20c05bddddce4c7748e29551fe78d3e5609b2fa5
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58075625"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59275891"
 ---
 # <a name="get-started-with-key-vault-certificates"></a>Začínáme s certifikáty služby Key Vault
 Následující scénáře popisují některé z primární použití služby Key Vault certificate management včetně další kroky potřebné pro vytvoření vaší první certifikát do svého trezoru klíčů.
@@ -102,6 +102,17 @@ Poznámka: Tento proces, krok 3.1, je jednorázová operace.
 
 -   Také uživatel může upravovat zásady, které je v době importu funkční, ale obsahuje výchozí hodnoty, pokud nebyly zadány žádné informace při importu. Například žádné informace o vystavitele  
 
+### <a name="formats-of-import-we-support"></a>Formáty podporujeme Import
+Podporujeme následující typ importu pro formát PEM. Jeden certifikát kódovaný PEM spolu PKCS č. 8 kódovat, nezašifrovaný klíč, který má následující
+
+---ZAČÁTEK CERTIFIKÁT------END CERTIFIKÁT---
+
+---ZAČÁTEK PRIVÁTNÍ KLÍČ------END PRIVATE KEY---
+
+Na sloučení certifikát podporujeme 2 PEM na základě formátů. Můžete buď sloučení jeden kódovaného certifikátu PKCS č. 8 nebo soubor P7B s kódováním base64. ---ZAČÁTEK CERTIFIKÁT------END CERTIFIKÁT---
+
+Aktuálně nepodporujeme ES klíče ve formátu PEM.
+
 ## <a name="creating-a-certificate-with-a-ca-not-partnered-with-key-vault"></a>Vytvoření certifikátu se certifikační Autorita není ve spolupráci se službou Key Vault  
  Tato metoda umožňuje práci s jinými autoritami než služby Key Vault partnerství poskytovateli, což znamená, že vaše organizace můžete pracovat s podmíněným Přístupem podle svého výběru.  
 
@@ -121,4 +132,4 @@ Poznámka: Tento proces, krok 3.1, je jednorázová operace.
 
 ## <a name="see-also"></a>Viz také
 
-- [Informace o klíčích, tajných kódech a certifikátech](about-keys-secrets-and-certificates.md)
+- [Informace o klíčích, tajných kódů a certifikátů](about-keys-secrets-and-certificates.md)

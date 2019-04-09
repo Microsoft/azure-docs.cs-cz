@@ -16,12 +16,12 @@ ms.date: 04/05/2019
 ms.author: sethm
 ms.reviewer: adepue
 ms.lastreviewed: 04/05/2019
-ms.openlocfilehash: befb5370dce5b9b7617370f0b14d471dfeb35437
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
-ms.translationtype: MT
+ms.openlocfilehash: 1cb99bba1fa5c762af57a1ad26d034974ff196a6
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/05/2019
-ms.locfileid: "59051678"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59271828"
 ---
 # <a name="azure-stack-1902-update"></a>Aktualizace služby Azure Stack 1902
 
@@ -80,7 +80,7 @@ Azure Stack opravy hotfix platí pouze pro integrované systémy Azure Stack; Ne
 - Sestavení 1902 zavádí nové uživatelské rozhraní na portálu Správce služby Azure Stack pro vytváření plánů, nabídek, kvót a doplňkové plány. Další informace, včetně snímků obrazovky najdete v části [vytváření plánů, nabídek a kvót](azure-stack-create-plan.md).
 
 <!-- 1460884    Hotfix: Adding StorageController service permission to talk to ClusterOrchestrator  Add node -->
-- Vylepšení spolehlivosti rozšiřování kapacity při přidání uzlu při přechodu stavu škálovací jednotku z "Úložiště Expanding" do stavu spuštění.
+- Vylepšení spolehlivosti rozšiřování kapacity během operace přidání uzlu do při přechodu stavu jednotky škálování z "Úložiště Expanding" na "Spuštěno".
 
 <!--
 1426197 3852583: Increase Global VM script mutex wait time to accommodate enclosed operation timeout    PNU
@@ -104,9 +104,6 @@ Azure Stack opravy hotfix platí pouze pro integrované systémy Azure Stack; Ne
     - Zkontrolujte stav nouze obnovení konzoly služby (ERCS) služby prostředků infrastruktury uzly a opravit, podle potřeby
     - Zkontrolujte stav uzly XRP service fabric a opravit, podle potřeby
     - Kontrola stavu prostředků infrastruktury uzly služby konzistentní úložiště Azure (ACS) a opravit, podle potřeby
-
-<!-- 1460884    Hotfix: Adding StorageController service permission to talk to ClusterOrchestrator  Add node -->
-- Vylepšení spolehlivosti rozšiřování kapacity při přidání uzlu při přechodu stavu škálovací jednotku z "Úložiště Expanding" do stavu spuštění.    
 
 <!-- 
 1426690 [SOLNET] 3895478-Get-AzureStackLog_Output got terminated in the middle of network log   Diagnostics
@@ -259,6 +256,10 @@ Toto jsou známé problémy této verze sestavení po instalaci.
  
 <!-- #### Identity -->
 <!-- #### Marketplace -->
+
+### <a name="syslog"></a>Syslog 
+- Konfigurace syslog není trvalý prostřednictvím cyklu aktualizace výsledkem klienta syslog přijít o své konfiguraci a zprávy syslog zastavit byla přesměrována. Tento problém se vztahuje na všechny verze služby Azure Stack od verze GA klienta syslog (1809).
+Alternativním řešením je změnit konfiguraci klienta syslog po použití aktualizace služby Azure Stack.
 
 ## <a name="download-the-update"></a>Stáhnout aktualizaci.
 

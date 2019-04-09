@@ -1,7 +1,6 @@
 ---
 title: Prostřednictvím kódu programu vytvořit zásady a zobrazit data o dodržování předpisů
 description: Tento článek vás provede programově vytváření a Správa zásad pro Azure Policy.
-services: azure-policy
 author: DCtheGeek
 ms.author: dacoulte
 ms.date: 01/31/2019
@@ -9,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: e929fd80e87524b62c08a159c457be6f1f21eaad
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: ade5d55833f1d63a8d70b6eedb3c3e4bdffe590b
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57768600"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59276486"
 ---
 # <a name="programmatically-create-policies-and-view-compliance-data"></a>Prostřednictvím kódu programu vytvořit zásady a zobrazit data o dodržování předpisů
 
@@ -253,4 +252,4 @@ Projděte si následující články pro další informace o příkazech a dotaz
 - [Moduly Azure Powershellu](/powershell/module/az.resources/#policies)
 - [Zásady příkazy rozhraní příkazového řádku Azure](/cli/azure/policy?view=azure-cli-latest)
 - [Poskytovatel prostředků Insights zásad reference k rozhraní REST API](/rest/api/policy-insights)
-- [Uspořádání prostředků se skupinami pro správu Azure](../../management-groups/overview.md)
+- [Uspořádání vašich prostředků s využitím skupin pro správu Azure](../../management-groups/overview.md)

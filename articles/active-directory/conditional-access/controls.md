@@ -18,12 +18,12 @@ ms.date: 03/23/2019
 ms.author: joflore
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ceaf472f53c48b17701b14fdf4107045c2e43fdc
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.openlocfilehash: a92d10f67533efc2f5893b012aefbcb92efee59a
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58521971"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59258738"
 ---
 # <a name="what-are-access-controls-in-azure-active-directory-conditional-access"></a>Co jsou řízení přístupu v Azure Active Directory podmíněného přístupu?
 
@@ -58,7 +58,7 @@ Pomocí udělení ovládacích prvků můžete zablokovat přístup úplně nebo
 - Všechny vybrané ovládací prvky musí být splněny (*a*)
 - Jeden vybraný ovládací prvek musí být splněny (*nebo*)
 
-![Řízení](./media/controls/17.png)
+![Řízení](./media/controls/18.png)
 
 ### <a name="multi-factor-authentication"></a>Ověřování pomocí služby Multi-Factor Authentication
 
@@ -76,9 +76,9 @@ Můžete nakonfigurovat zásady podmíněného přístupu, které jsou založen�
 
 Vaše zařízení potřebuje k registraci do služby Azure AD, než může být označený jako kompatibilní. Pokud chcete zaregistrovat zařízení, máte tři možnosti: 
 
-- [Podpora k zařízením Azure AD zaregistrované](../devices/overview.md#azure-ad-registered-devices)
+- [Zařízení zaregistrovaná v Azure AD](../devices/overview.md#azure-ad-registered-devices)
 - [Zařízení připojená k Azure AD](../devices/overview.md#azure-ad-joined-devices)  
-- [Zařízení připojená k hybridní službě Azure AD](../devices/overview.md#hybrid-azure-ad-joined-devices)
+- [Hybridní zařízení připojená k Azure AD](../devices/overview.md#hybrid-azure-ad-joined-devices)
 
 Další informace najdete v tématu [vyžadování spravovaných zařízení pro přístup k aplikaci cloud s podmíněným přístupem](require-managed-devices.md).
 
@@ -94,6 +94,18 @@ Vzhledem k tomu, že vaši zaměstnanci používají mobilní zařízení pro os
 Můžete použít [zásady ochrany aplikací Intune](https://docs.microsoft.com/intune/app-protection-policy) k ochraně dat vaší společnosti není závislá na řešení správy mobilních zařízení (MDM).
 
 S klientem schválených aplikací, můžete vyžadovat, aby klientská aplikace, která se pokusí o přístup k vašim cloudovým aplikacím pro podporu [zásady ochrany aplikací Intune](https://docs.microsoft.com/intune/app-protection-policy). Například můžete omezit přístup k Exchangi Online k aplikaci Outlook. Zásady podmíněného přístupu, která vyžaduje schválené klientské aplikace se také označuje jako [zásady podmíněného přístupu na základě aplikace](app-based-conditional-access.md). Seznam podporovaných klientem schválených aplikací najdete v tématu [schválené klientské aplikace požadavek](technical-reference.md#approved-client-app-requirement).
+
+### <a name="app-protection-policy-preview"></a>Zásady ochrany aplikací (preview)
+
+Vzhledem k tomu, že vaši zaměstnanci používají mobilní zařízení pro osobní a pracovní úkoly, můžete chtít mít možnost chránit firemní data při přístupu pomocí zařízení i v případě, kdy nejsou spravujete sami.
+Můžete použít [zásady ochrany aplikací Intune](https://docs.microsoft.com/intune/app-protection-policy) k ochraně dat vaší společnosti není závislá na řešení správy mobilních zařízení (MDM).
+
+Pomocí zásad ochrany aplikací, můžete omezit přístup pro klientské aplikace, které předaly do Azure AD má obdržení [zásady ochrany aplikací Intune](https://docs.microsoft.com/intune/app-protection-policy). Například můžete omezit přístup k Exchangi Online k aplikaci Outlook, která má zásady ochrany aplikací Intune. Zásady podmíněného přístupu, která vyžaduje zásady ochrany aplikací se také označuje jako [zásady podmíněného přístupu založeného na ochranu aplikací](app-protection-based-conditional-access.md). 
+
+Vaše zařízení musí být zaregistrované do služby Azure AD, než aplikace může být označený jako zásady, které jsou chráněné.
+
+Seznam podporovaných zásad chráněných klientských aplikací, najdete v části [požadavek zásady ochrany aplikací](technical-reference.md#app-protection-policy-requirement).
+
 
 ### <a name="terms-of-use"></a>Podmínky použití
 

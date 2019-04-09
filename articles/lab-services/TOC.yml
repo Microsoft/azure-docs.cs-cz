@@ -53,6 +53,8 @@ items:
       href: devtest-lab-concepts.md
     - name: Scénáře
       items:
+      - name: Oblíbené scénáře použití DevTest Labs
+        href: devtest-lab-guidance-get-started.md
       - name: Použití testovacích prostředí pro vývojáře
         href: devtest-lab-developer-lab.md
       - name: Použití testovacích prostředí pro testovací účely
@@ -109,8 +111,6 @@ items:
     - name: Nastavení infrastruktury DevTest Labs ve vašem podniku
       href: devtest-lab-guidance-prescriptive-adoption.md
       items:
-      - name: Začínáme používat DevTest Labs
-        href: devtest-lab-guidance-get-started.md
       - name: Vertikální navýšení kapacity nasazení DevTest Labs
         href: devtest-lab-guidance-scale.md
       - name: Orchestrace implementace DevTest Labs
@@ -279,9 +279,9 @@ items:
       href: https://azure.microsoft.com/resources/videos/index/?services=devtest-lab
     - name: Nejčastější dotazy
       href: devtest-lab-faq.md
-ms.openlocfilehash: 0b8c70629d17ed93b67a746fadfe66944d9489c9
-ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
+ms.openlocfilehash: a5312fc1c99072c10337bd00569a608825df3bc8
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58894436"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59262869"

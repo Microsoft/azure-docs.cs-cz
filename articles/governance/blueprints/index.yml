@@ -1,16 +1,9 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: bc646bd1c1e2ada45971359b9a17d71d66e301d4
-ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
-ms.translationtype: HT
-ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58800433"
 documentType: LandingData
 title: Dokumentace ke službě Azure Blueprints
 metadata:
-  title: Dokumentace ke službě Azure Blueprint – kurzy, reference k rozhraní API
-  description: Azure Blueprints je služba v Azure, která se používá k vytváření, definování a nasazování artefaktů ve vašem prostředí Azure.
-  services: blueprints
+  title: 'Dokumentace ke službě Azure Blueprint – kurzy, reference k rozhraní API'
+  description: 'Azure Blueprints je služba v Azure, která se používá k vytváření, definování a nasazování artefaktů ve vašem prostředí Azure.'
   author: DCtheGeek
   manager: carmonm
   ms.service: blueprints
@@ -18,34 +11,34 @@ metadata:
   ms.date: 03/26/2019
   ms.author: dacoulte
 abstract:
-  description: Azure Blueprints pomáhá nasazovat a aktualizovat cloudová prostředí opakovatelným způsobem, a to pomocí sestavitelných artefaktů, jako jsou šablony Azure Resource Manageru pro zřizování prostředků, zásady a řízení přístupu na základě role.
+  description: 'Azure Blueprints pomáhá nasazovat a aktualizovat cloudová prostředí opakovatelným způsobem, a to pomocí sestavitelných artefaktů, jako jsou šablony Azure Resource Manageru pro zřizování prostředků, zásady a řízení přístupu na základě role.'
 sections:
-- title: Zprovoznění během 5 minut
-  items:
-  - type: paragraph
-    text: Další informace o vytváření, přiřazování a správě definic podrobných plánů v Azure
-  - type: list
-    style: icon48
+  - title: Zprovoznění během 5 minut
     items:
-    - image:
-        alt: Azure Portal
-        src: ./media/portal.svg
-      text: Azure Portal
-      href: create-blueprint-portal.md
-    - image:
-        alt: REST
-        src: ./media/rest.svg
-      text: REST
-      href: create-blueprint-rest-api.md
-- title: Referenční informace
-  items:
-  - type: list
-    style: cards
-    className: cardsD
+      - type: paragraph
+        text: 'Další informace o vytváření, přiřazování a správě definic podrobných plánů v Azure'
+      - type: list
+        style: icon48
+        items:
+          - image:
+              alt: Azure Portal
+              src: ./media/portal.svg
+            text: Azure Portal
+            href: create-blueprint-portal.md
+          - image:
+              alt: REST
+              src: ./media/rest.svg
+            text: REST
+            href: create-blueprint-rest-api.md
+  - title: Referenční informace
     items:
-    - title: Příkazový řádek
-      html: <p><a href="/powershell/module/az.blueprint/#blueprint">Azure PowerShell</a></p>
-    - title: Jazyky
-      html: <p><a href="/dotnet/api/overview/azure/blueprints/management">Azure SDK pro .NET</a></p>
-    - title: REST
-      html: <p><a href="/rest/api/blueprints/">Referenční materiály k rozhraní API</a></p>
+      - type: list
+        style: cards
+        className: cardsD
+        items:
+          - title: Příkazový řádek
+            html: '<p><a href="/powershell/module/az.blueprint/#blueprint">Azure PowerShell</a></p>'
+          - title: Jazyky
+            html: <p><a href="/dotnet/api/overview/azure/blueprints/management">Sada Azure SDK pro .NET</a></p>
+          - title: REST
+            html: <p><a href="/rest/api/blueprints/">Referenční materiály k rozhraní API</a></p>

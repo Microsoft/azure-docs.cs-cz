@@ -16,16 +16,16 @@ ms.date: 03/11/2019
 ms.author: patricka
 ms.reviewer: fiseraci
 ms.lastreviewed: 03/11/2019
-ms.openlocfilehash: 3565bf4c4a19bcf1b136b4cbb781006658865a1c
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 58c16b8a102ea27499fc464c209d4ca1c0d4db33
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57767205"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59264705"
 ---
 # <a name="manage-access-to-resources-with-azure-stack-role-based-access-control"></a>Správa přístupu k prostředkům pomocí Azure Stack Role-Based řízení přístupu
 
-*Platí pro: Azure Stack integrované systémy a Azure Stack Development Kit*
+*Týká se Azure Stack integrované systémy a Azure Stack Development Kit*
 
 Azure Stack podporuje řízení přístupu na základě role (RBAC), stejné [model zabezpečení pro správu přístupu](https://docs.microsoft.com/azure/role-based-access-control/overview) používající Microsoft Azure. RBAC můžete použít ke správě uživatele, skupinu nebo aplikaci přístup k předplatných, prostředků a služeb.
 
@@ -40,28 +40,6 @@ Azure Stack má tři základní role, které můžete použít na všechny typy 
 * **Vlastník** můžou spravovat všechno včetně přístupu k prostředkům.
 * **Přispěvatel** můžou spravovat všechno kromě přístupu k prostředkům.
 * **Čtečka** může vše zobrazit, ale nemůže provádět žádné změny.
-
-### <a name="resource-hierarchy-and-inheritance"></a>Hierarchie prostředků a dědičnost
-
-Azure Stack má následující hierarchie prostředků:
-
-* Každé předplatné patří k jednomu adresáři.
-* Každé skupině prostředků patří k jednomu předplatnému.
-* Každý prostředek patří do jedné skupiny prostředků.
-
-V podřízené obory dědí přístup, který udělíte v nadřazeném oboru. Příklad:
-
-* Role Čtenář přiřadíte ke skupině Azure AD v oboru předplatného. Členové této skupiny můžou zobrazit každou skupinu prostředků a prostředků v předplatném.
-* Přiřadit roli přispěvatele do aplikace v oboru skupiny prostředků. Aplikace můžete spravovat prostředky v příslušné skupině prostředků, ale ne jiné skupiny prostředků v předplatném všech typů.
-
-### <a name="assigning-roles"></a>Přiřazení rolí
-
-Můžete přiřadit více než jednu roli pro uživatele a každou roli je možné přidružit jiný obor. Příklad:
-
-* Přiřadit role Čtenář the TestUser-A k předplatnému 1.
-* Přiřazení role vlastníka the TestUser-A TestVM-1.
-
-Azure [přiřazení rolí](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal) článek obsahuje podrobné informace o zobrazení, přiřazování a odstranění rolí.
 
 ### <a name="resource-hierarchy-and-inheritance"></a>Hierarchie prostředků a dědičnost
 

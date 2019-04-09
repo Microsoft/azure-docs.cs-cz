@@ -8,14 +8,14 @@ services: search
 ms.service: search
 ms.devlang: rest-api
 ms.topic: conceptual
-ms.date: 03/19/2019
+ms.date: 04/06/2019
 ms.author: heidist
-ms.openlocfilehash: a59451c659effb55a2e16236b359b7601eb31cd4
-ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
+ms.openlocfilehash: 64b07d37ce9267681ccfb5de3c7201586bd85b35
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58286597"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59273409"
 ---
 # <a name="create-and-manage-api-keys-for-an-azure-search-service"></a>Vytvoření a správa klíče rozhraní api pro službu Azure Search
 
@@ -53,30 +53,37 @@ Můžete získat přístupové klíče na portálu nebo prostřednictvím [REST 
 
 ## <a name="create-query-keys"></a>Vytvoření klíče dotazu
 
-Klíče dotazu se používají pro přístup jen pro čtení na dokumenty v indexu. Omezení přístupu a operací v klientské aplikace je nezbytné pro ochranu vyhledávání prostředků pro vaši službu. Vždy používejte klíč dotazů místo klíč správce pro jakýkoli dotaz pocházející z klientské aplikace.
+Klíče dotazu se používají pro přístup jen pro čtení na dokumenty v indexu pro operace, které cílí na kolekce dokumentů. Hledání, filtrování a návrhů dotazů jsou všechny operace, které trvat klíč dotazu. Jakákoli jen pro čtení operace, která vrátí systému, dat nebo objektových definice, jako je například stav definice nebo indexeru indexu vyžaduje klíč správce.
+
+Omezení přístupu a operací v klientské aplikace je nezbytné pro ochranu vyhledávání prostředků pro vaši službu. Vždy používejte klíč dotazů místo klíč správce pro jakýkoli dotaz pocházející z klientské aplikace.
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 2. Seznam [vyhledávací služby](https://portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) pro vaše předplatné.
 3. Vyberte službu a klikněte na stránce Přehled **nastavení** >**klíče**.
 4. Klikněte na tlačítko **spravovat klíče dotazů**.
-5. Použijte dotaz už vygenerované pro vaši službu nebo vytvořit až 50 nové klíče dotazu. Výchozí klíč dotazu není s názvem, ale může mít název klíče dotazu další možnosti správy.
+5. Použít klíč dotazu již vytvořených pro vaši službu nebo vytvořit až 50 nové klíče dotazu. Výchozí klíč dotazu není s názvem, ale může mít název klíče dotazu další možnosti správy.
 
    ![Vytvořit nebo použít klíč dotazu](media/search-security-overview/create-query-key.png) 
-
 
 > [!Note]
 > Příklad kódu znázorňující použití klíče dotazu lze nalézt v [dotazování indexu Azure Search v C# ](search-query-dotnet.md).
 
+<a name="regenerate-admin-keys"></a>
+
 ## <a name="regenerate-admin-keys"></a>Znovu vygenerovat klíče správce
 
-Dva klíče správce se vytvoří pro každou službu, takže můžete otočit primární klíč, pomocí sekundárního klíče pro přístup.
-
-Pokud byste znovu generovali primární a sekundární klíče ve stejnou dobu, bude všech aplikacích používajících ani jeden klíč pro přístup k operacím služby už mít přístup ke službě.
+Dva klíče správce se vytvoří pro každou službu tak, aby můžete otočit primární klíč, pomocí sekundárního klíče pro nepřetržitý chod podniků.
 
 1. V **nastavení** >**klíče** stránky, zkopírujte sekundární klíč.
 2. Pro všechny aplikace aktualizace nastavení api-key používat sekundární klíč.
 3. Znovu vygenerovat primární klíč.
 4. Aktualizujte všechny aplikace, aby používaly nový primární klíč.
+
+Pokud jste omylem znovu generovali oba klíče současně, všechny požadavky klientů pomocí těchto klíčů se nezdaří s HTTP 403 Zakázáno. Ale obsah není odstraněn, a můžete nejsou trvale uzamčen. 
+
+Můžete nadále přístup ke službě pomocí portálu nebo vrstva správy ([rozhraní REST API](https://docs.microsoft.com/rest/api/searchmanagement/), [Powershellu](https://docs.microsoft.com/azure/search/search-manage-powershell), nebo Azure Resource Manager). Funkce správy jsou rozhodnou pomocí ID předplatného není službu klíč api-key a proto stále k dispozici i v případě, že se vaše klíče rozhraní api. 
+
+Po vytvoření nového klíče účtů prostřednictvím portálu nebo správu vrstvy přístupu k vašemu obsahu (indexy, indexery, zdroje dat, map synonym) obnovení po nové klíče a zadejte tyto klíče u požadavků.
 
 ## <a name="secure-api-keys"></a>Zabezpečení klíče api Key
 Zabezpečení klíče je zajištěno omezení přístupu prostřednictvím portálu nebo rozhraní správce prostředků (prostředí PowerShell nebo rozhraní příkazového řádku). Jak je uvedeno, správci předplatného můžete zobrazit a znovu generovat všechny klíče rozhraní api. Jako preventivní opatření zkontrolujte přiřazení rolí pochopit, kdo má přístup ke klíčům správce.
@@ -91,5 +98,5 @@ Zabezpečení klíče je zajištěno omezení přístupu prostřednictvím port�
 ## <a name="see-also"></a>Další informace najdete v tématech
 
 + [Řízení přístupu na základě role ve službě Azure Search](search-security-rbac.md)
-+ [Správa s využitím PowerShellu](search-manage-powershell.md) 
++ [Správa pomocí prostředí PowerShell](search-manage-powershell.md) 
 + [Výkon a optimalizace článku](search-performance-optimization.md)

@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 12/07/2018
+ms.date: 04/08/2018
 ms.author: diberry
-ms.openlocfilehash: 6f775ffaf53019cc50bc38c294b4d5f40c8eca90
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 9d6173ee25f28aa884513d126c06a8a7c722098d
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58076747"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59273834"
 ---
 # <a name="integrate-speech-service-with-your-language-understanding-app"></a>Speech service integrovat s vaší aplikací Language Understanding
 [Služba Speech](https://docs.microsoft.com/azure/cognitive-services/Speech-Service/) umožňuje pomocí jednoho požadavku přijímat zvuk a vracet objekty JSON s předpověďmi služby LUIS. V tomto článku stáhnete projekt jazyka C# v sadě Visual Studio a použijete ho k vyslovení promluvy do mikrofonu a přijetí informací o předpovědi služby LUIS. V tomto projektu se používá balíček [NuGet](https://www.nuget.org/packages/Microsoft.CognitiveServices.Speech/) služby Speech, který je již zahrnutý jako odkaz. 
@@ -24,7 +24,7 @@ ms.locfileid: "58076747"
 Pro účely tohoto článku potřebujete bezplatný webový účet [LUIS][LUIS], abyste mohli aplikaci importovat.
 
 ## <a name="create-luis-endpoint-key"></a>Vytvoření klíče koncového bodu služby LUIS
-Na webu Azure Portal [vytvořte](luis-how-to-azure-subscription.md) klíč služby **Language Understanding** (LUIS). 
+Na webu Azure Portal [vytvořit](luis-how-to-azure-subscription.md) **služby Cognitive Services** klíč (LUIS) pro aplikace LUIS.  
 
 ## <a name="import-human-resources-luis-app"></a>Import aplikace LUIS pro lidské zdroje
 Záměry a projevy pro účely tohoto článku pocházejí z aplikace LUIS lidské zdroje, k dispozici [Azure-Samples](https://github.com/Azure-Samples/cognitive-services-language-understanding) úložiště GitHub. Stáhněte soubor [HumanResources.json](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/tutorials/HumanResources.json), uložte ho s příponou `.json` a [importujte](luis-how-to-start-new-app.md#import-new-app) ho do služby LUIS. 
@@ -66,7 +66,7 @@ V tomto článku se používá zvukové zařízení na vašem počítači. Tímt
 
 Sada SDK služby Speech je již zahrnutá jako odkaz. 
 
-[![Snímek obrazovky sady Visual Studio 2017 zobrazování balíček Microsoft.CognitiveServices.Speech NuGet](./media/luis-tutorial-speech-to-intent/nuget-package.png "zobrazování balíček Microsoft.CognitiveServices.Speech NuGet snímek obrazovky sady Visual Studio 2017")](./media/luis-tutorial-speech-to-intent/nuget-package.png#lightbox)
+[![Screenshot sady Visual Studio 2017 zobrazení balíček Microsoft.CognitiveServices.Speech NuGet](./media/luis-tutorial-speech-to-intent/nuget-package.png "zobrazování balíček Microsoft.CognitiveServices.Speech NuGet snímek obrazovky sady Visual Studio 2017")](./media/luis-tutorial-speech-to-intent/nuget-package.png#lightbox)
 
 ## <a name="modify-the-c-code"></a>Úprava kódu jazyka C#
 Otevřete soubor `Program.cs` a změňte následující proměnné:
@@ -74,7 +74,7 @@ Otevřete soubor `Program.cs` a změňte následující proměnné:
 |Název proměnné|Účel|
 |--|--|
 |LUIS_assigned_endpoint_key|Odpovídá hodnotě klíče předplatného přiřazeného k adrese URL koncového bodu ze stránky publikování|
-|LUIS_endpoint_key_region|Odpovídá první subdoméně adresy URL koncového bodu, například `westus`|
+|LUIS_endpoint_key_region|Adresa URL koncového bodu první subdomény, odpovídá například `westus`|
 |LUIS_app_ID|Odpovídá trase adresy URL koncového bodu, která následuje za **apps/**|
 
 Soubor `Program.cs` již obsahuje namapované záměry pro lidské zdroje.
@@ -98,6 +98,6 @@ Nezapomeňte odstranit adresář, jakmile budete hotovi pomocí ukázkového kó
 ## <a name="next-steps"></a>Další postup
 
 > [!div class="nextstepaction"]
-> [Integrace služby LUIS s chatbotem](luis-csharp-tutorial-build-bot-framework-sample.md)
+> [Integrace LUIS s využitím BOTU](luis-csharp-tutorial-build-bot-framework-sample.md)
 
 [LUIS]: https://docs.microsoft.com/azure/cognitive-services/luis/luis-reference-regions#luis-website

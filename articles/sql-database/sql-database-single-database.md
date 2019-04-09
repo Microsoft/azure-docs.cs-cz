@@ -11,13 +11,13 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
-ms.date: 03/29/2019
-ms.openlocfilehash: 19fa1797e2765a642aac19f55f0906ba9aef61a8
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
-ms.translationtype: MT
+ms.date: 034/08/2019
+ms.openlocfilehash: 804e60b141f6ad4f089710d4b85c52a8dad33cfc
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58660285"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59269516"
 ---
 # <a name="what-is-a-single-database-in-azure-sql-database"></a>Co je izolované databáze ve službě Azure SQL Database
 
@@ -56,7 +56,7 @@ Další informace najdete v tématu [rozdíly řešení příkazů jazyka Transa
 SQL Database nabízí celou řadu [integrované zabezpečení a dodržování předpisů](sql-database-security-overview.md) funkce, které pomohou vaší aplikace vyhovět různým nárokům na zabezpečení a dodržování předpisů.
 
 > [!IMPORTANT]
-> Azure SQL Database (všechny možnosti nasazení) a byla certifikována pro řadu standardů dodržování předpisů. Další informace najdete v [Centru zabezpečení Microsoft Azure](https://azure.microsoft.com/support/trust-center/), kde také najdete nejnovější seznam [certifikátů služby SQL Database v oblasti dodržování předpisů](https://www.microsoft.com/trustcenter/compliance/complianceofferings).
+> Azure SQL Database (všechny možnosti nasazení) a byla certifikována pro řadu standardů dodržování předpisů. Další informace najdete v tématu [Microsoft Azure Trust Center](https://azure.microsoft.com/support/trust-center/compliance/) místo, kde najdete nejnovější seznam certifikací dodržování předpisů SQL Database.
 
 ## <a name="next-steps"></a>Další postup
 

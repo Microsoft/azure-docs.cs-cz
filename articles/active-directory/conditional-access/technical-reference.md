@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: spunukol
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fc09c8d8e284fc81a26097a7c1a58732539029c6
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
-ms.translationtype: MT
+ms.openlocfilehash: 3f92001e9d2fd322e858440ef64991b9de856735
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/05/2019
-ms.locfileid: "59051118"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59273035"
 ---
 # <a name="azure-active-directory-conditional-access-settings-reference"></a>Odkaz nastavení podmíněného přístupu Azure Active Directory
 
@@ -232,6 +232,23 @@ Toto nastavení platí pro následující klientské aplikace:
 - Schválené klientské aplikace podporují funkce správy mobilních aplikací Intune.
 - **Vyžadovat klientem schválenou aplikaci** požadavek:
    - Podporuje jenom pro iOS a Android pro [podmínku platformy zařízení](#device-platform-condition).
+
+## <a name="app-protection-policy-requirement"></a>Požadavek zásady ochrany aplikací 
+
+Ve své zásady podmíněného přístupu můžete vyžadovat, že zásady ochrany aplikací nacházet v klientské aplikaci předtím, než je k dispozici pro vybraný cloud aplikace přístup. 
+
+![Řízení přístupu pomocí zásad ochrany aplikací](./media/technical-reference/22.png)
+
+Toto nastavení platí pro následující klientské aplikace:
+
+- Microsoft OneDrive
+- Microsoft Outlook
+
+**Poznámky**
+
+- Aplikace pro zásady ochrany aplikací podporují funkce správy mobilních aplikací Intune pomocí zásad ochrany.
+- **Vyžadovat zásady ochrany aplikací** požadavky:
+    - Podporuje jenom pro iOS a Android pro [podmínku platformy zařízení](#device-platform-condition).
 
 ## <a name="next-steps"></a>Další postup
 

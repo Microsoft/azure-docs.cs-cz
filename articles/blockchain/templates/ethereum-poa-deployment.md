@@ -5,17 +5,17 @@ services: azure-blockchain
 keywords: ''
 author: CodyBorn
 ms.author: coborn
-ms.date: 8/2/2018
+ms.date: 04/08/2019
 ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: brendal
 manager: vamelech
-ms.openlocfilehash: 5a693fef2f77471f799bec46f149ff19d6edca80
-ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
+ms.openlocfilehash: 3531b43e6aee1eedef811e81e192873c5b5ed561
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58905915"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59274786"
 ---
 # <a name="ethereum-proof-of-authority-consortium"></a>Ethereum během testování of-authority W3C
 
@@ -279,7 +279,7 @@ ID sítě|ID sítě pro síť consortium ethereum během nasazení.  Každá sí
 Adresa správce ethereum během|Adresa účtu Etherea, který slouží k účasti v PoA zásad správného řízení.  Doporučujeme používat MetaMask ke generování adresy Etherea.|42 alfanumerických znaků počínaje 0 x|Není k dispozici
 Upřesnit možnosti|Rozšířené možnosti pro ethereum během nastavení|Povolit nebo zakázat|Zakázat
 Veřejná IP adresa (Upřesnit možnosti = Enable)|Nasadí sítě bránou virtuální sítě a odebere partnerského vztahu přístup. Pokud je vybraná tato možnost, všichni členové musíte použít pro připojení brány virtuální sítě jako kompatibilní.|Veřejnou IP adresu privátní virtuální sítě|Veřejná IP adresa
-Blokovat plynu Limit (Upřesnit možnosti = Enable)|Omezit plynu počáteční blok sítě|Všechny číselné|50,000,00
+Blokovat plynu Limit (Upřesnit možnosti = Enable)|Omezit plynu počáteční blok sítě|Všechny číselné|50000000
 Autorizovat dobu blokování (sekundy)|Frekvence, ve kterém se vytvoří prázdný bloky při neexistují transakce v síti. Rychlejší neodvolatelnost zúčtování ale náklady na úložiště vyšší budou mít vyšší frekvence.|Všechny číselné|15
 Transakce oprávnění kontraktu (Upřesnit možnosti = Enable)|Bajtový kód pro kontrakt videí transakce. Omezuje inteligentní smlouvy nasazení a spuštění do seznamu povolených Etherea účtů.|Bajtový kód kontraktu|Není k dispozici
 

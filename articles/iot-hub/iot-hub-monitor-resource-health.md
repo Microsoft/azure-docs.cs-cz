@@ -8,16 +8,16 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 02/27/2019
 ms.author: kgremban
-ms.openlocfilehash: 0a230ff1c4d5c6bb36003f07cc1c411f7e2c3629
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: 6dea1add1e329cfc894068732898a856a69c9b4c
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57240996"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59274038"
 ---
 # <a name="monitor-the-health-of-azure-iot-hub-and-diagnose-problems-quickly"></a>Monitorování stavu služby Azure IoT Hub a rychlá Diagnostika potíží
 
-Podnikům, které implementují službu Azure IoT Hub můžete očekávat spolehlivý výkon z jejich prostředků. Abyste mohli udržovat zavřít podívejte na vaše operace, IoT Hub je plně integrována s [Azure Monitor](../azure-monitor/index.yml) a [Azure Resource Health](../service-health/resource-health-overview.md). Tyto dvě služby fungují, kde přinášejí dat je potřeba nechat si řešení IoT a spuštěná v dobrém stavu. 
+Podnikům, které implementují službu Azure IoT Hub můžete očekávat spolehlivý výkon z jejich prostředků. Abyste mohli udržovat zavřít podívejte na vaše operace, IoT Hub je plně integrována s [Azure Monitor](../azure-monitor/index.yml) a [Azure Resource Health](../service-health/resource-health-overview.md). Tyto dvě služby fungují, kde přinášejí dat je potřeba nechat si řešení IoT a spuštěná v dobrém stavu.
 
 Azure Monitor je jediný zdroj monitorování a protokolování všech služeb Azure. Diagnostické protokoly, které generuje Azure Monitor můžete odeslat protokoly Azure monitoru, Event Hubs nebo Azure Storage pro vlastní zpracování. Diagnostika a metriky nastavení Azure Monitor vám poskytnou přehled o výkonu vašich prostředků. Pokračujte ve čtení tohoto článku se dozvíte, jak [použití Azure monitoru](#use-azure-monitor) službou IoT hub. 
 
@@ -30,7 +30,7 @@ IoT Hub poskytuje také vlastní metriky, který vám pomůže porozumět stavu 
 
 ## <a name="use-azure-monitor"></a>Použití Azure Monitoru
 
-Platforma Azure Monitor poskytuje diagnostické informace pro prostředky Azure, což znamená, že můžete monitorovat operace, které se provedou v rámci služby IoT hub. 
+Platforma Azure Monitor poskytuje diagnostické informace pro prostředky Azure, což znamená, že můžete monitorovat operace, které se provedou v rámci služby IoT hub.
 
 Nahrazuje nastavení diagnostiky Azure Monitor monitorovat operací služby IoT Hub. Pokud aktuálně používáte službu monitorování operací, měli byste migrovat vaše pracovní postupy. Další informace najdete v tématu [migrace ze služby operations nastavení monitorování pro diagnostiku](iot-hub-migrate-to-diagnostics-settings.md).
 
@@ -40,7 +40,7 @@ Další informace o něm konkrétní metriky a události, které sleduje Azure M
 
 ### <a name="understand-the-logs"></a>Vysvětlení protokolů
 
-Azure Monitor sleduje různé operace, ke kterým dochází ve službě IoT Hub. Každá kategorie má schéma, které definuje způsob hlášení událostí do této kategorie spadají. 
+Azure Monitor sleduje různé operace, ke kterým dochází ve službě IoT Hub. Každá kategorie má schéma, které definuje způsob hlášení událostí do této kategorie spadají.
 
 #### <a name="connections"></a>Připojení
 
@@ -49,11 +49,10 @@ Připojení zařízení sleduje kategorie připojit a odpojit události ze služ
 > [!NOTE]
 > Stav spolehlivé připojení zařízení zkontrolujte [prezenčního signálu zařízení](iot-hub-devguide-identity-registry.md#device-heartbeat).
 
-
 ```json
 {
-    "records": 
-    [
+   "records":
+   [
         {
             "time": " UTC timestamp",
             "resourceId": "Resource Id",
@@ -73,13 +72,13 @@ Příkazy typu cloud zařízení kategorie sleduje chyby, ke kterým dochází z
 
 * Odesílání zpráv typu cloud zařízení (jako jsou chyby neautorizovaného odesílatele)
 * Příjem zpráv typu cloud zařízení (jako jsou chyby byl překročen počet doručení), a
-* Příjem zpráv typu cloud zařízení zpětnou vazbu (například zpětnou vazbu s prošlou platností chyby). 
+* Příjem zpráv typu cloud zařízení zpětnou vazbu (například zpětnou vazbu s prošlou platností chyby).
 
 Tato kategorie nebude zachytávat chyby při nesprávně zpracovat zařízení úspěšně doručit zprávu typu cloud zařízení.
 
 ```json
 {
-    "records": 
+    "records":
     [
         {
             "time": " UTC timestamp",
@@ -89,7 +88,7 @@ Tato kategorie nebude zachytávat chyby při nesprávně zpracovat zařízení �
             "level": "Error",
             "resultType": "Event status",
             "resultDescription": "MessageDescription",
-            "properties": "{\"deviceId\":\"<deviceId>\",\"messageId\":\"<messageId>\",\"messageSizeInBytes\":\"<messageSize>\",\"protocol\":\"Amqp\",\"deliveryAcknowledgement\":\"<None, NegativeOnly, PositiveOnly, Full>\",\"deliveryCount\":\"0\",\"expiryTime\":\"<timestamp>\",\"timeInSystem\":\"<timeInSystem>\",\"ttl\":<ttl>, \"EventProcessedUtcTime\":\"<UTC timestamp>\",\"EventEnqueuedUtcTime\":\"<UTC timestamp>\", \"maskedIpAddresss\": \"<maskedIpAddress>\", \"statusCode\": \"4XX\"}",
+            "properties": "{\"deviceId\":\"<deviceId>\",\"messageId\":\"<messageId>\",\"messageSizeInBytes\":\"<messageSize>\",\"protocol\":\"Amqp\",\"deliveryAcknowledgement\":\"<None, NegativeOnly, PositiveOnly, Full>\",\"deliveryCount\":\"0\",\"expiryTime\":\"<timestamp>\",\"timeInSystem\":\"<timeInSystem>\",\"ttl\":<ttl>, \"EventProcessedUtcTime\":\"<UTC timestamp>\",\"EventEnqueuedUtcTime\":\"<UTC timestamp>\", \"maskedIpAddress\": \"<maskedIpAddress>\", \"statusCode\": \"4XX\"}",
             "location": "Resource location"
         }
     ]
@@ -102,14 +101,14 @@ Kategorie zařízení identity operace sleduje chyby, ke kterým dochází při 
 
 ```json
 {
-    "records": 
+    "records":
     [
         {
             "time": "UTC timestamp",
             "resourceId": "Resource Id",
             "operationName": "get",
             "category": "DeviceIdentityOperations",
-            "level": "Error",    
+            "level": "Error",
             "resultType": "Event status",
             "resultDescription": "MessageDescription",
             "properties": "{\"maskedIpAddress\":\"<maskedIpAddress>\",\"deviceId\":\"<deviceId>\", \"statusCode\":\"4XX\"}",
@@ -131,7 +130,7 @@ Tato kategorie neobsahuje konkrétní chyby o samotné zprávy (např. zařízen
 
 ```json
 {
-    "records": 
+    "records":
     [
         {
             "time": "UTC timestamp",
@@ -152,7 +151,7 @@ Kategorie telemetrie zařízení sleduje chyby, ke kterým dochází za služby 
 
 ```json
 {
-    "records": 
+    "records":
     [
         {
             "time": "UTC timestamp",
@@ -174,14 +173,16 @@ Kategorie telemetrie zařízení sleduje chyby, ke kterým dochází za služby 
 Kategorie nahrávání souborů sleduje chybách, ke kterým dochází za služby IoT hub a souvisí s funkcí odesílání souborů. Tato kategorie zahrnuje:
 
 * Chyby, ke kterým dochází s identifikátorem URI SAS, jako je například vypršení platnosti předtím, než oznámí zařízení centra dokončená nahrávání.
+
 * Nepovedlo nahrávání oznámí zařízení.
+
 * Chyby, ke kterým dochází při soubor nebyl nalezen v úložišti během vytváření zprávy oznámení služby IoT Hub.
 
 Tato kategorie nemůže zachytávat chyby, které se stanou přímo ve chvíli, kdy zařízení odesílá do souboru do úložiště.
 
 ```json
 {
-    "records": 
+    "records":
     [
         {
             "time": "UTC timestamp",
@@ -201,11 +202,11 @@ Tato kategorie nemůže zachytávat chyby, které se stanou přímo ve chvíli, 
 
 #### <a name="cloud-to-device-twin-operations"></a>Operace dvojčete typu cloud zařízení
 
-Kategorie typu cloud zařízení dvojčete operace sleduje spouštěných službou události na dvojčata zařízení. Tyto operace můžete zahrnout dvojčete get, aktualizovat nebo nahradit značek a aktualizovat nebo nahradit požadované vlastnosti. 
+Kategorie typu cloud zařízení dvojčete operace sleduje spouštěných službou události na dvojčata zařízení. Tyto operace můžete zahrnout dvojčete get, aktualizovat nebo nahradit značek a aktualizovat nebo nahradit požadované vlastnosti.
 
 ```json
 {
-    "records": 
+    "records":
     [
         {
             "time": "UTC timestamp",
@@ -214,7 +215,7 @@ Kategorie typu cloud zařízení dvojčete operace sleduje spouštěných služb
             "category": "C2DTwinOperations",
             "level": "Information",
             "durationMs": "1",
-            "properties": "{\"deviceId\":\"<deviceId>\",\"sdkVersion\":\"<sdkVersion>\",\"messageSize\":\"<messageSize>\"}", 
+            "properties": "{\"deviceId\":\"<deviceId>\",\"sdkVersion\":\"<sdkVersion>\",\"messageSize\":\"<messageSize>\"}",
             "location": "Resource location"
         }
     ]
@@ -227,7 +228,7 @@ Kategorie operace dvojčete zařízení cloud sleduje zařízení iniciované ud
 
 ```json
 {
-    "records": 
+    "records":
     [
         {
             "time": "UTC timestamp",
@@ -236,7 +237,7 @@ Kategorie operace dvojčete zařízení cloud sleduje zařízení iniciované ud
             "category": "D2CTwinOperations",
             "level": "Information",
             "durationMs": "1",
-            "properties": "{\"deviceId\":\"<deviceId>\",\"protocol\":\"<protocol>\",\"authenticationType\":\"{\\\"scope\\\":\\\"device\\\",\\\"type\\\":\\\"sas\\\",\\\"issuer\\\":\\\"iothub\\\",\\\"acceptingIpFilterRule\\\":null}\"}", 
+            "properties": "{\"deviceId\":\"<deviceId>\",\"protocol\":\"<protocol>\",\"authenticationType\":\"{\\\"scope\\\":\\\"device\\\",\\\"type\\\":\\\"sas\\\",\\\"issuer\\\":\\\"iothub\\\",\\\"acceptingIpFilterRule\\\":null}\"}",
             "location": "Resource location"
         }
     ]
@@ -245,11 +246,11 @@ Kategorie operace dvojčete zařízení cloud sleduje zařízení iniciované ud
 
 #### <a name="twin-queries"></a>Dotazy dvojčete
 
-Kategorie dotazy dvojčete hlásí požadavků na dotazy na dvojčata zařízení, které jsou spouštěné v cloudu. 
+Kategorie dotazy dvojčete hlásí požadavků na dotazy na dvojčata zařízení, které jsou spouštěné v cloudu.
 
 ```json
 {
-    "records": 
+    "records":
     [
         {
             "time": "UTC timestamp",
@@ -258,7 +259,7 @@ Kategorie dotazy dvojčete hlásí požadavků na dotazy na dvojčata zařízen�
             "category": "TwinQueries",
             "level": "Information",
             "durationMs": "1",
-            "properties": "{\"query\":\"<twin query>\",\"sdkVersion\":\"<sdkVersion>\",\"messageSize\":\"<messageSize>\",\"pageSize\":\"<pageSize>\", \"continuation\":\"<true, false>\", \"resultSize\":\"<resultSize>\"}", 
+            "properties": "{\"query\":\"<twin query>\",\"sdkVersion\":\"<sdkVersion>\",\"messageSize\":\"<messageSize>\",\"pageSize\":\"<pageSize>\", \"continuation\":\"<true, false>\", \"resultSize\":\"<resultSize>\"}",
             "location": "Resource location"
         }
     ]
@@ -267,11 +268,11 @@ Kategorie dotazy dvojčete hlásí požadavků na dotazy na dvojčata zařízen�
 
 #### <a name="jobs-operations"></a>Operace úloh
 
-Kategorie úlohy operace hlásí žádosti o úlohu Aktualizovat dvojče zařízení nebo vyvolání přímých metod na více zařízeních. Tyto požadavky jsou spuštěny v cloudu. 
+Kategorie úlohy operace hlásí žádosti o úlohu Aktualizovat dvojče zařízení nebo vyvolání přímých metod na více zařízeních. Tyto požadavky jsou spuštěny v cloudu.
 
 ```json
 {
-    "records": 
+    "records":
     [
         {
             "time": "UTC timestamp",
@@ -280,7 +281,7 @@ Kategorie úlohy operace hlásí žádosti o úlohu Aktualizovat dvojče zaříz
             "category": "JobsOperations",
             "level": "Information",
             "durationMs": "1",
-            "properties": "{\"jobId\":\"<jobId>\", \"sdkVersion\": \"<sdkVersion>\",\"messageSize\": <messageSize>,\"filter\":\"DeviceId IN ['1414ded9-b445-414d-89b9-e48e8c6285d5']\",\"startTimeUtc\":\"Wednesday, September 13, 2017\",\"duration\":\"0\"}", 
+            "properties": "{\"jobId\":\"<jobId>\", \"sdkVersion\": \"<sdkVersion>\",\"messageSize\": <messageSize>,\"filter\":\"DeviceId IN ['1414ded9-b445-414d-89b9-e48e8c6285d5']\",\"startTimeUtc\":\"Wednesday, September 13, 2017\",\"duration\":\"0\"}",
             "location": "Resource location"
         }
     ]
@@ -289,11 +290,11 @@ Kategorie úlohy operace hlásí žádosti o úlohu Aktualizovat dvojče zaříz
 
 #### <a name="direct-methods"></a>Přímé metody
 
-Kategorie přímých metod sleduje zasílat jednotlivým příjemcům interakce typu žádost odpověď. Tyto požadavky jsou spuštěny v cloudu. 
+Kategorie přímých metod sleduje zasílat jednotlivým příjemcům interakce typu žádost odpověď. Tyto požadavky jsou spuštěny v cloudu.
 
 ```json
 {
-    "records": 
+    "records":
     [
         {
             "time": "UTC timestamp",
@@ -302,7 +303,7 @@ Kategorie přímých metod sleduje zasílat jednotlivým příjemcům interakce 
             "category": "DirectMethods",
             "level": "Information",
             "durationMs": "1",
-            "properties": "{\"deviceId\":<messageSize>, \"RequestSize\": 1, \"ResponseSize\": 1, \"sdkVersion\": \"2017-07-11\"}", 
+            "properties": "{\"deviceId\":<messageSize>, \"RequestSize\": 1, \"ResponseSize\": 1, \"sdkVersion\": \"2017-07-11\"}",
             "location": "Resource location"
         }
     ]
@@ -313,15 +314,15 @@ Kategorie přímých metod sleduje zasílat jednotlivým příjemcům interakce 
 
 Kategorie distribuované trasování sleduje ID korelace pro zprávy, které zajišťují trasování hlavičku kontextu. Tyto protokoly povolit plně, musí aktualizovat kód na straně klienta podle [analýza a Diagnostika IoT aplikace začátku do konce pomocí distribuované trasování služby IoT Hub (preview)](iot-hub-distributed-tracing.md).
 
-Všimněte si, že `correlationId` odpovídá [W3C trasování kontextu](https://github.com/w3c/trace-context) návrh, kde obsahuje `trace-id` a také `span-id`. 
+Všimněte si, že `correlationId` odpovídá [W3C trasování kontextu](https://github.com/w3c/trace-context) návrh, kde obsahuje `trace-id` a také `span-id`.
 
 ##### <a name="iot-hub-d2c-device-to-cloud-logs"></a>IoT Hub D2C protokoly (typu zařízení cloud)
 
-Při doručení zprávy obsahující vlastnosti platný trasování ve službě IoT Hub, IoT Hub zaznamenává tento protokol. 
+Při doručení zprávy obsahující vlastnosti platný trasování ve službě IoT Hub, IoT Hub zaznamenává tento protokol.
 
 ```json
 {
-    "records": 
+    "records":
     [
         {
             "time": "UTC timestamp",
@@ -333,7 +334,7 @@ Při doručení zprávy obsahující vlastnosti platný trasování ve službě 
             "resultType": "Success",
             "resultDescription":"Receive message success",
             "durationMs": "",
-            "properties": "{\"messageSize\": 1, \"deviceId\":\"<deviceId>\", \"callerLocalTimeUtc\": : \"2017-02-22T03:27:28.633Z\", \"calleeLocalTimeUtc\": \"2017-02-22T03:27:28.687Z\"}", 
+            "properties": "{\"messageSize\": 1, \"deviceId\":\"<deviceId>\", \"callerLocalTimeUtc\": : \"2017-02-22T03:27:28.633Z\", \"calleeLocalTimeUtc\": \"2017-02-22T03:27:28.687Z\"}",
             "location": "Resource location"
         }
     ]
@@ -355,7 +356,7 @@ IoT Hub zaznamenává tento protokol, pokud zpráva obsahující vlastnosti plat
 
 ```json
 {
-    "records": 
+    "records":
     [
         {
             "time": "UTC timestamp",
@@ -367,14 +368,14 @@ IoT Hub zaznamenává tento protokol, pokud zpráva obsahující vlastnosti plat
             "resultType": "Success",
             "resultDescription":"Ingress message success",
             "durationMs": "10",
-            "properties": "{\"isRoutingEnabled\": \"true\", \"parentSpanId\":\"0144d2590aacd909\"}", 
+            "properties": "{\"isRoutingEnabled\": \"true\", \"parentSpanId\":\"0144d2590aacd909\"}",
             "location": "Resource location"
         }
     ]
 }
 ```
 
-V `properties` část, tento protokol obsahuje další informace o zprávě příchozího přenosu dat
+V `properties` část, tento protokol obsahuje další informace o příchozí zprávy.
 
 | Vlastnost | Typ | Popis |
 |--------------------|-----------------------------------------------|------------------------------------------------------------------------------------------------|
@@ -387,7 +388,7 @@ IoT Hub záznamy to při protokolování [směrování](iot-hub-devguide-message
 
 ```json
 {
-    "records": 
+    "records":
     [
         {
             "time": "UTC timestamp",
@@ -399,14 +400,14 @@ IoT Hub záznamy to při protokolování [směrování](iot-hub-devguide-message
             "resultType": "Success",
             "resultDescription":"Egress message success",
             "durationMs": "10",
-            "properties": "{\"endpointType\": \"EventHub\", \"endpointName\": \"myEventHub\", \"parentSpanId\":\"349810a9bbd28730\"}", 
+            "properties": "{\"endpointType\": \"EventHub\", \"endpointName\": \"myEventHub\", \"parentSpanId\":\"349810a9bbd28730\"}",
             "location": "Resource location"
         }
     ]
 }
 ```
 
-V `properties` část, tento protokol obsahuje další informace o zprávě příchozího přenosu dat
+V `properties` část, tento protokol obsahuje další informace o příchozí zprávy.
 
 | Vlastnost | Typ | Popis |
 |--------------------|-----------------------------------------------|------------------------------------------------------------------------------------------------|
@@ -414,91 +415,92 @@ V `properties` část, tento protokol obsahuje další informace o zprávě př�
 | **endpointType** | String | Typ směrování koncového bodu |
 | **parentSpanId** | String | [Rozsah id](https://w3c.github.io/trace-context/#parent-id) nadřazené zprávy, kterou v tomto případě by trasování zpráv služby IoT Hub příchozího přenosu dat |
 
-
 ### <a name="read-logs-from-azure-event-hubs"></a>Čtení protokolů z Azure Event Hubs
 
 Jakmile nastavíte přes nastavení diagnostiky protokolování událostí, můžete vytvořit aplikace, které se přečte nahlas protokoly tak, aby mohli podniknout kroky na základě informací v nich. Tento ukázkový kód načte protokoly z centra událostí:
 
 ```csharp
-class Program 
+class Program
 { 
-    static string connectionString = "{your AMS eventhub endpoint connection string}"; 
-    static string monitoringEndpointName = "{your AMS event hub endpoint name}"; 
-    static EventHubClient eventHubClient; 
-//This is the Diagnostic Settings schema 
-    class AzureMonitorDiagnosticLog 
-    { 
-        string time { get; set; } 
-        string resourceId { get; set; } 
-        string operationName { get; set; } 
-        string category { get; set; } 
-        string level { get; set; } 
-        string resultType { get; set; } 
-        string resultDescription { get; set; } 
-        string durationMs { get; set; } 
-        string callerIpAddress { get; set; } 
-        string correlationId { get; set; } 
-        string identity { get; set; } 
-        string location { get; set; } 
-        Dictionary<string, string> properties { get; set; } 
-    }; 
-    static void Main(string[] args) 
-    { 
-        Console.WriteLine("Monitoring. Press Enter key to exit.\n"); 
-        eventHubClient = EventHubClient.CreateFromConnectionString(connectionString, monitoringEndpointName); 
-        var d2cPartitions = eventHubClient.GetRuntimeInformationAsync().PartitionIds; 
-        CancellationTokenSource cts = new CancellationTokenSource(); 
-        var tasks = new List<Task>(); 
-        foreach (string partition in d2cPartitions) 
-        { 
-            tasks.Add(ReceiveMessagesFromDeviceAsync(partition, cts.Token)); 
-        } 
-        Console.ReadLine(); 
-        Console.WriteLine("Exiting..."); 
-        cts.Cancel(); 
-        Task.WaitAll(tasks.ToArray()); 
-    } 
-    private static async Task ReceiveMessagesFromDeviceAsync(string partition, CancellationToken ct) 
-    { 
-        var eventHubReceiver = eventHubClient.GetDefaultConsumerGroup().CreateReceiver(partition, DateTime.UtcNow); 
-        while (true) 
-        { 
-            if (ct.IsCancellationRequested) 
-            { 
-                await eventHubReceiver.CloseAsync(); 
-                break; 
-            } 
-            EventData eventData = await eventHubReceiver.ReceiveAsync(new TimeSpan(0,0,10)); 
-            if (eventData != null) 
-            { 
-                string data = Encoding.UTF8.GetString(eventData.GetBytes()); 
-                Console.WriteLine("Message received. Partition: {0} Data: '{1}'", partition, data); 
-                var deserializer = new JavaScriptSerializer(); 
-                //deserialize json data to azure monitor object 
-                AzureMonitorDiagnosticLog message = new JavaScriptSerializer().Deserialize<AzureMonitorDiagnosticLog>(result); 
- 
-            } 
-        } 
-    } 
-} 
+    static string connectionString = "{your AMS eventhub endpoint connection string}";
+    static string monitoringEndpointName = "{your AMS event hub endpoint name}";
+    static EventHubClient eventHubClient;
+    //This is the Diagnostic Settings schema
+    class AzureMonitorDiagnosticLog
+    {
+        string time { get; set; }
+        string resourceId { get; set; }
+        string operationName { get; set; }
+        string category { get; set; }
+        string level { get; set; }
+        string resultType { get; set; }
+        string resultDescription { get; set; }
+        string durationMs { get; set; }
+        string callerIpAddress { get; set; }
+        string correlationId { get; set; }
+        string identity { get; set; }
+        string location { get; set; }
+        Dictionary<string, string> properties { get; set; }
+    };
+
+    static void Main(string[] args)
+    {
+        Console.WriteLine("Monitoring. Press Enter key to exit.\n");
+        eventHubClient = EventHubClient.CreateFromConnectionString(connectionString, monitoringEndpointName);
+        var d2cPartitions = eventHubClient.GetRuntimeInformationAsync().PartitionIds;
+        CancellationTokenSource cts = new CancellationTokenSource();
+        var tasks = new List<Task>();
+        foreach (string partition in d2cPartitions)
+        {
+            tasks.Add(ReceiveMessagesFromDeviceAsync(partition, cts.Token));
+        }
+        Console.ReadLine();
+        Console.WriteLine("Exiting...");
+        cts.Cancel();
+        Task.WaitAll(tasks.ToArray());
+    }
+
+    private static async Task ReceiveMessagesFromDeviceAsync(string partition, CancellationToken ct)
+    {
+        var eventHubReceiver = eventHubClient.GetDefaultConsumerGroup().CreateReceiver(partition, DateTime.UtcNow);
+        while (true)
+        {
+            if (ct.IsCancellationRequested)
+            {
+                await eventHubReceiver.CloseAsync();
+                break;
+            }
+            EventData eventData = await eventHubReceiver.ReceiveAsync(new TimeSpan(0,0,10));
+            if (eventData != null)
+            {
+                string data = Encoding.UTF8.GetString(eventData.GetBytes());
+                Console.WriteLine("Message received. Partition: {0} Data: '{1}'", partition, data);
+                var deserializer = new JavaScriptSerializer();
+                //deserialize json data to azure monitor object
+                AzureMonitorDiagnosticLog message = new JavaScriptSerializer().Deserialize<AzureMonitorDiagnosticLog>(result);
+            }
+        }
+    }
+}
 ```
 
 ## <a name="use-azure-resource-health"></a>Pomocí Azure Resource Health
 
-Pomocí Azure Resource Health můžete sledovat, jestli služby IoT hub je zprovozněný. Můžete také zjistěte, zda je k oblastnímu výpadku vliv na stav služby IoT hub. Informace o tom konkrétní podrobnosti o stavu služby Azure IoT Hub, doporučujeme vám [použití Azure monitoru](#use-azure-monitor). 
+Pomocí Azure Resource Health můžete sledovat, jestli služby IoT hub je zprovozněný. Můžete také zjistěte, zda je k oblastnímu výpadku vliv na stav služby IoT hub. Informace o tom konkrétní podrobnosti o stavu služby Azure IoT Hub, doporučujeme vám [použití Azure monitoru](#use-azure-monitor).
 
 Azure IoT Hub označuje stav na místní úrovni. Pokud oblastní výpadek ovlivní služby IoT hub, stav zobrazuje jako **neznámý**. Další informace najdete v tématu [typy prostředků a kontroly stavu ve službě Azure resource health](../service-health/resource-health-checks-resource-types.md).
 
 Pokud chcete zkontrolovat stav vašeho centra IoT hub, postupujte takto:
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
-1. Přejděte do **Service Health** > **Resource health**.
-1. V rozevíracích seznamech vyberte předplatné, pak vyberte **služby IoT Hub** jako typ prostředku.
+
+2. Přejděte do **Service Health** > **Resource health**.
+
+3. V rozevíracích seznamech vyberte předplatné, pak vyberte **služby IoT Hub** jako typ prostředku.
 
 Další informace o tom, jak interpretovat data o stavu, najdete v článku [přehled Azure resource health](../service-health/resource-health-overview.md).
 
 ## <a name="next-steps"></a>Další postup
 
-- [Vysvětlení metriky služby IoT Hub](iot-hub-metrics.md)
-- [Sada IoT vzdálené monitorování a oznámení pomocí Azure Logic Apps propojení vaší služby IoT hub a poštovní schránky](iot-hub-monitoring-notifications-with-azure-logic-apps.md)
-
+* [Vysvětlení metriky služby IoT Hub](iot-hub-metrics.md)
+* [Sada IoT vzdálené monitorování a oznámení pomocí Azure Logic Apps propojení vaší služby IoT hub a poštovní schránky](iot-hub-monitoring-notifications-with-azure-logic-apps.md)

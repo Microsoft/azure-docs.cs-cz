@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 02/15/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3253c26f99c470a256b937844138d8875219cbd1
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 35f9a8949f5b51f88b9297890fc5562e7b8dd591
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57878036"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59273375"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-help-scout"></a>Kurz: Integrace Azure Active Directory s pomáhají Scout
 
@@ -157,7 +157,7 @@ Ke konfiguraci Azure AD jednotné přihlašování s pomáhají Scout, proveďte
 
     ![Konfigurace jednotného přihlašování](./media/helpscout-tutorial/settings4.png)
 
-    a. V **přihlašovací adresu URL jednotného** textového pole vložte hodnotu **přihlašovací adresa URL**, který jste zkopírovali z portálu Azure portal.
+    a. V **přihlašovací adresu URL jednotného** textového pole vložte hodnotu **přihlašovací adresa URL**, který jste zkopírovali z portálu Azure portal.
 
     b. Klikněte na tlačítko **nahrát certifikát** k nahrání **Certificate(Base64)** stáhnout z webu Azure portal.
 
@@ -232,6 +232,6 @@ Když kliknete na dlaždici Nápověda Scout na přístupovém panelu, by měl b
 
 - [Seznam kurzů o integraci aplikací SaaS pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

@@ -6,13 +6,13 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: conceptual
-ms.date: 09/24/2018
-ms.openlocfilehash: 6a764c5051aad9123c605ae51807117ef75a7047
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.date: 04/07/2019
+ms.openlocfilehash: b1a7e64cf6b85b517bc027d6541d63c9be729734
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/05/2019
-ms.locfileid: "59048482"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59274619"
 ---
 # <a name="write-queries-for-azure-data-explorer"></a>Psát dotazy pro Průzkumník dat Azure
 
@@ -367,7 +367,7 @@ Následující dotaz vrací data za posledních 12 hodin.
 //The first two lines generate sample data, and the last line uses
 //the ago() operator to get records for last 12 hours.
 print TimeStamp= range(now(-5d), now(), 1h), SomeCounter = range(1,121)
-| mvexpand TimeStamp, SomeCounter
+| mv-expand TimeStamp, SomeCounter
 | where TimeStamp > ago(12h)
 ```
 
@@ -612,11 +612,11 @@ StormEvents
 | project State, FloodReports
 ```
 
-### <a name="mvexpand"></a>mvexpand
+### <a name="mv-expand"></a>MV-rozbalte
 
-[**mvexpand**](https://docs.microsoft.com/azure/kusto/query/mvexpandoperator): Rozbalí kolekcí s více hodnotami ze sloupce dynamickým typem tak, aby každá hodnota v kolekci získá samostatný řádek. Všechny ostatní sloupce v rozbaleném řádku jsou duplicitní. Je opakem makelist.
+[**MV-rozbalte**](https://docs.microsoft.com/azure/kusto/query/mvexpandoperator): Rozbalí kolekcí s více hodnotami ze sloupce dynamickým typem tak, aby každá hodnota v kolekci získá samostatný řádek. Všechny ostatní sloupce v rozbaleném řádku jsou duplicitní. Je opakem makelist.
 
-Následující dotaz vygeneruje ukázková data vytvořením sady a poté ho použít k předvedení **mvexpand** možnosti.
+Následující dotaz vygeneruje ukázková data vytvořením sady a poté ho použít k předvedení **mv-rozbalte** možnosti.
 
 **\[**[**Klikněte na tlačítko Spustit dotaz**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAEAFWOQQ6CQAxF9yTcoWGliTcws1MPIFygyk9EKTPpVBTj4Z2BjSz%2f738v7WF06r1vD2xcp%2bCoNq9yHDFYLIsvvW5Q0JybKYCco2omqnyNTxHW7oPFckbwajFZhB%2bIsE1trNZ0gi1dpuRmQ%2baC%2bjuuthS7Fbwvi%2f%2bP8lpGvAMP7Wr3A6BceSu7AAAA)**\]**
 
@@ -626,7 +626,7 @@ let FloodDataSet = StormEvents
 | summarize FloodReports = makeset(StartTime) by State
 | project State, FloodReports;
 FloodDataSet
-| mvexpand FloodReports
+| mv-expand FloodReports
 ```
 
 ### <a name="percentiles"></a>percentiles()
@@ -727,7 +727,7 @@ StormEvents
 | extend row_number = row_number()
 ```
 
-Sady řádků se také považují za serializovat, když je výsledkem: **řazení**, **horní**, nebo **rozsah** operátory, může volitelně následovat **projektu**, **projektu tokeny**, **rozšířit**, **kde**, **analyzovat**, **mvexpand**, nebo **trvat** operátory.
+Sady řádků se také považují za serializovat, když je výsledkem: **řazení**, **horní**, nebo **rozsah** operátory, může volitelně následovat **projektu**, **projektu tokeny**, **rozšířit**, **kde**, **analyzovat**, **mv-rozbalte**, nebo **trvat** operátory.
 
 **\[**[**Klikněte na tlačítko Spustit dotaz**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAEAAsuyS%2fKdS1LzSsp5uWqUSguzc1NLMqsSlVIzi%2fNK9HQVEiqVAguSSxJBcvmF5XABRQSi5NBgqkVJal5KQpF%2beXxeaW5SalFCrZIHA1NAEGimf5iAAAA)**\]**
 
@@ -804,7 +804,7 @@ range _day from _start to _end step 1d
 | extend d = tolong((_day - _start)/1d)
 | extend r = rand()+1
 | extend _users=range(tolong(d*50*r), tolong(d*50*r+100*r-1), 1)
-| mvexpand id=_users to typeof(long) limit 1000000
+| mv-expand id=_users to typeof(long) limit 1000000
 // Calculate DAU/WAU ratio
 | evaluate activity_engagement(['id'], _day, _start, _end, 1d, 7d)
 | project _day, Dau_Wau=activity_ratio*100
@@ -830,7 +830,7 @@ range _day from _start to _end step 1d
 | extend d = tolong((_day - _start)/1d)
 | extend r = rand()+1
 | extend _users=range(tolong(d*50*r), tolong(d*50*r+200*r-1), 1)
-| mvexpand id=_users to typeof(long) limit 1000000
+| mv-expand id=_users to typeof(long) limit 1000000
 | where _day > datetime(2017-01-02)
 | project _day, id
 // Calculate weekly retention rate
@@ -855,7 +855,7 @@ range Day from _start to _end step 1d
 | extend d = tolong((Day - _start)/1d)
 | extend r = rand()+1
 | extend _users=range(tolong(d*50*r), tolong(d*50*r+200*r-1), 1)
-| mvexpand id=_users to typeof(long) limit 1000000
+| mv-expand id=_users to typeof(long) limit 1000000
 // Take only the first week cohort (last parameter)
 | evaluate new_activity_metrics(['id'], Day, _start, _end, 7d, _start)
 | project from_Day, to_Day, retention_rate, churn_rate

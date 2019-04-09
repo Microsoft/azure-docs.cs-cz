@@ -1,7 +1,6 @@
 ---
 title: Vysvětlení dotazovací jazyk
 description: Popisuje dostupné Kusto operátory a funkce, které jsou použitelné s grafem prostředků Azure.
-services: resource-graph
 author: DCtheGeek
 ms.author: dacoulte
 ms.date: 12/11/2018
@@ -9,12 +8,12 @@ ms.topic: conceptual
 ms.service: resource-graph
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: 618445c5b792317d4de4b668e7ea1a186707007c
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: 08e4f09665a3501073f55b7f5b82bf51cf508ea9
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57317913"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59276673"
 ---
 # <a name="understanding-the-azure-resource-graph-query-language"></a>Principy Azure Graph prostředků dotazovací jazyk
 
@@ -31,11 +30,11 @@ Tady je seznam podporovaných tabulkové operátorů v grafu prostředků:
 - [Rozšíření](/azure/kusto/query/extendoperator)
 - [Limit](/azure/kusto/query/limitoperator)
 - [Řadit podle](/azure/kusto/query/orderoperator)
-- [project](/azure/kusto/query/projectoperator)
+- [Projekt](/azure/kusto/query/projectoperator)
 - [project-away](/azure/kusto/query/projectawayoperator)
 - [Ukázka](/azure/kusto/query/sampleoperator)
 - [sample-distinct](/azure/kusto/query/sampledistinctoperator)
-- [Seřadit podle:](/azure/kusto/query/sortoperator)
+- [Seřadit podle](/azure/kusto/query/sortoperator)
 - [shrnutí](/azure/kusto/query/summarizeoperator)
 - [Take](/azure/kusto/query/takeoperator)
 - [nahoru](/azure/kusto/query/topoperator)
@@ -51,7 +50,7 @@ Tady je seznam podporovaných funkcí v grafu prostředků:
 - [buildschema()](/azure/kusto/query/buildschema-aggfunction)
 - [strcat()](/azure/kusto/query/strcatfunction)
 - [isnotempty()](/azure/kusto/query/isnotemptyfunction)
-- [tostring()](/azure/kusto/query/tostringfunction)
+- [ToString()](/azure/kusto/query/tostringfunction)
 - [zip()](/azure/kusto/query/zipfunction)
 
 ## <a name="next-steps"></a>Další postup

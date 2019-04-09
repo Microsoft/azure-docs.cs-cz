@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: quickstart
-ms.date: 12/17/2018
+ms.date: 04/08/2019
 ms.author: diberry
-ms.openlocfilehash: dd60897d19ef4de7369b2b127c88e778363a387f
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: e9f8d274d81cdefbf9dfb41708cd537b2d60471a
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57852260"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59273460"
 ---
 # <a name="quickstart-change-model-using-c"></a>Rychlý start: Změnit model použitíC#
 
@@ -37,19 +37,19 @@ ms.locfileid: "57852260"
 
 ## <a name="create-quickstart-code"></a>Vytvoření kódu rychlého startu 
 
-V sadě Visual Studio vytvořte nový **klasické konzoly plochy Windows** aplikace pomocí rozhraní .NET Framework. 
+V sadě Visual Studio vytvořte nový **klasické konzoly plochy Windows** aplikace pomocí rozhraní .NET Framework. Pojmenujte projekt `ConsoleApp1`.
 
 ![Typ projektu v sadě Visual Studio](./media/luis-quickstart-cs-add-utterance/vs-project-type.png)
 
 ### <a name="add-the-systemweb-dependency"></a>Přidání závislosti System.Web
 
-Projekt sady Visual Studio potřebuje **System.Web**. V Průzkumníku řešení klikněte pravým tlačítkem na **Odkazy** a vyberte **Přidat odkaz**.
+Projekt sady Visual Studio potřebuje **System.Web**. V Průzkumníku řešení klikněte pravým tlačítkem myši na **odkazy** a vyberte **přidat odkaz** z části sestavení.
 
 ![Přidání odkazu na System.Web](./media/luis-quickstart-cs-add-utterance/system.web.png)
 
 ### <a name="add-other-dependencies"></a>Přidání dalších závislostí
 
-Projekt sady Visual Studio potřebuje **JsonFormatterPlus** a **CommandLineParser**. V Průzkumníku řešení klikněte pravým tlačítkem na **Odkazy** a vyberte **Spravovat balíčky NuGet**. Vyhledejte každý z těchto dvou balíčků a přidejte je. 
+Projekt sady Visual Studio potřebuje **JsonFormatterPlus** a **CommandLineParser**. V Průzkumníku řešení klikněte pravým tlačítkem na **Odkazy** a vyberte **Spravovat balíčky NuGet**. Vyhledejte a přidejte tyto dva balíčky. 
 
 ![Přidání závislostí třetích stran](./media/luis-quickstart-cs-add-utterance/add-dependencies.png)
 
@@ -64,7 +64,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ConsoleApp3
+namespace ConsoleApp1
 {
     class Program
     {
@@ -75,7 +75,7 @@ namespace ConsoleApp3
 }
 ```
 
-Přidejte závislosti.
+Aktualizujte závislosti, které jsou:
 
    [!code-csharp[Add the dependencies](~/samples-luis/documentation-samples/quickstarts/change-model/csharp/ConsoleApp1/Program.cs?range=1-11 "Add the dependencies")]
 
@@ -115,7 +115,7 @@ Pokud chcete spravovat argumenty příkazového řádku, přidejte hlavní kód.
 
 ### <a name="copy-utterancesjson-to-output-directory"></a>Zkopírování souboru utterances.json do výstupního adresáře
 
-V Průzkumníku řešení klikněte pravým tlačítkem na soubor `utterances.json` a vyberte **Vlastnosti**. V okně Vlastnosti označte položku **Akce sestavení** jako `Content` a položku **Kopírovat do výstupního adresáře** jako `Copy Always`.  
+V Průzkumníku řešení, přidejte `utterances.json` kliknutím pravým tlačítkem myši v Průzkumníku řešení název projektu, pak vyberete **přidat**, pak vyberete **existující položky**. Vyberte `utterances.json` souboru. To přidá soubor do projektu. Potom musí být přidán do výstupní směr. Klikněte pravým tlačítkem myši `utterances.json` a vyberte **vlastnosti**. V okně Vlastnosti označte položku **Akce sestavení** jako `Content` a položku **Kopírovat do výstupního adresáře** jako `Copy Always`.  
 
 ![Označení souboru JSON jako obsahu](./media/luis-quickstart-cs-add-utterance/content-properties.png)
 
@@ -128,7 +128,7 @@ Kód vytvořte v sadě Visual Studio.
 V adresáři /bin/Debug projektu spusťte aplikaci v příkazovém řádku. 
 
 ```console
-ConsoleApp\bin\Debug> ConsoleApp1.exe --add utterances.json --train --status
+ConsoleApp1.exe --add utterances.json --train --status
 ```
 
 Tento příkazový řádek ukazuje výsledky volání rozhraní API pro přidávání promluv. 

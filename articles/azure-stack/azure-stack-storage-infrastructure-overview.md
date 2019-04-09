@@ -15,16 +15,16 @@ ms.date: 03/11/2019
 ms.author: mabrigg
 ms.lastreviewed: 03/11/2019
 ms.reviewer: jiahan
-ms.openlocfilehash: 4a8287d7ca4da380ad7c2b1e039ab3058ca07a96
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 416d75b254d0fbe14a0b39e5ae77d09a48e548f6
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57760269"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59271284"
 ---
 # <a name="manage-storage-infrastructure-for-azure-stack"></a>Spravovat infrastrukturu úložiště pro službu Azure Stack
 
-*Platí pro: Azure Stack integrované systémy a Azure Stack Development Kit*
+*Týká se Azure Stack integrované systémy a Azure Stack Development Kit*
 
 Tento článek popisuje kondice a provozního stavu prostředků infrastruktury úložiště služby Azure Stack. Tyto prostředky zahrnují úložné jednotky a svazky. Informace v tomto tématu mohou být neocenitelnou pomocí při pokusu o řešení potíží s různými problémy, jako jednotku nelze přidat do fondu.
 
@@ -32,7 +32,7 @@ Tento článek popisuje kondice a provozního stavu prostředků infrastruktury 
 
 ### <a name="drives"></a>Jednotky
 
-Azure Stack založených na Windows Server softwaru definované funkce úložiště, s kombinací úložiště prostorů s přímým přístupem (S2D) a Windows Server Failover Clustering, vám zajistí výkonné, škálovatelné a odolné úložiště služby.
+Používá technologii Windows serverový software, Azure Stack definuje možnosti úložiště s kombinací úložiště prostorů s přímým přístupem (S2D) a Windows Server Failover Clustering zajistit výkonné, škálovatelné a odolné úložiště služby.
 
 Azure Stack integrované systému partneři nabízejí množství variant řešení, včetně širokou škálu flexibilitu úložiště. Nyní můžete vybrat kombinaci tří typů disků: NVMe (stálé paměti Express), SATA a SAS SSD (jednotky SSD), pevný disk (jednotku pevného disku).
 

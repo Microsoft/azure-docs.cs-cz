@@ -7,12 +7,12 @@ ms.devlang: java
 ms.topic: quickstart
 ms.date: 03/04/2019
 ms.author: zhshang
-ms.openlocfilehash: b2f89d3fbb427cc3e14be231d4ffae879e641f2c
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 9e4e64b99a69e523547bae04146c7460d08bc1df
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57554521"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59261169"
 ---
 # <a name="quickstart-create-a-chat-room-with-azure-functions-and-signalr-service-using-java"></a>Rychlý start: Vytvoření chatovací místnosti s Azure Functions a SignalR služby pomocí Javy
 
@@ -58,18 +58,18 @@ Přihlaste se k webu Azure Portal na adrese <https://portal.azure.com/> pomocí 
 
     ![Vytvoření služby SignalR Service](media/signalr-quickstart-azure-functions-javascript/signalr-quickstart-keys.png)
 
-1. V editoru kódu, otevřete *chat/src/java* složky naklonované úložiště.
+1. V editoru kódu, otevřete *src/chat/java* složky naklonované úložiště.
 
 1. Přejmenujte soubor *local.settings.sample.json* na *local.settings.json*.
 
 1. V souboru **local.settings.json** vložte připojovací řetězec do hodnoty nastavení **AzureSignalRConnectionString**. Uložte soubor.
 
-1. Hlavní soubor, který obsahuje funkce jsou v *src/main/java/com/function/Functions.java*:
+1. Hlavní soubor, který obsahuje funkce jsou v *src/chat/java/src/main/java/com/function/Functions.java*:
 
     - **negotiate** – používá vstupní vazbu *SignalRConnectionInfo* ke generování a vracení informací o platném připojení.
     - **SendMessage** – přijme zprávu chat v textu požadavku a používá *SignalR* výstupní vazbu k vysílání zpráv do všech připojení klientských aplikací.
 
-1. V terminálu se ujistit, že jste *chat/src/java* složky. Vytvoření aplikace function app.
+1. V terminálu se ujistit, že jste *src/chat/java* složky. Vytvoření aplikace function app.
 
     ```bash
     mvn clean package

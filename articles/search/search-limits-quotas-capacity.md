@@ -7,15 +7,15 @@ services: search
 ms.service: search
 ms.devlang: NA
 ms.topic: conceptual
-ms.date: 03/22/2019
+ms.date: 04/05/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 8a6023c87dd1d68ab76c5c2342cb825e63d2b336
-ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
+ms.openlocfilehash: c52ac6128ad00d9bb772816d6130f3aedc480138
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58620633"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59273392"
 ---
 # <a name="service-limits-in-azure-search"></a>Omezení služby Azure Search
 Maximální omezuje na úložiště, úlohy a množství indexů, dokumenty, a dalších objektů závisí na tom, zda jste [zřízení Azure Search](search-create-service-portal.md) na **Free**, **základní**,  **Standardní**, nebo **optimalizované pro úložiště** cenové úrovně.
@@ -114,7 +114,7 @@ Náročná operace, jako je například Analýza obrázků v indexování objekt
 | Indexování objektů blob: blob maximální velikost, MB |16 |16 |128 |256 |256 |neuvedeno  |256 |256 |
 | Indexování objektů blob: maximální počet znaků obsahu extrahují z objektu blob |32,000 |64,000 |4 miliony |4 miliony |4 miliony |neuvedeno |4 miliony |4 miliony |
 
-<sup>1</sup> bezplatné služby mají maximální doba spuštění indexeru 3 minut pro objekt blob zdroje a pro všechny ostatní zdroje dat 1 minuta.
+<sup>1</sup> bezplatné služby mají maximální doba spuštění indexeru 3 minut pro objekt blob zdroje a pro všechny ostatní zdroje dat 1 minuta. Pro AI indexování volající do služeb Cognitive Services jsou bezplatné služby omezený na 20 transakcí zdarma za den, kde je definován transakce jako dokument, který úspěšně projde přes rozšíření kanálu.
 
 <sup>2</sup> základní služby vytvořené po pozdní 2017 mají vyšší limit 15 indexy, zdroje dat a indexerů. Services vytvořili dříve k dispozici 5.
 

@@ -8,28 +8,29 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
-ms.openlocfilehash: c6d38dbb7ee292172fe081c2b77a49db61856d5c
-ms.sourcegitcommit: 17fe5fe119bdd82e011f8235283e599931fa671a
+ms.openlocfilehash: e7dcdb960fbd9196aca8b667269a4c6e5a1fb8f9
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/11/2018
-ms.locfileid: "42057164"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59261257"
 ---
 # <a name="zoom-levels-and-tile-grid"></a>Úrovně přiblížení a mřížka dlaždic
 Azure Maps použít systém souřadnic projekci Mercator Kulovité (EPSG: 3857).
 
-Čtvereček dlaždice se dělí na světě. Vykreslení (rastrové) má 21 úrovně přiblížení číslem 0 až 20. Vykreslení (Vector) má 23 úrovně přiblížení, číslované 0 až 22. Na úrovni zvětšení 0 celý svět vejde na jednu dlaždici:
+Čtvereček dlaždice se dělí na světě. Služba Azure maps poskytuje rastrové a vektorových dlaždic pro 23 úrovně přiblížení číslované 0 až 22. Na úrovni zvětšení 0 celý svět vejde na jednu dlaždici:
 
 ![Dlaždice na celém světě](./media/zoom-levels-and-tile-grid/world0.png)
 
 Úroveň přiblížení 1 používá čtyři dlaždice k vykreslení na světě: Čtvereček 2 x 2
 
-![Světové dlaždice vlevo nahoře](./media/zoom-levels-and-tile-grid/world1a.png)     ![Pravém horním rohu dlaždice World](./media/zoom-levels-and-tile-grid/world1c.png) 
+![Světové dlaždice vlevo nahoře](media/zoom-levels-and-tile-grid/world1a.png)     ![Pravém horním rohu dlaždice World](media/zoom-levels-and-tile-grid/world1c.png) 
 
-![Světové dlaždice vlevo dole](./media/zoom-levels-and-tile-grid/world1b.png)     ![Světové dlaždice dole vpravo](./media/zoom-levels-and-tile-grid/world1d.png) 
+![Světové dlaždice vlevo dole](media/zoom-levels-and-tile-grid/world1b.png)     ![Světové dlaždice dole vpravo](media/zoom-levels-and-tile-grid/world1d.png) 
 
+Každý další zvětšení. quad celočíselně vydělí dlaždice předchozímu vytvoření tabulky 2<sup>přiblížení</sup> x 2<sup>přiblížení</sup>. Úroveň zvětšení 22 je mřížka 2<sup>22</sup> x 2<sup>22</sup>, nebo 4,194,304 x 4,194,304 dlaždice (celkem 17,592,186,044,416 dlaždice).
 
-Každá úroveň přiblížení následné. quad celočíselně vydělí dlaždice předchozímu vytvoření tabulky 2<sup>přiblížení</sup> x 2<sup>přiblížení</sup>. Úroveň zvětšení 22 je mřížka 2<sup>22</sup> x 2<sup>22</sup>, nebo 4,194,304 x 4,194,304 dlaždice (celkem 17,592,186,044,416 dlaždice).
+Ovládací prvky Azure Maps interaktivní mapu pro webové aplikace a podpora pro Android přiblížení úrovně 25 úrovních zvětšení, číslem 0 až 24. I když silniční data budou k dispozici pouze v při, jsou k dispozici na úrovni zvětšení.
 
 Následující tabulka obsahuje úplný seznam hodnot pro úrovně přiblížení:
 
@@ -55,18 +56,20 @@ Následující tabulka obsahuje úplný seznam hodnot pro úrovně přiblížen�
 |17|1.2|307.2|
 |18|0.6|152.8|
 |19|0.3|76.4|
-|20|0,15|38.2|
-|21|0,075|19.1|
+|20|0.15|38.2|
+|21|0.075|19.1|
 |22|0.0375|9.55|
+|23|0.01875|4.775|
+|24|0.009375|2.3875|
 
 Dlaždice jsou volány přiblížení úroveň x a y souřadnice odpovídá pozici na dlaždici na mřížce pro danou úroveň přiblížení.
 
 Při určování, jaké úroveň přiblížení pro použití, mějte na paměti, že každé umístění je do pevné umístění na její dlaždici. To znamená, že je počet dlaždic, které jsou potřebné k zobrazení dané expanse území závisí na konkrétní umístění přiblížení mřížky na celém světě. Například pokud jsou k dispozici dva body 900 měřiče od sebe, je *může* trvat jenom tři dlaždice k zobrazení postupu mezi nimi úrovni zvětšení 17. Nicméně pokud západní bod na pravé straně její dlaždici a východní bod nalevo od jeho dlaždici, může trvat čtyři dlaždice:
 
-![Ukázka měřítko přiblížení](./media/zoom-levels-and-tile-grid/zoomdemo_scaled.png) 
+![Ukázka měřítko přiblížení](media/zoom-levels-and-tile-grid/zoomdemo_scaled.png) 
 
-Jakmile se určí úroveň přiblížení, x a y hodnot je možné vypočítat. Horní levé dlaždice v každé mřížce přiblížení je x = 0, y = 0; na dlaždici vpravo dole je dokončeno z x = 2<sup>zoom -1</sup>, y = 2<sup>1 zvětšení</sup>.
+Jakmile se určí úroveň přiblížení, x a y hodnot je možné vypočítat. Levého horního rohu dlaždice v každé mřížce přiblížení je x = 0, y = 0; na dlaždici vpravo dole je dokončeno z x = 2<sup>zoom -1</sup>, y = 2<sup>1 zvětšení</sup>.
 
 Tady je mřížka přiblížení pro úroveň přiblížení 1:
 
-![Přiblížení mřížky pro úroveň přiblížení 1](./media/zoom-levels-and-tile-grid/api_x_y.png)
+![Přiblížení mřížky pro úroveň přiblížení 1](media/zoom-levels-and-tile-grid/api_x_y.png)

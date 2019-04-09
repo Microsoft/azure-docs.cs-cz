@@ -10,12 +10,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 03/25/2019
 ms.author: jingwang
-ms.openlocfilehash: d589714be387bdff14d76ccd9417123295a62770
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.openlocfilehash: aba469081bf1f1aa265a55ffbd683ba19bc41b6e
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58521997"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59263328"
 ---
 # <a name="copy-data-to-or-from-azure-data-lake-storage-gen2-using-azure-data-factory"></a>Kopírování dat do nebo z Azure Data Lake Storage Gen2 pomocí Azure Data Factory
 
@@ -104,7 +104,7 @@ Pokud chcete používat ověřování instančních objektů, postupujte takto:
     - **Jako jímku**, v Průzkumníku služby Storage, přidělit nejméně **zapisovat + provést** oprávnění pro vytváření podřízených položek ve složce. Můžete taky v řízení přístupu (IAM), udělit alespoň **Přispěvatel dat objektu Blob úložiště** role.
 
 >[!NOTE]
->Do seznamu složek od úrovni účtu, je nutné nastavit oprávnění instančního objektu k **účtu úložiště pomocí oprávnění "Spustit"** nebo oprávnění pro IAM. To platí při použití:
+>Do seznamu složek, počínaje na úrovni účtu, nebo chcete otestovat připojení, je nutné nastavit oprávnění instančního objektu k **účtu úložiště pomocí oprávnění "Spustit" v IAM**. To platí při použití:
 >- **Nástroj pro kopírování dat** můžete vytvořit kanál kopírování.
 >- **Uživatelské rozhraní služby Data Factory** otestovat připojení a procházení složek během vytváření obsahu. 
 >Pokud máte obavy o udělení oprávnění na úrovni účtu, můžete přeskočit test připojení a vstupní cesta ručně během vytváření obsahu. Aktivitu kopírování, která budou i nadále fungovat jako služby, které je udělen s řádným oprávněním na soubory, které se mají zkopírovat.
@@ -158,7 +158,7 @@ Použití spravované identity pro ověřování prostředků Azure, postupujte 
     - **Jako jímku**, v Průzkumníku služby Storage, přidělit nejméně **zapisovat + provést** oprávnění pro vytváření podřízených položek ve složce. Můžete taky v řízení přístupu (IAM), udělit alespoň **Přispěvatel dat objektu Blob úložiště** role.
 
 >[!NOTE]
->Do seznamu složek od úrovni účtu, je nutné nastavit oprávnění spravovanou identitu udělované **účtu úložiště pomocí oprávnění "Spustit"** nebo oprávnění pro IAM. To platí při použití:
+>Do seznamu složek, počínaje na úrovni účtu, nebo chcete otestovat připojení, je nutné nastavit oprávnění spravovanou identitu udělované **účtu úložiště pomocí oprávnění "Spustit" v IAM**. To platí při použití:
 >- **Nástroj pro kopírování dat** můžete vytvořit kanál kopírování.
 >- **Uživatelské rozhraní služby Data Factory** otestovat připojení a procházení složek během vytváření obsahu. 
 >Pokud máte obavy o udělení oprávnění na úrovni účtu, můžete přeskočit test připojení a vstupní cesta ručně během vytváření obsahu. Aktivitu kopírování, která budou i nadále fungovat jako spravovanou identitu udělením s řádným oprávněním na soubory, které se mají zkopírovat.

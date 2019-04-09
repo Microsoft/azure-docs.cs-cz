@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: article
 ms.date: 12/05/2018
 ms.author: raynew
-ms.openlocfilehash: 8387b7e03c867026741801cd0de910bc9da85e92
-ms.sourcegitcommit: 280d9348b53b16e068cf8615a15b958fccad366a
-ms.translationtype: MT
+ms.openlocfilehash: 71f792dd1238b11810abfb6a97ac9e051da2ec45
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58407075"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59274622"
 ---
 # <a name="refine-a-group-using-group-dependency-mapping"></a>Upřesnění skupiny s využitím mapování závislostí skupin
 
@@ -132,6 +132,42 @@ Spuštění dotazů Kusto:
 
 [Další informace](https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-portal) o tom, jak psát dotazy Kusto. 
 
+## <a name="sample-azure-monitor-logs-queries"></a>Ukázka Azure Monitor zaznamenává dotazy
+
+Tady jsou ukázkové dotazy, které vám umožní extrahovat data závislostí. Můžete upravit dotazy k extrakci upřednostňované datových bodů. Úplný seznam polí v závislosti datových záznamů je k dispozici [zde](https://docs.microsoft.com/azure/azure-monitor/insights/service-map#log-analytics-records)
+
+### <a name="summarize-inbound-connections-on-a-set-of-machines"></a>Shrnutí příchozí připojení na sadu počítačů
+
+Všimněte si, že záznamy v tabulce metrik připojení, VMConnection, nepředstavují jednotlivých fyzických síťových připojení. Víc fyzických síťových připojení jsou seskupeny do logických připojení. [Další informace](https://docs.microsoft.com/azure/azure-monitor/insights/service-map#connections) o jak fyzické síťové připojení se data agregují do jednoho logického záznamu v VMConnection. 
+
+```
+let ips=materialize(ServiceMapComputer_CL
+| summarize ips=makeset(todynamic(Ipv4Addresses_s)) by MonitoredMachine=ResourceName_s
+| mvexpand ips to typeof(string));
+let StartDateTime = datetime(2019-03-25T00:00:00Z);
+let EndDateTime = datetime(2019-03-30T01:00:00Z); 
+VMConnection
+| where Direction == 'inbound' 
+| where TimeGenerated > StartDateTime and TimeGenerated  < EndDateTime
+| join kind=inner (ips) on $left.DestinationIp == $right.ips
+| summarize sum(LinksEstablished) by Computer, Direction, SourceIp, DestinationIp, DestinationPort
+```
+
+#### <a name="summarize-volume-of-data-sent-and-received-on-inbound-connections-between-a-set-of-machines"></a>Shrnutí objem dat odeslaných a přijatých u příchozích připojení mezi sadu počítačů
+
+```
+// the machines of interest
+let ips=materialize(ServiceMapComputer_CL
+| summarize ips=makeset(todynamic(Ipv4Addresses_s)) by MonitoredMachine=ResourceName_s
+| mvexpand ips to typeof(string));
+let StartDateTime = datetime(2019-03-25T00:00:00Z);
+let EndDateTime = datetime(2019-03-30T01:00:00Z); 
+VMConnection
+| where Direction == 'inbound' 
+| where TimeGenerated > StartDateTime and TimeGenerated  < EndDateTime
+| join kind=inner (ips) on $left.DestinationIp == $right.ips
+| summarize sum(BytesSent), sum(BytesReceived) by Computer, Direction, SourceIp, DestinationIp, DestinationPort
+```
 
 ## <a name="next-steps"></a>Další postup
 - [Další informace](https://docs.microsoft.com/azure/migrate/resources-faq#dependency-visualization) o nejčastějších dotazech na vizualizaci závislostí.

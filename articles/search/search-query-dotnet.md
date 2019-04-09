@@ -9,12 +9,12 @@ ms.service: search
 ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 03/20/2019
-ms.openlocfilehash: 6bb170a5f3353288ab9c393e01b7a0902361913b
-ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
+ms.openlocfilehash: 1194407122123797c2564c96ac452b9582b017a4
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58287005"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59264943"
 ---
 # <a name="quickstart-3---query-an-azure-search-index-in-c"></a>Rychlý start: 3 – dotazování indexu Azure Search vC#
 
@@ -157,4 +157,4 @@ Výše uvedený ukázkový kód používá k vypsání výsledků vyhledávání
 
 ## <a name="next-steps"></a>Další postup
 
-Pokud jste to ještě neudělali, projděte si ukázkový kód v [DotNetHowTo](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetHowTo) na Githubu, spolu s [použití Azure Search z aplikace .NET ](search-howto-dotnet-sdk.md) Podrobnější popisy ukázek kódu. 
+Pokud jste to ještě neudělali, projděte si ukázkový kód v [DotNetHowTo](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetHowTo) na Githubu, spolu s [použití Azure Search z aplikace .NET](search-howto-dotnet-sdk.md) Podrobnější popisy ukázek kódu. 

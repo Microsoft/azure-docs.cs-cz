@@ -6,15 +6,15 @@ manager: cgronlun
 services: search
 ms.service: search
 ms.topic: conceptual
-ms.date: 02/18/2019
+ms.date: 04/06/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: c0f824e2be0215192ca4ca1a722e814cbf299b7a
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
+ms.openlocfilehash: 11b2fb5a246dfa8f5b1295a11cc57de36120898e
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56342418"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59269550"
 ---
 # <a name="security-and-data-privacy-in-azure-search"></a>Zabezpečení a dat o ochraně osobních údajů ve službě Azure Search
 
@@ -31,7 +31,7 @@ Služba Azure Search má certifikaci pro následující normy jako [jsme oznámi
 + [Health Insurance Portability and Accountability Act (HIPAA)](https://en.wikipedia.org/wiki/Health_Insurance_Portability_and_Accountability_Act)
 + [GxP (21 CFR Part 11)](https://en.wikipedia.org/wiki/Title_21_CFR_Part_11)
 + [HITRUST](https://en.wikipedia.org/wiki/HITRUST)
-+ [PCI DSS úrovně 1](https://en.wikipedia.org/wiki/Payment_Card_Industry_Data_Security_Standard)
++ [PCI DSS 1. úrovně](https://en.wikipedia.org/wiki/Payment_Card_Industry_Data_Security_Standard)
 + [Austrálie IRAP neutajované DLM](https://asd.gov.au/infosec/irap/certified_clouds.htm)
 
 Standardy dodržování předpisů se vztahuje na funkce obecně dostupná. Při přechodu do všeobecné dostupnosti a nesmí se používat v řešeních s požadavky přísné normy, které jsou certifikované funkce ve verzi Preview. Certifikace dodržování předpisů je popsána v [dodržování předpisů přehled Microsoft Azure](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942) a [Centrum](https://www.microsoft.com/en-us/trustcenter). 
@@ -58,6 +58,8 @@ Několik mechanismů pro zabezpečení jsou k dispozici celý Azure a vytvořít
 
 Všechny služby Azure podporují řízení přístupu na základě rolí (RBAC) k nastavení úrovně přístupu konzistentně napříč všemi službami. Například zobrazení citlivých dat, jako například klíč správce, je omezen na role vlastníka a přispěvatelů, zatímco zobrazení stavu služby je k dispozici pro členy jakékoli role. RBAC poskytuje role vlastník, Přispěvatel a čtenář. Všichni správci služby jsou ve výchozím nastavení členové role vlastník.
 
+<a name="service-access-and-authentication"></a>
+
 ## <a name="service-access-and-authentication"></a>Služba přístupu a ověřování
 
 Zatímco Azure Search dědí záruky zabezpečení platformy Azure, poskytuje také vlastní ověřování na základě klíče. Klíč rozhraní api se řetězec skládá náhodně generované čísel a písmen. Typ klíče (správce nebo dotaz) určuje úroveň přístupu. Odeslání platný klíč je považovaný za důkaz žádost pochází z důvěryhodné entity. 
@@ -65,11 +67,11 @@ Zatímco Azure Search dědí záruky zabezpečení platformy Azure, poskytuje ta
 Existují dvě úrovně přístupu k vaší vyhledávací službě umožněné dva typy klíčů:
 
 * Přístup správce (platí pro všechny operace čtení a zápis na službu)
-* (Platí jen pro čtení operací, jako jsou dotazy na index) přístup k dotazům
+* Přístup k dotazům (platí jen pro čtení operací, jako jsou dotazy proti kolekci dokumentů v indexu)
 
-*Klíče správce* vytvářejí, když je služba zřízená. Existují dva klíče správce, určený jako *primární* a *sekundární* Novoroční přímo, ale ve skutečnosti jsou zaměnitelné. Každá služba má dva klíče správce, takže můžete jeden ho znovu vygenerovat aniž by ztratily přístup k službě. Můžete obnovit buď klíč správce, ale nemůžete přidat do počtu klíčů celkový správce. Je maximálně dva klíče správce službě search.
+*Klíče správce* vytvářejí, když je služba zřízená. Existují dva klíče správce, určený jako *primární* a *sekundární* Novoroční přímo, ale ve skutečnosti jsou zaměnitelné. Každá služba má dva klíče správce, takže můžete jeden ho znovu vygenerovat aniž by ztratily přístup k službě. Je možné [klíč znovu vygenerovat správce](search-security-api-keys.md#regenerate-admin-keys) pravidelně za Azure security osvědčené postupy, ale nelze přidat do počtu celkový správu klíčů. Jsou maximálně dva klíče správce službě search.
 
-*Klíče dotazů* vytvářejí podle potřeby a jsou navržené pro klientské aplikace, které volají přímo vyhledávání. Můžete vytvořit až 50 klíče dotazu. V kódu aplikace zadejte adresa URL pro hledání a dotazu api-key, pokud chcete povolit přístup jen pro čtení ke službě. Kód aplikace také určuje index používaný vaší aplikací. Koncový bod, klíč rozhraní api pro přístup jen pro čtení a cílový index společně definují obor a přístup k úrovni připojení z klientské aplikace.
+*Klíče dotazů* vytvářejí podle potřeby a jsou navrženy pro klientské aplikace, které vydávat dotazy. Můžete vytvořit až 50 klíče dotazu. V kódu aplikace zadejte adresa URL pro hledání a dotazu api-key, pokud chcete povolit přístup jen pro čtení do kolekce documents konkrétního indexu. Koncový bod, klíč rozhraní api pro přístup jen pro čtení a cílový index společně definují obor a přístup k úrovni připojení z klientské aplikace.
 
 U každého požadavku, ve kterém každý požadavek se skládá z povinných klíč, operace a objekt se vyžaduje ověřování. Když zřetězen dohromady, dvou úrovních oprávnění (úplné nebo jen pro čtení) a kontextu (například operace dotazu na index) jsou dostačující pro zajištění zabezpečení opensourcová operací služby. Další informace o klíčích najdete v tématu [vytvořit a spravovat klíče api Key](search-security-api-keys.md).
 
@@ -83,17 +85,11 @@ Přístup správců a vývojářů pro indexy nediferencovanými: oba potřebuj�
 
 Víceklientská architektura řešení vyžadující hranic zabezpečení na úrovni index taková řešení obvykle zahrnují střední vrstvy, které zákazníci používají ke izolace indexu. Další informace o případu použití víceklientské najdete v tématu [modely návrhu pro víceklientské aplikace SaaS a Azure Search](search-modeling-multitenant-saas-applications.md).
 
-## <a name="admin-access-from-client-apps"></a>Přístup správce z klientských aplikací
+## <a name="admin-access"></a>Přístup správce
 
-REST API pro správu Azure Search je rozšířením Azure Resource Manageru a jeho závislosti sdílí. V důsledku toho služba Active Directory je předpokladem pro správu služby Azure Search. Všechny požadavky na správu z klientského kódu musí být ověřené pomocí Azure Active Directory předtím, než požadavek dosáhne Resource Manageru.
+[Přístup na základě rolí (RBAC)](https://docs.microsoft.com/azure/role-based-access-control/overview) Určuje, jestli máte přístup k ovládacím prvkům přes službu a její obsah. Pokud jste roli vlastníka nebo přispěvatele na službu Azure Search, můžete na portálu nebo Powershellu **Az.Search** modulu, který chcete vytvořit, aktualizovat nebo odstranit objekty ve službě. Můžete také použít [Management REST API služby Azure Search](https://docs.microsoft.com/rest/api/searchmanagement/search-howto-management-rest-api).
 
-Požadavky na data na koncový bod Azure Search service, jako je například vytvoření indexu (Azure Search Service REST API) nebo hledání dokumentů (služba REST API služby Azure Search) pomocí klíče rozhraní api v hlavičce požadavku.
-
-Pokud váš kód aplikace řeší operací správy služeb, jakož i operace s daty na vyhledávacích indexů nebo dokumentů, implementovat dva přístupy k ověřování ve vašem kódu: přístupový klíč, který je nativní pro Azure Search a ověřování služby Active Directory metodologie nutné pomocí Správce prostředků. 
-
-Informace o strukturování žádost ve službě Azure Search najdete v tématu [REST služby Azure Search](https://docs.microsoft.com/rest/api/searchservice/). Další informace o požadavcích na ověřování pro Resource Manager najdete v tématu [ověřovací Resource Manageru pomocí rozhraní API pro přístup k předplatným](../azure-resource-manager/resource-manager-api-authentication.md).
-
-## <a name="user-access-to-index-content"></a>Přístup uživatelů k indexování obsahu
+## <a name="user-access"></a>Přístup uživatelů
 
 Ve výchozím nastavení přístup uživatelů k indexu je určeno přístupový klíč v dotazu žádosti. Většina vývojářů vytvořte a přiřaďte [ *klíče dotazů* ](search-security-api-keys.md) pro požadavky na vyhledávání na straně klienta. Klíč dotazu uděluje přístup pro čtení k celému obsahu v indexu.
 

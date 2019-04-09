@@ -3,7 +3,7 @@ title: Kopírování dat z SQL Serveru do úložiště objektů blob pomocí Azu
 description: Zjistěte, jak kopírovat data z místního úložiště dat do cloudu Azure s využitím místního prostředí Integration Runtime ve službě Azure Data Factory.
 services: data-factory
 documentationcenter: ''
-author: linda33wj
+author: nabhishek
 manager: craigg
 ms.reviewer: douglasl
 ms.service: data-factory
@@ -11,13 +11,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 01/22/2018
-ms.author: jingwang
-ms.openlocfilehash: 8131806aa741c3f2c347599f857f45ade392d90e
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.author: abnarain
+ms.openlocfilehash: adec7b90d5c38ed85f4b6f9ada8a530eff3846b9
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57451633"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59272508"
 ---
 # <a name="tutorial-copy-data-from-an-on-premises-sql-server-database-to-azure-blob-storage"></a>Kurz: Kopírování dat z místní databáze SQL Serveru do úložiště objektů blob v Azure
 V tomto kurzu použijete Azure PowerShell k vytvoření kanálu datové továrny, který kopíruje data z místní databáze SQL Serveru do úložiště objektů blob v Azure. Vytvoříte a použijete místní prostředí Integration Runtime, které přesouvá data mezi místním a cloudovým úložištěm dat. 
@@ -365,7 +365,7 @@ V tomto kroku s datovou továrnou propojíte místní instanci SQL Serveru.
     > [!IMPORTANT]
     > Vyberte odpovídající část na základě ověřování, které používáte pro připojení k SQL Serveru.
 
-    **Ověřování SQL (sa):**
+    **Pomocí ověřování SQL (sa):**
 
     ```json
     {
@@ -386,7 +386,7 @@ V tomto kroku s datovou továrnou propojíte místní instanci SQL Serveru.
     }
    ```    
 
-    **Ověřování systému Windows:**
+    **Ověřování Windows:**
 
     ```json
     {

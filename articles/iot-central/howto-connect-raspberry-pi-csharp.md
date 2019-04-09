@@ -1,19 +1,19 @@
 ---
 title: Připojte se k aplikaci Azure IoT Central Raspberry Pi (C#) | Dokumentace Microsoftu
-description: Jako vývojář zařízení jak se připojit k Azure IoT Central aplikace pomocí jazyka C# Raspberry Pi.
+description: Jako vývojář zařízení jak se připojit k Azure IoT Central aplikace pomocí Raspberry Pi C#.
 author: viv-liu
 ms.author: viviali
-ms.date: 10/31/2018
+ms.date: 04/05/2018
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: 6330e941f3308920ff4d5404663824633484146a
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
-ms.translationtype: MT
+ms.openlocfilehash: 8137f7d167cc697671de99699c6031014d6a966e
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58108354"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59275959"
 ---
 # <a name="connect-a-raspberry-pi-to-your-azure-iot-central-application-c"></a>Připojte Raspberry Pi do aplikace Azure IoT Central (C#)
 
@@ -25,37 +25,34 @@ Tento článek popisuje, jak jako vývojář zařízení připojit Raspberry Pi 
 
 K dokončení kroků v tomto článku, budete potřebovat následující komponenty:
 
-* [.NET core 2](https://www.microsoft.com/net) nainstalována na vývojovém počítači. Také byste měli mít vhodný kód editoru, jako [Visual Studio Code](https://code.visualstudio.com/).
 * Azure IoT Central aplikace vytvořené z **ukázka Devkits** šablony aplikace. Další informace najdete v [rychlém startu k vytvoření aplikace](quick-deploy-iot-central.md).
-* Raspberry Pi zařízení se systémem Raspbian operačního systému.
-
+* Raspberry Pi zařízení se systémem Raspbian operačního systému. Raspberry Pi musí být schopný se připojit k Internetu. Další informace najdete v tématu [nastavení Raspberry Pi](https://projects.raspberrypi.org/en/projects/raspberry-pi-setting-up/3).
 
 ## <a name="sample-devkits-application"></a>**Ukázkový Devkits** aplikace
 
-Aplikace vytvořené z **ukázka Devkits** zahrnuje šablony aplikace **Raspberry Pi** šablona zařízení s následujícími charakteristikami: 
+Aplikace vytvořené z **ukázka Devkits** zahrnuje šablony aplikace **Raspberry Pi** šablona zařízení s následujícími charakteristikami:
 
 - Telemetrická data, která zahrnuje následující měření, které zařízení bude shromažďovat:
-    - Vlhkost
-    - Teplota
-    - Tlak
-    - Magnetometer (X, Y, Z)
-    - Akcelerometr (X, Y, Z)
-    - Volný setrvačník (X, Y, Z)
+  - Vlhkost
+  - Teplota
+  - Tlak
+  - Magnetometer (X, Y, Z)
+  - Akcelerometr (X, Y, Z)
+  - Volný setrvačník (X, Y, Z)
 - Nastavení
-    - Snímač napětí
-    - Aktuální
-    - Ventilátor rychlost
-    - Přepnout reakcí na Incidenty.
+  - Snímač napětí
+  - Aktuální
+  - Ventilátor rychlost
+  - Přepnout reakcí na Incidenty.
 - Vlastnosti
-    - Kostka vlastnost počtu zařízení
-    - Vlastnost Location cloudu
+  - Kostka vlastnost počtu zařízení
+  - Vlastnost Location cloudu
 
-Najdete všechny podrobnosti o konfiguraci zařízení šablony [Podrobnosti šablony Raspberry PI zařízení](howto-connect-raspberry-pi-csharp.md#raspberry-pi-device-template-details)
-
+Úplné podrobnosti o konfiguraci zařízení šablony najdete v článku [Podrobnosti šablony Raspberry Pi zařízení](#raspberry-pi-device-template-details).
 
 ## <a name="add-a-real-device"></a>Přidání skutečného zařízení
 
-V aplikaci Azure IoT Central přidat z reálného zařízení **Raspberry Pi** šablona zařízení a zkontrolujte poznamenejte si připojovací řetězec zařízení. Další informace najdete v tématu [skutečné zařízení přidat do aplikace Azure IoT Central](tutorial-add-device.md).
+V aplikaci Azure IoT Central přidat z reálného zařízení **Raspberry Pi** šablona zařízení. Poznamenejte si zařízení, podrobnosti o připojení (**ID oboru**, **ID zařízení**, a **primární klíč**). Další informace najdete v tématu [skutečné zařízení přidat do aplikace Azure IoT Central](tutorial-add-device.md).
 
 ### <a name="create-your-net-application"></a>Vytvoření aplikace .NET
 
@@ -86,7 +83,7 @@ Dokončete následující postup můžete použít Visual Studio Code. Další i
         <RuntimeIdentifiers>win-arm;linux-arm</RuntimeIdentifiers>
       </PropertyGroup>
       <ItemGroup>
-        <PackageReference Include="Microsoft.Azure.Devices.Client" Version="1.5.2" />
+        <PackageReference Include="Microsoft.Azure.Devices.Client" Version="1.19.0" />
       </ItemGroup>
     </Project>
     ```
@@ -272,12 +269,9 @@ Dokončete následující postup můžete použít Visual Studio Code. Další i
 
 ## <a name="run-your-net-application"></a>Spustit aplikaci v .NET
 
-Přidání konkrétní zařízení připojovací řetězec do kódu pro zařízení pro ověřování pomocí Azure IoT Central. Jste si poznamenali připojovacího řetězce při přidání skutečné zařízení do aplikace Azure IoT Central.
+Přidání konkrétní zařízení připojovací řetězec do kódu pro zařízení pro ověřování pomocí Azure IoT Central. Postupujte podle těchto pokynů a [generovat připojovací řetězec zařízení](concepts-connectivity.md#get-a-connection-string) pomocí **ID oboru**, **ID zařízení**, a **primární klíč** provedena Mějte na paměti z dříve.
 
-  > [!NOTE]
-   > Azure IoT Central převedl na používání služby Azure IoT Hub Device Provisioning (DPS) pro všechna připojení zařízení, postupujte podle těchto pokynů a [získat připojovací řetězec zařízení](concepts-connectivity.md#get-a-connection-string) a pokračujte se zbývající část tohoto kurzu.
-
-1. Nahraďte `{your device connection string}` v **Program.cs** soubor s připojovacím řetězcem, který jste si poznamenali dříve.
+1. Nahraďte `{your device connection string}` v **Program.cs** souboru připojovacím řetězcem, který jste vygenerovali.
 
 1. V prostředí příkazového řádku spusťte následující příkaz:
 
@@ -286,7 +280,7 @@ Přidání konkrétní zařízení připojovací řetězec do kódu pro zaříze
    dotnet publish -r linux-arm
    ```
 
-1. Kopírovat `pisample\bin\Debug\netcoreapp2.0\linux-arm\publish` složku pro Raspberry Pi zařízení. Můžete použít **spojovací bod služby** příkaz pro kopírování souborů, například:
+1. Kopírovat `pisample\bin\Debug\netcoreapp2.1\linux-arm\publish` složku pro Raspberry Pi zařízení. Můžete použít **spojovací bod služby** příkaz pro kopírování souborů, například:
 
     ```cmd/sh
     scp -r publish pi@192.168.0.40:publish
@@ -321,8 +315,7 @@ Přidání konkrétní zařízení připojovací řetězec do kódu pro zaříze
 
      ![Změna nastavení obdrží Raspberry Pi](./media/howto-connect-raspberry-pi-csharp/device_switch.png)
 
-
-## <a name="raspberry-pi-device-template-details"></a>Podrobnosti šablony Raspberry PI zařízení
+## <a name="raspberry-pi-device-template-details"></a>Podrobnosti šablony Raspberry Pi zařízení
 
 Aplikace vytvořené z **ukázka Devkits** zahrnuje šablony aplikace **Raspberry Pi** šablona zařízení s následujícími charakteristikami:
 
@@ -368,6 +361,6 @@ Přepínací tlačítko Nastavení
 
 ## <a name="next-steps"></a>Další postup
 
-Teď, když jste se naučili, jak připojit Raspberry Pi do aplikace Azure IoT Central, tady jsou další navrhované kroky:
+Teď, když jste zjistili, jak se připojit k aplikaci Azure IoT Central Raspberry Pi, tady jsou další navrhované kroky:
 
 * [Připojit obecný klientská aplikace Node.js do Azure IoT Central](howto-connect-nodejs.md)

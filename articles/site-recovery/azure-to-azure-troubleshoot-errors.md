@@ -6,23 +6,23 @@ author: sujayt
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 11/27/2018
+ms.date: 04/08/2019
 ms.author: sujayt
-ms.openlocfilehash: 34f207b3c82ada0cb20152bb71ae900f5de132cb
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.openlocfilehash: c7c91a2cf9a25d0a5a4aeed6621e89f9c7cc18f0
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58878311"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59269618"
 ---
 # <a name="troubleshoot-azure-to-azure-vm-replication-issues"></a>Řešení potíží s replikací virtuálních počítačů Azure do Azure
 
 Tento článek popisuje běžné problémy ve službě Azure Site Recovery při replikaci a obnovení virtuálních počítačů Azure z jedné oblasti do jiné oblasti a vysvětluje, jak jejich řešení. Další informace o podporovaných konfiguracích najdete v tématu [matice podpory pro replikaci virtuálních počítačů Azure](site-recovery-support-matrix-azure-to-azure.md).
 
 ## <a name="list-of-errors"></a>Seznam chyb
-- **[Problémy s kvótou prostředků Azure (kód chyby: 150097)](#azure-resource-quota-issues-error-code-150097)** 
-- **[Důvěryhodných kořenových certifikátů (kód chyby: 151066)](#trusted-root-certificates-error-code-151066)** 
-- **[Odchozí připojení pro Site Recovery (kód chyby: 151195)](#issue-1-failed-to-register-azure-virtual-machine-with-site-recovery-151195-br)** 
+- **[Problémy s kvótou prostředků Azure (kód chyby: 150097)](#azure-resource-quota-issues-error-code-150097)**
+- **[Důvěryhodných kořenových certifikátů (kód chyby: 151066)](#trusted-root-certificates-error-code-151066)**
+- **[Odchozí připojení pro Site Recovery (kód chyby: 151195)](#issue-1-failed-to-register-azure-virtual-machine-with-site-recovery-151195-br)**
 
 ## <a name="azure-resource-quota-issues-error-code-150097"></a>Problémy s kvótou prostředků Azure (kód chyby: 150097)
 Předplatné musí být povolené k vytvoření virtuálních počítačů Azure v cílové oblasti, kterou plánujete používat jako vaší oblasti pro zotavení po havárii. Vaše předplatné navíc by měl mít dostatečná kvóta k vytvoření virtuálních počítačů z určité velikosti. Ve výchozím nastavení služba Site Recovery vybere pro cílový virtuální počítač stejné velikosti jako zdrojový virtuální počítač. Pokud není k dispozici odpovídající velikost, se automaticky vybere nejbližší možnou velikost. Pokud neexistuje žádný odpovídající velikost, která podporuje konfiguraci zdrojového počítače, zobrazí se tato chybová zpráva:
@@ -238,13 +238,13 @@ Pokud chcete povolit replikaci virtuálního počítače, to může být z důvo
 
 ### <a name="fix-the-problem"></a>Tento problém vyřešit
 
->[!NOTE] 
+>[!NOTE]
 >
->Ujistěte se, že modul "" azurerm.resources zavedla"" aktualizace před použitím níže uvedený skript. 
+>Ujistěte se, že modul "" azurerm.resources zavedla"" aktualizace před použitím níže uvedený skript.
 
 Můžete použít [odebrat zastaralé skript pro konfiguraci Azure Site Recovery](https://gallery.technet.microsoft.com/Azure-Recovery-ASR-script-3a93f412) a odebrat zastaralou konfiguraci Site Recovery na virtuálním počítači Azure. Byste měli vidět tento virtuální počítač po odebrání zastaralou konfiguraci.
 
-## <a name="unable-to-select-virtual-machine-for-protection"></a>Nelze vybrat pro ochranu virtuálního počítače 
+## <a name="unable-to-select-virtual-machine-for-protection"></a>Nelze vybrat pro ochranu virtuálního počítače
  **1. příčina:  Virtuální počítač má některá rozšíření nainstalované ve stavu selhání nebo nereaguje** <br>
  Přejděte na virtuální počítače > Nastavení > rozšíření a zkontrolujte, jestli nejsou žádná rozšíření ve stavu selhání. Odinstalovat selhalo rozšíření a zkuste ochranu virtuálního počítače.<br>
  **2. příčina:  [Stav zřizování Virtuálního počítače není platná](#vms-provisioning-state-is-not-valid-error-code-150019)**
@@ -296,7 +296,7 @@ Můžete otevřít konzolu "Služby" a zajistit "Aplikace COM + systému" a Stí
 
 **Kód chyby** | **Možné příčiny** | **Doporučení**
 --- | --- | ---
-150172<br></br>**Zpráva**: Nebylo možné povolit ochranu pro virtuální počítač je na něm (DiskName) s velikostí (DiskSize), která je menší než minimální podporovaná velikost 1024 MB. | – Disk je menší než podporovaná velikost 1 024 MB| Zajistěte, aby velikost disku spadají do rozsahu podporovaných velikostí a zkuste operaci zopakovat. 
+150172<br></br>**Zpráva**: Nebylo možné povolit ochranu pro virtuální počítač je na něm (DiskName) s velikostí (DiskSize), která je menší než minimální podporovaná velikost 1024 MB. | – Disk je menší než podporovaná velikost 1 024 MB| Zajistěte, aby velikost disku spadají do rozsahu podporovaných velikostí a zkuste operaci zopakovat.
 
 ## <a name="enable-protection-failed-as-device-name-mentioned-in-the-grub-configuration-instead-of-uuid-error-code-151126"></a>Povolení ochrany se nezdařila, protože název zařízení podle konfigurace GRUB místo UUID (kód chyby: 151126)
 
@@ -319,11 +319,11 @@ Názvy zařízení mělo být nahrazeno s odpovídající identifikátor UUID.<b
 
 1. Najít identifikátor UUID zařízení spuštěním příkazu "blkid \<název zařízení >". Příklad:<br>
    ```
-   blkid /dev/sda1 
+   blkid /dev/sda1
    ```<br>
    ```/dev/sda1: UUID="6f614b44-433b-431b-9ca1-4dd2f6f74f6b" TYPE="swap" ```<br>
-   ```blkid /dev/sda2```<br> 
-   ```/dev/sda2: UUID="62927e85-f7ba-40bc-9993-cc1feeb191e4" TYPE="ext3" 
+   ```blkid /dev/sda2```<br>
+   ```/dev/sda2: UUID="62927e85-f7ba-40bc-9993-cc1feeb191e4" TYPE="ext3"
    ```<br>
 
 
@@ -334,16 +334,16 @@ Názvy zařízení mělo být nahrazeno s odpovídající identifikátor UUID.<b
 
 ## Enable protection failed as device mentioned in the GRUB configuration doesn't exist(error code 151124)
 **Possible Cause:** </br>
-The GRUB configuration files ("/boot/grub/menu.lst", "/boot/grub/grub.cfg", "/boot/grub2/grub.cfg" or "/etc/default/grub") may contain the parameters "rd.lvm.lv" or "rd_LVM_LV" to indicate the LVM device that should be discovered at the time of booting. If these LVM devices doesn't exist, then the protected system itself will not boot and stuck in the boot process. Even the same will be observed with the failover VM. Below are few examples: 
+The GRUB configuration files ("/boot/grub/menu.lst", "/boot/grub/grub.cfg", "/boot/grub2/grub.cfg" or "/etc/default/grub") may contain the parameters "rd.lvm.lv" or "rd_LVM_LV" to indicate the LVM device that should be discovered at the time of booting. If these LVM devices doesn't exist, then the protected system itself will not boot and stuck in the boot process. Even the same will be observed with the failover VM. Below are few examples:
 
 Few examples: </br>
 
 1. The following line is from the GRUB file **"/boot/grub2/grub.cfg"** on RHEL7. </br>
    *linux16 /vmlinuz-3.10.0-957.el7.x86_64 root=/dev/mapper/rhel_mup--rhel7u6-root ro crashkernel=128M\@64M **rd.lvm.lv=rootvg/root rd.lvm.lv=rootvg/swap** rhgb quiet LANG=en_US.UTF-8*</br>
-   Here the highlighted portion shows that the GRUB has to detect two LVM devices with names **"root"** and **"swap"** from the volume group "rootvg". 
+   Here the highlighted portion shows that the GRUB has to detect two LVM devices with names **"root"** and **"swap"** from the volume group "rootvg".
 1. The following line is from the GRUB file **"/etc/default/grub"** on RHEL7 </br>
    *GRUB_CMDLINE_LINUX="crashkernel=auto **rd.lvm.lv=rootvg/root rd.lvm.lv=rootvg/swap** rhgb quiet"*</br>
-   Here the highlighted portion shows that the GRUB has to detect two LVM devices with names **"root"** and **"swap"** from the volume group "rootvg". 
+   Here the highlighted portion shows that the GRUB has to detect two LVM devices with names **"root"** and **"swap"** from the volume group "rootvg".
 1. The following line is from the GRUB file **"/boot/grub/menu.lst"** on RHEL6 </br>
    *kernel /vmlinuz-2.6.32-754.el6.x86_64 ro root=UUID=36dd8b45-e90d-40d6-81ac-ad0d0725d69e rd_NO_LUKS LANG=en_US.UTF-8 rd_NO_MD SYSFONT=latarcyrheb-sun16 crashkernel=auto rd_LVM_LV=rootvg/lv_root  KEYBOARDTYPE=pc KEYTABLE=us rd_LVM_LV=rootvg/lv_swap rd_NO_DM rhgb quiet* </br>
    Here the highlighted portion shows that the GRUB has to detect two LVM devices with names **"root"** and **"swap"** from the volume group "rootvg".<br>
@@ -360,8 +360,8 @@ Site Recovery mobility service has many components, one of which is called filte
 ## Protection couldn't be enabled as replica managed disk 'diskname-replica' already exists without expected tags in the target resource group( error code 150161
 
 **Cause**: It can occur if the  virtual machine was protected earlier in the past and during disabling the replication, replica disk was not cleaned due to some reason.</br>
-**How to fix:** 
-Delete the mentioned replica disk in the error message and restart the failed protection job again. 
+**How to fix:**
+Delete the mentioned replica disk in the error message and restart the failed protection job again.
 
 ## Next steps
 [Replicate Azure virtual machines](site-recovery-replicate-azure-to-azure.md)

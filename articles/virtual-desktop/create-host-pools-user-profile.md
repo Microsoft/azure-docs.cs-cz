@@ -5,14 +5,14 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: how-to
-ms.date: 04/04/2019
+ms.date: 04/05/2019
 ms.author: helohr
-ms.openlocfilehash: a7e2f3c95819c6ab6d2e63e5c7a2f62649ebd15c
-ms.sourcegitcommit: b4ad15a9ffcfd07351836ffedf9692a3b5d0ac86
-ms.translationtype: HT
+ms.openlocfilehash: 0cb4df099faad8ca482fd15cf0bb50504c1528ab
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/05/2019
-ms.locfileid: "59056091"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59276384"
 ---
 # <a name="set-up-a-user-profile-share-for-a-host-pool"></a>Nastavení sdílení profilu uživatele pro fond hostitelů
 
@@ -66,3 +66,6 @@ Ke konfiguraci virtuálních počítačů se softwarem FSLogix, proveďte postup
 |---------------------|--------------------|-----------------------------------|
 | Povoleno             | DWORD              | 1                                 |
 | VHDLocations        | Víceřetězcová hodnota | "Síťovou cestu pro sdílenou složku"     |
+
+>[!IMPORTANT]
+>Pomáhají zabezpečit vaše prostředí virtuálního klienta Windows v Azure, doporučujeme, abyste že na virtuálních počítačích není otevřít příchozí port 3389. Virtuální Desktop Windows nevyžaduje otevřít příchozí port 3389 pro uživatele pro přístup k fondu hostitele virtuálních počítačů. Pokud musíte otevřít port 3389 pro účely odstraňování potíží, doporučujeme vám použít [přístup k virtuálním počítačům just-in-time](https://docs.microsoft.com/en-us/azure/security-center/security-center-just-in-time).

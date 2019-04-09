@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 3/12/2019
+ms.date: 04/07/2019
 ms.author: rkarlin
-ms.openlocfilehash: c055b3d9dec2e2538a7dc7ac0eb707c97313d0d6
-ms.sourcegitcommit: 045406e0aa1beb7537c12c0ea1fbf736062708e8
-ms.translationtype: HT
+ms.openlocfilehash: 5c6dfa359a85b5330e70a2618d59ffab15cf24f4
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/04/2019
-ms.locfileid: "59006583"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59276639"
 ---
 # <a name="on-board-azure-sentinel-preview"></a>Ve verzi Preview připojit Azure Sentinel
 
@@ -29,7 +29,7 @@ ms.locfileid: "59006583"
 
 V tomto rychlém startu se dozvíte, jak začlenit Sentinelu Azure. 
 
-Do vlaku Sentinelu Azure musíte nejprve připojit ke zdrojům dat. Azure Sentinel se dodává s celou řadou konektorů pro Microsoft solutions, k dispozici z pole a poskytuje v reálném čase, integrace, včetně řešení ochrany před internetovými útoky Microsoft, Microsoft 365 zdrojů, včetně Office 365, Azure AD, Azure ATP a Microsoft Cloud App Security a další. Kromě toho jsou integrované konektory do širšího ekosystému zabezpečení pro řešení jiného subjektu než Microsoft. Můžete také použít běžný formát události Syslog nebo rozhraní REST API pro připojení zdroje dat pomocí Azure Sentinelu.  
+Do vlaku Sentinelu Azure musíte nejprve povolit Sentinelu Azure a připojte vaše zdroje. Azure Sentinel se dodává s celou řadou konektorů pro Microsoft solutions, k dispozici z pole a poskytuje v reálném čase, integrace, včetně řešení ochrany před internetovými útoky Microsoft, Microsoft 365 zdrojů, včetně Office 365, Azure AD, Azure ATP a Microsoft Cloud App Security a další. Kromě toho jsou integrované konektory do širšího ekosystému zabezpečení pro řešení jiného subjektu než Microsoft. Můžete také použít běžný formát události Syslog nebo rozhraní REST API pro připojení zdroje dat pomocí Azure Sentinelu.  
 
 Po připojení zdroje dat, vyberte si z Galerie odborně řídicí panely, které přehledy na základě vašich dat. Tyto řídicí panely můžete snadno přizpůsobit svým potřebám.
 
@@ -40,20 +40,21 @@ Po připojení zdroje dat, vyberte si z Galerie odborně řídicí panely, kter�
 
 - Pracovní prostor log Analytics. Zjistěte, jak [vytvořit pracovní prostor Log Analytics](../log-analytics/log-analytics-quick-create-workspace.md)
 
-    - Oprávnění přispěvatele do skupiny prostředků, které jsou vázané na Azure Sentinelu
-    - Oprávnění přispěvatele do vaší skupiny prostředků umožňují Sentinelu Azure 
-
+-  Povolit Sentinelu Azure, potřebujete oprávnění přispěvatele pro předplatné, ve kterém se nachází pracovní prostor Sentinelu Azure. 
+- Použití ověřovacích Azure, potřebujete oprávnění přispěvatele nebo prohlížeče, který pracovní prostor patří do skupiny prostředků
+- Může být potřeba další oprávnění pro připojení konkrétní zdroje dat
+ 
 ## Povolit Azure Sentinel <a name="enable"></a>
 
 1. Přejděte na web Azure Portal.
 2. Ujistěte se, že je vybrané předplatné, ve kterém se vytvoří Sentinelu Azure. 
 3. Hledání Azure Sentinel. 
-   ![hledat](./media/quickstart-onboard/search-product.png)
+   ![search](./media/quickstart-onboard/search-product.png)
 
 1. Klikněte na tlačítko **+ přidat**.
 1. Vyberte pracovní prostor, který chcete použít nebo vytvořit nový. Můžete spustit ověřovací Azure na více než jednomu pracovnímu prostoru, ale data budou izolovaná do jednoho pracovního prostoru.
 
-   ![hledat](./media/quickstart-onboard/choose-workspace.png)
+   ![search](./media/quickstart-onboard/choose-workspace.png)
 
    >[!NOTE] 
    > - **Umístění pracovního prostoru** je důležité pochopit, že všechna data můžete Streamovat do ověřovacích Azure je uložen v zeměpisné oblasti pracovního prostoru, který jste vybrali.  

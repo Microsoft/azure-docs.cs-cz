@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/26/2018
 ms.author: wolfma
-ms.openlocfilehash: a4c256a6acd8e51986b40e28a6f658f1103ab337
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
-ms.translationtype: MT
+ms.openlocfilehash: c403bca3abf493448265e25316babe20ea9c8544
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57877696"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59272016"
 ---
 # <a name="support-and-help-options"></a>Možnosti podpory a Nápověda
 
@@ -23,6 +23,7 @@ Jste zrovna začínáte a prozkoumejte funkci hlasových služeb? Jsou implement
 
 > [!div class="checklist"]
 > * Budete informováni o nové vývoj *Azure Cognitive Services*, nebo najít nejnovější informace související s *Speech service*.
+> * Poznámky k verzi obsahují informace pro všechny verze.
 > * Hledáním můžete zjistit, zda váš problém byl popsán komunitou nebo pokud stávající dokumentaci pro funkce, kterou chcete implementovat již existuje.
 > * Pokud nemůže najít uspokojivou odpovědí, zeptejte se na *Stack Overflow*.
 > * Pokud narazíte na problém s jednou z ukázek na Githubu, zvýšit *Githubu* problém.
@@ -31,6 +32,10 @@ Jste zrovna začínáte a prozkoumejte funkci hlasových služeb? Jsou implement
 ## <a name="stay-informed"></a>Aktuální informace
 
 Novinky o službě Cognitive Services se shromažďují v [blog služeb Cognitive Services](https://azure.microsoft.com/blog/topics/cognitive-services/). Nejnovější informace o hlasové služby sledování [hlasové služby blogu](https://azure.microsoft.com/blog/tag/speech-service/).
+
+## <a name="release-notes"></a>Poznámky k verzi
+
+[Poznámky k verzi]] (https://aka.ms/csspeech/whatsnew) jsou aktualizovány, jakmile je k dispozici nová verze. V poznámkách k obsahují informace o nových funkcí, vylepšení a oprav chyb.
 
 ## <a name="search"></a>Search
 
@@ -50,7 +55,7 @@ Kde *{Your hledané termíny}* je klíčová slova pro vyhledávání.
 
 Zákazníci Azure můžete vytvářet a spravovat žádosti o podporu na webu Azure Portal.
 
-* [Azure Portal](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)
+* [portál Azure](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)
 * [Portál Azure pro vládu Spojených států amerických](https://portal.azure.us)
 
 ## <a name="post-a-question-to-stack-overflow"></a>Odeslat dotaz na Stack Overflow
@@ -77,7 +82,7 @@ Pokud nemůžete najít odpověď na váš problém prostřednictvím vyhledáv�
 Ukázky jsou často odeslány jako open source. Pro dotazy a problémy, vytvořte *problém* v příslušné úložiště GitHub. Příliš můžete odeslat žádost o přijetí změn. Následující seznam obsahuje odkazy na ukázkové úložiště:
 
 * [Speech SDK](https://github.com/Azure-Samples/cognitive-services-speech-sdk/issues)
-* [Sada SDK zařízení](https://github.com/Azure-Samples/Cognitive-Services-Speech-Devices-SDK/issues)
+* [Devices SDK](https://github.com/Azure-Samples/Cognitive-Services-Speech-Devices-SDK/issues)
 
 Můžete vytvořit hlášení o chybě, žádost o funkci, nebo požádejte obecný dotaz a osvědčenými postupy. Sestavy chyb postupujte prosím podle poskytnuté šabloně:
 
@@ -108,7 +113,7 @@ Kterou verzi sady SDK je používáte.
 **Další kontext**
 
  - Chybové zprávy, informace protokolu trasování, zásobníku...
- - Pokud byste nahlásit chybu pro konkrétní službu interakce, ohlaste prosím SessionId a čas (včetně časového pásma) ohlášených incidentů. SessionId je uveden ve všech-zpětných/událostí volání, který jste dostali.
+ - Pokud byste nahlásit chybu pro konkrétní službu interakce, ohlaste SessionId a čas (včetně časového pásma) ohlášených incidentů. SessionId je uveden ve všech-zpětných/událostí volání, který jste dostali.
  - Jakékoli další informace
 
 

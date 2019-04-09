@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 71e1f7d85d823add804e8ef5dcb6126cffc21902
-ms.sourcegitcommit: e43ea344c52b3a99235660960c1e747b9d6c990e
-ms.translationtype: HT
+ms.openlocfilehash: 2d04cdfb3ec12406e60fcb265966e0271b7220d9
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/04/2019
-ms.locfileid: "59009896"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59258058"
 ---
 # <a name="tutorial-create-a-pipeline-with-copy-activity-using-visual-studio"></a>Kurz: Vytvoření kanálu s aktivitou kopírování pomocí sady Visual Studio
 > [!div class="op_single_selector"]
@@ -374,7 +374,7 @@ V tomto kurzu jste vytvořili objekt pro vytváření dat Azure pro zkopírován
 3. Vytvořili jste **datové sady**, které popisují vstupní data a výstupní data pro kanály.
 4. Vytvořili jste **kanál** s **aktivitou kopírování**, která má jako zdroj **BlobSource** a jako jímku **SqlSink**. 
 
-Jak používat aktivitu HDInsight Hive k transformaci dat pomocí clusteru Azure HDInsight, najdete v sekci [ kurzu: Vytvoření prvního kanálu, který umožňuje transformovat data pomocí clusteru Hadoop](data-factory-build-your-first-pipeline.md).
+Jak používat aktivitu HDInsight Hive k transformaci dat pomocí clusteru Azure HDInsight, najdete v sekci [kurzu: Vytvoření prvního kanálu, který umožňuje transformovat data pomocí clusteru Hadoop](data-factory-build-your-first-pipeline.md).
 
 Dvě aktivity můžete zřetězit (spustit jednu aktivitu po druhé) nastavením výstupní datové sady jedné aktivity jako vstupní datové sady druhé aktivity. Podrobné informace najdete v tématu s popisem [plánování a provádění ve službě Data Factory](data-factory-scheduling-and-execution.md). 
 

@@ -1,26 +1,25 @@
 ---
 title: Určení příčiny nedodržování předpisů
 description: Pokud prostředek je nedodržují předpisy, existuje mnoho důvodů, proč je to možné. Zjistěte, jak zjistit, co způsobilo nedodržení předpisů.
-services: azure-policy
 author: DCtheGeek
 ms.author: dacoulte
 ms.date: 02/26/2019
 ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
-ms.openlocfilehash: 1121bdb379265ef592a26a8a31a90d402e529cc8
-ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
+ms.openlocfilehash: 8a593e92d7f24885c35043b874528e881d2e021e
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58802741"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59276095"
 ---
 # <a name="determine-causes-of-non-compliance"></a>Určení příčiny nedodržování předpisů
 
 Při prostředku Azure je určena jako nevyhovující pravidla zásad, je vhodné pochopit, jaká část pravidla prostředek není kompatibilní s. Je také užitečné porozumět, jaké změny změnit dříve odpovídal požadavkům prostředek k němu nedodržující předpisy. Existují dva způsoby, jak najít tyto informace:
 
 > [!div class="checklist"]
-> - [Podrobnosti o dodržování předpisů](#compliance-details)
+> - [Podrobnosti dodržování předpisů](#compliance-details)
 > - [Historie změn (Preview)](#change-history-preview)
 
 ## <a name="compliance-details"></a>Podrobnosti dodržování předpisů

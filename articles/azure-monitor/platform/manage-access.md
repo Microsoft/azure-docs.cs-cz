@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 03/27/2019
 ms.author: magoedte
-ms.openlocfilehash: fd47b5de2226d88b6295cb28713db2a5d251e768
-ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
+ms.openlocfilehash: 27db27d79a05f24461e63242c0395cfd81315432
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2019
-ms.locfileid: "58577242"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59276402"
 ---
 # <a name="manage-log-data-and-workspaces-in-azure-monitor"></a>Správa dat protokolů a pracovním prostorům ve službě Azure Monitor
 Azure Monitor úložiště vytvářet protokoly dat v pracovním prostoru Log Analytics, která je v podstatě kontejner, který obsahuje data a informace o konfiguraci. Ke správě přístupu k protokolování dat, můžete provádět různé úlohy správy související s pracovními prostory. Vy nebo další členové vaší organizace můžete používat víc pracovních prostorů ke správě různých sad dat, která se shromažďují ze všech částí vaší infrastruktury IT.
@@ -102,7 +102,6 @@ _Přístupovém režimu_ odkazuje na přístup uživatele k pracovnímu prostoru
 > - Service Fabric
 > - Application Insights
 > - Containers
-> - Vlastní protokoly vytvořené metodou rozhraní API kolekce dat HTTP
 >
 > Můžete otestovat, pokud protokoly jsou správně spojené s jejich prostředků spuštěním dotazu a kontrola záznamů vás zajímá. Pokud je ID správné prostředku v [_ResourceId](log-standard-properties.md#_resourceid) vlastnost a potom dat je k dispozici pro dotazy zaměřené na prostředek.
 

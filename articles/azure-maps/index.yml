@@ -1,56 +1,57 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 684e6a798c690c65f70c2f6224ac8f11256ce6eb
-ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
-ms.translationtype: HT
-ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56270126"
 documentType: LandingData
 title: Dokumentace ke službě Azure Maps
 metadata:
-  document_id: 
+  document_id: null
   title: Dokumentace ke službě Azure Maps | Microsoft Docs
   meta.description: Use Azure Maps to provide geospatial services to your web or mobile application.
   author: philmea
-  manager: 
+  manager: null
   ms.service: azure-maps
   services: azure-maps
   ms.topic: landing-page
   ms.date: 02/14/2019
   ms.author: philmea
 abstract:
-  description: Služba Azure Maps poskytuje vývojářům ze všech odvětví výkonné geoprostorové funkce společně s nejnovějšími dostupnými mapovými daty k zajištění geografického kontextu pro webové a mobilní aplikace. Azure Maps je sada rozhraní REST API kompatibilní s Azure One API pro mapy, hledání, směrování, provoz, časová pásma, geografické polohy, geofencing, data map a prostorové operace doplněná o sady SDK pro web and Android. Zajišťuje snadný, flexibilní a přenositelný vývoj napříč několika platformami.
+  description: 'Služba Azure Maps poskytuje vývojářům ze všech odvětví výkonné geoprostorové funkce společně s nejnovějšími dostupnými mapovými daty k zajištění geografického kontextu pro webové a mobilní aplikace. Azure Maps je sada rozhraní REST API kompatibilní s Azure One API pro mapy, hledání, směrování, provoz, časová pásma, geografické polohy, geofencing, data map a prostorové operace doplněná o sady SDK pro web and Android. Zajišťuje snadný, flexibilní a přenositelný vývoj napříč několika platformami.'
 sections:
-- title: Zprovoznění během 5 minut
-  items:
-  - type: paragraph
-    text: Spusťte aplikaci hledání v mapách s využitím Azure Mapa.
-  - type: list
-    style: icon48
+  - title: Zprovoznění během 5 minut
     items:
-    - image:
-        src: /azure/sql-database/media/index/portal.svg
-      text: Spustit ukázkovou aplikaci mapy
-      href: /azure/azure-maps/quick-demo-map-app
-- title: Podrobné kurzy
-  items:
-  - type: paragraph
-    text: Vytvoření geoprostorové webové aplikace pro hledání bodů zájmu, hledání tras do umístění a sledování zařízení vytvořením monitorované geografické zóny s využitím Azure Maps
-  - type: list
-    style: ordered
+      - type: paragraph
+        text: 'Zjistíte, jak vytvářet geoprostorové aplikace s využitím Azure Maps.'
+      - type: list
+        style: icon48
+        items:
+          - image:
+              src: 'https://docs.microsoft.com/media/logos/logo_js.svg'
+            text: Vytvoření webové aplikace
+            href: /azure/azure-maps/quick-demo-map-app
+  - title: Podrobné kurzy
     items:
-    - html: <a href="/azure/azure-maps/tutorial-search-location">Hledání bodů zájmu</a>
-    - html: <a href="/azure/azure-maps/tutorial-route-location">Trasa k bodu zájmu</a>
-    - html: <a href="/azure/azure-maps/tutorial-prioritized-routes">Trasy podle způsobu cesty</a>
-    - html: <a href="/azure/azure-maps/tutorial-create-store-locator">Vytvoření lokátoru úložiště</a>
-    - html: <a href="/azure/azure-maps/tutorial-geofence">Nastavení monitorované geografické zóny</a>
-- title: Referenční informace
-  items:
-  - type: list
-    style: cards
-    className: cardsW
+      - html: <b>Kurzy k Web SDK</b>
+      - type: paragraph
+        text: Sestavujte geoprostorové webové aplikace s využitím sady Azure Maps Web SDK.
+      - type: list
+        style: unordered
+        items:
+          - html: <a href="/azure/azure-maps/tutorial-search-location">Hledání bodů zájmu</a>
+          - html: <a href="/azure/azure-maps/tutorial-route-location">Trasa k bodu zájmu</a>
+          - html: <a href="/azure/azure-maps/tutorial-prioritized-routes">Trasy podle způsobu cesty</a>
+          - html: <a href="/azure/azure-maps/tutorial-create-store-locator">Vytvoření lokátoru úložiště</a>
+      - html: <b>Kurzy k REST API</b>
+      - type: paragraph
+        text: 'Sestavujte geoprostorové aplikace, které volají služby REST Azure Maps.'
+      - type: list
+        style: unordered
+        items:
+          - html: <a href="/azure/azure-maps/tutorial-geofence">Nastavení geografické zóny</a>
+  - title: Referenční informace
     items:
-    - title: JavaScript
-      html: <p><a href="https://docs.microsoft.com/javascript/api/azure-maps-javascript/">Mapový ovládací prvek</a></p>
-    - title: REST
-      html: <p><a href="https://docs.microsoft.com/rest/api/maps/data">Datová služba</a></p><p><a href="https://docs.microsoft.com/rest/api/maps/geolocation">Služba geografické polohy</a></p><p><a href="https://docs.microsoft.com/rest/api/maps/render">Služba Render</a></p><p><a href="https://docs.microsoft.com/rest/api/maps/route">Služba Route</a></p><p><a href="https://docs.microsoft.com/rest/api/maps/search">Služba Search</a></p><p><a href="https://docs.microsoft.com/rest/api/maps/spatial">Služba Spatial</a></p><p><a href="https://docs.microsoft.com/rest/api/maps/timezone">Služba Timezone</a></p><p><a href="https://docs.microsoft.com/rest/api/maps/traffic">Služba Traffic</a></p>
+      - type: list
+        style: cards
+        className: cardsW
+        items:
+          - title: JavaScript
+            html: '<p><a href="https://docs.microsoft.com/javascript/api/azure-maps-javascript/">Mapový ovládací prvek</a></p>'
+          - title: REST
+            html: '<p><a href="https://docs.microsoft.com/rest/api/maps/data">Datová služba</a></p><p><a href="https://docs.microsoft.com/rest/api/maps/geolocation">Služba geografické polohy</a></p><p><a href="https://docs.microsoft.com/rest/api/maps/render">Služba Render</a></p><p><a href="https://docs.microsoft.com/rest/api/maps/route">Služba Route</a></p><p><a href="https://docs.microsoft.com/rest/api/maps/search">Služba Search</a></p><p><a href="https://docs.microsoft.com/rest/api/maps/spatial">Služba Spatial</a></p><p><a href="https://docs.microsoft.com/rest/api/maps/timezone">Služba Timezone</a></p><p><a href="https://docs.microsoft.com/rest/api/maps/traffic">Služba Traffic</a></p>'
