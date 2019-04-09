@@ -7,19 +7,21 @@ manager: cgronlun
 tags: azure-portal
 ms.service: search
 ms.topic: conceptual
-ms.date: 03/22/2019
+ms.date: 04/05/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 523c99436eb49f1658a5d4c56d64248adccc5c3a
-ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
+ms.openlocfilehash: da8c8adacfead598a8dec6280cf3518fb7b31f49
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58621264"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59270936"
 ---
 # <a name="choose-a-pricing-tier-for-azure-search"></a>Zvolte cenovou úroveň pro službu Azure Search
 
-Ve službě Azure Search [je prostředek vytvořený](search-create-service-portal.md) na cenové úrovně nebo SKU, který je pevně po dobu životnosti služby. Dostupné úrovně **Free**, **základní**, **standardní**, nebo **optimalizované pro úložiště**.  **Standardní** a **optimalizované pro úložiště** jsou k dispozici v několika konfiguracích a kapacity. Většina zákazníků začíná **Free** vrstvy pro vyhodnocení a potom jim dodejte na jednu z placených vyšší úrovně pro vývoj a provoz nasazení. Můžete na dokončení všech rychlých startů a kurzů **Free** úrovně, včetně těch, které pro náročné kognitivního vyhledávání.
+Ve službě Azure Search [je prostředek vytvořený](search-create-service-portal.md) na cenové úrovně nebo SKU, který je pevně po dobu životnosti služby. Dostupné úrovně **Free**, **základní**, **standardní**, nebo **optimalizované pro úložiště**.  **Standardní** a **optimalizované pro úložiště** jsou k dispozici v několika konfiguracích a kapacity. 
+
+Většina zákazníků začíná **Free** vrstvy pro vyhodnocení a potom jim dodejte na jednu z placených vyšší úrovně pro vývoj a provoz nasazení. Můžete na dokončení všech rychlých startů a kurzů **Free** úrovně, včetně těch, které pro náročné kognitivního vyhledávání.
 
 > [!NOTE]
 > Úrovně optimalizované pro úložiště služby jsou aktuálně k dispozici ve verzi preview za zlevněné ceny pro účely testování a experimentování s cílem shromažďování zpětné vazby. Chcete zjistit koncové ceny oznámíme později při těchto úrovních jsou obecně dostupné. Nedoporučujeme tyto úrovně používají, aplikacích v produkčním prostředí.
@@ -29,7 +31,7 @@ Vrstev odrážejí charakteristiky hardwaru, hostování služby (spíše než f
 + Počet indexů, které lze vytvořit
 + Velikost a rychlost oddílů (fyzické úložiště)
 
-Přestože všechny úrovně, včetně **Free** vrstvy, obecně nabízí paritu funkcí, větší úlohy může diktovat požadavky pro vyšší úrovně. Například [kognitivního vyhledávání](cognitive-search-concept-intro.md) indexování má dlouhotrvající dovednosti tento časový limit na bezplatné služby není-li být malé datové sady se stane s.
+Přestože všechny úrovně, včetně **Free** vrstvy, obecně nabízí paritu funkcí, větší úlohy může diktovat požadavky pro vyšší úrovně. Například [indexování AI pomocí služeb Cognitive Services](cognitive-search-concept-intro.md) má dlouhotrvající dovednosti tento časový limit na bezplatné služby není-li být malé datové sady se stane s.
 
 > [!NOTE] 
 > Výjimka, která má paritu funkcí je [indexery](search-indexer-overview.md), které nejsou k dispozici na S3HD.
@@ -53,7 +55,7 @@ V následující tabulce jsou uvedeny dostupné úrovně. Zahrnout další zdroj
 |Úložiště optimalizované 2 (L2) | 2 TB na oddíl (max. 24 TB na službu) |
 
 > [!NOTE] 
-> Úrovně optimalizované pro úložiště nabízejí větší kapacitu úložiště za nižší cenu za TB než úrovně Standard.  Primární kompromis je vyšší latence dotazu, který by měl ověřit pro vaše konkrétní aplikační požadavky.  Další informace o aspektech týkajících se výkonu této vrstvy, naleznete v tématu [aspekty týkající se výkonu a optimalizace](search-performance-optimization.md).
+> Úrovně optimalizované pro úložiště nabízejí větší kapacitu úložiště za nižší cenu za TB než úrovně Standard. Primární kompromis je vyšší latence dotazu, který by měl ověřit pro vaše konkrétní aplikační požadavky.  Další informace o aspektech týkajících se výkonu této vrstvy, naleznete v tématu [aspekty týkající se výkonu a optimalizace](search-performance-optimization.md).
 >
 
 ## <a name="how-billing-works"></a>Jak funguje fakturace
@@ -70,17 +72,27 @@ Na následujícím snímku obrazovky za cenu jednotky je označen pro Free a Bas
 
 Další repliky a oddíly, které jsou doplněk k počáteční náklady. Vyhledávací služba vyžaduje repliky a oddíl jednu roli od každého je minimální požadavky na konfiguraci. Nad rámec minimální je přidat repliky a oddíly, nezávisle na sobě. Například můžete přidat pouze repliky nebo pouze oddíly. 
 
-Další repliky a oddíly, které se účtují na základě [vzorec](#search-units). Náklady na nejsou lineární (zvýší kapacitu více než zdvojnásobí náklady). Příklad toho, jak vzorec funguje, najdete v části ["Postup přidělení repliky a oddíly"](search-capacity-planning.md#how-to-allocate-replicas-and-partitions)
+Další repliky a oddíly, které se účtují na základě [vzorec](#search-units). Náklady na nejsou lineární (zvýší kapacitu více než zdvojnásobí náklady). Příklad toho, jak vzorec funguje, najdete v části ["Postup přidělení repliky a oddíly"](search-capacity-planning.md#how-to-allocate-replicas-and-partitions).
 
 ### <a name="2-data-egress-charges-during-indexing"></a>2. Poplatky za odchozí přenos dat během indexování
 
-Při přijetí dat z Azure SQL Database nebo Cosmos DB zdroje dat, zobrazí se poplatky za transakce v faktury za tyto prostředky. Tyto poplatky nejsou měřiče Azure Search, ale jsou vzhledem k tomu, že pokud používáte indexery k načítání dat z Azure SQL Database nebo Azure Cosmos DB, zobrazí se vám tento poplatek ve vašem vyúčtování tady uvedené.
+Použití [indexerů Azure Search](search-indexer-overview.md) může vést k fakturaci dopad závislosti, kde jsou umístěny služby. Poplatky za odchozí přenos dat můžete eliminovat úplně, pokud vytvoříte službu Azure Search ve stejné oblasti jako vaše data.
+
++ Žádné poplatky za všechna příchozí data na jakoukoli službu v Azure.
+
++ Žádné poplatky za všechny odchozí data z Azure Search.
+
++ Žádné poplatky za data nebo soubory odchozí z SQL Database, Cosmos, Blob storage (vstupní do služby Azure Search), pokud jsou všechny služby ve stejné oblasti.
+
++ Poplatky za odchozí data nebo soubory Pokud storage a Azure Search v různých oblastech.
+
+Při směrování dat v různých oblastech Azure, zobrazí se poplatky za šířku pásma na faktuře je uvedena pro tyto prostředky. Tyto poplatky, které nejsou součástí vyúčtování Azure Search, ale jsou vzhledem k tomu, že pokud o přijetí změn dat nebo souborů přenosu pomocí indexerů, zobrazí tento poplatek je ve vyúčtování celkové tady uvedené.
+
+Pokud nepoužíváte indexery, nejsou žádné poplatky za šířku pásma. 
 
 ### <a name="3-ai-enriched-indexing-using-cognitive-services"></a>3. AI obohacené indexování s využitím služeb Cognitive Services
 
-Pro [kognitivního vyhledávání](cognitive-search-concept-intro.md) pouze extrakce image během hádání dokumentu se účtuje na základě počtu imagí, které jsou extrahovány z vašich dokumentů. Extrakce textu je aktuálně zdarma. Na základě jiné obohacení [integrované kognitivní dovednosti](cognitive-search-predefined-skills.md) se účtují podle prostředku služeb Cognitive Services. Obohacení se účtují za stejnou sazbu jako kdyby jste provedli úloh přímo pomocí služeb Cognitive Services.
-
-Pokud nepoužíváte [kognitivního vyhledávání](cognitive-search-concept-intro.md) nebo [indexerů Azure Search](search-indexer-overview.md), jsou pouze náklady související s repliky a oddíly v aktivním využití pro pravidelné úlohy indexování a dotazování.
+Pro [indexování AI pomocí služeb Cognitive Services](cognitive-search-concept-intro.md) pouze extrakce image během hádání dokumentu se účtuje na základě počtu imagí, které jsou extrahovány z vašich dokumentů. Extrakce textu je aktuálně zdarma. Další obohacení, jako je zpracování přirozeného jazyka, jsou založeny na [integrované kognitivní dovednosti](cognitive-search-predefined-skills.md) se účtují podle prostředku služeb Cognitive Services. Obohacení se účtují za stejnou sazbu jako kdyby jste provedli úloh přímo pomocí služeb Cognitive Services.
 
 <a name="search-units"></a>
 

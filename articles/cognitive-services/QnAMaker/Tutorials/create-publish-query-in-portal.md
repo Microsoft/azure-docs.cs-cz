@@ -1,7 +1,7 @@
 ---
 title: Vytvářet, publikovat, odpovědět v nástroje QnA Maker
 titleSuffix: Azure Cognitive Services
-description: Tento kurz založený na portálu vás provede programovým vytvořením a publikováním znalostní báze a následným zodpovězením otázky ze znalostní báze.
+description: Vytvoření nové znalostní báze pomocí otázek a odpovědí z veřejné nejčastějších dotazů založených na webu. Uložit, trénování a publikování znalostní báze. Po publikování znalostní báze dotaz odesílat a přijímat odpovědi pomocí příkazu CURL. Vytvořte robota a otestovat bot se stejnou otázku.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -9,18 +9,18 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: tutorial
-ms.date: 12/17/2018
+ms.date: 04/08/2019
 ms.author: diberry
-ms.openlocfilehash: 6f79614e4b1ec660d2ec5c8aee40924908cf8f5c
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.openlocfilehash: 299dd61055503f0b5a11cbe97e137e4760edadda
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58884121"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59266929"
 ---
-# <a name="tutorial-create-a-knowledge-base-then-answer-question-via-the-qna-maker-portal"></a>Kurz: Vytvoření znalostní báze knowledge base a zodpovědět dotazy přes portál QnA Maker
+# <a name="tutorial-from-qna-maker-portal-create-a-knowledge-base"></a>Kurz: Nástroj QnA Maker portal vytvořte znalostní báze
 
-Tento kurz vás provede vytvořením a publikováním znalostní báze a následným zodpovězením otázky ze znalostní báze.
+Vytvoření nové znalostní báze pomocí otázek a odpovědí z veřejné nejčastějších dotazů založených na webu. Uložit, trénování a publikování znalostní báze. Po publikování znalostní báze dotaz odesílat a přijímat odpovědi pomocí příkazu Curl. Vytvořte robota a otestovat bot se stejnou otázku. 
 
 V tomto kurzu se naučíte: 
 
@@ -29,6 +29,7 @@ V tomto kurzu se naučíte:
 > * Kontrola, uložení a trénování znalostní báze
 > * Publikování znalostní báze
 > * Dotazování znalostní báze pomocí cURL
+> * Vytváření robotů
 > 
 > [!NOTE]
 > Programové verzi tohoto kurzu je k dispozici s tak získají kompletní řešení z [ **Azure – ukázky/cognitive-services – QnA maker csharp** úložiště GitHub](https://github.com/Azure-Samples/cognitive-services-qnamaker-csharp/tree/master/documentation-samples/tutorials/create-publish-answer-knowledge-base).
@@ -51,7 +52,7 @@ Tento kurz vyžaduje existující [službu QnA Maker](../How-To/set-up-qnamaker-
 
     |Nastavení|Účel|
     |--|--|
-    |Microsoft Azure Directory Id (ID adresáře Microsoft Azure)|Vaše _ID adresáře Microsoft Azure_ je přidružené k účtu, pomocí kterého se přihlašujete k webu Azure Portal a portálu služby QnA Maker. |
+    |Microsoft Azure Directory Id (ID adresáře Microsoft Azure)|Vaše _ID adresáře Microsoft Azure_ je přidružený k účtu, který používáte pro přihlášení na webu Azure portal a portál QnA Maker. |
     |Azure Subscription name (Název předplatného Azure)|Váš fakturační účet, ve kterém jste vytvořili prostředek služby QnA Maker.|
     |Azure QnA Service (Služba otázek a odpovědí Azure)|Prostředek vaší existující služby QnA Maker.|
 
@@ -99,7 +100,9 @@ Po publikování znalostní báze se zobrazí koncový bod.
 
 ![Nastavení koncového bodu na stránce publikování](../media/qnamaker-tutorial-create-publish-query-in-portal/publish-2.png)
 
-## <a name="use-curl-to-query-for-an-faq-answer"></a>Odeslání dotazu na odpověď na otázku z nejčastějších dotazů pomocí cURL
+Nezavírejte toto **publikovat** , bude ho používat k vytváření robotů v pozdější části kurzu. 
+
+## <a name="use-curl-to-query-for-an-faq-answer"></a>Používáme nástroj Curl k dotazu na odpověď – nejčastější dotazy
 
 1. Vyberte kartu **Curl**. 
 
@@ -109,7 +112,7 @@ Po publikování znalostní báze se zobrazí koncový bod.
 
 1. Nahraďte `<Your question>` za `How large can my KB be?` (Jak velká může být moje znalostní báze?). Tato otázka se podobá otázce `How large a knowledge base can I create?` (Jak velkou znalostní bázi můžu vytvořit?), ale není úplně stejná. Služba QnA Maker s využitím zpracování přirozeného jazyka určí, že se jedná o stejné otázky.     
 
-1. Spusťte příkaz cURL a přijměte odpověď JSON obsahující skóre a odpověď. 
+1. Spusťte příkaz Curl, získáte odpověď JSON, včetně skóre a odpovědí. 
 
     ```TXT
       % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
@@ -133,11 +136,11 @@ Po publikování znalostní báze se zobrazí koncový bod.
 
     Služba QnA Maker udává mírnou jistotu se skóre 42,81 %.  
 
-## <a name="use-curl-to-query-for-a-chit-chat-answer"></a>Odeslání dotazu na konverzační odpověď pomocí cURL
+## <a name="use-curl-to-query-for-a-chit-chat-answer"></a>Používáme nástroj Curl k dotazu pro Chit chat odpovědí
 
-1. V terminálu s podporou cURL nahraďte `How large can my KB be?` (Jak velká může být moje znalostní báze?) za zprávu uživatele, která ukončí konverzaci s chatbotem, například `Thank you` (Děkuji).   
+1. V terminálu povolené Curl nahraďte `How large can my KB be?` příkazem ukončení konverzace bot od uživatele, jako například `Thank you`.   
 
-1. Spusťte příkaz cURL a přijměte odpověď JSON obsahující skóre a odpověď. 
+1. Spusťte příkaz Curl, získáte odpověď JSON, včetně skóre a odpovědí. 
 
     ```TXT
       % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
@@ -173,13 +176,13 @@ Po publikování znalostní báze se zobrazí koncový bod.
 
     Vzhledem k tomu, že otázka `Thank you` (Děkuji) přesně odpovídá konverzační otázce, služba QnA Maker udává naprostou jistotu se skóre 100. Nástroj QnA Maker, vrátí všechny související dotazy, stejně jako vlastnost metadat obsahující informace o značku metadat Chit konverzace.  
 
-## <a name="use-curl-to-query-for-the-default-answer"></a>Odeslání dotazu na výchozí odpověď pomocí cURL
+## <a name="use-curl-to-query-for-the-default-answer"></a>Používáme nástroj Curl k dotazů pro výchozí odpověď
 
 Na každou otázku, u které si služba QnA Maker není jistá odpovědí, se vrátí výchozí odpověď. Tuto odpověď můžete nakonfigurovat na webu Azure Portal. 
 
 1. V terminálu s podporou cURL nahraďte `Thank you` (Děkuji) za `x`. 
 
-1. Spusťte příkaz cURL a přijměte odpověď JSON obsahující skóre a odpověď. 
+1. Spusťte příkaz Curl, získáte odpověď JSON, včetně skóre a odpovědí. 
 
     ```TXT
       % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
@@ -197,15 +200,25 @@ Na každou otázku, u které si služba QnA Maker není jistá odpovědí, se vr
     }
     ```
     
-    Služba QnA Maker vrátila skóre 0, což znamená nulovou jistotu, ale vrátila také výchozí odpověď. 
+    Nástroj QnA Maker vrátil bodů `0`, což znamená, že bez obav, ale vrátí výchozí odpověď. 
+
+## <a name="create-a-knowledge-base-bot"></a>Vytváření robotů znalostní báze
+
+Další informace najdete v tématu [vytvořit chatovací robot s této znalostní báze](create-qna-bot.md).
+
+## <a name="clean-up-resources"></a>Vyčištění prostředků
+
+Jakmile budete hotovi s robotem znalostní báze knowledge base, odeberte skupinu prostředků, `my-tutorial-rg`, chcete-li odebrat všechny prostředky Azure vytvořeny během procesu robota.
+
+Jakmile budete hotovi s znalostní báze na portálu pro nástroj QnA Maker vyberte **Moje znalostních bází**, vyberte ve znalostní bázi **kb tento kurz**, vyberte ikonu Odstranit úplně vpravo v daném řádku.  
 
 ## <a name="next-steps"></a>Další postup
 
-Další informace o podporovaných formátech souborů najdete v tématu [Podporované zdroje dat](../Concepts/data-sources-supported.md). 
+Další informace najdete v tématu [zdroje dat podporované](../Concepts/data-sources-supported.md) Další informace o podpoře formátů souborů. 
 
 Další informace o [charakterech](../Concepts/best-practices.md#chit-chat) konverzace.
 
 Další informace o výchozí odpovědi najdete v části [Nebyla nalezena žádná odpovídající položka](../Concepts/confidence-score.md#no-match-found). 
 
 > [!div class="nextstepaction"]
-> [Koncepty znalostní báze](../Concepts/knowledge-base.md)
+> [Vytvoření chatovací robot s této znalostní báze](create-qna-bot.md)

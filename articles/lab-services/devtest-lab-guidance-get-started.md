@@ -1,5 +1,5 @@
 ---
-title: Začínáme s využitím Azure DevTest Labs
+title: Oblíbené scénáře pro pomocí Azure DevTest Labs
 description: Tento článek obsahuje základní scénáře pro pomocí Azure DevTest Labs a dvě obecné cesty Pokud chcete začít používat službu ve vaší organizaci.
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
@@ -13,14 +13,14 @@ ms.topic: article
 ms.date: 04/01/2019
 ms.author: spelluru
 ms.reviewer: christianreddington,anthdela,juselph
-ms.openlocfilehash: 219697451174811fab7880ba0d5930ba85edf8fb
-ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
+ms.openlocfilehash: 8736ba4c24ac4c8f8d84345028d1cadfdef38697
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58803795"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59272374"
 ---
-# <a name="get-started-with-using-azure-devtest-labs"></a>Začínáme s využitím Azure DevTest Labs
+# <a name="popular-scenarios-for-using-azure-devtest-labs"></a>Oblíbené scénáře pro pomocí Azure DevTest Labs
 V závislosti na potřebách organizace je možné nakonfigurovat DevTest Labs pro splnění různých požadavků.  Tento článek popisuje Oblíbené scénáře. Každý scénář popisuje výhody převést do režimu s použitím DevTest Labs a prostředky používat k implementaci těchto scénářů.  
 
 - Stolní počítače pro vývojáře

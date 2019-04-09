@@ -12,16 +12,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 04/02/2019
+ms.date: 04/08/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 813ab2a349ba843e9f41675234e395470bef9740
-ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
+ms.openlocfilehash: 788b03bb55abdc3040df8c5317f1f55738ebb023
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58896121"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59268344"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-technical-deep-dive"></a>Azure Active Directory bezproblémové jednotné přihlašování: Podrobné technické informace
 
@@ -44,7 +44,7 @@ Bezproblémového jednotného přihlašování se aktivuje pomocí služby Azure
 - Účet počítače Kerberos dešifrovací klíč je bezpečně sdílet s Azure AD. Pokud existuje více doménových struktur AD, každý účet počítače bude mít svůj vlastní jedinečný dešifrovací klíč protokolu Kerberos.
 
 >[!IMPORTANT]
-> `AZUREADSSOACC` Účet počítače musí být silného chráněn z bezpečnostních důvodů. Pouze Domain Admins by měl mít možnost Spravovat účet počítače. Ujistěte se, že delegování protokolu Kerberos v tomto počítači zakázaná. Store účet počítače v organizační jednotce (OU) jsou-li před náhodným odstraněním. Dešifrovací klíč protokolu Kerberos na účet počítače by měly také považovat za citlivé. Důrazně doporučujeme vám [nespotřebujete dešifrovací klíče Kerberos](how-to-connect-sso-faq.md#how-can-i-roll-over-the-kerberos-decryption-key-of-the-azureadssoacc-computer-account) z `AZUREADSSOACC` účet počítače nejméně každých 30 dnů.
+> `AZUREADSSOACC` Účet počítače musí být silného chráněn z bezpečnostních důvodů. Pouze Domain Admins by měl mít možnost Spravovat účet počítače. Ujistěte se, že delegování protokolu Kerberos v tomto počítači zakázaná. Store účet počítače v jednotce organizace (OU), kde jsou bezpečné před náhodným odstraněním a mají přístup pouze Domain Admins. Dešifrovací klíč protokolu Kerberos na účet počítače by měly také považovat za citlivé. Důrazně doporučujeme vám [nespotřebujete dešifrovací klíče Kerberos](how-to-connect-sso-faq.md#how-can-i-roll-over-the-kerberos-decryption-key-of-the-azureadssoacc-computer-account) z `AZUREADSSOACC` účet počítače nejméně každých 30 dnů.
 
 Po dokončení instalace bezproblémové jednotné přihlašování funguje stejně jako jakékoli jiné přihlášení, která používá integrované ověřování Windows (IWA).
 

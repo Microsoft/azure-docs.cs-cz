@@ -17,12 +17,12 @@ ms.author: celested
 ms.reviewer: hirsin, justhu
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1ff37184cd8789c5408d02a427080db86de00b7d
-ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
+ms.openlocfilehash: 69440fb99439231cdc046ef48bddfa852c17924c
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58295449"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59271794"
 ---
 # <a name="authentication-and-authorization-error-codes"></a>Kódy chyb autorizace a ověřování
 
@@ -58,7 +58,7 @@ Hledáte informace o chybových kódech AADSTS, které jsou vráceny od služby 
 | AADSTS50007 | PartnerEncryptionCertificateMissing – partner šifrovací certifikát nebyl nalezen pro tuto aplikaci. [Vytvořit lístek podpory](../fundamentals/active-directory-troubleshooting-support-howto.md) s Microsoftem získat tyto pevné. |
 | AADSTS50008 | InvalidSamlToken - kontrolní výraz SAML je chybějící nebo nesprávně nakonfigurované v tokenu. Obraťte se na svého federačního zprostředkovatele. |
 | AADSTS50010 | AudienceUriValidationFailed – identifikátor URI cílové skupiny pro aplikaci pro ověření se nezdařilo, protože nebyly nakonfigurovány žádné cílové skupiny tokenu. |
-| AADSTS50011 | InvalidReplyTo - adresa pro odpovědi chybí, je chybně nakonfigurovaný, nebo neodpovídá adresám pro odpovědi nakonfigurovaným pro aplikaci. Vyzkoušejte řešení uvedené na adrese [https://docs.microsoft.com/azure/active-directory/application-sign-in-problem-federated-sso-gallery#the-reply-address-does-not-match-the-reply-addresses-configured-for-the-application](https://docs.microsoft.com/azure/active-directory/application-sign-in-problem-federated-sso-gallery#the-reply-address-does-not-match-the-reply-addresses-configured-for-the-application). Pokud se stále zobrazuje problémy, obraťte se na vlastníka aplikace nebo aplikace správce. |
+| AADSTS50011 | InvalidReplyTo - adresa pro odpovědi chybí, je chybně nakonfigurovaný, nebo neodpovídá adresám pro odpovědi nakonfigurovaným pro aplikaci.  Jako řešení nezapomeňte přidat adresu této chybějící odpověď do aplikace Azure Active Directory nebo někdo s oprávněními k správě aplikace ve službě Active Directory to udělal za vás.|
 | AADSTS50012 | AuthenticationFailed – ověření se nezdařilo pro jednu z následujících důvodů:<ul><li>Název předmětu podpisového certifikátu není autorizovaný.</li><li>V názvu subjektu autorizované nebyl nalezen odpovídající důvěryhodné autority zásad</li><li>Řetěz certifikátů není platný</li><li>Podpisový certifikát je neplatný</li><li>Zásady nejsou nakonfigurované na tenantovi</li><li>Kryptografický otisk podpisového certifikátu není autorizovaný.</li><li>Kontrolní výraz klienta obsahuje neplatný podpis</li></ul> |
 | AADSTS50013 | InvalidAssertion - kontrolní výraz je z různých důvodů neplatné – vydavatel tokenu neodpovídá rozhraní api verze v rámci své doby platnosti v rozsahu - vypršela platnost – poškozený - obnovovací token v kontrolního výrazu není primární obnovovací token. |
 | AADSTS50014 | GuestUserInPendingState - uplatnění uživatele je ve stavu čekání. Uživatelský účet guest již není plně zatím nevytvořili. |
@@ -153,7 +153,7 @@ Hledáte informace o chybových kódech AADSTS, které jsou vráceny od služby 
 | AADSTS70007 | UnsupportedResponseMode – aplikace vrátil nepodporovanou hodnotu `response_mode` při vyžádání tokenu.  |
 | AADSTS70008 | ExpiredOrRevokedGrant - obnovovacího tokenu vypršela platnost kvůli nečinnosti. Token, který byl vydán na XXX a byla pro určitou dobu neaktivní. |
 | AADSTS70011 | InvalidScope - rozsahem požadovaným aplikace je neplatný. |
-| AADSTS70012 | MsaServerError - při ověřování uživatele MSA (příjemce) došlo k chybě serveru. Zkuste to znova. Pokud bude nadále selhávat, [vytvořit lístek podpory](../fundamentals/active-directory-troubleshooting-support-howto.md) |
+| AADSTS70012 | MsaServerError - při ověřování uživatele MSA (příjemce) došlo k chybě serveru. Zkuste to znova. Pokud k chybě dochází opakovaně, [otevřete požadavek na podporu](../fundamentals/active-directory-troubleshooting-support-howto.md). |
 | AADSTS70016 | AuthorizationPending – chyba tok OAuth 2.0 zařízení. Ověření čeká na vyřízení. Zařízení se pokusí navázat požadavku dotazování. |
 | AADSTS70018 | BadVerificationCode – neplatný ověřovací kód z důvodu uživatele zadáte nesprávné uživatelského kódu pro tok kódu zařízení. Autorizace není schválený. |
 | AADSTS70019 | Ověřovací kód CodeExpired – platnost vypršela. Požádejte uživatele, zkuste přihlásit. |

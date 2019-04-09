@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 957ce60b8519ccb1e3287232f7a5459a56b25bb7
-ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
-ms.translationtype: MT
+ms.openlocfilehash: 93dae9a69997dd1b513d205118a112119025f4fd
+ms.sourcegitcommit: b4ad15a9ffcfd07351836ffedf9692a3b5d0ac86
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55960611"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59057111"
 ---
 # <a name="add-a-heat-map-layer"></a>Přidání vrstvy heat mapy
 
@@ -25,7 +25,7 @@ Zahřívá mapy, označované také jako bod hustota mapy, jsou typu vizualizace
 * Vizualizace GPS trasování, která zahrnuje rychlosti jako vážená výška mapování kde intenzitu zrcadlových datových bodů podle rychlosti je skvělý způsob, jak rychle zjistit, kde byl zkrácení vozidlo.
 
 > [!TIP]
-> Vykreslí souřadnice všechny geometrie ve zdroji dat se vrstvy Heat map ve výchozím nastavení. Omezit vrstvu tak, aby je jen pro vykreslení bodu geometrie funkce nastavit `filter` vlastnost vrstva `['==', '$type', 'Point']`
+> Vykreslí souřadnice všechny geometrie ve zdroji dat se vrstvy Heat map ve výchozím nastavení. Omezit vrstvu tak, aby je jen pro vykreslení bodu funkce geometrie, nastavit `filter` vlastnost vrstva `['==', ['geometry-type'], 'Point']` nebo `['any', ['==', ['geometry-type'], 'Point'], ['==', ['geometry-type'], 'MultiPoint']]` Pokud budete chtít zahrnout i MultiPoint funkce.
 
 ## <a name="add-a-heat-map-layer"></a>Přidání vrstvy heat mapy
 
@@ -36,21 +36,21 @@ Pokud chcete zobrazit zdroje dat bodů v podobě heat mapa, předat do instance 
 <iframe height='500' scrolling='no' title='Vrstvy jednoduché Heat mapa' src='//codepen.io/azuremaps/embed/gQqdQB/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Zobrazit pera <a href='https://codepen.io/azuremaps/pen/gQqdQB/'>vrstvy jednoduché Heat mapa</a> pomocí Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) na <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
-V tomto příkladu má každý bod heat vůbec úrovně přiblížení protokolu radius 10 pixelů. Při přidávání vrstvu mapy heat mapu, tato ukázka vkládá je pod popisek vrstvu. Tím se vytvoří lepší uživatelské prostředí jsou zřetelně vidět výše heat mapa popisky. Je zdrojem dat v této ukázce [USGS zemětřesení nebezpečí Program](https://earthquake.usgs.gov/) a skládá se z bodů, které představuje významné zemětřesení, ke kterým došlo v posledních 30 dní.
+V tomto příkladu má každý bod heat vůbec úrovně přiblížení protokolu radius 10 pixelů. Při přidávání vrstvu mapy heat mapu, tato ukázka vkládá je pod popisek vrstvu k vytvoření lepší uživatelské prostředí jsou zřetelně vidět výše heat mapa popisky. Je zdrojem dat v této ukázce [USGS zemětřesení nebezpečí Program](https://earthquake.usgs.gov/) a skládá se z bodů, které představuje významné zemětřesení, ke kterým došlo v posledních 30 dní.
 
 ## <a name="customizing-the-heat-map-layer"></a>Přizpůsobení vrstvu heat mapy
 
 Předchozí příklad nastavení možností pomocí protokolu radius a krytí upravit heat mapa. Poskytuje několik možností pro přizpůsobení; vrstvu heat mapy
 
-* `radius`: Definuje pixel radius, ve kterém k vykreslení datových bodů. Poloměr je možné nastavit jako číslo s pevným nebo jako výraz. Vlastnosti autorefresh pomocí výrazu, je možné škálovat radius založené na úroveň zvětšení, které se zobrazí představují konzistentní prostorových oblasti na mapě (například 5 mil radius).
-* `color`: Určuje, jak barevně zvýrazněné heat mapa. Palety barev přechodu se často používá pro heat mapy, ale stupňovitým barev, které jsou také užitečné, pokud mají být váš heat mapa vypadat více jako tvarování dat palety. Tyto barvy palety definovat barvy od minima k hodnotě maximální hustoty. Hodnoty barev pro heat mapy jsou určeny jako výraz na `heatmap-density` hodnotu. Barvy v indexu 0 ve výrazu přechodu nebo výchozí barvu barvu krok definuje barvu, oblasti, kde není žádná data a je možné definovat barvu pozadí. Mnoho chtít nastavit tuto hodnotu a je transparentní nebo poloprůhledného black. Tady jsou příklady výrazů barva;
+* `radius`: Definuje pixel radius, ve kterém k vykreslení datových bodů. Poloměr je možné nastavit jako číslo s pevným nebo jako výraz. Vlastnosti autorefresh pomocí výrazu, je možné škálovat založené na na úroveň zvětšení, které představují konzistentní prostorových oblasti na mapě (například 5 mil radius) se zobrazí v protokolu radius.
+* `color`: Určuje, jak barevně zvýrazněné heat mapa. Palety barev přechodu se často používá pro heat mapy a lze dosáhnout pomocí interpolace výraz, ale stupňovité barvy palety jsou také užitečné, pokud mají být váš heat mapy vypadat více jako tvarování dat a lze nastavit pomocí výraz kroku. Tyto barvy palety definovat barvy od minima k hodnotě maximální hustoty. Hodnoty barev pro heat mapy jsou určeny jako výraz na `heatmap-density` hodnotu. Barvy v indexu 0 ve výrazu interpolace nebo výchozí barvu výraz kroku definuje barvu, oblasti, kde není žádná data a je možné definovat barvu pozadí. Mnoho chtít nastavit tuto hodnotu a je transparentní nebo poloprůhledného black. Tady jsou příklady výrazů barva;
 
-| Barva barevného přechodu – výraz | Stupňovité barva – výraz | 
-|---------------------------|--------------------------|
-| \[<br/>&nbsp;&nbsp;&nbsp;&nbsp;"interpolovat.<br/>&nbsp;&nbsp;&nbsp;&nbsp;\["lineární"\],<br/>&nbsp;&nbsp;&nbsp;&nbsp;\['heatmap-density'\],<br/>&nbsp;&nbsp;&nbsp;&nbsp;0, 'transparent',<br/>&nbsp;&nbsp;&nbsp;&nbsp;0,01, "fialové",<br/>&nbsp;&nbsp;&nbsp;&nbsp;0,5, '#fb00fb.<br/>&nbsp;&nbsp;&nbsp;&nbsp;1, "#00c3ff.<br/>\] | \[<br/>&nbsp;&nbsp;&nbsp;&nbsp;"krok",<br/>&nbsp;&nbsp;&nbsp;&nbsp;\['heatmap-density'\],<br/>&nbsp;&nbsp;&nbsp;&nbsp;"transparentní.<br/>&nbsp;&nbsp;&nbsp;&nbsp;0,01, "navy",<br/>&nbsp;&nbsp;&nbsp;&nbsp;0,25, "navy",<br/>&nbsp;&nbsp;&nbsp;&nbsp;0,50, "zelená",<br/>&nbsp;&nbsp;&nbsp;&nbsp;0,75, "", žlutý<br/>&nbsp;&nbsp;&nbsp;&nbsp;1,00 "red"<br/>\] |   
+| Interpolace barva – výraz | Stupňovité barva – výraz | 
+|--------------------------------|--------------------------|
+| \[<br/>&nbsp;&nbsp;&nbsp;&nbsp;"interpolovat.<br/>&nbsp;&nbsp;&nbsp;&nbsp;\["lineární"\],<br/>&nbsp;&nbsp;&nbsp;&nbsp;\['heatmap-density'\],<br/>&nbsp;&nbsp;&nbsp;&nbsp;0, 'transparent',<br/>&nbsp;&nbsp;&nbsp;&nbsp;0,01, "fialové",<br/>&nbsp;&nbsp;&nbsp;&nbsp;0,5, '#fb00fb.<br/>&nbsp;&nbsp;&nbsp;&nbsp;1, "#00c3ff.<br/>\] | \[<br/>&nbsp;&nbsp;&nbsp;&nbsp;"krok",<br/>&nbsp;&nbsp;&nbsp;&nbsp;\['heatmap-density'\],<br/>&nbsp;&nbsp;&nbsp;&nbsp;"transparentní.<br/>&nbsp;&nbsp;&nbsp;&nbsp;0,01, "navy",<br/>&nbsp;&nbsp;&nbsp;&nbsp;0,25, "zelená",<br/>&nbsp;&nbsp;&nbsp;&nbsp;0,50, "", žlutý<br/>&nbsp;&nbsp;&nbsp;&nbsp;0,75 "red"<br/>\] | 
 
 * `opacity`: Určuje, jak neprůhledné nebo průhledné heat mapa vrstva je.
-* `intensity`: Násobitel se vztahuje na váhu jednotlivých bodů řady ke zvýšení celkové intenzitu zrcadlových Heat mapě. To pomáhá provádět malé rozdíly v hmotnosti datových bodů snadnější vizualizace.
+* `intensity`: Násobitel se vztahuje na váhu jednotlivých bodů řady ke zvýšení celkové intenzitu zrcadlových Heat mapě a jednodušeji malé rozdíly v hmotnosti datových bodů, tím snadnější bude vizualizace.
 * `weight`: Ve výchozím nastavení všechny datové body mají lepší zvolit váhu 1, takže všechny datové body jsou vyváženy rovnoměrně. Možnost Váha funguje jako násobitel a je možné nastavit jako číslo nebo výraz. Pokud číslo je nastavená na váhu, Dejme tomu, že 2, bylo by ekvivalentní umístění datových bodů na mapě dvakrát, tím zdvojnásobení hustotu. Nastavení možnosti váhou na číslo vykreslí heat mapa podobným způsobem intenzita možnost použití. Ale pokud použijete výraz váhu jednotlivých bodů řady může být založen na některé metriky ve vlastnostech jednotlivých bodů řady. Využijte zemětřesení data jako příklad datových bodů představují zemětřesení. Důležitou metrikou datových bodů zemětřesení má, je hodnota velikosti. Zemětřesení stát celou dobu, ale většina mají nízké velikost a ještě nejsou popisovač. Pomocí hodnoty velikosti ve výrazu každému datovému bodu přiřadit váhu vám umožní významnější zemětřesení, aby se dala lépe vyjádřit v rámci heat mapa.
 * Kromě možností uvedených základní vrstvě; minimální/maximální přiblížení, viditelné a filtrovat, je zde také `source` možnost, pokud chcete aktualizovat zdroj dat a `source-layer` Pokud zdroj dat je zdroj dlaždice vektoru.
 
@@ -61,8 +61,18 @@ Zde je nástroj, k otestování možností vrstvy různých heat mapy.
 <iframe height='700' scrolling='no' title='Heat mapa vrstvy možnosti' src='//codepen.io/azuremaps/embed/WYPaXr/?height=700&theme-id=0&default-tab=result' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Zobrazit pera <a href='https://codepen.io/azuremaps/pen/WYPaXr/'>zahřívá možností vrstvy mapy</a> pomocí Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) na <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
+## <a name="consistent-zoomable-heat-map"></a>Konzistentní roztahováním heat mapa
+
+Ve výchozím nastavení rádius datových bodů ve vrstvě heat mapa vykreslena mají pevnou pixel radius pro všechny úrovně přiblížení. Jak mapu postupně zvětšován, dohromady data agregace a vrstvě heat mapa vypadá jinak. A `zoom` výrazu je možné škálovat pomocí protokolu radius pro každou úroveň přiblížení tak, aby každý datový bod zahrnuje stejné fyzické oblasti na mapě. Díky tomu budou vrstvu heat mapy, podívejte se, statické a konzistentní vzhledem k aplikacím. Každá úroveň přiblížení mapy svisle má dvakrát tolik pixelů a vodorovně jako předchozí úroveň zvětšení v důsledku toho škálování poloměr tak, aby ho zdvojnásobuje s každou úroveň přiblížení vytvoří heat mapu, která vypadá konzistentní vzhledem k aplikacím na všech úrovních přiblížení. Můžete to udělat pomocí `zoom` se základem 2 `exponential interpolation` výrazu, jak je znázorněno v následující ukázce. Přiblížení mapě, abyste zjistili, jak radius data odkazuje na škále heat mapy s úroveň zvětšení.
+
+<br/>
+
+<iframe height="500" style="width: 100%;" scrolling="no" title="Konzistentní roztahováním heat mapa" src="//codepen.io/azuremaps/embed/OGyMZr/?height=500&theme-id=light&default-tab=js,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
+Zobrazit pera <a href='https://codepen.io/azuremaps/pen/OGyMZr/'>konzistentní roztahováním heat mapa</a> pomocí Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) na <a href='https://codepen.io'>CodePen</a>.
+</iframe>
+
 > [!TIP]
-> Když povolíte clustering pro zdroj dat, jsou jako Clusterované bod seskupeny body, které jsou blízko sebe. Počet bodů, které každý cluster můžete použít jako výraz tloušťka pro heat mapa a výrazně snížit počet bodů, které mají být vykreslit. Počet bodů clusteru je uložené v `point_count property` bodu funkce, jak je znázorněno níže. 
+> Když povolíte clustering pro zdroj dat, jsou jako Clusterované bod seskupeny body, které jsou blízko sebe. Počet bodů, které každý cluster můžete použít jako výraz tloušťka pro heat mapa a výrazně snížit počet bodů, které mají být vykreslit. Počet bodů clusteru je uložené v `point_count` vlastnost funkci bodu, jak je znázorněno níže. 
 > ```JavaScript
 > var layer = new atlas.layer.HeatMapLayer(datasource, null, {
 >    weight: ['get', 'point_count']
@@ -83,5 +93,5 @@ Další informace o třídy a metody používané v tomto článku:
 Další příklady kódu pro přidání do vaše mapy najdete v následujících článcích:
 
 > [!div class="nextstepaction"]
-> [Přidat vrstvu symbol](./map-add-pin.md)
+> [Přidání vrstvy symbolů](./map-add-pin.md)
 

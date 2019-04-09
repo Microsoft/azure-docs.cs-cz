@@ -6,15 +6,15 @@ ms.service: automation
 ms.subservice: process-automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 01/31/2019
+ms.date: 04/05/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 5f98cf51b618686e3c608535667993e9d5f9e939
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 4c91bf389f5c63b95e5b68784b6657e92b109a46
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57852913"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59265861"
 ---
 # <a name="automate-resources-in-your-datacenter-or-cloud-by-using-hybrid-runbook-worker"></a>Automatizace prostředky v datovém centru nebo v cloudu s využitím procesu Hybrid Runbook Worker
 
@@ -36,7 +36,7 @@ Instalace a konfigurace Windows Hybrid Runbook Worker, můžete použít dvě me
 
 |Operační systém  |Typy nasazení  |
 |---------|---------|
-|Windows     | [PowerShell](automation-windows-hrw-install.md#automated-deployment)<br>[Ruční](automation-windows-hrw-install.md#manual-deployment)        |
+|Windows     | [PowerShell](automation-windows-hrw-install.md#automated-deployment)<br>[Manual](automation-windows-hrw-install.md#manual-deployment)        |
 |Linux     | [Python](automation-linux-hrw-install.md#installing-a-linux-hybrid-runbook-worker)        |
 
 > [!NOTE]
@@ -97,11 +97,11 @@ Můžete odebrat skupinu, budete nejdřív muset odebrat funkce Hybrid Runbook W
 
 ### <a name="hybrid-worker-role"></a>Role pracovního procesu hybrid
 
-Pro Hybrid Runbook Worker mohl připojit a zaregistrovat protokoly Azure monitoru musí mít přístup k portu a adresám URL, které jsou popsány v této části. Tento přístup je v horní části [portů a adresám URL požadovaným pro agenta Microsoft Monitoring Agent](../azure-monitor/platform/agent-windows.md) pro připojení k protokoly Azure monitoru.
+Pro Hybrid Runbook Worker mohl připojit a zaregistrovat u služby Azure Automation musí mít přístup k portu a adresám URL, které jsou popsány v této části. Tento přístup je v horní části [portů a adresám URL požadovaným pro agenta Microsoft Monitoring Agent](../azure-monitor/platform/agent-windows.md) pro připojení k protokoly Azure monitoru.
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
-Pokud používáte proxy server pro komunikaci mezi agentem a službou Azure Monitor, ujistěte se, že jsou dostupné příslušné prostředky. Pokud používáte k omezení přístupu k Internetu bránu firewall, musíte nakonfigurovat bránu firewall, aby povolovala přístup. Pokud používáte bránu Log Analytics jako proxy server, ujistěte se, že je nakonfigurovaný pro proces hybrid Worker. Pokyny, jak to udělat, najdete v části [konfigurace brány Log Analytics pro Automation Hybrid Worker](https://docs.microsoft.com/azure/log-analytics/log-analytics-oms-gateway).
+Pokud používáte proxy server pro komunikaci mezi agentem a službou Azure Automation, ujistěte se, že jsou dostupné příslušné prostředky. Časový limit pro žádosti od procesu Hybrid Runbook Worker a služby Automation je 30 sekund. Po 3 pokusy o požadavek selže. Pokud používáte k omezení přístupu k Internetu bránu firewall, musíte nakonfigurovat bránu firewall, aby povolovala přístup. Pokud používáte bránu Log Analytics jako proxy server, ujistěte se, že je nakonfigurovaný pro proces hybrid Worker. Pokyny, jak to udělat, najdete v části [konfigurace brány Log Analytics pro Automation Hybrid Worker](https://docs.microsoft.com/azure/log-analytics/log-analytics-oms-gateway).
 
 Následující portů a adres URL jsou požadovány pro role Hybrid Runbook Worker ke komunikaci se službou Automation:
 

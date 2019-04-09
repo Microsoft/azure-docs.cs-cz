@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 03/19/2019
 ms.author: aljo
 ms.custom: mvc
-ms.openlocfilehash: 05a30bee8e6eb0db2e06d6d5a3a7af0d0759fb4c
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.openlocfilehash: fa9b091beacbc98c6939ec0454bd04da2b7561e7
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/05/2019
-ms.locfileid: "59049394"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59278696"
 ---
 # <a name="tutorial-scale-a-service-fabric-cluster-in-azure"></a>Kurz: Škálování clusteru Service Fabric v Azure
 
@@ -75,7 +75,7 @@ Další informace najdete v článku [clusteru kapacity pokyny](service-fabric-c
 
 ## <a name="export-the-template-for-the-resource-group"></a>Vyexportování šablony pro skupinu prostředků
 
-Po vytvoření zabezpečeného [clusteru Windows](service-fabric-tutorial-create-vnet-and-windows-cluster.md) a nastavení vaší skupiny prostředků úspěšně, export šablony Resource Manageru pro skupinu prostředků. Export šablony umožňuje automatizovat budoucí nasazení clusteru a jeho prostředky, protože šablona obsahuje kompletní infrastrukturu.  Další informace o exportování šablony najdete v článku [skupiny prostředků spravovat Azure Resource Manageru pomocí webu Azure portal](/azure/azure-resource-manager/manage-resource-groups-portal).
+Po vytvoření zabezpečeného [clusteru Windows](service-fabric-tutorial-create-vnet-and-windows-cluster.md) a nastavení vaší skupiny prostředků úspěšně, export šablony Resource Manageru pro skupinu prostředků. Export šablony umožňuje automatizovat budoucí nasazení clusteru a její prostředky, protože šablona obsahuje kompletní infrastrukturu.  Další informace o exportování šablony najdete v článku [skupiny prostředků spravovat Azure Resource Manageru pomocí webu Azure portal](/azure/azure-resource-manager/manage-resource-groups-portal).
 
 1. V [webu Azure portal](https://portal.azure.com), přejděte do skupiny prostředků obsahující cluster (**sfclustertutorialgroup**, pokud jsou projdete tímto kurzem). 
 
@@ -815,7 +815,7 @@ az group deployment create --resource-group sfclustertutorialgroup --template-fi
 ```
 
 ## <a name="remove-a-node-type-from-the-cluster"></a>Odebrat typ uzlu z clusteru
-Po vytvoření clusteru Service Fabric, můžete horizontálně škálovat cluster odebráním typu uzlu (škálovací sady virtuálních počítačů) a všechny jeho uzly. Je možné škálovat cluster v okamžiku, i když spouštění úloh v clusteru. Škálování clusteru, vaše aplikace automaticky škálovat směrem také.
+Po vytvoření clusteru Service Fabric, můžete škálovat cluster vodorovně odebere typ uzlu (škálovací sady virtuálních počítačů) a všechny jeho uzly. Je možné škálovat cluster v okamžiku, i když spouštění úloh v clusteru. Škálování clusteru, vaše aplikace automaticky škálovat směrem také.
 
 > [!WARNING]
 > Použití AzServiceFabricNodeType odebrat k odebrání typu uzlu z clusteru pro produkční prostředí se nedoporučuje používat často. Odstraní prostředek sady škálování virtuálního počítače za typ uzlu je nebezpečný příkaz. 

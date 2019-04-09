@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: required
 ms.date: 10/12/2018
 ms.author: vturecek
-ms.openlocfilehash: 98cc6ee2428523b93b42fca73daadc118103b7d7
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: 5a4b7514005da9e9a998dba014fa0ea6c014397a
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58667476"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59268513"
 ---
 # <a name="aspnet-core-in-service-fabric-reliable-services"></a>ASP.NET Core v Service Fabric Reliable Services
 
@@ -369,7 +369,7 @@ public void ConfigureServices(IServiceCollection services)
 }
 ```
 ### <a name="default-key-mapping"></a>Výchozí klíč mapování
-Ve výchozím nastavení, konfiguraci poskytovatele Service Fabric obsahuje název balíčku, název oddílu a názvu vlastnosti dohromady a konfigurace asp.net core klíče pomocí následujících funkcí:
+Ve výchozím nastavení, poskytovatel konfigurace pro Service Fabric obsahuje název balíčku, název oddílu a názvu vlastnosti dohromady a asp.net core konfiguraci klíče pomocí následujících funkcí:
 ```csharp
 $"{this.PackageName}{ConfigurationPath.KeyDelimiter}{section.Name}{ConfigurationPath.KeyDelimiter}{property.Name}"
 ```
@@ -511,7 +511,7 @@ Stavové služby, které jsou volány pouze z v rámci clusteru používejte dyn
 | ServiceFabricIntegrationOptions | UseUniqueServiceUrl | S přiřazením dynamický port toto nastavení zabrání problém chybné identity popsané výše. |
 
 ## <a name="next-steps"></a>Další postup
-[Ladění aplikace Service Fabric pomocí Visual Studia](service-fabric-debugging-your-application.md)
+[Ladění aplikace Service Fabric pomocí sady Visual Studio](service-fabric-debugging-your-application.md)
 
 <!--Image references-->
 [0]:./media/service-fabric-reliable-services-communication-aspnetcore/webhost-standalone.png

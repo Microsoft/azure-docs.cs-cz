@@ -1,7 +1,6 @@
 ---
 title: Vytvoření zásad pro nekompatibilní prostředky pomocí Azure Powershellu
 description: Použití Azure Powershellu k vytvoření přiřazení Azure Policy pro identifikaci prostředků, které nedodržují předpisy.
-services: azure-policy
 author: DCtheGeek
 ms.author: dacoulte
 ms.date: 03/11/2019
@@ -9,12 +8,12 @@ ms.topic: quickstart
 ms.service: azure-policy
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: 7f743ee99516200c1fb046460c261605e7b3b4e0
-ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
+ms.openlocfilehash: f07a760153c4ec15cec5c5bc1348e23152c59cb8
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58801199"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59258330"
 ---
 # <a name="create-a-policy-assignment-to-identify-non-compliant-resources-using-azure-powershell"></a>Vytvoření přiřazení zásady pro identifikaci neodpovídajících prostředků pomocí Azure Powershellu
 
@@ -114,4 +113,4 @@ V tomto rychlém startu jste přiřadili definici zásady pro identifikaci prost
 Další informace o přiřazování zásad pro ověření, že nové prostředky jsou kompatibilní, i nadále najdete v tomto kurzu:
 
 > [!div class="nextstepaction"]
-> [Vytváření a správa zásad](./tutorials/create-and-manage.md)
+> [Vytváření a Správa zásad](./tutorials/create-and-manage.md)

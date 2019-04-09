@@ -10,12 +10,12 @@ author: anumjs
 ms.author: anjangsh
 ms.reviewer: jrasnick
 manager: craigg
-ms.openlocfilehash: ae9f2cbdd659b7eaf3558717be19f324e803d906
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.openlocfilehash: 8f852fe67443193ad19cb9bd57e0fd2294f3c817
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58522328"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59266031"
 ---
 # <a name="azure-sql-data-warehouse-release-notes"></a>Poznámky k verzi Azure SQL Data Warehouse
 
@@ -27,7 +27,7 @@ Tento článek shrnuje nové funkce a vylepšení v posledních verzích [Azure 
 | --- | --- |
 |**Důležitost úlohy nyní dostupná ve verzi preview**|Důležitost úloh umožňuje datoví architekti používat význam ke klasifikaci žádosti. Požadavky s vyšší důležitostí zaručeno rychlejší přístup k prostředkům, které pomáhá plnit smlouvy o úrovni služeb.  Důležitost úloh umožňuje vysoký obchodní hodnotu práce podle smlouvy SLA ve sdíleném prostředí s méně prostředků.<br/><br/>Další informace o důležitosti pracovního vytížení, najdete v článku [klasifikace](sql-data-warehouse-workload-classification.md) a [význam](sql-data-warehouse-workload-importance.md) přehledové články v dokumentaci. Podívejte se [vytvořit ÚLOHU třídění](/sql/t-sql/statements/create-workload-classifier-transact-sql?view=azure-sqldw-latest) doc také.<br/><br/>Zobrazit úlohy význam v akci v následující videa:<br/>[Koncepty správy úloh](  https://www.youtube.com/embed/QcCRBAhoXpM)<br/>[Scénáře správy úloh](https://www.youtube.com/embed/_2rLMljOjw8)|
 |**SESKUPIT PODLE SOUHRN**|Souhrn je teď podporovaná Group možnost ve službě Azure Data Warehouse.   Souhrn skupiny se vytvoří skupina pro každou kombinaci výrazy sloupce. GROUP BY také "shrnuje" výsledky do mezisoučty a celkové součty. K tomuto účelu přesunu zprava doleva, snižuje počet výrazy sloupce, po které vytvoří skupiny a aggregation(s).  Pořadí sloupců má vliv výstup KUMULATIVNÍ a může mít vliv na počet řádků v sadě výsledků.<br/><br/>Další informace o souhrn skupiny, najdete v článku, [Group (Transact-SQL)](/sql/t-sql/queries/select-group-by-transact-sql?view=azure-sqldw-latest)
-|**Pro zpřesnění DWU použít a portálu metriky využití procesoru**|SQL Data Warehouse významně zvyšuje metriky přesnosti na webu Azure Portal.  Tato verze obsahuje opravu pro definice metriky využití procesoru a použít DWU správně podle vašich úloh napříč všech výpočetních uzlech.|
+|**Pro zpřesnění DWU použít a portálu metriky využití procesoru**|SQL Data Warehouse významně zvyšuje metriky přesnosti na webu Azure Portal.  Tato verze obsahuje opravu pro definice metriky využití procesoru a použít DWU správně podle vašich úloh napříč všech výpočetních uzlech. Před touto opravou byly ještě undereported hodnoty metrik. Očekávat, prodloužením DWU použít a metriky využití procesoru na webu Azure Portal. |
 |**Podpora dalších T-SQL**|Zařízení surface oblasti jazyka T-SQL pro SQL Data Warehouse rozšířilo a zahrnuje podporu pro:<br/>&bull; &nbsp; [FORMAT (Transact-SQL)](/sql/t-sql/functions/format-transact-sql)<br/>&bull; &nbsp;    [STRING_ESCAPE (Transact-SQL)](/sql/t-sql/functions/string-escape-transact-sql)<br/>&bull; &nbsp; [STRING_SPLIT (Transact-SQL)](/sql/t-sql/functions/string-split-transact-sql)<br/>&bull; &nbsp; [TRANSLATE (Transact-SQL)](/sql/t-sql/functions/translate-transact-sql)<br/>&bull; &nbsp; [TRIM (Transact-SQL)](/sql/t-sql/functions/trim-transact-sql)
 | | |
 

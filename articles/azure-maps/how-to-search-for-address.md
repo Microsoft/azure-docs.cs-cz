@@ -1,23 +1,30 @@
 ---
 title: Jak hledat adresu pomocí služby Azure Maps Search | Dokumentace Microsoftu
 description: Zjistěte, jak vyhledat adresu pomocí služby Azure Search mapy
-author: dsk-2015
-ms.author: dkshir
-ms.date: 09/11/2018
+author: walsehgal
+ms.author: v-musehg
+ms.date: 04/05/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
-manager: timlt
-ms.openlocfilehash: ba5ea7205a5d0e5fdbadc8a1ba955091ae95b569
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+manager: philmea
+ms.openlocfilehash: 8ab2c73030c0860fc709a774b9fd84d20a6d7c99
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56875782"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59277319"
 ---
 # <a name="find-an-address-using-the-azure-maps-search-service"></a>Najít adresu pomocí služby vyhledávání Azure Maps
 
 Search service map je sada rozhraní RESTful API navržené pro vývojářům vyhledávat adresy, místa, body zájmu, výpisy firem a jiných zeměpisných údajů. Služba přiřadí zeměpisné šířky a délky na konkrétní adresu, křížové ulici, geografické funkci nebo bodu zájmu (POI). Hodnoty zeměpisné šířky a délky vrácenou při hledání může používat jako parametry v jiných mapy služeb, třeba toku provozu a trasách.
+
+V tomto článku se dozvíte jak:
+
+* Hledat adresy [Fuzzy Search API](https://docs.microsoft.com/rest/api/maps/search/getsearchfuzzy)
+* Hledání adresy společně s vlastností a souřadnice
+* Ujistěte se, [reverzního vyhledávání adresu](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse) pro hledání adresy
+* Hledání napříč ulice pomocí [adresu Reverse napříč ulice rozhraní API pro vyhledávání](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreversecrossstreet)
 
 ## <a name="prerequisites"></a>Požadavky
 

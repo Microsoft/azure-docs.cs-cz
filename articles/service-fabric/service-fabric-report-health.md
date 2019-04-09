@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 2/28/2018
 ms.author: oanapl
-ms.openlocfilehash: 06fedddffd51dc22b45e8ae6e415ad139346c5b6
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
-ms.translationtype: MT
+ms.openlocfilehash: 49ebf4ab95816a3da2f74a464b12b46de6228456
+ms.sourcegitcommit: b4ad15a9ffcfd07351836ffedf9692a3b5d0ac86
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58670383"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59058607"
 ---
 # <a name="add-custom-service-fabric-health-reports"></a>Přidání vlastních stavových sestav Service Fabric
 Azure Service Fabric představuje [modelu stavu](service-fabric-health-introduction.md) navržené tak, aby příznak není v pořádku, cluster a aplikace podmínek u konkrétních entit. Health model používá **stavu reporters** (systémové součásti a watchdogs). Cílem je rychlou a snadnou diagnostiku a opravy. Služba zapisovače musí přemýšlet o stavu předem. Jakoukoli podmínku, která může mít vliv na stav by se měly hlásit, zejména v případě, že může být snazší příznak problémy blízko kořenový adresář. Informace o stavu můžete ušetřit čas a úsilí o ladění a šetření. Užitečnost je zvláště jasné, jakmile služba je spuštěná ve velkém měřítku v cloudu (privátní nebo Azure).
@@ -55,18 +55,18 @@ Jednou stav vytváření sestav, je jasné, stavu sestavy lze zaslat snadno. Mů
 > 
 
 ## <a name="health-client"></a>Stav klienta
-K úložišti stavů prostřednictvím stavu klienta, který se nachází uvnitř klienta fabric se odesílají sestavy stavu. Stav klienta lze nastavit s následujícím nastavením:
+Sestavy stavu odešlou do nástroje health manager prostřednictvím stavu klienta, který se nachází uvnitř klienta prostředků infrastruktury. Nástroje health manager uloží sestavy v health store. Stav klienta lze nastavit s následujícím nastavením:
 
-* **HealthReportSendInterval**: Zpoždění mezi časem, sestava se přidá do klienta a čas odeslání k úložišti stavů. Používá k batch sestavy do jedné zprávy, namísto odesílání zpráv pro každou sestavu. Dávkování zvyšuje výkon. Výchozí: 30 sekund.
-* **HealthReportRetrySendInterval**: Interval, kdy stav klienta znovu odešle nahromaděné stavu sestavy k úložišti stavů. Výchozí: 30 sekund.
-* **HealthOperationTimeout**: Časový limit sestavy zprávy odeslané k úložišti stavů. Pokud zpráva vyprší časový limit, stavu klient pokus obnovuje ho do úložiště stavů potvrdí, že sestava se zpracovalo. Výchozí hodnota: dvě minuty.
+* **HealthReportSendInterval**: Zpoždění mezi časem, sestava se přidá do klienta a čas odeslání do Správce stavu. Používá k batch sestavy do jedné zprávy, namísto odesílání zpráv pro každou sestavu. Dávkování zvyšuje výkon. Výchozí: 30 sekund.
+* **HealthReportRetrySendInterval**: Interval, kdy stav klienta znovu odešle nahromaděné stavu sestav nástroje health manager. Výchozí: 30 sekund, minimální: 1 sekunda.
+* **HealthOperationTimeout**: Časový limit pro sestavy zpráva odeslaná do Správce stavu. Pokud vyprší časový limit zprávy, stavu klient pokus obnovuje se až do nástroje health manager potvrdí, že sestava se zpracovalo. Výchozí hodnota: dvě minuty.
 
 > [!NOTE]
-> Pokud jsou sestavy v dávce, klienta fabric musí být zachováno pro alespoň HealthReportSendInterval zajistit, že jejich odesláním. Pokud dojde ke ztrátě zprávy nebo stav úložiště nelze použít z důvodu přechodných chyb, klienta fabric musí být zachováno už nabízí příležitost dobře se zkuste to znovu.
+> Pokud jsou sestavy v dávce, klienta fabric musí být zachováno pro alespoň HealthReportSendInterval zajistit, že jejich odesláním. Pokud dojde ke ztrátě zprávy nebo nástroje health manager nelze použít z důvodu přechodných chyb, klienta fabric musí být zachováno už nabízí příležitost dobře se zkuste to znovu.
 > 
 > 
 
-Ukládání do vyrovnávací paměti, na straně klienta používá jedinečnost sestavy v úvahu. Například pokud je konkrétní chybný reportérka 100 sestav za sekundu na stejnou vlastnost u stejné entity, sestavy jsou nahrazeny poslední verzi. Nejvýše jeden takový sestavy existuje ve frontě klienta. Pokud dávkování je nakonfigurovaný, počet sestav zasílaných do úložiště stavů je jen jeden interval odeslat. Tato sestava je poslední přidané sestava, která odráží aktuální stav entity.
+Ukládání do vyrovnávací paměti, na straně klienta používá jedinečnost sestavy v úvahu. Například pokud je konkrétní chybný reportérka 100 sestav za sekundu na stejnou vlastnost u stejné entity, sestavy jsou nahrazeny poslední verzi. Nejvýše jeden takový sestavy existuje ve frontě klienta. Pokud dávkování je nakonfigurován, je počet sestav zasílaných do nástroje health manager právě jeden pro každý interval odeslat. Tato sestava je poslední přidané sestava, která odráží aktuální stav entity.
 Zadejte parametry konfigurace při `FabricClient` vytvoření předáním [FabricClientSettings](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclientsettings) s požadované hodnoty pro položky související se stavem.
 
 Následující příklad vytvoří klienta fabric a určuje, že když se přidají má být odeslán sestavy. Na časové limity a chyby, které umožňují opakovaný pokus opakované pokusy dojít každých 40 sekund.
@@ -312,7 +312,7 @@ Na základě dat o stavu služby autoři a Správci clusteru/aplikace si můžet
 
 [Použití sestav stavu systému pro řešení potíží](service-fabric-understand-and-troubleshoot-with-system-health-reports.md)
 
-[Monitorování a Diagnostika služeb místně](service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally.md)
+[Místní monitorování a diagnostika služeb](service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally.md)
 
 [Upgrade aplikace Service Fabric](service-fabric-application-upgrade.md)
 

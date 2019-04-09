@@ -3,17 +3,17 @@ title: Přizpůsobení zobrazení operátora v Azure IoT Central | Microsoft Doc
 description: Jako tvůrce můžete přizpůsobit zobrazení operátora ve vaší aplikaci Azure IoT Central.
 author: sandeeppujar
 ms.author: sandeepu
-ms.date: 01/29/2018
+ms.date: 03/26/2019
 ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
-ms.openlocfilehash: 86c9a7794146edc4106d8ec30106e1c27556248f
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: dc3543af0a10c83d8ca212957a6345c8a70cd58b
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57769672"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59279937"
 ---
 # <a name="tutorial-customize-the-azure-iot-central-operators-view-new-ui-design"></a>Kurz: Přizpůsobení zobrazení Azure IoT Central – operátor (návrh nové uživatelské rozhraní)
 
@@ -58,7 +58,7 @@ Jako tvůrce můžete definovat, které informace se zobrazí na řídicím pane
     | ----------- | ----- |
     | Název        | Maximální teplota |
     | Časové rozmezí  | Poslední 1 týden |
-    | Typ měření | Telemetrická data |
+    | Typ měrné jednotky | Telemetrická data |
     | Měření | Teplota |
     | Agregace | Maximum |
     | Viditelnost  | Povoleno |
@@ -160,5 +160,5 @@ V tomto kurzu jste se naučili, jak přizpůsobit zobrazení aplikace pro operá
 
 Teď když jste se naučili, jak přizpůsobit zobrazení aplikace pro operátora, můžete přejít k dalším navrhovaným krokům:
 
-* [Monitorování zařízení (jako operátor)](tutorial-monitor-devices.md)
-* [Přidání nového zařízení do aplikace (jako operátor a vývojář zařízení)](tutorial-add-device.md)
+* [Monitorujte svoje zařízení (jako operátor)](tutorial-monitor-devices.md)
+* [Přidat nové zařízení do vaší aplikace (jako operátor a zařízení pro vývojáře)](tutorial-add-device.md)

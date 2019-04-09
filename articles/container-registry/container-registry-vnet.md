@@ -5,14 +5,14 @@ services: container-registry
 author: dlepow
 ms.service: container-registry
 ms.topic: article
-ms.date: 03/14/2019
+ms.date: 04/03/2019
 ms.author: danlep
-ms.openlocfilehash: 0a4d9f355a5cdc92bab4491c08677042c42986cb
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.openlocfilehash: 15b67218b129b5e017e67651587c389af412d7a1
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58517925"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59268402"
 ---
 # <a name="restrict-access-to-an-azure-container-registry-using-an-azure-virtual-network-or-firewall-rules"></a>Omezení přístupu ke službě Azure container registry pomocí služby Azure virtual network nebo pravidla brány firewall
 
@@ -29,6 +29,8 @@ Tento článek ukazuje dva scénáře, chcete-li vytvořit pravidla přístupu k
 * Pouze **Premium** registru kontejneru můžete nakonfigurovat pravidla přístupu k síti. Informace o úrovních služeb registru najdete v tématu [skladové jednotky Azure Container Registry](container-registry-skus.md). 
 
 * Pouze [Azure Kubernetes Service](../aks/intro-kubernetes.md) clusteru nebo Azure [virtuálního počítače](../virtual-machines/linux/overview.md) slouží jako hostitel pro přístup k registru kontejneru ve službě virtual network. *Další služby Azure, včetně Azure Container Instances se aktuálně nepodporují.*
+
+* [Úlohy služby ACR](container-registry-tasks-overview.md) operace nejsou aktuálně podporovány v registru kontejneru nasadit do virtuální sítě.
 
 * Každý registr podporuje maximálně 100 pravidel virtuální sítě.
 

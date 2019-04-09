@@ -1,19 +1,18 @@
 ---
 title: Přehled zásad Azure
 description: Azure Policy je služba v Azure, pomocí které vytváříte, přiřazujete a spravujete definice zásad ve svém prostředí Azure.
-services: azure-policy
 author: DCtheGeek
 ms.author: dacoulte
 ms.date: 12/06/2018
 ms.topic: overview
 ms.service: azure-policy
 manager: carmonm
-ms.openlocfilehash: 7440c9bbfce801ffcfc5c4e0f800f6f4f9d34f8c
-ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
+ms.openlocfilehash: 0e66327a04d1390061580d82716b44b25139bf67
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58805121"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59259452"
 ---
 # <a name="overview-of-the-azure-policy-service"></a>Přehled služby Azure Policy
 
@@ -147,6 +146,6 @@ Získali jste přehled o službě Azure Policy a některých klíčových koncep
 
 - [Přiřazení definice zásady pomocí portálu](assign-policy-portal.md)
 - [Přiřazení definice zásady pomocí Azure CLI](assign-policy-azurecli.md)
-- [Přiřazení definice zásady pomocí PowerShellu](assign-policy-powershell.md)
+- [Přiřazení definice zásady pomocí Powershellu](assign-policy-powershell.md)
 - Připomenutí skupin pro správu v článku [Uspořádání prostředků pomocí skupin pro správu Azure](..//management-groups/overview.md)
 - Zobrazení stránky [Řízení prostředí Azure prostřednictvím Azure Policy](https://channel9.msdn.com/events/Build/2018/THR2030) na webu Channel 9

@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 01/25/2019
+ms.date: 04/08/2019
 ms.author: jingwang
-ms.openlocfilehash: 16ac5684d519dc41326ada4afd1bb2965a738070
-ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
+ms.openlocfilehash: b43532ade35e4e01573abbd3f47d009beadd9c60
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57404990"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59267714"
 ---
 # <a name="copy-data-from-or-to-azure-file-storage-by-using-azure-data-factory"></a>Kopírování dat z nebo do služby Azure File Storage pomocí Azure Data Factory
 
@@ -50,6 +50,9 @@ Pro soubor propojenou službu Azure Storage jsou podporovány následující vla
 >[!IMPORTANT]
 > - Můžete kopírovat data do Azure File Storage pomocí prostředí Azure Integration Runtime explicitně [vytvořit prostředí Azure IR](create-azure-integration-runtime.md#create-azure-ir) umístěním File Storage a jeho přidružení v propojené službě jako v následujícím příkladu.
 > - Pro kopírování dat z/do Azure File Storage pomocí modul Integration Runtime mimo Azure, nezapomeňte ve vaší místní síti otevřít odchozí port TCP 445.
+
+>[!TIP]
+>Při použití ADF uživatelského rozhraní pro vytváření obsahu, můžete najít konkrétní položka "Azure File Storage" pro vytvoření propojené služby, které pod tím generuje typ `FileServer` objektu.
 
 **Příklad:**
 

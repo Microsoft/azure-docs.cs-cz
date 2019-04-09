@@ -1,7 +1,7 @@
 ---
 title: Nástroj QnA bot – Azure Bot Service – QnA Maker
 titleSuffix: Azure Cognitive Services
-description: Tento kurz vás provede vytváření robota QnA s Azure Bot service v3 na portálu Azure portal.
+description: Vytvoření chatovací robot QnA ze stránky publikování pro existující znalostní báze. Tato bot používá v4 Bot Framework SDK. Nemusíte psát žádný kód, sestavit robota, veškerý kód je k dispozici za vás.
 services: cognitive-services
 author: tulasim88
 manager: nitinme
@@ -9,101 +9,80 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: article
-ms.date: 04/02/2019
+ms.date: 04/08/2019
 ms.author: tulasim
-ms.openlocfilehash: 218103f2c75ec1016a997c259767ccd011191fab
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.openlocfilehash: 85b0004288a06a834b61f6e3d50017d35d66ce86
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58879604"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59263872"
 ---
-# <a name="tutorial-create-a-qna-bot-with-azure-bot-service-v3"></a>Kurz: Vytváření QnA robotů s využitím Azure Bot Service v3
+# <a name="tutorial-create-a-qna-bot-with-azure-bot-service-v4"></a>Kurz: Vytváření QnA robotů s využitím Azure Bot službu v4
 
-Tento kurz vás provede postupem vytvoření QnA robotů s Azure Bot service v3 v [webu Azure portal](https://portal.azure.com) bez psaní kódu. Připojení k robotovi publikované znalostní bázi (KB) je stejně snadné jako změna nastavení aplikace robota. 
-
-> [!Note] 
-> Toto téma se týká verze 3 sady SDK robota. Můžete najít verzi 4 [tady](https://docs.microsoft.com/azure/bot-service/bot-builder-howto-qna?view=azure-bot-service-4.0&tabs=cs). 
+Vytvoření je chatovací robot QnA z **publikovat** stránky pro existující znalostní báze. Tato bot používá v4 Bot Framework SDK. Nemusíte psát žádný kód, sestavit robota, veškerý kód je k dispozici za vás.
 
 **V tomto kurzu se naučíte:**
 
 <!-- green checkmark -->
 > [!div class="checklist"]
-> * Vytvoření Azure Bot Service pomocí šablony nástroje QnA Maker
+> * Vytvoření Azure Bot Service z existující znalostní báze
 > * Chat s roboty k ověření, že kód funguje 
-> * Připojit robotu publikovaná KB
-> * Testování bot dotazu
-
-Pro účely tohoto článku můžete použít bezplatné nástroje QnA Maker [služby](../how-to/set-up-qnamaker-service-azure.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
-Musíte mít publikované znalostní báze pro účely tohoto kurzu. Pokud nemáte, postupujte podle kroků v [vytvoření znalostní báze](../How-To/create-knowledge-base.md) vytvořte službu QnA Maker s otázkami a odpověďmi.
+Musíte mít publikované znalostní báze pro účely tohoto kurzu. Pokud nemáte, postupujte podle kroků v [vytvořit a odpověď z KB](create-publish-query-in-portal.md) kurzu a vytvořit nástroje QnA Maker znalostní bázi s dotazy a odpovědi.
+
+<a name="create-a-knowledge-base-bot"></a>
 
 ## <a name="create-a-qna-bot"></a>Vytváření robotů QnA
 
-1. Na webu Azure Portal vyberte **Vytvořit prostředek**.
+Vytváření robotů jako klientskou aplikaci pro znalostní báze. 
 
-    ![vytvoření služby bot](../media/qnamaker-tutorials-create-bot/bot-service-creation.png)
+1. Nástroj QnA Maker portal, přejděte na **publikovat** stránce a publikovat znalostní báze. Vyberte **vytváření robotů**. 
 
-2. Do vyhledávacího pole vyhledejte **Web App Bot**.
+    ![Na portálu QnA Maker přejděte na stránku publikovat a publikovat znalostní báze. Vyberte vytváření robotů.](../media/qnamaker-tutorials-create-bot/create-bot-from-published-knowledge-base-page.png)
 
-    ![Výběr služby bot](../media/qnamaker-tutorials-create-bot/bot-service-selection.png)
+    Na webu Azure portal otevře s konfigurací vytváření robotů.
 
-3. V **Bot Service** (Služba robota) zadejte požadované informace:
+1.  Zadejte nastavení pro vytvoření robota:
 
-    - Nastavte **název aplikace** na název svého robota. Název se používá jako subdoménu svého robota nasazené do cloudu (například mynotesbot.azurewebsites.net).
-    - Vyberte předplatné, skupinu prostředků, plán služby App service a umístění.
+    |Nastavení|Hodnota|Účel|
+    |--|--|--|
+    |Bot name (Název robota)|`my-tutorial-kb-bot`|Toto je název prostředku Azure pro robota.|
+    |Předplatné|Podívejte se na účel.|Vyberte stejné předplatné jako jste použili k vytvoření prostředků nástroje QnA Maker.|
+    |Skupina prostředků|`my-tutorial-rg`|Skupina prostředků použitá pro všechny bot související prostředky Azure.|
+    |Umístění|`west us`|Umístění bodu robotů také prostředků Azure.|
+    |Cenová úroveň|`F0`|Pro službu Azure bot service na úrovni free.|
+    |App name (Název aplikace)|`my-tutorial-kb-bot-app`|Toto je webová aplikace pro podporu svého robota pouze. Jak už používá vaše služba QnA Maker nemělo by to být stejný název aplikace. Nástroj QnA Maker webovou aplikaci pro sdílení obsahu s jakýmikoli prostředky se nepodporuje.|
+    |Jazykové sady SDK|C#|Toto je základní programovací jazyk používá rozhraní bot framework SDK. Jsou vaše volby C# nebo Node.js.|
+    |Nástroj QnA ověřovacím klíčem|**Neměnit**|Tato hodnota je vyplňují za vás.|
+    |Plán služby App Service / umístění|**Neměnit**|Umístění pro účely tohoto kurzu není důležité.|
+    |Azure Storage|**Neměnit**|Konverzace data se ukládají do tabulek Azure Storage.|
+    |Application Insights|**Neměnit**|Protokolování se odesílají do Application Insights.|
+    |Microsoft App ID|**Neměnit**|Uživatel služby Active directory a heslo je povinné.|
 
-4. Použití šablony verze 3, vyberte verzi sady SDK **SDK v3** a sady SDK jazyka **jazyka C#** nebo **Node.js**.
+    ![Vytváření robotů znalostní báze knowledge base s těmito nastaveními.](../media/qnamaker-tutorials-create-bot/create-bot-from-published-knowledge-base.png)
 
-    ![nastavení sady sdk robota](../media/qnamaker-tutorials-create-bot/bot-v3.png)
+    Počkejte pár minut, než oznámí úspěšné dokončení oznámení procesu vytváření robotů.
 
-5. Vyberte **otázku a odpověď** šablon pro pole Bot šablony a potom uložte nastavení šablony tak, že vyberete **vyberte**.
-
-    ![Uložit bot výběr šablony služby](../media/qnamaker-tutorials-create-bot/bot-v3-template.png)
-
-6. Zkontrolujte nastavení a pak vyberte **vytvořit**. Tím se vytvoří a nasadí bot service se do Azure.
-
-    ![vytváření robotů](../media/qnamaker-tutorials-create-bot/bot-blade-settings-v3.png)
-
-7. Potvrďte, že byla nasazena bot service.
-
-    - Vyberte **oznámení** (ikona zvonku umístěné podél horního okraje na webu Azure portal). Oznámení se změní z **nasazení začalo** k **nasazení bylo úspěšné**.
-    - Po oznámení změn **nasazení bylo úspěšné**vyberte **přejít k prostředku** na toto oznámení.
+<a name="test-the-bot"></a>
 
 ## <a name="chat-with-the-bot"></a>Chat s roboty
 
-Výběr **přejít k prostředku** přejdete do bodu robotů také prostředků.
+1. Na webu Azure Portal otevřete nový prostředek bot od oznámení. 
 
-Vyberte **testování ve Web Chat** a otevřete tak podokno Web Chat. Zadejte "hi" Web Chat.
+    ![Na webu Azure Portal otevřete nový prostředek bot od oznámení.](../media/qnamaker-tutorials-create-bot/azure-portal-notifications.png)
 
-![Nástroj QnA bot webového chatu](../media/qnamaker-tutorials-create-bot/qna-bot-web-chat.PNG)
+1. Z **Bot správu**vyberte **testování ve Web Chat** a zadejte: `How large can my KB be?`. Robot odpoví zprávou: 
 
-Robot odpoví "nastavte QnAKnowledgebaseId a QnASubscriptionKey v nastavení aplikace. Tato odpověď potvrdí, že váš robot QnA přijal zprávu, ale neexistuje žádný nástroj QnA Maker znalostní báze knowledge base s ním spojená ještě. 
 
-## <a name="connect-your-qna-maker-knowledge-base-to-the-bot"></a>Připojte se k robota znalostní báze QnA Maker
+    `The size of the knowledge base depends on the SKU of Azure search you choose when creating the QnA Maker service. Read [here](https://docs.microsoft.com/azure/cognitive-services/qnamaker/tutorials/choosing-capacity-qnamaker-deployment)for more details.`
 
-1. Otevřít **nastavení aplikace** a upravit **QnAKnowledgebaseId**, **QnAAuthKey**a **QnAEndpointHostName** pole tak, aby obsahovala hodnoty znalostní báze QnA Maker.
 
-    ![Nastavení aplikace](../media/qnamaker-tutorials-create-bot/application-settings.PNG)
+    ![Otestujte novým robotem znalostní báze knowledge base.](../media/qnamaker-tutorial-create-publish-query-in-portal/test-bot-in-web-chat-in-azure-portal.png)
 
-1. Na kartě nastavení znalostní báze na portálu pro nástroj QnA Maker získáte vaše ID znalostní báze knowledge base, adresa url hostitele a klíče koncového bodu.
-
-   - Přihlaste se k [QnA Maker](https://qnamaker.ai)
-   - Přejděte do znalostní báze
-   - Vyberte **nastavení** kartu
-   - **Publikování** znalostní báze, pokud ještě neprovedli
-
-     ![Nástroj QnA Maker hodnoty](../media/qnamaker-tutorials-create-bot/qnamaker-settings-kbid-key.PNG)
-
-## <a name="test-the-bot"></a>Testování robota
-
-Na webu Azure Portal, vyberte **testování ve Web Chat** otestovat robota. 
-
-![Nástroj QnA Maker robota](../media/qnamaker-tutorials-create-bot/qna-bot-web-chat-response.PNG)
-
-Váš robot QnA odpovědi ze znalostní báze.
+    Další informace o roboty Azure najdete v tématu [otázky, použijte nástroj QnA Maker odpovědět](https://docs.microsoft.com/azure/bot-service/bot-builder-howto-qna?view=azure-bot-service-4.0&tabs=cs)
 
 ## <a name="related-to-qna-maker-bots"></a>Související s roboty QnA Maker
 
@@ -113,7 +92,11 @@ Váš robot QnA odpovědi ze znalostní báze.
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Jakmile budete hotovi s robotem v tomto kurzu, odeberte robota na webu Azure Portal. Služby bot patří:
+Jakmile budete hotovi s robotem v tomto kurzu, odeberte robota na webu Azure Portal. 
+
+Pokud jste vytvořili pro prostředky bodu robotů také novou skupinu prostředků, odstraňte skupinu prostředků. 
+
+Pokud jste nevytvořili novou skupinu prostředků, budete muset najít prostředky spojené s roboty. Nejjednodušší způsob je hledat podle názvu robotů a bot app. Bot prostředky zahrnují:
 
 * Plán služby App Service
 * Vyhledávací služba

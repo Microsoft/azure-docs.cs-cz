@@ -1,5 +1,5 @@
 ---
-title: Vytvoření indexu v C# – Azure Search
+title: 'Rychlý start: Vytvoření indexu C# konzolové aplikace – Azure Search'
 description: Zjistěte, jak vytvořit fulltextový index v prohledávatelných C# pomocí .NET SDK služby Azure Search.
 author: heidisteen
 manager: cgronlun
@@ -9,15 +9,21 @@ services: search
 ms.service: search
 ms.devlang: dotnet
 ms.topic: quickstart
-ms.date: 03/22/2019
-ms.openlocfilehash: a5861faaf26962d34d1c356e29dce1be40f8716b
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.date: 04/08/2019
+ms.openlocfilehash: 83842893e0ffc6bb954832cd65b6312b59bbcaa3
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58370580"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59269040"
 ---
 # <a name="quickstart-1---create-an-azure-search-index-in-c"></a>Rychlý start: 1 – Vytvoření indexu Azure Search vC#
+> [!div class="op_single_selector"]
+> * [C#](search-create-index-dotnet.md)
+> * [Portál](search-get-started-portal.md)
+> * [PowerShell](search-howto-dotnet-sdk.md)
+> * [Postman](search-fiddler.md)
+>*
 
 Tento článek vás provede procesem vytvoření [indexu Azure Search](search-what-is-an-index.md) pomocí C# a [sady .NET SDK](https://aka.ms/search-sdk). Toto je první lekcí cvičení 3 – součást pro vytváření, načítání a dotazování indexu. Vytvoření indexu se provádí pomocí provádí tyto úlohy:
 
@@ -28,37 +34,45 @@ Tento článek vás provede procesem vytvoření [indexu Azure Search](search-wh
 
 ## <a name="prerequisites"></a>Požadavky
 
+Následující služby, nástroje a data se používají v tomto rychlém startu. 
+
 [Vytvoření služby Azure Search](search-create-service-portal.md) nebo [najít existující službu](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) pod vaším aktuálním předplatným. Můžete použít bezplatnou službou pro tento rychlý start.
 
 [Visual Studio 2017](https://visualstudio.microsoft.com/downloads/), všechny edice. Ukázky kódu a instrukce byly testovány v bezplatná edice Community.
 
-Získejte koncový bod adresy URL a správce klíč rozhraní api služby search. Vyhledávací služba se vytvoří s oběma, takže pokud jste do svého předplatného přidali službu Azure Search, získejte potřebné informace pomocí následujícího postupu:
+[DotNetHowTo](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetHowTo) poskytuje ukázkové řešení .NET Core konzolové aplikace napsané C#, který je umístěn v úložišti Githubu ukázky v Azure. Stažení a extrakci řešení. Ve výchozím nastavení řešení jsou jen pro čtení. Klikněte pravým tlačítkem na řešení a vymažte atribut jen pro čtení tak, že můžete upravovat soubory. Data je součástí řešení.
 
-  1. Na webu Azure Portal, ve vyhledávací službě **přehled** stránce, získat adresu URL. Příkladem koncového bodu může být `https://mydemo.search.windows.net`.
+## <a name="get-a-key-and-url"></a>Získejte klíč a adresy URL
 
-  2. V **nastavení** > **klíče**, získat klíč pro úplná práva správce na službu. Existují dva klíče zaměnitelné správce, v případě, že budete potřebovat k výměně jeden k dispozici zajišťuje nepřetržitý chod podniků. U požadavků můžete použít buď primární nebo sekundární klíč pro přidání, úpravy a odstraňování objektů.
+Volání služby vyžadují koncový bod adresy URL a přístupový klíč pro každý požadavek. Vyhledávací služba se vytvoří s oběma, takže pokud jste do svého předplatného přidali službu Azure Search, získejte potřebné informace pomocí následujícího postupu:
 
-  ![Získejte koncový bod a přístupový klíč rozhraní HTTP](media/search-fiddler/get-url-key.png "získat HTTP koncový bod a přístupový klíč")
+1. [Přihlaste se k webu Azure portal](https://portal.azure.com/)a ve vyhledávací službě **přehled** stránce, získat adresu URL. Příkladem koncového bodu může být `https://mydemo.search.windows.net`.
+
+2. V **nastavení** > **klíče**, získat klíč pro úplná práva správce na službu. Existují dva klíče zaměnitelné správce, v případě, že budete potřebovat k výměně jeden k dispozici zajišťuje nepřetržitý chod podniků. U požadavků můžete použít buď primární nebo sekundární klíč pro přidání, úpravy a odstraňování objektů.
+
+![Získejte koncový bod a přístupový klíč rozhraní HTTP](media/search-fiddler/get-url-key.png "získat HTTP koncový bod a přístupový klíč")
 
 Všechny požadavky vyžaduje klíč rozhraní api na každou požadavku odeslaného do vaší služby. Platný klíč vytváří na základě žádosti vztah důvěryhodnosti mezi aplikací, která žádost odeslala, a službou, která ji zpracovává.
 
-## <a name="1---open-the-project"></a>1 - otevřít projekt
+## <a name="1---configure-and-build"></a>1 – konfigurace a sestavení
 
-Stáhněte si ukázkový kód [DotNetHowTo](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetHowTo) z Githubu. 
+1. Otevřít **DotNetHowTo.sln** souboru v sadě Visual Studio.
 
-V souboru appsettings.json, nahraďte výchozí obsah níže uvedený příklad a potom zadejte název služby a správu rozhraní api-key pro vaši službu. Pro název služby stačí samotný název. Například, pokud je vaše adresa URL https://mydemo.search.windows.net, přidejte `mydemo` do souboru JSON.
+1. V souboru appsettings.json, nahraďte výchozí obsah níže uvedený příklad a potom zadejte název služby a správu rozhraní api-key pro vaši službu. 
 
 
-```json
-{
-    "SearchServiceName": "Put your search service name here",
-    "SearchServiceAdminApiKey": "Put your primary or secondary API key here",
-}
-```
+   ```json
+   {
+       "SearchServiceName": "Put your search service name here (not the full URL)",
+       "SearchServiceAdminApiKey": "Put your primary or secondary API key here",
+    }
+   ```
 
-Jakmile tyto hodnoty jsou nastavené, můžete F5 sestavení řešení ke spuštění aplikace konzoly. Zbývající kroky v tomto cvičení a ty, které následují, jsou vysvětlení toho, jak tento kód funguje. 
+  Pro název služby stačí samotný název. Například, pokud je vaše adresa URL https://mydemo.search.windows.net, přidejte `mydemo` do souboru JSON.
 
-Alternativně můžete se podívat do [použití Azure Search z aplikace .NET ](search-howto-dotnet-sdk.md) podrobnější pokrytí chování sady SDK. 
+1. Stisknutím klávesy F5 sestavte řešení a spustíte aplikaci konzoly. Zbývající kroky v tomto cvičení a ty, které následují, jsou vysvětlení toho, jak tento kód funguje. 
+
+Alternativně můžete se podívat do [použití Azure Search z aplikace .NET](search-howto-dotnet-sdk.md) podrobnější pokrytí chování sady SDK. 
 
 <a name="CreateSearchServiceClient"></a>
 
@@ -79,7 +93,7 @@ private static SearchServiceClient CreateSearchServiceClient(IConfigurationRoot 
 }
 ```
 
-`Indexes` má vlastnost `SearchServiceClient`. Tato vlastnost poskytuje všechny metody, které potřebujete k vytváření, výpisu, aktualizaci nebo odstranění indexů Azure Search.
+`SearchServiceClient` má vlastnost `Indexes`. Tato vlastnost poskytuje všechny metody, které potřebujete k vytváření, výpisu, aktualizaci nebo odstranění indexů Azure Search.
 
 > [!NOTE]
 > Třída `SearchServiceClient` spravuje připojení k vyhledávací službě. Aby se zabránilo otevírání příliš mnoha připojení, měli byste se pokusit sdílet jednu instanci třídy `SearchServiceClient` v rámci aplikace, pokud je to možné. Její metody jsou bezpečné pro přístup z více vláken a takové sdílení umožňují.

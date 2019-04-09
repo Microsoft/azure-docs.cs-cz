@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 02/21/2019
 ms.author: v-jansko
-ms.openlocfilehash: 62a4493204fdc09dbd48b1463e5558fabf9c7c40
-ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
+ms.openlocfilehash: 5c41456f1cf661fd372a565885c9196593c894ee
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/04/2019
-ms.locfileid: "58918038"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59267902"
 ---
 # <a name="language-and-region-support-for-the-translator-text-api"></a>Podpora jazyka a oblasti pro rozhraní Translator Text API
 
@@ -33,7 +33,10 @@ Translator Text API podporuje následující jazyky pro překlad textu do textu.
 * Neurální výchozí nastavení: Neurální je výchozí překladový systém. Použijte parametr `category=smt` pro přístup k statistické lokality pro použití v centru Microsoft Translator.
 * Neurální pouze: Je k dispozici pouze Neurální překlady.
 
-**V3 Translator API** V3 Translator API je ve výchozím nastavení neuronových sítí a statistické systémy jsou k dispozici, pouze pokud neexistuje žádný systém neuronových sítí. Vlastní Translator jde použít jenom s jazyky neuronových sítí. [Zobrazit jazyky, které jsou aktuálně k dispozici ve vlastní Translator](#customization).
+**V3 Translator API** V3 Translator API je ve výchozím nastavení neuronových sítí a statistické systémy jsou k dispozici, pouze pokud neexistuje žádný systém neuronových sítí. 
+
+> [!NOTE]
+> V současné době jsou dostupné v vlastní Translator podmnožiny jazyků neuronových sítí a postupně přidáváme další značky. [Zobrazit jazyky, které jsou aktuálně k dispozici ve vlastní Translator](#customization).
 
 |Jazyk|  Kód jazyka|  V2 API| V3 API|
 |:-----|:-----:|:-----|:-----|

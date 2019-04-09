@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: tutorial
-ms.date: 02/21/2019
+ms.date: 04/08/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to be able to order Data Box Disk to upload on-premises data from my server onto Azure.
-ms.openlocfilehash: 0dd0474ad1ad360fd82cfdf746d2e9837f74833a
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 7d1d38a2e8d3216414ab215f3023d4a188c57120
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58108371"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59282895"
 ---
 # <a name="tutorial-return-azure-data-box-disk-and-verify-data-upload-to-azure"></a>Kurz: Vrátí disku Azure Data Box a ověřte nahrání dat do Azure
 
@@ -32,29 +32,115 @@ Než začnete, ujistěte se, že jste dokončili [kurzu: Kopírování dat do Az
 ## <a name="ship-data-box-disk-back"></a>Odeslání Data Box Disku zpátky
 
 1. Po dokončení ověření dat odpojte disky. Odeberte propojovací kabely.
-2. Zabalte všechny disky a propojovací kabely do bublinkové fólie a vložte je do přepravního boxu.
-3. Použijte zpáteční expediční štítek v průhledném plastovém obalu připevněném k tomuto boxu. Pokud se tento štítek ztratil nebo je poškozený, z webu Azure Portal si stáhněte nový expediční štítek a připevněte ho k zařízení. Přejděte na **Přehled > Stáhnout expediční štítek**.
+2. Zabalte všechny disky a propojovací kabely do bublinkové fólie a vložte je do přepravního boxu. Pokud chybí příslušenství se můžou vztahovat poplatky.
+    - Znovu použít balení z počáteční dodávky.  
+    - Doporučujeme vám, aktualizací Service pack disků pomocí dobře zabezpečené probublání zalamování řádků.
+    - Zajistěte, aby že se bezpečně ke snížení jakékoli pohybů plb typu v rámci pole přizpůsobit.
 
-    ![Stáhnout expediční štítek](media/data-box-disk-deploy-picked-up/download-shipping-label.png)
+Další kroky jsou určeny ve kterém jsou vrácení zařízení.
 
-    Tato akce stáhne zpáteční expediční štítek, jak je zobrazeno dál.
+### <a name="pick-up-in-us-canada"></a>Pokračovat v USA, Kanadě
 
-    ![Ukázkový expediční štítek](media/data-box-disk-deploy-picked-up/exmple-shipping-label.png)
+Proveďte následující kroky, pokud vrací zařízení v USA a Kanadě.
 
-4. Zapečeťte přepravní box a zkontrolujte, že zpáteční expediční štítek je vidět.
-5. Pokud zařízení vracíte v USA, domluvte si vyzvednutí s UPS. Pokud zařízení vracíte v Evropě prostřednictvím DHL, vyžádejte si vyzvednutí tak, že navštívíte web DHL a zadáte číslo přepravního lístku. Přejděte na web DHL Express a zvolte **Naplánovat vyzvednutí pro zpáteční zásilku**.
+1. Použijte zpáteční expediční štítek v průhledném plastovém obalu připevněném k tomuto boxu. Pokud dojde k poškození nebo ztrátě popisku:
+    - Přejděte na **Přehled > Stáhnout expediční štítek**.
+
+        ![Stáhnout expediční štítek](media/data-box-disk-deploy-picked-up/download-shipping-label.png)
+
+        Tato akce stáhne zpáteční expediční štítek, jak je zobrazeno dál.
+
+        ![Ukázkový expediční štítek](media/data-box-disk-deploy-picked-up/exmple-shipping-label.png)
+    - Opatří štítek na zařízení.
+
+2. Zapečeťte přepravní box a zkontrolujte, že zpáteční expediční štítek je vidět.
+3. Vyzvednutí s UPS naplánujte.
+
+
+### <a name="pick-up-in-europe"></a>Pokračovat v Evropě
+
+Pokud vrácení zařízení v Evropě, proveďte následující kroky.
+
+1. Použijte zpáteční expediční štítek v průhledném plastovém obalu připevněném k tomuto boxu. Pokud dojde k poškození nebo ztrátě popisku:
+    - Přejděte na **Přehled > Stáhnout expediční štítek**.
+
+        ![Stáhnout expediční štítek](media/data-box-disk-deploy-picked-up/download-shipping-label.png)
+
+        Tato akce stáhne zpáteční expediční štítek, jak je zobrazeno dál.
+
+        ![Ukázkový expediční štítek](media/data-box-disk-deploy-picked-up/exmple-shipping-label.png)
+    - Opatří štítek na zařízení.
+
+2. Zapečeťte přepravní box a zkontrolujte, že zpáteční expediční štítek je vidět.
+3. Pokud zařízení vracíte v Evropě prostřednictvím DHL, vyžádejte si vyzvednutí tak, že navštívíte web DHL a zadáte číslo přepravního lístku.
+4. Přejděte na web DHL Express a zvolte **Naplánovat vyzvednutí pro zpáteční zásilku**.
 
     ![Zpáteční zásilku DHL](media/data-box-disk-deploy-picked-up/dhl-ship-1.png)
     
-    Zadejte číslo nákladového listu a kliknutím na tlačítko **Naplánovat vyzvednutí** zařiďte vyzvednutí.
+3. Zadejte číslo nákladového listu a kliknutím na tlačítko **Naplánovat vyzvednutí** zařiďte vyzvednutí.
 
       ![Naplánovat vyzvednutí](media/data-box-disk-deploy-picked-up/dhl-ship-2.png)
 
-7. Jakmile přepravce vyzvedne disky, stav objednávky na portálu se změní na **Vyzvednuto**. Zobrazí se také ID sledování.
+### <a name="pick-up-in-asia-pacific-region"></a>Pokračovat v oblasti Asie a Tichomoří
 
-    ![Disky jsou vyzvednuté](media/data-box-disk-deploy-picked-up/data-box-portal-pickedup.png)
+Tato oblast obsahuje pokyny pro vyzvednutí v oblasti Japonsko, Koreji a Austrálii.
+
+#### <a name="pick-up-in-australia"></a>Pokračovat v Austrálii
+
+Datacentra Azure v Austrálii mít oznámení o zvýšení zabezpečení. Všechny příchozí dodávky musí mít oznámení o pokročilé. Proveďte následující kroky pro vyzvednutí v Austrálii.
+
+1. E-mailu `adbops@microsoft.com` na žádost o odeslání popisek s jedinečné ID příchozí nebo TAU kód. Umístěte požadavek alespoň 3 dny před datem plánované dodání zobrazíte popisek v čase.
+2. Předmět e-mailu by měla být – *žádost o zpětný Expediční štítek s kódem TAU*. Ujistěte se, že v e-mailu uveďte následující podrobnosti: 
+
+    - Název objednávky
+    - Adresa
+    - Jméno kontaktu
+
+#### <a name="pick-up-in-japan"></a>Pokračovat v Japonsku
+
+1. Nezapomeňte uvést návratový connote Chakubarai Japonsko příspěvku.
+2. Zápis vaší společnosti název a adresu informace o connote jako vaše informace odesílatele.
+3. Zavolejte na číslo žádost o vyzvednutí Japonsko příspěvek 0800-0800-111 (bezplatné volání). Vytočit 7 číslic PSČ výstupní adresy a potom je předejte pro nejbližší pobočku příspěvku.
+    - Dostupné časy pro žádost o vyzvednutí závisí na příslušné pobočky příspěvku.
+    - Informujte, že zásilka je pro Japonsko příspěvek Chakubarai Yu-Pack.
+    - Použití Chakubarai connote, která byla zahrnuta.
+4. Pokud Japonsko příspěvek Chakubarai connote nejsou zahrnuty, e-mailu *Quantium řešení* na `Customerservice.JP@quantiumsolutions.com`. *Řešení Quantium* požádá o příspěvek Japonsko sbírání a požádejte ho, aby přenést connote na vyzvednutí.
+    - Označuje odkaz na číslo Chakubarai connote příspěvek sloupec, který přinese Japonsko příspěvku.
+    - Zadejte adresu pro doručení, jak je znázorněno níže:   
+        ```
+        3F N7 Prologis Park Tokyo Ohta, 1-4-3 Tokai Ohta-ku, Tokyo 143-0001
+        Microsoft Service Center c/o Quantium Solutions Japan
+        TEL: 03-5755-0150
+        ```
+
+Pokud Chakubarai connote chybí, můžete požádat o vyzvednutí e-mailu. Pomocí následující šablony e-mailovou žádost o vyzvednutí.
+
+```
+To: Customerservice.JP@quantiumsolutions.com
+Subject: Pickup request for Azure Data Box Disk｜Job Name： 
+Body: 
+- Azure Data Box Disk job name：
+- Reference number:  
+- Requested pickup date：mmdd (Select a requested time slot from below).
+    a. 08：00-13：00 
+    b. 13：00-15：00 
+    c. 15：00-17：00 
+    d. 17：00-19：00 
+```
+
+#### <a name="pick-up-in-korea"></a>Pokračovat v Koreji
+
+1. Nezapomeňte uvést návratový connote.
+2. Chcete-li žádost o vyzvednutí:
+    1. Volání *Quantium Solutions International* linku na 070 1418 8231 během hodin (10: 00 do 17: 00, pondělí až pátku). Nabídka *Microsoft vyzvednutí* a číslo connote uspořádat pro kolekci.  
+    2. Pokud linka pro je zaneprázdněný, e-mailu `microsoft@rocketparcel.com`, s předmět e-mailu *Pickup Microsoft* a číslo connote jako odkaz.
+    3. Pokud Kurýrní nedorazí pro kolekci, zavolejte *Quantium Solutions International* linku pro alternativní režimu. 
 
 ## <a name="verify-data-upload-to-azure"></a>Ověření nahrání dat do Azure
+
+Jakmile přepravce vyzvedne disky, stav objednávky na portálu se změní na **Vyzvednuto**. Zobrazí se také ID sledování.
+
+![Disky jsou vyzvednuté](media/data-box-disk-deploy-picked-up/data-box-portal-pickedup.png)
 
 Když Microsoft dostane disky a prohledá je, stav úlohy se změní na **Přijato**. 
 
@@ -70,8 +156,8 @@ Než odstraníte data ze zdroje, ujistěte se, že je máte v účtech úložiš
 
 - Vaše účty úložiště Azure. Když data zkopírujete do Data Boxu, v závislosti na jejich typu se nahrají do jedné z následujících cest v účtu služby Azure Storage.
 
-  - Objekty blob bloku a objekty blob stránky: `https://<storage_account_name>.blob.core.windows.net/<containername>/files/a.txt`
-  - Soubory Azure: `https://<storage_account_name>.file.core.windows.net/<sharename>/files/a.txt`
+  - Pro objekty BLOB bloku a objekty BLOB stránky: `https://<storage_account_name>.blob.core.windows.net/<containername>/files/a.txt`
+  - Pro soubory Azure: `https://<storage_account_name>.file.core.windows.net/<sharename>/files/a.txt`
 
     Alternativně můžete přejít na svůj účet Azure Storage na webu Azure Portal a dokončit navigaci tam.
 
@@ -114,6 +200,6 @@ V tomto kurzu jste se dozvěděli o tématech spojených s Azure Data Box Diskem
 Přejděte k dalšímu postupu, kde se naučíte, jak spravovat Data Box Disk prostřednictvím webu Azure Portal.
 
 > [!div class="nextstepaction"]
-> [Použití webu Azure Portal ke správě Azure Data Box Disku](./data-box-portal-ui-admin.md)
+> [Pomocí webu Azure portal ke správě disku Azure Data Box](./data-box-portal-ui-admin.md)
 
 
