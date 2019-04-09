@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 02/26/2019
-ms.openlocfilehash: fdf2d3aeea32beba0b8e95c1816a80140d7cf6be
-ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
+ms.openlocfilehash: 5a4e6819eeff2a2c8efaf3807c38cc06f7c35002
+ms.sourcegitcommit: 045406e0aa1beb7537c12c0ea1fbf736062708e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56958911"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "59006689"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-azure-database-for-mariadb"></a>Použití koncové body služeb virtuální sítě a pravidel pro službu Azure Database pro MariaDB
 
@@ -105,6 +105,8 @@ Máte možnost použití [řízení přístupu na základě role (RBAC)] [ rbac-
 ## <a name="limitations"></a>Omezení
 
 Pro službu Azure Database pro MariaDB funkci pravidla virtuální sítě má následující omezení:
+
+- Webové aplikace lze mapovat na privátní IP adresu ve virtuální síti nebo podsíti. I v případě, že koncové body služby se zapnutým z dané virtuální sítě nebo podsítě, budou mít připojení k serveru z webové aplikace Azure veřejné IP zdroj, ne zdroj virtuálních sítí/podsítí. Pokud chcete povolit připojení z webové aplikace na server, který má pravidla brány firewall virtuální sítě, musíte povolit Azure services pro přístup k serveru na serveru.
 
 - Každé pravidlo virtuální sítě v bráně firewall pro Azure Database pro MariaDB, odkazuje na podsíť. Všechny odkazované podsítě musí být hostovaný ve stejné zeměpisné oblasti, který je hostitelem databáze Azure pro MariaDB.
 

@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/20/2018
+ms.date: 04/02/2019
 ms.author: monhaber
-ms.openlocfilehash: cabd3d58c3b6bf76b294e1edf1cf94aad5d30f2f
-ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
+ms.openlocfilehash: 63ee603f83d0c2de3bc89b8792ada4a61edb7e00
+ms.sourcegitcommit: 045406e0aa1beb7537c12c0ea1fbf736062708e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2019
-ms.locfileid: "58578947"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "59006750"
 ---
 # <a name="data-collection-in-azure-security-center"></a>Shromažďování dat ve službě Azure Security Center
 Security Center shromažďuje data z virtuálních počítačů Azure (VM), škálovací sady virtuálních počítačů, kontejnerů IaaS a počítače mimo Azure (včetně místních) k monitorování ohrožení zabezpečení a hrozby. Data se shromažďují pomocí agenta Microsoft Monitoring Agent, který z počítače načítá různé protokoly událostí a konfigurace související se zabezpečením a kopíruje data k analýze do vašeho pracovního prostoru. Příkladem takových dat jsou: operační systém typu a verzi, protokoly operačního systému (protokoly událostí Windows), spuštěné procesy, název počítače, IP adresy a přihlášeného uživatele. Agent Microsoft Monitoring Agent také zkopíruje soubory se stavem systému do pracovního prostoru.
@@ -77,7 +77,7 @@ Centrum zabezpečení můžete automaticky vytvořit výchozí pracovní prostor
 Výběr pracovního prostoru vytvořených službou Security Center:
 
 1. V části **výchozí konfigurace pracovního prostoru**, vyberte možnost použití pracovních prostorů vytvořených službou Security center.
-   ![Vyberte cenovou úroveň.][10] 
+   ![Vyberte cenovou úroveň][10] 
 
 1. Klikněte na **Uložit**.<br>
     Security Center vytvoří nový prostředek skupiny a výchozí pracovní prostor v této informace o zeměpisné poloze a agent se připojí k tomuto pracovnímu prostoru. Zásady vytváření názvů pracovní prostor a skupiny prostředků je:<br>
@@ -138,7 +138,7 @@ Vyberte existující pracovní prostor Log Analytics:
      
     b.  Vyberte požadovaný pracovní prostor, ve kterém chcete připojit agenta kliknutím **upravit nastavení** ve sloupci nastavení z požadovaného předplatného v seznamu.
         ![Vyberte pracovní prostor][8] c. Nastavte cenovou úroveň.
-        ![Vyberte cenovou úroveň.][9] 
+        ![Vyberte cenovou úroveň][9] 
    
    >[!NOTE]
    >Pokud je pracovní prostor už **zabezpečení** nebo **SecurityCenterFree** povolené žádné řešení, ceny se nastaví automaticky. 
@@ -179,7 +179,7 @@ Tady je úplný přehled zabezpečení a AppLocker event ID pro každou sadu:
 | --- | --- |
 | Minimální | 1102,4624,4625,4657,4663,4688,4700,4702,4719,4720,4722,4723,4724,4727,4728,4732,4735,4737,4739,4740,4754,4755, |
 | | 4756,4767,4799,4825,4946,4948,4956,5024,5033,8001,8002,8003,8004,8005,8006,8007,8222 |
-| Společné | 1,299,300,324,340,403,404,410,411,412,413,431,500,501,1100,1102,1107,1108,4608,4610,4611,4614,461,4622, |
+| Společné | 1,299,300,324,340,403,404,410,411,412,413,431,500,501,1100,1102,1107,1108,4608,4610,4611,4614,4622, |
 | |  4624,4625,4634,4647,4648,4649,4657,4661,4662,4663,4665,4666,4667,4688,4670,4672,4673,4674,4675,4689,4697, |
 | | 4700,4702,4704,4705,4716,4717,4718,4719,4720,4722,4723,4724,4725,4726,4727,4728,4729,4733,4732,4735,4737, |
 | | 4738,4739,4740,4742,4744,4745,4746,4750,4751,4752,4754,4755,4756,4757,4760,4761,4762,4764,4767,4768,4771, |
@@ -254,9 +254,9 @@ Microsoft Monitoring Agent, můžete nainstalovat ručně, můžete shromažďov
    a.  V hlavní nabídce služby Security Center, vyberte **zásady zabezpečení**.
      
    b.  Vyberte pracovní prostor, ve které máte v úmyslu připojení agenta. Zajistěte, aby že pracovní prostor je ve stejném předplatném, použijte ve službě Security Center a zda máte oprávnění ke čtení/zápisu v pracovním prostoru.
-       ![Vyberte pracovní prostor][8]
+       ![Výběr pracovního prostoru][8]
 3. Nastavte cenovou úroveň.
-   ![Vyberte cenovou úroveň.][9] 
+   ![Vyberte cenovou úroveň][9] 
    >[!NOTE]
    >Pokud je pracovní prostor už **zabezpečení** nebo **SecurityCenterFree** povolené žádné řešení, ceny se nastaví automaticky. 
    > 

@@ -26,6 +26,7 @@ items:
     href: apache-spark-load-data-run-query.md
   - name: Použití VSCode ke spouštění dotazů Apache Sparku
     href: ../hdinsight-for-vscode.md
+    maintainContext: true
   - name: Použití IntelliJ ke spouštění dotazů Apache Sparku
     href: apache-spark-intellij-tool-plugin.md
   - name: Analýza dat pomocí nástrojů BI
@@ -38,6 +39,7 @@ items:
     href: apache-spark-create-standalone-application.md
   - name: Monitorování dostupnosti clusterů s využitím protokolů Azure Monitoru a Ambari
     href: ../hdinsight-cluster-availability.md
+    maintainContext: true
 - name: Postup
   items:
   - name: Použití úložiště clusteru
@@ -105,6 +107,7 @@ items:
       href: apache-spark-connect-to-sql-database.md
     - name: Implementace architektury lambda pomocí Apache Sparku a Cosmos DB
       href: ../../cosmos-db/lambda-architecture.md
+      maintainContext: true
     - name: Spuštění úloh Azure ML pomocí AutoML
       href: apache-spark-run-machine-learning-automl.md
       maintainContext: true
@@ -442,9 +445,9 @@ items:
   - name: Nástroje Windows pro HDInsight
     href: ../hdinsight-hadoop-windows-tools.md
     maintainContext: true
-ms.openlocfilehash: 9775c1da15b5ac5e675e84487006339b1c9701ce
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: 973adb6fb1c8761ff03935d09faf699040604544
+ms.sourcegitcommit: b4ad15a9ffcfd07351836ffedf9692a3b5d0ac86
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58670166"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59058896"

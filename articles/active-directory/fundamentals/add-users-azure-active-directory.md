@@ -13,12 +13,12 @@ ms.author: lizross
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9cda9f976a7680a1338584e4308426683de82a79
-ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
+ms.openlocfilehash: c1bac4d2c0f236b8fca611c7391846abdb782796
+ms.sourcegitcommit: e43ea344c52b3a99235660960c1e747b9d6c990e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58802113"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "59009593"
 ---
 # <a name="add-or-delete-users-using-azure-active-directory"></a>Přidání nebo odstranění uživatelů pomocí služby Azure Active Directory
 Přidání nových uživatelů nebo odstranit stávající uživatelé z vaší organizace Azure Active Directory (Azure AD).
@@ -47,7 +47,7 @@ Můžete vytvořit nového uživatele pomocí portálu Azure Active Directory.
 
    - **Skupiny.** Volitelně můžete přidat uživatele do jednoho nebo více existujících skupin. Později můžete také přidat uživatele do skupin. Další informace o přidávání uživatelů do skupin najdete v tématu [vytvoření základní skupiny a přidání členů](active-directory-groups-create-azure-portal.md).
 
-   - **Role adresáře.** Volitelně můžete přidat uživatele a Azure AD roli správce. Můžete přiřadit uživatele jako globální správce nebo jeden nebo více rolí správce s omezením ve službě Azure AD. Další informace o přiřazování rolí najdete v tématu [přiřazení rolí uživatelům](active-directory-users-assign-role-azure-portal.md).
+   - **Role adresáře.** Volitelně můžete přidat uživatele k roli správce Azure AD. Můžete přiřadit uživatele jako globální správce nebo jeden nebo více rolí správce s omezením ve službě Azure AD. Další informace o přiřazování rolí najdete v tématu [přiřazení rolí uživatelům](active-directory-users-assign-role-azure-portal.md).
 
 4. Zkopírujte automaticky vytvořené heslo součástí **heslo** pole. Bude potřeba předat uživateli toto heslo pro počáteční proces přihlašování.
 

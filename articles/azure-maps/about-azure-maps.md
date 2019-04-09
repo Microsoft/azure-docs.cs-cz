@@ -9,18 +9,20 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 023f5ed43453d7fb20dec5d91651230aa8fb4370
-ms.sourcegitcommit: dd1a9f38c69954f15ff5c166e456fda37ae1cdf2
+ms.openlocfilehash: 944a111ac0c31e755b3991f9ea101ba652c676d3
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57571299"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59268756"
 ---
 # <a name="what-is-azure-maps"></a>Co je služba Azure Maps?
 
-Azure Maps je kolekce geoprostorových služeb, nepřipnutých nejčerstvější mapování daty dostupnými poskytování přesných geografického kontextu pro webové a mobilní aplikace. Azure Maps se skládá z rozhraní REST API pro vykreslování **mapy** v několika – styly a satelitních snímků, **hledání** pro adresy, místa a body zájmu po celém světě; **Směrování** point-to-point, multipoint, multipoint optimalizace, isochrone, komerční vozidla, provoz k nim a matice směrování; zobrazení to nejlepší z vyvíjet toku provozu a incidenty; navazování polohu uživatele přes **Informace o zeměpisné poloze**; a umístění pro převod **časových pásem**, jakož i načítání čas do umístění. Kromě toho Azure Maps nabízí služby pro **monitorování geografických zón**, mapy **Data** úložiště – hostování informace o poloze v Azure; a **prostorových operace** umístění Chcete-li zobrazit Intelligence prostřednictvím geoprostorové analýzy. Služby Azure Maps jsou k dispozici přímo jako rozhraní REST API nebo prostřednictvím naší robustní **Web SDK** nebo **sady Android SDK**. Tyto nástroje umožňují vývojářům rychle vyvíjet a škálovat řešení schopná integrovat informace o poloze do řešení Azure z v rámci cloudu Azure. Zaregistrujte vaši bezplatnou [účet Azure Maps](https://azure.microsoft.com/services/azure-maps/) dnes a vývoj start!
+Azure Maps je kolekce geoprostorových služeb, nepřipnutých nejčerstvější mapování daty dostupnými poskytování přesných geografického kontextu pro webové a mobilní aplikace. Azure Maps se skládá z rozhraní REST API pro vykreslování **mapy** v několika – styly a satelitních snímků, **hledání** pro adresy, místa a body zájmu po celém světě; **Směrování** point-to-point, multipoint, multipoint optimalizace, isochrone, komerční vozidla, provoz k nim a matice směrování zobrazení toku provozu předních výrobců a incidenty; navazování umístění uživatele prostřednictvím **informace o zeměpisné poloze**; a umístění pro převod **časových pásem**, jakož i načítání čas do umístění. Kromě toho Azure Maps nabízí služby pro **monitorování geografických zón**, mapy **Data** úložiště – hostování informace o poloze v Azure; a **prostorových operace** umístění Chcete-li zobrazit Intelligence prostřednictvím geoprostorové analýzy. Služby Azure Maps jsou k dispozici přímo jako rozhraní REST API nebo prostřednictvím naší robustní **Web SDK** nebo **sady Android SDK**. Tyto nástroje umožňují vývojářům rychle vyvíjet a škálovat řešení schopná integrovat informace o poloze do řešení Azure z v rámci cloudu Azure. Zaregistrujte vaši bezplatnou [účet Azure Maps](https://azure.microsoft.com/services/azure-maps/) dnes a vývoj start!
 
 Následující video vysvětluje Azure Maps do hloubky:
+
+<br/>
 
 <iframe src="https://channel9.msdn.com/Shows/Internet-of-Things-Show/Azure-Maps/player?format=ny" width="960" height="540" allowFullScreen frameBorder="0"></iframe>
 
@@ -95,7 +97,7 @@ Podrobnosti o této službě najdete v popisu [rozhraní API služby Azure Maps 
 Služba Traffic je sada webových služeb určená pro vývojáře, kteří ve svých webových nebo mobilních aplikacích potřebují informace o provozu. Služba nabízí dva datové typy:
 
 * Aktuální provoz – v reálném čase zjištěné rychlosti a doby průjezdu pro všechny klíčové silnice sítě.
-* Dopravní nehody – přesné informace o zablokované dopravě a o nehodách na silniční síti.
+* Provoz incidentů - aktuální přehled o nehodách a incidentů na silniční síti.
 
 ![Provoz v Azure Maps](media/about-azure-maps/Introduction_Traffic.png)
 
@@ -121,7 +123,7 @@ V Azure Maps se používá schéma ověřování založeného na klíčích. V �
 
 ## <a name="supported-regions"></a>Podporované oblasti
 
-Rozhraní Azure Maps API jsou v současné době k dispozici ve všech zemích s následujícími výjimkami:
+Rozhraní API pro mapy Azure je aktuálně k dispozici ve všech zemích s výjimkou následujících oblastech:
 
 * Argentina
 * Čína
@@ -130,16 +132,16 @@ Rozhraní Azure Maps API jsou v současné době k dispozici ve všech zemích s
 * Pákistán
 * Jižní Korea
 
-Zkontrolujte, že umístění aktuální IP adresy není v jedné z uvedených nepodporovaných zemí.
+Ověřte, že umístění vaši aktuální IP adresu není v jedné z nepodporovaných zemích výše.
 
 ## <a name="next-steps"></a>Další postup
 
 Další informace o nových funkcích Azure Maps:
 
 > [!div class="nextstepaction"]
-> [Matice tras, izochrony, vyhledávání IP adresy a další](https://azure.microsoft.com/blog/route-matrix-isochrones-ip-lookup-and-more-added-to-azure-maps/).
+> [Matice trasy, Izochronů vyhledávání IP adresy a provádění dalších akcí](https://azure.microsoft.com/blog/route-matrix-isochrones-ip-lookup-and-more-added-to-azure-maps/)
 
-Pokračujte vyzkoušením ukázkové aplikace, která službu předvádí:
+Vyzkoušejte si ukázkové aplikace demonstrující Azure Maps:
 
 > [!div class="nextstepaction"]
-> [Spuštění ukázky interaktivního hledání v mapách](quick-demo-map-app.md)
+> [Rychlý start: Vytvoření webové aplikace](quick-demo-map-app.md)

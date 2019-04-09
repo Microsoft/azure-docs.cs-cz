@@ -6,15 +6,15 @@ author: dlepow
 manager: jeconnoc
 ms.service: container-instances
 ms.topic: article
-ms.date: 03/20/2018
+ms.date: 03/20/2019
 ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: 8724bd7e13b0d8607ad5a6814b27c8c06681f331
-ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
+ms.openlocfilehash: f4bbea8acd447a731cf5c56f9876baf9183735ea
+ms.sourcegitcommit: 045406e0aa1beb7537c12c0ea1fbf736062708e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58202006"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "59005529"
 ---
 # <a name="container-groups-in-azure-container-instances"></a>Skupin kontejnerů ve službě Azure Container Instances
 
@@ -41,7 +41,9 @@ Tento příklad skupiny kontejnerů:
 
 ## <a name="deployment"></a>Nasazení
 
-Tady jsou dvě běžné způsoby nasazení skupiny vícekontejnerové: použití [šablony Resource Manageru] [ resource-manager template] nebo [soubor YAML][yaml-file]. Pomocí šablony Resource Manageru, když budete chtít nasadit prostředky dalších služeb Azure (třeba [sdílené složky Azure Files][azure-files]) v době nasazování instancí kontejnerů. Protože potřebujeme stručnější formátu YAML soubor YAML se doporučuje, pokud vaše nasazení obsahuje pouze instance kontejneru.
+Tady jsou dvě běžné způsoby nasazení skupiny vícekontejnerové: použití [šablony Resource Manageru] [ resource-manager template] nebo [soubor YAML][yaml-file]. Šablony Resource Manageru se doporučuje, pokud potřebujete nasadit prostředky dalších služeb Azure (třeba [sdílené složky Azure Files][azure-files]) při nasazování instancí kontejnerů. Protože potřebujeme stručnější formátu YAML soubor YAML se doporučuje, pokud vaše nasazení obsahuje pouze instance kontejneru.
+
+Pokud chcete zachovat konfiguraci skupiny kontejnerů, můžete konfiguraci exportovat do souboru YAML pomocí příkazového řádku Azure [az container export][az-container-export]. Export umožňuje ukládat vaše konfigurace skupiny kontejnerů ve správě verzí pro "konfigurace jako kódu." Nebo můžete použít exportovaný soubor jako výchozí bod při vývoji nové konfigurace v YAML.
 
 ## <a name="resource-allocation"></a>Přidělování prostředků
 
@@ -110,3 +112,4 @@ Zjistěte, jak nasadit skupiny vícekontejnerové kontejnerů pomocí šablony A
 [azure-files]: container-instances-volume-azure-files.md
 [virtual-network]: container-instances-vnet.md
 [gpus]: container-instances-gpu.md
+[az-container-export]: /cli/azure/container#az-container-export

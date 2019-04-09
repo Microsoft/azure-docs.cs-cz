@@ -8,14 +8,14 @@ services: iot-accelerators
 ms.topic: tutorial
 ms.date: 11/29/2018
 ms.author: adugar
-ms.openlocfilehash: 640eb8800f9593aef510d99713595bdd0c844263
-ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
+ms.openlocfilehash: 8a5c74c76662a089675fcbdcd8d5a7ea54b58fd1
+ms.sourcegitcommit: e43ea344c52b3a99235660960c1e747b9d6c990e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52684425"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "59009663"
 ---
-# <a name="tutorial-manage-your-connected-devices-in-bulk"></a>Kurz: Správa připojených zařízení hromadné
+# <a name="tutorial-manage-your-connected-devices-in-bulk"></a>Kurz: Správa hromadně připojených zařízení
 
 V tomto kurzu použijete ke správě konfigurace z připojených zařízení hromadné akcelerátor řešení vzdálené monitorování.
 
@@ -57,7 +57,7 @@ Je třeba na místním počítači nainstalovaný následující software:
 Než začnete, potřebujete:
 
 * Ujistěte se, [zaváděcího programu pro spouštění na vašem zařízení IoT DevKit je verze 1.4.0 nebo novější](https://microsoft.github.io/azure-iot-developer-kit/docs/firmware-upgrading/).
-* Zajistěte, aby že se sadou SDK IoT DevKit na stejnou verzi jako spouštěcí zavaděč. Můžete aktualizovat sady SDK IoT DevKit pomocí nástroje Azure IoT v nástroji VS Code. Otevřete paletu příkazů a zadejte **Arduino: panel Správce**. Další informace najdete v tématu [Příprava vývojového prostředí](../iot-hub/iot-hub-arduino-iot-devkit-az3166-get-started.md#prepare-the-development-environment).
+* Zajistěte, aby že se sadou SDK IoT DevKit na stejnou verzi jako spouštěcí zavaděč. Můžete aktualizovat sady SDK IoT DevKit pomocí nástroje Azure IoT v nástroji VS Code. Otevřete paletu příkazů a zadejte **Arduino: Panel Správce**. Další informace najdete v tématu [Příprava vývojového prostředí](../iot-hub/iot-hub-arduino-iot-devkit-az3166-get-started.md#prepare-the-development-environment).
 
 Také budete muset připojit alespoň jedno zařízení IoT DevKit akcelerátor řešení vzdálené monitorování. Pokud jste se nepřipojili IoT DevKit zařízení, přečtěte si téma [připojení MXChip IoT DevKit AZ3166 k akcelerátoru řešení vzdáleného monitorování IoT](iot-accelerators-arduino-iot-devkit-az3166-devkit-remote-monitoringV2.md).
 
@@ -89,7 +89,7 @@ Později v tomto kurzu použijete k použití konfigurace zařízení, která ak
 
 1. Zajistěte, aby že vaše IoT DevKit není připojený k počítači. Spusťte VS Code a DevKit připojte se k počítači.
 
-1. Stisknutím klávesy **F1** otevřete paletu příkazů, typ a vyberte **IoT Workbench: Příklady**. Potom vyberte **IoT DevKit** jako panelu.
+1. Stisknutím klávesy **F1** otevřete paletu příkazů, zadejte a vyberte **IoT Workbench: Příklady**. Potom vyberte **IoT DevKit** jako panelu.
 
 1. Najít **Firmware OTA** a klikněte na tlačítko **otevřít ukázkové**. Otevře se nové okno VS Code a zobrazí **firmware_ota** složky projektu:
 
@@ -103,7 +103,7 @@ Počáteční verze firmwaru zařízení je 1.0.0. Nový firmware by měly mít 
 
     ![Změna verze firmwaru](media/iot-accelerators-remote-monitoring-bulk-configuration-update/version-1-0-1.png)
 
-1. Otevřete paletu příkazů zadejte a vyberte **IoT Workbench: zařízení**. Potom vyberte **zařízení kompilaci** pro kompilaci kódu:
+1. Otevřete paletu příkazů zadejte a vyberte **IoT Workbench: Zařízení**. Potom vyberte **zařízení kompilaci** pro kompilaci kódu:
 
     ![Kompilace zařízení](media/iot-accelerators-remote-monitoring-bulk-configuration-update/iot-workbench-device-compile.png)
 
@@ -111,7 +111,7 @@ Počáteční verze firmwaru zařízení je 1.0.0. Nový firmware by měly mít 
 
 ### <a name="generate-the-crc-value-and-calculate-the-firmware-file-size"></a>Generování hodnoty CRC a výpočet velikosti souboru firmwaru
 
-1. Otevřete paletu příkazů zadejte a vyberte **IoT Workbench: zařízení**. Potom vyberte **generovat CRC**:
+1. Otevřete paletu příkazů zadejte a vyberte **IoT Workbench: Zařízení**. Potom vyberte **generovat CRC**:
 
     ![Generovat CRC](media/iot-accelerators-remote-monitoring-bulk-configuration-update/iot-workbench-device-crc.png)
 
@@ -139,7 +139,7 @@ Pomocí svého účtu úložiště Azure pro hostování nového firmwaru soubor
 
     ![Verze 1.0.0](media/iot-accelerators-remote-monitoring-bulk-configuration-update/version-1-0-1.png)
 
-1. Otevřete paletu příkazů zadejte a vyberte **IoT Workbench: zařízení**. Potom vyberte **zařízení nahrát**:
+1. Otevřete paletu příkazů zadejte a vyberte **IoT Workbench: Zařízení**. Potom vyberte **zařízení nahrát**:
 
     ![Nahrávání zařízení](media/iot-accelerators-remote-monitoring-bulk-configuration-update/device-upload.png)
 
@@ -147,11 +147,11 @@ Pomocí svého účtu úložiště Azure pro hostování nového firmwaru soubor
 
 1. Až se nahrávání dokončí, zařízení IoT DevKit se restartuje. Po dokončení restartování se zobrazí na obrazovce IoT DevKit **FW verze: 1.0.0**, a, který kontroluje nových firmwaru:
 
-    ![OTA-1](media/iot-accelerators-remote-monitoring-bulk-configuration-update/ota-1.jpg)
+    ![ota-1](media/iot-accelerators-remote-monitoring-bulk-configuration-update/ota-1.jpg)
 
 ## <a name="create-a-device-configuration"></a>Vytvoření konfigurace zařízení
 
-Konfigurace zařízení určuje požadovaný stav svých zařízení. Obvykle, Vývojář [vytvoří konfiguraci](../iot-hub/iot-hub-auto-device-config.md#create-a-configuration) na **konfigurace zařízení IoT** stránky na webu Azure Portal. Konfigurace zařízení je dokument JSON, který určuje požadovaný stav svých zařízení a sadu metriky.
+Konfigurace zařízení určuje požadovaný stav svých zařízení. Obvykle, Vývojář [vytvoří konfiguraci](../iot-hub/iot-hub-automatic-device-management.md#create-a-configuration) na **konfigurace zařízení IoT** stránky na webu Azure Portal. Konfigurace zařízení je dokument JSON, který určuje požadovaný stav svých zařízení a sadu metriky.
 
 Následující konfiguraci uložíte jako soubor s názvem **firmware update.json** na místním počítači. Nahradit `YOURSTRORAGEACCOUNTNAME`, `YOURCHECKSUM`, a `YOURPACKAGESIZE` zástupné symboly hodnotami, které jste si poznamenali dříve:
 
@@ -231,7 +231,7 @@ V této části vytvořit a spustit nasazení, které platí pro zařízení IoT
     |Název|Nasadit aktualizace firmwaru|
     |Typ balíčku|Konfigurace zařízení|
     |Typ konfigurace|Firmware|
-    |Balíček|firmware update.json|
+    |Balíček|firmware-update.json|
     |Skupiny zařízení|Zařízení IoT DevKit|
     |Priorita|10|
 
@@ -248,23 +248,23 @@ V této části vytvořit a spustit nasazení, které platí pro zařízení IoT
 
 Po několika minutách IoT DevKit načte informace o nový firmware a začne stahování do zařízení:
 
-![OTA-2](media/iot-accelerators-remote-monitoring-bulk-configuration-update/ota-2.jpg)
+![ota-2](media/iot-accelerators-remote-monitoring-bulk-configuration-update/ota-2.jpg)
 
 V závislosti na rychlosti sítě stahování může trvat až na několik minut. Po stažení firmwaru zařízení ověřuje velikost souboru a hodnota. Zobrazí obrazovku na MXChip **předaný** Pokud je ověření úspěšné.
 
-![OTA 3](media/iot-accelerators-remote-monitoring-bulk-configuration-update/ota-3.jpg)
+![ota-3](media/iot-accelerators-remote-monitoring-bulk-configuration-update/ota-3.jpg)
 
 Pokud je kontrola je úspěšná, zařízení se restartuje. Zobrazí odpočítávání z **5** k **0** předtím, než se stane při restartování.
 
-![OTA 4](media/iot-accelerators-remote-monitoring-bulk-configuration-update/ota-4.jpg)
+![ota-4](media/iot-accelerators-remote-monitoring-bulk-configuration-update/ota-4.jpg)
 
 Po restartování počítače spouštěcí zavaděč IoT DevKit upgrade firmwaru na novou verzi. Upgrade může trvat několik sekund. Během této fáze je red RGB LED v zařízení a na obrazovce je prázdný.
 
-![OTA 5](media/iot-accelerators-remote-monitoring-bulk-configuration-update/ota-5.jpg)
+![ota-5](media/iot-accelerators-remote-monitoring-bulk-configuration-update/ota-5.jpg)
 
 Po dokončení restartování zařízení IoT DevKit teď běží verze 1.0.1 firmware.
 
-![OTA 6](media/iot-accelerators-remote-monitoring-bulk-configuration-update/ota-6.jpg)
+![ota-6](media/iot-accelerators-remote-monitoring-bulk-configuration-update/ota-6.jpg)
 
 Na **nasazení** stránky, klikněte na nasazení a zjistit stav zařízení podle jejich aktualizace. Zobrazí se stav jednotlivých zařízení ve vaší skupině zařízení a vlastní metriky, které jste definovali.
 

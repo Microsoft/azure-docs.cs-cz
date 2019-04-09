@@ -13,21 +13,19 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/31/2018
+ms.date: 03/27/2019
 ms.author: v-ant
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a24945cae273e072d3be314a66248674e25fe287
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: MT
+ms.openlocfilehash: 9d17a3c81784d56c6fcad7c7608559abf732882a
+ms.sourcegitcommit: b4ad15a9ffcfd07351836ffedf9692a3b5d0ac86
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56198860"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59057927"
 ---
 # <a name="tutorial-configure-cornerstone-ondemand-for-automatic-user-provisioning"></a>Kurz: Nakonfigurujte základní kámen OnDemand pro automatické zřizování uživatelů
 
-
 Cílem tohoto kurzu je předvést postup provést v základním kamenem OnDemand a Azure Active Directory (Azure AD) ke konfiguraci Azure AD automaticky zřizovat a rušit zřízení uživatele a/nebo skupiny, které se základním kamenem OnDemand.
-
 
 > [!NOTE]
 > Tento kurz popisuje konektor postavené na službě zřizování uživatelů služby Azure AD. Důležité podrobnosti o význam této služby, jak to funguje a nejčastější dotazy najdete v tématu [automatizace zřizování uživatelů a jeho rušení pro aplikace SaaS ve službě Azure Active Directory](../manage-apps/user-provisioning.md).
@@ -36,68 +34,62 @@ Cílem tohoto kurzu je předvést postup provést v základním kamenem OnDemand
 
 Scénář popsaný v tomto kurzu se předpokládá, že už máte splněné následující požadavky:
 
-*   Klient služby Azure AD
-*   Základní kámen OnDemand tenanta
-*   Uživatelský účet v základním kamenem OnDemand s oprávněními správce
-
+* Klient služby Azure AD
+* Základní kámen OnDemand tenanta
+* Uživatelský účet v základním kamenem OnDemand s oprávněními správce
 
 > [!NOTE]
 > Zřizování integrace Azure AD spoléhá na [základní kámen OnDemand Webservice](https://help.csod.com/help/csod_0/Content/Resources/Documents/WebServices/CSOD_-_Summary_of_Web_Services_v20151106.pdf), který je dostupný pro základní kámen OnDemand týmy.
 
 ## <a name="adding-cornerstone-ondemand-from-the-gallery"></a>Přidání základní kámen OnDemand z Galerie
+
 Před konfigurací základní kámen OnDemand pro automatické zřizování uživatelů pomocí Azure AD, musíte přidat základní kámen OnDemand z Galerie aplikací Azure AD na váš seznam spravovaných aplikací SaaS.
 
 **Chcete-li přidat základní kámen OnDemand z Galerie aplikací Azure AD, postupujte následovně:**
 
-1. V **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu. 
+1. V **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
 
-    ![Tlačítko Azure Active Directory][1]
+    ![Tlačítko Azure Active Directory](common/select-azuread.png)
 
-2. Přejděte do **podnikové aplikace** > **všechny aplikace**.
+2. Přejděte do **podnikové aplikace** a pak vyberte **všechny aplikace** možnost.
 
-    ![Podnikové aplikace oddílu][2]
-    
-3. Chcete-li přidat základní kámen OnDemand, klikněte na tlačítko **novou aplikaci** tlačítko v horní části dialogového okna.
+    ![V okně podnikové aplikace](common/enterprise-applications.png)
 
-    ![Tlačítko nové aplikace][3]
+3. Chcete-li přidat novou aplikaci, klikněte na tlačítko **novou aplikaci** tlačítko v horní části dialogového okna.
 
-4. Do vyhledávacího pole zadejte **základní kámen OnDemand**.
+    ![Tlačítko nové aplikace](common/add-new-app.png)
 
-    ![Základní kámen OnDemand zřizování](./media/cornerstone-ondemand-provisioning-tutorial/AppSearch.png)
+4. Do vyhledávacího pole zadejte **základní kámen OnDemand**vyberte **základní kámen OnDemand** z panelu výsledků klikněte **přidat** tlačítko pro přidání aplikace.
 
-5. Na panelu výsledků vyberte **základní kámen OnDemand**a potom klikněte na tlačítko **přidat** tlačítko pro přidání do seznamu aplikací SaaS základní kámen OnDemand.
-
-    ![Základní kámen OnDemand zřizování](./media/cornerstone-ondemand-provisioning-tutorial/AppSearchResults.png)
-
-    ![Základní kámen OnDemand zřizování](./media/cornerstone-ondemand-provisioning-tutorial/AppCreation.png)
+    ![Základní kámen OnDemand v seznamu výsledků](common/search-new-app.png)
 
 ## <a name="assigning-users-to-cornerstone-ondemand"></a>Přiřazování uživatelů k základní kámen OnDemand.
 
-Azure Active Directory používá koncept nazvaný "přiřazení" k určení, kteří uživatelé měli obdržet přístup k vybrané aplikace. V souvislosti s automatické zřizování uživatelů se synchronizují pouze uživatele a/nebo skupiny, které se "přiřadily" aplikace ve službě Azure AD. 
+Azure Active Directory používá koncept nazvaný "přiřazení" k určení, kteří uživatelé měli obdržet přístup k vybrané aplikace. V souvislosti s automatické zřizování uživatelů se synchronizují pouze uživatele a/nebo skupiny, které se "přiřadily" aplikace ve službě Azure AD.
 
 Než nakonfigurujete a povolíte automatické zřizování uživatelů, byste měli rozhodnout, které uživatele a/nebo skupiny ve službě Azure AD potřebují přístup k základním kamenem OnDemand. Jakmile se rozhodli, můžete přiřadit tyto uživatele a/nebo skupiny základní kámen OnDemand podle zde uvedených pokynů:
 
-*   [Přiřadit uživatele nebo skupiny k podnikové aplikace](../manage-apps/assign-user-or-group-access-portal.md)
+* [Přiřadit uživatele nebo skupiny k podnikové aplikace](../manage-apps/assign-user-or-group-access-portal.md)
 
 ### <a name="important-tips-for-assigning-users-to-cornerstone-ondemand"></a>Důležité tipy pro přiřazování uživatelů k základní kámen OnDemand.
 
-*   Dále je doporučeno jednoho uživatele Azure AD je přiřazená základní kámen OnDemand pro testování automatické konfigurace zřizování uživatelů. Další uživatele a/nebo skupiny může být přiřazen později.
+* Dále je doporučeno jednoho uživatele Azure AD je přiřazená základní kámen OnDemand pro testování automatické konfigurace zřizování uživatelů. Další uživatele a/nebo skupiny může být přiřazen později.
 
-*   Při přiřazení uživatele k základní kámen OnDemand, je nutné vybrat libovolnou platnou roli specifické pro aplikaci (Pokud je k dispozici) v dialogovém okně přiřazení. Uživatelé s **výchozího přístupu k** role jsou vyloučené z zřizování.
+* Při přiřazení uživatele k základní kámen OnDemand, je nutné vybrat libovolnou platnou roli specifické pro aplikaci (Pokud je k dispozici) v dialogovém okně přiřazení. Uživatelé s **výchozího přístupu k** role jsou vyloučené z zřizování.
 
 ## <a name="configuring-automatic-user-provisioning-to-cornerstone-ondemand"></a>Konfigurace automatické zřizování uživatelů pro základní kámen OnDemand.
 
 Tato část vás provede kroky pro konfiguraci Azure AD služby zřizování a vytvářet, aktualizovat a zakázat uživatele a/nebo skupiny v základním kamenem OnDemand podle uživatele a/nebo přiřazení skupin ve službě Azure AD.
 
-
 ### <a name="to-configure-automatic-user-provisioning-for-cornerstone-ondemand-in-azure-ad"></a>Konfigurace automatické zřizování uživatelů pro základní kámen OnDemand ve službě Azure AD:
 
+1. Přihlaste se k [webu Azure portal](https://portal.azure.com) a vyberte **podnikové aplikace**vyberte **všechny aplikace**a pak vyberte **základní kámen OnDemand**.
 
-1. Přihlaste se k [webu Azure portal](https://portal.azure.com) a přejděte do **Azure Active Directory > podnikové aplikace > všechny aplikace**.
+    ![Okno aplikace organizace](common/enterprise-applications.png)
 
-2. Vyberte základní kámen OnDemand ze seznamu aplikací SaaS.
- 
-    ![Základní kámen OnDemand zřizování](./media/cornerstone-ondemand-provisioning-tutorial/Successcenter2.png)
+2. V seznamu aplikací vyberte **základní kámen OnDemand**.
+
+    ![Základní kámen OnDemand odkaz v seznamu aplikací](common/all-applications.png)
 
 3. Vyberte **zřizování** kartu.
 
@@ -109,11 +101,11 @@ Tato část vás provede kroky pro konfiguraci Azure AD služby zřizování a v
 
 5. V části **přihlašovacích údajů správce** části, zadejte **uživatelské jméno správce**, **heslo správce**, a **domény** z vaší základní kámen OnDemand účet.
 
-    *   V **uživatelské jméno správce** pole, naplnění doména\uživatelské jméno účtu správce ve svém tenantovi základní kámen OnDemand. Příklad: contoso\admin.
+    * V **uživatelské jméno správce** pole, naplnění doména\uživatelské jméno účtu správce ve svém tenantovi základní kámen OnDemand. Příklad: contoso\admin.
 
-    *   V **heslo správce** pole, vyplnit odpovídající uživatelské jméno správce heslo.
+    * V **heslo správce** pole, vyplnit odpovídající uživatelské jméno správce heslo.
 
-    *   V **domény** pole, vyplnit adresy URL webové služby základní kámen OnDemand tenanta. Příklad: Služba se nachází na `https://ws-[corpname].csod.com/feed30/clientdataservice.asmx`pro doménu Contoso je `https://ws-contoso.csod.com/feed30/clientdataservice.asmx`. Další informace o tom, jak načíst adresu URL webové služby najdete v tématu [tady](https://help.csod.com/help/csod_0/Content/Resources/Documents/WebServices/CSOD_Web_Services_-_User-OU_Technical_Specification_v20160222.pdf).
+    * V **domény** pole, vyplnit adresy URL webové služby základní kámen OnDemand tenanta. Příklad: Služba se nachází na `https://ws-[corpname].csod.com/feed30/clientdataservice.asmx`pro doménu Contoso je `https://ws-contoso.csod.com/feed30/clientdataservice.asmx`. Další informace o tom, jak načíst adresu URL webové služby najdete v tématu [tady](https://help.csod.com/help/csod_0/Content/Resources/Documents/WebServices/CSOD_Web_Services_-_User-OU_Technical_Specification_v20160222.pdf).
 
 6. Po vyplnění polí zobrazených v kroku 5, klikněte na tlačítko **Test připojení** aby Azure AD můžete připojit k základní kámen OnDemand. Pokud se nepovede, ujistěte se, že váš základní kámen OnDemand účet má oprávnění správce a zkuste to znovu.
 
@@ -147,21 +139,20 @@ Tato část vás provede kroky pro konfiguraci Azure AD služby zřizování a v
 
     ![Základní kámen OnDemand zřizování](./media/cornerstone-ondemand-provisioning-tutorial/Save.png)
 
-
 Tato operace spustí počáteční synchronizaci všech uživatelů a/nebo skupiny definované v **oboru** v **nastavení** oddílu. Počáteční synchronizace trvá déle než při následné synchronizace, ke kterým dochází přibližně každých 40 minut tak dlouho, dokud je spuštěna služba zřizování Azure AD. Můžete použít **podrobnosti synchronizace** části ke sledování průběhu a odkazech na zřizování sestava aktivity, která popisuje všechny akce prováděné zřizování na OnDemand základní kámen služby Azure AD.
 
 Další informace o tom, jak číst zřizování protokoly Azure AD najdete v tématu [hlášení o zřizování automatické uživatelských účtů](../manage-apps/check-status-user-account-provisioning.md).
+
 ## <a name="connector-limitations"></a>Omezení konektoru
 
 * Základní kámen OnDemand **pozice** atribut očekává hodnotu, která odpovídá rolí na portálu pro základní kámen OnDemand. Seznam platných **pozice** hodnoty lze získat tak, že přejdete do **upravit záznam uživatele > Struktura organizace > pozici** portálu základní kámen OnDemand.
+
     ![Základní kámen OnDemand zřizování upravit uživatele](./media/cornerstone-ondemand-provisioning-tutorial/UserEdit.png) ![základní kámen OnDemand zřizování pozice](./media/cornerstone-ondemand-provisioning-tutorial/UserPosition.png) ![základní kámen OnDemand zřizování seznam pozic](./media/cornerstone-ondemand-provisioning-tutorial/PostionId.png)
-    
+
 ## <a name="additional-resources"></a>Další materiály
 
 * [Správa zřizování uživatelských účtů pro podnikové aplikace](../manage-apps/configure-automatic-user-provisioning-portal.md)
-* [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)
-
-
+* [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
 ## <a name="next-steps"></a>Další postup
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 02/20/2018
 ms.author: abshamsft
-ms.openlocfilehash: d35918659acb899e43f76e94168abcba080aa006
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 1c80395880c556138313ebfd9af1610ace946c8a
+ms.sourcegitcommit: 045406e0aa1beb7537c12c0ea1fbf736062708e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57452126"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "59006766"
 ---
 # <a name="network-performance-monitor-solution-in-azure"></a>Network Performance Monitor řešení v Azure
 
@@ -59,7 +59,7 @@ Seznam podporovaných oblastí pro monitorování ExpressRoute je k dispozici v 
 
 ### <a name="install-and-configure-agents"></a>Instalace a konfigurace agentů 
 
-Můžete nainstalovat agenty na základních procesů [počítače Windows se připojit ke službě Azure Log Analytics](../../azure-monitor/platform/agent-windows.md) a [připojení Operations Manageru k Log Analytics](../../azure-monitor/platform/om-agents.md).
+Můžete nainstalovat agenty na základních procesů [počítače připojit Windows do Azure monitoru](../platform/agent-windows.md) a [připojení Operations Manageru do Azure monitoru](../platform/om-agents.md).
 
 ### <a name="where-to-install-the-agents"></a>Kam chcete nainstalovat agenty 
 
@@ -101,7 +101,7 @@ Network Performance Monitor používá k monitorování výkonu sítě mezi zdro
 
 ### <a name="configure-the-solution"></a>Konfigurovat řešení 
 
-1. Přidat do pracovního prostoru z řešení Network Performance Monitor [Azure marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.NetworkMonitoringOMS?tab=Overview). Také můžete použít postup v [přidání řešení Log Analytics z Galerie řešení](../../azure-monitor/insights/solutions.md). 
+1. Přidat do pracovního prostoru z řešení Network Performance Monitor [Azure marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.NetworkMonitoringOMS?tab=Overview). Také můžete použít postup v [řešení pro monitorování Azure přidat z Galerie řešení](../../azure-monitor/insights/solutions.md). 
 2. Otevřete váš pracovní prostor Log Analytics a vyberte **přehled** dlaždici. 
 3. Vyberte **Network Performance Monitor** dlaždici s touto zprávou *řešení vyžaduje další konfiguraci*.
 
@@ -151,7 +151,7 @@ Všechny uzly, kterých je agent nainstalovaný na nich jsou uvedeny na **uzly**
 
 Konfigurace možností, které chcete, aby:
 
-- [Sledování výkonu](network-performance-monitor-performance-monitor.md#configuration)
+- [Monitorování výkonu](network-performance-monitor-performance-monitor.md#configuration)
 - [Monitorování koncového bodu služby](network-performance-monitor-performance-monitor.md#configuration)
 - [ExpressRoute Monitor](network-performance-monitor-expressroute.md#configuration)
 
@@ -168,7 +168,7 @@ V následující tabulce jsou uvedeny metody shromažďování dat a další pod
  
 
  
-Toto řešení využívá k vyhodnocení stavu sítě syntetické transakce. Log Analytics agenty nainstalované v různých fázích síťových paketů protokolu TCP serveru exchange nebo odezvu ICMP mezi sebou. Určuje, zda agenti použít pakety TCP nebo ICMP Echo závisí na protokol, který jste vybrali pro sledování. V procesu další agenty round-trip čas a paketů ztráty případné. Každý agent pravidelně provádí trasování cesty a jiní agenti pro vyhledání různých cest v síti, která musí být testována. Na základě těchto dat můžete odvodit agenty, latence sítě a ztrát paketů. Testy jsou opakovat každých pět sekund. Data je agregovat informace o tři minuty agenti před nahráním do služby Log Analytics.
+Toto řešení využívá k vyhodnocení stavu sítě syntetické transakce. Log Analytics agenty nainstalované v různých fázích síťových paketů protokolu TCP serveru exchange nebo odezvu ICMP mezi sebou. Určuje, zda agenti použít pakety TCP nebo ICMP Echo závisí na protokol, který jste vybrali pro sledování. V procesu další agenty round-trip čas a paketů ztráty případné. Každý agent pravidelně provádí trasování cesty a jiní agenti pro vyhledání různých cest v síti, která musí být testována. Na základě těchto dat můžete odvodit agenty, latence sítě a ztrát paketů. Testy jsou opakovat každých pět sekund. Data je agregovat informace o tři minuty agenti před odesláním do pracovního prostoru Log Analytics ve službě Azure Monitor.
 
 
 
@@ -241,9 +241,9 @@ Topologie zobrazené na mapě se topologie vrstvy 3 a neobsahuje vrstvy 2 zaří
 ![Mapu](media/network-performance-monitor/topology-map.png)
  
 
-## <a name="log-analytics-search"></a>Hledání log Analytics 
+## <a name="log-queries-in-azure-monitor"></a>Protokol dotazů ve službě Azure Monitor
 
-Všechna data, která je graficky vystavené prostřednictvím řídicího panelu monitorování výkonu sítě a její procházení stránek je taky dostupný nativně v [hledání Log Analytics](../../azure-monitor/log-query/log-query-overview.md). Můžete provádět interaktivní analýzu dat v úložišti a korelovat data z různých zdrojů. Můžete také vytvořit vlastní výstrahy a zobrazení a export dat do Excelu, Power BI nebo ke sdílení odkazu.  **Běžné dotazy** oblasti na řídicím panelu má některé užitečné dotazy, které můžete použít jako výchozí bod k vytvoření vlastních dotazů a sestav. 
+Všechna data, která je graficky vystavené prostřednictvím řídicího panelu monitorování výkonu sítě a její procházení stránek je taky dostupný nativně v [protokolu dotazy](../log-query/log-query-overview.md). Můžete provádět interaktivní analýzu dat v úložišti a korelovat data z různých zdrojů. Můžete také vytvořit vlastní výstrahy a zobrazení a export dat do Excelu, Power BI nebo ke sdílení odkazu.  **Běžné dotazy** oblasti na řídicím panelu má některé užitečné dotazy, které můžete použít jako výchozí bod k vytvoření vlastních dotazů a sestav. 
 
 ## <a name="alerts"></a>Výstrahy
 
@@ -251,7 +251,7 @@ Network Performance Monitor využívá výstrah možnosti [Azure Monitor](https:
 
 To znamená, že všechna oznámení se spravují pomocí [skupiny akcí](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-action-groups#overview).  
 
-Pokud jste uživatelem NPM vytvořením výstrahy prostřednictvím Log Analytics: 
+Pokud jste uživatelem NPM vytvořením výstrahy prostřednictvím LAzure monitorování: 
 1. Zobrazí se odkaz, který vás přesměrují na webu Azure Portal. Klikněte na něj pro přístup k portálu.
 2. Kliknutím na dlaždici řešení Network Performance monitoru. 
 3. Přejděte ke konfiguraci.  

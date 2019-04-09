@@ -1,43 +1,53 @@
 ---
-title: Nasazení skupin více kontejnerů ve službě Azure Container Instances
-description: Zjistěte, jak nasadit skupinu kontejnerů s několika kontejnerů ve službě Azure Container Instances pomocí šablony Azure Resource Manageru.
+title: Kurz – nasazení skupiny více kontejnerů ve službě Azure Container Instances – šablony
+description: V tomto kurzu se dozvíte, jak nasadit skupinu kontejnerů s několika kontejnerů ve službě Azure Container Instances pomocí šablony Azure Resource Manageru pomocí rozhraní příkazového řádku Azure.
 services: container-instances
 author: dlepow
 ms.service: container-instances
 ms.topic: article
-ms.date: 06/08/2018
+ms.date: 04/03/2019
 ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: 93f73e133e99025b479d0b38512e26088a8eaefa
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.openlocfilehash: f769beda1654dc9f58ecff733741fb1ab9118031
+ms.sourcegitcommit: 045406e0aa1beb7537c12c0ea1fbf736062708e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58369105"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "59006917"
 ---
-# <a name="deploy-a-multi-container-group-with-a-resource-manager-template"></a>Nasazení skupiny více kontejnerů pomocí šablony Resource Manageru
+# <a name="tutorial-deploy-a-multi-container-group-using-a-resource-manager-template"></a>Kurz: Nasazení skupiny více kontejnerů pomocí šablony Resource Manageru
 
-Služba Azure Container Instances podporuje nasazení několika kontejnerů na jednom hostiteli pomocí [skupinu kontejnerů](container-instances-container-groups.md). To je užitečné při vytváření sajdkára aplikace pro protokolování, monitorování nebo jakoukoli jinou konfiguraci Pokud služba potřebuje druhý připojený proces.
+> [!div class="op_single_selector"]
+> * [YAML](container-instances-multi-container-yaml.md)
+> * [Resource Manager](container-instances-multi-container-group.md)
 
-Existují dvě metody pro nasazení skupin více kontejnerů pomocí Azure CLI:
+Služba Azure Container Instances podporuje nasazení několika kontejnerů na jednom hostiteli pomocí [skupinu kontejnerů](container-instances-container-groups.md). Skupiny kontejnerů je užitečné při vytváření sajdkára aplikace pro protokolování, monitorování nebo jakoukoli jinou konfiguraci Pokud služba potřebuje druhý připojený proces.
 
-* Nasazení šablony Resource Manageru (Tento článek)
-* [Nasazení souboru YAML](container-instances-multi-container-yaml.md)
+V tomto kurzu postupujte podle kroků pro spuštění konfigurace jednoduché dvě kontejner sajdkára nasazením šablony Azure Resource Manageru pomocí rozhraní příkazového řádku Azure. Získáte informace o těchto tématech:
 
-Nasazení pomocí šablony Resource Manageru se doporučuje, pokud potřebujete nasadit prostředky dalších služeb Azure (například do soubory Azure sdílené složky) v době nasazování instancí kontejnerů. Protože potřebujeme stručnější formátu YAML, se doporučuje nasazení pomocí souboru YAML, pokud vaše nasazení obsahuje *pouze* container instances.
+> [!div class="checklist"]
+> * Konfigurace skupiny vícekontejnerové šablony
+> * Nasazení skupiny kontejnerů
+> * Zobrazení protokolů z kontejnerů
+
+Šablony Resource Manageru můžete snadno upravit pro scénáře, když budete chtít nasadit prostředky dalších služeb Azure (třeba sdílenou složku služby soubory Azure nebo virtuální sítě) s skupiny kontejnerů. 
 
 > [!NOTE]
-> Skupiny vícekontejnerové jsou momentálně omezené jenom na Linuxové kontejnery. Pracujeme na tom, aby všechny funkce byly dostupné i pro kontejnery Windows. Aktuální rozdíly pro tyto platformy najdete v tématu věnovaném [kvótám a dostupnosti oblastí pro Azure Container Instances](container-instances-quotas.md).
+> Skupiny vícekontejnerové jsou momentálně omezené jenom na Linuxové kontejnery. 
 
-Další šablony ukázky najdete v tématu [šablony Azure Resource Manageru pro Azure Container Instances](container-instances-samples-rm.md). 
+Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
-## <a name="configure-the-template"></a>Konfigurace šablony
+[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Části v tomto článku vás provedou spuštěním jednoduché sajdkára vícekontejnerová konfigurace nasazení šablony Azure Resource Manageru.
+## <a name="configure-a-template"></a>Konfigurace šablony
 
-Začněte vytvořením souboru s názvem `azuredeploy.json`, pak zkopírujte do něj následující kód JSON.
+Začněte tak, že zkopírujete následující kód JSON do nového souboru s názvem `azuredeploy.json`. Ve službě Azure Cloud Shell můžete použít Visual Studio Code k vytvoření souboru ve svém pracovním adresáři:
 
-Tuto šablonu Resource Manageru definuje skupinu kontejnerů se dvěma kontejnery, veřejnou IP adresu a dva vystavené porty. Kontejnery se nasazují z veřejné Image Microsoft. První kontejner ve skupině spustí aplikaci přístupem k Internetu. Druhý kontejner sajdkára, odešle požadavek HTTP hlavní webové aplikace prostřednictvím místní sítě skupiny.
+```
+code azuredeploy.json
+```
+
+Tuto šablonu Resource Manageru definuje skupinu kontejnerů se dvěma kontejnery, veřejnou IP adresu a dva vystavené porty. První kontejner ve skupině spustí webovou aplikaci přístupem k Internetu. Druhý kontejner sajdkára, odešle požadavek HTTP hlavní webové aplikace prostřednictvím místní sítě skupiny.
 
 ```JSON
 {
@@ -169,9 +179,9 @@ Name              ResourceGroup    Status    Image                              
 myContainerGroup  danlep0318r      Running   mcr.microsoft.com/azuredocs/aci-tutorial-sidecar,mcr.microsoft.com/azuredocs/aci-helloworld:latest  20.42.26.114:80,8080  Public     1.0 core/1.5 gb  Linux     eastus
 ```
 
-## <a name="view-logs"></a>Zobrazení protokolů
+## <a name="view-container-logs"></a>Zobrazení protokolů kontejneru
 
-Zobrazit výstup protokolu kontejneru pomocí [protokoly kontejneru az] [ az-container-logs] příkazu. `--container-name` Argument určuje kontejner, ze kterého chcete vyžádat protokoly. V tomto příkladu je zadán první kontejner.
+Zobrazit výstup protokolu kontejneru pomocí [protokoly kontejneru az] [ az-container-logs] příkazu. `--container-name` Argument určuje kontejner, ze kterého chcete vyžádat protokoly. V tomto příkladu `aci-tutorial-app` určen kontejner.
 
 ```azurecli-interactive
 az container logs --resource-group myResourceGroup --name myContainerGroup --container-name aci-tutorial-app
@@ -186,7 +196,7 @@ listening on port 80
 ::1 - - [21/Mar/2019:23:17:54 +0000] "HEAD / HTTP/1.1" 200 1663 "-" "curl/7.54.0"
 ```
 
-Pokud chcete zobrazit protokoly pro kontejner postranním, spusťte stejný příkaz druhý název kontejneru.
+Pokud chcete zobrazit protokoly pro kontejner sajdkára, spusťte podobný příkaz zadání `aci-tutorial-sidecar` kontejneru.
 
 ```azurecli-interactive
 az container logs --resource-group myResourceGroup --name myContainerGroup --container-name aci-tutorial-sidecar
@@ -212,14 +222,21 @@ Date: Thu, 21 Mar 2019 20:36:41 GMT
 Connection: keep-alive
 ```
 
-Jak je vidět, sajdkára pravidelně provádí požadavek HTTP do hlavní webové aplikace prostřednictvím místní sítě skupiny k zajištění, že je spuštěná. V tomto příkladu sajdkára může rozšířit aktivuje výstrahu, pokud kód odpovědi HTTP než 200 OK dostali.
+Jak je vidět, sajdkára pravidelně provádí požadavek HTTP do hlavní webové aplikace prostřednictvím místní sítě skupiny k zajištění, že je spuštěná. V tomto příkladu sajdkára může rozšířit tak, aby aktivuje výstrahu, pokud ho kód odpovědi HTTP přijaté jiné než `200 OK`.
 
 ## <a name="next-steps"></a>Další postup
 
-Tento článek popisuje kroky potřebné pro nasazení více kontejnerů Azure container instance. Prostředí Azure Container Instances začátku do konce najdete v kurzu Azure Container Instances.
+V tomto kurzu pomocí šablony Azure Resource Manageru k nasazení skupiny více kontejnerů ve službě Azure Container Instances. Naučili jste se tyto postupy:
 
-> [!div class="nextstepaction"]
-> [Kurz služby Azure Container Instances][aci-tutorial]
+> [!div class="checklist"]
+> * Konfigurace skupiny vícekontejnerové šablony
+> * Nasazení skupiny kontejnerů
+> * Zobrazení protokolů z kontejnerů
+
+Další šablony ukázky najdete v tématu [šablony Azure Resource Manageru pro Azure Container Instances](container-instances-samples-rm.md).
+
+Můžete také určit skupiny vícekontejnerové pomocí [soubor YAML](container-instances-multi-container-yaml.md). Z důvodu stručnější povahy formátu YAML nasazení pomocí souboru YAML je dobrou volbou, pokud vaše nasazení obsahuje pouze instance kontejneru.
+
 
 <!-- LINKS - Internal -->
 [aci-tutorial]: ./container-instances-tutorial-prepare-app.md

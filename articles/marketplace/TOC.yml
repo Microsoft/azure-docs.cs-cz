@@ -102,13 +102,14 @@ items:
     - name: Stránka Přehledy
       href: ./cloud-partner-portal/portal-tour/cpp-insights-page.md
   - name: Správa portálu
+    href: ./cloud-partner-portal/portal-manage/cpp-portal-management.md
     items:
-    - name: Registrace účtu centra pro vývojáře
-      href: ./cloud-partner-portal-orig/cloud-partner-portal-dev-center-accounts-registration.md
-    - name: Správa profilu vydavatele
-      href: ./cloud-partner-portal-orig/cloud-partner-portal-manage-publisher-profile.md
+    - name: Požadavky pro správu účtů
+      href: ./cloud-partner-portal/portal-manage/cpp-manage-prerequisites.md
+    - name: Správa profilů vydavatele
+      href: ./cloud-partner-portal/portal-manage/cpp-manage-publisher-profile.md
     - name: Správa uživatelů
-      href: ./cloud-partner-portal-orig/cloud-partner-portal-manage-users.md
+      href: ./cloud-partner-portal/portal-manage/cpp-manage-users.md
   - name: Řízení podniku
     items:
     - name: Doprovodné materiály pro SEO
@@ -294,7 +295,7 @@ items:
         href: ./cloud-partner-portal-orig/bpm-and-methodologies.md
       - name: Wikiweb nápovědy
         href: ./cloud-partner-portal-orig/help-wiki.md
-    - name: Nabídka modul IoT Edge
+    - name: Nabídka modulu IoT Edge
       href: ./cloud-partner-portal/iot-edge-module/cpp-offer-process-parts.md
       items:
       - name: Požadavky
@@ -367,7 +368,9 @@ items:
       - name: Rozhraní API naplnění SaaS
         href: ./cloud-partner-portal/saas-app/cpp-saas-fulfillment-apis.md
         items:
-        - name: Rozhraní API SaaS v1
+        - name: Registrace aplikace SaaS
+          href: ./cloud-partner-portal/saas-app/cpp-saas-registration.md
+        - name: Rozhraní API SaaS v1 (zastaralé)
           href: ./cloud-partner-portal/saas-app/cpp-saas-fulfillment-api-v1.md
         - name: Rozhraní API SaaS v2
           href: ./cloud-partner-portal/saas-app/cpp-saas-fulfillment-api-v2.md
@@ -466,9 +469,9 @@ items:
       href: ./cloud-partner-portal-orig/cloud-partner-portal-api-troubleshooting-authentication-errors.md
   - name: Získání podpory
     href: ./cloud-partner-portal-orig/cloud-partner-portal-support-for-cloud-partner-portal.md
-ms.openlocfilehash: 72166e2f797c5eaaeb2908475b18c0f8424e8804
-ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
+ms.openlocfilehash: 9b4b1dd0a98ef8717ddc522d69e38a6b15b56cb4
+ms.sourcegitcommit: e43ea344c52b3a99235660960c1e747b9d6c990e
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58402792"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "59010854"

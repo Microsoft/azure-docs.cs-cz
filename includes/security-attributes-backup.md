@@ -2,14 +2,14 @@
 author: msmbaldwin
 ms.service: backup
 ms.topic: include
-ms.date: 01/31/2019
+ms.date: 03/15/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 5a4cc3ea822c5613fc7a50b8e370d6846b683721
-ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
+ms.openlocfilehash: 85d1e4d4909422b82ed38e688e3a62ca53c3430a
+ms.sourcegitcommit: 045406e0aa1beb7537c12c0ea1fbf736062708e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55513509"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "59007219"
 ---
 ## <a name="preventative"></a>Preventivní
 
@@ -41,7 +41,7 @@ ms.locfileid: "55513509"
 | Atribut zabezpečení | Ano/Ne | Poznámky|
 |---|---|--|
 | Řízení přístupu – ověření| Ano | Ověřování je prostřednictvím Azure Active Directory. |
-| Řízení přístupu – ověření| Ano | Zákazník byl vytvořen a předdefinované role RBAC se používají. Zobrazit Use Role-Based řízení přístupu ke správě body obnovení Azure Backup (https://docs.microsoft.com/azure/backup/backup-rbac-rs-vault) Další informace. |
+| Řízení přístupu – ověření| Ano | Zákazník byl vytvořen a předdefinované role RBAC se používají. Zobrazit Use Role-Based řízení přístupu ke správě Azure Backup bodů obnovení (/ azure / / backup-rbac-rs – trezoru služby backup) pro další informace. |
 
 
 ## <a name="audit-trail"></a>Záznam pro audit
@@ -55,4 +55,4 @@ ms.locfileid: "55513509"
 
 | Atribut zabezpečení | Ano/Ne | Poznámky|
 |---|---|--|
-| Podpora správy konfigurace (verzí konfigurace atd.)| Ano|  |
+| Podpora správy konfigurace (verze konfigurace atd.)| Ano|  |

@@ -15,19 +15,19 @@ ms.topic: conceptual
 ms.date: 09/11/2018
 ms.author: celested
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d4ed50dc3d0588f817117f388c8aea83211fd199
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: ff314e0bbf548c96c4f652213cdea21f86ed1125
+ms.sourcegitcommit: 045406e0aa1beb7537c12c0ea1fbf736062708e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56189680"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "59006108"
 ---
 # <a name="how-to-configure-a-new-multi-tenant-application"></a>Jak konfigurovat novou aplikaci s více tenanty
 
 Tady je seznam témat doporučené Další informace o víceklientské aplikace:
 
 - Získat obecné principy systému [co to znamená být aplikaci s více tenanty](https://docs.microsoft.com/azure/active-directory/develop/active-directory-dev-glossary#multi-tenant-application)
-- Získat obecné principy systému [konfigurace víceklientské aplikace](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications)
+- Získat obecné principy systému [konfigurace víceklientské aplikace](https://docs.microsoft.com/en-us/azure/active-directory/develop/howto-convert-app-to-be-multi-tenant)
 - Získejte podrobný přehled o [použití rozhraní Azure AD pro udělování souhlasu pro implementaci souhlasu](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications), které jsou požadovány pro aplikace s více tenanty
 - Větší hloubky, přečtěte si [jak aplikaci s více tenanty je nakonfigurovaná a programové začátku do konce](https://docs.microsoft.com/azure/active-directory/develop/active-directory-devhowto-multi-tenant-overview), včetně postupu registrace, použijte "common" koncový bod, implementujte "user" a "admin" souhlas, jak implementovat rozšířené úrovně scénáře
 

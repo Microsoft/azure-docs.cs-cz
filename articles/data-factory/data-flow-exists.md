@@ -7,12 +7,12 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 01/30/2019
-ms.openlocfilehash: 18d8a0e231e8b4dbe33911dd6267966674366904
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: 6ce27ba699ae766ed4d2428f67d91379464bb9f1
+ms.sourcegitcommit: 045406e0aa1beb7537c12c0ea1fbf736062708e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56734485"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "59006139"
 ---
 # <a name="azure-data-factory-mapping-data-flow-exists-transformation"></a>Azure Data Factory mapování toku dat existuje transformace
 
@@ -25,3 +25,10 @@ Transformace Exists je řádek transformace, která zastaví nebo povolí řádk
 Zvolte druhý zdroj pro vaše Exists tak, aby tok dat můžete porovnat hodnoty z Stream 1 na Stream 2.
 
 Vyberte sloupec, ze zdroje 1 a 2 zdroj jehož hodnoty, které chcete kontrolovat proti Exists nebo neexistuje.
+
+## <a name="multiple-exists-conditions"></a>Existuje více podmínek
+
+Vedle každého řádku, které ve svých podmínkách sloupec pro Exsits, najdete + přihlašování k dispozici při najetí myší na dosažení řádek. To vám umožní přidat více řádků Exists podmínky.
+
+## <a name="next-steps"></a>Další postup
+

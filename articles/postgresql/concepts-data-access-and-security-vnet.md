@@ -6,12 +6,12 @@ ms.author: mbolz
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 08/20/2018
-ms.openlocfilehash: f5c42b73b0452392cdd2a06619722b3f7de2cc27
-ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
+ms.openlocfilehash: 83d16071cbcac4199db9f3757121f9811db49727
+ms.sourcegitcommit: 045406e0aa1beb7537c12c0ea1fbf736062708e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56417478"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "59006333"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-azure-database-for-postgresql"></a>Použití koncové body služeb virtuální sítě a pravidel pro službu Azure Database for PostgreSQL
 
@@ -106,6 +106,8 @@ Máte možnost použití [řízení přístupu na základě role (RBAC)] [ rbac-
 ## <a name="limitations"></a>Omezení
 
 Pro službu Azure Database for PostgreSQL funkci pravidla virtuální sítě má následující omezení:
+
+- Webové aplikace lze mapovat na privátní IP adresu ve virtuální síti nebo podsíti. I v případě, že koncové body služby se zapnutým z dané virtuální sítě nebo podsítě, budou mít připojení k serveru z webové aplikace Azure veřejné IP zdroj, ne zdroj virtuálních sítí/podsítí. Pokud chcete povolit připojení z webové aplikace na server, který má pravidla brány firewall virtuální sítě, musíte povolit Azure services pro přístup k serveru na serveru.
 
 - Každé pravidlo virtuální sítě v bráně firewall pro Azure Database for PostgreSQL, odkazuje na podsíť. Všechny odkazované podsítě musí být hostovaný ve stejné zeměpisné oblasti, který je hostitelem Azure Database for PostgreSQL.
 

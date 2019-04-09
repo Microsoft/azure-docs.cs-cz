@@ -6,21 +6,22 @@ documentationcenter: ''
 author: zchia
 writer: zchia
 manager: beatrizd-msft
-ms.assetid: na
+ms.assetid: 0be9c435-f9a1-484d-8059-e578d5797d8e
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/30/2018
+ms.date: 03/27/2019
 ms.author: v-wingf-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6ed8bae32cb8d0680b1f9aa66f26407c3313ea06
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
-ms.translationtype: MT
+ms.openlocfilehash: f732eebd410a6b52a21a46925a29bf4676f7c8cb
+ms.sourcegitcommit: b4ad15a9ffcfd07351836ffedf9692a3b5d0ac86
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58077815"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59057485"
 ---
 # <a name="tutorial-configure-tableau-online-for-automatic-user-provisioning"></a>Kurz: Konfigurace Tableau Online pro automatické zřizování uživatelů
 
@@ -47,25 +48,19 @@ Před konfigurací Tableau Online pro automatické zřizování uživatelů pomo
 
 1. V **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
 
-    ![Tlačítko Azure Active Directory][1]
+    ![Tlačítko Azure Active Directory](common/select-azuread.png)
 
-2. Přejděte do **podnikové aplikace** > **všechny aplikace**.
+2. Přejděte do **podnikové aplikace** a pak vyberte **všechny aplikace** možnost.
 
-    ![Podnikové aplikace oddílu][2]
+    ![V okně podnikové aplikace](common/enterprise-applications.png)
 
-3. Chcete-li přidat Tableau Online, klikněte na tlačítko **novou aplikaci** tlačítko v horní části dialogového okna.
+3. Chcete-li přidat novou aplikaci, klikněte na tlačítko **novou aplikaci** tlačítko v horní části dialogového okna.
 
-    ![Tlačítko nové aplikace][3]
+    ![Tlačítko nové aplikace](common/add-new-app.png)
 
-4. Do vyhledávacího pole zadejte **Tableau Online**.
+4. Do vyhledávacího pole zadejte **Tableau Online**vyberte **Tableau Online** z panelu výsledků klikněte **přidat** tlačítko pro přidání aplikace.
 
-    ![Tableau Online zřizování](./media/tableau-online-provisioning-tutorial/AppSearch.png)
-
-5. Na panelu výsledků vyberte **Tableau Online**a potom klikněte na tlačítko **přidat** tlačítko pro přidání do seznamu aplikací SaaS Tableau Online.
-
-    ![Tableau Online zřizování](./media/tableau-online-provisioning-tutorial/AppSearchResults.png)
-
-    ![Tableau Online zřizování](./media/tableau-online-provisioning-tutorial/AppCreation.png)
+    ![Tableau Online v seznamu výsledků](common/search-new-app.png)
 
 ## <a name="assigning-users-to-tableau-online"></a>Přiřazování uživatelů k Tableau Online
 
@@ -90,11 +85,13 @@ Tato část vás provede kroky pro konfiguraci Azure AD služby zřizování a v
 
 ### <a name="to-configure-automatic-user-provisioning-for-tableau-online-in-azure-ad"></a>Konfigurace automatické zřizování uživatelů pro Tableau Online ve službě Azure AD:
 
-1. Přihlaste se k [webu Azure portal](https://portal.azure.com) a přejděte do **Azure Active Directory > podnikové aplikace > všechny aplikace**.
+1. Přihlaste se k [webu Azure portal](https://portal.azure.com) a vyberte **podnikové aplikace**vyberte **všechny aplikace**a pak vyberte **Tableau Online**.
 
-2. Vyberte ze seznamu aplikací SaaS Tableau Online.
+    ![Okno aplikace organizace](common/enterprise-applications.png)
 
-    ![Tableau Online zřizování](./media/tableau-online-provisioning-tutorial/AppInstanceSearch.png)
+2. V seznamu aplikací vyberte **Tableau Online**.
+
+    ![Tableau Online odkaz v seznamu aplikací](common/all-applications.png)
 
 3. Vyberte **zřizování** kartu.
 
@@ -116,13 +113,16 @@ Tato část vás provede kroky pro konfiguraci Azure AD služby zřizování a v
 
 6. Po přihlášení na administrativní účet pro Online tableau. představují hodnoty **domény** a **adresa URL obsahu** může být extrahována z adresy URL stránky pro správu.
 
-    *   **Domény** pro Tableau Online účtu lze kopírovat z část této adresy URL: ![Tableau Online zřizování](./media/tableau-online-provisioning-tutorial/DomainUrlPart.png)
+    * **Domény** pro Tableau Online účtu lze kopírovat z část této adresy URL:
 
-    *   **Adresa URL obsahu** pro Tableau Online účtu lze kopírovat z této části, a je definována hodnota při nastavování účtu. V tomto příkladu je hodnota "contoso": ![Tableau Online zřizování](./media/tableau-online-provisioning-tutorial/ContentUrlPart.png)
+        ![Tableau Online zřizování](./media/tableau-online-provisioning-tutorial/DomainUrlPart.png)
+
+    * **Adresa URL obsahu** pro Tableau Online účtu lze kopírovat z této části, a je definována hodnota při nastavování účtu. V tomto příkladu je hodnota "contoso":
+
+        ![Tableau Online zřizování](./media/tableau-online-provisioning-tutorial/ContentUrlPart.png)
 
         > [!NOTE]
-        > Vaše **domény** může být jiný než ten, který je vidět tady. 
-
+        > Vaše **domény** může být jiný než ten, který je vidět tady.
 
 7. Po vyplnění polí zobrazených v kroku 5, klikněte na tlačítko **Test připojení** aby Azure AD můžete připojit ke službě Tableau Online. Pokud se nepovede, ujistěte se, že Tableau Online účet má oprávnění správce a zkuste to znovu.
 
@@ -132,35 +132,35 @@ Tato část vás provede kroky pro konfiguraci Azure AD služby zřizování a v
 
     ![Tableau Online zřizování](./media/tableau-online-provisioning-tutorial/EmailNotification.png)
 
-10. Klikněte na **Uložit**.
+9. Klikněte na **Uložit**.
 
-11. V části **mapování** vyberte **synchronizace Azure Active Directory uživatelům Tableau**.
+10. V části **mapování** vyberte **synchronizace Azure Active Directory uživatelům Tableau**.
 
     ![Tableau Online zřizování](./media/tableau-online-provisioning-tutorial/UserMappings.png)
 
-12. Zkontrolujte atributy uživatele, které se synchronizují ze služby Azure AD do Tableau Online v **mapování atributů** oddílu. Atributy vybrané jako **odpovídající** vlastnosti se používají tak, aby odpovídaly uživatelské účty v Tableau Online pro operace update. Vyberte **Uložit** tlačítko potvrďte všechny změny.
+11. Zkontrolujte atributy uživatele, které se synchronizují ze služby Azure AD do Tableau Online v **mapování atributů** oddílu. Atributy vybrané jako **odpovídající** vlastnosti se používají tak, aby odpovídaly uživatelské účty v Tableau Online pro operace update. Vyberte **Uložit** tlačítko potvrďte všechny změny.
 
     ![Tableau Online zřizování](./media/tableau-online-provisioning-tutorial/UserAttributeMapping.png)
 
-13. V části **mapování** vyberte **synchronizaci skupinám Azure Active Directory k Tableau**.
+12. V části **mapování** vyberte **synchronizaci skupinám Azure Active Directory k Tableau**.
 
     ![Tableau Online zřizování](./media/tableau-online-provisioning-tutorial/GroupMappings.png)
 
-14. Zkontrolujte skupiny atributů, které jsou synchronizovány ze služby Azure AD k Tableau Online v **mapování atributů** oddílu. Atributy vybrané jako **odpovídající** vlastnosti se používají tak, aby odpovídaly uživatelské účty v Tableau Online pro operace update. Vyberte **Uložit** tlačítko potvrďte všechny změny.
+13. Zkontrolujte skupiny atributů, které jsou synchronizovány ze služby Azure AD k Tableau Online v **mapování atributů** oddílu. Atributy vybrané jako **odpovídající** vlastnosti se používají tak, aby odpovídaly uživatelské účty v Tableau Online pro operace update. Vyberte **Uložit** tlačítko potvrďte všechny změny.
 
     ![Tableau Online zřizování](./media/tableau-online-provisioning-tutorial/GroupAttributeMapping.png)
 
-15. Konfigurace filtrů oborů, najdete v následující pokyny uvedené v [Scoping filtr kurzu](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md).
+14. Konfigurace filtrů oborů, najdete v následující pokyny uvedené v [Scoping filtr kurzu](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md).
 
-16. Služba pro Tableau Online zřizování Azure AD povolit, změňte **stavu zřizování** k **na** v **nastavení** oddílu.
+15. Služba pro Tableau Online zřizování Azure AD povolit, změňte **stavu zřizování** k **na** v **nastavení** oddílu.
 
     ![Tableau Online zřizování](./media/tableau-online-provisioning-tutorial/ProvisioningStatus.png)
 
-17. Definovat uživatele a/nebo skupiny, které chcete ke zřízení Tableau online výběrem požadované hodnoty do **oboru** v **nastavení** oddílu.
+16. Definovat uživatele a/nebo skupiny, které chcete ke zřízení Tableau online výběrem požadované hodnoty do **oboru** v **nastavení** oddílu.
 
     ![Tableau Online zřizování](./media/tableau-online-provisioning-tutorial/ScopeSync.png)
 
-18. Až budete připravení ke zřízení, klikněte na tlačítko **Uložit**.
+17. Až budete připravení ke zřízení, klikněte na tlačítko **Uložit**.
 
     ![Tableau Online zřizování](./media/tableau-online-provisioning-tutorial/SaveProvisioning.png)
 
@@ -171,8 +171,7 @@ Další informace o tom, jak číst zřizování protokoly Azure AD najdete v t�
 ## <a name="additional-resources"></a>Další materiály
 
 * [Správa zřizování uživatelských účtů pro podnikové aplikace](../manage-apps/configure-automatic-user-provisioning-portal.md)
-* [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)
-
+* [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
 ## <a name="next-steps"></a>Další postup
 

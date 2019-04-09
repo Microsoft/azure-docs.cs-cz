@@ -8,20 +8,33 @@ ms.topic: include
 ms.date: 03/23/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: e3d2466f05028a963256dbcc052c46650857836d
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.openlocfilehash: 1cb353d22e39447d7aeb723b5506ac0209cf74d8
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58372709"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59287098"
 ---
 ### <a name="premium-performance-block-blob-storage"></a>Úložiště objektů blob bloku výkon úrovně Premium
 
-Výkon bloku objektů blob v účtu služby premium storage je optimalizovaná pro aplikace, které používají menší, kilobajtů rozsah objektů. Je ideální pro aplikace, které vyžadují velmi vysoké sazby nebo konzistentní úložiště s nízkou latencí. Premium výkonu blokovou službou blob storage je navržená pro škálování s vašimi aplikacemi. Pokud plánujete nasadit tyto aplikace, které vyžadují stovky tisíc požadavků za sekundu nebo petabajty kapacitu úložiště, kontaktujte nás prosím odešlete v žádosti o podporu [webu Azure portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
+Výkon bloku objektů blob v účtu služby premium storage je optimalizovaná pro aplikace, které používají menší, kilobajtů rozsah objektů. Je ideální pro aplikace, které vyžadují vysokou transakční sazby nebo konzistentní úložiště s nízkou latencí. Premium výkonu blokovou službou blob storage je navržená pro škálování s vašimi aplikacemi. Pokud plánujete nasadit tyto aplikace, které vyžadují stovky tisíc požadavků za sekundu nebo petabajty kapacitu úložiště, kontaktujte nás prosím odešlete v žádosti o podporu [webu Azure portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
+
+### <a name="premium-performance-filestorage-preview"></a>Výkon úrovně Premium úložiště souborů (preview)
+
+Soubory typu Premium, použijte účet jedinečný úložiště s názvem **úložiště souborů (preview)**. Tento typ účtu je navržená pro úlohy s vysokým vstupně-výstupních operací, vysoké propustnosti s konzistentní s nízkou latencí. File storage úrovně Premium se škáluje s velikosti zřízené sdílené složky.
+
+|Oblast  |Cíl  |
+|---------|---------|
+|Maximální velikost     |5 TiB (public preview), 100 TB (omezené veřejné verzi preview)     |
+|Sdílené složky   |Unlimited  |
+|IOPS     |100 000 (omezené veřejné verzi preview)    |
+|Šířka pásma|5 GB/s     |
+
+ Premium soubor sdílet měřítko cíle, najdete v článku [soubory typu Premium škálování cíle](../articles/storage/common/storage-scalability-targets.md#premium-files-scale-targets) oddílu.
 
 ### <a name="premium-performance-page-blob-storage"></a>Úložiště objektů blob stránky úrovně Premium výkonu
 
-Výkon úrovně Premium pro obecné účely v1 nebo v2 účty úložiště mají následující cíle škálovatelnosti:
+Výkon úrovně Premium, pro obecné účely v1 nebo v2 účty úložiště mají následující cíle škálovatelnosti:
 
 | Celkový počet účtů kapacity                            | Celková šířka pásma pro účet místně redundantního úložiště                     |
 | ------------------------------------------------- | --------------------------------------------------------------------------- |

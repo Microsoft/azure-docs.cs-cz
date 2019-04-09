@@ -9,12 +9,12 @@ ms.service: logic-apps
 ms.suite: integration
 ms.topic: article
 ms.date: 03/29/2019
-ms.openlocfilehash: c5fabf37ecc97f8edea437f1628949e45aefde77
-ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
+ms.openlocfilehash: 8445b67fa049116d93f3710ff108f904ca7ecd77
+ms.sourcegitcommit: e43ea344c52b3a99235660960c1e747b9d6c990e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58755707"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "59010545"
 ---
 # <a name="authenticate-and-access-resources-with-managed-identities-in-azure-logic-apps"></a>Ověřování a přístup k prostředkům pomocí spravované identity v Azure Logic Apps
 
@@ -37,7 +37,7 @@ Přístup k prostředkům v jiných tenantů Azure Active Directory (Azure AD) a
 
 Pro systém přiřadil spravovaných identit není nutné ručně vytvořit tuto identitu. Nastavit systém přiřadil spravovanou identitu pro vaši aplikaci logiky, můžete těmito způsoby: 
 
-* [Azure Portal](#azure-portal) 
+* [portál Azure](#azure-portal) 
 * [Šablony Azure Resource Manageru](#template) 
 * [Azure PowerShell](../active-directory/managed-identities-azure-resources/howto-assign-access-powershell.md) 
 
@@ -158,7 +158,7 @@ Jakmile nastavíte aplikaci logiky s systém přiřadil se identita spravované 
    V **URI** zadejte adresu URL koncového bodu pro tuto službu Azure. 
    Ano, pokud používáte Azure Resource Manageru, zadejte tuto hodnotu v **URI** vlastnost:
 
-   `https://management.azure.com/subscriptions/<Azure-subscription-ID>?api-version-2016-06-01`
+   `https://management.azure.com/subscriptions/<Azure-subscription-ID>?api-version=2016-06-01`
 
 1. V akci HTTP zvolte **zobrazit pokročilé možnosti**.
 

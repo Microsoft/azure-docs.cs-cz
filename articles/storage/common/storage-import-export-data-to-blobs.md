@@ -5,15 +5,15 @@ author: alkohli
 services: storage
 ms.service: storage
 ms.topic: article
-ms.date: 12/11/2018
+ms.date: 04/08/2019
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: c7e78f89883e5cfc3fc8b9088c3ac0b3166682c7
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.openlocfilehash: e60a58a8d2f1c69728a2d049fe1414ca1997893e
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58878175"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59283269"
 ---
 # <a name="use-the-azure-importexport-service-to-import-data-to-azure-blob-storage"></a>Import dat do úložiště objektů Blob v Azure pomocí služby Azure Import/Export
 
@@ -31,7 +31,7 @@ Než začnete vytvářet úlohy importu pro přenos dat do služby Azure Blob St
 - K dispozici systém Windows [verze operačního systému nepodporuje](storage-import-export-requirements.md#supported-operating-systems). 
 - Povolení nástroje BitLocker v systému Windows. Zobrazit [jak zapnout BitLocker](https://thesolving.com/storage/how-to-enable-bitlocker-on-windows-server-2012-r2/).
 - [Stáhněte si WAImportExport verze 1](https://aka.ms/waiev1) v systému Windows. Rozbalte do výchozí složky `waimportexportv1`. Například, `C:\WaImportExportV1`.
-- Máte účet FedEx/DHL.  
+- Máte účet FedEx/DHL. Pokud chcete použít dopravce než FedEx/DHL, obraťte se na tým Azure Data Box operací na adrese `adbops@microsoft.com`.  
     - Účet musí být platná, by měl mít vyrovnávání a musí mít vrácení funkce.
     - Generovat sledovací číslo pro úlohu exportu.
     - Každá úloha by měl mít samostatný sledovací číslo. Více úloh se stejným číslem sledování nejsou podporovány.
@@ -113,7 +113,7 @@ Proveďte následující kroky k vytvoření úlohy importu na webu Azure Portal
 
 4. V **vrátí informace o expedici**:
 
-   - Z rozevíracího seznamu vyberte operátorovi.
+   - Z rozevíracího seznamu vyberte operátorovi. Pokud chcete použít dopravce než FedEx/DHL, zvolte existující možnost z rozevíracího seznamu. Kontaktní Azure Data Box operace týmu na `adbops@microsoft.com` o informace týkající se operátorovi, plánujete použít.
    - Zadejte číslo účtu dopravce platný, kterou jste vytvořili pomocí tohoto operátora. Tento účet Microsoft používá k odeslání jednotky zpět po dokončení úlohy import. Pokud nemáte číslo účtu, vytvořte [FedEx](https://www.fedex.com/us/oadr/) nebo [DHL](http://www.dhl.com/) účtu dopravce.
    - Zadejte úplné a platné jméno kontaktní osoby, telefonu, e-mailu, adresu, Město, zip, stát/kraj a země/oblast. 
         

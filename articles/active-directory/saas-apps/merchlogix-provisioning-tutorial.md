@@ -6,26 +6,26 @@ documentationcenter: ''
 author: zhchia
 writer: zhchia
 manager: beatrizd-msft
-ms.assetid: na
+ms.assetid: 9df4c7c5-9a58-478e-93b7-2f77aae12807
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/01/2019
+ms.date: 03/27/2019
 ms.author: zhchia
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fe36969661ae1b729601681c02f79e777b2f8cab
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
-ms.translationtype: MT
+ms.openlocfilehash: c8fecc5232b26c98c4027174454cf29b81b0ee41
+ms.sourcegitcommit: b4ad15a9ffcfd07351836ffedf9692a3b5d0ac86
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57344738"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59058114"
 ---
 # <a name="tutorial-configure-merchlogix-for-automatic-user-provisioning"></a>Kurz: Konfigurace MerchLogix pro automatické zřizování uživatelů
 
-Cílem tohoto kurzu je předvést postup provést v MerchLogix a Azure Active Directory (Azure AD) ke konfiguraci Azure AD automaticky zřizovat a rušit zřízení uživatele a/nebo skupiny, které se MerchLogix. 
+Cílem tohoto kurzu je předvést postup provést v MerchLogix a Azure Active Directory (Azure AD) ke konfiguraci Azure AD automaticky zřizovat a rušit zřízení uživatele a/nebo skupiny, které se MerchLogix.
 
 > [!NOTE]
 > Tento kurz popisuje konektor postavené na službě zřizování uživatelů služby Azure AD. Důležité podrobnosti o význam této služby, jak to funguje a nejčastější dotazy najdete v tématu [automatizace zřizování uživatelů a jeho rušení pro aplikace SaaS ve službě Azure Active Directory](../manage-apps/user-provisioning.md).
@@ -34,11 +34,12 @@ Cílem tohoto kurzu je předvést postup provést v MerchLogix a Azure Active Di
 
 Scénář popsaný v tomto kurzu se předpokládá, že už máte splněné následující požadavky:
 
-*   Klient služby Azure AD
-*   MerchLogix tenanta
-*   Technický kontakt v MerchLogix, který můžete zadat adresu URL koncového bodu SCIM a token tajného kódu, které jsou požadované pro zřizování uživatelů
+* Klient služby Azure AD
+* MerchLogix tenanta
+* Technický kontakt v MerchLogix, který můžete zadat adresu URL koncového bodu SCIM a token tajného kódu, které jsou požadované pro zřizování uživatelů
 
 ## <a name="adding-merchlogix-from-the-gallery"></a>Přidání MerchLogix z Galerie
+
 Před konfigurací MerchLogix pro automatické zřizování uživatelů pomocí Azure AD, budete muset přidat MerchLogix z Galerie aplikací Azure AD na váš seznam spravovaných aplikací SaaS.
 
 **Chcete-li přidat MerchLogix z Galerie aplikací Azure AD, postupujte následovně:**
@@ -50,7 +51,7 @@ Před konfigurací MerchLogix pro automatické zřizování uživatelů pomocí 
 2. Přejděte do **podnikové aplikace** > **všechny aplikace**.
 
     ![Podnikové aplikace oddílu][2]
-    
+
 3. Chcete-li přidat MerchLogix, klikněte na tlačítko **novou aplikaci** tlačítko v horní části dialogového okna.
 
     ![Tlačítko nové aplikace][3]
@@ -67,13 +68,13 @@ Azure Active Directory používá koncept nazvaný "přiřazení" k určení, kt
 
 Než nakonfigurujete a povolíte automatické zřizování uživatelů, byste měli rozhodnout, které uživatele a/nebo skupiny ve službě Azure AD potřebují přístup k MerchLogix. Jakmile se rozhodli, můžete přiřadit tyto uživatele a/nebo skupiny MerchLogix podle zde uvedených pokynů:
 
-*   [Přiřadit uživatele nebo skupiny k podnikové aplikace](../manage-apps/assign-user-or-group-access-portal.md)
+* [Přiřadit uživatele nebo skupiny k podnikové aplikace](../manage-apps/assign-user-or-group-access-portal.md)
 
 ### <a name="important-tips-for-assigning-users-to-merchlogix"></a>Důležité tipy pro přiřazování uživatelů k MerchLogix
 
-*    Dále je doporučeno jednoho uživatele Azure AD je přiřazená MerchLogix k testování vašich počáteční automatické zřizování uživatelů konfigurace. Další uživatele a/nebo skupiny může být přiřazena vyšší Jakmile testy jsou úspěšné.
+* Dále je doporučeno jednoho uživatele Azure AD je přiřazená MerchLogix k testování vašich počáteční automatické zřizování uživatelů konfigurace. Další uživatele a/nebo skupiny může být přiřazena vyšší Jakmile testy jsou úspěšné.
 
-*   Při přiřazení uživatele k MerchLogix, musíte vybrat libovolnou platnou roli specifické pro aplikaci (Pokud je k dispozici) v dialogovém okně přiřazení. Uživatelé s **výchozího přístupu k** role jsou vyloučené z zřizování.
+* Při přiřazení uživatele k MerchLogix, musíte vybrat libovolnou platnou roli specifické pro aplikaci (Pokud je k dispozici) v dialogovém okně přiřazení. Uživatelé s **výchozího přístupu k** role jsou vyloučené z zřizování.
 
 ## <a name="configuring-automatic-user-provisioning-to-merchlogix"></a>Konfigurace automatické zřizování uživatelů pro MerchLogix 
 
@@ -96,13 +97,12 @@ Tato část vás provede kroky pro konfiguraci Azure AD služby zřizování a v
 
 5. V části **přihlašovacích údajů správce** části:
 
-    *   V **adresy URL Tenanta** zadejte adresu URL koncového bodu SCIM poskytované vaší MerchLogix technický kontakt.
+    * V **adresy URL Tenanta** zadejte adresu URL koncového bodu SCIM poskytované vaší MerchLogix technický kontakt.
 
-    *   V **tajný klíč tokenu** zadejte token tajného kódu poskytované vaší MerchLogix technický kontakt.
+    * V **tajný klíč tokenu** zadejte token tajného kódu poskytované vaší MerchLogix technický kontakt.
 
 6. Po vyplnění polí zobrazených v kroku 5, klikněte na tlačítko **Test připojení** aby Azure AD můžete připojit k MerchLogix. Pokud se nepovede, ujistěte se, že váš účet MerchLogix má oprávnění správce a zkuste to znovu.
 
-    
 7. V **e-mailové oznámení** zadejte e-mailovou adresu osoby nebo skupiny, který by měla přijímat oznámení zřizování chyba a zaškrtnutím políčka - **odeslání e-mailové oznámení, když dojde k selhání**.
 
 8. Klikněte na **Uložit**.
@@ -119,7 +119,6 @@ Tato část vás provede kroky pro konfiguraci Azure AD služby zřizování a v
 
 14. Až budete připravení ke zřízení, klikněte na tlačítko **Uložit**.
 
-
 Tato operace spustí počáteční synchronizaci všech uživatelů a/nebo skupiny definované v **oboru** v **nastavení** oddílu. Počáteční synchronizace trvá déle než při následné synchronizace, ke kterým dochází přibližně každých 40 minut tak dlouho, dokud je spuštěna služba zřizování Azure AD. Můžete použít **podrobnosti synchronizace** části ke sledování průběhu a odkazech na zřizování sestava aktivity, která popisuje všechny akce, které provádí služba na MerchLogix zřizování Azure AD.
 
 Další informace o tom, jak číst zřizování protokoly Azure AD najdete v tématu [hlášení o zřizování automatické uživatelských účtů](../manage-apps/check-status-user-account-provisioning.md).
@@ -127,7 +126,7 @@ Další informace o tom, jak číst zřizování protokoly Azure AD najdete v t�
 ## <a name="additional-resources"></a>Další materiály
 
 * [Správa zřizování uživatelských účtů pro podnikové aplikace](../manage-apps/configure-automatic-user-provisioning-portal.md)
-* [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)
+* [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
 ## <a name="next-steps"></a>Další postup
 

@@ -6,15 +6,15 @@ ms.service: automation
 ms.subservice: update-management
 author: georgewallace
 ms.author: gwallace
-ms.date: 04/01/2019
+ms.date: 04/04/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: dc0c516ce9dc3a13474cefc61b6634dbeea0fce0
-ms.sourcegitcommit: ad3e63af10cd2b24bf4ebb9cc630b998290af467
-ms.translationtype: MT
+ms.openlocfilehash: 76cd877380090ccad8b2f7b7dbe79957e0eab5bb
+ms.sourcegitcommit: b4ad15a9ffcfd07351836ffedf9692a3b5d0ac86
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58793631"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59056673"
 ---
 # <a name="manage-pre-and-post-scripts-preview"></a>Spravovat skripty před a po (Preview)
 
@@ -67,6 +67,23 @@ Při konfiguraci před a po skripty, můžete předat parametry stejně jako pl�
 Pokud potřebujete odlišný typ objektu, lze jej přetypovat na jiný typ pomocí vlastní logiky v sadě runbook.
 
 Kromě standardní sada runbook parametry je k dispozici další parametr. Tento parametr je **SoftwareUpdateConfigurationRunContext**. Tento parametr je řetězec formátu JSON, a pokud definujete ve skriptu před nebo po parametru, je automaticky předána v nasazení aktualizací. Parametr obsahuje informace o nasazení aktualizace, která je podmnožinou vrácených podle informací [SoftwareUpdateconfigurations API](/rest/api/automation/softwareupdateconfigurations/getbyname#updateconfiguration) v následující tabulce se dozvíte, vlastnosti, které jsou k dispozici v proměnné:
+
+## <a name="stopping-a-deployment"></a>Zastavuje se nasazení
+
+Pokud chcete zastavit nasazení založené na skriptu Pre musíte [throw](automation-runbook-execution.md#throw) výjimku. Pokud není vyvolat výjimku, nasazení a Pozálohovacího skriptu bude stále spuštěn. [Ukázkového runbooku](https://gallery.technet.microsoft.com/Update-Management-Run-6949cc44?redir=0) ve galerii ukazuje, jak to udělat. Tady je fragment kódu z dané sady runbook.
+
+```powershell
+#In this case, we want to terminate the patch job if any run fails.
+#This logic might not hold for all cases - you might want to allow success as long as at least 1 run succeeds
+foreach($summary in $finalStatus)
+{
+    if ($summary.Type -eq "Error")
+    {
+        #We must throw in order to fail the patch deployment.  
+        throw $summary.Summary
+    }
+}
+```
 
 ### <a name="softwareupdateconfigurationruncontext-properties"></a>SoftwareUpdateConfigurationRunContext properties
 
@@ -231,6 +248,17 @@ if ($summary.Type -eq "Error")
 }
 ```
 
+## <a name="abort-patch-deployment"></a>Přerušit opravy nasazení
+
+Pokud váš skript pre vrátí chybu, můžete chtít přerušení vašeho nasazení. Chcete-li to provést, musíte [throw](/powershell/module/microsoft.powershell.core/about/about_throw) chybu ve skriptu pro jakékoli logiky, která bude představovat selhání.
+
+```powershell
+if (<My custom error logic>)
+{
+    #Throw an error to fail the patch deployment.  
+    throw "There was an error, abort deployment"
+}
+```
 ## <a name="known-issues"></a>Známé problémy
 
 * Pro parametry nelze předat objekty nebo pole, při použití skriptů před a po. Runbook se nezdaří.

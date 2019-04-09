@@ -10,16 +10,17 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 2/20/2019
 ms.author: chlandsi
-ms.openlocfilehash: e8e2bd34ebb5b789bb3e9ba4a419ab424d3fdf5a
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 97a3f00bcb5b1a0fb3f499657044b9d83f5b08d7
+ms.sourcegitcommit: e43ea344c52b3a99235660960c1e747b9d6c990e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57550668"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "59010375"
 ---
 # <a name="select-an-audio-input-device-with-the-speech-sdk"></a>Vyberte vstupní zvukové zařízení se sadou SDK pro řeč
 
-Verze 1.3.0 sadou SDK pro řeč přináší rozhraní API vyberte zvukového vstupu, tento článek popisuje, jak získat ID zvukové zařízení připojená k systému.
+Verze 1.3.0 sadou SDK pro řeč přináší rozhraní API vyberte zvukového vstupu.
+Tento článek popisuje, jak získat ID zvukové zařízení připojená k systému.
 Ty pak lze v sadou SDK pro řeč nakonfigurováním zvukové zařízení prostřednictvím `AudioConfig` objektu:
 
 ```C++
@@ -42,8 +43,11 @@ audioConfig = AudioConfiguration.FromMicrophoneInput("<device id>");
 audioConfig = AudioConfiguration.fromMicrophoneInput("<device id>");
 ```
 
-> [!NOTE]
-> Tato funkce není k dispozici z jazyka JavaScript.
+```JavaScript
+audioConfig = AudioConfiguration.fromMicrophoneInput("<device id>");
+```
+>[!Note]
+> Použití mikrofonu není k dispozici pro JavaScript spuštěný v Node.js
 
 ## <a name="audio-device-ids-on-windows-for-desktop-applications"></a>Zvukové zařízení ID ve Windows pro desktopové aplikace
 
@@ -367,6 +371,10 @@ Například instrukce
 ```
 
 Umožňuje použít sluchátka s mikrofonem Bluetooth pro aplikace s podporou řeči.
+
+## <a name="audio-device-ids-in-javascript"></a>Zvukové zařízení identifikátory v jazyce JavaScript
+
+V jazyce JavaScript [MediaDevices.enumerateDevices()](https://developer.mozilla.org/en-US/docs/Web/API/MediaDevices/enumerateDevices) metody slouží k výčet zařízení média a najít ID zařízení mají být předány `fromMicrophone(...)`.
 
 ## <a name="next-steps"></a>Další postup
 

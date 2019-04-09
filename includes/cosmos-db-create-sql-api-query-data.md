@@ -5,26 +5,31 @@ services: cosmos-db
 author: SnehaGunda
 ms.service: cosmos-db
 ms.topic: include
-ms.date: 04/13/2018
+ms.date: 04/05/2019
 ms.author: sngun
 ms.custom: include file
-ms.openlocfilehash: e6e70da1f939547cdb589ae7bcb6ed1f6148f22e
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
-ms.translationtype: HT
+ms.openlocfilehash: 9971b16da42cdf1de0464857291c74a947535735
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38733761"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59286993"
 ---
-Teď můžete k načítání a filtrování dat používat dotazy v Průzkumníku dat.
+Dotazy v Průzkumníku dat slouží k načtení a filtrovat data.
 
-1. Všimněte si, že ve výchozím nastavení je dotaz nastavený na `SELECT * FROM c`. Tento výchozí dotaz načte a zobrazí všechny dokumenty v kolekci. 
+1. V horní části **dokumenty** kartu v Průzkumníku dat, zkontrolujte výchozí dotaz `SELECT * FROM c`. Tento dotaz načte a zobrazí všechny dokumenty v kolekci v ID objednávky. 
+   
+   ![Výchozí dotaz v Průzkumníku dat je „SELECT * FROM c“](./media/cosmos-db-create-sql-api-query-data/azure-cosmosdb-data-explorer-query.png)
+   
+1. Chcete-li změnit dotaz, vyberte **upravit filtr**, nahraďte výchozí dotaz s `ORDER BY c._ts DESC`a pak vyberte **použít filtr**.
+   
+   ![Změna výchozího dotazu přidáním „ORDER BY c._ts DESC“ a kliknutím na Použít filtr](./media/cosmos-db-create-sql-api-query-data/azure-cosmosdb-data-explorer-edit-query.png)
 
-    ![Výchozí dotaz v Průzkumníku dat je „SELECT * FROM c“](./media/cosmos-db-create-sql-api-query-data/azure-cosmosdb-data-explorer-query.png)
+   Zobrazení upravený dotaz dokumenty v sestupném pořadí na základě jejich časového razítka, takže teď váš druhý dokument je uvedená jako první. 
+   
+   ![Změnit dotaz, který klauzule ORDER BY c._ts DESC a kliknutím na použít filtr](./media/cosmos-db-create-sql-api-query-data/azure-cosmosdb-data-explorer-edited-query.png)
 
-2. Zůstaňte na kartě **Dokumenty** a změňte dotaz tak, že kliknete na tlačítko **Upravit filtr**, do pole predikátu dotazu přidáte `ORDER BY c._ts DESC` a kliknete na **Použít filtr**.
+Pokud jste obeznámeni se syntaxí SQL, můžete zadat libovolný nepodporuje [dotazy SQL](../articles/cosmos-db/sql-api-sql-query.md) do pole predikátu dotazu. Průzkumník dat můžete také použít k vytvoření uložených procedur, funkcí UDF a triggerů pro serverovou obchodní logiku. 
 
-    ![Změna výchozího dotazu přidáním „ORDER BY c._ts DESC“ a kliknutím na Použít filtr](./media/cosmos-db-create-sql-api-query-data/azure-cosmosdb-data-explorer-edit-query.png)
+Průzkumník dat poskytuje snadný Azure portal přístup ke všem funkcím přístup integrovaná Programová data v rozhraních API. Můžete taky použít portál škálujte propustnost, získat klíče a připojovací řetězce a projděte si metriky a smlouvy o úrovni služeb pro váš účet Azure Cosmos DB. 
 
-Tento upravený dotaz vypíše dokumenty v sestupném pořadí na základě jejich časového razítka, takže teď je jako první uvedený váš druhý dokument. Pokud jste obeznámeni se syntaxí jazyka SQL, můžete do tohoto pole zadat jakýkoli z podporovaných [příkazů jazyka SQL](../articles/cosmos-db/sql-api-sql-query.md). 
-
-Tím končí naše práce v Průzkumníku dat. Než se přesuneme k práci s kódem, upozorňujeme, že Průzkumník dat můžete použít také k vytváření uložených procedur, funkcí UDF a triggerů pro provádění obchodní logiky na straně serveru a také škálování propustnosti. Průzkumník dat zpřístupní všechna integrovaná programová data v rozhraních API, ale zajistí jednoduchý přístup k vašim datům na portálu Azure Portal.

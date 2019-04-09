@@ -14,19 +14,19 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/02/2018
 ms.author: ajaycode
-ms.openlocfilehash: d2d1ca3e41de36d423de24fdbade8c17507642b5
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.openlocfilehash: 77cacd7f94d8ddd92fcd7383d2d0a7929734eaeb
+ms.sourcegitcommit: 045406e0aa1beb7537c12c0ea1fbf736062708e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55734296"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "59005927"
 ---
 # <a name="pricing-changes-for-azure-network-performance-monitor"></a>O změně v cenách pro Azure Network Performance monitoru
 
 Jsme naslouchali na vaši zpětnou vazbu a nedávno zavedli [nový cenový model prostředí](https://azure.microsoft.com/blog/introducing-a-new-way-to-purchase-azure-monitoring-services/) pro různé monitorování služby v Azure. Tento článek zachytává cenovou změny související s Azure [Network Performance Monitor](https://docs.microsoft.com/azure/networking/network-monitoring-overview) (NPM) ve formátu otázek a odpovědí – čtení.
 
 Sledování výkonu sítě se skládá ze tří součástí:
-* [Sledování výkonu](https://docs.microsoft.com/azure/networking/network-monitoring-overview#performance-monitor)
+* [Monitorování výkonu](https://docs.microsoft.com/azure/networking/network-monitoring-overview#performance-monitor)
 * [Monitorování koncového bodu služby](https://docs.microsoft.com/azure/networking/network-monitoring-overview)
 * [ExpressRoute Monitor](https://docs.microsoft.com/azure/networking/network-monitoring-overview#expressroute-monitor)
 
@@ -38,7 +38,7 @@ Následující části popisují cenovou změny pro součásti NPM.
 
 Fakturace za NPM byl založen na využití a využití ze dvou částí:
 * **Uzly**: Všechny syntetické transakce pocházejí a ukončovat platnost u uzlů. Uzly jsou také označovány jako agenty nebo agenty pro správu Microsoft.
-* **Data**: Výsledky testů různé sítě jsou uloženy v úložišti Azure Log Analytics.
+* **Data**: Výsledky testů různé sítě jsou uloženy v pracovním prostoru Log Analytics.
 
 V části starý model se spočítala na základě počtu uzlů a objemu vygenerovaných dat faktury. 
 
@@ -63,7 +63,7 @@ Náklady na monitorování odkazem na jednu podsíť pro celý měsíc, najdete 
 
 **Co jsou poplatky za data, která generuje sledování výkonu?**
 
-Poplatek za účelem ingestování datových (odesílání dat do služby Log Analytics, zpracování a indexování) je k dispozici na [stránce s cenami](https://azure.microsoft.com/pricing/details/log-analytics/) ke službě Log Analytics v části Ingestování. Poplatek za uchování dat (to znamená, data se uchovávají v možnost zákazníka, po prvním měsíci) je také k dispozici na [stránce s cenami](https://azure.microsoft.com/pricing/details/log-analytics/), v části uchování dat.
+Poplatek za účelem ingestování datových (odesílání dat do pracovního prostoru Log Analytics ve službě Azure Monitor, zpracování a indexování) je k dispozici na [stránce s cenami](https://azure.microsoft.com/pricing/details/log-analytics/) ke službě Log Analytics v části Ingestování. Poplatek za uchování dat (to znamená, data se uchovávají v možnost zákazníka, po prvním měsíci) je také k dispozici na [stránce s cenami](https://azure.microsoft.com/pricing/details/log-analytics/), v části uchování dat.
 
 
 ## <a name="expressroute-monitor"></a>ExpressRoute Monitor

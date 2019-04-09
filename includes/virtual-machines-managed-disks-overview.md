@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 01/11/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: dfd91caf67592b349bd16bab673a3e45397ad282
-ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
+ms.openlocfilehash: 311fdb0b0a2e587e7cf8581f967ed0248de85f6d
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58807503"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59291652"
 ---
 ## <a name="benefits-of-managed-disks"></a>Výhody spravovaných disků
 
@@ -31,6 +31,10 @@ Použití spravovaných disků, můžete vytvořit až 50 000 virtuálních poč
 
 Spravované disky jsou součástí skupiny dostupnosti a zkontrolujte, že disky [virtuálních počítačů ve skupině dostupnosti](../articles/virtual-machines/windows/manage-availability.md#use-managed-disks-for-vms-in-an-availability-set) jsou dostatečně izolované od sebe, aby jediný bod selhání. Disky se automaticky umísťují do odlišných uložišť jednotek škálování (razítka). Pokud razítkem nezdaří z důvodu selhání hardwaru nebo softwaru, selžou pouze instance Virtuálních počítačů na těchto jednotkách. Například Řekněme, že máte aplikaci spuštěné na pět virtuálních počítačů a virtuální počítače jsou ve skupině dostupnosti. Disky pro tyto virtuální počítače nebudou všechny ukládat ve stejném razítka, tak pokud jedno razítko ocitne mimo provoz ostatních instancí aplikace i nadále spouštět.
 
+## <a name="integration-with-availability-zones"></a>Integrace se zónami dostupnosti
+
+Spravované disky podporuje [zóny dostupnosti](../articles/availability-zones/az-overview.md), což je nabídka vysoké dostupnosti, která chrání vaše aplikace před selháními datových center. Zóny dostupnosti jsou jedinečná fyzická umístění v rámci oblasti Azure. Každá zóna se skládá z jednoho nebo více datových Center vybavených nezávislým napájením, chlazením a sítí. K zajištění odolnosti proti chybám, je minimálně tří samostatných zón ve všech oblastech, povolené. Zóny dostupnosti Azure nabízí odvětví nejlepší 99,99 % doby provozu SLA k virtuálním počítačům.
+
 ### <a name="azure-backup-support"></a>Podpora Azure Backup
 
 K ochraně před regionální katastrofami [Azure Backup](../articles/backup/backup-introduction-to-azure-backup.md) slouží k vytváření úlohy zálohování s časovou synchronizací zálohy a zásady uchovávání záloh. To umožňuje snadné obnovení virtuálního počítače budete provádět. Azure Backup nyní podporuje disky o velikosti až čtyři disky tebibyte (TiB). Další informace najdete v tématu [pomocí Azure Backup pro virtuální počítače se spravovanými disky](../articles/backup/backup-introduction-to-azure-backup.md#using-managed-disk-vms-with-azure-backup).
@@ -41,11 +45,15 @@ Můžete použít [řízení přístupu Azure na základě rolí (RBAC)](../arti
 
 ## <a name="disk-roles"></a>Role disku
 
-### <a name="data-disks"></a>Datové disky
+Existují tři hlavní disku role v Azure: datový disk, disk operačního systému a dočasný disk. Pracovníci v těchto rolích namapovat na disky, které jsou připojené k virtuálnímu počítači.
+
+![Role disku v akci](media/virtual-machines-managed-disks-overview/disk-types.png)
+
+### <a name="data-disk"></a>Datový disk
 
 Datový disk je spravovaný disk, který je připojen k virtuálnímu počítači k ukládání dat aplikací nebo data, která je potřeba nechat. Datové disky jsou registrovány jako disky SCSI a jsou označeny písmeno, kterou zvolíte. Každý datový disk má maximální kapacitu 32 767 gibibajtech (GiB). Velikost virtuálního počítače určuje, kolik datových disků můžete připojit a typ úložiště můžete použít k hostování disky.
 
-### <a name="os-disks"></a>Disky s operačním systémem
+### <a name="os-disk"></a>Disk OS
 
 Každý virtuální počítač má jeden disk připojený operačního systému. Tento disk s operačním systémem má předem nainstalovaný operační systém, který byl vybrán při vytvoření virtuálního počítače.
 
@@ -71,7 +79,7 @@ Spravované disky podporují také vytváření spravovanou vlastní image. Imag
 Informace o vytváření bitové kopie naleznete v následujících článcích:
 
 * [Jak zachytit spravované image zobecněného virtuálního počítače v Azure](../articles/virtual-machines/windows/capture-image-resource.md)
-* [Jak generalizovat a zachytit linuxový virtuální počítač s využitím Azure CLI](../articles/virtual-machines/linux/capture-image.md)
+* [Generalizace a zachytit virtuální počítač s Linuxem pomocí Azure CLI](../articles/virtual-machines/linux/capture-image.md)
 
 #### <a name="images-versus-snapshots"></a>Imagí a snímky
 

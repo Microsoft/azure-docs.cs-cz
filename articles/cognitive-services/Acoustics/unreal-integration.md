@@ -10,19 +10,19 @@ ms.subservice: acoustics
 ms.topic: how-to
 ms.date: 03/20/2019
 ms.author: kegodin
-ms.openlocfilehash: 0baaf31386e1155dee6ca2bbfda6827ca3fc36fe
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: c6baa9f8330338c1e5fdc9ee0b5a8cc8b344e871
+ms.sourcegitcommit: 045406e0aa1beb7537c12c0ea1fbf736062708e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58313443"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "59006495"
 ---
 # <a name="project-acoustics-unreal-and-wwise-integration"></a>Projektů Unreal Akustika a Wwise integrace
 Tento návod obsahuje kroky podrobné integrace balíčku modulu plug-in Akustika projektu do existujícího projektu her Unreal a Wwise. 
 
 Požadavky na software:
-* [Unreal Engine](https://www.unrealengine.com/) 4.21
-* [AudioKinetic Wwise](https://www.audiokinetic.com/products/wwise/) 2018.1. +
+* [Unreal Engine](https://www.unrealengine.com/) 4.20 nebo 4.21
+* [AudioKinetic Wwise](https://www.audiokinetic.com/products/wwise/) 2018.1.\*
 * [Modul plug-in Wwise pro Unreal](https://www.audiokinetic.com/library/?source=UE4&id=index.html)
   * Pokud používáte přímou integraci sady Wwise SDK namísto použití modulů plug-in Wwise Unreal, naleznete v projektu Akustika Unreal modulu plug-in a upravte volání rozhraní API Wwise.
 

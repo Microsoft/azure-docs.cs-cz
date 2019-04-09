@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: article
 ms.date: 04/03/2019
 ms.author: alkohli
-ms.openlocfilehash: a67cbd3bfca478a45e12adeb0bf119b891866718
-ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
+ms.openlocfilehash: d1e4af6e73c272a7ccc8996b0ccc854be64dd74b
+ms.sourcegitcommit: 045406e0aa1beb7537c12c0ea1fbf736062708e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58905235"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "59006356"
 ---
 # <a name="azure-data-box-edge-system-requirements"></a>Požadavky na systém Azure Data Box Edge
 
@@ -101,6 +101,37 @@ Doporučujeme nastavit pravidla brány firewall pro odchozí provoz, založené 
 ## <a name="internet-bandwidth"></a>Šířka pásma sítě Internet
 
 [!INCLUDE [Internet bandwidth](../../includes/data-box-edge-gateway-internet-bandwidth.md)]
+
+## <a name="compute-sizing-considerations"></a>Výpočetní rozvahu dimenzování
+
+Vaše zkušenosti při vývoji a testování vašeho řešení pomocí zajistit má dostatečnou kapacitu na vašem zařízení Data Box Edge a získali optimální výkon na vašem zařízení.
+
+Mezi faktory, byste měli zvážit, patří:
+
+- **Kontejner specifika** -uvažovat o následující.
+
+    - Kolik kontejnerů jsou vaše úlohy? Můžete mít velké množství prostých kontejnerů a několik z nich náročné.
+    - Co jsou prostředky přidělené tyto kontejnery a jaké jsou prostředky, které jsou využívání?
+    - Kolik vrstvy kontejnery sdílet?
+    - Existují nevyužité kontejnery? Kontejner zastavené stále zabírá místo na disku.
+    - V jakém jazyce se kontejnery zapisují?
+- **Objem dat zpracovaných** – kolik dat bude vaše kontejnery zpracování? Bude tato data využívat místo na disku nebo data se budou zpracovávat v paměti?
+- **Očekávaný výkon** – jaké jsou požadované výkonové charakteristiky vašeho řešení? 
+
+Chcete-li pochopit a vylepšit výkon vašeho řešení, můžete použít:
+
+- Metriky výpočetní prostředky k dispozici na webu Azure Portal. Přejděte na váš prostředek okraj pole Data a potom přejděte ke **monitorování > metriky**. Podívejte se na **Edge využití služby compute – paměť** a **Edge compute – využití CPU** pochopit dostupné prostředky a jak jsou prostředky získávání využívat.
+- Monitorování příkazů dostupných prostřednictvím rozhraní PowerShell zařízení, jako například:
+
+    - `dkr` Statistika zobrazíte živý stream z kontejnerů statistiky o využití prostředků. Příkaz podporuje CPU, využití paměti, limit paměti a sítě metriky vstupně-výstupních operací.
+    - `dkr system df` Chcete-li získat informace týkající se množství využité místo na disku. 
+    - `dkr image [prune]` Odstraňte nepoužívané Image a uvolněte místo.
+    - `dkr ps --size` Chcete-li zobrazit přibližné velikosti spuštěný kontejner. 
+
+    Další informace o dostupných příkazech najdete v části [monitorování a řešení potíží s výpočetní moduly](data-box-edge-connect-powershell-interface.md#monitor-and-troubleshoot-compute-modules).
+
+A konečně Ujistěte se, že na vaší datové sadě ověřit vaše řešení a kvantifikovat výkonu na okraji pole Data před nasazením v produkčním prostředí.
+
 
 ## <a name="next-step"></a>Další krok
 

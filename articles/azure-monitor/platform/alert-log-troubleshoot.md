@@ -1,5 +1,5 @@
 ---
-title: Řešení potíží s upozorněními protokolu ve službě Azure Monitor
+title: Řešení potíží s upozorněními protokolu ve službě Azure Monitor | Dokumentace Microsoftu
 description: Běžné problémy a chyby a řešení pro protokolu upozornění pravidla v Azure.
 author: msvijayn
 services: azure-monitor
@@ -8,20 +8,20 @@ ms.topic: conceptual
 ms.date: 10/29/2018
 ms.author: vinagara
 ms.subservice: alerts
-ms.openlocfilehash: 56d76cd43b63a389569ae39c1e987a5fccbb9793
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: aa42e8975432de8ca489cf9b1b6dd509c9fb01c1
+ms.sourcegitcommit: 045406e0aa1beb7537c12c0ea1fbf736062708e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54429442"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "59005307"
 ---
 # <a name="troubleshooting-log-alerts-in-azure-monitor"></a>Řešení potíží s upozorněními protokolu ve službě Azure Monitor  
 
 ## <a name="overview"></a>Přehled
 
-Tento článek ukazuje, jak řešit běžné problémy, kterým dochází při nastavování upozornění protokolů ve službě Azure monitor. Poskytuje také řešení, která často kladené dotazy týkající se konfigurace upozornění protokolů nebo funkce. 
+Tento článek ukazuje, jak řešit běžné problémy, kterým dochází při nastavování upozornění protokolů ve službě Azure Monitor. Poskytuje také řešení, která často kladené dotazy týkající se konfigurace upozornění protokolů nebo funkce. 
 
-Termín **upozornění protokolů** popisuje výstrahy, fire podle vlastního dotazu v [Log Analytics](../learn/tutorial-viewdata.md) nebo [Application Insights](../../azure-monitor/app/analytics.md). Další informace o funkci, terminologie a typy v [upozornění - Přehled protokolů](../platform/alerts-unified-log.md).
+Termín **upozornění protokolů** popisuje výstrahy, fire založené na dotazu protokolu v [pracovní prostor Log Analytics](../learn/tutorial-viewdata.md) nebo [Application Insights](../../azure-monitor/app/analytics.md). Další informace o funkci, terminologie a typy v [upozornění - Přehled protokolů](../platform/alerts-unified-log.md).
 
 > [!NOTE]
 > Tento článek nebere v úvahu případech, kdy se zobrazí na webu Azure portal a výstraha spuštěná pravidla a provádí přidružené skupiny akcí oznámení. Pro tyto případy, najdete informace v článku na [skupiny akcí](../platform/action-groups.md).
@@ -33,7 +33,7 @@ Tady je několik běžných příčin, proč nakonfigurovaného [pravidel upozor
 
 ### <a name="data-ingestion-time-for-logs"></a>Doba příjem dat protokolů
 
-Upozornění protokolu pravidelně spouští dotaz na základě [Log Analytics](../learn/tutorial-viewdata.md) nebo [Application Insights](../../azure-monitor/app/analytics.md). Protože Log Analytics zpracovává mnoho terabajtů dat z tisíce zákazníků z různých zdrojů po celém světě, tato služba je náchylný k různým časovou prodlevu. Další informace najdete v tématu [Čas pro příjem dat v Log Analytics](../platform/data-ingestion-time.md).
+Upozornění protokolu pravidelně spouští dotaz na základě [Log Analytics](../learn/tutorial-viewdata.md) nebo [Application Insights](../../azure-monitor/app/analytics.md). Protože Azure Monitor zpracovává mnoho terabajtů dat z tisíce zákazníků z různých zdrojů po celém světě, tato služba je náchylný k různým časovou prodlevu. Další informace najdete v tématu [doba příjem dat v protokolech sledování Azure](../platform/data-ingestion-time.md).
 
 Ke zmírnění zpoždění příjmu dat, systému vyčká a pokusí znovu výstraha dotazu více než jednou pokud zjistí, že zatím není přijatých potřebná data. Systém má exponenciálně rostoucím čekací doba nastavena. Protokol výstrah pouze aktivační události po dat je k dispozici, takže jejich zpoždění může být způsobeno ingestování protokol pomalých operací. 
 
@@ -84,7 +84,7 @@ Další podrobné jsou některé běžné důvody, proč nakonfigurovaného [pra
 
 ### <a name="alert-triggered-by-partial-data"></a>Výstraha se aktivuje částečná data
 
-Provozování Log Analytics a Application Insights Analytics podléhají zpoždění ingestování a zpracování. to v době při spuštění dotaz na upozornění protokolu zadaná - může být případ žádná data k dispozici nebo jenom některá data, které jsou k dispozici. Další informace najdete v tématu [Čas pro příjem dat v Log Analytics](../platform/data-ingestion-time.md).
+Provozování Log Analytics a Application Insights Analytics podléhají zpoždění ingestování a zpracování. to v době při spuštění dotaz na upozornění protokolu zadaná - může být případ žádná data k dispozici nebo jenom některá data, které jsou k dispozici. Další informace najdete v tématu [protokolu Doba příjmu dat ve službě Azure Monitor](../platform/data-ingestion-time.md).
 
 V závislosti na konfiguraci pravidla upozornění, může mít chybné spalování neexistuje žádná data nebo částečná data v protokolech v době spuštění výstrahy. V takovém případě doporučujeme vám změnit dotaz na upozornění nebo konfigurace. 
 
@@ -100,4 +100,4 @@ Jak ukazuje příklad **dotaz, který se spustí** pole je, cokoli běží služ
 
 - Další informace o [upozornění protokolů ve výstrahách Azure](../platform/alerts-unified-log.md)
 - Další informace o [Application Insights](../../azure-monitor/app/analytics.md)
-- Další informace o [Log Analytics](../../log-analytics/log-analytics-overview.md)
+- Další informace o [protokolu dotazy](../log-query/log-query-overview.md)

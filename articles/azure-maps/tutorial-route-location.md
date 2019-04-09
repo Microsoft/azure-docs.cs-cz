@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 5c5465562c1af3dbd3fcaff2031149e510a43cfd
-ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
-ms.translationtype: MT
+ms.openlocfilehash: 87ad3b8984907b5f5b889c36c2406f07cbeb242b
+ms.sourcegitcommit: b4ad15a9ffcfd07351836ffedf9692a3b5d0ac86
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58540733"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59056771"
 ---
 # <a name="route-to-a-point-of-interest-using-azure-maps"></a>Trasa k bodu zájmu s využitím Azure Maps
 
@@ -109,8 +109,8 @@ V tomto kurzu se vykreslí jednoduchá trasa. Pro začátek a konec trasy se pou
 1. Po inicializaci mapy, přidejte následující kód jazyka JavaScript.
 
     ```JavaScript
-    //Wait until the map resources have fully loaded.
-    map.events.add('load', function() {
+    //Wait until the map resources are ready.
+    map.events.add('ready', function() {
 
         //Create a data source and add it to the map.
         datasource = new atlas.source.DataSource();
@@ -121,8 +121,7 @@ V tomto kurzu se vykreslí jednoduchá trasa. Pro začátek a konec trasy se pou
             strokeColor: '#2272B9',
             strokeWidth: 5,
             lineJoin: 'round',
-            lineCap: 'round',
-            filter: ['==', '$type', 'LineString']
+            lineCap: 'round'
         }), 'labels');
 
         //Add a layer for rendering point data.
@@ -135,14 +134,14 @@ V tomto kurzu se vykreslí jednoduchá trasa. Pro začátek a konec trasy se pou
                 textField: ['get', 'title'],
                 offset: [0, 1.2]
             },
-            filter: ['==', '$type', 'Point']
+            filter: ['any', ['==', ['geometry-type'], 'Point'], ['==', ['geometry-type'], 'MultiPoint']] //Only render Point or MultiPoints in this layer.
         }));
     });
     ```
-
-    Do mapy se přidá událost load, která se aktivuje po plném načtení prostředků mapy. V obslužné rutině události načtení mapy se vytvoří zdroj dat, do kterého se uloží čára trasy a také počáteční a koncový bod trasy. Čárová vrstva vytvoří a připojí ke zdroji dat k definování vykreslení řádku trasy. Řádku postupu bude vykreslen v odstín modré šířku 5 pixelů a zaoblené řádku spojení a limitů. Přidá se filtr, který zajistí, že se na této vrstvě vykreslí pouze data typu GeoJSON LineString. Při přidávání vrstvy do mapy se předá druhý parametr s hodnotou `'labels'`, který určuje, že se má tato vrstva vykreslit pod popisky mapy. Tím se zajistí, že čára trasy nepřekryje popisky silnic. Vytvoří se vrstva symbolů, která se připojí ke zdroji dat. Tato vrstva určuje, jak se vykreslí počáteční a koncový bod. V tomto případě se do ní přidaly výrazy pro načtení informací o obrázku ikony a textovém popisku z vlastností objektů jednotlivých bodů.
-
-2. Pro účely tohoto kurzu nastavte počáteční bod jako sídla Microsoftu a koncový bod jako čerpací stanici v Seattlu. Do obslužné rutiny události načtení mapy přidejte následující kód.
+    
+    V mapách `ready` obslužná rutina události, zdroj dat je vytvořili pro uložení řádku trasy, stejně jako počáteční a koncové body. Vytvoří se vrstva čar, která se připojí ke zdroji dat a která definuje, jak se vykreslí čára trasy. Čára trasy se vykreslí se vykreslí v pěkném odstínu modré s tloušťkou 5 pixelů a zaoblenými spoji a zakončeními. Při přidávání vrstvy do mapy se předá druhý parametr s hodnotou `'labels'`, který určuje, že se má tato vrstva vykreslit pod popisky mapy. Tím se zajistí, že čára trasy nepřekryje popisky silnic. Vytvoří se vrstva symbolů, která se připojí ke zdroji dat. Tato vrstva určuje, jak se vykreslí počáteční a koncový bod. V tomto případě se do ní přidaly výrazy pro načtení informací o obrázku ikony a textovém popisku z vlastností objektů jednotlivých bodů. 
+    
+2. Pro účely tohoto kurzu nastavte jako počáteční bod Microsoft a jako koncový bod čerpací stanici v Seattlu. V mapách `ready` obslužná rutina události, přidejte následující kód.
 
     ```JavaScript
     //Create the GeoJSON objects which represent the start and end points of the route.
@@ -175,7 +174,7 @@ V tomto kurzu se vykreslí jednoduchá trasa. Pro začátek a konec trasy se pou
 
 ## <a name="get-directions"></a>Získání pokynů
 
-Tato část ukazuje, jak použít Azure Maps API route service k vyhledání trasy z daného počátečního bodu na koncový bod. Route Service poskytuje rozhraní API pro plánování *nejrychlejší*, *nejkratší*, *úsporné* nebo *vzrušující* trasy mezi dvěma místy. Umožňuje uživatelům také plánovat trasy v budoucnu s použitím rozsáhlé databáze Azure s historickými dopravními informacemi a předvídat dobu trvání trasy pro kterýkoli den a čas. Další informace najdete v tématu [Získání pokynů k trase](https://docs.microsoft.com/rest/api/maps/route/getroutedirections). Všechny následující funkce by se měly přidat **do modulu eventListener pro načtení mapy**, aby se zajistilo jejich načtení po plném načtení mapy.
+Tato část ukazuje, jak použít Azure Maps API route service k vyhledání trasy z daného počátečního bodu na koncový bod. Route Service poskytuje rozhraní API pro plánování *nejrychlejší*, *nejkratší*, *úsporné* nebo *vzrušující* trasy mezi dvěma místy. Umožňuje uživatelům také plánovat trasy v budoucnu s použitím rozsáhlé databáze Azure s historickými dopravními informacemi a předvídat dobu trvání trasy pro kterýkoli den a čas. Další informace najdete v tématu [Získání pokynů k trase](https://docs.microsoft.com/rest/api/maps/route/getroutedirections). Všechny tyto funkce by měly být přidány **v rámci naslouchacího procesu událostí připravené mapy** zajistit, že se po načtení mapování prostředků jsou připraveni získat přístup.
 
 1. Ve funkci GetMap přidejte následující kód jazyka Javascript.
 
@@ -221,11 +220,11 @@ V tomto kurzu jste se naučili:
 
 Přístup k vzorovému kódu pro tento kurz můžete získat tady:
 
-> [Vyhledání trasy pomocí Azure Maps](https://github.com/Azure-Samples/AzureMapsCodeSamples/blob/master/AzureMapsCodeSamples/Tutorials/route.html)
+> [Najít trasu s předponou Azure Maps](https://github.com/Azure-Samples/AzureMapsCodeSamples/blob/master/AzureMapsCodeSamples/Tutorials/route.html)
 
-[Podívejte se na živou ukázku](https://azuremapscodesamples.azurewebsites.net/?sample=Route%20to%20a%20destination)
+[Najdete v této ukázce tady](https://azuremapscodesamples.azurewebsites.net/?sample=Route%20to%20a%20destination)
 
 V dalším kurzu se dozvíte, jak vytvořit dotaz na trasu s omezeními, jako jsou režim dopravy nebo typ nákladu, a pak na stejné mapě zobrazit více tras.
 
 > [!div class="nextstepaction"]
-> [Vyhledání tras pro různé režimy dopravy](./tutorial-prioritized-routes.md)
+> [Můžete hledat trasy pro různé režimy dopravy](./tutorial-prioritized-routes.md)

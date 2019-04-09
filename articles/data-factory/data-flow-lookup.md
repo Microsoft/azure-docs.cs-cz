@@ -7,12 +7,12 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 02/03/2019
-ms.openlocfilehash: b156917a9987b023a9bf94e51c0cc14aebb133c7
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: ef473ea5f88b9108894787785fe1e9083fab1b0a
+ms.sourcegitcommit: 045406e0aa1beb7537c12c0ea1fbf736062708e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56738381"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "59006212"
 ---
 # <a name="azure-data-factory-mapping-data-flow-lookup-transformation"></a>Azure Data Factory mapování transformace vyhledávání toku dat
 
@@ -25,3 +25,21 @@ Přidat odkaz na data z jiného zdroje do toku dat pomocí vyhledávání. Trans
 Vyberte klíče, které chcete porovnává příchozí datový proud pole a pole ze zdroje odkazu na pole. Musíte nejprve vytvoříte nový zdroj na plátně návrhu toku dat použít jako pravá strana pro vyhledávání.
 
 Když shoda nenajde, výsledné řádky a sloupce ze zdrojového odkazu se přidají do vašeho datového toku. Můžete zvolit pole, která zájmu, které chcete zahrnout do na konci toku dat pro jímku.
+
+## <a name="optimizations"></a>Optimalizace
+
+Ve službě Data Factory Data proudí provést v prostředí Spark horizontálním navýšením kapacity. Pokud vaše datová sada se vejde do pracovního uzlu paměťový prostor, doporučujeme optimalizovat výkon vyhledávání.
+
+![Vysílání spojení](media/data-flow/broadcast.png "vysílání spojení")
+
+### <a name="broadcast-join"></a>Vysílání spojení
+
+Vyberte vlevo nebo vpravo vysílání spojení požádat o ADF můžete nabízet celou datovou sadu z obou stranách relaci vyhledávání do paměti.
+
+### <a name="data-partitioning"></a>Dělení dat
+
+Můžete také určit, dělení dat tak, že vyberete "Nastavit dělení" na kartě Optimalizace transformace vyhledávání k vytvoření sad dat, která lépe vejde do paměti na jeden pracovního procesu.
+
+## <a name="next-steps"></a>Další postup
+
+[Připojte se k](data-flow-join.md) a [Exists](data-flow-exists.md) transformace provádění podobných úloh v mapování Data proudí ADF. Podívejte se na tyto transformace Další.

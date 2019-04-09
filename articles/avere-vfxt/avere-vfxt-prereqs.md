@@ -6,12 +6,12 @@ ms.service: avere-vfxt
 ms.topic: conceptual
 ms.date: 02/20/2019
 ms.author: v-erkell
-ms.openlocfilehash: 04af92f21cecaa832e857a7017b67f815f6ab685
-ms.sourcegitcommit: 72cc94d92928c0354d9671172979759922865615
-ms.translationtype: MT
+ms.openlocfilehash: 352833b12c00abbefcf7016d27dfb580ee25e450
+ms.sourcegitcommit: b4ad15a9ffcfd07351836ffedf9692a3b5d0ac86
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58417968"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59056737"
 ---
 # <a name="prepare-to-create-the-avere-vfxt"></a>Příprava k vytvoření Avere vFXT
 
@@ -30,23 +30,16 @@ Vytvoření nového předplatného Azure na webu Azure Portal:
 
 ## <a name="configure-subscription-owner-permissions"></a>Konfigurace předplatného oprávnění vlastníka
 
-Uživatel s oprávněními vlastníka předplatného by měl vytvořit vFXT cluster. Oprávnění vlastníka předplatného jsou potřeba pro tyto akce, mimo jiné:
+Uživatel s oprávněními vlastníka předplatného by měl vytvořit vFXT cluster. Přijměte podmínky pro software služby a provádět další akce jsou potřeba oprávnění vlastníka předplatného. 
 
-* Přijměte podmínky pro Avere vFXT software
-* Umožňuje vytvořit roli přístup k uzlu clusteru 
+Existují některé řešení scénářů, které umožňují jiných uživatelů k vytvoření Avere vFTX pro Azure cluster. Tyto scénáře zahrnují omezení prostředků a přiřazení dalších rolí Tvůrce. V obou těchto případech se vlastník předplatného také musí [přijměte podmínky pro software vFXT Avere](#accept-software-terms) předem. 
 
-Pokud nechcete dát přístup vlastníka uživatele, kteří vytvářejí vFXT existují dvě alternativní řešení:
-
-* Vlastník skupiny prostředků můžete vytvořit cluster, pokud jsou splněny tyto podmínky:
-
-  * Vlastník předplatného musí [přijměte podmínky pro software vFXT Avere](#accept-software-terms) a [vytvořit role clusteru uzel přístupu](#create-the-cluster-node-access-role). 
-  * Všechny prostředky vFXT Avere se musí nasadit do skupiny prostředků, včetně:
-    * Kontroler clusteru
-    * Uzly clusteru
-    * Blob Storage
-    * Prvky sítě
+| Scénář | Omezení | Potřebný k vytvoření clusteru vFXT Avere role zabezpečeného přístupu | 
+|----------|--------|-------|
+| Správce skupiny prostředků | Virtuální síť, řadič clusteru a uzly clusteru je nutné vytvořit ve skupině prostředků | [Správce uživatelských přístupů](../role-based-access-control/built-in-roles.md#user-access-administrator) a [Přispěvatel](../role-based-access-control/built-in-roles.md#contributor) role, i s rozsahem cílová skupina prostředků | 
+| Externí virtuální sítě | Kontroler clusteru a uzly clusteru se vytvoří v rámci skupiny prostředků, ale používá se existující virtuální sítě v jiné skupině prostředků. | (1) [správce uživatelských přístupů](../role-based-access-control/built-in-roles.md#user-access-administrator) a [Přispěvatel](../role-based-access-control/built-in-roles.md#contributor) role omezená na skupinu prostředků vFXT; a (2) [Přispěvatel virtuálních počítačů](../role-based-access-control/built-in-roles.md#virtual-machine-contributor), [přístup uživatelů Správce](../role-based-access-control/built-in-roles.md#user-access-administrator), a [Avere Přispěvatel](../role-based-access-control/built-in-roles.md#avere-contributor) role vymezeny na skupinu prostředků virtuální sítě. |
  
-* Uživatel s oprávněními bez vlastníka můžete vytvořit clustery vFXT pomocí řízení přístupu na základě rolí (RBAC) předem přiřadit oprávnění uživateli. Tato metoda poskytuje významná oprávnění pro tyto uživatele. [Tento článek](avere-vfxt-non-owner.md) vysvětluje, jak vytvořit roli přístup k autorizaci bez vlastníků k vytvoření clusterů.
+Další možností je vytvořit roli řízení (RBAC) vlastní přístup na základě rolí předem domluvili a přiřadit oprávnění pro uživatele, jak je popsáno v [v tomto článku](avere-vfxt-non-owner.md). Tato metoda poskytuje významná oprávnění pro tyto uživatele. 
 
 ## <a name="quota-for-the-vfxt-cluster"></a>Kvóta pro vFXT clusteru
 
@@ -83,75 +76,6 @@ Přijmout podmínky předem software:
    ```azurecli
    az vm image accept-terms --urn microsoft-avere:vfxt:avere-vfxt-controller:latest
    ```
-
-## <a name="create-access-roles"></a>Vytvoření role zabezpečeného přístupu 
-
-[Řízení přístupu na základě rolí](../role-based-access-control/index.yml) (RBAC) poskytuje vFXT clusteru kontroleru a clusterovým uzlem oprávnění k provedení nezbytných úloh.
-
-* Kontroler clusteru potřebuje oprávnění k vytvoření a úprava virtuální počítače k vytvoření clusteru. 
-
-* Jednotlivé vFXT uzly se muset zabývat záležitostmi, jako je čtení vlastností prostředků Azure, spravovat úložiště a řídit ostatní uzly nastavení síťového rozhraní jako součást operace normální clusteru.
-
-Před vytvořením clusteru vFXT Avere, je nutné definovat vlastní role pro použití s uzly clusteru. 
-
-Pro kontroler clusteru můžete přijmout výchozí role ze šablony. Výchozí hodnota poskytuje clusteru oprávnění vlastníka skupiny prostředků kontroleru. Pokud budete chtít vytvořit vlastní roli pro kontroler, přečtěte si téma [vlastní kontroler přístup role](avere-vfxt-controller-role.md).
-
-> [!NOTE] 
-> Pouze vlastník předplatného, nebo uživatel s rolí vlastník nebo správce přístupu uživatelů, mohou vytvářet role. Role je možné vytvořit předem.  
-
-### <a name="create-the-cluster-node-access-role"></a>Umožňuje vytvořit roli přístup k uzlu clusteru
-
-<!-- caution - this header is linked to in the template so don't change it unless you can change that -->
-
-Než budete moct vytvořit vFXT Avere pro Azure cluster, je nutné vytvořit roli uzlu clusteru.
-
-> [!TIP] 
-> Interní uživatele Microsoftu by měl použít existující roli s názvem "Operátor modulu Runtime clusteru Avere" namísto pokusu o k jejímu vytvoření. 
-
-1. Zkopírujte tento soubor. Přidejte své ID předplatného v řádku AssignableScopes.
-
-   (Aktuální verze tohoto souboru je uložen v úložišti github.com/Azure/Avere jako [AvereOperator.txt](https://github.com/Azure/Avere/blob/master/src/vfxt/src/roles/AvereOperator.txt).)  
-
-   ```json
-   {
-      "AssignableScopes": [
-          "/subscriptions/PUT_YOUR_SUBSCRIPTION_ID_HERE"
-      ],
-      "Name": "Avere Operator",
-      "IsCustom": "true",
-      "Description": "Used by the Avere vFXT cluster to manage the cluster",
-      "NotActions": [],
-      "Actions": [
-          "Microsoft.Compute/virtualMachines/read",
-          "Microsoft.Network/networkInterfaces/read",
-          "Microsoft.Network/networkInterfaces/write",
-          "Microsoft.Network/virtualNetworks/read",
-          "Microsoft.Network/virtualNetworks/subnets/read",
-          "Microsoft.Network/virtualNetworks/subnets/join/action",
-          "Microsoft.Network/networkSecurityGroups/join/action",
-          "Microsoft.Resources/subscriptions/resourceGroups/read",
-          "Microsoft.Storage/storageAccounts/blobServices/containers/delete",
-          "Microsoft.Storage/storageAccounts/blobServices/containers/read",
-          "Microsoft.Storage/storageAccounts/blobServices/containers/write"
-      ],
-      "DataActions": [
-          "Microsoft.Storage/storageAccounts/blobServices/containers/blobs/delete",
-          "Microsoft.Storage/storageAccounts/blobServices/containers/blobs/read",
-          "Microsoft.Storage/storageAccounts/blobServices/containers/blobs/write"
-      ]
-   }
-   ```
-
-1. Uložte soubor jako ``avere-operator.json`` nebo podobný soubor snadno zapamatovatelné jméno. 
-
-
-1. Otevřete Azure Cloud shell a přihlaste se pod svým ID předplatného (popsané [výše v tomto dokumentu](#accept-software-terms)). Použijte tento příkaz pro vytvoření role:
-
-   ```bash
-   az role definition create --role-definition /avere-operator.json
-   ```
-
-Název role se používá při vytváření clusteru. V tomto příkladu je název ``avere-operator``.
 
 ## <a name="create-a-storage-service-endpoint-in-your-virtual-network-if-needed"></a>Vytvoření koncového bodu služby úložiště ve vaší virtuální síti (v případě potřeby)
 

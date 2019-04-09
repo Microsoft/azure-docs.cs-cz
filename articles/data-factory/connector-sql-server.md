@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 03/13/2019
+ms.date: 04/08/2019
 ms.author: jingwang
-ms.openlocfilehash: 78d82f7604d86b50ee5e05e5c3b5b9802a9559e5
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: cb1b8171dc45c286d3f87a3c33e366d818cfaad9
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57877934"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59283405"
 ---
 # <a name="copy-data-to-and-from-sql-server-using-azure-data-factory"></a>Kopírování dat do a z SQL serveru pomocí služby Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -284,7 +284,7 @@ Ke zkopírování dat do SQL serveru, nastavte typ jímky v aktivitě kopírová
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
 | type | Vlastnost typ jímky aktivity kopírování musí být nastavena: **SqlSink** | Ano |
-| WriteBatchSize |Vloží data do tabulky SQL writeBatchSize dosáhne velikosti vyrovnávací paměti.<br/>Povolené hodnoty jsou: celé číslo (počet řádků). |Ne (výchozí: 10000) |
+| WriteBatchSize |Počet řádků, která se vloží do tabulky SQL **dávce**.<br/>Povolené hodnoty jsou: celé číslo (počet řádků). |Ne (výchozí: 10000) |
 | writeBatchTimeout |Čekací doba pro dávkové operace insert dokončit před vypršením časového limitu.<br/>Povolené hodnoty jsou: časový interval. Příklad: "00: 30:00" (30 minut). |Ne |
 | preCopyScript |Zadejte dotaz SQL pro aktivitu kopírování ke spuštění před zápis dat do systému SQL Server. To se ji volat pouze jednou za kopírování spustit. Tato vlastnost slouží k vyčištění předem načtená data. |Ne |
 | sqlWriterStoredProcedureName |Název uložené procedury, která definuje, jak použít zdroj dat do cílové tabulky, například na upsertuje proveďte nebo transformace pomocí vlastní obchodní logikou. <br/><br/>Mějte na paměti, bude tuto uloženou proceduru **za batch**. Pokud budete chtít provádět operace, která pouze spustí jednou a nemá nic dělat se zdrojovými daty, třeba delete nebo truncate, použijte `preCopyScript` vlastnost. |Ne |
@@ -440,9 +440,9 @@ Při kopírování dat do databáze SQL serveru, zadán uživatel, může se kon
 
 Uloženou proceduru lze použít při integrovaná funkce kopírování mechanismy neodesílají účel. Používá se obvykle při upsert (insert a update) nebo další zpracování (sloučení sloupců vyhledávání dalších hodnot, vložení do několika tabulek, atd.) je potřeba udělat před posledním vložení zdrojová data v cílové tabulce.
 
-Následující příklad ukazuje způsob použití uloženou proceduru provedete upsert do tabulky v databázi serveru SQL Server. Za předpokladu, že vstupní data a tabulky jímky "Marketing" obsahuje tři sloupce: ID profilu, stavu a kategorie. Provedení na základě sloupce "ProfileID" funkcí upsert a platí jen pro konkrétní kategorie.
+Následující příklad ukazuje způsob použití uloženou proceduru provedete upsert do tabulky v databázi serveru SQL Server. Předpokládejme, který vstupní data a jímku **marketingové** tabulka jednotlivých obsahovat tři sloupce: **ID profilu**, **stavu**, a **kategorie**. Proveďte upsert na základě **ProfileID** sloupce a použijte je jenom pro konkrétní kategorie.
 
-**Výstupní datová sada**
+**Výstupní datová sada:** "tableName" by měl být stejný název parametru typu tabulky v uložené proceduře (viz níže uvedený skript uložené procedury).
 
 ```json
 {
@@ -461,7 +461,7 @@ Následující příklad ukazuje způsob použití uloženou proceduru provedete
 }
 ```
 
-V části SqlSink definujte takto v aktivitě kopírování.
+Definovat **SQL jímky** následující části v aktivitě kopírování.
 
 ```json
 "sink": {
@@ -476,7 +476,7 @@ V části SqlSink definujte takto v aktivitě kopírování.
 }
 ```
 
-V databázi definujte jako SqlWriterStoredProcedureName uložená procedura se stejným názvem. Zpracovává vstupní data ze zadaného zdroje a sloučení do výstupní tabulky. Název parametru typu tabulky v uložené proceduře by měl být stejný jako "tableName" definovaný v datové sadě.
+V databázi, definovat uložená procedura se stejným názvem jako **SqlWriterStoredProcedureName**. Zpracovává vstupní data ze zadaného zdroje a sloučí do výstupní tabulky. Název parametru typu tabulky v uložené proceduře by měl být stejný jako **tableName** definované v datové sadě.
 
 ```sql
 CREATE PROCEDURE spOverwriteMarketing @Marketing [dbo].[MarketingType] READONLY, @category varchar(256)

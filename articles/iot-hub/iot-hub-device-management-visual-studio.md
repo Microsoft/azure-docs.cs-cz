@@ -7,16 +7,16 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: xshi
-ms.openlocfilehash: f0cb740f04970aeed4342511a046862f05aaa736
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: 87a0847f5d42e014f3b2691c96446892176b481b
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54108199"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59269567"
 ---
 # <a name="use-cloud-explorer-for-visual-studio-for-azure-iot-hub-device-management"></a>Pomocí Průzkumníka cloudu sady Visual Studio pro správu zařízení Azure IoT Hub
 
-![Diagram začátku do konce](media/iot-hub-get-started-e2e-diagram/2.png)
+![Diagram začátku do konce](media/iot-hub-device-management-visual-studio/iot-e2e-simple.png)
 
 [Cloud Explorer](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.CloudExplorerForVS) je užitečná rozšíření sady Visual Studio, která umožňuje zobrazit vaše prostředky Azure, zkoumání jejich vlastností a provádění klíčových vývojářských úkonů ze sady Visual Studio. Obsahuje možnosti správy, které slouží k provádění různých úloh.
 
@@ -35,7 +35,7 @@ Dvojčata zařízení jsou dokumenty JSON, které obsahují informace o stavu za
 
 ## <a name="what-you-learn"></a>Co se naučíte
 
-Zjistíte pomocí Průzkumníka cloudu sady Visual Studio pomocí různých možností správy na svém vývojovém počítači.
+Zjistíte, jak pomocí Průzkumníka cloudu sady Visual Studio pomocí různých možností správy na svém vývojovém počítači.
 
 ## <a name="what-you-do"></a>Co můžete dělat
 
@@ -43,8 +43,8 @@ Spusťte Průzkumníka cloudu sady Visual Studio s různými možnostmi správy.
 
 ## <a name="what-you-need"></a>Co potřebujete
 
-- Aktivní předplatné Azure.
-- Službu Azure IoT Hub v rámci vašeho předplatného.
+- Aktivní předplatné Azure
+- Službu Azure IoT Hub v rámci vašeho předplatného
 - Microsoft Visual Studio 2017 Update 8 nebo novější
 - Cloud Explorer komponenty z instalačního programu Visual Studio (zadáno ve výchozím nastavení se sadou Azure)
 

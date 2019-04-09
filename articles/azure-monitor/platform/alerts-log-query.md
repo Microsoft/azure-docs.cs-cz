@@ -8,18 +8,18 @@ ms.topic: conceptual
 ms.date: 02/19/2019
 ms.author: bwren
 ms.subservice: alerts
-ms.openlocfilehash: 53cd84d669a3f14d5ac028cc29ae483962860f72
-ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
+ms.openlocfilehash: 429770b7651a93473c03f5e386d8f7b72692c161
+ms.sourcegitcommit: 045406e0aa1beb7537c12c0ea1fbf736062708e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56447210"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "59006103"
 ---
 # <a name="log-alert-queries-in-azure-monitor"></a>Dotazy na výstrahy protokolu ve službě Azure Monitor
 [Upozornění pravidla založená na protokoly Azure monitoru](alerts-unified-log.md) v pravidelných intervalech spouští, proto měli byste zajistit, že se zapisují pro minimalizaci režie a latenci. Tento článek obsahuje doporučení pro psaní efektivní dotazy na výstrahy protokolu a proces pro převod existujících dotazů. 
 
 ## <a name="types-of-log-queries"></a>Typy dotazů protokolu
-[Dotazy v Log Analytics](../log-query/log-query-overview.md) začínat buď tabulku nebo [hledání](/azure/kusto/query/searchoperator) nebo [sjednocení](/azure/kusto/query/unionoperator) operátor.
+[Protokolovat dotazů ve službě Azure Monitor](../log-query/log-query-overview.md) začínat buď tabulku nebo [hledání](/azure/kusto/query/searchoperator) nebo [sjednocení](/azure/kusto/query/unionoperator) operátor.
 
 Například následující dotaz je vymezen _SecurityEvent_ tabulky a vyhledá ID konkrétních událostí. Toto je pouze tabulky, která musí zpracovat dotaz.
 

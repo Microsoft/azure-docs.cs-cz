@@ -1,6 +1,6 @@
 ---
 title: Akce Webhooku pro upozornění protokolů ve výstrahách Azure
-description: Tento článek popisuje, jak na pravidla upozornění protokolů pomocí log analytics nebo application insights zařadí data jako HTTP webhook a podrobnosti o různá přizpůsobení je to možné.
+description: Tento článek popisuje, jak na pravidla upozornění protokolů pomocí pracovního prostoru nebo application insights analytics protokolu zařadí data jako HTTP webhook a podrobnosti o různá přizpůsobení je to možné.
 author: msvijayn
 services: monitoring
 ms.service: azure-monitor
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 05/01/2018
 ms.author: vinagara
 ms.subservice: alerts
-ms.openlocfilehash: a592dc150d535df775a62c157f76f327b54240fd
-ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
+ms.openlocfilehash: 2307fa985c88608d80400c8951c47b9f20caa1dc
+ms.sourcegitcommit: 045406e0aa1beb7537c12c0ea1fbf736062708e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58496084"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "59006630"
 ---
 # <a name="webhook-actions-for-log-alert-rules"></a>Akce Webhooku pro pravidla upozornění protokolů
 Když [upozornění protokolu se vytvoří v Azure](alerts-log.md), máte možnost [konfigurace pomocí skupin akcí](action-groups.md) provést jednu nebo více akcí.  Tento článek popisuje různé webhooku akce, které jsou k dispozici a podrobnosti o tom, jak nakonfigurovat vlastní webhooku založenými na JSON.
@@ -202,5 +202,5 @@ Následuje ukázkovou datovou část pro akce webhooku vlastní žádné upozorn
 - Vysvětlení [Správa upozornění protokolů v Azure](alerts-log.md)
 - Vytvoření a správa [skupiny akcí v Azure](action-groups.md)
 - Další informace o [Application Insights](../../azure-monitor/app/analytics.md)
-- Další informace o [Log Analytics](../../azure-monitor/log-query/log-query-overview.md). 
+- Další informace o [protokolu dotazy](../log-query/log-query-overview.md). 
 

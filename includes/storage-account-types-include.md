@@ -8,18 +8,19 @@ ms.topic: include
 ms.date: 03/23/2019
 ms.author: tamram
 ms.custom: include file
-ms.openlocfilehash: bffe948eec81b480e51d0cf5a25f6091f397dd15
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.openlocfilehash: d4f57eca89cbb68d61546c6d5ce5bcd04f9256e7
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58372846"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59286367"
 ---
 Azure Storage nabízí několik typů účtů úložiště. Každý typ podporuje různé funkce a má vlastní cenový model. Než vytvoříte účet úložiště a určit typ účtu, který je nejvhodnější pro vaše aplikace, zvažte následující rozdíly. Typy účtů úložiště jsou:
 
 - **Účty pro obecné účely v2**: Typ účtu storage úrovně Basic pro objekty BLOB, soubory, fronty a tabulky. Doporučujeme pro většinu scénářů použití služby Azure Storage.
 - **Účty pro obecné účely v1**: Typ starší verze účtu pro objekty BLOB, soubory, fronty a tabulky. Místo toho použijte účty pro obecné účely v2, pokud je to možné.
 - **Blokovat účty úložiště blob**: Účty úložiště pouze objektů BLOB s charakteristikami výkonu premium. Doporučuje pro scénáře s vysokou transakce plateb, použití menší objektů nebo vyžadování úložiště konzistentně s nízkou latencí.
+- **Úložiště souborů (preview) účty úložiště**: Účty úložiště pouze soubory s charakteristikami výkonu premium. Doporučuje se pro organizace nebo škálování aplikace s vysokým výkonem.
 - **Účty BLOB storage**: Účty úložiště pouze objektů BLOB. Místo toho použijte účty pro obecné účely v2, pokud je to možné.
 
 Následující tabulka popisuje typy účtů úložiště a jejich funkce:
@@ -29,6 +30,7 @@ Následující tabulka popisuje typy účtů úložiště a jejich funkce:
 | Pro obecné účely V2   | Objekt BLOB, soubor, fronty, tabulky a Disk       | Standard, Premium<sup>5</sup> | Horká, studená, archivní<sup>3</sup> | LRS, ZRS<sup>4</sup>, GRS, RA-GRS | Resource Manager             | Šifrované              |
 | Pro obecné účely V1   | Objekt BLOB, soubor, fronty, tabulky a Disk       | Standard, Premium<sup>5</sup> | neuvedeno                            | LRS, GRS, RA-GRS                  | Resource Manager, Classic    | Šifrované              |
 | Úložiště objektů blob bloku   | Objekt BLOB (objekty BLOB bloku a doplňovacích objektů BLOB jenom) | Premium                       | neuvedeno                            | LRS                               | Resource Manager             | Šifrované              |
+| Úložiště souborů (preview)   | Pouze pro soubory | Premium                       | neuvedeno                            | LRS                               | Resource Manager             | Šifrované              |
 | Blob Storage         | Objekt BLOB (objekty BLOB bloku a doplňovacích objektů BLOB jenom) | Standard                      | Horká, studená, archivní<sup>3</sup> | LRS, GRS, RA-GRS                  | Resource Manager             | Šifrované              |
 
 <sup>1</sup>doporučuje se použít model nasazení Azure Resource Manageru. Účty úložiště pomocí modelu nasazení classic je možné vytvořit i nadále v některých umístěních, a nadále podporovat existující klasické účty. Další informace najdete v tématu [Azure Resource Manageru a klasického nasazení: Vysvětlení modelů nasazení a stavu prostředků](../articles/azure-resource-manager/resource-manager-deployment-model.md).

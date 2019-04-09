@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 09/14/2017
 ms.author: rasquill
 ms.custom: mvc
-ms.openlocfilehash: 48afb867a5455ffea10f8a74b1fff2c2b7f361ab
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: fb34be09ec08957621517c957b3570cdbcfc0468
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57849750"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59283677"
 ---
 # <a name="deprecated-use-draft-with-azure-container-service-and-azure-container-registry-to-build-and-deploy-an-application-to-kubernetes"></a>(NEPOUŽÍVANÉ) Použití konceptu s Azure Container Service a Azure Container Registry k sestavení a nasazení aplikace do Kubernetes
 
@@ -139,7 +139,7 @@ Nyní jste připraveni nasadit aplikaci.
 
 ## <a name="build-and-deploy-an-application"></a>Sestavení a nasazení aplikace
 
-V úložišti Draft najdete [šest jednoduchých ukázkových aplikací](https://github.com/Azure/draft/tree/master/examples). Naklonujte úložiště a použijte [příkladu Java](https://github.com/Azure/draft/tree/master/examples/java). Přejděte do adresáře příklady/java a typ `draft create` k sestavení aplikace. Mělo by to vypadat asi jako v následujícím příkladu.
+V úložišti Draft najdete [šest jednoduchých ukázkových aplikací](https://github.com/Azure/draft/tree/master/examples). Naklonujte úložiště a použijte [příkladu Java](https://github.com/Azure/draft/tree/master/examples/example-java). Přejděte do adresáře příklady/java a typ `draft create` k sestavení aplikace. Mělo by to vypadat asi jako v následujícím příkladu.
 ```bash
 $ draft create
 --> Draft detected the primary language as Java with 91.228814% certainty.

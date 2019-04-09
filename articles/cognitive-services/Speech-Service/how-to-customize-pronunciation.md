@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: panosper
 ms.custom: seodec18
-ms.openlocfilehash: 139c5d47fe6ea82148e2d5e1cf2f5fcb72d4020e
-ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.openlocfilehash: f825cf8f381a7a2974b150a74a091412b24b09bc
+ms.sourcegitcommit: 045406e0aa1beb7537c12c0ea1fbf736062708e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58339393"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "59005161"
 ---
 # <a name="enable-custom-pronunciation"></a>Povolit vlastní výslovnost
 
@@ -63,7 +63,7 @@ Vlastní Výslovnost je aktuálně podporované pro angličtina (en US) a němč
 Formulář pro zobrazení může být pouze vlastní slova, zkratka nebo složených slov, které kombinují existující slova.
 
 >[!NOTE]
->Nedoporučujeme používat tuto funkci, aby byla znovu formulována běžná slova nebo pro úpravu mluvené slovo formuláře. Je lepší pro spuštění dekodér zobrazíte, jestli jsou některé neobvyklé slova (jako je například zkratky, technické slova nebo cizí slova) správně dekódovat. Pokud ano, můžete je přidat do vlastní výslovnost souboru. V jazykový model pouze a vždy používejte formulář pro zobrazení slova.
+>Nedoporučujeme používat tuto funkci, aby byla znovu formulována běžná slova nebo pro úpravu mluvené slovo formuláře. Je lepší kontrolu, jestli některé neobvyklé slova (jako je například zkratky, technické slova nebo cizí slova) jsou nesprávně transribed před použitím této funkce. Pokud ano, můžete je přidat do vlastní výslovnost souboru. V jazykový model pouze a vždy používejte formulář pro zobrazení slova.
 
 ## <a name="requirements-for-the-file-size"></a>Požadavky na velikost souboru
 Velikost souboru TXT, který obsahuje položky Výslovnost je omezena na 1 MB (1KB pro úroveň free klíče). Obvykle není nutné nahrávání velkých objemů dat prostřednictvím tohoto souboru. Většina souborů vlastní výslovnost můžou mít velikost několika kilobajtů (kB). Kódování souboru .txt pro všechna národní prostředí by měl být BOM kódování UTF-8. Pro anglické národní prostředí je také ANSI přijatelné.

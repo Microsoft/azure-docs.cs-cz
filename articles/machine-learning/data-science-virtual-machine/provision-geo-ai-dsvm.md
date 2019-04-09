@@ -16,12 +16,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/05/2018
 ms.author: gokuma
-ms.openlocfilehash: c4b178cc7e0604f38e4da25452a3bad01f8145de
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: dde9b71c3615a592f8c08e040c5e9ba7bc756bd6
+ms.sourcegitcommit: e43ea344c52b3a99235660960c1e747b9d6c990e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57858133"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "59008834"
 ---
 # <a name="provision-a-geo-artificial-intelligence-virtual-machine-on-azure"></a>Zřízení virtuálního počítače geografickou umělou inteligenci v Azure 
 
@@ -87,7 +87,7 @@ V opačném případě můžete zaregistrovat nový účet ArcGIS a licence nebo
 
 ![ArcGIS-Free-Trial](./media/provision-geo-ai-dsvm/ArcGIS-Free-Trial.png)
 
-Jakmile budete mít registrace buď na placené nebo bezplatné zkušební verze účtu ArcGIS, můžete povolit ArcGIS Pro pro váš účet podle pokynů v [Začínáme se službou dokumentace ArcGIS Pro](https://www.esri.com/library/brochures/getting-started-with-arcgis-pro.pdf). 
+Po registraci placené nebo bezplatné zkušební verze ArcGIS účet může autorizovat ArcGIS Pro pro váš účet podle pokynů v [Začínáme se službou ArcGIS Pro](https://www.esri.com/library/brochures/getting-started-with-arcgis-pro.pdf). 
 
 Po přihlášení k ploše ArcGIS Pro pomocí svého účtu ArcGIS, jste připraveni začít používat nástrojů pro datové vědy, které jsou nainstalované a nakonfigurované na virtuálním počítači pro geoprostorové analýzy a machine learningu projekty.
 

@@ -4,198 +4,209 @@ description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: daveba
+manager: mtillman
+ms.reviewer: barbkess
 ms.assetid: bedd916b-8f69-4b50-9b8d-56f4ee3bd3ed
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 07/12/2017
+ms.topic: tutorial
+ms.date: 03/29/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9f7c02fb395464c1b682a3cfb71cc072a807ef88
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 15cfa025bde3367c57255ce50f95c69293b63f92
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56203246"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59283371"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-userecho"></a>Kurz: Integrace Azure Active Directory s UserEcho
 
 V tomto kurzu se dozvíte, jak integrovat UserEcho s Azure Active Directory (Azure AD).
-
 UserEcho integraci se službou Azure AD poskytuje následující výhody:
 
-- Můžete řídit ve službě Azure AD, který má přístup k UserEcho
-- Můžete povolit uživatelům, aby automaticky získat přihlášení k UserEcho (Single Sign-On) s jejich účty Azure AD
-- Můžete spravovat své účty na jediném místě – na webu Azure portal
+* Můžete řídit ve službě Azure AD, který má přístup k UserEcho.
+* Můžete povolit uživatelům být automaticky přihlášeni k UserEcho (Single Sign-On) s jejich účty Azure AD.
+* Můžete spravovat své účty na jediném místě – na webu Azure portal.
 
-Pokud chcete zjistit další podrobnosti o integraci aplikací SaaS v Azure AD, přečtěte si téma [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
+Pokud chcete zjistit další podrobnosti o integraci aplikací SaaS v Azure AD, přečtěte si téma [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
 ## <a name="prerequisites"></a>Požadavky
 
 Konfigurace integrace Azure AD s UserEcho, potřebujete následující položky:
 
-- Předplatné Azure AD
-- UserEcho jednotného přihlašování povolená předplatného
-
-> [!NOTE]
-> Pokud chcete vyzkoušet kroky v tomto kurzu, nedoporučujeme použití produkční prostředí.
-
-Pokud chcete vyzkoušet kroky v tomto kurzu, postupujte podle těchto doporučení:
-
-- Nepoužívejte produkčním prostředí, pokud to není nutné.
-- Pokud nemáte prostředí zkušební verzi Azure AD, můžete získat měsíční zkušební tady: [Zkušební nabídka](https://azure.microsoft.com/pricing/free-trial/).
+* Předplatné služby Azure AD. Pokud nemáte prostředí Azure AD, můžete získat [bezplatný účet](https://azure.microsoft.com/free/)
+* UserEcho jednotného přihlašování povolená předplatného
 
 ## <a name="scenario-description"></a>Popis scénáře
-V tomto kurzu je otestovat Azure AD jednotné přihlašování v testovacím prostředí. Scénář popsaný v tomto kurzu se skládá ze dvou hlavních stavebních bloků:
 
-1. Přidání UserEcho z Galerie
-1. Konfigurace a testování Azure AD jednotného přihlašování
+V tomto kurzu konfigurace a testování v testovacím prostředí Azure AD jednotného přihlašování.
+
+* Podporuje UserEcho **SP** jednotné přihlašování zahájené pomocí
 
 ## <a name="adding-userecho-from-the-gallery"></a>Přidání UserEcho z Galerie
+
 Konfigurace integrace UserEcho do služby Azure AD, budete muset přidat UserEcho z Galerie na váš seznam spravovaných aplikací SaaS.
 
 **Chcete-li přidat UserEcho z galerie, postupujte následovně:**
 
-1. V **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu. 
+1. V **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
 
-    ![Active Directory][1]
+    ![Tlačítko Azure Active Directory](common/select-azuread.png)
 
-1. Přejděte do **podnikové aplikace**. Pak přejděte na **všechny aplikace**.
+2. Přejděte do **podnikové aplikace** a pak vyberte **všechny aplikace** možnost.
 
-    ![Aplikace][2]
-    
-1. Chcete-li přidat novou aplikaci, klikněte na tlačítko **novou aplikaci** tlačítko v horní části dialogového okna.
+    ![V okně podnikové aplikace](common/enterprise-applications.png)
 
-    ![Aplikace][3]
+3. Chcete-li přidat novou aplikaci, klikněte na tlačítko **novou aplikaci** tlačítko v horní části dialogového okna.
 
-1. Do vyhledávacího pole zadejte **UserEcho**.
+    ![Tlačítko nové aplikace](common/add-new-app.png)
 
-    ![Vytváří se testovací uživatele služby Azure AD](./media/userecho-tutorial/tutorial_userecho_search.png)
+4. Do vyhledávacího pole zadejte **UserEcho**vyberte **UserEcho** z panelu výsledků klikněte **přidat** tlačítko pro přidání aplikace.
 
-1. Na panelu výsledků vyberte **UserEcho**a potom klikněte na tlačítko **přidat** tlačítko pro přidání aplikace.
+     ![UserEcho v seznamu výsledků](common/search-new-app.png)
 
-    ![Vytváří se testovací uživatele služby Azure AD](./media/userecho-tutorial/tutorial_userecho_addfromgallery.png)
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a otestování služby Azure AD jednotného přihlašování
 
-##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Konfigurace a testování Azure AD jednotného přihlašování
-V této části Konfigurace a testování Azure AD jednotné přihlašování pomocí UserEcho podle testovacího uživatele nazývá "Britta Simon".
-
-Pro jednotné přihlašování pro práci služba Azure AD potřebuje vědět, co uživatel protějšky v UserEcho je pro uživatele ve službě Azure AD. Jinými slovy vztah odkazu mezi uživatele služby Azure AD a související uživatelské v UserEcho potřeba navázat.
-
-V UserEcho, přiřaďte hodnotu **uživatelské jméno** ve službě Azure AD jako hodnotu **uživatelské jméno** a tím vytvoří vztah odkazu.
+V této části je konfigurace a testování Azure AD jednotné přihlašování pomocí UserEcho podle testovacího uživatele volá **Britta Simon**.
+Pro jednotné přihlašování pro práci je potřeba navázat vztah odkazu mezi uživatele služby Azure AD a související uživatelské v UserEcho.
 
 Nakonfigurovat a otestovat Azure AD jednotné přihlašování s UserEcho, které potřebujete k dokončení následujících stavebních bloků:
 
-1. **[Konfigurace Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)**  – Pokud chcete, aby uživatelé mohli tuto funkci používat.
-1. **[Vytváří se testovací uživatele služby Azure AD](#creating-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
-1. **[Vytvoření zkušebního uživatele UserEcho](#creating-a-userecho-test-user)**  – Pokud chcete mít protějšek Britta Simon UserEcho, který je propojený s Azure AD reprezentace uživatele.
-1. **[Přiřazení testovacího uživatele Azure AD](#assigning-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotného přihlašování.
-1. **[Testování Single Sign-On](#testing-single-sign-on)**  – Pokud chcete ověřit, jestli funguje v konfiguraci.
+1. **[Konfigurovat Azure AD Single Sign-On](#configure-azure-ad-single-sign-on)**  – Pokud chcete, aby uživatelé mohli tuto funkci používat.
+2. **[Konfigurace UserEcho Single Sign-On](#configure-userecho-single-sign-on)**  – ke konfiguraci nastavení jednotného přihlašování na straně aplikace.
+3. **[Vytvořit testovacího uživatele Azure AD](#create-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
+4. **[Přiřadit uživatele Azure AD](#assign-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotného přihlašování.
+5. **[Vytvořit testovacího uživatele UserEcho](#create-userecho-test-user)**  – Pokud chcete mít protějšek Britta Simon UserEcho, který je propojený s Azure AD reprezentace uživatele.
+6. **[Otestovat jednotné přihlašování](#test-single-sign-on)**  – Pokud chcete ověřit, jestli funguje v konfiguraci.
 
-### <a name="configuring-azure-ad-single-sign-on"></a>Konfigurace služby Azure AD jednotného přihlašování
+### <a name="configure-azure-ad-single-sign-on"></a>Konfigurace služby Azure AD jednotného přihlašování
 
-V této části Povolení služby Azure AD jednotného přihlašování na portálu Azure portal a konfigurace jednotného přihlašování v aplikaci UserEcho.
+V této části můžete povolit Azure AD jednotného přihlašování na portálu Azure portal.
 
-**Ke konfiguraci Azure AD jednotné přihlašování s UserEcho, proveďte následující kroky:**
+Ke konfiguraci Azure AD jednotné přihlašování s UserEcho, proveďte následující kroky:
 
-1. Na webu Azure Portal na **UserEcho** integrace stránka aplikace, klikněte na tlačítko **jednotného přihlašování**.
+1. V [webu Azure portal](https://portal.azure.com/)na **UserEcho** integrace stránce aplikace vyberte **jednotného přihlašování**.
 
-    ![Konfigurace jednotného přihlašování][4]
+    ![Nakonfigurovat jednotné přihlašování – odkaz](common/select-sso.png)
 
-1. Na **jednotného přihlašování** dialogového okna, vyberte **režimu** jako **přihlašování na základě SAML** povolit jednotné přihlašování.
- 
-    ![Konfigurace jednotného přihlašování](./media/userecho-tutorial/tutorial_userecho_samlbase.png)
+2. Na **vybrat jedinou metodu přihlašování** dialogového okna, vyberte **SAML/WS-Fed** chcete povolit jednotné přihlašování.
 
-1. Na **UserEcho domény a adresy URL** části, proveďte následující kroky:
+    ![Jednotné přihlašování režim výběru](common/select-saml-option.png)
 
-    ![Konfigurace jednotného přihlašování](./media/userecho-tutorial/tutorial_userecho_url.png)
+3. Na **nastavte si jednotné přihlašování pomocí SAML** klikněte na **upravit** ikony otevřete **základní konfiguraci SAML** dialogového okna.
 
-    a. V **přihlašovací adresa URL** textového pole zadejte adresu URL pomocí následujícímu vzoru: `https://<companyname>.userecho.com/`
+    ![Upravit konfiguraci základní SAML](common/edit-urls.png)
 
-    b. V **identifikátor** textového pole zadejte adresu URL pomocí následujícímu vzoru: `https://<companyname>.userecho.com/saml/metadata/`
+4. Na **základní konfiguraci SAML** části, proveďte následující kroky:
 
-    > [!NOTE] 
-    > Tyto hodnoty nejsou skutečný. Tyto hodnoty aktualizujte s skutečné přihlašovací adresu URL a identifikátorem. Kontakt [tým podpory UserEcho klienta](https://feedback.userecho.com/) k získání těchto hodnot. 
+    ![UserEcho domény a adresy URL jednotného přihlašování – informace](common/sp-identifier.png)
 
-1. Na **podpisový certifikát SAML** klikněte na tlačítko **Certificate(Base64)** a uložte soubor certifikátu v počítači.
+    a. V **přihlašovací adresa URL** textové pole, zadejte adresu URL, pomocí následujícího vzorce: `https://<companyname>.userecho.com/`
 
-    ![Konfigurace jednotného přihlašování](./media/userecho-tutorial/tutorial_userecho_certificate.png) 
+    b. V **identifikátor (Entity ID)** textové pole, zadejte adresu URL, pomocí následujícího vzorce: `https://<companyname>.userecho.com/saml/metadata/`
 
-1. Klikněte na tlačítko **Uložit** tlačítko.
+    > [!NOTE]
+    > Tyto hodnoty nejsou skutečný. Aktualizujte tyto hodnoty skutečné přihlašovací adresu URL a identifikátor. Kontakt [tým podpory UserEcho klienta](https://feedback.userecho.com/) k získání těchto hodnot. Můžete také odkazovat na tyto vzory se dají ukazuje **základní konfiguraci SAML** části webu Azure Portal.
 
-    ![Konfigurace jednotného přihlašování](./media/userecho-tutorial/tutorial_general_400.png)
+4. Na **nastavte si jednotné přihlašování pomocí SAML** stránku, **podpisový certifikát SAML** klikněte na tlačítko **Stáhnout** ke stažení **certifikát (Base64)** z se zadanými možnostmi podle vašich požadavků a uložit je ve vašem počítači.
 
-1. Na **UserEcho konfigurace** klikněte na tlačítko **nakonfigurovat UserEcho** otevřete **nakonfigurovat přihlašování** okna. Kopírovat **odhlašování adresy URL a SAML jednotné přihlašování služby** z **Stručná referenční příručka oddílu.**
+    ![Odkaz ke stažení certifikátu](common/certificatebase64.png)
 
-    ![Konfigurace jednotného přihlašování](./media/userecho-tutorial/tutorial_userecho_configure.png) 
+6. Na **nastavení UserEcho** tématu, zkopírujte příslušné adresy URL podle vašich požadavků.
+
+    ![Zkopírování adresy URL konfigurace](common/copy-configuration-urls.png)
+
+    a. Přihlašovací adresa URL
+
+    b. Identifikátor Azure AD
+
+    c. Adresa URL – odhlášení
+
+### <a name="configure-userecho-single-sign-on"></a>Konfigurace UserEcho jednotné přihlašování
 
 1. V jiném okně prohlížeče Přihlaste se k webu společnosti UserEcho jako správce.
 
-1. Na panelu nástrojů v horní části klikněte na své uživatelské jméno, rozbalte nabídku a pak klikněte na tlačítko **nastavení**.
+2. Na panelu nástrojů v horní části klikněte na své uživatelské jméno, rozbalte nabídku a pak klikněte na tlačítko **nastavení**.
    
     ![Konfigurace jednotného přihlašování](./media/userecho-tutorial/tutorial_userecho_06.png) 
 
-1. Klikněte na tlačítko **integrace**.
+3. Klikněte na tlačítko **integrace**.
    
     ![Konfigurace jednotného přihlašování](./media/userecho-tutorial/tutorial_userecho_07.png) 
 
-1. Klikněte na tlačítko **webu**a potom klikněte na tlačítko **jednotné přihlašování (SAML2)**.
+4. Klikněte na tlačítko **webu**a potom klikněte na tlačítko **jednotné přihlašování (SAML2)**.
    
     ![Konfigurace jednotného přihlašování](./media/userecho-tutorial/tutorial_userecho_08.png) 
 
-1. Na **jednotné přihlašování (SAML)** stránce, proveďte následující kroky:
+5. Na **jednotné přihlašování (SAML)** stránce, proveďte následující kroky:
    
     ![Konfigurace jednotného přihlašování](./media/userecho-tutorial/tutorial_userecho_09.png)
     
     a. Jako **povoleno SAML**vyberte **Ano**.
     
-    b. Vložit **SAML jednotné přihlašování – adresa URL služby**, který jste zkopírovali z portálu Azure portal do **adresu URL jednotného přihlašování SAML** textového pole.
+    b. Vložit **přihlašovací adresa URL**, který jste zkopírovali z portálu Azure portal do **adresu URL jednotného přihlašování SAML** textového pole.
     
-    c. Vložit **odhlašování URL**, který jste zkopírovali z portálu Azure portal do **URL vzdálené logoout** textového pole.
+    c. Vložit **odhlašovací adresa URL**, který jste zkopírovali z portálu Azure portal do **vzdálené adresy URL odhlašovací** textového pole.
     
     d. Otevřete stažený certifikát v poznámkovém bloku, zkopírujte jeho obsah a vložte jej do **certifikát X.509** textového pole.
     
     e. Klikněte na **Uložit**.
 
-> [!TIP]
-> Teď si můžete přečíst stručné verzi těchto pokynů uvnitř [webu Azure portal](https://portal.azure.com), zatímco jsou nastavení aplikace!  Po přidání této aplikace z **služby Active Directory > podnikové aplikace** části, stačí kliknout **Single Sign-On** kartu a přístup k vložené dokumentaci prostřednictvím  **Konfigurace** oblast v dolní části. Další informace o funkci vložená dokumentace: [Dokumentace ke službě Azure AD, embedded]( https://go.microsoft.com/fwlink/?linkid=845985)
-> 
+### <a name="create-an-azure-ad-test-user"></a>Vytvořit testovacího uživatele Azure AD 
 
-### <a name="creating-an-azure-ad-test-user"></a>Vytváří se testovací uživatele služby Azure AD
 Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal volá Britta Simon.
 
-![Vytvoření uživatele Azure AD][100]
+1. Na webu Azure Portal, v levém podokně vyberte **Azure Active Directory**vyberte **uživatelé**a pak vyberte **všichni uživatelé**.
 
-**Chcete-li vytvořit testovacího uživatele ve službě Azure AD, postupujte následovně:**
+    !["Uživatele a skupiny" a "Všechny uživatele" odkazy](common/users.png)
 
-1. V **webu Azure portal**, v levém navigačním podokně klikněte na tlačítko **Azure Active Directory** ikonu.
+2. Vyberte **nového uživatele** v horní části obrazovky.
 
-    ![Vytváří se testovací uživatele služby Azure AD](./media/userecho-tutorial/create_aaduser_01.png) 
+    ![Tlačítko Nový uživatel](common/new-user.png)
 
-1. Chcete-li zobrazit seznam uživatelů, přejděte na **uživatelů a skupin** a klikněte na tlačítko **všichni uživatelé**.
-    
-    ![Vytváří se testovací uživatele služby Azure AD](./media/userecho-tutorial/create_aaduser_02.png) 
+3. Ve vlastnosti uživatele proveďte následující kroky.
 
-1. Chcete-li otevřít **uživatele** dialogového okna, klikněte na tlačítko **přidat** horní části dialogového okna.
- 
-    ![Vytváří se testovací uživatele služby Azure AD](./media/userecho-tutorial/create_aaduser_03.png) 
+    ![Dialogové okno uživatele](common/user-properties.png)
 
-1. Na **uživatele** dialogového okna stránky, proveďte následující kroky:
- 
-    ![Vytváří se testovací uživatele služby Azure AD](./media/userecho-tutorial/create_aaduser_04.png) 
+    a. V **název** zadat **BrittaSimon**.
+  
+    b. V **uživatelské jméno** typ pole brittasimon@yourcompanydomain.extension. Například BrittaSimon@contoso.com.
 
-    a. V **název** textové pole, typ **BrittaSimon**.
-
-    b. V **uživatelské jméno** textové pole, typ **e-mailová adresa** z BrittaSimon.
-
-    c. Vyberte **zobrazit heslo** a zapište si hodnotu **heslo**.
+    c. Vyberte **zobrazit heslo** zaškrtněte políčko a zapište si hodnotu, která se zobrazí v poli heslo.
 
     d. Klikněte na možnost **Vytvořit**.
- 
-### <a name="creating-a-userecho-test-user"></a>Vytvoření zkušebního uživatele UserEcho
+
+### <a name="assign-the-azure-ad-test-user"></a>Přiřadit uživatele Azure AD
+
+V této části je povolit Britta Simon k udělení přístupu k UserEcho použití Azure jednotného přihlašování.
+
+1. Na webu Azure Portal, vyberte **podnikové aplikace**vyberte **všechny aplikace**a pak vyberte **UserEcho**.
+
+    ![Okno aplikace organizace](common/enterprise-applications.png)
+
+2. V seznamu aplikací vyberte **UserEcho**.
+
+    ![Odkaz UserEcho v seznamu aplikací](common/all-applications.png)
+
+3. V nabídce na levé straně vyberte **uživatelů a skupin**.
+
+    ![Odkaz "Uživatele a skupiny"](common/users-groups-blade.png)
+
+4. Klikněte na tlačítko **přidat uživatele** tlačítko a pak vyberte **uživatelů a skupin** v **přidat přiřazení** dialogového okna.
+
+    ![Podokno Přidat přiřazení](common/add-assign-user.png)
+
+5. V **uživatelů a skupin** dialogové okno Vybrat **Britta Simon** v seznamu uživatelů, klikněte **vyberte** tlačítko v dolní části obrazovky.
+
+6. Pokud očekáváte libovolnou hodnotu role v kontrolní výraz SAML a potom v **vybrat roli** dialogové okno vybrat vhodnou roli pro uživatele ze seznamu, klikněte **vyberte** tlačítko v dolní části obrazovky.
+
+7. V **přidat přiřazení** dialogové okno kliknutím **přiřadit** tlačítko.
+
+### <a name="create-userecho-test-user"></a>Vytvoření UserEcho testovacího uživatele
 
 Cílem této části je vytvořte uživatele Britta Simon v UserEcho.
 
@@ -203,23 +214,23 @@ Cílem této části je vytvořte uživatele Britta Simon v UserEcho.
 
 1. Přihlašování k webu společnosti UserEcho jako správce.
 
-1. Na panelu nástrojů v horní části klikněte na své uživatelské jméno, rozbalte nabídku a pak klikněte na tlačítko **nastavení**.
+2. Na panelu nástrojů v horní části klikněte na své uživatelské jméno, rozbalte nabídku a pak klikněte na tlačítko **nastavení**.
    
     ![Konfigurace jednotného přihlašování](./media/userecho-tutorial/tutorial_userecho_06.png)
 
-1. Klikněte na tlačítko **uživatelé**, rozbalte **uživatelé** oddílu.
+3. Klikněte na tlačítko **uživatelé**, rozbalte **uživatelé** oddílu.
    
     ![Konfigurace jednotného přihlašování](./media/userecho-tutorial/tutorial_userecho_10.png)
 
-1. Klikněte na tlačítko **uživatelé**.
+4. Klikněte na tlačítko **uživatelé**.
    
     ![Konfigurace jednotného přihlašování](./media/userecho-tutorial/tutorial_userecho_11.png)
 
-1. Klikněte na tlačítko **pozvat nového uživatele**.
+5. Klikněte na tlačítko **pozvat nového uživatele**.
    
     ![Konfigurace jednotného přihlašování](./media/userecho-tutorial/tutorial_userecho_12.png)
 
-1. Na **pozvat nového uživatele** dialogového okna, proveďte následující kroky:
+6. Na **pozvat nového uživatele** dialogového okna, proveďte následující kroky:
    
     ![Konfigurace jednotného přihlašování](./media/userecho-tutorial/tutorial_userecho_13.png)
 
@@ -229,60 +240,17 @@ Cílem této části je vytvořte uživatele Britta Simon v UserEcho.
     
     c. Klikněte na tlačítko **pozvat**.
 
-Pozvánka se pošle Britta, která umožňuje ji chcete začít používat UserEcho. 
+### <a name="test-single-sign-on"></a>Test jednotného přihlašování 
 
-### <a name="assigning-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
+V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 
-V této části je povolit Britta Simon k udělení přístupu k UserEcho použití Azure jednotného přihlašování.
+Po kliknutí na dlaždici UserEcho na přístupovém panelu, můžete by měl být automaticky přihlášeni k UserEcho, u kterého nastavíte jednotné přihlašování. Další informace o přístupovém panelu, naleznete v tématu [Úvod k přístupovému panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-![Přiřadit uživatele][200] 
+## <a name="additional-resources"></a>Další prostředky
 
-**Přiřadit UserEcho Britta Simon, proveďte následující kroky:**
+- [Seznam kurzů o integraci aplikací SaaS pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-1. Na webu Azure Portal, otevřete zobrazení aplikací a pak přejděte do zobrazení adresáře a přejděte na **podnikové aplikace** klikněte **všechny aplikace**.
+- [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-    ![Přiřadit uživatele][201] 
-
-1. V seznamu aplikací vyberte **UserEcho**.
-
-    ![Konfigurace jednotného přihlašování](./media/userecho-tutorial/tutorial_userecho_app.png) 
-
-1. V nabídce na levé straně klikněte na tlačítko **uživatelů a skupin**.
-
-    ![Přiřadit uživatele][202] 
-
-1. Klikněte na tlačítko **přidat** tlačítko. Potom vyberte **uživatelů a skupin** na **přidat přiřazení** dialogového okna.
-
-    ![Přiřadit uživatele][203]
-
-1. Na **uživatelů a skupin** dialogového okna, vyberte **Britta Simon** v seznamu uživatelů.
-
-1. Klikněte na tlačítko **vyberte** tlačítko **uživatelů a skupin** dialogového okna.
-
-1. Klikněte na tlačítko **přiřadit** tlačítko **přidat přiřazení** dialogového okna.
-    
-### <a name="testing-single-sign-on"></a>Testování jednotného přihlašování
-
-Cílem této části je testování konfigurace jednotného přihlašování k Azure AD pomocí přístupového panelu.  
-
-Po kliknutí na dlaždici UserEcho na přístupovém panelu, vám by měl získat automaticky přihlášení k aplikaci UserEcho.
-
-## <a name="additional-resources"></a>Další materiály
-
-* [Seznam kurzů o integraci aplikací SaaS pomocí Azure Active Directory](tutorial-list.md)
-* [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)
-
-<!--Image references-->
-
-[1]: ./media/userecho-tutorial/tutorial_general_01.png
-[2]: ./media/userecho-tutorial/tutorial_general_02.png
-[3]: ./media/userecho-tutorial/tutorial_general_03.png
-[4]: ./media/userecho-tutorial/tutorial_general_04.png
-
-[100]: ./media/userecho-tutorial/tutorial_general_100.png
-
-[200]: ./media/userecho-tutorial/tutorial_general_200.png
-[201]: ./media/userecho-tutorial/tutorial_general_201.png
-[202]: ./media/userecho-tutorial/tutorial_general_202.png
-[203]: ./media/userecho-tutorial/tutorial_general_203.png
+- [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

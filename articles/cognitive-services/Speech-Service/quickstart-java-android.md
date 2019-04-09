@@ -10,19 +10,19 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 2/20/2019
 ms.author: wolfma
-ms.openlocfilehash: 9458f052258993ee598ddfbca262faf8f6cb4ab9
-ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
+ms.openlocfilehash: 690656449fdb86c200a8978f0e17db562e4abbca
+ms.sourcegitcommit: e43ea344c52b3a99235660960c1e747b9d6c990e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58258543"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "59009174"
 ---
 # <a name="quickstart-recognize-speech-in-java-on-android-by-using-the-speech-sdk"></a>Rychlý start: Rozpoznávání řeči v jazyce Java v Androidu pomocí sadou SDK pro řeč
 
 [!INCLUDE [Selector](../../../includes/cognitive-services-speech-service-quickstart-selector.md)]
 
 V tomto článku se dozvíte, jak vyvíjet aplikace v Javě pro Android pomocí Cognitive Services SDK řeči přepisy převod řeči na text.
-Aplikace je založena na Microsoft Cognitive Services řeči Maven balíček SDK, verze 1.3.1 a Android Studio 3.1.
+Aplikace vychází z balíčku Maven sady SDK pro řeč, verze 1.4.0 a Android Studio 3.3.
 Sada Speech SDK je aktuálně kompatibilní se zařízeními s Androidem, která používají 32bitové nebo 64bitové procesory ARM a kompatibilní procesory Intel x86 nebo x64.
 
 > [!NOTE]
@@ -38,27 +38,19 @@ Klíč předplatného hlasové služby k dokončení tohoto rychlého startu pot
 
     ![Snímek obrazovky s uvítacím oknem Android Studia](media/sdk/qs-java-android-01-start-new-android-studio-project.png)
 
-1. Zobrazí se průvodce **Create New Project** (Vytvořit nový projekt). Na obrazovce **Create Android Project** (Vytvořit projekt pro Android) zadejte **Quickstart** jako **název aplikace**, **samples.speech.cognitiveservices.microsoft.com** jako **doménu firmy** a pak zvolte adresář projektu. Políčka C++ a Kotlin nechejte nezaškrtnutá a vyberte **Next** (Další).
+1. **Zvolte projekt** průvodce se zobrazí, vyberte **telefony a tablety** a **prázdná aktivita** ve výběru aktivit. Vyberte **Další**.
 
-   ![Snímek obrazovky průvodce vytvořením nového projektu](media/sdk/qs-java-android-02-create-android-project.png)
+   ![Snímek obrazovky zvolte projektu průvodce](media/sdk/qs-java-android-02-target-android-devices.png)
 
-1. Na obrazovce **Target Android Devices** (Cílová zařízení s Androidem) vyberte jen **Phone and Tablet** (Telefon a tablet). V rozevíracím seznamu pod ní, zvolte **rozhraní API 23: Android 6.0 (Marshmallow)** a vyberte **Další**.
+1. V **nakonfigurujete svůj projekt** obrazovky, zadejte **rychlý Start** jako **název**, **samples.speech.cognitiveservices.microsoft.com** jako **Název balíčku**a vyberte adresář projektu. Pro **úroveň rozhraní API minimální** vyberte **rozhraní API 23: Android 6.0 (Marshmallow)**, ponechte všechna ostatní zaškrtávací políčka není zaškrtnuto a vyberte **Dokončit**.
 
-   ![Snímek obrazovky průvodce vytvořením nového projektu](media/sdk/qs-java-android-03-target-android-devices.png)
-
-1. Na obrazovce **Add an Activity to Mobile** (Přidat aktivitu pro mobil) vyberte **Empty Activity** (Prázdná aktivita) a klikněte na **Next** (Další).
-
-   ![Snímek obrazovky průvodce vytvořením nového projektu](media/sdk/qs-java-android-04-add-an-activity-to-mobile.png)
-
-1. Na obrazovce **Configure Activity** (Konfigurovat aktivitu) použijte **MainActivity** jako název aktivity a **activity\_main** jako název rozložení. Zaškrtněte obě políčka a vyberte **Finish** (Dokončit).
-
-   ![Snímek obrazovky průvodce vytvořením nového projektu](media/sdk/qs-java-android-05-configure-activity.png)
+   ![Snímek obrazovky Konfigurace Průvodce projektu](media/sdk/qs-java-android-03-create-android-project.png)
 
 Android Studiu chvíli trvá, než nový projekt pro Android připraví. V dalším kroku nakonfigurujete v tomto projektu sadu Speech SDK a jazyk Java 8.
 
 [!INCLUDE [License Notice](../../../includes/cognitive-services-speech-service-license-notice.md)]
 
-Aktuální verze sady Cognitive Services Speech SDK je `1.3.1`.
+Aktuální verze sady Cognitive Services Speech SDK je `1.4.0`.
 
 Sadou SDK pro řeč pro Android je zabalena jako [AAR (knihovna pro Android)](https://developer.android.com/studio/projects/android-library), který obsahuje potřebné knihovny a požadovaná oprávnění pro Android.
 Je hostován v úložiště Maven v protokolu https:\//csspeechstorage.blob.core.windows.net/maven/.
@@ -73,7 +65,7 @@ Nastavte projekt tak, aby používal sadu Speech SDK. Výběrem příkazu **File
 
    ![Snímek obrazovky okna se strukturou projektu](media/sdk/qs-java-android-07-add-module-dependency.png)
 
-1. V okně, které se zobrazí, zadejte název a verzi naší sady Speech SDK pro Android – `com.microsoft.cognitiveservices.speech:client-sdk:1.3.1`. Pak vyberte **OK**.
+1. V okně, které se zobrazí, zadejte název a verzi naší sady Speech SDK pro Android – `com.microsoft.cognitiveservices.speech:client-sdk:1.4.0`. Pak vyberte **OK**.
    Sada Speech SDK by teď měla být přidaná do seznamu závislostí, jak je znázorněno níže:
 
    ![Snímek obrazovky okna se strukturou projektu](media/sdk/qs-java-android-08-dependency-added-1.0.0.png)
@@ -100,16 +92,9 @@ Vytvoříme základní uživatelské rozhraní pro aplikaci. Upravte rozložení
 
 Textové a grafické vyjádření uživatelském rozhraní by teď měl vypadat takto:
 
-<table>
-<tr>
-<td valign="top">
 ![](media/sdk/qs-java-android-11-gui.png)
-</td>
-<td valign="top">
+
 [!code-xml[](~/samples-cognitive-services-speech-sdk/quickstart/java-android/app/src/main/res/layout/activity_main.xml)]
-</td>
-</tr>
-</table>
 
 ## <a name="add-sample-code"></a>Přidání ukázkového kódu
 

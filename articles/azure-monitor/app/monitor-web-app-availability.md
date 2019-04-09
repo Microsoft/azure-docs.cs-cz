@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/22/2019
 ms.reviewer: sdash
 ms.author: lagayhar
-ms.openlocfilehash: 9b04ca359a0c71a04e762452fa33345201f37e84
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 9f48303396d1ecd03fdffd2c6ab1e0c122615a21
+ms.sourcegitcommit: 045406e0aa1beb7537c12c0ea1fbf736062708e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58124316"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "59005742"
 ---
 # <a name="monitor-availability-and-responsiveness-of-any-web-site"></a>Sledování dostupnosti a odezvy libovolných webů
 Po nasazení webové aplikace nebo webu na libovolném serveru můžete nastavit testy ke sledování dostupnosti a odezvy. [Azure Application Insights](../../azure-monitor/app/app-insights-overview.md) odesílá do vaší aplikace webové požadavky v pravidelných intervalech z bodů po celém světě. Upozorní vás v případě, že vaše aplikace reaguje pomalu nebo nereaguje vůbec.
@@ -92,7 +92,7 @@ Slouží k zaznamenání relace webové aplikace Visual Studio Enterprise.
 
     ![Vytvořte v sadě Visual Studio Enterprise nový projekt ze šablony výkonnostního testu webu a zátěžového testu.](./media/monitor-web-app-availability/appinsights-71webtest-multi-vs-create.png)
 
-   * *Nevidíte šablonu výkonnostního testu webu a zátěžového testu?* – Zavřete sadu Visual Studio Enterprise. Otevřete **Instalační program sady Visual Studio**, pomocí kterého upravíte svou instalaci sady Visual Studio Enterprise. V části **Jednotlivé komponenty** vyberte **Nástroje pro testování výkonnosti webů a zátěžové testování**.
+   * *Nevidíte šablony výkonu webu a zátěžového testu?* – Zavřete sadu Visual Studio Enterprise. Otevřete **Instalační program sady Visual Studio**, pomocí kterého upravíte svou instalaci sady Visual Studio Enterprise. V části **Jednotlivé komponenty** vyberte **Nástroje pro testování výkonnosti webů a zátěžové testování**.
 
 2. Otevřete soubor .webtest a spusťte záznam.
 
@@ -167,7 +167,7 @@ Můžete použít filtry podle názvu a umístění testu a analyzovat trendy ur
 
 ## <a name="edit"></a> Kontrola a úprava testů
 
-Na kartě Podrobnosti pro konkrétní test vyberte tři tečky vpravo na konci upravovat, dočasně zakázat, odstranit nebo stáhnout webový test.
+Na kartě Podrobnosti pro konkrétní test vyberte tři tečky vpravo na konci upravovat, dočasně zakázat, odstranit nebo stáhnout webový test. Může trvat až 20 minut, než se změny konfigurace rozšíří.
 
 Vyberte **zobrazit podrobnosti o testu** z konkrétní testovací zobrazíte jeho korelačního diagramu a podrobnosti konkrétní testovací umístění.
 
@@ -313,36 +313,36 @@ Po dokončení testu se zobrazí časy odezvy a míra úspěšnosti.
 
     Zkontrolujte aplikace obdrží oznámení webhooku je k dispozici a úspěšně zpracovává požadavky webhooku. Zobrazit [to](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitor-alerts-unified-log-webhook) Další informace.
 
-* *Občasné selhání testu s chybou porušení protokolu*
+* *Občasné selhání testu s chybou porušení protokolu?*
 
     Chyba („Porušení protokolu... Znak CR musí být následován znakem LF.“) značí problémy se serverem (nebo závislostmi). To se stává, když jsou v odpovědi nastavena chybně vytvořená záhlaví. Příčinou mohou být nástroje pro vyrovnávání zatížení nebo CDN. Konkrétně se jedná o to, že některá záhlaví možná nepoužívají znaky CRLF k označení konce řádku. Tím porušují specifikaci protokolu HTTP, což má za následek neúspěšné ověření na úrovni třídy .NET WebRequest. Zkontrolujte odpovědi, zda obsahují chybná záhlaví.
     
     Poznámka: Adresa URL nemusí selhat v prohlížečích, které mají rozvolněné ověřování hlaviček protokolu HTTP. Podrobné vysvětlení tohoto problému najdete v tomto blogovém příspěvku: http://mehdi.me/a-tale-of-debugging-the-linkedin-api-net-and-http-protocol-violations/  
     
-* *Nevidím žádnou telemetrii na straně serveru, která by diagnostikovala neúspěšné testy*
+* *Nevidím žádnou telemetrii na straně serveru diagnostikovat selhání testu?*
     
     Pokud máte pro aplikaci na straně serveru nastavenou službu Application Insights, může být důvodem to, že právě probíhá [vzorkování](../../azure-monitor/app/sampling.md). Vyberte příslušný výsledek různých dostupnosti.
 
-* *Můžu z webového testu volat kód?*
+* *Mohu volat kód z mého webového testu?*
 
     Ne. Kroky testu musí být v souboru .webtest. A nemůžete volat jiné webové testy nebo používat smyčky. Existují různé zásuvné moduly, které se vám můžou hodit.
 
-* *Je podporovaný protokol HTTPS?*
+* *Je podporován protokol HTTPS?*
 
     Podporujeme protokoly TLS 1.1 a TLS 1.2. Aktuálně nejsou zkontrolujeme chyby certifikát HTTPS.  
 
-* *Je nějaký rozdíl mezi „webovými testy“ a „testy dostupnosti“?*
+* *Existuje rozdíl mezi "webovými testy" a "testy dostupnosti"?*
 
     Významy těchto dvou výrazů jsou zaměnitelné. Testy dostupnosti jsou obecnější označení, které kromě webových testů s více kroky zahrnuje taky jednorázové testy adres URL příkazem Ping.
     
-* *Chci používat testy dostupnosti na našem interním serveru, který je spuštěný za bránou firewall.*
+* *Chci používat testy dostupnosti na našem interním serveru, který se spouští za bránou firewall.*
 
     Existují dvě možná řešení:
     
     * Nakonfigurujte bránu firewall, aby povolovala příchozí požadavky z [IP adres našich agentů webového testu](../../azure-monitor/app/ip-addresses.md).
     * Napište vlastní kód, který pravidelně testuje interní server. Spusťte kód na testovacím serveru jako proces na pozadí za vaší bránou firewall. Testovací proces můžete odesílat své výsledky do Application Insights pomocí rozhraní API [TrackAvailability()](https://docs.microsoft.com/dotnet/api/microsoft.applicationinsights.telemetryclient.trackavailability) v balíčku Core SDK. To vyžaduje, aby měl váš testovací server odchozí přístup ke koncovému bodu ingestování Application Insights, ale to je mnohem menší riziko zabezpečení než případné povolení příchozích požadavků. Výsledky se nebudou zobrazovat v oknech webových testů dostupnosti, ale zobrazí se jako výsledky dostupnosti ve službě Analytics, ve službě Hledání a v Průzkumníku metrik.
 
-* *Vícekrokový webový test se nepodařilo nahrát.*
+* *Nahrávání vícekrokového webového testu se nezdaří*
 
     Několik důvodů, proč že k tomu může dojít:
     * Maximální velikost je 300 kB.
@@ -350,11 +350,11 @@ Po dokončení testu se zobrazí časy odezvy a míra úspěšnosti.
     * Odkazy na jiné webové testy nejsou podporovány.
     * Zdroje dat nejsou podporovány.
 
-* *Můj vícekrokový test se nedokončil.*
+* *Můj vícekrokový test se nedokončil*
 
     Existuje limit 100 požadavků na test. Také test bude zastaven, pokud poběží déle než dvě minuty.
 
-* *Jak spustím test s klientskými certifikáty?*
+* *Jak mohu spustit test pomocí certifikátů klientů?*
 
     Tuto možnost nepodporujeme, je nám líto.
 
@@ -380,7 +380,7 @@ Pomocí nové výstrahy prostředí/v – v reálném čase výstrahy, pokud je 
 
 [Řešení potíží][qna]
 
-[IP adresy webových testovacích agentů](../../azure-monitor/app/ip-addresses.md)
+[IP adresy agentů webových testů](../../azure-monitor/app/ip-addresses.md)
 
 <!--Link references-->
 

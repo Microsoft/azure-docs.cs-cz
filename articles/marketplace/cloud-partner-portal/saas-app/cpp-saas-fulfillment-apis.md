@@ -12,18 +12,22 @@ ms.workload: ''
 ms.tgt_pltfrm: ''
 ms.devlang: ''
 ms.topic: conceptual
-ms.date: 02/27/2019
+ms.date: 03/26/2019
 ms.author: pbutlerm
-ms.openlocfilehash: 6084687f54be265e88e6755e7d082da7c32eda1b
-ms.sourcegitcommit: 87bd7bf35c469f84d6ca6599ac3f5ea5545159c9
+ms.openlocfilehash: c7da46984d592abc6ed97d7490fde732bf26b0ba
+ms.sourcegitcommit: e43ea344c52b3a99235660960c1e747b9d6c990e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58349514"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "59009441"
 ---
-# <a name="saas-fulfillment-apis"></a>Rozhraní API pro SaaS splnění
+# <a name="saas-fulfillment-apis"></a>Rozhraní API naplnění SaaS
 
-Rozhraní API SaaS splnění umožňuje nezávislí výrobci softwaru (ISV) pro integraci s Azure Marketplace své aplikace SaaS. Toto rozhraní API umožňuje aplikace nezávislých výrobců softwaru se účastnit všech kanálů commerce povoleno: s přímým přístupem, vedené partnerem (prodejci) a vedla pole.  Toto rozhraní API je požadavek na výpis transactable SaaS nabídky na webu Azure Marketplace.
+Rozhraní API pro SaaS splnění povolit nezávislí výrobci softwaru (ISV) pro integraci s Azure Marketplace své aplikace SaaS. Rozhraní API umožňují aplikace nezávislých výrobců softwaru se účastnit všech kanálů commerce povoleno: s přímým přístupem, vedené partnerem (prodejci) a vedla pole.  Jedná se o požadavek na výpis transactable nabídky SaaS na Azure Marketplace.
+
+> [!WARNING]
+> Aktuální verze tohoto rozhraní API je verze 2, který má být použit pro všechny nové SaaS nabízí.  Verze 1 z rozhraní API je zastaralá a je udržována pro podporu existující nabídky.
+
 
 ## <a name="business-model-support"></a>Podpora obchodního modelu
 
@@ -37,4 +41,4 @@ Toto rozhraní API podporuje následující funkce obchodního modelu; Můžeš:
 
 ## <a name="next-steps"></a>Další postup
 
-Pomocí tohoto rozhraní pro vývoj: [Verze rozhraní API SaaS splnění 2](./cpp-saas-fulfillment-api-v2.md).
+Pokud jste tak již neučinili, zaregistrujte si vaši aplikaci SaaS v [webu Azure portal](https://ms.portal.azure.com) jak je vysvětleno v [registrace aplikace Azure AD](./cpp-saas-registration.md).  Později použijte nejnovější verzi tohoto rozhraní pro vývoj: [Verze rozhraní API SaaS splnění 2](./cpp-saas-fulfillment-api-v2.md).

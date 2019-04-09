@@ -3,15 +3,15 @@ title: Jak změnit, odstranit nebo Správa skupin pro správu – zásady správ
 description: Zjistěte, jak zobrazit, udržovat, aktualizovat a odstraňovat vaše hierarchie skupin správy.
 author: rthorn17
 ms.service: azure-resource-manager
-ms.date: 02/20/2019
+ms.date: 04/04/2019
 ms.author: rithorn
 ms.topic: conceptual
-ms.openlocfilehash: f75686d19a468983a6b0ce68eb4a456e00c90eeb
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.openlocfilehash: e47ce094cd690cba4ef398bc5d5d443f7ed647e9
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58881037"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59272474"
 ---
 # <a name="manage-your-resources-with-management-groups"></a>Správa vašich prostředků pomocí skupin pro správu
 
@@ -34,6 +34,8 @@ Název skupiny pro správu můžete změnit pomocí portálu, Powershellu nebo r
 1. Vyberte **všechny služby** > **skupin pro správu**.
 
 1. Vyberte skupiny pro správu, kterou chcete přejmenovat.
+
+1. Vyberte **podrobnosti**.
 
 1. Vyberte **přejmenovat skupinu** možnosti v horní části stránky.
 
@@ -80,6 +82,8 @@ Pokud chcete odstranit skupinu pro správu, musí být splněny následující p
 1. Vyberte **všechny služby** > **skupin pro správu**.
 
 1. Vyberte skupiny pro správu, kterou chcete odstranit.
+
+1. Vyberte **podrobnosti**.
 
 1. Vyberte **odstranit**
 
@@ -303,7 +307,8 @@ Při přesunutí nadřazená skupina pro správu hierarchie v této skupině se 
 Pomocí příkazu Update-AzManagementGroup v prostředí PowerShell přesunout skupinu pro správu v jiné skupině.
 
 ```azurepowershell-interactive
-Update-AzManagementGroup -GroupName 'Contoso' -ParentId '/providers/Microsoft.Management/managementGroups/ContosoIT'
+$parentGroup = Get-AzManagementGroup -GroupName ContosoIT
+Update-AzManagementGroup -GroupName 'Contoso' -ParentId $parentGroup.id
 ```  
 
 ### <a name="move-management-groups-in-azure-cli"></a>Přesunutí správy skupin v Azure CLI
@@ -311,7 +316,7 @@ Update-AzManagementGroup -GroupName 'Contoso' -ParentId '/providers/Microsoft.Ma
 Přesunout skupinu pro správu pomocí Azure CLI pomocí příkazu update.
 
 ```azurecli-interactive
-az account management-group update --name 'Contoso' --parent-id '/providers/Microsoft.Management/managementGroups/ContosoIT'
+az account management-group update --name 'Contoso' --parent ContosoIT
 ```
 
 ## <a name="audit-management-groups-using-activity-logs"></a>Audit skupin pro správu s využitím protokolů aktivit

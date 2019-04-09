@@ -12,12 +12,12 @@ ms.author: jovanpop
 ms.reviewer: carlrab, bonova
 manager: craigg
 ms.date: 03/13/2019
-ms.openlocfilehash: b633c6a8ccbf9f29b93314bb9391215031d523eb
-ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
-ms.translationtype: MT
+ms.openlocfilehash: 208370884d89a7a2585f320c037284d6657732db
+ms.sourcegitcommit: e43ea344c52b3a99235660960c1e747b9d6c990e
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58893057"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "59010596"
 ---
 # <a name="azure-sql-database-managed-instance-t-sql-differences-from-sql-server"></a>Rozdíly ve službě Azure SQL Database Managed Instance T-SQL z SQL serveru
 
@@ -288,10 +288,9 @@ Další informace najdete v tématu [ALTER DATABASE](https://docs.microsoft.com/
     - Čtečky fronty se nepodporuje.  
     - Příkazové okno se ještě nepodporuje.
   - Spravované instance nemá přístup k externím prostředkům (například sdílené síťové složky prostřednictvím nástroje robocopy).  
-  - Prostředí PowerShell se ještě nepodporuje.
   - Analysis Services nejsou podporovány.
 - Oznámení jsou podporovány jen částečně.
-- E-mailových oznámení je podporováno, vyžaduje konfiguraci profil databázového e-mailu. Může existovat pouze jedna databáze profil e-mailu a musí být volána `AzureManagedInstance_dbmail_profile` ve verzi public preview (dočasné omezení).  
+- E-mailových oznámení je podporováno, vyžaduje konfiguraci profil databázového e-mailu. Agent SQL Server můžete použít pouze jednu databázi profil e-mailu a musí být volána `AzureManagedInstance_dbmail_profile`.  
   - Operátor není podporován.  
   - Příkazu není podporován.
   - Výstrahy se zatím nepodporují.
@@ -432,10 +431,7 @@ Omezení:
 - `.BAK` nelze obnovit, soubory, které obsahují více sad záloh.
 - `.BAK` nelze obnovit, soubory, které obsahují víc souborů protokolů.
 - Obnovení se nezdaří, pokud obsahuje .bak `FILESTREAM` data.
-- Nelze obnovit, zálohy obsahující databáze, které máte aktuálně aktivní v paměti objektů.  
-- Zálohování obsahující databáze, kde v určitém okamžiku objektů v paměti existoval aktuálně není možné obnovit.
-- Zálohování databáze v režimu jen pro čtení obsahující aktuálně není možné obnovit. Toto omezení bude brzy odebráno.
-
+- Zálohování obsahující databáze, které mají aktivní v paměti objektů nelze ho obnovit na instance pro obecné účely.  
 Informace o příkazech obnovení najdete v tématu [obnovit příkazy](https://docs.microsoft.com/sql/t-sql/statements/restore-statements-transact-sql).
 
 ### <a name="service-broker"></a>Služba Service broker
@@ -485,6 +481,8 @@ Nelze obnovit spravované Instance [databáze s omezením](https://docs.microsof
 
 ### <a name="exceeding-storage-space-with-small-database-files"></a>Překročení prostoru úložiště se soubory malé databáze
 
+`CREATE DATABASE `, `ALTER DATABASE ADD FILE`, a `RESTORE DATABASE` příkazů může selhat, protože instance můžete dosáhne limitu služby Azure Storage.
+
 Každý obecné účely mi má vyhrazené pro místa na disku Azure Premium storage 35 TB a každý databázový soubor je umístěn na jiném fyzickém disku. Disky o velikosti může být 128 GB, 256 GB, 512 GB, 1 TB nebo 4 TB. Nevyužité místo na disku se neúčtuje, ale celkový součet velikosti disků typu Premium Azure nemůže být delší než 35 TB. V některých případech může překročit Managed Instance, která nepotřebuje 8 TB celkem 35 TB Azure omezí velikost úložiště, z důvodu interní fragmentace.
 
 Obecné účely Managed Instance může mít například jeden soubor 1,2 TB velikosti, který je umístěn na disku 4 TB a 248 soubory (každý 1 GB velikost), které jsou umístěné na různých discích 128 GB. V tomto příkladu:
@@ -514,9 +512,13 @@ SQL Server Management Studio (SSMS) a SQL Server Data Tools (SSDT) může mít n
 
 Několik zobrazení systému, čítače výkonu, chybové zprávy, XEvents a záznamů v protokolu chyb se zobrazí identifikátory GUID databáze namísto názvů skutečné databáze. Nespoléhejte na tyto identifikátory GUID vzhledem k tomu, že by měl být nahrazen názvy skutečné databáze v budoucnu.
 
+### <a name="database-mail"></a>Databázový e-mail
+
+`@query` parametr v [sp_send_db_mail](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-send-dbmail-transact-sql) procedury nebudou fungovat.
+
 ### <a name="database-mail-profile"></a>Profil databázového e-mailu
 
-Profil databázové pošty používat SQL Agent musí být volána `AzureManagedInstance_dbmail_profile`.
+Profil databázové pošty používat SQL Agent musí být volána `AzureManagedInstance_dbmail_profile`. Neexistují žádná omezení týkající se názvy profilů e-mailu ostatní databáze.
 
 ### <a name="error-logs-are-not-persisted"></a>Protokoly chyb jsou trvalé not
 

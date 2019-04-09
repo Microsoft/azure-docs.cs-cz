@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 03/14/2019
 ms.reviewer: sdash
 ms.author: mbullwin
-ms.openlocfilehash: a42eb7b57319df7de4c5277cdcdd93eb777f376c
-ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
+ms.openlocfilehash: 11f7bb69ed408adf87d62a4af1aa4bd87e70bd6d
+ms.sourcegitcommit: e43ea344c52b3a99235660960c1e747b9d6c990e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58622106"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "59009191"
 ---
 # <a name="application-map-triage-distributed-applications"></a>Mapa aplikace: Třídění distribuovaných aplikací
 
@@ -36,7 +36,7 @@ Součásti jsou umožňují nezávislé nasazení částí aplikace distribuovat
 
 Zobrazí se topologie celou aplikaci napříč několika úrovněmi souvisejících aplikací komponenty. Součástí může být různé prostředky Application Insights nebo různé role v jediném prostředku. Mapa aplikace vyhledá součásti podle následujícího volání závislostí protokolu HTTP mezi servery pomocí Application Insights SDK nainstalovat. 
 
-Toto prostředí začíná progresivní zjišťování komponent. Při prvním načtení mapy aplikace, se spouštějí sady dotazů ke zjištění součásti související se tuto komponentu. Tlačítko v levém horním se aktualizuje počet součástí v aplikaci při jejich zjištění. 
+Toto prostředí začíná progresivní zjišťování komponent. Při prvním načtení mapy aplikace, se aktivuje sadu dotazů ke zjištění součásti související se tuto komponentu. Tlačítko v levém horním se aktualizuje počet součástí v aplikaci při jejich zjištění. 
 
 Po kliknutí na tlačítko "Součásti mapy aktualizace", mapy aktualizují se všechny součásti zjištěny, dokud, které ukazují. Podle složitosti vaší aplikace může to trvat minutu načíst.
 
@@ -109,7 +109,8 @@ namespace CustomInitializer.Telemetry
             if (string.IsNullOrEmpty(telemetry.Context.Cloud.RoleName))
             {
                 //set custom role name here
-                telemetry.Context.Cloud.RoleName = "RoleName";
+                telemetry.Context.Cloud.RoleName = "Custom RoleName";
+                telemetry.Context.Cloud.RoleInstance = "Custom RoleInstance"
             }
         }
     }
@@ -184,6 +185,32 @@ appInsights.context.addTelemetryInitializer((envelope) => {
 });
 });
 ```
+
+### <a name="understanding-cloudrolename-within-the-context-of-the-application-map"></a>Principy Cloud.RoleName v rámci kontextu Mapa aplikace
+
+Míry, jak přemýšlet o Cloud.RoleName může být užitečné podívat se na mapu aplikace, která má více Cloud.RoleNames k dispozici:
+
+![Snímek obrazovky aplikace mapy](media/app-map/cloud-rolename.png)
+
+V mapě aplikace nad jednotlivé názvy v zelené polí jsou Cloud.RoleName/role hodnoty pro různé aspekty této konkrétní distribuované aplikace. Takže pro tuto aplikaci jeho role se skládají z: `Authentication`, `acmefrontend`, `Inventory Management`, `Payment Processing Worker Role`. 
+
+V případě této aplikace každý z nich `Cloud.RoleNames` také představuje jiný jedinečný prostředek Application Insights s vlastními klíči instrumentace. Protože vlastníka této aplikace má přístup ke každé z těchto čtyř nesourodé prostředky Application Insights, mapa aplikace je možné spojit dohromady mapu základní relace.
+
+Pro [oficiální definice](https://github.com/Microsoft/ApplicationInsights-dotnet/blob/39a5ef23d834777eefdd72149de705a016eb06b0/Schema/PublicSchema/ContextTagKeys.bond#L93):
+
+```
+   [Description("Name of the role the application is a part of. Maps directly to the role name in azure.")]
+    [MaxStringLength("256")]
+    705: string      CloudRole = "ai.cloud.role";
+    
+    [Description("Name of the instance where the application is running. Computer name for on-premises, instance name for Azure.")]
+    [MaxStringLength("256")]
+    715: string      CloudRoleInstance = "ai.cloud.roleInstance";
+```
+
+Alternativně může být užitečné pro scénáře, ve kterém Cloud.RoleName zjistíte problém je chyba někde v webového front-endu, ale můžete používat webového front-endu na několik serverů s vyrovnáváním zatížení tak nebudou moct zobrazit podrobnosti ve vrstvě hlubší Cloud.RoleInstance prostřednictvím Kusto dotazy a porozumění tomu, pokud tento problém je vliv na všechny front-endové servery pro/instance webové nebo jen jeden může být velmi důležité.
+
+Scénář, kde můžete chtít přepsat hodnotu pro Cloud.RoleInstance může být, pokud vaše aplikace běží v prostředí kontejnerizovaných kde stačí vědět, jednotlivých server nemusí být dostatek informací k vyhledání daného problému.
 
 Další informace o tom, jak přepsat vlastnost cloud_RoleName inicializátory telemetrická data, najdete v části [přidat vlastnosti: ITelemetryInitializer](api-filtering-sampling.md#add-properties-itelemetryinitializer).
 

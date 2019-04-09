@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: traffic-manager
 ms.date: 04/26/2018
 ms.author: kumud
-ms.openlocfilehash: 284e0817023c13cee441d50dc226d5c2aa5f54c2
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
+ms.openlocfilehash: 6c610a1cddb0854878d4c2bd5531f88a1cf2ec51
+ms.sourcegitcommit: e43ea344c52b3a99235660960c1e747b9d6c990e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55891513"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "59009100"
 ---
 # <a name="route-traffic-for-high-availability-of-applications-using-azure-cli"></a>Směrování provozu pro zajištění vysoké dostupnosti aplikací pomocí rozhraní příkazového řádku Azure
 
@@ -50,11 +50,11 @@ Tento skript k vytvoření skupiny prostředků, webové aplikace, profilu služ
 
 | Příkaz | Poznámky |
 |---|---|
-| [az group create](https://docs.microsoft.com/cli/azure/group) | Vytvoří skupinu prostředků, ve které se ukládají všechny prostředky. |
-| [az appservice plan create](https://docs.microsoft.com/cli/azure/appservice/plan) | Vytvoří plán služby App Service. Podobá se trochu serverové farmy pro vaši webovou aplikaci Azure. |
+| [Vytvoření skupiny az](https://docs.microsoft.com/cli/azure/group) | Vytvoří skupinu prostředků, ve které se ukládají všechny prostředky. |
+| [Vytvořit plán služby App Service az](https://docs.microsoft.com/cli/azure/appservice/plan) | Vytvoří plán služby App Service. Podobá se trochu serverové farmy pro vaši webovou aplikaci Azure. |
 | [Vytvoření webové az webapp](https://docs.microsoft.com/cli/azure/webapp#az-webapp-create) | Vytvoří webovou aplikaci Azure v rámci plánu služby App Service. |
 | [Vytvoření profilu traffic Manageru az sítě](https://docs.microsoft.com/cli/azure/network/traffic-manager/profile) | Vytvoří profil služby Azure Traffic Manager. |
-| [Vytvoření koncového bodu az network traffic Manageru](https://docs.microsoft.com/cli/azure/network/traffic-manager/endpoint) | Přidá do profilu Azure Traffic Manager koncový bod. |
+| [Vytvoření koncového bodu az network traffic Manageru](https://docs.microsoft.com/cli/azure/network/traffic-manager/endpoint) | Přidá do profilu služby Azure Traffic Manager koncový bod. |
 
 ## <a name="next-steps"></a>Další postup
 

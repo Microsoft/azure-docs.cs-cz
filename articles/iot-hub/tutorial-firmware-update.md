@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/22/2019
 ms.custom: mvc
-ms.openlocfilehash: faccebbd00b4ee9c8ecc257722ab87f0494d9466
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 1418a9815e155a0c491fc65b16307fa2755bd964
+ms.sourcegitcommit: e43ea344c52b3a99235660960c1e747b9d6c990e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58116686"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "59008898"
 ---
 # <a name="tutorial-implement-a-device-firmware-update-process"></a>Kurz: Implementujte proces aktualizace firmwaru zařízení
 
@@ -100,7 +100,7 @@ az iot hub device-identity show-connection-string --device-id MyFirmwareUpdateDe
 
 ## <a name="start-the-firmware-update"></a>Spuštění aktualizace firmwaru
 
-V back-endové aplikaci vytvoříte [konfiguraci automatické správy zařízení](iot-hub-auto-device-config.md#create-a-configuration), která zahájí proces aktualizace firmwaru na všech zařízeních se značkou **devicetype** s hodnotou chiller (chladič). V této části najdete postup následujících úloh:
+V back-endové aplikaci vytvoříte [konfiguraci automatické správy zařízení](iot-hub-automatic-device-management.md#create-a-configuration), která zahájí proces aktualizace firmwaru na všech zařízeních se značkou **devicetype** s hodnotou chiller (chladič). V této části najdete postup následujících úloh:
 
 * Vytvoření konfigurace z back-endové aplikace
 * Monitorování úlohy až do konce
@@ -115,10 +115,10 @@ Back-endová aplikace vytvoří následující konfiguraci:
 
 Konfigurace obsahuje následující části:
 
-* `content` určuje požadované vlastnosti firmwaru odesílané do vybraných zařízení.
-* `metrics` určuje dotazy, které se mají spustit a které hlásí stav aktualizace firmwaru.
-* `targetCondition` vybírá zařízení, která obdrží aktualizaci firmwaru.
-* `priorty` nastavuje relativní prioritu této konfigurace vzhledem k ostatním konfiguracím.
+* `content` Určuje firmware požadovaných vlastností odeslaných vybraným zařízením.
+* `metrics` Určuje dotazy ke spuštění této sestavy stav aktualizace firmwaru.
+* `targetCondition` Vybere zařízení, která obdrží aktualizaci firmwaru.
+* `priorty` Nastaví relativní prioritu této konfigurace do jiné konfigurace.
 
 Back-endová aplikace k vytvoření konfigurace, která nastaví požadované vlastnosti, používá následující kód:
 
@@ -209,4 +209,4 @@ az group delete --name tutorial-iot-hub-rg
 V tomto kurzu jste zjistili, jak pro svá připojená zařízení implementovat proces aktualizace firmwaru. Přejděte k dalšímu kurzu, kde se naučíte, jak použít nástroje na portálu Azure IoT Hub a příkazy rozhraní příkazového řádku Azure k testování připojení zařízení.
 
 > [!div class="nextstepaction"]
-> [Použití simulovaného zařízení pro otestování připojení k IoT Hubu](tutorial-connectivity.md)
+> [Použití simulovaného zařízení k otestování připojení k službě IoT hub](tutorial-connectivity.md)

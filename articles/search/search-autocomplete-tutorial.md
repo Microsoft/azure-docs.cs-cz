@@ -7,23 +7,23 @@ services: search
 ms.service: search
 ms.devlang: NA
 ms.topic: conceptual
-ms.date: 03/25/2019
+ms.date: 04/04/2019
 ms.author: mcarter
 ms.custom: seodec2018
-ms.openlocfilehash: 9fb3cdd4b4b809e45180cd95b8fe930cce86826e
-ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
+ms.openlocfilehash: 43d289f2688bbf4927ee244d6ae9992782bf380e
+ms.sourcegitcommit: e43ea344c52b3a99235660960c1e747b9d6c990e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58498804"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "59009814"
 ---
 # <a name="example-add-suggestions-or-autocomplete-to-your-azure-search-application"></a>Příklad: Přidat nějaké návrhy nebo automatické dokončování pro vaši aplikaci Azure Search
 
-V tomto příkladu, další informace o použití [návrhy](https://docs.microsoft.com/rest/api/searchservice/suggestions) a [automatické dokončování](https://docs.microsoft.com/rest/api/searchservice/autocomplete) vytvářet výkonné vyhledávací pole, která podporuje chování vyhledávání jako vám type.
+V tomto článku najdete další informace o použití [návrhy](https://docs.microsoft.com/rest/api/searchservice/suggestions) a [automatické dokončování](https://docs.microsoft.com/rest/api/searchservice/autocomplete) vytvářet výkonné vyhledávací pole, která podporuje chování vyhledávání jako vám type.
 
-+ *Návrhy* je seznam navrhovaných výsledky vygenerované při psaní, kde každý návrh je jeden výsledek z indexu, který odpovídá, co jste jste zatím zadali. 
++ *Návrhy* jsou navrhované výsledky vygenerované při psaní, kde každý návrh je jeden výsledek z indexu, který odpovídá, co jste jste zatím zadali. 
 
-+ *Automatické dokončování*, [funkce ve verzi preview](search-api-preview.md), "dokončení" slovo nebo frázi, která je aktuálně zadání uživatele. Stejně jako u návrhy, dokončené slovo nebo frázi, záleží na shodu v indexu. 
++ *Automatické dokončování*, [funkce ve verzi preview](search-api-preview.md), "dokončení" slovo nebo frázi, která je aktuálně zadání uživatele. Místo vrácení výsledků, dokončí dotaz, který můžete spustit a vracení výsledků. Stejně jako u návrhy, dokončené slovo nebo frázi v dotazu záleží na shodu v indexu. Služba se nebude poskytovat dotazy, které vracejí nula výsledků v indexu.
 
 Můžete stáhnout a spustit ukázkový kód **DotNetHowToAutocomplete** k vyhodnocení, tyto funkce. Ukázkový kód, zaměřuje předem připravených index vyplní [NYCJobs ukázkových dat](https://github.com/Azure-Samples/search-dotnet-asp-net-mvc-jobs). NYCJobs index obsahuje [modulu pro návrhy konstrukce](index-add-suggesters.md), což je požadavek pro použití návrhy nebo automatické dokončování. Můžete použít připravený index hostovaný ve službě izolovaného prostoru, nebo [naplňte jimi index vlastní](#configure-app) pomocí zavaděče dat v ukázkovém řešení NYCJobs. 
 
@@ -89,7 +89,7 @@ $(function () {
 });
 ```
 
-Výše uvedený kód běží v prohlížeči při načtení stránky konfigurace uživatelské rozhraní jQuery automatické dokončování "example1a" vstupního pole.  Parametr `minLength: 3` zajišťuje, že se doporučení zobrazí pouze v případě, že vyhledávací pole obsahuje alespoň tři znaky.  Důležitá je hodnota source (zdroj):
+Výše uvedený kód běží v prohlížeči při načtení stránky konfigurace uživatelské rozhraní jQuery automatické dokončování "example1a" vstupního pole.  `minLength: 3` zajišťuje, doporučení se zobrazí pouze v případě, že existují alespoň tři znaky do vyhledávacího pole.  Důležitá je hodnota source (zdroj):
 
 ```javascript
 source: "/home/suggest?highlights=false&fuzzy=false&",
@@ -156,7 +156,7 @@ $(function () {
 });
 ```
 
-## <a name="c-version"></a>C#verze
+## <a name="c-example"></a>Příklad jazyka C#
 
 Teď, když jsme si prohlédli kód jazyka JavaScript pro webové stránky, Podívejme se C# kód kontroleru na straně serveru, který ve skutečnosti získá navrhované shody pomocí .NET SDK služby Azure Search.
 
@@ -229,9 +229,11 @@ Funkce automatického dokončování přijímá vstup termín vyhledávání. Me
 
 Další příklady na stránce postupujte podle stejného vzoru přidání zvýrazňování a omezující vlastnosti pro podporu ukládání do mezipaměti na straně klienta s výsledky automatického dokončování. Projděte si je, abyste pochopili, jak fungují a jak je můžete využít ve vlastním vyhledávání.
 
-## <a name="javascript-version-with-rest"></a>Verze jazyka JavaScript s využitím REST
+## <a name="javascript-example"></a>Příklad v jazyce JavaScript
 
-Pro implementaci jazyka JavaScript, otevřete **IndexJavaScript.cshtml**. Všimněte si, že funkce automatického dokončování uživatelské rozhraní jQuery slouží také pro vyhledávací pole, shromažďování vstupů termín vyhledávání a asynchronní volání do služby Azure Search se načíst navrhované shody nebo dokončení podmínky. 
+Javascriptovou implementaci automatického dokončování a návrhy volání rozhraní REST API, používat identifikátory URI jako zdroj k určení indexu a operace. 
+
+Chcete-li zkontrolovat Javascriptovou implementaci, otevřete **IndexJavaScript.cshtml**. Všimněte si, že funkce automatického dokončování uživatelské rozhraní jQuery slouží také pro vyhledávací pole, shromažďování vstupů termín vyhledávání a asynchronní volání do služby Azure Search se načíst navrhované shody nebo dokončení podmínky. 
 
 Podívejme se na kód JavaScriptu pro první příklad:
 

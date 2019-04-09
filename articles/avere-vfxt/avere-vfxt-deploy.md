@@ -4,14 +4,14 @@ description: Kroky k nasazení clusteru vFXT Avere v Azure
 author: ekpgh
 ms.service: avere-vfxt
 ms.topic: conceptual
-ms.date: 02/20/2019
+ms.date: 04/05/2019
 ms.author: v-erkell
-ms.openlocfilehash: 7dbfc39075bb42b1ec13823849eb769e117ddd4a
-ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
-ms.translationtype: MT
+ms.openlocfilehash: 7ded66c29f12b8f68746726ca6c126bffbc51f0d
+ms.sourcegitcommit: b4ad15a9ffcfd07351836ffedf9692a3b5d0ac86
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57409682"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59056601"
 ---
 # <a name="deploy-the-vfxt-cluster"></a>Nasazení clusteru vFXT
 
@@ -31,18 +31,17 @@ Před použitím šablonu pro vytvoření, ujistěte se, že se že odstranily t
 1. [Nové předplatné](avere-vfxt-prereqs.md#create-a-new-subscription)
 1. [Oprávnění vlastníka předplatného](avere-vfxt-prereqs.md#configure-subscription-owner-permissions)
 1. [Kvóta pro vFXT clusteru](avere-vfxt-prereqs.md#quota-for-the-vfxt-cluster)
-1. [Vlastní přístup role](avere-vfxt-prereqs.md#create-access-roles) -musí vytvořit roli řízení přístupu na základě role přiřadit uzlům clusteru. Máte možnost také vytvářet vlastní přístup role pro správce clusteru, ale většina uživatelů bude trvat výchozí role vlastníka, který dává oprávnění kontroleru odpovídající vlastníkovi skupiny prostředků. Čtení [předdefinované role pro prostředky Azure](../role-based-access-control/built-in-roles.md#owner) další podrobnosti.
 1. [Koncový bod služby Storage (v případě potřeby)](avere-vfxt-prereqs.md#create-a-storage-service-endpoint-in-your-virtual-network-if-needed) – třeba nasadí použití existující virtuální síť a vytvoření úložiště objektů blob
 
 Další informace o plánování a kroky nasazení clusteru, najdete v článku [plánování vašeho systému vFXT Avere](avere-vfxt-deploy-plan.md) a [Přehled nasazení](avere-vfxt-deploy-overview.md).
 
 ## <a name="create-the-avere-vfxt-for-azure"></a>Vytvoření Avere vFXT pro Azure
 
-Přístup k šabloně vytváření na webu Azure Portal tak, že vyhledáte Avere a výběr "Avere vFXT ARM nasazení". 
+Přístup k šabloně vytváření na webu Azure Portal tak, že vyhledáte Avere a výběr "Avere vFXT šablony Azure ARM". 
 
-![Okno prohlížeče na webu Azure portal pomocí chléb zlomky "Nové > Marketplace > vše". V vše stránce, má pole hledání termín "avere" a druhý výsledek "Avere vFXT ARM nasazení" je označeno červeně zvýraznit ji.](media/avere-vfxt-template-choose.png)
+![Okno prohlížeče na webu Azure portal pomocí chléb zlomky "Nové > Marketplace > vše". Ve všem, co má stránku, do pole hledání termín "avere" a druhý výsledek "Avere vFXT šablony Azure ARM" je popsána červeně zvýraznit ji.](media/avere-vfxt-template-choose.png)
 
-Po přečtení podrobné informace na stránce Avere vFXT nasazení ARM, klikněte na tlačítko **vytvořit** začít. 
+Po přečtení podrobnosti o vFXT Avere pro stránku šablony Azure ARM, klikněte na tlačítko **vytvořit** začít. 
 
 ![Azure marketplace s první stránka zobrazující šablony nasazení](media/avere-vfxt-deploy-first.png)
 
@@ -69,14 +68,6 @@ Zadejte následující informace:
 
 * **Heslo** nebo **veřejný klíč SSH** – v závislosti na typ ověřování, který jste vybrali, je nutné zadat veřejný klíč RSA nebo heslo v další pole. Tento přihlašovací údaj se používá s dříve zadané uživatelské jméno.
 
-* **Role ID pro vytvoření clusteru Avere** – toto pole použít k určení role řízení přístupu pro správce clusteru. Výchozí hodnota je předdefinovaná role [vlastníka](../role-based-access-control/built-in-roles.md#owner). Oprávnění vlastníka pro kontroler clusteru jsou omezeny na skupinu prostředků clusteru. 
-
-  Je nutné použít globálně jedinečný identifikátor, který odpovídá roli. Výchozí hodnota (Vlastník) identifikátor GUID je 8e3af657 a8ff-443c-a75c-2fe8c4bcb635. K vyhledání identifikátoru GUID pro vlastní roli, použijte tento příkaz: 
-
-  ```azurecli
-  az role definition list --query '[*].{roleName:roleName, name:name}' -o table --name 'YOUR ROLE NAME'
-  ```
-
 * **Předplatné** – vyberte předplatné pro Avere vFXT. 
 
 * **Skupina prostředků** – vyberte existující prázdné skupiny prostředků clusteru vFXT Avere, nebo klikněte na tlačítko Vytvořit novou. "a zadejte nový název skupiny prostředků. 
@@ -97,10 +88,6 @@ Na druhé stránce šablonu nasazení umožňuje nastavit velikost clusteru, typ
 * **Počet uzlů clusteru vFXT Avere** – zvolte počet uzlů v clusteru. Tři uzly je minimální a maximální hodnota je 12. 
 
 * **Heslo pro správu clusteru** – vytvořit heslo pro správu clusteru. Toto heslo se použije k uživatelskému jménu ```admin``` pro přihlášení ke clusteru ovládací panely pro monitorování clusteru a ke konfiguraci nastavení.
-
-* **Role clusteru operations Avere** – zadejte název role řízení přístupu pro uzly clusteru. Toto je vlastní roli, který byl vytvořen v kroku požadavků. 
-
-  V příkladu je popsáno v [vytvořit role clusteru uzel přístupu](avere-vfxt-prereqs.md#create-the-cluster-node-access-role) uloží soubor jako ```avere-operator.json``` a odpovídající název role je ```avere-operator```.
 
 * **Název clusteru vFXT Avere** – zadejte jedinečný název clusteru. 
 
@@ -138,7 +125,7 @@ Třetí straně možnost shrne konfiguraci a ověří parametry. Po ověření p
 
 ![Třetí stránka šablony nasazení – ověření](media/avere-vfxt-deploy-3.png)
 
-Na stránce čtyři, klikněte na tlačítko **vytvořit** tlačítko a přijměte podmínky a vytvořit vFXT Avere pro Azure cluster. 
+Na stránce čtyři, zadejte všechny požadované kontaktní informace a klikněte na tlačítko **vytvořit** tlačítko a přijměte podmínky a vytvořit vFXT Avere pro Azure cluster. 
 
 ![Čtvrtá stránka šablony nasazení – podmínky a ujednání, vytvoříte tlačítko](media/avere-vfxt-deploy-4.png)
 

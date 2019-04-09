@@ -9,19 +9,19 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: a4d1a54e94b3228c64352bf08cd8cc69820a5e2d
-ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
-ms.translationtype: MT
+ms.openlocfilehash: 3225ae919e221935b6d8a52e20d943d2178f6a47
+ms.sourcegitcommit: b4ad15a9ffcfd07351836ffedf9692a3b5d0ac86
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58500045"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59056843"
 ---
 # <a name="add-a-symbol-layer-to-a-map"></a>Přidat vrstvu symbolů do mapy
 
-Tento článek popisuje, jak může vykreslit data bodu ze zdroje dat jako Symbol vrstvu na mapě. Symbol vrstvy jsou vykreslovány pomocí WebGL a podporují výrazně větší počet datových bodů než značky HTML, ale nepodporují pro používání stylů pro tradiční prvky šablon stylů CSS a HTML.  
+Tento článek popisuje, jak může vykreslit data bodu ze zdroje dat jako Symbol vrstvu na mapě. Symbol vrstvy jsou vykreslovány pomocí WebGL a podporovat mnohem větší sady bodů než značky HTML, ale nepodporují pro používání stylů pro tradiční prvky šablon stylů CSS a HTML.  
 
 > [!TIP]
-> Vykreslí souřadnice všechny geometrie ve zdroji dat se vrstvy symbol ve výchozím nastavení. K omezení vrstvu tak, aby pouze vykreslí bod geometrie funkce set `filter` vlastnost vrstva `['==', '$type', 'Point']`
+> Vykreslí souřadnice všechny geometrie ve zdroji dat se vrstvy symbol ve výchozím nastavení. Omezit vrstvu tak, aby pouze vykreslí bod geometrie funkce set `filter` vlastnost vrstva `['==', ['geometry-type'], 'Point']` nebo `['any', ['==', ['geometry-type'], 'Point'], ['==', ['geometry-type'], 'MultiPoint']]` Pokud budete chtít zahrnout i MultiPoint funkce.
 
 ## <a name="add-a-symbol-layer"></a>Přidání vrstvy symbolů
 
@@ -34,14 +34,14 @@ V druhém bloku kódu, je vytvořen objekt zdroje dat pomocí [DataSource](https
 
 Vytvoří třetí bloku kódu [naslouchací proces událostí](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events) a aktualizace souřadnice bodu po myši klikněte na tlačítko horizontálních oddílů pomocí třídy tvar [setCoordinates](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.shape?view=azure-iot-typescript-latest) metoda.
 
-A [symbol vrstvy](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.symbollayer?view=azure-iot-typescript-latest) používá k vykreslení dat na základě bodu zabalené v textu nebo ikony [DataSource](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest) jako symboly na mapě.  Zdroj dat, naslouchací proces událostí kliknutím a vrstvě symbol vytvořen a přidán do mapování v rámci [naslouchací proces událostí](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events) funkce, která se ujistěte, že po načtení mapy plně, zobrazí se místo.
+A [symbol vrstvy](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.symbollayer?view=azure-iot-typescript-latest) používá k vykreslení dat na základě bodu zabalené v textu nebo ikony [DataSource](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest) jako symboly na mapě.  Zdroj dat, naslouchací proces událostí kliknutím a vrstvě symbol vytvořen a přidán do mapování v rámci `ready` [naslouchací proces událostí](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events) funkce, aby bod se zobrazí po mapy načteny a připravené k přístupná.
 
 > [!TIP]
 > Ve výchozím nastavení pro výkon a optimalizace symbol vrstvy vykreslování symboly skrytím symboly, které se překrývají. Jak přiblížit skryté symboly pak bude viditelný. Chcete-li tuto funkci zakázat a vykreslit všechny symboly za všech okolností, nastavte `allowOverlap` vlastnost `iconOptions` možnosti k `true`.
 
 ## <a name="add-a-custom-icon-to-a-symbol-layer"></a>Přidat vlastní ikonu na vrstvu symbol
 
-Symbol vrstvy jsou vykreslovány pomocí WebGL. Jako takové všechny prostředky, jako jsou obrázky ikon musí být načtena do kontextu WebGL. Tento příklad ukazuje, jak přidat vlastní symbol ikonu mapování prostředků a použít jej k vykreslení bodu data pomocí vlastní symbol na mapě. `textField` Vlastnost vrstvy symbol vyžaduje výraz, který se zadat. V tomto případě chceme vykreslení vlastnost teploty funkci bodu jako textové hodnoty. Toho lze dosáhnout pomocí tento výraz: `['get', 'temperature']`. 
+Symbol vrstvy jsou vykreslovány pomocí WebGL. Jako takové všechny prostředky, jako jsou obrázky ikon musí být načtena do kontextu WebGL. Tento příklad ukazuje, jak přidat vlastní ikonu mapování prostředků a použít jej k vykreslení bodu data pomocí vlastní symbol na mapě. `textField` Vlastnost vrstvy symbol vyžaduje výraz, který se zadat. V tomto případě chceme, aby k vykreslení vlastnost teploty, ale protože je číslo, je potřeba převést na řetězec. Kromě toho chceme, aby k němu připojit "° F". Výraz lze použít k tomu; `['concat', ['to-string', ['get', 'temperature']], '°F']`. 
 
 <br/>
 
@@ -76,13 +76,13 @@ Další informace o třídy a metody používané v tomto článku:
 Naleznete v následujících článcích pro další ukázky kódu pro přidání do vaše mapy:
 
 > [!div class="nextstepaction"]
-> [Přidání vyskakovacího okna](./map-add-popup.md)
+> [Přidání místního okna](./map-add-popup.md)
 
 > [!div class="nextstepaction"]
 > [Přidání obrazce](./map-add-shape.md)
 
 > [!div class="nextstepaction"]
-> [Přidat vrstvu bublinový](./map-add-bubble-layer.md)
+> [Přidání vrstvy bublin](./map-add-bubble-layer.md)
 
 > [!div class="nextstepaction"]
-> [Přidat tvůrci HTML](./map-add-bubble-layer.md)
+> [Add HTML Makers](./map-add-bubble-layer.md)

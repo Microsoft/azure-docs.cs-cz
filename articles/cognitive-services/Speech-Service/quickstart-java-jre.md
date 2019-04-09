@@ -1,7 +1,7 @@
 ---
 title: 'Rychlý start: Rozpoznávání řeči, jazyka Java (Windows, Linux) – hlasové služby'
 titleSuffix: Azure Cognitive Services
-description: V tomto rychlém startu se dozvíte vytvořit jednoduchou aplikaci Java, který zachytí a transcribes řeči uživatele z počítače mikrofonu.
+description: V tomto rychlém startu se dozvíte, k vytvoření jednoduché aplikace v Javě, které zachytí a transcribes řeči uživatele z počítače mikrofonu.
 services: cognitive-services
 author: fmegen
 manager: nitinme
@@ -10,18 +10,18 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 2/20/2019
 ms.author: fmegen
-ms.openlocfilehash: 83d6c430d0973d4b45fcfc40bbb93ae283d1133d
-ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
+ms.openlocfilehash: fe565d63e72b5ec2798dde03ba4f4bd9ff4f48a7
+ms.sourcegitcommit: e43ea344c52b3a99235660960c1e747b9d6c990e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56447578"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "59009395"
 ---
 # <a name="quickstart-recognize-speech-with-the-speech-sdk-for-java"></a>Rychlý start: Rozpoznávání řeči se sadou SDK pro řeč pro Javu
 
 [!INCLUDE [Selector](../../../includes/cognitive-services-speech-service-quickstart-selector.md)]
 
-V tomto článku vytvoříte konzolovou aplikaci Javy pomocí [sady Speech SDK](speech-sdk.md). V reálném čase přepíšete řeč z mikrofonu počítače na text. Aplikace je sestavená pomocí balíčku Maven řeči sady SDK a Java IDE Eclipse (v4.8) na Windows 64-bit nebo 64bitová verze Ubuntu Linux 16.04 / 18.04. Běží na 64bitovém prostředí Java 8 Runtime Environment (JRE).
+V tomto článku vytvoříte konzolovou aplikaci Javy pomocí [sady Speech SDK](speech-sdk.md). V reálném čase přepíšete řeč z mikrofonu počítače na text. Aplikace je sestavená pomocí balíčku Maven řeči sady SDK a Java IDE Eclipse (v4.8) na Windows 64-bit, Ubuntu Linux 64-bit 16.04 / 18.04 nebo v systému macOS 10.13 nebo novější. Běží na 64bitovém prostředí Java 8 Runtime Environment (JRE).
 
 > [!NOTE]
 > Informace o sadě Speech Devices SDK a zařízení Roobo najdete v sadě [Speech Devices SDK](speech-devices-sdk.md).
@@ -30,7 +30,7 @@ V tomto článku vytvoříte konzolovou aplikaci Javy pomocí [sady Speech SDK](
 
 K tomuto rychlému startu potřebujete:
 
-* Operační systém: Windows (64 bitů) nebo 16.04/18.04 Ubuntu Linux (64 bitů)
+* Operační systém: Windows (64-bit), 16.04/18.04 Ubuntu Linux (64 bitů) a macOS 10.13 nebo novější
 * [Eclipse Java IDE](https://www.eclipse.org/downloads/)
 * [Java 8](https://www.oracle.com/technetwork/java/javase/downloads/jre8-downloads-2133155.html) nebo [JDK 8](https://www.oracle.com/technetwork/java/javase/downloads/index.html)
 * Klíč předplatného pro službu rozpoznávání řeči. [Získat zdarma](get-started.md).
@@ -84,6 +84,6 @@ Další ukázky, jako je čtení řeči z zvukový soubor, jsou k dispozici na G
 
 ## <a name="see-also"></a>Další informace najdete v tématech
 
-- [Rychlé zprovoznění: Překlad řeči, jazyka Java (Windows, Linux)](quickstart-translate-speech-java-jre.md)
+- [Rychlý start: Překlad řeči, jazyka Java (Windows, Linux)](quickstart-translate-speech-java-jre.md)
 - [Přizpůsobení akustických modelů](how-to-customize-acoustic-models.md)
 - [Přizpůsobení jazykových modelů](how-to-customize-language-model.md)

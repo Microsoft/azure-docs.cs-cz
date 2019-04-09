@@ -304,6 +304,8 @@ items:
   href: security-best-practices-and-patterns.md
 - name: Zdroje a prostředky
   items:
+  - name: Běžné atributy zabezpečení
+    href: common-security-attributes.md
   - name: Program MVP pro zabezpečení Azure
     href: azure-security-mvp.md
   - name: Poradenství pro zabezpečení
@@ -355,9 +357,9 @@ items:
         href: azure-security-threat-modeling-tool-sensitive-data.md
       - name: Správa relací
         href: azure-security-threat-modeling-tool-session-management.md
-ms.openlocfilehash: dc0f98ace10f61a423e72fc0a61899ac1ed4b5b3
-ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
+ms.openlocfilehash: 1fc42022f84c8aba5f6b28f1f05045080b0c3f6d
+ms.sourcegitcommit: 045406e0aa1beb7537c12c0ea1fbf736062708e8
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58402469"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "59005772"

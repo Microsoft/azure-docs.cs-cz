@@ -2,22 +2,22 @@
 author: msmbaldwin
 ms.service: service-fabric
 ms.topic: include
-ms.date: 01/31/2019
+ms.date: 04/03/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 179d87a0c1af587148f1b5ffa2cad8085ef0886f
-ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
+ms.openlocfilehash: 41a8d6c2812b0fbd1d7e2fd4fd88a4343b52714f
+ms.sourcegitcommit: 045406e0aa1beb7537c12c0ea1fbf736062708e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56306878"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "59007271"
 ---
 ## <a name="preventative"></a>Preventivní
 
 | Atribut zabezpečení | Ano/Ne | Poznámky |
 |---|---|--|
-| Šifrování v klidovém stavu:<ul><li>Šifrování na straně serveru</li><li>Šifrování na straně serveru pomocí klíčů spravovaných zákazníkem</li><li>Další funkce šifrování (například klientů, funkce always encrypted, atd.)</ul>| Ano | Zákazník je vlastníkem služby clusteru a škálovací sady virtuálních počítačů (VM), které clusteru je postavená na. Azure disk encryption je možné povolit ve škálovací sadě virtuálních počítačů. |
+| Šifrování v klidovém stavu:<ul><li>Šifrování na straně serveru</li><li>Šifrování na straně serveru pomocí klíčů spravovaných zákazníkem</li><li>Další funkce šifrování (například klientů, funkce always encrypted, atd.)</ul>| Ano | Zákazník je vlastníkem služby clusteru a škálovací sady virtuálních počítačů (VM), které clusteru je postavená na. Azure disk encryption je možné povolit na škálovací sadu virtuálních počítačů. |
 | Šifrování během přenosu:<ul><li>Express route šifrování</li><li>Ve virtuální síti šifrování</li><li>Šifrování virtuálními sítěmi</ul>| Ano |  |
-| Šifrovací klíč zpracování (CMK, BYOK, atd.)| Ano | Zákazník je vlastníkem služby clusteru a škálovací sady virtuálních počítačů (VM), které clusteru je postavená na. Azure disk encryption je možné povolit ve škálovací sadě virtuálních počítačů. |
+| Šifrovací klíč zpracování (CMK, BYOK, atd.)| Ano | Zákazník je vlastníkem služby clusteru a škálovací sady virtuálních počítačů (VM), které clusteru je postavená na. Azure disk encryption je možné povolit na škálovací sadu virtuálních počítačů. |
 | Šifrování na úrovni sloupce (datových služeb Azure)| neuvedeno |  |
 | Šifrované volání rozhraní API| Ano | Volání rozhraní API Service Fabric provádí prostřednictvím Azure Resource Manageru. Vyžaduje se platný webový token JSON (JWT). |
 
@@ -34,7 +34,7 @@ ms.locfileid: "56306878"
 
 | Atribut zabezpečení | Ano/Ne | Poznámky|
 |---|---|--|
-| Podpora (Log analytics, App insights atd.) pro monitorování Azure| Ano | Pomocí Azure monitoring podporu a podporu třetích stran. |
+| Podpora (Log analytics, App insights atd.) pro monitorování Azure| Ano | Pomocí Azure monitoring podporu a podporu třetí strany. |
 
 ## <a name="iam-support"></a>Podpora IAM
 
@@ -55,5 +55,5 @@ ms.locfileid: "56306878"
 
 | Atribut zabezpečení | Ano/Ne | Poznámky|
 |---|---|--|
-| Podpora správy konfigurace (verzí konfigurace atd.)| Ano | Konfigurace služby se systémovou správou verzí a nasazených pomocí nasazení Azure. Kód (aplikace a modul runtime) je označené verzí využitím sestavování služby Azure.
+| Podpora správy konfigurace (verze konfigurace atd.)| Ano | Konfigurace služby se systémovou správou verzí a nasazených pomocí nasazení Azure. Kód (aplikace a modul runtime) je označené verzí využitím sestavování služby Azure.
  |

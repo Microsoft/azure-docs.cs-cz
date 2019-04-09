@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 6e43c607c2dc67054bde7689d50e495a59e6b659
-ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
-ms.translationtype: MT
+ms.openlocfilehash: fd3228194ac232cf8fc0efae46454075c5c02314
+ms.sourcegitcommit: b4ad15a9ffcfd07351836ffedf9692a3b5d0ac86
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58540852"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59058726"
 ---
 # <a name="create-a-store-locator-by-using-azure-maps"></a>Vytvořit úložiště s využitím Azure Maps
 
@@ -454,7 +454,7 @@ V tomto okamžiku je všechno nastavené v uživatelském rozhraní. Teď potře
         //Wait until the map resources are ready.
         map.events.add('ready', function() {
 
-        //Add your post-map load functionality.
+            //Add your post-map load functionality.
 
         });
     }
@@ -516,7 +516,7 @@ V tomto okamžiku je všechno nastavené v uživatelském rozhraní. Teď potře
     window.onload = initialize;
     ```
 
-1. Na mapě `load` naslouchací proces událostí, přidejte ovládací prvek Lupa a značku HTML zobrazení center prohledávaná oblast.
+1. Na mapě `ready` naslouchací proces událostí, přidejte ovládací prvek Lupa a značku HTML zobrazení center prohledávaná oblast.
 
     ```JavaScript
     //Add a zoom control to the map.
@@ -533,7 +533,7 @@ V tomto okamžiku je všechno nastavené v uživatelském rozhraní. Teď potře
     map.markers.add(centerMarker);
     ```
 
-1. Na mapě `load` naslouchací proces událostí, přidat zdroj dat. Proveďte volání načíst a analyzovat datovou sadu. Zapnutí clusterování ve zdroji dat. Clustering pro data zdrojové skupiny překrývající se body v clusteru. Samostatné clustery do jednotlivých bodů jako uživatel přiblíží. To umožňuje více plynulé uživatelské prostředí a zvyšuje výkon.
+1. Na mapě `ready` naslouchací proces událostí, přidat zdroj dat. Proveďte volání načíst a analyzovat datovou sadu. Zapnutí clusterování ve zdroji dat. Clustering pro data zdrojové skupiny překrývající se body v clusteru. Samostatné clustery do jednotlivých bodů jako uživatel přiblíží. To umožňuje více plynulé uživatelské prostředí a zvyšuje výkon.
 
     ```JavaScript
     //Create a data source, add it to the map, and then enable clustering.
@@ -548,7 +548,7 @@ V tomto okamžiku je všechno nastavené v uživatelském rozhraní. Teď potře
     loadStoreData();
     ```
 
-1. Po načtení datové sady v objektu map `load` naslouchací proces událostí, definují sadu vrstvy vykreslit data. Vrstva bublinu slouží k vykreslení Clusterované datových bodů. Vrstva symbol se použije k vykreslení, kolik bodů v každém clusteru nad bublinu vrstvou. Druhá vrstva symbol vykreslí vlastní ikonu u jednotlivých lokalit na mapě.
+1. Po načtení datové sady v objektu map `ready` naslouchací proces událostí, definují sadu vrstvy vykreslit data. Vrstva bublinu slouží k vykreslení Clusterované datových bodů. Vrstva symbol se použije k vykreslení, kolik bodů v každém clusteru nad bublinu vrstvou. Druhá vrstva symbol vykreslí vlastní ikonu u jednotlivých lokalit na mapě.
 
    Přidat `mouseover` a `mouseout` události na bublinu a Ikona vrstvy k provedení změny kurzoru myši, když uživatel najede myší na ikonu na mapě nebo clusteru. Přidat `click` událostí na bublinu vrstvy clusteru. To `click` události Přiblížení mapy ve dvou úrovních a centra mapy v clusteru, když uživatel vybere jakéhokoli jiného clusteru. Přidat `click` událostí k vrstvě ikonu. To `click` události se zobrazí automaticky otevírané okno zobrazující podrobnosti kavárny, když uživatel vybere ikonu jednotlivých umístění. Přidejte událost do mapy ke sledování po dokončení přesunutí na mapě. Když se tato událost aktivuje, aktualizujte položky v panelu seznamu.  
 
@@ -959,7 +959,7 @@ Přístup k vzorovému kódu pro tento kurz můžete získat tady:
 
 > [Vytvořit úložiště s využitím Azure Maps](https://github.com/Azure-Samples/AzureMapsCodeSamples/tree/master/AzureMapsCodeSamples/Tutorials/Simple%20Store%20Locator)
 
-[Podívejte se na živou ukázku](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Simple%20Store%20Locator)
+[Najdete v ukázce tady](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Simple%20Store%20Locator)
 
 Další informace o pokrytí a možnostech Azure Maps:
 

@@ -7,12 +7,12 @@ ms.service: container-instances
 ms.topic: article
 ms.date: 03/07/2019
 ms.author: danlep
-ms.openlocfilehash: bf9f2be8a0854a6968f3be6bfdaf3a59fc81dc76
-ms.sourcegitcommit: 1902adaa68c660bdaac46878ce2dec5473d29275
+ms.openlocfilehash: 3d73d05c64f4b4867c69a15089c19ab8c320b9a8
+ms.sourcegitcommit: 045406e0aa1beb7537c12c0ea1fbf736062708e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/11/2019
-ms.locfileid: "57728965"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "59006475"
 ---
 # <a name="azure-resource-manager-templates-for-azure-container-instances"></a>Šablony Azure Resource Manageru pro službu Azure Container Instances
 
@@ -25,7 +25,7 @@ Možnosti nasazení, najdete v článku [nasazení](#deployment) oddílu. Pokud 
 | | |
 |-|-|
 | **Aplikace** ||
-| [Wordpress][app-wp] | Vytvoří web ve Wordpressu a jeho databázi MySQL v instanci kontejneru. Obsah webu WordPress a databáze MySQL se ukládají do soubory Azure sdílet. |
+| [WordPress][app-wp] | Vytvoří web ve Wordpressu a jeho databázi MySQL ve skupině kontejnerů. Obsah webu WordPress a databáze MySQL se ukládají do soubory Azure sdílet. Také vytvoří službu application gateway k vystavení přístup k veřejné síti wordpressu. |
 | [MS NAV přes SQL Server a služby IIS][app-nav] | Nasadí jeden kontejner Windows s plně funkční samostatná Dynamics NAV nebo Dynamics 365 Business Central prostředí. |
 | **Svazky** ||
 | [emptyDir][vol-emptydir] | Nasadí dva kontejnery Linuxu, které sdílejí svazku emptyDir. |

@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/28/2019
 ms.reviewer: sdash
 ms.author: mbullwin
-ms.openlocfilehash: b741528b2770314be7e851f38817611d6908352b
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 588b8b11a02551a790145aafb013759699004267
+ms.sourcegitcommit: e43ea344c52b3a99235660960c1e747b9d6c990e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55814941"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "59009961"
 ---
 # <a name="live-metrics-stream-monitor--diagnose-with-1-second-latency"></a>Live Metrics Stream: Monitorování a Diagnostika s latencí 1 sekundu
 
@@ -34,9 +34,9 @@ Live Metrics Stream můžete:
 * Monitorujte všechny Windows výkonu čítač live.
 * Snadno Identifikujte problémy a filtr, který všechny klíčový ukazatel výkonu/živého kanálu do právě tento server dochází k danému serveru.
 
-[![Live Metrics Stream video](./media/live-stream/youtube.png)](https://www.youtube.com/watch?v=zqfHf1Oi5PY)
+[![Live metriky Stream video](./media/live-stream/youtube.png)](https://www.youtube.com/watch?v=zqfHf1Oi5PY)
 
-Živé metriky jsou aktuálně podporovány pro aplikace ASP.NET, ASP.NET Core, Azure Functions a Java.
+Živé metriky jsou aktuálně podporovány pro aplikace v ASP.NET, ASP.NET Core, Azure Functions, Javě a Node.js.
 
 ## <a name="get-started"></a>Začínáme
 

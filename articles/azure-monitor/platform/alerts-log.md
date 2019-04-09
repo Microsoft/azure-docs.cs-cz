@@ -1,5 +1,5 @@
 ---
-title: Vytvoření, zobrazení a správa protokolu upozornění pomocí Azure monitoru
+title: Vytvoření, zobrazení a správa protokolu upozornění pomocí Azure Monitor | Dokumentace Microsoftu
 description: Použití Azure monitoru k vytváření, zobrazení a Správa pravidel upozornění protokolů v Azure.
 author: msvijayn
 services: azure-monitor
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/15/2018
 ms.author: vinagara
 ms.subservice: alerts
-ms.openlocfilehash: f26c8e670855513995463ffaaf7e49a8e00e35fa
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: d3285a6b2aa09dd78bbb63c384bd1f65c17034ff
+ms.sourcegitcommit: 045406e0aa1beb7537c12c0ea1fbf736062708e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57873787"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "59006950"
 ---
 # <a name="create-view-and-manage-log-alerts-using-azure-monitor"></a>Vytvoření, zobrazení a Správa upozornění protokolů pomocí Azure monitoru
 
@@ -23,10 +23,10 @@ V tomto článku se dozvíte, jak nastavit upozornění protokolů pomocí rozhr
 - Kritéria: Konkrétní podmínky nebo logiku, která při vidět v signál, by měly aktivovat akce
 - Akce: Konkrétní volání odesílat příjemce oznámení – e-mail, SMS, webhooku atd.
 
-Termín **upozornění protokolů** k popisu výstrahy, pokud je signál vlastní dotaz na základě [Log Analytics](../../azure-monitor/learn/tutorial-viewdata.md) nebo [Application Insights](../../azure-monitor/app/analytics.md). Další informace o funkci, terminologie a typy z [upozornění - Přehled protokolů](../../azure-monitor/platform/alerts-unified-log.md).
+Termín **upozornění protokolů** k popisu výstrahy, pokud je signál dotaz protokolu v [pracovní prostor Log Analytics](../learn/tutorial-viewdata.md) nebo [Application Insights](../app/analytics.md). Další informace o funkci, terminologie a typy z [upozornění - Přehled protokolů](alerts-unified-log.md).
 
 > [!NOTE]
-> Data z oblíbených protokolů [Azure Log Analytics](../../azure-monitor/learn/tutorial-viewdata.md) je teď taky dostupná na platformě metriky ve službě Azure Monitor. Pro zobrazení podrobností o [upozornění metriky pro protokoly](../../azure-monitor/platform/alerts-metric-logs.md)
+> Data z oblíbených protokolů [pracovnímu prostoru Log Analytics](../../azure-monitor/learn/tutorial-viewdata.md) je teď taky dostupná na platformě metriky ve službě Azure Monitor. Pro zobrazení podrobností o [upozornění metriky pro protokoly](alerts-metric-logs.md)
 
 ## <a name="managing-log-alerts-from-the-azure-portal"></a>Správa upozornění protokolů z portálu Azure portal
 
@@ -58,7 +58,7 @@ Další podrobné je podrobný návod k použití protokolu výstrah pomocí roz
 
    > [!NOTE]
    > 
-   > Upozornění seznamy můžete importovat dotaz analytics jako typ signálu - **protokolu (uložený dotaz)**, jak je znázorněno výše obrázku. Tak, že uživatelé mohou zdokonalujete dotazu v Analytics a pak je ukládejte pro budoucí použití v upozornění – další podrobnosti o použití uložení dotazu, které jsou k dispozici na [pomocí prohledávání protokolů v log analytics](../../azure-monitor/log-query/log-query-overview.md) nebo [sdíleného dotazu ve službě application insights Analytics](../../azure-monitor/log-query/log-query-overview.md).
+   > Upozornění seznamy můžete importovat dotaz analytics jako typ signálu - **protokolu (uložený dotaz)**, jak je znázorněno výše obrázku. Tak, že uživatelé mohou zdokonalujete dotazu v Analytics a pak je ukládejte pro budoucí použití v upozornění – další podrobnosti o použití uložení dotazu, které jsou k dispozici na [pomocí protokolu dotazu ve službě Azure Monitor](../log-query/log-query-overview.md) nebo [sdílený dotaz v application insights analytics ](../log-query/log-query-overview.md).
 
 1. *Upozornění protokolů*: Po výběru dotazu pro generování výstrah můžou zobrazovat v **vyhledávací dotaz** pole; Pokud syntaxe dotazu není správná, pole se zobrazí chyba červeně. Pokud je správná syntaxe dotazu – pro referenci historických dat stanovených dotazu se zobrazuje jako graf s možností pro upravit časový interval z posledních šest hodin na poslední týden.
 
@@ -126,12 +126,12 @@ Uživatelé můžou také finalizován jejich analytického dotazu v [protokolu 
 Upozornění protokolů ve službě Azure Monitor jsou spojeny s typem prostředku `Microsoft.Insights/scheduledQueryRules/`. Další informace v tomto typu prostředku, naleznete v tématu [Azure Monitor – reference k rozhraní API naplánované pravidla dotazu](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules/). Upozornění protokolů pro Application Insights nebo Log Analytics, můžete vytvořit pomocí [naplánované pravidla rozhraní API pro dotazy](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules/).
 
 > [!NOTE]
-> Upozornění protokolů pro Log Analytics je také možné spravovat pomocí starší verze [API upozornění Log Analytics](../../azure-monitor/platform/api-alerts.md) a starší verze šablony [uložené výsledky hledání a upozornění Log Analytics](../../azure-monitor/insights/solutions-resources-searches-alerts.md) také. Další informace o použití nového rozhraní API ScheduledQueryRules pomocí zde podrobně ve výchozím nastavení, najdete v části [přepnout na nové rozhraní API pro upozornění Log Analytics](alerts-log-api-switch.md).
+> Upozornění protokolů pro Log Analytics je také možné spravovat pomocí starší verze [API upozornění Log Analytics](api-alerts.md) a starší verze šablony [uložené výsledky hledání a upozornění Log Analytics](../insights/solutions-resources-searches-alerts.md) také. Další informace o použití nového rozhraní API ScheduledQueryRules pomocí zde podrobně ve výchozím nastavení, najdete v části [přepnout na nové rozhraní API pro upozornění Log Analytics](alerts-log-api-switch.md).
 
 
 ### <a name="sample-log-alert-creation-using-azure-resource-template"></a>Ukázka protokolu výstrahy vytvoření pomocí šablony Azure Resource
 
-Následuje struktury [vytváření pravidel dotazu naplánované](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules/createorupdate) na základě šablony prostředků pomocí standardního protokolu vyhledávacího dotazu daného [počet upozornění protokolu výsledky typu](../../azure-monitor/platform/alerts-unified-log.md#number-of-results-alert-rules), s ukázkovou datovou sadu jako proměnné.
+Následuje struktury [vytváření pravidel dotazu naplánované](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules/createorupdate) na základě šablony prostředků pomocí standardního protokolu vyhledávacího dotazu daného [počet upozornění protokolu výsledky typu](alerts-unified-log.md#number-of-results-alert-rules), s ukázkovou datovou sadu jako proměnné.
 
 ```json
 {
@@ -316,7 +316,7 @@ Azure Monitor – naplánovaných pravidel dotazu rozhraní API] (https://docs.m
 
 
 > [!NOTE]
-> Upozornění protokolů pro Log Analytics je také možné spravovat pomocí starší verze [API upozornění Log Analytics](../../azure-monitor/platform/api-alerts.md) a starší verze šablony [uložené výsledky hledání a upozornění Log Analytics](../../azure-monitor/insights/solutions-resources-searches-alerts.md) také. Další informace o použití nového rozhraní API ScheduledQueryRules pomocí zde podrobně ve výchozím nastavení, najdete v části [přepnout na nové rozhraní API pro upozornění Log Analytics](alerts-log-api-switch.md).
+> Upozornění protokolů pro Log Analytics je také možné spravovat pomocí starší verze [API upozornění Log Analytics](api-alerts.md) a starší verze šablony [uložené výsledky hledání a upozornění Log Analytics](../insights/solutions-resources-searches-alerts.md) také. Další informace o použití nového rozhraní API ScheduledQueryRules pomocí zde podrobně ve výchozím nastavení, najdete v části [přepnout na nové rozhraní API pro upozornění Log Analytics](alerts-log-api-switch.md).
 
 Upozornění protokolů aktuálně nemáte vyhrazené příkazy prostředí PowerShell nebo rozhraní příkazového řádku aktuálně; ale jak je znázorněno níže je možné pomocí rutiny Powershellu pro Azure Resource Manager pro ukázku výše uvedenou šablonu prostředků (sampleScheduledQueryRule.json) v části šablony Resource:
 
@@ -335,4 +335,4 @@ On successful operation, 201 will be returned to state new alert rule creation o
 * Learn about [Log Alerts in Azure Alerts](../../azure-monitor/platform/alerts-unified-log.md)
 * Understand [Webhook actions for log alerts](../../azure-monitor/platform/alerts-log-webhook.md)
 * Learn more about [Application Insights](../../azure-monitor/app/analytics.md)
-* Learn more about [Log Analytics](../../azure-monitor/log-query/log-query-overview.md).
+* Learn more about [log queries](../log-query/log-query-overview.md).

@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 20ca4b9d347b9dc01e3b890fcf3758fb2fb135b9
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.openlocfilehash: ccc1f94b9411a158b5c60509e09bd3edc0a61640
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58486134"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59277591"
 ---
 # <a name="userjourneys"></a>UserJourneys
 
@@ -177,7 +177,7 @@ Na krok Orchestrace typu `ClaimsProviderSelection` nebo `CombinedSignInAndSignUp
 
 ### <a name="claimsproviderselection-example"></a>Příklad ClaimsProviderSelection.
 
-V následujícím kroku Orchestrace můžete uživatele k přihlášení pomocí Facebooku, odka, Twitter, Google nebo místní účet. Pokud si uživatel vybere jeden zprostředkovatelů sociálních identit, druhý krok Orchestrace provede pomocí deklarací exchange podle `TargetClaimsExchangeId` atribut. Druhý krok Orchestrace přesměruje uživatele na zprostředkovatele sociální identity, dokončete proces přihlašování. Pokud uživatel zvolí možnost přihlásit se pomocí místního účtu, Azure AD B2C zůstává na stejné krok Orchestrace (stejnou stránku pro přihlášení nebo přihlašovací stránky) a druhý krok Orchestrace přeskočí.
+V následujícím kroku Orchestrace můžete uživatele k přihlášení pomocí Facebooku, LinkedIn, Twitter, Google nebo místní účet. Pokud si uživatel vybere jeden zprostředkovatelů sociálních identit, druhý krok Orchestrace provede pomocí deklarací exchange podle `TargetClaimsExchangeId` atribut. Druhý krok Orchestrace přesměruje uživatele na zprostředkovatele sociální identity, dokončete proces přihlašování. Pokud uživatel zvolí možnost přihlásit se pomocí místního účtu, Azure AD B2C zůstává na stejné krok Orchestrace (stejnou stránku pro přihlášení nebo přihlašovací stránky) a druhý krok Orchestrace přeskočí.
 
 ```XML
 <OrchestrationStep Order="1" Type="CombinedSignInAndSignUp" ContentDefinitionReferenceId="api.signuporsignin">

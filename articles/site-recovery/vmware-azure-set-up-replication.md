@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: sutalasi
-ms.openlocfilehash: 4f558d8d1e5e4e743e6d44cca1a804b3e5898b30
-ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
-ms.translationtype: MT
+ms.openlocfilehash: 18dc7ea513d1e3787dbd38b1ab687be607a79f8b
+ms.sourcegitcommit: 045406e0aa1beb7537c12c0ea1fbf736062708e8
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58443419"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "59006811"
 ---
 # <a name="configure-and-manage-replication-policies-for-vmware-disaster-recovery-to-azure"></a>Konfigurace a Správa zásad replikace pro zotavení po havárii VMware do Azure
 Tento článek popisuje, jak nakonfigurovat zásadu replikace, když budete replikovat virtuální počítače VMware do Azure, pomocí [Azure Site Recovery](site-recovery-overview.md).
@@ -45,7 +45,7 @@ Přidružte zásady replikace s vaší místní konfigurační server.
 1. Vyberte **spravovat** > **infrastruktura Site Recovery** > **zásady replikace**.
 2. Vyberte zásadu replikace, kterou chcete upravit.
 3. Klikněte na tlačítko **upravit nastavení**a aktualizovat pole cíle bodu obnovení prahovou hodnotu nebo obnovení bodu uchování hodin/aplikace – snímek konzistentní vzhledem k frekvenci podle potřeby.
-4. Pokud chcete vypnout generování body konzistence aplikací, zvolte "hodnotu v rozevíracím seznamu z popsané Off" **frekvence snímků konzistentní vzhledem k**.
+4. Pokud chcete vypnout generování body konzistence aplikací, zvolte "hodnotu v rozevíracím seznamu pole Off" **frekvence snímků konzistentní vzhledem k**.
 5. Klikněte na **Uložit**. Zásady se musí aktualizovat během přibližně 30 – 60 sekund.
 
 ## <a name="disassociate-or-delete-a-replication-policy"></a>Zrušit nebo odstranit zásady replikace

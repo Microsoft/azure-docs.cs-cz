@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 12/13/2018
 ms.author: wolfma
-ms.openlocfilehash: a3990bfac9199fadeff0573d7547d7e5bc551ece
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 2f190ccbead9e6349543d04e2419f458888fba2c
+ms.sourcegitcommit: e43ea344c52b3a99235660960c1e747b9d6c990e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57838608"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "59008743"
 ---
 # <a name="quickstart-recognize-speech-with-the-speech-sdk-for-net-framework-windows"></a>Rychlý start: Rozpoznávání řeči se sadou SDK pro řeč pro rozhraní .NET Framework (Windows)
 
@@ -25,7 +25,7 @@ Pomocí této příručky vytvoříte konzolovou aplikaci pro převod řeči na 
 
 Rychlé ukázku (bez sestavování projektu sady Visual Studio sami, jak je uvedeno níže):
 
-Získat všechny nejnovější [sadou SDK pro řeč Cognitive Services](https://github.com/Azure-Samples/cognitive-services-speech-sdk) z Githubu.
+Získat všechny nejnovější [Cognitive Services řeči SDK ukázky](https://github.com/Azure-Samples/cognitive-services-speech-sdk) z Githubu.
 
 ## <a name="prerequisites"></a>Požadavky
 

@@ -1,6 +1,6 @@
 ---
 title: Směruje Azure provoz do Azure SQL Database a SQL Data Warehouse | Dokumentace Microsoftu
-description: Tento dokument popisuje, Azure SQL Database a SQL Data Warehouse připojení architektury z v Azure nebo mimo Azure.
+description: Tento dokument popisuje architekturu onnectivity Azcure SQL pro připojení k databázi z Azure nebo z mimo Azure.
 services: sql-database
 ms.service: sql-database
 ms.subservice: development
@@ -12,34 +12,16 @@ ms.author: srbozovi
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 04/03/2019
-ms.openlocfilehash: 619893ad42664f8d37fff5e61b8560f6c6d83e23
-ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
+ms.openlocfilehash: 4ff6cc0ba18074f353eb5b99af7052edd658a80e
+ms.sourcegitcommit: 045406e0aa1beb7537c12c0ea1fbf736062708e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/04/2019
-ms.locfileid: "58918599"
+ms.locfileid: "59006774"
 ---
 # <a name="azure-sql-connectivity-architecture"></a>Architektura připojení k Azure SQL
 
 Azure SQL Database a SQL Data Warehouse připojení k architektuře a tento článek vysvětluje, jak různé součásti fungovat směrovat přenos dat k vaší instanci Azure SQL. Tyto funkce součástí připojení ke směrování síťového provozu do Azure SQL Database nebo SQL Data Warehouse s klientů připojujících se z v rámci Azure a klientů připojujících se z mimo Azure. Tento článek také obsahuje ukázkové skripty, chcete-li změnit, jak dojde k připojení a důležité informace související s Změna výchozího nastavení připojení.
-
-> [!IMPORTANT]
-> **[Nadcházející změny] Pro koncový bod připojení služby pro servery Azure SQL `Default` chování připojení se změní na `Redirect`.**
-> Zákazníkům doporučujeme vytvořit nové servery a nastavte existující aplikace s typem připojení explicitně nastavená na přesměrování (vhodnější) nebo proxy serverem v závislosti na architektuře jejich připojení.
->
-> Zabránit možnosti připojení prostřednictvím koncového bodu služby rozdělení v existujících prostředích v důsledku této změny, použijeme telemetrie postupujte takto:
->
-> - U serverů, které byly přístupné prostřednictvím koncových bodů služby před provedením změny, které zjistíme, můžeme Přepnout typ připojení na `Proxy`.
-> - Pro všechny ostatní servery, můžeme Přepnout připojení typu bude přepínat na `Redirect`.
->
-> Uživatelé koncový bod služby může být stále postižená v následujících scénářích:
->
-> - Aplikace se připojí k existující server zřídka, naše telemetrie nebyla zaznamenat informace o těchto aplikací
-> - Automatické nasazení logic vytvoří server služby SQL Database za předpokladu, že je výchozí chování pro koncový bod připojení služby `Proxy`
->
-> Pokud nelze navázat koncový bod připojení služby k serveru Azure SQL a jsou podezření, že se vás tato změna, ověřte prosím, že typ připojení je explicitně nastaveno `Redirect`. Pokud je to tento případ, budete muset otevřít pravidla brány firewall virtuálního počítače a skupiny zabezpečení sítě (NSG) Azure IP adres v oblasti, které patří do Sql [značka služby](../virtual-network/security-overview.md#service-tags) pro porty 11000 11999. Pokud to není pro vás, přepněte server explicitně na `Proxy`.
-> [!NOTE]
-> Toto téma platí pro servery Azure SQL Database, které hostují izolované databáze a elastických fondů, databází SQL Data Warehouse, – Azure Database for MySQL, – Azure Database pro MariaDB a – Azure Database for PostgreSQL. Pro zjednodušení se SQL Database používá k odkazování na SQL Database, SQL Data Warehouse, Azure Database for MySQL, Azure Database pro MariaDB a Azure Database for PostgreSQL.
 
 ## <a name="connectivity-architecture"></a>Architektura připojení
 

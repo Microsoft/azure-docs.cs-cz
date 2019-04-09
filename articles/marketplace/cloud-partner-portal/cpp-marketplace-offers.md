@@ -12,14 +12,14 @@ ms.workload: ''
 ms.tgt_pltfrm: ''
 ms.devlang: ''
 ms.topic: conceptual
-ms.date: 02/07/2019
+ms.date: 03/27/2019
 ms.author: pbutlerm
-ms.openlocfilehash: fd51a9f70d60219a9429ff66d6f1d404391f6fb0
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: f537a43f5d4d0431e1659daa258e0c1453f2295b
+ms.sourcegitcommit: e43ea344c52b3a99235660960c1e747b9d6c990e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57446705"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "59010568"
 ---
 # <a name="azure-and-appsource-marketplace-offers"></a>Azure a nabídky na webu Marketplace AppSource
 
@@ -56,11 +56,11 @@ Následující tabulka uvádí aktuální nabídka typů podporovaných [portál
 | [Konzultační služby](./consulting-services/cloud-partner-portal-consulting-services-publishing-offer.md) | Obojí | Poradci Microsoftu kvalifikovaný můžete zobrazit seznam svých služeb specifického pro doménu v Azure Marketplace nebo AppSource.  Své znalosti pomáhá zákazníkům vyhodnocení jejich problémy a vytváření a nasazování správné řešení pro splnění svých obchodních cílů.  |
 | [Kontejner](./containers/cpp-containers-offer.md)  | Azure | Řešení je zřízená jako nějakou službu založenou na Kubernetes nebo Azure Container instances image kontejneru Dockeru. |
 | [Dynamics 365 Business Central](../cloud-partner-portal-orig/cpp-business-central-offer.md) | AppSource | Balíček, který rozšiřuje toto plánování podnikových zdrojů (ERP) a systém správy firmy. |
-| [Dynamics 365 for Customer Engagement](./dyn365ce/cpp-customer-engagement-offer.md) | AppSource | Balíček, který rozšiřuje tohoto zákazníka systému pro správu (CRM) zdroje, prodej, služby, služba projektu a modulů služby pole.  |
-| [Dynamics 365 for Finance and Operations](../cloud-partner-portal-orig/cpp-dynamics-365-operations-offer.md) | AppSource | Balíček, který rozšiřuje tento podnikových zdrojů (ERP) služba, která podporuje rozšířené plánování finance, operations, výroba a správa dodavatelského řetězce. |
-| [Modul IoT Edge](./iot-edge-module/cpp-offer-process-parts.md) | Azure | Kompatibilní s Dockerem kontejner, který běží na zařízení IoT Edge.  Obsahuje malé výpočetní modulů, které používají kombinace vlastního kódu, dalších služeb Azure a služby 3. stran. |
-| [Aplikace Power BI](./power-bi/cpp-power-bi-offer.md) | AppSource | Balíček, který používá toky dat pro připojení k datům ve společném úložišti dat sestavy a řídicí panely. |
-| [Aplikace SaaS](./saas-app/cpp-saas-offer.md) | Azure | Řešení je software-as-a-service předplatné, spravuje vydavatele, kteří uživatelé připojují prostřednictvím vlastní rozhraní, které využívá službu Azure Active Directory. |
+| [Dynamics 365 for Customer Engagement](./dyn365ce/cpp-customer-engagement-offer.md) | AppSource | Balíček, který rozšiřuje tohoto zákazníka systému pro správu (CRM) zdroje, prodej, služby, služba projektu a modulů služby pole  |
+| [Dynamics 365 for Finance and Operations](../cloud-partner-portal-orig/cpp-dynamics-365-operations-offer.md) | AppSource | Balíček, který rozšiřuje tento podnikových zdrojů (ERP) služba, která podporuje rozšířené plánování finance, operations, výroba a správa dodavatelského řetězce |
+| [Modul pro IoT Edge](./iot-edge-module/cpp-offer-process-parts.md) | Azure | Kompatibilní s Dockerem kontejner, který běží na zařízení IoT Edge.  Obsahuje malé výpočetní modulů, které používají kombinace vlastního kódu, dalších služeb Azure a služby 3. stran. |
+| [Aplikace Power BI](./power-bi/cpp-power-bi-offer.md) | AppSource | Aplikace Power BI, která zabalí přizpůsobitelné obsah Power BI, včetně datových sad, sestav a řídicích panelů |
+| [Aplikace SaaS](./saas-app/cpp-saas-offer.md) | Azure | Řešení je software-as-a-service předplatné, spravuje vydavatele, kteří uživatelé přihlašovat pomocí vlastní rozhraní, která používá Azure Active Directory. |
 | [Virtuální počítač](./virtual-machine/cpp-virtual-machine-offer.md)  | Azure  | Řešení je obsažena v jednom virtuálním počítači nasadit do předplatného zákazníka.  |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |   |   |
 
@@ -69,4 +69,4 @@ Další informace najdete v tématu [podle typu nabídky Průvodce publikování
 
 ## <a name="next-steps"></a>Další postup
 
-Se dozvíte o celkovém provozu můžete provádět na nabídky na webu marketplace a jejich společné technické atributy a prostředky v tomto tématu [správa nabídek](./manage-offers/cpp-manage-offers.md).
+O celkovém provozu můžete provádět na nabídky na webu marketplace a jejich společné technické atributy a prostředky v tomto článku se dozvíte [správa nabídek](./manage-offers/cpp-manage-offers.md).

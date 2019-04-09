@@ -8,14 +8,14 @@ manager: mikemcca
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: article
-ms.date: 03/14/2019
+ms.date: 04/04/2019
 ms.author: sajagtap
-ms.openlocfilehash: 76990fb3b6ed1815ada724f28f8276bac1cf28d4
-ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
-ms.translationtype: MT
+ms.openlocfilehash: 006f7d6691b8872aaa7ff8ccacff484585761d00
+ms.sourcegitcommit: b4ad15a9ffcfd07351836ffedf9692a3b5d0ac86
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58757399"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59056108"
 ---
 # <a name="define-and-use-moderation-workflows"></a>Definice a používání pracovních postupů pro moderování
 
@@ -65,9 +65,9 @@ Teď, když jste definovali vlastní pracovní postup, otestujte ho s ukázkový
 
 ![Test pracovního postupu](images/image-workflow-execute.PNG)
 
-Uložte zkopírované řádky [Ukázkový obrázek](https://moderatorsampleimages.blob.core.windows.net/samples/sample3.png) na váš místní disk. Potom vyberte **zvolte soubory** a odešlete image do pracovního postupu.
+Uložte zkopírované řádky [Ukázkový obrázek](https://moderatorsampleimages.blob.core.windows.net/samples/sample2.jpg) na váš místní disk. Potom vyberte **zvolte soubory** a odešlete image do pracovního postupu.
 
-![Žena koupání barvy](images/sample-racy.PNG)
+![Runner s nabídkou bude zobrazen na obrázku](images/sample-text.jpg)
 
 ### <a name="track-progress"></a>Sledování průběhu
 

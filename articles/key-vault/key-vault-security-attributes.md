@@ -7,29 +7,20 @@ author: msmbaldwin
 manager: barbkess
 ms.service: key-vault
 ms.topic: conceptual
-ms.date: 01/31/2019
+ms.date: 04/03/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 1df710b256715cab9650e6d141a3dd187be41cfd
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 32aa111c45835883cd779fc40946b89139af6ea5
+ms.sourcegitcommit: 045406e0aa1beb7537c12c0ea1fbf736062708e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56109518"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "59004690"
 ---
 # <a name="security-attributes-for-azure-key-vault"></a>Atributy zabezpečení pro Azure Key Vault
 
-Zabezpečení je integrované do všech oblastí služby Azure. Tento článek se zabývá atributy zabezpečení integrované do Azure Key Vault. Atribut zabezpečení je kvality nebo funkci, která přispívá ke služby možnost zakázat, rozpoznat nebo reakce na ohrožení zabezpečení služby Azure.
+Zabezpečení je integrované do všech oblastí služby Azure. Tento článek popisuje běžné atributy zabezpečení integrované do Azure Key Vault. 
 
-Atributy zabezpečení jsou klasifikovány jako:
-* Preventivní
-* Segmentace sítě
-* Detection (Detekce)
-* Podpora správy identit a přístupu
-* Záznam pro audit
-* Řízení přístupu (Pokud se používá)
-* Správa konfigurace (Pokud se používá)
-
-V každé kategorii jsme určit, jestli se používá atribut, nebo ne (Ano/Ne). Atribut pro některé služby nemusí být k dispozici a je zobrazena jako není k dispozici. Mohou být rovněž poskytnuty poznámky nebo odkaz na další informace o atributu.
+[!INCLUDE [Security Attributes Header](../../includes/security-attributes-header.md)]
 
 
-[!INCLUDE [security-attributes-key-vault](../../includes/security-attributes-key-vault.md)]
+[!INCLUDE [Security Attributes for Key Vault](../../includes/security-attributes-key-vault.md)]
