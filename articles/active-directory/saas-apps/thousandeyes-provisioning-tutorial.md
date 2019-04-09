@@ -13,18 +13,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/26/2018
+ms.date: 03/28/2019
 ms.author: asmalser-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f008e981abb11a4927ec045c33342bbac9a05bd8
-ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
-ms.translationtype: MT
+ms.openlocfilehash: bb9ac9974be94195f6ed0315aece7dfea749ce33
+ms.sourcegitcommit: b4ad15a9ffcfd07351836ffedf9692a3b5d0ac86
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58436791"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59057502"
 ---
 # <a name="tutorial-configure-thousandeyes-for-automatic-user-provisioning"></a>Kurz: Konfigurace ThousandEyes pro automatické zřizování uživatelů
-
 
 Cílem tohoto kurzu je zobrazit kroky, které je potřeba provést ThousandEyes a Azure AD a automaticky zřizovat a rušit zřízení uživatelských účtů ze služby Azure AD do ThousandEyes. 
 
@@ -32,15 +31,12 @@ Cílem tohoto kurzu je zobrazit kroky, které je potřeba provést ThousandEyes 
 
 Scénář popsaný v tomto kurzu se předpokládá, že máte následující položky:
 
-*   Tenanta služby Azure Active directory
-*   Aktivní [ThousandEyes účtu](https://www.thousandeyes.com/pricing)
-*   ThousandEyes uživatelského účtu, který má přiřazenou roli, která zahrnuje následující 3 oprávnění:
-    * Zobrazit všechny uživatele
-    * Upravit uživatele
-    * Oprávnění k přístupu k rozhraní API
+* Tenanta služby Azure Active directory
+* ThousandEyes tenantovi se [plán Standard](https://www.thousandeyes.com/pricing) nebo lépe povoleno 
+* Uživatelský účet v ThousandEyes s oprávněními správce 
 
 > [!NOTE]
-> Zřizování integrace Azure AD spoléhá na [ThousandEyes SCIM API](https://success.thousandeyes.com/PublicArticlePage?articleIdParam=kA044000000CnWrCAK_ThousandEyes-support-for-SCIM). 
+> Zřizování integrace Azure AD spoléhá na [ThousandEyes SCIM API](https://success.thousandeyes.com/PublicArticlePage?articleIdParam=kA044000000CnWrCAK), což je k dispozici ThousandEyes týmy využívající plán Standard nebo vyšší.
 
 ## <a name="assigning-users-to-thousandeyes"></a>Přiřazování uživatelů k ThousandEyes
 
@@ -52,33 +48,18 @@ Před konfigurací a povolení služby zřizování, je potřeba rozhodnout, jak
 
 ### <a name="important-tips-for-assigning-users-to-thousandeyes"></a>Důležité tipy pro přiřazování uživatelů k ThousandEyes
 
-*   Dále je doporučeno jednoho uživatele Azure AD, je přiřazená ThousandEyes k otestování konfigurace zřizování. Další uživatele a/nebo skupiny může být přiřazen později.
+* Dále je doporučeno jednoho uživatele Azure AD, je přiřazená ThousandEyes k otestování konfigurace zřizování. Další uživatele a/nebo skupiny může být přiřazen později.
 
-*   Při přiřazení uživatele k ThousandEyes, je nutné vybrat buď **uživatele** roli nebo jinou platnou specifické pro aplikaci (Pokud je k dispozici) v dialogu přiřazení. **Výchozího přístupu k** role nefunguje pro zřizování a tito uživatelé se přeskočí.
-
-## <a name="configure-auto-provisioned-user-roles-in-thousandeyes"></a>Konfigurovat automatické zřizování uživatelských rolí v ThousandEyes
-
-Pro každou skupinu účtů se automatické zřizování uživatelů, do které můžete nakonfigurovat sadu rolí uplatňovat, když se vytvoří nový uživatelský účet. Ve výchozím nastavení, jsou přiřazeny automatického zřizování uživatelů _se vytvářejí běžné uživatelské_ role pro všechny účty skupin, pokud se nenakonfiguruje.
-
-1. Zadat novou sadu rolí pro automatické zřizování uživatelů do protokolu ThousandEyes a přejděte do části Nastavení SCIM **> vaše uživatele ikonu v pravém horním rohu > Nastavení účtu > Organizace > zabezpečení a ověřování.** 
-
-   ![Přejděte na nastavení pro rozhraní API SCIM](https://monosnap.com/file/kqY8Il7eysGFAiCLCQWFizzM27PiBG)
-
-2. Přidejte záznam pro každou skupinu účtů, pak přiřadit sadu rolí *Uložit* provedené změny.
-
-   ![Nastavit výchozí role a skupiny účtů pro uživatele vytvořit pomocí rozhraní API SCIM](https://monosnap.com/file/16siam6U8xDQH1RTnaxnmIxvsZuNZG)
-
+* Při přiřazení uživatele k ThousandEyes, je nutné vybrat buď **uživatele** roli, nebo jinou platnou specifické pro aplikaci (Pokud je k dispozici) v dialogovém okně přiřazení. **Výchozího přístupu k** role nefunguje pro zřizování a tito uživatelé se přeskočí.
 
 ## <a name="configuring-user-provisioning-to-thousandeyes"></a>Konfigurace zřizování uživatelů pro ThousandEyes 
 
 Tato část vás provede připojením služby Azure AD vaší ThousandEyes uživatelského účtu rozhraní API zřizování a konfigurace služby zřizování, pokud chcete vytvořit, aktualizovat a zakázat přiřazené uživatelské účty v ThousandEyes podle přiřazení uživatelů a skupin ve službě Azure AD .
 
 > [!TIP]
-> Můžete také povolit založené na SAML jednotné přihlašování (SSO) pro ThousandEyes následující [pokyny uvedené v Azure znalostní báze](https://docs.microsoft.com/azure/active-directory/saas-apps/thousandeyes-tutorial) dokončete jednotného přihlašování. Jednotné přihlašování se dá nakonfigurovat nezávisle na automatické zřizování, i když tyto dvě funkce se vzájemně doplňují.
-
+> Můžete také pro ThousandEyes povoleno založené na SAML jednotného přihlašování, postupujte podle pokynů uvedených v [webu Azure portal](https://portal.azure.com). Jednotné přihlašování se dá nakonfigurovat nezávisle na automatické zřizování, i když tyto dvě funkce návrzích mezi sebou.
 
 ### <a name="configure-automatic-user-account-provisioning-to-thousandeyes-in-azure-ad"></a>Konfigurace automatického zřizování uživatelských účtů do ThousandEyes ve službě Azure AD
-
 
 1. V [webu Azure portal](https://portal.azure.com), přejděte **Azure Active Directory > podnikové aplikace > všechny aplikace** části.
 
@@ -90,7 +71,7 @@ Tato část vás provede připojením služby Azure AD vaší ThousandEyes uživ
 
     ![ThousandEyes zřizování](./media/thousandeyes-provisioning-tutorial/ThousandEyes1.png)
 
-5. V části **přihlašovacích údajů správce** části, zadejte **tokenu nosiče OAuth** generovaných vaše ThousandEyes účtu (můžete vyhledat a nebo vygenerování tokenu v rámci vašeho účtu ThousandEyes  **Profil** části).
+5. V části **přihlašovacích údajů správce** části, zadejte **tokenu nosiče OAuth** generovaných ThousandEyes váš účet (můžete vyhledat a nebo vygenerování tokenu v rámci vašeho účtu ThousandEyes  **Profil** části).
 
     ![ThousandEyes zřizování](./media/thousandeyes-provisioning-tutorial/ThousandEyes2.png)
 
@@ -98,7 +79,7 @@ Tato část vás provede připojením služby Azure AD vaší ThousandEyes uživ
 
 7. Zadejte e-mailovou adresu osoby nebo skupiny, která má obdržet oznámení zřizování chyby v **e-mailové oznámení** pole a zaškrtněte políčko "Odeslat e-mailové oznámení, když dojde k chybě."
 
-8. Klikněte na **Uložit**. 
+8. Klikněte na **Uložit**.
 
 9. V oddílu mapování, vyberte **synchronizace Azure Active Directory uživatelům ThousandEyes**.
 
@@ -106,17 +87,16 @@ Tato část vás provede připojením služby Azure AD vaší ThousandEyes uživ
 
 11. Služba pro ThousandEyes zřizování Azure AD povolit, změňte **stavu zřizování** k **na** v **nastavení** oddílu
 
-12. Klikněte na **Uložit**. 
+12. Klikněte na **Uložit**.
 
 Tato operace spustí počáteční synchronizaci všech uživatelů a skupiny přiřazené k ThousandEyes v části Uživatelé a skupiny. Počáteční synchronizace trvá déle než při následné synchronizace, ke kterým dochází přibližně každých 40 minut za předpokladu, že služba běží. Můžete použít **podrobnosti synchronizace** části ke sledování průběhu a odkazech na zřizování protokoly aktivit, které popisují všechny akce provedené v zřizovací služba.
 
 Další informace o tom, jak číst zřizování protokoly Azure AD najdete v tématu [hlášení o zřizování automatické uživatelských účtů](../manage-apps/check-status-user-account-provisioning.md).
 
-
 ## <a name="additional-resources"></a>Další materiály
 
 * [Správa zřizování uživatelských účtů pro podnikové aplikace](../manage-apps/configure-automatic-user-provisioning-portal.md)
-* [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)
+* [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
 ## <a name="next-steps"></a>Další postup
 

@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 04/04/2019
+ms.date: 04/08/2019
 ms.topic: conceptual
 ms.service: cost-management
 manager: micflan
 ms.custom: ''
-ms.openlocfilehash: 0defb1a8572cc3adad48dbcdb27a04e366fc3e60
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.openlocfilehash: 1fc04ee953ea53f96adfd1e85c9a616c62268ade
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/05/2019
-ms.locfileid: "59046782"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59282980"
 ---
 # <a name="understand-cost-management-data"></a>Vysvětlení dat služby Cost Management
 
@@ -31,8 +31,8 @@ Tyto informace zobrazí aktuálně podporované [Microsoft Azure nabízí](https
 | **Azure Government** | Azure Government Enterprise                                                         | EnterpriseAgreement_2014-09-01 | MS-AZR-USGOV-0017P |
 | **Smlouva Enterprise (EA)** | Enterprise pro vývoj/testování                                                        | MSDNDevTest_2014-09-01 | MS-AZR-0148P |
 | **Smlouva Enterprise (EA)** | [Microsoft Azure Enterprise](https://azure.microsoft.com/offers/enterprise-agreement-support-upgrade) | EnterpriseAgreement_2014-09-01 | MS-AZR-0017P |
-| **Smlouva se zákazníkem Microsoftu** | [Plán Microsoft Azure](https://azure.microsoft.com/offers/ms-azr-0017g) | EnterpriseAgreement_2014-09-01 | MS-AZR-0017G |
-| **Smlouva se zákazníkem Microsoftu** | [Plán Microsoft Azure pro Vývoj/testování](https://azure.microsoft.com/offers/ms-azr-0148g)  | MSDNDevTest_2014-09-01 | MS-AZR-0148G |
+| **Smlouva se zákazníkem Microsoftu** | [Plán Microsoft Azure](https://azure.microsoft.com/offers/ms-azr-0017g) | EnterpriseAgreement_2014-09-01 | neuvedeno |
+| **Smlouva se zákazníkem Microsoftu** | [Plán Microsoft Azure pro Vývoj/testování](https://azure.microsoft.com/offers/ms-azr-0148g)  | MSDNDevTest_2014-09-01 | neuvedeno |
 | **Microsoft Developer Network (MSDN)** | [MSDN Platforms](https://azure.microsoft.com/offers/ms-azr-0062p) | MSDN_2014-09-01 | MS-AZR-0062P |
 | **Průběžné platby** | [Průběžné platby](https://azure.microsoft.com/offers/ms-azr-0003p)                       | PayAsYouGo_2014-09-01 | MS-AZR-0003P |
 | **Průběžné platby** | [Průběžné platby dle aktuálního využití pro vývoj/testování](https://azure.microsoft.com/offers/ms-azr-0023p)              | MSDNDevTest_2014-09-01 | MS-AZR-0023P |
@@ -80,20 +80,21 @@ Následující tabulky popisují data, která je součástí nebo není ve služ
 | **Zahrnuje** | **Nezahrnuje** |
 | --- | --- |
 | Využití služby Azure<sup>1</sup> | Nákup rezervace – Další informace najdete v tématu [rozhraní API pro automatizaci Azure rezervace](../billing/billing-reservation-apis.md). |
-| Použití nabídek na webu Marketplace | Nákupy na Marketplace – Další informace najdete v tématu [poplatků za služby třetích stran](../billing/billing-understand-your-azure-marketplace-charges.md). |
+| Nabídka využití webu Marketplace<sup>2</sup> | Nákupy na Marketplace – Další informace najdete v tématu [poplatků za služby třetích stran](../billing/billing-understand-your-azure-marketplace-charges.md). |
 |   | Podpora poplatky – Další informace naleznete v tématu [fakturovat podmínky je vysvětleno](../billing/billing-understand-your-invoice.md). |
 |   | Daně – Další informace najdete v tématu [fakturovat podmínky je vysvětleno](../billing/billing-understand-your-invoice.md). |
 |   | Kredity – Další informace najdete v tématu [fakturovat podmínky je vysvětleno](../billing/billing-understand-your-invoice.md). |
 
 <sup>1</sup> využití služeb azure je založen na rezervaci a Vyjednaný ceny.
+<sup>2</sup> využití nabídky marketplace není k dispozici pro plán průběžných plateb, MSDN a Visual Studio nabízí v současnosti.
 
 **Metadata**
 
 | **Zahrnuje** | **Nezahrnuje** |
 | --- | --- |
-| Značky prostředků<sup>2</sup> | značky skupiny prostředků |
+| Značky prostředků<sup>3</sup> | značky skupiny prostředků |
 
-<sup>2</sup> značky prostředku se použijí podle využití je vygenerován z každé služby a nejsou k dispozici zpětně historických údajů o využití.
+<sup>3</sup> značky prostředku se použijí podle využití je vygenerován z každé služby a nejsou k dispozici zpětně historických údajů o využití.
 
 ## <a name="rated-usage-data-refresh-schedule"></a>Plán aktualizace dat používání hodnocení
 

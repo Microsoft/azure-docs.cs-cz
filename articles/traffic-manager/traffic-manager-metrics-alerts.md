@@ -10,12 +10,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/11/2018
 ms.author: kumud
-ms.openlocfilehash: c251cc851b34f708a2150d3b0444f235d2bc50d6
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.openlocfilehash: 1c0c48efc7abf4b810e92b5cd04d1538577c71d3
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/05/2019
-ms.locfileid: "59045300"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59268277"
 ---
 # <a name="traffic-manager-metrics-and-alerts"></a>Traffic Manager metrik a výstrah
 
@@ -65,4 +65,4 @@ Kromě zpracování a zobrazení metrik z Traffic Manageru, Azure Monitor umož�
 
 ## <a name="next-steps"></a>Další postup
 - Další informace o [služby Azure Monitor](../azure-monitor/platform/metrics-supported.md)
-- Zjistěte, jak [vytvoření grafu pomocí Azure monitoru](../azure-monitor/platform/metrics-charts.md#create-a-new-chart)
+- Zjistěte, jak [vytvoření grafu pomocí Azure monitoru](../azure-monitor/platform/metrics-getting-started.md#create-your-first-metric-chart)

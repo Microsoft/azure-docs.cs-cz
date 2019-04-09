@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 01/17/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fd7d1e3511bf74650ddc9dca1cf77c2b7c297c96
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: f1beb825eda7e4d6a59810aada7063863b48d8ec
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57861498"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59260897"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-appraisd"></a>Kurz: Integrace Azure Active Directory s Appraisd
 
@@ -161,7 +161,7 @@ Ke konfiguraci Azure AD jednotné přihlašování s Appraisd, proveďte násled
 
 1. V okně jiné webové prohlížeče Přihlaste se k Appraisd jako správce zabezpečení.
 
-2. V horní části stránky, klikněte na **nastavení** ikonu, přejděte na **konfigurace**.
+2. V horní části stránky, klikněte na **nastavení** ikonu, přejděte na **konfigurace**.
 
     ![image](./media/appraisd-tutorial/tutorial_appraisd_sett.png)
 
@@ -173,9 +173,9 @@ Ke konfiguraci Azure AD jednotné přihlašování s Appraisd, proveďte násled
 
     ![image](./media/appraisd-tutorial/tutorial_appraisd_saml.png)
 
-    a. Kopírovat **výchozí stav přenosu** hodnotu a vložte ji **stav přenosu** textového pole v **základní konfiguraci SAML** na portálu Azure portal.
+    a. Kopírovat **výchozí stav přenosu** hodnotu a vložte ji **stav přenosu** textového pole v **základní konfiguraci SAML** na portálu Azure portal.
 
-    b. Kopírovat **spouštěných službou přihlašovací adresa URL** hodnotu a vložte ji **přihlašovací adresa URL** textového pole v **základní konfiguraci SAML** na portálu Azure portal.
+    b. Kopírovat **spouštěných službou přihlašovací adresa URL** hodnotu a vložte ji **přihlašovací adresa URL** textového pole v **základní konfiguraci SAML** na portálu Azure portal.
 
 5. Přejděte dolů na stejné stránce v části **identifikace uživatelů**, proveďte následující kroky:
 
@@ -185,7 +185,7 @@ Ke konfiguraci Azure AD jednotné přihlašování s Appraisd, proveďte násled
 
     b. V **adresa URL Vystavitel zprostředkovatele Identity** textového pole vložte hodnotu **Azure Ad identifikátor**, který jste zkopírovali z webu Azure portal a klikněte na tlačítko **Uložit**.
 
-    c. V poznámkovém bloku otevřete base-64 kódovaných certifikát, který jste si stáhli z webu Azure portal, zkopírujte jeho obsah a vložte jej do **certifikát X.509** pole a klikněte na tlačítko **Uložit**.
+    c. V poznámkovém bloku otevřete base-64 kódovaných certifikát, který jste si stáhli z webu Azure portal, zkopírujte jeho obsah a vložte jej do **certifikát X.509** pole a klikněte na tlačítko **Uložit**.
 
 ### <a name="create-an-azure-ad-test-user"></a>Vytvořit testovacího uživatele Azure AD
 
@@ -246,11 +246,11 @@ Povolení služby Azure AD uživatelé přihlašují k Appraisd, se musí být p
 
 1. Přihlaste se k Appraisd jako správce zabezpečení.
 
-2. V horní části stránky, klikněte na **nastavení** ikonu, přejděte na **Centrum správy**.
+2. V horní části stránky, klikněte na **nastavení** ikonu, přejděte na **Centrum správy**.
 
     ![image](./media/appraisd-tutorial/tutorial_appraisd_admin.png)
 
-3. Na panelu nástrojů v horní části stránky klikněte na tlačítko **lidé**, přejděte na **přidat nového uživatele**.
+3. Na panelu nástrojů v horní části stránky klikněte na tlačítko **lidé**, přejděte na **přidat nového uživatele**.
 
     ![image](./media/appraisd-tutorial/tutorial_appraisd_user.png)
 
@@ -276,6 +276,6 @@ Po kliknutí na dlaždici Appraisd na přístupovém panelu, můžete by měl b�
 
 - [Seznam kurzů o integraci aplikací SaaS pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

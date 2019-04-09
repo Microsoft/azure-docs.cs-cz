@@ -12,12 +12,12 @@ ms.devlang: nodejs
 ms.topic: reference
 ms.date: 02/24/2019
 ms.author: glenga
-ms.openlocfilehash: d9de47ad83f37fa976c3816a0cb2e3e3beaa5472
-ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
+ms.openlocfilehash: 9ef7dd7603b93f6b15988cc4cca089f0486eb3b0
+ms.sourcegitcommit: e43ea344c52b3a99235660960c1e747b9d6c990e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58437573"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "59010112"
 ---
 # <a name="azure-functions-javascript-developer-guide"></a>Příručka pro vývojáře Azure Functions JavaScript
 
@@ -141,7 +141,7 @@ Výstupy (vazby `direction === "out"`) je možné zapisovat na funkci v několik
 
 Data můžete přiřadit výstupních vazeb v jednom z následujících způsobů (není sloučit tyto metody):
 
-- **_[Doporučuje pro několik výstupů]_  Vrácení objektu.** Pokud používáte async/Promise, vrací funkce, můžete se vrátit objekt s přiřazenou výstupní data. V následujícím příkladu výstupních vazeb se pojmenují "httpResponse" a "queueOutput" *function.json*.
+- **_[Doporučuje pro několik výstupů]_  Vrácení objektu.** Pokud používáte async/Promise vrácení funkce, můžete se vrátit objekt s přiřazenou výstupní data. V následujícím příkladu výstupních vazeb se pojmenují "httpResponse" a "queueOutput" *function.json*.
 
   ```javascript
   module.exports = async function(context) {
@@ -276,7 +276,7 @@ Umožňuje zapisovat do protokolů streamování funkce na výchozí úrovni tra
 | **Chyba (_zpráva_)**   | Zapíše chyba úroveň protokolování nebo nižší.   |
 | **upozornění (_zpráva_)**    | Zapíše do protokolování nebo nižší úroveň pro upozornění. |
 | **informace o (_zpráva_)**    | Zapíše informace o úroveň protokolování nebo nižší.    |
-| **verbose(_message_)** | Zápisy na podrobné úrovni protokolování.           |
+| **verbose (_zpráva_)** | Zápisy na podrobné úrovni protokolování.           |
 
 Následující příklad zapíše protokolu na úroveň trasování varování:
 
@@ -350,12 +350,12 @@ HTTP a triggerů webhooků a HTTP výstupní vazby pomocí žádostí a odpověd
 
 | Vlastnost      | Popis                                                    |
 | ------------- | -------------------------------------------------------------- |
-| _Text_        | Objekt, který obsahuje text žádosti.               |
-| _headers_     | Objekt, který obsahuje hlavičky požadavku.                   |
-| _– Metoda_      | Metoda HTTP požadavku.                                |
+| _hlavní část_        | Objekt, který obsahuje text žádosti.               |
+| _Záhlaví_     | Objekt, který obsahuje hlavičky požadavku.                   |
+| _method_      | Metoda HTTP požadavku.                                |
 | _PůvodníAdresaURL_ | Adresa URL požadavku.                                        |
-| _params_      | Objekt, který obsahuje směrování parametry požadavku. |
-| _Dotaz_       | Objekt, který obsahuje parametry dotazu.                  |
+| _Parametry_      | Objekt, který obsahuje směrování parametry požadavku. |
+| _query_       | Objekt, který obsahuje parametry dotazu.                  |
 | _rawBody_     | Tělo zprávy jako řetězec.                           |
 
 
@@ -365,8 +365,8 @@ HTTP a triggerů webhooků a HTTP výstupní vazby pomocí žádostí a odpověd
 
 | Vlastnost  | Popis                                               |
 | --------- | --------------------------------------------------------- |
-| _Text_    | Objekt, který obsahuje text odpovědi.         |
-| _headers_ | Objekt, který obsahuje hlavičky odpovědi.             |
+| _hlavní část_    | Objekt, který obsahuje text odpovědi.         |
+| _Záhlaví_ | Objekt, který obsahuje hlavičky odpovědi.             |
 | _isRaw_   | Označuje, že formátování se přeskočí pro odpověď.    |
 | _status_  | Stavový kód HTTP odpovědi.                     |
 

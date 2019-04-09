@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 3/12/2019
 ms.author: rkarlin
-ms.openlocfilehash: b6ea852c9a1bb8ea6eb51df310aab97e9b10d48e
-ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
-ms.translationtype: MT
+ms.openlocfilehash: c055b3d9dec2e2538a7dc7ac0eb707c97313d0d6
+ms.sourcegitcommit: 045406e0aa1beb7537c12c0ea1fbf736062708e8
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58399680"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "59006583"
 ---
 # <a name="on-board-azure-sentinel-preview"></a>Ve verzi Preview připojit Azure Sentinel
 
@@ -36,21 +36,19 @@ Po připojení zdroje dat, vyberte si z Galerie odborně řídicí panely, kter�
 
 ## <a name="global-prerequisites"></a>Globální požadavky
 
-- Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
+- Aktivní předplatné Azure, pokud ho nemáte, vytvořte [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) předtím, než začnete.
 
 - Pracovní prostor log Analytics. Zjistěte, jak [vytvořit pracovní prostor Log Analytics](../log-analytics/log-analytics-quick-create-workspace.md)
 
-- Oprávnění přispěvatele pro vašeho tenanta umožňuje Azure Sentinelu
-
-- Tenant globální nebo oprávnění správce zabezpečení
- 
+    - Oprávnění přispěvatele do skupiny prostředků, které jsou vázané na Azure Sentinelu
+    - Oprávnění přispěvatele do vaší skupiny prostředků umožňují Sentinelu Azure 
 
 ## Povolit Azure Sentinel <a name="enable"></a>
 
 1. Přejděte na web Azure Portal.
 2. Ujistěte se, že je vybrané předplatné, ve kterém se vytvoří Sentinelu Azure. 
 3. Hledání Azure Sentinel. 
-   ![search](./media/quickstart-onboard/search-product.png)
+   ![hledat](./media/quickstart-onboard/search-product.png)
 
 1. Klikněte na tlačítko **+ přidat**.
 1. Vyberte pracovní prostor, který chcete použít nebo vytvořit nový. Můžete spustit ověřovací Azure na více než jednomu pracovnímu prostoru, ale data budou izolovaná do jednoho pracovního prostoru.

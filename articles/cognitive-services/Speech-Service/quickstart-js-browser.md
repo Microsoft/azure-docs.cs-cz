@@ -10,26 +10,26 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 2/20/2019
 ms.author: fmegen
-ms.openlocfilehash: 0a06293a648460694bbe222f36f81bea2d6acdac
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: a418966ce72876d58d39b939ecb7dd5a05e41b9b
+ms.sourcegitcommit: e43ea344c52b3a99235660960c1e747b9d6c990e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57841170"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "59008972"
 ---
 # <a name="quickstart-recognize-speech-in-javascript-in-a-browser-using-the-speech-sdk"></a>Rychlý start: Rozpoznávání řeči v jazyce JavaScript v prohlížeči pomocí sadou SDK pro řeč
 
 [!INCLUDE [Selector](../../../includes/cognitive-services-speech-service-quickstart-selector.md)]
 
 V tomto článku se dozvíte, jak vytvořit web pro přepis řeči na text s využitím vazby JavaScriptu na sadu Cognitive Services Speech SDK.
-Aplikace je založena na Microsoft Cognitive Services sadou SDK pro řeč ([stahování verze 1.3.0](https://aka.ms/csspeech/jsbrowserpackage)).
+Aplikace je založena na sadou SDK pro řeč pro jazyk JavaScript ([stahování verze 1.4.0](https://aka.ms/csspeech/jsbrowserpackage)).
 
 ## <a name="prerequisites"></a>Požadavky
 
 * Klíč předplatného pro službu Speech. Zobrazit [hlasové služby si můžete vyzkoušet zdarma](get-started.md).
 * PC nebo Mac s funkčním mikrofonem
 * Textový editor
-* Aktuální verze prohlížeče Chrome nebo Microsoft Edge
+* Aktuální verzi Chrome, Microsoft Edge nebo Safari.
 * Volitelně webový server s podporou hostování skriptů PHP
 
 ## <a name="create-a-new-website-folder"></a>Vytvoření složky nového webu
@@ -52,7 +52,7 @@ Vytvořte ve složce nový soubor `index.html` a otevřete ho v textovém editor
    ```html
    <html>
    <head>
-      <title>Microsoft Cognitive Service Speech SDK JavaScript Quickstart</title>
+      <title>Speech SDK JavaScript Quickstart</title>
    </head>
    <body>
     <!-- UI code goes here -->
@@ -98,6 +98,10 @@ Díky tomu váš klíč předplatného nikdy neopustí váš server a uživatel�
 ## <a name="build-and-run-the-sample-locally"></a>Místní sestavení a spuštění ukázky
 
 Pokud chcete aplikaci spustit, dvakrát klikněte na soubor index.html nebo tento soubor otevřete v oblíbeném webovém prohlížeči. Zobrazí se jednoduché grafické uživatelské rozhraní, kde můžete zadat klíč předplatného a [oblast](regions.md) a aktivovat rozpoznávání s využitím mikrofonu.
+
+> [!NOTE]
+> Tato metoda nefunguje v prohlížeči Safari.
+> V Safari musí být hostované na webovém serveru; ukázková webová stránka Safari neumožňuje weby, které jsou načteny z místního souboru používat mikrofon.
 
 ## <a name="build-and-run-the-sample-via-a-web-server"></a>Sestavení a spuštění ukázky pomocí webového serveru
 

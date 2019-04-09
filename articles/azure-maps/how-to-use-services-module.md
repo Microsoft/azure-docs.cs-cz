@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: cpendleton
-ms.openlocfilehash: e614758a91cb3ff02822eeeeb8ae7e80d2123e5d
-ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
+ms.openlocfilehash: 3aa39568904cb0acc9b5b76ff7e07729bf99d6b1
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2019
-ms.locfileid: "58578726"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59278594"
 ---
 # <a name="using-the-azure-maps-services-module"></a>Pomocí modulu služby Azure Maps
 
@@ -27,7 +27,7 @@ Azure Maps Web SDK poskytuje služby modulu, který je pomocné knihovny, který
     a. Použít globálně hostované CDN verzi modulu Azure Maps služby tak, že přidáte odkaz na skript <head> prvek souboru:
     
     ```html
-    <script src="https://atlas.microsoft.com/sdk/js/atlas-service.js?api-version=2"></script>
+    <script src="https://atlas.microsoft.com/sdk/javascript/mapcontrol/2/atlas-service.min.js"></script>
     ```
     
     b. Můžete také načíst místně pomocí sady SDK webové mapy Azure zdrojový kód [klidovém stavu azure maps](https://www.npmjs.com/package/azure-maps-rest) NPM balíček a hostujte ho s vaší aplikací. Tento balíček obsahuje také definice TypeScript.

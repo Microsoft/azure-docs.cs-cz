@@ -8,12 +8,12 @@ ms.date: 01/24/2019
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: 84db71f8dabfb7557b5efbc06e024c43e654b56d
-ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
+ms.openlocfilehash: f93f6c8891ba9f7407310a8f09387e97f5c1f578
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58805070"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59267340"
 ---
 # <a name="troubleshoot-errors-with-runbooks"></a>Řešení potíží s runbooky
 
@@ -137,7 +137,7 @@ Pomocí rutin modelu nasazení Azure classic pomocí certifikátu, najdete v té
 
 #### <a name="issue"></a>Problém
 
-Zobrazí následující chybová zpráva při vyvolání childrunbook s `-Wait` přepínače a výstupní datový proud obsahuje a objektu:
+Zobrazí následující chybová zpráva při vyvolání podřízeného runbooku se `-Wait` přepínače a výstupní datový proud obsahuje a objektu:
 
 ```error
 Object reference not set to an instance of an object
@@ -483,6 +483,29 @@ Existují dva způsoby, jak vyřešit tuto chybu:
 
 * Upravit sadu runbook a snížení počtu datové proudy úlohy, které vydává.
 * Snižte počet datových proudů, která se má načíst při spuštění rutiny. Pokud chcete postupovat podle tohoto chování, můžete zadat `-Stream Output` parametr `Get-AzureRmAutomationJobOutput` rutina pro načtení pouze výstupním datovým proudům. 
+
+### <a name="cannot-invoke-method"></a>Scénář: Úlohy prostředí PowerShell se nezdaří s chybou: Nelze vyvolat metodu
+
+#### <a name="issue"></a>Problém
+
+Při spouštění úlohy prostředí PowerShell v runbooku spuštěného v Azure se zobrazí následující chybová zpráva:
+
+```error
+Exception was thrown - Cannot invoke method. Method invocation is supported only on core types in this language mode.
+```
+
+#### <a name="cause"></a>Příčina
+
+K této chybě může dojít při spuštění úlohy v sadě runbook spuštěný v Azure Powershellu. Tato situace může nastat, protože běžel sady runbook v Azure izolovaný prostor se možná nespustí [úplným jazykovým režimu](/powershell/module/microsoft.powershell.core/about/about_language_modes)).
+
+#### <a name="resolution"></a>Řešení
+
+Existují dva způsoby, jak vyřešit tuto chybu:
+
+* Namísto použití `Start-Job`, použijte `Start-AzureRmAutomationRunbook` spuštění runbooku
+* Pokud vaše sada runbook má tato chybová zpráva, ji spusťte v procesu Hybrid Runbook Worker
+
+Další informace o tomto chování nebo jiného chování služby Runbooky Azure Automation najdete v tématu [chování sady Runbook](../automation-runbook-execution.md#runbook-behavior).
 
 ## <a name="next-steps"></a>Další postup
 

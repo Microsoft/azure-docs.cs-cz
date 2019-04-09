@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 03/13/2019
+ms.date: 04/08/2019
 ms.author: jingwang
-ms.openlocfilehash: 782027f19d4e82f26fc1265f25b86223386d7182
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 9cb3c028c14e6c47d47eafcf6279a918c0917442
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57903381"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59272202"
 ---
 # <a name="copy-data-to-and-from-azure-sql-database-managed-instance-by-using-azure-data-factory"></a>Kopírování dat do a z Azure SQL Database Managed Instance pomocí služby Azure Data Factory
 
@@ -149,7 +149,7 @@ Pro kopírování dat do a z Azure SQL Database Managed Instance, nastavte vlast
 | type | Vlastnost type datové sady, musí být nastavená na **SqlServerTable**. | Ano. |
 | tableName |Tato vlastnost je název tabulky nebo zobrazení v instanci databáze na propojenou službu. | Ne pro zdroj. Ano pro jímku. |
 
-**Příklad**
+**Příklad:**
 
 ```json
 {
@@ -282,7 +282,7 @@ Ke zkopírování dat do Azure SQL Database Managed Instance, nastavte typ jímk
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
 | type | Nastavte vlastnost typ jímky aktivity kopírování **SqlSink**. | Ano. |
-| WriteBatchSize |Tato vlastnost vkládá nějaká data do tabulky SQL writeBatchSize dosáhne velikosti vyrovnávací paměti.<br/>Povolené hodnoty jsou celá čísla pro počet řádků. |Ne (výchozí: 10,000). |
+| WriteBatchSize |Počet řádků, která se vloží do tabulky SQL **dávce**.<br/>Povolené hodnoty jsou celá čísla pro počet řádků. |Ne (výchozí: 10,000). |
 | writeBatchTimeout |Tato vlastnost určuje doba čekání na dokončení před vypršením časového limitu operace insert služby batch.<br/>Povolené jsou hodnoty pro časové období. Příkladem je "00: 30:00," což je 30 minut. |Ne. |
 | preCopyScript |Tato vlastnost určuje dotaz SQL pro aktivitu kopírování ke spuštění před zápisu dat do spravované instance. Je vyvolána pouze jednou za kopírování spustit. Tuto vlastnost můžete použít k vyčištění dat předem. |Ne. |
 | sqlWriterStoredProcedureName |Tento název je pro uloženou proceduru, která definuje, jak použít zdroj dat do cílové tabulky. Příklady postupy jsou to upsertuje nebo transformace pomocí vlastní obchodní logikou. <br/><br/>Tuto uloženou proceduru se *za batch*. Chcete-li provést operaci, která se spustí pouze jednou a nemá nic se zdrojovými daty, například delete nebo truncate, použijte `preCopyScript` vlastnost. |Ne. |
@@ -438,9 +438,9 @@ Když se data zkopírovala do Azure SQL Database Managed Instance, uložené pro
 
 Uloženou proceduru můžete použít, když integrovaná funkce kopírování mechanismy neslouží účel. Používá se obvykle při k upsert (aktualizace + insert) nebo další zpracování je třeba provést před posledním vložení zdrojová data v cílové tabulce. Dodatečné zpracování může obsahovat úlohy, jako je sloučení sloupců vyhledávání další hodnoty a vložení do několika tabulek.
 
-Následující příklad ukazuje, jak provést funkcí upsert do tabulky ve spravované instanci pomocí uložené procedury. Ukázka předpokládá, že vstupní data a "Marketing" tabulky jímky máte tři sloupce: ID profilu, stavu a kategorie. Proveďte upsert podle sloupce pro ID profilu a platí pro konkrétní kategorii.
+Následující příklad ukazuje způsob použití uloženou proceduru provedete upsert do tabulky v databázi serveru SQL Server. Předpokládejme, který vstupní data a jímku **marketingové** tabulka jednotlivých obsahovat tři sloupce: **ID profilu**, **stavu**, a **kategorie**. Proveďte upsert na základě **ProfileID** sloupce a použijte je jenom pro konkrétní kategorie.
 
-**Výstupní datová sada**
+**Výstupní datová sada:** "tableName" by měl být stejný název parametru typu tabulky v uložené proceduře (viz níže uvedený skript uložené procedury).
 
 ```json
 {
@@ -459,7 +459,7 @@ Následující příklad ukazuje, jak provést funkcí upsert do tabulky ve spra
 }
 ```
 
-Definujte části SqlSink v aktivitě kopírování takto:
+Definovat **SQL jímky** následující části v aktivitě kopírování.
 
 ```json
 "sink": {
@@ -474,7 +474,7 @@ Definujte části SqlSink v aktivitě kopírování takto:
 }
 ```
 
-V databázi definujte jako SqlWriterStoredProcedureName uložená procedura se stejným názvem. Zpracovává vstupní data ze zadaného zdroje a sloučí je do výstupní tabulky. Název parametru typu tabulky v uložené proceduře je stejný jako "tableName", který je definován v datové sadě.
+V databázi, definovat uložená procedura se stejným názvem jako **SqlWriterStoredProcedureName**. Zpracovává vstupní data ze zadaného zdroje a sloučí do výstupní tabulky. Název parametru typu tabulky v uložené proceduře by měl být stejný jako **tableName** definované v datové sadě.
 
 ```sql
 CREATE PROCEDURE spOverwriteMarketing @Marketing [dbo].[MarketingType] READONLY, @category varchar(256)

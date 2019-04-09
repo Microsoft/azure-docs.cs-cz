@@ -5,14 +5,14 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: how-to
-ms.date: 03/21/2019
+ms.date: 04/05/2019
 ms.author: helohr
-ms.openlocfilehash: bd46e5f7428bab58508521b2c7d4d7cca25d689b
-ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
+ms.openlocfilehash: 2af9df4771d58f2288820dad8ef8d7ac84deb8ae
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58439069"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59258466"
 ---
 # <a name="create-a-host-pool-with-powershell"></a>Vytvoření fondu hostitelů pomocí PowerShellu
 
@@ -111,6 +111,9 @@ K registraci agentů virtuálního klienta Windows, proveďte postup na každý 
      - Z **Start** nabídky, vyhledejte Windows PowerShell ISE, pravým tlačítkem myši a potom vyberte **spustit jako správce**.
      - Vyberte **souboru**, pak **otevřít...** a potom vyhledejte Powershellový skript z stažené soubory a otevřete ho.
      - Vyberte tlačítko Přehrát zelená pro spuštění skriptu.
+
+>[!IMPORTANT]
+>Pomáhají zabezpečit vaše prostředí virtuálního klienta Windows v Azure, doporučujeme, abyste že na virtuálních počítačích není otevřít příchozí port 3389. Virtuální Desktop Windows nevyžaduje otevřít příchozí port 3389 pro uživatele pro přístup k fondu hostitele virtuálních počítačů. Pokud musíte otevřít port 3389 pro účely odstraňování potíží, doporučujeme vám použít [přístup k virtuálním počítačům just-in-time](https://docs.microsoft.com/en-us/azure/security-center/security-center-just-in-time).
 
 ## <a name="next-steps"></a>Další postup
 

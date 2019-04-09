@@ -1,27 +1,27 @@
 ---
-title: Vlastnosti uživatele spolupráce B2B – Azure Active Directory | Dokumentace Microsoftu
-description: Je možné konfigurovat Azure Active Directory s B2B spolupráce uživatelské vlastnosti
+title: Vlastnosti B2B hosta uživatele – Azure Active Directory | Dokumentace Microsoftu
+description: Azure Active Directory s B2B vlastnosti uživatele typu Host a stavy před a po uplatnění pozvánky
 services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: conceptual
-ms.date: 02/12/2019
+ms.date: 04/08/2019
 ms.author: mimart
 author: msmimart
 manager: daveba
 ms.reviewer: sasubram
-ms.custom: it-pro, seo-update-azuread-jan
+ms.custom: it-pro, seo-update-azuread-jan, seoapril2019
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 791dcfadf1db6cae48bee5c926f75e454c88fc55
-ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
+ms.openlocfilehash: 4d4466e4ac7a4e818da6332254e3094eccbaf2b4
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58294650"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59257599"
 ---
 # <a name="properties-of-an-azure-active-directory-b2b-collaboration-user"></a>Vlastnosti uživatele spolupráce Azure Active Directory s B2B
 
-Azure Active Directory (Azure AD) business-to-business (B2B) spolupráce uživatele je uživatel s UserType = hosta. Tento uživatel typu Host obvykle je z partnerské organizace a ve výchozím nastavení má omezená oprávnění v adresáři pozvání.
+Tento článek popisuje vlastnosti a objektu uživatele typu Host B2B ve službě Azure Active Directory (Azure AD) před a po uplatnění pozvání. Spolupráce uživatele Azure AD pro mezifiremní (B2B) je uživatel s UserType = hosta. Tento uživatel typu Host obvykle je z partnerské organizace a ve výchozím nastavení má omezená oprávnění v adresáři pozvání.
 
 V závislosti na potřebách zvoucí organizaci uživatele spolupráce B2B ve službě Azure AD může být v jednom z následujících stavů účet:
 

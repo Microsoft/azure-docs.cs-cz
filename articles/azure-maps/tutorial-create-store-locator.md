@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: fd3228194ac232cf8fc0efae46454075c5c02314
-ms.sourcegitcommit: b4ad15a9ffcfd07351836ffedf9692a3b5d0ac86
-ms.translationtype: HT
+ms.openlocfilehash: 61fdaec79e563ba4d87e73b22aba52a5c3f8251b
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/05/2019
-ms.locfileid: "59058726"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59270799"
 ---
 # <a name="create-a-store-locator-by-using-azure-maps"></a>Vytvořit úložiště s využitím Azure Maps
 
@@ -132,14 +132,14 @@ K vytvoření uživatelského rozhraní, přidejte kód pro *index.html*:
 1. Přidání odkazů na Azure Maps webový ovládací prvek jazyka JavaScript a soubory šablon stylů CSS:
 
     ```HTML
-    <link rel="stylesheet" href="https://atlas.microsoft.com/sdk/css/atlas.min.css?api-version=2" type="text/css">
-    <script src="https://atlas.microsoft.com/sdk/js/atlas.min.js?api-version=2"></script>
+    <link rel="stylesheet" href="https://atlas.microsoft.com/sdk/javascript/mapcontrol/2/atlas.min.css" type="text/css">
+    <script src="https://atlas.microsoft.com/sdk/javascript/mapcontrol/2/atlas.min.js"></script>
     ```
 
 1. Přidáte odkaz na modul služby Azure Maps. Modul je knihovna JavaScript, která zabalí služby Azure Maps REST a zpřístupňuje je snadno použitelný v jazyce JavaScript. Modul je užitečné pro provozování vyhledávací funkce.
 
     ```HTML
-    <script src="https://atlas.microsoft.com/sdk/js/atlas-service.js?api-version=2"></script>
+    <script src="https://atlas.microsoft.com/sdk/javascript/mapcontrol/2/atlas-service.min.js"></script>
     ```
 
 1. Přidání odkazů na *index.js* a *index.css*:
@@ -970,3 +970,6 @@ Další příklady kódu a prostředí pro interaktivní psaní kódu:
 
 > [!div class="nextstepaction"]
 > [Jak používat mapový ovládací prvek](how-to-use-map-control.md)
+
+> [!div class="nextstepaction"]
+> [Použití výrazů s daty styl](data-driven-style-expressions-web-sdk.md)

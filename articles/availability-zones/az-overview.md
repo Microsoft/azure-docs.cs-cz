@@ -13,15 +13,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/19/2019
+ms.date: 04/02/2019
 ms.author: cynthn
 ms.custom: mvc I am an ITPro and application developer, and I want to protect (use Availability Zones) my applications and data against data center failure (to build Highly Available applications).
-ms.openlocfilehash: 3d4b0b143b41daca376aecc64cf734fadcc94faa
-ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
+ms.openlocfilehash: 557757fc4d99fe57ad545e9d2eebcce61ddb3a8f
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58226568"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59268717"
 ---
 # <a name="what-are-availability-zones-in-azure"></a>Co jsou zóny dostupnosti v Azure?
 Zóny dostupnosti je vysoká dostupnost služeb, které chrání vaše aplikace a data z datacenter selhání. Zóny dostupnosti jsou jedinečná fyzická umístění v rámci oblasti Azure. Každá zóna se skládá z jednoho nebo více datových Center vybavených nezávislým napájením, chlazením a sítí. K zajištění odolnosti proti chybám, je minimálně tří samostatných zón ve všech oblastech, povolené. Fyzické oddělení zón dostupnosti v rámci oblasti chrání aplikace a data před selháními datových center. Zónově redundantní služby replikaci vašich aplikací a dat napříč zónami dostupnosti pro zajištění ochrany z jednoho body z chyby. Zóny dostupnosti Azure nabízí odvětví nejlepší 99,99 % doby provozu SLA k virtuálním počítačům. Úplná smlouva [Azure SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/) vysvětluje garantovanou dostupnost Azure jako celku.
@@ -45,6 +45,7 @@ Pokud chcete dosáhnout komplexní obchodní kontinuity podnikových procesů v 
 - Francie – střed
 - Severní Evropa
 - Jihovýchodní Asie 
+- Velká Británie – jih&#42;
 - Západní Evropa
 - Západní USA 2
 
@@ -57,8 +58,8 @@ Služby Azure, které podporují zóny dostupnosti jsou:
 - Windows Virtual Machines
 - Virtual Machine Scale Sets
 - Managed Disks
-- Load Balancer
-- Veřejná IP adresa
+- Load balancer úrovně Standard&#42;
+- Standardní veřejné IP adresy&#42;
 - Zónově redundantní úložiště
 - SQL Database
 - Event Hubs
@@ -66,6 +67,8 @@ Služby Azure, které podporují zóny dostupnosti jsou:
 - VPN Gateway
 - ExpressRoute
 - Služba Application Gateway (preview)
+
+&#42;Prostředky vytvořené v rámci Velká Británie – jih před 25. března 2019 se brzy převedou na být zónově redundantní. Prostředky vytvořené po 25. března 2019 bude okamžitě zónově redundantní.
 
 ## <a name="services-resiliency"></a>Odolnost proti chybám služby
 Všech služeb Azure pro správu dokáže odolné proti chybám v případě selhání úrovni oblasti. V celé spektrum od selhání mají nejmíň jeden chyby zóna dostupnosti v rámci oblasti menší radius chyby ve srovnání s selhání celé oblasti. Azure můžete obnovit v případě selhání zóny úrovně služeb pro správu v rámci oblasti nebo z jiné oblasti Azure. Azure provádí po jednom v rámci oblasti, aby se zabránilo chybám vliv na prostředky zákazníků nasazení napříč zónami dostupnosti v rámci oblasti kritické údržby jednu zónu.

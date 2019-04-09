@@ -8,19 +8,19 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 03/11/2019
 ms.author: nberdy
-ms.openlocfilehash: d839e2e9922ac68af3aea37884e8b2f72b80b0e7
-ms.sourcegitcommit: d89b679d20ad45d224fd7d010496c52345f10c96
+ms.openlocfilehash: 84f28a1cb411e7df156fc08fa683efe7f83eda64
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57791575"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59258109"
 ---
 # <a name="iot-hub-operations-monitoring-deprecated"></a>Operací služby IoT Hub monitorování (zastaralé)
 
 Monitorování operací služby IoT Hub umožňuje monitorovat stav operací ve službě IoT hub v reálném čase. IoT Hub sleduje události napříč několika kategoriemi těchto operací. Můžete se rozhodnout do odesílání událostí z jedné nebo více kategorií pro koncový bod služby IoT hub pro zpracování. Můžete monitorovat data o chybách nebo nastavení složitější zpracování na základě způsobů data.
 
 >[!NOTE]
->IoT Hub **monitorování operací je zastaralý a odebral ze služby IoT Hub na 10. března 2019**. Monitorování operací a stavu služby IoT Hub, najdete v části [monitorování stavu služby Azure IoT Hub a rychlá Diagnostika potíží][lnk-monitor]. Další informace o vyřazení časové osy, naleznete v tématu [monitorování řešení Azure IoT pomocí Azure monitoru a Azure Resource Health][lnk-blog-announcement].
+>IoT Hub **monitorování operací je zastaralý a odebral ze služby IoT Hub na 10. března 2019**. Monitorování operací a stavu služby IoT Hub, najdete v části [monitorování stavu služby Azure IoT Hub a rychlá Diagnostika potíží](iot-hub-monitor-resource-health.md). Další informace o vyřazení časové osy, naleznete v tématu [monitorování řešení Azure IoT pomocí Azure monitoru a Azure Resource Health](https://azure.microsoft.com/blog/monitor-your-azure-iot-solutions-with-azure-monitor-and-azure-resource-health).
 
 IoT Hub monitoruje šest kategorie události:
 
@@ -36,15 +36,15 @@ IoT Hub monitoruje šest kategorie události:
 
 ## <a name="how-to-enable-operations-monitoring"></a>Povolení monitorování operací
 
-1. Vytvoření služby IoT hub. Můžete najít pokyny o tom, jak vytvořit IoT hub v [Začínáme] [ lnk-get-started] průvodce.
+1. Vytvoření služby IoT hub. Můžete najít pokyny o tom, jak vytvořit IoT hub v [Začínáme](quickstart-send-telemetry-dotnet.md) průvodce.
 
-1. Otevře se okno služby IoT hub. Odtud, klikněte na tlačítko **monitorování operací**.
+2. Otevře se okno služby IoT hub. Odtud, klikněte na tlačítko **monitorování operací**.
 
-    ![Konfigurace na portálu pro sledování operací přístupu k][1]
+    ![Konfigurace na portálu pro sledování operací přístupu k](./media/iot-hub-operations-monitoring/enable-OM-1.png)
 
-1. Vyberte monitorování kategorie, které chcete monitorovat a potom klikněte na **Uložit**. Události jsou k dispozici pro čtení z koncového bodu kompatibilní s centrem událostí uvedený v **nastavení monitorování**. Koncový bod služby IoT Hub se nazývá `messages/operationsmonitoringevents`.
+3. Vyberte monitorování kategorie, které chcete monitorovat a potom klikněte na **Uložit**. Události jsou k dispozici pro čtení z koncového bodu kompatibilní s centrem událostí uvedený v **nastavení monitorování**. Koncový bod služby IoT Hub se nazývá `messages/operationsmonitoringevents`.
 
-    ![Konfigurace monitorování ve službě IoT hub operací][2]
+    ![Konfigurace monitorování ve službě IoT hub operací](./media/iot-hub-operations-monitoring/enable-OM-2.png)
 
 > [!NOTE]
 > Výběr **Verbose** monitorování **připojení** kategorie způsobí, že služby IoT Hub generovat další diagnostické informace. U všech ostatních kategorií **Verbose** množství informací o službě IoT Hub změny nastavení obsahuje každá chybová zpráva.
@@ -145,7 +145,9 @@ Kategorie připojení sleduje chyby, ke které dochází, když zařízení při
 Kategorie nahrávání souborů sleduje chybách, ke kterým dochází za služby IoT hub a souvisí s funkcí odesílání souborů. Tato kategorie zahrnuje:
 
 * Chyby, ke kterým dochází s identifikátorem URI SAS, jako je například vypršení platnosti předtím, než oznámí zařízení centra dokončená nahrávání.
+
 * Nepovedlo nahrávání oznámí zařízení.
+
 * Chyby, ke kterým dochází při soubor nebyl nalezen v úložišti během vytváření zprávy oznámení služby IoT Hub.
 
 Tato kategorie nemůže zachytávat chyby, které se stanou přímo ve chvíli, kdy zařízení odesílá do souboru do úložiště.
@@ -188,31 +190,31 @@ Kategorie směrování zpráv sleduje chyb vzniklých při hodnocení trasy zpr�
 
 ## <a name="connect-to-the-monitoring-endpoint"></a>Připojte se k monitorování koncového bodu
 
-Monitorování koncového bodu ve službě IoT hub je koncový bod kompatibilní s centrem událostí. Můžete použít libovolný mechanismus, který funguje s Event Hubs slouží ke čtení z tohoto koncového bodu monitorování zpráv. Následující příklad vytvoří čtečku, která není vhodná pro vysoce výkonná nasazení. Další informace o zpracování zpráv ze služby Event Hubs najdete v kurzu [Začínáme se službou Event Hubs][lnk-eventhubs-tutorial].
+Monitorování koncového bodu ve službě IoT hub je koncový bod kompatibilní s centrem událostí. Můžete použít libovolný mechanismus, který funguje s Event Hubs slouží ke čtení z tohoto koncového bodu monitorování zpráv. Následující příklad vytvoří čtečku, která není vhodná pro vysoce výkonná nasazení. Další informace o zpracování zpráv ze služby Event Hubs najdete v článku [Začínáme se službou Event Hubs](../event-hubs/event-hubs-csharp-ephcs-getstarted.md) kurzu.
 
 Pro připojení k monitorování koncového bodu, budete potřebovat připojovací řetězec a název koncového bodu. Následující kroky ukazují, jak najít potřebné hodnoty na portálu:
 
 1. Na portálu přejděte do okna vaší služby IoT Hub prostředků.
 
-1. Zvolte **monitorování operací**a poznamenejte si, **název kompatibilní s centrem událostí** a **koncový bod kompatibilní s centrem událostí** hodnoty:
+2. Zvolte **monitorování operací**a poznamenejte si, **název kompatibilní s centrem událostí** a **koncový bod kompatibilní s centrem událostí** hodnoty:
 
-    ![Hodnoty koncového bodu kompatibilního s centrem událostí][img-endpoints]
+    ![Hodnoty koncového bodu kompatibilního s centrem událostí](./media/iot-hub-operations-monitoring/monitoring-endpoint.png)
 
-1. Zvolte **zásady sdíleného přístupu**, klikněte na tlačítko **služby**. Poznamenejte si, **primární klíč** hodnotu:
+3. Zvolte **zásady sdíleného přístupu**, klikněte na tlačítko **služby**. Poznamenejte si, **primární klíč** hodnotu:
 
-    ![Primární klíč zásad sdíleného přístupu služby][img-service-key]
+    ![Primární klíč zásad sdíleného přístupu služby](./media/iot-hub-operations-monitoring/service-key.png)
 
 Následující vzorový kód jazyka C# je přijata ze sady Visual Studio **klasická plocha Windows** konzolovou aplikaci C#. Projekt má **WindowsAzure.ServiceBus** nainstalovaný balíček NuGet.
 
 * Nahraďte zástupný symbol připojovacího řetězce připojovacím připojovacím řetězcem, který používá **koncový bod kompatibilní s centrem událostí** a služba **primární klíč** hodnoty, které jste si poznamenali dříve, jak je znázorněno v následujícím příkladu:
 
-    ```cs
+    ```csharp
     "Endpoint={your Event Hub-compatible endpoint};SharedAccessKeyName=service;SharedAccessKey={your service primary key value}"
     ```
 
 * Nahraďte monitorování zástupný název koncového bodu s **název kompatibilní s centrem událostí** hodnotu, kterou jste si poznamenali dříve.
 
-```cs
+```csharp
 class Program
 {
     static string connectionString = "{your monitoring endpoint connection string}";
@@ -263,24 +265,9 @@ class Program
 ```
 
 ## <a name="next-steps"></a>Další postup
+
 Podrobněji prozkoumat možnosti služby IoT Hub, najdete v tématech:
 
-* [Příručka vývojáře pro IoT Hub][lnk-devguide]
-* [Nasazení AI do hraničních zařízení s použitím Azure IoT Edge][lnk-iotedge]
+* [Příručka vývojáře pro IoT Hub](iot-hub-devguide.md)
 
-<!-- Links and images -->
-[1]: media/iot-hub-operations-monitoring/enable-OM-1.png
-[2]: media/iot-hub-operations-monitoring/enable-OM-2.png
-[img-endpoints]: media/iot-hub-operations-monitoring/monitoring-endpoint.png
-[img-service-key]: media/iot-hub-operations-monitoring/service-key.png
-
-[lnk-blog-announcement]: https://azure.microsoft.com/blog/monitor-your-azure-iot-solutions-with-azure-monitor-and-azure-resource-health
-[lnk-monitor]: iot-hub-monitor-resource-health.md
-[lnk-get-started]: quickstart-send-telemetry-dotnet.md
-[lnk-diagnostic-metrics]: iot-hub-metrics.md
-[lnk-scaling]: iot-hub-scaling.md
-[lnk-dr]: iot-hub-ha-dr.md
-
-[lnk-devguide]: iot-hub-devguide.md
-[lnk-iotedge]: ../iot-edge/tutorial-simulate-device-linux.md
-[lnk-eventhubs-tutorial]: ../event-hubs/event-hubs-csharp-ephcs-getstarted.md
+* [Nasazení AI do hraničních zařízení pomocí služby Azure IoT Edge](../iot-edge/tutorial-simulate-device-linux.md)

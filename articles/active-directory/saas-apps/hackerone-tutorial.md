@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 02/15/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 52a782831f0f017423faef7610f984b2ea87e445
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 6faf023d36ea40e3694161ee0cfc8aac7c5652fa
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57898461"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59277931"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-hackerone"></a>Kurz: Integrace Azure Active Directory s HackerOne
 
@@ -145,9 +145,9 @@ Ke konfiguraci Azure AD jednotné přihlašování s HackerOne, proveďte násle
 
     a. V **e-mailové doméně** textového pole zadejte registrované domény.
 
-    b. V  **adresy jednotného přihlašování** textových polí, vložte hodnotu **přihlašovací adresa URL** zkopírovanou z webu Azure portal.
+    b. V **adresy jednotného přihlašování** textových polí, vložte hodnotu **přihlašovací adresa URL** zkopírovanou z webu Azure portal.
 
-    c. Otevřete váš stažené **soubor certifikátu** z webu Azure portal do poznámkového bloku, zkopírujte obsah ho do schránky a vložte ho do **X509 certifikátu**  textového pole.
+    c. Otevřete váš stažené **soubor certifikátu** z webu Azure portal do poznámkového bloku, zkopírujte obsah ho do schránky a vložte ho do **certifikátu X509** textového pole.
 
     d. Klikněte na **Uložit**.
 
@@ -224,6 +224,6 @@ Po kliknutí na dlaždici HackerOne na přístupovém panelu, můžete by měl b
 
 - [Seznam kurzů o integraci aplikací SaaS pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

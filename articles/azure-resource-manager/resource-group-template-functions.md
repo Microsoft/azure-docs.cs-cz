@@ -4,22 +4,20 @@ description: Popisuje funkce používané k načtení hodnoty, práci s řetězc
 services: azure-resource-manager
 documentationcenter: na
 author: tfitzmac
-manager: timlt
-editor: tysonn
 ms.assetid: 0644abe1-abaa-443d-820d-1966d7d26bfd
 ms.service: azure-resource-manager
 ms.devlang: na
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/05/2019
+ms.date: 04/08/2019
 ms.author: tomfitz
-ms.openlocfilehash: eb3435d8c7b10e2de55cb0cf1f3ad2548bf2bcef
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: b5a1f12a877008a3ce2ff7bd9635b9ed47b379f7
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57766746"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59280311"
 ---
 # <a name="azure-resource-manager-template-functions"></a>Funkce šablon Azure Resource Manageru
 Tento článek popisuje všechny funkce, které můžete použít v šabloně Azure Resource Manageru. Informace o používání funkcí v šabloně najdete v tématu [syntaxe šablony](resource-group-authoring-templates.md#syntax).
@@ -47,21 +45,21 @@ Vytvoření vašich vlastních funkcích najdete v tématu [uživatelem definova
 ## <a name="array-and-object-functions"></a>Funkce pole a objektu
 Resource Manager poskytuje několik funkcí pro práci s poli a objekty.
 
-* [Pole](resource-group-template-functions-array.md#array)
+* [pole](resource-group-template-functions-array.md#array)
 * [sloučení](resource-group-template-functions-array.md#coalesce)
 * [concat](resource-group-template-functions-array.md#concat)
-* [Obsahuje](resource-group-template-functions-array.md#contains)
+* [obsahuje](resource-group-template-functions-array.md#contains)
 * [createArray](resource-group-template-functions-array.md#createarray)
-* [prázdný](resource-group-template-functions-array.md#empty)
+* [Prázdná](resource-group-template-functions-array.md#empty)
 * [první](resource-group-template-functions-array.md#first)
-* [intersection](resource-group-template-functions-array.md#intersection)
+* [Průnik](resource-group-template-functions-array.md#intersection)
 * [json](resource-group-template-functions-array.md#json)
-* [last](resource-group-template-functions-array.md#last)
+* [poslední](resource-group-template-functions-array.md#last)
 * [Délka](resource-group-template-functions-array.md#length)
 * [min](resource-group-template-functions-array.md#min)
 * [max](resource-group-template-functions-array.md#max)
 * [rozsah](resource-group-template-functions-array.md#range)
-* [skip](resource-group-template-functions-array.md#skip)
+* [přeskočit](resource-group-template-functions-array.md#skip)
 * [Take](resource-group-template-functions-array.md#take)
 * [sjednocení](resource-group-template-functions-array.md#union)
 
@@ -77,7 +75,7 @@ Resource Manager poskytuje několik funkcí pro provádění porovnání v šabl
 * [rovná se](resource-group-template-functions-comparison.md#equals)
 * [méně](resource-group-template-functions-comparison.md#less)
 * [lessOrEquals](resource-group-template-functions-comparison.md#lessorequals)
-* [greater](resource-group-template-functions-comparison.md#greater)
+* [větší](resource-group-template-functions-comparison.md#greater)
 * [greaterOrEquals](resource-group-template-functions-comparison.md#greaterorequals)
 
 <a id="deployment" />
@@ -87,7 +85,7 @@ Resource Manager poskytuje několik funkcí pro provádění porovnání v šabl
 ## <a name="deployment-value-functions"></a>Hodnota funkce nasazení
 Resource Manager poskytuje následující funkce pro načtení hodnot z části šablony a hodnoty související s nasazením:
 
-* [Nasazení](resource-group-template-functions-deployment.md#deployment)
+* [nasazení](resource-group-template-functions-deployment.md#deployment)
 * [parameters](resource-group-template-functions-deployment.md#parameters)
 * [Proměnné](resource-group-template-functions-deployment.md#variables)
 
@@ -101,7 +99,7 @@ Resource Manager poskytuje následující funkce pro načtení hodnot z části 
 Resource Manager poskytuje následující funkce pro práci s logických podmínek:
 
 * [a](resource-group-template-functions-logical.md#and)
-* [BOOL](resource-group-template-functions-logical.md#bool)
+* [bool](resource-group-template-functions-logical.md#bool)
 * [if](resource-group-template-functions-logical.md#if)
 * [Not](resource-group-template-functions-logical.md#not)
 * [nebo](resource-group-template-functions-logical.md#or)
@@ -123,13 +121,13 @@ Resource Manager poskytuje následující funkce pro práci s celými čísly:
 * [add](resource-group-template-functions-numeric.md#add)
 * [copyIndex](resource-group-template-functions-numeric.md#copyindex)
 * [div](resource-group-template-functions-numeric.md#div)
-* [plovoucí desetinnou čárkou](resource-group-template-functions-numeric.md#float)
+* [float](resource-group-template-functions-numeric.md#float)
 * [int](resource-group-template-functions-numeric.md#int)
 * [min](resource-group-template-functions-numeric.md#min)
 * [max](resource-group-template-functions-numeric.md#max)
 * [MOD](resource-group-template-functions-numeric.md#mod)
 * [mul](resource-group-template-functions-numeric.md#mul)
-* [sub](resource-group-template-functions-numeric.md#sub)
+* [Sub](resource-group-template-functions-numeric.md#sub)
 
 <a id="listkeys" />
 <a id="list" />
@@ -149,7 +147,7 @@ Resource Manager poskytuje následující funkce pro načtení prostředků hodn
 * [Zprostředkovatelé](resource-group-template-functions-resource.md#providers)
 * [Referenční dokumentace](resource-group-template-functions-resource.md#reference)
 * [resourceGroup](resource-group-template-functions-resource.md#resourcegroup)
-* [ID prostředku](resource-group-template-functions-resource.md#resourceid)
+* [resourceId](resource-group-template-functions-resource.md#resourceid)
 * [předplatné](resource-group-template-functions-resource.md#subscription)
 
 <a id="base64" />
@@ -190,29 +188,30 @@ Resource Manager poskytuje následující funkce pro práci s řetězci:
 * [base64ToJson](resource-group-template-functions-string.md#base64tojson)
 * [base64ToString](resource-group-template-functions-string.md#base64tostring)
 * [concat](resource-group-template-functions-string.md#concat)
-* [Obsahuje](resource-group-template-functions-string.md#contains)
+* [obsahuje](resource-group-template-functions-string.md#contains)
 * [dataUri](resource-group-template-functions-string.md#datauri)
 * [dataUriToString](resource-group-template-functions-string.md#datauritostring)
-* [prázdný](resource-group-template-functions-string.md#empty)
+* [Prázdná](resource-group-template-functions-string.md#empty)
 * [endsWith](resource-group-template-functions-string.md#endswith)
 * [první](resource-group-template-functions-string.md#first)
+* [formát](resource-group-template-functions-string.md#format)
 * [identifikátor GUID](resource-group-template-functions-string.md#guid)
 * [indexOf](resource-group-template-functions-string.md#indexof)
-* [last](resource-group-template-functions-string.md#last)
+* [poslední](resource-group-template-functions-string.md#last)
 * [lastIndexOf](resource-group-template-functions-string.md#lastindexof)
 * [Délka](resource-group-template-functions-string.md#length)
 * [newGuid](resource-group-template-functions-string.md#newguid)
 * [padLeft](resource-group-template-functions-string.md#padleft)
 * [nahradit](resource-group-template-functions-string.md#replace)
-* [skip](resource-group-template-functions-string.md#skip)
+* [přeskočit](resource-group-template-functions-string.md#skip)
 * [split](resource-group-template-functions-string.md#split)
 * [startsWith](resource-group-template-functions-string.md#startswith)
-* [řetězec](resource-group-template-functions-string.md#string)
+* [string](resource-group-template-functions-string.md#string)
 * [dílčí řetězec](resource-group-template-functions-string.md#substring)
 * [Take](resource-group-template-functions-string.md#take)
 * [toLower](resource-group-template-functions-string.md#tolower)
 * [toUpper](resource-group-template-functions-string.md#toupper)
-* [trim](resource-group-template-functions-string.md#trim)
+* [Trim](resource-group-template-functions-string.md#trim)
 * [uniqueString](resource-group-template-functions-string.md#uniquestring)
 * [uri](resource-group-template-functions-string.md#uri)
 * [uriComponent](resource-group-template-functions-string.md#uricomponent)

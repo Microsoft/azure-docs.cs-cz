@@ -2,18 +2,18 @@
 title: Kopírování nebo přesun dat do služby Azure Storage pomocí AzCopy v10 (Preview) | Dokumentace Microsoftu
 description: Použití AzCopy v10 k přesunutí nebo zkopírování dat z objektu blob, data lake a obsah souboru nebo nástroj příkazového řádku (Preview). Kopírování dat do služby Azure Storage z místních souborů nebo kopírování dat v rámci nebo mezi účty úložiště. Snadno migrate data do služby Azure Storage.
 services: storage
-author: artemuwka
+author: seguler
 ms.service: storage
 ms.topic: article
-ms.date: 02/24/2019
-ms.author: artemuwka
+ms.date: 04/05/2019
+ms.author: seguler
 ms.subservice: common
-ms.openlocfilehash: ad3e96af95d952956af02acfd87d6d317bc29ed0
-ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
+ms.openlocfilehash: ffd448db86c8658619da5339cd34eb9dba7e05ce
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2019
-ms.locfileid: "58574973"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59278424"
 ---
 # <a name="transfer-data-with-azcopy-v10-preview"></a>Přenos dat pomocí AzCopy v10 (Preview)
 
@@ -24,6 +24,7 @@ AzCopy v10 je nástroj příkazového řádku pro kopírování dat do nebo z ú
 - Synchronizuje systémy souborů do služby Azure Blob storage a naopak. Použití `azcopy sync <source> <destination>`. Ideální pro scénáře přírůstkového kopírování.
 - Podporuje rozhraní API pro Azure Data Lake Storage Gen2. Použití `myaccount.dfs.core.windows.net` jako identifikátor URI pro volání rozhraní API Data Lake Storage Gen2.
 - Podporuje kopírování celý účet (pouze služby Blob service) na jiný účet.
+- Podporuje kopírování dat ze Amazon Web Services S3 kontejneru.
 - Používá nový [Vložit blok z adresy URL](https://docs.microsoft.com/rest/api/storageservices/put-block-from-url) rozhraní API pro podporu kopírování pro účet. Přenos dat je rychlejší, protože přenosy do klienta není povinné.
 - Obsahuje seznam nebo odebere soubory a objekty BLOB v zadané cestě.
 - Podporuje jeden vzor zástupných znaků v cestě a – vyloučení příznaky.
@@ -79,8 +80,8 @@ AzCopy v10 má svým zdokumentovaných syntaxi. Když se přihlásíte do Azure 
 .\azcopy cp "C:\local\path\*" "https://account.blob.core.windows.net/container"
 
 # Examples if you're using SAS tokens to authenticate:
-.\azcopy cp "C:\local\path" "https://account.blob.core.windows.net/container?sastoken" --recursive=true
-.\azcopy cp "C:\local\path\myfile" "https://account.blob.core.windows.net/container/myfile?sastoken"
+.\azcopy cp "C:\local\path" "https://account.blob.core.windows.net/container?st=2019-04-05T04%3A10%3A00Z&se=2019-04-13T04%3A10%3A00Z&sp=rwdl&sv=2018-03-28&sr=c&sig=Qdihej%2Bsbg4AiuyLVyQZklm9pSuVGzX27qJ508wi6Es%3D" --recursive=true
+.\azcopy cp "C:\local\path\myfile" "https://account.blob.core.windows.net/container/myfile?st=2019-04-05T04%3A10%3A00Z&se=2019-04-13T04%3A10%3A00Z&sp=rwdl&sv=2018-03-28&sr=c&sig=Qdihej%2Bsbg4AiuyLVyQZklm9pSuVGzX27qJ508wi6Es%3D"
 ```
 
 Zde je, jak získat seznam dostupných příkazů:
@@ -101,7 +102,7 @@ Pokud chcete zobrazit stránku nápovědy a příklady pro konkrétní příkaz,
 
 ## <a name="create-a-blob-container-or-file-share"></a>Vytvoření objektů blob v kontejneru nebo ve sdílené složce 
 
-**Vytvořte kontejner objektů blob**
+**Vytvoření kontejneru objektů blob**
 
 ```azcopy
 .\azcopy make "https://account.blob.core.windows.net/container-name"
@@ -135,16 +136,16 @@ Pomocí příkazu kopírování přenos dat ze zdroje do cíle. Zdroj nebo cíl 
 .\azcopy cp <source path> <destination path> --<flag-name>=<flag-value>
 ```
 
-Následující příkaz nahraje všechny soubory ve složce `C:\local\path` rekurzivně do kontejneru `mycontainer1`, vytváření `path` adresáře v kontejneru:
+Následující příkaz nahraje všechny soubory ve složce `C:\local\path` rekurzivně do kontejneru `mycontainer1`, vytváření `path` adresáře v kontejneru. Když `--put-md5` příznak, AzCopy vypočítává a ukládá hodnota hash md5 každý soubor v `Content-md5` vlastnost odpovídající objekt blob pro pozdější použití.
 
 ```azcopy
-.\azcopy cp "C:\local\path" "https://account.blob.core.windows.net/mycontainer1<sastoken>" --recursive=true
+.\azcopy cp "C:\local\path" "https://account.blob.core.windows.net/mycontainer1<sastoken>" --recursive=true --put-md5
 ```
 
 Následující příkaz nahraje všechny soubory ve složce `C:\local\path` (bez recursing do podadresáře) do kontejneru `mycontainer1`:
 
 ```azcopy
-.\azcopy cp "C:\local\path\*" "https://account.blob.core.windows.net/mycontainer1<sastoken>"
+.\azcopy cp "C:\local\path\*" "https://account.blob.core.windows.net/mycontainer1<sastoken>" --put-md5
 ```
 
 Pokud chcete najít další příklady, použijte následující příkaz:
@@ -153,21 +154,27 @@ Pokud chcete najít další příklady, použijte následující příkaz:
 .\azcopy cp -h
 ```
 
-## <a name="copy-data-between-two-storage-accounts"></a>Kopírovat data mezi dva účty úložiště
+## <a name="copy-blob-data-between-two-storage-accounts"></a>Kopírování dat objektů Blob mezi dva účty úložiště
 
 Kopírování dat mezi dva účty úložiště používá [Vložit blok z adresy URL](https://docs.microsoft.com/rest/api/storageservices/put-block-from-url) rozhraní API a nepoužívá šířky pásma sítě klientského počítače. Data se zkopíruje mezi dvěma servery služby Azure Storage přímo, zatímco AzCopy jednoduše orchestruje operace kopírování. Tato možnost je aktuálně k dispozici pouze pro úložiště objektů Blob.
 
-Chcete-li kopírovat data mezi dva účty úložiště, použijte následující příkaz:
+Kopírování všech dat objektů Blob mezi dva účty úložiště, použijte následující příkaz:
 ```azcopy
 .\azcopy cp "https://myaccount.blob.core.windows.net/<sastoken>" "https://myotheraccount.blob.core.windows.net/<sastoken>" --recursive=true
 ```
 
-> [!NOTE]
-> Tento příkaz se vytvořit výčet všech kontejnerů objektů blob a zkopírujte je do cílového účtu. V současné době podporuje AzCopy v10 kopírování jenom objekty BLOB bloku mezi dva účty úložiště. Přeskočí všechny ostatní objekty účtu z úložiště, (například doplňovací objekty BLOB, objekty BLOB stránky, soubory, tabulky a fronty).
+Pokud chcete zkopírovat do jiného kontejneru objektů Blob kontejner objektů Blob, použijte následující příkaz:
+```azcopy
+.\azcopy cp "https://myaccount.blob.core.windows.net/mycontainer/<sastoken>" "https://myotheraccount.blob.core.windows.net/mycontainer/<sastoken>" --recursive=true
+```
 
 ## <a name="copy-a-vhd-image-to-a-storage-account"></a>Kopírovat obraz virtuálního pevného disku do účtu úložiště
 
-AzCopy v10 ve výchozím nastavení odesílá data do objektů BLOB bloku. Nicméně pokud má zdrojový soubor `.vhd` rozšíření, AzCopy v10 budou ve výchozím nastavení nahrávání do objektů blob stránky. Tato akce není v tuto chvíli konfigurovatelné.
+AzCopy ve výchozím nastavení odesílá data do objektů BLOB bloku. Pokud chcete nahrát soubory, doplňovací objekty BLOB nebo objekty BLOB stránek použijte příznak `--blob-type=[BlockBlob|PageBlob|AppendBlob]`.
+
+```azcopy
+.\azcopy cp "C:\local\path\mydisk.vhd" "https://myotheraccount.blob.core.windows.net/mycontainer/mydisk.vhd<sastoken>" --blob-type=PageBlob
+```
 
 ## <a name="sync-incremental-copy-and-delete-blob-storage-only"></a>Synchronizace: přírůstkové kopírování a delete (pouze úložiště objektů Blob)
 
@@ -192,6 +199,30 @@ Také můžete synchronizovat kontejner objektů blob až místního systému so
 ```
 
 Tento příkaz přírůstkové synchronizace zdroje do cílového umístění podle naposledy upravené časové razítko. Pokud přidáte nebo odstraníte soubor ve zdroji, AzCopy v10 bude totéž v cílovém umístění. Před odstraněním AzCopy zobrazí výzvu k potvrzení.
+
+## <a name="copy-data-from-amazon-web-services-aws-s3"></a>Kopírování dat z Amazon Web Services (AWS) S3
+
+K ověření sady AWS S3, nastavte následující proměnné prostředí:
+
+```
+# For Windows:
+set AWS_ACCESS_KEY_ID=<your AWS access key>
+set AWS_SECRET_ACCESS_KEY=<AWS secret access key>
+# For Linux:
+export AWS_ACCESS_KEY_ID=<your AWS access key>
+export AWS_SECRET_ACCESS_KEY=<AWS secret access key>
+# For MacOS
+export AWS_ACCESS_KEY_ID=<your AWS access key>
+export AWS_SECRET_ACCESS_KEY=<AWS secret access key>
+```
+
+Pokud chcete zkopírovat do kbelíku na kontejner objektů Blob, vydejte následující příkaz:
+
+```
+.\azcopy cp "https://s3.amazonaws.com/mybucket" "https://myaccount.blob.core.windows.net/mycontainer?<sastoken>" --recursive
+```
+
+Další podrobnosti o kopírování dat z AWS S3 pomocí AzCopy, najdete na stránce [tady](https://github.com/Azure/azure-storage-azcopy/wiki/Copy-from-AWS-S3).
 
 ## <a name="advanced-configuration"></a>Pokročilá konfigurace
 
@@ -277,10 +308,11 @@ Chcete-li filtrovat přenosy podle stavu, použijte následující příkaz:
 .\azcopy jobs show <job-id> --with-status=Failed
 ```
 
-Použijte následující příkaz k obnovení úlohy se nezdařilo nebo bylo zrušeno. Tento příkaz používá jeho identifikátor spolu s tokenem SAS. Není trvalé z bezpečnostních důvodů:
+Použijte následující příkaz k obnovení úlohy se nezdařilo nebo bylo zrušeno. Tento příkaz používá jeho identifikátor spolu s tokenem SAS není trvalé z bezpečnostních důvodů:
 
 ```azcopy
-.\azcopy jobs resume <jobid> --sourcesastokenhere --destinationsastokenhere
+.\azcopy jobs resume <jobid> --source-sas="<sastokenhere>"
+.\azcopy jobs resume <jobid> --destination-sas="<sastokenhere>"
 ```
 
 ## <a name="next-steps"></a>Další postup

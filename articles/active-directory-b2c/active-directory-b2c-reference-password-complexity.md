@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 02/11/2019
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 2c6f3d88aae99c419b2507f421cc4dfebb2c022b
-ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
+ms.openlocfilehash: 1d7874d7c8d04e3d3565cdfe2e52e49c538b3091
+ms.sourcegitcommit: e43ea344c52b3a99235660960c1e747b9d6c990e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56100197"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "59009797"
 ---
 # <a name="configure-complexity-requirements-for-passwords-in-azure-active-directory-b2c"></a>Konfigurovat požadavky na složitost hesel v Azure Active Directory B2C
 
@@ -23,7 +23,7 @@ Azure Active Directory (Azure AD) B2C podporuje měnící se požadavky na slož
 
 ## <a name="password-rule-enforcement"></a>Vynucení pravidel heslo
 
-Při registraci nebo resetování hesla, koncový uživatel musí zadat heslo, které splňuje pravidla složitosti. Každý tok uživatele se vynucují pravidla složitosti hesla. Je možné mít jeden tok uživatele vyžadují čtyřmístný PIN kód během registrace nějakou jinou tok uživatele vyžaduje řetězec osm znaků během registrace. Můžete například použít tok uživatele s jiným heslem složitost pro dospělé než pro děti.
+Při registraci nebo resetování hesla, koncový uživatel musí zadat heslo, které splňuje pravidla složitosti. Každý tok uživatele se vynucují pravidla složitosti hesla. Je možné mít jeden tok uživatele vyžadují čtyřmístný PIN kód během registrace při vyžaduje jiný tok uživatele jako řetězec osm znaků během registrace. Můžete například použít tok uživatele s jiným heslem složitost pro dospělé než pro děti.
 
 Složitost hesla nikdy vynucuje během přihlašování. Uživatelé nikdy vyzváni během přihlášení změnit své heslo, protože nesplňuje požadavek na aktuální složitost.
 

@@ -12,16 +12,16 @@ ms.workload: ''
 ms.tgt_pltfrm: ''
 ms.devlang: ''
 ms.topic: conceptual
-ms.date: 02/27/2019
+ms.date: 03/28/2019
 ms.author: pbutlerm
-ms.openlocfilehash: 6d18adfaec965d858bdcb1f74ebcea89f57eea39
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.openlocfilehash: 437009079c1bebe3694aaa26f945bd726b3c9fb9
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58878022"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59010563"
 ---
-# <a name="saas-fulfillment-api"></a>Splnění SaaS API
+# <a name="saas-fulfillment-apis-version-2"></a>SaaS splnění rozhraní API verze 2 
 
 Tento článek podrobně popisuje rozhraní API, která umožňuje nezávislí výrobci softwaru (ISV) můžete integrovat své aplikace SaaS pomocí Azure Marketplace. Toto rozhraní API umožňuje aplikace nezávislých výrobců softwaru se účastnit všech kanálů commerce povoleno: s přímým přístupem, vedené partnerem (prodejci) a vedla pole.  Toto rozhraní API je požadavek na výpis transactable SaaS nabídky na webu Azure Marketplace.
 
@@ -73,14 +73,34 @@ Tento stav označuje, že nebyl přijat platby zákazníků. Pomocí zásad bude
 
 Předplatná dosažení tohoto stavu v odpovědi na požadavek explicitní zákazníka nebo jako reakci na neuhrazení poplatků. Očekávání z ISV je, že zákaznická data se uchovávají po dobu obnovení v požadavku po dobu minimálně X dní a pak odstraní. 
 
+
 ## <a name="api-reference"></a>API – referenční informace
 
-Tato část popisuje SaaS *rozhraní Subscription API* a *operace rozhraní API*.
+Tato část popisuje SaaS *rozhraní Subscription API* a *operace rozhraní API*.  Hodnota `api-version` parametr pro verzi 2 rozhraní API je `2018-08-31`.  
+
+
+### <a name="parameter-and-entity-definitions"></a>Definice parametru a entity
+
+Následující tabulka obsahuje seznam definic pro společné parametry a entity používané v plnění rozhraní API.
+
+|     Parametr/entity     |     Definice                         |
+|     ----------------     |     ----------                         |
+| `subscriptionId`         | Identifikátor GUID prostředku SaaS  |
+| `name`                   | Popisný název pro tento prostředek k dispozici zákazníkem |
+| `publisherId`            | Jedinečný řetězec identifikátor automaticky generovaný pro jednotlivé vydavatele, například "conotosocorporation" |
+| `offerId`                | Jedinečný řetězec identifikátor automaticky generovaný pro každou nabídku, například "contosooffer1"  |
+| `planId`                 | Jedinečný řetězec identifikátor automaticky generovaný pro každý plán nebo sku, například "contosobasicplan" |
+| `operationId`            | Identifikátor GUID pro určitou operaci  |
+|  `action`                | Akce prováděná s prostředkem, buď `subscribe`, `unsubscribe`, `suspend`, `reinstate`, nebo `changePlan`  |
+|   |   |
+
+Globálně jedinečné identifikátory ([GUID](https://en.wikipedia.org/wiki/Universally_unique_identifier)) jsou čísla 128-bit (32 šestnáctkového čísla), která jsou obvykle automaticky generovány. 
 
 
 ### <a name="subscription-api"></a>Předplatné rozhraní API
 
 Předplatné rozhraní API podporuje následující operace HTTPS: **Získat**, **příspěvek**, **opravy**, a **odstranit**.
+
 
 #### <a name="list-subscriptions"></a>Seznam předplatných
 
@@ -106,34 +126,37 @@ Zobrazí všechny odběry SaaS pro vydavatele.
 *Kódy odpovědí:*
 
 Kód: 200<br>
-Získání tokenu ověřování podle, vydavatele a odpovídajících předplatných pro všechny vydavatele, nabídky.<br> Vrácená data:<br>
+Podle ověřovací token, získejte vydavatele a odpovídajících předplatných pro všechny vydavatele, nabídky.<br> Vrácená data:<br>
 
 ```json
 {
-  "subscriptions": [
+  [
       {
-          "id": "",
-          "name": "CloudEndure for Production use",
-          "publisherId": "cloudendure",
-          "offerId": "ce-dr-tier2",
+          "id": "<guid>",
+          "name": "Contoso Cloud Solution",
+          "publisherId": "contoso",
+          "offerId": "cont-cld-tier2",
           "planId": "silver",
           "quantity": "10",
           "beneficiary": { // Tenant for which SaaS subscription is purchased.
-              "tenantId": "cc906b16-1991-4b6d-a5a4-34c66a5202d7"
+              "tenantId": "<guid>"
           },
           "purchaser": { // Tenant that purchased the SaaS subscription. These could be different for reseller scenario
-              "tenantId": "0396833b-87bf-4f31-b81c-c67f88973512"
+              "tenantId": "<guid>"
           },
           "allowedCustomerOperations": [
               "Read" // Possible Values: Read, Update, Delete.
           ], // Indicates operations allowed on the SaaS subscription. For CSP initiated purchases, this will always be Read.
           "sessionMode": "None", // Possible Values: None, DryRun (Dry Run indicates all transactions run as Test-Mode in the commerce stack)
-          "status": "Subscribed" // Indicates the status of the operation. [Provisioning, Subscribed, Suspended, Unsubscribed]
+          "saasSubscriptionStatus": "Subscribed" // Indicates the status of the operation. [Provisioning, Subscribed, Suspended, Unsubscribed]
       }
   ],
   "continuationToken": ""
 }
 ```
+
+Token pro pokračování bude pouze k dispozici, pokud existují další výraz "stránky" plánů pro načtení. 
+
 
 Kód: 403 <br>
 Neautorizováno. Neposkytl se ověřovací token, je neplatný, nebo požadavek se pokouší o přístup akvizice, který nepatří do aktuálního uživatele. 
@@ -174,22 +197,22 @@ Získá určený odběr SaaS. Pomocí tohoto volání můžete získat informace
 *Kódy odpovědí:*
 
 Kód: 200<br>
-Získá předplatné saas z identifikátoru<br> Vrácená data:<br>
+Získá předplatné SaaS z identifikátoru<br> Vrácená data:<br>
 
 ```json
 Response Body:
 { 
         "id":"",
-        "name":"CloudEndure for Production use",
-        "publisherId": "cloudendure",
-        "offerId": "ce-dr-tier2",
+        "name":"Contoso Cloud Solution",
+        "publisherId": "contoso",
+        "offerId": "cont-cld-tier2",
         "planId": "silver",
         "quantity": "10"",
           "beneficiary": { // Tenant for which SaaS subscription is purchased.
-              "tenantId": "cc906b16-1991-4b6d-a5a4-34c66a5202d7"
+              "tenantId": "<guid>"
           },
           "purchaser": { // Tenant that purchased the SaaS subscription. These could be different for reseller scenario
-              "tenantId": "0396833b-87bf-4f31-b81c-c67f88973512"
+              "tenantId": "<guid>"
           },
         "allowedCustomerOperations": ["Read"], // Indicates operations allowed on the SaaS subscription. For CSP initiated purchases, this will always be Read.
         "sessionMode": "None", // Dry Run indicates all transactions run as Test-Mode in the commerce stack
@@ -240,25 +263,23 @@ Pomocí tohoto volání můžete zjistit, jestli jsou všechny nabídky private/
 Kód: 200<br>
 Získáte seznam dostupných plánů pro zákazníka.<br>
 
+Text odpovědi:
+
 ```json
-Response Body:
-[{
-    "planId": "silver",
-    "displayName": "Silver",
-    "isPrivate": false
-},
 {
-    "planId": "silver-private",
-    "displayName": "Silver-private",
-    "isPrivate": true
-}]
+    "plans": [{
+        "planId": "Platinum001",
+        "displayName": "Private platinum plan for Contoso",
+        "isPrivate": true
+    }]
+}
 ```
 
 Kód: 404<br>
 Nenalezené<br> 
 
 Kód: 403<br>
-Neautorizováno. Neposkytl se ověřovací token, je neplatný nebo požadavek se pokouší o přístup akvizice, který nepatří do aktuálního uživatele. <br> 
+Neautorizováno. Neposkytl se ověřovací token, je neplatný, nebo požadavek se pokouší o přístup akvizice, který nepatří do aktuálního uživatele. <br> 
 
 Kód: 500<br>
 Vnitřní chyba serveru<br>
@@ -301,12 +322,12 @@ Přeloží neprůhledné token k odběru služby SaaS.<br>
 ```json
 Response body:
 {
-    "subscriptionId": "cd9c6a3a-7576-49f2-b27e-1e5136e57f45",  
-    "subscriptionName": "My Saas application",
-    "offerId": "ce-dr-tier2",
+    "subscriptionId": "<guid>",  
+    "subscriptionName": "Contoso Cloud Solution",
+    "offerId": "cont-cld-tier2",
     "planId": "silver",
     "quantity": "20",
-    "operationId": " be750acb-00aa-4a02-86bc-476cbe66d7fa"  
+    "operationId": "<guid>"  
 }
 ```
 
@@ -348,7 +369,7 @@ Vnitřní chyba serveru
 |  ---------------   |  ---------------  |
 |  Typ obsahu      | `application/json`  |
 |  x-ms-requestid    | Jedinečnou hodnotu řetězce pro sledování žádosti z klienta, pokud možno identifikátor GUID. Pokud tuto hodnotu nezadáte, jeden se vygeneruje a k dispozici v hlavičkách odpovědi.  |
-|  x-ms-correlationid  | Jedinečnou hodnotu řetězce pro operaci na straně klienta. To koreluje všech událostí z operace klienta s událostmi na straně serveru. Pokud tuto hodnotu nezadáte, jeden se vygeneruje a k dispozici v hlavičkách odpovědi.  |
+|  x-ms-correlationid  | Jedinečnou hodnotu řetězce pro operaci na straně klienta. Tento řetězec koreluje všech událostí z operace klienta s událostmi na straně serveru. Pokud tuto hodnotu nezadáte, jeden se vygeneruje a k dispozici v hlavičkách odpovědi.  |
 |  Autorizace     |  JSON web token (JWT) nosný token |
 
 *Požadavek:*
@@ -511,7 +532,7 @@ Operace rozhraní API podporuje následující operace opravy a Get.
 
 Aktualizujte odběr zadané hodnoty.
 
-**Oprava:<br> `https://marketplaceapi.microsoft.com/api/saas/subscriptions/<subscriptionId>/operation/<operationId>?api-version=<ApiVersion>`**
+**Oprava:<br> `https://marketplaceapi.microsoft.com/api/saas/subscriptions/<subscriptionId>/operations/<operationId>?api-version=<ApiVersion>`**
 
 *Parametry dotazu:*
 
@@ -534,15 +555,15 @@ Aktualizujte odběr zadané hodnoty.
 
 ```json
 {
-    "planId": "",
-    "quantity": "",
+    "planId": "cont-cld-tier2",
+    "quantity": "44",
     "status": "Success"    // Allowed Values: Success/Failure. Indicates the status of the operation.
 }
 ```
 
 *Kódy odpovědí:*
 
-Kód: 200<br> Volání za účelem informování o dokončení operace na straně nezávislý výrobce softwaru. Například to může být změna licence/plánů.
+Kód: 200<br> Volání za účelem informování o dokončení operace na straně nezávislý výrobce softwaru. Tuto odpověď může například signalizovat změnu licence/plány.
 
 Kód: 404<br>
 Nenalezené
@@ -551,7 +572,7 @@ Kód: 400<br>
 Chybná žádost o ověření chyb
 
 Kód: 403<br>
-Neautorizováno. Neposkytl se ověřovací token, je neplatný nebo požadavek se pokouší o přístup akvizice, který nepatří do aktuálního uživatele.
+Neautorizováno. Neposkytl se ověřovací token, je neplatný, nebo požadavek se pokouší o přístup akvizice, který nepatří do aktuálního uživatele.
 
 Kód: 409<br>
 Ke konfliktu. Například je novější transakce již splněny
@@ -597,11 +618,11 @@ Vrácená data:
 
 ```json
 [{
-    "id": "be750acb-00aa-4a02-86bc-476cbe66d7fa",  
-    "activityId": "be750acb-00aa-4a02-86bc-476cbe66d7fa",
-    "subscriptionId": "cd9c6a3a-7576-49f2-b27e-1e5136e57f45",
-    "offerId": "ce-dr-tier2",
-    "publisherId": "cloudendure",  
+    "id": "<guid>",  
+    "activityId": "<guid>",
+    "subscriptionId": "<guid>",
+    "offerId": "cont-cld-tier2",
+    "publisherId": "contoso",  
     "planId": "silver",
     "quantity": "20",
     "action": "Convert",
@@ -634,7 +655,7 @@ Vnitřní chyba serveru
 
 #### <a name="get-operation-status"></a>Načíst stav operace
 
-Umožňuje sledovat stav aktivovaných asynchronní operace (přihlásit k odběru nebo zrušení odběru/změnit plán).
+Umožňuje sledovat stav zadaného aktivovaných asynchronní operace (přihlásit k odběru nebo zrušení odběru/změnit plán).
 
 **Získáte:<br> `https://marketplaceapi.microsoft.com/api/saas/subscriptions/<subscriptionId>/operations/<operationId>?api-version=<ApiVersion>`**
 
@@ -653,23 +674,23 @@ Umožňuje sledovat stav aktivovaných asynchronní operace (přihlásit k odbě
 |  x-ms-correlationid |  Jedinečnou hodnotu řetězce pro operaci na straně klienta. Tento parametr koreluje všech událostí z operace klienta s událostmi na straně serveru. Pokud tuto hodnotu nezadáte, jeden se vygeneruje a k dispozici v hlavičkách odpovědi.  |
 |  Autorizace     | JSON web token (JWT) nosný token.  |
 
-*Kódy odpovědí:* Kód: 200<br> Získá seznam všechny čekající operace SaaS<br>
+*Kódy odpovědí:* Kód: 200<br> Získá zadaný nevyřízenou operaci SaaS<br>
 Vrácená data:
 
 ```json
 Response body:
-[{
-    "id  ": "be750acb-00aa-4a02-86bc-476cbe66d7fa",
-    "activityId": "be750acb-00aa-4a02-86bc-476cbe66d7fa",
-    "subscriptionId":"cd9c6a3a-7576-49f2-b27e-1e5136e57f45",
-    "offerId": "ce-dr-tier2",
-    "publisherId": "cloudendure",  
+{
+    "id  ": "<guid>",
+    "activityId": "<guid>",
+    "subscriptionId":"<guid>",
+    "offerId": "cont-cld-tier2",
+    "publisherId": "contoso",  
     "planId": "silver",
     "quantity": "20",
     "action": "Convert",
     "timeStamp": "2018-12-01T00:00:00",
     "status": "NotStarted"
-}]
+}
 
 ```
 
@@ -700,11 +721,11 @@ Vydavatel musí implementovat webhooku v této službě SaaS k proaktivně upozo
 
 ```json
 {
-    "operationId": "be750acb-00aa-4a02-86bc-476cbe66d7fa",
-    "activityId": "be750acb-00aa-4a02-86bc-476cbe66d7fa",
-    "subscriptionId":"cd9c6a3a-7576-49f2-b27e-1e5136e57f45",
-    "offerId": "ce-dr-tier2",
-    "publisherId": "cloudendure",
+    "operationId": "<guid>",
+    "activityId": "<guid>",
+    "subscriptionId":"<guid>",
+    "offerId": "cont-cld-tier2",
+    "publisherId": "contoso",
     "planId": "silver",
     "quantity": "20"  ,
     "action": "Activate",   // Activate/Delete/Suspend/Reinstate/Change[new]  
@@ -713,14 +734,12 @@ Vydavatel musí implementovat webhooku v této službě SaaS k proaktivně upozo
 
 ```
 
-<!-- Review following, might not be needed when this publishes -->
-
 
 ## <a name="mock-api"></a>Napodobení rozhraní API
 
 Vám pomůže naše mock rozhraní API vám pomůžou začít s vývojem, zejména při vytváření prototypů a testování projektů. 
 
-Hostitel koncového bodu: https://marketplaceapi.microsoft.com/api Verze rozhraní API: Ukázkový identifikátor Uri není nutné 2018-09-15 žádné ověření: https://marketplaceapi.microsoft.com/api/saas/subscriptions?api-version=2018-09-15
+Hostitel koncového bodu: `https://marketplaceapi.microsoft.com/api` Verze rozhraní API: `2018-09-15` Ukázkový identifikátor Uri není nutné žádné ověření: `https://marketplaceapi.microsoft.com/api/saas/subscriptions?api-version=2018-09-15`
 
 Některé z volání rozhraní API v tomto článku provádět mock hostitele koncového bodu. Můžete očekávat při získávání mock dat zpět jako odpověď.
 

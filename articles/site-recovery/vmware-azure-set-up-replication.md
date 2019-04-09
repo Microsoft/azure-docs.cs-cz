@@ -5,14 +5,14 @@ author: sujayt
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 11/27/2018
+ms.date: 04/08/2019
 ms.author: sutalasi
-ms.openlocfilehash: 18dc7ea513d1e3787dbd38b1ab687be607a79f8b
-ms.sourcegitcommit: 045406e0aa1beb7537c12c0ea1fbf736062708e8
-ms.translationtype: HT
+ms.openlocfilehash: b60d8a8fb9b9300a6914ad33b2f760fb5adde3b4
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/04/2019
-ms.locfileid: "59006811"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59278220"
 ---
 # <a name="configure-and-manage-replication-policies-for-vmware-disaster-recovery-to-azure"></a>Konfigurace a Správa zásad replikace pro zotavení po havárii VMware do Azure
 Tento článek popisuje, jak nakonfigurovat zásadu replikace, když budete replikovat virtuální počítače VMware do Azure, pomocí [Azure Site Recovery](site-recovery-overview.md).
@@ -20,7 +20,7 @@ Tento článek popisuje, jak nakonfigurovat zásadu replikace, když budete repl
 ## <a name="create-a-policy"></a>Vytvořit zásadu
 
 1. Vyberte **Spravovat** > **Infrastruktura Site Recovery**.
-2. V **pro VMware a fyzických počítačů**vyberte **zásady replikace**. 
+2. V **pro VMware a fyzických počítačů**vyberte **zásady replikace**.
 3. Klikněte na tlačítko **+ zásada replikace**a zadejte název zásady.
 4. V části **Prahová hodnota cíle bodu obnovení (RPO)** zadejte omezení RPO. Výstrahy jsou generovány, pokud průběžná replikace překročí tento limit.
 5. V části **Uchování bodu obnovení** zadejte (v hodinách) délku intervalu uchovávání dat pro jednotlivé body obnovení. Chráněné počítače je možné obnovit do libovolného bodu v rámci tohoto intervalu. Pro počítače replikované do úložiště úrovně Premium se podporuje interval uchování až 24 hodin. Je pro úložiště úrovně standard podporuje až 72 hodin.
@@ -29,7 +29,7 @@ Tento článek popisuje, jak nakonfigurovat zásadu replikace, když budete repl
 
 Když vytvoříte zásady replikace, odpovídající zásady navrácení služeb po obnovení replikace se automaticky vytvoří, s příponou "navrácení služeb po obnovení". Po vytvoření zásady, můžete upravit ji tak, že ji vyberete > **upravit nastavení**.
 
-## <a name="associate-a-configuration-server"></a>Přidružení konfiguračního serveru 
+## <a name="associate-a-configuration-server"></a>Přidružení konfiguračního serveru
 
 Přidružte zásady replikace s vaší místní konfigurační server.
 

@@ -9,21 +9,21 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 895f6ce728ce608184bf6f68be3b73d5dc384d79
-ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
-ms.translationtype: MT
+ms.openlocfilehash: 7f1379bbd3a52b364efc5e4c47612e645fa119ed
+ms.sourcegitcommit: b4ad15a9ffcfd07351836ffedf9692a3b5d0ac86
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/05/2018
-ms.locfileid: "52892167"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59056992"
 ---
 # <a name="add-a-bubble-layer-to-a-map"></a>Přidat vrstvu bublin k mapě
 
 Tento článek popisuje, jak může vykreslit data bodu ze zdroje dat jako vrstvu na mapě bublinu. Bublinu vrstvy bodů takto kruhy na mapě s protokolem radius opravených pixelů. 
 
 > [!TIP]
-> Vykreslí souřadnice všechny geometrie ve zdroji dat se bubliny vrstvy ve výchozím nastavení. K omezení vrstvu tak, aby pouze vykreslí bod geometrie funkce set `filter` vlastnost vrstva `['==', '$type', 'Point']`
+> Vykreslí souřadnice všechny geometrie ve zdroji dat se bubliny vrstvy ve výchozím nastavení. Omezit vrstvu tak, aby pouze vykreslí bod geometrie funkce set `filter` vlastnost vrstva `['==', ['geometry-type'], 'Point']` nebo `['any', ['==', ['geometry-type'], 'Point'], ['==', ['geometry-type'], 'MultiPoint']]` Pokud budete chtít zahrnout i MultiPoint funkce.
 
-## <a name="add-a-bubble-layer"></a>Přidat vrstvu bublinový
+## <a name="add-a-bubble-layer"></a>Přidání vrstvy bublin
 
 <iframe height='500' scrolling='no' title='Zdroj dat BubbleLayer' src='//codepen.io/azuremaps/embed/mzqaKB/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Zobrazit pera <a href='https://codepen.io/azuremaps/pen/mzqaKB/'>BubbleLayer DataSource</a> pomocí Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) na <a href='https://codepen.io'>CodePen</a>.
 </iframe>
@@ -73,4 +73,4 @@ Další informace o třídy a metody používané v tomto článku:
 Naleznete v následujících článcích pro další ukázky kódu pro přidání do vaše mapy:
 
 > [!div class="nextstepaction"]
-> [Přidat vrstvu symbol](./map-add-pin.md)
+> [Přidání vrstvy symbolů](./map-add-pin.md)

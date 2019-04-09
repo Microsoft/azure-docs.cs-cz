@@ -10,18 +10,18 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 2/20/2019
 ms.author: chlandsi
-ms.openlocfilehash: 2520f05c83cb5b727c8cdae1602b39320de4b99d
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: ee0be31b10c86651fa36577ad0dffccc3dc7bf59
+ms.sourcegitcommit: e43ea344c52b3a99235660960c1e747b9d6c990e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58094918"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "59009267"
 ---
 # <a name="quickstart-recognize-speech-in-objective-c-on-ios-using-the-speech-sdk"></a>Rychlý start: Rozpoznávat řeč v Objective-C v iOS pomocí sady SDK pro řeč
 
 [!INCLUDE [Selector](../../../includes/cognitive-services-speech-service-quickstart-selector.md)]
 
-V tomto článku se dozvíte, jak v Objective-C vytvořit aplikaci pro iOS pro přepis zvukového souboru se záznamem řeči na text s využitím sady Cognitive Services Speech SDK.
+V tomto článku se dozvíte, jak vytvořit aplikaci pro iOS v Objective-C pomocí Cognitive Services SDK řeči z mikrofonu nebo ze souboru pomocí nahraného zvukového přepisy řeči na text.
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -29,16 +29,16 @@ Než začnete, tady je seznam požadovaných součástí:
 
 * A [klíč předplatného](get-started.md) pro Speech Service
 * Počítače s macOS s [Xcode 9.4.1](https://geo.itunes.apple.com/us/app/xcode/id497799835?mt=12) nebo novější
-* Cíl nastavena na systém iOS verze 11.4 nebo novější
+* Cíl nastavena na systém iOS verze 9.3 nebo novější
 
 ## <a name="get-the-speech-sdk-for-ios"></a>Získání sady Speech SDK pro iOS
 
 [!INCLUDE [License Notice](../../../includes/cognitive-services-speech-service-license-notice.md)]
 
-Aktuální verze sady Cognitive Services Speech SDK je `1.3.1`.
+Aktuální verze sady Cognitive Services Speech SDK je `1.4.0`.
 
-Sada Cognitive Services Speech SDK pro Mac a iOS je v současné době distribuovaná jako rozhraní Cocoa.
-Můžete si ho stáhnout na adrese https://aka.ms/csspeech/iosbinary. Stáhněte si tento soubor do svého domovského adresáře.
+Cognitive Services řeči SDK pro iOS je momentálně distribuován jako Cocoa Framework.
+Můžete ho stáhnout z [tady](https://aka.ms/csspeech/iosbinary). Stáhněte si tento soubor do svého domovského adresáře.
 
 ## <a name="create-an-xcode-project"></a>Vytvoření projektu Xcode
 
@@ -58,10 +58,10 @@ V následujících dialogových oknech proveďte následující výběry:
     1. Zakažte vytvoření úložiště Git pro tento ukázkový projekt.
     1. V části *Project Settings* (Nastavení projektu) upravte cesty k sadě SDK.
         1. V **Obecné** kartu **vložených binárních souborů** záhlaví, přidání sady SDK knihovny jako rozhraní: **Přidat vložených binárních souborů** > **přidat další...**  > Přejít na domovský adresář a vyberte soubor `MicrosoftCognitiveServicesSpeech.framework`. Tento postup přidá hlavičku knihovny sady SDK **propojené rozhraní a knihovny** automaticky.
-        ![Přidané rozhraní](media/sdk/qs-objectivec-framework.png)
+        ![Přidání rozhraní Framework](media/sdk/qs-objectivec-framework.png)
         1. Přejděte na kartu **Build Settings** (Nastavení sestavení) a aktivujte **všechna** nastavení.
         1. Do části *Framework Search Paths* (Cesty pro hledání rozhraní) pod nadpisem **Search Paths** (Cesty pro hledání) přidejte adresář `$(SRCROOT)/..`.
-        ![Nastavení cesty pro hledání rozhraní](media/sdk/qs-objectivec-framework-search-paths.png)
+        ![Nastavení cesty pro hledání rámce](media/sdk/qs-objectivec-framework-search-paths.png)
 
 ## <a name="set-up-the-ui"></a>Nastavení uživatelského rozhraní
 
@@ -103,3 +103,4 @@ Nahraďte automaticky generované XML s tímto kódem:
 
 > [!div class="nextstepaction"]
 > [Prozkoumejte ukázky jazyka Objective-C na Githubu](https://aka.ms/csspeech/samples)
+

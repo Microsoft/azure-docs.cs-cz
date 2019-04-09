@@ -1,16 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 52a18203e5c6973822f52a65364ae2786913d4f0
-ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
-ms.translationtype: HT
-ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58803846"
 documentType: LandingData
 title: Dokumentace ke službě Azure Media Services
 metadata:
-  document_id: 
+  document_id: null
   title: Dokumentace ke službě Azure Media Services | Microsoft Docs
-  meta.description: Azure Media Services is a cloud-based platform that enables you to build solutions that achieve broadcast-quality video streaming, enhance accessibility and distribution, analyze content, and much more.
+  meta.description: 'Azure Media Services is a cloud-based platform that enables you to build solutions that achieve broadcast-quality video streaming, enhance accessibility and distribution, analyze content, and much more.'
   services: media-services
   author: juliako
   manager: femila
@@ -21,36 +15,36 @@ metadata:
   ms.date: 03/11/2019
   ms.author: juliako
 abstract:
-  description: Azure Media Services je cloudová platforma, která umožňuje vytvářet řešení pro kódování videa ve vysokém rozlišení a streamování videa ve vysílací kvalitě a oslovit cílové skupiny na nejoblíbenějších zařízeních. Platforma Media Services v3 také umožňuje extrahovat přehledy z vašich videí a zvukových souborů pomocí Video Indexeru, a to s využitím předvoleb analyzátoru Media Services v3. Pokud chcete získat podrobnější přehledy, použijte přímo Video Indexer.
+  description: 'Azure Media Services je cloudová platforma pracovních postupů pro média, která umožňuje sestavovat řešení vyžadující kódování, balení, ochranu obsahu a živé přenášení akcí. Služba Azure Media Services se bezproblémově integruje s Azure CDN pro škálování doručování s využitím služeb CDN od Akamai a Verizonu. Umožňuje zákazníkům vybrat to pravé řešení pro jejich potřeby, například pro vyrovnávání zatížení napříč sítěmi pro doručování obsahu. Video Indexer služby Azure Media Services umožňuje extrahovat metadata a přehledy pomocí AI s využitím integrovaných předvoleb analyzátoru zvuku a videa. Přesnost můžete snadno zlepšit natrénováním poskytnutých modelů AI pomocí vašeho vlastního obsahu s využitím rozhraní API Video Indexeru.'
 sections:
-- items:
-  - type: list
-    style: cards
-    className: cardsM
-    columns: 2
-    items:
-    - href: /azure/media-services/latest/
-      html: <p>Kódování,balení, ochrana vašeho obsahu, streamování videa na vyžádání, živé vysílání a analýza videí s využitím Media Services v3</p>
-      image:
-        src: /azure/media-services/latest/media/index/AMSIcons-encoding.svg
-      title: Azure Media Services v3
-    - href: /azure/media-services/previous/
-      html: <p>Do Media Services v2 se nepřidávají žádné nové funkce. </p>
-      image:
-        src: 
-      title: Azure Media Services v2 (starší verze)
-    - href: /azure/cdn/
-      html: <p>Využívejte CDN k ukládání statických objektů do mezipaměti a ke zrychlení dynamického obsahu, který není možné ukládat do mezipaměti.</p>
-      image:
-        src: /azure/cdn/media/index/cdn.svg
-      title: CDN
-    - href: http://amp.azure.net/libs/amp/latest/docs/index.html
-      html: <p>Využijte možnost přehrávat mediální obsah z Microsoft Azure Media Services na široké škále prohlížečů a zařízení.</p>
-      image:
-        src: /azure/media-services/latest/media/index/AMSIcons-Player.svg
-      title: Přehrávač médií Azure
-    - href: /azure/media-services/video-indexer/
-      html: <p>Naučte se extrahovat přehledy z videí a zvukových souborů pomocí Video Indexeru.</p>
-      image:
-        src: media/index/AMSIcons-media_analytics.svg
-      title: Video Indexer
+  - items:
+      - type: list
+        style: cards
+        className: cardsM
+        columns: 2
+        items:
+          - href: /azure/media-services/latest/
+            html: '<p>Kódování,balení, ochrana vašeho obsahu, streamování videa na vyžádání, živé vysílání a analýza videí s využitím Media Services v3</p>'
+            image:
+              src: /azure/media-services/latest/media/index/AMSIcons-encoding.svg
+            title: Azure Media Services v3
+          - href: /azure/media-services/previous/
+            html: '<p>Kódování, balení, ochrana a nejenom to. Toto je starší verze služby, u které probíhá údržby. Zákazníkům se doporučuje migrovat na Media Services v3, kde najdou nové funkce a vylepšení.</p>'
+            image:
+              src: null
+            title: Azure Media Services v2 (starší verze)
+          - href: /azure/cdn/
+            html: <p>Využijte výkon Azure CDN ke streamování obsahu ve velkém měřítku s využitím služeb od Akamai a Verizonu nebo k vyrovnávání zatížení napříč několika sítěmi pro doručování obsahu.</p>
+            image:
+              src: /azure/cdn/media/index/cdn.svg
+            title: CDN
+          - href: 'http://amp.azure.net/libs/amp/latest/docs/index.html'
+            html: <p>Využijte možnost přehrávat mediální obsah z Microsoft Azure Media Services na široké škále prohlížečů a zařízení.</p>
+            image:
+              src: /azure/media-services/latest/media/index/AMSIcons-Player.svg
+            title: Přehrávač médií Azure
+          - href: /azure/media-services/video-indexer/
+            html: <p>Naučte se extrahovat přehledy z videí a zvukových souborů pomocí Video Indexeru.</p>
+            image:
+              src: media/index/AMSIcons-media_analytics.svg
+            title: Video Indexer služby Azure Media Services

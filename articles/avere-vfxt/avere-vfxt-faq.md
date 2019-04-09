@@ -6,12 +6,12 @@ ms.service: avere-vfxt
 ms.topic: conceptual
 ms.date: 02/28/2019
 ms.author: v-erkell
-ms.openlocfilehash: 1dda3e379a9dcec9dc48d741c107ee352c4f2033
-ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
-ms.translationtype: MT
+ms.openlocfilehash: 69921300163bd9a326f3baedd3182da887ad02c4
+ms.sourcegitcommit: b4ad15a9ffcfd07351836ffedf9692a3b5d0ac86
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57404633"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59057145"
 ---
 # <a name="avere-vfxt-for-azure-faq"></a>Avere vFXT for Azure – nejčastější dotazy
 
@@ -200,6 +200,14 @@ Pro prostředí s nízkou latenci používejte fiber řešení s rychlostí 1 GB
 
 Ne, Avere vFXT smyslem je provozována v síťovém prostředí zabezpečené prostřednictvím osvědčené postupy.  
 
+### <a name="can-i-restrict-internet-access-from-my-clusters-virtual-network"></a>Můžete omezit přístup k Internetu z virtuální sítě Můj cluster? 
+
+Obecně platí podle potřeby můžete nakonfigurovat další zabezpečení ve virtuální síti, ale určitá omezení může narušovat provoz clusteru.
+
+Například omezení odchozí internetový přístup z vaší virtuální sítě způsobí, že problémy pro cluster Pokud také přidat pravidla, která explicitně povolit přístup k AzureConnectors a AzureCloud. Tato situace je popsána v [dodatečné dokumentaci na Githubu](https://github.com/Azure/Avere/tree/master/src/vfxt/internet_access.md).
+
+Nápovědu k zabezpečení, kontaktujte podporu podle pokynů v [získat nápovědu k systému](avere-vfxt-open-ticket.md#open-a-support-ticket-for-your-avere-vfxt).
+
 ## <a name="technical-back-end-storage-core-filers"></a>Technické: Back endové úložné (křížového jader)
 
 ### <a name="how-many-core-filers-does-a-single-avere-vfxt-environment-support"></a>Kolik jader křížového podporuje jedno prostředí vFXT Avere?
@@ -278,9 +286,9 @@ Ne, vyžadují "always on" Avere vFXT clustery služby. Clustery můžete vypnou
 
 Abyste mohli začít s Avere vFXT pro Azure, přečtěte si tyto články a zjistěte, jak naplánovat a nasadit vlastní systém:
 
-* [Plánování Avere vFXT systému](avere-vfxt-deploy-plan.md)
+* [Plánování systému Avere vFXT](avere-vfxt-deploy-plan.md)
 * [Přehled nasazení](avere-vfxt-deploy-overview.md)
 * [Příprava na vytvoření clusteru vFXT Avere](avere-vfxt-prereqs.md)
-* [Nasazení clusteru Avere vFXT](avere-vfxt-deploy.md)
+* [Nasazení clusteru vFXT Avere](avere-vfxt-deploy.md)
 
 Další informace o funkcích a případech použití pro Avere vFXT, najdete v tématu [Avere vFXT pro Azure](https://azure.microsoft.com/services/storage/avere-vfxt/).

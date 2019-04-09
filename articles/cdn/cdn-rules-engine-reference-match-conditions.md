@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/21/2017
 ms.author: rli
-ms.openlocfilehash: 1e17ec48c35a7e01ca87016406fb416a05544b41
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 877d994968dbc575c8baa7ac4c8a40b76f6d617f
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58087189"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59283473"
 ---
 # <a name="azure-cdn-rules-engine-match-conditions"></a>Azure CDN stroj pravidel splňují podmínky 
 Tento článek obsahuje podrobný popis dostupných odpovídají podmínkám pro sítě Azure Content Delivery Network (CDN) [stroj pravidel](cdn-rules-engine.md).
@@ -45,7 +45,7 @@ Podmínka shody zařízení identifikuje žádosti z mobilního zařízení na z
 
 Název | Účel
 -----|--------
-[zařízení](#device) | Identifikuje žádosti z mobilního zařízení na základě jeho vlastností.
+[Zařízení](#device) | Identifikuje žádosti z mobilního zařízení na základě jeho vlastností.
 
 ## <a name="location-match-conditions"></a>Podmínky shody umístění
 
@@ -101,7 +101,7 @@ Název | Účel
 
 
 ## <a name="reference-for-rules-engine-match-conditions"></a>Referenční informace pro podmínky shody stroje pravidel
-
+<a name="main"></a>
 ---
 ### <a name="always"></a>Vždy
 

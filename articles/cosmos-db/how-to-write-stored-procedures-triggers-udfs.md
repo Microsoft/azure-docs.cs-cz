@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: sample
 ms.date: 12/11/2018
 ms.author: mjbrown
-ms.openlocfilehash: 9f890a8468eaa22fbfce326fc16afe545fd515d6
-ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.openlocfilehash: c94509fb39d1c5ebb9aec1acfe1cbacc9cd6fd4a
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58339308"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59268400"
 ---
 # <a name="how-to-write-stored-procedures-triggers-and-user-defined-functions-in-azure-cosmos-db"></a>Jak napsat uložené procedury, triggery a uživatelem definovaných funkcí ve službě Azure Cosmos DB
 
@@ -26,7 +26,7 @@ Volání uložené procedury, aktivační události a uživatelsky definované f
 
 Uložené procedury jsou zapsány pomocí jazyka JavaScript, mohou vytvořit, aktualizovat, čtení, dotazování a odstraňování položek uvnitř kontejneru Azure Cosmos. Uložené procedury jsou registrované na kolekci a mohou pracovat v libovolné dokumentu nebo přílohy k dispozici v dané kolekci.
 
-**Příklad**
+**Příklad:**
 
 Tady je jednoduchou uloženou proceduru, která vrací odpověď "Hello World".
 
@@ -279,7 +279,7 @@ function updateMetadataCallback(err, items, responseOptions) {
 }
 ```
 
-Jednou z věcí, je důležité si uvědomit je transakční spuštění aktivačních událostí ve službě Azure Cosmos DB. Tento po trigger se spustí v rámci stejné transakce, který používá vytvořit položku služby Azure Cosmos DB. Proto pokud dojde k výjimce během zpracování po triggeru, například pokud nemůžete aktualizovat položku metadat, celá transakce nezdaří a je vrácena zpět. Proto je vytvořena položka služby Azure Cosmos DB a vrátí se výjimka.
+Jednou z věcí, je důležité si uvědomit je transakční spuštění aktivačních událostí ve službě Azure Cosmos DB. Po aktivační událost se spustí v rámci stejné transakce pro základní samotné položky. Výjimka při provádění po triggeru selže celá transakce. Nic potvrzené bude vrácena zpět a vrátila výjimku.
 
 Příklady toho, jak zaregistrovat a volat před aktivační událost, naleznete v tématu [předběžné triggery](how-to-use-stored-procedures-triggers-udfs.md#pre-triggers) a [po triggery](how-to-use-stored-procedures-triggers-udfs.md#post-triggers) článků. 
 

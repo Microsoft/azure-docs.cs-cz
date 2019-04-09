@@ -6,12 +6,12 @@ ms.service: avere-vfxt
 ms.topic: conceptual
 ms.date: 01/29/2019
 ms.author: v-erkell
-ms.openlocfilehash: bc91b052d3d69924af9afeb012c0ebb5be01dfbf
-ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
-ms.translationtype: MT
+ms.openlocfilehash: be9205fdf7fec0661d7382ed0d1bedf47487b15e
+ms.sourcegitcommit: b4ad15a9ffcfd07351836ffedf9692a3b5d0ac86
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55745550"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59058029"
 ---
 # <a name="manage-the-avere-vfxt-cluster"></a>Správa clusteru Avere vFXT
 
@@ -98,7 +98,7 @@ Zadejte následující hodnoty:
 * Název skupiny prostředků clusteru a také pro prostředky sítě a úložiště, pokud nejsou stejné jako clusteru
 * Umístění clusteru
 * Síť s clustery a podsítě 
-* Role přístupu uzlu clusteru 
+* Role clusteru uzel přístup (použijte předdefinovaná role [Avere operátor](../role-based-access-control/built-in-roles.md#avere-operator))
 * IP adresa pro správu clusteru a heslo správce 
 * Počet uzlů pro přidání (1, 2 nebo 3)
 * Uzel instance typu a mezipaměti velikost hodnoty 
@@ -113,7 +113,7 @@ Pokud nepoužíváte prototyp, je nutné vytvořit příkaz podobný následují
    --add-nodes --nodes NODE_COUNT \
    --management-address CLUSTER_IP --admin-password ADMIN_PASSWORD \
    --instance-type TYPE --node-cache-size SIZE \
-   --azure-role ROLE_NAME \
+   --azure-role "Avere Operator" \
    --log ~/vfxt.log
 ```
 
@@ -187,7 +187,7 @@ Instance uzlu může trvale zničit tak, že odstraníte na webu Azure Portal. M
 
 ### <a name="delete-additional-cluster-resources-from-the-azure-portal"></a>Odstranit prostředky další clusteru z webu Azure portal
 
-Pokud jste vytvořili speciálně pro vFXT cluster další prostředky, můžete chtít odebrat jako součást opětné clusteru. Prvky, které obsahují data, která potřebujete nebo všechny položky, které jsou sdíleny s jinými projekty by neměl zničit.
+Pokud jste vytvořili speciálně pro vFXT cluster další prostředky, můžete chtít odebrat jako součást opětné clusteru. Nelze odstranit prvky, které obsahují data, která potřebujete nebo všechny položky, které jsou sdíleny s jinými projekty.
 
 Kromě odstranění uzlů clusteru, zvažte odebrání těchto součástí: 
 

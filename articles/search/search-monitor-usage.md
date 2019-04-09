@@ -8,15 +8,15 @@ services: search
 ms.service: search
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 01/22/2019
+ms.date: 04/04/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: d7084a42f64234cff4e5e2742ed3d27a3fd00e1e
-ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
+ms.openlocfilehash: f4a0cba18f27c9cabfc03d1934469e6899c5cd18
+ms.sourcegitcommit: e43ea344c52b3a99235660960c1e747b9d6c990e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58652293"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "59010409"
 ---
 # <a name="monitor-resource-consumption-and-query-activity-in-azure-search"></a>Monitorování prostředků spotřeby a dotaz aktivity ve službě Azure Search
 
@@ -61,7 +61,7 @@ Následující tabulka porovnává možnosti pro ukládání protokolů a přid�
 | Prostředek | Použití |
 |----------|----------|
 | [Application Insights](https://docs.microsoft.com/azure/azure-monitor/app/app-insights-overview) | Protokolované události a metriky dotazu, podle schémat níže, korelují s událostí uživatele ve vaší aplikaci. Toto je jediné řešení, která zohledňuje signály nebo akce uživatelů, událostí mapování z uživatelem iniciované hledání, na rozdíl od filtrovat žádosti odeslané kódem aplikace. Pokud chcete použít tento přístup, kopírování a vkládání kód instrumentace do zdrojových souborů pro informace o postupu žádosti do služby Application Insights. Další informace najdete v tématu [Analýza provozu vyhledávání](search-traffic-analytics.md). |
-| [Protokoly Azure Monitoru](https://docs.microsoft.com/azure/azure-monitor/log-query/log-query-overview) | Protokolované události a metriky dotazu, podle schémat níže. Události jsou protokolovány k pracovnímu prostoru Log Analytics. Spusťte dotazy na pracovní prostor ke vrací podrobné informace z protokolu. Další informace najdete v tématu [začít pracovat s protokoly Azure monitoru](https://docs.microsoft.com/azure/azure-monitor/learn/tutorial-viewdata) |
+| [Protokoly služby Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/log-query/log-query-overview) | Protokolované události a metriky dotazu, podle schémat níže. Události jsou protokolovány k pracovnímu prostoru Log Analytics. Spusťte dotazy na pracovní prostor ke vrací podrobné informace z protokolu. Další informace najdete v tématu [začít pracovat s protokoly Azure monitoru](https://docs.microsoft.com/azure/azure-monitor/learn/tutorial-viewdata) |
 | [Blob Storage](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-overview) | Protokolované události a metriky dotazu, podle schémat níže. Události jsou protokolovány do kontejneru objektů Blob a uloženy v souborech JSON. Chcete-li zobrazit obsah souboru pomocí editoru JSON.|
 | [Centrum událostí](https://docs.microsoft.com/azure/event-hubs/) | Protokolované události a metriky dotazu, podle schémat uvedeno v tomto článku. Tuto možnost zvolte jako služba alternativní data kolekce pro velmi objemné protokoly. |
 
@@ -96,7 +96,7 @@ Po uložení profilu je povoleno protokolování. Kontejnery jsou vytvořeny pou
 * insights – protokoly operationlogs: pro protokoly přenosů služby search
 * insights-metrics-pt1m: pro metriky
 
-Bude trvat hodinu, než se zobrazí kontejnery ve službě Blob storage. Existuje jeden objekt blob, za hodinu a kontejner. 
+**Bude trvat hodinu, než se zobrazí kontejnery ve službě Blob storage. Existuje jeden objekt blob, za hodinu a kontejner.**
 
 Můžete použít [Visual Studio Code](#download-and-open-in-visual-studio-code) nebo jiný editor JSON, chcete-li zobrazit soubory. 
 

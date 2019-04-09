@@ -10,27 +10,22 @@ author: sdgilley
 ms.author: sgilley
 ms.date: 03/21/2019
 ms.custom: seodec18
-ms.openlocfilehash: 8bb601ac5c1ed8e9ca6d2027fe1b774a938e1f0a
-ms.sourcegitcommit: 223604d8b6ef20a8c115ff877981ce22ada6155a
+ms.openlocfilehash: ade0444110dbb23e762a869dc79805872c0f0bf0
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58362408"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59281127"
 ---
 # <a name="quickstart-use-your-own-notebook-server-to-get-started-with-azure-machine-learning"></a>Rychlý start: Začínáme s Azure Machine Learning pomocí serveru poznámkového bloku
 
-V tomto článku vám serveru Poznámkový blok spustit kód, který je přihlášen [pracovního prostoru služby Azure Machine Learning](concept-azure-machine-learning-architecture.md). Pracovní prostor se základní blok v cloudu, který použijete k experimentovat, trénovat a nasazovat modely strojového učení pomocí Machine Learning.
+Použít vlastní server Poznámkový blok spustit kód, který se přihlásí hodnoty [pracovního prostoru služby Azure Machine Learning](concept-azure-machine-learning-architecture.md). Pracovní prostor se základní blok v cloudu, který použijete k experimentovat, trénovat a nasazovat modely strojového učení pomocí Machine Learning.
 
-Tento rychlý start využívá svoje vlastní prostředí Pythonu a Server poznámkového bloku Jupyter. Rychlý start v žádné instalaci, naleznete v tématu [rychlý start: Začínáme s Azure Machine Learning pomocí serveru založené na cloudu poznámkového bloku](quickstart-run-cloud-notebook.md) 
+Tento rychlý start využívá svoje vlastní prostředí Pythonu a Server poznámkového bloku Jupyter. Rychlý start s bez instalace sady SDK, naleznete v tématu [rychlý start: Začínáme s Azure Machine Learning pomocí serveru založené na cloudu poznámkového bloku](quickstart-run-cloud-notebook.md) 
 
 Zobrazte video verzi tohoto rychlého startu:
 
 > [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE2G9N6]
-
-V tomto rychlém startu:
-
-* Napsat kód, který protokoluje hodnoty v pracovním prostoru.
-* Zobrazit zaprotokolované hodnoty z vašeho pracovního prostoru.
 
 Pokud nemáte předplatné Azure, vytvořte si bezplatný účet, před zahájením. Zkuste [bezplatné nebo placené verzi aplikace služby Azure Machine Learning](https://aka.ms/AMLFree) ještě dnes.
 
@@ -61,7 +56,7 @@ Po dokončení spuštění můžete experimentální spuštění zobrazit na web
 print(run.get_portal_url())
 ```
 
-Pokud chcete zobrazit zaprotokolované hodnoty na webu Azure Portal v prohlížeči, použijte odkaz.
+Tento kód vrátí odkaz, který můžete použít k zobrazení zaznamenané hodnoty na webu Azure Portal v prohlížeči.
 
 ![Zaznamenané hodnoty na webu Azure Portal](./media/quickstart-run-local-notebook/logged-values.png)
 

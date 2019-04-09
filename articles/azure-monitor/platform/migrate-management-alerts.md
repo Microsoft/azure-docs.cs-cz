@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 08/14/2017
 ms.author: johnkem
 ms.subservice: alerts
-ms.openlocfilehash: 4d82cc59eb1098451a263957aa028b66996bb072
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: fb54e11c9da6bec2a1e0354317df6343140cbf09
+ms.sourcegitcommit: 045406e0aa1beb7537c12c0ea1fbf736062708e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57307178"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "59006787"
 ---
 # <a name="migrate-azure-alerts-on-management-events-to-activity-log-alerts"></a>Migrace na upozornění protokolu aktivit Azure výstrahy týkající se událostí správy
 
@@ -104,7 +104,7 @@ Chcete-li vytvořit novou aktivitu protokolu oznámení na, můžete buď:
 * Postupujte podle [naší příručce o tom, jak vytvořit upozornění na webu Azure Portal](../../azure-monitor/platform/activity-log-alerts.md)
 * Zjistěte, jak [vytvořte výstrahu pomocí šablony Resource Manageru](../../azure-monitor/platform/alerts-activity-log.md)
  
-Výstrahy na události správy, které jste předtím vytvořili nebudou automaticky migrovat na upozornění protokolu aktivit. Budete muset použít předchozí skript prostředí PowerShell pro zobrazení seznamu výstrah událostí správy jste nakonfigurovali a ručně je znovu vytvořit jako upozornění protokolu aktivit. To je nutné provést před 1. října, po jejímž uplynutí výstrahy na události správy nebudou viditelné ve vašem předplatném Azure. Jiné typy upozornění v Azure, včetně upozornění metrik Azure monitoru, Application Insights výstrah a upozornění Log Analytics se tato změna nemá vliv. Pokud máte nějaké dotazy, publikuje do komentářů dole.
+Výstrahy na události správy, které jste předtím vytvořili nebudou automaticky migrovat na upozornění protokolu aktivit. Budete muset použít předchozí skript prostředí PowerShell pro zobrazení seznamu výstrah událostí správy jste nakonfigurovali a ručně je znovu vytvořit jako upozornění protokolu aktivit. To je nutné provést před 1. října, po jejímž uplynutí výstrahy na události správy nebudou viditelné ve vašem předplatném Azure. Jiné typy upozornění v Azure, včetně upozornění metrik Azure monitoru, Application Insights výstrah a upozornění prohledávání protokolu se tato změna nemá vliv. Pokud máte nějaké dotazy, publikuje do komentářů dole.
 
 
 ## <a name="next-steps"></a>Další postup

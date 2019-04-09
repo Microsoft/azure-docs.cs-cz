@@ -4,15 +4,15 @@ description: Obsahuje přehled služby Azure Migrate.
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: overview
-ms.date: 04/03/2019
+ms.date: 04/04/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 9f1d127405046400e2a92ffc5ab695d287e297bd
-ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
-ms.translationtype: MT
+ms.openlocfilehash: e0249535813c6b8d652775f68a696d8c25ead5a1
+ms.sourcegitcommit: b4ad15a9ffcfd07351836ffedf9692a3b5d0ac86
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58894965"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59058437"
 ---
 # <a name="about-azure-migrate"></a>Informace o službě Azure Migrate
 
@@ -32,7 +32,7 @@ Azure Migrate vám pomůže s následujícími úlohami:
 - Vhodnost k migraci na virtuální počítače Azure můžete posuzovat pouze u místních virtuálních počítačů VMware. Virtuální počítače VMware se musí spravovat přes vCenter Server (verze 5.5, 6.0, 6.5 nebo 6.7).
 - Podpora pro Hyper-V je aktuálně ve verzi preview s podporou produkčního prostředí, pokud máte zájem o vyzkoušení, zaregistrujte se prosím [tady.](https://aka.ms/migratefuture)
 - Pro účely posouzení fyzických serverů, můžete využít naše [partnerské nástroje](https://azure.microsoft.com/migration/partners/).
-- Je možné vyhledat až 1 500 virtuálních počítačů v rámci jednoho zjišťování a až 1 500 virtuálních počítačů v jednom projektu. Kromě toho můžete v rámci jednoho interního hodnocení vyhodnotit až 1 500 virtuálních počítačů.
+- Je možné vyhledat až 1 500 virtuálních počítačů v rámci jednoho zjišťování a v jednom projektu. Máme verzi preview k dispozici, která umožňuje zjišťování až 10 000 virtuálních počítačů VMware v jednom projektu pomocí jediné zařízení, máte zájem o vyzkoušení vyzkoušet, zaregistrujte se prosím [tady.](https://aka.ms/migratefuture)
 - Pokud chcete provést zjišťování u velkého prostředí, můžete zjišťování rozdělit a vytvořit několik projektů. [Další informace](how-to-scale-assessment.md). Azure Migrate podporuje až 20 projektů na jedno předplatné.
 - Azure Migrate podporuje pro posouzení migrace jenom spravované disky.
 -  Projekt Azure Migrate můžete vytvořit pouze v následujících zeměpisných oblastech. Ale to vás neomezuje vaše schopnost vytvořit posouzení pro jiné cílové umístění Azure.

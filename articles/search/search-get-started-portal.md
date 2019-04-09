@@ -1,23 +1,29 @@
 ---
-title: Rychlý úvodní kurz indexování a dotazování pomocí webu Azure portal – Azure Search
-description: Zjistěte, jak sestavit a dotazování prvního indexu služby Azure Search pomocí předdefinovaných ukázkových dat a Průvodce importem dat na webu Azure Portal.
+title: 'Rychlý start: Vytvoření, načtení a dotazování indexu na webu Azure portal – Azure Search'
+description: Vytvoření a dotazování prvního indexu služby Azure Search pomocí předdefinovaných ukázkových dat a Průvodce importem dat na webu Azure Portal.
 author: HeidiSteen
 manager: cgronlun
 tags: azure-portal
 services: search
 ms.service: search
 ms.topic: tutorial
-ms.date: 02/13/2019
+ms.date: 04/08/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 85fc8a42f5220aa8f05495aa260d05ce009884f0
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: a1cf72d9e3f5c2c6e919304d4d886a607c54f359
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58137823"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59282657"
 ---
 # <a name="quickstart-use-built-in-portal-tools-for-azure-search-import-indexing-and-queries"></a>Rychlý start: Integrované nástroje portálu použijte pro import Azure Search, indexování a dotazy
+> [!div class="op_single_selector"]
+> * [Portál](search-get-started-portal.md)
+> * [PowerShell](search-howto-dotnet-sdk.md)
+> * [Postman](search-fiddler.md)
+> * [C#](search-create-index-dotnet.md)
+>*
 
 Pro rychlé Seznamte se s koncepty Azure Search zkuste integrované nástroje na webu Azure Portal. Průvodci a editory neposkytují úplnou paritu s využitím .NET a rozhraní REST API, ale můžete začít rychle s obsahuje úvod bez kódu zápis zajímavé dotazy na ukázková data během několika minut.
 
@@ -222,7 +228,7 @@ Zvýrazňování shod označuje formátování textu odpovídajícího klíčov�
 
 ### <a name="fuzzy-search"></a> Zkouška vyhledávání přibližných shod
 
-Ve výchozím nastavení chybně napsané termíny dotazu, třeba když název náhorní plošiny Samammish v okolí Seattlu napíšete jako *samamish*, při typickém hledání nevrátí žádnou shodu. Následující příklad nevrátí žádné výsledky.
+Ve výchozím nastavení, hledaná termíny dotazu, jako je třeba *samamish* při Sammamish v Seattlu, selhání v typickém hledání. Následující příklad nevrátí žádné výsledky.
 
 #### <a name="example-misspelled-term-unhandled-searchsamamish"></a>Příklad (chybně zadaný termín bez zpracování): `search=samamish`
 

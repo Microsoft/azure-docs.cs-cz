@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: d35c33a45f2ce23dabfba20bbd902c058e3033d3
-ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
-ms.translationtype: MT
+ms.openlocfilehash: 42a7eee37d993e5f9245374adbfd133344797eff
+ms.sourcegitcommit: b4ad15a9ffcfd07351836ffedf9692a3b5d0ac86
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58540449"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59058165"
 ---
 # <a name="search-nearby-points-of-interest-using-azure-maps"></a>Hledání okolních bodů zájmu s využitím Azure Maps
 
@@ -138,8 +138,8 @@ Rozhraní API pro mapové ovládací prvky je praktická klientská knihovna, kt
 5. Do funkce `GetMap` za inicializaci mapy přidejte následující kód JavaScriptu.
 
     ```JavaScript
-    //Wait until the map resources are loaded.
-    map.events.add('load', function() {
+    //Wait until the map resources are ready.
+    map.events.add('ready', function() {
 
         //Create a data source and add it to the map.
         datasource = new atlas.source.DataSource();
@@ -161,7 +161,7 @@ Rozhraní API pro mapové ovládací prvky je praktická klientská knihovna, kt
     });
     ```
 
-   V tomto segmentu kódu, které události načtení je přidán do mapování, která se aktivuje, jakmile mapování prostředků byly plně načteno. V obslužné rutině události načtení mapy se vytvoří zdroj dat, do kterého se uloží výsledná data. Vytvoří se vrstva symbolů, která se připojí ke zdroji dat. Tato vrstva určuje, jak se mají vykreslit výsledná data ve zdroji dat, v tomto případě jako ikona tmavě modrého kulatého špendlíku ve středu souřadnic výsledku, který umožňuje překrytí jinými ikonami. Vrstva výsledek se přidá do vrstvy mapy.
+   V tomto segmentu kódu `ready` přidání události do mapy, která se aktivuje, jakmile bylo načteno mapování prostředků a mapy je připravený k získat přístup. Na mapě `ready` obslužná rutina události, zdroj dat je vytvořili pro uložení dat výsledků. Vytvoří se vrstva symbolů, která se připojí ke zdroji dat. Tato vrstva určuje, jak se mají vykreslit výsledná data ve zdroji dat, v tomto případě jako ikona tmavě modrého kulatého špendlíku ve středu souřadnic výsledku, který umožňuje překrytí jinými ikonami. Vrstva výsledek se přidá do vrstvy mapy.
 
 <a id="usesearch"></a>
 
@@ -171,7 +171,7 @@ Tato část ukazuje, jak použít Maps [rozhraní API pro vyhledávání](https:
 
 ### <a name="service-module"></a>Modul služeb
 
-1. Na mapě načíst obslužnou rutinu události, přidáním následujícího kódu jazyka Javascript se vytvoří adresa URL služby search.
+1. Na mapě `ready` obslužné rutiny události přidáním následujícího kódu jazyka Javascript se vytvoří adresa URL služby search.
 
     ```JavaScript
    // Use SubscriptionKeyCredential with a subscription key
@@ -229,7 +229,7 @@ V tomto okamžiku může stránka MapSearch zobrazit umístění bodů zájmu, k
 
 Mapa, kterou jsme vytvořili, zatím z výsledků hledání používá pouze data o zeměpisné šířce a délce. Pokud se však podíváte na nezpracovaný JSON, který vrací vyhledávací služba Maps, uvidíte, že obsahuje další informace o jednotlivých čerpacích stanicích, včetně názvu a adresy. Tato data můžete zahrnout do mapy s použitím interaktivních, automaticky otevíraných oken.
 
-1. Do obslužné rutiny události načtení mapy za kód pro dotazování služby Fuzzy Search přidejte následující řádky kódu. Tím se vytvoří instance metody Popup a do vrstvy symbolů se přidá událost mouseover.
+1. Přidejte následující řádky kódu v objektu map `ready` obslužná rutina události za kód k dotazování na službu vyhledávání přibližných shod. Tím se vytvoří instance metody Popup a do vrstvy symbolů se přidá událost mouseover.
 
     ```JavaScript
    //Create a popup but leave it closed so we can update it and display it later.
@@ -282,9 +282,9 @@ V tomto kurzu jste se naučili:
 
 Přístup k vzorovému kódu pro tento kurz můžete získat tady:
 
-> [Vyhledávání polohy pomocí Azure Maps](https://github.com/Azure-Samples/AzureMapsCodeSamples/blob/master/AzureMapsCodeSamples/Tutorials/search.html)
+> [Poloha při hledání s Azure Maps](https://github.com/Azure-Samples/AzureMapsCodeSamples/blob/master/AzureMapsCodeSamples/Tutorials/search.html)
 
-[Podívejte se na živou ukázku](https://azuremapscodesamples.azurewebsites.net/?sample=Search%20for%20points%20of%20interest)
+[Najdete v ukázce tady](https://azuremapscodesamples.azurewebsites.net/?sample=Search%20for%20points%20of%20interest)
 
 V dalším kurzu se dozvíte, jak zobrazit trasu mezi dvěma umístěními.
 

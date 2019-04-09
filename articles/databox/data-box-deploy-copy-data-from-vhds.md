@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: tutorial
 ms.date: 02/27/2019
 ms.author: alkohli
-ms.openlocfilehash: 1358751c71dfba39574807c9b232957227980f5d
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: ec2013a793f766221a66912d6de9d8da8b8106dd
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57887506"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59282555"
 ---
 # <a name="tutorial-use-data-box-to-import-data-as-managed-disks-in-azure"></a>Kurz: Použijte Data Box pro import dat jako spravovaných disků v Azure
 
@@ -46,7 +46,7 @@ Data Box podle skupin prostředků, který je zadán, vytvoří jedna sdílená 
 - `mydbmdrg1_MDisk`
 - `mydbmdrg2_MDisk`
 
-V rámci každé sdílené složky se vytvoří následující čtyři složky, které odpovídají kontejnery v účtu úložiště.
+V rámci každé sdílené složky se vytvoří následující tři složky, které odpovídají kontejnery v účtu úložiště.
 
 - Premium SSD
 - Standard HDD
@@ -142,8 +142,8 @@ Než začnete kopírování dat, přečtěte si následující aspekty:
 
 V závislosti na tom, jestli se připojují prostřednictvím protokolu SMB nebo NFS můžete použít:
 
-- [Kopírování dat prostřednictvím protokolu SMB](data-box-deploy-copy-data.md#copy-data-to-data-box)
-- [Kopírování dat pomocí systému souborů NFS](data-box-deploy-copy-data-via-nfs.md#copy-data-to-data-box)
+- [Kopírování dat pomocí protokolu SMB](data-box-deploy-copy-data.md#copy-data-to-data-box)
+- [Kopírování dat přes systém souborů NFS](data-box-deploy-copy-data-via-nfs.md#copy-data-to-data-box)
 
 Počkejte na dokončení úloh kopírování. Ujistěte se, že úlohy kopírování dokončili bez chyb, než přejdete k dalšímu kroku.
 
@@ -179,5 +179,5 @@ V tomto kurzu jste se dozvěděli o tématech spojených se službou Azure Data 
 Přejděte k dalšímu kurzu se naučíte k odeslání vašeho zařízení Data Box zpět společnosti Microsoft.
 
 > [!div class="nextstepaction"]
-> [Odeslání Azure Data Boxu do Microsoftu](./data-box-deploy-picked-up.md)
+> [Odeslání do Microsoft Azure Data Box](./data-box-deploy-picked-up.md)
 

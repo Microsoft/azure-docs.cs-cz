@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 12/11/2018
 ms.author: aljo
-ms.openlocfilehash: 379477cd063192fc8c23c73b4a8814ad13507043
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
-ms.translationtype: MT
+ms.openlocfilehash: 7252af42ac515f9177b8988e2995e6ce77f4e12f
+ms.sourcegitcommit: b4ad15a9ffcfd07351836ffedf9692a3b5d0ac86
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58667528"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59058862"
 ---
 # <a name="customize-service-fabric-cluster-settings"></a>Nastavení clusteru Service Fabric
 Tento článek popisuje různé nastavení prostředků infrastruktury pro cluster Service Fabric, kterou můžete přizpůsobit. Pro clustery hostovaných v Azure, můžete upravit pomocí nastavení [webu Azure portal](https://portal.azure.com) nebo s použitím šablony Azure Resource Manageru. Další informace najdete v tématu [upgradovat konfiguraci clusteru Azure](service-fabric-cluster-config-upgrade-azure.md). Pro samostatné clustery, můžete upravit nastavení aktualizací *ClusterConfig.json* souborů a provádění konfigurace upgradu ve vašem clusteru. Další informace najdete v tématu [upgradovat konfiguraci samostatného clusteru](service-fabric-cluster-config-upgrade-windows-server.md).
@@ -159,7 +159,7 @@ Tady je seznam prostředků infrastruktury nastavení, které můžete přizpůs
 | --- | --- | --- | --- |
 |ConnectionInitializationTimeout |Čas v sekundách, výchozí hodnota je 2 |Dynamická|Zadejte časový interval v sekundách. Interval časového limitu připojení pro každého klienta se pokusí otevřít připojení k bráně.|
 |HealthOperationTimeout |Čas v sekundách, výchozí hodnota je 120 |Dynamická|Zadejte časový interval v sekundách. Časový limit pro sestavy zpráva odeslaná do Správce stavu. |
-|HealthReportRetrySendInterval |Čas v sekundách, výchozí hodnota je 30 |Dynamická|Zadejte časový interval v sekundách. Interval, ve kterém hlásí, že součást znovu odešle nahromaděné stavových sestav pro správce stavu. |
+|HealthReportRetrySendInterval |Čas v sekundách, výchozí hodnota je 30, minimální hodnota je 1 |Dynamická|Zadejte časový interval v sekundách. Interval, jakou součást pro vytváření sestav, znovu odešle nahromaděné stavu hlásí do Správce stavu. |
 |HealthReportSendInterval |Čas v sekundách, výchozí hodnota je 30 |Dynamická|Zadejte časový interval v sekundách. Interval, ve kterém hlásí, že komponenta odešle nahromaděné stavových sestav pro správce stavu. |
 |KeepAliveIntervalInSeconds |Int, výchozí hodnota je 20 |Statická|Interval, jakou odešle FabricClient přenosu zpráv keep-alive k bráně. Pro 0; keepAlive je zakázaná. Musí být kladná hodnota. |
 |MaxFileSenderThreads |Uint, výchozí hodnota je 10 |Statická|Maximální počet souborů, které se přenáší paralelně. |
@@ -833,7 +833,7 @@ Tady je seznam prostředků infrastruktury nastavení, které můžete přizpůs
 |ReplicatorAddress |řetězec, výchozí je "localhost:0" | Statická | Koncový bod v podobě řetězce-"IP: port" který používá Replikátor Windows Fabric pro navázání připojení s ostatními replikami k posílání a přijímání operace. |
 
 ## <a name="transport"></a>Přenos
-| **Parametr** | **Povolené hodnoty** |**Zásady upgradu** |**Doprovodné materiály nebo krátký popis** |
+| **Parametr** | **Povolené hodnoty** |**Zásady upgradování** |**Doprovodné materiály nebo krátký popis** |
 | --- | --- | --- | --- |
 |ConnectionOpenTimeout|Časový interval, výchozí hodnota je Common::TimeSpan::FromSeconds(60)|Statická|Zadejte časový interval v sekundách. Vypršení časového limitu pro nastavení připojení pro příchozí a přijímá na straně (včetně vyjednávání zabezpečení v zabezpečeném režimu) |
 |FrameHeaderErrorCheckingEnabled|Logická hodnota, výchozí hodnotu TRUE|Statická|Výchozí nastavení pro kontrolu chyb na záhlaví rámce v nezabezpečené režimu. komponenta nastavení přepíše tuto položku. |

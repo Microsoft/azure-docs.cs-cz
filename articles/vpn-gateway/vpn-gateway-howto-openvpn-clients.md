@@ -7,16 +7,16 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 1/15/2019
 ms.author: cherylmc
-ms.openlocfilehash: f7288202eb6dd66aee0bb38bb3611e8b319b50f2
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: d1e57e623e3e95f3d71e895c49c928f00aa0ad46
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58010541"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59274668"
 ---
 # <a name="configure-openvpn-clients-for-azure-vpn-gateway-preview"></a>Konfigurace klientů OpenVPN pro Azure VPN Gateway (Preview)
 
-Tento článek vám pomůže nakonfigurovat OpenVPN klientů.
+Tento článek vám pomůže s konfigurací **OpenVPN® protokol** klientů.
 
 > [!IMPORTANT]
 > Tato verze Public Preview se poskytuje bez smlouvy o úrovni služeb a neměla by se používat pro úlohy v produkčním prostředí. Některé funkce nemusí být podporované, můžou mít omezené možnosti nebo nemusí být dostupné ve všech umístěních Azure. Podrobnosti najdete v [dodatečných podmínkách použití systémů Microsoft Azure Preview](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
@@ -49,7 +49,7 @@ Ověřte, že jste dokončili postup pro konfiguraci OpenVPN pro bránu VPN. Pod
    $CLIENTCERTIFICATE
    </cert>
    ```
-8. Otevřít *profileinfo.txt* v poznámkovém bloku. Pokud chcete získat privátní klíč, vyberte text (včetně a mezi) "---BEGIN PRIVATE KEY---" a "---BEGIN PRIVATE KEY---" a zkopírujte ho.
+8. Otevřít *profileinfo.txt* v poznámkovém bloku. Pokud chcete získat privátní klíč, vyberte text (včetně a mezi) "---BEGIN PRIVATE KEY---" a "-END PRIVATE KEY---" a zkopírujte ho.
 9. Vraťte se do souboru vpnconfig.ovpn v programu Poznámkový blok a najděte v této části. Vložte privátní klíč, který nahrazuje všechno mezi a "klíče" a "/ klíčů".
 
    ```
@@ -109,7 +109,7 @@ Ověřte, že jste dokončili postup pro konfiguraci OpenVPN pro bránu VPN. Pod
    $CLIENTCERTIFICATE
    </cert>
    ```
-8. Otevřete profileinfo.txt v textovém editoru. Pokud chcete získat privátní klíč, vyberte text, včetně a mezi "---začátek PRIVÁTNÍ klíč---" a "---BEGIN PRIVATE KEY---" a zkopírujte ho.
+8. Otevřete profileinfo.txt v textovém editoru. Pokud chcete získat privátní klíč, vyberte text, včetně a mezi "---začátek PRIVÁTNÍ klíč---" a "-END PRIVATE KEY---" a zkopírujte ho.
 
 9. Otevřete soubor vpnconfig.ovpn v textovém editoru a najděte v této části. Vložte privátní klíč, který nahrazuje všechno mezi a "klíče" a "/ klíčů".
 
@@ -139,3 +139,5 @@ Ověřte, že jste dokončili postup pro konfiguraci OpenVPN pro bránu VPN. Pod
 ## <a name="next-steps"></a>Další postup
 
 Pokud chcete, aby klienti VPN bude mít přístup k prostředkům v jiné virtuální síti (produkční), postupujte podle pokynů [připojení typu VNet-to-VNet](vpn-gateway-howto-vnet-vnet-resource-manager-portal.md) článku nastavte připojení typu vnet-to-vnet. Je nutné povolit protokol BGP na brány a připojení, jinak nebude tok provozu.
+
+**"OpenVPN" je ochranná známka společnosti OpenVPN Inc.**

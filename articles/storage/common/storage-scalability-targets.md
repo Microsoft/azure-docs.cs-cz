@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 03/23/2019
 ms.author: rogarana
 ms.subservice: common
-ms.openlocfilehash: ca9c4c959d21f26369600129f3897b7624dd84f2
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.openlocfilehash: 96322c730300e360ed03f4b623db2a7f18825f55
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58371169"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59267697"
 ---
 # <a name="azure-storage-scalability-and-performance-targets-for-storage-accounts"></a>Azure škálovatelnost a výkonnostní cíle Storage pro účty úložiště
 
@@ -23,7 +23,7 @@ Nezapomeňte otestovat vaší služby k určení, zda jeho výkon a vyhovuje va�
 
 Když aplikace dosáhne limitu co dokáže zpracovat oddíl pro vaši úlohu, začne Azure Storage vrátí kód chyby 503 (zaneprázdněný Server) nebo kód chyby odpovědi 500 (časový limit operace). Pokud se vyskytnou chyby 503, zvažte úpravu aplikaci pomocí exponenciálního omezení rychlosti zásady opakování. Exponenciální regresí umožňuje zatížení v oddílu snížit a doběhu špičkami v provozu do daného oddílu.
 
-## <a name="standard-performance-storage-account-scale-limits"></a>Limity škálování účtu úložiště Standard výkonu
+## <a name="storage-account-scale-limits"></a>Limity škálování účtu úložiště
 
 [!INCLUDE [azure-storage-limits](../../../includes/azure-storage-limits.md)]
 
@@ -45,6 +45,36 @@ Další informace o škálování a výkonnostní cíle pro soubory Azure a Azur
 
 [!INCLUDE [storage-files-scale-targets](../../../includes/storage-files-scale-targets.md)]
 
+### <a name="premium-files-scale-targets"></a>Soubory typu Premium škálování cíle
+
+Existují tři kategorie omezení ke zvážení pro soubory typu premium: účty úložiště, sdílené složky a soubory.
+
+Příklad: Jednou sdílenou složkou může dosáhnout 100 000 vstupně-výstupních operací a jednoho souboru můžete škálovat až 5000 vstupně-výstupních operací. Ano Pokud budete mít tři soubory v jedné sdílené složky, maximálních hodnotách IOPs, můžete získat z této sdílené složky je například 15 000.
+
+#### <a name="premium-file-share-limits"></a>Limity sdílené složky souboru úrovně Premium
+
+> [!IMPORTANT]
+> Omezení účtů úložiště platí pro všechny sdílené složky. Škálování až maximální počet účtů úložiště je pouze dosažitelný, pokud existuje pouze jedna sdílená složka na účet úložiště.
+
+|Oblast  |Cíl  |
+|---------|---------|
+|Minimální velikost                        |100 GiB      |
+|Maximální velikost                        |100 TiB      |
+|Minimální velikost zvětšit nebo zmenšit    |1 GiB      |
+|Standardní hodnoty vstupně-výstupních operací    |1 vstupně-výstupních operací za GiB maximálně 100 000|
+|Shlukování vstupně-výstupních operací    |3 x IOPS za GiB maximálně 100 000|
+|Minimální šířka pásma                     |100        |
+|Šířka pásma |0,1 MB/s za GiB maximálně 5 GB/s     |
+|Maximální počet snímků        |200       |
+
+#### <a name="premium-file-limits"></a>Omezení souboru Premium
+
+|Oblast  |Cíl  |
+|---------|---------|
+|Velikost                  |1 TiB         |
+|Maximální počet vstupně-výstupních operací na soubor     |5 000         |
+|Souběžné obslužné rutiny    |2 000         |
+
 ### <a name="azure-file-sync-scale-targets"></a>Azure File Sync měřítko cíle
 
 Azure File Sync byly navržené s cílem neomezené využití, ale neomezené využití není vždy možné. Následující tabulka označuje hranice testování od Microsoftu a také určuje cíle, které jsou pevných limitů:
@@ -61,7 +91,7 @@ Azure File Sync byly navržené s cílem neomezené využití, ale neomezené vy
 
 ## <a name="see-also"></a>Viz také
 
-- [Podrobnosti o cenách Storage](https://azure.microsoft.com/pricing/details/storage/)
+- [Podrobnosti o cenách Storage](https://azure.microsoft.com/pricing/details/storage/)
 - [Předplatné Azure a limity, kvóty a omezení](../../azure-subscription-service-limits.md)
 - [Replikace Azure Storage](../storage-redundancy.md)
-- [Kontrolní seznam pro výkon a škálovatelnost služby Microsoft Azure Storage](../storage-performance-checklist.md)
+- [Kontrolní seznam pro výkon a škálovatelnost Microsoft Azure Storage](../storage-performance-checklist.md)

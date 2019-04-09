@@ -2,23 +2,21 @@
 title: Programové vytváření předplatných Azure Enterprise | Dokumentace Microsoftu
 description: Zjistěte, jak programově vytvářet další předplatná Azure Enterprise nebo Enterprise pro vývoj/testování.
 services: azure-resource-manager
-author: adpick
-manager: adpick
-editor: ''
+author: tfitzmac
 ms.assetid: ''
 ms.service: azure-resource-manager
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 06/05/2018
-ms.author: adpick
-ms.openlocfilehash: 1b772fdbda8e58db9414e09ef3ef7c98fc9f86b8
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.date: 04/05/2019
+ms.author: tomfitz
+ms.openlocfilehash: 93df0c196d78a4685ff82108354b82a07d67695d
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55486975"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59256919"
 ---
 # <a name="programmatically-create-azure-enterprise-subscriptions-preview"></a>Programové vytváření předplatných Azure Enterprise (preview)
 
@@ -30,9 +28,9 @@ Při vytváření předplatného služby Azure z tohoto rozhraní API, toto pře
 
 ## <a name="prerequisites"></a>Požadavky
 
-Chcete vytvářet předplatná v rámci registrace účtu musí mít roli vlastníka nebo přispěvatele. Existují dva způsoby, jak získat tyto role:
+Chcete vytvářet předplatná v rámci registrace účtu musí mít roli vlastníka. Existují dva způsoby, jak získat tyto role:
 
-* Správce registrace můžete [můžete nastavit jako vlastníka účtu](https://ea.azure.com/helpdocs/addNewAccount) (přihlášení vyžaduje) díky vlastníka účtu pro zápis. Postupujte podle pokynů v e-mailové pozvánce, že abyste dostávali ruční vytvoření počátečního předplatného. Potvrdit vlastnictví účtu a ruční vytvoření počátečního předplatného EA, než budete pokračovat k dalšímu kroku. Stačí přidat účet pro přihlášení není k dispozici dostatek.
+* Správce registrace můžete [můžete nastavit jako vlastníka účtu](https://ea.azure.com/helpdocs/addNewAccount) (vyžadováno přihlášení) který vám umožňuje být vlastníkem účtu registrace. Postupujte podle pokynů v e-mailové pozvánce, že abyste dostávali ruční vytvoření počátečního předplatného. Potvrdit vlastnictví účtu a ruční vytvoření počátečního předplatného EA, než budete pokračovat k dalšímu kroku. Stačí přidat účet pro přihlášení není k dispozici dostatek.
 
 * Můžete stávající vlastník účtu registrace [udělení přístupu k](grant-access-to-create-subscription.md). Podobně, pokud chcete použít k vytvoření předplatného EA instanční objekt služby, musíte [udělit takového objektu služby možnost vytvářet předplatná](grant-access-to-create-subscription.md).
 
@@ -42,7 +40,7 @@ Po přidání na registraci smlouvy Azure EA jako vlastník účtu Azure použí
 
 Pokud chcete spustit následující příkazy, musíte být přihlášení k majiteli účtu *domovský adresář*, což je adresář, který odběry vytvářejí ve výchozím nastavení.
 
-# <a name="resttabrest"></a>[REST](#tab/rest)
+# [<a name="rest"></a>REST](#tab/rest)
 
 Požadavek na výpis všech registračních účtů:
 
@@ -75,7 +73,7 @@ Azure jako odpověď vrátí seznam všech registračních účtů, ke kterým m
 }
 ```
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# [<a name="powershell"></a>PowerShell](#tab/azure-powershell)
 
 Použití [Get-AzEnrollmentAccount](/powershell/module/az.billing/get-azenrollmentaccount) rutiny pro zobrazení seznamu všechny registračních účtů, kterým máte přístup.
 
@@ -91,7 +89,7 @@ ObjectId                               | PrincipalName
 4cd2fcf6-xxxx-xxxx-xxxx-xxxxxxxxxxxx   | BillingPlatformTeam@contoso.com
 ```
 
-# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+# [<a name="azure-cli"></a>Azure CLI](#tab/azure-cli)
 
 Použití [az fakturační účet registrace seznamu](https://aka.ms/EASubCreationPublicPreviewCLI) seznam všech registračních účtů, máte přístup k příkazu.
 
@@ -132,7 +130,7 @@ Použití `principalName` vlastnost k identifikaci účtu, který má předplatn
 
 Následující příklad vytvoří požadavek na vytvoření odběr s názvem *Dev týmového odběru* a nabídky předplatného je *MS-AZR - 0017P* (pravidelných EA). Účet pro zápis je `747ddfe5-xxxx-xxxx-xxxx-xxxxxxxxxxxx` (hodnotu zástupného symbolu, tato hodnota je identifikátor GUID), což je registrace účtu pro SignUpEngineering@contoso.com. Také v případě potřeby přidá dva uživatele jako vlastníky RBAC pro předplatné.
 
-# <a name="resttabrest"></a>[REST](#tab/rest)
+# [<a name="rest"></a>REST](#tab/rest)
 
 Použití `id` z `enrollmentAccount` v cestě požadavek na vytvoření předplatného.
 
@@ -161,7 +159,7 @@ POST https://management.azure.com/providers/Microsoft.Billing/enrollmentAccounts
 
 V odpovědi, které získáte zpět `subscriptionOperation` objekt monitorování. Po dokončení vytvoření předplatného `subscriptionOperation` vrátí objekt `subscriptionLink` objektu, který má ID předplatného.
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# [<a name="powershell"></a>PowerShell](#tab/azure-powershell)
 
 Pokud chcete použít tento modul ve verzi preview, nainstalujte ho spuštěním `Install-Module Az.Subscription -AllowPrerelease` první. Aby se zajistilo `-AllowPrerelease` funguje, nainstalujte nejnovější verzi modulu PowerShellGet z [získat modul PowerShellGet](/powershell/gallery/installing-psget).
 
@@ -182,7 +180,7 @@ New-AzSubscription -OfferType MS-AZR-0017P -Name "Dev Team Subscription" -Enroll
 
 Úplný seznam všech parametrů najdete v tématu [New-AzSubscription](/powershell/module/az.subscription.preview).
 
-# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+# [<a name="azure-cli"></a>Azure CLI](#tab/azure-cli)
 
 Použití tohoto rozšíření ve verzi preview, nainstalujte ho spuštěním `az extension add --name subscription` první.
 

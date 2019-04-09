@@ -1,7 +1,7 @@
 ---
-title: Vytvoření, načtení a dotazování indexu pomocí prostředí PowerShell a rozhraní REST API – Azure Search
-description: Vytvoření, načtení a dotazování indexu pomocí prostředí PowerShell, Invoke-RestMethod a rozhraní REST API Azure Search.
-ms.date: 03/15/2019
+title: 'Rychlý start: Vytvoření, načtení a dotazování indexu pomocí prostředí PowerShell a rozhraní REST API – Azure Search'
+description: Vytvoření, načtení a dotazování indexu pomocí Powershellu Invoke-RestMethod a rozhraní REST API Azure Search.
+ms.date: 04/08/2019
 author: heidisteen
 manager: cgronlun
 ms.author: heidist
@@ -10,38 +10,42 @@ ms.service: search
 ms.devlang: rest-api
 ms.topic: conceptual
 ms.custom: seodec2018
-ms.openlocfilehash: 9e1b6fc0dc4e6a6c2c191960fa061c810e3a2e79
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.openlocfilehash: 2deba4bf941d561fcef7c2dff804646732e7ce24
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58372110"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59268020"
 ---
 # <a name="quickstart-create-an-azure-search-index-using-powershell-and-the-rest-api"></a>Rychlý start: Vytvoření indexu Azure Search pomocí prostředí PowerShell a rozhraní REST API
 > [!div class="op_single_selector"]
 > * [PowerShell (REST)](search-create-index-rest-api.md)
 > * [C#](search-create-index-dotnet.md)
 > * [Postman (REST)](search-fiddler.md)
-> * [Azure Portal](search-create-index-portal.md)
+> * [Portál](search-create-index-portal.md)
 > 
 
 Tento článek vás provede procesem vytvoření, načtení a dotazování Azure Search [index](search-what-is-an-index.md) pomocí Powershellu a [rozhraní REST API služby Azure Search](https://docs.microsoft.com/rest/api/searchservice/). Definice indexu a prohledávatelný obsah je k dispozici v textu žádosti jako obsah ve správném formátu JSON.
 
 ## <a name="prerequisites"></a>Požadavky
 
-[Vytvoření služby Azure Search](search-create-service-portal.md) nebo [najít existující službu](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) pod vaším aktuálním předplatným. Můžete použít bezplatnou službou pro tento rychlý start. Další požadavky zahrnují následující položky.
+Tyto služby a nástroje se používají v tomto rychlém startu. 
+
+[Vytvoření služby Azure Search](search-create-service-portal.md) nebo [najít existující službu](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) pod vaším aktuálním předplatným. Můžete použít bezplatnou službou pro tento rychlý start. 
 
 [Prostředí PowerShell 5.1 nebo novější](https://github.com/PowerShell/PowerShell)s použitím [Invoke-RestMethod](https://docs.microsoft.com/powershell/module/Microsoft.PowerShell.Utility/Invoke-RestMethod) pro sekvenční a interaktivní kroky.
 
-Získejte koncový bod adresy URL a správce klíč rozhraní api služby search. Vyhledávací služba se vytvoří s oběma, takže pokud jste do svého předplatného přidali službu Azure Search, získejte potřebné informace pomocí následujícího postupu:
+## <a name="get-a-key-and-url"></a>Získejte klíč a adresy URL
 
-1. Na webu Azure Portal, ve vyhledávací službě **přehled** stránce, získat adresu URL. Příkladem koncového bodu může vypadat například https:\//my-service-name.search.windows.net.
+Volání REST vyžadují pro každý požadavek adresu URL služby a přístupový klíč. Vyhledávací služba se vytvoří s oběma, takže pokud jste do svého předplatného přidali službu Azure Search, získejte potřebné informace pomocí následujícího postupu:
+
+1. [Přihlaste se k webu Azure portal](https://portal.azure.com/)a ve vyhledávací službě **přehled** stránce, získat adresu URL. Příkladem koncového bodu může být `https://mydemo.search.windows.net`.
 
 2. V **nastavení** > **klíče**, získat klíč pro úplná práva správce na službu. Existují dva klíče zaměnitelné správce, v případě, že budete potřebovat k výměně jeden k dispozici zajišťuje nepřetržitý chod podniků. U požadavků můžete použít buď primární nebo sekundární klíč pro přidání, úpravy a odstraňování objektů.
 
-   ![Získejte koncový bod a přístupový klíč rozhraní HTTP](media/search-fiddler/get-url-key.png "získat HTTP koncový bod a přístupový klíč")
+![Získejte koncový bod a přístupový klíč rozhraní HTTP](media/search-fiddler/get-url-key.png "získat HTTP koncový bod a přístupový klíč")
 
-   Všechny požadavky vyžaduje klíč rozhraní api na každou požadavku odeslaného do vaší služby. Platný klíč vytváří na základě žádosti vztah důvěryhodnosti mezi aplikací, která žádost odeslala, a službou, která ji zpracovává.
+Všechny požadavky vyžaduje klíč rozhraní api na každou požadavku odeslaného do vaší služby. Platný klíč vytváří na základě žádosti vztah důvěryhodnosti mezi aplikací, která žádost odeslala, a službou, která ji zpracovává.
 
 ## <a name="connect-to-azure-search"></a>Připojení ke službě Azure Search
 

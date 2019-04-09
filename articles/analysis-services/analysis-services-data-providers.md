@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 03/12/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: bfd488828d9c96461cb371b35bb0a0cb24fff373
-ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
-ms.translationtype: MT
+ms.openlocfilehash: 3baccb6e0f5eef270dc8f0e06a8aa6b748fa4028
+ms.sourcegitcommit: b4ad15a9ffcfd07351836ffedf9692a3b5d0ac86
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58891935"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59056261"
 ---
 # <a name="client-libraries-for-connecting-to-azure-analysis-services"></a>Klientské knihovny pro připojení ke službě Azure Analysis Services
 
@@ -23,10 +23,10 @@ Klientské knihovny jsou nezbytné pro klientské aplikace a nástroje pro přip
 
 |Ke stažení  |Verze produktu  | 
 |---------|---------|
-|[MSOLAP (amd64)](https://go.microsoft.com/fwlink/?linkid=829576)    |    15.0.11.19    |
-|[MSOLAP (x86)](https://go.microsoft.com/fwlink/?linkid=829575)     |    15.0.11.19      |
-|[AMO](https://go.microsoft.com/fwlink/?linkid=829578)     |   15.15.0.0    |
-|[ADOMD](https://go.microsoft.com/fwlink/?linkid=829577)     |    15.15.0.0     |
+|[MSOLAP (amd64)](https://go.microsoft.com/fwlink/?linkid=829576)    |    15.0.15.26    |
+|[MSOLAP (x86)](https://go.microsoft.com/fwlink/?linkid=829575)     |    15.0.15.26      |
+|[AMO](https://go.microsoft.com/fwlink/?linkid=829578)     |   15.17.1.0    |
+|[ADOMD](https://go.microsoft.com/fwlink/?linkid=829577)     |    15.17.1.0     |
 
 ## <a name="amo-and-adomd-nuget-packages"></a>Sada AMO a ADOMD (balíčky NuGet)
 

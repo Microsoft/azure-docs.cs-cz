@@ -6,19 +6,19 @@ documentationcenter: ''
 author: kraigb
 manager: douge
 ms.assetid: c372175b-beb5-4b45-b2f8-34cb06990117
-ms.service: azure
+ms.service: azure-notebooks
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 12/04/2018
 ms.author: kraigb
-ms.openlocfilehash: d36cbe50ab040549353efd19dd794ec7fab51b7b
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 405fe71676de311ed7e59ea72798ff4fd2db0f62
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57774400"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59280464"
 ---
 # <a name="run-a-notebook-slideshow"></a>Spusťte Poznámkový blok prezentace
 
@@ -105,4 +105,4 @@ Protože prezentaci vykreslí fragmenty s více svislé mezery než když jsou v
 - [Postup: Konfigurace a správa projektů](configure-manage-azure-notebooks-projects.md)
 - [Postup: Instalace balíčků z v rámci poznámkového bloku](install-packages-jupyter-notebook.md)
 - [Postup: Práce s datovými soubory](work-with-project-data-files.md)
-- [Postup: Přístup k prostředkům data](access-data-resources-jupyter-notebooks.md)
+- [Postup: Přístup k datovým prostředkům](access-data-resources-jupyter-notebooks.md)

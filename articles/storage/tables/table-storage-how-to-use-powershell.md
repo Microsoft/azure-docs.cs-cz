@@ -5,15 +5,15 @@ services: cosmos-db
 author: roygara
 ms.service: cosmos-db
 ms.topic: article
-ms.date: 03/27/2019
+ms.date: 04/05/2019
 ms.author: rogarana
 ms.subservice: cosmosdb-table
-ms.openlocfilehash: bb8f0fd98296d0cc4de1596480988b154a731d41
-ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
+ms.openlocfilehash: 840c2793928816c6346e2039a38678585f8e0bc7
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58540223"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59273120"
 ---
 # <a name="perform-azure-table-storage-operations-with-azure-powershell"></a>Provádění operací Azure Table storage pomocí Azure Powershellu 
 [!INCLUDE [storage-table-cosmos-db-tip-include](../../../includes/storage-table-cosmos-db-langsoon-tip-include.md)]
@@ -32,16 +32,19 @@ Tento článek popisuje běžné operace Azure Table storage. Získáte informac
 
 Tento článek ukazuje, jak vytvořit nový účet úložiště Azure do nové skupiny prostředků, takže je můžete snadno odebrat po dokončení. Pokud místo toho můžete využít existující účet úložiště, můžete to udělat místo.
 
-V příkladech vyžadují moduly Powershellu Az `Az.Storage (1.1.3 or greater)` a `Az.Resources (1.2.0 or greater)`. V okně Powershellu, spusťte `Get-Module -ListAvailable Az*` k vyhledání verze. Pokud se nezobrazí nebo je potřeba upgradovat, najdete v článku [instalace modulu Azure PowerShell](/powershell/azure/install-az-ps).
+V příkladech vyžadují moduly Powershellu Az `Az.Storage (1.1.0 or greater)` a `Az.Resources (1.2.0 or greater)`. V okně Powershellu, spusťte `Get-Module -ListAvailable Az*` k vyhledání verze. Pokud se nezobrazí nebo je potřeba upgradovat, najdete v článku [instalace modulu Azure PowerShell](/powershell/azure/install-az-ps).
 
 > [!IMPORTANT]
-> Pomocí této funkce Azure z prostředí PowerShell vyžaduje, abyste měli `Az` nainstalovaným modulem. Aktuální verze AzureRmStorageTable není kompatibilní s starší modul AzureRM.
+> Pomocí této funkce Azure z prostředí PowerShell vyžaduje, abyste měli `Az` nainstalovaným modulem. Aktuální verze `AzTable` není kompatibilní s starší modul AzureRM.
 > Postupujte podle [nainstalovat nejnovější pokyny pro instalaci modulu Az](/powershell/azure/install-az-ps) v případě potřeby.
 
-Po instalaci prostředí Azure PowerShell nebo aktualizaci, musíte nainstalovat modul **AzureRmStorageTable**, který obsahuje příkazy pro správu entity. Chcete-li nainstalovat tento modul, spusťte PowerShell jako správce a použijte **Install-Module** příkazu.
+Po instalaci prostředí Azure PowerShell nebo aktualizaci, musíte nainstalovat modul **AzTable**, který obsahuje příkazy pro správu entity. Chcete-li nainstalovat tento modul, spusťte PowerShell jako správce a použijte **Install-Module** příkazu.
+
+> [!IMPORTANT]
+> Pro modul název kompatibility důvodů, proč stále publikujeme Tento stejný modul v rámci starý název `AzureRmStorageTables` v galerii prostředí PowerShell. Tento dokument bude odkazovat pouze nový název.
 
 ```powershell
-Install-Module AzureRmStorageTable
+Install-Module AzTable
 ```
 
 ## <a name="sign-in-to-azure"></a>Přihlásit se k Azure
@@ -115,9 +118,9 @@ $storageTable = Get-AzStorageTable –Name $tableName –Context $ctx
 ## <a name="reference-cloudtable-property-of-a-specific-table"></a>Referenční dokumentace CloudTable vlastnosti konkrétní tabulky
 
 > [!IMPORTANT]
-> Využití CloudTable je povinný, pokud pracujete s **AzureRmStorageTable** modul prostředí PowerShell. Volání **Get-AzTableTable** příkazu získejte odkaz na tento objekt. Pokud ještě neexistuje, tento příkaz také vytvoří v tabulce.
+> Využití CloudTable je povinný, pokud pracujete s **AzTable** modul prostředí PowerShell. Volání **Get-AzTableTable** příkazu získejte odkaz na tento objekt. Pokud ještě neexistuje, tento příkaz také vytvoří v tabulce.
 
-K provádění operací na tabulku s využitím **AzureRmStorageTable**, potřebujete odkaz na vlastnost CloudTable konkrétní tabulky.
+K provádění operací na tabulku s využitím **AzTable**, potřebujete odkaz na vlastnost CloudTable konkrétní tabulky.
 
 ```powershell
 $cloudTable = (Get-AzStorageTable –Name $tableName –Context $ctx).CloudTable
@@ -158,8 +161,8 @@ V tomto článku s postupy jste se dozvěděli o běžných operací Azure Table
 
 Další informace naleznete v následujících článcích
 
-* [Rutiny PowerShellu pro úložiště](/powershell/module/az.storage#storage)
+* [Rutiny Powershellu pro úložiště](/powershell/module/az.storage#storage)
 
-* [Práce s tabulkami Azure powershellu – v2.0 modulu AzureRmStorageTable PS](https://paulomarquesc.github.io/working-with-azure-storage-tables-from-powershell)
+* [Práce s tabulkami Azure powershellu – v2.0 modulu AzureRmStorageTable/AzTable PS](https://paulomarquesc.github.io/working-with-azure-storage-tables-from-powershell)
 
 * [Microsoft Azure Storage Explorer](../../vs-azure-tools-storage-manage-with-storage-explorer.md) je bezplatná samostatná aplikace od Microsoftu, která umožňuje vizuálně pracovat s daty Azure Storage ve Windows, macOS a Linuxu.

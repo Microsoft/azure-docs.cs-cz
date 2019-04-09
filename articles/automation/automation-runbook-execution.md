@@ -6,15 +6,15 @@ ms.service: automation
 ms.subservice: process-automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 04/03/2019
+ms.date: 04/04/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 9d4661f6c975265ec710b29a8a05cc7ef41b4011
-ms.sourcegitcommit: b4ad15a9ffcfd07351836ffedf9692a3b5d0ac86
-ms.translationtype: HT
+ms.openlocfilehash: 0445643d3aae0e4e072e7fa8e3a73dc8973e84a5
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/05/2019
-ms.locfileid: "59057417"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59268496"
 ---
 # <a name="runbook-execution-in-azure-automation"></a>Spuštění Runbooku ve službě Azure Automation
 
@@ -51,6 +51,8 @@ Runbooky ve službě Azure Automation můžete spustit v jedné izolovaný prost
 ## <a name="runbook-behavior"></a>Chování sady Runbook
 
 Spuštění sady Runbook na základě logiky, která je definována v nich obsažené. Pokud dojde k přerušení sady runbook, runbook restartuje na začátek. Toto chování vyžaduje sady runbook k zapsání způsobem, které podporují právě restartován, pokud byly nějaké přechodné problémy.
+
+Úlohy prostředí PowerShell spustit ze sady Runbook spuštěný v Azure izolovaný prostor nebude fungovat v režimu úplné jazyka. Další informace o režimech jazyk prostředí PowerShell najdete v tématu [Powershellu jazykové režimy](/powershell/module/microsoft.powershell.core/about/about_language_modes). Další podrobnosti o tom, jak pracovat s úlohami ve službě Azure Automation najdete v tématu [načtení stavu úlohy pomocí Powershellu](#retrieving-job-status-using-powershell)
 
 ### <a name="creating-resources"></a>Vytváření prostředků
 

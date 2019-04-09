@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 03/20/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to install Data Box Edge in datacenter so I can use it to transfer data to Azure.
-ms.openlocfilehash: a1357e92b868f85556fc4d665eb475abd095fece
-ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
+ms.openlocfilehash: 46192d32e70e371325abeafd4da26fa29e491b13
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58400002"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59278475"
 ---
 # <a name="tutorial-install-azure-data-box-edge"></a>Kurz: Nainstalovat Azure Data Box Edge
 
@@ -90,7 +90,9 @@ Zařízení musí být nainstalován na standardní 19 palec stojanu. Pomocí n�
 
 - Než začnete, přečtěte si pokyny bezpečnost v brožuru bezpečnost, životní prostředí a regulační informace. Tato publikace byl dodán se zařízením.
 - Zahájení instalace rails v přiděleného prostoru, který je nejblíž k dolnímu okraji skříň stojanu.
-- Pro konfiguraci připojení tooled železniční, budete muset zadat osm šrouby: #10 až 32, #12 až 24, #M5 nebo #M6. Hlavní průměr šrouby musí být menší než 10 mm (0.4").
+- Pro konfiguraci připojení tooled lišty:
+    -  Budete muset zadat osm šrouby: #10 až 32, #12 až 24, #M5 nebo #M6. Hlavní průměr šrouby musí být menší než 10 mm (0.4").
+    -  Je třeba šroubovák šikmý plochý.
 
 ### <a name="identify-the-rail-kit-contents"></a>Identifikaci obsahu kit lišty
 
@@ -102,6 +104,9 @@ Vyhledejte součásti pro instalaci sestavení lišty kit:
 
 ### <a name="install-and-remove-tool-less-rails-square-hole-or-round-hole-racks"></a>Instalace a odebrání nástrojů bez rails (čtvereček hole nebo stojany round hole)
 
+> [!TIP]
+> Tato možnost je bez nástrojů, protože nevyžaduje nástroje instalace a odebrání rails do hranatých nezřetězený nebo zaokrouhlit otvory v stojanů.
+
 1. Umístit části koncové levé a pravé lišty označené jako **přední** směřující dovnitř a zorientovat každého jednotlivého end pro mezery na straně front-přírub svislé stojanu.
 2. Zarovnejte každého jednotlivého koncové mezery dolní a horní požadované mezery U.
 3. Zapojení back-endu lišty dokud plně licencovaná místa na svislé rack ohraničení a zámek klikne na místě. Opakujte tyto kroky pro nastavení pozice a pracovní stanice je tímto druhem front-endu na svislé rack ohraničení.
@@ -110,6 +115,9 @@ Vyhledejte součásti pro instalaci sestavení lišty kit:
 ![Instalace a odebrání nástroje bez rails](./media/data-box-edge-deploy-install/installing-removing-tool-less-rails.png)
 
 ### <a name="install-and-remove-tooled-rails-threaded-hole-racks"></a>Instalace a odebrání tooled rails (stojany hole seznam s vlákny)
+
+> [!TIP]
+> Tato možnost je tooled, protože vyžaduje, aby nástroj (_šroubovák šikmý paušální_) instalovat a odebírat rails do vláken round otvorů v stojanů.
 
 1. Odeberte tyto PIN kódy z přední a zadní připojení pomocí šroubovák šikmý paušální hranaté závorky.
 2. O přijetí změn a otočení podsestav západku lišty odebrat z připojení uvedených v závorkách.
@@ -152,7 +160,7 @@ POZNÁMKA: Pro systémy není vybaven slam zámky zabezpečení systému pomocí
 
 1. Vnější závorky CMA vyhledejte na vnitřní stranách obou přírub stojanu.
 2. Vytvoření balíčku kabely jemně, přijímání změn je vymazat systému konektorů pro levé a pravé straně.
-3. Vlákno hook a smyčka popruhů prostřednictvím tooled sloty na vnější závorky CMA na každé straně systém a zabezpečení sady kabel.
+3. Vlákno hook a smyčka popruhů prostřednictvím slotů na vnější závorky CMA na každé straně systém a zabezpečení sady kabel.
 
 
 ![Směrovat kabely](./media/data-box-edge-deploy-install/routing-cables.png)

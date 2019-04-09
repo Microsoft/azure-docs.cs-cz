@@ -6,19 +6,19 @@ documentationcenter: ''
 author: kraigb
 manager: douge
 ms.assetid: 35dd6ff1-a14a-4a2e-b173-6d8467de3e89
-ms.service: azure
+ms.service: azure-notebooks
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 02/25/2019
 ms.author: kraigb
-ms.openlocfilehash: b4d40f011b9a9e69953496fbdb0dc63ffc8a5027
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: d1f94c5fd774b51f57da2885d1ccd8eb909cd3c0
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57774553"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59268003"
 ---
 # <a name="manage-and-configure-projects"></a>Správa a konfigurace projektů
 
@@ -35,7 +35,7 @@ Projekt v poznámkových bloků Azure je v podstatě konfiguraci základní virt
 
 Poznámkových bloků Azure spustí základní virtuální počítač se při každém spuštění poznámkového bloku nebo jiného souboru. Server automaticky ukládá soubory a ukončí po 60 minutách nečinnosti. Taky můžete zastavit server kdykoli s **vypnutí** příkazu (Klávesová zkratka: h).
 
-## <a name="compute-tier"></a>Služba COMPUTE úrovně
+## <a name="compute-tier"></a>Úroveň výpočetních prostředků
 
 **Spustit** rozevíracího seznamu na řídicím panelu Projekt slouží k výběru výpočetní úroveň, na kterém běží projektu. Ve výchozím nastavení, spouštět projekty **bezplatné Compute** úroveň, která je omezena na 4 GB paměti a 1 GB dat, aby se zabránilo zneužití:
 

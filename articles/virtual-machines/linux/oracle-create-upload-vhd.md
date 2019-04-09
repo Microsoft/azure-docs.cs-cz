@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/12/2018
 ms.author: szark
-ms.openlocfilehash: c2c02283518bab0723b7bc815f034c4324c944e1
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: ecd30d30434d91893102ce6ec0df21daa84b677c
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51232877"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59276832"
 ---
 # <a name="prepare-an-oracle-linux-virtual-machine-for-azure"></a>Příprava virtuálního počítače s Oracle Linuxem pro Azure
 [!INCLUDE [learn-about-deployment-models](../../../includes/learn-about-deployment-models-both-include.md)]
@@ -37,7 +37,7 @@ Tento článek předpokládá, že jste již nainstalovali operačního systému
 * Pro větší velikosti virtuálních počítačů kvůli chybě v systému Linux verze jádra níže 2.6.37 nepodporuje technologii NUMA. Tento problém ovlivňuje hlavně distribuce využívající nadřazený Red Hat 2.6.32 jádra. Ruční instalace agenta pro Linux v Azure (waagent) automaticky zakáže NUMA v konfiguraci GRUB pro jádro Linuxu. Další informace najdete v níže uvedeném postupu.
 * Neprovádějte konfiguraci odkládací oddíl na disk s operačním systémem. Chcete-li vytvořit odkládací soubor na disku dočasný prostředek, který lze nastavit agenta pro Linux.  Další informace najdete v níže uvedeném postupu.
 * Všechny virtuální pevné disky v Azure musí mít virtuální velikost, zarovnání na 1MB. Při převodu z nezpracované disku do virtuálního pevného disku je nutné zajistit, že velikost nezpracovaných disku je násobkem 1MB před převodem. Zobrazit [poznámky k instalaci Linux](create-upload-generic.md#general-linux-installation-notes) Další informace.
-* Ujistěte se, že `Addons` úložiště je povolená. Upravte soubor `/etc/yum.repo.d/public-yum-ol6.repo`(Oracle Linux 6) nebo `/etc/yum.repo.d/public-yum-ol7.repo`(Oracle Linux) a změňte řádek `enabled=0` k `enabled=1` pod **[ol6_addons]** nebo **[ol7_addons]** v tomto souboru.
+* Ujistěte se, že `Addons` úložiště je povolená. Upravte soubor `/etc/yum.repos.d/public-yum-ol6.repo`(Oracle Linux 6) nebo `/etc/yum.repos.d/public-yum-ol7.repo`(Oracle Linux 7) a změňte řádek `enabled=0` k `enabled=1` pod **[ol6_addons]** nebo **[ol7_addons]** v tomto souboru.
 
 ## <a name="oracle-linux-64"></a>Oracle Linux 6.4 +
 Je třeba provést zvláštní konfigurační kroky v operačním systému pro virtuální počítač pro spuštění v Azure.
@@ -48,7 +48,7 @@ Je třeba provést zvláštní konfigurační kroky v operačním systému pro v
    
         # sudo rpm -e --nodeps NetworkManager
    
-    **Poznámka:** Pokud balíček není nainstalovaná, tento příkaz se nezdaří s chybovou zprávou. To se očekává.
+    **Poznámka:** Pokud ještě není nainstalovaný balíček, tento příkaz se nezdaří s chybovou zprávou. To se očekává.
 4. Vytvořte soubor s názvem **sítě** v `/etc/sysconfig/` adresáře, který obsahuje následující text:
    
         NETWORKING=yes

@@ -7,15 +7,15 @@ ms.service: azure-resource-manager
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/20/2018
+ms.date: 04/04/2019
 ms.author: rithorn
 ms.topic: conceptual
-ms.openlocfilehash: a89df98224634c08c84cb059eb58e64e3c7febf7
-ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
-ms.translationtype: MT
+ms.openlocfilehash: 928cb790bd97270870618534a73316bba5eeb070
+ms.sourcegitcommit: b4ad15a9ffcfd07351836ffedf9692a3b5d0ac86
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58801260"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59057434"
 ---
 # <a name="create-management-groups-for-resource-organization-and-management"></a>Vytvoření skupin pro správu pro organizaci poskytující prostředky a správu
 
@@ -41,7 +41,7 @@ Skupina pro správu můžete vytvořit pomocí portálu, Powershellu nebo rozhra
 
 1. Vyplňte pole ID skupiny správy.
 
-   - **ID skupiny pro správu** je jedinečný identifikátor adresáře, který se používá k odeslání příkazů na tuto skupinu pro správu. Tento identifikátor není po vytvoření upravit, protože se používá v rámci systému Azure k identifikaci této skupiny.
+   - **ID skupiny pro správu** je jedinečný identifikátor adresáře, který se používá k odeslání příkazů na tuto skupinu pro správu. Tento identifikátor není upravovat po jeho vytvoření, protože se používá k identifikaci této skupiny v rámci systému Azure. [Skupinu root management](index.md#root-management-group-for-each-directory) se automaticky vytvoří s ID, které je ID Azure Active Directory. Pro všechny ostatní skupiny pro správu přiřadíte jedinečné ID.
    - Pole zobrazovaného názvu je název, který se zobrazí na portálu Azure portal. Samostatné zobrazované jméno je volitelné pole při vytváření rozhraní pro správu skupin a můžete kdykoli změnit.  
 
    ![Podokno možnosti pro vytvoření nové skupiny pro správu](./media/create_context_menu.png)  
@@ -78,8 +78,8 @@ az account management-group create --name 'Contoso'
 
 Další informace o řešeních pro správu najdete v následujících tématech:
 
-- [Vytváření skupin pro správu pro organizaci prostředků Azure](create.md)
-- [Jak měnit, odstraňovat nebo spravovat skupiny pro správu](manage.md)
-- [Kontrola skupin pro správu v modulu Prostředky Azure PowerShellu](/powershell/module/az.resources#resources)
-- [Kontrola skupin pro správu v rozhraní REST API](/rest/api/resources/managementgroups)
-- [Kontrola skupin pro správu v Azure CLI](/cli/azure/account/management-group)
+- [Vytvoření skupin pro správu k uspořádání prostředků Azure](create.md)
+- [Jak změnit, odstranit nebo Správa skupin pro správu](manage.md)
+- [Zkontrolujte skupiny pro správu v modulu Azure PowerShell prostředky](/powershell/module/az.resources#resources)
+- [Zkontrolujte skupiny pro správu v rozhraní REST API](/rest/api/resources/managementgroups)
+- [Zkontrolujte skupiny pro správu v Azure CLI](/cli/azure/account/management-group)

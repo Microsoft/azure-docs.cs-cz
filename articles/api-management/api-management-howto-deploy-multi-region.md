@@ -11,20 +11,20 @@ ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/15/2018
+ms.date: 04/04/2019
 ms.author: apimpm
-ms.openlocfilehash: 82ae0ef72bb4f546a1f946f3127aa5d74bec3c3b
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
-ms.translationtype: MT
+ms.openlocfilehash: d22da92355616c208c7616b4b0e8c26b7f9e7006
+ms.sourcegitcommit: b4ad15a9ffcfd07351836ffedf9692a3b5d0ac86
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52957755"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59058035"
 ---
 # <a name="how-to-deploy-an-azure-api-management-service-instance-to-multiple-azure-regions"></a>Jak nasadit instanci služby Azure API Management do několika oblastí Azure
 
 Azure API Management podporuje nasazení v různých oblastech, která umožňuje vydavatelé rozhraní API k distribuci jeden služba Azure API management napříč libovolným počtem požadované oblasti Azure. To pomáhá snížit žádost latence vnímané geograficky distribuovanou zákazníky a také zlepšuje dostupnost služeb, pokud jedna oblast přejde do režimu offline.
 
-Nová služba Azure API Management zpočátku obsahuje pouze jeden [jednotky] [ unit] v jedné oblasti Azure, primární oblasti. Na webu Azure portal můžete snadno přidány další oblasti. Server brány služby API Management je nasazené do každé oblasti a volání provoz se směruje do nejbližší brány. Pokud oblast přejde do režimu offline, provoz automaticky přesměruje na další bránu co nejblíž koncovým.
+Nová služba Azure API Management zpočátku obsahuje pouze jeden [jednotky] [ unit] v jedné oblasti Azure, primární oblasti. Na webu Azure portal můžete snadno přidány další oblasti. Server brány služby API Management je nasazené do každé oblasti a volání provoz se směruje do nejbližší brány z hlediska latence. Pokud oblast přejde do režimu offline, provoz automaticky přesměruje na další bránu co nejblíž koncovým.
 
 > [!NOTE]
 > Azure API Management replikuje pouze komponenty brány rozhraní API napříč oblastmi. Součást služby správy hostuje jenom v primární oblasti. I v případě výpadku v primární oblasti provádění změn konfigurace do instance služby Azure API Management se nedá – včetně nastavení nebo aktualizace zásady.
@@ -105,6 +105,20 @@ Plně využívat geografické distribuce systému, měli byste mít back-endový
         </on-error>
     </policies>
     ```
+
+> [!TIP]
+> Může také přední vaší back-endových služeb s [Azure Traffic Manager](https://azure.microsoft.com/services/traffic-manager/)přímá volání rozhraní API do Traffic Manageru a ten směrování automaticky vyřešit.
+
+## <a name="custom-routing"> </a>Použít vlastní směrování místní brány API Management
+
+API Management směruje požadavky na místní *brány* na základě [nejnižší latenci](../traffic-manager/traffic-manager-routing-methods.md#performance). Ačkoli to není možné přepsat toto nastavení ve službě API Management, můžete pomocí vlastního pravidla směrování Traffic Manager.
+
+1. Vytvořte svoje vlastní [Azure Traffic Manager](https://azure.microsoft.com/services/traffic-manager/).
+1. Pokud používáte vlastní doménu, [ho použít s Traffic Managerem](../traffic-manager/traffic-manager-point-internet-domain.md) místo služby API Management.
+1. [Konfigurace regionální koncových bodů rozhraní API Management ve službě Traffic Manager](../traffic-manager/traffic-manager-manage-endpoints.md). Místní koncové body mají tvar URL `https://<service-name>-<region>-01.regional.azure-api.net`, například `https://contoso-westus2-01.regional.azure-api.net`.
+1. [Konfigurace koncových bodů regionální stav API Management ve službě Traffic Manager](../traffic-manager/traffic-manager-monitoring.md). Stav místní koncové body mají tvar URL `https://<service-name>-<region>-01.regional.azure-api.net/status-0123456789abcdef`, například `https://contoso-westus2-01.regional.azure-api.net/status-0123456789abcdef`.
+1. Zadejte [metodu směrování](../traffic-manager/traffic-manager-routing-methods.md) Traffic Manageru.
+
 
 [api-management-management-console]: ./media/api-management-howto-deploy-multi-region/api-management-management-console.png
 

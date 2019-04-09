@@ -8,17 +8,45 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 2/20/2019
+ms.date: 4/3/2019
 ms.author: wolfma
 ms.custom: seodec18
-ms.openlocfilehash: 7f54507fdfd21c9402e04eb867710a774f9e6bb3
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 13d43a3810bc07cede2a49760f122157de86c44d
+ms.sourcegitcommit: e43ea344c52b3a99235660960c1e747b9d6c990e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57856086"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "59010154"
 ---
 # <a name="release-notes"></a>Poznámky k verzi
+
+## <a name="speech-sdk-140-2019-april-release"></a>Speech SDK 1.4.0: 2019 dubna vydání
+
+**Nové funkce** 
+
+* Sada SDK teď podporuje převod textu na řeč služby jako beta verze. Se podporuje ve Windows a Linuxem plochy z jazyka C++, C#a Java. Další informace o kontrolu [převod textu na řeč přehled](text-to-speech.md#get-started-with-text-to-speech).
+* Sada SDK teď podporuje zvukové soubory MP3 a díle/Ogg jako datový proud vstupních souborů. Tato funkce je dostupná jenom v Linuxu z jazyka C++ a C# a je aktuálně ve verzi beta (Další podrobnosti [tady](how-to-use-compressed-audio-input-streams.md)).
+* Sadou SDK pro řeč pro Javu, .NET core, C++ a Objective-C získali podporu pro macOS. Podpora jazyka Objective-C pro macOS je aktuálně ve verzi beta.
+* iOS: Sadou SDK pro řeč pro iOS (Objective-C) nyní jsme publikovali také CocoaPod.
+* JavaScript: Podpora pro jiné než výchozí mikrofon jako vstupní zařízení.
+* JavaScript: Podpora proxy pro Node.js.
+
+**Ukázky**
+
+* Přidali jsme ukázky pro použití v jazyce C++ a Objective-c. sadou SDK pro řeč v systému macOS.
+* Ukázky demonstrace využití převod textu na řeč služby byly přidány.
+
+**Vylepšení / změny**
+
+* Python: Další vlastnosti výsledky rozpoznávání jsou teď dostupné prostřednictvím `properties` vlastnost.
+* Potřebujete další podporu pro vývoj a ladění můžete přesměrovat SDK protokolování a diagnostické informace do souboru protokolu (Další podrobnosti [tady](how-to-use-logging.md)).
+* JavaScript: Zlepšení výkonu zpracování zvuku.
+
+**Opravy chyb**
+
+* Mac/iOS: Byl opraven chybu, která vedla k dlouhého čekání, když nelze navázat připojení ke službě řeči.
+* Python: zlepšení zpracování chyb pro argumenty v Pythonu zpětná volání.
+* JavaScript: Oprava nesprávného stavu vytváření sestav pro zpracování řeči, skončila RequestSession.
 
 ## <a name="speech-sdk-131-2019-february-refresh"></a>Speech SDK 1.3.1: Aktualizace února 2019
 
@@ -177,7 +205,7 @@ V našem [ukázkové úložiště](https://aka.ms/csspeech/samples), byl přidá
 * Podpora pro Objective-C v iOS. Podívejte se na naše [rychlý start Objective-C pro iOS](quickstart-objectivec-ios.md).
 * Podpora jazyka JavaScript v prohlížeči. Podívejte se na naše [JavaScript quickstart](quickstart-js-browser.md).
 
-**Rozbíjející změny v**
+**Změny způsobující chyby**
 
 * V této verzi představeny počet nejnovější změny.
   Zkontrolujte prosím [na této stránce](https://aka.ms/csspeech/breakingchanges_1_0_0) podrobnosti.
@@ -196,7 +224,7 @@ V našem [ukázkové úložiště](https://aka.ms/csspeech/samples), byl přidá
 
 * Zobrazit další podrobné informace o chybě na chyby připojení.
 
-**Rozbíjející změny v**
+**Změny způsobující chyby**
 
 * V jazyce Java (Android) `SpeechFactory.configureNativePlatformBindingWithDefaultCertificate` funkce už vyžaduje parametr cesty. Cesta se nyní automaticky zjistí na všech podporovaných platformách.
 * Přistupující objekt get vlastnosti `EndpointUrl` byla odebrána v jazyce Java a C#.
@@ -225,7 +253,7 @@ V našem [ukázkové úložiště](https://aka.ms/csspeech/samples), byl přidá
 * Rozpoznávání výsledek obsahuje více polí. Máte posun od začátku zvuku a doba trvání (i v taktech) si rozpoznaný text a další hodnoty, které představují rozpoznávání stav, například `InitialSilenceTimeout` a `InitialBabbleTimeout`.
 * Podpora AuthorizationToken vytváření instancí továrny.
 
-**Rozbíjející změny v**
+**Změny způsobující chyby**
 
 * Rozpoznávání události: Typ události NoMatch se nesloučila do událost chyby.
 * SpeechOutputFormat v jazyce C# se přejmenoval na OutputFormat zůstat zarovnané s jazykem C++.

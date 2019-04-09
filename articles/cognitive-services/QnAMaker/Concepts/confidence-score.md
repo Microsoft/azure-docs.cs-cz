@@ -1,6 +1,6 @@
 ---
-title: Skóre spolehlivosti – Microsoft Cognitive Services | Dokumentace Microsoftu
-titleSuffix: Azure
+title: Skóre spolehlivosti – QnA Maker
+titleSuffix: Azure Cognitive Services
 description: Skóre spolehlivosti označuje jistotu, že odpověď je doprava odpovídá dotazu daného uživatele.
 services: cognitive-services
 author: tulasim88
@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: article
-ms.date: 02/21/2019
+ms.date: 04/05/2019
 ms.author: tulasim
 ms.custom: seodec18
-ms.openlocfilehash: bf254d661f7819114d34631359aaecb97e9d0e0d
-ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
+ms.openlocfilehash: 97c44c9285ec7a29827361111599db37bc6a86f3
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57403732"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59282572"
 ---
 # <a name="confidence-score-of-a-qna-maker-knowledge-base"></a>Skóre spolehlivosti znalostní báze QnA Maker
 Když uživatelský dotaz je hledána znalostní báze, vrátí QnA Maker příslušné odpovědi, spolu s skóre spolehlivosti. Toto skóre označuje jistotu, že odpověď je doprava odpovídá dotazu daného uživatele. 
@@ -66,7 +66,7 @@ Když ukládat více odpovědí mají podobné skóre spolehlivosti, je pravděp
 
 
 ## <a name="confidence-score-differences"></a>Skóre rozdíly spolehlivosti
-Skóre spolehlivosti odpověď může změnit zanedbatelně mezi testu a publikovanou verzi znalostní báze i v případě, obsah je stejný. Je to proto, že obsah testu a publikované znalostní báze jsou umístěné v různých indexů Azure Search. Při publikování znalostní bázi otázek a odpovědí obsah znalostní báze přesune z index testu do produkčního prostředí indexu ve službě Azure search. V tématu Jak [publikovat](../How-To/publish-knowledge-base.md) operace funguje.
+Skóre spolehlivosti odpověď může změnit zanedbatelně mezi testu a publikovanou verzi znalostní báze i v případě, obsah je stejný. Je to proto, že obsah testu a publikované znalostní báze jsou umístěné v různých indexů Azure Search. Při publikování znalostní bázi otázek a odpovědí obsah znalostní báze přesune z index testu do produkčního prostředí indexu ve službě Azure search. V tématu Jak [publikovat](../Quickstarts/create-publish-knowledge-base.md#publish-the-knowledge-base) operace funguje.
 
 Pokud máte znalostní báze v různých oblastech, každé oblasti používá vlastní index Azure Search. Protože se používají různé indexy, skóre nebudou shodovat. 
 

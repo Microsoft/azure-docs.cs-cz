@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 11846ca2a323da5889f444024767df4803a48a51
-ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
+ms.openlocfilehash: b91af553c402cc1cb241e51e2bb2289bf45b1825
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58892207"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59269023"
 ---
 # <a name="planning-a-cloud-based-azure-multi-factor-authentication"></a>Plánování ověřování Azure Multi-Factor Authentication založené na cloudu
 
@@ -60,8 +60,14 @@ Azure Multi-Factor Authentication se nasadí formou vynucování zásad s podmí
 * Odpovídající zařízení
 * Zařízení připojené k hybridní službě Azure AD
 * Schválené klientské aplikace
+ 
+
+Pomocí přizpůsobitelných plakáty a e-mailové šablony [materiálů uvedení služby Multi-Factor authentication] zavedení služby Multi-Factor authentication pro vaši organizaci. (https://www.microsoft.com/en-us/download/details.aspx?id=57600&WT.mc_id=rss_alldownloads_all)
+
+## <a name="enable-multi-factor-authentication-with-conditional-access"></a>Povolení služby Multi-Factor Authentication s podmíněným přístupem
 
 Zásady podmíněného přístupu vynucovat registrace vyžadující neregistrovaným uživatelů k dokončení registrace při prvním přihlášení, k posouzení důležité zabezpečení.
+
 
 [Azure AD Identity Protection](../identity-protection/howto-configure-risk-policies.md) přispívá zásadu registrace i zásady rizik automatizované zjišťování a náprava na scénář ověřování Azure Multi-Factor Authentication. Zásady je možné vytvořit přinutit změnu hesla při ohrožení ohrožení zabezpečení identity nebo vyžadovat vícefaktorové ověřování při přihlašování se změnami se bude považovat za riziková provedením následujícího [události](../reports-monitoring/concept-risk-events.md):
 

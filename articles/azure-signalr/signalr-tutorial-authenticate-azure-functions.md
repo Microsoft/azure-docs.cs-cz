@@ -6,12 +6,12 @@ ms.service: signalr
 ms.topic: tutorial
 ms.date: 03/01/2019
 ms.author: zhshang
-ms.openlocfilehash: c18597fde157e0308138348432d63d56446931b7
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 28fb3295ef02d508ef04299398a61ea59828df35
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58012562"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59278821"
 ---
 # <a name="tutorial-azure-signalr-service-authentication-with-azure-functions"></a>Kurz: Azure SignalR služby ověřování s využitím Azure Functions
 
@@ -348,7 +348,7 @@ Chatovací aplikace zatím funguje anonymně. V Azure k ověření uživatele po
 
 Při odesílání zprávy může aplikace určit, jestli se má zpráva odeslat všem připojeným klientům, nebo pouze klientům ověřeným pro daného uživatele.
 
-1. Ve VS Code, Otevřít **SignalRInfo/function.json**.
+1. Ve VS Code, Otevřít **negotiate/function.json**.
 
 1. Do vlastnosti *userId* vazby *SignalRConnectionInfo* vložte [výraz vazby](https://docs.microsoft.com/azure/azure-functions/functions-triggers-bindings): `{headers.x-ms-client-principal-name}`. Tím se hodnota vlastnosti nastaví na uživatelské jméno ověřeného uživatele. Atribut by teď měl vypadat takto:
 
@@ -498,4 +498,4 @@ Pokud chcete vyčistit prostředky vytvořené v tomto kurzu, pomocí webu Azure
 V tomto kurzu jste zjistili, jak používat Azure Functions se službou Azure SignalR. Přečtěte si více o vytváření bezserverových aplikací fungujících v reálném čase s využitím vazeb služby SignalR pro Azure Functions.
 
 > [!div class="nextstepaction"]
-> [Vytváření aplikací v reálném čase s využitím Azure Functions](signalr-concept-azure-functions.md)
+> [Sestavení aplikací v reálném čase s využitím Azure Functions](signalr-concept-azure-functions.md)

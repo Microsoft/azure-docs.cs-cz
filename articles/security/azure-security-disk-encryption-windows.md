@@ -7,12 +7,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 03/12/2019
 ms.custom: seodec18
-ms.openlocfilehash: c6aa3a1999460b5eb3e62e36883bb4827bd41305
-ms.sourcegitcommit: e43ea344c52b3a99235660960c1e747b9d6c990e
-ms.translationtype: HT
+ms.openlocfilehash: f17dc61f47dadf4c808467b2158cd9ef034e1ce9
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/04/2019
-ms.locfileid: "59010341"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59277115"
 ---
 # <a name="enable-azure-disk-encryption-for-windows-iaas-vms"></a>Aktivace Azure Disk Encryption pro virtuální počítače IaaS s Windows
 
@@ -223,8 +223,7 @@ Použití [povolit šifrování az vmss](/cli/azure/vmss/encryption#az-vmss-encr
 Šifrování nebo dešifrování Windows virtuálního počítače škálovací sady, pomocí šablon Azure Resource Manageru a následující pokyny:
 
 - [Povoluje šifrování na škálovací sadu virtuálních počítačů s Windows](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-running-vmss-windows)
-- [Nasazení virtuálního počítače škálovací sady virtuálních počítačů Windows s jumpbox a povoluje šifrování na škálovací sady virtuálních počítačů Windows](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-vmss-windows-jumpbox)
-- [Zakažte šifrování u škálovací sady virtuálních počítačů Windows](https://github.com/Azure/azure-quickstart-templates/tree/master/201-decrypt-vmss-windows)
+- [Zakažte šifrování u škálovací sadu virtuálních počítačů s Windows](https://github.com/Azure/azure-quickstart-templates/tree/master/201-decrypt-vmss-windows)
 
      1. Klikněte na **Deploy to Azure** (Nasadit do Azure).
      2. Vyplňte požadovaná pole pak svůj souhlas s podmínkami a ujednáními.

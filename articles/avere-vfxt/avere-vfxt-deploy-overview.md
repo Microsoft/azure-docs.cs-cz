@@ -6,12 +6,12 @@ ms.service: avere-vfxt
 ms.topic: conceptual
 ms.date: 02/20/2019
 ms.author: v-erkell
-ms.openlocfilehash: 0c61db5e34ba58bb767b0bda773a54c8e65cd404
-ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
-ms.translationtype: MT
+ms.openlocfilehash: 88305e5d877f5bc3cc7ebb116f69b0f49f162b79
+ms.sourcegitcommit: b4ad15a9ffcfd07351836ffedf9692a3b5d0ac86
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56991797"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59056227"
 ---
 # <a name="avere-vfxt-for-azure---deployment-overview"></a>Avere vFXT pro Azure – Přehled nasazení
 
@@ -32,14 +32,6 @@ Tady je přehled o všech kroků.
 1. Konfigurovat požadavky související s 
 
    Před vytvořením virtuálního počítače, musíte vytvořit nový odběr pro projekt vFXT Avere, nakonfigurovat vlastnictví předplatného, zkontrolujte kvóty a požádat o zvýšení v případě potřeby a přijměte podmínky a za používání softwaru vFXT Avere. Čtení [Příprava k tvorbě Avere vFXT](avere-vfxt-prereqs.md) podrobné pokyny.
-
-1. Umožňuje vytvořit roli přístup pro uzly clusteru
-
-   Azure používá [řízení přístupu na základě rolí](../role-based-access-control/index.yml) (RBAC) k autorizaci, uzlem clusteru virtuálních počítačů určených k provádění určitých úloh. Například uzly clusteru musí mít možnost přiřazení nebo znovu přiřadit IP adresy do jiných uzlů clusteru. Před vytvořením clusteru, je nutné definovat roli, která mu odpovídající oprávnění.
-
-   Čtení [vytvořit role clusteru uzel přístupu](avere-vfxt-prereqs.md#create-the-cluster-node-access-role) pokyny.
-
-   Řadič clusteru také používá přístupu k roli však můžete přijmout výchozí role vlastník, místo vytvoření vlastní. Pokud chcete vytvořit vlastní role pro správce clusteru, přečtěte si [vlastní kontroler přístup role](avere-vfxt-controller-role.md). 
 
 1. Vytvoření clusteru vFXT Avere 
 

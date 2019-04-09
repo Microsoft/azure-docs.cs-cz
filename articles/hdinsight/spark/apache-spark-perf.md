@@ -3,18 +3,18 @@ title: Optimalizace Sparkových úloh pro výkon – Azure HDInsight
 description: Ukazuje běžných strategií pro nejlepší výkon ze všech clusterů Spark.
 services: hdinsight
 ms.service: hdinsight
-author: maxluk
-ms.author: maxluk
+author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 01/08/2019
-ms.openlocfilehash: d1eeedfd91dfe1d4a174a3cbed2c0db826a8d5ab
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
-ms.translationtype: MT
+ms.date: 04/03/2019
+ms.openlocfilehash: b846b19d180bf19a0d023a9cd0b92393132f47d4
+ms.sourcegitcommit: b4ad15a9ffcfd07351836ffedf9692a3b5d0ac86
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54117856"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59058624"
 ---
 # <a name="optimize-apache-spark-jobs"></a>Optimalizace úloh Apache Spark
 
@@ -26,7 +26,7 @@ Následující části popisují běžné úlohy optimalizace Spark a doporučen
 
 Starší verze Sparku pomocí Rdd abstraktní data, Spark 1.3 a zavedl 1.6 datových rámců a datové sady, v uvedeném pořadí. Vezměte v úvahu následující relativní věci:
 
-* **Datových rámců**
+* **DataFrames**
     * Ve většině případů je nejlepší volbou.
     * Poskytuje optimalizaci dotazu prostřednictvím zprostředkující.
     * Generování kódu celé fázi.
@@ -60,9 +60,10 @@ Když vytvoříte nový cluster Spark, máte možnost vybrat si jako výchozím 
 
 | Typ Store | Systém souborů | Rychlost | Přechodná | Případy použití |
 | --- | --- | --- | --- | --- |
-| Azure Blob Storage | **wasb:**//url/ | **Standard** | Ano | Přechodné clusteru |
-| Azure Data Lake Storage | **adl:**//url/ | **Rychlejší** | Ano | Přechodné clusteru |
-| Místní HDFS | **hdfs:**//url/ | **Nejrychlejší** | Ne | Interaktivní 24 hodin denně 7 clusteru |
+| Azure Blob Storage | **wasb [s]:**//url/ | **Standard** | Ano | Přechodné clusteru |
+| Azure Data Lake Storage Gen 2| **abfs[s]:**//url/ | **Rychlejší** | Ano | Přechodné clusteru |
+| Azure Data Lake Storage Gen1| **adl:**//url/ | **Rychlejší** | Ano | Přechodné clusteru |
+| Local HDFS | **hdfs:**//url/ | **Nejrychlejší** | Ne | Interaktivní 24 hodin denně 7 clusteru |
 
 ## <a name="use-the-cache"></a>Použití mezipaměti
 

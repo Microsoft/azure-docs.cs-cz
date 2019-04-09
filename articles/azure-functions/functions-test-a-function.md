@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 030/25/2019
 ms.author: cshoe
-ms.openlocfilehash: 4b3cba7e7656ea13a6e7b36be4cb2fef99893867
-ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
+ms.openlocfilehash: 15e4cf484ae38268c59781101256d64ef85e72ef
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58439324"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59283031"
 ---
 # <a name="strategies-for-testing-your-code-in-azure-functions"></a>Strategie pro testování kódu ve službě Azure Functions
 
@@ -253,6 +253,8 @@ namespace Functions.Tests
 
 - **Timer_should_log_message**: Tento test vytvoří instanci `ListLogger` a předá ji do funkcí časovače. Po spuštění funkce protokolu se kontroluje k zajištění, že je k dispozici očekávaná zpráva.
 
+Pokud chcete získat přístup k aplikaci nastavení v testech, můžete použít [System.Environment.GetEnvironmentVariable](./functions-dotnet-class-library.md#environment-variables).
+
 ### <a name="run-tests"></a>Spouštění testů
 
 Chcete-li spustit testy, přejděte na **Průzkumník testů** a klikněte na tlačítko **spustit všechny**.
@@ -375,6 +377,6 @@ Dále nastavte zarážku v testu a stiskněte klávesu **F5**.
 ## <a name="next-steps"></a>Další postup
 
 Teď, když jste zjistili, jak sepsání automatizovaných testů pro vaše funkce, pokračujte s těmito prostředky:
-- [Ruční spuštění jiné funkci aktivovanou protokolem HTTP](./functions-manually-run-non-http.md)
+- [Ruční spuštění funkce neaktivované protokolem HTTP](./functions-manually-run-non-http.md)
 - [Zpracování chyb Azure Functions](./functions-bindings-error-pages.md)
 - [Funkce Azure Event Grid aktivovat místní ladění](./functions-debug-event-grid-trigger-local.md)

@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/04/2019
+ms.date: 04/05/2019
 ms.author: tomfitz
-ms.openlocfilehash: 115b1fcd1b1e878a9b4a7efdf6f24d7391945619
-ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
+ms.openlocfilehash: 0ad1d12a4a2ca3a293546f2bac85210bb9152269
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57409835"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59269284"
 ---
 # <a name="azure-resource-manager-overview"></a>Přehled Azure Resource Manageru
 
@@ -53,7 +53,7 @@ Resource Manager poskytuje několik výhod:
 
 ## <a name="understand-management-scope"></a>Vysvětlení oborem správy
 
-Azure nabízí čtyři úrovně oborem správy: skupin pro správu, předplatná, skupiny prostředků a prostředky. [Skupiny pro správu](../governance/management-groups/index.md) jsou ve verzi Preview. Následující obrázek ukazuje příklad těchto vrstev.
+Azure nabízí čtyři úrovně oborem správy: [skupin pro správu](../governance/management-groups/index.md), předplatná, [skupiny prostředků](#resource-groups)a prostředky. Následující obrázek ukazuje příklad těchto vrstev.
 
 ![Rozsah](./media/resource-group-overview/scope-levels.png)
 
@@ -84,6 +84,8 @@ Při definování skupin prostředků byste měli vzít v úvahu některé důle
 * Prostředek může interagovat s prostředky v dalších skupinách prostředků. Tato interakce je běžná v případě, že spolu tyto dva prostředky souvisejí, ale nesdílejí stejný životní cyklus (například webové aplikace, které se připojují k databázi).
 
 Při vytváření skupiny prostředků pro ni musíte zadat umístění. Asi vás zajímá, proč skupina prostředků potřebuje umístění. A proč vůbec záleží na umístění skupiny prostředků, pokud prostředky mohou mít jiná umístění než skupina prostředků. Skupina prostředků ukládá metadata o prostředcích. Při zadávání umístění skupiny prostředků tedy určujete, kde se tato metadata ukládají. Z důvodu dodržování předpisů může být nutné zajistit, aby se data ukládala v určité oblasti.
+
+Pokud skupinu prostředků oblasti je dočasně nedostupná, nelze aktualizovat prostředky ve skupině prostředků, protože metadata není k dispozici. Prostředky v jiných oblastech bude i nadále fungovat podle očekávání, ale nemůže je aktualizovat. Chcete-li minimalizovat rizika, vyhledejte skupinu prostředků a prostředky ve stejné oblasti.
 
 ## <a name="resource-providers"></a>Poskytovatelé prostředků
 
@@ -164,8 +166,8 @@ Když vytvoříte řešení z portálu, bude toto řešení automaticky zahrnova
 Po definování šablony jste připraveni k nasazení prostředků do Azure. Nasazení prostředků najdete v tématu:
 
 * [Nasazení prostředků pomocí šablon Resource Manageru a Azure PowerShellu](resource-group-template-deploy.md)
-* [Nasazení prostředků pomocí šablon Resource Manageru a rozhraní příkazového řádku Azure](resource-group-template-deploy-cli.md)
-* [Nasazení prostředků pomocí šablon Resource Manageru a webu Azure Portal](resource-group-template-deploy-portal.md)
+* [Nasazení prostředků pomocí šablon Resource Manageru a Azure CLI](resource-group-template-deploy-cli.md)
+* [Nasazení prostředků pomocí šablon Resource Manageru a portálu Azure Portal](resource-group-template-deploy-portal.md)
 * [Nasazení prostředků pomocí šablon Resource Manageru a jeho rozhraní REST API](resource-group-template-deploy-rest.md)
 
 ## <a name="safe-deployment-practices"></a>Postupy bezpečného nasazení
@@ -181,4 +183,4 @@ Deployment Manager je momentálně ve verzi Private Preview.
 V tomto článku jste se dozvěděli, jak Azure Resource Manager využívat k nasazení, správě a řízení přístupu k prostředkům v Azure. V dalším článku se dozvíte, jak vytvořit první šablonu Azure Resource Manageru.
 
 > [!div class="nextstepaction"]
-> [Rychlé zprovoznění: Vytvoření a nasazení šablon Azure Resource Manageru pomocí webu Azure portal](./resource-manager-quickstart-create-templates-use-the-portal.md)
+> [Rychlý start: Vytvoření a nasazení šablon Azure Resource Manageru pomocí webu Azure portal](./resource-manager-quickstart-create-templates-use-the-portal.md)

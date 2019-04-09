@@ -5,15 +5,15 @@ services: storage
 author: wmgries
 ms.service: storage
 ms.topic: article
-ms.date: 3/7/2019
+ms.date: 4/4/2019
 ms.author: wgries
 ms.subservice: files
-ms.openlocfilehash: 063699f016c3e165dfb07d17c26e7f29a13c81f8
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
-ms.translationtype: MT
+ms.openlocfilehash: e709ccee9dfcc6b6931df86b5dd38c7255baefdb
+ms.sourcegitcommit: b4ad15a9ffcfd07351836ffedf9692a3b5d0ac86
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58118608"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59057604"
 ---
 # <a name="release-notes-for-the-azure-file-sync-agent"></a>Poznámky k verzi pro agenta Azure File Sync
 Synchronizace souborů Azure umožňuje centralizovat sdílené složky organizace ve službě Soubory Azure bez ztráty flexibility, výkonu a kompatibility místního souborového serveru. Vaše instalace Windows Serveru se transformují na rychlou mezipaměť sdílené složky Azure. Pro místní přístup k datům můžete použít jakýkoli protokol dostupný ve Windows Serveru (včetně SMB, NFS a FTPS). Můžete mít libovolný počet mezipamětí po celém světě.
@@ -25,7 +25,8 @@ Agent Synchronizace souborů Azure podporuje následující verze:
 
 | Milník | Číslo verze agenta | Datum vydání | Status |
 |----|----------------------|--------------|------------------|
-| Kumulativní – aktualizace březen 2019 [KB4481060](https://support.microsoft.com/help/4481060)| 5.1.0.0 | 7. března 2019 | Podporované (doporučená verze) |
+| 2019 dubna kumulativní - [KB4481061](https://support.microsoft.com/help/4481061)| 5.2.0.0 | 4. dubna 2019 | Podporované (doporučená verze) |
+| Kumulativní – aktualizace březen 2019 [KB4481060](https://support.microsoft.com/help/4481060)| 5.1.0.0 | 7. března 2019 | Podporováno |
 | Verze 5 Release - [KB4459989](https://support.microsoft.com/help/4459989)| 5.0.2.0 | 12. února 2019 | Podporováno |
 | 2019 ledna kumulativní - [KB4481059](https://support.microsoft.com/help/4481059)| 4.3.0.0 | Od 14. května 2019 | Podporováno |
 | Kumulativní – aktualizace z prosince 2018 [KB4459990](https://support.microsoft.com/help/4459990)| 4.2.0.0 | 10. prosince 2018 | Podporováno |
@@ -38,6 +39,13 @@ Agent Synchronizace souborů Azure podporuje následující verze:
 
 ### <a name="azure-file-sync-agent-update-policy"></a>Zásady aktualizace agenta Synchronizace souborů Azure
 [!INCLUDE [storage-sync-files-agent-update-policy](../../../includes/storage-sync-files-agent-update-policy.md)]
+
+## <a name="agent-version-5200"></a>Verze agenta 5.2.0.0
+Následující poznámky k verzi platí pro verze 5.2.0.0 agenta Azure File Sync vydané 4. dubna 2019. Tyto poznámky doplňují uvedené verze 5.0.2.0 poznámky.
+
+Seznam opravených chybách v této verzi:  
+- Funkce obnovení vylepšení spolehlivosti pro přenos dat v režimu offline a přenosy dat.
+- Vylepšení telemetrie synchronizace
 
 ## <a name="agent-version-5100"></a>Verze agenta 5.1.0.0
 Následující poznámky k verzi platí pro verze 5.1.0.0 agenta Azure File Sync vydáno 7. března 2019. Tyto poznámky doplňují uvedené verze 5.0.2.0 poznámky.

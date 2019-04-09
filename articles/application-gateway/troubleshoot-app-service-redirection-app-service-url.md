@@ -7,18 +7,24 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 02/22/2019
 ms.author: absha
-ms.openlocfilehash: 359d75f10f95b0e41ccd9a869d49247355f0d5d0
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: f456cfec82a315a2be877a52e4f3f1850b992736
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58123177"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59274531"
 ---
-# <a name="troubleshoot-application-gateway-with-app-service--redirection-to-app-services-url"></a>Řešení potíží s Application Gateway s využitím služby App Service – přesměrování na adresu URL služby App Service
+# <a name="troubleshoot-application-gateway-with-app-service"></a>Řešení potíží s Application Gateway pomocí služby App Service
 
- Zjistěte, jak diagnostikovat a vyřešit problémy přesměrování pomocí služby Application Gateway, kde získat adresu URL služby App Service zpřístupněn.
+Zjistěte, jak diagnostikovat a vyřešit problémy s Application Gateway a službou App Service jako back-end serveru.
 
 ## <a name="overview"></a>Přehled
+
+V tomto článku se dozvíte, jak vyřešit následující problémy:
+
+> [!div class="checklist"]
+> * Získávání vystavený v prohlížeči při přesměrování URL služby App Service
+> * Doména služby App Service soubor ARRAffinity Cookie nastavte na název hostitele služby App Service (example.azurewebsites.net) namísto původní hostitele
 
 Když nakonfigurujete veřejnou směřující služby App Service ve fondu back-endu služby Application Gateway a pokud máte přesměrování nakonfigurovaný v kódu aplikace, může se zobrazit, který při přístupu k Application Gateway, budete přesměrováni přímo do aplikace v prohlížeči Adresa URL služby.
 
@@ -28,6 +34,8 @@ Tento problém může dojít z následujících hlavních důvodů:
 - Máte ověřování Azure AD, což způsobí, že přesměrování.
 - Povolili jste přepínač "Vyberte hostitele název z back-end adres" v nastavení protokolu HTTP služby Application Gateway.
 - Nemáte vlastní doménu zaregistrována ve službě App Service.
+
+Také když používáte vlastní doménu pro přístup k službě Application Gateway se pomocí App Services za službou Application Gateway, může se zobrazit, že hodnota domény souboru cookie ARRAffinity nastavit službou App Service, budou mít název domény "example.azurewebsites.net". Pokud chcete, aby váš původní název hostitele i doména souboru cookie, použijte postup v tomto článku.
 
 ## <a name="sample-configuration"></a>Ukázky konfigurace
 
@@ -94,6 +102,16 @@ K dosažení tohoto musí vlastní doménu a pokračujte v procesu uvedených n�
 - Přidružení vlastní test paměti nastavení HTTP back-endu a ověřte stav back-endu, pokud je v pořádku.
 
 - Až to uděláte, služba Application Gateway nyní předávat stejný název hostitele "www.contoso.com" do služby App Service a provede přesměrování na stejný název hostitele. Můžete zkontrolovat příkladu hlaviček žádostí a odpovědí níže.
+
+K provedení kroků uvedených výše pomocí prostředí PowerShell pro stávající nastavení, postupujte podle ukázky níže uvedeného skriptu Powershellu. Všimněte si, jak přepínače - PickHostname nebyly použité v konfiguraci testu a nastavení HTTP.
+
+```azurepowershell-interactive
+$gw=Get-AzApplicationGateway -Name AppGw1 -ResourceGroupName AppGwRG
+Set-AzApplicationGatewayProbeConfig -ApplicationGateway $gw -Name AppServiceProbe -Protocol Http -HostName "example.azurewebsites.net" -Path "/" -Interval 30 -Timeout 30 -UnhealthyThreshold 3
+$probe=Get-AzApplicationGatewayProbeConfig -Name AppServiceProbe -ApplicationGateway $gw
+Set-AzApplicationGatewayBackendHttpSettings -Name appgwhttpsettings -ApplicationGateway $gw -Port 80 -Protocol Http -CookieBasedAffinity Disabled -Probe $probe -RequestTimeout 30
+Set-AzApplicationGateway -ApplicationGateway $gw
+```
   ```
   ## Request headers to Application Gateway:
 
