@@ -6,12 +6,12 @@ ms.service: avere-vfxt
 ms.topic: conceptual
 ms.date: 02/20/2019
 ms.author: v-erkell
-ms.openlocfilehash: 3212befac60e3677c0b556825560cc548df42969
-ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
-ms.translationtype: MT
+ms.openlocfilehash: 46978d19a0789bb43e861ca89661aa5b78eb4ec7
+ms.sourcegitcommit: b4ad15a9ffcfd07351836ffedf9692a3b5d0ac86
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56990981"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59056720"
 ---
 # <a name="plan-your-avere-vfxt-system"></a>Plánování systému Avere vFXT
 
@@ -130,6 +130,17 @@ Při vytváření clusteru, můžete rozhodnout, zda se k vytvoření veřejné 
 
 * Pokud vytvoříte novou virtuální síť nebo novou podsíť, řadič clusteru přiřadit veřejnou IP adresu.
 * Pokud vyberete stávající virtuální síť a podsítě služby, kontrolér cluster bude mít pouze privátní IP adresy. 
+
+## <a name="vm-access-roles"></a>Role virtuálních počítačů přístup 
+
+Azure používá [řízení přístupu na základě rolí](../role-based-access-control/index.yml) (RBAC) k autorizaci clusteru virtuálních počítačů určených k provádění určitých úloh. Například řadič cluster, potřebuje autorizaci k vytvoření a konfigurace virtuální počítače uzlů clusteru. Uzly clusteru musí mít možnost přiřazení nebo změna přiřazení IP adresy do jiných uzlů clusteru.
+
+Dvě předdefinované role Azure se používají pro virtuální počítače vFXT Avere: 
+
+* Řadič cluster používá předdefinovaná role [Avere Přispěvatel](../role-based-access-control/built-in-roles.md#avere-contributor). 
+* Uzly clusteru používat předdefinovaná role [Avere – operátor](../role-based-access-control/built-in-roles.md#avere-operator)
+
+Pokud potřebujete vlastní nastavení role zabezpečeného přístupu pro Avere vFXT součásti, musíte definovat vlastní roli a přiřadit ji k virtuálním počítačům v době, kdy se vytvoří. Nasazení šablony nelze použít na webu Azure Marketplace. Microsoft zákaznický servis a podporu najdete tak, že otevřete lístek na webu Azure Portal, jak je popsáno v [získat nápovědu k systému](avere-vfxt-open-ticket.md). 
 
 ## <a name="next-step-understand-the-deployment-process"></a>Další krok: Vysvětlení procesu nasazení
 

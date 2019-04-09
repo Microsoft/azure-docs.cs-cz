@@ -4,16 +4,16 @@ description: Pochopit, jak získat a řídit velkých datových sad při práci 
 services: resource-graph
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 02/26/2019
+ms.date: 04/01/2019
 ms.topic: conceptual
 ms.service: resource-graph
 manager: carmonm
-ms.openlocfilehash: ef61314ae124668fc8970e6d68a0f927bdf771bc
-ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
-ms.translationtype: MT
+ms.openlocfilehash: 40aa8ca0ebfcc8eb5b686143960af1441768622a
+ms.sourcegitcommit: b4ad15a9ffcfd07351836ffedf9692a3b5d0ac86
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56889031"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59058377"
 ---
 # <a name="working-with-large-azure-resource-data-sets"></a>Práce s datovými sadami velkých prostředků Azure
 
@@ -63,7 +63,7 @@ V [rozhraní REST API](/rest/api/azureresourcegraph/resources/resources), je ovl
 
 ## <a name="paging-results"></a>Výsledky stránkování
 
-V případě potřeby rozdělit do menších sad záznamů pro zpracování sady výsledků, nebo protože je sada výsledků dotazu by překročil maximální povolenou hodnotu, která _5000_ vrácené záznamy, použít stránkování. [Rozhraní REST API](/rest/api/azureresourcegraph/resources/resources) **QueryResponse** poskytuje hodnoty k označení výsledků bylo přerušeno set up: **resultTruncated** a **$skipToken** .
+V případě potřeby rozdělit do menších sad záznamů pro zpracování sady výsledků, nebo protože je sada výsledků dotazu by překročil maximální povolenou hodnotu, která _1000_ vrácené záznamy, použít stránkování. [Rozhraní REST API](/rest/api/azureresourcegraph/resources/resources) **QueryResponse** poskytuje hodnoty k označení výsledků bylo přerušeno set up: **resultTruncated** a **$skipToken** .
 **resultTruncated** je logická hodnota, která informuje příjemce, pokud existují další záznamy se ne vrátila v odpovědi. K tomuto stavu může být také identifikovat, kdy **počet** vlastnost je menší než **totalRecords** vlastnost. **totalRecords** definuje, kolik záznamů, které odpovídají dotazu.
 
 Když **resultTruncated** je **true**, **$skipToken** je nastavena v odpovědi. Tato hodnota se používá se stejnými hodnotami dotazu a předplatného můžete získat další sady záznamů, které odpovídají dotazu.

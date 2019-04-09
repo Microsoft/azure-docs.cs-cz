@@ -15,12 +15,12 @@ ms.custom: mvc
 ms.date: 10/23/2018
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4cbcab0d287f344d308e3ed51ae47087afae7f9e
-ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
-ms.translationtype: MT
+ms.openlocfilehash: d70dfceb0101c4f6dbd76f3c6b34d85e5255aa72
+ms.sourcegitcommit: b4ad15a9ffcfd07351836ffedf9692a3b5d0ac86
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58449273"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59058556"
 ---
 # <a name="what-is-managed-identities-for-azure-resources"></a>Co jsou spravované identity prostředků Azure?
 
@@ -50,11 +50,20 @@ Existují dva typy spravovaných identit:
 - **Spravovaná identita přiřazená systémem** se povoluje přímo v instanci služby Azure. Když je tato identita povolená, Azure vytvoří identitu pro instanci v tenantovi Azure AD důvěryhodném pro předplatné instance. Po vytvoření identity se přihlašovací údaje zřídí do instance. Životní cyklus identity přiřazené systémem je přímo spojený s instancí služby Azure, pro kterou je povolená. Pokud se instance odstraní, Azure automaticky vyčistí přihlašovací údaje a identitu v Azure AD.
 - **Spravovaná identita přiřazená uživatelem** se vytváří jako samostatný prostředek Azure. Prostřednictvím procesu vytvoření Azure vytvoří identitu v tenantovi Azure AD důvěryhodném pro použité předplatné. Po vytvoření identity je možné ji přiřadit k jedné nebo několika instancím služeb Azure. Životní cyklus identity přiřazené uživatelem se spravuje nezávisle na životním cyklu instancí služeb Azure, ke kterým je přiřazená.
 
-Váš kód může spravovanou identitu použít k vyžádání přístupových tokenů pro služby, které podporují ověřování Azure AD. Azure zajistí vracení přístupových údajů, které instance služby používá.
+Interně jsou spravované identity instanční speciální typu, které jsou pevně nastavené na dá použít jenom s prostředky Azure. Při odstranění spravované identity odpovídající služby, které se automaticky odebere. 
+
+Váš kód může spravovanou identitu použít k vyžádání přístupových tokenů pro služby, které podporují ověřování Azure AD. Azure zajistí vracení přístupových údajů, které instance služby používá. 
 
 Následující diagram ukazuje fungování identit spravovaných služeb s virtuálními počítači Azure:
 
 ![Identity spravovaných služeb a virtuální počítače Azure](media/overview/msi-vm-vmextension-imds-example.png)
+
+|  Vlastnost    | Systém přiřadil spravované identity | Spravovaná identita přiřazená uživateli |
+|------|----------------------------------|--------------------------------|
+| Vytvoření |  Vytvoření prostředku Azure (třeba virtuální počítač Azure nebo Azure App Service) | Vytvořit jako samostatný prostředek Azure |
+| Životní cyklus | Životní cyklus sdílené s prostředky Azure, vytvořené pomocí spravované identity. <br/> Při odstranění nadřazený prostředek, je rovněž odstraněna spravovaná identita. | Nezávislý životní cyklus. <br/> Musí explicitně odstranit. |
+| Sdílení mezi prostředky Azure | Nelze sdílet. <br/> Může být pouze přidružen jeden prostředek Azure. | Je možné sdílet <br/> Stejný uživatel přiřazenou spravovanou identitu můžou být spojené s více než jeden prostředek Azure. |
+| Běžné případy použití | Úlohy, které jsou obsaženy v rámci jednoho prostředku Azure <br/> Úlohy, pro které je nutné nezávislé identit. <br/> Například aplikace, která běží na jednom virtuálním počítači | Úlohy, na kterých běží na několika prostředcích a které můžete sdílet jedinou identitu. <br/> Úlohy, které vyžadují předběžné ověření na zabezpečený prostředek jako součástí zřizování toku. <br/> Úlohy, ve kterém jsou prostředky recyklovat, často, ale oprávnění by mělo zůstat konzistentní vzhledem k aplikacím. <br/> Například nějaké úlohy, kdy je potřeba několik virtuálních počítačů přístup ke stejnému prostředku | 
 
 ### <a name="how-a-system-assigned-managed-identity-works-with-an-azure-vm"></a>Jak funguje spravovaná identita přiřazená systémem s virtuálním počítačem Azure
 
@@ -109,17 +118,17 @@ Informace o použití spravované identity ve virtuálním počítači s Windows
 * [Přístup ke službě Azure Data Lake Store](tutorial-windows-vm-access-datalake.md)
 * [Přístup k Azure Resource Manageru](tutorial-windows-vm-access-arm.md)
 * [Přístup k Azure SQL](tutorial-windows-vm-access-sql.md)
-* [Přístup ke službě Azure Storage pomocí přístupové klávesy](tutorial-windows-vm-access-storage.md)
-* [Přístup ke službě Azure Storage pomocí sdílených přístupových podpisů](tutorial-windows-vm-access-storage-sas.md)
-* [Přístup k prostředku mimo Azure AD pomocí služby Azure Key Vault](tutorial-windows-vm-access-nonaad.md)
+* [Přístup k Azure Storage pomocí přístupové klávesy](tutorial-windows-vm-access-storage.md)
+* [Přístup k Azure Storage s použitím sdílených přístupových podpisů](tutorial-windows-vm-access-storage-sas.md)
+* [Přístup k prostředku AD mimo Azure pomocí služby Azure Key Vault](tutorial-windows-vm-access-nonaad.md)
 
 Informace o použití spravované identity ve virtuálním počítači s Linuxem:
 
 * [Přístup ke službě Azure Data Lake Store](tutorial-linux-vm-access-datalake.md)
 * [Přístup k Azure Resource Manageru](tutorial-linux-vm-access-arm.md)
-* [Přístup ke službě Azure Storage pomocí přístupové klávesy](tutorial-linux-vm-access-storage.md)
-* [Přístup ke službě Azure Storage pomocí sdílených přístupových podpisů](tutorial-linux-vm-access-storage-sas.md)
-* [Přístup k prostředku mimo Azure AD pomocí služby Azure Key Vault](tutorial-linux-vm-access-nonaad.md)
+* [Přístup k Azure Storage pomocí přístupové klávesy](tutorial-linux-vm-access-storage.md)
+* [Přístup k Azure Storage s použitím sdílených přístupových podpisů](tutorial-linux-vm-access-storage-sas.md)
+* [Přístup k prostředku AD mimo Azure pomocí služby Azure Key Vault](tutorial-linux-vm-access-nonaad.md)
 
 Informace o použití spravované identity s dalšími službami Azure:
 
@@ -140,4 +149,4 @@ Spravované identity prostředků Azure můžete použít k ověřování ve slu
 Pokud chcete začít používat funkci spravovaných identit prostředků Azure, projděte si následující články Rychlý start:
 
 * [Použití spravované identity přiřazené systémem ve virtuálním počítači s Windows pro přístup k Resource Manageru](tutorial-windows-vm-access-arm.md)
-* [Použití spravované identity přiřazené systémem ve virtuálním počítači s Linuxem pro přístup k Resource Manageru](tutorial-linux-vm-access-arm.md)
+* [Použití spravované identity systém přiřadil virtuálního počítače s Linuxem pro přístup k Resource Manageru](tutorial-linux-vm-access-arm.md)

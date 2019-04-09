@@ -1,7 +1,6 @@
 ---
 title: Vytvořit zásadu pro nekompatibilní prostředky
 description: Tento článek vás provede postupem vytvoření definice zásady pro identifikaci prostředků, které nedodržují předpisy.
-services: azure-policy
 author: DCtheGeek
 ms.author: dacoulte
 ms.date: 12/06/2018
@@ -9,12 +8,12 @@ ms.topic: quickstart
 ms.service: azure-policy
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: 99c9caa167b1615705adc29193bc395b0c9e2a66
-ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
+ms.openlocfilehash: 42e8e7bdd52dcb8f236d94e7f931c91cd21605fd
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58803982"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59278951"
 ---
 # <a name="create-a-policy-assignment-to-identify-non-compliant-resources"></a>Vytvoření přiřazení zásady pro identifikaci prostředků, které nedodržují předpisy
 
@@ -77,7 +76,7 @@ Pokud existují nějaké stávající prostředky, které nedodržují předpisy
 
 Pokud se napříč stávajícími prostředky vyhodnotí nějaká podmínka a zjistí hodnotu True, takové prostředky se označí jako nekompatibilní s příslušnou zásadou. Následující tabulka ukazuje, jak různé účinky zásad pracují s vyhodnocením podmínek pro zjištění výsledného stavu dodržování předpisů. Přestože se logika vyhodnocení na webu Azure Portal nezobrazuje, výsledné stavy dodržování předpisů se zobrazují. Výsledný stav je buď kompatibilní, nebo nekompatibilní.
 
-| **Stav prostředku** | **Účinek** | **Vyhodnocení zásad** | **Stav dodržování předpisů** |
+| **Stav prostředku** | **Efekt** | **Vyhodnocení zásad** | **Stav dodržování předpisů** |
 | --- | --- | --- | --- |
 | Existuje | Deny, Audit, Append\*, DeployIfNotExist\*, AuditIfNotExist\* | True | Nevyhovující předpisům |
 | Existuje | Deny, Audit, Append\*, DeployIfNotExist\*, AuditIfNotExist\* | False | Odpovídající |
@@ -103,4 +102,4 @@ V tomto rychlém startu jste přiřadili definici zásady k oboru prostředků a
 Další informace o přiřazování zásad pro ověření, že nové prostředky jsou kompatibilní, i nadále najdete v tomto kurzu:
 
 > [!div class="nextstepaction"]
-> [Vytváření a správa zásad](./tutorials/create-and-manage.md)
+> [Vytváření a Správa zásad](./tutorials/create-and-manage.md)

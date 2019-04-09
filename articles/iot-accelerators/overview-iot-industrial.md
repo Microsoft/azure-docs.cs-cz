@@ -8,12 +8,12 @@ ms.topic: overview
 ms.service: iot-industrialiot
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: 1dee51354ba9210e52459dcf7a96695bc3736648
-ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
+ms.openlocfilehash: b4fbfc1d9c9441c6c9f12987de5feb1a90e9f17f
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58759247"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59256375"
 ---
 # <a name="what-is-industrial-iot-iiot"></a>Co je průmyslového IoT (IIoT)
 
@@ -28,7 +28,7 @@ Omezit časově náročný proces přístup k factory floor počítače se sprá
 ![Přehled průmyslového IoT](media/overview-iot-industrial/overview.png)
 
 > [!NOTE]
-> Další informace o službách Azure průmyslového IoT, najdete v článku Githubu [úložiště ](https://github.com/Azure/azure-iiot-services).
+> Další informace o službách Azure průmyslového IoT, najdete v článku Githubu [úložiště](https://github.com/Azure/azure-iiot-services).
 Pokud nejste obeznámeni s fungování modulů Azure IoT Edge, začněte najdete v následujících článcích:
 - [Informace o Azure IoT Edge](../iot-edge/about-iot-edge.md)
 - [Moduly Azure IoT Edge](../iot-edge/iot-edge-modules.md)
@@ -50,4 +50,4 @@ Azure IoT OPC UA správy certifikátů nebo OPC trezor je implementace sady OPC 
 Teď, když jsme měli Úvod do průmyslového IoT a jeho komponenty, tady je navrhované další krok:
 
 > [!div class="nextstepaction"]
-> [Co je OPC Dvojčat](overview-opc-twin.md)
+> [Co je OPC Twin](overview-opc-twin.md)

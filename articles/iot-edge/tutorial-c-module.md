@@ -5,16 +5,16 @@ services: iot-edge
 author: shizn
 manager: philmea
 ms.author: xshi
-ms.date: 01/04/2019
+ms.date: 04/04/2019
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc, seodec18
-ms.openlocfilehash: 98406df3746bb0ca2fc658697ee25b1f11b54c0b
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: eeaff4769dba5b6e6951665d09cd12d13f22af07
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58084585"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59273703"
 ---
 # <a name="tutorial-develop-a-c-iot-edge-module-and-deploy-to-your-simulated-device"></a>Kurz: Vývoj modulu jazyka C IoT Edge a nasazení simulovaného zařízení
 
@@ -36,8 +36,10 @@ Modul IoT Edge, který v tomto kurzu vytvoříte, filtruje teplotní údaje gene
 
 Zařízení Azure IoT Edge:
 
-* Jako hraniční zařízení můžete použít svůj vývojový počítač nebo virtuální počítač podle postupu v rychlém startu pro zařízení s [Linuxem](quickstart-linux.md) nebo [Windows](quickstart.md). 
-* Moduly C pro Azure IoT Edge nepodporují kontejnery Windows. Pokud vaše zařízení IoT Edge je počítač s Windows, ujistěte se, že je nakonfigurován na použití kontejnery Linuxu. Informace o instalaci rozdíly mezi kontejnery Windows a Linux najdete v tématu [nainstalovat modul runtime IoT Edge ve Windows](how-to-install-iot-edge-windows.md).
+* Virtuální počítač Azure můžete použít jako zařízení IoT Edge podle pokynů v tomto rychlém startu pro [Linux](quickstart-linux.md) nebo [zařízení Windows](quickstart.md). 
+
+   >[!TIP]
+   >Tento kurz používá Visual Studio Code pro vývoj modulu jazyka C pomocí kontejnerů Linuxu. Pokud chcete vyvíjet v kontejnerech C pro Windows, musíte použít Visual Studio 2017. Další informace najdete v tématu [použití Visual Studio 2017 na vývoj a ladění modulů Azure IoT Edge](how-to-visual-studio-develop-module.md).
 
 Cloudové prostředky:
 
@@ -100,7 +102,7 @@ Vytvořte šablonu řešení v C, kterou můžete přizpůsobit pomocí vlastní
  
    ![Zadání úložiště imagí Dockeru](./media/tutorial-c-module/repository.png)
 
-V okně nástroje VS Code se načte pracovní prostor řešení IoT Edge. Pracovní prostor řešení obsahuje pět komponent nejvyšší úrovně. Složka **modules** obsahuje kód C pro váš modul a také soubory Dockerfile pro sestavení modulu jako image kontejneru. V souboru **\.env** jsou uložené přihlašovací údaje k vašemu registru kontejneru. Soubor **deployment.template.json** obsahuje informace, které modul runtime IoT Edge používá k nasazení modulů do zařízení. A **deployment.debug.template.json** souboru kontejnery ladicí verzi modulů. Složku **\.vscode** ani soubor **\.gitignore** v tomto kurzu upravovat nebudete.
+Okna nástroje VS Code načte pracovní prostor řešení IoT Edge s pěti součásti nejvyšší úrovně. **Moduly** složka obsahuje kód jazyka C pro modul a soubory Dockerfile pro sestavení modulu jako image kontejneru. V souboru **\.env** jsou uložené přihlašovací údaje k vašemu registru kontejneru. Soubor **deployment.template.json** obsahuje informace, které modul runtime IoT Edge používá k nasazení modulů do zařízení. A **deployment.debug.template.json** souboru kontejnery ladicí verzi modulů. Složku **\.vscode** ani soubor **\.gitignore** v tomto kurzu upravovat nebudete.
 
 Pokud jste při vytváření řešení nezadali registr kontejneru, ale přijali jste výchozí hodnotu localhost:5000, nebudete mít soubor \.env.
 
@@ -118,7 +120,7 @@ V souboru prostředí jsou uložené přihlašovací údaje pro registr kontejne
 
 ### <a name="update-the-module-with-custom-code"></a>Aktualizace modulu pomocí vlastního kódu
 
-Přidejte do modulu C kód, který mu umožní načítat data ze snímače, kontrolovat, jestli hlášená teplota počítače nepřesáhla bezpečnou prahovou hodnotu, a předávat tyto informace do služby IoT Hub.
+Přidejte kód do modulu jazyka C, které umožňuje zkontrolovat, jestli teplota ohlášené počítač překročila stanovenou mez bezpečné. Pokud teplota je příliš vysoká, modul upozornění parametr přidává do zprávy před odesláním dat do služby IoT Hub. 
 
 1. Data ze snímače v tomto scénáři přicházejí ve formátu JSON. Pokud chcete filtrovat zprávy ve formátu JSON, importujte knihovnu JSON pro jazyk C. V tomto kurzu se používá Parson.
 
@@ -319,9 +321,9 @@ Přidejte do modulu C kód, který mu umožní načítat data ze snímače, kont
 
 ## <a name="build-and-push-your-solution"></a>Vytváření a nasdílení změn vašeho řešení
 
-V předchozí části jste vytvořili řešení IoT Edge a do modulu CModule jste přidali kód, který odfiltruje zprávy, ve kterých je hlášená teplota počítače v přípustných mezích. Teď je potřeba vytvořit toto řešení jako image kontejneru a odeslat ho do registru kontejneru.
+V předchozí části jste vytvořili hraničních zařízeních IoT řešení a přidat kód do CModule, který odfiltruje zprávy kde teploty ohlášené počítač je v přijatelných mezích. Teď je potřeba vytvořit toto řešení jako image kontejneru a odeslat ho do registru kontejneru.
 
-1. Výběrem **View** (Zobrazit) > **Integrated Terminal** (Integrovaný terminál) otevřete integrovaný terminál VS Code.
+1. Výběrem **View** (Zobrazit) > **Terminal** (Terminál) otevřete integrovaný terminál VS Code.
 
 1. Zadáním následujícího příkazu v integrovaném terminálu editoru Visual Studio Code se přihlaste k Dockeru. Musíte se přihlásit pomocí svých přihlašovacích údajů ke službě Azure Container Registry, abyste do registru mohli odeslat image modulu.
      
@@ -368,7 +370,7 @@ Po použití manifestu nasazení pro zařízení IoT Edge začne modul runtime I
 
 Stav zařízení IoT Edge můžete zobrazit v části **Zařízení Azure IoT Hub** v průzkumníku Visual Studio Code. Rozbalením podrobností o zařízení zobrazíte seznam nasazených a spuštěných modulů.
 
-Na samotném zařízení IoT Edge můžete stav modulů nasazení zobrazit pomocí příkazu `iotedge list`. Měly by se zobrazit čtyři moduly: dva moduly runtime IoT Edge, tempSensor a vlastní modul, který jste vytvořili v tomto kurzu. Spuštění všech modulů může několik minut trvat, proto příkaz spusťte znovu, pokud se zpočátku všechny nezobrazí.
+Na samotném zařízení IoT Edge se zobrazí stav modulů vaše nasazení pomocí příkazu `iotedge list`. Měly by se zobrazit čtyři moduly: dva moduly runtime IoT Edge, tempSensor a vlastní modul, který jste vytvořili v tomto kurzu. Spuštění všech modulů může několik minut trvat, proto příkaz spusťte znovu, pokud se zpočátku všechny nezobrazí.
 
 Pokud chcete zobrazit zprávy, které jednotlivé moduly generují, použijte příkaz `iotedge logs <module name>`.
 
@@ -396,5 +398,5 @@ Jinak můžete místní konfigurace a prostředky Azure vytvořené v tomto čl�
 V tomto kurzu jste vytvořili modul IoT Edge obsahující kód pro filtrování nezpracovaných dat generovaných zařízením IoT Edge. Až budete chtít vytvářet vlastní moduly, získáte další informace na stránce o [vývoji modulu C pomocí Azure IoT Edge pro Visual Studio Code](how-to-develop-c-module.md). Pokračujte dalšími kurzy, ve kterých poznáte další způsoby, jak vám může Azure IoT Edge pomoct přeměnit data na obchodní informace o hraničním zařízení.
 
 > [!div class="nextstepaction"]
-> [Uložení dat na hraničních zařízeních s využitím databází SQL Serveru](tutorial-store-data-sql-server.md)
+> [Store dat na hraničních zařízeních s databází SQL serveru](tutorial-store-data-sql-server.md)
 

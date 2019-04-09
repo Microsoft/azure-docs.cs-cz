@@ -16,12 +16,12 @@ ms.author: celested
 ms.reviewer: harshja
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 15e831bbcb956401149d8c33fce4d00a3be5a11d
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 5fa143aac52fe0024620047eb67f24cc79e55c9b
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56170869"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59279308"
 ---
 # <a name="compare-remote-access-solutions"></a>Porovnání řešení vzdáleného přístupu
 
@@ -50,7 +50,7 @@ Tato tabulka slouží k pochopení, jak porovnat Threat Management Gateway (TMG)
 | Žádné součásti v demilitarizovaná zóna (DMZ) | - | - | - | Ano |
 | Žádná příchozí připojení | - | - | - | Ano |
 
-Pro většinu scénářů doporučujeme aplikace Azure AD jako moderních řešení. Proxy webových aplikací je pouze upřednostňované ve scénářích, které vyžadují proxy server pro službu AD FS a nemůžete použít vlastní domény ve službě Azure Active Directory. 
+Pro většinu scénářů doporučujeme jako moderní řešení Azure AD Application Proxy. Proxy webových aplikací je pouze upřednostňované ve scénářích, které vyžadují proxy server pro službu AD FS a nemůžete použít vlastní domény ve službě Azure Active Directory. 
 
 Proxy aplikací Azure AD nabízí jedinečné výhody ve srovnání s podobné produkty Microsoftu, včetně:
 

@@ -11,12 +11,12 @@ author: chris-lauren
 ms.author: clauren
 ms.date: 1/23/2019
 ms.custom: seodec18
-ms.openlocfilehash: 8dea667b15471accd4fc8b09d0ff1eb7aa5daed5
-ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
+ms.openlocfilehash: 2cd2d328d33744854bc525e5ecf1dfa3b6e4bcc8
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57403681"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59275433"
 ---
 # <a name="manage-deploy-and-monitor-models-with-azure-machine-learning-service"></a>Spravovat, nasazovat a sledovat modely pomocí služby Azure Machine Learning
 
@@ -33,7 +33,7 @@ Pracovní postup nasazení zahrnuje následující kroky:
 
 Každý krok lze provést, samostatně nebo jako součást příkazu pro jedno nasazení. Kromě toho můžete integrovat do nasazení **pracovních postupů CI/CD** jak je znázorněno na tomto obrázku.
 
-[!["Služba azure Machine Learning průběžné integrace a nasazování (CI/CD) cyklu.](media/concept-model-management-and-deployment/model-ci-cd.png)](media/concept-model-management-and-deployment/model-ci-cd.png#lightbox)
+[!['Azure Machine Learning cyklu průběžné integrace a nasazování (CI/CD).](media/concept-model-management-and-deployment/model-ci-cd.png)](media/concept-model-management-and-deployment/model-ci-cd.png#lightbox)
 
 ## <a name="step-1-register-model"></a>Krok 1: Registrace modelu
 
@@ -63,7 +63,9 @@ Image můžete také zahrnout součásti sady SDK pro protokolování a monitoro
 Azure Machine Learning podporuje oblíbených architektur, ale obecně můžete pracovat libovolné architektury, které mohou být nainstalovány nástrojem pip.
 
 Při vytvoření pracovního prostoru, takže ostatní několik dalších prostředků Azure použil tento pracovní prostor.
-Všechny objekty používané k vytvoření této image se ukládají v účtu úložiště Azure ve vašem pracovním prostoru. Při vytváření bitové kopie můžete zadat další metadata značky. Značky metadata jsou také uloženy v registru image a může být dotazována k vyhledání bitové kopie.
+Všechny objekty používané k vytvoření této výchozí image se ukládají v účtu úložiště Azure ve vašem pracovním prostoru. Při vytváření bitové kopie můžete zadat další metadata značky. Značky metadata jsou také uloženy v registru image a může být dotazována k vyhledání bitové kopie.
+
+Můžete také použít vlastní Image, které můžete odeslat do služby Azure Container Registry a využívané ve službě Azure Machine Learning.
 
 Další informace naleznete v tématu Konfigurace a registrace oddíl bitové kopie z [nasazovat modely](how-to-deploy-and-where.md#configureimage).
 
@@ -73,7 +75,7 @@ Registrovaný imagí můžete nasadit do cloudu nebo na hraničních zařízení
 
 Nasazení webové služby je také možné prohledávat. Můžete například vyhledat všechny nasazení konkrétní model nebo image.
 
-[![Odvozování cíle](media/concept-model-management-and-deployment/inferencing-targets.png)](media/concept-model-management-and-deployment/inferencing-targets.png#lightbox)
+[![Inferencing cíle](media/concept-model-management-and-deployment/inferencing-targets.png)](media/concept-model-management-and-deployment/inferencing-targets.png#lightbox)
 
 Image můžete nasadit do těchto cílů nasazení v cloudu:
 

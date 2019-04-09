@@ -4,17 +4,17 @@ description: Použití Azure Graph prostředků ke spuštění některých start
 services: resource-graph
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 01/23/2019
+ms.date: 04/04/2019
 ms.topic: quickstart
 ms.service: resource-graph
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: fd945b5fd9f26cc65c5b049406831228a3d5f327
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
-ms.translationtype: MT
+ms.openlocfilehash: bfeb1678a5271cf1e498cee0a12be12c2cbc2902
+ms.sourcegitcommit: b4ad15a9ffcfd07351836ffedf9692a3b5d0ac86
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56338712"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59058454"
 ---
 # <a name="starter-resource-graph-queries"></a>Úvodní dotazy na Resource Graph
 
@@ -23,16 +23,16 @@ Prvním krokem k porozumění dotazům s Azure Resource Graph jsou základní zn
 Projdeme následující úvodní dotazy:
 
 > [!div class="checklist"]
-> - [Počet prostředků Azure](#count-resources)
-> - [Výpis prostředků seřazených podle názvu](#list-resources)
-> - [Zobrazení všech virtuálních počítačů, které jsou seřazené podle názvu v sestupném pořadí](#show-vms)
-> - [Zobrazení prvních pěti virtuálních počítačů podle názvu a jejich typu operačního systému](#show-sorted)
+> - [Prostředky Azure počet](#count-resources)
+> - [Výpis prostředků seřazené podle názvu](#list-resources)
+> - [Zobrazit všechny virtuální počítače, které jsou seřazené podle názvu v sestupném pořadí](#show-vms)
+> - [Zobrazit prvních pět virtuálních počítačů podle názvu a jejich typ operačního systému](#show-sorted)
 > - [Počet virtuálních počítačů podle typu operačního systému](#count-os)
-> - [Zobrazení prostředků, které obsahují úložiště](#show-storage)
-> - [Seznam všech veřejných IP adres](#list-publicip)
-> - [Počet prostředků, které mají IP adresy nakonfigurované podle předplatného](#count-resources-by-ip)
-> - [Seznam prostředků s konkrétní hodnotou značky](#list-tag)
-> - [Seznam všech účtů úložiště s konkrétní hodnotou značky](#list-specific-tag)
+> - [Zobrazit prostředky, které obsahují úložiště](#show-storage)
+> - [Vypsat všechny veřejné IP adresy](#list-publicip)
+> - [Spočítat prostředky, které mají IP adresy nakonfigurované podle předplatného](#count-resources-by-ip)
+> - [Seznam prostředků s konkrétní značkou hodnotou](#list-tag)
+> - [Vypsat všechny účty úložiště s konkrétní značkou hodnotou](#list-specific-tag)
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free) před tím, než začnete.
 
@@ -95,7 +95,7 @@ Search-AzGraph -Query "project name, location, type| where type =~ 'Microsoft.Co
 
 ## <a name="show-sorted"></a>Zobrazení prvních pěti virtuálních počítačů podle názvu a jejich typu operačního systému
 
-Tento dotaz bude používat `limit` pouze k načtení pěti odpovídajících záznamů, které jsou řazeny podle názvu. Typ prostředku Azure je `Microsoft.Compute/virtualMachines`. `project` říká Azure Resource Graph, které vlastnosti použít.
+Tento dotaz bude používat `limit` pouze k načtení pěti odpovídajících záznamů, které jsou řazeny podle názvu. Typ prostředku Azure je `Microsoft.Compute/virtualMachines`. `project` instruuje Azure Graph prostředků vlastnosti, které chcete zahrnout.
 
 ```Query
 where type =~ 'Microsoft.Compute/virtualMachines'
@@ -167,20 +167,22 @@ Search-AzGraph -Query "where type contains 'storage' | distinct type"
 ## <a name="list-publicip"></a>Seznam všech veřejných IP adres
 
 Podobně jako v předchozím dotazu se vyhledají všechny záznamy, jejichž typ obsahuje slovo **publicIPAddresses**.
-Tento dotaz je rozšířen na tomto vzoru, aby se vyloučily výsledky, kde **properties.ipAddress** má hodnotu nula, aby se vrátily pouze vlastnosti **properties.ipAddress**a získaly se `limit` výsledky podle prvních 100. V závislosti na zvoleném prostředí možná budete muset odebrat uvozovky.
+Tento dotaz rozšíří na tomto vzoru zahrnout pouze výsledky kde **properties.ipAddress**
+`isnotempty`, který vrátí pouze **properties.ipAddress**a získat `limit` výsledky podle horní
+100. V závislosti na zvoleném prostředí možná budete muset odebrat uvozovky.
 
 ```Query
-where type contains 'publicIPAddresses' and properties.ipAddress != ''
+where type contains 'publicIPAddresses' and isnotempty(properties.ipAddress)
 | project properties.ipAddress
 | limit 100
 ```
 
 ```azurecli-interactive
-az graph query -q "where type contains 'publicIPAddresses' and properties.ipAddress != '' | project properties.ipAddress | limit 100"
+az graph query -q "where type contains 'publicIPAddresses' and isnotempty(properties.ipAddress) | project properties.ipAddress | limit 100"
 ```
 
 ```azurepowershell-interactive
-Search-AzGraph -Query "where type contains 'publicIPAddresses' and properties.ipAddress != '' | project properties.ipAddress | limit 100"
+Search-AzGraph -Query "where type contains 'publicIPAddresses' and isnotempty(properties.ipAddress) | project properties.ipAddress | limit 100"
 ```
 
 ## <a name="count-resources-by-ip"></a>Počet prostředků, které mají IP adresy nakonfigurované podle předplatného
@@ -188,16 +190,16 @@ Search-AzGraph -Query "where type contains 'publicIPAddresses' and properties.ip
 Pomocí předchozího ilustračního dotazu a přidáním `summarize` a `count()`, získáme seznam podle předplatného prostředků s nakonfigurovanými IP adresami.
 
 ```Query
-where type contains 'publicIPAddresses' and properties.ipAddress != ''
+where type contains 'publicIPAddresses' and isnotempty(properties.ipAddress)
 | summarize count () by subscriptionId
 ```
 
 ```azurecli-interactive
-az graph query -q "where type contains 'publicIPAddresses' and properties.ipAddress != '' | summarize count () by subscriptionId"
+az graph query -q "where type contains 'publicIPAddresses' and isnotempty(properties.ipAddress) | summarize count () by subscriptionId"
 ```
 
 ```azurepowershell-interactive
-Search-AzGraph -Query "where type contains 'publicIPAddresses' and properties.ipAddress != '' | summarize count () by subscriptionId"
+Search-AzGraph -Query "where type contains 'publicIPAddresses' and isnotempty(properties.ipAddress) | summarize count () by subscriptionId"
 ```
 
 ## <a name="list-tag"></a>Seznam prostředků s konkrétní hodnotou značky
@@ -250,7 +252,7 @@ Search-AzGraph -Query "where type =~ 'Microsoft.Storage/storageAccounts' | where
 ```
 
 > [!NOTE]
-> Tento příklad používá `==` pro shodu místo podmínky `=~`. `==` je shoda rozlišující velikost písmen.
+> Tento příklad používá `==` pro shodu místo podmínky `=~`. `==` představuje shodu malá a velká písmena.
 
 ## <a name="next-steps"></a>Další postup
 

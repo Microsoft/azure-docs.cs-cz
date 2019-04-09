@@ -16,12 +16,12 @@ ms.topic: quickstart
 ms.date: 04/11/2018
 ms.author: cfowler
 ms.custom: seodec18
-ms.openlocfilehash: af22473e0c9b56210b720ee5d122d96566689158
-ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
-ms.translationtype: MT
+ms.openlocfilehash: 43016b3c31a0371f953f758bc7afb53bd1508495
+ms.sourcegitcommit: b4ad15a9ffcfd07351836ffedf9692a3b5d0ac86
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56889711"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59056190"
 ---
 # <a name="create-an-aspnet-core-app-in-app-service-on-linux"></a>Vytvoření aplikace ASP.NET Core ve službě App Service v Linuxu
 
@@ -41,15 +41,15 @@ Postup v tomto článku můžete použít v případě počítačů se systémem
 
 K provedení kroků v tomto kurzu Rychlý start je potřeba:
 
-* <a href="https://git-scm.com/" target="_blank">Nainstalovat Git</a>.
-* <a href="https://www.microsoft.com/net/core/" target="_blank">Nainstalovat .NET Core</a>.
+* <a href="https://git-scm.com/" target="_blank">Instalace Gitu</a>
+* <a href="https://www.microsoft.com/net/core/" target="_blank">Instalace .NET Core</a>
 
 ## <a name="create-the-app-locally"></a>Místní vytvoření aplikace
 
 V okně terminálu na svém počítači vytvořte adresář `hellodotnetcore` a přejděte do něj.
 
 ```bash
-md hellodotnetcore
+mkdir hellodotnetcore
 cd hellodotnetcore
 ```
 

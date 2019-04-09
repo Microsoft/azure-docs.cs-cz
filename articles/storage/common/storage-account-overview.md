@@ -8,16 +8,16 @@ ms.topic: article
 ms.date: 03/06/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: ca71fdc8074e56adc8595ee905d5b1db3b60cef1
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.openlocfilehash: 52226d07595120395909dd5f47d5d896f5cdaa75
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58371790"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59278985"
 ---
 # <a name="azure-storage-account-overview"></a>Přehled účtu Azure storage
 
-Účet úložiště Azure obsahuje všechny datových objektů Azure Storage: objekty BLOB, soubory, fronty, tabulky a disky. Data ve vašem účtu úložiště Azure je odolné a vysoce dostupných a zabezpečené, rozsáhle škálovatelné a přístupný z kdekoli na světě prostřednictvím protokolu HTTP nebo HTTPS. 
+Účet úložiště Azure obsahuje všechny datových objektů Azure Storage: objekty BLOB, soubory, fronty, tabulky a disky. Data ve vašem účtu úložiště Azure je odolné a vysoce dostupných a zabezpečené, rozsáhle škálovatelné a přístupný z kdekoli na světě prostřednictvím protokolu HTTP nebo HTTPS.
 
 Zjistěte, jak vytvořit účet úložiště Azure, najdete v článku [vytvořit účet úložiště](storage-quickstart-create-account.md).
 
@@ -52,7 +52,7 @@ Zjistěte, jak vytvořit účet úložiště Azure, najdete v článku [vytvoři
 - Fronty
 - Tabulky
 
-Ve většině případů se doporučuje účty pro obecné účely v2, účty pro obecné účely v1 jsou nejvhodnější pro tyto scénáře: 
+Ve většině případů se doporučuje účty pro obecné účely v2, účty pro obecné účely v1 jsou nejvhodnější pro tyto scénáře:
 
 * Vaše aplikace vyžadují model nasazení Azure classic. Účty pro obecné účely v2 a účty úložiště Blob podporují jenom modelu nasazení Azure Resource Manageru.
 
@@ -64,6 +64,10 @@ Ve většině případů se doporučuje účty pro obecné účely v2, účty pr
 
 Účet block blob storage je specializovaný účet úložiště pro ukládání nestrukturovaných dat objektů jako objekty BLOB bloku nebo doplňovacích objektů BLOB. Účty blob storage bloku nabízí několik úrovní přístupu pro ukládání dat na základě vaší způsobů využití. Další informace najdete v tématu [data v objektech blob úrovně přístupu pro blok](#access-tiers-for-block-blob-data).
 
+### <a name="filestorage-preview-storage-accounts"></a>Účty úložiště pro úložiště souborů (preview)
+
+Účet úložiště úložiště souborů je specializovaný účet úložiště používá k ukládání a vytvoření sdílených složek premium. Účty úložiště pro úložiště souborů nabízí jedinečné výkonu vyhrazené vlastnosti například shlukování vstupně-výstupních operací. Další informace o těchto vlastnostech najdete v článku [úrovně výkonu sdílené složky souboru](../files/storage-files-planning.md#file-share-performance-tiers) části souborů Průvodce plánováním.
+
 ## <a name="naming-storage-accounts"></a>Pojmenování účtů úložiště
 
 Při pojmenování účtu úložiště mějte na paměti tato pravidla:
@@ -71,7 +75,7 @@ Při pojmenování účtu úložiště mějte na paměti tato pravidla:
 - Názvy účtů úložiště musí mít délku 3 až 24 znaků a můžou obsahovat jenom číslice a malá písmena.
 - Název vašeho účtu úložiště musí být jedinečný v rámci Azure. Žádné dva účty úložiště nemůžou mít stejný název.
 
-## <a name="performance-tiers"></a>Úrovně výkonu
+## <a name="general-purpose-performance-tiers"></a>Úrovně výkonu pro obecné účely
 
 Účty úložiště pro obecné účely lze nakonfigurovat pro některý z následujících úrovní výkonu:
 
@@ -84,9 +88,9 @@ Azure Storage nabízí různé možnosti pro přístup k datům objektu blob blo
 
 K dispozici přístup úrovně jsou:
 
-* **Hot** úrovně přístupu, která je optimalizovaná pro časté přístup k objektům v účtu úložiště. Přístup k datům v horké úrovni je cenově nejvýhodnější, zatímco jsou o něco vyšší náklady na úložiště. Nové účty úložiště jsou vytvořené v horké vrstvy ve výchozím nastavení.
-* **Cool** úrovně přístupu, která je optimalizovaná pro ukládání velkých objemů dat, která se nevyužívají často a ukládají nejméně na 30 dnů. Ukládání dat do studené vrstvy začne být cenově výhodnější, ale přístup k těmto datům může být trochu nákladnější než přístup k datům v horké úrovni.
-* **Archivu** úroveň, která je dostupná jenom pro objekty BLOB bloku jednotlivé. Archivní úroveň je optimalizovaná pro data, která se toleruje latence načtení několik hodin a zůstanou v archivní úrovni po dobu nejméně na 180 dnů. Archivní úroveň je cenově nejvýhodnější možnost pro ukládání dat, ale přístup k těmto datům je nákladnější než přístup k datům v horké nebo studené úrovně. 
+* **Hot** úrovně přístupu, která je optimalizovaná pro časté přístup k objektům v účtu úložiště. Přístup k datům v horké úrovni je cenově nejvýhodnější, zatímco jsou vyšší náklady na úložiště. Nové účty úložiště jsou vytvořené v horké vrstvy ve výchozím nastavení.
+* **Cool** úrovně přístupu, která je optimalizovaná pro ukládání velkých objemů dat, která se nevyužívají často a ukládají nejméně na 30 dnů. Ukládání dat do studené vrstvy začne být cenově výhodnější, ale přístup k těmto datům může být dražší než přístup k datům v horké úrovni.
+* **Archivu** úroveň, která je dostupná jenom pro objekty BLOB bloku jednotlivé. Archivní úroveň je optimalizovaná pro data, která se toleruje latence načtení několik hodin a zůstanou v archivní úrovni po dobu nejméně na 180 dnů. Archivní úroveň je cenově nejvýhodnější možnost pro ukládání dat, ale přístup k těmto datům je nákladnější než přístup k datům v horké nebo studené úrovně.
 
 Pokud dojde ke změně vzoru využití vašich dat, můžete přepínat mezi úrovněmi přístupu kdykoli. Další informace o úrovních přístupu najdete v části [Azure Blob storage: horká, studená a archivní úroveň přístupu](../blobs/storage-blob-storage-tiers.md).
 

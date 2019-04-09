@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 9ab6d9708843cda492795b92b6fb5f58bd7a9154
-ms.sourcegitcommit: dd1a9f38c69954f15ff5c166e456fda37ae1cdf2
+ms.openlocfilehash: 50f906a9d8a0dc19f5eb47bef4cb68f4703f020f
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57571418"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59256052"
 ---
 # <a name="get-information-from-a-coordinate"></a>Získání informací ze souřadnice
 
@@ -29,11 +29,11 @@ Existují dva způsoby, jak vytvořit adresu zpětného vyhledávání. Jedním 
 
 Ve výše uvedeném kódu první blok kódu vytvoří objekt map a nastaví mechanismus ověřování využívat klíč předplatného. Můžete zobrazit [Vytvořte mapu](./map-create.md) pokyny.
 
-Vytvoří druhý blok kódu **SubscriptionKeyCredentialPolicy** k ověření požadavků HTTP ve službě Azure Maps se klíč předplatného. Pak bude **atlas.service.MapsURL.newPipeline()** přijímá **SubscriptionKeyCredential** zásady a vytvoří [kanálu](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.pipeline?view=azure-iot-typescript-latest) instance. **SearchURL** představuje adresu URL ke službě Azure Maps [hledání](https://docs.microsoft.com/rest/api/maps/search) operace.
+Vytvoří druhý blok kódu `SubscriptionKeyCredentialPolicy` k ověření požadavků HTTP ve službě Azure Maps se klíč předplatného. Pak bude `atlas.service.MapsURL.newPipeline()` přijímá `SubscriptionKeyCredential` zásady a vytvoří [kanálu](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.pipeline?view=azure-iot-typescript-latest) instance. `searchURL` Představuje adresu URL ke službě Azure Maps [hledání](https://docs.microsoft.com/rest/api/maps/search) operace.
 
 Aktualizace stylu ukazatele myši na ukazatel na třetí blok kódu a vytvoří [automaticky otevírané okno](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.popup?view=azure-iot-typescript-latest#open) objektu. Můžete zobrazit [přidání vyskakovacího okna na mapě](./map-add-popup.md) pokyny.
 
-Čtvrtý bloku kódu přidá kliknutí myší [naslouchací proces událostí](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events). Když se aktivuje, vytvoří vyhledávací dotaz se souřadnicemi místem kliknutí. Poté použije modul služby [getSearchAddressReverse](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.searchurl?view=azure-iot-typescript-latest#searchaddressreverse-aborter--geojson-position--searchaddressreverseoptions-) metodu dotazu [získat adresu Reverse rozhraní API pro vyhledávání](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse) adresy souřadnice. Kolekce funkcí GeoJSON z odpovědi se pak extrahuje pomocí **geojson.getFeatures()** metody.
+Čtvrtý bloku kódu přidá kliknutí myší [naslouchací proces událostí](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events). Když se aktivuje, vytvoří vyhledávací dotaz se souřadnicemi místem kliknutí. Poté použije modul služby [getSearchAddressReverse](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.searchurl?view=azure-iot-typescript-latest#searchaddressreverse-aborter--geojson-position--searchaddressreverseoptions-) metodu dotazu [získat adresu Reverse rozhraní API pro vyhledávání](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse) adresy souřadnice. Kolekce funkcí GeoJSON z odpovědi se pak extrahuje pomocí `geojson.getFeatures()` metody.
 
 Pátý bloku kódu nastaví obsah HTML, který automaticky otevírané okno pro zobrazení adresy odpovědi pro kliknutí na souřadnice polohy.
 

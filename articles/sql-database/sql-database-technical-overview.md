@@ -12,13 +12,13 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
-ms.date: 03/29/2019
-ms.openlocfilehash: e71039c84c79c27a372a378144b21f6f724d08d8
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.date: 04/08/2019
+ms.openlocfilehash: bd696a003b54face4f95ae426c11840bb8805bee
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58670831"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59273137"
 ---
 # <a name="what-is-azure-sql-database-service"></a>Co je služba Azure SQL Database?
 
@@ -156,7 +156,7 @@ Do služby SQL Database přidáváme také řadu funkcí pro [adaptivní zpracov
 SQL Database nabízí řadu [integrovaných funkcí zabezpečení a dodržování předpisů](sql-database-security-overview.md), které vaší aplikaci pomůžou se splněním nejrůznějších požadavků na zabezpečení a dodržování předpisů.
 
 > [!IMPORTANT]
-> Azure SQL Database (všechny možnosti nasazení) a byla certifikována pro řadu standardů dodržování předpisů. Další informace najdete v [Centru zabezpečení Microsoft Azure](https://azure.microsoft.com/support/trust-center/), kde také najdete nejnovější seznam [certifikátů služby SQL Database v oblasti dodržování předpisů](https://www.microsoft.com/trustcenter/compliance/complianceofferings).
+> Azure SQL Database (všechny možnosti nasazení) a byla certifikována pro řadu standardů dodržování předpisů. Další informace najdete v tématu [Microsoft Azure Trust Center](https://azure.microsoft.com/support/trust-center/compliance/) místo, kde najdete nejnovější seznam certifikací dodržování předpisů SQL Database.
 
 ### <a name="advance-threat-protection"></a>Advanced Threat Protection
 
@@ -186,7 +186,7 @@ SQL Database umožňuje centrálně spravovat identity uživatele databáze a da
 
 ### <a name="compliance-certification"></a>Certifikace dodržování předpisů
 
-Služba SQL Database se účastní pravidelných auditů a byla certifikována pro řadu standardů dodržování předpisů. Další informace najdete v [Centru zabezpečení Microsoft Azure](https://azure.microsoft.com/support/trust-center/), kde také najdete nejnovější seznam [certifikátů služby SQL Database v oblasti dodržování předpisů](https://azure.microsoft.com/support/trust-center/services/).
+Služba SQL Database se účastní pravidelných auditů a byla certifikována pro řadu standardů dodržování předpisů. Další informace najdete v tématu [Microsoft Azure Trust Center](https://azure.microsoft.com/support/trust-center/compliance/) místo, kde najdete nejnovější seznam certifikací dodržování předpisů SQL Database.
 
 ## <a name="easy-to-use-tools"></a>Snadno použitelné nástroje
 
@@ -257,8 +257,8 @@ Zákazníci SQL Database bude mít následující práva spojená s programem Az
 
   - [Vytvoření databáze SQL na webu Azure Portal](sql-database-single-database-get-started.md)  
   - [Vytvoření databáze SQL pomocí Azure CLI](sql-database-get-started-cli.md)
-  - [Vytvoření databáze SQL pomocí PowerShellu](sql-database-get-started-powershell.md)
+  - [Vytvoření databáze SQL pomocí Powershellu](sql-database-get-started-powershell.md)
 
 - Řadu ukázek v Azure CLI a PowerShellu najdete tady:
   - [Ukázky v Azure CLI pro službu SQL Database](sql-database-cli-samples.md)
-  - [Ukázky v Azure PowerShellu pro službu SQL Database](sql-database-powershell-samples.md)
+  - [Ukázky Azure Powershellu pro službu SQL Database](sql-database-powershell-samples.md)

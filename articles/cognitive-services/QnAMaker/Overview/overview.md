@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: overview
-ms.date: 01/24/2019
+ms.date: 04/05/2019
 ms.author: tulasim
-ms.openlocfilehash: 1fa15c4420cb1e42fcaa34c56a1b0aef9c4102b1
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: bafc39e7d9237fc7dd8469e5f9e97adb30355c8f
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55872454"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59257225"
 ---
 # <a name="what-is-qna-maker"></a>Co je QnA Maker?
 
@@ -66,10 +66,9 @@ Architektura služby QnA Maker se skládá z následujících dvou komponent:
 
 ## <a name="service-highlights"></a>Stručný přehled služby
 
-- Ucelené prostředí **bez kódu** pro [vytvoření chatbota pro nejčastější dotazy](https://aka.ms/qnamaker-docs-create-faqbot).
+- Kompletní **bez kódu** docházet k [vytváření robotů](../Quickstarts/create-publish-knowledge-base.md#create-a-bot) ze znalostní báze.
 - **Předpovědi bez omezování využití sítě**. Plaťte za hostování služby, a ne za počet transakcí. Další podrobnosti najdete na [stránce s cenami](https://aka.ms/qnamaker-docs-pricing).
 - **Škálování podle potřeby**. Zvolte vhodné skladové položky jednotlivých komponent, které budou vyhovovat vašemu scénáři. Podívejte se, jak [zvolit kapacitu](https://aka.ms/qnamaker-docs-capacity) pro vaši službu QnA Maker.
-- **Úplné dodržování předpisů pro data**. Komponenty služby předpovědí se nasazují do vašeho předplatného Azure a splňují vaše požadavky na dodržování předpisů.
 
 
 ## <a name="next-steps"></a>Další postup

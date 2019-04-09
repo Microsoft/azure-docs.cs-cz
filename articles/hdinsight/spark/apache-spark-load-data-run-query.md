@@ -8,13 +8,13 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,mvc
 ms.topic: tutorial
 ms.author: hrasheed
-ms.date: 11/06/2018
-ms.openlocfilehash: ddcde2956da774e687c1e587649e65b79003bf3a
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.date: 04/03/2019
+ms.openlocfilehash: 18f5d34e50a4ed4ed82a3ceb4740d594ce4bd78d
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57448981"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59274004"
 ---
 # <a name="tutorial-load-data-and-run-queries-on-an-apache-spark-cluster-in-azure-hdinsight"></a>Kurz: Načtení dat a spouštění dotazů v clusteru Apache Spark v Azure HDInsight
 
@@ -24,8 +24,6 @@ V tomto kurzu se naučíte:
 > [!div class="checklist"]
 > * Vytvoření datového rámce ze souboru CSV
 > * Spouštění dotazů nad datovým rámcem
-
-Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -38,7 +36,11 @@ Aplikace může vytvářet datové rámce přímo ze souborů nebo složek ve vz
 ![Snímek dat pro interaktivní dotaz Spark SQL](./media/apache-spark-load-data-run-query/hdinsight-spark-sample-data-interactive-spark-sql-query.png "Snímek dat pro interaktivní dotaz Spark SQL")
 
 
-1. Otevřete poznámkový blok Jupyter, který jste vytvořili v části Požadavky.
+1. Otevření poznámkového bloku Jupyter, kterou jste vytvořili v oddílu požadavky a vytvořte nový poznámkový blok s PySpark.
+
+    > [!NOTE]  
+    > Díky použití jádra PySpark k vytvoření poznámkového bloku se relace `spark` vytvoří automaticky za vás při spuštění první buňky kódu. Není potřeba relaci vytvářet explicitně.
+
 2. Do prázdné buňky poznámkového bloku vložte následující kód a stisknutím **SHIFT + ENTER** kód spusťte. Kód naimportuje typy potřebné pro tento scénář:
 
     ```python
@@ -58,10 +60,6 @@ Aplikace může vytvářet datové rámce přímo ze souborů nebo složek ve vz
     csvFile.write.saveAsTable("hvac")
     ```
 
-    > [!NOTE]  
-    > Díky použití jádra PySpark k vytvoření poznámkového bloku se relace `spark` vytvoří automaticky za vás při spuštění první buňky kódu. Není potřeba relaci vytvářet explicitně.
-
-
 ## <a name="run-queries-on-the-dataframe"></a>Spouštění dotazů nad datovým rámcem
 
 Po vytvoření tabulky můžete nad daty spustit interaktivní dotaz.
@@ -77,13 +75,13 @@ Po vytvoření tabulky můžete nad daty spustit interaktivní dotaz.
 
      ![Tabulkový výstup výsledku interaktivního dotazu Spark](./media/apache-spark-load-data-run-query/hdinsight-interactive-spark-query-result.png "Tabulkový výstup výsledku interaktivního dotazu Spark")
 
-3. Výsledky můžete také zobrazit v dalších vizualizacích. Pokud chcete výstup zobrazit v podobě plošného grafu, vyberte **Oblast** a pak nastavte další hodnoty následujícím způsobem.
+2. Výsledky můžete také zobrazit v dalších vizualizacích. Pokud chcete výstup zobrazit v podobě plošného grafu, vyberte **Oblast** a pak nastavte další hodnoty následujícím způsobem.
 
     ![Plošný graf výsledku interaktivního dotazu Spark](./media/apache-spark-load-data-run-query/hdinsight-interactive-spark-query-result-area-chart.png "Plošný graf výsledku interaktivního dotazu Spark")
 
-10. V nabídce **Soubor** poznámkového bloku vyberte **Uložit a vytvořit kontrolní bod**. 
+3. V panelu nabídek poznámkového bloku, přejděte na **souboru** > **uložit a kontrolního bodu**.
 
-11. Pokud právě začínáte s [dalším kurzem](apache-spark-use-bi-tools.md), nechte poznámkový blok otevřený. Pokud ne, vypnout a uvolnit tak prostředky clusteru Poznámkový blok: z **souboru** nabídky v poznámkovém bloku, vyberte **zavřít a zastavit**.
+4. Pokud právě začínáte s [dalším kurzem](apache-spark-use-bi-tools.md), nechte poznámkový blok otevřený. Pokud ne, vypnout a uvolnit tak prostředky clusteru Poznámkový blok: přejděte na panelu nabídek poznámkového bloku **souboru** >  **zavřít a zastavit**.
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
@@ -98,11 +96,10 @@ Můžete také výběrem názvu skupiny prostředků otevřít stránku skupiny 
 ## <a name="next-steps"></a>Další postup
 
 V tomto kurzu jste se naučili:
-
-* Vytvořte datový rámec Apache Spark.
-* Spouštění dotazů Spark SQL nad datovým rámcem
+> [!div class="checklist"]
+> * Vytvořte datový rámec Apache Spark.
+> * Spouštění dotazů Spark SQL nad datovým rámcem
 
 Přejděte k dalšímu článku, pokud chcete zobrazit, jak můžete načíst data, která jste zaregistrovali v Apache Spark na nástroj pro analýzu BI, jako je Power BI. 
 > [!div class="nextstepaction"]
 > [Analýza dat pomocí nástrojů BI](apache-spark-use-bi-tools.md)
-

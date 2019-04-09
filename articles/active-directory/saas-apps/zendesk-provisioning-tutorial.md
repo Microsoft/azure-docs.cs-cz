@@ -6,26 +6,26 @@ documentationcenter: ''
 author: zhchia
 writer: zhchia
 manager: beatrizd-msft
-ms.assetid: na
+ms.assetid: 01d5e4d5-d856-42c4-a504-96fa554baf66
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/31/2018
+ms.date: 03/27/2019
 ms.author: v-ant
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 71e9a3f614048185d9444011da3c47b88931d0c5
-ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
-ms.translationtype: MT
+ms.openlocfilehash: cf747fb75ea663d2c64038d73f48adb19d9fb804
+ms.sourcegitcommit: b4ad15a9ffcfd07351836ffedf9692a3b5d0ac86
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58499941"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59056584"
 ---
 # <a name="tutorial-configure-zendesk-for-automatic-user-provisioning"></a>Kurz: Konfigurace platformy Zendesk pro automatické zřizování uživatelů
 
-Cílem tohoto kurzu je předvést postup provést v systému Zendesk a Azure Active Directory (Azure AD) ke konfiguraci Azure AD automaticky zřizovat a rušit zřízení uživatele a/nebo skupiny, které se Zendesku. 
+Cílem tohoto kurzu je předvést postup provést v systému Zendesk a Azure Active Directory (Azure AD) ke konfiguraci Azure AD automaticky zřizovat a rušit zřízení uživatele a/nebo skupiny, které se Zendesku.
 
 > [!NOTE]
 > Tento kurz popisuje konektor postavené na službě zřizování uživatelů služby Azure AD. Důležité podrobnosti o význam této služby, jak to funguje a nejčastější dotazy najdete v tématu [automatizace zřizování uživatelů a jeho rušení pro aplikace SaaS ve službě Azure Active Directory](../manage-apps/user-provisioning.md).
@@ -34,57 +34,52 @@ Cílem tohoto kurzu je předvést postup provést v systému Zendesk a Azure Act
 
 Scénář popsaný v tomto kurzu se předpokládá, že už máte splněné následující požadavky:
 
-*   Klient služby Azure AD
-*   Zendesk tenantovi se [Enterprise](https://www.zendesk.com/product/pricing/) plán nebo lépe povoleno 
-*   Uživatelský účet v systému Zendesk s oprávněními správce 
+* Klient služby Azure AD
+* Zendesk tenantovi se [Enterprise](https://www.zendesk.com/product/pricing/) plán nebo lépe povoleno
+* Uživatelský účet v systému Zendesk s oprávněními správce
 
 > [!NOTE]
-> Zřizování integrace Azure AD spoléhá na [rozhraní Rest API služby Zendesk](https://developer.zendesk.com/rest_api/docs/zendesk-apis/resources), což je k dispozici pro týmy Zendesku v plánu Enterprise nebo vyšší.
+> Zřizování integrace Azure AD spoléhá na [rozhraní Rest API služby Zendesk](https://developer.zendesk.com/rest_api/docs/core/introduction), což je k dispozici pro týmy Zendesku v plánu Enterprise nebo vyšší.
 
 ## <a name="adding-zendesk-from-the-gallery"></a>Přidání Zendesku z Galerie
+
 Před konfigurací Zendesk pro automatické zřizování uživatelů pomocí Azure AD, budete muset přidat Zendesku z Galerie aplikací Azure AD na váš seznam spravovaných aplikací SaaS.
 
 **Chcete-li přidat Zendesku z Galerie aplikací Azure AD, postupujte následovně:**
 
-1. V **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu. 
+1. V **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
 
-    ![Tlačítko Azure Active Directory][1]
+    ![Tlačítko Azure Active Directory](common/select-azuread.png)
 
-2. Přejděte do **podnikové aplikace** > **všechny aplikace**.
+2. Přejděte do **podnikové aplikace** a pak vyberte **všechny aplikace** možnost.
 
-    ![Podnikové aplikace oddílu][2]
-    
-3. Chcete-li přidat Zendesku, klikněte na tlačítko **novou aplikaci** tlačítko v horní části dialogového okna.
+    ![V okně podnikové aplikace](common/enterprise-applications.png)
 
-    ![Tlačítko nové aplikace][3]
+3. Chcete-li přidat novou aplikaci, klikněte na tlačítko **novou aplikaci** tlačítko v horní části dialogového okna.
 
-4. Do vyhledávacího pole zadejte **Zendesku**.
+    ![Tlačítko nové aplikace](common/add-new-app.png)
 
-    ![Zřizování platformy Zendesk](./media/zendesk-provisioning-tutorial/ZenDesk6.png)
+4. Do vyhledávacího pole zadejte **Zendesku**vyberte **Zendesku** z panelu výsledků klikněte **přidat** tlačítko pro přidání aplikace.
 
-5. Na panelu výsledků vyberte **Zendesku**a potom klikněte na tlačítko **přidat** tlačítko pro přidání do seznamu aplikací SaaS Zendesku.
-
-    ![Zřizování platformy Zendesk](./media/zendesk-provisioning-tutorial/ZenDesk7.png)
-
-    ![Zřizování platformy Zendesk](./media/zendesk-provisioning-tutorial/ZenDesk20.png)
+    ![Zendesku v seznamu výsledků](common/search-new-app.png)
 
 ## <a name="assigning-users-to-zendesk"></a>Přiřazování uživatelů k Zendesku.
 
-Azure Active Directory používá koncept nazvaný "přiřazení" k určení, kteří uživatelé měli obdržet přístup k vybrané aplikace. V souvislosti s automatické zřizování uživatelů se synchronizují pouze uživatele a/nebo skupiny, které se "přiřadily" aplikace ve službě Azure AD. 
+Azure Active Directory používá koncept nazvaný "přiřazení" k určení, kteří uživatelé měli obdržet přístup k vybrané aplikace. V souvislosti s automatické zřizování uživatelů se synchronizují pouze uživatele a/nebo skupiny, které se "přiřadily" aplikace ve službě Azure AD.
 
 Než nakonfigurujete a povolíte automatické zřizování uživatelů, byste měli rozhodnout, které uživatele a/nebo skupiny ve službě Azure AD potřebují přístup k službě Zendesk. Jakmile se rozhodli, můžete přiřadit tyto uživatele a/nebo skupiny k službě Zendesk podle zde uvedených pokynů:
 
-*   [Přiřadit uživatele nebo skupiny k podnikové aplikace](../manage-apps/assign-user-or-group-access-portal.md)
+* [Přiřadit uživatele nebo skupiny k podnikové aplikace](../manage-apps/assign-user-or-group-access-portal.md)
 
 ### <a name="important-tips-for-assigning-users-to-zendesk"></a>Důležité tipy pro přiřazování uživatelů k Zendesku.
 
-*    Role Zendesku se automaticky a dynamicky vyplní na webu Azure Portal uživatelského rozhraní ještě dnes. Před přiřazením Zendesku role pro uživatele, ujistěte se, že počáteční synchronizace je dokončena proti Zendesku načíst nejnovější role ve vašem tenantovi Zendesku.
+* Role Zendesku se automaticky a dynamicky vyplní na webu Azure Portal uživatelského rozhraní ještě dnes. Před přiřazením Zendesku role pro uživatele, ujistěte se, že počáteční synchronizace je dokončena proti Zendesku načíst nejnovější role ve vašem tenantovi Zendesku.
 
-*    Dále je doporučeno jednoho uživatele Azure AD je přiřazena k službě Zendesk k testování vašich počáteční automatické zřizování uživatelů konfigurace. Další uživatele a/nebo skupiny může být přiřazena vyšší Jakmile testy jsou úspěšné.
+* Dále je doporučeno jednoho uživatele Azure AD je přiřazena k službě Zendesk k testování vašich počáteční automatické zřizování uživatelů konfigurace. Další uživatele a/nebo skupiny může být přiřazena vyšší Jakmile testy jsou úspěšné.
   
-*   Dále je doporučeno jednoho uživatele Azure AD je přiřazena k službě Zendesk otestovat automatické konfigurace zřizování uživatelů. Další uživatele a/nebo skupiny může být přiřazen později.
+* Dále je doporučeno jednoho uživatele Azure AD je přiřazena k službě Zendesk otestovat automatické konfigurace zřizování uživatelů. Další uživatele a/nebo skupiny může být přiřazen později.
 
-*   Při přiřazování uživatele do Zendesku, musíte vybrat libovolnou platnou roli specifické pro aplikaci (Pokud je k dispozici) v dialogovém okně přiřazení. Uživatelé s **výchozího přístupu k** role jsou vyloučené z zřizování.
+* Při přiřazování uživatele do Zendesku, musíte vybrat libovolnou platnou roli specifické pro aplikaci (Pokud je k dispozici) v dialogovém okně přiřazení. Uživatelé s **výchozího přístupu k** role jsou vyloučené z zřizování.
 
 ## <a name="configuring-automatic-user-provisioning-to-zendesk"></a>Konfigurace automatické zřizování uživatelů do Zendesku. 
 
@@ -95,14 +90,16 @@ Tato část vás provede kroky pro konfiguraci Azure AD služby zřizování a v
 
 ### <a name="to-configure-automatic-user-provisioning-for-zendesk-in-azure-ad"></a>Konfigurace automatické zřizování uživatelů pro Zendesk ve službě Azure AD:
 
-1. Přihlaste se k [webu Azure portal](https://portal.azure.com) a přejděte do **Azure Active Directory > podnikové aplikace > všechny aplikace**.
+1. Přihlaste se k [webu Azure portal](https://portal.azure.com) a vyberte **podnikové aplikace**vyberte **všechny aplikace**a pak vyberte **Zendesku**.
 
-2. Vyberte ze seznamu aplikací SaaS Zendesku.
- 
-    ![Zřizování platformy Zendesk](./media/zendesk-provisioning-tutorial/ZenDesk3.png)
+    ![Okno aplikace organizace](common/enterprise-applications.png)
+
+2. V seznamu aplikací vyberte **Zendesku**.
+
+    ![Propojení Zendesku v seznamu aplikací](common/all-applications.png)
 
 3. Vyberte **zřizování** kartu.
-    
+
     ![Zřizování platformy Zendesk](./media/zendesk-provisioning-tutorial/ZenDesk16.png)
 
 4. Nastavte **režim zřizování** k **automatické**.
@@ -116,17 +113,19 @@ Tato část vás provede kroky pro konfiguraci Azure AD služby zřizování a v
    * V **tajný klíč tokenu** pole, vyplňte token tajného kódu, jak je popsáno v kroku 6.
 
    * V **domény** pole, naplnění subdoménu tenanta Zendesku.
-     Příklad: Pro účet s adresou URL tenanta https://my-tenant.zendesk.com, bude vaše subdoménu **Moje tenanta**.
+     Příklad: Pro účet s adresou URL tenanta `https://my-tenant.zendesk.com`, bude vaše subdoménu **Moje tenanta**.
 
 6. **Tajný klíč tokenu** Zendesku. váš účet se nachází v **správce > rozhraní API > Nastavení**.
    Ujistěte se, že **přístup pomocí tokenu** je nastavena na **povoleno**.
 
-    ![Zřizování platformy Zendesk](./media/zendesk-provisioning-tutorial/ZenDesk4.png) ![zřizování Zendesku.](./media/zendesk-provisioning-tutorial/ZenDesk2.png)
+    ![Zřizování platformy Zendesk](./media/zendesk-provisioning-tutorial/ZenDesk4.png)
+
+    ![Zřizování platformy Zendesk](./media/zendesk-provisioning-tutorial/ZenDesk2.png)
 
 7. Po vyplnění polí zobrazených v kroku 5, klikněte na tlačítko **Test připojení** aby Azure AD můžete připojit k službě Zendesk. Pokud se nepovede, ujistěte se, že má oprávnění správce vašeho účtu Zendesku a zkuste to znovu.
 
     ![Zřizování platformy Zendesk](./media/zendesk-provisioning-tutorial/ZenDesk19.png)
-    
+
 8. V **e-mailové oznámení** zadejte e-mailovou adresu osoby nebo skupiny, který by měla přijímat oznámení zřizování chyba a zaškrtnutím políčka - **odeslání e-mailové oznámení, když dojde k selhání**.
 
     ![Zřizování platformy Zendesk](./media/zendesk-provisioning-tutorial/ZenDesk9.png)
@@ -163,19 +162,20 @@ Tato část vás provede kroky pro konfiguraci Azure AD služby zřizování a v
 
     ![Zřizování platformy Zendesk](./media/zendesk-provisioning-tutorial/ZenDesk18.png)
 
-
 Tato operace spustí počáteční synchronizaci všech uživatelů a/nebo skupiny definované v **oboru** v **nastavení** oddílu. Počáteční synchronizace trvá déle než při následné synchronizace, ke kterým dochází přibližně každých 40 minut tak dlouho, dokud je spuštěna služba zřizování Azure AD. Můžete použít **podrobnosti synchronizace** části ke sledování průběhu a odkazech na zřizování sestava aktivity, která popisuje všechny akce, které provádí služba v Zendesku zřizování Azure AD.
 
 Další informace o tom, jak číst zřizování protokoly Azure AD najdete v tématu [hlášení o zřizování automatické uživatelských účtů](../manage-apps/check-status-user-account-provisioning.md).
 
 ## <a name="connector-limitations"></a>Omezení konektoru
+
 * Zendesk podporuje použití skupin pro uživatele s pouze role agenta. Další informace najdete [dokumentaci společnosti Zendesku](https://support.zendesk.com/hc/en-us/articles/203661966-Creating-managing-and-using-groups).
+
 * Při vlastní role je přiřazená uživatele a/nebo skupiny, Azure AD automatické zřizování uživatelů služby také přiřadí výchozí role **agenta**. Pouze **agentů** je možné přiřadit vlastní roli. Další informace najdete v této [dokumentace k rozhraní API platformy Zendesk](https://developer.zendesk.com/rest_api/docs/support/users#json-format-for-agent-or-admin-requests).  
 
 ## <a name="additional-resources"></a>Další materiály
 
 * [Správa zřizování uživatelských účtů pro podnikové aplikace](../manage-apps/configure-automatic-user-provisioning-portal.md)
-* [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)
+* [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
 ## <a name="next-steps"></a>Další postup
 

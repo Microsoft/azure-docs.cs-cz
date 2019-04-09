@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 56580454753ae6af60f5f8c51d9504f813f91e97
-ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
+ms.openlocfilehash: ffd2afd66c108f9eef690d641d9c4cbc85e9d609
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58540121"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59256086"
 ---
 # <a name="use-the-azure-maps-map-control"></a>Použití mapového ovládacího prvku Azure Maps
 
@@ -30,8 +30,8 @@ Mapě můžete vložit na webové stránce pomocí knihovny Javascript na stran�
     a. Použít globálně hostované CDN verzi sady SDK Azure Maps webové tak, že přidáte koncové body adres URL s odkazy na šablony stylů a skripty v `<head>` prvek souboru:
 
     ```HTML
-    <link rel="stylesheet" href="https://atlas.microsoft.com/sdk/css/atlas.min.css?api-version=2" type="text/css">
-    <script src="https://atlas.microsoft.com/sdk/js/atlas.min.js?api-version=2"></script>
+    <link rel="stylesheet" href="https://atlas.microsoft.com/sdk/javascript/mapcontrol/2/atlas.min.css" type="text/css">
+    <script src="https://atlas.microsoft.com/sdk/javascript/mapcontrol/2/atlas.min.js"></script>
     ```
 
     b. Můžete také načíst místně pomocí sady SDK webové mapy Azure zdrojový kód [řízení azure maps](https://www.npmjs.com/package/azure-maps-control) NPM balíček a hostujte ho s vaší aplikací. Tento balíček obsahuje také definice TypeScript.
@@ -102,7 +102,7 @@ Mapě můžete vložit na webové stránce pomocí knihovny Javascript na stran�
     </script>
     ```
 
-    Zobrazit [ověřování pomocí služby Azure Maps](azure-maps-authentication.md) další podrobnosti.
+    Další informace najdete v tématu [ověřování pomocí služby Azure Maps](azure-maps-authentication.md) další podrobnosti.
 
 6. Volitelně můžete zjistit přidávání na hlavní stránce užitečné následující prvky značku meta:
 
@@ -114,7 +114,7 @@ Mapě můžete vložit na webové stránce pomocí knihovny Javascript na stran�
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     ```
 
-7. Vložení všechno dohromady soubor HTML by měl vypadat přibližně takto:
+7. Uvedení všechno dohromady soubor HTML by měl vypadat přibližně jako v následujícím kódu:
 
     ```HTML
     <!DOCTYPE html>
@@ -131,8 +131,8 @@ Mapě můžete vložit na webové stránce pomocí knihovny Javascript na stran�
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
         <!-- Add references to the Azure Maps Map control JavaScript and CSS files. -->
-        <link rel="stylesheet" href="https://atlas.microsoft.com/sdk/css/atlas.min.css?api-version=2" type="text/css">
-        <script src="https://atlas.microsoft.com/sdk/js/atlas.min.js?api-version=2"></script>
+        <link rel="stylesheet" href="https://atlas.microsoft.com/sdk/javascript/mapcontrol/2/atlas.min.css" type="text/css">
+        <script src="https://atlas.microsoft.com/sdk/javascript/mapcontrol/2/atlas.min.js"></script>
 
         <style>
             html, body {
@@ -164,7 +164,7 @@ Mapě můžete vložit na webové stránce pomocí knihovny Javascript na stran�
     </html>
     ```
 
-8. Otevřete soubor ve webovém prohlížeči a zobrazení vykreslené mapy. By měl vypadat nějak takto:
+8. Otevřete soubor ve webovém prohlížeči a zobrazení vykreslené mapy. By měl vypadat jako v následujícím kódu:
 
     <iframe height="700" style="width: 100%;" scrolling="no" title="Jak používat mapový ovládací prvek" src="//codepen.io/azuremaps/embed/yZpEYL/?height=557&theme-id=0&default-tab=html,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
 Zobrazit pera <a href='https://codepen.io/azuremaps/pen/yZpEYL/'>jak používat mapový ovládací prvek</a> pomocí Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) na <a href='https://codepen.io'>CodePen</a>.
@@ -180,4 +180,4 @@ Zjistěte, jak vytvořit a interakce s mapou:
 Další informace o stylu mapy:
 
 > [!div class="nextstepaction"]
-> [Vyberte styl mapy](choose-map-style.md)
+> [Výběr stylu mapy](choose-map-style.md)

@@ -6,20 +6,21 @@ ms.author: radennis
 ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: conceptual
-ms.date: 02/18/2019
-ms.openlocfilehash: 565953c8e0c6f9765d5eeb16a9fa18c3e79b8370
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.date: 04/05/2019
+ms.openlocfilehash: 1f130f79b6b6924559e1693e1eef8ced2972b3d5
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/05/2019
-ms.locfileid: "59044925"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59279393"
 ---
 # <a name="manage-cluster-scale-up-to-accommodate-changing-demand"></a>Správa clusteru vertikálně navýšit kapacitu tak, aby vyhovovaly měnících se požadavků
 
-Nastavování velikosti clusteru správně je důležité pro výkon Průzkumník dat Azure. Ale nemůže být předpovězen nároky na cluster s absolutní přesnost. Velikost statické clusteru může vést k nízkého využití nebo overutilization, ani jedno z nich je ideální.
+Existují dva pracovní postupy pro škálování clusteru služby Průzkumník dat Azure: vertikálně navýšit kapacitu a [horizontální navýšení kapacity](manage-cluster-scale-out.md). Tento článek ukazuje, jak spravovat vertikálně navýšit kapacitu clusteru.
 
-Lepším řešením je *škálování* cluster, přidávání a odebírání kapacitu a prostředky procesoru s měnícími poptávky. Existují dva pracovní postupy pro škálování: škálování zatížení a škálování na víc systémů. Tento článek ukazuje, jak spravovat vertikálně navýšit kapacitu clusteru.
+Nastavování velikosti clusteru správně je důležité pro výkon Průzkumník dat Azure. Ale nemůže být předpovězen nároky na cluster s absolutní přesnost. Velikost statické clusteru může vést k nízkého využití nebo overutilization, ani jedno z nich je ideální. Lepším řešením je *škálování* cluster, přidávání a odebírání kapacitu a prostředky procesoru s měnícími poptávky. 
 
+## <a name="steps-to-scale-up"></a>Kroky pro vertikální navýšení kapacity
 1. Přejděte ke svému clusteru. V části **nastavení**vyberte **vertikálně navýšit kapacitu**.
 
     Se zobrazí seznam dostupných skladových položek. Například následující obrázek, pouze čtyři skladové položky jsou k dispozici.
@@ -33,6 +34,11 @@ Lepším řešením je *škálování* cluster, přidávání a odebírání kap
 > [!NOTE]
 > Vertikálně navýšit kapacitu proces může trvat několik minut a během této doby se vám váš cluster. Všimněte si, že škálování může poškodit svůj výkon clusteru.
 
-Nyní jste provedli operaci vertikální navýšení nebo snížení pro váš cluster Průzkumník dat Azure. Můžete také [spravovat horizontální navýšení kapacity clusteru](manage-cluster-scale-out.md) pro dynamicky horizontálně navyšovat kapacitu počtu instancí na základě metrik, který zadáte.
+Nyní jste provedli operaci vertikální navýšení nebo snížení pro váš cluster Průzkumník dat Azure.
+
+## <a name="next-steps"></a>Další postup
+Můžete také [spravovat horizontální navýšení kapacity clusteru](manage-cluster-scale-out.md) pro dynamicky horizontálně navyšovat kapacitu počtu instancí na základě metrik, který zadáte.
 
 Pokud potřebujete pomoc s problémy škálování clusterů [žádost o podporu](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview) na webu Azure Portal.
+
+Monitorujte využití prostředků podle tohoto článku: [Sledování výkonu, stavu a využití s metrikami Průzkumník dat Azure](using-metrics.md).

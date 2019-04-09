@@ -5,21 +5,21 @@ services: container-registry
 author: stevelas
 ms.service: container-registry
 ms.topic: overview
-ms.date: 03/29/2019
+ms.date: 04/03/2019
 ms.author: stevelas
 ms.custom: seodec18, mvc
-ms.openlocfilehash: 39f643bd66e2a96b0b9b93989d2941a9c30ea7fc
-ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
+ms.openlocfilehash: ba75d196bdb53fab104ab6c01391e762b4a3841b
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58894009"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59270519"
 ---
 # <a name="introduction-to-private-docker-container-registries-in-azure"></a>Seznámení se soukromými registry kontejnerů Dockeru v Azure
 
 Azure Container Registry je spravovaná služba [registrů Dockeru](https://docs.docker.com/registry/) založená na opensourcovém nástroji Docker Registry 2.0. Vytvořte a udržujte registry kontejnerů Azure za účelem ukládání a správy privátních imagí [kontejneru Dockeru](https://www.docker.com/what-docker).
 
-Použijte registry kontejnerů v Azure se svými stávajícími kanály pro vývoj a nasazení kontejnerů. K sestavení imagí kontejnerů v Azure použijte Azure Container Registry Build (ACR Build). Můžete využít sestavení na vyžádání nebo zcela automatická sestavení s potvrzením zdrojového kódu a aktivačními událostmi pro sestavení aktualizací základních imagí.
+Použijte registry kontejnerů v Azure s vaší existující kontejner kanály vývoje a nasazení, nebo použijte [ACR úlohy](#azure-container-registry-tasks) k vytvoření imagí kontejnerů v Azure. Můžete využít sestavení na vyžádání nebo zcela automatická sestavení s potvrzením zdrojového kódu a aktivačními událostmi pro sestavení aktualizací základních imagí.
 
 Související informace o Dockeru a kontejnerech najdete v [přehledu Dockeru](https://docs.docker.com/engine/docker-overview/).
 
@@ -32,15 +32,17 @@ Stažení imagí z registru kontejnerů Azure na různé cíle nasazení:
 
 Vývojáři mohou nahrávat do registru kontejnerů také jako součást pracovního postupu vývoje kontejneru. Mohou například určit registr kontejnerů jako cíl v nástroji pro nasazení a nástroji průběžné integrace, jako je například [Azure DevOps Services](https://docs.microsoft.com/azure/devops/) nebo [Jenkins](https://jenkins.io/).
 
-Konfigurace úloh ACR automaticky znovu sestavit Image aplikací při jejich základní Image se aktualizují. Použijte úlohy ACR k automatizaci sestavení imagí po potvrzení kódu vaším týmem v úložišti Git.
+Konfigurace úloh ACR automaticky znovu sestavit Image aplikací při jejich základní bitové kopie jsou aktualizovány nebo pokud váš tým potvrzení změn kódu do úložiště Git. automatizace sestavování imagí. Vytváření vícekrokových úkolů k automatizaci sestavování, testování a opravy chyb několik imagí kontejneru paralelní v cloudu.
+
+Azure poskytuje nástroje, včetně rozhraní příkazového řádku Azure, webu Azure portal a podpora rozhraní API pro správu vašich registry kontejnerů Azure. Volitelně můžete nainstalovat [rozšíření Dockeru pro Visual Studio Code](https://code.visualstudio.com/docs/azure/docker) a [účet Azure](https://marketplace.visualstudio.com/items?itemName=ms-vscode.azure-account) rozšíření pro práci s vaší registry kontejnerů Azure. O přijetí změn a nahrávání imagí do služby Azure container registry nebo spuštění úlohy služby ACR, vše v rámci Visual Studio Code.
 
 ## <a name="key-concepts"></a>Klíčové koncepty
 
-* **Registr** – Vytvořte jeden nebo více registrů kontejnerů ve svém předplatném Azure. Registry jsou dostupné ve třech skladových položkách: [Basic, Standard a Premium](container-registry-skus.md), každý z nich podporuje integraci webhooků, ověřování registru pomocí Azure Active Directory a funkci odstraňování. Využijte místní úložiště imagí kontejnerů v síťové blízkosti vytvořením registru ve stejném umístění Azure, jako jsou vaše nasazení. Funkci [geografické replikace](container-registry-geo-replication.md) v registrech úrovně Premium můžete využít ve scénářích pokročilé replikace a distribuce imagí kontejnerů. Plně kvalifikovaný název registru má formát `myregistry.azurecr.io`.
+* **Registr** – Vytvořte jeden nebo více registrů kontejnerů ve svém předplatném Azure. Registry jsou dostupné ve třech skladových položkách: [Basic, Standard a Premium](container-registry-skus.md), z nichž každý podporuje integraci webhooků, ověřování registru pomocí Azure Active Directory a funkci odstranit. Využijte místní úložiště imagí kontejnerů v síťové blízkosti vytvořením registru ve stejném umístění Azure, jako jsou vaše nasazení. Funkci [geografické replikace](container-registry-geo-replication.md) v registrech úrovně Premium můžete využít ve scénářích pokročilé replikace a distribuce imagí kontejnerů. Plně kvalifikovaný název registru má formát `myregistry.azurecr.io`.
 
-  Můžete [řízení přístupu](container-registry-authentication.md) do registru kontejnerů pomocí Azure identity, Azure Active Directory zajišťuje [instanční objekt služby](../active-directory/develop/app-objects-and-service-principals.md), nebo poskytnutého účtu správce. Přihlášení k registru pomocí rozhraní příkazového řádku Azure nebo standardní `docker login` příkazu.
+  Můžete [řízení přístupu](container-registry-authentication.md) do registru kontejnerů pomocí Azure identity, Azure Active Directory zajišťuje [instanční objekt služby](../active-directory/develop/app-objects-and-service-principals.md), nebo poskytnutého účtu správce. Přihlášení k registru pomocí Azure CLI nebo standardní `docker login` příkazu.
 
-* **Úložiště** – registr obsahuje jedno nebo více úložišť, které ukládají skupiny imagí kontejnerů. Azure Container Registry podporuje víceúrovňové obory názvů úložiště. S víceúrovňovými obory názvů můžete seskupovat kolekce imagí souvisejících s konkrétní aplikací nebo kolekcí aplikací pro konkrétní vývojové nebo provozní týmy. Příklad:
+* **Úložiště** – registr obsahuje jedno nebo více úložišť, které jsou virtuální skupiny imagí kontejnerů se stejným názvem, ale různých klíčových slov nebo přehledu. Azure Container Registry podporuje víceúrovňové obory názvů úložiště. S víceúrovňovými obory názvů můžete seskupovat kolekce imagí souvisejících s konkrétní aplikací nebo kolekcí aplikací pro konkrétní vývojové nebo provozní týmy. Příklad:
 
   * `myregistry.azurecr.io/aspnetcore:1.0.1` představuje image pro celý podnik
   * `myregistry.azurecr.io/warrantydept/dotnet-build` představuje image sloužící k vytváření aplikací .NET, sdílet v rámci záručního oddělení.
