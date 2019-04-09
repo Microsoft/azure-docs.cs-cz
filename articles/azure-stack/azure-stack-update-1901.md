@@ -16,16 +16,16 @@ ms.date: 03/27/2019
 ms.author: sethm
 ms.reviewer: adepue
 ms.lastreviewed: 03/27/2019
-ms.openlocfilehash: 00eb4fc3eb0b2e7120208e6318bf35fc2cc6f188
-ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
+ms.openlocfilehash: bf355aec2a76a42986320a74447860a8baa968ef
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58649403"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59257395"
 ---
 # <a name="azure-stack-1901-update"></a>Aktualizace služby Azure Stack 1901
 
-*Platí pro: Integrované systémy Azure Stack*
+*Týká se Integrované systémy pro službu Azure Stack*
 
 Tento článek popisuje obsah balíčku 1901 aktualizace. Obsahuje vylepšení, opravy a nové funkce pro tuto verzi sady Azure Stack. Tento článek také popisuje známé problémy v této verzi a obsahuje odkaz ke stažení aktualizace. Známé problémy jsou rozděleny do problémy přímo souvisí s proces aktualizace a problémy se sestavením (po instalaci).
 
@@ -96,13 +96,13 @@ Tato aktualizace zahrnuje následující nové funkce a vylepšení pro službu 
          Kumulativní modul AzureRm teď zahrnuje podporu ještě publikovanou verzi 5.1.5 **verze api-version 2018-01-01** pro metriky, typy prostředků definice metrik.
 
 - **AzureStack 1.7.1** to k zásadní změně verze. Podrobnosti o zásadních změnách najdete v tématu https://aka.ms/azspshmigration171.
-   * **Azs.Backup.Admin modulu**  
+   * **Azs.Backup.Admin Module**  
          Zásadní změna: Zálohování se mění na režim šifrování založené na certifikátu. Podpora symetrických klíčů je zastaralá.  
    * **Azs.Fabric.Admin modulu**  
          `Get-AzsInfrastructureVolume` se už nepoužívá. Pomocí nové rutiny `Get-AzsVolume`.  
          `Get-AzsStorageSystem` se už nepoužívá.  Pomocí nové rutiny `Get-AzsStorageSubSystem`.  
          `Get-AzsStoragePool` se už nepoužívá. `StorageSubSystem` Objekt obsahuje vlastnost capacity.  
-   * **Azs.Compute.Admin modulu**  
+   * **Modul Azs.Compute.Admin**  
          Oprava chyby - `Add-AzsPlatformImage`, `Get-AzsPlatformImage`: Volání `ConvertTo-PlatformImageObject` pouze v cestě k úspěchu.  
          Opravu - `Add-AzsVmExtension`, `Get-AzsVmExtension`: Volání ConvertTo-VmExtensionObject pouze v cestě k úspěchu.  
    * **Azs.Storage.Admin Module**  
@@ -315,6 +315,10 @@ Toto jsou známé problémy této verze sestavení po instalaci.
  
 <!-- #### Identity -->
 <!-- #### Marketplace -->
+
+### <a name="syslog"></a>Syslog 
+- Konfigurace syslog není trvalý prostřednictvím cyklu aktualizace výsledkem klienta syslog přijít o své konfiguraci a zprávy syslog zastavit byla přesměrována. Tento problém se vztahuje na všechny verze služby Azure Stack od verze GA klienta syslog (1809).
+Alternativním řešením je změnit konfiguraci klienta syslog po použití aktualizace služby Azure Stack.
 
 ## <a name="download-the-update"></a>Stáhnout aktualizaci.
 

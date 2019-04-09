@@ -15,16 +15,16 @@ ms.date: 03/07/2019
 ms.author: mabrigg
 ms.reviewer: waltero
 ms.lastreviewed: 02/27/2019
-ms.openlocfilehash: 4e9df0d413b964b4a14cf9ca48db8b7956b441f9
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.openlocfilehash: fa663cce10a39ef60a0efa5838b81b257fd02b46
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58482585"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59255933"
 ---
 # <a name="access-the-kubernetes-dashboard-in-azure-stack"></a>Přístup k řídicímu panelu Kubernetes v Azure stacku 
 
-*Platí pro: Azure Stack integrované systémy a Azure Stack Development Kit* 
+*Týká se Azure Stack integrované systémy a Azure Stack Development Kit* 
 > [!Note]   
 > Kubernetes ve službě Azure Stack je ve verzi preview. Azure Stack odpojené scénář není aktuálně podporován ve verzi preview. 
 
@@ -47,7 +47,7 @@ Kubernetes zahrnuje webové řídicí panel, který můžete použít pro operac
 ## <a name="overview-of-steps-to-enable-dashboard"></a>Přehled kroky, aby řídicí panel
 
 1.  Exportujte certifikátů Kubernetes z hlavního uzlu v clusteru. 
-2.  Naimportujte certifikáty do Azure stacku správu počítači.
+2.  Naimportujte certifikáty do Azure stacku správu počítače.
 2.  Otevřete řídicí panel Kubernetes web. 
 
 ## <a name="export-certificate-from-the-master"></a>Exportujte certifikát z hlavního serveru 
@@ -70,7 +70,7 @@ Adresu URL řídicího panelu můžete načíst z hlavního uzlu v clusteru.
     ```Bash   
     kubectl cluster-info 
     ``` 
-    Vyhledejte adresu URL řídicího panelu. Například: `https://k8-1258.local.cloudapp.azurestack.external/api/v1/namespaces/kube-system/services/https:kubernetes-dashboard:/proxy`
+    Vyhledejte adresu URL řídicího panelu. Příklad:  `https://k8-1258.local.cloudapp.azurestack.external/api/v1/namespaces/kube-system/services/https:kubernetes-dashboard:/proxy`
 
 6.  Extrahování certifikátu podepsaného svým držitelem a převést do formátu PFX. Spusťte následující příkaz:
 

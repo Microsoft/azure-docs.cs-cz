@@ -5,19 +5,19 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: conceptual
-ms.date: 1/25/2019
+ms.date: 04/08/2019
 ms.author: mimart
 author: msmimart
 manager: mtillman
 ms.reviewer: mal
-ms.custom: it-pro, seo-update-azuread-jan
+ms.custom: it-pro, seo-update-azuread-jan, seoapril2019
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8f5234674bc41e1f5bfa260dfc32042a3345d9f7
-ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
+ms.openlocfilehash: 3b817346c37ec43fd66d166684f5d51ecb5a9718
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58294821"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59257327"
 ---
 # <a name="email-one-time-passcode-authentication-preview"></a>Ověření e-mailu jednorázové heslo (preview)
 
@@ -26,7 +26,7 @@ ms.locfileid: "58294821"
 | Jednorázové heslo e-mailu je funkce ve verzi public preview služby Azure Active Directory. Další informace o verzích Preview najdete v [dodatečných podmínkách použití systémů Microsoft Azure Preview](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).|
 |     |
 
-Funkce jednorázové heslo e-mailu ověří uživatele typu Host B2B, když nemůže být ověřen jiným způsobem, jako je Azure AD, účet Microsoft (MSA) nebo federační služby Google. S ověřováním jednorázovým heslem není nutné vytvořit účet Microsoft. Když uživatel typu Host uplatňuje pozvánku nebo přistupuje ke sdílenému prostředku, můžete požádat o dočasný kód, která je odeslána na e-mailová adresa. Pak zadejte tento kód Pokračujte přihlášením.
+Tento článek popisuje, jak povolit ověřování jednorázovým heslem e-mailu pro uživatele typu Host B2B. Funkce jednorázové heslo e-mailu ověří uživatele typu Host B2B, když nemůže být ověřen jiným způsobem, jako je Azure AD, účet Microsoft (MSA) nebo federační služby Google. S ověřováním jednorázovým heslem není nutné vytvořit účet Microsoft. Když uživatel typu Host uplatňuje pozvánku nebo přistupuje ke sdílenému prostředku, můžete požádat o dočasný kód, která je odeslána na e-mailová adresa. Pak zadejte tento kód Pokračujte přihlášením.
 
 Tato funkce je aktuálně dostupná ve verzi preview (viz [vyjádření výslovného souhlasu s Náhled](#opting-in-to-the-preview) níže). Za verzi preview tato funkce bude mít ve výchozím nastavení zapnutá pro všechny tenanty.
 

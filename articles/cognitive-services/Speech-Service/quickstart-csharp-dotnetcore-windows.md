@@ -1,7 +1,7 @@
 ---
-title: 'Rychlý start: Rozpoznávání řeči, C# (Windows .NET Core) – hlasové služby'
+title: 'Rychlý start: Recognize speech, C# (.NET Core) - Speech Services'
 titleSuffix: Azure Cognitive Services
-description: Zjistěte, jak rozpoznávat řeč v C# v .NET Core ve Windows s použitím sadou SDK pro řeč
+description: Zjistěte, jak rozpoznávat řeč v C# v .NET Core ve Windows nebo macOS pomocí sady SDK pro řeč
 services: cognitive-services
 author: wolfma61
 manager: nitinme
@@ -10,18 +10,18 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 12/13/2018
 ms.author: wolfma
-ms.openlocfilehash: 13d5d5b57c4c52b213f3c369244348b00a49332b
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 938efe79d4f9f0b9003fcf83196df80d71d16e75
+ms.sourcegitcommit: e43ea344c52b3a99235660960c1e747b9d6c990e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57895599"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "59009423"
 ---
 # <a name="quickstart-recognize-speech-with-the-speech-sdk-for-net-core"></a>Rychlý start: Rozpoznávání řeči se sadou SDK pro řeč pro .NET Core
 
 [!INCLUDE [Selector](../../../includes/cognitive-services-speech-service-quickstart-selector.md)]
 
-V tomto článku vytvoříte konzolovou aplikaci v jazyce C# pro .NET Core ve Windows s využitím sady Cognitive Services [Speech SDK](speech-sdk.md). V reálném čase přepíšete řeč z mikrofonu počítače na text. Tato aplikace je vytvořená pomocí [balíčku NuGet sady Speech SDK](https://aka.ms/csspeech/nuget) a sady Microsoft Visual Studio 2017 (libovolné edice).
+V tomto článku vytvoříte C# konzolovou aplikaci .NET Core ve Windows nebo macOS pomocí služeb Cognitive Services [sadou SDK pro řeč](speech-sdk.md). V reálném čase přepíšete řeč z mikrofonu počítače na text. Tato aplikace je vytvořená pomocí [balíčku NuGet sady Speech SDK](https://aka.ms/csspeech/nuget) a sady Microsoft Visual Studio 2017 (libovolné edice).
 
 > [!NOTE]
 > .NET Core je Open Source multiplatformní rozhraní .NET, které implementuje specifikace rozhraní [.NET Standard](https://docs.microsoft.com/dotnet/standard/net-standard).
@@ -32,7 +32,7 @@ Klíč předplatného hlasové služby k dokončení tohoto rychlého startu pot
 
 K tomuto rychlému startu potřebujete:
 
-* [Sada .NET Core SDK](https://dotnet.microsoft.com/download)
+* [.NET Core SDK](https://dotnet.microsoft.com/download)
 * [Visual Studio 2017](https://visualstudio.microsoft.com/downloads/)
 * Klíč předplatného pro službu rozpoznávání řeči. [Získat zdarma](get-started.md).
 

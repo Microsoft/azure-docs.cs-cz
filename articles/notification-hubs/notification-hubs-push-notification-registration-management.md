@@ -13,13 +13,13 @@ ms.tgt_pltfrm: mobile-multiple
 ms.devlang: dotnet
 ms.topic: article
 ms.author: jowargo
-ms.date: 01/23/2019
-ms.openlocfilehash: 028e9a2973ed524037f6415d9e802f947458cfa6
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.date: 04/08/2019
+ms.openlocfilehash: 559dd5ecfa4615e42e4f7ac40008e69c9210e2a4
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58166765"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59260444"
 ---
 # <a name="registration-management"></a>Správa registrací
 
@@ -45,12 +45,12 @@ Instalace je vylepšený vlastnosti související s registrací, který obsahuje
 Tady jsou některé klíčové výhody použití zařízení:
 
 - Vytvoření nebo aktualizace instalace je plně idempotentní. Takže můžete opakovat bez jakékoli obavy o duplicitní registrace.
-- Instalační model usnadňuje provést individuální nabízená oznámení – cílení na konkrétní zařízení. Systémovou značku **"$InstallationId: [hodnota installationId]"** se automaticky přidá s každé registraci na základě instalace. Takže můžete volat odeslání na tuto značku cílit na konkrétní zařízení bez nutnosti vytvářet další kód.
+- Instalační model podporuje formát speciální značka (`$InstallationId:{INSTALLATION_ID}`), která umožňuje odesílání oznámení přímo do konkrétních zařízení. Například, pokud kód aplikace nastaví ID instalace `joe93developer` pro toto konkrétní zařízení, Vývojář můžete cílit na toto zařízení při odesílání oznámení `$InstallationId:{joe93developer}` značky. To umožňuje cílit na konkrétní zařízení bez nutnosti vytvářet další kód.
 - Použití zařízení také vám umožní registraci částečné aktualizace. Částečné aktualizace instalace je požadováno pomocí metody PATCH [JSON-Patch standard](https://tools.ietf.org/html/rfc6902). To je užitečné, pokud chcete aktualizovat značky na registraci. Není nutné stáhnout celý registrace a pak znovu odeslat všechny předchozí značky.
 
 Instalace může obsahovat následující vlastnosti. Úplný seznam vlastností instalace, najdete v části [vytvoření nebo instalaci přepsat rozhraní REST API](https://msdn.microsoft.com/library/azure/mt621153.aspx) nebo [vlastnosti instalace](https://msdn.microsoft.com/library/azure/microsoft.azure.notificationhubs.installation_properties.aspx).
 
-```javascript
+```json
 // Example installation format to show some supported properties
 {
     installationId: "",
@@ -101,8 +101,7 @@ Název každé šablony se mapuje na šablony textu a volitelná sada značky. K
 
 Pro Windows Store klientské aplikace odesíláním oznámení na sekundární dlaždice je stejný jako posílá do primární. To je podporováno také v zařízení. Sekundární dlaždice mají různé parametr ChannelUri, která zpracovává sadu SDK na vaší klientské aplikace transparentní.
 
-Slovník SecondaryTiles používá stejné TileId, který se používá k vytvoření objektu SecondaryTiles v aplikaci pro Windows Store.
-Stejně jako u primární parametr ChannelUri ChannelUris sekundární dlaždice můžete změnit v daném okamžiku provádějí. Aby bylo možné zachovat zařízení v centru oznámení, aktualizovat, musíte aktualizovat zařízení s aktuální ChannelUris sekundární dlaždice je.
+Slovník SecondaryTiles používá stejné TileId, který se používá k vytvoření objektu SecondaryTiles v aplikaci pro Windows Store. Stejně jako u primární parametr ChannelUri ChannelUris sekundární dlaždice můžete změnit v daném okamžiku provádějí. Aby bylo možné zachovat zařízení v centru oznámení, aktualizovat, musíte aktualizovat zařízení s aktuální ChannelUris sekundární dlaždice je.
 
 ## <a name="registration-management-from-the-device"></a>Správa registrací zařízení
 

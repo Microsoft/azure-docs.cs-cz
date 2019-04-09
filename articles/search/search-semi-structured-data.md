@@ -1,22 +1,22 @@
 ---
-title: Kurz pro hledání JSON ve službě Azure Blob storage – Azure Search
-description: V tomto kurzu se dozvíte, jak prohledávat částečně strukturovaná data objektů blob Azure pomocí služby Azure Search.
+title: 'Kurz: Indexování částečně strutured dat v objektech BLOB JSON – Azure Search'
+description: Zjistěte, jak indexování a vyhledávání částečně strukturovaných objektů BLOB Azure JSON pomocí Azure Search a Postman.
 author: HeidiSteen
 manager: cgronlun
 services: search
 ms.service: search
 ms.topic: tutorial
-ms.date: 03/18/2019
+ms.date: 04/08/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 1c8ce14dd3961eff33a54a14c2bd0b27650d8a50
-ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
+ms.openlocfilehash: 8436bb1fc84d5a944b35cd7b2c9667d2148c0af3
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58201343"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59270454"
 ---
-# <a name="tutorial-search-semi-structured-data-in-azure-cloud-storage"></a>Kurz: Prohledávání částečně strukturovaných dat v cloudovém úložišti Azure
+# <a name="tutorial-index-and-search-semi-structured-data-json-blobs-in-azure-search"></a>Kurz: Index a prohledávání částečně strukturovaných dat (objektů BLOB JSON) ve službě Azure Search
 
 Služba Azure Search můžete indexovat dokumenty JSON a polí v úložiště objektů blob v Azure pomocí [indexer](search-indexer-overview.md) , který umí číst částečně strukturovaná data. Částečně strukturovaná data obsahují značky nebo označení oddělující obsah v rámci dat. Rozdělí rozdíl mezi nestrukturovaných dat, která musí být plně indexovat a formálně strukturovaná data, která dodržuje datový model, jako je schéma relační databáze, které můžete indexovat na základě na pole.
 
@@ -33,37 +33,47 @@ V tomto kurzu, používá [rozhraní REST API Azure Search](https://docs.microso
 
 ## <a name="prerequisites"></a>Požadavky
 
-[Vytvoření služby Azure Search](search-create-service-portal.md) nebo [najít existující službu](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) pod vaším aktuálním předplatným. Můžete použít bezplatnou službu pro účely tohoto kurzu.
+Následující služby, nástroje a data se používají v tomto rychlém startu. 
 
-[Vytvoření účtu služby Azure storage](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account) obsahuje ukázková data.
+[Vytvoření služby Azure Search](search-create-service-portal.md) nebo [najít existující službu](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) pod vaším aktuálním předplatným. Můžete použít bezplatnou službu pro účely tohoto kurzu. 
 
-[Pomocí nástroje Postman](https://www.getpostman.com/) nebo jiného klienta REST k odesílání požadavků. Pokyny pro nastavení požadavku HTTP v nástroji Postman jsou k dispozici v další části.
+[Vytvoření účtu služby Azure storage](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account)a potom [vytvořte kontejner objektů Blob](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal) obsahuje ukázková data. Protože budete používat klíč a úložiště název účtu pro připojení, ujistěte se, že úroveň veřejného přístupu kontejneru je nastavena na "Kontejner (anonymní přístup pro čtení pro kontejner)".
 
-## <a name="set-up-postman"></a>Nastavení nástroje Postman
+[Desktopová aplikace postman](https://www.getpostman.com/) slouží k odesílání žádostí do služby Azure Search.
 
-Spusťte Postman a nastavte požadavek HTTP. Pokud tento nástroj neznáte, přečtěte si téma [prozkoumejte službu Search REST API služby Azure pomocí nástroje Postman](search-fiddler.md).
+[Lékařské trials-json.zip](https://github.com/Azure-Samples/storage-blob-integration-with-cdn-search-hdi/raw/master/clinical-trials-json.zip) obsahuje data používaná v tomto kurzu. Stáhněte a rozbalte tento soubor do samostatné složky. Data pocházejí z [clinicaltrials.gov](https://clinicaltrials.gov/ct2/results), převést na JSON pro účely tohoto kurzu.
 
-Metoda požadavku pro všechna volání v tomto kurzu je POST. Klíče hlaviček jsou Content-type a api-key. Hodnoty těchto klíčů hlaviček jsou application/json a váš klíč správce (klíč správce je zástupná hodnota za váš primární klíč služby Search). Samotný obsah volání se vkládá do textu požadavku. V závislosti na klientovi, kterého používáte, se může způsob vytváření dotazu mírně lišit, ale toto jsou základní informace.
+## <a name="get-a-key-and-url"></a>Získejte klíč a adresy URL
 
-  ![Prohledávání částečně strukturovaných dat](media/search-semi-structured-data/postmanoverview.png)
+Volání REST vyžadují pro každý požadavek adresu URL služby a přístupový klíč. Vyhledávací služba se vytvoří s oběma, takže pokud jste do svého předplatného přidali službu Azure Search, získejte potřebné informace pomocí následujícího postupu:
 
-Volání REST uvedená v tomto kurzu vyžadují váš api-key (klíč rozhraní API) služby Search. Svůj api-key najdete v části **Klíče** v rámci vaší služby Search. Tento api-key musí být uvedený v hlavičce všech volání rozhraní API (nahraďte jím klíč správce na předchozím snímku obrazovky), která v rámci tohoto kurzu provedete. Klíč si uložte, protože ho budete potřebovat pro všechna volání.
+1. [Přihlaste se k webu Azure portal](https://portal.azure.com/)a ve vyhledávací službě **přehled** stránce, získat adresu URL. Příkladem koncového bodu může být `https://mydemo.search.windows.net`.
 
-  ![Prohledávání částečně strukturovaných dat](media/search-semi-structured-data/keys.png)
+1. V **nastavení** > **klíče**, získat klíč pro úplná práva správce na službu. Existují dva klíče zaměnitelné správce, v případě, že budete potřebovat k výměně jeden k dispozici zajišťuje nepřetržitý chod podniků. U požadavků můžete použít buď primární nebo sekundární klíč pro přidání, úpravy a odstraňování objektů.
+
+![Získejte koncový bod a přístupový klíč rozhraní HTTP](media/search-fiddler/get-url-key.png "získat HTTP koncový bod a přístupový klíč")
+
+Všechny požadavky vyžaduje klíč rozhraní api na každou požadavku odeslaného do vaší služby. Platný klíč vytváří na základě žádosti vztah důvěryhodnosti mezi aplikací, která žádost odeslala, a službou, která ji zpracovává.
 
 ## <a name="prepare-sample-data"></a>Příprava ukázkových dat
 
-1. **Stáhněte soubor [clinical-trials-json.zip](https://github.com/Azure-Samples/storage-blob-integration-with-cdn-search-hdi/raw/master/clinical-trials-json.zip)** a rozbalte ho do samostatné složky. Data pocházejí z [clinicaltrials.gov](https://clinicaltrials.gov/ct2/results), převést na JSON pro účely tohoto kurzu.
+1. Vyhledání ukázkových dat, který jste stáhli do vašeho systému.
 
-2. Přihlaste se k [webu Azure portal](https://portal.azure.com), přejděte do svého účtu úložiště Azure, otevřete **data** kontejneru a klikněte na **nahrát**.
+1. [Přihlaste se k webu Azure portal](https://portal.azure.com), přejděte do účtu služby Azure storage a kontejner objektů Blob a klikněte na tlačítko **nahrát**.
 
-3. Klikněte na **Upřesnit**, zadejte clinical-trials-json a pak nahrajte všechny soubory JSON, které jste stáhli.
+1. Klikněte na **Upřesnit**, zadejte clinical-trials-json a pak nahrajte všechny soubory JSON, které jste stáhli.
 
   ![Prohledávání částečně strukturovaných dat](media/search-semi-structured-data/clinicalupload.png)
 
 Po dokončení nahrávání by se soubory měly zobrazit v samostatné podsložce uvnitř kontejneru dat.
 
-## <a name="connect-your-search-service-to-your-container"></a>Propojení služby Search s kontejnerem
+## <a name="set-up-postman"></a>Nastavení nástroje Postman
+
+Spusťte Postman a nastavte požadavek HTTP. Pokud tento nástroj neznáte, přečtěte si téma [prozkoumejte službu Search REST API služby Azure pomocí nástroje Postman](search-fiddler.md).
+
+Metoda požadavku pro všechna volání v tomto kurzu je **příspěvek**. Klíče hlaviček jsou Content-type a api-key. Hodnoty těchto klíčů hlaviček jsou application/json a váš klíč správce (klíč správce je zástupná hodnota za váš primární klíč služby Search). Samotný obsah volání se vkládá do textu požadavku. V závislosti na klientovi, kterého používáte, se může způsob vytváření dotazu mírně lišit, ale toto jsou základní informace.
+
+  ![Prohledávání částečně strukturovaných dat](media/search-semi-structured-data/postmanoverview.png)
 
 Pomocí nástroje Postman provedeme tři volání rozhraní API do služby Search, kterými vytvoříme zdroj dat, index a indexer. Zdroj dat obsahuje ukazatel na váš účet úložiště a vaše data JSON. Vaše služba Search se připojí při načítání dat.
 

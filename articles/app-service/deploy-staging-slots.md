@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/03/2019
 ms.author: cephalin
-ms.openlocfilehash: 4b5b7cf3a00e21b9904f72a98d5f24264bb0ecbc
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.openlocfilehash: 544ef8947f3a593071cabea018c722db96ab1475
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58484283"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59266201"
 ---
 # <a name="set-up-staging-environments-in-azure-app-service"></a>Nastavení přípravných prostředí ve službě Azure App Service
 <a name="Overview"></a>
@@ -84,7 +84,12 @@ Při klonování konfiguraci z jiného slot nasazení klonovaného konfigurace j
 * Nastavení monitorování a diagnostiky
 * Veřejné certifikáty
 * Obsah WebJobs
-* Hybridní připojení
+* Hybridní připojení *
+* Integrace virtuální sítě *
+* Service Endpoints *
+* Azure CDN *
+
+Funkce označené *, které budou vždy navrchu do přihrádky jsou naplánované. 
 
 **Nastavení, která nejsou Prohodit**:
 
@@ -93,10 +98,15 @@ Při klonování konfiguraci z jiného slot nasazení klonovaného konfigurace j
 * Privátní certifikáty a vazby SSL
 * Nastavení škálování
 * WebJobs plánovače
+* Omezení IP adres
+* Stálé připojení
+* Nastavení protokolu (HTTP**S**, verze protokolu TLS, klientské certifikáty)
+* Nastavení diagnostického protokolu
+* CORS
 
-<!-- VNET, IP restrictions, CORS, hybrid connections? -->
+<!-- VNET and hybrid connections not yet sticky to slot -->
 
-Pokud chcete nakonfigurovat aplikaci nastavení nebo připojovací řetězec se toho držet konkrétní slot (ne Prohodit), přejděte na **nastavení aplikace** stránce tohoto slotu a pak vyberte **nastavení slotu** pole pro konfigurační prvky, které by měla zůstat na slot. Označení prvek konfigurace slotu konkrétní informuje službu App Service, že není vyměnitelné.
+Pokud chcete nakonfigurovat aplikaci nastavení nebo připojovací řetězec se toho držet konkrétní slot (ne Prohodit), přejděte na **nastavení aplikace** stránce tohoto slotu a pak vyberte **nastavení slotu** pole pro konfigurační prvky, které by měla zůstat na slot. Označení prvek konfigurace slotu konkrétní informuje službu App Service, že není vyměnitelné. 
 
 ![Nastavení slotu](./media/web-sites-staged-publishing/SlotSetting.png)
 

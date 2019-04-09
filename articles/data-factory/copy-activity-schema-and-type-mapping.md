@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 12/20/2018
 ms.author: jingwang
-ms.openlocfilehash: c2f58a3510699cdf74e3150d3ad5882929f4f05b
-ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
+ms.openlocfilehash: 99798b35419ec9574c99aaba42803fbeeb1555f1
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54358707"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59267119"
 ---
 # <a name="schema-mapping-in-copy-activity"></a>Mapování schématu v aktivitě kopírování
 Tento článek popisuje, jak funguje Azure Data Factory za kopírování schématu mapování a mapování datového typu z datového zdroje do jímky dat při spuštění kopírovat data.
@@ -147,7 +147,7 @@ Mapování schématu platí při kopírování dat mezi hierarchické ve tvaru a
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
 | type | Vlastnost type překladatele, aktivita kopírování musí být nastavená na: **TabularTranslator** | Ano |
-| schemaMapping | Kolekce párů klíč hodnota, která představuje vztah mapování ze strany tabulkové hierarchické stranu.<br/>- **Klíč:** název sloupce tabulkových dat jako definovaný ve struktuře datové sady.<br/>- **Hodnota:** výraz cesty JSON pro každé pole extrahovat a mapování. U polí v kořenovém objektu začtěte s kořenem $, u polí uvnitř pole vybraného pomocí vlastnosti `collectionReference` začněte elementem pole.  | Ano |
+| schemaMapping | Kolekce párů klíč hodnota, která představuje vztah mapování **ze strany zdroje do jímky straně**.<br/>- **Klíč:** představuje zdroj. Pro **tabulkové zdroje**, zadejte název sloupce, jak je definováno ve struktuře datové sady, pro **hierarchické zdroj**, zadejte výraz cesty JSON pro každé pole extrahovat a mapování.<br/>- **Hodnota:** představuje jímky. Pro **tabulky jímky**, zadejte název sloupce, jak je definováno ve struktuře datové sady, pro **hierarchické jímky**, zadejte výraz cesty JSON pro každé pole extrahovat a mapování. <br/> V případě hierarchických dat, u polí v kořenovém objektu JSON cesta začínající znakem $ kořenové; u polí uvnitř pole vybraného pomocí `collectionReference` vlastnost, cesta JSON začíná od prvku pole.  | Ano |
 | collectionReference | Pokud chcete iterovat a extrahovat data z objektů **uvnitř pole** pomocí stejného vzoru a převést na jeden řádek pro každý objekt, zadejte cestu JSON pole použít různé. Tato vlastnost je podporována pouze v případě, že je hierarchická data source. | Ne |
 
 **Příklad: zkopírujte z MongoDB do SQL:**
@@ -228,18 +228,18 @@ Můžete najít mapování mezi nativní typ pro pomocný typ v části "Mapová
 
 Data Factory podporuje následující typy dočasné dat: Můžete zadat následující hodnoty při Konfigurace informací o typu v [struktury datové sady](concepts-datasets-linked-services.md#dataset-structure) konfigurace:
 
-* Byte]
+* Byte[]
 * Logická hodnota
 * Datum a čas
 * DateTimeOffset
-* Desítkově
+* Decimal
 * Double
 * Guid
 * Int16
-* Datový typ Int32
+* Int32
 * Int64
-* Jednoduchá
-* Řetězec
+* Single
+* String
 * Časový interval
 
 ### <a name="explicit-data-type-conversion"></a>Převod explicitní datového typu
@@ -255,8 +255,8 @@ V následující scénáře, "struktura" v datové sadě se vyžaduje:
 
 * Použití [převod explicitní datového typu](#explicit-data-type-conversion) pro souborové zdroje během kopírování (vstupní datová sada)
 * Použití [mapování sloupců explicitní](#explicit-column-mapping) během kopírování (vstupní i výstupní datová sada)
-* Kopírování z Dynamics 365 a CRM zdroje (vstupní datová sada)
-* Kopírování do služby Cosmos DB jako vnořený objekt není zdrojem soubory JSON (výstupní datová sada)
+* Kopírování ze zdroje Dynamics 365/CRM (vstupní datová sada)
+* Kopírování vnořeného objektu do služby Cosmos DB, pokud zdrojem nejsou soubory JSON (výstupní datová sada)
 
 V následující scénáře, doporučuje "struktura" v datové sadě:
 

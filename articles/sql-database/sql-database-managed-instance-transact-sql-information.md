@@ -1,10 +1,9 @@
 ---
-title: Azure SQL Database Managed Instance T-SQL ve službě | Dokumentace Microsoftu
+title: Rozdíly v jazyce T-SQL Azure SQL Database Managed Instance | Dokumentace Microsoftu
 description: Tento článek popisuje rozdíly T-SQL ve službě Azure SQL Database Managed Instance a SQL Server
 services: sql-database
 ms.service: sql-database
 ms.subservice: managed-instance
-ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
 author: jovanpop-msft
@@ -12,20 +11,17 @@ ms.author: jovanpop
 ms.reviewer: carlrab, bonova
 manager: craigg
 ms.date: 03/13/2019
-ms.openlocfilehash: 208370884d89a7a2585f320c037284d6657732db
-ms.sourcegitcommit: e43ea344c52b3a99235660960c1e747b9d6c990e
-ms.translationtype: HT
+ms.custom: seoapril2019
+ms.openlocfilehash: 14e33ec25dd2384607d41e4be6e5a33ebf889cbc
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/04/2019
-ms.locfileid: "59010596"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59260489"
 ---
 # <a name="azure-sql-database-managed-instance-t-sql-differences-from-sql-server"></a>Rozdíly ve službě Azure SQL Database Managed Instance T-SQL z SQL serveru
 
-Možnost nasazení Managed Instance poskytuje vysokou kompatibilitu díky místní SQL Server Database Engine. Většina funkce databázového stroje systému SQL Server jsou podporovány ve spravované instanci.
-
-![Migrace](./media/sql-database-managed-instance/migration.png)
-
-Protože stále existují určité rozdíly v syntaxi a chování, tento článek shrnuje a popisuje tyto rozdíly. <a name="Differences"></a>
+Tento článek shrnuje a popisuje rozdíly v syntaxi a chování mezi Azure SQL Database Managed Instance a místní SQL Server Database Engine. <a name="Differences"></a>
 
 - [Dostupnost](#availability) včetně rozdílů v [vždy na](#always-on-availability) a [zálohy](#backup),
 - [Zabezpečení](#security) včetně rozdílů v [auditování](#auditing), [certifikáty](#certificates), [pověření](#credential), [zprostředkovatelé kryptografických služeb](#cryptographic-providers), [Přihlášení / uživatelé](#logins--users), [klíče a hlavní klíč služby služby](#service-key-and-service-master-key),
@@ -33,6 +29,10 @@ Protože stále existují určité rozdíly v syntaxi a chování, tento článe
 - [Funkce](#functionalities) včetně [HROMADNÉ vložení/OPENROWSET](#bulk-insert--openrowset), [CLR](#clr), [DBCC](#dbcc), [distribuované transakce](#distributed-transactions), [ Rozšířené události](#extended-events), [externí knihovny](#external-libraries), [Filestream a Filetable](#filestream-and-filetable), [sémantické vyhledávání](#full-text-semantic-search), [propojené servery](#linked-servers), [Polybase](#polybase), [replikace](#replication), [obnovení](#restore-statement), [služby Service Broker](#service-broker), [ Uložené procedury, funkce a aktivační události](#stored-procedures-functions-triggers),
 - [Funkce, které mají různé chování v Managed instance](#Changes)
 - [Dočasná omezení a známé problémy](#Issues)
+
+Možnost nasazení Managed Instance poskytuje vysokou kompatibilitu díky místní SQL Server Database Engine. Většina funkce databázového stroje systému SQL Server jsou podporovány ve spravované instanci.
+
+![Migrace](./media/sql-database-managed-instance/migration.png)
 
 ## <a name="availability"></a>Dostupnost
 
@@ -494,7 +494,7 @@ To ukazuje, že za určitých okolností kvůli konkrétní distribuce souborů,
 
 V tomto příkladu budou nadále fungovat stávající databáze a můžou růst bez problémů, tak dlouho, dokud nejsou přidány nové soubory. Nové databáze však nelze vytvořit ani obnovit, protože není dostatek místa pro nových diskových jednotek, i když celková velikost všech databází: nebylo dosaženo omezení velikosti instance. Chyba, která je vrácena v takovém případě není jasný.
 
-Je možné [identifikovat počet zbývajících souborů](https://medium.com/azure-sqldb-managed-instance/how-many-files-you-can-create-in-general-purpose-azure-sql-managed-instance-e1c7c32886c1) pomocí zobrazení systému. Pokud se snažíte tohoto omezení pokusí [prázdný a některé menší souborů pomocí příkazu DBCC SHRINKFILE odstranit](https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-shrinkfile-transact-sql#d-emptying-a-file) nebo shitch k [úroveň pro důležité obchodní informace, nemusí se tento limit](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-managed-instance-resource-limits#service-tier-characteristics).
+Je možné [identifikovat počet zbývajících souborů](https://medium.com/azure-sqldb-managed-instance/how-many-files-you-can-create-in-general-purpose-azure-sql-managed-instance-e1c7c32886c1) pomocí zobrazení systému. Pokud se snažíte tohoto omezení pokusí [prázdný a některé menší souborů pomocí příkazu DBCC SHRINKFILE odstranit](https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-shrinkfile-transact-sql#d-emptying-a-file) nebo přepněte na [úroveň pro důležité obchodní informace, nemusí se tento limit](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-managed-instance-resource-limits#service-tier-characteristics).
 
 ### <a name="incorrect-configuration-of-sas-key-during-database-restore"></a>Nesprávná konfigurace SAS klíč při databáze obnovení
 

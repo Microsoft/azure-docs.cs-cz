@@ -1,6 +1,6 @@
 ---
-title: Toku kódu autorizace OAuth Azure AD v2.0 | Dokumentace Microsoftu
-description: Vytváření webových aplikací pomocí služby Azure AD implementaci ověřovacího protokolu OAuth 2.0.
+title: Platforma identit Microsoft a toku kódu autorizace OAuth | Azure
+description: Vytváření webových aplikací pomocí Microsoft identity platform implementaci ověřovacího protokolu OAuth 2.0.
 services: active-directory
 documentationcenter: ''
 author: CelesteDG
@@ -12,20 +12,20 @@ ms.subservice: develop
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 03/24/2019
+ms.topic: conceptual
+ms.date: 04/05/2019
 ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0350db37e13101d315937840fdcf3d9900e214d5
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
-ms.translationtype: MT
+ms.openlocfilehash: cc7feb77830fe8312cc2b48ffdb2c1af0abfb4b8
+ms.sourcegitcommit: b4ad15a9ffcfd07351836ffedf9692a3b5d0ac86
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58880261"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59058743"
 ---
-# <a name="v20-protocols---oauth-20-authorization-code-flow"></a>Protokoly v2.0 - tok autorizačního kódu OAuth 2.0
+# <a name="microsoft-identity-platform-and-oauth-20-authorization-code-flow"></a>Platforma identit Microsoft a tok autorizačního kódu OAuth 2.0
 
 [!INCLUDE [active-directory-develop-applies-v2](../../../includes/active-directory-develop-applies-v2.md)]
 
@@ -34,7 +34,7 @@ Udělení autorizačního kódu OAuth 2.0 je možné v aplikacích, které jsou 
 > [!NOTE]
 > Ne všechny scénáře Azure Active Directory a funkce jsou podporovány bodem v2.0. Pokud chcete zjistit, pokud je vhodné použít koncový bod verze 2.0, přečtěte si informace o [v2.0 omezení](active-directory-v2-limitations.md).
 
-Tok autorizačního kódu OAuth 2.0 je popsaný v [části 4.1 specifikace OAuth 2.0](https://tools.ietf.org/html/rfc6749). Používá se k provedení ověřování a autorizace ve většině typů aplikací, včetně [webové aplikace](v2-app-types.md#web-apps) a [nativně nainstalované aplikace](v2-app-types.md#mobile-and-native-apps). Tento tok umožňuje aplikacím bezpečně získat access_tokens, který slouží pro přístup k prostředkům zabezpečeným přes koncový bod verze 2.0. 
+Tok autorizačního kódu OAuth 2.0 je popsaný v [části 4.1 specifikace OAuth 2.0](https://tools.ietf.org/html/rfc6749). Používá se k provedení ověřování a autorizace ve většině typů aplikací, včetně [webové aplikace](v2-app-types.md#web-apps) a [nativně nainstalované aplikace](v2-app-types.md#mobile-and-native-apps). Tento tok umožňuje aplikacím bezpečně získat access_tokens, který slouží pro přístup k prostředkům zabezpečeným přes koncový bod verze 2.0.
 
 ## <a name="protocol-diagram"></a>Diagram protokolu
 
