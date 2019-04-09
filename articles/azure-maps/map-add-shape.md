@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 43406aee8d2e350b82659156bb2837e952fd4a92
-ms.sourcegitcommit: b4ad15a9ffcfd07351836ffedf9692a3b5d0ac86
-ms.translationtype: HT
+ms.openlocfilehash: 1e550002948fc1320b8645bf1af635536d524fe6
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/05/2019
-ms.locfileid: "59057021"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59282385"
 ---
 # <a name="add-a-shape-to-a-map"></a>Přidání obrazce do mapy
 
@@ -35,7 +35,7 @@ První blok kódu ve výše uvedeném kódu vytvoří objekt Map. Můžete zobra
 
 V druhém bloku kódu, je vytvořen objekt zdroje dat pomocí [DataSource](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest) třídy. A [LineString](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data.linestring?view=azure-iot-typescript-latest) je vytvořen a přidán do zdroje dat objektu.
 
-A [LineLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.linelayer?view=azure-iot-typescript-latest) vykresluje řádek objektů, který je obalen [DataSource](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest). Poslední blok kódu vytvoří a přidá čárovou vrstvu mapy. Zobrazit vlastnosti čárovou vrstvu na [LineLayerOptions](/javascript/api/azure-maps-control/atlas.linelayeroptions?view=azure-iot-typescript-latest). Vytvořen a přidán do mapování v rámci zdroje dat a čárovou vrstvu [naslouchací proces událostí](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events) funkce, která se ujistěte, že po načtení mapy plně, zobrazí se řádek.
+A [LineLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.linelayer?view=azure-iot-typescript-latest) vykresluje řádek objektů, který je obalen [DataSource](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest). Poslední blok kódu vytvoří a přidá čárovou vrstvu mapy. Zobrazit vlastnosti čárovou vrstvu na [LineLayerOptions](/javascript/api/azure-maps-control/atlas.linelayeroptions?view=azure-iot-typescript-latest). Vytvořen a přidán do mapování v rámci zdroje dat a čárovou vrstvu [obslužná rutina události](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events) zajistit, že po načtení mapy plně, zobrazí se řádek.
 
 ### <a name="add-symbols-along-a-line"></a>Přidat symboly podél řádku
 
@@ -83,7 +83,7 @@ Ve výše uvedeném kódu první blok kódu vytvoří objekt Map. Můžete zobra
 
 V druhém bloku kódu, je vytvořen objekt zdroje dat pomocí [DataSource](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest) třídy. A [mnohoúhelníku](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data.polygon?view=azure-iot-typescript-latest) je vytvořen z pole souřadnic a přidán do zdroje dat. 
 
-A [PolygonLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.polygonlayer?view=azure-iot-typescript-latest) vykreslí data, který je obalen [DataSource](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest) na mapě. Poslední blok kódu vytvoří a přidá mnohoúhelníkovou vrstvu mapy. Zobrazit vlastnosti vrstvy mnohoúhelníků na [PolygonLayerOptions](/javascript/api/azure-maps-control/atlas.polygonlayeroptions?view=azure-iot-typescript-latest). Zdroj dat a vrstvy mnohoúhelníků vytvořen a přidán do mapování v rámci [naslouchací proces událostí](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events) funkce zajistit, že po načtení mapy plně, zobrazí se mnohoúhelníku.
+A [PolygonLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.polygonlayer?view=azure-iot-typescript-latest) vykreslí data, který je obalen [DataSource](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest) na mapě. Poslední blok kódu vytvoří a přidá mnohoúhelníkovou vrstvu mapy. Zobrazit vlastnosti vrstvy mnohoúhelníků na [PolygonLayerOptions](/javascript/api/azure-maps-control/atlas.polygonlayeroptions?view=azure-iot-typescript-latest). Zdroje dat a vrstvy mnohoúhelníků vytvořen a přidán do mapování v rámci [obslužná rutina události](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events) zajistit, že po načtení mapy plně, zobrazí se mnohoúhelníku.
 
 ### <a name="use-a-polygon-and-line-layer-together"></a>Společné použití vrstvy mnohoúhelníků a čar
 
@@ -98,7 +98,7 @@ V druhém bloku kódu, je vytvořen objekt zdroje dat pomocí [DataSource](https
 
 A [PolygonLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.polygonlayer?view=azure-iot-typescript-latest) vykreslí data, který je obalen [DataSource](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest) na mapě. Zobrazit vlastnosti vrstvy mnohoúhelníků na [PolygonLayerOptions](/javascript/api/azure-maps-control/atlas.polygonlayeroptions?view=azure-iot-typescript-latest). A [LineLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.linelayer?view=azure-iot-typescript-latest) je pole řádků. Zobrazit vlastnosti čárovou vrstvu na [LineLayerOptions](/javascript/api/azure-maps-control/atlas.linelayeroptions?view=azure-iot-typescript-latest). Třetí bloku kódu vytvoří vrstvy mnohoúhelníků a čar.
 
-Poslední blok kódu přidá vrstvy mnohoúhelníků a čar do mapy. Vytvořen a přidán do mapování v rámci zdroje dat a vrstvy [naslouchací proces událostí](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events) funkce zajistit, že po načtení mapy plně, zobrazí se mnohoúhelníku.
+Poslední blok kódu přidá vrstvy mnohoúhelníků a čar do mapy. Vytvořen a přidán do mapování v rámci zdroje dat a vrstvy [obslužná rutina události](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events) zajistit, že po načtení mapy plně, zobrazí se mnohoúhelníku.
 
 > [!TIP]
 > Vykreslí souřadnice mnohoúhelníky, jakož i řádků ve zdroji dat se řádek vrstvy ve výchozím nastavení. Omezit vrstvu tak, aby vykreslením LineString funkce set `filter` vlastnost vrstva `['==', ['geometry-type'], 'LineString']` nebo `['any', ['==', ['geometry-type'], 'LineString'], ['==', ['geometry-type'], 'MultiLineString']]` Pokud budete chtít zahrnout MultiLineString funkcích i.
@@ -126,7 +126,7 @@ Mnohoúhelníková vrstva má jenom pár možností stylu. Zde je nástroj, kter
 
 ## <a name="add-a-circle-to-the-map"></a>Přidejte kruh do mapy
 
-Azure Maps používá rozšířenou verzi schématu GeoJSON, který obsahuje definici pro kruhy, jak je uvedeno [tady](extend-geojson.md#circle). Kruh lze vykreslit na mapě, tím, že vytvoříte `Point` funkce, která má `subType` vlastnost s hodnotou `Circle` a `radius` vlastnost, která obsahuje číslo představující radius v metrech. Příklad:
+Azure Maps používá rozšířenou verzi schématu GeoJSON, který obsahuje definici pro kruhy, jak je uvedeno [tady](extend-geojson.md#circle). Kruh lze vykreslit na mapě, tím, že vytvoříte `Point` funkce, která má `subType` vlastnost s hodnotou `"Circle"` a `radius` vlastnost, která má číslo představující radius v metrech. Příklad:
 
 ```javascript
 {
@@ -149,9 +149,9 @@ Sada SDK Azure Maps webové převede tyto `Pooint` funkce do `Polygon` funkce na
 
 První blok kódu ve výše uvedeném kódu vytvoří objekt Map. Můžete zobrazit [Vytvořte mapu](./map-create.md) pokyny.
 
-V druhém bloku kódu, je vytvořen objekt zdroje dat pomocí [DataSource](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest) třídy. Kruh je [funkce](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data.feature?view=azure-iot-typescript-latest) z [bodu](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data.point?view=azure-iot-typescript-latest) a má `subType` vlastnost nastavena na hodnotu "kroužek" a `radius` měřiče hodnotu vlastnosti. Když funkce bod se podtypem kruhu se přidá ke zdroji dat, ji převede do kruhové mnohoúhelníku v mapě.
+V druhém bloku kódu, je vytvořen objekt zdroje dat pomocí [DataSource](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest) třídy. Kruh je [funkce](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data.feature?view=azure-iot-typescript-latest) z [bodu](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data.point?view=azure-iot-typescript-latest) a má `subType` vlastnost nastavena na `"Circle"` a `radius` hodnotu vlastnosti v metrech. Když funkce bod s `subType` z `"Circle"` se přidá ke zdroji dat je převeden do kruhové mnohoúhelníku v mapě.
 
-A [PolygonLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.polygonlayer?view=azure-iot-typescript-latest) vykreslí data, který je obalen [DataSource](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest) na mapě. Poslední blok kódu vytvoří a přidá mnohoúhelníkovou vrstvu mapy. Zobrazit vlastnosti vrstvy mnohoúhelníků na [PolygonLayerOptions](/javascript/api/azure-maps-control/atlas.polygonlayeroptions?view=azure-iot-typescript-latest). Zdroj dat a vrstvy mnohoúhelníků vytvořen a přidán do mapování v rámci [naslouchací proces událostí](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events) funkce zajistit, že po načtení mapy plně, zobrazí se kruh.
+A [PolygonLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.polygonlayer?view=azure-iot-typescript-latest) vykreslí data, který je obalen [DataSource](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest) na mapě. Poslední blok kódu vytvoří a přidá mnohoúhelníkovou vrstvu mapy. Zobrazit vlastnosti vrstvy mnohoúhelníků na [PolygonLayerOptions](/javascript/api/azure-maps-control/atlas.polygonlayeroptions?view=azure-iot-typescript-latest). Zdroj dat a vrstvy mnohoúhelníků vytvořen a přidán do mapování v rámci [obslužná rutina události](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events) zajistit, že po načtení mapy plně, zobrazí se na kruh.
 
 ## <a name="make-a-geometry-easy-to-update"></a>Usnadnění geometrii aktualizovat
 
@@ -171,14 +171,11 @@ Třetí blok kódu vytvoří funkci, která přijímá hodnotu z prvku HTML rozs
 
 Ve čtvrtém bloku kódu, je vytvořen objekt zdroje dat pomocí [DataSource](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest) třídy. Bod se pak přidá do datového zdroje.
 
-A [PolygonLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.polygonlayer?view=azure-iot-typescript-latest) vykreslí data, který je obalen [DataSource](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest) na mapě. Třetí bloku kódu vytvoří mnohoúhelníkovou vrstvu. Zobrazit vlastnosti vrstvy mnohoúhelníků na [PolygonLayerOptions](/javascript/api/azure-maps-control/atlas.polygonlayeroptions?view=azure-iot-typescript-latest). Vytvořen a přidán do mapování v rámci zdroje dat, naslouchací proces událostí kliknutím a mnohoúhelníkovou vrstvu [naslouchací proces událostí](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events) funkce, která se ujistěte, že po načtení mapy plně, zobrazí se místo.
+A [PolygonLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.polygonlayer?view=azure-iot-typescript-latest) vykreslí data, který je obalen [DataSource](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest) na mapě. Třetí bloku kódu vytvoří mnohoúhelníkovou vrstvu. Zobrazit vlastnosti vrstvy mnohoúhelníků na [PolygonLayerOptions](/javascript/api/azure-maps-control/atlas.polygonlayeroptions?view=azure-iot-typescript-latest). Vytvořen a přidán do mapování v rámci zdroje dat, hanlder události kliknutí a mnohoúhelníkovou vrstvu [obslužná rutina události](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events) zajistit, že po načtení mapy plně, zobrazí se místo.
 
 ## <a name="next-steps"></a>Další postup
 
 Další příklady kódu pro přidání do vaše mapy najdete v následujících článcích:
 
 > [!div class="nextstepaction"]
-> [Značky HTML](./map-add-custom-html.md)
-
-> [!div class="nextstepaction"]
-> [Přidání vrstvy heat mapy](./map-add-heat-map-layer.md)
+> [Použití výrazů s daty styl](data-driven-style-expressions-web-sdk.md)

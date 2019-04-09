@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: overview
-ms.date: 04/01/2019
+ms.date: 04/08/2019
 ms.author: alkohli
-ms.openlocfilehash: b104f2578938997ff12778d65f08cca226d9a445
-ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
+ms.openlocfilehash: 27200406f0866697100e1cf9b32c199203ad600d
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58892326"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59258772"
 ---
 # <a name="what-is-azure-data-box-disk"></a>Co je Azure Data Box Disk?
 
@@ -54,7 +54,7 @@ A. Při 5 discích, kdy každý má velikost 8 TB (7 TB využitelné kapacity), 
 A.  Chcete-li zjistit, kde jsou aktuálně k dispozici disků Data Box, přejděte [dostupnost v oblastech](data-box-disk-overview.md#region-availability).  
 
 ### <a name="q-which-regions-can-i-store-data-in-with-data-box-disks"></a>Otázka: Ve kterých oblastech lze data ukládat pomocí disků Data Box Disk?
-A. Data Box Disk se podporuje pro všechny oblasti v USA, Kanadě, Austrálii a oblasti západní Evropa a Severní Evropa. Podporované jsou jenom oblasti veřejného cloudu Azure. Azure Government ani jiné suverénní cloudy nejsou podporované.
+A. Data Box Disk se podporuje pro všechny oblasti v USA, Kanadě, Austrálii, západní Evropa a Severní Evropa, Koreji a Japonsko. Podporované jsou jenom oblasti veřejného cloudu Azure. Azure Government ani jiné suverénní cloudy nejsou podporované.
 
 ### <a name="q-whom-should-i-contact-if-i-encounter-any-issues--with-data-box-disks"></a>Otázka: Na koho se mám obrátit, když narazím na nějaké problémy s disky Data Box Disk?
 A. Pokud narazíte na případné problémy s disků Data Box, [obraťte se na Microsoft Support](https://docs.microsoft.com/azure/databox/data-box-disk-contact-microsoft-support).
@@ -132,8 +132,8 @@ Sada nástrojů je k dispozici pro Windows i Linux. Si můžete stáhnout na sad
 - [Stáhněte si sadu nástrojů disku Data Box pro Windows](https://aka.ms/databoxdisktoolswin) 
 - [Stáhnout sadu nástrojů disku Data Box pro Linux](https://aka.ms/databoxdisktoolslinux)
  
-  ### <a name="q-can-i-use-data-box-disk-to-transfer-data-to-azure-files-and-then-use-the-data-with-azure-file-sync"></a>Otázka: Můžete použít Data Box Disk k přenosu dat do služby soubory Azure a pak používat data pomocí služby Azure File Sync? 
-  A. Služba soubory Azure jsou podporovány s datovými diskem, pole, ale nebude fungovat s Azure File Sync. Metadata nezachovají, pokud se používají data souborů pomocí služby Azure File Sync.
+### <a name="q-can-i-use-data-box-disk-to-transfer-data-to-azure-files-and-then-use-the-data-with-azure-file-sync"></a>Otázka: Můžete použít Data Box Disk k přenosu dat do služby soubory Azure a pak používat data pomocí služby Azure File Sync? 
+A. Služba soubory Azure jsou podporovány s datovými diskem, pole, ale nebude fungovat s Azure File Sync. Metadata nezachovají, pokud se používají data souborů pomocí služby Azure File Sync.
 
 
 ## <a name="verify-and-upload"></a>Ověření a nahrání
@@ -166,7 +166,7 @@ A. Můžete svoji předchozí objednávku naklonovat. Naklonováním se vytvoř�
 A. Ano. Vaše data byla nahrána do Azure, ale pokud se nezobrazí žádné spravované disky se skupinami zadaný prostředek, je pravděpodobné, protože data nebyla platná. Pokud objekty BLOB stránky, objekty BLOB bloku, soubory Azure a spravované disky nebyly platné, tyto přejde do následující složky:
  - Objekty BLOB stránky by přejít na kontejner objektů blob bloku od *databoxdisk – neplatná-pb -*.
  - Služba soubory Azure přejde na kontejner objektů blob bloku od *databoxdisk – neplatná-af -*.
- - Spravované disky by přejít na kontejner objektů blob bloku od *databoxdisk-invliad-md –*.
+ - Spravované disky by přejít na kontejner objektů blob bloku od *databoxdisk – neplatná-md –*.
 
 ## <a name="next-steps"></a>Další postup
 

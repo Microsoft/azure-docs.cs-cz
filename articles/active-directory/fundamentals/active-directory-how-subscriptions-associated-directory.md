@@ -13,12 +13,12 @@ ms.author: lizross
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f8c5cb04c17e508409e67f0441daee4bc44c29d5
-ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
+ms.openlocfilehash: 3322e49c6fdc590b785806f67b5081700bf8b37b
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58285002"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59264892"
 ---
 # <a name="associate-or-add-an-azure-subscription-to-your-azure-active-directory-tenant"></a>Přiřazení nebo přidání předplatného Azure do svého tenanta Azure Active Directory
 
@@ -30,6 +30,8 @@ Všichni uživatelé mají jeden *domácí* adresáře pro ověřování. Uživa
 
 > [!Important]
 > Když přidružíte předplatné na jiný adresář, uživatelé, kteří mají přiřazené, pomocí role [řízení přístupu na základě role (RBAC)](../../role-based-access-control/role-assignments-portal.md) tento přístup přijdou. Správci předplatného Classic (Správce služeb a spolupracujících správců) taky ztratíte přístup.
+> 
+> Kromě toho přesunout cluster Azure Kubernetes Service (AKS) do jiného předplatného nebo přesun předplatného vlastnící clusteru do nového tenanta, způsobí, že cluster tak, aby funkce z důvodu přiřazení rolí ke ztrátě a práva objekty zabezpečení služby by nebyla dostupná. Další informace o službě AKS najdete v tématu [Azure Kubernetes Service (AKS)](https://docs.microsoft.com/en-us/azure/aks/).
 
 ## <a name="before-you-begin"></a>Před zahájením
 
@@ -67,15 +69,16 @@ Předtím, než můžete přiřadit nebo přidejte svoje předplatné, je třeba
 
     ![Stránka přepínání adresáře, s ukázkovými informacemi o](media/active-directory-how-subscriptions-associated-directory/directory-switcher.png)
 
-Změna adresáře předplatného je operace úroveň služby, takže to nijak neovlivní vlastnictví fakturace předplatného. Správce účtu může stále změnit správce služby z [centra pro účty](https://account.azure.com/subscriptions). Pokud chcete odstranit původní adresář, musíte přenést vlastnictví pro nového správce účtu. fakturace předplatného Další informace o tom, jak převést vlastnictví fakturace, najdete v tématu [Převod vlastnictví předplatného Azure na jiný účet](../../billing/billing-subscription-transfer.md). 
+Změna adresáře předplatného je operace úroveň služby, takže to nijak neovlivní vlastnictví fakturace předplatného. Správce účtu může stále změnit správce služby z [centra pro účty](https://account.azure.com/subscriptions). Pokud chcete odstranit původní adresář, musíte přenést vlastnictví pro nového správce účtu. fakturace předplatného Další informace o tom, jak převést vlastnictví fakturace, najdete v tématu [Převod vlastnictví předplatného Azure na jiný účet](../../billing/billing-subscription-transfer.md).
 
 ## <a name="post-association-steps"></a>Kroky po přidružení
-
 Poté, co přidružíte předplatné na jiný adresář, mohou existovat další kroky, které musíte provést při obnovení operací.
 
 1. Pokud máte jakékoli trezorů klíčů, je nutné změnit ID tenanta trezoru klíčů. Další informace najdete v tématu [Změna ID tenanta trezoru klíčů po přesunu předplatného](../../key-vault/key-vault-subscription-move-fix.md).
 
-1. Pokud jste se zaregistrovali službě Azure Stack prostřednictvím tohoto předplatného, budete muset znovu zaregistrovat. Další informace najdete v tématu [registrace Azure Stack s využitím Azure](../../azure-stack/azure-stack-registration.md).
+2. Pokud jste se zaregistrovali službě Azure Stack prostřednictvím tohoto předplatného, budete muset znovu zaregistrovat. Další informace najdete v tématu [registrace Azure Stack s využitím Azure](../../azure-stack/azure-stack-registration.md).
+
+
 
 ## <a name="next-steps"></a>Další postup
 

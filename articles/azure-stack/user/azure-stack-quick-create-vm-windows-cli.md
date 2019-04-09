@@ -16,11 +16,11 @@ ms.author: mabrigg
 ms.custom: mvc
 ms.lastreviewed: 01/14/2019
 ms.openlocfilehash: 67e0ccfa883e79d66eb9ca38a6cf15f00154c487
-ms.sourcegitcommit: b4ad15a9ffcfd07351836ffedf9692a3b5d0ac86
-ms.translationtype: HT
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/05/2019
-ms.locfileid: "59056173"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59265708"
 ---
 # <a name="quickstart-create-a-windows-server-virtual-machine-by-using-azure-cli-in-azure-stack"></a>Rychlý start: vytvoření virtuálního počítače s Windows serverem pomocí Azure CLI ve službě Azure Stack
 

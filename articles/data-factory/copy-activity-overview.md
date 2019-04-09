@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 02/15/2019
+ms.date: 04/08/2019
 ms.author: jingwang
-ms.openlocfilehash: 154e0dcefab6d5bcdfc9532ba4258d09593f0970
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
+ms.openlocfilehash: 28d8c077f106f12812f7ed710217febd24d81efc
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56311126"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59267143"
 ---
 # <a name="copy-activity-in-azure-data-factory"></a>Aktivita kopírování ve službě Azure Data Factory
 
@@ -54,14 +54,15 @@ Aktivitu kopírování, která prochází následující fáze pro kopírování
 
 Můžete použít aktivitu kopírování, která **kopírovat soubory jako-je** mezi dvěma souborových dat úložišti, ve kterých je efektivně zkopírují případ data bez serializaci nebo deserializaci.
 
-Aktivita kopírování také podporuje čtení a zápis do souborů v určených formátů: **Text JSON, Avro, ORC a Parquet**a kompresní kodek **GZip, Deflate, BZip2 a ZipDeflate** jsou podporovány. Zobrazit [podporované formáty souborů a komprese](supported-file-formats-and-compression-codecs.md) s podrobnostmi.
+Aktivita kopírování také podporuje čtení a zápis do souborů v určených formátů: **Text JSON, Avro, ORC a Parquet**, komprese a decompresing souborům kodeky následující: **GZip, Deflate, BZip2 a ZipDeflate**. Zobrazit [podporované formáty souborů a komprese](supported-file-formats-and-compression-codecs.md) s podrobnostmi.
 
 Například můžete provést následující aktivity kopírování:
 
-* Kopírování dat v místním SQL serveru a ve formátu ORC zápis do Azure Data Lake Store.
+* Kopírování dat v místním SQL serveru a zapsat do Azure Data Lake Storage Gen2 ve formátu Parquet.
 * Zkopírujte soubory ve formátu textu (CSV) v místním systému souborů a zápis do objektu Blob Azure ve formátu Avro.
-* Kopírování souborů ZIP v místním systému souborů a pak dekomprimovat pozemního do Azure Data Lake Store.
+* Kopírování souborů ZIP v místním systému souborů a pak dekomprimovat pozemního do Azure Data Lake Storage Gen2.
 * Kopírování dat z objektů Blob v Azure ve formátu GZip komprimované text (CSV) a zápis do služby Azure SQL Database.
+* A další většinou s serializaci/deserializaci nebo kompresi nebo dekompresi potřebovat.
 
 ## <a name="supported-regions"></a>Podporované oblasti
 

@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: overview
 ms.date: 07/13/2018
 ms.author: spelluru
-ms.openlocfilehash: 5c53c64c337cb2992b002ee02ceb9aab36e16de4
-ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
+ms.openlocfilehash: a4ca5cba924a3269f279469f26e68acdb0ad0659
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56958741"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59257616"
 ---
 # <a name="an-introduction-to-azure-lab-services"></a>Seznámení s Azure Lab Services
 Služba Azure Lab Services umožňuje rychle nastavit cloudové prostředí pro váš tým (například vývojové prostředí, testovací prostředí, testovací prostředí v učebně). Vlastník testovacího prostředí vytvoří testovací prostředí, zřídí virtuální počítače s Windows nebo Linuxem, nainstaluje nezbytný software a nástroje a zpřístupní je uživatelům testovacího prostředí. Uživatelé testovacího prostředí se připojí k virtuálním počítačům (VM) v testovacím prostředí a budou je používat ke každodenní práci, na krátkodobé projekty nebo aktivity ve vyučování. Jakmile uživatelé začnou využívat prostředky v testovacím prostředí, správce testovacího prostředí může analyzovat náklady a využití ve všech spravovaných testovacích prostředích a nastavením globálních zásad optimalizovat náklady organizace i jednotlivých týmů.
@@ -120,5 +120,5 @@ Následující tabulka porovnává dva typy testovacích prostředí, které slu
 
 Viz následující články: 
 
-- [Informace o testovacím prostředím v Učebnách ](./classroom-labs/classroom-labs-overview.md)
+- [Informace o testovacích prostředích v učebnách](./classroom-labs/classroom-labs-overview.md)
 - [Informace o službě DevTest Labs](devtest-lab-overview.md)

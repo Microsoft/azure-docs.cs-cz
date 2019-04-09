@@ -5,15 +5,15 @@ author: alkohli
 services: storage
 ms.service: storage
 ms.topic: article
-ms.date: 12/11/2018
+ms.date: 04/08/2019
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: 99e3abb1bedffdb5a7d49c033ebc8b4c46df1c03
-ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
+ms.openlocfilehash: fc02e830953f8612a077fb219c7fef4e86bc3827
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55769269"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59263825"
 ---
 # <a name="use-the-azure-importexport-service-to-export-data-from-azure-blob-storage"></a>Export dat z úložiště objektů Blob v Azure pomocí služby Azure Import/Export
 Tento článek obsahuje podrobné pokyny o tom, jak bezpečně export velkých objemů dat z úložiště objektů Blob v Azure pomocí služby Azure Import/Export. Služba vyžaduje, abyste zasílejte prázdné disky do datacentra Azure. Službu exportuje data z vašeho účtu úložiště do jednotky a potom odešle zpět jednotky.
@@ -25,7 +25,7 @@ Než začnete vytvářet úlohy exportu pro přenos dat z Azure Blob Storage, pe
 - Máte aktivní předplatné Azure, který lze použít pro službu Import/Export.
 - Máte alespoň jeden účet služby Azure Storage. Zobrazit seznam [nepodporuje účty úložiště a typy úložiště pro službu Import/Export](storage-import-export-requirements.md). Informace o vytvoření nového účtu úložiště najdete v tématu [způsob vytvoření účtu úložiště](storage-quickstart-create-account.md).
 - Používejte odpovídající počet disků [podporované typy](storage-import-export-requirements.md#supported-disks).
-- Máte účet FedEx/DHL.  
+- Máte účet FedEx/DHL. Pokud chcete použít dopravce než FedEx/DHL, obraťte se na tým Azure Data Box operací na adrese `adbops@microsoft.com`. 
     - Účet musí být platná, by měl mít vyrovnávání a musí mít vrácení funkce.
     - Generovat sledovací číslo pro úlohu exportu.
     - Každá úloha by měl mít samostatný sledovací číslo. Více úloh se stejným číslem sledování nejsou podporovány. 
@@ -82,7 +82,7 @@ Proveďte následující kroky k vytvoření úlohy exportu na webu Azure Portal
 
 4. V **vrátí informace o expedici**:
 
-    - Z rozevíracího seznamu vyberte operátorovi.
+    - Z rozevíracího seznamu vyberte operátorovi. Pokud chcete použít dopravce než FedEx/DHL, zvolte existující možnost z rozevíracího seznamu. Kontaktní Azure Data Box operace týmu na `adbops@microsoft.com` o informace týkající se operátorovi, plánujete použít.
     - Zadejte číslo účtu dopravce platný, kterou jste vytvořili pomocí tohoto operátora. Tento účet Microsoft používá k odeslání jednotky zpět po dokončení úlohy import. 
     - Zadejte úplné a platné jméno kontaktní osoby, telefonu, e-mailu, adresu, Město, zip, stát/kraj a země/oblast.
 

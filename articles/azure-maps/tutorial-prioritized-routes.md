@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 5dde20c485f7c2f528182c348aa6e78dc0c66034
-ms.sourcegitcommit: b4ad15a9ffcfd07351836ffedf9692a3b5d0ac86
-ms.translationtype: HT
+ms.openlocfilehash: db01c2f51e9069e8fc9ee979eacf746bee8dbdd2
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/05/2019
-ms.locfileid: "59056567"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59260914"
 ---
 # <a name="find-routes-for-different-modes-of-travel-using-azure-maps"></a>Vyhledání tras pro různé režimy dopravy s využitím Azure Maps
 
@@ -46,11 +46,11 @@ Následující kroky ukazují, jak vytvořit statickou stránku HTML s vložený
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
         <!-- Add references to the Azure Maps Map control JavaScript and CSS files. -->
-        <link rel="stylesheet" href="https://atlas.microsoft.com/sdk/css/atlas.min.css?api-version=2" type="text/css">
-        <script src="https://atlas.microsoft.com/sdk/js/atlas.min.js?api-version=2"></script>
+        <link rel="stylesheet" href="https://atlas.microsoft.com/sdk/javascript/mapcontrol/2/atlas.min.css" type="text/css">
+        <script src="https://atlas.microsoft.com/sdk/javascript/mapcontrol/2/atlas.min.js"></script>
 
         <!-- Add a reference to the Azure Maps Services Module JavaScript file. -->
-        <script src="https://atlas.microsoft.com/sdk/js/atlas-service.js?api-version=2"></script>
+        <script src="https://atlas.microsoft.com/sdk/javascript/mapcontrol/2/atlas-service.min.js"></script>
 
         <script>
             var map, datasource, client;
@@ -82,7 +82,7 @@ Následující kroky ukazují, jak vytvořit statickou stránku HTML s vložený
 
     Všimněte si, že hlavička HTML zahrnuje soubory prostředků šablon stylů CSS a JavaScriptu hostované knihovnou Ovládací prvek Mapa v Azure. V těle stránky si všimněte události `onload`, která po načtení těla stránky zavolá funkci `GetMap`. Tato funkce bude obsahovat vložený kód JavaScriptu pro přístup k rozhraním Azure Maps API.
 
-3. Do funkce `GetMap` přidejte následující kód JavaScriptu. Nahraďte řetězec **\<Your Azure Maps Key\>** primárním klíčem, který jste zkopírovali ze svého účtu Maps.
+3. Do funkce `GetMap` přidejte následující kód JavaScriptu. Nahraďte řetězec `<Your Azure Maps Key>` s primární klíč, který jste zkopírovali ze svého účtu mapy.
 
     ```JavaScript
     //Instantiate a map object
@@ -216,7 +216,7 @@ Tato část ukazuje, jak použít rozhraní API pro mapy route service k vyhled�
     var routeURL = new atlas.service.RouteURL(pipeline);
     ```
 
-   **SubscriptionKeyCredential** vytvoří **SubscriptionKeyCredentialPolicy** k ověření požadavků HTTP ve službě Azure Maps se klíč předplatného. **Atlas.service.MapsURL.newPipeline()** přijímá **SubscriptionKeyCredential** zásady a vytvoří [kanálu](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.pipeline?view=azure-iot-typescript-latest) instance. **RouteURL** představuje adresu URL ke službě Azure Maps [trasy](https://docs.microsoft.com/rest/api/maps/route) operace.
+   `SubscriptionKeyCredential` Vytvoří `SubscriptionKeyCredentialPolicy` k ověření požadavků HTTP ve službě Azure Maps se klíč předplatného. `atlas.service.MapsURL.newPipeline()` Přijímá `SubscriptionKeyCredential` zásady a vytvoří [kanálu](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.pipeline?view=azure-iot-typescript-latest) instance. `routeURL` Představuje adresu URL ke službě Azure Maps [trasy](https://docs.microsoft.com/rest/api/maps/route) operace.
 
 2. Po nastavení přihlašovacích údajů a adresu URL, přidejte následující JavaScript kód k vytvoření trasy od začátku na koncový bod pro nákladní vozidlo provádění USHazmatClass2 třídy nákladu a zobrazit výsledky.
 
@@ -245,7 +245,7 @@ Tato část ukazuje, jak použít rozhraní API pro mapy route service k vyhled�
     });
     ```
 
-    Tento fragment kódu výše uvedené dotazy směrování služby Azure Maps pomocí [getRouteDirections](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.models.routedirectionsrequestbody?view=azure-iot-typescript-latest) metody. Řádku postupu pak extrahují z kolekce funkcí GeoJSON z odpovědi, které je extrahována pomocí **geojson.getFeatures()** metody. Ke zdroji dat se pak přidá trasu řádku. Přidá také indexu 0 k zajištění, že je vykreslen před dalších řádků ve zdroji dat. To se provádí proto, že výpočet trasy pro nákladní vůz bude často pomalejší než výpočet trasy pro auto, a kdyby se čára trasy pro nákladní vůz přidala ke zdroji dat až po čáře trasy pro auto, vykreslila by se nad ní. Dvě vlastnosti se přidají do řádku postupu truck stroke barva, která se odlišuje od modré a šířku tahu devět pixelů.
+    Tento fragment kódu výše uvedené dotazy směrování služby Azure Maps pomocí [getRouteDirections](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.models.routedirectionsrequestbody?view=azure-iot-typescript-latest) metody. Řádku postupu pak extrahují z kolekce funkcí GeoJSON z odpovědi, které je extrahována pomocí `geojson.getFeatures()` metody. Ke zdroji dat se pak přidá trasu řádku. Přidá také indexu 0 k zajištění, že je vykreslen před dalších řádků ve zdroji dat. To se provádí proto, že výpočet trasy pro nákladní vůz bude často pomalejší než výpočet trasy pro auto, a kdyby se čára trasy pro nákladní vůz přidala ke zdroji dat až po čáře trasy pro auto, vykreslila by se nad ní. Dvě vlastnosti se přidají do řádku postupu truck stroke barva, která se odlišuje od modré a šířku tahu devět pixelů.
 
 3. Přidejte následující kód jazyka JavaScript sestavit trasu pro automobilu a zobrazit výsledky.
 
@@ -265,7 +265,7 @@ Tato část ukazuje, jak použít rozhraní API pro mapy route service k vyhled�
     });
     ```
 
-    Tento fragment kódu výše uvedené dotazy směrování služby Azure Maps pomocí [getRouteDirections](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.models.routedirectionsrequestbody?view=azure-iot-typescript-latest) metody. Řádku postupu pak extrahují z kolekce funkcí GeoJSON z odpovědi, které je extrahována pomocí **geojson.getFeatures()** metody. Ke zdroji dat se pak přidá trasu řádku. Dvě vlastnosti se přidají do řádku postupu car stroke barva, která je odstínu nachová a šířku tahu 5 pixelů.  
+    Tento fragment kódu výše uvedené dotazy směrování služby Azure Maps pomocí [getRouteDirections](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.models.routedirectionsrequestbody?view=azure-iot-typescript-latest) metody. Řádku postupu pak extrahují z kolekce funkcí GeoJSON z odpovědi, které je extrahována pomocí `geojson.getFeatures()` metody. Ke zdroji dat se pak přidá trasu řádku. Dvě vlastnosti se přidají do řádku postupu car stroke barva, která je odstínu nachová a šířku tahu 5 pixelů.  
 
 4. Uložte soubor **MapTruckRoute.html**, aktualizujte prohlížeč a prohlédněte si výsledek. V případě úspěšného připojení s použitím rozhraní Maps API by se měla zobrazit mapa podobná následující.
 
@@ -293,3 +293,6 @@ V dalším kurzu ukazuje proces vytvoření lokátoru jednoduché úložiště p
 
 > [!div class="nextstepaction"]
 > [Vytvořit úložiště pomocí Azure Maps](./tutorial-create-store-locator.md)
+
+> [!div class="nextstepaction"]
+> [Použití výrazů s daty styl](data-driven-style-expressions-web-sdk.md)

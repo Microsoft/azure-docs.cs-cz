@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 03/04/2019
 ms.author: srinathv
-ms.openlocfilehash: e5e84c22285d1cdec9678c8bf33dab1568d333cd
-ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
+ms.openlocfilehash: b8d1152856935c239a59eb9133aaf48d26a5a8b6
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58621579"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59259945"
 ---
 # <a name="troubleshoot-azure-virtual-machine-backup"></a>Odstraňování potíží se zálohováním virtuálních počítačů Azure
 Řešení potíží s chybami při pomocí služby Azure Backup pomocí informací uvedených v následující tabulce došlo k chybě:
@@ -27,13 +27,13 @@ ms.locfileid: "58621579"
 | Zálohování nelze operaci provést, protože Agent virtuálního počítače není interaktivní. |K této chybě dochází, pokud dojde k nějakému problému s agentem VM, nebo blokovaný přístup k síti na infrastrukturu Azure nějakým způsobem. Pro virtuální počítače s Windows zkontrolujte stav služby agenta virtuálního počítače do služby a určuje, zda agent zobrazí v programy v Ovládacích panelech. <br><br>Zkuste odebrat program z ovládacích panelů a opětovná instalace agenta, jak je popsáno v [agenta virtuálního počítače](#vm-agent). Po přeinstalování agenta aktivujte ad hoc záloha ověřit. |
 | Operace rozšíření recovery services se nezdařilo: <br>Ujistěte se, že je k dispozici na virtuálním počítači nejnovější Agent virtuálního počítače a je spuštěna Služba agenta virtuálního počítače. Zopakujte operaci zálohování. Pokud selže celá operace zálohování, obraťte se na Microsoft Support. |Tato chyba se stane, když se Agent virtuálního počítače je zastaralá. Přečtěte si k řešení potíží s Azure se zálohováním virtuálních počítačů k aktualizaci agenta virtuálního počítače. |
 | Virtuální počítač neexistuje: <br>Ujistěte se, že virtuální počítač existuje, nebo vyberte jiný virtuální počítač. |Tato chyba nastane, pokud primární virtuální počítač se odstraní, ale zásad zálohování vypadá stále pro virtuální počítač k zálohování. Chcete-li vyřešit tuto chybu, proveďte následující kroky: <ol><li> Znovu vytvořte virtuální počítač se stejným názvem a stejný název skupiny prostředků, **název cloudové služby**,<br>**nebo**<br></li><li>Zastavte ochranu virtuálního počítače bez odstranění zálohovaná data. Další informace najdete v tématu [zastavení ochrany virtuálních počítačů](https://go.microsoft.com/fwlink/?LinkId=808124).</li></ol> |
-| Příkaz spuštění se nepovedlo: <br>U této položky právě probíhá jiná operace. Počkejte na dokončení předchozí operace. Opakujte operaci. |Spuštěná existující úloha zálohování a novou úlohu nelze spustit, dokud se nedokončí aktuální úlohu. |
+| Příkaz se nezdařil: <br>U této položky právě probíhá jiná operace. Počkejte na dokončení předchozí operace. Opakujte operaci. |Spuštěná existující úloha zálohování a novou úlohu nelze spustit, dokud se nedokončí aktuální úlohu. |
 | Kopírování virtuálních pevných disků z trezoru služby Recovery Services, vypršel časový limit: <br>Zkuste operaci zopakovat za několik minut. Pokud to problém nevyřeší, obraťte se na oddělení podpory Microsoftu. | K této chybě dochází, pokud dochází k přechodné chybě na straně úložiště nebo pokud službu Backup v účtu úložiště dostatek vstupně-výstupních operací pro přenos dat do trezoru, v časovém limitu. Ujistěte se, že chcete postupovat podle [osvědčené postupy při konfiguraci vašich virtuálních počítačů](backup-azure-vms-introduction.md#best-practices). Váš virtuální počítač přesunout do jiného účtu úložiště, který není načten a opakujte úlohu zálohování.|
 | Zálohování selhalo s vnitřní chybou: <br>Zkuste operaci zopakovat za několik minut. Pokud to problém nevyřeší, obraťte se na oddělení podpory Microsoftu. |K této chybě získáte dvou důvodů: <ul><li> K používání úložiště virtuálního počítače je přechodný problém. Zkontrolujte [stav služby Azure site](https://azure.microsoft.com/status/) zobrazíte, pokud jsou výpočty, úložiště nebo síťové potíže v oblasti. Po vyřešení problému opakujte úlohu zálohování. <li> Původní virtuální počítač odstranil a bod obnovení nelze provést. Pokud chcete zachovat zálohovaná data pro odstraněného virtuálního počítače, ale odebrat chyby zálohování, zrušit ochranu virtuálního počítače a zvolte možnost zachovat data. Tato akce zastaví naplánované úlohy zálohování a opakované chybové zprávy. |
 | Zálohování se nepovedlo nainstalovat rozšíření služeb zotavení Azure na vybrané položky: <br>Agent virtuálního počítače je předpokladem pro rozšíření služby Azure Recovery Services. Nainstalujte agenta virtuálního počítače Azure a restartujte operace Registrování. |<ol> <li>Zkontrolujte, zda je správně nainstalován Agent virtuálního počítače. <li>Ujistěte se, že je správně nastaven příznak na konfiguraci virtuálního počítače.</ol> Další informace o instalaci agenta virtuálního počítače a ověření instalace agenta virtuálního počítače. |
 | Instalace rozšíření nebyla úspěšná kvůli chybě **modelu COM + se nepovedlo komunikovat s Microsoft Distributed Transaction Coordinator**. |Tato chyba obvykle znamená, že není spuštěná služba COM +. Požádejte o pomoc s opravou tohoto problému Microsoft Support. |
 | Operace snímku nebyla úspěšná kvůli chybě služby Stínová kopie svazku (VSS) operace **tato jednotka je uzamčena nástrojem BitLocker Drive Encryption. Je nutné ji odemknout pomocí ovládacích panelů.** |Vypnout nástroj BitLocker pro všechny disky na virtuálním počítači a zkontrolujte, zda VSS problém vyřešen. |
-| Virtuální počítač není ve stavu, který umožňuje zálohování. |<ul><li>Pokud je virtuální počítač v přechodném stavu mezi **systémem** a **vypnout**, počkejte chcete změnit stav. Potom aktivujte úlohu zálohování. <li> Pokud virtuální počítač je virtuální počítač s Linuxem a používá Linux Security-Enhanced modulu jádra, vyloučit cestu agenta Azure Linux **/var/lib/waagent** ze zásad zabezpečení a ujistěte se, že je nainstalované rozšíření zálohování.  |
+| Virtuální počítač není ve stavu, který umožňuje zálohování. |<ul><li>Pokud je virtuální počítač v přechodném stavu mezi **systémem** a **vypnout**, počkejte chcete změnit stav. Potom aktivujte úlohu zálohování. <li> Pokud virtuální počítač je virtuální počítač s Linuxem a používá Linux Security-Enhanced modulu jádra, vyloučit cestu agenta Azure Linux **/var/lib/waagent** ze zásad zabezpečení a ujistěte se, že je nainstalované rozšíření Azure Backup.  |
 | Virtuální počítač Azure nebyl nalezen. |Tato chyba nastane, pokud primární virtuální počítač se odstraní, ale zásady zálohování stále hledá odstraněného virtuálního počítače. Opravte tuto chybu následujícím způsobem: <ol><li>Znovu vytvořte virtuální počítač se stejným názvem a stejný název skupiny prostředků, **název cloudové služby**, <br>**nebo** <li> Vypněte ochranu pro tento virtuální počítač tak, aby úlohy zálohování se nevytvoří. </ol> |
 | Agent virtuálního počítače není k dispozici na virtuálním počítači: <br>Nainstalujte agenta virtuálního počítače a všechny požadavky. Restartujte operaci. |Další informace o [instalace agenta virtuálního počítače a ověření instalace agenta virtuálního počítače](#vm-agent). |
 | Operace snímku nebyla úspěšná, protože zapisovače VSS jsou v chybném stavu. |Restartujte zapisovače služby VSS, které jsou v chybném stavu. Z příkazového řádku se zvýšenými oprávněními spusťte ```vssadmin list writers```. Výstup obsahuje všechny zapisovače VSS a jejich stav. Pro všechny zapisovače služby VSS se stavem, který není **[1] stabilní**, abyste mohli restartovat zapisovače služby VSS, spusťte následující příkazy z příkazového řádku se zvýšenými oprávněními: <ol><li>```net stop serviceName``` <li> ```net start serviceName```</ol>|
@@ -124,8 +124,30 @@ Zálohování virtuálních počítačů se spoléhá na vydávání příkazů 
 - **Pokud více než čtyři virtuální počítače sdílet stejné cloudové službě, rozdělené mezi více zásad zálohování virtuálních počítačů**. Rozložte zálohování dobu, proto není, že spustit více než čtyři záloh virtuálních počítačů ve stejnou dobu. Došlo k pokusu o oddělení časy zahájení v zásadách o aspoň hodinu.
 - **Virtuální počítač běží na vysoké využití procesoru nebo paměti**. Pokud virtuální počítač běží na vysoký poměr paměti nebo využití procesoru, víc než 90 procent úlohu snímku je zařazena do fronty a zpoždění. Nakonec vyprší časový limit. Pokud tento problém nastane, zkuste zálohu na vyžádání.
 
+## <a name="troubleshoot-backup-of-encrypted-vms"></a>Řešení potíží se zálohováním šifrovaných virtuálních počítačů
+
+### <a name="azure-backup-doesnt-have-permissions-for-key-vault-access"></a>Azure Backup nemá oprávnění pro přístup k trezoru klíčů
+- **Kód chyby:**: UserErrorKeyVaultPermissionsNotConfigured
+- **Chybová zpráva**: Služba Azure Backup nemá dostatečná oprávnění pro Key Vault pro zálohování šifrovaných virtuálních počítačů.
+- **Řešení:** Přiřadit oprávnění Azure Backup pro službu Key Vault ve [portál](backup-azure-vms-encryption.md#provide-permissions), nebo s [prostředí PowerShell](backup-azure-vms-automation.md#enable-protection)
+
+### <a name="the-vm-cant-be-restored-because-the-associated-key-vault-doesnt-exist"></a>Virtuální počítač nelze obnovit, protože neexistuje přidružené služby Key Vault
+- **Řešení:** Zkontrolujte, že máte [vytvořili službu Key Vault](../key-vault/quick-create-portal.md#create-a-vault).
+- **Řešení:** Postupujte podle [tyto pokyny](backup-azure-restore-key-secret.md) obnovení klíče a tajného kódu i v případě, že neexistují ve službě Key Vault.
+
+### <a name="the-vm-cant-be-restored-because-the-associated-key-doesnt-exist"></a>Virtuální počítač nelze obnovit, protože přidružený klíč neexistuje
+- **Kód chyby:**: UserErrorKeyVaultKeyDoesNotExist
+- **Chybová zpráva**: Tento šifrovaný virtuální počítač nemůžete obnovit, protože neexistuje klíč přidružený k tomuto virtuálnímu počítači.
+- **Řešení:** Postupujte podle [tyto pokyny](backup-azure-restore-key-secret.md) obnovení klíče a tajného kódu i v případě, že neexistují ve službě Key Vault.
+
+### <a name="the-vm-cant-be-restored-because-azure-backup-doesnt-have-authorization"></a>Virtuální počítač nelze obnovit, protože Azure Backup nemá autorizaci
+- **Kód chyby:**: ProviderAuthorizationFailed/UserErrorProviderAuthorizationFailed
+- **Chybová zpráva**: Služba zálohování nemá oprávnění pro přístup k prostředkům ve vašem předplatném.
+- **Řešení:** Obnovte disky podle doporučení. [Další informace](backup-azure-vms-encryption.md#restore-an-encrypted-vm). 
+
+
 ## <a name="networking"></a>Sítě
-Stejně jako všechna rozšíření rozšíření zálohování potřebovat přístup k veřejnému Internetu fungovat. Nemáte přístup k veřejnému Internetu může projevit různými způsoby:
+Rozšíření Azure Backup jako všechna rozšíření, potřebuje přístup k veřejným Internetem pracovat. Nemáte přístup k veřejnému Internetu může projevit různými způsoby:
 
 * Instalace rozšíření může selhat.
 * Operace zálohování jako snímku disku může selhat.

@@ -1,20 +1,20 @@
 ---
-title: Kurz vytvoření vlastního modulu Javy – Azure IoT Edge | Dokumentace Microsoftu
+title: Vlastní Java modulu kurz – Azure IoT Edge | Dokumentace Microsoftu
 description: V tomto kurzu se dozvíte, jak vytvořit modul IoT Edge s kódem v jazyce Java a jak ho nasadit na hraniční zařízení.
 services: iot-edge
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 01/04/2019
+ms.date: 04/04/2019
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc, seodec18
-ms.openlocfilehash: 9a541f42670b3ccf83331e3e2e9069289bb9b4b3
-ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
+ms.openlocfilehash: 3e24894e088f443ca705163c353920e8dd3ff4ca
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58224069"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59266677"
 ---
 # <a name="tutorial-develop-a-java-iot-edge-module-and-deploy-to-your-simulated-device"></a>Kurz: Vývoj modulu jazyka Java IoT Edge a nasazení simulovaného zařízení
 
@@ -36,7 +36,7 @@ Modul IoT Edge, který v tomto kurzu vytvoříte, filtruje teplotní údaje gene
 
 Zařízení Azure IoT Edge:
 
-* Zařízení IoT Edge můžete nastavit pomocí následujících kroků v rychlých startů pro [Linux](quickstart-linux.md) nebo [Windows](quickstart.md).
+* Virtuální počítač Azure můžete použít jako zařízení IoT Edge podle pokynů v tomto rychlém startu pro [Linux](quickstart-linux.md) nebo [zařízení Windows](quickstart.md). 
 * IoT Edge na zařízeních s Windows verze 1.0.5 nepodporuje moduly v jazyce Java. Další informace najdete v tématu [poznámky k verzi 1.0.5](https://github.com/Azure/azure-iotedge/releases/tag/1.0.5). Pokyny o tom, jak nainstalovat konkrétní verzi, najdete v článku [aktualizovat démon zabezpečení IoT Edge a modulu runtime](how-to-update-iot-edge.md).
 
 Cloudové prostředky:
@@ -50,8 +50,8 @@ Prostředky pro vývoj:
 * [Nástroje Azure IoT](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-edge) pro Visual Studio Code. 
 * [Java SE Development Kit 10](https://aka.ms/azure-jdks) s [nastavením proměnné prostředí `JAVA_HOME`](https://docs.oracle.com/cd/E19182-01/820-7851/inst_cli_jdk_javahome_t/) tak, aby odkazovala na vaši instalaci JDK
 * [Maven](https://maven.apache.org/)
-* [Docker CE](https://docs.docker.com/install/).
-   * Pokud vyvíjíte na zařízení s Windows, ujistěte se, že je Docker [nakonfigurovaný na používání kontejnerů Linuxu](https://docs.docker.com/docker-for-windows/#switch-between-windows-and-linux-containers). 
+* [Docker CE](https://docs.docker.com/install/)
+   * Pokud vyvíjíte na zařízení s Windows, ujistěte se, že je Docker [nakonfigurovaný k používání kontejnerů Linux nebo Windows](https://docs.docker.com/docker-for-windows/#switch-between-windows-and-linux-containers), v závislosti na operačním systému zařízení IoT Edge. 
 
 
 ## <a name="create-a-container-registry"></a>Vytvoření registru kontejnerů
@@ -146,8 +146,9 @@ V souboru prostředí jsou uložené přihlašovací údaje pro registr kontejne
 7. Nahraďte metodu spuštění **MessageCallbackMqtt** následujícím kódem. Tato metoda se volá pokaždé, když modul dostane zprávu MQTT z IoT Edge Hubu. Odfiltruje zprávy, které hlásí nižší teploty, než je prahová hodnota nastavená ve dvojčeti modulu.
 
     ```java
+    protected static class MessageCallbackMqtt implements MessageCallback {
         private int counter = 0;
-       @Override
+        @Override
         public IotHubMessageResult execute(Message msg, Object context) {
             this.counter += 1;
  
@@ -173,6 +174,7 @@ V souboru prostředí jsou uložené přihlašovací údaje pro registr kontejne
             }
             return IotHubMessageResult.COMPLETE;
         }
+    }
     ```
 
 8. Přidejte následující dvě statické vnitřní třídy do třídy **App**. Tyto třídy aktualizovat proměnnou tempThreshold potřebujete změny vlastnosti dvojčete modulu. Všechny moduly mají vlastní dvojče, abyste mohli kód, který je spuštěný v modulu, konfigurovat přímo z cloudu.
@@ -218,7 +220,7 @@ V souboru prostředí jsou uložené přihlašovací údaje pro registr kontejne
 
 11. Soubor App.java uložte.
 
-12. V průzkumníku VS Code otevřete soubor **deployment.template.json** v pracovním prostoru řešení IoT Edge. Tento soubor říká agentovi, IoT Edge které moduly chcete nasadit, v tomto případě **tempSensor** a **JavaModule**a informuje Centrum IoT Edge, jak můžete směrovat zprávy mezi nimi. Rozšíření Visual Studio Code automaticky naplní většinu informací, že v šablonu nasazení, ale ověřte, že je vše přesné pro vaše řešení: 
+12. V průzkumníku VS Code otevřete soubor **deployment.template.json** v pracovním prostoru řešení IoT Edge. Tento soubor říká agentovi, IoT Edge které moduly chcete nasadit a informuje Centrum IoT Edge, jak můžete směrovat zprávy mezi nimi. V tomto případě jsou dva moduly **tempSensor** a **JavaModule**. Rozšíření Visual Studio Code automaticky naplní většinu informací, že v šablonu nasazení, ale ověřte, že je vše přesné pro vaše řešení: 
 
    1. Výchozí platformu IoT Edge je nastavena **amd64** ve vaší VS Code stavového řádku, což znamená, že vaše **JavaModule** je nastavena na Linuxu amd64 verzi image. Změnit výchozí platforma ve stavovém řádku z **amd64** k **arm32v7** nebo **windows amd64** Pokud tomu tak architektuře zařízení IoT Edge. 
 
@@ -264,7 +266,7 @@ Když editoru Visual Studio Code sdělíte, že má sestavit vaše řešení, ne
 >[!TIP]
 >Pokud obdržíte chybu při vytváření a nasdílení změn modul, proveďte následující kontroly:
 >* Přihlásili jste k Dockeru ve Visual Studio Code pomocí přihlašovacích údajů ze služby container registry? Tyto přihlašovací údaje se liší od těch, které používáte k přihlášení k webu Azure portal.
->* Správnost vašeho kontejneru úložiště? Otevřít **moduly** > **cmodule** > **module.json** a najít **úložiště** pole. Úložiště imagí by měl vypadat jako  **\<registryname\>.azurecr.io/javamodule**. 
+>* Správnost vašeho kontejneru úložiště? Otevřít **moduly** > **JavaModule** > **module.json** a najít **úložiště** pole. Úložiště imagí by měl vypadat jako  **\<registryname\>.azurecr.io/javamodule**. 
 >* Sestavujete stejného typu kontejnerů, které běží v počítači pro vývoj? Visual Studio Code výchozí kontejnery Linuxu amd64. Pokud vývojovém počítači běží kontejnery Windows nebo Linuxem arm32v7 kontejnery, aktualizujte platformy na modrý stavového řádku v dolní části okna VS Code tak, aby odpovídaly vaši kontejnerovou platformu.
 
 ## <a name="deploy-and-run-the-solution"></a>Nasazení a spuštění řešení
@@ -321,5 +323,5 @@ Jinak můžete místní konfigurace a prostředky Azure vytvořené v tomto čl�
 V tomto kurzu jste vytvořili modul IoT Edge s kódem pro filtrování nezpracovaných dat generovaných zařízením IoT Edge. Pokračujte dalšími kurzy, ve kterých se naučíte další způsoby, jak vám může Azure IoT Edge pomoct přeměnit data na obchodní informace o hraničním zařízení.
 
 > [!div class="nextstepaction"]
-> [Uložení dat na hraničních zařízeních s využitím databází SQL Serveru](tutorial-store-data-sql-server.md)
+> [Store dat na hraničních zařízeních s databází SQL serveru](tutorial-store-data-sql-server.md)
 
