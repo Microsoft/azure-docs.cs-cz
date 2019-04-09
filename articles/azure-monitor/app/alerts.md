@@ -13,12 +13,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 01/23/2019
 ms.author: mbullwin
-ms.openlocfilehash: c1165fcebf8382d30b1be86f102da78ef0a4ac9a
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: 3b6860c9a84384bfade099fb7c8c8c72281c3593
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57244362"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59257157"
 ---
 # <a name="set-alerts-in-application-insights"></a>Nastavení upozornění ve službě Application Insights
 [Azure Application Insights] [ start] může vás upozornit na změny v metrikách výkonu nebo využití ve vaší webové aplikaci. 
@@ -143,7 +143,7 @@ V této části provedeme nastavení upozornění výjimka na základě dotazu. 
 
 10. Nakonec přidejte podrobnosti o vašem výstrah (výstrahy název pravidla, popis, závažnosti). Jakmile budete hotovi, klikněte na tlačítko **vytvořit pravidlo upozornění** v dolní části.
 
-    ![V části podrobností výstrahy zadejte název pravidla upozornění, napište popis a vybrat závažnost ](./media/alerts/9alertdetails.png)
+    ![V části podrobností výstrahy zadejte název pravidla upozornění, napište popis a vybrat závažnost](./media/alerts/9alertdetails.png)
 
 ## <a name="who-receives-the-classic-alert-notifications"></a>Kdo přijímá oznámení výstrah (klasické)?
 
@@ -165,7 +165,7 @@ Pomocí nové výstrahy prostředí/v – v reálném čase výstrahy, pokud je 
 ## <a name="see-also"></a>Další informace najdete v tématech
 * [Testy dostupnosti webu](../../azure-monitor/app/monitor-web-app-availability.md)
 * [Automatizace nastavení výstrahy](../../azure-monitor/app/powershell-alerts.md)
-* [Proaktivní Diagnostika](../../azure-monitor/app/proactive-diagnostics.md) 
+* [Proaktivní diagnostika](../../azure-monitor/app/proactive-diagnostics.md) 
 
 <!--Link references-->
 

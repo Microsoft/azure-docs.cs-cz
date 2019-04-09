@@ -1,7 +1,6 @@
 ---
 title: Ukázky rozšířený dotaz
 description: Použití Azure Graph prostředků ke spuštění některé pokročilé dotazy, včetně VMSS kapacitu, výpis všechny značky, které používají a odpovídající virtuální počítače pomocí regulárních výrazů.
-services: resource-graph
 author: DCtheGeek
 ms.author: dacoulte
 ms.date: 01/23/2019
@@ -9,12 +8,12 @@ ms.topic: quickstart
 ms.service: resource-graph
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: 9cb43cfdf930b14449f5c7130df275ef0b8d6484
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 9a243dd236a8c499602a9070a7dd61e69541d58d
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57842613"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59256817"
 ---
 # <a name="advanced-resource-graph-queries"></a>Pokročilé dotazy na Resource Graph
 
@@ -23,9 +22,9 @@ Prvním krokem k porozumění dotazům s Azure Resource Graph jsou základní zn
 Projdeme následující rozšířené dotazy:
 
 > [!div class="checklist"]
-> - [Získání kapacity a velikosti VMSS](#vmss-capacity)
+> - [Získání kapacity VMSS a velikost](#vmss-capacity)
 > - [Vypsat všechny názvy značek](#list-all-tags)
-> - [Virtuální počítače odpovídající regulárnímu výrazu](#vm-regex)
+> - [Virtuální počítače odpovídající regulární výraz](#vm-regex)
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free) před tím, než začnete.
 
@@ -76,14 +75,14 @@ Search-AzGraph -Query "project tags | summarize buildschema(tags)"
 Tento dotaz vyhledá virtuální počítače, které odpovídají [regulárnímu výrazu](/dotnet/standard/base-types/regular-expression-language-quick-reference) (označovanému jako _regulární výraz_).
 **Odpovídá regulárnímu \@**  umožňuje definovat regulární výraz tak, aby odpovídaly, což je `^Contoso(.*)[0-9]+$`. Tato definice regulárního výrazu je vysvětlena jako:
 
-- `^` – Porovnání musí začít na začátku řetězce.
-- `Contoso` – Řetězec s rozlišováním velkých a malých písmen.
-- `(.*)` – Shoda dílčího výrazu:
-  - `.` – Odpovídá jakémukoli jednomu znaku (s výjimkou nového řádku).
-  - `*` – Shoduje se s předchozím prvkem nulakrát nebo vícekrát.
-- `[0-9]` – Shoda skupiny znaků pro čísla 0 až 9.
-- `+` – Shoduje se s předchozím prvkem jednou nebo vícekrát.
-- `$` – Shoda s předchozím prvkem se musí vyskytovat na konci řetězce.
+- `^` -Porovnání musí začít na začátku řetězce.
+- `Contoso` Řetězec,-malá a velká písmena.
+- `(.*)` Match – dílčí výraz:
+  - `.` -Odpovídá jakémukoli jednomu znaku (s výjimkou nového řádku).
+  - `*` -Porovná předchozí prvek nulakrát nebo vícekrát.
+- `[0-9]` – Shoda skupiny znak pro čísla 0 až 9.
+- `+` -Porovná předchozí prvek jednou nebo vícekrát.
+- `$` -Match předchozího prvku se musí vyskytovat na konci řetězce.
 
 Po porovnání podle názvu, dotaz promítne název a pořadí vzestupně podle názvu.
 

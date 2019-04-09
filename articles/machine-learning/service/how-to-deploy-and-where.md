@@ -11,12 +11,12 @@ author: aashishb
 ms.reviewer: larryfr
 ms.date: 04/02/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: 1528b5e92e1952bf85799afd71bd5dac16aedcf4
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.openlocfilehash: a6ef53d56fa293791658b37b16cbaff94aee6ef3
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58878294"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59280889"
 ---
 # <a name="deploy-models-with-the-azure-machine-learning-service"></a>Nasazujte modely pomocí služby Azure Machine Learning
 
@@ -87,6 +87,8 @@ Nasazených modelů jsou dodávány jako obrázek. Bitová kopie obsahuje závis
 
 Pro **Azure Container Instance**, **Azure Kubernetes Service**, a **Azure IoT Edge** nasazení, [azureml.core.image.ContainerImage](https://docs.microsoft.com/python/api/azureml-core/azureml.core.image.containerimage?view=azure-ml-py) třída se používá k vytvořit konfiguraci bitové kopie. Obrázek konfigurace, pak se k vytvoření nové image Dockeru.
 
+Při vytváření konfigurace image, můžete použít buď __výchozí image__ poskytovaných službou Azure Machine Learning nebo __vlastní image__ , který zadáte.
+
 Následující kód ukazuje, jak vytvořit novou konfiguraci bitové kopie:
 
 ```python
@@ -112,6 +114,36 @@ Důležité parametry v tomto příkladu jsou popsané v následující tabulce:
 Příklad vytvoření konfiguraci služby image, najdete v části [nasazení image třídění](tutorial-deploy-models-with-aml.md).
 
 Další informace najdete v tématu v referenční dokumentaci [ContainerImage třídy](https://docs.microsoft.com/python/api/azureml-core/azureml.core.image.containerimage?view=azure-ml-py)
+
+### <a id="customimage"></a> Použití vlastní image
+
+Při použití vlastní image, image musí splňovat následující požadavky:
+
+* Ubuntu 16.04 nebo vyšší.
+* Conda 4.5. # nebo vyšší.
+* Python 3.5. # nebo 3.6. #.
+
+Chcete-li použít vlastní image, nastavte `base_image` vlastnost konfigurace image na adresu bitové kopie. Následující příklad ukazuje, jak použít některou image z obou veřejných a privátních Azure Container Registry:
+
+```python
+# use an image available in public Container Registry without authentication
+image_config.base_image = "mcr.microsoft.com/azureml/o16n-sample-user-base/ubuntu-miniconda"
+
+# or, use an image available in a private Container Registry
+image_config.base_image = "myregistry.azurecr.io/mycustomimage:1.0"
+image_config.base_image_registry.address = "myregistry.azurecr.io"
+image_config.base_image_registry.username = "username"
+image_config.base_image_registry.password = "password"
+```
+
+Další informace o nahrávání imagí do služby Azure Container Registry, najdete v části [nahrání první image do soukromého registru kontejnerů Dockeru](https://docs.microsoft.com/azure/container-registry/container-registry-get-started-docker-cli).
+
+Pokud váš model se trénuje na Azure Machine Learning Compute, pomocí __verze 1.0.22 nebo větší__ sady Azure Machine Learning SDK, image se vytvoří během cvičení. Následující příklad ukazuje, jak použít tuto bitovou kopii:
+
+```python
+# Use an image built during training with SDK 1.0.22 or greater
+image_config.base_image = run.properties["AzureML.DerivedImageName"]
+```
 
 ### <a id="script"></a> Provádění skriptu
 
@@ -396,7 +428,7 @@ Postup nasazení model pomocí aplikace Project Brainwave, najdete v části [na
 
 ## <a name="define-schema"></a>Definovat schéma
 
-Vlastní dekoratéry lze použít pro [OpenAPI](https://swagger.io/docs/specification/about/) specifikace generování a vstupu zadejte manipulaci s při nasazení webové služby. V `score.py` soubor, zadejte vzorek vstup nebo výstup v konstruktoru pro jeden z objektů definovaný typ. a ukázka a typ se používají pro automatické generování schématu. Aktuálně jsou podporovány následující typy:
+Vlastní dekoratéry lze použít pro [OpenAPI](https://swagger.io/docs/specification/about/) specifikace generování a vstupu zadejte manipulaci s při nasazení webové služby. V `score.py` soubor, zadejte vzorek vstup nebo výstup v konstruktoru pro jeden z objektů definovaný typ. a ukázka a typ se používají pro automatické vytvoření schématu. Aktuálně jsou podporovány následující typy:
 
 * `pandas`
 * `numpy`

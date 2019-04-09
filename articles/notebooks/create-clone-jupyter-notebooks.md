@@ -6,19 +6,19 @@ documentationcenter: ''
 author: kraigb
 manager: douge
 ms.assetid: 9b6a49e2-1d71-4c0b-9e5d-16e059427e38
-ms.service: azure
+ms.service: azure-notebooks
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 02/25/2019
 ms.author: kraigb
-ms.openlocfilehash: b99197f44961bdfa23050e9481e290e6c3d24845
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 0ee0c7162e26b875c74796b6d5379b414981e2d5
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57759081"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59282317"
 ---
 # <a name="create-and-clone-projects"></a>Vytváření a klonování projektů
 
@@ -30,20 +30,20 @@ Projekt také udržuje metadat a dalších nastavení konfigurace, které mají 
 
 Vaše **projekty** řídicí panel na `https://notebooks.azure.com/<userID>/projects` zobrazovat, spravovat, a vytvářet projekty:
 
-[![Můj řídicí panel projektů v poznámkových bloků Azure](media/my-projects-dashboard.png)](media/my-projects-dashboard.png#lightbox)
+[![Mřídicí panel y projekty v poznámkových bloků Azure](media/my-projects-dashboard.png)](media/my-projects-dashboard.png#lightbox)
 
 Co můžete dělat na řídicím panelu, závisí na tom, jestli jste přihlášení pomocí účtu, který vlastní ID uživatele:
 
 | Příkaz | Dostupnost | Popis |
 | --- | --- | --- |
-| **Spuštění** | Vlastník | Spustí server project server a otevře složku projektu v Jupyter. (Častěji, můžete nejprve přejděte do složky projektu a pak spustit Poznámkový blok z něj.) |
-| **Stáhnout** | Všem uživatelům | Stáhne kopii vybraného projektu jako soubor ZIP. |
-| **Sdílet** | Všem uživatelům | Zobrazí sdílení překryvné okno, pomocí kterého můžete získat adresu URL do vybraného projektu, sdílení na sociálních médií, odeslat e-mail s adresou URL a získat kód HTML a Markdown pro s odznáčkem "spuštění poznámkového bloku" (Zobrazit [získat Odznáček spuštění](#obtain-a-launch-badge)) s adresou URL. |
+| **Spusťte** | Vlastník | Spustí server project server a otevře složku projektu v Jupyter. (Častěji, můžete nejprve přejděte do složky projektu a pak spustit Poznámkový blok z něj.) |
+| **Ke stažení** | Všem uživatelům | Stáhne kopii vybraného projektu jako soubor ZIP. |
+| **Sdílení** | Všem uživatelům | Zobrazí sdílení překryvné okno, pomocí kterého můžete získat adresu URL do vybraného projektu, sdílení na sociálních médií, odeslat e-mail s adresou URL a získat kód HTML a Markdown pro s odznáčkem "spuštění poznámkového bloku" (Zobrazit [získat Odznáček spuštění](#obtain-a-launch-badge)) s adresou URL. |
 | **Odstranění** | Vlastník | Odstraní vybraný projekt. Tato operace se nedá vrátit zpět. |
-| **Terminálu** | Vlastník | Spustí server project server a pak otevře nové okno prohlížeče pomocí prostředí bash, terminálu pro tento server. |
+| **Terminál** | Vlastník | Spustí server project server a pak otevře nové okno prohlížeče pomocí prostředí bash, terminálu pro tento server. |
 | **+ Nový projekt** | Vlastník | Vytvoří nový projekt. Zobrazit [vytvořte nový projekt](#create-a-new-project). |
-| **Nahrát úložiště GitHub** | Vlastník | Importuje projektu z Githubu. [Import projektu z Githubu](#import-a-project-from-github). |
-| **Klonování** | Všem uživatelům | Zkopíruje vybraný projekt do vlastního účtu. Zobrazí výzvu k přihlášení Nepřihlášený. Zobrazit [Naklonujte projekt](#clone-a-project). |
+| **Upload GitHub Repo** | Vlastník | Importuje projektu z Githubu. [Import projektu z Githubu](#import-a-project-from-github). |
+| **Klon** | Všem uživatelům | Zkopíruje vybraný projekt do vlastního účtu. Zobrazí výzvu k přihlášení Nepřihlášený. Zobrazit [Naklonujte projekt](#clone-a-project). |
 
 ### <a name="obtain-a-launch-badge"></a>Získání spuštění oznámení "BADGE"
 
@@ -123,7 +123,7 @@ Naklonujte projekt:
 - [Prozkoumejte ukázkové poznámkové bloky](azure-notebooks-samples.md)
 - [Postup: Konfigurace a správa projektů](configure-manage-azure-notebooks-projects.md)
 - [Postup: Instalace balíčků z v rámci poznámkového bloku](install-packages-jupyter-notebook.md)
-- [Postup: K dispozici prezentace](present-jupyter-notebooks-slideshow.md)
+- [Postup: Předložení prezentace](present-jupyter-notebooks-slideshow.md)
 - [Postup: Práce s datovými soubory](work-with-project-data-files.md)
-- [Postup: Přístup k prostředkům data](access-data-resources-jupyter-notebooks.md)
-- [Postup: Použití Azure Machine Learning Services](use-machine-learning-services-jupyter-notebooks.md)
+- [Postup: Přístup k datovým prostředkům](access-data-resources-jupyter-notebooks.md)
+- [Postup: Použití služeb Azure Machine Learning Services](use-machine-learning-services-jupyter-notebooks.md)

@@ -6,21 +6,22 @@ documentationcenter: ''
 author: zchia
 writer: zchia
 manager: beatrizd-msft
-ms.assetid: na
+ms.assetid: 62d0392f-37d4-436e-9aff-22f4e5b83623
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/28/2018
+ms.date: 03/28/2019
 ms.author: v-wingf-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b51f8d9329bc86320501183d7dba7735fb369fa5
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: ca43b62e66e3a736aa52fdd10fe36e635daba245
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58092374"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59280345"
 ---
 # <a name="tutorial-configure-samanage-for-automatic-user-provisioning"></a>Kurz: Konfigurace Samanage pro automatické zřizování uživatelů
 
@@ -33,39 +34,34 @@ Cílem tohoto kurzu je předvést postup provést v Samanage a Azure Active Dire
 
 Scénář popsaný v tomto kurzu se předpokládá, že již máte následující:
 
-*   Klient služby Azure AD
-*   A [Samanage tenanta](https://www.samanage.com/pricing/) s profesionální balíčku
-*   Uživatelský účet v Samanage s oprávněními správce
+* Klient služby Azure AD
+* A [Samanage tenanta](https://www.samanage.com/pricing/) s profesionální balíčku
+* Uživatelský účet v Samanage s oprávněními správce
 
 > [!NOTE]
 > Zřizování integrace Azure AD spoléhá na [Samanage Rest API](https://www.samanage.com/api/), která je k dispozici pro vývojáře Samanage pro účty s profesionální balíčku.
 
 ## <a name="adding-samanage-from-the-gallery"></a>Přidání Samanage z Galerie
+
 Před konfigurací Samanage pro automatické zřizování uživatelů pomocí Azure AD, budete muset přidat Samanage z Galerie aplikací Azure AD na váš seznam spravovaných aplikací SaaS.
 
 **Chcete-li přidat Samanage z Galerie aplikací Azure AD, postupujte následovně:**
 
 1. V **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
 
-    ![Tlačítko Azure Active Directory][1]
+    ![Tlačítko Azure Active Directory](common/select-azuread.png)
 
-2. Přejděte do **podnikové aplikace** > **všechny aplikace**.
+2. Přejděte do **podnikové aplikace** a pak vyberte **všechny aplikace** možnost.
 
-    ![Podnikové aplikace oddílu][2]
+    ![V okně podnikové aplikace](common/enterprise-applications.png)
 
-3. Chcete-li přidat Samanage, klikněte na tlačítko **novou aplikaci** tlačítko v horní části dialogového okna.
+3. Chcete-li přidat novou aplikaci, klikněte na tlačítko **novou aplikaci** tlačítko v horní části dialogového okna.
 
-    ![Tlačítko nové aplikace][3]
+    ![Tlačítko nové aplikace](common/add-new-app.png)
 
-4. Do vyhledávacího pole zadejte **Samanage**.
+4. Do vyhledávacího pole zadejte **Samanage**vyberte **Samanage** z panelu výsledků klikněte **přidat** tlačítko pro přidání aplikace.
 
-    ![Samanage zřizování](./media/samanage-provisioning-tutorial/AppSearch.png)
-
-5. Na panelu výsledků vyberte **Samanage**a potom klikněte na tlačítko **přidat** tlačítko pro přidání Samanage do seznamu aplikací SaaS.
-
-    ![Samanage zřizování](./media/samanage-provisioning-tutorial/AppSearchResults.png)
-
-    ![Samanage zřizování](./media/samanage-provisioning-tutorial/AppCreation.png)
+    ![Samanage v seznamu výsledků](common/search-new-app.png)
 
 ## <a name="assigning-users-to-samanage"></a>Přiřazování uživatelů k Samanage
 
@@ -92,11 +88,13 @@ Tato část vás provede kroky pro konfiguraci Azure AD služby zřizování a v
 
 ### <a name="to-configure-automatic-user-provisioning-for-samanage-in-azure-ad"></a>Konfigurace automatické zřizování uživatelů pro Samanage ve službě Azure AD:
 
-1. Přihlaste se k [webu Azure portal](https://portal.azure.com) a přejděte do **Azure Active Directory > podnikové aplikace > všechny aplikace**.
+1. Přihlaste se k [webu Azure portal](https://portal.azure.com) a vyberte **podnikové aplikace**vyberte **všechny aplikace**a pak vyberte **Samanage**.
 
-2. Vyberte Samanage ze seznamu aplikací SaaS.
+    ![Okno aplikace organizace](common/enterprise-applications.png)
 
-    ![Samanage zřizování](./media/samanage-provisioning-tutorial/AppInstanceSearch.png)
+2. V seznamu aplikací vyberte **Samanage**.
+
+    ![Odkaz Samanage v seznamu aplikací](common/all-applications.png)
 
 3. Vyberte **zřizování** kartu.
 
@@ -164,7 +162,7 @@ Další informace o tom, jak číst zřizování protokoly Azure AD najdete v t�
 ## <a name="additional-resources"></a>Další materiály
 
 * [Správa zřizování uživatelských účtů pro podnikové aplikace](../manage-apps/configure-automatic-user-provisioning-portal.md)
-* [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)
+* [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
 
 ## <a name="next-steps"></a>Další postup

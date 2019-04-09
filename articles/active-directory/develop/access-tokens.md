@@ -17,12 +17,12 @@ ms.author: celested
 ms.reviewer: hirsin
 ms.custom: fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 17c9ef471ca1536f928ca5ae2fe4f55e8e2b3424
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.openlocfilehash: 4b94004aa4b4834be80c13a044fcf7eb0023b6f7
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58878413"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59259860"
 ---
 # <a name="azure-active-directory-access-tokens"></a>Azure Active Directory přístupové tokeny
 
@@ -148,7 +148,7 @@ Microsoft identity můžete ověřit v celou řadu způsobů, který může být
 
 ## <a name="validating-tokens"></a>Ověřování tokenů
 
-Ověření tokentu id_token nebo access_token, by měla vaše aplikace ověřit podpis tokenu a deklarace identity. Chcete-li ověřit přístupové tokeny, by měla vaše aplikace také ověření vystavitele, cílovou skupinu a podepisování tokenů. Tyto názvy musí být ověřena hodnoty v dokumentu zjišťování OpenID. Například se nachází v tenantovi nezávislé verzi dokumentu [ https://login.microsoftonline.com/common/.well-known/openid-configuration ](https://login.microsoftonline.com/common/.well-known/openid-configuration). 
+Ověření tokentu id_token nebo access_token, by měla vaše aplikace ověřit podpis tokenu a deklarace identity. Chcete-li ověřit přístupové tokeny, by měla vaše aplikace také ověření vystavitele, cílovou skupinu a podepisování tokenů. Tyto názvy musí být ověřena hodnoty v dokumentu zjišťování OpenID. Například se nachází na tenanta nezávislé na verzi dokumentu [ https://login.microsoftonline.com/common/.well-known/openid-configuration ](https://login.microsoftonline.com/common/.well-known/openid-configuration). 
 
 Azure AD middleware obsahuje integrované funkce pro ověřování tokenů přístupu, a můžete procházet pomocí našich [ukázky](https://docs.microsoft.com/azure/active-directory/active-directory-code-samples) najít v jazyce podle vašeho výběru. Další informace o tom, jak explicitně ověřit JWT token, najdete v článku [ruční Ukázka ověřování tokenů JWT](https://github.com/Azure-Samples/active-directory-dotnet-webapi-manual-jwt-validation). 
 
@@ -173,14 +173,14 @@ Tokeny vystavené službou Azure AD jsou podepsány pomocí algoritmů standardn
 
 V libovolném časovém okamžiku v čase může vyžadovat přihlášení Azure AD tokentu id_token pomocí některé z sadu párů veřejného a privátního klíče. Azure AD otočí možné sadu klíčů v pravidelných intervalech, takže vaše aplikace by měla napsané tak, aby tyto klíče změny automaticky. Přiměřené intervalech a kontrolují dostupnost aktualizací pro veřejné klíče používané službou Azure AD je každých 24 hodin.
 
-Můžete získat podpisové klíče data potřebná k ověření podpisu pomocí dokument metadat OpenID Connect, který se nachází v:
+Můžete získat podpisové klíče data potřebná k ověření podpisu pomocí [OpenID Connect dokument metadat](v2-protocols-oidc.md#fetch-the-openid-connect-metadata-document) umístění:
 
 ```
-https://login.microsoftonline.com/common/.well-known/openid-configuration
+https://login.microsoftonline.com/common/v2.0/.well-known/openid-configuration
 ```
 
 > [!TIP]
-> Vyzkoušejte to [URL](https://login.microsoftonline.com/common/.well-known/openid-configuration) v prohlížeči.
+> Vyzkoušejte to [URL](https://login.microsoftonline.com/common/v2.0/.well-known/openid-configuration) v prohlížeči.
 
 Tento dokument metadat:
 
@@ -190,7 +190,9 @@ Tento dokument metadat:
 > [!NOTE]
 > Koncový bod verze 1.0 vrací i `x5t` a `kid` deklarací identity, zatímco koncový bod v2.0 odpoví pouze `kid` deklarací identity. Od této chvíle, vám doporučujeme používat `kid` deklarace identity k ověření tokenu.
 
-Provádí se ověření podpisu je mimo rámec tohoto dokumentu – k dispozici řada open source knihoven pomáhá vám tak v případě potřeby.
+Provádí se ověření podpisu je mimo rámec tohoto dokumentu – k dispozici řada open source knihoven pomáhá vám tak v případě potřeby.  Microsoft Identity platform má však jeden token podepisování rozšíření standardy – vlastní podpisových klíčů.  
+
+Pokud vaše aplikace má vlastní podpisové klíče v důsledku použití [mapování deklarací](active-directory-claims-mapping.md) funkci, musíte připojit `appid` obsahující ID aplikace, pokud chcete získat parametr dotazu `jwks_uri` odkazující na vaši aplikaci prvku podpisový klíč informace, která se má použít pro ověření. Příklad: `https://login.microsoftonline.com/{tenant}/.well-known/openid-configuration?appid=6731de76-14a6-49ae-97bc-6eba6914391e` obsahuje `jwks_uri` z `https://login.microsoftonline.com/{tenant}/discovery/keys?appid=6731de76-14a6-49ae-97bc-6eba6914391e`.
 
 ### <a name="claims-based-authorization"></a>Autorizace deklarovaných identit
 

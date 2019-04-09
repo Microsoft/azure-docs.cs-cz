@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 01/30/2019
 ms.author: adigan
-ms.openlocfilehash: dbfe33d062c4609ba29adbaa2d9956687115cb5a
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: e3004a44958d75d18d608a2fbed7ccc44a00dc93
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57440994"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59278816"
 ---
 # <a name="configure-azure-backup-reports"></a>Konfigurace sestav Azure Backup
 Tento článek popisuje postup konfigurace sestav Azure Backup pomocí trezoru služby Recovery Services. Také ukazuje, jak získat přístup k sestavám pomocí Power BI. Po dokončení těchto kroků můžete přejít přímo do Power BI k zobrazení, přizpůsobení a vytváření sestav.
@@ -43,9 +43,6 @@ Postupujte podle těchto kroků a nakonfigurujte účet úložiště pro trezor 
 
    * V seznamu prostředků zadejte **služby Recovery Services**.
    * Seznam se průběžně filtruje podle zadávaného textu. Když se zobrazí **trezory služby Recovery Services**, vyberte ji.
-
-      ![Vytvoření trezoru Recovery Services – krok 1](./media/backup-azure-vms-encryption/browse-to-rs-vaults.png) <br/>
-
    * Objeví se seznam trezorů Služeb zotavení. Ze seznamu trezorů Služeb zotavení vyberte trezor.
 
      Otevře se řídicí panel vybraného trezoru.

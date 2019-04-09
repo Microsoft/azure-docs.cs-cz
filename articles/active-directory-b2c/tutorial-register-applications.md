@@ -10,12 +10,12 @@ ms.topic: article
 ms.date: 02/05/2019
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: f79ecd96b15ff4ff96a3bb93061f0c9d7598191f
-ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.openlocfilehash: 849bcfe2b5ee177d06b8e4cf62fd29459d2e59ce
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58338152"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59278390"
 ---
 # <a name="tutorial-register-an-application-in-azure-active-directory-b2c"></a>Kurz: Registrace aplikace v Azure Active Directory B2C
 
@@ -48,7 +48,7 @@ Pokud jste ještě nevytvořili vlastní [Tenanta Azure AD B2C](tutorial-create-
 
 ## <a name="create-a-client-secret"></a>Vytvoření tajného klíče klienta
 
-Pokud jste aplikaci vymění kód pro token, je potřeba vytvořit tajný klíč aplikace.
+Pokud vaše aplikace vymění kód pro token, musíte vytvořit tajný klíč aplikace.
 
 1. Vyberte **klíče** a potom klikněte na tlačítko **vygenerovat klíč**.
 2. Vyberte **Uložit** zobrazíte klíče. Poznamenejte si hodnotu **Klíč aplikace**. Tuto hodnotu použijete jako tajný klíč aplikace v kódu vaší aplikace.

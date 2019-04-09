@@ -5,14 +5,14 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: how-to
-ms.date: 03/21/2019
+ms.date: 04/05/2019
 ms.author: helohr
-ms.openlocfilehash: 262ec35a8a177652dff12bccb3b5435cb5856d81
-ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
+ms.openlocfilehash: ba98328002cafbcede855b1187881d39f1de8fc5
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58401423"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59279223"
 ---
 # <a name="create-a-host-pool-with-an-azure-resource-manager-template"></a>Vytvoření fondu hostitelů pomocí šablony Azure Resource Manageru
 
@@ -75,3 +75,6 @@ Add-RdsAppGroupUser <tenantname> <hostpoolname> "Desktop Application Group" -Use
 Hlavním názvem uživatele by měl odpovídat identitu uživatele ve službě Azure Active Directory (například user1@contoso.com). Pokud chcete přidat více uživatelů, musíte tuto rutinu spustíte pro každého uživatele.
 
 Po dokončení těchto kroků můžete uživatelé přidaní do skupiny aplikací klasické pracovní plochy přihlášení k virtuálnímu klientovi Windows pomocí podporované klienty vzdálené plochy a zobrazit zdroj pro relaci plochy.
+
+>[!IMPORTANT]
+>Pomáhají zabezpečit vaše prostředí virtuálního klienta Windows v Azure, doporučujeme, abyste že na virtuálních počítačích není otevřít příchozí port 3389. Virtuální Desktop Windows nevyžaduje otevřít příchozí port 3389 pro uživatele pro přístup k fondu hostitele virtuálních počítačů. Pokud musíte otevřít port 3389 pro účely odstraňování potíží, doporučujeme vám použít [přístup k virtuálním počítačům just-in-time](https://docs.microsoft.com/en-us/azure/security-center/security-center-just-in-time).

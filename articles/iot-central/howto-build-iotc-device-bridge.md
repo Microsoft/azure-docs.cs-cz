@@ -5,15 +5,15 @@ services: iot-central
 ms.service: iot-central
 author: viv-liu
 ms.author: viviali
-ms.date: 12/4/2018
+ms.date: 03/26/2019
 ms.topic: conceptual
 manager: peterpr
-ms.openlocfilehash: 6133a7441459072d0c7da1841161da563a28aa31
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: 246c9ad8ab3083c1b847c1c25230a7193a8192e3
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56730320"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59263566"
 ---
 # <a name="build-the-iot-central-device-bridge-to-connect-other-iot-clouds-to-iot-central"></a>Vytvoření IoT Central most zařízení pro připojení jiných cloudech IoT k IoT Central
 
@@ -45,4 +45,4 @@ Prostředky Azure se hostovat ve vašem předplatném Azure. Další informace o
 Teď, když jste zjistili, jak vytvářet most zařízení IoT Central, tady je navrhované další krok:
 
 > [!div class="nextstepaction"]
-> [Správa zařízení](howto-manage-devices.md)
+> [správu zařízení](howto-manage-devices.md)

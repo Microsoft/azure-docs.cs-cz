@@ -7,14 +7,14 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 02/15/2019
+ms.date: 04/08/2019
 ms.author: jingwang
-ms.openlocfilehash: e21223bf3c50a98e039d0f19c51116c4a3cfbcc0
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 9e30337eb8acaa6dc3386f5e60285faa80dd6307
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57875116"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59257905"
 ---
 # <a name="supported-file-formats-and-compression-codecs-in-azure-data-factory"></a>Podporované formáty souborů a komprese kodeky ve službě Azure Data Factory
 
@@ -95,6 +95,9 @@ Pokud chcete analyzovat soubory JSON nebo zapisovat data ve formátu JSON, nasta
 | jsonPathDefinition | Zadejte výraz cesty JSON pro každé mapování sloupců s vlastním názvem sloupce (s počátečním malým písmenem). Tato vlastnost je podporována pouze v případě, že kopírování dat **z** soubory JSON a můžete extrahovat data z objektu nebo pole. <br/><br/> U polí v kořenovém objektu začtěte s kořenem $, u polí uvnitř pole vybraného pomocí vlastnosti `jsonNodeReference` začněte elementem pole. Postup konfigurace najdete v části [Příklad typu JsonFormat](#jsonformat-example). | Ne |
 | encodingName |Zadejte název kódování. Seznam platných názvů kódování najdete v tématu: [Encoding.EncodingName](https://msdn.microsoft.com/library/system.text.encoding.aspx) vlastnost. Příklad: windows-1250 nebo shift_jis. **Výchozí** hodnota je: **UTF-8**. |Ne |
 | nestingSeparator |Znak, který se používá k oddělení úrovní vnoření. Výchozí hodnota je tečka (.). |Ne |
+
+>[!NOTE]
+>Pro případ křížové použití dat v poli do několika řádků (případ 1 -> ukázka 2 v [JsonFormat příklady](#jsonformat-example)), je možné pouze jedno pole pomocí vlastnosti rozbalte `jsonNodeReference`. 
 
 ### <a name="json-file-patterns"></a>Vzory souborů JSON
 
@@ -191,7 +194,7 @@ Aktivita kopírování může analyzovat tyto vzory souborů JSON:
 
 **Případ 1: Kopírování dat ze souborů JSON**
 
-**Ukázka 1: Extrakce dat z objektu a pole**
+**Příklad 1: extrahování dat z objektu a pole**
 
 V této ukázce očekáváte, že jeden kořenový objekt JSON se mapuje na jeden záznam v tabulkovém výsledku. Pokud máte soubor JSON s následujícím obsahem:  
 
@@ -227,8 +230,8 @@ a chcete ho zkopírovat do tabulky Azure SQL v následujícím formátu a přito
 
 Vstupní datová sada typu **JsonFormat** je definovaná následujícím způsobem (částečná definice obsahující jenom relevantní části). A konkrétně:
 
-- Oddíl `structure` definuje vlastní názvy sloupců a odpovídající datový typ při převodu do tabulkového formátu. Pokud mapování sloupců není potřeba, je tento oddíl **nepovinný**. Další informace najdete v tématu [mapování sloupců zdrojové datové sady na cílové datové sadě sloupce](copy-activity-schema-and-type-mapping.md).
-- `jsonPathDefinition` určuje cestu JSON pro jednotlivé sloupce a udává, odkud se mají extrahovat data. Chcete-li kopírovat data z pole, můžete použít `array[x].property` a extrahovat hodnotu dané vlastnosti z `xth` objektu, nebo můžete použít `array[*].property` k nalezení hodnoty z libovolného objektu, který obsahuje tuto vlastnost.
+- `structure` oddíl definuje vlastní názvy sloupců a odpovídající datový typ při převodu do tabulkového formátu. Pokud mapování sloupců není potřeba, je tento oddíl **nepovinný**. Další informace najdete v tématu [mapování sloupců zdrojové datové sady na cílové datové sadě sloupce](copy-activity-schema-and-type-mapping.md).
+- `jsonPathDefinition` Určuje cestu JSON pro jednotlivé sloupce a udává, odkud se mají extrahovat data z. Chcete-li kopírovat data z pole, můžete použít `array[x].property` a extrahovat hodnotu dané vlastnosti z `xth` objektu, nebo můžete použít `array[*].property` k nalezení hodnoty z libovolného objektu, který obsahuje tuto vlastnost.
 
 ```json
 "properties": {
@@ -265,7 +268,7 @@ Vstupní datová sada typu **JsonFormat** je definovaná následujícím způsob
 }
 ```
 
-**Ukázka 2: Křížové použití více objektů se stejným vzorkem z pole**
+**Příklad 2: křížové použití více objektů se stejným vzorkem z pole**
 
 V této ukázce očekáváte, že transformujete jeden kořenový objekt JSON do několika záznamů v tabulkovém výsledku. Pokud máte soubor JSON s následujícím obsahem:
 
@@ -302,9 +305,9 @@ a chcete ho zkopírovat do tabulky Azure SQL v následujícím formátu a přito
 
 Vstupní datová sada typu **JsonFormat** je definovaná následujícím způsobem (částečná definice obsahující jenom relevantní části). A konkrétně:
 
-- Oddíl `structure` definuje vlastní názvy sloupců a odpovídající datový typ při převodu do tabulkového formátu. Pokud mapování sloupců není potřeba, je tento oddíl **nepovinný**. Další informace najdete v tématu [mapování sloupců zdrojové datové sady na cílové datové sadě sloupce](copy-activity-schema-and-type-mapping.md).
+- `structure` oddíl definuje vlastní názvy sloupců a odpovídající datový typ při převodu do tabulkového formátu. Pokud mapování sloupců není potřeba, je tento oddíl **nepovinný**. Další informace najdete v tématu [mapování sloupců zdrojové datové sady na cílové datové sadě sloupce](copy-activity-schema-and-type-mapping.md).
 - `jsonNodeReference` Označuje, iterovat a extrahovat data z objektů se stejným vzorem v rámci **pole** `orderlines`.
-- `jsonPathDefinition` určuje cestu JSON pro jednotlivé sloupce a udává, odkud se mají extrahovat data. V tomto příkladu `ordernumber`, `orderdate`, a `city` v kořenovém objektu s JSON cesta začínající `$.`, zatímco `order_pd` a `order_price` jsou definované pomocí cesty odvozené z elementu pole bez řetězce `$.` .
+- `jsonPathDefinition` Určuje cestu JSON pro jednotlivé sloupce a udává, odkud se mají extrahovat data z. V tomto příkladu `ordernumber`, `orderdate`, a `city` v kořenovém objektu s JSON cesta začínající `$.`, zatímco `order_pd` a `order_price` jsou definované pomocí cesty odvozené z elementu pole bez řetězce `$.` .
 
 ```json
 "properties": {

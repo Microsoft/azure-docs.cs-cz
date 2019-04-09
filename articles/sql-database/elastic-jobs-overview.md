@@ -12,12 +12,12 @@ ms.author: srinia
 ms.reviewer: sstein
 manager: craigg
 ms.date: 12/18/2018
-ms.openlocfilehash: aa4fff24620ffd74393d549f1888bdf0e1cb0224
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 62efee57f3663f1dad0446da659de16d2800bf75
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57773575"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59264416"
 ---
 # <a name="create-configure-and-manage-elastic-jobs"></a>Vytvoření, konfigurace a správa elastických úloh
 
@@ -76,6 +76,8 @@ V současné době je verze Preview omezená na 100 souběžných úloh.
 
 Pokud chcete zajistit, aby při spouštění úloh pro databáze v elastickém fondu SQL nedocházelo k přetížení prostředků, můžete pro úlohy nakonfigurovat omezení počtu databází, pro které se můžou najednou spouštět.
 
+Nastavte počet souběžných databází úlohy poběží tak, že nastavíte `sp_add_jobstep` uložené procedury `@max_parallelism` parametr v T-SQL, nebo `Add-AzSqlElasticJobStep -MaxParallelism` v prostředí PowerShell.
+
 ## <a name="best-practices-for-creating-jobs"></a>Osvědčené postupy pro vytváření úloh
 
 ### <a name="idempotent-scripts"></a>Idempotentní skripty
@@ -96,5 +98,5 @@ Skript se také musí být schopný úspěšně provést. Dosáhne toho tím, ž
 
 ## <a name="next-steps"></a>Další postup
 
-- [Vytváření a správa elastických úloh s využitím PowerShellu](elastic-jobs-powershell.md)
-- [Vytváření a správa elastických úloh pomocí Transact-SQL (T-SQL)](elastic-jobs-tsql.md)
+- [Vytvoření a správa Elastických úloh pomocí Powershellu](elastic-jobs-powershell.md)
+- [Vytvoření a správa Elastických úloh pomocí příkazů jazyka Transact-SQL (T-SQL)](elastic-jobs-tsql.md)

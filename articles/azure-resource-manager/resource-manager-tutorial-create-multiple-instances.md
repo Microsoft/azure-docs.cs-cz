@@ -13,12 +13,12 @@ ms.devlang: na
 ms.date: 03/04/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: fc6acb211e30af460106acd1c19b61db52f09269
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: ce882ecee25f9570082a978b72a76ca903bfc12f
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57311878"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59279376"
 ---
 # <a name="tutorial-create-multiple-resource-instances-with-resource-manager-templates"></a>Kurz: Vytvoření víc instancí prostředků pomocí šablon Resource Manageru
 
@@ -64,7 +64,7 @@ Z Visual Studio Code proveďte následující čtyři změny:
 ![Azure Resource Manager vytvoří více instancí](./media/resource-manager-tutorial-create-multiple-instances/resource-manager-template-create-multiple-instances.png)
 
 1. Přidejte prvek `copy` k definování prostředků účtu úložiště. V elementu copy určíte počet iterací a proměnnou pro tuto smyčku. Početní hodnota musí být kladný integer a nesmí překročit 800.
-2. Funkce `copyIndex()` vrátí aktuální iteraci ve smyčce. Tento index použijete jako předponu názvu. `copyIndex()` je založen na nule. Abyste odsadili hodnotu indexu, můžete hodnotu předat do funkce copyIndex(). Například *copyIndex(1)*.
+2. Funkce `copyIndex()` vrátí aktuální iteraci ve smyčce. Tento index použijete jako předponu názvu. `copyIndex()` je založený na nule. Abyste odsadili hodnotu indexu, můžete hodnotu předat do funkce copyIndex(). Například *copyIndex(1)*.
 3. Odstraňte prvek **proměnné**, protože se už nepoužívá.
 4. Odstraňte prvek **výstupu**. Už není zapotřebí.
 
@@ -126,14 +126,14 @@ Informace o procesu nasazení najdete v části [Nasazení šablony](./resource-
 
 Chcete-li vypsat všechny tři účty úložiště, vynechejte --název parametru:
 
-# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+# [<a name="azure-cli"></a>Azure CLI](#tab/azure-cli)
 ```azurecli
 echo "Enter the Resource Group name:" &&
 read resourceGroupName &&
 az storage account list --resource-group $resourceGroupName
 ```
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# [<a name="powershell"></a>PowerShell](#tab/azure-powershell)
 
 ```azurepowershell
 $resourceGroupName = Read-Host -Prompt "Enter the resource group name"
@@ -155,7 +155,7 @@ Pokud už nasazené prostředky Azure nepotřebujete, vyčistěte je odstraněn�
 
 ## <a name="next-steps"></a>Další postup
 
-V tomto kurzu jste se naučili, jak vytvořit více instancí účtu úložiště. V dalším kurzu se dozvíte, jak přesunout prostředek z jedné skupiny prostředků do jiné skupiny prostředků.
+V tomto kurzu jste se naučili, jak vytvořit více instancí účtu úložiště.  V dalším kurzu se zaměříte na vývoj šablony s více prostředky a více typy prostředků. Některé prostředky mají závislé prostředky.
 
 > [!div class="nextstepaction"]
-> [Přesunutí prostředků](./resource-manager-tutorial-move-resources.md)
+> [Vytvořit závislé prostředky](./resource-manager-tutorial-create-templates-with-dependent-resources.md)

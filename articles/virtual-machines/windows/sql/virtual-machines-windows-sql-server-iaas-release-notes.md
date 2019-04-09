@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 2/13/2019
-ms.openlocfilehash: c46e2d4e2aa79d1d62d0361763911660349cfbb0
-ms.sourcegitcommit: 09bb15a76ceaad58517c8fa3b53e1d8fec5f3db7
+ms.openlocfilehash: 23e072369aa8ac6ca6ada5ec185df1a8d7e03c5b
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58762309"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59282538"
 ---
 # <a name="sql-server-on-azure-virtual-machine-release-notes"></a>SQL Server na virtuálním počítači Azure zpráva k vydání verze
 
@@ -30,8 +30,9 @@ Azure umožňuje nasadit virtuální počítač pomocí image vytvořené systé
 
 | Vylepšení služby | Podrobnosti |
 | --- | --- |
-| **Možnosti podpory pro vlastní image** | Teď si můžete nainstalovat [rozšíření SQL IaaS](virtual-machines-windows-sql-server-agent-extension.md#installation) vlastních imagí operačního systému a SQL, který nabízí omezené funkce [flexibilní licencování](virtual-machines-windows-sql-ahb.md). Při registraci vlastní image u poskytovatele prostředků SQL, zadejte typ licence jako "AHUB" jako v opačném případě registrace selže. Možnosti správy prostřednictvím okna konfigurace SQL na webu Azure Portal se nepodporuje pro vlastní Image.   | 
+| **Možnosti podpory pro vlastní image** | Teď si můžete nainstalovat [rozšíření SQL IaaS](virtual-machines-windows-sql-server-agent-extension.md#installation) vlastních imagí operačního systému a SQL, který nabízí omezené funkce [flexibilní licencování](virtual-machines-windows-sql-ahb.md). Při registraci vlastní image u poskytovatele prostředků SQL, zadejte typ licence jako "AHUB" jako v opačném případě registrace selže.  | 
 | **Možnosti podpory pojmenovaná instance** | Teď můžete využít [rozšíření SQL IaaS](virtual-machines-windows-sql-server-agent-extension.md#installation) pomocí pojmenované instance, pokud výchozí instanci správně odinstaloval. | 
+| **Rozšíření portálu** | Azure portal ještě neznáte pro nasazení virtuálního počítače s SQL serverem má bylo přepracované použitelnosti. Další informace najdete v tématu zadání [rychlý Start](quickstart-sql-vm-create-portal.md) a důkladnější [postupy](virtual-machines-windows-portal-sql-server-provision.md) příručka k nasazení virtuálního počítače s SQL serverem. |
 | &nbsp; | &nbsp; |
 
 ### <a name="documentation-improvements"></a>Dokumentace k vylepšení
@@ -84,5 +85,5 @@ Azure umožňuje nasadit virtuální počítač pomocí image vytvořené systé
 
 * [Přehled SQL serveru na virtuálním počítači s Linuxem](../../linux/sql/sql-server-linux-virtual-machines-overview.md)
 * [Zřízení virtuálního počítače s SQL Server Linux](../../linux/sql/provision-sql-server-linux-virtual-machine.md)
-* [Nejčastější dotazy (Linux)](../../linux/sql/sql-server-linux-faq.md)
-* [Dokumentace k SQL Serveru na Linuxu](https://docs.microsoft.com/sql/linux/sql-server-linux-overview)
+* [FAQ (Linux)](../../linux/sql/sql-server-linux-faq.md)
+* [SQL Server na dokumentaci k systému Linux](https://docs.microsoft.com/sql/linux/sql-server-linux-overview)

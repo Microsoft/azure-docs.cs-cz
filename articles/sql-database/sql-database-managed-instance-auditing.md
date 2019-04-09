@@ -13,20 +13,20 @@ author: vainolo
 ms.author: arib
 ms.reviewer: vanto
 manager: craigg
-ms.date: 02/07/2019
-ms.openlocfilehash: d283cfa18d31e360aed78ae5262c5416f94c0676
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.date: 04/08/2019
+ms.openlocfilehash: fc8b300cea714ee44f826a78ce8c7a10c1443414
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58086050"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59282113"
 ---
 # <a name="get-started-with-azure-sql-database-managed-instance-auditing"></a>Začínáme s auditováním služby Azure SQL Database managed instance
 
 [Spravovaná instance](sql-database-managed-instance.md) auditování sleduje události databáze a zapisuje je do protokolu auditu ve vašem účtu úložiště Azure. Také auditování:
 
 - Pomáhá zajistit dodržování předpisů, porozumět databázové aktivitě a proniknout do nesrovnalostí a anomálií, které můžou značit problémy obchodního charakteru nebo vzbuzovat podezření na narušení zabezpečení.
-- Povolí a umožňuje dodržování standardů dodržování předpisů, ale nezaručuje dodržování předpisů. Další informace o Azure programy dodržování standardů tuto podporu, najdete v článku [Centrum zabezpečení Azure](https://azure.microsoft.com/support/trust-center/compliance/).
+- Povolí a umožňuje dodržování standardů dodržování předpisů, ale nezaručuje dodržování předpisů. Další informace o Azure programy dodržování standardů tuto podporu, najdete v článku [Centrum zabezpečení Azure](https://azure.microsoft.com/support/trust-center/compliance/) místo, kde najdete nejnovější seznam certifikací dodržování předpisů SQL Database.
 
 ## <a name="set-up-auditing-for-your-server-to-azure-storage"></a>Nastavení auditování serveru do služby Azure storage
 
@@ -242,7 +242,7 @@ Klíč rozdíly v `CREATE AUDIT` syntaxe pro auditování objektů Blob v Azure 
 ## <a name="next-steps"></a>Další postup
 
 - Úplný seznam metod spotřeby protokolu auditu, najdete [Začínáme s auditem SQL database](sql-database-auditing.md).
-- Další informace o Azure programy dodržování standardů tuto podporu, najdete v článku [Centrum zabezpečení Azure](https://azure.microsoft.com/support/trust-center/compliance/).
+- Další informace o Azure programy dodržování standardů tuto podporu, najdete v článku [Centrum zabezpečení Azure](https://azure.microsoft.com/support/trust-center/compliance/) místo, kde najdete nejnovější seznam certifikací dodržování předpisů SQL Database.
 
 <!--Image references-->
 

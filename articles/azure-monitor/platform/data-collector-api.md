@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 04/02/2019
 ms.author: bwren
-ms.openlocfilehash: f3ee9b7aa595ae07bb97a8513bc0b751e94d7cc9
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.openlocfilehash: 9fd65dc0a6d2a5756acd2de7cb46fbf7943a8758
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58883934"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59264082"
 ---
 # <a name="send-log-data-to-azure-monitor-with-the-http-data-collector-api-public-preview"></a>Odeslat data protokolu pro monitorování Azure pomocí rozhraní API kolekce dat HTTP (public preview)
 V tomto článku se dozvíte, jak používat rozhraní API kolekce dat HTTP k odeslání dat protokolů do Azure monitoru z klienta REST API.  Popisuje jak formátovat data shromážděná z vašich skriptů nebo aplikací, zahrnout do požadavku a jste tento požadavek na autorizaci pomocí Azure monitoru.  Příklady jsou k dispozici pro prostředí PowerShell, C# a Python.
@@ -61,7 +61,8 @@ Pokud chcete používat rozhraní API kolekce dat HTTP, můžete vytvořit poža
 | Autorizace |Ověření podpisu. Později v tomto článku najdete informace o tom, jak vytvořit hlavičku HMAC SHA256. |
 | Log-Type |Zadejte typ záznamu dat, která se právě odesílá. Omezení velikosti pro tento parametr je 100 znaků. |
 | x-ms-date |Datum zpracování žádosti, ve formátu RFC 1123. |
-| čas vygenerované pole |Název pole v datech, která obsahuje časové razítko datová položka. Pokud určíte pole, pak jeho obsah se používají pro **TimeGenerated**. Pokud toto pole není zadán, výchozí hodnota pro **TimeGenerated** je čas, který se ingestuje zprávy. Obsah pole zprávy postupujte podle ISO 8601 formátu RRRR-MM-: ssZ. |
+| x-ms-AzureResourceId | ID prostředku Azure prostředku data měla být přidružená. Tím vyplníte [_ResourceId](log-standard-properties.md#_resourceid) vlastnost a umožňuje data, která mají být součástí [zaměřené na prostředek](manage-access.md#access-modes) dotazy. Pokud toto pole není zadán, data nebudou zahrnuty v dotazech zaměřené na prostředek. |
+| čas vygenerované pole | Název pole v datech, která obsahuje časové razítko datová položka. Pokud určíte pole, pak jeho obsah se používají pro **TimeGenerated**. Pokud toto pole není zadán, výchozí hodnota pro **TimeGenerated** je čas, který se ingestuje zprávy. Obsah pole zprávy postupujte podle ISO 8601 formátu RRRR-MM-: ssZ. |
 
 ## <a name="authorization"></a>Autorizace
 Jakákoli žádost Azure Monitor HTTP rozhraní API kolekce dat musí obsahovat hlavičku autorizace. Pro žádost o ověření, musíte podepsat žádost s primární nebo sekundární klíč pro pracovní prostor, který provádí požadavek. Předejte tento podpis jako součást požadavku.   

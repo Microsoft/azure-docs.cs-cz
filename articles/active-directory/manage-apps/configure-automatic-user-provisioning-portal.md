@@ -11,49 +11,62 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 11/13/2018
+ms.date: 04/01/2019
 ms.author: celested
 ms.reviewer: asmalser
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4239c07c73825f75dd39053e312ae731f6f0d7d1
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: d03ca64f3f3d2f034433f2aaa49f6babb7f9e5b4
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56162709"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59260285"
 ---
 # <a name="managing-user-account-provisioning-for-enterprise-apps-in-the-azure-portal"></a>Správa uživatelského účtu zřizování pro podnikové aplikace na webu Azure Portal
+
 Tento článek popisuje způsob použití [webu Azure portal](https://portal.azure.com) ke správě automatické účet zřizování uživatelů pro aplikace, které se na ně a jeho rušení. Další informace o zřizování automatické uživatelských účtů a jak to funguje, najdete v článku [automatizace zřizování uživatelů a jeho rušení pro aplikace SaaS ve službě Azure Active Directory](user-provisioning.md).
 
 ## <a name="finding-your-apps-in-the-portal"></a>Vyhledání aplikace na portálu
-Všechny aplikace, které jsou nakonfigurované pro jednotné přihlašování v adresáři jde prohlížet a spravovat [webu Azure portal](https://portal.azure.com). Aplikace lze nalézt v **všechny služby** &gt; **podnikové aplikace** části portálu. Podnikové aplikace jsou aplikace, které se nasazují a používané ve vaší organizaci.
 
-![Podokno podnikových aplikací](./media/configure-automatic-user-provisioning-portal/enterprise-apps-pane.png)
+Pomocí portálu Azure Active Directory pro zobrazení a Správa všech aplikací, které jsou nakonfigurovány pro jednotné přihlašování v adresáři. Podnikové aplikace jsou aplikace, které se nasazují a používané ve vaší organizaci. Použijte následující postup umožňuje zobrazit a spravovat vaše firemní aplikace:
 
-Výběr **všechny aplikace** odkaz na levé straně zobrazí seznam všech aplikací, které jste nakonfigurovali, včetně aplikací, přidané z galerie. V podokně prostředků pro tuto aplikaci, ve kterém lze sestavy prohlížet pro tuto aplikaci a je možné spravovat řadu nastavení výběrem aplikace načte.
+1. Otevřít [portálu Azure Active Directory](https://aad.portal.azure.com).
 
-Nastavení pro vytváření uživatelského účtu můžete spravovat tak, že vyberete **zřizování** na levé straně.
+1. Vyberte **podnikové aplikace** v levém podokně. Se zobrazí seznam všech nakonfigurovaných aplikací, včetně aplikací, které byly přidány z galerie.
 
-![Podokno prostředků aplikace](./media/configure-automatic-user-provisioning-portal/enterprise-apps-provisioning.png)
+1. Vyberte některou aplikaci načíst prostředek podokno, kde můžete zobrazit sestavy a spravovat nastavení aplikace.
+
+1. Vyberte **zřizování** ke správě nastavení pro vybranou aplikaci pro vytváření uživatelského účtu.
+
+   ![Podokno prostředků aplikace](./media/configure-automatic-user-provisioning-portal/enterprise-apps-provisioning.png)
 
 ## <a name="provisioning-modes"></a>Režim zřizování
-**Zřizování** podokně začíná **režimu** nabídky, která ukazuje, jaké režim zřizování jsou podporovány pro podnikové aplikace a umožňuje jejich konfiguraci. Mezi dostupné možnosti patří:
 
-* **Automatické** – tato možnost se zobrazí, pokud Azure AD podporuje automatické zřizování založené na rozhraní API a/nebo zrušení zřizování uživatelských účtů do této aplikace. Tento režim výběru zobrazí rozhraní, které vede správce konfigurace služby Azure AD pro připojení k rozhraní API pro správu uživatelů vaší aplikace, vytváření mapování účtů a pracovních postupů, které definují, jak dat účtu uživatele jakým způsobem se předávají mezi službami Azure AD a aplikace a správa zřizování služby Azure AD.
-* **Ruční** – tato možnost je zobrazena, pokud Azure AD nepodporuje automatické zřizování uživatelských účtů do této aplikace. Tato možnost znamená, že záznamů uživatelského účtu uložených v aplikaci se musí spravovat pomocí externího procesu, na základě uživatele Správa a zřizování možností dostupném v příslušné aplikaci (včetně možnosti zřizování za běhu SAML).
+**Zřizování** podokně začíná **režimu** nabídky, která zobrazuje režim zřizování pro podniková aplikace nepodporuje a umožňuje jejich konfigurace. Mezi dostupné možnosti patří:
+
+* **Automatické** – tato možnost je zobrazena, pokud Azure AD podporuje automatické zřizování založené na rozhraní API nebo zrušení zřizování uživatelských účtů do této aplikace. Vyberte tento režim k zobrazení rozhraní, který pomáhá správcům:
+
+  * Konfigurace služby Azure AD pro připojení k rozhraní API pro správu uživatelů vaší aplikace
+  * Vytvoření účtu mapování a pracovní postupy, které definují, jak dat účtu uživatele jakým způsobem se předávají mezi službami Azure AD a aplikace
+  * Správa zřizování služby Azure AD
+
+* **Ruční** – tato možnost je zobrazena, pokud Azure AD nepodporuje automatické zřizování uživatelských účtů do této aplikace. V takovém případě uživatelský účet se záznamy ukládají v aplikaci musí být spravovány pomocí externího procesu, na základě uživatele Správa a zřizování možností dostupném v příslušné aplikaci (včetně možnosti zřizování za běhu SAML).
 
 ## <a name="configuring-automatic-user-account-provisioning"></a>Konfigurace zřizování automatické uživatelských účtů
-Výběr **automatické** možnost otevře obrazovku, která je rozdělena do čtyř oddílů:
+
+Vyberte **automatické** můžete zadat nastavení pro synchronizaci, mapování, spuštění a zastavení a přihlašovací údaje správce.
 
 ### <a name="admin-credentials"></a>Přihlašovací údaje správce
-Tato část se kdy vyžaduje přihlašovací údaje pro službu Azure AD pro připojení k rozhraní API jsou zadány pro správu uživatelů vaší aplikace. Vyžaduje se vstup se liší v závislosti na aplikaci. Další informace o požadavcích pro konkrétní aplikace a typy přihlašovacích údajů, najdete v článku [kurz ke konfiguraci pro konkrétní aplikaci](user-provisioning.md).
 
-Výběr **Test připojení** tlačítko využijete k otestování přihlašovací údaje tím, že Azure AD pokuste se připojit k aplikaci prvku zřizování aplikace s použitím zadané přihlašovací údaje.
+Rozbalte **přihlašovacích údajů správce** k zadání přihlašovacích údajů potřebných pro službu Azure AD pro připojení k rozhraní API pro správu uživatelů vaší aplikace. Vyžaduje se vstup se liší v závislosti na aplikaci. Další informace o požadavcích pro konkrétní aplikace a typy přihlašovacích údajů, najdete v článku [kurz ke konfiguraci pro konkrétní aplikaci](user-provisioning.md).
+
+Vyberte **Test připojení** otestovat přihlašovací údaje tím, že Azure AD pokuste se připojit k aplikaci je zřizování aplikace s použitím zadané přihlašovací údaje.
 
 ### <a name="mappings"></a>Mapování
-Tato část je, kde můžou správci zobrazit a upravit jaké atributy toku uživatele mezi službami Azure AD a cílové aplikace, když jsou uživatelské účty zřízen nebo aktualizován.
 
-Existuje sada předem nakonfigurované mapování mezi objekty uživatelů Azure AD a uživatelských objektů příslušné aplikace SaaS. Některé aplikace spravovat další typy objektů, jako jsou skupiny nebo kontakty. Výběrem jedné z těchto mapování v tabulka uvádí mapování editor doprava, kde mohou být zobrazit a upravit.
+Rozbalte **mapování** zobrazit a upravit atributy uživatele, které budou plout mezi službami Azure AD a cílové aplikace, když jsou uživatelské účty zřízen nebo aktualizován.
+
+Existuje sada předem nakonfigurované mapování mezi objekty uživatelů Azure AD a uživatelských objektů příslušné aplikace SaaS. Některé aplikace spravovat další typy objektů, jako jsou skupiny nebo kontakty. Vyberte v tabulce, čímž otevřete editor mapování doprava, kde můžete zobrazit a přizpůsobit je mapování.
 
 ![Podokno prostředků aplikace](./media/configure-automatic-user-provisioning-portal/enterprise-apps-provisioning-mapping.png)
 
@@ -61,21 +74,30 @@ Podporovaná vlastní nastavení patří:
 
 * Povolení a zakázání mapování pro konkrétní objekty, například objekt uživatele Azure AD k objektu uživatele aplikace SaaS.
 * Úprava atributů, které vedou z objektu uživatele Azure AD do objektu uživatele aplikace. Další informace o mapování atributů najdete v tématu [Principy mapování typů atributů](customize-application-attributes.md#understanding-attribute-mapping-types).
-* Filtrovat zřizování akce, které Azure AD provádí na cílové aplikace. Namísto toho, aby plně synchronizovat objekty služby Azure AD, můžete omezit akce provést. Například výběrem pouze **aktualizace**, Azure AD pouze aktualizace stávajících uživatelských účtů v aplikaci a ne vytvořit nové. Pouze výběrem **vytvořit**, pouze vytvoří nové uživatelské účty ale neaktualizuje existující aplikace Azure. Tato funkce umožňuje správcům vytvořit jiné mapování pro vytváření účtů a aktualizovat pracovní postupy.
+* Filtrování zřizování akce, Azure AD, na kterých běží cílové aplikace. Namísto toho, aby plně synchronizovat objekty služby Azure AD, můžete omezit akce spuštění. 
+
+  Například vybrat jenom **aktualizace** a Azure AD pouze aktualizace stávajících uživatelských účtů v aplikaci, ale nevytvoří nové. Vybrat pouze **vytvořit** a Azure pouze vytvoří nové uživatelské účty, ale neprovede aktualizaci existující aplikace. Tato funkce umožňuje správcům vytvořit jiné mapování pro vytváření účtů a aktualizovat pracovní postupy.
+
+* Přidání nové mapování atributů. Vyberte **přidat nové mapování** v dolní části **mapování atributů** podokně. Vyplňte **Upravit atribut** formulář a vyberte **Ok** do seznamu přidat nové mapování. 
 
 ### <a name="settings"></a>Nastavení
-Tato část umožňuje správcům spuštění a zastavení zřizování služby pro vybranou aplikaci Azure AD a volitelně vymazat mezipaměť zřizování a restartujte službu.
 
-Pokud zřizování se povoluje první přihlášení pro aplikaci, zapněte službu tak, že změníte **stavu zřizování** k **na**. Tato změna způsobí, že služba zřizování Azure AD k provedení počáteční synchronizace, kde ho načte uživatelé přiřazení v **uživatelů a skupin** oddílu dotazuje cílové aplikace je a pak provede akce zřizování definované ve službě Azure AD **mapování** oddílu. Během tohoto procesu zřizovací služba ukládá data uložená v mezipaměti o uživatelské účty, které spravuje, tak nespravované účty v cílové aplikace, které nebyly nikdy v oboru pro přiřazení nejsou ovlivněny zrušení zřizování operace. Po počáteční synchronizaci zřizovací služba automaticky synchronizuje objekty uživatelů a skupin na deset minut.
+Můžete spustit a zastavit zřizování služby pro vybranou aplikaci v Azure AD **nastavení** oblasti **zřizování** obrazovky. Můžete také vymazat mezipaměť zřizování a restartujte službu.
 
-Změna **stavu zřizování** k **vypnout** jednoduše pozastaví službu zřizování. V tomto stavu Azure není vytvářet, aktualizovat nebo odebrat všechny uživatele nebo skupiny objektů v aplikaci. Změna stavu zpět do způsobí, že služba pokračovat tam, kde skončila.
+Pokud zřizování se povoluje první přihlášení pro aplikaci, zapněte službu tak, že změníte **stavu zřizování** k **na**. Tato změna způsobí, že služba zřizování Azure AD spustit počáteční synchronizaci. Načte v přiřazených uživateli **uživatelů a skupin** oddílu dotazuje cílové aplikace je a pak spustí zřizování akce definované ve službě Azure AD **mapování** části. Během tohoto procesu zřizovací služba ukládá data uložená v mezipaměti o uživatelské účty, které spravuje, tak nespravované účty v cílové aplikace, které nebyly nikdy v oboru pro přiřazení nejsou ovlivněny zrušení zřizování operace. Po počáteční synchronizaci zřizovací služba automaticky synchronizuje objekty uživatelů a skupin na deset minut.
 
-Výběr **Vymazat aktuální stav a restartovat synchronizaci** zaškrtávací políčko a ukládání zastaví službu zřizování, výpisy dat uložených v mezipaměti o účty, které Azure AD spravuje, restartování služby a provede počáteční synchronizaci znovu. Tato možnost umožňuje správcům zahájit proces zřizování nasazení znovu.
+Změnit **stavu zřizování** k **vypnout** pozastavit službu zřizování. V tomto stavu není Azure vytvářet, aktualizovat nebo odebrat všechny uživatele nebo skupiny objektů v aplikaci. Změna stavu zpět do **na** a služby převezme tam, kde skončila.
+
+Vyberte **Vymazat aktuální stav a restartovat synchronizaci** zaškrtávací políčko a vyberte **Uložit** na:
+
+* Zastavit službu zřizování
+* Výpis dat uložených v mezipaměti o účty, které spravuje Azure AD
+* Restartujte služby a spusťte znovu počáteční synchronizaci
+
+Tato možnost umožňuje správcům zahájit proces zřizování nasazení znovu.
 
 ### <a name="synchronization-details"></a>Podrobnosti synchronizace
-Tato část obsahuje další podrobnosti o operaci služby zřizování, včetně časy první a poslední zřizovací služba spustili před aplikace a kolik uživatelů a skupin objektů jsou spravovány.
 
-Jsou uvedeny odkazy na **sestavu aktivit zřizování** , který poskytuje protokol všichni uživatelé a skupiny, vytvoření, aktualizace a odebrání mezi Azure AD a cílovou aplikaci a **zřizování zprávu o chybách** , který obsahuje další podrobné chybové zprávy pro uživatele a skupinu objektů, které se nepodařilo přečíst, vytvořit, aktualizovat ani odebrat. 
+Tato část obsahuje další podrobnosti o operaci služby zřizování, včetně služby zřizování spustili před aplikace a kolik uživatelů a skupin objektů spravuje první a poslední časy.
 
-
-
+Je k dispozici odkaz **sestavu aktivit zřizování**, který poskytuje protokol všichni uživatelé a skupiny vytvořený, aktualizovaná a odebrané mezi Azure AD a cílovou aplikací. Je také k dispozici odkaz **zřizování zprávu o chybách**, která poskytuje další podrobné chybové zprávy pro uživatele a skupiny, které se nepodařilo přečíst, vytvořit, aktualizovat nebo odebrat.

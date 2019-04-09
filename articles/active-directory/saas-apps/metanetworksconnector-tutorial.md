@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/21/2019
 ms.author: jeedes
-ms.openlocfilehash: aa0d7828534c96d9bda85e80fb297c848cec6845
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 95a138a6dd499df18789e9b587e770a9b7bf7dab
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57887017"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59279665"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-meta-networks-connector"></a>Kurz: Integrace Azure Active Directory s konektorem Meta sítě
 
@@ -133,7 +133,7 @@ Ke konfiguraci Azure AD jednotné přihlašování s konektorem Meta sítě, pro
     | Příjmení | user.surname | |
     | emailaddress| user.mail| `http://schemas.xmlsoap.org/ws/2005/05/identity/claims` |
     | jméno | user.userprincipalname| `http://schemas.xmlsoap.org/ws/2005/05/identity/claims` |
-    | telefon | user.telephonenumber | |
+    | Telefon | user.telephonenumber | |
 
     a. Klikněte na tlačítko **přidat novou deklaraci** otevřít **spravovat deklarace identity uživatelů** dialogového okna.
 
@@ -276,9 +276,9 @@ Po kliknutí na dlaždici Meta sítě konektor na přístupovém panelu, vám by
 
 ## <a name="additional-resources"></a>Další prostředky
 
-- [ Seznam kurzů o integraci aplikací SaaS pomocí Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Seznam kurzů o integraci aplikací SaaS pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

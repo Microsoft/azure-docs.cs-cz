@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 5/22/2018
 ms.author: nachandr
-ms.openlocfilehash: 5efcc92bc2054dfb66b5fe03ae083c49f924d2ce
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
-ms.translationtype: MT
+ms.openlocfilehash: 537450dbc386a94fa5c2e0d9334435dce041a32f
+ms.sourcegitcommit: b4ad15a9ffcfd07351836ffedf9692a3b5d0ac86
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58668190"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59057638"
 ---
 # <a name="patch-the-linux-operating-system-in-your-service-fabric-cluster"></a>Opravy operačního systému Linux ve vašem clusteru Service Fabric
 
@@ -121,13 +121,13 @@ Pro Ubuntu [bezobslužného upgradu](https://help.ubuntu.com/community/Automatic
 
 Aplikace spolu s instalační skripty si můžete stáhnout z [archivu odkaz](https://go.microsoft.com/fwlink/?linkid=867984).
 
-Aplikace ve formátu sfpkg si můžete stáhnout z [sfpkg odkaz](https://aka.ms/POA/POA_v2.0.2.sfpkg). To je užitečné, [nasazení aplikace založené na Azure Resource Manageru](service-fabric-application-arm-resource.md).
+Aplikace ve formátu sfpkg si můžete stáhnout z [sfpkg odkaz](https://aka.ms/POA/POA_v2.0.3.sfpkg). To je užitečné, [nasazení aplikace založené na Azure Resource Manageru](service-fabric-application-arm-resource.md).
 
 ## <a name="configure-the-app"></a>Konfigurace aplikace
 
 Chování aplikace orchestraci oprav je možné nakonfigurovat podle svých potřeb. Přepište výchozí hodnoty předáním parametru aplikace během vytváření aplikace nebo aktualizace. Lze zadat parametry aplikace tak, že zadáte `ApplicationParameter` k `Start-ServiceFabricApplicationUpgrade` nebo `New-ServiceFabricApplication` rutiny.
 
-|**Parametr**        |**Typ**                          | **Podrobnosti**|
+|**Parametr**        |**Type**                          | **Podrobnosti**|
 |:-|-|-|
 |MaxResultsToCache    |Dlouhé                              | Maximální počet výsledků aktualizace, které by měly být uložené v mezipaměti. <br>Výchozí hodnota je 3000 za předpokladu, že: <br> -Počet uzlů je 20. <br> -Počet aktualizací děje na uzel a měsíc je pět. <br> -Počet výsledků na operace může být 10. <br> – Výsledky po dobu posledních tří měsíců by měla být uložena. |
 |TaskApprovalPolicy   |Výčet <br> { NodeWise, UpgradeDomainWise }                          |TaskApprovalPolicy označuje zásadu, která má být použit službou koordinátora k instalaci aktualizací na uzlech clusteru Service Fabric.<br>                         Povolené hodnoty jsou: <br>                                                           <b>NodeWise</b>. Aktualizace jsou nainstalované jednoho uzlu současně. <br>                                                           <b>UpgradeDomainWise</b>. Aktualizace jsou nainstalované jednu upgradovací doménu najednou. (Na maximum, můžete přejít všechny uzly, které patří do logických sítí pro aktualizace.)
@@ -173,7 +173,8 @@ Pro usnadnění práce prostředí powershell (Undeploy.ps1) a skripty bash (Und
 
 ## <a name="view-the-update-results"></a>Zobrazení výsledků aktualizace
 
-Aplikace orchestraci oprav zpřístupňuje rozhraní REST API k zobrazení historických výsledků pro uživatele. Tady je ukázka výsledek: ```testadm@bronze000001:~$ curl -X GET http://10.0.0.5:20002/PatchOrchestrationApplication/v1/GetResults```
+Aplikace orchestraci oprav zpřístupňuje rozhraní REST API k zobrazení historických výsledků pro uživatele. Tady je ukázka výsledek:
+```testadm@bronze000001:~$ curl -X GET http://10.0.0.5:20002/PatchOrchestrationApplication/v1/GetResults```
 ```json
 [ 
   { 
@@ -373,5 +374,10 @@ Aplikace orchestraci oprav shromažďuje telemetrii ke sledování využití a v
 ### <a name="version-201"></a>Verze 2.0.1
 - Znovu zkompilovat aplikaci pomocí nejnovější sady SDK Service Fabric
 
-### <a name="version-202-latest"></a>Verze bodu 2.0.2 (nejnovější)
+### <a name="version-202"></a>Verze 2.0.2 
 - Opravili jsme problém s upozorněním stavu získávání zachovají během restartování.
+
+### <a name="version-203-latest"></a>Verzi 2.0.3 (nejnovější)
+- Pokud využití procesoru agenta uzlu služby démona dosáhlo až 99 % na virtuálních počítačích Standard_D1_v2 opravy problému.
+- Opravte problém, který provádí oprav cyle života na uzlu v případě, že jsou dostupné uzly s názvem, který je podmnožinou názvu aktuálního uzlu. Pro tyto uzly, jeho možné opravy chybí nebo čeká na restartování.
+- Je opravená chyba, kvůli které pořád padá agenta uzlu démona. když poškozený nastavení jsou předány do služby.

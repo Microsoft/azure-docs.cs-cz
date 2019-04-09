@@ -13,12 +13,12 @@ ms.date: 03/28/2019
 ms.author: celested
 ms.reviewer: paulgarn, hirsin, jeedes, luleon
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e492586f0c70d4cd3013ef8f466afd6bb2bb65ac
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.openlocfilehash: 2076aec1585ff8b60ee2b593621b75abfaeaa1ac
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58884073"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59260302"
 ---
 # <a name="how-to-customize-claims-emitted-in-tokens-for-a-specific-app-in-a-tenant-preview"></a>Postup: Přizpůsobení deklarací identity v tokenech pro konkrétní aplikaci v tenantovi (Preview), protože ho
 
@@ -415,7 +415,7 @@ Podle zvolené metodě, je očekáván sadu vstupů a výstupů. Definovat vstup
 
 ### <a name="custom-signing-key"></a>Vlastní podpisový klíč
 
-Vlastní podpisový klíč musíte být přiřazeni k instanční objekt pro deklarace identity mapování zásad se projeví. Všechny tokeny vystavené, které má vliv zásady, které jsou podepsány pomocí vlastní podpisový klíč a aplikace musí být nakonfigurovaný tak, aby přijímal tokeny podepsán podpisový klíč. Tím se zajistí potvrzení, že tokeny byly změněny Tvůrce deklarací mapování zásad a chrání aplikace před deklarací mapování zásad vytvořených útočníky.
+Vlastní podpisový klíč musíte být přiřazeni k instanční objekt pro deklarace identity mapování zásad se projeví. Tím se zajistí potvrzení, že tokeny byly změněny Tvůrce deklarací mapování zásad a chrání aplikace před deklarací mapování zásad vytvořených útočníky.  Aplikace, které mají povolené mapování musí zkontrolovat speciální identifikátor URI pro jejich token podpisových klíčů přidáním deklarace identity `appid={client_id}` k jejich [OpenID Connect žádostí o metadata](v2-protocols-oidc.md#fetch-the-openid-connect-metadata-document).  
 
 ### <a name="cross-tenant-scenarios"></a>Scénáře napříč tenanty
 

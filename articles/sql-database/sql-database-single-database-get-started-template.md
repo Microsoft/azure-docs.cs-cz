@@ -11,13 +11,13 @@ author: sachinpMSFT
 ms.author: sachinp
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 03/22/2019
-ms.openlocfilehash: 01e14f86b16db6d998d60e74211ae5ad77381461
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.date: 04/08/2019
+ms.openlocfilehash: b28c947cb2ee3a60633fcaced18a8c353474ec9e
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58373018"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59259725"
 ---
 # <a name="quickstart-create-a-single-database-in-azure-sql-database-using-the-azure-resource-manager-template"></a>Rychlý start: Vytvoření izolované databáze ve službě Azure SQL Database pomocí šablony Azure Resource Manageru
 
@@ -29,13 +29,128 @@ Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https
 
 Izolované databáze má definovanou sadu výpočetních, paměťových, vstupně-výstupní operace a úložiště prostředků pomocí jednoho ze dvou [zakoupení modely](sql-database-purchase-models.md). Při vytvoření izolované databáze také definovat [serveru služby SQL Database](sql-database-servers.md) ho spravovat a umístěte ji v rámci [skupiny prostředků Azure](../azure-resource-manager/resource-group-overview.md) v určité oblasti.
 
-Šablona použitá v tomto rychlém startu je z [šablon rychlého startu Azure](https://azure.microsoft.com/resources/templates/201-sql-threat-detection-server-policy-optional-db/). Následující soubor JSON je šablonu, která se používá v tomto článku. Další ukázkové šablony Azure SQL database najdete [tady](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Sql&pageNumber=1&sort=Popular).
+Následující soubor JSON je šablonu, která se používá v tomto článku. Šablona je uložená v účtu služby Azure Storage. Další ukázkové šablony Azure SQL database najdete [tady](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Sql&pageNumber=1&sort=Popular).
 
-[!code-json[create-azure-sql-database](~/quickstart-templates/201-sql-threat-detection-server-policy-optional-db/azuredeploy.json)]
+```json
+{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "serverName": {
+      "type": "string",
+      "defaultValue": "[concat('server-', uniqueString(resourceGroup().id, deployment().name))]",
+      "metadata": {
+        "description": "Name for the SQL server"
+      }
+    },
+    "shouldDeployDb": {
+      "type": "string",
+      "allowedValues": [
+        "Yes",
+        "No"
+      ],
+      "defaultValue": "Yes",
+      "metadata": {
+        "description": "Whether an Azure SQL Database should be deployed under the server"
+      }
+    },
+    "databaseName": {
+      "type": "string",
+      "defaultValue": "[concat('db-', uniqueString(resourceGroup().id, deployment().name), '-1')]",
+      "metadata": {
+        "description": "Name for the SQL database under the SQL server"
+      }
+    },
+    "location": {
+      "type": "string",
+      "defaultValue": "[resourceGroup().location]",
+      "metadata": {
+        "description": "Location for server and optional DB"
+      }
+    },
+    "emailAddresses": {
+      "type": "array",
+      "defaultValue": [
+        "user1@example.com",
+        "user2@example.com"
+      ],
+      "metadata": {
+        "description": "Email addresses for receiving alerts"
+      }
+    },
+    "adminUser": {
+      "type": "string",
+      "metadata": {
+        "description": "Username for admin"
+      }
+    },
+    "adminPassword": {
+      "type": "securestring",
+      "metadata": {
+        "description": "Password for admin"
+      }
+    }
+  },
+  "variables": {
+    "databaseServerName": "[toLower(parameters('serverName'))]",
+    "databaseName": "[parameters('databaseName')]",
+    "shouldDeployDb": "[parameters('shouldDeployDb')]",
+    "databaseServerLocation": "[parameters('location')]",
+    "databaseServerAdminLogin": "[parameters('adminUser')]",
+    "databaseServerAdminLoginPassword": "[parameters('adminPassword')]",
+    "emailAddresses": "[parameters('emailAddresses')]"
+  },
+  "resources": [
+    {
+      "type": "Microsoft.Sql/servers",
+      "name": "[variables('databaseServerName')]",
+      "location": "[variables('databaseServerLocation')]",
+      "apiVersion": "2015-05-01-preview",
+      "properties": {
+        "administratorLogin": "[variables('databaseServerAdminLogin')]",
+        "administratorLoginPassword": "[variables('databaseServerAdminLoginPassword')]",
+        "version": "12.0"
+      },
+      "tags": {
+        "DisplayName": "[variables('databaseServerName')]"
+      },
+      "resources": [
+        {
+          "type": "securityAlertPolicies",
+          "name": "DefaultSecurityAlert",
+          "apiVersion": "2017-03-01-preview",
+          "dependsOn": [
+            "[variables('databaseServerName')]"
+          ],
+          "properties": {
+            "state": "Enabled",
+            "emailAddresses": "[variables('emailAddresses')]",
+            "emailAccountAdmins": true
+          }
+        }
+      ]
+    },
+    {
+      "condition": "[equals(variables('shouldDeployDb'), 'Yes')]",
+      "type": "Microsoft.Sql/servers/databases",
+      "name": "[concat(string(variables('databaseServerName')), '/', string(variables('databaseName')))]",
+      "location": "[variables('databaseServerLocation')]",
+      "apiVersion": "2017-10-01-preview",
+      "dependsOn": [
+        "[concat('Microsoft.Sql/servers/', variables('databaseServerName'))]"
+      ],
+      "properties": {},
+      "tags": {
+        "DisplayName": "[variables('databaseServerName')]"
+      }
+    }
+  ]
+}
+```
 
 1. Vyberte následující obrázek a přihlaste se k Azure a otevřete šablonu.
 
-    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-sql-threat-detection-server-policy-optional-db%2Fazuredeploy.json"><img src="./media/sql-database-single-database-get-started-template/deploy-to-azure.png" alt="deploy to azure"/></a>
+    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Farmtutorials.blob.core.windows.net%2Fcreatesql%2Fazuredeploy.json"><img src="./media/sql-database-single-database-get-started-template/deploy-to-azure.png" alt="deploy to azure"/></a>
 
 2. Vyberte nebo zadejte následující hodnoty.  
 
@@ -76,7 +191,7 @@ Remove-AzResourceGroup -Name $resourceGroupName
 
 - Vytvořte pravidlo brány firewall na úrovni serveru pro připojení k izolované databáze z místní nebo vzdálené nástroje. Další informace najdete v tématu [vytvořit pravidlo brány firewall na úrovni serveru](sql-database-server-level-firewall-rule.md).
 - Po vytvoření pravidla brány firewall na úrovni serveru, [připojení a dotazování](sql-database-connect-query.md) vaší databáze pomocí několika různých nástrojů a jazyků.
-  - [Připojení a dotazování pomocí SQL Server Management Studia](sql-database-connect-query-ssms.md)
-  - [Připojení a dotazování pomocí Azure Data Studia](https://docs.microsoft.com/sql/azure-data-studio/quickstart-sql-database?toc=/azure/sql-database/toc.json)
+  - [Připojení a dotazování pomocí aplikace SQL Server Management Studio](sql-database-connect-query-ssms.md)
+  - [Připojení a dotazování pomocí Azure Data Studio](https://docs.microsoft.com/sql/azure-data-studio/quickstart-sql-database?toc=/azure/sql-database/toc.json)
 - Vytvoření izolované databáze pomocí Azure CLI najdete v tématu [ukázky v Azure CLI](sql-database-cli-samples.md).
 - Vytvoření izolované databáze pomocí Azure Powershellu najdete v tématu [ukázky Azure Powershellu](sql-database-powershell-samples.md).

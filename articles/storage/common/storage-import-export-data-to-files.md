@@ -5,15 +5,15 @@ author: alkohli
 services: storage
 ms.service: storage
 ms.topic: article
-ms.date: 12/13/2018
+ms.date: 04/08/2019
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: e3cd9d0036a55a3e6de49988dddcd6a91b81b078
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 28026a429643c62434ddfd7591126169857a7371
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58088651"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59265627"
 ---
 # <a name="use-azure-importexport-service-to-import-data-to-azure-files"></a>Import dat do služby soubory Azure pomocí služby Azure Import/Export
 
@@ -30,7 +30,7 @@ Než začnete vytvářet úlohy importu přenášet data do soubory Azure, pečl
 - Používejte odpovídající počet disků [podporované typy](storage-import-export-requirements.md#supported-disks). 
 - K dispozici systém Windows [verze operačního systému nepodporuje](storage-import-export-requirements.md#supported-operating-systems).
 - [Stáhněte si WAImportExport verze 2](https://aka.ms/waiev2) v systému Windows. Rozbalte do výchozí složky `waimportexport`. Například, `C:\WaImportExport`.
-- Máte účet FedEx/DHL. 
+- Máte účet FedEx/DHL. Pokud chcete použít dopravce než FedEx/DHL, obraťte se na tým Azure Data Box operací na adrese `adbops@microsoft.com`.  
     - Účet musí být platná, by měl mít vyrovnávání a musí mít vrácení funkce.
     - Generovat sledovací číslo pro úlohu exportu.
     - Každá úloha by měl mít samostatný sledovací číslo. Více úloh se stejným číslem sledování nejsou podporovány.
@@ -145,7 +145,7 @@ Proveďte následující kroky k vytvoření úlohy importu na webu Azure Portal
 
 4. V **vrátí informace o expedici**:
 
-    - Z rozevíracího seznamu vyberte operátorovi.
+    - Z rozevíracího seznamu vyberte operátorovi. Pokud chcete použít dopravce než FedEx/DHL, zvolte existující možnost z rozevíracího seznamu. Kontaktní Azure Data Box operace týmu na `adbops@microsoft.com` o informace týkající se operátorovi, plánujete použít.
     - Zadejte číslo účtu dopravce platný, kterou jste vytvořili pomocí tohoto operátora. Tento účet Microsoft používá k odeslání jednotky zpět po dokončení úlohy import. 
     - Zadejte úplné a platné jméno kontaktní osoby, telefonu, e-mailu, adresu, Město, zip, stát/kraj a země/oblast.
 

@@ -1,25 +1,24 @@
 ---
 title: Mapování ovládacích prvků – plán úloh ISO 27001 ASE/SQL – ukázka
 description: Mapování ovládacího prvku vzorku podrobného plánu úlohy ISO 27001 App Service prostředí/službou SQL Database do Azure Policy a RBAC.
-services: blueprints
 author: DCtheGeek
 ms.author: dacoulte
 ms.date: 03/14/2019
-ms.topic: conceptual
+ms.topic: sample
 ms.service: blueprints
 manager: carmonm
-ms.openlocfilehash: fb251d71ca9aa20ed06d0a917394097b36322b3c
-ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
+ms.openlocfilehash: 7a760bfe70fa2a83c43a0b41b77ba9bf45e809ca
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58802707"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59258603"
 ---
 # <a name="control-mapping-of-the-iso-27001-asesql-workload-blueprint-sample"></a>Mapování ovládacího prvku vzorku ISO 27001 ASE/SQL úlohy podrobného plánu
 
 Následující článek podrobně popisuje, jak ukázka Azure plány ISO 27001 ASE/SQL Workload podrobného plánu se mapuje na ovládací prvky ISO 27001 se zásadami. Další informace o ovládacích prvcích najdete v tématu [ISO 27001](https://www.iso.org/isoiec-27001-information-security.html).
 
-Následující mapování **ISO 27001: 2013** ovládacích prvků. Pomocí navigace na pravé straně můžete přejít přímo na určitý ovládací prvek mapování. Mnohé z namapované ovládací prvky jsou implementovány pomocí [Azure Policy](../../../policy/overview.md) iniciativy. Si Pokud chcete projít kompletní iniciativu, otevřete **zásady** v Azure portal a vyberte **definice** stránky. Poté vyhledejte a vyberte  **[Preview] auditu ISO 27001: 2013 ovládací prvky a nasadit konkrétní rozšíření virtuálního počítače pro podporu požadavků na auditování** iniciativa předdefinovaných zásad.
+Následující mapování **ISO 27001: 2013** ovládacích prvků. Pomocí navigace na pravé straně můžete přejít přímo na určitý ovládací prvek mapování. Mnohé z namapované ovládací prvky jsou implementovány pomocí [Azure Policy](../../../policy/overview.md) iniciativy. Si Pokud chcete projít kompletní iniciativu, otevřete **zásady** v Azure portal a vyberte **definice** stránky. Poté vyhledejte a vyberte  **[ve verzi Preview] auditu ISO 27001: 2013 ovládací prvky a nasadit konkrétní rozšíření virtuálního počítače pro podporu požadavků na auditování** iniciativa předdefinovaných zásad.
 
 ## <a name="a612-segregation-of-duties"></a>A.6.1.2 zodpovědnosti
 

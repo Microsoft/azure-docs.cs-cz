@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9cd9f6112cbca78b323e0a14818b06f891a3f673
-ms.sourcegitcommit: d83fa82d6fec451c0cb957a76cfba8d072b72f4f
+ms.openlocfilehash: d58c019cf3d801ce938a4ca6eca70b1606bf4ff6
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/02/2019
-ms.locfileid: "58862883"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59264467"
 ---
 # <a name="enforce-azure-ad-password-protection-for-windows-server-active-directory"></a>Vynucení ochrany hesla Azure AD pro Windows Server Active Directory
 
@@ -31,7 +31,8 @@ Ochrana hesel Azure AD je navržen s těmito zásadami v úvahu:
 * Nejsou potřeba žádné změny schématu služby Active Directory. Software používá existující služby Active Directory **kontejneru** a **serviceConnectionPoint** objekty schématu.
 * Žádné minimální služby Active Directory domény nebo doménová struktura úroveň funkčnosti (funkčnosti domény/FFL) se vyžaduje.
 * Software nelze vytvořit nebo vyžadují účtů v doménách Active Directory, které chrání.
-* Hesla uživatelů nešifrovaný text nenechávejte řadič domény během operací ověření hesla nebo kdykoli.
+* Hesla uživatelů nešifrovaný text nikdy neopustí řadič domény během operací ověření hesla nebo kdykoli.
+* Software není závislá na jiných funkcí Azure AD. například synchronizace hodnot hash hesel Azure AD není v relaci a není nutné v pořadí pro ochranu hesel Azure AD na funkci.
 * Přírůstkové nasazení je podporováno, ale zásady hesel se vynucují jenom, kde je nainstalovaný Agent řadič domény (DC agenta). Naleznete v části Další podrobnosti.
 
 ## <a name="incremental-deployment"></a>Přírůstkové nasazení
@@ -62,7 +63,7 @@ Služba agenta řadiče domény zodpovídá za inicializaci stáhnout nové zás
 
 Až službu agenta pro řadič domény obdrží nové zásady hesla ze služby Azure AD, služba ukládá zásady vyhrazené složky v kořenovém adresáři domény *sysvol* složku sdílenou složku. Služba agenta DC také sleduje tuto složku, v případě, že novější zásady replikace v od jiných služeb agenta pro řadič domény v doméně.
 
-Služba agenta řadiče domény vždy požádá o novou zásadu na spuštění služby. Po spuštění služby agenta pro řadič domény zkontroluje aktuální místně dostupné zásady stáří po hodinách. Pokud tato zásada je starší než jednu hodinu, řadič domény Agent si vyžádá nové zásady ze služby Azure AD, jak je popsáno výše. Pokud aktuální zásady není starší než jednu hodinu, řadič domény agenta dál používat tuto zásadu.
+Služba agenta řadiče domény vždy požádá o novou zásadu na spuštění služby. Po spuštění služby agenta pro řadič domény zkontroluje aktuální místně dostupné zásady stáří po hodinách. Pokud tato zásada je starší než jednu hodinu, řadič domény Agent si vyžádá nové zásady ze služby Azure AD prostřednictvím služby proxy serveru, jak je popsáno výše. Pokud aktuální zásady není starší než jednu hodinu, řadič domény agenta dál používat tuto zásadu.
 
 Pokaždé, když se zásady služby Azure AD protection heslo heslo se stáhne, tuto zásadu je specifická pro tenanta. Jinými slovy zásady pro hesla jsou vždy globální seznam zakázaných hesel Microsoft i vlastní seznam zakázaných hesel na tenanta.
 
@@ -77,6 +78,8 @@ Služba proxy jsou bezstavové. Nikdy mezipaměti zásad nebo jakéhokoli jinéh
 Služba agenta řadiče domény vždy používá nejnovější zásady hesel místně dostupné k vyhodnocení hesla uživatele. Pokud žádné zásady hesel je k dispozici na místní řadič domény, je automaticky přijat heslo. Pokud k tomu dojde, zprávu o události je zaznamenána upozornit správce.
 
 Ochrana hesel Azure AD není modul aplikace v reálném čase zásad. Může existovat zpoždění mezi při provedení změny konfigurace zásady hesla ve službě Azure AD a když se změní dosáhne a vynucování na všechny řadiče domény.
+
+Ochrana hesel Azure AD funguje jako dodatek k existující služby Active Directory zásady hesel, ne nahrazení. To zahrnuje všechny další 3. stran heslo filtr knihovny DLL, která je možné nainstalovat. Služba Active Directory vždycky vyžaduje, že všechny komponenty ověření hesla souhlas před přijetím heslo.
 
 ## <a name="foresttenant-binding-for-password-protection"></a>Vazba doménové struktury/tenanta k ochraně heslem
 

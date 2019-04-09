@@ -11,12 +11,12 @@ author: garyericson
 ms.author: garye
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: c9f8e13ad089fd40cde22bb76587b171a1c52c7b
-ms.sourcegitcommit: 223604d8b6ef20a8c115ff877981ce22ada6155a
+ms.openlocfilehash: 26248616c6b490de00028d8ecc8a0e225da0c0a6
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58361885"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59257106"
 ---
 # <a name="what-is-azure-machine-learning-service"></a>Co je služba Azure Machine Learning?
 
@@ -32,7 +32,7 @@ Díky předpovědím neboli predikcím ze strojového učení můžou být aplik
 
 Služba Azure Machine Learning poskytuje prostředí založené na cloudu, které můžete použít ke pro přípravu dat, trénování, testování, nasazení, správě a sledování modelů strojového učení.
 
-[![Pracovního postupu služby Azure Machine Learning](./media/overview-what-is-azure-ml/aml.png)](./media/overview-what-is-azure-ml/aml.png#lightbox)
+[![Apracovní postup služby Machine Learning zure](./media/overview-what-is-azure-ml/aml.png)](./media/overview-what-is-azure-ml/aml.png#lightbox)
 
 Služba Azure Machine Learning plně podporuje technologie open source. Proto můžete použít desítky tisíc open sourcové balíčky Pythonu pomocí strojového učení komponenty. Mezi příklady patří PyTorch, TensorFlow a scikit-informace.
 Podpora pro bohaté nástroje usnadňuje interaktivně zkoumat a připravit data a pak vývoji a testování modely. Mezi příklady patří [poznámkové bloky Jupyter](https://jupyter.org) nebo [Azure Machine Learning pro Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ms-toolsai.vscode-ai#overview) rozšíření.
@@ -52,10 +52,9 @@ A pomocí rozšířeného [služby machine learning kanály](concept-ml-pipeline
 Použití <a href="https://aka.ms/aml-sdk" target="_blank">hlavní Python SDK</a> a <a href="https://aka.ms/data-prep-sdk" target="_blank">sady SDK pro Data Prep</a> pro Azure Machine Learning open sourcové balíčky Pythonu, tak můžete sestavit a trénování s velmi přesnými strojového učení a modely obsáhlého learningu sami v rámci služby Azure Machine Learning pracovního prostoru.
 Můžete vybrat z mnoha strojového učení komponenty, které jsou dostupné v open sourcové balíčky Pythonu, jako jsou následující příklady:
 
-- <a href="https://scikit-learn.org/stable/" target="_blank">Scikit-learn</a>
+- <a href="https://scikit-learn.org/stable/" target="_blank">scikit-informace</a>
 - <a href="https://www.tensorflow.org" target="_blank">Tensorflow</a>
 - <a href="https://pytorch.org" target="_blank">PyTorch</a>
-- <a href="https://www.microsoft.com/en-us/cognitive-toolkit/" target="_blank">CNTK</a>
 - <a href="https://mxnet.io" target="_blank">MXNet</a>
 
 Služba Azure Machine Learning může taky autotrain modelu a automatické ladění ho za vás.

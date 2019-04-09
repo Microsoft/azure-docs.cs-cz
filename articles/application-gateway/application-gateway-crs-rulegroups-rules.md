@@ -1,23 +1,17 @@
 ---
 title: Azure Application Gateway brány firewall webových aplikací CRS a skupin pravidel CRS pravidla
 description: Tato stránka obsahuje informace o skupin pravidel CRS firewallu webových aplikací a pravidla.
-documentationcenter: na
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.custom: ''
-ms.workload: infrastructure-services
-ms.date: 4/16/2018
+ms.date: 4/8/2019
 ms.author: victorh
-ms.openlocfilehash: b45e782984f637f1b084ec757000dde9dd3a5777
-ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
+ms.openlocfilehash: 61ab41eed7703c82c2e5ef2a3b5412a9f56389ba
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56302027"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59279699"
 ---
 # <a name="list-of-web-application-firewall-crs-rule-groups-and-rules-offered"></a>Nabízí seznam skupin pravidel CRS firewallu webových aplikací a pravidla
 
@@ -37,41 +31,23 @@ V následujících tabulkách jsou skupiny pravidel a pravidla, která jsou k di
 
 |RuleId|Popis|
 |---|---|
-|911011|Pravidlo 911011|
-|911012|Pravidlo 911012|
 |911100|Metoda není povolena zásadami|
-|911013|Pravidlo 911013|
-|911014|Pravidlo 911014|
-|911015|Pravidlo 911015|
-|911016|Pravidlo 911016|
-|911017|Pravidlo 911017|
-|911018|Pravidlo 911018|
 
 
 ### <a name="crs913"></a> <p x-ms-format-detection="none">ŽÁDOST O 913 SKENER DETEKCE</p>
 
 |RuleId|Popis|
 |---|---|
-|913011|Pravidlo 913011|
-|913012|Pravidlo 913012|
 |913100|Najít User-Agent přidružené kontrolu zabezpečení|
 |913110|Najít záhlaví požadavku přidružený k kontrolu zabezpečení|
 |913120|Nalezena žádost o název souboru/argument přidružený k kontrolu zabezpečení|
-|913013|Pravidlo 913013|
-|913014|Pravidlo 913014|
 |913101|Najít související s klientem HTTP/generické uživatelského agenta|
 |913102|Najít přidružené webové prohledávacího modulu/bot uživatelského agenta|
-|913015|Pravidlo 913015|
-|913016|Pravidlo 913016|
-|913017|Pravidlo 913017|
-|913018|Pravidlo 913018|
 
 ### <a name="crs920"></a> <p x-ms-format-detection="none">REQUEST-920-PROTOCOL-ENFORCEMENT</p>
 
 |RuleId|Popis|
 |---|---|
-|920011|Pravidlo 920011|
-|920012|Pravidlo 920012|
 |920100|Neplatný požadavek HTTP řádku|
 |920130|Nepovedlo se analyzovat datovou část požadavku.|
 |920140|S více částmi. žádost subjektu selhala přísný ověřovací = PE %@{REQBODY_PROCESSOR_ERROR} BQ %@{MULTIPART_BOUNDARY_QUOTED} BW %@{MULTIPART_BOUNDARY_WHITESPACE} DB %@{MULTIPART_DATA_BEFORE} DA %@{MULTIPART_DATA_AFTER} HF %@{MULTIPART_HEADER_FOLDING} LF % @ {MULTIPART_LF_LINE}     SOUBOR %@{MULTIPART_FILE_LIMIT_EXCEEDED %@{MULTIPART_INVALID_HEADER_FOLDING IH %@{MULTIPART_INVALID_QUOTING IQ SM %@{MULTIPART_SEMICOLON_MISSING}}}}|
@@ -102,30 +78,22 @@ V následujících tabulkách jsou skupiny pravidel a pravidla, která jsou k di
 |920430|Verze protokolu HTTP není povolena zásadami|
 |920440|Adresa URL přípona souboru je omezena zásadami|
 |920450|Hlavička protokolu HTTP je omezený zásad (%@{MATCHED_VAR})|
-|920013|Pravidlo 920013|
-|920014|Pravidlo 920014|
 |920200|Rozsah = příliš mnoho polí (6 nebo více)|
 |920201|Rozsah = příliš mnoho polí pro požadavek pdf (35 nebo více)|
 |920230|Zjištěn více kódování URL|
 |920300|Požadavku chybí hlavičky Accept|
 |920271|Neplatný znak v požadavku (bez tisknutelných znaků)|
 |920320|Chybí hlavička uživatelského agenta|
-|920015|Pravidlo 920015|
-|920016|Pravidlo 920016|
 |920272|Neplatný znak v požadavku (mimo tisknutelných znaků pod ascii 127)|
-|920017|Pravidlo 920017|
-|920018|Pravidlo 920018|
 |920202|Rozsah = příliš mnoho polí pro požadavek pdf (6 nebo více)|
 |920273|Neplatný znak v požadavku (mimo velmi přísná set)|
 |920274|Neplatný znak v záhlaví požadavku (mimo velmi přísná set)|
-|920460|Pravidlo 920460|
+|920460|Neobvyklé řídicí znaky|
 
 ### <a name="crs921"></a> <p x-ms-format-detection="none">REQUEST-921-PROTOCOL-ATTACK</p>
 
 |RuleId|Popis|
 |---|---|
-|921011|Pravidlo 921011|
-|921012|Pravidlo 921012|
 |921100|Útok podvržení požadavku HTTP.|
 |921110|Požadavek HTTP pašování útoku|
 |921120|Odpověď HTTP, rozdělování útoku|
@@ -133,75 +101,43 @@ V následujících tabulkách jsou skupiny pravidel a pravidla, která jsou k di
 |921140|Útok prostřednictvím injektáže záhlaví HTTP přes záhlaví|
 |921150|Útok prostřednictvím injektáže záhlaví HTTP přes datová část (zjistil znaků CR/LF)|
 |921160|Útok prostřednictvím injektáže záhlaví HTTP přes datová část (CR/LF a zjištěna název hlavičky)|
-|921013|Pravidlo 921013|
-|921014|Pravidlo 921014|
 |921151|Útok prostřednictvím injektáže záhlaví HTTP přes datová část (zjistil znaků CR/LF)|
-|921015|Pravidlo 921015|
-|921016|Pravidlo 921016|
-|921170|Pravidlo 921170|
+|921170|Parametr HTTP znečištění|
 |921180|Znečištění HTTP parametr (% @{TX.1})|
-|921017|Pravidlo 921017|
-|921018|Pravidlo 921018|
 
 ### <a name="crs930"></a> <p x-ms-format-detection="none">REQUEST-930-APPLICATION-ATTACK-LFI</p>
 
 |RuleId|Popis|
 |---|---|
-|930011|Pravidlo 930011|
-|930012|Pravidlo 930012|
 |930100|Cesty přechodu útoku (/.. /)|
 |930110|Cesty přechodu útoku (/.. /)|
 |930120|Pokus o přístup k souboru operačního systému|
 |930130|Pokus o přístup k souboru s omezeným přístupem|
-|930013|Pravidlo 930013|
-|930014|Pravidlo 930014|
-|930015|Pravidlo 930015|
-|930016|Pravidlo 930016|
-|930017|Pravidlo 930017|
-|930018|Pravidlo 930018|
 
 ### <a name="crs931"></a> <p x-ms-format-detection="none">REQUEST-931-APPLICATION-ATTACK-RFI</p>
 
 |RuleId|Popis|
 |---|---|
-|931011|Pravidlo 931011|
-|931012|Pravidlo 931012|
 |931100|Možných útoků zahrnutí vzdáleného souboru (RFI) = parametr adresy URL pomocí IP adresy|
 |931110|Možných útoků zahrnutí vzdáleného souboru (RFI) = běžný RFI zranitelné parametr název používaný w nebo adresa URL datové části|
 |931120|Je to možné vzdáleného souboru (RFI) útok = adresy URL datové části používá w a koncové otázku Označit znak (?)|
-|931013|Pravidlo 931013|
-|931014|Pravidlo 931014|
 |931130|Je to možné vzdáleného souboru (RFI) útok = vypnout domény odkazu|
-|931015|Pravidlo 931015|
-|931016|Pravidlo 931016|
-|931017|Pravidlo 931017|
-|931018|Pravidlo 931018|
 
 ### <a name="crs932"></a> <p x-ms-format-detection="none">REQUEST-932-APPLICATION-ATTACK-RCE</p>
 
 |RuleId|Popis|
 |---|---|
-|932011|Pravidlo 932011|
-|932012|Pravidlo 932012|
 |932120|Vzdálené spouštění příkazů Windows Powershellu příkaz nenašel =|
 |932130|Spuštění vzdálených příkazů = výraz prostředí Unix nalezen|
 |932140|Spuštění vzdálených příkazů = Windows pro, nebo pokud se najde příkaz|
 |932160|Vzdálené spouštění příkazů prostředí Unix kód =|
 |932170|Spuštění vzdálených příkazů = Shellshock (CVE 2014 6271)|
 |932171|Spuštění vzdálených příkazů = Shellshock (CVE 2014 6271)|
-|932013|Pravidlo 932013|
-|932014|Pravidlo 932014|
-|932015|Pravidlo 932015|
-|932016|Pravidlo 932016|
-|932017|Pravidlo 932017|
-|932018|Pravidlo 932018|
 
 ### <a name="crs933"></a> <p x-ms-format-detection="none">REQUEST-933-APPLICATION-ATTACK-PHP</p>
 
 |RuleId|Popis|
 |---|---|
-|933011|Pravidlo 933011|
-|933012|Pravidlo 933012|
 |933100|PHP injektáže = nalezena otevírací nebo uzavírací značka|
 |933110|PHP injektáže = nalezen nahrávání souborů skriptů PHP|
 |933120|PHP injektáže = direktivě konfiguraci nalezen|
@@ -209,58 +145,42 @@ V následujících tabulkách jsou skupiny pravidel a pravidla, která jsou k di
 |933150|PHP injektáže = název funkce s vysokým rizikem PHP nalezen.|
 |933160|PHP injektáže = volání funkce PHP s vysokým rizikem, nalezena|
 |933180|PHP injektáže = proměnné funkce volání nalezen|
-|933013|Pravidlo 933013|
-|933014|Pravidlo 933014|
 |933151|PHP injektáže = najít název funkce PHP střední riziko|
-|933015|Pravidlo 933015|
-|933016|Pravidlo 933016|
 |933131|PHP injektáže = proměnné nalezen|
 |933161|PHP injektáže = PHP s nízkou hodnotu volání funkce nalezen|
 |933111|PHP injektáže = nalezen nahrávání souborů skriptů PHP|
-|933017|Pravidlo 933017|
-|933018|Pravidlo 933018|
 
 ### <a name="crs941"></a> <p x-ms-format-detection="none">REQUEST-941-APPLICATION-ATTACK-XSS</p>
 
 |RuleId|Popis|
 |---|---|
-|941011|Pravidlo 941011|
-|941012|Pravidlo 941012|
 |941100|XSS útoku zjištěna prostřednictvím libinjection|
 |941110|Filtr XSS – kategorie 1 = Vector značky skriptu|
 |941130|Filtr XSS – kategorie 3 = atribut vektoru|
 |941140|Filtr XSS – kategorie 4 = Vector URI jazyka Javascript|
 |941150|Filtr XSS – kategorie 5 = atributů zakázaného HTML|
 |941180|Uzel ověření Blacklist klíčová slova|
-|941190|Filtruje - IE XSS zjistil útoku.|
-|941200|Filtruje - IE XSS zjistil útoku.|
-|941210|Filtruje - IE XSS zjistil útoku.|
-|941220|Filtruje - IE XSS zjistil útoku.|
-|941230|Filtruje - IE XSS zjistil útoku.|
-|941240|Filtruje - IE XSS zjistil útoku.|
-|941260|Filtruje - IE XSS zjistil útoku.|
-|941270|Filtruje - IE XSS zjistil útoku.|
-|941280|Filtruje - IE XSS zjistil útoku.|
-|941290|Filtruje - IE XSS zjistil útoku.|
-|941300|Filtruje - IE XSS zjistil útoku.|
+|941190|Skriptování mezi servery pomocí šablony stylů|
+|941200|Skriptování mezi servery pomocí VML snímků|
+|941210|Obfuskovaný XSS pomocí jazyka Javascript|
+|941220|Skriptování mezi servery pomocí obfuskovaný skript jazyka Visual Basic|
+|941230|XSS pomocí značky 'embed.|
+|941240|Skriptování mezi servery pomocí atributu "import" nebo "implementace.|
+|941260|XSS tagu 'meta'|
+|941270|Skriptování mezi servery pomocí "link" href|
+|941280|XSS tagu "základní"|
+|941290|XSS tagu "aplet.|
+|941300|XSS tagu "objekt"|
 |941310|US ASCII poškozený kódování XSS filtru – zjištěna útoku.|
 |941330|Filtruje - IE XSS zjistil útoku.|
 |941340|Filtruje - IE XSS zjistil útoku.|
 |941350|Kódování UTF-7 kódování aplikace Internet Explorer XSS - zjistil útoku.|
-|941013|Pravidlo 941013|
-|941014|Pravidlo 941014|
 |941320|Je to možné XSS útoku zjistil - obslužnou rutinu značky HTML|
-|941015|Pravidlo 941015|
-|941016|Pravidlo 941016|
-|941017|Pravidlo 941017|
-|941018|Pravidlo 941018|
 
 ### <a name="crs942"></a> <p x-ms-format-detection="none">REQUEST-942-APPLICATION-ATTACK-SQLI</p>
 
 |RuleId|Popis|
 |---|---|
-|942011|Pravidlo 942011|
-|942012|Pravidlo 942012|
 |942100|SQL zjistila útoku prostřednictvím injektáže prostřednictvím libinjection|
 |942110|Útok prostřednictvím injektáže SQL: Běžné vkládání testování zjištěné|
 |942130|Útok prostřednictvím injektáže SQL: Zjištěna Tautology SQL.|
@@ -280,35 +200,21 @@ V následujících tabulkách jsou skupiny pravidel a pravidla, která jsou k di
 |942350|Zjistí vkládání MySQL UDF a manipulaci s další data nebo strukturu pokusí|
 |942360|Zjistí zřetězených základní útok prostřednictvím injektáže SQL a pokusů o zadání SQLLFI|
 |942370|Zjistí classic probings prostřednictvím injektáže SQL 2/2|
-|942013|Pravidlo 942013|
-|942014|Pravidlo 942014|
 |942150|Útok prostřednictvím injektáže SQL|
 |942410|Útok prostřednictvím injektáže SQL|
 |942430|S omezením pomocí specifikátoru detekce anomálií znak SQL (args): (12) překročil počet speciálních znaků|
 |942440|Zjištěna pořadí Komentář SQL.|
 |942450|SQL šestnáctkové kódování identifikovat|
-|942015|Pravidlo 942015|
-|942016|Pravidlo 942016|
 |942251|Zjistí injektáže HAVING|
 |942460|Výstraha detekce anomálií meta znak – opakované mimoslovní znaky|
-|942017|Pravidlo 942017|
-|942018|Pravidlo 942018|
 
 ### <a name="crs943"></a> <p x-ms-format-detection="none">REQUEST-943-APPLICATION-ATTACK-SESSION-FIXATION</p>
 
 |RuleId|Popis|
 |---|---|
-|943011|Pravidlo 943011|
-|943012|Pravidlo 943012|
 |943100|Útok záznam možné relace = nastavení hodnoty souboru Cookie ve formátu HTML|
 |943110|Útok záznam možné relace = název parametru ID relace s odkazující server vypnout domény|
 |943120|Útok záznam možné relace = název parametru ID relace se žádné odkazující server|
-|943013|Pravidlo 943013|
-|943014|Pravidlo 943014|
-|943015|Pravidlo 943015|
-|943016|Pravidlo 943016|
-|943017|Pravidlo 943017|
-|943018|Pravidlo 943018|
 
 ## <a name="owasp229"></a> OWASP_2.2.9
 
@@ -569,5 +475,3 @@ V následujících tabulkách jsou skupiny pravidel a pravidla, která jsou k di
 ## <a name="next-steps"></a>Další postup
 
 Zjistěte, jak zakázat pravidla firewallu webových aplikací si: [Přizpůsobit pravidla firewallu webových aplikací](application-gateway-customize-waf-rules-portal.md)
-
-[1]: ./media/application-gateway-integration-security-center/figure1.png

@@ -2,16 +2,16 @@
 title: Správa přístupu k Azure Site Recovery s řízením přístupu na základě rolí (RBAC) | Dokumentace Microsoftu
 description: Tento článek popisuje, jak použít řízení přístupu na základě rolí (RBAC) ke správě přístupu k Azure Site Recovery.
 ms.service: site-recovery
-ms.date: 11/27/2018
+ms.date: 04/08/2019
 author: mayurigupta13
 ms.topic: conceptual
 ms.author: mayg
-ms.openlocfilehash: 5a6ef10f03bb5e108c226fe3d68f1dec67e6164a
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 33fc2cd19152fb6cbbffb106aa058948d39555f9
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55218066"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59281705"
 ---
 # <a name="manage-site-recovery-access-with-role-based-access-control-rbac"></a>Správa přístupu k Site Recovery s řízením přístupu na základě rolí (RBAC)
 
@@ -38,7 +38,7 @@ Uživatel potřebuje následující oprávnění k dokončení replikace z nové
 > [!IMPORTANT]
 >Ujistěte se, že jsou přidány příslušné oprávnění na modelu nasazení (Resource Manager nebo Classic) používá pro nasazení prostředků.
 
-| **Typ prostředku** | **Nasazení modelu** | **Oprávnění** |
+| **Typ prostředku** | **Deployment Model (Model nasazení)** | **Oprávnění** |
 | --- | --- | --- |
 | Compute | Resource Manager | Microsoft.Compute/availabilitySets/read |
 |  |  | Microsoft.Compute/virtualMachines/read |

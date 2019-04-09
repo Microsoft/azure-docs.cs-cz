@@ -16,16 +16,16 @@ ms.date: 02/28/2019
 ms.author: sethm
 ms.reviewer: adepue
 ms.lastreviewed: 02/28/2019
-ms.openlocfilehash: c9f43eb1623ec784bd960fb182dffec48e7b0833
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.openlocfilehash: 0fe5b055665ef5a770fba71fdefcfd13b9809e37
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58481242"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59282266"
 ---
 # <a name="azure-stack-1811-update"></a>Aktualizace služby Azure Stack 1811
 
-*Platí pro: Integrované systémy Azure Stack*
+*Týká se Integrované systémy pro službu Azure Stack*
 
 Tento článek popisuje obsah balíčku 1811 aktualizace. Balíček aktualizace zahrnuje vylepšení, opravy a nové funkce pro tuto verzi sady Azure Stack. Tento článek také popisuje známé problémy v této verzi a zahrnuje odkaz, takže si můžete stáhnout aktualizace. Známé problémy jsou rozděleny do problémy přímo souvisí s proces aktualizace a problémy se sestavením (po instalaci).
 
@@ -391,6 +391,9 @@ Toto jsou známé problémy této verze sestavení po instalaci.
 <!-- #### Identity -->
 <!-- #### Marketplace -->
 
+### <a name="syslog"></a>Syslog 
+- Konfigurace syslog není trvalý prostřednictvím cyklu aktualizace výsledkem klienta syslog přijít o své konfiguraci a zprávy syslog zastavit byla přesměrována. Tento problém se vztahuje na všechny verze služby Azure Stack od verze GA klienta syslog (1809).
+Alternativním řešením je změnit konfiguraci klienta syslog po použití aktualizace služby Azure Stack.
 
 ## <a name="download-the-update"></a>Stáhnout aktualizaci.
 

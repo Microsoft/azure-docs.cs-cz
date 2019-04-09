@@ -1,17 +1,17 @@
 ---
 title: Úvod do služby Azure Cosmos DB
 description: Přečtěte si něco o službě Azure Cosmos DB. Tato globálně distribuovaná databáze s více modely je navržená s ohledem na nízkou latenci, elastickou škálovatelnost a vysokou dostupnost a nabízí nativní podporu pro data NoSQL.
-author: SnehaGunda
+author: rimman
 ms.service: cosmos-db
 ms.topic: overview
-ms.date: 03/18/2019
-ms.author: sngun
-ms.openlocfilehash: eec94217cc62f74a5075412aafcf85bf67346bf4
-ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
+ms.date: 04/08/2019
+ms.author: rimman
+ms.openlocfilehash: a965db4334e88d032f767bd7b855dea6f3ff174f
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58294361"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59280940"
 ---
 # <a name="welcome-to-azure-cosmos-db"></a>Vítá vás Azure Cosmos DB
 
@@ -97,11 +97,11 @@ Další informace o Cosmos DB základní koncepty [globální distribuce na klí
 
 Začínáme se službou Azure Cosmos DB s využitím jedné ze čtyř šablon Rychlý start:
 
-* [Začínáme s rozhraním SQL API služby Azure Cosmos DB](create-sql-api-dotnet.md)
+* [Začínáme s SQL API služby Azure Cosmos DB](create-sql-api-dotnet.md)
 * [Začínáme s Azure Cosmos DB přes rozhraní API pro MongoDB](create-mongodb-nodejs.md)
-* [Začínáme s rozhraním Cassandra API služby Azure Cosmos DB](create-cassandra-dotnet.md)
-* [Začínáme s rozhraním Gremlin API služby Azure Cosmos DB](create-graph-dotnet.md)
-* [Začínáme s rozhraním Table API služby Azure Cosmos DB](create-table-dotnet.md)
+* [Začínáme s Azure Cosmos DB Cassandra API](create-cassandra-dotnet.md)
+* [Začínáme s Azure Cosmos DB Gremlin API](create-graph-dotnet.md)
+* [Začínáme s Azure Cosmos DB Table API](create-table-dotnet.md)
 
 > [!div class="nextstepaction"]
 > [Vyzkoušejte si Azure Cosmos DB zdarma](https://azure.microsoft.com/try/cosmosdb/)

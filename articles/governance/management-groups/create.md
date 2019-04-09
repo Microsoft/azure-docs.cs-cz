@@ -7,15 +7,15 @@ ms.service: azure-resource-manager
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/04/2019
+ms.date: 04/05/2019
 ms.author: rithorn
 ms.topic: conceptual
-ms.openlocfilehash: 928cb790bd97270870618534a73316bba5eeb070
-ms.sourcegitcommit: b4ad15a9ffcfd07351836ffedf9692a3b5d0ac86
-ms.translationtype: HT
+ms.openlocfilehash: 2dd2a6e071533deef47a6482bfb9ed92953864ba
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/05/2019
-ms.locfileid: "59057434"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59259796"
 ---
 # <a name="create-management-groups-for-resource-organization-and-management"></a>Vytvoření skupin pro správu pro organizaci poskytující prostředky a správu
 
@@ -50,7 +50,7 @@ Skupina pro správu můžete vytvořit pomocí portálu, Powershellu nebo rozhra
 
 ### <a name="create-in-powershell"></a>Vytvořit v prostředí PowerShell
 
-V rámci prostředí PowerShell použijte rutinu New-AzManagementGroup:
+Pokud používáte PowerShell, použijte [New-AzManagementGroup](/powershell/module/az.resources/new-azmanagementgroup) rutina pro vytvoření nové skupiny pro správu.
 
 ```azurepowershell-interactive
 New-AzManagementGroup -GroupName 'Contoso'
@@ -58,20 +58,39 @@ New-AzManagementGroup -GroupName 'Contoso'
 
 **GroupName** vytváří jedinečný identifikátor. Toto ID používá další příkazy odkazují na tuto skupinu a není možné později změnit.
 
-Pokud jste chtěli zobrazit na webu Azure portal jiný název skupiny pro správu, měli byste přidat **DisplayName** parametr s řetězcem. Například Kdybyste chtěli vytvořit skupinu pro správu s GroupName Contoso a zobrazovaný název "Skupina společnosti Contoso", můžete využít následující rutinu:
+Pokud chcete zobrazit na webu Azure portal jiný název skupiny pro správu, přidejte **DisplayName** parametru. Například pokud chcete vytvořit skupinu pro správu s GroupName Contoso a zobrazovaný název "Skupina společnosti Contoso", použijte následující rutinu:
 
 ```azurepowershell-interactive
-New-AzManagementGroup -GroupName 'Contoso' -DisplayName 'Contoso Group' -ParentId '/providers/Microsoft.Management/managementGroups/ContosoTenant'
+New-AzManagementGroup -GroupName 'Contoso' -DisplayName 'Contoso Group'
 ```
 
-Použití **ParentId** vytvořit parametr má tuto skupinu pro správu v rámci různých pro správu.
+V předchozích ukázkách se vytvoří nové skupině pro správu ve skupině správy kořenové. Pokud chcete zadat jiné skupiny pro správu jako nadřazené, použijte **ParentId** parametru.
+
+```azurepowershell-interactive
+$parentGroup = Get-AzManagementGroup -GroupName Contoso
+New-AzManagementGroup -GroupName 'ContosoSubGroup' -ParentId $parentGroup.id
+```
 
 ### <a name="create-in-azure-cli"></a>Vytvořit v Azure CLI
 
-V Azure CLI, použijte az účet-skupiny pro správu, vytvořit příkaz.
+Používáte Azure CLI, použijte [az účet-skupiny pro správu vytvořte](/cli/azure/account/management-group?view=azure-cli-latest#az-account-management-group-create) příkaz pro vytvoření nové skupiny pro správu.
 
 ```azurecli-interactive
-az account management-group create --name 'Contoso'
+az account management-group create --name Contoso
+```
+
+**Název** vytváří jedinečný identifikátor. Toto ID používá další příkazy odkazují na tuto skupinu a není možné později změnit.
+
+Pokud chcete zobrazit na webu Azure portal jiný název skupiny pro správu, přidejte **zobrazovaný název** parametru. Například pokud chcete vytvořit skupinu pro správu s GroupName Contoso a zobrazovaný název "Skupina společnosti Contoso", použijte následující příkaz:
+
+```azurecli-interactive
+az account management-group create --name Contoso --display-name 'Contoso Group'
+```
+
+V předchozích ukázkách se vytvoří nové skupině pro správu ve skupině správy kořenové. Pokud chcete zadat jiné skupiny pro správu jako nadřazené, použijte **nadřazené** parametr a zadejte název nadřazené skupiny.
+
+```azurecli-interactive
+az account management-group create --name ContosoSubGroup --parent Contoso
 ```
 
 ## <a name="next-steps"></a>Další postup

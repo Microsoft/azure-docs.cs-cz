@@ -5,26 +5,26 @@ author: bolzmj
 ms.author: mbolz
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 01/24/2019
-ms.openlocfilehash: 7911f652341c4448a6fa5fbe88f5838389c228b2
-ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
+ms.date: 04/05/2019
+ms.openlocfilehash: 10fa2a409437c8cc48bcd1a674cc3832f086dcf2
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54912431"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59277574"
 ---
 # <a name="azure-database-for-mysql-advanced-threat-protection"></a>Azure Database for MySQL – Rozšířená ochrana před internetovými útoky
 
 Služba Advanced Threat Protection pro Azure Database for MySQL detekuje neobvyklé aktivity a potenciálně nebezpečné pokusy o přístup k databázím nebo jejich zneužití.
 
-Rozšířená ochrana před internetovými útoky je součástí nabídky Rozšířené zabezpečení dat, která je jednotný balíček pro pokročilé možnosti zabezpečení. Rozšířená ochrana před internetovými útoky jde přistupovat a spravovat přes [webu Azure portal](https://portal.azure.com) a je aktuálně ve verzi preview.
+> [!NOTE]
+> Rozšířená ochrana před internetovými útoky je ve verzi public preview.
+
+Rozšířená ochrana před internetovými útoky je součástí nabídky Rozšířené zabezpečení dat, která je jednotný balíček pro pokročilé možnosti zabezpečení. Rozšířená ochrana před internetovými útoky jde přistupovat a spravovat přes [webu Azure portal](https://portal.azure.com) nebo pomocí [rozhraní REST API](/rest/api/mysql/serversecurityalertpolicies). Tato funkce je dostupná pro servery pro obecné účely a optimalizovaný pro paměť.
 
 > [!NOTE]
 > Funkce Advanced Threat Protection je **není** dostupná v oblastech suverénních cloudů a Azure government pro následující: (Gov) – Iowa, USA, Arizona, USA (gov) US Gov Texas, USA (gov) – Virginia, US DoD – východ, US DoD – střed, Německo – střed, Německo – sever, Čína – východ, Čína – východ 2. Navštivte prosím [dostupné produkty v jednotlivých oblastech](https://azure.microsoft.com/global-infrastructure/services/) pro obecnou dostupnost.
-> 
 
-> [!NOTE]
-> Tato funkce je dostupná ve všech oblastech Azure, ve kterém je nasazená – Azure Database for MySQL pro servery pro obecné účely a optimalizovaný pro paměť.
 
 ## <a name="what-is-advanced-threat-protection"></a>Co je Advanced Threat Protection?
 
@@ -32,7 +32,7 @@ Rozšířená ochrana před internetovými útoky pro Azure Database for MySQL p
 
 ![Koncept Advanced Threat Protection](media/concepts-data-access-and-security-threat-protection/advanced-threat-protection-concept.png)
 
-## <a name="advanced-threat-protection-alerts"></a>Upozornění rozšířené ochrany před internetovými útoky 
+## <a name="advanced-threat-protection-alerts"></a>Výstrahy Advanced Threat Protection 
 Rozšířená ochrana před internetovými útoky pro Azure Database for MySQL detekuje neobvyklé aktivity a potenciálně nebezpečné pokusy o přístup k databázím nebo jejich zneužití a ji můžete spustit následující upozornění:
 - **Přístup z neobvyklého umístění**: Tato výstraha se aktivuje, když dojde ke změně vzoru přístupu k Azure Database for MySQL serveru, když někdo přihlásil k Azure Database for MySQL serveru z neobvyklé geografické lokality. V některých případech výstraha detekuje legitimní akci (nová aplikace nebo údržba prováděná vývojářem). V jiných případech výstraha detekuje škodlivou akci (bývalý zaměstnanec, externí útočník).
 - **Přístup z neobvyklého datového centra Azure**: Tato výstraha se aktivuje, když dojde ke změně vzoru přístupu k Azure Database for MySQL serveru, když někdo přihlásil k serveru z neobvyklého datového centra Azure, která už na tomto serveru se v poslední době. V některých případech výstraha detekuje legitimní akci (nová aplikace v Azure, Power BI, Azure Database v editoru dotazů MySQL). V jiných případech výstraha detekuje škodlivou akci prováděnou z prostředku/služby Azure (bývalý zaměstnanec, externí útočník).

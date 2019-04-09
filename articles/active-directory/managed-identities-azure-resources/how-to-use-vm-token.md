@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 12/01/2017
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c7354ed8362412c40d52a3895a9b4118eb7c1544
-ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
+ms.openlocfilehash: abdeb7ce5327db57b8a6ae48fdd8d8c0c81879a7
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58449373"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59258908"
 ---
 # <a name="how-to-use-managed-identities-for-azure-resources-on-an-azure-vm-to-acquire-an-access-token"></a>Jak získat přístupový token pomocí spravované identity pro prostředky Azure na Virtuálním počítači Azure 
 
@@ -79,10 +79,11 @@ GET 'http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-0
 | `Metadata` | Pole hlavičky požadavku HTTP, vyžaduje spravované identity pro prostředky Azure jako zmírnění proti útoku Server na straně požadavek proti padělání (SSRF). Tato hodnota musí být nastavená na "true", malými písmeny. |
 | `object_id` | (Volitelné) Parametr řetězce dotazu, která object_id spravovanou identitu, kterou byste chtěli token pro. Povinné, pokud se váš virtuální počítač má několik spravovaných uživatelsky přiřazené identity.|
 | `client_id` | (Volitelné) Parametr řetězce dotazu, která client_id spravovanou identitu, kterou byste chtěli token. Povinné, pokud se váš virtuální počítač má několik spravovaných uživatelsky přiřazené identity.|
+| `mi_res_id` | (Volitelné) Parametr řetězce dotazu, spravované identity, které chcete token určující mi_res_id (ID prostředku Azure). Povinné, pokud se váš virtuální počítač má několik spravovaných uživatelsky přiřazené identity. |
 
 Ukázková žádost pomocí spravované identity pro prostředky Azure koncového bodu virtuálního počítače rozšíření *(plánovaná k převedení na zastaralého v lednu 2019)*:
 
-```
+```http
 GET http://localhost:50342/oauth2/token?resource=https%3A%2F%2Fmanagement.azure.com%2F HTTP/1.1
 Metadata: true
 ```
@@ -96,10 +97,9 @@ Metadata: true
 | `object_id` | (Volitelné) Parametr řetězce dotazu, která object_id spravovanou identitu, kterou byste chtěli token pro. Povinné, pokud se váš virtuální počítač má několik spravovaných uživatelsky přiřazené identity.|
 | `client_id` | (Volitelné) Parametr řetězce dotazu, která client_id spravovanou identitu, kterou byste chtěli token. Povinné, pokud se váš virtuální počítač má několik spravovaných uživatelsky přiřazené identity.|
 
-
 Ukázkové odpovědi:
 
-```
+```json
 HTTP/1.1 200 OK
 Content-Type: application/json
 {

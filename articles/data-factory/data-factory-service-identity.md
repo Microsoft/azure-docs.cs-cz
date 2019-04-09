@@ -9,14 +9,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 02/20/2019
+ms.date: 04/08/2019
 ms.author: jingwang
-ms.openlocfilehash: 3663526dc32b0a607c9fca3d7c76496bfb5566f4
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 3c1bb38eb12ce77d172257706cd458cebda4bd8c
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57549136"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59260744"
 ---
 # <a name="managed-identity-for-data-factory"></a>Spravovaná identita pro Data Factory
 
@@ -46,7 +46,7 @@ Pokud nenajdete své datové továrny nemá spravovanou identitu spojené násle
 
 - [Generovat spravovanou identitu pomocí Powershellu](#generate-managed-identity-using-powershell)
 - [Generovat spravovanou identitu pomocí rozhraní REST API](#generate-managed-identity-using-rest-api)
-- Generovat spravovanou identitu pomocí šablony Azure Resource Manageru
+- [Generovat spravovanou identitu pomocí šablony Azure Resource Manageru](#generate-managed-identity-using-an-azure-resource-manager-template)
 - [Generovat spravovanou identitu pomocí sady SDK](#generate-managed-identity-using-sdk)
 
 >[!NOTE]
@@ -156,11 +156,11 @@ Můžete načíst spravovaná identita z webu Azure portal nebo prostřednictví
 
 ### <a name="retrieve-managed-identity-using-azure-portal"></a>Načíst spravovanou identitu pomocí webu Azure portal
 
-Můžete najít informace o spravovaných identit z webu Azure portal -> datové továrny -> Nastavení -> vlastnosti:
+Můžete najít informace o spravovaných identit z webu Azure portal -> datové továrny -> vlastnosti:
 
-- ID IDENTITY SLUŽBY
-- TENANT IDENTITY SLUŽBY
-- **ID aplikace IDENTITY služby** > zkopírujte tuto hodnotu
+- ID objektu spravované identity
+- Tenant spravované identity
+- **Spravované ID aplikace Identity** > zkopírujte tuto hodnotu
 
 ![Načíst spravovaná identita](media/data-factory-service-identity/retrieve-service-identity-portal.png)
 

@@ -15,12 +15,12 @@ ms.date: 02/06/2019
 ms.author: jeffgilb
 ms.reviewer: thoroet
 ms.lastreviewed: 02/06/2019
-ms.openlocfilehash: 520319fb21dce3cf4f3cc1b36c52657cf9eb24e7
-ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
+ms.openlocfilehash: 77dda80e538c8b742a96e7b7f81abe8650ee6b5d
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58903994"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59257293"
 ---
 # <a name="integrate-external-monitoring-solution-with-azure-stack"></a>Integrace externí řešení pro monitorování pomocí služby Azure Stack
 
@@ -30,7 +30,7 @@ Pro externí monitorování infrastruktury Azure stacku, budete muset monitorova
 - Fyzické počítače zpřístupnit stavu a informace o výstrahách pomocí řadiče pro správu základní desky (BMC).
 - Fyzická síťová zařízení můžete zpřístupnit stavu a informace o výstrahách prostřednictvím protokolu SNMP.
 
-Každé řešení Azure Stack se dodává s hostiteli životního cyklu hardwaru. Tento hostitel spouští monitorování softwaru výrobce OEM dodavatele hardwaru pro fyzické servery a síťová zařízení. V případě potřeby můžete obejít tato řešení pro monitorování a přímo integrovat se stávajícími řešeními pro monitorování ve vašem datovém centru.
+Každé řešení Azure Stack se dodává s hostiteli životního cyklu hardwaru. Tento hostitel spouští monitorování softwaru výrobce OEM dodavatele hardwaru pro fyzické servery a síťová zařízení. Zkontrolujte u svého poskytovatele výrobce OEM, pokud jejich řešení monitorování můžete integrovat se stávajícími řešeními monitorování ve vašem datovém centru.
 
 > [!IMPORTANT]
 > Externí řešení pro monitorování, které používáte, musí být bez agentů. Nemůžete instalovat agenty třetích stran v Azure stacku komponenty.
@@ -40,7 +40,7 @@ Následující diagram znázorňuje tok přenosů mezi systémech pro Azure Stac
 ![Diagram znázorňující provoz mezi Azure Stack, monitorování a vytváření tiketů řešení.](media/azure-stack-integrate-monitor/MonitoringIntegration.png)  
 
 > [!NOTE]
-> Externí integraci přímo s fyzickými servery a síťová zařízení monitorování není povolené a blokované aktivně pomocí seznamů řízení přístupu (ACL). 
+> Externí integraci přímo s fyzickými servery monitorování není povolené a blokované aktivně pomocí seznamů řízení přístupu (ACL).  Externí monitorování integraci přímo s fyzických síťových zařízení je podporována, Zkontrolujte prosím se svým poskytovatelem OEM o tom, jak povolit tuto funkci.
 
 Tento článek vysvětluje, jak Azure Stack integrujte externí monitorovacích řešení, jako je System Center Operations Manager a Nagios. Zahrnuje také tom, jak pracovat s výstrahami prostřednictvím kódu programu pomocí Powershellu nebo pomocí volání rozhraní REST API.
 

@@ -12,22 +12,22 @@ ms.workload: azure-vs
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/04/2019
+ms.date: 04/08/2019
 ms.author: sethm
 ms.reviewer: unknown
 ms.lastreviewed: 01/04/2019
-ms.openlocfilehash: 274240aab54f27f36734516026e9feebf64ae4b5
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: da17d114c1ffb920fbaae85a6cdcbc35a66631a4
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55248108"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59257990"
 ---
 # <a name="install-visual-studio-and-connect-to-azure-stack"></a>Instalace sady Visual Studio a připojte se ke službě Azure Stack
 
-*Platí pro: Azure Stack integrované systémy a Azure Stack Development Kit*
+*Týká se Azure Stack integrované systémy a Azure Stack Development Kit*
 
-Visual Studio můžete použít k zápisu a nasazení Azure Resource Manageru [šablony](azure-stack-arm-templates.md) do služby Azure Stack. Kroky v tomto článku vás provede instalací sady Visual Studio na [Azure Stack](azure-stack-connect-azure-stack.md#connect-to-azure-stack-with-remote-desktop), nebo externí počítače, pokud máte v plánu použít službu Azure Stack prostřednictvím [VPN](azure-stack-connect-azure-stack.md#connect-to-azure-stack-with-vpn).
+Visual Studio můžete použít k zápisu a nasazení Azure Resource Manageru [šablony](azure-stack-arm-templates.md) do služby Azure Stack. Kroky v tomto článku popisují, jak nainstalovat sadu Visual Studio na [Azure Stack](azure-stack-connect-azure-stack.md#connect-to-azure-stack-with-remote-desktop), nebo externí počítače, pokud máte v plánu použít službu Azure Stack prostřednictvím [VPN](azure-stack-connect-azure-stack.md#connect-to-azure-stack-with-vpn).
 
 ## <a name="install-visual-studio"></a>Instalace sady Visual Studio
 
@@ -39,9 +39,9 @@ Visual Studio můžete použít k zápisu a nasazení Azure Resource Manageru [�
 
 4. Odinstalace **prostředí Azure PowerShell** , který je nainstalován jako součást sady Azure SDK.
 
-    ![Postup instalace – snímek obrazovky z instalace webové platformy](./media/azure-stack-install-visual-studio/image1.png) 
+    ![Postup instalace – snímek obrazovky z instalace webové platformy](./media/azure-stack-install-visual-studio/image1.png)
 
-5. [Instalace PowerShellu pro Azure Stack](azure-stack-powershell-install.md)
+5. [Instalace Powershellu pro Azure Stack](azure-stack-powershell-install.md)
 
 6. Po dokončení instalace restartujte operační systém.
 
@@ -65,9 +65,7 @@ Po přihlášení můžete [nasazení šablon](azure-stack-deploy-template-visua
 
 3. Rozbalte **prostředí** v **navigačním podokně** a vyberte **účty**.
 
-4. Vyberte **přidat**a zadejte koncový bod uživatele Azure Resource Manageru.  
-  Pro Azure Stack Development Kit, adresa URL je: `https://management.local.azurestack/external`.  
-  Pro integrované systémy Azure Stack, adresa URL je: `https://management.[Region}.[External FQDN]`.
+4. Vyberte **přidat**a zadejte koncový bod uživatele Azure Resource Manageru. Pro Azure Stack Development Kit, adresa URL je: `https://management.local.azurestack/external`.  Pro integrované systémy Azure Stack, adresa URL je: `https://management.[Region}.[External FQDN]`.
 
     ![X](./media/azure-stack-install-visual-studio/image5.png)
 
@@ -79,17 +77,17 @@ Po přihlášení můžete [nasazení šablon](azure-stack-deploy-template-visua
 
 6. Vyberte **Průzkumníka cloudu** z **zobrazení** nabídky.
 
-1. Vyberte **přidat účet** a přihlaste se pomocí svých přihlašovacích údajů služby AD FS.  
+7. Vyberte **přidat účet** a přihlaste se pomocí svých přihlašovacích údajů služby AD FS.  
 
     ![Průzkumník cloudu](./media/azure-stack-install-visual-studio/image7.png)
 
-    Průzkumník cloudu se dotazuje dostupná předplatná. Můžete vybrat jednu předplatné k dispozici pro správu.
+    Průzkumník cloudu se dotazuje dostupná předplatná. Můžete vybrat předplatné k dispozici pro správu.
 
     ![Průzkumník cloudu](./media/azure-stack-install-visual-studio/image8.png)
 
-8. Procházení stávající prostředky, skupiny prostředků nebo nasazení šablon.
+8. Procházet vaše stávající prostředky, skupiny prostředků nebo nasazení šablon.
 
 ## <a name="next-steps"></a>Další postup
 
- - Další informace o sadě Visual Studio [vedle sebe](https://msdn.microsoft.com/library/ms246609.aspx) s jinými verzemi sady Visual Studio.
- - [Vývoj šablon pro Azure Stack](azure-stack-develop-templates.md).
+- Další informace o sadě Visual Studio [vedle sebe](/visualstudio/install/install-visual-studio-versions-side-by-side) s jinými verzemi sady Visual Studio.
+- [Vývoj šablon pro Azure Stack](azure-stack-develop-templates.md).

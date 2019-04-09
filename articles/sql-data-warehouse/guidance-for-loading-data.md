@@ -9,22 +9,21 @@ ms.topic: conceptual
 ms.subservice: implement
 ms.date: 04/17/2018
 ms.author: cakarst
-ms.reviewer: igorstan
-ms.openlocfilehash: 0f35e14686c2bd3f87faf51ed6a54728f2a54641
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.reviewer: jrasnick
+ms.custom: seoapril2019
+ms.openlocfilehash: a8cb3714d11994b36991e56df7fc0f97d08c89ff
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55466026"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59256902"
 ---
 # <a name="best-practices-for-loading-data-into-azure-sql-data-warehouse"></a>Osvědčené postupy načítání dat do služby Azure SQL Data Warehouse
-Doporučení a optimalizace výkonu pro načítání dat do služby Azure SQL Data Warehouse. 
 
-- Další informace o PolyBase a návrhu procesu ELT (extrakce, načítání a transformace) najdete v tématu [Návrh ELT pro službu SQL Data Warehouse](design-elt-data-loading.md).
-- Kurz načítání najdete v tématu [Použití PolyBase k načítání dat z úložiště objektů blob v Azure do služby Azure SQL Data Warehouse](load-data-from-azure-blob-storage-using-polybase.md).
-
+Doporučení a optimalizace výkonu pro načítání dat do služby Azure SQL Data Warehouse.
 
 ## <a name="preparing-data-in-azure-storage"></a>Příprava dat v Azure Storage
+
 Vrstvu úložiště i datový sklad uložte společně do stejného umístění, abyste minimalizovali latenci.
 
 Při exportu dat do formátu souboru ORC může dojít k chybám s nedostatkem paměti Java, pokud se zde nacházejí velké textové sloupce. Toto omezení můžete obejít tím, že importujete jen podmnožinu sloupců.
@@ -42,12 +41,14 @@ Největší rychlosti při načítání dosáhnete, když budete spouštět vžd
 Pokud chcete spouštět načítání s odpovídajícími výpočetními prostředky, vytvořte uživatele načítání vyhrazené pro spouštění načítání. Každého uživatele načítání přiřaďte ke konkrétní třídě prostředků. Pokud chcete spustit načítání, přihlaste se jako jeden z uživatelů načítání a pak spusťte načítání. Načítání se spustí s využitím třídy prostředků tohoto uživatele.  Tato metoda je jednodušší než se pokoušet o změnu třídy prostředků uživatele podle aktuálních potřeb třídy prostředků.
 
 ### <a name="example-of-creating-a-loading-user"></a>Příklad vytvoření uživatele načítání
+
 Tento příklad vytvoří uživatele načítání pro třídu prostředků staticrc20. Prvním krokem je **připojení k předloze** a vytvoření přihlášení.
 
 ```sql
    -- Connect to master
    CREATE LOGIN LoaderRC20 WITH PASSWORD = 'a123STRONGpassword!';
 ```
+
 Připojte se k datovému skladu a vytvořte uživatele. Následující kód předpokládá, že jste připojeni k databázi mySampleDataWarehouse. Ukazuje způsob vytvoření uživatele jménem LoaderRC20 a udělení oprávnění k databázi. Poté přidá uživatele jako člena databázové role staticrc20.  
 
 ```sql
@@ -56,7 +57,8 @@ Připojte se k datovému skladu a vytvořte uživatele. Následující kód pře
    GRANT CONTROL ON DATABASE::[mySampleDataWarehouse] to LoaderRC20;
    EXEC sp_addrolemember 'staticrc20', 'LoaderRC20';
 ```
-Pokud chcete spustit načítání s prostředky pro třídy prostředků staticRC20, stačí se přihlásit jako LoaderRC20 a spustit načítání.
+
+Pokud chcete spustit načítání s prostředky pro třídy prostředků staticRC20, přihlaste se jako LoaderRC20 a spustit načítání.
 
 Spouštějte načítání v rámci statických, a ne dynamických, tříd prostředků. Použití statických tříd prostředků zaručuje stejné prostředky bez ohledu na to váš [jednotkách datového skladu](what-is-a-data-warehouse-unit-dwu-cdwu.md). Pokud použijete dynamickou třídu prostředků, budou se prostředky lišit v závislosti na vaší úrovni služby. V případě dynamických tříd znamená nižší úroveň služby, že pro vašeho uživatele načítání pravděpodobně musíte použít větší třídu prostředků.
 
@@ -73,7 +75,6 @@ Představte si například schémata databáze schema_A pro oddělení A a schem
 
 Uživatelé user_A a user_B jsou nyní vyloučení ze schématu příslušného druhého oddělení.
 
-
 ## <a name="loading-to-a-staging-table"></a>Načítání do pracovní tabulky
 
 Pokud chcete při přesunu dat do tabulky datového skladu dosáhnout největší načítací rychlosti, načtěte data do pracovní tabulky.  Pracovní tabulku definujte jako haldu a jako způsob distribuce použijte kruhové dotazování (round robin). 
@@ -87,7 +88,6 @@ Indexy columnstore vyžadují hodně paměti, aby mohly komprimovat data do vyso
 - Pokud chcete zajistit, aby měl nahrávající uživatel dostatek paměti pro dosažení maximální míry komprese, použijte uživatele načítání, kteří jsou členy střední nebo velké třídy prostředků. 
 - Načtěte dostatek dat pro úplně naplnění nových skupin řádků. Při hromadném načítání dat se každých 1 048 576 řádků zkomprimuje přímo do indexu columnstore jako kompletní skupina řádků. Při načítání méně než 102 400 řádků se řádky odesílají do tabulky deltastore, kde se řádky uchovávají v indexu B-stromu. Pokud načtete příliš málo řádků, můžou se všechny dostat do indexu deltastore, a nebudou se okamžitě komprimovat do formátu columnstore.
 
-
 ## <a name="handling-loading-failures"></a>Zpracování chyb načítání
 
 Načtení s použitím externí tabulky může selhat s chybou *Query aborted-- the maximum reject threshold was reached while reading from an external source* (Dotaz byl přerušen – při čtení z externího zdroje byla dosažena maximální prahová hodnota pro odmítnutí). Tato zpráva znamená, že vaše externí data obsahují nezapsané záznamy. Datový záznam se považuje za nezapsaný, pokud se typy dat nebo čísla sloupců neshodují s definicemi sloupců externí tabulky nebo pokud data neodpovídají zadanému formátu externího souboru. 
@@ -95,6 +95,7 @@ Načtení s použitím externí tabulky může selhat s chybou *Query aborted-- 
 Pokud chcete nezapsané záznamy opravit, ujistěte se, že jsou definice formátů externí tabulky a externího souboru správné a že externí data těmto definicím odpovídají. V případě nezapsané podmnožiny externích datových záznamů se můžete rozhodnout, že ve svých dotazech, které využívají možnosti zamítnutí v příkazu CREATE EXTERNAL TABLE, chcete tyto záznamy zamítnout.
 
 ## <a name="inserting-data-into-a-production-table"></a>Vložení dat do provozní tabulky
+
 Při jednorázovém načtení malé tabulky [příkazem INSERT](/sql/t-sql/statements/insert-transact-sql) nebo i při pravidelně se opakujícím načítání funkcí look-up pravděpodobně vystačíte s následujícím příkazem: `INSERT INTO MyLookup VALUES (1, 'Type 1')`.  Vkládání jednotlivých záznamů ale není tak účinné jako hromadné načtení. 
 
 Pokud máte za den tisíce nebo více samostatných vložení, vytvořte z nich dávku, abyste je mohli načíst hromadně.  Vyvíjejte své procesy tak, aby samostatná vkládání připojovaly do souboru, a pak vytvořte další proces, který tento soubor bude pravidelně načítat.
@@ -112,6 +113,7 @@ create statistics [YearMeasured] on [Customer_Speed] ([YearMeasured]);
 ```
 
 ## <a name="rotate-storage-keys"></a>Obměna klíčů úložiště
+
 Osvědčeným postupem zabezpečení je pravidelně měnit přístupový klíč k úložišti objektů blob. Ke svému účtu úložiště objektů Blob máte dva klíče úložiště, abyste je mohli střídat.
 
 Obměna klíčů účtu služby Azure Storage:
@@ -134,9 +136,11 @@ ALTER DATABASE SCOPED CREDENTIAL my_credential WITH IDENTITY = 'my_identity', SE
 
 V příslušných externích zdrojích dat se nevyžadují žádné další změny.
 
-
 ## <a name="next-steps"></a>Další postup
-Informace o monitorování datové zátěže najdete v tématu [Monitorování úlohy pomocí zobrazení dynamické správy](sql-data-warehouse-manage-monitor.md).
+
+- Další informace o PolyBase a návrhu procesu ELT (extrakce, načítání a transformace) najdete v tématu [Návrh ELT pro službu SQL Data Warehouse](design-elt-data-loading.md).
+- Kurz načítání najdete v tématu [Použití PolyBase k načítání dat z úložiště objektů blob v Azure do služby Azure SQL Data Warehouse](load-data-from-azure-blob-storage-using-polybase.md).
+- Informace o monitorování datové zátěže najdete v tématu [Monitorování úlohy pomocí zobrazení dynamické správy](sql-data-warehouse-manage-monitor.md).
 
 
 

@@ -4,22 +4,20 @@ description: Popisuje funkce pro použití v šabloně Azure Resource Manageru p
 services: azure-resource-manager
 documentationcenter: na
 author: tfitzmac
-manager: timlt
-editor: tysonn
 ms.assetid: ''
 ms.service: azure-resource-manager
 ms.devlang: na
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/11/2019
+ms.date: 04/08/2019
 ms.author: tomfitz
-ms.openlocfilehash: 07221e5d93c004a2542adfc3a5374fd75ca34b31
-ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
+ms.openlocfilehash: bf9faa34c1f0923761ce583c22ba4084d7bd42a8
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58621401"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59278781"
 ---
 # <a name="string-functions-for-azure-resource-manager-templates"></a>Řetězec funkce pro šablony Azure Resource Manageru
 
@@ -29,31 +27,32 @@ Resource Manager poskytuje následující funkce pro práci s řetězci:
 * [base64ToJson](#base64tojson)
 * [base64ToString](#base64tostring)
 * [concat](#concat)
-* [Obsahuje](#contains)
+* [obsahuje](#contains)
 * [dataUri](#datauri)
 * [dataUriToString](#datauritostring)
-* [prázdný](#empty)
+* [Prázdná](#empty)
 * [endsWith](#endswith)
 * [první](#first)
+* [formát](#format)
 * [identifikátor GUID](#guid)
 * [indexOf](#indexof)
-* [last](#last)
+* [poslední](#last)
 * [lastIndexOf](#lastindexof)
 * [Délka](#length)
 * [newGuid](#newguid)
 * [padLeft](#padleft)
 * [nahradit](#replace)
-* [skip](#skip)
+* [přeskočit](#skip)
 * [split](#split)
 * [startsWith](#startswith)
-* [řetězec](#string)
+* [string](#string)
 * [dílčí řetězec](#substring)
 * [Take](#take)
 * [toLower](#tolower)
 * [toUpper](#toupper)
-* [trim](#trim)
+* [Trim](#trim)
 * [uniqueString](#uniquestring)
-* [uri](#uri)
+* [identifikátor uri](#uri)
 * [uriComponent](#uricomponent)
 * [uriComponentToString](#uricomponenttostring)
 * [utcNow](#utcnow)
@@ -714,9 +713,66 @@ Výstup z předchozího příkladu s výchozími hodnotami je:
 | arrayOutput | String | jeden |
 | stringOutput | String | O |
 
+## <a name="format"></a>formát
+
+`format(formatString, arg1, arg2, ...)`
+
+Umožňuje vytvořit formátovaný řetězec ze vstupních hodnot.
+
+### <a name="parameters"></a>Parametry
+
+| Parametr | Požaduje se | Typ | Popis |
+|:--- |:--- |:--- |:--- |
+| formatString | Ano | string | Složený formátovací řetězec. |
+| arg1 | Ano | řetězec, celé číslo nebo logickou hodnotu | Hodnota pro zahrnutí do formátovaného řetězce. |
+| Další argumenty | Ne | řetězec, celé číslo nebo logickou hodnotu | Další hodnoty pro zahrnutí do formátovaného řetězce. |
+
+### <a name="remarks"></a>Poznámky
+
+Tato funkce slouží k formátování řetězce ve vaší šabloně. Použije formátování stejné možnosti jako [System.String.Format](/dotnet/api/system.string.format) metoda v rozhraní .NET.
+
+### <a name="examples"></a>Příklady
+
+Následující příklad šablony ukazuje způsob použití funkce formátu.
+
+```json
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "greeting": {
+            "type": "string",
+            "defaultValue": "Hello"
+        },
+        "name": {
+            "type": "string",
+            "defaultValue": "User"
+        },
+        "numberToFormat": {
+            "type": "int",
+            "defaultValue": 8175133
+        }
+    },
+    "resources": [
+    ],
+    "outputs": {
+        "formatTest": {
+            "type": "string",
+            "value": "[format('{0}, {1}. Formatted number: {2:N0}', parameters('greeting'), parameters('name'), parameters('numberToFormat'))]"
+        }
+    }
+}
+```
+
+Výstup z předchozího příkladu s výchozími hodnotami je:
+
+| Název | Typ | Hodnota |
+| ---- | ---- | ----- |
+| formatTest | String | Dobrý den, uživateli. Naformátovaného čísla: 8,175,133 |
+
 ## <a name="guid"></a>identifikátor GUID
 
-`guid (baseString, ...)`
+`guid(baseString, ...)`
 
 Vytvoří hodnotu ve formátu globálně jedinečný identifikátor na základě hodnot, které jsou poskytovány jako parametry.
 
@@ -1809,7 +1865,7 @@ Následující příklad ukazuje, jak vytvořit jedinečný název pro účet ú
     ...
 ```
 
-Pokud je potřeba vytvořit nový jedinečný název pokaždé, když nasazení šablony a záměr aktualizace prostředku není, můžete použít [utcNow](#utcnow) funkci s uniqueString. Tento přístup můžete použít v testovacím prostředí. Příklad najdete v tématu [utcNow](#utcnow).
+Pokud je potřeba vytvořit nový jedinečný název pokaždé, když šablonu nasadit a nechcete aktualizovat prostředek, můžete použít [utcNow](#utcnow) funkci s uniqueString. Tento přístup můžete použít v testovacím prostředí. Příklad najdete v tématu [utcNow](#utcnow).
 
 ### <a name="return-value"></a>Návratová hodnota
 

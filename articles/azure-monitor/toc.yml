@@ -86,12 +86,6 @@ items:
       href: platform/data-ingestion-time.md
     - name: Vlastní metriky do úložiště metrik
       href: platform/metrics-custom-overview.md
-  - name: Analýza dat protokolů
-    items:
-    - name: Dotazy na protokoly
-      href: log-query/log-query-overview.md
-    - name: Portály dotazů na protokoly
-      href: log-query/portals.md
   - name: Zabezpečení dat
     items:
     - name: Protokolování dat
@@ -327,6 +321,8 @@ items:
           items:
           - name: Profiler pro linuxové aplikační služby (Preview)
             href: app/profiler-aspnetcore-linux.md
+        - name: ASP.NET Core bez sady Visual Studio
+          href: app/asp-net-core-no-visualstudio.md
         - name: Konzola
           href: app/console.md
         - name: Řídicí panel aplikací
@@ -611,6 +607,8 @@ items:
           href: insights/vminsights-maps.md
         - name: Monitorování výkonu
           href: insights/vminsights-performance.md
+        - name: Použití sešitů
+          href: insights/vminsights-workbooks.md
         - name: Dotazy na data s využitím Log Analytics
           href: insights/vminsights-log-search.md
         - name: Zákaz monitorování
@@ -680,18 +678,20 @@ items:
       href: platform/grafana-plugin.md
   - name: Analýza dat
     items:
-    - name: Začínáme s Průzkumníkem metrik
-      href: platform/metrics-getting-started.md
-    - name: Pokročilé funkce Průzkumníku metrik
-      href: platform/metrics-charts.md
-    - name: Příklady grafů metrik
-      href: platform/metric-chart-samples.md
-    - name: Zobrazení událostí v protokolu aktivit
-      href: ../azure-resource-manager/resource-group-audit.md
-    - name: Zobrazení oznámení služby
-      href: platform/service-notifications.md
-    - name: Dotazy na data protokolů
+    - name: Metriky
       items:
+      - name: Začínáme s Průzkumníkem metrik
+        href: platform/metrics-getting-started.md
+      - name: Pokročilé funkce Průzkumníku metrik
+        href: platform/metrics-charts.md
+      - name: Příklady grafů metrik
+        href: platform/metric-chart-samples.md
+    - name: Logs
+      items:
+      - name: Dotazy na protokoly
+        href: log-query/log-query-overview.md
+      - name: Portály dotazů na protokoly
+        href: log-query/portals.md
       - name: Dokumentace k dotazovacímu jazyku
         href: log-query/query-language.md
       - name: Rozdíly v jazycích
@@ -766,6 +766,10 @@ items:
         href: platform/flow-tutorial.md
       - name: Rozhraní API pro prohledávání protokolů
         href: https://dev.loganalytics.io/
+    - name: Zobrazení událostí v protokolu aktivit
+      href: ../azure-resource-manager/resource-group-audit.md
+    - name: Zobrazení oznámení služby
+      href: platform/service-notifications.md
   - name: Reakce na incidenty
     items:
     - name: Výstrahy
@@ -1067,9 +1071,9 @@ items:
     href: https://stackoverflow.com/search?q=monitoring
   - name: Ukázky kódů
     href: https://azure.microsoft.com/resources/samples/?service=monitor
-ms.openlocfilehash: 9c0f17f113b7940f83e3d3b5b2161fe9f88c01ac
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.openlocfilehash: b2021ca33265e06f882f04f726a889ddae0fd91f
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58886637"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59261152"

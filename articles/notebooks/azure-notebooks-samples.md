@@ -6,19 +6,19 @@ documentationcenter: ''
 author: kraigb
 manager: douge
 ms.assetid: 07e95905-0f1b-49ce-a0f9-820f61952278
-ms.service: azure
+ms.service: azure-notebooks
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/11/2019
 ms.author: kraigb
-ms.openlocfilehash: 86821e2082deb500f050eeab827dcee593082661
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 50e24ce29b5378b3aa930c54824fd444cd823b46
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57776355"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59279886"
 ---
 # <a name="discover-and-use-sample-notebooks"></a>Zjistit a použít ukázkové poznámkové bloky
 
@@ -43,5 +43,5 @@ Jakmile identifikujete Poznámkový blok, který chcete prozkoumat, tady je něk
 
 - [Postup: Konfigurace a správa projektů](configure-manage-azure-notebooks-projects.md)
 - [Postup: Práce s datovými soubory](work-with-project-data-files.md)
-- [Postup: Přístup k prostředkům data](access-data-resources-jupyter-notebooks.md)
-- [Postup: Použití Azure Machine Learning Services](use-machine-learning-services-jupyter-notebooks.md)
+- [Postup: Přístup k datovým prostředkům](access-data-resources-jupyter-notebooks.md)
+- [Postup: Použití služeb Azure Machine Learning Services](use-machine-learning-services-jupyter-notebooks.md)

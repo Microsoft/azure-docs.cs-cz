@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.service: cost-management
 manager: micflan
 ms.custom: ''
-ms.openlocfilehash: d9c5d731120f939cf7fb28c718cc4159a3702e44
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.openlocfilehash: e4c5607089efb247620766fb311b97cae3772770
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58518775"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59279869"
 ---
 # <a name="migrate-from-enterprise-agreement-to-microsoft-customer-agreement-apis"></a>Migraci na smlouvu Enterprise pro smlouvy zákazníků společnosti Microsoft
 
@@ -81,7 +81,7 @@ Pokud použijete všechny existující rozhraní API EA, musíte je pro faktura�
 | Účel | Staré nabídky | Nová nabídka |
 | --- | --- | --- |
 | Cloudyn | [Cloudyn.com](https://www.cloudyn.com) | [Azure Cost Management](https://azure.microsoft.com/services/cost-management/) |
-| Power BI | [Microsoft Consumption Insights](/power-bi/desktop-connect-azure-consumption-insights) obsah balíčku a konektoru | [Aplikace Microsoft Azure Consumption Insights Power BI](https://appsource.microsoft.com/product/power-bi/pbi_azureconsumptioninsights.pbi-azure-consumptioninsights?tab=overview) a [ konektoru Azure Consumption Insights](/power-bi/desktop-connect-azure-consumption-insights) |
+| Power BI | [Microsoft Consumption Insights](/power-bi/desktop-connect-azure-consumption-insights) obsah balíčku a konektoru | [Aplikace Microsoft Azure Consumption Insights Power BI](https://appsource.microsoft.com/product/power-bi/pbi_azureconsumptioninsights.pbi-azure-consumptioninsights?tab=overview) a [konektoru Azure Consumption Insights](/power-bi/desktop-connect-azure-consumption-insights) |
 
 ## <a name="apis-to-get-balance-and-credits"></a>Rozhraní API pro získání zůstatek a kredity
 
@@ -220,15 +220,15 @@ Název vlastnosti obsahující pole záznamů využití změněn od dat k _hodno
 | Měrná jednotka | unitOfMeasure | Přesné řetězcové hodnoty se liší. |
 | usageEndDate | date | &nbsp;  |
 | Rok | Žádný | Analyzuje rok od data. |
-| (nové)  | billingCurrency | Měna použitá pro příslušný poplatek. |
-| (nové)  | billingProfileId | Jedinečné ID pro fakturační profil (stejně jako s registrací). |
-| (nové)  | billingProfileName | Název fakturačního profilu (stejně jako s registrací). |
-| (nové)  | chargeType | Slouží k rozlišení využití služeb Azure, využití webu Marketplace a nákupy. |
-| (nové)  | invoiceId | Jedinečné ID pro fakturu. Prázdná pro aktuální, otevřete měsíce. |
-| (nové)  | publisherType | Typ vydavatele pro nákupy od jiných. Prázdná pro využití. |
-| (nové)  | serviceFamily | Typ nákupu. Prázdná pro využití. |
-| (nové)  | servicePeriodEndDate | Datum ukončení zakoupené služby. |
-| (nové)  | servicePeriodStartDate | Počáteční datum zakoupené služby. |
+| (nové) | billingCurrency | Měna použitá pro příslušný poplatek. |
+| (nové) | billingProfileId | Jedinečné ID pro fakturační profil (stejně jako s registrací). |
+| (nové) | billingProfileName | Název fakturačního profilu (stejně jako s registrací). |
+| (nové) | chargeType | Slouží k rozlišení využití služeb Azure, využití webu Marketplace a nákupy. |
+| (nové) | invoiceId | Jedinečné ID pro fakturu. Prázdná pro aktuální, otevřete měsíce. |
+| (nové) | publisherType | Typ vydavatele pro nákupy od jiných. Prázdná pro využití. |
+| (nové) | serviceFamily | Typ nákupu. Prázdná pro využití. |
+| (nové) | servicePeriodEndDate | Datum ukončení zakoupené služby. |
+| (nové) | servicePeriodStartDate | Počáteční datum zakoupené služby. |
 
 ## <a name="billing-periods-api-replaced-by-invoices-api"></a>Rozhraní API období nahrazuje faktury rozhraní API pro fakturaci
 
@@ -369,11 +369,11 @@ Pole v starší API Enterprise získáte seznam ceny v následující tabulce. O
 
 | Původní vlastnosti | Nové vlastnosti | Poznámky |
 | --- | --- | --- |
-| billingPeriodId  | _Není k dispozici_ | Není k dispozici. Pro smlouvy Microsoft zákazníka nahradí koncept billingPeriodId faktury a přidružené ceníku. |
+| billingPeriodId  | _Neuvedeno_ | Není k dispozici. Pro smlouvy Microsoft zákazníka nahradí koncept billingPeriodId faktury a přidružené ceníku. |
 | meterId  | meterId | &nbsp;  |
 | unitOfMeasure  | unitOfMeasure | Přesné řetězcové hodnoty se mohou lišit. |
 | includedQuantity  | includedQuantity | Není k dispozici pro služby v Microsoft zákaznických smluv. |
-| PartNumber  | _Není k dispozici_ | Místo toho použijte kombinaci productOrderName (stejné jako offerId) a meterid. |
+| partNumber  | _Neuvedeno_ | Místo toho použijte kombinaci productOrderName (stejné jako offerId) a meterid. |
 | UnitPrice  | UnitPrice | Cena za jednotku platí za služby využité v Microsoft zákaznických smluv. |
 | Kód měny  | pricingCurrency | Microsoft zákaznických smluv mají cenu reprezentace v cenách měn a fakturační Měna. Kód měny odpovídá pricingCurrency ve smlouvách Microsoft zákazníka. |
 | offerId | productOrderName | Místo OfferId můžete použít productOrderName ale není stejná jako OfferId. Ale productOrderName a měření určit, že ceny ve smlouvách Microsoft zákazníků týkající se meterId a Offerid ve starší verzi registrace. |
@@ -430,14 +430,14 @@ Starší vlastnosti [rozhraní API Azure Resource Manageru cena list](/rest/api/
 
 | Staré Azure Resource Manageru cena list rozhraní API vlastnost  | Vlastnosti nového rozhraní API služeb Microsoft zákazníka smlouvy cena list   | Popis |
 | --- | --- | --- |
-| ID měření | _MeterId_ | Jedinečný identifikátor pro měřidla. Stejné jako meterId. |
+| ID měření | _meterId_ | Jedinečný identifikátor pro měřidla. Stejné jako meterId. |
 | Název měřiče | meterName | Název měřiče. Představuje nasaditelný prostředky služeb Azure. |
 | Kategorie měřiče  | service | Název kategorie klasifikace pro měřidla. Stejné jako u služby Microsoft zákazníka smlouvy ceníku. Přesné řetězcové hodnoty se liší. |
 | Podkategorie měřiče | meterSubCategory | Název dílčí klasifikace v rámci kategorie měřiče. Podle klasifikace rozdílů mezi sadu základních funkcí ve službě. Například základní SQL DB vs. standardní databázi SQL. |
 | Oblast měřiče | meterRegion | &nbsp;  |
-| Jednotka | _Není k dispozici_ | Může být analyzován z unitOfMeasure. |
+| Jednotka | _Neuvedeno_ | Může být analyzován z unitOfMeasure. |
 | Jednotka měření | unitOfMeasure | &nbsp;  |
-| Číslo části | _Není k dispozici_ | Místo partNumber použijte k jednoznačné identifikaci cena za fakturační profil productOrderName a MeterId. Na faktuře MCA místo partNumber v MCA faktury jsou uvedena pole. |
+| Číslo části | _Neuvedeno_ | Místo partNumber použijte k jednoznačné identifikaci cena za fakturační profil productOrderName a MeterId. Na faktuře MCA místo partNumber v MCA faktury jsou uvedena pole. |
 | Jednotková cena | UnitPrice | Cena za jednotku smlouvy zákazníka se společností Microsoft. |
 | Kód měny | pricingCurrency | Microsoft zákaznických smluv představují ceny v měně ceny a fakturace měny. Kód měny je stejný jako pricingCurrency ve smlouvách Microsoft zákazníka. |
 | Zahrnuté množství | includedQuantity | Není k dispozici ke službám ve smlouvách Microsoft zákazníka. Zobrazit s hodnotou nula. |
@@ -462,7 +462,7 @@ Následující pole jsou buď není k dispozici v rozhraní API od Microsoftu z�
 | billingPeriodId | Nejsou k dispozici. Odpovídá InvoiceID nebyl pro MCA. |
 | offerId | Není k dispozici. Odpovídá productOrderName v MCA. |
 | meterCategory  | Není k dispozici. Služba v MCA odpovídá. |
-| jednotka | Není k dispozici. Může být analyzován z unitOfMeasure. |
+| Jednotka | Není k dispozici. Může být analyzován z unitOfMeasure. |
 | Kód měny | Stejné jako pricingCurrency v MCA. |
 | meterLocation | Stejné jako meterRegion v MCA. |
 | partNumber partnumber | Nedá se použít kvůli výrobní číslo není uveden ve MCA faktury. Místo partnumber použijte kombinaci meterId a productOrderName k jednoznačné identifikaci ceny. |

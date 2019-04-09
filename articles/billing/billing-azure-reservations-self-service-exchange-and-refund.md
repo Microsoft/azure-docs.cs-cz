@@ -11,29 +11,31 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/28/2019
+ms.date: 04/5/2019
 ms.author: banders
-ms.openlocfilehash: 229b5a0948a81c9b5d78dd49f304e7b6891f95ee
-ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
+ms.openlocfilehash: aa1a218fbf0bc7eacac65b50e4ee1f86791e2b3b
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58652996"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59281977"
 ---
 # <a name="self-service-exchanges-and-refunds-for-azure-reservations"></a>Samoobslužná služba výměny a finanční prostředky Azure rezervací
 
 Rezervace Azure poskytují flexibilitu, která vám pomohou splnit potřeby vyvíjející. Můžete si mohou vyměňovat rezervace pro jiné rezervace stejného typu. Rezervace, až 50 000 USD za rok, můžete také vrátit, pokud ho už nepotřebují.
+
+Schopnosti samoobslužné služby exchange a zrušení není k dispozici pro US Government zákazníci se smlouvou Enterprise. Jsou podporovány dalších typů předplatného pro státní správu USA, včetně průběžných plateb a CSP.
 
 ## <a name="exchange-an-existing-reserved-instance"></a>Výměna existující rezervované instance
 
 Vyměňujete vaší rezervace se ve třech rychlých krocích [webu Azure portal](https://portal.azure.com/#blade/Microsoft_Azure_Reservations/ReservationsBrowseBlade).
 
 1. Vyberte rezervace, které chcete vrátit a klikněte na tlačítko **Exchange**.  
-    ![Obrázek příkladu rezervace vrátit ](./media/billing-azure-reservations-self-service-exchange-and-refund/exchange-refund-return.png)
+    ![Obrázek příkladu rezervace vrátit](./media/billing-azure-reservations-self-service-exchange-and-refund/exchange-refund-return.png)
 2. Vyberte produkt virtuálního počítače, který chcete zakoupit a zadejte množství. Ujistěte se, že je nová nákupní celkem více než návratový celkem. [Určení správné velikosti před nákupem](../virtual-machines/windows/prepay-reserved-vm-instances.md#determine-the-right-vm-size-before-you-buy).  
-    ![Obrázek příkladu virtuálních počítačů produktu nákupu se systému exchange ](./media/billing-azure-reservations-self-service-exchange-and-refund/exchange-refund-select-purchase.png)
+    ![Obrázek příkladu virtuálních počítačů produktu nákupu se systému exchange](./media/billing-azure-reservations-self-service-exchange-and-refund/exchange-refund-select-purchase.png)
 3. Zkontrolujte a dokončete transakci.  
-    ![Obrázek příkladu virtuálních počítačů produktu nákupu se serveru exchange, dokončení vrácení ](./media/billing-azure-reservations-self-service-exchange-and-refund/exchange-refund-confirm-exchange.png)
+    ![Obrázek příkladu virtuálních počítačů produktu nákupu se serveru exchange, dokončení vrácení](./media/billing-azure-reservations-self-service-exchange-and-refund/exchange-refund-confirm-exchange.png)
 
 Náhrada rezervaci, přejděte na **podrobnosti o rezervaci** a klikněte na tlačítko **refundaci**.
 
@@ -84,7 +86,7 @@ Pokud máte otázky nebo potřebujete pomoc, [vytvořit žádost o podporu](http
 
 - Další informace o správě rezervaci, najdete v článku [spravovat Azure rezervace](billing-manage-reserved-vm-instance.md).
 - Další informace o rezervacích Azure, najdete v následujících článcích:
-    - [Co jsou Azure rezervace?](billing-save-compute-costs-reservations.md)
+    - [Co jsou rezervace Azure?](billing-save-compute-costs-reservations.md)
     - [Správa rezervací v Azure](billing-manage-reserved-vm-instance.md)
     - [Vysvětlení, jak se sleva za rezervaci použije](billing-understand-vm-reservation-charges.md)
     - [Vysvětlení využití rezervace pro vaše předplatné s průběžnými platbami](billing-understand-reserved-instance-usage.md)

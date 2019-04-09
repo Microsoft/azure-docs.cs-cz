@@ -7,14 +7,14 @@ author: Juliako
 manager: femila
 ms.service: media-services
 ms.topic: article
-ms.date: 03/20/2019
+ms.date: 04/07/2019
 ms.author: juliako
-ms.openlocfilehash: 552c3fa81a213d0be32c5498cde5a50fb44291d0
-ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
+ms.openlocfilehash: 91cd8ab0565279f88a0949f873d6e44d564427af
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58892571"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59280209"
 ---
 # <a name="examine-the-video-indexer-output-produced-by-api"></a>Prozkoumání výstupu funkce Video Indexer API vytvořené metodou
 
@@ -47,7 +47,7 @@ Tento článek zkoumá vrácený obsah JSON **získat Index Video** rozhraní AP
 |isBase|Označuje, zda seznam testů je základní stop (video) nebo seznam skladeb tvořeny další videa (derived).|
 |durationInSeconds|Celková doba trvání seznamu stop.|
 |summarizedInsights|Obsahuje nejméně jednu [summarizedInsights](#summarizedinsights).
-|videa|Seznam [videa](#videos) vytváření seznamu stop.<br/>Pokud tento seznam testů z vytvořen z časových rozsahů jiných videí (derived) na videa v tomto seznamu bude obsahovat pouze data ze součástí časových rozsahů.|
+|Videa|Seznam [videa](#videos) vytváření seznamu stop.<br/>Pokud tento seznam testů z vytvořen z časových rozsahů jiných videí (derived) na videa v tomto seznamu bude obsahovat pouze data ze součástí časových rozsahů.|
 
 ```json
 {
@@ -77,12 +77,12 @@ Tato část uvádí přehled informací.
 |jméno|Název videa. Například Azure Monitor.|
 |id|ID videa. Například 63c6d532ff.|
 |privacyMode|Vaše rozpis může mít jednu z těchto režimů: **Privátní**, **veřejné**. **Veřejné** – video je viditelné všem uživatelům v účtu a každý uživatel, který obsahuje odkaz na video. **Privátní** – video je viditelné všem uživatelům ve vašem účtu.|
-|doba trvání|Obsahuje jeden dobu, po kterou popisuje čas, kdy došlo k chybě přehledů. Doba trvání je během několika sekund.|
+|Doba trvání|Obsahuje jeden dobu, po kterou popisuje čas, kdy došlo k chybě přehledů. Doba trvání je během několika sekund.|
 |thumbnailVideoId|ID videa, ze kterého bylo převedeno na miniaturu.
-|thumbnailId|ID miniatury videa. Chcete-li získat skutečný miniaturu, volání Get-miniaturu (https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-thumbnail) a předejte jí thumbnailVideoId a thumbnailId.|
+|thumbnailId|ID miniatury videa. Chcete-li získat skutečný miniaturu, zavolejte [Get-miniaturu](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Video-Thumbnail) a předejte jí thumbnailVideoId a thumbnailId.|
 |tváří|Může obsahovat nula nebo více ploch. Další informace najdete v tématu [tváří](#faces).|
 |klíčová slova|Může obsahovat nula nebo více klíčových slov. Další informace najdete v tématu [klíčová slova](#keywords).|
-|mínění|Může obsahovat nula nebo více mínění. Další informace najdete v tématu [zabarvení](#sentiments).|
+|zabarvení|Může obsahovat nula nebo více mínění. Další informace najdete v tématu [zabarvení](#sentiments).|
 |audioEffects| Může obsahovat nula nebo více audioEffects. Další informace najdete v tématu [audioEffects](#audioEffects).|
 |popisky| Může obsahovat nula nebo více štítků. Další informace najdete v tématu [popisky](#labels).|
 |značky| Může obsahovat nula nebo více značek. Další informace najdete v tématu [značky](#brands).|
@@ -90,7 +90,7 @@ Tato část uvádí přehled informací.
 |emocí| Může obsahovat nula nebo více emocí. Další informace najdete v tématu [emoce](#emotions).|
 |topics|Může obsahovat nula nebo více témata. [Témata](#topics) dimenze.|
 
-## <a name="videos"></a>videa
+## <a name="videos"></a>Videa
 
 |Název|Popis|
 |---|---|
@@ -105,8 +105,8 @@ Tato část uvádí přehled informací.
 |externalUrl|Videa externí adresa url (Pokud je zadaný uživatelem).|
 |zprostředkovatele identity|Externí metadat videa (Pokud je zadaný uživatelem).|
 |isAdult|Určuje, jestli se video ručně zkontrolovat a identifikována jako dospělého videa.|
-|přehledy|Objekt, který insights. Další informace najdete v tématu [insights](#insights).|
-|thumbnailId|ID miniatury videa. Chcete-li získat skutečný miniatur volání Get-Miniatura (https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-thumbnail) a předejte jí videa ID a thumbnailId.|
+|insights|Objekt, který insights. Další informace najdete v tématu [insights](#insights).|
+|thumbnailId|ID miniatury videa. Chcete-li získat skutečný miniatur volání [Get-miniaturu](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Video-Thumbnail) a předejte jí videa ID a thumbnailId.|
 |publishedUrl|Adresa url pro streamování videa.|
 |publishedUrlProxy|Adresa url pro streamování videa z (pro zařízení Apple).|
 |viewToken|Krátkodobý zobrazení token pro streamování videa.|
@@ -142,7 +142,7 @@ Tato část uvádí přehled informací.
     }],
 }
 ```
-### <a name="insights"></a>přehledy
+### <a name="insights"></a>insights
 
 Přehledy jsou sadu dimenzí (například přepisu řádky, tváří, značky, atd.), kde každé dimenze je seznam jedinečných prvků (například face1 ze předu 2, ze předu 3), a každý prvek má svůj vlastní metadata a seznam její instance (které jsou s časových rozsahů Další volitelná metadata).
 
@@ -161,7 +161,7 @@ Přehledy jsou sadu dimenzí (například přepisu řádky, tváří, značky, a
 |snímky|[Snímky](#shots) dimenze.|
 |značky|[Značky](#brands) dimenze.|
 |audioEffects|[AudioEffects](#audioEffects) dimenze.|
-|mínění|[Zabarvení](#sentiments) dimenze.|
+|zabarvení|[Zabarvení](#sentiments) dimenze.|
 |visualContentModeration|[VisualContentModeration](#visualcontentmoderation) dimenze.|
 |textualContentModeration|[TextualContentModeration](#textualcontentmoderation) dimenze.|
 |emocí| [Emoce](#emotions) dimenze.|
@@ -598,7 +598,7 @@ Firmy a produktů názvy v převodu řeči na text přepisu a/nebo Video optick�
 ]
 ```
 
-#### <a name="sentiments"></a>mínění
+#### <a name="sentiments"></a>zabarvení
 
 Zabarvení se agregují podle jejich sentimentType pole (neutrální/kladné nebo záporné). Například 0 0.1, 0.2 0,1.
 

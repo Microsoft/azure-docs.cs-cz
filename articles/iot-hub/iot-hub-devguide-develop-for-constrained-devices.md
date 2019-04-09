@@ -7,16 +7,19 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 05/24/2018
 ms.author: yizhon
-ms.openlocfilehash: 683f3ca88c349fef31f9647566dbed8a840f94dd
-ms.sourcegitcommit: f31bfb398430ed7d66a85c7ca1f1cc9943656678
+ms.openlocfilehash: 7788bca621a59ec8cdfe36edf73a99efca8c460c
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47451727"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59261390"
 ---
 # <a name="develop-for-constrained-devices-using-azure-iot-c-sdk"></a>Vývoj pro omezené zařízení pomocí sady Azure IoT C SDK
 
 C SDK pro Azure IoT Hub je zapsána ve standardu ANSI C (C99), takže je vhodné pracovat různých platformách s malou stopu disku a paměti. Doporučená velikost paměti RAM je minimálně 64 KB, ale přesné paměťové nároky závisí na protokol použitý, počet otevřených připojení, stejně jako cílové platformy.
+> [!NOTE]
+> * Sada Azure IoT C SDK pravidelně publikuje informace o spotřebě prostředků k vývoji.  Navštivte prosím náš [úložiště GitHub](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/c_sdk_resource_information.md) a prohlédněte si nejnovější srovnávacího testu.
+>
 
 SDK pro jazyk C je k dispozici v balíčku formuláře pomocí apt-get, NuGet a MBED. Chcete-li cílit na zařízení s omezením, je sestavení sady SDK pro cílovou platformu. Tato dokumentace ukazuje, jak odebrat některé funkce pro zmenšení nároky pomocí SDK pro jazyk C [cmake](https://cmake.org/). Kromě toho tato dokumentace popisuje osvědčený postup programovacích modelů pro práci s omezeným zařízení.
 
@@ -30,7 +33,7 @@ Použít tento [Příručka instalace SDK pro jazyk C](https://github.com/Azure/
 
 ### <a name="remove-additional-protocol-libraries"></a>Odebrat další protokol knihovny
 
-SDK pro jazyk C podporuje pět protokoly ještě dnes: protokol MQTT, MQTT přes protokol WebSocket, AMQPs, AMQP přes WebSocket a HTTPS. Většina scénářů vyžaduje jeden až dva protokoly spuštění v klientském počítači, proto můžete odebrat protokolu knihovny, které nepoužíváte ze sady SDK. Další informace o výběru příslušné komunikační protokol, pro váš scénář lze najít v [vyberte komunikační protokol IoT Hub](iot-hub-devguide-protocols.md). Například MQTT je jednoduchý protokol, který je často vhodnější pro zařízení s omezením.
+SDK pro jazyk C podporuje pět protokoly ještě dnes: Protokol MQTT, MQTT přes protokol WebSocket, AMQPs, AMQP přes WebSocket a HTTPS. Většina scénářů vyžaduje jeden až dva protokoly spuštění v klientském počítači, proto můžete odebrat protokolu knihovny, které nepoužíváte ze sady SDK. Další informace o výběru příslušné komunikační protokol, pro váš scénář lze najít v [vyberte komunikační protokol IoT Hub](iot-hub-devguide-protocols.md). Například MQTT je jednoduchý protokol, který je často vhodnější pro zařízení s omezením.
 
 Můžete odebrat knihovny AMQP a HTTP pomocí následujícího příkazu cmake:
 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 03/19/2019
 ms.author: jaredro
 ms.custom: seodec18
-ms.openlocfilehash: e078f838620f633743b27d26ba1218e753ff690e
-ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
+ms.openlocfilehash: f3f013f2e3090b54846ebba94ef54506275d6311
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58259818"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59282861"
 ---
 # <a name="expressroute-faq"></a>ExpressRoute – nejčastější dotazy
 
@@ -144,7 +144,7 @@ Pokud váš poskytovatel služeb nabízí ExpressRoute v obou lokalitách, můž
 
 ### <a name="can-i-have-multiple-expressroute-circuits-in-the-same-metro-can-i-link-them-to-the-same-virtual-network"></a>Může mít víc okruhů ExpressRoute ve stejné metro? Můžete propojit je ke stejné virtuální síti?
 
-Ano. Máte víc okruhů ExpressRoute s poskytovateli stejných nebo různých služeb. Pokud metro má více umístění partnerského vztahu ExpressRoute a obvody se vytvářejí na jiné umístění partnerského vztahu, můžete je propojit do stejné virtuální síti. Pokud jsou okruhy vytvořené ve stejném umístění partnerského vztahu, nelze propojit stejné virtuální síti. Každý název umístění na webu Azure portal nebo rozhraní API prostředí PowerShell nebo rozhraní příkazového řádku představuje umístění partnerského vztahu. Můžete například vybrat umístění partnerského vztahu "Singapur" a "Singapur2" a připojit okruhů z každého ke stejné virtuální síti. 
+Ano. Máte víc okruhů ExpressRoute s poskytovateli stejných nebo různých služeb. Pokud metro má více umístění partnerského vztahu ExpressRoute a obvody se vytvářejí na jiné umístění partnerského vztahu, můžete je propojit do stejné virtuální síti. Pokud jsou okruhy vytvořené ve stejném umístění partnerského vztahu, můžete je propojit stále do stejné virtuální síti, ale až 4 okruhy ExpressRoute jenom v každém umístění partnerského vztahu. Můžete například vybrat umístění partnerského vztahu "Singapur" a "Singapur2" a připojit okruhů z každého ke stejné virtuální síti. 
 
 ### <a name="how-do-i-connect-my-virtual-networks-to-an-expressroute-circuit"></a>Jak připojit své virtuální sítě k okruhu ExpressRoute
 

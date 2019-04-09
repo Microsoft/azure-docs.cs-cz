@@ -15,12 +15,12 @@ ms.date: 04/01/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: it-pro
-ms.openlocfilehash: 4557ce7dea207be0bc6f68a62e3dd7f81ce87911
-ms.sourcegitcommit: e43ea344c52b3a99235660960c1e747b9d6c990e
-ms.translationtype: HT
+ms.openlocfilehash: f505f922685cd192525814df25cca1a1401d2913
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/04/2019
-ms.locfileid: "59010664"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59281212"
 ---
 # <a name="built-in-roles-for-azure-resources"></a>Předdefinované role pro prostředky Azure
 
@@ -121,7 +121,6 @@ Následující tabulka obsahuje stručný popis jednotlivých předdefinovaných
 | [Vlastník účtu prostorových kotvy](#spatial-anchors-account-owner) | Umožní vám správu prostorových kotev na vašem účtu, včetně jejich odstranění. |
 | [Účet čtečky prostorových kotvy](#spatial-anchors-account-reader) | Umožní vám vyhledávání a čtení vlastností prostorových kotev na vašem účtu. |
 | [Přispěvatel databází SQL](#sql-db-contributor) | Umožňuje správu databází SQL, ale ne přístup k nim. Kromě toho nemůžete spravovat jejich zásady související se zabezpečením nebo nadřazené servery SQL. |
-| [Spravovaná Instance Přispěvatel SQL](#sql-managed-instance-contributor) | Umožňuje spravovat spravované instance SQL, ale nemůže udělovat přístup ostatním uživatelům. |
 | [Správce zabezpečení SQL](#sql-security-manager) | Umožňuje vám spravovat zásady vztahující se k zabezpečení serverů a databází SQL, ale ne přístup k nim. |
 | [Přispěvatel SQL Serveru](#sql-server-contributor) | Umožňuje vám spravovat servery a databáze SQL, ale ne přístup k nim ani jejich zásady vztahující se k zabezpečení. |
 | [Přispěvatel účtů úložiště](#storage-account-contributor) | Umožňuje správu účtů úložiště, ale ne přístup k nim. |
@@ -2229,31 +2228,6 @@ Následující tabulka obsahuje stručný popis jednotlivých předdefinovaných
 > | Microsoft.Sql/servers/databases/vulnerabilityAssessmentScans/* |  |
 > | Microsoft.Sql/servers/databases/vulnerabilityAssessmentSettings/* |  |
 > | Microsoft.Sql/servers/vulnerabilityAssessments/* |  |
-> | **DataActions** |  |
-> | *žádný* |  |
-> | **NotDataActions** |  |
-> | *žádný* |  |
-
-## <a name="sql-managed-instance-contributor"></a>Spravovaná Instance Přispěvatel SQL
-> [!div class="mx-tableFixed"]
-> | | |
-> | --- | --- |
-> | **Popis** | Umožňuje spravovat spravované instance SQL, ale nemůže udělovat přístup ostatním uživatelům. |
-> | **ID** | 4939a1f6-9ae0-4e48-a1e0-f2cbe897382d |
-> | **Akce** |  |
-> | Microsoft.ResourceHealth/availabilityStatuses/read | Získá stavy dostupnosti pro všechny prostředky v zadaném rozsahu. |
-> | Microsoft.Resources/deployments/* | Vytváření a správě nasazení skupiny prostředků |
-> | Microsoft.Resources/subscriptions/resourceGroups/read | Načte nebo vypíše skupinu prostředků. |
-> | Microsoft.Network/networkSecurityGroups/write | Vytvoří skupinu zabezpečení sítě nebo aktualizuje stávající skupina zabezpečení sítě |
-> | Microsoft.Network/routeTables/write | Vytvoří směrovací tabulku nebo aktualizuje existující tabulku směrování |
-> | Microsoft.Sql/locations/*/read |  |
-> | Microsoft.Sql/managedInstances/* |  |
-> | Microsoft.Support/* | Vytvořit a spravovat lístky podpory |
-> | Microsoft.Network/virtualNetworks/subnets/write | Vytvoří podsíť virtuální sítě nebo aktualizuje existující podsíti virtuální sítě |
-> | Microsoft.Network/virtualNetworks/subnets/join/action | Připojí virtuální sítě. Výstražné. |
-> | Microsoft.Authorization/*/read | Další role a přiřazení rolí |
-> | **NotActions** |  |
-> | *žádný* |  |
 > | **DataActions** |  |
 > | *žádný* |  |
 > | **NotDataActions** |  |

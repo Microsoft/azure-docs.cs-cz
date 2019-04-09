@@ -6,15 +6,15 @@ author: HeidiSteen
 services: search
 ms.service: search
 ms.topic: quickstart
-ms.date: 01/17/2019
+ms.date: 04/05/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 8d3bc70b467cabfc5d45c51b79b43d2942d558ae
-ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
+ms.openlocfilehash: c48acf7e9074ac3c5a7d19765a9524a411fa26c8
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54885723"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59264025"
 ---
 # <a name="create-an-azure-search-service-in-the-portal"></a>Vytvoření služby Azure Search na portálu
 
@@ -22,7 +22,7 @@ Azure Search je samostatný prostředek, který se používá k vyhledávání v
 
 V tomto článku se dozvíte, jak a vytvoří prostředek Azure Search v [webu Azure portal](https://portal.azure.com/).
 
-[![Animovaný obrázek GIF](./media/search-create-service-portal/AnimatedGif-AzureSearch-small.gif)](./media/search-create-service-portal/AnimatedGif-AzureSearch.gif#lightbox)
+[![A[animovaný obrázek GIF](./media/search-create-service-portal/AnimatedGif-AzureSearch-small.gif)](./media/search-create-service-portal/AnimatedGif-AzureSearch.gif#lightbox)
 
 Dáváte přednost prostředí PowerShell? Použijte [šablonu služby](https://azure.microsoft.com/resources/templates/101-azure-search-create/) Azure Resource Manageru. Nápovědu k zahájení práce, naleznete v tématu [Správa služby Azure Search pomocí prostředí PowerShell](search-manage-powershell.md).
 
@@ -71,7 +71,7 @@ Pokud prostředky nejsou sloučením do jedné skupiny, nebo existující skupin
 
 Protože se jedná o službu Azure, je Azure Search možné hostovat v datových centrech po celém světě. [Ceny mohou lišit](https://azure.microsoft.com/pricing/details/search/) podle zeměpisné oblasti.
 
-Pokud máte v úmyslu použít kognitivního vyhledávání, zvolte [oblasti s dostupností funkcí](cognitive-search-quickstart-blob.md#supported-regions).
+Pokud se indexování obsahu umístěnému v Azure service (Azure storage, Azure Cosmos DB, Azure SQL Database), vytvořte službu Azure Search ve stejné oblasti jako vaše data, aby se zabránilo poplatky za šířku pásma. Když jsou ve stejné oblasti služby nejsou žádné poplatky za odchozí data.
 
 ## <a name="select-a-pricing-tier-sku"></a>Výběr cenové úrovně (SKU)
 

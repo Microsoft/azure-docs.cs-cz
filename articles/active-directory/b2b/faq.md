@@ -12,12 +12,12 @@ manager: celested
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6cb7296ea4acfbf90d94b8f94a644b8a382b033b
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.openlocfilehash: 98f81edcfa2a9daf5162ff1c7e23025b405092b8
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58877359"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59260387"
 ---
 # <a name="azure-active-directory-b2b-collaboration-faqs"></a>Spolupráce Azure Active Directory s B2B nejčastější dotazy
 
@@ -60,7 +60,7 @@ Pokud uživatel má přiřazenou roli globálního správce nebo správce s omez
 Ano! Když nakonfigurujete tuto zásadu, pečlivě nedošlo omylem blokují přístup k členům a správci.
 Blokovat přístup uživatelů typu Host [webu Azure portal](https://portal.azure.com), použijte zásady podmíněného přístupu v rozhraní API Windows Azure pro model nasazení classic:
 1. Upravit **všichni uživatelé** tak, aby obsahoval pouze členové skupiny.
-   ![Snímek obrazovky zobrazující všichni uživatelé, kde UserType není rovno hosta ](media/faq/modify-all-users-group.png)
+   ![Snímek obrazovky zobrazující všichni uživatelé, kde UserType není rovno hosta](media/faq/modify-all-users-group.png)
 2. Vytvoření dynamické skupiny obsahující uživatele typu Host.
    ![Snímek obrazovky zobrazující novou skupinu všichni uživatelé typu Host](media/faq/group-with-guest-users.png)
 3. Nastavení zásad podmíněného přístupu k blokování uživatelů typu Host z přístup k portálu, jak je znázorněno v následujícím videu:

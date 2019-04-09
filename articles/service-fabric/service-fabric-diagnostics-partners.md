@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 10/16/2018
 ms.author: srrengar
-ms.openlocfilehash: e9bfb835a1dea240573c21ccbbe13088561851ab
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: c2f953c98e41291951f07556bd0cd441d2793d1d
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58661407"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59259129"
 ---
 # <a name="azure-service-fabric-monitoring-partners"></a>Azure Service Fabric monitorování partnerů
 
@@ -45,6 +45,9 @@ New Relic je jiný nástroj správy výkonu aplikací, která se integruje s apl
 
 ELK stack je kolekce technologiích s otevřeným zdrojem: Elasticsearch, Logstash a Kibana. Když použijete v kombinaci, můžete shromažďovat, ukládat a analyzovat data monitorování a diagnostiky v Service Fabric. Máme k dispozici návod jak to udělat pomocí nativních aplikací v Javě Service Fabric [tady](service-fabric-tutorial-java-elk.md). 
 
+## <a name="humio"></a>Humio
+
+Humio je služby shromažďování protokolů, které můžete shromažďovat protokoly z vašich aplikací a události ze Service Fabric v cloudu nebo místním v reálném čase. Kromě živé observability nabízí Humio nejmodernější optimalizaci pspo možnosti analýzy a vizualizace pro zobrazení a shromažďování přehledů z diagnostické. Humio je nákladově efektivní věnovaného cenovým plánům a je určený pro škálování při zachování ho je zesvětlení vysokou rychlost. Se integruje přímo s události platformy Service Fabric a telemetrie Application. Další informace o integraci Humio a Service Fabric [tady](https://github.com/humio/service-fabric-humio).
 
 ## <a name="next-steps"></a>Další postup
 

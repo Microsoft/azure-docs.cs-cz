@@ -1,5 +1,5 @@
 ---
-title: Začínáme s kombinovaná registrace pro samoobslužné resetování HESLA Azure AD a vícefaktorové ověřování (preview) – Azure Active Directory
+title: Začínáme s kombinovaná registrace pro samoobslužné resetování HESLA Azure AD a Vícefaktorové ověřování (preview) – Azure Active Directory
 description: Povolit kombinované ověřování Azure Multi-Factor Authentication AD a resetování hesla pomocí samoobslužné služby registrace (preview)
 services: active-directory
 ms.service: active-directory
@@ -11,41 +11,41 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c5d7f9623a7594aaa79c4cff187486360b1befc8
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.openlocfilehash: 3baf2690ae07b87bb4d5dba30fcd20f62a1a4506
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58369016"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59280566"
 ---
 # <a name="enable-combined-security-information-registration-preview"></a>Povolit kombinovat zabezpečení informace o registraci (preview)
 
-Než povolíte nové prostředí, přečtěte si článek [registrační informace o zabezpečení (preview) v kombinaci](concept-registration-mfa-sspr-combined.md) zajistit pochopit funkce a dopad této funkce.
+Než povolíte nové prostředí, přečtěte si článek [registrační informace o zabezpečení (preview) v kombinaci](concept-registration-mfa-sspr-combined.md) zajistit pochopit funkce a efekty této funkce.
 
 ![Možnosti registrace rozšířené informace o kombinované zabezpečení](media/howto-registration-mfa-sspr-combined/combined-security-info-more-required.png)
 
 |     |
 | --- |
-| Kombinované zabezpečení informace o registraci pro resetování hesla pomocí samoobslužné služby Azure Multi-Factor Authentication a Azure AD je funkce ve verzi public preview služby Azure Active Directory. Další informace o verzích Preview najdete v tématu [dodatečných podmínkách použití systémů Microsoft Azure Preview](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)|
+| Kombinované zabezpečení registrační informace pro ověřování Azure Multi-Factor Authentication a resetování hesla pomocí samoobslužné služby Azure Active Directory (Azure AD) je funkce ve verzi public preview služby Azure AD. Další informace o verzích Preview najdete v [dodatečných podmínkách použití systémů Microsoft Azure Preview](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).|
 |     |
 
 ## <a name="enable-combined-registration"></a>Povolení kombinované registrace
 
-Proveďte následující kroky, aby kombinovaná registrace:
+Dokončete tyto kroky pro povolení kombinovaná registrace:
 
 1. Přihlaste se k webu Azure portal jako globální správce nebo Správce uživatelů.
-2. Přejděte do **Azure Active Directory** > **uživatelská nastavení** > **umožňuje spravovat nastavení přístupu funkce ve verzi preview panel**.
+2. Přejděte na **Azure Active Directory** > **uživatelská nastavení** > **umožňuje spravovat nastavení přístupu funkce ve verzi preview panel**.
 3. V části **uživatelé můžou používat funkce pro registraci a správu bezpečnostní údaje ve verzi preview – aktualizovat**, můžete povolit pro **vybrané** skupiny uživatelů nebo pro **všechny** uživatelů.
 
-![Povolit prostředí ve verzi preview kombinované bezpečnostní údaje pro všechny uživatele](media/howto-registration-mfa-sspr-combined/combined-security-info-enable.png)
+   ![Povolit prostředí ve verzi preview kombinované bezpečnostní údaje pro všechny uživatele](media/howto-registration-mfa-sspr-combined/combined-security-info-enable.png)
 
 > [!IMPORTANT]
-> Počínaje březnem 2019 možnosti telefonního hovoru nebudou k dispozici uživatelům vícefaktorové ověřování a samoobslužné resetování HESLA v tenantech bezplatné a zkušební verze Azure AD. Zprávy SMS, nejsou ovlivněny tuto změnu. Telefonní hovor budou nadále dostupné uživatelům v placené tenantů Azure AD. Tato změna ovlivní jenom klienty bezplatné a zkušební verze Azure AD.
+> Od března 2019 se nebudou k dispozici pro Vícefaktorové ověřování a samoobslužné resetování HESLA uživatelů v tenantech bezplatné a zkušební verze Azure AD možnosti telefonního hovoru. Zprávy SMS, nejsou touto změnou ovlivněny. Možnosti telefonního hovoru bude stále k dispozici uživatelům v placené tenantů Azure AD.
 
 > [!NOTE]
-> Po povolení kombinované registrace uživatelů, kteří registrace nebo potvrzení, že se že jejich telefonní číslo nebo mobilních aplikací prostřednictvím nového prostředí můžete využít pro vícefaktorové ověřování a samoobslužné resetování HESLA, pokud tyto metody jsou povolené v zásadách vícefaktorového ověřování a samoobslužné resetování HESLA. Pokud zakážete pak toto prostředí, na stránce uživatelé přejít na předchozí registrace samoobslužného resetování HESLA `https:/aka.ms/ssprsetup` budou muset provádět ověřování službou Multi-Factor Authentication před přístupem na stránce.
+> Po povolení kombinovaná registrace, uživatelé, kteří registrace nebo potvrzení telefonního čísla nebo mobilních aplikací prostřednictvím nového prostředí můžete využít pro Vícefaktorové ověřování a samoobslužné resetování HESLA, pokud tyto metody jsou povolené Vícefaktorové ověřování a samoobslužné resetování HESLA zásady. Pokud zakážete pak toto prostředí, na stránce uživatelé přejít na předchozí registrace samoobslužného resetování HESLA `https:/aka.ms/ssprsetup` budou muset provádět ověřování službou Multi-Factor Authentication před přístupem na stránce.
 
-Pokud jste nakonfigurovali web do zóny přiřazení seznamu v aplikaci Internet Explorer následující weby musí být ve stejné zóně:
+Pokud jste nakonfigurovali web k zóně Assignment List v Internet Exploreru, musí být ve stejné zóně následující weby:
 
 * [https://login.microsoftonline.com](https://login.microsoftonline.com)
 * [https://mysignins.microsoft.com](https://mysignins.microsoft.com)
@@ -53,10 +53,10 @@ Pokud jste nakonfigurovali web do zóny přiřazení seznamu v aplikaci Internet
 
 ## <a name="next-steps"></a>Další postup
 
-[Dostupné metody pro vícefaktorové ověřování a samoobslužné resetování HESLA](concept-authentication-methods.md)
+[Dostupné metody pro Vícefaktorové ověřování a samoobslužné resetování HESLA](concept-authentication-methods.md)
 
 [Konfigurace samoobslužného resetování hesla](howto-sspr-deployment.md)
 
-[Konfigurovat ověřování Azure Multi-Factor Authentication](howto-mfa-getstarted.md)
+[Konfigurace Azure Multi-Factor Authentication](howto-mfa-getstarted.md)
 
 [Řešení potíží s kombinovat registrační informace o zabezpečení](howto-registration-mfa-sspr-combined-troubleshoot.md)

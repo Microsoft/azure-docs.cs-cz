@@ -1,13 +1,18 @@
 ---
 title: Index ukázek podrobných plánů
 description: Index ukázek dodržování předpisů a standardního prostředí pro nasazování s využitím služby Azure Blueprints
-services: blueprints
 author: DCtheGeek
 manager: carmonm
 ms.service: blueprints
-ms.topic: conceptual
+ms.topic: sample
 ms.date: 03/14/2019
 ms.author: dacoulte
+ms.openlocfilehash: ed7afa695ab13540f5f571d94b23133133ffe59f
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.translationtype: HT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59255950"
 ---
 # <a name="azure-blueprints-samples"></a>Ukázky Azure Blueprints
 

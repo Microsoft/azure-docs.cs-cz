@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 02/15/2019
 ms.author: jingwang
-ms.openlocfilehash: 2c04c13eb6399bebf908337d8f71bd03adf4d06a
-ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
+ms.openlocfilehash: 8e3a23b38dc95f05ed9a6d99d303f3d86eac60ad
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58447222"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59269261"
 ---
 # <a name="load-data-into-azure-data-lake-storage-gen2-with-azure-data-factory"></a>Načtení dat do Azure Data Lake Storage Gen2 s Azure Data Factory
 
@@ -34,7 +34,7 @@ V tomto článku se dozvíte, jak pomocí nástroje pro kopírování dat Data F
 ## <a name="prerequisites"></a>Požadavky
 
 * Předplatné Azure: Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
-* Účet služby Azure Storage s Data Lake Storage Gen2 povoleno: Pokud nemáte účet úložiště, klikněte na tlačítko [tady](https://ms.portal.azure.com/#create/Microsoft.StorageAccount-ARM) k jejímu vytvoření.
+* Účet služby Azure Storage s Data Lake Storage Gen2 povoleno: Pokud nemáte účet úložiště [vytvořit účet](https://ms.portal.azure.com/#create/Microsoft.StorageAccount-ARM).
 * Účet AWS S3 kontejneru, který obsahuje data: Tento článek popisuje, jak kopírovat data z Amazonu S3. Podle podobných kroků, můžete použít dalšími datovými úložišti.
 
 ## <a name="create-a-data-factory"></a>Vytvoření datové továrny
@@ -104,7 +104,7 @@ V tomto článku se dozvíte, jak pomocí nástroje pro kopírování dat Data F
    
    ![Zadejte účet Azure Data Lake Storage Gen2](./media/load-azure-data-lake-storage-gen2/specify-adls.png)
 
-9. V **zvolte výstupní soubor nebo složku** zadejte **copyfroms3** jako název složky výstupu a vyberte **Další**: 
+9. V **zvolte výstupní soubor nebo složku** zadejte **copyfroms3** jako název složky výstupu a vyberte **Další**. ADF se vytvoří odpovídající ADLS Gen2 v systému souborů a podsložek během kopírování, pokud neexistuje.
 
     ![Zadejte výstupní složka](./media/load-azure-data-lake-storage-gen2/specify-adls-path.png)
 

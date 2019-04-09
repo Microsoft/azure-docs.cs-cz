@@ -1,22 +1,22 @@
 ---
 title: Migrace znalostních bází – QnA Maker
 titleSuffix: Azure Cognitive Services
-description: Přesuňte znalostní báze vytvořené pomocí nástroje QnA Maker do nové znalostní báze.
+description: Migrace znalostní báze vyžaduje export z jednoho znalostní báze knowledge base a potom importovat do jiného.
 services: cognitive-services
 author: tulasim88
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: article
-ms.date: 02/13/2019
+ms.date: 04/08/2019
 ms.author: tulasim
 ms.custom: seodec18
-ms.openlocfilehash: e91f41633bf6cf6581c237e7634150a5b92746a7
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: eac5e43c69cc09c5945316827a35f729c158d47a
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56245911"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59264314"
 ---
 # <a name="migrate-a-knowledge-base-using-export-import"></a>Migrace znalostní báze pomocí exportu importu
 
@@ -48,10 +48,10 @@ Migrace znalostní báze vyžaduje export z jednoho znalostní báze knowledge b
    ![Import znalostní báze](../media/qnamaker-how-to-migrate-kb/Import.png)
 
 1. **Test** nové znalostní báze pomocí panelu Test. Zjistěte, jak [testování znalostní báze](../How-To/test-knowledge-base.md).
-1. **Publikování** znalostní báze. Zjistěte, jak [publikovat znalostní báze](../How-To/publish-knowledge-base.md).
+1. **Publikování** znalostní báze. Zjistěte, jak [publikovat znalostní báze](../Quickstarts/create-publish-knowledge-base.md#publish-the-knowledge-base).
 1. Použijte koncový bod v aplikaci nebo robotovi kódu. Zde uvedený postup [vytváření robotů QnA](../Tutorials/create-qna-bot.md).
 
-    ![Nástroj QnA Maker hodnoty](../media/qnamaker-tutorials-create-bot/qnamaker-settings-kbid-key.PNG)
+    ![Nástroj QnA Maker hodnoty](../media/qnamaker-how-to-migrate-kb/qnamaker-settings-kbid-key.png)
 
     V tomto okamžiku všechny znalostní báze obsah – otázky a odpovědi metadat, společně s názvy zdrojových souborů a adresy URL, importují do nové znalostní báze. 
 

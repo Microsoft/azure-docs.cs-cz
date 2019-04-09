@@ -1,19 +1,18 @@
 ---
 title: Jak spravovat přiřazení pomocí Powershellu
 description: Zjistěte, jak spravovat přiřazení podrobného plánu se oficiální plány modul Azure PowerShell, Az.Blueprint.
-services: blueprints
 author: DCtheGeek
 ms.author: dacoulte
 ms.date: 03/14/2019
 ms.topic: conceptual
 ms.service: blueprints
 manager: carmonm
-ms.openlocfilehash: 47026975a5142760f90a1a5712b532519f969fd7
-ms.sourcegitcommit: 4133f375862fdbdec07b70de047d70c66ac29d50
+ms.openlocfilehash: d8eacffe4b792eda5d81051f6aa65caa3292c896
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/15/2019
-ms.locfileid: "57995658"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59256868"
 ---
 # <a name="how-to-manage-assignments-with-powershell"></a>Jak spravovat přiřazení pomocí Powershellu
 
@@ -333,8 +332,8 @@ Remove-AzBlueprintAssignment -InputObject $bpAssignment -SubscriptionId '{subId}
 
 ## <a name="next-steps"></a>Další postup
 
-- Další informace o [podrobný plán životního cyklu](../concepts/lifecycle.md).
-- Vysvětlení použití [statické a dynamické parametry](../concepts/parameters.md).
-- Zjistěte, jak přizpůsobit [podrobný plán pořadí řazení](../concepts/sequencing-order.md).
-- Zjistěte, jak se využívání [podrobný plán uzamčení prostředků](../concepts/resource-locking.md).
-- Řešení problémů při přiřazení podrobného plánu se [obecné řešení potíží s](../troubleshoot/general.md).
+- Další informace o [životním cyklu podrobného plánu](../concepts/lifecycle.md)
+- Principy použití [statických a dynamických parametrů](../concepts/parameters.md)
+- Další informace o přizpůsobení [pořadí podrobných plánů](../concepts/sequencing-order.md)
+- Použití [zamykání prostředků podrobného plánu](../concepts/resource-locking.md)
+- Řešení potíží při přiřazení podrobného plánu – [obecné řešení potíží](../troubleshoot/general.md)

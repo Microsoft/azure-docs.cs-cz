@@ -10,11 +10,11 @@ ms.date: 04/04/2019
 ms.topic: conceptual
 manager: carmonm
 ms.openlocfilehash: 76cd877380090ccad8b2f7b7dbe79957e0eab5bb
-ms.sourcegitcommit: b4ad15a9ffcfd07351836ffedf9692a3b5d0ac86
-ms.translationtype: HT
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/05/2019
-ms.locfileid: "59056673"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59263804"
 ---
 # <a name="manage-pre-and-post-scripts-preview"></a>Spravovat skripty před a po (Preview)
 

@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: quickstart
 ms.date: 11/07/2018
 ms.author: azfuncdf, cotresne, glenga
-ms.openlocfilehash: 94906a75d323e3fb6c96f939e4fdcea60877508c
-ms.sourcegitcommit: b4ad15a9ffcfd07351836ffedf9692a3b5d0ac86
-ms.translationtype: HT
+ms.openlocfilehash: eade9f4e2a956a6542b69e93b0102169ddd32ccf
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/05/2019
-ms.locfileid: "59056295"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59281229"
 ---
 # <a name="create-your-first-durable-function-in-javascript"></a>Vytvoření první funkce trvalý v jazyce JavaScript
 
@@ -127,11 +127,11 @@ Nástroje Azure Functions Core umožňují spouštět projekt Azure Functions na
 
 5. Pomocí některého nástroje, například [Postman](https://www.getpostman.com/) nebo [cURL](https://curl.haxx.se/), odeslání požadavku HTTP POST do koncového bodu adresy URL.
 
-    Odpověď je, že počáteční výsledek z funkce protokolu HTTP nám dáte vědět, trvalý orchestration se úspěšně spustila.  Ještě není konečný výsledek orchestraci.  Odpověď obsahuje několik užitečných adresy URL.  Teď Pojďme zjistit stav orchestraci.
+   Odpověď je, že počáteční výsledek z funkce protokolu HTTP nám dáte vědět, trvalý orchestration se úspěšně spustila. Ještě není konečný výsledek orchestraci. Odpověď obsahuje několik užitečných adresy URL. Teď Pojďme zjistit stav orchestraci.
 
-6. Zkopírujte hodnotu adresy URL pro `statusQueryGetUri`, vložte ji do adresního řádku prohlížeče a proveďte požadavek.
+6. Zkopírujte hodnotu adresy URL pro `statusQueryGetUri` a vložte ji do adresního řádku prohlížeče a proveďte požadavek. Případně můžete také dále používat Postman k vydávání požadavek GET.
 
-    Požadavek bude dotaz instance Orchestrace stavu. Měli byste obdržet odpověď konečný výsledek, který vypadá takto.  Ukazuje to nám instance byla dokončena a zahrnuje výstupů nebo důsledků odolné funkce.
+   Požadavek bude dotaz instance Orchestrace stavu. Měli byste obdržet konečné odpověď, která zobrazuje instance byla dokončena a zahrnuje výstupů nebo důsledků odolné funkce. Vypadá jako: 
 
     ```json
     {

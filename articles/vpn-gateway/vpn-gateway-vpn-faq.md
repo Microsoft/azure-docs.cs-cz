@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 03/11/2019
 ms.author: yushwang
-ms.openlocfilehash: a4f8e2b6a1367658514cc1bf9711825959ee371e
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: d0060d81ae44bd54ab193eb77e3117b7afbfbf73
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58095649"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59281045"
 ---
 # <a name="vpn-gateway-faq"></a>Nejčastější dotazy k branám VPN
 
@@ -72,10 +72,10 @@ Brány založené na směrování implementují sítě VPN založené na směrov
 Ne. Typ brány virtuální sítě Azure se nedá změnit z brány založené na zásadách na bránu založenou na směrování ani naopak. Brána se musí odstranit a znovu vytvořit a tento proces trvá přibližně 60 minut. IP adresa brány ani předsdílený klíč (PSK) se nezachovají.
 1. Odstraňte všechna připojení přidružená k bráně, která se má odstranit.
 1. Odstraňte bránu:
-1. [Azure Portal](vpn-gateway-delete-vnet-gateway-portal.md)
+1. [portál Azure](vpn-gateway-delete-vnet-gateway-portal.md)
 1. [Azure PowerShell](vpn-gateway-delete-vnet-gateway-powershell.md)
-1. [Azure PowerShell – Classic](vpn-gateway-delete-vnet-gateway-classic-powershell.md)
-1. [Vytvoření nové brány požadovaného typu a dokončení nastavení sítě VPN](vpn-gateway-howto-site-to-site-resource-manager-portal.md#VNetGateway)
+1. [Azure Powershell – classic](vpn-gateway-delete-vnet-gateway-classic-powershell.md)
+1. [Vytvoření nové brány požadovaného typu a dokončete nastavení sítě VPN](vpn-gateway-howto-site-to-site-resource-manager-portal.md#VNetGateway)
 
 ### <a name="do-i-need-a-gatewaysubnet"></a>Potřebuji GatewaySubnet?
 
@@ -242,3 +242,5 @@ Další informace o virtuálních sítích najdete v tématu [Nejčastější do
 
 * Další informace o službě VPN Gateway najdete v tématu [Informace o službě VPN Gateway](vpn-gateway-about-vpngateways.md).
 * Další informace o nastavení konfigurace služby VPN Gateway najdete v tématu [Informace o nastavení konfigurace služby VPN Gateway](vpn-gateway-about-vpn-gateway-settings.md).
+
+**"OpenVPN" je ochranná známka společnosti OpenVPN Inc.**

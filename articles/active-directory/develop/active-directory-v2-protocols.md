@@ -18,12 +18,12 @@ ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ed27830aa1f4212e4bc26af8da4febc1b61a76cc
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: c56970091da74cfc389d60ad91f430fcb64d4bba
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56175084"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59266966"
 ---
 # <a name="v20-protocols---oauth-20-and-openid-connect"></a>verze 2.0 protokolů: OAuth 2.0 a OpenID Connect
 
@@ -41,10 +41,11 @@ V téměř všechny toky OAuth 2.0 a OpenID Connect existují čtyři strany sou
 * **Autorizační Server** je koncovým bodem v2.0 a za zajištění identitu uživatele, poskytování a odvolání přístupu k prostředkům a vydávání tokenů. Autorizační server označované také jako zprostředkovatele identity – bezpečně zpracovává nic, aby se informace o uživateli, jejich přístup a vztahy důvěryhodnosti mezi stranami v toku.
 * **Vlastníka prostředku** je obvykle koncového uživatele. Je stranu, která vlastní data a má možnost povolit třetími stranami pro přístup k této dat nebo prostředek.
 * **Klienta OAuth** používá vaše aplikace, identifikovat podle jeho ID aplikace. Klient OAuth je obvykle stranu, která koncový uživatel komunikuje s a požaduje tokeny od autorizačního serveru. Klient musí udělit oprávnění pro přístup k prostředku vlastníkem prostředku.
-* **Server prostředků** je, ve kterém se nachází zdroj nebo data. Vztahy důvěryhodnosti serveru ověřování pro zabezpečené ověřování a autorizaci klienta OAuth a využívají access_tokens nosiče k zajištění toho, že lze udělit přístup k prostředku.
+* **Server prostředků** je, ve kterém se nachází zdroj nebo data. Vztahy důvěryhodnosti serveru ověřování pro zabezpečené ověřování a autorizaci klienta OAuth a využívají přístupových tokenů nosiče k zajištění toho, že lze udělit přístup k prostředku.
 
 ## <a name="app-registration"></a>Registrace aplikace
-Každá aplikace, kterou používá koncový bod verze 2.0 musí být zaregistrovaný ve [apps.dev.microsoft.com](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/documentation/articles&deeplink=/appList) nebo prostřednictvím nového **registrace aplikací (Preview)** dojít [webu Azure portal](https://portal.azure.com/?Microsoft_AAD_RegisteredApps=true#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade) předtím, než může komunikovat pomocí účtu OAuth nebo OpenID Connect. Proces registrace aplikace bude shromažďovat a přiřadit aplikaci několik hodnot:
+
+Každá aplikace, kterou chce, aby se tak, aby přijímal jak osobní i pracovní nebo školní účty musí být zaregistrované přes nové **registrace aplikací (Preview)** dojít [webu Azure portal](https://portal.azure.com/?Microsoft_AAD_RegisteredApps=true#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade) předtím, než se tito uživatelé přihlásit pomocí OAuth 2.0 nebo OpenID Connect. Proces registrace aplikace bude shromažďovat a přiřadit aplikaci několik hodnot:
 
 * **ID aplikace** , který jednoznačně identifikuje vaši aplikaci
 * A **identifikátor URI pro přesměrování** nebo **identifikátor balíčku** , který lze použít k cílení odpovědí zpět do vaší aplikace
@@ -71,6 +72,9 @@ Kde `{tenant}` může trvat jednu ze čtyř různých hodnot:
 | `8eaef023-2b34-4da1-9baa-8bc8c9d6a490` nebo `contoso.onmicrosoft.com` | Umožňuje pouze uživatelé s pracovní nebo školní účty z konkrétní služby Azure AD tenanta pro přihlášení do aplikace. Lze použít buď popisný název tenanta Azure AD nebo identifikátor GUID vašeho tenanta. |
 
 Chcete-li zjistěte, jak pracovat s těmito koncovými body, zvolte typ konkrétní aplikace v [protokoly](#protocols) části a přejděte na odkaz Další informace.
+
+> [!TIP]
+> Libovolná aplikace zaregistrované ve službě Azure AD můžete použít koncový bod verze 2.0, i v případě, že již příště přihlásí osobní účty.  Tímto způsobem můžete migrovat existující aplikace, aby verze 2.0 a [MSAL](reference-v2-libraries.md) bez nutnosti znovu vytvářet aplikace.  
 
 ## <a name="tokens"></a>Tokeny
 

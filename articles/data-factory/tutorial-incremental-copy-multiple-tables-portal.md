@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 01/20/2018
 ms.author: yexu
-ms.openlocfilehash: d8d96d929e55bd4423bdb0cd0dd064e275462ce2
-ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
+ms.openlocfilehash: 77be9d80d535cced48a39c47695257d4868f698c
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58445363"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59257429"
 ---
 # <a name="incrementally-load-data-from-multiple-tables-in-sql-server-to-an-azure-sql-database"></a>Přírůstkové načtení dat z více tabulek v SQL Serveru do databáze Azure SQL
 V tomto kurzu vytvoříte Azure Data Factory s kanálem, který načítá rozdílová data z několika tabulek v místním SQL Serveru do databáze Azure SQL.    
@@ -175,6 +175,11 @@ END
 ### <a name="create-data-types-and-additional-stored-procedures-in-azure-sql-database"></a>Vytvoření datových typů a dalších uložených procedur v databázi SQL Azure
 Spuštěním následujícího dotazu vytvořte v databázi SQL dvě uložené procedury a dva datové typy. Slouží ke slučování dat ze zdrojových tabulek do cílových tabulek.
 
+Pokud chcete začít s usnadňují cesty, jsme přímo použít tyto uložené procedury předávání přes proměnnou tabulky rozdílová data v a pak na ně sloučit do cílového úložiště. Buďte opatrní, že to není očekává "velký" počet delta řádků (více než 100) k uložení do proměnné tabulky.  
+
+Pokud je potřeba sloučit velký počet řádků delta do cílového úložiště, doporučujeme použít aktivitu kopírování ke kopírování rozdílová data do dočasné tabulky "staging" v cílové ukládání první a pak vytvořené bez použití vari Tabulka uložená procedura možnost Sloučit z tabulky "pracovní" do "final" tabulky. 
+
+
 ```sql
 CREATE TYPE DataTypeforCustomerTable AS TABLE(
     PersonID int,
@@ -226,10 +231,9 @@ END
 ## <a name="create-a-data-factory"></a>Vytvoření datové továrny
 
 1. Spusťte webový prohlížeč **Microsoft Edge** nebo **Google Chrome**. Uživatelské rozhraní služby Data Factory podporují v současnosti jenom webové prohlížeče Microsoft Edge a Google Chrome.
-1. V nabídce vlevo vyberte **vytvořit prostředek** > **Data a analýzy** > **služby Data Factory**: 
+1. V nabídce vlevo klikněte na **Nový**, klikněte na **Data + analýzy** a pak na **Data Factory**. 
    
-   ![Výběr datové továrny v podokně Nový](./media/quickstart-create-data-factory-portal/new-azure-data-factory-menu.png)
-
+   ![Nový -> Datová továrna](./media/tutorial-incremental-copy-multiple-tables-portal/new-azure-data-factory-menu.png)
 1. Na stránce **Nová datová továrna** jako **název** zadejte **ADFMultiIncCopyTutorialDF**. 
       
      ![Stránka Nová datová továrna](./media/tutorial-incremental-copy-multiple-tables-portal/new-azure-data-factory.png)
@@ -383,7 +387,7 @@ V tomto kroku vytvoříte datové sady, které představují zdroj dat, cíl dat
    ![Datová sada jímky – připojení](./media/tutorial-incremental-copy-multiple-tables-portal/sink-dataset-connection-dynamicContent.png)
 
    
-   1. Po kliknutí na tlačítko **Dokončit**, uvidíte  **\@dataset(). SinkTableName** jako název tabulky.
+ 1. Po kliknutí na **Dokončit** se jako název tabulky zobrazí **@dataset().SinkTableName**.
    
    ![Datová sada jímky – připojení](./media/tutorial-incremental-copy-multiple-tables-portal/sink-dataset-connection-completion.png)
 
@@ -425,11 +429,11 @@ Tento kanál dostává jako parametr seznam tabulek. Aktivita ForEach prochází
     ![Název kanálu](./media/tutorial-incremental-copy-multiple-tables-portal/pipeline-name.png)
 1. V okně **Vlastnosti** proveďte následující kroky: 
 
-   1. Klikněte na **+ Nový**. 
-   1. Jano **název parametru** zadejte **tableList**. 
-   1. Jako **typ** parametru vyberte **Objekt**.
+    1. Klikněte na **+ Nový**. 
+    1. Jano **název parametru** zadejte **tableList**. 
+    1. Jako **typ** parametru vyberte **Objekt**.
 
-      ![Parametry kanálu](./media/tutorial-incremental-copy-multiple-tables-portal/pipeline-parameters.png) 
+    ![Parametry kanálu](./media/tutorial-incremental-copy-multiple-tables-portal/pipeline-parameters.png) 
 1. V sadě nástrojů **Aktivity** rozbalte **Iterace a podmíněné výrazy** a přetáhněte aktivitu **ForEach** na plochu návrháře kanálu. Na kartě **Obecné** v okně **Vlastnosti** jako název zadejte **IterateSQLTables**. 
 
     ![Aktivita ForEach – název](./media/tutorial-incremental-copy-multiple-tables-portal/foreach-name.png)
@@ -458,69 +462,69 @@ Tento kanál dostává jako parametr seznam tabulek. Aktivita ForEach prochází
     ![Druhá aktivita vyhledávání – název](./media/tutorial-incremental-copy-multiple-tables-portal/second-lookup-name.png)
 1. Přepněte na kartu **Nastavení**.
 
-     1. Jako **Zdrojová datová sada** vyberte **SourceDataset**. 
-     1. Jako **Použít dotaz** vyberte **Dotaz**.
-     1. Jako **Dotaz** zadejte následující příkaz jazyka SQL.
+    1. Jako **Zdrojová datová sada** vyberte **SourceDataset**. 
+    1. Jako **Použít dotaz** vyberte **Dotaz**.
+    1. Jako **Dotaz** zadejte následující příkaz jazyka SQL.
 
-         ```sql    
-         select MAX(@{item().WaterMark_Column}) as NewWatermarkvalue from @{item().TABLE_NAME}
-         ```
+        ```sql    
+        select MAX(@{item().WaterMark_Column}) as NewWatermarkvalue from @{item().TABLE_NAME}
+        ```
     
-         ![Druhá aktivita vyhledávání – nastavení](./media/tutorial-incremental-copy-multiple-tables-portal/second-lookup-settings.png)
+        ![Druhá aktivita vyhledávání – nastavení](./media/tutorial-incremental-copy-multiple-tables-portal/second-lookup-settings.png)
 1. Z panelu nástrojů **Aktivity** přetáhněte aktivitu **Kopírování** a jako **Název** zadejte **IncrementalCopyActivity**. 
 
-     ![Aktivita kopírování – název](./media/tutorial-incremental-copy-multiple-tables-portal/copy-activity-name.png)
+    ![Aktivita kopírování – název](./media/tutorial-incremental-copy-multiple-tables-portal/copy-activity-name.png)
 1. Jednu po druhé propojte aktivity **vyhledávání** s aktivitou **kopírování**. Propojte je tak, že začnete přetahovat **zelené** pole připojené k aktivitě **vyhledávání** a přemístíte ho na aktivitu **kopírování**. Jakmile se barva ohraničení aktivity kopírování změní na **modrou**, uvolněte tlačítko myši.
 
-     ![Propojení aktivit vyhledávání s aktivitou kopírování](./media/tutorial-incremental-copy-multiple-tables-portal/connect-lookup-to-copy.png)
+    ![Propojení aktivit vyhledávání s aktivitou kopírování](./media/tutorial-incremental-copy-multiple-tables-portal/connect-lookup-to-copy.png)
 1. Vyberte v kanálu aktivitu **kopírování**. V okně **Vlastnosti** přepněte na kartu **Zdroj**. 
 
-     1. Jako **Zdrojová datová sada** vyberte **SourceDataset**. 
-     1. Jako **Použít dotaz** vyberte **Dotaz**. 
-     1. Jako **Dotaz** zadejte následující příkaz jazyka SQL.
+    1. Jako **Zdrojová datová sada** vyberte **SourceDataset**. 
+    1. Jako **Použít dotaz** vyberte **Dotaz**. 
+    1. Jako **Dotaz** zadejte následující příkaz jazyka SQL.
 
-         ```sql
-         select * from @{item().TABLE_NAME} where @{item().WaterMark_Column} > '@{activity('LookupOldWaterMarkActivity').output.firstRow.WatermarkValue}' and @{item().WaterMark_Column} <= '@{activity('LookupNewWaterMarkActivity').output.firstRow.NewWatermarkvalue}'        
-         ```
+        ```sql
+        select * from @{item().TABLE_NAME} where @{item().WaterMark_Column} > '@{activity('LookupOldWaterMarkActivity').output.firstRow.WatermarkValue}' and @{item().WaterMark_Column} <= '@{activity('LookupNewWaterMarkActivity').output.firstRow.NewWatermarkvalue}'        
+        ```
 
-         ![Aktivita kopírování – nastavení zdroje](./media/tutorial-incremental-copy-multiple-tables-portal/copy-source-settings.png)
+        ![Aktivita kopírování – nastavení zdroje](./media/tutorial-incremental-copy-multiple-tables-portal/copy-source-settings.png)
 1. Přepněte na kartu **Jímka** a jako **Datová sada jímky** vyberte **SinkDataset**. 
         
-     ![Aktivita jímky – nastavení jímky](./media/tutorial-incremental-copy-multiple-tables-portal/copy-sink-settings.png)
+    ![Aktivita jímky – nastavení jímky](./media/tutorial-incremental-copy-multiple-tables-portal/copy-sink-settings.png)
 1. Přepněte na kartu **Parametry** a proveďte následující kroky:
 
-     1. Jako hodnotu vlastnosti **Název uložené procedury jímky** zadejte `@{item().StoredProcedureNameForMergeOperation}`.
-     1. Jako hodnotu vlastnosti **Typ tabulky jímky** zadejte `@{item().TableType}`.
-     1. V části **Datová sada jímky** jako hodnotu parametru **SinkTableName** zadejte `@{item().TABLE_NAME}`.
+    1. Jako hodnotu vlastnosti **Název uložené procedury jímky** zadejte `@{item().StoredProcedureNameForMergeOperation}`.
+    1. Jako hodnotu vlastnosti **Typ tabulky jímky** zadejte `@{item().TableType}`.
+    1. V části **Datová sada jímky** jako hodnotu parametru **SinkTableName** zadejte `@{item().TABLE_NAME}`.
 
-         ![Aktivita kopírování – parametry](./media/tutorial-incremental-copy-multiple-tables-portal/copy-activity-parameters.png)
+        ![Aktivita kopírování – parametry](./media/tutorial-incremental-copy-multiple-tables-portal/copy-activity-parameters.png)
 1. Přetáhněte aktivitu **Uložená procedura** z panelu nástrojů **Aktivity** na plochu návrháře kanálu. Propojte aktivitu **kopírování** s aktivitou **Uložená procedura**. 
 
-     ![Aktivita kopírování – parametry](./media/tutorial-incremental-copy-multiple-tables-portal/connect-copy-to-sproc.png)
+    ![Aktivita kopírování – parametry](./media/tutorial-incremental-copy-multiple-tables-portal/connect-copy-to-sproc.png)
 1. Vyberte v kanálu aktivitu **Uložená procedura** a na kartě **Obecné** v okně **Vlastnosti** jako **Název** zadejte **StoredProceduretoWriteWatermarkActivity**. 
 
-     ![Aktivita Uložená procedura – název](./media/tutorial-incremental-copy-multiple-tables-portal/sproc-activity-name.png)
+    ![Aktivita Uložená procedura – název](./media/tutorial-incremental-copy-multiple-tables-portal/sproc-activity-name.png)
 1. Přepněte na kartu **Účet SQL** a jako **Propojená služba** vyberte **AzureSqlDatabaseLinkedService**.
 
-     ![Aktivita Uložená procedura – účet SQL](./media/tutorial-incremental-copy-multiple-tables-portal/sproc-activity-sql-account.png)
+    ![Aktivita Uložená procedura – účet SQL](./media/tutorial-incremental-copy-multiple-tables-portal/sproc-activity-sql-account.png)
 1. Přepněte na kartu **Uložená procedura** a proveďte následující kroky:
 
-     1. Jako **Název uložené procedury** vyberte `usp_write_watermark`. 
-     1. Vyberte **Importovat parametr**. 
-     1. Zadejte následující hodnoty parametrů: 
+    1. Jako **Název uložené procedury** vyberte `usp_write_watermark`. 
+    1. Vyberte **Importovat parametr**. 
+    1. Zadejte následující hodnoty parametrů: 
 
-         | Název | Typ | Hodnota | 
-         | ---- | ---- | ----- |
-         | LastModifiedtime | DateTime | `@{activity('LookupNewWaterMarkActivity').output.firstRow.NewWatermarkvalue}` |
-         | TableName | String | `@{activity('LookupOldWaterMarkActivity').output.firstRow.TableName}` |
+        | Název | Typ | Hodnota | 
+        | ---- | ---- | ----- |
+        | LastModifiedtime | DateTime | `@{activity('LookupNewWaterMarkActivity').output.firstRow.NewWatermarkvalue}` |
+        | TableName | String | `@{activity('LookupOldWaterMarkActivity').output.firstRow.TableName}` |
     
-         ![Aktivita Uložená procedura – nastavení uložené procedury](./media/tutorial-incremental-copy-multiple-tables-portal/sproc-activity-sproc-settings.png)
+        ![Aktivita Uložená procedura – nastavení uložené procedury](./media/tutorial-incremental-copy-multiple-tables-portal/sproc-activity-sproc-settings.png)
 1. V levém podokně klikněte na **Publikovat**. Tato akce publikuje vytvořené entity do služby Data Factory. 
 
-     ![Tlačítko Publikovat](./media/tutorial-incremental-copy-multiple-tables-portal/publish-button.png)
+    ![Tlačítko Publikovat](./media/tutorial-incremental-copy-multiple-tables-portal/publish-button.png)
 1. Počkejte, dokud se nezobrazí zpráva **Publikování proběhlo úspěšně**. Pokud chcete zobrazit oznámení, klikněte na odkaz **Zobrazit oznámení**. Zavřete okno oznámení kliknutím na **X**.
 
-     ![Zobrazit oznámení](./media/tutorial-incremental-copy-multiple-tables-portal/notifications.png)
+    ![Zobrazit oznámení](./media/tutorial-incremental-copy-multiple-tables-portal/notifications.png)
 
  
 ## <a name="run-the-pipeline"></a>Spuštění kanálu
@@ -739,6 +743,6 @@ V tomto kurzu jste provedli následující kroky:
 Pokud se chcete dozvědět víc o transformaci dat pomocí clusteru Spark v Azure, přejděte k následujícímu kurzu:
 
 > [!div class="nextstepaction"]
->[Přírůstkové načtení dat ze služby Azure SQL Database do úložiště Azure Blob Storage pomocí technologie Change Tracking](tutorial-incremental-copy-change-tracking-feature-portal.md)
+>[Přírůstkové načtení dat ze služby Azure SQL Database do Azure Blob storage pomocí technologie Change Tracking](tutorial-incremental-copy-change-tracking-feature-portal.md)
 
 

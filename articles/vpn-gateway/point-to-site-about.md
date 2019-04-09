@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 01/18/2019
 ms.author: cherylmc
-ms.openlocfilehash: 8f444cebac6ee60fbe65399e3f9c8e05eb033843
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.openlocfilehash: 11fbf14cdeb8d22dbfdf522e1c5838634937f6cb
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58878209"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59282096"
 ---
 # <a name="about-point-to-site-vpn"></a>Informace o VPN typu Point-to-Site
 
@@ -22,7 +22,7 @@ Připojení brány VPN typu Point-to-Site (P2S) umožňuje vytvořit zabezpečen
 
 Point-to-site VPN můžete použít jednu z následujících protokolů:
 
-* OpenVPN, SSL/TLS na základě protokol VPN. Řešení typu VPN protokolu SSL umožňuje pronikat branami firewall, protože většina bran firewall otevírá port TCP 443, který používá protokol SSL. OpenVPN je možné se připojit z Android, iOS (verze 11.0 a vyšší), zařízení s Windows, Linux a Mac (OSX verze 10.13 a vyšší).
+* **Protokol® OpenVPN**, protokol VPN založený na protokolu SSL/TLS. Řešení typu VPN protokolu SSL umožňuje pronikat branami firewall, protože většina bran firewall otevírá port TCP 443, který používá protokol SSL. OpenVPN je možné se připojit z Android, iOS (verze 11.0 a vyšší), zařízení s Windows, Linux a Mac (OSX verze 10.13 a vyšší).
 
 * Zabezpečte SSTP Socket Tunneling Protocol (), speciální protokol VPN založený na protokolu SSL. Řešení typu VPN protokolu SSL umožňuje pronikat branami firewall, protože většina bran firewall otevírá port TCP 443, který používá protokol SSL. SSTP je podporována pouze na zařízeních s Windows. Azure podporuje všechny verze Windows, které mají SSTP (Windows 7 a novější).
 
@@ -54,7 +54,7 @@ Server protokolu RADIUS můžete integrovat také s AD CS. To vám umožní pou�
 Server protokolu RADIUS můžete také integrovat s jinými systémy pro externí identity. Otevře spoustu možnosti ověřování pro P2S VPN, včetně možnosti služby Multi-Factor Authentication.
 
 >[!NOTE]
->OpenVPN protokol není podporován ověřováním pomocí protokolu RADIUS.
+>**Protokol® OpenVPN** nepodporuje ověřování pomocí protokolu RADIUS.
 >
 
 ![point-to-site](./media/point-to-site-about/p2s.png "Point-to-Site")
@@ -109,3 +109,5 @@ Konfigurace P2S vyžaduje poměrně musíte provést konkrétní postup. Násled
 * [Konfigurace připojení typu P2S – ověřování pomocí protokolu RADIUS](point-to-site-how-to-radius-ps.md)
 
 * [Konfigurace připojení typu P2S – nativní ověřování certifikátů Azure](vpn-gateway-howto-point-to-site-rm-ps.md)
+
+**"OpenVPN" je ochranná známka společnosti OpenVPN Inc.**

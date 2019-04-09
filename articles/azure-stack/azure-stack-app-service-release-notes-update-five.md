@@ -15,16 +15,16 @@ ms.topic: article
 ms.date: 03/25/2019
 ms.author: anwestg
 ms.reviewer: ''
-ms.openlocfilehash: 851673de4a711f5eb64228233ea7703ef86bfa7b
-ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
+ms.openlocfilehash: 192ac256f013498e57ecf7939d29796af073b948
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58500198"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59260557"
 ---
 # <a name="app-service-on-azure-stack-update-5-release-notes"></a>App Service v Azure stacku zpráva k vydání verze update 5
 
-*Platí pro: Azure Stack integrované systémy a Azure Stack Development Kit*
+*Týká se Azure Stack integrované systémy a Azure Stack Development Kit*
 
 Tyto poznámky k verzi popisují vylepšení a oprav ve službě Azure App Service v Azure stacku Update 5 a známých problémech. Známé problémy jsou rozděleny do týkající se přímo k nasazení, aktualizace a problémy se sestavením (po instalaci).
 
@@ -77,7 +77,7 @@ Azure App Service v Azure stacku aktualizaci 5 zahrnuje následující vylepšen
 ### <a name="post-deployment-steps"></a>Kroky po nasazení
 
 > [!IMPORTANT]  
-> Pokud jste zadali RP App Service se vždy na instanci SQL je nutné [přidat do skupiny dostupnosti databáze appservice_hosting a appservice_metering](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/availability-group-add-a-database) a synchronizaci databází, aby nedocházelo ke služby události převzetí služeb při selhání databáze.
+> Pokud budete mít k dispozici poskytovatele prostředků App Service vždy na instanci SQL musíte [přidat do skupiny dostupnosti databáze appservice_hosting a appservice_metering](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/availability-group-add-a-database) a synchronizaci databází, aby nedocházelo ke Služba v případě selhání databáze.
 
 ### <a name="post-update-steps"></a>Postup po aktualizaci
 

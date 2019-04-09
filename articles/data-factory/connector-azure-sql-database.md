@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 03/13/2019
+ms.date: 04/08/2019
 ms.author: jingwang
-ms.openlocfilehash: e9efe96490ea1c9351d87b5b2477474ef68fbda9
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: d0ecf6a48735ec2ba1623f97d4760d230a6e6fbf
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57875233"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59266296"
 ---
 # <a name="copy-data-to-or-from-azure-sql-database-by-using-azure-data-factory"></a>Kopírování dat do nebo ze služby Azure SQL Database s použitím služby Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you use:"]
@@ -63,8 +63,8 @@ Pro služby Azure SQL Database, která je propojená se podporují tyto vlastnos
 
 Různými typy ověřování najdete v následujících částech na požadavky a ukázky JSON v uvedeném pořadí:
 
-- [Ověřování SQL](#sql-authentication)
-- [Azure AD ověřování tokenu aplikací: Instanční objekt služby](#service-principal-authentication)
+- [Ověřování pomocí SQL](#sql-authentication)
+- [Azure AD ověřování tokenu aplikací: Instanční objekt](#service-principal-authentication)
 - [Azure AD ověřování tokenu aplikací: Spravované identity pro prostředky Azure](#managed-identity)
 
 >[!TIP]
@@ -373,7 +373,7 @@ Chcete-li kopírovat data do služby Azure SQL Database, nastavte **typ** vlastn
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
 | type | **Typ** vlastnost jímky aktivity kopírování musí být nastavena na **SqlSink**. | Ano |
-| WriteBatchSize | Vloží data do tabulky SQL, když dosáhne velikosti vyrovnávací paměti **writeBatchSize**.<br/> Je povolená hodnota **celé číslo** (počet řádků). | Ne. Výchozí hodnota je 10000. |
+| WriteBatchSize | Počet řádků, která se vloží do tabulky SQL **dávce**.<br/> Je povolená hodnota **celé číslo** (počet řádků). | Ne. Výchozí hodnota je 10000. |
 | writeBatchTimeout | Doba čekání pro dávku vložte na dokončení před vypršením časového limitu operace.<br/> Je povolená hodnota **timespan**. Příklad: "00: 30:00" (30 minut). | Ne |
 | preCopyScript | Zadejte dotaz SQL pro aktivitu kopírování ke spuštění před zápisem dat do Azure SQL Database. Pouze vyvolá se jednou za kopírování spustit. Tuto vlastnost použijte k vyčištění dat předem. | Ne |
 | sqlWriterStoredProcedureName | Název uložené procedury, která definuje, jak použít zdroj dat do cílové tabulky. Příkladem je upsertuje nebo transformovat pomocí vlastní obchodní logikou. <br/><br/>Tuto uloženou proceduru se **za batch**. Pro operace, které pouze spustit jednou a nemají co dělat se zdrojovými daty, použijte `preCopyScript` vlastnost. Příklad operace jsou delete a zkrátit. | Ne |
@@ -535,7 +535,7 @@ Uloženou proceduru můžete použít, když integrovaná funkce kopírování m
 
 Následující příklad ukazuje, jak provést funkcí upsert do tabulky ve službě Azure SQL Database pomocí uložené procedury. Předpokládejme, který vstupní data a jímku **marketingové** tabulka jednotlivých obsahovat tři sloupce: **ID profilu**, **stavu**, a **kategorie**. Proveďte upsert na základě **ProfileID** sloupce a použijte je jenom pro konkrétní kategorie.
 
-#### <a name="output-dataset"></a>Výstupní datová sada
+**Výstupní datová sada:** "tableName" by měl být stejný název parametru typu tabulky v uložené proceduře (viz níže uvedený skript uložené procedury).
 
 ```json
 {
@@ -554,7 +554,7 @@ Následující příklad ukazuje, jak provést funkcí upsert do tabulky ve slu�
 }
 ```
 
-Definovat **SqlSink** části v aktivitě kopírování:
+Definovat **SQL jímky** následující části v aktivitě kopírování.
 
 ```json
 "sink": {

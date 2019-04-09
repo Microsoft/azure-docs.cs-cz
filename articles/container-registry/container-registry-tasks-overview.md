@@ -7,12 +7,12 @@ ms.service: container-registry
 ms.topic: article
 ms.date: 03/28/2019
 ms.author: danlep
-ms.openlocfilehash: 89b48175d7707458cd92916f6b26e298163a7416
-ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
+ms.openlocfilehash: b97db09c477a940ca36129316613f5ceb4eb13b1
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/04/2019
-ms.locfileid: "58915914"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59256188"
 ---
 # <a name="automate-os-and-framework-patching-with-acr-tasks"></a>Automatizace operačního systému a rozhraní framework opravy chyb s úlohami služby ACR
 
@@ -78,7 +78,7 @@ Další informace o operačním systému a rozhraní framework opravy chyb ve t�
 > [!NOTE]
 > Základní image aktualizuje aktivační události sestavení pouze v případě imagí základní a aplikace jsou umístěny ve stejné Azure container registry i základní třídy se nachází ve veřejném úložišti Docker Hubu.
 
-## <a name="multi-step-tasks"></a>Vícekrokové úlohy
+## <a name="multi-step-tasks"></a>Úlohy s více kroky
 
 Vícekrokové úlohy poskytují definice založené na krok úlohy a spuštění sestavení, testování a opravami imagí kontejnerů v cloudu. Kroky úlohy definují jednotlivá sestavení image kontejneru a operací nabízených oznámení. Mohou také definovat spuštění jednoho nebo více kontejnerů, u každého kroku pomocí kontejneru jako prostředí pro spuštění.
 
@@ -97,10 +97,9 @@ Další informace o vícekrokových úkolů v [spuštění několika kroky sesta
 
 ## <a name="next-steps"></a>Další postup
 
-Až budete připraveni k automatizaci operačního systému a rozhraní framework opravy chyb ve vytváření imagí kontejnerů v cloudu, přečtěte si část třídílné série kurzů ACR úlohy.
+Až budete připraveni k automatizaci operačního systému a rozhraní framework opravy chyb ve vytváření imagí kontejnerů v cloudu, přečtěte si třemi částmi [sérii úkolů ACR](container-registry-tutorial-quick-task.md).
 
-> [!div class="nextstepaction"]
-> [Sestavování imagí kontejneru v cloudu pomocí služby Azure Container Registry úlohy](container-registry-tutorial-quick-task.md)
+Volitelně můžete nainstalovat [rozšíření Dockeru pro Visual Studio Code](https://code.visualstudio.com/docs/azure/docker) a [účet Azure](https://marketplace.visualstudio.com/items?itemName=ms-vscode.azure-account) rozšíření pro práci s vaší registry kontejnerů Azure. O přijetí změn a nahrávání imagí do služby Azure container registry nebo spuštění úlohy služby ACR, vše v rámci Visual Studio Code.
 
 <!-- LINKS - External -->
 [base-alpine]: https://hub.docker.com/_/alpine/

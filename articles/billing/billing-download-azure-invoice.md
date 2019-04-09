@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/19/2019
 ms.author: banders
-ms.openlocfilehash: 82755f01cc881703eeefb6415b2e8e87e50fba60
-ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
+ms.openlocfilehash: f71fe9b02765e0fc8fd5f3b7abbd54c87b08132f
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58652378"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59264059"
 ---
 # <a name="view-and-download-your-microsoft-azure-invoice"></a>Zobrazit a stáhnout fakturu Microsoft Azure
 
@@ -135,7 +135,7 @@ Pokud máte otázky nebo potřebujete pomoc, [vytvořit žádost o podporu](http
 
 Další informace týkající se faktury a náklady, naleznete v tématu:
 
-- [Zobrazovat a stahovat využití Microsoft Azure a poplatky za](billing-download-azure-daily-usage.md)
+- [Zobrazit a stáhnout využití a poplatky Microsoft Azure](billing-download-azure-daily-usage.md)
 - [Vysvětlení vašeho vyúčtování služeb Microsoft Azure](billing-understand-your-bill.md)
 - [Vysvětlení podmínek na faktuře Azure](billing-understand-your-invoice.md)
 - [Vysvětlení podmínek na Microsoft Azure podrobné využití](billing-understand-your-usage.md)
@@ -143,7 +143,7 @@ Další informace týkající se faktury a náklady, naleznete v tématu:
 
 Pokud máte smlouvu Microsoft zákazníka, naleznete v tématu:
 
-- [Principy poplatků za na fakturu za fakturační profil ](billing-mca-understand-your-bill.md)
+- [Principy poplatků za na fakturu za fakturační profil](billing-mca-understand-your-bill.md)
 - [Vysvětlení podmínek na faktuře pro váš fakturační profil](billing-mca-understand-your-invoice.md)
 - [Principy Azure file využití a poplatků pro váš fakturační profil](billing-mca-understand-your-usage.md)
 - [Zobrazovat a stahovat daňové doklady pro váš fakturační profil](billing-mca-download-tax-document.md)

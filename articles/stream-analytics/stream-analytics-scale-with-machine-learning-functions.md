@@ -8,18 +8,18 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 03/28/2017
-ms.openlocfilehash: 216ce32997a4114f4f2684b14338b4e36d9afd03
-ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
+ms.openlocfilehash: f11034a4970e3fb95333310af82a6b2a2551f1eb
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53558001"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59257276"
 ---
 # <a name="scale-your-stream-analytics-job-with-azure-machine-learning-functions"></a>Škálovat úlohy Stream Analytics s funkcemi Azure Machine Learning
 Nastavení úlohy Stream Analytics a spuštění ukázkových dat přes něj je snadná. Co máme dělat, když potřebujeme spustit stejná úloha s vyšší objem dat? Abychom mohli pochopit, jak nakonfigurovat úlohu Stream Analytics tak, aby škáluje se vyžaduje. V tomto dokumentu se zaměříme na zvláštní aspekty škálovat úlohy Stream Analytics s funkcemi Machine Learning. Informace o tom, jak škálovat úlohy Stream Analytics obecně najdete v článku [škálování úloh](stream-analytics-scale-jobs.md).
 
 ## <a name="what-is-an-azure-machine-learning-function-in-stream-analytics"></a>Co je Azure Machine Learning funkce ve Stream Analytics?
-Funkci strojového učení ve službě Stream Analytics můžete použít jako normální volání funkce v dotazovací jazyk Stream Analytics. Za scénu, jsou volání funkcí ve skutečnosti žádosti webové služby Azure Machine Learning. Webové služby Machine Learning podporuje "dávkování" více řádků, volá zkrácené batch ve stejném volání webové služby rozhraní API, ke zlepšení celkovou propustnost. Další informace najdete v tématu [funkce Azure Machine Learning ve službě Stream Analytics](https://blogs.technet.microsoft.com/machinelearning/2015/12/10/azure-ml-now-available-as-a-function-in-azure-stream-analytics/) a [Azure Machine Learning Web Services](../machine-learning/studio/consume-web-services.md).
+Funkci strojového učení ve službě Stream Analytics můžete použít jako normální volání funkce v dotazovací jazyk Stream Analytics. Za scénu, jsou volání funkcí ve skutečnosti žádosti webové služby Azure Machine Learning. Webové služby Machine Learning podporuje "dávkování" více řádků, volá zkrácené batch ve stejném volání webové služby rozhraní API, ke zlepšení celkovou propustnost. Další informace najdete v tématu [Azure Machine Learning Web Services](../machine-learning/studio/consume-web-services.md).
 
 ## <a name="configure-a-stream-analytics-job-with-machine-learning-functions"></a>Konfigurace úlohy Stream Analytics s funkcemi Machine Learning
 Když konfigurujete funkci strojového učení pro úlohu Stream Analytics, existují dva parametry, které byste měli zvážit, velikost dávky volání funkce Machine Learning a jednotky streamování (su) zřízené pro úlohu Stream Analytics. K určení příslušné hodnoty pro su, nejprve rozhodnutí musí provádět mezi latence a propustnosti, to znamená, latenci úlohy Stream Analytics a propustnost všechny SU. Služby SUs může být vždy přidána na úlohy pro zvýšení prostupnosti dobře oddílů dotazu Stream Analytics, i když další služby SUs zvýšit náklady na spuštění úlohy.

@@ -4,22 +4,20 @@ description: Příručka pro vývojáře k ověřování pomocí rozhraní API A
 services: azure-resource-manager,active-directory
 documentationcenter: na
 author: dushyantgill
-manager: timlt
-editor: tysonn
 ms.assetid: 17b2b40d-bf42-4c7d-9a88-9938409c5088
 ms.service: azure-resource-manager
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 3/22/2019
+ms.date: 04/05/2019
 ms.author: dugill
-ms.openlocfilehash: 7e6ce8c4e5e6ff79a8e77708bd76cef6c24cadd3
-ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
+ms.openlocfilehash: ae405d5dd99a0e2acced924ccccab292b4489cde
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58805512"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59264331"
 ---
 # <a name="use-resource-manager-authentication-api-to-access-subscriptions"></a>Ověřování pomocí Správce prostředků rozhraní API pro přístup k předplatným
 
@@ -31,8 +29,6 @@ Vaše aplikace neměly přístup k rozhraní API Resource Manageru v několika z
 2. **Přístup jen pro aplikace**: pro aplikace, které běží služby démonů a naplánované úlohy. Přímý přístup k prostředkům, je udělen identitě aplikace. Tento postup funguje pro aplikace, které potřebují dlouhodobé bezobslužného (bezobslužné) přístup k Azure.
 
 Tento článek obsahuje podrobné pokyny k vytvoření aplikace, která používá obě tyto metody ověřování. Ukazuje, jak provést jednotlivé kroky pomocí rozhraní REST API nebo C#. Dokončení aplikace ASP.NET MVC je k dispozici na [ https://github.com/dushyantgill/VipSwapper/tree/master/CloudSense ](https://github.com/dushyantgill/VipSwapper/tree/master/CloudSense).
-
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="what-the-web-app-does"></a>Co dělá webové aplikace
 
@@ -72,27 +68,9 @@ Správa vašich připojených předplatných:
 ## <a name="register-application"></a>Zaregistrovat aplikaci
 Předtím, než se pustíte do psaní kódu, zaregistrujte webovou aplikaci s Azure Active Directory (AD). Registrace aplikace vytvoří centrální identitu pro vaši aplikaci ve službě Azure AD. Obsahuje základní informace o vaší aplikaci, jako je ID klienta OAuth, adresy URL odpovědí a přihlašovací údaje, které vaše aplikace používá k ověřování a přístup k rozhraní API Azure Resource Manageru. Registrace aplikace taky zaznamenává různých delegovaná oprávnění, které vaše aplikace potřebuje při přístupu k Microsoft APIs pro daného uživatele.
 
-Vzhledem k tomu, že vaše aplikace nemá přístup k jiné předplatné, musíte ho nakonfigurovat jako aplikaci s více tenanty. Chcete-li projít ověřením, zadejte domény přidružené k Azure Active Directory. Pokud chcete zobrazit domény přidružené k Azure Active Directory, přihlaste se k portálu.
+Svou aplikaci zaregistrovat, najdete v článku [rychlý start: Registrace aplikace s platformou identity Microsoft](../active-directory/develop/quickstart-register-app.md). Dejte aplikaci název a vyberte **účty v libovolném adresáři organizace** pro typy podporovaných účtů. Adresa URL přesměrování zadejte domény přidružené k Azure Active Directory.
 
-Následující příklad ukazuje, jak zaregistrovat aplikaci pomocí Azure Powershellu. Musíte mít nejnovější verze Azure Powershellu pro tento příkaz fungovat (srpen 2016).
-
-```azurepowershell-interactive
-$app = New-AzADApplication -DisplayName "{app name}" -HomePage "https://{your domain}/{app name}" -IdentifierUris "https://{your domain}/{app name}" -Password "{your password}" -AvailableToOtherTenants $true
-```
-
-Přihlásit se jako aplikace AD, budete potřebovat ID aplikace a heslo. Pokud chcete zobrazit ID aplikace, která je vrácena z předchozího příkazu, použijte:
-
-```azurepowershell-interactive
-$app.ApplicationId
-```
-
-Následující příklad ukazuje, jak zaregistrovat aplikaci pomocí Azure CLI.
-
-```azurecli-interactive
-az ad app create --display-name {app name} --homepage https://{your domain}/{app name} --identifier-uris https://{your domain}/{app name} --password {your password} --available-to-other-tenants true
-```
-
-Výsledky budou zahrnovat AppId, který budete potřebovat při ověřování jako aplikace.
+Přihlásit se jako aplikace AD, budete potřebovat ID aplikace a tajný klíč. ID aplikace se zobrazí v přehledu pro aplikaci. Vytvoření tajného kódu a požádat o oprávnění k rozhraní API najdete v tématu [rychlý start: Konfigurovat klientskou aplikaci pro přístup k webovým rozhraním API](../active-directory/develop/quickstart-configure-app-access-web-apis.md). Zadejte nový tajný kód klienta. Vyberte rozhraní API oprávnění **Azure Service Management**. Vyberte **delegovaná oprávnění** a **user_impersonation**.
 
 ### <a name="optional-configuration---certificate-credential"></a>Volitelné konfigurace – certifikát přihlašovacích údajů
 Certifikát přihlašovacích údajů Azure AD podporuje také pro aplikace: vytvoření certifikátu podepsaného svým držitelem, zachovat privátní klíč a přidejte veřejný klíč, registrace aplikace Azure AD. Pro ověřování vaše aplikace odešle do služby Azure AD podepsán pomocí privátního klíče malé datové části a Azure AD ověří podpis pomocí veřejného klíče, které jste zaregistrovali.

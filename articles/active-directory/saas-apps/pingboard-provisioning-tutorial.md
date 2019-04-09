@@ -13,16 +13,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/19/2017
+ms.date: 03/27/2019
 ms.author: asmalser
 ms.reviewer: asmalser
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e36d0985aee53f2a7f701f9bf7887ae26a426b68
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: MT
+ms.openlocfilehash: d2ab7f58c3061044583baf9db73e193966d7d4eb
+ms.sourcegitcommit: b4ad15a9ffcfd07351836ffedf9692a3b5d0ac86
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56203739"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59058371"
 ---
 # <a name="tutorial-configure-pingboard-for-automatic-user-provisioning"></a>Kurz: Konfigurace Pingboard pro automatické zřizování uživatelů
 
@@ -32,11 +32,11 @@ ms.locfileid: "56203739"
 
 Scénář popsaný v tomto kurzu se předpokládá, že máte následující položky:
 
-*   Klient služby Azure AD
-*   Pingboard tenant [účet Pro](https://pingboard.com/pricing) 
-*   Uživatelský účet v Pingboard s oprávněními správce 
+* Klient služby Azure AD
+* Pingboard tenant [účet Pro](https://pingboard.com/pricing)
+* Uživatelský účet v Pingboard s oprávněními správce
 
-> [!NOTE] 
+> [!NOTE]
 > Zřizování integrace Azure AD spoléhá na [Pingboard API](https://pingboard.docs.apiary.io/#), která je k dispozici ke svému účtu.
 
 ## <a name="assign-users-to-pingboard"></a>Přiřazení uživatelů k Pingboard
@@ -69,7 +69,7 @@ Tato část vás provede připojení k rozhraní API zřizování Pingboard uži
 1. Nastavte **režim zřizování** k **automatické**.
 
     ![Pingboard zřizování](./media/pingboard-provisioning-tutorial/pingboardazureprovisioning.png)
-    
+
 1. V části **přihlašovacích údajů správce** oddílu, použijte následující postup:
 
     a. V **adresy URL Tenanta**, zadejte `https://your_domain.pingboard.com/scim/v2`a "doména" nahraďte doménou skutečný.
@@ -86,7 +86,7 @@ Tato část vás provede připojení k rozhraní API zřizování Pingboard uži
 
 1. Zadejte e-mailovou adresu osoby nebo skupiny, která chcete dostávat oznámení zřizování chyby v **e-mailové oznámení**. Zaškrtněte políčko pod.
 
-1. Vyberte **Uložit**. 
+1. Vyberte **Uložit**.
 
 1. V části **mapování** vyberte **synchronizace Azure Active Directory uživatelům Pingboard**.
 
@@ -103,5 +103,5 @@ Další informace o tom, jak číst zřizování protokoly Azure AD najdete v t�
 ## <a name="additional-resources"></a>Další materiály
 
 * [Správa zřizování uživatelských účtů pro podnikové aplikace](../manage-apps/configure-automatic-user-provisioning-portal.md)
-* [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)
+* [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 * [Konfigurace jednotného přihlašování](pingboard-tutorial.md)

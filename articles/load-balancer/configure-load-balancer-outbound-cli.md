@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/01/2019
 ms.author: kumud
-ms.openlocfilehash: 0b46cbdec6d0ffe2a614a976f70b833726fb0e8a
-ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
+ms.openlocfilehash: f28088a1a0586964092a0b5f86ce8bf0f95402cd
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/02/2019
-ms.locfileid: "58849957"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59281943"
 ---
 # <a name="configure-load-balancing-and-outbound-rules-in-standard-load-balancer-using-azure-cli"></a>Konfigurace vyrovnávání zatížení i pravidla odchozího v Load balanceru úrovně Standard pomocí Azure CLI
 
@@ -99,7 +99,7 @@ Vytvoření Load Balanceru úrovně se na příchozí IP adresu pomocí [az netw
 Vytvoření dalších back-endového fondu adres definovat odchozí připojení pro fond virtuálních počítačů s [az network lb-fondu adres vytvořte](https://docs.microsoft.com/cli/azure/network/lb?view=azure-cli-latest) s názvem *bepooloutbound*.  Vytvoření samostatných odchozích fondu k dispozici maximální flexibilitu, ale můžete tento krok vynechat a použít pouze příchozí *bepoolinbound* také.
 
 ```azurecli-interactive
-  az network lb address-pool \
+  az network lb address-pool create \
     --resource-group myresourcegroupoutbound \
     --lb-name lb \
     --name bepooloutbound
@@ -183,4 +183,4 @@ Pokud už je nepotřebujete, můžete k odebrání skupiny prostředků, nástro
 V tomto článku se vytvoří Load balanceru úrovně Standard, konfiguraci provozu pravidla nástroje pro vyrovnávání zatížení příchozích, nakonfigurovat a sondu stavu pro virtuální počítače v back-endový fond. Další informace o službě Azure Load Balancer najdete v kurzech týkajících se služby Azure Load Balancer.
 
 > [!div class="nextstepaction"]
-> [Kurzy o službě Azure Load Balancer](tutorial-load-balancer-standard-public-zone-redundant-portal.md)
+> [Kurzy pro nástroj pro vyrovnávání zatížení Azure](tutorial-load-balancer-standard-public-zone-redundant-portal.md)
