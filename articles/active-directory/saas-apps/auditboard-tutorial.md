@@ -12,15 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 12/18/2018
+ms.date: 04/03/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cce100c4e8aa33a9180f5657756b11d6c6e34920
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: b5a54fb179b9baac9e72e003b1f9b0c6697ae74b
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57838863"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59258789"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-auditboard"></a>Kurz: Integrace Azure Active Directory s AuditBoard
 
@@ -38,7 +38,7 @@ Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https
 
 Konfigurace integrace Azure AD s AuditBoard, potřebujete následující položky:
 
-* Předplatné služby Azure AD. Pokud nemáte prostředí Azure AD, můžete získat měsíční zkušební verze [zde](https://azure.microsoft.com/pricing/free-trial/)
+* Předplatné služby Azure AD. Pokud nemáte prostředí Azure AD, můžete získat [bezplatný účet](https://azure.microsoft.com/free/)
 * AuditBoard jednotného přihlašování povolená předplatného
 
 ## <a name="scenario-description"></a>Popis scénáře
@@ -67,7 +67,7 @@ Konfigurace integrace AuditBoard do služby Azure AD, budete muset přidat Audit
 
 4. Do vyhledávacího pole zadejte **AuditBoard**vyberte **AuditBoard** z panelu výsledků klikněte **přidat** tlačítko pro přidání aplikace.
 
-     ![AuditBoard v seznamu výsledků](common/search-new-app.png)
+    ![AuditBoard v seznamu výsledků](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a otestování služby Azure AD jednotného přihlašování
 
@@ -79,8 +79,8 @@ Nakonfigurovat a otestovat Azure AD jednotné přihlašování s AuditBoard, kte
 1. **[Konfigurovat Azure AD Single Sign-On](#configure-azure-ad-single-sign-on)**  – Pokud chcete, aby uživatelé mohli tuto funkci používat.
 2. **[Konfigurace AuditBoard Single Sign-On](#configure-auditboard-single-sign-on)**  – ke konfiguraci nastavení jednotného přihlašování na straně aplikace.
 3. **[Vytvořit testovacího uživatele Azure AD](#create-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
-4. **[Vytvořit testovacího uživatele AuditBoard](#create-auditboard-test-user)**  – Pokud chcete mít protějšek Britta Simon AuditBoard, který je propojený s Azure AD reprezentace uživatele.
-5. **[Přiřadit uživatele Azure AD](#assign-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotného přihlašování.
+4. **[Přiřadit uživatele Azure AD](#assign-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotného přihlašování.
+5. **[Vytvořit testovacího uživatele AuditBoard](#create-auditboard-test-user)**  – Pokud chcete mít protějšek Britta Simon AuditBoard, který je propojený s Azure AD reprezentace uživatele.
 6. **[Otestovat jednotné přihlašování](#test-single-sign-on)**  – Pokud chcete ověřit, jestli funguje v konfiguraci.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurace služby Azure AD jednotného přihlašování
@@ -118,7 +118,7 @@ Ke konfiguraci Azure AD jednotné přihlašování s AuditBoard, proveďte násl
     > [!NOTE]
     > Tyto hodnoty nejsou skutečný. Aktualizujte tyto hodnoty skutečnou adresu URL identifikátor, adresa URL odpovědi a přihlašování. Kontakt [tým podpory AuditBoard klienta](mailto:support@auditboard.com) k získání těchto hodnot. Můžete také odkazovat na tyto vzory se dají ukazuje **základní konfiguraci SAML** části webu Azure Portal.
 
-4. Na **nastavte si jednotné přihlašování pomocí SAML** stránku, **podpisový certifikát SAML** klikněte na tlačítko Kopírovat zkopírujte **adresa Url federačních metadat aplikace** a uložte ji na vaše počítač.
+5. Na **nastavte si jednotné přihlašování pomocí SAML** stránku, **podpisový certifikát SAML** klikněte na tlačítko Kopírovat zkopírujte **adresa Url federačních metadat aplikace** a uložte ji na vaše počítač.
 
     ![Odkaz ke stažení certifikátu](common/copy-metadataurl.png)
 
@@ -126,7 +126,7 @@ Ke konfiguraci Azure AD jednotné přihlašování s AuditBoard, proveďte násl
 
 Ke konfiguraci jednotného přihlašování na **AuditBoard** straně, je nutné odeslat **adresa Url federačních metadat aplikace** k [tým podpory AuditBoard](mailto:support@auditboard.com). Nastavují tohoto nastavení můžete mít správně nastavené na obou stranách připojení SAML SSO.
 
-### <a name="create-an-azure-ad-test-user"></a>Vytvořit testovacího uživatele Azure AD 
+### <a name="create-an-azure-ad-test-user"></a>Vytvořit testovacího uživatele Azure AD
 
 Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal volá Britta Simon.
 
@@ -144,8 +144,7 @@ Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal
 
     a. V **název** zadat **BrittaSimon**.
   
-    b. V **uživatelské jméno** typ pole **brittasimon\@yourcompanydomain.extension**  
-    Například BrittaSimon@contoso.com.
+    b. V **uživatelské jméno** typ pole `brittasimon\@yourcompanydomain.extension`. Například BrittaSimon@contoso.com.
 
     c. Vyberte **zobrazit heslo** zaškrtněte políčko a zapište si hodnotu, která se zobrazí v poli heslo.
 
@@ -181,7 +180,7 @@ V této části je povolit Britta Simon k udělení přístupu k AuditBoard pou�
 
 V této části vytvoříte uživatele v AuditBoard jako Britta Simon. Práce s [tým podpory AuditBoard](mailto:support@auditboard.com) přidat uživatele na platformě AuditBoard. Uživatelé musí vytvořit a aktivovat, než použití jednotného přihlašování.
 
-### <a name="test-single-sign-on"></a>Test jednotného přihlašování 
+### <a name="test-single-sign-on"></a>Test jednotného přihlašování
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 
@@ -191,7 +190,6 @@ Po kliknutí na dlaždici AuditBoard na přístupovém panelu, můžete by měl 
 
 - [Seznam kurzů o integraci aplikací SaaS pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-

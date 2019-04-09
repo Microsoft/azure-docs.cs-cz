@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 02/15/2019
 ms.author: jingwang
-ms.openlocfilehash: b975b34c638db812d3809bf50d1eccbb651028b5
-ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
+ms.openlocfilehash: e3a27ab15c72289dd28e31d832b81407a66dc754
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58448928"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59256783"
 ---
 # <a name="copy-data-from-azure-data-lake-storage-gen1-to-gen2-with-azure-data-factory"></a>Kopírování dat z Azure Data Lake Storage Gen1 na Gen2 s Azure Data Factory
 
@@ -34,7 +34,7 @@ V tomto článku se dozvíte, jak pomocí nástroje pro kopírování dat Data F
 
 * Předplatné Azure: Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 * Účet Azure Data Lake Storage Gen1 s daty.
-* Účet služby Azure Storage s Data Lake Storage Gen2 povoleno: Pokud nemáte účet úložiště, klikněte na tlačítko [tady](https://ms.portal.azure.com/#create/Microsoft.StorageAccount-ARM) k jejímu vytvoření.
+* Účet služby Azure Storage s Data Lake Storage Gen2 povoleno: Pokud nemáte účet úložiště [vytvořit účet](https://ms.portal.azure.com/#create/Microsoft.StorageAccount-ARM).
 
 ## <a name="create-a-data-factory"></a>Vytvoření datové továrny
 
@@ -104,7 +104,7 @@ V tomto článku se dozvíte, jak pomocí nástroje pro kopírování dat Data F
    
    ![Zadejte účet Azure Data Lake Storage Gen2](./media/load-azure-data-lake-storage-gen2-from-gen1/specify-adls-gen2-account.png)
 
-9. V **zvolte výstupní soubor nebo složku** zadejte **copyfromadlsgen1** jako název složky výstupu a vyberte **Další**: 
+9. V **zvolte výstupní soubor nebo složku** zadejte **copyfromadlsgen1** jako název složky výstupu a vyberte **Další**. ADF se vytvoří odpovídající ADLS Gen2 v systému souborů a podsložek během kopírování, pokud neexistuje.
 
     ![Zadejte výstupní složka](./media/load-azure-data-lake-storage-gen2-from-gen1/specify-adls-gen2-path.png)
 

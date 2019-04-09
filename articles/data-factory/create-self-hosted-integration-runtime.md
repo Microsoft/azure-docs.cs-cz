@@ -11,12 +11,12 @@ ms.date: 01/15/2019
 author: nabhishek
 ms.author: abnarain
 manager: craigg
-ms.openlocfilehash: 6ab5ee923cc439901149a26d7af4b57f9933ee19
-ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
+ms.openlocfilehash: 7fd4fd65b48c199527d9172b7cea89010c962f5b
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58905881"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59261033"
 ---
 # <a name="create-and-configure-a-self-hosted-integration-runtime"></a>Vytvoření a konfigurace místní prostředí integration runtime
 Prostředí integration runtime (IR) je výpočetní infrastruktura, která Azure Data Factory používá pro poskytují funkce integrace dat v různých síťových prostředích. Podrobnosti o prostředí IR najdete v tématu [přehled modulu runtime integrace](concepts-integration-runtime.md).
@@ -39,7 +39,9 @@ Tento dokument popisuje, jak můžete vytvořit a nakonfigurovat v místním pro
 3. Načíst ověřovací klíč a zaregistrujte modul runtime integrace v místním prostředí s klíčem. Tady je příklad Powershellu:
 
     ```powershell
-    Get-AzDataFactoryV2IntegrationRuntimeKey -ResourceGroupName $resourceGroupName -DataFactoryName $dataFactoryName -Name $selfHostedIntegrationRuntime.  
+
+    Get-AzureRmDataFactoryV2IntegrationRuntimeKey -ResourceGroupName $resourceGroupName -DataFactoryName $dataFactoryName -Name $selfHostedIntegrationRuntimeName  
+
     ```
 
 ## <a name="setting-up-a-self-hosted-ir-on-an-azure-vm-by-using-an-azure-resource-manager-template-automation"></a>Nastavení místní prostředí IR na Virtuálním počítači Azure s použitím šablony Azure Resource Manageru (Automatizace)
@@ -110,7 +112,7 @@ Stáhněte si balíček MSI Instalační program z můžete nainstalovat místn�
 
 
 ## <a name="high-availability-and-scalability"></a>Vysoká dostupnost a škálovatelnost
-Místní prostředí integration runtime můžou být spojené s více místních počítačů. Tyto počítače se označují jako uzly. Můžete mít až čtyři uzly, které jsou spojené s místní prostředí integration runtime. Výhody s více uzly (na místních počítačích s nainstalovanou bránu) pro logické brány jsou:
+Místní prostředí integration runtime můžou být spojené s více virtuálních počítačů v Azure nebo na místních počítačích. Tyto počítače se označují jako uzly. Můžete mít až čtyři uzly, které jsou spojené s místní prostředí integration runtime. Výhody s více uzly (na místních počítačích s nainstalovanou bránu) pro logické brány jsou:
 * Vyšší dostupnost modulu runtime integrace v místním prostředí tak, že je už jediným bodem selhání v integraci velké objemy dat řešení nebo cloudových dat pomocí Azure Data Factory, zajištění kontinuity podnikových procesů s až čtyři uzly.
 * Vylepšili jsme výkon a propustnost během přesouvání dat mezi místním prostředím a cloudem datových úložišť. Získat další informace o [porovnání výkonu](copy-activity-performance.md).
 

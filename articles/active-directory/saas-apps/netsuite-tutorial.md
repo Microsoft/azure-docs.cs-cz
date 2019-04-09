@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 12/17/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 73bb37607af681fcd505706ae99b308024be2c2d
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: ab329574ef425e8133ac746c185050efcc8bc15a
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57887421"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59261441"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-netsuite"></a>Kurz: Integrace Azure Active Directory s NetSuite
 
@@ -173,19 +173,19 @@ Ke konfiguraci Azure AD jednotné přihlašování s NetSuite, proveďte násled
 
 1. Otevření nové záložky v prohlížeči a podepsat vaše společnost web NetSuite jako správce.
 
-2. Na panelu nástrojů v horní části stránky klikněte na tlačítko **nastavení**, přejděte na **společnosti** a klikněte na tlačítko **povolit funkce**.
+2. Na panelu nástrojů v horní části stránky klikněte na tlačítko **nastavení**, přejděte na **společnosti** a klikněte na tlačítko **povolit funkce**.
 
     ![Konfigurace jednotného přihlašování](./media/NetSuite-tutorial/ns-setupsaml.png)
 
-3. Na panelu nástrojů na druhé stránce klikněte na tlačítko **SuiteCloud**.
+3. Na panelu nástrojů na druhé stránce klikněte na tlačítko **SuiteCloud**.
 
     ![Konfigurace jednotného přihlašování](./media/NetSuite-tutorial/ns-suitecloud.png)
 
-4. V části **spravovat ověřování** vyberte **SAML jednotné přihlašování** možnost SAML jednotné přihlašování v NetSuite povolit.
+4. V části **spravovat ověřování** vyberte **SAML jednotné přihlašování** možnost SAML jednotné přihlašování v NetSuite povolit.
 
     ![Konfigurace jednotného přihlašování](./media/NetSuite-tutorial/ns-ticksaml.png)
 
-5. Na panelu nástrojů v horní části stránky klikněte na tlačítko **nastavení**.
+5. Na panelu nástrojů v horní části stránky klikněte na tlačítko **nastavení**.
 
     ![Konfigurace jednotného přihlašování](./media/NetSuite-tutorial/ns-setup.png)
 
@@ -326,7 +326,7 @@ Po kliknutí na dlaždici NetSuite na přístupovém panelu, můžete by měl b�
 
 - [Seznam kurzů o integraci aplikací SaaS pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

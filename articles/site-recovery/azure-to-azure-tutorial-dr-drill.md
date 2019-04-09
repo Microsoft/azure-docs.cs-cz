@@ -6,15 +6,15 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 03/18/2018
+ms.date: 04/08/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 314cb943585247189baeb6ab3c90f78e1a1ad445
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: 16c791287cc50b5ac8992a86f6de1e3eeb5e329e
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58313148"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59260268"
 ---
 # <a name="run-a-disaster-recovery-drill-for-azure-vms-to-a-secondary-azure-region"></a>Spuštění postupu zotavení po havárii pro virtuální počítače Azure do sekundární oblasti Azure
 
@@ -54,4 +54,4 @@ V tomto kurzu se dozvíte, jak pro virtuální počítač Azure spustit postup z
 ## <a name="next-steps"></a>Další postup
 
 > [!div class="nextstepaction"]
-> [Spuštění produkčního převzetí služeb při selhání](azure-to-azure-tutorial-failover-failback.md)
+> [Produkčního prostředí převzetí služeb při selhání](azure-to-azure-tutorial-failover-failback.md)

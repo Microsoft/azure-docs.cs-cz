@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 42a7eee37d993e5f9245374adbfd133344797eff
-ms.sourcegitcommit: b4ad15a9ffcfd07351836ffedf9692a3b5d0ac86
-ms.translationtype: HT
+ms.openlocfilehash: 3db2b810ba4ba96e492c6b6ba841d9cfa35418a8
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/05/2019
-ms.locfileid: "59058165"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59260841"
 ---
 # <a name="search-nearby-points-of-interest-using-azure-maps"></a>Hledání okolních bodů zájmu s využitím Azure Maps
 
@@ -81,11 +81,11 @@ Rozhraní API pro mapové ovládací prvky je praktická klientská knihovna, kt
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
         <!-- Add references to the Azure Maps Map control JavaScript and CSS files. -->
-        <link rel="stylesheet" href="https://atlas.microsoft.com/sdk/css/atlas.min.css?api-version=2" type="text/css">
-        <script src="https://atlas.microsoft.com/sdk/js/atlas.min.js?api-version=2"></script>
+        <link rel="stylesheet" href="https://atlas.microsoft.com/sdk/javascript/mapcontrol/2/atlas.min.css" type="text/css">
+        <script src="https://atlas.microsoft.com/sdk/javascript/mapcontrol/2/atlas.min.js"></script>
 
         <!-- Add a reference to the Azure Maps Services Module JavaScript file. -->
-        <script src="https://atlas.microsoft.com/sdk/js/atlas-service.js?api-version=2"></script>
+        <script src="https://atlas.microsoft.com/sdk/javascript/mapcontrol/2/atlas-service.min.js"></script>
 
         <script>
         function GetMap(){
@@ -116,7 +116,7 @@ Rozhraní API pro mapové ovládací prvky je praktická klientská knihovna, kt
 
    Všimněte si, že hlavička HTML zahrnuje soubory prostředků šablon stylů CSS a JavaScriptu hostované knihovnou Ovládací prvek Mapa v Azure. V těle stránky si všimněte události `onload`, která po načtení těla stránky zavolá funkci `GetMap`. `GetMap` Funkce bude obsahovat vložený kód jazyka JavaScript pro přístup k rozhraní API služby Azure Maps.
 
-3. Do funkce `GetMap` v souboru HTML přidejte následující kód JavaScriptu. Nahraďte řetězec **\<Your Azure Maps Key\>** primárním klíčem, který jste zkopírovali ze svého účtu Maps.
+3. Do funkce `GetMap` v souboru HTML přidejte následující kód JavaScriptu. Nahraďte řetězec `<Your Azure Maps Key>` s primární klíč, který jste zkopírovali ze svého účtu mapy.
 
     ```JavaScript
     //Instantiate a map object
@@ -129,9 +129,9 @@ Rozhraní API pro mapové ovládací prvky je praktická klientská knihovna, kt
     });
     ```
 
-   Tento segment inicializuje rozhraní API pro mapové ovládací prvky pro váš klíč účtu Azure Maps. **atlas** je obor názvů, který obsahuje rozhraní API a související vizuální komponenty. **atlas.Map** zajišťuje ovládací prvek pro vizuální a interaktivní webovou mapu.
+   Tento segment inicializuje rozhraní API pro mapové ovládací prvky pro váš klíč účtu Azure Maps. `atlas` je obor názvů, který obsahuje rozhraní API a související vizuální komponenty. `atlas.Map` umožňuje ovládání vizuální a interaktivní webovou mapu.
 
-4. Uložte provedené změny do souboru a otevřete stránku HTML v prohlížeči. Toto je nejzákladnější mapa, kterou můžete vytvořit zavoláním **atlas.map** s použitím klíče účtu.
+4. Uložte provedené změny do souboru a otevřete stránku HTML v prohlížeči. Toto je nejzákladnější mapování, které provedete voláním `atlas.Map` pomocí klíč účtu.
 
    ![Zobrazení mapy](./media/tutorial-search-location/basic-map.png)
 
@@ -184,9 +184,9 @@ Tato část ukazuje, jak použít Maps [rozhraní API pro vyhledávání](https:
    var searchURL = new atlas.service.SearchURL(pipeline); 
    ```
 
-   **SubscriptionKeyCredential** vytvoří **SubscriptionKeyCredentialPolicy** k ověření požadavků HTTP ve službě Azure Maps se klíč předplatného. **Atlas.service.MapsURL.newPipeline()** přijímá **SubscriptionKeyCredential** zásady a vytvoří [kanálu](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.pipeline?view=azure-iot-typescript-latest) instance. **SearchURL** představuje adresu URL ke službě Azure Maps [hledání](https://docs.microsoft.com/rest/api/maps/search) operace.
+   `SubscriptionKeyCredential` Vytvoří `SubscriptionKeyCredentialPolicy` k ověření požadavků HTTP ve službě Azure Maps se klíč předplatného. `atlas.service.MapsURL.newPipeline()` Přijímá `SubscriptionKeyCredential` zásady a vytvoří [kanálu](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.pipeline?view=azure-iot-typescript-latest) instance. `searchURL` Představuje adresu URL ke službě Azure Maps [hledání](https://docs.microsoft.com/rest/api/maps/search) operace.
 
-2. Dále přidejte následující blok skriptu pro sestavení vyhledávacího dotazu. Používá službu Fuzzy Search, což je základní rozhraní API služby Search Service. Služba Fuzzy Search zpracovává většinu přibližných vstupů, jako jsou adresy, místa a body zájmu. Tento kód vyhledá nejbližší čerpacích stanic v zadaném okruhu zadaná zeměpisné šířky a délky. Kolekce funkcí GeoJSON z odpovědi se pak extrahuje pomocí **geojson.getFeatures()** – metoda a přidán do zdroje dat, výsledkem je automaticky dat, vykreslované na mapě prostřednictvím vrstev symbol. Poslední část skriptu pomocí vlastnosti mapy [setCamera](/javascript/api/azure-maps-control/atlas.map#setcamera-cameraoptions---cameraboundsoptions---animationoptions-) nastaví zobrazení kamery mapy s použitím ohraničujícího rámečku výsledků.
+2. Dále přidejte následující blok skriptu pro sestavení vyhledávacího dotazu. Používá službu Fuzzy Search, což je základní rozhraní API služby Search Service. Služba Fuzzy Search zpracovává většinu přibližných vstupů, jako jsou adresy, místa a body zájmu. Tento kód vyhledá nejbližší čerpacích stanic v zadaném okruhu zadaná zeměpisné šířky a délky. Kolekce funkcí GeoJSON z odpovědi se pak extrahuje pomocí `geojson.getFeatures()` – metoda a přidán do zdroje dat, výsledkem je automaticky dat, vykreslované na mapě prostřednictvím vrstev symbol. Poslední část skriptu pomocí vlastnosti mapy [setCamera](/javascript/api/azure-maps-control/atlas.map#setcamera-cameraoptions---cameraboundsoptions---animationoptions-) nastaví zobrazení kamery mapy s použitím ohraničujícího rámečku výsledků.
 
     ```JavaScript
     var query =  'gasoline-station';
@@ -239,7 +239,7 @@ Mapa, kterou jsme vytvořili, zatím z výsledků hledání používá pouze dat
     map.events.add('mouseover', resultLayer, showPopup);
     ```
 
-    **atlas.Popup** v rozhraní API poskytuje okno s informacemi ukotvené na požadované pozici na mapě. 
+    Rozhraní API `sup` informacemi ukotvené okno na požadované pozici na mapě. 
 
 2. V *skript* po označení `GetMap` funkci, přidejte následující kód k zobrazení moused v informace o výsledcích v místní nabídce.
 

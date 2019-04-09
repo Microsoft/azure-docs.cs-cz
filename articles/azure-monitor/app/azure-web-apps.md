@@ -9,22 +9,19 @@ ms.service: application-insights
 ms.topic: conceptual
 ms.date: 04/01/2019
 ms.author: mbullwin
-ms.openlocfilehash: 0c6be20bfb2a6f15335564a1aa98dc0ac88e3507
-ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
+ms.openlocfilehash: c616b2578f7606ce7df19fdbef16bec8a24428d3
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58905830"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59262495"
 ---
 # <a name="monitor-azure-app-service-performance"></a>Sledování výkonu služby Azure App Service
 
 Povolení sledování v rozhraní .NET a .NET Core na základě webové aplikace běžící v Azure App Service je teď snadnější než kdy dřív. Zatímco dříve jste museli ručně nainstalovat rozšíření webu, nejnovější agent/rozšíření je teď součástí app service image ve výchozím nastavení. Tento článek se vás provede povolením monitorování pomocí Application Insights a také předběžnou pokyny pro automatizaci tohoto procesu pro rozsáhlá nasazení.
 
 > [!NOTE]
-> Ruční přidání rozšíření webu Application Insights prostřednictvím **nástroje pro vývoj** > **rozšíření** je zastaralý. Nejnovější stabilní verze tohoto rozšíření je teď [předinstalovaným](https://github.com/projectkudu/kudu/wiki/Azure-Site-Extensions) jako součást image služby App Service. Soubory jsou umístěny v `d:\Program Files (x86)\SiteExtensions\ApplicationInsightsAgent` a aktualizují automaticky s každou stabilní verzi. Pokud budete postupovat podle pokynů na základě agenta monitorování povolit níže, automaticky odebere nepoužívané rozšíření za vás.
-
-
-[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+> Ruční přidání rozšíření webu Application Insights prostřednictvím **nástroje pro vývoj** > **rozšíření** je zastaralý. Tato metoda instalace rozšíření závisel na ruční aktualizace pro každou novou verzi. Nejnovější stabilní verze tohoto rozšíření je teď [předinstalovaným](https://github.com/projectkudu/kudu/wiki/Azure-Site-Extensions) jako součást image služby App Service. Soubory jsou umístěny v `d:\Program Files (x86)\SiteExtensions\ApplicationInsightsAgent` a aktualizují automaticky s každou stabilní verzi. Pokud budete postupovat podle pokynů na základě agenta monitorování povolit níže, automaticky odebere nepoužívané rozšíření za vás.
 
 ## <a name="enable-application-insights"></a>Povolení Application Insights
 
@@ -285,6 +282,8 @@ Zde je příklad, nahraďte všechny výskyty `AppMonitoredSite` názvem vašeho
 
 Chcete-li povolit monitorování prostřednictvím prostředí PowerShell aplikace, musí změnit základní nastavení aplikace. Níže je příklad, který umožňuje monitorování aplikací pro web nazývá "AppMonitoredSite" ve skupině prostředků "AppMonitoredRG", a nakonfiguruje dat k odeslání do "012345678-abcd-ef01-2345-6789abcd" Instrumentační klíč.
 
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+
 ```powershell
 $app = Get-AzWebApp -ResourceGroupName "AppMonitoredRG" -Name "AppMonitoredSite" -ErrorAction Stop
 $newAppSettings = @{} # case-insensitive hash map
@@ -348,6 +347,7 @@ Následující tabulka obsahuje podrobnější vysvětlení významu těchto hod
 |Hodnota problému|Vysvětlení|Napravit
 |---- |----|---|
 | `AppAlreadyInstrumented:true` | Tato hodnota označuje, že rozšíření zjistil, že některé aspekty sady SDK je již k dispozici v aplikaci a bude regrese. Může být způsobeno odkaz na `System.Diagnostics.DiagnosticSource`, `Microsoft.AspNet.TelemetryCorrelation`, nebo `Microsoft.ApplicationInsights`  | Odeberte odkazy. Ve výchozím nastavení některé z těchto odkazů se přidávají z určitých šablon sady Visual Studio a starších verzích sady Visual Studio může přidávat odkazy na `Microsoft.ApplicationInsights`.
+|`AppAlreadyInstrumented:true` | Pokud aplikace cílí na .NET Core 2.1 nebo 2.2 a odkazuje na [metabalíček](https://www.nuget.org/packages/Microsoft.AspNetCore.All) meta-package, pak přináší ve službě Application Insights a rozšíření se regrese. | Zákazníci na bodech .NET Core 2.1, 2.2 [doporučuje](https://github.com/aspnet/Announcements/issues/287) místo toho použít Microsoft.AspNetCore.App meta-package.|
 |`AppAlreadyInstrumented:true` | Tato hodnota může být také způsobeno přítomnost výše uvedené knihovny DLL ve složce aplikace z předchozího nasazení. | Odstraňte složky aplikace k zajištění, že se odeberou tyto knihovny DLL.|
 |`AppContainsAspNetTelemetryCorrelationAssembly: true` | Tato hodnota označuje, že rozšíření zjistil odkazy na `Microsoft.AspNet.TelemetryCorrelation` v aplikaci a bude regrese. | Odeberte odkaz.
 |`AppContainsDiagnosticSourceAssembly**:true`|Tato hodnota označuje, že rozšíření zjistil odkazy na `System.Diagnostics.DiagnosticSource` v aplikaci a bude regrese.| Odeberte odkaz.

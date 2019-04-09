@@ -11,12 +11,12 @@ ms.author: prasantp
 author: prasanthpul
 ms.date: 12/3/2018
 ms.custom: seodec18
-ms.openlocfilehash: 349f2c4eea743c3e44e492dfa76be4a70f2c37d6
-ms.sourcegitcommit: 223604d8b6ef20a8c115ff877981ce22ada6155a
+ms.openlocfilehash: 33a93aa01499beb978f616f633588ba75e4b62a3
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58362021"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59259180"
 ---
 # <a name="onnx-and-azure-machine-learning-create-and-deploy-interoperable-ai-models"></a>ONNX a Azure Machine Learning: Vytvoření a nasazení interoperabilní modely AI
 
@@ -28,15 +28,16 @@ ms.locfileid: "58362021"
 Microsoft podporuje ONNX své produkty, včetně Azure a Windows, které vám pomůžou dosáhnout těchto cílů.  
 
 ## <a name="why-choose-onnx"></a>Proč zvolit ONNX?
+
 Vzájemná funkční spolupráce, získáte s ONNX umožňuje rychleji získat představu do produkčního prostředí. Odborníci přes data ONNX, můžete zvolit jejich preferované rozhraní pro úlohu. Podobně vývojáři můžete strávit méně času na získání vyšší modely připravené pro produkční a nasadit napříč cloudem a hraničními zařízeními.  
 
-Využijte modely ONNX můžete vytvořit z mnoha architektur, včetně PyTorch, Chainer, Microsoft Cognitive Toolkit (CNTK), MXNet, ML.Net, TensorFlow, Keras, SciKit-informace a další.
+Využijte modely ONNX můžete vytvořit z mnoha architektur, včetně PyTorch, Chainer, MXNet, ML.Net, TensorFlow, Keras, SciKit-poučení, Microsoft Cognitive Toolkit a další.
 
 Je také ekosystém nástrojů pro vizualizaci a zrychluje modely ONNX. Počet předem vytrénovaných modely ONNX jsou také k dispozici pro běžné scénáře.
 
 [Je možné nasadit modely ONNX](#deploy) do cloudu pomocí služby Azure Machine Learning a modulu Runtime ONNX. Může být také nasazený na zařízení s Windows 10 pomocí [Windows ML](https://docs.microsoft.com/windows/ai/). Dokonce je možné nasadit do jiné platformy použití převaděče, které jsou k dispozici od komunity ONNX. 
 
-[![ONNX vývojový diagram znázorňující nasazení, školení a převaděče](media/concept-onnx/onnx.png) ](./media/concept-onnx/onnx.png#lightbox)
+[![OVývojový diagram NNX zobrazující školení, převaděče a nasazení](media/concept-onnx/onnx.png)](./media/concept-onnx/onnx.png#lightbox)
 
 ## <a name="get-onnx-models"></a>Získat modely ONNX
 
@@ -53,11 +54,11 @@ Můžete převést stávající modely ONNX nebo je uložit jako ONNX na konci t
 |Architektura pro model|Například převod nebo nástroj|
 |-----|-------|
 |PyTorch|[Poznámkový blok Jupyter](https://github.com/onnx/tutorials/blob/master/tutorials/PytorchOnnxExport.ipynb)|
-|Microsoft&nbsp;Cognitive&nbsp;Toolkit&nbsp;(CNTK)|[Poznámkový blok Jupyter](https://github.com/onnx/tutorials/blob/master/tutorials/CntkOnnxExport.ipynb)|
 |TensorFlow|[Převaděč tensorflow onnx](https://github.com/onnx/tensorflow-onnx)|
 |Chainer|[Poznámkový blok Jupyter](https://github.com/onnx/tutorials/blob/master/tutorials/ChainerOnnxExport.ipynb)|
 |MXNet|[Poznámkový blok Jupyter](https://github.com/onnx/tutorials/blob/master/tutorials/MXNetONNXExport.ipynb)|
 |Keras další ScitKit CoreML<br/>XGBoost a libSVM|[WinMLTools](https://docs.microsoft.com/windows/ai/convert-model-winmltools)|
+|Microsoft&nbsp;Cognitive&nbsp;Toolkit|[Poznámkový blok Jupyter](https://github.com/onnx/tutorials/blob/master/tutorials/CntkOnnxExport.ipynb)|
 
 Můžete vyhledat nejnovější seznam podporovaných platforem a převaděče na [ONNX kurzy lokality](https://github.com/onnx/tutorials).
 
@@ -143,6 +144,9 @@ Tady je příklad pro nasazení modelu ONNX:
 
    image.wait_for_creation(show_output = True)
    ```
+
+   > [!TIP]
+   > Předchozí příklad používá výchozí image poskytovaný službou Azure Machine Learning. Můžete také použít vlastní image. Další informace naleznete v tématu Konfigurace a registrace oddíl bitové kopie z [nasazovat modely](how-to-deploy-and-where.md#configureimage).
 
    Soubor `score.py` obsahuje hodnoticí logiku a musí být součástí image. Tento soubor se používá ke spuštění modelu v bitové kopii. Najdete v tomto [kurzu](tutorial-deploy-models-with-aml.md#create-scoring-script) pro pokyny, jak vytvořit bodování skriptu. Příklad souboru u modelu ONNX je zobrazena níže:
 

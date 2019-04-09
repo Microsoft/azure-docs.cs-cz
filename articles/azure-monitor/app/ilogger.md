@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 02/19/2019
 ms.reviewer: mbullwin
 ms.author: cithomas
-ms.openlocfilehash: ea7f2e730b4963016d221705ba8c9356efffa858
-ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
+ms.openlocfilehash: 9d5e25e0fd00f9c0635009f684e79336d58b7b4a
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58905269"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59263753"
 ---
 # <a name="applicationinsightsloggerprovider-for-net-core-ilogger-logs"></a>ApplicationInsightsLoggerProvider pro .NET Core ILogger protokoly
 
@@ -208,10 +208,10 @@ Zatímco je stále možné předchozího poskytovatele (to je nyní zastaralá a
 1. Předchozí zprostředkovatel chybějící podpora [obory](https://docs.microsoft.com/aspnet/core/fundamentals/logging/?view=aspnetcore-2.2#log-scopes). V poskytovateli nové vlastnosti z oboru jsou automaticky přidány jako vlastní vlastnosti shromažďovat telemetrii.
 2. Protokoly se dají zachytit nyní mnohem dříve v kanálu při spuštění aplikace. i.e Protokoly z programu a spuštění tříd se teď dají zachytit.
 3. Pomocí nového poskytovatele toto filtrování se provádí na úrovni rozhraní framework, samotného. Filtrování protokolů poskytovatele Application Insights můžete udělat v přesně stejným způsobem jako u jiných poskytovatelů, včetně předdefinovaných poskytovatelů, jako je konzola, ladění a tak dále. Je také možné použít stejné filtry pro více poskytovatelů.
-4. [Doporučuje](https://github.com/aspnet/Announcements/issues/255) způsob v Asp.Net Core (2.0 a vyšší), jak povolit protokolování zprostředkovatelů je pomocí metody rozšíření na ILoggingBuilder v `Program.cs` samotný.
+4. [Doporučuje](https://github.com/aspnet/Announcements/issues/255) způsob v ASP.NET Core (2.0 a vyšší), jak povolit protokolování zprostředkovatelů je pomocí metody rozšíření na ILoggingBuilder v `Program.cs` samotný.
 
 > [!Note]
-Je k dispozici pro aplikace určené pro nového poskytovatele `NETSTANDARD2.0` nebo vyšší. Pokud vaše aplikace cílí na starší verze rozhraní .NET Core, jako je .NET Core 1.1 nebo cílení na rozhraní .NET Framework, dál používat staré zprostředkovatele.
+> Je k dispozici pro aplikace určené pro nového poskytovatele `NETSTANDARD2.0` nebo vyšší. Pokud vaše aplikace cílí na starší verze rozhraní .NET Core, jako je .NET Core 1.1 nebo cílí na rozhraní .NET Framework, dál používat staré zprostředkovatele.
 
 ## <a name="console-application"></a>Konzolová aplikace
 

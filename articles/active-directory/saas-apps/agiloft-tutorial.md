@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 01/17/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 97419dac33688d24159b35f00f1e9bffbd587497
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 2aed12b085557eda4210be9c067f5cdad4cd2d1b
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57886384"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59261764"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-agiloft"></a>Kurz: Integrace Azure Active Directory s Agiloft
 
@@ -167,13 +167,13 @@ Ke konfiguraci Azure AD jednotné přihlašování s Agiloft, proveďte následu
 
     ![Agiloft Configuration](./media/agiloft-tutorial/setup4.png)
 
-    a. V **Id Entity zprostředkovatele identity / vystavitele** textového pole vložte hodnotu **Azure Ad identifikátor**, který jste zkopírovali z portálu Azure portal.
+    a. V **Id Entity zprostředkovatele identity / vystavitele** textového pole vložte hodnotu **Azure Ad identifikátor**, který jste zkopírovali z portálu Azure portal.
 
-    b. V **přihlašovací adresa URL zprostředkovatele identity** textového pole vložte hodnotu **přihlašovací adresa URL**, který jste zkopírovali z portálu Azure portal.
+    b. V **přihlašovací adresa URL zprostředkovatele identity** textového pole vložte hodnotu **přihlašovací adresa URL**, který jste zkopírovali z portálu Azure portal.
 
-    c. V **odhlašovací adresa URL zprostředkovatele identity** textového pole vložte hodnotu **odhlašovací adresa URL**, který jste zkopírovali z portálu Azure portal.
+    c. V **odhlašovací adresa URL zprostředkovatele identity** textového pole vložte hodnotu **odhlašovací adresa URL**, který jste zkopírovali z portálu Azure portal.
 
-    d. Otevřete váš **certifikáty s kódováním base-64** v poznámkovém bloku stáhnout z webu Azure portal, zkopírujte obsah ho do schránky a vložte ho do **obsah certifikátu X.509 zprostředkovatel identity k dispozici**  textového pole.
+    d. Otevřete váš **certifikáty s kódováním base-64** v poznámkovém bloku stáhnout z webu Azure portal, zkopírujte obsah ho do schránky a vložte ho do **obsah certifikátu X.509 zprostředkovatel identity k dispozici** textového pole.
 
     e. Klikněte na **Dokončit**.
 
@@ -242,6 +242,6 @@ Po kliknutí na dlaždici Agiloft na přístupovém panelu, můžete by měl bý
 
 - [Seznam kurzů o integraci aplikací SaaS pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

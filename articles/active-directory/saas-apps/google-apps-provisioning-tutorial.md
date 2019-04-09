@@ -12,15 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/26/2018
+ms.date: 03/27/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b78cb45d83cd9bc9bc973ec7a09cb75a8b111744
-ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
+ms.openlocfilehash: ea1f4d4a6b60961515826a1ba7409bf149b318e8
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58224144"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59281297"
 ---
 # <a name="tutorial-configure-g-suite-for-automatic-user-provisioning"></a>Kurz: Konfigurace G Suite pro automatické zřizování uživatelů
 
@@ -69,78 +69,77 @@ Tato část vás provede procesu připojování k uživatelskému účtu API G S
 > Další možné možnost automatizace zřizování uživatelů pro G Suite je použití [Google Apps Directory Sync (GADS)](https://support.google.com/a/answer/106368?hl=en). GADS ustanovení vaší místní služby Active Directory identity ke G Suite. Naproti tomu zřídí řešení v tomto kurzu služby Azure Active Directory (cloud) uživatelů a skupin ke G Suite s povoleným e-mailu. 
 
 1. Přihlaste se k [konzoly pro správu služby Google Apps](https://admin.google.com/) pomocí účtu správce a pak vyberte **zabezpečení**. Pokud nevidíte odkaz, může být skrytá pod **další ovládací prvky** nabídce v dolní části obrazovky.
-   
+
     ![Vyberte možnost zabezpečení.][10]
 
 1. Na **zabezpečení** stránce **Reference k rozhraní API**.
-   
+
     ![Vyberte Reference k rozhraní API.][15]
 
 1. Vyberte **přístup přes rozhraní API povolit**.
-   
+
     ![Vyberte Reference k rozhraní API.][16]
 
    > [!IMPORTANT]
    > Pro každého uživatele, který máte v úmyslu zřídíte v G Suite, svoje uživatelské jméno ve službě Azure Active Directory *musí* být spojený s vlastní doménou. Například uživatel názvy tento vzhled jako bob@contoso.onmicrosoft.com nejsou přijal G Suite. Na druhé straně bob@contoso.com je přijat. Existujícího uživatele domény lze změnit úpravou jejich vlastností ve službě Azure AD. Přidali jsme pokyny, jak nastavit vlastní doménu pro Azure Active Directory a G Suite v následujících krocích.
-      
+
 1. Pokud ještě jste nepřidali vlastního názvu domény do Azure Active Directory, pak proveďte následující kroky:
   
-    a. V [webu Azure portal](https://portal.azure.com), v levém navigačním podokně vyberte **služby Active Directory**. V seznamu adresářů vyberte svůj adresář. 
+    a. V [webu Azure portal](https://portal.azure.com), v levém navigačním podokně vyberte **služby Active Directory**. V seznamu adresářů vyberte svůj adresář.
 
     b. Vyberte **název domény** na levém navigačním podokně a pak vyberte **přidat**.
-     
-     ![Domain (Doména)](./media/google-apps-provisioning-tutorial/domain_1.png)
 
-     ![Přidat doménu](./media/google-apps-provisioning-tutorial/domain_2.png)
+    ![Domain (Doména)](./media/google-apps-provisioning-tutorial/domain_1.png)
+
+    ![Přidat doménu](./media/google-apps-provisioning-tutorial/domain_2.png)
 
     c. Zadejte název vaší domény do **název domény** pole. Tento název domény by měl být se stejným názvem domény, který máte v úmyslu používat pro G Suite. Vyberte **přidat doménu** tlačítko.
-     
-     ![Název domény](./media/google-apps-provisioning-tutorial/domain_3.png)
 
-    d. Vyberte **Další** přejděte na stránku ověřování. Pokud chcete ověřit, že vlastníte tuto doménu, upravte záznamy DNS domény podle hodnoty, které jsou k dispozici na této stránce. Můžete ověřit pomocí **záznamů MX** nebo **záznamů TXT**podle toho, co vyberete **typ záznamu** možnost. 
-    
+    ![Název domény](./media/google-apps-provisioning-tutorial/domain_3.png)
+
+    d. Vyberte **Další** přejděte na stránku ověřování. Pokud chcete ověřit, že vlastníte tuto doménu, upravte záznamy DNS domény podle hodnoty, které jsou k dispozici na této stránce. Můžete ověřit pomocí **záznamů MX** nebo **záznamů TXT**podle toho, co vyberete **typ záznamu** možnost.
+
     Komplexnější pokyny o tom, jak ověřit názvy domén s Azure AD najdete v tématu [přidání vlastního názvu domény do Azure AD](https://go.microsoft.com/fwLink/?LinkID=278919&clcid=0x409).
-     
-     ![Domain (Doména)](./media/google-apps-provisioning-tutorial/domain_4.png)
+
+    ![Domain (Doména)](./media/google-apps-provisioning-tutorial/domain_4.png)
 
     e. Zopakujte předchozí kroky pro všechny domény, které chcete přidat do vašeho adresáře.
 
-   > [!NOTE]
-   >  Pro zřizování uživatelů, musí odpovídat vlastní doménu, název domény zdroje služby Azure AD. Pokud shodné nejsou, bude pravděpodobně možné vyřešit problém s implementací přizpůsobení mapování atributů.
-
+    > [!NOTE]
+    > Pro zřizování uživatelů, musí odpovídat vlastní doménu, název domény zdroje služby Azure AD. Pokud shodné nejsou, bude pravděpodobně možné vyřešit problém s implementací přizpůsobení mapování atributů.
 
 1. Teď, když po ověření všech domén s Azure AD, musíte ověřit, je znovu s Google Apps. Pro každou doménu, která již není zaregistrovaný u Google proveďte následující kroky:
-   
+
     a. V [konzoly pro správu služby Google Apps](https://admin.google.com/)vyberte **domén**.
-     
-     ![Select Domains][20]
+
+    ![Select Domains][20]
 
     b. Vyberte **přidat doménu nebo doména alias**.
-     
-     ![Přidat novou doménu][21]
+
+    ![Přidat novou doménu][21]
 
     c. Vyberte **přidat jiné domény**a pak zadejte název domény, který chcete přidat.
-     
-     ![Zadejte název domény][22]
+
+    ![Zadejte název domény][22]
 
     d. Vyberte **pokračovat a ověří vlastnictví domény**. Postupujte podle pokynů k ověření, že jste vlastníkem názvu domény. Komplexní pokyny o tom, jak ověřit doménu s Google najdete v tématu [ověří vlastnictví vaší lokality s Google Apps](https://support.google.com/webmasters/answer/35179).
 
     e. Zopakujte předchozí kroky pro všechny další domény, které chcete přidat ke Google Apps.
-     
-     > [!WARNING]
-     > Pokud změníte primární doménou pro vašeho tenanta G Suite a pokud jste už nakonfigurovali jednotné přihlašování s Azure AD, budete muset opakovat krok #3 v části Krok 2: Povolte jednotné přihlašování.
-       
+
+    > [!WARNING]
+    > Pokud změníte primární doménou pro vašeho tenanta G Suite a pokud jste už nakonfigurovali jednotné přihlašování s Azure AD, budete muset opakovat krok #3 v části Krok 2: Povolte jednotné přihlašování.
+
 1. V [konzoly pro správu služby Google Apps](https://admin.google.com/)vyberte **rolí administrátora**.
-   
-     ![Select Google Apps][26]
+
+    ![Select Google Apps][26]
 
 1. Určete, které účet správce, kterou chcete použít ke správě zřizování uživatelů. Pro **roli správce** tohoto účtu, upravte **oprávnění** pro danou roli. Ujistěte se, že chcete povolit všechny **oprávnění rozhraní API Správce** tak, aby tento účet slouží pro zřizování.
-   
-     ![Select Google Apps][27]
-   
+
+    ![Select Google Apps][27]
+
     > [!NOTE]
     > Pokud konfigurujete produkčním prostředí, osvědčeným postupem je vytvoření účtu správce v G Suite speciálně pro tento krok. Tyto účty musí mít roli správce k nim má přiřazené, který má nezbytná oprávnění rozhraní API.
-     
+
 1. V [webu Azure portal](https://portal.azure.com), přejděte **Azure Active Directory** > **podnikové aplikace** > **všechnyaplikace** oddílu.
 
 1. Pokud jste už nakonfigurovali G Suite pro jednotné přihlašování, vyhledejte pomocí vyhledávacího pole vaší instance G Suite. V opačném případě vyberte **přidat**a poté vyhledejte **G Suite** nebo **Google Apps** v galerii aplikací. Ve výsledcích hledání vyberte vaši aplikaci a pak je přidejte do seznamu aplikací.
@@ -149,13 +148,13 @@ Tato část vás provede procesu připojování k uživatelskému účtu API G S
 
 1. Nastavte **režim zřizování** k **automatické**. 
 
-       ![Provisioning](./media/google-apps-provisioning-tutorial/provisioning.png)
+    ![Zřizování](./media/google-apps-provisioning-tutorial/provisioning.png)
 
 1. V části **přihlašovacích údajů správce** vyberte **Authorize**. Otevře se dialogové okno ověřování Google v novém okně prohlížeče.
 
 1. Potvrďte, že chcete udělit oprávnění Azure Active Directory provádět změny do svého tenanta služby G Suite. Vyberte **Přijmout**.
-    
-       ![Confirm permissions.][28]
+
+    ![Zkontrolujte oprávnění.][28]
 
 1. Na webu Azure Portal, vyberte **Test připojení** zajistit, že Azure AD může připojit k vaší aplikaci. Pokud se nepovede, ujistěte se, že váš účet G Suite má oprávnění správce týmu. Poté **Authorize** krok znovu.
 
@@ -178,10 +177,8 @@ Další informace o tom, jak číst zřizování protokoly Azure AD najdete v t�
 ## <a name="additional-resources"></a>Další materiály
 
 * [Správa zřizování uživatelských účtů pro podnikové aplikace](tutorial-list.md)
-* [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)
+* [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 * [Konfigurace jednotného přihlašování](google-apps-tutorial.md)
-
-
 
 <!--Image references-->
 

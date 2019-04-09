@@ -4,7 +4,7 @@ description: Další informace o požadavky a data služby common vzorech archit
 services: sql-database
 ms.service: sql-database
 ms.subservice: scenario
-ms.custom: ''
+ms.custom: seoapril2019
 ms.devlang: ''
 ms.topic: conceptual
 author: MightyPen
@@ -12,18 +12,18 @@ ms.author: genemi
 ms.reviewer: billgib, sstein
 manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: d55d8f8f945e30402cb772c7e26b234e3e460698
-ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
+ms.openlocfilehash: 6332555c1a176a06004ddfeee513844ad5875c30
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57217865"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59260540"
 ---
 # <a name="multi-tenant-saas-database-tenancy-patterns"></a>Vzory víceklientské SaaS databáze tenantů
 
-Při navrhování aplikace SaaS s více tenanty, musíte pečlivě zvolit tenantů model, který nejlépe vyhovuje potřebám vaší aplikace.  Tenantů model Určuje, jak data každého klienta je mapována do úložiště.  Podle vašeho výběru tenantů modelu má vliv na návrh aplikace a správu.  Přepnutí na jiný model pozdější někdy je nákladné.
+Tento článek popisuje různé modely tenantů, která je k dispozici pro aplikaci SaaS s více tenanty.
 
-Tento článek popisuje alternativní tenantů modely.
+Při navrhování aplikace SaaS s více tenanty, musíte pečlivě zvolit tenantů model, který nejlépe vyhovuje potřebám vaší aplikace.  Tenantů model Určuje, jak data každého klienta je mapována do úložiště.  Podle vašeho výběru tenantů modelu má vliv na návrh aplikace a správu.  Přepnutí na jiný model pozdější někdy je nákladné.
 
 ## <a name="a-saas-concepts-and-terminology"></a>A. SaaS koncepty a terminologie
 

@@ -5,23 +5,27 @@ author: yzhong94
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.date: 1/30/2019
+ms.date: 01/30/2019
 ms.author: yizhon
-ms.openlocfilehash: e5b075a457c646eb03810b2c51af1a1181ee96ed
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.openlocfilehash: 8e36cee9857c00fcb618a8491595432fb0fd60fd
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56670248"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59264569"
 ---
 # <a name="develop-for-android-things-platform-using-azure-iot-sdks"></a>Vývoj pro platformu Android věci pomocí sad SDK Azure IoT
-[Sady SDK služby Azure IoT Hub](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-sdks) podporují první úroveň pro oblíbené platformy, jako jsou Windows, Linux, OSX, MBED a mobilní platformy, jako je Android a iOS.  V rámci naší snahy o povolení větší možnost volby a flexibilitu v nasazení IoT, sady Java SDK podporuje také [Android věci](https://developer.android.com/things/) platformy.  Vývojáři mohou využít výhod operačního systému Android věci na straně zařízení při používání [Azure IoT Hub](https://docs.microsoft.com/azure/iot-hub/about-iot-hub) jako centrální zprávy centru s možností škálování na miliony současně připojených zařízení. 
+
+[Sady SDK služby Azure IoT Hub](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-sdks) podporují první úroveň pro oblíbené platformy, jako jsou Windows, Linux, OSX, MBED a mobilní platformy, jako je Android a iOS.  V rámci naší snahy o povolení větší možnost volby a flexibilitu v nasazení IoT, sady Java SDK podporuje také [Android věci](https://developer.android.com/things/) platformy.  Vývojáři mohou využít výhod operačního systému Android věci na straně zařízení při používání [Azure IoT Hub](about-iot-hub.md) jako centrální zprávy centru s možností škálování na miliony současně připojených zařízení.
 
 Tento kurz popisuje postup pro vytvoření aplikace na straně zařízení na Android pomocí sady Java SDK Azure IoT.
 
 ## <a name="prerequisites"></a>Požadavky
+
 * Android věci nepodporuje hardwaru s Androidem věci operační systém.  Můžete postupovat podle [dokumentaci Android věci](https://developer.android.com/things/get-started/kits#flash-at) o tom, jak flash operační systém Android věci.  Zajistěte, aby že vaše zařízení s Androidem věcí je připojený k Internetu pomocí základní periferních zařízení, jako je například klávesnice, obrazovky a myš, připojená.  Tento kurz používá Raspberry Pi 3.
+
 * Nejnovější verzi [Android Studio](https://developer.android.com/studio/)
+
 * Nejnovější verzi [Git](https://git-scm.com/)
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
@@ -34,7 +38,7 @@ Tento kurz popisuje postup pro vytvoření aplikace na straně zařízení na An
 
 Zařízení musí být zaregistrované ve vašem centru IoT, aby se mohlo připojit. V tomto rychlém startu zaregistrujete simulované zařízení pomocí služby Azure Cloud Shell.
 
-1. Ve službě Azure Cloud Shell spusťte následující příkazy pro přidání rozšíření rozhraní příkazového řádku IoT Hub a vytvoření identity zařízení. 
+1. Ve službě Azure Cloud Shell spusťte následující příkazy pro přidání rozšíření rozhraní příkazového řádku IoT Hub a vytvoření identity zařízení.
 
    **YourIoTHubName** : Nahraďte tento zástupný text pod názvem, který jste vybrali pro službu IoT hub.
 
@@ -45,7 +49,7 @@ Zařízení musí být zaregistrované ve vašem centru IoT, aby se mohlo připo
     az iot hub device-identity create --hub-name YourIoTHubName --device-id MyAndroidThingsDevice
     ```
 
-2. Spuštěním následujícího příkazu ve službě Azure Cloud Shell získejte _připojovací řetězec zařízení_ pro zařízení, které jste právě zaregistrovali:  **YourIoTHubName** : Nahraďte tento zástupný text pod názvem, který jste vybrali pro službu IoT hub.
+2. Spuštěním následujících příkazů ve službě Azure Cloud Shell, chcete-li získat *připojovací řetězec zařízení* pro dané zařízení právě zaregistrovali. Nahraďte `YourIoTHubName` pod názvem jste vybrali pro službu IoT hub.
 
     ```azurecli-interactive
     az iot hub device-identity show-connection-string --hub-name YourIoTHubName --device-id MyAndroidThingsDevice --output table
@@ -58,19 +62,28 @@ Zařízení musí být zaregistrované ve vašem centru IoT, aby se mohlo připo
     Tuto hodnotu použijete později v tomto rychlém startu.
 
 ## <a name="building-an-android-things-application"></a>Vytvoření aplikace pro Android věcí
-1.  Prvním krokem při sestavování aplikace Android věci se připojuje k zařízením s Androidem věci.  Připojení zařízení s Androidem věci k zobrazení a připojení k Internetu.  Zadejte Android věci [dokumentaci](https://developer.android.com/things/get-started/kits) na postup připojení k Wi-Fi.  Po připojení k Internetu, poznamenejte si IP adresy uvedené v části sítě.
-2.  Použití [adb](https://developer.android.com/studio/command-line/adb) nástroj pro připojení k zařízení s Androidem věcí s IP adresou, jak je uvedeno nahoře.  Dvojitá Kontrola připojení pomocí tohoto příkazu z terminálu.  Měli byste vidět uvedené jako "připojeno" zařízení
-    ```
-    adb devices
-    ```
-3.  Stáhněte si naše ukázky pro takové věci, Android a Android z tohoto [úložiště](https://github.com/Azure-Samples/azure-iot-samples-java) použijte Git.
-    ```
-    git clone https://github.com/Azure-Samples/azure-iot-samples-java.git
-    ```
-4.  V nástroji Android Studio otevřete projekt pro Android v umístěný v "\azure-iot-samples-java\iot-hub\Samples\device\AndroidSample".
-5.  Otevřete soubor gradle.properties a nahraďte "Device_connection_string" vaším připojovacím řetězcem zařízení jste si předtím poznamenali.
-6.  Klikněte na tlačítko na spuštění – ladění a vyberte zařízení k nasazení tohoto kódu do zařízení s Androidem věci.
-7.  Když je aplikace spuštěna úspěšně, uvidíte aplikaci spuštěnou na zařízení s Androidem věci.  Tato ukázková aplikace odešle náhodně generované teplotní hodnoty.
+
+1. Prvním krokem při sestavování aplikace Android věci se připojuje k zařízením s Androidem věci. Připojení zařízení s Androidem věci k zobrazení a připojení k Internetu. Zadejte Android věci [dokumentaci](https://developer.android.com/things/get-started/kits) na postup připojení k Wi-Fi. Po připojení k Internetu, poznamenejte si IP adresy uvedené v části sítě.
+
+2. Použití [adb](https://developer.android.com/studio/command-line/adb) nástroj pro připojení k zařízení s Androidem věcí s IP adresou, jak je uvedeno nahoře. Dvojitá Kontrola připojení pomocí tohoto příkazu z terminálu. Měli byste vidět uvedené jako "připojeno" zařízení.
+
+   ```
+   adb devices
+   ```
+
+3. Stáhněte si naše ukázky pro takové věci, Android a Android z tohoto [úložiště](https://github.com/Azure-Samples/azure-iot-samples-java) použijte Git.
+
+   ```
+   git clone https://github.com/Azure-Samples/azure-iot-samples-java.git
+   ```
+
+4. V nástroji Android Studio otevřete projekt pro Android v umístěný v "\azure-iot-samples-java\iot-hub\Samples\device\AndroidSample".
+
+5. Otevřete soubor gradle.properties a nahraďte "Device_connection_string" vaším připojovacím řetězcem zařízení jste si předtím poznamenali.
+ 
+6. Klikněte na tlačítko na spuštění – ladění a vyberte zařízení k nasazení tohoto kódu do zařízení s Androidem věci.
+
+7. Když je aplikace spuštěna úspěšně, uvidíte aplikaci spuštěnou na zařízení s Androidem věci. Tato ukázková aplikace odešle náhodně generované teplotní hodnoty.
 
 ## <a name="read-the-telemetry-from-your-hub"></a>Čtení telemetrických dat z centra
 
@@ -78,8 +91,7 @@ Po přijetí, můžete zobrazit data prostřednictvím služby IoT hub. Rozší�
 
 Ve službě Azure Cloud Shell spusťte následující příkazy a položku `YourIoTHubName` nahraďte názvem centra IoT:
 
-```
-azurecli-interactive
+```azurecli-interactive
 az iot hub monitor-events --device-id MyAndroidThingsDevice --hub-name YourIoTHubName
 ```
 

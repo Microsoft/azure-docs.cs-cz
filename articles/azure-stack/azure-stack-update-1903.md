@@ -16,12 +16,12 @@ ms.date: 04/05/2019
 ms.author: sethm
 ms.reviewer: adepue
 ms.lastreviewed: 04/05/2019
-ms.openlocfilehash: 218af82d2385632e7e7a0e77060c5deb758d1e83
-ms.sourcegitcommit: b4ad15a9ffcfd07351836ffedf9692a3b5d0ac86
-ms.translationtype: HT
+ms.openlocfilehash: 0448f583743f9e5b3f8fd6de3a85b05e16bff126
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/05/2019
-ms.locfileid: "59057049"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59269142"
 ---
 # <a name="azure-stack-1903-update"></a>Aktualizace služby Azure Stack 1903
 
@@ -208,6 +208,10 @@ Toto jsou známé problémy této verze sestavení po instalaci.
  
 <!-- #### Identity -->
 <!-- #### Marketplace -->
+
+### <a name="syslog"></a>Syslog 
+- Konfigurace syslog není trvalý prostřednictvím cyklu aktualizace výsledkem klienta syslog přijít o své konfiguraci a zprávy syslog zastavit byla přesměrována. Tento problém se vztahuje na všechny verze služby Azure Stack od verze GA klienta syslog (1809).
+Alternativním řešením je změnit konfiguraci klienta syslog po použití aktualizace služby Azure Stack.
 
 ## <a name="download-the-update"></a>Stáhnout aktualizaci.
 
