@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 5e7994ba5fcd3efa061f56d7ee77f796bab16708
-ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
+ms.openlocfilehash: 6afe76aca388f1f6bd479f53eb4e18cc62c10584
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58449294"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59268666"
 ---
 # <a name="create-an-interactive-search-map-by-using-azure-maps"></a>Vytvořte mapu interaktivního hledání s využitím Azure Maps
 
@@ -49,7 +49,7 @@ Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 
 1. Stáhněte nebo zkopírujte obsah souboru [interactiveSearch.html](https://github.com/Azure-Samples/AzureMapsCodeSamples/blob/master/AzureMapsCodeSamples/Tutorials/interactiveSearch.html).
 2. Uložte obsah tohoto souboru místně jako **AzureMapDemo.html**. Otevřete ho v textovém editoru.
-3. Vyhledejte řetězec `<insert-key>`. Nahraďte ho hodnotou **primární klíč** hodnotu z předchozí části.
+3. Vyhledejte řetězec `<Your Azure Maps Key>`. Nahraďte ho hodnotou **primární klíč** hodnotu z předchozí části.
 
 ## <a name="open-the-application"></a>Otevření aplikace
 
@@ -70,15 +70,15 @@ V kurzech podrobně popisují, jak používat a nakonfigurovat svůj účet Azur
 
 ## <a name="next-steps"></a>Další postup
 
-V tomto rychlém startu jste vytvořili účet Azure Maps a vytvořili ukázkovou aplikaci. Pokud chcete zjistit, jak vytvořit vlastní aplikaci pomocí rozhraní API služby Azure Maps, pokračujte k následujícímu kurzu:
+V tomto rychlém startu jste vytvořili účet Azure Maps a vytvořili ukázkovou aplikaci. Podívejte se na následující kurzy a další informace o Azure Maps:
 
 > [!div class="nextstepaction"]
-> [Hledání okolních bodů zájmu s použitím Azure Maps](./tutorial-search-location.md)
+> [Hledání okolních bodů zájmu s použitím Azure Maps](tutorial-search-location.md)
 
 Další příklady kódu a interaktivní prostředí pro psaní kódu najdete v těchto návodů:
 
 > [!div class="nextstepaction"]
-> [Najít adresu pomocí služby vyhledávání Azure Maps](./how-to-search-for-address.md)
+> [Najít adresu pomocí služby vyhledávání Azure Maps](how-to-search-for-address.md)
 
 > [!div class="nextstepaction"]
-> [Použití mapového ovládacího prvku Azure Maps](./how-to-use-map-control.md)
+> [Použití mapového ovládacího prvku Azure Maps](how-to-use-map-control.md)

@@ -16,12 +16,12 @@ ms.date: 04/05/2019
 ms.author: sethm
 ms.reviewer: adepue
 ms.lastreviewed: 04/05/2019
-ms.openlocfilehash: a62c4dced78ef75588ef0fcc90e56bd6969c15a9
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
-ms.translationtype: MT
+ms.openlocfilehash: 218af82d2385632e7e7a0e77060c5deb758d1e83
+ms.sourcegitcommit: b4ad15a9ffcfd07351836ffedf9692a3b5d0ac86
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/05/2019
-ms.locfileid: "59048805"
+ms.locfileid: "59057049"
 ---
 # <a name="azure-stack-1903-update"></a>Aktualizace služby Azure Stack 1903
 
@@ -156,6 +156,9 @@ Toto jsou známé problémy této verze sestavení po instalaci.
    - Pokud jste nakonfigurovali prostředí s více tenanty, nasazování virtuálních počítačů v rámci služby předplacené asociovaná s adresářem hosta může selhat s interní chybovou zprávu. Pokud chcete chybu vyřešit, postupujte podle kroků v [v tomto článku](azure-stack-enable-multitenancy.md#registering-azure-stack-with-the-guest-directory) změna konfigurace všech vašich adresářů hosta.
 
 - Virtuální počítač s Ubuntu 18.04 vytvořené pomocí SSH autorizace povolená neumožňuje použití klíčů SSH pro přihlášení. Jako alternativní řešení použít přístup k virtuálním počítačům pro Linuxové rozšíření k implementaci klíče SSH po zřízení, nebo ověřování pomocí hesla.
+
+- Azure Stack teď podporuje novější než verze 2.2.20 agentů Windows Azure s Linuxem. Tato podpora byla součástí 1901 a 1902 opravy hotfix a umožňuje zákazníkům udržovat konzistentní linuxové Image mezi Azure a Azure Stack.
+
 
 - Pokud nemáte hardwaru životního cyklu hostitelů (HLH): před sestavením 1902, museli jste nastavit zásady skupiny **počítače Konfigurace počítače\Nastavení systému Windows\Místní Policies\Security Options** k **Odeslat LM NTLM – Použijte NTLMv2 relace zabezpečení, pokud vyjedná**. Od sestavení 1902 musí necháváme ji jak **není definována** nebo ji nastavte na **pouze odpovědi odeslat NTLMv2** (což je výchozí hodnota). V opačném případě nebude schopný vytvořit vzdálené relace prostředí PowerShell a zobrazí se **přístup byl odepřen** Chyba:
 

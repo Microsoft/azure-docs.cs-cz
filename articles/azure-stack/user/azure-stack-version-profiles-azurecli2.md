@@ -14,16 +14,16 @@ ms.date: 03/07/2019
 ms.author: mabrigg
 ms.reviewer: sijuman
 ms.lastreviewed: 02/28/2019
-ms.openlocfilehash: 21167366ff3af2bb360c33eaae9d591020bf11a5
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
-ms.translationtype: MT
+ms.openlocfilehash: fa1731c9361be83949aa794ed8842681bd81d995
+ms.sourcegitcommit: b4ad15a9ffcfd07351836ffedf9692a3b5d0ac86
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58487579"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59057774"
 ---
 # <a name="use-api-version-profiles-with-azure-cli-in-azure-stack"></a>Použití profilů verzí API pomocí Azure CLI ve službě Azure Stack
 
-*Platí pro: Azure Stack integrované systémy a Azure Stack Development Kit*
+*Týká se Azure Stack integrované systémy a Azure Stack Development Kit*
 
 Provedením kroků v tomto článku se nastavit si rozhraní příkazového řádku Azure (CLI) ke správě prostředků Azure Stack Development Kit (ASDK) z klientských platformách Linux, Mac a Windows.
 
@@ -99,7 +99,7 @@ Měli byste vidět verzi rozhraní příkazového řádku Azure a dalších záv
     python -m pip install --upgrade pip
     ```
 
-3. Nainstalujte **osobní** modulu. [Osobní](https://pypi.org/project/certifi/) modulu a kolekci kořenových certifikátů pro ověření důvěryhodnosti certifikátů SSL při ověření identity hostitele TLS. Otevřete příkazový řádek nebo řádku Powershellu se zvýšenými oprávněními a zadejte následující příkaz:
+3. Nainstalujte **osobní** modulu. [Osobní](https://pypi.org/project/certifi/) je modul a kolekci kořenových certifikátů pro ověření důvěryhodnosti certifikátů SSL při ověření identity hostitele TLS. Otevřete příkazový řádek nebo řádku Powershellu se zvýšenými oprávněními a zadejte následující příkaz:
 
     ```powershell
     pip install certifi
@@ -139,7 +139,7 @@ Měli byste vidět verzi rozhraní příkazového řádku Azure a dalších záv
     sudo -H pip3 install --upgrade pip
     ```
 
-3. Nainstalujte **osobní** modulu. [Osobní](https://pypi.org/project/certifi/) modulu a kolekci kořenových certifikátů pro ověření důvěryhodnosti certifikátů SSL při ověření identity hostitele TLS. Otevřete příkazový řádek nebo řádku Powershellu se zvýšenými oprávněními a zadejte následující příkaz:
+3. Nainstalujte **osobní** modulu. [Osobní](https://pypi.org/project/certifi/) je modul a kolekci kořenových certifikátů pro ověření důvěryhodnosti certifikátů SSL při ověření identity hostitele TLS. Otevřete příkazový řádek nebo řádku Powershellu se zvýšenými oprávněními a zadejte následující příkaz:
 
     ```bash
     pip3 install certifi

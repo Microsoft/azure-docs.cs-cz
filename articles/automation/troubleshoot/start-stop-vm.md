@@ -6,15 +6,15 @@ ms.service: automation
 ms.subservice: process-automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 02/13/2019
+ms.date: 04/04/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: f503d890dcc8ba90a8a4d8bafc09d5fd8b2856e6
-ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
+ms.openlocfilehash: 03bad12b7fcba5a247e05884aa0eb0493163a5c4
+ms.sourcegitcommit: e43ea344c52b3a99235660960c1e747b9d6c990e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58804849"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "59009780"
 ---
 # <a name="troubleshoot-the-startstop-vms-during-off-hours-solution"></a>Řešení potíží s spuštění/zastavení virtuálních počítačů během vypnutí hodin řešení
 
@@ -88,7 +88,7 @@ Přečtěte si informace následující možná řešení problému nebo místa 
 
 * Zkontrolujte, jestli jste správně nakonfigurovaný plán pro spouštění/zastavování virtuálních počítačů řešení. Další informace o konfiguraci plánu, najdete v článku [plány](../automation-schedules.md) článku.
 
-* Zkontrolujte datové proudy úlohy pro sady runbook a vyhledejte všechny chyby. Na portálu přejděte na svůj účet Automation a vyberte **úlohy** pod **automatizace procesů**. Z **úlohy** vzhled stránky pro úlohy z jednoho z následujících sad runbook:
+* Zkontrolujte [datové proudy úlohy](../automation-runbook-execution.md#viewing-job-status-from-the-azure-portal) hledat všechny chyby. Na portálu přejděte na svůj účet Automation a vyberte **úlohy** pod **automatizace procesů**. Z **úlohy** vzhled stránky pro úlohy z jednoho z následujících sad runbook:
 
   * AutoStop_CreateAlert_Child
   * AutoStop_CreateAlert_Parent
@@ -143,6 +143,8 @@ Přečtěte si informace následující možná řešení problému nebo místa 
 
 * Pokud virtuální počítač má problém s počáteční nebo rušení přidělení, toto chování může způsobovat chyby v samotných virtuálních počítačů. Některé příklady nebo potenciální problémy se aktualizace se právě používá při pokusu o ukončení služby. program přestane reagovat a další). Přejděte do prostředku vašeho virtuálního počítače a zkontrolujte, **protokoly aktivit** zobrazíte, pokud nejsou žádné chyby v protokolech. Taky může pokusit přihlásit k virtuálnímu počítači, pokud existují nějaké chyby v protokolech událostí. Další informace o řešení potíží s vašeho virtuálního počítače najdete v tématu [službě řešení potíží s Azure virtual machines](../../virtual-machines/troubleshooting/index.md)
 
+* Zkontrolujte [datové proudy úlohy](../automation-runbook-execution.md#viewing-job-status-from-the-azure-portal) hledat všechny chyby. Na portálu přejděte na svůj účet Automation a vyberte **úlohy** pod **automatizace procesů**.
+
 ## <a name="custom-runbook"></a>Scénář: Moje vlastní sady runbook se nezdaří spuštění nebo zastavení virtuálních počítačů
 
 ### <a name="issue"></a>Problém
@@ -155,7 +157,7 @@ Příčinou selhání může být jednu řadu věcí. Přejděte do vašeho úč
 
 ### <a name="resolution"></a>Řešení
 
-Doporučuje se použít [operací spustit/zastavit virtuální počítače mimo řešení hodin](../automation-solution-vm-management.md) spouštět a zastavovat virtuální počítače ve službě Azure Automation. Toto řešení je dílem společnosti Microsoft. Vlastní runbooky nejsou podporované microsoftem. Může pro vás řešení pro vaše vlastní sadu runbook návštěvou [řešení potíží s runbook](runbooks.md) článku. Tento článek obsahuje obecné pokyny a řešení potíží pro sady runbook, všechny typy.
+Doporučuje se použít [operací spustit/zastavit virtuální počítače mimo řešení hodin](../automation-solution-vm-management.md) spouštět a zastavovat virtuální počítače ve službě Azure Automation. Toto řešení je dílem společnosti Microsoft. Vlastní runbooky nejsou podporované microsoftem. Může pro vás řešení pro vaše vlastní sadu runbook návštěvou [řešení potíží s runbook](runbooks.md) článku. Tento článek obsahuje obecné pokyny a řešení potíží pro sady runbook, všechny typy. Zkontrolujte [datové proudy úlohy](../automation-runbook-execution.md#viewing-job-status-from-the-azure-portal) hledat všechny chyby. Na portálu přejděte na svůj účet Automation a vyberte **úlohy** pod **automatizace procesů**.
 
 ## <a name="dont-start-stop-in-sequence"></a>Scénář: Virtuální počítače není spuštění nebo zastavení ve správném pořadí
 
@@ -209,7 +211,7 @@ Chyby v mnoha případech může způsobovat používá starý a zastaralou verz
 
 ### <a name="resolution"></a>Řešení
 
-Chcete-li vyřešit mnoho chyb, se doporučuje odebírat a aktualizovat řešení. Zjistěte, jak aktualizovat řešení, najdete v článku [aktualizace spuštění/zastavení virtuálních počítačů během vypnutí hodin řešení](../automation-solution-vm-management.md#update-the-solution).
+Chcete-li vyřešit mnoho chyb, se doporučuje odebírat a aktualizovat řešení. Zjistěte, jak aktualizovat řešení, najdete v článku [aktualizace spuštění/zastavení virtuálních počítačů během vypnutí hodin řešení](../automation-solution-vm-management.md#update-the-solution). Kromě toho můžete zkontrolovat [datové proudy úlohy](../automation-runbook-execution.md#viewing-job-status-from-the-azure-portal) hledat všechny chyby. Na portálu přejděte na svůj účet Automation a vyberte **úlohy** pod **automatizace procesů**.
 
 ## <a name="next-steps"></a>Další postup
 

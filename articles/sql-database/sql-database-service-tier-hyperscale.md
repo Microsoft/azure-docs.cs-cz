@@ -11,13 +11,13 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
-ms.date: 01/25/2019
-ms.openlocfilehash: 4db013b51657bb327c36d616a3743c46731cd19a
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.date: 04/04/2019
+ms.openlocfilehash: 5e323b28913e0ba259654d39f97e0436e6bff2db
+ms.sourcegitcommit: e43ea344c52b3a99235660960c1e747b9d6c990e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57903789"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "59010477"
 ---
 # <a name="hyperscale-service-tier-preview-for-up-to-100-tb"></a>Velkokapacitní úrovni služeb (preview) pro až 100 TB
 
@@ -33,8 +33,6 @@ Azure SQL Database je založené na architektuře databázový stroj SQL serveru
 > Velkokapacitní úroveň služby je aktuálně ve verzi public preview a je k dispozici v omezené oblastech Azure. Oblast úplný seznam najdete v tématu [velkokapacitní služby dostupné oblasti úroveň](#available-regions). Nedoporučujeme s jakékoli produkčními úlohami v databázích Hyperškálovatelného ještě. Velkokapacitní databáze nelze aktualizovat na další úrovně služeb. Pro testovací účely doporučujeme vytvořit kopii aktuální databáze a aktualizovat kopii Hyperškálovatelného vrstvu služby.
 > [!NOTE]
 > Podrobnosti o úrovních služeb pro obecné účely a pro důležité obchodní informace v nákupní model založený na virtuálních jádrech najdete v tématu [Obecné](sql-database-service-tier-general-purpose.md) a [pro důležité obchodní informace](sql-database-service-tier-business-critical.md) úrovně služeb. Porovnání nákupní model s založený na DTU nákupní model založený na virtuálních jádrech najdete v tématu [nákupu modely a prostředků Azure SQL Database](sql-database-purchase-models.md).
-> [!IMPORTANT]
-> Úroveň velkokapacitní služby je aktuálně ve verzi public preview. Nedoporučujeme s jakékoli produkčními úlohami v databázích Hyperškálovatelného ještě. Velkokapacitní databáze nelze aktualizovat na další úrovně služeb. Pro testovací účely doporučujeme vytvořit kopii aktuální databáze a aktualizovat kopii Hyperškálovatelného vrstvu služby.
 
 ## <a name="what-are-the-hyperscale-capabilities"></a>Jaké jsou možnosti hyperškálovatelný systém
 

@@ -4,216 +4,197 @@ description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: daveba
+manager: mtillman
+ms.reviewer: barbkess
 ms.assetid: 841a1066-593c-4603-9abe-f48496d73d10
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 01/26/2018
+ms.topic: tutorial
+ms.date: 03/28/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1d0e8f8526d866c308be8684546397f282dcce51
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: c034e12c372e0514fa6cbb1f35af48cbdb4bf865
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56194100"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59278441"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-vxmaintain"></a>Kurz: Integrace Azure Active Directory s vxMaintain
 
 V tomto kurzu se dozvíte, jak integrovat vxMaintain s Azure Active Directory (Azure AD).
+VxMaintain integraci se službou Azure AD poskytuje následující výhody:
 
-Tato integrace poskytuje několik výhod důležité. Můžete:
+* Můžete řídit ve službě Azure AD, který má přístup k vxMaintain.
+* Můžete povolit uživatelům být automaticky přihlášeni k vxMaintain (Single Sign-On) s jejich účty Azure AD.
+* Můžete spravovat své účty na jediném místě – na webu Azure portal.
 
-- Ovládací prvek ve službě Azure AD, který má přístup k vxMaintain.
-- Umožní vašim uživatelům přihlásit se automaticky do vxMaintain s jednotným přihlašováním (SSO) s použitím svých účtů služby Azure AD.
-- Správa účtů v jednom centrálním místě: na webu Azure portal.
-
-Další informace o integraci aplikací SaaS v Azure AD, najdete v článku [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](../manage-apps/what-is-single-sign-on.md).
+Pokud chcete zjistit další podrobnosti o integraci aplikací SaaS v Azure AD, přečtěte si téma [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
 ## <a name="prerequisites"></a>Požadavky
 
 Konfigurace integrace Azure AD s vxMaintain, potřebujete následující položky:
 
-- Předplatné Azure AD
-- VxMaintain podporou jednotného přihlašování k odběru
-
-> [!NOTE]
-> Při testování kroky v tomto kurzu doporučujeme nepoužívejte produkčním prostředí.
-
-Pokud chcete vyzkoušet kroky v tomto kurzu, postupujte podle následujících doporučení:
-
-- Nepoužívejte produkčním prostředí, pokud to není nutné.
-- Pokud nemáte prostředí zkušební verzi Azure AD, můžete si [získat měsíční zkušební verzi](https://azure.microsoft.com/pricing/free-trial/).
+* Předplatné služby Azure AD. Pokud nemáte prostředí Azure AD, můžete získat [bezplatný účet](https://azure.microsoft.com/free/)
+* vxMaintain jednotného přihlašování povolená předplatného
 
 ## <a name="scenario-description"></a>Popis scénáře
-V tomto kurzu je otestovat Azure AD jednotné přihlašování v testovacím prostředí. 
 
-Scénáře, který se popisuje v tomto kurzu se skládá ze dvou hlavních stavebních bloků:
+V tomto kurzu konfigurace a testování v testovacím prostředí Azure AD jednotného přihlašování.
 
-* Přidání vxMaintain z Galerie
-* Konfigurace a testování Azure AD jednotného přihlašování
+* podporuje vxMaintain **IDP** jednotné přihlašování zahájené pomocí
 
-## <a name="add-vxmaintain-from-the-gallery"></a>Přidání vxMaintain z Galerie
-Konfigurace integrace vxMaintain s Azure AD, budete muset přidat vxMaintain z Galerie na váš seznam spravovaných aplikací SaaS.
+## <a name="adding-vxmaintain-from-the-gallery"></a>Přidání vxMaintain z Galerie
 
-Chcete-li přidat vxMaintain z galerie, postupujte takto:
+Konfigurace integrace vxMaintain do služby Azure AD, budete muset přidat vxMaintain z Galerie na váš seznam spravovaných aplikací SaaS.
 
-1. V [webu Azure portal](https://portal.azure.com), v levém podokně, vyberte **Azure Active Directory** tlačítko. 
+**Chcete-li přidat vxMaintain z galerie, postupujte následovně:**
 
-    ![Tlačítko Azure Active Directory][1]
+1. V **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
 
-1. Vyberte **podnikové aplikace** > **všechny aplikace**.
+    ![Tlačítko Azure Active Directory](common/select-azuread.png)
 
-    ![V podokně "Podnikové aplikace"][2]
-    
-1. V aplikaci, přidáte **všechny aplikace** dialogovém okně vyberte **novou aplikaci**.
+2. Přejděte do **podnikové aplikace** a pak vyberte **všechny aplikace** možnost.
 
-    !["Nové aplikace" tlačítko][3]
+    ![V okně podnikové aplikace](common/enterprise-applications.png)
 
-1. Do vyhledávacího pole zadejte **vxMaintain**.
+3. Chcete-li přidat novou aplikaci, klikněte na tlačítko **novou aplikaci** tlačítko v horní části dialogového okna.
 
-    !["Jeden režim přihlašování" rozevíracího seznamu](./media/vxmaintain-tutorial/tutorial_vxmaintain_search.png)
+    ![Tlačítko nové aplikace](common/add-new-app.png)
 
-1. V seznamu výsledků vyberte **vxMaintain**a pak vyberte **přidat**.
+4. Do vyhledávacího pole zadejte **vxMaintain**vyberte **vxMaintain** z panelu výsledků klikněte **přidat** tlačítko pro přidání aplikace.
 
-    ![Odkaz vxMaintain](./media/vxmaintain-tutorial/tutorial_vxmaintain_addfromgallery.png)
+     ![vxMaintain v seznamu výsledků](common/search-new-app.png)
 
-##  <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a otestování služby Azure AD jednotného přihlašování
-V této části můžete nakonfigurovat a otestovat jednotné přihlašování služby Azure AD pomocí vxMaintain podle testovacího uživatele nazývá "Britta Simon."
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a otestování služby Azure AD jednotného přihlašování
 
-Azure AD pro jednotné přihlašování pro práci, potřebuje vědět vxMaintain protějškem uživatele Azure AD. To znamená je potřeba vytvořit vztah odkazu mezi uživatele Azure AD a odpovídající vxMaintain uživatele.
+V této části je konfigurace a testování Azure AD jednotné přihlašování pomocí vxMaintain podle testovacího uživatele volá **Britta Simon**.
+Pro jednotné přihlašování pro práci je potřeba navázat vztah odkazu mezi uživatele služby Azure AD a související uživatelské v vxMaintain.
 
-K navázání vztahu odkazu, přiřaďte vxMaintain **uživatelské jméno** hodnotu jako Azure AD **uživatelské jméno** hodnotu.
+Nakonfigurovat a otestovat Azure AD jednotné přihlašování s vxMaintain, které potřebujete k dokončení následujících stavebních bloků:
 
-Nakonfigurovat a otestovat jednotné přihlašování služby Azure AD s použitím vxMaintain, dokončete následující stavební bloky.
+1. **[Konfigurovat Azure AD Single Sign-On](#configure-azure-ad-single-sign-on)**  – Pokud chcete, aby uživatelé mohli tuto funkci používat.
+2. **[Konfigurovat Single Sign-On vxMaintain](#configure-vxmaintain-single-sign-on)**  – ke konfiguraci nastavení jednotného přihlašování na straně aplikace.
+3. **[Vytvořit testovacího uživatele Azure AD](#create-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
+4. **[Přiřadit uživatele Azure AD](#assign-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotného přihlašování.
+5. **[Vytvořit testovacího uživatele vxMaintain](#create-vxmaintain-test-user)**  – Pokud chcete mít protějšek Britta Simon v vxMaintain, který je propojený s Azure AD reprezentace uživatele.
+6. **[Otestovat jednotné přihlašování](#test-single-sign-on)**  – Pokud chcete ověřit, jestli funguje v konfiguraci.
 
-### <a name="configure-azure-ad-sso"></a>Konfigurace jednotného přihlašování k Azure AD
+### <a name="configure-azure-ad-single-sign-on"></a>Konfigurace služby Azure AD jednotného přihlašování
 
-V této části můžete jak povolit jednotné přihlašování služby Azure AD na webu Azure Portal a konfigurace jednotného přihlašování v aplikaci vxMaintain následujícím způsobem:
+V této části můžete povolit Azure AD jednotného přihlašování na portálu Azure portal.
 
-1. Na webu Azure Portal na **vxMaintain** integrace stránce aplikace vyberte **jednotného přihlašování**.
+Ke konfiguraci Azure AD jednotné přihlašování s vxMaintain, proveďte následující kroky:
 
-    ![Příkaz "Jednotné přihlašování"][4]
+1. V [webu Azure portal](https://portal.azure.com/)na **vxMaintain** integrace stránce aplikace vyberte **jednotného přihlašování**.
 
-1. Chcete povolit jednotné přihlašování, v **režim jednotného přihlašování** rozevíracího seznamu vyberte **přihlašování na základě SAML**.
- 
-    ![Příkaz "založené na SAML Sign-on"](./media/vxmaintain-tutorial/tutorial_vxmaintain_samlbase.png)
+    ![Nakonfigurovat jednotné přihlašování – odkaz](common/select-sso.png)
 
-1. V části **vxMaintain domény a adresy URL**, postupujte takto:
+2. Na **vybrat jedinou metodu přihlašování** dialogového okna, vyberte **SAML/WS-Fed** chcete povolit jednotné přihlašování.
 
-    ![VxMaintain části domény a adresy URL](./media/vxmaintain-tutorial/tutorial_vxmaintain_url.png)
+    ![Jednotné přihlašování režim výběru](common/select-saml-option.png)
 
-    a. V **identifikátor** zadejte adresu URL, která má následující syntaxi: `https://<company name>.verisae.com`
+3. Na **nastavte si jednotné přihlašování pomocí SAML** klikněte na **upravit** ikony otevřete **základní konfiguraci SAML** dialogového okna.
 
-    b. V **adresy URL odpovědi** zadejte adresu URL, která má následující syntaxi: `https://<company name>.verisae.com/DataNett/action/ssoConsume/mobile?_log=true`
+    ![Upravit konfiguraci základní SAML](common/edit-urls.png)
 
-    > [!NOTE] 
-    > Předchozí hodnoty nejsou skutečný. Aktualizujte identifikátor skutečné a adresa URL odpovědi. K získání hodnot, obraťte se [tým podpory vxMaintain](https://www.hubspot.com/company/contact).
- 
-1. V části **podpisový certifikát SAML**vyberte **soubor XML s metadaty**a poté uložte soubor metadat do počítače.
+4. Na **nastavte si jednotné přihlašování pomocí SAML** stránce, proveďte následující kroky:
 
-    ![V části "Podpisový certifikát SAML"](./media/vxmaintain-tutorial/tutorial_vxmaintain_certificate.png) 
+    ![vxMaintain domény a adresy URL jednotné přihlašování – informace](common/idp-intiated.png)
 
-1. Vyberte **Uložit**.
+    a. V **identifikátor** textové pole, zadejte adresu URL, pomocí následujícího vzorce: `https://<company name>.verisae.com`
 
-    ![Tlačítko Uložit](./media/vxmaintain-tutorial/tutorial_general_400.png)
+    b. V **adresy URL odpovědi** textové pole, zadejte adresu URL, pomocí následujícího vzorce: `https://<company name>.verisae.com/DataNett/action/ssoConsume/mobile?_log=true`
 
-1. Ke konfiguraci **vxMaintain** jednotného přihlašování, odeslat na stažený **soubor XML s metadaty** do souboru [tým podpory vxMaintain](https://www.hubspot.com/company/contact).
+    > [!NOTE]
+    > Tyto hodnoty nejsou skutečný. Aktualizujte tyto hodnoty se skutečné identifikátorem a adresa URL odpovědi. Kontakt [tým podpory klienta vxMaintain](https://www.hubspot.com/company/contact) k získání těchto hodnot. Můžete také odkazovat na tyto vzory se dají ukazuje **základní konfiguraci SAML** části webu Azure Portal.
 
-> [!TIP]
-> Jak nastavit aplikaci si můžete přečíst stručné verzi podle předchozích pokynů v [webu Azure portal](https://portal.azure.com). Po přidání aplikace **služby Active Directory** > **podnikové aplikace** vyberte **Single Sign-On** kartu a potom přejdete na vložené dokumentace ke službě z **konfigurace** oddílu. 
->
->Další informace o funkci vložený dokumentaci najdete v tématu [Správa jednotného přihlašování pro podnikové aplikace](https://go.microsoft.com/fwlink/?linkid=845985).
-> 
+5. Na **nastavte si jednotné přihlašování pomocí SAML** stránku, **podpisový certifikát SAML** klikněte na tlačítko **Stáhnout** ke stažení **kód XML metadat federace**  z se zadanými možnostmi podle vašich požadavků a uložit je ve vašem počítači.
 
-### <a name="create-an-azure-ad-test-user"></a>Vytvořit testovacího uživatele Azure AD
-V této části můžete vytvořit testovacího uživatele Britta Simon na webu Azure Portal následujícím způsobem:
+    ![Odkaz ke stažení certifikátu](common/metadataxml.png)
 
-![Testovacího uživatele Azure AD][100]
+6. Na **nastavení vxMaintain** tématu, zkopírujte příslušné adresy URL podle vašich požadavků.
 
-1. V **webu Azure portal**, v levém podokně, vyberte **Azure Active Directory** tlačítko.
+    ![Zkopírování adresy URL konfigurace](common/copy-configuration-urls.png)
 
-    ![Tlačítko "Azure Active Directory"](./media/vxmaintain-tutorial/create_aaduser_01.png) 
+    a. Přihlašovací adresa URL
 
-1. Chcete-li zobrazit seznam uživatelů, přejděte na **uživatelů a skupin** > **všichni uživatelé**.
-    
-    ![Odkaz "Všichni uživatelé"](./media/vxmaintain-tutorial/create_aaduser_02.png)  
-    **Všichni uživatelé** zobrazí se dialogové okno. 
+    b. Identifikátor Azure AD
 
-1. Chcete-li otevřít **uživatele** dialogu **přidat**.
- 
-    ![Tlačítko Přidat](./media/vxmaintain-tutorial/create_aaduser_03.png) 
+    c. Adresa URL – odhlášení
 
-1. V **uživatele** dialogové okno pole, postupujte takto:
- 
-    ![Dialogové okno uživatele](./media/vxmaintain-tutorial/create_aaduser_04.png) 
+### <a name="configure-vxmaintain-single-sign-on"></a>Konfigurace vxMaintain jednotného přihlašování
 
-    a. V **název** zadejte **BrittaSimon**.
+Ke konfiguraci jednotného přihlašování na **vxMaintain** straně, je nutné odeslat na stažený **kód XML metadat federace** a vhodné zkopírovaný adresy URL z webu Azure portal [tým podpory vxMaintain](https://www.hubspot.com/company/contact). Nastavují tohoto nastavení můžete mít správně nastavené na obou stranách připojení SAML SSO.
 
-    b. V **uživatelské jméno** zadejte e-mailovou adresu testovacího uživatele Britta Simon.
+### <a name="create-an-azure-ad-test-user"></a>Vytvořit testovacího uživatele Azure AD 
 
-    c. Vyberte **zobrazit heslo** zaškrtněte políčko a potom si poznamenejte hodnotu, která byla vygenerována **heslo** pole.
+Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal volá Britta Simon.
 
-    d. Vyberte **Vytvořit**.
- 
-### <a name="create-a-vxmaintain-test-user"></a>Vytvoření zkušebního uživatele vxMaintain
+1. Na webu Azure Portal, v levém podokně vyberte **Azure Active Directory**vyberte **uživatelé**a pak vyberte **všichni uživatelé**.
 
-V této části můžete vytvořit testovacího uživatele Britta Simon v vxMaintain. Přidat uživatele na platformě vxMaintain, pracovat [tým podpory vxMaintain](https://www.hubspot.com/company/contact). Před použitím jednotného přihlašování k vytvoření a aktivace uživatele.
+    !["Uživatele a skupiny" a "Všechny uživatele" odkazy](common/users.png)
+
+2. Vyberte **nového uživatele** v horní části obrazovky.
+
+    ![Tlačítko Nový uživatel](common/new-user.png)
+
+3. Ve vlastnosti uživatele proveďte následující kroky.
+
+    ![Dialogové okno uživatele](common/user-properties.png)
+
+    a. V **název** zadat **BrittaSimon**.
+  
+    b. V **uživatelské jméno** typ pole brittasimon@yourcompanydomain.extension. Například BrittaSimon@contoso.com.
+
+    c. Vyberte **zobrazit heslo** zaškrtněte políčko a zapište si hodnotu, která se zobrazí v poli heslo.
+
+    d. Klikněte na možnost **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřadit uživatele Azure AD
 
-V této části povolíte testovacího uživatele Britta Simon k udělení přístupu k vxMaintain použití jednotného přihlašování k Azure. Chcete-li to provést, postupujte takto:
+V této části je povolit Britta Simon používat jednotné přihlašování Azure tím, že udělíte přístup k vxMaintain.
 
-![V seznamu zobrazovaný název testovacího uživatele][200] 
+1. Na webu Azure Portal, vyberte **podnikové aplikace**vyberte **všechny aplikace**a pak vyberte **vxMaintain**.
 
-1. Na webu Azure Portal **aplikací** zobrazení, přejděte na **Directory** zobrazení > **podnikové aplikace** > **všechny aplikace**.
+    ![Okno aplikace organizace](common/enterprise-applications.png)
 
-    ![Odkaz "Všechny aplikace"][201] 
+2. V seznamu aplikací vyberte **vxMaintain**.
 
-1. V **aplikací** seznamu vyberte **vxMaintain**.
+    ![Odkaz vxMaintain v seznamu aplikací](common/all-applications.png)
 
-    ![Odkaz vxMaintain](./media/vxmaintain-tutorial/tutorial_vxmaintain_app.png) 
+3. V nabídce na levé straně vyberte **uživatelů a skupin**.
 
-1. V levém podokně vyberte **uživatelů a skupin**.
+    ![Odkaz "Uživatele a skupiny"](common/users-groups-blade.png)
 
-    ![Odkaz "Uživatele a skupiny"][202] 
+4. Klikněte na tlačítko **přidat uživatele** tlačítko a pak vyberte **uživatelů a skupin** v **přidat přiřazení** dialogového okna.
 
-1. Vyberte **přidat** a pak na **přidat přiřazení** vyberte **uživatelů a skupin**.
+    ![Podokno Přidat přiřazení](common/add-assign-user.png)
 
-    ![Odkaz "Uživatele a skupiny"][203]
+5. V **uživatelů a skupin** dialogové okno Vybrat **Britta Simon** v seznamu uživatelů, klikněte **vyberte** tlačítko v dolní části obrazovky.
 
-1. V **uživatelů a skupin** v dialogu **uživatelé** seznamu vyberte **Britta Simon**a pak vyberte **vyberte** tlačítko.
+6. Pokud očekáváte libovolnou hodnotu role v kontrolní výraz SAML a potom v **vybrat roli** dialogové okno vybrat vhodnou roli pro uživatele ze seznamu, klikněte **vyberte** tlačítko v dolní části obrazovky.
 
-1. V **přidat přiřazení** dialogu **přiřadit**.
-    
-### <a name="test-your-azure-ad-single-sign-on"></a>Testování vaší služby Azure AD jednotného přihlašování
+7. V **přidat přiřazení** dialogové okno kliknutím **přiřadit** tlačítko.
 
-V této části testování konfigurace jednotného přihlašování k Azure AD s použitím na přístupovém panelu.
+### <a name="create-vxmaintain-test-user"></a>Vytvoření vxMaintain testovacího uživatele
 
-Výběr **vxMaintain** dlaždici na přístupovém panelu by vás přihlásit do aplikace vxMaintain automaticky.
+V této části vytvoříte uživatele v vxMaintain jako Britta Simon. Práce s [tým podpory vxMaintain](https://www.hubspot.com/company/contact) přidat uživatele na platformě vxMaintain. Uživatelé musí vytvořit a aktivovat, než použití jednotného přihlašování.
 
-Další informace o přístupovém panelu, naleznete v tématu [Úvod k přístupovému panelu](../user-help/active-directory-saas-access-panel-introduction.md).
+### <a name="test-single-sign-on"></a>Test jednotného přihlašování 
 
-## <a name="next-steps"></a>Další postup
+V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 
-* [Seznam kurzů integrace aplikací SaaS pomocí Azure Active Directory](tutorial-list.md)
-* [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)
+Po kliknutí na dlaždici vxMaintain na přístupovém panelu, můžete by měl být automaticky přihlášeni k vxMaintain, u kterého nastavíte jednotné přihlašování. Další informace o přístupovém panelu, naleznete v tématu [Úvod k přístupovému panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-<!--Image references-->
+## <a name="additional-resources"></a>Další prostředky
 
-[1]: ./media/vxmaintain-tutorial/tutorial_general_01.png
-[2]: ./media/vxmaintain-tutorial/tutorial_general_02.png
-[3]: ./media/vxmaintain-tutorial/tutorial_general_03.png
-[4]: ./media/vxmaintain-tutorial/tutorial_general_04.png
+- [Seznam kurzů o integraci aplikací SaaS pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-[100]: ./media/vxmaintain-tutorial/tutorial_general_100.png
+- [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-[200]: ./media/vxmaintain-tutorial/tutorial_general_200.png
-[201]: ./media/vxmaintain-tutorial/tutorial_general_201.png
-[202]: ./media/vxmaintain-tutorial/tutorial_general_202.png
-[203]: ./media/vxmaintain-tutorial/tutorial_general_203.png
+- [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
