@@ -9,12 +9,12 @@ ms.date: 09/26/2018
 ms.topic: tutorial
 description: Rychlý vývoj na platformě Kubernetes s využitím kontejnerů a mikroslužeb v Azure
 keywords: Docker, Kubernetes, Azure, AKS, službě Azure Kubernetes, kontejnery, Helm, služby sítě, směrování sítě služby, kubectl, k8s
-ms.openlocfilehash: 063ea2392dcaa705436bfbd7ba5d429bb096651e
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: dc84844738e501a30f73104a76ff80bf00adff24
+ms.sourcegitcommit: ef20235daa0eb98a468576899b590c0bc1a38394
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57891031"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59425816"
 ---
 # <a name="get-started-on-azure-dev-spaces-with-nodejs"></a>Začínáme s Azure Dev prostory s využitím Node.js
 
@@ -25,17 +25,10 @@ V tomto průvodci se naučíte:
 - Produktivně vyvíjet a testovat kód v týmovém prostředí
 
 > [!Note]
-> **Pokud se někde zaseknete**, podívejte se do části [Řešení potíží](troubleshooting.md) nebo na tuto stránku přidejte komentář.
-
-Teď můžete v Azure vytvořit vývojové prostředí založené na Kubernetes.
+> **Pokud jste zablokuje** kdykoli, najdete v článku [Poradce při potížích s](troubleshooting.md) oddílu.
 
 ## <a name="install-the-azure-cli"></a>Instalace rozhraní příkazového řádku Azure CLI
-Azure Dev Spaces vyžaduje minimální nastavení místního počítače. Většina konfigurace vývojového prostoru se ukládá do cloudu, aby ji šlo sdílet s ostatními uživateli. Váš místní počítač může používat systém Windows, Mac nebo Linux. Pro Linux jsou podporovány následující distribuce: (18.04, 16.04 a 14.04) se systémem Ubuntu, Debian 8 až 9, 7 RHEL, Fedora 26 +, CentOS 7, openSUSE 42.2 a SLES 12.
-
-Nejdřív si stáhněte a spusťte [rozhraní příkazového řádku Azure](/cli/azure/install-azure-cli?view=azure-cli-latest). 
-
-> [!IMPORTANT]
-> Pokud už máte Azure CLI nainstalované, ujistěte se, že používáte verzi 2.0.43 nebo novější.
+Azure Dev Spaces vyžaduje minimální nastavení místního počítače. Většina konfigurace vývojového prostoru se ukládá do cloudu, aby ji šlo sdílet s ostatními uživateli. Nejdřív si stáhněte a spusťte [rozhraní příkazového řádku Azure](/cli/azure/install-azure-cli?view=azure-cli-latest).
 
 ### <a name="sign-in-to-azure-cli"></a>Přihlášení k Azure CLI
 Přihlaste se k Azure. V okně terminálu zadejte následující příkaz:
@@ -112,7 +105,7 @@ Zatím máte základní webovou aplikaci, kterou můžete spustit místně. Teď
     ```
 
 Příkaz Azure CLI `azds prep` vygeneruje prostředky Dockeru a Kubernetes s výchozím nastavením:
-* `./Dockerfile` popisuje image kontejneru aplikace a způsob vytvoření a běhu zdrojového kódu v rámci kontejneru.
+* `./Dockerfile` Popisuje aplikace image kontejneru, a jak zdrojový kód je vytvořena a běží v rámci kontejneru.
 * [Helm chart](https://docs.helm.sh) v `./charts/webfrontend` popisuje, jak do Kubernetes nasadit kontejner.
 
 Celému obsahu těchto souborů prozatím rozumět nemusíte. Stojí však za zmínku, že **stejné prostředky konfigurace jako kódu pro Kubernetes a Docker můžete používat v různých fázích od vývoje až po produkci, takže si napříč různými prostředími zajistíte lepší konzistentnost**.
@@ -167,7 +160,7 @@ Co se stalo? Úpravy souborů obsahu, jako je HTML a CSS, nevyžadují restartov
 Otevřete webovou aplikaci na mobilním zařízení s použitím veřejné adresy URL webového front-endu. Adresu URL můžete zkopírovat na svém stolním počítači a odeslat ji do zařízení, abyste ji nemuseli celou zadávat. Po načtení webové aplikace na mobilním zařízení si můžete všimnout, že na malém zařízení se uživatelské rozhraní nezobrazuje správně.
 
 Pokud chcete problém opravit, přidejte metaznačku `viewport`:
-1. Otevřete soubor `./public/index.html`.
+1. Otevřete soubor `./public/index.html`
 1. Do stávajícího prvku `head` přidejte metaznačku `viewport`:
 
     ```html
@@ -272,7 +265,7 @@ Při této konfiguraci kontejner spustí *nodemon*. Po úpravě kódu na straně
 1. Znovu upravte úvodní zprávu v souboru `server.js` a pak soubor uložte.
 1. Obnovte prohlížeč nebo klikněte na tlačítko *Aktualizovat*, aby se změny projevily.
 
-**Teď máte metodu, jak rychle provádět iteraci kódu a jeho ladění v Kubernetes.** Příště si ukážeme, jak vytvořit a volat druhý kontejner.
+**Nyní máte metodu pro rychlé iterace v kódu a ladění přímo v Kubernetes.** Příště si ukážeme, jak vytvořit a volat druhý kontejner.
 
 ## <a name="next-steps"></a>Další postup
 

@@ -11,12 +11,12 @@ ms.topic: quickstart
 description: Rychlý vývoj Kubernetes s kontejnery, mikroslužby a Java v Azure
 keywords: Docker, Kubernetes, Azure, AKS, službě Azure Kubernetes, kontejnery, Java, Helm, služby sítě, směrování sítě služby, kubectl, k8s
 manager: jeconnoc
-ms.openlocfilehash: 26f82427ff06608de39381b4ecc45d318212a8a0
-ms.sourcegitcommit: 72cc94d92928c0354d9671172979759922865615
+ms.openlocfilehash: c1c039ba8696baff11abed3930998983647f4356
+ms.sourcegitcommit: ef20235daa0eb98a468576899b590c0bc1a38394
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58419009"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59425742"
 ---
 # <a name="quickstart-develop-with-java-on-kubernetes-using-azure-dev-spaces"></a>Rychlý start: Vývoj v Javě na použití Azure Dev prostorů Kubernetes
 
@@ -31,7 +31,7 @@ V tomto průvodci se naučíte:
 
 - Předplatné Azure. Pokud žádné nemáte, můžete si vytvořit [bezplatný účet](https://azure.microsoft.com/free).
 - [Nainstalovat Visual Studio Code](https://code.visualstudio.com/download).
--  [Azure Dev prostory](https://marketplace.visualstudio.com/items?itemName=azuredevspaces.azds) a [Java ladicího programu pro Azure Dev prostory](https://marketplace.visualstudio.com/items?itemName=vscjava.vscode-java-debugger-azds) rozšíření pro Visual Studio Code nainstalované.
+- [Azure Dev prostory](https://marketplace.visualstudio.com/items?itemName=azuredevspaces.azds) a [Java ladicího programu pro Azure Dev prostory](https://marketplace.visualstudio.com/items?itemName=vscjava.vscode-java-debugger-azds) rozšíření pro Visual Studio Code nainstalované.
 - [Nainstalované rozhraní Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest)
 - [Maven nainstalovanou a nakonfigurovanou](https://maven.apache.org).
 
@@ -212,4 +212,4 @@ az group delete --name MyResourceGroup --yes --no-wait
 Zjistěte, jak prostory vývoj Azure vám pomůže vytvořit složitější aplikace napříč více kontejnery, a jak můžete zjednodušit spolupráce na vývoji práce s různými verzemi nebo větve kódu v různých oborech.
 
 > [!div class="nextstepaction"]
-> [Práce s více kontejnery a týmový vývoj](multi-service-java.md)
+> [Práce s několika kontejnery a vývoj v týmu](multi-service-java.md)

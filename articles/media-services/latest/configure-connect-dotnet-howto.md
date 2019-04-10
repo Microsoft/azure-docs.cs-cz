@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/04/2019
 ms.author: juliako
-ms.openlocfilehash: cb6826be8f6a9a8caf54a23b0dbc5f3dda7830d6
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
-ms.translationtype: HT
+ms.openlocfilehash: 8f8a1434af768180e34afcaacd6e92ab402ad8cd
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59273970"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59361235"
 ---
 # <a name="connect-to-media-services-v3-api---net"></a>Připojení k rozhraní API služby Media Services v3 – .NET
 
@@ -35,7 +35,7 @@ Tento článek popisuje, jak se připojit k .NET SDK služby Azure Media Service
 1. Z **souboru** nabídky, klikněte na tlačítko **nový** > **projektu**. 
 1. Vytvoření **.NET Core** konzolové aplikace.
 
-Ukázková aplikace v tomto tématu, zaměřuje `netcoreapp2.0`. Kód používá "asynchronní funkce main', který je k dispozici od verze C# 7.1. Najdete v tomto [blogu](https://blogs.msdn.microsoft.com/benwilli/2017/12/08/async-main-is-available-but-hidden/) další podrobnosti.
+Ukázková aplikace v tomto tématu, zaměřuje `netcoreapp2.0`. Kód používá "asynchronní hlavní", který je k dispozici od verze C# 7.1. Najdete v tomto [blogu](https://blogs.msdn.microsoft.com/benwilli/2017/12/08/async-main-is-available-but-hidden/) další podrobnosti.
 
 ## <a name="add-required-nuget-packages"></a>Přidat požadované balíčky NuGet
 
@@ -223,7 +223,7 @@ namespace ConsoleApp1
 }
 ```
 
-## <a name="see-also"></a>Další informace najdete v tématech
+## <a name="next-steps"></a>Další postup
 
 - [Kurz: Nahrávání, kódování a streamování videí – .NET](stream-files-tutorial-with-api.md) 
 - [Kurz: Live Stream pomocí Media Services v3 – .NET](stream-live-tutorial-with-api.md)
@@ -237,6 +237,6 @@ namespace ConsoleApp1
 - [Vytváření filtrů pomocí Media Services – .NET](filters-dynamic-manifest-dotnet-howto.md)
 - [Pokročilé videa na vyžádání příklady Azure Functions a 2 služby Media Services v3](https://aka.ms/ams3functions)
 
-## <a name="next-steps"></a>Další postup
+## <a name="see-also"></a>Další informace najdete v tématech
 
 [.NET – referenční informace](https://docs.microsoft.com/dotnet/api/overview/azure/mediaservices/management?view=azure-dotnet)

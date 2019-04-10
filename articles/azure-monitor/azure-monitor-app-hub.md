@@ -5,17 +5,17 @@ title: Azure Monitor Application insights dokumentace k – kurzy, Reference k r
 description: Azure Application Monitor Insights poskytuje podrobné úrovni kódu application performance monitoring pro.
 services: application-insights
 author: mrbullwinkle
-manager: carmonmills
+manager: carmonm
 ms.service: application-insights
 ms.topic: landing-page
 ms.date: 01/15/2019
 ms.author: mbullwin
-ms.openlocfilehash: 4bf1ccd3da83900208ab8f15b54ea110b1dbb2f4
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: 514f0c193dbbca6d8583c9f93feadee3415f163c
+ms.sourcegitcommit: ef20235daa0eb98a468576899b590c0bc1a38394
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56244237"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59426269"
 ---
 <div id="main" class="v2">
     <div class="container">
@@ -85,14 +85,14 @@ ms.locfileid: "56244237"
                                                             <a href="./learn/dotnetcore-quick-start.md">Jádro ASP.NET</a><br>
                                                             <a href="./learn/nodejs-quick-start.md">Node.js</a><br>
                                                             <a href="./learn/java-quick-start.md">Java</a><br>
-                                                            <a href="./learn/mobile-center-quickstart.md">Mobile</a><br>
+                                                            <a href="./learn/mobile-center-quickstart.md">Mobilní</a><br>
                                                             <a href="./app/website-monitoring.md">Prohlížeč/monitorování klientů</a>
                                                         </p>
                                                         <br><br>
                                                         <h3>Kurzy</h3>
                                                         <p>
-                                                            <a href="./learn/tutorial-runtime-exceptions.md">Vyhledání a diagnostika běhových výjimek</a><br>
-                                                            <a href="./learn/tutorial-performance.md">Vyhledání a diagnostika potíží s výkonem</a><br>
+                                                            <a href="./learn/tutorial-runtime-exceptions.md">Vyhledání a diagnostika výjimek za běhu</a><br>
+                                                            <a href="./learn/tutorial-performance.md">Najít a diagnostikovat problémy s výkonem</a><br>
                                                             <a href="./learn/tutorial-alert.md">Monitorování a upozornění na stav aplikace</a><br>
                                                             <a href="./learn/tutorial-users.md">Lepším porozuměním chování uživatelů</a><br>
                                                             <a href="./learn/tutorial-app-dashboards.md">Vytvoření vlastních řídicích panelů</a>
@@ -103,7 +103,7 @@ ms.locfileid: "56244237"
                                                             <a href="./app/distributed-tracing.md">Co je distribuované trasování?</a><br>
                                                             <a href="./app/opencensus-python.md">OpenCensus for Python</a><br>
                                                             <a href="./app/opencensus-go.md">OpenCensus for Go</a><br>
-                                                            <a href="./app/opencensus-local-forwarder.md">Místní server pro předávání</a>
+                                                            <a href="./app/opencensus-local-forwarder.md">Místní předávání</a>
                                                             </p>
                                                         <br><br>
                                                         <h3>Automatické inteligentního zjišťování</h3>
@@ -121,7 +121,7 @@ ms.locfileid: "56244237"
                                                         <br><br>
                                                         <h3>Referenční informace</h3>
                                                         <p>
-                                                            <a href="./app/auto-collect-dependencies.md">Závislost automatického sběru</a><br>
+                                                            <a href="./app/auto-collect-dependencies.md">Automatické shromažďování závislostí</a><br>
                                                             <a href="./app/correlation.md">Korelace telemetrie</a><br>
                                                             <a href="./app/nuget.md">Balíčky NuGet</a><br>
                                                             <a href="./app/azure-functions-supported-features.md">Azure Functions</a>
@@ -141,7 +141,7 @@ ms.locfileid: "56244237"
                                                             <a href="./app/java-get-started.md">Podrobná konfigurace monitorování</a><br>
                                                             <a href="https://docs.microsoft.com/java/azure/spring-framework/configure-spring-boot-java-applicationinsights?view=azure-java-stable">Aplikace Spring Boot starter</a><br>
                                                             <a href="./app/micrometer-java.md">Micrometer metriky</a><br>
-                                                            <a href="./app/java-filter-telemetry.md">Filtrování telemetrických dat</a><br>
+                                                            <a href="./app/java-filter-telemetry.md">Filtrování telemetrie</a><br>
                                                             <a href="./app/java-trace-logs.md">Protokolování trasování programu</a><br>
                                                             <a href="./app/java-agent.md">Konfigurace agenta pro sledování závislostí</a><br>
                                                             <a href="./app/api-custom-events-metrics.md">Vlastní události a metriky</a><br>
@@ -198,15 +198,15 @@ ms.locfileid: "56244237"
                                                             <a href="./app/usage-funnels.md">Trychtýře</a><br>
                                                             <a href="./app/usage-cohorts.md">Kohorty</a><br>
                                                             <a href="./app/usage-impact.md">Dopad</a><br>
-                                                            <a href="./app/usage-retention.md">Uchování</a><br>
-                                                            <a href="./app/usage-flows.md">Toky uživatelů</a>
+                                                            <a href="./app/usage-retention.md">Uchovávání</a><br>
+                                                            <a href="./app/usage-flows.md">Toky uživatele</a>
                                                         </p>
                                                         <br><br>
                                                         <h3>Monitorování v reálném čase<br> vizualizace, &amp; analýzy</h3>
                                                         <p>
                                                             <a href="./app/overview-dashboard.md">Řídicího panelu s přehledem &amp; řídicí panel aplikací</a><br>
                                                             <a href="./app/monitor-web-app-availability.md">Sledování globální dostupnosti</a><br>
-                                                            <a href="./app/live-stream.md">Live metrics stream</a><br>
+                                                            <a href="./app/live-stream.md">Live Metrics Stream</a><br>
                                                             <a href="./app/app-map.md">Mapování distribuované aplikace</a><br>
                                                             <a href="../monitoring-and-diagnostics/resource-group-insights.md">Monitorování na úrovni skupiny prostředků</a><br>
                                                             <a href="./app/usage-workbooks.md">Vytváření interaktivních sestav</a><br>
@@ -218,7 +218,7 @@ ms.locfileid: "56244237"
                                                         <p>
                                                             <a href="https://docs.microsoft.com/azure/log-analytics/log-analytics-personal-data-mgmt">Manipulaci s osobními údaji</a><br>
                                                             <a href="./app/data-retention-privacy.md">Shromažďování, uchovávání, &amp; úložiště</a><br>
-                                                            <a href="./app/resources-roles-access-control.md">Přístup na základě rolí</a><br>
+                                                            <a href="./app/resources-roles-access-control.md">Přístup na základě role</a><br>
                                                             <a href="./app/ip-addresses.md">IP adresa &amp; výjimek brány firewall</a><br>
                                                             <a href="https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-usage-and-estimated-costs">Využití a odhadované náklady</a>
                                                         </p>
@@ -226,11 +226,11 @@ ms.locfileid: "56244237"
                                                         <h3>Datový model</h3>
                                                         <p>
                                                             <a href="./app/data-model.md">Přehled</a><br>
-                                                            <a href="./app/data-model-request-telemetry.md">Požadavek</a><br>
+                                                            <a href="./app/data-model-request-telemetry.md">Žádost</a><br>
                                                             <a href="./app/data-model-dependency-telemetry.md">Závislost</a><br>
                                                             <a href="./app/data-model-exception-telemetry.md">Výjimka</a><br>
                                                             <a href="./app/data-model-trace-telemetry.md">Trasování</a><br>
-                                                            <a href="./app/data-model-event-telemetry.md">Události</a><br>
+                                                            <a href="./app/data-model-event-telemetry.md">Událost</a><br>
                                                             <a href="./app/data-model-metric-telemetry.md">Metrika</a><br>
                                                             <a href="./app/data-model-context.md">Kontext</a>
                                                             </p>

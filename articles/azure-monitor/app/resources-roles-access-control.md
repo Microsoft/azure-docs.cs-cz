@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 02/14/2019
 ms.author: mbullwin
-ms.openlocfilehash: 213f4313e96638e4d94455be5f16aa3221d35b73
-ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
+ms.openlocfilehash: 0f348e3e7dc2812bf354d1f8ec86330b0742439a
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58905677"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59361870"
 ---
 # <a name="resources-roles-and-access-control-in-application-insights"></a>Prostředky, role a řízení přístupu ve službě Application Insights
 
@@ -48,7 +48,7 @@ První, definice:
 
 ## <a name="access"></a> Řízení přístupu ve skupině prostředků
 
-Je důležité pochopit, že kromě prostředku, který jste vytvořili pro vaši aplikaci, jsou k dispozici také samostatné prostředky skryté výstrahy a webové testy. Jsou připojeny ke stejné [skupiny prostředků](#resource-group) jako vaši aplikaci. Jste může také umístili další služby Azure do něj, třeba websites nebo úložiště.
+Je důležité pochopit, že kromě prostředku, který jste vytvořili pro vaši aplikaci, jsou k dispozici také samostatné prostředky skryté výstrahy a webové testy. Jsou připojeny ke stejné [skupiny prostředků](#resource-group) jako prostředek Application Insights. Jste může také umístili další služby Azure do něj, třeba websites nebo úložiště.
 
 Řízení přístupu k těmto prostředkům se proto doporučuje:
 

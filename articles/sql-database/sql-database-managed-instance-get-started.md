@@ -9,15 +9,15 @@ ms.devlang: ''
 ms.topic: quickstart
 author: jovanpop-msft
 ms.author: jovanpop
-ms.reviewer: Carlrab
+ms.reviewer: sstein, carlrab
 manager: craigg
 ms.date: 03/13/2019
-ms.openlocfilehash: 6aa8f362f067a4e3e391f435ee849f96abdf752f
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
-ms.translationtype: MT
+ms.openlocfilehash: c6a6612390676de26f2f14e23b8040f983493970
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57997519"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59361375"
 ---
 # <a name="quickstart-create-an-azure-sql-database-managed-instance"></a>Rychlý start: Vytvoření spravované instance Azure SQL Database
 
@@ -46,7 +46,7 @@ Následující kroky ukazují, jak vytvořit spravovanou instanci.
    | ------ | --------------- | ----------- |
    | **Předplatné** | Vaše předplatné | Předplatné, ve kterém máte oprávnění vytvářet nové prostředky |
    |**Název spravované instance**|Libovolné platné jméno|Platné názvy najdete v tématu [pravidla a omezení pojmenování](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions).|
-   |**Přihlašovací jméno správce spravované instance**|Jakékoli platné uživatelské jméno|Platné názvy najdete v tématu [pravidla a omezení pojmenování](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions). Nepoužívejte "serveradmin", protože to je vyhrazené serverové role.|
+   |**Přihlášení správce spravované instance**|Jakékoli platné uživatelské jméno|Platné názvy najdete v tématu [pravidla a omezení pojmenování](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions). Nepoužívejte "serveradmin", protože to je vyhrazené serverové role.|
    |**Heslo**|Libovolné platné heslo|Heslo musí obsahovat nejméně 16 znaků a musí splňovat [zadané požadavky na složitost](../virtual-machines/windows/faq.md#what-are-the-password-requirements-when-creating-a-vm).|
    |**Kolace**|Kolace, kterou chcete použít pro spravovanou instanci|Pokud se migrace databáze z SQL serveru, zkontrolujte řazení zdroje s použitím `SELECT SERVERPROPERTY(N'Collation')` a tuto hodnotu použít. Informace o kolacích najdete v tématu [serverové kolace](https://docs.microsoft.com/sql/relational-databases/collations/set-or-change-the-server-collation).|
    |**Umístění**|Umístění, ve kterém chcete vytvořit spravovanou instanci|Informace o oblastech najdete v tématu [oblastí Azure](https://azure.microsoft.com/regions/).|

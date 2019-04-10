@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b85284a5c2c3017e7ccc0a7e06a712e41c2a9561
-ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
+ms.openlocfilehash: a6e1095cc2c5937fa5de762f91a9830161b8d2a5
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57215587"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59362117"
 ---
 # <a name="tutorial-complete-an-azure-ad-self-service-password-reset-pilot-roll-out"></a>Kurz: Kompletní Azure AD samoobslužné resetování hesla pilotní zavedení
 
@@ -43,7 +43,7 @@ Testování samoobslužného resetování hesla musíte provést z účtů bez o
    * Klikněte na **Uložit**.
 1. Na stránce **Metody ověřování**
    * Nastavte **počet metod požadovaných k resetování** k **1**
-   * Zvolte, které **Metody dostupné pro uživatele** chcete v organizaci povolit. Pro účely tohoto kurzu zaškrtávat políčka a povolit **e-mailu** a **kód mobilní aplikace (preview)**.
+   * Zvolte, které **Metody dostupné pro uživatele** chcete v organizaci povolit. Pro účely tohoto kurzu zaškrtávat políčka a povolit **e-mailu**, **mobilního telefonu**, **telefonní číslo do kanceláře**, **oznámení mobilní aplikace (preview)** a  **Kód mobilní aplikace (preview)**.
    * Klikněte na **Uložit**.
 1. Na stránce **Registrace**
    * U možnosti **Při přihlášení vyžadovat registraci uživatelů** vyberte **Ano**.
@@ -60,7 +60,7 @@ Samoobslužné resetování hesla je teď pro cloudové uživatele v pilotní sk
 
 ## <a name="test-sspr-as-a-user"></a>Test samoobslužného resetování hesel z uživatelského účtu
 
-Otestujte samoobslužné resetování hesla pomocí účtu uživatele bez oprávnění správce, který je členem pilotní skupiny. **Nezapomeňte, že pokud používáte účet s jakoukoli rolí správce, metody ověřování a jejich množství se může lišit, protože zásady pro správce spravuje Microsoft.**
+Otestujte samoobslužné resetování hesla pomocí účtu uživatele bez oprávnění správce, který je členem pilotní skupiny. **Mějte na paměti, že pokud používáte účet s rolí správce přiřazené k němu metody ověřování a číslo může být jiný než ten, který vybrali jako správce zásad spravuje Microsoft.**
 
 1. Otevřete okno prohlížeče v režimu InPrivate nebo Incognito.
 1. Pod účtem testovacího uživatele se zaregistrujte pomocí registračního portálu na adrese [https://aka.ms/ssprsetup](https://aka.ms/ssprsetup) k samoobslužnému resetování hesla.
@@ -81,4 +81,4 @@ Pokud se rozhodnete, že už funkci nakonfigurovanou jako součást tohoto kurzu
 V tomto kurzu jste zapnuli samoobslužné resetování hesla služby Azure AD. Pokračujte dalším kurzem, abyste zjistili, jak můžete integrovat místní infrastrukturu Active Directory Domain Services do prostředí samoobslužného resetování hesla.
 
 > [!div class="nextstepaction"]
-> [Povolení zpětného zápisu místní integrace SSPR](tutorial-enable-writeback.md)
+> [Povolit integraci zpětný zápis samoobslužného resetování HESLA v místním](tutorial-enable-writeback.md)

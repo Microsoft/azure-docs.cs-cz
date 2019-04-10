@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 12/11/2018
 ms.author: aljo
-ms.openlocfilehash: 7252af42ac515f9177b8988e2995e6ce77f4e12f
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: 4b4ddd765996d8bb936d2abda4015f37d6df9098
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59268207"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59361544"
 ---
 # <a name="customize-service-fabric-cluster-settings"></a>Nastavení clusteru Service Fabric
 Tento článek popisuje různé nastavení prostředků infrastruktury pro cluster Service Fabric, kterou můžete přizpůsobit. Pro clustery hostovaných v Azure, můžete upravit pomocí nastavení [webu Azure portal](https://portal.azure.com) nebo s použitím šablony Azure Resource Manageru. Další informace najdete v tématu [upgradovat konfiguraci clusteru Azure](service-fabric-cluster-config-upgrade-azure.md). Pro samostatné clustery, můžete upravit nastavení aktualizací *ClusterConfig.json* souborů a provádění konfigurace upgradu ve vašem clusteru. Další informace najdete v tématu [upgradovat konfiguraci samostatného clusteru](service-fabric-cluster-config-upgrade-windows-server.md).
@@ -407,11 +407,14 @@ Tady je seznam prostředků infrastruktury nastavení, které můžete přizpůs
 |AzureStorageMaxWorkerThreads | int, výchozí je 25 |Dynamická|Maximální počet pracovních vláken současně. |
 |AzureStorageOperationTimeout | Čas v sekundách, výchozí hodnota je 6000 |Dynamická|Zadejte časový interval v sekundách. Časový limit pro dokončení operace xstore. |
 |CleanupApplicationPackageOnProvisionSuccess|Logická hodnota, výchozí hodnotu FALSE |Dynamická|Tato konfigurace povolí nebo zakáže automatické čištění balíčku aplikace v úspěšném zřízení. |
+|CleanupUnusedApplicationTypes|Logická hodnota, výchozí hodnotu FALSE |Dynamická|Tuto konfiguraci, pokud je povoleno, umožňuje automaticky zrušit registraci verze typů nepoužívané aplikace přeskočení nejnovější tři nevyužité verze, a tím ořezávání obsazena úložiště image store místo na disku. Automatické čištění se aktivuje na konci úspěšné zřízení pro daný typ konkrétní aplikace a také spouští pravidelně jednou za den pro všechny typy aplikací. Počet nepoužívaných verzí přeskočit se dá změnit pomocí parametru "MaxUnusedAppTypeVersionsToKeep". |
 |DisableChecksumValidation | Logická hodnota, výchozí hodnota je false |Statická| Tato konfigurace umožňuje povolit nebo zakázat ověření kontrolního součtu během zřizování aplikací. |
 |DisableServerSideCopy | Logická hodnota, výchozí hodnota je false |Statická|Tato konfigurace povolí nebo zakáže na straně serveru kopii balíčku aplikace na ImageStore během zřizování aplikací. |
 |ImageCachingEnabled | Logická hodnota, výchozí hodnota je true |Statická|Tato konfigurace umožňuje povolit nebo zakázat ukládání do mezipaměti. |
 |ImageStoreConnectionString |SecureString |Statická|Připojovací řetězec do kořenového adresáře pro ImageStore. |
 |ImageStoreMinimumTransferBPS | Int, výchozí hodnota je 1024 |Dynamická|Minimální přenosovou rychlost mezi clusterem a ImageStore. Tato hodnota se používá k určení časového limitu při přístupu k externí ImageStore. Tuto hodnotu změňte, pouze pokud je latence mezi clusterem a ImageStore vysokou a více času pro cluster můžete stáhnout z externí ImageStore. |
+|MaxUnusedAppTypeVersionsToKeep | Int, výchozí hodnota je 3 |Dynamická|Tato konfigurace definuje počet verze typů nepoužívané aplikace přeskočit pro vyčištění. Tento parametr platí pouze v případě, že je povolen parametr CleanupUnusedApplicationTypes. |
+
 
 ## <a name="metricactivitythresholds"></a>MetricActivityThresholds
 | **Parametr** | **Povolené hodnoty** |**Zásady upgradu**| **Doprovodné materiály nebo krátký popis** |

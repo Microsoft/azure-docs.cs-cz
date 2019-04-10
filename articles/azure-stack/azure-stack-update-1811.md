@@ -12,16 +12,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/28/2019
+ms.date: 04/09/2019
 ms.author: sethm
 ms.reviewer: adepue
 ms.lastreviewed: 02/28/2019
-ms.openlocfilehash: 0fe5b055665ef5a770fba71fdefcfd13b9809e37
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: 138913414a8e45084d498a0c7b2e864bc443197f
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59282266"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59362055"
 ---
 # <a name="azure-stack-1811-update"></a>Aktualizace služby Azure Stack 1811
 
@@ -391,9 +391,9 @@ Toto jsou známé problémy této verze sestavení po instalaci.
 <!-- #### Identity -->
 <!-- #### Marketplace -->
 
-### <a name="syslog"></a>Syslog 
-- Konfigurace syslog není trvalý prostřednictvím cyklu aktualizace výsledkem klienta syslog přijít o své konfiguraci a zprávy syslog zastavit byla přesměrována. Tento problém se vztahuje na všechny verze služby Azure Stack od verze GA klienta syslog (1809).
-Alternativním řešením je změnit konfiguraci klienta syslog po použití aktualizace služby Azure Stack.
+### <a name="syslog"></a>Syslog
+
+- Konfigurace syslog není trvalý prostřednictvím cyklu aktualizace způsobí klienta syslog přijít o své konfiguraci a zprávy syslog zastavit byla přesměrována. Tento problém se vztahuje na všechny verze služby Azure Stack od verze GA klienta syslog (1809). Chcete-li tento problém obejít, překonfigurujte syslog klienta po použití aktualizace služby Azure Stack.
 
 ## <a name="download-the-update"></a>Stáhnout aktualizaci.
 

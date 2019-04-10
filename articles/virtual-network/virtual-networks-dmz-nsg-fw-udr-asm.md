@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/01/2016
 ms.author: jonor;sivae
-ms.openlocfilehash: 104eae7c8d18c32fd5b9b84147df2bf121345c22
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
-ms.translationtype: HT
+ms.openlocfilehash: 668862714b416bd89d3b5f82caf8b0305fccae54
+ms.sourcegitcommit: ef20235daa0eb98a468576899b590c0bc1a38394
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59277408"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59426524"
 ---
 # <a name="example-3-build-a-perimeter-network-to-protect-networks-with-a-firewall-udr-and-nsgs"></a>Příklad 3: Vytvořit hraniční síť k ochraně sítě s bránou firewall, směrování definovaného uživatelem a skupin zabezpečení sítě
 
@@ -396,7 +396,7 @@ Tady jsou podrobnosti každé pravidlo předpokladem pro dokončení v tomto př
     > [!TIP]
     > I když se používá tento příklad pravidla `<explicit-dest>` odkaz, byste měli použít konzistentní přístup v rámci konfigurace brány firewall. Je doporučeno použití pojmenovaný objekt sítě pro snazší čitelnost a podpoře. `<explicit-dest>` Zobrazuje, tady je jenom zobrazíte alternativní referenční metody. Není doporučeno obecně, zejména pro složité konfigurace.
 
-* **Odchozí internetové pravidlo**: Toto pravidlo passu umožňuje přenosy z jakékoli zdrojové síti k předání do vybrané cílové sítě. Barracuda NextGen firewall má obvykle to toto pravidlo "on" ve výchozím nastavení, ale v zakázaném stavu. Klikněte pravým tlačítkem na toto pravidlo pro přístup k **aktivovat pravidlo** příkazu. Upravte pravidlo ukazuje snímek obrazovky přidání objektů sítě pro back-end a front-endové podsítě ke zdrojovému atributu tohoto pravidla. Tyto objekty sítě jste vytvořili v části požadavků tohoto článku.
+* **Odchozí internetové pravidlo**: Toto pravidlo passu umožňuje přenosy z jakékoli zdrojové síti k předání do vybrané cílové sítě. Barracuda NextGen firewall toto pravidlo má obvykle "on", ve výchozím nastavení, ale v zakázaném stavu. Klikněte pravým tlačítkem na toto pravidlo pro přístup k **aktivovat pravidlo** příkazu. Upravte pravidlo ukazuje snímek obrazovky přidání objektů sítě pro back-end a front-endové podsítě ke zdrojovému atributu tohoto pravidla. Tyto objekty sítě jste vytvořili v části požadavků tohoto článku.
   
     ![Odchozí pravidla brány firewall][14]
 

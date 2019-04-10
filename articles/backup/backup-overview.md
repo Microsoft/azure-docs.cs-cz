@@ -6,15 +6,15 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: backup
 ms.topic: overview
-ms.date: 02/19/2019
+ms.date: 04/05/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 51191f3276a9420129f47944b47a182479719d5a
-ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
+ms.openlocfilehash: 5408f920a16860972dca6450d5e51152048bbf82
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58621664"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59361803"
 ---
 # <a name="what-is-azure-backup"></a>Co je Azure Backup?
 
@@ -25,12 +25,12 @@ Služba Azure Backup zálohuje data do cloudu Microsoft Azure. Můžete zálohov
 
 Azure Backup nabízí tyto klíčové výhody:
 
-- **Zpracování úloh zálohování v místním**: Azure Backup nabízí jednoduché řešení pro zálohování místních prostředků do cloudu. Získejte krátkodobého a dlouhodobého zálohování, aniž by museli nasazovat komplexní místní řešení pro zálohování. 
+- **Zpracování úloh zálohování v místním**: Azure Backup nabízí jednoduché řešení pro zálohování místních prostředků do cloudu. Získejte krátkodobého a dlouhodobého zálohování, aniž by museli nasazovat komplexní místní řešení pro zálohování.
 - **Zálohování virtuálních počítačů Azure IaaS**: Azure Backup poskytuje zálohy nezávislou a izolovanou pro ochranu proti náhodnému odstranění původní data. Zálohy jsou uložené v trezoru služby Recovery Services s integrovanými spravované bodů obnovení. Konfigurace a rozšiřitelnost jsou jednoduché, jsou optimalizované zálohování a můžete je snadno obnovit podle potřeby.
-- **Jednoduše škálujte** – Azure Backup používá základní výkon a neomezený rozsah cloudu Azure k zajištění vysoké dostupnosti s žádné údržbou nebo monitorováním režijní náklady. 
+- **Jednoduše škálujte** – Azure Backup používá základní výkon a neomezený rozsah cloudu Azure k zajištění vysoké dostupnosti s žádné údržbou nebo monitorováním režijní náklady.
 - **Získejte neomezený přenos dat.**: Azure Backup neomezuje množství příchozích nebo odchozích dat přenosu, nebo za data přenesená.
     - Odchozí data označují data přenášená z trezoru služby Recovery Services během operace obnovení.
-    - Pokud provedete import velkých objemů dat pomocí služby Azure Import/Export počáteční offline zálohu, je náklady související s příchozími daty.  [Další informace](backup-azure-backup-import-export.md). 
+    - Pokud provedete import velkých objemů dat pomocí služby Azure Import/Export počáteční offline zálohu, je náklady související s příchozími daty.  [Další informace](backup-azure-backup-import-export.md).
 - **Zabezpečení dat**:
     - On-premises přenášená data se šifrují v místním počítači pomocí AES256. Data přenášená je chráněn HTTPS mezi úložiště a zálohování. Protokol iSCSI zabezpečuje data přenášená mezi zálohováním a uživatele počítače. Zabezpečené tunelové propojení se používá k ochraně kanál iSCSI.
     - Pro místní do služby Azure backup data v Azure je šifrovaný v klidovém stavu pomocí přístupového hesla, které poskytnete při nastavování zálohování. Heslo nebo klíč se nikdy nepřenáší ani neukládá v Azure. Pokud je nutné obnovit některá data, máte šifrovací heslo (klíč) k dispozici jen vy.
@@ -56,13 +56,13 @@ Obě služby poskytují doplňkové, ale jiné funkce.
 - **Azure Site Recovery**: Site Recovery poskytuje řešení pro zotavení po havárii pro místní počítače a pro virtuální počítače Azure. Můžete replikovat počítače z primární umístění do sekundární. V případě náhlé havárie selhání počítačů do sekundárního umístění a přistupovat k nim tam. Pokud vše, co je zprovozněný obvykle znovu, můžete počítače selhání zpět a obnovit v primární lokalitě.
 - **Azure Backup**: Služba Azure Backup zálohuje data z místních počítačů a virtuálních počítačů Azure. Data můžete zálohovat a obnovit na velmi podrobné úrovni, včetně zálohování souborů, složek, stav systému počítače a zálohování dat s ohledem na aplikace. Azure Backup zpracovává data na podrobnější úrovni než Site Recovery. Například pokud poškozením prezentace na svém přenosném počítači, můžete použít Azure Backup můžete tuto prezentaci obnovit. Pokud chcete zachovat konfiguraci virtuálního počítače a data, bezpečné a přístupné, použijete Site Recovery.  
 
-Pomocí body tabulku zjistit vašim potřebám BCDR. 
+Pomocí body tabulku zjistit vašim potřebám BCDR.
 
 **Cíl** | **Podrobnosti** | **Porovnání**
---- | --- | --- 
+--- | --- | ---
 **Zálohování a uchovávání dat** | Zálohovaná data můžete uchovávat a ukládají dnů, měsíců nebo roků i v případě potřeby z hlediska dodržování předpisů. | Záložní řešení, jako je Azure Backup umožňuje jemně vyberte data, která chcete zálohovat a jemně ladit zásady zálohování a uchovávání.<br/><br/> Site Recovery neumožňuje stejné dolaďování.
 **Cíl bodu obnovení (RPO)** | Přijatelná míra ztráty dat v případě potřeby provedení obnovení. | Zálohování mají další proměnnou cíle bodu obnovení.<br/><br/> Zálohy virtuálních počítačů obvykle mají RPO za den, zatímco zálohy databází mají rpo nižší, až 15 minut.<br/><br/> Site Recovery poskytuje nízkou hodnotou RPO, protože je replikace průběžné nebo časté, tak, aby je malý rozdíl mezi kopírovat zdroje a repliky.
-**Plánovaná doba obnovení (RTO)** |Množství času potřebného k dokončení obnovení nebo zotavení. | Z důvodu vyššího RPO je množství dat, které musí řešení zálohování zpracovat, typicky mnohem vyšší, což vede k delším RTO. Například obnovení dat z pásků může trvat i dny v závislosti na tom, jak dlouho trvá přenos pásku z odlehlého umístění. 
+**Plánovaná doba obnovení (RTO)** |Množství času potřebného k dokončení obnovení nebo zotavení. | Z důvodu vyššího RPO je množství dat, které musí řešení zálohování zpracovat, typicky mnohem vyšší, což vede k delším RTO. Například obnovení dat z pásků může trvat i dny v závislosti na tom, jak dlouho trvá přenos pásku z odlehlého umístění.
 
 ## <a name="what-backup-scenarios-are-supported"></a>Jaké scénáře zálohování se podporují?
 
@@ -71,14 +71,10 @@ Azure Backup můžete zálohovat místní počítače i virtuální počítače 
 **Počítač** | **Zálohování scénář**
 --- | ---
 **Místní zálohu** |  (1) spusťte agenta Azure Backup Microsoft Azure Recovery Services (MARS) na místním počítače Windows Zálohování jednotlivých souborů a stavu systému. <br/><br/>(2) zálohování místních počítačů k zálohování serveru (System Center Data Protection Manager (DPM) nebo Microsoft Azure Backup Server (MABS)) a potom nakonfigurujte zálohování serveru k zálohování do trezoru služby Azure Backup Recovery Services v Azure.
-**Virtuální počítače Azure** | (1) povolte zálohování pro jednotlivé virtuální počítače Azure. Když povolíte zálohování, Azure Backup nainstaluje rozšíření do agenta virtuálního počítače Azure, na kterém běží na virtuálním počítači. Agent zálohuje celý virtuální počítač.<br/><br/> (2) spusťte agenta MARS na Virtuálním počítači Azure. To je užitečné, pokud chcete zálohování jednotlivých souborů a složek ve virtuálním počítači.<br/><br/> (3) zálohování virtuálního počítače Azure do serveru DPM nebo MABS běžící v Azure. Pak zálohujte server DPM nebo MABS do trezoru zálohování Azure. 
+**Virtuální počítače Azure** | (1) povolte zálohování pro jednotlivé virtuální počítače Azure. Když povolíte zálohování, Azure Backup nainstaluje rozšíření do agenta virtuálního počítače Azure, na kterém běží na virtuálním počítači. Agent zálohuje celý virtuální počítač.<br/><br/> (2) spusťte agenta MARS na Virtuálním počítači Azure. To je užitečné, pokud chcete zálohování jednotlivých souborů a složek ve virtuálním počítači.<br/><br/> (3) zálohování virtuálního počítače Azure do serveru DPM nebo MABS běžící v Azure. Pak zálohujte server DPM nebo MABS do trezoru zálohování Azure.
 
 
 ## <a name="why-use-a-backup-server"></a>Proč používat zálohování serveru?
-
-
-
-
 Výhody zálohování počítačů a aplikací MABS/DPM úložiště a zálohování aplikace DPM nebo MABS úložiště do trezoru se následujícím způsobem:
 
 - Zálohování MABS/DPM poskytuje s ohledem na aplikace zálohy optimalizovaných pro běžné aplikace, jako je například SQL Server, Exchange a SharePoint, v další soubor/složka/svazek zálohy a zálohy stavu počítač (holý, stav systému).
@@ -93,17 +89,17 @@ Další informace o [jak zálohování funguje](backup-architecture.md#architect
 **Počítač** | **Backup – metoda** | **Zálohování**
 --- | --- | ---
 **Místní virtuální počítače Windows** | Spuštění agenta MARS | Zálohování souborů, složek, stav systému.<br/><br/> Počítače s Linuxem není podporován.
-**Místní počítače** | Zálohování do DPM nebo MABS | Proveďte zálohu cokoli, co je chráněn [DPM](backup-support-matrix-mabs-dpm.md#supported-backups-to-dpm) nebo [MABS](backup-support-matrix-mabs-dpm.md#supported-backups-to-mabs), včetně souborů/složek/sdílené složky nebo svazky a data specifická pro aplikaci. 
+**Místní počítače** | Zálohování do DPM nebo MABS | Proveďte zálohu cokoli, co je chráněn [DPM](backup-support-matrix-mabs-dpm.md#supported-backups-to-dpm) nebo [MABS](backup-support-matrix-mabs-dpm.md#supported-backups-to-mabs), včetně souborů/složek/sdílené složky nebo svazky a data specifická pro aplikaci.
 **Virtuální počítače Azure** | Spuštění rozšíření agenta zálohování virtuálních počítačů Azure | Zálohovat celý virtuální počítač
 **Virtuální počítače Azure** | Spuštění agenta MARS | Zálohování souborů, složek, stav systému.<br/><br/> Počítače s Linuxem není podporován.
 **Virtuální počítače Azure** | Zálohování do MABS/aplikace DPM běžící v Azure | Proveďte zálohu cokoli, co je chráněn [MABS](backup-support-matrix-mabs-dpm.md#supported-backups-to-mabs) nebo [DPM](https://docs.microsoft.com/system-center/dpm/dpm-protection-matrix?view=sc-dpm-1807) včetně dat soubory/složky/složky/svazky a konkrétní aplikace.
 
 ## <a name="what-backup-agents-do-i-need"></a>Jaké agenty služby backup budu potřebovat?
 
-**Scénář** | **Agent** 
---- | --- 
+**Scénář** | **Agent**
+--- | ---
 **Zálohování virtuálních počítačů Azure** | Není potřeba žádný agent. Rozšíření virtuálního počítače Azure Backup je nainstalovaný na virtuálním počítači Azure při spuštění první zálohování virtuálních počítačů Azure.<br/><br/> Podpora pro podporu Windows a Linuxu.
-**Zálohování místních Windows počítačů** | Stažení, instalace a spuštění agenta MARS přímo na počítači. 
+**Zálohování místních Windows počítačů** | Stažení, instalace a spuštění agenta MARS přímo na počítači.
 **Zálohování virtuálních počítačů Azure pomocí agenta MARS** | Stažení, instalace a spuštění agenta MARS přímo na počítači. Agenta MARS lze spustit souběžně s linka záložního telefonu.
 **Zálohování místních počítačů a virtuálních počítačů Azure do DPM nebo MABS** | Agent ochrany aplikace DPM nebo MABS běží na počítačích, které chcete chránit. MARS agent se spouští na serveru/MABS DPM pro zálohování do Azure.
 
@@ -114,7 +110,7 @@ Další informace o [jak zálohování funguje](backup-architecture.md#architect
 **Chci zálohovat celý virtuální počítač Azure** | Povolte zálohování virtuálního počítače. Rozšíření zálohování se automaticky nakonfigurují na virtuální počítač Azure s Linuxem nebo Windows. | Je-li zálohovat celý virtuální počítač <br/><br/> Pro virtuální počítače s Windows je konzistentní zálohování. pro Linux je konzistentní zálohování. Pokud potřebujete s ohledem na aplikace pro virtuální počítače s Linuxem, budete muset nastavit tuto konfiguraci pomocí vlastních skriptů.
 **Chci, aby pro zálohování konkrétní soubory nebo složky na virtuálním počítači Azure** | Nasazení agenta MARS na virtuálním počítači.
 **Chci přímo zpět na místních počítačích Windows** | Nainstalujte agenta MARS na počítači. | Můžete zálohovat soubory, složky a stavu systému do Azure. Zálohování se s ohledem na aplikace.
-**Chci přímo zálohování místních počítačů s Linuxem** | Potřebujete k nasazení aplikace DPM nebo MABS zálohování do Azure.
+**Chci přímo zálohování místních počítačů s Linuxem** | Potřebujete k nasazení aplikace DPM nebo MABS zálohování do Azure. | Zálohování hostiteli se systémem Linux není podporována, je možné pouze zálohování hostovaný počítač s Linuxem hostovaných na Hyper-V nebo VMWare.
 **Chci, aby zálohování aplikace běžící na místních** | S ohledem na aplikace Zálohování počítačů musí být chráněn DPM nebo MABS.
 **Chci, aby podrobné a flexibilní nastavení zálohování a obnovení pro virtuální počítače Azure** | Ochrana virtuálních počítačů Azure pomocí MABS/aplikace DPM běžící na Azure pro větší flexibilita při plánování zálohování a úplnou flexibilitu pro ochranu a obnovení souborů, složek, svazků, aplikace a stavu systému.
 
@@ -127,4 +123,3 @@ Další informace o [jak zálohování funguje](backup-architecture.md#architect
 [green]: ./media/backup-introduction-to-azure-backup/green.png
 [yellow]: ./media/backup-introduction-to-azure-backup/yellow.png
 [red]: ./media/backup-introduction-to-azure-backup/red.png
-

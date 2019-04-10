@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: 85fba27c856561eb1270e719dcf24b88d2d5a01f
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: 0312e322aea74b3ce9867d09cebc7543da40de5f
+ms.sourcegitcommit: ef20235daa0eb98a468576899b590c0bc1a38394
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57309906"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59426235"
 ---
 # <a name="connect-a-windows-iot-core-device-to-your-azure-iot-central-application"></a>Připojit zařízení s Windows IoT Core do aplikace Azure IoT Central
 
@@ -48,10 +48,7 @@ Nastavení zařízení s Windows IoT Core postupujte podle podrobného průvodce
 
 ### <a name="add-a-real-device"></a>Přidání skutečného zařízení
 
-V aplikaci Azure IoT Central přidat z reálného zařízení **Windows IoT Core** šablona zařízení a zaznamenání podrobností o připojení zařízení (**primární klíč ID oboru, ID zařízení**). Další informace najdete v tématu [skutečné zařízení přidat do aplikace Azure IoT Central](tutorial-add-device.md).
-
- > [!NOTE]
-   > Azure IoT Central převedl na používání služby Azure IoT Hub Device Provisioning (DPS) pro všechna připojení zařízení, postupujte podle těchto pokynů a [získat připojovací řetězec zařízení](concepts-connectivity.md#get-a-connection-string) a pokračujte se zbývající část tohoto kurzu.
+V aplikaci Azure IoT Central přidat z reálného zařízení **Windows IoT Core** šablona zařízení a zaznamenání podrobností o připojení zařízení (**primární klíč ID oboru, ID zařízení**). Postupujte podle těchto pokynů a [generovat připojovací řetězec zařízení](howto-generate-connection-string.md) pomocí **ID oboru**, **ID zařízení**, a **primární klíč** provedena Mějte na paměti z dříve.
 
 ## <a name="prepare-the-windows-10-iot-core-device"></a>Připravit zařízení Windows 10 IoT Core
 
@@ -67,7 +64,8 @@ Pokud chcete nasadit aplikaci klienta z předchozího kroku do zařízení Windo
 
 **Ujistěte se, že je připojovací řetězec je uložen na zařízení pro klientskou aplikaci používat**
 * Na ploše uložte do textového souboru s názvem connection.string.iothub připojovací řetězec.
-* Zkopírujte tento textový soubor do složku dokumentů zařízení: `[device-IP-address]\C$\Data\Users\DefaultAccount\Documents\connection.string.iothub`
+* Zkopírujte tento textový soubor do složku dokumentů zařízení:
+`[device-IP-address]\C$\Data\Users\DefaultAccount\Documents\connection.string.iothub`
 
 Jakmile, který jste provedli, budete muset otevřít [Windows Device Portal](https://docs.microsoft.com/windows/iot-core/manage-your-device/deviceportal) tak, že zadáte http://[device-IP-address]:8080 do libovolného prohlížeče.
 

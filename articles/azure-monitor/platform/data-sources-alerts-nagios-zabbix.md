@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/27/2018
 ms.author: magoedte
-ms.openlocfilehash: f0f156568eed5a1e8f3296ff7c37df7f050dbc33
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 0ed6747573edf4c059eb29d28107a22706c52856
+ms.sourcegitcommit: ef20235daa0eb98a468576899b590c0bc1a38394
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57540041"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59426185"
 ---
 # <a name="collect-alerts-from-nagios-and-zabbix-in-azure-monitor-from-log-analytics-agent-for-linux"></a>Shromažďovat výstrahy z řešení Nagios a Zabbix ve službě Azure Monitor z agenta Log Analytics pro Linux 
 [!INCLUDE [log-analytics-agent-note](../../../includes/log-analytics-agent-note.md)]
@@ -92,15 +92,15 @@ Výstrahy mají záznamy shromážděné Nagios **typ** z **výstrah** a **Sourc
 
 | Vlastnost | Popis |
 |:--- |:--- |
-| Typ |*Upozornění* |
-| SourceSystem |*Nagios* |
-| AlertName |Název výstrahy. |
-| AlertDescription | Popis výstrahy. |
-| AlertState | Stav hostitele nebo službu.<br><br>OK<br>UPOZORNĚNÍ<br>NAHORU<br>DOLŮ |
-| název hostitele | Název hostitele, která upozornění vytvořila. |
-| PriorityNumber | Úroveň priority výstrahy. |
-| StateType | Typ stav výstrahy.<br><br>Konfigurace SOFT - problém, který nebyl znovu zkontrolují.<br>PEVNÉ – problém, který se znovu zkontrolují zadaného počtu opakování.  |
-| TimeGenerated |Datum a čas, který byla výstraha vytvořena. |
+| `Type` |*Výstrahy* |
+| `SourceSystem` |*Nagios* |
+| `AlertName` |Název výstrahy. |
+| `AlertDescription` | Popis výstrahy. |
+| `AlertState` | Stav hostitele nebo službu.<br><br>OK<br>UPOZORNĚNÍ<br>NAHORU<br>DOLŮ |
+| `HostName` | Název hostitele, která upozornění vytvořila. |
+| `PriorityNumber` | Úroveň priority výstrahy. |
+| `StateType` | Typ stav výstrahy.<br><br>Konfigurace SOFT - problém, který nebyl znovu zkontrolují.<br>PEVNÉ – problém, který se znovu zkontrolují zadaného počtu opakování.  |
+| `TimeGenerated` |Datum a čas, který byla výstraha vytvořena. |
 
 
 ### <a name="zabbix-alert-records"></a>Záznamy upozornění Zabbix
@@ -108,17 +108,17 @@ Výstrahy mají záznamy shromážděné Zabbix **typ** z **výstrah** a **Sourc
 
 | Vlastnost | Popis |
 |:--- |:--- |
-| Typ |*Upozornění* |
-| SourceSystem |*Zabbix* |
-| AlertName | Název výstrahy. |
-| AlertPriority | Závažnost výstrahy.<br><br>není klasifikovaný<br>Informace<br>upozornění<br>průměr<br>Vysoká<br>po havárii  |
-| AlertState | Stav výstrahy.<br><br>0 – stav je aktuální.<br>1 - stav není znám.  |
-| AlertTypeNumber | Určuje, zda výstraha může vygenerovat několik událostí problém.<br><br>0 – stav je aktuální.<br>1 - stav není znám.    |
-| Komentáře | Další komentáře pro výstrahu. |
-| název hostitele | Název hostitele, která upozornění vytvořila. |
-| PriorityNumber | Hodnota označuje závažnost výstrahy.<br><br>0 – nezařazených<br>1 – informace<br>2 – upozornění<br>3 – průměr<br>4 – vysoká<br>5 - po havárii |
-| TimeGenerated |Datum a čas, který byla výstraha vytvořena. |
-| TimeLastModified |Datum a čas, který byl naposled změněn stav výstrahy. |
+| `Type` |*Výstrahy* |
+| `SourceSystem` |*Zabbix* |
+| `AlertName` | Název výstrahy. |
+| `AlertPriority` | Závažnost výstrahy.<br><br>není klasifikovaný<br>Informace<br>upozornění<br>průměr<br>Vysoká<br>po havárii  |
+| `AlertState` | Stav výstrahy.<br><br>0 – stav je aktuální.<br>1 - stav není znám.  |
+| `AlertTypeNumber` | Určuje, zda výstraha může vygenerovat několik událostí problém.<br><br>0 – stav je aktuální.<br>1 - stav není znám.    |
+| `Comments` | Další komentáře pro výstrahu. |
+| `HostName` | Název hostitele, která upozornění vytvořila. |
+| `PriorityNumber` | Hodnota označuje závažnost výstrahy.<br><br>0 – nezařazených<br>1 – informace<br>2 – upozornění<br>3 – průměr<br>4 – vysoká<br>5 - po havárii |
+| `TimeGenerated` |Datum a čas, který byla výstraha vytvořena. |
+| `TimeLastModified` |Datum a čas, který byl naposled změněn stav výstrahy. |
 
 
 ## <a name="next-steps"></a>Další postup

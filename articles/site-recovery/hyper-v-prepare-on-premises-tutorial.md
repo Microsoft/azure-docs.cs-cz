@@ -5,29 +5,37 @@ services: site-recovery
 author: rayne-wiselman
 ms.service: site-recovery
 ms.topic: article
-ms.date: 03/18/2019
+ms.date: 04/08/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 127e970927e8ac1d0cd9b431c0c0175bdc4f5c0b
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: 6e57b629a0007b06af6e37f96e1466e35afafccc
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58315771"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59361886"
 ---
 # <a name="prepare-on-premises-hyper-v-servers-for-disaster-recovery-to-azure"></a>Příprava místních serverů Hyper-V pro zotavení po havárii do Azure
 
-V tomto kurzu se dozvíte, jak připravit vaši místní infrastrukturu Hyper-V, pokud chcete replikovat virtuální počítače Hyper-V do Azure pro účely zotavení po havárii. Hostitelé Hyper-V je možné spravovat pomocí System Center Virtual Machine Manager (VMM), ale to není nutné.  V tomto kurzu se naučíte:
+Tento článek popisuje, jak připravit vaši místní infrastrukturu Hyper-V, pokud chcete nastavit zotavení po havárii z Hyper-virtuální počítače do Azure, pomocí [Azure Site Recovery](site-recovery-overview.md).
+
+
+Toto je druhá dílem série, která ukazuje, jak nastavit zotavení po havárii do Azure pro místní virtuální počítače Hyper-V. V tomto prvním kurzu jsme [nastavení komponent Azure](tutorial-prepare-azure.md) potřebné pro zotavení po havárii Hyper-V.
+
+V tomto kurzu se naučíte:
 
 > [!div class="checklist"]
-> * Zkontrolujte požadavky technologie Hyper-V a požadavky na nástroj VMM, pokud je k dispozici.
-> * Příprava nástroje VMM, pokud je k dispozici
-> * Ověřte přístup k Internetu na umístění Azure
-> * Příprava virtuálních počítačů tak, aby jim přístup po převzetí služeb při selhání do Azure
+> * Zkontrolujte požadavky technologie Hyper-V a požadavky na nástroj VMM, pokud jsou vaši hostitelé Hyper-V spravované nástrojem System Center VMM.
+> * Příprava nástroje VMM, pokud je k dispozici.
+> * Ověřte přístup k Internetu na umístění Azure.
+> * Příprava virtuálních počítačů tak, aby jim přístup po převzetí služeb při selhání do Azure.
 
-Tento kurz je druhou částí série. Ujistěte se, že jste [nastavili komponenty Azure](tutorial-prepare-azure.md), jak je popsáno v předchozím kurzu.
+> [!NOTE]
+> Kurzy vám ukážou, nejjednodušší způsob nasazení pro scénář. V rámci možností používají jen výchozí možnosti a neuvádějí všechny varianty nastavení ani všechny cesty. Podrobné pokyny přečtěte si článek v části How To Site Recovery obsahu.
 
+## <a name="before-you-start"></a>Než začnete
 
+Ujistěte se, že jste připravili Azure jak je popsáno v [prvního kurzu této série](tutorial-prepare-azure.md).
 
 ## <a name="review-requirements-and-prerequisites"></a>Zkontrolujte požadavky a předpoklady
 
@@ -79,7 +87,7 @@ Pro připojení k virtuálním počítačům s Windows pomocí protokolu RDP po 
 
 1. Pokud chcete mít přístup přes internet, před převzetím služeb při selhání povolte na místním virtuálním počítači protokol RDP. Ujistěte se, že jsou přidaná pravidla TCP a UDP pro **Veřejný** profil a že v části **Brána Windows Firewall** > **Povolené aplikace** je povolený protokol RDP pro všechny profily.
 2. Pokud chcete mít přístup přes síť VPN typu Site-to-Site, povolte na místním počítači protokol RDP. Protokol RDP musí být povolený v části **Brána Windows Firewall** -> **Povolené aplikace a funkce** pro **doménovou a privátní** síť.
-   Zkontrolujte, že je zásada SAN operačního systému nastavená na **OnlineAll**. [Další informace](https://support.microsoft.com/kb/3031135). Při aktivaci převzetí služeb při selhání by na virtuálním počítači neměly být žádné čekající aktualizace Windows. Jinak se nebudete moci k virtuálnímu počítači přihlásit, dokud se aktualizace nedokončí.
+   Zkontrolujte, že je zásada SAN operačního systému nastavená na **OnlineAll**. [Další informace](https://support.microsoft.com/kb/3031135). Při aktivaci převzetí služeb při selhání by na virtuálním počítači neměly být žádné čekající aktualizace Windows. Pokud existují, nebudete moct přihlásit k virtuálnímu počítači, dokud se aktualizace nedokončí.
 3. Po převzetí služeb při selhání na virtuálním počítači Azure s Windows zkontrolujte **diagnostiku spuštění**, kde se zobrazí snímek obrazovky virtuálního počítače. Pokud se nemůžete připojit, zkontrolujte, že je virtuální počítač spuštěný, a přečtěte si tyto [tipy pro řešení potíží](https://social.technet.microsoft.com/wiki/contents/articles/31666.troubleshooting-remote-desktop-connection-after-failover-using-asr.aspx).
 
 Po převzetí služeb při selhání můžete přístup k virtuálním počítačům Azure pomocí stejné IP adresy jako virtuální počítač replikovaný v místním nebo jinou IP adresu. [Další informace](concepts-on-premises-to-azure-networking.md) o nastavení přidělování IP adres pro převzetí služeb při selhání.

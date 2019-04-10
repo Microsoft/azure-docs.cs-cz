@@ -5,21 +5,24 @@ services: site-recovery
 author: rayne-wiselman
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 03/18/2019
+ms.date: 04/08/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 5b664285ae7d8b5af6e64c2b7ba3d4c6bdadd656
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: 64559f653ba8a466de7bec10db34383b508e3e4b
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58312661"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59361287"
 ---
 # <a name="set-up-disaster-recovery-of-on-premises-hyper-v-vms-in-vmm-clouds-to-azure"></a>Nastavení zotavení po havárii místních virtuálních počítačů Hyper-V v cloudech VMM do Azure
 
-Služba [Azure Site Recovery](site-recovery-overview.md) přispívá ke strategii zotavení po havárii tím, že spravuje a orchestruje replikaci, převzetí služeb při selhání a navrácení služeb po obnovení pro místní počítače a virtuální počítače Azure.
+Tento článek popisuje, jak povolit replikaci místních virtuálních počítačů Hyper-V spravované nástrojem System Center Virtual Machine Manager (VMM) pro zotavení po havárii do Azure s využitím [Azure Site Recovery](site-recovery-overview.md) služby. Pokud nepoužíváte nástroj VMM, pak [v tomto kurzu](hyper-v-azure-tutorial.md).
 
-V tomto kurzu se dozvíte, jak nastavit zotavení po havárii místních virtuálních počítačů Hyper-V do Azure. Tento kurz se týká virtuálních počítačů Hyper-V, které jsou spravovány nástrojem System Center Virtual Machine Manager (VMM). V tomto kurzu se naučíte:
+Toto je třetí kurz série, která ukazuje, jak nastavit zotavení po havárii do Azure pro místní virtuální počítače VMware. V předchozím kurzu jsme [připravené prostředí Hyper-V v místním](hyper-v-prepare-on-premises-tutorial.md) zotavení po havárii do Azure. 
+
+V tomto kurzu se naučíte:
+
 
 > [!div class="checklist"]
 > * Vybrat zdroj a cíl replikace.
@@ -28,37 +31,45 @@ V tomto kurzu se dozvíte, jak nastavit zotavení po havárii místních virtuá
 > * Vytvoření zásady replikace
 > * Povolit replikaci virtuálního počítače
 
+
+> [!NOTE]
+> Kurzy vám ukážou, nejjednodušší způsob nasazení pro scénář. V rámci možností používají jen výchozí možnosti a neuvádějí všechny varianty nastavení ani všechny cesty. Podrobné pokyny přečtěte si článek v části How To Site Recovery obsahu.
+
+## <a name="before-you-begin"></a>Před zahájením
+
 Toto je třetí kurz ze specializované série. Tento kurz předpokládá, že jste už dokončili úlohy z předchozích kurzů:
 
 1. [Příprava Azure](tutorial-prepare-azure.md)
-2. [Příprava místního Hyper-V](tutorial-prepare-on-premises-hyper-v.md)
-
-Než začnete, doporučujeme [zkontrolovat architekturu](concepts-hyper-v-to-azure-architecture.md) pro tento scénář zotavení po havárii.
-
+2. [Příprava místního Hyper-V](tutorial-prepare-on-premises-hyper-v.md) Toto je třetí kurz ze specializované série. Tento kurz předpokládá, že jste už dokončili úlohy z předchozích kurzů:
 
 
 ## <a name="select-a-replication-goal"></a>Výběr cíle replikace
 
-1. V **všechny služby** > **trezory služby Recovery Services**, klikněte na název trezoru v těchto kurzech používáme **ContosoVMVault**.
+1. V okně **Trezory Recovery Services** vyberte trezor. Jsme připravili trezor **ContosoVMVault** v předchozím kurzu.
 2. V části **Začínáme** klikněte na **Site Recovery**. Pak klikněte na **Příprava infrastruktury**.
-3. V části **Cíl ochrany** > **Kde jsou vaše počítače umístěné?** vyberte **Místní**.
-4. V části **Kam chcete počítače replikovat?** vyberte **Do Azure**.
-5. V **jsou vaše počítače virtualizované**vyberte **Ano, s technologií Hyper-V**.
+3. V **cíl ochrany** > **kde jsou vaše počítače umístěné?** vyberte **On-premises**.
+4. V **kam chcete počítače replikovat?** vyberte **do Azure**.
+5. V **jsou vaše počítače virtualizované?** vyberte **Ano, s technologií Hyper-V**.
 6. V **používáte System Center VMM**vyberte **Ano**. Pak klikněte na **OK**.
 
     ![Cíl replikace](./media/hyper-v-vmm-azure-tutorial/replication-goal.png)
 
 
+## <a name="confirm-deployment-planning"></a>Potvrzení plánování nasazení
+
+1. V **plánování nasazení**, pokud máte v plánu velkého nasazení, stáhněte si Deployment Planneru pro Hyper-V z odkazu na stránce. [Další informace](hyper-v-deployment-planner-overview.md) o plánování nasazení technologie Hyper-V.
+2. Pro účely tohoto kurzu nepotřebujeme plánovače nasazení služby. V **dokončili jste plánování nasazení?** vyberte **udělám to později**. Pak klikněte na **OK**.
+
 
 ## <a name="set-up-the-source-environment"></a>Nastavení zdrojového prostředí
 
-Při nastavování zdrojové prostředí, nainstalujte zprostředkovatele Azure Site Recovery a agenta služeb zotavení Azure a zaregistrujte na místních serverech v trezoru. 
+Když nastavíte zdrojové prostředí, nainstalujte zprostředkovatele Azure Site Recovery na VMM server a zaregistrujte server v trezoru. Instalace agenta služeb zotavení Azure na každém hostiteli Hyper-V. 
 
 1. V části **Příprava infrastruktury** klikněte na **Zdroj**.
 2. V okně **Připravit zdroj** klikněte na **+ VMM** a přidejte server VMM. V části **Přidat server** zkontrolujte, že se v poli **Typ serveru** zobrazí **Server System Center VMM**.
 3. Stáhněte si instalační program pro zprostředkovatele Microsoft Azure Site Recovery.
 4. Stáhněte registrační klíč trezoru. Budete ho potřebovat po spuštění instalace zprostředkovatele. Klíč je platný pět dní od jeho vygenerování.
-5. Stáhněte agenta služby Recovery Services.
+5. Stáhněte si instalační program pro agenta Microsoft Azure Recovery Services.
 
     ![Ke stažení](./media/hyper-v-vmm-azure-tutorial/download-vmm.png)
 
@@ -75,7 +86,7 @@ Při nastavování zdrojové prostředí, nainstalujte zprostředkovatele Azure 
 
 Po dokončení registrace Azure Site Recovery načte metadata ze serveru a VMM server se zobrazí v **infrastruktura Site Recovery**.
 
-### <a name="install-the-recovery-services-agent"></a>Instalace agenta služby Recovery Services
+### <a name="install-the-recovery-services-agent-on-hyper-v-hosts"></a>Instalace agenta služby Recovery Services na hostitelích Hyper-V
 
 Nainstalujte agenta na každého hostitele Hyper-V obsahující virtuální počítače, které chcete replikovat.
 
@@ -90,7 +101,7 @@ Nainstalujte agenta na každého hostitele Hyper-V obsahující virtuální poč
 
 1. Klikněte na **Příprava infrastruktury** > **Cíl**.
 2. Vyberte předplatné a skupinu prostředků (**ContosoRG**) ve virtuálních počítačích Azure vytvoří po převzetí služeb při selhání.
-3. Vyberte model nasazení **Resource Manager**.
+3. Vyberte **Resource Manageru** modelu nasazení.
 
 Site Recovery zkontroluje, že máte minimálně jednu kompatibilní síť a účet úložiště Azure.
 
@@ -108,10 +119,10 @@ Site Recovery zkontroluje, že máte minimálně jednu kompatibilní síť a ú�
 ## <a name="set-up-a-replication-policy"></a>Nastavení zásady replikace
 
 1. Klikněte na **Příprava infrastruktury** > **Nastavení replikace** > **+ Vytvořit a přidružit**.
-2. V části **Vytvořit a přidružit zásady** zadejte název zásady **ContosoReplicationPolicy**.
+2. V části **Vytvořit a přidružit zásady** zadejte název zásady. Používáme **ContosoReplicationPolicy**.
 3. Ponechte výchozí nastavení a klikněte na **OK**.
     - **Frekvence kopírování** označuje, že se rozdílová data (po počáteční replikaci) budou replikovat každých pět minut.
-    - **Uchovávání bodů obnovení** označuje, že interval uchovávání každého bodu obnovení bude dvě hodiny.
+    - **Uchování bodu obnovení** určuje pro jednotlivé body obnovení se uchovávají po dobu dvou hodin.
     - **Frekvence snímků konzistentních vzhledem k aplikacím** označuje, že se body obnovení obsahující snímky konzistentní vzhledem k aplikacím budou vytvářet každou hodinu.
     - **Čas spuštění počáteční replikace** označuje, že se počáteční replikace spustí okamžitě.
     - **Šifrovat data ve službě Azure** – výchozí **vypnout** nastavení znamená, že neaktivní uložená data v Azure nejsou šifrována.
@@ -128,5 +139,7 @@ Site Recovery zkontroluje, že máte minimálně jednu kompatibilní síť a ú�
    Průběh akce **Povolení ochrany** můžete sledovat v části **Úlohy** > **Úlohy Site Recovery**. Po dokončení úlohy **Dokončení ochrany** bude počáteční replikace dokončená a virtuální počítač bude připravený na převzetí služeb při selhání.
 
 
+
 ## <a name="next-steps"></a>Další postup
-[Spuštění postupu zotavení po havárii](tutorial-dr-drill-azure.md)
+> [!div class="nextstepaction"]
+> [Spuštění postupu zotavení po havárii](tutorial-dr-drill-azure.md)

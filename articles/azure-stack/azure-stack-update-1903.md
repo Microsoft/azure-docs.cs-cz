@@ -12,16 +12,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/09/2019
+ms.date: 04/10/2019
 ms.author: sethm
 ms.reviewer: adepue
-ms.lastreviewed: 04/09/2019
-ms.openlocfilehash: 79f61f99050748c93ca4bd17d1849f4cbba7a295
-ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
-ms.translationtype: HT
+ms.lastreviewed: 04/10/2019
+ms.openlocfilehash: f07f81562c604913e633a8d93fa9c7db28a7bf55
+ms.sourcegitcommit: 6e32f493eb32f93f71d425497752e84763070fad
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
-ms.locfileid: "59360569"
+ms.lasthandoff: 04/10/2019
+ms.locfileid: "59471473"
 ---
 # <a name="azure-stack-1903-update"></a>Aktualizace služby Azure Stack 1903
 
@@ -97,7 +97,8 @@ Azure Stack opravy hotfix platí pouze pro integrované systémy Azure Stack; Ne
 
 - Při spuštění [testovací AzureStack](azure-stack-diagnostic-test.md), zobrazí se zpráva s upozorněním z řadič správy základní desky (BMC). Toto upozornění můžete ignorovat.
 
-- <!-- 2468613 - IS --> Při instalaci této aktualizace, může se zobrazit upozornění s názvem **chyba – šablona pro typ FaultType UserAccounts.New chybí.** Tyto výstrahy můžete bezpečně ignorovat. Výstrahy automaticky zavře po dokončení instalace této aktualizace.
+<!-- 2468613 - IS -->
+- Při instalaci této aktualizace, může se zobrazit upozornění s názvem **chyba – šablona pro FaultType UserAccounts. Nové nebyl nalezen.** Tyto výstrahy můžete bezpečně ignorovat. Výstrahy automaticky zavře po dokončení instalace této aktualizace.
 
 ## <a name="post-update-steps"></a>Postup po aktualizaci
 
@@ -124,10 +125,15 @@ Toto jsou známé problémy této verze sestavení po instalaci.
 - Odstraňuje se předplatné uživatele za následek osamocené prostředky. Jako alternativní řešení nejprve odstranit prostředky uživatele nebo celou skupinu prostředků a pak odstraňte předplatná uživatelů.
 
 <!-- 1663805 - IS ASDK --> 
-- Nelze zobrazit oprávnění k předplatnému pomocí na portálech Azure Stack. Jako alternativní řešení použít [Powershellu mohl ověřit oprávnění](/powershell/module/azs.subscriptions.admin/get-azssubscriptionplan).
+- Nelze zobrazit oprávnění k předplatnému pomocí na portálech Azure Stack. Jako alternativní řešení použít [Powershellu mohl ověřit oprávnění](/powershell/module/azurerm.resources/get-azurermroleassignment).
 
 <!-- Daniel 3/28 -->
-- Na portálu user portal, když přejdete do objektu blob v rámci účtu úložiště a zkuste otevřít **zásady přístupu** z navigačního stromu, se následující okno nepodaří načíst.
+- Na portálu user portal, když přejdete do objektu blob v rámci účtu úložiště a zkuste otevřít **zásady přístupu** z navigačního stromu, se následující okno nepodaří načíst. Tento problém obejít, povolte následující rutiny prostředí PowerShell vytvářet, načítat, nastavení a zásady přístupu, odstranění v uvedeném pořadí:
+
+  - [New-AzureStorageContainerStoredAccessPolicy](/powershell/module/azure.storage/new-azurestoragecontainerstoredaccesspolicy)
+  - [Get-AzureStorageContainerStoredAccessPolicy](/powershell/module/azure.storage/get-azurestoragecontainerstoredaccesspolicy)
+  - [Set-AzureStorageContainerStoredAccessPolicy](/powershell/module/azure.storage/set-azurestoragecontainerstoredaccesspolicy)
+  - [Remove-AzureStorageContainerStoredAccessPolicy](/powershell/module/azure.storage/remove-azurestoragecontainerstoredaccesspolicy)
 
 <!-- Daniel 3/28 -->
 - Na portálu user portal, při pokusu nahrát objekt blob pomocí **OAuth(preview)** možnost, úloha se nezdaří s chybovou zprávou. Chcete-li tento problém obejít, nahrát objekt blob pomocí **SAS** možnost.
@@ -157,17 +163,16 @@ Toto jsou známé problémy této verze sestavení po instalaci.
 
 - Virtuální počítač s Ubuntu 18.04 vytvořené pomocí SSH autorizace povolená neumožňuje použití klíčů SSH pro přihlášení. Jako alternativní řešení použít přístup k virtuálním počítačům pro Linuxové rozšíření k implementaci klíče SSH po zřízení, nebo ověřování pomocí hesla.
 
-- Azure Stack teď podporuje novější než verze 2.2.20 agentů Windows Azure s Linuxem. Tato podpora byla součástí 1901 a 1902 opravy hotfix a umožňuje zákazníkům udržovat konzistentní linuxové Image mezi Azure a Azure Stack.
-
+- Azure Stack teď podporuje novější než verze 2.2.20 agentů Windows Azure s Linuxem. Tato podpora byla součástí 1901 a 1902 opravy hotfix a umožňuje zákazníkům udržovat konzistentní Linuxové Image mezi Azure a Azure Stack.
 
 - Pokud nemáte hardwaru životního cyklu hostitelů (HLH): před sestavením 1902, museli jste nastavit zásady skupiny **počítače Konfigurace počítače\Nastavení systému Windows\Místní Policies\Security Options** k **Odeslat LM NTLM – Použijte NTLMv2 relace zabezpečení, pokud vyjedná**. Od sestavení 1902 musí necháváme ji jak **není definována** nebo ji nastavte na **pouze odpovědi odeslat NTLMv2** (což je výchozí hodnota). V opačném případě nebude schopný vytvořit vzdálené relace prostředí PowerShell a zobrazí se **přístup byl odepřen** Chyba:
 
-   ```shell
+   ```powershell
    PS C:\Users\Administrator> $session = New-PSSession -ComputerName x.x.x.x -ConfigurationName PrivilegedEndpoint  -Credential $cred
    New-PSSession : [x.x.x.x] Connecting to remote server x.x.x.x failed with the following error message : Access is denied. For more information, see the 
    about_Remote_Troubleshooting Help topic.
    At line:1 char:12
-   + $session = New-PSSession -ComputerName x.x.x.x -ConfigurationNa ...
+   + $Session = New-PSSession -ComputerName x.x.x.x -ConfigurationNa ...
    +            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
       + CategoryInfo          : OpenError: (System.Manageme....RemoteRunspace:RemoteRunspace) [New-PSSession], PSRemotingTransportException
       + FullyQualifiedErrorId : AccessDenied,PSSessionOpenFailed

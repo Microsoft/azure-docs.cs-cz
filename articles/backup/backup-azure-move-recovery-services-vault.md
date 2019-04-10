@@ -6,14 +6,14 @@ author: sogup
 manager: vijayts
 ms.service: backup
 ms.topic: conceptual
-ms.date: 03/19/2019
+ms.date: 04/08/2019
 ms.author: sogup
-ms.openlocfilehash: 7745f986c6e9ba22258f51f9329444b8232762e1
-ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
+ms.openlocfilehash: f4ab983fbebe9c0219e70fa7bd5742cf1c3a0491
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58905754"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59361976"
 ---
 # <a name="move-a-recovery-services-vault-across-azure-subscriptions-and-resource-groups-limited-public-preview"></a>Přesun trezoru služby Recovery Services napříč předplatnými Azure a skupiny prostředků (omezené veřejné verzi Preview)
 
@@ -22,7 +22,9 @@ Tento článek vysvětluje, jak přesunout trezor služby Recovery Services, kte
 > [!NOTE]
 > Pokud chcete přesunout do jiné skupiny prostředků trezoru služby Recovery Services a její přidružené prostředky, měli byste nejprve [zaregistrovat předplatné zdroj](#register-the-source-subscription-to-move-your-recovery-services-vault).
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+## <a name="supported-geos"></a>Podporované zeměpisných oblastech
+
+Přesunutí prostředku pro trezor služby Recovery Services je podporovaná v Austrálie – východ, Austrálie – východ – Jih, Kanada – střed, Kanada – východ, jihovýchodní Asie, východní Asie, střed USA, střed USA – sever, východní části USA, východní USA 2, Jižní centrální USA, střed USA – Západ, západní střed USA 2, USA – západ Střed Indie, Jižní Indie, Japonsko – východ, Japonsko – Západ, Korea – střed, Korea – Jih, Severní Evropa, západní Evropa, Jižní Afrika – sever, Jihoafrická republika – Západ, Velká Británie – Jih, Velká Británie – Západ, Spojené arabské emiráty – střed a Spojené arabské emiráty – sever.
 
 ## <a name="prerequisites-for-moving-a-vault"></a>Předpoklady pro přesun trezoru
 
@@ -34,12 +36,12 @@ Tento článek vysvětluje, jak přesunout trezor služby Recovery Services, kte
 - Aktuálně můžete přesunout jeden trezor služby Recovery Services na oblast, najednou.
 - Pokud virtuální počítač čárka nepohybuje trezor služby Recovery Services napříč předplatnými, nebo chcete novou skupinu prostředků, aktuálním bodům obnovení virtuálního počítače zůstanou beze změn v trezoru, dokud nevyprší jejich platnost.
 - Zda virtuální počítač se přesune k trezoru, nebo Ne, můžete vždy obnovit virtuální počítač ze historii uchovávané zálohy v trezoru.
--   Azure Disk Encryption vyžaduje, aby váš trezor klíčů a virtuální počítače jsou umístěny ve stejné oblasti Azure a předplatné.
--   Pokud chcete přesunout virtuální počítač se spravovanými disky, najdete v tomto [článku](https://azure.microsoft.com/blog/move-managed-disks-and-vms-now-available/).
--   Možnosti pro přesun prostředky nasazené prostřednictvím klasického modelu, se liší v závislosti na tom, jestli přesouváte prostředky v rámci předplatného nebo do nového předplatného. Další informace najdete v tomto [článku](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-move-resources#classic-deployment-limitations).
--   Zásady zálohování, které jsou definovány pro trezor se uchovávají po přesunutí úložiště napříč předplatnými nebo do nové skupiny prostředků.
--   V současné době nelze přesunout trezory obsahující soubory Azure, Azure File Sync nebo jazyka SQL ve virtuální počítače IaaS napříč předplatné a skupiny prostředků. Podpora pro tyto scénáře budou přidávat do budoucích verzí.
--   Pokud přesunete trezor obsahující data záloh virtuálních počítačů mezi předplatnými, musíte přesunout virtuální počítače do stejného předplatného a pokračovat v zálohování pomocí stejné cílová skupina prostředků.<br>
+- Azure Disk Encryption vyžaduje, aby váš trezor klíčů a virtuální počítače jsou umístěny ve stejné oblasti Azure a předplatné.
+- Pokud chcete přesunout virtuální počítač se spravovanými disky, najdete v tomto [článku](https://azure.microsoft.com/blog/move-managed-disks-and-vms-now-available/).
+- Možnosti pro přesun prostředky nasazené prostřednictvím klasického modelu, se liší v závislosti na tom, jestli přesouváte prostředky v rámci předplatného nebo do nového předplatného. Další informace najdete v tomto [článku](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-move-resources#classic-deployment-limitations).
+- Zásady zálohování, které jsou definovány pro trezor se uchovávají po přesunutí úložiště napříč předplatnými nebo do nové skupiny prostředků.
+- V současné době nelze přesunout trezory obsahující soubory Azure, Azure File Sync nebo jazyka SQL ve virtuální počítače IaaS napříč předplatné a skupiny prostředků.
+- Pokud přesunete trezor obsahující data záloh virtuálních počítačů mezi předplatnými, musíte přesunout virtuální počítače do stejného předplatného a pokračovat v zálohování pomocí stejné cílová skupina prostředků.<br>
 
 > [!NOTE]
 >
@@ -52,24 +54,24 @@ K registraci do zdrojového předplatného **přesunout** trezoru služby Recove
 1. Přihlášení k účtu Azure
 
    ```
-   Connect-AzAccount
+   Connect-AzureRmAccount
    ```
 
 2. Vyberte předplatné, pro kterou chcete zaregistrovat
 
    ```
-   Get-AzSubscription –SubscriptionName "Subscription Name" | Select-AzSubscription
+   Get-AzureRmSubscription –SubscriptionName "Subscription Name" | Select-AzureRmSubscription
    ```
 3. Zaregistrujte toto předplatné
 
    ```
-   Register-AzProviderFeature -ProviderNamespace Microsoft.RecoveryServices -FeatureName RecoveryServicesResourceMove
+   Register-AzureRmProviderFeature -ProviderNamespace Microsoft.RecoveryServices -FeatureName RecoveryServicesResourceMove
    ```
 
 4. Spusťte příkaz
 
    ```
-   Register-AzResourceProvider -ProviderNamespace Microsoft.RecoveryServices
+   Register-AzureRmResourceProvider -ProviderNamespace Microsoft.RecoveryServices
    ```
 
 Počkejte 30 minut, než předplatného na seznam povolených předtím, než začnete s přesunutím pomocí webu Azure portal nebo Powershellu.
@@ -97,7 +99,7 @@ Chcete-li přesunout obnovení služby trezor a její přidružené prostředky 
 
 5. Přidání cílová skupina prostředků v **skupiny prostředků** rozevíracího seznamu vyberte existující prostředek skupiny nebo klikněte na tlačítko **vytvořte novou skupinu** možnost.
 
-   ![Vytvoření prostředku](./media/backup-azure-move-recovery-services/create-a-new-resource.png)
+   ![Vytvořit prostředek](./media/backup-azure-move-recovery-services/create-a-new-resource.png)
 
 6. Po přidání skupiny prostředků, zkontrolujte **beru na vědomí, že nástroje a skripty přidružené k přesunutým prostředkům nebudou fungovat, dokud můžu aktualizovat je, aby používaly nové ID prostředků** možnost a potom klikněte na tlačítko **OK** k dokončení Přesun trezoru.
 
@@ -139,18 +141,18 @@ Trezor služby Recovery Services a její přidružené prostředky můžete pře
 
 ## <a name="use-powershell-to-move-a-vault"></a>Přesun trezoru pomocí Powershellu
 
-Chcete-li přesunout do jiné skupiny prostředků trezoru služby Recovery Services, použijte `Move-AzResource` rutiny. `Move-AzResource` vyžaduje, aby název prostředku a typ prostředku. Můžete získat i z `Get-AzRecoveryServicesVault` rutiny.
+Chcete-li přesunout do jiné skupiny prostředků trezoru služby Recovery Services, použijte `Move-AzureRMResource` rutiny. `Move-AzureRMResource` vyžaduje, aby název prostředku a typ prostředku. Můžete získat i z `Get-AzureRmRecoveryServicesVault` rutiny.
 
 ```
 $destinationRG = "<destinationResourceGroupName>"
-$vault = Get-AzRecoveryServicesVault -Name <vaultname> -ResourceGroupName <vaultRGname>
-Move-AzResource -DestinationResourceGroupName $destinationRG -ResourceId $vault.ID
+$vault = Get-AzureRmRecoveryServicesVault -Name <vaultname> -ResourceGroupName <vaultRGname>
+Move-AzureRmResource -DestinationResourceGroupName $destinationRG -ResourceId $vault.ID
 ```
 
 Prostředky přesunout do jiného předplatného, zahrňte `-DestinationSubscriptionId` parametru.
 
 ```
-Move-AzResource -DestinationSubscriptionId "<destinationSubscriptionID>" -DestinationResourceGroupName $destinationRG -ResourceId $vault.ID
+Move-AzureRmResource -DestinationSubscriptionId "<destinationSubscriptionID>" -DestinationResourceGroupName $destinationRG -ResourceId $vault.ID
 ```
 
 Po provedení výše uvedených rutin, budou vyzváni k potvrzení, že chcete přesunout zadané prostředky. Typ **Y** potvrďte. Po úspěšném ověření že se prostředek přesune.

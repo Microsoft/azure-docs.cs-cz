@@ -16,12 +16,12 @@ ms.workload: iaas-sql-server
 ms.date: 03/07/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 210043eaaf09fb601fe01c33cc1a53c9146bf859
-ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
+ms.openlocfilehash: 348979a53bff76c85e6d1531bd16cd695145e21b
+ms.sourcegitcommit: ef20235daa0eb98a468576899b590c0bc1a38394
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/02/2019
-ms.locfileid: "58848256"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59425981"
 ---
 # <a name="automated-patching-for-sql-server-in-azure-virtual-machines-resource-manager"></a>Automatizované opravy pro SQL Server v Azure Virtual Machines (Resource Manager)
 > [!div class="op_single_selector"]
@@ -96,11 +96,6 @@ V **konfigurace systému SQL Server** okna, klikněte na tlačítko **upravit** 
 Až budete hotovi, klikněte na tlačítko **OK** tlačítko v dolní části **konfigurace systému SQL Server** okno a uložte provedené změny.
 
 Chcete-li povolit automatické opravy poprvé, Azure nakonfiguruje agenta SQL Server IaaS na pozadí. Během této doby nemusí zobrazit na webu Azure portal, že je nakonfigurovaný automatizované opravy. Počkejte několik minut, než agent nainstalován, nakonfigurován. Následně se odráží na webu Azure portal nové nastavení.
-
-> [!NOTE]
-> Můžete také nakonfigurovat automatické opravy pomocí šablony. Další informace najdete v tématu [šablona Azure quickstart pro automatizované opravy](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-sql-existing-autopatching-update).
-> 
-> 
 
 ## <a name="configuration-with-powershell"></a>Konfigurace pomocí Powershellu
 Po zřízení virtuálního počítače s SQL, pomocí prostředí PowerShell můžete nakonfigurovat automatizované opravy.

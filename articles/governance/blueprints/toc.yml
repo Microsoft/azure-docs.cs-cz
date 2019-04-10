@@ -79,6 +79,8 @@ items:
   - name: Aktualizace existujících přiřazení z portálu
     displayName: lock, errors
     href: ./how-to/update-existing-assignments.md
+  - name: Správa podrobných plánů jako kódu (komunita)
+    href: https://github.com/Azure/azure-blueprints/blob/master/README.md
   expanded: true
 - name: Řešení potíží
   displayName: errors, violation
@@ -98,6 +100,8 @@ items:
   expanded: true
 - name: Zdroje a prostředky
   items:
+  - name: GitHub – ukázky Azure Blueprints
+    href: https://github.com/Azure/azure-blueprints
   - name: Plány Azure do budoucna
     href: https://azure.microsoft.com/roadmap/
   - name: Cenová kalkulačka
@@ -108,9 +112,9 @@ items:
     href: https://www.youtube.com/channel/UCZZ3-oMrVI5ssheMzaWC4uQ
   - name: 'Azure Friday: Přehled služby Azure Blueprints'
     href: https://channel9.msdn.com/Shows/Azure-Friday/An-overview-of-Azure-Blueprints
-ms.openlocfilehash: 2055a6cf630d8894deb04b730a65f2e143d686a8
-ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
+ms.openlocfilehash: f55ec759cac8ace468bc4216a30aef765f9d213a
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58498767"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59358579"

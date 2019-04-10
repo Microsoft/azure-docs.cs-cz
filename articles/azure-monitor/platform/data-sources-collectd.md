@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/27/2018
 ms.author: magoedte
-ms.openlocfilehash: b6785dc06107424344f0a6af775abe9b1c956f70
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 2118f137f2c0d32f891a170c3509bceee7ba13ed
+ms.sourcegitcommit: ef20235daa0eb98a468576899b590c0bc1a38394
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55999313"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59426133"
 ---
 # <a name="collect-data-from-collectd-on-linux-agents-in-azure-monitor"></a>Shromažďovat data shromážděná na agentech pro Linux ve službě Azure Monitor
 [Shromážděná](https://collectd.org/) je linuxového démona otevřít zdroj, který pravidelně shromažďuje metriky výkonu z aplikace a informace na úrovni systému. Příklad aplikace obsahují Java Virtual Machine (JVM), MySQL Server a Nginxu. Tento článek obsahuje informace o shromažďování dat výkonu z shromážděná ve službě Azure Monitor.
@@ -112,14 +112,14 @@ Chcete-li zachovat známým modelem mezi metriky infrastruktury ještě shromaž
 
 | Metrika shromážděná pole | Azure Monitor pole |
 |:--|:--|
-| hostitel | Počítač |
-| Modul plug-in | Žádný |
-| plugin_instance | Název instance<br>Pokud **plugin_instance** je *null* pak InstanceName = "*_celkem*" |
-| type | Název objektu |
-| type_instance | Hodnota counterName<br>Pokud **type_instance** je *null* pak CounterName =**prázdné** |
-| [] dsnames | Hodnota counterName |
-| dstypes | Žádný |
-| hodnoty] | CounterValue |
+| `host` | Počítač |
+| `plugin` | Žádný |
+| `plugin_instance` | Název instance<br>Pokud **plugin_instance** je *null* pak InstanceName = "*_celkem*" |
+| `type` | Název objektu |
+| `type_instance` | Hodnota counterName<br>Pokud **type_instance** je *null* pak CounterName =**prázdné** |
+| `dsnames[]` | Hodnota counterName |
+| `dstypes` | Žádný |
+| `values[]` | CounterValue |
 
 ## <a name="next-steps"></a>Další postup
 * Další informace o [protokolu dotazy](../log-query/log-query-overview.md) analyzovat data shromážděná ze zdrojů dat a jejich řešení. 

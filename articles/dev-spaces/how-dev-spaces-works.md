@@ -10,12 +10,12 @@ ms.date: 03/04/2019
 ms.topic: conceptual
 description: Popisuje procesy, které tento power Azure Dev mezery a jak jsou nakonfigurované v konfiguračním souboru azds.yaml
 keywords: azds.yaml prostory vývoj Azure, vývoj mezery, Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, kontejnery
-ms.openlocfilehash: 622a0780d74618fe694e5b9da0327490e0ec38dd
-ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
-ms.translationtype: MT
+ms.openlocfilehash: 0c22a6bbc9b75a14085f24a5be955e3482687965
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58500555"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59361492"
 ---
 # <a name="how-azure-dev-spaces-works-and-is-configured"></a>Jak funguje Azure Dev mezery a je nakonfigurován
 
@@ -85,10 +85,10 @@ Připravuje se váš cluster AKS vyžaduje:
 * Povolení Azure Dev mezery v clusteru pomocí `az aks use-dev-spaces`
 
 Další informace o tom, jak vytvořit a nakonfigurovat AKS cluster prostory Dev Azure naleznete v získávání příručky Začínáme:
-* [Začínáme s Azure Dev prostory s Javou](get-started-java.md)
-* [Začínáme s Azure Dev prostorů s .NET Core a Visual Studio](get-started-netcore-visualstudio.md)
-* [Začínáme s Azure Dev prostory s .NET Core](get-started-netcore.md)
-* [Začínáme s Azure Dev prostory s využitím Node.js](get-started-nodejs.md)
+* [Začínáme s Javou v Azure Dev Spaces](get-started-java.md)
+* [Zahájení práce se službou Azure Dev Spaces s .NET Core a sadou Visual Studio](get-started-netcore-visualstudio.md)
+* [Začínáme s .NET Core v Azure Dev Spaces](get-started-netcore.md)
+* [Začínáme v Azure Dev Spaces s Node.js](get-started-nodejs.md)
 
 Když Azure Dev prostory je povolené ve vašem clusteru AKS, nainstaluje kontroleru pro váš cluster. Kontroler je samostatné prostředky Azure mimo váš cluster a provede následující k prostředkům ve vašem clusteru:
 

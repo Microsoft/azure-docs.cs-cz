@@ -4,45 +4,56 @@ description: Zjistěte, jak exportovat nebo odstraňovat vaše uživatelská nas
 services: azure-portal
 keywords: ''
 author: santhoshsomayajula
-ms.date: 05/18/2018
+ms.date: 04/08/2019
 ms.topic: conceptual
 ms.service: azure-portal
 ms.custom: ''
-manager: dougeby
+manager: mtillman
 ms.author: kfollis
-ms.openlocfilehash: 815c2e9d7ec8aef9fe823f8d89304b45c099e812
-ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
+ms.openlocfilehash: fde7ffbaa3ef4d47eea48302a99948932aeb4f00
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54882068"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59361950"
 ---
-# <a name="export-or-delete-settings-in-the-azure-portal"></a>Exportovat nebo odstraňovat nastavení na portálu Azure portal
-Můžete exportovat a odstranit následující nastavení v nabídce Nastavení portálu Azure portal:
-* Azure portal privátní řídicí panely
-* Uživatelská nastavení, jako jsou oblíbené předplatné či adresáře a naposledy přihlásil adresáře
-* Motivy a přizpůsobení
+# <a name="export-or-delete-user-settings"></a>Export nebo odstranění uživatelských nastavení
 
-Důrazně doporučujeme exportovat a před jejich odstraněním zkontrolujte nastavení. Může být časově znovu sestavte řídicí panely a znovu přidat vlastní.
+Nastavení a funkcí na webu Azure Portal můžete použít k vytvoření vlastního prostředí. Informace o vlastních nastavení uložená v Azure. Můžete exportovat nebo odstranit následující údaje:
+
+* Privátní řídicí panely na webu Azure Portal
+* Uživatelská nastavení, jako jsou oblíbené předplatná nebo adresáře a adresář poslední přihlášení
+* Motivy a další vlastní nastavení portálu
+
+Je vhodné k exportu a před jejich odstraněním zkontrolujte nastavení. Řídicí panely znovu sestavit nebo znovu provedení vlastní nastavení může být časově náročné.
 
 [!INCLUDE [GDPR-related guidance](../../includes/gdpr-intro-sentence.md)]
 
-**Exportovat nebo odstraňovat vaše nastavení portálu**
+## <a name="export-or-delete-your-portal-settings"></a>Exportovat nebo odstraňovat vaše nastavení portálu
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
-2. V horním pravém rohu portálu, vyberte **nastavení**.
+2. V záhlaví portálu vyberte **nastavení**.
 
     ![Snímek obrazovky zobrazující ozubené kolo nastavení portálu](media/azure-portal-export-delete-settings/azure-portal-settings-icon.png)
+
 3. Vyberte **exportovat všechna nastavení** nebo **odstranit všechna nastavení a privátní řídicí panely**.
 
-    ![Snímek obrazovky zobrazující exportovat nastavení portálu a delete](media/azure-portal-export-delete-settings/azure-portal-export-delete-settings.png)
+    ![Snímek obrazovky zobrazující portálu exportovat a odstranit nastavení](media/azure-portal-export-delete-settings/azure-portal-export-delete-settings.png)
 
-      Následující tabulka popisuje tato nastavení. 
+      Následující tabulka popisuje tyto akce.
 
-      | Nastavení | Popis |
+      | Akce | Popis |
       | --- | --- |
-      | **Exportovat všechna nastavení** | Vytvoří soubor .json, který obsahuje vaše nastavení uživatele, jako je váš motiv řídicího panelu.|
-      | **Odstranit všechna nastavení a privátní řídicí panely** | Odstraní všechny odkazy na privátní řídicí panely a další vlastní nastavení uživatele, které jste udělali k řídicímu panelu portálu. |
+      | **Exportovat všechna nastavení** | Vytvoří soubor .json, který obsahuje nastavení uživatele jako barevný motiv, Oblíbené položky a privátní řídicí panely.|
+      | **Odstranit všechna nastavení a privátní řídicí panely** | Odstraní všechny odkazy na privátní řídicí panely a další vlastní nastavení, které jste udělali na portál. |
+
+> [!NOTE]
+> Kvůli dynamické povaze nastavení uživatele a riziko poškození dat nelze importovat nastavení ze souboru .json.
+>
+>
 
 
+## <a name="next-steps"></a>Další postup
 
+* [Vytváření a sdílení řídicích panelů Azure](azure-portal-dashboard-share-access.md)
+* [Přidání, odebrání a řazení oblíbených položek](azure-portal-add-remove-sort-favorites.md)

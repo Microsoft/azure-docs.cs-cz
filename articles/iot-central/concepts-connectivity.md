@@ -3,17 +3,17 @@ title: Připojení zařízení v Azure IoT Central | Dokumentace Microsoftu
 description: Tento článek představuje klíčové koncepty týkající se připojení zařízení v Azure IoT Central
 author: dominicbetts
 ms.author: dobett
-ms.date: 02/28/2019
+ms.date: 04/09/2019
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: timlt
-ms.openlocfilehash: e45960363290879af2e72211f5ef31b825461947
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.openlocfilehash: 9e1e85d1ab1c5e7ce0cbd96c64137309c2e2916a
+ms.sourcegitcommit: ef20235daa0eb98a468576899b590c0bc1a38394
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58522090"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59425963"
 ---
 # <a name="device-connectivity-in-azure-iot-central"></a>Připojení zařízení v Azure IoT Central
 
@@ -39,24 +39,7 @@ Tento článek popisuje následující čtyři svědectví:
 
 ## <a name="connect-a-single-device"></a>Připojení jedno zařízení
 
-Tento přístup je užitečný při experimentování s IoT Central nebo testování zařízení.
-
-Pro připojení jedno zařízení k IoT Central, pomocí SAS, postupujte podle těchto kroků:
-
-1. Chcete-li přidat skutečné zařízení, přejděte na **Device Explorer**, zvolte šablonu zařízení a vyberte **+ nový > skutečné**:
-    - Zadejte vlastní (malá písmena) **ID zařízení** nebo použijte navrhovaný ID.
-    - Zadejte **název zařízení** nebo použijte navrhovaný název.
-
-      ![Přidání zařízení](media/concepts-connectivity/add-device.png)
-
-1. Pokud chcete získat informace o připojení zařízení, vyberte **připojit** na stránce zařízení. Je nutné **ID oboru**, **ID zařízení**, a **primární klíč** hodnoty:
-    - Každá aplikace IoT Central má jedinečnou [ID oboru](../iot-dps/concepts-device.md#id-scope) , který je generován distribučních bodů.
-    - [ID zařízení](../iot-dps/concepts-device.md#device-id) je jedinečné ID zařízení. Zařízení je ID uložené v [registr identit](../iot-hub/iot-hub-devguide-identity-registry.md).
-    - **Primární klíč** je SAS token vygenerovaný IoT Central zařízení.
-
-      ![Podrobnosti připojení](media/concepts-connectivity/device-connect.png)
-
-Použití informací o připojení ve vašem kódu zařízení Pokud chcete povolit zařízení připojení a odesílat data IoT a aplikace IoT Central. Další informace o připojení zařízení najdete v tématu [další kroky](#next-steps).
+Tento přístup je užitečný při experimentování s IoT Central nebo testování zařízení. Informace o připojení zařízení z aplikace IoT Central můžete použít k vygenerování připojovacího řetězce pro zařízení. Podrobné pokyny najdete v článku [jak vygenerovat připojovací řetězec zařízení pro připojení k aplikaci Azure IoT Central](howto-generate-connection-string.md).
 
 ## <a name="connect-devices-at-scale-using-sas"></a>Připojení zařízení ve velkém měřítku pomocí SAS
 
@@ -169,34 +152,14 @@ Když skutečné zařízení se připojí k vaší aplikace IoT Central, jeho z�
 
 1. Operátor může blokovat zařízení. Když dojde k zablokování zařízení, kterou nelze odesílat data do vaší aplikace IoT Central. Blokováno zařízení jsou ve stavu zřizování **blokováno**. Předtím, než můžete pokračovat v odesílání dat, musí operátor resetování zařízení. Když operátor odblokuje zařízení vrátí do stavu zřizování na původní hodnotu, **registrované** nebo **zřízená**.
 
-## <a name="get-a-connection-string"></a>Získání připojovacího řetězce
-
-Následující kroky popisují, jak získat připojovací řetězec pro zařízení:
-
-1. Vyberte **připojit** na **Device Explorer** stránky pro získání podrobností o připojení: **ID rozsahu**, **ID zařízení**, a **zařízení primární klíč**:
-
-    ![Podrobnosti připojení](media/concepts-connectivity/device-connect.png)
-
-1. Použití `dps-keygen` nástroj příkazového řádku k vygenerování připojovacího řetězce:  K instalaci [klíče nástroj Generátor](https://github.com/Azure/dps-keygen), spusťte následující příkaz:
-
-    ```cmd/sh
-    npm i -g dps-keygen
-    ```
-
-    Pokud chcete generovat připojovací řetězec, spusťte následující příkaz:
-
-    ```cmd/sh
-    dps-keygen -di:<device_id> -dk:<device_key> -si:<scope_id>
-    ```
-
 ## <a name="sdk-support"></a>Podpora v sadě SDK
 
 Nabídka sady SDK pro zařízení Azure nejjednodušší můžete implementovat kód vašeho zařízení. Sady SDK pro následující zařízení jsou k dispozici:
 
-- [Sada Azure IoT SDK pro jazyk C](https://github.com/azure/azure-iot-sdk-c)
+- [Azure IoT SDK pro C](https://github.com/azure/azure-iot-sdk-c)
 - [Azure IoT SDK pro Python](https://github.com/azure/azure-iot-sdk-python)
-- [Sada Azure IoT SDK pro Node.js](https://github.com/azure/azure-iot-sdk-node)
-- [Sada Azure IoT SDK pro Javu](https://github.com/azure/azure-iot-sdk-java)
+- [Azure IoT SDK pro Node.js](https://github.com/azure/azure-iot-sdk-node)
+- [Azure IoT SDK pro Javu](https://github.com/azure/azure-iot-sdk-java)
 - [Azure IoT SDK pro .NET](https://github.com/azure/azure-iot-sdk-csharp)
 
 Každé zařízení připojí pomocí jedinečných připojovací řetězec identifikující zařízení. Zařízení lze připojit pouze ke službě IoT hub, ve kterém je zaregistrovaný. Při vytváření skutečných zařízení v aplikaci Azure IoT Central aplikace generuje informace, které potřebujete k vytvoření připojovací řetězec pomocí `dps-keygen`.
@@ -218,7 +181,7 @@ Následující tabulka shrnuje, jak Azure IoT Central zařízení funkce mapují
 
 Další informace o použití sady SDK pro zařízení, najdete v jednom z následujících článků příklad kódu:
 
-- [Připojení obecného klienta Node.js k aplikaci Azure IoT Central](howto-connect-nodejs.md)
+- [Připojit obecného klienta Node.js do aplikace Azure IoT Central](howto-connect-nodejs.md)
 - [Připojte Raspberry Pi zařízení do aplikace Azure IoT Central](howto-connect-raspberry-pi-python.md)
 - [Připojte zařízení za kit DevDiv do aplikace Azure IoT Central](howto-connect-devkit.md).
 
@@ -243,6 +206,6 @@ Všechna data se vyměňují mezi zařízeními a vaše Azure IoT Central je za�
 Teď, když jste se dozvěděli o připojení zařízení v Azure IoT Central, tady jsou další navrhované kroky:
 
 - [Příprava a připojte zařízení za DevKit](howto-connect-devkit.md)
-- [Příprava a připojení Raspberry Pi](howto-connect-raspberry-pi-python.md)
-- [Připojení obecného klienta Node.js k aplikaci Azure IoT Central](howto-connect-nodejs.md)
-- [SDK PRO JAZYK C: Klientská sada SDK zařízení pro zřizování](https://github.com/Azure/azure-iot-sdk-c/blob/master/provisioning_client/devdoc/using_provisioning_client.md)
+- [Příprava a připojte Raspberry Pi](howto-connect-raspberry-pi-python.md)
+- [Připojit obecného klienta Node.js do aplikace Azure IoT Central](howto-connect-nodejs.md)
+- [C SDK: Klientská sada SDK zařízení pro zřizování](https://github.com/Azure/azure-iot-sdk-c/blob/master/provisioning_client/devdoc/using_provisioning_client.md)

@@ -24,6 +24,14 @@ sections:
               src: media/index/data-catalog.svg
             text: portál Azure
             href: 'https://docs.microsoft.com/azure/data-catalog/data-catalog-get-started'
+  - title: Podrobné kurzy
+    items:
+      - type: paragraph
+        text: 'Naučte se registrovat, hledat, anotovat, spravovat a odstraňovat prostředky v Azure Data Catalogu:'
+      - type: list
+        style: unordered
+        items:
+          - html: <a href="register-data-assets-tutorial">Registrace datových prostředků v Azure Data Catalogu</a>
   - title: Referenční informace
     items:
       - type: list

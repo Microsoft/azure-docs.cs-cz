@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 03/19/2017
 ms.author: magoedte
-ms.openlocfilehash: 294695cceaed39a66a57dcd3a165ca276b6801c6
-ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
+ms.openlocfilehash: f431613d9fa1020f523e03c90cbe31f4d42ccf42
+ms.sourcegitcommit: ef20235daa0eb98a468576899b590c0bc1a38394
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58757964"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59426218"
 ---
 #  <a name="agent-health-solution-in-azure-monitor"></a>Řešení Agent Health v monitorování Azure
 Řešení Agent Health v Azure vám pomůže pochopit, u všech agentů odesílajících sestavy přímo do pracovního prostoru Log Analytics ve službě Azure Monitor nebo skupinu pro správu System Center Operations Manager připojené k monitorování Azure, které jsou reagovat a odesílá se provozní data.  Můžete také sledovat, kolik agentů je nasazených a jak jsou geograficky distribuováni, a provádět další dotazy, abyste si udrželi přehled o distribuci agentů nasazených v Azure, dalších cloudových prostředích nebo místně.    
@@ -76,21 +76,21 @@ Vytvoří se záznam typu **Prezenční signál**.  Vlastnosti záznamů tohoto 
 
 | Vlastnost | Popis |
 | --- | --- |
-| Type | *Heartbeat* (Prezenční signál)|
-| Kategorie | Hodnota je *Direct Agent* (Přímý agent), *SCOM Agent* (Agent nástroje SCOM) nebo *SCOM Management Server* (Server pro správu nástroje SCOM).|
-| Počítač | Název počítače.|
-| OSType | Operační systém Windows nebo Linux.|
-| OSMajorVersion | Hlavní verze operačního systému.|
-| OSMinorVersion | Podverze operačního systému.|
-| Verze | Verze agenta log Analytics nebo agenta nástroje Operations Manager.|
-| SCAgentChannel | Hodnota je *Direct* (Přímý) nebo *SCManagementServer* (Server pro správu nástroje SCOM).|
-| IsGatewayInstalled | Pokud je nainstalovaná brána Log Analytics, je hodnota *true*, v opačném případě je hodnota *false*.|
-| ComputerIP | IP adresa počítače.|
-| RemoteIPCountry | Zeměpisné umístění, kde je počítač nasazený.|
-| ManagementGroupName | Název skupiny pro správu nástroje Operations Manager.|
-| SourceComputerId | Jedinečné ID počítače.|
-| RemoteIPLongitude | Zeměpisná délka zeměpisného umístění počítače.|
-| RemoteIPLatitude | Zeměpisná šířka zeměpisného umístění počítače.|
+| `Type` | *Prezenční signál*|
+| `Category` | Hodnota je *Direct Agent* (Přímý agent), *SCOM Agent* (Agent nástroje SCOM) nebo *SCOM Management Server* (Server pro správu nástroje SCOM).|
+| `Computer` | Název počítače.|
+| `OSType` | Operační systém Windows nebo Linux.|
+| `OSMajorVersion` | Hlavní verze operačního systému.|
+| `OSMinorVersion` | Podverze operačního systému.|
+| `Version` | Verze agenta log Analytics nebo agenta nástroje Operations Manager.|
+| `SCAgentChannel` | Hodnota je *Direct* (Přímý) nebo *SCManagementServer* (Server pro správu nástroje SCOM).|
+| `IsGatewayInstalled` | Pokud je nainstalovaná brána Log Analytics, je hodnota *true*, v opačném případě je hodnota *false*.|
+| `ComputerIP` | IP adresa počítače.|
+| `RemoteIPCountry` | Zeměpisné umístění, kde je počítač nasazený.|
+| `ManagementGroupName` | Název skupiny pro správu nástroje Operations Manager.|
+| `SourceComputerId` | Jedinečné ID počítače.|
+| `RemoteIPLongitude` | Zeměpisná délka zeměpisného umístění počítače.|
+| `RemoteIPLatitude` | Zeměpisná šířka zeměpisného umístění počítače.|
 
 Každý agent generování sestav použít server pro správu nástroje Operations Manager bude odesílat dva prezenční signály a hodnota vlastnosti SCAgentChannel bude zahrnovat **přímé** a **SCManagementServer** v závislosti na tom, co zdroje dat a monitorování řešení, které jste povolili ve vašem předplatném. Pokud si možná Vzpomínáte, data z řešení se buď odesílají přímo ze serveru pro správu Operations Manageru do Azure monitoru, nebo z důvodu objem dat shromážděných v agentovi, se odesílají přímo z agenta do Azure monitoru. U událostí prezenčního signálu, které mají hodnotu **SCManagementServer**, je hodnota ComputerIP IP adresou serveru pro správu, protože ten data ve skutečnosti odesílá.  U prezenčních signálů, které mají vlastnost SCAgentChannel nastavenou na hodnotu **Direct**, to je veřejná IP adresa agenta.  
 

@@ -8,12 +8,12 @@ ms.date: 01/31/2019
 ms.topic: tutorial
 ms.service: backup
 manager: carmonm
-ms.openlocfilehash: 91a0e1fd66861f8747c6c6da21f2c54ed40bd200
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: 139ce3fd81c14f9bf97e45c8aebb83d2fb1bbe10
+ms.sourcegitcommit: ef20235daa0eb98a468576899b590c0bc1a38394
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55492798"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59426609"
 ---
 # <a name="questions-about-backing-up-azure-files"></a>Dotazy týkající se zálohování Souborů Azure
 V tomto článku najdete odpovědi na běžné dotazy týkající se zálohování Souborů Azure. Některé odpovědi zahrnují odkazy na články obsahující komplexní informace. Otázky týkající se služby Azure Backup můžete také publikovat na [diskusním fóru](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazureonlinebackup).
@@ -38,9 +38,9 @@ Při pokusu o zálohování se výběrem účtu úložiště kvůli zjištění,
 Ano. Budete však muset [zastavit ochranu](backup-azure-files.md#stop-protecting-an-azure-file-share) v připojeném trezoru, [zrušit registraci](troubleshoot-azure-files.md#configuring-backup) tohoto účtu úložiště a pak nastavit ochranu v jiném trezoru.
 
 ### <a name="in-which-geos-can-i-back-up-azure-file-shares-br"></a>Ve kterých zeměpisných oblastech můžu zálohovat sdílené složky Azure? <br/>
-Zálohování sdílených složek Azure je aktuálně ve verzi Preview a je k dispozici pouze v následujících zeměpisných oblastech: 
-- Austrálie – východ (AE) 
-- Austrálie – jihovýchod (ASE) 
+Zálohování sdílených složek Azure je aktuálně ve verzi Preview a je k dispozici pouze v následujících zeměpisných oblastech:
+- Austrálie – východ (AE)
+- Austrálie – jihovýchod (ASE)
 - Brazílie – jih (BRS)
 - Kanada – střed (CNC)
 - Kanada – východ (CE)
@@ -50,17 +50,17 @@ Zálohování sdílených složek Azure je aktuálně ve verzi Preview a je k di
 - USA – východ 2 (EUS2)
 - Japonsko – východ (JPE)
 - Japonsko – západ (JPW)
-- Indie – střed (INC) 
+- Indie – střed (INC)
 - Indie – jih (INS)
 - Jižní Korea – střed (KRC)
 - Jižní Korea – jih (KRS)
-- Střed USA – sever (NCUS) 
-- Severní Evropa (NE) 
-- Střed USA – jih (SCUS) 
+- Střed USA – sever (NCUS)
+- Severní Evropa (NE)
+- Střed USA – jih (SCUS)
 - Jihovýchodní Asie (SEA)
-- Velká Británie – jih (UKS) 
-- Velká Británie – západ (UKW) 
-- Západní Evropa (WE) 
+- Velká Británie – jih (UKS)
+- Velká Británie – západ (UKW)
+- Západní Evropa (WE)
 - Západní USA (WUS)
 - Střed USA – západ (WCUS)
 - Západní USA 2 (WUS 2)
@@ -82,7 +82,7 @@ Ne. Všechny sdílené složky v účtu úložiště je možné chránit pouze v
 V jakémkoli okamžiku můžete mít až 200 snímků jedné sdílené složky. Toto omezení zahrnuje snímky pořízené službou Azure Backup podle definice ve vašich zásadách. Pokud po dosažení omezení začne zálohování selhávat, zajistěte úspěch budoucích zálohování odstraněním bodů obnovení na vyžádání.
 
 ### <a name="after-enabling-virtual-networks-on-my-storage-account-the-backup-of-file-shares-in-the-account-started-failing-why"></a>Po povolení virtuálních sítí v účtu úložiště začalo při zálohování sdílených složek v tomto účtu docházet k chybám. Proč?
-Zálohování sdílených složek Azure nepodporuje účty úložiště s povolenými virtuálními sítěmi. Zakažte v účtech úložiště virtuální sítě, abyste umožnili úspěšné zálohování. 
+Zálohování sdílených složek Azure nepodporuje účty úložiště s povolenými virtuálními sítěmi. Zakažte v účtech úložiště virtuální sítě, abyste umožnili úspěšné zálohování.
 
 ## <a name="restore"></a>Obnovení
 
@@ -91,6 +91,10 @@ Při odstraňování sdílené složky Azure se zobrazí seznam záloh, které s
 
 ### <a name="can-i-restore-from-backups-if-i-stopped-protection-on-an-azure-file-share-br"></a>Můžu provést obnovení ze zálohy po zastavení ochrany sdílené složky Azure? <br/>
 Ano. Pokud jste při zastavování ochrany zvolili možnost **Zachovat zálohovaná data**, můžete provést obnovení ze všech stávajících bodů obnovení.
+
+### <a name="what-happens-if-i-cancel-an-ongoing-restore-job"></a>Co se stane, když zruším úlohu probíhající obnovení?
+Pokud dojde ke zrušení úlohy aktuálnímu obnovení, zastaví proces obnovení a všechny soubory obnovit před zrušením, budete mít všechno pod nakonfigurované cílové (původního nebo alternativního umístění) bez vrácení všech změn. 
+
 
 ## <a name="manage-backup"></a>Správa zálohování
 
@@ -109,5 +113,5 @@ Pokud se pro sdílené složky použije nová zásada, plán a uchovávání se 
 ## <a name="see-also"></a>Další informace najdete v tématech
 Tyto informace se týkají pouze zálohování Souborů Azure. Další informace o dalších oblastech služby Azure Backup najdete v některém z těchto témat s nejčastějšími dotazy ke službě Backup:
 -  [Nejčastější dotazy k trezoru služby Recovery Services](backup-azure-backup-faq.md)
--  [Nejčastější dotazy k zálohování virtuálních počítačů Azure](backup-azure-vm-backup-faq.md)
+-  [Azure backup – nejčastější dotazy virtuálního počítače](backup-azure-vm-backup-faq.md)
 -  [Nejčastější dotazy k agentovi Azure Backup](backup-azure-file-folder-backup-faq.md)

@@ -28,12 +28,12 @@ ms.author:
 - minale
 - btalb
 - prachank
-ms.openlocfilehash: 60424edc8e617aca55777d019e6a0f9409f7ca28
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: 1e8605a41cbe610c971b891309b2149d221b8b27
+ms.sourcegitcommit: ef20235daa0eb98a468576899b590c0bc1a38394
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59276520"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59426439"
 ---
 # <a name="tcpip-performance-tuning-for-azure-vms"></a>Pro virtuální počítače Azure pro optimalizaci výkonu protokolu TCP/IP
 
@@ -85,7 +85,7 @@ Všimněte si, že zásobníku ve virtuální síti není ze své podstaty neefe
 
 #### <a name="azure-and-fragmentation"></a>Azure a fragmentace
 
-Zásobník virtuální sítě je nastavený vyřadit "mimo pořadí fragmenty," tedy fragmentované pakety, které není v původním fragmentované pořadí doručení. Tyto pakety se zahodí hlavně kvůli jsme oznámili v listopadu 2018 volá FragmentStack ohrožení zabezpečení sítě.
+Zásobník virtuální sítě je nastavený vyřadit "mimo pořadí fragmenty," tedy fragmentované pakety, které není v původním fragmentované pořadí doručení. Tyto pakety se zahodí hlavně kvůli jsme oznámili v listopadu 2018 volá FragmentSmack ohrožení zabezpečení sítě.
 
 FragmentSmack je vadu způsobem linuxového jádra zpracovat nové sestavení fragmentaci paketů protokolů IPv4 a IPv6. Vzdálený útočník použít tuto chybu aktivační událost nákladné fragment nového sestavení operací, které mohou vést k vyšší využití procesoru a odepření služby v cílovém systému.
 

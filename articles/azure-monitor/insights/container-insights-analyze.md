@@ -11,14 +11,14 @@ ms.service: azure-monitor
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 02/08/2019
+ms.date: 04/09/2019
 ms.author: magoedte
-ms.openlocfilehash: 5a72c0539cabec3bf4168280c85a2afb92569b25
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.openlocfilehash: 3261c2389a9706537366bcd60e00517bbcfb5f48
+ms.sourcegitcommit: ef20235daa0eb98a468576899b590c0bc1a38394
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56233996"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59426388"
 ---
 # <a name="understand-aks-cluster-performance-with-azure-monitor-for-containers"></a>Porozumět výkonu cluster AKS pomocí Azure monitoru pro kontejnery 
 Díky Azure monitoru pro kontejnery můžete použít grafy výkonu a stavu ke sledování těchto úloh své clustery Azure Kubernetes Service (AKS) za dvou hledisek, přímo z clusteru AKS nebo všechny AKS clusterů v rámci předplatného Azure Monitorování. Zobrazení služby Azure Container Instances (ACI) je také možné, při sledování konkrétní clusteru AKS.
@@ -100,7 +100,34 @@ Graf výkonu zobrazí čtyři metriky výkonu:
 
 Klávesy šipka vlevo/vpravo můžete cyklicky procházet každý datový bod na grafu a šipka nahoru/dolů k cyklování skrze percentilu řádky.
 
-Když přejdete na **uzly**, **řadiče**, a **kontejnery** kartu, automaticky zobrazí na pravé straně stránky se podokno vlastností.  Zobrazuje vlastnosti položky vybrané, včetně popisků definujete uspořádat objekty Kubernetes. Klikněte na **>>** propojit v podokně view\hide podokna.  
+Azure Monitor pro kontejnery také podporuje Azure Monitor [Průzkumníka metrik](../platform/metrics-getting-started.md), kde můžete vytvářet vlastní grafy diagram, korelovat a prozkoumat trendy a připínat na řídicí panely. Z Průzkumníka metrik, můžete použít také kritéria jste nastavili jako základ pro vizualizovat metriky [metriky na základě pravidel upozornění](../platform/alerts-metric.md).  
+
+## <a name="view-container-metrics-in-metrics-explorer"></a>Kontejner zobrazení metrik v Průzkumníku metrik
+V Průzkumníku metrik můžete zobrazit agregované uzlu a pod metriky využití ze služby Azure Monitor pro kontejnery. Následující tabulka shrnuje údaje, které vám pomohou pochopit, jak vizualizovat metriky kontejnerů pomocí grafy metrik.
+
+|Obor názvů | Metrika |
+|----------|--------|
+| insights.container/nodes | |
+| | cpuUsageMillicores |
+| | cpuUsagePercentage |
+| | memoryRssBytes |
+| | memoryRssPercentage |
+| | memoryWorkingSetBytes |
+| | memoryWorkingSetPercentage |
+| | nodesCount |
+| insights.container/pods | |
+| | podCount |
+
+Můžete použít [rozdělení](../platform/metrics-charts.md#apply-splitting-to-a-chart) metriky pro zobrazení podle dimenzí a vizualizaci různých segmentů porovnání k sobě navzájem. Pro uzel, můžete rozdělit graf *hostitele* dimenze, a z podu můžete segmentovat ho pomocí následujících dimenzí:
+
+* Kontrolér
+* Obor názvů Kubernetes
+* Node
+* Fáze
+
+## <a name="analyze-nodes-controllers-and-container-health"></a>Analýza uzly, kontrolerů a stavu kontejneru
+
+Když přejdete na **uzly**, **řadiče**, a **kontejnery** kartu, automaticky zobrazí na pravé straně stránky se podokno vlastností.  Zobrazuje vlastnosti položky vybraná, včetně popisků definujete uspořádat objekty Kubernetes. Klikněte na **>>** propojit v podokně view\hide podokna.  
 
 ![Podokno vlastností perspektivy příklad Kubernetes](./media/container-insights-analyze/perspectives-preview-pane-01.png)
 
@@ -133,7 +160,7 @@ Ve výchozím nastavení, údaje o výkonu podle posledních 6 hodin, ale může
 
 Když najedete myší pruhový graf pod položkou **Trend** sloupce, každý panel ukazuje využití procesoru nebo paměti, podle toho, která je vybraná Metrika ukázka lhůtě 15 minut. Když vyberete graf trendu pomocí klávesnice, vám pomůže kláves Alt + Page Up nebo Alt + PageDown cyklicky procházet všechny jednotlivě a získat stejné informace, jako byste to zvládli mouseover.
 
-![Trend panelu příklad graf při přechodu myší](./media/container-insights-analyze/containers-metric-trend-bar-01.png)    
+![Trend pruhový graf při přechodu myší nad příklad](./media/container-insights-analyze/containers-metric-trend-bar-01.png)    
 
 V následujícím příkladu, mějte na paměti pro první v seznamu - uzel *aks-nodepool1 -*, hodnota **kontejnery** je 9, což je kumulativní počet kontejnerů.
 
@@ -176,10 +203,10 @@ Informace, které se zobrazí, když zobrazujete řadiče je popsaný v následu
 |--------|-------------|
 | Název | Název kontroleru.|
 | Status | Souhrn stavu kontejnerů po dokončení spuštění se stavem, jako například *OK*, *ukončeno*, *neúspěšné* *Zastaveno*, nebo *Pozastaveno*. Pokud je kontejner spuštěný, ale stav byl buď není správně zobrazeny nebo nebyl vyzvednou agenta a neodpověděl více než 30 minut, stav je *neznámý*. V následující tabulce jsou uvedeny další podrobnosti o ikona stavu.|
-| AVG&nbsp;%, Min&nbsp;% Max&nbsp;%, 50&nbsp;%, 90. percentil&nbsp;% | Souhrn průměrem průměrnou procentuální hodnotu Každá entita pro vybranou metriku a percentil. |
-| Avg, Min, Max, 50, 90  | Souhrn průměrné využití procesoru millicore nebo paměti výkon kontejneru pro vybrané percentil. Průměrné hodnoty se měří z procesoru nebo paměti limitu nastaveného pro pod. |
+| AVG&nbsp;%, Min&nbsp;% Max&nbsp;%, 50&nbsp;%, 90. percentil&nbsp;% | Souhrnné průměrem průměrnou procentuální hodnotu Každá entita pro vybranou metriku a percentil. |
+| Avg, Min, Max, 50, 90  | Shrnutí průměrné využití procesoru millicore nebo paměti výkon kontejneru pro vybrané percentil. Průměrné hodnoty se měří z procesoru nebo paměti limitu nastaveného pro pod. |
 | Containers | Celkový počet kontejnerů pro kontroler nebo pod. |
-| Restartování | Souhrn počtu restartování z kontejnerů. |
+| Restartuje se | Shrnutí počtu restartování z kontejnerů. |
 | Doba provozu | Představuje čas od spuštění kontejneru. |
 | Node | Pouze pro kontejnery a tyto pody. Ukazuje kontroler, který je umístěný. | 
 | Trend Avg&nbsp;%, Min&nbsp;% Max&nbsp;%, 50&nbsp;%, 90. percentil&nbsp;%| Pruhový graf trendu představuje metrika průměrné percentilu kontroleru. |

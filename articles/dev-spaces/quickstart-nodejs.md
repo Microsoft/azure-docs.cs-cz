@@ -11,12 +11,12 @@ ms.topic: quickstart
 description: Rychlý vývoj Kubernetes s kontejnery, mikroslužby a Node.js v Azure
 keywords: Docker, Kubernetes, Azure, AKS, službě Azure Kubernetes, kontejnery, Helm, služby sítě, směrování sítě služby, kubectl, k8s
 manager: jeconnoc
-ms.openlocfilehash: b95090cf59f0ee84e3a81bf87631df54826c050e
-ms.sourcegitcommit: 72cc94d92928c0354d9671172979759922865615
+ms.openlocfilehash: bc18a06405c0fe620136642a409df576c8e8d8b3
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58418563"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59361709"
 ---
 # <a name="quickstart-develop-with-nodejs-on-kubernetes-using-azure-dev-spaces"></a>Rychlý start: Vývoj s využitím Node.js v Kubernetes pomocí Azure Dev mezery
 
@@ -210,4 +210,4 @@ az group delete --name MyResourceGroup --yes --no-wait
 Zjistěte, jak prostory vývoj Azure vám pomůže vytvořit složitější aplikace napříč více kontejnery, a jak můžete zjednodušit spolupráce na vývoji práce s různými verzemi nebo větve kódu v různých oborech.
 
 > [!div class="nextstepaction"]
-> [Práce s více kontejnery a týmový vývoj](multi-service-nodejs.md)
+> [Práce s několika kontejnery a vývoj v týmu](multi-service-nodejs.md)

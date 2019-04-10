@@ -12,12 +12,12 @@ ms.author: danil
 ms.reviewer: jrasnik, carlrab
 manager: craigg
 ms.date: 03/12/2019
-ms.openlocfilehash: 3004f073100b45de25655fc6dee6a96c90612c46
-ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
+ms.openlocfilehash: f023ab4fe55cf180ac1e3f0634856a528c911746
+ms.sourcegitcommit: ef20235daa0eb98a468576899b590c0bc1a38394
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58905199"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59426482"
 ---
 # <a name="azure-sql-database-metrics-and-diagnostics-logging"></a>Azure SQL Database metrik a protokolování diagnostiky
 
@@ -77,7 +77,7 @@ Můžete nastavit databází Azure SQL a instance databáze shromažďovat násl
 > Elastické fondy a spravované instance mají svůj vlastní samostatný diagnostickou telemetrii z databází, které obsahují. To je důležité si uvědomit telemetrická data diagnostiky je nakonfigurované samostatně pro každý z těchto prostředků, jak je uvedeno níže.
 
 > [!NOTE]
-> Protokoly auditu zabezpečení a SQLSecurityAuditEvents není možné z databáze nastavení diagnostiky. Pokud chcete povolit streamování protokolů auditu, naleznete v tématu [nastavení auditování databáze](sql-database-auditing.md#subheading-2), a [auditování protokoly v protokolech Azure Monitor a Azure Event Hubs](https://blogs.msdn.microsoft.com/sqlsecurity/2018/09/13/sql-audit-logs-in-azure-log-analytics-and-azure-event-hubs/).
+> Protokoly auditu zabezpečení a SQLSecurityAuditEvents není možné z databáze nastavení diagnostiky (i když se zobrazují na obrazovce). Pokud chcete povolit streamování protokolů auditu, naleznete v tématu [nastavení auditování databáze](sql-database-auditing.md#subheading-2), a [auditování protokoly v protokolech Azure Monitor a Azure Event Hubs](https://techcommunity.microsoft.com/t5/Azure-SQL-Database/SQL-Audit-logs-in-Azure-Log-Analytics-and-Azure-Event-Hubs/ba-p/386242).
 
 ## <a name="azure-portal"></a>portál Azure
 
@@ -141,7 +141,7 @@ Pokud chcete povolit streamování telemetrická data diagnostiky pro jeden, neb
 1. Tento postup opakujte pro každou databázi, kterou chcete monitorovat.
 
 > [!NOTE]
-> Protokoly auditu zabezpečení a SQLSecurityAuditEvents není možné z databáze nastavení diagnostiky. Pokud chcete povolit streamování protokolů auditu, naleznete v tématu [nastavení auditování databáze](sql-database-auditing.md#subheading-2), a [auditování protokoly v protokolech Azure Monitor a Azure Event Hubs](https://blogs.msdn.microsoft.com/sqlsecurity/2018/09/13/sql-audit-logs-in-azure-log-analytics-and-azure-event-hubs/).
+> Protokoly auditu zabezpečení a SQLSecurityAuditEvents není možné z databáze nastavení diagnostiky (i když se zobrazují na obrazovce). Pokud chcete povolit streamování protokolů auditu, naleznete v tématu [nastavení auditování databáze](sql-database-auditing.md#subheading-2), a [auditování protokoly v protokolech Azure Monitor a Azure Event Hubs](https://techcommunity.microsoft.com/t5/Azure-SQL-Database/SQL-Audit-logs-in-Azure-Log-Analytics-and-Azure-Event-Hubs/ba-p/386242).
 > [!TIP]
 > Tento postup opakujte pro každý Azure SQL Database, kterou chcete monitorovat.
 

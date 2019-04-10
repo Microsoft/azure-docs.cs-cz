@@ -1,7 +1,7 @@
 ---
 title: Nastavení vývojového prostředí Pythonu
 titleSuffix: Azure Machine Learning service
-description: Zjistěte, jak nakonfigurovat prostředí pro vývoj, při práci se službou Azure Machine Learning. V tomto článku se dozvíte, jak používat prostředí Conda, vytvořit konfigurační soubory a konfigurace serveru založené na cloudu Poznámkový blok, poznámkové bloky Jupyter, Azure Databricks, poznámkových bloků Azure, Integrovaná vývojová prostředí, editory kódu a virtuální počítač pro datové vědy.
+description: Zjistěte, jak nakonfigurovat prostředí pro vývoj, při práci se službou Azure Machine Learning. V tomto článku se dozvíte, jak používat prostředí Conda, vytvořit konfigurační soubory a konfigurace poznámkové bloky Jupyter, poznámkových bloků Azure, Azure Databricks, Integrovaná vývojová prostředí, editory kódu a virtuální počítač pro datové vědy.
 services: machine-learning
 author: rastala
 ms.author: roastala
@@ -11,12 +11,12 @@ ms.reviewer: larryfr
 ms.topic: conceptual
 ms.date: 02/24/2019
 ms.custom: seodec18
-ms.openlocfilehash: 4aabf15478a6f8e688ea591832ca325f53144df8
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
-ms.translationtype: MT
+ms.openlocfilehash: 4ca64071d068f95bf3de2dc9730629b5f475d92e
+ms.sourcegitcommit: ef20235daa0eb98a468576899b590c0bc1a38394
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59263192"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59426371"
 ---
 # <a name="configure-a-development-environment-for-azure-machine-learning"></a>Konfigurace prostředí pro vývoj pro Azure Machine Learning
 
@@ -26,7 +26,7 @@ Jediným požadavkem pro vaše vývojové prostředí je Python 3, Anaconda (pro
 
 Tento článek se zaměřuje na tyto prostředí a nástroje:
 
-* Vlastní [server poznámkového bloku založené na cloudu](#workstation): Pomocí výpočetních prostředků v pracovní stanici můžete spouštět poznámkové bloky Jupyter. Je nejjednodušší způsob, jak začít, protože sada SDK Azure Machine Learning je už nainstalovaný.
+* Poznámkových bloků Azure: Poznámkové bloky Jupyter služba, která je hostovaná v cloudu Azure. Je nejjednodušší způsob, jak začít, protože sada SDK Azure Machine Learning je už nainstalovaný.
 
 * [Virtuální počítač pro datové vědy (DSVM)](#dsvm): Předem nakonfigurované vývoje služby experimentování ve službě prostředí nebo v cloudu Azure, která je navržená pro datové vědy práce a mohou být nasazeny na procesoru pouze instance virtuálních počítačů nebo instancí založený na grafickém procesoru. Python 3, Conda, poznámkové bloky Jupyter a sady SDK Azure Machine Learning jsou již nainstalovány. Virtuální počítač se dodává s oblíbenými strojové učení a obsáhlý learning architektur, nástrojů a editory pro vývoj řešení strojového učení. To je pravděpodobně nejkompletnější vývojové prostředí pro strojové učení na platformě Azure.
 
@@ -44,7 +44,7 @@ Pokud už máte prostředí Python 3, nebo chcete jenom základní kroky pro ins
 
 - Pracovní prostor služby Azure Machine Learning. Pokud chcete vytvořit pracovní prostor, najdete v článku [vytvořit pracovní prostor služby Azure Machine Learning](setup-create-workspace.md).
 
-Pracovní prostor je všechno, co potřebujete, abyste mohli začít s vlastním [server poznámkového bloku založené na cloudu](#workstation), [DSVM](#dsvm), [Azure Databricks](#aml-databricks), nebo [poznámkových bloků Azure](#aznotebooks).
+Pracovní prostor je všechno, co potřebujete, abyste mohli začít s vaší [poznámkových bloků Azure](#aznotebooks), [DSVM](#dsvm), nebo [Azure Databricks](#aml-databricks).
 
 Chcete-li nainstalovat prostředí sady SDK pro vaše [místního počítače](#local), [aplikace Jupyter Notebook server](#jupyter) nebo [Visual Studio Code](#vscode) budete také potřebovat:
 
@@ -57,15 +57,16 @@ Chcete-li nainstalovat prostředí sady SDK pro vaše [místního počítače](#
 
 - Na Windows musíte příkazový řádek nebo Anaconda řádek (nainstalovaných Anaconda a Miniconda).
 
-## <a id="workstation"></a>Váš vlastní server založené na cloudu poznámkového bloku
+## <a id="aznotebooks"></a>Poznámkových bloků Azure
 
-Vytvoření poznámkového bloku serveru ve vašem pracovním prostoru Azure Machine Learning pro nejjednodušší způsob, jak začít s vývojem pro Azure Machine Learning.
+[Azure Notebooks](https://notebooks.azure.com) (preview) je interaktivní vývojové prostředí v cloudu Azure. Je snadný způsob, jak začít s vývojem pro Azure Machine Learning.
 
 * Sada SDK Azure Machine Learning je již nainstalována.
-* Prostředí pracovní stanice je automaticky nakonfigurované pro práci s pracovním prostorem.
-* Prostředek je k dispozici a je možné spravovat v pracovním prostoru
+* Po vytvoříte pracovní prostor služby Azure Machine Learning na webu Azure Portal, můžete kliknout na tlačítko pro automatickou konfiguraci prostředí Azure poznámkového bloku pro práci s pracovním prostorem.
 
-Vývoj s využitím serveru založené na cloudu Poznámkový blok, najdete v článku [Začínáme se službou Azure Machine Learning](quickstart-run-cloud-notebook.md).
+Použití [webu Azure portal](https://portal.azure.com) Začínáme s Azure poznámkových bloků.  Otevřete pracovní prostor a od **přehled** vyberte **začít pracovat v poznámkových bloků Azure**.
+
+Ve výchozím nastavení používá vrstvy bezplatná služba, která je omezena na 4GB paměti a 1GB dat poznámkových bloků Azure. Tato omezení můžete, ale odebrat připojením k instanci virtuálního počítače pro datové vědy do projektu poznámkových bloků Azure. Další informace najdete v tématu [spravovat a nakonfigurovat projekty poznámkových bloků Azure – výpočetní vrstva](/azure/notebooks/configure-manage-azure-notebooks-projects#compute-tier).    
 
 
 ## <a id="dsvm"></a>Virtuální počítač pro datové vědy
@@ -380,16 +381,6 @@ Konfigurační soubor můžete vytvořit třemi způsoby:
 
     Tento kód zapíše konfigurační soubor tak, *aml_config/config.json* souboru.
 
-## <a id="aznotebooks"></a>Poznámkových bloků Azure
-
-[Azure Notebooks](https://notebooks.azure.com) (preview) je interaktivní vývojové prostředí v cloudu Azure. Je snadný způsob, jak začít s vývojem pro Azure Machine Learning.
-
-* Sada SDK Azure Machine Learning je již nainstalována.
-* Po vytvoříte pracovní prostor služby Azure Machine Learning na webu Azure Portal, můžete kliknout na tlačítko pro automatickou konfiguraci prostředí Azure poznámkového bloku pro práci s pracovním prostorem.
-
-Použití [webu Azure portal](https://portal.azure.com) Začínáme s Azure poznámkových bloků.  Otevřete pracovní prostor a od **přehled** vyberte **začít pracovat v poznámkových bloků Azure**.
-
-Ve výchozím nastavení používá vrstvy bezplatná služba, která je omezena na 4GB paměti a 1GB dat poznámkových bloků Azure. Tato omezení můžete, ale odebrat připojením k instanci virtuálního počítače pro datové vědy do projektu poznámkových bloků Azure. Další informace najdete v tématu [spravovat a nakonfigurovat projekty poznámkových bloků Azure – výpočetní vrstva](/azure/notebooks/configure-manage-azure-notebooks-projects#compute-tier).
 
 ## <a name="next-steps"></a>Další postup
 

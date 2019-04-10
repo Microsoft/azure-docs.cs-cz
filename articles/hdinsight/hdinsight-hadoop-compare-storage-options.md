@@ -1,19 +1,18 @@
 ---
 title: Porovnání možností úložiště pro použití s clustery Azure HDInsight
 description: Poskytuje přehled o typech úložiště a jak fungují s Azure HDInsight.
-services: hdinsight,storage
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 02/04/2019
-ms.openlocfilehash: fa08d2fb2185bd4b6cd0e2e9d20e1c44a4a35eae
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.date: 04/08/2019
+ms.openlocfilehash: ac1a0e4eadc0b84fdd2a170c2e0f6e0a2f2af3a4
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58101478"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59361779"
 ---
 # <a name="compare-storage-options-for-use-with-azure-hdinsight-clusters"></a>Porovnání možností úložiště pro použití s clustery Azure HDInsight
 
@@ -119,6 +118,8 @@ Další informace najdete v tématu [použít identifikátor URI služby Azure D
 Azure Storage je řešení robustní úložiště pro obecné účely, který se bez problémů integruje s HDInsight. HDInsight může jako výchozí systém souborů pro cluster používat kontejner objektů blob ve službě Azure Storage. Pomocí rozhraní HDFS celá sada komponent v HDInsight můžete pracovat přímo s strukturovanými i nestrukturovanými daty uloženými jako objekty BLOB.
 
 Doporučujeme použít samostatné úložiště kontejnery pro výchozí úložiště clusteru a podniková data, k izolaci HDInsight protokoly a dočasné soubory z obchodní data. Doporučujeme také odstranit výchozí kontejner objektu blob, který obsahuje aplikace a systémové protokoly, po každém použití, abyste snížili náklady na úložiště. Než odstraníte kontejner, nezapomeňte tyto protokoly načíst.
+
+Pokud se rozhodnete k zabezpečení vašeho účtu úložiště pomocí **virtuální sítí a bran firewall** omezení **vybrané sítě**, je potřeba povolit výjimku **Povolit důvěryhodné Microsoft služby...**  tak, aby HDInsight můžete přístup k vašemu účtu úložiště.
 
 ### <a name="hdinsight-storage-architecture"></a>Architektura úložiště HDInsight
 
