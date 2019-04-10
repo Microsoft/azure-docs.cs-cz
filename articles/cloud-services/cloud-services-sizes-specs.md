@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 07/18/2017
 ms.author: jeconnoc
-ms.openlocfilehash: 5c4ad5c200bd2e49f3c472d82ad030c6a8f2478d
-ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
+ms.openlocfilehash: 6f3177c37a2db03b8821e3e4f5b68c8b1315a016
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/04/2019
-ms.locfileid: "58918259"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59358253"
 ---
 # <a name="sizes-for-cloud-services"></a>Velikosti pro Cloud Services
 Toto téma popisuje dostupné velikosti a možnosti pro instance rolí cloudové služby (webové role a role pracovního procesu). Také poskytuje důležité informace o nasazení je potřeba vědět při plánování použití těchto prostředků. Jednotlivé velikosti má ID, kam si ukládáte váš [definiční soubor služby](cloud-services-model-and-package.md#csdef). Ceny platné pro jednotlivé velikosti jsou k dispozici na [ceny Cloud Services](https://azure.microsoft.com/pricing/details/cloud-services/) stránky.
@@ -205,7 +205,7 @@ Tady je příklad pro nastavení velikosti role bude Standard_D2 instance webov�
 
 ## <a name="changing-the-size-of-an-existing-role"></a>Změna velikosti existující roli
 
-Jako povaze změny úloh nebo nové velikosti virtuálních počítačů, které jsou k dispozici můžete změnit velikost role. Uděláte to tak, změna velikosti virtuálního počítače v souboru definice služby (jak je uvedeno výše), nové zabalení cloudové služby a jeho nasazení. Není možné změnit velikost virtuálního počítače přímo z portálu nebo Powershellu.
+Jako povaze změny úloh nebo nové velikosti virtuálních počítačů, které jsou k dispozici můžete změnit velikost role. Uděláte to tak, změna velikosti virtuálního počítače v souboru definice služby (jak je uvedeno výše), nové zabalení cloudové služby a jeho nasazení.
 
 >[!TIP]
 > Můžete chtít použít různé velikosti virtuálních počítačů pro vaši roli v různých prostředích (např.) produkční vs test). Můžete provést například jde vytvořit více definice služby (.csdef) soubory v projektu, pak vytvořte jinou cloudovou službu balíčky pro každé prostředí během vašeho automatizované sestavení pomocí nástroje CSPack. Další informace o prvcích balíček cloudové služby a jak je lze vytvořit, naleznete v tématu [modelu co je cloud services a jak ho balíček?](cloud-services-model-and-package.md)

@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/26/2019
 ms.author: bwren
-ms.openlocfilehash: 1027398a1a7f790adedf6c7eebed44a8db501b8a
-ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
+ms.openlocfilehash: 2646941e2384acf6d303615f564b65d616931180
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58905031"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59358873"
 ---
 # <a name="metrics-in-azure-monitor"></a>Metriky na platformě Azure Monitor
 
@@ -39,7 +39,7 @@ Následující tabulka uvádí různé způsoby, které můžete data metriky ve
 | Výstrahy | Konfigurace [metriky pravidlo upozornění](alerts-metric.md) , který odešle oznámení, nebo má [automatizované akce](action-groups.md) když hodnota metriky překročí mezní hodnotu. |
 | Automatizace |  Použití [automatického škálování](autoscale-overview.md) zvýšení nebo snížení prostředků na základě metrik hodnoty překročení prahové hodnoty. |
 | Export | [Metriky směrovat protokoly](diagnostic-logs-stream-log-store.md) k analýze dat v Azure Monitor Metrics spolu s daty v protokoly Azure monitoru a k uložení hodnoty metrik déle než 93 dní.<br>Stream metrik [centra událostí](stream-monitoring-data-event-hubs.md) směrovat do externích systémů. |
-| Načíst | Přístup k hodnoty metrik z příkazového řádku pomocí [rutin prostředí PowerShell](https://docs.microsoft.com/powershell/module/az.applicationinsights)<br>Přístup k hodnoty metrik z vlastní aplikace s využitím [rozhraní REST API](rest-api-walkthrough.md).<br>Přístup k hodnoty metrik z příkazového řádku pomocí [CLI](/azure/monitor/metrics). |
+| Načíst | Přístup k hodnoty metrik z příkazového řádku pomocí [rutin prostředí PowerShell](https://docs.microsoft.com/powershell/module/az.applicationinsights)<br>Přístup k hodnoty metrik z vlastní aplikace s využitím [rozhraní REST API](rest-api-walkthrough.md).<br>Přístup k hodnoty metrik z příkazového řádku pomocí [CLI](/cli/azure/monitor/metrics). |
 | Archiv | [Archiv](..//learn/tutorial-archive-data.md) historii výkon nebo stav prostředku pro dodržování předpisů, auditování, nebo v režimu offline pro účely vykazování. |
 
 

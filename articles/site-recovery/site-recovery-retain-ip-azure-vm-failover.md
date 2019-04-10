@@ -2,16 +2,16 @@
 title: Zachování IP adresy během převzetí služeb při selhání virtuálního počítače Azure pomocí Azure Site Recovery | Dokumentace Microsoftu
 description: Popisuje, jak zachovat IP adresy po převzetí služeb při selhání virtuálních počítačů Azure pro zotavení po havárii do sekundární oblasti Azure Site Recovery
 ms.service: site-recovery
-ms.date: 11/27/2018
+ms.date: 4/9/2019
 author: mayurigupta13
 ms.topic: conceptual
 ms.author: mayg
-ms.openlocfilehash: aefb0684ea065841824ad27d1105ef309418c6b9
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 618d60417aa6b582eaef94bf75dcf16c74750f83
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58090742"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59357887"
 ---
 # <a name="retain-ip-addresses-during-failover"></a>Zachování IP adresy během převzetí služeb při selhání
 
@@ -49,7 +49,7 @@ Tady je architektura před převzetí služeb při selhání.
         - Jihovýchodní Asie má virtuální síť (**virtuální sítě pro zotavení**) stejný jako **zdrojová virtuální síť**.
         - Další virtuální síť má jihovýchodní Asie (**virtuální sítě Azure**) s 10.2.0.0/16 prostor adres.
         - **Virtuální síť Azure** obsahuje podsíť (**podsítě 4**) s 10.2.4.0/24 prostor adres.
-        - Řadič etc uzlech replik pro SQL Server AlwaysOn, jsou umístěny v **podsítě 4**.
+        - Uzlech replik pro SQL Server AlwaysOn, řadič domény atd. jsou umístěny v **podsítě 4**.
     - **Zdrojové virtuální sítě** a **virtuální sítě Azure** připojeni pomocí připojení site-to-site VPN.
     - **Virtuální sítě pro zotavení** není spojena s jinou virtuální síť.
     - **Společnosti A** přiřadí/ověří cílové IP adresy pro replikované položky. Cílová IP adresa je stejná jako zdrojová IP adresa pro každý virtuální počítač.
@@ -92,7 +92,7 @@ Před převzetí služeb při selhání architektura vypadá takto:
 - (Cíl) sekundární oblasti Azure jihovýchodní Asie – obnovení virtuální sítě má jihovýchodní Asie (**1 virtuální sítě pro zotavení** a **2 virtuální sítě pro zotavení**), které jsou stejné jako **zdrojové virtuální sítě 1** a **Zdroje Vnet2**.
         - **Virtuální síť pro obnovení 1** a **2 virtuální sítě pro zotavení** mají dvě podsítě, které odpovídají podsítě v **zdrojové virtuální sítě 1** a **zdrojové virtuální sítě 2** -jihovýchodní Asie má Další virtuální síť (**virtuální sítě Azure**) s 10.3.0.0/16 prostor adres.
         - **Virtuální síť Azure** obsahuje podsíť (**podsítě 4**) s 10.3.4.0/24 prostor adres.
-        -Replika uzly pro SQL Server AlwaysOn, řadič etc jsou umístěny v **podsítě 4**.
+        -Replika uzly pro SQL Server AlwaysOn, řadič domény atd. jsou umístěny v **podsítě 4**.
 - Existuje několik připojení site-to-site VPN: 
     - **Zdrojové virtuální sítě 1** a **virtuální síť Azure**
     - **Zdroj Vnet2** a **virtuální síť Azure**

@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.date: 04/08/2019
 ms.topic: conceptual
 ms.author: raynew
-ms.openlocfilehash: c4e87e365e11084a7088522f64abef238d04b715
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: ce4a6ab24aaa5ed693f8d64782fb025a2ca9ce30
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59271480"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59357989"
 ---
 # <a name="common-questions---hyper-v-to-azure-disaster-recovery"></a>Časté otázky – Hyper-V do Azure zotavení po havárii
 
@@ -29,6 +29,31 @@ Během replikace data se replikují do služby Azure storage a neplatíte žádn
 
 ## <a name="azure"></a>Azure
 
+### <a name="what-do-i-need-in-hyper-v-to-orchestrate-replication-with-site-recovery"></a>Co potřebuji v Hyper-V můžete orchestrovat replikaci pomocí Site Recovery?
+
+U hostitelských serverů Hyper-V se vaše potřeby odvíjí od scénáře nasazení. Požadavky pro Hyper-V si můžete projít v těchto tématech:
+
+* [Replikace virtuálních počítačů Hyper-V (bez VMM) do Azure](site-recovery-hyper-v-site-to-azure.md)
+* [Replikace virtuálních počítačů Hyper-V (s VMM) do Azure](site-recovery-vmm-to-azure.md)
+* [Replikace virtuálních počítačů Hyper-V do sekundárního datacentra](site-recovery-vmm-to-vmm.md)
+* Pokud provádíte replikaci do sekundárního datacentra, přečtěte si informace o [podporovaných hostovaných operačních systémech pro virtuální počítače Hyper-V](https://technet.microsoft.com/library/mt126277.aspx).
+* Pokud replikujete do Azure, Site Recovery podporuje všechny hostované operační systémy, které jsou [nepodporuje v Azure](https://technet.microsoft.com/library/cc794868%28v=ws.10%29.aspx).
+
+### <a name="can-i-protect-vms-when-hyper-v-is-running-on-a-client-operating-system"></a>Můžete chránit virtuální počítače, pokud Hyper-V běží na operačním systému klienta?
+Ne, virtuální počítače se musí nacházet na hostitelském serveru Hyper-V, který běží na podporovaném serveru s Windows. Pokud potřebujete ochránit klientský počítač, můžete jej replikovat jako fyzický počítač na [Azure](site-recovery-vmware-to-azure.md) nebo [sekundárního datacentra](site-recovery-vmware-to-vmware.md).
+
+### <a name="do-hyper-v-hosts-need-to-be-in-vmm-clouds"></a>Potřeba hostitele Hyper-V v cloudech VMM?
+Pokud chcete replikovat do sekundárního datacentra, virtuální počítače Hyper-V musí být na Hyper-V hostuje servery umístěné v cloudu VMM. Pokud chcete replikovat do Azure, můžete s nebo bez něj cloudech VMM replikovat virtuální počítače. [Přečtěte si další](tutorial-hyper-v-to-azure.md) o replikaci technologie Hyper-V do Azure.
+
+
+### <a name="can-i-replicate-hyper-v-generation-2-virtual-machines-to-azure"></a>Mohu do Azure replikovat virtuální počítače Hyper-V generace 2?
+Ano. Site Recovery převede z generace 2 na generaci 1 během převzetí služeb při selhání. Při navrácení služeb po obnovení se počítač převede zpět na generaci 2. [Další informace](https://azure.microsoft.com/blog/2015/04/28/disaster-recovery-to-azure-enhanced-and-were-listening/).
+
+
+### <a name="can-i-deploy-site-recovery-with-vmm-if-i-only-have-one-vmm-server"></a>Mohu nasadit Site Recovery s VMM, když mám jen jeden server VMM?
+
+Ano. Můžete buď replikovat virtuální počítače na serverech Hyper-V v cloudu VMM do Azure nebo se dají replikovat mezi cloudy VMM na stejném serveru. Pro místní na místní replikaci doporučujeme mít VMM server v primárních a sekundárních lokalit. 
+
 ### <a name="what-do-i-need-in-azure"></a>Co musím udělat v Azure?
 Budete potřebovat předplatné Azure, trezor služby Recovery Services, účet úložiště a virtuální síť. Trezor, účet úložiště a síť musí být ve stejné oblasti.
 
@@ -43,7 +68,7 @@ Ne, Site Recovery nezachycuje replikovaná data se nepodporuje a nemá žádné 
 
 Site Recovery je ISO 27001: 2013, 27018, HIPAA, DPA certifikace a probíhá SOC2 a FedRAMP JAB.
 
-### <a name="can-we-keep-on-premises-metadata-within-a-geographic-regions"></a>Jsme zachovat místní metadata v rámci zeměpisné oblasti?
+### <a name="can-we-keep-on-premises-metadata-within-a-geographic-region"></a>Jsme zachovat místní metadata v rámci zeměpisné oblasti?
 Ano. Když vytvoříte trezor služby v oblasti, zajišťujeme, že všechna metadata používat Site Recovery zůstane v rámci dané oblasti geografické hranice.
 
 ### <a name="does-site-recovery-encrypt-replication"></a>Šifruje Site Recovery replikaci?
@@ -75,7 +100,7 @@ Ano, Site Recovery podporuje clusterovaných hostitelů technologie Hyper-V. Poz
 - Všechny uzly clusteru by měl být zaregistrován ke stejnému trezoru.
 - Pokud nepoužíváte nástroj VMM, měli byste do stejné lokality Hyper-V přidat všichni hostitelé Hyper-V v clusteru.
 - Instalovat zprostředkovatele Azure Site Recovery a agent Recovery Services na každém hostiteli Hyper-V v clusteru a přidejte do lokality Hyper-V každém hostiteli.
-- Žádné konkrétní kroky je potřeba udělat v clusteru.
+- Žádné konkrétní postup je třeba provést v clusteru.
 - Pokud spouštíte nástroj Plánovač nasazení služby pro technologii Hyper-V, nástroj shromáždí data profilu z uzlu, kterou je spuštěna a kdy je virtuální počítač spuštěný. Nástroj nelze shromáždit všechna data z uzlu, který je vypnutý, ale bude sledovat tento uzel. Po vytvoření a spuštění je uzel, nástroj spustí shromažďování dat profilu virtuálního počítače z něj (Pokud je virtuální počítač je součástí profilu seznam virtuálních počítačů a běží na uzlu).
 - Pokud virtuální počítač na hostitele Hyper-V v trezoru Site Recovery migrovat na jiného hostitele Hyper-V ve stejném clusteru nebo na samostatné hostitele, replikace pro virtuální počítač nemá žádný vliv. Hostitel Hyper-V musí splňovat [požadavky](hyper-v-azure-support-matrix.md#on-premises-servers)a nakonfigurovat v trezoru Site Recovery. 
 
@@ -127,7 +152,7 @@ Ano, je možné replikovat virtuální počítače Azure ExpressRoute. Site Reco
 
 ### <a name="why-cant-i-replicate-over-vpn"></a>Proč se můžu replikovat přes síť VPN?
 
-Při replikaci do Azure, provoz replikace dosáhne veřejné koncové body účtu úložiště Azure, proto vám můžou replikovat jenom přes veřejný internet s ExpressRoute (veřejný partnerský vztah) a VPN nebude fungovat. 
+Při replikaci do Azure se replikační přenosy přicházejí veřejné koncové body účtu úložiště Azure. Proto můžete pouze replikovat přes veřejný internet s ExpressRoute (veřejný partnerský vztah) a VPN nebude fungovat. 
 
 ### <a name="what-are-the-replicated-vm-requirements"></a>Jaké jsou požadavky na replikovaných virtuálních počítačů?
 
@@ -187,7 +212,7 @@ Po převzetí služeb při selhání můžete přístup k virtuálním počíta�
 Služba Azure je pro odolnost navržena. Site Recovery je navržena pro převzetí služeb při selhání do sekundárního datacentra Azure, v souladu s smlouvy SLA pro Azure. Pokud dojde k převzetí služeb při selhání, zajišťujeme, že metadata a trezory zůstávají ve stejné geografické oblasti, kterou jste zvolili pro svůj trezor.
 
 ### <a name="is-failover-automatic"></a>Je převzetí služeb při selhání automatické?
-[Převzetí služeb při selhání](site-recovery-failover.md) neprobíhá automaticky. Zahájení převzetí služeb při selhání s jedním kliknutím na portálu, nebo můžete použít [Powershellu](/powershell/module/az.siterecovery) k aktivaci převzetí služeb při selhání.
+[Převzetí služeb při selhání](site-recovery-failover.md) neprobíhá automaticky. Zahájení převzetí služeb při selhání s jedním kliknutím na portálu, nebo můžete použít [Powershellu](/powershell/module/az.recoveryservices) k aktivaci převzetí služeb při selhání.
 
 ### <a name="how-do-i-fail-back"></a>Jak můžu navrácení služeb po obnovení?
 
@@ -199,7 +224,7 @@ Po znovu spuštěn a je v místní infrastruktuře, můžete službu navrátit. 
     - Úplné stažení: Pomocí této možnosti se data synchronizují během převzetí služeb při selhání. Tato možnost umožňuje stáhnout celý disk. Je rychlejší, protože se počítají žádné kontrolní součty, ale není k dispozici další prostoje. Tuto možnost použijte, pokud běží repliky virtuálních počítačů Azure nějakou dobu, nebo pokud místní virtuální počítač byl odstraněn.
 
 2. Můžete vybrat selhání zpět do stejného virtuálního počítače nebo do alternativní virtuálního počítače. Můžete určit, že by měl Site Recovery vytvořte virtuální počítač, pokud ještě neexistuje.
-3. Po dokončení počáteční synchronizace, je vybrat k dokončení převzetí služeb. Po dokončení, přihlaste se na místní virtuální počítač, zkontrolujte, že všechno funguje podle očekávání. Na webu Azure Portal uvidíte, že virtuální počítače Azure byly zastaveny.
+3. Po dokončení počáteční synchronizace, je vybrat k dokončení převzetí služeb. Po dokončení se můžete přihlásit k virtuálnímu počítači v místním zkontrolujte, že vše funguje podle očekávání. Na webu Azure Portal uvidíte, že virtuální počítače Azure byly zastaveny.
 4. Potvrzení převzetí služeb při selhání skončí a začít používat úlohu z místní virtuální počítač znovu.
 5. Po úloh se nepodařilo vrátit, povolíte zpětnou replikaci, tak, aby místní virtuální počítače replikovat do Azure znovu.
 

@@ -7,17 +7,17 @@ ms.subservice: service
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
-author: CarlRabeler
-ms.author: carlrab
-ms.reviewer: sashan, moslake
+author: stevestein
+ms.author: sstein
+ms.reviewer: sashan, moslake, carlrab
 manager: craigg
 ms.date: 02/07/2019
-ms.openlocfilehash: a14912c48f27c4f4d0e54239f8e0523ffa62324f
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: edba858f9be3350034ff48ea16d3c9137254bb97
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57888498"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59357947"
 ---
 # <a name="vcore-service-tiers-azure-hybrid-benefit-and-migration"></a>vCore úrovně služeb, zvýhodněné hybridní využití Azure a migrace
 
@@ -37,7 +37,7 @@ Modelu virt. jader nabízí tři úrovně služeb pro obecné účely, hyperšk�
 
 Následující tabulka vám pomůže pochopit rozdíly mezi třech úrovních:
 
-||**Obecné účely**|**Pro důležité obchodní informace**|**Velkokapacitní (preview)**|
+||**Obecné použití**|**Pro důležité obchodní informace**|**Velkokapacitní (preview)**|
 |---|---|---|---|
 |Nejvhodnější pro|Většinu obchodních úloh. Nabídky rozpočtu orientovaný vybalancovaných a škálovatelných výpočetních možností a možností ukládání.|Podnikové aplikace s vysokými nároky na V/V. Nabízí nejvyšší odolnost proti selhání s využitím několika izolovaných replik.|Většina podnikových úloh pomocí vysoce škálovatelného úložiště a požadavky na škálování pro čtení|
 |Compute|Gen4: vCore 1 až 24<br/>Gen5: vCore 1 až 80|Gen4: vCore 1 až 24<br/>Gen5: vCore 1 až 80|Gen4: vCore 1 až 24<br/>Gen5: vCore 1 až 80|
@@ -76,8 +76,8 @@ S programem Azure Hybrid Benefit můžete platit jenom za základní infrastrukt
 
 - Nastavení nebo aktualizaci typu licence pomocí Azure CLI:
 
-  - [az sql db create](https://docs.microsoft.com/cli/azure/sql/db#az-sql-db-create)
-  - [az sql db update](https://docs.microsoft.com/cli/azure/sql/db#az-sql-db-update)
+  - [Vytvoření az sql db](https://docs.microsoft.com/cli/azure/sql/db#az-sql-db-create)
+  - [AZ sql db update](https://docs.microsoft.com/cli/azure/sql/db#az-sql-db-update)
   - [Vytvoření az sql mi](https://docs.microsoft.com/cli/azure/sql/mi#az-sql-mi-create)
   - [aktualizace mi az sql](https://docs.microsoft.com/cli/azure/sql/mi#az-sql-mi-update)
 
@@ -107,10 +107,10 @@ Následující tabulka uvádí pokyny k migraci konkrétních scénářů:
 |Standard|Obecné účely|Laterální|Můžete migrovat v libovolném pořadí, ale potřeba zajistit odpovídající vCore velikosti *|
 |Premium|Pro důležité obchodní informace|Laterální|Můžete migrovat v libovolném pořadí, ale potřeba zajistit odpovídající vCore velikosti *|
 |Standard|Pro důležité obchodní informace|Upgrade|Musíte migrovat nejprve sekundární|
-|Pro důležité obchodní informace|Standard|Downgradovat|Musíte migrovat nejdříve primární|
-|Premium|Obecné účely|Downgradovat|Musíte migrovat nejdříve primární|
+|Pro důležité obchodní informace|Standard|Downgrade|Musíte migrovat nejdříve primární|
+|Premium|Obecné účely|Downgrade|Musíte migrovat nejdříve primární|
 |Obecné účely|Premium|Upgrade|Musíte migrovat nejprve sekundární|
-|Pro důležité obchodní informace|Obecné účely|Downgradovat|Musíte migrovat nejdříve primární|
+|Pro důležité obchodní informace|Obecné účely|Downgrade|Musíte migrovat nejdříve primární|
 |Obecné účely|Pro důležité obchodní informace|Upgrade|Musíte migrovat nejprve sekundární|
 ||||
 

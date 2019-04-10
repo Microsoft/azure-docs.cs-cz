@@ -7,14 +7,14 @@ author: mayurigupta13
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 11/27/2018
+ms.date: 4/9/2019
 ms.author: mayg
-ms.openlocfilehash: f4da0a4672bc50688d0a25bbd2db1f3be984ee8b
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 58e360bb355c7faf9608b00dd65b14f27aca4367
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55821384"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59358041"
 ---
 # <a name="set-up-disaster-recovery-for-active-directory-and-dns"></a>Nastavení zotavení po havárii pro Active Directory a DNS
 
@@ -106,7 +106,7 @@ Když spustíte testovací převzetí služeb, jsou všechny řadiče domény v 
 Od verze Windows serveru 2012 [další bezpečnostní opatření jsou integrované do Active Directory Domain Services (AD DS)](https://technet.microsoft.com/windows-server-docs/identity/ad-ds/introduction-to-active-directory-domain-services-ad-ds-virtualization-level-100). Tato bezpečnostní opatření pomáhá chránit virtualizované řadiče domény před vrácení hodnoty USN zpět, pokud podporuje základní platformu hypervisoru **VM-GenerationID**. Azure podporuje **VM-GenerationID**. Z tohoto důvodu mají řadiče domény, na kterých běží Windows Server 2012 nebo novější na Azure virtual machines tyto další bezpečnostní opatření.
 
 
-Při **VM-GenerationID** se resetuje **InvocationID** hodnota z databáze služby AD DS je také resetovat. Kromě toho se zahodí fond RID a adresáři SYSVOL je označen jako neautoritativní. Další informace najdete v tématu [Úvod do virtualizace služby Active Directory Domain Services](https://technet.microsoft.com/windows-server-docs/identity/ad-ds/introduction-to-active-directory-domain-services-ad-ds-virtualization-level-100) a [bezpečně virtualizace DFSR](https://blogs.technet.microsoft.com/filecab/2013/04/05/safely-virtualizing-dfsr/).
+Při **VM-GenerationID** se resetuje **InvocationID** hodnota z databáze služby AD DS je také resetovat. Kromě toho se zahodí fond RID a složku sysvol je označen jako neautoritativní. Další informace najdete v tématu [Úvod do virtualizace služby Active Directory Domain Services](https://technet.microsoft.com/windows-server-docs/identity/ad-ds/introduction-to-active-directory-domain-services-ad-ds-virtualization-level-100) a [bezpečně virtualizace DFSR](https://blogs.technet.microsoft.com/filecab/2013/04/05/safely-virtualizing-dfsr/).
 
 Přebírání služeb při selhání do Azure může způsobit, že **VM-GenerationID** resetovat. Resetuje se **VM-GenerationID** další bezpečnostní opatření se aktivuje při spuštění virtuálního počítače řadiče domény v Azure. To může vést *poměrně dlouhodobému výpadku* v nebudou moct přihlásit k virtuálnímu počítači řadiče domény.
 
@@ -128,11 +128,11 @@ Pokud se ochrana virtualizace se aktivuje po testovací převzetí služeb, mů�
 
     ![Změna ID vyvolání](./media/site-recovery-active-directory/Event1109.png)
 
-* Sdílené složky SYSVOL a NETLOGON nejsou k dispozici.
+* Složka SYSVOL a NETLOGON sdílené složky nejsou k dispozici.
 
-    ![Sdílená složka SYSVOL](./media/site-recovery-active-directory/sysvolshare.png)
+    ![Sdílené složky SYSVOL](./media/site-recovery-active-directory/sysvolshare.png)
 
-    ![NtFrs SYSVOL](./media/site-recovery-active-directory/Event13565.png)
+    ![Složka sysvol NtFrs](./media/site-recovery-active-directory/Event13565.png)
 
 * Databáze DFSR se odstraní.
 
@@ -146,7 +146,7 @@ Pokud se ochrana virtualizace se aktivuje po testovací převzetí služeb, mů�
 >
 >
 
-1. Na příkazovém řádku spusťte následující příkaz a zkontrolujte, zda jsou sdílené složky SYSVOL a NETLOGON:
+1. Na příkazovém řádku spusťte následující příkaz a zkontrolujte, zda jsou sdílené složky sysvol a NETLOGON:
 
     `NET SHARE`
 
@@ -166,7 +166,7 @@ Pokud předchozí podmínky splněny, je pravděpodobné, že řadič domény sp
     * Ale nedoporučujeme [FRS replikace](https://blogs.technet.microsoft.com/filecab/2014/06/25/the-end-is-nigh-for-frs/), pokud používáte služby FRS replikaci, postupujte podle kroků pro autoritativním obnovením. Proces je popsán v [pomocí klíče registru BurFlags k inicializaci služby replikace souborů](https://support.microsoft.com/kb/290762).
 
         Další informace o BurFlags, naleznete v příspěvku blogu [D2 a D4: Co je to pro? ](https://blogs.technet.microsoft.com/janelewis/2006/09/18/d2-and-d4-what-is-it-for/).
-    * Pokud používáte replikace DFSR, proveďte kroky pro autoritativním obnovením. Proces je popsán v [vynutit autoritativní a neautoritativní synchronizaci adresáře SYSVOL replikovaného DFSR (jako "D4/D2 u služby FRS)](https://support.microsoft.com/kb/2218556).
+    * Pokud používáte replikace DFSR, proveďte kroky pro autoritativním obnovením. Proces je popsán v [vynutit autoritativní a neautoritativní synchronizaci adresáře sysvol replikovaného DFSR složky (například "D4/D2 u služby FRS)](https://support.microsoft.com/kb/2218556).
 
         Můžete také použít funkce Powershellu. Další informace najdete v tématu [funkce Powershellu autoritativní a neautoritativní obnovení DFSR SYSVOL](https://blogs.technet.microsoft.com/thbouche/2013/08/28/dfsr-sysvol-authoritative-non-authoritative-restore-powershell-functions/).
 

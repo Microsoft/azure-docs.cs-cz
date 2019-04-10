@@ -8,17 +8,17 @@ ms.subservice: service
 ms.custom: ''
 ms.devlang: ''
 ms.topic: quickstart
-author: CarlRabeler
-ms.author: carlrab
+author: stevestein
+ms.author: sstein
 ms.reviewer: ''
 manager: craigg
 ms.date: 03/25/2019
-ms.openlocfilehash: 2348b4293b8726c406b1f06b2f88c37dfb00e80c
-ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
+ms.openlocfilehash: 86f29f07df6174ecead852fada73ac05f8682fca
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58447750"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59359979"
 ---
 # <a name="quickstart-use-sql-server-management-studio-to-connect-and-query-an-azure-sql-database"></a>Rychlý start: Pomocí SQL Server Management Studio k připojení a dotazování Azure SQL database
 
@@ -30,7 +30,7 @@ V tomto rychlém startu použijete [SQL Server Management Studio] [ ssms-install
 
   || Izolovaná databáze | Spravovaná instance |
   |:--- |:--- |:---|
-  | Vytvořit| [Azure Portal](sql-database-single-database-get-started.md) | [Azure Portal](sql-database-managed-instance-get-started.md) |
+  | Vytvořit| [Portál](sql-database-single-database-get-started.md) | [Portál](sql-database-managed-instance-get-started.md) |
   || [Rozhraní příkazového řádku](scripts/sql-database-create-and-configure-database-cli.md) | [Rozhraní příkazového řádku](https://medium.com/azure-sqldb-managed-instance/working-with-sql-managed-instance-using-azure-cli-611795fe0b44) |
   || [PowerShell](scripts/sql-database-create-and-configure-database-powershell.md) | [PowerShell](scripts/sql-database-create-configure-managed-instance-powershell.md) |
   | Konfigurace | [pravidlo brány firewall na úrovni serveru IP](sql-database-server-level-firewall-rule.md)| [Připojení z virtuálního počítače](sql-database-managed-instance-configure-vm.md)|
@@ -44,7 +44,7 @@ V tomto rychlém startu použijete [SQL Server Management Studio] [ ssms-install
 
 ## <a name="install-the-latest-ssms"></a>Instalace nejnovější verze aplikace SSMS
 
-Než začnete, ujistěte se, že jste nainstalovali nejnovější [SSMS][ssms-install-latest-84g]. 
+Než začnete, ujistěte se, že jste nainstalovali nejnovější [SSMS][ssms-install-latest-84g].
 
 ## <a name="get-sql-server-connection-information"></a>Získejte informace o připojení SQL serveru
 
@@ -58,7 +58,7 @@ Získejte informace o připojení potřebné pro připojení k databázi Azure S
 
 ## <a name="connect-to-your-database"></a>Připojení k databázi
 
-V SMSS připojení k vašemu serveru Azure SQL Database. 
+V SMSS připojení k vašemu serveru Azure SQL Database.
 
 > [!IMPORTANT]
 > Server Azure SQL Database naslouchá na portu 1433. Pro připojení k serveru služby SQL Database za podniková brána firewall, brána firewall musí mít tento port otevřít.
@@ -68,12 +68,12 @@ V SMSS připojení k vašemu serveru Azure SQL Database.
 
 2. Zadejte následující informace:
 
-   | Nastavení      | Navrhovaná hodnota    | Popis | 
-   | ------------ | ------------------ | ----------- | 
+   | Nastavení      | Navrhovaná hodnota    | Popis |
+   | ------------ | ------------------ | ----------- |
    | **Typ serveru** | Databázový stroj | Povinná hodnota. |
    | **Název serveru** | Plně kvalifikovaný název serveru | Podobný: **mynewserver20170313.database.windows.net**. |
-   | **Ověřování** | Ověřování SQL Serveru | Tento kurz používá ověřování SQL. |
-   | **Přihlášení** | ID uživatele účtu správce serveru | ID uživatele z účtu správce serveru, který se používá k vytvoření serveru. |
+   | **Authentication** | Ověřování SQL Serveru | Tento kurz používá ověřování SQL. |
+   | **Přihlásit** | ID uživatele účtu správce serveru | ID uživatele z účtu správce serveru, který se používá k vytvoření serveru. |
    | **Heslo** | Heslo účtu správce serveru | Heslo účtu správce serveru, který se používá k vytvoření serveru. |
    ||||
 
@@ -83,7 +83,7 @@ V SMSS připojení k vašemu serveru Azure SQL Database.
 
    ![připojení k databázi na serveru](./media/sql-database-connect-query-ssms/options-connect-to-db.png)  
 
-4. Vyberte **Connect** (Připojit). Otevře se okno Průzkumníka objektů. 
+4. Vyberte **Connect** (Připojit). Otevře se okno Průzkumníka objektů.
 
 5. Chcete-li zobrazit objekty databáze, rozbalte **databází** a potom rozbalte **mySampleDatabase**.
 
@@ -140,15 +140,14 @@ To [vložit](https://msdn.microsoft.com/library/ms174335.aspx) kód jazyka Trans
 1. Nahraďte předchozí dotaz s touto položkou.
 
    ```sql
-   SELECT * FROM [SalesLT].[Product] 
-   WHERE Name='myNewProduct' 
+   SELECT * FROM [SalesLT].[Product]
+   WHERE Name='myNewProduct'
    ```
-   
-2. Vyberte **Provést**. Zobrazí se následující výsledky. 
+
+2. Vyberte **Provést**. Zobrazí se následující výsledky.
 
    ![výsledek](./media/sql-database-connect-query-ssms/result.png)
 
- 
 ## <a name="update-data"></a>Aktualizace dat
 
 To [aktualizace](https://msdn.microsoft.com/library/ms177523.aspx) kód Transact-SQL k úpravě nového produktu.
@@ -188,8 +187,6 @@ To [odstranit](https://msdn.microsoft.com/library/ms189835.aspx) kód Transact-S
 - Informace o připojení a dotazování pomocí Pythonu najdete v tématu [Připojení a dotazování pomocí Pythonu](sql-database-connect-query-python.md).
 - Informace o připojení a dotazování pomocí Ruby najdete v tématu [Připojení a dotazování pomocí Ruby](sql-database-connect-query-ruby.md).
 
-
 <!-- Article link references. -->
 
 [ssms-install-latest-84g]: https://docs.microsoft.com/sql/ssms/sql-server-management-studio-ssms
-

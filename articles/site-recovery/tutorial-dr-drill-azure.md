@@ -6,36 +6,41 @@ manager: carmonm
 ms.service: site-recovery
 services: site-recovery
 ms.topic: tutorial
-ms.date: 03/19/2019
+ms.date: 04/08/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 7e85226d15b818dda65600760b3950fab9dd7aaf
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: b93fb92c9170f3e0fb7bd6ee754dde5df729e299
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58312321"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59358185"
 ---
 # <a name="run-a-disaster-recovery-drill-to-azure"></a>Spuštění postupu zotavení po havárii do Azure
 
-V tomto článku se dozvíte, jak pro místní počítač spustit postup zotavení po havárii do Azure s využitím testovacího převzetí služeb při selhání. Postup ověří vaši strategii replikace bez ztráty dat.
+Tento článek popisuje, jak spustit zotavení po havárii pro místní počítač do Azure s využitím [Azure Site Recovery](site-recovery-overview.md) služby. Postup ověří vaši strategii replikace bez ztráty dat.
 
-Toto je čtvrtý kurz řady, která ukazuje, jak nastavit zotavení po havárii do Azure pro místní virtuální počítače VMware nebo virtuální počítače Hyper-V.
 
-V tomto kurzu se předpokládá, že jste dokončili první tři kurzy:
-- V [prvním kurzu](tutorial-prepare-azure.md) jste nastavili komponenty Azure potřebné pro zotavení po havárii VMware.
-- Ve [druhém kurzu](vmware-azure-tutorial-prepare-on-premises.md) jste připravili místní komponenty pro zotavení po havárii a zkontrolovali požadované součásti.
-- Ve [třetím kurzu](vmware-azure-tutorial.md) jste nastavili a povolili replikaci vašich místních virtuálních počítačů VMware.
-- Tyto kurzy demonstrují ten **nejjednodušší způsob nasazení určitého scénáře**. V rámci možností používají jen výchozí možnosti a neuvádějí všechny varianty nastavení ani všechny cesty. Podrobnější informace ke krokům testovacího převzetí služeb při selhání najdete v [tomto průvodci](site-recovery-test-failover-to-azure.md).
+Toto je čtvrtý dílem série, která ukazuje, jak nastavit zotavení po havárii do Azure pro místní počítače.
 
 V tomto kurzu získáte informace o těchto tématech:
 
 > [!div class="checklist"]
 > * Nastavení izolované sítě pro testovací převzetí služeb při selhání
 > * Příprava připojení k virtuálnímu počítači Azure po převzetí služeb při selhání
-> * Spuštění testovacího převzetí služeb při selhání pro jeden počítač
+> * Spuštění testovací převzetí služeb při selhání pro jeden počítač.
 
+> [!NOTE]
+> Kurzy vám ukážou, nejjednodušší způsob nasazení pro scénář. V rámci možností používají jen výchozí možnosti a neuvádějí všechny varianty nastavení ani všechny cesty. Pokud chcete další informace o procházení kroky zotavení po havárii ve více podrobností, [k tomuto článku](site-recovery-test-failover-to-azure.md).
 
+## <a name="before-you-start"></a>Než začnete
+
+Proveďte z předchozích kurzů:
+
+1. Ujistěte se, že jste [nastavení Azure](tutorial-prepare-azure.md) zotavení po havárii místních virtuálních počítačů VMware, virtuálních počítačů Hyper-V a fyzických počítačů do Azure.
+2. Příprava na místní [VMware](vmware-azure-tutorial-prepare-on-premises.md) nebo [Hyper-V](hyper-v-prepare-on-premises-tutorial.md) prostředí pro zotavení po havárii. Pokud při nastavování zotavení po havárii pro fyzické servery, přečtěte si [systém podpory replikace z](vmware-physical-secondary-support-matrix.md).
+3. Nastavení zotavení po havárii pro [virtuálních počítačů VMware](vmware-azure-tutorial.md), [virtuálních počítačů Hyper-V](hyper-v-azure-tutorial.md), nebo [fyzické počítače](physical-azure-disaster-recovery.md).
+ 
 
 ## <a name="verify-vm-properties"></a>Ověření vlastností virtuálního počítače
 
@@ -76,14 +81,13 @@ Spusťte testovací převzetí služeb při selhání následujícím způsobem:
 
 V některých scénářích vyžaduje převzetí služeb při selhání další zpracování, které trvá asi osm až deset minut. Možná si všimnete delšího trvání testovacího převzetí služeb při selhání u počítačů VMware s Linuxem, virtuálních počítačů VMware, které nemají povolenou službu DHCP, a virtuálních počítačů VMware, které nemají následující ovladače spuštění: storvsc, vmbus, storflt, intelide, atapi.
 
-## <a name="prepare-to-connect-to-azure-vms-after-failover"></a>Příprava připojení k virtuálním počítačům Azure po převzetí služeb při selhání
+## <a name="connect-after-failover"></a>Připojit po převzetí služeb při selhání
 
-Pokud se chcete připojit k virtuálním počítačům Azure pomocí protokolů RDP/SSH po převzetí služeb při selhání, musíte dodržet požadavky shrnuté v této [tabulce](site-recovery-test-failover-to-azure.md#prepare-to-connect-to-azure-vms-after-failover).
-
-Při řešení problémů s připojením po převzetí služeb při selhání použijte [zde](site-recovery-failover-to-azure-troubleshoot.md) popsaný postup.
+Pokud se chcete připojit k virtuálním počítačům Azure pomocí RDP/SSH po převzetí služeb při selhání, [Příprava připojení](site-recovery-test-failover-to-azure.md#prepare-to-connect-to-azure-vms-after-failover). Pokud narazíte na jakékoli problémy s připojením po převzetí služeb při selhání, postupujte [řešení potíží s](site-recovery-failover-to-azure-troubleshoot.md) průvodce.
 
 ## <a name="next-steps"></a>Další postup
 
 > [!div class="nextstepaction"]
-> [Spuštění převzetí služeb při selhání a navrácení služeb po obnovení pro místní virtuální počítače VMware](vmware-azure-tutorial-failover-failback.md)
-> [Spuštění převzetí služeb při selhání a navrácení služeb po obnovení pro místní virtuální počítače Hyper-V](hyper-v-azure-failover-failback-tutorial.md)
+> [Spuštění převzetí služeb při selhání a navrácení služeb po obnovení pro virtuální počítače VMware](vmware-azure-tutorial-failover-failback.md).
+> [Spuštění převzetí služeb při selhání a navrácení služeb po obnovení pro virtuální počítače Hyper-V](hyper-v-azure-failover-failback-tutorial.md).
+> [Spuštění převzetí služeb při selhání a navrácení služeb po obnovení pro fyzické počítače](physical-to-azure-failover-failback.md)

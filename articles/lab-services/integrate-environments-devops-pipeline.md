@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/02/2019
 ms.author: spelluru
-ms.openlocfilehash: 24391e9e8541f12c434ade837b8f4944711ae375
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.openlocfilehash: deb5595ac6a8b0d189e5594fda8e4b60480d038c
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58887188"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59357405"
 ---
 # <a name="integrate-environments-into-your-azure-devops-cicd-pipelines"></a>Integrace prostředí kanálech Azure DevOps CI/CD
 Můžete použít rozšíření Azure DevTest Labs úlohy, která je nainstalovaná ve službě Azure DevOps Services (dříve označované jako Visual Studio Team Services), tak jednoduše integrovat kontinuální integraci (CI) / kanálu průběžného doručování (CD) sestavení a-vydané verze s využitím Azure DevTest Labs. Tato rozšíření usnadňují rychlé nasazení [prostředí](devtest-lab-test-env.md) pro konkrétní testovací úloha a až po dokončení testu ji odstranit. 
@@ -56,7 +56,7 @@ Další fáze nasazení je vytvoření prostředí pro vývoj nebo testování �
 
 1. V definici vydané verze vyberte **přidat úkoly**.
 2. Na **úlohy** kartu, přidat úkol Azure DevTest Labs vytvořit prostředí. Úkol nakonfigurujte následujícím způsobem:
-    1. Pro **předplatné Azure RM**, vyberte připojení **dostupných připojení služby Azure** seznamu, nebo vytvořte omezenější oprávnění připojení ke svému předplatnému Azure. Další informace najdete v tématu [koncový bod služby Azure Resource Manageru](/devops/pipelines/library/service-endpoints).
+    1. Pro **předplatné Azure RM**, vyberte připojení **dostupných připojení služby Azure** seznamu, nebo vytvořte omezenější oprávnění připojení ke svému předplatnému Azure. Další informace najdete v tématu [koncový bod služby Azure Resource Manageru](/azure/devops/pipelines/library/service-endpoints).
 2. Pro **název testovacího prostředí**, vyberte název instance, kterou jste vytvořili dříve *.
 3. Pro **název úložiště**, vyberte úložiště, kde doručený do šablony Resource Manageru (201) *.
 4. Pro **název šablony**, vyberte název prostředí, který jste uložili na váš zdrojový kód úložiště *. 
@@ -71,7 +71,7 @@ Závěrečná fáze je odstranit prostředí, které jste nasadili ve vaší ins
 V definici vydané verze vyberte **přidat úkoly**a pak na **nasadit** kartu, přidejte **Azure DevTest Labs odstranit prostředí** úloh. Nakonfigurujte následujícím způsobem:
 
 1. Pokud chcete odstranit virtuální počítač, přečtěte si téma [úloh Azure DevTest Labs](https://marketplace.visualstudio.com/items?itemName=ms-azuredevtestlabs.tasks):
-    1. Pro **předplatné Azure RM**, vyberte připojení **dostupných připojení služby Azure** seznamu, nebo vytvořte omezenější oprávnění připojení ke svému předplatnému Azure. Další informace najdete v tématu [koncový bod služby Azure Resource Manageru](/devops/pipelines/library/service-endpoints).
+    1. Pro **předplatné Azure RM**, vyberte připojení **dostupných připojení služby Azure** seznamu, nebo vytvořte omezenější oprávnění připojení ke svému předplatnému Azure. Další informace najdete v tématu [koncový bod služby Azure Resource Manageru](/azure/devops/pipelines/library/service-endpoints).
     2. Pro **název testovacího prostředí**, vyberte testovací prostředí, které se prostředí nachází.
     3. Pro **název prostředí**, zadejte název prostředí, která se má odebrat.
 2. Zadejte název definice vydané verze a pak ho uložte.
@@ -80,5 +80,5 @@ V definici vydané verze vyberte **přidat úkoly**a pak na **nasadit** kartu, p
 Viz následující články: 
 - [Vytvoření prostředí více virtuálních počítačů pomocí šablon Resource Manageru](devtest-lab-create-environment-from-arm.md).
 - Šablony rychlý start Resource Manageru pro DevTest Labs automatizace z [úložiště DevTest Labs GitHub](https://github.com/Azure/azure-quickstart-templates).
-- [Řešení potíží s VSTS stránky](/devops/pipelines/troubleshooting)
+- [Řešení potíží s VSTS stránky](/azure/devops/pipelines/troubleshooting)
 

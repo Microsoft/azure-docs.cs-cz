@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: article
 ms.date: 12/05/2018
 ms.author: raynew
-ms.openlocfilehash: 71f792dd1238b11810abfb6a97ac9e051da2ec45
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
-ms.translationtype: HT
+ms.openlocfilehash: 3ee528cc68a2a5637e85dc1d5ef68203916138e7
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59274622"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59357170"
 ---
 # <a name="refine-a-group-using-group-dependency-mapping"></a>Upřesnění skupiny s využitím mapování závislostí skupin
 
@@ -127,14 +127,14 @@ Spuštění dotazů Kusto:
 1. Po instalaci agentů, přejděte na portál a klikněte na tlačítko **přehled**.
 2. V **přehled**, přejděte na stránku **Essentials** části projektu a klikněte na název pracovního prostoru k dispozici vedle **pracovní prostor OMS**.
 3. Na stránce pracovního prostoru Log Analytics, klikněte na tlačítko **Obecné** > **protokoly**.
-4. Napsat dotaz pro shromažďování dat závislosti pomocí protokolů z Azure monitoru. Ukázkové dotazy pro shromažďování dat závislosti jsou k dispozici [tady](https://docs.microsoft.com/azure/azure-monitor/insights/service-map#sample-log-searches).
+4. Napsat dotaz pro shromažďování dat závislosti pomocí protokolů z Azure monitoru. Ukázkové dotazy najdete v další části.
 5. Spusťte dotaz kliknutím na spustit. 
 
 [Další informace](https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-portal) o tom, jak psát dotazy Kusto. 
 
 ## <a name="sample-azure-monitor-logs-queries"></a>Ukázka Azure Monitor zaznamenává dotazy
 
-Tady jsou ukázkové dotazy, které vám umožní extrahovat data závislostí. Můžete upravit dotazy k extrakci upřednostňované datových bodů. Úplný seznam polí v závislosti datových záznamů je k dispozici [zde](https://docs.microsoft.com/azure/azure-monitor/insights/service-map#log-analytics-records)
+Tady jsou ukázkové dotazy, které vám umožní extrahovat data závislostí. Můžete upravit dotazy k extrakci upřednostňované datových bodů. Úplný seznam polí v závislosti datových záznamů je k dispozici [tady](https://docs.microsoft.com/azure/azure-monitor/insights/service-map#log-analytics-records). Najít další ukázkové dotazy [tady](https://docs.microsoft.com/azure/azure-monitor/insights/service-map#sample-log-searches).
 
 ### <a name="summarize-inbound-connections-on-a-set-of-machines"></a>Shrnutí příchozí připojení na sadu počítačů
 

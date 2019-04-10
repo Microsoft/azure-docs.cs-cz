@@ -10,19 +10,19 @@ ms.subservice: core
 ms.reviewer: trbye
 ms.topic: conceptual
 ms.date: 03/19/2019
-ms.openlocfilehash: 32f96a28e027bfd0e65d934bb47bb98400af459d
-ms.sourcegitcommit: 223604d8b6ef20a8c115ff877981ce22ada6155a
+ms.openlocfilehash: e1b584d38c4583e37b7c47535c836d1fa7d428f1
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58360717"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59357250"
 ---
 # <a name="auto-train-a-time-series-forecast-model"></a>Automaticky – train model prognózy časových řad
 
 V tomto článku se dozvíte, jak pro trénování časových řad prognóz regresního modelu pomocí automatizovaných strojového učení ve službě Azure Machine Learning. Konfigurace modelu prognózy je podobné nastavení standardní regresního modelu pomocí automatizovaných strojového učení, ale existují určité kroky předběžného zpracování a možnosti konfigurace pro práci s daty časových řad. Následující příklady ukazují, jak do:
 
 * Příprava dat pro čas řady modelování
-* Konfigurovat parametry pro konkrétní časových řad v [ `AutoMLConfig` ](https://docs.microsoft.com/python/api/azureml-train-automl/azureml.train.automl.automlconfig.automlconfig?view=azure-ml-py) objektu
+* Konfigurovat parametry pro konkrétní časových řad v [ `AutoMLConfig` ](/python/api/azureml-train-automl/azureml.train.automl.automlconfig) objektu
 * Spustit předpovědi s daty časových řad
 
 ## <a name="prerequisites"></a>Požadavky

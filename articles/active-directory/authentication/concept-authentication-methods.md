@@ -11,16 +11,16 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry, michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a7a2866952d5e66e24770b81e69039d733fdd2a1
-ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
+ms.openlocfilehash: e0c9af1a9ad8b816809f661d368133997f55329d
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58894589"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59360648"
 ---
 # <a name="what-are-authentication-methods"></a>Co jsou metody ověřování?
 
-Jako správce výběr metod ověřování pro Azure Multi-Factor Authentication a hesla pomocí samoobslužné služby resetování se doporučuje vyžadovat od uživatelů registraci několika metod ověřování. Pokud metoda ověřování není k dispozici pro uživatele, můžete se k ověření pomocí jiné metody.
+Jako správce výběr metod ověřování pro Azure Multi-Factor Authentication a samoobslužné resetování hesla (SSPR) se doporučuje vyžadovat od uživatelů registraci několika metod ověřování. Pokud metoda ověřování není k dispozici pro uživatele, můžete se k ověření pomocí jiné metody.
 
 Správci můžou určit v zásadách, které metody ověřování jsou k dispozici pro uživatele samoobslužné resetování HESLA a vícefaktorové ověřování. Některé metody ověřování, nemusí být k dispozici ke všem funkcím. Další informace o konfiguraci zásad najdete v článcích [jak úspěšné zavedení samoobslužného resetování hesla](howto-sspr-deployment.md) a [plánování ověřování Azure Multi-Factor Authentication založené na cloudu](howto-mfa-getstarted.md)
 
@@ -141,6 +141,9 @@ Aplikace Microsoft Authenticator pomáhá zabránit neoprávněnému přístupu 
 
 Pokud povolíte použití obou oznámení přes mobilní aplikace a ověřovací kód z mobilní aplikace, uživatelé, kteří zaregistrovat aplikaci Microsoft Authenticator oznámení pomocí budou moct ověřit svoji identitu pomocí oznámení a kód.
 
+> [!NOTE]
+> Pokud má vaše organizace zaměstnanci práci nebo cestě do Číny, **oznámení přes mobilní aplikaci** metodu na **zařízení s Androidem** nefunguje v dané zemi. Alternativní metody by měla být k dispozici pro uživatele.
+
 ### <a name="verification-code-from-mobile-app"></a>Ověřovací kód z mobilní aplikace
 
 Aplikace Microsoft Authenticator nebo jiným aplikacím třetích stran může sloužit jako softwarový token k vygenerování ověřovacího kódu OATH. Po zadání uživatelského jména a hesla, zadejte kód aplikace k dispozici na přihlašovací obrazovku. Ověřovací kód, který obsahuje druhou podobu ověřování.
@@ -149,11 +152,11 @@ Aplikace Microsoft Authenticator nebo jiným aplikacím třetích stran může s
 > Pro samoobslužné resetování hesla při pouze pro resetování ověřovací kód je jedinou možností, které jsou dostupné pro uživatele se vyžaduje jedna metoda **k zajištění nejvyšší úrovně zabezpečení**.
 >
 
-Uživatelé mohou mít kombinaci až 5 hardwarové tokeny OATH nebo ověřovací aplikace, jako je nakonfigurován pro použití v každém okamžiku aplikaci Microsoft Authenticator.
+Uživatelé mohou mít kombinaci až o pěti hardwarové tokeny OATH nebo ověřovací aplikace, jako je nakonfigurován pro použití v každém okamžiku aplikaci Microsoft Authenticator.
 
 ## <a name="oath-hardware-tokens-public-preview"></a>Tokeny OATH hardwaru (public preview)
 
-OATH je otevřený standard, která určuje, jak jednorázové heslo (OTP) kódy jsou generovány. Azure AD budou podporovat použití tokenů OATH-TOTP SHA-1 z různých 30sekundovém nebo 60 sekund. Zákazníky můžete pořídit tyto tokeny od dodavatele podle vlastní volby. Všimněte si, že tajné klíče jsou omezené na 128 znaků, které nemusí být kompatibilní s všechny tokeny.
+OATH je otevřený standard, která určuje, jak jednorázové heslo (OTP) kódy jsou generovány. Azure AD budou podporovat použití tokenů OATH-TOTP SHA-1 z různých 30sekundovém nebo 60 sekund. Zákazníky můžete pořídit tyto tokeny od dodavatele podle vlastní volby. Tajné klíče jsou omezené na 128 znaků, které nemusí být kompatibilní s všechny tokeny.
 
 ![Nahrávání tokenů OATH do okna pro tokeny OATH serveru MFA](media/concept-authentication-methods/oath-tokens-azure-ad.png)
 
@@ -175,7 +178,7 @@ V závislosti na velikosti souboru CSV může trvat několik minut ke zpracován
 
 Jakmile vyřeší všechny chyby, Správce pak může aktivovat každý klíč kliknutím **aktivovat** pro token aktivovat a zadávání kombinací jednorázového HESLA zobrazovaný na tokenu.
 
-Uživatelé mohou mít kombinaci až 5 hardwarové tokeny OATH nebo ověřovací aplikace, jako je nakonfigurován pro použití v každém okamžiku aplikaci Microsoft Authenticator.
+Uživatelé mohou mít kombinaci až o pěti hardwarové tokeny OATH nebo ověřovací aplikace, jako je nakonfigurován pro použití v každém okamžiku aplikaci Microsoft Authenticator.
 
 ## <a name="mobile-phone"></a>Mobilní telefon
 

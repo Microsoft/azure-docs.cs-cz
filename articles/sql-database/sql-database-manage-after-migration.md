@@ -9,15 +9,15 @@ ms.devlang: ''
 ms.topic: conceptual
 author: joesackmsft
 ms.author: josack
-ms.reviewer: carlrab
+ms.reviewer: sstein
 manager: craigg
 ms.date: 02/13/2019
-ms.openlocfilehash: 2b8c35450ab4586f619993aeb9a578c83cafc0c6
-ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
+ms.openlocfilehash: a83bc6518409add8a0732e5a0b17ab46c36564af
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57216930"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59358417"
 ---
 # <a name="new-dba-in-the-cloud--managing-your-single-and-pooled-databases-in-azure-sql-database"></a>Nové DBA v cloudu – správu vašich databází ve fondu a jeden ve službě Azure SQL Database
 
@@ -83,7 +83,7 @@ Databáze SQL trvá zřeteli zabezpečení a ochrana osobních údajů. Zabezpe�
 
 Existují [dvě metody ověřování](sql-database-control-access.md#authentication) ve službě SQL Database nabízí:
 
-- [Ověřování pomocí Azure Active Directory](sql-database-aad-authentication.md)
+- [Ověřování Azure Active Directory](sql-database-aad-authentication.md)
 - Ověřování pomocí SQL
 
 Tradiční windows ověřování není podporováno. Azure Active Directory (AD) je centralizovaná služba správy identit a přístupu. To velmi jednoduše zadáte jednotné přihlašování přístup (SSO) na všechny zaměstnance ve vaší organizaci. To znamená, že přihlašovací údaje jsou sdíleny napříč všemi službami Azure pro jednodušší ověřování. Podporuje AAD [MFA (Vícefaktorové ověřování)](sql-database-ssms-mfa-authentication.md) a s [několika kliknutími](../active-directory/hybrid/how-to-connect-install-express.md) AAD je možné integrovat se službou Windows Server Active Directory. Ověřování SQL funguje úplně stejně, jako jste používali ho v minulosti. Zadejte uživatelské jméno a heslo a uživatele k jakékoli databázi na daném serveru SQL Database, můžete ověřovat. Umožňuje také SQL Database a SQL Data Warehouse, která nabízí služby Multi-Factor authentication a uživatelské účty hostů v doméně služby Azure AD. Pokud už máte Active Directory v místním, může provést federaci adresář s Azure Active Directory pro rozšíření adresáře do Azure.
@@ -207,7 +207,7 @@ Expressroute vám také umožní burst až 2 x limit šířky pásma, kterou si 
 
 ### <a name="is-sql-database-compliant-with-any-regulatory-requirements-and-how-does-that-help-with-my-own-organizations-compliance"></a>SQL Database je splňovat zákonné požadavky, a jak, která pomáhá díky dodržování předpisů pro vlastní organizaci
 
-SQL Database je kompatibilní s celou řadou dodržování legislativních předpisů. Pokud chcete zobrazit nejnovější sadu dodržování předpisů, které byly splněny, přejděte [Microsoft Trust Center](https://microsoft.com/trustcenter/compliance/complianceofferings) a přechod na dodržování předpisů, které jsou důležité pro vaši organizaci, pokud chcete zobrazit, pokud je zahrnují využijí služby Azure SQL Database. Je důležité si uvědomit, že i když SQL Database může musí být certifikovaná jako kompatibilní služby, pomáhá v dodržování předpisů služby vaší organizace ale nezaručuje automaticky ji.
+SQL Database je kompatibilní s celou řadou dodržování legislativních předpisů. Chcete-li zobrazit nejnovější sadu dodržování předpisů, které byly splněny službou SQL Database, přejděte [Microsoft Trust Center](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942) a přechod na dodržování předpisů, které jsou důležité pro vaši organizaci, pokud chcete zobrazit, pokud databáze SQL je zahrnuta v části kompatibilní s Služby Azure. Je důležité si uvědomit, že i když SQL Database může musí být certifikovaná jako kompatibilní služby, pomáhá v dodržování předpisů služby vaší organizace ale nezaručuje automaticky ji.
 
 ## <a name="intelligent-database-monitoring-and-maintenance-after-migration"></a>Inteligentní databázové monitorování a údržba po migraci
 

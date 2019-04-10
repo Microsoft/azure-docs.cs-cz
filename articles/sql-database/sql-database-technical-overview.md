@@ -8,19 +8,19 @@ ms.subservice: service
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
-author: CarlRabeler
-ms.author: carlrab
-ms.reviewer: ''
+author: stevestein
+ms.author: sstein
+ms.reviewer: carlrab
 manager: craigg
 ms.date: 04/08/2019
-ms.openlocfilehash: bd696a003b54face4f95ae426c11840bb8805bee
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: ecfd0cbc3eaaae64a956568a506252fdbeddcac2
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59273137"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59358330"
 ---
-# <a name="what-is-azure-sql-database-service"></a>Co je služba Azure SQL Database?
+# <a name="what-is-azure-sql-database-service"></a>Co je služba Azure SQL Database
 
 SQL Database je spravovaná služba relačních databází pro obecné účely v Microsoft Azure, která podporuje struktury, jako jsou relační data, JSON, prostorová data a XML. SQL Database nabízí dynamicky škálovatelný výkon v rámci dva různé modely nákupu: nákupní model založený na virtuálních jádrech a nákupní model založený na DTU. SQL Database také poskytuje možnosti jako [indexy columnstore](https://docs.microsoft.com/sql/relational-databases/indexes/columnstore-indexes-overview) pro extrémní analytické analýzy a generování sestav nebo [OLTP v paměti](sql-database-in-memory.md) pro extrémní zpracování transakcí. Microsoft zajišťuje bezproblémové opravy a aktualizace základního kódu SQL a odděluje veškerou správu základní infrastruktury.
 
@@ -102,12 +102,12 @@ Můžete využít integrované nástroje pro [monitorování výkonu](sql-databa
 ## <a name="availability-capabilities"></a>Možnosti dostupnosti
 
 V tradičních prostředí systému SQL Server, obecně máte místně se nastavení s využitím přesné (synchronně udržována) kopií dat (pomocí funkcí, jako jsou skupiny dostupnosti AlwaysOn nebo instance clusteru převzetí služeb při selhání) k ochraně proti počítače (minimálně) 2 selhání jednoho počítače nebo komponenty.  To poskytuje vysokou dostupnost, ale nechrání před přírodní katastrofě zničení vašeho datového centra.
- 
+
 Zotavení po havárii se předpokládá, že katastrofická událost bude geograficky lokalizované dost informací k existuje jiná počítač/sada počítačů pomocí kopie vašich dat daleko.  V systému SQL Server můžete použít skupiny dostupnosti Always On spuštěná v režimu asynchronního získat tuto funkci.  Rychlostí světla problémů obvykle znamená, že uživatelé nechtějí čekat pro replikaci, která se provede, která daleko před potvrzením transakce, takže není dojít ke ztrátě dat. po provedení neplánovaného převzetí služeb při selhání.
 
 Databáze ve službě premium a obchodní kritické úrovní již [udělat něco podobného velmi](sql-database-high-availability.md#premium-and-business-critical-service-tier-availability) k synchronizaci skupiny dostupnosti. Databáze v nižší úrovně služby poskytovat redundanci úložiště pomocí [různých ale ekvivalentní mechanismus](sql-database-high-availability.md#basic-standard-and-general-purpose-service-tier-availability). Není k dispozici logiku, která chrání proti selhání jednoho počítače.  Tato funkce aktivní geografická replikace umožňuje pro ochranu proti havárii kde je zničen celou oblast.
 
-Zóny dostupnosti Azure je play na příslušný problém vysokou dostupnost.  Pokusí se chránit před výpadkem jednoho datového centra sestavení v rámci jedné oblasti.  Ano chce chránit proti ztrátě napájení nebo sítě v budově. V SQL Azure, bude to fungovat tak, že umístíte různé repliky do různých zón dostupnosti (různé budovy, efektivně) a jinak fungovat stejně jako předtím. 
+Zóny dostupnosti Azure je play na příslušný problém vysokou dostupnost.  Pokusí se chránit před výpadkem jednoho datového centra sestavení v rámci jedné oblasti.  Ano chce chránit proti ztrátě napájení nebo sítě v budově. V SQL Azure, bude to fungovat tak, že umístíte různé repliky do různých zón dostupnosti (různé budovy, efektivně) a jinak fungovat stejně jako předtím.
 
 Ve skutečnosti smlouvu o úrovni služeb Azure odvětví přední 99,99 % dostupnost [(SLA)](https://azure.microsoft.com/support/legal/sla/), technologii globální síti Datacenter řízených microsoftem, pomáhá zachovat aplikaci spuštěnou 24 hodin denně 7. Platforma Azure plně spravuje každou databázi a garantuje bez ztráty dat a vysoké procento dostupnosti data. Azure automaticky zpracovává opravy, zálohování, replikaci, detekci selhání, potenciální selhání základního hardwaru, softwaru nebo sítě, nasazování oprav chyb, převzetí služeb při selhání, upgrady databází a další úlohy údržby. Dostupnosti úrovně Standard se dosahuje oddělením výpočetní a úložné vrstvy. Premium dostupnosti se dosahuje prostřednictvím integrace výpočetní výkon a úložiště na jednom uzlu pro výkon a potom implementace technologie podobný skupin dostupnosti Always On na pozadí. Úplnou diskusi o možnosti vysoké dostupnosti služby Azure SQL Database, najdete v části [dostupnost SQL Database](sql-database-high-availability.md). Kromě toho SQL Database nabízí integrované funkce pro [provozní kontinuitu a globální škálovatelnost](sql-database-business-continuity.md), mezi které patří:
 
@@ -156,7 +156,7 @@ Do služby SQL Database přidáváme také řadu funkcí pro [adaptivní zpracov
 SQL Database nabízí řadu [integrovaných funkcí zabezpečení a dodržování předpisů](sql-database-security-overview.md), které vaší aplikaci pomůžou se splněním nejrůznějších požadavků na zabezpečení a dodržování předpisů.
 
 > [!IMPORTANT]
-> Azure SQL Database (všechny možnosti nasazení) a byla certifikována pro řadu standardů dodržování předpisů. Další informace najdete v tématu [Microsoft Azure Trust Center](https://azure.microsoft.com/support/trust-center/compliance/) místo, kde najdete nejnovější seznam certifikací dodržování předpisů SQL Database.
+> Azure SQL Database (všechny možnosti nasazení) a byla certifikována pro řadu standardů dodržování předpisů. Další informace najdete v tématu [Microsoft Azure Trust Center](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942) místo, kde najdete nejnovější seznam certifikací dodržování předpisů SQL Database.
 
 ### <a name="advance-threat-protection"></a>Advanced Threat Protection
 
@@ -186,7 +186,7 @@ SQL Database umožňuje centrálně spravovat identity uživatele databáze a da
 
 ### <a name="compliance-certification"></a>Certifikace dodržování předpisů
 
-Služba SQL Database se účastní pravidelných auditů a byla certifikována pro řadu standardů dodržování předpisů. Další informace najdete v tématu [Microsoft Azure Trust Center](https://azure.microsoft.com/support/trust-center/compliance/) místo, kde najdete nejnovější seznam certifikací dodržování předpisů SQL Database.
+Služba SQL Database se účastní pravidelných auditů a byla certifikována pro řadu standardů dodržování předpisů. Další informace najdete v tématu [Microsoft Azure Trust Center](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942) místo, kde najdete nejnovější seznam certifikací dodržování předpisů SQL Database.
 
 ## <a name="easy-to-use-tools"></a>Snadno použitelné nástroje
 
@@ -240,7 +240,6 @@ Zákazníci SQL Database bude mít následující práva spojená s programem Az
 |Zákazníci jádra SQL Server Enterprise Edition s SA|<li>Můžete platit základní sazba pro obecné účely nebo SKU pro důležité obchodní</li><br><li>1 jádro v místním = 4 jádra v SKU pro obecné účely</li><br><li>1 jádro v místním = 1 jádro v SKU pro důležité obchodní</li>|
 |SQL Server Standard Edition core zákazníkům s SA|<li>Můžete platit základní míra na SKU pro obecné účely pouze</li><br><li>1 jádro v místním = 1 jádro v SKU pro obecné účely</li>|
 |||
-
 
 ## <a name="engage-with-the-sql-server-engineering-team"></a>Spolupráce s technickým týmem SQL Serveru
 

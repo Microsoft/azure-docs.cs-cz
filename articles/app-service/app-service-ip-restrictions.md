@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 07/30/2018
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 805de614246028bc75268e83991fa7831b990325
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.openlocfilehash: bb6ab29f02282a394e3f93e41682ceaec5208b75
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58882323"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59357612"
 ---
 # <a name="azure-app-service-static-access-restrictions"></a>Omezení statických přístupu službě Azure App Service #
 
@@ -85,3 +85,9 @@ Syntaxe JSON předchozího příkladu je:
         "name": "allowed access"
       }
     ],
+
+## <a name="function-app-ip-restrictions"></a>Omezení IP adres aplikace – funkce
+
+Omezení IP adres jsou k dispozici pro obě aplikace Function App pomocí stejné funkce jako plány služby App Service. Všimněte si, že povolíte IP zakáže omezení editoru portálu kódu pro každé zakázaných IP adresy.
+
+[Další informace najdete tady](../azure-functions/functions-networking-options.md#inbound-ip-restrictions)

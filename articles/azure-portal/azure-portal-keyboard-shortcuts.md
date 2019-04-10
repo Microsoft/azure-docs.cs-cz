@@ -12,39 +12,48 @@ ms.devlang: NA
 ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: na
-ms.date: 08/24/2017
+ms.date: 04/08/2019
 ms.author: kfollis
 ms.custom: accessibility
-ms.openlocfilehash: d9c9c18fb2c20f1b0740a490316826e488049faf
-ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
+ms.openlocfilehash: fb0b347228fe82725d5246ae9eacdab8dff01257
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54881167"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59359719"
 ---
 # <a name="keyboard-shortcuts-in-the-azure-portal"></a>Klávesové zkratky na webu Azure Portal
-Tento článek popisuje klávesové zkratky, které fungují v rámci webu Azure portal. Jednotlivé služby může mít své vlastní klávesové zkratky.
+
+Tento článek uvádí klávesové zkratky, které fungují všude, kde na webu Azure Portal. Jednotlivé služby může mít své vlastní klávesové zkratky.
 
 ## <a name="actions"></a>Akce
-|Provedete to tak |Stisknutím klávesy |
+
+|Pro tuto akci |Stisknutím klávesy |
 | --- | --- |
-|Vytvoření nového prostředku|G + N|
-|Otevření podokna "všechny služby.|G+B|
-|Prohledávat prostředky|G+/| 
+|Vytvoření prostředku|G + N|
+|Otevřít **všechny služby**|G+B|
+|Hledat prostředky, služby a dokumenty|G+/|
 |Hledání položek nabídky prostředků|CTRL +/ |
-|Levé podokno vybrané položky nahoru |ALT + Shift + šipka nahoru|
-|Levé podokno vybrané položky dolů |ALT + Shift + šipka dolů|
+|Posunout nahoru levém bočním panelu vybrané položky |ALT + Shift + šipka nahoru|
+|Přesun vybrané levém bočním panelu položky dolů |ALT + Shift + šipka dolů|
 
 ## <a name="navigation"></a>Navigace
-|Provedete to tak |Stisknutím klávesy |
+
+|Provedete to tato navigace |Stisknutím klávesy |
 | --- | --- |
 |Přesunout fokus na panel příkazů |G+, |
-|Přepnout fokus mezi horním a postranním panelem | G+. |
+|Přepnout fokus mezi záhlavím a levém bočním panelu | G+. |
 
 ## <a name="go-to"></a>Přejít na
-|Provedete to tak |Stisknutím klávesy |
+
+|Chcete-li přejít do tohoto umístění. |Stisknutím klávesy |
 | --- | --- |
-|Přejít na řídicí panel |G + D |
-|Přejít na všechny prostředky|G+A |
-|Přejít na skupiny prostředků|G+R |
-|Otevřete položku levém podokně na této pozici |G+číslo|
+|Přejděte na **řídicího panelu** |G + D |
+|Přejděte na **všechny prostředky**|G+A |
+|Přejděte na **skupiny prostředků**|G+R |
+|Otevřete položku levém bočním panelu na této pozici |G+číslo|
+
+## <a name="next-steps"></a>Další postup
+
+- [Zapnutí vysokého kontrastu nebo změna motivu](azure-portal-change-theme-high-contrast.md)
+- [Podporované prohlížeče a zařízení](../azure-preview-portal-supported-browsers-devices.md)

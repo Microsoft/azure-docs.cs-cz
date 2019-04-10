@@ -8,18 +8,41 @@ ms.service: sql-database
 ms.subservice: service
 ms.devlang: ''
 ms.topic: conceptual
-ms.date: 03/05/2019
+ms.date: 04/03/2019
 ms.author: carlrab
-ms.openlocfilehash: 6600a578ba9c73c8a2c71466fd0b008f19058b80
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: c63ce51f442c8d7552c382f0e103be443afb9c75
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57861284"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59360086"
 ---
 # <a name="sql-database-release-notes"></a>Zpráva k vydání verze SQL Database
 
 Tento článek obsahuje seznam nových funkcí a vylepšení ve službě SQL Database a v dokumentaci k SQL Database. Vylepšení služby SQL Database, najdete v článku také [aktualizace služby SQL Database](https://azure.microsoft.com/updates/?product=sql-database). Vylepšení k jiným službám Azure, najdete v části [aktualizací služby](https://azure.microsoft.com/updates).
+
+## <a name="features-in-public-preview"></a>Funkce ve verzi public preview
+
+| Funkce | Podrobnosti |
+| ---| --- |
+| Úlohy elastické databáze | Informace najdete v tématu [vytvoření, konfigurace a správa elastických úloh](elastic-jobs-overview.md) |
+| Elastické transakce | [Distribuované transakce v cloudových databázích](sql-database-elastic-transactions-overview.md) |
+| Elastické dotazy | Informace najdete v tématu [přehled elastického dotazu](sql-database-elastic-query-overview.md) |
+| Replikace se spravované instance |Informace najdete v tématu [konfigurace replikace databáze spravované instance Azure SQL Database](replication-with-sql-database-managed-instance.md)|
+| Kolací instance s spravované instance |Informace najdete v tématu [pomocí šablony Azure Resource Manageru k vytvoření spravované instance Azure SQL Database pomocí Powershellu](./scripts/sql-managed-instance-create-powershell-azure-resource-manager-template.md)|
+| R services / machine learning s izolovaných databází a elastických fondů |Informace najdete v tématu [služby Machine Learning v Azure SQL Database](https://docs.microsoft.com/sql/advanced-analytics/what-s-new-in-sql-server-machine-learning-services?view=sql-server-2017#machine-learning-services-in-azure-sql-database)|
+| Obnovení databáze akcelerovanými pomocí izolovaných databází a elastických fondů | Informace najdete v tématu [zapnuto zrychlené obnovení databáze](sql-database-accelerated-database-recovery.md)|
+| Zjišťování a klasifikace dat  |Informace najdete v tématu [Azure SQL Database a SQL Data Warehouse zjišťování a klasifikace dat](sql-database-data-discovery-and-classification.md)|
+| Transparentní šifrování dat (TDE) s přenést Your Own Key (BYOK) pomocí spravované instance |Informace najdete v tématu [Azure SQL transparentního šifrování dat pomocí klíčů spravovaných zákazníkem ve službě Azure Key Vault: Your Own Key podpoře](transparent-data-encryption-byok-azure-sql.md)|
+| Znovu vytvořte vynechaných databází s spravované instance |Informace najdete v tématu [znovu vytvořit vyřadit databází ve spravované instanci SQL Azure](https://medium.com/azure-sqldb-managed-instance/re-create-dropped-databases-in-azure-sql-managed-instance-dc369ed60266)|
+| Detekce hrozeb spravované instance |Informace najdete v tématu [konfigurovat detekce hrozeb ve službě Azure SQL Database managed instance](sql-database-managed-instance-threat-detection.md)|
+| Úrovně služeb Hyperškálovatelného u izolovaných databází |Informace najdete v tématu [Hyperškálovatelného vrstvy služby pro až 100 TB](sql-database-service-tier-hyperscale.md)|
+| Editor dotazů na webu Azure Portal |Informace najdete v tématu [připojení a dotazování dat pomocí editoru dotazů SQL webu Azure portal](sql-database-connect-query-portal.md)|
+|Přibližný počet jedinečných|Informace najdete v tématu [přibližné Count Distinct](https://docs.microsoft.com/sql/relational-databases/performance/intelligent-query-processing#approximate-query-processing)|
+|Režim služby batch na Rowstore (pod úroveň kompatibility 150)|Informace najdete v tématu [režimu služby Batch na Rowstore](https://docs.microsoft.com/sql/relational-databases/performance/intelligent-query-processing#batch-mode-on-rowstore)|
+|Paměť zpětnou vazbu přidělení (řádek v režimu) (pod úroveň kompatibility 150)|Informace najdete v tématu [zpětnou vazbu přidělení paměti (řádek režim)](https://docs.microsoft.com/sql/relational-databases/performance/intelligent-query-processing#row-mode-memory-grant-feedback)|
+|Tabulka proměnných odložené kompilace (pod úroveň kompatibility 150)|Informace najdete v tématu [kompilace odložené proměnné tabulky](https://docs.microsoft.com/sql/relational-databases/performance/intelligent-query-processing#table-variable-deferred-compilation)|
+|||
 
 ## <a name="march-2019"></a>2019. března
 
@@ -27,7 +50,7 @@ Tento článek obsahuje seznam nových funkcí a vylepšení ve službě SQL Dat
 
 | Vylepšení služby | Podrobnosti |
 | --- | --- |
-| Již brzy ||
+| Všeobecná dostupnost: Podpora škálování čtení pro Azure SQL Database | Další informace najdete v tématu [horizontální navýšení kapacity pro čtení](sql-database-read-scale-out.md)|
 | &nbsp; |
 
 ### <a name="documentation-improvements"></a>Dokumentace k vylepšení

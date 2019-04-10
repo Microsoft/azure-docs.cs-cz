@@ -5,58 +5,45 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 03/18/2019
+ms.date: 04/08/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 31d08c0dac63662568bf55a021e85ec414c61e52
-ms.sourcegitcommit: 223604d8b6ef20a8c115ff877981ce22ada6155a
+ms.openlocfilehash: fc15db91b8f4cc6dbdecd0e7321abdbf81744f08
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58360363"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59357971"
 ---
 # <a name="migrate-on-premises-machines-to-azure"></a>Migrace místních počítačů do Azure
 
-Službu [Azure Site Recovery](site-recovery-overview.md) můžete použít nejen ke správě a orchestraci zotavení po havárii místních počítačů a virtuálních počítačů Azure s cílem zajistit provozní kontinuitu a zotavení po havárii (BCDR), ale můžete pomocí ní také spravovat migraci místních počítačů do Azure.
+
+Tento článek popisuje migraci místních počítačů do Azure pomocí [Azure Site Recovery](site-recovery-overview.md). Obecně platí Site Recovery se používá ke správě a orchestraci zotavení po havárii místních počítačů a virtuálních počítačů Azure. Však ho můžete také použít pro migraci. Migrace používá stejný postup jako zotavení po havárii s jednou výjimkou. Při migraci převzetí služeb počítače při selhání z místní lokality se v posledním kroku. Na rozdíl od zotavení po havárii nemůžete po obnovení zpět do místního ve scénáři migrace.
 
 
-V tomto kurzu se dozvíte, jak migrovat místní virtuální počítače a fyzické servery do Azure. V tomto kurzu se naučíte:
+V tomto kurzu se dozvíte, jak migrovat místní virtuální počítače a fyzické servery do Azure. Získáte informace o těchto tématech:
 
 > [!div class="checklist"]
-> * Výběr cíle replikace
-> * Nastavení zdrojového a cílového prostředí
+> * Nastavení zdrojového a cílového prostředí pro migraci
 > * Nastavení zásady replikace
 > * Povolení replikace
 > * Spuštění testu migrace za účelem ověření, že vše funguje podle očekávání
 > * Spuštění jednorázového převzetí služeb při selhání do Azure
 
-Toto je třetí kurz ze specializované série. Tento kurz předpokládá, že jste už dokončili úlohy z předchozích kurzů:
-
-1. [Příprava Azure](tutorial-prepare-azure.md)
-2. Příprava místních serverů [VMware](vmware-azure-tutorial-prepare-on-premises.md) nebo [Hyper-V](hyper-v-prepare-on-premises-tutorial.md)
-
-Než začnete, doporučujeme zkontrolovat architekturu [VMware](vmware-azure-architecture.md) nebo [Hyper-V](hyper-v-azure-architecture.md) určenou pro zotavení po havárii.
 
 > [!TIP]
-> Chcete se zúčastnit naší nové prostředí bez agentů pro migrace virtuálních počítačů VMware do Azure? [Více informací najdete](https://aka.ms/migrateVMs-signup).
-
-## <a name="prerequisites"></a>Požadavky
-
-Zařízení exportovaná paravirtualizovanými ovladači se nepodporují.
+> Služba Azure Migrate je teď nabízí náhled pro nové prostředí bez agentů pro migrace virtuálních počítačů VMware do Azure. [Více informací najdete](https://aka.ms/migrateVMs-signup).
 
 
-## <a name="create-a-recovery-services-vault"></a>Vytvoření trezoru Služeb zotavení
+## <a name="before-you-start"></a>Než začnete
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com) > **Recovery Services**.
-2. Klikněte na tlačítko **vytvořit prostředek** > **nástroje pro správu** > **Backup a Site Recovery**.
-3. Do pole **Název** zadejte popisný název **ContosoVMVault**. Pokud máte více předplatných, vyberte příslušné předplatné.
-4. Vytvořte skupinu prostředků **ContosoRG**.
-5. Zadejte oblast Azure. Informace o tom, které oblasti jsou podporované, najdete v části s geografickou dostupností v tématu s [podrobnostmi o cenách Azure Site Recovery](https://azure.microsoft.com/pricing/details/site-recovery/).
-6. Pokud chcete mít možnost rychle se dostat k trezoru z řídicího panelu, klikněte na **Připnout na řídicí panel** a potom klikněte na **Vytvořit**.
+Všimněte si, že zařízení exportovaná paravirtualizovanými ovladači se nepodporují.
 
-   ![Nový trezor](./media/migrate-tutorial-on-premises-azure/onprem-to-azure-vault.png)
 
-Nový trezor se přidá do oblasti **Řídicí panel** v části **Všechny prostředky** a na hlavní stránku **Trezory Recovery Services**.
+## <a name="prepare-azure-and-on-premises"></a>Příprava Azure i v místním prostředí
+
+1. Příprava Azure, jak je popsáno v [v tomto článku](tutorial-prepare-azure.md). I když tento článek popisuje přípravné kroky pro zotavení po havárii, postup platí také pro migraci.
+2. Příprava místních serverů [VMware](vmware-azure-tutorial-prepare-on-premises.md) nebo [Hyper-V](hyper-v-prepare-on-premises-tutorial.md) Pokud migrujete fyzické počítače, nemusíte připravovat nic dalšího. Právě ověřte, [systém podpory replikace z](vmware-physical-azure-support-matrix.md).
 
 
 ## <a name="select-a-replication-goal"></a>Výběr cíle replikace
@@ -72,9 +59,11 @@ Vyberte, jak chcete počítače replikovat a kam je chcete replikovat.
 
 ## <a name="set-up-the-source-environment"></a>Nastavení zdrojového prostředí
 
-- [Nastavení](vmware-azure-tutorial.md#set-up-the-source-environment) zdrojového prostředí pro virtuální počítače VMware
-- [Nastavení](physical-azure-disaster-recovery.md#set-up-the-source-environment) zdrojového prostředí pro fyzické servery
-- [Nastavení](hyper-v-azure-tutorial.md#set-up-the-source-environment) zdrojového prostředí pro virtuální počítače Hyper-V
+**Scénář** | **Podrobnosti**
+--- | --- 
+VMware | Nastavit [zdrojové prostředí](vmware-azure-set-up-source.md)a nastavit [konfigurační server](vmware-azure-deploy-configuration-server.md).
+Fyzický počítač | [Nastavit](physical-azure-set-up-source.md) zdrojovém prostředí a konfigurace serveru.
+Hyper-V | Nastavit [zdrojové prostředí](hyper-v-azure-tutorial.md#set-up-the-source-environment)<br/><br/> Nastavit [zdrojové prostředí](hyper-v-vmm-azure-tutorial.md#set-up-the-source-environment) pro Hyper-V nasazené pomocí nástroje System Center VMM.
 
 ## <a name="set-up-the-target-environment"></a>Nastavení cílového prostředí
 
@@ -82,20 +71,26 @@ Vyberte a zkontrolujte cílové prostředky.
 
 1. Klikněte na **Připravit infrastrukturu** > **Cíl** a vyberte předplatné Azure, které chcete použít.
 2. Zadejte model nasazení Resource Manager.
-3. Site Recovery zkontroluje, že máte minimálně jednu kompatibilní síť a účet úložiště Azure.
+3. Site Recovery zkontroluje prostředky Azure.
+    - Pokud migrujete virtuální počítače VMware nebo fyzické servery, Site Recovery ověřuje, že máte síť Azure, ve které virtuální počítače Azure budou umístěné při jejich vytvoření po převzetí služeb při selhání.
+    - Pokud migrujete virtuální počítače Hyper-V, Site Recovery ověřuje, že máte účet kompatibilní úložiště Azure a síť.
+4. Pokud migrujete virtuální počítače Hyper-V jsou spravovány nástrojem System Center VMM, nastavte si [mapování sítě](hyper-v-vmm-azure-tutorial.md#configure-network-mapping).
 
 ## <a name="set-up-a-replication-policy"></a>Nastavení zásady replikace
 
-- [Nastavení zásady replikace](vmware-azure-tutorial.md#create-a-replication-policy) pro virtuální počítače VMware
-- [Nastavení zásady replikace](physical-azure-disaster-recovery.md#create-a-replication-policy) pro fyzické servery
-- [Nastavení zásady replikace](hyper-v-azure-tutorial.md#set-up-a-replication-policy) pro virtuální počítače Hyper-V
-
+**Scénář** | **Podrobnosti**
+--- | --- 
+VMware | Nastavení [zásady replikace](vmware-azure-set-up-replication.md) pro virtuální počítače VMware.
+Fyzický počítač | Nastavení [zásady replikace](physical-azure-disaster-recovery.md#create-a-replication-policy) pro fyzické počítače.
+Hyper-V | Nastavení [zásady replikace](hyper-v-azure-tutorial.md#set-up-a-replication-policy)<br/><br/> Nastavení [zásady replikace](hyper-v-vmm-azure-tutorial.md#set-up-a-replication-policy) pro Hyper-V nasazené pomocí nástroje System Center VMM.
 
 ## <a name="enable-replication"></a>Povolení replikace
 
-- [Povolení replikace](vmware-azure-tutorial.md#enable-replication) pro virtuální počítače VMware
-- [Povolení replikace](physical-azure-disaster-recovery.md#enable-replication) pro fyzické servery
-- Povolení replikace pro virtuální počítače Hyper-V [s VMM](hyper-v-vmm-azure-tutorial.md#enable-replication) nebo [bez VMM](hyper-v-azure-tutorial.md#enable-replication)
+**Scénář** | **Podrobnosti**
+--- | --- 
+VMware | [Povolení replikace](vmware-azure-enable-replication.md) pro virtuální počítače VMware
+Fyzický počítač | [Povolení replikace](physical-azure-disaster-recovery.md#enable-replication) pro fyzické počítače.
+Hyper-V | [Povolení replikace](hyper-v-azure-tutorial.md#enable-replication)<br/><br/> [Povolení replikace](hyper-v-vmm-azure-tutorial.md#enable-replication) pro Hyper-V nasazené pomocí nástroje System Center VMM.
 
 
 ## <a name="run-a-test-migration"></a>Spuštění testu migrace
@@ -160,8 +155,13 @@ Některé kroky se dají automatizovat jako součást migračního procesu pomoc
 - Aktualizujte veškerou interní dokumentaci tak, aby obsahovala nová umístění a IP adresy virtuálních počítačů Azure.
 
 
+
+
 ## <a name="next-steps"></a>Další postup
 
-V tomto kurzu jste migrovali místní virtuální počítače na virtuální počítače Azure. Nyní můžete pro virtuální počítače Azure [nastavit zotavení po havárii](azure-to-azure-replicate-after-migration.md) do sekundární oblasti Azure.
+V tomto kurzu jste migrovali místní virtuální počítače na virtuální počítače Azure. Ihned
+
+> [!div class="nextstepaction"]
+> [Nastavení zotavení po havárii](azure-to-azure-replicate-after-migration.md) do sekundární oblasti Azure pro virtuální počítače Azure.
 
   

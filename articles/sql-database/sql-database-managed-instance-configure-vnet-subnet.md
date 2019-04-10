@@ -9,15 +9,15 @@ ms.devlang: ''
 ms.topic: conceptual
 author: srdan-bozovic-msft
 ms.author: srbozovi
-ms.reviewer: bonova, carlrab
+ms.reviewer: sstein, bonova, carlrab
 manager: craigg
 ms.date: 01/15/2019
-ms.openlocfilehash: 13038bb7159556b36e82b598732d1f2d497bf314
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: c4ff12f0c9adcb9943a6e2426eaf2740ba171e39
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57762768"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59358844"
 ---
 # <a name="configure-an-existing-virtual-network-for-azure-sql-database-managed-instance"></a>Konfigurace existující virtuální sítě pro Azure SQL Database Managed Instance
 
@@ -25,10 +25,9 @@ Azure SQL Database Managed Instance musí být nasazen v rámci Azure [virtuáln
 
 Pokud jeden z následujících případech se na vás vztahuje, můžete ověřovat a upravovat vaší sítě pomocí skriptů je popsáno v tomto článku:
 
-* Máte novou podsíť, která ještě není nakonfigurovaná.
-* Si nejste jistí, že podsíť je v souladu s [požadavky](sql-database-managed-instance-connectivity-architecture.md#network-requirements).
-* Chcete zkontrolovat, že podsíť stále splňuje [požadavky na síťovou](sql-database-managed-instance-connectivity-architecture.md#network-requirements) po provedení změny.
-
+- Máte novou podsíť, která ještě není nakonfigurovaná.
+- Si nejste jistí, že podsíť je v souladu s [požadavky](sql-database-managed-instance-connectivity-architecture.md#network-requirements).
+- Chcete zkontrolovat, že podsíť stále splňuje [požadavky na síťovou](sql-database-managed-instance-connectivity-architecture.md#network-requirements) po provedení změny.
 
 > [!Note]
 > Managed Instance můžete vytvořit pouze v virtuálními sítěmi vytvořenými prostřednictvím modelu nasazení Azure Resource Manageru. Azure virtuálních sítí vytvořených prostřednictvím modelu nasazení classic nejsou podporovány. Vypočítá velikost podsítě podle pokynů v [určit velikost podsítě pro Managed instance](sql-database-managed-instance-determine-size-vnet-subnet.md) článku. Poté, co nasadíte prostředky v nejde jeho velikost změnit podsíť.

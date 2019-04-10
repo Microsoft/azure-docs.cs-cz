@@ -8,12 +8,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 1/14/2019
 ms.author: alkarche
-ms.openlocfilehash: 8bbc44e7af68f005f30fff143741bc4bfe0adcf2
-ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
+ms.openlocfilehash: 10d7daa6da45c56e20c622fcbca9ee288e737dab
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58896335"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59358156"
 ---
 # <a name="azure-functions-networking-options"></a>Azure Functions možnosti sítě
 
@@ -43,7 +43,8 @@ Funkce aplikací je možné hostovat v několika různými způsoby.
 
 Omezení IP adres umožňují definovat prioritu seřazený povolit nebo zamítnout seznam IP adres, které můžou přistupovat k vaší aplikace. Seznam povolených tříd může obsahovat adresy IPv4 a IPv6. Pokud je jeden nebo více položek, je pak implicitní Zamítnout vše, která existuje na konci seznamu. Funkce omezení podle IP spolupracuje s možností hostování všechny funkce.
 
-> ! [DŮLEŽITÉ] Aby bylo možné používat editoru webu Azure portal, musí být schopen přímý přístup k běžící aplikaci function app na portálu a zařízení, které používáte pro přístup k portálu musí mít jeho seznam povolených IP adres. Síťové omezení na místě, budete k němu přístup žádné funkce v **funkce platformy** kartu.
+> [!NOTE]
+> Aby bylo možné používat editoru webu Azure portal, musí být schopen přímý přístup k běžící aplikaci function app na portálu a zařízení, které používáte pro přístup k portálu musí mít jeho seznam povolených IP adres. Síťové omezení na místě, budete k němu přístup žádné funkce v **funkce platformy** kartu.
 
 [Další informace najdete tady](https://docs.microsoft.com/azure/app-service/app-service-ip-restrictions)
 

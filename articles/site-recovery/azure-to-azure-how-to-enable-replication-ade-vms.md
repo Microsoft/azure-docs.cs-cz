@@ -6,14 +6,14 @@ author: sujayt
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 11/27/2018
+ms.date: 04/08/2019
 ms.author: sutalasi
-ms.openlocfilehash: 27c1481314ba1dd77cdcf229842aeec7de3e4444
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: b3e997a37bb5d030d559b6771b2c0e2f74cc62ab
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58117451"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59277680"
 ---
 # <a name="replicate-azure-disk-encryption-ade-enabled-virtual-machines-to-another-azure-region"></a>Azure disk encryption (ADE) povolena virtuální počítače replikovat do jiné oblasti Azure
 
@@ -148,7 +148,7 @@ Můžete použít [skript](#copy-ade-keys-to-dr-region-using-powershell-script) 
 Pokud jste už vytvořeného trezoru klíčů v cílové oblasti výběru místo nechat Azure Site Recovery, vytvořte ho. Ujistěte se, že Key vault se vyžadují oprávnění, jak je uvedeno výše.</br>
 *Například*: Uživatel se pokusí replikace virtuálního počítače, který má ve zdrojové oblasti Dejme tomu, že "ContososourceKeyvault" trezor klíčů.
 Uživatel má oprávnění ke zdrojové oblasti trezor klíčů, ale během ochrany, který vybere už vytvořeného trezoru klíčů "ContosotargetKeyvault", který nemá oprávnění, pak bude ochrany vyvolá chybu.</br>
-**Jak vyřešit:** Máte k "Domů > Keyvaults > ContososourceKeyvault > zásady přístupu" a přidejte oprávnění, jak je znázorněno výše. 
+**Jak vyřešit:** Máte k "Domů > Keyvaults > ContososourceKeyvault > zásady přístupu" a přidejte oprávnění, jak je znázorněno výše.
 
 **2. příčina:** Možná jste vybrali už vytvořeného trezoru klíčů z cílové oblasti, která nebude mít decry pt šifrovat oprávnění.
 Pokud jste už vytvořeného trezoru klíčů v cílové oblasti výběru místo nechat Azure Site Recovery, vytvořte ho. Ujistěte se, že uživatel má dešifrovat šifrování oprávnění v případě, že se šifruje klíčem příliš ve zdrojové oblasti.</br>

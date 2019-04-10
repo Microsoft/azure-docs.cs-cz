@@ -9,15 +9,15 @@ ms.devlang: ''
 ms.topic: conceptual
 author: jovanpop-msft
 ms.author: jovanpop-msft
-ms.reviewer: carlrab
+ms.reviewer: sstein
 manager: craigg
 ms.date: 02/07/2019
-ms.openlocfilehash: 83be636317299adf820a60716866aa35d318d6dc
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: dc379f1ee67174cd806840e4244054701d18f0d4
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55997358"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59357911"
 ---
 # <a name="general-purpose-service-tier---azure-sql-database"></a>Obecné úrovni služby – Azure SQL Database
 
@@ -26,7 +26,7 @@ ms.locfileid: "55997358"
 
 Azure SQL Database je založené na architektuře modul databáze serveru SQL Server upravené pro cloudovém prostředí, aby bylo možné zajistit 99,99 % dostupnost i v případě selhání infrastruktury. Existují tři úrovně služby, které se používají ve službě Azure SQL Database, každý s různými modely architektury. Tyto úrovně služby jsou:
 
-- Obecné účely 
+- Obecné účely
 - Pro důležité obchodní informace
 - Hyperškálování
 

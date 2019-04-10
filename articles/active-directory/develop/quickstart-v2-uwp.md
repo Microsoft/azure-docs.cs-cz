@@ -17,12 +17,12 @@ ms.date: 04/01/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e6de55cb9f1f89c9c3cd809294890f63134a26d8
-ms.sourcegitcommit: ad3e63af10cd2b24bf4ebb9cc630b998290af467
+ms.openlocfilehash: 3cf4ec48942cbe345b12d2a358afc3dadbe63a96
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58793165"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59360115"
 ---
 # <a name="quickstart-call-the-microsoft-graph-api-from-a-universal-windows-platform-uwp-application"></a>Rychlý start: Volání rozhraní Microsoft Graph API z aplikace pro univerzální platformu Windows (UPW)
 
@@ -64,14 +64,14 @@ Tento rychlý start obsahuje vzorový kód, který předvádí, jak může aplik
 > #### <a name="step-1-configure-your-application"></a>Krok 1: Konfigurace aplikace
 > Aby vzorový kód pro tento rychlý start fungoval, musíte jako identifikátor URI pro přesměrování přidat **urn:ietf:wg:oauth:2.0:oob**.
 > > [!div renderon="portal" id="makechanges" class="nextstepaction"]
-> > [Udělat změnu za mě]()
+> > [Provedení této změny pro mě]()
 >
 > > [!div id="appconfigured" class="alert alert-info"]
-> > ![Už nakonfigurované](media/quickstart-v2-uwp/green-check.png) Vaše aplikace je nakonfigurovaná s těmito atributy.
+> > ![Už nakonfigurovali](media/quickstart-v2-uwp/green-check.png) vaše aplikace je nakonfigurovaná s těmito atributy.
 
 #### <a name="step-2-download-your-visual-studio-project"></a>Krok 2: Stáhněte si svůj projekt sady Visual Studio
 
- - [Stažení projektu sady Visual Studio 2017](https://github.com/Azure-Samples/active-directory-dotnet-native-uwp-v2/archive/master.zip)
+ - [Stáhněte si projekt sady Visual Studio 2017](https://github.com/Azure-Samples/active-directory-dotnet-native-uwp-v2/archive/master.zip)
 
 #### <a name="step-3-configure-your-visual-studio-project"></a>Krok 3: Konfigurace projektu sady Visual Studio
 
@@ -86,11 +86,11 @@ Tento rychlý start obsahuje vzorový kód, který předvádí, jak může aplik
 
 > [!div renderon="docs"]
 > Kde:
-> - `Enter_the_Application_Id_here` je ID aplikace, kterou jste zaregistrovali.
-> - `Enter_the_Tenant_Info_Here` je jedna z následujících možností:
->   - Pokud vaše aplikace podporuje režim **Jen moje organizace**, nahraďte tuto hodnotu za **ID tenanta** nebo **Název tenanta** (například contoso.microsoft.com).
->   - Pokud vaše aplikace podporuje režim **Účty v libovolném organizačním adresáři**, nahraďte tuto hodnotu za `organizations`.
->   - Pokud vaše aplikace podporuje režim **Všichni uživatelé účtu Microsoft**, nahraďte tuto hodnotu za `common`.
+> - `Enter_the_Application_Id_here` -je Id aplikace pro aplikace, které jste zaregistrovali.
+> - `Enter_the_Tenant_Info_Here` -je jedním z následujících možností:
+>   - Pokud vaše aplikace podporuje **Moje organizace jenom**, nahraďte tuto hodnotu **Id Tenanta** nebo **název Tenanta** (například contoso.onmicrosoft.com).
+>   - Pokud vaše aplikace podporuje **účty v libovolném adresáři organizace**, nahradí tato hodnota se `organizations`
+>   - Pokud vaše aplikace podporuje **uživatele účtu Microsoft všechny**, nahradí tato hodnota se `common`
 >
 > > [!TIP]
 > > Hodnoty *ID aplikace*, *ID adresáře (tenanta)* a *Podporované typy účtu* najdete na stránce **Přehled**.
@@ -167,4 +167,4 @@ authResult = await App.PublicClientApp.AcquireTokenSilentAsync(scopes, accounts.
 Vyzkoušejte kurz pro plochu Windows, kde najdete podrobný návod k vytváření aplikací a nových funkcí, včetně úplného popisu tohoto rychlého startu.
 
 > [!div class="nextstepaction"]
-> [Kurz pro UWP – volání rozhraní Graph API](tutorial-v2-windows-uwp.md)
+> [UPW – kurz volání rozhraní Graph API](tutorial-v2-windows-uwp.md)

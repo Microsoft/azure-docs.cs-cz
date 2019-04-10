@@ -10,71 +10,71 @@ author: sdgilley
 ms.author: sgilley
 ms.date: 03/21/2019
 ms.custom: seodec18
-ms.openlocfilehash: 9cd643185fb4647b19082980edfd333c507aab8a
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: 0672d90a25bc4c879d28512ab212f98f29efbf3b
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59266252"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59358213"
 ---
 # <a name="quickstart-use-a-cloud-based-notebook-server-to-get-started-with-azure-machine-learning"></a>Rychlý start: Začínáme s Azure Machine Learning pomocí serveru založené na cloudu poznámkového bloku
 
-Vytvoření serveru založené na cloudu Poznámkový blok a pak použít ke spuštění kódu, který zaznamenává hodnoty ve službě Azure Machine Learning [pracovní prostor](concept-azure-machine-learning-architecture.md). Váš pracovní prostor se základní blok v cloudu, který použijete k experimentovat, trénovat a nasazovat modely strojového učení pomocí Machine Learning. 
+V tomto článku se pomocí poznámkových bloků Azure spustit kód, který je přihlášený služby Azure Machine Learning [pracovní prostor](concept-azure-machine-learning-architecture.md). Váš pracovní prostor se základní blok v cloudu, který použijete k experimentovat, trénovat a nasazovat modely strojového učení pomocí Machine Learning. 
 
-Tento rychlý start ukazuje, jak vytvořit prostředek v cloudu ve vašem pracovním prostoru Azure Machine Learning nakonfigurovanou prostředí Pythonu potřebné ke spuštění Azure Machine Learning. Místo toho použít vlastní prostředí, najdete v článku [rychlý start: Začínáme s Azure Machine Learning pomocí serveru Poznámkový blok](quickstart-run-local-notebook.md).  
+V tomto rychlém startu se používají cloudové prostředky a nevyžaduje se žádná instalace. Místo toho použít vlastní prostředí, najdete v článku [rychlý start: Začínáme s Azure Machine Learning pomocí serveru Poznámkový blok](quickstart-run-local-notebook.md).  
  
 V tomto rychlém startu jste pomocí následujících kroků:
 
-* Vytvořit pracovní stanice
-* Spusťte Poznámkový blok Jupyter serveru na pracovní stanici
-* Otevřete Poznámkový blok, který obsahuje kód pro odhad číslo pí a protokoly chyb v jednotlivých iteracích.
-* Spuštění poznámkového bloku.
-* Zobrazte zaznamenané chybové hodnoty v pracovním prostoru.  Tento příklad ukazuje, jak vám pracovní prostor může pomoct udržovat si přehled o informacích generovaných ve skriptu. 
+* Připojení k vašemu pracovnímu prostoru s Pythonem v poznámkovém bloku Jupyter. Poznámkový blok obsahuje kód pro odhad číslo pí a protokoly chyb v jednotlivých iteracích. 
+* Zobrazte zaznamenané chybové hodnoty v pracovním prostoru.
 
 Pokud nemáte předplatné Azure, vytvořte si bezplatný účet, před zahájením. Zkuste [bezplatné nebo placené verzi aplikace služby Azure Machine Learning](https://aka.ms/AMLFree) ještě dnes.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisite"></a>Požadavek
 
 1. [Vytvoření pracovního prostoru Azure Machine Learning](setup-create-workspace.md#portal) pokud ho nemáte.
 
-1. Otevření pracovního prostoru v [webu Azure portal](https://portal.azure.com/).  Pokud si nejste jisti, jak vyhledat pracovního prostoru na portálu, přečtěte si postup [najít váš pracovní prostor](how-to-manage-workspace.md#view).
+1. Otevření pracovního prostoru v [webu Azure portal](https://portal.azure.com/).  V tématu Jak [najít váš pracovní prostor](how-to-manage-workspace.md#view).
 
-## <a name="create-a-workstation"></a>Vytvořit pracovní stanice 
+## <a name="use-your-workspace"></a>Použití vašeho pracovního prostoru
 
-Pracovní stanice Poznámkový blok poskytuje cloudové platformy pro aplikace Jupyter notebook, který byl předem nakonfigurován s všechno, co potřebujete ke spuštění služby Azure Machine Learning. Z pracovního prostoru můžete vytvořit této platformy, abyste mohli začít používat poznámkových bloků Jupyter.
+> [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE2F9Ad]
 
-1. Na stránce pracovního prostoru na webu Azure portal, vyberte **pracovní stanice Poznámkový blok** na levé straně.
 
-1. Vyberte **vytvoření poznámkových bloků v pracovní stanici k Azure Machine Learning (Preview)**
+
+Zjistěte, jak pracovní prostor vám pomůže spravovat vaše skriptů strojového učení. V této části provedete následující kroky:
+
+* Otevřete poznámkový blok ve službě Azure Notebooks.
+* Spustíte kód, který vytvoří zaprotokolované hodnoty.
+* Zobrazíte zaprotokolované hodnoty ve vašem pracovním prostoru.
+
+Tento příklad ukazuje, jak vám pracovní prostor může pomoct udržovat si přehled o informacích generovaných ve skriptu. 
+
+### <a name="open-a-notebook"></a>Otevření poznámkového bloku 
+
+[Azure Notebooks](https://notebooks.azure.com) poskytuje bezplatná Cloudová platforma pro poznámkové bloky Jupyter, které je předem nakonfigurován s všechno, co potřebujete ke spuštění Machine Learning. Z pracovního prostoru můžete spustit tuto platformu, abyste mohli začít používat váš pracovní prostor služby Azure Machine Learning.
+
+1. Na stránce Přehled pracovního prostoru, vyberte **získat začít Azure poznámkových bloků** vyzkoušet prvního experimentu v Azure poznámkových bloků.  Poznámkových bloků Azure je samostatná služba, která umožňuje spouštět poznámkové bloky Jupyter zdarma v cloudu.  Pokud použijete tento odkaz na službu, informace o tom, jak se připojit k vašemu pracovnímu prostoru se přidají do knihovny, kterou jste vytvořili v poznámkových bloků Azure.
 
    ![Prozkoumejte pracovního prostoru](./media/quickstart-run-cloud-notebook/explore-aml.png)
 
-1. **Pracovních stanic Poznámkový blok** část zobrazuje seznam všech serverů založené na cloudu poznámkového bloku k dispozici ve vašem pracovním prostoru.  Odsud můžete také spravovat tyto prostředky a je odstranit, pokud už nepotřebujete. 
+1. Přihlaste se k Azure poznámkových bloků.  Ujistěte se, že se že přihlásíte pomocí stejného účtu, který jste použili pro přihlášení na webu Azure portal. Vaše organizace může před přihlášením vyžadovat [souhlas správce](https://notebooks.azure.com/help/signing-up/work-or-school-account/admin-consent).
 
-1. Vyberte **přidání pracovní stanice** k vytvoření pracovní stanice poznámkového bloku.
+1. Po přihlášení se otevře nová karta a zobrazí se výzva `Clone Library`. Klonování tuto knihovnu načte sadu poznámkových bloků a jiných souborů do účtu poznámkových bloků Azure.  Tyto soubory můžete prozkoumat možnosti služby Azure Machine Learning.
 
-     ![Vyberte Přidat pracovní stanice](./media/quickstart-run-cloud-notebook/add-workstation.png)
+1. Zrušte zaškrtnutí políčka **veřejné** tak, aby informace o pracovním prostoru není sdílet s ostatními.
 
-1. V části Přidání pracovní stanice Poznámkový blok poskytnout pracovní stanice **název Compute** a vyberte **typ výpočtu**. Potom vyberte **Vytvořit**.
+1. Vyberte **klonování**.
 
-    ![Vytvoření nové pracovní stanici](media/quickstart-run-cloud-notebook/create-new-workstation.png)
+   ![Klonovat do knihovny](./media/quickstart-run-cloud-notebook/clone.png)
 
-    > [!NOTE]
-    > Pracovní stanice trvá přibližně dvě minuty vytvořit. Po dokončení aktualizace stavu "Spuštěno" a odkazy na Jupyter a JupyterLab zobrazí.
+1. Pokud se zobrazí, že v zastaveném stavu projektu, klikněte na **zdarma v počítačích** používat server zdarma poznámkového bloku.
 
-## <a name="launch-jupyter-web-interface"></a>Spuštění webové rozhraní Jupyter
-
-Po vytvoření pracovní stanice pomocí části pracovních stanic Poznámkový blok spustíte Jupyter webové rozhraní.
-
-* Vyberte **Jupyter** nebo **Jupyter Lab** v **spuštění** sloupec pro pracovní stanice.
-
-    ![Spusťte server poznámkového bloku Jupyter](./media/quickstart-run-cloud-notebook/start-notebook-server.png)
-
-    To spustí Poznámkový blok serveru a na domovské stránce serveru na nové kartě prohlížeče.  Váš server ukazuje ukázkové poznámkové bloky můžete použít, abyste mohli začít se službou Azure Machine Learning.
+    ![Spuštění projektu na bezplatnými výpočetními funkcemi](./media/quickstart-run-cloud-notebook/run-project.png)
 
 ### <a name="run-the-notebook"></a>Spuštění poznámkového bloku
 
-Spuštění poznámkového bloku, který odhaduje pi a zaznamená chybu do pracovního prostoru.
+V seznamu souborů pro tento projekt, se zobrazí `config.json` souboru. Tento konfigurační soubor obsahuje informace o pracovním prostoru, kterou jste vytvořili na webu Azure Portal.  Tento soubor umožňuje váš kód k připojení a přidání informací do pracovního prostoru.
 
 1. Vyberte **01.run experiment.ipynb** otevřete Poznámkový blok.
 
@@ -82,7 +82,9 @@ Spuštění poznámkového bloku, který odhaduje pi a zaznamená chybu do praco
 
     ![Vyčkat, než jádra spuštění](./media/quickstart-run-cloud-notebook/wait-for-kernel.png)
 
-1. Po spuštění jádra spuštění jednotlivé buňky v čase pomocí **Shift + Enter**. Nebo vyberte **buňky** > **spustit všechny** celý poznámkový blok spustit. Když se zobrazí hvězdičku (__*__) vedle buňky, je stále spuštěna buňku. Po dokončení kódu v této buňce se zobrazí číslo.  
+1. Po spuštění jádra spuštění jednotlivé buňky v čase pomocí **Shift + Enter**. Nebo vyberte **buňky** > **spustit všechny** celý poznámkový blok spustit. Když se zobrazí hvězdička, __*__, vedle buňky, je stále spuštěna buňku. Po dokončení kódu v této buňce se zobrazí číslo. 
+
+1. Postupujte podle pokynů v poznámkovém bloku k ověření vašeho předplatného Azure.
 
 Po dokončení spuštění všechny buňky v poznámkovém bloku, zaznamenané hodnoty lze zobrazit v pracovním prostoru.
 
@@ -106,16 +108,9 @@ Protože kód přibližné PI použije náhodné hodnoty, se zobrazí vaše vykr
 
 Můžete také zachovat skupinu prostředků, ale odstranění jednoho pracovního prostoru. Zobrazení vlastností pracovního prostoru a vyberte **odstranit**.
 
-
 ## <a name="next-steps"></a>Další postup
 
-V tomto rychlém startu jste dokončili:
-
-* Vytvořit pracovní stanice
-* Spusťte Poznámkový blok Jupyter serveru na pracovní stanici
-* Otevřete Poznámkový blok, který obsahuje kód pro odhad číslo pí a protokoly chyb v jednotlivých iteracích.
-* Spuštění poznámkového bloku.
-* Zobrazte zaznamenané chybové hodnoty v pracovním prostoru.  Tento příklad ukazuje, jak vám pracovní prostor může pomoct udržovat si přehled o informacích generovaných ve skriptu. 
+Vytvořili jste prostředky potřebné k experimentování s modely a jejich nasazení. Také jste spustili kód v poznámkovém bloku. Kromě toho jste prozkoumali historii spuštění z tohoto kódu ve vašem pracovním prostoru v cloudu.
 
 Podrobný pracovní postup prostředí postupujte podle kurzů strojového učení a trénování a nasadit model:  
 

@@ -9,15 +9,15 @@ ms.devlang: ''
 ms.topic: conceptual
 author: jovanpop-msft
 ms.author: jovanpop
-ms.reviewer: carlr
+ms.reviewer: sstein, carlr
 manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: 09e130e8ac0738a3bf9c08147248702d06356a75
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 93be58ac231ff2b88c6618c549c9d1975977b91f
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57782135"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59360107"
 ---
 # <a name="how-to-use-a-managed-instance-in-azure-sql-database"></a>Jak používat ve službě Azure SQL Database managed instance
 

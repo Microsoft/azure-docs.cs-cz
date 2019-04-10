@@ -7,21 +7,21 @@ ms.subservice: managed-instance
 ms.custom: ''
 ms.devlang: PowerShell
 ms.topic: sample
-author: CarlRabeler
-ms.author: carlrab
-ms.reviewer: ''
+author: stevestein
+ms.author: sstein
+ms.reviewer: carlrab
 manager: craigg
 ms.date: 03/25/2019
-ms.openlocfilehash: 955f13376ac899f66b0ec4e1ed99166164508fbe
-ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
+ms.openlocfilehash: c85b967615e866635cb4dd93be5ddeb78a8c7129
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58449864"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59357009"
 ---
 # <a name="use-powershell-to-create-an-azure-sql-database-managed-instance"></a>Použití Powershellu k vytvoření služby Azure SQL Database managed instance
 
-Tento ukázkový skript Powershellu vytvoří spravovanou instanci Azure SQL Database ve vyhrazené podsíti v rámci nové virtuální sítě. Nakonfiguruje taky směrovací tabulku a skupinu zabezpečení sítě pro virtuální síť. Po úspěšném spuštění skriptu bude spravovaná instance je přístupný z v rámci virtuální sítě nebo z místního prostředí. Šablony rychlý start ukazuje, jak to provést, najdete v části [konfigurace virtuálního počítače Azure pro připojení k Azure SQL Database Managed Instance](../sql-database-managed-instance-configure-vm.md) a [do Azure SQL Database Managed Instance z konfigurace připojení typu point-to-site on-premises](../sql-database-managed-instance-configure-p2s.md).
+Tento ukázkový skript Powershellu vytvoří spravovanou instanci Azure SQL Database ve vyhrazené podsíti v rámci nové virtuální sítě. Nakonfiguruje taky směrovací tabulku a skupinu zabezpečení sítě pro virtuální síť. Po úspěšném spuštění skriptu bude spravovaná instance je přístupný z v rámci virtuální sítě nebo z místního prostředí. Zobrazit [konfigurace virtuálního počítače Azure pro připojení k Azure SQL Database Managed Instance](../sql-database-managed-instance-configure-vm.md) a [konfigurace připojení typu point-to-site k Azure SQL Database Managed Instance z místní](../sql-database-managed-instance-configure-p2s.md).
 
 > [!IMPORTANT]
 > Omezení, najdete v části [podporované oblasti](../sql-database-managed-instance-resource-limits.md#supported-regions) a [podporované typy předplatného](../sql-database-managed-instance-resource-limits.md#supported-subscription-types).
@@ -36,7 +36,7 @@ Pokud se rozhodnete nainstalovat a používat PowerShell místně, v tomto kurzu
 
 ## <a name="clean-up-deployment"></a>Vyčištění nasazení
 
-Po spuštění ukázkového skriptu můžete pomocí následujícího příkazu odebrat skupinu prostředků a všechny k ní přidružené prostředky.
+Použijte následující příkaz k odebrání skupiny prostředků a všechny prostředky, které s ním spojená.
 
 ```powershell
 Remove-AzResourceGroup -ResourceGroupName $resourcegroupname
@@ -48,7 +48,7 @@ Tento skript používá následující příkazy. Každý příkaz v tabulce odk
 
 | Příkaz | Poznámky |
 |---|---|
-| [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) | Vytvoří skupinu prostředků, ve které se ukládají všechny prostředky. 
+| [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) | Vytvoří skupinu prostředků, ve které se ukládají všechny prostředky.
 | [New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork) | Vytvoří virtuální síť |
 | [Add-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/Add-AzVirtualNetworkSubnetConfig) | Přidá konfiguraci podsítě do virtuální sítě |
 | [Get-AzVirtualNetwork](/powershell/module/az.network/Get-AzVirtualNetwork) | Získá virtuální sítě ve skupině prostředků |

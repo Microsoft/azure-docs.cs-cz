@@ -9,14 +9,14 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
-ms.date: 03/22/2019
+ms.date: 04/08/2019
 ms.custom: seodec18
-ms.openlocfilehash: fd937aba302004f23904e4f743c93e69460f9026
-ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
+ms.openlocfilehash: 5aa9a60c624e1bfaa1570d02bfd1a421fcab3301
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58541141"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59358307"
 ---
 # <a name="configure-automated-machine-learning-experiments"></a>Konfigurace automatizovaného se strojovým učením
 
@@ -26,7 +26,7 @@ Chcete-li zobrazit příklady automatizované experimentů machine learningu, na
 
 Možnosti konfigurace je k dispozici ve službě automatizované machine learning:
 
-* Vyberte typ testu: Klasifikace, regrese řetězce nebo předvídáte
+* Vyberte typ testu: Klasifikace, regrese nebo předpovědi časové řady
 * Zdroj dat, formát a načítat data
 * Vyberte cílové výpočetní prostředky: místní nebo vzdálené
 * Automatizované strojového učení nastavení testu
@@ -39,7 +39,7 @@ Než začnete experimentu, byste měli určit druh machine learning problému js
 
 Automatizované machine learning podporuje tyto algoritmy během automatizace a ladění procesu. Jako uživatel není nutné lze určit algoritmus. Během cvičení jsou k dispozici DNN algoritmy, automatizované ML nesestaví DNN modely.
 
-Klasifikace | Regrese | Prognózování
+Klasifikace | Regrese | Vytváření prognóz časových řad
 |-- |-- |--
 [Logistické regrese](https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression)| [Elastické Net](https://scikit-learn.org/stable/modules/linear_model.html#elastic-net)| [Elastické Net](https://scikit-learn.org/stable/modules/linear_model.html#elastic-net)
 [Světlý GBM](https://lightgbm.readthedocs.io/en/latest/index.html)|[Světlý GBM](https://lightgbm.readthedocs.io/en/latest/index.html)|[Světlý GBM](https://lightgbm.readthedocs.io/en/latest/index.html)
@@ -112,7 +112,7 @@ automl_config = AutoMLConfig(****, data_script=project_folder + "/get_data.py", 
 
 `get_data` skript může vrátit:
 
-Klíč | Typ |    Vzájemně se vylučuje s | Popis
+Klíč | Typ | Vzájemně se vylučuje s    | Popis
 ---|---|---|---
 X | Pandas Dataframe nebo Numpy pole | data_train, popisek, sloupce |  Všechny funkce k trénování s
 Y | Pandas Dataframe nebo Numpy pole |   label   | Popisek dat pro trénování s. Pro klasifikaci by měl být pole celých čísel.
@@ -191,6 +191,7 @@ Možné příklady:
         primary_metric='AUC_weighted',
         max_time_sec=12000,
         iterations=50,
+        blacklist_models='XGBoostClassifier',
         X=X,
         y=y,
         n_cross_validations=2)
@@ -202,55 +203,25 @@ Možné příklady:
         task='regression',
         max_time_sec=600,
         iterations=100,
+        whitelist_models='kNN regressor'
         primary_metric='r2_score',
         X=X,
         y=y,
         n_cross_validations=5)
     ```
 
-Existují tři různé `task` hodnoty parametrů, které určují seznamu algoritmů, které chcete použít.  Použití `whitelist` nebo `blacklist` parametry pokročilejší úpravy iteracím dostupné algoritmy, které mají zahrnout nebo vyloučit.
-* Klasifikace
-    * LogisticRegression
-    * SGD
-    * MultinomialNaiveBayes
-    * BernoulliNaiveBayes
-    * SVM
-    * LinearSVM
-    * KNN
-    * DecisionTree
-    * RandomForest
-    * ExtremeRandomTrees
-    * LightGBM
-    * GradientBoosting
-    * TensorFlowDNN
-    * TensorFlowLinearClassifier
-    * XGBoostClassifier
-* Regrese
-    * ElasticNet
-    * GradientBoosting
-    * DecisionTree
-    * KNN
-    * LassoLars
-    * SGD 
-    * RandomForest
-    * ExtremeRandomTree
-    * LightGBM
-    * TensorFlowLinearRegressor
-    * TensorFlowDNN
-    * XGBoostRegressor
-* Prognózování
-    * ElasticNet
-    * GradientBoosting
-    * DecisionTree
-    * KNN
-    * LassoLars
-    * SGD 
-    * RandomForest
-    * ExtremeRandomTree
-    * LightGBM
-    * TensorFlowLinearRegressor
-    * TensorFlowDNN
-    * XGBoostRegressor
+Třemi hlavními `task` hodnoty parametrů určit seznam algoritmy, které chcete použít.  Použití `whitelist` nebo `blacklist` parametry pokročilejší úpravy iteracím dostupné algoritmy, které mají zahrnout nebo vyloučit. Seznam podporovaných modelech najdete na [SupportedAlgorithms třídy](https://docs.microsoft.com/en-us/python/api/azureml-train-automl/azureml.train.automl.constants.supportedalgorithms?view=azure-ml-py)
+
+## <a name="primary-metric"></a>Primární metriku
+Primární metric; jak je znázorněno výše uvedených příkladech určuje metriky, které se použijí při cvičení modelu pro optimalizaci. Primární metriky, které můžete vybrat se určuje podle typu úkolu, který zvolíte. Níže je seznam dostupných metrik.
+
+|Klasifikace | Regrese | Vytváření prognóz časových řad
+|-- |-- |--
+|accuracy| spearman_correlation | spearman_correlation
+|AUC_weighted | normalized_root_mean_squared_error | normalized_root_mean_squared_error
+|average_precision_score_weighted | r2_score | r2_score
+|norm_macro_recall | normalized_mean_absolute_error | normalized_mean_absolute_error
+|precision_score_weighted |
 
 ## <a name="data-pre-processing-and-featurization"></a>Předběžné zpracování dat a snadné
 
@@ -269,7 +240,7 @@ Pokud používáte `preprocess=True`, následující data předběžného zpraco
 
 ## <a name="time-series-forecasting"></a>Vytváření prognóz časových řad
 Pro typ Prognózování úloh čas řady je nutné definovat další parametry.
-1. time_horizon_name – Toto je povinný parametr, který definuje název sloupce do řady obsahující datum a čas trénovací data. 
+1. time_column_name – Toto je povinný parametr, který definuje název sloupce do řady obsahující datum a čas trénovací data. 
 1. max_horizon – Určuje dobu, kterou chcete předpovědět navýšení kapacity podle periodicitu trénovací data. Například pokud máte trénovacích dat s zrna denní dobu, můžete definovat jak daleko out ve dnech modelu pro trénování.
 1. grain_column_names – ten definuje název sloupce, které obsahují data jednotlivých časových řad v trénovací data. Například pokud prognózy prodeje konkrétní značku ve storu byste definovali úložiště a značky sloupců jako sloupců intervalem.
 
@@ -324,7 +295,6 @@ Existuje několik možností můžete definovat na dokončení experimentu.
 1. Ukončit po dobu - pomocí experiment_timeout_minutes v nastavení, které můžete definovat dobu v minutách by experiment pokračovat v běhu.
 1. Ukončete po skóre se dosáhlo - pomocí experiment_exit_score, které můžete provést experiement po skóre na základě primární metriky se dosáhlo.
 
-
 ## <a name="explore-model-metrics"></a>Zkoumání metrik model
 Ve widgetu nebo vložené můžete zobrazit výsledky, pokud jste v poznámkovém bloku. Zobrazit [sledovat a posuzovat modely](how-to-track-experiments.md#view-run-details) další podrobnosti.
 
@@ -355,7 +325,7 @@ recall_score_micro|Odvolání je procento prvky ve skutečnosti určité třídy
 recall_score_weighted|Odvolání je procento prvky ve skutečnosti určité třídy, které jsou správně označené. Váha je aritmetický průměr o odvolání pro každou třídu váženo podle počtu true instancí každé třídy|[Výpočet](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.recall_score.html)|Průměrná = "váha"|
 weighted_accuracy|Vážený přesnost je přesnost, kde je rovna podíl true instancí v tomto příkladu true třídě váhou na každý příklad|[Výpočet](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.accuracy_score.html)|sample_weight je rovna poměr této třídy pro každý prvek v cílovém vektor|
 
-### <a name="regression-and-forecasting-metrics"></a>Regrese a Prognózování metriky
+### <a name="regression-and-time-series-forecasting-metrics"></a>Regrese a čas řady metrik prognózy
 Tyto metriky jsou uloženy v každé iteraci pro regresní nebo Prognózování úloh.
 
 |Metrika|Popis|Výpočet|Další parametry

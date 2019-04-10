@@ -2,17 +2,17 @@
 title: Jak hledat, efektivně se službou Azure Maps Search | Dokumentace Microsoftu
 description: Další informace o použití osvědčených postupů pro hledání pomocí služby Azure Search mapy
 ms.author: v-musehg
-ms.date: 04/05/2019
+ms.date: 04/08/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 3a9c5ad92494dd82500c4faee82c119e99346c7a
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: f7a14e975a5ca3aee5588f55f43b28081c100074
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59288153"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59358146"
 ---
 # <a name="best-practices-to-use-azure-maps-search-service"></a>Osvědčené postupy k používání služby vyhledávání Azure Maps
 
@@ -83,7 +83,7 @@ Při provádění geokód zpětného vyhledávání s [rozhraní API pro adresu 
 **Ukázka požadavku:**
 
 ```HTTP
-https://atlas.microsoft.com/search/address/json?api-version=1.0&subscription-key={subscription-key}&query=MicrosoftWay&entityType=Municipality
+https://atlas.microsoft.com/search/address/reverse/json?api-version=1.0&subscription-key={subscription-key}&query=47.6394532,-122.1304551&language=en-US&entityType=Municipality
 ```
 
 **Odpověď:**
@@ -240,14 +240,20 @@ https://atlas.microsoft.com/search/address/json?subscription-key={subscription-k
 
 ### <a name="uri-encoding-to-handle-special-characters"></a>Identifikátor URI kódování pro zpracování speciálních znaků 
 
-K vyhledání křížové ulici adresy, to znamená, že 1. dne Zacházíme & ulice sjednocení, Seattle, speciální znak ' a ' musí být zakódovaný, aby před odesláním požadavku. Doporučujeme, abyste kódování dat znak v identifikátoru URI, tam, kde jsou všechny znaky kódovaný pomocí znaku "%" a dvou znaků šestnáctkové hodnoty odpovídající jejich UTF-8 znaků.
+K vyhledání křížové ulic, to znamená, "1. dne Zacházíme & sjednocení ulici, Seattle", speciální znak 'a' musí být zakódovaný, aby před odesláním požadavku. Doporučujeme, abyste kódování dat znak v identifikátoru URI, tam, kde jsou všechny znaky kódovaný pomocí znaku "%" a dvou znaků šestnáctkové hodnoty odpovídající jejich UTF-8 znaků.
 
 **Příklady použití**:
 
 Získáte adresu hledání:
 
 ```
-query=1st Avenue & E 111th St, New York shall be encoded as query"=1st%20Avenue%20%26%20E%20111th%20St%2C%20New%20York 
+query=1st Avenue & E 111th St, New York
+```
+
+ musí být zakódován jako:
+
+```
+query"=1st%20Avenue%20%26%20E%20111th%20St%2C%20New%20York
 ```
 
 
@@ -315,7 +321,7 @@ Vytvoříme [vyhledávání kategorie POI](https://docs.microsoft.com/rest/api/m
 **Ukázkový dotaz:**
 
 ```HTTP
-https://atlas.microsoft.com/search/poi/json?subscription-key={subscription-key}&api-version=1.0&query=gas station&limit=3&lat=47.6413362&lon=-122.1327968
+https://atlas.microsoft.com/search/poi/json?subscription-key={subscription-key}&api-version=1.0&query=gas%20station&limit=3&lat=47.6413362&lon=-122.1327968
 ```
 
 **Odpověď:**
@@ -402,72 +408,7 @@ https://atlas.microsoft.com/search/poi/json?subscription-key={subscription-key}&
                 }
             ]
         },
-        {
-            "type": "POI",
-            "id": "US/POI/p0/7728133",
-            "score": 5.663,
-            "dist": 1330.1278248163273,
-            "info": "search:ta:840539001100326-US",
-            "poi": {
-                "name": "76",
-                "phone": "+(1)-(425)-7472126",
-                "brands": [
-                    {
-                        "name": "76"
-                    }
-                ],
-                "url": "www.76.com/",
-                "classifications": [
-                    {
-                        "code": "PETROL_STATION",
-                        "names": [
-                            {
-                                "nameLocale": "en-US",
-                                "name": "petrol station"
-                            }
-                        ]
-                    }
-                ]
-            },
-            "address": {
-                "streetNumber": "2421",
-                "streetName": "148th Ave NE",
-                "municipalitySubdivision": "Redmond, Bellevue",
-                "municipality": "Redmond, Bellevue",
-                "countrySecondarySubdivision": "King",
-                "countryTertiarySubdivision": "Seattle East",
-                "countrySubdivision": "WA",
-                "postalCode": "98007",
-                "countryCode": "US",
-                "country": "United States Of America",
-                "countryCodeISO3": "USA",
-                "freeformAddress": "2421 148th Ave NE, Bellevue, WA 98007",
-                "countrySubdivisionName": "Washington"
-            },
-            "position": {
-                "lat": 47.63187,
-                "lon": -122.14365
-            },
-            "viewport": {
-                "topLeftPoint": {
-                    "lat": 47.63277,
-                    "lon": -122.14498
-                },
-                "btmRightPoint": {
-                    "lat": 47.63097,
-                    "lon": -122.14232
-                }
-            },
-            "entryPoints": [
-                {
-                    "type": "main",
-                    "position": {
-                        "lat": 47.63186,
-                        "lon": -122.14313
-                    }
-                }
-            ]
-        },
+        ...,
         {
             "type": "POI",
             "id": "US/POI/p0/7727106",
@@ -559,31 +500,31 @@ Vytvoříme požadavek hledání adresy na Azure Maps [služba search](https://d
 **Ukázkový dotaz:**
 
 ```HTTP
-https://atlas.microsoft.com/search/address/json?subscription-key={subscription-key}&api-version=1&query=400BroadSt,Seattle,WA&countrySet=US
+https://atlas.microsoft.com/search/address/json?subscription-key={subscription-key}&api-version=1&query=400%20Broad%20Street%2C%20Seattle%2C%20WA&countrySet=US
 ```
 
-Dále můžeme Podíváme se na struktuře odpověď níže. Typy výsledků výsledných objektech v odpovědi se liší. Pokud pečlivě zjistíte, že vidíte, že máme tři různé typy objektů výsledků, které jsou adresa ulice a napříč ulice. Všimněte si, že adresa hledání nevrací současně. `Score` Parametr pro každý objekt odpovědi označuje relativní odpovídající skóre skóre ostatní objekty v stejnou odpověď. Zobrazit [získat adresu hledání](https://docs.microsoft.com/rest/api/maps/search/getsearchaddress) pro další informace o parametrech objektu odpovědi.
+Dále můžeme Podíváme se na struktuře odpověď níže. Typy výsledků výsledných objektech v odpovědi se liší. Pokud pečlivě zjistíte, že vidíte, že máme tři různé typy objektů výsledků, které jsou "Adresa", "Ulice" a "Mezi ulice". Všimněte si, že adresa hledání nevrací současně. `Score` Parametr pro každý objekt odpovědi označuje relativní odpovídající skóre skóre ostatní objekty v stejnou odpověď. Zobrazit [získat adresu hledání](https://docs.microsoft.com/rest/api/maps/search/getsearchaddress) pro další informace o parametrech objektu odpovědi.
 
 **Podporované typy výsledků:**
 
-**Adresa:** Bodů na mapě s konkrétní adresu ulice název a číslo. Nejvyšší úroveň přesnosti, které jsou k dispozici pro adresy. 
+* **Adresa:** Bodů na mapě s konkrétní adresu ulice název a číslo. Nejvyšší úroveň přesnosti, které jsou k dispozici pro adresy. 
 
-**Rozsah adres:**  Pro některé ulice jsou adresy body, které jsou interpolovány ze začátku a konci ulice; Tyto body jsou reprezentovány ve formě rozsahy adres. 
+* **Rozsah adres:**  Pro některé ulice jsou adresy body, které jsou interpolovány ze začátku a konci ulice; Tyto body jsou reprezentovány ve formě rozsahy adres. 
 
-**Zeměpisné oblasti:** Oblasti na mapu, která představuje správní území pozemek, to znamená, zemi, stát, Město. 
+* **Zeměpisné oblasti:** Oblasti na mapu, která představuje správní území pozemek, to znamená, zemi, stát, Město. 
 
-**POI - (body zájmu):** Body na mapě, které stojí za pozornost a může být zajímavé.
+* **POI - (body zájmu):** Body na mapě, které stojí za pozornost a může být zajímavé.
 
-**Ulice:** Reprezentace ulice na mapě. Adresy jsou vyhodnoceny na souřadnice zeměpisné šířky a délky, který obsahuje adresu ulice. Číslo domu nemusí být zpracován. 
+* **Ulice:** Reprezentace ulice na mapě. Adresy jsou vyhodnoceny na souřadnice zeměpisné šířky a délky, který obsahuje adresu ulice. Číslo domu nemusí být zpracován. 
 
-**Ulice mezi:** Průnik. Reprezentace spojovacích bodech; místa, kde dva ulice intersect.
+* **Ulice mezi:** Průnik. Reprezentace spojovacích bodech; místa, kde dva ulice intersect.
 
 **Odpověď:**
 
 ```JSON
 {
     "summary": {
-        "query": "400 broad st seattle wa",
+        "query": "400 broad street seattle wa",
         "queryType": "NON_NEAR",
         "queryTime": 129,
         "numResults": 6,

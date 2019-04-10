@@ -10,12 +10,12 @@ ms.assetid: 04b05dea-c066-44a0-9751-0774eb84c689
 ms.service: sql-data-warehouse
 ms.topic: article
 ms.date: 04/03/2019
-ms.openlocfilehash: 477a74d7bd0275715222a54800b81c2812da9c77
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
-ms.translationtype: HT
+ms.openlocfilehash: 1f645a9c9161fb2fd71b2fd9af9ade65bff0be94
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59275602"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59361146"
 ---
 # <a name="upgrade-your-data-warehouse-to-gen2"></a>Upgrade služby data warehouse na Gen2
 
@@ -34,7 +34,7 @@ Následující tabulka shrnuje podle oblastí, při nižší Gen2 výpočetní v
 |:--- |:--- |:--- |
 | Austrálie – východ |K dispozici. |1. června 2019 |
 | Austrálie – jihovýchod |15. dubna 2019 |1. května 2019 |
-| Brazílie – jih |15. května 2019 |\* |
+| Brazílie – jih |15. května 2019 |1. června 2019 |
 | Kanada – střed |K dispozici. |1. června 2019 |
 | Kanada – východ |\* |\* |
 | USA – střed |K dispozici. |1. června 2019 |
@@ -44,8 +44,8 @@ Následující tabulka shrnuje podle oblastí, při nižší Gen2 výpočetní v
 | Čína – sever 2 |\* |\* |
 | Východní Asie |K dispozici. |1. června 2019 |
 | USA – východ |K dispozici. |1. června 2019 |
-| Východní USA 2 |K dispozici. |1. června. 2019 |
-| Francie – střed |\* |\* |
+| Východní USA 2 |K dispozici. |1. června 2019 |
+| Francie – střed |\* |1. června 2019 |
 | Německo – střed |\* |\* |
 | Německo – středozápad |1. září 2019|2. ledna 2020 |
 | Indie – střed |K dispozici. |1. června 2019 |

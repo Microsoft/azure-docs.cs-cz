@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.date: 1/29/2019
 ms.author: victorh
 ms.topic: conceptual
-ms.openlocfilehash: 29c2e53c4fb496e0f12e04f08b0add4273db25a7
-ms.sourcegitcommit: d89b679d20ad45d224fd7d010496c52345f10c96
+ms.openlocfilehash: a814fc6e9a72ba92d915821bd1e1694366844555
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57790153"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59277407"
 ---
 # <a name="web-application-firewall-request-size-limits-and-exclusion-lists"></a>Omezení velikosti pro požadavek webové aplikace brány firewall a seznamy vyloučení
 
@@ -54,6 +54,7 @@ Tady jsou operátory porovnání podporovaných kritéria:
 - **Začíná**: Tento operátor odpovídá všechna pole, která začínají hodnotou zadaný selektor.
 - **Končí**:  Tento operátor odpovídá všechna pole žádosti, které končí hodnotu zadaný selektor.
 - **Obsahuje**: Tento operátor odpovídá všechna pole žádosti, které obsahují hodnotu zadaný selektor.
+- **Rovná se žádné**: Tento operátor odpovídá všechna pole požadavku. * bude hodnota selektor.
 
 Ve všech případech vyhledávání nejsou rozlišována velká a malá písmena a regulárního výrazu nejsou povoleny jako selektorů.
 

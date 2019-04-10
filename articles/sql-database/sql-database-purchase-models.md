@@ -7,17 +7,17 @@ ms.subservice: service
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
-author: CarlRabeler
-ms.author: carlrab
-ms.reviewer: ''
+author: stevestein
+ms.author: sstein
+ms.reviewer: carlrab
 manager: craigg
 ms.date: 02/08/2019
-ms.openlocfilehash: 0e9001111d6aa48f0dad69a2fb3b2186bfc37ab7
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 46a620900896d07273da22e53171330b85d3f1ec
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58010508"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59360187"
 ---
 # <a name="azure-sql-database-purchasing-models"></a>Azure SQL Database zakoupení modelů
 
@@ -36,7 +36,7 @@ V modelech nasazení Azure SQL Database k dispozici jsou různé modely nákupu:
 
 Následující tabulku a graf porovnání a kontrast tyto dva modely nákupu.
 
-|**Nákupní model**|**Popis**|**Nejlepší pro**|
+|**Nákupní model**|**Popis**|**Nejvhodnější pro**|
 |---|---|---|
 |Model na základě DTU|Tento model je založen na připojené míře výpočetní prostředky, úložiště a vstupně-VÝSTUPNÍCH prostředků. Výpočetní velikosti se vyjadřují v jednotky transakcí databáze (Dtu) pro izolované databáze a elastické databáze jednotky transakce (Edtu) pro elastické fondy. Další informace o jednotkách Dtu a Edtu najdete v tématu [co jsou jednotky Dtu a Edtu?](sql-database-purchase-models.md#dtu-based-purchasing-model).|Nejvhodnější pro zákazníky, kteří chtějí jednoduché, předem nakonfigurované možnosti prostředku.|
 |Model na základě virtuálních jader|Tento model umožňuje zvolit nezávisle na sobě výpočetní a úložnou kapacitu. Nákupní model založený na virtuálních jádrech také umožňuje používat [zvýhodněné hybridní využití Azure pro SQL Server](https://azure.microsoft.com/pricing/hybrid-benefit/) získat úspory nákladů.|Nejvhodnější pro zákazníky, kteří hodnota flexibilitu, řízení a transparentnost.|
@@ -50,11 +50,11 @@ Náklady na výpočetní odráží celkové výpočetní kapacitu, pro kterého 
 
 ## <a name="storage-costs"></a>Cena za uložení
 
-Různé typy úložiště se účtují různě. Pro ukládání dat bude vám účtována zřízeného úložiště na základě maximální velikost databáze nebo fondu, které vyberete. Náklady nemění, není-li snížit nebo zvýšit maximální. Úložiště zálohování je spojen s automatickým zálohám vaší instance a dynamicky přidělit. Prodloužení doby uchovávání záloh zvyšuje požadavky na úložiště zálohování vaší instance. 
+Různé typy úložiště se účtují různě. Pro ukládání dat bude vám účtována zřízeného úložiště na základě maximální velikost databáze nebo fondu, které vyberete. Náklady nemění, není-li snížit nebo zvýšit maximální. Úložiště zálohování je spojen s automatickým zálohám vaší instance a dynamicky přidělit. Prodloužení doby uchovávání záloh zvyšuje požadavky na úložiště zálohování vaší instance.
 
 Ve výchozím nastavení se do úložiště objektů blob RA-GRS úrovně Standard zkopíruje 7 dní automatizovaných záloh vašich databází. Úložiště využívané týdenními úplnými zálohami, denními rozdílovými zálohami a zálohami protokolů transakcí se kopíruje každých 5 minut. Velikost transakčních protokolů závisí na četnosti změn databáze. Minimální objem úložiště, který se rovná 100 % velikosti databáze, se poskytuje bez dalších poplatků. Využití úložiště zálohování nad tuto mez bude zpoplatněno v jednotkách GB/měsíc.
 
-Další informace o cenách úložiště, najdete v článku [ceny](https://azure.microsoft.com/pricing/details/sql-database/single/) stránky. 
+Další informace o cenách úložiště, najdete v článku [ceny](https://azure.microsoft.com/pricing/details/sql-database/single/) stránky.
 
 ## <a name="vcore-based-purchasing-model"></a>Model nákupu na základě virtuálních jader
 
@@ -71,7 +71,7 @@ Nákupní model založený na virtuálních jádrech umožňuje nezávisle na so
 > **Omezení oblasti:** Aktuální seznam podporovaných oblastí najdete v tématu [dostupné produkty v jednotlivých oblastech](https://azure.microsoft.com/global-infrastructure/services/?products=sql-database&regions=all). Pokud chcete v oblasti, která je v tuto chvíli nepodporuje vytvoření Managed Instance, můžete si [odeslat žádost o podporu prostřednictvím webu Azure portal](sql-database-managed-instance-resource-limits.md#obtaining-a-larger-quota-for-sql-managed-instance).
 .
 
-Pokud se elastický fond nebo izolovanou databázi spotřebovává více než 300 Dtu, může převod nákupní model založený na virtuálních jádrech sníží vaše náklady. Pokud se rozhodnete převést, můžete převést pomocí rozhraní API podle výběru nebo na webu Azure portal, bez výpadků. Převod však není povinný a neprovede automaticky. Nákupní model založený na DTU splňuje výkonu a obchodních požadavcích, měli byste pokračovat, jeho použití. Pokud se rozhodnete převést nákupní model založený na DTU na nákupní model založený na virtuálních jádrech, vyberte velikost výpočetního pomocí následující hrubé odhady: 
+Pokud se elastický fond nebo izolovanou databázi spotřebovává více než 300 Dtu, může převod nákupní model založený na virtuálních jádrech sníží vaše náklady. Pokud se rozhodnete převést, můžete převést pomocí rozhraní API podle výběru nebo na webu Azure portal, bez výpadků. Převod však není povinný a neprovede automaticky. Nákupní model založený na DTU splňuje výkonu a obchodních požadavcích, měli byste pokračovat, jeho použití. Pokud se rozhodnete převést nákupní model založený na DTU na nákupní model založený na virtuálních jádrech, vyberte velikost výpočetního pomocí následující hrubé odhady:
 
 - Každý 100 DTU ve standardní úrovni vyžaduje alespoň 1 virtuální jádro v úrovni General Purpose
 - Každý 125 DTU na úrovni Premium vyžaduje alespoň 1 virtuální jádro v úrovni pro důležité obchodní informace

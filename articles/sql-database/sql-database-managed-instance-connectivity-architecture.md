@@ -9,17 +9,17 @@ ms.devlang: ''
 ms.topic: conceptual
 author: srdan-bozovic-msft
 ms.author: srbozovi
-ms.reviewer: bonova, carlrab
+ms.reviewer: sstein, bonova, carlrab
 manager: craigg
 ms.date: 02/26/2019
-ms.openlocfilehash: f08b22f24dfde41646f56dc1ecd9777f267620ee
-ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
+ms.openlocfilehash: 801294241f399097d363dd8dc2682f158c0bf2cc
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58651308"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59358278"
 ---
-# <a name="connectivity-architecture-for-a-managed-instance-in-azure-sql-database"></a>Architektura připojení pro spravovanou instanci Azure SQL Database 
+# <a name="connectivity-architecture-for-a-managed-instance-in-azure-sql-database"></a>Architektura připojení pro spravovanou instanci Azure SQL Database
 
 Tento článek vysvětluje, komunikace ve spravované instanci Azure SQL Database. Také popisuje architekturu připojení a jak součásti směrovat provoz do spravované instance.  
 
@@ -117,7 +117,6 @@ Nasazení spravované instance ve vyhrazené podsíti ve virtuální síti. Pods
 
 > [!IMPORTANT]
 > I když požadované zabezpečení příchozích pravidel povolit provoz z _jakékoli_ zdroje na portech 9000, 9003, 1438, 1440 a 1452, tyto porty jsou chráněné bránou firewall integrované. Další informace najdete v tématu [určit adresu koncového bodu správy](sql-database-managed-instance-find-management-endpoint-ip-address.md).
-
 > [!NOTE]
 > Použití transakční replikace v managed instance a použít libovolnou databázi instance jako vydavatel nebo distributora, otevřete port 445 (odchozí TCP) v pravidlech zabezpečení podsítě. Tento port vám umožní přístup ke sdílené složce Azure.
 

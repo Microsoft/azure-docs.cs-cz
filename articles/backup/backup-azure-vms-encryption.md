@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 4/3/2019
 ms.author: geetha
-ms.openlocfilehash: 99117c96f79dd7d0da388a0e793908f6ffb8ed27
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: 893a22fb9f325625707869c8f6571d572b8f6b33
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59266439"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59358229"
 ---
 # <a name="back-up-and-restore-encrypted-azure-vm"></a>Zálohování a obnovení šifrovaných virtuálních počítačů Azure
 
@@ -31,7 +31,7 @@ Azure Backup podporuje zálohování virtuálních počítačů Azure, které ma
 Azure Backup můžete zálohovat a obnovit virtuální počítače Azure a nemusíte aplikace Azure AD pomocí ADE dle souhrnu v následující tabulce.
 
 **Typ disku virtuálního počítače** | **ADE (klíče BEK a dm-crypt)** | **ADE a KEK**
---- | --- | --- 
+--- | --- | ---
 **Nespravované** | Ano | Ano
 **Spravované**  | Ano | Ano
 
@@ -95,14 +95,14 @@ Kromě toho existuje několik věcí, které možná bude potřeba provést v n�
 8. Pokud používáte Azure Key Vault, na stránce úložiště, zobrazí se zpráva, že Azure Backup měl přístup jen pro čtení pro klíče a tajné kódy ve službě Key Vault.
 
     - Pokud se zobrazí tato zpráva, nemusíte nic dělat.
-    
+
         ![Access OK](./media/backup-azure-vms-encryption/access-ok.png)
-        
+
     - Pokud se zobrazí tato zpráva, je potřeba nastavit oprávnění, jak je popsáno v [níže uvedeného postupu](#provide-permissions).
-    
+
         ![Přístup k upozornění](./media/backup-azure-vms-encryption/access-warning.png)
 
-9. Klikněte na tlačítko **povolit zálohování** nasazovat zásady zálohování v trezoru a povolení zálohování pro vybrané virtuální počítače. 
+9. Klikněte na tlačítko **povolit zálohování** nasazovat zásady zálohování v trezoru a povolení zálohování pro vybrané virtuální počítače.
 
 
 ## <a name="trigger-a-backup-job"></a>Aktivace úlohy zálohování
@@ -129,18 +129,18 @@ Chcete-li nastavit oprávnění:
 1. Na webu Azure Portal, vyberte **všechny služby**a vyhledejte **trezory klíčů**.
 2. Vyberte trezor klíčů, které jsou přidružené k šifrovaný virtuální počítač zálohujete.
 3. Vyberte **zásady přístupu** > **přidat nový**.
-4. Vyberte **vybrat objekt zabezpečení**a pak zadejte **správy zálohování**. 
+4. Vyberte **vybrat objekt zabezpečení**a pak zadejte **správy zálohování**.
 5. Vyberte **správu Služba Backup** > **vyberte**.
 
     ![Výběr služby Backup](./media/backup-azure-vms-encryption/select-backup-service.png)
 
 6. V **přidat zásady přístupu** > **konfigurace ze šablony (volitelné)** vyberte **Azure Backup**.
     - Požadovaná oprávnění jsou předem pro **oprávnění klíče** a **oprávnění tajného klíče**.
-    - Pokud je váš virtuální počítač šifrovaný pomocí **pouze klíče BEK**, odebrat výběr **oprávnění klíče** vzhledem k tomu potřebujete oprávnění pouze pro tajné kódy. 
+    - Pokud je váš virtuální počítač šifrovaný pomocí **pouze klíče BEK**, odebrat výběr **oprávnění klíče** vzhledem k tomu potřebujete oprávnění pouze pro tajné kódy.
 
     ![Azure backup výběr](./media/backup-azure-vms-encryption/select-backup-template.png)
 
-6. Klikněte na **OK**. **Služba správy zálohování** se přidá do **zásady přístupu**. 
+6. Klikněte na **OK**. **Služba správy zálohování** se přidá do **zásady přístupu**.
 
     ![Zásady přístupu](./media/backup-azure-vms-encryption/backup-service-access-policy.png)
 
@@ -159,6 +159,5 @@ Obnovení šifrovaných virtuálních počítačů následujícím způsobem:
 
 Pokud narazíte na nějaké problémy, projděte si
 
-- [Běžné chyby](backup-azure-vms-troubleshoot.md#troubleshoot-backup-of-encrypted-vms) při zálohování a obnovení šifrovaných virtuálních počítačů Azure.
-- [Obecné](backup-azure-vms-troubleshoot.md) problémy virtuálního počítače Azure.
+- [Běžné chyby](backup-azure-vms-troubleshoot.md) při zálohování a obnovení šifrovaných virtuálních počítačů Azure.
 - [Rozšíření Azure VM agent/záloha](backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout.md) problémy.

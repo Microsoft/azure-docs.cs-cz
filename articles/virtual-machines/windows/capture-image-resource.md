@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/27/2018
 ms.author: cynthn
-ms.openlocfilehash: 4e79e0a7d05ef70ae9f7ab2cbb2238c42b2a654b
-ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
+ms.openlocfilehash: aa1858a27d4df413deb562391251a523c28673ad
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/02/2019
-ms.locfileid: "58847576"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59359174"
 ---
 # <a name="create-a-managed-image-of-a-generalized-vm-in-azure"></a>Vytvoření spravované image zobecněného virtuálního počítače v Azure
 
@@ -88,7 +88,7 @@ Generalizace virtuálního počítače Windows, postupujte podle těchto kroků:
 
 Vytvoření bitové kopie přímo z virtuálního počítače se zajistí, že na obrázku obsahuje všechny disky přidružené k virtuálnímu počítači, včetně disk s operačním systémem a všechny datové disky. Tento příklad ukazuje postup vytvoření spravované image z virtuálního počítače, že používá spravované disky.
 
-Než začnete, ujistěte se, že máte nejnovější verzi modulu Azure PowerShell. Pokud chcete zjistit verzi, spusťte `Get-Module -ListAvailable Az` v prostředí PowerShell. Pokud potřebujete upgrade, přečtěte si téma [nainstalujte prostředí Azure PowerShell ve Windows pomocí Správce balíčků PowerShellGet](/powershell/azure/azurerm/install-az-ps). Pokud používáte PowerShell místně, spusťte `Connect-AzAccount` vytvořit připojení k Azure.
+Než začnete, ujistěte se, že máte nejnovější verzi modulu Azure PowerShell. Pokud chcete zjistit verzi, spusťte `Get-Module -ListAvailable Az` v prostředí PowerShell. Pokud potřebujete upgrade, přečtěte si téma [nainstalujte prostředí Azure PowerShell ve Windows pomocí Správce balíčků PowerShellGet](/powershell/azure/install-az-ps). Pokud používáte PowerShell místně, spusťte `Connect-AzAccount` vytvořit připojení k Azure.
 
 
 > [!NOTE]

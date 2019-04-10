@@ -1,6 +1,6 @@
 ---
 title: Konfigurace přihlašování automatického zrychlení pro aplikaci s využitím zásad zjišťování domovské sféry | Dokumentace Microsoftu
-description: Vysvětluje, jaké tenanta služby Azure AD je a jak spravovat službu Azure pomocí Azure Active Directory.
+description: Zjistěte, jak nakonfigurovat zásady zjišťování domovské sféry pro ověřování Azure Active Directory pro federované uživatele, včetně automatického zrychlení a domény.
 services: active-directory
 documentationcenter: ''
 author: CelesteDG
@@ -11,19 +11,20 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 06/08/2018
+ms.date: 04/08/2019
 ms.author: celested
+ms.custom: seoapril2019
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 333258ef9696e6dbe4aab5b10e815bb84428d425
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: d82ccf7c2983051597ff634117be81311c4c78a9
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56190258"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59360930"
 ---
 # <a name="configure-azure-active-directory-sign-in-behavior-for-an-application-by-using-a-home-realm-discovery-policy"></a>Konfigurace přihlašování Azure Active Directory v chování aplikace s použitím zásad zjišťování domovské sféry
 
-Následující dokument obsahuje úvod do konfigurace chování ověřování Azure Active Directory pro federované uživatele.   Zabývá se konfigurace automatického zrychlení a ověřování omezení pro uživatelé ve federovaných doménách.
+Tento článek obsahuje úvod do konfigurace chování ověřování Azure Active Directory pro federované uživatele. Zabývá se konfigurace automatického zrychlení a ověřování omezení pro uživatelé ve federovaných doménách.
 
 ## <a name="home-realm-discovery"></a>Zjišťování domovské sféry
 Zjišťování domovské sféry (HRD) je proces, který umožňuje Azure Active Directory (Azure AD) k určení, kdy uživatel potřebuje ověřit v době přihlášení.  Když se uživatel přihlásí do tenanta služby Azure AD pro přístup k prostředku nebo k Azure AD běžné přihlašovací stránky, jejich zadejte uživatelské jméno (UPN). Azure AD, který používá ke zjišťování, ve kterém uživatel musí přihlásit. 

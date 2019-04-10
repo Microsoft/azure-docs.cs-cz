@@ -1,10 +1,4 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 4eee19a13a7a518087a77ed49fbb533ce47f03c8
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
-ms.translationtype: MT
-ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56238075"
 documentType: LandingData
 title: Azure SQL Database – platforma jako služba
 metadata:
@@ -14,49 +8,50 @@ metadata:
   services: sql-database
   ms.subservice: service
   author: jovanpop-msft
+  ms.reviewer: carlrab
   manager: craigg
   requires-business-manager-approval: false
   ms.service: sql-database
   ms.tgt_pltfrm: na
-  ms.devlang: 
+  ms.devlang: null
   ms.topic: overview
   ms.date: 11/11/2018
   ms.author: jovanpop-msft
 sections:
-- items:
-  - type: paragraph
-    text: Azure SQL Database je plně spravovaná platforma jako služba (PaaS) databázový stroj, který zpracovává většinu funkcí správy databáze jako upgrade, použití dílčích oprav, zálohování a monitorování bez zásahu uživatele. Azure SQL Database je vždy spuštěna na nejnovější stabilní verze databázového stroje SQL serveru a opravit operačního systému s 99,99 % dostupnost. Možnosti modelu PaaS, které jsou integrované do služby Azure SQL database umožňují zaměřit se na domény konkrétní databázi pro správu a optimalizaci aktivity, které jsou důležité pro vaši firmu.
-  - type: list
-    style: cards
-    className: cardsM
-    columns: 3
+  - items:
+      - type: paragraph
+        text: 'Azure SQL Database je plně spravovaná platforma jako služba (PaaS) databázový stroj, který zpracovává většinu funkcí správy databáze jako upgrade, použití dílčích oprav, zálohování a monitorování bez zásahu uživatele. Azure SQL Database je vždy spuštěna na nejnovější stabilní verze databázového stroje SQL serveru a opravit operačního systému s 99,99 % dostupnost. Možnosti modelu PaaS, které jsou integrované do služby Azure SQL database umožňují zaměřit se na domény konkrétní databázi pro správu a optimalizaci aktivity, které jsou důležité pro vaši firmu.'
+      - type: list
+        style: cards
+        className: cardsM
+        columns: 3
+        items:
+          - title: Kontinuita podnikových procesů
+            href: /azure/sql-database/sql-database-business-continuity
+            html: '<p>Azure SQL Database umožňuje vaše společnost tak pokračovat i v případě přerušení, zejména pro její výpočetní infrastruktury.</p>'
+          - title: Vysoká dostupnost
+            href: /azure/sql-database/sql-database-high-availability
+            html: '<p>Azure SQL Database zaručuje, že vaše databáze jsou spuštěné 99,99 % času, ale nemusíme se starat o údržbu a výpadky.</p>'
+          - title: Automatizované zálohy
+            href: /azure/sql-database/sql-database-automated-backups
+            html: <p>Azure SQL Database automaticky vytvoří zálohy databáze a používá Azure geograficky redundantní úložiště jen pro čtení (RA-GRS) pro zajištění geografickou redundancí.</p>
+          - title: Dlouhodobé uchovávání záloh
+            href: /azure/sql-database/sql-database-long-term-retention
+            html: <p>Azure SQL Database umožňuje ukládat zadaný systém SQL databáze úplné zálohy po dobu až 10 let.</p>
+          - title: Geografická replikace
+            href: /azure/sql-database/sql-database-geo-replication-overview
+            html: <p>Azure SQL Database umožňuje vytvářet čitelné repliky vaší databáze ve stejném nebo jiném datovém centru (oblast).</p>
+          - title: Škálování prostředků
+            href: /azure/sql-database/sql-database-scale-resources
+            html: '<p>Azure SQL Database umožňuje snadno přidat další prostředky (procesor, paměť nebo úložiště) bez dlouhé zřizování.</p>'
+  - title: Další zdroje informací
     items:
-    - title: Kontinuita podnikových procesů
-      href: /azure/sql-database/sql-database-business-continuity
-      html: <p>Azure SQL Database umožňuje vaše společnost tak pokračovat i v případě přerušení, zejména pro její výpočetní infrastruktury.</p>
-    - title: Vysoká dostupnost
-      href: /azure/sql-database/sql-database-high-availability
-      html: <p>Azure SQL Database zaručuje, že vaše databáze jsou spuštěné 99,99 % času, ale nemusíme se starat o údržbu a výpadky.</p>
-    - title: Automatizované zálohy
-      href: /azure/sql-database/sql-database-automated-backups
-      html: <p>Azure SQL Database automaticky vytvoří zálohy databáze a používá Azure geograficky redundantní úložiště jen pro čtení (RA-GRS) pro zajištění geografickou redundancí.</p>
-    - title: Dlouhodobé uchovávání záloh
-      href: /azure/sql-database/sql-database-long-term-retention
-      html: <p>Azure SQL Database umožňuje ukládat zadaný systém SQL databáze úplné zálohy po dobu až 10 let.</p>
-    - title: Geografická replikace
-      href: /azure/sql-database/sql-database-geo-replication-overview
-      html: <p>Azure SQL Database umožňuje vytvářet čitelné repliky vaší databáze ve stejném nebo jiném datovém centru (oblast).</p>
-    - title: Škálování prostředků
-      href: /azure/sql-database/sql-database-scale-resources
-      html: <p>Azure SQL Database umožňuje snadno přidat další prostředky (procesor, paměť nebo úložiště) bez dlouhé zřizování.</p>
-- title: Další zdroje informací
-  items:
-  - type: paragraph
-    text: Azure SQL Database poskytuje sadu další integrované funkce PaaS, že vám pomůže snadněji spravovat databáze.
-  - type: list
-    style: ordered
-    items:
-    - html: <a href="/azure/sql-database/sql-database-security-index">Pokročilé zabezpečení</a> detekuje hrozby a ohrožení zabezpečení v databázích a umožní vám zabezpečit vaše data.
-    - html: <a href="/azure/sql-database/sql-database-automatic-tuning">Automatické ladění</a> analyzuje vaše úlohy a poskytuje doporučení, které můžete optimalizovat výkon aplikací přidáním indexy, odebrat nepoužívané indexy a automaticky opravuje dotaz problémy plánu.
-    - html: <a href="/azure/log-analytics/log-analytics-azure-sql">Integrované možnosti monitorování</a> vám umožní získat přehled o výkonu vaší databáze a úlohy a řešení problémů s výkonem.
-    - html: <a href="/azure/sql-database/sql-database-intelligent-insights">Integrované inteligentní funkce</a> automaticky identifikuje potenciální problémy ve vašich úloh a poskytuje doporučení, které mohou pomoci vyřešit problémy.
+      - type: paragraph
+        text: 'Azure SQL Database poskytuje sadu další integrované funkce PaaS, že vám pomůže snadněji spravovat databáze.'
+      - type: list
+        style: ordered
+        items:
+          - html: <a href="/azure/sql-database/sql-database-security-index">Pokročilé zabezpečení</a> detekuje hrozby a ohrožení zabezpečení v databázích a umožní vám zabezpečit vaše data.
+          - html: '<a href="/azure/sql-database/sql-database-automatic-tuning">Automatické ladění</a> analyzuje vaše úlohy a poskytuje doporučení, které můžete optimalizovat výkon aplikací přidáním indexy, odebrat nepoužívané indexy a automaticky opravuje dotaz problémy plánu.'
+          - html: <a href="/azure/log-analytics/log-analytics-azure-sql">Integrované možnosti monitorování</a> vám umožní získat přehled o výkonu vaší databáze a úlohy a řešení problémů s výkonem.
+          - html: '<a href="/azure/sql-database/sql-database-intelligent-insights">Integrované inteligentní funkce</a> automaticky identifikuje potenciální problémy ve vašich úloh a poskytuje doporučení, které mohou pomoci vyřešit problémy.'

@@ -10,12 +10,12 @@ ms.subservice: manage
 ms.date: 03/01/2019
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 14e7d8cfdaa9ac59a5a43881283fac6e2c9ee08f
-ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
+ms.openlocfilehash: ebe45bf8f562b5be9ae2afda9d5940296396f155
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/02/2019
-ms.locfileid: "58846997"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59359000"
 ---
 # <a name="backup-and-restore-in-azure-sql-data-warehouse"></a>Zálohování a obnovení ve službě Azure SQL Data Warehouse
 
@@ -25,7 +25,7 @@ Zjistěte, jak použít zálohování a obnovení ve službě Azure SQL Data War
 
 A *datového skladu snímku* vytvoří bod obnovení, kterou můžete využít k obnovení, nebo zkopírováním vašeho datového skladu do předchozího stavu.  SQL Data Warehouse je distribuovaný systém, snímku datového skladu se skládá z mnoha soubory, které se nacházejí ve službě Azure storage. Snímky zachycují přírůstkové změny z dat uložených v datovém skladu.
 
-A *datového skladu obnovení* je nový datový sklad, který je vytvořen z bodu obnovení pro existující nebo odstraněný datový sklad. Obnovení datového skladu je nedílnou součást každé strategie obchodní kontinuity podnikových procesů a po havárii pro obnovení, protože jej znovu vytvoří data po náhodným poškozením nebo odstranění. Datový sklad je také výkonný mechanismus pro vytvoření kopie vašeho datového skladu pro účely testovacím nebo vývojovém.  SQL Data Warehouse používá mechanismus rychlého obnovení v rámci stejné oblasti, který se měří na trvat méně než 20 minut pro libovolnou velikost dat.
+A *datového skladu obnovení* je nový datový sklad, který je vytvořen z bodu obnovení pro existující nebo odstraněný datový sklad. Obnovení datového skladu je nedílnou součást každé strategie obchodní kontinuity podnikových procesů a po havárii pro obnovení, protože jej znovu vytvoří data po náhodným poškozením nebo odstranění. Datový sklad je také výkonný mechanismus pro vytvoření kopie vašeho datového skladu pro účely testovacím nebo vývojovém.  SQL Data Warehouse obnovení sazby se můžou lišit v závislosti na velikosti databáze a umístění zdrojového a cílového datového skladu. V průměru ve stejné oblasti obnovení sazby obvykle trvá přibližně 20 minut. 
 
 ## <a name="automatic-restore-points"></a>Automatické body obnovení
 

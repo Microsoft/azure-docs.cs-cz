@@ -9,15 +9,15 @@ ms.devlang: ''
 ms.topic: conceptual
 author: srdan-bozovic-msft
 ms.author: srbozovi
-ms.reviewer: carlrab
+ms.reviewer: sstein, carlrab
 manager: craigg
 ms.date: 12/04/2018
-ms.openlocfilehash: 542db0200229b4fea4ac67ad19c468f2b9dc67d1
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: b7eb9ecd6b94aad263346ad6b5c45b694e0bd46f
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57772775"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59359769"
 ---
 # <a name="determine-the-management-endpoint-ip-address"></a>Určit IP adresu koncového bodu správy
 
@@ -32,7 +32,6 @@ Předpokládejme, že je Managed Instance hostitele `mi-demo.xxxxxx.database.win
 Teď provádět jiné `nslookup` pro odebrání název zvýrazněný `.vnet.` segmentu. Při spuštění tohoto příkazu získáte veřejnou IP adresu.
 
 ![Řešení veřejnou IP adresu](./media/sql-database-managed-instance-management-endpoint/02_find_public_ip.png)
-
 
 ## <a name="next-steps"></a>Další postup
 

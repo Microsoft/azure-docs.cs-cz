@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: tutorial
 ms.date: 09/24/2018
 ms.author: wolfma
-ms.openlocfilehash: a9b3d8a2670a0b4e6bed2d5e9a9b64e597adcb16
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 9a00dfd1186d19ce9432db8e636bffa40eb977af
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57855720"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59280532"
 ---
 # <a name="tutorial-recognize-intents-from-speech-using-the-speech-sdk-for-c"></a>Kurz: Rozpoznat záměry z řeči pomocí sadou SDK pro řeč proC#
 
@@ -131,19 +131,21 @@ Potom pomocí `new IntentRecognizer(config)` vytvořte nástroj pro rozpoznává
 
 Teď model z aplikace LUIS naimportujte pomocí `LanguageUnderstandingModel.FromAppId()` a přidejte záměry služby LUIS, které si přejete pomocí metody `AddIntent()` nástroje pro rozpoznávání rozpoznat. Tyto dva kroky vylepší přesnost rozpoznávání řeči indikováním slov, která uživatel ve svých žádostech pravděpodobně použije. Není nutné přidávat všechny záměry aplikace, pokud je ve své aplikaci nepotřebujete rozpoznávat.
 
-Pro přidání záměrů jsou potřeba tři argumenty: model LUIS (který byl právě vytvořen s názvem `model`), název záměru a ID záměru. Rozdíl mezi ID a názvem je následující.
+Přidání záměrů vyžaduje tři argumenty: LUIS model (který se vytvořil a názvem `model`), záměru název a identifikátor záměru. Rozdíl mezi ID a názvem je následující.
 
-|Argument `AddIntent()`|Účel|
+|`AddIntent()` Argument|Účel|
 |--------|-------|
 |intentName |Název záměru, jak je definovaný v aplikaci LUIS. Musí přesně odpovídat názvu záměru služby LUIS.|
 |intentID    |ID přiřazené rozpoznanému záměru sadou Speech SDK. Může být jakékoli. Nemusí odpovídat názvu záměru definovanému v aplikaci LUIS. Pokud třeba stejný kód zpracovává více záměrů, můžete pro ně použít stejné ID.|
 
-Aplikace Home Automation služby LUIS má dva záměry: jeden pro zapnutí zařízení a druhý pro jeho vypnutí. Níže uvedené řádky přidají tyto záměry do nástroje pro rozpoznávání. Tyto tři řádky `AddIntent` v metodě `RecognizeIntentAsync()` nahraďte tímto kódem.
+Domů automatizace LUIS má dva příkazy: jeden pro zapnutí zařízení a druhý pro nestačí zařízení vypnout. Níže uvedené řádky přidají tyto záměry do nástroje pro rozpoznávání. Tyto tři řádky `AddIntent` v metodě `RecognizeIntentAsync()` nahraďte tímto kódem.
 
 ```csharp
 recognizer.AddIntent(model, "HomeAutomation.TurnOff", "off");
 recognizer.AddIntent(model, "HomeAutomation.TurnOn", "on");
 ```
+
+Nepřidávat jednotlivé příkazy můžete také použít `AddAllIntents` metodu pro přidání všech příkazů v modelu do rozlišovače.
 
 ## <a name="start-recognition"></a>Zahájení rozpoznávání
 
@@ -186,4 +188,4 @@ Kód z tohoto článku najdete ve složce samples/csharp/sharedcontent/console.
 ## <a name="next-steps"></a>Další postup
 
 > [!div class="nextstepaction"]
-> [Rozpoznávání řeči](how-to-recognize-speech-csharp.md)
+> [Jak rozpoznávání řeči](how-to-recognize-speech-csharp.md)

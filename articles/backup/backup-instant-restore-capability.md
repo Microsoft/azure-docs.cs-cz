@@ -6,14 +6,14 @@ author: sogup
 manager: vijayts
 ms.service: backup
 ms.topic: conceptual
-ms.date: 03/20/2019
+ms.date: 04/05/2019
 ms.author: sogup
-ms.openlocfilehash: 56c75840ca3114af40a2c843e2107f850bbff51a
-ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
+ms.openlocfilehash: 3aceffa719ef8938aa049f126231f8628822566b
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58905966"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59359962"
 ---
 # <a name="get-improved-backup-and-restore-performance-with-azure-backup-instant-restore-capability"></a>Získejte lepší zálohování a obnovení výkonu pomocí funkce Azure Backup rychlé obnovení
 
@@ -23,12 +23,11 @@ ms.locfileid: "58905966"
 Nový model pro rychlé obnovení obsahuje následující vylepšení funkcí:
 
 * Možnost používat snímkům pořízeným jako součást, která je k dispozici pro obnovení bez čekání na přenos dat do trezoru na dokončení úlohy zálohování. Snižuje dobu čekání pro snímky ke zkopírování do trezoru před aktivace operace obnovení.
-* Zkracuje dobu zálohování a obnovení tak, že zachová snímky místně, ve výchozím nastavení dva dny. Tento trezor výchozí je možné konfigurovat na libovolnou hodnotu mezi 1 až 5 dnů uvolní.
-* Podporuje disk o velikosti až 4 TB.
+* Zkracuje dobu zálohování a obnovení tak, že zachová snímky místně, ve výchozím nastavení dva dny. Tuto výchozí hodnotu uchování snímků je možné konfigurovat na libovolnou hodnotu mezi 1 až 5 dnů uvolní.
+* Podporuje disk o velikosti až 4 TB. Azure Backup nepodporuje disky prokládané. Změna velikosti disku se nedoporučuje službou Azure Backup.
 * Podporuje disky SSD na úrovni Standard spolu s standardní HDD disky a disky Premium SSD.
 *   Možnost používat nespravovaného virtuálního počítače na původní účty úložiště (na disk), při obnovování. Tato schopnost existuje i v případě, že virtuální počítač obsahuje disky, které jsou distribuovány mezi různými účty úložiště. Urychluje operace obnovení pro celou řadu konfigurací virtuálních počítačů.
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="whats-new-in-this-feature"></a>Co je nového v této funkci
 
@@ -75,9 +74,9 @@ Na webu Azure Portal, zobrazí se pole přidá **zásady zálohování virtuáln
 > Z Az PowerShell verze 1.6.0 a vyšší můžete aktualizovat doba uchování snímků okamžitá obnova ve zásady pomocí Powershellu
 
 ```powershell
-PS C:\> $bkpPol = Get-AzRecoveryServicesBackupProtectionPolicy -WorkloadType "AzureVM"
+PS C:\> $bkpPol = Get-AzureRmRecoveryServicesBackupProtectionPolicy -WorkloadType "AzureVM"
 $bkpPol.SnapshotRetentionInDays=5
-PS C:\> Set-AzRecoveryServicesBackupProtectionPolicy -policy $bkpPol
+PS C:\> Set-AzureRmRecoveryServicesBackupProtectionPolicy -policy $bkpPol
 ```
 Výchozí uchování snímků pro jednotlivé zásady je nastavena na dvou dnů. Uživatel může změnit hodnotu nejméně 1 a maximálně 5 dní. Pro týdenní zásady uchovávání dat snímku je pevně 5 dní.
 

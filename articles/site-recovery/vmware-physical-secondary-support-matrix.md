@@ -6,14 +6,14 @@ manager: carmonm
 ms.service: site-recovery
 services: site-recovery
 ms.topic: article
-ms.date: 12/31/2018
+ms.date: 04/08/2019
 ms.author: raynew
-ms.openlocfilehash: 2f70a180afcc8eda5d43356c3f4f96b25292c6d5
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: b316d6a8293d9f23eb89e8b6fffedac316759df4
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58088923"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59360157"
 ---
 # <a name="support-matrix-for-disaster-recovery-of-vmware-vms-and-physical-servers-to-a-secondary-site"></a>Matice podpory pro zotavení po havárii virtuálních počítačů VMware a fyzických serverů do sekundární lokality
 
@@ -55,7 +55,7 @@ Je možné replikovat jenom počítače s Linuxem pomocí následující úloži
 
 ## <a name="network-configuration---hostguest-vm"></a>Konfigurace sítě - hostitele nebo hosta virtuálního počítače
 
-**Konfigurace** | **Podporuje se**  
+**Konfigurace** | **Podporováno**  
 --- | --- 
 Hostitel – seskupování síťových adaptérů | Ano 
 Host - VLAN | Ano 
@@ -72,7 +72,7 @@ Hosta virtuálního počítače – s více síťovými Kartami | Ano
 
 ### <a name="host-storage"></a>Úložiště hostitele
 
-**Úložiště (hostitel)** | **Podporuje se** 
+**Úložiště (hostitel)** | **Podporováno** 
 --- | --- 
 NFS | Ano 
 SMB 3.0 | neuvedeno 
@@ -81,7 +81,7 @@ Více cest (MPIO) | Ano
 
 ### <a name="guest-or-physical-server-storage"></a>Host nebo fyzický server úložiště
 
-**Konfigurace** | **Podporuje se** 
+**Konfigurace** | **Podporováno** 
 --- | --- 
 VMDK | Ano 
 VHD/VHDX | neuvedeno 
@@ -101,7 +101,7 @@ Více cest (MPIO) | neuvedeno
 
 ## <a name="vaults"></a>Trezory
 
-**Akce** | **Podporuje se** 
+**Akce** | **Podporováno** 
 --- | --- 
 Přesun trezorů služby mezi skupinami prostředků (v rámci předplatného ani mezi předplatnými) | Ne 
 Přesunout úložiště, sítě, virtuální počítače Azure mezi skupinami prostředků (v rámci předplatného ani mezi předplatnými) | Ne 

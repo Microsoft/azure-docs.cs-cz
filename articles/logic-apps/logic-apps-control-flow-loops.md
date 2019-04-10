@@ -10,18 +10,18 @@ ms.reviewer: klam, LADocs
 manager: jeconnoc
 ms.date: 01/05/2019
 ms.topic: article
-ms.openlocfilehash: c37e41bce481fff5e172687907cce527c10ae006
-ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
+ms.openlocfilehash: 3faa3b0a5cd919752f8b7e4969e3affd668c8077
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58225004"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59360768"
 ---
 # <a name="create-loops-that-repeat-workflow-actions-or-process-arrays-in-azure-logic-apps"></a>Vytvoření cyklů, které opakování akce pracovního postupu nebo zpracování pole v Azure Logic Apps
 
 Ke zpracování pole v aplikaci logiky, můžete vytvořit [smyčka "Foreach"](#foreach-loop). Tato smyčka se opakuje, jednu nebo více akcí pro každou položku v poli. Omezení počtu položek pole, které "Foreach" smyčky může zpracovat, najdete v části [omezení a konfigurace](../logic-apps/logic-apps-limits-and-config.md). 
 
-Akce opakování, dokud získá některá podmínka splněná nebo změny stavu, můžete vytvořit ["Do" smyčka](#until-loop). Aplikace logiky spouští všechny akce uvnitř smyčky a poté ověří stavu nebo stavu. Pokud je splněna podmínka, cyklus se ukončí. V opačném případě smyčka se opakuje. Omezení počtu "Do" smyčky v aplikaci logiky spustit, najdete v části [omezení a konfigurace](../logic-apps/logic-apps-limits-and-config.md). 
+Akce opakování, dokud získá některá podmínka splněná nebo změny stavu, můžete vytvořit ["Do" smyčka](#until-loop). Aplikace logiky nejprve spustí všechny akce uvnitř smyčky a zkontroluje podmínku nebo stavu. Pokud je splněna podmínka, cyklus se ukončí. V opačném případě smyčka se opakuje. Omezení počtu "Do" smyčky v aplikaci logiky spustit, najdete v části [omezení a konfigurace](../logic-apps/logic-apps-limits-and-config.md). 
 
 > [!TIP]
 > Pokud máte trigger, který přijímá pole a chcete spustit pracovní postup pro každou položku pole, můžete si *debatch* toto pole se [ **vlastnost SplitOn** aktivovat vlastnost](../logic-apps/logic-apps-workflow-actions-triggers.md#split-on-debatch). 
@@ -154,7 +154,9 @@ Pokud pracujete s definice JSON vaší aplikace logiky, můžete použít `Seque
 
 ## <a name="until-loop"></a>"Do" smyčka
   
-Akce opakování, dokud získá některá podmínka splněná nebo změny stavu, vložte tyto akce do smyčky "Až". Zde jsou uvedeny některé obvyklé scénáře, ve kterém můžete použít "Až" smyčka:
+Pro spuštění a opakovat akce získá některá podmínka splněná nebo změny stavu, vložte tyto akce do smyčky "Až". Aplikace logiky nejprve spustí všechny akce uvnitř smyčky a zkontroluje podmínku nebo stavu. Pokud je splněna podmínka, cyklus se ukončí. V opačném případě smyčka se opakuje.
+
+Zde jsou uvedeny některé obvyklé scénáře, ve kterém můžete použít "Až" smyčka:
 
 * Volání koncového bodu, dokud se nedostanete odpověď, kterou chcete.
 
@@ -194,7 +196,7 @@ Spouští v 8:00 hodin každý den, tato aplikace logiky příklad zvýší hodn
    | Vlastnost | Hodnota | Popis |
    | -------- | ----- | ----------- |
    | **Název** | Omezení | Název proměnné. | 
-   | **Typ** | Integer | Vaše proměnná datový typ | 
+   | **Type** | Integer | Vaše proměnná datový typ | 
    | **Hodnota** | 0 | Počáteční hodnota proměnné | 
    |||| 
 
@@ -234,9 +236,9 @@ Spouští v 8:00 hodin každý den, tato aplikace logiky příklad zvýší hodn
 
       | Vlastnost | Hodnota | Popis |
       | -------- | ----- | ----------- | 
-      | **Komu** | *<email-address\@domain>* | příjemce e-mailovou adresu. Pro účely testování použijte svou vlastní e-mailovou adresu. | 
-      | **Předmět** | Aktuální hodnota pro "Limit" **Limit** | Zadejte předmět e-mailu. V tomto příkladu Ujistěte se, že složku zahrnujete **Limit** proměnné. | 
-      | **Text** | <*email-content*> | Zadejte obsah e-mailové zprávy, které chcete odeslat. V tomto příkladu zadejte jakýkoli text, který vám vyhovuje. | 
+      | **Akce** | *<email-address\@domain>* | příjemce e-mailovou adresu. Pro účely testování použijte svou vlastní e-mailovou adresu. | 
+      | **Subjekt** | Aktuální hodnota pro "Limit" **Limit** | Zadejte předmět e-mailu. V tomto příkladu Ujistěte se, že složku zahrnujete **Limit** proměnné. | 
+      | **Tělo** | <*email-content*> | Zadejte obsah e-mailové zprávy, které chcete odeslat. V tomto příkladu zadejte jakýkoli text, který vám vyhovuje. | 
       |||| 
 
 1. Uložte svou aplikaci logiky. Chcete-li ručním testováním aplikace logiky na panelu nástrojů návrháře zvolte **spustit**.
@@ -252,7 +254,7 @@ Spouští v 8:00 hodin každý den, tato aplikace logiky příklad zvýší hodn
 | Vlastnost | Výchozí hodnota | Popis | 
 | -------- | ------------- | ----------- | 
 | **Počet** | 60 | Nejvyšší počet cyklů, které běžet, než opakování ve smyčce ukončeno. Výchozí hodnota je 60 cykly. | 
-| **časový limit** | PT1H | Většina množství času spuštění smyčky před smyčku ukončí. Výchozí hodnota je jedna hodina a je zadaný ve formátu ISO 8601. <p>Hodnota časového limitu se vyhodnocuje pro každý cyklus smyčky. Pokud žádnou akci ve smyčce trvá déle než časový limit, aktuální cyklu nezastaví. Do dalšího cyklu však nespustí, protože limit podmínka splněna není. | 
+| **Vypršení časového limitu** | PT1H | Většina množství času spuštění smyčky před smyčku ukončí. Výchozí hodnota je jedna hodina a je zadaný ve formátu ISO 8601. <p>Hodnota časového limitu se vyhodnocuje pro každý cyklus smyčky. Pokud žádnou akci ve smyčce trvá déle než časový limit, aktuální cyklu nezastaví. Do dalšího cyklu však nespustí, protože limit podmínka splněna není. | 
 |||| 
 
 Chcete-li změnit tato výchozí omezení, zvolte **zobrazit pokročilé možnosti** ve tvaru akci opakovat.

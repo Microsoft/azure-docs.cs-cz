@@ -5,46 +5,49 @@ services: site-recovery
 author: rayne-wiselman
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 03/18/2019
+ms.date: 04/08/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 8bdb711d39f514375362235388943ec42451b312
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: 6e826bd965281d60cb6d73f325fbc5a7a06da234
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58315568"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59358482"
 ---
 # <a name="prepare-azure-resources-for-disaster-recovery-of-on-premises-machines"></a>Příprava prostředků Azure na zotavení po havárii místních počítačů
 
- [Azure Site Recovery](site-recovery-overview.md) přispívá ke strategii provozní kontinuity a zotavení po havárii (BCDR) tím, že zajišťuje provoz a dostupnost obchodních aplikací během plánovaných i neplánovaných výpadků. Site Recovery spravuje a orchestruje zotavení po havárii místních počítačů a virtuálních počítačů Azure, včetně replikace, převzetí služeb při selhání a zotavení.
+Tento článek popisuje postup přípravy prostředků Azure a součásti tak, že můžete nastavit zotavení po havárii místních virtuálních počítačů VMware, virtuálních počítačů Hyper-V nebo Windows/Linux fyzických serverů do Azure, pomocí [Azure Site Recovery](site-recovery-overview.md) služby.
 
-Tento článek obsahuje první kurz řady, která ukazuje, jak nastavit zotavení po havárii pro místní virtuální počítače. Prostudujte si ho, pokud potřebujete chránit místní virtuální počítače VMware, virtuální počítače Hyper-V nebo fyzické servery.
+Tento článek obsahuje první kurz řady, která ukazuje, jak nastavit zotavení po havárii pro místní virtuální počítače. 
 
-> [!NOTE]
-> Tyto kurzy demonstrují ten nejjednodušší způsob nasazení určitého scénáře. V rámci možností používají jen výchozí možnosti a neuvádějí všechny varianty nastavení ani všechny cesty. Podrobné pokyny najdete v části **Postupy** pro odpovídající scénář.
 
-V tomto článku se dozvíte, jak připravit komponenty Azure v případě, že chcete replikovat místní virtuální počítače (Hyper-V nebo VMware) nebo fyzické servery s Windows nebo Linuxem do Azure. V tomto kurzu se naučíte:
+V tomto kurzu se naučíte:
 
 > [!div class="checklist"]
-> * Ověření oprávnění účtu Azure k replikaci
+> * Ověřte, zda má účet Azure replikace oprávnění.
 > * Vytvořte trezor služby Recovery Services. Trezor obsahuje metadata a informace o konfiguraci virtuálních počítačů a další komponenty replikace.
-> * Nastavit síť Azure. Když se po převzetí služeb při selhání vytvoří virtuální počítače Azure, připojí se do této sítě Azure.
+> * Nastavení virtuální sítě Azure (VNet). Když jsou virtuální počítače Azure vytvořené po převzetí služeb při selhání, připojí se k této síti.
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/pricing/free-trial/) před tím, než začnete.
+> [!NOTE]
+> Kurzy vám ukážou, nejjednodušší způsob nasazení pro scénář. V rámci možností používají jen výchozí možnosti a neuvádějí všechny varianty nastavení ani všechny cesty. Podrobné pokyny přečtěte si článek v části How To Site Recovery obsahu.
 
-## <a name="sign-in-to-azure"></a>Přihlásit se k Azure
+## <a name="before-you-start"></a>Než začnete
 
-Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+- Kontrola architektury pro [VMware](vmware-azure-architecture.md), [Hyper-V](hyper-v-azure-architecture.md), a [fyzický server](physical-azure-architecture.md) zotavení po havárii.
+- Přečtěte si nejčastější dotazy ke [VMware](vmware-azure-common-questions.md) a Hyper-V(hyper-v-azure-common-questions.md)
+
+Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/pricing/free-trial/) před tím, než začnete. Potom se přihlaste k [webu Azure portal](https://portal.azure.com).
+
 
 ## <a name="verify-account-permissions"></a>Ověření oprávnění k účtu
 
-Pokud jste si právě vytvořili bezplatný účet Azure, jste správcem předplatného. Jestliže správcem předplatného nejste, požádejte správce o přiřazení potřebných oprávnění. Pokud chcete povolit replikaci pro nový virtuální počítač, musíte mít následující oprávnění:
+Pokud jste právě vytvořili bezplatný účet Azure, jste správcem předplatného a že máte oprávnění, které potřebujete. Jestliže správcem předplatného nejste, požádejte správce o přiřazení potřebných oprávnění. Pokud chcete povolit replikaci pro nový virtuální počítač, musíte mít následující oprávnění:
 
 - Vytvoření virtuálního počítače ve vybrané skupině prostředků
 - Vytvoření virtuálního počítače ve vybrané virtuální síti
-- Zápis do účtu úložiště.
-- Zápis do spravovaného disku.
+- Zápis do účtu služby Azure storage.
+- Zapsat do služby Azure spravovaného disku.
 
 K provedení těchto úloh by váš účet měl mít přiřazenou předdefinovanou roli Přispěvatel virtuálních počítačů. Pokud chcete spravovat operace Site Recovery v trezoru, měl by váš účet mít navíc přiřazenou předdefinovanou roli Přispěvatel Site Recovery.
 
@@ -64,30 +67,29 @@ K provedení těchto úloh by váš účet měl mít přiřazenou předdefinovan
 
 ## <a name="set-up-an-azure-network"></a>Nastavení sítě Azure
 
-Když virtuální počítače Azure se vytvoří spravované disky po převzetí služeb při selhání, připojí se k této síti.
+Počítače se replikují do Azure v místním spravované disky. Pokud dojde k převzetí služeb při selhání, virtuální počítače Azure vytvořené z těchto spravovaných disků a připojený k síti Azure, kterou zadáte v tomto postupu.
 
 1. Na webu [Azure Portal](https://portal.azure.com) vyberte **Vytvořit prostředek** > **Sítě** > **Virtuální síť**.
 2. Jako model nasazení nechte vybraný **Resource Manager**.
 3. V části **Název** zadejte název sítě. Název musí být v rámci skupiny prostředků Azure jedinečný. V tomto kurzu používáme **ContosoASRnet**.
 4. Zadejte skupinu prostředků, ve které se vytvoří síť. V tomto kurzu používáme existující skupinu prostředků **contosoRG**.
-5. V části **Rozsah adres** zadejte rozsah pro síť **10.0.0.0/24**. V této síti nepoužíváme podsíť.
+5. V **rozsah adres**, zadejte pro rozsah adres v síti. Používáme **10.0.0.0/24**a ne pomocí podsítě.
 6. V části **Předplatné** vyberte předplatné, ve kterém chcete síť vytvořit.
-7. Jako **umístění** vyberte **Západní Evropa**. Síť musí být ve stejné oblasti jako trezor Služeb zotavení.
+7. V **umístění**, vyberte stejnou oblast, ve kterém byla vytvořena trezoru služby Recovery Services. V našem kurzu má **západní Evropa**. Síť musí být ve stejné oblasti jako trezor.
 8. Ponecháme výchozí možnosti základní ochrany před útoky DDoS bez koncového bodu služby v síti.
 9. Klikněte na možnost **Vytvořit**.
 
    ![Vytvoření virtuální sítě](media/tutorial-prepare-azure/create-network.png)
 
-   Vytvoření virtuální sítě trvá několik sekund. Po vytvoření se zobrazí na řídicím panelu webu Azure Portal.
+Vytvoření virtuální sítě trvá několik sekund. Po vytvoření se zobrazí na řídicím panelu webu Azure Portal.
 
-## <a name="useful-links"></a>Užitečné odkazy
-
-- Informace o [sítích Azure](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview)
-- [Další informace o](https://docs.microsoft.com/azure/virtual-machines/windows/managed-disks-overview) spravované disky.
 
 
 
 ## <a name="next-steps"></a>Další postup
 
-> [!div class="nextstepaction"]
-> [Příprava místní infrastruktury VMware na zotavení po havárii do Azure](tutorial-prepare-on-premises-vmware.md)
+- Pro zotavení po havárii VMware [Příprava na místní infrastrukturu VMware](tutorial-prepare-on-premises-vmware.md).
+- Pro zotavení po havárii Hyper-V [připravit místní servery Hyper-V](hyper-v-prepare-on-premises-tutorial.md).
+- Pro zotavení po havárii fyzických serverů [nastavit konfigurační server a zdrojové prostředí](physical-azure-disaster-recovery.md)
+- Informace o [sítích Azure](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview)
+- [Další informace o](https://docs.microsoft.com/azure/virtual-machines/windows/managed-disks-overview) spravované disky.

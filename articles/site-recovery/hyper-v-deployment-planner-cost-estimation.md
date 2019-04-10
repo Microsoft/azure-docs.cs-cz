@@ -6,14 +6,14 @@ author: mayurigupta13
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 11/27/2018
+ms.date: 4/9/2019
 ms.author: mayg
-ms.openlocfilehash: 03f71e4e10b65d9f295e13cdd8bc6881622c523d
-ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
+ms.openlocfilehash: e98ec71f0c21fe640666b9d34e170678ec23c1ff
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54320273"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59359031"
 ---
 # <a name="cost-estimation-report-by-azure-site-recovery-deployment-planner"></a>Sestava odhadu nákladů z Plánovače nasazení služby Azure Site Recovery 
 
@@ -107,17 +107,17 @@ Ruční přidání virtuálních počítačů:
 
 1. Vyplňte následující sloupce na základě přibližné velikosti virtuálních počítačů a počtu virtuálních počítačů, které odpovídají této konfiguraci: 
 
-    a. **Number of VMs**
+    a. **Počet virtuálních počítačů**
 
-    b. **IaaS size (Your selection)**
+    b. **Velikost IaaS (Your selection)**
 
-    c. **Storage type Standard/Premium**
+    c. **Typ úložiště úrovně Standard nebo Premium**
 
     d. **VM total storage size (GB)**
 
-    e. **Number of DR-Drills in a year**
+    e. **Počet postupů zotavení po Havárii za rok**
 
-    f. **Each DR-Drill duration (Days)**
+    f. **Každý DR-Drill duration (Days)**
 
     g. **OS Type**
 

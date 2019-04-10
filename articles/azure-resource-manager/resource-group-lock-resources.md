@@ -4,22 +4,20 @@ description: Zabraňte uživatelům v aktualizaci nebo odstranění důležitýc
 services: azure-resource-manager
 documentationcenter: ''
 author: tfitzmac
-manager: timlt
-editor: tysonn
 ms.assetid: 53c57e8f-741c-4026-80e0-f4c02638c98b
 ms.service: azure-resource-manager
 ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 02/21/2019
+ms.date: 04/08/2019
 ms.author: tomfitz
-ms.openlocfilehash: 83518825c91cdd727b3d4fb9ecc86d51dea8fc26
-ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
+ms.openlocfilehash: 8942ae9a24613f7b7896cf7124b344d9d9315954
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56649165"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59360440"
 ---
 # <a name="lock-resources-to-prevent-unexpected-changes"></a>Uzamčení prostředků, aby se zabránilo neočekávaným změnám 
 
@@ -36,12 +34,32 @@ Při použití zámku v nadřazeném oboru dědí všechny prostředky v daném 
 
 Na rozdíl od řízení přístupu podle role pomocí zámky pro správu platí omezení na všech uživatelů a rolí. Další informace o nastavení oprávnění uživatelů a rolí, najdete v článku [řízení přístupu na základě Role v Azure](../role-based-access-control/role-assignments-portal.md).
 
-Zámky Resource Manageru platí pouze pro operace, ke kterým dochází v rovině správy, který se skládá z operací odesílat `https://management.azure.com`. Zámky Neomezovat, jak prostředky provádět vlastní funkce. Změn prostředků jsou omezené, ale nejsou operace prostředků s omezeným přístupem. Například brání zámek ReadOnly u SQL Database můžete odstranit nebo upravit databázi, ale to není by vám bránily v vytvoření, aktualizaci a odstraňování dat v databázi. Data transakce se nepovoluje, protože tyto operace se neodesílají na `https://management.azure.com`.
+Zámky Resource Manageru platí pouze pro operace, ke kterým dochází v rovině správy, který se skládá z operací odesílat `https://management.azure.com`. Zámky Neomezovat, jak prostředky provádět vlastní funkce. Změn prostředků jsou omezené, ale nejsou operace prostředků s omezeným přístupem. Například brání zámek ReadOnly u SQL Database můžete odstranit nebo upravit databázi. Nebude bránit vytváření, aktualizaci nebo odstranění dat v databázi. Data transakce se nepovoluje, protože tyto operace se neodesílají na `https://management.azure.com`.
 
 Použití **jen pro čtení** může vést k neočekávaným výsledkům, protože některé operace, které se zdají být načten operace ve skutečnosti vyžadují další akce. Například, že umístíte **jen pro čtení** výpis klíčů všem uživatelům zabrání zámek účtu úložiště. Seznam, který klíče operace probíhá prostřednictvím funkce požadavek POST, protože vrácený klíče jsou k dispozici pro operace zápisu. Další příklad umístění **jen pro čtení** zámek na prostředek služby App Service brání Průzkumníka serveru Visual Studia v zobrazení souborů pro prostředek, protože danou interakci vyžaduje oprávnění k zápisu.
 
-## <a name="who-can-create-or-delete-locks-in-your-organization"></a>Kdo může vytvářet nebo odstranit zámky pro ve vaší organizaci
+## <a name="who-can-create-or-delete-locks"></a>Kdo může vytvářet nebo odstranit zámky
 Pokud chcete vytvořit nebo odstranit zámky pro správu, musí mít přístup k `Microsoft.Authorization/*` nebo `Microsoft.Authorization/locks/*` akce. Z předdefinovaných rolí má tyto akce povolené pouze **vlastník** a **správce uživatelských přístupů**.
+
+## <a name="managed-applications-and-locks"></a>Spravované aplikace a zámky
+
+Využívají některé služby Azure, jako je Azure Databricks [spravované aplikace](../managed-applications/overview.md) pro implementaci této služby. V takovém případě služba vytvoří dvě skupiny prostředků. Jedna skupina prostředků obsahuje přehled služby a není zamknutá. Jiné skupiny prostředků obsahuje infrastrukturu pro službu a je uzamčen.
+
+Pokud se pokusíte odstranit skupinu prostředků infrastruktury, obdržíte chybu s informacemi o tom, že skupina prostředků je pevně nastavená. Pokud se pokusíte odstranit zámek pro skupinu prostředků infrastruktury, obdržíte chybu s informacemi o tom, že zámek nejde odstranit, protože je vlastněná systémová aplikace.
+
+Místo toho odstraňte službu, která se také odstraní skupinu prostředků infrastruktury.
+
+Pro spravované aplikace vyberte službu, kterou jste nasadili.
+
+![Vyberte službu](./media/resource-group-lock-resources/select-service.png)
+
+Všimněte si, že služba obsahuje odkaz **spravované skupiny prostředků**. Příslušné skupině prostředků obsahuje infrastrukturou a zašifrovaná. Nedá se odstranit napřímo.
+
+![Skupina spravovaná show](./media/resource-group-lock-resources/show-managed-group.png)
+
+Chcete-li odstranit vše pro služby, včetně uzamčené infrastruktury skupiny prostředků, vyberte **odstranit** pro službu.
+
+![Odstranit službu](./media/resource-group-lock-resources/delete-service.png)
 
 ## <a name="portal"></a>Portál
 [!INCLUDE [resource-manager-lock-resources](../../includes/resource-manager-lock-resources.md)]

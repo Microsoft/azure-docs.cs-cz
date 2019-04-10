@@ -9,34 +9,34 @@ ms.devlang: ''
 ms.topic: conceptual
 author: srdan-bozovic-msft
 ms.author: srbozovi
-ms.reviewer: bonova, carlrab
+ms.reviewer: sstein, bonova, carlrab
 manager: craigg
 ms.date: 12/13/2018
-ms.openlocfilehash: 02c64fcd51862d8ff9f107adb0ca5cfda5812a88
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: 0d7920080fd61389741fbe785f5141003bef5251
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55567107"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59358787"
 ---
 # <a name="sync-networking-configuration-for-azure-app-service-hosting-plan"></a>Synchronizace konfigurace sítí pro plán hostování služby Azure App Service
 
-To může stát, že i když jste [vaší aplikace integrované s Azure Virtual Network](../app-service/web-sites-integrate-with-vnet.md), nelze navázat připojení k Managed Instance. Jednou z věcí, které můžete zkusit se aktualizovat konfiguraci sítě pro váš plán služby. 
+To může stát, že i když jste [vaší aplikace integrované s Azure Virtual Network](../app-service/web-sites-integrate-with-vnet.md), nelze navázat připojení k Managed Instance. Jednou z věcí, které můžete zkusit se aktualizovat konfiguraci sítě pro váš plán služby.
 
 ## <a name="sync-network-configuration-for-app-service-hosting-plan"></a>Synchronizace konfigurace sítě pro plán hostování služby App Service
 
 Provedete to podle těchto kroků:  
 
 1. Přejděte na web apps plán služby App Service.
- 
+
    ![plán služby App Service](./media/sql-database-managed-instance-sync-networking/app-service-plan.png)
 
 2. Klikněte na tlačítko **sítě** a potom klikněte na tlačítko **kliknutím sem můžete spravovat**.
- 
+
    ![Správa plánu služby](./media/sql-database-managed-instance-sync-networking/manage-plan.png)
 
-3. Vyberte vaše **VNet** a klikněte na tlačítko **synchronizovat síť**. 
- 
+3. Vyberte vaše **VNet** a klikněte na tlačítko **synchronizovat síť**.
+
    ![Synchronizovat síť](./media/sql-database-managed-instance-sync-networking/sync.png)
 
 4. Počkejte na dokončení synchronizace.

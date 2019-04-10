@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: robinsh
 ms.custom: mvc
-ms.openlocfilehash: 53a0645c42255d5f741d31c411ca70e1e009febc
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: 6faa585f1ad38eb981e0bbffffef603c4aab0bc8
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58661577"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59360288"
 ---
 # <a name="tutorial-use-the-azure-cli-to-configure-iot-hub-message-routing"></a>Kurz: Konfigurace směrování zpráv služby IoT Hub pomocí Azure CLI
 
@@ -147,7 +147,7 @@ Teď, když se nastaví základní prostředky, můžete nakonfigurovat směrov�
 
 [!INCLUDE [iot-hub-include-create-routing-description](../../includes/iot-hub-include-create-routing-description.md)]
 
-Chcete-li vytvořit koncový bod směrování, použijte [az iot hub směrování – koncový bod vytvořit](/cli/azure/iot/hub/routing-endpoint.md?view=azure-cli-latest#az-iot-hub-routing-endpoint-create). Chcete-li vytvořit směrování zpráv pro koncový bod, použijte [az iot hub postupu vytvoření](/cli/azure/iot/hub/route?view=azure-cli-latest#az-iot-hub-route-create).
+Chcete-li vytvořit koncový bod směrování, použijte [az iot hub směrování – koncový bod vytvořit](/cli/azure/iot/hub/routing-endpoint?view=azure-cli-latest#az-iot-hub-routing-endpoint-create). Chcete-li vytvořit směrování zpráv pro koncový bod, použijte [az iot hub postupu vytvoření](/cli/azure/iot/hub/route?view=azure-cli-latest#az-iot-hub-route-create).
 
 ### <a name="route-to-a-storage-account"></a>Směrovat do účtu úložiště
 
