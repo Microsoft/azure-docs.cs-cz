@@ -10,12 +10,12 @@ ms.subservice: acoustics
 ms.topic: tutorial
 ms.date: 03/20/2019
 ms.author: michem
-ms.openlocfilehash: 544de5a3ac48c12d75f05a1c9adb56f48bb540f4
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: 48a1c4350b438761aa2e2d8c7e57a872c86ca292
+ms.sourcegitcommit: 6e32f493eb32f93f71d425497752e84763070fad
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58311547"
+ms.lasthandoff: 04/10/2019
+ms.locfileid: "59470368"
 ---
 # <a name="project-acoustics-unreal-bake-tutorial"></a>Kurz Unreal která má označení vytvoření Akustika projektu
 Tento dokument popisuje proces odesílání Akustika která má označení vytvoření pomocí rozšíření Unreal editoru.
@@ -40,6 +40,8 @@ Na kartě objekty je první karta, který se zobrazí při otevření Akustika r
 
 Vyberte jeden nebo více objektů v Tvorba osnovy svět, nebo použijte **Hromadný výběr** části vám pomohou s výběrem všechny objekty konkrétní kategorie. Jakmile jsou vybrané objekty, použijte **označení** části použití požadované značky pro vybrané objekty.
 
+Pokud něco nemá **AcousticsGeometry** ani **AcousticsNavigation** značky, bude se ignorovat simulace. Pouze statické OK, nav mřížky a prostředí jsou podporovány. Pokud označíte cokoli jiného, bude se ignorovat.
+
 ### <a name="for-reference-the-objects-tab-parts"></a>Pro referenci: Karta částí objektů
 
 ![Snímek obrazovky Akustika objekty kartě Unreal](media/unreal-objects-tab-details.png)
@@ -63,9 +65,23 @@ Nezahrnují věcí, které by neměla mít vliv Akustika, jako jsou neviditelná
 
 Transformace objektu v okamžiku výpočtu sondy (na kartě testy níže) problém je vyřešený v která má označení vytvoření výsledky. Přesunete označené jako objekty na scéně. bude nutné opakování výpočtu testu a rebaking scény.
 
-## <a name="create-or-tag-a-navigation-mesh"></a>Vytvořit nebo označení sítě navigace
+### <a name="create-or-tag-a-navigation-mesh"></a>Vytvořit nebo označení sítě navigace
 
-Navigace síť se používá k umístění bodů sondy pro simulaci. Můžete použít pro Unreal [svazku hranice sítě Nav](https://api.unrealengine.com/INT/Engine/AI/BehaviorTrees/QuickStart/2/index.html), nebo můžete zadat vlastní síť navigace. Musíte označit alespoň jeden objekt jako **Akustika navigace**.
+Navigace síť se používá k umístění bodů sondy pro simulaci. Můžete použít pro Unreal [svazku hranice sítě Nav](https://api.unrealengine.com/INT/Engine/AI/BehaviorTrees/QuickStart/2/index.html), nebo můžete zadat vlastní síť navigace. Musíte označit alespoň jeden objekt jako **Akustika navigace**. Pokud používáte síť navigace pro Unreal, ujistěte se, že máte ho sestaveny jako první.
+
+### <a name="acoustics-volumes"></a>Akustika svazky ###
+
+Existuje další, pokročilé přizpůsobení, které můžete dělat na vaše navigační oblasti s **Akustika svazky**. **Svazky Akustika** aktéry přidáte ke scéně, které lze vybrat možnost zahrnout a ignorovat z mřížky navigační oblasti. Objekt actor zpřístupňuje vlastnost, která lze přepnout mezi "Zahrnutí" a "Vyloučit". "Zahrnutí" svazky zajistit pouze oblasti mřížky navigace v nich obsažené jsou považovány za a "Vyloučit" svazky označte tyto oblasti ignorovat. "Vyloučit" svazky se vždy použijí po "Zahrnutí" svazky. Ujistěte se, že ke značce **Akustika svazky** jako **Akustika navigace** obvykle procesem v kartě objekty. Jsou tyto objekty actor ***není*** automaticky označené.
+
+![Snímek obrazovky Akustika svazku vlastností v Unreal](media/unreal-acoustics-volume-properties.png)
+
+"Vyloučit" svazky jsou určené hlavně k poskytují detailní kontrolu, ve kterém není můžete umístit sondy upevňování využití prostředků.
+
+![Snímek obrazovky vyloučení Akustika svazku v Unreal](media/unreal-acoustics-volume-exclude.png)
+
+"Zahrnutí" svazky jsou užitečné pro vytváření ruční části scény, například pokud budete chtít rozdělit do několika zón akustický vaše Scéna. Pokud máte velké scény, mnoho kilometrů spolehlivosti a budete mít dvě oblasti zájmu chcete zanést Akustika na. Můžete kreslit dva velké svazky "Zahrnutí" ve scéně a vytvářet soubory ACE pro každý z nich postupně po jednom. Potom ve hře, můžete použít aktivační událost svazků s voláními podrobného plánu odpovídající ACE soubor načíst, když hráč blíží Každá dlaždice.
+
+**Svazky Akustika** pouze omezení navigaci a ***není*** geometrii. Každý test v "Zahrnutí" **Akustika svazku** bude stále získává všechny nezbytné geometrie mimo svazku při provádění simulací wave. Proto by neměly být žádné nespojitosti v uzavření nebo jiných Akustika vyplývající z přecházení mezi z jednoho oddílu do jiného přehrávače.
 
 ## <a name="select-acoustic-materials"></a>Vyberte akustický materiály
 
@@ -87,6 +103,7 @@ Akustický materiály řízení velikosti šířky zvukové energie projeví zp�
 4. Ukazuje akustický materiálu, že byla přiřazena materiálu scény. Klikněte na rozevírací seznam pro změnu přiřazení scény materiál, který různých akustický materiálu.
 5. Ukazuje akustický pohltivosti materiálu vybrána v předchozím sloupci. Hodnota nula znamená, že nemusíte zajistit dokonalou reflektivní (žádné absorpční), při hodnota 1 znamená, že nemusíte zajistit dokonalou pohlcující (žádné reflexi). Změna této hodnoty Akustika materiál (krok #4), který se aktualizuje **vlastní**.
 
+Pokud provedete změny materiály ve scéně, je potřeba přepnout karty v modulu plug-in Akustika projektu zobrazíte tyto změny pozorovat ve **materiály** kartu.
 
 ## <a name="calculate-and-review-listener-probe-locations"></a>Výpočet a zkontrolujte umístění testu naslouchací proces
 
@@ -98,7 +115,7 @@ Po přiřazení materiály, přepněte **sondy** kartu.
 
 1. **Sondy** kartu tlačítko použít zobrazíte na této stránce
 2. Stručný popis, co je potřeba provést pomocí této stránky
-3. Použijte k výběru řešení hrubý nebo jemné simulace. Hrubé je rychlejší, ale má některé kompromisy. Zobrazit [hrubý vs jemné řešení](#Coarse-vs-Fine-Resolution) níže podrobnosti.
+3. Použijte k výběru řešení hrubý nebo jemné simulace. Hrubé je rychlejší, ale má některé kompromisy. Zobrazit [zanést rozlišení](bake-resolution.md) níže podrobnosti.
 4. Vyberte umístění, kde mají být data soubory Akustika umístěny podle tohoto pole. Klikněte na tlačítko s "..." použití ovládacího prvku pro výběr složky. Další informace o datových souborů najdete v tématu [datové soubory](#Data-Files) níže.
 5. Datové soubory pro tento scény bude mít název pomocí předpony k dispozici tady. Výchozí hodnota je "_AcousticsData [název úrovně]".
 6. Klikněte na tlačítko **Calculate** tlačítko voxelize scény a vypočítat umístění bodů testu. To se provádí místně na svém počítači a je nutné provést před tím, která má označení vytvoření. Poté, co vypočítali sond, ovládacích prvků nad bude zakázán a toto tlačítko se změní na Řekněme, že **vymazat**. Klikněte na tlačítko **vymazat** tlačítko Vymazat výpočty a povolit ovládacích prvků tak, aby znovu vypočte pomocí nového nastavení.
@@ -147,21 +164,7 @@ Je důležité zkontrolovat, že existují test body všude, kde hráč má cest
 
 ![Snímek obrazovky Akustika testy ve verzi preview v Unreal](media/unreal-probes-preview.png)
 
-### <a name="Coarse-vs-Fine-Resolution"></a>Hrubý vs jemné řešení
-
-Jediným rozdílem mezi nastavení pro nalezení hrubý a bez problémů je frekvenci, s jakou se provádí simulace. Používá jemné frekvenci dvakrát tak vysoké jako hrubý.
-Když to může zdát jednoduché, má několik dopadů na akustický simulace:
-
-* Vlnové pro hrubý je dvakrát až pořádku, a proto je voxels dvakrát velké.
-* Čas simulace přímo souvisí s velikostí voxel, a proto hrubý která má označení vytvoření asi 16krát rychleji než jemné která má označení vytvoření.
-* Portály (například dveře nebo windows) menší než velikost voxel nemůže být Simulovaná. Hrubý nastavení může způsobit, že některé z těchto menších portály, které nebudou simulované; Proto že nebudou předávat zvukové prostřednictvím za běhu. Můžete zobrazit, pokud dochází k tomu zobrazením voxels.
-* Nižší četností simulace za následek méně diffraction kolem a rohy.
-* Zvukové zdroje nelze umístit uvnitř "vyplněné" voxels, který je voxels obsahující geometrie – výsledkem je žádný zvukový signál. Je obtížnější umístit zdrojů zvuku, nejsou uvnitř větší voxels z hrubé než při použití nastavení v pořádku.
-* Větší voxels bude více pronikat do portálů, jak je znázorněno níže. První image byla vytvořena pomocí hrubý, druhá je stejný vaší bránou pomocí jemné řešení. Označené červenou označení, je mnohem méně neoprávněného vniknutí do vaší bránou pomocí nastavení v pořádku. Modrá čára je vaší bránou dle geometrie, zatímco červená čára je efektivní akustický portál definován velikostí voxel. Jak tento neoprávněného vniknutí hraje v dané situaci závisí zcela jak voxels zarovnejte s geometrie na portálu, který je určena velikost a umístění objektů na scéně.
-
-![Snímek obrazovky s hrubým voxels vyplnění vaší bránou v Unreal](media/unreal-coarse-bake.png)
-
-![Snímek obrazovky jemné voxels ve vaší bránou v Unreal](media/unreal-fine-bake.png)
+Zobrazit [zanést rozlišení](bake-resolution.md) podrobné informace o hrubý vs jemné řešení.
 
 ## <a name="bake-your-level-using-azure-batch"></a>Vytvoření vaší úrovni pomocí služby Azure Batch
 

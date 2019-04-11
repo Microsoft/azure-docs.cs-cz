@@ -13,12 +13,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 01/23/2019
 ms.author: mbullwin
-ms.openlocfilehash: 3b6860c9a84384bfade099fb7c8c8c72281c3593
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: 8026576478b16b753ba960155c383ffec62c61ce
+ms.sourcegitcommit: 6e32f493eb32f93f71d425497752e84763070fad
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59257157"
+ms.lasthandoff: 04/10/2019
+ms.locfileid: "59469790"
 ---
 # <a name="set-alerts-in-application-insights"></a>Nastavení upozornění ve službě Application Insights
 [Azure Application Insights] [ start] může vás upozornit na změny v metrikách výkonu nebo využití ve vaší webové aplikaci. 
@@ -144,6 +144,24 @@ V této části provedeme nastavení upozornění výjimka na základě dotazu. 
 10. Nakonec přidejte podrobnosti o vašem výstrah (výstrahy název pravidla, popis, závažnosti). Jakmile budete hotovi, klikněte na tlačítko **vytvořit pravidlo upozornění** v dolní části.
 
     ![V části podrobností výstrahy zadejte název pravidla upozornění, napište popis a vybrat závažnost](./media/alerts/9alertdetails.png)
+
+## <a name="how-to-unsubscribe-from-classic-alert-e-mail-notifications"></a>Jak zrušit odběr klasického upozornění e-mailová oznámení
+
+Tato část se týká **upozornění na dostupnost klasické**, **upozornění metrik Application Insights**a získat **upozornění na anomálie selhání classic**.
+
+Vám posíláme e-mailová oznámení pro tyto klasických upozornění, pokud platí některý z následujících akcí:
+
+* E-mailová adresa je uveden v poli příjemci e-mailová oznámení v nastavení pravidla upozornění.
+
+* Je aktivovaná možnost odeslat e-mailová oznámení pro uživatele, která uchovává určité role pro předplatné a podržte příslušné role pro toto konkrétní předplatné Azure.
+
+![Snímek obrazovky oznámení výstrah](./media/alerts/alert-notification.png)
+
+Pro lepší kontrolu nad zabezpečení a ochrany osobních údajů obecně doporučujeme explicitně zadat příjemce oznámení pro upozornění classic ve **příjemců e-mailová oznámení** pole. Umožňuje všem uživatelům, která uchovává určité role je k dispozici z důvodu zpětné kompatibility.
+
+Pokud chcete zrušit odběr vygenerována pravidlem určitých výstrah e-mailová oznámení, odeberte e-mailovou adresu z **příjemců e-mailová oznámení** pole.
+
+Pokud vaše e-mailová adresa není uvedená explicitně, doporučujeme zakázat možnost automaticky upozornění všechny členy určité role a místo toho seznamu všechny e-maily uživatele, kteří se chtějí dostávat oznámení pro dané pravidlo upozornění v e-mailové oznámení pole příjemců.
 
 ## <a name="who-receives-the-classic-alert-notifications"></a>Kdo přijímá oznámení výstrah (klasické)?
 

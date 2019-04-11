@@ -18,12 +18,12 @@ ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cc7feb77830fe8312cc2b48ffdb2c1af0abfb4b8
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: fcda3e1ee8029bf40a0d7eec2ad440b7b128a650
+ms.sourcegitcommit: 6e32f493eb32f93f71d425497752e84763070fad
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59263515"
+ms.lasthandoff: 04/10/2019
+ms.locfileid: "59470253"
 ---
 # <a name="microsoft-identity-platform-and-oauth-20-authorization-code-flow"></a>Platforma identit Microsoft a tok autorizačního kódu OAuth 2.0
 
@@ -69,7 +69,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 | `tenant`    | povinné    | `{tenant}` Hodnota v cestě požadavku je možné řídit, kdo se můžete přihlásit do aplikace. Povolené hodnoty jsou `common`, `organizations`, `consumers`a identifikátorů klienta. Další podrobnosti najdete v části [protokol Základy](active-directory-v2-protocols.md#endpoints).  |
 | `client_id`   | povinné    | **ID aplikace (klient)** , který [webu Azure portal – registrace aplikací](https://go.microsoft.com/fwlink/?linkid=2083908) prostředí přiřazené vaší aplikaci.  |
 | `response_type` | povinné    | Musí zahrnovat `code` pro tok autorizačního kódu.       |
-| `redirect_uri`  | Doporučené | Redirect_uri vaší aplikace, kde můžete odesílat a přijímat aplikací pro žádosti o ověření. Musí odpovídat přesně jeden z redirect_uris, které jste zaregistrovali na portálu, s tím rozdílem, musí být kódování url. Pro nativní a mobilní aplikace, byste měli použít výchozí hodnotu `https://login.microsoftonline.com/common/oauth2/nativeclient`.   |
+| `redirect_uri`  | povinné | Redirect_uri vaší aplikace, kde můžete odesílat a přijímat aplikací pro žádosti o ověření. Musí odpovídat přesně jeden z redirect_uris, které jste zaregistrovali na portálu, s tím rozdílem, musí být kódování url. Pro nativní a mobilní aplikace, byste měli použít výchozí hodnotu `https://login.microsoftonline.com/common/oauth2/nativeclient`.   |
 | `scope`  | povinné    | Místo oddělený seznam [obory](v2-permissions-and-consent.md) , že má uživatel vyjádřit souhlas. |
 | `response_mode`   | Doporučené | Určuje metodu, která se má použít k odeslání výsledný token zpátky do vaší aplikace. Může být jedna z následujících akcí:<br/><br/>- `query`<br/>- `fragment`<br/>- `form_post`<br/><br/>`query` poskytuje kód jako parametru řetězce dotazu na váš identifikátor URI pro přesměrování. Pokud se požaduje token ID pomocí implicitního toku, nemůžete použít `query` podle [OpenID specifikace](https://openid.net/specs/oauth-v2-multiple-response-types-1_0.html#Combinations). Pokud požadujete přesně takový kód, můžete použít `query`, `fragment`, nebo `form_post`. `form_post` provede příspěvek, který obsahuje kód, který váš identifikátor URI pro přesměrování. Další informace najdete v tématu [protokolu OpenID Connect](https://docs.microsoft.com/azure/active-directory/develop/active-directory-protocols-openid-connect-code).  |
 | `state`                 | Doporučené | Hodnota v požadavku, která se také vrátit v odpovědi tokenu. Může být řetězec jakéhokoli obsahu, který chcete. Náhodně generované jedinečná hodnota se obvykle používá pro [prevence útoků proti padělání žádosti více webů](https://tools.ietf.org/html/rfc6749#section-10.12). Hodnota můžete kódovat také informace o stavu uživatele v aplikaci, než požadavek na ověření došlo k chybě, například stránky nebo zobrazení, které byly na. |
@@ -242,7 +242,9 @@ Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik5HVEZ2ZEstZn
 
 Access_tokens jsou krátké životnost a po vypršení platnosti i nadále přístup k prostředkům, musíte je aktualizovat. Můžete tak učinit odesláním jiného `POST` požádat o `/token` koncový bod, v tuto chvíli poskytující `refresh_token` místo `code`.  Obnovovací tokeny jsou platné pro všechna oprávnění, které už klient přijal souhlas pro – díky tomu se obnovovací token vydaný na žádost o `scope=mail.read` umožňuje požádat o nový přístupový token pro `scope=api://contoso.com/api/UseResource`.  
 
-Aktualizovat tokeny nemají zadaný životnosti. Životní cyklus obnovovací tokeny jsou obvykle poměrně dlouho. Ale v některých případech tokeny obnovení vyprší, byly odvolány nebo nemají dostatečná oprávnění pro požadovanou akci. Vaše aplikace potřebuje očekávat a zpracovat [chyby vrácené systémem koncový bod vystavování tokenů](#error-codes-for-token-endpoint-errors) správně.  Všimněte si, že nejsou obnovovací tokeny odvolán, pokud se použije k získání nových přístupových tokenů. 
+Aktualizovat tokeny nemají zadaný životnosti. Životní cyklus obnovovací tokeny jsou obvykle poměrně dlouho. Ale v některých případech tokeny obnovení vyprší, byly odvolány nebo nemají dostatečná oprávnění pro požadovanou akci. Vaše aplikace potřebuje očekávat a zpracovat [chyby vrácené systémem koncový bod vystavování tokenů](#error-codes-for-token-endpoint-errors) správně. 
+
+I když tokeny obnovení nejsou odvolán, pokud se použije k získání nových přístupových tokenů, očekává se zrušit starý obnovovací token. [Specifikace OAuth 2.0](https://tools.ietf.org/html/rfc6749#section-6) říká: "Autorizační server může vystavovat nový token obnovení, ve kterém musí zrušit případ klienta staré obnovovací token a nahraďte ji metodou nového tokenu obnovení. Autorizační server může zrušit starý obnovovací token po vydání nového tokenu obnovení do klienta."  
 
 ```
 // Line breaks for legibility only
@@ -254,7 +256,6 @@ Content-Type: application/x-www-form-urlencoded
 client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 &scope=https%3A%2F%2Fgraph.microsoft.com%2Fuser.read
 &refresh_token=OAAABAAAAiL9Kn2Z27UubvWFPbm0gLWQJVzCTE9UkP3pSx1aXxUjq...
-&redirect_uri=http%3A%2F%2Flocalhost%2Fmyapp%2F
 &grant_type=refresh_token
 &client_secret=JqQX2PNo9bpM0uEihUPzyrh      // NOTE: Only required for web apps
 ```
@@ -271,8 +272,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 | `grant_type`    | povinné    | Musí být `refresh_token` pro tuto větev tok autorizačního kódu. |
 | `scope`         | povinné    | Seznam oborů oddělených mezerami. Obory požadovaný v této fáze musí být ekvivalentní, nebo podmnožina obory požadovaný v původní požadavek fáze authorization_code. Pokud span obory zadané v této žádosti více prostředků serveru, koncový bod verze 2.0 vrátí token pro prostředek určený v rámci první. Podrobnější vysvětlení oborů, najdete v tématu [oprávnění, vyjádření souhlasu a obory](v2-permissions-and-consent.md). |
 | `refresh_token` | povinné    | Refresh_token, kterou jste získali v druhé fáze toku. |
-| `redirect_uri`  | povinné    |  A `redirect_uri`zaregistrovat v klientské aplikaci. |
-| `client_secret` | vyžaduje se pro webové aplikace | Tajný klíč aplikace, kterou jste vytvořili v portálu pro registraci aplikace pro vaši aplikaci. Není vhodné jej použít v nativní aplikaci, protože client_secrets nemůže být spolehlivě uložená na zařízeních. Vyžaduje se pro webové aplikace a webová rozhraní API, které se budou moct bezpečně uložit hodnotu client_secret na straně serveru.                                                                                                                                                    |
+| `client_secret` | vyžaduje se pro webové aplikace | Tajný klíč aplikace, kterou jste vytvořili v portálu pro registraci aplikace pro vaši aplikaci. Není vhodné jej použít v nativní aplikaci, protože client_secrets nemůže být spolehlivě uložená na zařízeních. Vyžaduje se pro webové aplikace a webová rozhraní API, které se budou moct bezpečně uložit hodnotu client_secret na straně serveru. |
 
 #### <a name="successful-response"></a>Úspěšné odpovědi
 

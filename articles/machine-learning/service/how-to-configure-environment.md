@@ -11,12 +11,12 @@ ms.reviewer: larryfr
 ms.topic: conceptual
 ms.date: 02/24/2019
 ms.custom: seodec18
-ms.openlocfilehash: 4ca64071d068f95bf3de2dc9730629b5f475d92e
-ms.sourcegitcommit: ef20235daa0eb98a468576899b590c0bc1a38394
-ms.translationtype: HT
+ms.openlocfilehash: d4866a6863143d2228c556a64c8e75c9f273076e
+ms.sourcegitcommit: 6e32f493eb32f93f71d425497752e84763070fad
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
-ms.locfileid: "59426371"
+ms.lasthandoff: 04/10/2019
+ms.locfileid: "59469892"
 ---
 # <a name="configure-a-development-environment-for-azure-machine-learning"></a>Konfigurace prostředí pro vývoj pro Azure Machine Learning
 
@@ -320,8 +320,8 @@ Jakmile je cluster spuštěn, [vytvořit knihovnu](https://docs.databricks.com/u
       
    Zvažte také:
    + V konfiguraci Automl, při použití Azure Databricks, přidejte následující parametry:
-    1. ```max_concurrent_iterations``` na základě počtu pracovních uzlů v clusteru. 
-    2. ```spark_context=sc``` #databricks/spark výchozí kontext spark. 
+        1. ```max_concurrent_iterations``` vychází z počtu uzlů pracovního procesu v clusteru. 
+        2. ```spark_context=sc``` je založena na výchozí kontext spark. 
    + Nebo, pokud máte starší verzi sady SDK, zrušte zaškrtnutí možnosti z nainstalovaných knihoven clusteru a přesunout do koše. Nainstalujte novou verzi sady SDK a restartujte cluster. Pokud po této dochází k nějakému problému, odpojit a znovu ho připojte svůj cluster.
 
 Pokud byla instalace úspěšná, importované knihovny by měl vypadat jako jednu z těchto:

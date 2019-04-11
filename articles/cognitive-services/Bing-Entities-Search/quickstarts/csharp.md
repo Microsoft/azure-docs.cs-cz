@@ -10,12 +10,12 @@ ms.subservice: bing-entity-search
 ms.topic: quickstart
 ms.date: 03/12/2019
 ms.author: aahi
-ms.openlocfilehash: 09eed87dce65325a5b3466346b073a0d786bfb89
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: d31be245d906ba0405a44d4482272051982c943c
+ms.sourcegitcommit: 6e32f493eb32f93f71d425497752e84763070fad
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57861447"
+ms.lasthandoff: 04/10/2019
+ms.locfileid: "59469144"
 ---
 # <a name="quickstart-send-a-search-request-to-the-bing-entity-search-rest-api-using-c"></a>Rychlý start: Odeslat žádost o vyhledávání pomocí API REST pro vyhledávání entit BinguC#
 
@@ -29,7 +29,7 @@ Aplikace je sice napsaná v C#, ale rozhraní API je webová služba RESTful kom
 * Libovolná edice sady [Visual Studio 2017](https://www.visualstudio.com/downloads/).
 * Rozhraní [Json.NET](https://www.newtonsoft.com/json), k dispozici jako balíček NuGet.
     * Chcete-li nainstalovat balíček NuGet v sadě Visual studio:
-        1. Klikněte pravým tlačítkem myši klikněte na tlačítko ve Správci řešení
+        1. Klikněte pravým tlačítkem myši v Průzkumníku řešení
         2. Klikněte na tlačítko **spravovat balíčky NuGet...**
         3. Vyhledejte **newtonsoft.json** a instalace balíčku
 
@@ -174,7 +174,7 @@ Aplikace je sice napsaná v C#, ale rozhraní API je webová služba RESTful kom
 ## <a name="next-steps"></a>Další postup
 
 > [!div class="nextstepaction"]
-> [Vytvoření webové jednostránkové aplikace](../tutorial-bing-entities-search-single-page-app.md)
+> [Sestavení jednostránkové webové aplikace](../tutorial-bing-entities-search-single-page-app.md)
 
 * [Co je API pro vyhledávání entit Bingu?](../overview.md )
 * [Reference k rozhraní API vyhledávání entit Bingu](https://docs.microsoft.com/rest/api/cognitiveservices/bing-entities-api-v7-reference)

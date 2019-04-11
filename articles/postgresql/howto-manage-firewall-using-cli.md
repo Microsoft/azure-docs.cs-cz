@@ -6,16 +6,18 @@ ms.author: raagyema
 ms.service: postgresql
 ms.devlang: azurecli
 ms.topic: conceptual
-ms.date: 05/4/2018
-ms.openlocfilehash: bde43a02b844d0dc0be8b6a270ac94e0b1422b69
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.date: 04/09/2019
+ms.openlocfilehash: 9a96361d3fb155ea5b400990690e3c2b1f65f819
+ms.sourcegitcommit: 6e32f493eb32f93f71d425497752e84763070fad
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55733276"
+ms.lasthandoff: 04/10/2019
+ms.locfileid: "59469671"
 ---
 # <a name="create-and-manage-azure-database-for-postgresql-firewall-rules-using-azure-cli"></a>Vytvoření a správě Azure Database for postgresql – pravidla brány firewall pomocí Azure CLI
-Pravidla brány firewall na úrovni serveru umožňují správcům spravovat přístup ke službě Azure Database for PostgreSQL Server z konkrétní IP adresu nebo rozsah IP adres. Použití vhodné příkazy rozhraní příkazového řádku Azure, můžete vytvořit, aktualizovat, odstranit, seznam a zobrazit pravidla brány firewall pro správu serveru. Přehled služby Azure Database pro PostgreSQL pravidla brány firewall, naleznete v tématu [– Azure Database for PostgreSQL Server pravidla brány firewall](concepts-firewall-rules.md)
+Pravidla brány firewall na úrovni serveru můžete použít ke správě přístupu ke službě Azure Database for PostgreSQL Server z konkrétní IP adresu nebo rozsah IP adres. Použití vhodné příkazy rozhraní příkazového řádku Azure, můžete vytvořit, aktualizovat, odstranit, seznam a zobrazit pravidla brány firewall pro správu serveru. Přehled služby Azure Database pro PostgreSQL pravidla brány firewall, naleznete v tématu [– Azure Database for PostgreSQL Server pravidla brány firewall](concepts-firewall-rules.md).
+
+Pravidel virtuální sítě (VNet) je také možné zabezpečit přístup k vašemu serveru. Další informace o [vytváření a Správa virtuální sítě služby koncových bodů a pravidel pomocí Azure CLI](howto-manage-vnet-using-cli.md).
 
 ## <a name="prerequisites"></a>Požadavky
 Pro jednotlivé kroky v této příručce s postupy, musíte:
@@ -79,4 +81,5 @@ Po úspěšném nasazení neexistuje žádný výstup. Po selhání je vrácena 
 ## <a name="next-steps"></a>Další postup
 - Podobně můžete použít webový prohlížeč na [vytvořit a spravovat Azure Database for postgresql – pravidla brány firewall pomocí webu Azure portal](howto-manage-firewall-using-portal.md).
 - Zjistit více o [– Azure Database for PostgreSQL Server pravidla brány firewall](concepts-firewall-rules.md).
+- Dále zabezpečit přístup k vašemu serveru pomocí [vytváření a Správa virtuální sítě služby koncových bodů a pravidel pomocí Azure CLI](howto-manage-vnet-using-cli.md).
 - Pomoc při připojování k serveru Azure Database for PostgreSQL, naleznete v tématu [připojení knihoven pro službu Azure Database for PostgreSQL](concepts-connection-libraries.md).

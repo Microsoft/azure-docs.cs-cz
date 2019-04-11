@@ -5,16 +5,18 @@ author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 09/24/2018
-ms.openlocfilehash: 3fccb50e3447eabc15cbef89ab7655b3f1d1f4ac
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.date: 04/09/2019
+ms.openlocfilehash: e9ab243692f5a4a1ec7de25774f5bad867698fc3
+ms.sourcegitcommit: 6e32f493eb32f93f71d425497752e84763070fad
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56876802"
+ms.lasthandoff: 04/10/2019
+ms.locfileid: "59469994"
 ---
 # <a name="create-and-manage-azure-database-for-mariadb-firewall-rules-by-using-the-azure-portal"></a>Vytváření a správa Azure Database pro MariaDB pravidla brány firewall pomocí webu Azure portal
-Pravidla brány firewall na úrovni serveru umožňují správcům přístup k Azure Database pro MariaDB serveru ze zadaná IP adresa nebo rozsah IP adres. 
+Pravidla brány firewall na úrovni serveru umožňuje spravovat přístup ke službě Azure Database pro MariaDB serveru ze zadaná IP adresa nebo rozsah IP adres.
+
+Pravidel virtuální sítě (VNet) je také možné zabezpečit přístup k vašemu serveru. Další informace o [vytváření a Správa virtuální sítě služby koncových bodů a pravidel pomocí webu Azure portal](howto-manage-vnet-portal.md).
 
 ## <a name="create-a-server-level-firewall-rule-in-the-azure-portal"></a>Vytvoření pravidla brány firewall na úrovni serveru na webu Azure Portal
 
@@ -52,7 +54,6 @@ Opakováním těchto kroků můžete spravovat pravidla brány firewall.
 * Pokud chcete upravit stávající pravidlo, klikněte na libovolné pole pravidla a potom upravte. Kliknutím na **Uložit** uložte změny.
 * Pokud chcete odstranit stávající pravidlo, klikněte na tlačítko se třemi tečkami [...] a pak klikněte na **odstranit**. Kliknutím na **Uložit** uložte změny.
 
-<!--
-## Next steps
- - Similarly, you can script to [Create and manage Azure Database for MariaDB firewall rules using Azure CLI](howto-manage-firewall-using-cli.md).
-- For help in connecting to an Azure Database for MariaDB server, see [Connection libraries for Azure Database for MariaDB](./concepts-connection-libraries.md) -->
+## <a name="next-steps"></a>Další postup
+ - Podobně můžete používat skripty pro [vytvořit a spravovat Azure Database pro MariaDB pravidla brány firewall pomocí Azure CLI](howto-manage-firewall-cli.md).
+ - Dále zabezpečit přístup k vašemu serveru pomocí [vytváření a Správa virtuální sítě služby koncových bodů a pravidel pomocí webu Azure portal](howto-manage-vnet-portal.md).

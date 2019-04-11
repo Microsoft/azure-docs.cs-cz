@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b36b6e513e382e25f7d7038f49e7467a21686a0f
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: 87a416b6ff73fd658158276a02796aaae946bc20
+ms.sourcegitcommit: 6e32f493eb32f93f71d425497752e84763070fad
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58311726"
+ms.lasthandoff: 04/10/2019
+ms.locfileid: "59470351"
 ---
 # <a name="integrate-your-existing-nps-infrastructure-with-azure-multi-factor-authentication"></a>Integrace vaší stávající infrastruktury NPS pomocí ověřování Azure Multi-Factor Authentication
 
@@ -207,6 +207,8 @@ Můžete k vytvoření tohoto klíče a nastavte na hodnotu FALSE, při připojo
 
 Vyhledejte certifikát podepsaný svým držitelem vytvořený instalační program do úložiště certifikátů a zkontrolujte, že privátní klíč má oprávnění udělená uživateli **síťová služba**. Certifikát má název předmětu **CN \<tenantid\>, OU = rozšíření NPS společnosti Microsoft**
 
+Generované certifikáty podepsané svým držitelem *AzureMfaNpsExtnConfigSetup.ps1* skript také mají životnost platnosti dva roky. Při ověřování, zda je certifikát nainstalován, měli byste také zkontrolovat, že nevypršela platnost certifikátu.
+
 -------------------------------------------------------------
 
 ### <a name="how-can-i-verify-that-my-client-cert-is-associated-to-my-tenant-in-azure-active-directory"></a>Jak můžu ověřit, že moje klientský certifikát je přidružená k mému tenantovi v Azure Active Directory?
@@ -262,6 +264,14 @@ Ověřte, že AD Connect je spuštěná a že uživatel je k dispozici ve Window
 
 Ověřte, že ze serveru, na kterém se spouští rozšíření NPS, je přístupný web https://adnotifications.windowsazure.com.
 
+-------------------------------------------------------------
+
+### <a name="why-is-authentication-not-working-despite-a-valid-certificate-being-present"></a>Proč ověřování nefunguje, bez ohledu na platného certifikátu byla vyžadována jeho přítomnost?
+
+Pokud vypršela platnost certifikátu vašeho předchozí počítač a byl vytvořen nový certifikát, odstraňte všechny certifikáty s vypršenou platností. S certifikáty s vypršenou platností může způsobit problémy s pomocí rozšíření NPS spuštění.
+
+A zkontrolujte, zda máte platný certifikát, zkontrolujte pomocí konzoly MMC Store certifikát místní účet počítače a ujistěte se, že certifikát nebyl předán, datem vypršení platnosti. Ke generování nově platný certifikát, spusťte znovu kroky v části "[spustit skript prostředí PowerShell](#run-the-powershell-script)"
+
 ## <a name="managing-the-tlsssl-protocols-and-cipher-suites"></a>Správa protokolů TLS a SSL a šifrovacích sad
 
 Doporučuje se, že starší nebo slabší šifrovací sady být vypnuto nebo odstraněno. Pokud vaše organizace vyžaduje. Informace o tom, jak to provést, najdete v článku [Správa protokolů SSL a TLS a šifrovacích sad pro AD FS](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/manage-ssl-protocols-in-ad-fs).
@@ -272,4 +282,4 @@ Doporučuje se, že starší nebo slabší šifrovací sady být vypnuto nebo od
 
 - Zjistěte, jak integrovat [Brána vzdálené plochy](howto-mfa-nps-extension-rdg.md) a [servery VPN jiných](howto-mfa-nps-extension-vpn.md) pomocí rozšíření NPS
 
-- [řešení chybových zpráv z rozšíření NPS pro Azure Multi-Factor Authentication](howto-mfa-nps-extension-errors.md)
+- [Řešení chybových zpráv z rozšíření NPS pro Azure Multi-Factor Authentication](howto-mfa-nps-extension-errors.md)

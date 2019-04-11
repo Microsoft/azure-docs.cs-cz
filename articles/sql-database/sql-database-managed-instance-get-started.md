@@ -11,13 +11,13 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein, carlrab
 manager: craigg
-ms.date: 03/13/2019
-ms.openlocfilehash: c6a6612390676de26f2f14e23b8040f983493970
-ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
-ms.translationtype: HT
+ms.date: 04/09/2019
+ms.openlocfilehash: a6abaf9b444ca9b3f14093dde1239d9158dfd3ff
+ms.sourcegitcommit: 6e32f493eb32f93f71d425497752e84763070fad
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
-ms.locfileid: "59361375"
+ms.lasthandoff: 04/10/2019
+ms.locfileid: "59469637"
 ---
 # <a name="quickstart-create-an-azure-sql-database-managed-instance"></a>Rychlý start: Vytvoření spravované instance Azure SQL Database
 
@@ -48,6 +48,7 @@ Následující kroky ukazují, jak vytvořit spravovanou instanci.
    |**Název spravované instance**|Libovolné platné jméno|Platné názvy najdete v tématu [pravidla a omezení pojmenování](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions).|
    |**Přihlášení správce spravované instance**|Jakékoli platné uživatelské jméno|Platné názvy najdete v tématu [pravidla a omezení pojmenování](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions). Nepoužívejte "serveradmin", protože to je vyhrazené serverové role.|
    |**Heslo**|Libovolné platné heslo|Heslo musí obsahovat nejméně 16 znaků a musí splňovat [zadané požadavky na složitost](../virtual-machines/windows/faq.md#what-are-the-password-requirements-when-creating-a-vm).|
+   |**Časové pásmo**|Časové pásmo má být dodržen spravované instance|Další informace najdete v tématu [časových pásem](sql-database-managed-instance-timezone.md)|
    |**Kolace**|Kolace, kterou chcete použít pro spravovanou instanci|Pokud se migrace databáze z SQL serveru, zkontrolujte řazení zdroje s použitím `SELECT SERVERPROPERTY(N'Collation')` a tuto hodnotu použít. Informace o kolacích najdete v tématu [serverové kolace](https://docs.microsoft.com/sql/relational-databases/collations/set-or-change-the-server-collation).|
    |**Umístění**|Umístění, ve kterém chcete vytvořit spravovanou instanci|Informace o oblastech najdete v tématu [oblastí Azure](https://azure.microsoft.com/regions/).|
    |**Virtuální síť**|Vyberte buď **vytvořit novou virtuální síť** nebo platný virtuální sítě a podsítě.| Pokud není k dispozici síť/podsíť je musí být [upravit tak, aby byly splněny požadavky na síť](sql-database-managed-instance-configure-vnet-subnet.md) vybrat jako cíl pro nové spravované instance. Informace ohledně požadavků na konfiguraci síťového prostředí pro spravovanou instanci najdete v tématu [konfigurace virtuální sítě pro spravovanou instanci](sql-database-managed-instance-connectivity-architecture.md). |

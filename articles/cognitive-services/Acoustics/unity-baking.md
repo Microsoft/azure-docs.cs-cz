@@ -10,12 +10,12 @@ ms.subservice: acoustics
 ms.topic: tutorial
 ms.date: 03/20/2019
 ms.author: kegodin
-ms.openlocfilehash: f44b6f9ed42770fe830346de08058e33ed68a249
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: 8875674b0f9c621a573dda591b4dc2b6f018a83c
+ms.sourcegitcommit: 6e32f493eb32f93f71d425497752e84763070fad
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58309636"
+ms.lasthandoff: 04/10/2019
+ms.locfileid: "59470334"
 ---
 # <a name="project-acoustics-unity-bake-tutorial"></a>Projekt Akustika Unity, která má označení vytvoření kurz
 Tento kurz popisuje Akustika pečení s Akustika projektu v Unity.
@@ -137,7 +137,7 @@ Název scény se používá pro připojení k uložení umístění bodu testu a
 
 1. **Sondy** kartu tlačítko použít zobrazíte na této stránce
 2. Stručný popis, co je potřeba provést pomocí této stránky
-3. Použijte k výběru řešení hrubý nebo jemné simulace. Hrubé je rychlejší, ale má některé kompromisy. V tématu [výběr hrubý vs jemné řešení](#Coarse-vs-Fine-Resolution) níže podrobnosti.
+3. Použijte k výběru řešení hrubý nebo jemné simulace. Hrubé je rychlejší, ale má některé kompromisy. Zobrazit [zanést rozlišení](bake-resolution.md) níže podrobnosti.
 4. Vyberte umístění, kde mají být data soubory Akustika umístěny podle tohoto pole. Klikněte na tlačítko s "..." použití ovládacího prvku pro výběr složky. Výchozí hodnota je **prostředky/AcousticsData**. **Editor** podsložku se také vytvoří v tomto umístění. Další informace o datových souborů najdete v tématu [datové soubory](#Data-Files) níže.
 5. Datové soubory pro tento scény bude mít název pomocí předpony k dispozici tady. Výchozí hodnota je "Acoustics_ [název scény]".
 6. Poté, co byla vypočtena sond, ovládací prvky výše se deaktivuje. Klikněte na tlačítko **vymazat** tlačítko Vymazat výpočty a povolit ovládacích prvků tak, aby znovu vypočte pomocí nového nastavení.
@@ -145,21 +145,7 @@ Název scény se používá pro připojení k uložení umístění bodu testu a
 
 V této verzi systému projektu Akustika sondy nemůže být umístěn ručně a musí být umístěné prostřednictvím automatizovaného procesu součástí **sondy** kartu.
 
-### <a name="Coarse-vs-Fine-Resolution"></a>Výběr hrubý vs. jemné řešení
-
-Jediným rozdílem mezi nastavení pro nalezení hrubý a bez problémů je frekvenci, s jakou se provádí simulace. Používá jemné frekvenci dvakrát tak vysoké jako hrubý.
-Když to může zdát jednoduché, má několik dopadů na akustický simulace:
-
-* Vlnové pro hrubý je dvakrát až pořádku, a proto je voxels dvakrát velké.
-* Čas simulace přímo souvisí s velikostí voxel, a proto hrubý která má označení vytvoření asi 16krát rychleji než jemné která má označení vytvoření.
-* Portály (například dveře nebo windows) menší než velikost voxel nemůže být Simulovaná. Hrubý nastavení může způsobit, že některé z těchto menších portály, které nebudou simulované; Proto že nebudou předávat zvukové prostřednictvím za běhu. Můžete zobrazit, pokud dochází k tomu zobrazením voxels.
-* Nižší četností simulace za následek méně diffraction kolem a rohy.
-* Zvukové zdroje nelze umístit uvnitř "vyplněné" voxels, který je voxels obsahující geometrie – výsledkem je žádný zvukový signál. Je obtížnější najít zdroje zvuku, nejsou uvnitř větší voxels z hrubé než nastavení v pořádku.
-* Větší voxels bude více pronikat do portálů, jak je znázorněno níže. První image byla vytvořena pomocí hrubý, druhá je stejný vaší bránou pomocí jemné řešení. Označené červenou označení, je mnohem méně neoprávněného vniknutí do vaší bránou pomocí nastavení v pořádku. Modrá čára je vaší bránou dle geometrie, zatímco červená čára je efektivní akustický portál definován velikostí voxel. Jak tento neoprávněného vniknutí hraje v dané situaci závisí zcela jak voxels zarovnejte s geometrie na portálu, který je určena velikost a umístění objektů na scéně.
-
-![Snímek obrazovky s hrubým voxels ve vaší bránou](media/coarse-voxel-doorway.png)
-
-![Snímek obrazovky jemné voxels ve vaší bránou](media/fine-voxel-doorway.png)
+Zobrazit [zanést rozlišení](bake-resolution.md) podrobné informace o hrubý vs jemné řešení.
 
 ## <a name="bake-your-scene-using-azure-batch"></a>Vytvoření vašeho scény pomocí služby Azure Batch
 Můžete zanést vaše Scéna s výpočetní cluster v cloudu pomocí služby Azure Batch. Modul plug-in Unity Akustika projekt připojuje přímo k Azure Batch k vytvoření instance, spravovat a dovolí pro každý která má označení vytvoření clusteru služby Azure Batch. Na **zanést** kartu, zadejte přihlašovací údaje Azure, vyberte typ počítače clusteru a velikost a klikněte na tlačítko **zanést**.
@@ -210,7 +196,7 @@ Jako příklad najdete v našich testech na počítači s technologií Intel Xeo
 Instalace a konfigurace Dockeru na počítači, který bude zpracovávat simulace-
 1. Nainstalujte [nástrojů Dockeru](https://www.docker.com/products/docker-desktop).
 2. Spusťte nastavení Dockeru, přejděte na možnosti "Pokročilé" a konfigurovat prostředky mít aspoň 8GB paměti RAM. Více procesorů může přidělit Dockeru, tím rychleji která má označení vytvoření dokončí. ![Snímek obrazovky s příklady nastavení Dockeru](media/docker-settings.png)
-3. Přejděte na "Sdílené jednotky" a zapněte sdílení má jednotka použitá ke zpracování.![Možnosti Screnshot Dockeru sdílené jednotky](media/docker-shared-drives.png)
+3. Přejděte na "Sdílené jednotky" a zapněte sdílení má jednotka použitá ke zpracování.![Možnosti snímku obrazovky Dockeru sdílené jednotky](media/docker-shared-drives.png)
 
 ### <a name="run-local-bake"></a>Spusťte místní která má označení vytvoření
 1. Klikněte na tlačítko "Příprava místní zanést" na **zanést** kartě a vyberte složku, kam bude uložena vstupních souborů a provádění skriptů. Poté lze která má označení vytvoření na jakýkoli počítač splňuje minimální hardwarové požadavky a pokud je Docker nainstalovaný tak, že zkopírujete složku do tohoto počítače.

@@ -5,16 +5,18 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 02/28/2018
-ms.openlocfilehash: b55f8d44d12fa503a17218db4a5166819024f1aa
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.date: 04/09/2018
+ms.openlocfilehash: 017266fd28fb31b4509957560a042abf74314453
+ms.sourcegitcommit: 6e32f493eb32f93f71d425497752e84763070fad
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56872892"
+ms.lasthandoff: 04/10/2019
+ms.locfileid: "59469450"
 ---
 # <a name="create-and-manage-azure-database-for-mysql-firewall-rules-by-using-the-azure-portal"></a>Vytvoření a správě Azure Database for MySQL pravidla brány firewall pomocí webu Azure portal
-Pravidla brány firewall na úrovni serveru umožňují správcům přístup k Azure Database for MySQL Server ze zadané IP adresy nebo rozsah IP adres. 
+Pravidla brány firewall na úrovni serveru můžete použít ke správě přístupu ke službě Azure Database for MySQL Server ze zadané IP adresy nebo rozsah IP adres. 
+
+Pravidel virtuální sítě (VNet) je také možné zabezpečit přístup k vašemu serveru. Další informace o [vytváření a Správa virtuální sítě služby koncových bodů a pravidel pomocí webu Azure portal](howto-manage-vnet-using-portal.md).
 
 ## <a name="create-a-server-level-firewall-rule-in-the-azure-portal"></a>Vytvoření pravidla brány firewall na úrovni serveru na webu Azure Portal
 
@@ -57,4 +59,5 @@ Opakováním těchto kroků můžete spravovat pravidla brány firewall.
 
 ## <a name="next-steps"></a>Další postup
 - Podobně můžete používat skripty pro [vytvořit a spravovat Azure Database for MySQL pravidel brány firewall pomocí Azure CLI](howto-manage-firewall-using-cli.md).
-- Pomoc při připojování k serveru Azure Database for MySQL, naleznete v tématu [připojení knihoven pro službu Azure Database for MySQL](./concepts-connection-libraries.md)
+- Dále zabezpečit přístup k vašemu serveru pomocí [vytváření a Správa virtuální sítě služby koncových bodů a pravidel pomocí webu Azure portal](howto-manage-vnet-using-portal.md).
+- Pomoc při připojování k serveru Azure Database for MySQL, naleznete v tématu [připojení knihoven pro službu Azure Database for MySQL](./concepts-connection-libraries.md).

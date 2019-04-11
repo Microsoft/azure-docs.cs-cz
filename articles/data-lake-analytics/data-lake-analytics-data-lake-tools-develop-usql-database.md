@@ -10,18 +10,18 @@ ms.service: data-lake-analytics
 ms.topic: conceptual
 ms.workload: big-data
 ms.date: 07/03/2018
-ms.openlocfilehash: 1982f974acd1e9d5e8cae91201f6503eb2ae678a
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 47235fa5676acd8de8a7cc0d969b813837faf0af
+ms.sourcegitcommit: 6e32f493eb32f93f71d425497752e84763070fad
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57898789"
+ms.lasthandoff: 04/10/2019
+ms.locfileid: "59469705"
 ---
 # <a name="use-a-u-sql-database-project-to-develop-a-u-sql-database-for-azure-data-lake"></a>Pomocí projekt U-SQL database můžete vyvíjet databáze U-SQL pro Azure Data Lake
 
 U-SQL database nabízí v porovnání s Nestrukturovaná data a spravované strukturovaných dat v tabulkách strukturovaných zobrazení. Také poskytuje systém katalogu obecné metadat pro uspořádání vašich strukturovaných dat a vlastní kód. Databáze je koncept, která seskupuje tyto související objekty.
 
-Další informace o [databáze U-SQL a jazyka DDL (Data Definition)](https://msdn.microsoft.com/azure/data-lake-analytics/u-sql/data-definition-language-ddl-statements-u-sql). 
+Další informace o [databáze U-SQL a jazyka DDL (Data Definition)](/u-sql/data-definition-language-ddl-statements). 
 
 Databázový projekt U-SQL je typu projektu v sadě Visual Studio, který pomáhá vývojářům vyvíjet, spravovat a nasazovat své databáze U-SQL, rychlé a snadné.
 

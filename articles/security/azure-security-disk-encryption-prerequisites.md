@@ -7,16 +7,16 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 03/25/2019
 ms.custom: seodec18
-ms.openlocfilehash: 896553890252572e4b5524d047893953b78a4ba1
-ms.sourcegitcommit: e43ea344c52b3a99235660960c1e747b9d6c990e
+ms.openlocfilehash: 1da35b55a458ad73689f51c49e73855fd33ee45f
+ms.sourcegitcommit: 6e32f493eb32f93f71d425497752e84763070fad
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/04/2019
-ms.locfileid: "59010087"
+ms.lasthandoff: 04/10/2019
+ms.locfileid: "59470285"
 ---
 # <a name="azure-disk-encryption-prerequisites"></a>Požadavky Azure Disk Encryption
 
- Tento článek, požadované součásti služby Azure Disk Encryption, vysvětluje položky, které musí být na místě, abyste mohli používat Azure Disk Encryption. Azure Disk Encryption je integrovaná s [Azure Key Vault](https://docs.microsoft.com/azure/key-vault/) ke správě šifrovacích klíčů. Můžete použít [prostředí Azure PowerShell](/powershell/azure/overview), [rozhraní příkazového řádku Azure](/cli/azure/), nebo [webu Azure portal](https://portal.azure.com) ke konfiguraci Azure Disk Encryption.
+Tento článek, požadované součásti služby Azure Disk Encryption, vysvětluje položky, které musí být na místě, abyste mohli používat Azure Disk Encryption. Azure Disk Encryption je integrovaná s [Azure Key Vault](https://docs.microsoft.com/azure/key-vault/) ke správě šifrovacích klíčů. Můžete použít [prostředí Azure PowerShell](/powershell/azure/overview), [rozhraní příkazového řádku Azure](/cli/azure/), nebo [webu Azure portal](https://portal.azure.com) ke konfiguraci Azure Disk Encryption.
 
 Dříve než povolíte pro podporované scénáře, které byly zmíněny v Azure Disk Encryption ve virtuálních počítačích Azure IaaS [přehledu Azure Disk Encryption](azure-security-disk-encryption-overview.md) článek, je nutné mít požadavky na místě. 
 
@@ -29,10 +29,11 @@ Dříve než povolíte pro podporované scénáře, které byly zmíněny v Azur
 ## <a name="bkmk_OSs"></a> Podporované operační systémy
 Azure Disk Encryption je podporována v následujících operačních systémech:
 
-- Verze Windows serveru: Windows Server 2008 R2, Windows Server 2012, Windows Server 2012 R2 a vyšší verze Windows se v galerii Azure.
-  - Pro Windows Server 2008 R2 musíte mít rozhraní .NET Framework 4.5 nainstalované před povolením šifrování v Azure. Nainstalujte ji z webu Windows Update, s volitelnou aktualizaci Microsoft .NET Framework 4.5.2 x64 systémů Windows Server 2008 R2 ([KB2901983](https://support.microsoft.com/kb/2901983)).    
+- Verze Windows serveru: Jádra systému Windows Server 2008 R2, Windows Server 2012, Windows Server 2012 R2, Windows serveru 2016, jádra serveru systému Windows Server 2012 R2 a Windows serveru 2016.
+Pro Windows Server 2008 R2 musíte mít rozhraní .NET Framework 4.5 nainstalované před povolením šifrování v Azure. Nainstalujte ji z webu Windows Update, s volitelnou aktualizaci Microsoft .NET Framework 4.5.2 systémů Windows Server 2008 R2 x64 (KB2901983).
+- Jádro systému Windows Server 2012 R2 a jádra Windows serveru 2016 podporuje Azure Disk Encryption po na virtuálním počítači je nainstalována součást bdehdcfg.
 - Verze klientů Windows: Klient Windows 8 a Windows 10 klient.
-- Azure Disk Encryption je pouze podporované na konkrétní Galerie Azure Linux server distribucích a verzích. Seznam aktuálně podporovaných verzí najdete [nejčastější dotazy týkající se Azure Disk Encryption](azure-security-disk-encryption-faq.md#bkmk_LinuxOSSupport).
+- Azure Disk Encryption je pouze podporované na konkrétní Galerie Azure Linux server distribucích a verzích. Seznam aktuálně podporovaných verzí najdete [nejčastější dotazy týkající se Azure Disk Encryption](azure-security-disk-encryption-faq.md#bkmk_LinuxOSSupport). Odkazovat [Linuxových distribucí doporučených pro na Azure](../virtual-machines/linux/endorsed-distros.md) pro seznam imagí, které jsou podporovány společností Microsoft a získat [co Linuxových distribucích nemá podporu Azure Disk Encryption?](azure-security-disk-encryption-faq.md#bkmk_LinuxOSSupport) v [Azure Nejčastější dotazy k šifrování disku](azure-security-disk-encryption-faq.md) pro seznam aktuálně podporovaných verzí podle distribuce potvrzená image.
 - Azure Disk Encryption vyžaduje, aby váš trezor klíčů a virtuální počítače jsou umístěny ve stejné oblasti Azure a předplatné. Konfigurace prostředků v oblastech způsobí selhání při povolování funkce Azure Disk Encryption.
 
 ## <a name="bkmk_LinuxPrereq"></a> Další požadavky pro virtuální počítače IaaS s Linuxem 

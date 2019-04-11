@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.reviewer: mbullwin
 ms.date: 08/06/2018
 ms.author: cweining
-ms.openlocfilehash: 2e13f1f09fcdfb68a99e705511e3659f1632132e
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 93d0f148c1fa3f13e79b28e19527251455a1b65c
+ms.sourcegitcommit: 6e32f493eb32f93f71d425497752e84763070fad
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57895477"
+ms.lasthandoff: 04/10/2019
+ms.locfileid: "59470827"
 ---
 # <a name="profile-live-azure-cloud-services-with-application-insights"></a>Profilování živých Azure Cloud Services službou Application Insights
 
@@ -33,7 +33,7 @@ Application Insights Profiler je nainstalován pomocí rozšíření Azure Diagn
 
 1. Přidat [Application Insights SDK pro Azure Cloud Services](../../azure-monitor/app/cloudservices.md?toc=/azure/azure-monitor/toc.json).
 
-   >**V profileru, který se dodává v nejnovější verzi WAD pro Cloud Services je chyba.** Chcete-li použít profiler s cloudovou službou, podporuje pouze sady Application Insights SDK verzi 2.7.2. Pokud používáte novější verzi sady Application Insights SDK, budete muset přejít zpět na 2.7.2, aby bylo možné využívat profiler. Pokud používáte sadu Visual Studio na starší verzi verze sady App Insights SDK, se může zobrazit chyba přesměrování vazby v době běhu. Je to proto, že "newVersion" v souboru web.config pro Microsoft.ApplicationInsights musí být nastavená na "2.7.2.0" po downgradu sady Application Insights SDK, ale nebude aktualizovat automaticky.
+    **Opravili jsme chybu v profileru, který se dodává v WAD pro cloudové služby.** Nejnovější verze WAD (1.12.2.0) pro Cloud Services funguje s všechny nejnovější verze sady App Insights SDK. Obsluha hostitelů cloudu budou automaticky upgradovat WAD, ale není okamžitý. Vynutit upgrade, můžete znovu nasadit služby nebo restartovat uzel.
 
 1. Požadavky na sledování pomocí Application Insights:
 

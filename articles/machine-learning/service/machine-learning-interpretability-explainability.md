@@ -9,13 +9,13 @@ ms.topic: conceptual
 ms.author: mesameki
 author: mesameki
 ms.reviewer: larryfr
-ms.date: 04/04/2019
-ms.openlocfilehash: f72923b80751f16ece128ced209679bbc325226c
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.date: 04/09/2019
+ms.openlocfilehash: fbcafb61ecd69f58bb3c14d1b15f36f1b21f2833
+ms.sourcegitcommit: 6e32f493eb32f93f71d425497752e84763070fad
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/05/2019
-ms.locfileid: "59051797"
+ms.lasthandoff: 04/10/2019
+ms.locfileid: "59469773"
 ---
 # <a name="azure-machine-learning-interpretability-sdk"></a>Azure Machine Learning Interpretability SDK
 
@@ -34,7 +34,7 @@ Azure Machine Learning Interpretability SDK zahrnuje technologie vyvinutá spole
 
 ## <a name="how-does-it-work"></a>Jak to funguje?
 
-Azure Machine Learning Interpretability lze použít k pochopení chování modelu globální nebo konkrétní predikcí. Předchozí se nazývá globální vysvětlení a ten je místní vysvětlení.
+Azure Machine Learning Interpretability lze použít k pochopení chování globální nebo konkrétní předpovědi modelu. Předchozí se nazývá globální vysvětlení a ten je místní vysvětlení.
 
 Azure Machine Learning Interpretability metody může být také zařazených do kategorií podle toho, jestli metoda bez ohledu na model nebo model konkrétní. Některé metody cílit na určité typy modelů. Například pro okno stromu vysvětlení platí jenom pro modely založený na stromové architektuře. Některé metody považovat černé pole, jako je například mimic vysvětlení nebo vysvětlení jádra na okno modelu. Azure Machine Learning Interpretability SDK využívá tyto různé přístupy, na základě datové sady, model typy a případy použití.
 
@@ -42,7 +42,6 @@ Azure Machine Learning Interpretability vrátí sadu informace jak modelu díky 
 
 * Globální/místní funkce relativní důležitost
 * Globální/místní funkce a predikcí vztah
-* Interaktivní vizualizace zobrazující predikcí, funkce a predikcí vztah a relativní funkce význam hodnoty globální i lokální
 
 ## <a name="architecture"></a>Architektura
 
@@ -70,11 +69,10 @@ __Přímé explainers__ pocházejí z integrované knihovny. Sada SDK zabalí v�
 * **Vysvětlení LIMETKOVĚ**: Na základě LIMETKOVĚ, LIMETKOVĚ vysvětlení pomocí algoritmu stavu nejmodernější místní interpretovatelném modelu bez ohledu na vysvětlení (LIMETKOVĚ) vytvářet modely místní náhradní. Na rozdíl od modelů globální náhradní nastavení LIMETKOVĚ se zaměřuje na školení místní náhradní modely, které popisují jednotlivé předpovědi.
 * **Text vysvětlení HAN**: HANU Text vysvětlení používá síť hierarchické pozornost pro získávání vysvětlení modelu z textových dat pro danou černé skříňky textový model. Model náhradní HAN na předpokládané výstupy učitelů daný model trénujeme. Po školení globálně napříč text souhrnu, jsme přidali fine-tune krok pro určitého dokumentu za účelem zlepšení přesnosti vysvětlení. HANU používá obousměrný RNN s dvě vrstvy pozornost věty a word pozornost. Jakmile DNN natrénovali model učitele a doladíte na konkrétním dokumentu, jsme importances slovo extrahovat z vrstvy pozornost. Našli jsme HAN jako přesnější než LIMETKOVĚ nebo okno textových dat, ale dražší z hlediska přípravy a čas. Ale provedli jsme vylepšení na školení čas tím, že uživatel možnost inicializace síť s rukavice vkládání slov, i když je stále pomalý. Čas školení může značně zlepšit spuštěním HAN na vzdáleném virtuálním počítači Azure GPU. Implementace HAN je popsána v "hierarchické pozornost sítě pro klasifikace dokumentů (Yang et al., 2016). ([https://www.cs.cmu.edu/~diyiy/docs/naacl16.pdf](https://www.cs.cmu.edu/~diyiy/docs/naacl16.pdf)).
 
-__Meta explainers__ automaticky vybrat vhodný vysvětlení s přímým přístupem a generovat nejlepší vysvětlení informací na základě daného modelu a datových sad. Meta explainers využívat všechny knihovny (okno, LIMETKOVĚ, GA2M, znázorněna atd.), které budeme integrovat nebo vyvinutý. Tady jsou k dispozici v sadě SDK meta explainers:
+__Meta explainers__ automaticky vybrat vhodný vysvětlení s přímým přístupem a generovat nejlepší vysvětlení informací na základě daného modelu a datových sad. Meta explainers využívat všechny knihovny (okno, LIMETKOVĚ, znázorněna atd.), které budeme integrovat nebo vyvinutý. Tady jsou k dispozici v sadě SDK meta explainers:
 
 * **Tabulkové vysvětlení**: Použít s tabulkové datové sady.
 * **Text vysvětlení**: Použít s datovými sadami text.
-* **Obrázek vysvětlení** používat s datovými sadami bitové kopie.
 
 Kromě toho na meta výběr z přímé explainers, meta explainers vyvinout další funkce nad rámec základní knihovny a zlepšit rychlost a škálovatelnost na přímé explainers.
 
@@ -90,7 +88,6 @@ Funkce intelligence integrované do `TabularExplainer` bude složitější, dal�
 
 * **Shrnutí datové sady, inicializace**. V případech, kdy je nejdůležitější rychlost vysvětlení můžeme shrnout inicializace datové sady a generovat malou sadu ukázky, které urychluje vysvětlení globální a místní.
 * **Vzorkování sady dat hodnocení**. Pokud uživatel předává ve velké sady vzorků hodnocení, ale ve skutečnosti nemusí, všechny z nich má být vyhodnocen, vzorkování parametr lze nastavit na hodnotu true pro urychlení globálního vysvětlení.
-* **Vysvětlení rychlé KNN**. V případě, kdy vysvětlení musí být tak rychle jako jeden vyhodnocování/predikcí je možné KNN metodu. Během globální vysvětlení inicializace vzorky a odpovídající funkce k horní části jsou zachovány. Ke generování vysvětlení každé ukázce hodnocení, metoda KNN slouží k vyhledání nejvíce podobá ukázku z ukázky inicializace a nejvíc podobný vzorku k horní části funkce se vrátí jako funkce k horní části pro ukázku hodnocení.
 
 Následující diagram znázorňuje vztah mezi dvěma sadami přímo a meta explainers.
 
@@ -100,7 +97,7 @@ Následující diagram znázorňuje vztah mezi dvěma sadami přímo a meta expl
 
 Modely, které jsou trénované na datové sady v Pythonu `numpy.array`, `pandas.DataFrame`, `iml.datatypes.DenseData`, nebo `scipy.sparse.csr_matrix` formátu jsou podporovány Machine Learning Interpretability SDK.
 
-Vysvětlení funkce přijímají jako vstup modely a kanály. Pokud model je k dispozici, musí implementovat model funkci předpovědi `predict` nebo `predict_proba` , který potvrdí Scikit konvence. Pokud kanál (název souboru, který kanálu) vysvětlení funkce předpokládá, že spouštění skriptu kanálu vrací předpověď na.
+Vysvětlení funkce přijímají jako vstup modely a kanály. Pokud model je k dispozici, musí implementovat model funkci předpovědi `predict` nebo `predict_proba` , který odpovídá Scikit konvence. Pokud kanál (název souboru, který kanálu) vysvětlení funkce předpokládá, že spouštění skriptu kanálu vrací předpověď na.
 
 ### <a name="local-and-remote-compute-target"></a>Místní a vzdálené cílové výpočetní prostředí
 
@@ -129,13 +126,12 @@ Machine Learning Interpretability SDK je navržená pro práci s oběma cílový
     ```python
     from azureml.explain.model.tabular_explainer import TabularExplainer
     explainer = TabularExplainer(model, x_train, features=breast_cancer_data.feature_names, classes=classes)
-    or
+    ```
+    nebo
+    ```python
     from azureml.explain.model.mimic.mimic_explainer import MimicExplainer
     from azureml.explain.model.mimic.models.lightgbm_model import LGBMExplainableModel
     explainer = MimicExplainer(model, x_train, LGBMExplainableModel, features=breast_cancer_data.feature_names, classes=classes)
-    or
-    from azureml.contrib.explain.model.lime.lime_explainer import LIMEExplainer
-    explainer = LIMEExplainer(model, x_train, features=breast_cancer_data.feature_names, classes=classes)
     ```
 
 3. Získá globální funkce význam hodnoty.
@@ -154,9 +150,16 @@ Machine Learning Interpretability SDK je navržená pro práci s oběma cílový
     ```python
     # explain the first data point in the test set
     local_explanation = explainer.explain_local(x_test[0,:])
-    or
+    
+    # sorted feature importance values and feature names
+    sorted_local_importance_names = local_explanation.get_ranked_local_names()
+    sorted_local_importance_values = local_explanation.get_ranked_local_values()
+    ```
+    nebo
+    ```python
     # explain the first five data points in the test set
     local_explanation = explainer.explain_local(x_test[0:4,:])
+    
     # sorted feature importance values and feature names
     sorted_local_importance_names = local_explanation.get_ranked_local_names()
     sorted_local_importance_values = local_explanation.get_ranked_local_values()
@@ -172,21 +175,14 @@ Zatímco trénovat na různých cílových výpočetních prostředí podporovan
     run = Run.get_context()
     client = ExplanationClient.from_run(run)
     
-    breast_cancer_data = load_breast_cancer()
-    X_train, X_test, y_train, y_test = train_test_split(breast_cancer_data.data, breast_cancer_data.target, test_size = 0.2, random_state = 0)
-    data = {
-        "train":{"X": X_train, "y": y_train},        
-        "test":{"X": X_test, "y": y_test}
-    }
-    clf = svm.SVC(gamma=0.001, C=100., probability=True)
-    model = clf.fit(data['train']['X'], data['train']['y'])
-    joblib.dump(value = clf, filename = 'model.pkl')
+    # Train your model here
+
     # explain predictions on your local machine    
     explainer = TabularExplainer(model, x_train, features=breast_cancer_data.feature_names, classes=classes)
     # explain overall model predictions (global explanation)
-    global_explanation = explainer.explain_global(data["test"]["X"])
+    global_explanation = explainer.explain_global(x_test)
     # explain local data points (individual instances)
-    local_explanation = explainer.explain_local(data["test"]["X"][0,:])
+    local_explanation = explainer.explain_local(x_test[0,:])
     # upload global and local explanation objects to Run History
     upload_model_explanation(run, local_explanation, top_k=2, comment='local explanation: top 2 features')
     # Uploading global model explanation data for storage or visualization in webUX
@@ -200,6 +196,8 @@ Zatímco trénovat na různých cílových výpočetních prostředí podporovan
 2. Postupujte podle pokynů [nastavení cílových výpočetních prostředí k tréninku modelu](how-to-set-up-training-targets.md#amlcompute) Další informace o nastavení Azure Machine Learning Compute jako vaše cílové výpočetní prostředí a odeslat spuštění školení.
 
 3. Stáhněte si vysvětlení ve vaší místní aplikace Jupyter notebook. 
+    > [!IMPORTANT]
+    > Věci v contrib nejsou plně podporované. Jakmile budou až po zralé experimentální funkce, jsou postupně se přesune do hlavního balíčku.
 
     ``` python
     from azureml.contrib.explain.model.explanation.explanation_client import ExplanationClient
@@ -221,6 +219,6 @@ Zatímco trénovat na různých cílových výpočetních prostředí podporovan
     print('global importance names: {}'.format(global_importance_names))
     ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Kolekce poznámkové bloky Jupyter, které ukazují výše uvedené pokyny najdete v tématu [Azure Machine Learning Interpretability ukázkové poznámkové bloky](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/explain-model).

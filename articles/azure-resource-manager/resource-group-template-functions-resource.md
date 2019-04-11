@@ -4,22 +4,20 @@ description: Popisuje funkce pro použití v šabloně Azure Resource Manageru k
 services: azure-resource-manager
 documentationcenter: na
 author: tfitzmac
-manager: timlt
-editor: tysonn
 ms.assetid: ''
 ms.service: azure-resource-manager
 ms.devlang: na
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/30/2019
+ms.date: 04/09/2019
 ms.author: tomfitz
-ms.openlocfilehash: 87ce2019f85a2c1be742d3abf6c2fc61c5dcec10
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 4d5e6d20cb93c339d75c12ca1c0f56eaa5cc8cdd
+ms.sourcegitcommit: 6e32f493eb32f93f71d425497752e84763070fad
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56866925"
+ms.lasthandoff: 04/10/2019
+ms.locfileid: "59470708"
 ---
 # <a name="resource-functions-for-azure-resource-manager-templates"></a>Prostředek funkce pro šablony Azure Resource Manageru
 
@@ -29,12 +27,10 @@ Resource Manager poskytuje následující funkce pro načtení prostředků hodn
 * [Zprostředkovatelé](#providers)
 * [Referenční dokumentace](#reference)
 * [resourceGroup](#resourcegroup)
-* [ID prostředku](#resourceid)
+* [resourceId](#resourceid)
 * [předplatné](#subscription)
 
 Chcete-li získat hodnoty z parametrů, proměnných nebo aktuální nasazení, přečtěte si téma [funkce hodnotu nasazení](resource-group-template-functions-deployment.md).
-
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 <a id="listkeys" />
 <a id="list" />
@@ -67,7 +63,7 @@ V následující tabulce jsou uvedeny možné použití seznamu *.
 | Microsoft.CognitiveServices/accounts | [klíče Listkey](/rest/api/cognitiveservices/accountmanagement/accounts/listkeys) |
 | Microsoft.ContainerRegistry/registries | [listBuildSourceUploadUrl](/rest/api/containerregistry/registries%20(tasks)/getbuildsourceuploadurl) |
 | Microsoft.ContainerRegistry/registries | [listCredentials](/rest/api/containerregistry/registries/listcredentials) |
-| Microsoft.ContainerRegistry/registries | [listPolicies](/rest/api/containerregistry/registries/listpolicies) |
+| Microsoft.ContainerRegistry/registries | [Funkce listPolicies](/rest/api/containerregistry/registries/listpolicies) |
 | Microsoft.ContainerRegistry/registries | [listUsages](/rest/api/containerregistry/registries/listusages) |
 | Microsoft.ContainerRegistry/registries/webhooks | [listEvents](/rest/api/containerregistry/webhooks/listevents) |
 | Microsoft.ContainerService/managedClusters | [listClusterAdminCredential](/rest/api/aks/managedclusters/listclusteradmincredentials) |
@@ -173,17 +169,19 @@ Seznam funkcí, které používáte, se liší vráceného objektu. Například 
 }
 ```
 
-Další seznam funkce mají různé formáty návratový. Pokud chcete zobrazit formát funkce, zahrňte do část Outputs následujícím jak je znázorněno v příkladu šablony. 
+Další seznam funkce mají různé formáty návratový. Pokud chcete zobrazit formát funkce, zahrňte do část Outputs následujícím jak je znázorněno v příkladu šablony.
 
 ### <a name="remarks"></a>Poznámky
 
 Zadat zdroj podle použití názvu prostředku nebo [funkce resourceId](#resourceid). Při používání seznamu funkce do stejné šablony, který se nasazuje odkazovaných prostředků, použijte název prostředku.
 
+Pokud používáte **seznamu** je funkce v prostředku, který je nasazený podmíněně, funkce vyhodnocena i v případě, že není nasazený prostředek. Pokud dojde k chybě **seznamu** funkce odkazuje na prostředek, který neexistuje. Použití **Pokud** funkce, která se ujistěte se, že je funkce vyhodnocena pouze když existuje prostředek. Najdete v článku [Pokud funkce](resource-group-template-functions-logical.md#if) ukázkovou šablonu, která využívá Pokud a seznam s podmíněně nasazených prostředků.
+
 ### <a name="example"></a>Příklad:
 
 Následující [Ukázková šablona](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/listkeys.json) ukazuje, jak vrátit primární a sekundární klíče z účtu úložiště v části výstupů. Také vrátí token SAS pro účet úložiště. 
 
-Získat SAS token token, předejte objekt pro čas vypršení platnosti. Čas vypršení platnosti musí být v budoucnosti. Tento příklad je určen pro použití funkce seznamu. Obvykle můžete by pomocí tokenu SAS v hodnotě prostředků místo vrátit jako výstupní hodnoty. Výstupní hodnoty jsou uloženy v historii nasazení a nejsou zabezpečené.
+Pokud chcete získat SAS token, předejte objekt pro čas vypršení platnosti. Čas vypršení platnosti musí být v budoucnosti. Tento příklad je určen pro použití funkce seznamu. Obvykle můžete by pomocí tokenu SAS v hodnotě prostředků místo vrátit jako výstupní hodnoty. Výstupní hodnoty jsou uloženy v historii nasazení a nejsou zabezpečené.
 
 ```json
 {
@@ -246,23 +244,10 @@ Získat SAS token token, předejte objekt pro čas vypršení platnosti. Čas vy
         }
     }
 }
-``` 
-
-Pokud chcete nasadit šablonu tento příklad pomocí Azure CLI, použijte:
-
-```azurecli-interactive
-az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/listkeys.json --parameters storagename=<your-storage-account>
 ```
-
-Pokud chcete nasadit tento příklad šablony pomocí prostředí PowerShell, použijte:
-
-```powershell
-New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/listkeys.json -storagename <your-storage-account>
-```
-
-<a id="providers" />
 
 ## <a name="providers"></a>Zprostředkovatelé
+
 `providers(providerNamespace, [resourceType])`
 
 Vrátí informace o zprostředkovateli prostředků a její podporované typy prostředků. Pokud nezadáte typ prostředku, funkce vrátí všechny podporované typy pro poskytovatele prostředků.
@@ -336,21 +321,8 @@ Pro **Microsoft.Web** poskytovatele prostředků a **lokality** typ prostředku 
 }
 ```
 
-Pokud chcete nasadit šablonu tento příklad pomocí Azure CLI, použijte:
-
-```azurecli-interactive
-az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/providers.json --parameters providerNamespace=Microsoft.Web resourceType=sites
-```
-
-Pokud chcete nasadit tento příklad šablony pomocí prostředí PowerShell, použijte:
-
-```powershell
-New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/providers.json -providerNamespace Microsoft.Web -resourceType sites
-```
-
-<a id="reference" />
-
 ## <a name="reference"></a>Referenční dokumentace
+
 `reference(resourceName or resourceIdentifier, [apiVersion], ['Full'])`
 
 Vrátí objekt představující stav prostředků modulu runtime.
@@ -374,6 +346,8 @@ Odkaz na funkci načte běhový stav již nasazený prostředek nebo prostředek
 Odkaz na funkci jde použít jenom ve vlastnosti definice prostředku a část Outputs následujícím šablony nebo nasazení.
 
 Pomocí funkce odkaz na implicitně deklarujete, jeden prostředek závisí na jiný prostředek, pokud je oba odkazované prostředky poskytnutém v rámci stejné šablony a reference na prostředek má název (není ID prostředku). Není nutné použít také vlastnost dependsOn. Funkce není vyhodnocen, dokud odkazované prostředky dokončení nasazení.
+
+Pokud používáte **odkaz** je funkce v prostředku, který je nasazený podmíněně, funkce vyhodnocena i v případě, že není nasazený prostředek.  Pokud dojde k chybě **odkaz** funkce odkazuje na prostředek, který neexistuje. Použití **Pokud** funkce, která se ujistěte se, že je funkce vyhodnocena pouze když existuje prostředek. Najdete v článku [Pokud funkce](resource-group-template-functions-logical.md#if) pro ukázkovou šablonu, která využívá Pokud a odkaz se podmíněně nasazených prostředků.
 
 Pokud chcete zobrazit názvy a hodnoty pro typ prostředku, vytvořte šablonu, která vrátí objekt v část outputs. Pokud máte existující prostředek tohoto typu, šablony vrátí objekt bez nutnosti nasazovat žádné nové prostředky. 
 
@@ -514,18 +488,6 @@ V předchozím příkladu vrátí dva objekty. Objekt vlastnosti je v následuj�
 }
 ```
 
-Pokud chcete nasadit šablonu tento příklad pomocí Azure CLI, použijte:
-
-```azurecli-interactive
-az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/referencewithstorage.json --parameters storageAccountName=<your-storage-account>
-```
-
-Pokud chcete nasadit tento příklad šablony pomocí prostředí PowerShell, použijte:
-
-```powershell
-New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/referencewithstorage.json -storageAccountName <your-storage-account>
-```
-
 Následující [Ukázková šablona](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/reference.json) odkazuje na účet úložiště, který není nasazený v této šabloně. Účet úložiště už existuje v rámci stejného předplatného.
 
 ```json
@@ -550,21 +512,8 @@ Následující [Ukázková šablona](https://github.com/Azure/azure-docs-json-sa
 }
 ```
 
-Pokud chcete nasadit šablonu tento příklad pomocí Azure CLI, použijte:
+## <a name="resourcegroup"></a>resourceGroup
 
-```azurecli-interactive
-az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/reference.json --parameters storageResourceGroup=<rg-for-storage> storageAccountName=<your-storage-account>
-```
-
-Pokud chcete nasadit tento příklad šablony pomocí prostředí PowerShell, použijte:
-
-```powershell
-New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/reference.json -storageResourceGroup <rg-for-storage> -storageAccountName <your-storage-account>
-```
-
-<a id="resourcegroup" />
-
-## <a name="resourcegroup"></a>Skupina prostředků
 `resourceGroup()`
 
 Vrátí objekt představující aktuální skupinu prostředků. 
@@ -635,21 +584,8 @@ V předchozím příkladu vrátí objekt v následujícím formátu:
 }
 ```
 
-Pokud chcete nasadit šablonu tento příklad pomocí Azure CLI, použijte:
-
-```azurecli-interactive
-az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/resourcegroup.json
-```
-
-Pokud chcete nasadit tento příklad šablony pomocí prostředí PowerShell, použijte:
-
-```powershell
-New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/resourcegroup.json 
-```
-
-<a id="resourceid" />
-
 ## <a name="resourceid"></a>resourceId
+
 `resourceId([subscriptionId], [resourceGroupName], resourceType, resourceName1, [resourceName2]...)`
 
 Vrací jedinečný identifikátor prostředku. Tuto funkci použít, když název prostředku je nejednoznačný nebo není zřízené v rámci stejné šablony. 
@@ -789,21 +725,8 @@ Výstup z předchozího příkladu s výchozími hodnotami je:
 | differentSubOutput | Řetězec | /subscriptions/11111111-1111-1111-1111-111111111111/resourceGroups/otherResourceGroup/providers/Microsoft.Storage/storageAccounts/examplestorage |
 | nestedResourceOutput | Řetězec | /subscriptions/{Current-Sub-ID}/resourceGroups/examplegroup/providers/Microsoft.SQL/Servers/servername/Databases/databaseName |
 
-Pokud chcete nasadit šablonu tento příklad pomocí Azure CLI, použijte:
-
-```azurecli-interactive
-az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/resourceid.json
-```
-
-Pokud chcete nasadit tento příklad šablony pomocí prostředí PowerShell, použijte:
-
-```powershell
-New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/resourceid.json 
-```
-
-<a id="subscription" />
-
 ## <a name="subscription"></a>předplatné
+
 `subscription()`
 
 Vrátí podrobnosti o předplatném pro aktuální nasazení. 
@@ -839,19 +762,8 @@ Následující [Ukázková šablona](https://github.com/Azure/azure-docs-json-sa
 }
 ```
 
-Pokud chcete nasadit šablonu tento příklad pomocí Azure CLI, použijte:
-
-```azurecli-interactive
-az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/subscription.json
-```
-
-Pokud chcete nasadit tento příklad šablony pomocí prostředí PowerShell, použijte:
-
-```powershell
-New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/subscription.json 
-```
-
 ## <a name="next-steps"></a>Další postup
+
 * Popis části šablony Azure Resource Manageru najdete v tématu [šablon pro vytváření Azure Resource Manageru](resource-group-authoring-templates.md).
 * Chcete-li sloučit několik šablon, přečtěte si téma [použití propojených šablon s Azure Resource Managerem](resource-group-linked-templates.md).
 * K iteraci zadaného počtu opakování při vytváření konkrétní typ prostředku, naleznete v tématu [vytvořit více instancí prostředku v Azure Resource Manageru](resource-group-create-multiple.md).

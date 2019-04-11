@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 04/20/2018
 author: deborahc
 ms.author: dech
-ms.openlocfilehash: 0adb24458f718511c7134fc3bf36dd0b03173e30
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 3d535c71480693d0424c6697776a1ddbf37b47c5
+ms.sourcegitcommit: 6e32f493eb32f93f71d425497752e84763070fad
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58011506"
+ms.lasthandoff: 04/10/2019
+ms.locfileid: "59470912"
 ---
 # <a name="use-the-azure-cosmos-emulator-for-local-development-and-testing"></a>Pro místní vývoj a testování používat emulátor služby Azure Cosmos
 
@@ -122,7 +122,7 @@ DocumentClient client = new DocumentClient(
 
 ### <a name="azure-cosmos-dbs-api-for-mongodb"></a>Rozhraní API služby Azure Cosmos DB pro MongoDB
 
-Pokud používáte [služby Azure Cosmos DB pro MongoDB](mongodb-introduction.md), použijte následující připojovací řetězec:
+Pokud používáte [rozhraní API služby Azure Cosmos DB pro MongoDB](mongodb-introduction.md), použijte následující připojovací řetězec:
 
 ```bash
 mongodb://localhost:C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM+4QDU5DE2nQ9nDuVTqobD4b8mGGyPMbIZnqyMsEcaGQy67XIw/Jw==@localhost:10255/admin?ssl=true
@@ -153,7 +153,7 @@ Spusťte emulátor z příkazového řádku správce pomocí "/ EnableCassandraE
 
 * [Nainstalujte Python 2.7](https://www.python.org/downloads/release/python-2716/)
 
-* [Install Cassandra CLI/CQLSH](http://cassandra.apache.org/download/)
+* [Instalace rozhraní příkazového řádku/CQLSH Cassandra](http://cassandra.apache.org/download/)
 
 * V okně regulární příkazového řádku spusťte následující příkazy:
 

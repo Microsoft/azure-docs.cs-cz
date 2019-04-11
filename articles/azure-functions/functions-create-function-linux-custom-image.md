@@ -11,12 +11,12 @@ ms.service: azure-functions
 ms.custom: mvc
 ms.devlang: azure-cli
 manager: jeconnoc
-ms.openlocfilehash: 92811110ef44676de487bca1ad2022cb63315c75
-ms.sourcegitcommit: 72cc94d92928c0354d9671172979759922865615
+ms.openlocfilehash: 03e1ec58b0ef3ad50a04f82ced7d20119ab3ef5b
+ms.sourcegitcommit: 6e32f493eb32f93f71d425497752e84763070fad
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58418053"
+ms.lasthandoff: 04/10/2019
+ms.locfileid: "59470062"
 ---
 # <a name="create-a-function-on-linux-using-a-custom-image"></a>Vytvoření funkce v Linuxu pomocí vlastní image
 
@@ -65,7 +65,7 @@ Pokud zahrnete možnost `--docker`, pro projekt se vygeneruje soubor Dockerfile.
 
 Po zobrazení výzvy zvolte modul runtime pracovního procesu z následujících jazyků:
 
-* `dotnet`: vytvoří projekt knihovny třídy .NET (.csproj).
+* `dotnet`: vytvoří projekt knihovny tříd .NET (.csproj).
 * `node`: vytvoří projekt jazyka JavaScript.
 * `python`: vytvoří projekt Python.
 
@@ -256,6 +256,16 @@ Teď můžete svoje funkce běžící na Linuxu v Azure otestovat.
 
 [!INCLUDE [functions-test-function-code](../../includes/functions-test-function-code.md)]
 
+## <a name="enable-application-insights"></a>Povolení Application Insights
+
+Díky integraci vaší aplikace function app pomocí Azure Application Insights je doporučeným způsobem, jak provádění funkcí monitorování. Když vytvoříte aplikaci function app na webu Azure Portal, je tato integrační ve výchozím nastavení provede za vás. Když vytvoříte aplikaci function app pomocí rozhraní příkazového řádku Azure, není dokončení integrace ve vaší aplikaci function app v Azure.
+
+Povolení Application Insights pro aplikaci funkcí:
+
+[!INCLUDE [functions-connect-new-app-insights.md](../../includes/functions-connect-new-app-insights.md)]
+
+Další informace najdete v tématu [monitorování Azure Functions](functions-monitoring.md).
+
 ## <a name="enable-continuous-deployment"></a>Povolit průběžné nasazování
 
 Jednou z výhod použití kontejnerů je schopnost automaticky nasazovat aktualizace, když kontejnery jsou aktualizovány v registru. Povolit průběžné nasazování se službou [az functionapp deployment kontejneru konfigurace](/cli/azure/functionapp/deployment/container#az-functionapp-deployment-container-config) příkazu.
@@ -292,4 +302,4 @@ V tomto kurzu jste se naučili:
 Zjistěte, jak povolit funkci průběžné integrace, která je integrovaná v základní platformě App Service. Aplikaci funkcí můžete nakonfigurovat tak, aby se při aktualizaci image v Centru Dockeru znovu nasadil kontejner.
 
 > [!div class="nextstepaction"] 
-> [Průběžné nasazování pomocí služby Web App for Containers](../app-service/containers/app-service-linux-ci-cd.md)
+> [Průběžné nasazování se službou Web App for Containers](../app-service/containers/app-service-linux-ci-cd.md)

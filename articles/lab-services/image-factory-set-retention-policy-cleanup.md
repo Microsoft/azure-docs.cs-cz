@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/25/2019
 ms.author: spelluru
-ms.openlocfilehash: 8190c2043d7d3daae91c93fd3b66126d0941710b
-ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
-ms.translationtype: HT
+ms.openlocfilehash: 48412b3006a462fcc9c77219f42fb41d08f2df61
+ms.sourcegitcommit: 6e32f493eb32f93f71d425497752e84763070fad
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
-ms.locfileid: "59361860"
+ms.lasthandoff: 04/10/2019
+ms.locfileid: "59469366"
 ---
 # <a name="create-a-custom-image-factory-in-azure-devtest-labs"></a>Vytvořte objekt pro vytváření vlastní image ve službě Azure DevTest Labs
 Tento článek se věnuje nastavení zásad uchovávání informací, čištění objekt pro vytváření a vyřazení staré Image ze všech jiných službě DevTest Labs v organizaci. 
@@ -75,5 +75,5 @@ Přidání nové image objektem pro vytváření je také jednoduchá. Pokud chc
 ## <a name="next-steps"></a>Další postup
 1. [Sestavení/vydané verze naplánovat](/azure/devops/pipelines/build/triggers?view=azure-devops&tabs=designer) pravidelné spouštění objekt pro vytváření bitové kopie. Aktualizuje bitové kopie generované factory v pravidelných intervalech.
 2. Ujistěte se, další zlaté Image pro výrobce. Můžete také zvážit [vytváření artefaktů](devtest-lab-artifact-author.md) skriptu další části vašich úloh nastavení virtuálního počítače a zahrnout artefakty, které objekt pro vytváření imagí.
-4. Vytvoření [oddělení sestavení/vydané verze](/azure/devops/pipelines/overview.md?view=azure-devops-2019) ke spuštění **DistributeImages** skriptu samostatně. Tento skript můžete spustit, když provedete změny Labs.json a získat Image zkopírován do cílové cvičení bez nutnosti provádět všechny bitové kopie znovu.
+4. Vytvoření [oddělení sestavení/vydané verze](/azure/devops/pipelines/overview?view=azure-devops-2019) ke spuštění **DistributeImages** skriptu samostatně. Tento skript můžete spustit, když provedete změny Labs.json a získat Image zkopírován do cílové cvičení bez nutnosti provádět všechny bitové kopie znovu.
 

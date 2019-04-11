@@ -9,12 +9,12 @@ ms.assetid: 57143396-ab86-47dd-b6f8-613ba28c28d2
 ms.service: data-lake-analytics
 ms.topic: conceptual
 ms.date: 06/23/2017
-ms.openlocfilehash: b70de1e4494bb142da1cad0d0154b5dc7f765983
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 9de5c7228944bd0448d9dfa833ef223140ccf0e8
+ms.sourcegitcommit: 6e32f493eb32f93f71d425497752e84763070fad
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51233352"
+ms.lasthandoff: 04/10/2019
+ms.locfileid: "59469603"
 ---
 # <a name="get-started-with-u-sql-in-azure-data-lake-analytics"></a>Začínáme s jazykem U-SQL ve službě Azure Data Lake Analytics
 U-SQL je jazyk, který spojuje deklarativní SQL pomocí imperativního jazyka C# umožňuje zpracovávat data v libovolném měřítku. Prostřednictvím funkce škálovatelné a distribuované dotazu U-SQL můžete efektivně analyzovat data napříč relačními úložišť, jako je Azure SQL Database. Pomocí U-SQL můžete zpracovávání nestrukturovaných dat použitím schéma při čtení a vložení vlastní logiky a uživatelem definovanými funkcemi. Navíc U-SQL obsahuje rozšíření, která umožňuje velice přesně kontrolovat, jak provádět ve velkém měřítku. 
@@ -27,7 +27,7 @@ U-SQL je jazyk, který spojuje deklarativní SQL pomocí imperativního jazyka C
 
 ## <a name="prerequisites"></a>Požadavky
 
-Než budete postupovat ukázky U-SQL v tomto dokumentu, přečtěte si a dokončete [kurz: vývoj U-SQL skriptů pomocí nástrojů Data Lake pro Visual Studio](data-lake-analytics-data-lake-tools-get-started.md). Tento kurz vysvětluje mechanismus pomocí U-SQL s Azure Data Lake Tools pro Visual Studio.
+Než budete postupovat ukázky U-SQL v tomto dokumentu, přečtěte si a dokončete [kurzu: Vývoj skriptů U-SQL pomocí nástrojů Data Lake pro Visual Studio](data-lake-analytics-data-lake-tools-get-started.md). Tento kurz vysvětluje mechanismus pomocí U-SQL s Azure Data Lake Tools pro Visual Studio.
 
 ## <a name="your-first-u-sql-script"></a>Váš první skript U-SQL
 
@@ -55,7 +55,7 @@ Tento skript nemá žádné kroky transformace. Načte ze zdrojového souboru, k
 Všimněte si, že otazník u dat zadejte `Duration` pole. To znamená, že `Duration` pole může mít hodnotu null.
 
 ### <a name="key-concepts"></a>Klíčové koncepty
-* **Sada řádků proměnné**: každý výraz dotazu, který generuje sadu řádků je možné přiřadit k proměnné. U-SQL následuje vzor proměnné pojmenování T-SQL (`@searchlog`, například) ve skriptu.
+* **Sada řádků proměnné**: Každý výraz dotazu, který generuje sadu řádků může být přiřazen proměnné. U-SQL následuje vzor proměnné pojmenování T-SQL (`@searchlog`, například) ve skriptu.
 * **EXTRAHOVAT** – klíčové slovo číst data ze souboru a definuje schéma při čtení. `Extractors.Tsv` je integrované Extraktor U-SQL pro kartu oddělenými soubory. Můžete vyvíjet vlastních extraktorů.
 * **Výstup** zapisuje data ze sady řádků do souboru. `Outputters.Csv()` je integrované outputter U-SQL k vytvoření souboru čárkami oddělených hodnot. Můžete vyvíjet vlastní výstupní moduly.
 
@@ -117,7 +117,7 @@ Použití **vyberte** transformace sady řádků:
         TO "/output/SearchLog-transform-rowsets.csv"
         USING Outputters.Csv();
 
-Používá klauzuli WHERE [jazyka C# logický výraz](https://msdn.microsoft.com/library/6a71f45d.aspx). Výraz jazyka C# můžete použít vlastní výrazy a funkce. Dokonce můžete provést složitější filtrování podle jejich sloučením s spojky logické (a) a disjunctions (OR).
+Používá klauzuli WHERE [jazyka C# logický výraz](/dotnet/csharp/language-reference/operators/index). Výraz jazyka C# můžete použít vlastní výrazy a funkce. Dokonce můžete provést složitější filtrování podle jejich sloučením s spojky logické (a) a disjunctions (OR).
 
 Následující skript používá metodu DateTime.Parse() a spojení.
 
@@ -222,8 +222,8 @@ Klauzule HAVING U-SQL je možné omezit výstup do skupin, které splňují zada
         ORDER BY TotalDuration DESC
         USING Outputters.Csv();
 
-Pro scénáře pokročilých agregace, naleznete v referenční dokumentaci U-SQL pro [agregovat, analýzy a odkazují na funkce](https://msdn.microsoft.com/library/azure/mt621335.aspx)
+Pro scénáře pokročilých agregace, naleznete v referenční dokumentaci U-SQL pro [agregovat, analýzy a odkazují na funkce](/u-sql/built-in-functions)
 
 ## <a name="next-steps"></a>Další postup
-* [Přehled služby Microsoft Azure Data Lake Analytics](data-lake-analytics-overview.md)
+* [Přehled Microsoft Azure Data Lake Analytics](data-lake-analytics-overview.md)
 * [Vývoj skriptů U-SQL pomocí nástrojů Data Lake pro Visual Studio](data-lake-analytics-data-lake-tools-get-started.md)

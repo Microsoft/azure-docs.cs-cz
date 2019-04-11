@@ -10,12 +10,12 @@ ms.subservice: acoustics
 ms.topic: tutorial
 ms.date: 03/20/2019
 ms.author: kegodin
-ms.openlocfilehash: 57bde67ac2259b3847f59f95eaefba9c6fddf13e
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: 38276757d0472582c3cf5035e1f52d34158a7e38
+ms.sourcegitcommit: 6e32f493eb32f93f71d425497752e84763070fad
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58316197"
+ms.lasthandoff: 04/10/2019
+ms.locfileid: "59470011"
 ---
 # <a name="project-acoustics-unrealwwise-design-tutorial"></a>Kurz projektu Akustika Unreal/Wwise návrhu
 Tento kurz popisuje nastavení návrhu a pracovní postup pro projekt Akustika Unreal a Wwise.
@@ -62,11 +62,18 @@ Mějte na paměti, že instalační program vyžaduje objekt actor mixer výměn
 ![Editor Wwise snímek obrazovky znázorňující pokyny k návrhu hlasu pro Akustika projektu](media/voice-design-guidelines.png)
  
 ### <a name="set-up-distance-attenuation-curves"></a>Nastavte vzdálenost zeslabení křivek
-Zkontrolujte všechny zeslabení křivky používá objekt actor – míchání pomocí projektu Akustika mít uživatelem definované aux odeslat nastavená na "výstupní Service bus svazek." Wwise to dělá ve výchozím nastavení pro nově vytvořený zeslabení křivky. Pokud migrujete existující projekt, zkontrolujte nastavení křivky. 
+Zkontrolujte všechny zeslabení křivky používá objekt actor – míchání pomocí projektu Akustika mít uživatelem definované aux odeslat nastavená na "výstupní Service bus svazek." Wwise to dělá ve výchozím nastavení pro nově vytvořený zeslabení křivky. Pokud migrujete existující projekt, zkontrolujte nastavení křivky.
 
 Simulace Akustika projekt má ve výchozím nastavení protokolu radius 45 měřičů kolem player umístění. Obecně doporučujeme nastavit vaše křivka zeslabení do databáze-200 kolem tohoto vzdálenost. Tato vzdálenost není omezení. Pro některé výslovnost zbraní může být vhodné větší radius. V takových případech výstrahou je, že se bude podílet geometrie pouze v rámci 45 m player umístění. Pokud hráč v místnosti a zdroje zvuku nespadá do místnosti a okamžitě 100 mil., ji bude možné správně occluded. Pokud je zdroj v místnosti a hráč je mimo a okamžitě 100 mil., nebude occluded správně.
 
 ![Snímek obrazovky Wwise zeslabení křivek](media/atten-curve.png)
+
+### <a name="post-mixer-equalization"></a>Odeslat vyrovnávací Mixer ###
+ Jedna věc, kterou můžete chtít provést, je přidání ekvalizér mixer příspěvku. Můžete zpracovávat Akustika projektu Service bus jako typický dozvuku sběrnice (ve výchozím režimu dozvuku) a umístí dělat vyrovnávací filtr. Zobrazí se v projektu Akustika Wwise ukázkový projekt ukázku této.
+
+![Snímek obrazovky Wwise po mixer EQ](media/wwise-post-mixer-eq.png)
+
+Například filtr vysokou pass můžete pomáhaly zvládat basů z bezkontaktní záznamy, které boomy, nereálný dozvuku yield. Můžete také dosáhnout větší kontrolu po která má označení vytvoření úpravou EQ prostřednictvím RTPCs umožňuje změnit barvu dozvuku během hry.
 
 ## <a name="set-up-scene-wide-project-acoustics-properties"></a>Nastavení vlastností pro projekt Akustika celou scény
 
@@ -80,7 +87,7 @@ Objekt actor Akustika místo poskytuje mnoho ovládacích prvků, které upravuj
 * **Škálování mezipaměti:** řídí velikost mezipaměti pro akustický dotazy použít. Menší mezipaměti používá méně paměti RAM, ale může zvýšit využití procesoru pro každý dotaz.
 * **Akustika povoleno:** Ladění ovládacího prvku umožňující rychlé A / B přepínání Akustika simulace. Tento ovládací prvek je ignorován v dodání konfigurace. Je užitečné pro vyhledání konkrétní zvuku chyby pocházející Akustika výpočtů nebo jiný problém v projektu Wwise-li ovládací prvek.
 * **Aktualizace vzdálenosti:** Tuto možnost použijte, pokud chcete použít předem dokončené Akustika informace pro dotazy vzdálenost. Tyto dotazy se podobají ray přetypování, ale nebyla předvypočítaných proto věnujte mnohem menším procesoru. Příklad použití je pro diskrétní odrazů nejbližší povrchu k naslouchacímu procesu. Plně využít to, budete muset použít kód nebo plány do dotazu vzdálenosti.
-* **Statistiky Draw:** Při jeho UE `stat Acoustics` může poskytnout vám informace o procesoru, tento stav zobrazení se zobrazí aktuálně načtené mapy, využití paměti RAM a další informace o stavu v horním levém rohu obrazovky.
+* **Statistiky Draw:** Při jeho UE `stat Acoustics` může poskytnout vám informace o procesoru, tento stav zobrazení se zobrazí aktuálně načtené ACE souboru, využití paměti RAM a další informace o stavu v horním levém rohu obrazovky.
 * **Draw Voxels:** Překryv voxels zavřít naslouchací proces zobrazující voxel mřížky používané během interpolace modulu runtime. Pokud je vysílače uvnitř voxel modulu runtime, dojde k selhání akustický dotazy.
 * **Sondy Draw:** Zobrazit všechny testy pro tento scény. Budou různé barvy v závislosti na stavu jejich zatížení.
 * **Nakreslete vzdálenosti:** Pokud je povolená aktualizace vzdálenosti, tím se zobrazí pole na povrchu co nejblíže k naslouchacímu procesu v kvantizované směrech kolem naslouchací proces.
@@ -96,6 +103,7 @@ Tyto ovládací prvky návrhu oborem pro jednotlivé zvukové součástí Unreal
 * **Úprava outdoorness:** Určuje, jak venku reverberation. Hodnoty blíže 0 jsou více budovách, více venku se blíže k 1. Toto nastavení je sčítání, takže ji nastavíte na hodnotu -1 bude vynucovat budovách, nastavení na + 1 bude vynucovat venku.
 * **Přenos Db:** Vykreslení další zvuk prostřednictvím wall s této hlasitost v kombinaci s zeslabení řádku přístup na základě vzdálenosti.
 * **Vzdálenost Warp vlhkou poměr:** Upraví reverberation vlastnosti ve zdroji, jako kdyby byly blíže/další okamžitě, aniž by to ovlivnilo přímou cestu.
+* **Přehrát v nabídce Start:** Přepnout k určení, zda by měl v nabídce start scény automaticky přehrát zvuk. Ve výchozím nastavení povolené.
 * **Zobrazit akustický parametry:** Zobrazit informace o ladění přímo nad komponenty v rámci her. (pouze pro konfigurace bez přesouvání)
 
 ## <a name="blueprint-functionality"></a>Funkce podrobného plánu
