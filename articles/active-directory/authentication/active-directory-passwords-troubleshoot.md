@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: sahenry
 ms.custom: seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8f4f13a8b03f3ddba91fb4c4b69f550e1e88a491
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.openlocfilehash: 5adb857e6032e46c31a86685913277ec3eb571be
+ms.sourcegitcommit: 6e32f493eb32f93f71d425497752e84763070fad
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58885073"
+ms.lasthandoff: 04/10/2019
+ms.locfileid: "59471048"
 ---
 # <a name="troubleshoot-self-service-password-reset"></a>Řešení potíží s resetováním hesla pomocí samoobslužné služby
 
@@ -167,8 +167,8 @@ Aby brána firewall je největší společný bod selhání a nebo jsou nespráv
 
 Pro Azure AD Connect verze 1.1.443.0 a vyšší, budete potřebovat přístup odchozí připojení HTTPS takto:
 
-* passwordreset.microsoftonline.com
-* servicebus.windows.net
+* \*.passwordreset.microsoftonline.com
+* \*.servicebus.windows.net
 
 Pro větší členitostí odkazovat na aktualizovaný seznam [Microsoft Azure rozsahů IP adres Datacentra](https://www.microsoft.com/download/details.aspx?id=41653) aktualizuje každou středu a začíná platit následující pondělí.
 

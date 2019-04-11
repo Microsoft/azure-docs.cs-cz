@@ -10,23 +10,20 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/11/2019
+ms.date: 04/09/2019
 ms.author: tomfitz
-ms.openlocfilehash: f79518b26752d581d6360a3b770e8a5cba293fd7
-ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
+ms.openlocfilehash: 264db79f5c934603004eb595930b44abc622efd5
+ms.sourcegitcommit: 6e32f493eb32f93f71d425497752e84763070fad
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58904929"
+ms.lasthandoff: 04/10/2019
+ms.locfileid: "59470963"
 ---
 # <a name="understand-the-structure-and-syntax-of-azure-resource-manager-templates"></a>Princip struktury a syntaxe šablon Azure Resource Manageru
 
 Tento článek popisuje strukturu šablony Azure Resource Manageru. Představuje různé části šablony a vlastnosti, které jsou k dispozici v těchto oddílech. Šablona se skládá z JSON a z výrazů, které můžete použít k vytvoření hodnot pro vaše nasazení.
 
 Tento článek je určený pro uživatele, kteří mají některé znalosti s šablonami Resource Manageru. Poskytuje podrobné informace o struktuře a syntaxe šablony. Pokud chcete, úvod do vytváření šablony, přečtěte si téma [vytvoření první šablony Azure Resource Manageru](resource-manager-create-first-template.md).
-
-
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="template-format"></a>Formát šablon
 
@@ -496,7 +493,7 @@ Můžete definovat prostředky s následující strukturou:
 
 | Název elementu | Požaduje se | Popis |
 |:--- |:--- |:--- |
-| condition | Ne | Logická hodnota, která určuje, zda prostředek se zřídí během tohoto nasazení. Když `true`, je prostředek vytvořený během nasazení. Když `false`, prostředek se přeskočí pro toto nasazení. |
+| condition | Ne | Logická hodnota, která určuje, zda prostředek se zřídí během tohoto nasazení. Když `true`, je prostředek vytvořený během nasazení. Když `false`, prostředek se přeskočí pro toto nasazení. Zobrazit [podmínku](#condition). |
 | apiVersion |Ano |Verze rozhraní REST API pro použití při vytváření prostředku. Zjistíte dostupné hodnoty, najdete v článku [referenčními informacemi k šablonám](/azure/templates/). |
 | type |Ano |Typ prostředku. Tato hodnota je kombinací obor názvů zprostředkovatele prostředků a typ prostředku (například **Microsoft.Storage/storageAccounts**). Zjistíte dostupné hodnoty, najdete v článku [referenčními informacemi k šablonám](/azure/templates/). |
 | jméno |Ano |Název prostředku Název musí následovat identifikátor URI součásti omezení RFC3986. Kromě toho služby Azure, které zpřístupňují název prostředku se třetími stranami ověřit název, který má ujistit, že není pokus zfalšovat jiné identity. |
@@ -533,6 +530,8 @@ Obvykle tuto hodnotu použijete, pokud chcete vytvořit nový prostředek, nebo 
 ```
 
 Kompletní příklad šablony, která se používá `condition` prvku, naleznete v tématu [virtuálního počítače s novou nebo existující virtuální sítě, úložiště a veřejnou IP adresu](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-new-or-existing-conditions).
+
+Pokud používáte [odkaz](resource-group-template-functions-resource.md#reference) nebo [seznamu](resource-group-template-functions-resource.md#list) funkce, s prostředkem, který je nasazený podmíněně, funkce vyhodnocena i v případě, že není nasazený prostředek. Pokud funkci odkazuje na prostředek, který neexistuje, dojde k chybě. Použití [Pokud](resource-group-template-functions-logical.md#if) funkce, která se ujistěte se, že funkce se vyhodnocuje jenom pro podmínky, při nasazení prostředku. Najdete v článku [Pokud funkce](resource-group-template-functions-logical.md#if) pro ukázkovou šablonu, která využívá Pokud a odkaz se podmíněně nasazených prostředků.
 
 ### <a name="resource-names"></a>Názvy prostředků
 

@@ -9,12 +9,12 @@ ms.date: 01/04/2019
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc, seodec18
-ms.openlocfilehash: 10026f0a9ff702ee45926ca097e9123ea3db06d5
-ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
+ms.openlocfilehash: 3b79c75b9846a4f8966a113c6e06fabc25bcf011
+ms.sourcegitcommit: 6e32f493eb32f93f71d425497752e84763070fad
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58225922"
+ms.lasthandoff: 04/10/2019
+ms.locfileid: "59470946"
 ---
 # <a name="tutorial-develop-and-deploy-a-nodejs-iot-edge-module-to-your-simulated-device"></a>Kurz: Vývoj a nasazení modulu Node.js IoT Edge na simulovaném zařízení
 
@@ -35,8 +35,8 @@ Modul IoT Edge, který v tomto kurzu vytvoříte, filtruje teplotní údaje gene
 
 Zařízení Azure IoT Edge:
 
-* Jako hraniční zařízení můžete použít svůj vývojový počítač nebo virtuální počítač podle postupu v rychlém startu pro zařízení s [Linuxem](quickstart-linux.md) nebo [Windows](quickstart.md).
-* Pokud používáte IoT Edge ve Windows, IoT Edge verze 1.0.5 nepodporuje moduly Node.js. Další informace najdete v tématu [poznámky k verzi 1.0.5](https://github.com/Azure/azure-iotedge/releases/tag/1.0.5). Pokyny o tom, jak nainstalovat konkrétní verzi, najdete v článku [aktualizovat démon zabezpečení IoT Edge a modulu runtime](how-to-update-iot-edge.md).
+* Jako hraniční zařízení můžete použít svůj vývojový počítač nebo virtuální počítač podle postupu v rychlém startu pro [Linux](quickstart-linux.md).
+* Moduly Node.js pro IoT Edge nepodporují kontejnery Windows. 
 
 Cloudové prostředky:
 
@@ -47,6 +47,7 @@ Prostředky pro vývoj:
 * [Visual Studio Code](https://code.visualstudio.com/). 
 * [Nástroje Azure IoT](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-edge) pro Visual Studio Code. 
 * [Docker CE](https://docs.docker.com/engine/installation/). 
+   * Pokud vyvíjíte na zařízení s Windows, ujistěte se, že je Docker [nakonfigurovaný na používání kontejnerů Linuxu](https://docs.docker.com/docker-for-windows/#switch-between-windows-and-linux-containers). 
 * [Node.js a npm](https://nodejs.org) Balíček npm se distribuuje společně s Node.js, takže když si stáhnete Node.js, nainstaluje se vám npm na počítač automaticky.
 
 ## <a name="create-a-container-registry"></a>Vytvoření registru kontejnerů
@@ -184,7 +185,7 @@ Každá šablona zahrnuje ukázkový kód, který směruje simulovaná data sní
 
 10. V průzkumníku VS Code otevřete soubor **deployment.template.json** v pracovním prostoru řešení IoT Edge. Tento soubor říká agentovi, IoT Edge které moduly chcete nasadit, v tomto případě **tempSensor** a **NodeModule**a informuje Centrum IoT Edge, jak můžete směrovat zprávy mezi nimi. Rozšíření Visual Studio Code automaticky naplní většinu informací, že v šablonu nasazení, ale ověřte, že je vše přesné pro vaše řešení: 
 
-   1. Výchozí platformu IoT Edge je nastavena **amd64** ve vaší VS Code stavového řádku, což znamená, že vaše **NodeModule** je nastavena na Linuxu amd64 verzi image. Změnit výchozí platforma ve stavovém řádku z **amd64** k **arm32v7** nebo **windows amd64** Pokud tomu tak architektuře zařízení IoT Edge. 
+   1. Výchozí platformu IoT Edge je nastavena **amd64** ve vaší VS Code stavového řádku, což znamená, že vaše **NodeModule** je nastavena na Linuxu amd64 verzi image. Změnit výchozí platforma ve stavovém řádku z **amd64** k **arm32v7** Pokud tomu tak architektuře zařízení IoT Edge. 
 
       ![Aktualizace modulu image platformy](./media/tutorial-node-module/image-platform.png)
 
@@ -229,8 +230,9 @@ Když editoru Visual Studio Code sdělíte, že má sestavit vaše řešení, ne
 >[!TIP]
 >Pokud obdržíte chybu při vytváření a nasdílení změn modul, proveďte následující kontroly:
 >* Přihlásili jste k Dockeru ve Visual Studio Code pomocí přihlašovacích údajů ze služby container registry? Tyto přihlašovací údaje se liší od těch, které používáte k přihlášení k webu Azure portal.
->* Správnost vašeho kontejneru úložiště? Otevřít **moduly** > **cmodule** > **module.json** a najít **úložiště** pole. Úložiště imagí by měl vypadat jako  **\<registryname\>.azurecr.io/nodemodule**. 
->* Sestavujete stejného typu kontejnerů, které běží v počítači pro vývoj? Visual Studio Code výchozí kontejnery Linuxu amd64. Pokud vývojovém počítači běží kontejnery Windows nebo Linuxem arm32v7 kontejnery, aktualizujte platformy na modrý stavového řádku v dolní části okna VS Code tak, aby odpovídaly vaši kontejnerovou platformu.
+>* Správnost vašeho kontejneru úložiště? Otevřít **moduly** > **nodemodule** > **module.json** a najít **úložiště** pole. Úložiště imagí by měl vypadat jako  **\<registryname\>.azurecr.io/nodemodule**. 
+>* Sestavujete stejného typu kontejnerů, které běží v počítači pro vývoj? Visual Studio Code výchozí kontejnery Linuxu amd64. Pokud vývojovém počítači běží arm32v7 kontejnery Linuxu, aktualizujte platformy na modrý stavového řádku v dolní části okna VS Code tak, aby odpovídaly vaši kontejnerovou platformu.
+>* Moduly Node.js pro IoT Edge nepodporují kontejnery Windows.
 
 ## <a name="deploy-and-run-the-solution"></a>Nasazení a spuštění řešení
 

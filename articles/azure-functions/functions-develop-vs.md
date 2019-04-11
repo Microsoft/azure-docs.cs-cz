@@ -10,12 +10,12 @@ ms.custom: vs-azure
 ms.topic: conceptual
 ms.date: 10/08/2018
 ms.author: glenga
-ms.openlocfilehash: 33ec96b3708bc89f3fbd415f892e0810fc468876
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.openlocfilehash: 4e67e91e93ef3a2e2acf88a87b97eaab56ca6479
+ms.sourcegitcommit: 6e32f493eb32f93f71d425497752e84763070fad
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58889800"
+ms.lasthandoff: 04/10/2019
+ms.locfileid: "59471031"
 ---
 # <a name="develop-azure-functions-using-visual-studio"></a>Vývoj Azure Functions pomocí sady Visual Studio  
 
@@ -80,7 +80,7 @@ Vytvoření a nasazení služby functions, budete také muset:
 
 * **host.json**: Umožňuje konfigurovat funkce hostitele. Tato nastavení platí i při spuštění místně i v Azure. Další informace najdete v tématu [referenční materiály k host.json](functions-host-json.md).
 
-* **local.settings.json**: Udržuje nastavení používaná při místním spuštění funkce. Tato nastavení nejsou používány nástrojem Azure, jsou používány [nástrojů Azure Functions Core](functions-run-local.md). Tento soubor můžete použijte k určení nastavení aplikace pro proměnné, které vyžadují vaše funkce. Přidat novou položku do **hodnoty** pole pro každé připojení vyžaduje vazby funkce ve vašem projektu. Další informace najdete v tématu [souboru místní nastavení](functions-run-local.md#local-settings-file) v článku o Azure Functions Core Tools.
+* **local.settings.json**: Udržuje nastavení používaná při místním spuštění funkce. Tato nastavení nejsou používány nástrojem Azure, jsou používány [nástrojů Azure Functions Core](functions-run-local.md). Tento soubor můžete použijte k určení nastavení aplikace pro proměnné prostředí nutné vašich funkcí. Přidat novou položku do **hodnoty** pole pro každé připojení vyžaduje vazby funkce ve vašem projektu. Další informace najdete v tématu [souboru místní nastavení](functions-run-local.md#local-settings-file) v článku o Azure Functions Core Tools.
 
     >[!IMPORTANT]
     >Protože souboru local.settings.json může obsahovat tajné kódy, musíte ho vyloučit ze správy zdrojových kódů pro váš projekt. **Kopírovat do výstupního adresáře** nastavení pro tento soubor by měl vždy být **kopírovat, pokud je novější**. 
@@ -207,15 +207,11 @@ Můžete také spravovat nastavení aplikace v jednom z těchto způsobů:
 
 ## <a name="monitoring-functions"></a>Funkce monitorování
 
-Díky integraci s Azure Application Insights je doporučeným způsobem, jak monitorovat vaši funkci v Azure. Když vytvoříte aplikaci function app na webu Azure Portal, je tato integrační ve výchozím nastavení provede za vás. Když vytvoříte aplikaci function app během publikování sady Visual Studio, není dokončení integrace ve vaší aplikaci function app v Azure. Místo toho získáte vestavěné protokolování, které se nedoporučuje.
+Díky integraci vaší aplikace function app pomocí Azure Application Insights je doporučeným způsobem, jak provádění funkcí monitorování. Když vytvoříte aplikaci function app na webu Azure Portal, je tato integrační ve výchozím nastavení provede za vás. Když vytvoříte aplikaci function app během publikování sady Visual Studio, není dokončení integrace ve vaší aplikaci function app v Azure.
 
-Povolení Application Insights pro aplikaci funkcí v Azure:
+Povolení Application Insights pro aplikaci funkcí:
 
-1. Vytvoření instance služby Application Insights v [webu Azure portal](https://portal.azure.com) a zkopírujte jeho Instrumentační klíč. Další informace o postupu [ručně připojit prostředek App Insights](functions-monitoring.md#manually-connect-an-app-insights-resource).  
-
-1. Přidání aplikace nastavení s názvem `APPINSIGHTS_INSTRUMENTATIONKEY` do nastavení aplikace function app v Azure, jak je popsáno v [fungovat nastavení aplikace](#function-app-settings). Tato nastavení aplikace, které obsahuje klíč instrumentace, který jste vytvořili v předchozím kroku.
-
-1. Odeberte `AzureWebJobsDashboard` nastavení aplikace, které z aplikace function app v Azure, která zakáže vestavěné protokolování.  
+[!INCLUDE [functions-connect-new-app-insights.md](../../includes/functions-connect-new-app-insights.md)]
 
 Další informace najdete v tématu [monitorování Azure Functions](functions-monitoring.md).
 

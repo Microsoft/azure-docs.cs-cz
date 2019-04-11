@@ -5,16 +5,18 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 02/28/2018
-ms.openlocfilehash: 555904642df069e9d87b2286bce23181da0f8184
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.date: 04/09/2019
+ms.openlocfilehash: cb142e01009efbeaabd5d4e56dbedfe6384c5fc6
+ms.sourcegitcommit: 6e32f493eb32f93f71d425497752e84763070fad
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58086628"
+ms.lasthandoff: 04/10/2019
+ms.locfileid: "59470793"
 ---
 # <a name="create-and-manage-azure-database-for-postgresql-firewall-rules-using-the-azure-portal"></a>Vytvoření a správě Azure Database for postgresql – pravidla brány firewall pomocí webu Azure portal
-Pravidla brány firewall na úrovni serveru umožňují správcům přístup k Azure Database for PostgreSQL Server ze zadané IP adresy nebo rozsah IP adres. 
+Pravidla brány firewall na úrovni serveru můžete použít ke správě přístupu ke službě Azure Database for PostgreSQL Server ze zadané IP adresy nebo rozsah IP adres.
+
+Pravidel virtuální sítě (VNet) je také možné zabezpečit přístup k vašemu serveru. Další informace o [vytváření a Správa virtuální sítě služby koncových bodů a pravidel pomocí webu Azure portal](howto-manage-vnet-using-portal.md).
 
 ## <a name="prerequisites"></a>Požadavky
 Pro jednotlivé kroky v této příručce s postupy, musíte:
@@ -34,7 +36,7 @@ Pro jednotlivé kroky v této příručce s postupy, musíte:
 
    ![Vyhledávání Bingu, co je Moje IP adresa](./media/howto-manage-firewall-using-portal/3-what-is-my-ip.png)
 
-4. Přidejte další adresní rozsahy adres. V pravidlech brány firewall pro službu Azure Database for PostgreSQL můžete zadat jednu IP adresu nebo rozsah adres. Pokud chcete omezit platnost pravidla pro jednu IP adresu, zadejte stejnou adresu v poli pro počáteční IP adresa a koncová IP adresa. Otevření brány firewall umožňuje správci, uživatelé a aplikace pro přihlášení k libovolné databázi na serveru PostgreSQL, ke kterému mají platné přihlašovací údaje.
+4. Přidejte další adresní rozsahy adres. V pravidlech brány firewall pro službu Azure Database for PostgreSQL můžete zadat jednu IP adresu nebo rozsah adres. Pokud chcete omezit platnost pravidla pro jednu IP adresu, zadejte stejnou adresu v poli pro počáteční IP adresa a koncová IP adresa. Otevření brány firewall umožňuje správci, uživatelé a aplikace pro přístup k libovolné databázi na serveru PostgreSQL, ke kterému mají platné přihlašovací údaje.
 
    ![Azure portal – pravidla brány firewall](./media/howto-manage-firewall-using-portal/4-specify-addresses.png)
 
@@ -58,4 +60,5 @@ Opakováním těchto kroků můžete spravovat pravidla brány firewall.
 
 ## <a name="next-steps"></a>Další postup
 - Podobně můžete používat skripty pro [vytvořit a spravovat Azure Database for postgresql – pravidla brány firewall pomocí Azure CLI](howto-manage-firewall-using-cli.md).
+- Dále zabezpečit přístup k vašemu serveru pomocí [vytváření a Správa virtuální sítě služby koncových bodů a pravidel pomocí webu Azure portal](howto-manage-vnet-using-portal.md).
 - Pomoc při připojování k serveru Azure Database for PostgreSQL, naleznete v tématu [připojení knihoven pro službu Azure Database for PostgreSQL](concepts-connection-libraries.md).
