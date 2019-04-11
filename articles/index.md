@@ -6,12 +6,12 @@ description: Naučte se vytvářet a spravovat výkonné aplikace pomocí cloudo
 ms.topic: hub-page
 featureFlags:
 - clicktale
-ms.openlocfilehash: 97fd2ffd22f4a4c883d284a2d2db060cd1c2121c
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.openlocfilehash: 3b35608c30262f633af073daacc8795f8eca1e7e
+ms.sourcegitcommit: 6e32f493eb32f93f71d425497752e84763070fad
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58878668"
+ms.lasthandoff: 04/10/2019
+ms.locfileid: "59471592"
 ---
 <div id="main" class="v2">
     <div class="container">
@@ -224,7 +224,7 @@ Přejít</a>
                                     <div class="cardPadding">
                                         <div class="card">
                                             <div class="cardText">
-                                                <h3>Nástroje příkazového řádku</h3>
+                                                <h3>Nástroje pro správu</h3>
                                                 <ul class="noBullet">
                                                     <li>
                                                         <a class="barLink" href="/cli/azure">
@@ -235,6 +235,16 @@ Azure CLI </a>
                                                         <a class="barLink" href="/powershell/azure/overview">
                                                             <img src="media/index/azure_dev-8.svg" alt="">
 Azure PowerShell </a>
+                                                    </li>
+                                                    <li>
+                                                        <a class="barLink" href="/azure/azure-portal/">
+                                                            <img src="https://docs.microsoft.com/media/logos/logo_azure.svg" alt="">
+portál Azure </a>
+                                                    </li>
+                                                    <li>
+                                                        <a class="barLink" href="https://azure.microsoft.com/features/azure-portal/mobile-app/">
+                                                            <img src="https://docs.microsoft.com/media/common/i_mobile-app-developement.svg" alt="">
+Mobilní aplikace Azure </a>
                                                     </li>
                                                 </ul>
                                             </div>
@@ -1746,9 +1756,9 @@ Automatizace úloh Azure pomocí skriptů s využitím PowerShellu </a>
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="https://docs.microsoft.com/azure/azure-portal/">
+                                            <a href="/azure/azure-portal/">
                                                 <img src="https://docs.microsoft.com/media/logos/logo_azure.svg" alt="" />
-                                                <p>Microsoft Azure Portal</p>
+                                                <p>portál Azure</p>
                                             </a>
                                         </li>
                                         <li>
@@ -1764,7 +1774,7 @@ Automatizace úloh Azure pomocí skriptů s využitím PowerShellu </a>
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="/azure/app-service-mobile">
+                                            <a href="https://azure.microsoft.com/features/azure-portal/mobile-app/">
                                                 <img src="https://docs.microsoft.com/media/common/i_mobile-app-developement.svg" alt="" />
                                                 <p>Mobilní aplikace Azure</p>
                                             </a>
@@ -5403,7 +5413,7 @@ Automatizace úloh Azure pomocí skriptů s využitím PowerShellu </a>
                                 </a>
                             </li>
                             <li>
-                                <a href="https://portal.azure.com">
+                                <a href="/azure/azure-portal/">
                                     <div class="cardSize">
                                         <div class="cardPadding">
                                             <div class="card">
@@ -5413,7 +5423,7 @@ Automatizace úloh Azure pomocí skriptů s využitím PowerShellu </a>
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>Microsoft Azure Portal</h3>
+                                                    <h3>portál Azure</h3>
                                                     <p>Sestavení, správa a monitorování všech produktů Azure na jediné unifikované konzole</p>
                                                 </div>
                                             </div>
@@ -6085,7 +6095,7 @@ Rozhraní REST API platformy Azure </h3>
                             </li>
                             <li>
                                 <div class="container">
-                                    <h2>Rozhraní příkazového řádku (CLI)</h2>
+                                    <h2>Nástroje pro správu</h2>
                                 </div>
                             </li>
                             <li>
@@ -6127,6 +6137,44 @@ Azure CLI </h3>
                                                 </p>
                                                 <p>
                                                     <a href="/powershell/azure/overview">Referenční informace</a>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="cardSize">
+                                    <div class="cardPadding">
+                                        <div class="card">
+                                            <div class="cardImageOuter">
+                                                <div class="cardImage">
+                                                    <img src="https://docs.microsoft.com/media/logos/logo_azure.svg" alt="" />
+                                                </div>
+                                            </div>
+                                            <div class="cardText">
+                                                <h3>portál Azure</h3>
+                                                <p>
+                                                    <a href="/azure/azure-portal/">Začínáme</a>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="cardSize">
+                                    <div class="cardPadding">
+                                        <div class="card">
+                                            <div class="cardImageOuter">
+                                                <div class="cardImage">
+                                                    <img src="https://docs.microsoft.com/media/common/i_mobile-app-developement.svg" alt="" />
+                                                </div>
+                                            </div>
+                                            <div class="cardText">
+                                                <h3>Mobilní aplikace Azure</h3>
+                                                <p>
+                                                    <a href="https://azure.microsoft.com/features/azure-portal/mobile-app/">Začínáme</a>
                                                 </p>
                                             </div>
                                         </div>

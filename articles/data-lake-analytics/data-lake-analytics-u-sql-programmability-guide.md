@@ -9,12 +9,12 @@ ms.reviewer: jasonwhowell
 ms.assetid: 63be271e-7c44-4d19-9897-c2913ee9599d
 ms.topic: conceptual
 ms.date: 06/30/2017
-ms.openlocfilehash: f0f5a4ee5206201cca20e705011126e6cf472a1a
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: d1b230b40d1f880787334ebfd39e704e3a650baa
+ms.sourcegitcommit: 6e32f493eb32f93f71d425497752e84763070fad
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57835448"
+ms.lasthandoff: 04/10/2019
+ms.locfileid: "59471082"
 ---
 # <a name="u-sql-programmability-guide"></a>Průvodce programovatelností U-SQL
 
@@ -1601,7 +1601,7 @@ CROSS APPLYis used to pass parameters
 new MyScript.MyApplier(param1, param2) AS alias(output_param1 string, …);
 ```
 
-Další informace o používání appliers ve výrazu SELECT, naleznete v tématu [U-SQL vyberte výběrem z CROSS APPLY a operátoru OUTER APPLY](https://msdn.microsoft.com/library/azure/mt621307.aspx).
+Další informace o používání appliers ve výrazu SELECT, naleznete v tématu [U-SQL vyberte výběrem z CROSS APPLY a operátoru OUTER APPLY](/u-sql/statements-and-expressions/select/from/select-selecting-from-cross-apply-and-outer-apply).
 
 Definice uživatelem definované applier základní třídy je následujícím způsobem:
 
@@ -1815,7 +1815,7 @@ Combine_Expression :=
     USING_Clause.
 ```
 
-Další informace najdete v tématu [KOMBINOVÁNÍ výrazů (U-SQL)](https://msdn.microsoft.com/library/azure/mt621339.aspx).
+Další informace najdete v tématu [KOMBINOVÁNÍ výrazů (U-SQL)](/u-sql/statements-and-expressions/combine-expression).
 
 K definování kombinační se definovaný uživatelem, potřebujeme vytvořit `ICombiner` rozhraní se službou [`SqlUserDefinedCombiner`] atribut, který je volitelný pro definici kombinační definovaný uživatelem.
 
@@ -1877,7 +1877,7 @@ Vstupní sady řádků jsou předány jako **levé** a **správné** `IRowset` t
 
 Pro účely mezipaměti, můžeme vytvořit seznam\<T\> typ struktury paměti v důsledku LINQ provádění dotazu, konkrétně seznam <`IRow`>. Anonymní typ. je možné během výčtu také.
 
-Zobrazit [Úvod do dotazů LINQ (C#)](https://msdn.microsoft.com/library/bb397906.aspx) pro další informace o dotazech LINQ, a [IEnumerable\<T\> rozhraní](https://msdn.microsoft.com/library/9eekhta0(v=vs.110).aspx) Další informace o rozhraní IEnumerable\<T\> rozhraní.
+Zobrazit [Úvod do dotazů LINQ (C#)](/dotnet/csharp/programming-guide/concepts/linq/introduction-to-linq-queries) pro další informace o dotazech LINQ, a [IEnumerable\<T\> rozhraní](/dotnet/api/system.collections.generic.ienumerable-1) Další informace o rozhraní IEnumerable\<T\> rozhraní.
 
 K získání hodnot skutečná data z příchozí `IRowset`, můžeme použít metodu Get() `IRow` rozhraní.
 

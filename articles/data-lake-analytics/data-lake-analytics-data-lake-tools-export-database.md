@@ -9,12 +9,12 @@ ms.assetid: dc9b21d8-c5f4-4f77-bcbc-eff458f48de2
 ms.service: data-lake-analytics
 ms.topic: conceptual
 ms.date: 11/27/2017
-ms.openlocfilehash: 7a4aae87cd704cf94c89c308c0c056ae5b9a8b4d
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: fe28aa8b88f557d4bbcdabf1de1c4bc6491743ce
+ms.sourcegitcommit: 6e32f493eb32f93f71d425497752e84763070fad
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51250998"
+ms.lasthandoff: 04/10/2019
+ms.locfileid: "59471405"
 ---
 # <a name="export-a-u-sql-database"></a>Exportovat databázi U-SQL
 
@@ -26,7 +26,7 @@ Při vývoji a ladění dotazů U-SQL v vývojová a testovací prostředí, vý
 
 ## <a name="export-steps"></a>Postup exportu
 
-### <a name="step-1-export-the-database-in-server-explorer"></a>Krok 1: Exportujte databáze v Průzkumníku serveru
+### <a name="step-1-export-the-database-in-server-explorer"></a>Krok 1: Export databáze v Průzkumníku serveru
 
 Všechny účty Data Lake Analytics, ke kterým máte oprávnění pro jsou uvedeny v Průzkumníku serveru. Export databáze:
 
@@ -37,7 +37,7 @@ Všechny účty Data Lake Analytics, ke kterým máte oprávnění pro jsou uved
 
      Pokud **exportovat** možnost nabídky nebude k dispozici, budete muset [aktualizaci nástroj lasted verzi](https://aka.ms/adltoolsvs).
 
-### <a name="step-2-configure-the-objects-that-you-want-to-export"></a>Krok 2: Konfigurace, které chcete exportovat objekty
+### <a name="step-2-configure-the-objects-that-you-want-to-export"></a>Krok 2: Objekty, které chcete exportovat konfiguraci
 
 Pokud potřebujete pouze malou část velké databázi, můžete nakonfigurovat podmnožinu objektů, které chcete exportovat v průvodci export. 
 
@@ -45,7 +45,7 @@ Export akce provedete spuštění úlohy U-SQL. Export z účtu Azure, proto zp�
 
 ![Průvodce exportem databáze - vyberte exportovat objekty](./media/data-lake-analytics-data-lake-tools-export-database/export-database-wizard.png)
 
-### <a name="step-3-check-the-objects-list-and-other-configurations"></a>Krok 3: Kontrola seznamu objektů a další konfigurace
+### <a name="step-3-check-the-objects-list-and-other-configurations"></a>Krok 3: Zkontrolujte seznam objektů a další konfigurace
 
 V tomto kroku ověříte vybrané objekty v **exportovat seznam objektu** pole. Pokud nejsou žádné chyby, vyberte **předchozí** vrátit zpět a správně nakonfigurovat objekty, které chcete exportovat.
 
@@ -84,7 +84,7 @@ V současné době po vybrání **schéma a Data** možnosti v kroku 3, nástroj
 
 ## <a name="next-steps"></a>Další postup
 
-* [Další informace o databáze U-SQL](https://msdn.microsoft.com/library/azure/mt621299.aspx) 
-* [Testování a ladění úloh U-SQL pomocí místního spuštění a sady Azure Data Lake U-SQL SDK](data-lake-analytics-data-lake-tools-local-run.md)
+* [Další informace o databáze U-SQL](/u-sql/data-definition-language-ddl-statements) 
+* [Testování a ladění úloh U-SQL pomocí místního spuštění a Azure Data Lake U-SQL SDK](data-lake-analytics-data-lake-tools-local-run.md)
 
 

@@ -11,16 +11,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.subservice: compliance
-ms.date: 02/20/2019
+ms.date: 04/01/2019
 ms.author: rolyon
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 02c12a8cc8163fa70008b21995ddb35aec57dfcf
-ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
+ms.openlocfilehash: d42fe972b79ecd9bcee65d0664c5d13da02d2238
+ms.sourcegitcommit: 6e32f493eb32f93f71d425497752e84763070fad
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2019
-ms.locfileid: "58579678"
+ms.lasthandoff: 04/10/2019
+ms.locfileid: "59470606"
 ---
 # <a name="review-access-to-groups-or-applications-in-azure-ad-access-reviews"></a>Zkontrolovat přístup ke skupinám nebo aplikacím ve službě Azure AD kontroly přístupu
 
@@ -46,7 +46,7 @@ Pokud nemáte k dispozici v e-mailu, zjistíte, že se čeká na přístup kontr
 
 1. V pravém horním rohu stránky klikněte na symbol uživatele. Zobrazí se vaše jméno a výchozí organizace. Pokud se zobrazí více než jedna organizace, vyberte organizaci, která požádala o kontrolu přístupu.
 
-1. Na pravé straně stránky klikněte na tlačítko **kontrol přístupu** dlaždici zobrazíte seznam kontrol přístupu.
+1. Klikněte na tlačítko **kontrol přístupu** dlaždici zobrazíte seznam kontrol přístupu.
 
     Pokud se dlaždice nezobrazí, pro danou organizaci není potřeba provést žádné kontroly přístupu a v tuto chvíli se nevyžaduje žádná akce.
 
@@ -76,6 +76,8 @@ Existují dva způsoby, jak můžete schválit nebo odepřít přístup:
 1. Klikněte na tlačítko **schválit** nebo **Odepřít**. Pokud si nejste jistí, můžete kliknout na **Nevím**. To způsobí zůstane zachována jeho přístupu uživatele, ale výběr se projeví v protokolech auditování.
 
     ![Provádění kontroly přístupu](./media/perform-access-review/approve-deny.png)
+
+1. V případě potřeby zadejte důvod v **důvod** pole.
 
     Správce kontroly přístupu může vyžadovat, abyste zadali důvod, proč schvalujete přístup nebo členství ve skupině.
 

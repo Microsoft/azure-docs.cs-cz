@@ -1,5 +1,5 @@
 ---
-title: Příručka pro vydavatele na Azure Marketplace optimalizace pro vyhledávací weby | Dokumentace Microsoftu
+title: Doprovodné materiály k Azure Marketplace optimalizace pro vyhledávací weby | Dokumentace Microsoftu
 description: Obsahuje pokyny k maximalizaci optimalizace pro vyhledávací weby (SEO).
 services: Azure, Marketplace, Cloud Partner Portal,
 documentationcenter: ''
@@ -12,21 +12,23 @@ ms.workload: ''
 ms.tgt_pltfrm: ''
 ms.devlang: ''
 ms.topic: conceptual
-ms.date: 09/13/2018
+ms.date: 04/09/2019
 ms.author: pbutlerm
-ms.openlocfilehash: cacc7c0b269e8006903961049caf3cd7e3bee449
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: da7b59400baa4c964dff71fa1f842fede9d68df1
+ms.sourcegitcommit: 6e32f493eb32f93f71d425497752e84763070fad
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57834332"
+ms.lasthandoff: 04/10/2019
+ms.locfileid: "59469654"
 ---
-<a name="azure-marketplace-seo-publisher-guide"></a>Příručka pro vydavatele na Azure Marketplace optimalizace pro vyhledávací weby
-=======================================
+# <a name="azure-marketplace-seo-guidance"></a>Doprovodné materiály k Azure Marketplace optimalizace pro vyhledávací weby
 
-### <a name="general-explanation-of-algorithm"></a>Obecné vysvětlení algoritmu.
+Tento článek vysvětluje, jak maximalizovat možnosti rozpoznání vaši nabídku prostřednictvím funkce hledání v [Azure Marketplace](https://azuremarketplace.microsoft.com) a [AppSource](https://appsource.microsoft.com). 
 
-Na webu marketplace využívá Azure Search pro provozování možnosti vyhledávání webu. Algoritmus je založen na termín frekvence – inverzní dokumentu frekvence ([TF-IDF](https://en.wikipedia.org/wiki/Tf–idf)). Standardní [analyzátor Lucene](https://lucene.apache.org/core/) se používá.
+
+## <a name="general-explanation-of-algorithm"></a>Obecné vysvětlení algoritmu.
+
+Prodejní weby společnosti Microsoft využít Azure Search pro provozování možnosti vyhledávání webu. Algoritmus je založen na termín frekvence – inverzní dokumentu frekvence ([TF-IDF](https://en.wikipedia.org/wiki/Tf–idf)). Standardní [analyzátor Lucene](https://lucene.apache.org/core/) se používá.
 
 Obecně platí veškerý text pole, kategorie a odvětví a zahrnut do weightage význam. Specializované podmínky, které nejsou používány často aplikací, ale často ve vaší aplikaci bude generovat vyšší ohodnocení shoda s vyhledávání. Proto včetně jako "Virtuální počítač" by nabízejí málo výhodné, že "Služba Azure search" by mnohem více specializovaný.
 Níže jsou uvedeny nejdůležitější pole vzít v úvahu.
@@ -42,7 +44,7 @@ Níže jsou uvedeny nejdůležitější pole vzít v úvahu.
 |  |  |  |
 
 
-### <a name="other-tips"></a>Další tipy
+## <a name="other-tips"></a>Další tipy
 
 -   Hledání navrhuje aktivity získá náročné uživatelů. Upřednostňuje shody názvu nebo vydavatele aplikace. Krátký popis stane pole klíče pro Pokud hledaný termín není přesná shoda s názvem vydavatele nebo aplikaci.
 -   Dokumenty, kde stahování nejsou součástí weightage vyhledávání.

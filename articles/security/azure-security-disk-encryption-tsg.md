@@ -7,12 +7,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 03/12/2019
 ms.custom: seodec18
-ms.openlocfilehash: 48cf0f2e219d141a039f508f0ea948aa5c78b882
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 3c6c552a6605278d8ab31264f5d180206e0badac
+ms.sourcegitcommit: 6e32f493eb32f93f71d425497752e84763070fad
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57838268"
+ms.lasthandoff: 04/10/2019
+ms.locfileid: "59470691"
 ---
 # <a name="azure-disk-encryption-troubleshooting-guide"></a>Průvodce odstraňováním potíží Azure Disk Encryption
 
@@ -49,6 +49,14 @@ Po restartování virtuálního počítače do nového jádra může být nová 
 ```
 uname -a
 ```
+
+## <a name="update-the-azure-virtual-machine-agent-and-extension-versions"></a>Aktualizace agenta virtuálního počítače Azure a verze rozšíření
+
+Image virtuálních počítačů pomocí nepodporované verze agenta virtuálního počítače Azure mohou být neúspěšné operace Azure Disk Encryption. Další informace najdete [minimální podporované verze pro agenty virtuálních počítačů v Azure](https://support.microsoft.com/en-us/help/4049215/extensions-and-virtual-machine-agent-minimum-version-support).  
+
+Správnou verzi rozšíření Microsoft.Azure.Security.AzureDiskEncryption nebo Microsoft.Azure.Security.AzureDiskEncryptionForLinux agenta hosta je také požadované. Verze rozšíření jsou udržované a automaticky aktualizován platformou, pokud jsou splněny požadavky agenta virtuálního počítače Azure a používá se podporovaná verze agenta virtuálního počítače.
+
+Rozšíření Microsoft.OSTCExtensions.AzureDiskEncryptionForLinux je zastaralá a už není podporovaná.  
 
 ## <a name="unable-to-encrypt-linux-disks"></a>Nelze zašifrovat disky platformy Linux
 

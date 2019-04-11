@@ -12,12 +12,12 @@ ms.reviewer: sstein, carlrab, bonova
 manager: craigg
 ms.date: 03/13/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: d84e52878c285ddd66fd799efe8c0f3cd2fc3e31
-ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
-ms.translationtype: HT
+ms.openlocfilehash: 4ceed2fb2b42dc8e09d1a837200652d29838d81b
+ms.sourcegitcommit: 6e32f493eb32f93f71d425497752e84763070fad
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
-ms.locfileid: "59358440"
+ms.lasthandoff: 04/10/2019
+ms.locfileid: "59471558"
 ---
 # <a name="azure-sql-database-managed-instance-t-sql-differences-from-sql-server"></a>Rozdíly ve službě Azure SQL Database Managed Instance T-SQL z SQL serveru
 
@@ -217,7 +217,7 @@ Další informace najdete v tématu [ALTER DATABASE SET PARTNER a SET WITNESS](h
 
 - Víc souborů protokolů nejsou podporovány.
 - Objekty v paměti nejsou podporovány v rámci úrovně služeb pro obecné účely.  
-- Platí limit 280 souborů na jednu instanci obecné zdání maximální 280 počet souborů v databázi. Protokolu a data souborů obecně účel úrovně se počítají do tohoto limitu. [Úroveň pro důležité obchodní podporuje 32 767 počet souborů v databázi](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-managed-instance-resource-limits#service-tier-characteristics).
+- Platí limit 280 souborů na jednu instanci obecné zdání maximální 280 počet souborů v databázi. Protokolu a data souborů obecně účel úrovně se počítají do tohoto limitu. [Úroveň pro důležité obchodní podporuje 32 767 počet souborů v databázi](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-resource-limits#service-tier-characteristics).
 - Databáze nemůže obsahovat příkaz, který obsahuje filestream data.  Obnovení se nezdaří, pokud obsahuje .bak `FILESTREAM` data.  
 - Každý soubor je umístěn v úložišti objektů Blob v Azure. Vstupně-výstupních operací a propustnosti na soubor závisí na velikosti jednotlivých souborů.  
 
@@ -467,7 +467,6 @@ Následující proměnné, funkce a zobrazení vrátí odlišné výsledky:
 - `@@SERVICENAME` Vrátí hodnotu NULL, protože koncept služby, protože existuje pro SQL Server se nevztahuje na Managed Instance. Zobrazit [@@SERVICENAME](https://docs.microsoft.com/sql/t-sql/functions/servicename-transact-sql).
 - `SUSER_ID` je podporován. Vrátí hodnotu NULL, pokud není v sys.syslogins přihlášení k Azure AD. Zobrazit [SUSER_ID](https://docs.microsoft.com/sql/t-sql/functions/suser-id-transact-sql).  
 - `SUSER_SID` není podporováno. Vrátí nesprávná data (dočasný známý problém). Zobrazit [SUSER_SID](https://docs.microsoft.com/sql/t-sql/functions/suser-sid-transact-sql).
-- `GETDATE()` a další předdefinované datum a čas funkce vždy vrátí čas v časovém pásmu UTC. Zobrazit [GETDATE](https://docs.microsoft.com/sql/t-sql/functions/getdate-transact-sql).
 
 ## <a name="Issues"></a> Známé problémy a omezení
 
@@ -494,7 +493,7 @@ To ukazuje, že za určitých okolností kvůli konkrétní distribuce souborů,
 
 V tomto příkladu budou nadále fungovat stávající databáze a můžou růst bez problémů, tak dlouho, dokud nejsou přidány nové soubory. Nové databáze však nelze vytvořit ani obnovit, protože není dostatek místa pro nových diskových jednotek, i když celková velikost všech databází: nebylo dosaženo omezení velikosti instance. Chyba, která je vrácena v takovém případě není jasný.
 
-Je možné [identifikovat počet zbývajících souborů](https://medium.com/azure-sqldb-managed-instance/how-many-files-you-can-create-in-general-purpose-azure-sql-managed-instance-e1c7c32886c1) pomocí zobrazení systému. Pokud se snažíte tohoto omezení pokusí [prázdný a některé menší souborů pomocí příkazu DBCC SHRINKFILE odstranit](https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-shrinkfile-transact-sql#d-emptying-a-file) nebo přepněte na [úroveň pro důležité obchodní informace, nemusí se tento limit](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-managed-instance-resource-limits#service-tier-characteristics).
+Je možné [identifikovat počet zbývajících souborů](https://medium.com/azure-sqldb-managed-instance/how-many-files-you-can-create-in-general-purpose-azure-sql-managed-instance-e1c7c32886c1) pomocí zobrazení systému. Pokud se snažíte tohoto omezení pokusí [prázdný a některé menší souborů pomocí příkazu DBCC SHRINKFILE odstranit](https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-shrinkfile-transact-sql#d-emptying-a-file) nebo přepněte na [pro důležité obchodní informace úroveň, která nemá tento limit](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-resource-limits#service-tier-characteristics).
 
 ### <a name="incorrect-configuration-of-sas-key-during-database-restore"></a>Nesprávná konfigurace SAS klíč při databáze obnovení
 
@@ -567,11 +566,11 @@ Moduly CLR umístí do Managed Instance a propojené servery pro/distribuované 
 
 **Alternativní řešení**: Pokud je to možné použijte připojení kontextu v modulu CLR.
 
-### <a name="tde-encrypted-databases-dont-support-user-initiated-backups"></a>Transparentní šifrování dat šifrované databáze nepodporují zálohování iniciovaná uživatelem
+### <a name="tde-encrypted-databases-with-service-managed-key-dont-support-user-initiated-backups"></a>Transparentní šifrování dat šifrované databáze s použitím klíče spravovaného zákazníkem služby nepodporují uživatelem iniciované zálohování
 
-Nelze provést `BACKUP DATABASE ... WITH COPY_ONLY` na databázi, která je zašifrovaná pomocí transparentního šifrování dat (TDE). Transparentní šifrování dat vynutí zálohy šifrované pomocí interní klíče TDE a nedá se exportovat klíč, proto nebudete moci obnovit zálohu.
+Nelze provést `BACKUP DATABASE ... WITH COPY_ONLY` na databázi, která je zašifrovaná pomocí spravované službou transparentní šifrování dat (TDE). Transparentní šifrování dat spravovaným službou vynutí zálohy šifrované pomocí interní klíče TDE a nedá se exportovat klíč, proto nebudete moci obnovit zálohu.
 
-**Alternativní řešení**: Použít automatické zálohování a obnovení k určitému bodu v čase, nebo zakázat šifrování v databázi.
+**Alternativní řešení**: Použít automatické zálohování a obnovení k určitému bodu v čase, nebo [spravovaného zákazníkem (BYOK) TDE](https://docs.microsoft.com/azure/sql-database/transparent-data-encryption-azure-sql#customer-managed-transparent-data-encryption---bring-your-own-key) místo, nebo zakázat šifrování v databázi.
 
 ## <a name="next-steps"></a>Další postup
 

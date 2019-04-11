@@ -1,7 +1,7 @@
 ---
 title: Spustit, sledovat a zrušit tréninkových spuštění v Pythonu
 titleSuffix: Azure Machine Learning service
-description: Zjistěte, jak začít, stav, značky a uspořádání vašich se strojovým učením.
+description: Zjistěte, jak začít, nastavit stav značky a uspořádání vašeho se strojovým učením.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,13 +10,13 @@ ms.author: roastala
 author: rastala
 manager: cgronlun
 ms.reviewer: nibaccam
-ms.date: 4/5/2019
-ms.openlocfilehash: 726273024a2da0cea5207c86140f3c31263a208f
-ms.sourcegitcommit: ef20235daa0eb98a468576899b590c0bc1a38394
-ms.translationtype: HT
+ms.date: 04/05/2019
+ms.openlocfilehash: 82df2258116ce55fa440b67ec0a66b106d0d72c7
+ms.sourcegitcommit: 6e32f493eb32f93f71d425497752e84763070fad
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
-ms.locfileid: "59426689"
+ms.lasthandoff: 04/10/2019
+ms.locfileid: "59471490"
 ---
 # <a name="start-monitor-and-cancel-training-runs-in-python"></a>Spustit, sledovat a zrušit tréninkových spuštění v Pythonu
 
@@ -47,7 +47,7 @@ Budete potřebovat následující:
 
 <a name="monitor"></a>
 
-## <a name="start-and-status-a-run"></a>Spuštění a stav spuštění
+## <a name="start-a-run-and-set-its-status"></a>Spusťte běh a nastavte její stav
 
 Nastavit experimentu pomocí importu [pracovní prostor](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py), [experimentovat](https://docs.microsoft.com/python/api/azureml-core/azureml.core.experiment.experiment?view=azure-ml-py), [spustit](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)?view=azure-ml-py), a [ScriptRunConfig](https://docs.microsoft.com/python/api/azureml-core/azureml.core.scriptrunconfig?view=azure-ml-py) tříd z [azureml.core](https://docs.microsoft.com/python/api/azureml-core/azureml.core?view=azure-ml-py) balíčku.
 
@@ -101,7 +101,7 @@ print("Has it completed?",notebook_run.get_status())
 
 ## <a name="cancel-or-fail-runs"></a>Zrušení nebo selhání spuštění
 
- Pokud zjistíte chybu nebo spuštění zdá se, že to trvá dlouho dokončení, použijte [ `cancel()` ](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)?view=azure-ml-py#cancel--) metoda zastavení spuštění před dokončením a označte ji jako zrušená.
+ Pokud zjistíte chybu nebo spuštění zdá se, že trvat dokončení, použijte [ `cancel()` ](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)?view=azure-ml-py#cancel--) metoda zastavení spuštění před dokončením a označte ji jako zrušená.
 
 ```Python
 run_config = ScriptRunConfig(source_directory='.', script='hello_with_delay.py')

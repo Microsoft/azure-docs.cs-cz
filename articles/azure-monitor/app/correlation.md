@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 02/14/2019
 ms.reviewer: sergkanz
 ms.author: lagayhar
-ms.openlocfilehash: d3aad8f1b032960786564bbb18f99c260fd72113
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: cc2d45aee170517d7e41cbda6d92bc21067732d1
+ms.sourcegitcommit: 6e32f493eb32f93f71d425497752e84763070fad
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58092714"
+ms.lasthandoff: 04/10/2019
+ms.locfileid: "59471711"
 ---
 # <a name="telemetry-correlation-in-application-insights"></a>Korelace telemetrie v Application Insights
 
@@ -143,7 +143,7 @@ public void ConfigureServices(IServiceCollection services)
 
 | Application Insights                  | OpenTracing                                       |
 |------------------------------------   |-------------------------------------------------  |
-| `Request`, `PageView`                 | `Span` s `span.kind = server`                  |
+| `Request`,  `PageView`                 | `Span` s `span.kind = server`                  |
 | `Dependency`                          | `Span` s `span.kind = client`                  |
 | `Id` z `Request` a `Dependency`    | `SpanId`                                          |
 | `Operation_Id`                        | `TraceId`                                         |
@@ -183,6 +183,11 @@ Používá sadu Application Insights SDK, počínaje verzí 2.4.0-beta1 `Diagnos
 > Pro funkci korelace se podporují pouze volání provedená prostřednictvím Apache HTTPClient. Pokud používáte Spring RestTemplate nebo Feign, jak jde použít s Apache HTTPClient pod pokličkou.
 
 V současné době se nepodporuje automatické kontextu šíření přes zasílání zpráv technologie (takové Kafka, RabbitMQ nebo Azure Service Bus). Je však možné kódu scénářů ručně pomocí `trackDependency` a `trackRequest` rozhraní API. V těchto rozhraní API telemetrie závislostí představuje zprávu se zařazených do fronty podle výrobce a požadavek představuje zprávu zpracovává příjemce. V takovém případě obě `operation_id` a `operation_parentId` by mělo být předáno ve vlastnostech zprávy.
+
+### <a name="telemetry-correlation-in-asynchronous-java-application"></a>Korelace telemetrie v asynchronní aplikace v Javě
+
+Korelovat telemetrie v aplikaci Spring Boot asynchronní, postupujte prosím podle [to](https://github.com/Microsoft/ApplicationInsights-Java/wiki/Distributed-Tracing-in-Asynchronous-Java-Applications) podrobný článek. Obsahuje pokyny pro instrumentaci vaší Spring [ThreadPoolTaskExecutor](https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/scheduling/concurrent/ThreadPoolTaskExecutor.html) stejně jako [ThreadPoolTaskScheduler](https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/scheduling/concurrent/ThreadPoolTaskScheduler.html). 
+
 
 <a name="java-role-name"></a>
 ## <a name="role-name"></a>Název role

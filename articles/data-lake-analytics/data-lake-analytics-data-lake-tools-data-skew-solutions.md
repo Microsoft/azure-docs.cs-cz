@@ -8,12 +8,12 @@ ms.reviewer: jasonwhowell
 ms.service: data-lake-analytics
 ms.topic: conceptual
 ms.date: 12/16/2016
-ms.openlocfilehash: b3079a7f2e71e26164d96cf167b67f1a60f7a23b
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: af55c161944447f2e6e2245fbb920803779984ca
+ms.sourcegitcommit: 6e32f493eb32f93f71d425497752e84763070fad
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43046469"
+ms.lasthandoff: 04/10/2019
+ms.locfileid: "59469739"
 ---
 # <a name="resolve-data-skew-problems-by-using-azure-data-lake-tools-for-visual-studio"></a>Vyřešit problémy – Nerovnoměrná distribuce dat pomocí Azure Data Lake Tools pro Visual Studio
 
@@ -28,29 +28,29 @@ V tomto scénáři data nerovnoměrně distribuovaná napříč všechny daně k
 
 Azure Data Lake Tools pro Visual Studio může pomoct zjistit, jestli má vaše úloha Nerovnoměrná distribuce dat problému. Pokud existuje problém, ho mohli vyřešit tak, že zkusíte řešení v této části.
 
-## <a name="solution-1-improve-table-partitioning"></a>Řešení 1: Zvýšení dělení tabulky
+## <a name="solution-1-improve-table-partitioning"></a>Řešení 1: Zlepšení dělení tabulky
 
-### <a name="option-1-filter-the-skewed-key-value-in-advance"></a>Možnost 1: Předem filtrovat výrazně nerovnoměrnou distribucí hodnota klíče
+### <a name="option-1-filter-the-skewed-key-value-in-advance"></a>Option 1: Asymetrické klíče hodnota filtru předem
 
 Pokud to nemá vliv na obchodní logiku, můžete filtrovat hodnoty vyšší frekvence předem. Například pokud existuje velké množství 000-000-000 ve sloupci identifikátoru GUID, nemusí chcete agregovat tuto hodnotu. Před agregace, můžete psát "kde GUID! ="000-000-000"" filtrování hodnotu vysokou frekvencí.
 
-### <a name="option-2-pick-a-different-partition-or-distribution-key"></a>Možnost 2: Vyberte jiný klíč oddílu nebo distribuce
+### <a name="option-2-pick-a-different-partition-or-distribution-key"></a>Option 2: Vybrat jiný klíč oddílu nebo distribuce
 
 V předchozím příkladu Pokud chcete jenom zkontrolovat daně auditu zatížení po zemi, můžete zlepšit rozdělení dat tak, že vyberete identifikační číslo jako svůj klíč. Vybrat jiný oddíl nebo klíč rozdělení může někdy rovnoměrnější distribuci dat, ale potřebujete, abyste měli jistotu, že tato volba nemá vliv na obchodní logiku. Například k výpočtu daně součtu pro každý stav, můžete chtít určit _stavu_ jako klíč oddílu. Pokud budete pokračovat k tomuto problému dochází, zkuste použít možnost 3.
 
-### <a name="option-3-add-more-partition-or-distribution-keys"></a>Možnost 3: Přidejte další klíče oddílů nebo distribuce
+### <a name="option-3-add-more-partition-or-distribution-keys"></a>Možnost 3: Přidat další klíče oddílů nebo distribuce
 
 Namísto použití pouze _stavu_ jako klíč oddílu, můžete použít více než jeden klíč pro dělení. Představte si třeba přidání _PSČ_ jako klíčem další oddíl pro snížení velikosti dat oddílu a více rovnoměrně distribuovat data.
 
-### <a name="option-4-use-round-robin-distribution"></a>Možnost 4: Použití kruhové dotazování na distribuci
+### <a name="option-4-use-round-robin-distribution"></a>Option 4: Použijte kruhové dotazování na distribuci
 
-Pokud nemůžete najít vhodného klíče oddílu a distribuci, můžete použít kruhové dotazování na distribuci. Kruhové dotazování na distribuci stejně zpracovává všechny řádky a náhodně je zařadí do příslušné kbelíků. Získá data rovnoměrně distribuovat, ale ztratí informace o lokalitě, navracení, který může také snížit výkon úlohy pro některé operace. Kromě toho pokud provádíte agregace pro asymetrické klíče i přesto, problém Nerovnoměrná distribuce dat se zachová. Další informace o kruhové dotazování na distribuci, naleznete v části rozdělení tabulky U-SQL v [CREATE TABLE (U-SQL): vytvoření tabulky se schématem](https://msdn.microsoft.com/library/mt706196.aspx#dis_sch).
+Pokud nemůžete najít vhodného klíče oddílu a distribuci, můžete použít kruhové dotazování na distribuci. Kruhové dotazování na distribuci stejně zpracovává všechny řádky a náhodně je zařadí do příslušné kbelíků. Získá data rovnoměrně distribuovat, ale ztratí informace o lokalitě, navracení, který může také snížit výkon úlohy pro některé operace. Kromě toho pokud provádíte agregace pro asymetrické klíče i přesto, problém Nerovnoměrná distribuce dat se zachová. Další informace o kruhové dotazování na distribuci, naleznete v části rozdělení tabulky U-SQL v [CREATE TABLE (U-SQL): Vytvoření tabulky se schématem](/u-sql/ddl/tables/create/managed/create-table-u-sql-creating-a-table-with-schema#dis_sch).
 
-## <a name="solution-2-improve-the-query-plan"></a>Řešení 2: Vylepšení plán dotazu
+## <a name="solution-2-improve-the-query-plan"></a>Řešení 2: Vylepšujte dotazu
 
-### <a name="option-1-use-the-create-statistics-statement"></a>Možnost 1: Použití příkazu CREATE STATISTICS
+### <a name="option-1-use-the-create-statistics-statement"></a>Option 1: Použijte příkaz CREATE STATISTICS
 
-U-SQL poskytuje příkazu CREATE STATISTICS na tabulkách. Tento příkaz poskytuje další informace k optimalizátoru dotazů charakteristiky data, jako je například distribuce hodnoty, které jsou uložené v tabulce. Pro většinu dotazů generuje optimalizátoru dotazů již potřebné statistické údaje o plán vysoké kvality dotazu. V některých případech můžete potřebovat pro zlepšení výkonu dotazů tím, že vytvoříte další statistiky s CREATE STATISTICS nebo úpravou návrh dotazu. Další informace najdete v tématu [CREATE STATISTICS (U-SQL)](https://msdn.microsoft.com/library/azure/mt771898.aspx) stránky.
+U-SQL poskytuje příkazu CREATE STATISTICS na tabulkách. Tento příkaz poskytuje další informace k optimalizátoru dotazů charakteristiky data, jako je například distribuce hodnoty, které jsou uložené v tabulce. Pro většinu dotazů generuje optimalizátoru dotazů již potřebné statistické údaje o plán vysoké kvality dotazu. V některých případech můžete potřebovat pro zlepšení výkonu dotazů tím, že vytvoříte další statistiky s CREATE STATISTICS nebo úpravou návrh dotazu. Další informace najdete v tématu [CREATE STATISTICS (U-SQL)](/u-sql/ddl/statistics/create-statistics) stránky.
 
 Příklad kódu:
 
@@ -59,7 +59,7 @@ Příklad kódu:
 >[!NOTE]
 >Statistické informace se automaticky aktualizují. Při aktualizaci dat v tabulce bez nutnosti znovu vytvářet statistiky, může odmítnout výkon dotazů.
 
-### <a name="option-2-use-skewfactor"></a>Možnost 2: Použití SKEWFACTOR
+### <a name="option-2-use-skewfactor"></a>Option 2: Použití SKEWFACTOR
 
 Pokud chcete součet daně pro každý stav, je nutné použít Seskupit podle stavu, přístup, který není vyhnout potížím Nerovnoměrná distribuce dat. Můžete však poskytnout nápovědu data v dotazu k identifikaci Nerovnoměrná distribuce dat v klíčích tak, aby Optimalizátor můžete připravit plán provádění za vás.
 
@@ -97,7 +97,7 @@ Příklad kódu:
                 ON @Sessions.Query == @Campaigns.Query
         ;   
 
-### <a name="option-3-use-rowcount"></a>Možnost 3: Použití počtu řádků  
+### <a name="option-3-use-rowcount"></a>Možnost 3: Použijte ROWCOUNT  
 Kromě SKEWFACTOR konkrétní zkosený klíč spojení v případech, pokud víte, že druhá sada řádků připojené k doméně je malý, poznáte Optimalizátor přidáním pomocný parametr počtu řádků v příkazu U-SQL před spojení. Tímto způsobem, optimalizátor může volba strategie všesměrového vysílání spojení ke zlepšení výkonu. Mějte na paměti, počtu řádků Nerovnoměrná distribuce dat problém nevyřeší, ale může nabídnout další pomoc.
 
     OPTION(ROWCOUNT = n)
@@ -126,7 +126,7 @@ Příklad kódu:
 
 Někdy můžete napsat uživatelem definovaný operátor vypořádat s logikou složitý proces, a kvalitně napsané redukční funkci a kombinační může zmírnit potíže Nerovnoměrná distribuce dat v některých případech.
 
-### <a name="option-1-use-a-recursive-reducer-if-possible"></a>Možnost 1: Použijte rekurzivní redukční, pokud je to možné
+### <a name="option-1-use-a-recursive-reducer-if-possible"></a>Option 1: Použijte rekurzivní redukční, pokud je to možné
 
 Ve výchozím nastavení spouští redukční se uživatelem definované v režimu nerekurzivní, což znamená, že snížit objem práce pro klíč je distribuován do jednoho vrcholu. Ale pokud je zkosený vaše data, může být obrovských sad dat zpracovaných za jeden vrchol a spusťte po dlouhou dobu.
 
@@ -150,7 +150,7 @@ Příklad kódu:
         }
     }
 
-### <a name="option-2-use-row-level-combiner-mode-if-possible"></a>Možnost 2: Použijte režim kombinační funkce na úrovni řádků, pokud je to možné
+### <a name="option-2-use-row-level-combiner-mode-if-possible"></a>Option 2: Použijte režim kombinační funkce na úrovni řádků, pokud je to možné
 
 Podobně jako pomocný parametr počtu řádků pro konkrétní připojení k zkosený klíč případy režim kombinační funkce se pokusí distribuovat obrovské zkosený klíč hodnota nastaví několik vrcholů tak, aby práce mohou být provedeny souběžně. Režim kombinační funkce nelze vyřešit problémy – Nerovnoměrná distribuce dat, ale může nabídnout další pomoc pro velkou zkosený klíč hodnota sady.
 
@@ -169,7 +169,7 @@ Atributy režim kombinační funkce:
 
 - SqlUserDefinedCombiner(Mode=CombinerMode.Left): Každý řádek výstupu závisí na jeden vstupní řádek vlevo (a potenciálně všechny řádky z pravé strany se stejnou hodnotou klíče).
 
-- qlUserDefinedCombiner(Mode=CombinerMode.Right): každý řádek výstupu závisí na jeden vstupní řádek z pravé straně (a potenciálně všechny řádky z levé strany se stejnou hodnotou klíče).
+- qlUserDefinedCombiner(Mode=CombinerMode.Right): Každý řádek výstupu závisí na jeden vstupní řádek z pravé straně (a potenciálně všechny řádky z levé strany se stejnou hodnotou klíče).
 
 - SqlUserDefinedCombiner(Mode=CombinerMode.Inner): Každý řádek výstupu závisí na jeden vstupní řádek vlevo a vpravo se stejnou hodnotou.
 

@@ -9,12 +9,12 @@ ms.reviewer: jasonwhowell
 ms.assetid: e5189e4e-9438-46d1-8686-ed4836bf3356
 ms.topic: conceptual
 ms.date: 12/05/2016
-ms.openlocfilehash: 9751801449eebc5d07ca4bbb9b408d9679fef24e
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: 122a4b6af78a22f74d5057da75767077f8d9b978
+ms.sourcegitcommit: 6e32f493eb32f93f71d425497752e84763070fad
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43040986"
+ms.lasthandoff: 04/10/2019
+ms.locfileid: "59469620"
 ---
 # <a name="develop-u-sql-user-defined-operators-udos"></a>Vývoj uživatelem definované operátory U-SQL (UDO)
 Tento článek popisuje, jak vývoj uživatelem definovaných operátorů ke zpracování dat v rámci úlohy U-SQL.
@@ -115,7 +115,7 @@ Tento článek popisuje, jak vývoj uživatelem definovaných operátorů ke zpr
 8. V **Průzkumníku řešení** klikněte pravým tlačítkem na položku **Script.usql** a pak klikněte na možnost **Sestavit skript**.
 9. V **Průzkumníku řešení** klikněte pravým tlačítkem na položku **Script.usql** a pak klikněte na položku **Odeslat skript**.
 10. Pokud jste se nepřipojili k předplatnému Azure, budete vyzváni k zadání přihlašovacích údajů k účtu Azure.
-11. Klikněte na tlačítko **odeslat**. Výsledky odeslání a odkaz na úlohu jsou dostupné v okně výsledků při dokončení odesílání.
+11. Klikněte na **Submit** (Odeslat). Výsledky odeslání a odkaz na úlohu jsou dostupné v okně výsledků při dokončení odesílání.
 12. Klikněte na tlačítko **aktualizovat** tlačítko, které chcete zobrazit nejnovější stav úlohy a aktualizovat obrazovku.
 
 **Postup zobrazení výstupu**
@@ -124,5 +124,5 @@ Tento článek popisuje, jak vývoj uživatelem definovaných operátorů ke zpr
 2. Rozbalte ukázky, rozbalte výstupy a potom dvakrát klikněte na panel **ovladače.csv**.
 
 ## <a name="see-also"></a>Další informace najdete v tématech
-* [Rozšíření U-SQL výrazy s uživatelský kód](https://msdn.microsoft.com/library/azure/mt621316.aspx)
+* [Rozšíření U-SQL výrazy s uživatelský kód](/u-sql/concepts/extending-u-sql-expressions-with-user-code)
 * [Pomocí nástrojů Data Lake pro Visual Studio pro vývoj aplikací v U-SQL](data-lake-analytics-data-lake-tools-get-started.md)

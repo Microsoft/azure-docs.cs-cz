@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 03/13/2019
 ms.author: glenga
-ms.openlocfilehash: dcd6d907fec3d7f2cc0c8d5c06fdec28125154c1
-ms.sourcegitcommit: e43ea344c52b3a99235660960c1e747b9d6c990e
+ms.openlocfilehash: 84c578fdbcfb555bde23d6a9e6f8258259cff8de
+ms.sourcegitcommit: 6e32f493eb32f93f71d425497752e84763070fad
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/04/2019
-ms.locfileid: "59009542"
+ms.lasthandoff: 04/10/2019
+ms.locfileid: "59471272"
 ---
 # <a name="work-with-azure-functions-core-tools"></a>Práce s Azure Functions Core Tools
 
@@ -478,6 +478,15 @@ Jsou k dispozici následující možnosti nasazení vlastního kontejneru:
 | **`--min`**  | Volitelně Nastaví minimální počet instancí funkce aplikace nasadit. |
 | **`--config`** | Nastaví konfigurační soubor volitelné nasazení. |
 
+## <a name="monitoring-functions"></a>Funkce monitorování
+
+Díky integraci s Azure Application Insights je doporučeným způsobem, jak provádění funkcí monitorování. Když vytvoříte aplikaci function app na webu Azure Portal, je tato integrační ve výchozím nastavení provede za vás. Když vytvoříte aplikaci function app pomocí rozhraní příkazového řádku Azure, není dokončení integrace ve vaší aplikaci function app v Azure.
+
+Povolení Application Insights pro aplikaci funkcí:
+
+[!INCLUDE [functions-connect-new-app-insights.md](../../includes/functions-connect-new-app-insights.md)]
+
+Další informace najdete v tématu [monitorování Azure Functions](functions-monitoring.md).
 ## <a name="next-steps"></a>Další postup
 
 Nástroje Azure Functions Core je [open source a hostovaná na Githubu](https://github.com/azure/azure-functions-cli).  

@@ -10,12 +10,12 @@ ms.subservice: bing-visual-search
 ms.topic: tutorial
 ms.date: 04/03/2019
 ms.author: scottwhi
-ms.openlocfilehash: 188acaea134a00ca8e2412aafd8515ee26596590
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.openlocfilehash: 0963c61027358c2c8e971533052631de28994b57
+ms.sourcegitcommit: 6e32f493eb32f93f71d425497752e84763070fad
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/05/2019
-ms.locfileid: "59049985"
+ms.lasthandoff: 04/10/2019
+ms.locfileid: "59471439"
 ---
 # <a name="tutorial-upload-images-to-the-bing-visual-search-api"></a>Kurz: Nahrávání obrázků do rozhraní API vizuální vyhledávání Bingu
 
@@ -772,4 +772,5 @@ Přidejte následující `<style>` části `<head>` značek k uspořádání roz
 
 ## <a name="next-steps"></a>Další postup
 
-* [Kurz: Najít podobné obrázky z předchozí vyhledávání pomocí ImageInsightsToken](./tutorial-visual-search-insights-token.md).
+>[!div class="nextstepaction"]
+> [Kurz: Podobně jako Image z předchozího vyhledávání pomocí ImageInsightsToken najdete](./tutorial-visual-search-insights-token.md)

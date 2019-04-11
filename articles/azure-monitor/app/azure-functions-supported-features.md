@@ -12,12 +12,12 @@ ms.topic: reference
 ms.date: 10/05/2018
 ms.reviewer: mbullwin
 ms.author: tilee
-ms.openlocfilehash: dd28bc3925b0f07a441c46a26498ef1a14c3e650
-ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
+ms.openlocfilehash: 101c985178b8269b4ff542b94b057330d0c2652a
+ms.sourcegitcommit: 6e32f493eb32f93f71d425497752e84763070fad
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55510319"
+ms.lasthandoff: 04/10/2019
+ms.locfileid: "59471660"
 ---
 # <a name="application-insights-for-azure-functions-supported-features"></a>Funkce podporované Application Insights pro službu Azure Functions
 
@@ -27,12 +27,12 @@ Azure Functions nabízí [vestavěná integrace](https://docs.microsoft.com/azur
 
 | Azure Functions                       | V1                | V2 (Ignite 2018)  | 
 |-----------------------------------    |---------------    |------------------ |
-| **Application Insights .NET SDK**   | **2.5.0**       | **2.7.2**         |
+| **Application Insights SDK pro .NET**   | **2.5.0**       | **2.9.1**         |
 | | | | 
 | **Automatické shromažďování**        |                 |                   |               
 | &bull; Požadavky                     | Ano             | Ano               | 
 | &bull; Výjimky                   | Ano             | Ano               | 
-| &bull; Čítače výkonu         | Ano             |                   |
+| &bull; Čítače výkonu         | Ano             | Ano               |
 | &bull; Závislosti                   |                   |                   |               
 | &nbsp;&nbsp;&nbsp;&mdash; HTTP      |                 | Ano               | 
 | &nbsp;&nbsp;&nbsp;&mdash; ServiceBus|                 | Ano               | 
@@ -65,3 +65,30 @@ Vlastní kritéria filtry, které jste zadali odesílají zpět do komponenty Li
 ## <a name="sampling"></a>Vzorkování
 
 Služba Azure Functions umožňuje v jejich konfigurace ve výchozím nastavení vzorkování. Další informace najdete v tématu [konfigurace vzorkování](https://docs.microsoft.com/azure/azure-functions/functions-monitoring#configure-sampling).
+
+Pokud váš projekt je závislá na sadu SDK Application Insights provedete ruční telemetrických dat, sledování, může docházet neobvyklé chování, pokud vaše konfigurace vzorkování se liší od konfigurace vzorkování funkce. 
+
+Doporučujeme používat stejnou konfiguraci jako funkce. S **funkce v2**, dostanete stejnou konfiguraci pomocí vkládání závislostí v váš konstruktor:
+
+```csharp
+using Microsoft.ApplicationInsights;
+using Microsoft.ApplicationInsights.Extensibility;
+
+public class Function1 
+{
+
+    private readonly TelemetryClient telemetryClient;
+
+    public Function1(TelemetryConfiguration configuration)
+    {
+        this.telemetryClient = new TelemetryClient(configuration);
+    }
+
+    [FunctionName("Function1")]
+    public async Task<IActionResult> Run(
+        [HttpTrigger(AuthorizationLevel.Function, "get", "post", Route = null)] HttpRequest req, ILogger logger)
+    {
+        this.telemetryClient.TrackTrace("C# HTTP trigger function processed a request.");
+    }
+}
+```

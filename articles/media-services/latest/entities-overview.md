@@ -1,6 +1,6 @@
 ---
-title: Vývoj s využitím rozhraní API v3 – Azure | Dokumentace Microsoftu
-description: Tento článek popisuje pravidla, které se vztahují k entitám a rozhraním API při vývoji pomocí Media Services v3.
+title: Filtrování, řazení, stránkování entit Media Services – Azure | Dokumentace Microsoftu
+description: Tento článek popisuje filtrování, řazení, stránkování entit Azure Media Services.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -9,64 +9,17 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 04/02/2019
+ms.date: 04/08/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: a5ab0b25a2a2db764854982b1a6801ce4f857dda
-ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
+ms.openlocfilehash: 28c880e8709074d808a41d9920361eaa2b20ecc4
+ms.sourcegitcommit: 6e32f493eb32f93f71d425497752e84763070fad
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58891952"
+ms.lasthandoff: 04/10/2019
+ms.locfileid: "59470853"
 ---
-# <a name="developing-with-media-services-v3-apis"></a>Vývoj s využitím Media Services v3 rozhraní API
-
-Tento článek popisuje pravidla, které se vztahují k entitám a rozhraním API při vývoji pomocí Media Services v3.
-
-## <a name="naming-conventions"></a>Zásady vytváření názvů
-
-Na názvy prostředků služby Azure Media Services v3 (například prostředky, úlohy, transformace) se vztahují omezení vytváření názvů Azure Resource Manageru. V souladu s Azure Resource Managerem jsou názvy prostředků vždy jedinečné. Jako názvy prostředků tedy můžete použít jakékoli řetězce jedinečného identifikátoru (například identifikátory GUID). 
-
-Názvy prostředků služby Media Services nemůže obsahovat znaky <, >, %, &, :, &#92;, ?, /, *, +, ., jednoduché uvozovky ani žádné řídicí znaky. Všechny ostatní znaky jsou povolené. Maximální délka názvu prostředku je 260 znaků. 
-
-Další informace o zadávání názvů Azure Resource Manageru najdete v tématu: [Požadavky na pojmenování](https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/resource-api-reference.md#arguments-for-crud-on-resource) a [zásady vytváření názvů](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions).
-
-## <a name="v3-api-design-principles"></a>Principy návrhu rozhraní API v3
-
-Jedním z klíčových principů návrhu rozhraní API v3 je vyšší zabezpečení rozhraní API. Rozhraní API v3 nevrací tajné kódy nebo přihlašovací údaje v rámci operací **Get** nebo **List**. Klíče v odpovědi mají vždy hodnotu null, jsou prázdné nebo upravené. Abyste získali tajné kódy nebo přihlašovací údaje, je třeba volat metodu samostatné akce. Samostatné akce umožňují nastavit různá oprávnění zabezpečení RBAC v případě, že některá rozhraní API načítají nebo zobrazují tajné kódy a jiná rozhraní API ne. Informace o správě přístupu pomocí RBAC najdete v tématu popisujícím [použití RBAC pro správu přístupu](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-rest).
-
-Příklady zahrnují:
-
-* V Get StreamingLocator nevrací ContentKey hodnoty.
-* V Get ContentKeyPolicy nevrací klíče omezení.
-* nevrací řetězec dotazu součástí adresy URL (Chcete-li odebrat podpis) z adres URL vstup úloh HTTP.
-
-Zobrazit [získání obsahu klíče zásad – .NET](get-content-key-policy-dotnet-howto.md) příklad.
-
-## <a name="long-running-operations"></a>Dlouho běžící operace
-
-Operace označené `x-ms-long-running-operation` ve službě Azure Media Services [swagger soubory](https://github.com/Azure/azure-rest-api-specs/blob/master/specification/mediaservices/resource-manager/Microsoft.Media/stable/2018-07-01/streamingservice.json) se dlouho běžící operace. 
-
-Podrobnosti o tom, jak sledovat asynchronních operací v Azure najdete v tématu [asynchronních operací v](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-async-operations#monitor-status-of-operation).
-
-Služba Media Services má následující dlouho běžící operace:
-
-* Vytvoření Livestream
-* Aktualizace Livestream
-* Odstranit Livestream
-* Spustit Livestream
-* Zastavit Livestream
-* Resetovat Livestream
-* Vytvoření LiveOutput
-* Odstranit LiveOutput
-* Vytvoření StreamingEndpoint
-* Aktualizace StreamingEndpoint
-* Odstranit StreamingEndpoint
-* Spustit StreamingEndpoint
-* Zastavit StreamingEndpoint
-* Škálování StreamingEndpoint
-
-## <a name="filtering-ordering-paging-of-media-services-entities"></a>Filtrování, řazení, stránkování entit Media Services
+# <a name="filtering-ordering-paging-of-media-services-entities"></a>Filtrování, řazení, stránkování entit Media Services
 
 Služba Media Services podporuje následující možnosti dotazu OData pro službu Media Services v3 entity: 
 
@@ -86,7 +39,7 @@ Popis operátoru:
 
 Vlastnosti entity, které jsou typu datum a čas jsou vždy ve formátu UTC.
 
-### <a name="page-results"></a>Výsledky stránky
+## <a name="page-results"></a>Výsledky stránky
 
 Pokud odpovědi na dotaz obsahuje mnoho položek, tato služba vrátí "\@odata.nextLink" k získání další stránky výsledků. Tímto lze na stránku prostřednictvím úplná sada výsledků. Nelze konfigurovat velikost stránky. Velikost stránky se liší podle typu entity, přečtěte si prosím následující jednotlivé části Podrobnosti.
 
@@ -95,9 +48,9 @@ Pokud entity jsou vytvořeny nebo odstranili stránkování prostřednictvím ko
 > [!TIP]
 > Odkaz na další vždy používejte k vytvoření výčtu kolekce a není závislý na konkrétní stránce velikost.
 
-### <a name="assets"></a>Prostředky
+## <a name="assets"></a>Prostředky
 
-#### <a name="filteringordering"></a>Filtrování a řazení
+### <a name="filteringordering"></a>Filtrování a řazení
 
 Následující tabulka ukazuje, jak filtrování a řazení možnosti může použít u [Asset](https://docs.microsoft.com/rest/api/media/assets) vlastnosti: 
 
@@ -122,11 +75,11 @@ var odataQuery = new ODataQuery<Asset>("properties/created lt 2018-05-11T17:39:0
 var firstPage = await MediaServicesArmClient.Assets.ListAsync(CustomerResourceGroup, CustomerAccountName, odataQuery);
 ```
 
-#### <a name="pagination"></a>Stránkování 
+### <a name="pagination"></a>Stránkování 
 
 Pro každý ze čtyř povoleno řazení je podporováno stránkování. V současné době je velikost stránky je 1000.
 
-##### <a name="c-example"></a>Příklad jazyka C#
+#### <a name="c-example"></a>Příklad jazyka C#
 
 Následující příklad jazyka C# ukazuje, jak zobrazit výčet prostřednictvím všechny prostředky v účtu.
 
@@ -140,7 +93,7 @@ while (currentPage.NextPageLink != null)
 }
 ```
 
-##### <a name="rest-example"></a>Příklad REST
+#### <a name="rest-example"></a>Příklad REST
 
 Podívejte se na následující příklad použití $skiptoken. Ujistěte se, že nahradíte *amstestaccount* se název účtu a sadou *verze api-version* hodnotu na nejnovější verzi.
 
@@ -182,9 +135,9 @@ https://management.azure.com/subscriptions/00000000-3761-485c-81bb-c50b291ce214/
 
 Další příklady REST, najdete v článku [prostředky – seznam](https://docs.microsoft.com/rest/api/media/assets/list)
 
-### <a name="content-key-policies"></a>Zásady symetrických klíčů
+## <a name="content-key-policies"></a>Zásady symetrických klíčů
 
-#### <a name="filteringordering"></a>Filtrování a řazení
+### <a name="filteringordering"></a>Filtrování a řazení
 
 Následující tabulka ukazuje, jak tyto možnosti mohou být použity u [obsahu zásady klíčů](https://docs.microsoft.com/rest/api/media/contentkeypolicies) vlastnosti: 
 
@@ -199,7 +152,7 @@ Následující tabulka ukazuje, jak tyto možnosti mohou být použity u [obsahu
 |properties.policyId|Eq, ne||
 |type|||
 
-#### <a name="pagination"></a>Stránkování
+### <a name="pagination"></a>Stránkování
 
 Pro každý ze čtyř povoleno řazení je podporováno stránkování. V současné době je velikost stránky je 10.
 
@@ -217,9 +170,9 @@ while (currentPage.NextPageLink != null)
 
 ZBÝVAJÍCÍ příklady naleznete v tématu [obsahu klíč zásady – seznam](https://docs.microsoft.com/rest/api/media/contentkeypolicies/list)
 
-### <a name="jobs"></a>Úlohy
+## <a name="jobs"></a>Úlohy
 
-#### <a name="filteringordering"></a>Filtrování a řazení
+### <a name="filteringordering"></a>Filtrování a řazení
 
 Následující tabulka ukazuje, jak tyto možnosti mohou být použity u [úlohy](https://docs.microsoft.com/rest/api/media/jobs) vlastnosti: 
 
@@ -230,8 +183,7 @@ Následující tabulka ukazuje, jak tyto možnosti mohou být použity u [úlohy
 | Properties.Created      | gt, ge, lt, le| Vzestupným a sestupným|
 | properties.lastModified | gt, ge, lt, le | Vzestupným a sestupným| 
 
-
-#### <a name="pagination"></a>Stránkování
+### <a name="pagination"></a>Stránkování
 
 Úlohy stránkování je podporována v Media Services v3.
 
@@ -265,9 +217,9 @@ while (!exit);
 
 ZBÝVAJÍCÍ příklady naleznete v tématu [úloh – seznam](https://docs.microsoft.com/rest/api/media/jobs/list)
 
-### <a name="streaming-locators"></a>Lokátory streamování
+## <a name="streaming-locators"></a>Lokátory streamování
 
-#### <a name="filteringordering"></a>Filtrování a řazení
+### <a name="filteringordering"></a>Filtrování a řazení
 
 Následující tabulka ukazuje, jak tyto možnosti může použít u vlastnosti StreamingLocator: 
 
@@ -286,7 +238,7 @@ Následující tabulka ukazuje, jak tyto možnosti může použít u vlastnosti 
 |properties.streamingPolicyName |||
 |type   |||
 
-#### <a name="pagination"></a>Stránkování
+### <a name="pagination"></a>Stránkování
 
 Pro každý ze čtyř povoleno řazení je podporováno stránkování. V současné době je velikost stránky je 10.
 
@@ -304,9 +256,9 @@ while (currentPage.NextPageLink != null)
 
 ZBÝVAJÍCÍ příklady naleznete v tématu [lokátory streamování – seznam](https://docs.microsoft.com/rest/api/media/streaminglocators/list)
 
-### <a name="streaming-policies"></a>Zásady streamování
+## <a name="streaming-policies"></a>Zásady streamování
 
-#### <a name="filteringordering"></a>Filtrování a řazení
+### <a name="filteringordering"></a>Filtrování a řazení
 
 Následující tabulka ukazuje, jak tyto možnosti může použít u vlastnosti StreamingPolicy: 
 
@@ -322,7 +274,7 @@ Následující tabulka ukazuje, jak tyto možnosti může použít u vlastnosti 
 |properties.noEncryption|||
 |type|||
 
-#### <a name="pagination"></a>Stránkování
+### <a name="pagination"></a>Stránkování
 
 Pro každý ze čtyř povoleno řazení je podporováno stránkování. V současné době je velikost stránky je 10.
 
@@ -340,10 +292,9 @@ while (currentPage.NextPageLink != null)
 
 ZBÝVAJÍCÍ příklady naleznete v tématu [streamování zásady – seznam](https://docs.microsoft.com/rest/api/media/streamingpolicies/list)
 
+## <a name="transform"></a>Transformace
 
-### <a name="transform"></a>Transformace
-
-#### <a name="filteringordering"></a>Filtrování a řazení
+### <a name="filteringordering"></a>Filtrování a řazení
 
 Následující tabulka ukazuje, jak tyto možnosti mohou být použity u [transformuje](https://docs.microsoft.com/rest/api/media/transforms) vlastnosti: 
 

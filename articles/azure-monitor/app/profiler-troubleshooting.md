@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.reviewer: mbullwin
 ms.date: 08/06/2018
 ms.author: cweining
-ms.openlocfilehash: 6c96b7139787a3863b3f7a47949d9cdf20cc5021
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: c9e6e289fbda3188449ecc71cbc90bed546512e1
+ms.sourcegitcommit: 6e32f493eb32f93f71d425497752e84763070fad
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57855669"
+ms.lasthandoff: 04/10/2019
+ms.locfileid: "59471524"
 ---
 # <a name="troubleshoot-problems-enabling-or-viewing-application-insights-profiler"></a>Poradce při potížích, povolení nebo zobrazení Application Insights Profiler
 
@@ -67,9 +67,15 @@ Vyplňte lístek podpory na portálu. Nezapomeňte zahrnout ID korelace z chybov
 Pro Profiler fungovala správně:
 * Plán služby app service web musí být na úrovni Basic nebo vyšší.
 * Webové aplikace musí mít povolené Application Insights.
-* Webové aplikace musí mít **APPINSIGHTS_INSTRUMENTATIONKEY** nastavení aplikace, které jsou nakonfigurované se stejným klíčem instrumentace, který používá sadu SDK Application Insights.
-* Webové aplikace musí mít **APPINSIGHTS_PROFILERFEATURE_VERSION** nastavení aplikace, které definované a nastavená na 1.0.0.
-* Webové aplikace musí mít **DiagnosticServices_EXTENSION_VERSION** nastavení aplikace, které jsou definovány a hodnotu nastavte na přibližně 3.
+* Webové aplikace musí mít následující nastavení aplikace:
+
+    |Nastavení aplikace    | Hodnota    |
+    |---------------|----------|
+    |APPINSIGHTS_INSTRUMENTATIONKEY         | Instrumentační klíč pro vás prostředku Application Insights    |
+    |APPINSIGHTS_PROFILERFEATURE_VERSION | 1.0.0 |
+    |DiagnosticServices_EXTENSION_VERSION | ~3 |
+
+
 * **ApplicationInsightsProfiler3** webové úlohy musí být spuštěna. Chcete-li zkontrolovat webové úlohy:
    1. Přejděte na [Kudu](https://blogs.msdn.microsoft.com/cdndevs/2015/04/01/the-kudu-debug-console-azure-websites-best-kept-secret/).
    1. V **nástroje** nabídce vyberte možnost **řídicím panelu webjobs nechat**.  
@@ -93,12 +99,13 @@ Když konfigurujete Profiler, jsou provedeny aktualizace nastavení webové apli
 1. Nastavte **verzi rozhraní .NET Framework** k **v4.6**.
 
 1. Nastavte **Always On** k **na**.
+1. Vytvoření nastavení aplikace:
 
-1. Přidat **APPINSIGHTS_INSTRUMENTATIONKEY** aplikace nastavení a nastavte hodnotu na stejný klíč instrumentace, který se používá sada SDK.
-
-1. Přidat **APPINSIGHTS_PROFILERFEATURE_VERSION** nastavení aplikace a nastavte hodnotu na 1.0.0.
-
-1. Přidat **DiagnosticServices_EXTENSION_VERSION** nastavení aplikace a nastavte hodnotu na přibližně 3.
+    |Nastavení aplikace    | Hodnota    |
+    |---------------|----------|
+    |APPINSIGHTS_INSTRUMENTATIONKEY         | Instrumentační klíč pro vás prostředku Application Insights    |
+    |APPINSIGHTS_PROFILERFEATURE_VERSION | 1.0.0 |
+    |DiagnosticServices_EXTENSION_VERSION | ~3 |
 
 ### <a name="too-many-active-profiling-sessions"></a>Příliš mnoho aktivní relace profilování
 
@@ -124,7 +131,7 @@ Profiler běží jako nepřetržitá webová úloha ve webové aplikaci. Můžet
 
 ## <a name="troubleshoot-problems-with-profiler-and-azure-diagnostics"></a>Poradce při potížích s Profiler a diagnostice Azure
 
-  >**V profileru, který se dodává v nejnovější verzi WAD pro Cloud Services je chyba.** Chcete-li použít profiler s cloudovou službou, podporuje pouze sady Application Insights SDK verzi 2.7.2. Pokud používáte novější verzi sady Application Insights SDK, budete muset přejít zpět na 2.7.2, aby bylo možné využívat profiler. Pokud používáte sadu Visual Studio na starší verzi verze sady App Insights SDK, se může zobrazit chyba přesměrování vazby v době běhu. Je to proto, že "newVersion" v souboru web.config pro Microsoft.ApplicationInsights musí být nastavená na "2.7.2.0" po downgradu sady Application Insights SDK, ale nebude aktualizovat automaticky.
+>**Opravili jsme chybu v profileru, který se dodává v WAD pro cloudové služby.** Nejnovější verze WAD (1.12.2.0) pro Cloud Services funguje s všechny nejnovější verze sady App Insights SDK. Obsluha hostitelů cloudu budou automaticky upgradovat WAD, ale není okamžitý. Vynutit upgrade, můžete znovu nasadit služby nebo restartovat uzel.
 
 Chcete-li zjistit, zda je Profiler správně nakonfigurován pomocí Azure Diagnostics, proveďte následující tři věci: 
 1. Nejprve zkontrolujte, zda jsou obsah konfigurace diagnostiky Azure, které jsou nasazeny, co očekáváte. 
