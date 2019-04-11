@@ -17,7 +17,7 @@ items:
       href: iot-accelerators-remote-monitoring-architectural-choices.md
   - name: Šablony Rychlý start
     items:
-    - name: Vyzkoušení řešení vzdáleného monitorování
+    - name: Vyzkoušení řešení pro vzdálené monitorování
       href: quickstart-remote-monitoring-deploy.md
   - name: Kurzy
     items:

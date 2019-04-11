@@ -53,7 +53,7 @@ Naučte se využívat akcelerátory řešení IoT. Tyto články ukazují, jak v
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Přehled akcelerátorů řešení vzdáleného sledování</h3>
+                        <h3>Přehled akcelerátorů řešení pro vzdálené monitorování</h3>
                     </div>
                 </div>
             </div>

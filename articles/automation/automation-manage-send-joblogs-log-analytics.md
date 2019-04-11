@@ -11,7 +11,7 @@ ms.topic: conceptual
 manager: carmonm
 ms.openlocfilehash: 1897ddf328413decdc13cffaab0fb569d8d95665
 ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 03/27/2019
 ms.locfileid: "58521665"
@@ -33,7 +33,7 @@ Automatizace můžete odeslat runbook datové proudy úlohy stavu a úlohu do pr
 Chcete-li zahájit odesílání protokolů služby Automation na protokoly Azure monitoru, potřebujete:
 
 * Listopad 2016 nebo novější verze [prostředí Azure PowerShell](https://docs.microsoft.com/powershell/azureps-cmdlets-docs/) (v2.3.0).
-* Pracovní prostor Log Analytics. Další informace najdete v tématu [začít pracovat s protokoly Azure monitoru](../log-analytics/log-analytics-get-started.md). 
+* Pracovní prostor služby Log Analytics. Další informace najdete v tématu [začít pracovat s protokoly Azure monitoru](../log-analytics/log-analytics-get-started.md). 
 * ID prostředku účtu Azure Automation.
 
 Vyhledání ID prostředku účtu Azure Automation:

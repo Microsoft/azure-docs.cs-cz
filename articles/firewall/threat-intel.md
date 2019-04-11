@@ -31,7 +31,7 @@ Ve výchozím nastavení je filtrování threat intelligence podle povolené v r
 
 ![Analýza hrozeb na základě filtrování rozhraní portálu](media/threat-intel/threat-intel-ui.png)
 
-## <a name="logs"></a>Logs
+## <a name="logs"></a>Protokoly
 
 Následující úryvek protokolu ukazuje aktivovaných pravidlo:
 

@@ -16,7 +16,7 @@ ms.date: 01/14/2019
 ms.author: TomSh
 ms.openlocfilehash: eb2f42b690099002f2f14aa4e782906a76c01d4c
 ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 03/02/2019
 ms.locfileid: "57241506"
@@ -328,7 +328,7 @@ Existují čtyři způsoby, jak [shromažďovat protokoly a metriky pro služby 
 
 * Skripty a shromažďovat data, odešle se do protokolů Azure Monitor (prázdné buňky v následující tabulce a pro služby, které nejsou uvedené)
 
-| Služba | Typ prostředku | Logs | Metriky | Řešení |
+| Služba | Typ prostředku | Protokoly | Metriky | Řešení |
 | :------ | :------------ | :--- | :------ | :------- |
 |Azure Application Gateway| Microsoft.Network/<br>applicationGateways|  Diagnostika|Diagnostika|    [Aplikace Azure](https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-networking-analytics#azure-application-gateway-analytics-solution-in-log-analytics) [analýzy brány](https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-networking-analytics#azure-application-gateway-analytics-solution-in-log-analytics)|
 |Application Insights||     Spojovací čára|  Spojovací čára|  [Application Insights](https://blogs.technet.microsoft.com/msoms/2016/09/26/application-insights-connector-in-oms/) [konektoru (Preview)](https://blogs.technet.microsoft.com/msoms/2016/09/26/application-insights-connector-in-oms/)|

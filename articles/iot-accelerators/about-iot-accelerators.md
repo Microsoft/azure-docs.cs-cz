@@ -91,7 +91,7 @@ Další informace o architektuře mikroslužeb najdete v tématu [Úvod do služ
 
 Akcelerátory řešení můžete nasadit na webu [Akcelerátory řešení Microsoft Azure IoT](https://www.azureiotsolutions.com/Accelerators#) nebo pomocí příkazového řádku.
 
-Akcelerátor řešení vzdáleného monitorování můžete nasadit v následujících konfiguracích:
+Akcelerátor řešení pro vzdálené monitorování můžete nasadit v následujících konfiguracích:
 
 * **Standard:** Nasazení rozšířené infrastruktury pro vývoj produkčního nasazení. Azure Container Service nasazuje mikroslužby do několika virtuálních počítačů Azure. Kubernetes orchestruje kontejnery Dockeru, které jsou hostiteli jednotlivých mikroslužeb.
 * **Basic:** Verze nižšími náklady pro ukázku nebo otestování nasazení. Všechny mikroslužby se nasazují do jednoho virtuálního počítače Azure.

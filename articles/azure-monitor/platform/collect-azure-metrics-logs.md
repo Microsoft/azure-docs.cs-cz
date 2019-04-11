@@ -30,7 +30,7 @@ Existují různé způsoby shromažďování protokolů a metrik pro služby Azu
 4. Skripty, které shromažďovat a následně je publikovat data do pracovního prostoru Log Analytics ve službě Azure Monitor (prázdné hodnoty v následující tabulce a pro služby, které nejsou uvedené)
 
 
-| Služba                 | Typ prostředku                           | Logs        | Metriky     | Řešení |
+| Služba                 | Typ prostředku                           | Protokoly        | Metriky     | Řešení |
 | --- | --- | --- | --- | --- |
 | Application Gateway    | Microsoft.Network/applicationGateways   | Diagnostika | Diagnostika | [Analýzy Azure Application Gateway](../insights/azure-networking-analytics.md#azure-application-gateway-analytics-solution-in-azure-monitor) |
 | Application insights    |                                         | Spojovací čára   | Spojovací čára   | [Application Insights Connector](https://blogs.technet.microsoft.com/msoms/2016/09/26/application-insights-connector-in-oms/) (Preview) |
@@ -129,7 +129,7 @@ Pro shromažďování protokolů z v rámci některé prostředky, je možné od
 
 Azure Monitor můžete tento postup použijte ke shromažďování diagnostických údajů ze služby Azure storage pro protokoly a následující prostředky:
 
-| Prostředek | Logs |
+| Prostředek | Protokoly |
 | --- | --- |
 | Service Fabric |ETWEvent <br> Provozních událostí <br> Události Reliable Actors <br> Události Reliable Service |
 | Virtuální počítače |Protokolu Syslog v Linuxu <br> Události Windows <br> Protokol IIS <br> Windows ETWEvent |

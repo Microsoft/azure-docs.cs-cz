@@ -87,7 +87,7 @@ Název aplikace v tomto rychlém startu je `helloWorldApp`. Abyste získali info
 az mesh app show --resource-group myResourceGroup --name helloWorldApp
 ```
 
-## <a name="see-the-application-logs"></a>Zobrazení aplikačních protokolů
+## <a name="see-the-application-logs"></a>Zobrazení protokolů aplikací
 
 Projděte si protokoly nasazené aplikace pomocí příkazu `az mesh code-package-log get`:
 

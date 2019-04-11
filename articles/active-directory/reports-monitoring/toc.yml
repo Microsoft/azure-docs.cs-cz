@@ -76,7 +76,7 @@ items:
       href: howto-integrate-activity-logs-with-log-analytics.md
     - name: Analýza protokolů aktivit v protokolech Azure Monitoru
       href: howto-analyze-activity-logs-log-analytics.md
-    - name: Instalace a použití zobrazení Log Analytics pro Azure AD
+    - name: Instalace a použití zobrazení analytiky protokolů pro Azure AD
       href: howto-install-use-log-analytics-views.md
     - name: Integrace protokolů aktivit s využitím SumoLogic
       href: howto-integrate-activity-logs-with-sumologic.md

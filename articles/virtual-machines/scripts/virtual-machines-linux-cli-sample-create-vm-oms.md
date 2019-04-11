@@ -25,7 +25,7 @@ ms.locfileid: "57535617"
 ---
 # <a name="monitor-a-vm-with-azure-monitor"></a>Monitorování virtuálního počítače pomocí Azure monitoru
 
-Tento skript vytvoří virtuální počítač Azure, nainstaluje agenta Log Analytics a zaregistruje systém v pracovním prostoru Log Analytics. Po spuštění skriptu bude virtuální počítač viditelný v konzole.
+Tento skript vytvoří virtuální počítač Azure, nainstaluje agenta Log Analytics a zaregistruje systém v pracovním prostoru služby Log Analytics. Po spuštění skriptu bude virtuální počítač viditelný v konzole.
 
 [!INCLUDE [sample-cli-install](../../../includes/sample-cli-install.md)]
 

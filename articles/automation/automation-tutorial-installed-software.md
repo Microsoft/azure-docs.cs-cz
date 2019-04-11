@@ -49,11 +49,11 @@ Pro účely tohoto kurzu je nejprve potřeba povolit řešení Change Tracking a
 
 Přejděte do svého účtu Automation a v části **SPRÁVA KONFIGURACE** vyberte **Inventory**.
 
-Zvolte pracovní prostor Log Analytics a účet Automation a kliknutím na **Povolit** povolte řešení. Povolení řešení trvá přibližně 15 minut.
+Zvolte pracovní prostor služby Log Analytics a účet Automation a kliknutím na **Povolit** povolte řešení. Povolení řešení trvá přibližně 15 minut.
 
 ![Banner konfigurace připojení k řešení Inventory](./media/automation-tutorial-installed-software/enableinventory.png)
 
-Pokud chcete řešení povolit, nakonfigurujte umístění, pracovní prostor Log Analytics a účet Automation, které se mají použít, a klikněte na **Povolit**. Pokud se pole zobrazují šedě, znamená to, že pro daný virtuální počítač je povolené jiné řešení automatizace a musí se použít stejný pracovní prostor a účet Automation.
+Pokud chcete řešení povolit, nakonfigurujte umístění, pracovní prostor služby Log Analytics a účet Automation, které se mají použít, a klikněte na **Povolit**. Pokud se pole zobrazují šedě, znamená to, že pro daný virtuální počítač je povolené jiné řešení automatizace a musí se použít stejný pracovní prostor a účet Automation.
 
 Pracovní prostor [Log Analytics](../log-analytics/log-analytics-overview.md?toc=%2fazure%2fautomation%2ftoc.json) slouží ke shromažďování dat generovaných funkcemi a službami, jako je řešení Inventory.
 Tento pracovní prostor poskytuje možnost kontroly a analýzy dat z několika zdrojů na jednom místě.
@@ -68,11 +68,11 @@ Zpřístupnění dat pro analýzu může trvat 30 minut až 6 hodin.
 
 Ve svém účtu Automation přejděte do části **Inventory** v části **SPRÁVA KONFIGURACE**.
 
-Vyberte **+ Přidat virtuální počítač Azure**. Otevře se stránka **Virtuální počítače**, na které můžete ze seznamu vybrat stávající virtuální počítače. Vyberte virtuální počítač, který chcete připojit. Na stránce, která se otevře, kliknutím na **Povolit** povolte řešení na virtuálním počítači. Na virtuální počítač se nasadí agent Microsoft Management Agent, který se nakonfiguruje ke komunikaci s pracovním prostorem Log Analytics, který jste nakonfigurovali při povolování řešení. Dokončení připojování může trvat několik minut. V tuto chvíli můžete ze seznamu vybrat nový virtuální počítač a připojit další virtuální počítač.
+Vyberte **+ Přidat virtuální počítač Azure**. Otevře se stránka **Virtuální počítače**, na které můžete ze seznamu vybrat stávající virtuální počítače. Vyberte virtuální počítač, který chcete připojit. Na stránce, která se otevře, kliknutím na **Povolit** povolte řešení na virtuálním počítači. Na virtuální počítač se nasadí agent Microsoft Management Agent, který se nakonfiguruje ke komunikaci s pracovním prostorem služby Log Analytics, který jste nakonfigurovali při povolování řešení. Dokončení připojování může trvat několik minut. V tuto chvíli můžete ze seznamu vybrat nový virtuální počítač a připojit další virtuální počítač.
 
 ## <a name="onboard-a-non-azure-machine"></a>Připojení počítače mimo Azure
 
-Pokud chcete přidat počítače mimo Azure, nainstalujte agenta pro [Windows](../azure-monitor/platform/agent-windows.md) nebo [Linux](automation-linux-hrw-install.md) v závislosti na vašem operačním systému. Jakmile bude agent nainstalovaný, přejděte ve svém účtu Automation do části **Inventory** v části **SPRÁVA KONFIGURACE**. Po kliknutí na **Spravovat počítače** se zobrazí seznam počítačů, které se hlásí do vašeho pracovního prostoru Log Analytics a které nemají řešení povolené. Vyberte odpovídající možnost pro vaše prostředí.
+Pokud chcete přidat počítače mimo Azure, nainstalujte agenta pro [Windows](../azure-monitor/platform/agent-windows.md) nebo [Linux](automation-linux-hrw-install.md) v závislosti na vašem operačním systému. Jakmile bude agent nainstalovaný, přejděte ve svém účtu Automation do části **Inventory** v části **SPRÁVA KONFIGURACE**. Po kliknutí na **Spravovat počítače** se zobrazí seznam počítačů, které se hlásí do vašeho pracovního prostoru služby Log Analytics a které nemají řešení povolené. Vyberte odpovídající možnost pro vaše prostředí.
 
 * **Povolit na všech dostupných počítačích** – Tato možnost povolí řešení na všech počítačích, které se aktuálně hlásí do vašeho pracovního prostoru Log Analytics.
 * **Povolit na všech dostupných i budoucích počítačích** – Tato možnost povolí řešení na všech počítačích, které se hlásí do vašeho pracovního prostoru Log Analytics, a následně i na všech počítačích, které se do pracovního prostoru přidají v budoucnu.

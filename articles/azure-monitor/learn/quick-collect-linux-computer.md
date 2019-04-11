@@ -38,7 +38,7 @@ Přihlaste se k webu Azure Portal na adrese [https://portal.azure.com](https://p
 
 2. Klikněte na **Vytvořit** a podle potřeby změňte hodnoty následujících položek:
 
-   * Zadejte název nového **pracovního prostoru Log Analytics**, například *DefaultLAWorkspace*. Pracovní prostory OMS se teď označují jako pracovní prostory Log Analytics.   
+   * Zadejte název nového **pracovního prostoru služby Log Analytics**, například *DefaultLAWorkspace*. Pracovní prostory OMS se teď označují jako pracovní prostory Log Analytics.   
    * Vyberte **předplatné**, které má být cílem propojení, výběrem z rozevíracího seznamu, pokud výchozí vybrané předplatné není vhodné.
    * Jako **skupinu prostředků** vyberte existující skupinu prostředků, která obsahuje jeden nebo několik virtuálních počítačů Azure.  
    * Vyberte **Umístění**, do kterého jsou vaše virtuální počítače nasazené.  Další informace najdete na stránce uvádějící [oblasti, ve kterých je dostupná služba Log Analytics](https://azure.microsoft.com/regions/services/).  
@@ -46,12 +46,12 @@ Přihlaste se k webu Azure Portal na adrese [https://portal.azure.com](https://p
 
         ![Vytvořit okno prostředku Log Analytics](media/quick-collect-linux-computer/create-loganalytics-workspace-02.png)<br>  
 
-3. Po zadání požadovaných informací v podokně **Pracovní prostor Log Analytics** klikněte na **OK**.  
+3. Po zadání požadovaných informací v podokně **Pracovní prostor služby Log Analytics** klikněte na **OK**.  
 
 Během ověřování informací a vytváření pracovního prostoru můžete průběh zpracování sledovat prostřednictvím položky nabídky **Oznámení**. 
 
 ## <a name="obtain-workspace-id-and-key"></a>Získání ID a klíče pracovního prostoru
-Před instalací agenta Log Analytics pro Linux potřebujete ID a klíč vašeho pracovního prostoru Log Analytics.  Tyto informace vyžaduje skript obálky agenta ke správné konfiguraci agenta a zajištění, aby agent mohl úspěšně komunikovat s Log Analytics.
+Před instalací agenta Log Analytics pro Linux potřebujete ID a klíč vašeho pracovního prostoru služby Log Analytics.  Tyto informace vyžaduje skript obálky agenta ke správné konfiguraci agenta a zajištění, aby agent mohl úspěšně komunikovat s Log Analytics.
 
 [!INCLUDE [log-analytics-agent-note](../../../includes/log-analytics-agent-note.md)]  
 
@@ -68,7 +68,7 @@ Před instalací agenta Log Analytics pro Linux potřebujete ID a klíč vašeho
 V následujících krocích se nakonfiguruje instalace agenta pro Log Analytics v Azure a cloudu Azure Government.  
 
 >[!NOTE]
->Agenta Log Analytics pro Linux není možné nakonfigurovat tak, aby se hlásil více než jednomu pracovnímu prostoru Log Analytics.  
+>Agenta Log Analytics pro Linux není možné nakonfigurovat tak, aby se hlásil více než jednomu pracovnímu prostoru služby Log Analytics.  
 
 Pokud počítač s Linuxem potřebuje komunikovat se službou Log Analytics prostřednictvím proxy serveru, můžete konfiguraci proxy zadat na příkazovém řádku zahrnutím příkazu `-p [protocol://][user:password@]proxyhost[:port]`.  Vlastnost *proxyhost* přijímá plně kvalifikovaný název domény nebo IP adresu proxy serveru. 
 
@@ -111,7 +111,7 @@ Log Analytics může shromažďovat události z protokolu Syslog v Linuxu a z č
 3. V tabulce zrušte zaškrtnutí závažností **Informace**, **Oznámení** a **Ladění**. 
 4. Uložte konfiguraci kliknutím na **Uložit** v horní části stránky.
 5. Výběrem **Data o výkonu systému Linux** povolte shromažďování čítačů výkonu na počítači s Linuxem. 
-6. Při první konfiguraci linuxových čítačů výkonu pro nový pracovní prostor Log Analytics máte možnost rychle vytvořit několik běžných čítačů. Jsou zobrazené v seznamu a vedle každého je zaškrtávací políčko. 
+6. Při první konfiguraci linuxových čítačů výkonu pro nový pracovní prostor služby Log Analytics máte možnost rychle vytvořit několik běžných čítačů. Jsou zobrazené v seznamu a vedle každého je zaškrtávací políčko. 
 
     ![Vybrané výchozí čítače výkonu Windows](media/quick-collect-linux-computer/linux-perfcounters-default.png)
     
@@ -132,13 +132,13 @@ Teď, když jste povolili shromažďování dat, můžete spustit příklad jedn
     ![Výsledek prohledávání protokolu v Log Analytics](media/quick-collect-linux-computer/log-analytics-search-perf.png)
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
-Pokud je už nepotřebujete, můžete z počítače s Linuxem odebrat agenta a odstranit pracovní prostor Log Analytics.  
+Pokud je už nepotřebujete, můžete z počítače s Linuxem odebrat agenta a odstranit pracovní prostor služby Log Analytics.  
 
 Pokud chcete agenta odebrat, spusťte v počítači s Linuxem následující příkaz. Argument *--purge* úplně odebere agenta a jeho konfiguraci.
 
    `wget https://raw.githubusercontent.com/Microsoft/OMS-Agent-for-Linux/master/installer/scripts/onboard_agent.sh && sh onboard_agent.sh --purge`
 
-Pokud chcete odstranit pracovní prostor, vyberte pracovní prostor Log Analytics, který jste vytvořili dříve, a na stránce prostředku klikněte na **Odstranit**.
+Pokud chcete odstranit pracovní prostor, vyberte pracovní prostor služby Log Analytics, který jste vytvořili dříve, a na stránce prostředku klikněte na **Odstranit**.
 
 ![Odstranění prostředku Log Analytics](media/quick-collect-linux-computer/log-analytics-portal-delete-resource.png)
 

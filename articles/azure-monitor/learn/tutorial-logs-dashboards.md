@@ -31,7 +31,7 @@ ms.locfileid: "53186612"
 > * Přidání prohledávání protokolu na sdílený řídicí panel 
 > * Přizpůsobení dlaždice na sdíleném řídicím panelu
 
-K dokončení příkladu v tomto kurzu potřebujete existující virtuální počítač [připojený k pracovnímu prostoru Log Analytics](../../azure-monitor/learn/quick-collect-azurevm.md).  
+K dokončení příkladu v tomto kurzu potřebujete existující virtuální počítač [připojený k pracovnímu prostoru služby Log Analytics](../../azure-monitor/learn/quick-collect-azurevm.md).  
  
 ## <a name="log-in-to-azure-portal"></a>Přihlášení k webu Azure Portal
 Přihlaste se k webu Azure Portal na adrese [https://portal.azure.com](https://portal.azure.com). 

@@ -45,7 +45,7 @@ Počítače můžete připojit několika způsoby – můžete připojit řešen
 
 1. V nabídce vlevo vyberte **Účty Automation** a pak v seznamu vyberte svůj účet Automation.
 1. V části **SPRÁVA KONFIGURACE** vyberte **Inventory**.
-1. Vyberte stávající pracovní prostor Log Analytics nebo vytvořte nový. Klikněte na tlačítko **Povolit**.
+1. Vyberte stávající pracovní prostor služby Log Analytics nebo vytvořte nový. Klikněte na tlačítko **Povolit**.
 
 ![Začlenění řešení Update Management](media/automation-onboard-solutions/inventory-onboard.png)
 
@@ -56,7 +56,7 @@ Po oznámení dokončení začlenění řešení Change Tracking a Inventory kli
 Řešení Update Management umožňuje spravovat aktualizace a opravy pro virtuální počítače Azure s Windows. Můžete vyhodnotit stav dostupných aktualizací, naplánovat instalaci požadovaných aktualizací a zkontrolovat výsledky nasazení za účelem ověření správného použití aktualizací ve virtuálních počítačích. V tomto kroku povolíte řešení pro svůj virtuální počítač.
 
 1. Ve svém účtu Automation v části **SPRÁVA AKTUALIZACÍ** vyberte **Update Management**.
-1. Vybraný pracovní prostor Log Analytics je stejný jako pracovní prostor použitý v předchozím kroku. Kliknutím na **Povolit** začleňte řešení Update Management.
+1. Vybraný pracovní prostor služby Log Analytics je stejný jako pracovní prostor použitý v předchozím kroku. Kliknutím na **Povolit** začleňte řešení Update Management.
 
 ![Začlenění řešení Update Management](media/automation-onboard-solutions/update-onboard.png)
 

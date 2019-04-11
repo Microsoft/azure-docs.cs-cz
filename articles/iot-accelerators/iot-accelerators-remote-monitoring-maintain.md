@@ -1,6 +1,6 @@
 ---
-title: Kurz používání upozornění a opravy problémů se zařízeními v řešení vzdáleného monitorování – Azure | Microsoft Docs
-description: V tomto kurzu se dozvíte, jak pomocí upozornění na použití identifikovat a opravovat problémy se zařízeními připojenými k akcelerátoru řešení vzdáleného monitorování.
+title: Kurz používání upozornění a opravy problémů se zařízeními v řešení pro vzdálené monitorování – Azure | Microsoft Docs
+description: V tomto kurzu se dozvíte, jak pomocí upozornění na použití identifikovat a opravovat problémy se zařízeními připojenými k akcelerátoru řešení pro vzdálené monitorování.
 author: dominicbetts
 manager: timlt
 ms.author: dobett
@@ -18,7 +18,7 @@ ms.locfileid: "54451711"
 ---
 # <a name="tutorial-troubleshoot-and-fix-device-issues"></a>Kurz: Řešení a oprava problémů se zařízeními
 
-V tomto kurzu použijete akcelerátor řešení vzdáleného monitorování k identifikaci a opravě problémů s připojenými zařízeními IoT. Problémy identifikujete pomocí upozornění na řídicím panelu akcelerátoru řešení a pak tyto problémy opravíte spuštěním vzdálených úloh.
+V tomto kurzu použijete akcelerátor řešení pro vzdálené monitorování k identifikaci a opravě problémů s připojenými zařízeními IoT. Problémy identifikujete pomocí upozornění na řídicím panelu akcelerátoru řešení a pak tyto problémy opravíte spuštěním vzdálených úloh.
 
 Společnost Contoso testuje nový **prototyp** zařízení v terénu. Jako operátor společnosti Contoso si během testování všimnete, že **prototyp** zařízení na řídicím panelu neočekávaně aktivuje upozornění na teplotu. Teď musíte vyšetřit chování tohoto vadného **prototypu** zařízení a odstranit problém.
 
@@ -86,4 +86,4 @@ Snížení teploty zařízení můžete zkontrolovat tak, že zobrazíte telemet
 
 V tomto kurzu jste se dozvěděli, jak pomocí upozornění identifikovat problémy se zařízeními a jak na těchto zařízeních pracovat za účelem vyřešení problémů. Zjistěte, jak na akcelerátor řešení připojit skutečné zařízení, pokračujte články s postupy.
 
-Právě jste se naučili spravovat problémy se zařízeními. Jako další krok navrhujeme zjistit, jak [připojit zařízení k akcelerátoru řešení vzdáleného monitorování](iot-accelerators-connecting-devices.md).
+Právě jste se naučili spravovat problémy se zařízeními. Jako další krok navrhujeme zjistit, jak [připojit zařízení k akcelerátoru řešení pro vzdálené monitorování](iot-accelerators-connecting-devices.md).

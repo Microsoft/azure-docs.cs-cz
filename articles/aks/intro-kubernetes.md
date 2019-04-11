@@ -39,7 +39,7 @@ Informace, jak zabezpečit váš cluster AKS, najdete v tématu [Integrace Azure
 
 ### <a name="integrated-logging-and-monitoring"></a>Integrované protokolování a monitorování
 
-Abyste pochopili, jak pracuje váš cluster AKS a nasazené aplikace, Azure Monitor bude sledovat stav kontejneru a shromažďovat metriky paměti a procesoru z kontejnerů, uzlů a kontrolerů. Protokoly kontejneru jsou k dispozici a můžete také [zkontrolovat hlavní protokoly Kubernetes][aks-master-logs]. Tato data ze sledování se ukládají do pracovního prostoru Azure Log Analytics a jsou dostupná prostřednictvím webu Azure Portal, Azure CLI nebo koncového bodu REST.
+Abyste pochopili, jak pracuje váš cluster AKS a nasazené aplikace, Azure Monitor bude sledovat stav kontejneru a shromažďovat metriky paměti a procesoru z kontejnerů, uzlů a kontrolerů. Protokoly kontejneru jsou k dispozici a můžete také [zkontrolovat hlavní protokoly Kubernetes][aks-master-logs]. Tato data ze sledování se ukládají do pracovního prostoru služby Azure Log Analytics a jsou dostupná prostřednictvím webu Azure Portal, Azure CLI nebo koncového bodu REST.
 
 Další informace najdete v tématu [Monitorování stavu kontejneru služby Azure Kubernetes Service][container-health].
 

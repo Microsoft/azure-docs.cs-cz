@@ -197,7 +197,7 @@ Ve výše uvedeném příkladu regexDelimiter byla definována jako "\\n" pro no
 ## <a name="configuring-log-analytics-to-send-azure-diagnostics"></a>Konfigurace Log Analytics k odesílání Azure diagnostics
 Prostředky pro monitorování bez agentů prostředků Azure, musí mít diagnostiky Azure povolené a nakonfigurované pro zápis do pracovního prostoru Log Analytics. Tento přístup odesílá data přímo do pracovního prostoru a nevyžaduje, aby data k zápisu do účtu úložiště. Podporované prostředky zahrnují:
 
-| Typ prostředku | Logs | Metriky |
+| Typ prostředku | Protokoly | Metriky |
 | --- | --- | --- |
 | Brány Application Gateway    | Ano | Ano |
 | Účty Automation     | Ano | |

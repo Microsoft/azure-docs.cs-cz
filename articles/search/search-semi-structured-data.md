@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 04/08/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 8436bb1fc84d5a944b35cd7b2c9667d2148c0af3
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
-ms.translationtype: MT
+ms.openlocfilehash: 4df64595f83bd7280fa781f27f3030eda3729911
+ms.sourcegitcommit: 6e32f493eb32f93f71d425497752e84763070fad
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59270454"
+ms.lasthandoff: 04/10/2019
+ms.locfileid: "59471456"
 ---
 # <a name="tutorial-index-and-search-semi-structured-data-json-blobs-in-azure-search"></a>Kurz: Index a prohledávání částečně strukturovaných dat (objektů BLOB JSON) ve službě Azure Search
 
@@ -37,7 +37,7 @@ Následující služby, nástroje a data se používají v tomto rychlém startu
 
 [Vytvoření služby Azure Search](search-create-service-portal.md) nebo [najít existující službu](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) pod vaším aktuálním předplatným. Můžete použít bezplatnou službu pro účely tohoto kurzu. 
 
-[Vytvoření účtu služby Azure storage](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account)a potom [vytvořte kontejner objektů Blob](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal) obsahuje ukázková data. Protože budete používat klíč a úložiště název účtu pro připojení, ujistěte se, že úroveň veřejného přístupu kontejneru je nastavena na "Kontejner (anonymní přístup pro čtení pro kontejner)".
+[Vytvoření účtu služby Azure storage](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account) slouží k ukládání ukázková data.
 
 [Desktopová aplikace postman](https://www.getpostman.com/) slouží k odesílání žádostí do služby Azure Search.
 
@@ -57,13 +57,19 @@ Všechny požadavky vyžaduje klíč rozhraní api na každou požadavku odeslan
 
 ## <a name="prepare-sample-data"></a>Příprava ukázkových dat
 
-1. Vyhledání ukázkových dat, který jste stáhli do vašeho systému.
+1. [Přihlaste se k webu Azure portal](https://portal.azure.com), přejděte do svého účtu úložiště Azure, klikněte na tlačítko **objekty BLOB**a potom klikněte na tlačítko **+ kontejner**.
 
-1. [Přihlaste se k webu Azure portal](https://portal.azure.com), přejděte do účtu služby Azure storage a kontejner objektů Blob a klikněte na tlačítko **nahrát**.
+1. [Vytvořte kontejner objektů Blob](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal) obsahuje ukázková data. Protože budete používat klíč a úložiště název účtu pro připojení, ujistěte se, že úroveň veřejného přístupu kontejneru je nastavena na "Kontejner (anonymní přístup pro čtení pro kontejner)".
 
-1. Klikněte na **Upřesnit**, zadejte clinical-trials-json a pak nahrajte všechny soubory JSON, které jste stáhli.
+   ![Nastavte úroveň veřejného přístupu](media/search-semi-structured-data/container-public-access-level.png "nastavte úroveň veřejného přístupu")
 
-  ![Prohledávání částečně strukturovaných dat](media/search-semi-structured-data/clinicalupload.png)
+1. Po vytvoření kontejneru ho otevřete a vyberte **nahrát** na panelu příkazů.
+
+   ![Nahrát na panelu příkazů](media/search-semi-structured-data/upload-command-bar.png "nahrát na panelu příkazů")
+
+1. Přejděte do složky obsahující ukázkové soubory. Vyberte všechny z nich a pak klikněte na tlačítko **nahrát**.
+
+   ![Nahrání souborů](media/search-semi-structured-data/clinicalupload.png "nahrání souborů")
 
 Po dokončení nahrávání by se soubory měly zobrazit v samostatné podsložce uvnitř kontejneru dat.
 
@@ -83,20 +89,22 @@ Ve svém klientovi REST proveďte následující tři volání rozhraní API.
 
 ## <a name="create-a-data-source"></a>Vytvoření zdroje dat
 
-Zdroj dat je objekt, který určuje, jaká data do indexu Azure Search.
+[Rozhraní API vytvořit zdroj dat](https://docs.microsoft.com/rest/api/searchservice/create-data-source)vytvoří objekt, který určuje, jaká data do indexu Azure Search.
 
-Koncový bod tohoto volání je `https://[service name].search.windows.net/datasources?api-version=2016-09-01-Preview`. Nahraďte `[service name]` názvem vaší služby Search. Pro toto volání potřebujete název a klíč vašeho účtu úložiště. Klíč účtu úložiště najdete na webu Azure Portal v části **Přístupové klíče** vašeho účtu úložiště. Umístění je znázorněné na následujícím obrázku:
+Koncový bod tohoto volání je `https://[service name].search.windows.net/datasources?api-version=2016-09-01-Preview`. Nahraďte `[service name]` názvem vaší služby Search. 
+
+Pro toto volání text požadavku musí obsahovat název vašeho účtu úložiště, klíč účtu úložiště a název kontejneru objektů blob. Klíč účtu úložiště najdete na webu Azure Portal v části **Přístupové klíče** vašeho účtu úložiště. Umístění je znázorněné na následujícím obrázku:
 
   ![Prohledávání částečně strukturovaných dat](media/search-semi-structured-data/storagekeys.png)
 
-Než provedete volání, nezapomeňte nahradit `[storage account name]` a `[storage account key]` v jeho textu.
+Nezapomeňte nahradit `[storage account name]`, `[storage account key]`, a `[blob container name]` v těle než provedete volání.
 
 ```json
 {
     "name" : "clinical-trials-json",
     "type" : "azureblob",
     "credentials" : { "connectionString" : "DefaultEndpointsProtocol=https;AccountName=[storage account name];AccountKey=[storage account key];" },
-    "container" : { "name" : "data", "query" : "clinical-trials-json" }
+    "container" : { "name" : "[blob container name]"}
 }
 ```
 
@@ -114,8 +122,8 @@ Odpověď by měla vypadat nějak takto:
         "connectionString": "DefaultEndpointsProtocol=https;AccountName=[mystorageaccounthere];AccountKey=[[myaccountkeyhere]]];"
     },
     "container": {
-        "name": "data",
-        "query": "clinical-trials-json"
+        "name": "[mycontainernamehere]",
+        "query": null
     },
     "dataChangeDetectionPolicy": null,
     "dataDeletionDetectionPolicy": null
@@ -124,7 +132,7 @@ Odpověď by měla vypadat nějak takto:
 
 ## <a name="create-an-index"></a>Vytvoření indexu
     
-Druhé volání rozhraní API vytvoří index Azure Search. Index určuje všechny parametry a jejich atributy.
+Druhé volání je [vytvořit Index API](https://docs.microsoft.com/rest/api/searchservice/create-data-source), vytvoření indexu Azure Search, která ukládá veškerá prohledávatelná data. Index určuje všechny parametry a jejich atributy.
 
 Adresa URL pro toto volání je `https://[service name].search.windows.net/indexes?api-version=2016-09-01-Preview`. Nahraďte `[service name]` názvem vaší služby Search.
 
@@ -214,7 +222,7 @@ Odpověď by měla vypadat nějak takto:
 
 ## <a name="create-and-run-an-indexer"></a>Vytvoření a spuštění indexeru
 
-Indexer propojuje zdroj dat, naimportuje data do cílovým indexem vyhledávání a volitelně poskytuje plán pro automatizaci aktualizace dat.
+Indexer propojuje zdroj dat, naimportuje data do cílovým indexem vyhledávání a volitelně poskytuje plán pro automatizaci aktualizace dat. Rozhraní REST API je [vytvoření indexeru](https://docs.microsoft.com/rest/api/searchservice/create-indexer).
 
 Adresa URL pro toto volání je `https://[service name].search.windows.net/indexers?api-version=2016-09-01-Preview`. Nahraďte `[service name]` názvem vaší služby Search.
 
@@ -257,7 +265,11 @@ Odpověď by měla vypadat nějak takto:
 
 ## <a name="search-your-json-files"></a>Prohledávání souborů JSON
 
-Nyní můžete zadávat dotazy na index. Pro tento úkol použijte [ **Průzkumníka služby Search** ](search-explorer.md) na portálu.
+Můžete spustit vyhledávání ihned poté, co je první dokument načten. Pro tento úkol použijte [ **Průzkumníka služby Search** ](search-explorer.md) na portálu.
+
+Na webu Azure portal otevřete službu search **přehled** stránce, index, kterou jste vytvořili v nalezen **indexy** seznamu.
+
+Nezapomeňte vybrat index, který jste právě vytvořili. Verze rozhraní API může být ve verzi preview nebo obecně dostupnou verzi. Jediným požadavkem ve verzi preview se pro indexování pole JSON.
 
   ![Prohledávání nestrukturovaných dat](media/search-semi-structured-data/indexespane.png)
 
@@ -283,7 +295,7 @@ Nejrychlejším způsobem, jak po kurzu všechno uklidit, je odstranit skupinu p
 
 ## <a name="next-steps"></a>Další postup
 
-Algoritmy využívající AI je možné připojit ke kanálu indexování. Jako další krok pokračujte následujícím kurzem.
+Algoritmy AI s využitím Cognitive Services můžete připojit ke kanálu indexeru. Jako další krok pokračujte následujícím kurzem.
 
 > [!div class="nextstepaction"]
-> [Indexování dokumentů ve službě Azure Blob Storage](search-howto-indexing-azure-blob-storage.md)
+> [Indexování s využitím AI](cognitive-search-tutorial-blob.md)

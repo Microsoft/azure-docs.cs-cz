@@ -11,7 +11,7 @@ ms.topic: article
 ms.date: 10/01/2018
 ms.openlocfilehash: 91d1369b9197f6ef941d981aa9cf7539b4554d0c
 ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 01/07/2019
 ms.locfileid: "54065796"
@@ -406,7 +406,7 @@ Tato chyba může zobrazit, pokud se pokusíte nainstalovat bránu na řadiči d
 
 <a name="logs"></a>
 
-### <a name="logs"></a>Logs
+### <a name="logs"></a>Protokoly
 
 Pomocný při řešení problémů, vždy začněte díky shromažďování a kontroly protokolů brány. Existuje několik způsobů pro shromažďování protokolů, ale je nejjednodušší možnost po instalaci brány pomocí uživatelského rozhraní Instalační program brány. 
 

@@ -86,7 +86,7 @@ Po přidání brány nasazení upozornění ve službě Application Insights, p�
 
 Chcete-li sledovat toto chování, vyberte **verze** > verze klikněte pravým tlačítkem na název **otevřete** > **protokoly.**
 
-![Logs](media/continuous-monitoring/006.png)
+![Protokoly](media/continuous-monitoring/006.png)
 
 ## <a name="next-steps"></a>Další postup
 

@@ -78,7 +78,7 @@ Jako zabezpečené úložiště v Azure Key Vault používá k zjednodušení sc
 -  [s funkcí always encrypted]( https://docs.microsoft.com/sql/relational-databases/security/encryption/always-encrypted-database-engine) funkce v systému SQL server a Azure SQL Database
 - [Azure App Service]( https://docs.microsoft.com/azure/app-service/web-sites-purchase-ssl-web-site). 
 
-Samotná služba Key Vault se může integrovat s účty úložiště, centry událostí a Log Analytics.
+Samotná služba Key Vault se může integrovat s účty úložiště, centry událostí a analytikou protokolů.
 
 ## <a name="next-steps"></a>Další postup
 

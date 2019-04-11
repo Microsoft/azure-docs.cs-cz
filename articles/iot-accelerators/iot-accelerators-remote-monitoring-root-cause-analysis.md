@@ -17,9 +17,9 @@ ms.locfileid: "52284555"
 ---
 # <a name="tutorial-conduct-a-root-cause-analysis-on-an-alert"></a>Kurz: Analýza hlavní příčiny pro upozornění
 
-V tomto kurzu se dozvíte, jak používat akcelerátor řešení vzdáleného monitorování k diagnostice hlavní příčiny upozornění. Uvidíte, že se upozornění aktivovalo na řídicím panelu řešení vzdáleného monitorování, a potom použijete průzkumníka služby Azure Time Series Insights a prozkoumáte hlavní příčinu.
+V tomto kurzu se dozvíte, jak používat akcelerátor řešení pro vzdálené monitorování k diagnostice hlavní příčiny upozornění. Uvidíte, že se upozornění aktivovalo na řídicím panelu řešení pro vzdálené monitorování, a potom použijete průzkumníka služby Azure Time Series Insights a prozkoumáte hlavní příčinu.
 
-Tento kurz používá dvě simulovaná zařízení nákladního vozu, která odesílají polohu, zeměpisnou výšku, rychlost a telemetrická data o teplotě nákladu. Tyto nákladní vozy spravuje organizace Contoso a jsou připojené k akcelerátoru řešení vzdáleného monitorování. Jako operátor organizace Contoso musíte pochopit, proč jeden z vašich nákladních vozů (delivery-truck-02) zaprotokoloval upozornění na nízkou teplotu.
+Tento kurz používá dvě simulovaná zařízení nákladního vozu, která odesílají polohu, zeměpisnou výšku, rychlost a telemetrická data o teplotě nákladu. Tyto nákladní vozy spravuje organizace Contoso a jsou připojené k akcelerátoru řešení pro vzdálené monitorování. Jako operátor organizace Contoso musíte pochopit, proč jeden z vašich nákladních vozů (delivery-truck-02) zaprotokoloval upozornění na nízkou teplotu.
 
 V tomto kurzu se naučíte:
 
@@ -98,7 +98,7 @@ Pokud se chcete dozvědět, jak vytvářet a upravovat pravidla, podívejte se n
 
 ## <a name="next-steps"></a>Další postup
 
-V tomto kurzu jste se dozvěděli, jak používat průzkumníka služby Time Series Insights s akcelerátorem řešení vzdáleného monitorování k diagnostice hlavní příčiny upozornění. Informace o tom, jak pomocí akcelerátoru řešení identifikovat a opravit problémy s připojenými zařízeními, najdete v dalším kurzu.
+V tomto kurzu jste se dozvěděli, jak používat průzkumníka služby Time Series Insights s akcelerátorem řešení pro vzdálené monitorování k diagnostice hlavní příčiny upozornění. Informace o tom, jak pomocí akcelerátoru řešení identifikovat a opravit problémy s připojenými zařízeními, najdete v dalším kurzu.
 
 > [!div class="nextstepaction"]
 > [Použití upozornění zařízení k identifikaci a opravě problémů se zařízeními připojenými k řešení monitorování](iot-accelerators-remote-monitoring-maintain.md)

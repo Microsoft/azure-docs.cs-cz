@@ -85,7 +85,7 @@ Existují [omezení](../azure-subscription-service-limits.md?toc=%2fazure%2fnetw
 
 Tyto informace jsou užitečné při plánování budoucích nasazení prostředků.
 
-## <a name="logs"></a>Logs
+## <a name="logs"></a>Protokoly
 
 ### <a name="analyze-traffic-to-or-from-a-network-security-group"></a>Analýza provozu do nebo ze skupiny zabezpečení sítě
 

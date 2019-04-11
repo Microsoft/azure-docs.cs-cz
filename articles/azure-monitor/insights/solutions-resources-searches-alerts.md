@@ -15,7 +15,7 @@ ms.author: bwren
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: f8590c9ef89e68a823beefd7e74a894edd219359
 ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 03/12/2019
 ms.locfileid: "57779381"
@@ -37,7 +37,7 @@ ms.locfileid: "57779381"
 Tento článek předpokládá, že jste již obeznámeni s postupy [vytvořte řešení pro správu](solutions-creating.md) a strukturu [šablony Resource Manageru](../../azure-resource-manager/resource-group-authoring-templates.md) a soubor řešení.
 
 
-## <a name="log-analytics-workspace"></a>Pracovní prostor Log Analytics
+## <a name="log-analytics-workspace"></a>Pracovní prostor služby Log Analytics
 Všechny prostředky ve službě Log Analytics jsou obsaženy v [pracovní prostor](../../azure-monitor/platform/manage-access.md). Jak je popsáno v [pracovní prostor Log Analytics a účet Automation](solutions.md#log-analytics-workspace-and-automation-account), pracovní prostor není zahrnutý v řešení pro správu, ale musí existovat před instalací řešení. Pokud není k dispozici, řešení instalace se nezdaří.
 
 Název pracovního prostoru je název každého prostředku Log Analytics. To se provádí v řešení se **pracovní prostor** parametr jako v následujícím příkladu elementu SavedSearch prostředku.

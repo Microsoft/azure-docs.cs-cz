@@ -21,13 +21,13 @@ ms.locfileid: "58540750"
 ---
 # <a name="collect-azure-activity-logs-into-a-log-analytics-workspace-across-subscriptions-in-different-azure-active-directory-tenants"></a>Shromažďování protokolů aktivit Azure do pracovního prostoru Log Analytics napříč předplatnými v různých tenantů Azure Active Directory
 
-Tento článek prochází metodu shromažďování protokolů aktivit Azure do pracovního prostoru Log Analytics ve službě Azure Monitor pomocí konektoru kolekce dat Azure Log Analytics pro Logic Apps. V tomto článku pomocí procesu, když potřebujete odesílat protokoly do pracovního prostoru v jiném tenantovi Azure Active Directory. Například pokud jste poskytovatel spravované služby, můžete chtít shromažďovat protokoly aktivit z předplatného zákazníka a ukládat je do pracovního prostoru Log Analytics ve vlastním předplatném.
+Tento článek prochází metodu shromažďování protokolů aktivit Azure do pracovního prostoru Log Analytics ve službě Azure Monitor pomocí konektoru kolekce dat Azure Log Analytics pro Logic Apps. V tomto článku pomocí procesu, když potřebujete odesílat protokoly do pracovního prostoru v jiném tenantovi Azure Active Directory. Například pokud jste poskytovatel spravované služby, můžete chtít shromažďovat protokoly aktivit z předplatného zákazníka a ukládat je do pracovního prostoru služby Log Analytics ve vlastním předplatném.
 
-Pokud je pracovní prostor Log Analytics ve stejném předplatném Azure nebo v jiném předplatném, ale ve stejné službě Azure Active Directory, použijte ke shromažďování protokolů aktivit Azure postup uvedený v tématu [Řešení protokolu aktivit Azure](collect-activity-logs.md).
+Pokud je pracovní prostor služby Log Analytics ve stejném předplatném Azure nebo v jiném předplatném, ale ve stejné službě Azure Active Directory, použijte ke shromažďování protokolů aktivit Azure postup uvedený v tématu [Řešení protokolu aktivit Azure](collect-activity-logs.md).
 
 ## <a name="overview"></a>Přehled
 
-Strategie použitá v tomto scénáři spočívá v odesílání událostí protokolu aktivit Azure do [centra událostí](../../event-hubs/event-hubs-about.md), ze kterého je [aplikace logiky](../../logic-apps/logic-apps-overview.md) odesílá do vašeho prostoru Log Analytics. 
+Strategie použitá v tomto scénáři spočívá v odesílání událostí protokolu aktivit Azure do [centra událostí](../../event-hubs/event-hubs-about.md), ze kterého je [aplikace logiky](../../logic-apps/logic-apps-overview.md) odesílá do vašeho pracovního prostoru služby Log Analytics. 
 
 ![Obrázek toku dat od protokolů aktivit do pracovního prostoru Log Analytics](media/collect-activity-logs-subscriptions/data-flow-overview.png)
 
@@ -45,7 +45,7 @@ Následují požadavky na prostředky Azure použité v tomto scénáři.
 
 - Obor názvů centra událostí nemusí být ve stejném předplatném, jako je předplatné, které vysílá protokoly. Uživatel, který konfiguruje nastavení, musí mít odpovídající přístupová oprávnění k oběma předplatným. Pokud ve stejné službě Azure Active Directory máte více předplatných, můžete odesílat protokoly aktivit ze všech předplatných do jednoho centra událostí.
 - Aplikace logiky může být v jiném předplatném než centrum událostí a nemusí být ve stejné službě Azure Active Directory. Aplikace logiky ke čtení z centra událostí používá sdílený přístupový klíč centra událostí.
-- Pracovní prostor Log Analytics může být v jiném předplatném a službě Azure Active Directory než aplikace logiky, ale pro zjednodušení doporučujeme použít pro ně stejné předplatné. Aplikace logiky odešle do pracovního prostoru pomocí ID pracovního prostoru Log Analytics a klíče.
+- Pracovní prostor služby Log Analytics může být v jiném předplatném a službě Azure Active Directory než aplikace logiky, ale pro zjednodušení doporučujeme použít pro ně stejné předplatné. Aplikace logiky odešle do pracovního prostoru pomocí ID pracovního prostoru Log Analytics a klíče.
 
 
 
@@ -110,7 +110,7 @@ Aplikace logiky se skládá z následujících částí:
 Před vytvořením aplikace logiky se ujistěte, že z předchozích kroků máte následující informace:
 - Název centra událostí
 - Připojovací řetězec centra událostí (primární nebo sekundární) pro obor příslušný názvů centra událostí
-- ID pracovního prostoru Log Analytics
+- ID pracovního prostoru služby Log Analytics
 - Sdílený klíč Log Analytics
 
 Pokud chcete získat název a připojovací řetězec centra událostí, postupujte podle kroků v části [Kontrola oprávnění oboru názvů služby Event Hubs a vyhledání připojovacího řetězce](../../connectors/connectors-create-api-azure-event-hubs.md#permissions-connection-string).
@@ -291,11 +291,11 @@ Akce [Vytvořit](../../logic-apps/logic-apps-workflow-actions-triggers.md#compos
 1. Klikněte na **Nový krok** > **Přidat akci**.
 2. Jako filtr zadejte *log analytics* a pak vyberte akci **Kolekce dat Azure Log Analytics – Odeslat data**.
 
-   ![Přidání akce Odeslat data do Log Analytics ve službě Logic Apps](media/collect-activity-logs-subscriptions/logic-apps-send-data-to-log-analytics-connector.png)
+   ![Přidání akce Odeslat data do analytiky protokolů ve službě Logic Apps](media/collect-activity-logs-subscriptions/logic-apps-send-data-to-log-analytics-connector.png)
 
-3. Zadejte název připojení a vložte **ID pracovního prostoru** a **Klíč pracovního prostoru** pro váš pracovní prostor Log Analytics.  Klikněte na možnost **Vytvořit**.
+3. Zadejte název připojení a vložte **ID pracovního prostoru** a **Klíč pracovního prostoru** pro váš pracovní prostor služby Log Analytics.  Klikněte na možnost **Vytvořit**.
 
-   ![Přidání připojení k Log Analytics ve službě Logic Apps](media/collect-activity-logs-subscriptions/logic-apps-log-analytics-add-connection.png)
+   ![Přidání připojení k analytice protokolů ve službě Logic Apps](media/collect-activity-logs-subscriptions/logic-apps-log-analytics-add-connection.png)
 
 4. Po vytvoření připojení upravte nastavení podle následující tabulky. 
 
@@ -322,7 +322,7 @@ V Návrháři pro Logic Apps klikněte na **Spustit** a otestujte aplikaci logik
 Pokud chcete zobrazit podrobné informace o jednotlivých krocích, kliknutím na název krok rozbalte. Kliknutím na **Zobrazit nezpracované vstupy** a **Zobrazit nezpracované výstupy** zobrazíte další informace o přijímaných a odesílaných datech v každém kroku.
 
 ## <a name="step-5---view-azure-activity-log-in-log-analytics"></a>Krok 5 – Zobrazení protokolu aktivit Azure v Log Analytics
-Posledním krokem je kontrola pracovního prostoru Log Analytics a ověření, že se data shromažďují podle očekávání.
+Posledním krokem je kontrola pracovního prostoru služby Log Analytics a ověření, že se data shromažďují podle očekávání.
 
 1. Na webu Azure Portal klikněte v levém horním rohu na **Všechny služby**. V seznamu prostředků zadejte **Log Analytics**. Seznam se průběžně filtruje podle zadávaného textu. Vyberte **Log Analytics**.
 2. V seznamu pracovních prostorů Log Analytics vyberte svůj pracovní prostor.

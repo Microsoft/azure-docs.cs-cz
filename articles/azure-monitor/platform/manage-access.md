@@ -58,7 +58,7 @@ Z využití pohledu doporučujeme, abyste že nejdříve vytvoříte jako někol
 
 Při používání agentů Windows ke shromažďování dat můžete [každého agenta konfigurovat tak, aby ukládal data do jednoho nebo více pracovních prostorů](../../azure-monitor/platform/agent-windows.md).
 
-Pokud používáte System Center Operations Manager, můžete připojit každou skupinu nástroje Operations Manager jen do jednoho pracovního prostoru. Můžete nainstalovat Microsoft Monitoring Agent do počítačů spravovaných nástrojem Operations Manager a nastavit agenta tak, aby odesílal data do nástroje Operations Manager i do jiného pracovního prostoru Log Analytics.
+Pokud používáte System Center Operations Manager, můžete připojit každou skupinu nástroje Operations Manager jen do jednoho pracovního prostoru. Můžete nainstalovat Microsoft Monitoring Agent do počítačů spravovaných nástrojem Operations Manager a nastavit agenta tak, aby odesílal data do nástroje Operations Manager i do jiného pracovního prostoru služby Log Analytics.
 
 Po definování architektury pracovního prostoru by měl vynutit tyto zásady pro prostředky Azure s [Azure Policy](../../governance/policy/overview.md). Získáte tak integrované definice, která automaticky platit pro všechny prostředky Azure. Můžete například nastavit zásadu, která Ujistěte se, že všechny prostředky Azure v konkrétní oblasti odesílat jejich diagnostické protokoly pro konkrétní pracovní prostor.
 
@@ -201,7 +201,7 @@ Následující aktivity také vyžadují oprávnění Azure:
 
 
 #### <a name="manage-access-to-log-analytics-workspace-using-azure-permissions"></a>Správa přístupu k pracovním prostoru Log Analytics pomocí oprávnění Azure 
-Pokud chcete udělit přístup k Log Analytics pomocí oprávnění Azure, postupujte podle kroků v tématu [Použití přiřazení rolí ke správě přístupu k prostředkům předplatného Azure](../../role-based-access-control/role-assignments-portal.md).
+Pokud chcete udělit přístup k pracovnímu prostoru služby Log Analytics pomocí oprávnění Azure, postupujte podle kroků v tématu [Použití přiřazení rolí ke správě přístupu k prostředkům předplatného Azure](../../role-based-access-control/role-assignments-portal.md).
 
 Azure má dvě předdefinované role uživatele pro pracovní prostory Log Analytics:
 - Čtenář Log Analytics

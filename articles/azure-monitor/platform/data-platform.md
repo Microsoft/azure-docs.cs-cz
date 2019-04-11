@@ -42,7 +42,7 @@ Metriky jsou k dispozici pro interaktivní analýzu na webu Azure Portal s [Prů
 
 Další informace o monitorování metrik Azure, včetně jejich zdroje dat v [metriky ve službě Azure Monitor](data-platform-metrics.md).
 
-### <a name="logs"></a>Logs
+### <a name="logs"></a>Protokoly
 [Protokoly](data-platform-logs.md) jsou události, ke kterým došlo v rámci systému. Jsou může obsahovat různé druhy dat a může být strukturovaná nebo volnotextové formuláře s časovým razítkem. Je možné se vytvořil nedojde a generovat položky protokolu událostí v prostředí systému v případě velkého zatížení obvykle vygeneruje další svazek protokolu.
 
 Protokoly ve službě Azure Monitor se ukládají v pracovním prostoru Log Analytics, která je založena na [Průzkumník dat Azure](/azure/data-explorer/) poskytující modulu výkonné analýzy a [Bohatý dotazovací jazyk](/azure/kusto/query/). Protokoly obvykle poskytnout dostatek informací, které poskytují úplný kontext se zjištěného problému a jsou užitečné pro určení kořenové případ problémy.
@@ -67,7 +67,7 @@ Další informace o distribuované trasování na [co je distribuované trasová
 
 Následující tabulka porovnává metrik a protokolů ve službě Azure Monitor.
 
-| Atribut  | Metriky | Logs |
+| Atribut  | Metriky | Protokoly |
 |:---|:---|:---|
 | Výhody | Odlehčená a podporuje téměř v reálném čase scénářů, jako je třeba výstrahy. Ideální pro rychlé zjišťování chyb. | Analýza s bohatou dotazovací jazyk. Ideální pro hloubkovou analýzu a identifikovat hlavní příčinu. |
 | Data | Pouze číselné hodnoty | Textová nebo číselná data |

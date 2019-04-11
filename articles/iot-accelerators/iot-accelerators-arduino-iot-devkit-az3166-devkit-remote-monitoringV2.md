@@ -111,7 +111,7 @@ Chcete-li změnit barvu jednoho DevKit LED, použijte **LedColor** metody:
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Pokud se budete chtít přesunout ke kurzům, ponechte akcelerátor řešení vzdáleného monitorování nasazený.
+Pokud se budete chtít přesunout ke kurzům, ponechte akcelerátor řešení pro vzdálené monitorování nasazený.
 
 Pokud už nepotřebujete akcelerátor řešení, odstraníte ji ze stránky řešení zajištěno, že ji vyberete a potom kliknutím na Odstranit řešení:
 

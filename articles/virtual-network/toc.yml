@@ -222,7 +222,7 @@ items:
     - name: Skupiny zabezpečení sítě
       href: manage-network-security-group.md
       items:
-      - name: Logs
+      - name: Protokoly
         href: virtual-network-nsg-manage-log.md
     - name: Směrovací tabulky
       href: manage-route-table.md

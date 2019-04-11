@@ -1,6 +1,6 @@
 ---
 title: Monitorujte svoje zařízení IoT z řešení Azure kurz – Azure | Dokumentace Microsoftu
-description: V tomto kurzu se dozvíte, jak monitorovat zařízení IoT pomocí akcelerátoru řešení vzdáleného monitorování.
+description: V tomto kurzu se dozvíte, jak monitorovat zařízení IoT pomocí akcelerátoru řešení pro vzdálené monitorování.
 author: dominicbetts
 manager: timlt
 ms.author: dobett
@@ -18,9 +18,9 @@ ms.locfileid: "58173817"
 ---
 # <a name="tutorial-monitor-your-iot-devices"></a>Kurz: Monitorujte svoje zařízení IoT
 
-V tomto kurzu použijete akcelerátor řešení vzdáleného monitorování k monitorování připojených zařízení IoT. Pomocí řídicího panelu řešení zobrazíte telemetrii, informace o zařízení, upozornění a klíčové ukazatele výkonu.
+V tomto kurzu použijete akcelerátor řešení pro vzdálené monitorování k monitorování připojených zařízení IoT. Pomocí řídicího panelu řešení zobrazíte telemetrii, informace o zařízení, upozornění a klíčové ukazatele výkonu.
 
-Tento kurz používá dvě simulovaná zařízení nákladního vozu, která odesílají polohu, rychlost a telemetrická data o teplotě nákladu. Tyto nákladní vozy spravuje organizace Contoso a jsou připojené k akcelerátoru řešení vzdáleného monitorování. Jako operátor společnosti Contoso potřebujete monitorovat polohu a chování jednoho z vašich nákladních vozů (truck-02) v terénu.
+Tento kurz používá dvě simulovaná zařízení nákladního vozu, která odesílají polohu, rychlost a telemetrická data o teplotě nákladu. Tyto nákladní vozy spravuje organizace Contoso a jsou připojené k akcelerátoru řešení pro vzdálené monitorování. Jako operátor společnosti Contoso potřebujete monitorovat polohu a chování jednoho z vašich nákladních vozů (truck-02) v terénu.
 
 V tomto kurzu se naučíte:
 
@@ -97,7 +97,7 @@ Způsob agregace klíčových ukazatelů výkonu určují stejné filtry, které
 
 ## <a name="next-steps"></a>Další postup
 
-V tomto kurzu jste se dozvěděli, jak pomocí stránky **Řídicí panel** v akcelerátoru řešení vzdáleného monitorování filtrovat a monitorovat simulované nákladní vozy. Informace o tom, jak pomocí akcelerátoru řešení detekovat problémy s připojenými zařízeními, najdete v dalším kurzu.
+V tomto kurzu jste se dozvěděli, jak pomocí stránky **Řídicí panel** v akcelerátoru řešení pro vzdálené monitorování filtrovat a monitorovat simulované nákladní vozy. Informace o tom, jak pomocí akcelerátoru řešení detekovat problémy s připojenými zařízeními, najdete v dalším kurzu.
 
 > [!div class="nextstepaction"]
 > [Detekce problémů se zařízeními připojenými k řešení monitorování](iot-accelerators-remote-monitoring-automate.md)

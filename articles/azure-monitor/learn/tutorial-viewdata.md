@@ -28,7 +28,7 @@ V Log Analytics můžete využít prohledávání protokolů vytvářením dotaz
 > * Jednoduché hledání dat událostí a použití funkcí k úpravě a filtrování výsledků 
 > * Práce s daty výkonu
 
-K dokončení příkladu v tomto kurzu potřebujete existující virtuální počítač [připojený k pracovnímu prostoru Log Analytics](../../azure-monitor/learn/quick-collect-azurevm.md).  
+K dokončení příkladu v tomto kurzu potřebujete existující virtuální počítač [připojený k pracovnímu prostoru služby Log Analytics](../../azure-monitor/learn/quick-collect-azurevm.md).  
 
 Vytvářet a upravovat dotazy a také interaktivně pracovat s vrácenými daty můžete jedním ze dvou způsobů.  Pro základní dotazy použijte stránku Prohledávání protokolů na webu Azure Portal. Pro pokročilé dotazování můžete použít portál pro pokročilou analýzu. Další informace o rozdílech mezi funkcemi na těchto dvou portálech najdete v tématu [Portály pro vytváření a úpravy dotazů na protokoly v Azure Log Analytics](../../azure-monitor/log-query/portals.md).
 
@@ -112,7 +112,7 @@ Výsledky můžete seskupit podle konkrétního sloupce přetažením záhlaví 
 
 
 ## <a name="work-with-performance-data"></a>Práce s daty výkonu
-Data výkonu agentů Windows i Linuxu se ukládají v pracovním prostoru Log Analytics v tabulce **Perf**.  Záznamy o výkonu vypadají stejně jako jakékoli jiné záznamy. Napíšeme jednoduchý dotaz, který stejně jako v případě událostí vrátí všechny záznamy o výkonu.
+Data výkonu agentů Windows i Linuxu se ukládají v pracovním prostoru služby Log Analytics v tabulce **Perf**.  Záznamy o výkonu vypadají stejně jako jakékoli jiné záznamy. Napíšeme jednoduchý dotaz, který stejně jako v případě událostí vrátí všechny záznamy o výkonu.
 
 ```
 Perf

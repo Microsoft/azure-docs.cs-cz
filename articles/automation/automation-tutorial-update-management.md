@@ -50,7 +50,7 @@ Pro účely tohoto kurzu nejprve na svém virtuálním počítači povolte řeš
 1. Na webu Azure Portal v levé nabídce vyberte **Virtuální počítače**. V seznamu vyberte virtuální počítač.
 2. Na stránce virtuálního počítače v části **OPERACE** vyberte **Správa aktualizací**. Otevře se podokno **Povolit řešení Update Management**.
 
-Provede se ověření, pomocí kterého se určí, jestli je pro tento virtuální počítač povolené řešení Update Management. Toto ověření zahrnuje kontroly pracovního prostoru Azure Log Analytics a propojeného účtu Automation a kontrolu, jestli se řešení Update Management nachází v tomto pracovním prostoru.
+Provede se ověření, pomocí kterého se určí, jestli je pro tento virtuální počítač povolené řešení Update Management. Toto ověření zahrnuje kontroly pracovního prostoru služby Azure Log Analytics a propojeného účtu Automation a kontrolu, jestli se řešení Update Management nachází v tomto pracovním prostoru.
 
 Pracovní prostor [Log Analytics](../log-analytics/log-analytics-overview.md?toc=%2fazure%2fautomation%2ftoc.json) slouží ke shromažďování dat generovaných funkcemi a službami, jako je řešení Update Management. Tento pracovní prostor poskytuje možnost kontroly a analýzy dat z několika zdrojů na jednom místě.
 
@@ -62,7 +62,7 @@ Pokud během připojování chyběla některá z následujících požadovaných
 * [Účet Automation](./automation-offering-get-started.md)
 * Funkce [Hybrid Runbook Worker](./automation-hybrid-runbook-worker.md) (povolená na virtuálním počítači)
 
-V části **Update Management** nastavte umístění, pracovní prostor Log Analytics a účet Automation, které se mají použít. Pak vyberte **Povolit**. Pokud tyto možnosti nejsou dostupné, znamená to, že pro virtuální počítač je povolené jiné řešení automatizace. V takovém případě se musí použít stejný pracovní prostor a účet Automation.
+V části **Update Management** nastavte umístění, pracovní prostor služby Log Analytics a účet Automation, které se mají použít. Pak vyberte **Povolit**. Pokud tyto možnosti nejsou dostupné, znamená to, že pro virtuální počítač je povolené jiné řešení automatizace. V takovém případě se musí použít stejný pracovní prostor a účet Automation.
 
 ![Okno Povolit řešení Update Management](./media/automation-tutorial-update-management/manageupdates-update-enable.png)
 

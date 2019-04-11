@@ -30,7 +30,7 @@ V tomto kurzu se naučíte:
 
 > [!div class="checklist"]
 > * Konfigurace protokolů Azure Monitor pro váš cluster Service Fabric
-> * Použití pracovního prostoru Log Analytics k zobrazení a dotazování protokolů z kontejnerů a uzlů
+> * Použití pracovního prostoru služby Log Analytics k zobrazení a dotazování protokolů z kontejnerů a uzlů
 > * Konfigurace agenta Log Analytics ke sbírání metrik kontejnerů a uzlů
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
@@ -53,7 +53,7 @@ V případě, že jste použili [šablonu poskytnutou](https://github.com/Azure-
 
 Proveďte následující změny v souboru *template.json*.
 
-1. Do části *parameters* (parametry) přidejte umístění a název pracovního prostoru Log Analytics:
+1. Do části *parameters* (parametry) přidejte umístění a název pracovního prostoru služby Log Analytics:
 
     ```json
     "omsWorkspacename": {
@@ -106,7 +106,7 @@ Proveďte následující změny v souboru *template.json*.
     },
     ```
 
-4. Přidejte pracovní prostor Log Analytics jako samostatný prostředek. V části *resources* (prostředky) za prostředek škálovacích sad virtuálních počítačů přidejte následující:
+4. Přidejte pracovní prostor služby Log Analytics jako samostatný prostředek. V části *resources* (prostředky) za prostředek škálovacích sad virtuálních počítačů přidejte následující:
 
     ```json
     {
@@ -186,11 +186,11 @@ Proveďte následující změny v souboru *template.json*.
     },
     ```
 
-[Tady](https://github.com/ChackDan/Service-Fabric/blob/master/ARM%20Templates/Tutorial/azuredeploy.json) je ukázková šablona (použitá v první části tohoto kurzu) obsahující všechny tyto změny, kterou podle potřeby můžete použít jako vodítko. Těmito změnami se přidá pracovní prostor Log Analytics do vaší skupiny prostředků. Pracovní prostor se nakonfiguruje tak, aby sbíral události platformy Service Fabric z tabulek úložiště nakonfigurovaných pomocí agenta [Azure Diagnostics pro Windows](service-fabric-diagnostics-event-aggregation-wad.md). Do každého uzlu v clusteru se také přidal agent Log Analytics (Microsoft Monitoring Agent) jako rozšíření virtuálního počítače – to znamená, že při škálování clusteru se agent automaticky nakonfiguruje na každém počítači a připojí se ke stejnému pracovnímu prostoru.
+[Tady](https://github.com/ChackDan/Service-Fabric/blob/master/ARM%20Templates/Tutorial/azuredeploy.json) je ukázková šablona (použitá v první části tohoto kurzu) obsahující všechny tyto změny, kterou podle potřeby můžete použít jako vodítko. Těmito změnami se přidá pracovní prostor služby Log Analytics do vaší skupiny prostředků. Pracovní prostor se nakonfiguruje tak, aby sbíral události platformy Service Fabric z tabulek úložiště nakonfigurovaných pomocí agenta [Azure Diagnostics pro Windows](service-fabric-diagnostics-event-aggregation-wad.md). Do každého uzlu v clusteru se také přidal agent Log Analytics (Microsoft Monitoring Agent) jako rozšíření virtuálního počítače – to znamená, že při škálování clusteru se agent automaticky nakonfiguruje na každém počítači a připojí se ke stejnému pracovnímu prostoru.
 
 Nasazením šablony s provedenými změnami upgradujte svůj aktuální cluster. Po dokončení měly zobrazit prostředky log analytics ve vaší skupině prostředků. Až bude cluster připravený, nasaďte do něj svou kontejnerizovanou aplikaci. V dalším kroku nastavíme monitorování kontejnerů.
 
-## <a name="add-the-container-monitoring-solution-to-your-log-analytics-workspace"></a>Přidání řešení pro monitorování kontejnerů do pracovního prostoru Log Analytics
+## <a name="add-the-container-monitoring-solution-to-your-log-analytics-workspace"></a>Přidání řešení pro monitorování kontejnerů do pracovního prostoru služby Log Analytics
 
 Pokud chcete ve svém pracovním prostoru nastavit řešení kontejnerů, vyhledejte *řešení pro monitorování kontejnerů* a vytvořte prostředek kontejnerů (v kategorii Monitorování a správa).
 
@@ -220,7 +220,7 @@ Kliknutím na jakýkoli z těchto panelů přejdete na dotaz Kusto, který gener
 
 Další výhodou používání agenta Log Analytics je možnost změnit čítače výkonu chcete vyzvednutí díky službě log analytics uživatelské rozhraní, spíše než by bylo nutné konfigurovat agenta diagnostiky Azure a Resource Manageru provádět upgrade na základě šablony pokaždé, když. Provedete to tak, že kliknete na **Pracovní prostor OMS** na cílové stránce vašeho řešení pro monitorování kontejnerů (nebo Service Fabric).
 
-Tím přejdete do svého pracovního prostoru Log Analytics, kde můžete zobrazit svá řešení, vytvářet vlastní řídicí panely a také konfigurovat agenta Log Analytics. 
+Tím přejdete do svého pracovního prostoru služby Log Analytics, kde můžete zobrazit svá řešení, vytvářet vlastní řídicí panely a také konfigurovat agenta Log Analytics. 
 * Klikněte na **Upřesnit nastavení** a otevřete tak nabídku Upřesnit nastavení.
 * Klikněte na **Připojené zdroje** > **Servery Windows** a ověřte, že máte *připojených 5 počítačů s Windows*.
 * Klikněte na **Data** > **Čítače výkonu Windows**, abyste mohli vyhledat a přidat nové čítače výkonu. Tady se zobrazí seznam doporučení z protokolů Azure Monitor pro čítače výkonu že můžete shromažďovat, a také možnost vyhledat jiné čítače. Ověřte, že se shromažďují informace z čítačů **Procesor(_Celkem)\%Čas procesoru** a **Paměť(*)\Dostupné MB**.
@@ -237,7 +237,7 @@ V tomto kurzu jste se naučili:
 
 > [!div class="checklist"]
 > * Konfigurace protokolů Azure Monitor pro váš cluster Service Fabric
-> * Použití pracovního prostoru Log Analytics k zobrazení a dotazování protokolů z kontejnerů a uzlů
+> * Použití pracovního prostoru služby Log Analytics k zobrazení a dotazování protokolů z kontejnerů a uzlů
 > * Konfigurace agenta Log Analytics ke sbírání metrik kontejnerů a uzlů
 
 Teď, když jste nastavili monitorování své kontejnerizované aplikace, vyzkoušejte následující:

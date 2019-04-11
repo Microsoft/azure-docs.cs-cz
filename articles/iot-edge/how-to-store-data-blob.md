@@ -345,7 +345,7 @@ Tady je příklad požadované vlastnosti pro tento modul: ![nastavte požadovan
     }
 
    ```
-## <a name="logs"></a>Logs
+## <a name="logs"></a>Protokoly
 
 Postupujte podle pokynů [konfigurovat protokoly dockeru pro moduly IoT Edge](production-checklist.md#set-up-logs-and-diagnostics)
 

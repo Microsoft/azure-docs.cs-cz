@@ -25,7 +25,7 @@ ms.locfileid: "57536421"
 ---
 # <a name="create-an-azure-monitor-vm-with-powershell"></a>Vytvoření Azure Monitor virtuálního počítače pomocí Powershellu
 
-Tento skript vytvoří virtuální počítač Azure, nainstaluje agenta Log Analytics a zaregistruje systém v pracovním prostoru Log Analytics. Po spuštění skriptu bude virtuální počítač viditelný v konzole.
+Tento skript vytvoří virtuální počítač Azure, nainstaluje agenta Log Analytics a zaregistruje systém v pracovním prostoru služby Log Analytics. Po spuštění skriptu bude virtuální počítač viditelný v konzole.
 
 [!INCLUDE [sample-powershell-install](../../../includes/sample-powershell-install.md)]
 
@@ -61,7 +61,7 @@ Tento skript pomocí následujících příkazů vytvoří nasazení. Každá po
 | [New-AzNetworkInterface](https://docs.microsoft.com/powershell/module/az.network/new-aznetworkinterface) | Vytvoří síťové rozhraní. |
 | [New-AzVMConfig](https://docs.microsoft.com/powershell/module/az.compute/new-azvmconfig) | Vytvoří konfiguraci virtuálního počítače. Tato konfigurace zahrnuje informace, jako je název virtuálního počítače, operační systém a přihlašovací údaje pro správu. Tato konfigurace se použije při vytváření virtuálního počítače. |
 | [New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) | Vytvoří virtuální počítač. |
-| [Set-AzVMExtension](https://docs.microsoft.com/powershell/module/az.compute/set-azvmextension) | Přidá do virtuálního počítače rozšíření virtuálního počítače. V tomto případě se k instalaci agenta Log Analytics a registraci virtuálního počítače v pracovním prostoru Log Analytics používá rozšíření agenta Log Analytics. |
+| [Set-AzVMExtension](https://docs.microsoft.com/powershell/module/az.compute/set-azvmextension) | Přidá do virtuálního počítače rozšíření virtuálního počítače. V tomto případě se k instalaci agenta Log Analytics a registraci virtuálního počítače v pracovním prostoru služby Log Analytics používá rozšíření agenta Log Analytics. |
 |[Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) | Odebere skupinu prostředků a všechny prostředky, které obsahuje. |
 
 ## <a name="next-steps"></a>Další postup

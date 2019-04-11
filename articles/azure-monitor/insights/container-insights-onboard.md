@@ -34,7 +34,7 @@ Azure Monitor pro kontejnery může být povoleno na nový, nebo nepodporuje jed
 ## <a name="prerequisites"></a>Požadavky 
 Než začnete, ujistěte se, že máte následující:
 
-- **Pracovní prostor Log Analytics.** Můžete jej vytvořit při povolení monitorování nový cluster AKS, nebo nechte prostředí registrace vytvoření výchozího pracovního prostoru do výchozí skupiny prostředků předplatného clusteru AKS. Pokud jste se rozhodli vytvořit sami, můžete vytvořit pomocí [Azure Resource Manageru](../../azure-monitor/platform/template-workspace-configuration.md), pomocí [PowerShell](../scripts/powershell-sample-create-workspace.md?toc=%2fpowershell%2fmodule%2ftoc.json), nebo [webu Azure portal](../../azure-monitor/learn/quick-create-workspace.md).
+- **Pracovní prostor služby Log Analytics.** Můžete jej vytvořit při povolení monitorování nový cluster AKS, nebo nechte prostředí registrace vytvoření výchozího pracovního prostoru do výchozí skupiny prostředků předplatného clusteru AKS. Pokud jste se rozhodli vytvořit sami, můžete vytvořit pomocí [Azure Resource Manageru](../../azure-monitor/platform/template-workspace-configuration.md), pomocí [PowerShell](../scripts/powershell-sample-create-workspace.md?toc=%2fpowershell%2fmodule%2ftoc.json), nebo [webu Azure portal](../../azure-monitor/learn/quick-create-workspace.md).
 - Jste členem **role Přispěvatel Log Analytics** povolit monitorování kontejnerů. Další informace o tom, jak řídit přístup k pracovnímu prostoru Log Analytics najdete v tématu [Správa pracovních prostorů](../../azure-monitor/platform/manage-access.md).
 - Jste členem **[vlastníka](https://docs.microsoft.com/en-us/azure/role-based-access-control/built-in-role.mds#owner)** role v prostředku clusteru AKS. 
 

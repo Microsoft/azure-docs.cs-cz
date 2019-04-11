@@ -169,7 +169,7 @@ Povolení řešení Update Management pro virtuální počítač:
 3. Na obrazovce virtuálního počítače v části **Operace** vyberte **Správa aktualizací**. Otevře se obrazovka **Povolit řešení Update Management**.
 
 Provede se ověření, pomocí kterého se určí, jestli je pro tento virtuální počítač povolené řešení Update Management.
-Toto ověření zahrnuje kontroly pracovního prostoru Log Analytics a propojeného účtu Automation a kontrolu, jestli se řešení nachází v tomto pracovním prostoru.
+Toto ověření zahrnuje kontroly pracovního prostoru služby Log Analytics a propojeného účtu Automation a kontrolu, jestli se řešení nachází v tomto pracovním prostoru.
 
 Pracovní prostor [Log Analytics](../../log-analytics/log-analytics-overview.md) slouží ke shromažďování dat generovaných funkcemi a službami, jako je řešení Update Management.
 Tento pracovní prostor poskytuje možnost kontroly a analýzy dat z několika zdrojů na jednom místě.

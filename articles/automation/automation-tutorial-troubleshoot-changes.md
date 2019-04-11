@@ -53,7 +53,7 @@ Pro účely tohoto kurzu je nejprve potřeba povolit pro váš virtuální poč�
 1. V nabídce vlevo vyberte **Virtuální počítače** a ze seznamu vyberte virtuální počítač.
 1. V nabídce vlevo v části **OPERACE** klikněte na **Inventory**. Otevře se stránka řešení **Change Tracking**.
 
-![Povolení změny](./media/automation-tutorial-troubleshoot-changes/enableinventory.png) Otevře se obrazovka řešení **Change Tracking**. Nakonfigurujte umístění, pracovní prostor Log Analytics a účet Automation, které se mají použít, a klikněte na **Povolit**. Pokud se pole zobrazují šedě, znamená to, že pro daný virtuální počítač je povolené jiné řešení automatizace a musí se použít stejný pracovní prostor a účet Automation.
+![Povolení změny](./media/automation-tutorial-troubleshoot-changes/enableinventory.png) Otevře se obrazovka řešení **Change Tracking**. Nakonfigurujte umístění, pracovní prostor služby Log Analytics a účet Automation, které se mají použít, a klikněte na **Povolit**. Pokud se pole zobrazují šedě, znamená to, že pro daný virtuální počítač je povolené jiné řešení automatizace a musí se použít stejný pracovní prostor a účet Automation.
 
 Pracovní prostor [Log Analytics](../log-analytics/log-analytics-overview.md?toc=%2fazure%2fautomation%2ftoc.json) slouží ke shromažďování dat generovaných funkcemi a službami, jako je řešení Inventory.
 Tento pracovní prostor poskytuje možnost kontroly a analýzy dat z několika zdrojů na jednom místě.
@@ -179,7 +179,7 @@ Zobrazení změn na webu Azure Portal může být užitečné, ale užitečněj�
 
 Pokud chcete přidat upozornění na zastavení služby, přejděte na webu Azure Portal do části **Monitorování**. Pak v části **Sdílené služby** vyberte **Upozornění** a klikněte na **+ Nové pravidlo upozornění**.
 
-Klikněte na tlačítko **vyberte** k výběru prostředku. Na **vyberte prostředek** stránce **Log Analytics** z **filtrovat podle typu prostředku** rozevíracího seznamu. Vyberte váš pracovní prostor Log Analytics a pak vyberte **Hotovo**.
+Klikněte na tlačítko **vyberte** k výběru prostředku. Na **vyberte prostředek** stránce **Log Analytics** z **filtrovat podle typu prostředku** rozevíracího seznamu. Vyberte váš pracovní prostor služby Log Analytics a pak vyberte **Hotovo**.
 
 ![Výběr prostředku](./media/automation-tutorial-troubleshoot-changes/select-a-resource.png)
 

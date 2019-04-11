@@ -30,7 +30,7 @@ V tomto kurzu se naučíte:
 > * Vytvoření pravidla upozornění
 > * Konfigurace skupiny akcí na posílání e-mailového oznámení
 
-K dokončení příkladu v tomto kurzu potřebujete existující virtuální počítač [připojený k pracovnímu prostoru Log Analytics](../../azure-monitor/learn/quick-collect-azurevm.md).  
+K dokončení příkladu v tomto kurzu potřebujete existující virtuální počítač [připojený k pracovnímu prostoru služby Log Analytics](../../azure-monitor/learn/quick-collect-azurevm.md).  
 
 ## <a name="sign-in-to-azure-portal"></a>Přihlášení k webu Azure Portal
 Přihlaste se k webu Azure Portal na adrese [https://portal.azure.com](https://portal.azure.com). 
@@ -42,7 +42,7 @@ V následujícím příkladu vytvoříte pravidlo upozornění na naměřenou ho
 
 1. Na webu Azure Portal klikněte na **Všechny služby**. V seznamu prostředků zadejte **Log Analytics**. Seznam se průběžně filtruje podle zadávaného textu. Vyberte **Log Analytics**.
 2. V levém podokně vyberte **Upozornění** a potom nahoře na stránce klikněte na **Nové pravidlo upozornění** a vytvořte nové upozornění.<br><br> ![Vytvoření nového pravidla upozornění](./media/tutorial-response/alert-rule-02.png)<br>
-3. V prvním kroku vyberte v části **Vytvořit upozornění** jako zdroj pracovní prostor Log Analytics, protože jde o výstražný signál založený na protokolu.  Vyfiltrujte výsledky. Pokud máte více předplatných, vyberte v rozevíracím seznamu určité **předplatné**, které obsahuje dříve vytvořený virtuální počítač a pracovní prostor Log Analytics.  Vyfiltrujte **typ prostředku** tím, že v rozevíracím seznamu vyberete **Log Analytics**.  Nakonec vyberte v poli **Prostředek** položku **DefaultLAWorkspace** a pak klikněte na **Hotovo**.<br><br> ![Vytvoření upozornění – 1. krok](./media/tutorial-response/alert-rule-03.png)<br>
+3. V prvním kroku vyberte v části **Vytvořit upozornění** jako zdroj pracovní prostor služby Log Analytics, protože jde o výstražný signál založený na protokolu.  Vyfiltrujte výsledky. Pokud máte více předplatných, vyberte v rozevíracím seznamu určité **předplatné**, které obsahuje dříve vytvořený virtuální počítač a pracovní prostor služby Log Analytics.  Vyfiltrujte **typ prostředku** tím, že v rozevíracím seznamu vyberete **Log Analytics**.  Nakonec vyberte v poli **Prostředek** položku **DefaultLAWorkspace** a pak klikněte na **Hotovo**.<br><br> ![Vytvoření upozornění – 1. krok](./media/tutorial-response/alert-rule-03.png)<br>
 4. V části **Kritéria výstrah** klikněte na **Přidat kritéria**, vyberte uložený dotaz a zadejte logiku, která je pro pravidlo upozornění závazná.  V podokně **Konfigurovat logiku signálů** vyberte ze seznamu *Azure VMs - Processor Utilization* (Virtuální počítače Azure – využití procesoru).  Podokno se aktualizuje, aby zobrazovalo nastavení konfigurace upozornění.  Nahoře se zobrazují výsledky za posledních 30 minut vybraného signálu a také samotný vyhledávací dotaz.  
 5. Nakonfigurujte upozornění podle následujících informací:  
    a. V rozevíracím seznamu **Na základě** vyberte **Měření metriky**.  Měření metriky vytvoří pro každý objekt dotazu upozornění s hodnotou, která překračuje zadanou prahovou hodnotu.  

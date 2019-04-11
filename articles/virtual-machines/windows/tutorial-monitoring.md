@@ -133,7 +133,7 @@ Povolení řešení Update Management pro virtuální počítač:
 3. Na obrazovce virtuálního počítače v části **Operace** klikněte na **Update Management**. Otevře se obrazovka **Povolit řešení Update Management**.
 
 Provede se ověření, pomocí kterého se určí, jestli je pro tento virtuální počítač povolené řešení Update Management.
-Toto ověření zahrnuje kontroly pracovního prostoru Log Analytics a propojeného účtu Automation a kontrolu, jestli se řešení nachází v tomto pracovním prostoru.
+Toto ověření zahrnuje kontroly pracovního prostoru služby Log Analytics a propojeného účtu Automation a kontrolu, jestli se řešení nachází v tomto pracovním prostoru.
 
 Pracovní prostor [Log Analytics](../../log-analytics/log-analytics-overview.md) slouží ke shromažďování dat generovaných funkcemi a službami, jako je řešení Update Management.
 Tento pracovní prostor poskytuje možnost kontroly a analýzy dat z několika zdrojů na jednom místě.
@@ -263,7 +263,7 @@ Tento graf ukazuje změny, ke kterým došlo v průběhu času. Po přidání p�
 
 K pokročilejšímu monitorování virtuálního počítače můžete použít řešení, jako jsou Update Management, Change Tracking a Inventory, která poskytuje [Azure Automation](../../automation/automation-intro.md).
 
-Pokud máte přístup k pracovnímu prostoru Log Analytics, můžete výběrem možnosti **Upřesnit nastavení** v části **NASTAVENÍ** zjistit klíč a identifikátor pracovního prostoru. Použití [Set-AzVMExtension](https://docs.microsoft.com/powershell/module/az.compute/set-azvmextension) příkaz pro přidání rozšíření Microsoft Monitoring agent k virtuálnímu počítači. Aktualizujte hodnoty proměnných v níže uvedené ukázce pomocí svého klíče a ID pracovního prostoru Log Analytics.
+Pokud máte přístup k pracovnímu prostoru služby Log Analytics, můžete výběrem možnosti **Upřesnit nastavení** v části **NASTAVENÍ** zjistit klíč a identifikátor pracovního prostoru. Použití [Set-AzVMExtension](https://docs.microsoft.com/powershell/module/az.compute/set-azvmextension) příkaz pro přidání rozšíření Microsoft Monitoring agent k virtuálnímu počítači. Aktualizujte hodnoty proměnných v níže uvedené ukázce pomocí svého klíče a ID pracovního prostoru služby Log Analytics.
 
 ```powershell
 $workspaceId = "<Replace with your workspace Id>"
@@ -280,7 +280,7 @@ Set-AzVMExtension -ResourceGroupName "myResourceGroupMonitor" `
   -Location "East US"
 ```
 
-Po několika minutách by se nový počítač měl zobrazit v pracovním prostoru Log Analytics.
+Po několika minutách by se nový počítač měl zobrazit v pracovním prostoru služby Log Analytics.
 
 ![Okno pracovních prostorů log Analytics](./media/tutorial-monitoring/tutorial-monitor-oms.png)
 

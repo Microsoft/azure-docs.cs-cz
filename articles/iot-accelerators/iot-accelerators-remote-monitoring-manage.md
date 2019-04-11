@@ -18,7 +18,7 @@ ms.locfileid: "58183386"
 ---
 # <a name="tutorial-configure-devices-connected-to-your-monitoring-solution"></a>Kurz: Konfigurace zařízení připojených k řešení monitorování
 
-V tomto kurzu použijete akcelerátor řešení vzdáleného monitorování ke konfiguraci a správě připojených zařízení IoT. Přidat nové zařízení k akcelerátoru řešení a konfigurace zařízení.
+V tomto kurzu použijete akcelerátor řešení pro vzdálené monitorování ke konfiguraci a správě připojených zařízení IoT. Přidat nové zařízení k akcelerátoru řešení a konfigurace zařízení.
 
 Společnost Contoso si objednala nové stroje pro rozšíření jednoho ze svých závodů. Při čekání na doručení nových strojů budete chtít spustit simulaci a otestovat chování vašeho řešení. Při spuštění simulace, přidat nové zařízení simulovaného modul akcelerátor řešení vzdálené monitorování a test, který toto simulované zařízení správně reaguje na aktualizace konfigurace. Přestože tento kurz využívá telemetrická Simulovaná zařízení, vývojář zařízení můžete implementovat přímých metod na [skutečné zařízení připojeno k akcelerátoru řešení vzdáleného monitorování](iot-accelerators-connecting-devices.md).
 
@@ -123,7 +123,7 @@ Operátor společnosti Contoso teď může zadávat dotazy na zařízení na zá
 
 ## <a name="next-steps"></a>Další postup
 
-V tomto kurzu jste se dozvěděli, jak konfigurovat a spravovat zařízení připojená k akcelerátoru řešení vzdáleného monitorování. Pokud se chcete naučit, jak používat akcelerátor řešení k provádění analýz původních příčin neočekávaného upozornění, pokračujte k dalšímu kurzu.
+V tomto kurzu jste se dozvěděli, jak konfigurovat a spravovat zařízení připojená k akcelerátoru řešení pro vzdálené monitorování. Pokud se chcete naučit, jak používat akcelerátor řešení k provádění analýz původních příčin neočekávaného upozornění, pokračujte k dalšímu kurzu.
 
 > [!div class="nextstepaction"]
 > [Analýza původní příčiny pro upozornění](iot-accelerators-remote-monitoring-root-cause-analysis.md)

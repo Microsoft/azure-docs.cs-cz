@@ -15,7 +15,7 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 03/19/2019
 ms.locfileid: "58176132"
 ---
-# <a name="remote-monitoring-solution-accelerator-overview"></a>Přehled akcelerátorů řešení vzdáleného sledování
+# <a name="remote-monitoring-solution-accelerator-overview"></a>Přehled akcelerátorů řešení pro vzdálené monitorování
 
 Vzdálené monitorování [akcelerátor řešení](../iot-accelerators/about-iot-accelerators.md) implementuje řešení monitorování v začátku do konce pro více počítačů ve vzdálených umístěních. Řešení kombinuje klíčové služby Azure a poskytuje obecnou implementaci obchodního scénáře. Řešení můžete použít jako výchozí bod pro vlastní implementaci a [přizpůsobit](../iot-accelerators/iot-accelerators-remote-monitoring-customize.md) ho podle konkrétních podnikových požadavků.
 

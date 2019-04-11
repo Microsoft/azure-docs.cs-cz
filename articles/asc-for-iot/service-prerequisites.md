@@ -33,7 +33,7 @@ Tento článek obsahuje vysvětlení různých stavební kameny nástroje Azure 
 
 - Úroveň Standard centra IoT
     - RBAC role **vlastníka** úroveň oprávnění 
-- [Pracovní prostor Log Analytics](https://docs.microsoft.com/azure/azure-monitor/learn/quick-create-workspace) 
+- [Pracovní prostor služby Log Analytics](https://docs.microsoft.com/azure/azure-monitor/learn/quick-create-workspace) 
 - Azure Security Center (doporučeno)
     - Při použití služby Azure Security Center je jenom na doporučení a není povinné bez toho nebudete moci zobrazit ostatní prostředky Azure ve službě IoT Hub. 
  

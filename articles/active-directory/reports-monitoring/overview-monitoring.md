@@ -32,7 +32,7 @@ V současné době můžete směrovat protokoly do následujících umístění:
 
 - Účet úložiště Azure.
 - Centrum událostí Azure, takže můžete provést integraci s instancemi Splunk a SumoLogic.
-- Pracovní prostor Azure Log Analytics, kde můžete analyzovat data a vytvářet řídicí panely a upozornění na určité události.
+- Pracovní prostor služby Azure Log Analytics, kde můžete analyzovat data a vytvářet řídicí panely a upozornění na určité události.
 
 > [!VIDEO https://www.youtube.com/embed/syT-9KNfug8]
 

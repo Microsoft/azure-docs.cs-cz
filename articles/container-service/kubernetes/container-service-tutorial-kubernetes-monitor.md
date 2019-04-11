@@ -30,7 +30,7 @@ Můžete využít několik řešení pro monitorování Kubernetes od Microsoftu
 V tomto kurzu, který je sedmou částí sedmidílné série, se probírají následující úlohy:
 
 > [!div class="checklist"]
-> * Získání nastavení pracovního prostoru Log Analytics
+> * Získání nastavení pracovního prostoru služby Log Analytics
 > * Nastavení agentů Log Analytics na uzlech Kubernetes
 > * Přístup k informacím o monitorování na portálu Log Analytics nebo webu Azure Portal
 
@@ -46,7 +46,7 @@ Po získání přístupu k [portálu Log Analytics](https://mms.microsoft.com) p
 
 ## <a name="create-kubernetes-secret"></a>Vytvoření tajného klíče Kubernetes
 
-Pomocí příkazu [kubectl create secret][kubectl-create-secret]t uložte nastavení pracovního prostoru Log Analytics do tajného kódu Kubernetes s názvem `omsagent-secret`. Aktualizujte `WORKSPACE_ID` s použitím ID vašeho pracovního prostoru Log Analytics a `WORKSPACE_KEY` s použitím klíče pracovního prostoru.
+Pomocí příkazu [kubectl create secret][kubectl-create-secret]t uložte nastavení pracovního prostoru služby Log Analytics do tajného kódu Kubernetes s názvem `omsagent-secret`. Aktualizujte `WORKSPACE_ID` s použitím ID vašeho pracovního prostoru služby Log Analytics a `WORKSPACE_KEY` s použitím klíče pracovního prostoru.
 
 ```console
 kubectl create secret generic omsagent-secret --from-literal=WSID=WORKSPACE_ID --from-literal=KEY=WORKSPACE_KEY
@@ -163,7 +163,7 @@ Podrobné pokyny k dotazování a analýze dat monitorování najdete v [dokumen
 V tomto kurzu jste monitorovali svůj cluster Kubernetes pomocí služby Log Analytics. Mezi probírané úlohy patří:
 
 > [!div class="checklist"]
-> * Získání nastavení pracovního prostoru Log Analytics
+> * Získání nastavení pracovního prostoru služby Log Analytics
 > * Nastavení agentů Log Analytics na uzlech Kubernetes
 > * Přístup k informacím o monitorování na portálu Log Analytics nebo webu Azure Portal
 

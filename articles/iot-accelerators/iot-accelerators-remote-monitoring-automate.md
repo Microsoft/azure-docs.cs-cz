@@ -1,6 +1,6 @@
 ---
 title: Zjišťování problémů se zařízením ve vzdálené monitorování řešení kurz – Azure | Dokumentace Microsoftu
-description: V tomto kurzu se dozvíte, jak v řešení vzdáleného monitorování pomocí pravidel a akcí automaticky detekovat problémy se zařízeními na základě prahových hodnot.
+description: V tomto kurzu se dozvíte, jak v řešení pro vzdálené monitorování pomocí pravidel a akcí automaticky detekovat problémy se zařízeními na základě prahových hodnot.
 author: dominicbetts
 manager: timlt
 ms.author: dobett
@@ -18,9 +18,9 @@ ms.locfileid: "53598669"
 ---
 # <a name="tutorial-detect-issues-with-devices-connected-to-your-monitoring-solution"></a>Kurz: Rozpoznávání problémů se zařízeními připojenými k vaší řešení monitorování
 
-V tomto kurzu nakonfigurujete akcelerátor řešení vzdáleného monitorování tak, aby detekoval problémy s připojenými zařízeními IoT. Problémy se zařízeními můžete detekovat tak, že přidáte pravidla, která generují upozornění na řídicím panelu řešení.
+V tomto kurzu nakonfigurujete akcelerátor řešení pro vzdálené monitorování tak, aby detekoval problémy s připojenými zařízeními IoT. Problémy se zařízeními můžete detekovat tak, že přidáte pravidla, která generují upozornění na řídicím panelu řešení.
 
-V tomto kurzu se k představení pravidel a upozornění používá simulované zařízení chladiče. Tento chladič spravuje organizace Contoso a je připojený k akcelerátoru řešení vzdáleného monitorování. Společnost Contoso už má pravidlo, které generuje kritické upozornění, když tlak v chladiči překročí 298 PSI. Jako operátor ve společnosti Contoso chcete identifikovat chladící zařízení, která můžou mít problematické senzory. Za tímto účelem budete hledat počáteční prudká zvýšení tlaku. Taková zařízení identifikujete prostřednictvím přidání pravidla, které generuje varovné upozornění, když tlak v chladiči překročí 150 PSI.
+V tomto kurzu se k představení pravidel a upozornění používá simulované zařízení chladiče. Tento chladič spravuje organizace Contoso a je připojený k akcelerátoru řešení pro vzdálené monitorování. Společnost Contoso už má pravidlo, které generuje kritické upozornění, když tlak v chladiči překročí 298 PSI. Jako operátor ve společnosti Contoso chcete identifikovat chladící zařízení, která můžou mít problematické senzory. Za tímto účelem budete hledat počáteční prudká zvýšení tlaku. Taková zařízení identifikujete prostřednictvím přidání pravidla, které generuje varovné upozornění, když tlak v chladiči překročí 150 PSI.
 
 Také jste byli požádáni, abyste pro chladič vytvořili kritické upozornění v případě, že během posledních pěti minut byla průměrná vlhkost v zařízení vyšší než 80 % a teplota zařízení vyšší než 75 stupňů Fahrenheita.
 
@@ -134,7 +134,7 @@ Najednou můžete odstranit pouze jedno pravidlo.
 
 ## <a name="next-steps"></a>Další postup
 
-V tomto kurzu jste se dozvěděli, jak pomocí stránky **Pravidla** v akcelerátoru řešení vzdáleného monitorování vytvářet a spravovat pravidla, která v řešení aktivují upozornění. Informace o tom, jak pomocí akcelerátoru řešení spravovat a konfigurovat připojená zařízení, najdete v dalším kurzu.
+V tomto kurzu jste se dozvěděli, jak pomocí stránky **Pravidla** v akcelerátoru řešení pro vzdálené monitorování vytvářet a spravovat pravidla, která v řešení aktivují upozornění. Informace o tom, jak pomocí akcelerátoru řešení spravovat a konfigurovat připojená zařízení, najdete v dalším kurzu.
 
 > [!div class="nextstepaction"]
 > [Konfigurace a správa zařízení připojených k řešení monitorování](iot-accelerators-remote-monitoring-manage.md)

@@ -18,7 +18,7 @@ ms.date: 05/02/2018
 ms.author: robreed
 ms.openlocfilehash: 1448c72e87d51c0bb88c9ee521a7a3112060473b
 ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 03/26/2019
 ms.locfileid: "58483825"
@@ -200,7 +200,7 @@ Na portálu shromažďuje následující vstup:
 
 - **Automatický Upgrade podverze**: Toto pole se mapuje na **automatických aktualizací** přepnout v rutinách a povolí rozšíření automaticky aktualizovat na nejnovější verzi během instalace. **Ano** bude dáte pokyn, aby obslužná rutina rozšíření má použít na nejnovější dostupnou verzi a **ne** vynutí **verze** zadaný k instalaci. Výběr ani **Ano** ani **ne** je stejný jako výběr **ne**.
 
-## <a name="logs"></a>Logs
+## <a name="logs"></a>Protokoly
 
 Protokoly pro rozšíření se ukládají v následujícím umístění: `C:\WindowsAzure\Logs\Plugins\Microsoft.Powershell.DSC\<version number>`
 

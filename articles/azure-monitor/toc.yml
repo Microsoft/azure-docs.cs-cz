@@ -34,9 +34,9 @@ items:
   expanded: true
 - name: Kurzy
   items:
-  - name: Analýza dat v Log Analytics
+  - name: Analýza dat v analytice protokolů
     href: learn/tutorial-viewdata.md
-  - name: Vizualizace dat v Log Analytics
+  - name: Vizualizace dat v analytice protokolů
     href: learn/tutorial-logs-dashboards.md
   - name: Archivace metrik platformy a dat protokolů
     href: learn/tutorial-archive-data.md
@@ -70,7 +70,7 @@ items:
       href: platform/data-platform.md
     - name: Metriky
       href: platform/data-platform-metrics.md
-    - name: Logs
+    - name: Protokoly
       href: platform/data-platform-logs.md
   - name: Zdroje dat
     items:
@@ -686,7 +686,7 @@ items:
         href: platform/metrics-charts.md
       - name: Příklady grafů metrik
         href: platform/metric-chart-samples.md
-    - name: Logs
+    - name: Protokoly
       items:
       - name: Dotazy na protokoly
         href: log-query/log-query-overview.md
@@ -994,19 +994,19 @@ items:
     items:
     - name: Monitorování
       href: /powershell/module/az.applicationinsights
-    - name: Logs
+    - name: Protokoly
       href: /powershell/module/az.operationalinsights
   - name: REST API
     items:
     - name: Monitorování
       href: /rest/api/monitor/
-    - name: Logs
+    - name: Protokoly
       href: /rest/api/loganalytics
   - name: Šablona Resource Manageru
     items:
     - name: Monitorování
       href: /azure/templates/microsoft.insights/allversions
-    - name: Logs
+    - name: Protokoly
       href: /azure/templates/microsoft.operationalinsights/allversions
   - name: Metriky
     items:

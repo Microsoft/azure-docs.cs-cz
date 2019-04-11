@@ -25,7 +25,7 @@ ms.locfileid: "57541515"
 ---
 # <a name="create-an-azure-monitor-vm-with-powershell"></a>Vytvoření Azure Monitor virtuálního počítače pomocí Powershellu 
 
-Tento skript vytvoří virtuální počítač Azure, nainstaluje agenta Log Analytics a zaregistruje systém v pracovním prostoru Log Analytics. Po spuštění skriptu bude virtuální počítač viditelný ve službě Azure Monitor. Také je potřeba aktualizovat ID a klíč pracovního prostoru Log Analytics.
+Tento skript vytvoří virtuální počítač Azure, nainstaluje agenta Log Analytics a zaregistruje systém v pracovním prostoru služby Log Analytics. Po spuštění skriptu bude virtuální počítač viditelný ve službě Azure Monitor. Také je potřeba aktualizovat ID a klíč pracovního prostoru služby Log Analytics.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 

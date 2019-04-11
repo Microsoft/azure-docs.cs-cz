@@ -44,7 +44,7 @@ Protokol data shromážděná službou Azure Monitor můžete analyzovat pomocí
 
 Azure Monitor používá verzi [Kusto dotazovací jazyk](/azure/kusto/query/) používá Průzkumník dat Azure, který je vhodný pro jednoduchá protokolu dotazů, ale zahrnuje také pokročilé funkce, jako jsou agregace, spojení a inteligentní analýzy. Můžete rychle naučit jazyk dotazu pomocí [více lekce](log-query/get-started-queries.md).  Pro uživatele, kteří již znají [SQL](log-query/sql-cheatsheet.md) a [Splunk](log-query/splunk-cheatsheet.md), jsou k dispozici konkrétní pokyny.
 
-![Logs](media/overview/logs.png)
+![Protokoly](media/overview/logs.png)
 
 ## <a name="what-data-does-azure-monitor-collect"></a>Jaká data shromažďuje nástroj Azure Monitor?
 Azure Monitor může shromažďovat data z různých zdrojů. Můžete si představit sledování dat pro vaše aplikace na úrovních, od aplikace, libovolný operační systém a služeb, které spoléhá na, na platformě, jako takové. Azure Monitor provádí sběr dat ze všech následujících úrovních:

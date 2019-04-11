@@ -46,7 +46,7 @@ Přihlaste se k webu Azure Portal na adrese [https://portal.azure.com](https://p
   
 2. Klikněte na tlačítko **přidat**a podle potřeby změňte hodnoty následujících položek:
 
-   * Zadejte název nového **pracovního prostoru Log Analytics**, například *DefaultLAWorkspace*. 
+   * Zadejte název nového **pracovního prostoru služby Log Analytics**, například *DefaultLAWorkspace*. 
    * Vyberte **předplatné**, které má být cílem propojení, výběrem z rozevíracího seznamu, pokud výchozí vybrané předplatné není vhodné.
    * Pro **skupiny prostředků**, zvolte možnost používat existující prostředek již skupinu nastavení nebo vytvořte novou.  
    * Vyberte dostupný **umístění**.  Další informace najdete v tématu který [Log Analytics je dostupná v oblastech](https://azure.microsoft.com/regions/services/) a vyhledejte Azure monitoru a z **hledání produktu** pole.  
@@ -54,7 +54,7 @@ Přihlaste se k webu Azure Portal na adrese [https://portal.azure.com](https://p
 
         ![Vytvořit okno prostředku Log Analytics](media/quick-create-workspace/create-loganalytics-workspace-02.png)  
 
-3. Po zadání požadovaných informací v podokně **Pracovní prostor Log Analytics** klikněte na **OK**.  
+3. Po zadání požadovaných informací v podokně **Pracovní prostor služby Log Analytics** klikněte na **OK**.  
 
 Během ověřování informací a vytváření pracovního prostoru můžete průběh zpracování sledovat prostřednictvím položky nabídky **Oznámení**. 
 

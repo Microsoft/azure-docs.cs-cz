@@ -25,7 +25,7 @@ Sestavy a aktualizovat spravované servery Windows tak, že vytváří a předem
 ## <a name="prerequisites"></a>Požadavky
 
 * Musíte mít [řešení Update Management](automation-update-management.md) přidá do vašeho účtu Automation.
-* Servery Windows aktuálně spravované pomocí prostředí System Center Configuration Manageru také musí do pracovního prostoru Log Analytics nahlásit, že mají povolené řešení Update Management.
+* Servery Windows aktuálně spravované pomocí prostředí System Center Configuration Manageru také musí do pracovního prostoru služby Log Analytics nahlásit, že mají povolené řešení Update Management.
 * Tato funkce je povolená v nástroji System Center Configuration Manager aktuální verze 1606 a vyšší. Integrace nástroje Configuration Manager lokality centrální správy nebo samostatná primární lokalita s protokoly Azure monitoru a importovat kolekce, najdete v tématu [propojení Configuration Manageru do Azure monitoru protokoly](../azure-monitor/platform/collect-sccm.md).  
 * Pokud agenti Windows nedostávají aktualizace zabezpečení z Configuration Manageru, musí mít nakonfigurovanou komunikaci se serverem služeb Windows Server Update Services (WSUS) nebo musí mít přístup ke službě Microsoft Update.   
 

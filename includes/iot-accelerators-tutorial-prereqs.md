@@ -17,12 +17,12 @@ ms.locfileid: "39162321"
 ---
 ## <a name="prerequisites"></a>Požadavky
 
-Abyste mohli postupovat podle tohoto kurzu, musíte ve svém předplatném Azure mít nasazenou instanci akcelerátoru řešení vzdáleného monitorování.
+Abyste mohli postupovat podle tohoto kurzu, musíte ve svém předplatném Azure mít nasazenou instanci akcelerátoru řešení pro vzdálené monitorování.
 
-Pokud jste akcelerátor řešení vzdáleného monitorování ještě nenasadili, měli byste dokončit rychlý start [Nasazení cloudového řešení vzdáleného monitorování](../articles/iot-accelerators/quickstart-remote-monitoring-deploy.md).
+Pokud jste akcelerátor řešení pro vzdálené monitorování ještě nenasadili, měli byste dokončit rychlý start [Nasazení cloudového řešení pro vzdálené monitorování](../articles/iot-accelerators/quickstart-remote-monitoring-deploy.md).
 
 ## <a name="navigate-to-the-dashboard"></a>Přechod na řídicí panel
 
-K zobrazení řídicího panelu řešení vzdáleného monitorování v prohlížeči je potřeba nejdřív přejít na [Akcelerátory řešení Microsoft Azure IoT](https://www.azureiotsolutions.com/Accelerators#dashboard). Může se zobrazit výzva k přihlášení pomocí vašich přihlašovacích údajů k předplatnému Azure.
+K zobrazení řídicího panelu řešení pro vzdálené monitorování v prohlížeči je potřeba nejdřív přejít na [Akcelerátory řešení Microsoft Azure IoT](https://www.azureiotsolutions.com/Accelerators#dashboard). Může se zobrazit výzva k přihlášení pomocí vašich přihlašovacích údajů k předplatnému Azure.
 
-Potom na dlaždici akcelerátoru řešení vzdáleného monitorování, který jste nasadili v [rychlém startu](../articles/iot-accelerators/quickstart-remote-monitoring-deploy.md), klikněte na **Spustit**.
+Potom na dlaždici akcelerátoru řešení pro vzdálené monitorování, který jste nasadili v [rychlém startu](../articles/iot-accelerators/quickstart-remote-monitoring-deploy.md), klikněte na **Spustit**.

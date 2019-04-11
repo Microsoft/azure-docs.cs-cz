@@ -157,7 +157,7 @@ Pokud někdy budete chtít shromažďování dat vypnout, můžete to udělat v 
 
 Pracovní prostor je prostředek Azure, který slouží jako kontejner pro data. Vy nebo další členové vaší organizace můžete používat víc pracovních prostorů ke správě různých sad dat, která se shromažďují ze všech částí vaší infrastruktury IT.
 
-Data shromážděná z agenta Microsoft Monitoring Agent (jménem služby Azure Security Center) budou uložena v existujících pracovních prostorech Log Analytics přidružených k vašemu předplatnému Azure nebo v nových pracovních prostorech s ohledem na zeměpisné umístění virtuálního počítače.
+Data shromážděná z agenta Microsoft Monitoring Agent (jménem služby Azure Security Center) budou uložena v existujících pracovních prostorech služby Log Analytics přidružených k vašemu předplatnému Azure nebo v nových pracovních prostorech s ohledem na zeměpisné umístění virtuálního počítače.
 
 Na webu Azure Portal můžete procházením zobrazit seznam pracovních prostorů Log Analytics, včetně těch vytvořených službou Azure Security Center. Pro nové pracovní prostory se vytvoří související skupina prostředků. Budou se řídit těmito zásadami vytváření názvů:
 

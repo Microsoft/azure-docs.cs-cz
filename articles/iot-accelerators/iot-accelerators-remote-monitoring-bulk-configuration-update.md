@@ -41,9 +41,9 @@ If this is going to be a tutorial - we need to split this include into two so th
 
 ## <a name="prerequisites"></a>Požadavky
 
-Abyste mohli postupovat podle tohoto kurzu, musíte ve svém předplatném Azure mít nasazenou instanci akcelerátoru řešení vzdáleného monitorování.
+Abyste mohli postupovat podle tohoto kurzu, musíte ve svém předplatném Azure mít nasazenou instanci akcelerátoru řešení pro vzdálené monitorování.
 
-Pokud jste akcelerátor řešení vzdáleného monitorování ještě nenasadili, měli byste dokončit rychlý start [Nasazení cloudového řešení vzdáleného monitorování](quickstart-remote-monitoring-deploy.md).
+Pokud jste akcelerátor řešení pro vzdálené monitorování ještě nenasadili, měli byste dokončit rychlý start [Nasazení cloudového řešení pro vzdálené monitorování](quickstart-remote-monitoring-deploy.md).
 
 Budete potřebovat účet úložiště Azure k hostování souborů firmwaru. Můžete použít existující účet úložiště, nebo [vytvořit nový účet úložiště](../storage/common/storage-quickstart-create-account.md) ve vašem předplatném.
 
@@ -63,9 +63,9 @@ Také budete muset připojit alespoň jedno zařízení IoT DevKit akcelerátor 
 
 ## <a name="navigate-to-the-dashboard"></a>Přechod na řídicí panel
 
-K zobrazení řídicího panelu řešení vzdáleného monitorování v prohlížeči je potřeba nejdřív přejít na [Akcelerátory řešení Microsoft Azure IoT](https://www.azureiotsolutions.com/Accelerators#dashboard). Může se zobrazit výzva k přihlášení pomocí vašich přihlašovacích údajů k předplatnému Azure.
+K zobrazení řídicího panelu řešení pro vzdálené monitorování v prohlížeči je potřeba nejdřív přejít na [Akcelerátory řešení Microsoft Azure IoT](https://www.azureiotsolutions.com/Accelerators#dashboard). Může se zobrazit výzva k přihlášení pomocí vašich přihlašovacích údajů k předplatnému Azure.
 
-Potom na dlaždici akcelerátoru řešení vzdáleného monitorování, který jste nasadili v [rychlém startu](quickstart-remote-monitoring-deploy.md), klikněte na **Spustit**.
+Potom na dlaždici akcelerátoru řešení pro vzdálené monitorování, který jste nasadili v [rychlém startu](quickstart-remote-monitoring-deploy.md), klikněte na **Spustit**.
 
 ## <a name="create-a-device-group"></a>Vytvoření skupiny zařízení
 

@@ -58,7 +58,7 @@ Tyto možnosti jsou popsány v následující tabulce:
 | Možnost | Popis |
 |:--|:--|
 | Obnovení   | Aktualizuje zobrazení s nejnovější data. | 
-| Logs      | Otevře [Log Analytics](../log-query/portals.md) k analýze dat pomocí dotazů na protokoly. |
+| Protokoly      | Otevře [Log Analytics](../log-query/portals.md) k analýze dat pomocí dotazů na protokoly. |
 | Upravit       | Otevře se zobrazení v Návrháři zobrazení k úpravě jeho obsah a konfiguraci.  |
 | Klon      | Vytvoří nové zobrazení a otevře v zobrazení návrhu. Název nového zobrazení je stejný jako původní název, ale s *kopírování* připojí k němu. |
 | Rozsah dat | Nastavte filtr rozsahu data a času pro data, která je zahrnutá v zobrazení. Tento rozsah je použit před všechny rozsahy kalendářních dat nastavit v dotazech v zobrazení.  |

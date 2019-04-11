@@ -17,7 +17,7 @@ ms.locfileid: "56653593"
 ---
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Pokud se budete chtít přesunout k dalšímu kurzu, ponechte akcelerátor řešení vzdáleného monitorování nasazený. Pokud chcete snížit náklady na provoz akcelerátoru řešení, když ho nepoužíváte, na panelu nastavení můžete simulovaná zařízení zastavit:
+Pokud se budete chtít přesunout k dalšímu kurzu, ponechte akcelerátor řešení pro vzdálené monitorování nasazený. Pokud chcete snížit náklady na provoz akcelerátoru řešení, když ho nepoužíváte, na panelu nastavení můžete simulovaná zařízení zastavit:
 
 [![Pozastavení telemetrie](./media/iot-accelerators-tutorial-cleanup/togglesimulation-inline.png)](./media/iot-accelerators-tutorial-cleanup/togglesimulation-expanded.png#lightbox)
 

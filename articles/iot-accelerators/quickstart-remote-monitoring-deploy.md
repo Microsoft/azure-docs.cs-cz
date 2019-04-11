@@ -18,9 +18,9 @@ ms.locfileid: "58792497"
 ---
 # <a name="quickstart-try-a-cloud-based-remote-monitoring-solution"></a>Rychlý start: Zkuste cloudové řešení vzdáleného monitorování
 
-V tomto rychlém startu se dozvíte, jak nasadit akcelerátor řešení vzdáleného monitorování Azure IoT. V tomto cloudovém řešení použijete stránku **Řídicí panel** k vizualizaci simulovaných zařízení na mapě a stránku **Údržba** k reakci na upozornění na tlak ze simulovaného chladícího zařízení. Tento akcelerátor řešení můžete využít jako výchozí bod pro vlastní implementaci nebo jako učební nástroj.
+V tomto rychlém startu se dozvíte, jak nasadit akcelerátor řešení pro vzdálené monitorování Azure IoT. V tomto cloudovém řešení použijete stránku **Řídicí panel** k vizualizaci simulovaných zařízení na mapě a stránku **Údržba** k reakci na upozornění na tlak ze simulovaného chladícího zařízení. Tento akcelerátor řešení můžete využít jako výchozí bod pro vlastní implementaci nebo jako učební nástroj.
 
-V počátečním nasazení se akcelerátor řešení nakonfiguruje pro společnost Contoso. Jako operátor ve společnosti Contoso spravujete výběr různých typů zařízení, například chladiče, nasazených v různých fyzických prostředích. Chladící zařízení do akcelerátoru řešení vzdáleného monitorování odesílá telemetrická data o teplotě, vlhkosti a tlaku.
+V počátečním nasazení se akcelerátor řešení nakonfiguruje pro společnost Contoso. Jako operátor ve společnosti Contoso spravujete výběr různých typů zařízení, například chladiče, nasazených v různých fyzických prostředích. Chladící zařízení do akcelerátoru řešení pro vzdálené monitorování odesílá telemetrická data o teplotě, vlhkosti a tlaku.
 
 V tomto rychlém startu se nasadí **základní** verzi akcelerátor řešení pro testovací a demonstrační účely, který minimalizuje náklady. Další informace o různých verzí, můžete nasadit, najdete v části [základní a standardní nasazení](iot-accelerators-remote-monitoring-deploy-cli.md#basic-and-standard-deployments).
 
@@ -40,28 +40,28 @@ Klikněte na tlačítko **vzdálené monitorování** dlaždici. Na **vzdálené
 
 Zvolte  **C# Mikroslužeb** jako **možnosti nasazení**. Java a C# implementace přístup ke stejným funkcím.
 
-Zadejte jedinečný **Název řešení** pro váš akcelerátor řešení vzdáleného monitorování. Pro účely tohoto rychlého startu voláme náš **contoso-rm**.
+Zadejte jedinečný **Název řešení** pro váš akcelerátor řešení pro vzdálené monitorování. Pro účely tohoto rychlého startu voláme náš **contoso-rm**.
 
 Vyberte **Předplatné** a **Oblast**, které chcete při nasazování akcelerátoru řešení použít. Obvykle byste měli zvolit oblast, která je vám nejblíže. Pro účely tohoto rychlého startu používáme **USA – východ**.
 Můžete zvolit **Visual Studio Enterprise**, ale musí být [globální správci nebo uživateli](iot-accelerators-permissions.md) Uděláte to tak.
 
 Chcete-li zahájit nasazení, klikněte na tlačítko **vytvořit**. Dokončení tohoto procesu trvá minimálně pět minut:
 
-![Podrobnosti řešení vzdáleného monitorování](./media/quickstart-remote-monitoring-deploy/createform.png)
+![Podrobnosti řešení pro vzdálené monitorování](./media/quickstart-remote-monitoring-deploy/createform.png)
 
 ## <a name="sign-in-to-the-solution"></a>Přihlášení k řešení
 
-Po dokončení nasazení předplatného Azure se na dlaždici řešení zobrazí zelené zaškrtnutí a **Připraveno**. Teď se můžete přihlásit k řídicímu panelu akcelerátoru řešení vzdáleného monitorování.
+Po dokončení nasazení předplatného Azure se na dlaždici řešení zobrazí zelené zaškrtnutí a **Připraveno**. Teď se můžete přihlásit k řídicímu panelu akcelerátoru řešení pro vzdálené monitorování.
 
-Na stránce **Zřízená řešení** klikněte na nový akcelerátor řešení vzdáleného monitorování:
+Na stránce **Zřízená řešení** klikněte na nový akcelerátor řešení pro vzdálené monitorování:
 
 ![Výběr nového řešení](./media/quickstart-remote-monitoring-deploy/choosenew.png)
 
-Na panelu, který se zobrazí, si můžete prohlédnout informace o akcelerátoru řešení vzdáleného monitorování. Zvolte **přejít na akcelerátor řešení** zobrazíte akcelerátor řešení vzdálené monitorování:
+Na panelu, který se zobrazí, si můžete prohlédnout informace o akcelerátoru řešení pro vzdálené monitorování. Zvolte **přejít na akcelerátor řešení** zobrazíte akcelerátor řešení vzdálené monitorování:
 
 ![Panel řešení](./media/quickstart-remote-monitoring-deploy/solutionpanel.png)
 
-Kliknutím na **Přijmout** přijměte žádost o oprávnění. Ve vašem prohlížeči se zobrazí řídicí panel řešení vzdáleného monitorování:
+Kliknutím na **Přijmout** přijměte žádost o oprávnění. Ve vašem prohlížeči se zobrazí řídicí panel řešení pro vzdálené monitorování:
 
 [![Řídicí panel řešení](./media/quickstart-remote-monitoring-deploy/solutiondashboard-inline.png)](./media/quickstart-remote-monitoring-deploy/solutiondashboard-expanded.png#lightbox)
 
@@ -129,7 +129,7 @@ Hodnota ve sloupci stavu se změní na **Uzavřeno**.
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Pokud se budete chtít přesunout ke kurzům, ponechte akcelerátor řešení vzdáleného monitorování nasazený.
+Pokud se budete chtít přesunout ke kurzům, ponechte akcelerátor řešení pro vzdálené monitorování nasazený.
 
 Pokud už akcelerátor řešení nepotřebujete, odstraňte ho na stránce [Zřízená řešení](https://www.azureiotsolutions.com/Accelerators#dashboard) tak, že ho vyberete a pak kliknete na **Odstranit řešení**:
 
@@ -140,7 +140,7 @@ Pokud už akcelerátor řešení nepotřebujete, odstraňte ho na stránce [Zř�
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto rychlém startu jste nasadili akcelerátor řešení vzdáleného monitorování a dokončili jste úlohu monitorování s využitím simulovaných zařízení ve výchozím nasazení Contoso.
+V tomto rychlém startu jste nasadili akcelerátor řešení pro vzdálené monitorování a dokončili jste úlohu monitorování s využitím simulovaných zařízení ve výchozím nasazení Contoso.
 
 Další informace o akcelerátoru řešení se simulovanými zařízeními získáte v následujícím kurzu.
 

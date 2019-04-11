@@ -94,7 +94,7 @@ Tabulka shrnuje porty potřebné ke komunikaci služby Azure Migrate.
 | --- | --- |--- |
 |Kolektor  | Služba Azure Migrate | Kolektor se ke službě připojuje přes port SSL 443.|
 |Kolektor | vCenter Server | Ve výchozím nastavení se kolektor připojuje k systému vCenter Server na portu 443. Pokud server naslouchá na jiném portu, nakonfigurujte ho jako odchozí port na virtuálním počítači kolektoru.|
-|Místní virtuální počítač | Pracovní prostor Log Analytics | [Microsoft Monitoring Agent (MMA)](../log-analytics/log-analytics-windows-agent.md) používá TCP port 443 pro připojení k protokoly Azure monitoru. Tento port potřebujete pouze v případě, že využíváte vizualizaci závislostí, která vyžaduje agenta MMA.|
+|Místní virtuální počítač | Pracovní prostor služby Log Analytics | [Microsoft Monitoring Agent (MMA)](../log-analytics/log-analytics-windows-agent.md) používá TCP port 443 pro připojení k protokoly Azure monitoru. Tento port potřebujete pouze v případě, že využíváte vizualizaci závislostí, která vyžaduje agenta MMA.|
 
 
 ## <a name="what-happens-after-assessment"></a>Co se stane po posouzení?

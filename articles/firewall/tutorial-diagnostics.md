@@ -57,7 +57,7 @@ Než se data v protokolech po dokončení tohoto procesu zapnutí protokolován�
 6. Pracovní prostor nakonfigurujete kliknutím na **Poslat do Log Analytics**. Diagnostické protokoly můžete ukládat také pomocí služby center událostí a účtu úložiště.
 7. V části **Log Analytics** klikněte na **Konfigurovat**.
 8. Na stránce Pracovní prostory Log Analytics klikněte na **Vytvořit nový pracovní prostor**.
-9. Na stránce **Pracovní prostor Log Analytics** zadejte pro **Pracovní prostor Log Analytics** nový název **firewall-oms**.
+9. Na stránce **Pracovní prostor služby Log Analytics** zadejte pro **Pracovní prostor služby Log Analytics** nový název **firewall-oms**.
 10. Vyberte předplatné, použijte existující skupinu prostředků brány firewall (**Test-FW-RG**), jako umístění vyberte **USA – východ** a u cenové úrovně zvolte **Free**.
 11. Klikněte na **OK**.
    ![Spouští se proces konfigurace][1] pracovních prostorů OMS jsou dnes označovány jako pracovní prostory Log Analytics.  
