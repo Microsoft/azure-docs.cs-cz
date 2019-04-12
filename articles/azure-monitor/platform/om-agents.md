@@ -47,7 +47,7 @@ Než začnete, zkontrolujte následující požadavky.
 * Azure Monitor podporuje pouze System Center Operations Manageru 2016 nebo novější, Operations Manager 2012 SP1 UR6 nebo vyšší a Operations Manager 2012 R2 UR2 nebo novější. V nástrojích Operations Manager 2012 SP1 UR7 a Operations Manager 2012 R2 UR3 je přidaná podpora proxy serverů.
 * Integrace nástroje System Center Operations Manageru 2016 s využitím cloudu pro státní správu USA vyžaduje aktualizovaný balíček správy Advisor zahrnuty s kumulativní aktualizací 2 nebo novější. System Center Operations Manager 2012 R2 vyžaduje aktualizovaný balíček správy Advisor zahrnuty s kumulativní aktualizací 3 nebo novější.
 * Všichni agenti nástroje Operations Manager musí splňovat minimální požadavky na podporu. Ujistěte se, že jsou agenti na minimální aktualizace, jinak komunikaci agenta Windows může selhat a způsobit chyby v protokolu událostí nástroje Operations Manager.
-* Pracovní prostor Log Analytics. Další informace najdete v tématu [přehled pracovního prostoru Log Analytics](../../azure-monitor/platform/manage-access.md?toc=/azure/azure-monitor/toc.json).   
+* Pracovní prostor služby Log Analytics. Další informace najdete v tématu [přehled pracovního prostoru Log Analytics](../../azure-monitor/platform/manage-access.md?toc=/azure/azure-monitor/toc.json).   
 * Ověření pro Azure pomocí účtu, který je členem skupiny [role Přispěvatel Log Analytics](../../azure-monitor/platform/manage-access.md#manage-accounts-and-users).  
 
 >[!NOTE]
@@ -118,7 +118,7 @@ Po dokončení následujících kroků k integraci se službou Azure Monitor, m�
 1. Když jste úspěšně ověřeni, dále **Průvodce registrací v Operations Management Suite: Vyberte pracovní prostor** stránce se zobrazí výzva k výběru tenantovi Azure, předplatné a pracovní prostor Log Analytics. Pokud máte více než jeden pracovní prostor, vyberte z rozevíracího seznamu ten, který chcete zaregistrovat ve skupině pro správu nástroje Operations Manager, a pak klikněte na **Další**.
    
    > [!NOTE]
-   > Operations Manager podporuje vždy jenom jeden pracovní prostor Log Analytics. Připojení a počítačů, které jste zaregistrovali do Azure monitoru s předchozím pracovním prostoru se odeberou ze služby Azure Monitor.
+   > Operations Manager podporuje vždy jenom jeden pracovní prostor služby Log Analytics. Připojení a počítačů, které jste zaregistrovali do Azure monitoru s předchozím pracovním prostoru se odeberou ze služby Azure Monitor.
    > 
    > 
 1. Na **Průvodce registrací v Operations Management Suite: Souhrn** stránce Potvrďte nastavení a pokud jsou správné, klikněte na tlačítko **vytvořit**.
@@ -170,9 +170,9 @@ Po dokončení konfigurace skupiny pro správu nástroje Operations Manager vytv
 
 Můžete přepsat tyto dvě pravidla buď zabránit automatické stahování tím, že je zakážete nebo upravit frekvenci jak často server pro správu synchronizuje se službou Azure Monitorto určení, zda je k dispozici nové sady management pack a mají být stažené. Podle kroků [pro přepsání pravidla nebo monitorování](https://technet.microsoft.com/library/hh212869.aspx) změňte parametr **Frekvence** na jinou hodnotou v sekundách (pokud chcete změnit plán synchronizace) nebo přepněte parametr **Povoleno** (pokud chcete pravidla zakázat). Přepsané hodnoty zacilte na všechny objekty třídy Skupina správy nástroje Operations Manager.
 
-Chcete-li pokračovat po vaší existující proces řízení změn řízení verzí management pack v provozní skupině pro správu, můžete zakázat pravidla a povolit v určité době, kdy jsou aktualizace povoleny. Pokud máte ve svém prostředí skupiny pro správu určenou pro vývoj nebo kontrolu kvality a ta má připojení k internetu, můžete pro podporu tohoto scénáře u této skupiny nakonfigurovat pracovní prostor Log Analytics. To umožňuje kontrola a vyhodnocení iterativní verzí sad management Pack monitorování Azure před uvolněním v provozní skupině pro správu.
+Chcete-li pokračovat po vaší existující proces řízení změn řízení verzí management pack v provozní skupině pro správu, můžete zakázat pravidla a povolit v určité době, kdy jsou aktualizace povoleny. Pokud máte ve svém prostředí skupiny pro správu určenou pro vývoj nebo kontrolu kvality a ta má připojení k internetu, můžete pro podporu tohoto scénáře u této skupiny nakonfigurovat pracovní prostor služby Log Analytics. To umožňuje kontrola a vyhodnocení iterativní verzí sad management Pack monitorování Azure před uvolněním v provozní skupině pro správu.
 
-## <a name="switch-an-operations-manager-group-to-a-new-log-analytics-workspace"></a>Převedení skupiny nástroje Operations Manager na nový pracovní prostor Log Analytics
+## <a name="switch-an-operations-manager-group-to-a-new-log-analytics-workspace"></a>Převedení skupiny nástroje Operations Manager na nový pracovní prostor služby Log Analytics
 
 1. Přihlaste se k webu Azure Portal na adrese [https://portal.azure.com](https://portal.azure.com).
 1. Na webu Azure Portal klikněte v levém dolním rohu na **Další služby**. V seznamu prostředků zadejte **Log Analytics**. Seznam se průběžně filtruje podle zadávaného textu. Vyberte **Log Analytics** a pak vytvořte pracovní prostor.  
@@ -204,13 +204,13 @@ Existuje několik různých způsobů, jak můžete ověřit, že Azure Monitor 
 1. Otevřete konzolu nástroje Operations Manager a vyberte pracovní prostor **Správa**.
 1. Vyberte **Sady Management Pack** a do textového pole **Hledat** zadejte **Advisor** nebo **Intelligence**.
 1. V závislosti na řešeních, která jste aktivovali, se ve výsledcích hledání zobrazí odpovídající sada Management Pack.  Pokud jste například povolili řešení Alert Management, bude v seznamu sada Microsoft System Center Advisor Alert Management.
-1. Ze zobrazení **Sledování** přejděte do zobrazení **Operations Management Suite\Stav systému**.  Vyberte server pro správu v podokně **Stav serveru pro správu** a v podokně **Podrobné zobrazení** ověřte, že hodnota vlastnosti **Identifikátor URI ověřovací služby** odpovídá příslušnému ID pracovního prostoru Log Analytics.
+1. Ze zobrazení **Sledování** přejděte do zobrazení **Operations Management Suite\Stav systému**.  Vyberte server pro správu v podokně **Stav serveru pro správu** a v podokně **Podrobné zobrazení** ověřte, že hodnota vlastnosti **Identifikátor URI ověřovací služby** odpovídá příslušnému ID pracovního prostoru služby Log Analytics.
    
    ![oms-opsmgr-mg-authsvcuri-property-ms](./media/om-agents/oms-opsmgr-mg-authsvcuri-property-ms.png)
 
 ## <a name="remove-integration-with-azure-monitor"></a>Odebrat integraci se službou Azure Monitor
 
-Když už integraci mezi vaší skupinou pro správu nástroje Operations Manager a pracovním prostorem Log Analytics nebudete potřebovat, bude třeba ke správnému odebrání připojení a konfigurace ze skupiny provést několik kroků. Následující postup se můžete aktualizovat tak, že odstraníte odkaz na vaši skupinu pro správu pracovního prostoru Log Analytics, odstraňte konektory Azure Monitor a pak odstraňte sady management Pack podporuje integraci se službou.  
+Když už integraci mezi vaší skupinou pro správu nástroje Operations Manager a pracovním prostorem služby Log Analytics nebudete potřebovat, bude třeba ke správnému odebrání připojení a konfigurace ze skupiny provést několik kroků. Následující postup se můžete aktualizovat tak, že odstraníte odkaz na vaši skupinu pro správu pracovního prostoru Log Analytics, odstraňte konektory Azure Monitor a pak odstraňte sady management Pack podporuje integraci se službou.  
 
 Sady Management Pack pro řešení povolíte, které se integrují s nástrojem Operations Manager a sady management Pack, který je potřeba pro podporu integrace s Azure Monitor nelze snadno odstranit ze skupiny pro správu. Je to proto, že některé sady management Pack Azure monitoru mají závislosti na jiných sadách souvisejících management Pack. Pokud chcete odstranit sady Management Pack se závislostmi na jiných sadách, stáhněte si skript pro [odebrání sady Management Pack se závislostmi](https://gallery.technet.microsoft.com/scriptcenter/Script-to-remove-a-84f6873e) z webu TechNet Script Center.  
 
