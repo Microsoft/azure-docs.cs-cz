@@ -4,20 +4,20 @@ titlesuffix: Azure Virtual Network
 description: Zjistěte, jak vytvořit virtuální síť vytvoření partnerského vztahu mezi virtuálními sítěmi vytvořenými prostřednictvím Resource Manageru, které existují v různých předplatných Azure.
 services: virtual-network
 documentationcenter: ''
-author: jimdial
+author: anavinahar
 ms.service: virtual-network
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/24/2018
-ms.author: jdial;anavin
-ms.openlocfilehash: 2965f72a1f0532cd9e13d5fa03750cf4ed8bab99
-ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
+ms.date: 04/09/2019
+ms.author: anavin
+ms.openlocfilehash: ff8c866f62e8d795f04491cf249b7dae26c8269c
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58403456"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59492290"
 ---
 # <a name="create-a-virtual-network-peering---resource-manager-different-subscriptions"></a>Vytvoření partnerského vztahu virtuálních sítí - Resource Manageru, různá předplatná
 
@@ -27,9 +27,9 @@ Postup vytvoření partnerského vztahu virtuálních sítí se liší v závisl
 
 |Model nasazení Azure  | Předplatné Azure  |
 |--------- |---------|
-|[Obě Resource Manageru](tutorial-connect-virtual-networks-portal.md) |Stejné|
-|[Jedna Resource Manager, druhá classic](create-peering-different-deployment-models.md) |Stejné|
-|[Jedna Resource Manager, druhá classic](create-peering-different-deployment-models-subscriptions.md) |Odlišné|
+|[Obě Resource Manager](tutorial-connect-virtual-networks-portal.md) |Stejné|
+|[Jedna Resource Manager, druhá Classic](create-peering-different-deployment-models.md) |Stejné|
+|[Jedna Resource Manager, druhá Classic](create-peering-different-deployment-models-subscriptions.md) |Odlišné|
 
 Partnerský vztah virtuální sítě nejde vytvořit mezi dvěma virtuálními sítěmi, které jsou nasazené prostřednictvím modelu nasazení classic. Pokud potřebujete k propojení virtuálních sítí, které byly obě vytvořené prostřednictvím modelu nasazení classic, můžete použít Azure [VPN Gateway](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json) k propojení virtuálních sítí.
 
@@ -39,7 +39,9 @@ Můžete použít [webu Azure portal](#portal), Azure [rozhraní příkazového 
 
 ## <a name="portal"></a>Vytvoření partnerského vztahu – Azure portal
 
-Pokud předplatné, které jsou přidružené k různým tenantům Azure Active Directory, které chcete vytvořit partnerský vztah virtuálních sítí, postupujte podle kroků v části tohoto článku rozhraní příkazového řádku a Powershellu. Portál nemá podporu na vytvoření partnerského vztahu virtuálních sítí patřících do odběry z jiných klientů Active Directory.
+Pokud předplatné, které jsou přidružené k různým tenantům Azure Active Directory, které chcete vytvořit partnerský vztah virtuálních sítí, postupujte podle kroků v části tohoto článku rozhraní příkazového řádku a Powershellu. Portál nemá podporu na vytvoření partnerského vztahu virtuálních sítí patřících do odběry z jiných klientů Active Directory. 
+
+Všimněte si, že službě Cloud Shell má omezení přepínání předplatných a tenantů, kvůli které VNet Peering nebo globální VNet Peering mezi virtuálními sítěmi, které patří do předplatného v různých Tenantech Active Directory Azure nebude fungovat. Použijte PowerShell nebo rozhraní příkazového řádku.
 
 Následující kroky používají různé účty pro každé předplatné. Pokud používáte účet, který má oprávnění k oběma předplatným, můžete použít stejný účet pro všechny kroky, přeskočte kroky pro přihlášení z portálu a přeskočte kroky pro přiřazení oprávnění pro jiné uživatele k virtuálním sítím.
 

@@ -12,31 +12,36 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: PHP
 ms.topic: article
-ms.date: 09/10/2018
+ms.date: 04/10/2019
 ms.author: aschhab
-ms.openlocfilehash: 9915392f7bb12b31dce6e141383a48b69c6f70a9
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 55eee839e24db2ad96eb635adc488e9a119c5907
+ms.sourcegitcommit: 41015688dc94593fd9662a7f0ba0e72f044915d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57842766"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59501191"
 ---
 # <a name="how-to-use-service-bus-queues-with-php"></a>Jak používat fronty služby Service Bus pomocí PHP
 [!INCLUDE [service-bus-selector-queues](../../includes/service-bus-selector-queues.md)]
 
-Tato příručka ukazuje, jak používat fronty Service Bus. Ukázky jsou napsané v PHP a použití [sady Azure SDK pro jazyk PHP](../php-download-sdk.md). Mezi popsané scénáře patří **vytváření front**, **odesílání a přijímání zpráv**, a **odstranění front**.
+V tomto kurzu se dozvíte, jak vytvářet aplikace PHP na odesílání a příjem zpráv z fronty Service Bus. 
 
-[!INCLUDE [howto-service-bus-queues](../../includes/howto-service-bus-queues.md)]
+## <a name="prerequisites"></a>Požadavky
+1. Předplatné Azure. K dokončení tohoto kurzu potřebujete mít účet Azure. Můžete si aktivovat váš [výhody pro předplatitele MSDN](https://azure.microsoft.com/pricing/member-offers/credit-for-visual-studio-subscribers/?WT.mc_id=A85619ABF) nebo si zaregistrovat [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF).
+2. Pokud nemáte k dispozici pro práci s frontou, postupujte podle kroků v [použijte Azure portal můžete vytvořit frontu služby Service Bus](service-bus-quickstart-portal.md) článku můžete vytvořit frontu.
+    1. Přečtěte si rychlé **přehled** služby Service Bus **fronty**. 
+    2. Vytvoření služby Service Bus **obor názvů**. 
+    3. Získejte **připojovací řetězec**. 
 
-[!INCLUDE [service-bus-create-namespace-portal](../../includes/service-bus-create-namespace-portal.md)]
+        > [!NOTE]
+        > Vytvoříte **fronty** v oboru názvů služby Service Bus pomocí PHP v tomto kurzu. 
+3. [Sada Azure SDK for PHP](../php-download-sdk.md)
 
 ## <a name="create-a-php-application"></a>Vytvoření aplikace PHP
 Jediným požadavkem pro vytvoření aplikace v jazyce PHP, který přistupuje k službě objektů Blob v Azure je odkazující na třídy v [sady Azure SDK pro jazyk PHP](../php-download-sdk.md) z vašeho kódu. Nástroje pro vývoj můžete použít k vytvoření aplikace nebo Poznámkový blok.
 
 > [!NOTE]
 > Instalace PHP je také nutné [OpenSSL rozšíření](https://php.net/openssl) nainstalovaný a povolený.
-> 
-> 
 
 V této příručce se bude používat funkce služby, které může být volána z v rámci aplikace v jazyce PHP místně nebo v kódu v rámci webové role Azure, role pracovního procesu nebo webu.
 

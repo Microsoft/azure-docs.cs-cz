@@ -8,12 +8,12 @@ ms.topic: overview
 ms.service: iot-industrialiot
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: b4fbfc1d9c9441c6c9f12987de5feb1a90e9f17f
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: bda40470e3ccf3a5d7b23dca38b21090e864b16a
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59256375"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59491744"
 ---
 # <a name="what-is-industrial-iot-iiot"></a>Co je průmyslového IoT (IIoT)
 
@@ -23,7 +23,7 @@ IIoT je průmyslového Internetu věcí. IIoT zvyšuje efektivitu průmyslové p
 
 Vylepšete svoji provozní produktivitu a zisk s akcelerátoru řešení propojené továrny. Propojte a monitorujte své průmyslová vybavení a zařízení v cloudu, včetně strojů, které už v továrně pracují. Analyzujte data z IoT a získávejte z nich informace, které vám pomůžou zvýšit výkon celého závodu.
 
-Omezit časově náročný proces přístup k factory floor počítače se správou zařízení Azure IoT OPC UA (OPC Dvojčete) a váš čas soustředit na vytváření IIoT řešení. Zjednodušení správy certifikátů a průmyslových prostředků integrace se správu certifikátů Azure IoT OPC UA (OPC trezoru) a si jisti, že je zabezpečené připojení k prostředku. Tyto mikroslužby poskytují podobné REST API nad [průmyslového IoT Azure komponenty](https://github.com/Azure/azure-iiot-opc-ua). Rozhraní API služby vám dává kontrolu nad funkce modulu edge. 
+Omezit časově náročný proces přístup k factory floor počítačů pomocí Dvojčete OPC a váš čas soustředit na vytváření IIoT řešení. Zjednodušení správy certifikátů a integrace průmyslové asset s trezorem OPC a si jisti, že je zabezpečené připojení k prostředku. Tyto mikroslužby poskytují podobné REST API nad [průmyslového IoT Azure komponenty](https://github.com/Azure/azure-iiot-opc-ua). Rozhraní API služby vám dává kontrolu nad funkce modulu edge. 
 
 ![Přehled průmyslového IoT](media/overview-iot-industrial/overview.png)
 
@@ -39,11 +39,11 @@ Pokud nejste obeznámeni s fungování modulů Azure IoT Edge, začněte najdete
 
 ## <a name="factory-floor-connectivity"></a>Objekt pro vytváření floor připojení
 
-Správu zařízení Azure IoT OPC UA, označované také jako OPC dvojče je součást IIoT, který automatizuje registraci a zjišťování zařízení a nabízí vzdáleného řízení průmyslová zařízení prostřednictvím rozhraní REST API. Dvojče OPC používá pro připojení v cloudu a objekt pro vytváření sítí Azure IoT Edge a IoT Hub. Dvojče OPC umožňuje vývojářům IIoT soustředit na vytváření IIoT aplikací bez starostí o tom, jak bezpečně přistupovat k na místních počítačích.
+OPC dvojče je součást IIoT, který automatizuje registraci a zjišťování zařízení a nabízí vzdáleného řízení průmyslová zařízení prostřednictvím rozhraní REST API. Dvojče OPC používá pro připojení v cloudu a objekt pro vytváření sítí Azure IoT Edge a IoT Hub. Dvojče OPC umožňuje vývojářům IIoT soustředit na vytváření IIoT aplikací bez starostí o tom, jak bezpečně přistupovat k na místních počítačích.
 
 ## <a name="security"></a>Zabezpečení
 
-Azure IoT OPC UA správy certifikátů nebo OPC trezor je implementace sady OPC UA globální zjišťování serveru (GDS), která můžete konfigurovat, registrace a správa životního cyklu certifikátu pro server OPC UA a klientských aplikací v cloudu. Trezor OPC usnadňuje implementaci a údržbu připojení k zabezpečeným prostředkem v průmyslových místa. Automatizací správy certifikátů trezor OPC uvolní operátory objekt pro vytváření z ruční a komplexní procesy, které jsou přidružené k připojení a certifikát správy.
+Implementace sady OPC UA globální zjišťování serveru (GDS), která můžete konfigurovat, registrace a správa životního cyklu certifikátu pro server OPC UA a klientských aplikací v cloudu je trezor OPC. Trezor OPC usnadňuje implementaci a údržbu připojení k zabezpečeným prostředkem v průmyslových místa. Automatizací správy certifikátů trezor OPC uvolní operátory objekt pro vytváření z ruční a komplexní procesy, které jsou přidružené k připojení a certifikát správy.
 
 ## <a name="next-steps"></a>Další postup
 

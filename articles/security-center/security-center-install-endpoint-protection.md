@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/28/2019
 ms.author: rkarlin
-ms.openlocfilehash: 4ed0be3178f9d5d014e9e50c11d555b586ced765
-ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
+ms.openlocfilehash: 882d4e0592b74e8af30ff5bf110a41e403c3bf7d
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2019
-ms.locfileid: "58579321"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59494026"
 ---
 # <a name="manage-endpoint-protection-issues-with-azure-security-center"></a>Spravovat problémy s endpoint protection pomocí Azure Security Center
 Azure Security Center monitoruje stav ochrany proti malwaru a oznámí to pod oknem problémy ochrany koncového bodu. Security Center zvýrazňuje problémy, jako je například zjištěných hrozeb a nedostatečná ochrana, které můžou ohrožovat zabezpečení vašeho počítače a virtuální počítače (VM) na ně antimalwaru. Podle informací uvedených v části **problémy s Endpoint protection**, můžete určit plán veškeré zjištěné potíže vyřešit.
@@ -47,7 +47,7 @@ V tomto příkladu budeme používat **Compute**.  Podíváme se na tom, jak nai
 
 ## <a name="install-antimalware-on-azure-vms"></a>Nainstalujte antimalwarové na virtuálních počítačích Azure
 
-1. Vyberte **Compute** hlavní nabídce služby Security Center nebo **přehled**.
+1. Vyberte **výpočty a aplikace** hlavní nabídce služby Security Center nebo **přehled**.
 
    ![Zvolte Compute][1]
 

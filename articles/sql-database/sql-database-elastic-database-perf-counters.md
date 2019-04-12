@@ -1,10 +1,10 @@
 ---
-title: Čítače výkonu pro správce mapování horizontálních oddílů
+title: Vytvoření čítačů výkonu ke sledování výkonu správce mapování horizontálních oddílů
 description: ShardMapManager třídy a dat závislé směrování čítače výkonu
 services: sql-database
 ms.service: sql-database
 ms.subservice: scale-out
-ms.custom: ''
+ms.custom: seoapril2019
 ms.devlang: ''
 ms.topic: conceptual
 author: stevestein
@@ -12,18 +12,19 @@ ms.author: sstein
 ms.reviewer: ''
 manager: craigg
 ms.date: 02/07/2019
-ms.openlocfilehash: 2823f997a38e280bdbf19beb3a478a73ef1ae842
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
+ms.openlocfilehash: 5c6c923c86ea0c5968079188c87ec3988ec30142
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55895172"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59494914"
 ---
-# <a name="performance-counters-for-shard-map-manager"></a>Čítače výkonu pro správce mapování horizontálních oddílů
+# <a name="create-performance-counters-to-track-performance-of-shard-map-manager"></a>Vytvoření čítačů výkonu ke sledování výkonu správce mapování horizontálních oddílů
+
+Čítače výkonu se používají ke sledování výkonu [směrování závislé na datech](sql-database-elastic-scale-data-dependent-routing.md) operace. Tyto čítače jsou přístupné v nástroji Sledování výkonu v části "elastické databáze: Kategorie správy horizontálních oddílů".
 
 Můžete zaznamenávat výkon [správce mapování horizontálních oddílů](sql-database-elastic-scale-shard-map-management.md), zvláště při použití [směrování závislé na datech](sql-database-elastic-scale-data-dependent-routing.md). Čítače jsou vytvořeny metodami Microsoft.Azure.SqlDatabase.ElasticScale.Client třídy.  
 
-Čítače se používají ke sledování výkonu [směrování závislé na datech](sql-database-elastic-scale-data-dependent-routing.md) operace. Tyto čítače jsou přístupné v nástroji Sledování výkonu v části "elastické databáze: Kategorie správy horizontálních oddílů".
 
 **Nejnovější verze:** Přejděte na [Microsoft.Azure.SqlDatabase.ElasticScale.Client](https://www.nuget.org/packages/Microsoft.Azure.SqlDatabase.ElasticScale.Client/). Viz také [upgradu aplikace použít nejnovější Klientská knihovna elastic database](sql-database-elastic-scale-upgrade-client-library.md).
 
@@ -67,7 +68,7 @@ Tyto události spustit vytvoření čítače výkonu:
 
 ### <a name="see-also"></a>Další informace najdete v tématech
 
-[Přehled funkcí Elastic Database](sql-database-elastic-scale-introduction.md)  
+[Přehled funkcí elastic Database](sql-database-elastic-scale-introduction.md)  
 
 [!INCLUDE [elastic-scale-include](../../includes/elastic-scale-include.md)]
 

@@ -11,14 +11,14 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 01/31/2019
+ms.date: 04/10/2019
 ms.author: alkohli
-ms.openlocfilehash: ea8a6d604187a25e5186d7200feba6aaab1f676a
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.openlocfilehash: e8a5ae4a4ee9cfd5c39e8e399784ec65f2ee2660
+ms.sourcegitcommit: 41015688dc94593fd9662a7f0ba0e72f044915d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57339449"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59500902"
 ---
 # <a name="options-to-migrate-data-from-storsimple-5000-7000-series"></a>Možnosti, jak migrovat data ze StorSimple řad 5000 – 7000 
 
@@ -49,15 +49,28 @@ Další informace o tom, jak migrovat data do Azure File Sync, přejděte na [mi
 
 #### <a name="migrate-to-panzura-freedom-nas"></a>Migrace do volného Panzura NAS
 
-StorSimple 5000 – 7000 Zákazníci si mohou vybrat k migraci do volného NAS Panzura chtějí uchovávat svá data v Azure. Panzura volnosti řešení poskytuje řešení NAS, která zahrnuje datová centra, pobočky, privátních a veřejných cloudech. Toto řešení umožňuje místní, hybridní a pracovní postupy dat v cloudu pro systém souborů NFS, SMB a mobilní klienty. Tato migrace podporuje Panzura a zákazníci můžou začít tím, že žádosti o podporu migrace z [Panzura webu](https://panzura.com/storsimple-migration/).
+StorSimple 5000 – 7000 Zákazníci si mohou vybrat k migraci do volného NAS Panzura chtějí uchovávat svá data v Azure. Panzura volnosti řešení poskytuje řešení NAS, která zahrnuje datová centra, pobočky, privátních a veřejných cloudech. Toto řešení umožňuje místní, hybridní a pracovní postupy dat v cloudu pro systém souborů NFS, SMB a mobilní klienty. 
+
+Tato migrace podporuje Panzura a zákazníci můžou začít tím, že žádosti o podporu migrace z [Panzura webu](https://panzura.com/storsimple-migration/).
 
 #### <a name="migrate-to-cohesity"></a>Migrace na Cohesity
 
-Cohesity umožňuje migrovat data z aktuální StorSimple 5000 – 7000 Cohesity datovou platformu v Azure. Datová platforma Cohesity je webové škálování softwarově definované řešení, která spojuje soubory, zálohování, objektů a virtuální počítače do jediného řešení nativní pro cloud. Po migraci datové platformy můžete spravovat, ochrana a zřídit dat a aplikací z cloudu na jádro prostřednictvím podokně ze skla. S využitím Cohesity začněte s pouhými třemi uzly. Další informace najdete na [migrace do Cohesity DataPlatform](https://info.cohesity.com/migrate-from-storsimple-to-cohesity.html).
+Cohesity umožňuje migrovat data z aktuální StorSimple 5000 – 7000 Cohesity datovou platformu v Azure. Datová platforma Cohesity je webové škálování softwarově definované řešení, která spojuje soubory, zálohování, objektů a virtuální počítače do jediného řešení nativní pro cloud. Po migraci datové platformy můžete spravovat, ochrana a zřídit dat a aplikací z cloudu na jádro prostřednictvím podokně ze skla. S využitím Cohesity začněte s pouhými třemi uzly. 
+
+Další informace najdete na [migrace datovou platformu Cohesity](https://info.cohesity.com/migrate-from-storsimple-to-cohesity.html).
 
 #### <a name="migrate-to-nasuni"></a>Migrace do společnosti Nasuni
 
-Nasuni usnadňuje StorSimple 5000 – 7000 zákazníkům migrovat a uchovávat svá data v Azure.  Nasuni je přední řešení úložiště založené na Azure NAS, poskytuje zákazníkům výkon a zabezpečení, kterou zákazníci očekávají od řešení v místním prostředí s cloudovými cenami a škálování.  Kromě vysoce výkonné úložiště souborů, Nasuni a Azure popisovač zálohování a zotavení po Havárii při umožňuje sdílet a spolupracovat na data po celém světě s centralizovaný správu úložiště. Nasuni má prostředí pro usnadnění migrace – Začněte ještě dnes: https://info.nasuni.com/nasuni-storsimple-migration
+Nasuni usnadňuje StorSimple 5000 – 7000 zákazníkům migrovat a uchovávat svá data v Azure.  Nasuni je přední řešení úložiště založené na Azure NAS, poskytuje zákazníkům výkon a zabezpečení, kterou zákazníci očekávají od řešení v místním prostředí s cloudovými cenami a škálování.  Kromě vysoce výkonné úložiště souborů, Nasuni a Azure popisovač zálohování a zotavení po Havárii při umožňuje sdílet a spolupracovat na data po celém světě s centralizovaný správu úložiště. 
+
+Nasuni má prostředí pro usnadnění migrace – Začněte ještě dnes: https://info.nasuni.com/nasuni-storsimple-migration
+
+#### <a name="migrate-to-talon-fast"></a>Migrace na Talon FAST
+
+Talon umožňuje snadno StorSimple 5000 – 7000 zákazníci mohli i nadále využívat výhody, s hodnotou tolik StorSimple platformě (malé na místě náklady se opírá o neomezený počet cloudových prostředků) s ještě větším funkce.  S řešením Talon rychlé zákazníků můžete migrovat a zachovat svá data v Azure, a přitom teď s i menší nároky na místní pouze software a přidání výhody, jako je například globální soubor zamknutí, globálního oboru názvů a spolupráci několika lokalitami.  Talon je přední řešení ekosystému Azure, práce s globální zákazníkům migrovat své místní souborové server úlohy do konsolidovaného, založené na Azure nároky, aniž tím Ohrozíte pracovního postupu uživatele nebo prostředí.  
+
+Další informace o tom, jak vyvíjet pro enterprise cloud konsolidovat v https://www.talonstorage.com/alliances/microsoft-storsimple.
+
 
 ## <a name="migration---frequently-asked-questions"></a>Migrace – nejčastější dotazy
 

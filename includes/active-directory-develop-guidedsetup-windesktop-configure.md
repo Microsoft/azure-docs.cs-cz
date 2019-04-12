@@ -11,15 +11,15 @@ ms.devlang: na
 ms.topic: include
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/17/2018
+ms.date: 04/10/2019
 ms.author: jmprieur
 ms.custom: include file
-ms.openlocfilehash: 220723988f349bf015d2de7633af78782bc03bac
-ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
+ms.openlocfilehash: 5eaee4f932c4e42f6fed3d839314346b3a93f360
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58203183"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59498363"
 ---
 ## <a name="register-your-application"></a>Registrace vaší aplikace
 
@@ -28,33 +28,25 @@ Registrace vaší aplikace v jednom ze dvou způsobů.
 ### <a name="option-1-express-mode"></a>Option 1: Expresní režim
 
 Můžete rychle registrace vaší aplikace následujícím způsobem:
-1. Přejděte na portál [Microsoft Application Registration Portal](https://apps.dev.microsoft.com/portal/register-app?appType=mobileAndDesktopApp&appTech=windowsDesktop&step=configure).
-
-2. Vyberte **přidat aplikaci**.
-
-3. Do pole **Application Name** (Název aplikace) zadejte název vaší aplikace.
-
-4. Ujistěte se, že **instalační program s asistencí** zaškrtávací políčko je vybrané a pak vyberte **vytvořit**.
-
-5. Postupujte podle pokynů pro získání ID aplikace a vložte ho do svého kódu.
+1. Přejděte [portál Azure – registrace aplikace](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/applicationsListBlade/quickStartType/WinDesktopQuickstartPage/sourceType/docs).
+1. Zadejte název vaší aplikace a Vyberte **Zaregistrovat**.
+1. Postupujte podle pokynů ke stažení a automatické konfiguraci nové aplikace jedním kliknutím.
 
 ### <a name="option-2-advanced-mode"></a>Option 2: Rozšířený režim
 
 Postup při registraci aplikace a přidání informací o registraci aplikace k řešení:
-1. Pokud jste ještě nezaregistrovali vaši aplikaci, přejděte [portál pro registraci aplikací Microsoft](https://apps.dev.microsoft.com/portal/register-app).
-
-2. Vyberte **přidat aplikaci**.
-
-3. Do pole **Application Name** (Název aplikace) zadejte název vaší aplikace.
-
-4. Zkontrolujte, že není zaškrtnuté políčko **Guided Setup** (Instalační program s asistencí) a vyberte **Create** (Vytvořit).
-
-5. Vyberte **Add Platform** (Přidat platformu), **Native Application** (Nativní aplikace) a pak **Save** (Uložit).
-
-6. V **ID aplikace** pole, zkopírovat identifikátor GUID.
-
-7. Přejděte do sady Visual Studio, otevřete *App.xaml.cs* souboru a potom nahraďte `your_client_id_here` s ID aplikace, které jste právě zaregistrovali a zkopírovat.
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com) pomocí pracovního nebo školního účtu nebo osobního účtu Microsoft.
+1. Pokud váš účet umožňuje přístup k více tenantům, vyberte svůj účet v pravém horním rohu a nastavte relaci portálu na požadovaného tenanta Azure AD.
+1. Přejděte na Microsoft identity platform pro vývojáře [registrace aplikací](https://go.microsoft.com/fwlink/?linkid=2083908) stránky.
+1. Vyberte **registrace nové**.
+   - V části **Název** zadejte smysluplný název aplikace, který se zobrazí uživatelům aplikace, například `Win-App-calling-MsGraph`.
+   - V části **Podporované typy účtu** vyberte **Účty v libovolném organizačním adresáři a osobní účty Microsoft (například Skype, Xbox, Outlook.com)**.
+   - Výběrem možnosti **Registrovat** aplikaci vytvořte.
+1. V seznamu stránek pro aplikaci vyberte **Ověřování**.
+1. V části **Identifikátory URI pro přesměrování** vyhledejte část **Navrhované identifikátory URI pro přesměrování pro veřejné klienty (mobilní, desktopové)** a vyberte **urn:ietf:wg:oauth:2.0:oob**.
+1. Vyberte **Uložit**.
+1. Přejděte do sady Visual Studio, otevřete *App.xaml.cs* souboru a potom nahraďte `Enter_the_Application_Id_here` s ID aplikace, které jste právě zaregistrovali a zkopírovat.
 
     ```csharp
-    private static string ClientId = "your_application_id_here";
+    private static string ClientId = "Enter_the_Application_Id_here";
     ```

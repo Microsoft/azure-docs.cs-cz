@@ -1,6 +1,6 @@
 ---
-title: Shromažďovat data CEF ve verzi Preview Sentinelu Azure | Dokumentace Microsoftu
-description: Zjistěte, jak shromažďovat data CEF v ověřovacích Azure.
+title: Připojení k Azure Preview ověřovací CEF data | Dokumentace Microsoftu
+description: Zjistěte, jak se připojit k Azure Sentinelu CEF data.
 services: sentinel
 documentationcenter: na
 author: rkarlin
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/02/2019
 ms.author: rkarlin
-ms.openlocfilehash: 2117a139de52643f7cdbc6d054f46e5fb8ec0a77
-ms.sourcegitcommit: 045406e0aa1beb7537c12c0ea1fbf736062708e8
+ms.openlocfilehash: 18eb305beb79913713898b939ef840ca9ffab014
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/04/2019
-ms.locfileid: "59005612"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59489395"
 ---
 # <a name="connect-your-external-solution-using-common-event-format"></a>Připojení externích řešení pomocí Common Event Format
 
@@ -29,8 +29,7 @@ ms.locfileid: "59005612"
 
 Sentinelu Azure můžou připojit k externí řešení, která umožňují uložit soubory protokolu v protokolu Syslog. Pokud vaše zařízení umožňuje ukládat protokoly jako formát cef (Syslog Common Event Format), integraci s Azure Sentinelu umožňuje snadno spouštět analýzy a dotazy napříč daty.
 
-> [!NOTE]
-> 
+> [!NOTE] 
 > Data se ukládají v zeměpisné oblasti pracovního prostoru, na kterém je spuštěný Sentinelu Azure.
 
 ## <a name="how-it-works"></a>Jak to funguje
@@ -59,7 +58,7 @@ Alternativně můžete nasadit agenta ručně na existující virtuální počí
 ### <a name="deploy-the-agent-in-azure"></a>Nasazení agenta v Azure
 
 
-1. Na portálu Azure Sentinelu, klikněte na tlačítko **shromažďování dat** a vyberte typ zařízení. 
+1. Na portálu Azure Sentinelu, klikněte na tlačítko **datové konektory** a vyberte typ zařízení. 
 
 1. V části **konfigurace agenta protokolu Syslog v Linuxu**:
    - Zvolte **automatického nasazení** Pokud chcete vytvořit nový počítač, který je předem nainstalovaný s agentem Azure Sentinelu a obsahuje všechny nezbytné konfigurace, jak je popsáno výše. Vyberte **automatického nasazení** a klikněte na tlačítko **nasazení agentů pro automatickou diagnostiku**. Tím přejdete na stránku nákupní pro vyhrazené virtuálního počítače s Linuxem, který je automaticky připojena k pracovnímu prostoru, je. Je virtuální počítač **standardní virtuální počítač D2s v3 (2 virtuální procesory, 8 GB paměti)** a má veřejnou IP adresu.
@@ -96,7 +95,7 @@ Alternativně můžete nasadit agenta ručně na existující virtuální počí
 Pokud Azure nepoužíváte, ručně nasaďte agenta Sentinelu Azure ke spuštění na vyhrazeném serveru Linux.
 
 
-1. Na portálu Azure Sentinelu, klikněte na tlačítko **shromažďování dat** a vyberte typ zařízení.
+1. Na portálu Azure Sentinelu, klikněte na tlačítko **datové konektory** a vyberte typ zařízení.
 1. Chcete-li vytvořit vyhrazený virtuální počítač s Linuxem, v části **konfigurace agenta protokolu Syslog v Linuxu** zvolte **ručního nasazení**.
    1. V části **stažení a instalace agenta Syslog**vyberte **počítače mimo Azure Linux**. 
    1. V **přímý agent** obrazovku, která se otevře, vyberte **agenta pro Linux** stáhněte agenta nebo spuštěním tohoto příkazu si ho stáhnout na počítač s Linuxem:   `wget https://raw.githubusercontent.com/Microsoft/OMS-Agent-for-Linux/master/installer/scripts/onboard_agent.sh && sh onboard_agent.sh -w {workspace GUID} -s gehIk/GvZHJmqlgewMsIcth8H6VqXLM9YXEpu0BymnZEJb6mEjZzCHhZgCx5jrMB1pVjRCMhn+XTQgDTU3DVtQ== -d opinsights.azure.com`

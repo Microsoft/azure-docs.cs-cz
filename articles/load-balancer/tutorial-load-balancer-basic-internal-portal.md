@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 02/27/2019
 ms.author: kumud
 ms.custom: seodec18
-ms.openlocfilehash: 6abae32f5d8781735bc6a50dc888fddacbe8d0b9
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 56568cfb8fc659308475e581955e5acbdfd32b44
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58105297"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59489310"
 ---
 # <a name="tutorial-balance-internal-traffic-load-with-a-basic-load-balancer-in-the-azure-portal"></a>Kurz: Vyrovnávání zatížení interního provozu load balanceru úrovně Basic na webu Azure Portal
 
@@ -95,11 +95,10 @@ Vytvoření interní load balanceru úrovně Basic prostřednictvím portálu. N
     | Skupina prostředků         | Vyberte **vytvořit nový** a typ *MyResourceGroupLB* v textovém poli.|
     | Název                   | *myLoadBalancer*                                   |
     | Oblast         | Vyberte **Západní Evropa**.                                        |
-    | Type          | Vyberte **veřejné**.                                        |
+    | Type          | Vyberte **interní**.                                        |
     | Skladová jednotka (SKU)           | Vyberte **Basic**.                          |
     | Virtuální síť           | Vyberte *MyVNet*.                          |    
-| Veřejná IP adresa | Vyberte, že chcete **vytvořit novou** IP adresu. |
-    | Přiřazení veřejné IP adresy              | Vyberte **statické**.   |
+    | Přiřazení IP adresy              | Vyberte **statické**.   |
     | Privátní IP adresa|Zadejte adresu, která je v adresním prostoru virtuální sítě a podsítě, například *10.3.0.7*.  |
 
 3. V **revize + vytvořit** klikněte na tlačítko **vytvořit**. 

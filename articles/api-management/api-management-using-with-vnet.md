@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/01/2019
 ms.author: apimpm
-ms.openlocfilehash: 78efcefa7df99dfa3386dcdf19aafa47d7b9fab1
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.openlocfilehash: 7cbd21ce9f8e5d9d3c03eb7c626ab41b8d28498d
+ms.sourcegitcommit: f24b62e352e0512dfa2897362021b42e0cb9549d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58884499"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59505664"
 ---
 # <a name="how-to-use-azure-api-management-with-virtual-networks"></a>Jak používat Azure API Management s virtuálními sítěmi
 Virtuální sítě Azure (Vnet) umožňuje umístit některé z vašich prostředků Azure, které řídí přístup k síti možnosti směrování Internetu jiných. Potom se dá propojit tyto sítí k místním sítím pomocí různých technologií VPN. Další informace o Azure Virtual Networks začínat tyto informace tady: [Přehled služby Azure Virtual Network](../virtual-network/virtual-networks-overview.md).
@@ -59,7 +59,7 @@ Chcete-li provést postup popsaný v tomto článku, budete potřebovat:
 
    * **Interní**: brány a vývojářského portálu API Management je přístupný jenom v rámci virtuální sítě prostřednictvím interního nástroje load balancer. Brána lze přistupovat k prostředkům v rámci virtuální sítě.
 
-     ![Soukromý partnerský vztah][api-management-vnet-private]`
+     ![Soukromý partnerský vztah][api-management-vnet-private]
 
      Nyní se zobrazí seznam všech oblastech, kde je zřízené služby API Management. Vyberte virtuální síť a podsíť pro každou oblast. V seznamu se vyplní classic i Resource Manager k dispozici ve vašem předplatném Azure, které jsou nastavené v oblasti, kterou konfigurujete virtuální sítě.
 
@@ -154,7 +154,7 @@ Když jsou instance služby API Management je hostované ve virtuální síti, s
     
     > 13.84.189.17/32, 13.85.22.63/32, 23.96.224.175/32, 23.101.166.38/32, 52.162.110.80/32, 104.214.19.224/32, 13.64.39.16/32, 40.81.47.216/32, 51.145.179.78/32, 52.142.95.35/32, 40.90.185.46/32, 20.40.125.155/32
 
-  * Pro jiné služby API Management service závislosti, které procházejí vynuceným tunelovým propojením, jejich by měl být způsob, jak vyřešit název hostitele a kontaktovat ke koncovému bodu. Patří mezi ně
+  * Pro další závislosti služby API Management, které procházejí vynuceným tunelovým propojením měla by existovat způsob, jak vyřešit název hostitele a kontaktujte koncový bod. Patří mezi ně
       - Monitorování stavu a metriky
       - Portál Azure Diagnostics
       - Nastavením předávání SMTP

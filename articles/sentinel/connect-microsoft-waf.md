@@ -1,6 +1,6 @@
 ---
-title: Shromažďování dat o webové aplikaci brány firewall společnosti Microsoft ve verzi Preview Sentinelu Azure | Dokumentace Microsoftu
-description: Zjistěte, jak shromažďovat data o webové aplikaci brány firewall společnosti Microsoft v Sentinelu Azure.
+title: Připojit data brány firewall webových aplikací Microsoft Azure Preview Sentinelu | Dokumentace Microsoftu
+description: Zjistěte, jak se připojit k Azure ověřovací data brány firewall webových aplikací Microsoft.
 services: sentinel
 documentationcenter: na
 author: rkarlin
@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 3/6/2019
+ms.date: 04/07/2019
 ms.author: rkarlin
-ms.openlocfilehash: 2238060acb60b1be0d06b81f62fb45a7f1c7a9b6
-ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
+ms.openlocfilehash: 5316fa7e3aa4465349b762b99bec9171f821062f
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2019
-ms.locfileid: "58580595"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59491026"
 ---
-# <a name="collect-data-from-microsoft-web-application-firewall"></a>Shromažďování dat z brány firewall webových aplikací Microsoft
+# <a name="connect-data-from-microsoft-web-application-firewall"></a>Připojíte si data z firewallu webových aplikací Microsoft
 
 > [!IMPORTANT]
 > Azure Sentinel je aktuálně ve verzi public preview.
@@ -39,15 +39,15 @@ Můžete Streamovat protokoly z firewallu webových aplikací Microsoft Azure Ap
 Pokud už máte brány firewall webových aplikací Microsoftu, ujistěte se, že máte existující prostředek brány.
 Po nasazení vašeho firewallu webových aplikací Microsoft a získávání dat, data upozornění můžete snadno Streamovat do ověřovacích Azure.
     
-5. Na portálu Azure Sentinelu vyberte **datové konektory**.
-5. Na stránce konektory dat, vyberte **WAF** dlaždici.
+1. Na portálu Azure Sentinelu vyberte **datové konektory**.
+1. Na stránce konektory dat, vyberte **WAF** dlaždici.
 1. Přejděte na [prostředku Application Gateway](https://ms.portal.azure.com/#blade/HubsExtension/BrowseAllResourcesBlade/resourceType/Microsoft.Network%2FapplicationGateways) a vyberte svou bránu WAF.
     1. Vyberte **nastavení diagnostiky**.
     1. Vyberte **+ přidat nastavení diagnostiky** pod tabulkou.
     1. V **nastavení diagnostiky** stránky, zadejte **název** a vyberte **odesílat do Log Analytics**.
     1. V části **pracovní prostor Log Analytics** vyberte pracovní prostor Sentinelu Azure.
     1. Vyberte typy protokolů, které chcete analyzovat. Doporučujeme: ApplicationGatewayAccessLog a ApplicationGatewayFirewallLog.
-6. Použít příslušné schéma v Log Analytics pro výstrahy brány firewall webové aplikace Microsoft, vyhledejte **AzureDiagnostics**.
+1. Použít příslušné schéma v Log Analytics pro výstrahy brány firewall webové aplikace Microsoft, vyhledejte **AzureDiagnostics**.
 
 ## <a name="next-steps"></a>Další postup
 V tomto dokumentu jste zjistili, jak připojit Microsoft firewallu webových aplikací k Sentinelu Azure. Další informace o Azure Sentinelu, naleznete v následujících článcích:

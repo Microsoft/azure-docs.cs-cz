@@ -13,14 +13,14 @@ ms.topic: overview
 ms.custom: mvc
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 2/28/2019
+ms.date: 04/07/2019
 ms.author: rkarlin
-ms.openlocfilehash: a1c74f0ed9fd9b9abccfb7c2762cadf948c8fce0
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: ba0f584e8026fe3828ec79c4b6c0ff5a0bb89f5a
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57884791"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59492358"
 ---
 # <a name="connect-data-sources"></a>Připojení zdrojů dat
 
@@ -34,9 +34,9 @@ Do vlaku Sentinelu Azure musíte nejprve připojit ke zdrojům dat. Azure Sentin
 
 ![Kolekce dat](./media/collect-data/collect-data-page.png)
 
-## <a name="data-collection-methods"></a>Metody kolekce dat
+## <a name="data-connection-methods"></a>Metody datového připojení
 
-Sentinelu Azure podporuje následující metody kolekce dat:
+Podporuje následující datové připojení metody Sentinelu Azure:
 
 - **Služby Microsoft**:<br> Služby jsou připojené nativní využití Azure základ pro pole out v integraci, následující řešení můžete připojit pomocí několika kliknutí:
     - [Office 365](connect-office-365.md)
@@ -45,14 +45,14 @@ Sentinelu Azure podporuje následující metody kolekce dat:
     - [Azure AD Identity Protection](connect-azure-ad-Identity-protection.md)
     - [Azure Security Center](connect-azure-security-center.md)
     - [Azure Information Protection](connect-azure-information-protection.md)
-    - [Azure Advanced Threat Protection](connect-azure-atp.md)
+    - [Rozšířená ochrana před internetovými útoky Azure](connect-azure-atp.md)
     - [Cloud App Security](connect-cloud-app-security.md)
-    - [Události zabezpečení Windows](connect-windows-security-events.md) 
+    - [Události zabezpečení systému Windows](connect-windows-security-events.md) 
     - [Brána Windows firewall](connect-windows-firewall.md)
 
 - **Externí řešení přes rozhraní API**: Některé zdroje dat jsou připojené připojených zdrojů dat pomocí rozhraní API, která jsou k dispozici. Většina zabezpečení technologie obvykle poskytují sadu rozhraní API, pomocí kterého se dá načíst protokoly událostí. Rozhraní API pro připojení k Azure Sentinelu a shromažďovat konkrétní datové typy a odeslat do služby Azure Log Analytics. Zařízení připojené přes rozhraní API patří:
     - [Barracuda](connect-barracuda.md)
-    - Symantec
+    - [Symantec](connect-symantec.md)
 - **Externí řešení prostřednictvím agenta**: Azure Sentinel může být připojen k všechny ostatní zdroje dat, které můžete provádět, streamování v reálném čase protokolů pomocí protokolu Syslog, prostřednictvím agenta. <br>Většina zařízení pomocí protokolu Syslog odesílat zprávy o událostech, které zahrnují protokolu samostatně a data o protokolu. Formát protokoly se liší, ale většina zařízení podporují standardní formát cef (Common Event Format). <br>Agent Azure Sentinelu, která je založena na agenta OMS, převede CEF ve formátu protokoly do formátu, který je možné ingestovat službou Log Analytics. V závislosti na typu zařízení je agent nainstalovaný přímo na zařízení nebo na vyhrazeném serveru Linux. Agenta pro Linux přes protokol UDP. přijímá události z procesu démona Syslogu, ale v případech, kde je očekávána počítač s Linuxem ke shromažďování k velkému počtu události procesu Syslog, odešlou přes TCP z procesu démona Syslogu na agenta a z něj ke službě Log Analytics.
     - Brány firewall, proxy servery a koncové body:
         - [F5](connect-f5.md)

@@ -5,19 +5,19 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: tutorial
-ms.date: 06/25/2018
+ms.date: 04/10/2019
 ms.author: mimart
 author: msmimart
-manager: daveba
+manager: celested
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 94e5f4eaf32815dd0342ef73705efb2c575b71bc
-ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
+ms.openlocfilehash: d83cad9c6681a9d1c852c3d874028ceb6913344f
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58293988"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59496620"
 ---
 # <a name="tutorial-enforce-multi-factor-authentication-for-b2b-guest-users"></a>Kurz: Vynutit ověřování Multi-Factor Authentication pro uživatele typu Host B2B
 
@@ -72,7 +72,7 @@ K dokončení scénáře v tomto kurzu budete potřebovat:
 3.  Odhlaste se.
 
 ## <a name="create-a-conditional-access-policy-that-requires-mfa"></a>Vytvoření zásad podmíněného přístupu vyžadujících vícefaktorové ověřování
-1.  Přihlaste se k webu [Azure Portal](https://portal.azure.com/) jako globální správce, správce zabezpečení nebo správce podmíněného přístupu.
+1.  Přihlaste se k vaší [webu Azure portal](https://portal.azure.com/) jako správce zabezpečení nebo správce podmíněného přístupu.
 2.  Na portálu Azure Portal vyberte **Azure Active Directory**. 
 3.  Na stránce **Azure Active Directory** v části **Zabezpečení** vyberte **Podmíněný přístup**.
 4.  Na stránce **Podmíněný přístup** vyberte nahoře na panelu nástrojů možnost **Nové zásady**.

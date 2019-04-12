@@ -1,6 +1,6 @@
 ---
-title: Shromažďování dat aktivita služby Azure ve verzi Preview Sentinelu Azure | Dokumentace Microsoftu
-description: Zjistěte, jak shromažďovat data aktivit Azure v Azure Sentinelu.
+title: Připojit data aktivit Azure Sentinelu ve verzi Preview Azure | Dokumentace Microsoftu
+description: Zjistěte, jak se připojit k Azure ověřovací aktivita služby Azure data.
 services: sentinel
 documentationcenter: na
 author: rkarlin
@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 2/28/2019
+ms.date: 04/07/2019
 ms.author: rkarlin
-ms.openlocfilehash: 42ce8d06489cfacf7ba9bb3de1425224b5df95e7
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: d0cc13227bfe02594a57a7fb0ba8ee1cb3383d56
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57240571"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59494674"
 ---
-# <a name="collect-data-from-azure-activity-log"></a>Shromažďování dat od protokolů aktivit Azure
+# <a name="connect-data-from-azure-activity-log"></a>Propojení dat od protokolů aktivit Azure
 
 > [!IMPORTANT]
 > Azure Sentinel je aktuálně ve verzi public preview.
@@ -37,7 +37,7 @@ Můžete Streamovat protokoly z [protokol aktivit Azure](../azure-monitor/platfo
 
 ## <a name="connect-to-azure-activity-log"></a>Připojit k protokolům aktivit Azure
 
-1. V Azure Sentinelu, vyberte **shromažďování dat** a potom klikněte na tlačítko **protokol aktivit Azure** dlaždici.
+1. V Azure Sentinelu, vyberte **datové konektory** a potom klikněte na tlačítko **protokol aktivit Azure** dlaždici.
 
 2. V podokně protokolu aktivit Azure vyberte odběry, které chcete Streamovat do ověřovacích Azure. 
 

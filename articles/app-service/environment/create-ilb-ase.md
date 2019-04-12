@@ -14,12 +14,12 @@ ms.topic: quickstart
 ms.date: 06/12/2018
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 99c6e7dc589a94880976a9c7abcde12377e4e5d3
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: dcb38d839017d1c4ea5b6714f7c900c476ddcd6b
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58101529"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59494657"
 ---
 # <a name="create-and-use-an-internal-load-balancer-with-an-app-service-environment"></a>Vytvoření a používání interního nástroje pro vyrovnávání zatížení ve službě App Service Environment #
 
@@ -174,9 +174,9 @@ Pokud chcete nahrát vlastní certifikáty a otestovat přístup, postupujte tak
 
     b. Pokud chcete provést test publikování nasazení webu nebo získat přístup k rozšířené konzole, vytvořte záznam pro adresu _mytestapp.scm.ilbase.com_.
 
-5. Na tomto virtuálním počítači prohlížeč a přejděte na https://mytestapp.ilbase.com. (Nebo přejděte na cokoli, co je název vaší aplikace ve vaší doméně.)
+5. V prohlížeči na tomto virtuálním počítači přejděte na adresu https://mytestapp.ilbase.com. (Nebo přejděte na cokoli, co je název vaší aplikace ve vaší doméně.)
 
-6. Na tomto virtuálním počítači prohlížeč a přejděte na https://mytestapp.ilbase.com. Pokud používáte certifikát podepsaný svým držitelem, přijměte nedostatek zabezpečení.
+6. V prohlížeči na tomto virtuálním počítači přejděte na adresu https://mytestapp.ilbase.com. Pokud používáte certifikát podepsaný svým držitelem, přijměte nedostatek zabezpečení.
 
     IP adresa vašeho interního nástroje pro vyrovnávání zatížení je uvedená v seznamu **IP adresy**. Tento seznam obsahuje také IP adresy používané externí virtuální IP adresou a k řízení příchozích přenosů.
 

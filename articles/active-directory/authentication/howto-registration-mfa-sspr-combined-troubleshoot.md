@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ba77772352d3f6f6494abeddc7faf9f12e5f80c2
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: 40918493071fe0dd694c43e2b087a2bf7eb197d8
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59262563"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59489189"
 ---
 # <a name="troubleshooting-combined-security-information-registration-preview"></a>Řešení potíží s kombinovat informace o registraci zabezpečení (preview)
 
@@ -154,7 +154,7 @@ V okně Powershellu spusťte následující příkaz, a zadejte umístění soub
 
 Pokud chcete zakázat prostředí ve verzi preview pro vaše uživatele, proveďte tyto kroky:
 
-1. Přihlaste se k webu Azure portal jako globální správce nebo Správce uživatelů.
+1. Přihlaste se k webu Azure portal jako správce uživatelů.
 2. Přejděte na **Azure Active Directory** > **uživatelská nastavení** > **umožňuje spravovat nastavení přístupu funkce ve verzi preview panel**.
 3. V části **uživatelé můžou používat funkce verze preview pro registraci a správu bezpečnostních údajů**, nastavte na volič **žádný**a pak vyberte **Uložit**.
 

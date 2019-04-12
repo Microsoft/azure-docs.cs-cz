@@ -9,16 +9,16 @@ ms.service: application-insights
 ms.topic: conceptual
 ms.date: 04/01/2019
 ms.author: mbullwin
-ms.openlocfilehash: c616b2578f7606ce7df19fdbef16bec8a24428d3
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: 25f620cb36c2bfb548ecf08c33dc04b37118a256
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59262495"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59489618"
 ---
 # <a name="monitor-azure-app-service-performance"></a>Sledování výkonu služby Azure App Service
 
-Povolení sledování v rozhraní .NET a .NET Core na základě webové aplikace běžící v Azure App Service je teď snadnější než kdy dřív. Zatímco dříve jste museli ručně nainstalovat rozšíření webu, nejnovější agent/rozšíření je teď součástí app service image ve výchozím nastavení. Tento článek se vás provede povolením monitorování pomocí Application Insights a také předběžnou pokyny pro automatizaci tohoto procesu pro rozsáhlá nasazení.
+Povolení sledování v rozhraní .NET a .NET Core na základě webové aplikace běžící [Azure App Services](https://docs.microsoft.com/azure/app-service/) je teď snadnější než kdy dřív. Zatímco dříve jste museli ručně nainstalovat rozšíření webu, nejnovější agent/rozšíření je teď součástí app service image ve výchozím nastavení. Tento článek se vás provede povolením monitorování pomocí Application Insights a také předběžnou pokyny pro automatizaci tohoto procesu pro rozsáhlá nasazení.
 
 > [!NOTE]
 > Ruční přidání rozšíření webu Application Insights prostřednictvím **nástroje pro vývoj** > **rozšíření** je zastaralý. Tato metoda instalace rozšíření závisel na ruční aktualizace pro každou novou verzi. Nejnovější stabilní verze tohoto rozšíření je teď [předinstalovaným](https://github.com/projectkudu/kudu/wiki/Azure-Site-Extensions) jako součást image služby App Service. Soubory jsou umístěny v `d:\Program Files (x86)\SiteExtensions\ApplicationInsightsAgent` a aktualizují automaticky s každou stabilní verzi. Pokud budete postupovat podle pokynů na základě agenta monitorování povolit níže, automaticky odebere nepoužívané rozšíření za vás.

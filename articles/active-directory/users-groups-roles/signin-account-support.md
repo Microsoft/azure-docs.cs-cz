@@ -8,21 +8,21 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 04/08/2019
+ms.date: 04/10/2019
 ms.author: curtand
 ms.reviewer: kexia
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a62c4d56fbfca34ff6291863149b078f7ddc6680
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: 2d26ff0f9259e3531259673f94fe477444cc786b
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59288588"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59491591"
 ---
 # <a name="sign-in-options-for-microsoft-accounts-in-azure-active-directory"></a>Možnosti přihlášení pro účty Microsoftu v Azure Active Directory
 
-Microsoft 365 přihlašovací stránku služby Azure Active Directory (Azure AD) podporuje alespoň jeden pracovní nebo školní účty a účty Microsoft, v závislosti na situaci, pro podporu:
+Microsoft 365 přihlašovací stránku služby Azure Active Directory (Azure AD) podporuje pracovní nebo školní účty a účty Microsoft, ale v závislosti na situaci uživatele, může být jeden nebo druhý nebo obojí. Například na přihlašovací stránku Azure AD podporuje:
 
 * Aplikace, které přijímají přihlášení z obou typů účtu
 * Organizace, které akceptují hosty
@@ -32,7 +32,7 @@ Můžete zjistit, jestli přihlašovací stránku, kterou používá vaše organ
 
 ![Rozdíl mezi účet přihlašovací stránky](./media/signin-account-support/ui-prompt.png)
 
-[Další možnosti přihlašování fungují pouze u osobních účtů Microsoft](index.yml) , ale nelze použít pro přihlášení k pracovním nebo školním prostředkům účtu.
+[Další možnosti přihlašování fungují pouze u osobních účtů Microsoft](https://azure.microsoft.com/updates/microsoft-account-signin-options/ ) , ale nelze použít pro přihlášení k pracovním nebo školním prostředkům účtu.
 
 ## <a name="next-steps"></a>Další postup
 

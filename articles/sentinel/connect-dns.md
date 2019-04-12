@@ -1,6 +1,6 @@
 ---
-title: Shromažďování dat DNS ve verzi Preview Sentinelu Azure | Dokumentace Microsoftu
-description: Zjistěte, jak shromažďovat data DNS v Azure Sentinelu.
+title: Po propojení dat DNS ve verzi Preview Sentinelu Azure | Dokumentace Microsoftu
+description: Zjistěte, jak připojit data DNS v Azure Sentinelu.
 services: sentinel
 documentationcenter: na
 author: rkarlin
@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 3/6/2019
+ms.date: 04/07/2019
 ms.author: rkarlin
-ms.openlocfilehash: a7f075b74876ec807d790f3ffbea5dad14163535
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: e34db2bdc78eb846cf4885b1ef083fd3b21e21b5
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57530412"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59489738"
 ---
 # <a name="connect-your-domain-name-server"></a>Připojení serveru název domény
 
@@ -29,7 +29,7 @@ ms.locfileid: "57530412"
 
 Libovolný Server DNS (Domain Name) běží na Windows Azure Sentinelu se můžete připojit. To provádí instalací agenta na počítači DNS. Protokoly pomocí DNS, můžete získat zabezpečení, výkon a operace související informace o infrastruktuře DNS vaší organizace pomocí shromažďování, analýza, a korelace analýzy a protokoly auditu a dalších souvisejících dat ze serverů DNS.
 
-Pokud povolíte shromažďování protokolů DNS můžete:
+Když povolíte připojení protokolu DNS můžete:
 - Identifikace klientů, které se pokoušejí přeložit škodlivé domény názvy
 - Identifikace zastaralých záznamů
 - Identifikujte často doménový názvy a prahová klienti DNS
@@ -38,11 +38,11 @@ Pokud povolíte shromažďování protokolů DNS můžete:
 
 ## <a name="how-it-works"></a>Jak to funguje
 
-Po instalaci agenta do počítače DNS se provádí kolekce DNS. Agent si vyžádá události DNS a předává je do Log Analytics.
+Po instalaci agenta do počítače DNS se provádí DNS připojení. Agent si vyžádá události DNS a předává je do Log Analytics.
 
 ## <a name="connect-your-dns-appliance"></a>Připojit zařízení DNS
 
-1. Na portálu Azure Sentinelu vyberte **shromažďování dat** a zvolte **DNS** dlaždici.
+1. Na portálu Azure Sentinelu vyberte **datové konektory** a zvolte **DNS** dlaždici.
 1. Pokud jsou vaše počítače DNS v Azure:
     1. Klikněte na tlačítko **stáhnout a nainstalovat agenta pro Windows virtual machines**.
     1. V **virtuálních počítačů** seznamu, vyberte počítač DNS chcete Streamovat do ověřovacích Azure. Ujistěte se, že jde o virtuálního počítače s Windows.

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 05/30/2018
 ms.author: johnkem
 ms.subservice: logs
-ms.openlocfilehash: 94465e95dbf5f2eb381c124349bf8fda6622a6c2
-ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
+ms.openlocfilehash: b84238e8a659358f2c065eb1533f0d21a5335d43
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58650287"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59496875"
 ---
 # <a name="monitor-subscription-activity-with-the-azure-activity-log"></a>Monitorování aktivit předplatného s protokolem aktivit Azure
 
@@ -95,19 +95,11 @@ A **profilu protokolu** řídí, jak exportovat protokol aktivit. Pomocí profil
 * Poslat kategorií, které události (akce zápisu, odstranění,). *Význam "kategorie" v profily protokolů a událostí protokolu aktivit se liší. V profilu protokolu "Kategorie" představuje typ operace (akce zápisu, odstranění,). V události protokolu aktivit vlastnost "kategorie" představuje zdroj nebo typu události (například správu ServiceHealth, upozornění a další).*
 * Které oblasti (umístění) by měly být exportovány. Nezapomeňte uvést "globální", protože mnoho událostí v protokolu aktivit jsou globální události.
 * Jak dlouho se uchovávají v účtu úložiště protokolu aktivit.
-    - Uchování 0 dnů znamená, že protokoly se uchovávají navždy. V opačném případě hodnota může být libovolný počet dnů mezi 1 a 2147483647.
+    - Uchování 0 dnů znamená, že protokoly se uchovávají navždy. V opačném případě hodnota může být libovolný počet dnů od 1 do 365.
     - Pokud nejsou nastavené zásady uchovávání informací, ale ukládání protokolů v účtu úložiště je zakázaný (například pokud pouze jsou vybrané možnosti služby Event Hubs nebo Log Analytics), zásady uchovávání informací nemají žádný vliv.
     - Zásady uchovávání informací jsou použitých za den, takže na konci za den (UTC), tento počet protokolů ze dne, který je nyní mimo uchovávání se zásada odstraní. Například pokud máte zásady uchovávání informací o jeden den, na začátku dne dnes protokoly ze včerejška před den se odstraní. Proces odstraňování začíná o půlnoci UTC, ale Všimněte si, že může trvat až 24 hodin pro protokoly, které mají být odstraněny z vašeho účtu úložiště.
 
 Můžete použít úložiště účtu nebo událostí centra oboru názvů, který není ve stejném předplatném jako jeden vysílá protokoly. Uživatel, který konfiguruje nastavení, musí mít správný přístup RBAC k oběma předplatným.
-
-> [!NOTE]
->  Nelze aktuálně archivace dat do účtu úložiště, který je za zabezpečené virtuální síti.
-
-> [!WARNING]
-> Formát data protokolu v aktuálním účtu úložiště změnit na řádky JSON na 1. listopadu 2018. [Informace o dopadu a postup pro aktualizaci nástrojů, aby si s novým formátem poradily, najdete v tomto článku](./../../azure-monitor/platform/diagnostic-logs-append-blobs.md).
->
->
 
 Tato nastavení můžete nakonfigurovat přes možnost "Export" v okně protokolu aktivit na portálu. Se taky dají konfigurovat prostřednictvím kódu programu [pomocí REST API služby Azure Monitor](https://msdn.microsoft.com/library/azure/dn931927.aspx), rutin prostředí PowerShell nebo rozhraní příkazového řádku. Předplatné může mít jenom jeden profil protokolu.
 

@@ -1,5 +1,5 @@
 ---
-title: Jak nasadit modul pro správu zařízení Azure IoT OPC UA od nuly | Dokumentace Microsoftu
+title: Jak nasadit OPC dvojče modulu pro Azure od nuly | Dokumentace Microsoftu
 description: Jak nasadit OPC Dvojčete úplně od začátku.
 author: dominicbetts
 ms.author: dobett
@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.service: iot-industrialiot
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: fe1b141ecacbd1d96c217322e69709828a3bf36c
-ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
+ms.openlocfilehash: f470beb79e69b5a4a3febeb6a433c48490b96cf7
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58759408"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59491352"
 ---
 # <a name="deploy-opc-twin-module-and-dependencies-from-scratch"></a>Nasazení modulu Dvojčete OPC a závislosti úplně od začátku
 
-Dvojče zařízení OPC modul spouští na hraničních zařízeních IoT a poskytuje několik služeb edge do Dvojčete zařízení OPC a registru služby. 
+OPC Dvojčete modulu běží na hraničních zařízeních IoT a poskytuje několik služeb edge do dvojčete zařízení OPC a registr služeb. 
 
 Existuje několik možností, jak můžete nasadit moduly pro vaše [Azure IoT Edge](https://azure.microsoft.com/services/iot-edge/) brány mezi nimi
 
@@ -109,7 +109,7 @@ Nejjednodušší způsob, jak nasadit moduly pro zařízení brány Azure IoT Ed
 
 ### <a name="prerequisites"></a>Požadavky
 
-1. Nasazení správy zařízení OPC UA [závislosti](howto-opc-twin-deploy-dependencies.md) a získat výsledný `.env` souboru. Všimněte si, nasazené `hub name` z `PCS_IOTHUBREACT_HUB_NAME` proměnné ve výsledné `.env` souboru.
+1. Nasazení Dvojčeti OPC [závislosti](howto-opc-twin-deploy-dependencies.md) a získat výsledný `.env` souboru. Všimněte si, nasazené `hub name` z `PCS_IOTHUBREACT_HUB_NAME` proměnné ve výsledné `.env` souboru.
 
 2. Zaregistrujte se a začněte [Linux](https://docs.microsoft.com/azure/iot-edge/how-to-install-iot-edge-linux) nebo [Windows](https://docs.microsoft.com/azure/iot-edge/how-to-install-iot-edge-windows) brána IoT Edge a poznamenejte si jeho `device id`.
 
@@ -205,7 +205,7 @@ Pro řešení potíží a ladění je vhodné spouštět hraniční moduly míst
 
 ### <a name="prerequisites"></a>Požadavky
 
-1. Nasazení správy zařízení OPC UA [závislosti](howto-opc-twin-deploy-dependencies.md).
+1. Nasazení Dvojčeti OPC [závislosti](howto-opc-twin-deploy-dependencies.md).
 
 2. Nainstalujte [Docker CE (18.02.0+)](https://www.docker.com/community-edition) na [Windows](https://docs.docker.com/docker-for-windows/install/), [macOS](https://docs.docker.com/docker-for-mac/install/) nebo [Linux](https://docs.docker.com/install/linux/docker-ce/ubuntu/#install-docker-ce).
 

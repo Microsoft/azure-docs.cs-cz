@@ -2,18 +2,18 @@
 title: zahrnout soubor
 description: zahrnout soubor
 services: networking
-author: jimdial
+author: anavinahar
 ms.service: networking
 ms.topic: include
-ms.date: 02/07/2019
-ms.author: jdial
+ms.date: 04/10/2019
+ms.author: anavin
 ms.custom: include file
-ms.openlocfilehash: c6c57390e0a2fba0c79d3198df0f5577eb813f88
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: ff6e08929d5ede86ba0632e7cfb38d81d21ca7ec
+ms.sourcegitcommit: 41015688dc94593fd9662a7f0ba0e72f044915d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57553398"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59503279"
 ---
 <a name="virtual-networking-limits-classic"></a>Následující omezení platí pouze pro síťové prostředky spravované přes model nasazení Classic na předplatné. Zjistěte, jak [zobrazit aktuální využití prostředků pro vaše předplatné omezení](../articles/networking/check-usage-against-limits.md).
 
@@ -44,7 +44,7 @@ Následující omezení platí pouze pro síťové prostředky spravované přes
 | --- | --- |
 | Virtuální sítě |1 000 |
 | Podsítě na virtuální síť |3000 |
-| Partnerské vztahy virtuálních sítí na virtuální síť |100 |
+| Partnerské vztahy virtuálních sítí na virtuální síť |500 |
 | Servery DNS na virtuální síť |20 |
 | Privátní IP adresy na virtuální síť |65,536 |
 | Privátní IP adresy na síťové rozhraní |256 |
@@ -68,7 +68,7 @@ Následující omezení platí pouze pro síťové prostředky spravované přes
 | Prostředek | Výchozí omezení | Maximální omezení |
 | --- | --- | --- |
 | Veřejné IP adresy – dynamická | 1000 pro jazyk Basic. |Kontaktujte podporu. |
-| Veřejné IP adresy – statické | 200 pro jazyk Basic. |Kontaktujte podporu. |
+| Veřejné IP adresy – statické | 1000 pro jazyk Basic. |Kontaktujte podporu. |
 | Veřejné IP adresy – statické | 200 pro úroveň Standard.|Kontaktujte podporu. |
 | Velikost předpony veřejných IP (preview) | /28 | /28 |
 

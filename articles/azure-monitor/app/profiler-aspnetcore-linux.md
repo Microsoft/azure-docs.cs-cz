@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 02/23/2018
 ms.author: cweining
-ms.openlocfilehash: 5787db7e2b726a10891fcabb0b215399d0d4e0ae
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 35789cc1e516fb24d5e985e12b44fe3cd01b795d
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55884303"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59494744"
 ---
 # <a name="profile-aspnet-core-azure-linux-web-apps-with-application-insights-profiler"></a>Profilování webových aplikací ASP.NET Core Azure s Linuxem pomocí Application Insights Profiler
 
@@ -39,21 +39,40 @@ Následující pokyny platí pro všechna prostředí vývoj pro Windows, Linux 
 
 1. Otevřete na svém počítači okno příkazového řádku. Postupujte podle následujících pokynů pro všechna prostředí vývoj pro Windows, Linux a Mac fungovat.
 
-2. Vytvořte webovou aplikaci ASP.NET Core MVC:
+1. Vytvořte webovou aplikaci ASP.NET Core MVC:
 
     ```
     dotnet new mvc -n LinuxProfilerTest
     ```
 
-3. Změňte v pracovním adresáři do kořenové složky projektu.
+1. Změňte v pracovním adresáři do kořenové složky projektu.
 
-4. Přidání balíčku NuGet pro shromažďování trasování Profiler:
+1. Přidání balíčku NuGet pro shromažďování trasování Profiler:
 
-    ```
+    ```shell
     dotnet add package Microsoft.ApplicationInsights.Profiler.AspNetCore
     ```
 
-5. Přidat řádek kódu **HomeController.cs** části náhodně zpoždění pár sekund:
+1. Povolte Application Insights v souboru Program.cs:
+
+    ```csharp
+    public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
+        WebHost.CreateDefaultBuilder(args)
+            .UseApplicationInsights() // Add this line of code to Enable Application Insights
+            .UseStartup<Startup>();
+    ```
+    
+1. Povolte Profiler v souboru Startup.cs:
+
+    ```csharp
+    public void ConfigureServices(IServiceCollection services)
+    {
+        services.AddServiceProfiler(); // Add this line of code to Enable Profiler
+        services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+    }
+    ```
+
+1. Přidat řádek kódu **HomeController.cs** části náhodně zpoždění pár sekund:
 
     ```csharp
         using System.Threading;
@@ -68,7 +87,7 @@ Následující pokyny platí pro všechna prostředí vývoj pro Windows, Linux 
             }
     ```
 
-6. Uložte a potvrďte změny do místního úložiště:
+1. Uložte a potvrďte změny do místního úložiště:
 
     ```
         git init
@@ -143,10 +162,7 @@ Byste měli vidět výstup podobný následujícímu příkladu:
 
     ```
     APPINSIGHTS_INSTRUMENTATIONKEY: [YOUR_APPINSIGHTS_KEY]
-    ASPNETCORE_HOSTINGSTARTUPASSEMBLIES: Microsoft.ApplicationInsights.Profiler.AspNetCore
     ```
-
-    ![Konfigurace nastavení aplikace](./media/profiler-aspnetcore-linux/set-appsettings.png)
 
     Při změně nastavení aplikací, lokality se automaticky restartuje. Jsou použita nová nastavení, Profiler okamžitě se spustí po dobu dvou minut. Profiler pak spustí dvě minuty každou hodinu.
 
@@ -160,16 +176,8 @@ Byste měli vidět výstup podobný následujícímu příkladu:
 
 ## <a name="known-issues"></a>Známé problémy
 
-### <a name="the-enable-action-in-the-profiler-configuration-pane-doesnt-work"></a>Povolit akce v podokně Konfigurace Profiler nebude fungovat.
-
-> [!NOTE]
-> Pokud hostujete vaší aplikace pomocí služby App Service v Linuxu, nemusíte znovu povolit Profiler v **výkonu** podokně na portálu Application Insights. Můžete zahrnout do projektu balíček NuGet a nastavení služby Application Insights **Instrumentační klíč** hodnota v nastavení webové aplikace, abyste povolili Profiler.
-
-Pokud budete postupovat podle pracovní postup povolení pro [Application Insights Profiler pro Windows](./profiler.md) a vyberte **povolit** v **nakonfigurujte Profiler** podokně zobrazí chybová zpráva. Akce Povolit pokusí se nainstalovat verzi Windows Profiler agenta v prostředí Linuxu.
-
-Pracujeme na řešení tohoto problému.
-
-![Nepokoušejte se znovu zapnout. Profiler v podokně výkon](./media/profiler-aspnetcore-linux/issue-enable-profiler.png)
+### <a name="profile-now-button-doesnt-work-for-linux-profiler"></a>Profil se tlačítko nefunguje pro Linux Profiler
+App Insights profiler verzi Linuxu zatím nepodporuje na vyžádání profilace pomocí daného profilu teď tlačítko.
 
 
 ## <a name="next-steps"></a>Další postup

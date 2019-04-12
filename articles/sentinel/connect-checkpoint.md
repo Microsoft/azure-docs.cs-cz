@@ -1,6 +1,6 @@
 ---
-title: Check Point shromažďování dat ve verzi Preview Sentinelu Azure | Dokumentace Microsoftu
-description: Zjistěte, jak shromažďovat data kontrolní bod v ověřovacích Azure.
+title: Propojení dat Check Point Sentinelu ve verzi Preview Azure | Dokumentace Microsoftu
+description: Informace o připojení k Azure Sentinelu Check Point data.
 services: sentinel
 documentationcenter: na
 author: rkarlin
@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 3/6/2019
+ms.date: 04/07/2019
 ms.author: rkarlin
-ms.openlocfilehash: 1fb4f9165be03a7fc3cd055ef616dcfadb58ac9d
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.openlocfilehash: 664b09a8ad0cb7d06019281869e390a465637c00
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58876492"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59489172"
 ---
 # <a name="connect-your-check-point-appliance"></a>Připojit zařízení Check Point
 
@@ -30,7 +30,7 @@ ms.locfileid: "58876492"
 Můžete připojit Sentinelu Azure do všech zařízení Check Point podle ukládání souborů protokolu ve formátu Syslog CEF. Integrace s Azure Sentinelu umožňuje snadno spouštět analýzy a dotazy napříč data protokolů z kontrolní bod. Další informace o tom, jak Azure Sentinelu ingestuje CEF data, naleznete v tématu [zařízení připojit CEF](connect-common-event-format.md).
 
 > [!NOTE]
-> - Data se uloží v zeměpisné oblasti pracovního prostoru, na kterém je spuštěný Sentinelu Azure.
+> Data se uloží v zeměpisné oblasti pracovního prostoru, na kterém je spuštěný Sentinelu Azure.
 
 ## <a name="step-1-connect-your-check-point-appliance-using-an-agent"></a>Krok 1: Připojit zařízení kontrolní bod pomocí agenta
 
@@ -42,7 +42,7 @@ Síťový diagram z obou možností najdete v tématu [připojení zdroje dat](c
 
 ### <a name="deploy-the-agent-in-azure"></a>Nasazení agenta v Azure
 
-1. Na portálu Azure Sentinelu, klikněte na tlačítko **shromažďování dat** a vyberte typ zařízení. 
+1. Na portálu Azure Sentinelu, klikněte na tlačítko **datové konektory** a vyberte typ zařízení. 
 
 1. V části **konfigurace agenta protokolu Syslog v Linuxu**:
    - Zvolte **automatického nasazení** Pokud chcete vytvořit nový počítač, který je předem nainstalovaný s agentem Azure Sentinelu a obsahuje všechny nezbytné konfigurace, jak je popsáno výše. Vyberte **automatického nasazení** a klikněte na tlačítko **nasazení agentů pro automatickou diagnostiku**. Tím přejdete na stránku nákupní pro vyhrazený virtuální počítač, který je automaticky připojený k pracovnímu prostoru. Je virtuální počítač **standardní virtuální počítač D2s v3 (2 virtuální procesory, 8 GB paměti)** a má veřejnou IP adresu.

@@ -9,19 +9,19 @@ ms.topic: reference
 ms.date: 05/15/2017
 ms.author: robb
 ms.subservice: diagnostic-extension
-ms.openlocfilehash: 1ffeab91933bfcba9f3ffa0b557e849a1e6890f5
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.openlocfilehash: dae74e730d6e175fa3e447150adce4caecd3d7a3
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58486151"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59496484"
 ---
 # <a name="azure-diagnostics-12-configuration-schema"></a>Schéma konfigurace Azure Diagnostics 1.2
 > [!NOTE]
 > Diagnostika Azure je součástí používanou ke shromažďování čítačů výkonu a další statistiky z Azure Virtual Machines, Virtual Machine Scale Sets, Service Fabric a Cloud Services.  Tato stránka je pouze relevantní, pokud použijete jednu z těchto služeb.
 >
 
-Diagnostika Azure se používá s dalšími produkty Microsoftu diagnostiky jako je Azure Monitor, Application Insights a Log Analytics.
+Diagnostika Azure se používá s dalšími produkty Microsoftu diagnostiky jako je Azure Monitor, která zahrnuje Application Insights a Log Analytics.
 
 Toto schéma definuje možných hodnot, které můžete použít k inicializaci konfigurace diagnostiky nastavení při spuštění monitorování diagnostiky.  
 
@@ -130,7 +130,7 @@ Definuje nastavení konfigurace pro telemetrická data se mají shromažďovat. 
 
 |Název elementu|Popis|  
 |------------------|-----------------|  
-|**DataSources**|Seznam adresářů pro monitorování.|  
+|**Zdroje dat**|Seznam adresářů pro monitorování.|  
 |**FailedRequestLogs**|Včetně tohoto elementu v konfiguraci umožňuje shromažďování protokolů o neúspěšných požadavků na web služby IIS nebo aplikaci. Musíte také povolit trasování možností v části **systému. Webový server** v **Web.config**.|  
 |**IISLogs**|Včetně tohoto elementu v konfiguraci povoluje shromažďování protokolů služby IIS:<br /><br /> **containerName** – název kontejneru objektů blob ve vašem účtu Azure Storage, který se má použít k ukládání protokolů služby IIS.|  
 
@@ -163,7 +163,7 @@ Definuje nastavení konfigurace pro telemetrická data se mají shromažďovat. 
 |Název elementu|Popis|  
 |------------------|-----------------|  
 |**DefaultEvents**|Volitelný atribut:<br /><br /> **eventDestination** -název tabulky k uložení událostí v|  
-|**Události**|Požadovaný atribut:<br /><br /> **ID** – id události.<br /><br /> Volitelný atribut:<br /><br /> **eventDestination** -název tabulky k uložení událostí v|  
+|**Událost**|Požadovaný atribut:<br /><br /> **ID** – id události.<br /><br /> Volitelný atribut:<br /><br /> **eventDestination** -název tabulky k uložení událostí v|  
 
 ## <a name="etwmanifestproviderconfiguration-element"></a>EtwManifestProviderConfiguration Element  
  Následující tabulka popisuje podřízených elementů:  
@@ -171,7 +171,7 @@ Definuje nastavení konfigurace pro telemetrická data se mají shromažďovat. 
 |Název elementu|Popis|  
 |------------------|-----------------|  
 |**DefaultEvents**|Volitelný atribut:<br /><br /> **eventDestination** -název tabulky k uložení událostí v|  
-|**Události**|Požadovaný atribut:<br /><br /> **ID** – id události.<br /><br /> Volitelný atribut:<br /><br /> **eventDestination** -název tabulky k uložení událostí v|  
+|**Událost**|Požadovaný atribut:<br /><br /> **ID** – id události.<br /><br /> Volitelný atribut:<br /><br /> **eventDestination** -název tabulky k uložení událostí v|  
 
 ## <a name="metrics-element"></a>Element metriky  
  Umožňuje generovat tabulku čítače výkonu, který je optimalizovaný pro rychlé zpracování dotazů. Následující tabulka popisuje podřízených elementů:  
@@ -199,5 +199,5 @@ Definuje nastavení konfigurace pro telemetrická data se mají shromažďovat. 
 
 |Název elementu|Popis|  
 |------------------|-----------------|  
-|**DataSource**|Protokoly událostí Windows a shromažďovat. Požadovaný atribut:<br /><br /> **název** – dotaz XPath popisující události systému windows, které se mají shromažďovat. Příklad:<br /><br /> `Application!*[System[(Level >= 3)]], System!*[System[(Level <=3)]], System!*[System[Provider[@Name='Microsoft Antimalware']]], Security!*[System[(Level >= 3]]`<br /><br /> Ke shromažďování všech událostí, zadejte "*".|
+|**Zdroj dat**|Protokoly událostí Windows a shromažďovat. Požadovaný atribut:<br /><br /> **název** – dotaz XPath popisující události systému windows, které se mají shromažďovat. Příklad:<br /><br /> `Application!*[System[(Level >= 3)]], System!*[System[(Level <=3)]], System!*[System[Provider[@Name='Microsoft Antimalware']]], Security!*[System[(Level >= 3]]`<br /><br /> Ke shromažďování všech událostí, zadejte "*".|
 

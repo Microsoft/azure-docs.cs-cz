@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 11/13/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: c7d8414fdc1070204ef02cf6d88b238575d0817a
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: a91c4d9f5dcdcee436f2dbf012eb5485b7a92192
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55472418"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59495613"
 ---
 # <a name="heading"></a>Zpracování dat objektů blob v Azure pomocí pokročilých analýz
 Tento dokument popisuje analýzu dat a generování funkcí z dat uložených v úložišti objektů Blob v Azure. 
@@ -75,11 +75,12 @@ Tady je pár příkladů, jak zkoumat data pomocí Pandas:
         print miss_num
 7. Pokud máte v datech chybějící hodnoty pro konkrétní sloupce, můžete je zrušit následujícím způsobem:
    
-     dataframe_blobdata_noNA = dataframe_blobdata.dropna() dataframe_blobdata_noNA.shape
+        dataframe_blobdata_noNA = dataframe_blobdata.dropna()
+        dataframe_blobdata_noNA.shape
    
    Dalším způsobem, jak nahradit chybějících hodnot je ve funkci režimu:
    
-     dataframe_blobdata_mode = dataframe_blobdata.fillna ({< Název_sloupce >: .mode()[0]}) dataframe_blobdata [. < Název_sloupce >']        
+        dataframe_blobdata_mode = dataframe_blobdata.fillna({'<column_name>':dataframe_blobdata['<column_name>'].mode()[0]})        
 8. Vytvoření histogramu vykreslení pomocí proměnný počet intervalů k vykreslení distribuce proměnné    
    
         dataframe_blobdata['<column_name>'].value_counts().plot(kind='bar')

@@ -18,12 +18,12 @@ ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f4de33bb02a008d6b394055c64119ac2a4fbc4d9
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: d0c7c29bf3094c3d5fc99b9906ee4469a6643317
+ms.sourcegitcommit: 41015688dc94593fd9662a7f0ba0e72f044915d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59276044"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59501591"
 ---
 # <a name="microsoft-identity-platform-and-oauth-20-on-behalf-of-flow"></a>Platforma identit Microsoft a tok OAuth 2.0 On-Behalf-Of
 
@@ -55,7 +55,7 @@ Jaké kroky musí provést tvoří tok OBO a jsou vysvětleny díky pomoci násl
 
 ## <a name="service-to-service-access-token-request"></a>Žádost o Service to service přístupový token
 
-Požádat o přístupový token, ujistěte se, HTTP POST do koncového bodu tokenu v2.0 specifickým pro tenanta s následujícími parametry.
+Požádat o přístupový token, ujistěte se, HTTP POST specifickým pro tenanta Microsoft identity platform koncovému bodu tokenu s následujícími parametry.
 
 ```
 https://login.microsoftonline.com/<tenant>/oauth2/v2.0/token
@@ -191,13 +191,13 @@ Authorization: Bearer eyJ0eXAiOiJKV1QiLCJub25jZSI6IkFRQUJBQUFBQUFCbmZpRy1tQTZOVG
 
 ## <a name="gaining-consent-for-the-middle-tier-application"></a>Získání souhlas pro aplikace střední vrstvy
 
-V závislosti na cílové skupiny pro vaši aplikaci můžete použít různé strategie pro zajištění, že tok OBO je úspěšné. Ve všech případech konečným cílem je zajistit správné souhlas. Jak k tomu dojde, ale závisí na uživatele, které vaše aplikace podporuje. 
+V závislosti na cílové skupiny pro vaši aplikaci můžete použít různé strategie pro zajištění, že tok OBO je úspěšné. Ve všech případech konečným cílem je zajistit správné souhlas. Jak k tomu dojde, ale závisí na uživatele, které vaše aplikace podporuje.
 
 ### <a name="consent-for-azure-ad-only-applications"></a>Souhlas pro Azure AD – pouze aplikace
 
 #### <a name="default-and-combined-consent"></a>/.default a kombinované souhlas
 
-Pro aplikace, které je potřeba pouze přihlášení pracovní nebo školní účty stačí tradičního přístupu jinam "Označuje klientské aplikace". Aplikace střední vrstvy přidá do seznamu známých klientských aplikací v jeho manifestu klienta a pak klienta můžete aktivovat tok vyjádření souhlasu. kombinované sebe sama a aplikace střední vrstvy. Na koncový bod v2.0, to se provádí pomocí [ `/.default` oboru](v2-permissions-and-consent.md#the-default-scope). Při aktivaci souhlasu obrazovky pomocí známých klientské aplikace a `/.default`, obrazovkami pro vyjádření souhlasu zobrazit oprávnění pro klienta pro aplikaci API střední vrstvy a také požádat o oprávnění jsou vyžadované rozhraní API střední vrstvy. Uživatel souhlasí pro obě aplikace a pak OBO tok funguje.
+Pro aplikace, které je potřeba pouze přihlášení pracovní nebo školní účty stačí tradičního přístupu jinam "Označuje klientské aplikace". Aplikace střední vrstvy přidá do seznamu známých klientských aplikací v jeho manifestu klienta a pak klienta můžete aktivovat tok vyjádření souhlasu. kombinované sebe sama a aplikace střední vrstvy. Na koncovém bodu Microsoft identity platform to se provádí pomocí [ `/.default` oboru](v2-permissions-and-consent.md#the-default-scope). Při aktivaci souhlasu obrazovky pomocí známých klientské aplikace a `/.default`, obrazovkami pro vyjádření souhlasu zobrazit oprávnění pro klienta pro aplikaci API střední vrstvy a také požádat o oprávnění jsou vyžadované rozhraní API střední vrstvy. Uživatel souhlasí pro obě aplikace a pak OBO tok funguje.
 
 V tuto chvíli osobní systémem účtů Microsoft nepodporuje kombinované souhlasu a proto se tento přístup nefunguje pro aplikace, které chcete konkrétně přihlašovat osobní účty. Osobní účty Microsoft, který používáte jako účty hostů v tenantovi se určují pomocí šablon v systému Azure AD a můžete projít kombinované souhlas.
 
@@ -211,7 +211,7 @@ Správce tenanta může zaručit, že aplikace mají oprávnění k volání jej
 
 ### <a name="consent-for-azure-ad--microsoft-account-applications"></a>Souhlas pro službu Azure AD a aplikace účtu Microsoft
 
-Z důvodu omezení v model oprávnění pro osobní účty a nedostatečné celopodnikové tenanta se trochu liší od služby Azure AD požadavky souhlas pro osobní účty. Neexistuje žádná tenanta k poskytování celého tenanta souhlas pro ani je existuje možnost provádět kombinované souhlas. Proto další strategie zaměřené na k dispozici sami – mějte na paměti, že se, jestli funguje pro aplikace, které potřebují pouze podporují také účty Azure AD.
+Požadavky na vyjádření souhlasu pro osobní účty jsou kvůli omezením ve model oprávnění pro osobní účty a nedostatečné celopodnikové tenanta, trochu liší od služby Azure AD. Neexistuje žádná tenanta k poskytování celého tenanta souhlas pro ani je existuje možnost provádět kombinované souhlas. Proto další strategie zaměřené na k dispozici sami – mějte na paměti, že se, jestli funguje pro aplikace, které potřebují pouze podporují také účty Azure AD.
 
 #### <a name="use-of-a-single-application"></a>Použití jedné aplikace
 

@@ -1,6 +1,6 @@
 ---
-title: Shromažďování dat služby Azure AD ve verzi Preview Sentinelu Azure | Dokumentace Microsoftu
-description: Zjistěte, jak shromažďovat data o Azure Active Directory v Azure Sentinelu.
+title: Připojení k Azure Preview Sentinelu datům Azure AD | Dokumentace Microsoftu
+description: Informace o připojení k Azure Sentinelu data služby Azure Active Directory.
 services: sentinel
 documentationcenter: na
 author: rkarlin
@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 1/30/2019
+ms.date: 04/07/2019
 ms.author: rkarlin
-ms.openlocfilehash: b42fb982abb916503d530d5040641ba1dcce3c92
-ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
+ms.openlocfilehash: f29ae9a8fcaecfc345efae02084f31d133e67b5d
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2019
-ms.locfileid: "58575126"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59494880"
 ---
-# <a name="collect-data-from-azure-active-directory"></a>Shromažďování dat ze služby Azure Active Directory
+# <a name="connect-data-from-azure-active-directory"></a>Připojení dat ze služby Azure Active Directory
 
 > [!IMPORTANT]
 > Azure Sentinel je aktuálně ve verzi public preview.
@@ -38,7 +38,7 @@ Azure Sentinel umožňuje shromažďovat data z [Azure Active Directory](../acti
 
 ## <a name="connect-to-azure-ad"></a>Připojení k Azure AD
 
-1. V Azure Sentinelu, vyberte **shromažďování dat** a potom klikněte na tlačítko **Azure Active Directory** dlaždici.
+1. V Azure Sentinelu, vyberte **datové konektory** a potom klikněte na tlačítko **Azure Active Directory** dlaždici.
 
 2. Vedle chcete Streamovat do Azure ověřovacích protokolů, klikněte na tlačítko **připojit**.
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 02/20/2018
 ms.author: abshamsft
-ms.openlocfilehash: 1c80395880c556138313ebfd9af1610ace946c8a
-ms.sourcegitcommit: 045406e0aa1beb7537c12c0ea1fbf736062708e8
+ms.openlocfilehash: 465d59ff13982eee8432d7ef97e2f522b0d7125b
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/04/2019
-ms.locfileid: "59006766"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59489720"
 ---
 # <a name="network-performance-monitor-solution-in-azure"></a>Network Performance Monitor řešení v Azure
 
@@ -33,7 +33,7 @@ Network Performance Monitor nabízí tři různé možnosti:
 
 * [Sledování výkonu](network-performance-monitor-performance-monitor.md): Můžete monitorovat připojení k síti napříč nasazeními v cloudu a místními umístěními, více datových center a firemní pobočky a nejdůležitější vícevrstvé aplikace nebo mikroslužeb. Pomocí sledování výkonu dokáže detekovat problémy se sítí, předtím, než si zákazníci začnou stěžovat.
 
-* [Monitorování připojení služby](network-performance-monitor-service-endpoint.md): Od uživatelů můžete monitorovat připojení ke službám, o kterého vám jde, zjistit, jakou infrastrukturu je na cestě a určit, kde dojde k problémových míst v síti. Můžete vědět o výpadcích dříve než vaši uživatelé a zobrazit je přesné umístění problémy síťové cestě. 
+* [Monitorování připojení služby](network-performance-monitor-service-connectivity.md): Od uživatelů můžete monitorovat připojení ke službám, o kterého vám jde, zjistit, jakou infrastrukturu je na cestě a určit, kde dojde k problémových míst v síti. Můžete vědět o výpadcích dříve než vaši uživatelé a zobrazit je přesné umístění problémy síťové cestě. 
 
     Tato funkce umožňuje provádět testy založené na protokolu HTTP, HTTPS, TCP a ICMP monitorování v téměř reálném čase nebo v minulosti dostupnost a dobu odezvy služby. Také můžete monitorovat příspěvku v ztrátu paketů a latenci sítě. Pomocí mapy topologie sítě můžete izolovat zpomalení sítě. Můžete identifikovat problém míst, ke kterým dochází na síťové cestě z uzlu do služby s daty čekací doba na každého směrování. Pomocí integrovaných testů můžete monitorovat síťové připojení k Office 365 a Dynamics CRM, bez jakékoli přednastavení. Díky této funkci můžete monitorovat připojení k síti do koncového bodu TCP podporuje, například z webů, aplikací SaaS, PaaS aplikací nebo databází SQL.
 
@@ -83,7 +83,7 @@ Network Performance Monitor používá k monitorování výkonu sítě mezi zdro
     > Skript nakonfiguruje pouze Windows Firewall místně. Pokud máte síťovou bránu firewall, ujistěte se, že umožňuje provoz určený pro TCP port je používán nástroj Sledování výkonu sítě.
 
     >[!NOTE]
-    > Není nutné ke spuštění [EnableRules.ps1](https://aka.ms/npmpowershellscript ) skript prostředí PowerShell pro monitorování koncového bodu služby.
+    > Není nutné ke spuštění [EnableRules.ps1](https://aka.ms/npmpowershellscript ) skript prostředí PowerShell pro monitorování připojení služby.
 
     
 
@@ -115,7 +115,7 @@ Network Performance Monitor používá k monitorování výkonu sítě mezi zdro
     
    **Monitorování připojení služby**: Možnost poskytuje integrované předkonfigurované testy k monitorování síťových připojení k Office 365 a Dynamics 365 z agentů. Zvolte, které chcete monitorovat tak, že vyberete zaškrtávací políčka vedle jejich služeb Office 365 a Dynamics 365. Vyberte agenty, ze kterých chcete monitorovat, vyberte **přidat agenty**. Pokud už nechcete používat tuto funkci nebo chcete později nastavit, nemusíte nic zvolte a vyberte **uložit a pokračovat**.
 
-   ![Zobrazení monitorování koncového bodu služby](media/network-performance-monitor/npm-service-endpoint-monitor.png)
+   ![Zobrazení monitorování připojení služby](media/network-performance-monitor/npm-service-endpoint-monitor.png)
 
    **ExpressRoute Monitor**: Vyberte **zjistit nyní** ke zjišťování všech ExpressRoute privátní partnerské vztahy, které jsou připojené k virtuálním sítím v Azure předplatné propojené s tímto pracovním prostorem Log Analytics. 
 
@@ -152,7 +152,7 @@ Všechny uzly, kterých je agent nainstalovaný na nich jsou uvedeny na **uzly**
 Konfigurace možností, které chcete, aby:
 
 - [Monitorování výkonu](network-performance-monitor-performance-monitor.md#configuration)
-- [Monitorování koncového bodu služby](network-performance-monitor-performance-monitor.md#configuration)
+- [Monitorování připojení služby](network-performance-monitor-performance-monitor.md#configuration)
 - [ExpressRoute Monitor](network-performance-monitor-expressroute.md#configuration)
 
  

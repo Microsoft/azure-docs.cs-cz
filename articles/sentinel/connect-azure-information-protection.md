@@ -1,6 +1,6 @@
 ---
-title: Shromažďování dat služby Azure Information Protection ve verzi Preview Sentinelu Azure | Dokumentace Microsoftu
-description: Zjistěte, jak shromažďovat data služby Azure Information Protection v nástroji Azure Sentinelu.
+title: Připojením dat služby Azure Information Protection Sentinelu ve verzi Preview Azure | Dokumentace Microsoftu
+description: Zjistěte, jak po propojení dat služby Azure Information Protection v ověřovacích Azure.
 services: sentinel
 documentationcenter: na
 author: rkarlin
@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 3/6/2019
+ms.date: 04/07/2019
 ms.author: rkarlin
-ms.openlocfilehash: 7c5866d3096823f91a70b28c7c5dd1790e1b3bf8
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 2f970910e19b3c1ed9d262d356c49848f4248b09
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57537163"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59489824"
 ---
-# <a name="collect-data-from-azure-information-protection"></a>Shromažďování dat ze služby Azure Information Protection
+# <a name="connect-data-from-azure-information-protection"></a>Připojení dat ze služby Azure Information Protection
 
 > [!IMPORTANT]
 > Azure Sentinel je aktuálně ve verzi public preview.
@@ -41,7 +41,7 @@ Pokud už máte Azure Information Protection, ujistěte se, že je [povolena ve 
 Pokud je nasazení služby Azure Information Protection a získávání dat, data upozornění snadno Streamovat do ověřovacích Azure.
 
 
-1. V Azure Sentinelu, vyberte **shromažďování dat** a potom klikněte na tlačítko **služby Azure Information Protection** dlaždici.
+1. V Azure Sentinelu, vyberte **datové konektory** a potom klikněte na tlačítko **služby Azure Information Protection** dlaždici.
 
 2. Přejděte [portál služby Azure Information Protection](https://portal.azure.com/?ScannerConfiguration=true&EndpointDiscovery=true#blade/Microsoft_Azure_InformationProtection/DataClassGroupEditBlade/quickstartBlade) 
 

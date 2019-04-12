@@ -8,19 +8,20 @@ manager: daveba
 ms.reviewer: barbkess
 ms.assetid: 1ad1cf90-52bc-4b71-ab2b-9a5a1280fb2d
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 12/31/2018
+ms.date: 04/10/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5c0a7ff6d06325a6e6f631b92335f9a41c2c8c06
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 44f0c99a66088aeb54ba061308fefb111610d4dc
+ms.sourcegitcommit: 41015688dc94593fd9662a7f0ba0e72f044915d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57854802"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59501225"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-confluence-saml-sso-by-microsoft"></a>Kurz: Integrace Azure Active Directory s jednotným Přihlašováním SAML Confluence společností Microsoft
 
@@ -36,7 +37,7 @@ Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https
 
 ## <a name="description"></a>Popis:
 
-Pomocí účtu Microsoft Azure Active Directory se od společnosti Atlassian Confluence serverem můžete povolit jednotné přihlašování. Tímto způsobem všichni uživatelé vaší organizace můžete použít přihlašovací údaje služby Azure AD k přihlášení do aplikace Confluence. Tento modul plug-in používá protokol SAML 2.0 pro federaci.
+Pomocí účtu Microsoft Azure Active Directory se od společnosti Atlassian Confluence serverem můžete povolit jednotné přihlašování. Tímto způsobem všichni uživatelé vaší organizace můžete použít přihlašovací údaje Azure AD s přihlášením do aplikace Confluence. Tento modul plug-in používá protokol SAML 2.0 pro federaci.
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -78,6 +79,9 @@ V současné době jsou podporovány následující verze Confluence:
 - Confluence: 6.11.0
 - Confluence: 6.12.0
 
+> [!NOTE]
+> Mějte prosím na paměti, že Confluence také podporuje Linux Ubuntu 16.04 verze
+
 ## <a name="scenario-description"></a>Popis scénáře
 
 V tomto kurzu konfigurace a testování v testovacím prostředí Azure AD jednotného přihlašování.
@@ -104,7 +108,7 @@ Pokud chcete nakonfigurovat integraci jednotného přihlašování SAML Confluen
 
 4. Do vyhledávacího pole zadejte **Confluence SAML SSO microsoftem**vyberte **Confluence SAML SSO microsoftem** z panelu výsledků klikněte **přidat** tlačítko pro přidání aplikace.
 
-     ![Jednotné přihlašování SAML confluence společností Microsoft v seznamu výsledků](common/search-new-app.png)
+    ![Jednotné přihlašování SAML confluence společností Microsoft v seznamu výsledků](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a otestování služby Azure AD jednotného přihlašování
 
@@ -184,18 +188,18 @@ Ke konfiguraci Azure AD jednotné přihlašování s jednotným Přihlašování
 
     c. V **přihlašovací jméno tlačítko** zadejte název tlačítka, které vaše organizace chce, aby se uživatelům zobrazí na obrazovce přihlášení.
 
-    d. V **SAML uživatelské ID umístění**, vyberte buď **ID uživatele není v elementu NameIdentifier příkazu subjektu** nebo **ID uživatele není v elementu atribut**.  Toto ID musí být Confluence id uživatele. Pokud neodpovídá id uživatele, systém nedovolí uživatelům přihlášení. 
+    d. V **SAML uživatelské ID umístění**, vyberte buď **ID uživatele není v elementu NameIdentifier příkazu subjektu** nebo **ID uživatele není v elementu atribut**.  Toto ID musí být ID Confluence uživatele. Pokud neodpovídá ID uživatele, systém nedovolí uživatelům umožní přihlásit. 
 
     > [!Note]
     > Výchozí umístění SAML ID uživatele je název identifikátoru. Můžete to změnit atribut možnost a zadejte odpovídající název.
     
-    e. Pokud vyberete **ID uživatele není v elementu atribut** možnost, pak v **název atributu** textového pole zadejte název atributu, kde se očekává Id uživatele. 
+    e. Pokud vyberete **ID uživatele není v elementu atribut** možnost, pak v **název atributu** textového pole zadejte název atributu, kde se očekává ID uživatele. 
 
     f. Pokud používáte federovanou doménu (například služby AD FS atd.) pomocí služby Azure AD, potom klikněte na **povolit zjišťování domovské sféry** řádku a nakonfigurovat **název domény**.
     
     g. V **název domény** zadejte název domény zde v případě přihlášení na základě služby AD FS.
 
-    h. Zkontrolujte **povolit jednotné přihlašování,** Pokud se chcete odhlásit z Azure AD, když uživatel odhlásí od Confluence. 
+    h. Zkontrolujte **povolit jednotné přihlašování,** Pokud se chcete odhlásit se ze služby Azure AD při odhlášení uživatele z Confluence. 
 
     i. Klikněte na tlačítko **Uložit** uložte nastavení tlačítkem.
 
@@ -220,8 +224,7 @@ Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal
 
     a. V **název** zadat **BrittaSimon**.
   
-    b. V **uživatelské jméno** typ pole **brittasimon\@yourcompanydomain.extension**  
-    Například BrittaSimon@contoso.com.
+    b. V **uživatelské jméno** typ pole `brittasimon\@yourcompanydomain.extension`. Například, BrittaSimon@contoso.com.
 
     c. Vyberte **zobrazit heslo** zaškrtněte políčko a zapište si hodnotu, která se zobrazí v poli heslo.
 
@@ -255,11 +258,11 @@ V této části je povolit Britta Simon používat jednotné přihlašování Az
 
 ### <a name="create-confluence-saml-sso-by-microsoft-test-user"></a>Vytvoření Confluence jednotného přihlašování SAML podle Microsoft testovacího uživatele
 
-Umožňuje uživatelům Azure AD se přihlaste k Confluence na místním serveru, musí být zřízená do Confluence SAML SSO společností Microsoft. Zřizování je pro jednotné přihlašování SAML Confluence microsoftem, úlohu.
+Pokud chcete povolit Azure AD uživatelům umožní přihlásit na lokální server Confluence, jejich musí být zřízená do Confluence SAML SSO společností Microsoft. Zřizování je pro jednotné přihlašování SAML Confluence microsoftem, úlohu.
 
 **K poskytnutí uživatelského účtu, postupujte následovně:**
 
-1. Přihlaste se k serveru v místním Confluence jako správce.
+1. Přihlaste se na váš místní server Confluence jako správce.
 
 2. Najeďte myší na ikonu a klikněte na tlačítko **Správa uživatelů**.
 
@@ -291,7 +294,7 @@ Po kliknutí na Confluence SAML SSO podle Microsoft dlaždici na přístupovém 
 
 - [Seznam kurzů o integraci aplikací SaaS pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

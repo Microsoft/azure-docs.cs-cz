@@ -9,12 +9,12 @@ ms.topic: reference
 ms.date: 09/20/2018
 ms.author: robb
 ms.subservice: diagnostic-extension
-ms.openlocfilehash: 92ae1e31a739486871ebff69740f31a495c7b780
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 29091add5cee0934064224c9cca8644b401bd5e4
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54471646"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59493310"
 ---
 # <a name="azure-diagnostics-extension-configuration-schema-versions-and-history"></a>Verze rozšíření schématu konfigurace Azure Diagnostics a historie
 Tato stránka indexy verze schématu rozšíření Azure Diagnostics se dodávají jako součást sady Microsoft Azure SDK.  
@@ -29,7 +29,7 @@ Tato stránka indexy verze schématu rozšíření Azure Diagnostics se dodávaj
 >
 > Tato stránka je pouze relevantní, pokud použijete jednu z těchto služeb.
 
-Rozšíření Azure Diagnostics se používá s dalšími produkty Microsoftu diagnostiky jako je Azure Monitor, Application Insights a Log Analytics. Další informace najdete v tématu [přehled nástrojů pro sledování Microsoft](../../azure-monitor/overview.md).
+Rozšíření Azure Diagnostics se používá s dalšími produkty Microsoftu diagnostiky jako je Azure Monitor, která zahrnuje Application Insights a Log Analytics. Další informace najdete v tématu [přehled nástrojů pro sledování Microsoft](../../azure-monitor/overview.md).
 
 ## <a name="azure-sdk-and-diagnostics-versions-shipping-chart"></a>Azure SDK a Diagnostika verze přesouvání grafu  
 

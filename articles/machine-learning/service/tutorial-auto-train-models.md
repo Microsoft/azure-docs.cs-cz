@@ -11,12 +11,12 @@ ms.author: nilesha
 ms.reviewer: trbye
 ms.date: 03/29/2019
 ms.custom: seodec18
-ms.openlocfilehash: 990991eb1ceb5d74c042b42cfa265c75a073e5ef
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: 8eb569e628e598dbfd890c11656a23007f915b45
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58670893"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59491151"
 ---
 # <a name="tutorial-use-automated-machine-learning-to-build-your-regression-model"></a>Kurz: Automatizované machine learningu k vytváření regresní model
 
@@ -136,8 +136,7 @@ import azureml.dataprep as dprep
 
 file_path = os.path.join(os.getcwd(), "dflows.dprep")
 
-package_saved = dprep.Package.open(file_path)
-dflow_prepared = package_saved.dataflows[0]
+dflow_prepared = dprep.Dataflow.open(file_path)
 dflow_prepared.get_profile()
 ```
 
@@ -654,9 +653,9 @@ Definujte parametr experiment a nastavení pro ladění a automatické generová
 |Vlastnost| Hodnota v tomto kurzu |Popis|
 |----|----|---|
 |**iteration_timeout_minutes**|10|Časový limit během několika minut pro každou iteraci. Zmenšete tuto hodnotu a snížit celkové doby běhu.|
-|**iterations**|30|Počet iterací. V každé iteraci se trénuje nový model strojového učení s vašimi daty. Jedná se o primární hodnotu, která ovlivní celkové doby běhu.|
+|**Iterace**|30|Počet iterací. V každé iteraci se trénuje nový model strojového učení s vašimi daty. Jedná se o primární hodnotu, která ovlivní celkové doby běhu.|
 |**primary_metric**| spearman_correlation | Metrika, kterou chcete optimalizovat Přizpůsobený modelu bude zvolen v závislosti na tuto metriku.|
-|**preprocess**| True | S použitím **True**, experiment můžete předběžně zpracovat vstupní data (zpracování chybí data, převod textu na číselné, atd.)|
+|**předběžné zpracování**| True | S použitím **True**, experiment můžete předběžně zpracovat vstupní data (zpracování chybí data, převod textu na číselné, atd.)|
 |**Úroveň podrobností**| logging.INFO | Určuje úroveň protokolování.|
 |**n_cross_validations**|5|Počet rozdělí křížového ověření provést, pokud není zadána data pro ověření.|
 
@@ -775,7 +774,8 @@ rundata
 ```
 
 <div>
-<style scoped> .dataframe tbody tr th: pouze of-type {vertical-align: uprostřed;}
+<style scoped>
+.dataframe tbody tr th: pouze of-type {vertical-align: uprostřed;}
 
     .dataframe tbody tr th {
         vertical-align: top;

@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/28/2018
+ms.date: 04/11/2018
 ms.author: genli
-ms.openlocfilehash: 7990a98e0e2d688456db054e3cdfa447e1ed1043
-ms.sourcegitcommit: 956749f17569a55bcafba95aef9abcbb345eb929
+ms.openlocfilehash: 174bc4895bbad4546392581c2c769aac762d6106
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58630474"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59492375"
 ---
 # <a name="troubleshooting-azure-point-to-site-connection-problems"></a>Řešení potíží: Problémy s připojením Azure point-to-site
 
@@ -57,6 +57,35 @@ Další informace o postupu při instalaci klientského certifikátu naleznete v
 
 > [!NOTE]
 > Při importu certifikátu klienta nesmí být zvolen **povolit silnou ochranu privátního klíče** možnost.
+
+## <a name="the-network-connection-between-your-computer-and-the-vpn-server-could-not-be-established-because-the-remote-server-is-not-responding"></a>Síťové připojení mezi počítačem a serverem VPN nepodařilo vytvořit, protože vzdálený server neodpovídá.
+
+### <a name="symptom"></a>Příznak
+
+Když zkusíte připojit virtuální síti Azure gteway používá IKEv2 na Windows, získáte následující chybová zpráva:
+
+**Síťové připojení mezi počítačem a serverem VPN nepodařilo vytvořit, protože vzdálený server neodpovídá.**
+
+### <a name="cause"></a>Příčina
+ 
+ K problému dochází, pokud verze Windows nemá podporu pro fragmentaci IKE
+ 
+### <a name="solution"></a>Řešení
+
+IKEv2 se podporuje v systémech Windows 10 a Server 2016. Pokud ale chcete používat IKEv2, musíte nainstalovat aktualizace a nastavit hodnotu klíče registru v místním prostředí. Verze operačního systému starší než Windows 10 se nepodporují a mohou používat jenom SSTP.
+
+Postup přípravy systému Windows 10 nebo Server 2016 na IKEv2:
+
+1. Nainstalujte aktualizaci.
+
+   | Verze operačního systému | Datum | Číslo/odkaz |
+   |---|---|---|---|
+   | Windows Server 2016<br>Windows 10 verze 1607 | 17. ledna 2018 | [KB4057142](https://support.microsoft.com/help/4057142/windows-10-update-kb4057142) |
+   | Windows 10 verze 1703 | 17. ledna 2018 | [KB4057144](https://support.microsoft.com/help/4057144/windows-10-update-kb4057144) |
+   | Windows 10 Version 1709 | 22. března 2018 | [KB4089848](https://www.catalog.update.microsoft.com/search.aspx?q=kb4089848) |
+   |  |  |  |  |
+
+2. Nastavte hodnotu klíče registru. Vytvořte nebo nastavte klíč REG_DWORD HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\RasMan\ IKEv2\DisableCertReqPayload v registru na hodnotu 1.
 
 ## <a name="vpn-client-error-the-message-received-was-unexpected-or-badly-formatted"></a>Chyba klienta VPN: Byla přijata zpráva není očekávaná nebo chybně formátovaná
 

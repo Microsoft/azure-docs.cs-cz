@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2019
 ms.author: aschhab
-ms.openlocfilehash: d6c46d6ebfa8ae44c9bfac4929d3478f6701758a
-ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
+ms.openlocfilehash: c767406ceec703b5c14680ec96fdf703c2316044
+ms.sourcegitcommit: 41015688dc94593fd9662a7f0ba0e72f044915d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58497835"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59500137"
 ---
 # <a name="message-sessions-first-in-first-out-fifo"></a>Zpráva relací: první, nejprve-out (FIFO) 
 
@@ -51,7 +51,7 @@ Relací zadejte souběžných zrušit multiplexing streamovaných prokládané z
 
 A [popsaným](/dotnet/api/microsoft.servicebus.messaging.messagesession) příjemce se vytvoří klient přijímá relaci. Volání klienta [QueueClient.AcceptMessageSession](/dotnet/api/microsoft.servicebus.messaging.queueclient.acceptmessagesession#Microsoft_ServiceBus_Messaging_QueueClient_AcceptMessageSession) nebo [QueueClient.AcceptMessageSessionAsync](/dotnet/api/microsoft.servicebus.messaging.queueclient.acceptmessagesessionasync#Microsoft_ServiceBus_Messaging_QueueClient_AcceptMessageSessionAsync) v jazyce C#. Registruje obslužné rutiny relace v modelu reaktivní zpětného volání.
 
-Když [popsaným](/dotnet/api/microsoft.servicebus.messaging.messagesession) přijmout objekt a dokud je držen klientem, tento klient obsahuje výhradní zámek pro všechny zprávy s danou relaci [SessionId](/en-us/dotnet/api/microsoft.servicebus.messaging.messagesession.sessionid#Microsoft_ServiceBus_Messaging_MessageSession_SessionId) , které existují ve frontě nebo odběru, a také na všechny zprávy s ním **SessionId** doručení, která stále dokud je držen relace.
+Když [popsaným](/dotnet/api/microsoft.servicebus.messaging.messagesession) přijmout objekt a dokud je držen klientem, tento klient obsahuje výhradní zámek pro všechny zprávy s danou relaci [SessionId](/dotnet/api/microsoft.servicebus.messaging.messagesession.sessionid#Microsoft_ServiceBus_Messaging_MessageSession_SessionId) , které existují ve frontě nebo odběru, a také na všechny zprávy s ním **SessionId** doručení, která stále dokud je držen relace.
 
 Zámek je uvolněn po **zavřete** nebo **CloseAsync** jsou volány, nebo když vyprší platnost zámku v případech, ve kterých je aplikace nejde provést operaci zavření. Uzamčení relace by se měla zpracovávat jako výhradní zámek na souboru, což znamená, že aplikace by měla ukončit relaci ihned poté, co už kapacitu nebo neočekává žádné další zprávy.
 

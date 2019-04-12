@@ -1,5 +1,5 @@
 ---
-title: Rychlý start pro Azure AD v2 pro iOS | Microsoft Docs
+title: Rychlý start Microsoft identity platform iOS | Azure
 description: Zjistěte, jak přihlašovat uživatele a dotazovat Microsoft Graph v nativní aplikaci pro iOS.
 services: active-directory
 documentationcenter: dev-center-name
@@ -17,12 +17,12 @@ ms.date: 03/20/2019
 ms.author: dadobali
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 57aabb25b960c1135704c62c30b5724026078b08
-ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
+ms.openlocfilehash: e6340e0f349d66ecf6baaca481722396a6d786c5
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58439258"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59496125"
 ---
 # <a name="quickstart-sign-in-users-and-call-the-microsoft-graph-api-from-an-ios-native-app"></a>Rychlý start: Přihlašování uživatelů a volání rozhraní Microsoft Graph API z nativních aplikací pro iOS
 
@@ -30,7 +30,7 @@ ms.locfileid: "58439258"
 
 Tento rychlý start obsahuje vzorový kód, který předvádí, jak může nativní aplikace pro iOS přihlašovat uživatele pomocí osobního nebo pracovního a školního účtu, získat přístupový token a volat rozhraní Microsoft Graph API.
 
-![Ukazuje, jak ukázková aplikace vygenerované v tomto rychlém startu funguje](media/quickstart-v2-ios/ios-intro-updated.png)
+![Ukazuje, jak ukázková aplikace vygenerované v tomto rychlém startu funguje](media/quickstart-v2-ios/ios-intro.svg)
 
 > [!div renderon="docs"]
 > ## <a name="register-and-download"></a>Registrace a stažení
@@ -46,14 +46,14 @@ Tento rychlý start obsahuje vzorový kód, který předvádí, jak může nativ
 > #### <a name="step-1-configure-your-application"></a>Krok 1: Konfigurace aplikace
 > Pro ukázkový kód pro tento rychlý start pro práci, budete muset přidat adresu URL odpovědi jako `msal<AppId>://auth` (kde msal\<AppId > je tato aplikace Id).
 > > [!div renderon="portal" id="makechanges" class="nextstepaction"]
-> > [Udělat změnu za mě]()
+> > [Provedení této změny pro mě]()
 >
 > > [!div id="appconfigured" class="alert alert-info"]
-> > ![Už nakonfigurováno](media/quickstart-v2-ios/green-check.png) Vaše aplikace už má tento atribut nakonfigurovaný.
+> > ![Už nakonfigurovali](media/quickstart-v2-ios/green-check.png) vaše aplikace je nakonfigurovaná pomocí tohoto atributu
 
 #### <a name="step-2-download-your-web-server-or-project"></a>Krok 2: Stažení webového serveru nebo projektu
 
-- [Stáhněte si projekt XCode](https://github.com/Azure-Samples/active-directory-ios-swift-native-v2/archive/master.zip).
+- [Stáhněte si projekt XCode](https://github.com/Azure-Samples/active-directory-ios-swift-native-v2/archive/master.zip)
 
 #### <a name="step-3-configure-your-project"></a>Krok 3: Konfigurace projektu
 
@@ -147,7 +147,7 @@ self.applicationContext = try MSALPublicClientApplication(clientId: kClientID, a
 > |Kde: ||
 > |---------|---------|
 > | `clientId` | ID aplikace z aplikace zaregistrované na webu *portal.azure.com* |
-> | `authority` | Koncový bod Azure AD v2.0. Ve většině případů to bude *https<span/>://login.microsoftonline.com/common* |
+> | `authority` | Microsoft identity platform koncový bod. Ve většině případů to bude *https<span/>://login.microsoftonline.com/common* |
 
 ### <a name="requesting-tokens"></a>Žádosti o tokeny
 
@@ -155,7 +155,7 @@ Knihovna MSAL používá k získání tokenů dvě metody: `acquireToken` a `acq
 
 #### <a name="getting-an-access-token-interactively"></a>Interaktivní získání přístupového tokenu
 
-Některá řešení vyžadují, aby uživatelé museli komunikovat s koncovým bodem Azure Active Directory (Azure AD) v2.0. Výsledkem je přepnutí kontextu do systémového prohlížeče, aby bylo možné ověřit přihlašovací údaje uživatele nebo získat jeho souhlas. Možné příklady:
+Některé situace vyžadují vynucení uživatelům interakci s Microsoft identity platformy endpoint, který způsobí přepnutí kontextu, prohlížeč systému buď ověření přihlašovacích údajů od uživatelů nebo ho o souhlas. Možné příklady:
 
 * Při prvním přihlášení uživatele k aplikaci
 * Když je potřeba, aby uživatelé znovu zadali svoje přihlašovací údaje, protože vypršela platnost hesla
@@ -187,9 +187,9 @@ applicationContext.acquireTokenSilent(forScopes: self.kScopes, account: applicat
 
 Vyzkoušejte kurz pro iOS, kde najdete podrobný návod k vytváření aplikací a nových funkcí, včetně úplného popisu tohoto rychlého startu.
 
-### <a name="learn-the-steps-to-create-the-application-used-in-this-quickstart"></a>Zjistěte, jak vytvořit aplikaci použitou v tomto rychlém startu
+### <a name="learn-the-steps-to-create-the-application-used-in-this-quickstart"></a>Postup vytvoření aplikace použité v tomto rychlém startu
 
 > [!div class="nextstepaction"]
-> [Kurz volání rozhraní Graph API pro iOS](https://docs.microsoft.com/azure/active-directory/develop/guidedsetups/active-directory-ios)
+> [Kurz iOS volání rozhraní Graph API](https://docs.microsoft.com/azure/active-directory/develop/guidedsetups/active-directory-ios)
 
 [!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]

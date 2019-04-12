@@ -1,6 +1,6 @@
 ---
-title: Shromažďování dat Office 365 ve verzi Preview Sentinelu Azure | Dokumentace Microsoftu
-description: Zjistěte, jak shromažďovat data Office 365 v ověřovacích Azure.
+title: Připojení k Azure Preview Sentinelu dat Office 365 | Dokumentace Microsoftu
+description: Informace o připojení k Azure ověřovacích dat Office 365.
 services: sentinel
 documentationcenter: na
 author: rkarlin
@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 3/26/2019
+ms.date: 04/07/2019
 ms.author: rkarlin
-ms.openlocfilehash: ad501958a5f88c821e48a3e21f69a960160b3c8e
-ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
+ms.openlocfilehash: 77587b0b7506ef0ccadbeb6d1f010f5b6a72d93e
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2019
-ms.locfileid: "58574854"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59495186"
 ---
-# <a name="collect-data-from-office-365-logs"></a>Shromažďovat data z Office 365 protokolů
+# <a name="connect-data-from-office-365-logs"></a>Připojíte si data z Office 365 protokoly
 
 > [!IMPORTANT]
 > Azure Sentinel je aktuálně ve verzi public preview.
@@ -33,11 +33,11 @@ Můžete Streamovat protokoly auditu z [Office 365](https://docs.microsoft.com/o
 ## <a name="prerequisites"></a>Požadavky
 
 - Musíte být globálním správcem nebo správcem zabezpečení ve svém tenantovi
-- V počítači, ze kterého jste přihlášeni do Azure Sentinelu k vytvoření připojení, zkontrolujte suretha port 4433 je otevřený pro webový provoz.
+- V počítači, ze kterého jste přihlášeni do Azure Sentinelu k vytvoření připojení, ujistěte se, že port 4433 je otevřený pro webový provoz.
 
 ## <a name="connect-to-office-365"></a>Připojení k Office 365
 
-1. V Azure Sentinelu, vyberte **shromažďování dat** a potom klikněte na tlačítko **Office 365** dlaždici.
+1. V Azure Sentinelu, vyberte **datové konektory** a potom klikněte na tlačítko **Office 365** dlaždici.
 
 2. Pokud jste ještě nepovolili, v části **připojení** použít **povolit** tlačítko povolíte řešení Office 365. Pokud je už povolená, budou označeny v okně připojení, které jsou už povolená.
 1. Office 365 umožňuje streamování dat z více tenantů do Azure Sentinelu. Pro každého klienta, které se chcete připojit, přidání tenanta pod **připojení klientů k Azure Sentinelu**. 

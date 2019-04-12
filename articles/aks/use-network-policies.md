@@ -5,29 +5,29 @@ services: container-service
 author: iainfoulds
 ms.service: container-service
 ms.topic: article
-ms.date: 02/12/2019
+ms.date: 04/08/2019
 ms.author: iainfou
-ms.openlocfilehash: a20dfcd9e2ef12252235b74455964d115d9aef9b
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 29180d6c1bb5f0991a4f33c3b7c9418f84d8260c
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58181482"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59494761"
 ---
 # <a name="preview---secure-traffic-between-pods-using-network-policies-in-azure-kubernetes-service-aks"></a>Ve verzi Preview - zabezpečený přenos dat mezi pody pomocí zásady sítě ve službě Azure Kubernetes Service (AKS)
 
 Když spustíte moderních aplikací založených na mikroslužbách v Kubernetes, často chcete řídit, které součásti mohou komunikovat mezi sebou. Jak můžete tok provozu mezi pody v clusteru služby Azure Kubernetes Service (AKS) bude použito principu nejnižších možných oprávnění. Řekněme, že pravděpodobně chcete blokovat provoz přímo na back endové aplikace. *Zásady sítě* funkce v Kubernetes umožňuje definovat pravidla pro příchozí a odchozí přenos dat mezi pody v clusteru.
 
-Calico, opensourcové sítě a řešení zabezpečení sítě Ruska Tigera, nabízí modul zásad sítě, které můžete implementovat pravidla zásad sítě Kubernetes. Tento článek popisuje, jak nainstalovat modul zásad sítě Calico a vytvářet zásady sítě Kubernetes pro řízení toku přenosů mezi pody ve službě AKS.
+V tomto článku se dozvíte, jak nainstalovat modul zásad sítě a vytvářet zásady sítě Kubernetes pro řízení toku přenosů mezi pody ve službě AKS. Tato funkce je aktuálně ve verzi Preview.
 
 > [!IMPORTANT]
 > Funkce AKS ve verzi preview jsou samoobslužných služeb a vyjádřit výslovný souhlas. Verze Preview jsou k dispozici pro shromažďování zpětné vazby a chyb z naší komunitě. Však nepodporují technickou podporu Azure. Pokud vytvoříte cluster, nebo přidejte tyto funkce do existujících clusterů, se tento cluster nepodporuje, dokud tato funkce už je ve verzi preview a přechází do všeobecné dostupnosti (GA).
 >
 > Pokud narazíte na problémy s funkcemi ve verzi preview, [otevřete problém v úložišti Githubu AKS] [ aks-github] s názvem funkce ve verzi preview v název chyby.
 
-## <a name="before-you-begin"></a>Před zahájením
+## <a name="before-you-begin"></a>Než začnete
 
-Musí mít Azure CLI verze 2.0.56 nebo později nainstalována a nakonfigurována. Spustit `az --version` k vyhledání verze. Pokud potřebujete instalaci nebo upgrade, naleznete v tématu [instalace Azure CLI][install-azure-cli].
+Musí mít Azure CLI verze 2.0.61 nebo později nainstalována a nakonfigurována. Spustit `az --version` k vyhledání verze. Pokud potřebujete instalaci nebo upgrade, naleznete v tématu [instalace Azure CLI][install-azure-cli].
 
 K vytvoření clusteru AKS, můžete použít zásady sítě, nejprve povolte příznak funkce v rámci předplatného. K registraci *EnableNetworkPolicy* příznak funkce, použijte [az funkce register] [ az-feature-register] příkaz, jak je znázorněno v následujícím příkladu:
 
@@ -51,7 +51,35 @@ az provider register --namespace Microsoft.ContainerService
 
 Všechny podů v clusteru AKS mohla odesílat a přijímat provoz bez omezení, ve výchozím nastavení. Pro zlepšení zabezpečení, můžete definovat pravidla, která řídí tok provozu. Back endové aplikace jsou často dostupná jenom v případě do požadované front-endové služby, třeba. Nebo databáze součásti jsou pouze přístupné aplikačních vrstev, které k nim připojit.
 
-Zásady sítě jsou prostředky Kubernetesu, které vám umožňují řídit tok přenosů mezi pody. Můžete povolit nebo odepřít přenosy podle nastavení, jako je přiřazené popisky, obor názvů nebo provoz portu. Zásady sítě, definovaná podle manifesty YAML. Tyto zásady mohou být součástí širší manifestu, který vytvoří také nasazení nebo služby.
+Zásady sítě je specifikace Kubernetes, který definuje zásady přístupu pro komunikaci mezi Pody. Pomocí zásady sítě, definujete uspořádané sady pravidel pro odesílání a příjem provozu a použít je u kolekce podů, které odpovídají nejmíň jeden popisek selektorů.
+
+Tato pravidla zásad sítě jsou definovány jako manifesty YAML. Zásady sítě může být součástí širší manifestu, který vytvoří také nasazení nebo služby.
+
+### <a name="network-policy-options-in-aks"></a>Možnosti zásad sítě ve službě AKS
+
+Azure nabízí dva způsoby, jak implementovat zásady sítě. Při vytváření clusteru AKS zvolíte možnost zásad sítě. Možnost zásad nelze změnit po vytvoření clusteru:
+
+* Azure pro vlastní implementaci, volá *zásady sítě Azure*.
+* *Calico zásady sítě*, open source sítě a služby z Ruska řešení zabezpečení sítě [Tigera][tigera].
+
+Obou implementacích používat Linux *IPTables* vynutit zadané zásady. Zásady jsou přeloženy do množiny povolených a zakázaných párů IP. Tyto páry jsou pak naprogramovat jako IPTable pravidla filtru.
+
+Zásady sítě funguje jenom s možností Azure CNI (rozšířené). Implementaci se liší pro tyto dvě možnosti:
+
+* *Zásady služby Azure Network* -Azure CNI nastaví most v hostiteli virtuálního počítače pro sítě uvnitř uzlu. Pravidla filtrování se použijí při předávání paketů mostu.
+* *Calico zásady sítě* -Azure CNI nastaví místní jádra trasy pro provoz uzlů. Zásady se použijí na pod síťové rozhraní.
+
+### <a name="differences-between-azure-and-calico-policies-and-their-capabilities"></a>Rozdíly mezi Azure a Calico zásad a jejich funkce
+
+| Schopnost                               | Azure                      | Calico                      |
+|------------------------------------------|----------------------------|-----------------------------|
+| Podporované platformy                      | Linux                      | Linux                       |
+| Podporované možnosti sítě             | Azure CNI                  | Azure CNI                   |
+| Kompatibilita se specifikací Kubernetes | Nepodporuje všechny typy zásad |  Nepodporuje všechny typy zásad |
+| Další funkce                      | Žádný                       | Rozšířené zásady modelu skládající se z globálních zásad sítě, nastavte globální sítě a hostitele koncového bodu. Další informace o používání `calicoctl` CLI ke správě těchto rozšířených funkcí, naleznete v tématu [reference k uživatelskému calicoctl][calicoctl]. |
+| Podpora                                  | Podporované podpory Azure a technického týmu | Podpora calico komunity. Další informace o dalších placená odborná pomoc najdete v tématu [možností podpory, které projekt Calico][calico-support]. |
+
+## <a name="create-an-aks-cluster-and-enable-network-policy"></a>Vytvoření clusteru AKS a povolit zásady sítě
 
 Zobrazit zásady sítě v akci, Pojďme vytvořit a potom rozbalte na zásadu, která definuje toku provozu:
 
@@ -59,9 +87,7 @@ Zobrazit zásady sítě v akci, Pojďme vytvořit a potom rozbalte na zásadu, k
 * Povolení provozu na základě popisků pod.
 * Povolení provozu na základě v oboru názvů.
 
-## <a name="create-an-aks-cluster-and-enable-network-policy"></a>Vytvoření clusteru AKS a povolit zásady sítě
-
-Zásady sítě jde Povolit jenom při vytvoření clusteru. Nelze povolit zásady sítě v existujícím clusteru AKS. 
+Nejprve vytvoříme cluster AKS, který podporuje zásady sítě. Funkce zásad sítě lze povolit pouze při vytváření clusteru. Nelze povolit zásady sítě v existujícím clusteru AKS.
 
 Zásady sítě pomocí AKS cluster, je nutné použít [modul plug-in Azure CNI] [ azure-cni] a definovat vlastní virtuální sítě a podsítě. Podrobné informace o tom, jak naplánovat rozsahy požadované podsítě, naleznete v tématu [konfiguraci rozšířeného sítě][use-advanced-networking].
 
@@ -71,6 +97,7 @@ Následující ukázkový skript:
 * Vytvoří instanční objekt pro použití služby Azure Active Directory (Azure AD) s clusterem AKS.
 * Přiřadí *Přispěvatel* oprávnění pro AKS clusteru instanční objekt služby ve virtuální síti.
 * Vytvoří AKS cluster v definované virtuální sítě a povolí zásady sítě.
+    * *Azure* možnost zásad sítě se používá. Místo toho použít Calico jako možnost zásady sítě, použijte `--network-policy calico` parametru.
 
 Zadejte vlastní zabezpečené *SP_PASSWORD*. Můžete nahradit *RESOURCE_GROUP_NAME* a *název_clusteru* proměnné:
 
@@ -122,7 +149,7 @@ az aks create \
     --vnet-subnet-id $SUBNET_ID \
     --service-principal $SP_ID \
     --client-secret $SP_PASSWORD \
-    --network-policy calico
+    --network-policy azure
 ```
 
 Vytvoření clusteru bude trvat několik minut. Když bude cluster připravený, nakonfigurujte `kubectl` pro připojení k vašemu clusteru Kubernetes pomocí [az aks get-credentials] [ az-aks-get-credentials] příkazu. Tento příkaz stáhne přihlašovací údaje a nakonfiguruje rozhraní příkazového řádku Kubernetes pro jejich použití:
@@ -454,6 +481,9 @@ Další informace o zásadách najdete v tématu [zásady sítě, Kubernetes][ku
 [terms-of-use]: https://azure.microsoft.com/support/legal/preview-supplemental-terms/
 [policy-rules]: https://kubernetes.io/docs/concepts/services-networking/network-policies/#behavior-of-to-and-from-selectors
 [aks-github]: https://github.com/azure/aks/issues]
+[tigera]: https://www.tigera.io/
+[calicoctl]: https://docs.projectcalico.org/v3.5/reference/calicoctl/
+[calico-support]: https://www.projectcalico.org/support
 
 <!-- LINKS - internal -->
 [install-azure-cli]: /cli/azure/install-azure-cli

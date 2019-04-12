@@ -1,6 +1,6 @@
 ---
-title: Shromažďování dat služby Azure AD Identity Protection ve verzi Preview Sentinelu Azure | Dokumentace Microsoftu
-description: Zjistěte, jak shromažďovat data služby Azure AD Identity Protection v nástroji Azure Sentinelu.
+title: Připojením dat služby Azure AD Identity Protection Sentinelu ve verzi Preview Azure | Dokumentace Microsoftu
+description: Informace o připojení k Azure Sentinelu dat služby Azure AD Identity Protection.
 services: sentinel
 documentationcenter: na
 author: rkarlin
@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 2/28/2019
+ms.date: 04/07/2019
 ms.author: rkarlin
-ms.openlocfilehash: 609aced38b7e30f78d81934867196c568dcc85ca
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: d8306056655809c69af2ed39b5bbf8efebe05d3f
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57239994"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59496159"
 ---
-# <a name="collect-data-from-azure-ad-identity-protection"></a>Shromažďování dat z Azure AD Identity Protection
+# <a name="connect-data-from-azure-ad-identity-protection"></a>Připojíte si data z Azure AD Identity Protection
 
 > [!IMPORTANT]
 > Azure Sentinel je aktuálně ve verzi public preview.
@@ -42,7 +42,7 @@ Pokud už máte Azure AD Identity Protection, ujistěte se, že je [povolena ve 
 Pokud je nasazení služby Azure AD Identity Protection a získávání dat, data upozornění snadno Streamovat do ověřovacích Azure.
 
 
-1. V Azure Sentinelu, vyberte **shromažďování dat** a potom klikněte na tlačítko **Azure AD Identity Protection** dlaždici.
+1. V Azure Sentinelu, vyberte **datové konektory** a potom klikněte na tlačítko **Azure AD Identity Protection** dlaždici.
 
 2. Klikněte na tlačítko **připojit** chcete spustit streamování událostí služby Azure AD Identity Protection do ověřovacích Azure.
 

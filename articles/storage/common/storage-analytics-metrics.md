@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 03/11/2019
 ms.author: fryu
 ms.subservice: common
-ms.openlocfilehash: 9b4bceba53658cb8ac3c73e75e0d19faf3fe3f0b
-ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
+ms.openlocfilehash: c15242b0c480e2da39897b850ab7b2a2fd05bf11
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58259750"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59489278"
 ---
 # <a name="azure-storage-analytics-metrics-classic"></a>Azure Storage analytics metriky (klasické)
 
@@ -75,7 +75,7 @@ Postupujte podle těchto kroků k zapnutí metrik v [webu Azure portal](https://
 [Webu Azure portal](https://portal.azure.com) nepovolíte aktuálně je možné nakonfigurovat minutové metriky ve vašem účtu úložiště, je nutné povolit minutové metriky pomocí Powershellu nebo prostřednictvím kódu programu.
 
 > [!NOTE]
->  Všimněte si, že na webu Azure portal neumožňuje aktuálně je možné nakonfigurovat minutové metriky ve vašem účtu úložiště. Je nutné povolit minutové metriky pomocí Powershellu nebo prostřednictvím kódu programu.  
+>  Všimněte si, že na webu Azure portal neumožňuje aktuálně je možné nakonfigurovat minutové metriky ve vašem účtu úložiště. Je nutné povolit minutové metriky pomocí Powershellu nebo prostřednictvím kódu programu.
 
 ## <a name="enable-storage-metrics-using-powershell"></a>Zapnutí metrik úložiště pomocí Powershellu  
 Konfigurace metrik úložiště ve vašem účtu úložiště pomocí rutiny prostředí Azure PowerShell můžete použít prostředí PowerShell na místním počítači **Get-AzureStorageServiceMetricsProperty** načíst aktuální nastavení a rutiny  **Set-AzureStorageServiceMetricsProperty** změnit aktuální nastavení.  
@@ -148,7 +148,7 @@ Pro tyto tabulky na najdete úplné podrobnosti o schémata [tabulkovému schém
 
 ||||||||||||  
 |-|-|-|-|-|-|-|-|-|-|-|  
-|**partitionKey**|**RowKey**|**Časové razítko**|**TotalRequests**|**TotalBillableRequests**|**TotalIngress**|**TotalEgress**|**Dostupnost**|**Hodnotu AverageE2ELatency**|**AverageServerLatency**|**PercentSuccess**|  
+|**PartitionKey**|**RowKey**|**Timestamp**|**TotalRequests**|**TotalBillableRequests**|**TotalIngress**|**TotalEgress**|**Dostupnost**|**Hodnotu AverageE2ELatency**|**AverageServerLatency**|**PercentSuccess**|  
 |20140522T1100|uživatele. Všechny|2014-05-22T11:01:16.7650250Z|7|7|4003|46801|100|104.4286|6.857143|100|  
 |20140522T1100|uživatele. QueryEntities|2014-05-22T11:01:16.7640250Z|5|5|2694|45951|100|143.8|7.8|100|  
 |20140522T1100|uživatele. QueryEntity|2014-05-22T11:01:16.7650250Z|1|1|538|633|100|3|3|100|  

@@ -1,5 +1,5 @@
 ---
-title: Podmínky služby a o ochraně osobních údajů pro aplikace Azure AD | Dokumentace Microsoftu
+title: Podmínky služby a o ochraně osobních údajů pro aplikace | Azure
 description: Zjistěte, jak nakonfigurovat podmínky služby a o ochraně osobních údajů pro aplikace zaregistrované k používání služby Azure AD.
 services: active-directory
 documentationcenter: dev-center-name
@@ -17,14 +17,14 @@ ms.author: celested
 ms.reviwer: lenalepa, sureshja
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a3687d0b50add3301fb8e15b9c70569554b91c04
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 97728fa70f0c5f58510e0e68d27a379b20887703
+ms.sourcegitcommit: 41015688dc94593fd9662a7f0ba0e72f044915d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56193505"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59500293"
 ---
-# <a name="terms-of-service-and-privacy-statement-for-registered-azure-active-directory-apps"></a>Podmínky služby a o ochraně osobních údajů pro registrované aplikace Azure Active Directory
+# <a name="how-to-configure-terms-of-service-and-privacy-statement-for-an-app"></a>Postup: Konfigurace podmínky služby a o ochraně osobních údajů pro aplikaci
 
 Vývojáři, kteří vytvářejí a spravovat aplikace, které se integrují s Azure Active Directory (Azure AD) a účty Microsoft, by měly zahrnovat odkazy na aplikace podmínkami služby a o ochraně osobních údajů. Podmínky služby a o ochraně osobních údajů se zobrazí uživatelům prostřednictvím prostředí pro vyjádření souhlasu uživatele. Pomáhají uživatelům vědět, že se vztah důvěryhodnosti aplikace. Podmínky služby a o ochraně osobních údajů jsou obzvláště důležité pro aplikace s více tenanty přístupných – aplikace, které jsou používány více adresářů nebo jsou k dispozici k libovolnému účtu Microsoft.
 
@@ -47,7 +47,7 @@ Předtím, než přidáte odkazy na vaší aplikace podmínky služby a o ochran
 | Pokyn     | Popis                           |
 |---------------|---------------------------------------|
 | Formát        | Platná adresa URL.                             |
-| Platná schémata | Protokoly HTTP a HTTPS</br>Doporučujeme, abyste HTTPS |
+| Platná schémata | Protokoly HTTP a HTTPS<br/>Doporučujeme, abyste HTTPS |
 | Maximální délka    | 2 048 znaků                       |
 
 Příklady: `https://myapp.com/terms-of-service` a `https://myapp.com/privacy-statement`

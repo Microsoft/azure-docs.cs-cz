@@ -18,12 +18,12 @@ ms.author: celested
 ms.reviewer: jmprieur, dadobali
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e9f3f041fa3b594b4b680d794c1c013e55b97da4
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.openlocfilehash: 0de9b3e3535253724d068f806b219736f6889477
+ms.sourcegitcommit: 41015688dc94593fd9662a7f0ba0e72f044915d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56235185"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59501585"
 ---
 # <a name="support-and-help-options-for-developers"></a>Možnosti podporu a nápovědu pro vývojáře
 
@@ -52,10 +52,9 @@ Kde *{Your hledané termíny}* odpovídají klíčová slova pro vyhledávání.
 
 ## <a name="use-the-development-support-tools"></a>Použití vývojářských nástrojů, podpory
 
-| Nástroj  | Popis  |
+| Tool  | Popis  |
 |---------|---------|
 | [jwt.ms](https://jwt.ms) | Vložte ID a přístupový token k dekódování deklarace identity názvy a hodnoty. |
-| [Analyzátor kódu chyby](https://apps.dev.microsoft.com/portal/tools/errors)| Vložte kód chyby přijaté při přihlašování nebo souhlas stránky, které najdete v článku možné příčiny a řešení. |
 | [Microsoft Graph Exploreru](https://developer.microsoft.com/graph/graph-explorer)| Nástroj, který vám umožní vytvářet požadavky a odpovědi na rozhraní Microsoft Graph API najdete v článku. |
 
 ## <a name="post-a-question-to-stack-overflow"></a>Odeslat dotaz na Stack Overflow

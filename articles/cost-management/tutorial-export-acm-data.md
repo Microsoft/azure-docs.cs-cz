@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 03/13/2019
+ms.date: 04/10/2019
 ms.topic: tutorial
 ms.service: cost-management
 manager: dougeby
 ms.custom: seodec18
-ms.openlocfilehash: a0b50b86ca164199ca723354e39e194c6cd7423f
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: df893683c387f8d694500ae1ace93a5a146ea352
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58014130"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59496790"
 ---
 # <a name="tutorial-create-and-manage-exported-data"></a>Kurz: Vytvoření a správa exportovaná data
 
@@ -75,6 +75,10 @@ Existují tři typy možností:
 
 **Vlastní** – umožňuje naplánovat týdenní a měsíční exportuje s možnostmi pro týden k datu a měsíc k datu. *Počáteční export se spustí okamžitě.*
 
+Pokud máte předplatné s průběžnými platbami, MSDN nebo Visual Studio, nemusí zarovnat fakturačního období vaší faktury ke kalendářnímu měsíci. Pro tyto typy předplatných a skupin prostředků můžete vytvořit export, který je v souladu, fakturační období nebo kalendářních měsících. Chcete-li vytvořit export zarovnána na vaší faktuře měsíc, přejděte na **vlastní**a pak vyberte **fakturační období do data**.  Chcete-li vytvořit export zarovnána ke kalendářnímu měsíci, vyberte **měsíc k datu**.
+>
+>
+
 ![Nový export – základní informace o kartě zobrazen vlastní týdenní výběr týden k datu](./media/tutorial-export-acm-data/tutorial-export-schedule-weekly-week-to-date.png)
 
 ## <a name="verify-that-data-is-collected"></a>Ověřit shromáždění dat
@@ -93,6 +97,7 @@ Soubor se otevře v programu nebo aplikaci, která je nastavená k otevírání 
 
 ![Příklad exportovat data ve formátu CSV je znázorněno v aplikaci Excel](./media/tutorial-export-acm-data/example-export-data.png)
 
+
 ## <a name="access-exported-data-from-other-systems"></a>Přístup k exportovaným datům z jiných systémů
 
 Jedním z důvodů pro export dat služby Cost Management je umožnění přístupu k těmto datům z externích systémů. Možná používáte systém řídicích panelů nebo jiný finanční systém. Takové systémy se dost liší, takže ukázka s příkladem by nemusela být užitečná.  S přístupem k datům z vašich aplikací však můžete začít podle tématu [Úvod do Azure Storage](../storage/common/storage-introduction.md).
@@ -108,4 +113,4 @@ V tomto kurzu jste se naučili:
 Přejděte k dalšímu kurzu, který se zabývá optimalizací a zvyšováním efektivity pomocí identifikace nečinných a nedostatečně využitých prostředků.
 
 > [!div class="nextstepaction"]
-> [Kontrola optimalizačních doporučení a reakce na ně](tutorial-acm-opt-recommendations.md)
+> [Projděte si dokážete na základě doporučení pro optimalizaci](tutorial-acm-opt-recommendations.md)

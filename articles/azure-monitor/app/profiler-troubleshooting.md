@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.reviewer: mbullwin
 ms.date: 08/06/2018
 ms.author: cweining
-ms.openlocfilehash: c9e6e289fbda3188449ecc71cbc90bed546512e1
-ms.sourcegitcommit: 6e32f493eb32f93f71d425497752e84763070fad
+ms.openlocfilehash: 6ab13e1ecd5f4825270f4b3a28251b959ad98f02
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/10/2019
-ms.locfileid: "59471524"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59495392"
 ---
 # <a name="troubleshoot-problems-enabling-or-viewing-application-insights-profiler"></a>Poradce při potížích, povolení nebo zobrazení Application Insights Profiler
 
@@ -71,7 +71,7 @@ Pro Profiler fungovala správně:
 
     |Nastavení aplikace    | Hodnota    |
     |---------------|----------|
-    |APPINSIGHTS_INSTRUMENTATIONKEY         | Instrumentační klíč pro vás prostředku Application Insights    |
+    |APPINSIGHTS_INSTRUMENTATIONKEY         | Instrumentační klíč pro váš prostředek Application Insights    |
     |APPINSIGHTS_PROFILERFEATURE_VERSION | 1.0.0 |
     |DiagnosticServices_EXTENSION_VERSION | ~3 |
 
@@ -83,7 +83,7 @@ Pro Profiler fungovala správně:
    
       ![profiler-webjob]   
    
-   1. Chcete-li zobrazit podrobnosti o webové úlohy, včetně protokolu, vyberte **ApplicationInsightsProfiler2** odkaz.  
+   1. Chcete-li zobrazit podrobnosti o webové úlohy, včetně protokolu, vyberte **ApplicationInsightsProfiler3** odkaz.  
      **Průběžné webové úlohy podrobnosti** se otevře podokno.
 
       ![profiler-webjob-log]
@@ -92,7 +92,7 @@ Pokud nelze zjistit, proč se Profiler nefunguje pro vás, můžete stáhnout a 
     
 ### <a name="manual-installation"></a>Ruční instalace
 
-Když konfigurujete Profiler, jsou provedeny aktualizace nastavení webové aplikace. Pokud vaše prostředí vyžaduje, můžete ručně aplikovat aktualizace. Příkladem může být, že vaše aplikace běží v prostředí s Web Apps pro PowerApps. Pro ruční instalace aktualizací, postupujte takto:
+Když konfigurujete Profiler, jsou provedeny aktualizace nastavení webové aplikace. Pokud vaše prostředí vyžaduje, můžete ručně aplikovat aktualizace. Příkladem může být, že vaše aplikace běží v prostředí s Web Apps pro PowerApps. Pro ruční instalace aktualizací:
 
 1. V **webový ovládací prvek aplikace** otevřeným podoknem **nastavení**.
 
@@ -103,7 +103,7 @@ Když konfigurujete Profiler, jsou provedeny aktualizace nastavení webové apli
 
     |Nastavení aplikace    | Hodnota    |
     |---------------|----------|
-    |APPINSIGHTS_INSTRUMENTATIONKEY         | Instrumentační klíč pro vás prostředku Application Insights    |
+    |APPINSIGHTS_INSTRUMENTATIONKEY         | Instrumentační klíč pro váš prostředek Application Insights    |
     |APPINSIGHTS_PROFILERFEATURE_VERSION | 1.0.0 |
     |DiagnosticServices_EXTENSION_VERSION | ~3 |
 

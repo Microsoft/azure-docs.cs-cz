@@ -1,5 +1,5 @@
 ---
-title: Zabezpečená komunikace klienta OPC a OPC PLC pomocí Azure IoT OPC UA certificate managementu | Dokumentace Microsoftu
+title: Zabezpečená komunikace klienta OPC a PLC OPC s trezorem OPC – Azure | Dokumentace Microsoftu
 description: Zabezpečená komunikace klienta OPC a OPC PLC podepsáním svoje certifikáty pomocí certifikační Autority OPC trezoru.
 author: dominicbetts
 ms.author: dobett
@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.service: iot-industrialiot
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: c437f6db21956d1be5e4f6d3512f325f37ca7308
-ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
+ms.openlocfilehash: 30eedd982fa0536ce45506c159de6d04132e9a14
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58759456"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59493993"
 ---
 # <a name="secure-the-communication-of-opc-client-and-opc-plc"></a>Zabezpečená komunikace klienta OPC a OPC PLC
 
-Azure IoT OPC UA Správa certifikátů, také znát pod některým z trezoru OPC micro služba, která můžete nakonfigurovat registr a správa životního cyklu certifikátu pro OPC UA serverových a klientských aplikací v cloudu. Tento článek ukazuje, jak zabezpečit komunikaci klienta OPC a OPC PLC podepisování svoje certifikáty pomocí certifikační Autority OPC trezoru.
+OPC trezor je mikroslužeb, která můžete konfigurovat, registrace a správa životního cyklu certifikátu pro server OPC UA a klientských aplikací v cloudu. Tento článek ukazuje, jak zabezpečit komunikaci klienta OPC a OPC PLC podepisování svoje certifikáty pomocí certifikační Autority OPC trezoru.
 
 V tomto nastavení klienta OPC testuje připojení k OPC PLC. Ve výchozím nastavení připojení není možné protože obě komponenty nebyly zřízeny správné certifikáty. Pokud jako součást OPC UA ještě nezřídil s certifikátem, vygeneruje certifikát podepsaný svým držitelem při spuštění. Však může být certifikát podepsaný pomocí certifikační autority (CA) a nainstalován v komponentě OPC UA. Po dokončení pro klienta OPC a OPC PLC, je povoleno připojení. Následující pracovní postup popisuje proces. Některé základní informace o zabezpečení OPC UA najdete v [tento dokument](https://opcfoundation.org/wp-content/uploads/2014/05/OPC-UA_Security_Model_for_Administrators_V1.00.pdf) dokument white paper. Podrobnější informace najdete ve specifikaci OPC UA.
 
@@ -59,7 +59,7 @@ opcplc-123456 | [20:51:32 INF] Rejected certificate store contains 0 certs
 ```
 Pokud se zobrazí certifikáty, které jsou hlášeny, postupujte podle výše uvedených kroků přípravy a odstraňte svazky dockeru.
 
-Ověřte, že připojení k OPC PLC se nezdařilo. Zobrazí následující výstup v klientovi OPC protokolovat výstup:
+Ověřte, že připojení k OPC PLC se nezdařilo. Byste měli vidět následující výstup ve výstupu protokolu klienta OPC:
 
 ```
 opcclient-123456 | [20:51:35 INF] Create secured session for endpoint URI 'opc.tcp://opcplc-123456:50000/' with timeout of 10000 ms.
@@ -175,7 +175,7 @@ opcplc-123456 | [20:54:39 INF] Rejected certificate store contains 0 certs
 Vystavitel certifikátu aplikace je certifikační Autorita `CN=Azure IoT OPC Vault CA, O=Microsoft Corp.` a OPC PLC důvěřovat také všechny certifikáty podepsané touto certifikační autoritou.
 
 
-Ověřte, že připojení k OPC PLC se úspěšně vytvořil a klienta OPC může číst data z OPC PLC. Zobrazí následující výstup v klientovi OPC protokolovat výstup:
+Ověřte, že připojení k OPC PLC se úspěšně vytvořil a klienta OPC může číst data z OPC PLC. Byste měli vidět následující výstup ve výstupu protokolu klienta OPC:
 ```
 opcclient-123456 | [20:54:42 INF] Create secured session for endpoint URI 'opc.tcp://opcplc-123456:50000/' with timeout of 10000 ms.
 opcclient-123456 | [20:54:42 INF] Session successfully created with Id ns=3;i=1085867946.
@@ -189,7 +189,7 @@ opcclient-123456 | [20:54:42 INF] Execute 'OpcClient.OpcTestAction' action on no
 opcclient-123456 | [20:54:42 INF] Action (ActionId: 000 ActionType: 'OpcTestAction', Endpoint: 'opc.tcp://opcplc-123456:50000/' Node 'i=2258') completed successfully
 opcclient-123456 | [20:54:42 INF] Value (ActionId: 000 ActionType: 'OpcTestAction', Endpoint: 'opc.tcp://opcplc-123456:50000/' Node 'i=2258'): 10/20/2018 20:54:42
 ```
-Pokud se zobrazí tento výstup, pak OPC PLC je nyní důvěřující klienta OPC a naopak, protože obě mají nyní certifikátům podepsaným Certifikační autoritou a oba důvěryhodnosti certifikáty, které se podepsané touto certifikační autoritou.
+Pokud se zobrazí tento výstup, pak OPC PLC se teď důvěřovat OPC versa klienta a naopak, protože obě mají nyní certifikáty podepsané Certifikační autoritou a vztahem důvěryhodnosti certifikáty, které se podepsané touto certifikační autoritou.
 
 > [!NOTE] 
 > I když jsme vám ukázali prvních dvou kroků pouze pro OPC PLC jsou třeba taky ověřit klienta OPC.

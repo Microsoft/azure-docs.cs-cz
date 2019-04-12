@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 53140c7b02dd657036b76db0dd137bd770d97f4d
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.openlocfilehash: 49b247338bbb1f20082fdef2a2bc291fb6183b10
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58369526"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59493055"
 ---
 # <a name="reporting-options-for-azure-ad-password-management"></a>Možnosti zasílání zpráv o správě hesel Azure AD
 
@@ -118,7 +118,7 @@ Následující seznam popisuje tato aktivita podrobně:
 Následující seznam popisuje tato aktivita podrobně:
 
 * **Popis aktivity**: Označuje, že správce provedena heslo resetovat jménem uživatele z portálu Azure portal.
-* **Aktivita actor**: Správce, který provedl resetování jménem jiného koncový uživatel nebo správce hesel. Musí být buď globální správce, heslo správce, Správce uživatelů nebo správce technické podpory.
+* **Aktivita actor**: Správce, který provedl resetování jménem jiného koncový uživatel nebo správce hesel. Musí být heslo správce, uživatele správce nebo správce technické podpory.
 * **Cílové aktivity**: Uživatel, jehož heslo se resetovalo. Tímto uživatelem může být koncový uživatel nebo jiný správce.
 * **Aktivita stavy**:
   * _Success_: Označuje, že správce bylo úspěšně resetováno heslo uživatele.
@@ -176,16 +176,16 @@ Následující seznam popisuje tato aktivita podrobně:
 
 ## <a name="next-steps"></a>Další postup
 
-* [Jak dokončit úspěšné zavedení SSPR?](howto-sspr-deployment.md)
+* [Jak lze dokončit úspěšné zavedení samoobslužného resetování HESLA?](howto-sspr-deployment.md)
 * [Resetování nebo změna hesla](../user-help/active-directory-passwords-update-your-own-password.md)
 * [Registrace samoobslužného resetování hesla](../user-help/active-directory-passwords-reset-register.md)
 * [Máte dotaz k licencování?](concept-sspr-licensing.md)
 * [Jaká data používá SSPR a která data byste měli naplnit pro vaše uživatele?](howto-sspr-authenticationdata.md)
-* [Které metody ověřování jsou dostupné pro uživatele?](concept-sspr-howitworks.md#authentication-methods)
+* [Jaké metody ověřování jsou dostupné pro uživatele?](concept-sspr-howitworks.md#authentication-methods)
 * [Jaké jsou možnosti zásad se SSPR?](concept-sspr-policy.md)
-* [Co je zpětný zápis hesla a proč byste se o něj měli starat?](howto-sspr-writeback.md)
-* [Jaké jsou všechny možnosti v SSPR a co znamenají?](concept-sspr-howitworks.md)
-* [Myslím, že je něco poškozené. Jak řešit problémy SSPR?](active-directory-passwords-troubleshoot.md)
-* [Mám otázku, která není zodpovězená jinde](active-directory-passwords-faq.md)
+* [Co je zpětný zápis hesla a proč je postaral o něm?](howto-sspr-writeback.md)
+* [Co jsou všechny možnosti v SSPR a co znamenají?](concept-sspr-howitworks.md)
+* [Myslím, že je něco poškozené. Jak mám řešit problémy SSPR?](active-directory-passwords-troubleshoot.md)
+* [Mám dotaz, který není zodpovězená jinde](active-directory-passwords-faq.md)
 
 [Reporting]: ./media/howto-sspr-reporting/sspr-reporting.png "Protokoly příklad aktivit auditu samoobslužného resetování HESLA ve službě Azure AD"

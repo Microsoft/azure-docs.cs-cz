@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 manager: briz
-ms.openlocfilehash: 7835553dafd66830b7a483c58bc2c7b7cf8c93f8
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.openlocfilehash: e35330874c647eba2cddde694563c8a1d9e83df5
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/05/2019
-ms.locfileid: "59046890"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59490268"
 ---
 # <a name="iot-hub-device-provisioning-service-security-concepts"></a>Koncepty zabezpečení IoT Hub Device Provisioning Service 
 
@@ -77,7 +77,11 @@ Zprostředkující certifikát je certifikát X.509, který byl podepsán pomoc�
 
 ### <a name="end-entity-leaf-certificate"></a>Certifikát koncové entity "typu list"
 
-Listový certifikát nebo certifikát koncové entity, identifikuje držitel certifikátu. Má kořenový certifikát ve svém řetězu certifikátů a nula nebo více zprostředkující certifikáty. Listového certifikátu se nepoužívá k podepisování jiných certifikátů. Jednoznačně identifikuje zařízení ke službě zřizování a se někdy označuje jako certifikát zařízení. Při ověřování zařízení používá privátní klíč spojený s tímto certifikátem reagovat na doklad o vlastnictví challenge ze služby. Další informace najdete v tématu [ověřování zařízení podepsané certifikáty webu X.509](/azure/iot-hub/iot-hub-x509ca-overview#authenticating-devices-signed-with-x509-ca-certificates).
+Listový certifikát nebo certifikát koncové entity, identifikuje držitel certifikátu. Má kořenový certifikát ve svém řetězu certifikátů a nula nebo více zprostředkující certifikáty. Listového certifikátu se nepoužívá k podepisování jiných certifikátů. Jednoznačně identifikuje zařízení ke službě zřizování a se někdy označuje jako certifikát zařízení. Při ověřování zařízení používá privátní klíč spojený s tímto certifikátem reagovat na doklad o vlastnictví challenge ze služby.
+
+Listové certifikáty používané s [jednotlivou registraci](./concepts-service.md#individual-enrollment) položka mít požadavek, který **název subjektu** musí být nastavena na ID registrace položky jednotlivé registrace. Listové certifikáty používané s [skupinu registrací](./concepts-service.md#enrollment-group) položka by měla mít **název subjektu** nastavena na ID požadované zařízení, která bude zobrazovat v **záznamy registrace** pro ověřené zařízení ve skupině pro registraci.
+
+Další informace najdete v tématu [ověřování zařízení podepsané certifikáty webu X.509](/azure/iot-hub/iot-hub-x509ca-overview#authenticating-devices-signed-with-x509-ca-certificates).
 
 ## <a name="controlling-device-access-to-the-provisioning-service-with-x509-certificates"></a>Řízení přístupu zařízení ke službě zřizování pomocí certifikátů X.509
 

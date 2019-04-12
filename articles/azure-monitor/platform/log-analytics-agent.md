@@ -11,14 +11,14 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 03/12/2019
+ms.date: 04/10/2019
 ms.author: magoedte
-ms.openlocfilehash: e9df83ef81c2656bf94002feb79d7e4d99ed7954
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 5f9a225e8a256dd55feadf97f0a7b9f922487a6f
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57841102"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59492800"
 ---
 # <a name="collect-log-data-with-the-azure-log-analytics-agent"></a>Shromažďovat data protokolu s agentem Azure Log Analytics
 
@@ -41,8 +41,9 @@ Agenta pro Linux a Windows není jenom pro připojení ke službě Log Analytics
 ## <a name="supported-windows-operating-systems"></a>Podporované operační systémy Windows
 Pro agenta Windows se oficiálně podporuje následující verze operačního systému Windows:
 
-* Windows Server 2008 R2 nebo novější
-* Windows 7 SP1 a novější.
+* Windows Server 2019
+* Windows Server 2008 R2, 2012, 2012 R2, 2016, verze 1709 a 1803
+* Windows 7 SP1 a novější
 
 ## <a name="supported-linux-operating-systems"></a>Podporované operační systémy a Linux
 Tato část obsahuje podrobnosti o podporovaných distribucích systému Linux.    
@@ -104,7 +105,8 @@ Pro linuxového agenta proxy serveru zadané během instalace nebo [po instalaci
 |proxyhost | Adresa nebo plně kvalifikovaný název domény proxy serveru/Log Analytics gateway |
 |port | Volitelné nastavení portu brány proxy serveru/Log Analytics |
 
-Příklad: `https://user01:password@proxy01.contoso.com:30443`
+Příklad:
+`https://user01:password@proxy01.contoso.com:30443`
 
 > [!NOTE]
 > Pokud používáte speciální znaky, jako "\@" své heslo, obdržíte chybu připojení proxy server vzhledem k tomu, že hodnota je analyzovat.  Chcete-li tento problém obejít, kódování heslo v adrese URL, pomocí nástroje, jako například [URLDecode](https://www.urldecoder.org/).  

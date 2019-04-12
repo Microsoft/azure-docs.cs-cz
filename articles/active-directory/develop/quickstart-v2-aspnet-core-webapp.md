@@ -1,5 +1,5 @@
 ---
-title: Azure AD v2.0 rychlý úvod k aplikacím web ASP.NET Core | Dokumentace Microsoftu
+title: Platforma identit Microsoft ASP.NET Core webové aplikace rychlý start | Azure
 description: Zjistěte, jak implementovat přihlašování společnosti Microsoft o webové aplikace ASP.NET Core pomocí OpenID Connect
 services: active-directory
 documentationcenter: dev-center-name
@@ -13,16 +13,16 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 04/03/2019
+ms.date: 04/11/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5dfa78177974499badc29b7e83556b6a91db7979
-ms.sourcegitcommit: 045406e0aa1beb7537c12c0ea1fbf736062708e8
+ms.openlocfilehash: afcfd8c581ad1707a996ae5bd0c3706179ddb0e4
+ms.sourcegitcommit: f24b62e352e0512dfa2897362021b42e0cb9549d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/04/2019
-ms.locfileid: "59005653"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59505343"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-an-aspnet-core-web-app"></a>Rychlý start: Přidání přihlašování s Microsoftem do webové aplikace ASP.NET Core
 
@@ -30,7 +30,7 @@ ms.locfileid: "59005653"
 
 V tomto rychlém startu se dozvíte, jak webové aplikace ASP.NET Core můžete přihlašovat osobní účty (hotmail.com, outlook.com, ostatní) a pracovní a školní účty z libovolné instance služby Azure Active Directory (Azure AD).
 
-![Ukazuje, jak ukázková aplikace vygenerované v tomto rychlém startu funguje](media/quickstart-v2-aspnet-core-webapp/aspnetcorewebapp-intro-updated.png)
+![Ukazuje, jak ukázková aplikace vygenerované v tomto rychlém startu funguje](media/quickstart-v2-aspnet-core-webapp/aspnetcorewebapp-intro.svg)
 
 > [!div renderon="docs"]
 > ## <a name="register-and-download-your-quickstart-app"></a>Registrace a stažení aplikace pro rychlý start
@@ -120,7 +120,7 @@ public void ConfigureServices(IServiceCollection services)
 
   services.Configure<OpenIdConnectOptions>(AzureADDefaults.OpenIdScheme, options =>
   {
-    options.Authority = options.Authority + "/v2.0/";         // Azure AD v2.0
+    options.Authority = options.Authority + "/v2.0/";         // Microsoft identity platform
 
     options.TokenValidationParameters.ValidateIssuer = false; // accept several tenants (here simplified)
   });
@@ -138,13 +138,17 @@ public void ConfigureServices(IServiceCollection services)
 
 Metoda `AddAuthentication` konfiguruje službu architektura pro přidání ověřování na základě souboru cookie, což je používat v prohlížeči scénáře, stejně jako nastavit před obrovskou výzvou k OpenID Connect. 
 
-Na řádek obsahující `.AddAzureAd` přidává ověřování Azure AD pro vaši aplikaci. To se pak nakonfiguruje k přihlášení pomocí koncového bodu Azure AD v2.0.
+Na řádek obsahující `.AddAzureAd` přidá ověření Microsoft identity platform pro vaši aplikaci. To se pak nakonfiguruje k přihlášení pomocí koncového bodu Microsoft identity platform.
 
 > |Kde  |  |
 > |---------|---------|
 > | ClientId  | ID aplikace (klient) z aplikace zaregistrované na webu Azure Portal. |
 > | Autorita | Koncový bod služby tokenů zabezpečení pro uživatele ověřit. To je obvykle <https://login.microsoftonline.com/{tenant}/v2.0> pro veřejný cloud, kde {klient} je název vašeho klienta nebo ID vašeho tenanta, nebo *běžné* odkazu na společný koncový bod (používá se pro aplikace s více tenanty) |
 > | Parametry tokenvalidationparameters. | Seznam parametrů pro ověřování tokenů; V takovém případě `ValidateIssuer` je nastavena na `false` k označení, aby mohl přijímat přihlášení z jakékoli osobní, nebo pracovní nebo školní účty. |
+
+
+> [!NOTE]
+> Nastavení `ValidateIssuer = false` je zjednodušení tohoto rychlého startu. V reálné aplikace, které potřebujete k ověření vystavitele najdete v ukázkách pochopit, jak to provést.
 
 ### <a name="protect-a-controller-or-a-controllers-method"></a>Ochrana řadiče nebo akcí řadiče
 
@@ -154,8 +158,7 @@ Můžete chránit kontroleru nebo pomocí metody kontroleru `[Authorize]` atribu
 
 ## <a name="next-steps"></a>Další postup
 
-Projděte si úložiště GitHub pro tento rychlý start ASP.NET Core pro další informace včetně informací o tom, jak přidat ověřování do zcela nové aplikace ASP.NET Core Web:
+Projděte si úložiště GitHub pro účely tohoto kurzu ASP.NET Core pro další informace včetně informací o tom, jak přidat ověřování do aplikace zcela nové webové aplikace ASP.NET Core, volání Microsoft Graphu, jiné APIs Microsoft a volání vlastních rozhraní API, jak přidat autorizace, jak přihlásit uživatele v národních cloudech, nebo s sociálních identit a další:
 
 > [!div class="nextstepaction"]
-> [Vzorový kód aplikace Web ASP.NET Core](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/)
-
+> [Kurz základní webovou aplikaci ASP.NET](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/)

@@ -12,38 +12,29 @@ ms.devlang: tbd
 ms.topic: conceptual
 ms.tgt_pltfrm: dotnet
 ms.workload: na
-ms.date: 01/23/2019
+ms.date: 04/10/2019
 ms.author: aschhab
-ms.openlocfilehash: dfdea9f8d50c467bf0e4317c8d95135afefa765f
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 22996b277aba96cbbfedbb3e9cc67644d1a535ca
+ms.sourcegitcommit: 41015688dc94593fd9662a7f0ba0e72f044915d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57778004"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59500681"
 ---
 # <a name="get-started-with-service-bus-queues"></a>Začínáme s frontami služby Service Bus
-
 [!INCLUDE [service-bus-selector-queues](../../includes/service-bus-selector-queues.md)]
-
-Tento kurz se zabývá následujícími kroky:
-
-1. Pomocí webu Azure Portal vytvoříme obor názvů služby Service Bus.
-2. Pomocí webu Azure Portal vytvoříme frontu služby Service Bus.
-3. Napíšeme konzolovou aplikaci .NET Core pro odeslání sady zpráv do fronty.
-4. Napíšeme konzolovou aplikaci .NET Core pro příjem těchto zpráv z fronty.
+V tomto kurzu vytvoříte konzolové aplikace .NET Core k odesílání a příjem zpráv z fronty Service Bus. 
 
 ## <a name="prerequisites"></a>Požadavky
 
 1. [Visual Studio 2017 s aktualizací Update 3 (verze 15.3, 26730.01)](https://www.visualstudio.com/vs) nebo novější.
 2. [NET Core SDK](https://www.microsoft.com/net/download/windows) verze 2.0 nebo novější.
-2. Předplatné Azure.
-
-[!INCLUDE [create-account-note](../../includes/create-account-note.md)]
-
-[!INCLUDE [service-bus-create-namespace-portal](../../includes/service-bus-create-namespace-portal.md)]
-
-[!INCLUDE [service-bus-create-queue-portal](../../includes/service-bus-create-queue-portal.md)]
-
+2. Předplatné Azure. K dokončení tohoto kurzu potřebujete mít účet Azure. Můžete si aktivovat váš [výhody pro předplatitele MSDN](https://azure.microsoft.com/pricing/member-offers/credit-for-visual-studio-subscribers/?WT.mc_id=A85619ABF) nebo si zaregistrovat [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF).
+3. Pokud nemáte k dispozici pro práci s frontou, postupujte podle kroků v [použijte Azure portal můžete vytvořit frontu služby Service Bus](service-bus-quickstart-portal.md) článku můžete vytvořit frontu.
+    1. Přečtěte si rychlé **přehled** služby Service Bus **fronty**. 
+    2. Vytvoření služby Service Bus **obor názvů**. 
+    3. Získejte **připojovací řetězec**. 
+    4. Vytvoření služby Service Bus **fronty**. 
 
 ## <a name="send-messages-to-the-queue"></a>Zasílání zpráv do fronty
 
@@ -206,7 +197,7 @@ Spusťte sadu Visual Studio a vytvořte nový projekt **Konzolová aplikace (.NE
 
 ## <a name="receive-messages-from-the-queue"></a>Přijetí zpráv z fronty
 
-Pokud chcete přijímat zprávy, které jste právě odeslali, vytvořte další konzolovou aplikaci .NET Core a nainstalujte balíček NuGet **Microsoft.Azure.ServiceBus**, podobně jako předtím u aplikace odesílatele.
+Pokud chcete přijímat zprávy, které jste odeslali, vytvořte další konzolovou aplikaci .NET Core a nainstalujte **Microsoft.Azure.ServiceBus** balíček NuGet, podobně jako předtím u aplikace odesílatele.
 
 ### <a name="write-code-to-receive-messages-from-the-queue"></a>Napsání kódu pro příjem zpráv z fronty
 

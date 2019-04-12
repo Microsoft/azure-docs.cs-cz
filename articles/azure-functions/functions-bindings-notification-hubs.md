@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: reference
 ms.date: 11/21/2017
 ms.author: cshoe
-ms.openlocfilehash: 9f80f1a8d02352daa663ee5ea4fa9287e0e8580e
-ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
+ms.openlocfilehash: 79ea9455fec7d31f800b2b5d36df6a2a53f502c3
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58893788"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59490958"
 ---
 # <a name="notification-hubs-output-binding-for-azure-functions"></a>Notification Hubs výstupní vazby pro službu Azure Functions
 
@@ -25,6 +25,9 @@ Tento článek vysvětluje, jak odesílat nabízená oznámení pomocí [Azure N
 Azure Notification Hubs, musí být nakonfigurovaný pro službu platformy oznámení (PNS) chcete použít. Další informace o získání nabízených oznámení do vaší klientské aplikace ze služby Notification Hubs, najdete v článku [Začínáme se službou Notification Hubs](../notification-hubs/notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md) a vyberte svou klientskou platformu cílového z rozevíracího seznamu v horní části stránky.
 
 [!INCLUDE [intro](../../includes/functions-bindings-intro.md)]
+
+> [!IMPORTANT]
+> Má Google [zastaralé Google Cloud Messaging (GCM) a služby Firebase Cloud Messaging (FCM)](https://developers.google.com/cloud-messaging/faq). Tento výstupní vazbu nepodporuje FCM. K odesílání oznámení pomocí FCM, použijte [Firebase API](https://firebase.google.com/docs/cloud-messaging/server#choosing-a-server-option) přímo ve funkci nebo použití [šablony oznámení](../notification-hubs/notification-hubs-templates-cross-platform-push-messages.md).
 
 ## <a name="packages---functions-1x"></a>Balíčky – funkce 1.x
 
@@ -197,37 +200,6 @@ public static async Task Run(string myQueueItem, IAsyncCollector<Notification> n
 }
 ```
 
-## <a name="example---gcm-native"></a>Příklad – nativní GCM
-
-Tento ukázkový skript jazyka C# ukazuje, jak posílat nativní oznámení GCM. 
-
-```cs
-#r "Microsoft.Azure.NotificationHubs"
-#r "Newtonsoft.Json"
-
-using System;
-using Microsoft.Azure.NotificationHubs;
-using Newtonsoft.Json;
-
-public static async Task Run(string myQueueItem, IAsyncCollector<Notification> notification, TraceWriter log)
-{
-    log.Info($"C# Queue trigger function processed: {myQueueItem}");
-
-    // In this example the queue item is a new user to be processed in the form of a JSON string with 
-    // a "name" value.
-    //
-    // The JSON format for a native GCM notification is ...
-    // { "data": { "message": "notification message" }}  
-
-    log.Info($"Sending GCM notification of a new user");    
-    dynamic user = JsonConvert.DeserializeObject(myQueueItem);    
-    string gcmNotificationPayload = "{\"data\": {\"message\": \"A new user wants to be added (" + 
-                                        user.name + ")\" }}";
-    log.Info($"{gcmNotificationPayload}");
-    await notification.AddAsync(new GcmNotification(gcmNotificationPayload));        
-}
-```
-
 ## <a name="example---wns-native"></a>Příklad – nativní WNS
 
 Tento ukázkový skript jazyka C# ukazuje, jak používat typy definované v [knihovny Microsoft Azure Notification Hubs](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/) odesílat nativní oznámení s informační zprávou nabízených oznámení Windows. 
@@ -289,7 +261,7 @@ Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastav
 |**tagExpression** |**tagExpression** | Výrazy označení umožňují určit, že oznámení bude doručen do skupiny zařízení, které jste se zaregistrovali k přijímání oznámení, které odpovídají výrazu značky.  Další informace najdete v tématu [směrování a značky výrazy](../notification-hubs/notification-hubs-tags-segment-push-message.md). |
 |**hubName** | **HubName** | Název prostředku centra oznámení na webu Azure Portal. |
 |**připojení** | **ConnectionStringSetting** | Název nastavení aplikace, které obsahuje připojovací řetězec centra oznámení.  Připojovací řetězec musí být nastavena *DefaultFullSharedAccessSignature* hodnotu pro vaše Centrum oznámení. Zobrazit [nastavení řetězce připojení](#connection-string-setup) dále v tomto článku.|
-|**Platforma** | **Platforma** | Vlastnost platformy označuje klientská platforma, vaše cíle oznámení. Ve výchozím nastavení pokud vlastnost platformy je vynecháno z výstupní vazbu šablony oznámení je možné cílit na libovolnou platformu nakonfigurované v centru oznámení Azure. Další informace o použití šablon obecně pro odeslání pro různé platformy oznámení pomocí centra oznámení Azure, najdete v části [šablony](../notification-hubs/notification-hubs-templates-cross-platform-push-messages.md). Pokud nastavíte, **platformy** musí být jedna z následujících hodnot: <ul><li><code>apns</code>&mdash;Služba nabízených oznámení společnosti Apple. Další informace o konfiguraci centra oznámení pro služby APN a přijímání oznámení v aplikaci klienta najdete v tématu [odesílání nabízených oznámení do iOS pomocí Azure Notification Hubs](../notification-hubs/notification-hubs-ios-apple-push-notification-apns-get-started.md).</li><li><code>adm</code>&mdash;[Amazon Device Messaging](https://developer.amazon.com/device-messaging). Další informace o konfiguraci centra oznámení pro správce a přijímání oznámení do aplikace kindle a využívá, najdete v části [Začínáme se službou Notification Hubs pro aplikace Kindle](../notification-hubs/notification-hubs-kindle-amazon-adm-push-notification.md).</li><li><code>gcm</code>&mdash;[Google Cloud Messaging](https://developers.google.com/cloud-messaging/). Firebase Cloud Messaging, což je nová verze služby GCM, je také podporována. Další informace najdete v tématu [odesílání nabízených oznámení do systému Android pomocí Azure Notification Hubs](../notification-hubs/notification-hubs-android-push-notification-google-fcm-get-started.md).</li><li><code>wns</code>&mdash;[Služby nabízených oznámení Windows](/windows/uwp/design/shell/tiles-and-notifications/windows-push-notification-services--wns--overview) cílení na platformy Windows. Windows Phone 8.1 a novější také podporuje služby nabízených oznámení Windows. Další informace najdete v tématu [Začínáme se službou Notification Hubs pro Windows Universal Platform aplikace](../notification-hubs/notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md).</li><li><code>mpns</code>&mdash;[Microsoft služba nabízených oznámení](/previous-versions/windows/apps/ff402558(v=vs.105)). Tato platforma podporuje starší platformy Windows Phone a Windows Phone 8. Další informace najdete v tématu [odesílání nabízených oznámení pomocí Azure Notification Hubs ve Windows Phone](../notification-hubs/notification-hubs-windows-mobile-push-notifications-mpns.md).</li></ul> |
+|**Platforma** | **Platforma** | Vlastnost platformy označuje klientská platforma, vaše cíle oznámení. Ve výchozím nastavení pokud vlastnost platformy je vynecháno z výstupní vazbu šablony oznámení je možné cílit na libovolnou platformu nakonfigurované v centru oznámení Azure. Další informace o použití šablon obecně pro odeslání pro různé platformy oznámení pomocí centra oznámení Azure, najdete v části [šablony](../notification-hubs/notification-hubs-templates-cross-platform-push-messages.md). Pokud nastavíte, **platformy** musí být jedna z následujících hodnot: <ul><li><code>apns</code>&mdash;Služba nabízených oznámení společnosti Apple. Další informace o konfiguraci centra oznámení pro služby APN a přijímání oznámení v aplikaci klienta najdete v tématu [odesílání nabízených oznámení do iOS pomocí Azure Notification Hubs](../notification-hubs/notification-hubs-ios-apple-push-notification-apns-get-started.md).</li><li><code>adm</code>&mdash;[Amazon Device Messaging](https://developer.amazon.com/device-messaging). Další informace o konfiguraci centra oznámení pro správce a přijímání oznámení do aplikace kindle a využívá, najdete v části [Začínáme se službou Notification Hubs pro aplikace Kindle](../notification-hubs/notification-hubs-kindle-amazon-adm-push-notification.md).</li><li><code>wns</code>&mdash;[Služby nabízených oznámení Windows](/windows/uwp/design/shell/tiles-and-notifications/windows-push-notification-services--wns--overview) cílení na platformy Windows. Windows Phone 8.1 a novější také podporuje služby nabízených oznámení Windows. Další informace najdete v tématu [Začínáme se službou Notification Hubs pro Windows Universal Platform aplikace](../notification-hubs/notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md).</li><li><code>mpns</code>&mdash;[Microsoft služba nabízených oznámení](/previous-versions/windows/apps/ff402558(v=vs.105)). Tato platforma podporuje starší platformy Windows Phone a Windows Phone 8. Další informace najdete v tématu [odesílání nabízených oznámení pomocí Azure Notification Hubs ve Windows Phone](../notification-hubs/notification-hubs-windows-mobile-push-notifications-mpns.md).</li></ul> |
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
@@ -307,7 +279,7 @@ Tady je příklad vazby v Notification Hubs *function.json* souboru.
       "tagExpression": "",
       "hubName": "my-notification-hub",
       "connection": "MyHubConnectionString",
-      "platform": "gcm"
+      "platform": "apns"
     }
   ],
   "disabled": false

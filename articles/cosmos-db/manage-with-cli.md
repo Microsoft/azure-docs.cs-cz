@@ -4,20 +4,18 @@ description: Spravovat účet Azure Cosmos DB, databáze a kontejnerů pomocí A
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 10/23/2018
+ms.date: 4/8/2019
 ms.author: mjbrown
-ms.openlocfilehash: c3028fd18bd9afefaa18f7f515a43a852ddef78a
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 1d19e58b2d1381725de490b68d9e4d00a2ca4cb6
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55464394"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59495477"
 ---
 # <a name="manage-azure-cosmos-resources-using-azure-cli"></a>Správa prostředků Azure Cosmos pomocí Azure CLI
 
-Následující průvodci popisuje příkazy, které automatizují správu účtů služby Azure Cosmos DB, databáze a kontejnerů pomocí Azure CLI. Zahrnuje také příkazy pro škálování propustnosti kontejnerů. Stránky s referenčními informacemi pro všechny příkazy rozhraní příkazového řádku Azure Cosmos DB jsou k dispozici v [referenčních informacích k Azure CLI](https://docs.microsoft.com/cli/azure/cosmosdb). Můžete také najít další příklady v [ukázky v Azure CLI pro službu Azure Cosmos DB](cli-samples.md), jak vytvářet a spravovat účty služby Cosmos DB, databáze a kontejnerů pro MongoDB, Gremlin, Cassandra a Table API.
-
-Tento ukázkový skript rozhraní příkazového řádku vytvoří účet, databázi a kontejner rozhraní SQL API služby Azure Cosmos DB.  
+Následující průvodci popisuje běžné příkazy pro automatizaci správy účtů služby Azure Cosmos DB, databáze a kontejnerů pomocí Azure CLI. Stránky s referenčními informacemi pro všechny příkazy rozhraní příkazového řádku Azure Cosmos DB jsou k dispozici v [referenčních informacích k Azure CLI](https://docs.microsoft.com/cli/azure/cosmosdb). Můžete také najít další příklady v [ukázky v Azure CLI pro službu Azure Cosmos DB](cli-samples.md), jak vytvářet a spravovat účty služby Cosmos DB, databáze a kontejnerů pro MongoDB, Gremlin, Cassandra a Table API.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -25,89 +23,92 @@ Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku (
 
 ## <a name="create-an-azure-cosmos-db-account"></a>Vytvoření účtu služby Azure Cosmos DB
 
-Vytvoření účtu služby Azure Cosmos DB pomocí rozhraní SQL API, konzistence typu relace, více hlavních databází povolené v oblastech východní USA a západní USA, otevřete rozhraní příkazového řádku Azure nebo cloud shell a spusťte následující příkaz:
+Konzistence typu relace v oblastech USA – východ a USA – Západ, chcete-li vytvořit účet služby Azure Cosmos DB s rozhraním SQL API, spusťte následující příkaz:
 
 ```azurecli-interactive
 az cosmosdb create \
-   –-name "myCosmosDbAccount" \
-   --resource-group "myResourceGroup" \
+   --name mycosmosdbaccount \
+   --resource-group myResourceGroup \
    --kind GlobalDocumentDB \
-   --default-consistency-level "Session" \
-   --locations "EastUS=0" "WestUS=1" \
-   --enable-multiple-write-locations true \
+   --default-consistency-level Session \
+   --locations EastUS=0 WestUS=1 \
+   --enable-multiple-write-locations false
 ```
+
+> [!IMPORTANT]
+> Název účtu Azure Cosmos musí obsahovat malá písmena.
 
 ## <a name="create-a-database"></a>Vytvoření databáze
 
-Chcete-li vytvořit databázi Cosmos DB, otevřete rozhraní příkazového řádku Azure nebo cloud shell a spusťte následující příkaz:
+Chcete-li vytvořit databázi Cosmos DB, spusťte následující příkaz:
 
 ```azurecli-interactive
 az cosmosdb database create \
-   --name "myCosmosDbAccount" \
-   --db-name "myDatabase" \
-   --resource-group "myResourceGroup"
+   --name mycosmosdbaccount \
+   --db-name myDatabase \
+   --resource-group myResourceGroup
 ```
 
 ## <a name="create-a-container"></a>Vytvoření kontejneru
 
-Otevřete rozhraní příkazového řádku Azure k vytvoření kontejneru Cosmos DB s 1 000 RU/s a klíč oddílu, nebo cloud shell a spusťte následující příkaz:
+K vytvoření kontejneru Cosmos DB s RU/s 400 a klíč oddílu, spusťte následující příkaz:
 
 ```azurecli-interactive
 # Create a container
 az cosmosdb collection create \
-   --collection-name "myContainer" \
-   --name "myCosmosDbAccount" \
-   --db-name "myDatabase" \
-   --resource-group "myResourceGroup" \
-   --partition-key-path = "/myPartitionKey" \
-   --throughput 1000
+   --collection-name myContainer \
+   --name mycosmosdbaccount \
+   --db-name myDatabase \
+   --resource-group myResourceGroup \
+   --partition-key-path /myPartitionKey \
+   --throughput 400
 ```
 
 ## <a name="change-the-throughput-of-a-container"></a>Změňte propustnost kontejneru
 
-Chcete-li změnit propustnosti kontejneru Cosmos DB na RU/s 400, otevřete rozhraní příkazového řádku Azure nebo cloud shell a spusťte následující příkaz:
+Chcete-li změnit propustnosti kontejneru Cosmos DB na 1000 RU/s, spusťte následující příkaz:
 
 ```azurecli-interactive
 # Update container throughput
 az cosmosdb collection update \
-   --collection-name "myContainer" \
-   --name "myCosmosDbAccount" \
-   --db-name "myDatabase" \
-   --resource-group "myResourceGroup" \
-   --throughput 400
+   --collection-name myContainer \
+   --name mycosmosdbaccount \
+   --db-name myDatabase \
+   --resource-group myResourceGroup \
+   --throughput 1000
 ```
 
 ## <a name="list-account-keys"></a>Vypsat klíče účtu
 
-Při vytváření účtu služby Azure Cosmos DB, generuje tato služba dva hlavní přístupové klíče, které se dá použít pro ověření při přístupu k účtu Azure Cosmos DB. Poskytnutím dvou přístupových klíčů služby Azure Cosmos DB umožňuje znovu vygenerovat klíče bez přerušení ke svému účtu Azure Cosmos DB. Klíče jen pro čtení pro ověřování jen pro čtení operace jsou také k dispozici. (Primární i sekundární) existují dva klíče pro čtení i zápis (primární i sekundární) a dva klíče jen pro čtení. Spuštěním následujícího příkazu můžete získat klíče pro váš účet:
+Získat klíče účtu Cosmos, spusťte následující příkaz:
 
 ```azurecli-interactive
 # List account keys
 az cosmosdb list-keys \
-   --name "myCosmosDbAccount"\
-   --resource-group "myResourceGroup"
+   --name  mycosmosdbaccount \
+   --resource-group myResourceGroup
 ```
 
 ## <a name="list-connection-strings"></a>Seznam připojovacích řetězců
 
-Připojovací řetězec pro připojení aplikace k účtu služby Cosmos DB se dá načíst pomocí následujícího příkazu.
+Pokud chcete získat připojovací řetězce pro váš účet Cosmos, spusťte následující příkaz:
 
 ```azurecli-interactive
 # List connection strings
 az cosmosdb list-connection-strings \
-   --name "myCosmosDbAccount"\
-   --resource-group "myResourceGroup"
+   --name mycosmosdbaccount \
+   --resource-group myResourceGroup
 ```
 
 ## <a name="regenerate-account-key"></a>Znovu vygenerovat klíč účtu
 
-Měli byste změnit přístupové klíče ke svému účtu Azure Cosmos DB pravidelně, aby lépe zabezpečit vaše připojení. Dva přístupové klíče jsou přiřazeny vám umožní spravovat připojení k účtu Azure Cosmos DB používat jeden přístupový klíč, zatímco znovu vygenerujete druhý přístupový klíč.
+Znovu vygenerovat nový primární klíč pro svůj účet Cosmos, spusťte následující příkaz:
 
 ```azurecli-interactive
 # Regenerate account key
 az cosmosdb regenerate-key \
-   --name "myCosmosDbAccount"\
-   --resource-group "myResourceGroup" \
+   --name mycosmosdbaccount \
+   --resource-group myResourceGroup \
    --key-kind primary
 ```
 
@@ -115,6 +116,6 @@ az cosmosdb regenerate-key \
 
 Další informace o Azure CLI najdete v tématu:
 
-- [Instalace rozhraní příkazového řádku Azure](/cli/azure/install-azure-cli)
-- [Referenční informace k rozhraní příkazového řádku Azure](https://docs.microsoft.com/cli/azure/cosmosdb)
+- [Instalace rozhraní příkazového řádku Azure CLI](/cli/azure/install-azure-cli)
+- [Referenční informace k Azure CLI](https://docs.microsoft.com/cli/azure/cosmosdb)
 - [Další ukázky Azure CLI pro službu Azure Cosmos DB](cli-samples.md)

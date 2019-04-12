@@ -1,5 +1,5 @@
 ---
-title: Pomocí služby Azure AD v2.0 přihlásit uživatele pomocí ROPC | Dokumentace Microsoftu
+title: Platforma identit Microsoft používá k přihlášení uživatele, kteří používají ROPC | Azure
 description: Podpora prohlížeče bez ověřování toky pomocí udělení přihlašovacích údajů heslo vlastníka prostředku.
 services: active-directory
 documentationcenter: ''
@@ -11,25 +11,25 @@ ms.subservice: develop
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 11/28/2018
+ms.topic: conceptual
+ms.date: 04/12/2019
 ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: df9073bbf9789875c373bb7093ab1878a20c399f
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: 8c1372263bfa3f684d30ad583bfb6a9d434c3cc2
+ms.sourcegitcommit: 41015688dc94593fd9662a7f0ba0e72f044915d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59274177"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59499933"
 ---
-# <a name="azure-active-directory-v20-and-the-oauth-20-resource-owner-password-credential"></a>Azure Active Directory v2.0 a přístupové heslo vlastníka prostředku OAuth 2.0
+# <a name="microsoft-identity-platform-and-the-oauth-20-resource-owner-password-credential"></a>Platforma identit Microsoft a přístupové heslo vlastníka prostředku OAuth 2.0
 
-Podporuje Azure Active Directory (Azure AD) [udělit pověření heslo vlastníka prostředku (ROPC)](https://tools.ietf.org/html/rfc6749#section-4.3), který umožňuje aplikaci přihlásit uživatele pomocí přímo zpracování své heslo. Tok ROPC vyžaduje vysoký stupeň důvěryhodnosti a uživatel vystavení a vývojáři měli používat jenom tento tok při toky, které bezpečnější, nemohou být použity.
+Microsoft identity platform podporuje [udělit pověření heslo vlastníka prostředku (ROPC)](https://tools.ietf.org/html/rfc6749#section-4.3), který umožňuje aplikaci přihlásit uživatele pomocí přímo zpracování své heslo. Tok ROPC vyžaduje vysoký stupeň důvěryhodnosti a uživatel vystavení a vývojáři měli používat jenom tento tok při toky, které bezpečnější, nemohou být použity.
 
-> [!Important]
-> * Koncový bod Azure AD v2.0 podporuje pouze ROPC pro klienty Azure AD, ne osobní účty. To znamená, že je nutné použít koncový bod specifickým pro tenanta (`https://login.microsoftonline.com/{TenantId_or_Name}`) nebo `organizations` koncového bodu.
+> [!IMPORTANT]
+> * Koncový bod Microsoft identity platform podporuje pouze ROPC pro klienty Azure AD, ne osobní účty. To znamená, že je nutné použít koncový bod specifickým pro tenanta (`https://login.microsoftonline.com/{TenantId_or_Name}`) nebo `organizations` koncového bodu.
 > * Osobní účty, které se pozvat do tenanta služby Azure AD nemůže použít ROPC.
 > * Účty, které nemají hesla prostřednictvím ROPC přihlásit. V tomto scénáři doporučujeme místo toho použít odlišný tok pro vaši aplikaci.
 > * Pokud uživatelé muset použít vícefaktorové ověřování (MFA) pro přihlášení k aplikaci, že budou Blokovaní místo.
@@ -44,10 +44,17 @@ Následující diagram znázorňuje tok ROPC.
 
 Tok ROPC je jeden požadavek&mdash;odešle klientovi identifikace a přihlašovací údaje uživatele pro zprostředkovatele identity a potom na oplátku přijímá tokeny. Klient musí požádat e-mailovou adresu uživatele (UPN) a heslo, než to uděláte. Ihned po úspěšné žádosti by měl klient zabezpečenému vydávání přihlašovacích údajů uživatele z paměti. To je nikdy uložte.
 
+> [!TIP]
+> Pokuste se spustit tuto žádost do Postman!
+> [![Spustit v nástroji Postman](./media/v2-oauth2-auth-code-flow/runInPostman.png)](https://app.getpostman.com/run-collection/f77994d794bab767596d)
+
+
 ```
 // Line breaks and spaces are for legibility only.
 
-POST https://login.microsoftonline.com/{tenant}/oauth2/v2.0/token?
+POST {tenant}/oauth2/v2.0/token
+Host: login.microsoftonline.com
+Content-Type: application/x-www-form-urlencoded
 
 client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 &scope=user.read%20openid%20profile%20offline_access
@@ -96,11 +103,11 @@ Pokud uživatel není k dispozici správné uživatelské jméno nebo heslo, neb
 
 | Chyba | Popis | Akce klienta |
 |------ | ----------- | -------------|
-| `invalid_grant` | Ověřování se nezdařilo. | Přihlašovací údaje byly nesprávná nebo klient nemá souhlas pro požadované obory. Pokud nejsou obory, `consent_required` suberror bude vrácen. Pokud k tomu dojde, klient by měl uživatele poslat na výzvu k interaktivní pomocí webview nebo prohlížeče. |
+| `invalid_grant` | Ověřování se nezdařilo. | Přihlašovací údaje byly nesprávná nebo klient nemá souhlas pro požadované obory. Pokud nejsou obory, `consent_required` se vrátí chyba. Pokud k tomu dojde, klient by měl uživatele poslat na výzvu k interaktivní pomocí webview nebo prohlížeče. |
 | `invalid_request` | Požadavek byl nesprávně vytvořen. | Typ udělení oprávnění nepodporuje `/common` nebo `/consumers` kontextu ověřování.  Místo nich se používá `/organizations`. |
 | `invalid_client` | Aplikace je nesprávně nastavený | K tomu může dojít, pokud `allowPublicClient` vlastnost není nastavena na hodnotu true v [manifest aplikace](reference-app-manifest.md). `allowPublicClient` Vlastnost je potřeba, proto ROPC udělení nemá identifikátor URI přesměrování. Azure AD nemůže určit, pokud je aplikace veřejným klientem aplikace nebo aplikace důvěrnému klientovi, pokud je nastavena. Všimněte si, že ROPC je podporována pouze pro veřejné klientské aplikace. |
 
 ## <a name="learn-more"></a>Další informace
 
 * Vyzkoušejte si ROPC sami pomocí [ukázková Konzolová aplikace](https://github.com/azure-samples/active-directory-dotnetcore-console-up-v2).
-* Pokud chcete zjistit, zda by měl použít koncový bod verze 2.0, přečtěte si informace o [v2.0 omezení](active-directory-v2-limitations.md).
+* Pokud chcete zjistit, zda by měl použít koncový bod verze 2.0, přečtěte si informace o [Microsoft identity platform omezení](active-directory-v2-limitations.md).

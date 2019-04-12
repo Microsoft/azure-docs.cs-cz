@@ -14,14 +14,15 @@ ms.author: lizross
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ce76fa7fecb8a82f76d40827bfa868061a0ed584
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 4db6554e86cef61f2fc8e7a466919d2ce723f0e5
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56204895"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59492698"
 ---
 # <a name="reset-a-users-password-using-azure-active-directory"></a>Resetovat heslo uživatele pomocí služby Azure Active Directory
+
 Jako správce můžete resetovat heslo uživatele, pokud zapomenete heslo, pokud uživatel získá uzamčení a vyloučení z zařízení nebo uživatele nebylo doručeno heslo.
 
 >[!Note]
@@ -32,7 +33,7 @@ Jako správce můžete resetovat heslo uživatele, pokud zapomenete heslo, pokud
 
 ## <a name="to-reset-a-password"></a>Resetování hesla.
 
-1. Přihlaste se k [webu Azure portal](https://portal.azure.com/) jako globální správce, uživatele správce nebo správce hesel. Další informace o dostupných rolí najdete v tématu [přiřazení rolí správce v Azure Active Directory](../users-groups-roles/directory-assign-admin-roles.md#available-roles)
+1. Přihlaste se k [webu Azure portal](https://portal.azure.com/) jako uživatele správce nebo správce hesel. Další informace o dostupných rolí najdete v tématu [přiřazení rolí správce v Azure Active Directory](../users-groups-roles/directory-assign-admin-roles.md#available-roles)
 
 2. Vyberte **Azure Active Directory**vyberte **uživatelé**, vyhledejte a vyberte uživatele, který potřebuje obnovení a pak vyberte **resetovat heslo**.
 
@@ -50,6 +51,7 @@ Jako správce můžete resetovat heslo uživatele, pokud zapomenete heslo, pokud
     >Dočasné heslo je platné stále. Při příštím přihlášení uživatele hesla budou i nadále fungovat, bez ohledu na to kolik času uplynulo od vygeneroval dočasné heslo.
 
 ## <a name="next-steps"></a>Další postup
+
 Poté, co jsme resetovali heslo uživatele, můžete provést následující základní procesy:
 
 - [Přidání nebo odstranění uživatelů](add-users-azure-active-directory.md)

@@ -1,6 +1,6 @@
 ---
-title: Zabezpečení klienta OPC UA a OPC UA serverové aplikace pomocí Azure IoT OPC UA certificate managementu | Dokumentace Microsoftu
-description: Zabezpečte pomocí nový pár klíčů a certifikátů trezor OPC pomocí klienta OPC UA a aplikace serveru OPC UA.
+title: Zabezpečení OPC UA klienta a aplikačního serveru OPC UA pomocí OPC trezor – Azure | Dokumentace Microsoftu
+description: Zabezpečení aplikace server se nový pár klíčů a certifikátů trezor OPC pomocí klienta OPC UA a OPC UA.
 author: dominicbetts
 ms.author: dobett
 ms.date: 11/26/2018
@@ -8,22 +8,22 @@ ms.topic: conceptual
 ms.service: iot-industrialiot
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: bfa6bdf6a54cb5e54087055988e9682565667105
-ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
+ms.openlocfilehash: 5ba2dba02585598b3797dd1b490976ebe34b489e
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58759425"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59495290"
 ---
-# <a name="secure-opc-ua-client-and-opc-ua-server-application"></a>Zabezpečení klienta OPC UA a OPC UA serverová aplikace 
-Azure IoT OPC UA Správa certifikátů a také znát pod některým z trezoru OPC, mikroslužby, můžete nakonfigurovat registr, je správa životního cyklu certifikátu pro OPC UA serverových a klientských aplikací v cloudu. Tento článek ukazuje, jak zabezpečit klienta OPC UA a aplikace serveru OPC UA s nový pár klíčů a certifikátů pomocí OPC trezoru.
+# <a name="secure-opc-ua-client-and-opc-ua-server-application"></a>Zabezpečení OPC UA klienta a aplikačního serveru OPC UA 
+OPC trezor je mikroslužeb, která můžete konfigurovat, registrace a správa životního cyklu certifikátu pro server OPC UA a klientských aplikací v cloudu. Tento článek ukazuje, jak zabezpečit serverové aplikace se nový pár klíčů a certifikátů trezor OPC pomocí klienta OPC UA a OPC UA.
 
 V tomto nastavení se klient OPC testování připojení ke službě OPC PLC. Ve výchozím nastavení připojení není možné protože obě komponenty ještě nebyly zřízeny správné certifikáty. V tomto pracovním postupu jsme nepoužívají certifikáty podepsané svým držitelem součásti serveru OPC UA a podepsat prostřednictvím OPC trezoru. Viz předchozí [testbed](howto-opc-vault-deploy-existing-client-plc-communication.md). Místo toho tento testbed zřídí součásti pomocí nového certifikátu, a také s novou privátní klíč, které jsou generovány pomocí OPC trezoru. Některé základní informace o zabezpečení OPC UA najdete v tomto [dokument White Paper](https://opcfoundation.org/wp-content/uploads/2014/05/OPC-UA_Security_Model_for_Administrators_V1.00.pdf). Podrobnější informace najdete ve specifikaci OPC UA.
 
 Testbed: Toto prostředí je nakonfigurován pro testování.
 
 Trezor OPC skriptů:
-- Zabezpečte pomocí nový pár klíčů a certifikátů trezor OPC pomocí klienta OPC UA a aplikace serveru OPC UA.
+- Zabezpečení serverových aplikací s nový pár klíčů a certifikátů trezor OPC pomocí klienta OPC UA a OPC UA.
 
 > [!NOTE]
 > Další informace najdete v článku Githubu [úložiště](https://github.com/Azure-Samples/iot-edge-industrial-configs#testbeds).
@@ -118,7 +118,7 @@ opcplc-123456 | [13:40:09 INF] Activating the new application certificate with t
 
 Certifikát aplikace a privátního klíče jsou nyní nainstalován v úložišti certifikátů aplikace a používá aplikace OPC UA.
 
-Ověřte, zda lze úspěšně navázat připojení mezi klientem OPC a OPC PLC a klienta OPC můžou číst data z OPC PLC. Zobrazí následující výstup v klientovi OPC protokolovat výstup:
+Ověřte, zda lze úspěšně navázat připojení mezi klientem OPC a OPC PLC a klienta OPC můžou číst data z OPC PLC. Byste měli vidět následující výstup ve výstupu protokolu klienta OPC:
 ```
 opcclient-123456 | [13:40:12 INF] Create secured session for endpoint URI 'opc.tcp://opcplc-123456:50000/' with timeout of 10000 ms.
 opcclient-123456 | [13:40:12 INF] Session successfully created with Id ns=3;i=941910499.
@@ -132,7 +132,7 @@ opcclient-123456 | [13:40:12 INF] Execute 'OpcClient.OpcTestAction' action on no
 opcclient-123456 | [13:40:12 INF] Action (ActionId: 000 ActionType: 'OpcTestAction', Endpoint: 'opc.tcp://opcplc-123456:50000/' Node 'i=2258') completed successfully
 opcclient-123456 | [13:40:12 INF] Value (ActionId: 000 ActionType: 'OpcTestAction', Endpoint: 'opc.tcp://opcplc-123456:50000/' Node 'i=2258'): 10/21/2018 13:40:12
 ```
-Pokud se zobrazí tento výstup, OPC PLC se teď důvěřovat versa klienta OPC a naopak, protože obě mají nyní certifikáty podepsané certifikační Autoritou a oba důvěřovat certifikátům, které jsou podepsané touto certifikační autoritou.
+Pokud se zobrazí tento výstup, pak OPC PLC je nyní důvěřující klienta a naopak versa OPC, protože obě mají nyní certifikáty podepsané certifikační Autoritou a oba důvěřovat certifikátům, které jsou podepsané touto certifikační autoritou.
 
 ### <a name="a-testbed-for-opc-publisher"></a>Testbed pro vydavatele OPC ###
 
@@ -145,7 +145,7 @@ docker-compose -f testbed.yml up
 
 **Ověření**
 - Ověřte, že data se odesílají do IOT hub, můžete nakonfigurovat tak, že nastavíte `_HUB_CS` pomocí [Device Explorer](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/tools/DeviceExplorer) nebo [iothub-explorer](https://github.com/Azure/iothub-explorer).
-- OPC testovacího klienta je prostřednictvím přímé metody volání IOT hub a volání metod OPC konfigurace vydavatele OPC pro publikování a zrušení publikování uzly z OPC Testserver.
+- OPC testovacího klienta je prostřednictvím přímé metody volání IOT hub a volání metod OPC konfigurace vydavatele OPC pro publikování a zrušení publikování uzly z testovacího serveru OPC.
 - Podívejte se na výstup pro chybové zprávy.
 
 ## <a name="next-steps"></a>Další postup

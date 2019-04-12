@@ -5,19 +5,19 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: reference
-ms.date: 04/02/2019
+ms.date: 04/10/2019
 ms.author: mimart
 author: msmimart
 manager: celested
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 98f81edcfa2a9daf5162ff1c7e23025b405092b8
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: d361a40e2efa80a677255c02c7e9cf155af09ffb
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59260387"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59496297"
 ---
 # <a name="azure-active-directory-b2b-collaboration-faqs"></a>Spolupráce Azure Active Directory s B2B nejčastější dotazy
 
@@ -54,7 +54,7 @@ Ano. Hostované objekty nejsou viditelné ve vaší organizaci seznamu globáln�
 Jistě. Další informace najdete v tématu [přidání uživatele typu Host do role](add-guest-to-role.md).
 
 ### <a name="does-azure-ad-b2b-collaboration-allow-b2b-users-to-access-the-azure-portal"></a>Umožňuje spolupráci B2B ve službě Azure AD uživatelům B2B přístup k webu Azure portal?
-Pokud uživatel má přiřazenou roli globálního správce nebo správce s omezením, nevyžadují uživatele spolupráce B2B přístup k webu Azure portal. Uživatele spolupráce B2B, kteří mají přiřazenou roli globálního správce nebo správce s omezením můžete přístup k portálu. Také pokud uživatel typu Host, který není přiřazen jeden z těchto rolí správce přistupuje k portálu, uživatel může být mít přístup k určitým částem prostředí. Role uživatele typu Host má některá oprávnění v adresáři.
+Pokud uživatel je přiřazena role správce s omezením, nevyžadují uživatele spolupráce B2B přístup k webu Azure portal. Uživatele spolupráce B2B, kteří mají přiřazenou roli správce s omezením můžete přístup k portálu. Také pokud uživatel typu Host, který není přiřazen jeden z těchto rolí správce přistupuje k portálu, uživatel může být mít přístup k určitým částem prostředí. Role uživatele typu Host má některá oprávnění v adresáři.
 
 ### <a name="can-i-block-access-to-the-azure-portal-for-guest-users"></a>Může blokovat přístup k webu Azure portal pro uživatele typu Host?
 Ano! Když nakonfigurujete tuto zásadu, pečlivě nedošlo omylem blokují přístup k členům a správci.

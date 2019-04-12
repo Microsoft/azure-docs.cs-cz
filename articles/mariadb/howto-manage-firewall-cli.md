@@ -8,11 +8,11 @@ ms.devlang: azurecli
 ms.topic: conceptual
 ms.date: 04/09/2019
 ms.openlocfilehash: 562987b953f0a8a20a917e208f43557bd768c0a0
-ms.sourcegitcommit: 6e32f493eb32f93f71d425497752e84763070fad
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/10/2019
-ms.locfileid: "59471150"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59495224"
 ---
 # <a name="create-and-manage-azure-database-for-mariadb-firewall-rules-by-using-the-azure-cli"></a>Vytváření a správa Azure Database pro MariaDB pravidla brány firewall pomocí Azure CLI
 Pravidla brány firewall na úrovni serveru můžete použít ke správě přístupu ke službě Azure Database pro MariaDB Server z konkrétní IP adresu nebo rozsah IP adres. Použití vhodné příkazy rozhraní příkazového řádku Azure, můžete vytvořit, aktualizovat, odstranit, seznam a zobrazit pravidla brány firewall pro správu serveru. Přehled služby Azure Database pro MariaDB brány firewall naleznete v tématu [– Azure Database pro MariaDB pravidla brány firewall serveru](./concepts-firewall-rules.md).
@@ -27,7 +27,7 @@ Pravidel virtuální sítě (VNet) je také možné zabezpečit přístup k vaš
 **Az mariadb server firewall-rule** je pomocí příkazu z příkazového řádku Azure vytvářet, odstraňovat, seznamu, zobrazit a aktualizovat pravidla brány firewall.
 
 Příkazy:
-- **Vytvoření**: Vytvoření pravidla brány firewall serveru Azure MariaDB.
+- **vytvoření**: Vytvoření pravidla brány firewall serveru Azure MariaDB.
 - **Odstranit**: Odstranění pravidla brány firewall serveru Azure MariaDB.
 - **Seznam**: Seznam pravidel brány firewall serveru Azure MariaDB.
 - **Zobrazit**: Zobrazí podrobnosti o serveru Azure MariaDB pravidlo brány firewall.

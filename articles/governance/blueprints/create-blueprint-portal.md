@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.service: blueprints
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: 598df72bf9c37b8687e2122813609e165ae8c2fa
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: 28fef394ee400949f9911983bdbca41d6bfcb458
+ms.sourcegitcommit: f24b62e352e0512dfa2897362021b42e0cb9549d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59260659"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59505681"
 ---
 # <a name="define-and-assign-a-blueprint-in-the-portal"></a>Definujte a přiřaďte podrobný plán na portálu
 
@@ -41,116 +41,117 @@ Jako první krok při definování standardního vzoru pro dodržování předpi
 
    ![Vytvořit podrobný plán ze stránky definice podrobného plánu](./media/create-blueprint-portal/create-blueprint-button.png)
 
-1. Zadejte **název podrobného plánu** například **MyBlueprint**. (Použijte maximálně 48 písmena a čísla, ale žádné mezery ani speciální znaky). Ponechte **podrobný plán popis** zatím prázdné. 
-   
+1. Zadejte **název podrobného plánu** například **MyBlueprint**. (Použijte maximálně 48 písmena a čísla, ale žádné mezery ani speciální znaky). Ponechte **podrobný plán popis** zatím prázdné.
+
 1. V **umístění definice** pole, vyberte tři tečky na pravé straně, vyberte [skupiny pro správu](../management-groups/overview.md) nebo předplatného, ve které chcete uložit podrobný plán a zvolte **vyberte**.
 
 1. Ověřte správnost informací. **Název podrobného plánu** a **umístění definice** pole není možné později změnit. Potom vyberte **Další: Artefakty** v dolní části stránky nebo **artefakty** kartě v horní části stránky.
 
-1. Přidání přiřazení role na úrovni předplatného: 
+1. Přidání přiřazení role na úrovni předplatného:
 
-   a. Vyberte **+ přidání artefaktu** řádek pod **předplatné**. **Přidání artefaktu** na pravé straně v prohlížeči se otevře okno. 
-   
-   b. Vyberte **přiřazení Role** pro **Typ artefaktu**. 
-   
-   c. V části **Role**vyberte **Přispěvatel**. Nechte **přidat uživatele, aplikace nebo skupinu** pole u zaškrtávacího políčka, která určuje dynamického parametru. 
-   
-   d. Vyberte **přidat** přidat tento artefakt podrobný plán.
+   1. Vyberte **+ přidání artefaktu** řádek pod **předplatné**. **Přidání artefaktu** na pravé straně v prohlížeči se otevře okno.
+
+   1. Vyberte **přiřazení Role** pro **Typ artefaktu**.
+
+   1. V části **Role**vyberte **Přispěvatel**. Nechte **přidat uživatele, aplikace nebo skupinu** pole u zaškrtávacího políčka, která určuje dynamického parametru.
+
+   1. Vyberte **přidat** přidat tento artefakt podrobný plán.
 
    ![Přiřazení role pro artefakt podrobného plánu](./media/create-blueprint-portal/add-role-assignment.png)
 
    > [!NOTE]
    > Většiny artefaktů, které podporují parametry. Je parametr, který se přiřadí hodnota. při vytváření podrobného plánu *statický parametr*. Pokud tento parametr je přiřazený během přiřazení podrobného plánu se jedná *dynamického parametru*. Další informace najdete v [parametry podrobného plánu](./concepts/parameters.md).
 
-1. Přidáte přiřazení zásad na úrovni předplatného: 
+1. Přidáte přiřazení zásad na úrovni předplatného:
 
-   a. Vyberte **+ přidání artefaktu** řádek pod artefaktu přiřazení role. 
-   
-   b. Vyberte **přiřazení zásady** pro **Typ artefaktu**. 
-   
-   c. Změna **typ** k **integrované**. V **hledání**, zadejte **značka**. 
-   
-   d. Vyklikněte z **hledání** pro zobrazení filtrování. Vyberte **použít značku a její výchozí hodnotu pro skupiny prostředků**. 
-   
-   e. Vyberte **přidat** přidat tento artefakt podrobný plán.
+   1. Vyberte **+ přidání artefaktu** řádek pod artefaktu přiřazení role.
 
-1. Vyberte řádek přiřazení zásady **použít značku a její výchozí hodnotu pro skupiny prostředků**. 
+   1. Vyberte **přiřazení zásady** pro **Typ artefaktu**.
+
+   1. Změna **typ** k **integrované**. V **hledání**, zadejte **značka**.
+
+   1. Vyklikněte z **hledání** pro zobrazení filtrování. Vyberte **použít značku a její výchozí hodnotu pro skupiny prostředků**.
+
+   1. Vyberte **přidat** přidat tento artefakt podrobný plán.
+
+1. Vyberte řádek přiřazení zásady **použít značku a její výchozí hodnotu pro skupiny prostředků**.
 
 1. Otevře se okno k zadání parametrů s artefaktem jako součást definice podrobného plánu a umožňuje nastavení parametrů pro všechna přiřazení (statických parametrů) na tento podrobný plán místo při přiřazení (dynamické parametry). Tento příklad používá dynamických parametrů během přiřazení podrobného plánu, takže políčko nechte výchozí hodnoty a vyberte **zrušit**.
 
-1. Přidáte skupinu prostředků na úrovni předplatného: 
+1. Přidáte skupinu prostředků na úrovni předplatného:
 
-   a. Vyberte **+ přidání artefaktu** řádek pod **předplatné**. 
-   
-   b. Vyberte **skupiny prostředků** pro **Typ artefaktu**. 
-   
-   c. Nechte **zobrazovaný název artefaktu**, **název skupiny prostředků**, a **umístění** pole prázdná, ale ujistěte se, že je zaškrtnuto zaškrtávací políčko pro každou vlastnost parametru tak, aby se daly dynamické parametry. 
-   
-   d. Vyberte **přidat** přidat tento artefakt podrobný plán.
+   1. Vyberte **+ přidání artefaktu** řádek pod **předplatné**.
 
-1. Přidáte šablonu v rámci skupiny prostředků: 
+   1. Vyberte **skupiny prostředků** pro **Typ artefaktu**.
 
-   a. Vyberte **+ přidání artefaktu** řádek pod **ResourceGroup** položka. 
-   
-   b. Vyberte **šablony Azure Resource Manageru** pro **Typ artefaktu**, nastavte **zobrazovaný název artefaktu** k **StorageAccount**a nechat  **Popis** prázdné. 
-   
-   c. Na kartu **šablona** v poli editoru, vložte následující šablonu správce prostředků. Když vložíte šablony, vyberte **parametry** kartu a Všimněte si, že parametry šablony **storageAccountType** a **umístění** byly zjištěny. Každý parametr byla automaticky zjištěna a vyplní, ale nakonfigurován jako dynamický parametr. 
-   
-   > [!IMPORTANT]
-   > Pokud importujete šablonu, ujistěte se, že soubor je pouze JSON a neobsahuje HTML. V případě, že přejdete na adresu URL na Githubu, ujistěte se, že jste vybrali **RAW** čistý soubor JSON a není ten zabalena HTML pro zobrazení na Githubu. Pokud importovaná šablona není čistě JSON, dojde k chybě.
+   1. Nechte **zobrazovaný název artefaktu**, **název skupiny prostředků**, a **umístění** pole prázdná, ale ujistěte se, že je zaškrtnuto zaškrtávací políčko pro každou vlastnost parametru tak, aby se daly dynamické parametry.
 
-   ```json
-   {
-       "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-       "contentVersion": "1.0.0.0",
-       "parameters": {
-           "storageAccountType": {
-               "type": "string",
-               "defaultValue": "Standard_LRS",
-               "allowedValues": [
-                   "Standard_LRS",
-                   "Standard_GRS",
-                   "Standard_ZRS",
-                   "Premium_LRS"
-               ],
-               "metadata": {
-                   "description": "Storage Account type"
-               }
-           },
-           "location": {
-               "type": "string",
-               "defaultValue": "[resourceGroups('ResourceGroup').location]",
-               "metadata": {
-                   "description": "Location for all resources."
-               }
-           }
-       },
-       "variables": {
-           "storageAccountName": "[concat('store', uniquestring(resourceGroup().id))]"
-       },
-       "resources": [{
-           "type": "Microsoft.Storage/storageAccounts",
-           "name": "[variables('storageAccountName')]",
-           "location": "[parameters('location')]",
-           "apiVersion": "2018-07-01",
-           "sku": {
-               "name": "[parameters('storageAccountType')]"
-           },
-           "kind": "StorageV2",
-           "properties": {}
-       }],
-       "outputs": {
-           "storageAccountName": {
-               "type": "string",
-               "value": "[variables('storageAccountName')]"
-           }
-       }
-   }
-   ```
+   1. Vyberte **přidat** přidat tento artefakt podrobný plán.
 
-   d. Zrušte **storageAccountType** zaškrtávací políčko a Všimněte si, že rozevírací seznam obsahuje pouze hodnoty, které jsou zahrnuty v šabloně Resource Manageru v rámci **allowedValues**. Vyberte pole a nastavte ji zpět do dynamického parametru. 
-   
-   e. Vyberte **přidat** přidat tento artefakt podrobný plán.
+1. Přidáte šablonu v rámci skupiny prostředků:
+
+   1. Vyberte **+ přidání artefaktu** řádek pod **ResourceGroup** položka.
+
+   1. Vyberte **šablony Azure Resource Manageru** pro **Typ artefaktu**, nastavte **zobrazovaný název artefaktu** k **StorageAccount**a nechat  **Popis** prázdné.
+
+   1. Na kartu **šablona** v poli editoru, vložte následující šablonu správce prostředků.
+      Když vložíte šablony, vyberte **parametry** kartu a Všimněte si, že parametry šablony **storageAccountType** a **umístění** byly zjištěny. Každý parametr byla automaticky zjištěna a vyplní, ale nakonfigurován jako dynamický parametr.
+
+      > [!IMPORTANT]
+      > Pokud importujete šablonu, ujistěte se, že soubor je pouze JSON a neobsahuje HTML. V případě, že přejdete na adresu URL na Githubu, ujistěte se, že jste vybrali **RAW** čistý soubor JSON a není ten zabalena HTML pro zobrazení na Githubu. Pokud importovaná šablona není čistě JSON, dojde k chybě.
+
+      ```json
+      {
+          "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+          "contentVersion": "1.0.0.0",
+          "parameters": {
+              "storageAccountType": {
+                  "type": "string",
+                  "defaultValue": "Standard_LRS",
+                  "allowedValues": [
+                      "Standard_LRS",
+                      "Standard_GRS",
+                      "Standard_ZRS",
+                      "Premium_LRS"
+                  ],
+                  "metadata": {
+                      "description": "Storage Account type"
+                  }
+              },
+              "location": {
+                  "type": "string",
+                  "defaultValue": "[resourceGroup().location]",
+                  "metadata": {
+                      "description": "Location for all resources."
+                  }
+              }
+          },
+          "variables": {
+              "storageAccountName": "[concat('store', uniquestring(resourceGroup().id))]"
+          },
+          "resources": [{
+              "type": "Microsoft.Storage/storageAccounts",
+              "name": "[variables('storageAccountName')]",
+              "location": "[parameters('location')]",
+              "apiVersion": "2018-07-01",
+              "sku": {
+                  "name": "[parameters('storageAccountType')]"
+              },
+              "kind": "StorageV2",
+              "properties": {}
+          }],
+          "outputs": {
+              "storageAccountName": {
+                  "type": "string",
+                  "value": "[variables('storageAccountName')]"
+              }
+          }
+      }
+      ```
+
+   1. Zrušte **storageAccountType** zaškrtávací políčko a Všimněte si, že rozevírací seznam obsahuje pouze hodnoty, které jsou zahrnuty v šabloně Resource Manageru v rámci **allowedValues**. Vyberte pole a nastavte ji zpět do dynamického parametru.
+
+   1. Vyberte **přidat** přidat tento artefakt podrobný plán.
 
    ![Šablona Resource Manageru pro artefakt podrobného plánu](./media/create-blueprint-portal/add-resource-manager-template.png)
 
@@ -172,16 +173,16 @@ V [vytvořit podrobný plán](#create-a-blueprint), nepřidal zadejte popis nebo
 
 1. Vyberte **Další: Artefakty** v dolní části stránky nebo **artefakty** kartě v horní části stránky.
 
-1. Přidání přiřazení role v rámci skupiny prostředků: 
+1. Přidání přiřazení role v rámci skupiny prostředků:
 
-   a. Vyberte **+ přidání artefaktu** řádek přímo pod **ResourceGroup** položka. 
-   
-   b. Vyberte **přiřazení Role** pro **Typ artefaktu**. 
-   
-   c. V části **Role**vyberte **vlastníka**a zrušte zaškrtnutí políčka v části **přidat uživatele, aplikace nebo skupina** pole. 
-   
-   d. Vyhledejte a vyberte uživatele, aplikace nebo skupinu přidat. Tento artefakt používá statický parametr sadu stejné v každé přiřazení podrobný plán. 
-   
+   1. Vyberte **+ přidání artefaktu** řádek přímo pod **ResourceGroup** položka.
+
+   1. Vyberte **přiřazení Role** pro **Typ artefaktu**.
+
+   1. V části **Role**vyberte **vlastníka**a zrušte zaškrtnutí políčka v části **přidat uživatele, aplikace nebo skupina** pole.
+
+   1. Vyhledejte a vyberte uživatele, aplikace nebo skupinu přidat. Tento artefakt používá statický parametr sadu stejné v každé přiřazení podrobný plán.
+
    e. Vyberte **přidat** přidat tento artefakt podrobný plán.
 
    ![Druhé přiřazení role pro artefakt podrobného plánu](./media/create-blueprint-portal/add-role-assignment-2.png)
@@ -217,15 +218,15 @@ Po publikování podrobný plán můžete přiřadit k předplatnému. Přiřad�
 
    Pokud nejsou k dispozici z podporovaných nabídky Enterprise [fakturace Azure](../../billing/index.md), **vytvořit nový** odkaz se aktivuje v části **předplatné** pole. Postupujte následovně:
 
-   a. Vyberte **vytvořit nový** odkaz pro vytvoření nového předplatného místo výběru existující aplikace.
+   1. Vyberte **vytvořit nový** odkaz pro vytvoření nového předplatného místo výběru existující aplikace.
 
-   b. Zadejte **zobrazovaný název** pro nové předplatné.
+   1. Zadejte **zobrazovaný název** pro nové předplatné.
 
-   c. Vyberte dostupných **nabízejí** z rozevíracího seznamu.
+   1. Vyberte dostupných **nabízejí** z rozevíracího seznamu.
 
-   d. Můžete vybrat na tři tečky [skupiny pro správu](../management-groups/index.md) , předplatné bude podřízený.
+   1. Můžete vybrat na tři tečky [skupiny pro správu](../management-groups/index.md) , předplatné bude podřízený.
 
-   e. Vyberte **vytvořit** v dolní části stránky.
+   1. Vyberte **vytvořit** v dolní části stránky.
 
    ![Vytvoření odběru pro odběr přiřazení podrobného plánu](./media/create-blueprint-portal/assignment-create-subscription.png)
 
@@ -254,7 +255,8 @@ Po publikování podrobný plán můžete přiřadit k předplatnému. Přiřad�
 1. Pro **ResourceGroup**, zadejte **název** z **StorageAccount** a **umístění** z **USA – východ 2** z rozevíracím seznamu.
 
    > [!NOTE]
-   > Pro každý artefakt, který jste přidali v rámci skupiny prostředků během definice podrobného plánu je tento artefakt odsazen bylo v souladu s skupinu prostředků nebo objekt, který nasadíte ji. Artefakty, které buď není přijímají parametry nebo mít žádné parametry definované v přiřazení jsou uvedeny pouze pro kontextové informace.
+   > Pro každý artefakt, který jste přidali v rámci skupiny prostředků během definice podrobného plánu je tento artefakt odsazen bylo v souladu s skupinu prostředků nebo objekt, který nasadíte ji.
+   > Artefakty, které buď není přijímají parametry nebo mít žádné parametry definované v přiřazení jsou uvedeny pouze pro kontextové informace.
 
 1. Na šablony Azure Resource Manageru **StorageAccount**vyberte **Standard_GRS** pro **storageAccountType** parametru.
 
@@ -294,7 +296,8 @@ Pokud už nepotřebujete přiřazení podrobného plánu, odeberte ji z odběru.
 1. Klikněte pravým tlačítkem na podrobný plán, který chcete odstranit a vyberte **odstranit podrobný plán**. Potom vyberte **Ano** v dialogovém okně potvrzení.
 
 > [!NOTE]
-> Odstraňuje se plán v této metodě se odstraní také všechny publikované verze vybraného podrobného plánu. Pokud chcete odstranit jednu verzi, otevřete podrobný plán, vyberte **publikované verze** kartu, vyberte verzi, kterou chcete odstranit a potom vyberte **odstranit tuto verzi**. Navíc nelze odstranit podrobný plán odstraníte všechna přiřazení podrobného plánu definice podrobného plánu.
+> Odstraňuje se plán v této metodě se odstraní také všechny publikované verze vybraného podrobného plánu.
+> Pokud chcete odstranit jednu verzi, otevřete podrobný plán, vyberte **publikované verze** kartu, vyberte verzi, kterou chcete odstranit a potom vyberte **odstranit tuto verzi**. Navíc nelze odstranit podrobný plán odstraníte všechna přiřazení podrobného plánu definice podrobného plánu.
 
 ## <a name="next-steps"></a>Další postup
 

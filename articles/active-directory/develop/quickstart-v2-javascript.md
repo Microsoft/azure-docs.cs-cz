@@ -1,6 +1,6 @@
 ---
-title: Azure AD v2 jazyka JavaScript pro rychlý start | Dokumentace Microsoftu
-description: Zjistěte, jak může aplikace JavaScript volat rozhraní API, které vyžadují přístupové tokeny pomocí koncového bodu Azure Active Directory v2.0
+title: Rychlý start Microsoft identity platform JavaScript | Azure
+description: Zjistěte, jak může aplikace JavaScript volat rozhraní API, které vyžadují přístupové tokeny ve platforma identit Microsoft.
 services: active-directory
 documentationcenter: dev-center-name
 author: navyasric
@@ -12,24 +12,32 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 03/20/2019
+ms.date: 04/11/2019
 ms.author: nacanuma
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fe8c2287da7a7eabc26ff134d8bb44c5e45085f1
-ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
+ms.openlocfilehash: 63827c74d584053b5131fbc602a04d4d24338f47
+ms.sourcegitcommit: 41015688dc94593fd9662a7f0ba0e72f044915d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58203043"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59500324"
 ---
-# <a name="quickstart-sign-in-users-and-acquire-an-access-token-from-a-javascript-application"></a>Rychlý start: Přihlašování uživatelů a získání přístupového tokenu z aplikace v jazyce JavaScript
+# <a name="quickstart-sign-in-users-and-acquire-an-access-token-from-a-javascript-single-page-application-spa"></a>Rychlý start: Přihlašování uživatelů a získání přístupového tokenu z jednostránkové aplikace (SPA) jazyka JavaScript
 
 [!INCLUDE [active-directory-develop-applies-v2-msal](../../../includes/active-directory-develop-applies-v2-msal.md)]
 
-V tomto rychlém startu budete zjistěte, jak pomocí vzorového kódu, který ukazuje, jak JavaScript jednostránkové aplikace (SPA) může přihlásit osobní účty, pracovní a školní účty, získání přístupového tokenu pro volání rozhraní Microsoft Graph API nebo libovolné webové rozhraní API.
+V tomto rychlém startu budete zjistěte, jak pomocí vzorového kódu, který ukazuje, jak JavaScript jednostránková aplikace (SPA) můžou osobní účty, pracovní a školní účty a získání přístupového tokenu pro volání rozhraní Microsoft Graph API nebo libovolné webové rozhraní API.
 
-![Ukazuje, jak ukázková aplikace vygenerované v tomto rychlém startu funguje](media/quickstart-v2-javascript/javascriptspa-intro-updated.png)
+![Ukazuje, jak ukázková aplikace vygenerované v tomto rychlém startu funguje](media/quickstart-v2-javascript/javascriptspa-intro.svg)
+
+## <a name="prerequisites"></a>Požadavky
+
+Pro účely tohoto rychlého startu budete potřebovat následující nastavení:
+* Spustit projekt s serveru node.js
+    * Instalovat [Node.js](https://nodejs.org/en/download/)
+    * Nainstalujte [Visual Studio Code](https://code.visualstudio.com/download) k úpravám souborů projektu
+* Chcete-li spustit projekt jako řešení sady Visual Studio, nainstalujte [Visual Studio 2017](https://visualstudio.microsoft.com/downloads/).
 
 > [!div renderon="docs"]
 > ## <a name="register-and-download-your-quickstart-application"></a>Zaregistrujte a stáhněte si aplikaci rychlý start
@@ -39,7 +47,9 @@ V tomto rychlém startu budete zjistěte, jak pomocí vzorového kódu, který u
 >
 > ### <a name="option-1-register-and-auto-configure-your-app-and-then-download-your-code-sample"></a>Option 1: Registrace a automaticky konfigurovat svoji aplikaci a pak si stáhnout ukázku kódu
 >
-> 1. Přejděte na [Azure Portal – Registrace aplikace (Preview)](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/applicationsListBlade/quickStartType/JavascriptSpaQuickstartPage/sourceType/docs).
+> 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com) pomocí pracovního nebo školního účtu nebo osobního účtu Microsoft.
+> 1. Pokud váš účet umožňuje přístup k více tenantům, vyberte svůj účet v pravém horním rohu a nastavte relaci portálu na požadovaného tenanta Azure AD.
+> 1. Přejděte k novému [portál Azure – registrace aplikací](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/applicationsListBlade/quickStartType/JavascriptSpaQuickstartPage/sourceType/docs) podokně.
 > 1. Zadejte název vaší aplikace a klikněte na **Zaregistrovat**.
 > 1. Postupujte podle pokynů ke stažení a automatické konfiguraci nové aplikace jedním kliknutím.
 >
@@ -47,9 +57,11 @@ V tomto rychlém startu budete zjistěte, jak pomocí vzorového kódu, který u
 >
 > #### <a name="step-1-register-your-application"></a>Krok 1: Registrace vaší aplikace
 >
-> 1. Přihlaste se k [webu Azure portal](https://portal.azure.com/) pro registraci aplikace.
+> 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com) pomocí pracovního nebo školního účtu nebo osobního účtu Microsoft.
 > 1. Pokud váš účet umožňuje přístup k více tenantům, vyberte svůj účet v pravém horním rohu a nastavte relaci portálu na požadovaného tenanta Azure AD.
-> 1. V levém navigačním podokně vyberte službu **Azure Active Directory** a pak **Registrace aplikací (Preview) > Nová registrace**.
+> 1. Přejděte na Microsoft identity platform pro vývojáře [registrace aplikací](https://go.microsoft.com/fwlink/?linkid=2083908) stránky.
+> 1. Vyberte **registrace nové**.
+> 1. Když se zobrazí stránka **Registrace aplikace**, zadejte registrační informace vaší aplikace:
 > 1. Když **zaregistrovat aplikaci** se zobrazí stránka, zadejte název pro vaši aplikaci.
 > 1. V části **podporovaných typů účtu**vyberte **účty v jakékoli organizaci adresáři a osobní účty Microsoft**.
 > 1. Vyberte **webové** platformu v rámci **identifikátor URI pro přesměrování** tématu a nastavte hodnotu na `http://localhost:30662/`.
@@ -65,7 +77,7 @@ V tomto rychlém startu budete zjistěte, jak pomocí vzorového kódu, který u
 > > [Tyto změny provést pro mě]()
 >
 > > [!div id="appconfigured" class="alert alert-info"]
-> > ![Už nakonfigurované](media/quickstart-v2-javascript/green-check.png) Vaše aplikace je nakonfigurovaná s těmito atributy.
+> > ![Už nakonfigurovali](media/quickstart-v2-javascript/green-check.png) vaše aplikace je nakonfigurovaná s těmito atributy.
 
 #### <a name="step-2-download-the-project"></a>Krok 2: Stáhněte si projekt
 
@@ -95,11 +107,11 @@ var applicationConfig = {
 > [!div renderon="docs"]
 >
 > Kde:
-> - Hodnota `Enter_the_Application_Id_here` je **ID aplikace (klienta)**, kterou jste zaregistrovali.
-> - Hodnota `Enter_the_Tenant_Info_Here` je nastavená na jednu z následujících možností:
+> - `Enter_the_Application_Id_here` -je **ID aplikace (klient)** pro aplikace, které jste zaregistrovali.
+> - `Enter_the_Tenant_Info_Here` -je nastavená na jednu z následujících možností:
 >   - Pokud vaše aplikace podporuje režim **Účty jen v tomto organizačním adresáři**, nahraďte tuto hodnotu za **ID tenanta** nebo **Název tenanta** (například contoso.microsoft.com).
->   - Pokud vaše aplikace podporuje režim **Účty v libovolném organizačním adresáři**, nahraďte tuto hodnotu za `organizations`.
->   - Pokud vaše aplikace podporuje režim **Účty v libovolném organizačním adresáři a osobní účty Mircosoft**, nahraďte tuto hodnotu za `common`.
+>   - Pokud vaše aplikace podporuje **účty v libovolném adresáři organizace**, nahradí tato hodnota se `organizations`
+>   - Pokud vaše aplikace podporuje **účty v jakékoli organizaci adresáři a osobní účty Microsoft**, nahradí tato hodnota se `common`
 >
 > > [!TIP]
 > > Hodnoty **ID aplikace (klienta)**, **ID adresáře (tenanta)** a **Podporované typy účtu** najdete na stránce **Přehled** aplikace na webu Azure Portal.
@@ -121,14 +133,16 @@ var applicationConfig = {
 
 * Pokud používáte [sady Visual Studio](https://visualstudio.microsoft.com/downloads/), ujistěte se, že vyberte projekt řešení a potom stiskněte klávesu **F5** ke spuštění projektu.
 
+Po prohlížeč načítá aplikaci, klikněte na tlačítko **Sign In**.  Když se poprvé přihlásíte, budete se výzva k zadání váš souhlas, aby aplikace k profilu a pro přihlášení. V úspěšném přihlášení měli byste vidět údajům vašeho uživatelského profilu zobrazí na stránce.
+
 ## <a name="more-information"></a>Další informace
 
-### <a name="msaljs"></a>*msal.js*
+### *<a name="msaljs"></a>msal.js*
 
-Knihovna MSAL je knihovna používaná k přihlášení uživatelů a žádosti o tokeny pro přístup k rozhraní API chráněné službou Microsoft Azure Active Directory (Azure AD). Tento rychlý Start *index.html* obsahuje odkaz na knihovnu:
+Knihovna MSAL je knihovna používaná k přihlášení uživatelů a žádosti o tokeny pro přístup k rozhraní API chráněné službou Microsoft identity platform. Tento rychlý Start *index.html* obsahuje odkaz na knihovnu:
 
 ```html
-<script src="https://secure.aadcdn.microsoftonline-p.com/lib/0.2.3/js/msal.min.js"></script>
+<script src="https://secure.aadcdn.microsoftonline-p.com/lib/0.2.4/js/msal.min.js"></script>
 ```
 
 Případně pokud máte Node nainstalované, můžete ji stáhnout prostřednictvím npm:
@@ -189,14 +203,14 @@ myMSALObj.acquireTokenSilent(applicationConfig.graphScopes).then(function (acces
 
 #### <a name="get-a-user-token-interactively"></a>Interaktivní získání tokenu uživatele
 
-Existují situace, kdy potřebujete vynutit uživatelům, aby komunikovali s koncovým bodem v2.0 Azure AD. Příklad:
+Existují situace, kdy potřebujete vynutit uživatelům, aby komunikovali s koncovým bodem platforma identit Microsoft. Příklad:
 * Uživatelé mohou muset znovu zadat své přihlašovací údaje, protože vypršela platnost hesla
 * Vaše aplikace požaduje přístup k prostředku další obory, které uživatel musí vyjádřit souhlas
 * Je nutné dvoufaktorové ověřování
 
 Doporučené vzorce pro většinu aplikací je volání `acquireTokenSilent` nejprve, pak zachytit výjimku a následně zavolat `acquireTokenRedirect` (nebo `acquireTokenPopup`) spustit interaktivní žádosti.
 
-Volání `acquireTokenPopup(scope)` výsledky v automaticky otevíraném okně pro přihlášení (nebo `acquireTokenRedirect(scope)` výsledkem přesměrování uživatelů na koncový bod Azure AD v2.0) Pokud uživatelé potřebují pracovat prostřednictvím potvrzení své přihlašovací údaje, udělení souhlasu pro požadovaný prostředek, nebo dokončení dvoufaktorového ověřování.
+Volání `acquireTokenPopup(scope)` výsledky v automaticky otevíraném okně pro přihlášení (nebo `acquireTokenRedirect(scope)` výsledkem přesměrování uživatelů na koncový bod Microsoft identity platform) Pokud uživatelé potřebují spolu komunikují prostřednictvím potvrzení přihlašovacích údajů, poskytne svůj souhlas k požadované prostředek, nebo dokončení dvoufaktorového ověřování.
 
 ```javascript
 myMSALObj.acquireTokenPopup(applicationConfig.graphScopes).then(function (accessToken) {

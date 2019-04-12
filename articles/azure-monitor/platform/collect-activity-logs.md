@@ -11,20 +11,20 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 03/26/2018
+ms.date: 04/11/2019
 ms.author: magoedte
-ms.openlocfilehash: 48fb09b73a6169da392443f5fbf4f005e9640c3e
-ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
+ms.openlocfilehash: 4476bb0a5a343fd43ce5ed70cf0e493d0ccae0e9
+ms.sourcegitcommit: f24b62e352e0512dfa2897362021b42e0cb9549d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58905983"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59505630"
 ---
 # <a name="collect-and-analyze-azure-activity-logs-in-log-analytics-workspace-in-azure-monitor"></a>Shromažďování a analýza protokolů aktivit Azure v pracovním prostoru Log Analytics ve službě Azure Monitor
 
 ![Symbol protokolů aktivit Azure](./media/collect-activity-logs/activity-log-analytics.png)
 
-Řešení Activity Log Analytics vám pomáhají analyzovat a Hledat [protokolu aktivit Azure](../../azure-monitor/platform/activity-logs-overview.md) napříč všemi předplatnými Azure. Protokol aktivit Azure je protokol, který nabízí přehled o operace prováděné s prostředky v rámci vašich předplatných. Protokol aktivit se dřív označovalo jako *protokoly auditu* nebo *operační protokoly* vzhledem k tomu, že sestavy událostí pro vaše předplatná.
+Řešení Activity Log Analytics vám pomáhají analyzovat a Hledat [protokolu aktivit Azure](activity-logs-overview.md) napříč všemi předplatnými Azure. Protokol aktivit Azure je protokol, který nabízí přehled o operace prováděné s prostředky v rámci vašich předplatných. Protokol aktivit se dřív označovalo jako *protokoly auditu* nebo *operační protokoly* vzhledem k tomu, že sestavy událostí pro vaše předplatná.
 
 Použití protokolu aktivit, můžete určit *co*, *kdo*, a *při* veškerých operací (PUT, POST, DELETE) provedených pro prostředky ve vašem předplatném zápisu. Můžete také zjištění stavu operace a další relevantní vlastnosti. Protokol aktivit neobsahuje operace čtení (GET) ani operace pro prostředky, které používají model nasazení Classic.
 
@@ -52,28 +52,39 @@ Na rozdíl od většiny jiných řešení Azure Monitor není data shromážděn
 
 | Připojený zdroj | Podporováno | Popis |
 | --- | --- | --- |
-| [Agenti systému Windows](../../azure-monitor/platform/agent-windows.md) | Ne | Řešení neshromažďuje informace z agentů Windows. |
-| [Agenti systému Linux](../../azure-monitor/learn/quick-collect-linux-computer.md) | Ne | Řešení neshromažďuje informace z agentů Linuxu. |
-| [Skupiny pro správu SCOM](../../azure-monitor/platform/om-agents.md) | Ne | Řešení neshromažďuje informace z agentů v připojené skupině pro správu nástroje SCOM. |
+| [Agenti systému Windows](agent-windows.md) | Ne | Řešení neshromažďuje informace z agentů Windows. |
+| [Agenti systému Linux](../learn/quick-collect-linux-computer.md) | Ne | Řešení neshromažďuje informace z agentů Linuxu. |
+| [Skupina pro správu nástroje System Center Operations Manager](om-agents.md) | Ne | Řešení neshromažďuje informace z agentů odesílajících sestavy do skupiny pro správu Operations Manageru. |
 | [Účet služby Azure Storage](collect-azure-metrics-logs.md) | Ne | Řešení neshromažďuje informace ze služby Azure storage. |
 
 ## <a name="prerequisites"></a>Požadavky
 
-- Přístup k informacím protokolu aktivit Azure, musíte mít předplatné Azure.
+Přístup k informacím protokolu aktivit Azure, musíte mít předplatné Azure.
+
+Řešení také vyžaduje, že jsou tyto dva poskytovatelé prostředků ve vašem předplatném zaregistrovaný:
+
+1. Microsoft.OperationalInsights
+2. Microsoft.OperationsManagement
+
+Zjistěte, jak zaregistrovat nebo ověření jsou registrované, najdete v článku [poskytovatelé a typy prostředků Azure](../../azure-resource-manager/resource-manager-supported-services.md)
 
 ## <a name="configuration"></a>Konfigurace
 
 Proveďte následující postup pro konfiguraci řešení Activity Log Analytics pro váš pracovní prostory.
 
-1. Povolte řešení Activity Log Analytics z [Azure marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.AzureActivityOMS?tab=Overview) nebo pomocí postupu popsaného v článku [Přidání řešení Log Analytics z galerie řešení](../../azure-monitor/insights/solutions.md).
+1. Přihlaste se k webu Azure Portal na adrese [https://portal.azure.com](https://portal.azure.com).
+
+2. Povolte řešení Activity Log Analytics z [Azure marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.AzureActivityOMS?tab=Overview) nebo pomocí postupu popsaného v článku [Přidání řešení Log Analytics z galerie řešení](../insights/solutions.md).
+
 2. Konfigurace protokolů aktivit do přejděte do pracovního prostoru Log Analytics.
     1. Na webu Azure Portal, vyberte pracovní prostor a pak klikněte na tlačítko **protokol aktivit Azure**.
     2. Pro každé předplatné klikněte na název předplatného.  
+        
         ![Přidat předplatné](./media/collect-activity-logs/add-subscription.png)
+    
     3. V *SubscriptionName* okna, klikněte na tlačítko **připojit**.  
+    
         ![Připojit předplatné](./media/collect-activity-logs/subscription-connect.png)
-
-Přihlaste se k webu Azure portal pro připojení předplatného Azure do vašeho pracovního prostoru.  
 
 ## <a name="using-the-solution"></a>Použití řešení
 
@@ -98,5 +109,5 @@ Data protokolu aktivit se zobrazí jenom *po* konfiguraci vašich protokolů akt
 
 ## <a name="next-steps"></a>Další postup
 
-- Vytvoření [výstraha](../../azure-monitor/platform/alerts-metric.md) když se stane konkrétní aktivitu.
-- Použití [prohledávání protokolů](../../azure-monitor/log-query/log-query-overview.md) k zobrazení podrobných informací z protokolů aktivit.
+- Vytvoření [výstraha](../platform/alerts-metric.md) když se stane konkrétní aktivitu.
+- Použití [prohledávání protokolů](../log-query/log-query-overview.md) k zobrazení podrobných informací z protokolů aktivit.

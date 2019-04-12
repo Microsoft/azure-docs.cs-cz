@@ -1,5 +1,5 @@
 ---
-title: Shromažďovat data analýzy hrozeb v Azure Preview Sentinelu | Dokumentace Microsoftu
+title: Připojení k Azure Preview ověřovací data analýzy hrozeb | Dokumentace Microsoftu
 description: Další informace o tom, jak připojit k Azure ověřovací data analýzy hrozeb.
 documentationcenter: na
 author: rkarlin
@@ -11,16 +11,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 3/20/2019
+ms.date: 04/07/2019
 ms.author: rkarlin
-ms.openlocfilehash: bc8a644f99d9a84e1f2c177a87e2668ae9a57868
-ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
+ms.openlocfilehash: a33b00e4e553824f1f719be2c8518487241f0a11
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58400632"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59494829"
 ---
-# <a name="collect-data-from-threat-intelligence-providers"></a>Shromažďování dat od poskytovatelů analýzy hrozeb 
+# <a name="connect-data-from-threat-intelligence-providers"></a>Propojení dat od poskytovatelů analýzy hrozeb 
 
 > [!IMPORTANT]
 > Azure Sentinel je aktuálně ve verzi public preview.
@@ -44,7 +44,7 @@ Do Azure Sentinelu jediným kliknutím můžete Streamovat protokoly z poskytova
 
 1. Pokud už používáte zprostředkovatele threat intelligence, ujistěte se, přejděte do vaší aplikace TIP a udělte oprávnění indikátory poslat Microsoftu a určete služby jako Azure Sentinelu.  
 
-2. V Azure Sentinelu, vyberte **shromažďování dat** a potom klikněte na tlačítko **hrozeb** dlaždici.
+2. V Azure Sentinelu, vyberte **datové konektory** a potom klikněte na tlačítko **hrozeb** dlaždici.
 
 3. Klikněte na **Připojit**. 
 

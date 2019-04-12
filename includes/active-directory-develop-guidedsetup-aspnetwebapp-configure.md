@@ -11,15 +11,15 @@ ms.devlang: na
 ms.topic: include
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 05/04/2018
+ms.date: 04/11/2019
 ms.author: jmprieur
 ms.custom: include file
-ms.openlocfilehash: cce0bb9d1a9317396d197d182a424a45c8448f1b
-ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
+ms.openlocfilehash: 123a2ece06cb58ce6dbb35a914a87eb45fbcf5be
+ms.sourcegitcommit: f24b62e352e0512dfa2897362021b42e0cb9549d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58203581"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59505789"
 ---
 ## <a name="register-your-application"></a>Registrace vaší aplikace
 
@@ -29,24 +29,28 @@ Zaregistrujte si vaši aplikaci a přidejte informace o registraci aplikace do s
 
 Můžete rychle registrace vaší aplikace následujícím způsobem:
 
-1. Registrace vaší aplikace prostřednictvím [portál pro registraci aplikací Microsoft](https://apps.dev.microsoft.com/portal/register-app?appType=serverSideWebApp&appTech=aspNetWebAppOwin&step=configure).
-2. Zadejte název vaší aplikace a e-mailu.
-3. Ujistěte se, že je zaškrtnuté políčko pro instalační program s asistencí.
-4. Postupujte podle pokynů pro přidání adresy URL přesměrování pro aplikaci.
+1. Přejděte k novému [portál Azure – registrace aplikací](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/applicationsListBlade/quickStartType/AspNetWebAppQuickstartPage/sourceType/docs) podokně.
+1. Zadejte název vaší aplikace a klikněte na **Zaregistrovat**.
+1. Postupujte podle pokynů ke stažení a automatické konfiguraci nové aplikace jedním kliknutím.
 
 ### <a name="option-2-advanced-mode"></a>Option 2: Rozšířený režim
 
-Postup při registraci aplikace a přidání informací o registraci aplikace k řešení:
+Pokud chcete zaregistrovat aplikaci a ručně přidat informace o registraci aplikace ke svému řešení, postupujte následovně:
 
-1. Abyste mohli zaregistrovat aplikaci, přejděte na [portál pro registraci aplikací Microsoft](https://apps.dev.microsoft.com/portal/register-app).
-2. Zadejte název vaší aplikace a e-mailu.
-3. Ujistěte se, že není zaškrtnuta možnost pro instalační program s asistencí
-4. Vyberte `Add Platform`a pak vyberte `Web`.
-5. Přejděte zpět do sady Visual Studio a v Průzkumníku řešení vyberte projekt a podívejte se na okno Vlastnosti (Pokud se nezobrazí okno Vlastnosti, stisknutím klávesy F4)
-6. Změnit protokol SSL povolený pro `True`.
-7. Klikněte pravým tlačítkem na projekt v sadě Visual Studio a pak zvolte **vlastnosti**a **webové** kartu. V *servery* části změnit *adresa Url projektu* bude adresa URL protokolu SSL.
-8. Zkopírujte adresu URL protokolu SSL a přidejte tuto adresu URL do seznamu adresy URL pro přesměrování v seznamu portál pro registraci adresy URL pro přesměrování:<br/><br/>![Vlastnosti projektu](media/active-directory-develop-guidedsetup-aspnetwebapp-configure/vsprojectproperties.png)<br />
-9. Přidejte následující kód do `web.config` nachází v kořenové složce v části `configuration\appSettings`:
+1. Přejděte do sady Visual Studio a:
+   - v Průzkumníku řešení vyberte projekt a podívejte se na okno Vlastnosti (Pokud se nezobrazí okno Vlastnosti, stisknutím klávesy F4)
+   - Změnit protokol SSL povolený pro `True`.
+   - Klikněte pravým tlačítkem na projekt v sadě Visual Studio a pak zvolte **vlastnosti**a **webové** kartu. V *servery* části změnit *adresa Url projektu* bude adresa URL protokolu SSL.
+   - Zkopírujte adresu URL protokolu SSL. Do seznamu adresy URL pro přesměrování v portálu pro registraci seznam adres URL pro přesměrování v dalším kroku přidáte tuto adresu URL:<br/><br/>![Vlastnosti projektu](media/active-directory-develop-guidedsetup-aspnetwebapp-configure/vsprojectproperties.png)<br />
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com) pomocí pracovního nebo školního účtu nebo osobního účtu Microsoft.
+1. Pokud váš účet umožňuje přístup k více tenantům, vyberte svůj účet v pravém horním rohu a nastavte relaci portálu na požadovaného tenanta Azure AD.
+1. Přejděte na Microsoft identity platform pro vývojáře [registrace aplikací](https://go.microsoft.com/fwlink/?linkid=2083908) stránky.
+1. Vyberte **registrace nové**.
+1. Když se zobrazí stránka **Registrace aplikace**, zadejte registrační informace vaší aplikace:
+   - V části **Název** zadejte smysluplný název aplikace, který se zobrazí uživatelům aplikace, například `ASPNET-Tutorial`.
+   - Přidejte adresu URL protokolu SSL, měli jste zkopírovali ze sady Visual Studio v kroku 1 (například `https://localhost:44368/`) v **adresy URL odpovědi**a klikněte na tlačítko **zaregistrovat**.
+1. Vyberte nabídku **Ověřování**, v části **Implicitní udělení oprávnění** nastavte **Tokeny ID** a pak vyberte **Uložit**.
+1. Přidejte následující kód do `web.config` nachází v kořenové složce v části `configuration\appSettings`:
 
     ```xml
     <add key="ClientId" value="Enter_the_Application_Id_here" />
@@ -55,5 +59,5 @@ Postup při registraci aplikace a přidání informací o registraci aplikace k 
     <add key="Authority" value="https://login.microsoftonline.com/{0}/v2.0" />
     ```
 
-10. Nahraďte `ClientId` s ID aplikace, který jste právě zaregistrovali.
-11. Nahraďte `redirectUri` s adresou URL protokolu SSL vašeho projektu.
+1. Nahraďte `ClientId` s ID aplikace, který jste právě zaregistrovali.
+1. Nahraďte `redirectUri` s adresou URL protokolu SSL vašeho projektu.

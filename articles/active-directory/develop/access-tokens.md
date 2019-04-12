@@ -17,25 +17,26 @@ ms.author: celested
 ms.reviewer: hirsin
 ms.custom: fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4b94004aa4b4834be80c13a044fcf7eb0023b6f7
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: 88c47e1090673eb0a56f12c2eaf790a0ac851c6b
+ms.sourcegitcommit: 41015688dc94593fd9662a7f0ba0e72f044915d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59259860"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59501140"
 ---
 # <a name="azure-active-directory-access-tokens"></a>Azure Active Directory přístupové tokeny
 
 Přístupové tokeny umožňují klientům bezpečně volat rozhraní API chráněné službou Azure. Azure Active Directory (Azure AD) přístupové tokeny jsou [tokeny Jwt](https://tools.ietf.org/html/rfc7519), objekty JSON podepsány Azure s kódováním Base64. Klienti by měly zpracovávat přístup tokeny jako neprůhledný řetězce, jako obsah tokenu jsou určené pro prostředek jenom. Pro ověření a účely ladění, vývojáři dekódoval tokeny Jwt pomocí web [jwt.ms](https://jwt.ms). Váš klient může získat přístupový token z obou koncového bodu (verze 1.0 nebo 2.0) pomocí různých protokolů.
 
-Při žádosti o přístupový token Azure AD také vrátí hodnotu některá metadata o přístupový token pro využití vaší aplikace. Tyto informace zahrnují čas vypršení platnosti přístupového tokenu a oborů, pro které je platný. Tato data umožňuje aplikaci inteligentního ukládání přístupových tokenů bez nutnosti parsovat přístupový token, samotné do mezipaměti.
+Když žádost klienta o přístupový token, Azure AD také vrátí hodnotu některá metadata o přístupový token pro využití vaší aplikace. Tyto informace zahrnují čas vypršení platnosti přístupového tokenu a oborů, pro které je platný. Tato data umožňuje aplikaci inteligentního ukládání přístupových tokenů bez nutnosti parsovat přístupový token, samotné do mezipaměti.
 
 Pokud je aplikace, který klienti mohou požadovat přístup k prostředku (webové rozhraní API), zadejte přístupové tokeny pro účely ověřování a autorizace, jako je například uživatel, klient, Vystavitel, oprávnění a další užitečné informace. 
 
 Naleznete v následujících částech se dozvíte, jak ověřit a používat deklarace identity uvnitř přístupového tokenu prostředku.
 
-> [!NOTE]
-> Při testování vaší klientské aplikace pomocí osobního účtu (například hotmail.com nebo outlook.com), můžete zjistit, že přístupový token přijatých vašeho klienta je neprůhledný řetězec. Je to proto, že prostředek, ke kterému přistupujete požádal o starší verze (účet Microsoft) lístky MSA, které jsou zašifrované a nemůže být srozumitelné pro klienta.
+> [!Important]
+> Přístupové tokeny se vytvářejí na základě *cílovou skupinu* tokenu, což znamená aplikace, která vlastní obory v tokenu.  Toto je způsob, jakým nastavení prostředku `accessTokenAcceptedVersion` v [manifest aplikace](reference-app-manifest.md#manifest-reference) k `2` umožňuje klientovi volání koncového bodu v1.0 získat přístupový token verze 2.0.  Obdobně to je důvod, proč Změna přístupového tokenu [nepovinných deklarací identity](active-directory-optional-claims.md) pro vašeho klienta, proveďte ne změnit přístupový token přijal při vyžádání tokenu pro `user.read`, který vlastní prostředek MS Graphu.  
+> Ze stejného důvodu při testování vaší klientské aplikace pomocí osobního účtu (například hotmail.com nebo outlook.com), můžete zjistit, že přístupový token přijatých vašeho klienta je neprůhledný řetězec. Je to proto, že prostředek, ke kterému přistupujete požádal o starší verze (účet Microsoft) lístky MSA, které jsou zašifrované a nemůže být srozumitelné pro klienta.
 
 ## <a name="sample-tokens"></a>Ukázka tokeny
 

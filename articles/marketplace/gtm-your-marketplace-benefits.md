@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 01/12/2019
 ms.author: ellacroi
-ms.openlocfilehash: 3fa4fb9fb7accfbe4517e2bf917a3df31ea10fa7
-ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
+ms.openlocfilehash: 896e5a3f3b5c9f7d217340c396707718adf93dbb
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56887246"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59489567"
 ---
 # <a name="your-marketplace-benefits"></a>Výhody Marketplace
 
@@ -73,7 +73,7 @@ Následující tabulky shrnují požadavky zakládající nárok:
 
 \* Vyžaduje stříbrné nebo zlaté úrovně kompetence. <br>
 \*\* Vyžaduje zlaté úrovně kompetence. <br>
-\*\*\* Vyžaduje zlaté úrovně kompetence a připravené na společný prodej zařazení do katalogu OCP. <br>
+\*\*\* Vyžaduje zlaté úrovně kompetence a společný prodej připraven ve výpisech partnera. <br>
 ^ Transact pouze, lze použít na Azure Marketplace.
 
 ## <a name="next-steps"></a>Další postup

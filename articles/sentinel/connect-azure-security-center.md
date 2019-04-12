@@ -1,6 +1,6 @@
 ---
-title: Shromažďování dat v Azure Security Center ve verzi Preview Sentinelu Azure | Dokumentace Microsoftu
-description: Zjistěte, jak shromažďovat data o Azure Security Center v Azure Sentinelu.
+title: Připojení k Azure Sentinelu Preview data Azure Security Center | Dokumentace Microsoftu
+description: Informace o připojení k Azure Sentinelu data Azure Security Center.
 services: sentinel
 documentationcenter: na
 author: rkarlin
@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 2/28/2019
+ms.date: 04/07/2019
 ms.author: rkarlin
-ms.openlocfilehash: f59c5f6a9f497a6420172996f9f327f16ffd26f9
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: bd6fe027da8c16157c7fce6c348e49c0a6b73ea3
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57242268"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59490667"
 ---
-# <a name="collect-data-from-azure-security-center"></a>Shromažďování dat ze služby Azure Security Center
+# <a name="connect-data-from-azure-security-center"></a>Připojení dat ze služby Azure Security Center
 
 > [!IMPORTANT]
 > Azure Sentinel je aktuálně ve verzi public preview.
@@ -29,7 +29,7 @@ ms.locfileid: "57242268"
 
 
 
-Azure Sentinel umožňuje shromažďovat výstrahy z [Azure Security Center](../security-center/security-center-intro.md) a Streamovat je do ověřovacích Azure. 
+Azure Sentinel vám umožní připojit výstrahy z [Azure Security Center](../security-center/security-center-intro.md) a Streamovat je do ověřovacích Azure. 
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -42,7 +42,7 @@ Azure Sentinel umožňuje shromažďovat výstrahy z [Azure Security Center](../
 
 ## <a name="connect-to-azure-security-center"></a>Připojení ke službě Azure Security Center
 
-1. V Azure Sentinelu, vyberte **shromažďování dat** a potom klikněte na tlačítko **Azure Security Center** dlaždici.
+1. V Azure Sentinelu, vyberte **datové konektory** a potom klikněte na tlačítko **Azure Security Center** dlaždici.
 1. Na pravé straně klikněte na **připojit** vedle každého předplatného, jejíž výstrahy chcete Streamovat do ověřovacích Azure. Ujistěte se, že pro každé předplatné upgradovat na Azure Security Center úrovně Standard na datový proud výstrahy k Sentinelu Azure.
 
 3. Klikněte na **Připojit**.

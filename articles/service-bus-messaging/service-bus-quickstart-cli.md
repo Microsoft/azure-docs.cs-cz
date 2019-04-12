@@ -7,36 +7,32 @@ manager: timlt
 ms.service: service-bus-messaging
 ms.devlang: java
 ms.topic: quickstart
-ms.date: 02/25/2019
+ms.date: 04/10/2019
 ms.author: spelluru
-ms.openlocfilehash: b40cd130039f7d55b69198b4be4af908dedbe8b7
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: eb19833251fc9ee08a12aaf6ffcef55d59cea5d6
+ms.sourcegitcommit: 41015688dc94593fd9662a7f0ba0e72f044915d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58076883"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59500630"
 ---
 # <a name="quickstart-use-the-azure-cli-to-create-a-service-bus-queue"></a>Rychlý start: Vytvořit frontu služby Service Bus pomocí Azure CLI
-
-Microsoft Azure Service Bus je podniková integrace zprostředkovatele zpráv, která zajišťuje zabezpečené zasílání a přijímání zpráv a spolehlivost. Typický scénář služby Service Bus obvykle zahrnuje vzájemné oddělení dvou nebo více aplikací, služeb či procesů (aplikace nemusí být online ve stejnou dobu), převedení stavu nebo změny dat a zasílání zpráv mezi aplikacemi. 
-
-Maloobchod může například odeslat data o prodeji administrativní podpoře (back office) nebo oblastnímu distribučním centru, aby došlo k doplnění a aktualizaci zásob. V tomto případě klientská aplikace odesílá zprávy do fronty služby Service Bus a přijímá je z ní:
-
-![fronta](./media/service-bus-quickstart-cli/quick-start-queue.png)
-
 Tento rychlý start popisuje způsob odesílání a příjem zpráv pomocí Service Bus pomocí Azure CLI a knihovny Service Bus v Javě. Pokud vás zajímají techničtější podrobnosti, můžete si [přečíst vysvětlení](#understand-the-sample-code) klíčových prvků vzorového kódu.
 
+[!INCLUDE [howto-service-bus-queues](../../includes/howto-service-bus-queues.md)]
+
+## <a name="prerequisites"></a>Požadavky
 Pokud ještě nemáte předplatné Azure, můžete si vytvořit [bezplatný účet][] před tím, než začnete.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
 ## <a name="sign-in-to-azure"></a>Přihlásit se k Azure
+Pokud používáte **vyzkoušet** tlačítko Spustit Cloud Shell, přihlaste se k Azure pomocí přihlašovacích údajů. 
 
-Klikněte na tlačítko Cloud Shell v nabídce v pravém horním rohu webu Azure Portal a z rozevíracího seznamu **Vybrat prostředí** vyberte **Bash**. 
+Pokud jste spustili službě Cloud Shell ve webovém prohlížeči buď přímo, nebo na webu Azure Portal, přepněte na **Bash** Pokud se zobrazí **Powershellu** v horní části levého horního rohu službě Cloud Shell. 
 
 ## <a name="use-the-azure-cli-to-create-resources"></a>Vytvoření prostředků pomocí Azure CLI
-
-Ve službě Cloud Shell zřiďte v příkazovém řádku Bash pomocí následujících příkazů prostředky služby Service Bus. Nezapomeňte všechny zástupné symboly nahradit příslušnými hodnotami: Ukázkový program v jazyce Java očekává, že název fronty, který se má BasicQueue, takže neměňte ho. 
+Ve službě Cloud Shell zřiďte v příkazovém řádku Bash pomocí následujících příkazů prostředky služby Service Bus. Nezapomeňte všechny zástupné symboly nahradit příslušnými hodnotami: Ukázkový program v jazyce Java očekává, že název fronty, který se má BasicQueue, takže neměňte ho. Můžete chtít kopírování/vkládání příkazy jeden po druhém, takže můžete nahradit hodnoty před spuštěním je. 
 
 ```azurecli-interactive
 # Create a resource group
@@ -373,12 +369,12 @@ void registerReceiver(QueueClient queueClient, ExecutorService executorService) 
 
 ## <a name="next-steps"></a>Další postup
 
-V tomto článku jste vytvořil obor názvů služby Service Bus a další prostředky potřebné k odesílání a přijímání zpráv z fronty. Další informace o psaní kódu souvisejícího s odesíláním a přijímáním zpráv získáte, když budete pokračovat následujícím kurzem služby Service Bus:
+V tomto článku jste vytvořil obor názvů služby Service Bus a další prostředky potřebné k odesílání a přijímání zpráv z fronty. Další informace o psaní kódu pro odesílání a příjem zpráv, pokračovat v kurzech **odesílání a příjem zpráv** oddílu. 
 
 > [!div class="nextstepaction"]
-> [Aktualizovat inventáře pomocí Azure CLI a jazyka Java](./service-bus-tutorial-topics-subscriptions-cli.md)
+> [Odesílání a příjem zpráv](service-bus-dotnet-get-started-with-queues.md)
 
-[bezplatný účet]: https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio
+[Bezplatný účet]: https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio
 [fully qualified domain name]: https://wikipedia.org/wiki/Fully_qualified_domain_name
 [Install the Azure CLI]: /cli/azure/install-azure-cli
 [az group create]: /cli/azure/group#az_group_create

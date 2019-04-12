@@ -1,6 +1,6 @@
 ---
-title: Shromažďování dat Barracuda ve verzi Preview Sentinelu Azure | Dokumentace Microsoftu
-description: Zjistěte, jak shromažďovat data Barracuda v ověřovacích Azure.
+title: Propojení dat Barracuda Sentinelu ve verzi Preview Azure | Dokumentace Microsoftu
+description: Informace o připojení k Azure Sentinelu Barracuda data.
 services: sentinel
 documentationcenter: na
 author: rkarlin
@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 2/28/2019
+ms.date: 04/07/2019
 ms.author: rkarlin
-ms.openlocfilehash: b4d1830e705e1813c8448787e587d720eaf5ddbd
-ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
+ms.openlocfilehash: d8e92fd3918230b48449926dcbb7528d919fd96f
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2019
-ms.locfileid: "58574714"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59492834"
 ---
 # <a name="connect-your-barracuda-appliance"></a>Připojit zařízení Barracuda 
 
@@ -31,11 +31,10 @@ Barracuda Firewall webových aplikací (WAF) konektoru můžete snadno připojit
 
 
 > [!NOTE]
-> 
-> - Data se uloží v zeměpisné oblasti pracovního prostoru, na kterém je spuštěný Sentinelu Azure.
+> Data se uloží v zeměpisné oblasti pracovního prostoru, na kterém je spuštěný Sentinelu Azure.
 
 ## <a name="configure-and-connect-barracuda-waf"></a>Konfigurace a připojení Barracuda WAF
-Barracuda Web Application Firewall můžete integrovat a exportovat protokoly přímo do [ASI] prostřednictvím Azure OMS serveru.
+Barracuda Web Application Firewall můžete integrovat a exportovat protokoly přímo do Azure Sentinelu prostřednictvím Azure OMS serveru.
 1. Přejděte na [toku konfiguraci Barracuda WAF](https://campus.barracuda.com/product/webapplicationfirewall/doc/73696965/configure-the-barracuda-web-application-firewall-to-integrate-with-the-oms-server-and-export-logs/)a postupujte podle pokynů k nastavení připojení, s použitím těchto parametrů:
     - **ID pracovního prostoru**: Zkopírujte hodnotu ID vašeho pracovního prostoru na stránce Azure Sentinelu Barracuda konektoru.
     - **Primární klíč**: Zkopírujte hodnotu primárního klíče na stránce Azure Sentinelu Barracuda konektoru.

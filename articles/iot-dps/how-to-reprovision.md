@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 manager: timlt
-ms.openlocfilehash: c7163667ec370abf468b289cea231e86a4b5753f
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.openlocfilehash: 92680a453d93c8dc0189c6ae376449a8e7a22076
+ms.sourcegitcommit: 41015688dc94593fd9662a7f0ba0e72f044915d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/05/2019
-ms.locfileid: "59046833"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59499848"
 ---
 # <a name="how-to-reprovision-devices"></a>Jak na bázi zařízení
 
@@ -27,7 +27,7 @@ Během životního cyklu řešení IoT se běžně přesouvat zařízení mezi I
 
 * **Karantény**: Podobně jako řešení změnit. Zařízení, které je nefunkční, ohrožení zabezpečení nebo zastaralý může být přeřazen do služby IoT hub, kde je všechno, co můžete dělat aktualizaci a zase dostat dodržování předpisů. Když zařízení pracuje správně, je potom migrovat zpět na jeho hlavní centra.
 
-Další podrobnější přehled o neukončil, naleznete v tématu [IoT Hub Device reprovisoning koncepty](concepts-device-reprovision.md).
+Další podrobnější přehled o neukončil, naleznete v tématu [IoT Hub Device neukončil koncepty](concepts-device-reprovision.md).
 
 
 ## <a name="configure-the-enrollment-allocation-policy"></a>Konfigurace zásad přidělování pro zápis
@@ -93,7 +93,7 @@ Například zřizování požadavky ze zařízení během sekvence spouštění 
 
 ## <a name="next-steps"></a>Další postup
 
-- Přečtěte si další Reprovisioning, najdete v článku [reprovisoning koncepty zařízení centra IoT](concepts-device-reprovision.md) 
+- Přečtěte si další Reprovisioning, najdete v článku [neukončil koncepty zařízení centra IoT](concepts-device-reprovision.md) 
 - Zrušení zřízení Další informace najdete v tématu [jak zrušit zřízení zařízení, které byly dříve automatické zřizování](how-to-unprovision-devices.md) 
 
 

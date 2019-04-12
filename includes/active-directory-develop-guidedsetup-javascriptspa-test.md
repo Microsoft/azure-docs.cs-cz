@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 09/17/2018
 ms.author: nacanuma
 ms.custom: include file
-ms.openlocfilehash: bb73f58c5dca5e49cdb075b046f883ffeb77c95c
-ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
+ms.openlocfilehash: c13c9ece54d512adf271532a4ac17876a88d733e
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58203292"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59503268"
 ---
 ## <a name="test-your-code"></a>Testování kódu
 
@@ -35,7 +35,7 @@ Pokud nepoužíváte Visual Studio, ujistěte se, že váš webový server je sp
     ```
 1. Otevřete prohlížeč a zadat http://<span></span>localhost:30662 nebo http://<span></span>localhost: {port} kde **port** je port, který váš webový server naslouchá. Zobrazí se obsah souboru index.html a **Sign In** tlačítko.
 
-<p/><!-- -->
+<p><!-- -->
 
 ### <a name="test-with-visual-studio"></a>Testování pomocí sady Visual Studio
 
@@ -43,7 +43,7 @@ Pokud používáte Visual Studio, je nutné vybrat projekt řešení a stisknět
 
 ## <a name="test-your-application"></a>Testování aplikace
 
-Po načtení souboru index.html prohlížeče klikněte na tlačítko **Sign In**. Vám zobrazí výzva k přihlášení pomocí koncového bodu v2.0 Microsoft Azure Active Directory (Azure AD):
+Po načtení souboru index.html prohlížeče klikněte na tlačítko **Sign In**. Vám zobrazí výzva k přihlášení pomocí koncového bodu Microsoft identity platform:
 
 ![Přihlaste se ke svému účtu JavaScript SPA](media/active-directory-develop-guidedsetup-javascriptspa-test/javascriptspascreenshot1.png)
 

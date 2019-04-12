@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 02/24/2019
 ms.author: raynew
-ms.openlocfilehash: 974e640977fcf4d580575705d7fdf0faf632c31b
-ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
+ms.openlocfilehash: aacfe725310b3c8e4785e24b80728f0e60694814
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
-ms.locfileid: "59361456"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59496091"
 ---
 # <a name="support-matrix-for-azure-vm-backup"></a>Matice podpory pro zálohování virtuálních počítačů Azure
 Můžete použít [služby Azure Backup](backup-overview.md) pro zálohování místních počítačů a úlohy a Azure virtual machines (VM). Tento článek shrnuje podporu nastavení a omezení při zálohování virtuálních počítačů Azure pomocí Azure Backup.
@@ -41,8 +41,8 @@ Další informace o zálohování [pomocí zálohování serveru](backup-archite
 **Akce** | **Podpora**
 --- | ---
 Povolit zálohování při vytváření virtuálního počítače Azure s Windows | Podporované pro:  Windows Server. 2019 (jádro Datacenter nebo Datacenter), Windows Server 2016 (jádro Datacenter nebo Datacenter); Windows Server 2012 R2 Datacenter; Windows Server 2008 R2 (verze RTM a SP1)
-Povolit zálohování při vytváření virtuálního počítače s Linuxem | Podporované pro:<br/><br/> - Ubuntu Server: 1710, 1704, 1604 (LTS), 1404 (LTS)<br/><br/> – Red Hat: RHEL 6.7, 6.8, 6.9, 7.2, 7.3, 7.4<br/><br/> -Operačním systémem SUSE Linux Enterprise Server: 11 SP4, 12 SP2, 12 SP3<br/><br/> -Debian: 8, 9<br/><br/> - CentOS: 6.9, 7.3<br/><br/> -Oracle Linux: 6.7, 6.8, 6.9, 7.2, 7.3
-Zálohování virtuálního počítače, která virtuální počítač vypnout/offline/hledání | Podporuje se.<br/><br/> Snímek je konzistentní při selhání pouze, není konzistentní s aplikací.
+Povolit zálohování při vytváření virtuálního počítače s Linuxem | Podporované pro:<br/><br/> - Ubuntu Server: 1710, 1704, 1604 (LTS), 1404 (LTS)<br/><br/> – Red Hat: RHEL 6.7, 6.8, 6.9, 7.2, 7.3, 7.4<br/><br/> -Operačním systémem SUSE Linux Enterprise Server: 11 SP4, 12 SP2, 12 SP3, 15 <br/><br/> -Debian: 8, 9<br/><br/> - CentOS: 6.9, 7.3<br/><br/> -Oracle Linux: 6.7, 6.8, 6.9, 7.2, 7.3
+Zálohování virtuálního počítače, který je vypnout nebo offline virtuálního počítače | Podporuje se.<br/><br/> Snímek je konzistentní při selhání pouze, není konzistentní s aplikací.
 Zálohování disků po migraci na spravované disky | Podporuje se.<br/><br/> Zálohování bude pokračovat v práci. Nevyžaduje se žádná akce.
 Zálohování spravované disky po povolení zámku skupiny prostředků | Nepodporuje se.<br/><br/> Azure Backup nejde odstranit starších bodů prostředků a zálohování se spustí při dosažení maximálního počtu bodů obnovení.
 Upravit zásady zálohování pro virtuální počítač | Podporuje se.<br/><br/> Virtuální počítač bude zálohovat pomocí nastavení plán a uchovávání dat v nové zásady. Pokud jsou nastavení uchovávání prodlouží, existující body obnovení jsou označeny a udržovat. Pokud jste se zkrátí, bude nedochází k vyřazení v rámci další úlohy čištění a nakonec odstraní existující body obnovení.
@@ -149,8 +149,7 @@ Zálohování virtuálních počítačů, které jsou nasazené [škálovací sa
 Zálohování virtuálních počítačů, které byly nasazeny [Azure Marketplace](https://azuremarketplace.microsoft.com/en-us/marketplace/apps?filters=virtual-machine-images)<br/><br/> (Vydáno nakladatelstvím Microsoft třetích stran) |  Podporuje se.<br/><br/> Virtuální počítač musí být spuštěný podporovaný operační systém.<br/><br/> Při obnovení souborů na virtuálním počítači, můžete obnovit pouze na kompatibilní operační systém (ne starší nebo novější operační systém).
 Zálohování virtuálních počítačů nasazených z vlastní image (třetích stran) |   Podporuje se.<br/><br/> Virtuální počítač musí být spuštěný podporovaný operační systém.<br/><br/> Při obnovení souborů na virtuálním počítači, můžete obnovit pouze na kompatibilní operační systém (ne starší nebo novější operační systém).
 Zálohování virtuálních počítačů, které se migrují do Azure  | Podporuje se.<br/><br/> Zálohování virtuálního počítače, musí nainstalovat agenta virtuálního počítače na migrovaných počítačů.
-Zálohování virtuálních počítačů konzistence | Nepodporovaný. <br/><br/>Azure Backup nepodporuje konzistence více virtuálních počítačů.
-
+Zálohování konzistence více virtuálních počítačů | Azure Backup neposkytuje konzistenci dat a aplikací napříč několika virtuálními počítači.
 
 
 ## <a name="vm-storage-support"></a>Podpora úložiště virtuálního počítače
@@ -166,7 +165,7 @@ Disky s akcelerátor zápisu | Nepodporuje se.<br/><br/> Pokud používáte nejn
 Zálohování disků s odstraněním duplicit | Nepodporuje se.
 Přidání disku do chráněného virtuálního počítače | Podporuje se.
 Změna velikosti disku v chráněném virtuálním počítači | Podporuje se.
-Sdílené úložiště| Zálohování virtuálních počítačů pomocí sdíleného svazku clusteru nebo souborového serveru se Škálováním se nedoporučuje. Zapisovače sdíleného svazku clusteru se pravděpodobně nezdaří.
+Sdílené úložiště| Zálohování virtuálních počítačů pomocí sdíleného svazku clusteru (CSV) nebo souborového serveru se Škálováním se nedoporučuje. Jsou pravděpodobně selže během zálohování sdíleného svazku clusteru zapisovače. Při obnovování disky obsahující Sdílené svazky clusteru nemusí přijde nahoru.
 
 > [!NOTE]
 > Azure Backup nepodporuje disky prokládané. Změna velikosti disku se nedoporučuje službou Azure Backup.

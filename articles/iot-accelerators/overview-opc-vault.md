@@ -1,5 +1,5 @@
 ---
-title: Co je Azure IoT OPC UA certificate managementu | Dokumentace Microsoftu
+title: Co je trezor OPC – Azure | Dokumentace Microsoftu
 description: Přehled trezoru OPC
 author: dominicbetts
 ms.author: dobett
@@ -8,16 +8,16 @@ ms.topic: overview
 ms.service: iot-industrialiot
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: ba3313d927ec4317d6c051f6058d75a415b92288
-ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
+ms.openlocfilehash: 99dfcaeb1ef5b52e6827f1b3ac65d6201557a8fb
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58759248"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59490372"
 ---
-# <a name="what-is-azure-iot-open-platform-communications-opc-ua-certificate-management"></a>Co je Správa certifikátů UA Azure IoT otevřené platformy komunikací OPC ()?
+# <a name="what-is-opc-vault"></a>Co je trezor OPC?
 
-Azure IoT OPC UA Správa certifikátů a také znát pod některým z trezoru OPC, mikroslužby, můžete nakonfigurovat registr, je správa životního cyklu certifikátu pro OPC UA serverových a klientských aplikací v cloudu. Tento článek popisuje případech stačí použít trezor OPC.
+OPC trezor je mikroslužeb, která můžete konfigurovat, registrace a správa životního cyklu certifikátu pro server OPC UA a klientských aplikací v cloudu. Tento článek popisuje případech stačí použít trezor OPC.
 
 ## <a name="certificate-management"></a>Správa certifikátů
 

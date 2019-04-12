@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: how-to
 ms.date: 04/03/2019
 ms.author: helohr
-ms.openlocfilehash: d22fffcb792227b4d0805abd005d8c050cb97248
-ms.sourcegitcommit: 045406e0aa1beb7537c12c0ea1fbf736062708e8
+ms.openlocfilehash: e82b9ae96ae43278e22da22702d3d899abadb1b5
+ms.sourcegitcommit: f24b62e352e0512dfa2897362021b42e0cb9549d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/04/2019
-ms.locfileid: "59006195"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59505596"
 ---
 # <a name="prepare-and-customize-a-master-vhd-image"></a>Příprava a přizpůsobení hlavní image VHD
 
@@ -158,21 +158,20 @@ reg add HKLM\SOFTWARE\Policies\Microsoft\office\16.0\common\officeupdate /v hide
 reg add HKLM\SOFTWARE\Policies\Microsoft\office\16.0\common\officeupdate /v hideenabledisableupdates /t REG_DWORD /d 1 /f
 ```
 
-Můžete zakázat automatické aktualizace ručně.
+### <a name="disable-automatic-updates"></a>Zakázat automatické aktualizace
 
-Chcete-li zakázat automatické aktualizace:
+Chcete-li zakázat automatické aktualizace pomocí místních zásad skupiny:
 
-1. Instalace Office 365 podle pokynů v [přípravy softwaru a instalace](set-up-customize-master-image.md#software-preparation-and-installation).
-2. Nainstalujte další aplikace podle pokynů v [nastavit kontejner profilu uživatele (FSLogix)](set-up-customize-master-image.md#set-up-user-profile-container-fslogix), [konfigurace programu Windows Defender](set-up-customize-master-image.md#configure-windows-defender), a [jinými aplikacemi a registru konfigurace](set-up-customize-master-image.md#other-applications-and-registry-configuration).
-3. Zakázání Windows automatické aktualizace služby na místním virtuálním počítači.
-4. Otevřít **Editor místních zásad skupiny\\šablony pro správu\\součásti Windows\\Windows Update**.
-5. Klikněte pravým tlačítkem na **Konfigurace automatických aktualizací** a nastavte ho na **zakázané**.
+1. Otevřít **Editor místních zásad skupiny\\šablony pro správu\\součásti Windows\\Windows Update**.
+2. Klikněte pravým tlačítkem na **Konfigurace automatických aktualizací** a nastavte ho na **zakázané**.
 
 Můžete také spustit následující příkaz na příkazovém řádku, chcete-li zakázat automatické aktualizace.
 
 ```batch
 reg add HKLM\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU /v NoAutoUpdate /t REG_DWORD /d 1 /f
 ```
+
+### <a name="specify-start-layout-for-windows-10-pcs-optional"></a>Zadejte počáteční rozložení pro počítače s Windows 10 (volitelné)
 
 Spuštěním tohoto příkazu zadejte počáteční rozložení pro počítače s Windows 10.
 

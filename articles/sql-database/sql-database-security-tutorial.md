@@ -1,6 +1,6 @@
 ---
 title: Zabezpečení databáze jedné, nebo součástí fondu ve službě Azure SQL Database | Dokumentace Microsoftu
-description: Další informace o techniky a funkce pro zabezpečení jeden, nebo součástí fondu databáze ve službě Azure SQL Database.
+description: Kurz vás naučí, o techniky a funkce pro zabezpečení jeden, nebo součástí fondu databáze ve službě Azure SQL Database.
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
@@ -10,14 +10,23 @@ ms.author: vanto
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 02/08/2019
-ms.openlocfilehash: d6f14a7cdcb77c1ca47d0f79f587e0bf3606b5d5
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.custom: seoapril2019
+ms.openlocfilehash: d09af0a4c2d09004d5c1bbf3261a14850eef7714
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57893267"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59496433"
 ---
 # <a name="tutorial-secure-a-single-or-pooled-database"></a>Kurz: Zabezpečení databáze jedné, nebo součástí fondu
+
+V tomto kurzu se naučíte:
+
+> [!div class="checklist"]
+> - Vytvoření pravidla brány firewall na úrovni serveru a databáze
+> - Konfigurace správce Azure Active Directory (AD)
+> - Správa přístupu uživatelů pomocí ověřování SQL, ověřování Azure AD a zabezpečený připojovací řetězce
+> - Povolení funkcí zabezpečení, jako je například pokročilé dat zabezpečení, auditování a maskování dat a šifrování
 
 Azure SQL Database chrání data v databázi jednoho nebo ve fondu, neboť umožňuje:
 
@@ -28,14 +37,6 @@ Azure SQL Database chrání data v databázi jednoho nebo ve fondu, neboť umož
 
 > [!NOTE]
 > Na spravované instanci Azure SQL database je zabezpečený pomocí pravidla zabezpečení sítě a privátní koncové body, jak je popsáno v [Azure SQL database managed instance](sql-database-managed-instance-index.yml) a [architektura připojení](sql-database-managed-instance-connectivity-architecture.md).
-
-Můžete zvýšit zabezpečení vaší databáze pomocí několika jednoduchých kroků. V tomto kurzu se naučíte:
-
-> [!div class="checklist"]
-> - Vytvoření pravidla brány firewall na úrovni serveru a databáze
-> - Konfigurace správce Azure Active Directory (AD)
-> - Správa přístupu uživatelů pomocí ověřování SQL, ověřování Azure AD a zabezpečený připojovací řetězce
-> - Povolení funkcí zabezpečení, jako je například pokročilé dat zabezpečení, auditování a maskování dat a šifrování
 
 Další informace najdete v tématu [Přehled zabezpečení služby Azure SQL Database](/azure/sql-database/sql-database-security-index) a [možnosti](sql-database-security-overview.md) článků.
 

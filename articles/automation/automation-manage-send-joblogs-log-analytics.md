@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 02/05/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 1897ddf328413decdc13cffaab0fb569d8d95665
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
-ms.translationtype: HT
+ms.openlocfilehash: 82baef7ce0d91713c8bef202ab0ea0925d290f3a
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58521665"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59496586"
 ---
 # <a name="forward-job-status-and-job-streams-from-automation-to-azure-monitor-logs"></a>Dál stavu úlohy a datové proudy úlohy ze služby Automation na protokoly Azure monitoru
 
@@ -32,7 +32,7 @@ Automatizace můžete odeslat runbook datové proudy úlohy stavu a úlohu do pr
 
 Chcete-li zahájit odesílání protokolů služby Automation na protokoly Azure monitoru, potřebujete:
 
-* Listopad 2016 nebo novější verze [prostředí Azure PowerShell](https://docs.microsoft.com/powershell/azureps-cmdlets-docs/) (v2.3.0).
+* Nejnovější vydaná verze [prostředí Azure PowerShell](https://docs.microsoft.com/powershell/azureps-cmdlets-docs/).
 * Pracovní prostor služby Log Analytics. Další informace najdete v tématu [začít pracovat s protokoly Azure monitoru](../log-analytics/log-analytics-get-started.md). 
 * ID prostředku účtu Azure Automation.
 
@@ -40,14 +40,14 @@ Vyhledání ID prostředku účtu Azure Automation:
 
 ```powershell-interactive
 # Find the ResourceId for the Automation Account
-Get-AzureRmResource -ResourceType "Microsoft.Automation/automationAccounts"
+Get-AzResource -ResourceType "Microsoft.Automation/automationAccounts"
 ```
 
 Najít ID prostředku pro váš pracovní prostor Log Analytics, spusťte následující příkaz Powershellu:
 
 ```powershell-interactive
 # Find the ResourceId for the Log Analytics workspace
-Get-AzureRmResource -ResourceType "Microsoft.OperationalInsights/workspaces"
+Get-AzResource -ResourceType "Microsoft.OperationalInsights/workspaces"
 ```
 
 Pokud máte více než jeden účty služby Automation nebo najít pracovní prostory, ve výstupu výše uvedených příkazů *název* budete potřebovat ke konfiguraci a zkopírujte hodnotu *ResourceId*.
@@ -63,19 +63,20 @@ Pokud je potřeba najít *název* vašeho účtu Automation na webu Azure Portal
    $workspaceId = "[resource id of the log analytics workspace]"
    $automationAccountId = "[resource id of your automation account]"
 
-   Set-AzureRmDiagnosticSetting -ResourceId $automationAccountId -WorkspaceId $workspaceId -Enabled 1
+   Set-AzDiagnosticSetting -ResourceId $automationAccountId -WorkspaceId $workspaceId -Enabled 1
    ```
 
 Po spuštění tohoto skriptu, může trvat hodinu, než začnete zobrazit záznamy v protokolech Azure Monitor nové JobLogs nebo JobStreams probíhá zápis.
 
-Pokud chcete zobrazit protokoly, spuštěním následujícího dotazu v prohledávání protokolu log analytics: `AzureDiagnostics | where ResourceProvider == "MICROSOFT.AUTOMATION"`
+Pokud chcete zobrazit protokoly, spuštěním následujícího dotazu v prohledávání protokolu log analytics:
+`AzureDiagnostics | where ResourceProvider == "MICROSOFT.AUTOMATION"`
 
 ### <a name="verify-configuration"></a>Ověření konfigurace
 
 Pokud chcete potvrdit, že svůj účet Automation posílá protokoly do pracovního prostoru Log Analytics, zkontrolujte, že Diagnostika je správně nakonfigurované na účtu Automation pomocí následující příkaz Powershellu:
 
 ```powershell-interactive
-Get-AzureRmDiagnosticSetting -ResourceId $automationAccountId
+Get-AzDiagnosticSetting -ResourceId $automationAccountId
 ```
 
 Ve výstupu zajistěte následující:
@@ -136,7 +137,8 @@ Diagnostika ve službě Azure Automation vytvoří dva typy záznamů v protokol
 
 Teď, když jste začali, odesílání vaše protokoly úloh služby Automation na protokoly Azure monitoru, Podívejme se, co můžete dělat pomocí těchto protokolů uvnitř protokoly Azure monitoru.
 
-Pokud chcete zobrazit protokoly, spusťte následující dotaz: `AzureDiagnostics | where ResourceProvider == "MICROSOFT.AUTOMATION"`
+Pokud chcete zobrazit protokoly, spusťte následující dotaz:
+`AzureDiagnostics | where ResourceProvider == "MICROSOFT.AUTOMATION"`
 
 ### <a name="send-an-email-when-a-runbook-job-fails-or-suspends"></a>Odeslání e-mailu, když úlohu runbook selže nebo pozastaví
 Mezi důležité zákazníky požádá, je pro možnost odeslání e-mailu nebo odeslání zprávy, když dojde k nějaké chybě s úlohy runbooku.   
@@ -173,7 +175,7 @@ K odebrání nastavení diagnostiky účtu Automation, spusťte následující p
 ```powershell-interactive
 $automationAccountId = "[resource id of your automation account]"
 
-Remove-AzureRmDiagnosticSetting -ResourceId $automationAccountId
+Remove-AzDiagnosticSetting -ResourceId $automationAccountId
 ```
 
 ## <a name="summary"></a>Souhrn

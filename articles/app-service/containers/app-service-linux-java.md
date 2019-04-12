@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 12/10/2018
 ms.author: routlaw
 ms.custom: seodec18
-ms.openlocfilehash: 71632b3846a5dac39d7827c874367bd9802574f8
-ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
+ms.openlocfilehash: bab6510af98b153ecb61db8fc49b5124aae04598
+ms.sourcegitcommit: 41015688dc94593fd9662a7f0ba0e72f044915d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58803511"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59500460"
 ---
 # <a name="java-developers-guide-for-app-service-on-linux"></a>Příručka pro vývojáře Java pro službu App Service v Linuxu
 
@@ -69,9 +69,13 @@ Další informace najdete v tématu [streamování protokolů pomocí Azure CLI]
 
 ### <a name="app-logging"></a>Protokolování aplikace
 
-Povolit [protokolování aplikací](/azure/app-service/troubleshoot-diagnostic-logs#enablediag) prostřednictvím webu Azure portal nebo [rozhraní příkazového řádku Azure](/cli/azure/webapp/log#az-webapp-log-config) ke konfiguraci služby App Service, zaznamená se do místní výstup standardní konzole vaší aplikace a datových proudů chyba standardní konzole systém souborů nebo úložiště objektů Blob v Azure. Instance je zakázaná 12 hodin po dokončení konfigurace protokolování do místního systému souborů služby App Service. Pokud budete potřebovat delší dobu uchování, nakonfigurujte aplikaci zapisovat výstup do kontejneru úložiště objektů Blob.
+Povolit [protokolování aplikací](/azure/app-service/troubleshoot-diagnostic-logs#enablediag) prostřednictvím webu Azure portal nebo [rozhraní příkazového řádku Azure](/cli/azure/webapp/log#az-webapp-log-config) ke konfiguraci služby App Service, zaznamená se do místní výstup standardní konzole vaší aplikace a datových proudů chyba standardní konzole systém souborů nebo úložiště objektů Blob v Azure. Instance je zakázaná 12 hodin po dokončení konfigurace protokolování do místního systému souborů služby App Service. Pokud budete potřebovat delší dobu uchování, nakonfigurujte aplikaci zapisovat výstup do kontejneru úložiště objektů Blob. Protokoly aplikací Java a Tomcat najdete v `/home/LogFiles/Application/` adresáře.
 
 Pokud vaše aplikace používá [Logback](https://logback.qos.ch/) nebo [Log4j](https://logging.apache.org/log4j) pro trasování, můžete předat dál trasování ke kontrole do služby Azure Application Insights pomocí pokyny ke konfiguraci protokolování framework v [Protokoly trasování prozkoumejte Java ve službě Application Insights](/azure/application-insights/app-insights-java-trace-logs).
+
+### <a name="troubleshooting-tools"></a>Řešení potíží s nástroji
+
+Integrované Image Java jsou založeny na [Alpine Linuxu](https://alpine-linux.readthedocs.io/en/latest/getting_started.html) operačního systému. Použití `apk` Správce balíčků pro instalaci řešení potíží nástroje nebo příkazy.
 
 ## <a name="customization-and-tuning"></a>Přizpůsobení a optimalizace
 
@@ -81,31 +85,34 @@ Azure App Service pro Linux podporuje pole vyladění a přizpůsobení prostře
 - [Nastavení vlastní domény](/azure/app-service/app-service-web-tutorial-custom-domain?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json)
 - [Povolení protokolu SSL](/azure/app-service/app-service-web-tutorial-custom-ssl?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json)
 - [Přidání sítě CDN](/azure/cdn/cdn-add-to-web-app?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json)
+- [Konfigurace webu kudu](https://github.com/projectkudu/kudu/wiki/Configurable-settings#linux-on-app-service-settings)
 
 ### <a name="set-java-runtime-options"></a>Nastavte možnosti modulu runtime Java
 
-V prostředí Tomcat i Java SE nastavit přidělené paměti nebo jiné možnosti modulu runtime JVM, nastavte JAVA_OPTS, jak je znázorněno níže jako [nastavení aplikace](/azure/app-service/web-sites-configure#app-settings). App Service Linux předá toto nastavení jako proměnnou prostředí Java runtime při spuštění.
+Pokud chcete nastavit přidělené paměti nebo jiné možnosti modulu runtime JVM do Tomcat a Java SE prostředí, vytvořte [nastavení aplikace](/azure/app-service/web-sites-configure#app-settings) s názvem `JAVA_OPTS` s možnostmi. App Service Linux předá toto nastavení jako proměnnou prostředí Java runtime při spuštění.
 
-Na webu Azure Portal v části **nastavení aplikace** pro webovou aplikaci, vytvořte nové nastavení aplikace s názvem `JAVA_OPTS` , který obsahuje další nastavení, jako například `$JAVA_OPTS -Xms512m -Xmx1204m`.
+Na webu Azure Portal v části **nastavení aplikace** pro webovou aplikaci, vytvořte nové nastavení aplikace s názvem `JAVA_OPTS` , který obsahuje další nastavení, jako například `-Xms512m -Xmx1204m`.
 
-Pokud chcete nakonfigurovat nastavení aplikace, které z modulu plug-in Azure App Service Linux Maven, add v sekci modul plug-in Azure nastavení/hodnota značek. Následující příklad nastaví konkrétní minimální a maximální heapsize Java:
+Pokud chcete nakonfigurovat nastavení aplikace, které z modulu plug-in Maven, add v sekci modul plug-in Azure nastavení/hodnota značek. Následující příklad nastaví konkrétní minimální a maximální heapsize Java:
 
 ```xml
 <appSettings>
     <property>
         <name>JAVA_OPTS</name>
-        <value>$JAVA_OPTS -Xms512m -Xmx1204m</value>
+        <value>-Xms512m -Xmx1204m</value>
     </property>
 </appSettings>
 ```
 
 S jednou aplikací jeden nasazovací slot v jejich plán služby App Service mohou vývojáři tyto možnosti:
 
-- Instance B1 a S1:-Xms1024m-Xmx1024m
-- Instance B2 a S2:-Xms3072m-Xmx3072m
-- Instance B3 a S3:-Xms6144m-Xmx6144m
+- Instance B1 a S1: `-Xms1024m -Xmx1024m`
+- Instance B2 a S2: `-Xms3072m -Xmx3072m`
+- Instance B3 a S3: `-Xms6144m -Xmx6144m`
 
 Při nastavení haldy ladění aplikace, projděte si podrobnosti vašeho plánu služby App Service a vezměte v úvahu více aplikací a slot nasazení je potřeba najít optimální přidělení paměti.
+
+Pokud nasazujete aplikaci JAR, by měly být pojmenovány `app.jar` tak, aby integrované image můžete správně identifikují vaši aplikaci. (Modul plug-in Maven nemá tomto přejmenování automaticky.) Pokud nechcete, aby přejmenovat váš soubor JAR pro `app.jar`, můžete nahrát skript prostředí pomocí příkazu Spustit váš soubor JAR. Vložte úplnou cestu pro tento skript [spouštěcí soubor](https://docs.microsoft.com/en-us/azure/app-service/containers/app-service-linux-faq#startup-file) textového pole v části konfigurace na portálu.
 
 ### <a name="turn-on-web-sockets"></a>Zapnout webové sokety
 
@@ -126,7 +133,7 @@ az webapp start -n ${WEBAPP_NAME} -g ${WEBAPP_RESOURCEGROUP_NAME}
 
 ### <a name="set-default-character-encoding"></a>Nastavit výchozí kódování znaků
 
-Na webu Azure Portal v části **nastavení aplikace** pro webovou aplikaci, vytvořte nové nastavení aplikace s názvem `JAVA_OPTS` s hodnotou `$JAVA_OPTS -Dfile.encoding=UTF-8`.
+Na webu Azure Portal v části **nastavení aplikace** pro webovou aplikaci, vytvořte nové nastavení aplikace s názvem `JAVA_OPTS` s hodnotou `-Dfile.encoding=UTF-8`.
 
 Alternativně můžete nakonfigurovat nastavení aplikace pomocí modulu plug-in App Service Maven. Přidáte nastavení názvu a hodnoty značek v konfiguraci modulu plug-in:
 
@@ -134,10 +141,14 @@ Alternativně můžete nakonfigurovat nastavení aplikace pomocí modulu plug-in
 <appSettings>
     <property>
         <name>JAVA_OPTS</name>
-        <value>$JAVA_OPTS -Dfile.encoding=UTF-8</value>
+        <value>-Dfile.encoding=UTF-8</value>
     </property>
 </appSettings>
 ```
+
+### <a name="adjust-startup-timeout"></a>Nastavení časového limitu pro spuštění
+
+Pokud vaše aplikace v Javě je zejména velkých, měli byste zvýšit časový limit spuštění. Vytvořit nastavení aplikace, `WEBSITES_CONTAINER_START_TIME_LIMIT` a nastavte ho na počet sekund, po které služby App Service má čekat před vypršením časového limitu. Maximální hodnota je `1800` sekund.
 
 ## <a name="secure-applications"></a>Zabezpečené aplikace
 
@@ -171,9 +182,9 @@ Tyto pokyny platí pro všechna připojení k databázi. Je potřeba vyplnit zá
 
 | Databáze   | Název třídy ovladače                             | Ovladač JDBC                                                                      |
 |------------|-----------------------------------------------|------------------------------------------------------------------------------------------|
-| PostgreSQL | `org.postgresql.Driver`                        | [Stáhnout](https://jdbc.postgresql.org/download.html)                                    |
+| PostgreSQL | `org.postgresql.Driver`                        | [Ke stažení](https://jdbc.postgresql.org/download.html)                                    |
 | MySQL      | `com.mysql.jdbc.Driver`                        | [Stáhněte si](https://dev.mysql.com/downloads/connector/j/) (vyberte "Nezávislé na platformě") |
-| SQL Server | `com.microsoft.sqlserver.jdbc.SQLServerDriver` | [Stáhnout](https://docs.microsoft.com/sql/connect/jdbc/download-microsoft-jdbc-driver-for-sql-server?view=sql-server-2017#available-downloads-of-jdbc-driver-for-sql-server)                                                           |
+| SQL Server | `com.microsoft.sqlserver.jdbc.SQLServerDriver` | [Ke stažení](https://docs.microsoft.com/sql/connect/jdbc/download-microsoft-jdbc-driver-for-sql-server?view=sql-server-2017#available-downloads-of-jdbc-driver-for-sql-server)                                                           |
 
 Pokud chcete nakonfigurovat Tomcat používat připojení k databázi Java (JDBC) nebo rozhraní API trvalost Java (JPA), nejprve přizpůsobit `CATALINA_OPTS` proměnné prostředí, který je určen pro čtení pomocí Tomcat na začátku si. Nastavte tyto hodnoty pomocí nastavení aplikace v [modulu plug-in App Service Maven](https://github.com/Microsoft/azure-maven-plugins/blob/develop/azure-webapp-maven-plugin/README.md):
 

@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 04/04/2019
 ms.author: raynew
-ms.openlocfilehash: ae84313cd750e3d6c7eb9443ec59095dec9c632e
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: 1b03cf648ad65960cce4ffc874cf32ad91ef7dc1
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59265245"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59490633"
 ---
 # <a name="discover-and-assess-a-large-vmware-environment"></a>Zkoumání a vyhodnocení rozsáhlých prostředí VMware
 
@@ -39,20 +39,11 @@ Azure Migrate k automatickému zjišťování virtuálních počítačů pro ú�
 - Podrobnosti: Uživatel přiřazený na úrovni datacentra s přístupem ke všem objektům v datacentru.
 - Pokud chcete omezit přístup, přiřaďte podřízeným objektům (hostitelé vSphere, úložiště dat, virtuální počítače a sítě) roli Žádný přístup s objektem Rozšířit na podřízený objekt.
 
-Pokud nasazujete v prostředí s tenanty, tady je jeden způsob, jak nastavit tuto možnost:
+Pokud provádíte nasazení v prostředí s více tenanty a chcete do oboru ve složce virtuálních počítačů pro jednoho tenanta, nemůžete vybrat přímo složce virtuálního počítače při změně oboru kolekce ve službě Azure Migrate. Pokyny k zjišťování oboru ve složce virtuálních počítačů jsou následující:
 
-1. Vytvořit uživatele na klienta a pomocí [RBAC](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal), přiřaďte oprávnění jen pro čtení pro všechny virtuální počítače, které patří do konkrétního tenanta. Potom použijte své přihlašovací údaje pro zjišťování. RBAC se zajistí, že odpovídající vCenter uživatel bude mít přístup k virtuálním počítačům pouze specifickým pro tenanta.
-2. Můžete nastavit RBAC pro uživatele jiného tenanta, jak je popsáno v následujícím příkladu pro uživatele č. 1 a 2 uživatele:
-
-    - V **uživatelské jméno** a **heslo**, určete pověření účtu jen pro čtení, který kolektor použije ke zjištění virtuálních počítačů v
-    - Datacenter1 – udělení oprávnění jen pro čtení na 1 uživatele a uživatele č. 2. Těmito oprávněními, aby všechny podřízené objekty, není rozšířit, protože budete nastavit oprávnění pro jednotlivé virtuální počítače.
-
-      - VM1 (Tenanta č. 1) (oprávnění jen pro čtení pro uživatele č. 1)
-      - VM2 (Tenanta č. 1) (oprávnění jen pro čtení pro uživatele č. 1)
-      - VM3 (Tenanta č. 2) (oprávnění jen pro čtení pro uživatele č. 2)
-      - VM4 (Tenanta č. 2) (oprávnění jen pro čtení pro uživatele č. 2)
-
-   - Pokud provádíte zjišťování pomocí přihlašovacích údajů uživatele č. 1, budou zjištěny pouze VM1 a VM2.
+1. Vytvořte uživatele na klienta a přiřaďte oprávnění jen pro čtení pro všechny virtuální počítače, které patří do konkrétního tenanta. 
+2. Udělte přístup jen pro čtení uživatelů do všech nadřazených objektů, kde jsou hostované virtuální počítače. Všechny nadřazené objekty - hostitel, složky hostitelů, cluster, složka clusterů – v hierarchii až po datové centrum se mají být zahrnuty. Nemusíte šíření oprávnění pro všechny podřízené objekty.
+3. Použijte pověření pro zjišťování výběr datového centra jako *rozsah kolekce*. RBAC nastavení zajistí, že odpovídající vCenter uživatel bude mít přístup k virtuálním počítačům pouze specifickým pro tenanta.
 
 ## <a name="plan-your-migration-projects-and-discoveries"></a>Plánování migrace projektů a zjišťování
 
@@ -97,7 +88,7 @@ Pokud máte více servery vCenter s méně než 1 500 virtuálních počítačů
 
 ### <a name="more-than-1500-machines-in-a-single-vcenter-server"></a>Více než 1 500 počítačů v jedné systému vCenter Server
 
-Pokud máte víc než 1500 virtuálních počítačů v jedné systému vCenter Server, budete muset zjišťování rozdělit do několika projekty migrace. Pokud chcete rozdělit zjišťování, můžete využít pole oboru v zařízení a zadejte hostitele, cluster, složka nebo datovém centru, které jste chtěli vyhledat. Například, pokud máte dvě složky v systému vCenter Server, jeden s 1000 virtuálních počítačů (složku1) a druhý s 800 virtuálních počítačů (slozka2), rozsah pole můžete použít k rozdělení zjišťování mezi tyto složky.
+Pokud máte víc než 1500 virtuálních počítačů v jedné systému vCenter Server, budete muset zjišťování rozdělit do několika projekty migrace. Pokud chcete rozdělit zjišťování, můžete využít pole oboru v zařízení a zadejte hostitele, cluster, složka hostitelů, clustery nebo datového centra, který jste chtěli vyhledat složku. Například, pokud máte dvě složky v systému vCenter Server, jeden s 1000 virtuálních počítačů (složku1) a druhý s 800 virtuálních počítačů (slozka2), rozsah pole můžete použít k rozdělení zjišťování mezi tyto složky.
 
 **Průběžná zjišťování:** V takovém případě musíte vytvořit dvě kolekce zařízení, což se pro první kolekce, zadejte rozsah jako složku1 a připojte ho k první projekt migrace. Můžete paralelně spustit zjišťování slozka2 použití druhého zařízení kolektoru a jejím připojení k druhé projekt migrace.
 

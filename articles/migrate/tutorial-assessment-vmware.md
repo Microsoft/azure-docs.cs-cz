@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 01/31/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: cdd852e56cf966371cda62f89cee62956551f5c0
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: 9eab8a29db40118f2a15064c52419ecebcd4aecb
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58313103"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59490313"
 ---
 # <a name="discover-and-assess-on-premises-vmware-vms-for-migration-to-azure"></a>Zjištění místních virtuálních počítačů VMware a posouzení vhodnosti jejich migrace do Azure
 
@@ -56,7 +56,7 @@ Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 4. Vytvořte novou skupinu prostředků.
 5. Zadejte umístění, ve kterém chcete projekt vytvořit, a pak klikněte na **Vytvořit**. Projekt Azure Migrate můžete vytvořit pouze v následujících zeměpisných oblastech. Přesto ale můžete naplánovat migraci do libovolného cílového umístění Azure. Zeměpisné umístění vybrané pro tento projekt slouží jen k uložení metadat získaných z místních virtuálních počítačů.
 
-**Zeměpisné oblasti** | **Umístění úložiště**
+**Geografie** | **Umístění úložiště**
 --- | ---
 Azure Government | USA (Gov) – Virginia
 Asie | Jihovýchodní Asie
@@ -105,7 +105,7 @@ Než nasadíte soubor .OVA, zkontrolujte, jestli je bezpečný.
 
   Pro soubory OVA verze 1.0.10.11
 
-  **Algoritmus** | **Hodnota hash**
+  **algoritmus** | **Hodnota hash**
     --- | ---
     MD5 | 5f6b199d8272428ccfa23543b0b5f600
     SHA1 | daa530de6e8674a66a728885a7feb3b0a2e8ccb0
@@ -113,7 +113,7 @@ Než nasadíte soubor .OVA, zkontrolujte, jestli je bezpečný.
 
   Pro soubory OVA verze 1.0.10.9
 
-  **Algoritmus** | **Hodnota hash**
+  **algoritmus** | **Hodnota hash**
   --- | ---
   MD5 | 169f6449cc1955f1514059a4c30d138b
   SHA1 | f8d0a1d40c46bbbf78cd0caa594d979f1b587c8f
@@ -121,7 +121,7 @@ Než nasadíte soubor .OVA, zkontrolujte, jestli je bezpečný.
 
   Pro soubory OVA verze 1.0.10.4
 
-  **Algoritmus** | **Hodnota hash**
+  **algoritmus** | **Hodnota hash**
   --- | ---
   MD5 | 2ca5b1b93ee0675ca794dd3fd216e13d
   SHA1 | 8c46a52b18d36e91daeae62f412f5cb2a8198ee5
@@ -134,7 +134,7 @@ Tento model je nyní zastaralá, podpora bude poskytována stávajících zaří
 
   Pro soubory OVA verze 1.0.9.15
 
-  **Algoritmus** | **Hodnota hash**
+  **algoritmus** | **Hodnota hash**
   --- | ---
   MD5 | e9ef16b0c837638c506b5fc0ef75ebfa
   SHA1 | 37b4b1e92b3c6ac2782ff5258450df6686c89864
@@ -142,7 +142,7 @@ Tento model je nyní zastaralá, podpora bude poskytována stávajících zaří
 
   Pro soubory OVA verze 1.0.9.14
 
-  **Algoritmus** | **Hodnota hash**
+  **algoritmus** | **Hodnota hash**
   --- | ---
   MD5 | 6d8446c0eeba3de3ecc9bc3713f9c8bd
   SHA1 | e9f5bdfdd1a746c11910ed917511b5d91b9f939f
@@ -150,7 +150,7 @@ Tento model je nyní zastaralá, podpora bude poskytována stávajících zaří
 
   Pro soubory OVA verze 1.0.9.12
 
-  **Algoritmus** | **Hodnota hash**
+  **algoritmus** | **Hodnota hash**
   --- | ---
   MD5 | d0363e5d1b377a8eb08843cf034ac28a
   SHA1 | df4a0ada64bfa59c37acf521d15dcabe7f3f716b
@@ -194,6 +194,9 @@ Importujte stažený soubor do vCenter Serveru.
     - Zadejte název (plně kvalifikovaný název domény) nebo IP adresu vCenter Serveru.
     - V části **Uživatelské jméno** a **Heslo** zadejte přihlašovací údaje k účtu pouze pro čtení, který kolektor použije ke zjištění virtuálních počítačů na vCenter Serveru.
     - V části **Rozsah kolekce** vyberte kolekci pro zjišťování virtuálních počítačů. Kolektor může vyhledat jen virtuální počítače v rámci zadaného rozsahu. Jako rozsah můžete vybrat konkrétní složku, datové centrum nebo cluster. Neměl by obsahovat víc než 1500 virtuálních počítačů. Přečtěte si [další informace](how-to-scale-assessment.md) o zjišťování větších prostředí.
+
+       > [!NOTE]
+       > **Rozsah kolekce** uvádí pouze složky hostitelů a clusterů. Složky virtuálních počítačů nelze přímo vybrat rozsah kolekce. Však můžete zjistit pomocí vCenter účtu, který má přístup k jednotlivým virtuálním počítačům. [Další informace](https://docs.microsoft.com/azure/migrate/how-to-scale-assessment#set-up-permissions) o tom, jak nastavit obor na složku virtuálních počítačů.
 
 7. V části **Zadejte projekt migrace** zadejte ID projektu služby Azure Migrate a klíč, který jste zkopírovali z portálu. Pokud jste ho nezkopírovali, na virtuálním počítači kolektoru otevřete Azure Portal. Na stránce **Přehled** projektu klikněte na **Zjistit počítače** a zkopírujte příslušné hodnoty.  
 8. V části **Zobrazit průběh shromažďování** sledujete stav zjišťování. Přečtěte si [další informace](https://docs.microsoft.com/azure/migrate/concepts-collector) o datech, která shromažďuje kolektor Azure Migrate.

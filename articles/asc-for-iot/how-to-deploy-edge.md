@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/1/2019
 ms.author: mlottner
-ms.openlocfilehash: 40f771e97b61c28229b0eff29191247ef2fef695
-ms.sourcegitcommit: d83fa82d6fec451c0cb957a76cfba8d072b72f4f
+ms.openlocfilehash: d72980d6e27600cb844d5477d3b9a61d9e1573e4
+ms.sourcegitcommit: f24b62e352e0512dfa2897362021b42e0cb9549d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/02/2019
-ms.locfileid: "58862841"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59505613"
 ---
 # <a name="deploy-a-security-module-on-your-iot-edge-device"></a>Nasazení modulu zabezpečení na vašem zařízení IoT Edge
 
@@ -75,8 +75,25 @@ Existují tři kroky pro vytvoření nasazení IoT Edge pro Azure Security Cente
 1. Z **přidat moduly** kartě **moduly nasazení** oblast, klikněte na tlačítko **AzureSecurityCenterforIoT**. 
    
 1. Změnit **název** k **azureiotsecurity**.
-1. Změňte název **identifikátor URI Image** k **mcr.microsoft.com/ascforiot/azureiotsecurity:0.0.1**
-      
+1. Změnit **identifikátor URI Image** k **mcr.microsoft.com/ascforiot/azureiotsecurity:0.0.3**.
+1. Ověřte, **možnosti vytvoření kontejneru** je hodnota nastavena na:      
+    ``` json
+    {
+        "NetworkingConfig": {
+            "EndpointsConfig": {
+                "host": {}
+            }
+        },
+        "HostConfig": {
+            "Privileged": true,
+            "NetworkMode": "host",
+            "PidMode": "host",
+            "Binds": [
+                "/:/host"
+            ]
+        }
+    }    
+    ```
 1. Ověřte, že **požadované vlastnosti dvojčete modulu sady** je vybraná a změnit objekt konfigurace pro:
       
     ``` json
@@ -89,12 +106,16 @@ Existují tři kroky pro vytvoření nasazení IoT Edge pro Azure Security Cente
 1. Klikněte na **Uložit**.
 1. Přejděte do dolní části karty a vyberte **konfigurovat rozšířená nastavení modulu Runtime Edge**.
    
-  >[!Note]
-  > Proveďte **není** zakázat AMQP komunikaci pro Centrum IoT Edge.
-  > Azure Security Center pro modul IoT vyžaduje AMQP komunikaci s centrem IoT Edge.
+   >[!Note]
+   > Proveďte **není** zakázat AMQP komunikaci pro Centrum IoT Edge.
+   > Azure Security Center pro modul IoT vyžaduje AMQP komunikaci s centrem IoT Edge.
    
-1. Změnit **Image** pod **hraniční centra** k **mcr.microsoft.com/ascforiot/edgehub:1.05-preview**.
-      
+1. Změnit **Image** pod **hraniční centra** k **mcr.microsoft.com/ascforiot/edgehub:1.0.9-preview**.
+
+   >[!Note]
+   > Azure Security Center pro modul IoT vyžaduje rozvětveného verzi Centrum IoT Edge, založené na sadě SDK verze 1,20.
+   > Změnou bitové kopie Centrum IoT Edge jsou instruující zařízení IoT Edge na nejnovější stabilní verze nahradit rozvětveného verzi Centrum IoT Edge, který není oficiálně podporován službou IoT Edge.
+
 1. Ověřte **možnosti vytvoření** je nastavena na: 
          
     ``` json
@@ -137,8 +158,8 @@ Pokud narazíte na problém, protokoly kontejneru jsou nejlepší způsob, jak z
    
    | Název | BITOVÉ KOPIE |
    | --- | --- |
-   | azureIoTSecurity | mcr.microsoft.com/ascforiot/azureiotsecurity:0.0.1 |
-   | edgeHub | asotcontainerregistry.azurecr.io/edgehub:1.04-preview |
+   | azureIoTSecurity | mcr.microsoft.com/ascforiot/azureiotsecurity:0.0.3 |
+   | edgeHub | mcr.microsoft.com/ascforiot/edgehub:1.0.9-preview |
    | edgeAgent | mcr.microsoft.com/azureiotedge-agent:1.0 |
    
    Pokud minimální požadovaná kontejnery nejsou k dispozici, zkontrolujte, pokud manifestu nasazení IoT Edge je v souladu s doporučeným nastavením. Další informace najdete v tématu [nasazení IoT Edge module](#deployment-using-azure-portal).

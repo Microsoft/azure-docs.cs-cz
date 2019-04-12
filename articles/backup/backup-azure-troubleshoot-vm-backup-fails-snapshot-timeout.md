@@ -9,12 +9,12 @@ ms.service: backup
 ms.topic: troubleshooting
 ms.date: 12/03/2018
 ms.author: genli
-ms.openlocfilehash: 4d090740b75acbe2629ae4f1e13cde8947f190bb
-ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
+ms.openlocfilehash: ae89ab811015fca9bcb50fcc149534754533c25f
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58286427"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59491510"
 ---
 # <a name="troubleshoot-azure-backup-failure-issues-with-the-agent-or-extension"></a>Řešení potíží s Azure Backup selhání: Potíže s agentů nebo rozšíření
 
@@ -51,7 +51,7 @@ Po registraci a naplánovat virtuálního počítače pro služby Azure Backup z
 **Kód chyby:**: UserErrorRpCollectionLimitReached <br>
 **Chybová zpráva**: Bylo dosaženo maximálního limitu kolekcí bodů obnovení. <br>
 * Tento problém může dojít, pokud zámek ve skupině prostředků. bod obnovení brání automatickému čištění bod obnovení.
-* Tento problém může také dojít, pokud se aktivují více záloh za den. Aktuálně doporučujeme pouze jedna záloha za den jako rychlé RPs se uchovávají po dobu 7 dní a pouze 18 rychlé RPs můžou být spojené s virtuálním počítači v daném okamžiku. <br>
+* Tento problém může také dojít, pokud se aktivují více záloh za den. Aktuálně doporučujeme pouze jedna záloha za den pro 1-5 dní podle uchovávání dat nakonfigurovaných snímku se uchovají body okamžitá obnova a pouze 18 rychlé RPs můžou být spojené s virtuálním počítači v daném okamžiku. <br>
 
 Doporučená akce:<br>
 Pokud chcete tento problém vyřešit, odeberte zámek na skupinu prostředků virtuálního počítače a zkuste operaci zopakovat a aktivovat čištění.

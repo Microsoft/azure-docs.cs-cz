@@ -10,15 +10,15 @@ author: MladjoA
 ms.author: mlandzic
 ms.reviewer: ''
 manager: craigg
-ms.date: 04/09/2019
-ms.openlocfilehash: c9be129624c87ca0bff1e85a5d1c71425ef06b89
-ms.sourcegitcommit: 6e32f493eb32f93f71d425497752e84763070fad
+ms.date: 04/10/2019
+ms.openlocfilehash: 23314e97051da95ab164baeab6e9d089f486351a
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/10/2019
-ms.locfileid: "59471864"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59489686"
 ---
-# <a name="time-zone-in-azure-sql-database-managed-instance"></a>Časové pásmo ve spravované instanci Azure SQL Database
+# <a name="time-zone-in-azure-sql-database-managed-instance-preview"></a>Časové pásmo ve spravované instanci Azure SQL Database (Preview)
 
 Při použití koordinovaný univerzální čas (UTC) je doporučený postup pro datovou vrstvu Cloudová řešení, Azure SQL Database Managed Instance nabízí široký výběr časové pásmo pro potřeby existující aplikace, které ukládají hodnoty datum a čas a datum hovoru a časové funkce s implicitní kontextu konkrétní časové pásmo.
 
@@ -72,7 +72,7 @@ Pokud není zadán, nastaví se časové pásmo na čas UTC.
 
 ## <a name="checking-the-time-zone-of-instance"></a>Kontrola časové pásmo instance
 
-[CURRENT_TIMEZONE](https://docs.microsoft.com/sql/t-sql/functions/current-timestamp-transact-sql) funkce vrátí zobrazovaný název časového pásma instance.
+[CURRENT_TIMEZONE](https://docs.microsoft.com/sql/t-sql/functions/current-timezone-transact-sql) funkce vrátí zobrazovaný název časového pásma instance.
 
 ## <a name="cross-feature-considerations"></a>Důležité informace o různé – funkce
 

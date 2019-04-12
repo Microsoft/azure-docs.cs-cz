@@ -9,12 +9,12 @@ ms.topic: article
 ms.workload: storage-backup-recovery
 ms.date: 03/04/2019
 ms.author: mayg
-ms.openlocfilehash: 75c97a7feb63a100d322610b7e6d2e5c57bebda2
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 2156ee6cf27ecfa32b19ad5bbef7549e99c3f7ef
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57889688"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59492851"
 ---
 # <a name="troubleshoot-errors-when-failing-over-vmware-vm-or-physical-machine-to-azure"></a>Řešení chyb při selhání virtuálního počítače VMware nebo fyzických počítačů do Azure
 
@@ -132,8 +132,10 @@ Registrace konfiguračního serveru do Azure Site Recovery Master Target nezdař
  
 Tato chyba je indikován následující řetězce v protokolu instalace: 
 
-RegisterHostStaticInfo došlo k výjimce config/talwrapper.cpp(107) [příspěvek] CurlWrapper příspěvek se nezdařilo: server: 10.38.229.221, port: 443, phpUrl: request_handler.php, zabezpečené: true, ignoreCurlPartialError: hodnotu false s chybou: [na curlwrapperlib/curlwrapper.cpp:processCurlResponse:231] se nepodařilo publikovat požadavek: (35) – Chyba připojení SSL. 
- 
+```
+RegisterHostStaticInfo encountered exception config/talwrapper.cpp(107)[post] CurlWrapper Post failed : server : 10.38.229.221, port : 443, phpUrl : request_handler.php, secure : true, ignoreCurlPartialError : false with error: [at curlwrapperlib/curlwrapper.cpp:processCurlResponse:231]   failed to post request: (35) - SSL connect error. 
+```
+
 Řešení tohoto problému:
  
 1. Na konfiguračním serveru virtuálního počítače otevřete příkazový řádek a ověřte nastavení proxy serveru pomocí následujících příkazů:

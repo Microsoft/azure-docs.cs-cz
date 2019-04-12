@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 02/05/2019
 ms.author: sedusch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 839f77df88314c95df1056b60c3612de27421ca0
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.openlocfilehash: a9e12171a8596bc9caba3bf9065bbb943139ccde
+ms.sourcegitcommit: 41015688dc94593fd9662a7f0ba0e72f044915d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58886127"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59501327"
 ---
 # <a name="azure-virtual-machines-planning-and-implementation-for-sap-netweaver"></a>Azure Virtual Machines, plánování a implementace SAP NetWeaver
 
@@ -779,8 +779,6 @@ Na webu Azure portal je jednou tři rozhraní pro správu nasazení virtuálníh
 
 ![Portál Microsoft Azure – Přehled virtuálních počítačů][planning-guide-figure-800]
 
-[comment]: <> (MSSedusch * <https://azure.microsoft.com/documentation/articles/virtual-networks-create-vnet-arm-pportal/>)
-[comment]: <> (MSSedusch * <https://azure.microsoft.com/documentation/articles/virtual-machines-windows-tutorial/>)
 
 Správu a konfiguraci úlohy pro instanci virtuálního počítače je možné z webu Azure portal.
 
@@ -791,9 +789,6 @@ Na webu Azure portal poskytuje základní funkce pro nasazení a konfigurace vir
 * Ukládání virtuálních pevných disků do Azure
 * Kopírování virtuálních počítačů
 
-[comment]: <> (MShermannd TODO, co o automatizaci služby pro virtuální počítače SAP? )
-[comment]: <> (MSSedusch nasazení více virtuálních počítačů os mezitím možná)
-[comment]: <> (Jakýkoli typ automatizace týkající se nasazení MSSedusch také není možné pomocí webu Azure portal. Úlohy, jako je nasazení více virtuálních počítačů není možné prostřednictvím webu Azure portal.)
 
 ### <a name="management-via-microsoft-azure-powershell-cmdlets"></a>Správa prostřednictvím rutin Powershellu pro Microsoft Azure
 
@@ -808,9 +803,8 @@ Zkušenosti zatím bylo, prostředí PowerShell (PS) je určitě výkonnější 
 Podívejte se na příklad tady:
 <https://blogs.technet.com/b/keithmayer/archive/2015/07/07/18-steps-for-end-to-end-iaas-provisioning-in-the-cloud-with-azure-resource-manager-arm-powershell-and-desired-state-configuration-dsc.aspx>
 
-[comment]: <> (MShermannd TODO popisují při testování nového příkazu rozhraní příkazového řádku )
-Nasazení rozšíření Azure Monitoring for SAP (viz kapitola [řešení pro monitorování Azure pro SAP] [ planning-guide-9.1] v tomto dokumentu) je možné pouze prostřednictvím Powershellu nebo rozhraní příkazového řádku. Proto je nutné vytvořit a nakonfigurovat prostředí PowerShell nebo rozhraní příkazového řádku pro nasazování nebo správu systém SAP NetWeaver v Azure.
-  
+
+Nasazení rozšíření Azure Monitoring for SAP (viz kapitola [řešení pro monitorování Azure pro SAP] [ planning-guide-9.1] v tomto dokumentu) je možné pouze prostřednictvím Powershellu nebo rozhraní příkazového řádku. Proto je nutné vytvořit a nakonfigurovat prostředí PowerShell nebo rozhraní příkazového řádku pro nasazování nebo správu systém SAP NetWeaver v Azure.  
 
 Jak Azure poskytuje další funkce, nové rutiny PS se chystáte přidat, který vyžaduje aktualizace rutin. Proto je vhodné kontrolovat web Azure, stáhněte si alespoň jednou měsíc <https://azure.microsoft.com/downloads/> pro novou verzi rutin. Nová verze se nainstaluje na starší verzi.
 
@@ -1587,7 +1581,7 @@ az vm disk attach --resource-group $rgName --vm-name SAPERPDemo --size-gb 1023 -
 
 ##### <a name="template"></a>Šablona
 
-Ukázkové šablony můžete použít v úložišti šablon azure quickstart na githubu.
+Ukázkové šablony můžete použít v úložišti šablon azure quickstart na Githubu.
 
 * [Jednoduchý virtuální počítač s Linuxem](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-simple-linux)
 * [Jednoduché Windows virtuální počítač](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-simple-windows)
@@ -1632,13 +1626,13 @@ Mezi různými místy a hybridní scénář mohou být zhruba popsány jako v gr
 
 ![Připojení Site-to-Site mezi místními a prostředky Azure][planning-guide-figure-2100]
 
-Scénáře uvedené výše popisuje scénář kde místní AD/OpenLDAP a DNS se rozšíří do Azure. Na straně místní je vyhrazený určitý rozsah IP adres na jedno předplatné Azure. Rozsah IP adres se přiřadí ke službě Azure Virtual Network na straně Azure.
-
-#### <a name="security-considerations"></a>Aspekty zabezpečení
+Scénáře uvedené výše popisuje scénář kde místní
 
 Požadavek na minimální je použití zabezpečený komunikační protokoly, například SSL/TLS pro přístup z prohlížeče nebo připojení VPN pro systém přístup ke službám Azure. Předpokladem je, že společnosti zpracovat připojení VPN mezi jejich podnikovou sítí a Azure odlišně. Některé společnosti můžou otevřít blankly všechny porty. Některé společnosti může být vhodné abychom byli přesní v porty, které potřebují k otevření atd.
 
 V typické SAP v následující tabulce jsou uvedeny portů pro komunikaci. V podstatě stačí otevřít port brány SAP.
+
+<!-- sapms is prefix of a SAP service name and not a spelling error -->
 
 | Služba | Název portu | Příklad `<nn`> = 01 | Výchozí rozsah (maximálních) | Poznámka |
 | --- | --- | --- | --- | --- |
@@ -1834,7 +1828,7 @@ Instalační program portálu SAP ve virtuálním počítači Azure se neliší 
 
 Scénář speciální nasazení některé zákazníky je přímé expozice SAP Enterprise Portal k Internetu na hostitele virtuálního počítače připojeny k podnikové síti pomocí tunelového připojení sítě VPN site-to-site nebo ExpressRoute. Pro scénář budete muset ověřit, že určité porty jsou otevřené a není blokován bránou firewall nebo skupiny zabezpečení. 
 
-Portálu počáteční identifikátor URI je http (s):`<Portalserver`>: 5XX00/irj kde port, který je tvořen přidáním 50000 plus (Systemnumber?? 100). Je výchozí portálu URI SAP systém 00 `<dns name`>.`<azure region` >.Cloudapp.azure.com:PublicPort/irj. Další podrobnosti, podíváme se na <https://help.sap.com/saphelp_nw70ehp1/helpdata/de/a2/f9d7fed2adc340ab462ae159d19509/frameset.htm>.
+Portálu počáteční identifikátor URI je http (s):`<Portalserver`>: kde port, který je vytvořen, jak je uvedeno v SAP 5XX00/irj <https://help.sap.com/saphelp_nw70ehp1/helpdata/de/a2/f9d7fed2adc340ab462ae159d19509/frameset.htm>.
 
 ![Konfigurace koncového bodu][planning-guide-figure-2800]
 

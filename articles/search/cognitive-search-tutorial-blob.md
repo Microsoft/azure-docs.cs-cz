@@ -1,6 +1,6 @@
 ---
-title: 'Kurz: Volání rozhraní API služeb Cognitive Services v kanál indexování – Azure Search'
-description: Projděte skrze příkladem extrakce, přirozeného jazyka a image AI zpracování ve službě Azure Search indexování pro extrakci dat a transformace přes objektů BLOB JSON.
+title: 'Kurz: Volání REST API služeb Cognitive Services v kanál indexování – Azure Search'
+description: Projděte skrze příkladem extrakce, přirozeného jazyka a image AI zpracování v Azure Search indexování pro extrakci dat a transformace přes objektů BLOB JSON pomocí nástroje Postman a rozhraní REST API.
 manager: pablocas
 author: luiscabrer
 services: search
@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.date: 04/08/2019
 ms.author: luisca
 ms.custom: seodec2018
-ms.openlocfilehash: 5fbcef1d8bc19df251a4d33cafa2fa7b5a7d9431
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: 088dcd366d526d08f236fb48340c6bbe18fe267c
+ms.sourcegitcommit: 41015688dc94593fd9662a7f0ba0e72f044915d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59261917"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59501208"
 ---
 # <a name="tutorial-call-cognitive-services-apis-in-an-azure-search-indexing-pipeline-preview"></a>Kurz: Volání rozhraní API služeb Cognitive Services v Azure Search indexování kanálu (Preview)
 
@@ -43,31 +43,37 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 ## <a name="prerequisites"></a>Požadavky
 
+Následující služby, nástroje a data se používají v tomto kurzu. 
+
 [Vytvoření služby Azure Search](search-create-service-portal.md) nebo [najít existující službu](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) pod vaším aktuálním předplatným. Můžete použít bezplatnou službu pro účely tohoto kurzu.
+
+[Vytvoření účtu služby Azure storage](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account) pro ukládání ukázková data.
 
 [Desktopová aplikace postman](https://www.getpostman.com/) používá se pro uskutečňování volání REST pro Azure Search.
 
-### <a name="get-an-azure-search-api-key-and-endpoint"></a>Získání Azure Search api-key a koncového bodu
+[Ukázková data](https://1drv.ms/f/s!As7Oy81M_gVPa-LCb5lC_3hbS-4) sestává ze sady malý soubor různých typů. 
+
+## <a name="get-a-key-and-url"></a>Získejte klíč a adresy URL
 
 Volání REST vyžadují pro každý požadavek adresu URL služby a přístupový klíč. Vyhledávací služba se vytvoří s oběma, takže pokud jste do svého předplatného přidali službu Azure Search, získejte potřebné informace pomocí následujícího postupu:
 
-1. Na webu Azure Portal, ve vyhledávací službě **přehled** stránce, získat adresu URL. Příkladem koncového bodu může být `https://my-service-name.search.windows.net`.
+1. [Přihlaste se k webu Azure portal](https://portal.azure.com/)a ve vyhledávací službě **přehled** stránce, získat adresu URL. Příkladem koncového bodu může být `https://mydemo.search.windows.net`.
 
-2. V **nastavení** > **klíče**, získat klíč pro úplná práva správce na službu. Existují dva klíče zaměnitelné správce, v případě, že budete potřebovat k výměně jeden k dispozici zajišťuje nepřetržitý chod podniků. U požadavků můžete použít buď primární nebo sekundární klíč pro přidání, úpravy a odstraňování objektů.
+1. V **nastavení** > **klíče**, získat klíč pro úplná práva správce na službu. Existují dva klíče zaměnitelné správce, v případě, že budete potřebovat k výměně jeden k dispozici zajišťuje nepřetržitý chod podniků. U požadavků můžete použít buď primární nebo sekundární klíč pro přidání, úpravy a odstraňování objektů.
 
 ![Získejte koncový bod a přístupový klíč rozhraní HTTP](media/search-fiddler/get-url-key.png "získat HTTP koncový bod a přístupový klíč")
 
 Všechny požadavky vyžaduje klíč rozhraní api na každou požadavku odeslaného do vaší služby. Platný klíč vytváří na základě žádosti vztah důvěryhodnosti mezi aplikací, která žádost odeslala, a službou, která ji zpracovává.
 
-### <a name="set-up-azure-blob-service-and-load-sample-data"></a>Nastavení služby Azure Blob a načtení ukázkových dat
+## <a name="prepare-sample-data"></a>Příprava ukázkových dat
 
 Kanál pro rozšiřování načítá informace ze zdrojů dat Azure. Zdrojová data musí pocházet z podporovaného typu zdroje dat [indexeru Azure Search](search-indexer-overview.md). Mějte prosím na paměti, že Azure Table Storage se nepodporuje pro kognitivního vyhledávání. Při tomto cvičení použijeme službu Blob Storage, na které ukážeme několik typů obsahu.
 
-1. [Stáhněte si ukázková data](https://1drv.ms/f/s!As7Oy81M_gVPa-LCb5lC_3hbS-4) sestávající z malé sady souborů různých typů. 
+1. [Přihlaste se k webu Azure portal](https://portal.azure.com), přejděte do svého účtu úložiště Azure, klikněte na tlačítko **objekty BLOB**a potom klikněte na tlačítko **+ kontejner**.
 
-1. [Zaregistrovat do Azure Blob storage](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account?tabs=azure-portal), vytvořit účet úložiště, otevřete stránky služby objektů Blob a vytvořte kontejner. Vytvořte účet úložiště ve stejné oblasti jako Azure Search.
+1. [Vytvořte kontejner objektů Blob](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal) obsahuje ukázková data. Můžete nastavit úroveň veřejného přístupu k některému z jeho platných hodnot.
 
-1. V kontejneru, který jste vytvořili, klikněte na tlačítko **nahrát** k nahrání ukázkových souborů, které jste si stáhli v předchozím kroku.
+1. Po vytvoření kontejneru ho otevřete a vyberte **nahrát** na panelu příkazů pro nahrání ukázkových souborů, které jste si stáhli v předchozím kroku.
 
    ![Zdrojové soubory ve službě Azure Blob Storage](./media/cognitive-search-quickstart-blob/sample-data.png)
 
@@ -81,11 +87,22 @@ Kanál pro rozšiřování načítá informace ze zdrojů dat Azure. Zdrojová d
 
 Existují i jiné způsoby, jak zadat připojovací řetězec, například poskytnutím sdíleného přístupového podpisu. Další informace o přihlašovacích údajích ke zdroji dat najdete v článku o [indexování služby Azure Blob Storage](search-howto-indexing-azure-blob-storage.md#Credentials).
 
+## <a name="set-up-postman"></a>Nastavení nástroje Postman
+
+Spusťte Postman a nastavte požadavek HTTP. Pokud tento nástroj neznáte, přečtěte si téma [prozkoumejte službu Search REST API služby Azure pomocí nástroje Postman](search-fiddler.md).
+
+Žádost o metody používané v tomto kurzu jsou **příspěvek**, **UMÍSTIT**, a **získat**. Klíče hlaviček jsou "Content-type" nastaveným na "application/json" a "klíč rozhraní api –" nastavena na klíč správce vaší služby Azure Search. Samotný obsah volání se vkládá do textu požadavku. 
+
+  ![Prohledávání částečně strukturovaných dat](media/search-semi-structured-data/postmanoverview.png)
+
+Pomocí nástroje Postman jsme čtyři volání rozhraní API vaší vyhledávací služby chcete-li vytvořit zdroj dat, dovedností, index a indexer. Zdroj dat obsahuje ukazatel na váš účet úložiště a vaše data JSON. Vaše služba Search se připojí při načítání dat.
+
+
 ## <a name="create-a-data-source"></a>Vytvoření zdroje dat
 
 Teď, když už máte připravené služby a zdrojové soubory, můžete začít sestavovat součásti kanálu indexování. Začněte [objektem zdroje dat](https://docs.microsoft.com/rest/api/searchservice/create-data-source), který službě Azure Search řekne, jak načíst externí zdrojová data.
 
-Pro tento kurz použijte rozhraní REST API a nástroj, který dokáže formulovat a posílat požadavky HTTP, např. PowerShell, Postman nebo Fiddler. Do hlavičky požadavku zadejte název služby, který jste použili při vytváření služby Azure Search, a klíč rozhraní API vygenerovaný pro vaši vyhledávací službu. Do textu požadavku zadejte název kontejneru objektů blob a připojovací řetězec.
+Do hlavičky požadavku zadejte název služby, který jste použili při vytváření služby Azure Search, a klíč rozhraní API vygenerovaný pro vaši vyhledávací službu. Do textu požadavku zadejte název kontejneru objektů blob a připojovací řetězec.
 
 ### <a name="sample-request"></a>Ukázkový požadavek
 ```http
@@ -108,7 +125,7 @@ api-key: [admin key]
 ```
 Odešlete požadavek. Webový testovací nástroj by měl vrátit kód stavu 201, čímž potvrdí úspěšné provedení. 
 
-Vzhledem k tomu, že je to váš první požadavek, podívejte se na portál Azure Portal a potvrďte, že se zdroj dat vytvořil ve službě Azure Search. Na stránce řídicího panelu vyhledávací služby ověřte, že dlaždice Zdroje dat má novou položku. Možná bude nutné několik minut počkat, než se stránka portálu aktualizuje. 
+Vzhledem k tomu, že je to váš první požadavek, podívejte se na portál Azure Portal a potvrďte, že se zdroj dat vytvořil ve službě Azure Search. Na stránce řídicího panelu služby vyhledávání ověřte, zda že seznam zdrojů dat objeví nová položka. Možná bude nutné několik minut počkat, než se stránka portálu aktualizuje. 
 
   ![Dlaždice Zdroje dat na portálu](./media/cognitive-search-tutorial-blob/data-source-tile.png "Dlaždice Zdroje dat na portálu")
 
@@ -116,13 +133,13 @@ Pokud dostanete chybu 403 nebo 404, zkontrolujte vytvoření požadavku: v konco
 
 ## <a name="create-a-skillset"></a>Vytvoření sady dovedností
 
-V tomto kroku definujete postup rozšiřování, který chcete použít pro svá data. Jednotlivým krokům rozšiřování se říká *dovednosti*, zatímco sada kroků rozšiřování je *sada dovedností*. V tomto kurzu se pro sadu dovedností používají [předdefinované kognitivní dovednosti](cognitive-search-predefined-skills.md):
+V tomto kroku definujete postup rozšiřování, který chcete použít pro svá data. Jednotlivým krokům rozšiřování se říká *dovednosti*, zatímco sada kroků rozšiřování je *sada dovedností*. Tento kurz používá [integrované kognitivní dovednosti](cognitive-search-predefined-skills.md) pro zkušenostech:
 
 + [Rozpoznávání jazyka](cognitive-search-skill-language-detection.md), které identifikuje jazyk obsahu
 
 + [Rozdělení textu](cognitive-search-skill-textsplit.md), které před zavoláním dovednosti extrakce klíčových frází rozdělí velký obsah do menších bloků Extrakce klíčových frází přijímá vstup složený z 50 000 znaků nebo méně. Některé ze zdrojových souborů je nutné rozdělit, aby se do tohoto limitu vešly.
 
-+ [Rozpoznávání pojmenovaných entit](cognitive-search-skill-named-entity-recognition.md) pro extrakci názvů organizací z obsahu v kontejneru objektů blob
++ [Rozpoznávání entit](cognitive-search-skill-entity-recognition.md) pro extrahování názvů organizace z obsahu v kontejneru objektů blob.
 
 + [Extrakce klíčových frází](cognitive-search-skill-keyphrases.md), která získává hlavní klíčové fráze 
 
@@ -144,7 +161,7 @@ Content-Type: application/json
   "skills":
   [
     {
-      "@odata.type": "#Microsoft.Skills.Text.NamedEntityRecognitionSkill",
+      "@odata.type": "#Microsoft.Skills.Text.EntityRecognitionSkill",
       "categories": [ "Organization" ],
       "defaultLanguageCode": "en",
       "inputs": [
@@ -217,7 +234,7 @@ Content-Type: application/json
 
 Odešlete požadavek. Webový testovací nástroj by měl vrátit kód stavu 201, čímž potvrdí úspěšné provedení. 
 
-#### <a name="about-the-request"></a>O požadavku
+#### <a name="explore-the-request-body"></a>Průzkum textu požadavku
 
 Všimněte si, jak se na jednotlivých stránkách používá dovednost extrakce klíčových frází. Když nastavíte kontext na ```"document/pages/*"```, spustíte tento rozšiřovací nástroj pro každý člen pole dokumentu nebo stránek (pro každou stránku v dokumentu).
 
@@ -306,11 +323,13 @@ Další informace o definování indexu najdete v článku o [vytvoření indexu
 
 ## <a name="create-an-indexer-map-fields-and-execute-transformations"></a>Vytvoření indexeru, mapování polí a spouštění transformací
 
-Do této chvíle jste vytvořili zdroj dat, sadu dovedností a index. Tyto tři komponenty se stanou součástí [indexeru](search-indexer-overview.md), který jednotlivé části sestaví do jediné operace s více fázemi. Pokud je chcete sloučit do indexeru, musíte nadefinovat mapování polí. Mapování polí jsou součástí definice indexeru a při odeslání požadavku spouštějí transformace.
+Do této chvíle jste vytvořili zdroj dat, sadu dovedností a index. Tyto tři komponenty se stanou součástí [indexeru](search-indexer-overview.md), který jednotlivé části sestaví do jediné operace s více fázemi. Pokud je chcete sloučit do indexeru, musíte nadefinovat mapování polí. 
 
-Při indexování bez rozšiřování v případě, že se názvy polí a datové typy přesně neshodují nebo že chcete použít nějakou funkci, nabízí definice indexeru nepovinný oddíl *fieldMappings*.
++ FieldMappings se zpracovávají před zkušenostech mapování zdroje polí ze zdroje dat do cílového pole v indexu. Pokud názvy polí a typů jsou stejná na obou koncích, není třeba žádné mapování.
 
-V úlohách kognitivního hledání, které mají kanál pro rozšiřování, indexer vyžaduje *outputFieldMappings*. Tato mapování se použijí v případě, že zdrojem hodnot polí je interní proces (kanál pro rozšiřování). Mezi chování, která jsou pro *outputFieldMappings* jedinečná, patří možnost zpracovat komplexní typy vytvořené v rámci rozšiřování (prostřednictvím dovednosti Shaper). V jednom dokumentu může být navíc mnoho elementů (třeba více organizací v jednom dokumentu). Konstrukce *outputFieldMappings* může dát systému pokyn, aby kolekce elementů sloučil do jednoho záznamu.
++ Zpracování outputFieldMappings po dovednosti, odkazující na sourceFieldNames, které neexistují až do dokumentu hádání nebo rozšiřování vytvoří je. TargetFieldName je pole v indexu.
+
+Kromě zapojování vstupy do výstupů, můžete také použít mapování polí na sloučit různé datové struktury. Další informace najdete v tématu [způsob mapování polí bohatších možností prohledávatelný index](cognitive-search-output-field-mapping.md).
 
 ### <a name="sample-request"></a>Ukázkový požadavek
 
@@ -378,7 +397,7 @@ Buďte připravení na to, že může trvat i několik minut, než se tento krok
 > [!TIP]
 > Vytvoření indexeru vyvolá kanál. Pokud dojde k nějakému problému při komunikaci s daty, při mapování vstupů a výstupů nebo s pořadím operací, zobrazí se v této fázi. Pokud chcete kanál spustit znovu s pozměněným kódem nebo skriptem, bude možná nutné nejdříve zahodit objekty. Další informace najdete v článku o [resetování a opětovném spuštění](#reset).
 
-### <a name="explore-the-request-body"></a>Průzkum textu požadavku
+#### <a name="explore-the-request-body"></a>Průzkum textu požadavku
 
 Skript nastaví ```"maxFailedItems"``` na -1, což dá modulu indexování pokyn, aby během importování dat ignoroval chyby. To je užitečné, protože v ukázkovém zdroji dat je velmi málo dokumentů. Pro větší zdroje dat by tato hodnota byla větší než 0.
 

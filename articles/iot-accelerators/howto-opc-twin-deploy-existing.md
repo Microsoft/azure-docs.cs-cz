@@ -1,5 +1,5 @@
 ---
-title: Jak nasadit modul pro správu zařízení Azure IoT OPC UA do existujícího projektu | Dokumentace Microsoftu
+title: Jak nasadit OPC Dvojčete modulu do existujícího projektu Azure | Dokumentace Microsoftu
 description: Jak nasadit Dvojčete OPC do existujícího projektu.
 author: dominicbetts
 ms.author: dobett
@@ -8,22 +8,22 @@ ms.topic: conceptual
 ms.service: iot-industrialiot
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: dcf6acca344fe2a34fdc48fe89c5a1ee62b10b23
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: 6bdfeefc366734aa10dbaccec69bac8e0b41103f
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59255882"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59493242"
 ---
 # <a name="deploy-opc-twin-to-an-existing-project"></a>Nasazení do existujícího projektu Dvojčete OPC
 
-Dvojče zařízení OPC modul spouští na hraničních zařízeních IoT a poskytuje několik služeb edge do Dvojčete zařízení OPC a registru služby. 
+OPC Dvojčete modulu běží na hraničních zařízeních IoT a poskytuje několik služeb edge do Dvojčete OPC a služby registrů. 
 
-Dvojče zařízení OPC micro služby usnadňuje komunikaci mezi operátory objekt pro vytváření a zařízení serveru OPC UA ve výrobním závodě přes modul IoT Edge Dvojčete OPC. Micro služba poskytuje služby OPC UA (Procházet, čtení, zápis a spouštění) přes REST API. 
+Službu micro OPC Dvojčete usnadňuje komunikaci mezi operátory objekt pro vytváření a zařízení serveru OPC UA ve výrobním závodě přes modul IoT Edge Dvojčete OPC. Micro služba poskytuje služby OPC UA (Procházet, čtení, zápis a spouštění) přes REST API. 
 
-Registr zařízení OPC UA micro service poskytuje přístup k registrované aplikace OPC UA a jejich koncové body. Operátoři a správci můžou zaregistrovat a zrušení registrace nové aplikace OPC UA a procházet ty stávající, včetně jejich koncové body. Kromě aplikací a koncový bod správy služba registru také katalogy registrovaných modulů OPC hraničních zařízeních IoT Dvojčete zařízení. Rozhraní API služby vám dává kontrolu nad edge funkce modulu, například spuštění nebo zastavení serveru zjišťování (vyhledávání služby) nebo aktivaci nové dvojčat koncového bodu, které lze přistupovat pomocí služby micro Dvojčete OPC.
+Mikroslužby registru zařízení OPC UA poskytuje přístup k registrované aplikace OPC UA a jejich koncové body. Operátoři a správci můžou zaregistrovat a zrušení registrace nové aplikace OPC UA a procházet ty stávající, včetně jejich koncové body. Kromě aplikací a koncový bod správy služba registru také katalogy registrovaných modulů IoT Edge Dvojčete OPC. Rozhraní API služby vám dává kontrolu nad edge funkce modulu, například spuštění nebo zastavení serveru zjišťování (vyhledávání služby) nebo aktivaci nové dvojčat koncového bodu, které lze přistupovat pomocí služby micro Dvojčete OPC.
 
-Základní modul je identita nadřízeného. Správce spravuje dvojčete koncový bod, který odpovídá koncové body serveru OPC UA, které jsou aktivované pomocí odpovídajícího registru OPC UA rozhraní API. Tento koncový bod dvojčat přeložit OPC UA JSON přijal od služby OPC Dvojčete micro běží v cloudu do binární zprávy OPC UA, které se odesílají prostřednictvím zabezpečeného kanálu stavové ke koncovému bodu spravovaného. Správce taky poskytuje služby zjišťování, které odesílají události zjišťování zařízení ke službě připojení zařízení OPC UA pro zpracování, kde tyto události za následek aktualizace registru OPC UA.  Tento článek ukazuje, jak nasadit OPC Dvojčete modulu do existujícího projektu. 
+Základní modul je identita nadřízeného. Správce spravuje dvojčete koncový bod, který odpovídá koncové body serveru OPC UA, které jsou aktivované pomocí odpovídajícího registru OPC UA rozhraní API. Tento koncový bod dvojčat přeložit OPC UA JSON přijal od služby OPC Dvojčete micro běží v cloudu do binární zprávy OPC UA, které se odesílají prostřednictvím zabezpečeného kanálu stavové ke koncovému bodu spravovaného. Správce taky poskytuje služby zjišťování, které odesílají události zjišťování zařízení do služby připojení zařízení OPC UA pro zpracování, kde tyto události za následek aktualizace registru OPC UA.  Tento článek ukazuje, jak nasadit OPC Dvojčete modulu do existujícího projektu. 
 
 > [!NOTE]
 > Další informace o podrobnosti nasazení a pokyny najdete v článku Githubu [úložiště](https://github.com/Azure/azure-iiot-opc-twin-module).
@@ -71,7 +71,7 @@ Skript nasazení se pokusí zaregistrovat dvě aplikace AAD v Azure Active Direc
 2. Můžete také nasadit privátní tenanta AAD v jiném předplatném, restartujte jej a vyberte jeho použití.
 
 > [!WARNING]
-> NIKDY pokračovat bez ověřování.  Pokud se rozhodnete tak učinit, všem uživatelům přístup vašich koncových bodů správy zařízení OPC z Internetu nebyl ověřen.   Vždy můžete použít [možnost nasazení "local"](howto-opc-twin-deploy-dependencies.md) spustit pytli.
+> NIKDY pokračovat bez ověřování.  Pokud se rozhodnete tak učinit, kdokoli OPC Dvojčete koncové body přístupu z Internetu nebyl ověřen.   Vždy můžete použít [možnost nasazení "local"](howto-opc-twin-deploy-dependencies.md) spustit pytli.
 
 ## <a name="deploy-an-all-in-one-industrial-iot-services-demo"></a>Nasazení All-in-one průmyslového IoT služby demo
 

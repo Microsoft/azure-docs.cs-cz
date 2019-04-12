@@ -1,6 +1,6 @@
 ---
-title: Shromažďování dat Cisco ve verzi Preview Sentinelu Azure | Dokumentace Microsoftu
-description: Zjistěte, jak shromažďovat data Cisco v ověřovacích Azure.
+title: Propojení dat Cisco Sentinelu ve verzi Preview Azure | Dokumentace Microsoftu
+description: Informace o připojení k Azure Sentinelu Cisco data.
 services: sentinel
 documentationcenter: na
 author: rkarlin
@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 3/6/2019
+ms.date: 04/07/2019
 ms.author: rkarlin
-ms.openlocfilehash: 37dcd1dd7052db864797407897851d57e91d43e5
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.openlocfilehash: 5bc57d448b8aa04b8cb6fb16000205fda8964150
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58883901"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59495698"
 ---
 # <a name="connect-your-cisco-asa-appliance"></a>Připojit zařízení Cisco ASA 
 
@@ -30,7 +30,7 @@ ms.locfileid: "58883901"
 Sentinelu Azure můžete připojit k libovolné zařízení Cisco ASA. Cisco ASA je nativně integrováno s Azure Sentinelu pro příjem dat, takže i v případě, že vaše zařízení Cisco neukládá protokoly jako CEF, Azure Sentinelu ingestuje je stejně jako zpracovává protokoly CEF. Integrace s Azure Sentinelu umožňuje snadno spouštět analýzy a dotazy napříč data protokolů z Cisco ASA. 
 
 > [!NOTE]
-> - Data se uloží v zeměpisné oblasti pracovního prostoru, na kterém je spuštěný Sentinelu Azure.
+> Data se uloží v zeměpisné oblasti pracovního prostoru, na kterém je spuštěný Sentinelu Azure.
 
 ## <a name="step-1-connect-your-cisco-asa-appliance-using-an-agent"></a>Krok 1: Připojit zařízení Cisco ASA pomocí agenta
 
@@ -42,7 +42,7 @@ Síťový diagram z obou možností najdete v tématu [připojení zdroje dat](c
 
 ### <a name="deploy-the-agent-in-azure"></a>Nasazení agenta v Azure
 
-1. Na portálu Azure Sentinelu, klikněte na tlačítko **shromažďování dat** a vyberte typ zařízení. 
+1. Na portálu Azure Sentinelu, klikněte na tlačítko **datové konektory** a vyberte typ zařízení. 
 
 1. V části **konfigurace agenta protokolu Syslog v Linuxu**:
    - Zvolte **automatického nasazení** Pokud chcete vytvořit nový počítač, který je předem nainstalovaný s agentem Azure Sentinelu a obsahuje všechny nezbytné konfigurace, jak je popsáno výše. Vyberte **automatického nasazení** a klikněte na tlačítko **nasazení agentů pro automatickou diagnostiku**. Tím přejdete na stránku nákupní pro vyhrazený virtuální počítač, který je automaticky připojena k pracovnímu prostoru, je. Je virtuální počítač **standardní virtuální počítač D2s v3 (2 virtuální procesory, 8 GB paměti)** a má veřejnou IP adresu.
@@ -79,7 +79,7 @@ Síťový diagram z obou možností najdete v tématu [připojení zdroje dat](c
 Pokud Azure nepoužíváte, ručně nasaďte agenta Sentinelu Azure ke spuštění na vyhrazeném serveru Linux.
 
 
-1. Na portálu Azure Sentinelu, klikněte na tlačítko **shromažďování dat** a vyberte typ zařízení.
+1. Na portálu Azure Sentinelu, klikněte na tlačítko **datové konektory** a vyberte typ zařízení.
 1. Chcete-li vytvořit vyhrazený virtuální počítač s Linuxem, v části **konfigurace agenta protokolu Syslog v Linuxu** zvolte **ručního nasazení**.
    1. V části **stažení a instalace agenta Syslog**vyberte **počítače mimo Azure Linux**. 
    1. V **přímý agent** obrazovku, která se otevře, vyberte **agenta pro Linux** stáhněte agenta nebo spuštěním tohoto příkazu si ho stáhnout na počítač s Linuxem:   `wget https://raw.githubusercontent.com/Microsoft/OMS-Agent-for-Linux/master/installer/scripts/onboard_agent.sh && sh onboard_agent.sh -w {workspace GUID} -s gehIk/GvZHJmqlgewMsIcth8H6VqXLM9YXEpu0BymnZEJb6mEjZzCHhZgCx5jrMB1pVjRCMhn+XTQgDTU3DVtQ== -d opinsights.azure.com`

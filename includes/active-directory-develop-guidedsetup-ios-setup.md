@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 09/19/2018
 ms.author: dadobali
 ms.custom: include file
-ms.openlocfilehash: d8e249a788d80108d46a61f316b795ab04e541a2
-ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
+ms.openlocfilehash: e72c4b0cf8f77a057ff07f8bce7acae4e834e28d
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58203476"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59503058"
 ---
 ## <a name="setting-up-your-ios-application"></a>Nastavení aplikace iOS
 
@@ -61,7 +61,7 @@ Zkopírujte a vložte níže. Tento příkaz načte závislosti do složky Carth
 carthage update
 ```
 
-> Výše uvedený postup slouží k stáhněte si a sestavte Microsoft Authentication Library (MSAL). Knihovna MSAL zpracovává načítání, ukládání do mezipaměti a aktualizaci tokeny uživatele pro přístup k rozhraní API chráněné službou Azure Active Directory v2.0.
+> Výše uvedený postup slouží k stáhněte si a sestavte Microsoft Authentication Library (MSAL). Knihovna MSAL zpracovává načítání, ukládání do mezipaměti a aktualizaci tokeny uživatele pro přístup k rozhraní API chráněné službou Microsoft identity platform.
 
 ## <a name="add-the-msal-framework-to-your-application"></a>Přidání rozhraní MSAL do aplikace
 

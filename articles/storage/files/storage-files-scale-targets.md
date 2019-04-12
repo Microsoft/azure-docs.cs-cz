@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 7/19/2018
 ms.author: wgries
 ms.subservice: files
-ms.openlocfilehash: 9cbb44fed8a9cc9e30e70e58f33fb943ee43b412
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: 630ad1e0558fc089d79eee50175e497b771a0a8a
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59269159"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59494965"
 ---
 # <a name="azure-files-scalability-and-performance-targets"></a>Azure soubory škálovatelnost a výkonnostní cíle
 
@@ -76,9 +76,9 @@ Při plánování nasazení pro každou z fází, níže jsou výsledky pozorov�
 
 | Počáteční jednorázové zřizování  |  |
 |-|-|
-| Počet objektů | 10 milionů objektů |
-| Velikost datové sady| ~ 4 TB |
-| Průměrná velikost souboru | ~ 500 KiB (největší soubor: 100 GiB) |
+| Počet objektů | 25 milionů objektů |
+| Velikost datové sady| ~4.7 TiB |
+| Průměrná velikost souboru | Přibližně 200 KiB (největší soubor: 100 GiB) |
 | Nahrát propustnost | 20 objekty za sekundu |
 | Namespace stahování propustnost * | 400 objekty za sekundu |
 

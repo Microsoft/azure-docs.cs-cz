@@ -1,6 +1,6 @@
 ---
-title: Další informace o povolení protokoly podporované službou Azure AD v2.0 | Dokumentace Microsoftu
-description: Tento průvodce protokolů podporovaných koncového bodu Azure AD v2.0.
+title: Další informace o povolení protokolů nepodporuje platforma identit Microsoft | Azure
+description: Tento průvodce protokoly OAuth 2.0 a OpenID Connect, které jsou podporovány bodem Microsoft identity platform.
 services: active-directory
 documentationcenter: ''
 author: CelesteDG
@@ -13,32 +13,32 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/01/2018
+ms.date: 04/11/2019
 ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c56970091da74cfc389d60ad91f430fcb64d4bba
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: dad05221376fa5871aadf6d89dcb15dff55a6dfa
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59266966"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59490709"
 ---
-# <a name="v20-protocols---oauth-20-and-openid-connect"></a>verze 2.0 protokolů: OAuth 2.0 a OpenID Connect
+# <a name="microsoft-identity-platform-protocols"></a>Protokoly Microsoft identity platform
 
-Koncový bod verze 2.0, můžete použít Azure Active Directory (Azure AD) pro identity-as-a-service pomocí standardní protokoly, OpenID Connect a OAuth 2.0. Služba je kompatibilní se standardy, může být drobné rozdíly mezi implementacemi dvě z těchto protokolů. Zde uvedené informace budou užitečné, pokud budete chtít napsat kód tak, že přímo, odesílání a zpracování žádostí HTTP nebo pomocí open source knihovnu třetí strany místo pomocí jedné z našich [knihovny open-source](reference-v2-libraries.md).
+Microsoft identity platform koncový bod pro identity-as-a-service pomocí standardní protokoly, OpenID Connect a OAuth 2.0. Služba je kompatibilní se standardy, může být drobné rozdíly mezi implementacemi dvě z těchto protokolů. Zde uvedené informace budou užitečné, pokud budete chtít napsat kód tak, že přímo, odesílání a zpracování žádostí HTTP nebo pomocí open source knihovnu třetí strany místo pomocí jedné z našich [knihovny open-source](reference-v2-libraries.md).
 
 > [!NOTE]
-> Ne všechny funkce a scénáře služby Azure AD jsou podporovány koncovým bodem verze 2.0. Pokud chcete zjistit, pokud je vhodné použít koncový bod verze 2.0, přečtěte si informace o [v2.0 omezení](active-directory-v2-limitations.md).
+> Ne všechny služby Azure AD scénáře a funkce jsou podporovány bodem platforma identit Microsoft. Chcete-li zjistit, zda by měl používat Microsoft identity platform endpoint, přečtěte si informace o [Microsoft identity platform omezení](active-directory-v2-limitations.md).
 
 ## <a name="the-basics"></a>Základy
 
 V téměř všechny toky OAuth 2.0 a OpenID Connect existují čtyři strany součástí exchange:
 
-![Role OAuth 2.0](../../media/active-directory-v2-flows/protocols_roles.png)
+![Role OAuth 2.0](./media/active-directory-v2-flows/protocols-roles.svg)
 
-* **Autorizační Server** je koncovým bodem v2.0 a za zajištění identitu uživatele, poskytování a odvolání přístupu k prostředkům a vydávání tokenů. Autorizační server označované také jako zprostředkovatele identity – bezpečně zpracovává nic, aby se informace o uživateli, jejich přístup a vztahy důvěryhodnosti mezi stranami v toku.
+* **Autorizační Server** je koncový bod Microsoft identity platform a za zajištění identitu uživatele, poskytování a odvolání přístupu k prostředkům a vydávání tokenů. Autorizační server označované také jako zprostředkovatele identity – bezpečně zpracovává nic, aby se informace o uživateli, jejich přístup a vztahy důvěryhodnosti mezi stranami v toku.
 * **Vlastníka prostředku** je obvykle koncového uživatele. Je stranu, která vlastní data a má možnost povolit třetími stranami pro přístup k této dat nebo prostředek.
 * **Klienta OAuth** používá vaše aplikace, identifikovat podle jeho ID aplikace. Klient OAuth je obvykle stranu, která koncový uživatel komunikuje s a požaduje tokeny od autorizačního serveru. Klient musí udělit oprávnění pro přístup k prostředku vlastníkem prostředku.
 * **Server prostředků** je, ve kterém se nachází zdroj nebo data. Vztahy důvěryhodnosti serveru ověřování pro zabezpečené ověřování a autorizaci klienta OAuth a využívají přístupových tokenů nosiče k zajištění toho, že lze udělit přístup k prostředku.
@@ -55,7 +55,7 @@ Pro další informace si přečtěte, jak [zaregistrovat aplikaci](quickstart-v2
 
 ## <a name="endpoints"></a>Koncové body
 
-Po registraci aplikace komunikuje se službou Azure AD pomocí zasílání požadavků na koncový bod verze 2.0:
+Po registraci aplikace komunikuje s platformou identity Microsoft pomocí zasílání požadavků na koncový bod:
 
 ```
 https://login.microsoftonline.com/{tenant}/oauth2/v2.0/authorize
@@ -74,17 +74,17 @@ Kde `{tenant}` může trvat jednu ze čtyř různých hodnot:
 Chcete-li zjistěte, jak pracovat s těmito koncovými body, zvolte typ konkrétní aplikace v [protokoly](#protocols) části a přejděte na odkaz Další informace.
 
 > [!TIP]
-> Libovolná aplikace zaregistrované ve službě Azure AD můžete použít koncový bod verze 2.0, i v případě, že již příště přihlásí osobní účty.  Tímto způsobem můžete migrovat existující aplikace, aby verze 2.0 a [MSAL](reference-v2-libraries.md) bez nutnosti znovu vytvářet aplikace.  
+> Libovolná aplikace zaregistrované ve službě Azure AD můžete použít Microsoft identity platform koncového bodu, i v případě, že již příště přihlásí osobní účty.  Tímto způsobem můžete migrovat existující aplikace, aby platforma identit Microsoft a [MSAL](reference-v2-libraries.md) bez nutnosti znovu vytvářet aplikace.  
 
 ## <a name="tokens"></a>Tokeny
 
-Implementace v2.0 OAuth 2.0 a OpenID Connect využívat rozsáhlé nosné tokeny, včetně nosné tokeny, které jsou reprezentovány jako tokeny Jwt. Nosný token je token zjednodušené zabezpečení, která uděluje "nosiče" přístup k chráněnému prostředku. V tomto smyslu "nosiče" je každá strana, která může představovat token. Když strana musí nejdřív ověřit s Azure AD pro příjem nosný token, pokud nejsou požadované kroky k zabezpečení token v přenos a ukládání, můžete zachytit a používat nežádoucí osobou. I když některé tokeny zabezpečení má předdefinovaný mechanismus pro brání jejich používání neoprávněnými osobami, nosné tokeny nemají tento mechanismus a nutné přenášet v zabezpečený kanál, jako je zabezpečení transportní vrstvy (HTTPS). Pokud nosný token je přenesen v nezašifrované podobě, můžete použít škodlivý stran útok man-in-the-middle získat token a používat ho pro neoprávněný přístup k chráněnému prostředku. Stejné zásady zabezpečení platí při ukládání nebo ukládání do mezipaměti nosné tokeny pro pozdější použití. Vždy zajistěte, aby vaše aplikace odesílá a ukládá nosné tokeny bezpečným způsobem. Další informace o zabezpečení na nosné tokeny, naleznete v tématu [5 část dokumentu RFC 6750](https://tools.ietf.org/html/rfc6750).
+Microsoft identity platform provádění OAuth 2.0 a OpenID Connect využívat rozsáhlé nosné tokeny, včetně nosné tokeny, které jsou reprezentovány jako tokeny Jwt. Nosný token je token zjednodušené zabezpečení, která uděluje "nosiče" přístup k chráněnému prostředku. V tomto smyslu "nosiče" je každá strana, která může představovat token. Když strana musí nejdřív ověřit s platformou identity Microsoft získat nosný token, pokud nejsou požadované kroky k zabezpečení token v přenos a ukládání, můžete zachytit a používat nežádoucí osobou. I když některé tokeny zabezpečení má předdefinovaný mechanismus pro brání jejich používání neoprávněnými osobami, nosné tokeny nemají tento mechanismus a nutné přenášet v zabezpečený kanál, jako je zabezpečení transportní vrstvy (HTTPS). Pokud nosný token je přenesen v nezašifrované podobě, můžete použít škodlivý stran útok man-in-the-middle získat token a používat ho pro neoprávněný přístup k chráněnému prostředku. Stejné zásady zabezpečení platí při ukládání nebo ukládání do mezipaměti nosné tokeny pro pozdější použití. Vždy zajistěte, aby vaše aplikace odesílá a ukládá nosné tokeny bezpečným způsobem. Další informace o zabezpečení na nosné tokeny, naleznete v tématu [5 část dokumentu RFC 6750](https://tools.ietf.org/html/rfc6750).
 
-Další podrobnosti o různých typů tokeny použité v koncový bod verze 2.0 je k dispozici v [token reference koncového bodu v2.0](v2-id-and-access-tokens.md).
+Další podrobnosti tokeny použité v Microsoft identity platform koncový bod je k dispozici v různých typů [Microsoft identity platform reference koncového bodu tokenu](v2-id-and-access-tokens.md).
 
 ## <a name="protocols"></a>Protokoly
 
-Pokud jste připravení vidět některé příklad žádosti, začněte s některou z následující kurzy. Každé z nich odpovídá konkrétní ověřovacím scénáři. Pokud potřebujete pomoc při rozhodování, což je pravý tok pro vás, podívejte se [typy aplikací můžete vytvořit s využitím v2.0](v2-app-types.md).
+Pokud jste připravení vidět některé příklad žádosti, začněte s některou z následující kurzy. Každé z nich odpovídá konkrétní ověřovacím scénáři. Pokud potřebujete pomoc při rozhodování, což je pravý tok pro vás, podívejte se [typy aplikací můžete sestavit s platformou identity Microsoft](v2-app-types.md).
 
 * [Vytvoření mobilní a nativní aplikace s OAuth 2.0](v2-oauth2-auth-code-flow.md)
 * [Tvořte webové aplikace s OpenID Connect](v2-protocols-oidc.md)

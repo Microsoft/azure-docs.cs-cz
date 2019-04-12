@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/18/2018
 ms.author: sumeet.mittal
-ms.openlocfilehash: 2d65d51ae8148e2e55d57d39e306ded0f75da687
-ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
+ms.openlocfilehash: b39f365c8b66f7cab074a20bc574803e12f93422
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58652582"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59494165"
 ---
 # <a name="virtual-network-service-endpoint-policies-preview"></a>Zásady koncových bodů služby Virtual Network (Preview)
 
@@ -24,7 +24,7 @@ Zásady koncových bodů služby Virtual Network (VNet) umožňují v provozu vi
 
 Tato funkce je dostupná ve verzi __Preview__ pro následující služby a oblasti Azure:
 
-__Azure Storage__: WestCentralUS, WestUS2.
+__Azure Storage__: WestCentralUS, WestUS2, NorthCentralUS, SouthCentralUS, CentralUS, EastUS2.
 
 Aktuální oznámení o verzi Preview najdete na stránce s [aktuálními informacemi o službě Azure Virtual Network](https://azure.microsoft.com/updates/?product=virtual-network).
 
@@ -35,13 +35,13 @@ Aktuální oznámení o verzi Preview najdete na stránce s [aktuálními inform
 
 Zásady koncových bodů služby virtuální sítě nabízejí následující výhody:
 
-- __Vylepšené zabezpečení provozu virtuální sítě pro služby Azure__
+- __Vyšší úroveň zabezpečení pro vaše virtuální síťový provoz do služby Azure__
 
   [Značky služeb Azure skupin zabezpečení sítě](https://aka.ms/servicetags) umožňují omezit ve virtuální síti odchozí přenosy na určité služby Azure. Tím ale také umožňují přenosy všem prostředkům dané služby Azure. 
   
   Použitím zásad koncových bodů teď můžete ve virtuální síti omezit odchozí přístup jenom na určité prostředky Azure. Můžete tak mnohem podrobněji řídit zabezpečení a chránit data, ke kterým se přistupuje ve vaší virtuální síti. 
 
-- __Škálovatelné, vysoce dostupné zásady pro filtrování přenosů u služeb Azure__
+- __Škálovatelné, vysoce dostupné zásady pro filtrování provozu služeb Azure__
 
    Zásady koncových bodů nabízejí horizontálně škálovatelné, vysoce dostupné řešení, které umožňuje filtrovat přenosy dat služeb Azure ve virtuálních sítích s pomocí koncových bodů služeb. K údržbě centrálních síťových zařízení používaných v provozu virtuálních sítí tak nepotřebujete další režijní prostředky.
 

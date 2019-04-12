@@ -12,26 +12,31 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: ruby
 ms.topic: article
-ms.date: 01/10/2019
+ms.date: 04/10/2019
 ms.author: aschhab
-ms.openlocfilehash: 074976ea1f889893b5daa21cea5c186ec77145c4
-ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
+ms.openlocfilehash: 6c42fbffd0b4569a9b04dede94061e716c48ecf1
+ms.sourcegitcommit: 41015688dc94593fd9662a7f0ba0e72f044915d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56588343"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59501106"
 ---
 # <a name="how-to-use-service-bus-queues-with-ruby"></a>Jak používat fronty služby Service Bus pomocí Ruby
 
 [!INCLUDE [service-bus-selector-queues](../../includes/service-bus-selector-queues.md)]
 
-Tato příručka popisuje, jak používat fronty Service Bus. Ukázky jsou napsané v Ruby a používají Azure gem. Mezi popsané scénáře patří **vytváření fronty, odesílání a přijímání zpráv**, a **odstranění front**. Další informace o fronty služby Service Bus, najdete v článku [další kroky](#next-steps) oddílu.
+V tomto kurzu se dozvíte, jak vytvářet aplikace Ruby na odesílání a příjem zpráv z fronty Service Bus. Ukázky jsou napsané v Ruby a používají Azure gem.
 
-[!INCLUDE [howto-service-bus-queues](../../includes/howto-service-bus-queues.md)]
+## <a name="prerequisites"></a>Požadavky
+1. Předplatné Azure. K dokončení tohoto kurzu potřebujete mít účet Azure. Můžete si aktivovat váš [výhody pro předplatitele MSDN](https://azure.microsoft.com/pricing/member-offers/credit-for-visual-studio-subscribers/?WT.mc_id=A85619ABF) nebo si zaregistrovat [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF).
+2. Postupujte podle kroků v [použijte Azure portal můžete vytvořit frontu služby Service Bus](service-bus-quickstart-portal.md) článku.
+    1. Přečtěte si rychlé **přehled** služby Service Bus **fronty**. 
+    2. Vytvoření služby Service Bus **obor názvů**. 
+    3. Získejte **připojovací řetězec**. 
 
-## <a name="create-a-service-bus-namespace"></a>Vytvoření oboru názvů Service Bus
-[!INCLUDE [service-bus-create-namespace-portal](../../includes/service-bus-create-namespace-portal.md)]
-   
+        > [!NOTE]
+        > Vytvoříte **fronty** v oboru názvů služby Service Bus s použitím prostředí Ruby v tomto kurzu. 
+
 [!INCLUDE [service-bus-ruby-setup](../../includes/service-bus-ruby-setup.md)]
 
 ## <a name="how-to-create-a-queue"></a>Jak vytvořit frontu

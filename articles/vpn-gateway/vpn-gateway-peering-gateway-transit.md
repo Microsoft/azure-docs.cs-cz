@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/25/2018
 ms.author: yushwang
-ms.openlocfilehash: 05b25a524894248152114ca9c756d4a0f8944ad8
-ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
+ms.openlocfilehash: d5e62bf1838c8f07068208019d28d7273c28bd63
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58199626"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59492341"
 ---
 # <a name="configure-vpn-gateway-transit-for-virtual-network-peering"></a>Konfigurace průchodu bránou VPN pro partnerský vztah virtuální sítě
 
@@ -37,9 +37,6 @@ V tomto dokumentu jsou popsány dva scénáře:
 1. Obě virtuální sítě používají model nasazení Resource Manager.
 2. Koncová virtuální síť je klasická a centrální virtuální síť s bránou je v Resource Manageru.
 
-> [!IMPORTANT]  
-> Průchod branou aktuálně podporuje globální vnet peering ve verzi preview. Verzi preview je k dispozici ve všech oblastech Azure, Čína cloudové oblasti a oblasti cloud Government, ale ne v cloudu. Vyžaduje se žádná přidání na seznam povolených. Můžete otestovat ve verzi preview prostřednictvím rozhraní příkazového řádku, PowerShell, šablony nebo rozhraní API. Portál se nepodporuje ve verzi preview. 
-
 ## <a name="requirements"></a>Požadavky
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
@@ -54,8 +51,8 @@ Příklad v tomto dokumentu vyžaduje, aby byly vytvořeny následující prost�
 Pokyny najdete v následujících dokumentech, které se týkají:
 
 1. [Vytvoření brány VPN ve virtuální síti](vpn-gateway-howto-site-to-site-resource-manager-portal.md)
-2. [Vytvoření partnerského vztahu virtuální sítě se stejným modelem nasazení](../virtual-network/tutorial-connect-virtual-networks-portal.md)
-3. [Vytvoření partnerského vztahu virtuální sítě s různými modely nasazení](../virtual-network/create-peering-different-deployment-models.md)
+2. [Vytvoření partnerského vztahu virtuálních sítí pomocí stejného modelu nasazení](../virtual-network/tutorial-connect-virtual-networks-portal.md)
+3. [Vytvoření partnerského vztahu virtuálních sítí s různými modely nasazení](../virtual-network/create-peering-different-deployment-models.md)
 
 ## <a name="permissions"></a>Oprávnění
 

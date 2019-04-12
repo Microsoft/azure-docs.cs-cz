@@ -1,6 +1,6 @@
 ---
-title: Shromažďování dat Windows firewall ve verzi Preview Sentinelu Azure | Dokumentace Microsoftu
-description: Zjistěte, jak shromažďovat data Windows firewall v Azure Sentinelu.
+title: Propojení dat Windows firewall Sentinelu ve verzi Preview Azure | Dokumentace Microsoftu
+description: Informace o připojení k Azure Sentinelu Windows firewall data.
 services: sentinel
 documentationcenter: na
 author: rkarlin
@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 3/28/2019
+ms.date: 04/07/2019
 ms.author: rkarlin
-ms.openlocfilehash: 3839d81f70b8bc6dcb1da3c4dd77f52443294707
-ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
+ms.openlocfilehash: 27a82545f77fe15541ac598abadbfc8ffb6d3405
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2019
-ms.locfileid: "58574836"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59494197"
 ---
 # <a name="connect-windows-firewall"></a>Připojení brány Windows Firewall
 
@@ -31,12 +31,11 @@ Konektor Windows firewall umožňuje snadno připojit vaše protokoly brány fir
 
 
 > [!NOTE]
-> 
-> - Data se uloží v zeměpisné oblasti pracovního prostoru, na kterém je spuštěný Sentinelu Azure.
+> Data se uloží v zeměpisné oblasti pracovního prostoru, na kterém je spuštěný Sentinelu Azure.
 
 ## <a name="enable-the-connector"></a>Povolení konektoru 
 
-1. Na portálu Azure Sentinelu vyberte **shromažďování dat** a potom klikněte na **brány Windows firewall** dlaždici. 
+1. Na portálu Azure Sentinelu vyberte **datové konektory** a potom klikněte na **brány Windows firewall** dlaždici. 
 1. Vyberte typy dat, které chcete Streamovat.
 1. Klikněte na **Nainstalovat**.
 6. Chcete-li použít odpovídající schématu pro bránu Windows firewall v Log Analytics, vyhledejte **SecurityEvent**.

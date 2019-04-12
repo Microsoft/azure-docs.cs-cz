@@ -1,6 +1,6 @@
 ---
-title: Shromažďování dat v Cloud App Security ve verzi Preview Sentinelu Azure | Dokumentace Microsoftu
-description: Zjistěte, jak shromažďovat data o Cloud App Security v ověřovacích Azure.
+title: Propojení dat v Cloud App Security Sentinelu ve verzi Preview Azure | Dokumentace Microsoftu
+description: Informace o připojení Cloud App Security data pro ověřovací Azure.
 services: sentinel
 documentationcenter: na
 author: rkarlin
@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 2/28/2019
+ms.date: 04/07/2019
 ms.author: rkarlin
-ms.openlocfilehash: b0033f5f8636053f88825541b8b2cfcbf2fc9f8b
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: 5a7dfeed7b52453b38720c21c7d213679b8d2854
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57245484"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59496365"
 ---
-# <a name="collect-data-from-microsoft-cloud-app-security"></a>Shromažďování dat z Microsoft Cloud App Security 
+# <a name="connect-data-from-microsoft-cloud-app-security"></a>Připojíte si data z Microsoft Cloud App Security 
 
 > [!IMPORTANT]
 > Azure Sentinel je aktuálně ve verzi public preview.
@@ -39,7 +39,7 @@ Pokud už máte Cloud App Security, ujistěte se, že je [povolena ve vaší sí
 Když Cloud App Security se nasazuje a ingestovat data, data upozornění můžete snadno Streamovat do ověřovacích Azure.
 
 
-1. V Azure Sentinelu, vyberte **shromažďování dat** a potom klikněte na tlačítko **Cloud App Security** dlaždici.
+1. V Azure Sentinelu, vyberte **datové konektory** a potom klikněte na tlačítko **Cloud App Security** dlaždici.
 
 2. Klikněte na **Připojit**.
 

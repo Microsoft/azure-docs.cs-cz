@@ -1,10 +1,10 @@
 ---
 title: Protokolování diagnostiky a metriky Azure SQL Database | Dokumentace Microsoftu
-description: Zjistěte, jak nakonfigurovat databázi SQL Azure pro ukládání statistiky provádění prostředků využití a dotazu.
+description: Zjistěte, jak povolit diagnostiku ve službě Azure SQL Database k ukládání informací o využití prostředků a statistiky provádění dotazu.
 services: sql-database
 ms.service: sql-database
 ms.subservice: monitor
-ms.custom: ''
+ms.custom: seoapril2019
 ms.devlang: ''
 ms.topic: conceptual
 author: danimir
@@ -12,14 +12,16 @@ ms.author: danil
 ms.reviewer: jrasnik, carlrab
 manager: craigg
 ms.date: 03/12/2019
-ms.openlocfilehash: f023ab4fe55cf180ac1e3f0634856a528c911746
-ms.sourcegitcommit: ef20235daa0eb98a468576899b590c0bc1a38394
+ms.openlocfilehash: a2bd25f6dac4e73c0d8e3e951981f45e669b226a
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
-ms.locfileid: "59426482"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59490064"
 ---
 # <a name="azure-sql-database-metrics-and-diagnostics-logging"></a>Azure SQL Database metrik a protokolování diagnostiky
+
+V tomto tématu se dozvíte, jak nakonfigurovat protokolování telemetrická data diagnostiky pro Azure SQL Database pomocí webu Azure portal, PowerShell, rozhraní příkazového řádku Azure, rozhraní REST API služby Azure Monitor a šablony Azure Resource Manageru. Tyto nástroje pro diagnostiku slouží k vyhodnocení využití prostředků a statistiky provádění dotazu. 
 
 Izolované databáze, databáze ve fondu v elastických fondech a instance databáze spravované instance může, streamování protokolů Diagnostika a metriky pro snazší monitorování výkonu. Databáze k přenosu využití prostředků, pracovních procesů a relace a připojení k jednomu z následujících prostředků Azure můžete nakonfigurovat:
 

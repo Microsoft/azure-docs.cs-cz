@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: 7ef3cfe1df792721db3fe3657c08f58ca82e3c91
-ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
+ms.openlocfilehash: 41797caa89108448f0eaa27309046c01d7432823
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58652310"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59494623"
 ---
 # <a name="log-metrics-during-training-runs-in-azure-machine-learning"></a>Protokolujte metriky během cvičení běží ve službě Azure Machine Learning
 
@@ -217,37 +217,9 @@ Tento příklad rozšiřuje základní model skriptu sklearn Ridge výše. Prov�
    run = experiment.submit(src)
    ```
 
-## <a name="cancel-a-run"></a>Zrušit běh
+## <a name="manage-a-run"></a>Správa spuštění
 
-Příkaz ALTER spuštění se odešle, můžete ji zrušit i v případě, že jste ztratili odkazu na objekt, za předpokladu, které znáte název experimentu a ID spuštění. 
-
-
-```python
-from azureml.core import Experiment
-exp = Experiment(ws, "my-experiment-name")
-
-# if you don't know the run id, you can list all runs under an experiment
-for r in exp.get_runs():  
-    print(r.id, r.get_status())
-
-# if you know the run id, you can "rehydrate" the run
-from azureml.core import get_run
-r = get_run(experiment=exp, run_id="my_run_id", rehydrate=True)
-  
-# check the returned run type and status
-print(type(r), r.get_status())
-
-# you can cancel a run if it hasn't completed or failed
-if r.get_status() not in ['Complete', 'Failed']:
-    r.cancel()
-```
-Momentálně se podporuje jenom ScriptRun a PipelineRun typů podporuje operace zrušení.
-
-Kromě toho můžete zrušit běh přes rozhraní příkazového řádku pomocí následujícího příkazu:
-```shell
-az ml run cancel -r <run_id> -p <project_path>
-```
-
+[Spuštění, monitorování a zrušit tréninková spuštění](how-to-manage-runs.md) článek se soustředí na konkrétní pracovní postupy Azure Machine Learning, jak spravovat vaše experimenty.
 
 ## <a name="view-run-details"></a>Zobrazení podrobností o spuštění
 
@@ -417,7 +389,7 @@ Příklad 2: Model typu over-pass-the důvěrné ![model typu over-pass-the dův
 
 ### <a name="regression"></a>Regrese
 Pro každý regresní model programujte automatizované strojového učení služby Azure Machine Learning, zobrazí se následující grafy: 
-+ [Předpokládaná vs. Hodnota TRUE](#pvt)
++ [Předpokládaná vs. True](#pvt)
 + [Histogram zbytků](#histo)
 
 <a name="pvt"></a>
@@ -452,7 +424,7 @@ Funkce význam poskytuje skóre, která určuje, jak se jednotlivé funkce v pro
 Tyto poznámkové bloky předvedení konceptů v tomto článku:
 * [How-to-use-azureml/Training/Train-within-notebook](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training/train-within-notebook)
 * [How-to-use-azureml/Training/Train-on-local](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training/train-on-local)
-* [How-to-use-azureml/Training/Logging-API/Logging-API.ipynb](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training/logging-api)
+* [how-to-use-azureml/training/logging-api/logging-api.ipynb](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training/logging-api)
 
 [!INCLUDE [aml-clone-in-azure-notebook](../../../includes/aml-clone-for-examples.md)]
 

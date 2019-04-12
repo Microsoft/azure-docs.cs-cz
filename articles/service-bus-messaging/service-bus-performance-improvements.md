@@ -10,12 +10,12 @@ ms.service: service-bus-messaging
 ms.topic: article
 ms.date: 09/14/2018
 ms.author: aschhab
-ms.openlocfilehash: 37e2dcc13ed41911c8117dc1841a389c14e5867f
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.openlocfilehash: edd7a397598bcb5941f3ac1b29d385d6eac40f8d
+ms.sourcegitcommit: 41015688dc94593fd9662a7f0ba0e72f044915d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54848568"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59501633"
 ---
 # <a name="best-practices-for-performance-improvements-using-service-bus-messaging"></a>Osvědčené postupy pro zlepšení výkonu pomocí zasílání zpráv Service Bus
 
@@ -127,6 +127,19 @@ Předběžné načítání zpráv zvyšuje celkovou propustnost pro fronty nebo 
 Vlastnost time to live (TTL) zprávy je kontroluje server v době, kdy server odešle zprávu do klienta. Klient nekontroluje vlastnosti TTL zprávy při doručení zprávy. Místo toho můžete zprávu přijmout i v případě, že hodnota TTL zprávy prošel při zpráva byla uložena do mezipaměti klienta.
 
 Předběžné načítání nemá vliv na počet účtovaných operací zasílání zpráv a je dostupná jenom pro protokol klienta služby Service Bus. Protokol HTTP nepodporuje předběžné načítání. Předběžné načítání je k dispozici pro synchronní a asynchronní operace příjmu.
+
+## <a name="prefetching-and-receivebatch"></a>Předběžné načítání a ReceiveBatch
+
+I když koncepty předběžné načítání více zpráv najednou má podobnou sémantiku jako zpracování zpráv v dávce (ReceiveBatch), existují nějaké drobné rozdíly, které musí být udržovány v paměti, při využití takových úloh.
+
+Předběžné načítání je konfigurace (nebo režimu) na straně klienta (QueueClient a SubscriptionClient) a ReceiveBatch je operace (která má sémantiku typu žádost odpověď).
+
+Při použití takových úloh, vezměte v úvahu následující případy-
+
+* Předběžné načítání by měla být větší než nebo rovna počtu zpráv, které očekáváte od ReceiveBatch.
+* Předběžné načtení může být až n/3 krát počet zpráv zpracovaných za sekundu, kde n je výchozí doba trvání uzamčení.
+
+Zde jsou některé běžné problémy s s metodou greedy přístup (to znamená udržování předběžné načítání počtu velmi vysoké), protože předpokládá, že zprávy je pevně nastavené na konkrétní příjemce. Doporučujeme vyzkoušet si předběžné načtení hodnoty mezi prahovými hodnotami uvedených výše a empirických identifikovat vejde.
 
 ## <a name="multiple-queues"></a>Více front
 

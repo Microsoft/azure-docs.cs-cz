@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/26/2018
 ms.author: malop;kumud
-ms.openlocfilehash: efce606f9c48668f569b0fb4fc45745adc6652c4
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: 6b100846ec08ca1bdda49d0d7bce9eb78ecf019b
+ms.sourcegitcommit: 41015688dc94593fd9662a7f0ba0e72f044915d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59262138"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59501123"
 ---
 # <a name="security-groups"></a>Skupiny zabezpečení
 <a name="network-security-groups"></a>
@@ -80,6 +80,7 @@ Rozšířená pravidla zabezpečení zjednodušují definici zabezpečení pro v
 * **AzureMonitor** (pouze Resource Manager): Tato značka označuje předpony adres AzureMonitor služby. Pokud zadáte *AzureMonitor* pro hodnotu, je povolené nebo zakázané AzureMonitor přenosy. 
 * **ServiceFabric** (pouze Resource Manager): Tato značka označuje předpony adres služby ServiceFabric. Pokud zadáte *ServiceFabric* pro hodnotu, je povolené nebo zakázané ServiceFabric přenosy. 
 * **AzureMachineLearning** (pouze Resource Manager): Tato značka označuje předpony adres AzureMachineLearning služby. Pokud zadáte *AzureMachineLearning* pro hodnotu, je povolené nebo zakázané AzureMachineLearning přenosy. 
+* **BatchNodeManagement** (pouze Resource Manager): Tato značka označuje předpony adres služeb Azure BatchNodeManagement. Pokud zadáte *BatchNodeManagement* pro hodnotu provoz je povolený nebo zakázaný ze služby Batch do výpočetních uzlů.
 
 > [!NOTE]
 > Značky služeb služeb Azure, označuje předpony adres z konkrétní cloudu se používají. 

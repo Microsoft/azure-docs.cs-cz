@@ -6,13 +6,13 @@ ms.author: radennis
 ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: quickstart
-ms.date: 03/25/2019
-ms.openlocfilehash: b1cc7d2966572da23a64e4555a0e94b440efa005
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.date: 04/10/2019
+ms.openlocfilehash: 451eeaf6b30c85371728968d834aa6e34092dbc3
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/05/2019
-ms.locfileid: "59043968"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59491249"
 ---
 # <a name="create-an-azure-data-explorer-cluster-and-database-by-using-azure-cli"></a>Vytvoření clusteru Průzkumník dat Azure a databáze pomocí příkazového řádku Azure
 
@@ -79,7 +79,7 @@ Pokud výsledek obsahuje `provisioningState` s `Succeeded` hodnotu, pak clusteru
 1. Vytvoření databáze pomocí následujícího příkazu:
 
     ```azurecli-interactive
-    az kusto database create --cluster-name azureclitest --name clidatabase --resource-group testrg --soft-delete-period 3650:00:00:00 --hot-cache-period 3650:00:00:00
+    az kusto database create --cluster-name azureclitest --name clidatabase --resource-group testrg --soft-delete-period P365D --hot-cache-period P31D
     ```
 
    |**Nastavení** | **Navrhovaná hodnota** | **Popis pole**|
@@ -87,8 +87,8 @@ Pokud výsledek obsahuje `provisioningState` s `Succeeded` hodnotu, pak clusteru
    | Název clusteru | *azureclitest* | Název clusteru s novou databází.|
    | jméno | *clidatabase* | Název databáze.|
    | resource-group | *testrg* | Název skupiny prostředků, ve kterém se cluster vytvoří. |
-   | Konfigurace soft-delete období | *3650:00:00:00* | Množství času, které data zůstanou k dispozici pro dotazy. |
-   | Horká doby uložení v mezipaměti | *3650:00:00:00* | Množství času, které data zůstanou v mezipaměti. |
+   | Konfigurace soft-delete období | *P365D* | Označuje dobu, kterou data zůstanou k dispozici pro dotaz. Zobrazit [zásady uchovávání informací](/azure/kusto/concepts/retentionpolicy) Další informace. |
+   | Horká doby uložení v mezipaměti | *P31D* | Označuje dobu, kterou data zůstanou v mezipaměti. Zobrazit [mezipaměti zásad](/azure/kusto/concepts/cachepolicy) Další informace. |
 
 1. Spuštěním následujícího příkazu zobrazte databázi, kterou jste vytvořili:
 

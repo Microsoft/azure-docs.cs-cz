@@ -1,6 +1,6 @@
 ---
-title: Azure Active Directory v2.0 obory, oprávnění a vyjádření souhlasu | Dokumentace Microsoftu
-description: Popis autorizace v bodu Azure AD v2.0, včetně oborů, oprávnění a vyjádření souhlasu.
+title: Microsoft identity platform rozsahy, oprávnění a vyjádření souhlasu | Dokumentace Microsoftu
+description: Popis ověřování v Microsoft identity platform koncového bodu, včetně oborů, oprávnění a vyjádření souhlasu.
 services: active-directory
 documentationcenter: ''
 author: CelesteDG
@@ -13,26 +13,26 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 04/01/2019
+ms.date: 04/12/2019
 ms.author: celested
 ms.reviewer: hirsin, jesakowi, jmprieur
 ms.custom: fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c0614a6bc588a26a23dc9d3795e532a303a472e3
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.openlocfilehash: 87103b1052b5d9168928193eacc78a935e68067f
+ms.sourcegitcommit: 41015688dc94593fd9662a7f0ba0e72f044915d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58881643"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59501242"
 ---
-# <a name="permissions-and-consent-in-the-azure-active-directory-v20-endpoint"></a>Oprávnění a souhlas v koncovém bodu Azure Active Directory v2.0
+# <a name="permissions-and-consent-in-the-microsoft-identity-platform-endpoint"></a>Oprávnění a souhlas v koncovém bodě Microsoft identity platform
 
 [!INCLUDE [active-directory-develop-applies-v2](../../../includes/active-directory-develop-applies-v2.md)]
 
-Aplikace, které se integrují s platformou identity Microsoft podle modelu autorizace, který dává uživatelům a správcům kontrolu nad jak data přístupná. Implementace modelu autorizace byl aktualizován na koncový bod verze 2.0 a změní se jak musí aplikaci komunikovat s platformou identity Microsoft. Tento článek se týká koncepcích tohoto modelu autorizace, včetně oborů, oprávnění a vyjádření souhlasu.
+Aplikace, které se integrují s platformou identity Microsoft podle modelu autorizace, který dává uživatelům a správcům kontrolu nad jak data přístupná. Implementace modelu autorizace byl aktualizován na koncový bod Microsoft identity platform a změní se jak musí aplikaci komunikovat s platformou identity Microsoft. Tento článek se týká koncepcích tohoto modelu autorizace, včetně oborů, oprávnění a vyjádření souhlasu.
 
 > [!NOTE]
-> Koncový bod v2.0 nepodporuje všechny scénáře a funkce. Pokud chcete zjistit, zda by měl použít koncový bod verze 2.0, přečtěte si informace o [v2.0 omezení](active-directory-v2-limitations.md).
+> Koncový bod Microsoft identity platform nepodporuje všechny scénáře a funkce. Pokud chcete zjistit, zda by měl použít koncový bod Microsoft identity platform, přečtěte si informace o [Microsoft identity platform omezení](active-directory-v2-limitations.md).
 
 ## <a name="scopes-and-permissions"></a>Obory a oprávnění
 
@@ -49,17 +49,17 @@ Totéž platí pro všechny prostředky třetích stran, které integrovaly s pl
 
 * Číst kalendář uživatele
 * Zápis do kalendáře uživatele
-* Odesílání pošty jménem uživatele
+* Umožňuje posílat poštu jménem uživatele.
 
 Definováním těchto typů oprávnění prostředek má detailní kontrolu nad jeho data a jak rozhraní API funkce jsou dostupné. Aplikace třetí strany můžete požádat tato oprávnění uživatelům a správcům, kteří musí schválit žádost o dříve, než aplikace můžete získat přístup k datům nebo jednat jménem uživatele. Podle bloků funkce prostředku do menších sady oprávnění, aplikace třetích stran se dají s žádostí o pouze konkrétní oprávnění, které potřebují k provedení jejich funkce. Uživatelé a správci můžou znáte přesně jaká data aplikace má přístup k a je možné si větší jistotu, že se nechová se zlými úmysly. Vývojáři by měla vždy dodržováním konceptu nejnižších oprávnění žádá o oprávnění, které potřebují pro své aplikace fungovat.
 
-Tyto typy oprávnění OAuth 2.0, se nazývají *obory*. Se také často jednoduše označovány jako *oprávnění*. Oprávnění je vyjádřena v platformě Microsoft identity jako hodnotu řetězce. Budete pokračovat s ukázkou Microsoft Graphu, Řetězcová hodnota pro každé oprávnění je:
+Tyto typy oprávnění OAuth 2.0, se nazývají *obory*. Se také často označují jako *oprávnění*. Oprávnění je vyjádřena v platformě Microsoft identity jako hodnotu řetězce. Budete pokračovat s ukázkou Microsoft Graphu, Řetězcová hodnota pro každé oprávnění je:
 
 * Číst kalendář uživatele pomocí `Calendars.Read`
 * Zápis do kalendáře uživatele s použitím `Calendars.ReadWrite`
 * Odesílat poštu jménem uživatele pomocí podle `Mail.Send`
 
-Aplikace požádá o nejčastěji, že tyto oprávnění tak, že zadáte obory v požadavcích na v2.0 zajistí autorizaci koncového bodu. Ale určitá oprávnění vysoká oprávnění lze udělit pouze prostřednictvím souhlasu správce a obecně požádal/udělit pomocí [koncový bod souhlas správce](v2-permissions-and-consent.md#admin-restricted-permissions). Pokud se chcete dozvědět víc, čtěte dál.
+Aplikace požádá o nejčastěji, že tyto oprávnění tak, že zadáte obory v požadavcích na platformě Microsoft identity zajistí autorizaci koncového bodu. Ale určitá oprávnění vysoká oprávnění lze pouze udělené prostřednictvím souhlasu správce a požadované/udělit prostřednictvím [koncový bod souhlas správce](v2-permissions-and-consent.md#admin-restricted-permissions). Pokud se chcete dozvědět víc, čtěte dál.
 
 ## <a name="permission-types"></a>Typy oprávnění
 
@@ -72,17 +72,18 @@ Platforma identit Microsoft podporuje dva typy oprávnění: **delegovaná oprá
 _Skutečná oprávnění_ jsou oprávnění, která vaše aplikace bude mít při zasílání požadavků na cílový prostředek. Je důležité pochopit rozdíl mezi delegované a oprávnění aplikací, kterým je uděleno oprávnění aplikace a jeho skutečná oprávnění, při volání cílový prostředek.
 
 - Delegovaná oprávnění _efektivní oprávnění_ vaší aplikace bude nejnižším oprávněním průnik delegovaná oprávnění aplikace získala (prostřednictvím souhlas) a pověření aktuálně přihlášeného uživatele. Aplikace nemůže mít nikdy více oprávnění než přihlášený uživatel. V rámci organizací je možné oprávnění přihlášeného uživatele určit pomocí zásady nebo členství v jedné nebo několika rolích správce. Informace o tom, které správce rolí můžou udělit souhlas s delegovaná oprávnění, najdete v článku [oprávnění role správce ve službě Azure AD](../users-groups-roles/directory-assign-admin-roles.md).
-  Předpokládejme například, udělil vaší aplikace _User.ReadWrite.All_ delegovaná oprávnění. Toto oprávnění vaší aplikaci výslovně uděluje oprávnění ke čtení a aktualizaci profilu každého uživatele v organizaci. Pokud je přihlášený uživatel globální správce, vaše aplikace bude moct aktualizovat profil každého uživatele v organizaci. Pokud však přihlášený uživatel není v roli správce, vaše aplikace bude moct aktualizovat pouze profil přihlášeného uživatele. Nebude moct aktualizovat profily ostatních uživatelů v organizaci, protože uživatel, jehož jménem má aplikace oprávnění jednat, tato oprávnění nemá.
+
+   Předpokládejme například, udělil vaší aplikace _User.ReadWrite.All_ delegovaná oprávnění. Toto oprávnění vaší aplikaci výslovně uděluje oprávnění ke čtení a aktualizaci profilu každého uživatele v organizaci. Pokud je přihlášený uživatel globální správce, vaše aplikace bude moct aktualizovat profil každého uživatele v organizaci. Však není-li přihlášený uživatel v roli správce, vaše aplikace bude moct aktualizovat jenom profil přihlášeného uživatele. Nebude moct aktualizovat profily ostatních uživatelů v organizaci, protože uživatel, jehož jménem má aplikace oprávnění jednat, tato oprávnění nemá.
   
 - Pro oprávnění aplikací _efektivní oprávnění_ vaší aplikace bude úrovni úplná oprávnění odvozené od oprávnění. Například aplikace, který má _User.ReadWrite.All_ oprávnění k aplikaci můžete aktualizovat profil každého uživatele v organizaci. 
 
 ## <a name="openid-connect-scopes"></a>Obory OpenID Connect
 
-Implementace verze 2.0, OpenID Connect obsahuje několik jasně definované obory, které se nevztahují na konkrétní prostředek: `openid`, `email`, `profile`, a `offline_access`. `address` a `phone` OpenID Connect obory nejsou podporovány.
+Implementace Microsoft identity platform OpenID Connect obsahuje několik jasně definované obory, které se nevztahují na konkrétní prostředek: `openid`, `email`, `profile`, a `offline_access`. `address` a `phone` OpenID Connect obory nejsou podporovány.
 
 ### <a name="openid"></a>openid
 
-Pokud aplikace provádí přihlášení s použitím [OpenID Connect](active-directory-v2-protocols.md), musíte požádat o `openid` oboru. `openid` Oboru se zobrazí na stránce pracovní účet souhlasu jako "Přihlášení" oprávnění a na stránce osobní souhlasu účet Microsoft jako oprávnění "Zobrazit svůj profil a připojit se k aplikacím a službám, které používají váš účet Microsoft". Aplikace s tímto oprávněním může přijímat jedinečný identifikátor pro uživatele v podobě `sub` deklarací identity. Poskytuje aplikaci přístup ke koncovému bodu informací o uživateli. `openid` Obor je možné na koncový bod tokenu v2.0 získat tokeny typu ID, které je možné použít aplikaci pro ověřování.
+Pokud aplikace provádí přihlášení s použitím [OpenID Connect](active-directory-v2-protocols.md), musíte požádat o `openid` oboru. `openid` Oboru se zobrazí na stránce pracovní účet souhlasu jako "Přihlášení" oprávnění a na stránce osobní souhlasu účet Microsoft jako oprávnění "Zobrazit svůj profil a připojit se k aplikacím a službám, které používají váš účet Microsoft". Aplikace s tímto oprávněním může přijímat jedinečný identifikátor pro uživatele v podobě `sub` deklarací identity. Poskytuje aplikaci přístup ke koncovému bodu informací o uživateli. `openid` Obor je možné v Microsoft identity platform koncovému bodu tokenu získat tokeny typu ID, které je možné použít aplikaci pro ověřování.
 
 ### <a name="email"></a>e-mail
 
@@ -90,15 +91,15 @@ Pokud aplikace provádí přihlášení s použitím [OpenID Connect](active-dir
 
 ### <a name="profile"></a>profil
 
-`profile` Rozsahu jde použít s `openid` obor a všechny ostatní. Poskytuje přístup k aplikaci k vyžadovat značné množství informací o uživateli. Obsahuje informace, které má přístup, ale není omezena pouze na uživatele křestní jméno, příjmení, upřednostňované uživatelské jméno a ID objektu. Úplný seznam profilu deklarací, který je k dispozici v parametru id_tokens pro konkrétního uživatele, najdete v článku [ `id_tokens` odkaz](id-tokens.md).
+`profile` Rozsahu jde použít s `openid` obor a všechny ostatní. Poskytuje přístup k aplikaci k vyžadovat značné množství informací o uživateli. Zahrnuje informace, které má přístup, ale není omezen na uživatele křestní jméno, příjmení, upřednostňované uživatelské jméno a ID objektu. Úplný seznam profilu deklarací, který je k dispozici v parametru id_tokens pro konkrétního uživatele, najdete v článku [ `id_tokens` odkaz](id-tokens.md).
 
 ### <a name="offlineaccess"></a>offline_access
 
-[ `offline_access` Oboru](https://openid.net/specs/openid-connect-core-1_0.html#OfflineAccess) poskytuje aplikaci přístup k prostředkům jménem uživatele po delší dobu. Stránka pro odsouhlasení podmínek zobrazí tento obor oprávnění "Spravovat přístup k datům, které ho jste udělili přístup". Pokud uživatel potvrdí `offline_access` oboru, vaše aplikace může přijímat tokeny obnovení z koncového bodu v2.0 tokenu. Obnovovací tokeny jsou s dlouhým poločasem rozpadu. Aplikace můžete získat nové přístupové tokeny, protože platnost starších ty.
+[ `offline_access` Oboru](https://openid.net/specs/openid-connect-core-1_0.html#OfflineAccess) poskytuje aplikaci přístup k prostředkům jménem uživatele po delší dobu. Stránka pro odsouhlasení podmínek zobrazí tento obor oprávnění "Spravovat přístup k datům, které ho jste udělili přístup". Pokud uživatel potvrdí `offline_access` oboru, vaše aplikace může přijímat tokeny obnovení z Microsoft identity platform koncovému bodu tokenu. Obnovovací tokeny jsou s dlouhým poločasem rozpadu. Aplikace můžete získat nové přístupové tokeny, protože platnost starších ty.
 
-Pokud vaše aplikace nebude vyžadovat explicitně `offline_access` oboru, nezíská obnovovací tokeny. To znamená, že když uplatníte autorizační kód v [tok autorizačního kódu OAuth 2.0](active-directory-v2-protocols.md), zobrazí se pouze přístupového tokenu z `/token` koncového bodu. Přístupový token je platný po krátkou dobu. Obvykle vyprší platnost přístupového tokenu v jedné hodiny. AT, že bod, vaše aplikace potřebuje k přesměruje uživatele zpět `/authorize` koncový bod pro získání nové autorizační kód. Během toto přesměrování, v závislosti na typu aplikace může uživatel muset znovu zadat své přihlašovací údaje nebo znovu souhlas oprávnění.  Všimněte si, že při `offline_access` oboru je automaticky vyžadovaný serverem, klient musí stále žádosti za účelem přijímání obnovovací tokeny. 
+Pokud vaše aplikace nebude vyžadovat explicitně `offline_access` oboru, nezíská obnovovací tokeny. To znamená, že když uplatníte autorizační kód v [tok autorizačního kódu OAuth 2.0](active-directory-v2-protocols.md), zobrazí se pouze přístupového tokenu z `/token` koncového bodu. Přístupový token je platný po krátkou dobu. Obvykle vyprší platnost přístupového tokenu v jedné hodiny. AT, že bod, vaše aplikace potřebuje k přesměruje uživatele zpět `/authorize` koncový bod pro získání nové autorizační kód. Během toto přesměrování, v závislosti na typu aplikace může uživatel muset znovu zadat své přihlašovací údaje nebo znovu souhlas oprávnění. Zatímco `offline_access` oboru je automaticky vyžadovaný serverem, klient musí stále žádosti za účelem přijímání obnovovací tokeny.
 
-Další informace o tom, jak získat a použít obnovovací tokeny, najdete v článku [referenci na protokol v2.0](active-directory-v2-protocols.md).
+Další informace o tom, jak získat a použít obnovovací tokeny, najdete v článku [referenční informace o Microsoft identity platform protokolu](active-directory-v2-protocols.md).
 
 ## <a name="requesting-individual-user-consent"></a>Žádost o souhlas jednotlivé uživatele
 
@@ -118,7 +119,7 @@ https%3A%2F%2Fgraph.microsoft.com%2Fmail.send
 
 `scope` Parametr je místo oddělený seznam delegovaná oprávnění, které žádá o aplikaci. Každé oprávnění je indikován připojení hodnota oprávnění k prostředku identifikátor (URI ID aplikace). V tomto příkladu požadavek aplikace potřebuje oprávnění číst kalendář uživatele a odesílat poštu jménem uživatele.
 
-Poté, co uživatel zadá své přihlašovací údaje, koncový bod v2.0 vyhledá odpovídající záznam *souhlasu uživatele*. Pokud uživatel nevyjádřil k některé z požadovaných oprávnění v minulosti, ani správce vyjádřil souhlas se tato oprávnění jménem celé organizace, koncový bod v2.0 žádá uživatele, udělit požadovaná oprávnění.
+Poté, co uživatel zadá své přihlašovací údaje, koncový bod Microsoft identity platform vyhledá odpovídající záznam *souhlasu uživatele*. Pokud uživatel nevyjádřil k některé z požadovaných oprávnění v minulosti, ani správce vyjádřil souhlas se tato oprávnění jménem celé organizace, koncový bod Microsoft identity platform žádá uživatele, udělit požadovaná oprávnění.
 
 > [!NOTE]
 > V tuto chvíli `offline_access` ("spravovat přístup k datům se jste udělili přístup") a `user.read` ("přihlášení a čtení vašeho profilu") oprávnění jsou automaticky obsažené v počátečním spuštění aplikace.  Tato oprávnění jsou obvykle požadovány pro správné funkce - `offline_access` poskytuje aplikaci přístup k obnovovacích tokenů, kritické pro nativní a webové aplikace, zatímco `user.read` poskytuje přístup k `sub` deklarace identity, povolení klienta nebo aplikaci tak, aby správně Identifikujte uživatele přes čas a přístup k základní uživatelské informace.  
@@ -149,7 +150,7 @@ Pokud vaše aplikace vyžaduje přístup k správce s omezením obory pro organi
 
 Pokud aplikace požaduje vysokou úrovní oprávnění delegovaná oprávnění a správce udělí oprávnění prostřednictvím koncového bodu souhlas správce, je udělit souhlas pro všechny uživatele v tenantovi.
 
-Pokud aplikace požaduje oprávnění aplikací a správce udělí, že tato oprávnění prostřednictvím Správce souhlasit koncový bod, není Hotovo tomuto grantu jménem žádné konkrétní uživatele. Místo toho klientská aplikace jsou udělena oprávnění *přímo*. Tyto typy oprávnění se obecně používají pouze tak, že démon, služeb a jiných neinteraktivní aplikace, které běží na pozadí.
+Pokud aplikace požaduje oprávnění aplikací a správce udělí, že tato oprávnění prostřednictvím Správce souhlasit koncový bod, není Hotovo tomuto grantu jménem žádné konkrétní uživatele. Místo toho klientská aplikace jsou udělena oprávnění *přímo*. Tyto typy oprávnění se používají pouze tak, že démon, služeb a jiných neinteraktivní aplikace, které běží na pozadí.
 
 ## <a name="using-the-admin-consent-endpoint"></a>Pomocí koncového bodu souhlasu správce
 
@@ -161,10 +162,11 @@ Vzorový kód, který implementuje kroky najdete v tématu [správce s omezením
 
 ### <a name="request-the-permissions-in-the-app-registration-portal"></a>Požádat o oprávnění v portálu pro registraci aplikace
 
-Souhlas správce nepřijímá parametr oboru, takže žádná oprávnění žádá musí být staticky definovaná v registrace vaší aplikace. Obecně je osvědčeným postupem je staticky definovaných pro danou aplikaci oprávnění musí být nadmnožinou oprávnění, že bude vyžadovat dynamicky/postupně.
+Souhlas správce nepřijímá parametr oboru, takže žádná oprávnění žádá musí být staticky definovaná v registrace vaší aplikace. Obecně platí je osvědčeným postupem je staticky definovaných pro danou aplikaci oprávnění musí být nadmnožinou oprávnění, že bude vyžadovat dynamicky/postupně.
 
-Konfigurace seznamu staticky požadovaná oprávnění pro aplikaci: 
-1. Přejděte na svoji aplikaci [portál pro registraci aplikací](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/documentation/articles&deeplink=/appList), nebo [vytvořit aplikaci](quickstart-v2-register-an-app.md) Pokud jste tak již neučinili.
+#### <a name="to-configure-the-list-of-statically-requested-permissions-for-an-application"></a>Ke konfiguraci seznamu staticky požadovaná oprávnění pro aplikaci
+
+1. Přejděte do vaší aplikace v [webu Azure portal – registrace aplikací](https://go.microsoft.com/fwlink/?linkid=2083908) prostředí, nebo [vytvořit aplikaci](quickstart-register-app.md) Pokud jste tak již neučinili.
 2. Vyhledejte **oprávnění Microsoft Graphu** a pak přidejte oprávnění, která vaše aplikace vyžaduje.
 3. **Uložit** registraci aplikace.
 
@@ -172,11 +174,11 @@ Konfigurace seznamu staticky požadovaná oprávnění pro aplikaci:
 
 Obvykle když vytvoříte aplikaci, která používá koncový bod souhlas správce, aplikace musí stránku nebo zobrazení, ve kterém může správce schválení oprávnění aplikace. Tato stránka může být součástí registrace toku aplikace, součást aplikace nastavení, nebo může být vyhrazený tok "připojení". V mnoha případech je vhodné pro aplikace, aby to předvedli "připojení" Zobrazit pouze poté, co uživatel má přihlášení pomocí pracovního nebo školního účtu Microsoft.
 
-Při přihlášení uživatele do vaší aplikace, můžete určit organizaci, do které patří správce před s žádostí o schválení potřebná oprávnění. Ačkoli to není nezbytně nutné, pomůže vám vytvořit intuitivnější prostředí pro vaše organizace uživatele. Přihlášení uživatele, postupujte podle našich [v2.0 protokol kurzy](active-directory-v2-protocols.md).
+Při přihlášení uživatele do vaší aplikace, můžete určit organizaci, do které patří správce před s žádostí o schválení potřebná oprávnění. Ačkoli to není nezbytně nutné, pomůže vám vytvořit intuitivnější prostředí pro vaše organizace uživatele. Chcete-li přihlásit uživatele, postupujte podle našich [Microsoft identity platform protokol kurzy](active-directory-v2-protocols.md).
 
 ### <a name="request-the-permissions-from-a-directory-admin"></a>Požádat o oprávnění od správce adresáře
 
-Jakmile budete připraveni k žádosti o oprávnění od správce vaší organizace, můžete přesměruje uživatele v2.0 *koncový bod souhlas správce*.
+Jakmile budete připraveni k žádosti o oprávnění od správce vaší organizace, můžete přesměrovat uživatele na platformě Microsoft identity *koncový bod souhlas správce*.
 
 ```
 // Line breaks are for legibility only.
@@ -198,7 +200,7 @@ https://login.microsoftonline.com/common/adminconsent?client_id=6731de76-14a6-49
 | Parametr | Podmínka | Popis |
 | --- | --- | --- |
 | `tenant` | Požaduje se | Tenantu Active directory, kterou chcete požádat o oprávnění. Můžete zadat ve formátu popisný název nebo identifikátor GUID nebo obecně odkazovaný adresou `common` jak je znázorněno v příkladu. |
-| `client_id` | Požaduje se | ID aplikace (klient), který [portál pro registraci aplikací](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/documentation/articles&deeplink=/appList) nebo [nový portál pro registraci (preview) aplikace](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredAppsPreview) má přiřazené vaší aplikaci. |
+| `client_id` | Požaduje se | **ID aplikace (klient)** , který [webu Azure portal – registrace aplikací](https://go.microsoft.com/fwlink/?linkid=2083908) prostředí přiřazené vaší aplikaci. |
 | `redirect_uri` | Požaduje se |Identifikátor URI pro přesměrování místo, kam chcete odpověď k odeslání pro vaši aplikaci ke zpracování. Musí odpovídat přesně jeden z identifikátorů URI, které jste zaregistrovali v portálu pro registraci aplikace pro přesměrování. |
 | `state` | Doporučené | Hodnota v požadavku, která se také vrátit v odpovědi tokenu. Může být řetězec s žádný obsah, který chcete. Použijte ke kódování informace o stavu uživatele v aplikaci předtím, než požadavek na ověření došlo k chybě, například stránky nebo zobrazení, které byly na stav. |
 
@@ -235,7 +237,7 @@ Po přijetí úspěšné odpovědi z koncového bodu souhlas správce vaší apl
 
 ## <a name="using-permissions"></a>Pomocí oprávnění
 
-Jakmile uživatel souhlasí s oprávněními pro vaši aplikaci, vaše aplikace můžete získat přístupové tokeny, které představují vaše aplikace oprávnění pro přístup k prostředku nějakým způsobem. Přístupový token lze použít pouze pro jeden prostředek, ale kódovaný uvnitř přístupový token je každé oprávnění, která udělil vaší aplikace pro daný prostředek. K získání přístupového tokenu, můžete aplikace vytvořte žádost na token koncovým bodem v2.0, následujícím způsobem:
+Jakmile uživatel souhlasí s oprávněními pro vaši aplikaci, vaše aplikace můžete získat přístupové tokeny, které představují vaše aplikace oprávnění pro přístup k prostředku nějakým způsobem. Přístupový token lze použít pouze pro jeden prostředek, ale kódovaný uvnitř přístupový token je každé oprávnění, která udělil vaší aplikace pro daný prostředek. K získání přístupového tokenu, můžete aplikace vytvořte žádost na Microsoft identity platform koncovému bodu tokenu, například takto:
 
 ```
 POST common/oauth2/v2.0/token HTTP/1.1
@@ -254,24 +256,24 @@ Content-Type: application/json
 
 Výsledný token přístupu můžete použít v požadavcích HTTP k prostředku. Spolehlivě znamená k prostředku, že vaše aplikace má správná oprávnění k provedení určitého úkolu. 
 
-Další informace o protokolu OAuth 2.0 a jak získat přístupové tokeny, najdete v článku [referenci na protokol koncového bodu v2.0](active-directory-v2-protocols.md).
+Další informace o protokolu OAuth 2.0 a jak získat přístupové tokeny, najdete v článku [referenci na protokol koncového bodu Microsoft identity platform](active-directory-v2-protocols.md).
 
 ## <a name="the-default-scope"></a>Obor /.default
 
-Můžete použít `/.default` nastavit obor na pomoc s migrací aplikací z verze 1.0 koncového bodu na koncový bod verze 2.0. Toto je předdefinovaný obor pro každou aplikaci, která odkazuje na statický seznam oprávnění konfigurovaná v registraci aplikace. A `scope` hodnotu `https://graph.microsoft.com/.default` je funkčně stejný jako koncové body v1.0 `resource=https://graph.microsoft.com` – konkrétně žádá token s obory v Microsoft Graphu, který má aplikaci zaregistrovali na webu Azure Portal.
+Můžete použít `/.default` nastavit obor na pomoc s migrací aplikací z verze 1.0 koncového bodu na koncový bod Microsoft identity platform. Toto je předdefinovaný obor pro každou aplikaci, která odkazuje na statický seznam oprávnění konfigurovaná v registraci aplikace. A `scope` hodnotu `https://graph.microsoft.com/.default` je funkčně stejný jako koncové body v1.0 `resource=https://graph.microsoft.com` – konkrétně žádá token s obory v Microsoft Graphu, který má aplikaci zaregistrovali na webu Azure Portal.
 
-Obor /.default lze použít v toku OAuth 2.0, ale je obzvláště nutné v [tok On-Behalf-Of](v2-oauth2-on-behalf-of-flow.md) a [údajů klienta, které tok](v2-oauth2-client-creds-grant-flow.md).  
+Obor /.default lze použít v toku OAuth 2.0, ale je nutné v [tok On-Behalf-Of](v2-oauth2-on-behalf-of-flow.md) a [údajů klienta, které tok](v2-oauth2-client-creds-grant-flow.md).  
 
 > [!NOTE]
 > Klienty nelze kombinovat statické (`/.default`) a dynamické souhlas v jedné žádosti. Proto `scope=https://graph.microsoft.com/.default+mail.read` způsobí chybu z důvodu kombinaci typů oboru.
 
 ### <a name="default-and-consent"></a>/.default a vyjádření souhlasu
 
-`/.default` Oboru aktivuje v1.0 chování koncového bodu pro `prompt=consent` také. Požaduje souhlas pro všechna oprávnění zaregistrované aplikací bez ohledu na prostředek. Pokud zahrnutý jako součást požadavku, `/.default` oboru vrátí token, který obsahuje obory konkrétně požadovaný prostředek.
+`/.default` Oboru aktivuje v1.0 chování koncového bodu pro `prompt=consent` také. Požaduje souhlas pro všechna oprávnění zaregistrované aplikací bez ohledu na prostředek. Pokud zahrnutý jako součást požadavku, `/.default` oboru vrátí token, který obsahuje obory pro požadovaný prostředek.
 
 ### <a name="default-when-the-user-has-already-given-consent"></a>Pokud již uživatel udělil souhlas /.default
 
-Protože `/.default` je funkčně stejný jako `resource`-chování koncového bodu na střed v1.0, přináší s nimi souhlas chování koncového bodu v1.0 také. Konkrétně `/.default` výzva k povolení spuštění pouze aktivuje, pokud oprávnění udělil mezi klientem a prostředek uživatele. Existuje takový souhlas, bude se vrátil token obsahující všechny obory poskytnuté uživatelem pro daný prostředek. Nicméně, pokud byla poskytnuta žádná oprávnění, nebo `prompt=consent` byl poskytnut parametr, zobrazí se výzva k povolení spuštění pro všechny obory registrovaných klientské aplikace. 
+Protože `/.default` je funkčně stejný jako `resource`-chování koncového bodu na střed v1.0, přináší s nimi souhlas chování koncového bodu v1.0 také. Konkrétně `/.default` výzva k povolení spuštění pouze aktivuje, pokud oprávnění udělil mezi klientem a prostředek uživatele. Existuje takový souhlas, bude se vrátil token obsahující všechny obory poskytnuté uživatelem pro daný prostředek. Nicméně, pokud byla poskytnuta žádná oprávnění, nebo `prompt=consent` byl poskytnut parametr, zobrazí se výzva k povolení spuštění pro všechny obory registrovaných klientské aplikace.
 
 #### <a name="example-1-the-user-or-tenant-admin-has-granted-permissions"></a>Příklad 1: Uživatel nebo správce tenanta, udělil oprávnění
 
@@ -300,7 +302,7 @@ response_type=token            //code or a hybrid flow is also possible here
 &state=1234
 ```
 
-Tímto se vytvoří obrazovka pro vyjádření souhlasu pro všechna registrovaná oprávnění (Pokud příslušné podle výše uvedené popisy vyjádření souhlasu a `/.default`), pak vrátí tokentu id_token, nikoli přístupový token.  Toto chování pro některé starší verze klientů přesouvání z ADAL do MSAL existuje a by se nemělo používat nové klienty, které cílí na koncový bod verze 2.0.  
+Tímto se vytvoří obrazovka pro vyjádření souhlasu pro všechna registrovaná oprávnění (Pokud příslušné podle výše uvedené popisy vyjádření souhlasu a `/.default`), pak vrátí tokentu id_token, nikoli přístupový token.  Toto chování pro některé starší verze klientů přesouvání z ADAL do MSAL existuje a by se nemělo používat nové klienty, které cílí na koncový bod Microsoft identity platform.  
 
 ## <a name="troubleshooting-permissions-and-consent"></a>Řešení potíží s oprávnění a souhlas
 

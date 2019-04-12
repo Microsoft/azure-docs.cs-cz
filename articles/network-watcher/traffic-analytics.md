@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/15/2018
 ms.author: yagup;jdial
-ms.openlocfilehash: f00c816f34978ee2f14f16ee9882860750d0e658
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.openlocfilehash: 7e90e42f768ceb333ac90f56249457ffa46ae461
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/05/2019
-ms.locfileid: "59051882"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59490992"
 ---
 # <a name="traffic-analytics"></a>Analýza provozu
 
@@ -173,15 +173,16 @@ New-AzStorageAccount `
 Vyberte následující možnosti, jak je znázorněno na obrázku:
 
 1. Vyberte *na* pro **stav**
-2. Vyberte existující účet úložiště pro ukládání protokolů toku v. Pokud chcete uložit data navždy, nastavte hodnotu na *0*. Se vám účtovat žádné poplatky za úložiště Azure pro účet úložiště.
-3. Nastavte **uchování** na počet dní, které chcete uložit data.
-4. Vyberte *na* pro **Traffic Analytics stav**.
-5. Vyberte existující pracovní prostor Log Analytics nebo **vytvořit nový pracovní prostor** vytvořit nový certifikát. Pracovní prostor Log Analytics používá k ukládání agregované a indexaci dat, která se pak použije k vygenerování analýzy analýzu provozu. Pokud vyberete existující pracovní prostor, musí existovat v jednom z podporovaných oblastí a se upgradovaly na nový dotazovací jazyk. Pokud nechcete, aby existující pracovní prostor, nebo nemáte pracovní prostor v podporované oblasti, vytvořte novou. Další informace o dotazovací jazyky, naleznete v tématu [protokoly Azure monitoru upgradu na nové prohledávání protokolů](../log-analytics/log-analytics-log-search-upgrade.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json).
+2. Vyberte *verze 2* pro **protokoly toku verze**. Verze 2 obsahuje Statistika tok relace (bajtů a paketů)
+3. Vyberte existující účet úložiště pro ukládání protokolů toku v. Pokud chcete uložit data navždy, nastavte hodnotu na *0*. Se vám účtovat žádné poplatky za úložiště Azure pro účet úložiště.
+4. Nastavte **uchování** na počet dní, které chcete uložit data.
+5. Vyberte *na* pro **Traffic Analytics stav**.
+6. Vyberte existující pracovní prostor Log Analytics (OMS), nebo vyberte **vytvořit nový pracovní prostor** vytvořit nový certifikát. Pracovní prostor Log Analytics používá k ukládání agregované a indexaci dat, která se pak použije k vygenerování analýzy analýzu provozu. Pokud vyberete existující pracovní prostor, musí existovat v jednom z [podporované oblasti](#supported-regions) a se upgradovaly na nový dotazovací jazyk. Pokud nechcete, aby existující pracovní prostor, nebo nemáte pracovní prostor v podporované oblasti, vytvořte novou. Další informace o dotazovací jazyky, naleznete v tématu [Azure Log Analytics upgradovat na nové prohledávání protokolů](../log-analytics/log-analytics-log-search-upgrade.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json).
 
-    Pracovní prostor Log Analytics, který je hostitelem řešení pro analýzu provozu a skupiny zabezpečení sítě, nemusí být ve stejné oblasti. Například možná analýza provozu v pracovním prostoru v oblasti západní Evropa, dokud máte skupiny zabezpečení sítě v oblastech východní USA a západní USA. Více skupin zabezpečení sítě je možné nakonfigurovat ve stejném pracovním prostoru.
-6. Vyberte **Uložit**.
+    Pracovní prostor log analytics hostování řešení pro analýzu provozu a skupiny zabezpečení sítě, nemusí být ve stejné oblasti. Například možná analýza provozu v pracovním prostoru v oblasti západní Evropa, dokud máte skupiny zabezpečení sítě v oblastech východní USA a západní USA. Více skupin zabezpečení sítě je možné nakonfigurovat ve stejném pracovním prostoru.
+7. Vyberte **Uložit**.
 
-    ![Výběr účtu úložiště, pracovního prostoru Log Analytics a povolení analýzy provozu](./media/traffic-analytics/selection-of-storage-account-log-analytics-workspace-and-traffic-analytics-enablement.png)
+    ![Výběr účtu úložiště, pracovního prostoru Log Analytics a povolení analýzy provozu](./media/traffic-analytics/selection-of-storage-account-log-analytics-workspace-and-traffic-analytics-enablement-nsg-flowlogs-v2.png)
 
 Opakujte předchozí kroky pro žádné jiné skupiny zabezpečení sítě pro které chcete povolit analýzu provozu pro. Data z protokolů toku se odesílají do pracovního prostoru, zajistěte proto, že místní zákony a předpisy ve vaší zemi povolit ukládání dat v oblasti, ve kterém existuje pracovní prostor.
 
@@ -300,7 +301,7 @@ Některé z informací, které můžete chtít získat po plně je nakonfigurova
     ![Distribuce virtuální sítě připraveném řídicím panelu](./media/traffic-analytics/dashboard-showcasing-virtual-network-distribution.png)
 
 - Virtuální síťové topologie ukazuje na horním pásu karet pro výběr parametrů, jako je virtuální sítě (přenos mezi virtuálními sítěmi virtuální síť připojení/aktivní nebo neaktivní), externí připojení, aktivní toky a škodlivé toky ve virtuální síti.
-- Můžete filtrovat podle předplatných, pracovní prostory, skupiny prostředků a časový interval virtuální síťové topologie. Další filtry, které vám pomůžou pochopit tok jsou: Tok typ (mezi virtuálními sítěmi, IntraVNET atd.), směr toku (vstupní, výstupní), stav toku (povolené, Uzavřeno) virtuální sítě (cílové a připojeno), typ připojení (partnerského vztahu nebo brány - P2S a S2S) a skupiny zabezpečení sítě. Tyto filtry použijte a zaměřte se na virtuální sítě, které chcete prozkoumat podrobněji.
+- Můžete filtrovat podle předplatných, pracovní prostory, skupiny prostředků a časový interval virtuální síťové topologie. Další filtry, které vám pomůžou pochopit tok jsou: Tok typ (mezi virtuálními sítěmi, IntraVNET a tak dále), směr toku (vstupní, výstupní), stav toku (povolená, blokovaná), virtuální sítě (cílené a připojené), typ připojení (partnerský vztah nebo brány – S2S a P2S) a skupina zabezpečení sítě. Tyto filtry použijte a zaměřte se na virtuální sítě, které chcete prozkoumat podrobněji.
 - Virtuální síťové topologie znázorňuje distribuce provozu do virtuální sítě s ohledem na toků (povolené nebo blokované/příchozí/odchozí/Benign/škodlivé), aplikační protokol a skupin zabezpečení sítě, například:
 
     ![Virtuální síťové topologie, která ukazuje podrobnosti o distribuci a tok provozu](./media/traffic-analytics/virtual-network-topology-showcasing-traffic-distribution-and-flow-details.png)

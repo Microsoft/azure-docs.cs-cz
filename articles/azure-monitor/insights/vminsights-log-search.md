@@ -11,14 +11,14 @@ ms.service: azure-monitor
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/15/2019
+ms.date: 04/10/2019
 ms.author: magoedte
-ms.openlocfilehash: 12f8b3d9dd461dc5d09d76245aa02f0e1cefc343
-ms.sourcegitcommit: f331186a967d21c302a128299f60402e89035a8d
+ms.openlocfilehash: 8b6745a2b9afe8d3101585e3f7a13f2fc978c84a
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58188964"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59492084"
 ---
 # <a name="how-to-query-logs-from-azure-monitor-for-vms-preview"></a>Jak provádět dotazy protokolů ze služby Azure Monitor pro virtuální počítače (preview)
 Azure Monitor pro virtuální počítače shromažďuje výkonu a metrik připojení, počítače a zpracování dat inventáře a informace o stavu a předá ji do pracovního prostoru Log Analytics ve službě Azure Monitor.  Tato data jsou k dispozici pro [dotazu](../../azure-monitor/log-query/log-query-overview.md) ve službě Azure Monitor. Tato data můžete použít scénáře, které zahrnují plánování migrace, kapacitu analýza, zjišťování a řešení potíží s výkonem na vyžádání.
@@ -125,7 +125,12 @@ Každá vlastnost RemoteIp v *VMConnection* tabulky je porovnávána s sadu IP a
 ### <a name="ports"></a>Porty 
 Porty na počítači, které aktivně přijímat příchozí provoz nebo potenciálně může přijímat provoz, ale jsou nečinné generování sestav časovém období se zapisují do tabulky VMBoundPort.  
 
-Ve výchozím nastavení se data zapisují v této tabulce. Pokud chcete, aby data zapsaná do této tabulky, pošlete prosím e-mail na vminsights@microsoft.com spolu s ID pracovního prostoru a oblasti pracovního prostoru.   
+>[!NOTE]
+>Azure Monitor pro virtuální počítače se nepodporuje, shromažďování a zaznamenávání dat portu v pracovním prostoru Log Analytics v těchto oblastech:  
+>- USA – východ  
+>- Západní Evropa
+>
+> Shromažďování těchto dat je povolená v jiném [podporované oblasti](vminsights-onboard.md#log-analytics) pro monitorování Azure pro virtuální počítače. 
 
 Každý záznam v VMBoundPort je identifikován následující pole: 
 

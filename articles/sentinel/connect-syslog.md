@@ -1,6 +1,6 @@
 ---
-title: Shromažďovat data Syslogu ve verzi Preview Sentinelu Azure | Dokumentace Microsoftu
-description: Zjistěte, jak shromažďovat data protokolu Syslog v ověřovacích Azure.
+title: Připojení k Azure Preview ověřovací data Syslogu | Dokumentace Microsoftu
+description: Zjistěte, jak se připojit k Azure Sentinelu data Syslogu.
 services: sentinel
 documentationcenter: na
 author: rkarlin
@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 2/28/2019
+ms.date: 04/07/2019
 ms.author: rkarlin
-ms.openlocfilehash: 55949da97f58f1d8c1670f69d25e92d6bb4e9eef
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 9144f20eae5a925ad88054e972c99ae024bcefe3
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57447298"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59496518"
 ---
 # <a name="connect-your-external-solution-using-syslog"></a>Připojení externích řešení pomocí protokolu Syslog
 
@@ -30,18 +30,18 @@ ms.locfileid: "57447298"
 Všechny místní zařízení, která podporuje Syslog Sentinelu Azure se můžete připojit. To se provádí pomocí agenta založené na počítači s Linuxem mezi zařízením a Sentinelu Azure. Pokud je počítač s Linuxem v Azure, můžete Streamovat protokoly ze zařízení nebo aplikaci k vyhrazený pracovní prostor vytváření v Azure a jejím připojení. Pokud není počítač s Linuxem v Azure, můžete Streamovat protokoly z vašeho zařízení do vyhrazené místní virtuální počítač nebo počítač, na který nainstalujete agenta pro Linux. 
 
 > [!NOTE]
-> Pokud vaše zařízení podporuje formát CEF Syslog, připojení je kompletní a měli byste tuto možnost zvolte a postupujte podle pokynů v [shromažďování dat z formátu CEF](connect-common-event-format.md).
+> Pokud vaše zařízení podporuje formát CEF Syslog, připojení je kompletní a měli byste tuto možnost zvolte a postupujte podle pokynů v [připojení dat z formátu CEF](connect-common-event-format.md).
 
 ## <a name="how-it-works"></a>Jak to funguje
 
-Shromažďování Syslogu se provádí pomocí agenta pro Linux. Ve výchozím nastavení agenta pro Linux přijímá události z démona Syslog přes protokol UDP, ale v případech, kde se počítače s Linuxem očekává shromažďovat k velkému počtu události procesu Syslog, jako když agenta pro Linux je přijímáte události z jiných zařízení, konfigurace je upravit tak, aby pomocí přenosu protokolu TCP mezi démona Syslogu a agenta.
+Syslog připojení se provádí pomocí agenta pro Linux. Ve výchozím nastavení agenta pro Linux přijímá události z démona Syslog přes protokol UDP, ale v případech, kde se počítače s Linuxem očekává shromažďovat k velkému počtu události procesu Syslog, jako když agenta pro Linux je přijímáte události z jiných zařízení, konfigurace je upravit tak, aby pomocí přenosu protokolu TCP mezi démona Syslogu a agenta.
 
 ## <a name="connect-your-syslog-appliance"></a>Připojit zařízení Syslog
 
-1. Na portálu Azure Sentinelu vyberte **shromažďování dat** a zvolte **Syslog** dlaždici.
+1. Na portálu Azure Sentinelu vyberte **datové konektory** a zvolte **Syslog** dlaždici.
 2. Pokud není počítač s Linuxem v Azure, stáhněte a nainstalujte Azure Sentinelu **agenta pro Linux** na vaše zařízení. 
 1. Pokud pracujete v Azure, vyberte nebo vytvořte virtuální počítač, který v rámci pracovního prostoru Sentinelu Azure, který je vyhrazen pro příjem zprávy Syslog. Vyberte virtuální počítač v Azure ověřovacích pracovních prostorech a klikněte na tlačítko **připojit** v horní části levého podokna.
-3. Klikněte na tlačítko **konfigurace protokolů, které se mají shromažďovat** zpět v nastavení konektoru Syslog. 
+3. Klikněte na tlačítko **konfigurace protokolů připojený k Internetu** zpět v nastavení konektoru Syslog. 
 4. Klikněte na tlačítko **stiskněte sem a otevřete tak okno Konfigurace**.
 1. Vyberte **Data** a potom **Syslog**.
    - Zajistěte, aby každé zařízení, které e-mail posíláte podle Syslog je v tabulce. Pro každé zařízení chcete monitorovat, nastavit závažnost. Klikněte na tlačítko **Použít**.

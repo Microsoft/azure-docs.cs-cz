@@ -10,11 +10,11 @@ ms.service: data-lake-analytics
 ms.topic: conceptual
 ms.date: 06/23/2017
 ms.openlocfilehash: 9de5c7228944bd0448d9dfa833ef223140ccf0e8
-ms.sourcegitcommit: 6e32f493eb32f93f71d425497752e84763070fad
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/10/2019
-ms.locfileid: "59469603"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59488707"
 ---
 # <a name="get-started-with-u-sql-in-azure-data-lake-analytics"></a>Začínáme s jazykem U-SQL ve službě Azure Data Lake Analytics
 U-SQL je jazyk, který spojuje deklarativní SQL pomocí imperativního jazyka C# umožňuje zpracovávat data v libovolném měřítku. Prostřednictvím funkce škálovatelné a distribuované dotazu U-SQL můžete efektivně analyzovat data napříč relačními úložišť, jako je Azure SQL Database. Pomocí U-SQL můžete zpracovávání nestrukturovaných dat použitím schéma při čtení a vložení vlastní logiky a uživatelem definovanými funkcemi. Navíc U-SQL obsahuje rozšíření, která umožňuje velice přesně kontrolovat, jak provádět ve velkém měřítku. 

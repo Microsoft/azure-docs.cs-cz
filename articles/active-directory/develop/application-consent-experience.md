@@ -12,18 +12,18 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/11/2018
+ms.date: 03/27/2019
 ms.author: celested
-ms.reviewer: zawad
+ms.reviewer: zachowd
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 86424a7c797dfd7e73ad5f0e56929616d9653b3d
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: a7de892143e1c69953cc60429ea0d24df194f0df
+ms.sourcegitcommit: 41015688dc94593fd9662a7f0ba0e72f044915d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56170971"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59500477"
 ---
-# <a name="understanding-azure-ad-application-consent-experiences"></a>Principy souhlasu s aplikací Azure AD narazí
+# <a name="understanding-azure-ad-application-consent-experiences"></a>Prostředí vyjádření souhlasu s aplikací Azure AD
 
 Přečtěte si že další informace o aplikaci Azure Active Directory (Azure AD) souhlas činnost koncového uživatele. Proto můžete inteligentně spravovat aplikace pro vaši organizaci nebo vyvíjet aplikace s více bezproblémové prostředí pro vyjádření souhlasu.
 
@@ -85,4 +85,5 @@ Tady jsou souhlasu prostředí, které může uživatel zobrazit v běžných sc
 
 ## <a name="next-steps"></a>Další postup
 - Získejte podrobný přehled o [způsob implementace rozhraní Azure AD pro udělování souhlasu souhlasu](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications).
-- Větší hloubky, přečtěte si [použití rozhraní pro udělování souhlasu víceklientské aplikaci](https://docs.microsoft.com/azure/active-directory/develop/active-directory-devhowto-multi-tenant-overview) k implementaci "user" a "admin" souhlas, podpora více pokročilé modely vícevrstvých aplikací.
+- Větší hloubky, přečtěte si [použití rozhraní pro udělování souhlasu víceklientské aplikaci](active-directory-devhowto-multi-tenant-overview.md) k implementaci "user" a "admin" souhlas, podpora více pokročilé modely vícevrstvých aplikací.
+- Přečtěte si [konfigurace domény aplikace publisher](howto-configure-publisher-domain.md).

@@ -11,19 +11,19 @@ ms.devlang: na
 ms.topic: include
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 03/20/2019
+ms.date: 04/10/2019
 ms.author: jmprieur
 ms.custom: include file
-ms.openlocfilehash: bb28862ad6452eab3130eeb2dc0b4c269839d306
-ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
+ms.openlocfilehash: f0cc888eaf3724737e9c868c69a641094a19348c
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58203170"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59498367"
 ---
 # <a name="call-the-microsoft-graph-api-from-a-windows-desktop-app"></a>Volání rozhraní Microsoft Graph API z desktopové aplikace Windows
 
-Tato příručka ukazuje, jak získat přístupový token a volání rozhraní Microsoft Graph API nebo jiné rozhraní API, které vyžadují přístupových tokenů z Azure Active Directory v2.0 koncový bod nativní aplikace pro Windows Desktop .NET (XAML).
+Tato příručka ukazuje, jak nativní Windows Desktop .NET (XAML) aplikace můžete získat přístupový token a volat rozhraní Microsoft Graph API nebo jiné rozhraní API, které vyžadují přístup tokeny od platformu identit Microsoft pro koncový bod v2.0 vývojáře (dříve s názvem Azure AD).
 
 Po dokončení průvodce, vaše aplikace bude moct volat chráněné rozhraní API, které používá osobní účty (včetně outlook.com, live.com a další). Aplikace bude také použít pracovní a školní účty z jakéhokoli společnosti nebo organizace, která používá Azure Active Directory.  
 
@@ -32,13 +32,13 @@ Po dokončení průvodce, vaše aplikace bude moct volat chráněné rozhraní A
 
 ## <a name="how-the-sample-app-generated-by-this-guide-works"></a>Jak funguje ukázkové aplikace vygenerované v této příručce
 
-![Ukazuje, jak ukázková aplikace vygenerované tohle funguje kurzy](./media/active-directory-develop-guidedsetup-windesktop-intro/windesktophowitworks-updated.png)
+![Ukazuje, jak ukázková aplikace vygenerované tohle funguje kurzy](./media/active-directory-develop-guidedsetup-windesktop-intro/windesktophowitworks.svg)
 
-Ukázkovou aplikaci, kterou vytvoříte v této příručce umožňuje aplikaci Windows Desktop, který se dotazuje rozhraní Microsoft Graph API nebo webové rozhraní API, které přijímá tokeny z koncového bodu Azure Active Directory v2.0. Pro tento scénář přidejte token na požadavky HTTP přes autorizační hlavičky. Microsoft Authentication Library (MSAL) zpracovává získání tokenu a obnovení.
+Ukázkovou aplikaci, kterou vytvoříte v této příručce umožňuje aplikaci Windows Desktop, který se dotazuje rozhraní Microsoft Graph API nebo webové rozhraní API, které přijímá tokeny z koncového bodu Microsoft identity platform. Pro tento scénář přidejte token na požadavky HTTP přes autorizační hlavičky. Microsoft Authentication Library (MSAL) zpracovává získání tokenu a obnovení.
 
 ## <a name="handling-token-acquisition-for-accessing-protected-web-apis"></a>Zpracování získání tokenu pro přístup k chráněné webové rozhraní API
 
-Po ověření uživatele je ukázková aplikace přijme token, který můžete použít k dotazování rozhraní Microsoft Graph API nebo webové rozhraní API, která je zabezpečena pomocí služby Azure Active Directory v2.
+Po ověření uživatele je ukázková aplikace přijme token, který můžete použít k dotazování rozhraní Microsoft Graph API nebo webové rozhraní API, která je zabezpečena pomocí platforma identit Microsoft pro vývojáře.
 
 Rozhraní API, jako je například Microsoft Graphu vyžaduje token pro povolení přístupu ke konkrétním prostředkům. Token je například potřeba čtení profilu uživatele, přístup uživatele kalendáře nebo odeslat e-mailu. Aplikace může požadovat přístupový token s použitím MSAL k těmto prostředkům přistupovat zadáním obory API. Tento přístupový token se pak přidá do hlavičky autorizace HTTP pro každé volání, která se provádí proti chráněnému prostředku.
 
@@ -50,4 +50,4 @@ Tato příručka používá následující balíčky NuGet:
 
 |Knihovna|Popis|
 |---|---|
-|[Microsoft.Identity.Client](https://www.nuget.org/packages/Microsoft.Identity.Client)|Knihovna Microsoft Authentication Library (MSAL)|
+|[Microsoft.Identity.Client](https://www.nuget.org/packages/Microsoft.Identity.Client)|Microsoft Authentication Library (MSAL.NET)|

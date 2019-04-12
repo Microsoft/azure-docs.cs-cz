@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 03/19/2019
 ms.author: hrasheed
-ms.openlocfilehash: 28f04f5ab3cf8310a6ee3828405910d34b31591b
-ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
+ms.openlocfilehash: 9631e4b82ceb14a98740491b98288d75dd23f9a3
+ms.sourcegitcommit: 41015688dc94593fd9662a7f0ba0e72f044915d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58227570"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59501004"
 ---
 # <a name="automatically-scale-azure-hdinsight-clusters-preview"></a>Automatické škálování clusterů Azure HDInsight (preview)
 
@@ -83,7 +83,7 @@ Další informace o vytváření clusterů se šablonami Resource Manageru, najd
 
 ### <a name="enable-and-disable-autoscale-for-a-running-cluster"></a>Povolení a zákaz automatického škálování pro spuštěný cluster
 
-Můžete povolit nebo zakázat automatické škálování pro clustery HDInsight vytvořená po 1. ledna 2019 prostřednictvím webu Azure portal.
+Můžete jenom povolit nebo zakázat automatické škálování pro nových clusterů HDInsight.
 
 ## <a name="monitoring"></a>Monitorování
 
@@ -108,8 +108,8 @@ Výše uvedené metriky jsou kontrolovány každých 60 sekund. Automatické šk
 
 Při zjištění těchto podmínek, automatické škálování vydá požadavek vertikálně navýšit kapacitu:
 
-* Celkový počet čekajících procesoru je větší než celkový volný čas procesoru pro více než 1 minuta.
-* Celkový počet čekajících paměti je větší než celkové volné paměti pro více než 1 minuta.
+* Celkový počet čekajících procesoru je větší než celkový čas procesoru zdarma po dobu více než 3 minuty.
+* Celkový počet čekajících paměti je větší než celkové volné paměti pro více než 3 minuty.
 
 Můžeme počítat počet nových pracovních uzlech je třeba splnit požadavky na aktuální využití procesoru a paměti a potom vydat žádost vertikálně navýšit kapacitu, která se přidá tento počet nových pracovních uzlech.
 
@@ -120,7 +120,7 @@ Při zjištění těchto podmínek, automatického škálování se vydejte žá
 * Celkový počet čekajících procesoru je menší než celkový čas procesoru zdarma po dobu více než 10 minut.
 * Celkový počet čekajících paměti je menší než celkové volné paměti pro více než 10 minut.
 
-Podle počtu kontejnerů AM za uzel a aktuální využití procesoru a paměti požadavky, automatické škálování vydá požadavek na odebrání počtu uzlů, určení uzlů, které jsou možné kandidáty pro odstranění. Ve výchozím nastavení budou odebrány dva uzly v jednom cyklu.
+Podle počtu kontejnerů AM za uzel a aktuální využití procesoru a paměti požadavky, automatické škálování vydá požadavek na odebrání počtu uzlů, určení uzlů, které jsou možné kandidáty pro odstranění. Škálování dolů se aktivuje vyřazení z provozu uzly a poté, co jsou zcela Vyřazená z provozu uzly, budou odebrány.
 
 ## <a name="next-steps"></a>Další postup
 

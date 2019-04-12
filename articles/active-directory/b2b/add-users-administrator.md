@@ -5,22 +5,22 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: conceptual
-ms.date: 2/6/2019
+ms.date: 04/10/2019
 ms.author: mimart
 author: msmimart
-manager: daveba
+manager: celested
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e43123e77a5c1cfb37f51c472420d3d7f2d440c9
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: ef0a4e4a05427b1ed83b017b7a49862596aaf50a
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56173364"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59490907"
 ---
 # <a name="add-azure-active-directory-b2b-collaboration-users-in-the-azure-portal"></a>Přidat uživatele spolupráce Azure Active Directory B2B na webu Azure Portal
 
-Jako globální správce nebo uživatel, který se přiřadí role adresáře správce s omezením můžete na webu Azure portal se pozvat uživatele spolupráce B2B. Můžete pozvat uživatele typu Host do adresáře, skupinu nebo aplikaci. Po pozvat uživatele prostřednictvím některé z těchto metod, pozvaný uživatel účet se přidá do služby Azure Active Directory (Azure AD), mají typ uživatel *hosta*. Uživatel typu Host musíte pak uplatňovat svou pozvánku k přístupu k prostředkům.
+Jako uživatel, který se přiřadí role adresáře správce s omezením můžete na webu Azure portal se pozvat uživatele spolupráce B2B. Můžete pozvat uživatele typu Host do adresáře, skupinu nebo aplikaci. Po pozvat uživatele prostřednictvím některé z těchto metod, pozvaný uživatel účet se přidá do služby Azure Active Directory (Azure AD), mají typ uživatel *hosta*. Uživatel typu Host musíte pak uplatňovat svou pozvánku k přístupu k prostředkům.
 
 Po přidání uživatele typu Host do adresáře, můžete buď poslat uživateli typu Host přímý odkaz do sdílené aplikace, nebo uživatel typu Host můžete kliknout na adresu URL uplatnění v e-mailová pozvánka. Další informace o uplatnění procesu, naleznete v tématu [uplatnění pozvání spolupráce B2B](redemption-experience.md).
 
@@ -31,7 +31,7 @@ Po přidání uživatele typu Host do adresáře, můžete buď poslat uživatel
 
 Chcete-li přidat uživatele spolupráce B2B do adresáře, postupujte podle těchto kroků:
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com) jako správce.
+1. Přihlaste se k [webu Azure portal](https://portal.azure.com) jako uživatel, který je přiřazen, některý správce s omezením role adresáře.
 2. V navigačním podokně vyberte **Azure Active Directory**.
 3. V části **Spravovat** vyberte **Uživatele**.
 4. Vyberte **Nový uživatel typu host**.

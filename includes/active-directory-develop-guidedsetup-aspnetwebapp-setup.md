@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 09/17/2018
 ms.author: jmprieur
 ms.custom: include file
-ms.openlocfilehash: 701b08cafd2e6d38a68252ea5919c8f4cd7de9b4
-ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
+ms.openlocfilehash: dcfc341b89a3cfebcb5538f88481fd2fbb2936a7
+ms.sourcegitcommit: f24b62e352e0512dfa2897362021b42e0cb9549d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58203590"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59505797"
 ---
 ## <a name="set-up-your-project"></a>Nastavení projektu
 
@@ -51,6 +51,7 @@ Tato část popisuje postup instalace a konfigurace ověřovacího kanálu prost
 <!--end-collapse-->
 
 ## <a name="configure-the-authentication-pipeline"></a>Konfigurace ověřovacího kanálu
+
 Následující postup slouží k vytvoření middleware OWIN při spuštění třída ke konfiguraci ověřování OpenID Connect. Tato třída se spustí automaticky při spuštění procesu služby IIS.
 
 > [!TIP]
@@ -113,10 +114,10 @@ Následující postup slouží k vytvoření middleware OWIN při spuštění t�
                     ResponseType = OpenIdConnectResponseType.IdToken,
                     // ValidateIssuer set to false to allow personal and work accounts from any organization to sign in to your application
                     // To only allow users from a single organizations, set ValidateIssuer to true and 'tenant' setting in web.config to the tenant name
-                    // To allow users from only a list of specific organizations, set ValidateIssuer to true and use ValidIssuers parameter 
+                    // To allow users from only a list of specific organizations, set ValidateIssuer to true and use ValidIssuers parameter
                     TokenValidationParameters = new TokenValidationParameters()
                     {
-                        ValidateIssuer = false
+                        ValidateIssuer = false // This is a simplification
                     },
                     // OpenIdConnectAuthenticationNotifications configures OWIN to send notification of failed authentications to OnAuthenticationFailed method
                     Notifications = new OpenIdConnectAuthenticationNotifications
@@ -140,6 +141,9 @@ Následující postup slouží k vytvoření middleware OWIN při spuštění t�
         }
     }
     ```
+
+> [!NOTE]
+> Nastavení `ValidateIssuer = false` je zjednodušení tohoto rychlého startu. V reálné aplikace, které potřebujete k ověření vystavitele najdete v ukázkách pochopit, jak to provést.
 
 <!--start-collapse-->
 > ### <a name="more-information"></a>Další informace

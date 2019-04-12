@@ -1,5 +1,5 @@
 ---
-title: Co je Správa zařízení Azure IoT OPC UA | Dokumentace Microsoftu
+title: Co je OPC dvojče – Azure | Dokumentace Microsoftu
 description: Přehled dvojčete OPC
 author: dominicbetts
 ms.author: dobett
@@ -8,15 +8,16 @@ ms.topic: overview
 ms.service: iot-industrialiot
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: 3bbc20aa61faafb1405fa756b334bae05ec4129b
-ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
+ms.openlocfilehash: 9daf1a7e58af23cb78705691217bf9709359c4d5
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58759242"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59496807"
 ---
 # <a name="what-is-azure-iot-open-platform-communications-opc-device-management"></a>Co je Správa zařízení Azure IoT otevřené platformy komunikací OPC ()?
-Správa zařízení Azure IoT OPC UA, označované také jako Dvojčete OPC se skládá z mikroslužeb, které slouží k připojení cloudu a objekt pro vytváření sítí Azure IoT Edge a IoT Hub. Dvojče OPC poskytuje zjišťování, registrace a vzdáleného řízení průmyslová zařízení prostřednictvím rozhraní REST API. Dvojče OPC nevyžaduje architekturu Unified OPC (OPC UA) sady SDK, je programování jazykově nezávislé a můžou být součástí bez serveru pracovního postupu. Tento článek popisuje několik případů použití Dvojčat OPC.
+
+Dvojče OPC se skládá z mikroslužeb, které slouží k připojení cloudu a objekt pro vytváření sítí Azure IoT Edge a IoT Hub. Dvojče OPC poskytuje zjišťování, registrace a vzdáleného řízení průmyslová zařízení prostřednictvím rozhraní REST API. Dvojče OPC nevyžaduje architekturu Unified OPC (OPC UA) sady SDK, je programování jazykově nezávislé a můžou být součástí bez serveru pracovního postupu. Tento článek popisuje několik případů použití Dvojčat OPC.
 
 ## <a name="discovery-and-control"></a>Zjišťování a řízení
 Pro jednoduché pro registraci a zjišťování můžete použít dvojče OPC.
@@ -41,4 +42,4 @@ Dvojče OPC jde použít s aplikace napsané v libovolném programovacím jazyce
 Teď, když jste se dozvěděli o Dvojčete OPC a jeho použití, je zde navrhované další krok:
 
 > [!div class="nextstepaction"]
-> [Co je trezor OPC](overview-opc-twin-architecture.md)
+> [Co je OPC Vault](overview-opc-twin-architecture.md)

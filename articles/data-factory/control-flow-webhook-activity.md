@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 03/25/2019
 ms.author: shlo
-ms.openlocfilehash: 0b8b892f02e54c3b0ddb155af97ce63ff115bb1f
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.openlocfilehash: 6ec43b06ce266b9ceaddb5dd21cbf52f509d6596
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58522904"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59495904"
 ---
 # <a name="webhook-activity-in-azure-data-factory"></a>Webhook aktivity ve službě Azure Data Factory
 Zavěšení aktivitu webu můžete použít k řízení provádění kanálů přes váš vlastní kód. Použití webhooku aktivity, zákazníci volání koncového bodu a předat adresu URL zpětného volání. Spuštění kanálu čeká zpětné volání, které má být volána před pokračováním na další aktivitu.
@@ -74,10 +74,10 @@ Aktivita webu hook samotné selže, pouze, pokud selže volání vlastního konc
 ## <a name="next-steps"></a>Další postup
 Zobrazit další aktivity toku řízení podporovaných službou Data Factory:
 
-- [Aktivita podmínky If](control-flow-if-condition-activity.md)
+- [Aktivita podmínky Když](control-flow-if-condition-activity.md)
 - [Aktivita spuštění kanálu](control-flow-execute-pipeline-activity.md)
-- [Pro každou aktivitu](control-flow-for-each-activity.md)
-- [Aktivita GetMetadata](control-flow-get-metadata-activity.md)
+- [Aktivita For Each](control-flow-for-each-activity.md)
+- [Aktivita získání metadat](control-flow-get-metadata-activity.md)
 - [Aktivita vyhledávání](control-flow-lookup-activity.md)
-- [Webová aktivita](control-flow-web-activity.md)
+- [Aktivita webu](control-flow-web-activity.md)
 - [Aktivita Until](control-flow-until-activity.md)

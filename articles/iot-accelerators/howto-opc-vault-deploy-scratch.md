@@ -1,5 +1,5 @@
 ---
-title: Jak nasadit Azure IoT OPC UA modul pro správu certifikát od nuly | Dokumentace Microsoftu
+title: Nasazení modulu OPC trezor úplně od začátku – Azure | Dokumentace Microsoftu
 description: Jak nasazovat trezor OPC úplně od začátku.
 author: dominicbetts
 ms.author: dobett
@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.service: iot-industrialiot
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: a3a9d21b70f16482f05d27aa0df8d8865459aeb4
-ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
+ms.openlocfilehash: dedba42d7e4b8d603d97522cf0173f41efd20b3a
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58759426"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59496892"
 ---
-# <a name="deploy-opc-vault-from-scratch"></a>Nasazovat trezor OPC úplně od začátku
+# <a name="deploy-opc-vault-from-scratch"></a>Nasazení služby OPC Vault od nuly
 
-Azure IoT OPC UA Správa certifikátů a také znát pod některým z trezoru OPC, mikroslužby, můžete nakonfigurovat registr, je správa životního cyklu certifikátu pro OPC UA serverových a klientských aplikací v cloudu. Tento článek ukazuje, jak nasazovat trezor OPC úplně od začátku.
+OPC trezor je mikroslužeb, která můžete konfigurovat, registrace a správa životního cyklu certifikátu pro server OPC UA a klientských aplikací v cloudu. Tento článek ukazuje, jak nasazovat trezor OPC úplně od začátku.
 
 ## <a name="configuration-and-environment-variables"></a>Konfigurace a proměnnými prostředí
 

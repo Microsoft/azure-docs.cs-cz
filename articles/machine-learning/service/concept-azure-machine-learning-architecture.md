@@ -1,29 +1,31 @@
 ---
-title: 'Strojové učení v cloudu: Podmínky a architektura'
+title: Architektura a klíčové koncepty
 titleSuffix: Azure Machine Learning service
-description: Další informace o architektuře, terminologie a koncepty, které tvoří službu Azure Machine Learning. Dozvíte se taky o obecný pracovní postup použití služby a služby Azure, které používá služba Azure Machine Learning.
+description: Další informace o architektuře, podmínky, koncepty a pracovní postup, který tvoří služby Azure Machine Learning.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.author: larryfr
 author: Blackmist
-ms.date: 12/04/2018
+ms.date: 04/15/2019
 ms.custom: seodec18
-ms.openlocfilehash: 1cc1b1584fdeb24aaba07f33cc260532c75249a2
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: 83ca4d2bf767d338943c396330b36f3f8180e170
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59269125"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59489943"
 ---
 # <a name="how-azure-machine-learning-service-works-architecture-and-concepts"></a>Fungování služby Azure Machine Learning: Architektura a koncepty
 
-Tento článek popisuje architekturu a koncepty pro službu Azure Machine Learning. Hlavní součástí služby a obecný pracovní postup pro používání služby jsou uvedeny v následujícím diagramu:
+Další informace o architektuře, koncepty a pracovních postupů pro službu Azure Machine Learning. Hlavní součástí služby a obecný pracovní postup pro používání služby jsou uvedeny v následujícím diagramu:
 
 [![AArchitektura služby Machine Learning zure a pracovního postupu](./media/concept-azure-machine-learning-architecture/workflow.png)](./media/concept-azure-machine-learning-architecture/workflow.png#lightbox)
 
-Pracovní postup probíhá obecně toto pořadí:
+## <a name="workflow"></a>Pracovní postup
+
+Informace o pracovním postupu počítače následující obecně toto pořadí:
 
 1. Vývoj strojového učení trénovací skripty v **Python**.
 1. Vytvoření a konfigurace **cílové výpočetní prostředí**.

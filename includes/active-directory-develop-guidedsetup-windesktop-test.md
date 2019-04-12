@@ -11,15 +11,15 @@ ms.devlang: na
 ms.topic: include
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/17/2018
+ms.date: 04/10/2019
 ms.author: jmprieur
 ms.custom: include file
-ms.openlocfilehash: 6345eca674086801f8bb0f45476009f04a10f2e3
-ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
+ms.openlocfilehash: a11b291ab89dc9f8159e00e1f2304706f041068e
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58214098"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59503117"
 ---
 ## <a name="test-your-code"></a>Testování kódu
 
@@ -39,14 +39,13 @@ Při prvním přihlášení do aplikace, budete také vyzváni k poskytování s
 
 ### <a name="view-application-results"></a>Zobrazení výsledků aplikace
 
-Po přihlášení, měli byste vidět informace profilu uživatele, který je vrácen voláním rozhraní Microsoft Graph API. Výsledky se zobrazí v **výsledků volání rozhraní API** pole. Základní informace o tokenu, který byl získán prostřednictvím volání `AcquireTokenAsync` nebo `AcquireTokenSilentAsync` by se zobrazovat v **informace o tokenu** pole. Výsledky obsahují následující vlastnosti:
+Po přihlášení, měli byste vidět informace profilu uživatele, který je vrácen voláním rozhraní Microsoft Graph API. Výsledky se zobrazí v **výsledků volání rozhraní API** pole. Základní informace o tokenu, který byl získán prostřednictvím volání `AcquireTokenInteractive` nebo `AcquireTokenSilent` by se zobrazovat v **informace o tokenu** pole. Výsledky obsahují následující vlastnosti:
 
 |Vlastnost  |Formát  |Popis |
 |---------|---------|---------|
-|**Název** |Celé jméno uživatele |Uživatel a příjmení název.|
-|**Uživatelské jméno** |<span>user@domain.com</span> |Uživatelské jméno, který se používá k identifikaci uživatele.|
-|**Platnost tokenu vyprší** |DateTime |Čas, kdy vyprší platnost tokenu. Knihovna MSAL je rozšířením datum vypršení platnosti obnovuje se token podle potřeby.|
-|**Přístupový Token** |String |Řetězec tokenu, který je odeslán protokolu HTTP požadavků, které vyžadují *autorizační hlavičky*.|
+
+|**Uživatelské jméno**  | <span> user@domain.com </span> | Uživatelské jméno, který se používá k identifikaci uživatele. | | **Vyprší platnost tokenu** | Datum a čas | Čas, kdy vyprší platnost tokenu. Knihovna MSAL je rozšířením datum vypršení platnosti obnovuje se token podle potřeby. |
+
 
 <!--start-collapse-->
 ### <a name="more-information-about-scopes-and-delegated-permissions"></a>Další informace o oborech a delegovaná oprávnění

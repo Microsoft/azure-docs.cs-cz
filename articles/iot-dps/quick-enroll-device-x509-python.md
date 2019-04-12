@@ -3,19 +3,19 @@ title: Registrace zařízení X.509 do služby Azure Device Provisioning Service
 description: V tomto rychlém startu se používají skupinové registrace. V tomto rychlém startu zaregistrujete pomocí Pythonu zařízení X.509 do služby Azure IoT Hub Device Provisioning Service.
 author: wesmc7777
 ms.author: wesmc
-ms.date: 01/25/2018
+ms.date: 04/10/2019
 ms.topic: quickstart
 ms.service: iot-dps
 services: iot-dps
-manager: timlt
+manager: philmea
 ms.devlang: python
 ms.custom: mvc
-ms.openlocfilehash: aad21bd4003f789a0a315d6514bf428a4ef3f9f5
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: d9ed0cb82f8ad1c19f95299b3dd651fc099368b8
+ms.sourcegitcommit: 41015688dc94593fd9662a7f0ba0e72f044915d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53187335"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59500766"
 ---
 # <a name="quickstart-enroll-x509-devices-to-the-device-provisioning-service-using-python"></a>Rychlý start: Registrace zařízení X.509 do služby Device Provisioning pomocí Pythonu
 
@@ -52,7 +52,7 @@ Pokud chcete vygenerovat certifikáty pomocí těchto testovacích nástrojů, p
    git clone https://github.com/Azure/azure-iot-sdk-c.git --recursive
    ```
 
-   Velikost tohoto úložiště je aktuálně přibližně 220 MB. Buďte připravení na to, že může trvat i několik minut, než se tato operace dokončí.
+   Buďte připravení na to, že může trvat i několik minut, než se tato operace dokončí.
 
    Testovací nástroje se nacházejí ve složce *azure-iot-sdk-c/tools/CACertificates* úložiště, které jste naklonovali.    
 
@@ -148,4 +148,4 @@ Pokud chcete prozkoumat ukázku služby v Javě, neprovádějte čištění pros
 V tomto rychlém startu jste do své služby Device Provisioning zaregistrovali skupinu simulovaných zařízení X.509. Pokud se chcete se zřizováním zařízení seznámit podrobněji, pokračujte ke kurzu nastavení služby Device Provisioning na webu Azure Portal. 
 
 > [!div class="nextstepaction"]
-> [Kurzy pro službu Azure IoT Hub Device Provisioning](./tutorial-set-up-cloud.md)
+> [Kurzy služby Azure IoT Hub Device Provisioning Service](./tutorial-set-up-cloud.md)

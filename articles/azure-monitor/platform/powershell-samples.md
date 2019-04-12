@@ -1,6 +1,6 @@
 ---
-title: Ukázky Powershellu Azure Log Analytics | Dokumentace Microsoftu
-description: Ukázky Powershellu Azure Log Analytics
+title: Ukázky Powershellu pro Azure Monitor | Dokumentace Microsoftu
+description: Ukázky Powershellu pro Azure Monitor
 services: log-analytics
 documentationcenter: ''
 author: mgoedtel
@@ -15,20 +15,20 @@ ms.workload: na
 ms.date: 09/14/2017
 ms.author: magoedte
 ms.custom: mvc
-ms.openlocfilehash: 642aa385f52e3757f1f872d47d6dd2de80f36d2e
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 5aac1f7e1ded700b9bec38c358ea0049df93fd3e
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53109715"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59492613"
 ---
-# <a name="azure-log-analytics-powershell-samples"></a>Ukázky Azure Powershellu Log Analytics
+# <a name="azure-monitor-powershell-samples"></a>Ukázky Azure Powershellu pro monitorování
 
-Následující tabulka obsahuje odkazy na ukázkové skripty Powershellu pro provádění různých funkcí ve službě Log Analytics.
+Následující tabulka obsahuje odkazy na ukázkové skripty Powershellu pro provádění různých funkcí ve službě Azure Monitor.
 
 | | |
 |---|---|
 |**Vytvoření pracovního prostoru**||
-| [Vytvoření pracovního prostoru Log Analytics](../scripts/powershell-sample-create-workspace.md) | Vytvoří pracovní prostor Log Analytics.|
+| [Vytvoření pracovního prostoru Log Analytics](../scripts/powershell-sample-create-workspace.md) | Vytvoří pracovní prostor Log Analytics ve službě Azure Monitor.|
 | | |
 

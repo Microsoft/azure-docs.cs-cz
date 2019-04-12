@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 02/06/2019
 ms.author: jlian
-ms.openlocfilehash: fc6db4d02898ea0e8eed3cdf3d0b1a9788d943e9
-ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
+ms.openlocfilehash: 302c382a7e19e9dcc4c979d31ddc0768655a1465
+ms.sourcegitcommit: 41015688dc94593fd9662a7f0ba0e72f044915d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58439292"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59501354"
 ---
 # <a name="trace-azure-iot-device-to-cloud-messages-with-distributed-tracing-preview"></a>Trasování zpráv typu zařízení cloud Azure IoT s distribuované trasování (preview)
 
@@ -36,7 +36,7 @@ V tomto článku budete používat [zařízení Azure IoT SDK pro jazyk C](./iot
 
   - **Severní Evropa**
   - **Jihovýchodní Asie**
-  - **USA – západ 2**
+  - **Západní USA 2**
 
 - Tento článek předpokládá, že jste obeznámeni s odesílání telemetrických dat do služby IoT hub. Ujistěte se, že jste dokončili [odesílání telemetrických dat C Quickstart](./quickstart-send-telemetry-c.md).
 
@@ -98,7 +98,7 @@ Tyto pokyny jsou určené pro sestavení ukázky na Windows. Jiné prostředí, 
     git clone https://github.com/Azure/azure-iot-sdk-c.git --recursive -b public-preview
     ```
 
-    Velikost tohoto úložiště je aktuálně přibližně 220 MB. Buďte připravení na to, že může trvat i několik minut, než se tato operace dokončí.
+    Buďte připravení na to, že může trvat i několik minut, než se tato operace dokončí.
 
 1. V kořenovém adresáři úložiště Git vytvořte podadresář `cmake` a přejděte do této složky.
 

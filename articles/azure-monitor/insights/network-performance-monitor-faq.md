@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 10/12/2018
 ms.author: vinynigam
-ms.openlocfilehash: 5186c11259a03717f83db675cbfe7c90f3ecb7cc
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.openlocfilehash: 285f29055d0ac9ba656ec828972ef15f4c0d36c7
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55734551"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59496960"
 ---
 # <a name="network-performance-monitor-solution-faq"></a>Network Performance Monitor řešení – nejčastější dotazy
 
@@ -25,7 +25,7 @@ ms.locfileid: "55734551"
 
 Tento článek zachycuje nejčastější dotazy (FAQ) o Network Performance Monitor (NPM) v Azure
 
-[Network Performance Monitor](/azure/networking/network-monitoring-overview) je Cloudová [monitorování sítě hybridní](../../azure-monitor/insights/network-performance-monitor-performance-monitor.md) řešení usnadňující sledování výkonu sítě mezi různými body v síťové infrastruktuře. To zároveň pomáhá monitorovat síťové připojení k [koncové body služby a aplikace](../../azure-monitor/insights/network-performance-monitor-service-endpoint.md) a [monitorování výkonu Azure ExpressRoute](../../azure-monitor/insights/network-performance-monitor-expressroute.md). 
+[Network Performance Monitor](/azure/networking/network-monitoring-overview) je Cloudová [monitorování sítě hybridní](../../azure-monitor/insights/network-performance-monitor-performance-monitor.md) řešení usnadňující sledování výkonu sítě mezi různými body v síťové infrastruktuře. To zároveň pomáhá monitorovat síťové připojení k [koncové body služby a aplikace](../../azure-monitor/insights/network-performance-monitor-service-connectivity.md) a [monitorování výkonu Azure ExpressRoute](../../azure-monitor/insights/network-performance-monitor-expressroute.md). 
 
 Network Performance Monitor zjistí problémy se sítí jako provoz blackholing směrování chyby a problémy, které nejsou schopna zjistit monitorování metody konvenční sítě. Toto řešení generuje výstrahy a upozorní vás, když u síťové linky dojde k překročení prahové hodnoty. Zajišťuje také včasné zjištění problémů s výkonem sítě a lokalizuje příčinu problému na konkrétní segment sítě nebo zařízení. 
 

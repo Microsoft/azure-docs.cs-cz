@@ -11,16 +11,16 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: pim
-ms.date: 08/30/2018
+ms.date: 04/09/2019
 ms.author: rolyon
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f9db39e67cf3ee67b7990f227dbad7e3210cd14b
-ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
+ms.openlocfilehash: 73d42c693fae6b538136d1e8c93094a0ea9e2077
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2019
-ms.locfileid: "58577148"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59494863"
 ---
 # <a name="configure-azure-resource-role-settings-in-pim"></a>Konfigurace nastavení role prostředků Azure v PIM
 
@@ -62,7 +62,7 @@ Můžete zvolit jednu z těchto **oprávněné** možnosti doba trvání přiřa
 
 | | |
 | --- | --- |
-| **Povolit trvalé oprávněné přiřazení** | Správci prostředků můžete přiřadit trvalé oprávněné členství. |
+| **Povolit trvalé přiřazení oprávnění** | Správci prostředků můžete přiřadit trvalé oprávněné členství. |
 | **Platnost oprávněných přiřazení po** | Správci prostředků můžete nutné, aby všechny oprávněné přiřazení zadaný počáteční a koncové datum. |
 
 A můžete zvolit jednu z těchto **aktivní** možnosti doba trvání přiřazení:

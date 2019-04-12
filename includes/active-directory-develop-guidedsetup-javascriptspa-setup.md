@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 09/17/2018
 ms.author: nacanuma
 ms.custom: include file
-ms.openlocfilehash: a9aeb2f45ec8c882c47425879ab6ef726ca94060
-ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
+ms.openlocfilehash: da2477b19327273fe922ac81f909233cb4ef8f06
+ms.sourcegitcommit: 41015688dc94593fd9662a7f0ba0e72f044915d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58203298"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59502766"
 ---
 ## <a name="setting-up-your-web-server-or-project"></a>Nastavení webového serveru nebo projektu
 
@@ -34,6 +34,8 @@ ms.locfileid: "58203298"
 ## <a name="prerequisites"></a>Požadavky
 Místní webový server jako [Node.js](https://nodejs.org/en/download/), [.NET Core](https://www.microsoft.com/net/core), nebo integrace služby IIS Express s [Visual Studio 2017](https://www.visualstudio.com/downloads/) se vyžaduje pro spuštění v tomto kurzu.
 
+Pokud se používá ke spuštění projektu Node.js, nainstalovat integrované vývojové prostředí, jako je [Visual Studio Code](https://code.visualstudio.com/download) k úpravám souborů projektu.
+
 Pokyny v této příručce jsou založené na Node.js a sadě Visual Studio 2017, ale můžete použít jiné prostředí pro vývoj nebo webového serveru.
 
 ## <a name="create-your-project"></a>Vytvoření projektu
@@ -42,7 +44,7 @@ Pokyny v této příručce jsou založené na Node.js a sadě Visual Studio 2017
 > Ujistěte se, že jste si nainstalovali [Node.js](https://nodejs.org/en/download/), postupujte podle níže uvedených kroků:
 > - Vytvořte složku pro hostování vaší aplikace.
 
-<p/><!-- -->
+<p><!-- -->
 
 > ### <a name="option-2-visual-studio"></a>Option 2: Visual Studio
 > Pokud používáte Visual Studio a vytvořit nový projekt, postupujte podle pokynů můžete vytvořit nové řešení sady Visual Studio:
@@ -50,7 +52,6 @@ Pokyny v této příručce jsou založené na Node.js a sadě Visual Studio 2017
 > 2.    V části **Visual C# \Web**vyberte **webová aplikace ASP.NET (.NET Framework)**
 > 3.    Zadejte název pro vaši aplikaci a vyberte **OK**
 > 4.    V části **nová webová aplikace ASP.NET**vyberte **prázdný**
-
 
 ## <a name="create-your-single-page-applications-ui"></a>Vytvoření uživatelského rozhraní jednostránkové aplikace
 1. Vytvoření `index.html` soubor pro vaše aplikace SPA v JavaScriptu. Pokud používáte Visual Studio, vyberte projekt (Kořenová složka projektu), klikněte pravým tlačítkem myši a vyberte: **Přidat > Nová položka > stránka HTML** a pojmenujte ho index.html.
@@ -62,7 +63,7 @@ Pokyny v této příručce jsou založené na Node.js a sadě Visual Studio 2017
    <head>
        <title>Quickstart for MSAL JS</title>
        <script src="https://cdnjs.cloudflare.com/ajax/libs/bluebird/3.3.4/bluebird.min.js"></script>
-       <script src="https://secure.aadcdn.microsoftonline-p.com/lib/0.2.3/js/msal.js"></script>
+       <script src="https://secure.aadcdn.microsoftonline-p.com/lib/0.2.4/js/msal.js"></script>
        <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
    </head>
    <body>

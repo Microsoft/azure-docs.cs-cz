@@ -12,25 +12,31 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: nodejs
 ms.topic: article
-ms.date: 09/10/2018
+ms.date: 04/10/2019
 ms.author: aschhab
-ms.openlocfilehash: 32b566056de76d4e73b88c7ce37e148b4ecc3fd7
-ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
+ms.openlocfilehash: 6159609f894f967e8ee372a0ee316eb900537aba
+ms.sourcegitcommit: 41015688dc94593fd9662a7f0ba0e72f044915d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56587867"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59500834"
 ---
 # <a name="how-to-use-service-bus-queues-with-nodejs"></a>Jak používat fronty služby Service Bus s využitím Node.js
 
 [!INCLUDE [service-bus-selector-queues](../../includes/service-bus-selector-queues.md)]
 
-Tento článek popisuje, jak používat fronty Service Bus s využitím Node.js. Ukázky jsou napsané v jazyce JavaScript a používají modul Node.js Azure. Mezi popsané scénáře patří **vytváření front**, **odesílání a přijímání zpráv**, a **odstranění front**. Další informace o frontách najdete v článku [další kroky](#next-steps) oddílu.
+V tomto kurzu se dozvíte, jak vytvářet aplikace Node.js na odesílání a příjem zpráv z fronty Service Bus. Ukázky jsou napsané v jazyce JavaScript a používají modul Node.js Azure. 
 
-[!INCLUDE [howto-service-bus-queues](../../includes/howto-service-bus-queues.md)]
+## <a name="prerequisites"></a>Požadavky
+1. Předplatné Azure. K dokončení tohoto kurzu potřebujete mít účet Azure. Můžete si aktivovat váš [výhody pro předplatitele MSDN](https://azure.microsoft.com/pricing/member-offers/credit-for-visual-studio-subscribers/?WT.mc_id=A85619ABF) nebo si zaregistrovat [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF).
+2. Pokud nemáte k dispozici pro práci s frontou, postupujte podle kroků v [použijte Azure portal můžete vytvořit frontu služby Service Bus](service-bus-quickstart-portal.md) článku můžete vytvořit frontu.
+    1. Přečtěte si rychlé **přehled** služby Service Bus **fronty**. 
+    2. Vytvoření služby Service Bus **obor názvů**. 
+    3. Získejte **připojovací řetězec**. 
 
-[!INCLUDE [service-bus-create-namespace-portal](../../includes/service-bus-create-namespace-portal.md)]
-
+        > [!NOTE]
+        > Vytvoříte **fronty** v oboru názvů služby Service Bus s použitím prostředí Node.js v tomto kurzu. 
+ 
 
 ## <a name="create-a-nodejs-application"></a>Vytvoření aplikace Node.js
 Vytvoření prázdné aplikace v Node.js. Pokyny o tom, jak vytvořit aplikaci v Node.js najdete v tématu [vytvoření a nasazení aplikace Node.js na web Azure][Create and deploy a Node.js application to an Azure Website], nebo [cloudové služby pro Node.js] [ Node.js Cloud Service] pomocí Windows Powershellu.
@@ -114,7 +120,7 @@ Po provedení jeho předběžného zpracování na možnosti žádosti, musí vo
 function (returnObject, finalCallback, next)
 ```
 
-V tomto zpětném volání a po zpracování `returnObject` (odpovědi z požadavku na server), zpětného volání musí buď volat `next` pokud existuje pokračovat ve zpracování další filtry, nebo jednoduše vyvolat `finalCallback`, které končí služby vyvolání.
+V tomto zpětném volání a po zpracování `returnObject` (odpovědi z požadavku na server), zpětného volání musí buď volat `next` pokud existuje pokračovat ve zpracování další filtry, nebo vyvolat `finalCallback`, která ukončí volání služby .
 
 Dva filtry, které implementují logiku opakování, které jsou součástí sady Azure SDK pro Node.js, `ExponentialRetryPolicyFilter` a `LinearRetryPolicyFilter`. Následující kód vytvoří `ServiceBusService` objekt, který se používá `ExponentialRetryPolicyFilter`:
 

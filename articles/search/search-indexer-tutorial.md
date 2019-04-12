@@ -7,15 +7,15 @@ services: search
 ms.service: search
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 04/08/2019
+ms.date: 04/09/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 401ad90f1ae4ffb4915a0b51aea41430e7045aa9
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: c2fc406fa864fe2f67ded4ea98ad14475944671a
+ms.sourcegitcommit: 41015688dc94593fd9662a7f0ba0e72f044915d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59270455"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59500341"
 ---
 # <a name="tutorial-in-c-crawl-an-azure-sql-database-using-azure-search-indexers"></a>Kurz v C#: Procházejte databázi Azure SQL pomocí indexerů Azure Search
 
@@ -56,7 +56,7 @@ Volání REST vyžadují pro každý požadavek adresu URL služby a přístupov
 
 1. [Přihlaste se k webu Azure portal](https://portal.azure.com/)a ve vyhledávací službě **přehled** stránce, získat adresu URL. Příkladem koncového bodu může být `https://mydemo.search.windows.net`.
 
-1.. V **nastavení** > **klíče**, získat klíč pro úplná práva správce na službu. Existují dva klíče zaměnitelné správce, v případě, že budete potřebovat k výměně jeden k dispozici zajišťuje nepřetržitý chod podniků. U požadavků můžete použít buď primární nebo sekundární klíč pro přidání, úpravy a odstraňování objektů.
+1. V **nastavení** > **klíče**, získat klíč pro úplná práva správce na službu. Existují dva klíče zaměnitelné správce, v případě, že budete potřebovat k výměně jeden k dispozici zajišťuje nepřetržitý chod podniků. U požadavků můžete použít buď primární nebo sekundární klíč pro přidání, úpravy a odstraňování objektů.
 
 ![Získejte koncový bod a přístupový klíč rozhraní HTTP](media/search-fiddler/get-url-key.png "získat HTTP koncový bod a přístupový klíč")
 
@@ -87,7 +87,7 @@ V tomto kroku vytvoříte externí zdroj dat, který může indexer procházet. 
 
 Následující cvičení předpokládá, že neexistuje žádný server ani databáze, a v kroku 2 poskytuje pokyny k jejich vytvoření. Pokud máte existující prostředek, volitelně můžete tabulku hotels přidat do něj podle pokynů od kroku 4 dále.
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/). 
+1. [Přihlaste se k webu Azure portal](https://portal.azure.com/). 
 
 2. Vyhledat nebo vytvořit **Azure SQL Database** vytvořit databázi, server a skupinu prostředků. Můžete použít výchozí hodnoty a nejnižší cenovou úroveň. Jednou z výhod vytvoření serveru je, že můžete zadat uživatelské jméno a heslo správce, které jsou potřeba k vytvoření a načtení tabulek v pozdějším kroku.
 
@@ -99,7 +99,7 @@ Následující cvičení předpokládá, že neexistuje žádný server ani data
 
    ![Stránka databáze SQL](./media/search-indexer-tutorial/hotels-db.png)
 
-4. Na panelu příkazů klikněte na **Nástroje** > **Editor dotazů**.
+4. V navigačním podokně klikněte na tlačítko **editor dotazů (preview)**.
 
 5. Klikněte na **Přihlášení** a zadejte uživatelské jméno a heslo správce serveru.
 
@@ -137,7 +137,7 @@ Následující cvičení předpokládá, že neexistuje žádný server ani data
 
 ## <a name="understand-the-code"></a>Vysvětlení kódu
 
-Váš kód je teď připravený k sestavení a spuštění. Než to provedete, věnujte chvíli prostudování definic indexu a indexeru pro tuto ukázku. Důležitý kód je ve dvou souborech:
+Po nastavení a konfigurace dat jsou na místě, ukázkový program v **DotNetHowToIndexers.sln** je připraven k sestavení a spuštění. Než to provedete, věnujte chvíli prostudování definic indexu a indexeru pro tuto ukázku. Důležitý kód je ve dvou souborech:
 
   + **hotel.cs**, který obsahuje schéma definující index
   + **Program.cs**, který obsahuje funkce pro vytváření a správu struktur ve vaší službě
@@ -155,45 +155,65 @@ public string HotelName { get; set; }
 
 Schéma může obsahovat také další elementy, včetně profilů vyhodnocování pro zvýšení skóre vyhledávání, vlastních analyzátorů a dalších konstrukcí. Pro naše účely je však schéma definováno řídce a skládá se pouze z polí, která jsou v ukázkových datových sadách.
 
-V tomto kurzu indexer přetahuje data z jednoho zdroje dat. V praxi můžete ke stejnému indexu připojit několik indexerů a vytvořit tak společný prohledávatelný index z několika zdrojů dat a indexerů. V závislosti na tom, kde potřebujete flexibilitu, můžete použít stejný pár indexu a indexeru a měnit pouze zdroje dat nebo jeden index s různými kombinacemi indexeru a zdroje dat.
+V tomto kurzu indexer přetahuje data z jednoho zdroje dat. V praxi můžete připojit několik indexerů ke stejnému indexu, vytváření tak společný prohledávatelný index z různých zdrojů dat. V závislosti na tom, kde potřebujete flexibilitu, můžete použít stejný pár indexu a indexeru a měnit pouze zdroje dat nebo jeden index s různými kombinacemi indexeru a zdroje dat.
 
 ### <a name="in-programcs"></a>Soubor Program.cs
 
-Hlavní program obsahuje funkce pro všechny tři reprezentativní zdroje dat. Když se zaměříme pouze na službu Azure SQL Database, vyniknou následující objekty:
+Hlavní program obsahuje logiku pro vytvoření klienta, index, zdroj dat a indexeru. Kód předpokládá, že byste tento program mohli spustit několikrát, a proto kontroluje a odstraňuje existující prostředky se stejným názvem.
+
+Objekt zdroje dat je nakonfigurován s nastavením, které jsou specifické pro prostředky databáze Azure SQL, včetně [přírůstkové indexování](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md#capture-new-changed-and-deleted-rows) pro využití integrovaných [změníte některé funkce detekce](https://docs.microsoft.com/sql/relational-databases/track-changes/about-change-tracking-sql-server) Azure SQL. Ukázková databáze hotely v Azure SQL má sloupec s názvem "obnovitelné odstranění" **IsDeleted**. Když tento sloupec je nastaven na hodnotu true v databázi, indexer, odebere odpovídající dokumentu z indexu Azure Search.
 
   ```csharp
-  private const string IndexName = "hotels";
-  private const string AzureSqlHighWaterMarkColumnName = "RowVersion";
-  private const string AzureSqlDataSourceName = "azure-sql";
-  private const string AzureSqlIndexerName = "azure-sql-indexer";
+  Console.WriteLine("Creating data source...");
+
+  DataSource dataSource = DataSource.AzureSql(
+      name: "azure-sql",
+      sqlConnectionString: configuration["AzureSQLConnectionString"],
+      tableOrViewName: "hotels",
+      deletionDetectionPolicy: new SoftDeleteColumnDeletionDetectionPolicy(
+          softDeleteColumnName: "IsDeleted",
+          softDeleteMarkerValue: "true"));
+  dataSource.DataChangeDetectionPolicy = new SqlIntegratedChangeTrackingPolicy();
+
+  searchService.DataSources.CreateOrUpdateAsync(dataSource).Wait();
   ```
 
-Ve službě Azure Search mezi objekty, které můžete zobrazit, konfigurovat nebo odstranit, patří indexy, indexery a zdroje dat (*hotels*, *azure-sql-indexer*, *azure-sql* v uvedeném pořadí). 
-
-Sloupec *AzureSqlHighWaterMarkColumnName* si zaslouží zvláštní pozornost, protože poskytuje informace o detekci změn, pomocí kterých indexer určuje, jestli se řádek od poslední úlohy indexování změnil. [Zásady detekce změn](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md) se podporují pouze v indexerech a liší se podle zdroje dat. V případě služby Azure SQL Database si v závislosti na požadavcích databáze můžete vybrat mezi dvěma zásadami.
-
-Následující kód ukazuje metody, které v souboru Program.cs slouží k vytvoření zdroje dat a indexeru. Kód předpokládá, že byste tento program mohli spustit několikrát, a proto kontroluje a odstraňuje existující prostředky se stejným názvem.
+Objekt indexeru je nezávislý na platformě, kde stejný bez ohledu na zdroji jsou konfigurace, plánování a vyvolání. Tento příklad indexer zahrnuje plán, má možnost resetování, který vymaže historii indexeru a volá metodu pro vytvoření a spuštění indexeru okamžitě.
 
   ```csharp
-  private static string SetupAzureSqlIndexer(SearchServiceClient serviceClient, IConfigurationRoot configuration)
+  Console.WriteLine("Creating Azure SQL indexer...");
+  Indexer indexer = new Indexer(
+      name: "azure-sql-indexer",
+      dataSourceName: dataSource.Name,
+      targetIndexName: index.Name,
+      schedule: new IndexingSchedule(TimeSpan.FromDays(1)));
+  // Indexers contain metadata about how much they have already indexed
+  // If we already ran the sample, the indexer will remember that it already
+  // indexed the sample data and not run again
+  // To avoid this, reset the indexer if it exists
+  exists = await searchService.Indexers.ExistsAsync(indexer.Name);
+  if (exists)
   {
-    Console.WriteLine("Deleting Azure SQL data source if it exists...");
-    DeleteDataSourceIfExists(serviceClient, AzureSqlDataSourceName);
+      await searchService.Indexers.ResetAsync(indexer.Name);
+  }
 
-    Console.WriteLine("Creating Azure SQL data source...");
-    DataSource azureSqlDataSource = CreateAzureSqlDataSource(serviceClient, configuration);
+  await searchService.Indexers.CreateOrUpdateAsync(indexer);
 
-    Console.WriteLine("Deleting Azure SQL indexer if it exists...");
-    DeleteIndexerIfExists(serviceClient, AzureSqlIndexerName);
+  // We created the indexer with a schedule, but we also
+  // want to run it immediately
+  Console.WriteLine("Running Azure SQL indexer...");
 
-    Console.WriteLine("Creating Azure SQL indexer...");
-    Indexer azureSqlIndexer = CreateIndexer(serviceClient, AzureSqlDataSourceName, AzureSqlIndexerName);
-
-    return azureSqlIndexer.Name;
+  try
+  {
+      await searchService.Indexers.RunAsync(indexer.Name);
+  }
+  catch (CloudException e) when (e.Response.StatusCode == (HttpStatusCode)429)
+  {
+      Console.WriteLine("Failed to run indexer: {0}", e.Response.Content);
   }
   ```
 
-Všimněte si, že volání rozhraní API indexerem jsou nezávislá na platformě, kromě volání [DataSourceType](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.datasourcetype?view=azure-dotnet), které určuje typ prohledávacího modulu, který se má vyvolat.
+
 
 ## <a name="run-the-indexer"></a>Spuštění indexeru
 
@@ -236,12 +256,10 @@ Na webu Azure Portal na stránce Přehled vyhledávací služby klikněte v horn
 
 Všechny indexery, včetně toho, který jste právě vytvořili prostřednictvím kódu programu, jsou uvedené na portálu. Můžete otevřít definici indexeru a zobrazit jeho zdroj dat nebo nakonfigurovat plán aktualizace pro přebírání nových a změněných řádků.
 
-1. Otevřete stránku Přehled vaší služby Azure Search.
-2. Přejděte dolů a vyhledejte dlaždice **Indexery** a **Zdroje dat**.
-3. Kliknutím na dlaždici otevřete seznam jednotlivých prostředků. Můžete vybrat jednotlivé indexery nebo zdroje dat a zobrazit nebo upravit nastavení konfigurace.
+1. [Přihlaste se k webu Azure portal](https://portal.azure.com/)a ve vyhledávací službě **přehled** stránce, kliknutí na příslušné odkazy pro **indexy**, **indexery**, a **dat Zdroje**.
+3. Vyberte jednotlivé objekty lze zobrazit nebo upravit nastavení konfigurace.
 
    ![Dlaždice Indexery a Zdroje dat](./media/search-indexer-tutorial/tiles-portal.png)
-
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 

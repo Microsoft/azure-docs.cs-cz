@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.date: 03/05/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 00ec813aec37697526233532b75ba6c55bf852c2
-ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
+ms.openlocfilehash: 850fce4e04ce07a323e830d2daf74ea1a324f1a0
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58906068"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59489378"
 ---
 # <a name="back-up-a-virtual-machine-in-azure-with-powershell"></a>Zálohování virtuálního počítače v Azure pomocí PowerShellu
 
@@ -29,7 +29,7 @@ Tento rychlý start vyžaduje prostředí Azure PowerShell AZ modulu verze 1.0.0
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="log-in-and-register"></a>Přihlaste se a registrace
+## <a name="sign-in-and-register"></a>Přihlaste se a registrace
 
 1. Přihlaste se k předplatnému Azure pomocí příkazu `Connect-AzAccount` a postupujte podle pokynů na obrazovce.
 
@@ -53,10 +53,10 @@ Při vytváření trezoru:
 - Pokud jste použili toto [ukázkový skript](../virtual-machines/scripts/virtual-machines-windows-powershell-sample-create-vm.md?toc=%2fpowershell%2fmodule%2ftoc.json) vytvořte virtuální počítač, skupina prostředků je **myResourceGroup**, je virtuální počítač ***myVM**, a jsou prostředky v **WestEurope**  oblasti.
 - Azure Backup automaticky zpracovává úložiště pro zálohovaná data. Ve výchozím nastavení používá trezor [geograficky redundantní úložiště (GRS)](../storage/common/storage-redundancy-grs.md). Geografická redundance zajišťuje, že zálohovat data se replikují do sekundární oblasti Azure, stovky mil od primární oblasti.
 
-Teď vytvořte trezor.
+Teď vytvořte trezor:
 
 
-1. Použití [New-AzRecoveryServicesVault](/powershell/module/az.recoveryservices/new-azrecoveryservicesvault)vytvoření trezoru:
+1. Použití [New-AzRecoveryServicesVault](/powershell/module/az.recoveryservices/new-azrecoveryservicesvault) vytvoření trezoru:
 
     ```powershell
     New-AzRecoveryServicesVault `
@@ -114,7 +114,7 @@ Zálohování se spouštějí podle plánu, zadaný v zásadě zálohování. M�
 - Po prvotní zálohy Každá úloha zálohování vytváří přírůstkové body obnovení.
 - Přírůstkové body obnovení jsou efektivní z hlediska úložiště a času, protože přenášejí pouze změny provedené od posledního zálohování.
 
-Chcete-li spustit zálohování ad hoc, použijte[zálohování AzRecoveryServicesBackupItem](/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupitem). 
+Chcete-li spustit zálohování ad hoc, použijte [zálohování AzRecoveryServicesBackupItem](/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupitem). 
 - Zadejte kontejner v trezoru, který uchovává vaše zálohovaná data s [Get-AzRecoveryServicesBackupContainer](/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupcontainer).
 - Každý virtuální počítač určený k zálohování se považuje za položku. Spustit úlohu zálohování, získejte informace o virtuálním počítači s [Get-AzRecoveryServicesBackupItem](/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupitem).
 
@@ -162,7 +162,7 @@ Pokud už nepotřebujete zálohování virtuálního počítače, můžete vyči
 - Pokud chcete vyzkoušet obnovení virtuálního počítače, přejděte vyčištění nahoru.
 - Pokud jste použili existující virtuální počítač, můžete vynechat poslední [odebrat AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) rutiny tak, aby se zachovala skupina prostředků a virtuální počítač.
 
-Zakažte ochranu, odebrat body obnovení a trezor. Pak můžete odstranit skupinu prostředků a související prostředky virtuálního počítače následujícím způsobem:
+Zakažte ochranu, odebrat body obnovení a trezor. Potom odstraňte skupinu prostředků a související prostředky virtuálního počítače následujícím způsobem:
 
 ```powershell
 Disable-AzRecoveryServicesBackupProtection -Item $item -RemoveRecoveryPoints

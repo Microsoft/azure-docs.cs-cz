@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 09/18/2017
 ms.author: eustacea
-ms.openlocfilehash: 6a9b4fc5479dda58dd024cdf93cbdf4853f9c965
-ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
+ms.openlocfilehash: 38cbd32be30885837d2f98a9e1dd5d967b4938b4
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "42054637"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59489807"
 ---
 # <a name="device-authentication-using-x509-ca-certificates"></a>Zařízení ověřování pomocí certifikátů X.509 certifikační Autority
 
@@ -40,7 +40,7 @@ Pro produkční prostředí doporučujeme vám zakoupit od certifikační autori
 
 Můžete také vytvořit podepsaný svým držitelem CA X.509 pro experimentování ve službě nebo pro použití v uzavřené sítím IoT.
 
-Bez ohledu na to toho, jak získat certifikát X.509 CA, zajistěte její odpovídající privátní klíč tajný kód a chráněný neustále.  To je nezbytné pro důvěryhodnost budování důvěry ověřování X.509 certifikační Autority. 
+Bez ohledu na to toho, jak získat certifikát X.509 CA, zajistěte její odpovídající privátní klíč tajný kód a chráněný neustále.  To je nezbytné pro důvěryhodnost budování důvěry ověřování X.509 certifikační Autority.
 
 Zjistěte, jak [vytvořit certifikát podepsaný svým držitelem certifikační Autority](https://github.com/Azure/azure-iot-sdk-c/blob/master/tools/CACertificates/CACertificateOverview.md), který můžete použít pro služby experimentování ve službě v průběhu tohoto popisu funkce.
 
@@ -49,6 +49,8 @@ Zjistěte, jak [vytvořit certifikát podepsaný svým držitelem certifikační
 Vlastník certifikátu webu X.509 se můžete přihlásit kryptograficky zprostředkující certifikační Autority, který můžete následně podepsat jinou zprostředkující certifikační Autority, a tak dále, dokud poslední zprostředkující certifikační Autority ukončí tento proces po přihlášení zařízení. Výsledkem je kaskádovým příkazem řetěz certifikátů se označuje jako řetěz certifikátů. V reálném životě to hraje jako delegování vztah důvěryhodnosti k podepisování zařízení. Toto delegování je důležité, protože vytváří kryptograficky proměnné dodavatelského řetězce a zabraňuje sdílení podpisových klíčů.
 
 ![img-Generic-CERT-chain-of-Trust](./media/generic-cert-chain-of-trust.png)
+
+Musí mít certifikát zařízení (také nazývané listový certifikát) *název subjektu* nastaveno **ID zařízení** , která byla použita při registraci zařízení IoT v Azure IoT Hub. Toto nastavení se nedá provést ověření.
 
 Přečtěte si zde jak [vytvořit řetěz certifikátů](https://github.com/Azure/azure-iot-sdk-c/blob/master/tools/CACertificates/CACertificateOverview.md) dělalo při přihlašování k zařízení.
 
