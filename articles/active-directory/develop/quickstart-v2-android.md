@@ -1,6 +1,6 @@
 ---
-title: Rychlý start pro Azure AD v2 pro Android | Microsoft Docs
-description: Přečtěte si, jak pomocí koncového bodu Azure Active Directory v2.0 mohou aplikace pro Android volat rozhraní API, které vyžaduje přístupové tokeny.
+title: Rychlý start Microsoft identity platform Androidu | Azure
+description: Zjistěte, jak s Androidem aplikace může volat rozhraní API, které vyžadují přístupové tokeny ve Microsoft identity platform koncový bod.
 services: active-directory
 documentationcenter: dev-center-name
 author: danieldobalian
@@ -13,16 +13,16 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 04/01/2019
+ms.date: 04/11/2019
 ms.author: dadobali
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cd78e6acd801f3b973cc45609b72f86b257f4d43
-ms.sourcegitcommit: d83fa82d6fec451c0cb957a76cfba8d072b72f4f
+ms.openlocfilehash: f1f174229da565627c0e5791f53031b338880cb3
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/02/2019
-ms.locfileid: "58862756"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59495307"
 ---
 # <a name="quickstart-sign-in-users-and-call-the-microsoft-graph-api-from-an-android-app"></a>Rychlý start: Přihlašování uživatelů a volání rozhraní Microsoft Graph API z aplikace pro Android
 
@@ -30,7 +30,7 @@ ms.locfileid: "58862756"
 
 Tento rychlý start obsahuje vzorek kódu, který demonstruje, jak může aplikace pro Android přihlásit uživatele v rámci osobního nebo pracovního a školního účtu, získat přístupový token a volat rozhraní Microsoft Graph API.
 
-![Ukazuje, jak ukázková aplikace vygenerované v tomto rychlém startu funguje](media/quickstart-v2-android/android-intro-updated.png)
+![Ukazuje, jak ukázková aplikace vygenerované v tomto rychlém startu funguje](media/quickstart-v2-android/android-intro.svg)
 
 > [!NOTE]
 > **Požadavky**
@@ -47,7 +47,7 @@ Tento rychlý start obsahuje vzorek kódu, který demonstruje, jak může aplika
 > ### <a name="option-1-register-and-auto-configure-your-app-and-then-download-your-code-sample"></a>Option 1: Registrace a automaticky konfigurovat svoji aplikaci a pak si stáhnout ukázku kódu
 > #### <a name="step-1-register-your-application"></a>Krok 1: Registrace vaší aplikace
 > Registrace vaší aplikace
-> 1. Přejděte na [Azure Portal – Registrace aplikace (Preview)](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/applicationsListBlade/quickStartType/AndroidQuickstartPage/sourceType/docs).
+> 1. Přejděte k novému [portál Azure – registrace aplikací](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/applicationsListBlade/quickStartType/AndroidQuickstartPage/sourceType/docs) podokně.
 > 1. Zadejte název vaší aplikace a Vyberte **Zaregistrovat**.
 > 1. Postupujte podle pokynů ke stažení a automatické konfiguraci nové aplikace jedním kliknutím.
 >
@@ -58,8 +58,9 @@ Tento rychlý start obsahuje vzorek kódu, který demonstruje, jak může aplika
 >
 > 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com) pomocí pracovního nebo školního účtu nebo osobního účtu Microsoft.
 > 1. Pokud váš účet umožňuje přístup k více tenantům, vyberte svůj účet v pravém horním rohu a nastavte relaci portálu na požadovaného tenanta Azure AD.
-> 1. V levém navigačním podokně vyberte službu **Azure Active Directory** a pak vyberte **Registrace aplikací (Preview)** > **Nová registrace**.
-> 1. Když se zobrazí **stránka Registrace aplikace**, zadejte registrační informace vaší aplikace:
+> 1. Přejděte na Microsoft identity platform pro vývojáře [registrace aplikací](https://go.microsoft.com/fwlink/?linkid=2083908) stránky.
+> 1. Vyberte **registrace nové**.
+> 1. Když se zobrazí stránka **Registrace aplikace**, zadejte registrační informace vaší aplikace:
 >      - V části **Název** zadejte smysluplný název aplikace, který se zobrazí uživatelům aplikace, například `Android-Quickstart`.
 >      - Klikněte `Register` tlačítko.
 > 1. Přejděte na `Authentication`  >  `Redirect URIs`  >  `Suggested Redirect URIs for public clients`a vyberte identifikátor URI přesměrování formátu **msal {AppId} :/ / auth**. Uložte změny.
@@ -137,7 +138,7 @@ Tento rychlý start obsahuje vzorek kódu, který demonstruje, jak může aplika
 >        </intent-filter>
 >    </activity>
 >    ```
-> 1. Místo * zadejte *ID vaší aplikace. Pokud potřebuje vyhledat *ID aplikace*, přejděte na stránku *Overview* (Přehled).
+> 1. Místo `<ENTER_THE_APPLICATION_ID_HERE>` zadejte *ID vaší aplikace*. Pokud potřebuje vyhledat *ID aplikace*, přejděte na stránku *Overview* (Přehled).
 
 ## <a name="more-information"></a>Další informace
 
@@ -145,7 +146,7 @@ Pročtěte si následující oddíly, které obsahují další informace o tomto
 
 ### <a name="msal"></a>MSAL
 
-MSAL ([com.microsoft.identity.client](https://javadoc.io/doc/com.microsoft.identity.client/msal)) je knihovna, která slouží k přihlašování uživatelů a vyžádání tokenů pro přístup k rozhraní API chráněného službou Microsoft Azure Active Directory (Azure AD). Nainstalovat ji můžete pomocí nástroje Gradle tak, že přidáte následující řetězec v části **Gradle Scripts** (Skripty Gradle)  > **build.gradle (Module: app)** v části **Dependencies** (Závislosti):
+Knihovna MSAL ([com.microsoft.identity.client](https://javadoc.io/doc/com.microsoft.identity.client/msal)) je knihovna používaná k přihlášení uživatelů a požádat o tokeny pro přístup k rozhraní API chráněné službou Microsoft identity platform. Nainstalovat ji můžete pomocí nástroje Gradle tak, že přidáte následující řetězec v části **Gradle Scripts** (Skripty Gradle)  > **build.gradle (Module: app)** v části **Dependencies** (Závislosti):
 
 ```gradle  
 implementation 'com.android.volley:volley:1.1.1'
@@ -178,7 +179,7 @@ Knihovna MSAL má dvě metody používané získat tokeny: `acquireToken` a `acq
 
 #### <a name="getting-a-user-token-interactively"></a>Interaktivní získání tokenu uživatele
 
-Některá řešení vyžadují, aby uživatelé museli komunikovat s koncovým bodem Azure AD v2.0. Výsledkem je kontextové přepnutí do systémového prohlížeče, aby bylo možné ověřit přihlašovací údaje uživatele nebo získat jeho souhlas. Možné příklady:
+Některé situace vyžadují vynucení uživatelům interakci s Microsoft identity platform koncový bod, jaké výsledky v kontextu přepnout prohlížeč systému se buď ověřit přihlašovací údaje uživatele nebo pro vyjádření souhlasu. Možné příklady:
 
 * Při prvním přihlášení uživatele k aplikaci
 * Když je potřeba, aby uživatelé znovu zadali svoje přihlašovací údaje, protože vypršela platnost hesla

@@ -12,30 +12,31 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: python
 ms.topic: article
-ms.date: 02/25/2019
+ms.date: 04/10/2019
 ms.author: aschhab
-ms.openlocfilehash: 2c28ae3bf05a994293a8bf2af0675280d818fdde
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: 622b1f6f6a852251c07c5576ed10cd76adbf5231
+ms.sourcegitcommit: 41015688dc94593fd9662a7f0ba0e72f044915d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57242594"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59500494"
 ---
 # <a name="how-to-use-service-bus-queues-with-python"></a>Jak používat fronty služby Service Bus pomocí Pythonu
 
 [!INCLUDE [service-bus-selector-queues](../../includes/service-bus-selector-queues.md)]
 
-Tento článek popisuje, jak používat fronty Service Bus. Ukázky jsou napsané v Pythonu a použití [balíček Python Azure Service Bus][Python Azure Service Bus package]. Mezi popsané scénáře patří **vytváření fronty, odesílání a přijímání zpráv**, a **odstranění front**.
+V tomto kurzu se dozvíte, jak vytvářet aplikace Python na odesílání a příjem zpráv z fronty Service Bus. 
 
-[!INCLUDE [howto-service-bus-queues](../../includes/howto-service-bus-queues.md)]
+## <a name="prerequisites"></a>Požadavky
+1. Předplatné Azure. K dokončení tohoto kurzu potřebujete mít účet Azure. Můžete si aktivovat váš [výhody pro předplatitele MSDN](https://azure.microsoft.com/pricing/member-offers/credit-for-visual-studio-subscribers/?WT.mc_id=A85619ABF) nebo si zaregistrovat [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF).
+2. Postupujte podle kroků v [použijte Azure portal můžete vytvořit frontu služby Service Bus](service-bus-quickstart-portal.md) článku.
+    1. Přečtěte si rychlé **přehled** služby Service Bus **fronty**. 
+    2. Vytvoření služby Service Bus **obor názvů**. 
+    3. Získejte **připojovací řetězec**. 
 
-[!INCLUDE [service-bus-create-namespace-portal](../../includes/service-bus-create-namespace-portal.md)]
-
-> [!IMPORTANT]
-> K instalaci Pythonu nebo [balíček Python Azure Service Bus][Python Azure Service Bus package], najdete v článku [Průvodce instalací Pythonu](../python-how-to-install.md).
-> 
-> Úplnou dokumentaci sady SDK služby Service Bus Python [zde](/python/api/overview/azure/servicebus?view=azure-python)
-
+        > [!NOTE]
+        > Vytvoříte **fronty** v oboru názvů služby Service Bus s použitím jazyka Python v tomto kurzu. 
+1. Nainstalovat Python nebo [balíček Python Azure Service Bus][Python Azure Service Bus package], najdete v článku [Průvodce instalací Pythonu](../python-how-to-install.md). Úplnou dokumentaci sady SDK služby Service Bus Python [tady](/python/api/overview/azure/servicebus?view=azure-python).
 
 ## <a name="create-a-queue"></a>Vytvoření fronty
 **ServiceBusClient** objektu umožňuje pracovat s frontami. Přidejte následující kód do horní jakéhokoli souboru Python, ve kterém chcete programovému přístupu ke službě Service Bus:

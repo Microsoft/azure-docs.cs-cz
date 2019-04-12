@@ -125,6 +125,8 @@ items:
       href: dbms_guide_oracle.md
     - name: Nasazení DBMS v počítačích Azure Virtual Machines s IBM DB2 pro úlohy SAP
       href: dbms_guide_ibm.md
+    - name: Vysoká dostupnost IBM DB2 LUW ve virtuálních počítačích Azure na SUSE Linux Enterprise Serveru
+      href: dbms-guide-ha-ibm.md
     - name: Nasazení DBMS v počítačích Azure Virtual Machines se SAP ASE pro úlohy SAP
       href: dbms_guide_sapase.md
     - name: Nasazení SAP MaxDB, liveCache a Content Serveru v Azure
@@ -229,9 +231,9 @@ items:
   items:
   - name: Plány Azure do budoucna
     href: https://azure.microsoft.com/roadmap/
-ms.openlocfilehash: e366d205b3d903ad79b26798a82ee05752ac5622
-ms.sourcegitcommit: 09bb15a76ceaad58517c8fa3b53e1d8fec5f3db7
+ms.openlocfilehash: b91931661ad91f813ca84e0c9b7bef4b22e2e975
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58762952"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59489032"

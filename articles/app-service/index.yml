@@ -1,16 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 178ae177d3183d492540f03c8dc1dfa064ddeb22
-ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
-ms.translationtype: HT
-ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/20/2018
-ms.locfileid: "53652434"
 documentType: LandingData
 title: Dokumentace ke službě App Service
 metadata:
   document_id: 6c8db72a-cdb7-8fb7-ed57-ed75afcca4d0
-  title: Dokumentace ke službě Azure App Service – kurzy, reference k rozhraní API
-  meta.description: Learn how to use App Service to build and host websites and web applications, including RESTful APIs and mobile back ends.
+  title: 'Dokumentace ke službě Azure App Service – kurzy, reference k rozhraní API'
+  meta.description: 'Learn how to use App Service to build and host websites and web applications, including RESTful APIs and mobile back ends.'
   services: app-service
   author: czeumault
   manager: carolz
@@ -21,148 +15,148 @@ metadata:
   ms.date: 01/23/2017
   ms.author: carolz
 abstract:
-  description: Azure App Service umožňuje vytvářet a hostovat webové aplikace, mobilní back-endy a rozhraní RESTful API v programovacím jazyce podle vašeho výběru, aniž by bylo potřeba zabývat se správou infrastruktury. Nabízí automatické škálování a vysokou dostupnost, podporuje systémy Windows a Linux a umožňuje automatizované nasazení z Githubu, Azure DevOps nebo libovolného úložiště Git. Naučte se používat službu Azure App Service prostřednictvím našich šablon Rychlý start, kurzů a ukázek.
+  description: 'Azure App Service umožňuje vytvářet a hostovat webové aplikace, mobilní back-endy a rozhraní RESTful API v programovacím jazyce podle vašeho výběru, aniž by bylo potřeba zabývat se správou infrastruktury. Nabízí automatické škálování a vysokou dostupnost, podporuje systémy Windows a Linux a umožňuje automatizované nasazení z Githubu, Azure DevOps nebo libovolného úložiště Git. Naučte se používat službu Azure App Service prostřednictvím našich šablon Rychlý start, kurzů a ukázek.'
   aside:
     image:
-      alt: 
+      alt: null
       height: 110
-      src: https://docs.microsoft.com/azure/app-service/media/index/create-a-web-app-with-nodejs-and-azure-app-service.png
+      src: 'https://docs.microsoft.com/azure/app-service/media/index/create-a-web-app-with-nodejs-and-azure-app-service.png'
       width: 250
-    title: Vytvořte aplikaci pomocí Node.js a Azure App Service. (2:41)
-    href: https://azure.microsoft.com/resources/videos/create-a-web-app-with-nodejs-and-azure-app-service/
+    title: 'Vytvořte aplikaci pomocí Node.js a Azure App Service. (2:41)'
+    href: 'https://azure.microsoft.com/resources/videos/create-a-web-app-with-nodejs-and-azure-app-service/'
     width: 250
 sections:
-- title: Zprovoznění během 5 minut
-  items:
-  - type: paragraph
-    text: 'Podívejte se, jak nasadit první aplikaci do cloudu pomocí App Service:'
-  - type: list
-    style: icon48
+  - title: Zprovoznění během 5 minut
     items:
-    - image:
-        src: https://docs.microsoft.com/azure/app-service/media/index/logo_net.svg
-      text: .NET
-      href: https://docs.microsoft.com/azure/app-service/app-service-web-get-started-dotnet
-    - image:
-        src: https://docs.microsoft.com/azure/app-service/media/index/logo_nodejs.svg
-      text: Node.js
-      href: https://docs.microsoft.com/azure/app-service/app-service-web-get-started-nodejs
-    - image:
-        src: https://docs.microsoft.com/azure/app-service/media/index/logo_php.svg
-      text: PHP
-      href: https://docs.microsoft.com/azure/app-service/app-service-web-get-started-php
-    - image:
-        src: https://docs.microsoft.com/azure/app-service/media/index/logo_java.svg
-      text: Java
-      href: https://docs.microsoft.com/azure/app-service/app-service-web-get-started-java
-    - image:
-        src: https://docs.microsoft.com/azure/app-service/media/index/logo_python.svg
-      text: Python (on Linux)
-      href: https://docs.microsoft.com/azure/app-service/containers/quickstart-python
-    - image:
-        src: https://docs.microsoft.com/azure/app-service/media/index/logo_html5.svg
-      text: HTML
-      href: https://docs.microsoft.com/azure/app-service/app-service-web-get-started-html
-    - image:
-        src: https://docs.microsoft.com/media/logos/logo_docker.svg
-      text: Vlastní kontejner s Windows (Preview)
-      href: https://docs.microsoft.com/azure/app-service/app-service-web-get-started-windows-container
-  - type: paragraph
-    text: 'Naučte se nasazovat kód:'
-  - type: list
-    style: icon48
+      - type: paragraph
+        text: 'Podívejte se, jak nasadit první aplikaci do cloudu pomocí App Service:'
+      - type: list
+        style: icon48
+        items:
+          - image:
+              src: 'https://docs.microsoft.com/azure/app-service/media/index/logo_net.svg'
+            text: .NET
+            href: 'https://docs.microsoft.com/azure/app-service/app-service-web-get-started-dotnet'
+          - image:
+              src: 'https://docs.microsoft.com/azure/app-service/media/index/logo_nodejs.svg'
+            text: Node.js
+            href: 'https://docs.microsoft.com/azure/app-service/app-service-web-get-started-nodejs'
+          - image:
+              src: 'https://docs.microsoft.com/azure/app-service/media/index/logo_php.svg'
+            text: PHP
+            href: 'https://docs.microsoft.com/azure/app-service/app-service-web-get-started-php'
+          - image:
+              src: 'https://docs.microsoft.com/azure/app-service/media/index/logo_java.svg'
+            text: Java
+            href: 'https://docs.microsoft.com/azure/app-service/containers/quickstart-java'
+          - image:
+              src: 'https://docs.microsoft.com/azure/app-service/media/index/logo_python.svg'
+            text: Python (on Linux)
+            href: 'https://docs.microsoft.com/azure/app-service/containers/quickstart-python'
+          - image:
+              src: 'https://docs.microsoft.com/azure/app-service/media/index/logo_html5.svg'
+            text: HTML
+            href: 'https://docs.microsoft.com/azure/app-service/app-service-web-get-started-html'
+          - image:
+              src: 'https://docs.microsoft.com/media/logos/logo_docker.svg'
+            text: Vlastní kontejner s Windows (Preview)
+            href: 'https://docs.microsoft.com/azure/app-service/app-service-web-get-started-windows-container'
+      - type: paragraph
+        text: 'Naučte se nasazovat kód:'
+      - type: list
+        style: icon48
+        items:
+          - image:
+              src: media/index/zip.svg
+            text: ZIP/WAR
+            href: deploy-zip.md
+          - image:
+              src: media/index/ftp.svg
+            text: FTP
+            href: deploy-ftp.md
+          - image:
+              src: media/index/git-icon.svg
+            text: Místní Git
+            href: deploy-local-git.md
+          - image:
+              src: 'https://docs.microsoft.com/azure/media/index/logo_vs-team-services.svg'
+            text: Azure DevOps
+            href: 'https://docs.microsoft.com/vsts/build-release/apps/cd/azure/aspnet-core-to-azure-webapp?toc=/vsts/deploy-azure/toc.json&bc=/vsts/deploy-azure/breadcrumb/toc.json'
+          - image:
+              src: media/index/github-octicons.svg
+            text: GitHubu
+            href: deploy-continuous-deployment.md
+          - image:
+              src: media/index/bitbucket.svg
+            text: Bitbucket
+            href: deploy-continuous-deployment.md
+          - image:
+              src: media/index/dropbox.svg
+            text: Synchronizace DropBoxu
+            href: deploy-content-sync.md
+          - image:
+              src: media/index/onedrive.svg
+            text: Synchronizace OneDrivu
+            href: deploy-content-sync.md
+  - title: Podrobné kurzy
     items:
-    - image:
-        src: media/index/zip.svg
-      text: ZIP/WAR
-      href: deploy-zip.md
-    - image:
-        src: media/index/ftp.svg
-      text: FTP
-      href: deploy-ftp.md
-    - image:
-        src: media/index/git-icon.svg
-      text: Místní Git
-      href: deploy-local-git.md
-    - image:
-        src: https://docs.microsoft.com/azure/media/index/logo_vs-team-services.svg
-      text: Azure DevOps
-      href: https://docs.microsoft.com/vsts/build-release/apps/cd/azure/aspnet-core-to-azure-webapp?toc=/vsts/deploy-azure/toc.json&bc=/vsts/deploy-azure/breadcrumb/toc.json
-    - image:
-        src: media/index/github-octicons.svg
-      text: GitHubu
-      href: deploy-continuous-deployment.md
-    - image:
-        src: media/index/bitbucket.svg
-      text: Bitbucket
-      href: deploy-continuous-deployment.md
-    - image:
-        src: media/index/dropbox.svg
-      text: Synchronizace DropBoxu
-      href: deploy-content-sync.md
-    - image:
-        src: media/index/onedrive.svg
-      text: Synchronizace OneDrivu
-      href: deploy-content-sync.md
-- title: Podrobné kurzy
-  items:
-  - type: paragraph
-    text: Jak nasadit, spravovat a monitorovat zabezpečené webové aplikace v Azure
-  - type: list
-    style: ordered
+      - type: paragraph
+        text: 'Jak nasadit, spravovat a monitorovat zabezpečené webové aplikace v Azure'
+      - type: list
+        style: ordered
+        items:
+          - html: Vytvoření aplikace pomocí <a href="/azure/app-service/app-service-web-tutorial-dotnet-sqldatabase">.NET s Azure SQL DB</a> nebo <a href="/azure/app-service/app-service-web-tutorial-nodejs-mongodb-app">Node.js s MongoDB</a>
+          - html: <a href="/azure/app-service/app-service-web-tutorial-custom-domain">Mapování existující vlastní domény na aplikaci </a>
+          - html: <a href="/azure/app-service/app-service-web-tutorial-custom-SSL">Vytvoření vazby stávajícího certifikátu SSL na vaši aplikaci</a>
+          - html: <a href="/azure/app-service/app-service-web-tutorial-content-delivery-network">Přidání sítě CDN do aplikace</a>
+  - title: Získávání dovedností pomocí Microsoft Learn
     items:
-    - html: Vytvoření aplikace pomocí <a href="/azure/app-service/app-service-web-tutorial-dotnet-sqldatabase">.NET s Azure SQL DB</a> nebo <a href="/azure/app-service/app-service-web-tutorial-nodejs-mongodb-app">Node.js s MongoDB</a>
-    - html: <a href="/azure/app-service/app-service-web-tutorial-custom-domain">Mapování existující vlastní domény na aplikaci</a>
-    - html: <a href="/azure/app-service/app-service-web-tutorial-custom-SSL">Vytvoření vazby stávajícího certifikátu SSL na vaši aplikaci</a>
-    - html: <a href="/azure/app-service/app-service-web-tutorial-content-delivery-network">Přidání sítě CDN do aplikace</a>
-- title: Získávání dovedností pomocí Microsoft Learn
-  items:
-  - type: list
-    style: cards
-    className: cardsFTitle
+      - type: list
+        style: cards
+        className: cardsFTitle
+        items:
+          - title: Hostování webové aplikace pomocí služby Azure App
+            href: /learn/modules/host-a-web-app-with-azure-app-service/
+            image:
+              src: /learn/achievements/host-a-web-app-with-azure-app-service.svg
+              href: /learn/modules/host-a-web-app-with-azure-app-service/
+      - type: paragraph
+        text: <a href="/learn/browse/">Další interaktivní výuka...</a>
+  - title: Bezplatné školicí video od Pluralsightu
     items:
-    - title: Hostování webové aplikace pomocí služby Azure App
-      href: /learn/modules/host-a-web-app-with-azure-app-service/
-      image:
-        src: /learn/achievements/host-a-web-app-with-azure-app-service.svg
-        href: /learn/modules/host-a-web-app-with-azure-app-service/
-  - type: paragraph
-    text: <a href="/learn/browse/">Další interaktivní výuka...</a>
-- title: Bezplatné školicí video od Pluralsightu
-  items:
-  - type: list
-    style: cards
-    className: cardsFTitle
+      - type: list
+        style: cards
+        className: cardsFTitle
+        items:
+          - title: Vývoj v .NET
+            href: 'https://www.pluralsight.com/courses/developing-dotnet-microsoft-azure-getting-started?twoid=d6abac77-7dcc-4d33-9e03-f85e78989f02'
+            image:
+              src: 'https://docs.microsoft.com/media/logos/logo_pluralsight.svg'
+              href: 'https://www.pluralsight.com/courses/developing-dotnet-microsoft-azure-getting-started?twoid=d6abac77-7dcc-4d33-9e03-f85e78989f02'
+          - title: Vývoj v Node.js
+            href: 'https://www.pluralsight.com/courses/developing-nodejs-microsoft-azure-getting-started?twoid=d6abac77-7dcc-4d33-9e03-f85e78989f02'
+            image:
+              src: 'https://docs.microsoft.com/media/logos/logo_pluralsight.svg'
+              href: 'https://www.pluralsight.com/courses/developing-nodejs-microsoft-azure-getting-started?twoid=d6abac77-7dcc-4d33-9e03-f85e78989f02'
+  - title: Ukázky
     items:
-    - title: Vývoj v .NET
-      href: https://www.pluralsight.com/courses/developing-dotnet-microsoft-azure-getting-started?twoid=d6abac77-7dcc-4d33-9e03-f85e78989f02
-      image:
-        src: https://docs.microsoft.com/media/logos/logo_pluralsight.svg
-        href: https://www.pluralsight.com/courses/developing-dotnet-microsoft-azure-getting-started?twoid=d6abac77-7dcc-4d33-9e03-f85e78989f02
-    - title: Vývoj v Node.js
-      href: https://www.pluralsight.com/courses/developing-nodejs-microsoft-azure-getting-started?twoid=d6abac77-7dcc-4d33-9e03-f85e78989f02
-      image:
-        src: https://docs.microsoft.com/media/logos/logo_pluralsight.svg
-        href: https://www.pluralsight.com/courses/developing-nodejs-microsoft-azure-getting-started?twoid=d6abac77-7dcc-4d33-9e03-f85e78989f02
-- title: Ukázky
-  items:
-  - type: paragraph
-    text: Vyhledání skriptů pro správu běžných úkolů
-  - type: list
-    style: unordered
-    className: spaced noBullet
+      - type: paragraph
+        text: Vyhledání skriptů pro správu běžných úkolů
+      - type: list
+        style: unordered
+        className: spaced noBullet
+        items:
+          - html: <a href="/powershell/azureps-cmdlets-docs">Azure PowerShell</a>
+          - html: <a href="/cli/azure/appservice">Azure CLI</a>
+  - title: Referenční informace
     items:
-    - html: <a href="/powershell/azureps-cmdlets-docs">Azure PowerShell</a>
-    - html: <a href="/cli/azure/appservice">Azure CLI</a>
-- title: Referenční informace
-  items:
-  - type: list
-    style: cards
-    className: cardsD
-    items:
-    - title: Příkazový řádek
-      html: <p><a href="/powershell/azureps-cmdlets-docs">Azure PowerShell</a></p><p><a href="/cli/azure/appservice">Azure CLI</a></p>
-    - title: Jazyky
-      html: <p><a href="/dotnet/api">.NET</a></p><p><a href="/java/api/">Java</a></p>
-    - title: REST
-      html: <p><a href="/rest/api/appservice">Reference k rozhraní REST API</a></p>
+      - type: list
+        style: cards
+        className: cardsD
+        items:
+          - title: Příkazový řádek
+            html: <p><a href="/powershell/azureps-cmdlets-docs">Azure PowerShell</a></p><p><a href="/cli/azure/appservice">Azure CLI</a></p>
+          - title: Jazyky
+            html: <p><a href="/dotnet/api">.NET</a></p><p><a href="/java/api/">Java</a></p>
+          - title: REST
+            html: <p><a href="/rest/api/appservice">Reference k rozhraní REST API</a></p>

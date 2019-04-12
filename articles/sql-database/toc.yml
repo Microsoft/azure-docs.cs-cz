@@ -185,6 +185,8 @@ items:
       href: sql-database-managed-instance-connectivity-architecture.md
     - name: Rozdíly v jazyce T-SQL
       href: sql-database-managed-instance-transact-sql-information.md
+    - name: Časové pásmo v Managed Instance
+      href: sql-database-managed-instance-timezone.md
   - name: Platforma jako služba
     items:
     - name: Platforma jako služba – přehled
@@ -730,9 +732,9 @@ items:
       href: sql-database-elastic-jobs-getting-started.md
     - name: Odinstalace elastické úlohy (zastaralé)
       href: sql-database-elastic-jobs-uninstall.md
-ms.openlocfilehash: 55afe0d516861f0c1042893374b6faef8927ac16
-ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
+ms.openlocfilehash: d789a7d8cb42d0871dcd09e55036f965daef0d9f
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
-ms.locfileid: "59358028"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59495067"

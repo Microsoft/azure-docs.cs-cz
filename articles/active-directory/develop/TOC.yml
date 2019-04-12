@@ -286,11 +286,11 @@ items:
         href: quickstart-v2-uwp.md
       - name: Windows Desktop .NET
         href: quickstart-v2-windows-desktop.md
+    - name: Aplikace démonů
+      items:
       - name: Konzola .NET Core (proces démon)
         href: quickstart-v2-netcore-daemon.md
-    - name: Služba-služba
-      items:
-      - name: ASP .NET
+      - name: Webová aplikace démona ASP.NET
         href: https://github.com/Azure-Samples/active-directory-dotnet-daemon-v2
   - name: Kurzy
     items:
@@ -326,19 +326,20 @@ items:
         href: authentication-scenarios.md
       - name: Protokoly OAuth 2.0 a OpenID Connect
         href: active-directory-v2-protocols.md
-        items:
-        - name: OpenID Connect
-          href: v2-protocols-oidc.md
-        - name: Tok implicitního udělení OAuth 2.0
-          href: v2-oauth2-implicit-grant-flow.md
-        - name: Udělení autorizačního kódu OAuth 2.0
-          href: v2-oauth2-auth-code-flow.md
-        - name: Tok On-Behalf-Of OAuth 2.0
-          href: v2-oauth2-on-behalf-of-flow.md
-        - name: Udělení přihlašovacích údajů klienta OAuth 2.0
-          href: v2-oauth2-client-creds-grant-flow.md
-        - name: Udělení přihlašovacího hesla vlastníka prostředku OAuth 2.0
-          href: v2-oauth-ropc.md
+      - name: OpenID Connect
+        href: v2-protocols-oidc.md
+      - name: Tok implicitního udělení OAuth 2.0
+        href: v2-oauth2-implicit-grant-flow.md
+      - name: Udělení autorizačního kódu OAuth 2.0
+        href: v2-oauth2-auth-code-flow.md
+      - name: Tok On-Behalf-Of OAuth 2.0
+        href: v2-oauth2-on-behalf-of-flow.md
+      - name: Udělení přihlašovacích údajů klienta OAuth 2.0
+        href: v2-oauth2-client-creds-grant-flow.md
+      - name: Tok kódu zařízení OAuth 2.0
+        href: v2-oauth2-device-code.md
+      - name: Udělení přihlašovacího hesla vlastníka prostředku OAuth 2.0
+        href: v2-oauth-ropc.md
       - name: Výměna podpisových klíčů
         href: active-directory-signing-key-rollover.md
       - name: Tokeny ID
@@ -394,12 +395,10 @@ items:
         href: howto-add-app-roles-in-azure-ad-apps.md
       - name: Pokyny pro branding
         href: howto-add-branding-in-azure-ad-apps.md
+      - name: Doména vydavatele
+        href: howto-configure-publisher-domain.md
       - name: Podmínky služby a prohlášení o ochraně osobních údajů
         href: howto-add-terms-of-service-privacy-statement.md
-      - name: Java
-        items:
-        - name: Zabezpečení webové aplikace v Javě
-          href: /java/azure/spring-framework/configure-spring-boot-starter-java-app-with-azure-active-directory?toc=/java/azure/toc.json&bc=/java/azure/breadcrumb/toc.json
     - name: Práce se sadou Visual Studio
       items:
       - name: Použití připojené služby Active Directory
@@ -419,8 +418,8 @@ items:
     - name: Knihovny ověřování
       displayName: MSAL
       href: reference-v2-libraries.md
-    - name: Rozhraní API služby Azure AD v sadě Microsoft Graph
-      href: https://developer.microsoft.com/graph/docs/concepts/azuread-identity-access-management-concept-overview
+    - name: Rozhraní API identity a přístupu v Microsoft Graphu
+      href: https://docs.microsoft.com/graph/api/resources/azure-ad-overview?view=graph-rest-beta
     - name: Manifest aplikace
       href: reference-app-manifest.md
     - name: Kódy chyb autorizace a ověřování
@@ -436,6 +435,8 @@ items:
     href: https://azure.microsoft.com/roadmap/?category=security-identity
   - name: Blog k Azure AD
     href: https://cloudblogs.microsoft.com/enterprisemobility/?product=azure-active-directory
+  - name: Blog vývojářů platformy Microsoft Identity Platform
+    href: https://developer.microsoft.com/en-us/identity/blogs/
   - name: Vyzkoušejte si funkci Přihlásit se účtem Microsoft
     href: https://azure.microsoft.com/develop/identity/signin/
   - name: Získání nápovědy
@@ -443,9 +444,9 @@ items:
     href: developer-support-help-options.md
   - name: Spravované identity pro prostředky Azure
     href: https://docs.microsoft.com/azure/active-directory/managed-service-identity/overview
-ms.openlocfilehash: 974758ddcaa4d855b395e982b6bc9a3b0b72e130
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.openlocfilehash: 9283d643717d4c516fb615a9ff5ec132a11e754c
+ms.sourcegitcommit: 41015688dc94593fd9662a7f0ba0e72f044915d6
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58886603"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59500426"

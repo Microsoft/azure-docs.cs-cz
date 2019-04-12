@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 04/08/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 4df64595f83bd7280fa781f27f3030eda3729911
-ms.sourcegitcommit: 6e32f493eb32f93f71d425497752e84763070fad
+ms.openlocfilehash: 146b19716c1d98a4be0cdabd23f224a88e499c62
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/10/2019
-ms.locfileid: "59471456"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59489223"
 ---
 # <a name="tutorial-index-and-search-semi-structured-data-json-blobs-in-azure-search"></a>Kurz: Index a prohledávání částečně strukturovaných dat (objektů BLOB JSON) ve službě Azure Search
 
@@ -37,9 +37,9 @@ Následující služby, nástroje a data se používají v tomto rychlém startu
 
 [Vytvoření služby Azure Search](search-create-service-portal.md) nebo [najít existující službu](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) pod vaším aktuálním předplatným. Můžete použít bezplatnou službu pro účely tohoto kurzu. 
 
-[Vytvoření účtu služby Azure storage](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account) slouží k ukládání ukázková data.
+[Vytvoření účtu služby Azure storage](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account) pro ukládání ukázková data.
 
-[Desktopová aplikace postman](https://www.getpostman.com/) slouží k odesílání žádostí do služby Azure Search.
+[Desktopová aplikace postman](https://www.getpostman.com/) pro odesílání požadavků do služby Azure Search.
 
 [Lékařské trials-json.zip](https://github.com/Azure-Samples/storage-blob-integration-with-cdn-search-hdi/raw/master/clinical-trials-json.zip) obsahuje data používaná v tomto kurzu. Stáhněte a rozbalte tento soubor do samostatné složky. Data pocházejí z [clinicaltrials.gov](https://clinicaltrials.gov/ct2/results), převést na JSON pro účely tohoto kurzu.
 
@@ -295,7 +295,7 @@ Nejrychlejším způsobem, jak po kurzu všechno uklidit, je odstranit skupinu p
 
 ## <a name="next-steps"></a>Další postup
 
-Algoritmy AI s využitím Cognitive Services můžete připojit ke kanálu indexeru. Jako další krok pokračujte následujícím kurzem.
+Existuje několik přístupů a více možností pro indexování objektů BLOB JSON. V dalším kroku zkontrolujte a otestujte různé možnosti, pokud chcete zobrazit, co je nejvhodnější pro váš scénář.
 
 > [!div class="nextstepaction"]
-> [Indexování s využitím AI](cognitive-search-tutorial-blob.md)
+> [Jak indexovat objektů BLOB JSON pomocí indexeru Azure Search Blob](search-howto-index-json-blobs.md)

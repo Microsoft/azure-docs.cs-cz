@@ -1,15 +1,9 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: aaaa5fedfbcc3683d725cad8e4eff9d6b8dcce08
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
-ms.translationtype: HT
-ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58000713"
 documentType: LandingData
 title: Dokumentace k Azure Storage
 metadata:
-  title: Dokumentace ke službě Azure Storage – kurzy, reference k rozhraní API | Dokumentace Microsoftu
-  description: Azure Storage je cloudová služba spravovaná Microsoftem, která poskytuje vysoce dostupné, zabezpečené, odolné, škálovatelné a redundantní úložiště. Azure Storage zahrnuje objekty blob Azure, Azure Data Lake Storage Gen2, soubory Azure, fronty Azure a tabulky Azure.
+  title: 'Dokumentace ke službě Azure Storage – kurzy, reference k rozhraní API | Dokumentace Microsoftu'
+  description: 'Azure Storage je cloudová služba spravovaná Microsoftem, která poskytuje vysoce dostupné, zabezpečené, odolné, škálovatelné a redundantní úložiště. Azure Storage zahrnuje objekty blob Azure, Azure Data Lake Storage Gen2, soubory Azure, fronty Azure a tabulky Azure.'
   services: storage
   author: tamram
   manager: twooley
@@ -20,130 +14,130 @@ metadata:
   ms.date: 06/27/2018
   ms.author: tamram
 abstract:
-  description: Azure Storage je služba spravovaná Microsoftem, která poskytuje vysoce dostupné, zabezpečené, odolné, škálovatelné a redundantní cloudové úložiště. Azure Storage zahrnuje objekty blob Azure, Azure Data Lake Storage Gen2, soubory Azure, fronty Azure a tabulky Azure. Prostřednictvím našich šablon Rychlý start a kurzů se naučíte využívat Azure Storage ve svých aplikacích.
+  description: 'Azure Storage je služba spravovaná Microsoftem, která poskytuje vysoce dostupné, zabezpečené, odolné, škálovatelné a redundantní cloudové úložiště. Azure Storage zahrnuje objekty blob Azure, Azure Data Lake Storage Gen2, soubory Azure, fronty Azure a tabulky Azure. Prostřednictvím našich šablon Rychlý start a kurzů se naučíte využívat Azure Storage ve svých aplikacích.'
 sections:
-- title: Zprovoznění během 5 minut
-  items:
-  - type: paragraph
-    text: Prostřednictvím našich šablon Rychlý start se naučíte pracovat se službou Azure Storage.
-  - type: table
-    style: dataMatrix
-    columns:
-    - image:
-        src: media/index/portal.svg
-        text: Portál
-    - image:
-        src: media/index/logo_powershell.svg
-        text: PowerShell
-    - image:
-        src: media/index/cli.svg
-        text: Azure CLI
-    - image:
-        src: media/index/logo_net.svg
-    - image:
-        src: media/index/logo_java.svg
-    - image:
-        src: media/index/logo_python.svg
-    - image:
-        src: media/index/logo_nodejs.svg
-    rows:
-    - title: Vytvoření účtu úložiště
-      values:
-      - href: /azure/storage/common/storage-quickstart-create-account?tabs=portal
-      - href: /azure/storage/common/storage-quickstart-create-account?tabs=powershell
-      - href: /azure/storage/common/storage-quickstart-create-account?tabs=azure-cli
-      - href: 
-      - href: 
-      - href: 
-      - href: 
-    - title: Šablony Rychlý start pro objekty blob
-      values:
-      - href: /azure/storage/blobs/storage-quickstart-blobs-portal
-      - href: /azure/storage/blobs/storage-quickstart-blobs-powershell
-      - href: /azure/storage/blobs/storage-quickstart-blobs-cli
-      - href: /azure/storage/blobs/storage-quickstart-blobs-dotnet
-      - href: /azure/storage/blobs/storage-quickstart-blobs-java
-      - href: /azure/storage/blobs/storage-quickstart-blobs-python
-      - href: /azure/storage/blobs/storage-quickstart-blobs-nodejs
-    - title: Data Lake Storage Gen2
-      values:
-      - href: /azure/storage/blobs/data-lake-storage-quickstart-create-account
-      - href: /azure/storage/blobs/data-lake-storage-quickstart-create-account
-      - href: /azure/storage/blobs/data-lake-storage-quickstart-create-account
-      - href: 
-      - href: 
-      - href: 
-      - href: 
-- title: Podrobné kurzy
-  items:
-  - type: list
-    style: cards
-    className: cardsD
+  - title: Zprovoznění během 5 minut
     items:
-    - title: Objekty blob
-      html: <p>Nahrání a zpracování dat obrázků v cloudu</p><ul><li><a href="/azure/storage/blobs/storage-upload-process-images">Nahrání a načtení dat obrázků v cloudu</a></li><li><a href="/azure/event-grid/resize-images-on-storage-blob-upload-event?toc=%2fazure%2fstorage%2fblobs%2ftoc.json">Aktivace Azure Functions pro zpracování objektů blob</a></li><li><a href="/azure/storage/blobs/storage-secure-access-application">Zabezpečení dat aplikací</a></li><li><a href="/azure/storage/blobs/storage-monitor-troubleshoot-storage-application">Monitorování a odstraňování potíží s úložištěm</a></li></ul><p>Návrh aplikace pro zajištění vysoké dostupnosti</p><ul><li><a href="/azure/storage/blobs/storage-create-geo-redundant-storage">Zajištění vysoké dostupnosti dat aplikace</a></li><li><a href="/azure/storage/blobs/storage-simulate-failure-ragrs-account-app">Simulace selhání při přístupu k redundantnímu úložišti jen pro čtení</a></li></ul><p><a href="/azure/storage/blobs/storage-unstructured-search">Vyhledávání nestrukturovaných dat ve službě Azure Storage</a></p>
-    - title: Data Lake Storage Gen2
-      html: <p><a href="/azure/storage/blobs/data-lake-storage-handle-data-using-databricks">Extrakce, transformace a načítání dat pomocí Azure Databricks</a></p><p><a href="/azure/storage/blobs/data-lake-storage-use-databricks-spark">Přístup k datům Azure Data Lake Storage Gen2 se službou DataBricks s využitím Sparku</a></p><p><a href="/azure/storage/blobs/data-lake-storage-tutorial-extract-transform-load-hive">Extrakce, transformace a načítání dat pomocí Apache Hivu ve službě Azure HDInsight</a></p>
-- title: Ukázky
-  items:
-  - type: paragraph
-    text: Vyhledejte skripty pro běžné úlohy správy.
-  - type: list
-    style: unordered
-    className: spaced noBullet
+      - type: paragraph
+        text: Prostřednictvím našich šablon Rychlý start se naučíte pracovat se službou Azure Storage.
+      - type: table
+        style: dataMatrix
+        columns:
+          - image:
+              src: media/index/portal.svg
+              text: Portál
+          - image:
+              src: media/index/logo_powershell.svg
+              text: PowerShell
+          - image:
+              src: media/index/cli.svg
+              text: Azure CLI
+          - image:
+              src: media/index/logo_net.svg
+          - image:
+              src: media/index/logo_java.svg
+          - image:
+              src: media/index/logo_python.svg
+          - image:
+              src: media/index/logo_nodejs.svg
+        rows:
+          - title: Vytvoření účtu úložiště
+            values:
+              - href: /azure/storage/common/storage-quickstart-create-account?tabs=portal
+              - href: /azure/storage/common/storage-quickstart-create-account?tabs=azure-powershell
+              - href: /azure/storage/common/storage-quickstart-create-account?tabs=azure-cli
+              - href: null
+              - href: null
+              - href: null
+              - href: null
+          - title: Šablony Rychlý start pro objekty blob
+            values:
+              - href: /azure/storage/blobs/storage-quickstart-blobs-portal
+              - href: /azure/storage/blobs/storage-quickstart-blobs-powershell
+              - href: /azure/storage/blobs/storage-quickstart-blobs-cli
+              - href: /azure/storage/blobs/storage-quickstart-blobs-dotnet
+              - href: /azure/storage/blobs/storage-quickstart-blobs-java
+              - href: /azure/storage/blobs/storage-quickstart-blobs-python
+              - href: /azure/storage/blobs/storage-quickstart-blobs-nodejs
+          - title: Data Lake Storage Gen2
+            values:
+              - href: /azure/storage/blobs/data-lake-storage-quickstart-create-account
+              - href: /azure/storage/blobs/data-lake-storage-quickstart-create-account
+              - href: /azure/storage/blobs/data-lake-storage-quickstart-create-account
+              - href: null
+              - href: null
+              - href: null
+              - href: null
+  - title: Podrobné kurzy
     items:
-    - html: .NET &#58; <a href="https://azure.microsoft.com/resources/samples/?service=storage&term=blob&sort=0&platform=dotnet">Blobs</a> | <a     href="https://azure.microsoft.com/resources/samples/?service=storage&term=file&sort=0&platform=dotnet">Files</a> | <a href="https://azure.microsoft.com/resources/samples/?service=storage&term=queue&sort=0&platform=dotnet">Queues</a>
-    - html: Java &#58; <a href="https://azure.microsoft.com/resources/samples/?service=storage&term=blob&sort=0&platform=java">Blobs</a> | <a href="https://azure.microsoft.com/resources/samples/?service=storage&term=file&sort=0&platform=java">Files</a> | <a href="https://azure.microsoft.com/resources/samples/?service=storage&term=queue&sort=0&platform=java">Queues</a>
-    - html: <a href="/azure/storage/blobs/storage-samples-blobs-powershell">Azure PowerShell</a>
-    - html: <a href="/azure/storage/blobs/storage-samples-blobs-cli">Azure CLI</a>
-- title: Získávání dovedností pomocí Microsoft Learn
-  items:
-  - type: list
-    style: cards
-    className: cardsFTitle
+      - type: list
+        style: cards
+        className: cardsD
+        items:
+          - title: Objekty blob
+            html: <p>Nahrání a zpracování dat obrázků v cloudu</p><ul><li><a href="/azure/storage/blobs/storage-upload-process-images">Nahrání a načtení dat obrázků v cloudu</a></li><li><a href="/azure/event-grid/resize-images-on-storage-blob-upload-event?toc=%2fazure%2fstorage%2fblobs%2ftoc.json">Aktivace Azure Functions pro zpracování objektů blob</a></li><li><a href="/azure/storage/blobs/storage-secure-access-application">Zabezpečení dat aplikací</a></li><li><a href="/azure/storage/blobs/storage-monitor-troubleshoot-storage-application">Monitorování a odstraňování potíží s úložištěm</a></li></ul><p>Návrh aplikace pro zajištění vysoké dostupnosti</p><ul><li><a href="/azure/storage/blobs/storage-create-geo-redundant-storage">Zajištění vysoké dostupnosti dat aplikace</a></li><li><a href="/azure/storage/blobs/storage-simulate-failure-ragrs-account-app">Simulace selhání při přístupu k redundantnímu úložišti jen pro čtení</a></li></ul><p><a href="/azure/storage/blobs/storage-unstructured-search">Vyhledávání nestrukturovaných dat ve službě Azure Storage</a></p>
+          - title: Data Lake Storage Gen2
+            html: '<p><a href="/azure/storage/blobs/data-lake-storage-handle-data-using-databricks">Extrakce, transformace a načítání dat pomocí Azure Databricks</a></p><p><a href="/azure/storage/blobs/data-lake-storage-use-databricks-spark">Přístup k datům Azure Data Lake Storage Gen2 se službou DataBricks s využitím Sparku</a></p><p><a href="/azure/storage/blobs/data-lake-storage-tutorial-extract-transform-load-hive">Extrakce, transformace a načítání dat pomocí Apache Hivu ve službě Azure HDInsight</a></p>'
+  - title: Ukázky
     items:
-    - title: Úvodní informace k datům v Azure
-      href: /learn/modules/intro-to-data-in-azure/
-      image:
-        src: /learn/achievements/intro-to-data-in-azure.svg
-        href: //learn/modules/intro-to-data-in-azure/
-    - title: " Volba přístupu k ukládání dat v Azure"
-      href: /learn/modules/choose-storage-approach-in-azure/
-      image:
-        src: /learn/achievements/choose-storage-approach-in-azure.svg
-        href: /learn/modules/choose-storage-approach-in-azure/
-    - title: Vytvoření účtu úložiště Azure
-      href: /learn/modules/create-azure-storage-account/
-      image:
-        src: /learn/achievements/create-azure-storage-account.svg
-        href: /learn/modules/create-azure-storage-account/
-  - type: paragraph
-    text: <a href="/learn/browse/?products=azure-storage">Další interaktivní výuka...</a>
-- title: Bezplatné školicí video od Pluralsightu
-  items:
-  - type: list
-    style: cards
-    className: cardsFTitle
+      - type: paragraph
+        text: Vyhledejte skripty pro běžné úlohy správy.
+      - type: list
+        style: unordered
+        className: spaced noBullet
+        items:
+          - html: '.NET &#58; <a href="https://azure.microsoft.com/resources/samples/?service=storage&term=blob&sort=0&platform=dotnet">Blobs</a> | <a     href="https://azure.microsoft.com/resources/samples/?service=storage&term=file&sort=0&platform=dotnet">Files</a> | <a href="https://azure.microsoft.com/resources/samples/?service=storage&term=queue&sort=0&platform=dotnet">Queues</a>'
+          - html: 'Java &#58; <a href="https://azure.microsoft.com/resources/samples/?service=storage&term=blob&sort=0&platform=java">Blobs</a> | <a href="https://azure.microsoft.com/resources/samples/?service=storage&term=file&sort=0&platform=java">Files</a> | <a href="https://azure.microsoft.com/resources/samples/?service=storage&term=queue&sort=0&platform=java">Queues</a>'
+          - html: <a href="/azure/storage/blobs/storage-samples-blobs-powershell">Azure PowerShell</a>
+          - html: <a href="/azure/storage/blobs/storage-samples-blobs-cli">Azure CLI</a>
+  - title: Získávání dovedností pomocí Microsoft Learn
     items:
-    - title: Vývoj s .NET v Azure
-      href: https://app.pluralsight.com/library/courses/developing-dotnet-microsoft-azure-getting-started/table-of-contents
-      image:
-        src: https://docs.microsoft.com/media/logos/logo_pluralsight.svg
-        href: https://app.pluralsight.com/library/courses/developing-dotnet-microsoft-azure-getting-started/table-of-contents
-    - title: Vývoj s Node.js v Azure
-      href: https://app.pluralsight.com/library/courses/developing-nodejs-microsoft-azure-getting-started/table-of-contents
-      image:
-        src: https://docs.microsoft.com/media/logos/logo_pluralsight.svg
-        href: https://app.pluralsight.com/library/courses/developing-nodejs-microsoft-azure-getting-started/table-of-contents
-- title: Referenční informace
-  items:
-  - type: list
-    style: cards
-    className: cardsD
+      - type: list
+        style: cards
+        className: cardsFTitle
+        items:
+          - title: Úvodní informace k datům v Azure
+            href: /learn/modules/intro-to-data-in-azure/
+            image:
+              src: /learn/achievements/intro-to-data-in-azure.svg
+              href: //learn/modules/intro-to-data-in-azure/
+          - title: "\_Volba přístupu k ukládání dat v Azure"
+            href: /learn/modules/choose-storage-approach-in-azure/
+            image:
+              src: /learn/achievements/choose-storage-approach-in-azure.svg
+              href: /learn/modules/choose-storage-approach-in-azure/
+          - title: Vytvoření účtu úložiště Azure
+            href: /learn/modules/create-azure-storage-account/
+            image:
+              src: /learn/achievements/create-azure-storage-account.svg
+              href: /learn/modules/create-azure-storage-account/
+      - type: paragraph
+        text: <a href="/learn/browse/?products=azure-storage">Další interaktivní výuka...</a>
+  - title: Bezplatné školicí video od Pluralsightu
     items:
-    - title: Příkazový řádek
-      html: <p><a href="/powershell/storage">PowerShell</a></p><p><a href="/cli/azure/storage">Azure CLI</a></p>
-    - title: Jazyky
-      html: <p><a href="/dotnet/api/overview/azure/storage/client?view=azure-dotnet">.NET</a></p><p><a href="/java/api/overview/azure/storage/client?view=azure-java-stable">Java</a></p><p><a href="/javascript/api/overview/azure/storage?view=azure-node-latest">Node.js</a></p><p><a href="/python/api/overview/azure/storage">Python</a></p><p><a href="https://azure.github.io/azure-storage-php/">PHP</a></p><p><a href="https://azure.github.io/azure-storage-ruby">Ruby</a></p><p><a href="https://azure.github.io/azure-storage-cpp">C++</a></p><p><a href="https://github.com/Azure/azure-storage-ios">iOS</a></p><p><a href="https://azure.github.io/azure-storage-android">Android</a></p>
-    - title: REST
-      html: <p><a href="/rest/api/storageservices">Rozhraní API pro objekty blob, tabulky, fronty a soubory</a></p><p><a href="/rest/api/storagerp">Rozhraní API pro poskytovatele prostředků úložiště</a></p><p><a href="/rest/api/storageimportexport">Rozhraní API pro službu importu a exportu</a></p>
+      - type: list
+        style: cards
+        className: cardsFTitle
+        items:
+          - title: Vývoj s .NET v Azure
+            href: 'https://app.pluralsight.com/library/courses/developing-dotnet-microsoft-azure-getting-started/table-of-contents'
+            image:
+              src: 'https://docs.microsoft.com/media/logos/logo_pluralsight.svg'
+              href: 'https://app.pluralsight.com/library/courses/developing-dotnet-microsoft-azure-getting-started/table-of-contents'
+          - title: Vývoj s Node.js v Azure
+            href: 'https://app.pluralsight.com/library/courses/developing-nodejs-microsoft-azure-getting-started/table-of-contents'
+            image:
+              src: 'https://docs.microsoft.com/media/logos/logo_pluralsight.svg'
+              href: 'https://app.pluralsight.com/library/courses/developing-nodejs-microsoft-azure-getting-started/table-of-contents'
+  - title: Referenční informace
+    items:
+      - type: list
+        style: cards
+        className: cardsD
+        items:
+          - title: Příkazový řádek
+            html: <p><a href="/powershell/storage">PowerShell</a></p><p><a href="/cli/azure/storage">Azure CLI</a></p>
+          - title: Jazyky
+            html: '<p><a href="/dotnet/api/overview/azure/storage/client?view=azure-dotnet">.NET</a></p><p><a href="/java/api/overview/azure/storage/client?view=azure-java-stable">Java</a></p><p><a href="/javascript/api/overview/azure/storage?view=azure-node-latest">Node.js</a></p><p><a href="/python/api/overview/azure/storage">Python</a></p><p><a href="https://azure.github.io/azure-storage-php/">PHP</a></p><p><a href="https://azure.github.io/azure-storage-ruby">Ruby</a></p><p><a href="https://azure.github.io/azure-storage-cpp">C++</a></p><p><a href="https://github.com/Azure/azure-storage-ios">iOS</a></p><p><a href="https://azure.github.io/azure-storage-android">Android</a></p>'
+          - title: REST
+            html: '<p><a href="/rest/api/storageservices">Rozhraní API pro objekty blob, tabulky, fronty a soubory</a></p><p><a href="/rest/api/storagerp">Rozhraní API pro poskytovatele prostředků úložiště</a></p><p><a href="/rest/api/storageimportexport">Rozhraní API služby Import/Export</a></p>'

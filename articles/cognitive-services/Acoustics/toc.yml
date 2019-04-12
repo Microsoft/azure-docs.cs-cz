@@ -12,18 +12,24 @@ items:
     href: unreal-quickstart.md
 - name: Kurzy
   items:
-  - name: Pracovní postup návrhu Unity
-    href: unity-workflow.md
-  - name: Pracovní postup návrhu Unreal/Wwise
-    href: unreal-workflow.md
-  - name: Bake Acoustics s využitím Unity
-    href: unity-baking.md
-  - name: Bake Acoustics s využitím Unreal/Wwise
-    href: unreal-baking.md
+  - name: Unity
+    items:
+    - name: Bake Acoustics s využitím Unity
+      href: unity-baking.md
+    - name: Pracovní postup návrhu Unity
+      href: unity-workflow.md
+  - name: Unreal/Wwise
+    items:
+    - name: Bake Acoustics s využitím Unreal/Wwise
+      href: unreal-baking.md
+    - name: Pracovní postup návrhu Unreal/Wwise
+      href: unreal-workflow.md
 - name: Koncepty
   items:
   - name: Koncepce návrhu s využitím akustické simulace
     href: design-process.md
+  - name: Rozlišení pro Bake
+    href: bake-resolution.md
 - name: Postupy
   items:
   - name: Vytvoření účtu Azure Batch
@@ -38,9 +44,9 @@ items:
     href: faq.md
   - name: Známé problémy
     href: known-issues.md
-ms.openlocfilehash: 37514a3f8c149c1e34b4e0faa8a7109290a80feb
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 0a445890369e48f61dfa545d7107f46e3d0675a1
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58138215"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59495630"
