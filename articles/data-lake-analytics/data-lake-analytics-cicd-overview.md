@@ -10,12 +10,12 @@ ms.service: data-lake-analytics
 ms.topic: conceptual
 ms.workload: big-data
 ms.date: 09/14/2018
-ms.openlocfilehash: b6c5df1ef0c93508595e27cbda315281aa3461b5
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: b035be727df2dfecb613da79681affd740c69bec
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58124282"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59544814"
 ---
 # <a name="how-to-set-up-a-cicd-pipeline-for-azure-data-lake-analytics"></a>Jak vytvořit kanál CI/CD pro Azure Data Lake Analytics  
 
@@ -66,7 +66,7 @@ Skripty U-SQL v projektu U-SQL pravděpodobně příkazy dotazu pro objekty data
 Další informace o [projekt v U-SQL databáze](data-lake-analytics-data-lake-tools-develop-usql-database.md).
 
 >[!NOTE]
->Projekt U-SQL database je aktuálně ve verzi public preview. Pokud máte příkazu PŘETAŽENÍ v projektu, sestavení selže. Příkaz DROP bude brzy povolená.
+>Příkaz rozevírací může způsobit havárii odstranění problému. Povolit příkaz PŘETAŽENÍ, musíte explicitně zadat argumenty nástroje MSBuild. **AllowDropStatement** vám umožní nedatové související operace odstranění, jako jsou sestavení a přetažení funkce vracející tabulku. **AllowDataDropStatement** vám umožní data týkající se operace odstranění, jako jsou tabulky a přetažení schématu. Je nutné povolit AllowDropStatement před použitím AllowDataDropStatement.
 >
 
 ### <a name="build-a-u-sql-project-with-the-msbuild-command-line"></a>Projekt U-SQL pomocí příkazového řádku MSBuild sestavit
@@ -79,11 +79,11 @@ msbuild USQLBuild.usqlproj /p:USQLSDKPath=packages\Microsoft.Azure.DataLake.USQL
 
 Definice argumentů a hodnoty jsou následující:
 
-* **USQLSDKPath = < balíček Nuget U-SQL > \build\runtime**. Tento parametr odkazuje na cestu instalace balíčku NuGet pro služby jazyka U-SQL.
+* **USQLSDKPath =\<balíček Nuget U-SQL > \build\runtime**. Tento parametr odkazuje na cestu instalace balíčku NuGet pro služby jazyka U-SQL.
 * **USQLTargetType=Merge or SyntaxCheck**:
     * **Sloučit**. Sloučení režimu zkompiluje soubory kódu na pozadí. Mezi příklady patří **.cs**, **.py**, a **.r** soubory. To inlines výslednou knihovnu uživatelský kód do skriptu U-SQL. Mezi příklady patří binární soubor knihovny dll, Python nebo R kódu.
     * **SyntaxCheck**. Režim SyntaxCheck nejprve sloučí soubory kódu na pozadí skript U-SQL. Pak zkompiluje skript U-SQL k ověření kódu.
-* **DataRoot=<DataRoot path>**. Pouze u SyntaxCheck režimu, je potřeba DataRoot. Při vytváření skriptu s režimem SyntaxCheck, zkontroluje MSBuild odkazy na objekty databáze ve skriptu. Před sestavením, nastavte odpovídající místní prostředí, který obsahuje odkazované objekty z databáze U-SQL ve složce DataRoot počítač sestavení. Můžete také spravovat tyto databáze závislostí podle [odkazování na projekt U-SQL database](data-lake-analytics-data-lake-tools-develop-usql-database.md#reference-a-u-sql-database-project). Nástroj MSBuild zkontroluje pouze odkazy na objekty databáze, nikoli soubory.
+* **DataRoot =\<prohledá se cesta DataRoot >**. Pouze u SyntaxCheck režimu, je potřeba DataRoot. Při vytváření skriptu s režimem SyntaxCheck, zkontroluje MSBuild odkazy na objekty databáze ve skriptu. Před sestavením, nastavte odpovídající místní prostředí, který obsahuje odkazované objekty z databáze U-SQL ve složce DataRoot počítač sestavení. Můžete také spravovat tyto databáze závislostí podle [odkazování na projekt U-SQL database](data-lake-analytics-data-lake-tools-develop-usql-database.md#reference-a-u-sql-database-project). Nástroj MSBuild zkontroluje pouze odkazy na objekty databáze, nikoli soubory.
 * **EnableDeployment = true** nebo **false**. EnableDeployment Určuje, zda je povolen nasadit odkazované databáze U-SQL během procesu sestavení. Je-li odkazovat na databázový projekt U-SQL a využívat databázových objektů ve vašem skriptu U-SQL, nastavte tento parametr na **true**.
 
 ### <a name="continuous-integration-through-azure-pipelines"></a>Průběžná integrace pomocí kanálů Azure

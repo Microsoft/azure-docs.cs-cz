@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/23/2018
 ms.author: hrasheed
-ms.openlocfilehash: 8072d72dbb164d5012ad42d5cba66c8b425e99a1
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.openlocfilehash: 023fd8267a557fa57e98a6a57785fb9ebfcb12ab
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53787899"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59523966"
 ---
 # <a name="manage-resources-for-apache-spark-cluster-on-azure-hdinsight"></a>Správa prostředků v clusteru Apache Spark v Azure HDInsight 
 
@@ -45,7 +45,7 @@ Server historie Sparku je ve webovém uživatelském rozhraní pro dokončené a
     https://<ClusterName>.azurehdinsight.net/sparkhistory
     ```
 
-    Nahraďte <ClusterName> názvem clusteru Spark.
+    Nahraďte `<ClusterName>` názvem clusteru Spark.
 
 Server historie Sparku webové uživatelské rozhraní vypadá takto:
 
@@ -145,11 +145,11 @@ Spuštění uživatelského rozhraní Yarn, jak je znázorněno na začátku toh
 ## <a name="kill-running-applications"></a>Ukončit spuštěné aplikace
 1. V Uživatelském rozhraní Yarn na levém panelu klikněte na tlačítko **systémem**. Seznam spuštěných aplikací určete aplikace ukončeny a klikněte na **ID**.
 
-    ![Ukončit App1](./media/apache-spark-resource-manager/kill-app1.png "Kill počítače App1")
+    ![Kill App1](./media/apache-spark-resource-manager/kill-app1.png "Kill App1")
 
 2. Klikněte na tlačítko **ukončit aplikace** v pravém horním rohu, pak klikněte na **OK**.
 
-    ![Ukončit počítači App2](./media/apache-spark-resource-manager/kill-app2.png "Kill počítači App2")
+    ![Kill App2](./media/apache-spark-resource-manager/kill-app2.png "Kill App2")
 
 ## <a name="see-also"></a>Další informace najdete v tématech
 * [Sledování a ladění úloh spuštěných v clusteru Apache Spark v HDInsight](apache-spark-job-debugging.md)

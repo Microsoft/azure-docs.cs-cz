@@ -10,12 +10,12 @@ ms.subservice: answer-search
 ms.topic: reference
 ms.date: 04/13/2018
 ms.author: rosh, v-gedod
-ms.openlocfilehash: 766ceb0bc6f1eb3da9129f2359f6e2be7363dd23
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 09fab691ea04ad98472abc4f4dee5ecb4d22e660
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57531126"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59527315"
 ---
 # <a name="project-answer-search-v7-reference"></a>Odkaz na projekt hledání odpovědí v7
 
@@ -35,7 +35,7 @@ https://api.labs.cognitive.microsoft.com/answerSearch/v7.0/search?q=<searchTerm>
 ```
 
 Žádost musí používat protokol HTTPS a obsahovat následující parametr dotazu:
--  q =<URL> -dotaz, který určuje objekt služby search
+-  `q=<URL>` -Dotaz, který určuje objekt služby search
 
 Příklady, které ukazují, jak vytvářet požadavky najdete v tématu [jazyka C# quickstart](c-sharp-quickstart.md) nebo [Java quickstart](java-quickstart.md). 
 
@@ -56,7 +56,7 @@ Informace o povolených použití a zobrazení výsledků najdete v tématu [pou
 > - Pragma – volající nemá řídit, jestli ve verzi Preview se adresy URL používá mezipaměť
 > - Cache-Control – volající nemá řídit, jestli ve verzi Preview se adresy URL používá mezipaměť
 > - Uživatelský Agent
-
+> 
 > Také některé parametry nejsou aktuálně smysl pro adresu URL ve verzi Preview rozhraní API, ale mohou být použity v budoucnosti pro lepší globalizace. 
  
 ## <a name="headers"></a>Hlavičky  
@@ -217,18 +217,21 @@ Definuje kontext dotazu, který používá Bing pro daný požadavek.
 |originalQuery|Řetězec dotazu jako zadaný v požadavku.|String|  
 
 ### <a name="identifiable"></a>Údaje
+
 |Název|Hodnota|Type|  
 |-------------|-----------------|----------|
 |id|Identifikátor prostředku|String|
  
 ### <a name="rankinggroup"></a>RankingGroup
 Definuje skupinu výsledky, jako například mainline.
+
 |Název|Hodnota|Type|  
 |-------------|-----------------|----------|
 |položek|Seznam výsledků hledání pro zobrazení ve skupině.|RankingItem|
 
 ### <a name="rankingitem"></a>RankingItem
 Definuje položku výsledek vyhledávání k zobrazení.
+
 |Název|Hodnota|Type|  
 |-------------|-----------------|----------|
 |resultIndex|Z nuly vycházející index položky v odpovědi na dotaz k zobrazení. Pokud položka neobsahuje toto pole, zobrazí všechny položky v odpovědi na dotaz. Například zobrazte všechny články o novinkách v zpráv odpovědí.|Integer|

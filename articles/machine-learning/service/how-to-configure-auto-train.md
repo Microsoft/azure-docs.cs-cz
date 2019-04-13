@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 04/08/2019
 ms.custom: seodec18
-ms.openlocfilehash: 5aa9a60c624e1bfaa1570d02bfd1a421fcab3301
-ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
+ms.openlocfilehash: 87e1e57a969fc5e65302dcce44231773f7e74b3a
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
-ms.locfileid: "59358307"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59548821"
 ---
 # <a name="configure-automated-machine-learning-experiments"></a>Konfigurace automatizovaného se strojovým učením
 
@@ -173,7 +173,7 @@ Dále určete, kde bude Trénink modelu. Automatické experimentu strojového u�
 *   Místní počítač například místní pracovní plocha nebo přenosný počítač – obecně Pokud máte malé datové sady a jsou stále ve fázi průzkumu.
 *   Vzdálený počítač v cloudu – [Azure Machine Learning spravovat Compute](concept-azure-machine-learning-architecture.md#managed-and-unmanaged-compute-targets) je spravovaná služba, která umožňuje trénování modelů strojového učení na clusterech virtuálních počítačů Azure.
 
-Zobrazit [webu GitHub](https://github.com/Azure/MachineLearningNotebooks/tree/master/automl) například cílových výpočetních prostředí poznámkové bloky s místním a vzdáleným.
+Zobrazit [webu GitHub](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/automated-machine-learning) například cílových výpočetních prostředí poznámkové bloky s místním a vzdáleným.
 
 <a name='configure-experiment'></a>
 
@@ -238,6 +238,9 @@ Pokud používáte `preprocess=True`, následující data předběžného zpraco
     * Číselné funkce s velmi malým počtem jedinečných hodnot transformována do kategorií funkce.
     * V závislosti na mohutnosti zařazené do kategorií funkcí proveďte popisek kódování nebo (algoritmu hash) jeden horkou kódování.
 
+## <a name="ensemble-models"></a>Modely skupiny stromů
+Komplet learning zlepšuje výsledky machine learning a prediktivní výkon kombinace mnoha modelů na rozdíl od použití jedné modelů. Při použití automatizované strojového učení, můžete trénování modelů komplet pomocí [algoritmus výběru skupiny stromů Caruana s inicializací seřazený komplet](http://www.niculescu-mizil.org/papers/shotgun.icml04.revised.rev2.pdf). Komplet iterace se zobrazí jako poslední iteraci spuštění.
+
 ## <a name="time-series-forecasting"></a>Vytváření prognóz časových řad
 Pro typ Prognózování úloh čas řady je nutné definovat další parametry.
 1. time_column_name – Toto je povinný parametr, který definuje název sloupce do řady obsahující datum a čas trénovací data. 
@@ -270,7 +273,6 @@ automl_config = AutoMLConfig(task='forecasting',
                              X=X_train,
                              y=y_train,
                              n_cross_validations=5,
-                             enable_ensembling=False,
                              path=project_folder,
                              verbosity=logging.INFO,
                              **time_series_settings)

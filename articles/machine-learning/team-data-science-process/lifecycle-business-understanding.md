@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 11/04/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 3e897a3fbc76a75e526e4d0706a2678cd29dfc2e
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 35d03a52125bd2646f86b96bcffe123d9fab7f64
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55477450"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59545310"
 ---
 # <a name="the-business-understanding-stage-of-the-team-data-science-process-lifecycle"></a>Obchodní vysvětlení fáze životní cyklus vědeckého zpracování týmových dat
 
@@ -46,7 +46,7 @@ Existují dva hlavní úkoly zákazníky a vyřešené v této fázi:
 ### <a name="define-objectives"></a>Definování cílů
 1. Ústředním cílem tohoto kroku je identifikace klíčových obchodních proměnné, které analýzy, které potřebujete k předpovědi. Budeme odkazovat na tyto proměnné jako *model cíle*, a jak určit úspěch projektu používáme metriky související s nimi. Dva příklady takových cílů jsou prognózy prodeje nebo pravděpodobnost pořadí se podvodné.
 
-2. Definování cílů projektu s dotazem a upřesnění "ostrých" dotazy, které jsou relevantní, konkrétní a jednoznačný. Pro datové vědy je proces, který využívá názvů a čísel k odpovědi na tyto otázky. Další informace o sharp zeptat, najdete v článku [postup datové vědy](https://blogs.technet.microsoft.com/machinelearning/2016/03/28/how-to-do-data-science/) blogu. Obvykle použijete pro datové vědy a strojové učení k zodpovězení pěti typů otázek:
+2. Definování cílů projektu s dotazem a upřesnění "ostrých" dotazy, které jsou relevantní, konkrétní a jednoznačný. Pro datové vědy je proces, který využívá názvů a čísel k odpovědi na tyto otázky. Obvykle použijete pro datové vědy a strojové učení k zodpovězení pěti typů otázek:
  
    * Kolik nebo kolik? (regrese)
    * Které kategorii? (klasifikace)

@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 05/15/2018
 ms.author: v-jansko
-ms.openlocfilehash: b65182cac91f6ed3dc653d6d9e77f80e99346bb7
-ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
+ms.openlocfilehash: 961dd277034db7e5406e671233f26b4fd8fe5f26
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/04/2019
-ms.locfileid: "58918004"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59527281"
 ---
 # <a name="translator-text-api-v20"></a>Translator Text API v2.0
 
@@ -45,7 +45,7 @@ Pokud chcete předejít vulgárních výrazů v překladu, bez ohledu na příto
 |ProfanityAction    |Akce |Příklad zdroje (japonština)  |Příklad překladu (v angličtině)  |
 |:--|:--|:--|:--|
 |NoAction   |Default (Výchozí). Stejně jako nastavit možnost. Vulgárních výrazů předá ze zdroje do cíle.        |彼はジャッカスです。     |Je jackass.   |
-|Označené     |Urážlivá slova umístí značky XML <profanity> a </profanity>.     |彼はジャッカスです。 |Je <profanity>jackass</profanity>.    |
+|Označené     |Urážlivá slova umístí značky XML \<vulgárních výrazů > a \</profanity >.       |彼はジャッカスです。 |Je \<vulgárních výrazů > jackass\</profanity >.  |
 |Odstraněno    |Urážlivá slova se odebere z výstupu bez nahrazení.     |彼はジャッカスです。 |Je.   |
 
     

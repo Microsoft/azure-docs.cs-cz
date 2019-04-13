@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: article
-ms.date: 02/19/2019
+ms.date: 04/01/2019
 ms.author: diberry
-ms.openlocfilehash: 1dac87ae07fac6a997cfd8e83c1e47ff39a91a83
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 0d3123b1e0238a1907b5ad3d487b92a7919ff181
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58096686"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59524255"
 ---
 # <a name="add-an-entity-to-example-utterances"></a>Přidání entity do příklad projevy 
 
@@ -91,6 +91,8 @@ Za předpokladu, že utterance, `Does John Smith work in Seattle?`, složený ut
 
 ## <a name="add-hierarchical-entity"></a>Přidání hierarchické entity
 
+**Nakonec se přestanou hierarchické entity. Použití [entity role](luis-concept-roles.md) určit podtypy entity, namísto hierarchické entity.**
+
 Hierarchické entity je kategorie kontextově zkušenosti a související entity. V následujícím příkladu obsahuje původní a cílové umístění. 
 
 V utterance `Move John Smith from Seattle to Cairo`, Seattle, je původní umístění a Cairo je cílové umístění. Každé umístění je kontextově různých a zkušenosti z pořadí slov a požadované aplikace word v utterance.
@@ -105,6 +107,12 @@ V utterance `Move John Smith from Seattle to Cairo`, Seattle, je původní umís
 
     >[!CAUTION]
     >Podřízené entity názvy musí být jedinečný ve všech entit v jediné aplikaci. Dva různé hierarchické entity nemůže obsahovat podřízené entity se stejným názvem. 
+
+## <a name="add-entitys-role-to-utterance"></a>Přidání entity role utterance
+
+Role je pojmenovaný podtypem typu entity, určit podle kontextu utterance. Můžete označí entitu v rámci utterance jako entity, nebo vyberte roli v rámci této entity. Každá entita může mít role včetně vlastních entit, které jsou zjištěné počítače (jednoduché a složené entit), nejsou zjištěné počítače (předem připravených entit, regulární výraz entity seznam entit). 
+
+Přečtěte si [jak označit utterance s rolemi entity](tutorial-entity-roles.md) z praktické kurzu. 
 
 ## <a name="entity-status-predictions"></a>Predikce stavu entity
 
@@ -151,11 +159,11 @@ Odebrání popisku se naučili počítač entity ze utterance, vyberte entitu ut
 
 ### <a name="add-prebuilt-entity-label"></a>Přidání popisku předem připravených entit
 
-Když přidáte do aplikace LUIS předem připravených entit, není nutné projevy značky s těmito entitami. Další informace o tom předem připravených entit a jak je přidat, naleznete v tématu [přidat entity](luis-how-to-add-entities.md#add-prebuilt-entity).
+Když přidáte do aplikace LUIS předem připravených entit, není nutné projevy značky s těmito entitami. Další informace o tom předem připravených entit a jak je přidat, naleznete v tématu [přidat entity](luis-how-to-add-entities.md#add-a-prebuilt-entity-to-your-app).
 
 ### <a name="add-regular-expression-entity-label"></a>Přidání popisku entity regulárního výrazu
 
-Pokud regulární výraz entity, které přidáte do aplikace LUIS, není nutné projevy značky s těmito entitami. Další informace o regulární výraz entity a jak je přidat, naleznete v tématu [přidat entity](luis-how-to-add-entities.md#add-regular-expression-entities).
+Pokud regulární výraz entity, které přidáte do aplikace LUIS, není nutné projevy značky s těmito entitami. Další informace o regulární výraz entity a jak je přidat, naleznete v tématu [přidat entity](luis-how-to-add-entities.md#add-regular-expression-entities-for-highly-structured-concepts).
 
 
 ### <a name="create-a-pattern-from-an-utterance"></a>Ze utterance společně tvoří masku

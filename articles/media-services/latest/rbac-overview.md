@@ -12,12 +12,12 @@ ms.topic: article
 ms.date: 04/08/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: 212d7f5352b58ee8f5b2c119bb1f5f828591f6bf
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.openlocfilehash: f72e98d8874a5a5dc94deb882affdf66388b13c9
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/11/2019
-ms.locfileid: "59490771"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59548521"
 ---
 # <a name="role-based-access-control-rbac-for-media-services-accounts"></a>Řízení přístupu na základě rolí (RBAC) pro účty Media Services
 
@@ -43,8 +43,8 @@ Zobrazit další informace v následujících článcích:
 - [Role klasického správce předplatného, role Azure RBAC a role správce Azure AD](https://docs.microsoft.com/azure/role-based-access-control/rbac-and-directory-admin-roles)
 - [Co je RBAC pro prostředky Azure?](https://docs.microsoft.com/azure/role-based-access-control/overview)
 - [Ke správě přístupu pomocí RBAC](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-rest)
-- [Získání obsahu klíče zásad, pomocí Media Services .NET](get-content-key-policy-dotnet-howto.md)
 
 ## <a name="next-steps"></a>Další postup
 
-[Vývoj s využitím Media Services v3 rozhraní API](media-services-apis-overview.md)
+- [Vývoj s využitím Media Services v3 rozhraní API](media-services-apis-overview.md)
+- [Získání obsahu klíče zásad, pomocí Media Services .NET](get-content-key-policy-dotnet-howto.md)

@@ -11,18 +11,18 @@ ms.topic: tutorial
 ms.date: 11/13/2018
 ms.author: jafreebe
 ms.custom: seodec18
-ms.openlocfilehash: a4bf2ef252b5a948f2e3614e3e7cf64a4cb19277
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 472ff85adaf72f91948c4072b12cca3ff8e59f37
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57772054"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59545346"
 ---
 # <a name="tutorial-build-a-java-ee-and-postgres-web-app-in-azure"></a>Kurz: Vytvoření webové aplikace v Azure platformě Java EE určený a Postgres
 
-Tomto kurzu se dozvíte, jak vytvořit webovou aplikaci Java Enterprise Edition (EE) ve službě Azure App Service a její připojení k databázi Postgres. Až budete hotovi, budete mít [WildFly](https://www.wildfly.org/about/) ukládající data ve [databáze Azure pro Postgres](https://azure.microsoft.com/services/postgresql/) běžící v Azure [App Service v Linuxu](app-service-linux-intro.md).
+V tomto kurzu se dozvíte, jak vytvořit webovou aplikaci Java Enterprise Edition (EE) ve službě Azure App Service a její připojení k databázi Postgres. Až budete hotovi, budete mít [WildFly](https://www.wildfly.org/about/) ukládající data ve [databáze Azure pro Postgres](https://azure.microsoft.com/services/postgresql/) běžící v Azure [App Service v Linuxu](app-service-linux-intro.md).
 
-V tomto kurzu se naučíte, jak:
+V tomto kurzu se naučíte:
 > [!div class="checklist"]
 > * Nasazení aplikace na platformě Java EE určený do Azure pomocí nástroje Maven
 > * Vytvořit v Azure databázi Postgres
@@ -158,7 +158,9 @@ Dále musíme upravit konfiguraci naše Java transakcí API (JPA) tak, aby naše
 
 ## <a name="configure-the-wildfly-application-server"></a>Konfigurace serveru WildFly aplikací
 
-Před nasazením překonfigurovaná aplikace, musí aktualizujeme WildFly aplikačním serverem Postgres modul a jeho závislosti. Konfigurace serveru, potřebujeme čtyři soubory v `wildfly_config/` adresáře:
+Před nasazením překonfigurovaná aplikace, musí aktualizujeme WildFly aplikačním serverem Postgres modul a jeho závislosti. Další informace o konfiguraci najdete v [server nakonfigurovat WildFly](configure-language-java.md#configure-wildfly-server).
+
+Konfigurace serveru, potřebujeme čtyři soubory v `wildfly_config/` adresáře:
 
 - **postgresql-42.2.5.jar**: Tento soubor JAR je ovladač JDBC pro Postgres. Další informace najdete v tématu [oficiální web](https://jdbc.postgresql.org/index.html).
 - **postgres-module.xml**: Tento soubor XML deklaruje název modulu Postgres (org.postgres). Určuje také prostředky a závislosti, které jsou nezbytné pro modul, který se má použít.
@@ -172,7 +174,6 @@ Důrazně doporučujeme čtení obsahu těchto souborů, zejména _jboss_cli_com
 Budeme muset FTP obsah `wildfly_config/` naše instanci služby App Service. Chcete-li získat pověření serveru FTP, klikněte na tlačítko **získat profil publikování** tlačítka v okně App Service na webu Azure Portal. FTP uživatelské jméno a heslo bude v stažené dokumentu XML. Další informace o profilu publikování najdete v tématu [tento dokument](https://docs.microsoft.com/azure/app-service/deploy-configure-credentials).
 
 Pomocí FTP nástroje podle vašeho výběru, přenášet čtyři soubory v `wildfly_config/` k `/home/site/deployments/tools/`. (Všimněte si, že by neměla přenos adresář pouze soubory sami.)
-
 
 ### <a name="finalize-app-service"></a>Dokončení služby App Service
 
@@ -195,9 +196,26 @@ Blahopřejeme! Aplikace nyní používá databázi Postgres a záznamy, které v
 Pokud tyto prostředky nepotřebujete pro další kurz (viz další kroky), můžete je odstranit spuštěním následujícího příkazu:
 
 ```bash
-az group delete --name <your_resource_group> 
+az group delete --name <your-resource-group>
 ```
 
 ## <a name="next-steps"></a>Další postup
 
-Teď, když platformě Java EE určený aplikace nasazené do služby App Service, najdete [– Příručka pro vývojáře Java Enterprise](https://docs.microsoft.com/azure/app-service/containers/app-service-linux-java) Další informace o nastavení služby, řešení potíží a škálování vaší aplikace.
+V tomto kurzu jste se naučili:
+
+> [!div class="checklist"]
+> * Nasazení aplikace na platformě Java EE určený do Azure pomocí nástroje Maven
+> * Vytvořit v Azure databázi Postgres
+> * Konfigurace serveru WildFly pro použití Postgres
+> * Aktualizace a opětovné nasazení aplikace
+> * Spouštění testů jednotek WildFly
+
+Přejděte k dalšímu kurzu, kde se naučíte, jak namapovat vlastní název DNS do vaší aplikace.
+
+> [!div class="nextstepaction"]
+> [Kurz: Mapování vlastního názvu DNS do vaší aplikace](../app-service-web-tutorial-custom-domain.md)
+
+Nebo, podívejte se na další prostředky:
+
+> [!div class="nextstepaction"]
+> [Konfigurace aplikace v Javě](configure-language-java.md)

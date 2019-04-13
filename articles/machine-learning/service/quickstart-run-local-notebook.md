@@ -10,12 +10,12 @@ author: sdgilley
 ms.author: sgilley
 ms.date: 03/21/2019
 ms.custom: seodec18
-ms.openlocfilehash: ade0444110dbb23e762a869dc79805872c0f0bf0
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: 3afea20fe02eafbf14b5162eef3a198d27140b9e
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59281127"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59549131"
 ---
 # <a name="quickstart-use-your-own-notebook-server-to-get-started-with-azure-machine-learning"></a>Rychlý start: Začínáme s Azure Machine Learning pomocí serveru poznámkového bloku
 
@@ -33,7 +33,7 @@ Pokud nemáte předplatné Azure, vytvořte si bezplatný účet, před zahájen
 
 * Server poznámkového bloku Python 3.6 s sadu SDK Azure Machine Learning nainstalovaná
 * Pracovní prostor služby Azure Machine Learning service
-* Konfigurační soubor pracovního prostoru (**aml_config/config.json** ).
+* Konfigurační soubor pracovního prostoru (**.azureml/config.json** ).
 
 Získejte všechny tyto požadavky z [vytvořit pracovní prostor služby Azure Machine Learning](setup-create-workspace.md#portal).
 

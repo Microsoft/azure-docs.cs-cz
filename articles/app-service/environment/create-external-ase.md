@@ -14,26 +14,28 @@ ms.topic: article
 ms.date: 06/13/2017
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 4a2c90accaafea0c17456f8e6c5eae41199b17ed
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: eef13c5a4e3757b0eafd77c0915717175c2dbd8c
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58105161"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59545412"
 ---
-> [!NOTE]
-> Každé prostředí App Service má virtuální IP (VIP), který slouží ke kontaktování služby App Service Environment.
-> 
-> # <a name="create-an-external-app-service-environment"></a>Vytvoření externí App Service environment #
+# <a name="create-an-external-app-service-environment"></a>Vytvoření externí App Service environment
 
-Azure App Service Environment je nasazení služby Azure App Service do podsítě ve virtuální síti Azure. Služba App Service Environment (ASE) se dá nasadit dvěma způsoby:
+Azure App Service Environment je nasazení služby Azure App Service do podsítě ve virtuální síti Azure.
+
+> [!NOTE]
+> Každá služba App Service Environment má virtuální IP (VIP), který slouží ke kontaktování služby App Service Environment.
+
+Služba App Service Environment (ASE) se dá nasadit dvěma způsoby:
 
 - Pomocí virtuální IP adresy na externí IP adresu – často se označuje jako externí služba ASE
 - Pomocí virtuální IP adresy na interní IP adresa často se označuje ILB ASE protože interním koncovým bodem je interní zatížení Balancer (ILB).
 
 Tento článek ukazuje, jak vytvořit externí služby ASE. Přehled služby ASE najdete v tématu [Úvod do služby App Service Environment][Intro]. Informace o tom, jak vytvořit prostředí ILB ASE najdete v tématu [vytvoření a použití prostředí ILB ASE][MakeILBASE].
 
-## <a name="before-you-create-your-ase"></a>Před vytvořením služby ASE ##
+## <a name="before-you-create-your-ase"></a>Před vytvořením služby ASE
 
 Po vytvoření služby ASE, nelze změnit následující:
 
@@ -48,7 +50,7 @@ Po vytvoření služby ASE, nelze změnit následující:
 > Vyberete virtuální síť a zadejte podsíť, ujistěte se, že je dostatečně velký pro přizpůsobení budoucímu růstu a potřeby škálování. Doporučujeme velikost `/24` s 256 adres.
 >
 
-## <a name="three-ways-to-create-an-ase"></a>Tři způsoby, jak vytvořit službu ASE ##
+## <a name="three-ways-to-create-an-ase"></a>Tři způsoby, jak vytvořit službu ASE
 
 Existují tři způsoby, jak vytvořit službu ASE:
 
@@ -58,7 +60,7 @@ Existují tři způsoby, jak vytvořit službu ASE:
 
 Externí služba ASE má veřejnou virtuální IP adresy, což znamená, že všechny přenosy HTTP/HTTPS k aplikacím ve službě ASE narazí na IP adresu přístupné z Internetu. Služba ASE s ILB má IP adresu z podsítě používané služby ASE. Aplikace hostované ve službě ASE s ILB nejsou přímo zveřejněné Internetu.
 
-## <a name="create-an-ase-and-an-app-service-plan-together"></a>Vytvoření služby ASE a plán služby App Service společně ##
+## <a name="create-an-ase-and-an-app-service-plan-together"></a>Vytvoření služby ASE a plán služby App Service společně
 
 Plán služby App Service je kontejner aplikace. Při vytváření aplikace ve službě App Service, zvolte nebo vytvořte plán služby App Service. Služby App Service Environment podržte plány služby App Service a plány služby App Service uchování aplikace.
 
@@ -142,7 +144,7 @@ Vytvoření služby ASE, při vytváření plánu služby App Service:
 1. Vyberte **vytvořit** k vytvoření služby ASE. Tento proces také vytvoří plán služby App Service a aplikaci. Služby ASE, plán služby App Service a aplikace jsou všechno ve stejném předplatném a také ve stejné skupině prostředků. Pokud vaše služba ASE potřebuje do samostatné skupiny prostředků nebo pokud potřebujete službu ASE, postupujte podle kroků pro vytvoření služby ASE samostatně.
 
 
-## <a name="create-an-ase-by-itself"></a>Vytvoření prostředí ASE sám o sobě ##
+## <a name="create-an-ase-by-itself"></a>Vytvoření prostředí ASE sám o sobě
 
 Pokud vytvoříte samostatné služby ASE, nemá žádné v ní. Prázdný služby ASE se stále účtují měsíční poplatky za infrastrukturu. Postupujte podle těchto kroků k vytvoření služby ASE s ILB, nebo vytvořit službu ASE ve vlastní skupině prostředků. Po vytvoření služby ASE se v něm můžete vytvořit aplikace s použitím normální proces. Jako umístění vyberte nové služby ASE.
 
@@ -170,7 +172,7 @@ Pokud vytvoříte samostatné služby ASE, nemá žádné v ní. Prázdný služ
     
     * Pokud vyberete stávající virtuální síť, novou podsíť se vytvoří při vytvoření služby ASE. *Nelze použít předem vytvořený podsítě na portálu. Pokud použijete šablonu Resource Manageru, můžete vytvořit službu ASE s existující podsítí.* Vytvoření ASE ze šablony najdete v tématu [vytvoření služby App Service Environment pomocí šablony][MakeASEfromTemplate].
 
-## <a name="app-service-environment-v1"></a>App Service Environment v1 ##
+## <a name="app-service-environment-v1"></a>App Service Environment v1
 
 Přesto vytvořit instance první verzi služby App Service Environment (ASEv1). Chcete-li spustit tento proces, na Marketplace vyhledejte **služby App Service Environment v1**. Vytvoření služby ASE stejným způsobem, který vytvoříte samostatné služby ASE. Po dokončení, vaše ASEv1 obsahuje dva front-endů a dva pracovní procesy. ASEv1 musí spravovat front-endů a pracovních procesů. Přidávají se automaticky při vytváření vašich plánech služby App Service. Front-endů fungovat jako koncové body HTTP/HTTPS a odesílat provoz do zaměstnanců. Zaměstnanci jsou role, které jsou hostiteli vaše aplikace. Počet front-endů a pracovních procesů můžete upravit po vytvoření služby ASE. 
 

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: d1453a558032e458e89c724e30472cc06f9cf33c
-ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
+ms.openlocfilehash: fea9bae9fadc20622a6ca3d2e08db9cd3a92c800
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58295126"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59523983"
 ---
 # <a name="get-started-with-delivering-content-on-demand-using-rest"></a>Začínáme s doručováním obsahu na vyžádání pomocí REST  
 
@@ -560,7 +560,7 @@ V případě úspěchu se vrátí následující odpověď:
 Poznámka: v jakékoli žádosti o úlohu některé důležité věci:
 
 * Taskbody – vlastnosti používaly literál XML definovat počet vstupních nebo výstupních prostředky, které jsou používány úkolu. Tento článek úloh obsahuje definici schématu XML pro XML.
-* V definici taskbody – každé vnitřní hodnota <inputAsset> a <outputAsset> musí být nastavena jako JobInputAsset(value) nebo JobOutputAsset(value).
+* V definici taskbody – každé vnitřní hodnota `<inputAsset>` a `<outputAsset>` musí být nastavena jako JobInputAsset(value) nebo JobOutputAsset(value).
 * Úkol může mít více výstupní assety. Jeden JobOutputAsset(x) jde použít jenom jednou jako výstup úlohy v rámci úlohy.
 * Můžete zadat JobInputAsset nebo JobOutputAsset jako vstupní asset úlohy.
 * Úlohy nesmí tvoří cyklus.
@@ -572,7 +572,7 @@ Poznámka: v jakékoli žádosti o úlohu některé důležité věci:
 >
 
 * InputMediaAssets mapuje na jeden nebo více prostředků, které jste vytvořili ve službě Media Services. OutputMediaAssets jsou vytvořeny v systému. Neodkazovat existující prostředek.
-* OutputMediaAssets může mít název pomocí atributu assetName. Pokud tento atribut není k dispozici, pak OutputMediaAsset jmenuje bez ohledu na hodnotu vnitřní text z <outputAsset> element je s příponou hodnotu název úlohy nebo úlohu s Id hodnoty (v případě, kdy není definována vlastnost Name). Například pokud nastavíte hodnotu assetName na "Ukázkový", pak název OutputMediaAsset vlastnost by být nastavena na "Ukázkový". Ale pokud jste nenastavili hodnotu assetName, ale nastaven název úlohy, který "NewJob", pak název OutputMediaAsset bude "_NewJob JobOutputAsset (hodnota)".
+* OutputMediaAssets může mít název pomocí atributu assetName. Pokud tento atribut není k dispozici, pak OutputMediaAsset jmenuje bez ohledu na hodnotu vnitřní text z `<outputAsset>` element je s příponou hodnotu název úlohy nebo úlohu s Id hodnoty (v případě, kdy není definována vlastnost Name). Například pokud nastavíte hodnotu assetName na "Ukázkový", pak název OutputMediaAsset vlastnost by být nastavena na "Ukázkový". Ale pokud jste nenastavili hodnotu assetName, ale nastaven název úlohy, který "NewJob", pak název OutputMediaAsset bude "_NewJob JobOutputAsset (hodnota)".
 
     Následující příklad ukazuje, jak nastavit atribut assetName:
 

@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: tutorial
 ms.date: 01/24/2019
 ms.author: alkohli
-ms.openlocfilehash: 412bf66902f156c6c8720a720973f97d1d7b1d8f
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: 79854c71410c7e796961f23c8c31a4d0809cd69c
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55751612"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59527978"
 ---
 # <a name="tutorial-copy-data-to-azure-data-box-blob-storage-via-rest-apis"></a>Kurz: Kopírování dat do úložiště objektů Blob v Azure Data Box přes rozhraní REST API  
 
@@ -79,7 +79,7 @@ Stáhněte si certifikát pomocí webu Azure portal.
 
 1. Přihlaste se na webu Azure portal.
 2. Přejděte na svoji objednávku Data Box a přejděte do **Obecné > Podrobnosti o zařízení**.
-3. V části **přihlašovací údaje zařízení**, přejděte na stránku **přístup přes rozhraní API** do zařízení. Klikněte na **Stáhnout**. Touto akcí se stáhne  **<your order name>.cer** soubor certifikátu. **Uložit** tento soubor. Tento certifikát nainstaluje na klientský nebo hostitelský počítač, který budete používat pro připojení k zařízení.
+3. V části **přihlašovací údaje zařízení**, přejděte na stránku **přístup přes rozhraní API** do zařízení. Klikněte na **Stáhnout**. Touto akcí se stáhne  **\<název vaší objednávky > .cer** soubor certifikátu. **Uložit** tento soubor. Tento certifikát nainstaluje na klientský nebo hostitelský počítač, který budete používat pro připojení k zařízení.
 
     ![Stáhněte si certifikát na webu Azure portal](media/data-box-deploy-copy-data-via-rest/download-cert-1.png)
  

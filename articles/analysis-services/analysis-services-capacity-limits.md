@@ -5,15 +5,15 @@ author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 12/19/2018
+ms.date: 04/11/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: beb0c1f9d6b54c029af48684fd81b38699dd2720
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: 0ffbffc788baaffd4a0532c3918ed82cc3eaf5c3
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53630644"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59527808"
 ---
 # <a name="analysis-services-resource-and-object-limits"></a>Omezení prostředků a objektu služby analýzy
 
@@ -67,9 +67,9 @@ Tato omezení jsou teoretické. Výkon se snížila na nižší čísla.
 |Úrovně v hierarchii|15,999|  
 |Relace|8 000|  
 |Sloupce klíčů všechny tabulky|15,999|  
-|Míry v tabulkách|2 ^ 31-1 = 2 147 483 647|  
-|Buňky vrácených dotazem|2 ^ 31-1 = 2 147 483 647|  
-|Velikost záznamu zdroj dotazu|64 KB|  
+|Míry v tabulkách|2^31-1 = 2,147,483,647|  
+|Buňky vrácených dotazem|2^31-1 = 2,147,483,647|  
+|Velikost záznamu zdroj dotazu|64 K|  
 |Délka názvů objektů|512 znaků|  
 
 

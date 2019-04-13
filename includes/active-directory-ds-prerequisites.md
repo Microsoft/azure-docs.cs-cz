@@ -16,16 +16,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/22/2018
 ms.author: maheshu
-ms.openlocfilehash: 2f5b530ea469e0e0755e4416fda1e0863614a059
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 1fba8cc9ae40cf5539016bbd73de65f557a64136
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55478827"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59551492"
 ---
 > [!IMPORTANT]
 > **Povolte synchronizaci hodnot hash hesel do služby Azure AD Domain Services, před provedením úkolů v tomto článku.**
 >
-> Postupujte podle pokynů níže, v závislosti na typu uživatele v adresáři služby Azure AD. Proveďte obě sady pokynů, pokud máte jak výhradně cloudové tak synchronizované uživatelské účty v adresáři služby Azure AD.
+> Postupujte podle pokynů níže, v závislosti na typu uživatele v adresáři služby Azure AD. Proveďte obě sady pokynů, pokud máte jak výhradně cloudové tak synchronizované uživatelské účty v adresáři služby Azure AD. Není možné provádět následující operace v případě, že se pokoušíte použít účet B2B Guest (například váš gmail nebo MSA z jiného zprostředkovatele Identity, která nastavení jsou povoleny) vzhledem k tomu, že nejsou dostupné žádné heslo pro tyto uživatele synchronizované do spravované domény jako tyto jsou účty hostů v adresáři. Úplné informace o těchto účtech, včetně jejich hesla by mimo Azure AD a jak tyto informace není ve službě Azure AD proto jej není i získat synchronizované do spravované domény. 
 > - [Pokyny pro uživatelské účty jenom cloudu](../articles/active-directory-domain-services/active-directory-ds-getting-started-password-sync.md)
 > - [Pokyny pro uživatelské účty synchronizované z místního adresáře](../articles/active-directory-domain-services/active-directory-ds-getting-started-password-sync-synced-tenant.md)

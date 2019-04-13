@@ -10,12 +10,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 12/07/2017
 ms.author: azfuncdf
-ms.openlocfilehash: a90a6811b1c59538db98b85d950906dba2969d57
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: 33ca6c36cd11d53a3c50a8374181c511fd2f8c3e
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53338222"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59549080"
 ---
 # <a name="versioning-in-durable-functions-azure-functions"></a>Správa verzí v Durable Functions (Azure Functions)
 
@@ -140,7 +140,7 @@ Všechny entity služby Azure Storage jsou pojmenovány podle `HubName` hodnota 
 Doporučujeme nasadit novou verzi aplikace function app na nový [Slot nasazení](https://blogs.msdn.microsoft.com/appserviceteam/2017/06/13/deployment-slots-preview-for-azure-functions/). Sloty nasazení umožňují provozovat několik kopií vašich funkce aplikace na straně po boku s pouze jedním z nich jako aktivní *produkční* slot. Až budete připravení ke zveřejnění nové logice Orchestrace vaší stávající infrastruktuře, může být stejně snadné jako přechodem na novou verzi do produkčního slotu.
 
 > [!NOTE]
-> Tato strategie je nejvhodnější při použití protokolu HTTP a webhookové aktivační události pro funkce nástroje orchestrator. Aktivace jiným protokolem než HTTP, třeba fronty a Event Hubs definice aktivační události by měl být odvozen z nastavení aplikace, která aktualizuje jako součást operace prohození.
+> Tato strategie je nejvhodnější při použití protokolu HTTP a webhookové aktivační události pro funkce nástroje orchestrator. Aktivace jiným protokolem než HTTP, třeba fronty a Event Hubs, by měl definice aktivační události [jsou odvozeny z nastavení aplikace](../functions-bindings-expressions-patterns.md#binding-expressions---app-settings) , která aktualizuje jako součást operace prohození.
 
 ## <a name="next-steps"></a>Další postup
 

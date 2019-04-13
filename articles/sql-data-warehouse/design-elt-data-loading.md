@@ -2,20 +2,20 @@
 title: Místo ETL, návrh ELT pro službu Azure SQL Data Warehouse | Dokumentace Microsoftu
 description: Místo ETL návrhu procesu extrakce, načítání a transformace (ELT) pro načítání dat nebo Azure SQL Data Warehouse.
 services: sql-data-warehouse
-author: ckarst
+author: kevinvngo
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: design
-ms.date: 04/17/2018
-ms.author: cakarst
+ms.date: 04/12/2019
+ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 96f6da7e081430768b5a6f8fd874e289b8256271
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: 2e65c1a33a60e19538a26e0f47f205235dd1695c
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57308478"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59548650"
 ---
 # <a name="designing-a-polybase-data-loading-strategy-for-azure-sql-data-warehouse"></a>Navrhování dat pomocí PolyBase načítání strategie pro Azure SQL Data Warehouse
 
@@ -99,7 +99,7 @@ Pro načtení dat pomocí PolyBase, můžete použít některé z těchto možno
 - [PolyBase pomocí jazyka T-SQL](load-data-from-azure-blob-storage-using-polybase.md) funguje dobře, pokud je vaše data v Azure Blob storage nebo Azure Data Lake Store. Poskytuje většinu kontrolu nad procesu načítání, ale také vyžaduje, abyste k definování externích datových objektů. Jiné metody definovat tyto objekty na pozadí jako mapování zdrojových tabulek do cílových tabulek.  K orchestraci zatížení T-SQL, můžete použít Azure Data Factory, služby SSIS nebo Azure functions. 
 - [PolyBase pomocí služby SSIS](/sql/integration-services/load-data-to-sql-data-warehouse) funguje dobře, pokud je zdroj dat v systému SQL Server, SQL Server na místní nebo v cloudu. SSIS definuje zdroj k určení mapování tabulky a také orchestruje zatížení. Pokud už máte balíčky služby SSIS, můžete upravit balíčky pro práci s nové cílové datového skladu. 
 - [PolyBase s Azure Data Factory (ADF)](sql-data-warehouse-load-with-data-factory.md) je jiný nástroj pro orchestraci.  Definuje kanál a plány úloh. 
-- [PolyBase s Azure DataBricks](../azure-databricks/databricks-extract-load-sql-data-warehouse.md) přenosech dat z SQL Data Warehouse tabulku do datového rámce Databricks a/nebo zapisuje data z datového rámce Databricks do tabulky SQL Data Warehouse.
+- [PolyBase s Azure DataBricks](../azure-databricks/databricks-extract-load-sql-data-warehouse.md) přenosech dat z SQL Data Warehouse tabulku do datového rámce Databricks a/nebo zapisuje data z datového rámce Databricks do tabulky SQL Data Warehouse pomocí PolyBase.
 
 ### <a name="non-polybase-loading-options"></a>Načítání PolyBase bez možnosti
 

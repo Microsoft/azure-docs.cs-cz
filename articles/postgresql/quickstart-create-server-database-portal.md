@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 01/09/2019
-ms.openlocfilehash: 9a17bbc26a65d3747683ad0fc0ecba40a22088d7
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: de0bd93b4cdd41ebd0ccc3aa89185e4501b711e1
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57856205"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59524204"
 ---
 # <a name="quickstart-create-an-azure-database-for-postgresql-server-in-the-azure-portal"></a>Rychlý start: Vytvoření serveru Azure Database for PostgreSQL na webu Azure Portal
 
@@ -141,7 +141,7 @@ Existuje řada aplikací, které můžete použít pro připojení k vašemu ser
     > [!TIP]
     > Pokud brána firewall není nakonfigurovaná k povolení IP adresy vašeho klienta, dojde k následující chybě:
     > 
-    > "psql: Závažná chyba: žádný záznam pg_hba.conf pro hostitele "<IP address>", uživatel "myadmin", database "postgres", SSL on FATAL: Vyžaduje se připojení SSL. Zadejte možnosti SSL a zkuste to znovu.
+    > "psql: Závažná chyba: žádný záznam pg_hba.conf pro hostitele `<IP address>`, uživateli "myadmin", database "postgres", SSL on FATAL: Vyžaduje se připojení SSL. Zadejte možnosti SSL a zkuste to znovu.
     > 
     > Pokud chcete chybu vyřešit, ujistěte se, že konfigurace serveru odpovídá postupu v části Konfigurace pravidla brány firewall na úrovni serveru tohoto článku.
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 02/20/2018
 ms.author: abshamsft
-ms.openlocfilehash: 465d59ff13982eee8432d7ef97e2f522b0d7125b
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.openlocfilehash: ac10f1f1c6336098afc2abd2b8f720cedfb6f579
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/11/2019
-ms.locfileid: "59489720"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59548931"
 ---
 # <a name="network-performance-monitor-solution-in-azure"></a>Network Performance Monitor řešení v Azure
 
@@ -151,7 +151,7 @@ Všechny uzly, kterých je agent nainstalovaný na nich jsou uvedeny na **uzly**
 
 Konfigurace možností, které chcete, aby:
 
-- [Monitorování výkonu](network-performance-monitor-performance-monitor.md#configuration)
+- [Sledování výkonu](network-performance-monitor-performance-monitor.md#configuration)
 - [Monitorování připojení služby](network-performance-monitor-performance-monitor.md#configuration)
 - [ExpressRoute Monitor](network-performance-monitor-expressroute.md#configuration)
 
@@ -251,13 +251,13 @@ Network Performance Monitor využívá výstrah možnosti [Azure Monitor](https:
 
 To znamená, že všechna oznámení se spravují pomocí [skupiny akcí](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-action-groups#overview).  
 
-Pokud jste uživatelem NPM vytvořením výstrahy prostřednictvím LAzure monitorování: 
-1. Zobrazí se odkaz, který vás přesměrují na webu Azure Portal. Klikněte na něj pro přístup k portálu.
+Pokud jste uživatelem NPM vytvořením výstrahy prostřednictvím Log Analytics: 
+1. Zobrazí se odkaz, který vás přesměrují na webu Azure portal. Klikněte na něj pro přístup k portálu.
 2. Kliknutím na dlaždici řešení Network Performance monitoru. 
 3. Přejděte ke konfiguraci.  
 4. Vyberte test, který chcete vytvořit upozornění na a postupujte níže uvedených kroků.
 
-Pokud jste uživatelem NPM vytvořením výstrahy prostřednictvím webu Azure Portal:  
+Pokud jste uživatelem NPM vytvořením výstrahy prostřednictvím webu Azure portal:  
 1. Můžete také přímo zadat e-mailu nebo můžete vytvářet upozornění přes skupiny akcí.
 2. Pokud budete chtít přímo, zadejte svůj e-mail, akce skupiny s názvem **NPM e-mailu ActionGroup** se vytvoří a id e-mailu se přidá do této skupiny akcí.
 3. Pokud se rozhodnete použít skupiny akcí, budete muset vybrat skupinu dříve vytvořená akce. Zjistěte, jak vytvořit skupinu akcí [tady.](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-action-groups#create-an-action-group-by-using-the-azure-portal) 

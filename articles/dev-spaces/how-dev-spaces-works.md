@@ -10,12 +10,12 @@ ms.date: 03/04/2019
 ms.topic: conceptual
 description: Popisuje procesy, které tento power Azure Dev mezery a jak jsou nakonfigurované v konfiguračním souboru azds.yaml
 keywords: azds.yaml prostory vývoj Azure, vývoj mezery, Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, kontejnery
-ms.openlocfilehash: 0397a52e8cd838aafe44a35508f8a68caba4c94e
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.openlocfilehash: 494dd3774ec47598a95c6e20de6283abc2e4ff94
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/11/2019
-ms.locfileid: "59489584"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59544919"
 ---
 # <a name="how-azure-dev-spaces-works-and-is-configured"></a>Jak funguje Azure Dev mezery a je nakonfigurován
 
@@ -85,16 +85,18 @@ Připravuje se váš cluster AKS vyžaduje:
 * Povolení Azure Dev mezery v clusteru pomocí `az aks use-dev-spaces`
 
 Další informace o tom, jak vytvořit a nakonfigurovat AKS cluster prostory Dev Azure naleznete v získávání příručky Začínáme:
-* [Začínáme s Javou v Azure Dev Spaces](get-started-java.md)
-* [Zahájení práce se službou Azure Dev Spaces s .NET Core a sadou Visual Studio](get-started-netcore-visualstudio.md)
-* [Začínáme s .NET Core v Azure Dev Spaces](get-started-netcore.md)
-* [Začínáme v Azure Dev Spaces s Node.js](get-started-nodejs.md)
+* [Začínáme s Azure Dev prostory s Javou](get-started-java.md)
+* [Začínáme s Azure Dev prostorů s .NET Core a Visual Studio](get-started-netcore-visualstudio.md)
+* [Začínáme s Azure Dev prostory s .NET Core](get-started-netcore.md)
+* [Začínáme s Azure Dev prostory s využitím Node.js](get-started-nodejs.md)
 
 Když Azure Dev prostory je povolené ve vašem clusteru AKS, nainstaluje kontroleru pro váš cluster. Kontroler je samostatné prostředky Azure mimo váš cluster a provede následující k prostředkům ve vašem clusteru:
 
 * Vytvoří nebo určuje obor názvů Kubernetes pro použití jako vývoj místa.
 * Odebere všechny Kubernetes oboru názvů s názvem *azds*, pokud existuje a vytvoří nový.
-* Nasadí do Kubernetes inicializátoru objektu.
+* Nasadí konfiguraci webhooku Kubernetes.
+* Nasadí server jejich příchodu webhooku.
+    
 
 Také využívá stejné instanční objekt, který váš cluster AKS pomocí provést volání služby do jiné komponenty Azure Dev mezery.
 
@@ -104,9 +106,9 @@ Chcete-li používat Azure Dev mezery, musí být alespoň jedna mezera vývoj. 
 
 Ve výchozím nastavení, vytvoří kontroler dev prostor s názvem *výchozí* upgradujte stávající *výchozí* Kubernetes oboru názvů. Nástroje na straně klienta můžete vytvořit nový vývoj prostory a odebrat existující dev mezery. Kvůli omezením v systému Kubernetes *výchozí* dev prostor nelze odebrat. Kontroler taky odebere všechny existující Kubernetes obory názvů s názvem *azds* aby nedocházelo ke konfliktům s `azds` příkaz používá nástrojů na straně klienta.
 
-Inicializátor objektu Kubernetes slouží k vložení podů s tři kontejnery během nasazení pro instrumentaci: devspaces proxy kontejner, kontejner devspaces – proxy-init a devspaces sestavení kontejneru. **Všechny tři těchto kontejnerů pomocí kořenový přístup ve vašem clusteru AKS.** Také používají stejné instanční objekt, který váš cluster AKS pomocí provést volání služby do jiné komponenty Azure Dev mezery.
+Server Kubernetes webhooku přijetí se používá k vložení podů s tři kontejnery během nasazení pro instrumentaci: devspaces proxy kontejner, kontejner devspaces – proxy-init a devspaces sestavení kontejneru. **Všechny tři těchto kontejnerů pomocí kořenový přístup ve vašem clusteru AKS.** Také používají stejné instanční objekt, který váš cluster AKS pomocí provést volání služby do jiné komponenty Azure Dev mezery.
 
-![Inicializátor Azure Dev prostorů Kubernetes](media/how-dev-spaces-works/kubernetes-initializer.svg)
+![Server jejich příchodu webhook Azure Dev prostorů Kubernetes](media/how-dev-spaces-works/kubernetes-webhook-admission-server.svg)
 
 Kontejner devspaces proxy je kontejner sajdkára, která zpracovává všechny přenosy TCP do proměnné a z kontejneru aplikace a pomáhá provádět směrování. Kontejneru devspaces proxy přesměrovává zprávy protokolu HTTP, pokud používají určité prostory. Například může být snazší směrovat zprávy protokolu HTTP mezi aplikacemi v nadřazené a podřízené mezery. Veškerý provoz jiným protokolem než HTTP prochází devspaces proxy serverů bez jakýchkoli úprav. Kontejner devspaces proxy také všechny příchozí a odchozí zprávy HTTP protokolu a odesílá je do klientské nástroje jako trasování. Toto trasování můžete prohlížet vývojář ke kontrole chování aplikace.
 
@@ -117,7 +119,7 @@ Devspaces sestavení kontejneru je kontejner init a má zdrojový kód projektu 
 > [!NOTE]
 > Azure Dev prostory používají stejný uzel k sestavení aplikace kontejneru a spustíme ji. Mezery pro vývojáře Azure v důsledku toho nemusí registr kontejneru externí pro vytváření a používání aplikace.
 
-Inicializátor objektu Kubernetes čeká na všechny nové pod vytvořený v clusteru AKS. Pokud nasadíte tohoto podu pro libovolný obor názvů s *azds.io/space=true* popisek tohoto podu ji vkládá s další kontejnery. Kontejner devspaces sestavení se vloží pouze pokud spouštění kontejneru aplikace pomocí nástrojů na straně klienta.
+Server jejich příchodu webhooku Kubernetes čeká na všechny nové pod vytvořený v clusteru AKS. Pokud nasadíte tohoto podu pro libovolný obor názvů s *azds.io/space=true* popisek tohoto podu ji vkládá s další kontejnery. Kontejner devspaces sestavení se vloží pouze pokud spouštění kontejneru aplikace pomocí nástrojů na straně klienta.
 
 Jakmile připravíte clusteru AKS, můžete k příprav a spuštění kódu v prostoru vývoj nástrojů na straně klienta.
 
@@ -221,7 +223,7 @@ Na podrobnější úrovni, tady je co se stane, když spustíte `azds up`:
 1. Soubory jsou synchronizovány z počítače uživatele do služby Azure file storage, který je jedinečný pro uživatele clusteru AKS. Zdrojový kód, diagram helmu a konfigurační soubory se nahrávají. Další informace o procesu synchronizace jsou k dispozici v další části.
 1. Správce vytvoří požadavek na zahájení nové relace. Tato žádost obsahuje několik vlastností, včetně jedinečné ID, název místa, cesta ke zdrojovému kódu a ladění příznak.
 1. Nahradí kontroleru *$(tag)* zástupný symbol v grafu helmu pomocí jedinečného ID relace a nainstaluje grafu Helm pro vaši službu. Přidat že odkaz na jedinečný relace ID grafu helmu umožňuje kontejner nasadí do clusteru AKS pro tuto konkrétní relaci zpět na žádost o relace a související informace.
-1. Během instalace grafu helmu inicializátor objektu Kubernetes přidá další kontejnery pod vaší aplikace pro instrumentaci a přístup ke zdrojovému kódu projektu. Devspaces proxy a devspaces – proxy-init kontejnery jsou přidány do trasování protokolu HTTP a místo směrování. Kontejner devspaces sestavení je přidána do pod poskytnout přístup k instanci Dockeru a zdrojový kód projektu pro vytváření kontejnerů vaší aplikace.
+1. Během instalace grafu helmu přidá server Kubernetes webhooku jejich příchodu další kontejnery do vaší aplikace pod pro instrumentaci a přístup ke zdrojovému kódu projektu. Devspaces proxy a devspaces – proxy-init kontejnery jsou přidány do trasování protokolu HTTP a místo směrování. Kontejner devspaces sestavení je přidána do pod poskytnout přístup k instanci Dockeru a zdrojový kód projektu pro vytváření kontejnerů vaší aplikace.
 1. Při spuštění aplikace pod devspaces sestavení kontejner a kontejner devspaces – proxy-init se používají k vytvoření kontejneru aplikace. Spustí se potom kontejner aplikace a kontejnery devspaces proxy.
 1. Po spuštění kontejneru aplikace funkcí na straně klienta používá Kubernetes *port vpřed* funkce s cílem poskytnout přístup protokolu HTTP pro vaši aplikaci nad http://localhost. Toto přesměrování portu připojí ke službě v prostoru vývoj svého vývojového počítače.
 1. Když jste spustili všechny kontejnery v pod, se službou. Funkce na straně klienta v tomto okamžiku začne streamování trasování protokolu HTTP, stdout a stderr. Tyto informace se zobrazují podle funkcí na straně klienta pro vývojáře.

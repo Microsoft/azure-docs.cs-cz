@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 11/29/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: a7aa5401cbba9fafda9f995a882934ef0edfa481
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: d26bc6044ca106b0f081cee5a39405b4b78ce7ac
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57881142"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59524000"
 ---
 # <a name="the-team-data-science-process-in-action-use-azure-hdinsight-hadoop-clusters"></a>Vědecké zpracování týmových dat v akci: Použití Azure HDInsight Hadoop clusterů
 V tomto názorném postupu používáme [vědecké zpracování týmových dat (TDSP)](overview.md) ve scénáři začátku do konce. Používáme [clusteru Azure HDInsight Hadoop](https://azure.microsoft.com/services/hdinsight/) k ukládání, prozkoumat a funkce analýzu dat z veřejně dostupných [cesty taxíkem NYC](https://www.andresmh.com/nyctaxitrips/) datovou sadu a na nižší data. Pro zpracování víc tříd a binární klasifikace a úlohy prediktivní regrese, jsme integrovali modely dat pomocí Azure Machine Learning. 
@@ -88,11 +88,11 @@ Pro kopírování [cesty taxíkem NYC](https://www.andresmh.com/nyctaxitrips/) d
 
 Zde zjistíte, jak pomocí AzCopy můžete přenášet soubory obsahující data. Ke stažení a instalaci AzCopy, postupujte podle pokynů na adrese [Začínáme s nástrojem příkazového řádku azcopy](../../storage/common/storage-use-azcopy.md).
 
-1. Z okna příkazového řádku, spusťte následující příkazy AzCopy a nahrazení *< path_to_data_folder >* požadovaný cíl:
+1. Z okna příkazového řádku, spusťte následující příkazy AzCopy a nahrazení  *\<path_to_data_folder >* požadovaný cíl:
 
         "C:\Program Files (x86)\Microsoft SDKs\Azure\AzCopy\azcopy" /Source:https://nyctaxitrips.blob.core.windows.net/data /Dest:<path_to_data_folder> /S
 
-1. Po dokončení kopírování, zobrazí se celkem 24 zip soubory ve složce data zvolili. Rozbalte stažené soubory do stejného adresáře na místním počítači. Poznamenejte si složku, ve kterém jsou umístěny dekomprimovaných souborů. Tato složka se označuje jako *< cesta\_k\_unzipped_data\_soubory\>*  v jaké způsobem.
+1. Po dokončení kopírování, zobrazí se celkem 24 zip soubory ve složce data zvolili. Rozbalte stažené soubory do stejného adresáře na místním počítači. Poznamenejte si složku, ve kterém jsou umístěny dekomprimovaných souborů. Tato složka se označuje jako *\<cesta\_k\_unzipped_data\_soubory\>* v jaké způsobem.
 
 ## <a name="upload"></a>Nahrát data do výchozího kontejneru cluster HDInsight Hadoop
 > [!NOTE]
@@ -102,10 +102,10 @@ Zde zjistíte, jak pomocí AzCopy můžete přenášet soubory obsahující data
 
 V následující příkazy AzCopy a nahradit skutečnými hodnotami, které jste zadali při vytváření clusteru Hadoop následující parametry a rozbalení datových souborů.
 
-* ***< Path_to_data_folder >*** adresáři (spolu s cesta) v počítači, který obsahuje rozzipovaný datové soubory.  
-* ***<storage account name of Hadoop cluster>*** Účet úložiště spojené s vaším clusterem HDInsight.
-* ***<default container of Hadoop cluster>*** Výchozí kontejner používat váš cluster. Všimněte si, že název výchozího kontejneru je obvykle stejný název jako samotného clusteru. Například pokud clusteru se nazývá "abc123.azurehdinsight.net", je výchozí kontejner abc123.
-* ***<storage account key>*** Klíč pro účet úložiště používané ve vašem clusteru.
+* ***\<path_to_data_folder >*** adresáři (spolu s cesta) v počítači, který obsahuje rozzipovaný datové soubory.  
+* ***\<název účtu úložiště clusteru Hadoop >*** účtu úložiště spojené s vaším clusterem HDInsight.
+* ***\<výchozí kontejner Hadoop cluster >*** výchozí kontejner používat váš cluster. Všimněte si, že název výchozího kontejneru je obvykle stejný název jako samotného clusteru. Například pokud clusteru se nazývá "abc123.azurehdinsight.net", je výchozí kontejner abc123.
+* ***\<klíč účtu úložiště >*** klíč pro účet úložiště používané ve vašem clusteru.
 
 Z příkazového řádku nebo v okně prostředí Windows PowerShell spusťte následující dva příkazy AzCopy.
 

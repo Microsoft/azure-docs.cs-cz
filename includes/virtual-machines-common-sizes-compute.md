@@ -5,15 +5,15 @@ services: virtual-machines
 author: jonbeck7
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 11/06/2018
+ms.date: 04/02/2019
 ms.author: azcspmt;jonbeck;cynthn
 ms.custom: include file
-ms.openlocfilehash: 5a4495dd675b662273715b5c13a5594adc87fceb
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
+ms.openlocfilehash: cd06326b22b227490798b2b89c0439940cb4575f
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56333872"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59551662"
 ---
 <!-- F-series, Fs-series* -->
 
@@ -21,13 +21,7 @@ COMPUTE optimalizované velikosti virtuálních počítačů mají vysoký pomě
 
 Řada Fsv2 je založená na procesorech Intel® Xeon® Platinum 8168, poskytuje funkci dlouhodobě všech základních Turbo rychlost 3.4GHz a frekvenci maximální turbo jednojádrový 3,7 GHz. Intel® AVX-512 pokyny, které jsou nové na procesorech Intel škálovatelné, bude poskytovat až 2 X zvýšení výkonu vektoru zpracování úloh na jednoduché i dvojité přesnosti s plovoucí desetinnou čárkou bodu operace. Jinými slovy je velmi rychlá pro všechny výpočetní úlohy. 
 
-Za nižší ceníkové za každou hodinu je Fsv2-series nejlepší poměr cena – výkon v portfoliu Azure, na Azure Compute jednotek (ACU) na virtuální procesor. 
-
-Řada F-series využívá procesory Intel Xeon® E5-2673 v3 (Haswell) s frekvencí 2,4 GHz, kterou může technologie Intel Turbo Boost 2.0 zvýšit až na 3,1 GHz. Výkon procesoru je tedy stejný jako u virtuálních počítačů Dv2-series.  
-
-Virtuální počítače řady F-series jsou skvělou volbou pro úlohy, které potřebují rychlejší procesory, ale ne tolik paměti nebo dočasného úložiště na virtuální procesor.  Úlohy jako například analýzy, herní servery, webové servery nebo dávkové zpracování můžou řadu F-series s výhodou využít.
-
-Řada Fs-series nabízí všechny výhody řady F-series a navíc službu Premium Storage.
+Za nižší ceníkové za každou hodinu je Fsv2-series nejlepší poměr cena – výkon v portfoliu Azure, na Azure Compute jednotek (ACU) na virtuální procesor.
 
 ## <a name="fsv2-series-sup1sup"></a>Řada Fsv2 <sup>1</sup>
 
@@ -37,7 +31,7 @@ Premium Storage:  Podporováno
 
 Premium Storage ukládání do mezipaměti:  Podporováno
 
-| Velikost             | virtuálních procesorů | Paměť: GiB | Dočasné úložiště (SSD): GiB | Max. datových disků | Maximální propustnost v mezipaměti a dočasného úložiště: IOPS / MB/s (velikost mezipaměti v GiB) | Maximální propustnost disku bez mezipaměti: IOPS / MBps | Maximální počet síťových karet / očekávaný šířka pásma (MB/s) |
+| Velikost             | virtuálních procesorů | Paměť: GiB | Dočasné úložiště (SSD): GiB | Max. datových disků | Max. propustnost dočasného úložiště a úložiště v mezipaměti: IOPS / MB/s (velikost mezipaměti v GiB) | Maximální propustnost disku bez mezipaměti: IOPS / MBps | Maximální počet síťových karet / očekávaný šířka pásma (MB/s) |
 |------------------|--------|-------------|----------------|----------------|--------------------------|--------------------------|-------------------------|
 | Standard_F2s_v2  | 2      | 4           | 16             | 4              | 4000 / 31 (32)           | 3200 / 47                | 2 / 875                 |
 | Standard_F4s_v2  | 4      | 8           | 32             | 8              | 8000 / 63 (64)           | 6400 / 95                | 2 / 1,750               |
@@ -53,47 +47,3 @@ Premium Storage ukládání do mezipaměti:  Podporováno
 <sup>2</sup> více než 64 virtuálních procesorů se vyžaduje jednu z těchto podporovaných hostovaných operačních systémů: Windows Server 2016, Ubuntu 16.04 LTS, SLES 12 SP2 a Red Hat Enterprise Linux, CentOS 7.3 nebo Oracle Linux 7.3 s LIS 4.2.1
 
 <sup>3</sup> instance je izolovaná na hardware vyhrazený pro jediného zákazníka.
-
-## <a name="fs-series-sup1sup"></a>Řada FS-series <sup>1</sup>
-
-ACU: 210 - 250
-
-Premium Storage:  Podporováno
-
-Premium Storage ukládání do mezipaměti:  Podporováno
-
-| Velikost | Virtuální procesory | Paměť: GiB | Dočasné úložiště (SSD): GiB | Max. datových disků | Maximální propustnost v mezipaměti a dočasného úložiště: IOPS / MB/s (velikost mezipaměti v GiB) | Maximální propustnost disku bez mezipaměti: IOPS / MBps | Maximální počet síťových karet / očekávaný šířka pásma (MB/s) |
-| --- | --- | --- | --- | --- | --- | --- | --- |
-| Standard_F1s |1 |2 |4 |4 |4 000 / 32 (12) |3 200 / 48 |2 / 750 |
-| Standard_F2s |2 |4 |8 |8 |8 000 / 64 (24) |6 400 / 96 |2 / 1 500 |
-| Standard_F4s |4 |8 |16 |16 |16 000 / 128 (48) |12 800 / 192 |4 / 3 000 |
-| Standard_F8s |8 |16 |32 |32 |32 000 / 256 (96) |25 600 / 384 |8 / 6 000 |
-| Standard_F16s |16 |32 |64 |64 |64 000 / 512 (192) |51 200 / 768 |8 / 12000 |
-
-MB/s = 10^6 bajtů za sekundu a GiB = 1024^3 bajtů.
-
-<sup>1</sup> maximální propustnost disku (IOPS nebo MB/s) se Fs-series virtuálních počítačů může být omezená počtem, velikostí a prokládáním připojených disků.  Podrobnosti najdete v tématu [návrh pro vysoký výkon](../articles/virtual-machines/windows/premium-storage-performance.md).
-
-
-<br>
-
-## <a name="f-series"></a>F-series
-
-ACU: 210 - 250
-
-Premium Storage:  Nepodporuje se
-
-Premium Storage ukládání do mezipaměti:  Nepodporuje se
-
-| Velikost         | Virtuální procesory | Paměť: GiB | Dočasné úložiště (SSD): GiB | Maximální propustnost dočasného úložiště: IOPS / čtení v MB/s / zápis v MB/s | Maximální počet datových disků nebo propustnost: IOPS | Maximální počet síťových karet / očekávaný šířka pásma (MB/s) |
-|--------------|-----------|-------------|----------------|----------------------------------------------------------|-----------------------------------|------------------------------|
-| Standard_F1  | 1         | 2           | 16             | 3000 / 46 / 23                                           | 4 / 4×500                         | 2 / 750                 |
-| Standard_F2  | 2         | 4           | 32             | 6000 / 93 / 46                                           | 8 / 8×500                         | 2 / 1 500                     |
-| Standard_F4  | 4         | 8           | 64             | 12000 / 187 / 93                                         | 16 / 16×500                         | 4 / 3 000                     |
-| Standard_F8  | 8         | 16          | 128            | 24000 / 375 / 187                                        | 32 / 32×500                       | 8 / 6 000                     |
-| Standard_F16 | 16        | 32          | 256            | 48000 / 750 / 375                                        | 64 / 64 x 500                       | 8 / 12000           |
-
-
-<br>
-
-

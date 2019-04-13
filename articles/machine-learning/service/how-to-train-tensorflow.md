@@ -9,14 +9,14 @@ ms.topic: conceptual
 ms.author: minxia
 author: mx-iao
 ms.reviewer: sgilley
-ms.date: 02/21/2019
+ms.date: 04/19/2019
 ms.custom: seodec18
-ms.openlocfilehash: b41098907f801f7dae839a470249834b02c8d519
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.openlocfilehash: 78db7d21774750892c831ac220244c54594b78f3
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57338548"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59548350"
 ---
 # <a name="train-tensorflow-and-keras-models-with-azure-machine-learning-service"></a>Trénování TensorFlow a Keras modelů pomocí služby Azure Machine Learning
 
@@ -48,7 +48,7 @@ Jsme zde, zadejte následující parametry pro konstruktor TensorFlow:
 Parametr | Popis
 --|--
 `source_directory` | Místní adresář, který obsahuje vše potřebné pro trénovací úlohu kódu. Tato složka se zkopíruje z místního počítače pro vzdálený výpočetní
-`script_params` | Slovník zadání argumentů příkazového řádku pro cvičný skript `entry_script`, ve formě < argument příkazového řádku, hodnota > páry
+`script_params` | Slovník zadání argumentů příkazového řádku pro cvičný skript `entry_script`, ve formě < argument příkazového řádku, hodnota > dvojice.  K určení podrobné příznak v `script_params`, použijte `<command-line argument, "">`.
 `compute_target` | Cílové vzdálené výpočetní prostředí, který cvičný skript se spustí, v tomto případě Azure Machine Learning Compute ([AmlCompute](how-to-set-up-training-targets.md#amlcompute)) clusteru
 `entry_script` | Cesta k souboru (vzhledem k `source_directory`) z trénovací skript ke spuštění na vzdálené výpočetní prostředky. Tento soubor a další soubory, na kterých závisí, se musí nacházet v této složce
 `conda_packages` | Seznam balíčků Python nainstalovat přes conda vyžadované cvičný skript. V tomto případě cvičný skript používá `sklearn` pro načítání dat, proto zadejte tento balíček k instalaci.  Konstruktor má jiný parametr s názvem `pip_packages` , můžete použít pro všechny balíčky pip potřeby

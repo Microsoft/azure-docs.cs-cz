@@ -2,14 +2,14 @@
 author: cynthn
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 10/26/2018
+ms.date: 04/11/2019
 ms.author: cynthn
-ms.openlocfilehash: 5f1774e02a34b60a8a6e936b62905a0a27ccfb85
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.openlocfilehash: 81bde837cd78646f1fc59d921246c72978ecb840
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58890905"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59551659"
 ---
 # <a name="use-infrastructure-automation-tools-with-virtual-machines-in-azure"></a>Použití nástrojů automatizace infrastruktury s virtuálními počítači v Azure
 Vytvoření a správa virtuálních počítačů Azure (VM) konzistentním způsobem v měřítku, uvítáte nějakou formu automatizace. Existuje mnoho nástrojů a řešení, která umožňují automatizovat nasazení kompletní infrastrukturu Azure a životního cyklu správy. Tento článek představuje některé z infrastruktury automatizační nástroje, které můžete použít v Azure. Tyto nástroje běžně nevešla do jedné z následujících postupů:
@@ -57,17 +57,7 @@ Naučte se:
 
 Cloud-init navíc funguje v různých distribucích. K instalaci balíčku tak například nepoužijete **apt-get install** ani **yum install**. Místo toho můžete definovat seznam balíčků pro instalaci. Cloud-init automaticky použije nativní nástroj pro správu balíčků pro zvolenou distribuci.
 
- Aktivně Pracujeme s našimi partnery doporučené distribuce Linuxu aby cloud-init povolené imagí dostupných v Tržišti Azure marketplace. Tyto Image zajišťovat vaše nasazení cloud-init a konfigurace bez problému fungují s virtuálními počítači a škálovacími sadami virtuálních počítačů. Následující tabulka popisuje aktuální dostupnost Image povolené cloud-init na platformě Azure:
-
-| Vydavatel | Nabídka | Skladová jednotka (SKU) | Verze | Připraveno na cloud-init
-|:--- |:--- |:--- |:--- |:--- 
-|Canonical |UbuntuServer |16.04-LTS |nejnovější |ano | 
-|Canonical |UbuntuServer |14.04.5-LTS |nejnovější |ano |
-|CoreOS |CoreOS |Stable |nejnovější |ano |
-|OpenLogic |CentOS |7-CI |nejnovější |preview |
-|RedHat |RHEL |7-RAW-CI |nejnovější |preview |
-
-Přečtěte si další informace o cloud-init na Azure:
+Aktivně Pracujeme s našimi partnery doporučené distribuce Linuxu aby cloud-init povolené imagí dostupných v Tržišti Azure marketplace. Tyto Image zajišťovat vaše nasazení cloud-init a konfigurace bez problému fungují s virtuálními počítači a škálovacími sadami virtuálních počítačů. Přečtěte si další informace o cloud-init na Azure:
 
 - [Pro virtuální počítače s Linuxem v Azure podporují cloud-init](../articles/virtual-machines/linux/using-cloud-init.md)
 - [Vyzkoušejte kurz na automatizovanou konfiguraci virtuálního počítače pomocí cloud-init](../articles/virtual-machines/linux/tutorial-automate-vm-deployment.md).

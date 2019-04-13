@@ -12,17 +12,17 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: 9daa7fc15ecbb4065c8d26bb5cefa27f17f66f4d
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.openlocfilehash: c57a45145d9abc43d0ca79839ea297dfc025db9b
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58878251"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59524085"
 ---
 # <a name="create-hdinsight-clusters-with-azure-data-lake-storage-gen1-as-default-storage-by-using-powershell"></a>Vytvoření clusterů HDInsight s Azure Data Lake Storage Gen1 jako výchozí úložiště pomocí prostředí PowerShell
 
 > [!div class="op_single_selector"]
-> * [Použití webu Azure Portal](data-lake-store-hdinsight-hadoop-use-portal.md)
+> * [Použití portálu Azure Portal](data-lake-store-hdinsight-hadoop-use-portal.md)
 > * [Pomocí prostředí PowerShell (pro výchozí úložiště)](data-lake-store-hdinsight-hadoop-use-powershell-for-default-storage.md)
 > * [Pomocí prostředí PowerShell (pro další úložiště)](data-lake-store-hdinsight-hadoop-use-powershell.md)
 > * [Použití Resource Manageru](data-lake-store-hdinsight-hadoop-use-resource-manager-template.md)
@@ -215,7 +215,7 @@ V této části vytvoříte cluster HDInsight Hadoop Linux s Data Lake Storage G
     Po úspěšném dokončení rutina byste měli vidět výstup, který obsahuje podrobnosti o clusteru.
 
 ## <a name="run-test-jobs-on-the-hdinsight-cluster-to-use-data-lake-storage-gen1"></a>Spouštění testů úloh na clusteru HDInsight pro použití služby Data Lake Storage Gen1
-Po dokončení konfigurace clusteru služby HDInsight, můžete spustit na ní zajistit, aby měl přístup k Data Lake Storage Gen1 testovací úlohy. Uděláte to tak, spuštění ukázkové úlohy Hive vytvořit tabulku, která se používá ukázková data, která je již k dispozici v Data Lake Storage Gen1 na  *<cluster root>/example/data/sample.log*.
+Po dokončení konfigurace clusteru služby HDInsight, můžete spustit na ní zajistit, aby měl přístup k Data Lake Storage Gen1 testovací úlohy. Uděláte to tak, spuštění ukázkové úlohy Hive vytvořit tabulku, která se používá ukázková data, která je již k dispozici v Data Lake Storage Gen1 na  *\<kořenu clusteru > /example/data/sample.log*.
 
 V této části vytvoříte připojení Secure Shell (SSH) do clusteru HDInsight Linux, kterou jste vytvořili a potom spusťte ukázkový dotaz Hive.
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/15/2018
 ms.author: yagup;jdial
-ms.openlocfilehash: 7e90e42f768ceb333ac90f56249457ffa46ae461
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.openlocfilehash: cb61366a672a48cdc84e14f40d889e646e0e23b8
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/11/2019
-ms.locfileid: "59490992"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59545395"
 ---
 # <a name="traffic-analytics"></a>Analýza provozu
 
@@ -369,3 +369,8 @@ Máte ve svém prostředí škodlivý provoz? Kde je pocházející z? Pokud je 
 ## <a name="frequently-asked-questions"></a>Nejčastější dotazy
 
 Pokud chcete získat odpovědi na nejčastější dotazy, naleznete v tématu [nejčastější dotazy k analýze provozu](traffic-analytics-faq.md).
+
+## <a name="next-steps"></a>Další postup
+
+- Informace o povolení protokolů toku, najdete v článku [protokolování toků NSG povolení](network-watcher-nsg-flow-logging-portal.md).
+- Schéma a zpracování podrobnosti analýzy provozu najdete v tématu [Traffic analytics schématu](traffic-analytics-schema.md).

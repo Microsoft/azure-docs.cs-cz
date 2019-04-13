@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: required
 ms.date: 12/10/2017
 ms.author: aljo
-ms.openlocfilehash: d4d0145ef07a6a89cbae1fe18d2cb7df88cdd113
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: 810427c394c3912142e0a21cf1b5c29b81620afb
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58667102"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59549009"
 ---
 # <a name="guidelines-and-recommendations-for-reliable-collections-in-azure-service-fabric"></a>Pokyny a doporučení pro spolehlivé kolekce v Azure Service Fabric
 Tato část obsahuje pokyny pro použití Reliable State Manager a Reliable Collections. Cílem je pomoct uživatelům se vyhnout běžným nástrahám.
@@ -32,6 +32,7 @@ Pokyny jsou uspořádané jako jednoduchý doporučení předponu podmínky *pro
 * Nepoužívejte transakce po byla potvrzena, byla přerušena nebo odstraněn.
 * Nepoužívejte výčtu mimo obor transakce, který byl vytvořen v.
 * Nevytvářejte transakce v rámci jiné transakce `using` příkaz vzhledem k tomu může dojít k zablokování.
+* Nevytvářejte spolehlivé stavu s využitím `IReliableStateManager.GetOrAddAsync` a používání spolehlivé stavu v rámci jedné transakce. Výsledkem InvalidOperationException.
 * Ujistěte se, že vaše `IComparable<TKey>` implementace je správná. Systém má závislost `IComparable<TKey>` pro sloučení kontrolních bodů a řádků.
 * Pomocí aktualizační zámek při čtení položky s záměr aktualizujte ji, aby se zabránilo třídu zablokování.
 * Vezměte v úvahu uchování počet Reliable Collections na oddíl bude menší než 1 000. Preferovat Reliable Collections přes více spolehlivých kolekcí s menším počtem položek s více položek.

@@ -9,14 +9,14 @@ ms.topic: tutorial
 author: nacharya1
 ms.author: nilesha
 ms.reviewer: trbye
-ms.date: 03/29/2019
+ms.date: 04/11/2019
 ms.custom: seodec18
-ms.openlocfilehash: 8eb569e628e598dbfd890c11656a23007f915b45
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.openlocfilehash: ee024d627efc42a87d7f6b1971fa8e2e92357a00
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/11/2019
-ms.locfileid: "59491151"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59545225"
 ---
 # <a name="tutorial-use-automated-machine-learning-to-build-your-regression-model"></a>Kurz: Automatizované machine learningu k vytváření regresní model
 
@@ -103,7 +103,7 @@ import os
 
 Vytvořte objekt pracovního prostoru z existujícího pracovního prostoru. A [pracovní prostor](https://docs.microsoft.com/en-us/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py) je třída, která přijímá údaje předplatného a prostředků Azure. Také vytvoří prostředek v cloudu pro monitorování a sledování vašich modelů spuštění.
 
-`Workspace.from_config()` přečte soubor **aml_config/config.json** a načte podrobnosti do objektu s názvem `ws`.  `ws` se používá ve zbývající části kódu v tomto kurzu.
+`Workspace.from_config()` přečte soubor **config.json** a načte podrobnosti do objektu s názvem `ws`.  `ws` se používá ve zbývající části kódu v tomto kurzu.
 
 Až budete mít objekt do pracovního prostoru, zadejte název experimentu. Vytvoření a registrace do místního adresáře s pracovním prostorem. Historie všechna spuštění je zaznamenán v rámci zadaného testu a v [webu Azure portal](https://portal.azure.com).
 
@@ -653,9 +653,9 @@ Definujte parametr experiment a nastavení pro ladění a automatické generová
 |Vlastnost| Hodnota v tomto kurzu |Popis|
 |----|----|---|
 |**iteration_timeout_minutes**|10|Časový limit během několika minut pro každou iteraci. Zmenšete tuto hodnotu a snížit celkové doby běhu.|
-|**Iterace**|30|Počet iterací. V každé iteraci se trénuje nový model strojového učení s vašimi daty. Jedná se o primární hodnotu, která ovlivní celkové doby běhu.|
+|**iterations**|30|Počet iterací. V každé iteraci se trénuje nový model strojového učení s vašimi daty. Jedná se o primární hodnotu, která ovlivní celkové doby běhu.|
 |**primary_metric**| spearman_correlation | Metrika, kterou chcete optimalizovat Přizpůsobený modelu bude zvolen v závislosti na tuto metriku.|
-|**předběžné zpracování**| True | S použitím **True**, experiment můžete předběžně zpracovat vstupní data (zpracování chybí data, převod textu na číselné, atd.)|
+|**preprocess**| True | S použitím **True**, experiment můžete předběžně zpracovat vstupní data (zpracování chybí data, převod textu na číselné, atd.)|
 |**Úroveň podrobností**| logging.INFO | Určuje úroveň protokolování.|
 |**n_cross_validations**|5|Počet rozdělí křížového ověření provést, pokud není zadána data pro ověření.|
 
@@ -774,8 +774,7 @@ rundata
 ```
 
 <div>
-<style scoped>
-.dataframe tbody tr th: pouze of-type {vertical-align: uprostřed;}
+<style scoped> .dataframe tbody tr th: pouze of-type {vertical-align: uprostřed;}
 
     .dataframe tbody tr th {
         vertical-align: top;

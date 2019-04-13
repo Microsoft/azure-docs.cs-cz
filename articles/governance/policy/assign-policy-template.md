@@ -7,12 +7,12 @@ ms.date: 03/13/2019
 ms.topic: quickstart
 ms.service: azure-policy
 manager: carmonm
-ms.openlocfilehash: 3b7ceb07fe874ebc012696f73c21d5c270cb3cee
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: 1a811d3d0796b37053ffbabf56b63b4e4f68e203
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59268989"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59524068"
 ---
 # <a name="create-a-policy-assignment-to-identify-non-compliant-resources-by-using-a-resource-manager-template"></a>Vytvoření přiřazení zásady pro identifikaci neodpovídajících prostředků pomocí šablony Resource Manageru
 
@@ -37,14 +37,14 @@ Tady je kopie šablony:
 
 1. Vyberte pro přihlášení k webu Azure portal a otevřete šablonu na následujícím obrázku:
 
-   [![Deploy šablonu zásad do Azure](./media/assign-policy-template/deploy-to-azure.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-azurepolicy-assign-builtinpolicy-resourcegroup%2Fazuredeploy.json)
+   [![Nasazení šablony zásad do Azure](./media/assign-policy-template/deploy-to-azure.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-azurepolicy-assign-builtinpolicy-resourcegroup%2Fazuredeploy.json)
 
 1. Vyberte nebo zadejte následující hodnoty:
 
    | Název | Hodnota |
    |------|-------|
    | Předplatné | Vyberte své předplatné Azure. |
-   | Skupina prostředků | Vyberte **vytvořit nový**, zadejte název a potom vyberte **OK**. Na snímku obrazovky je název skupiny prostředků *mypolicyquickstart<Date in MMDD>rg*. |
+   | Skupina prostředků | Vyberte **vytvořit nový**, zadejte název a potom vyberte **OK**. Na snímku obrazovky je název skupiny prostředků *mypolicyquickstart\<datum v MMDD > rg*. |
    | Umístění | Vyberte oblast. Například **USA (střed)**. |
    | Název přiřazení zásady | Zadejte název přiřazení zásady. Pokud chcete, můžete použít zobrazení definic zásad. Například **Audit virtuálních počítačů, které nepoužívají spravované disky**. |
    | Název rg | Zadejte název skupiny prostředků, ve které chcete přiřadit zásadu. V tomto rychlém startu použijte výchozí hodnotu **[resourceGroup () .name]**. **[resourceGroup()](../../azure-resource-manager/resource-group-template-functions-resource.md#resourcegroup)**  je funkce šablony, která načte skupinu prostředků. |
@@ -87,4 +87,4 @@ V tomto rychlém startu přiřadit předdefinovanou definici zásady k oboru a v
 Další informace o přiřazování zásad pro ověření, že nové prostředky jsou kompatibilní, i nadále najdete v tomto kurzu:
 
 > [!div class="nextstepaction"]
-> [Vytváření a Správa zásad](./tutorials/create-and-manage.md)
+> [Vytváření a správa zásad](./tutorials/create-and-manage.md)

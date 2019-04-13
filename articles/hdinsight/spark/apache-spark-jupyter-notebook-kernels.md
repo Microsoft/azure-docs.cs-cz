@@ -10,12 +10,12 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 02/22/2018
 ms.author: hrasheed
-ms.openlocfilehash: 92ffa02959f020789d14b3bea71763f3f5b9bb47
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 68581c957e2835aa8841e3ce490c9a7898ed4ff5
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58084094"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59527468"
 ---
 # <a name="kernels-for-jupyter-notebook-on-apache-spark-clusters-in-azure-hdinsight"></a>Jádra pro poznámkový blok Jupyter v clusterech Apache Spark v Azure HDInsight 
 
@@ -69,7 +69,7 @@ Tady je několik výhod pomocí jádrech nový poznámkový blok Jupyter v clust
    
     Místo toho můžete přímo použít přednastavených kontextech ve vaší aplikaci.
 
-- **Buňky Magic**. Jádra PySpark poskytuje některé předdefinované "Magic", které jsou speciální příkazy, které lze volat s `%%` (například `%%MAGIC` <args>). Magický příkaz musí být první slovo do buňky kódu a umožňují více řádků obsahu. Magický slov by měla být první slovo v buňce. Přidání nic před magic, dokonce i komentáře, způsobí chybu.     Další informace o Magic, naleznete v tématu [tady](https://ipython.readthedocs.org/en/stable/interactive/magics.html).
+- **Buňky Magic**. Jádra PySpark poskytuje některé předdefinované "Magic", které jsou speciální příkazy, které lze volat s `%%` (například `%%MAGIC` `<args>`). Magický příkaz musí být první slovo do buňky kódu a umožňují více řádků obsahu. Magický slov by měla být první slovo v buňce. Přidání nic před magic, dokonce i komentáře, způsobí chybu.     Další informace o Magic, naleznete v tématu [tady](https://ipython.readthedocs.org/en/stable/interactive/magics.html).
    
     V následující tabulce jsou uvedeny různé Magic, které jsou k dispozici prostřednictvím jádrech.
 

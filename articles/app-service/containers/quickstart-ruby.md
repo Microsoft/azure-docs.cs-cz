@@ -4,8 +4,8 @@ description: Naučte se vytvořit aplikaci v Ruby on Rails pomocí služby App S
 keywords: azure app service, linux, oss, ruby, rails
 services: app-service
 documentationcenter: ''
-author: SyntaxC4
-manager: cfowler
+author: cephalin
+manager: jeconnoc
 editor: ''
 ms.assetid: 6d00c73c-13cb-446f-8926-923db4101afa
 ms.service: app-service
@@ -13,22 +13,22 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
-ms.date: 01/23/2019
-ms.author: cfowler
+ms.date: 03/27/2019
+ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: c5858aaf09cd832a5d60d32bb33aeeb51795b406
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 29126171a2d808153c7578d911e0725641ec39ff
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55870431"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59545141"
 ---
 # <a name="create-a-ruby-on-rails-app-in-app-service-on-linux"></a>Vytvoření aplikace v Ruby on Rails ve službě App Service v Linuxu
 
 [Azure App Service v Linuxu](app-service-linux-intro.md) je vysoce škálovatelná služba s automatickými opravami pro hostování webů. V tomto rychlém startu se dozvíte, jak vytvořit základní aplikaci v [Ruby on Rails](https://rubyonrails.org/), kterou pak můžete nasadit do Azure jako webovou aplikaci v Linuxu.
 
 > [!NOTE]
-> Vývojová sada Ruby podporuje v současnosti jen Ruby on Rails. Pokud chcete použít různé platformy, jako je například Sinatra, nebo pokud chcete použít [Nepodporovaná verze Ruby](app-service-linux-intro.md), najdete v tomto rychlém startu pro [Web App for Containers](https://docs.microsoft.com/azure/app-service/containers/).
+> Vývojová sada Ruby podporuje v současnosti jen Ruby on Rails. Pokud chcete použít různé platformy, jako je například Sinatra, nebo pokud chcete použít [Nepodporovaná verze Ruby](app-service-linux-intro.md), budete muset [spustit ve vlastní kontejner](quickstart-docker-go.md).
 
 ![Hello World](./media/quickstart-ruby/hello-world-updated.png)
 
@@ -139,4 +139,7 @@ http://<app name>.azurewebsites.net
 ## <a name="next-steps"></a>Další postup
 
 > [!div class="nextstepaction"]
-> [Aplikace Ruby on Rails s Postgres](tutorial-ruby-postgres-app.md)
+> [Kurz: Aplikace Ruby on Rails s Postgres](tutorial-ruby-postgres-app.md)
+
+> [!div class="nextstepaction"]
+> [Konfigurace aplikace v Ruby](configure-language-ruby.md)

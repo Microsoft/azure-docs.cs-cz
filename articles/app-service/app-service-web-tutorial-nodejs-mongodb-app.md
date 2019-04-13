@@ -1,6 +1,6 @@
 ---
-title: Sestavení aplikace v Node.js s MongoDB – služba Azure App Service | Dokumentace Microsoftu
-description: Zjistěte, jak v Azure zprovoznit aplikaci Node.js s připojením k databázi Cosmos DB pomocí připojovacího řetězce MongoDB.
+title: Node.js (MEAN.js) s MongoDB – služba Azure App Service | Dokumentace Microsoftu
+description: Zjistěte, jak v Azure zprovoznit aplikaci Node.js s připojením k databázi Cosmos DB pomocí připojovacího řetězce MongoDB. Aplikace MEAN.js se používá v tomto kurzu.
 services: app-service\web
 documentationcenter: nodejs
 author: cephalin
@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 05/04/2017
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: f123a443d9a00aa7f1b35bd8ed540f90d66de97f
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 361e921af65b33ac0a7a8d12e28db1cb305b0fa1
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57891820"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59548115"
 ---
 # <a name="tutorial-build-a-nodejs-and-mongodb-app-in-azure"></a>Kurz: Vytvoření aplikace MongoDB v Azure a Node.js
 

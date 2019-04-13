@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 09/14/2018
-ms.openlocfilehash: 8fd737bb784938f7cbff243837678f41d5ac55c9
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 96c2f1c021e27a8f5a0f4d2af2b34970b9d44e80
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58076798"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59524170"
 ---
 # <a name="use-extended-apache-spark-history-server-to-debug-and-diagnose-apache-spark-applications"></a>Použít rozšířený Server historie Sparku Apache pro ladění a Diagnostika aplikací Apache Spark
 
@@ -32,7 +32,7 @@ Server historie Apache Spark je ve webovém uživatelském rozhraní pro dokonč
     ![Server historie sparku](./media/apache-azure-spark-history-server/launch-history-server.png "Server historie Sparku")
 
 ### <a name="open-the-spark-history-server-web-ui-by-url"></a>Otevřete webový Server historie Sparku uživatelského rozhraní pomocí adresy URL
-Otevřete Server historie Sparku tak, že přejdete na následující adresu URL, nahraďte <ClusterName> s názvem clusteru Spark zákazníka.
+Otevřete Server historie Sparku tak, že přejdete na následující adresu URL, nahraďte `<ClusterName>` s názvem clusteru Spark zákazníka.
 
    ```
    https://<ClusterName>.azurehdinsight.net/sparkhistory

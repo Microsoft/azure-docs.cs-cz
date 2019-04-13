@@ -1,7 +1,7 @@
 ---
 title: Indexování objektů BLOB JSON z objektů Blob v Azure indexeru pro fulltextové vyhledávání – Azure Search
 description: Procházení objektů BLOB Azure JSON pro textový obsah pomocí indexeru Azure Search Blob. Indexery můžete automatizovat příjem dat pro vybrané zdroje dat jako úložiště objektů Blob v Azure.
-ms.date: 02/28/2019
+ms.date: 04/11/2019
 author: HeidiSteen
 manager: cgronlun
 ms.author: heidist
@@ -10,12 +10,12 @@ ms.service: search
 ms.devlang: rest-api
 ms.topic: conceptual
 ms.custom: seodec2018
-ms.openlocfilehash: f44161586f9f4e121001b9f5e285b0e1e1dcd9d1
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.openlocfilehash: 6db86d3e5aba1a2e43e69e71df8cc516fb14581f
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58518741"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59527349"
 ---
 # <a name="how-to-index-json-blobs-using-azure-search-blob-indexer"></a>Jak indexovat objektů BLOB JSON pomocí indexeru Azure Search Blob
 V tomto článku se dozvíte, jak nakonfigurovat Azure Search blob [indexer](search-indexer-overview.md) extrahujte strukturované obsah z dokumentů JSON ve službě Azure Blob storage a usnadnit prohledávatelná ve službě Azure Search. Tento pracovní postup vytvoří index Azure Search a načte se existující text extrahovaný z objektů BLOB JSON. 
@@ -40,14 +40,15 @@ Doporučujeme používat stejné předplatné Azure pro Azure Search a Azure sto
 
 ### <a name="1---prepare-source-data"></a>1 – Příprava zdrojových dat
 
-Měli byste účtu služby Azure storage, Blob storage a kontejner dokumentů JSON. Pokud nejste obeznámeni s žádným z těchto požadavků, přečtěte část "Nastavení Azure Blob service a načtení ukázkových dat" v [kognitivní vyhledávání quickstart](cognitive-search-quickstart-blob.md#set-up-azure-blob-service-and-load-sample-data).
+1. [Přihlaste se k webu Azure portal](https://portal.azure.com/).
 
-> [!Important]
-> V kontejneru, ujistěte se, že **úroveň veřejného přístupu** je nastavena na "Kontejner (anonymní přístup pro čtení kontejnerům a objektům BLOB)". Azure storage a Azure Search by měl být ve stejném předplatném a pokud je to možné, ve stejné oblasti. 
+1. [Vytvořte kontejner objektů Blob](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal) obsahující vaše data. Úroveň veřejného přístupu můžete nastavit na některou z jeho platných hodnot.
+
+Budete potřebovat název účtu úložiště, název kontejneru a přístupový klíč pro načítání dat **importovat data** průvodce.
 
 ### <a name="2---start-import-data-wizard"></a>2 – Spusťte Průvodce importem dat
 
-Je možné [spusťte průvodce](search-import-data-portal.md) na panelu příkazů na stránce služby Azure Search, nebo kliknutím **přidat Azure Search** v **službu Blob service** části vašeho účtu úložiště levé navigační podokno.
+Na stránce Přehled služby Azure Search můžete [spusťte průvodce](search-import-data-portal.md) z příkazového řádku, nebo kliknutím **přidat Azure Search** v **službu Blob service** část vaší levé navigační podokno prvku účtu úložiště.
 
    ![Příkaz pro import dat na portálu](./media/search-import-data-portal/import-data-cmd2.png "spusťte Průvodce importem dat")
 

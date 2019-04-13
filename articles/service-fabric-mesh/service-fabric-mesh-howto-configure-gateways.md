@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 11/28/2018
 ms.author: dekapur
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 1c75d781c8a83b54ac9474c83388cf02b5d03e3c
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 2e2502e35b3720ddbfe5950b89e2388de378f2ba
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57532078"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59528114"
 ---
 # <a name="configure-a-gateway-resource-to-route-requests"></a>Konfigurace prostředku brány pro směrování požadavků
 
@@ -228,8 +228,8 @@ Tady je úplný konfiguraci prostředků brány, která bude vypadat jako (jde p
 ```
 
 Tato brána je nakonfigurovaná pro aplikaci systému Linux, "meshAppLinux", který se skládá z alespoň dvě služby, "helloWorldService" a "counterService", která naslouchá na portu 80. V závislosti na struktuře adresy URL příchozích požadavků se bude směrovat žádosti na jednu z těchto služeb. 
-* "<IPAddress>: 80/helloWorld/\<požadavek\>" výsledkem by byla žádost o nasměrování na "helloWorldListener" v helloWorldService. 
-* "<IPAddress>: 80/čítač/\<požadavek\>" výsledkem by byla žádost o nasměrování na "counterListener" v counterService. 
+* "\<IPAddress >: 80/helloWorld/\<požadavek\>" výsledkem by byla žádost o nasměrování na "helloWorldListener" v helloWorldService. 
+* "\<IPAddress >: 80/čítač/\<požadavek\>" výsledkem by byla žádost o nasměrování na "counterListener" v counterService. 
 
 ## <a name="next-steps"></a>Další postup
 * Nasazení [příchozího přenosu dat ukázka](https://github.com/Azure-Samples/service-fabric-mesh/tree/2018-09-01-preview/templates/ingress) zobrazíte brány v akci

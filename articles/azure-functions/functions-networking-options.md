@@ -3,19 +3,19 @@ title: Azure Functions možnosti sítě
 description: Přehled všech možností sítě k dispozici ve službě Azure Functions
 services: functions
 author: alexkarcher-msft
-manager: jehollan
+manager: jeconnoc
 ms.service: azure-functions
 ms.topic: conceptual
-ms.date: 1/14/2019
+ms.date: 4/11/2019
 ms.author: alkarche
-ms.openlocfilehash: 10d7daa6da45c56e20c622fcbca9ee288e737dab
-ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
+ms.openlocfilehash: a4ae2d8bad50a4103da6afaa0bee5cbb75c877aa
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
-ms.locfileid: "59358156"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59545501"
 ---
-# <a name="azure-functions-networking-options"></a>Azure Functions možnosti sítě
+# <a name="azure-functions-networking-options"></a>Služba Azure Functions možnostech sítě
 
 Tento dokument popisuje sadu síťových funkcí, které jsou k dispozici v Azure Functions možnosti hostování. Všechny následující možnosti sítě poskytují některé možnost přístupu k prostředkům bez použití internetové adresy směrovatelné nebo omezit přístup k Internetu na aplikaci funkcí. Všechny modelech hostování mají různé úrovně izolace sítě, které jsou k dispozici, a zvolíte tu správnou vám umožní splnit vaše požadavky na izolaci sítě.
 
@@ -27,13 +27,13 @@ Funkce aplikací je možné hostovat v několika různými způsoby.
     1. Plán služby App Service, který funguje na pevnou škálovací a nabízí podobné izolace sítě k plánu Premium.
 * Funkce můžete také spustit na App Service Environment (ASE), která nasadí vaši funkci do vaší virtuální sítě a nabízí plnou síťového ovládacího prvku a izolace.
 
-## <a name="networking-feature-matrix"></a>Přehled funkcí sítě
+## <a name="networking-feature-matrix"></a>Přehled funkcí služby sítě
 
-|                |[Plán Consumption](functions-scale.md#consumption-plan)|⚠ [Premium Plan](functions-scale.md##premium-plan-public-preview)|[Plán služby App Service](functions-scale.md#app-service-plan)|[App Service Environment](../app-service/environment/intro.md)|
+|                |[Plán consumption](functions-scale.md#consumption-plan)|⚠ [Premium Plan](functions-scale.md##premium-plan-public-preview)|[Plán služby App Service](functions-scale.md#app-service-plan)|[App Service Environment](../app-service/environment/intro.md)|
 |----------------|-----------|----------------|---------|-----------------------|  
 |[**Příchozí omezení IP adres**](#inbound-ip-restrictions)|✅Yes|✅Yes|✅Yes|✅Yes|
-|[**Integrace VNETu**](#vnet-integration)|❌No|⚠ Ano|✅Yes|✅Yes|
-|[**Preview VNET Integration (Express Route & Service Endpoints)**](#preview-vnet-integration)|❌No|⚠ Ano|⚠ Ano|✅Yes|
+|[**Integrace virtuální sítě**](#vnet-integration)|❌No|❌No|✅Yes|✅Yes|
+|[**Integrace virtuální sítě ve verzi Preview (Express Route a koncové body služby)**](#preview-vnet-integration)|❌No|⚠Ano|⚠Ano|✅Yes|
 |[**Hybridní připojení**](#hybrid-connections)|❌No|❌No|✅Yes|✅Yes|
 |[**Privátní přístup na web**](#private-site-access)|❌No| ❌No|❌No|✅Yes|
 
@@ -48,7 +48,7 @@ Omezení IP adres umožňují definovat prioritu seřazený povolit nebo zamítn
 
 [Další informace najdete tady](https://docs.microsoft.com/azure/app-service/app-service-ip-restrictions)
 
-## <a name="vnet-integration"></a>Integrace VNETu
+## <a name="vnet-integration"></a>Integrace virtuální sítě
 
 Integrace virtuální sítě umožňuje vaší aplikaci funkcí přístup k prostředkům v síti VNET. Integrace virtuální sítě je k dispozici v plánu Premium a plán služby App Service. Pokud je vaše aplikace ve službě App Service Environment, se už ve virtuální síti a nevyžaduje, použijte funkci integrace virtuální sítě k přístupu k prostředkům ve stejné virtuální síti.
 
@@ -84,8 +84,18 @@ Používá se ve funkcích, koreluje každé hybridní připojení na jedné kom
 
 Další informace najdete v tématu [dokumentaci služby App Service Hybrid Connections](../app-service/app-service-hybrid-connections.md), který podporuje funkce a webové aplikace.
 
-## <a name="private-site-access"></a>Privátní přístup na web
+## <a name="private-site-access"></a>Privátní přístup k webu
 
 Přístup k webům privátní odkazuje na zpřístupnění aplikace jen z privátní sítě, jako z v rámci virtuální sítě Azure. Přístup k privátním serveru je k dispozici pouze s ASE nakonfigurovaný s interní zatížení nástroje pro vyrovnávání (ILB). Podrobnosti o použití prostředí ILB ASE najdete v tématu [vytváření a používání prostředí ILB ASE](../app-service/environment/create-ilb-ase.md).
 
 Existuje mnoho způsobů, jak přistupovat k prostředkům virtuální sítě v další možnosti hostování, ale služba ASE je jediný způsob, jak povolit aktivačních událostí pro funkci probíhá přes virtuální síť.
+
+## <a name="next-steps"></a>Další postup
+Další informace o možnostech sítě a funkce: 
+
+* [Postupujte podle virtuální sítě integrace kurz Začínáme](./functions-create-vnet.md)
+* [Přečtěte si funkce tady sítě – nejčastější dotazy](./functions-networking-faq.md)
+* [Další informace o integraci virtuální sítě pomocí služby App Service / funkce zde](../app-service/web-sites-integrate-with-vnet.md)
+* [Další informace o virtuálních sítí v Azure](../virtual-network/virtual-networks-overview.md)
+* [Povolit další síťové funkce a ovládací prvek s App Service Environment](../app-service/environment/intro.md)
+* [Připojení k jednotlivým místních prostředků bez nutnosti změn brány firewall pomocí hybridních připojení](../app-service/app-service-hybrid-connections.md)

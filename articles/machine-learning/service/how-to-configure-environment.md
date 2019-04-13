@@ -11,12 +11,12 @@ ms.reviewer: larryfr
 ms.topic: conceptual
 ms.date: 02/24/2019
 ms.custom: seodec18
-ms.openlocfilehash: d4866a6863143d2228c556a64c8e75c9f273076e
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.openlocfilehash: 720f984feb5675281510962d4ebee63f638d696d
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/11/2019
-ms.locfileid: "59489497"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59548882"
 ---
 # <a name="configure-a-development-environment-for-azure-machine-learning"></a>Konfigurace prostředí pro vývoj pro Azure Machine Learning
 
@@ -350,7 +350,7 @@ Pracovní prostor konfigurační soubor je soubor JSON s oznámením sady SDK ke
 }
 ```
 
-Tento soubor JSON musí být do struktury adresářů, který obsahuje skripty Python nebo poznámkových bloků Jupyter. Může být ve stejném adresáři, podadresáři s názvem *aml_config*, nebo v nadřazeném adresáři.
+Tento soubor JSON musí být do struktury adresářů, který obsahuje skripty Python nebo poznámkových bloků Jupyter. Může být ve stejném adresáři, podadresáři s názvem *.azureml*, nebo v nadřazeném adresáři.
 
 Chcete-li použít tento soubor z vašeho kódu, použijte `ws=Workspace.from_config()`. Tento kód načte informace ze souboru a připojí k vašemu pracovnímu prostoru.
 
@@ -379,7 +379,7 @@ Konfigurační soubor můžete vytvořit třemi způsoby:
         print('Workspace not found')
     ```
 
-    Tento kód zapíše konfigurační soubor tak, *aml_config/config.json* souboru.
+    Tento kód zapíše konfigurační soubor tak, *.azureml/config.json* souboru.
 
 
 ## <a name="next-steps"></a>Další postup

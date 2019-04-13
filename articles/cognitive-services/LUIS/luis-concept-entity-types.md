@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 03/22/2019
+ms.date: 04/01/2019
 ms.author: diberry
-ms.openlocfilehash: 6e37466145af58a52a86a08a2a873e406c99b9e5
-ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
+ms.openlocfilehash: 59a05e7a20f6b229b37977a75d22611c0d5c31d9
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58895541"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59528029"
 ---
 # <a name="entity-types-and-their-purposes-in-luis"></a>Typy entit a jejich účely v LUIS
 
@@ -24,7 +24,15 @@ Entity extrahovat data z utterance. Typy entit poskytují předvídatelný extra
 
 ## <a name="entity-compared-to-intent"></a>Entity ve srovnání s cílem
 
-Entita představuje slovo nebo frázi v utterance, který chcete, aby byl extrahován. Utterance může obsahovat mnoho entit nebo žádný vůbec. Entity představuje třídu kolekce podobných objektů (místa, věci, osoby, události nebo koncepty) včetně. Entity popisují informace související s cílem a někdy jsou nezbytné pro vaši aplikaci k provedení svých úkolů. Pro vyhledávání zpráv aplikace může například obsahovat entity, jako je například "tematické", "zdroj", "– klíčové slovo" a "datum publikování", které jsou klíčová data pro vyhledávání zpráv. Cestovní aplikaci rezervace, "umístění", "data", "letecká společnost" "cesty třída" a "lístků" jsou informace o klíči pro rezervace letu (relevantní k příslušnému záměru "Rezervovat let").
+Entita představuje slovo nebo frázi v utterance, který chcete, aby byl extrahován. Utterance může obsahovat mnoho entit nebo žádný vůbec. Klientská aplikace může být nutné entity k provedení svých úkolů nebo použít jako vodítko několik možností pro pro konkrétního uživatele. 
+
+Entita:
+
+* Reprezentuje třídu kolekce podobných objektů (místa, věci, osoby, události nebo koncepty) včetně. 
+* Popisuje informace, které jsou relevantní pro záměr
+
+
+Pro vyhledávání zpráv aplikace může například obsahovat entity, jako je například "tematické", "zdroj", "– klíčové slovo" a "datum publikování", které jsou klíčová data pro vyhledávání zpráv. Cestovní aplikaci rezervace, "umístění", "data", "letecká společnost" "cesty třída" a "lístků" jsou informace o klíči pro rezervace letu (relevantní k příslušnému záměru "Rezervovat let").
 
 Naproti tomu představuje záměr předpovědi celý utterance. 
 
@@ -89,14 +97,14 @@ Po extrahování entity entity data můžete vyjádřena jako jedna jednotka inf
 |Machine-learned|Označit|Kurz|Příklad:<br>Odpověď|Typ entity|Účel|
 |--|--|--|--|--|--|
 |✔|✔|[✔](luis-tutorial-composite-entity.md)|[✔](luis-concept-data-extraction.md#composite-entity-data)|[**Složené**](#composite-entity)|Seskupení entit, bez ohledu na typ entity.|
-|✔|✔|[✔](luis-quickstart-intent-and-hier-entity.md)|[✔](luis-concept-data-extraction.md#hierarchical-entity-data)|[**Hierarchické**](#hierarchical-entity)|Seskupení jednoduché entit.|
+|✔|✔|-|[✔](luis-concept-data-extraction.md#hierarchical-entity-data)|[**Hierarchické**](#hierarchical-entity)|Seskupení jednoduché entit.|
 |||[✔](luis-quickstart-intent-and-list-entity.md)|[✔](luis-concept-data-extraction.md#list-entity-data)|[**Seznam**](#list-entity)|Seznam položek a jejich synonyma extrahuje text přesně shodovat.|
 |Smíšený||[✔](luis-tutorial-pattern.md)|[✔](luis-concept-data-extraction.md#patternany-entity-data)|[**Pattern.any**](#patternany-entity)|Entita, ve kterém je obtížné určit koncové entity.|
 |||[✔](luis-tutorial-prebuilt-intents-entities.md)|[✔](luis-concept-data-extraction.md#prebuilt-entity-data)|[**Předem připravené**](#prebuilt-entity)|Extrahovat různé druhy dat je už vytrénovaný.|
 |||[✔](luis-quickstart-intents-regex-entity.md)|[✔](luis-concept-data-extraction.md#regular-expression-entity-data)|[**Regulární výraz**](#regular-expression-entity)|Používá regulární výraz pro porovnání textu.|
-|✔|✔|[✔](luis-quickstart-primary-and-secondary-data.md)|[✔](luis-concept-data-extraction.md#simple-entity-data)|[**Jednoduchý**](#simple-entity)|Obsahuje jeden koncept v slova nebo fráze.|
+|✔|✔|[✔](luis-quickstart-primary-and-secondary-data.md)|[✔](luis-concept-data-extraction.md#simple-entity-data)|[**Jednoduché**](#simple-entity)|Obsahuje jeden koncept v slova nebo fráze.|
 
-Pouze entity se naučili počítače potřeba označené v příkladu projevy pro každý záměr. Počítače zjištěné entity fungují lépe, když testován prostřednictvím [koncový bod dotazy](luis-concept-test.md#endpoint-testing) a [recenzování projevy koncový bod](luis-how-to-review-endpoint-utterances.md). 
+Jenom entity zjištěné počítače musí být označené v příkladu projevy. Počítače zjištěné entity fungují lépe, když testován prostřednictvím [koncový bod dotazy](luis-concept-test.md#endpoint-testing) a [recenzování projevy koncový bod](luis-how-to-review-endoint-utt.md). 
 
 Pattern.Any entity musí být označeny [vzor](luis-how-to-model-intent-pattern.md) Příklady šablon, ne příklady záměru uživatele. 
 
@@ -121,29 +129,15 @@ Tato entita je vhodná přizpůsobit, kdy data:
 
 ## <a name="hierarchical-entity"></a>Hierarchická entita
 
+**Nakonec se přestanou hierarchické entity. Použití [entity role](luis-concept-roles.md) určit podtypy entity, namísto hierarchické entity.**
+
 Hierarchické entity je kategorie kontextově zjištěná jednoduché entity nazývané podřízené položky.
-
-Tato entita je vhodná přizpůsobit, kdy data:
-
-* Jsou jednoduché entity.
-* Se k sobě v kontextu promluvy navzájem vztahují.
-* Volba určité slovo slouží k označení každé podřízené entity. Mezi příklady těchto slov patří from/to (z/do), leaving/headed to (odstěhovat/nastěhovat), away from/toward (z kanceláře/do kanceláře).
-* Podřízené objekty jsou často ve stejné utterance. 
-* Musí být seskupeny a zpracovány klientskou aplikací jako jediná informace.
-
-Nepoužívejte pokud:
-
-* Potřebujete entitu, která má přesný text shody pro podřízené položky bez ohledu na kontextu. Použití [seznam entit](#list-entity) místo. 
-* Potřebujete entitu pro vztah nadřízenosti a podřízenosti s jinými typy entit. Použití [složený entity](#composite-entity).
 
 ![hierarchické entity](./media/luis-concept-entities/hierarchical-entity.png)
 
-[Kurz](luis-quickstart-intent-and-hier-entity.md)<br>
-[Příklad odpovědi JSON pro entitu](luis-concept-data-extraction.md#hierarchical-entity-data)<br>
-
 ### <a name="roles-versus-hierarchical-entities"></a>Role a hierarchické entity
 
-[Role](luis-concept-roles.md#roles-versus-hierarchical-entities) vzoru řešení stejného problému jako hierarchické entity ale vztahují se na všechny typy entit. Role jsou aktuálně dostupné jenom ve vzorcích. Role nejsou k dispozici v projevy příklad záměry.  
+[Role](luis-concept-roles.md) řešení stejného problému jako hierarchické entity ale vztahují se na všechny typy entit.  
 
 ## <a name="list-entity"></a>Entita seznamu
 
@@ -170,7 +164,7 @@ Entita je vhodná podle při:
 [Kurz](luis-tutorial-pattern.md)<br>
 [Příklad odpovědi JSON pro entitu](luis-concept-data-extraction.md#patternany-entity-data)
 
-**Příklad:**  
+**Příklad**  
 Klientská aplikace, která hledá zadaný pro knihy podle názvu, extrahuje pattern.any úplný název. Šablona utterance pomocí pattern.any je toto vyhledávání v adresáři `Was {BookTitle} written by an American this year[?]`. 
 
 Každý řádek v následující tabulce, má dvě verze utterance. Začátek utterance je jak LUIS se zpočátku zobrazí utterance, kde není jasné, s názvem adresáře začíná a končí. Dolní utterance je, jak služba LUIS, že název knihy při vzor se používají pro extrakci. 
@@ -262,24 +256,15 @@ Entita je vhodná podle při:
 
 Kontrola [omezení](luis-boundaries.md#model-boundaries) porozumět, kolik jednotlivých typů entit můžete přidat do modelu.
 
-## <a name="composite-vs-hierarchical-entities"></a>Složený vs hierarchické entity
-
-Složené a hierarchické entit jak mají vztahů nadřazenosti a podřízenosti a jsou počítače se naučili. Machine learning umožňuje LUIS vysvětlení konceptu entit podle různých kontextech (uspořádání slov). Složený entity jsou flexibilnější, protože umožňují typy různých entit jako podřízené objekty. Hierarchické entity podřízené objekty jsou pouze jednoduché entity. 
-
-|Typ|Účel|Příklad:|
-|--|--|--|
-|Hierarchické|Nadřazený podřízený jednoduché entit|Location.Origin=New York<br>Location.Destination=London|
-|Složené|Nadřazené podřízené entity: předem připravených, seznam, jednoduchý a hierarchické| číslo = 3<br>Seznam = první třídy<br>prebuilt.datetimeV2=March 5|
-
 ## <a name="if-you-need-more-than-the-maximum-number-of-entities"></a>Pokud potřebujete více než maximální počet entit 
 
-Můžete potřebovat použít hierarchická a složené entit. Hierarchické entity odrážet relace mezi entitami, které mají vlastnosti nebo jsou členy skupiny. Podřízené entity jsou všechny členy své nadřazené kategorie. Například hierarchické entitu s názvem PlaneTicketClass pravděpodobně podřízené entity EconomyClass a FirstClass. Hierarchie obsahuje pouze jednu úroveň hloubky.  
+Můžete potřebovat použít složené entit v kombinaci s entitu role.
 
-Složený entity představují část celku. Například složenou entitu s názvem PlaneTicketOrder může mít podřízené entity letecká společnost, cíl, DepartureCity, datumOdjezdu a PlaneTicketClass. Vytváření složených entity z již existujících jednoduché entit, podřízené položky hierarchické entity nebo předem připravených entit.  
+Složený entity představují část celku. Například složenou entitu s názvem PlaneTicketOrder může mít podřízené entity letecká společnost, cíl, DepartureCity, datumOdjezdu a PlaneTicketClass.
 
 Služba LUIS také poskytuje seznam typ entity, která není zjištěné počítače, ale umožňuje aplikaci LUIS, chcete-li určit pevnou seznam hodnot. Zobrazit [LUIS hranice](luis-boundaries.md) odkazu ke kontrole omezení typu entity. 
 
-Pokud jste za hierarchické, složený a seznamu entit a stále potřebovat vyšší limit, obraťte se na podporu. Uděláte to tak, získat podrobné informace o systému, přejděte [LUIS](luis-reference-regions.md#luis-website) webu a pak vyberte **podporu**. Pokud vaše předplatné Azure zahrnuje odbornou pomoc, obraťte se na [technické podpoře Azure](https://azure.microsoft.com/support/options/). 
+Pokud jste považovat za tyto entity a stále potřebovat vyšší limit, obraťte se na podporu. Uděláte to tak, získat podrobné informace o systému, přejděte [LUIS](luis-reference-regions.md#luis-website) webu a pak vyberte **podporu**. Pokud vaše předplatné Azure zahrnuje odbornou pomoc, obraťte se na [technické podpoře Azure](https://azure.microsoft.com/support/options/). 
 
 ## <a name="next-steps"></a>Další postup
 

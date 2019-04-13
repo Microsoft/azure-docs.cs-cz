@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 10/16/2018
 ms.author: ramkris
 ms.reviewer: sngun
-ms.openlocfilehash: 65023fbf96dc3e1276413f8c40ecb262d60c1454
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: b6a5712c617ab1e16b5341d9727b840fe8ea2213
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57863351"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59524017"
 ---
 # <a name="use-bulk-executor-java-library-to-perform-bulk-operations-on-azure-cosmos-db-data"></a>Použití knihovny Java prováděcí modul hromadného budou provádět hromadné operace s daty služby Azure Cosmos DB
 
@@ -118,8 +118,8 @@ Naklonované úložiště obsahuje dvě ukázky "hromadný import" a "bulkupdate
    |int getNumberOfDocumentsImported()  |   Celkový počet dokumentů, které byly úspěšně naimportovány z dokumentů zadaný pro hromadného importu volání rozhraní API.      |
    |dvojité getTotalRequestUnitsConsumed()   |  Jednotky celkový počet žádostí (RU) využívaný hromadného importu volání rozhraní API.       |
    |Doba trvání getTotalTimeTaken()   |    Celková doba, za kterou hromadný import volání rozhraní API k dokončení provádění.     |
-   |Seznam<Exception> getErrors() |  Získá seznam chyb, pokud některé dokumenty ze služby batch, zadaný do hromadného importu se nepodařilo získat vložit volání rozhraní API.       |
-   |Seznam<Object> getBadInputDocuments()  |    Seznam chybný formát dokumenty, které nebyly úspěšně naimportovány hromadně importovat volání rozhraní API. Uživatel musí opravit vrácených dokumentů a zkuste import zopakovat. Dokumenty ve formátu chybný obsahovat dokumenty, jejichž ID hodnota není řetězec (datový typ null nebo jakékoli jiné se považuje za neplatný).     |
+   |Seznam\<výjimky > getErrors() |  Získá seznam chyb, pokud některé dokumenty ze služby batch, zadaný do hromadného importu se nepodařilo získat vložit volání rozhraní API.       |
+   |List\<Object> getBadInputDocuments()  |    Seznam chybný formát dokumenty, které nebyly úspěšně naimportovány hromadně importovat volání rozhraní API. Uživatel musí opravit vrácených dokumentů a zkuste import zopakovat. Dokumenty ve formátu chybný obsahovat dokumenty, jejichž ID hodnota není řetězec (datový typ null nebo jakékoli jiné se považuje za neplatný).     |
 
 5. Až budete mít hromadného importu aplikace připravené, sestavení pomocí příkazu 'mvn čisté balíčku' nástroj příkazového řádku ze zdroje. Tento příkaz vygeneruje v cílové složce soubor jar:  
 
@@ -182,7 +182,7 @@ Pomocí rozhraní API BulkUpdateAsync můžete aktualizovat existující dokumen
    |int getNumberOfDocumentsUpdated()  |   Celkový počet dokumentů, které byly úspěšně aktualizovány mimo dokumenty zadaný pro hromadné aktualizace volání rozhraní API.      |
    |dvojité getTotalRequestUnitsConsumed() |  Jednotky celkový počet žádostí (RU) využívaný hromadné aktualizace volání rozhraní API.       |
    |Doba trvání getTotalTimeTaken()  |   Celková doba, za kterou hromadného aktualizujte volání rozhraní API k dokončení provádění.      |
-   |Seznam<Exception> getErrors()   |     Získá seznam chyb, pokud hromadné aktualizace volání rozhraní API se nepodařilo získat vloží některé dokumenty ze služby batch.      |
+   |Seznam\<výjimky > getErrors()   |    Získá seznam chyb, pokud hromadné aktualizace volání rozhraní API se nepodařilo získat vloží některé dokumenty ze služby batch.      |
 
 3. Až budete mít hromadné aktualizace aplikace připravené, sestavení pomocí příkazu 'mvn čisté balíčku' nástroj příkazového řádku ze zdroje. Tento příkaz vygeneruje v cílové složce soubor jar:  
 

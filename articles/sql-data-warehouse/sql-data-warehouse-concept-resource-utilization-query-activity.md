@@ -7,21 +7,24 @@ manager: craigg-msft
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: manage
-ms.date: 03/21/2019
+ms.date: 04/12/2019
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: de5d8a3cd329e023b57d887a22db5459f13c7486
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.openlocfilehash: f80c1817d5c0ce79f2dc53f40a2cc4e00dd5c72b
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/11/2019
-ms.locfileid: "59492783"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59545552"
 ---
 # <a name="monitoring-resource-utilization-and-query-activity-in-azure-sql-data-warehouse"></a>Monitorování využití a dotaz aktivity prostředků ve službě Azure SQL Data Warehouse
 Azure SQL Data Warehouse poskytuje bohaté možnosti monitorování na webu Azure portal na povrchu přehledy, které vaše úlohy datového skladu. Na webu Azure portal je doporučeným nástrojem při monitorování datového skladu, protože poskytuje možnost konfigurace uchovávání období, výstrah, doporučení a přizpůsobitelné grafy a řídicí panely pro metriky a protokoly. Na portálu můžete také integrovat s dalšími službami Azure monitorování jako je například Operations Management Suite (OMS) a Azure Monitor (protokoly) poskytuje holistické možnosti monitorování pouze váš datový sklad, ale také celou analýz Azure Platforma pro integrované možnosti monitorování. Tato dokumentace popisuje, jaké možnosti monitorování jsou k dispozici optimalizovat a spravovat vaši platformu analýzy s využitím SQL Data Warehouse. 
 
 ## <a name="resource-utilization"></a>Využití prostředků 
 Tyto metriky jsou k dispozici na webu Azure Portal pro službu SQL Data Warehouse. Tyto metriky jsou prezentované prostřednictvím [Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/platform/data-collection#metrics).
+
+> [!NOTE]
+> Aktuálně úrovni uzlu procesoru a vstupně-výstupních operací metriky neodrážejí správně použití datového skladu. Tyto metriky se odebere v blízké budoucnosti tým zlepšuje monitorování a odstraňování potíží pro službu SQL Data Warehouse. 
 
 | Název metriky                           | Popis     | Typ agregace |
 | --------------------------------------- | ---------------- | --------------------------------------- |

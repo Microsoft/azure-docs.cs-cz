@@ -19,12 +19,12 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: 9584f0ee4264724787c5913c0d6baa4c2769fa82
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 39fbe30ccf4429003dc0c9f11165c5dd057a89cd
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58085673"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59549148"
 ---
 # <a name="add-language-analyzers-to-an-azure-search-index"></a>Přidat do indexu Azure Search analyzátory jazyka
 
@@ -92,7 +92,7 @@ Další informace o vlastnosti indexu, naleznete v tématu [Create Index &#40;ro
 |Irština||GA.lucene|  
 |italština|it.microsoft|IT.lucene|  
 |Japonština|ja.microsoft|ja.lucene|  
-|Kannadština|ka.microsoft||  
+|Kannadština|kn.microsoft||  
 |Korejština|ko.microsoft|Ko.lucene|  
 |Lotyština|lv.microsoft|LV.lucene|  
 |Litevština|lt.microsoft||  

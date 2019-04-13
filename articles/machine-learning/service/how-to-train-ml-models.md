@@ -9,14 +9,14 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.reviewer: sgilley
-ms.date: 2/14/2019
+ms.date: 04/19/2019
 ms.custom: seodec18
-ms.openlocfilehash: 818b6e5994a4f5b9d21d511f0a31eab6e00033f7
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 7b479556543c6a9dff88643fdc587dec3f832f39
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58012471"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59548166"
 ---
 # <a name="train-models-with-azure-machine-learning-using-estimator"></a>Trénování modelů Azure Machine Learning pomocí odhad
 
@@ -59,7 +59,7 @@ Tento fragment kódu určuje následující parametry `Estimator` konstruktoru.
 Parametr | Popis
 --|--
 `source_directory`| Místní adresář, který obsahuje vše potřebné pro trénovací úlohu kódu. Tato složka se zkopíruje z místního počítače pro vzdálený výpočetní 
-`script_params`| Slovník zadání argumentů příkazového řádku pro cvičný skript `entry_script`, ve formě < argument příkazového řádku, hodnota > páry
+`script_params`| Slovník zadání argumentů příkazového řádku pro cvičný skript `entry_script`, ve formě < argument příkazového řádku, hodnota > dvojice. K určení podrobné příznak v `script_params`, použijte `<command-line argument, "">`.
 `compute_target`| Cílové vzdálené výpočetní prostředí, který cvičný skript se spustí, v tomto případě Azure Machine Learning Compute ([AmlCompute](how-to-set-up-training-targets.md#amlcompute)) clusteru. (Poznámka: Přestože AmlCompute clusteru je běžně používané cílem, je také možné vybrat další výpočetní cílové typy, jako jsou virtuální počítače Azure nebo dokonce místní počítač.)
 `entry_script`| Cesta k souboru (vzhledem k `source_directory`) z trénovací skript ke spuštění na vzdálené výpočetní prostředky. Tento soubor a další soubory, na kterých závisí, se musí nacházet v této složce
 `conda_packages`| Seznam balíčků Python nainstalovat přes conda vyžadované cvičný skript.  

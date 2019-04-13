@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/06/2018
 ms.author: govindk
-ms.openlocfilehash: 7cc8e46c841b6e385d1a3b442fdb63d465486af8
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: c5c103fcb7f80533f6f34cb51fd661364d77d6ef
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55477722"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59549004"
 ---
 # <a name="ip-firewall-in-azure-cosmos-db"></a>Brány firewall protokolu IP ve službě Azure Cosmos DB
 
@@ -19,7 +19,7 @@ K zabezpečení dat uložených v účtu Azure Cosmos DB podporuje tajného kód
 
 ## <a id="ip-access-control-overview"></a>Přehled řízení přístupu IP
 
-Ve výchozím nastavení je přístupný z Internetu, váš účet Azure Cosmos, za předpokladu, žádosti je přiložený platný autorizační token. Ke konfiguraci řízení přístupu na základě zásad IP musí uživatel poskytnout sadu IP adres nebo rozsahy IP adres ve formátu CIDR (Classless Inter-Domain se směrováním). zahrnou se jako seznam povolených klientských IP adres pro přístup k dané účtu Azure Cosmos. Po této konfigurace se použije, všechny požadavky z počítačů mimo tento seznam povolených obdržet odpověď 403 (zakázáno). Při použití brány firewall protokolu IP, se doporučuje povolit webu Azure portal přístup ke svému účtu. Se vyžaduje k povolení použití Průzkumníku dat také tak, aby načíst metriky pro svůj účet, který se zobrazí na portálu Azure portal přístup.
+Ve výchozím nastavení je přístupný z Internetu, váš účet Azure Cosmos, za předpokladu, žádosti je přiložený platný autorizační token. Ke konfiguraci řízení přístupu na základě zásad IP musí uživatel poskytnout sadu IP adres nebo rozsahy IP adres ve formátu CIDR (Classless Inter-Domain se směrováním). zahrnou se jako seznam povolených klientských IP adres pro přístup k dané účtu Azure Cosmos. Po této konfigurace se použije, všechny požadavky z počítačů mimo tento seznam povolených obdržet odpověď 403 (zakázáno). Při použití brány firewall protokolu IP, se doporučuje povolit webu Azure portal přístup ke svému účtu. Se vyžaduje k povolení použití Průzkumníku dat také tak, aby načíst metriky pro svůj účet, který se zobrazí na portálu Azure portal přístup. Při použití Průzkumníku dat, kromě povolení webu Azure portal přístup ke svému účtu, musíte také aktualizovat nastavení brány firewall, chcete-li přidat vaši aktuální IP adresu pro pravidla brány firewall. Všimněte si, že změny brány firewall může trvat až 15 minut na dokončení propagace. 
 
 Na základě IP adresy brány firewall můžete kombinovat s podsítí a řízení přístupu k virtuální síti. Díky spojení jejich, můžete omezit přístup k libovolnému zdroji, který má veřejnou IP adresu a/nebo z konkrétní podsítě v rámci virtuální sítě. Další informace o používání podsítě a řízení přístupu založené na virtuální síť najdete v článku [prostředky přístup k Azure Cosmos DB z virtuálních sítí](vnet-service-endpoint.md).
 

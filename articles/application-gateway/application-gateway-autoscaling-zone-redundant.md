@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 3/6/2019
 ms.author: victorh
-ms.openlocfilehash: 4410dd9e61fe5b585ca5b245dbf33dbf8c38e701
-ms.sourcegitcommit: e43ea344c52b3a99235660960c1e747b9d6c990e
+ms.openlocfilehash: 95b14a0028134e522206f3595bc3b9ebf9aaf396
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/04/2019
-ms.locfileid: "59010205"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59548709"
 ---
 # <a name="autoscaling-and-zone-redundant-application-gateway-public-preview"></a>Automatické škálování a zónově redundantní služba Application Gateway (Public Preview)
 
@@ -31,7 +31,7 @@ Služba Application Gateway a Firewall webových aplikací (WAF) jsou teď dostu
 ![](./media/application-gateway-autoscaling-zone-redundant/application-gateway-autoscaling-zone-redundant.png)
 
 > [!NOTE]
-> Automatické škálování a zónově redundantní služba application gateway nyní podporuje SKU [sondu stavu výchozí](https://docs.microsoft.com/azure/application-gateway/application-gateway-probe-overview#default-health-probe) automaticky monitorování stavu všech prostředků v jeho back endovém fondu a odebrat všechny prostředky z fondu považoval za poškozený. Výchozí stav testu bude automaticky nakonfigurované pro všechny tyto back-EndY pro které jste nenastavili žádné konfigurace vlastní test paměti. Další informace najdete v tématu [sondy stavu ve službě application gateway](https://docs.microsoft.com/azure/application-gateway/application-gateway-probe-overview).
+> Automatické škálování a zónově redundantní služba application gateway nyní podporuje SKU [sondu stavu výchozí](https://docs.microsoft.com/azure/application-gateway/application-gateway-probe-overview#default-health-probe) automaticky monitorování stavu všech prostředků v jeho back endovém fondu a zvýraznit těchto členů back-end, které jsou považovány za není v pořádku. Výchozí stav testu bude automaticky nakonfigurované pro všechny tyto back-EndY pro které jste nenastavili žádné konfigurace vlastní test paměti. Další informace najdete v tématu [sondy stavu ve službě application gateway](https://docs.microsoft.com/azure/application-gateway/application-gateway-probe-overview).
 
 ## <a name="feature-comparison-between-v1-sku-and-v2-sku"></a>Porovnání funkcí mezi v1 SKU a v2 SKU
 

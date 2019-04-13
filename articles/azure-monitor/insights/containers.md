@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 02/28/2019
 ms.author: magoedte
-ms.openlocfilehash: fbc9e0f8e7dfda86b5c53e28aa3aa3b733bb9600
-ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
+ms.openlocfilehash: 0a45c84b01cace7e14bd1a945617598c6295631e
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58905745"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59524272"
 ---
 # <a name="container-monitoring-solution-in-azure-monitor"></a>Řešení pro monitorování kontejnerů ve službě Azure Monitor
 
@@ -236,7 +236,7 @@ V této části probereme kroky potřebné k instalaci agenta Log Analytics jako
 Pokud chcete pro použití tajných kódů k zabezpečení ID pracovního prostoru Log Analytics a primární klíč, když pomocí souboru yaml démon sady agenta Log Analytics, proveďte následující kroky.
 
 1. Přihlaste se k hlavnímu uzlu OpenShift a zkopírujte tento soubor yaml [ocp-ds-omsagent.yaml](https://github.com/Microsoft/OMS-docker/blob/master/OpenShift/ocp-ds-omsagent.yaml) a tajný kód generování skriptu [ocp-secretgen.sh](https://github.com/Microsoft/OMS-docker/blob/master/OpenShift/ocp-secretgen.sh) z Githubu.  Tento skript vytvoří soubor yaml tajných kódů pro ID pracovního prostoru Log Analytics a primární klíč pro zabezpečení vašich secrete informace.  
-2. Spuštěním následujících příkazů pro vytvoření projektu pro Azure Monitor a nastavení uživatelského účtu. Tajný kód generování skriptu vyzve k zadání ID vašeho pracovního prostoru Log Analytics <WSID> a primární klíč <KEY> a po dokončení se vytvoří soubor ocp secret.yaml.  
+2. Spuštěním následujících příkazů pro vytvoření projektu pro Azure Monitor a nastavení uživatelského účtu. Tajný kód generování skriptu vyzve k zadání ID vašeho pracovního prostoru Log Analytics `<WSID>` a primární klíč `<KEY>` a po dokončení se vytvoří soubor ocp secret.yaml.  
 
     ```
     oadm new-project omslogging --node-selector='zone=default'  

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
-ms.openlocfilehash: 5c768497cc21b3fae82a9db290531af33841a2cf
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 7d881454eb857080f1178f228a1f7bec36cae178
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57877288"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59527417"
 ---
 # <a name="security-frame-exception-management--mitigations"></a>Zabezpečení rámce: Správa výjimek | Zmírnění rizik 
 | Produkt nebo službu | Článek |
@@ -201,7 +201,7 @@ Zkontrolujte odkazy v části odkazy na další podrobnosti o zpracování výji
 | **Použitelných technologiích** | Obecné |
 | **Atributy**              | neuvedeno  |
 | **Odkazy**              | [Upravit dialogové okno nastavení stránek ASP.NET chyba](https://technet.microsoft.com/library/dd569096(WS.10).aspx) |
-| **Kroky** | <p>Když aplikace ASP.NET se nezdaří a způsobí, že o HTTP/1.x 500 interní chybu serveru nebo konfigurace funkcí (jako je například filtrování požadavků) zabraňuje zobrazení stránky, bude vygenerována chybová zpráva. Správci mohou zvolit, jestli aplikace pro klienta, Podrobná chybová zpráva do klienta nebo podrobné chybové zprávy na místního hostitele pouze zobrazeno přátelskou zprávou. <customErrors> Značky v souboru web.config má tří režimů:</p><ul><li>**Na:** Určuje, že jsou povolené vlastní chyby. Pokud není zadán žádný atribut defaultRedirect, uživatelé uvidí Obecná chyba. Vzdálení klienti a místního hostitele, zobrazují se vlastní chyby</li><li>**Vypnuto:** Určuje, že je zakázáno vlastních chyb. Podrobné chyby technologie ASP.NET jsou uvedeny ke vzdáleným klientům a na místního hostitele</li><li>**RemoteOnly:** Určuje, že vlastní chyby jsou zobrazeny pouze vzdáleným klientům a že technologie ASP.NET chyby jsou zobrazeny na místního hostitele. Toto je výchozí hodnota</li></ul><p>Otevřít `web.config` soubor aplikace nebo webu a zkontrolujte, zda má značka buď `<customErrors mode="RemoteOnly" />` nebo `<customErrors mode="On" />` definované.</p>|
+| **Kroky** | <p>Když aplikace ASP.NET se nezdaří a způsobí, že o HTTP/1.x 500 interní chybu serveru nebo konfigurace funkcí (jako je například filtrování požadavků) zabraňuje zobrazení stránky, bude vygenerována chybová zpráva. Správci mohou zvolit, jestli aplikace pro klienta, Podrobná chybová zpráva do klienta nebo podrobné chybové zprávy na místního hostitele pouze zobrazeno přátelskou zprávou. `<customErrors>` Značky v souboru web.config má tří režimů:</p><ul><li>**Na:** Určuje, že jsou povolené vlastní chyby. Pokud není zadán žádný atribut defaultRedirect, uživatelé uvidí Obecná chyba. Vzdálení klienti a místního hostitele, zobrazují se vlastní chyby</li><li>**Vypnuto:** Určuje, že je zakázáno vlastních chyb. Podrobné chyby technologie ASP.NET jsou uvedeny ke vzdáleným klientům a na místního hostitele</li><li>**RemoteOnly:** Určuje, že vlastní chyby jsou zobrazeny pouze vzdáleným klientům a že technologie ASP.NET chyby jsou zobrazeny na místního hostitele. Toto je výchozí hodnota</li></ul><p>Otevřít `web.config` soubor aplikace nebo webu a zkontrolujte, zda má značka buď `<customErrors mode="RemoteOnly" />` nebo `<customErrors mode="On" />` definované.</p>|
 
 ## <a id="deployment"></a>Nastavit na prodejní ve službě IIS metoda nasazení
 

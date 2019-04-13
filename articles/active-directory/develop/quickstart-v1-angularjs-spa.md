@@ -18,12 +18,12 @@ ms.author: celested
 ms.reviewer: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c508c402707663489fc383dccd958559df6b217f
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 6596d1d8251bafd1ff013961555b20475e3a06d3
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56194678"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59544936"
 ---
 # <a name="quickstart-build-an-angularjs-single-page-app-for-sign-in-and-sign-out-with-azure-active-directory"></a>Rychlý start: Sestavení jednostránková aplikace AngularJS pro přihlašování a odhlašování pomocí Azure Active Directory
 
@@ -45,6 +45,9 @@ Pokud chcete sestavit úplnou funkční aplikaci, budete k tomu potřebovat:
 1. Zaregistrovat aplikaci v Azure AD
 2. Nainstalovat ADAL a konfigurovat jednostránkovou aplikaci
 3. Použít ADAL k zabezpečení stránek v jednostránkové aplikaci
+
+> [!NOTE]
+> Pokud je potřeba povolit přihlášení pro osobní účty kromě pracovním a školním účtům, můžete použít  *[koncového bodu Microsoft identity platform](azure-ad-endpoint-comparison.md)*. Další informace najdete v tématu [v tomto kurzu JavaScript SPA](tutorial-v2-javascript-spa.md) stejně jako [v tomto článku](active-directory-v2-limitations.md) s vysvětlením, *koncového bodu Microsoft identity platform*. 
 
 ## <a name="prerequisites"></a>Požadavky
 

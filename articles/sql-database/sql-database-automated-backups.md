@@ -11,13 +11,13 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 manager: craigg
-ms.date: 03/12/2019
-ms.openlocfilehash: a4907a65f100fd6efcabe422becad69aaee4b6ef
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.date: 04/12/2019
+ms.openlocfilehash: 8a2a61e821ad41265dc9262064a79a5c44abbc7f
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57882705"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59545820"
 ---
 # <a name="automated-backups"></a>Automatizované zálohy
 
@@ -72,7 +72,7 @@ Pokud používáte [nákupní model založený na virtuálních jádrech](sql-da
 
 ### <a name="backups-for-point-in-time-restore"></a>Zálohy pro obnovení k určitému bodu v čase
 
-SQL Database podporuje samoobslužné funkce pro obnovení k určitému bodu v čase (PITR) automaticky vytváří úplné zálohy, rozdílové zálohování a zálohování protokolů transakcí. Úplné zálohy databáze se vytvoří každý týden, rozdílovými zálohami prováděnými obecně vytvářejí každých 12 hodin a zálohy protokolu transakce obvykle vytvářejí každých 5 až 10 minut, s frekvencí podle výpočetního prostředí a objem databázové aktivity. Bude první úplná záloha je naplánováno ihned po vytvoření databáze. Obvykle hotové během 30 minut, ale může trvat déle, když je databáze významnou velikostí. Například prvotní zálohování může trvat déle v obnovené databáze nebo kopie databáze. Po dokončení první úplné zálohování všechny další zálohy jsou automaticky naplánované a spravované tiše na pozadí. Služba SQL Database určuje přesné načasování všechny zálohy databáze jako vyrovnává celkové zatížení systému.
+SQL Database podporuje samoobslužné funkce pro obnovení k určitému bodu v čase (PITR) automaticky vytváří úplné zálohy, rozdílové zálohování a zálohování protokolů transakcí. Úplné zálohy databáze se vytvoří každý týden, rozdílovými zálohami prováděnými obecně vytvářejí každých 12 hodin a zálohy protokolu transakce obvykle vytvářejí každých 5 až 10 minut, s frekvencí podle výpočetního prostředí a objem databázové aktivity. Bude první úplná záloha je naplánováno ihned po vytvoření databáze. Obvykle hotové během 30 minut, ale může trvat déle, když je databáze významnou velikostí. Například prvotní zálohování může trvat déle v obnovené databáze nebo kopie databáze. Po dokončení první úplné zálohování všechny další zálohy jsou automaticky naplánované a spravované tiše na pozadí. Služba SQL Database určuje přesné načasování všechny zálohy databáze jako vyrovnává celkové zatížení systému. Nelze změnit nebo zakázat úlohy zálohování. 
 
 Zálohy PITR jsou geograficky redundantní a chráněný [mezi zónami replikace Azure Storage](../storage/common/storage-redundancy-grs.md#read-access-geo-redundant-storage)
 
@@ -107,7 +107,7 @@ Při migraci databáze z úrovně služeb na základě DTU se výchozí PITR uch
 
 ## <a name="how-to-change-the-pitr-backup-retention-period"></a>Jak změnit PITR období uchování zálohy
 
-Můžete změnit období uchování zálohy PITR výchozí pomocí webu Azure Portal, Powershellu nebo rozhraní REST API. Podporované hodnoty jsou: 7, 14, 21, 28 nebo 35 dnů. Následující příklady ukazují, jak změnit PITR uchovávání informací na 28 dnů.
+Můžete změnit období uchování zálohy PITR výchozí pomocí webu Azure portal, Powershellu nebo rozhraní REST API. Podporované hodnoty jsou: 7, 14, 21, 28 nebo 35 dnů. Následující příklady ukazují, jak změnit PITR uchovávání informací na 28 dnů.
 
 > [!NOTE]
 > Tato rozhraní API bude mít vliv pouze na dobu uchování PITR. Pokud jste nakonfigurovali zleva doprava pro vaši databázi, nebude mít vliv. Další informace o tom, jak změnit období uchování zleva doprava, najdete v části [dlouhodobé uchovávání](sql-database-long-term-retention.md).

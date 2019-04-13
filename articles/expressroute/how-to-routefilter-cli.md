@@ -1,5 +1,5 @@
 ---
-title: 'Konfigurace filtrů směrování pro partnerský vztah Microsoftu – ExpressRoute: Azure CLI | Dokumentace Microsoftu'
+title: 'Konfigurace filtrů směrování pro partnerský vztah Microsoftu – ExpressRoute: Rozhraní příkazového řádku Azure | Dokumentace Microsoftu'
 description: Tento článek popisuje postup konfigurace filtrů směrování pro Peering Microsoft pomocí Azure CLI
 services: expressroute
 author: anzaman
@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: anzaman
-ms.openlocfilehash: 94bdd4819d750f4c26c93a88cc6982a60583171c
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: cfd9f4c52d3ddddd944186a833cba48e6ca76182
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53079292"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59527961"
 ---
 # <a name="configure-route-filters-for-microsoft-peering-azure-cli"></a>Konfigurace filtrů směrování pro partnerský vztah Microsoftu: Azure CLI
 
@@ -90,7 +90,7 @@ Vyberte předplatné, pro kterou chcete vytvořit okruh ExpressRoute.
 az account set --subscription "<subscription ID>"
 ```
 
-## <a name="prefixes"></a>Krok 1: Získání seznamu předpon a hodnotami komunity protokolu BGP
+## <a name="prefixes"></a>Krok 1: Získat seznam předpon a hodnotami komunity protokolu BGP
 
 ### <a name="1-get-a-list-of-bgp-community-values"></a>1. Získání seznamu sad hodnotami komunity protokolu BGP
 
@@ -103,13 +103,13 @@ az network route-filter rule list-service-communities
 
 Zkontrolujte seznam hodnotami komunity protokolu BGP, které chcete použít ve filtru tras. Jako příklad je hodnota komunity protokolu BGP pro služby Dynamics 365 12076:5040.
 
-## <a name="filter"></a>Krok 2: Vytvoření filtru tras a pravidlo filtru
+## <a name="filter"></a>Krok 2: Vytvořit filtr tras a pravidlo filtru
 
 Filtr tras může mít jenom jedno pravidlo a pravidlo musí být typu "Povolit". Toto pravidlo může mít seznam hodnot komunity protokolu BGP s ním spojená.
 
 ### <a name="1-create-a-route-filter"></a>1. Vytvořit filtr tras
 
-Nejprve vytvořte filtr tras. Příkaz "az network route-filter create" pouze vytvoří prostředek filtr trasy. Po vytvoření prostředku, musí pak vytvořte pravidlo a připojení k objektu filtru trasy. Spuštěním následujícího příkazu vytvořte prostředek filtr trasy:
+Nejprve vytvořte filtr tras. Příkaz `az network route-filter create` pouze vytvoří prostředek filtr trasy. Po vytvoření prostředku, musí pak vytvořte pravidlo a připojení k objektu filtru trasy. Spuštěním následujícího příkazu vytvořte prostředek filtr trasy:
 
 ```azurecli-interactive
 az network route-filter create -n MyRouteFilter -g MyResourceGroup
@@ -123,7 +123,7 @@ Spuštěním následujícího příkazu vytvořte nové pravidlo:
 az network route-filter rule create --filter-name MyRouteFilter -n CRM --communities 12076:5040 --access Allow -g MyResourceGroup
 ```
 
-## <a name="attach"></a>Krok 3: Připojení filtr tras k okruhu ExpressRoute
+## <a name="attach"></a>Krok 3: Připojit filtr tras k okruhu ExpressRoute
 
 Spusťte následující příkaz připojit filtr tras k okruhu ExpressRoute:
 

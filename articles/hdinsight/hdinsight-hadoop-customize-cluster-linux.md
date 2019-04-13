@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 04/02/2019
-ms.openlocfilehash: fe0fec082ace997a3bd66ca7c7575ce8dce3be1a
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.openlocfilehash: e67e41d5e423e07371fbce06066076ab809f60df
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58885566"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59545327"
 ---
 # <a name="customize-azure-hdinsight-clusters-by-using-script-actions"></a>Přizpůsobení clusterů Azure HDInsight pomocí skriptových akcí
 
@@ -152,7 +152,6 @@ HDInsight poskytuje skriptů v clusterech HDInsight nainstalovat následující 
 | Nainstalovat Presto |`https://raw.githubusercontent.com/hdinsight/presto-hdinsight/master/installpresto.sh`. Zobrazit [instalace a použití Presta na technologii hadoop HDInsight clustery](hdinsight-hadoop-install-presto.md). |
 | Nainstalovat Giraph |`https://hdiconfigactions.blob.core.windows.net/linuxgiraphconfigactionv01/giraph-installer-v01.sh`. Zobrazit [nainstalovat Giraph Apache na platformě HDInsight Hadoop clusterů](hdinsight-hadoop-giraph-install-linux.md). |
 | Předběžné načtení knihoven Hivu |`https://hdiconfigactions.blob.core.windows.net/linuxsetupcustomhivelibsv01/setup-customhivelibs-v01.sh`. Zobrazit [přidat vlastní knihovny Apache Hive při vytváření clusteru HDInsight](hdinsight-hadoop-add-hive-libraries.md). |
-| Instalace nebo aktualizace Mono | `https://hdiconfigactions.blob.core.windows.net/install-mono/install-mono.bash`. Zobrazit [instalace nebo aktualizace Mono na HDInsight](hdinsight-hadoop-install-mono.md). |
 
 ## <a name="use-a-script-action-during-cluster-creation"></a>Použití akce skriptu při vytváření clusteru
 

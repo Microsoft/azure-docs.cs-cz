@@ -12,12 +12,12 @@ ms.topic: article
 ms.custom: mvc
 ms.date: 01/28/2019
 ms.author: juliako
-ms.openlocfilehash: 257fe51cae245708816cd9a7bb0c33b6edf5aa05
-ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
+ms.openlocfilehash: 1b872c5c2ff0f581300a843650d7434c7c526c84
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58756008"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59545615"
 ---
 # <a name="access-azure-media-services-api-with-the-azure-cli"></a>Přístup k Azure Media Services rozhraní API pomocí Azure CLI
  
@@ -27,6 +27,8 @@ Ověřování instančního objektu služby Azure AD by měl používat pro při
 * Identifikátor URI prostředku služby Media Services
 * Identifikátor URI pro REST Media Services
 * Hodnoty aplikace Azure AD: ID klienta a tajný kód klienta
+
+Další informace najdete v tématu [vývoj s využitím rozhraní API služby Media Services v3](media-services-apis-overview.md).
 
 Tento článek popisuje, jak používat rozhraní příkazového řádku Azure k vytvoření instančního objektu aplikace Azure AD a služby a získat hodnoty, které jsou potřeba pro přístup k prostředkům Azure Media Services.
 

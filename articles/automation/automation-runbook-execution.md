@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 04/04/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 0445643d3aae0e4e072e7fa8e3a73dc8973e84a5
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: 38dd4d13aa45b69fc846ef9b6b2e1b56f56de573
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59268496"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59544751"
 ---
 # <a name="runbook-execution-in-azure-automation"></a>Spuštění Runbooku ve službě Azure Automation
 
@@ -46,7 +46,7 @@ Runbooky ve službě Azure Automation můžete spustit v jedné izolovaný prost
 |Instalace modulu, který vyžaduje Instalační program|Hybrid Runbook Worker|Moduly pro izolovaný prostor musí být copiable|
 |Pomocí runbooky a moduly, které vyžadují rozhraní .NET Framework liší od 4.7.2|Hybrid Runbook Worker|Sandboxy Automation máte rozhraní .NET Framework 4.7.2 a neexistuje žádný způsob, jak upgradovat|
 |Skripty, které vyžadují ke zvýšení úrovně oprávnění|Hybrid Runbook Worker|Sandboxy neumožňují zvýšení oprávnění. Tento problém vyřešit, použijte Hybrid Runbook Worker a můžete ji vypnout nástroje Řízení uživatelských účtů a použití `Invoke-Command` při spuštění příkazu, který vyžaduje zvýšení oprávnění|
-|Skripty, které vyžadují přístup k rozhraní WMI|Hybrid Runbook Worker|Úlohy spuštěné v izolovaných prostorů cloudu [nemají přístup k rozhraní WMI](#device-and-application-characteristics)|
+|Skripty, které vyžadují přístup k rozhraní WMI|Hybrid Runbook Worker|Úlohy běžící v cloudu pomocí sandboxů [nemají přístup k rozhraní WMI](#device-and-application-characteristics)|
 
 ## <a name="runbook-behavior"></a>Chování sady Runbook
 
@@ -192,7 +192,7 @@ Sady Runbook spouštět v Azure sandboxy nepodporuje volání procesy (napříkl
 
 ### <a name="device-and-application-characteristics"></a>Vlastnosti zařízení a aplikací
 
-Úlohy sady Runbook spouštět v Azure sandboxy nemají přístup k vlastnosti jakékoli zařízení nebo aplikace. Nejčastěji používané rozhraním API, které se používá na metriky výkonu dotazů na Windows je rozhraní WMI. Jsou některé z těchto běžné metriky využití paměti a procesoru. Nicméně, není důležité, co se používá rozhraní API. Úlohy běžící v cloudu nemáte příslušná oprávnění Microsoft provádění Web založený (WBEM Enterprise Management), které je postavené na CIM Common Information Model (), což je oborový standard pro definování vlastnosti zařízení a aplikací.
+Úlohy sady Runbook spouštět v Azure sandboxy nemají přístup k vlastnosti jakékoli zařízení nebo aplikace. Nejčastěji používané rozhraním API, které se používá na metriky výkonu dotazů na Windows je rozhraní WMI. Jsou některé z těchto běžné metriky využití paměti a procesoru. Nicméně, není důležité, co se používá rozhraní API. Úlohy běžící v cloudu nemají přístup k implementaci od společnosti Microsoft z na základě podnikové správy WBEM (Web), které je postavené na CIM Common Information Model (), což je oborový standard pro definování vlastnosti zařízení a aplikací.
 
 ## <a name="job-statuses"></a>Stavy úlohy
 

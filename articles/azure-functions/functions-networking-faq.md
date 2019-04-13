@@ -3,17 +3,17 @@ title: Nejčastější dotazy o možnostech sítě v Azure Functions
 description: Odpovědi na některé nejčastější dotazy a scénáře pro sítě s využitím Azure Functions.
 services: functions
 author: alexkarcher-msft
-manager: jehollan
+manager: jeconnoc
 ms.service: azure-functions
 ms.topic: troubleshooting
-ms.date: 2/26/2019
-ms.author: alkarche
-ms.openlocfilehash: 7946b7f45ff3df9225a27b70ccfbdb895bfd03c4
-ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
+ms.date: 4/11/2019
+ms.author: alkarche, glenga
+ms.openlocfilehash: 126b9ccefedee1f5cefdac8a8666a58e7a4a1fef
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58896288"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59548627"
 ---
 # <a name="frequently-asked-questions-about-networking-in-azure-functions"></a>Nejčastější dotazy o možnostech sítě v Azure Functions
 
@@ -54,3 +54,13 @@ Funkce z prostředků ve virtuální síti pouze spustíte nasazení vaší apli
 Nasazení do služby App Service Environment je jediný způsob, jak vytvořit aplikaci function app, který je zcela uvnitř podrobnosti virtuální sítě pro použití prostředí ILB ASE, začněte článkem tady: [Vytváření a používání prostředí ILB ASE](https://docs.microsoft.com/azure/app-service/environment/create-ilb-ase).
 
 Pro scénáře, kde potřebujete pouze jednosměrné přístup na prostředky virtuální sítě nebo méně komplexní síťovou izolaci, najdete v článku [funkce Přehled sítí](functions-networking-options.md).
+
+## <a name="next-steps"></a>Další kroky
+
+Další informace o možnostech sítě a funkce: 
+
+* [Postupujte podle virtuální sítě integrace kurz Začínáme](./functions-create-vnet.md)
+* [Další informace o možnosti sítě v sem](./functions-networking-options.md)
+* [Další informace o integraci virtuální sítě pomocí služby App Service / funkce zde](../app-service/web-sites-integrate-with-vnet.md)
+* [Další informace o virtuálních sítí v Azure](../virtual-network/virtual-networks-overview.md)
+* [Povolit další síťové funkce a ovládací prvek s App Service Environment](../app-service/environment/intro.md)

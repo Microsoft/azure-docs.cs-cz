@@ -6,18 +6,18 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 02/28/2018
-ms.openlocfilehash: 721950160974ef21f88791e64a41cfe0dd2b23ba
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: 503b7764ba7958a5448903b217b00e204ffcbf61
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53546755"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59527400"
 ---
 # <a name="how-to-connect-applications-to-azure-database-for-mysql"></a>Postup připojení aplikací k Azure Database for MySQL
 Toto téma uvádí typy řetězce připojení, které jsou podporovány službou Azure Database for MySQL, spolu s příklady a šablony. V připojovacím řetězci může mít různé parametry a nastavení.
 
 - Pokud chcete získat certifikát, najdete v článku [konfigurace SSL](./howto-configure-ssl.md).
-- {your_host} = <servername>.mysql.database.azure.com
+- {your_host} = \<servername>.mysql.database.azure.com
 - {your_user}@{servername} správně = formát ID uživatele pro ověřování.  Pokud používáte pouze ID uživatele, ověření se nezdaří.
 
 ## <a name="adonet"></a>ADO.NET

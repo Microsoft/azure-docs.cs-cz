@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 02/26/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to be able to order Data Box Disk to upload on-premises data from my server onto Azure.
-ms.openlocfilehash: 47c14379a01da86f547ac917472260a041b67f99
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 5b5404f19a9b692b3984dafd6f029729822284dc
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58106895"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59548742"
 ---
 # <a name="tutorial-copy-data-to-azure-data-box-disk-and-verify"></a>Kurz: Kopírování dat na disku Azure Data Box a ověřit
 
@@ -44,14 +44,15 @@ Než zkopírujete data na disky, přečtěte si následující aspekty:
 - Při kopírování dat se ujistěte, že velikost dat odpovídá omezením velikosti popsaným v článku [Omezení Azure Storage a Data Box Disku](data-box-disk-limits.md).
 - Pokud data nahrávaná Data Box Diskem zároveň nahrávají jiné aplikace mimo Data Box Disk, může to způsobit selhání úlohy nahrávání a poškození dat.
 
-Pokud jste zadali spravované disky v pořadí, projděte si následující další aspekty:
+   > [!IMPORTANT]
+   >  Pokud jste zadali spravované disky jako jeden z míst pro úložiště při vytváření pořadí, platí následující části.
 
 - Do všech vytvořených složek a po celém všechny disku Data Box, může mít jenom jeden spravovaný disk se zadaným názvem ve skupině prostředků. Z toho vyplývá, že virtuální pevné disky nahráli do složek vytvořených by měly mít jedinečné názvy. Ujistěte se, že zadaný název neodpovídá již existujícího spravovaného disku do skupiny prostředků. Pokud virtuální pevné disky mají stejné názvy, pouze jeden virtuální pevný disk je převeden na spravovaný disk s tímto názvem. Další virtuální pevné disky jsou odeslány jako objekty BLOB stránky do přípravného účtu úložiště.
 - Vždy kopírovat virtuální pevné disky k jednomu z vytvořených složky. Pokud kopírujete virtuální pevné disky mimo tyto složky nebo do složky, kterou jste vytvořili, virtuální pevné disky se nahrají do účtu služby Azure Storage jako objekty BLOB stránky a nespravovaných disků.
 - Pouze pevné virtuální pevné disky můžete nahrát do vytvoření spravovaných disků. Dynamické virtuální pevné disky, rozdílové virtuální pevné disky nebo VHDX soubory nejsou podporovány.
 
 
-Pokud chcete připojit počítač k Data Box Disku a zkopírovat z něj data, proveďte následující kroky.
+## <a name="perform-the-following-steps-to-connect-and-copy-data-from-your-computer-to-the-data-box-disk"></a>Pokud chcete připojit počítač k Data Box Disku a zkopírovat z něj data, proveďte následující kroky.
 
 1. Zobrazte obsah odemknuté jednotky. Seznam vytvořených složek a podsložek v jednotce se liší v závislosti na vybrané při umísťování objednávka disku Data Box možnosti.
 
@@ -91,12 +92,12 @@ Pokud chcete připojit počítač k Data Box Disku a zkopírovat z něj data, pr
     |Cíl       | Určuje cestu k cílovému adresáři.        |
     |/E                  | Zkopíruje podadresáře včetně prázdných adresářů. |
     |/MT[:N]             | Vytvoří vícevláknové kopie s N vlákny, kde N je celé číslo mezi 1 a 128. <br>Výchozí hodnota N je 8.        |
-    |/R: <N>             | Určuje počet opakovaných pokusů při neúspěšném kopírování. Výchozí hodnota N je 1 000 000 (jeden milion opakování).        |
-    |/W: <N>             | Určuje dobu čekání mezi opakovanými pokusy v sekundách. Výchozí hodnota N je 30 (čeká se 30 sekund).        |
+    |/ R: \<N>             | Určuje počet opakovaných pokusů při neúspěšném kopírování. Výchozí hodnota N je 1 000 000 (jeden milion opakování).        |
+    |/W: \<N>             | Určuje dobu čekání mezi opakovanými pokusy v sekundách. Výchozí hodnota N je 30 (čeká se 30 sekund).        |
     |/NFL                | Určuje, že se nemají protokolovat názvy souborů.        |
     |/NDL                | Určuje, že se nemají protokolovat názvy adresářů.        |
     |/FFT                | Přebírá časy systému souborů FAT (s přesností na 2 sekundy).        |
-    |/Log:<Log File>     | Zapíše výstup stavu do souboru protokolu (přepíše existující soubor protokolu).         |
+    |/ Log:\<souboru protokolu >     | Zapíše výstup stavu do souboru protokolu (přepíše existující soubor protokolu).         |
 
     Je možné použít více disků současně a na každém disku může běžet několik úloh.
 

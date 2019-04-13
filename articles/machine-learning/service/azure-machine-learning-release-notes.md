@@ -10,12 +10,12 @@ ms.author: larryfr
 author: Blackmist
 ms.date: 04/08/2019
 ms.custom: seodec18
-ms.openlocfilehash: 5bc67551c70b185ad0b5ed993a510ded2229481f
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: 1abf3fd5ca678f878e36e3df3f8da0c0e0b5f852
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59279614"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59528131"
 ---
 # <a name="azure-machine-learning-service-release-notes"></a>Zpráva k vydání verze služby Azure Machine Learning
 
@@ -29,6 +29,8 @@ V tomto článku najdete další informace o vydaných verzích služby Azure Ma
 
 + **Nové funkce**
   + Azure Machine Learning SDK teď podporuje Python 3.7.
+  + Azure Machine Learning DNN odhady teď poskytuje integrovanou podporu více verzí. Například `TensorFlow`  estimator nyní přijímá `framework_version` parametr a uživatele můžete určit verzi "1.10" nebo "1.12". Seznam verzí podporuje vaší aktuální verzi sady SDK, volání `get_supported_versions()` ve třídě požadované rozhraní (třeba `TensorFlow.get_supported_versions()`).
+  Seznam verzí podporuje nejnovější vydání sady SDK, najdete v článku [DNN Estimator dokumentaci](https://docs.microsoft.com/en-us/python/api/azureml-train-core/azureml.train.dnn?view=azure-ml-py).
 
 ### <a name="azure-machine-learning-data-prep-sdk-v111"></a>Sada SDK verze 1.1.1 pro přípravu dat Azure Machine Learning
 
@@ -57,7 +59,7 @@ V tomto článku najdete další informace o vydaných verzích služby Azure Ma
 
 ### <a name="azure-machine-learning-data-prep-sdk-v110"></a>Sada SDK v1.1.0 pro přípravu dat Azure Machine Learning
 
-+ **Změny způsobující chyby**
++ **Rozbíjející změny v**
   + Koncept balíček Data Prep je zastaralá a už není podporovaná. Namísto uchování více toků v rámci jednoho balíčku, je možné zachovat Dataflows jednotlivě.
     + Postupy: Průvodce: [Otevírání a ukládání Dataflows poznámkového bloku](https://aka.ms/aml-data-prep-open-save-dataflows-nb)
 
@@ -176,7 +178,7 @@ V tomto článku najdete další informace o vydaných verzích služby Azure Ma
     - Histogram
     - Skládaný pruhový graf
     - Krabicový graf
-    - Bodové vykreslení
+    - Bodový
     - Bublinový graf
 + Na portálu teď dynamicky generuje sestavy pro experimentů. Když uživatel odešle na spuštění experimentu, automaticky se vygeneruje sestava s zaznamenané metriky a grafy umožňující porovnání během různých spuštění. 
 
@@ -242,18 +244,18 @@ Azure Machine Learning Compute je možné vytvořit v Pythonu pomocí webu Azure
 > Doporučujeme vytvořit nový pracovní prostor používat Azure Machine Learning Compute. Může se vzdálená stát, které uživatelům pokusu o vytvoření aplikace Azure Machine Learning Compute z existujícího pracovního prostoru může zobrazit chyba. By měla fungovat to neovlivní existující výpočetních prostředků ve vašem pracovním prostoru.
 
 ### <a name="azure-machine-learning-sdk-for-python-v102"></a>Azure Machine Learning sady SDK pro Python v1.0.2
-+ **Změny způsobující chyby**
++ **Rozbíjející změny v**
   + V této verzi jsme se odebrání podpory pro vytvoření virtuálního počítače ze služby Azure Machine Learning. Stále můžete připojit existující cloud virtuálního počítače nebo na vzdáleném místním serverem. 
   + Podpora pro BatchAI, které by měl být podporovány prostřednictvím Azure Machine Learning Compute nyní také odebíráme.
 
-+ **Nová**
++ **Nový**
   + Pro strojové učení kanály:
     + [EstimatorStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.estimator_step.estimatorstep?view=azure-ml-py)
     + [HyperDriveStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.hyper_drive_step.hyperdrivestep?view=azure-ml-py)
     + [MpiStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.mpi_step.mpistep?view=azure-ml-py)
 
 
-+ **Aktualizované**
++ **Aktualizovat**
   + Pro strojové učení kanály:
     + [DatabricksStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.databricks_step.databricksstep?view=azure-ml-py) nyní přijímá runconfig
     + [DataTransferStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.data_transfer_step.datatransferstep?view=azure-ml-py) nyní zkopíruje do a ze zdroje dat SQL
@@ -262,7 +264,7 @@ Azure Machine Learning Compute je možné vytvořit v Pythonu pomocí webu Azure
 <!--+ **Bugs fixed**-->
 
 ### <a name="azure-machine-learning-data-prep-sdk-v052"></a>Sada SDK v0.5.2 pro přípravu dat Azure Machine Learning
-+ **Změny způsobující chyby** 
++ **Rozbíjející změny v** 
   * `SummaryFunction.N` byla přejmenována na `SummaryFunction.Count`.
   
 + **Opravy chyb**
@@ -273,7 +275,7 @@ Azure Machine Learning Compute je možné vytvořit v Pythonu pomocí webu Azure
   * Náhodné rozdělení už selže, pokud původní tok dat nemá název  
 
 + **Další informace**
-  * [Azure Machine Learning přípravy dat sady SDK](https://aka.ms/data-prep-sdk)
+  * [Sada SDK pro přípravu dat Azure Machine Learning](https://aka.ms/data-prep-sdk)
 
 ### <a name="docs-and-notebooks"></a>Dokumentace a poznámkové bloky
 + Kanály ML
@@ -300,7 +302,7 @@ Azure Machine Learning Compute je možné vytvořit v Pythonu pomocí webu Azure
 
 ### <a name="azure-machine-learning-sdk-for-python-v0180"></a>Azure Machine Learning sady SDK pro Python v0.1.80
 
-+ **Změny způsobující chyby** 
++ **Rozbíjející změny v** 
   * *azureml.Train.widgets* obor názvů se přesunula do *azureml.widgets*.
   * *azureml.core.compute.AmlCompute* zastarání následující třídy – *azureml.core.compute.BatchAICompute* a *azureml.core.compute.DSVMCompute*. Tato třída se odebere v dalších verzích. Třída AmlCompute má nyní jednodušší definici a jednoduše potřebuje vm_size a max_nodes a automatické škálování clusteru od 0 do max_nodes, když je úloha odeslána. Naše [ukázkové poznámkové bloky](https://github.com/Azure/MachineLearningNotebooks/tree/master/training) byly aktualizovány s těmito informacemi a by vám měl dát příklady použití. Věříme, že je třeba toto zjednodušení a spoustu další zajímavé funkce, které chcete se dělí na novější verzi!
 
@@ -341,7 +343,7 @@ Na webu Azure portal pro službu Azure Machine Learning má následující aktua
 
 ### <a name="azure-machine-learning-sdk-for-python-v0174"></a>Azure Machine Learning sady SDK pro Python v0.1.74
 
-+ **Změny způsobující chyby** 
++ **Rozbíjející změny v** 
   * * Workspace.compute_targets, úložišť, experimenty, obrázky, modely a *webservices* jsou vlastnosti namísto metod. Nahraďte třeba *Workspace.compute_targets()* s *Workspace.compute_targets*.
   * *Run.get_context* zastarání *Run.get_submitted_run*. Druhá metoda odebere v dalších verzích.
   * *PipelineData* třídy nyní očekává, že objekt úložiště dat jako parametr spíše než datastore_name. Obdobně *kanálu* přijímá default_datastore spíše než default_datastore_name.
@@ -391,7 +393,7 @@ Na webu Azure portal pro službu Azure Machine Learning má následující aktua
 
 Zobrazit [seznam známých problémů](resource-known-issues.md) Další informace o známých chyb a jejich řešení.
 
-+ **Změny způsobující chyby**
++ **Rozbíjející změny v**
   * Workspace.experiments Workspace.models, Workspace.compute_targets, Workspace.images Workspace.web_services návratový slovníku. Tím se předtím vrátila seznam. Zobrazit [azureml.core.Workspace](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace(class)?view=azure-ml-py) dokumentace k rozhraní API.
 
   * Automatizované Machine Learning odebrán směrodatná normalizované chyba primární metriky.

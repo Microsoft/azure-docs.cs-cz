@@ -9,12 +9,12 @@ ms.date: 09/11/2018
 ms.topic: conceptual
 description: Rychlý vývoj na platformě Kubernetes s využitím kontejnerů a mikroslužeb v Azure
 keywords: 'Docker, Kubernetes, Azure, AKS, službě Azure Kubernetes, kontejnery, Helm, služby sítě, směrování sítě služby, kubectl, k8s '
-ms.openlocfilehash: b205f7782dc14c9108032d2b4a274f884194874e
-ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
+ms.openlocfilehash: 16b33203099765633d6bc5992fdc266aa1f28a26
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
-ms.locfileid: "59357855"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59548776"
 ---
 # <a name="troubleshooting-guide"></a>Průvodce odstraňováním potíží
 
@@ -325,3 +325,35 @@ Byla překročena uzlu spuštěn pod aplikaci Node.js se pokoušíte připojit s
 
 ### <a name="try"></a>Vyzkoušení
 Dočasným řešením tohoto problému je zvýšení hodnoty *fs.inotify.max_user_watches* na každém uzlu v clusteru a tento uzel restartovat, aby se změny projevily.
+
+## <a name="new-pods-are-not-starting"></a>Nejsou od nových podů
+
+### <a name="reason"></a>Důvod
+
+Inicializátor Kubernetes nelze použít PodSpec pro nových podů z důvodu změny oprávnění RBAC *Správce clusteru* role v clusteru. Nová pod mohou mít i neplatný PodSpec, například účet služby přidružené k pod už neexistuje. Zobrazíte podů, které jsou v *čekající* stavu z důvodu problému inicializátor, použijte `kubectl get pods` příkaz:
+
+```bash
+kubectl get pods --all-namespaces --include-uninitialized
+```
+
+Tento problém může mít vliv na podů v *všechny obory názvů* v clusteru, včetně oborů názvů, ve kterém není povoleno Azure Dev prostory.
+
+### <a name="try"></a>Vyzkoušení
+
+[Aktualizace na nejnovější verzi rozhraní příkazového řádku vývojáře prostory](./how-to/upgrade-tools.md#update-the-dev-spaces-cli-extension-and-command-line-tools) a její následné odstranění *azds InitializerConfiguration* z řadiče Azure Dev mezery:
+
+```bash
+az aks get-credentials --resource-group <resource group name> --name <cluster name>
+kubectl delete InitializerConfiguration azds
+```
+
+Po odebrání *azds InitializerConfiguration* z kontroleru Azure Dev mezery, použijte `kubectl delete` odebrat všechny podů v *čekající* stavu. Všechny čekající podů byly odebrány, pody znovu nasadit.
+
+Pokud nových podů jsou i nadále zablokované ve *čekající* stavu po nasazení si prohlédne použití `kubectl delete` odebrat všechny podů v *čekající* stavu. Po všech čekající podů byly odebrány, odstraňte kontroleru z clusteru a znovu ji nainstalujte:
+
+```bash
+azds remove -g <resource group name> -n <cluster name>
+azds controller create --name <cluster name> -g <resource group name> -tn <cluster name>
+```
+
+Po přeinstalaci řadiče znovu nasaďte pody.

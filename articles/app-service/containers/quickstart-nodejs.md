@@ -12,15 +12,15 @@ ms.workload: web
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
-ms.date: 11/20/2018
+ms.date: 03/27/2019
 ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: f45f1831572387aa6997700432a7fe156d9b6a92
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: 54602425ae6e1ff65a8445355af2eca09d495b05
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55495441"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59548674"
 ---
 # <a name="create-a-nodejs-app-in-azure-app-service-on-linux"></a>Vytvoření aplikace Node.js ve službě Azure App Service v Linuxu
 
@@ -191,4 +191,7 @@ Spuštění tohoto příkazu může trvat přibližně minut.
 ## <a name="next-steps"></a>Další postup
 
 > [!div class="nextstepaction"]
-> [Node.js s databází MongoDB](tutorial-nodejs-mongodb-app.md)
+> [Kurz: Aplikace v Node.js s MongoDB](tutorial-nodejs-mongodb-app.md)
+
+> [!div class="nextstepaction"]
+> [Konfigurace aplikace v Node.js](configure-language-nodejs.md)

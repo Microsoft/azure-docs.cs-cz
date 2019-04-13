@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 08/14/2018
 ms.author: cynthn;kareni
 ms.custom: include file
-ms.openlocfilehash: 130cc66831b25621cb022eb19005c624fcd71b9e
-ms.sourcegitcommit: 7b845d3b9a5a4487d5df89906cc5d5bbdb0507c8
+ms.openlocfilehash: 4c5b4c5eacd4be751004af551e3753a61873c7a7
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/14/2018
-ms.locfileid: "40105502"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59551632"
 ---
 **Poslední aktualizace dokumentů**: 14. srpna 2018 10:00 RÁNO PST.
 
@@ -21,7 +21,7 @@ Zveřejnění [nová třída zabezpečení CPU](https://portal.msrc.microsoft.co
 
 Microsoft má nasazený způsoby zmírnění rizik v našich cloudových službách. Je chráněný infrastrukturu, která běží v Azure a izoluje úloh zákazníka od sebe navzájem. To znamená, že nelze potenciálním útočníkům používat stejnou infrastrukturu útoku na vaši aplikaci pomocí těchto ohrožení zabezpečení.
 
-Azure používá [Údržba pro zachování paměti](https://docs.microsoft.com/azure/virtual-machines/windows/maintenance-and-updates#memory-preserving-maintenance) pokaždé, když je to možné, chcete-li minimalizovat dopad pro zákazníka a eliminovat tak potřebu restartovat počítač. Azure bude dál využívat tyto metody při provádění aktualizací v celém systému na hostitele a ochrana našich zákazníků.
+Azure používá [Údržba pro zachování paměti](https://docs.microsoft.com/azure/virtual-machines/windows/maintenance-and-updates#maintenance-not-requiring-a-reboot) pokaždé, když je to možné, chcete-li minimalizovat dopad pro zákazníka a eliminovat tak potřebu restartovat počítač. Azure bude dál využívat tyto metody při provádění aktualizací v celém systému na hostitele a ochrana našich zákazníků.
 
 Další informace o tom, jak zabezpečení je integrované do všech oblastí Azure je k dispozici na [dokumentace ke službě Azure Security](https://docs.microsoft.com/azure/security/) lokality. 
 
@@ -70,17 +70,17 @@ Můžete povolit další funkce zabezpečení uvnitř virtuálního počítače 
 
 Cílového operačního systému musí být aktuální tyto další bezpečnostní funkce. Zatímco řada spekulativního spouštění na straně kanálu způsoby zmírnění rizik jsou ve výchozím nastavení povolené, další funkce popsané v tomto poli musí být povoleno ručně a může způsobit, že dopad na výkon. 
 
-**Krok 1**: [obraťte se na podporu Azure](https://aka.ms/MicrocodeEnablementRequest-SupportTechnical) vystavení aktualizace firmwaru (mikrokód) na virtuální počítače. 
+**Krok 1**: [Obraťte se na podporu Azure](https://aka.ms/MicrocodeEnablementRequest-SupportTechnical) vystavení aktualizace firmwaru (mikrokód) na virtuální počítače. 
 
-**Krok 2**: podpora povolit jádra virtuální adresu stínový provoz (KVAS) a vkládání cílové větve (BTI) operačního systému. Postupujte podle pokynů v [KB4072698](https://support.microsoft.com/help/4072698/windows-server-guidance-to-protect-against-the-speculative-execution) povolit ochranu prostřednictvím `Session Manager` klíče registru. Je vyžadován restart. 
+**Krok 2**: Povolte podporu jádra virtuální adresu stínový provoz (KVAS) a vkládání cílové větve (BTI) operačního systému. Postupujte podle pokynů v [KB4072698](https://support.microsoft.com/help/4072698/windows-server-guidance-to-protect-against-the-speculative-execution) povolit ochranu prostřednictvím `Session Manager` klíče registru. Je vyžadován restart. 
 
-**Krok 3**: pro nasazení, která používají [vnořená virtualizace](https://docs.microsoft.com/azure/virtual-machines/windows/nested-virtualization) (D3 a E3 pouze): tyto pokyny platí ve virtuálním počítači, který používáte jako hostitele Hyper-V. 
+**Krok 3**: Pro nasazení, která používají [vnořená virtualizace](https://docs.microsoft.com/azure/virtual-machines/windows/nested-virtualization) (D3 a E3 pouze): Tyto pokyny platí ve virtuálním počítači, který používáte jako hostitele Hyper-V. 
 
 1. Postupujte podle pokynů v [KB4072698](https://support.microsoft.com/help/4072698/windows-server-guidance-to-protect-against-the-speculative-execution) povolit ochranu prostřednictvím `MinVmVersionForCpuBasedMitigations` klíče registru.  
  
 1. Nastavte typ hypervisoru Plánovač **Core** podle následujících pokynů [tady](https://docs.microsoft.com/windows-server/virtualization/hyper-v/manage/manage-hyper-v-scheduler-types). 
 
-**Krok 4**: postupujte podle pokynů v [KB4072698](https://support.microsoft.com/help/4072698/windows-server-guidance-to-protect-against-the-speculative-execution) ověření ochrany jsou povolené pomocí [SpeculationControl](https://aka.ms/SpeculationControlPS) modul prostředí PowerShell. 
+**Krok 4**: Postupujte podle pokynů v [KB4072698](https://support.microsoft.com/help/4072698/windows-server-guidance-to-protect-against-the-speculative-execution) ověření ochrany jsou povolené pomocí [SpeculationControl](https://aka.ms/SpeculationControlPS) modul prostředí PowerShell. 
 
 > [!NOTE]
 > Pokud si už tento modul, je potřeba nainstalovat nejnovější verzi.
@@ -101,11 +101,11 @@ L1TFWindowsSupportEnabled: True
 
 <a name="linux"></a>Povolení sadu další funkce zabezpečení uvnitř vyžaduje, aby cílový operační systém plně aktuální. Ve výchozím nastavení se povolí některá zmírnění rizik. Následující část popisuje funkce, které jsou vypnuté ve výchozím nastavení a/nebo závislé na hardwarovou podporu (mikrokód). Povolení těchto funkcí může způsobit, že dopad na výkon. Referenční dokumentaci poskytovatele operačního systému o další pokyny
  
-**Krok 1**: [obraťte se na podporu Azure](https://aka.ms/MicrocodeEnablementRequest-SupportTechnical) vystavení aktualizace firmwaru (mikrokód) na virtuální počítače.
+**Krok 1**: [Obraťte se na podporu Azure](https://aka.ms/MicrocodeEnablementRequest-SupportTechnical) vystavení aktualizace firmwaru (mikrokód) na virtuální počítače.
  
-**Krok 2**: podpora povolit větev cílové vkládání (BTI) operačního systému pro zmírnění CVE-2017-5715 (chyby zabezpečení Spectre Variant 2) pomocí následujících dokumentaci poskytovatele operačního systému. 
+**Krok 2**: Povolte podporu vkládání cílové větve (BTI) operačního systému pro zmírnění CVE-2017-5715 (chyby zabezpečení Spectre Variant 2) pomocí následujících dokumentaci poskytovatele operačního systému. 
  
-**Krok 3**: Povolit jádra stránky tabulky izolace (KPTI) ke zmírnění CVE-2017-5754 (Meltdown Variant 3) pomocí následujících dokumentaci poskytovatele operačního systému. 
+**Krok 3**: Povolte jádra stránky tabulky izolace (KPTI) ke zmírnění CVE-2017-5754 (Meltdown Variant 3) pomocí následujících dokumentaci poskytovatele operačního systému. 
  
 Další informace jsou k dispozici od poskytovatele operačního systému:  
  

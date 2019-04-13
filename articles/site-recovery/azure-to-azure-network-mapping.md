@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 4/9/2019
 ms.author: mayg
-ms.openlocfilehash: ecaabe0cf2e9e55bf02f8e12244d55fc2bef830b
-ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
+ms.openlocfilehash: d08715b1b3e0db4dfcf31bb4c020ab44ed3916e1
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
-ms.locfileid: "59359813"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59549022"
 ---
 # <a name="set-up-network-mapping-and-ip-addressing-for-vnets"></a>Nastavte mapování sítě a IP adresy pro virtuální sítě
 
@@ -86,7 +86,7 @@ Jiným adresním prostorem<br/><br/> Další dostupnou IP adresu v cílové pods
 **Cílová síť** | **Podrobnosti**
 --- | ---
 Cílová síť je převzetí služeb při selhání virtuální sítě | -Cílová IP adresa je statická, ale ne stejnou IP adresu jako vyhrazené pro převzetí služeb při selhání.<br/><br/>  -Přiřazenou adresu je další dostupnou adresu od konce rozsahu podsítě.<br/><br/> Příklad: Pokud zdrojová IP adresa je 10.0.0.19 a převzetí služeb při selhání síť používá rozsah 10.0.0.0/24, IP adresa dalšího přiřazené k cílovému virtuálnímu počítači je 10.0.0.254.
-Cílová síť není převzetí služeb při selhání virtuální sítě | -Cílová IP adresa bude statické pomocí stejné IP adresy rezervované pro převzetí služeb při selhání.<br/><br/>  – Pokud je již přiřazen stejnou IP adresu, IP adresa je dalším objektem v každém z rozsahu podsítě k dispozici.<br/><br/> Příklad: Pokud statickou IP adresu zdrojového 10.0.0.19 a převzetí služeb při selhání je připojen k síti, která není převzetí služeb při selhání sítě, s rozsah 10.0.0.0/24, pak statickou IP adresu cílového bude 10.0.0.0.19, pokud je k dispozici, a v opačném případě bude 10.0.0.254.
+Cílová síť není převzetí služeb při selhání virtuální sítě | -Cílová IP adresa bude statické pomocí stejné IP adresy rezervované pro převzetí služeb při selhání.<br/><br/>  – Pokud je již přiřazen stejnou IP adresu, IP adresa je dalším objektem, který je k dispozici na konci rozsahu podsítě.<br/><br/> Příklad: Pokud statickou IP adresu zdrojového 10.0.0.19 a převzetí služeb při selhání je připojen k síti, která není převzetí služeb při selhání sítě, s rozsah 10.0.0.0/24, pak statickou IP adresu cílového bude 10.0.0.0.19, pokud je k dispozici, a v opačném případě bude 10.0.0.254.
 
 - Převzetí služeb virtuální sítě je cílové síti, který vyberete při nastavování zotavení po havárii.
 - Doporučujeme vždy používat mimo produkční sítě pro testovací převzetí služeb při selhání.

@@ -16,12 +16,12 @@ ms.workload: identity
 ms.date: 09/24/2018
 ms.author: andret
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 73d762e5bb358964b439d1dc6027abc01332da21
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: a6119baf79b9323a5c1ad06d75e1410f632015f0
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58007623"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59548547"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-an-aspnet-web-app"></a>Rychlý start: Přidání přihlašování s Microsoftem do webové aplikace ASP.NET
 
@@ -32,7 +32,7 @@ V tomto rychlém startu se naučíte, jak implementovat přihlášení účtem M
 Na konci tohoto rychlého startu přijmete přihlášení pracovního a školního účtu z organizace, která má integrovanou službu Azure Active Directory (Azure AD).
 
 > [!NOTE]
-> Pokud kromě přihlášení z pracovního a školního účtu potřebujete povolit také přihlášení pro osobní účet, můžete použít [koncový bod v2.0](azure-ad-endpoint-comparison.md). Další informace najdete v [tomto kurzu ASP.NET pro koncový bod v2.0](tutorial-v2-asp-webapp.md) a v [tomto článku](active-directory-v2-limitations.md), který vysvětluje aktuální omezení koncového bodu v2.0.
+> Pokud je potřeba povolit přihlášení pro osobní účty kromě pracovním a školním účtům, můžete použít  *[koncového bodu Microsoft identity platform](azure-ad-endpoint-comparison.md)*. Další informace najdete v tématu [tento kurz ASP.NET](tutorial-v2-asp-webapp.md) stejně jako [v tomto článku](active-directory-v2-limitations.md) s vysvětlením, *koncového bodu Microsoft identity platform*.
 
 ## <a name="prerequisites"></a>Požadavky
 

@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 4/9/2019
 ms.author: mayg
-ms.openlocfilehash: 1cf324887a225ecb9ba2cb40176a1f358e40a8e1
-ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
+ms.openlocfilehash: a3aef06e6ee0d3989a4da8fdd93d27d28f2eede4
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
-ms.locfileid: "59361987"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59527675"
 ---
 # <a name="run-the-azure-site-recovery-deployment-planner-for-vmware-disaster-recovery-to-azure"></a>Spusťte Azure Site Recovery Deployment Planner pro zotavení po havárii VMware do Azure
 Tento článek představuje uživatelskou příručku k nástroji Azure Site Recovery Deployment Planner pro produkční nasazení VMware do Azure.
@@ -136,7 +136,7 @@ ASRDeploymentPlanner.exe -Operation StartProfiling -Virtualization VMware -Direc
 
 
 ## <a name="generate-report"></a>Generování sestav
-Nástroj jako výstup sestavy generuje soubor aplikace Microsoft Excel s podporou maker (soubor XLSM), který shrnuje veškerá doporučení pro nasazení. Sestava má název DeploymentPlannerReport_<unique numeric identifier>.xlsm a je umístěná v zadaném adresáři.
+Nástroj jako výstup sestavy generuje soubor aplikace Microsoft Excel s podporou maker (soubor XLSM), který shrnuje veškerá doporučení pro nasazení. Sestava má název `DeploymentPlannerReport_<unique numeric identifier>.xlsm` a je umístěná v zadaném adresáři.
 
 >[!NOTE]
 >Sestava vyžaduje nakonfigurovaný jako symbol desetinné čárky "." pro vytvoření odhadu nákladů na serveru, kde je spuštěn Plánovač nasazení služby. V případě můžete nastavit "," jako oddělovač tisíců na počítači s Windows, přejděte na "Změnit data, času nebo číselné formáty" v Ovládacích panelech a přejít na "Další nastavení" Chcete-li změnit symbol desetinné čárky na".".
@@ -214,7 +214,7 @@ ASRDeploymentPlanner.exe -Operation GenerateReport -Virtualization VMware  -Dire
 ```
 
 ## <a name="percentile-value-used-for-the-calculation"></a>Hodnota percentilu používaná k výpočtu
-**Jakou výchozí hodnotu percentilu metrik výkonu shromážděných během profilace se nástroj používá při generování sestavy?**
+**Jakou výchozí hodnotu percentilu metrik výkonu shromážděných během profilace nástroj používá při generování sestavy?**
 
 Nástroj ve výchozím nastavení používá hodnoty 95. percentilu počtu R/W IOPS, vstupně-výstupních operací zápisu za sekundu a četnosti změn dat shromážděných během profilace všech virtuálních počítačů. Tato metrika zajišťuje, že se k určení požadavků na cílový účet úložiště a zdrojovou šířku pásma nepoužijí hodnoty 100. percentilu (špičky), které se můžou objevovat na virtuálních počítačích následkem dočasných událostí. Příkladem dočasné události může být úloha zálohování spouštěná jednou denně, pravidelné indexování databáze, aktivita generování analytických sestav nebo další podobné krátkodobé a jednorázové události.
 
@@ -226,7 +226,7 @@ Použitím hodnot 95. percentilu získáte pravdivou představu o skutečných c
 ```
 
 ## <a name="growth-factor-considerations"></a>Aspekty faktoru růstu
-**Proč bych měl(a) uvažovat faktor růstu při plánování nasazení?**
+**Proč bych při plánování nasazení měl brát v úvahu faktor růstu?**
 
 Je důležité počítat s nárůstem v charakteristikách vašich úloh v důsledku možného zvýšení využití v průběhu času. Pokud se charakteristiky vašich úloh změní po zapnutí ochrany, nebudete moci přepnout na ochranu pod jiným účtem úložiště bez nutnosti ochranu zakázat a znovu povolit.
 
@@ -240,12 +240,12 @@ Důrazně doporučujeme, abyste při plánování nasazení počítali s růstem
 
 Vygenerovaná sestava aplikace Microsoft Excel obsahuje následující informace:
 
-* [On-premises Summary](site-recovery-vmware-deployment-planner-analyze-report.md#on-premises-summary)
-* [Doporučení](site-recovery-vmware-deployment-planner-analyze-report.md#recommendations)
-* [Umístění úložiště virtuálního počítače <> –](site-recovery-vmware-deployment-planner-analyze-report.md#vm-storage-placement)
-* [Kompatibilní virtuální počítače](site-recovery-vmware-deployment-planner-analyze-report.md#compatible-vms)
-* [Nekompatibilní virtuální počítače](site-recovery-vmware-deployment-planner-analyze-report.md#incompatible-vms)
-* [Odhad nákladů](site-recovery-vmware-deployment-planner-cost-estimation.md)
+* [On-premises summary](site-recovery-vmware-deployment-planner-analyze-report.md#on-premises-summary) (Přehled místního prostředí)
+* [Recommendations](site-recovery-vmware-deployment-planner-analyze-report.md#recommendations) (Doporučení)
+* [VM&lt;-&gt;Storage Placement](site-recovery-vmware-deployment-planner-analyze-report.md#vm-storage-placement) (Umístění virtuálních počítačů ve službě Storage)
+* [Compatible VMs](site-recovery-vmware-deployment-planner-analyze-report.md#compatible-vms) (Kompatibilní virtuální počítače)
+* [Incompatible VMs](site-recovery-vmware-deployment-planner-analyze-report.md#incompatible-vms) (Nekompatibilní virtuální počítače)
+* [Cost Estimation](site-recovery-vmware-deployment-planner-cost-estimation.md) (Odhad nákladů)
 
 ![Deployment Planner](media/site-recovery-vmware-deployment-planner-analyze-report/Recommendations-v2a.png)
 

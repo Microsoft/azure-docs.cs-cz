@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: 72e93b99783441bda97c52ff295a89b0fcf4e629
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 4eb881992b7e40e0a9d67bd2cee94f1f09958e9e
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57995896"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59524102"
 ---
 # <a name="move-data-between-on-premises-sources-and-the-cloud-with-data-management-gateway"></a>Přesun dat mezi místním zdrojům a cloudem pomocí brány správy dat
 > [!NOTE]
@@ -280,7 +280,7 @@ V tomto kroku vytvoříte vstupní a výstupní datové sady, které představuj
    * **folderPath** je nastavena na **adftutorial/outfromonpremdf** kde outfromonpremdf je složka v kontejneru adftutorial. Vytvořte **adftutorial** kontejner, pokud ještě neexistuje.
    * Vlastnost **availability** je nastavená na **hourly** (**frequency** je nastavená na **hour** a **interval** je nastavená na **1**).  Služba Data Factory každou hodinu vygeneruje řez výstupních dat **emp** tabulky ve službě Azure SQL Database.
 
-   Pokud nezadáte **fileName** pro **výstupní tabulky**, generované soubory v **folderPath** jsou pojmenovány v následujícím formátu: Data. <Guid>.txt (například:: Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt.).
+   Pokud nezadáte **fileName** pro **výstupní tabulky**, generované soubory v **folderPath** jsou pojmenovány v následujícím formátu: `Data.<Guid>.txt` (například:: Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt.).
 
    Chcete-li nastavit **folderPath** a **fileName** dynamicky podle **SliceStart** čas, použijte vlastnost partitionedBy. V následujícím příkladu folderPath používá rok, měsíc a den z vlastnosti SliceStart (čas zahájení zpracování řezu) a fileName používá hodinu z vlastnosti SliceStart. Pokud například začne být řez vytvářen v době 2014-10-20T08:00:00, vlastnost folderName je nastavená na wikidatagateway/wikisampledataout/2014/10/20 a vlastnost fileName je nastavená na 08.csv.
 

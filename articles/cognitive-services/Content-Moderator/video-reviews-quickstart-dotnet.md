@@ -10,12 +10,12 @@ ms.subservice: content-moderator
 ms.topic: article
 ms.date: 03/19/2019
 ms.author: sajagtap
-ms.openlocfilehash: 47516f06f212dd0541da5f177401d479eb760cc0
-ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
+ms.openlocfilehash: e4dd7299907168bb50ac8ebdf90b381c0bac01f2
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58758260"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59527366"
 ---
 # <a name="create-video-reviews-using-net"></a>Vytvoření videa kontroly pomocí .NET
 
@@ -166,7 +166,7 @@ Vytvořit kontrolu videa s **ContentModeratorClient.Reviews.CreateVideoReviews**
 **CreateVideoReviews** má následující povinné parametry:
 1. Řetězec obsahující typ MIME, které by se měly "application/json". 
 1. Název týmu Content Moderatoru.
-1. **IList<CreateVideoReviewsBodyItem>**  objektu. Každý **CreateVideoReviewsBodyItem** objekt představuje přezkoumání videa. Tento rychlý start vytvoří jeden revize najednou.
+1. **IList\<CreateVideoReviewsBodyItem >** objektu. Každý **CreateVideoReviewsBodyItem** objekt představuje přezkoumání videa. Tento rychlý start vytvoří jeden revize najednou.
 
 **CreateVideoReviewsBodyItem** má několik vlastností. Minimálně nastavte následující vlastnosti:
 - **Obsahu**. Adresa URL videa musí zkontrolovat.
@@ -224,18 +224,18 @@ Přidat snímky videí do video recenzi s **ContentModeratorClient.Reviews.AddVi
 1. Řetězec obsahující typ MIME, které by se měly "application/json".
 1. Název týmu Content Moderatoru.
 1. ID videa kontroly vrácený **CreateVideoReviews**.
-1. **IList<VideoFrameBodyItem>**  objektu. Každý **VideoFrameBodyItem** objekt představuje snímek videa.
+1. **IList\<VideoFrameBodyItem >** objektu. Každý **VideoFrameBodyItem** objekt představuje snímek videa.
 
 **VideoFrameBodyItem** má následující vlastnosti:
 - **Časové razítko**. Řetězec, který obsahuje během několika sekund, čas ve videu, ze kterého pořízení snímku videa.
 - **FrameImage**. Adresa URL videa rámce.
-- **Metadata**. Objekt IList<VideoFrameBodyItemMetadataItem>. **VideoFrameBodyItemMetadataItem** je jednoduše dvojice klíč/hodnota. Platný klíčů patří:
+- **Metadata**. An IList\<VideoFrameBodyItemMetadataItem>. **VideoFrameBodyItemMetadataItem** je jednoduše dvojice klíč/hodnota. Platný klíčů patří:
 - **reviewRecommended**. True, pokud se doporučuje recenze videa rámce.
 - **adultScore**. Hodnotu od 0 do 1, které hodnotí závažnost obsah pro dospělé v rámci video.
 - **A** Hodnota TRUE, pokud video obsahuje obsah pro dospělé.
 - **racyScore**. Hodnotu od 0 do 1, které hodnotí závažnost pikantní obsah v rámci video.
 - **r**. True, pokud rámec video obsahuje pikantní obsah.
-- **ReviewerResultTags**. Objekt IList<VideoFrameBodyItemReviewerResultTagsItem>. **VideoFrameBodyItemReviewerResultTagsItem** je jednoduše dvojice klíč/hodnota. Aplikace může používání těchto značek k uspořádání snímky videí.
+- **ReviewerResultTags**. An IList\<VideoFrameBodyItemReviewerResultTagsItem>. **VideoFrameBodyItemReviewerResultTagsItem** je jednoduše dvojice klíč/hodnota. Aplikace může používání těchto značek k uspořádání snímky videí.
 
 > [!NOTE]
 > Generuje náhodné hodnoty pro tento rychlý Start **adultScore** a **racyScore** vlastnosti. V produkční aplikace, lze získat z těchto hodnot [služba moderování videa](video-moderation-api.md)budou nasazené jako službu Azure Media.

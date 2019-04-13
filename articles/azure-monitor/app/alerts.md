@@ -13,12 +13,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 01/23/2019
 ms.author: mbullwin
-ms.openlocfilehash: 8026576478b16b753ba960155c383ffec62c61ce
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.openlocfilehash: eb8e98f66d000290ce7eb07d3d73e82fbc43514a
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/11/2019
-ms.locfileid: "59491538"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59548697"
 ---
 # <a name="set-alerts-in-application-insights"></a>Nastavení upozornění ve službě Application Insights
 [Azure Application Insights] [ start] může vás upozornit na změny v metrikách výkonu nebo využití ve vaší webové aplikaci. 
@@ -147,7 +147,7 @@ V této části provedeme nastavení upozornění výjimka na základě dotazu. 
 
 ## <a name="how-to-unsubscribe-from-classic-alert-e-mail-notifications"></a>Jak zrušit odběr klasického upozornění e-mailová oznámení
 
-Tato část se týká **upozornění na dostupnost klasické**, **upozornění metrik Application Insights**a získat **upozornění na anomálie selhání classic**.
+Tato část se týká **upozornění na dostupnost klasické**, **klasického upozornění metrik Application Insights**a získat **upozornění na anomálie selhání classic**.
 
 Vám posíláme e-mailová oznámení pro tyto klasických upozornění, pokud platí některý z následujících akcí:
 
@@ -183,7 +183,7 @@ Pomocí nové výstrahy prostředí/v – v reálném čase výstrahy, pokud je 
 ## <a name="see-also"></a>Další informace najdete v tématech
 * [Testy dostupnosti webu](../../azure-monitor/app/monitor-web-app-availability.md)
 * [Automatizace nastavení výstrahy](../../azure-monitor/app/powershell-alerts.md)
-* [Proaktivní diagnostika](../../azure-monitor/app/proactive-diagnostics.md) 
+* [Proaktivní Diagnostika](../../azure-monitor/app/proactive-diagnostics.md) 
 
 <!--Link references-->
 

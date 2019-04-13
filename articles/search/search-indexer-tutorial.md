@@ -10,14 +10,14 @@ ms.topic: tutorial
 ms.date: 04/09/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: c2fc406fa864fe2f67ded4ea98ad14475944671a
-ms.sourcegitcommit: 41015688dc94593fd9662a7f0ba0e72f044915d6
+ms.openlocfilehash: 8550e220a2c87823fc337154ea33dd3c4ec81ed0
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/11/2019
-ms.locfileid: "59500341"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59528046"
 ---
-# <a name="tutorial-in-c-crawl-an-azure-sql-database-using-azure-search-indexers"></a>Kurz v C#: Procházejte databázi Azure SQL pomocí indexerů Azure Search
+# <a name="c-tutorial-crawl-an-azure-sql-database-using-azure-search-indexers"></a>C#Kurz: Procházejte databázi Azure SQL pomocí indexerů Azure Search
 
 Zjistěte, jak nakonfigurovat indexer pro extrahování prohledávatelných dat z ukázkové databáze Azure SQL. [Indexery](search-indexer-overview.md) jsou součástí služby Azure Search, které procházejí externí zdroje dat a naplňují [index vyhledávání](search-what-is-an-index.md) obsahem. Ze všech indexerů je nejpoužívanější indexer pro Azure SQL Database. 
 
@@ -116,7 +116,7 @@ Následující cvičení předpokládá, že neexistuje žádný server ani data
     ```sql
     SELECT HotelId, HotelName, Tags FROM Hotels
     ```
-    Typický dotaz `SELECT * FROM Hotels` v editoru dotazů nefunguje. Ukázková data obsahují v poli Location (Umístění) zeměpisné souřadnice, které editor v tuto chvíli nezpracovává. Seznam dalších sloupců k dotazování můžete spuštěním tohoto příkazu: `SELECT * FROM sys.columns WHERE object_id = OBJECT_ID('dbo.Hotels')`
+    Typický dotaz `SELECT * FROM Hotels` v editoru dotazů nefunguje. Ukázková data obsahují v poli Location (Umístění) zeměpisné souřadnice, které editor v tuto chvíli nezpracovává. Seznam dalších sloupců, které můžete dotazovat, získáte spuštěním tohoto příkazu: `SELECT * FROM sys.columns WHERE object_id = OBJECT_ID('dbo.Hotels')`
 
 10. Když teď máte externí datovou sadu, zkopírujte připojovací řetězec ADO.NET pro databázi. Na stránce služby SQL Database pro vaši databázi přejděte do **Nastavení** > **Připojovací řetězce** a zkopírujte připojovací řetězec ADO.NET.
  
