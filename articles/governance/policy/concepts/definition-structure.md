@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: 4d7ecdcff356f27e17eca95a0d42290037d6b570
-ms.sourcegitcommit: ef20235daa0eb98a468576899b590c0bc1a38394
+ms.openlocfilehash: 7bb25aa1f77a49363fe2e08d1430282b9b33caae
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
-ms.locfileid: "59426456"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59549350"
 ---
 # <a name="azure-policy-definition-structure"></a>Struktura definic Azure Policy
 
@@ -487,36 +487,7 @@ Některé aliasy, které jsou k dispozici máte verzi, která se zobrazí jako '
 - `Microsoft.Storage/storageAccounts/networkAcls.ipRules`
 - `Microsoft.Storage/storageAccounts/networkAcls.ipRules[*]`
 
-Alias 'normal' reprezentuje pole jako jedinou hodnotu. Toto pole je pro přesnou shodu porovnání scénáře při celou sadu hodnot musí být přesně tak, jak je definováno, častěji a méně. Pomocí **ipRules**, příklad by ověřování, včetně počtu pravidel a strukturu každé pravidlo existuje přesnou sadu pravidel. Toto pravidlo vzorku vyhledává, přesně jak **192.168.1.1** a **10.0.4.1** s _akce_ z **povolit** v **ipRules** použít **effectType**:
-
-```json
-"policyRule": {
-    "if": {
-        "allOf": [
-            {
-                "field": "Microsoft.Storage/storageAccounts/networkAcls.ipRules",
-                "exists": "true"
-            },
-            {
-                "field": "Microsoft.Storage/storageAccounts/networkAcls.ipRules",
-                "Equals": [
-                    {
-                        "action": "Allow",
-                        "value": "192.168.1.1"
-                    },
-                    {
-                        "action": "Allow",
-                        "value": "10.0.4.1"
-                    }
-                ]
-            }
-        ]
-    },
-    "then": {
-        "effect": "[parameters('effectType')]"
-    }
-}
-```
+Alias 'normal' reprezentuje pole jako jedinou hodnotu. Toto pole je pro přesnou shodu porovnání scénáře při celou sadu hodnot musí být přesně tak, jak je definováno, častěji a méně.
 
 **[\*]** Alias umožňuje porovnání hodnotu každého prvku v poli a specifické vlastnosti jednotlivých prvků. Tento přístup umožňuje porovnat vlastností elementů pro 'Pokud žádná z","Pokud některý z", nebo" Pokud všechny z "scénáře. Pomocí **ipRules [\*]**, příklad by být ověřování, které každý _akce_ je _Odepřít_, ale ne byste se museli starat o tom, kolik pravidel neexistuje nebo jaké IP _hodnotu_ je. Toto pravidlo vzorku vyhledá všechny shody **ipRules [\*] .value** k **10.0.4.1** a použije **effectType** pouze v případě, že se nejméně jedna shoda nenajde:
 

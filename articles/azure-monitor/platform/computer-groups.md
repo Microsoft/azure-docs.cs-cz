@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 02/05/2019
 ms.author: bwren
-ms.openlocfilehash: 0a29e453c723ecc9ac378ee337365525587aaef2
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: c2babb5a86d69881b6a76c6dceae80a24a891f6c
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57444119"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59549299"
 ---
 # <a name="computer-groups-in-azure-monitor-log-queries"></a>Skupiny počítačů v dotazů na protokoly Azure monitoru
 Skupiny počítačů ve službě Azure Monitor vám umožní oboru [protokolu dotazy](../log-query/log-query-overview.md) konkrétní sadě počítačů.  Každá skupina se zaplní, buď dotaz, který definujete pomocí počítače nebo importováním skupiny z různých zdrojů.  Skupiny je obsažen v protokolu dotazu, výsledky jsou omezené na záznamy, které odpovídají počítačů ve skupině.
@@ -127,15 +127,15 @@ V pracovním prostoru Log Analytics pro každého členství ve skupině počít
 
 | Vlastnost | Popis |
 |:--- |:--- |
-| Typ |*ComputerGroup* |
-| SourceSystem |*SourceSystem* |
-| Počítač |Název členské počítače. |
-| Skupina |Název skupiny. |
-| GroupFullName |Úplná cesta ke skupině, včetně zdroje a název zdroje. |
-| GroupSource |Zdroj skupiny bylo shromážděno z. <br><br>Active Directory<br>WSUS<br>WSUSClientTargeting |
-| GroupSourceName |Název zdroje shromážděné ze skupiny.  Pro Active Directory jde o název domény. |
-| ManagementGroupName |Název skupiny pro správu agentů SCOM.  Pro ostatní agenty to je AOI -\<ID pracovního prostoru\> |
-| TimeGenerated |Datum a čas vytvoření nebo aktualizace skupiny počítačů. |
+| `Type` |*ComputerGroup* |
+| `SourceSystem` |*SourceSystem* |
+| `Computer` |Název členské počítače. |
+| `Group` |Název skupiny. |
+| `GroupFullName` |Úplná cesta ke skupině, včetně zdroje a název zdroje. |
+| `GroupSource` |Zdroj skupiny bylo shromážděno z. <br><br>Active Directory<br>WSUS<br>WSUSClientTargeting |
+| `GroupSourceName` |Název zdroje shromážděné ze skupiny.  Pro Active Directory jde o název domény. |
+| `ManagementGroupName` |Název skupiny pro správu agentů SCOM.  Pro ostatní agenty to je AOI -\<ID pracovního prostoru\> |
+| `TimeGenerated` |Datum a čas vytvoření nebo aktualizace skupiny počítačů. |
 
 ## <a name="next-steps"></a>Další postup
 * Další informace o [protokolu dotazy](../log-query/log-query-overview.md) analyzovat data shromážděná ze zdrojů dat a jejich řešení.  

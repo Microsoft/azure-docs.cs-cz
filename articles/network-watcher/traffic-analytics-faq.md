@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/08/2018
 ms.author: jdial
-ms.openlocfilehash: 65948b1de3a972687e738b011acf3542073db277
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.openlocfilehash: 3938427c23993f0546e7df62da88dadaf3353118
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/05/2019
-ms.locfileid: "59046975"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59549367"
 ---
 # <a name="traffic-analytics-frequently-asked-questions"></a>Analýza provozu – nejčastější dotazy
 
@@ -239,12 +239,27 @@ armclient post "https://management.azure.com/subscriptions/<NSG subscription id>
 ```
 
 
-
 ## <a name="how-is-traffic-analytics-priced"></a>Jaké je analýza provozu ceny?
 
 Analýza provozu se měří. Měření je založen na zpracování dat protokolů toku službou a ukládání výsledný rozšířené protokoly v pracovním prostoru Log Analytics. 
 
 Příklad, jak je uvedeno [cenový plán](https://azure.microsoft.com/pricing/details/network-watcher/), vzhledem k tomu oblasti střed USA – Západ, pokud protokolů toku dat uložených v účtu úložiště, zpracování analýzy provozu je 10 GB a vylepšené protokoly v pracovním prostoru Log Analytics je 1 GB pak bude příslušné poplatky jsou: 10 x 2.3$ + 1 × 2.76$ = 25.76$
+
+## <a name="how-frequently-does-traffic-analytics-process-data"></a>Jak často Traffic Analytics zpracovávat data?
+
+Odkazovat [datové části agregace](https://docs.microsoft.com/en-us/azure/network-watcher/traffic-analytics-schema#data-aggregation) v dokumentu agregace dat a schéma analýzy provozu
+
+## <a name="how-does-traffic-analytics-decide-that-an-ip-is-malicious"></a>Jak analýzu provozu rozhodnout, že je škodlivé IP adresy? 
+
+Analýza provozu spoléhá na Microsoft vnitřní hrozby intelligence systémy považují za IP jako škodlivou. Tyto systémy využívají telemetrická data rozdílné zdrojů, jako jsou produkty Microsoftu a služby, Microsoft Digital Crimes Unit (DCU), Microsoft Security Response Center (MSRC) a externích informačních kanálů a vytvářet spoustu logiky dojde k jeho zvýraznění. Některé z těchto dat je interní výrobci. Pokud se známými IP Adresou je načtení označený jako malicios, prosím lístek podpory znát podrobnosti.
+
+## <a name="how-can-i-set-alerts-on-traffic-analytics-data"></a>Jak můžete nastavit výstrahy na analýzu provozu dat?
+
+Analýza provozu nemá integrovaná podpora pro výstrahy. Ale protože analýza provozu data se ukládají ve službě Log Analytics můžete psaní vlastních dotazů a nastavení upozornění na ně. Pomocí následujících kroků:
+- Který můžete použít ke službě Log Analytics v analýzu provozu. 
+- Použití [schématu zdokumentované tady](traffic-analytics-schema.md) psát dotazy 
+- Klikněte na tlačítko "Nové pravidlo upozornění" k vytvoření upozornění
+- Odkazovat na [protokolu výstrahy dokumentaci](https://docs.microsoft.com/en-us/azure/azure-monitor/platform/alerts-log) k vytvoření upozornění
 
 ## <a name="how-can-i-navigate-by-using-the-keyboard-in-the-geo-map-view"></a>Jak můžete Navigovat pomocí klávesnice v zobrazení geografické mapy?
 

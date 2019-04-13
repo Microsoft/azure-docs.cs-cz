@@ -9,12 +9,12 @@ ms.date: 03/27/2019
 ms.topic: quickstart
 ms.service: event-grid
 ms.custom: seodec18
-ms.openlocfilehash: b0fb6ea527c46ab6a9de95ba5f5ae39b8a5d50b1
-ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
+ms.openlocfilehash: 0861c47ef9f9649dfe223d8abeb51310a87ea4a9
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2019
-ms.locfileid: "58576978"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59549963"
 ---
 # <a name="quickstart-route-custom-events-to-web-endpoint-with-the-azure-portal-and-event-grid"></a>Rychlý start: Směrování vlastních událostí do webového koncového bodu pomocí webu Azure portal a Event gridu
 
@@ -79,7 +79,7 @@ K odběru tématu Event Gridu se přihlašujete, aby služba Event Grid věděla
 
    ![Přidání odběru události](./media/custom-event-quickstart-portal/new-event-subscription.png)
 2. Na **vytvořit odběr události** stránce, postupujte podle těchto kroků:
-    1. Události **název** pro odběr události.
+    1. Zadejte **název** pro odběr události.
     3. Vyberte **Webhook** pro **typ koncového bodu**. 
     4. Zvolte **vyberte koncový bod**. 
 

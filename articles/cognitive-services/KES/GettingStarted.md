@@ -10,12 +10,12 @@ ms.subservice: knowledge-exploration
 ms.topic: sample
 ms.date: 03/26/2016
 ms.author: paulhsu
-ms.openlocfilehash: e2678200e2f8c55111e53ab0a341804fd17623a3
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 00c5ed3e3ea5c083f727d06c2ed305fe35ed03db
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57994940"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59523320"
 ---
 # <a name="get-started-with-the-knowledge-exploration-service"></a>Začínáme se službou Knowledge Exploration Service
 
@@ -252,7 +252,7 @@ Po vytvoření cloudové služby můžete pomocí příkazu [`kes.exe deploy_ser
 
 [Prohoďte](../../../articles/cloud-services/cloud-services-nodejs-stage-application.md) obsahy přípravného slotu a produkčního slotu, aby byl živý provoz odteď směrovaný na nově nasazenou službu. Když nasadíte aktualizovanou verzi služby s novými daty, můžete tento proces zopakovat. Stejně jako u všech dalších cloudových služeb Azure můžete pomocí portálu Azure Portal nakonfigurovat [automatické škálování](../../../articles/cloud-services/cloud-services-how-to-scale-portal.md).
 
-V tomto příkladu nasadíte index *Academic* do přípravného slotu existující cloudové služby s virtuálními počítači o velikosti *<vm_size>*. Použijte následující příkaz:
+V tomto příkladu nasadíte *Academic* index do přípravného slotu existující cloudovou službu s  *\<vm_size >* virtuálních počítačů. Použijte následující příkaz:
 
 `kes.exe deploy_service http://<account>.blob.core.windows.net/<container>/Academic.grammar http://<account>.blob.core.windows.net/<container>/Academic.index <serviceName> <vm_size> --slot Staging`
 

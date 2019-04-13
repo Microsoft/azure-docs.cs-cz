@@ -13,12 +13,12 @@ ms.workload: identity
 ms.date: 04/01/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 3eed2bbb03334fed41bf0c74b1c287d9ca3f53eb
-ms.sourcegitcommit: 41015688dc94593fd9662a7f0ba0e72f044915d6
+ms.openlocfilehash: 6c3accdd74ce3277181f6cdfc890de0d8c55bf07
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/11/2019
-ms.locfileid: "59501463"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59549535"
 ---
 # <a name="azure-resource-manager-resource-provider-operations"></a>Operace poskytovatele prostředků Azure Resource Manageru
 
@@ -1092,57 +1092,43 @@ Operace poskytovatele prostředků se vždy vyvíjejí. Chcete-li získat nejnov
 > | DataAction | Microsoft.CognitiveServices/accounts/Face/facelists/delete | Odstranění seznamu zadaný pro rozpoznávání tváře. Image související tváří v seznamu pro rozpoznávání tváře se odstraní, příliš. |
 > | DataAction | Microsoft.CognitiveServices/accounts/Face/facelists/persistedfaces/delete | Odstraníte řez ze seznamu pro rozpoznávání tváře tak, že zadaný faceListId a persisitedFaceId. Obrázek tváře související se odstraní, příliš. |
 > | DataAction | Microsoft.CognitiveServices/accounts/Face/facelists/persistedfaces/write | Přidáte do seznamu zadaný pro rozpoznávání tváře, až 1000 tváří tváře. |
-> | DataAction | Microsoft.CognitiveServices/accounts/Face/facelists/read | Načíst seznam pro rozpoznávání tváře faceListId, název, userData a tváří v seznamu pro rozpoznávání tváře.
-Seznam seznamů tváří faceListId, název a userData. |
-> | DataAction | Microsoft.CognitiveServices/accounts/Face/facelists/write | Vytvoření seznamu prázdný obličej pomocí faceListId zadané uživatelem, název a volitelný userData. Až 64 tváře jsou povolené seznamy
-Aktualizujte informace o seznamu pro rozpoznávání tváře, včetně názvu a userData. |
+> | DataAction | Microsoft.CognitiveServices/accounts/Face/facelists/read | Načíst seznam pro rozpoznávání tváře faceListId, název, userData a tváří v seznamu pro rozpoznávání tváře. Seznam seznamů tváří faceListId, název a userData. |
+> | DataAction | Microsoft.CognitiveServices/accounts/Face/facelists/write | Vytvoření seznamu prázdný obličej pomocí faceListId zadané uživatelem, název a volitelný userData. Až 64 tváře seznamy jsou povoleny informace o aktualizacích seznamu pro rozpoznávání tváře, včetně názvu a userData. |
 > | DataAction | Microsoft.CognitiveServices/accounts/Face/findsimilars/action | Předána funkci faceId vyhledávané tváře k hledání podobně vypadajících tváří z faceId pole pro rozpoznávání tváře seznam nebo seznam tváří velké. funkci faceId |
 > | DataAction | Microsoft.CognitiveServices/accounts/Face/group/action | Rozdělte Release candidate tváří do skupin na základě podobnosti pro rozpoznávání tváře. |
 > | DataAction | Microsoft.CognitiveServices/accounts/Face/identify/action | 1-to-many identifikace najít nejbližší odpovídá konkrétní vyhledávané tváře osoby ze skupin osob nebo skupin velké osob. |
 > | DataAction | Microsoft.CognitiveServices/accounts/Face/largefacelists/delete | Odstranění seznamu zadané velké rozpoznávání tváře. Image související tváří v seznamu velkých rozpoznávání tváře se odstraní, příliš. |
 > | DataAction | Microsoft.CognitiveServices/accounts/Face/largefacelists/persistedfaces/delete | Odstraníte řez ze seznamu velkých rozpoznávání tváře tak, že zadaný largeFaceListId a persisitedFaceId. Obrázek tváře související se odstraní, příliš. |
-> | DataAction | Microsoft.CognitiveServices/accounts/Face/largefacelists/persistedfaces/read | Načtěte largeFaceListId a persistedFaceId trvalých tváří v seznamu velkých rozpoznávání tváře.
-Seznam persistedFaceId tváří a userData v seznamu zadanou velké rozpoznávání tváře. |
-> | DataAction | Microsoft.CognitiveServices/accounts/Face/largefacelists/persistedfaces/write | Přidáte tváře do seznamu zadané velké rozpoznávání tváře a až 1 000 000 tváří.
-Aktualizujte jeho persistedFaceId zadané tváře userData pole v seznamu velkých rozpoznávání tváře. |
-> | DataAction | Microsoft.CognitiveServices/accounts/Face/largefacelists/read | Načte seznam velké pro rozpoznávání tváře largeFaceListId, název, userData.
-Vypsat seznamy velké pro rozpoznávání tváře informace largeFaceListId, název a userData. |
+> | DataAction | Microsoft.CognitiveServices/accounts/Face/largefacelists/persistedfaces/read | Načtěte largeFaceListId a persistedFaceId trvalých tváří v seznamu velkých rozpoznávání tváře. Seznam persistedFaceId tváří a userData v seznamu zadanou velké rozpoznávání tváře. |
+> | DataAction | Microsoft.CognitiveServices/accounts/Face/largefacelists/persistedfaces/write | Přidáte tváře do seznamu zadané velké rozpoznávání tváře a až 1 000 000 tváří. Aktualizujte jeho persistedFaceId zadané tváře userData pole v seznamu velkých rozpoznávání tváře. |
+> | DataAction | Microsoft.CognitiveServices/accounts/Face/largefacelists/read | Načte seznam velké pro rozpoznávání tváře largeFaceListId, název, userData. Vypsat seznamy velké pro rozpoznávání tváře informace largeFaceListId, název a userData. |
 > | DataAction | Microsoft.CognitiveServices/accounts/Face/largefacelists/train/action | Odešlete úlohu velké pro rozpoznávání tváře seznamu školení. Školení je zásadní krok, který lze použít pouze seznam trénovaného velké rozpoznávání tváře. |
 > | DataAction | Microsoft.CognitiveServices/accounts/Face/largefacelists/training/read | Pokud chcete zkontrolovat stav velké pro rozpoznávání tváře seznamu školení dokončena nebo stále probíhající. Školení LargeFaceList je asynchronní operace |
-> | DataAction | Microsoft.CognitiveServices/accounts/Face/largefacelists/write | Vytvoření seznamu prázdný velké tváře pomocí zadaného uživatelem largeFaceListId, název a volitelný userData.
-Aktualizujte informace o seznamu velkých rozpoznávání tváře, včetně názvu a userData. |
+> | DataAction | Microsoft.CognitiveServices/accounts/Face/largefacelists/write | Vytvoření seznamu prázdný velké tváře pomocí zadaného uživatelem largeFaceListId, název a volitelný userData. Aktualizujte informace o seznamu velkých rozpoznávání tváře, včetně názvu a userData. |
 > | DataAction | Microsoft.CognitiveServices/accounts/Face/largepersongroups/delete | Odstraníte existující skupiny velké osoba s zadané personGroupId. Trvalá data v této skupině velké osoby se odstraní. |
 > | DataAction | Microsoft.CognitiveServices/accounts/Face/largepersongroups/persons/action | Vytvořte nový uživatel ve skupině zadaná osoba velké. Přidání rozpoznávání tváře na tohoto uživatele, zavolejte |
 > | DataAction | Microsoft.CognitiveServices/accounts/Face/largepersongroups/persons/delete | Odstraníte existující osoby ze skupiny velké osoby. Veškerá uložená data osob a rozpoznávání tváře imagí v položce osoby se odstraní. |
 > | DataAction | Microsoft.CognitiveServices/accounts/Face/largepersongroups/persons/persistedfaces/delete | Odstraňte plochy od osoby ve skupině velké osoby. Data pro rozpoznávání tváře a image související s touto položkou pro rozpoznávání tváře budou také odstraněny. |
 > | DataAction | Microsoft.CognitiveServices/accounts/Face/largepersongroups/persons/persistedfaces/read | Načtěte informace pro rozpoznávání tváře osoby. Rozpoznávání tváře osoby trvalé je zadán svým largePersonGroupId, personId a persistedFaceId. |
-> | DataAction | Microsoft.CognitiveServices/accounts/Face/largepersongroups/persons/persistedfaces/write | Přidáte obrázek tváře osobě do skupiny velké osoby pro identifikaci tváře nebo ověření. Řešit bitové kopie
-Aktualizace osoba jako trvalý, rozpoznávání tváře společnosti userData pole. |
-> | DataAction | Microsoft.CognitiveServices/accounts/Face/largepersongroups/persons/read | Načíst jméno uživatele a userData a trvalý faceIds představující obrázek tváře osoby registrovaný.
-Uvádí všechny osoby informace ve skupině zadaná osoba velké, včetně personId, název, userData a persistedFaceIds. |
+> | DataAction | Microsoft.CognitiveServices/accounts/Face/largepersongroups/persons/persistedfaces/write | Přidáte obrázek tváře osobě do skupiny velké osoby pro identifikaci tváře nebo ověření. Řešení s použitím image aktualizace osoba jako trvalý, rozpoznávání tváře společnosti userData pole. |
+> | DataAction | Microsoft.CognitiveServices/accounts/Face/largepersongroups/persons/read | Načíst jméno uživatele a userData a trvalý faceIds představující obrázek tváře osoby registrovaný. Uvádí všechny osoby informace ve skupině zadaná osoba velké, včetně personId, název, userData a persistedFaceIds. |
 > | DataAction | Microsoft.CognitiveServices/accounts/Face/largepersongroups/persons/write | Aktualizujte název nebo userData osoby. |
-> | DataAction | Microsoft.CognitiveServices/accounts/Face/largepersongroups/read | Načíst informace o velké osoba skupiny, včetně jeho názvu a userData. Toto rozhraní API vrací velké osoba informace o skupině
-Jsou uvedeny všechny existující velkých skupin osob na largePesonGroupId, název a userData. |
+> | DataAction | Microsoft.CognitiveServices/accounts/Face/largepersongroups/read | Načíst informace o velké osoba skupiny, včetně jeho názvu a userData. Tato rozhraní API vrátí velké osoba skupiny informace o seznamu všechny stávající largePesonGroupId, název a userData skupin velké osob. |
 > | DataAction | Microsoft.CognitiveServices/accounts/Face/largepersongroups/train/action | Odešlete úlohu osoba velké skupiny školení. Školení je zásadní krok, který můžete použít pouze skupinu trénovaného velké osoby. |
 > | DataAction | Microsoft.CognitiveServices/accounts/Face/largepersongroups/training/read | Zkontrolovat velké osoba skupiny školení stav dokončených nebo stále probíhají. Školení LargePersonGroup je asynchronní operace |
-> | DataAction | Microsoft.CognitiveServices/accounts/Face/largepersongroups/write | Vytvořte novou skupinu velké osoba s largePersonGroupId zadané uživatelem, název a volitelný userData.
-Aktualizujte název a userData existující osoba velké skupiny. Vlastnosti ponechat beze změny, pokud nejsou v textu požadavku. |
+> | DataAction | Microsoft.CognitiveServices/accounts/Face/largepersongroups/write | Vytvořte novou skupinu velké osoba s largePersonGroupId zadané uživatelem, název a volitelný userData. Aktualizujte název a userData existující osoba velké skupiny. Vlastnosti ponechat beze změny, pokud nejsou v textu požadavku. |
 > | DataAction | Microsoft.CognitiveServices/accounts/Face/persongroups/delete | Odstraníte existující skupiny osoba s zadané personGroupId. Trvalá data v této skupině uživatel se odstraní. |
 > | DataAction | Microsoft.CognitiveServices/accounts/Face/persongroups/persons/action | Vytvořte nový uživatel ve skupině zadaná osoba. Přidání rozpoznávání tváře na tohoto uživatele, zavolejte |
 > | DataAction | Microsoft.CognitiveServices/accounts/Face/persongroups/persons/delete | Odstraníte existující osoby ze skupiny osoby. Veškerá uložená data osob a rozpoznávání tváře imagí v položce osoby se odstraní. |
 > | DataAction | Microsoft.CognitiveServices/accounts/Face/persongroups/persons/persistedfaces/delete | Odstraňte plochy od osoby ve skupině osoby. Data pro rozpoznávání tváře a image související s touto položkou pro rozpoznávání tváře budou také odstraněny. |
 > | DataAction | Microsoft.CognitiveServices/accounts/Face/persongroups/persons/persistedfaces/read | Načtěte informace pro rozpoznávání tváře osoby. Rozpoznávání tváře osoby trvalé je zadán svým personGroupId, personId a persistedFaceId. |
-> | DataAction | Microsoft.CognitiveServices/accounts/Face/persongroups/persons/persistedfaces/write | Přidáte obrázek tváře osobě do skupiny osoby pro identifikaci tváře nebo ověření. Řešení s použitím image více
-Aktualizace osoba jako trvalý, rozpoznávání tváře společnosti userData pole. |
-> | DataAction | Microsoft.CognitiveServices/accounts/Face/persongroups/persons/read | Načíst jméno uživatele a userData a trvalý faceIds představující obrázek tváře osoby registrovaný.
-Uvádí všechny osoby informace ve skupině zadaná osoba, včetně personId, název, userData a persistedFaceIds z zaregistrovaný. |
+> | DataAction | Microsoft.CognitiveServices/accounts/Face/persongroups/persons/persistedfaces/write | Přidáte obrázek tváře osobě do skupiny osoby pro identifikaci tváře nebo ověření. Řešení s použitím image více aktualizace osoby trvalé userData pole pro rozpoznávání tváře. |
+> | DataAction | Microsoft.CognitiveServices/accounts/Face/persongroups/persons/read | Načíst jméno uživatele a userData a trvalý faceIds představující obrázek tváře osoby registrovaný. Uvádí všechny osoby informace ve skupině zadaná osoba, včetně personId, název, userData a persistedFaceIds z zaregistrovaný. |
 > | DataAction | Microsoft.CognitiveServices/accounts/Face/persongroups/persons/write | Aktualizujte název nebo userData osoby. |
-> | DataAction | Microsoft.CognitiveServices/accounts/Face/persongroups/read | Načtení názvu skupiny osoby a userData. Pokud chcete získat informace osoby za tento jeden objekt personGroup, použijte
-Seznam skupin osob pesonGroupId, název a userData. |
+> | DataAction | Microsoft.CognitiveServices/accounts/Face/persongroups/read | Načtení názvu skupiny osoby a userData. Informace o osobě pod tento jeden objekt personGroup získáte pomocí pesonGroupId, název a userData skupin osob seznamu. |
 > | DataAction | Microsoft.CognitiveServices/accounts/Face/persongroups/train/action | Odešlete úlohu osoba skupiny školení. Školení je zásadní krok, který můžete použít pouze skupinu trénovaného osoby. |
 > | DataAction | Microsoft.CognitiveServices/accounts/Face/persongroups/training/read | Zkontrolovat osoba skupiny školení stav dokončených nebo stále probíhají. Jeden objekt PersonGroup školení je asynchronní operace spuštěna |
-> | DataAction | Microsoft.CognitiveServices/accounts/Face/persongroups/write | Vytvořte novou skupinu osoba s zadané personGroupId, název a userData uživatelem zadaný.
-Aktualizujte název a userData existující osoby skupiny. Vlastnosti ponechat beze změny, pokud nejsou v textu požadavku. |
+> | DataAction | Microsoft.CognitiveServices/accounts/Face/persongroups/write | Vytvořte novou skupinu osoba s zadané personGroupId, název a userData uživatelem zadaný. Aktualizujte název a userData existující osoby skupiny. Vlastnosti ponechat beze změny, pokud nejsou v textu požadavku. |
 > | DataAction | Microsoft.CognitiveServices/accounts/Face/verify/action | Ověřte, jestli dvě tváře patří stejné osobě nebo zda jeden pro rozpoznávání tváře patří osobě. |
 > | Akce | Microsoft.CognitiveServices/accounts/listKeys/action | Zobrazit seznam klíčů |
 > | DataAction | Microsoft.CognitiveServices/accounts/LUIS/predict/action | Získá předpověď publikované koncový bod pro daný dotaz. |

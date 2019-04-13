@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/29/2018
 ms.author: pepogors
-ms.openlocfilehash: a0405e6c699192839f72b290d0466ab5062ac584
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: f977a48338f784562ec84355aabb212e5a3dade4
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58670121"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59543664"
 ---
 # <a name="service-fabric-for-visual-studio-code"></a>Service Fabric pro Visual Studio Code
 
@@ -120,7 +120,7 @@ Service Fabric Reliable Services rozšíření pro VS Code obsahuje mnoho přík
 2.  Zobrazte clusteru pomocí Service Fabric Exploreru pro potvrzení, že aplikace byla odebrána. To může trvat nějakou dobu, tak buďte prosím trpěliví.
 
 ### <a name="service-fabric-build-application"></a>Service Fabric: Sestavení aplikace
-**Service Fabric: Odebrání aplikace** příkazu můžete vytvořit buď Java nebo C# aplikace Service Fabric. 
+**Service Fabric: Sestavení aplikace** příkazu můžete vytvořit buď Java nebo C# aplikace Service Fabric. 
 
 1.  Ujistěte se, že jsou v kořenové složce aplikace před spuštěním tohoto příkazu. Tento příkaz určuje typ aplikace (C# nebo Java) a odpovídajícím způsobem sestavení vaší aplikace.
 2.  Vyberte **Service Fabric: Sestavení aplikace** příkazu.

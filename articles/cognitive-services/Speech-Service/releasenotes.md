@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 4/5/2019
 ms.author: wolfma
 ms.custom: seodec18
-ms.openlocfilehash: d53019294a255e42c4cf66f59226c9234a5adf73
-ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
+ms.openlocfilehash: e40d9a2ac0e95ae72aed927f8a527eb1e092079d
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
-ms.locfileid: "59359744"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59549401"
 ---
 # <a name="release-notes"></a>Poznámky k verzi
 
@@ -30,7 +30,7 @@ Jedná se o verzi jen pro JavaScript. Nepřidaly se žádné funkce. Byly proved
 
 **Nové funkce** 
 
-* Sada SDK teď podporuje převod textu na řeč služby jako beta verze. Se podporuje ve Windows a Linuxem plochy z jazyka C++, C#a Java. Další informace o kontrolu [převod textu na řeč přehled](text-to-speech.md#get-started-with-text-to-speech).
+* Sada SDK teď podporuje převod textu na řeč služby jako beta verze. Podporováno od Windows a Linuxem plochy z C++ a C#. Další informace o kontrolu [převod textu na řeč přehled](text-to-speech.md#get-started-with-text-to-speech).
 * Sada SDK teď podporuje zvukové soubory MP3 a díle/Ogg jako datový proud vstupních souborů. Tato funkce je dostupná jenom v Linuxu z jazyka C++ a C# a je aktuálně ve verzi beta (Další podrobnosti [tady](how-to-use-compressed-audio-input-streams.md)).
 * Sadou SDK pro řeč pro Javu, .NET core, C++ a Objective-C získali podporu pro macOS. Podpora jazyka Objective-C pro macOS je aktuálně ve verzi beta.
 * iOS: Sadou SDK pro řeč pro iOS (Objective-C) nyní jsme publikovali také CocoaPod.
@@ -211,7 +211,7 @@ V našem [ukázkové úložiště](https://aka.ms/csspeech/samples), byl přidá
 * Podpora pro Objective-C v iOS. Podívejte se na naše [rychlý start Objective-C pro iOS](quickstart-objectivec-ios.md).
 * Podpora jazyka JavaScript v prohlížeči. Podívejte se na naše [JavaScript quickstart](quickstart-js-browser.md).
 
-**Změny způsobující chyby**
+**Rozbíjející změny v**
 
 * V této verzi představeny počet nejnovější změny.
   Zkontrolujte prosím [na této stránce](https://aka.ms/csspeech/breakingchanges_1_0_0) podrobnosti.
@@ -230,7 +230,7 @@ V našem [ukázkové úložiště](https://aka.ms/csspeech/samples), byl přidá
 
 * Zobrazit další podrobné informace o chybě na chyby připojení.
 
-**Změny způsobující chyby**
+**Rozbíjející změny v**
 
 * V jazyce Java (Android) `SpeechFactory.configureNativePlatformBindingWithDefaultCertificate` funkce už vyžaduje parametr cesty. Cesta se nyní automaticky zjistí na všech podporovaných platformách.
 * Přistupující objekt get vlastnosti `EndpointUrl` byla odebrána v jazyce Java a C#.
@@ -259,7 +259,7 @@ V našem [ukázkové úložiště](https://aka.ms/csspeech/samples), byl přidá
 * Rozpoznávání výsledek obsahuje více polí. Máte posun od začátku zvuku a doba trvání (i v taktech) si rozpoznaný text a další hodnoty, které představují rozpoznávání stav, například `InitialSilenceTimeout` a `InitialBabbleTimeout`.
 * Podpora AuthorizationToken vytváření instancí továrny.
 
-**Změny způsobující chyby**
+**Rozbíjející změny v**
 
 * Rozpoznávání události: Typ události NoMatch se nesloučila do událost chyby.
 * SpeechOutputFormat v jazyce C# se přejmenoval na OutputFormat zůstat zarovnané s jazykem C++.

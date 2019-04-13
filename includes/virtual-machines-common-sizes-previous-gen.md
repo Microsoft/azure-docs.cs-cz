@@ -5,59 +5,25 @@ services: virtual-machines-windows, virtual-machines-linux
 author: cynthn
 ms.service: multiple
 ms.topic: include
-ms.date: 07/06/2018
+ms.date: 04/11/2019
 ms.author: cynthn;azcspmt;jonbeck
 ms.custom: include file
-ms.openlocfilehash: c16483f4b8ef160c78ff95582faf54c9a9d24a04
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: d0802cfcf05874044b6e116ba194c16a79f9d309
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57964117"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59550131"
 ---
-Tento článek obsahuje informace o velikostech virtuálních počítačů předchozí generace. Tyto velikosti je stále možné, ale nejsou k dispozici novější generace.
+Tato část obsahuje informace o velikostech virtuálních počítačů předchozí generace. Tyto velikosti je stále možné, ale nejsou k dispozici novější generace. 
 
+## <a name="f-series"></a>F-series
 
-## <a name="ds-series"></a>DS-series
+Řada F-series využívá procesory Intel Xeon® E5-2673 v3 (Haswell) s frekvencí 2,4 GHz, kterou může technologie Intel Turbo Boost 2.0 zvýšit až na 3,1 GHz. Výkon procesoru je tedy stejný jako u virtuálních počítačů Dv2-series.  
 
-ACU: 160-250 <sup>1</sup>
+Virtuální počítače řady F-series jsou skvělou volbou pro úlohy, které potřebují rychlejší procesory, ale ne tolik paměti nebo dočasného úložiště na virtuální procesor.  Úlohy jako například analýzy, herní servery, webové servery nebo dávkové zpracování můžou řadu F-series s výhodou využít.
 
-Premium Storage:  Podporováno
-
-Premium Storage ukládání do mezipaměti:  Podporováno
-
-| Velikost | Virtuální procesory | Paměť: GiB | Dočasné úložiště (SSD): GiB | Max. datových disků | Maximální propustnost v mezipaměti a dočasného úložiště: IOPS / MB/s (velikost mezipaměti v GiB) | Maximální propustnost disku bez mezipaměti: IOPS / MBps | Maximální počet síťových karet / očekávaný šířka pásma (MB/s) |
-| --- | --- | --- | --- | --- | --- | --- | --- |
-| Standard_DS1 |1 |3,5 |7 |4 |4 000 / 32 (43) |3 200 / 32 |2 / 500 |
-| Standard_DS2 |2 |7 |14 |8 |8 000 / 64 (86) |6 400 / 64 |2 / 1 000 |
-| Standard_DS3 |4 |14 |28 |16 |16 000 / 128 (172) |12 800 / 128 |4 / 2 000 |
-| Standard_DS4 |8 |28 |56 |32 |32 000 / 256 (344) |25 600 / 256 |8 / 4 000 |
-
-<sup>1</sup> řadu virtuálních počítačů můžete spustit na jednom z následujících procesoru: 2.2 GHz Intel E5-2660 v2 Xeon®, 2,4 GHz Intel Xeon® E5-2673 v3 (Haswell) nebo procesorech 2,3 GHz Intel XEON® E5-2673 v4 (Broadwell)
-<br>
-
-## <a name="ds-series---memory-optimized"></a>DS-series – optimalizované z hlediska paměti
-
-ACU: 160-250 <sup>1,2</sup>
-
-Premium Storage:  Podporováno
-
-Premium Storage ukládání do mezipaměti:  Podporováno
-
-| Velikost | Virtuální procesory | Paměť: GiB | Dočasné úložiště (SSD): GiB | Max. datových disků | Maximální propustnost v mezipaměti a dočasného úložiště: IOPS / MB/s (velikost mezipaměti v GiB) | Maximální propustnost disku bez mezipaměti: IOPS / MBps | Maximální počet síťových karet / očekávaný šířka pásma (MB/s) |
-| --- | --- | --- | --- | --- | --- | --- | --- |
-| Standard_DS11 |2 |14 |28 |8 |8 000 / 64 (72) |6 400 / 64 |2 / 1 000 |
-| Standard_DS12 |4 |28 |56 |16 |16 000 / 128 (144) |12 800 / 128 |4 / 2 000 |
-| Standard_DS13 |8 |56 |112 |32 |32 000 / 256 (288) |25 600 / 256 |8 / 4 000 |
-| Standard_DS14 |16 |112 |224 |64 |64 000 / 512 (576) |51 200 / 512 |8 / 8000 |
-
-<sup>1</sup> maximální propustnost disku (IOPS nebo MB/s) s DS-series virtuálních počítačů může být omezená počtem, velikostí a prokládáním připojených disků.  Podrobnosti najdete v tématu [návrh pro vysoký výkon](../articles/virtual-machines/windows/premium-storage-performance.md).
-
-<sup>2</sup> řadu virtuálních počítačů můžete spustit na jednom z následujících procesoru: 2.2 GHz Intel E5-2660 v2 Xeon®, 2,4 GHz Intel Xeon® E5-2673 v3 (Haswell) nebo procesorech 2,3 GHz Intel XEON® E5-2673 v4 (Broadwell)
-
-## <a name="d-series"></a>D-series 
-
-ACU: 160-250 <sup>1</sup>
+ACU: 210 - 250
 
 Premium Storage:  Nepodporuje se
 
@@ -65,101 +31,63 @@ Premium Storage ukládání do mezipaměti:  Nepodporuje se
 
 | Velikost         | Virtuální procesory | Paměť: GiB | Dočasné úložiště (SSD): GiB | Maximální propustnost dočasného úložiště: IOPS / čtení v MB/s / zápis v MB/s | Maximální počet datových disků nebo propustnost: IOPS | Maximální počet síťových karet / očekávaný šířka pásma (MB/s) |
 |--------------|-----------|-------------|----------------|----------------------------------------------------------|-----------------------------------|------------------------------|
-| Standard_D1  | 1         | 3,5         | 50             | 3000 / 46 / 23                                           | 4 / 4×500                         | 2 / 500                 |
-| Standard_D2  | 2         | 7           | 100            | 6000 / 93 / 46                                           | 8 / 8×500                         | 2 / 1 000                     |
-| Standard_D3  | 4         | 14          | 200            | 12000 / 187 / 93                                         | 16 / 16×500                         | 4 / 2 000                     |
-| Standard_D4  | 8         | 28          | 400            | 24000 / 375 / 187                                        | 32 / 32×500                       | 8 / 4 000                     |
+| Standard_F1  | 1         | 2           | 16             | 3000 / 46 / 23                                           | 4 / 4×500                         | 2 / 750                 |
+| Standard_F2  | 2         | 4           | 32             | 6000 / 93 / 46                                           | 8 / 8×500                         | 2 / 1 500                     |
+| Standard_F4  | 4         | 8           | 64             | 12000 / 187 / 93                                         | 16 / 16×500                         | 4 / 3 000                     |
+| Standard_F8  | 8         | 16          | 128            | 24000 / 375 / 187                                        | 32 / 32×500                       | 8 / 6 000                     |
+| Standard_F16 | 16        | 32          | 256            | 48000 / 750 / 375                                        | 64 / 64 x 500                       | 8 / 12000           |
 
-<sup>1</sup> řadu virtuálních počítačů můžete spustit na jednom z následujících procesoru: 2.2 GHz Intel E5-2660 v2 Xeon®, 2,4 GHz Intel Xeon® E5-2673 v3 (Haswell) nebo procesorech 2,3 GHz Intel XEON® E5-2673 v4 (Broadwell)
-<br>
+## <a name="fs-series-sup1sup"></a>Řada FS-series <sup>1</sup>
 
-## <a name="d-series---memory-optimized"></a>D-series – optimalizované z hlediska paměti
+Řada Fs-series nabízí všechny výhody řady F-series a navíc službu Premium Storage.
 
-ACU: 160-250 <sup>1</sup>
+ACU: 210 - 250
 
-Premium Storage:  Nepodporuje se
+Premium Storage:  Podporováno
 
-Premium Storage ukládání do mezipaměti:  Nepodporuje se
+Premium Storage ukládání do mezipaměti:  Podporováno
 
-| Velikost         | Virtuální procesory | Paměť: GiB | Dočasné úložiště (SSD): GiB | Maximální propustnost dočasného úložiště: IOPS / čtení v MB/s / zápis v MB/s | Maximální počet datových disků nebo propustnost: IOPS | Maximální počet síťových karet / očekávaný šířka pásma (MB/s) |
-|--------------|-----------|-------------|----------------|----------------------------------------------------------|-----------------------------------|------------------------------|
-| Standard_D11 | 2         | 14          | 100            | 6000 / 93 / 46                                           | 8 / 8×500                         | 2 / 1 000                     |
-| Standard_D12 | 4         | 28          | 200            | 12000 / 187 / 93                                         | 16 / 16×500                         | 4 / 2 000                     |
-| Standard_D13 | 8         | 56          | 400            | 24000 / 375 / 187                                        | 32 / 32×500                       | 8 / 4 000                     |
-| Standard_D14 | 16        | 112         | 800            | 48000 / 750 / 375                                        | 64 / 64 x 500                       | 8 / 8000                |
+| Velikost | Virtuální procesory | Paměť: GiB | Dočasné úložiště (SSD): GiB | Max. datových disků | Max. propustnost dočasného úložiště a úložiště v mezipaměti: IOPS / MB/s (velikost mezipaměti v GiB) | Maximální propustnost disku bez mezipaměti: IOPS / MBps | Maximální počet síťových karet / očekávaný šířka pásma (MB/s) |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| Standard_F1s |1 |2 |4 |4 |4 000 / 32 (12) |3 200 / 48 |2 / 750 |
+| Standard_F2s |2 |4 |8 |8 |8 000 / 64 (24) |6 400 / 96 |2 / 1 500 |
+| Standard_F4s |4 |8 |16 |16 |16 000 / 128 (48) |12 800 / 192 |4 / 3 000 |
+| Standard_F8s |8 |16 |32 |32 |32 000 / 256 (96) |25 600 / 384 |8 / 6 000 |
+| Standard_F16s |16 |32 |64 |64 |64 000 / 512 (192) |51 200 / 768 |8 / 12000 |
 
-<sup>1</sup> řadu virtuálních počítačů můžete spustit na jednom z následujících procesoru: 2.2 GHz Intel E5-2660 v2 Xeon®, 2,4 GHz Intel Xeon® E5-2673 v3 (Haswell) nebo procesorech 2,3 GHz Intel XEON® E5-2673 v4 (Broadwell)
-<br>
+MB/s = 10^6 bajtů za sekundu a GiB = 1024^3 bajtů.
 
-## <a name="a-series---compute-intensive-instances"></a>A-series – Instance náročné na výpočetní výkon
+<sup>1</sup> maximální propustnost disku (IOPS nebo MB/s) se Fs-series virtuálních počítačů může být omezená počtem, velikostí a prokládáním připojených disků.  Podrobnosti najdete v tématu [návrh pro vysoký výkon](../articles/virtual-machines/windows/premium-storage-performance.md).  
 
-ACU: 225
+## <a name="ls-series"></a>Řada Ls
 
-Premium Storage:  Nepodporuje se
+Řada Ls-series nabízí až 32 virtuálních procesorů a využívá [řadu procesorů Intel® Xeon® E5 v3](http://www.intel.com/content/www/us/en/processors/xeon/xeon-e5-solutions.html). Řada Ls-series má stejný výkon procesoru jako řady G/GS-series a 8 GiB paměti na virtuální procesor.
 
-Premium Storage ukládání do mezipaměti:  Nepodporuje se
+Řada Ls-series nepodporuje vytváření z místní mezipaměti a zvyšuje dosažitelné vstupně-výstupních operací trvalých datových disků. Vysoká propustnost a IOPS místního disku díky jsou virtuální počítače řady Ls-series ideální pro úložišť typu NoSQL, jako je například Apache Cassandra a MongoDB, které replikujte data napříč několika virtuálních počítačů k přetrvávání v případě selhání jednoho virtuálního počítače.
 
-Velikosti A8-A11 a H-series se také označují jako *náročné na výpočetní výkon*. Hardware pro hostování těchto velikostí je navržený a optimalizovaný pro úlohy náročné na výpočty a síťový provoz, včetně clusterovaného vysokovýkonného výpočetního prostředí (HPC), například pro modelování a simulace. Řady A8-A11-series používají Intel Xeon E5-2670 @ 2,6 GHz a H-series používá Intel Xeon E5-2667 v3 @ 3,2 GHz.  
+ACU: 180-240
 
-| Velikost | Virtuální procesory | Paměť: GiB | Dočasné úložiště (HDD): GiB | Max. datových disků | Maximální propustnost datového disku: IOPS | Maximální počet síťových karet|
-| --- | --- | --- | --- | --- | --- | --- |
-| Standard_A8 <sup>1</sup> |8 |56 |382 |32 |32×500 |2 |
-| Standard_A9 <sup>1</sup> |16 |112 |382 |64 |64 x 500 |4 |
-| Standard_A10 |8 |56 |382 |32 |32×500 |2  |
-| Standard_A11 |16 |112 |382 |64 |64 x 500 |4 |
-
-<sup>1</sup>pro aplikace MPI vyhrazenou síť back-end RDMA zapnutá síť FDR InfiniBand, která zajišťuje mimořádně nízkou latenci a velkou šířku pásma.
-
-<br>
-
-## <a name="a-series"></a>A-Series
-
-ACU: 50-100
-
-Premium Storage:  Nepodporuje se
+Premium Storage:  Podporováno
 
 Premium Storage ukládání do mezipaměti:  Nepodporuje se
+ 
+| Velikost          | Virtuální procesory | Paměť (GiB) | Dočasné úložiště (GiB) | Max. datových disků | Maximální propustnost dočasného úložiště (IOPS nebo MB/s) | Maximální propustnost disku bez mezipaměti (IOPS nebo MB/s) | Maximální počet síťových karet / očekávaný šířka pásma (MB/s) | 
+|----------------|-----------|-------------|--------------------------|----------------|-------------------------------------------------------------|-------------------------------------------|------------------------------| 
+| Standard_L4s   | 4  | 32  | 678   | 16 | 20,000 / 200 | 5 000 / 125  | 2 / 4,000  | 
+| Standard_L8s   | 8  | 64  | 1 388 | 32 | 40,000 / 400 | 10 000 / 250 | 4 / 8,000  | 
+| Standard_L16s  | 16 | 128 | 2 807 | 64 | 80,000 / 800 | 20 000 / 500 | 8 / 16,000 | 
+| Standard_L32s&nbsp;<sup>1</sup> | 32   | 256  | 5,630 | 64   | 160,000 / 1,600   | 40 000 / 1 000     | 8 / 20,000 | 
 
-| Velikost | Virtuální procesory | Paměť: GiB | Dočasné úložiště (HDD): GiB | Max. datových disků | Maximální propustnost datového disku: IOPS | Maximální počet síťových karet / očekávaný šířka pásma (MB/s)  |
-| --- | --- | --- | --- | --- | --- | --- |
-| Standard_A0 <sup>1</sup> |1 |0,768 |20 |1 |1×500 |2 / 100 |
-| Standard_A1 |1 |1,75 |70 |2 |2×500 |2 / 500  |
-| Standard_A2 |2 |3,5 |135 |4 |4×500 |2 / 500 |
-| Standard_A3 |4 |7 |285 |8 |8×500 |2 / 1 000 |
-| Standard_A4 |8 |14 |605 |16 |16×500 |4 / 2 000 |
-| Standard_A5 |2 |14 |135 |4 |4×500 |2 / 500 |
-| Standard_A6 |4 |28 |285 |8 |8×500 |2 / 1 000 |
-| Standard_A7 |8 |56 |605 |16 |16×500 |4 / 2 000 |
+Maximální propustnost disku s virtuální počítače řady Ls-series může být omezená podle počtu, velikostí a prokládáním připojených disků. Podrobnosti najdete v tématu [návrh pro vysoký výkon](../articles/virtual-machines/windows/premium-storage-performance.md).
 
-<br>
-
-<sup>1</sup> je velikost the A0 využívá fyzický hardware. Pouze pro tuto konkrétní velikost můžou výkon vašich spuštěných úloh ovlivnit jiná zákaznická nasazení. Relativní výkon je popsaný níže jako očekávaný základ, přičemž se dá očekávat variabilita přibližně 15 procent.
+<sup>1</sup> instance je izolovaná na hardware vyhrazený pro jediného zákazníka.
 
 ### <a name="standard-a0---a4-using-cli-and-powershell"></a>Velikosti Standard A0–A4 při použití rozhraní příkazového řádku a PowerShellu
 
 V klasickém modelu nasazení se některé názvy virtuálních počítačů s prostředím příkazového řádku a PowerShellu trochu liší:
 
-* Standard_A0 je ExtraSmall 
+* Standard_A0 je ExtraSmall
 * Standard_A1 je Small
 * Standard_A2 je Medium
 * Standard_A3 je Large
 * Standard_A4 je ExtraLarge
-
-## <a name="basic-a"></a>Basic A
-
-Premium Storage:  Nepodporuje se
-
-Premium Storage ukládání do mezipaměti:  Nepodporuje se
-
-Velikosti úrovně Basic jsou primárně určeny pro úlohy související s vývojem a další aplikace, pro které se nevyžaduje vyrovnávání zatížení, automatické škálování nebo používání virtuálních počítačů s vysokými nároky na paměť.
-
-|Velikost – Velikost\Název | Virtuální procesory |Memory (Paměť)|Síťové karty (Max.)|Max. velikost dočasného disku |Max. datové disky (1 023 GB)|Max. IOPS (300 na disk)|
-|---|---|---|---|---|---|---|
-|A0\Basic_A0|1|768 MB|2| 20 GB|1|1×300|
-|A1\Basic_A1|1|1,75 GB|2| 40 GB |2|2×300|
-|A2\Basic_A2|2|3,5 GB|2| 60 GB|4|4×300|
-|A3\Basic_A3|4|7 GB|2| 120 GB |8|8×300|
-|A4\Basic_A4|8|14 GB|2| 240 GB |16|16×300|
- 
-
-

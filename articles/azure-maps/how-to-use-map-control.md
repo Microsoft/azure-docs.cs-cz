@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: ffd2afd66c108f9eef690d641d9c4cbc85e9d609
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: 9e3a442a3d6c420c548979327c193628efbee5aa
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59256086"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59549214"
 ---
 # <a name="use-the-azure-maps-map-control"></a>Použití mapového ovládacího prvku Azure Maps
 
@@ -166,8 +166,7 @@ Mapě můžete vložit na webové stránce pomocí knihovny Javascript na stran�
 
 8. Otevřete soubor ve webovém prohlížeči a zobrazení vykreslené mapy. By měl vypadat jako v následujícím kódu:
 
-    <iframe height="700" style="width: 100%;" scrolling="no" title="Jak používat mapový ovládací prvek" src="//codepen.io/azuremaps/embed/yZpEYL/?height=557&theme-id=0&default-tab=html,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
-Zobrazit pera <a href='https://codepen.io/azuremaps/pen/yZpEYL/'>jak používat mapový ovládací prvek</a> pomocí Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) na <a href='https://codepen.io'>CodePen</a>.
+    <iframe height="700" style="width: 100%;" scrolling="no" title="Jak používat mapový ovládací prvek" src="//codepen.io/azuremaps/embed/yZpEYL/?height=557&theme-id=0&default-tab=html,result" frameborder="no" allowtransparency="true" allowfullscreen="true">Zobrazit pera <a href='https://codepen.io/azuremaps/pen/yZpEYL/'>jak používat mapový ovládací prvek</a> pomocí Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) na <a href='https://codepen.io'>CodePen</a>.
     </iframe>
 
 ## <a name="next-steps"></a>Další postup
@@ -180,4 +179,4 @@ Zjistěte, jak vytvořit a interakce s mapou:
 Další informace o stylu mapy:
 
 > [!div class="nextstepaction"]
-> [Výběr stylu mapy](choose-map-style.md)
+> [Vyberte styl mapy](choose-map-style.md)

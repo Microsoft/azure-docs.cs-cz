@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 2/28/2018
 ms.author: oanapl
-ms.openlocfilehash: 4ece2dc1df3d29a3024c7efe15dd8cecfd9666db
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: 4322fd60bb30b9eb6ac18c72e75127006acf5149
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58663855"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59528182"
 ---
 # <a name="use-system-health-reports-to-troubleshoot"></a>Řešení problémů pomocí sestav o stavu systému
 Komponenty služby Azure Service Fabric vám na všechny entity v clusteru předem připravené sestav stravu systému. [Health store](service-fabric-health-introduction.md#health-store) vytvoří a odstraní entity, které jsou založeny na sestavách systému. Je také uspořádány v hierarchii, který explicitně zaznamenává interakce entity.
@@ -640,7 +640,7 @@ Další volání rozhraní API, které může způsobit zablokování a zobrazen
 
 - **IReplicator.CatchupReplicaSet**: Toto upozornění znamená jeden ze dvou kroků. Nejsou dostatečná repliky. Pokud chcete zobrazit, pokud se jedná o tento případ, podívejte se na stav repliky replik v oddílu nebo System.FM – sestava stavu pro zablokované Rekonfigurace. Nebo můžete repliky nejsou potvrdil operace. Rutiny Powershellu `Get-ServiceFabricDeployedReplicaDetail` slouží k určení rozsahu postupu všechny repliky. Potíže nezpůsobuje repliky, jejichž `LastAppliedReplicationSequenceNumber` hodnotu za primární `CommittedSequenceNumber` hodnotu.
 
-- **IReplicator.BuildReplica(<Remote ReplicaId>)**: Toto upozornění signalizuje problém v procesu sestavení. Další informace najdete v tématu [životní cyklus replik](service-fabric-concepts-replica-lifecycle.md). Může být z důvodu chybné konfigurace adresy replikátor. Další informace najdete v tématu [konfigurace stavovém modelu Reliable Services](service-fabric-reliable-services-configuration.md) a [určení prostředků v manifestu služby](service-fabric-service-manifest-resources.md). Také může být problém ve vzdáleném uzlu.
+- **IReplicator.BuildReplica(\<Remote ReplicaId>)**: Toto upozornění signalizuje problém v procesu sestavení. Další informace najdete v tématu [životní cyklus replik](service-fabric-concepts-replica-lifecycle.md). Může být z důvodu chybné konfigurace adresy replikátor. Další informace najdete v tématu [konfigurace stavovém modelu Reliable Services](service-fabric-reliable-services-configuration.md) a [určení prostředků v manifestu služby](service-fabric-service-manifest-resources.md). Také může být problém ve vzdáleném uzlu.
 
 ### <a name="replicator-system-health-reports"></a>Replikátor systémovými stavovými sestavami
 **Replikační fronta je plná:**

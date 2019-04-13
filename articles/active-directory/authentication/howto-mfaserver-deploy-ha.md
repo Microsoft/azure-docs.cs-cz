@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 71b7784d054f279dfccdb3a2424fd427789ca658
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.openlocfilehash: 2ddf0885ce7615e06b78eccbd6424e63cc6103c2
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58370070"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59547001"
 ---
 # <a name="configure-azure-multi-factor-authentication-server-for-high-availability"></a>Konfigurovat ověřování Azure Multi-Factor Authentication Server pro zajištění vysoké dostupnosti
 
@@ -36,7 +36,7 @@ Hlavní server MFA a MFA serverů za podřízené komunikovat se službou vícef
 
 Po úspěšném ověření službou AD MFA Server bude komunikovat se službou vícefaktorové ověřování. MFA Server čeká na oznámení ze služby MFA umožňuje povolit nebo odepřít přístup uživatelů k aplikaci.
 
-Pokud hlavní MFA server přejde do režimu offline, stále zpracovávat ověřování, ale operace, které vyžadují změny v databázi MFA nelze zpracovat. (Příklady: Přidání uživatelů samoobslužných služeb změny kódu PIN a změně informací o uživateli)
+Pokud hlavní MFA server přejde do režimu offline, stále zpracovávat ověřování, ale operace, které vyžadují změny v databázi MFA nelze zpracovat. (Příklady: Přidání uživatele samoobslužné služby PIN kód změny, měnící informace o uživateli a přístup k portálu user portal)
 
 ## <a name="deployment"></a>Nasazení
 

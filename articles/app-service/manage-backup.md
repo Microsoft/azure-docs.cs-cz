@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 07/06/2016
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 18fc86e8d9b9622f11faad0f11dc57a83124a857
-ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
+ms.openlocfilehash: 7e697329e83b530157e490b04f5155d28d243bb6
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56417499"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59549484"
 ---
 # <a name="back-up-your-app-in-azure"></a>Zálohování aplikace v Azure
 Funkce zálohování a obnovení v [služby Azure App Service](overview.md) umožňuje snadno vytvářet zálohy aplikací ručně, nebo podle plánu. Aplikaci můžete obnovit na snímek v předchozím stavu tak přepsání existující aplikace nebo při obnovování do jiné aplikace. 
@@ -121,6 +121,9 @@ Někdy nechcete zálohovat vše, co ve vaší aplikaci. Tady je pár příkladů
 * Nechcete k zálohování souborů protokolu.
 
 Částečné obnovy umožní že zvolit přesně soubory, které chcete zálohovat.
+
+> [!NOTE]
+> Jednotlivé databáze v zálohování může být maximálně 4GB, ale celková maximální velikost zálohování je 10GB
 
 ### <a name="exclude-files-from-your-backup"></a>Vyloučit soubory ze zálohy
 Předpokládejme, že máte aplikaci, která obsahuje soubory protokolů a statické obrázky, které byly záložní jednou a nebudou měnit. V takových případech můžete vyloučit tyto složky a soubory ukládat v budoucích zálohování. Vyloučit soubory a složky ze záloh, vytváření `_backup.filter` soubor `D:\home\site\wwwroot` složky vaší aplikace. Zadejte seznam souborů a složek, které chcete vyloučit z tohoto souboru. 

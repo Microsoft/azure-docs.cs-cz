@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/10/2018
 ms.author: bwren
-ms.openlocfilehash: 31d9e2170461b9c4023bfe6b3e01fb1d7dda7fee
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: bee64909c7f3b295691ef1cb1840424aa7e3fe49
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57895885"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59549708"
 ---
 # <a name="create-and-manage-alert-rules-in-log-analytics-with-rest-api"></a>Vytvářet a spravovat pravidla výstrah ve službě Log Analytics pomocí rozhraní REST API
 Log Analytics výstrah REST API můžete vytvářet a spravovat upozornění v Log Analytics.  Tento článek obsahuje podrobnosti o rozhraní API a několik příkladů k provádění různých operací.
@@ -94,9 +94,9 @@ Všechny akce mají vlastnosti v následující tabulce.  Různé typy výstrah 
 
 | Vlastnost | Popis |
 |:--- |:--- |
-| Typ |Typ akce.  Možné hodnoty jsou teď upozornění a Webhook. |
-| Název |Zobrazovaný název výstrahy. |
-| Verze |Verze rozhraní API používá.  V současné době to musí být vždy nastavená na hodnotu 1. |
+| `Type` |Typ akce.  Možné hodnoty jsou teď upozornění a Webhook. |
+| `Name` |Zobrazovaný název výstrahy. |
+| `Version` |Verze rozhraní API používá.  V současné době to musí být vždy nastavená na hodnotu 1. |
 
 ### <a name="retrieving-actions"></a>Načítají se akce
 
@@ -154,8 +154,8 @@ Prahové hodnoty mají vlastnosti v následující tabulce.
 
 | Vlastnost | Popis |
 |:--- |:--- |
-| Operátor |Operátor porovnání prahové hodnoty. <br> gt = větší než <br> lt = menší než |
-| Hodnota |Hodnota pro mezní hodnotu. |
+| `Operator` |Operátor porovnání prahové hodnoty. <br> gt = větší než <br> lt = menší než |
+| `Value` |Hodnota pro mezní hodnotu. |
 
 Představte si třeba dotaz události s intervalem 15 minut, časový interval 30 minut a prahová hodnota větší než 10. V tomto případě dotazu by spuštění každých 15 minut a by aktivuje upozornění, pokud byl vrácen 10 události, které se vytvořily přes víkend na 30minutové rozpětí.
 
@@ -187,9 +187,9 @@ Log Analytics umožňuje klasifikovat vaše upozornění do kategorií, umožňu
 
 |Úroveň závažnosti log Analytics  |Úroveň závažnosti upozornění v Azure  |
 |---------|---------|
-|kritický |Sev 0|
-|upozornění |Sev 1|
-|Informační | Sev 2|
+|`critical` |Sev 0|
+|`warning` |Sev 1|
+|`informational` | Sev 2|
 
 Následuje ukázka odezvy pro akce s pouze prahovou hodnotu a závažnost. 
 
@@ -284,7 +284,7 @@ Použijte metodu Put se existující ID akce Upravit skupinu akcí přidružené
 Výchozí akcí postupujte podle standardní šablony a formát pro oznámení. Ale může uživatel přizpůsobit některé akce, i když jsou ovládány skupin akcí. V současné době je možné, předmět e-mailu a datová část Webhooku vlastní nastavení.
 
 ##### <a name="customize-e-mail-subject-for-action-group"></a>Přizpůsobit předmět e-mailu pro skupinu akcí
-Ve výchozím nastavení je předmět e-mailu pro výstrahy: Oznámení o upozornění <AlertName> pro <WorkspaceName>. Ale to je možné přizpůsobit, tak, aby bylo možné konkrétní slova nebo značky – aby bylo možné snadno využívat pravidla filtru v doručené poště. Podrobnosti o vlastní e-mailové hlavičky potřeba odeslat spolu s podrobnostmi skupina akcí, jako v následující ukázce.
+Ve výchozím nastavení je předmět e-mailu pro výstrahy: Oznámení o upozornění `<AlertName>` pro `<WorkspaceName>`. Ale to je možné přizpůsobit, tak, aby bylo možné konkrétní slova nebo značky – aby bylo možné snadno využívat pravidla filtru v doručené poště. Podrobnosti o vlastní e-mailové hlavičky potřeba odeslat spolu s podrobnostmi skupina akcí, jako v následující ukázce.
 
      "etag": "W/\"datetime'2017-12-13T10%3A52%3A21.1697364Z'\"",
       "properties": {

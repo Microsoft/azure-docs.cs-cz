@@ -5,15 +5,15 @@ author: dkamstra
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: conceptual
-ms.date: 3/26/2019
+ms.date: 4/12/2019
 ms.author: dukek
 ms.subservice: alerts
-ms.openlocfilehash: 695a2ff827fc5514c3a32364026bc9d47c8a2121
-ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
+ms.openlocfilehash: 3d06024b7fa4356d4ad0e8b52c45c2ead62ef784
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58500303"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59549657"
 ---
 # <a name="create-and-manage-action-groups-in-the-azure-portal"></a>Vytvoření a Správa skupin akcí na webu Azure Portal
 ## <a name="overview"></a>Přehled ##
@@ -90,7 +90,7 @@ Může mít omezený počet e-mailových akcí do skupiny akcí. Zobrazit [tady 
 
 **Hlasové** – může mít omezený počet akcí hlasu ve skupině akcí. Zobrazit [tady informace](./../../azure-monitor/platform/alerts-rate-limiting.md) článku.
 
-**Webhook** – může mít omezený počet akce Webhooku v skupiny akcí. Webhooky jsou spuštěna znovu s použitím následujících pravidel. Volání webhooku je opakovat maximálně 2 při následující stavové kódy HTTP vrácené časy jsou časy: 408, 429, 503, 504 nebo koncový bod HTTP neodpovídá. První opakování se provede po 10 sekundách. Druhý opakování se stane po 100 sekund. Žádné skupiny akcí po dvou selháních, zavolá koncový bod po dobu 30 minut. 
+**Webhook** – může mít omezený počet akce Webhooku v skupiny akcí. Webhooky jsou spuštěna znovu s použitím následujících pravidel. Volání webhooku je opakovat maximálně 2 při následující stavové kódy HTTP vrácené časy jsou časy: 408, 429, 503, 504 nebo když koncový bod HTTP neodpovídá. První opakování se provede po 10 sekundách. Druhý opakování se stane po 100 sekund. Žádné skupiny akcí po dvou selháních, zavolá koncový bod po dobu 30 minut. 
 
 Zdrojové rozsahy IP adres
  - 13.72.19.232
@@ -103,6 +103,7 @@ Zdrojové rozsahy IP adres
  - 52.244.68.117
  - 51.4.138.199
  - 51.5.148.86
+ - 51.5.149.19
 
 Získat informace o změnách na tyto IP adresy, doporučujeme nakonfigurovat [služby upozornění stavu, která monitoruje Informační oznámení týkající se služby skupiny akcí.
 

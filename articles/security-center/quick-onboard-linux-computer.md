@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/02/2018
 ms.author: rkarlin
-ms.openlocfilehash: ee28bfebb6732c7bb3b689cf08b9b876adb74b1b
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 9f4e001909fb739aa368e5201649e85cce9906d3
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58104671"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59521916"
 ---
 # <a name="quickstart-onboard-linux-computers-to-azure-security-center"></a>Rychlý start: Připojení počítačů s Linuxem ke službě Azure Security Center
 Po připojení předplatných Azure můžete zřízením agenta pro Linux povolit službu Security Center pro prostředky Linuxu spuštěné mimo Azure, například v místním prostředí nebo jiných cloudech.
@@ -57,7 +57,7 @@ Než začnete s tímto rychlým startem, musíte mít službu Security Center na
 
    ![Instalace agenta][5]
 
-Protokoly agenta služby Security Center pro Linux se nacházejí v umístění: */var/opt/microsoft/omsagent/<workspace id>/log/*
+Protokoly agenta služby Security Center pro Linux najdete v: */var/opt/microsoft/omsagent/\<id pracovního prostoru > /log/*
 
   ![Protokoly agenta][6]
 

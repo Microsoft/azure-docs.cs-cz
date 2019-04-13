@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 04/04/2019
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: 597932ae9ad4dba76428fa6a4882c50f6ff98754
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: 85c51320d2be1eac540f1d14910927c0fdccef64
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59263107"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59549501"
 ---
 # <a name="what-is-text-to-speech"></a>Co je převod textu na řeč?
 
@@ -56,7 +56,7 @@ Tato tabulka uvádí základní funkce pro převod textu na řeč:
 \* *Tyto služby jsou k dispozici prostřednictvím cris.ai koncového bodu. Zobrazit [Swagger odkaz](https://westus.cris.ai/swagger/ui/index).*
 
 > [!NOTE]
-> Převod textu na řeč koncový bod implementuje, omezování, která omezuje požadavky na 25 na 5 sekund. Pokud dojde k omezení využití sítě, zobrazí se oznámení prostřednictvím záhlaví zpráv.
+> Koncové body vlastní hlasové implementovat omezení šířky pásma, která omezuje požadavky na 25 na 5 sekund. Pokud dojde k omezení využití sítě, zobrazí se oznámení prostřednictvím záhlaví zpráv.
 
 ## <a name="get-started-with-text-to-speech"></a>Začínáme s převod textu na řeč
 
@@ -88,9 +88,9 @@ Ukázkový kód pro převod textu na řeč je k dispozici na Githubu. Tyto ukáz
 ## <a name="reference-docs"></a>Referenční dokumenty
 
 * [Speech SDK](speech-sdk-reference.md)
-* [Speech Devices SDK](speech-devices-sdk.md)
-* [REST API: Převod řeči na text](rest-speech-to-text.md)
-* [REST API: Převod textu na řeč](rest-text-to-speech.md)
+* [Rozpoznávání řeči zařízení SDK](speech-devices-sdk.md)
+* [REST API: Speech-to-text](rest-speech-to-text.md)
+* [REST API: Text-to-speech](rest-text-to-speech.md)
 * [REST API: Přepis služby batch a přizpůsobení](https://westus.cris.ai/swagger/ui/index)
 
 ## <a name="next-steps"></a>Další postup

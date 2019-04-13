@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: jdial
-ms.openlocfilehash: 62b526950367987e26c1c67394bc0720ae895fa6
-ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
+ms.openlocfilehash: 6e15149dec9fdbb7413745d36b3f6a158113b586
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56983791"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59547018"
 ---
 # <a name="introduction-to-flow-logging-for-network-security-groups"></a>Úvod k protokolování toků pro skupiny zabezpečení sítě
 
@@ -92,6 +92,8 @@ Text, který následuje je příkladem protokolu toku. Jak je vidět, existují 
 **Povolení toku NSG protokolování na všechny skupiny Nsg, které jsou připojené k prostředku**: Tok protokolování v Azure je nakonfigurovaná na prostředek NSG. Tok pouze bude přidružen k jedno pravidlo skupiny zabezpečení sítě. Ve scénářích, kde jsou využívána více skupin zabezpečení sítě, doporučujeme vám, že je povoleno protokolování toků NSG na všechny skupiny Nsg použije zdroje podsíti nebo síťovému rozhraní k zajištění, že veškerý provoz zaznamenán. Zobrazit [jak provoz se vyhodnocuje](../virtual-network/security-overview.md#how-traffic-is-evaluated) Další informace o skupinách zabezpečení sítě. 
 
 **Tok protokolování náklady**: Protokolování toků NSG se fakturuje podle objemu protokoly vytvořené. Vysoký objem přenosů může způsobit velké tok svazek protokolu a související náklady. Protokolů toku NSG Flow ceny nezahrnují základní ceny za úložiště. Funkce zásad uchování pomocí toku NSG protokolování může vést k velkému počtu operací úložiště a souvisejících nákladů. Pokud nechcete, aby funkce zásad uchování, doporučujeme vám, nastavte tuto hodnotu na 0. Zobrazit [ceny služby Network Watcher](https://azure.microsoft.com/en-us/pricing/details/network-watcher/) a [ceny za Azure Storage](https://azure.microsoft.com/en-us/pricing/details/storage/) další podrobnosti.
+
+**Příchozí toky přihlášení z Internetu IP adres pro virtuální počítače bez veřejné IP adresy**: Virtuální počítače, který není k dispozici prostřednictvím veřejné IP adresy přidružené k síťovému rozhraní jako na úrovni instance, veřejnou IP adresu přiřazenou veřejnou IP adresu nebo, která jsou součástí back-end fondu nástroje pro vyrovnávání zatížení základní, použijte [výchozí SNAT](../load-balancer/load-balancer-outbound-connections.md#defaultsnat) a mít IP adresu přiřadil Azure usnadňuje odchozí připojení. V důsledku toho se mohou zobrazit položky protokolu toku pro toky z Internetu IP adresy, pokud tok je určena k portu v rozsahu portů, které jsou přiřazené k SNAT. Zatímco Azure neumožní tyto toky k virtuálnímu počítači, pokus se do protokolu zapíše a v protokolů toku NSG ve službě Network Watcher je způsobená návrhem. Doporučujeme vám, že nežádoucí příchozího internetového provozu explicitně zablokuje s skupiny zabezpečení sítě.
 
 ## <a name="sample-log-records"></a>Záznamy protokolu vzorku
 

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: 518cc1d55a83d95daec8f22d0dcfc5db23cc2d38
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 752c502268ef53d3c0575d92e75ce6a965fccd9f
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58173834"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59520812"
 ---
 # <a name="delivering-live-streaming-with-azure-media-services"></a>Zajištění živého streamování pomocí služby Azure Media Services
 
@@ -30,7 +30,7 @@ Microsoft Azure Media Services nabízí rozhraní API, která odesílají požad
 Media Services .NET SDK poskytuje rozhraní API, která odešlete žádost a počkejte na dokončení operace (interně, rozhraní API jsou dotazování na průběh operace v některých intervalech). Například při volání kanálu. Start(), metoda vrátí po spuštění kanálu. Můžete také použít asynchronní verze: await kanálu. StartAsync() (informace o asynchronní vzor založený na úlohách najdete v tématu [klepněte](https://msdn.microsoft.com/library/hh873175\(v=vs.110\).aspx)). Rozhraní API, které poslat žádost o operaci a poté dotazování na stav, až do dokončení operace se označují jako "dotazování metody". Tyto metody (zejména asynchronní verze) se doporučují pro aplikacemi rich client a/nebo stavové služby.
 
 Existují situacích, kdy aplikace nemůže čekat dlouho spuštěný požadavek http a chce, aby se k dotazování na průběh operace ručně. Typickým příkladem bude prohlížeč interakci s bezstavovou webovou službu: když Pokud chcete vytvořit kanál požádá o prohlížeče, webové služby inicializuje dlouhotrvající operace a vrátí ID operace do prohlížeče. Prohlížeč pak požádat o webové službě se získat stav operace vycházející z ID. Media Services .NET SDK poskytuje rozhraní API, které jsou užitečné pro tento scénář. Tato rozhraní API, se nazývají "-cyklického dotazování metody".
-"Bez dotazování metody" mají následující vzor pro pojmenování: Odeslat*OperationName*operace (například SendCreateOperation). Odeslat*OperationName*metodám operace vrátit **IOperation** objekt; vráceného objektu obsahuje informace, které je možné sledovat operaci. Odeslat*OperationName*OperationAsync metody vrací **úloh<IOperation>**.
+"Bez dotazování metody" mají následující vzor pro pojmenování: Odeslat*OperationName*operace (například SendCreateOperation). Odeslat*OperationName*metodám operace vrátit **IOperation** objekt; vráceného objektu obsahuje informace, které je možné sledovat operaci. Odeslat*OperationName*OperationAsync metody vrací **úloh\<IOperation >**.
 
 Následující třídy v současné době podporují metody bez dotazování:  **Kanál**, **StreamingEndpoint**, a **Program**.
 

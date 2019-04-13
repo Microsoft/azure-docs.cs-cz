@@ -16,12 +16,12 @@ ms.author: celested
 ms.reviewer: jeedes
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7a5548e7a5f60d9882fdfb4fb6eb777ab993e121
-ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
+ms.openlocfilehash: bede53ef2bc05750be21f831fc0cb790a001c6c5
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/04/2019
-ms.locfileid: "58915990"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59549333"
 ---
 # <a name="advanced-certificate-signing-options-in-the-saml-token-for-gallery-apps-in-azure-active-directory"></a>Rozšířené možnosti v tokenu SAML pro aplikace z Galerie v Azure Active Directory podepsání certifikátu
 
@@ -49,7 +49,7 @@ Azure AD podporuje dva podpisové algoritmy nebo zabezpečené hashovacích algo
 
 * **SHA-1**. Tento algoritmus je starší a je považován za méně bezpečné než algoritmus SHA-256. Pokud aplikace podporuje pouze tento podpisový algoritmus, můžete vybrat tuto možnost v **podpisový algoritmus** rozevíracího seznamu. Azure AD pak podepíše odpověď SAML pomocí algoritmu SHA-1.
 
-## <a name="change-the-certificate-signing-options-and-certificate-signing-algorithm"></a>Změnit možnosti podepsání certifikátu a certifikát podpisový algoritmus
+## <a name="change-certificate-signing-options-and-signing-algorithm"></a>Změna certifikátu možnosti podpisu a podpisový algoritmus
 
 Chcete-li změnit možnosti podpisu certifikát SAML aplikace a podpisový algoritmus, vyberte dané žádosti:
 

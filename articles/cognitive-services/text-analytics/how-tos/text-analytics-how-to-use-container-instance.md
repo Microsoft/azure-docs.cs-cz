@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: article
 ms.date: 01/22/2019
 ms.author: diberry
-ms.openlocfilehash: 00e2c143116550aa77d38b4bc93bbe2e0b41c331
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 3541376331725fddcd58d94625f5d761ef159c97
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55868340"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59526491"
 ---
 # <a name="deploy-the-language-detection-container-to-azure-kubernetes-service"></a>Nasazení kontejneru detekce jazyka do služby Azure Kubernetes Service
 
@@ -206,7 +206,7 @@ Chcete-li získat informace potřebné k připojení vašeho registru kontejneru
 
     Uložte maximum kroku 3 v této části. 
 
-1. K udělení správný přístup pro cluster AKS na používaly Image uložené v registru kontejneru, vytvořte přiřazení role. Nahraďte <appId> a <acrId> hodnotami získanou v předchozí dva kroky.
+1. K udělení správný přístup pro cluster AKS na používaly Image uložené v registru kontejneru, vytvořte přiřazení role. Nahraďte `<appId>` a `<acrId>` hodnotami získanou v předchozí dva kroky.
 
     ```azurecli
     az role assignment create --assignee <appId> --scope <acrId> --role Reader

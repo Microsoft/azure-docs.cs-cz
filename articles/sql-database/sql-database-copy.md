@@ -8,16 +8,16 @@ ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
 author: CarlRabeler
-ms.author: carlrab
+ms.author: sahsan
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 03/12/2019
-ms.openlocfilehash: 2aeb756bda50597bf3e43c0c84391e0750bd8acb
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.date: 04/11/2019
+ms.openlocfilehash: 47aa88040b6010aeca4aeed696310505d1e17df9
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58486814"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59549683"
 ---
 # <a name="copy-a-transactionally-consistent-copy-of-an-azure-sql-database"></a>Zkopírujte transakčně konzistentní kopie databáze Azure SQL
 
@@ -90,10 +90,16 @@ Tento příkaz zkopíruje databáze 1 na serveru1 do nové databáze s názvem d
     -- Execute on the master database of the target server (server2)
     -- Start copying from Server1 to Server2
     CREATE DATABASE Database2 AS COPY OF server1.Database1;
+    
+> [!IMPORTANT]
+> Oba servery brány firewall musí být nakonfigurován umožňuje příchozí připojení z IP adresy klienta vydání příkazu T-SQL kopírování.
 
-## <a name="to-move-a-database-between-subscriptions"></a>Přesun databáze mezi předplatnými
+### <a name="copy-a-sql-database-to-a-different-subscription"></a>Kopírování databáze SQL database do jiného předplatného
 
-V [webu Azure portal](https://portal.azure.com), klikněte na tlačítko **SQL servery** a pak vyberte server, který je hostitelem databáze ze seznamu. Klikněte na tlačítko **přesunout**a pak vyberte prostředky k přesunutí a předplatné, které chcete přesunout.
+Descrbed kroků v předchozí části můžete použít ke zkopírování databáze do databáze SQL serveru v jiném předplatném. Ujistěte se, že použijete přihlašovací údaje, která má stejné jméno a heslo jako vlastník databáze zdrojové databáze a je členem dbmanager role nebo je hlavní přihlášení na úrovni serveru. 
+
+> [!NOTE]
+> [Webu Azure portal](https://portal.azure.com) nepodporuje kopírování do jiného předplatného, protože portál volá rozhraní API ARM a používá certifikáty předplatného pro přístup k oba servery zapojené geografickou replikaci.  
 
 ### <a name="monitor-the-progress-of-the-copying-operation"></a>Sledovat průběh operace kopírování
 
