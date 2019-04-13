@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 1e550002948fc1320b8645bf1af635536d524fe6
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: f61c7a939902ee5d02b2e9ba896c7555968f9d0d
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59282385"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59547981"
 ---
 # <a name="add-a-shape-to-a-map"></a>Přidání obrazce do mapy
 
@@ -26,7 +26,7 @@ Tento článek ukazuje, jak vykreslit geometrie na mapě pomocí řádku a mnoho
 
 `LineString` a `MultiLineString` funkce se používají pro reprezentaci cest a jsou podrobněji popsány dále na mapě.
 
-## <a name="use-a-line"></a>Použít řádek
+### <a name="add-a-line"></a>Přidat řádek
 
 <iframe height='500' scrolling='no' title='Přidání řádku do mapy' src='//codepen.io/azuremaps/embed/qomaKv/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Zobrazit pera <a href='https://codepen.io/azuremaps/pen/qomaKv/'>přidá řádek do mapy</a> pomocí Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) na <a href='https://codepen.io'>CodePen</a>.
 </iframe>
@@ -53,7 +53,7 @@ Kromě toho, že možnost použít jeden tah barvu na řádek můžete také zad
 
 <br/>
 
-<iframe height="265" style="width: 100%;" scrolling="no" title="Řádek s přechodem tahu" src="//codepen.io/azuremaps/embed/wZwWJZ/?height=265&theme-id=0&default-tab=js,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
+<iframe height="500" style="width: 100%;" scrolling="no" title="Řádek s přechodem tahu" src="//codepen.io/azuremaps/embed/wZwWJZ/?height=500&theme-id=0&default-tab=js,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
 Zobrazit pera <a href='https://codepen.io/azuremaps/pen/wZwWJZ/'>čáry tahu přechodem</a> pomocí Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) na <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
@@ -171,7 +171,7 @@ Třetí blok kódu vytvoří funkci, která přijímá hodnotu z prvku HTML rozs
 
 Ve čtvrtém bloku kódu, je vytvořen objekt zdroje dat pomocí [DataSource](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest) třídy. Bod se pak přidá do datového zdroje.
 
-A [PolygonLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.polygonlayer?view=azure-iot-typescript-latest) vykreslí data, který je obalen [DataSource](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest) na mapě. Třetí bloku kódu vytvoří mnohoúhelníkovou vrstvu. Zobrazit vlastnosti vrstvy mnohoúhelníků na [PolygonLayerOptions](/javascript/api/azure-maps-control/atlas.polygonlayeroptions?view=azure-iot-typescript-latest). Vytvořen a přidán do mapování v rámci zdroje dat, hanlder události kliknutí a mnohoúhelníkovou vrstvu [obslužná rutina události](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events) zajistit, že po načtení mapy plně, zobrazí se místo.
+A [PolygonLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.polygonlayer?view=azure-iot-typescript-latest) vykreslí data, který je obalen [DataSource](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest) na mapě. Třetí bloku kódu vytvoří mnohoúhelníkovou vrstvu. Zobrazit vlastnosti vrstvy mnohoúhelníků na [PolygonLayerOptions](/javascript/api/azure-maps-control/atlas.polygonlayeroptions?view=azure-iot-typescript-latest). Vytvořen a přidán do mapování v rámci zdroje dat, obslužné rutiny události kliknutí a mnohoúhelníkovou vrstvu [obslužná rutina události](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events) zajistit, že po načtení mapy plně, zobrazí se místo.
 
 ## <a name="next-steps"></a>Další postup
 

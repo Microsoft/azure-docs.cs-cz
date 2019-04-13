@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: 2412bd5b4b4f05cdeb1638aa3d9ef1676e7b8315
-ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
+ms.openlocfilehash: 8db9e60e9ce99eaf2621821825620966b8b8b4ae
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58293069"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59521624"
 ---
 # <a name="how-to-encode-an-asset-by-using-media-encoder-standard"></a>Kódování prostředku pomocí kodéru Media Encoder Standard
 > [!div class="op_single_selector"]
@@ -94,14 +94,14 @@ Následující příklad ukazuje, jak nastavit atribut assetName:
 
 ## <a name="considerations"></a>Požadavky
 * Taskbody – vlastnosti používaly literál XML definovat počet vstupních nebo výstupních prostředky, které jsou používány úkolu. Tento článek úloh obsahuje definici schématu XML pro XML.
-* V definici taskbody – každé vnitřní hodnota <inputAsset> a <outputAsset> musí být nastavena jako JobInputAsset(value) nebo JobOutputAsset(value).
+* V definici taskbody – každé vnitřní hodnota `<inputAsset>` a `<outputAsset>` musí být nastavena jako JobInputAsset(value) nebo JobOutputAsset(value).
 * Úkol může mít více výstupní assety. Jeden JobOutputAsset(x) jde použít jenom jednou jako výstup úlohy v rámci úlohy.
 * Můžete zadat JobInputAsset nebo JobOutputAsset jako vstupní asset úlohy.
 * Úlohy nesmí tvoří cyklus.
 * Hodnota parametru, který můžete předat JobInputAsset nebo JobOutputAsset představuje hodnotu indexu pro určitý prostředek. Skutečné prostředky jsou definovány v navigační vlastnosti InputMediaAssets a OutputMediaAssets na definici entit úlohy.
 * Protože Media Services je založená na protokolu OData v3, jednotlivé prostředky v InputMediaAssets a OutputMediaAssets navigační vlastnost kolekce odkazují "__metadata: identifikátor uri" dvojice název hodnota.
 * InputMediaAssets mapuje na jeden nebo více prostředků, které jste vytvořili ve službě Media Services. OutputMediaAssets jsou vytvořeny v systému. Jejich neodkazují na existující prostředek.
-* Pomocí atributu assetName může mít název OutputMediaAssets. Pokud tento atribut není k dispozici, pak OutputMediaAsset jmenuje bez ohledu na hodnotu vnitřní text z <outputAsset> element je s příponou hodnotu název úlohy nebo úlohu s Id hodnoty (v případě, kdy není definována vlastnost Name). Například pokud nastavíte hodnotu assetName na "Ukázkový", klikněte název OutputMediaAsset je nastavena na "Ukázkový". Nicméně, pokud jste nenastavili hodnotu assetName, ale nastaven název úlohy, který "NewJob", pak OutputMediaAsset název by měl být "_NewJob JobOutputAsset (hodnota)."
+* Pomocí atributu assetName může mít název OutputMediaAssets. Pokud tento atribut není k dispozici, pak OutputMediaAsset jmenuje bez ohledu na hodnotu vnitřní text z `<outputAsset>` element je s příponou hodnotu název úlohy nebo úlohu s Id hodnoty (v případě, kdy není definována vlastnost Name). Například pokud nastavíte hodnotu assetName na "Ukázkový", klikněte název OutputMediaAsset je nastavena na "Ukázkový". Nicméně, pokud jste nenastavili hodnotu assetName, ale nastaven název úlohy, který "NewJob", pak OutputMediaAsset název by měl být "_NewJob JobOutputAsset (hodnota)."
 
 ## <a name="create-a-job-with-chained-tasks"></a>Vytvoření úlohy zřetězené úkoly
 V mnoha scénářích aplikací vývojáři chtějí vytvořit řadu úloh zpracování. Ve službě Media Services můžete vytvořit řadu zřetězené úkoly. Každý úkol provádí jiné zpracování kroky a může používat procesory architektury různá média. Zřetězené úkoly můžete předat prostředek z jednoho úkolu do druhého, provádění lineární posloupnost úloh na prostředku. Úlohy prováděné v rámci úlohy, ale nemusejí být v sekvenci. Když vytvoříte úlohu zřetězené, zřetězené **ITask** objekty vytvořené v jednom **IJob** objektu.

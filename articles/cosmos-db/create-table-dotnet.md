@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 03/11/2019
 ms.author: sngun
-ms.openlocfilehash: 7ca51b176c17f33b4779a0129c5dc57b220c0097
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 25f8a88c1b488b9272ed1254aaca79a79bc7e871
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57877628"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59544190"
 ---
 # <a name="quickstart-build-a-table-api-app-with-net-sdk-and-azure-cosmos-db"></a>Rychlý start: Sestavení aplikace Table API pomocí .NET SDK a Azure Cosmos DB 
 
@@ -65,9 +65,6 @@ Teď naklonujeme aplikaci Table z GitHubu, nastavíme připojovací řetězec a
    ```bash
    git clone https://github.com/Azure-Samples/azure-cosmos-table-dotnet-core-getting-started.git
    ```
-   > [!NOTE]
-   > .NET standard ukázku popsanou v tomto dokumentu pracuje s Azure Cosmos DB Table API a Azure Table Storage. Pokud vás zajímají spuštěním ukázky, která funguje s rozhraním .NET Framework 4.5, najdete v článku [storage-table-dotnet-getting-started](https://github.com/Azure-Samples/storage-table-dotnet-getting-started) vzorku. 
-
 
 ## <a name="open-the-sample-application-in-visual-studio"></a>Otevření ukázkové aplikace v sadě Visual Studio
 
@@ -94,7 +91,6 @@ Teď se vraťte zpátky na portál Azure Portal, kde najdete informace o připo
       "StorageConnectionString": "<Primary connection string from Azure portal>"
    }
    ```
-   Pokud používáte [rozhraní .NET Framework](https://github.com/Azure-Samples/storage-table-dotnet-getting-started) příklad a měli byste aktualizovat připojovací řetězec, který se nachází v **App.config** souboru.
 
 4. Stisknutím kláves CTRL + S uložte **Settings.json** souboru.
 
@@ -107,9 +103,6 @@ Teď jste aktualizovali aplikaci a zadali do ní všechny informace potřebné k
    ![Správa balíčků NuGet](media/create-table-dotnet/azure-cosmosdb-manage-nuget.png)
 
 2. Nuget **Procházet** zadejte Microsoft.Azure.Cosmos.Table. Vyhledá se klientská knihovna rozhraní Cosmos DB Table API. Všimněte si, že tato knihovna je aktuálně k dispozici pro rozhraní .NET Framework a .NET Standard. 
-
-   > [!NOTE]
-   > Pokud používáte ukázky, které používá rozhraní .NET Framework, měli byste nainstalovat *Microsoft.Azure.CosmosDB.Table*, balíček NuGet. Pokud používáte ukázku rozhraní .NET Framework s Azure Table Storage, kromě konkrétní balíček NuGet služby Cosmos DB můžete také vyžadovat *Microsoft.Azure.Storage.Common* balíček NuGet. 
    
    ![Karta Procházet NuGet](media/create-table-dotnet/azure-cosmosdb-nuget-browse.png)
 

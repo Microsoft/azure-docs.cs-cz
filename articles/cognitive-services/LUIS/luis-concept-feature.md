@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 02/04/2019
+ms.date: 04/01/2019
 ms.author: diberry
-ms.openlocfilehash: fa0a8c4baa9458a3784babe1e342d768748f8a4d
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 7889f223b607912fd88c798b31ec028f97dfbbd6
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55882450"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59522849"
 ---
 # <a name="phrase-list-features-in-your-luis-app"></a>Seznam frázi je součástí aplikace LUIS
 
@@ -93,7 +93,7 @@ Zatímco frázi seznamu a seznam entit může mít vliv na projevy přes všechn
 ### <a name="use-a-phrase-list"></a>Použijte seznam fráze
 Se seznamem frázi LUIS stále vezměte v úvahu kontext a generalizace k identifikaci položky, které jsou podobné, ale není přesná shoda, jako položky v seznamu. Pokud potřebujete aplikaci LUIS tak, aby mohli generalize a identifikaci nových položek v kategorii, použijte seznam frázi. 
 
-Pokud chcete být schopni rozpoznat nové instance entity, jako je plánovače schůzku, který by měl rozpoznávat názvy nových kontaktů, nebo aplikaci inventář, který by měl rozpoznat nové produkty, použijte jiný typ počítače zjistili entitu, jako je jednoduchý nebo hierarchické entity. Pak vytvořte frázi seznam slova a slovní spojení, která pomáhá LUIS, hledání podobně jako v entitě jiná slova. Tento seznam provede LUIS rozpoznat příklady entity tak, že přidáte další význam hodnotu z těchto slov. 
+Pokud chcete být schopni rozpoznat nové instance entity, jako je plánovače schůzku, který by měl rozpoznávat názvy nových kontaktů, nebo aplikaci inventář, který by měl rozpoznat nové produkty, použijte jiný typ počítače zjistili entity jako jsou jednoduché entity. Pak vytvořte frázi seznam slova a slovní spojení, která pomáhá LUIS, hledání podobně jako v entitě jiná slova. Tento seznam provede LUIS rozpoznat příklady entity tak, že přidáte další význam hodnotu z těchto slov. 
 
 Fráze seznamy jsou jako slovník jazyka specifického pro doménu, která usnadní vylepšení kvality znalost záměry a entity. Běžné použití seznamu frázi je podstatná jména správných například názvy měst. Název města, může být několik slova, včetně pomlček nebo apostrofy.
  

@@ -8,16 +8,16 @@ ms.custom: ''
 ms.devlang: ''
 ms.topic: quickstart
 author: sachinpMSFT
-ms.author: sachinp
+ms.author: ninarn
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 02/25/2019
-ms.openlocfilehash: 5aeb84e5086fb0cf5c30e175ad419ee70bed55ad
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.date: 04/11/2019
+ms.openlocfilehash: a5fbc58feea8779ba8a7a61dfc89158e20bd2c92
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58075181"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59544268"
 ---
 # <a name="quickstart-create-a-single-database-in-azure-sql-database-using-the-azure-portal"></a>Rychlý start: Vytvoření izolované databáze ve službě Azure SQL Database pomocí webu Azure portal
 
@@ -34,51 +34,62 @@ Izolované databáze má definovanou sadu výpočetních, paměťových, vstupn�
 Vytvoření izolované databáze s ukázkovými daty AdventureWorksLT:
 
 1. V levém horním rohu webu Azure Portal vyberte **Vytvořit prostředek**.
-2. Vyberte **databází** a pak vyberte **SQL Database**.
-3. V **vytvořit databázi SQL** formuláři zadejte nebo vyberte následující hodnoty:
+2. Vyberte **databází** a pak vyberte **SQL Database** otevřít **vytvořit databázi SQL** stránky. 
 
-   - **Název databáze**: Zadejte *mySampleDatabase*.
-   - **Předplatné**: Rozevírací seznam a vyberte správné předplatné, pokud se nezobrazí.
-   - **Skupina prostředků**: Vyberte **vytvořit nový**, typ *myResourceGroup*a vyberte **OK**.
-   - **Výběr zdroje**: Rozevírací seznam a vyberte **ukázka (AdventureWorksLT)**.
-
-     > [!IMPORTANT]
-     > Je nutné vybrat **ukázka (AdventureWorksLT)** dat, takže můžete postupovat podle snadno tato a další rychlé starty Azure SQL Database, která tato data použít.
-  
    ![Vytvoření izolované databáze](./media/sql-database-get-started-portal/create-database-1.png)
 
-4. V části **Server**vyberte **vytvořit nový**.
-5. V **nový server** formuláři zadejte nebo vyberte následující hodnoty:
+1. Na **Základy** kartě **Project Details** části, zadejte nebo vyberte následující hodnoty:
 
-   - **Název serveru**: Zadejte *můjsqlserver*.
-   - **Přihlašovací jméno správce serveru**: Typ *azureuser*.
-   - **Heslo**: Enter *Azure1234567*.
-   - **Potvrzení hesla**: Zadejte heslo znovu.
-   - **Umístění**: Rozevírací seznam a vyberte jakékoli platné umístění.  
+   - **Předplatné**: Rozevírací seznam a vyberte správné předplatné, pokud se nezobrazí.
+   - **Skupina prostředků**: Vyberte **vytvořit nový**, typ `myResourceGroup`a vyberte **OK**.
+
+   ![Nová databáze SQL – základní kartu](media/sql-database-get-started-portal/new-sql-database-basics.png)
+
+
+1. V **podrobnosti databáze** části, zadejte nebo vyberte následující hodnoty: 
+
+   - **Název databáze**: Zadejte `mySampleDatabase`.
+   - **Server**: Vyberte **vytvořit nový** a zadejte následující hodnoty a pak vyberte **vyberte**. 
+       - **Název serveru**: Typ `mysqlserver`; spolu s některá čísla jedinečný. 
+       - **Přihlašovací jméno správce serveru**: Zadejte `azureuser`.
+       - **Heslo**: Zadejte složité heslo, které splňuje požadavky na heslo. 
+       - **Umístění**: Zvolte umístění z rozevírací nabídky, jako například `West US 2`. 
+
+       ![Nový server](media/sql-database-get-started-portal/new-server.png)
+
+        > [!IMPORTANT]
+        > Nezapomeňte si poznamenat přihlašovací jméno správce serveru a heslo, takže se můžete přihlásit k serveru a databáze pro tuto a další rychlé starty. Pokud zapomenete přihlašovací jméno nebo heslo, můžete získat přihlašovací jméno nebo heslo na **systému SQL server** stránky. Chcete-li otevřít **systému SQL server** vyberte název serveru v databázi, **přehled** stránku po vytvoření databáze.
+
+      ![Podrobnosti o SQL Database](media/sql-database-get-started-portal/sql-db-basic-db-details.png)
+
+   - **Chcete použít elastický fond SQL**: Vyberte **ne** možnost. 
+   - **Výpočetní prostředky a úložiště**: Vyberte **databáze konfigurovat** a pro účely tohoto rychlého startu vyberte **standardní** úroveň služby a pak pomocí posuvníku vyberte **10 Dtu (S0)** a **1** GB úložiště. Vyberte **Použít**. 
+
+    ![Konfigurace vrstvy](media/sql-database-get-started-portal/create-database-s1.png) 
+
+
+      > [!NOTE]
+      > Tento rychlý start využívá [nákupní model založený na DTU](sql-database-service-tiers-dtu.md), ale [nákupní model založený na virtuálních jádrech](sql-database-service-tiers-vcore.md) je také k dispozici.
+      > [!IMPORTANT]
+      > Více než 1 TB úložiště na úrovni Premium je aktuálně k dispozici ve všech oblastech s výjimkou: Čína – východ, Čína – sever, Německo – střed, Německo – severovýchod, střed USA – Západ, oblastí pro úlohy ministerstva obrany USA a US Government centrální. V těchto oblastech je úložiště na úrovni Premium omezeno na 1 TB.  Další informace najdete v tématu [aktuálních omezení pro P11 – P15](sql-database-single-database-scale.md#dtu-based-purchasing-model-limitations-of-p11-and-p15-when-the-maximum-size-greater-than-1-tb).  
+
+    
+
+
+
+1. Vyberte **další nastavení** kartu. 
+1. V **zdroj dat** pod **využívat existující data**vyberte `Sample`. 
+
+   ![Další nastavení SQL DB](media/sql-database-get-started-portal/create-sql-database-additional-settings.png)
 
    > [!IMPORTANT]
-   > Nezapomeňte si poznamenat přihlašovací jméno správce serveru a heslo, takže se můžete přihlásit k serveru a databáze pro tuto a další rychlé starty. Pokud zapomenete přihlašovací jméno nebo heslo, můžete získat přihlašovací jméno nebo heslo na **systému SQL server** stránky. Chcete-li otevřít **systému SQL server** vyberte název serveru v databázi, **přehled** stránku po vytvoření databáze.
+   > Je nutné vybrat **ukázka (AdventureWorksLT)** dat, takže můžete postupovat podle snadno tato a další rychlé starty Azure SQL Database, která tato data použít.
 
-    ![Vytvoření serveru](./media/sql-database-get-started-portal/create-database-server.png)
+1. Ponechejte zbývající hodnoty jako výchozí a vyberte **revize + vytvořit** v dolní části formuláře. 
+1. Zkontrolujte poslední nastavení a vyberte **vytvořit**. 
 
-6. Zvolte **Vybrat**.
-7. Na **SQL Database** formuláře, vyberte **cenová úroveň**. Prozkoumejte množství Dtu a velikosti úložiště k dispozici pro jednotlivé úrovně služby.
+8. Na **SQL Database** formuláře, vyberte **vytvořit** k nasazení a zřizování skupiny prostředků, server a databáze.
 
-   > [!NOTE]
-   > Tento rychlý start využívá [nákupní model založený na DTU](sql-database-service-tiers-dtu.md), ale [nákupní model založený na virtuálních jádrech](sql-database-service-tiers-vcore.md) je také k dispozici.
-   > [!IMPORTANT]
-   > Více než 1 TB úložiště na úrovni Premium je aktuálně k dispozici ve všech oblastech s výjimkou: Čína – východ, Čína – sever, Německo – střed, Německo – severovýchod, střed USA – Západ, oblastí pro úlohy ministerstva obrany USA a US Government centrální. V těchto oblastech je úložiště na úrovni Premium omezeno na 1 TB.  Další informace najdete v tématu [aktuálních omezení pro P11 – P15](sql-database-single-database-scale.md#dtu-based-purchasing-model-limitations-of-p11-and-p15-when-the-maximum-size-greater-than-1-tb).  
-
-8. Pro účely tohoto rychlého startu vyberte **standardní** úroveň služby a pak pomocí posuvníku vyberte **10 Dtu (S0)** a **1** GB úložiště.
-9. Vyberte **Použít**.  
-
-   ![Vyberte ceny.](./media/sql-database-get-started-portal/create-database-s1.png)
-
-10. Na **SQL Database** formuláře, vyberte **vytvořit** k nasazení a zřizování skupiny prostředků, server a databáze.
-
-    Nasazení trvá několik minut. Můžete vybrat **oznámení** na panelu nástrojů můžete sledovat průběh nasazení.
-
-    ![Oznámení](./media/sql-database-get-started-portal/notification.png)
 
 ## <a name="query-the-database"></a>Dotaz na databázi
 

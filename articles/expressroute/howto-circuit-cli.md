@@ -1,5 +1,5 @@
 ---
-title: 'Vytvoření a úprava okruhu ExpressRoute: Azure CLI | Dokumentace Microsoftu'
+title: 'Vytvoření a úprava okruhu ExpressRoute: Rozhraní příkazového řádku Azure | Dokumentace Microsoftu'
 description: Tento článek ukazuje, jak vytvořit, zřízení, ověřte, aktualizovat, odstranit a zrušit zřízení okruhu ExpressRoute pomocí rozhraní příkazového řádku.
 services: expressroute
 author: cherylmc
@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: anzaman;cherylmc
-ms.openlocfilehash: 2013b3b96fddd32f01245655c1feb600bc426e2a
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 556589aa7a0a577b9b1a010cf4811922ebc6de52
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53084137"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59524884"
 ---
 # <a name="create-and-modify-an-expressroute-circuit-using-cli"></a>Vytvoření a úprava okruhu ExpressRoute pomocí rozhraní příkazového řádku
 
@@ -56,7 +56,7 @@ az account set --subscription "<subscription ID>"
 
 ### <a name="2-get-the-list-of-supported-providers-locations-and-bandwidths"></a>2. Získání seznamu podporovaných zprostředkovatelů, umístění a šířky pásma
 
-Než začnete vytvářet okruhu ExpressRoute, budete potřebovat seznam poskytovatelů podporovaných připojení, umístění a možnosti šířky pásma. Rozhraní příkazového řádku příkaz "az express-route seznamu – poskytovatelé síťových služeb-" vrátí tyto informace, které budete používat v dalších krocích:
+Než začnete vytvářet okruhu ExpressRoute, budete potřebovat seznam poskytovatelů podporovaných připojení, umístění a možnosti šířky pásma. Pomocí příkazu CLI `az network express-route list-service-providers` vrátí tyto informace, které budete používat v dalších krocích:
 
 ```azurecli-interactive
 az network express-route list-service-providers
@@ -154,7 +154,7 @@ Odpověď obsahuje klíč služby.
 
 ### <a name="4-list-all-expressroute-circuits"></a>4. Vypsat všechny okruhy ExpressRoute
 
-Pokud chcete získat seznam všech okruhy ExpressRoute, které jste vytvořili, spusťte příkaz "az network express-route list". Tyto informace kdykoli můžete načíst pomocí tohoto příkazu. Chcete-li vypsat všechny okruhy volání bez parametrů.
+Pokud chcete získat seznam všechny okruhy ExpressRoute, které jste vytvořili, spusťte `az network express-route list` příkazu. Tyto informace kdykoli můžete načíst pomocí tohoto příkazu. Chcete-li vypsat všechny okruhy volání bez parametrů.
 
 ```azurecli-interactive
 az network express-route list

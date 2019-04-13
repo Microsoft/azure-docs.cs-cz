@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/01/2019
 ms.author: juliako
-ms.openlocfilehash: 8516035705ad9dfb2ff37592f9381c4f905bb67f
-ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
+ms.openlocfilehash: 6f76d6aed8dc5eed3dbf673b265c404f27b0536d
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58802826"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59526822"
 ---
 # <a name="use-aes-128-dynamic-encryption-and-the-key-delivery-service"></a>Použití dynamického šifrování AES-128 a doručení klíče služby
 > [!div class="op_single_selector"]
@@ -141,7 +141,7 @@ K testování datového proudu můžete použít [Azure Media Services Player](h
 V předchozím kroku sestavit adresu URL, která odkazuje na soubor manifestu. Váš klient je potřeba extrahovat nezbytné informace z datových proudů soubory manifestu tak, aby žádost o službu doručování klíčů.
 
 ### <a name="manifest-files"></a>Soubory manifestu
-Klient musí získat adresu URL (obsah, který také obsahuje klíč ID [dětský]) hodnotu ze souboru manifestu. Klient se pak pokusí získat šifrovací klíč ze služby doručení klíče. Klienta je také potřeba extrahovat hodnotu IV a použít ho k dešifrování datového proudu. Následující fragment kódu ukazuje <Protection> elementu v manifestu technologie Smooth Streaming:
+Klient musí získat adresu URL (obsah, který také obsahuje klíč ID [dětský]) hodnotu ze souboru manifestu. Klient se pak pokusí získat šifrovací klíč ze služby doručení klíče. Klienta je také potřeba extrahovat hodnotu IV a použít ho k dešifrování datového proudu. Následující fragment kódu ukazuje `<Protection>` elementu v manifestu technologie Smooth Streaming:
 
 ```xml
     <Protection>

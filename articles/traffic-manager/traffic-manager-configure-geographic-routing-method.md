@@ -10,12 +10,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/22/2017
 ms.author: kumud
-ms.openlocfilehash: 64e3cbd082f2d18668dff87fbec098add73ffda6
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 30c4a6817272f7b5f1810873a93280b234ff6cc9
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58010080"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59524306"
 ---
 # <a name="configure-the-geographic-traffic-routing-method-using-traffic-manager"></a>Konfigurace metody směrování provozu na geografické pomocí Traffic Manageru
 
@@ -26,7 +26,7 @@ Geografickou metodu směrování provozu umožňuje směrovat provoz na konkrét
 1. V prohlížeči se přihlaste k webu [Azure Portal](https://portal.azure.com). Pokud ještě účet nemáte, můžete si zaregistrovat [zkušební verzi na měsíc zdarma](https://azure.microsoft.com/free/).
 2. Klikněte na **Vytvořit prostředek** > **Sítě** > **Profil služby Traffic Manager** > **Vytvořit**.
 4. V **vytvořit profil Traffic Manageru**:
-    1. Zadejte název pro svůj profil. Tento název musí být jedinečný v rámci zóny trafficmanager.net. Pro přístup k vašeho profilu Traffic Manageru, použijte název DNS <profilename>. trafficmanager.net.
+    1. Zadejte název pro svůj profil. Tento název musí být jedinečný v rámci zóny trafficmanager.net. Pro přístup k vašeho profilu Traffic Manageru, použijte název DNS `<profilename>.trafficmanager.net`.
     2. Vyberte **Geographic** metodu směrování.
     3. Vyberte předplatné, které chcete vytvořit tento profil v části.
     4. Použijte existující skupinu prostředků nebo vytvořte novou skupinu prostředků umístit tento profil v části. Pokud se rozhodnete vytvořit novou skupinu prostředků, použijte **umístění skupiny prostředků** rozevíracího seznamu a zadejte umístění skupiny prostředků. Toto nastavení označuje umístění skupiny prostředků a nemá žádný vliv na profil Traffic Manageru, který se nasadí globálně.

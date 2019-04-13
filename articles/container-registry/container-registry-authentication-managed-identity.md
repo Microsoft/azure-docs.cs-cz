@@ -7,12 +7,12 @@ ms.service: container-registry
 ms.topic: article
 ms.date: 01/16/2019
 ms.author: danlep
-ms.openlocfilehash: b09348e98a0dee85338cc9f20289d83b658eb719
-ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.openlocfilehash: 728a2f8cf61bbe0691350b9de45a5fab6b90cadb
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58338458"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59526618"
 ---
 # <a name="use-an-azure-managed-identity-to-authenticate-to-an-azure-container-registry"></a>Použití spravované identity k ověření do služby Azure container registry v Azure 
 
@@ -164,7 +164,7 @@ az role assignment create --assignee $spID --scope $resourceID --role acrpull
 
 Připojte přes SSH k virtuálnímu počítači Dockeru, který má nakonfigurovanou identitu. Spuštěním následujících příkazů rozhraní příkazového řádku Azure, pomocí rozhraní příkazového řádku Azure, který je nainstalovaný na virtuálním počítači.
 
-Nejprve ověřit pomocí rozhraní příkazového řádku Azure [az login][az-login], pomocí identity nakonfigurovaný na virtuálním počítači. Pro <userID>, nahraďte ID identity, který jste získali v předchozím kroku. 
+Nejprve ověřit pomocí rozhraní příkazového řádku Azure [az login][az-login], pomocí identity nakonfigurovaný na virtuálním počítači. Pro `<userID>`, nahraďte ID identity, který jste získali v předchozím kroku. 
 
 ```azurecli
 az login --identity --username <userID>

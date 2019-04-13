@@ -7,12 +7,12 @@ ms.service: storage
 ms.topic: article
 ms.date: 2/1/2019
 ms.author: seguler
-ms.openlocfilehash: 1e26eb213ad2613877c46758299c2e962894d358
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: eadf52afd115eb1cb642082cea4b9f338bd44914
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55697998"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59521649"
 ---
 # <a name="how-to-mount-blob-storage-as-a-file-system-with-blobfuse"></a>Postup připojení služby Blob storage jako systém souborů s blobfuse
 
@@ -29,7 +29,7 @@ Tato příručka ukazuje, jak používat blobfuse a připojení kontejneru úlo�
 ## <a name="install-blobfuse-on-linux"></a>Instalace blobfuse v Linuxu
 Blobfuse binární soubory jsou k dispozici na [Microsoft úložiště softwaru Linux](https://docs.microsoft.com/windows-server/administration/Linux-Package-Repository-for-Microsoft-Software) pro distribuce operačních systémů se systémem Ubuntu a RHEL. K instalaci blobfuse na těchto distribucí, nakonfigurujte jednu z úložiště ze seznamu. Můžete také sestavit binární soubory z následujících zdrojového kódu [kroky instalace služby Azure Storage](https://github.com/Azure/azure-storage-fuse/wiki/1.-Installation#option-2---build-from-source) Pokud nejsou k dispozici pro vaši distribuci žádné binární soubory.
 
-Blobfuse podporuje instalaci na Ubuntu 14.04 a 16.04. Spusťte tento příkaz, abyste měli jistotu, že máte jeden z těchto verzí nasazení:
+Blobfuse podporuje instalaci na Ubuntu 14.04 a 16.04, 18.04. Spusťte tento příkaz, abyste měli jistotu, že máte jeden z těchto verzí nasazení:
 ```
 lsb_release -a
 ```
@@ -51,11 +51,11 @@ sudo dpkg -i packages-microsoft-prod.deb
 sudo apt-get update
 ```
 
-Podobně, změňte adresu URL na `.../ubuntu/16.04/...` tak, aby odkazoval Ubuntu 16.04 distribuce.
+Podobně, změňte adresu URL na `.../ubuntu/16.04/...` nebo `.../ubuntu/18.04/...` tak, aby odkazovaly na jinou verzi Ubuntu.
 
 ### <a name="install-blobfuse"></a>Nainstalujte blobfuse
 
-Na Ubuntu nebo Debian distribuce:
+V distribučním Ubuntu nebo Debian:
 ```bash
 sudo apt-get install blobfuse
 ```
@@ -85,7 +85,7 @@ V Azure můžete použít dočasné disky (SSD) k dispozici na virtuálních po�
 
 Ujistěte se, že váš uživatel má přístup k dočasné cesty:
 ```bash
-sudo mkdir /mnt/resource/blobfusetmp
+sudo mkdir /mnt/resource/blobfusetmp -p
 sudo chown <youruser> /mnt/resource/blobfusetmp
 ```
 
@@ -97,8 +97,15 @@ accountName myaccount
 accountKey storageaccesskey
 containerName mycontainer
 ```
+`accountName` Je předpona pro váš účet úložiště – není úplná adresa URL.
 
-Po vytvoření tohoto souboru, ujistěte se, že chcete omezit přístup, aby žádný jiný uživatel ho může číst.
+Vytvořte tento soubor pomocí:
+
+```
+touch ~/fuse_connection.cfg
+```
+
+Jakmile máte vytvořený a tento soubor upravili, ujistěte se, že chcete omezit přístup, aby žádní uživatelé mohou číst.
 ```bash
 chmod 600 fuse_connection.cfg
 ```

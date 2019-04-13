@@ -9,12 +9,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seodec18
 ms.date: 12/07/2018
-ms.openlocfilehash: d802fade0ff9c5b4bc329c7451144d8c782f8d3c
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 261b55f722fdc3c1e8f4b45debc664f49db3f898
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58097936"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59523541"
 ---
 # <a name="analyze-phone-call-data-with-stream-analytics-and-visualize-results-in-power-bi-dashboard"></a>Analýza dat telefonních hovorů pomocí Stream Analytics a vizualizaci výsledků na řídicím panelu Power BI
 
@@ -96,7 +96,7 @@ Před spuštěním aplikace TelcoGenerator byste ji měli nakonfigurovat tak, ab
 1. Extrahujte obsah souboru [TelcoGenerator.zip](https://download.microsoft.com/download/8/B/D/8BD50991-8D54-4F59-AB83-3354B69C8A7E/TelcoGenerator.zip).
 2. Otevřete soubor `TelcoGenerator\TelcoGenerator\telcodatagen.exe.config` v textovém editoru podle vašeho výběru (existuje více než jeden soubor .config, proto se ujistěte, že otevíráte správný soubor).
 
-3. Aktualizujte element <appSettings> v konfiguračním souboru následujícím způsobem:
+3. Aktualizujte element `<appSettings>` v konfiguračním souboru následujícím způsobem:
 
    * Nastavte hodnotu klíče *EventHubName* na hodnotu EntityPath v připojovacím řetězci.
    * Nastavte hodnotu klíče *Microsoft.ServiceBus.ConnectionString* na připojovací řetězec bez hodnoty EntityPath.

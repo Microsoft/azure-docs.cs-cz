@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/14/2018
 ms.author: cherylmc
-ms.openlocfilehash: 24e12184070909943c5660d94d8e19ce9df1de30
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: e18f37b31b7f0a49717e174d8a20d56388ad4808
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58111119"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59526142"
 ---
 # <a name="configure-a-vnet-to-vnet-vpn-gateway-connection-using-azure-cli"></a>Konfigurace připojení brány VPN typu VNet-to-VNet pomocí Azure CLI
 
@@ -85,7 +85,7 @@ Pro toto cvičení můžete konfigurace kombinovat nebo prostě vybrat tu, se kt
 
 ## <a name="samesub"></a>Propojení virtuálních sítí patřících ke stejnému předplatnému
 
-### <a name="before-you-begin"></a>Před zahájením
+### <a name="before-you-begin"></a>Než začnete
 
 Než začnete, nainstalujte si nejnovější verzi příkazů rozhraní příkazového řádku (2.0 nebo novější). Informace o instalaci příkazů rozhraní příkazového řádku najdete v tématu [Instalace Azure CLI](/cli/azure/install-azure-cli).
 
@@ -299,7 +299,7 @@ Při vytváření dalších připojení je důležité ověřit, že se adresní
 
 ### <a name="TestVNet5"></a>Krok 7: Vytvoření a konfigurace virtuální sítě TestVNet5
 
-Tento krok je třeba provést v rámci nového předplatného (předplatné 5). Tuto část může provést správce v organizaci, která je vlastníkem druhého předplatného. Pro přepínání mezi předplatnými použijte příkaz „az account list --all“, který vypíše dostupná předplatná pro váš účet, a pak pomocí příkazu „az account set --subscription <subscriptionID>“ přepněte na předplatné, které chcete použít.
+Tento krok je třeba provést v rámci nového předplatného (předplatné 5). Tuto část může provést správce v organizaci, která je vlastníkem druhého předplatného. Chcete-li přepnout mezi předplatnými použijte `az account list --all` seznam předplatných dostupných ke svému účtu, potom použijte `az account set --subscription <subscriptionID>` přepnout do předplatného, který chcete použít.
 
 1. Ujistěte se, že jste připojeni k předplatnému 5, a pak vytvořte skupinu prostředků.
 
@@ -338,7 +338,7 @@ Tento krok je třeba provést v rámci nového předplatného (předplatné 5). 
 
 ### <a name="connections5"></a>Krok 8: Vytvoření připojení
 
-Vzhledem k tomu, že brány patří do různých předplatných, je tento krok rozdělený do dvou relací rozhraní příkazového řádku označených jako **[Předplatné 1]** a **[Předplatné 5]**. Pro přepínání mezi předplatnými použijte příkaz „az account list --all“, který vypíše dostupná předplatná pro váš účet, a pak pomocí příkazu „az account set --subscription <subscriptionID>“ přepněte na předplatné, které chcete použít.
+Vzhledem k tomu, že brány patří do různých předplatných, je tento krok rozdělený do dvou relací rozhraní příkazového řádku označených jako **[Předplatné 1]** a **[Předplatné 5]**. Chcete-li přepnout mezi předplatnými použijte `az account list --all` seznam předplatných dostupných ke svému účtu, potom použijte `az account set --subscription <subscriptionID>` přepnout do předplatného, který chcete použít.
 
 1. **[Předplatné 1]** Přihlaste a připojte se k předplatnému 1. Spusťte následující příkaz a z výstupu získejte název a ID brány:
 

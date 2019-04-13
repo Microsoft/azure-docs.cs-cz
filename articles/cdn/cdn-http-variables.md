@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/09/2018
 ms.author: magattus
-ms.openlocfilehash: 42fd28f2a18ecf81c7846abdc7b3159a275a9cd7
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 8d4fc5fbdc3185c46f00d94537b197ec03f66755
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58013558"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59528165"
 ---
 # <a name="http-variables-for-azure-cdn-rules-engine"></a>Proměnné protokolu HTTP pro Azure CDN stroje pravidel
 HTTP proměnné poskytují prostředky, pomocí kterého můžete získat metadata žádostí a odpovědí HTTP. Tato metadata pak lze dynamicky měnit požadavek nebo odpověď. Použití proměnných HTTP je omezen na následující funkce stroje pravidel:
@@ -38,7 +38,7 @@ Následující tabulka popisuje podporované proměnné protokolu HTTP. Při Geo
 | ---- | -------- | ----------- | ------------ |
 | Číslo ASN (žadateli) | %{geo_asnum} | Označuje žadatele jako číslo. <br /><br />**Zastaralé:** % {virt_dst_asnum}. <br />Tato proměnná je zastaralá a místo toho použití % {geo_asnum}. I když pravidlo, které používá tento nepoužívané proměnnou budou nadále fungovat, měli byste aktualizovat ho na použití nové proměnné. | AS15133 |
 | Město (žadateli) | %{geo_city} | Označuje žadatele město. | Los Angeles |
-| Kontinent (žadateli) | %{geo_continent} | Označuje žadatele kontinent prostřednictvím jeho zkratkou. <br />Platné hodnoty jsou: <br />AF: Afrika<br />AS: Asie<br />EU: Evropa<br />NA: Severní Amerika<br />OC: Oceánie<br />PŘIDRUŽENÍ ZABEZPEČENÍ: Jižní Amerika<br /><br />**Deprecated:** %{virt_dst_continent}. <ber />Tato proměnná je zastaralá a místo toho použití % {geo_continent}. <br />I když pravidlo, které používá tento nepoužívané proměnnou budou nadále fungovat, měli byste aktualizovat ho na použití nové proměnné.| neuvedeno |
+| Kontinent (žadateli) | %{geo_continent} | Označuje žadatele kontinent prostřednictvím jeho zkratkou. <br />Platné hodnoty jsou: <br />AF: Afrika<br />AS: Asie<br />EU: Evropa<br />NA: Severní Amerika<br />OC: Oceánie<br />PŘIDRUŽENÍ ZABEZPEČENÍ: Jižní Amerika<br /><br />**Deprecated:** %{virt_dst_continent}. <br />Tato proměnná je zastaralá a místo toho použití % {geo_continent}. <br />I když pravidlo, které používá tento nepoužívané proměnnou budou nadále fungovat, měli byste aktualizovat ho na použití nové proměnné.| neuvedeno |
 | Hodnota souboru cookie | %{cookie_Cookie} | Vrací hodnotu odpovídající klíč souboru cookie, který je identifikován jako souboru Cookie. | Využití vzorků: <br />%{cookie__utma}<br /><br />Hodnota vzorku:<br />111662281.2.10.1222100123 |
 | Země (žadateli) | %{geo_country} | Označuje žadatele země původu prostřednictvím jeho směrové číslo země. <br />**Zastaralé:** % {virt_dst_country}. <br /><br />Tato proměnná je zastaralá a místo toho použití % {geo_country}. I když pravidlo, které používá tento nepoužívané proměnnou budou nadále fungovat, měli byste aktualizovat ho na použití nové proměnné. | USA |
 | Určený trh oblasti (žadateli) | %{geo_dma_code} |Označuje žadatele média trhu podle oblasti kódu. <br /><br />Toto pole platí pouze pro požadavky, které pocházejí z USA.| 745 |

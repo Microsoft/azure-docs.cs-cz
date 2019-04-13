@@ -12,12 +12,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 10/09/2018
 ms.author: mikhegn
-ms.openlocfilehash: 0ab6e3f189d4a2e7e8f3bc96108d7979c99fffa8
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 3d03ca5cec2cef67862c2678b3b0a8f17b413787
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58102665"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59524510"
 ---
 # <a name="how-to-parameterize-configuration-files-in-service-fabric"></a>Jak parametrizovat konfigurační soubory v Service Fabric
 
@@ -27,7 +27,7 @@ Tento článek ukazuje, jak parametrizovat konfiguračním souboru v Service Fab
 
 V tomto příkladu je přepsat hodnotu konfigurace pomocí parametrů v nasazení vaší aplikace.
 
-1. Otevřít  *<MyService>\PackageRoot\Config\Settings.xml* souboru v projektu služby.
+1. Otevřít  *\<Moje_služba > \PackageRoot\Config\Settings.xml* souboru v projektu služby.
 1. Nastavte název konfiguračního parametru a hodnota, například velikost mezipaměti roven 25, přidáním následující kód XML:
 
    ```xml
@@ -37,7 +37,7 @@ V tomto příkladu je přepsat hodnotu konfigurace pomocí parametrů v nasazen�
    ```
 
 1. Uložte soubor a zavřete ho.
-1. Otevřít  *<MyApplication>\ApplicationPackageRoot\ApplicationManifest.xml* souboru.
+1. Otevřít  *\<MyApplication > \ApplicationPackageRoot\ApplicationManifest.xml* souboru.
 1. V souboru ApplicationManifest.xml deklarovat parametr a výchozí hodnotu v `Parameters` elementu.  Doporučuje se, že název parametru obsahuje název služby (například "Moje_služba").
 
    ```xml

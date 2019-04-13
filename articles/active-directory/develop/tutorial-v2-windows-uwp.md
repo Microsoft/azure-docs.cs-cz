@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 04/10/2019
+ms.date: 04/11/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cc88535b2332d4e70e383094bdf181d2836752d1
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.openlocfilehash: 7bd57b3d41ad7c670b5423f10a9c93b55e87d757
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/11/2019
-ms.locfileid: "59489994"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59522788"
 ---
 # <a name="call-microsoft-graph-api-from-a-universal-windows-platform-application-xaml"></a>Volání rozhraní Microsoft Graph API z aplikace pro univerzální platformu Windows (XAML)
 
@@ -173,7 +173,7 @@ Tato část ukazuje použití MSAL k získání tokenu pro rozhraní Microsoft G
 
           try
           {
-           authResult = await PublicClientApp.AcquireTokenInteractive(scopes, this)
+           authResult = await PublicClientApp.AcquireTokenInteractive(scopes)
                                                       .ExecuteAsync()
                                                       .ConfigureAwait(false);
            }

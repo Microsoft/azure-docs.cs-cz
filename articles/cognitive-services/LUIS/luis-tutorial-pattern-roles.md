@@ -1,7 +1,7 @@
 ---
 title: Role modelu
 titleSuffix: Azure Cognitive Services
-description: Použijte vzor k extrakci dat z dobře formulované šablony promluvy. Šablona promluvy používá jednoduchou entitu a role k extrakci takových souvisejících dat, jako jsou umístění původu a umístění cíle.
+description: Vzory extrahovat data z projevy správně naformátovaný šablony. Šablona promluvy používá jednoduchou entitu a role k extrakci takových souvisejících dat, jako jsou umístění původu a umístění cíle.
 ms.custom: seodec18
 services: cognitive-services
 author: diberry
@@ -9,18 +9,18 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 12/21/2018
+ms.date: 04/01/2019
 ms.author: diberry
-ms.openlocfilehash: dc1be0d1d00ae64f38690f019580119b03debedf
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: d6a2c9d92d79bed3f0e9a9976a64f6e11debba88
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58106589"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59523270"
 ---
 # <a name="tutorial-extract-contextually-related-patterns-using-roles"></a>Kurz: Extrahovat kontextově související vzory používání rolí
 
-V tomto kurzu budete používat vzor k extrakci dat z dobře formulované šablony promluvy. Šablona promluvy používá jednoduchou entitu a role k extrakci takových souvisejících dat, jako jsou umístění původu a umístění cíle.  Záměr bude při použití vzorů potřebovat méně ukázkových promluv.
+V tomto kurzu budete používat vzor k extrakci dat z dobře formulované šablony promluvy. Používá utterance šablony [jednoduchou entitu](luis-concept-entity-types.md#simple-entity) a [role](luis-concept-roles.md) extrahovat související data, jako je původní umístění a cílové umístění.  Záměr bude při použití vzorů potřebovat méně ukázkových promluv.
 
 
 **V tomto kurzu se naučíte:**
@@ -40,7 +40,7 @@ V tomto kurzu budete používat vzor k extrakci dat z dobře formulované šablo
 
 ## <a name="using-roles-in-patterns"></a>Použití rolí ve vzorcích
 
-Účelem rolí je extrahovat z promluvy entity související s kontextem. V promluvě `Move new employee Robert Williams from Sacramento and San Francisco` jsou hodnoty města původu a cílového města ve vztahu jedna k druhé a odlišují se jen obecným jazykem. 
+Účelem role je extrahovat kontextově související entity v utterance. V promluvě `Move new employee Robert Williams from Sacramento and San Francisco` jsou hodnoty města původu a cílového města ve vztahu jedna k druhé a odlišují se jen obecným jazykem. 
 
 
 Jméno nového zaměstnance (Billy Patterson) ještě není součástí seznamu entity **Zaměstnanec**. Jméno nového zaměstnance se extrahuje jako první, aby bylo možné poslat je do externího systému, kde se vytvoří přihlašovací údaje společnosti. Po jejich vytvoření se přihlašovací údaje zaměstnance přidají do seznamu entity **Zaměstnanec**.
@@ -373,19 +373,6 @@ Názvy měst jsou, stejně jako jména lidí, nevypočitatelné. Můžou obsahov
     ```
 
 Skóre záměru je mnohem vyšší a názvy rolí jsou součástí odpovědi entity.
-
-## <a name="hierarchical-entities-versus-roles"></a>Hierarchické entity a role
-
-V [hierarchical tutorial](luis-quickstart-intent-and-hier-entity.md) (hierarchický kurz) záměr **MoveEmployee** detekoval, kdy přestěhovat existujícího zaměstnance z jedné budovy a kanceláře do jiné. Ukázkové promluvy obsahovali umístění původu a cílové umístění, ale nepoužívaly role. Místo toho byly počátek a cíl podřízenými prvky hierarchické entity. 
-
-V tomto kurzu aplikace Human Resources detekuje promluvy, které se týkají stěhování zaměstnanců z jednoho města do druhého. Tyhle dva typy promluv jsou sice shodné, ale LUIS je řeší jinými schopnostmi.
-
-|Kurz|Ukázková promluva|Umístění původu a cíle|
-|--|--|--|
-|[Hierarchicky (bez rolí)](luis-quickstart-intent-and-hier-entity.md)|ps Jill Jones z **a-2349** do **b-1298**|a-2349, b-1298|
-|Tento kurz (s rolemi)|Přestěhovat Billy Patterson z **Yuma** do **Denver**.|Yuma, Denver|
-
-Další informace najdete v tématu věnovaném [porovnání rolí a hierarchických entit](luis-concept-roles.md#roles-versus-hierarchical-entities).
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 

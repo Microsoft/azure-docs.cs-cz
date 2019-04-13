@@ -9,12 +9,12 @@ ms.subservice: anomaly-detector
 ms.topic: article
 ms.date: 03/26/2019
 ms.author: aahi
-ms.openlocfilehash: 60307d51439b4474c8be4f040792c03a6f83b0fd
-ms.sourcegitcommit: fbfe56f6069cba027b749076926317b254df65e5
+ms.openlocfilehash: 6b4ddcadfe63f74d115c155354a276e45c6b53f9
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58473159"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59544496"
 ---
 # <a name="quickstart-detect-anomalies-in-your-time-series-data-using-the-anomaly-detector-rest-api-and-python"></a>Rychlý start: Detekovat anomálie ve vašich datech časových řad pomocí rozhraní REST API služby detekce anomálií a Pythonu
 
@@ -65,7 +65,7 @@ V tomto rychlém startu můžete začít používat rozhraní API detekce anomá
     data_location = "[PATH_TO_TIME_SERIES_DATA]"
     ```
 
-3. Přečtěte si v datovém souboru JSON, otevřením a použitím `json.load()`. 
+3. Přečtěte si v datovém souboru JSON, otevřením a použitím `json.load()`.
 
     ```python
     file_handler = open(data_location)
@@ -78,28 +78,24 @@ V tomto rychlém startu můžete začít používat rozhraní API detekce anomá
 
 2. Vytvořte slovník pro záhlaví požadavku. Nastavte `Content-Type` k `application/json`a přidat váš klíč předplatného na `Ocp-Apim-Subscription-Key` záhlaví.
 
-3. Odeslat žádost o prostřednictvím `requests.post()`. Kombinace váš koncový bod a adresa URL zjišťování anomálií úplný adresa URL požadavku a zahrnout záhlaví a data žádosti json. 
+3. Odeslat žádost o prostřednictvím `requests.post()`. Kombinace váš koncový bod a adresa URL zjišťování anomálií úplný adresa URL požadavku a zahrnout záhlaví a data žádosti json. A pak vrací odpověď.
 
-4. Pokud je žádost úspěšná, vrátí odpověď.  
-    
-    ```python
-    def send_request(endpoint, url, subscription_key, request_data):
-        headers = {'Content-Type': 'application/json', 'Ocp-Apim-Subscription-Key': subscription_key}
-        response = requests.post(endpoint+url, data=json.dumps(request_data), headers=headers)
-        if response.status_code == 200:
-            return json.loads(response.content.decode("utf-8"))
-        else:
-            print(response.status_code)
-            raise Exception(response.text)
-    ```
+```python
+def send_request(endpoint, url, subscription_key, request_data):
+    headers = {'Content-Type': 'application/json', 'Ocp-Apim-Subscription-Key': subscription_key}
+    response = requests.post(endpoint+url, data=json.dumps(request_data), headers=headers)
+    return json.loads(response.content.decode("utf-8"))
+```
 
 ## <a name="detect-anomalies-as-a-batch"></a>Zjišťovat anomálie v dávce
 
-1. Vytvořit metodu nazvanou `detect_batch()` zjišťovat anomálie v celém data v dávce. Volání `send_request()` metoda vytvořené výše s koncovým bodem, adresa url, klíč předplatného a dat json. 
+1. Vytvořit metodu nazvanou `detect_batch()` zjišťovat anomálie v celém data v dávce. Volání `send_request()` metoda vytvořené výše s koncovým bodem, adresa url, klíč předplatného a dat json.
 
 2. Volání `json.dumps()` na výsledek, který má naformátování a vypíše do konzoly.
 
-3. Vyhledání pozice anomálie v datové sadě. Odpověď na `isAnomaly` pole obsahuje hodnotu typu boolean týkající se určuje, zda je daný datový bod anomálie. Iteraci v rámci seznamu a vytisknout index žádné `True` hodnoty. Tyto hodnoty odpovídat indexu neobvyklé datových bodů, pokud některá.
+3. Pokud odpověď obsahuje `code` pole, kód chyby a chybová zpráva.
+
+4. V opačném případě vyhledání pozice anomálie v datové sadě. Odpověď na `isAnomaly` pole obsahuje hodnotu typu boolean týkající se určuje, zda je daný datový bod anomálie. Iteraci v rámci seznamu a vytisknout index žádné `True` hodnoty. Tyto hodnoty odpovídat indexu neobvyklé datových bodů, pokud některá.
 
 ```python
 def detect_batch(request_data):
@@ -107,12 +103,15 @@ def detect_batch(request_data):
     result = send_request(endpoint, batch_detection_url, subscription_key, request_data)
     print(json.dumps(result, indent=4))
 
-    # Find and display the positions of anomalies in the data set
-    anomalies = result["isAnomaly"]
-    print("Anomalies detected in the following data positions:")
-    for x in range(len(anomalies)):
-        if anomalies[x] == True:
-            print (x)
+    if result.get('code') != None:
+        print("Detection failed. ErrorCode:{}, ErrorMessage:{}".format(result['code'], result['message']))
+    else:
+        # Find and display the positions of anomalies in the data set
+        anomalies = result["isAnomaly"]
+        print("Anomalies detected in the following data positions:")
+        for x in range(len(anomalies)):
+            if anomalies[x] == True:
+                print (x)
 ```
 
 ## <a name="detect-the-anomaly-status-of-the-latest-data-point"></a>Zjištění anomálií stavu nejnovější datového bodu
@@ -132,14 +131,14 @@ def detect_latest(request_data):
 ## <a name="load-your-time-series-data-and-send-the-request"></a>Načtení dat časových řad a odeslat žádost
 
 1. Načíst data JSON časových řad otevřete popisovač souboru a pomocí `json.load()` na něj. Potom anomálii volání metody detekce vytvořili výše.
-    
-    ```python
-    file_handler = open (data_location)
-    json_data = json.load(file_handler)
-    
-    detect_batch(json_data)
-    detect_latest(json_data)
-    ```
+
+```python
+file_handler = open(data_location)
+json_data = json.load(file_handler)
+
+detect_batch(json_data)
+detect_latest(json_data)
+```
 
 ### <a name="example-response"></a>Příklad odpovědi
 

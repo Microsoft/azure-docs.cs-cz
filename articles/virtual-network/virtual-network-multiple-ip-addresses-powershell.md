@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/24/2017
 ms.author: jdial;annahar
-ms.openlocfilehash: bded6c76aa209a718929c891bd2443f8517ec44a
-ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
+ms.openlocfilehash: 70dac62e3e19ad0e9b33ea7b376a8fe479bf3131
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58649627"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59522980"
 ---
 # <a name="assign-multiple-ip-addresses-to-virtual-machines-using-powershell"></a>Přiřadit několik IP adres virtuálních počítačů pomocí Powershellu
 
@@ -96,7 +96,7 @@ Následující kroky popisují, jak vytvořit příklad virtuálního počítač
 
 6. Definovat primární konfigurace protokolu IP pro síťové rozhraní Pokud jste nepoužili hodnotu, dříve definovanou, změňte na platnou adresou v podsíti, ve které jste vytvořili, 10.0.0.4. Před přiřazením statické IP adresy, doporučujeme nejdřív ověřit, že není již používáno. Zadejte příkaz `Test-AzPrivateIPAddressAvailability -IPAddress 10.0.0.4 -VirtualNetwork $VNet`. Pokud je k dispozici na adresu, na výstupu vrátí *True*. Pokud není k dispozici, na výstupu vrátí *False* a seznam adres, které jsou k dispozici. 
 
-    V následujících příkazech **< nahradit s your jedinečný – name > nahraďte jedinečný název DNS k použití.** Název musí být jedinečný mezi všechny veřejné IP adresy v rámci oblasti Azure. Toto je volitelný parametr. Je možné odebrat, pokud se chcete připojit k virtuálnímu počítači pomocí veřejné IP adresy.
+    V následujících příkazech **nahradit \<nahradit s your jedinečný název > s jedinečným názvem služby DNS k použití.** Název musí být jedinečný mezi všechny veřejné IP adresy v rámci oblasti Azure. Toto je volitelný parametr. Je možné odebrat, pokud se chcete připojit k virtuálnímu počítači pomocí veřejné IP adresy.
 
     ```powershell
     

@@ -8,29 +8,24 @@ ms.topic: include
 ms.date: 01/11/2018
 ms.author: tamram
 ms.custom: include file
-ms.openlocfilehash: 2957b45a0a26c590e2db1b402f4956ae9c3b8000
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: ee9b70827c19236287f81f66f4b9c6e1004a54fd
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59291713"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59532610"
 ---
-Následující tabulka popisuje výchozí omezení pro službu Azure Storage. *Příchozího přenosu dat* limit odkazuje na všechna data z požadavků, které se odesílají na účet úložiště. *Odchozího přenosu dat* limit odkazuje na všechna data z odpovědi, které byly přijaty z účtu úložiště.
+Následující tabulka popisuje výchozí limity pro Azure pro obecné účely v1, v2 a účty Blob storage. *Příchozího přenosu dat* limit odkazuje na všechna data z požadavků, které se odesílají na účet úložiště. *Odchozího přenosu dat* limit odkazuje na všechna data z odpovědi, které byly přijaty z účtu úložiště.
 
 | Prostředek | Výchozí omezení |
 | --- | --- |
 | Počet účtů úložiště na oblast a předplatné, včetně účtů standard a premium | 250 |
 | Maximální kapacita účtu | 2 PB pro USA a Evropě, 500 TB pro všechny ostatní oblasti, která zahrnuje Spojeném království |
 | Maximální počet kontejnerů objektů blob, objekty BLOB, sdílené složky, tabulky, fronty, entity nebo zpráv za účet úložiště | Bez omezení |
-| Maximální velikost úložiště účtu úložiště souborů (preview) | 100 000 giB |
-| Maximální hodnoty IOPS pro účet úložiště pro úložiště souborů (preview) | 100 000 |
-| Maximální šířka pásma pro účet úložiště pro úložiště souborů (preview) | 5 GB/s |
 | Maximální frekvence požadavků<sup>1</sup> jeden účet úložiště | 20 000 požadavků za sekundu |
 | Maximální příchozí přenos dat<sup>1</sup> jeden účet úložiště (oblastem v USA) | 10 GB/s Pokud je povolené RA-GRS/GRS, 20 GB/s pro LRS nebo ZRS<sup>2</sup> |
 | Maximální příchozí přenos dat<sup>1</sup> jeden účet úložiště (oblasti mimo USA) | 5 GB/s Pokud je povolené RA-GRS/GRS, 10 GB/s pro LRS nebo ZRS<sup>2</sup> |
-| Maximální příchozí přenos dat na účet úložiště souborů (preview) úložiště (oblastem v USA) | 20 GB/s (pouze LRS) |
-| Maximální příchozí přenos dat na účet úložiště souborů (preview) úložiště (oblasti mimo USA) | 10 GB/s (pouze LRS)|
-| Maximální odchozího přenosu dat pro obecné účely verze 2, úložiště souborů (preview) a úložištěm objektů Blob pro účty (všechny oblasti) | 50 Gbps |
+| Maximální odchozího přenosu dat pro obecné účely v2 a účty Blob storage (všechny oblasti) | 50 Gbps |
 | Maximální odchozího přenosu dat pro účty úložiště pro obecné účely v1 (oblastem v USA) | 20 GB/s Pokud je povolené RA-GRS/GRS, 30 GB/s pro LRS nebo ZRS<sup>2</sup> |
 | Maximální odchozího přenosu dat pro účty úložiště pro obecné účely v1 (oblasti mimo USA) | 10 GB/s Pokud je povolené RA-GRS/GRS, 15 GB/s pro LRS nebo ZRS<sup>2</sup> |
 

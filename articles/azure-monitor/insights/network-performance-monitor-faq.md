@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 10/12/2018
 ms.author: vinynigam
-ms.openlocfilehash: 285f29055d0ac9ba656ec828972ef15f4c0d36c7
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.openlocfilehash: d216a26dc01ae3a6946c57138bb124b41f50a151
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/11/2019
-ms.locfileid: "59496960"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59546234"
 ---
 # <a name="network-performance-monitor-solution-faq"></a>Network Performance Monitor řešení – nejčastější dotazy
 
@@ -40,7 +40,7 @@ Tady jsou požadavky na platformu pro NPM, a různé možnosti:
 - Funkce monitorování ExpressRoute NPM, a podporuje pouze Windows server (2008 SP1 nebo novější) operačního systému.
 
 ### <a name="can-i-use-linux-machines-as-monitoring-nodes-in-npm"></a>Můžete použít počítače s Linuxem jako sledování uzlů v NPM?
-Možnost monitorování sítí pomocí uzlů založených na Linuxu je v současnosti ve verzi private preview. Obraťte na vašeho Account manažera pro další informace. Po zadání ID pracovního prostoru, budeme pokračovat a povolit funkci. Agenti systému Linux poskytují možnost monitorování pouze pro NPM, a možnost sledování výkonu a nejsou k dispozici pro možnosti sledování ExpressRoute a připojení k monitorování služby
+Možnosti monitorování sítí pomocí uzlů založených na Linuxu je aktuálně ve verzi preview. Obraťte na vašeho Account manažera pro další informace. Po zadání ID pracovního prostoru, budeme pokračovat a povolit funkci. Agenti systému Linux poskytují možnost monitorování pouze pro NPM, a možnost sledování výkonu a nejsou k dispozici pro možnosti sledování ExpressRoute a připojení k monitorování služby
 
 ### <a name="what-are-the-size-requirements-of-the-nodes-to-be-used-for-monitoring-by-npm"></a>Jaké jsou požadavky na velikost uzlů se použije pro monitorování, tak NPM?
 Pro spuštění na uzlech virtuálních počítačů určených k monitorování sítě řešení NPM, uzly by měl mít aspoň 500 MB paměti a jedno jádro. Není potřeba používat samostatné uzly pro spouštění NPM. Řešení můžete spustit na uzly, které mají jiné úlohy v něm spuštěný. Má řešení 5 % využití procesoru umožňuje ukončit proces monitorování v případě, že využívá více než.

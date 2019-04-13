@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 08/24/2018
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 1973d7e360f77aed028d8a93a625f0f6cb7e1ab8
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 1e4feaed9f4e8f6dd3275da25e33e57197731572
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53730941"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59523439"
 ---
 # <a name="security-in-azure-app-service"></a>Zabezpečení ve službě Azure App Service
 
@@ -58,7 +58,7 @@ App Service podporuje pro nasazování souborů protokolu FTP a FTPS. Však FTPS
 
 Ve výchozím nastavení vaše aplikace app Service bude přijímat žádosti ze všech IP adres z Internetu, ale můžete omezit, která přístup k malou část IP adresy. App Service ve Windows umožňuje definovat seznam IP adres, které můžou přistupovat k vaší aplikace. Seznam povolených položek může obsahovat jednotlivé IP adresy nebo rozsah IP adres určené maskou podsítě. Další informace najdete v tématu [Azure App Service statické omezení IP adres](app-service-ip-restrictions.md).
 
-Pro službu App Service na Windows, můžete taky omezit IP adresy dynamicky tím, že nakonfigurujete _web.config_. Další informace najdete v tématu [dynamické zabezpečení protokolu IP <dynamicIpSecurity> ](https://docs.microsoft.com/iis/configuration/system.webServer/security/dynamicIpSecurity/).
+Pro službu App Service na Windows, můžete taky omezit IP adresy dynamicky tím, že nakonfigurujete _web.config_. Další informace najdete v tématu [dynamické zabezpečení protokolu IP \<dynamicIpSecurity >](https://docs.microsoft.com/iis/configuration/system.webServer/security/dynamicIpSecurity/).
 
 ## <a name="client-authentication-and-authorization"></a>Klient ověřování a autorizace
 

@@ -12,12 +12,12 @@ author: jaredmoo
 ms.reviewer: sstein
 manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: 4f4032551efbf517ab47a64afc393cc57ace6bc1
-ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
+ms.openlocfilehash: 59e0e4cf82af9851dacf3ec030575ed392571331
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58621494"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59523762"
 ---
 # <a name="use-transact-sql-t-sql-to-create-and-manage-elastic-database-jobs"></a>Použití příkazů jazyka Transact-SQL (T-SQL) k vytvoření a správa Elastických úloh databáze
 
@@ -193,7 +193,7 @@ Následující příklad vytvoří novou úlohu ke shromažďování dat výkonu
 Ve výchozím nastavení bude vypadat agent úlohy k vytvoření této tabulky můžete ukládat výsledky vrácené v. Díky tomu přihlašovací jméno přidružené k pověření použité pro přihlašovací údaje, které výstup muset mít dostatečná oprávnění k provedení této. Pokud chcete ručně vytvořit tabulku předem je potřeba mít následující vlastnosti:
 1. Sloupce se správným názvem a datové typy pro sadu výsledků dotazu.
 2. Další sloupec pro internal_execution_id s datovým typem uniqueidentifier.
-3. Neclusterovaný index s názvem "IX_<TableName>_Internal_Execution_ID" ve sloupci internal_execution_id.
+3. Neclusterovaný index s názvem `IX_<TableName>_Internal_Execution_ID` internal_execution_id sloupec.
 
 Připojte se k [ *databáze úloh* ](sql-database-job-automation-overview.md#job-database) a spusťte následující příkazy:
 

@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 09/05/2018
 ms.author: barclayn
 ms.custom: mvc
-ms.openlocfilehash: c7bf6a22da89f0bf1e3897ec8fc30238b86b7b75
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.openlocfilehash: 9aa7c4a5464230abe9ac7e75854a7422534f40f6
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58882746"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59522300"
 ---
 # <a name="quickstart-set-and-retrieve-a-secret-from-azure-key-vault-by-using-a-node-web-app"></a>Rychlý start: Nastavení a načtení tajného klíče ze služby Azure Key Vault s využitím webovou aplikaci v Node 
 
@@ -150,7 +150,7 @@ Přechod do nově vytvořené webové aplikace a měli byste vidět, že funguje
     ```
     http://<app name>.azurewebsites.net
     ```
-Předchozí příkaz také vytvoří aplikaci s podporou Git, které můžete nasadit do Azure ze svého místního úložiště Git. Místní úložiště Git má nakonfigurovanou tuto adresu URL: https://<username>@ .git.scm.azurewebsites.net/ < název_aplikace > < název_aplikace >.
+Předchozí příkaz také vytvoří aplikaci s podporou Git, které můžete nasadit do Azure ze svého místního úložiště Git. Místní úložiště Git má nakonfigurovanou tuto adresu URL: `https://<username>@<app_name>.scm.azurewebsites.net/<app_name>.git`.
 
 Po dokončení předchozího příkazu, můžete přidat vzdálené Azure do místního úložiště Git. Nahraďte `<url>` za adresu URL úložiště Git.
 
@@ -194,9 +194,9 @@ Spuštěním následujícího příkazu Nasaďte aplikaci do Azure:
 git push azure master
 ```
 
-Za to když přejdete na https://<app_name>.azurewebsites.net, uvidíte tajná hodnota. Ujistěte se, že jste nahradili názvem <YourKeyVaultName> názvem vašeho trezoru.
+Za to, když přejdete na `https://<app_name>.azurewebsites.net`, zobrazí se hodnota tajného klíče. Ujistěte se, že jste nahradili názvem `<YourKeyVaultName>` názvem vašeho trezoru.
 
 ## <a name="next-steps"></a>Další postup
 
 > [!div class="nextstepaction"]
-> [Sada Azure SDK for Node](https://docs.microsoft.com/javascript/api/overview/azure/key-vault)
+> [Azure SDK pro Node](https://docs.microsoft.com/javascript/api/overview/azure/key-vault)

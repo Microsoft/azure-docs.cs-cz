@@ -9,18 +9,18 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 01/23/2019
+ms.date: 04/01/2019
 ms.author: diberry
-ms.openlocfilehash: 9229a583dac526d09d7c5046c4bb81d30c9d4c3f
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 34ae47723762215fdea99362419c3875dc2e5942
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55873559"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59522741"
 ---
 # <a name="collaborating-with-other-authors"></a>Spolupráce s jinými autory
 
-Služba LUIS poskytuje spolupráci umožňují skupině lidí stát autorem aplikace.
+Služba LUIS aplikace vyžadují jednoho vlastníka a volitelné spolupracovníci umožňuje více uživatelům vytvářet jednotlivé aplikace.
 
 ## <a name="luis-account"></a>Účet služby LUIS
 Služba LUIS účet je přidružený jeden [Microsoft Live](https://login.live.com/) účtu. Každý účet služby LUIS získá bezplatného [vytváření klíč](luis-concept-keys.md#authoring-key) pro všechny aplikace LUIS vytváření účtu má přístup k. 
@@ -30,7 +30,8 @@ Služba LUIS účet může mít mnoho aplikace LUIS.
 Zobrazit [uživatel tenanta Azure Active Directory](luis-how-to-collaborate.md#azure-active-directory-tenant-user) získat další informace o uživatelských účtů Active Directory. 
 
 ## <a name="luis-app-owner"></a>Vlastník aplikace LUIS
-Účet, který vytvoří aplikaci se vlastníka. Každá aplikace má jednoho vlastníka. Vlastník je uveden v aplikaci  **[nastavení](luis-how-to-collaborate.md)**. Toto je účet, který může odstranit aplikace. Je také účet, který obdrží e-mail, když se naplní kvóta koncový bod 75 % měsíčního limitu. 
+
+Účet, který vytvoří aplikaci je vlastníkem a každá aplikace má jednoho vlastníka. Vlastník je uveden v aplikaci **[nastavení](luis-how-to-collaborate.md)** stránky. Vlastník může odstranit aplikace přijímat e-mailu, když se naplní kvóta koncový bod 75 % měsíčního limitu. 
 
 ## <a name="authorization-roles"></a>Povolení role
 Služba LUIS nepodporuje různé role pro vlastníky a spolupracovníci s jednou výjimkou. Vlastník je jediný účet, který může odstranit aplikace.
@@ -61,6 +62,10 @@ Tato metoda umožňuje mít jeden aktivní verze, jedna fáze a jednu publikovan
 [Export](luis-how-to-manage-versions.md#export-version) základní verze. Jednotlivé autory importuje verze. Osoba, která importuje aplikace je vlastníkem verze. Když se provádí úpravy aplikace a export verze. 
 
 Exportované aplikace jsou soubory ve formátu JSON, které můžete ve srovnání s exportem základní změny. Kombinovat soubory, které chcete vytvořit jeden soubor JSON s novou verzi. Změnit **versionId** vlastností ve formátu JSON místo nové sloučené verze. Tuto verzi naimportujte do původní aplikace.
+
+## <a name="collaborator-roles-vs-entity-roles"></a>Spolupracovník role vs entity role
+
+[Entita role](luis-concept-roles.md) platí do datového modelu aplikace LUIS. Spolupracovník rolí platí pro úrovně přístupu pro vytváření. 
 
 ## <a name="next-steps"></a>Další postup
 

@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 03/19/2019
 ms.author: hrasheed
-ms.openlocfilehash: ac1c1c4ae21ebd184b833fe4d23084f7cf324d2c
-ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
+ms.openlocfilehash: 7ff89e12a1011c0a16644324584eb1610302b1b3
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58500470"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59544266"
 ---
 # <a name="manage-logs-for-an-hdinsight-cluster"></a>Správa protokolů pro cluster HDInsight
 
@@ -176,5 +176,5 @@ Shromažďovat protokoly ze všech uzlů na jednom centrálním místě, můžet
 ## <a name="next-steps"></a>Další postup
 
 * [Monitorování a protokolování normy pro HDInsight](https://msdn.microsoft.com/library/dn749790.aspx)
-* [Přihlášení aplikace přístup Apache Hadoop YARN v HDInsight se systémem Linux](hdinsight-hadoop-access-yarn-app-logs-linux.md)
+* [Přístup k Apache Hadoop YARN protokolům aplikací v HDInsight se systémem Linux](hdinsight-hadoop-access-yarn-app-logs-linux.md)
 * [Jak řídit velikost protokolových souborů pro různé součásti Apache Hadoop](https://community.hortonworks.com/articles/8882/how-to-control-size-of-log-files-for-various-hdp-c.html)

@@ -17,12 +17,12 @@ ms.devlang: na
 ms.topic: article
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 743b078eac783365ae83e540a7dc05aba0ae8754
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.openlocfilehash: 646119f223067fac5ee36574fb10273819251cce
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58517587"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59547052"
 ---
 # <a name="how-to-investigate-risky-users-and-sign-ins"></a>Jak: Prozkoumávání rizikových uživatelů a přihlášení 
 
@@ -151,7 +151,7 @@ Abyste omezili zobrazovaná data na úroveň, která vám vyhovuje, můžete fil
 
 ### <a name="download-risky-users-data"></a>Stáhnout data rizikoví uživatelé
 
-Pokud chcete pracovat s ním mimo na webu Azure portal si můžete stáhnout data rizikový uživatel. Kliknutím na stáhnout vytvoří soubor CSV posledních 5 tisíc záznamů. 
+Pokud budete chtít pracovat s ním mimo na webu Azure portal si můžete stáhnout data rizikový uživatel. Kliknutím na stáhnout vytvoří soubor CSV nejnovější 2 500 záznamů. 
 
 ![Sestava o rizikových uživatelích](./media/howto-investigate-risky-users-signins/07.png)
 
@@ -320,7 +320,7 @@ Možné hodnoty:
 
 ### <a name="download-risky-sign-ins-data"></a>Stáhnout data riziková přihlášení
 
-Pokud chcete pracovat s ním mimo na webu Azure portal si můžete stáhnout data rizikových přihlášení. Kliknutím na stáhnout vytvoří soubor CSV posledních 5 tisíc záznamů. 
+Pokud budete chtít pracovat s ním mimo na webu Azure portal si můžete stáhnout data rizikových přihlášení. Kliknutím na stáhnout vytvoří soubor CSV nejnovější 2 500 záznamů. 
 
 ![Sestava o rizikových uživatelích](./media/howto-investigate-risky-users-signins/15.png)
 

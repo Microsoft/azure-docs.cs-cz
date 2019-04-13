@@ -4,22 +4,24 @@ description: Tato stránka obsahuje informace o skupin pravidel CRS firewallu we
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
-ms.date: 4/8/2019
+ms.date: 4/11/2019
 ms.author: victorh
-ms.openlocfilehash: 61ab41eed7703c82c2e5ef2a3b5412a9f56389ba
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: 0ad5cc76c0f4631fd60eea7d0a57e4740b6a9db3
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59279699"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59523915"
 ---
-# <a name="list-of-web-application-firewall-crs-rule-groups-and-rules-offered"></a>Nabízí seznam skupin pravidel CRS firewallu webových aplikací a pravidla
+# <a name="web-application-firewall-crs-rule-groups-and-rules"></a>Skupin pravidel CRS firewallu webových aplikací a pravidla
 
-Firewall webových aplikací brány aplikací (WAF) chrání webové aplikace z nejběžnějších ohrožení zabezpečení a zneužitím. To se provádí prostřednictvím pravidla, které jsou definovány podle základní sady pravidel OWASP 2.2.9 nebo 3.0. Tato pravidla je možné zakázat na základě pravidla pomocí pravidla. Tento článek obsahuje aktuální pravidla a nabízí sady pravidel.
+Firewall webových aplikací brány aplikací (WAF) chrání webové aplikace z nejběžnějších ohrožení zabezpečení a zneužitím. To se provádí prostřednictvím pravidla, které jsou definovány podle základní sady pravidel OWASP 3.0 nebo 2.2.9. Tato pravidla je možné zakázat na základě pravidla pomocí pravidla. Tento článek obsahuje aktuální pravidla a nabízí sady pravidel.
 
-V následujících tabulkách jsou skupiny pravidel a pravidla, která jsou k dispozici při použití aplikační brány s firewallem webových aplikací.  Každá tabulka představuje nenašla ve skupině pravidlo na konkrétní verzi CRS pravidla.
+Následující pravidlo skupiny a pravidla jsou k dispozici při použití aplikační brány s firewallem webových aplikací.
 
-## <a name="owasp30"></a> OWASP_3.0
+# <a name="owasp-30tabowasp3"></a>[OWASP 3.0](#tab/owasp3)
+
+## <a name="owasp30"></a> Sady pravidel
 
 ### <a name="General"></a> <p x-ms-format-detection="none">Obecné</p>
 
@@ -50,7 +52,7 @@ V následujících tabulkách jsou skupiny pravidel a pravidla, která jsou k di
 |---|---|
 |920100|Neplatný požadavek HTTP řádku|
 |920130|Nepovedlo se analyzovat datovou část požadavku.|
-|920140|S více částmi. žádost subjektu selhala přísný ověřovací = PE %@{REQBODY_PROCESSOR_ERROR} BQ %@{MULTIPART_BOUNDARY_QUOTED} BW %@{MULTIPART_BOUNDARY_WHITESPACE} DB %@{MULTIPART_DATA_BEFORE} DA %@{MULTIPART_DATA_AFTER} HF %@{MULTIPART_HEADER_FOLDING} LF % @ {MULTIPART_LF_LINE}     SOUBOR %@{MULTIPART_FILE_LIMIT_EXCEEDED %@{MULTIPART_INVALID_HEADER_FOLDING IH %@{MULTIPART_INVALID_QUOTING IQ SM %@{MULTIPART_SEMICOLON_MISSING}}}}|
+|920140|Striktní ověření se nezdařilo text požadavku s více částmi.|
 |920160|Hlavičku HTTP Content-Length není číselná.|
 |920170|ZÍSKÁNÍ nebo HEAD žádost s obsah textu.|
 |920180|Chybí hlavička Content-Length požadavek POST.|
@@ -216,7 +218,9 @@ V následujících tabulkách jsou skupiny pravidel a pravidla, která jsou k di
 |943110|Útok záznam možné relace = název parametru ID relace s odkazující server vypnout domény|
 |943120|Útok záznam možné relace = název parametru ID relace se žádné odkazující server|
 
-## <a name="owasp229"></a> OWASP_2.2.9
+# <a name="owasp-229tabowasp2"></a>[OWASP 2.2.9](#tab/owasp2)
+
+## <a name="owasp229"></a> Sady pravidel
 
 ### <a name="crs20"></a> crs_20_protocol_violations
 
@@ -225,7 +229,7 @@ V následujících tabulkách jsou skupiny pravidel a pravidla, která jsou k di
 |960911|Neplatný požadavek HTTP řádku|
 |981227|Chyba Apache = neplatný identifikátor URI požadavku.|
 |960912|Nepovedlo se analyzovat datovou část požadavku.|
-|960914|S více částmi. žádost subjektu selhala přísný ověřovací = PE %@{REQBODY_PROCESSOR_ERROR} BQ %@{MULTIPART_BOUNDARY_QUOTED} BW %@{MULTIPART_BOUNDARY_WHITESPACE} DB %@{MULTIPART_DATA_BEFORE} DA %@{MULTIPART_DATA_AFTER} HF %@{MULTIPART_HEADER_FOLDING} LF % @ {MULTIPART_LF_LINE}     SOUBOR %@{MULTIPART_FILE_LIMIT_EXCEEDED %@{MULTIPART_INVALID_HEADER_FOLDING IH %@{MULTIPART_INVALID_QUOTING IQ SM %@{MULTIPART_SEMICOLON_MISSING}}}}|
+|960914|Striktní ověření se nezdařilo text požadavku s více částmi.|
 |960915|S více částmi. analyzátor zjistil možné bezkonkurenční hranice.|
 |960016|Hlavičku HTTP Content-Length není číselná.|
 |960011|ZÍSKÁNÍ nebo HEAD žádost s obsah textu.|
@@ -472,6 +476,8 @@ V následujících tabulkách jsou skupiny pravidel a pravidla, která jsou k di
 |950921|Přístup přes zadní vrátka|
 |950922|Přístup přes zadní vrátka|
 
+---
+
 ## <a name="next-steps"></a>Další postup
 
-Zjistěte, jak zakázat pravidla firewallu webových aplikací si: [Přizpůsobit pravidla firewallu webových aplikací](application-gateway-customize-waf-rules-portal.md)
+Zjistěte, jak zakázat pravidla firewallu webových aplikací: [Přizpůsobit pravidla firewallu webových aplikací](application-gateway-customize-waf-rules-portal.md)

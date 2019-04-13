@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/05/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 9bb9954e8463617694efe2997d886a2ba4390ccb
-ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
+ms.openlocfilehash: 85832abeb9908dd891e3f35a0368bc35c7816a6e
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58500283"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59528208"
 ---
 # <a name="copy-data-to-or-from-azure-blob-storage-using-azure-data-factory"></a>Kopírování dat do nebo z Azure Blob Storage pomocí Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -85,7 +85,7 @@ Data factory podporuje následující hodnoty kompatibilní se Specifikací CLS 
 | Vlastnost | Popis | Požaduje se |
 | --- | --- | --- |
 | folderPath |Cesta k kontejner a složku v úložišti objektů blob. Příklad: myblobcontainer\myblobfolder\ |Ano |
-| fileName |Název objektu blob. Název souboru je volitelný a malá a velká písmena.<br/><br/>Pokud zadáte filename, aktivity (včetně kopie) funguje na konkrétní objekt Blob.<br/><br/>Pokud není zadán název souboru, zahrnuje kopírování všech objektů BLOB v folderPath pro vstupní datovou sadu.<br/><br/>Když **fileName** pro výstupní datovou sadu není zadána a **preserveHierarchy** není uveden v aktivita jímky název generovaného souboru by měl být v následujícím tento formát: Data. <Guid>.txt (například:: Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt |Ne |
+| fileName |Název objektu blob. Název souboru je volitelný a malá a velká písmena.<br/><br/>Pokud zadáte filename, aktivity (včetně kopie) funguje na konkrétní objekt Blob.<br/><br/>Pokud není zadán název souboru, zahrnuje kopírování všech objektů BLOB v folderPath pro vstupní datovou sadu.<br/><br/>Když **fileName** pro výstupní datovou sadu není zadána a **preserveHierarchy** není uveden v aktivita jímky název generovaného souboru by měl být v následujícím tento formát: `Data.<Guid>.txt` (pro Příklad:: Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt |Ne |
 | partitionedBy |partitionedBy vlastnost je volitelná. Slouží k určení dynamické folderPath a název souboru pro data časových řad. Například může být parametrizován folderPath pro každou hodinu data. Zobrazit [pomocí části vlastnost partitionedBy](#using-partitionedby-property) podrobnosti a příklady. |Ne |
 | formát | Jsou podporovány následující typy formátů: **TextFormat**, **JsonFormat**, **AvroFormat**, **OrcFormat**, **ParquetFormat**. Nastavte **typ** vlastnosti v části formát na jednu z těchto hodnot. Další informace najdete v tématu [textový formát](data-factory-supported-file-and-compression-formats.md#text-format), [formátu Json](data-factory-supported-file-and-compression-formats.md#json-format), [Avro formát](data-factory-supported-file-and-compression-formats.md#avro-format), [Orc formát](data-factory-supported-file-and-compression-formats.md#orc-format), a [formát Parquet](data-factory-supported-file-and-compression-formats.md#parquet-format) oddíly. <br><br> Pokud chcete **kopírovat soubory jako-je** mezi souborové úložištěm (binární kopie) a přeskočit část o formátu v definicích oba vstupní a výstupní datové sady. |Ne |
 | Komprese | Zadejte typ a úroveň komprese pro data. Podporované typy jsou: **GZip**, **Deflate**, **BZip2**, a **ZipDeflate**. Jsou podporované úrovně: **Optimální** a **nejrychlejší**. Další informace najdete v tématu [formáty souborů a komprese ve službě Azure Data Factory](data-factory-supported-file-and-compression-formats.md#compression-support). |Ne |

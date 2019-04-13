@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/27/2018
-ms.openlocfilehash: 888cc9d894861c7d7b808500cd60bbed9faa05d7
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
+ms.openlocfilehash: ffde6f3e94cab94fca5a815db28478790a2a4221
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56309113"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59523388"
 ---
 # <a name="azure-storage-solutions-for-ml-services-on-azure-hdinsight"></a>Řešení Azure Storage pro ML služeb v Azure HDInsight
 
@@ -95,7 +95,7 @@ Ve vašem kódu R odkazovat název uzlu odkazu na **storage2** účtu úložišt
 
 Všechny odkazy na adresáře a souboru teď přejděte na účet úložiště `wasb://container2@storage2.blob.core.windows.net`. Toto je **název uzlu** , které jste zadali.
 
-Budete muset nakonfigurovat/User/RevoShare/<SSH username> adresáři **storage2** následujícím způsobem:
+Je nutné nakonfigurovat `/user/RevoShare/<SSH username>` adresáři **storage2** následujícím způsobem:
 
 
     hadoop fs -mkdir wasb://container2@storage2.blob.core.windows.net/user

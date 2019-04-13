@@ -11,21 +11,21 @@ ms.service: azure-netapp-files
 ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: quickstarts
+ms.topic: quickstart
 ms.date: 2/20/2019
 ms.author: b-juche
-ms.openlocfilehash: e2b9b3cdcb712fcf6c415f574dc687e80ae9ee3b
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: 634f23cf3161fff09f21c79fd8300cb269dcc5b7
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58660506"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59546571"
 ---
 # <a name="set-up-azure-netapp-files-and-create-a-volume"></a>Nastavení služby Azure NetApp Files a vytvoření svazku 
 
 Tento článek ukazuje, jak rychle nastavit NetApp soubory Azure a vytvořte svazek. 
 
-## <a name="before-you-begin"></a>Před zahájením 
+## <a name="before-you-begin"></a>Než začnete 
 
 Musíte být součástí programu ve verzi Public Preview a pro přístup k poskytovateli prostředků Microsoft.NetApp na seznamu povolených. Podrobnosti o zapojení do programu verze Public Preview najdete na [registrační stránce Azure NetApp Files Public Preview](https://aka.ms/nfspublicpreview). 
 

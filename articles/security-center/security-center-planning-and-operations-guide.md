@@ -3,7 +3,7 @@ title: Průvodce plánováním a provozem služby Security Center | Dokumentace 
 description: Tento dokument vám pomůže s plánováním před přijetím řešení Azure Security Center a s vyřešením aspektů každodenního provozu.
 services: security-center
 documentationcenter: na
-author: rkarlin
+author: monhaber
 manager: barbkess
 editor: ''
 ms.assetid: f984e4a2-ac97-40bf-b281-2f7f473494c4
@@ -12,14 +12,14 @@ ms.topic: conceptual
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/28/2018
-ms.author: rkarlin
-ms.openlocfilehash: ece396a85a817df51f650fd1c513085efa3dedf5
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.date: 04/11/2019
+ms.author: monhaber
+ms.openlocfilehash: 3aae2d6adfd520f103ca1e1bd5e67eeb4b542a3d
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57842120"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59523371"
 ---
 # <a name="azure-security-center-planning-and-operations-guide"></a>Průvodce plánováním a provozem služby Azure Security Center
 Tento průvodce je určený odborníkům na informační technologie (IT), IT architektům, analytikům zabezpečení informací a správcům cloudů, jejichž společnosti hodlají začít používat Azure Security Center.
@@ -82,11 +82,6 @@ Security Center používá [řízení přístupu na základě rolí (RBAC)](../r
 - **Správce zabezpečení:** stejné jako čtenář zabezpečení, ale uživatel může také aktualizovat zásady zabezpečení a rušit doporučení a výstrahy.
 
 Výše popsané role služby Security Center nemají přístup k jiným oblastem služeb Azure, jako je služba Storage, web a mobilní zařízení nebo Internet věcí.  
-
-> [!NOTE]
-> Aby uživatel mohl zobrazit Security Center v Azure, musí být alespoň vlastníkem nebo přispěvatelem skupiny prostředků předplatného.
->
->
 
 Použití osob uvedených v předchozím diagramu vyžaduje následující nastavení RBAC:
 

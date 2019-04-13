@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 02/16/2018
 ms.author: dukek
 ms.subservice: alerts
-ms.openlocfilehash: 225c86ee1a7f764f60b2da0b8e3be02aa5dd22e7
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 74666149824627308b6c5b026e0c9ba7a7750ada
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58123296"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59523609"
 ---
 # <a name="sms-alert-behavior-in-action-groups"></a>SMS upozornění chování ve skupinách akcí
 ## <a name="overview"></a>Přehled ##
@@ -32,8 +32,8 @@ Přijímače SMS, který je nakonfigurovaný jako součást skupiny akcí obdrž
 
 | ODPOVĚĎ | Popis |
 | ----- | ----------- |
-| ZAKÁZAT <Action Group Short name> | Další SMS zakáže skupiny akcí |
-| POVOLIT <Action Group Short name> | Znovu povolí SMS skupiny akcí |
+| ZAKÁZAT `<Action Group Short name>` | Další SMS zakáže skupiny akcí |
+| POVOLIT `<Action Group Short name>` | Znovu povolí SMS skupiny akcí |
 | STOP | Další SMS zakáže ze všech skupin akcí |
 | START | Znovu povolí SMS ze všech skupin akcí |
 | POMOC | Odkazy na tento článek je uživateli odeslána odpověď. |

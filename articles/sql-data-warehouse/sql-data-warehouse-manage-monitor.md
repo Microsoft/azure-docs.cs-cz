@@ -7,15 +7,15 @@ manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: manage
-ms.date: 03/18/2019
+ms.date: 04/12/2019
 ms.author: rortloff
 ms.reviewer: igorstan
-ms.openlocfilehash: e2360b5587d204ec87fe82c029391c7252d27914
-ms.sourcegitcommit: f331186a967d21c302a128299f60402e89035a8d
+ms.openlocfilehash: ff1f613dfdfb5c43b727bcc9c7f7a1f0afca0975
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58189542"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59546892"
 ---
 # <a name="monitor-your-workload-using-dmvs"></a>Monitorování vaší úlohy pomocí DMV
 Tento článek popisuje, jak monitorování vaší úlohy pomocí zobrazení dynamické správy (DMV). To zahrnuje zkoumání provádění dotazů ve službě Azure SQL Data Warehouse.
@@ -170,33 +170,10 @@ ORDER BY waits.object_name, waits.object_type, waits.state;
 Pokud dotaz aktivně čeká na prostředky z jiného dotazu, pak bude mít stav **AcquireResources**.  Pokud dotaz obsahuje všechny požadované prostředky, pak bude mít stav **udělit**.
 
 ## <a name="monitor-tempdb"></a>Monitorování databáze tempdb
-Využití databáze tempdb vysoké, může být hlavní příčinou nízkého výkonu a mimo problémy s pamětí. Zvažte možnost škálování vašeho datového skladu, je-li najít databázi tempdb dosažení omezení při provádění dotazu. Následující informace popisují, jak identifikovat využití databáze tempdb na dotaz na každém uzlu. 
+Databáze tempdb slouží k uložení mezilehlých výsledků při provádění dotazu. Vysoké využití databáze tempdb může vést ke zpomalení výkonu dotazů. Každý uzel ve službě Azure SQL Data Warehouse má přibližně 1 TB nezpracovaná místa pro databázi tempdb. Níže jsou tipy pro sledování využití databáze tempdb a pro snížení využití databáze tempdb v dotazech. 
 
-Vytvořte následující zobrazení přidružit ID příslušný uzel sys.dm_pdw_sql_requests. Můžete používat další průchozí zobrazení dynamické správy a připojte se k těmto tabulky s sys.dm_pdw_sql_requests umožní s ID uzlu.
-
-```sql
--- sys.dm_pdw_sql_requests with the correct node id
-CREATE VIEW sql_requests AS
-(SELECT
-       sr.request_id,
-       sr.step_index,
-       (CASE 
-              WHEN (sr.distribution_id = -1 ) THEN 
-              (SELECT pdw_node_id FROM sys.dm_pdw_nodes WHERE type = 'CONTROL') 
-              ELSE d.pdw_node_id END) AS pdw_node_id,
-       sr.distribution_id,
-       sr.status,
-       sr.error_id,
-       sr.start_time,
-       sr.end_time,
-       sr.total_elapsed_time,
-       sr.row_count,
-       sr.spid,
-       sr.command
-FROM sys.pdw_distributions AS d
-RIGHT JOIN sys.dm_pdw_sql_requests AS sr ON d.distribution_id = sr.distribution_id)
-```
-Monitorování databáze tempdb, spusťte následující dotaz:
+### <a name="monitoring-tempdb-with-views"></a>Monitorování databáze tempdb se zobrazeními
+Pokud chcete monitorovat využití databáze tempdb, nejdřív nainstalovat [microsoft.vw_sql_requests](https://github.com/Microsoft/sql-data-warehouse-samples/blob/master/solutions/monitoring/scripts/views/microsoft.vw_sql_requests.sql) zobrazení z [Toolkit Microsoft pro SQL Data Warehouse](https://github.com/Microsoft/sql-data-warehouse-samples/tree/master/solutions/monitoring). Potom můžete spustit následující dotaz, který najdete v článku využití databáze tempdb na jeden uzel pro všechny spuštěné dotazy:
 
 ```sql
 -- Monitor tempdb
@@ -221,12 +198,17 @@ SELECT
 FROM sys.dm_pdw_nodes_db_session_space_usage AS ssu
     INNER JOIN sys.dm_pdw_nodes_exec_sessions AS es ON ssu.session_id = es.session_id AND ssu.pdw_node_id = es.pdw_node_id
     INNER JOIN sys.dm_pdw_nodes_exec_connections AS er ON ssu.session_id = er.session_id AND ssu.pdw_node_id = er.pdw_node_id
-    INNER JOIN sql_requests AS sr ON ssu.session_id = sr.spid AND ssu.pdw_node_id = sr.pdw_node_id
+    INNER JOIN microsoft.vw_sql_requests AS sr ON ssu.session_id = sr.spid AND ssu.pdw_node_id = sr.pdw_node_id
 WHERE DB_NAME(ssu.database_id) = 'tempdb'
     AND es.session_id <> @@SPID
     AND es.login_name <> 'sa' 
 ORDER BY sr.request_id;
 ```
+
+Pokud máte dotaz, který spotřebovává velké množství paměti nebo mít obdrželo chybovou zprávu týkající se přidělení databáze TempDB, často je z důvodu velmi velké [vytvořit TABLE AS SELECT (CTAS)](https://docs.microsoft.com/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse) nebo [INSERT SELECT](https://docs.microsoft.com/sql/t-sql/statements/insert-transact-sql) příkaz systémem, který selhává v poslední operaci přesunutí. To je obvykle možné identifikovat jako ShuffleMove operaci v plánu distribuovaných dotazů bezprostředně před INSERT SELECT finální.
+
+Váš výpis z příkazů CTAS nebo INSERT SELECT přerušit více příkazů zatížení tak objem dat nebude větší než 1 TB na uzel databáze tempdb limit je nejběžnější omezení rizik. Také je možné škálovat na větší velikost, která bude šířit velikost databáze tempdb napříč více uzly snížení databáze tempdb na jednotlivých uzlů clusteru. 
+
 ## <a name="monitor-memory"></a>Sledování paměti
 
 Paměť může být hlavní příčinou nízkého výkonu a mimo problémy s pamětí. Zvažte možnost škálování vašeho datového skladu, pokud zjistíte, využití paměti systému SQL Server dosažení omezení při provádění dotazu.

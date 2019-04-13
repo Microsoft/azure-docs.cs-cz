@@ -14,12 +14,12 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.date: 02/26/2019
 ms.author: apimpm
-ms.openlocfilehash: e50c5d942bdbafc60bf0e2b8c74b008ac12b3bc6
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 68c516ee7ca2d76339760ce0ad95590686250603
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58084976"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59521933"
 ---
 # <a name="transform-and-protect-your-api"></a>Transformace a ochrana vašeho rozhraní API
 
@@ -81,7 +81,7 @@ Původní odpověď by měla vypadat takto:
 
    ![Zásady](./media/transform-api/transform-api.png)
 
-7. Svůj kód **<outbound>** upravte následovně:
+7. Upravit vaše  **\<odchozí >** kód vypadat nějak takto:
 
        <set-header name="X-Powered-By" exists-action="delete" />
        <set-header name="X-AspNet-Version" exists-action="delete" />

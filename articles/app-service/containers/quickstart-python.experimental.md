@@ -12,15 +12,15 @@ ms.workload: web
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
-ms.date: 02/14/2019
+ms.date: 03/28/2019
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: d0c51f5d4757c35319cc3f80d09c9fb1a0e1cf69
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
+ms.openlocfilehash: a386924be2f82aadafeaccbeadc68e5e27404855
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56314108"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59546327"
 ---
 # <a name="create-a-python-app-in-azure-app-service-on-linux-preview"></a>Vytvoření aplikace v Pythonu v Azure App Service v Linuxu (Preview)
 
@@ -168,13 +168,10 @@ Levá nabídka obsahuje odkazy na různé stránky pro konfiguraci vaší aplika
 Integrovaná image v Pythonu v rámci služby App Service v Linuxu je aktuálně ve verzi Preview a je možné přizpůsobit příkaz sloužící ke spuštění vaší aplikace. Produkční aplikace v Pythonu můžete místo toho vytvářet taky s využitím vlastního kontejneru.
 
 > [!div class="nextstepaction"]
-> [Python sh PostgreSQL](tutorial-python-postgresql-app.md)
+> [Kurz: Aplikace v Pythonu s PostgreSQL](tutorial-python-postgresql-app.md)
 
 > [!div class="nextstepaction"]
-> [Konfigurace vlastního spouštěcího příkazu](how-to-configure-python.md#customize-startup-command)
+> [Konfigurace aplikace v Pythonu](how-to-configure-python.md)
 
 > [!div class="nextstepaction"]
-> [Řešení potíží](how-to-configure-python.md#troubleshooting)
-
-> [!div class="nextstepaction"]
-> [Použití vlastní image](tutorial-custom-docker-image.md)
+> [Kurz: Nasazení z kontejneru soukromého úložiště](tutorial-custom-docker-image.md)

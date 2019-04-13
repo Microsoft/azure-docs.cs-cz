@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 04/10/2019
 ms.author: aljo
-ms.openlocfilehash: 97f75438cf6401b4e2d5043038c1ca32b7022e7c
-ms.sourcegitcommit: 41015688dc94593fd9662a7f0ba0e72f044915d6
+ms.openlocfilehash: 46c9b37e9bb8613b34dea6705320f5689eeb51d8
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/11/2019
-ms.locfileid: "59501293"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59526533"
 ---
 # <a name="customize-service-fabric-cluster-settings"></a>Nastavení clusteru Service Fabric
 Tento článek popisuje různé nastavení prostředků infrastruktury pro cluster Service Fabric, kterou můžete přizpůsobit. Pro clustery hostovaných v Azure, můžete upravit pomocí nastavení [webu Azure portal](https://portal.azure.com) nebo s použitím šablony Azure Resource Manageru. Další informace najdete v tématu [upgradovat konfiguraci clusteru Azure](service-fabric-cluster-config-upgrade-azure.md). Pro samostatné clustery, můžete upravit nastavení aktualizací *ClusterConfig.json* souborů a provádění konfigurace upgradu ve vašem clusteru. Další informace najdete v tématu [upgradovat konfiguraci samostatného clusteru](service-fabric-cluster-config-upgrade-windows-server.md).
@@ -87,7 +87,7 @@ Tady je seznam prostředků infrastruktury nastavení, které můžete přizpůs
 |MaxDataMigrationTimeout |Čas v sekundách, výchozí hodnota je 600 |Dynamická|Zadejte časový interval v sekundách. Maximální časový limit pro operace obnovení migrace dat, po úspěšném upgradu prostředků infrastruktury. |
 |MaxOperationRetryDelay |Čas v sekundách, výchozí hodnota je 5|Dynamická| Zadejte časový interval v sekundách. Maximální zpoždění interní opakovaných pokusů při výskytu chyby. |
 |MaxOperationTimeout |Čas v sekundách, výchozí hodnota je hodnota MaxValue |Dynamická| Zadejte časový interval v sekundách. Maximální globální časový limit pro operace na ClusterManager zpracování interně. |
-|MaxTimeoutRetryBuffer | Čas v sekundách, výchozí hodnota je 600 |Dynamická|Zadejte časový interval v sekundách. Časový limit maximální operace při opakování interně z důvodu vypršení časového limitu je <Original Time out>  +  <MaxTimeoutRetryBuffer>. V krocích po MinOperationTimeout se přidá další časový limit. |
+|MaxTimeoutRetryBuffer | Čas v sekundách, výchozí hodnota je 600 |Dynamická|Zadejte časový interval v sekundách. Časový limit maximální operace při opakování interně z důvodu vypršení časového limitu je `<Original Time out> + <MaxTimeoutRetryBuffer>`. V krocích po MinOperationTimeout se přidá další časový limit. |
 |MinOperationTimeout | Čas v sekundách, výchozí hodnota je 60 |Dynamická|Zadejte časový interval v sekundách. Minimální globální časový limit pro operace na ClusterManager zpracování interně. |
 |MinReplicaSetSize |Int, výchozí hodnota je 3 |Nepovolené|MinReplicaSetSize pro ClusterManager. |
 |PlacementConstraints | řetězec, výchozí hodnota je "" |Nepovolené|PlacementConstraints pro ClusterManager. |
@@ -837,7 +837,7 @@ Tady je seznam prostředků infrastruktury nastavení, které můžete přizpůs
 |ReplicatorAddress |řetězec, výchozí je "localhost:0" | Statická | Koncový bod v podobě řetězce-"IP: port" který používá Replikátor Windows Fabric pro navázání připojení s ostatními replikami k posílání a přijímání operace. |
 
 ## <a name="transport"></a>Přenos
-| **Parametr** | **Povolené hodnoty** |**Zásady upgradování** |**Doprovodné materiály nebo krátký popis** |
+| **Parametr** | **Povolené hodnoty** |**Zásady upgradu** |**Doprovodné materiály nebo krátký popis** |
 | --- | --- | --- | --- |
 |ConnectionOpenTimeout|Časový interval, výchozí hodnota je Common::TimeSpan::FromSeconds(60)|Statická|Zadejte časový interval v sekundách. Vypršení časového limitu pro nastavení připojení pro příchozí a přijímá na straně (včetně vyjednávání zabezpečení v zabezpečeném režimu) |
 |FrameHeaderErrorCheckingEnabled|Logická hodnota, výchozí hodnotu TRUE|Statická|Výchozí nastavení pro kontrolu chyb na záhlaví rámce v nezabezpečené režimu. komponenta nastavení přepíše tuto položku. |

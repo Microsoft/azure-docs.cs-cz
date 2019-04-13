@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 02/25/2019
 ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: a56c4b0bac61bd2039138ffed554130c6e520821
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 2d84a4dd0b69ce9ca7fc594dffce3238c620c426
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58167129"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59543969"
 ---
 # <a name="ssh-support-for-azure-app-service-on-linux"></a>Podpora SSH pro Azure App Service v Linuxu
 
@@ -35,71 +35,11 @@ Do tohoto kontejneru můžete také připojit přímo ze svého místního vývo
 
 ## <a name="open-ssh-session-in-browser"></a>Otevřít relaci SSH v prohlížeči
 
-Chcete-li připojení klienta SSH pomocí vašeho kontejneru, by měl běžet vaše aplikace.
-
-Vložte následující adresu URL do prohlížeče a nahradit \<app_name > názvem vaší aplikace:
-
-```
-https://<app_name>.scm.azurewebsites.net/webssh/host
-```
-
-Pokud už nejste ověření, je potřeba ověřit ve vašem předplatném Azure připojit. Po ověření, se zobrazí prostředí v prohlížeči, kde můžete spouštět příkazy uvnitř kontejneru.
-
-![Připojení SSH](./media/app-service-linux-ssh-support/app-service-linux-ssh-connection.png)
+[!INCLUDE [Open SSH session in browser](../../../includes/app-service-web-ssh-connect-no-h.md)]
 
 ## <a name="use-ssh-support-with-custom-docker-images"></a>Podpora SSH pomocí vlastní Image Dockeru
 
-Aby vlastní image Dockeru, aby mohly podporovat komunikaci SSH mezi kontejnerem a klientem na webu Azure Portal proveďte následující kroky pro vaši image Dockeru.
-
-Tyto kroky jsou uvedeny v úložišti Azure App Service jako [příklad](https://github.com/Azure-App-Service/node/blob/master/6.9.3/).
-
-1. Zahrnout `openssh-server` instalace v [ `RUN` instrukce](https://docs.docker.com/engine/reference/builder/#run) v souboru Dockerfile pro vaše image a nastavte heslo pro kořenový účet `"Docker!"`.
-
-    > [!NOTE]
-    > Tato konfigurace nepovoluje externí připojení ke kontejneru. SSH lze přistupovat pouze prostřednictvím Kudu / SCM webu, což je ověřený pomocí přihlašovacích údajů pro publikování.
-
-    ```Dockerfile
-    # ------------------------
-    # SSH Server support
-    # ------------------------
-    RUN apt-get update \
-        && apt-get install -y --no-install-recommends openssh-server \
-        && echo "root:Docker!" | chpasswd
-    ```
-
-2. Přidat [ `COPY` instrukce](https://docs.docker.com/engine/reference/builder/#copy) k souboru Dockerfile ke kopírování [sshd_config](https://man.openbsd.org/sshd_config) do souboru */etc/ssh/* adresáře. Konfigurační soubor by měl vycházet souboru sshd_config v úložišti GitHub Azure App Service [tady](https://github.com/Azure-App-Service/node/blob/master/10.14/sshd_config).
-
-    > [!NOTE]
-    > *Sshd_config* soubor musí obsahovat následující jinak připojení selže: 
-    > * `Ciphers` musí obsahovat alespoň jeden z následujících akcí: `aes128-cbc,3des-cbc,aes256-cbc`.
-    > * `MACs` musí obsahovat alespoň jeden z následujících akcí: `hmac-sha1,hmac-sha1-96`.
-
-    ```Dockerfile
-    COPY sshd_config /etc/ssh/
-    ```
-
-3. Zahrnovat port 2222 [ `EXPOSE` instrukce](https://docs.docker.com/engine/reference/builder/#expose) pro soubor Dockerfile. I když je známé kořenové heslo, port 2222 není přístupný z internetu. Jde interní pouze port přístupný pouze kontejnery v rámci síťového mostu privátní virtuální síť.
-
-    ```Dockerfile
-    EXPOSE 2222 80
-    ```
-
-4. Ujistěte se, že chcete spustit službu SSH pomocí skriptu prostředí (podívejte se na příklad [init_container.sh](https://github.com/Azure-App-Service/node/blob/master/6.9.3/startup/init_container.sh)).
-
-    ```bash
-    #!/bin/bash
-    service ssh start
-    ```
-
-Soubor Dockerfile použije [ `ENTRYPOINT` instrukce](https://docs.docker.com/engine/reference/builder/#entrypoint) pro spuštění skriptu.
-
-    ```Dockerfile
-    COPY init_container.sh /opt/startup
-    ...
-    RUN chmod 755 /opt/startup/init_container.sh
-    ...
-    ENTRYPOINT ["/opt/startup/init_container.sh"]
-    ```
+Zobrazit [konfigurace SSH do vlastního kontejneru](configure-custom-container.md#enable-ssh).
 
 ## <a name="open-ssh-session-from-remote-shell"></a>Otevřete relaci SSH ze vzdáleného prostředí
 
@@ -111,10 +51,10 @@ Pomocí protokolu TCP tunelové propojení, které můžete vytvořit síťové 
 
 Abyste mohli začít, je potřeba nainstalovat [rozhraní příkazového řádku Azure](/cli/azure/install-azure-cli?view=azure-cli-latest). Chcete-li zjistit, jak to funguje, bez instalace rozhraní příkazového řádku Azure, otevřete [Azure Cloud Shell](../../cloud-shell/overview.md). 
 
-Vytvořit vzdálené připojení k aplikaci pomocí [az webapp-připojení ke vzdálené vytvoření](/cli/azure/ext/webapp/webapp/remote-connection?view=azure-cli-latest#ext-webapp-az-webapp-remote-connection-create) příkazu. Zadejte  _\<předplatné\_id >_,  _\<skupiny\_název >_ a \_< aplikace\_name > _ pro vaši aplikaci.
+Vytvořit vzdálené připojení k aplikaci pomocí [az webapp-připojení ke vzdálené vytvoření](/cli/azure/ext/webapp/webapp/remote-connection?view=azure-cli-latest#ext-webapp-az-webapp-remote-connection-create) příkazu. Zadejte  _\<id předplatného >_,  _\<název skupiny >_ a \__ < název aplikace > pro vaši aplikaci.
 
 ```azurecli-interactive
-az webapp remote-connection create --subscription <subscription_id> --resource-group <group_name> -n <app_name> &
+az webapp remote-connection create --subscription <subscription-id> --resource-group <resource-group-name> -n <app-name> &
 ```
 
 > [!TIP]

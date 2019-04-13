@@ -9,18 +9,18 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: article
-ms.date: 03/11/2019
+ms.date: 04/01/2019
 ms.author: diberry
-ms.openlocfilehash: 784fe19d1ae40a7cdff3cc853726d4c62265e0f1
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 0044cbc9e6142989a57e79de5fd1e78e999bb5e1
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58106929"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59522346"
 ---
 # <a name="create-entities-without-utterances"></a>Vytvoření entity bez projevy
 
-Entita představuje slovo nebo frázi v utterance, který chcete, aby byl extrahován. Entity představuje třídu kolekce podobných objektů (místa, věci, osoby, události nebo koncepty) včetně. Entity popisují informace související s cílem a někdy jsou nezbytné pro vaši aplikaci k provedení svých úkolů. Entity můžete vytvořit, když přidáte utterance záměru nebo od sebe z (před nebo po) přidání utterance záměru.
+Entita představuje slovo nebo frázi v utterance, který chcete, aby byl extrahován. Entity představuje třídu kolekce podobných objektů (místa, věci, lidí, události nebo koncepty) včetně. Entity popisují informace související s cílem a někdy jsou nezbytné pro vaši aplikaci k provedení svých úkolů. Entity můžete vytvořit, když přidáte utterance záměru nebo od sebe z (před nebo po) přidání utterance záměru.
 
 Můžete přidat, upravit nebo odstranit entity v aplikaci LUIS prostřednictvím **seznam entit** na **entity** stránky. Služba LUIS nabízí dva hlavní typy entit: [předem připravených entit](luis-reference-prebuilt-entities.md)a vlastní [vlastní entity](luis-concept-entity-types.md#types-of-entities).
 
@@ -135,7 +135,7 @@ V utterance `Where is Request relocation from employee new to the company on the
 
 ## <a name="add-a-role-to-distinguish-different-contexts"></a>Přidání role k rozlišení různých kontextech
 
-Role je pojmenovaný podtypem typu entity na základě kontextu. Je srovnatelná se [hierarchické](#add-hierarchical-entities) entity, ale role se používají v [vzory](luis-how-to-model-intent-pattern.md). 
+Role je pojmenovaný podtyp na základě kontextu. Je dostupná ve všech entit, včetně předem připravené a není počítač zjistili entit. 
 
 Pokud použijeme stejný příklad jako hierarchické entity původu a cílových měst, rozdíl je, že je role s názvem původu místo hierarchické podřízené. 
 

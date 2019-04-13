@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/15/2019
 ms.author: yegu
-ms.openlocfilehash: 838fc1da3e167d1df04fbb36a2fea33b8ac248a4
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.openlocfilehash: 66361871d365068a90a2eeab70d92adb6b246a83
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58482602"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59527162"
 ---
 # <a name="how-to-troubleshoot-azure-cache-for-redis"></a>Řešení potíží s Azure Cache pro Redis
 
@@ -250,6 +250,7 @@ Tato chybová zpráva obsahuje metriky, který vám pomůže odkazovat na pří�
 1. Pokusil se velké žádosti před několika malých požadavků vypršel časový limit mezipaměti? Parametr `qs` v chybě se zpráva, že počet požadavků odeslaných z klienta na server, ale nebyly zpracovány odpověď. Tuto hodnotu můžete pořád rostou, protože StackExchange.Redis používá jedno připojení TCP a může číst pouze jednu odpověď najednou. Přestože první operace vypršení časového limitu, nezastaví další data z odesílané do nebo ze serveru. Ostatní žádosti budou blokovány, dokud velké žádosti bylo dokončeno a může způsobit, že časové limity. Jedním z řešení je minimalizovat riziko vypršení časového limitu pro zajištění, že vaše mezipaměť je příliš velká pro vaše úlohy a rozdělení do menších bloků velké hodnoty. Další možnou příčinou je použití fondu `ConnectionMultiplexer` objekty v klientovi a zvolte nejméně načíst `ConnectionMultiplexer` při odeslání nového požadavku. Načítání napříč více objektů připojení by měl jeden časový limit zabránit způsobí ostatní požadavky také vypršení časového limitu.
 1. Pokud používáte `RedisSessionStateProvider`, ujistěte se, jste správně nastavili časový limit opakování. `retryTimeoutInMilliseconds` musí být vyšší než `operationTimeoutInMilliseconds`, jinak dojde k žádné opakování. V následujícím příkladu `retryTimeoutInMilliseconds` je nastavena na 3000. Další informace najdete v tématu [zprostředkovatel stavu relací ASP.NET pro Azure Cache pro Redis](cache-aspnet-session-state-provider.md) a [jak používat parametry konfigurace zprostředkovatele stavu relace a poskytovatel výstupní mezipaměti](https://github.com/Azure/aspnet-redis-providers/wiki/Configuration).
 
+    ```xml
     <add
       name="AFRedisCacheSessionStateProvider"
       type="Microsoft.Web.Redis.RedisSessionStateProvider"
@@ -262,6 +263,7 @@ Tato chybová zpráva obsahuje metriky, který vám pomůže odkazovat na pří�
       connectionTimeoutInMilliseconds = "5000"
       operationTimeoutInMilliseconds = "1000"
       retryTimeoutInMilliseconds="3000" />
+    ```
 
 1. Zkontrolujte využití paměti na ukládání do mezipaměti Azure Redis serveru podle [monitorování](cache-how-to-monitor.md#available-metrics-and-reporting-intervals) `Used Memory RSS` a `Used Memory`. Pokud zásadu vyřazení je na místě, Redis spustí schopnost reagovat umožňuje vyhnání klíče při `Used_Memory` dosáhne velikosti mezipaměti. V ideálním případě `Used Memory RSS` by mělo být pouze mírně vyšší než `Used memory`. Velký rozdíl znamená, že existuje fragmentace paměti (interní nebo externí). Když `Used Memory RSS` je menší než `Used Memory`, to znamená, že část paměti mezipaměti byla vyměnit provozu v operačním systému. Pokud toto prohození dojde, můžete očekávat některé významné latenci. Protože Redis nebude mít kontrolu nad jeho přidělení zpřístupněných paměťových stránek, Vysoká `Used Memory RSS` je často výsledkem špička využití paměti. Když Redis server uvolnění paměti, alokátoru trvá paměť, ale může nebo nemusí poskytnout paměť zpět do systému. Může být rozdíl mezi `Used Memory` hodnotu nebo paměti využití podle operačního systému. Paměť se používá a vydány redis, ale není zadaný zpět do systému. Zmírnit problémy s pamětí, můžete provést následující kroky:
 

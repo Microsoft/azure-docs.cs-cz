@@ -13,24 +13,26 @@ ms.devlang: multiple
 ms.topic: overview
 ms.tgt_pltfrm: multiple
 ms.workload: media
-ms.date: 03/20/2019
+ms.date: 04/11/2019
 ms.author: juliako
 ms.custom: ''
-ms.openlocfilehash: 4f9911259cc4da02429971ef6bddfa62080a9fe6
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.openlocfilehash: d97682de6c8eb7dd36e25cbd4b8d66d328745748
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/05/2019
-ms.locfileid: "59044402"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59543625"
 ---
 # <a name="start-developing-with-media-services-v3-api-using-sdkstools"></a>Začněte vyvíjet s využitím rozhraní API služby Media Services v3 pomocí sady SDK a nástroje
 
 Jako vývojář, můžete použít Media Services [rozhraní REST API](https://aka.ms/ams-v3-rest-ref) nebo klientských knihoven, které umožňují pracovat s rozhraním REST API snadno vytvářet, spravovat a udržovat vlastní multimediální pracovní postupy. [Media Services v3](https://aka.ms/ams-v3-rest-sdk) rozhraní API je založena na specifikaci OpenAPI (dříve označované jako Swagger).
 
-Toto téma obsahuje odkazy na sady SDK, nástroje, dokumentaci. Poskytuje také některé užitečné informace pro jiné vývojáře env.
+Než začnete s vývojem, projděte si [vývoj s využitím rozhraní API služby Media Services v3](media-services-apis-overview.md).
 
 > [!NOTE]
 > Sady SDK služby Azure Media Services v3 nemusí být bezpečné pro vlákna. Při vývoji aplikace Vícevláknová, měli byste přidat vlastní logiku synchronizace vlákno při ochraně klienta nebo použít nový objekt AzureMediaServicesClient na vlákno. Také byste měli být opatrní z více vláken problémy spojené s uvedením volitelné objekty poskytované kódu do klienta (například HttpClient instance v rozhraní .NET).
+
+Toto téma obsahuje odkazy na sady SDK, nástroje, další documentaion.
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -40,7 +42,7 @@ Jak začít s vývojem ve službě Media Services, budete potřebovat:
 - [Další informace o základních konceptech](concepts-overview.md)
 - [Vytvoření účtu Azure Media Services – rozhraní příkazového řádku](create-account-cli-how-to.md)
 
-## <a name="start-developing-with-sdks"></a>Začněte vyvíjet s využitím sady SDK
+## <a name="start-developing-with-sdks"></a>Zahájení vývoje s využitím sad SDK
 
 ### <a name="net"></a>.NET
 

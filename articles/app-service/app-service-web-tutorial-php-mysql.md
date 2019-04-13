@@ -1,6 +1,6 @@
 ---
-title: Vytvoření aplikace PHP s MySQL – Azure App Service | Dokumentace Microsoftu
-description: Naučte se v Azure zprovoznit aplikaci PHP s připojením k databázi MySQL v Azure.
+title: PHP (Laravel) s MySQL – Azure App Service | Dokumentace Microsoftu
+description: Naučte se v Azure zprovoznit aplikaci PHP s připojením k databázi MySQL v Azure. V tomto kurzu se používá Laravel.
 services: app-service\web
 documentationcenter: php
 author: cephalin
@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 11/15/2018
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: c906880897b14cf999fcffd17abba0adebc1adf6
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 35f9b97f7955f0ba430f94f559b0ab160cc2efcd
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57552125"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59544615"
 ---
 # <a name="tutorial-build-a-php-and-mysql-app-in-azure"></a>Kurz: Vytvoření PHP a MySQL aplikaci v Azure
 

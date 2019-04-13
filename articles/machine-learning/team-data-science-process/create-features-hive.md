@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 11/21/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 4d74b122f3b5567e8291ec5f3ff4e1dda7ff68f0
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: a491f923d7755513d84adfe765d595a3a7a80715
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57835012"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59524901"
 ---
 # <a name="create-features-for-data-in-a-hadoop-cluster-using-hive-queries"></a>Vytvoření funkcí pro data v clusteru Hadoop pomocí dotazů Hive
 Tento dokument ukazuje, jak vytvoření funkcí pro data uložená v clusteru Azure HDInsight Hadoop pomocí dotazů Hive. Tyto dotazy Hive pomocí vložených Hive User-Defined funkcí (UDF), skriptů, pro které jsou k dispozici.
@@ -89,14 +89,14 @@ Hive se dodává se sadou funkcí UDF pro zpracování pole data a času. V Hive
         select day(<datetime field>), month(<datetime field>)
         from <databasename>.<tablename>;
 
-Tento dotaz Hive předpokládá, *<datetime field>* je ve výchozím formátu data a času.
+Tento dotaz Hive předpokládá, že  *\<pole Datum a čas >* je ve výchozím formátu data a času.
 
 Pokud není pole Datum a čas ve formátu výchozí, musíte nejprve převést pole data a času Unix časové razítko a potom převést na řetězec data a času, který je ve výchozím formátu Unix časové razítko. Když je datum a čas ve výchozím formátu, můžou uživatelé používat vložené datum a čas k extrakci funkce UDF.
 
         select from_unixtime(unix_timestamp(<datetime field>,'<pattern of the datetime field>'))
         from <databasename>.<tablename>;
 
-V tomto dotazu Pokud *<datetime field>* ve tvaru jako *03/26/2015 12:04:39*,  *<pattern of the datetime field>"* by měl být `'MM/dd/yyyy HH:mm:ss'`. K otestování, můžou uživatelé spouštět.
+V tomto dotazu Pokud  *\<pole Datum a čas >* ve tvaru jako *03/26/2015 12:04:39*,  *\<vzor pole Datum a čas > "* by měl být `'MM/dd/yyyy HH:mm:ss'`. K otestování, můžou uživatelé spouštět.
 
         select from_unixtime(unix_timestamp('05/15/2015 09:32:10','MM/dd/yyyy HH:mm:ss'))
         from hivesampletable limit 1;

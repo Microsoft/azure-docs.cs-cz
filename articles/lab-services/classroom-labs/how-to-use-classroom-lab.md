@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 02/07/2019
 ms.author: spelluru
-ms.openlocfilehash: 8e20f612bc54433091036377d51a7e59e3abec51
-ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
+ms.openlocfilehash: bc5c12d4bb92edaafcc9808da8c48106a6e0cbd5
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58402146"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59548031"
 ---
 # <a name="how-to-access-a-classroom-lab-in-azure-lab-services"></a>Jak získat přístup k testovacímu prostředí v učebně v Azure Lab Services
 Tento článek popisuje, jak získat přístup k testovacímu prostředí v učebně, připojit se k virtuálnímu počítači v daném testovacím prostředí a zastavit daný virtuální počítač. 
@@ -36,7 +36,7 @@ Tento článek popisuje, jak získat přístup k testovacímu prostředí v uče
 ## <a name="view-all-the-classroom-labs"></a>Zobrazit všechna testovací prostředí v učebně
 Až dokončíte registraci na tato praktická cvičení, můžete zobrazit všechny testovací prostředí v učebnách provedením následujících kroků: 
 
-1. Přejděte do [ https://labs.azure.com ](https://labs.azure.com). 
+1. Přejděte do [ https://labs.azure.com ](https://labs.azure.com). Všimněte si, že aplikace Internet Explorer 11 se ještě nepodporuje. 
 2. Přihlaste se ke službě pomocí uživatelského účtu, který jste použili k registraci do testovacího prostředí. 
 3. Ověřte, že se všechny testovací prostředí, ke kterým máte přístup k. 
 

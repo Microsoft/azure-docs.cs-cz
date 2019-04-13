@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
 ms.date: 04/09/2019
-ms.openlocfilehash: a822e540db87c36358f1a0e34d75e05ed866868d
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.openlocfilehash: 1a8f46c74693b00fd8e30b1e1a78d90111dea08b
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/11/2019
-ms.locfileid: "59491386"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59520741"
 ---
 # <a name="known-issuesmigration-limitations-with-online-migrations-to-azure-sql-db"></a>Známé problémy a migrace omezení online migrace do Azure SQL DB
 
@@ -27,12 +27,14 @@ Známé problémy a omezení související s online migraci z SQL serveru do slu
 
 ### <a name="migration-of-temporal-tables-not-supported"></a>Migrace z dočasné tabulky nejsou podporovány
 
-**Příznak**
+**Symptom**
 
 Pokud zdrojová databáze obsahuje jeden nebo více dočasných tabulek, migrace databází selže během operace "úplné načtení dat" a může se zobrazit následující zpráva:
 
-{"ID prostředku": "/subscriptions/<subscription id>/resourceGroups/migrateready/providers/Microsoft.DataMigration/services/<DMS Service name>", "errorType": "Chyba migrace databáze", "errorEvents": "[" funkce zachytávání nelze nastavit. RetCode: SQL_ERROR SqlState: 42000 NativeError: 13570 zprávy: [Microsoft] [SQL Server Native Client 11.0] [SQL Server] použití replikace není podporována se systémovou správou dočasná tabulka "[aplikace. Měst, ve kterých]' řádek: 1 sloupec: hodnota -1 "]"}
- 
+```
+{ "resourceId":"/subscriptions/<subscription id>/resourceGroups/migrateready/providers/Microsoft.DataMigration/services/<DMS Service name>", "errorType":"Database migration error", "errorEvents":"["Capture functionalities could not be set. RetCode: SQL_ERROR SqlState: 42000 NativeError: 13570 Message: [Microsoft][SQL Server Native Client 11.0][SQL Server]The use of replication is not supported with system-versioned temporal table '[Application. Cities]' Line: 1 Column: -1 "]" }
+```
+
  ![Příklad chyby dočasnou tabulku](media/known-issues-azure-sql-online/dms-temporal-tables-errors.png)
 
 **Alternativní řešení**
@@ -45,13 +47,13 @@ Pokud zdrojová databáze obsahuje jeden nebo více dočasných tabulek, migrace
 
 3. Znovu spusťte aktivitu migrace.
 
-**Zdroje a prostředky**
+**Prostředky**
 
 Další informace najdete v článku [dočasných tabulek se](https://docs.microsoft.com/sql/relational-databases/tables/temporal-tables?view=sql-server-2017).
  
 ### <a name="migration-of-tables-includes-one-or-more-columns-with-the-hierarchyid-data-type"></a>Migrace tabulky obsahuje jeden nebo více sloupců datového typu hierarchyid
 
-**Příznak**
+**Symptom**
 
 Může zobrazit výjimka SQL navrhuje "ntext není kompatibilní s hierarchyid" během operace "úplné načtení dat":
      
@@ -85,7 +87,7 @@ Může zobrazit výjimka SQL navrhuje "ntext není kompatibilní s hierarchyid" 
 
 ### <a name="support-for-lob-data-types"></a>Podpora pro typy dat LOB
 
-**Příznak**
+**Symptom**
 
 Pokud délka sloupec velkého objektu (LOB) je větší než 32 KB, může získat data zkrácena v cílovém. Délka sloupce LOB pomocí dotazu níže, můžete zkontrolovat: 
 
@@ -99,7 +101,7 @@ Pokud máte sloupec LOB, který je větší než 32 KB, obraťte se na technick�
 
 ### <a name="issues-with-timestamp-columns"></a>Problémy s sloupce časového razítka
 
-**Příznak**
+**Symptom**
 
 DMS nemigruje hodnotu časové razítko zdroje Místo toho DMS generuje novou hodnotu časového razítka v cílové tabulce.
 
@@ -109,7 +111,7 @@ Pokud potřebujete DMS k migraci přesné časové razítko hodnoty uložené ve
 
 ### <a name="data-migration-errors-dont-provide-additional-details-on-the-database-detailed-status-blade"></a>Chyby při migraci dat neposkytují další podrobnosti o okně podrobný stav databáze.
 
-**Příznak**
+**Symptom**
 
 Pokud narazíte na selhání migrace v zobrazení stavu podrobnosti databáze, vyberete **chyby při migraci dat** odkaz na horním pásu karet nemusí poskytnout další podrobnosti, které jsou specifické pro selhání migrace.
 

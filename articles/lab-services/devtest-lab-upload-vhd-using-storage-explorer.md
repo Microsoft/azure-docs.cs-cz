@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/17/2018
 ms.author: spelluru
-ms.openlocfilehash: 12a21f4fdfb279df154b4995b6191aa0ed54ab43
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 3c187d104334fe75ec9e0ce41a3fdc14b508dfb2
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57894474"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59521721"
 ---
 # <a name="upload-vhd-file-to-labs-storage-account-using-microsoft-azure-storage-explorer"></a>Nahrání souboru VHD do účtu úložiště testovacího prostředí pomocí Průzkumníka služby Microsoft Azure Storage
 
@@ -55,7 +55,7 @@ Následující kroky vás provedou po nahrání souboru VHD do DevTest Labs pomo
     
     1. **Nahrát image pomocí prostředí PowerShell** volání zobrazí okno **Add-AzureVhd** rutiny. První parametr (*cílové*) obsahuje název účtu úložiště pro testovací prostředí v následujícím formátu:
     
-        https://<STORAGE-ACCOUNT-NAME>.blob.core.windows.net/uploads/... 
+        `https://<STORAGE-ACCOUNT-NAME>.blob.core.windows.net/uploads/...`
 
     1. Poznamenejte si název účtu úložiště jako se používá v následujících krocích.
     

@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
 ms.date: 03/12/2019
-ms.openlocfilehash: e2b82c8a7bcdc1982ed4489e9422a4a0efd64f3c
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: cf5215ff5acaf08125cf280103ba8ff0123dc116
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58175095"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59523813"
 ---
 # <a name="known-issuesmigration-limitations-with-online-migrations-to-azure-db-for-mysql"></a>Známé problémy a migrace omezení online migrace do Azure DB for MySQL
 
@@ -30,7 +30,7 @@ Známé problémy a omezení související s online migrace z MySQL do služby A
 - Migrace stejnou verzi. Migrace MySQL 5.6 na Azure Database for MySQL 5.7 není podporována.
 - Povolte binární protokolování v souboru my.ini (Windows) nebo my.cnf (Unix)
     - Nastavte na 1, například Server_id Server_id na libovolné číslo větší nebo rovná = 1 (pouze pro MySQL 5.6)
-    - Nastavte log-bin = <path> (pouze pro MySQL 5.6)
+    - Nastavte log-bin = \<cesta > (pouze pro MySQL 5.6)
     - Nastavit binlog_format = řádek
     - Expire_logs_days = 5 (doporučeno – pouze pro MySQL 5.6)
 - Uživatel musí mít roli ReplicationAdmin.

@@ -10,12 +10,12 @@ ms.reviewer: klam, LADocs
 manager: jeconnoc
 ms.date: 01/05/2019
 ms.topic: article
-ms.openlocfilehash: 3faa3b0a5cd919752f8b7e4969e3affd668c8077
-ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
+ms.openlocfilehash: 339d4270dc1803879607663e9e2db4a86591ec76
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
-ms.locfileid: "59360768"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59522997"
 ---
 # <a name="create-loops-that-repeat-workflow-actions-or-process-arrays-in-azure-logic-apps"></a>Vytvoření cyklů, které opakování akce pracovního postupu nebo zpracování pole v Azure Logic Apps
 
@@ -196,7 +196,7 @@ Spouští v 8:00 hodin každý den, tato aplikace logiky příklad zvýší hodn
    | Vlastnost | Hodnota | Popis |
    | -------- | ----- | ----------- |
    | **Název** | Omezení | Název proměnné. | 
-   | **Type** | Integer | Vaše proměnná datový typ | 
+   | **Typ** | Integer | Vaše proměnná datový typ | 
    | **Hodnota** | 0 | Počáteční hodnota proměnné | 
    |||| 
 
@@ -236,9 +236,9 @@ Spouští v 8:00 hodin každý den, tato aplikace logiky příklad zvýší hodn
 
       | Vlastnost | Hodnota | Popis |
       | -------- | ----- | ----------- | 
-      | **Akce** | *<email-address\@domain>* | příjemce e-mailovou adresu. Pro účely testování použijte svou vlastní e-mailovou adresu. | 
-      | **Subjekt** | Aktuální hodnota pro "Limit" **Limit** | Zadejte předmět e-mailu. V tomto příkladu Ujistěte se, že složku zahrnujete **Limit** proměnné. | 
-      | **Tělo** | <*email-content*> | Zadejte obsah e-mailové zprávy, které chcete odeslat. V tomto příkladu zadejte jakýkoli text, který vám vyhovuje. | 
+      | **Komu** | *\<email-address\@domain>* | příjemce e-mailovou adresu. Pro účely testování použijte svou vlastní e-mailovou adresu. | 
+      | **Předmět** | Aktuální hodnota pro "Limit" **Limit** | Zadejte předmět e-mailu. V tomto příkladu Ujistěte se, že složku zahrnujete **Limit** proměnné. | 
+      | **Text** | <*email-content*> | Zadejte obsah e-mailové zprávy, které chcete odeslat. V tomto příkladu zadejte jakýkoli text, který vám vyhovuje. | 
       |||| 
 
 1. Uložte svou aplikaci logiky. Chcete-li ručním testováním aplikace logiky na panelu nástrojů návrháře zvolte **spustit**.
@@ -254,7 +254,7 @@ Spouští v 8:00 hodin každý den, tato aplikace logiky příklad zvýší hodn
 | Vlastnost | Výchozí hodnota | Popis | 
 | -------- | ------------- | ----------- | 
 | **Počet** | 60 | Nejvyšší počet cyklů, které běžet, než opakování ve smyčce ukončeno. Výchozí hodnota je 60 cykly. | 
-| **Vypršení časového limitu** | PT1H | Většina množství času spuštění smyčky před smyčku ukončí. Výchozí hodnota je jedna hodina a je zadaný ve formátu ISO 8601. <p>Hodnota časového limitu se vyhodnocuje pro každý cyklus smyčky. Pokud žádnou akci ve smyčce trvá déle než časový limit, aktuální cyklu nezastaví. Do dalšího cyklu však nespustí, protože limit podmínka splněna není. | 
+| **časový limit** | PT1H | Většina množství času spuštění smyčky před smyčku ukončí. Výchozí hodnota je jedna hodina a je zadaný ve formátu ISO 8601. <p>Hodnota časového limitu se vyhodnocuje pro každý cyklus smyčky. Pokud žádnou akci ve smyčce trvá déle než časový limit, aktuální cyklu nezastaví. Do dalšího cyklu však nespustí, protože limit podmínka splněna není. | 
 |||| 
 
 Chcete-li změnit tato výchozí omezení, zvolte **zobrazit pokročilé možnosti** ve tvaru akci opakovat.

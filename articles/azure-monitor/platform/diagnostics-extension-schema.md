@@ -9,12 +9,12 @@ ms.topic: reference
 ms.date: 09/20/2018
 ms.author: robb
 ms.subservice: diagnostic-extension
-ms.openlocfilehash: 29091add5cee0934064224c9cca8644b401bd5e4
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.openlocfilehash: 1230a9bcea01ef394a6299c50b8d5537850cfee5
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/11/2019
-ms.locfileid: "59493310"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59526333"
 ---
 # <a name="azure-diagnostics-extension-configuration-schema-versions-and-history"></a>Verze rozšíření schématu konfigurace Azure Diagnostics a historie
 Tato stránka indexy verze schématu rozšíření Azure Diagnostics se dodávají jako součást sady Microsoft Azure SDK.  
@@ -187,7 +187,7 @@ Existují některé důležité rozdíly mezi jak připojovací řetězec pracov
 
 * Azure SDK 2.4 a dřívějších verzí použil připojovací řetězec za běhu modulu plug-in diagnostiky se získat informace o účtu úložiště pro přenos diagnostické protokoly.
 * V Azure SDK 2.6 nebo novější Visual Studio používá připojovací řetězec diagnostiky ke konfiguraci rozšíření diagnostiky s informacemi o příslušné úložiště účtu během publikování. Připojovací řetězec umožňuje definovat jiný účet úložiště pro jiné služby konfigurace, které Visual Studio používat při publikování. Ale protože Diagnostika modulu plug-in již není k dispozici (po Azure SDK 2.5), souboru .cscfg samostatně nejde povolit rozšíření diagnostiky. Je nutné povolit rozšíření samostatně prostřednictvím nástrojů, jako je Visual Studio nebo prostředí PowerShell.
-* Pro zjednodušení procesu konfigurace rozšíření diagnostiky pomocí Powershellu, výstup balíčku ze sady Visual Studio také obsahuje veřejné konfigurace XML pro rozšíření diagnostiky pro každou roli. Visual Studio používá k naplnění informace o účtu úložiště k dispozici ve veřejné konfiguraci diagnostiky připojovací řetězec. Jsou vytvořena ve složce rozšíření a mají tvar PaaSDiagnostics veřejné konfigurační soubory. <RoleName>. PubConfig.xml. Všechna nasazení na základě prostředí PowerShell můžete použít tento model pro každou konfiguraci mapování k roli.
+* Pro zjednodušení procesu konfigurace rozšíření diagnostiky pomocí Powershellu, výstup balíčku ze sady Visual Studio také obsahuje veřejné konfigurace XML pro rozšíření diagnostiky pro každou roli. Visual Studio používá k naplnění informace o účtu úložiště k dispozici ve veřejné konfiguraci diagnostiky připojovací řetězec. Veřejné konfigurační soubory jsou vytvořeny ve složce rozšíření a mají tvar `PaaSDiagnostics.<RoleName>.PubConfig.xml`. Všechna nasazení na základě prostředí PowerShell můžete použít tento model pro každou konfiguraci mapování k roli.
 * Připojovací řetězec v souboru .cscfg slouží také pomocí webu Azure portal pro přístup k diagnostická data, může se objevit v **monitorování** kartu. Připojovací řetězec je potřeba ke konfiguraci služby, chcete-li zobrazit podrobné údaje o monitorování na portálu.
 
 #### <a name="migrating-projects-to-azure-sdk-26-and-later"></a>Projekty migrace do Azure SDK 2.6 a novější

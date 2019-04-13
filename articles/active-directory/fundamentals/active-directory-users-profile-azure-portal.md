@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: fundamentals
 ms.topic: conceptual
-ms.date: 09/05/2018
+ms.date: 04/11/2019
 ms.author: lizross
 ms.reviewer: jeffsta
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b11c71f7f5a329a836d379a16afe66c08572ccde
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 8d710a86bb63765ea8a1a777818ca5f99e38d3a7
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56177984"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59548037"
 ---
 # <a name="add-or-update-a-users-profile-information-using-azure-active-directory"></a>Přidat nebo aktualizovat informace o profilu uživatele pomocí služby Azure Active Directory
 Přidejte informace o profilu uživatele, včetně profilový obrázek, informace specifické pro úlohy a některá nastavení pomocí Azure Active Directory (Azure AD). Další informace o přidávání nových uživatelů najdete v tématu [postup přidání nebo odstranění uživatelů ve službě Azure Active Directory](add-users-azure-active-directory.md).
@@ -26,7 +26,7 @@ Přidejte informace o profilu uživatele, včetně profilový obrázek, informac
 Jak uvidíte, existuje další informace k dispozici v profilu uživatele, než co budete moci přidat při vytváření uživatele. Tyto další informace je volitelné a můžete přidat podle potřeby vaší organizací.
 
 ## <a name="to-add-or-change-profile-information"></a>Přidání nebo změně informací profilu
-1. Přihlaste se k [webu Azure portal](https://portal.azure.com/) jako globální správce nebo Správce uživatelů adresáře.
+1. Přihlaste se k [webu Azure portal](https://portal.azure.com/) jako správce uživatelů v organizaci.
 
 2. Vyberte **Azure Active Directory**vyberte **uživatelé**a pak vyberte uživatele. Například _Alain Charon_.
 
@@ -40,7 +40,7 @@ Jak uvidíte, existuje další informace k dispozici v profilu uživatele, než 
 
     - **Profilový obrázek.** Vyberte obrázek miniatury pro uživatelský účet. Tento obrázek se zobrazí v Azure Active Directory a na stránkách osobní uživatele, jako je například myapps.microsoft.com stránky.
 
-    - **Identita.** Přidáte všechny informace související s účtem, například vdaná příjmení nebo změněných uživatelské jméno. 
+    - **Identita.** Přidat nebo aktualizovat hodnotu další identity pro uživatele, jako je například vdaná příjmení. Tento název můžete nastavit samostatně z hodnoty křestní jméno a příjmení. Například můžete ji třeba použít zahrnout iniciály, název společnosti, nebo chcete-li změnit pořadí jména zobrazí. Například dva uživatelé, jejichž názvy jsou 'Jan zelená' můžete použít řetězec Identity k jejich názvy na hodnotu "Jan B. zelená" "Jan R. zelené (Contoso)."
 
     - **Informace o úloze.** Přidáte jakýchkoli informací souvisejících s úlohami, například pracovní pozice uživatele, oddělení nebo správce.
 

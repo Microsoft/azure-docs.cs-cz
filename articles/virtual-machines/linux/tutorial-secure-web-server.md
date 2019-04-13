@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 04/30/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 79b694b877e7e26c5b9c71fb5cfbde3703ef3cb6
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: 7d372dfa845459a63de8ccc1b81e7b1319f47e34
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55750915"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59524360"
 ---
 # <a name="tutorial-secure-a-web-server-on-a-linux-virtual-machine-in-azure-with-ssl-certificates-stored-in-key-vault"></a>Kurz: Zabezpečení webového serveru na virtuální počítač s Linuxem v Azure s využitím certifikátů SSL, které jsou uložené ve službě Key Vault
 K zabezpečení webových serverů můžete použít certifikáty SSL (Secure Sockets Layer), které šifrují webový provoz. Tyto certifikáty SSL můžete ukládat do služby Azure Key Vault a umožnit zabezpečené nasazování certifikátů do virtuálních počítačů s Linuxem v Azure. V tomto kurzu se naučíte:
@@ -50,7 +50,7 @@ Než vytvoříte službu Key Vault a certifikáty, vytvořte skupinu prostředk�
 az group create --name myResourceGroupSecureWeb --location eastus
 ```
 
-Dále vytvořte službu Key Vault pomocí příkazu [az keyvault create](/cli/azure/keyvault) a povolte její použití při nasazování virtuálního počítače. Každá služba Key Vault vyžaduje jedinečný název, který by měl být malými písmeny. Nahraďte *<mykeyvault>* v následujícím příkladu vlastním jedinečným názvem služby Key Vault:
+Dále vytvořte službu Key Vault pomocí příkazu [az keyvault create](/cli/azure/keyvault) a povolte její použití při nasazování virtuálního počítače. Každá služba Key Vault vyžaduje jedinečný název, který by měl být malými písmeny. Nahraďte  *\<mykeyvault >* v následujícím příkladu nahraďte vlastním jedinečným názvem služby Key Vault:
 
 ```azurecli-interactive 
 keyvault_name=<mykeyvault>
@@ -137,7 +137,7 @@ az vm open-port \
 
 
 ### <a name="test-the-secure-web-app"></a>Testování zabezpečené webové aplikace
-Nyní můžete otevřít webový prohlížeč a do adresního řádku zadat *https://<publicIpAddress>*. Zadejte vlastní veřejnou IP adresu získanou při vytváření virtuálního počítače. Pokud jste použili certifikát podepsaný svým držitelem, přijměte upozornění zabezpečení:
+Nyní můžete otevřít webový prohlížeč a zadejte *https:\/\/\<publicIpAddress >* do adresního řádku. Zadejte vlastní veřejnou IP adresu získanou při vytváření virtuálního počítače. Pokud jste použili certifikát podepsaný svým držitelem, přijměte upozornění zabezpečení:
 
 ![Přijetí upozornění zabezpečení ve webovém prohlížeči](./media/tutorial-secure-web-server/browser-warning.png)
 

@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 07/08/2017
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0c99bc4ef23ee2d8f4478bbaab591e7b36c7ea75
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 416a98c5f9c5a2ec813206ea9ea7f311b23e86cb
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58109827"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59525574"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-rightscale"></a>Kurz: Integrace Azure Active Directory s Rightscale
 
@@ -132,7 +132,7 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
 1. Na **Rightscale konfigurace** klikněte na tlačítko **nakonfigurovat Rightscale** otevřete **nakonfigurovat přihlašování** okna. Kopírovat **SAML Entity ID a SAML jednotné přihlašování – adresa URL služby** z **Stručná referenční příručka oddílu.**
 
     ![Konfigurace jednotného přihlašování](./media/rightscale-tutorial/tutorial_rightscale_configure.png) 
-   <CS>
+
 1. Pokud chcete získat jednotné přihlašování nakonfigurované pro vaši aplikaci, budete muset přihlašování k vašemu tenantovi RightScale jako správce.
 
     a. V nabídce v horní části klikněte **nastavení** kartě a vyberte **Single Sign-On**.
@@ -164,7 +164,7 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
     ![Konfigurace jednotného přihlašování](./media/rightscale-tutorial/tutorial_rightscale_009.png)
 
     h. Klikněte na **Uložit**.
-   <CE>
+
    > [!TIP]
    > Teď si můžete přečíst stručné verzi těchto pokynů uvnitř [webu Azure portal](https://portal.azure.com), zatímco jsou nastavení aplikace!  Po přidání této aplikace z **služby Active Directory > podnikové aplikace** části, stačí kliknout **Single Sign-On** kartu a přístup k vložené dokumentaci prostřednictvím  **Konfigurace** oblast v dolní části. Další informace o funkci vložená dokumentace: [Dokumentace ke službě Azure AD, embedded]( https://go.microsoft.com/fwlink/?linkid=845985)
    > 

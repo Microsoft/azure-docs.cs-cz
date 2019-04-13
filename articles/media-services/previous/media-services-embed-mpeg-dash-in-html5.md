@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: 1390d68a93dd3d80b5977bab6665553ea3f8b398
-ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
+ms.openlocfilehash: f521fd11a2053cf8cf1ea0f9f91667fe475f0eee
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58403070"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59522431"
 ---
 # <a name="embedding-an-mpeg-dash-adaptive-streaming-video-in-an-html5-application-with-dashjs"></a>Vložení videa adaptivního streamování MPEG-DASH do aplikace HTML5 se souborem DASH.js  
 
@@ -86,7 +86,7 @@ V dalším kroku vytvoření instance třídy primární rozhraní souborem dash
 
 Voláním funkce startup() MediaPlayer třídy se ujistěte se, že hráč připravené k přehrání videa. Mimo jiné funkce zajišťuje, že všechny nezbytné třídy (podle definice v rámci) byly načteny. Když hráč je připravená, můžete připojit element videa pomocí funkce attachView(). Po spuštění funkce umožňuje MediaPlayer k vložení do prvku datový proud videa a také řídit přehrávání podle potřeby.
 
-Předejte adresu URL souboru MPD MediaPlayer takže ví o videa, že se má přehrát. Funkci setupVideo() právě vytvořili, bude nutné provést, jakmile plně načtení stránky. To lze proveďte pomocí události při načtení elementu těla. Změna vašeho <body> element:
+Předejte adresu URL souboru MPD MediaPlayer takže ví o videa, že se má přehrát. Funkci setupVideo() právě vytvořili, bude nutné provést, jakmile plně načtení stránky. To lze proveďte pomocí události při načtení elementu těla. Změna vašeho `<body>` element:
 
 ```html
     <body onload="setupVideo()">

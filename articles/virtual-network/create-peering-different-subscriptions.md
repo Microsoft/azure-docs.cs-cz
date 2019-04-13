@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/09/2019
 ms.author: anavin
-ms.openlocfilehash: ff8c866f62e8d795f04491cf249b7dae26c8269c
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.openlocfilehash: 3294eda4d9330332bf23c3a8f1804f067373bf7a
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/11/2019
-ms.locfileid: "59492290"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59528251"
 ---
 # <a name="create-a-virtual-network-peering---resource-manager-different-subscriptions"></a>Vytvoření partnerského vztahu virtuálních sítí - Resource Manageru, různá předplatná
 
@@ -27,9 +27,9 @@ Postup vytvoření partnerského vztahu virtuálních sítí se liší v závisl
 
 |Model nasazení Azure  | Předplatné Azure  |
 |--------- |---------|
-|[Obě Resource Manager](tutorial-connect-virtual-networks-portal.md) |Stejné|
-|[Jedna Resource Manager, druhá Classic](create-peering-different-deployment-models.md) |Stejné|
-|[Jedna Resource Manager, druhá Classic](create-peering-different-deployment-models-subscriptions.md) |Odlišné|
+|[Obě Resource Manageru](tutorial-connect-virtual-networks-portal.md) |Stejné|
+|[Jedna Resource Manager, druhá classic](create-peering-different-deployment-models.md) |Stejné|
+|[Jedna Resource Manager, druhá classic](create-peering-different-deployment-models-subscriptions.md) |Odlišné|
 
 Partnerský vztah virtuální sítě nejde vytvořit mezi dvěma virtuálními sítěmi, které jsou nasazené prostřednictvím modelu nasazení classic. Pokud potřebujete k propojení virtuálních sítí, které byly obě vytvořené prostřednictvím modelu nasazení classic, můžete použít Azure [VPN Gateway](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json) k propojení virtuálních sítí.
 
@@ -61,7 +61,7 @@ Následující kroky používají různé účty pro každé předplatné. Pokud
 7. Vyberte **Přispěvatel sítě** v **Role** pole.
 8. V **vyberte** vyberte *UserB*, nebo zadejte e-mailovou adresu vaší UserB ji najít.
 9. Vyberte **Uložit**.
-10. V části **myVnetA – řízení přístupu (IAM)** vyberte **vlastnosti** z svislý seznam možností na levé straně. Kopírovat **ID prostředku**, který se používá v pozdější fázi. Podobně jako v následujícím příkladu je ID prostředku: /subscriptions/<Subscription Id>/resourceGroups/myResourceGroupA/providers/Microsoft.Network/virtualNetworks/myVnetA.
+10. V části **myVnetA – řízení přístupu (IAM)** vyberte **vlastnosti** z svislý seznam možností na levé straně. Kopírovat **ID prostředku**, který se používá v pozdější fázi. Podobně jako v následujícím příkladu je ID prostředku: `/subscriptions/<Subscription Id>/resourceGroups/myResourceGroupA/providers/Microsoft.Network/virtualNetworks/myVnetA`.
 11. Odhlaste se z portálu jako UserA a přihlaste se jako UserB.
 12. Proveďte kroky 2 až 3, zadáním nebo výběrem následující hodnoty v kroku 3:
 
@@ -74,7 +74,7 @@ Následující kroky používají různé účty pro každé předplatné. Pokud
     - **Umístění**: *USA – východ*
 
 13. V **vyhledat prostředky** pole v horní části portálu zadejte *myVnetB*. Vyberte **myVnetB** když se zobrazí ve výsledcích hledání.
-14. V části **myVnetB**vyberte **vlastnosti** z svislý seznam možností na levé straně. Kopírovat **ID prostředku**, který se používá v pozdější fázi. Podobně jako v následujícím příkladu je ID prostředku: /subscriptions/<Subscription ID>/resourceGroups/myResourceGroupB/providers/Microsoft.ClassicNetwork/virtualNetworks/myVnetB.
+14. V části **myVnetB**vyberte **vlastnosti** z svislý seznam možností na levé straně. Kopírovat **ID prostředku**, který se používá v pozdější fázi. Podobně jako v následujícím příkladu je ID prostředku: `/subscriptions/<Subscription ID>/resourceGroups/myResourceGroupB/providers/Microsoft.ClassicNetwork/virtualNetworks/myVnetB`.
 15. Vyberte **řízení přístupu (IAM)** pod **myVnetB**a potom proveďte kroky 5 až 10 pro myVnetB zadávání **UserA** v kroku 8.
 16. Odhlaste se z portálu jako UserB a přihlaste se jako UserA.
 17. V **vyhledat prostředky** pole v horní části portálu zadejte *myVnetA*. Vyberte **myVnetA** když se zobrazí ve výsledcích hledání.
@@ -111,7 +111,7 @@ Následující skripty:
 Místo instalace rozhraní příkazového řádku a jeho závislosti, můžete použít Azure Cloud Shell. Služba Azure Cloud Shell je volně dostupné prostředí Bash, které můžete spustit přímo z portálu Azure Portal. Má předinstalované rozhraní Azure CLI, které je nakonfigurované pro použití s vaším účtem. Vyberte **vyzkoušet** tlačítka ve skriptu, který následuje, které vyvolá cloudové prostředí, které se můžete přihlásit ke svému účtu Azure s.
 
 1. Otevřete relaci příkazového řádku a přihlášení do Azure jako pomocí UserA `azure login` příkazu. Účet, který jste přihlášení, musí mít potřebná oprávnění k vytvoření partnerského vztahu virtuálních sítí. Seznam oprávnění najdete v tématu [virtuálních sítí oprávnění pro partnerské vztahy](virtual-network-manage-peering.md#permissions).
-2. Zkopírujte následující skript do textového editoru ve vašem počítači, nahraďte `<SubscriptionA-Id>` s ID SubscriptionA, zkopírujte upravený skript, vložte ho do relace příkazového řádku a stisknutím klávesy `Enter`. Pokud si nejste jisti Id předplatného, zadejte příkaz "az account show". Hodnota pro **id** ve výstupu je vaše ID předplatného.
+2. Zkopírujte následující skript do textového editoru ve vašem počítači, nahraďte `<SubscriptionA-Id>` s ID SubscriptionA, zkopírujte upravený skript, vložte ho do relace příkazového řádku a stisknutím klávesy `Enter`. Pokud si nejste jisti Id předplatného, zadejte `az account show` příkazu. Hodnota pro **id** ve výstupu je vaše ID předplatného.
 
     ```azurecli-interactive
     # Create a resource group.

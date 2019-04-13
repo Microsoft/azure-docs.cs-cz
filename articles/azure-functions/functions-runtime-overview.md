@@ -10,14 +10,16 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 11/28/2017
 ms.author: anwestg
-ms.openlocfilehash: 4d11af1edc13fa675bef5cf9067dbe95646abff1
-ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
+ms.openlocfilehash: 2af9575c50ee522d6330ddf46c75b666132b7a84
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44091913"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59546829"
 ---
 # <a name="azure-functions-runtime-overview-preview"></a>Přehled modulu Runtime Azure Functions (preview)
+
+[!INCLUDE [intro](../../includes/functions-runtime-preview-note.md)]
 
 Modul Runtime služby Azure Functions (preview) poskytuje nový způsob, jakým lze využívat jednoduchost a pružnosti Azure Functions programování místním modelu. Vytvořená na základě stejné opensourcové kořeny jako funkce Azure Functions, modul Runtime služby Azure Functions je nasazená místně na poskytuje téměř stejné vývojové prostředí jako cloudová služba.
 

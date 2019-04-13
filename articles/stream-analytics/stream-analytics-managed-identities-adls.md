@@ -1,19 +1,18 @@
 ---
 title: Ověření úlohy Azure Stream Analytics k Azure Data Lake Storage Gen1 výstupu
 description: Tento článek popisuje způsob použití spravované identity k ověření vaší úlohy Azure Stream Analytics k Azure Data Lake Storage Gen1 výstup.
-services: stream-analytics
 author: mamccrea
 ms.author: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 04/8/2019
+ms.date: 04/08/2019
 ms.custom: seodec18
-ms.openlocfilehash: 9eb66a9000c9add0718c6edf6674a26ce8e479b3
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: 695591fedfacb34742335a6e9d6ca32a9c77eb7e
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59257973"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59522057"
 ---
 # <a name="authenticate-stream-analytics-to-azure-data-lake-storage-gen1-using-managed-identities"></a>Ověření Stream Analytics pro Azure Data Lake Storage Gen1 pomocí spravované identity
 
@@ -100,33 +99,37 @@ Tento článek popisuje tři způsoby, jak povolit spravovanou identitu pro úlo
    Tato vlastnost říká Azure Resource Manageru můžete vytvořit a spravovat identitu pro vaši úlohu Azure Stream Analytics.
 
    **Ukázkové úlohy**
-
-    ```json
-    {
-      "Name": "AsaJobWithIdentity",
-      "Type": "Microsoft.StreamAnalytics/streamingjobs",
-      "Location": "West US",
-      "Identity": {
-        "Type": "SystemAssigned",
-      },
-      "properties": {
-        "sku": {
-          "name": "standard"
-        },
-        "outputs": [
-          {
-            "name": "string",
-            "properties":{
-              "datasource": {
-                "type": "Microsoft.DataLake/Accounts",
-                "properties": {
-                  "accountName": "myDataLakeAccountName",
-                  "filePathPrefix": "cluster1/logs/{date}/{time}",
-                  "dateFormat": "YYYY/MM/DD",
-                  "timeFormat": "HH",
-                  "authenticationMode": "Msi"
-                }
-              }
+   
+   ```json
+   {
+     "Name": "AsaJobWithIdentity",
+     "Type": "Microsoft.StreamAnalytics/streamingjobs",
+     "Location": "West US",
+     "Identity": {
+       "Type": "SystemAssigned",
+     },
+     "properties": {
+       "sku": {
+         "name": "standard"
+       },
+       "outputs": [
+         {
+           "name": "string",
+           "properties":{
+             "datasource": {
+               "type": "Microsoft.DataLake/Accounts",
+               "properties": {
+                 "accountName": "myDataLakeAccountName",
+                 "filePathPrefix": "cluster1/logs/{date}/{time}",
+                 "dateFormat": "YYYY/MM/DD",
+                 "timeFormat": "HH",
+                 "authenticationMode": "Msi"
+             }
+           }
+         }
+       }
+     }
+   }
    ```
   
    **Ukázková odpověď úlohy**
@@ -145,7 +148,8 @@ Tento článek popisuje tři způsoby, jak povolit spravovanou identitu pro úlo
         "sku": {
           "name": "standard"
         },
-      }
+     }
+   }
    ```
 
    Poznamenejte si ID objektu zabezpečení z odpovědi úlohy udělit přístup k požadované prostředků ADLS.
@@ -162,22 +166,21 @@ Tento článek popisuje tři způsoby, jak povolit spravovanou identitu pro úlo
 
    **PrincipalId** je ID objektu instančního objektu a je uvedené na portálu obrazovka po vytvoření instančního objektu. Pokud jste vytvořili úlohu pomocí nasazení šablony Resource Manageru, ID objektu je uvedeno ve vlastnosti identita třídy odpověď úlohy.
 
-   **Příklad:**
+   **Příklad**
 
    ```powershell
    PS > Set-AzDataLakeStoreItemAclEntry -AccountName "adlsmsidemo" -Path / -AceType
    User -Id 14c6fd67-d9f5-4680-a394-cd7df1f9bacf -Permissions WriteExecute
    ```
 
-   Další informace o výše uvedený příkaz Powershellu, přečtěte si [Set-AzDataLakeStoreItemAclEntry](https://docs.microsoft.com/powershell/module/az.datalakestore/set-azdatalakestoreitemaclentry) dokumentaci.
+   Další informace o výše uvedený příkaz Powershellu, přečtěte si [Set-AzDataLakeStoreItemAclEntry](/powershell/module/az.datalakestore/set-azdatalakestoreitemaclentry) dokumentaci.
 
 ## <a name="limitations"></a>Omezení
 Tato funkce nepodporuje následující:
 
-1.  **Víceklientský přístup**: Instanční objekt služby, které jsou vytvořené pro danou úlohu Stream Analytics se bude nacházet v tenantovi Azure Active Directory, na kterém byla vytvořena úloha a nelze použít u prostředku, který se nachází v jiném tenantovi Azure Active Directory. Proto můžete použít pouze instalační služby MSI na 1. generace ADLS prostředky, které jsou ve stejném tenantovi Azure Active Directory jako vaší úlohy Azure Stream Analytics. 
+1. **Víceklientský přístup**: Instanční objekt služby, které jsou vytvořené pro danou úlohu Stream Analytics se bude nacházet v tenantovi Azure Active Directory, na kterém byla vytvořena úloha a nelze použít u prostředku, který se nachází v jiném tenantovi Azure Active Directory. Proto můžete použít pouze instalační služby MSI na 1. generace ADLS prostředky, které jsou ve stejném tenantovi Azure Active Directory jako vaší úlohy Azure Stream Analytics. 
 
-2.  **[Identita uživatele přiřazeny](https://docs.microsoft.com/en-us/azure/active-directory/managed-identities-azure-resources/overview)**: není podporována. to znamená, že uživatel není možné je zadat své vlastní instanční objekt služby pro svoje úlohy Stream Analytics. Instanční objekt je generován Azure Stream Analytics. 
-
+2. **[Identita uživatele přiřazeny](../active-directory/managed-identities-azure-resources/overview.md)**: není podporováno. To znamená, že uživatel není možné je zadat své vlastní instanční objekt služby pro svoje úlohy Stream Analytics. Instanční objekt je generován Azure Stream Analytics.
 
 ## <a name="next-steps"></a>Další postup
 

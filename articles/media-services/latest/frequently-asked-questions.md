@@ -9,14 +9,14 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 03/20/2019
+ms.date: 04/10/2019
 ms.author: juliako
-ms.openlocfilehash: e543f6e69632da67900e3b49a9c77e125df5f852
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: d6e5142bec29f58671c553b7b32bb72202cae263
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58316911"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59544173"
 ---
 # <a name="azure-media-services-v3-frequently-asked-questions"></a>Nejčastější dotazy k Azure Media Services v3
 
@@ -24,15 +24,19 @@ Tento článek obsahuje odpovědi na nejčastější dotazy v3 Azure Media Servi
 
 ## <a name="v3-apis"></a>rozhraní API v3
 
+### <a name="what-azure-roles-can-perform-actions-on-azure-media-services-resources"></a>Rolích Azure můžete provádět akce s prostředky služby Azure Media Services? 
+
+Zobrazit [řízení přístupu na základě rolí (RBAC) pro účty Media Services](rbac-overview.md).
+
 ### <a name="how-do-i-configure-media-reserved-units"></a>Jak nakonfigurovat rezervovaných jednotek médií?
 
-Pro analýzu zvuku a videa analytických úloh, které jsou aktivovány Media Services v3 nebo Video Indexer důrazně doporučujeme pro účet zřídit s 10 použité položky S3. Pokud potřebujete více než 10 použité položky S3, otevřete lístek podpory pomocí [webu Azure portal](https://portal.azure.com/).
+Pro úlohy analýzy zvuku a analýzy videa, které jsou aktivované službou Media Services v3 nebo Video Indexerem, důrazně doporučujeme zřídit váš účet s 10 rezervovanými jednotkami S3. Pokud potřebujete více než 10 použité položky S3, otevřete lístek podpory pomocí [webu Azure portal](https://portal.azure.com/).
 
 Podrobnosti najdete v tématu [škálování zpracování médií pomocí rozhraní příkazového řádku](media-reserved-units-cli-how-to.md).
 
 ### <a name="what-is-the-recommended-method-to-process-videos"></a>Co je doporučovaná metoda pro proces videa?
 
-Použití [transformuje](https://docs.microsoft.com/rest/api/media/transforms) konfigurace běžné úlohy kódování nebo analyzovat videa. Každý **transformace** popisuje nebudou tím správným nebo pracovního postupu úloh zpracování videa nebo zvukových souborů. A [úlohy](https://docs.microsoft.com/rest/api/media/jobs) je skutečnou žádost služby Media Services použít **transformace** do daného vstupního videa nebo zvukový obsah. Po vytvoření transformace, můžete odeslat úlohy pomocí rozhraní API služby Media Services nebo libovolného z publikované sady SDK. Další informace najdete v tématu [transformuje a úlohy](transforms-jobs-concept.md).
+Použití [transformuje](https://docs.microsoft.com/rest/api/media/transforms) konfigurace běžné úlohy kódování nebo analyzovat videa. Každý **transformace** popisuje nebudou tím správným nebo pracovního postupu úloh zpracování videa nebo zvukových souborů. A [úlohy](https://docs.microsoft.com/rest/api/media/jobs) je skutečnou žádost služby Media Services použít **transformace** do daného vstupního videa nebo zvukový obsah. Po vytvoření transformace, můžete odeslat úlohy pomocí rozhraní API služby Media Services nebo libovolného z publikované sady SDK. Další informace najdete v tématu [Transformace a úlohy](transforms-jobs-concept.md).
 
 ### <a name="how-does-pagination-work"></a>Jak funguje stránkování?
 
@@ -67,13 +71,13 @@ Licence/klíč API služby Azure Media Services použijte ke konfiguraci doručo
 Další informace naleznete v tématu:
 
 - [Přehled ochrany obsahu](content-protection-overview.md)
-- [Návrh systému s více variantami DRM ochrany obsahu pomocí řízení přístupu](design-multi-drm-system-with-access-control.md)
+- [Návrh systému ochrany obsahu s více variantami DRM s využitím řízení přístupu](design-multi-drm-system-with-access-control.md)
 
 ## <a name="media-services-v2-vs-v3"></a>Media Services v2 a v3 
 
 ### <a name="can-i-use-the-azure-portal-to-manage-v3-resources"></a>Můžete použít na webu Azure portal ke správě prostředků v3
 
-V současné době nelze použít na webu Azure portal ke správě prostředků v3. Použití [rozhraní REST API](https://aka.ms/ams-v3-rest-ref), [rozhraní příkazového řádku](https://aka.ms/ams-v3-cli-ref), nebo jeden z podporovaných [sady SDK](developers-guide.md).
+Aktuálně nemůžete spravovat prostředky v3 pomocí webu Azure Portal. Použijte rozhraní [REST API](https://aka.ms/ams-v3-rest-ref), [rozhraní příkazového řádku](https://aka.ms/ams-v3-cli-ref) nebo některou z podporovaných sad [SDK](developers-guide.md).
 
 ### <a name="is-there-an-assetfile-concept-in-v3"></a>Je ve verzi 3 koncept AssetFile?
 

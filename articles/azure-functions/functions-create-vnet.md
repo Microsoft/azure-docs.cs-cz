@@ -6,14 +6,14 @@ author: alexkarcher-msft
 manager: jehollan
 ms.service: azure-functions
 ms.topic: article
-ms.date: 12/03/2018
+ms.date: 4/11/2019
 ms.author: alkarche
-ms.openlocfilehash: 4f27bbeb43bbf373b621d151d68583f0041378b3
-ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
+ms.openlocfilehash: f8ddcbcb25dc45ee71304ffa1bc5c0c4d3751b61
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58894197"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59523728"
 ---
 # <a name="integrate-a-function-app-with-an-azure-virtual-network"></a>Integrace aplikace function app s Azure virtual network
 
@@ -111,13 +111,14 @@ Aplikace Function App je připojený k Internetu a virtuální síť. Proxy serv
 
 ## <a name="next-steps"></a>Další kroky
 
-Funkce běžící v plánu Premium sdílet stejnou základní infrastruktury služby App Service jako webové aplikace. To znamená, že všechny dokumentace k Web Apps platí pro vaše funkce plánu Premium.
+Funkce běžící v plánu Premium sdílet stejnou základní infrastruktury služby App Service Web Apps v PV2 plánů. To znamená, že všechny dokumentace k Web Apps platí pro vaše funkce plánu Premium.
 
-1. [Další informace o integraci virtuální sítě pomocí služby App Service / funkce zde](https://docs.microsoft.com/azure/app-service/web-sites-integrate-with-vnet)
-1. [Další informace o virtuálních sítí v Azure](https://azure.microsoft.com/documentation/articles/virtual-networks-overview/)
-1. [Povolit pro síťové funkce a ovládacím prvkem služby App Service Environment](https://docs.microsoft.com/azure/app-service/environment/intro)
-1. [Připojení k jednotlivým místních prostředků bez nutnosti změn brány firewall pomocí hybridních připojení](https://docs.microsoft.com/azure/app-service/app-service-hybrid-connections)
-1. [Další informace o proxy serverů funkcí](https://review.docs.microsoft.com/azure/azure-functions/functions-proxies)
+1. [Další informace o možnosti sítě v sem](./functions-networking-options.md)
+1. [Přečtěte si funkce tady sítě – nejčastější dotazy](./functions-networking-faq.md)
+1. [Další informace o virtuálních sítí v Azure](../virtual-network/virtual-networks-overview.md)
+1. [Povolit další síťové funkce a ovládací prvek s App Service Environment](../app-service/environment/intro.md)
+1. [Připojení k jednotlivým místních prostředků bez nutnosti změn brány firewall pomocí hybridních připojení](../app-service/app-service-hybrid-connections.md)
+1. [Další informace o proxy serverů funkcí](./functions-proxies.md)
 
 <!--Image references-->
 [1]: ./media/functions-create-vnet/topology.png

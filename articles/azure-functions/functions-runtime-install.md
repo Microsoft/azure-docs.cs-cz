@@ -10,14 +10,16 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 11/28/2017
 ms.author: anwestg
-ms.openlocfilehash: 1ad1d2c74be97afcb62f3f8e8161111f4938f645
-ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
+ms.openlocfilehash: aae6bc41f3c2fc2c5f8cf63d07f6b4d79bb3564a
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44093664"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59547539"
 ---
 # <a name="install-the-azure-functions-runtime-preview-2"></a>Nainstalovat modul Runtime služby Azure Functions ve verzi preview 2
+
+[!INCLUDE [intro](../../includes/functions-runtime-preview-note.md)]
 
 Pokud chcete nainstalovat modul Runtime služby Azure Functions ve verzi preview 2, postupujte podle těchto kroků:
 
@@ -102,36 +104,37 @@ K dokončení instalace modulu Runtime služby Azure Functions, je nutné prové
 
 Chcete-li vytvořit svoji první funkci ve verzi preview modul Runtime služby Azure Functions
 
-1. Přejděte **Azure Functions Runtime portál** jako https://<machinename>.<domain> Například https://mycomputer.mydomain.com
+1. Přejděte **portálu modul Runtime Azure Functions** jako `https://<machinename>.<domain>` například `https://mycomputer.mydomain.com`.
+
 1. Zobrazí se výzva k **přihlášení**, pokud nasazení používá domény, uživatelské jméno účtu domény a heslo, jinak použít místní účet uživatelské jméno a heslo pro přihlášení k portálu.
 
-![Modul Runtime služby Functions ve verzi preview portálu přihlášení k Azure][14]
+    ![Modul Runtime služby Functions ve verzi preview portálu přihlášení k Azure][14]
 
-1. Vytvoření aplikace function App, je nutné vytvořit předplatné.  V levém horním rohu portálu, klikněte **+** možnost vedle předplatná
+1. Vytvoření aplikace function App, je nutné vytvořit předplatné.  V levém horním rohu portálu, klikněte **+** možnost vedle předplatná.
 
-![Azure modul Runtime služby Functions ve verzi preview portálu předplatných][15]
+    ![Azure modul Runtime služby Functions ve verzi preview portálu předplatných][15]
 
 1. Zvolte **DefaultPlan**, zadejte název vašeho předplatného a klikněte na tlačítko **vytvořit**.
 
-![Plán portálu předplatného Azure modul Runtime služby Functions ve verzi preview a název][16]
+    ![Plán portálu předplatného Azure modul Runtime služby Functions ve verzi preview a název][16]
 
 1. V levém podokně portálu jsou uvedeny všechny vaše aplikace function App.  Pokud chcete vytvořit novou aplikaci Function App, vyberte záhlaví **aplikace Function App** a klikněte na tlačítko **+** možnost.
 
 1. Zadejte název pro vaši aplikaci function app, vyberte správné předplatné, která verze modulu runtime Azure Functions, které chcete programovat proti a klikněte na tlačítko **Create**
 
-![Azure modul Runtime služby Functions ve verzi preview portálu novou aplikaci function app][17]
+    ![Azure modul Runtime služby Functions ve verzi preview portálu novou aplikaci function app][17]
 
 1. V levém podokně portálu je uvedena nová aplikace function app.  Vyberte funkce a pak klikněte na tlačítko **novou funkci** nahoře v prostředním podokně na portálu.
 
-![Šablony Azure ve verzi preview modul Runtime služby Functions][18]
+    ![Šablony Azure ve verzi preview modul Runtime služby Functions][18]
 
 1. Vyberte funkci Trigger časovače, v pravém informační rámeček pojmenujte svoji funkci a změnit plán `*/5 * * * * *` (Tento výraz cron způsobí, že vaše funkce časovače pro spuštění každých pět sekund) a klikněte na tlačítko **Create**
 
-![Modul Runtime služby Functions ve verzi preview nového časovače funkce Konfigurace Azure][19]
+    ![Modul Runtime služby Functions ve verzi preview nového časovače funkce Konfigurace Azure][19]
 
 1. Byla vytvořena vaše funkce.  Prováděcí protokol aplikace Function App můžete zobrazit rozbalením **protokolu** panelu v dolní části portálu.
 
-![Azure provádí funkce ve verzi preview modul Runtime služby Functions][20]
+    ![Azure provádí funkce ve verzi preview modul Runtime služby Functions][20]
 
 <!--Image references-->
 [1]: ./media/functions-runtime-install/AzureFunctionsRuntime_Installer1.png

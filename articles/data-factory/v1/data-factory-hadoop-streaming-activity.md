@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: f4bdeee08e81c16dfdd03620eb1fc61251f90400
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: dd00c0a2998009ce6c39ca19abb25a2548682cee
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54025169"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59523218"
 ---
 # <a name="transform-data-using-hadoop-streaming-activity-in-azure-data-factory"></a>Transformace dat pomocí streamované aktivitě Hadoop ve službě Azure Data Factory
 > [!div class="op_single_selector" title1="Transformation Activities"]
@@ -99,7 +99,7 @@ Je třeba počítat s následujícím:
 2. Nastavit typ aktivity na **HDInsightStreaming**.
 3. Pro **Mapovač** vlastnost, zadejte název spustitelného souboru mapování. V tomto příkladu je cat.exe Mapovač spustitelný soubor.
 4. Pro **redukční funkci** vlastnost, zadejte název spustitelného souboru redukční funkci. V tomto příkladu je wc.exe redukční funkci spustitelný soubor.
-5. Pro **vstupní** vlastnost typu, zadejte pro mapovač vstupní soubor (včetně umístění). Příklad: "wasb://adfsample@<account name>.blob.core.windows.net/example/data/gutenberg/davinci.txt": adfsample je kontejner objektů blob, příklad/data/Gutenberg je složka, a davinci.txt objektu blob.
+5. Pro **vstupní** vlastnost typu, zadejte pro mapovač vstupní soubor (včetně umístění). Příklad: `wasb://adfsample@<account name>.blob.core.windows.net/example/data/gutenberg/davinci.txt`: adfsample je kontejner objektů blob, příklad/data/Gutenberg je složka, a davinci.txt objektu blob.
 6. Pro **výstup** vlastnost typu, zadejte název výstupního souboru (včetně umístění) pro redukční funkci. Výstup úlohy streamování Hadoop je zapsán do umístění určeného pro tuto vlastnost.
 7. V **filePaths** části, zadejte cesty pro spustitelné soubory mapovací a redukční funkci. Příklad: "adfsample/example/apps/wc.exe" adfsample je kontejner objektů blob, příklad/aplikace je složka, a wc.exe spustitelný soubor.
 8. Pro **fileLinkedService** vlastnost, zadejte propojenou službu Azure Storage, který představuje úložiště Azure, který obsahuje soubory zadané v části filePaths.

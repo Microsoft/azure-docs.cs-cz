@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4f3eec1f846f1b74ab3e19bca022d4e009540d1a
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: 7cf8d5cb13b39d58920555ff9d99a4949e1bfc20
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59280005"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59521426"
 ---
 # <a name="combined-security-information-registration-preview"></a>Informace o registraci kombinované zabezpečení (preview)
 
@@ -25,6 +25,8 @@ Před kombinovaná registrace uživatelé registrovaní metody ověřování pro
 ![Můj profil zobrazující registrované bezpečnostní údaje pro uživatele](media/concept-registration-mfa-sspr-combined/combined-security-info-defualts-registered.png)
 
 Než povolíte nové prostředí, projděte si tuto dokumentaci zaměřené na správce a dokumentaci zaměřené na uživatele, ujistěte se, že rozumíte funkce a účinek této funkce. Základní trénování v dokumentaci pro uživatele můžete připravit vaši uživatelé nové prostředí a pomáhají zajistit úspěšné zavedení.
+
+Azure AD kombinovat bezpečnostním údajům, které registrace není aktuálně k dispozici do národních cloudů, jako jsou Azure US Government, Azure Germany a Azure China 21Vianet.
 
 |     |
 | --- |
@@ -139,4 +141,4 @@ Uživatel, který má alespoň jednu metodu, kterou můžete použít k ověřen
 
 [Konfigurace samoobslužného resetování hesla](howto-sspr-deployment.md)
 
-[Konfigurace Azure Multi-Factor Authentication](howto-mfa-getstarted.md)
+[Konfigurovat ověřování Azure Multi-Factor Authentication](howto-mfa-getstarted.md)

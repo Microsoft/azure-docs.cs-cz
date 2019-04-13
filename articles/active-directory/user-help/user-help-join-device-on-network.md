@@ -13,12 +13,12 @@ ms.date: 08/03/2018
 ms.author: lizross
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e2ba6b2d33c3fb5d9fda6821718ac61513a958b7
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.openlocfilehash: dfd38e775ba418fbe31cafa8df5f37b45c3b0643
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58369135"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59524361"
 ---
 # <a name="join-your-work-device-to-your-organizations-network"></a>Připojení pracovních zařízení k síti vaší organizace
 Připojte se k zařízení s Windows 10 vlastněných společností práce k síti vaší organizace, budete mít přístup k prostředkům potenciálně s omezeným přístupem.
@@ -62,7 +62,7 @@ Abyste měli jistotu, že už jste se zapojili podle nastavení.
 
     ![Účty na obrazovce nastavení](./media/user-help-join-device-on-network/join-device-settings-accounts.png)
 
-2. Vyberte **přístup do práce nebo do školy**a ujistěte se, že se zobrazí text, který říká něco jako, **připojené k *< Vaše_organizace >* Azure AD**.
+2. Vyberte **přístup do práce nebo do školy**a ujistěte se, že se zobrazí text, který říká něco jako, **připojené k  *\<Vaše_organizace >* Azure AD**.
 
     ![Přístup k obrazovce pracovním nebo školním účtem připojených contoso](./media/user-help-join-device-on-network/join-device-oobe-verify.png)
 
@@ -107,7 +107,7 @@ Abyste měli jistotu, že už jste se zapojili podle nastavení.
 
     ![Účty na obrazovce nastavení](./media/user-help-join-device-on-network/join-device-settings-accounts.png)
 
-2. Vyberte **přístup do práce nebo do školy**a ujistěte se, že se zobrazí text, který říká něco jako, **připojené k *< Vaše_organizace >* Azure AD**.
+2. Vyberte **přístup do práce nebo do školy**a ujistěte se, že se zobrazí text, který říká něco jako, **připojené k  *\<Vaše_organizace >* Azure AD**.
 
     ![Přístup k obrazovce pracovním nebo školním účtem připojených contoso](./media/user-help-join-device-on-network/join-device-setup-verify.png)
 

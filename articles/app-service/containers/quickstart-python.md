@@ -12,15 +12,15 @@ ms.workload: web
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
-ms.date: 02/08/2019
+ms.date: 03/27/2019
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 5cca0d866442583c87665b3a1db8c65c66d12f0a
-ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
+ms.openlocfilehash: 8621ebf474591c253dbd9ca24b36a36287ca8cf7
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58285373"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59547704"
 ---
 # <a name="create-a-python-app-in-azure-app-service-on-linux-preview"></a>Vytvoření aplikace v Pythonu v Azure App Service v Linuxu (Preview)
 
@@ -109,7 +109,7 @@ Checking connectivity... done.
 
 Přejděte do adresáře, který obsahuje vzorový kód a spusťte příkaz `az webapp up`.
 
-V následujícím příkladu nahraďte < název aplikace > s jedinečným názvem aplikace.
+V následujícím příkladu nahraďte `<app-name>` s jedinečným názvem aplikace.
 
 ```bash
 cd python-docs-hello-world
@@ -205,13 +205,10 @@ Levá nabídka obsahuje odkazy na různé stránky pro konfiguraci vaší aplika
 Integrovaná image v Pythonu v rámci služby App Service v Linuxu je aktuálně ve verzi Preview a je možné přizpůsobit příkaz sloužící ke spuštění vaší aplikace. Produkční aplikace v Pythonu můžete místo toho vytvářet taky s využitím vlastního kontejneru.
 
 > [!div class="nextstepaction"]
-> [Python sh PostgreSQL](tutorial-python-postgresql-app.md)
+> [Kurz: Aplikace v Pythonu s PostgreSQL](tutorial-python-postgresql-app.md)
 
 > [!div class="nextstepaction"]
-> [Konfigurace vlastního spouštěcího příkazu](how-to-configure-python.md#customize-startup-command)
+> [Konfigurace aplikace v Pythonu](how-to-configure-python.md)
 
 > [!div class="nextstepaction"]
-> [Řešení potíží](how-to-configure-python.md#troubleshooting)
-
-> [!div class="nextstepaction"]
-> [Použití vlastní image](tutorial-custom-docker-image.md)
+> [Kurz: Spuštění aplikace v Pythonu do vlastního kontejneru](tutorial-custom-docker-image.md)

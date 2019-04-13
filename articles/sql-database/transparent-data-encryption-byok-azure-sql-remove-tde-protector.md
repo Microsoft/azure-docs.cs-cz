@@ -12,12 +12,12 @@ ms.author: aliceku
 ms.reviewer: vanto
 manager: craigg
 ms.date: 03/12/2019
-ms.openlocfilehash: 73fcb2753fa7eb15f34b04ddc5bb0b55c4636623
-ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
+ms.openlocfilehash: 51cdd43e62bd511da55978bbac3215200c3a8e01
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/02/2019
-ms.locfileid: "58847810"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59528259"
 ---
 # <a name="remove-a-transparent-data-encryption-tde-protector-using-powershell"></a>Odebrat ochranného transparentní šifrování dat (TDE) pomocí Powershellu
 
@@ -40,6 +40,12 @@ Následující postupy lze provádět pouze ve výjimečných případech nebo v
 Pokud klíč je někdy podezření u něho ohrožena bezpečnost, tak, aby se služba nebo uživatel měl neoprávněný přístup ke klíči, je vhodné odstranit klíč.
 
 Mějte na paměti, která jednou ochrana TDE je odstraněn ve službě Key Vault **všechna připojení k šifrovaným databázím na serveru jsou blokovány, a tyto databáze přejdou do režimu offline a během 24 hodin**. Starší zálohy šifrované pomocí ohrožený klíč už nejsou dostupné.
+
+Následující kroky popisují, jak zkontrolujte, že kryptografické otisky ochrana TDE stále používán ve virtuální protokolu souborů (VLF) dané databáze. Kryptografický otisk aktuálního ochrana TDE databáze a ID databáze můžete najít spuštěním: Vyberte [parametry database_id],       [encryption_key], [encryptor_type] /*asymetrický klíč znamená, že službou AZURE, certifikát znamená, že klíče spravované službou*/ [encryptor_thumbprint] z [sys]. [ dm_database_encryption_keys] 
+ 
+Následující dotaz vrátí VLFs a encryptoru příslušných kryptografické otisky používá. Každý jiný kryptografický otisk odkazuje na jiný klíč v Azure Key Vaultu (AKV): Vybrat * z sys.dm_db_log_info (parametry database_id) 
+
+Příkaz prostředí PowerShell Get-AzureRmSqlServerKeyVaultKey poskytuje kryptografický otisk z ochrana TDE použitý v dotazu, abyste si mohli zobrazit, které chcete zachovat a které klíče k odstranění ve službou AZURE. Pouze klíče už nebude používat databáze můžete bezpečně odstranit ze služby Azure Key Vault.
 
 Tato příručka prochází přes dva přístupy v závislosti na požadovaný výsledek po reakce na incidenty:
 

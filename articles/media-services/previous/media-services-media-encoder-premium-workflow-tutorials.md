@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: christoc;xpouyat;juliako
-ms.openlocfilehash: 3d51f5328aec66eee0d8382026e8795db45a6a2c
-ms.sourcegitcommit: f331186a967d21c302a128299f60402e89035a8d
+ms.openlocfilehash: d227e3618c138e6661cc4be7caa2b9a3ba1af3f1
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58189780"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59523830"
 ---
 # <a name="advanced-media-encoder-premium-workflow-tutorials"></a>Pokročilé kurzy pracovní postup kodéru Media Encoder Premium
 ## <a name="overview"></a>Přehled
@@ -760,7 +760,7 @@ To se provádí prostřednictvím operace manipulace s řetězci závislé norm�
 
 *Protokolování v rozevíracím seznamu klipu*
 
-Proveďte testovací běh zobrazit, jak mají byl oříznut videí a zvukových streamů. Jak budete používat více než jeden testovací běh s různými hodnotami pro oříznutí body, můžete si všimnout, že ty nebude brát v úvahu ale! Důvodem je, že návrhář, na rozdíl od modul runtime služby Azure, nepřepisuje cliplist xml každé spuštění. To znamená, že pouze první jste nastavili vstupní a výstupní body, způsobí, že xml k transformaci, všech jiných okolností naše guard – klauzule (pokud (clipListXML.indexOf ("<trim>") == -1)) zabrání přidání jiný element uvolnění dočasné paměti, když je pracovní postup již jedna nachází.
+Proveďte testovací běh zobrazit, jak mají byl oříznut videí a zvukových streamů. Jak budete používat více než jeden testovací běh s různými hodnotami pro oříznutí body, můžete si všimnout, že ty nebude brát v úvahu ale! Důvodem je, že návrhář, na rozdíl od modul runtime služby Azure, nepřepisuje cliplist xml každé spuštění. To znamená, že pouze první jste nastavili vstupní a výstupní body, způsobí, že xml k transformaci, všech jiných okolností naše guard – klauzule (pokud (`clipListXML.indexOf("<trim>") == -1`)) zabrání přidání jiný element uvolnění dočasné paměti, když je již jedna nachází pracovního postupu.
 
 Chcete-li pracovní postup praktický k otestování místně, nejlepší přidáme údržby kódu, který kontroluje, pokud element a uvolnění dočasné paměti byla již existuje. Pokud ano, Odebereme ho před pokračováním úpravou souboru xml s novými hodnotami. Místo použití manipulace prostý řetězec, je pravděpodobně bezpečnější to provést prostřednictvím analýzy skutečných xml objektového modelu.
 

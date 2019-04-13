@@ -8,14 +8,14 @@ ms.assetid: ''
 ms.service: azure-functions
 ms.devlang: multiple
 ms.topic: conceptual
-ms.date: 01/25/2019
+ms.date: 4/11/2019
 ms.author: jehollan
-ms.openlocfilehash: ca65b6a1691a870054682b36109f2bdc10d4ad98
-ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
+ms.openlocfilehash: d327146c4a1fa61e55bb904308038c1ce717123d
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/04/2019
-ms.locfileid: "58918701"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59543738"
 ---
 # <a name="azure-functions-premium-plan-preview"></a>Plán služby Azure Functions Premium (preview)
 
@@ -42,7 +42,7 @@ Následující funkce jsou k dispozici funkce aplikace nasazené do plánu Premi
 
 Pokud žádné události resp. dojde k ještě dnes v plánu Consumption, může vaše aplikace škálovat nula instance. Když se dělí na nové události, novou instanci je nutné zadat s vaší aplikací v něm spuštěný.  Specializace nové instance může trvat nějakou dobu v závislosti na aplikaci.  Tato další latence při prvním volání se často nazývá úplné spuštění aplikace.
 
-V plánu Premium může mít předem zahřívají na zadaný počet instancí aplikace.  Předem topným zařízením instance také umožňují předem škálovat aplikace před nadměrným zatížením. Jak aplikace horizontálně navýší kapacitu, nejprve se škáluje do předem topným zařízením instancí. Další instancí se dál do vyrovnávací paměti navýšení kapacity a teplé okamžitě v rámci přípravy na další operaci škálování. Tím, že vyrovnávací paměť předem topným zařízením instancí, můžete efektivně vyhnout latenci studený start.  Předem topným zařízením instance funkce je součástí plánu Premium a je potřeba nechat alespoň jednu instanci spuštěné a dostupné za všech okolností plán není aktivní.
+V plánu Premium můžete mít aplikace předem zahřívají na zadaný počet instancí, až velikost vašeho plánu minimální.  Předem topným zařízením instance také umožňují předem škálovat aplikace před nadměrným zatížením. Jak aplikace horizontálně navýší kapacitu, nejprve se škáluje do předem topným zařízením instancí. Další instancí se dál do vyrovnávací paměti navýšení kapacity a teplé okamžitě v rámci přípravy na další operaci škálování. Tím, že vyrovnávací paměť předem topným zařízením instancí, můžete efektivně vyhnout latenci studený start.  Předem topným zařízením instance funkce je součástí plánu Premium a je potřeba nechat alespoň jednu instanci spuštěné a dostupné za všech okolností plán není aktivní.
 
 Počet instancí předem topným zařízením na portálu Azure portal můžete nakonfigurovat tak, že vyberete **horizontální navýšení kapacity** v **funkce platformy** kartu.
 
@@ -70,6 +70,8 @@ Pro svou aplikaci pomocí stejné logiky, Rychlé škálování jako plánu Cons
 
 Služba Azure Functions v plánu Consumption jsou omezené na 10 minut, než jedno provedení.  V plánu Premium doba trvání běhu výchozí hodnota je 30 minut, aby se zabránilo vyčerpává dlouho běžící operace provedení. Můžete však [změny konfigurace host.json](./functions-host-json.md#functiontimeout) to lze provést bez vazby u aplikací úrovně Premium plánu.
 
+Doby trvání ve verzi preview, není zaručeno, že posledních 12 minut a bude mít největší šanci spuštěných déle než 30 minut, pokud vaše aplikace není škálování nad rámec jeho počet minimální pracovního procesu.
+
 ## <a name="plan-and-sku-settings"></a>Nastavení plánu a skladové položky
 
 Při vytváření plánu, můžete nakonfigurovat dvě nastavení: minimální počet instancí (nebo plán velikosti) a shluků maximální limit.  Minimální instance plánu Premium je 1 a maximální shluků ve verzi preview je 20.  Minimální instance jsou vyhrazené a vždy spuštěné.
@@ -91,7 +93,7 @@ az resource update -g <resource_group> -n <premium_plan_name> --set properties.m
 
 Při vytváření naše škálování plánu, můžete mezi tři velikosti instance.  Bude se vám účtovat celkový počet jader a paměti spotřebované za sekundu.  Vaše aplikace může automaticky škálovat na více instancí podle potřeby.  
 
-|Skladová jednotka (SKU)|Jádra|Memory (Paměť)|Storage|
+|Skladová jednotka (SKU)|Jádra|Memory (Paměť)|Úložiště|
 |--|--|--|--|
 |EP1|1|3,5 GB|250 GB|
 |EP2|2|7GB|250 GB|
@@ -104,9 +106,8 @@ V následující tabulce jsou aktuálně podporované oblasti pro verzi public p
 |Oblast|
 |--|
 |Austrálie – východ|
-|Souteast Austrálie|
+|Austrálie – jihovýchod|
 |Kanada – střed|
-|Střed Indie|
 |USA – střed|
 |Východní Asie|
 |Východní USA 2|

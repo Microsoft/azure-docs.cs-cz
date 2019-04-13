@@ -1,7 +1,7 @@
 ---
 title: Vytvoření vícekontejnerové aplikace pomocí Docker Compose - službě Azure App Service
 description: Nasazení první vícekontejnerové aplikace ve službě Azure Web App for Containers během několika minut
-keywords: azure app service, web app, linux, docker, compose, multicontainer, multi-container, web app for containers, multiple containers, container, kubernetes, wordpress, azure db for mysql, production database with containers
+keywords: služby Azure app service, webové aplikace, od linuxu, docker a compose multicontainer, více kontejnerů, služby web app for containers, více kontejnerů, kontejner, wordpress, k azure db for mysql, provozní databáze s kontejnery
 services: app-service\web
 documentationcenter: ''
 author: msangapu
@@ -12,19 +12,19 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
-ms.date: 06/22/2018
+ms.date: 03/27/2019
 ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: 404be7a064e0e4b09178830b7802192e8775e121
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: 543ba3ee4e72c5d31708e9b4983e7889421940ca
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53316570"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59546228"
 ---
 # <a name="create-a-multi-container-preview-app-using-a-docker-compose-configuration"></a>Vytvoření pomocí Docker Compose konfigurace aplikace s více kontejnerů (preview)
 
-Služba [Web App for Containers](app-service-linux-intro.md) poskytuje flexibilní způsob, jak používat image Dockeru. Tento rychlý start ukazuje, jak ve službě [Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) nasadit vícekontejnerovou aplikaci do služby Web App for Containers s použitím konfigurace Docker Compose. Informace pro Kubernetes a kompletní řešení s využitím Azure DB for MySQL najdete v [kurzu k vícekontejnerovým aplikacím](tutorial-multi-container-app.md).
+Služba [Web App for Containers](app-service-linux-intro.md) poskytuje flexibilní způsob, jak používat image Dockeru. Tento rychlý start ukazuje, jak ve službě [Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) nasadit vícekontejnerovou aplikaci do služby Web App for Containers s použitím konfigurace Docker Compose.
 
 Tento rychlý start absolvujete ve službě Cloud Shell, ale uvedené příkazy můžete spustit také místně v [Azure CLI](/cli/azure/install-azure-cli) (verze 2.0.32 nebo novější). 
 
@@ -138,7 +138,10 @@ Přejděte do nasazené aplikace na adrese `http://<app_name>.azurewebsites.net`
 ## <a name="next-steps"></a>Další postup
 
 > [!div class="nextstepaction"]
-> [Vytvoření vícekontejnerové aplikace WordPress ve službě Web App for Containers](tutorial-multi-container-app.md)
+> [Kurz: Wordpressu vícekontejnerové aplikace](tutorial-multi-container-app.md)
+
+> [!div class="nextstepaction"]
+> [Konfigurace vlastního kontejneru](configure-custom-container.md)
 
 <!--Image references-->
 [1]: ./media/tutorial-multi-container-app/azure-multi-container-wordpress-install.png

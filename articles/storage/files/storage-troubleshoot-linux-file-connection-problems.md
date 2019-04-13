@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 10/16/2018
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: ca7e89f4b7f976633d5f097b7e335fe9b7631985
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 09898ac7dd4a6f3ee9cf0ea26ded607a8673b9f6
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55477739"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59526856"
 ---
 # <a name="troubleshoot-azure-files-problems-in-linux"></a>Řešení potíží s Azure Files v Linuxu
 
@@ -49,7 +49,7 @@ Ověřte, že virtuální sítě a pravidel brány firewall jsou správně nakon
 
 V systému Linux obdržíte chybovou zprávu, která vypadá přibližně takto:
 
-**<filename> [oprávnění byla odepřena.] Byla překročena kvóta disku**
+**\<Název souboru > byla překročena kvóta disku [oprávnění byla odepřena.]**
 
 ### <a name="cause"></a>Příčina
 
@@ -221,7 +221,7 @@ Jádro Linuxu upgradujte následující verze, které mají opravu tohoto probl�
 - 4.12.11+
 - Všechny verze, které jsou větší než nebo rovna hodnotě 4.13
 
-## <a name="cannot-create-symbolic-links---ln-failed-to-create-symbolic-link-t-operation-not-supported"></a>Nelze vytvořit symbolické odkazy - ln: se nepovedlo vytvořit symbolický odkaz, 't': Tato operace není podporována
+## <a name="cannot-create-symbolic-links---ln-failed-to-create-symbolic-link-t-operation-not-supported"></a>Nelze vytvořit symbolické odkazy - ln: se nepovedlo vytvořit symbolický odkaz, 't': Operace není podporována
 
 ### <a name="cause"></a>Příčina
 Ve výchozím nastavení nemá připojení sdílené složky Azure v Linuxu pomocí CIFS povolení podpory pro symbolické odkazy (symbolických odkazů). Zobrazí se chyba takto:

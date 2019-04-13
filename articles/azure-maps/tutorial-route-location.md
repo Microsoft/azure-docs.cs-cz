@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 87ad3b8984907b5f5b889c36c2406f07cbeb242b
-ms.sourcegitcommit: b4ad15a9ffcfd07351836ffedf9692a3b5d0ac86
-ms.translationtype: HT
+ms.openlocfilehash: f9987a4aee561340c5ebe2639626e5f66a55358e
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/05/2019
-ms.locfileid: "59056771"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59544598"
 ---
 # <a name="route-to-a-point-of-interest-using-azure-maps"></a>Trasa k bodu zájmu s využitím Azure Maps
 
@@ -47,11 +47,11 @@ Následující kroky ukazují, jak vytvořit statickou stránku HTML s vložený
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
         <!-- Add references to the Azure Maps Map control JavaScript and CSS files. -->
-        <link rel="stylesheet" href="https://atlas.microsoft.com/sdk/css/atlas.min.css?api-version=2" type="text/css">
-        <script src="https://atlas.microsoft.com/sdk/js/atlas.min.js?api-version=2"></script>
+        <link rel="stylesheet" href="https://atlas.microsoft.com/sdk/javascript/mapcontrol/2/atlas.min.css" type="text/css">
+        <script src="https://atlas.microsoft.com/sdk/javascript/mapcontrol/2/atlas.min.js"></script>
 
         <!-- Add a reference to the Azure Maps Services Module JavaScript file. -->
-        <script src="https://atlas.microsoft.com/sdk/js/atlas-service.js?api-version=2"></script>
+        <script src="https://atlas.microsoft.com/sdk/javascript/mapcontrol/2/atlas-service.min.js"></script>
 
         <script>
             var map, datasource, client;
@@ -83,7 +83,7 @@ Následující kroky ukazují, jak vytvořit statickou stránku HTML s vložený
 
     Všimněte si, že hlavička HTML zahrnuje soubory prostředků šablon stylů CSS a JavaScriptu hostované knihovnou Ovládací prvek Mapa v Azure. V těle stránky si všimněte události `onload`, která po načtení těla stránky zavolá funkci `GetMap`. Tato funkce bude obsahovat vložený kód JavaScriptu pro přístup k rozhraním Azure Maps API. 
 
-3. Do funkce `GetMap` přidejte následující kód JavaScriptu. Nahraďte řetězec **\<Your Azure Maps Key\>** primárním klíčem, který jste zkopírovali ze svého účtu Maps.
+3. Do funkce `GetMap` přidejte následující kód JavaScriptu. Nahraďte řetězec `<Your Azure Maps Key>` s primární klíč, který jste zkopírovali ze svého účtu mapy.
 
     ```JavaScript
    //Instantiate a map object
@@ -96,11 +96,11 @@ Následující kroky ukazují, jak vytvořit statickou stránku HTML s vložený
    });
    ```
 
-    Objekt **atlas.Map** umožňuje ovládání vizuální a interaktivní webové mapy a je součástí rozhraní API pro mapové ovládací prvky prostředí Azure.
+    Objekt `atlas.Map` umožňuje ovládání vizuální a interaktivní webové mapy a je součástí rozhraní API pro mapové ovládací prvky v Azure.
 
 4. Uložte soubor a otevřete ho v prohlížeči. V tuto chvíli máte základní mapu, kterou můžete dále rozvíjet.
 
-   ![Zobrazení základní mapy](./media/tutorial-route-location/basic-map.png)
+   ![Zobrazení základní mapy](media/tutorial-route-location/basic-map.png)
 
 ## <a name="define-how-the-route-will-be-rendered"></a>Definice způsobu vykreslení trasy
 
@@ -168,7 +168,7 @@ V tomto kurzu se vykreslí jednoduchá trasa. Pro začátek a konec trasy se pou
 
 3. Uložte soubor **MapRoute.html** a aktualizujte prohlížeč. Nyní je mapa zarovnaný na střed přes Seattle a zobrazí se modrý špendlík označení počáteční bod a zaokrouhlí modrý špendlík označení bodu dokončit.
 
-   ![Zobrazení mapy s označeným počátečním a koncovým bodem](./media/tutorial-route-location/map-pins.png)
+   ![Zobrazení mapy s označeným počátečním a koncovým bodem](media/tutorial-route-location/map-pins.png)
 
 <a id="getroute"></a>
 
@@ -189,9 +189,9 @@ Tato část ukazuje, jak použít Azure Maps API route service k vyhledání tra
     var routeURL = new atlas.service.RouteURL(pipeline);
     ```
 
-   **SubscriptionKeyCredential** vytvoří **SubscriptionKeyCredentialPolicy** k ověření požadavků HTTP ve službě Azure Maps se klíč předplatného. **Atlas.service.MapsURL.newPipeline()** přijímá **SubscriptionKeyCredential** zásady a vytvoří [kanálu](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.pipeline?view=azure-iot-typescript-latest) instance. **RouteURL** představuje adresu URL ke službě Azure Maps [trasy](https://docs.microsoft.com/rest/api/maps/route) operace.
+   `SubscriptionKeyCredential` Vytvoří `SubscriptionKeyCredentialPolicy` k ověření požadavků HTTP ve službě Azure Maps se klíč předplatného. `atlas.service.MapsURL.newPipeline()` Přijímá `SubscriptionKeyCredential` zásady a vytvoří [kanálu](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.pipeline?view=azure-iot-typescript-latest) instance. `routeURL` Představuje adresu URL ke službě Azure Maps [trasy](https://docs.microsoft.com/rest/api/maps/route) operace.
 
-2. Po nastavení přihlašovacích údajů a adresu URL, přidejte následující kód jazyka JavaScript, k vytvoření trasy z nabídky start, která má koncový bod. **RouteURL** služby, která vypočítá trasám směrovat žádosti o Azure Maps. Kolekce funkcí GeoJSON z odpovědi se pak extrahuje pomocí **geojson.getFeatures()** – metoda a přidán do zdroje dat.
+2. Po nastavení přihlašovacích údajů a adresu URL, přidejte následující kód jazyka JavaScript, k vytvoření trasy z nabídky start, která má koncový bod. `routeURL` Služby, která vypočítá trasám směrovat žádosti o Azure Maps. Kolekce funkcí GeoJSON z odpovědi se pak extrahuje pomocí `geojson.getFeatures()` – metoda a přidán do zdroje dat.
 
     ```JavaScript
     //Start and end point input to the routeURL
@@ -218,13 +218,13 @@ V tomto kurzu jste se naučili:
 > * Nastavit souřadnice pro adresu
 > * Zadat dotaz na službu Route Service ohledně trasy k bodu zájmu
 
-Přístup k vzorovému kódu pro tento kurz můžete získat tady:
+> [!div class="nextstepaction"]
+> [Zobrazit úplný zdrojový kód](https://github.com/Azure-Samples/AzureMapsCodeSamples/blob/master/AzureMapsCodeSamples/Tutorials/route.html)
 
-> [Najít trasu s předponou Azure Maps](https://github.com/Azure-Samples/AzureMapsCodeSamples/blob/master/AzureMapsCodeSamples/Tutorials/route.html)
-
-[Najdete v této ukázce tady](https://azuremapscodesamples.azurewebsites.net/?sample=Route%20to%20a%20destination)
+> [!div class="nextstepaction"]
+> [Živé ukázkové zobrazení](https://azuremapscodesamples.azurewebsites.net/?sample=Route%20to%20a%20destination)
 
 V dalším kurzu se dozvíte, jak vytvořit dotaz na trasu s omezeními, jako jsou režim dopravy nebo typ nákladu, a pak na stejné mapě zobrazit více tras.
 
 > [!div class="nextstepaction"]
-> [Můžete hledat trasy pro různé režimy dopravy](./tutorial-prioritized-routes.md)
+> [Vyhledání tras pro různé režimy dopravy](./tutorial-prioritized-routes.md)

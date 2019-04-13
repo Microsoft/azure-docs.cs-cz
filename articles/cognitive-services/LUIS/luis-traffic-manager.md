@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: article
 ms.date: 02/08/2019
 ms.author: diberry
-ms.openlocfilehash: a71b09ba8b3e7fa7299c34c3cdc64503ae4e9857
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: 31d8f54cb05bdbba7fe05249527db3dd50385087
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56736545"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59523405"
 ---
 # <a name="use-microsoft-azure-traffic-manager-to-manage-endpoint-quota-across-keys"></a>Microsoft Azure Traffic Manager můžete používat ke správě kvóty koncový bod napříč klíče
 Language Understanding (LUIS) nabízí možnost zvýšení kvóty požadavku koncového bodu nad rámec kvót jeden klíč. Uděláte to pomocí vytváření více klíčů pro LUIS a jejich přidání do aplikace LUIS na **publikovat** stránku **prostředky a klíče** oddílu. 
@@ -86,7 +86,7 @@ Chcete-li vytvořit profil služby Traffic Manager USA – východ, existuje ně
     |-RelativeDnsName|Služba luis-dns-eastus|Toto je subdoména služby: luis-dns-eastus.trafficmanager.net|
     |Hodnota Ttl-|30|Interval dotazování, 30 sekund|
     |-MonitorProtocol<BR>-MonitorPort|HTTPS<br>443|Port a protokol pro LUIS je HTTPS a 443|
-    |-MonitorPath|`/luis/v2.0/apps/<appIdLuis>?subscription-key=<subscriptionKeyLuis>&q=traffic-manager-east`|Nahraďte <appIdLuis> a <subscriptionKeyLuis> vlastními hodnotami.|
+    |-MonitorPath|`/luis/v2.0/apps/<appIdLuis>?subscription-key=<subscriptionKeyLuis>&q=traffic-manager-east`|Nahraďte `<appIdLuis>` a `<subscriptionKeyLuis>` vlastními hodnotami.|
     
     Úspěšné žádosti nemá žádnou odpověď.
 
@@ -154,7 +154,7 @@ Chcete-li vytvořit profil služby Traffic Manager USA – Západ, postupujte po
     |-RelativeDnsName|Služba luis-dns-westus|Toto je subdoména služby: luis-dns-westus.trafficmanager.net|
     |Hodnota Ttl-|30|Interval dotazování, 30 sekund|
     |-MonitorProtocol<BR>-MonitorPort|HTTPS<br>443|Port a protokol pro LUIS je HTTPS a 443|
-    |-MonitorPath|`/luis/v2.0/apps/<appIdLuis>?subscription-key=<subscriptionKeyLuis>&q=traffic-manager-west`|Nahraďte <appId> a <subscriptionKey> vlastními hodnotami. Mějte na paměti, že tento klíč koncového bodu se liší od klíče koncového bodu – východ|
+    |-MonitorPath|`/luis/v2.0/apps/<appIdLuis>?subscription-key=<subscriptionKeyLuis>&q=traffic-manager-west`|Nahraďte `<appId>` a `<subscriptionKey>` vlastními hodnotami. Mějte na paměti, že tento klíč koncového bodu se liší od klíče koncového bodu – východ|
     
     Úspěšné žádosti nemá žádnou odpověď.
 

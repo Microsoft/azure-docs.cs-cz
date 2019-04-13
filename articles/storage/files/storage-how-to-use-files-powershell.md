@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 10/26/2018
 ms.author: wgries
 ms.subservice: files
-ms.openlocfilehash: 59d8b9ffa8c0cbeaaa354f2497d279ac8c285ae1
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: f353c9952d9ccec0f279d6bd98bf5db215758559
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57437118"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59524540"
 ---
 # <a name="quickstart-create-and-manage-an-azure-file-share-with-azure-powershell"></a>Rychlý start: Vytváření a správě sdílené složky Azure pomocí Azure Powershellu 
 Tato příručka vás provede základy práce se [sdílenými složkami Azure](storage-files-introduction.md) pomocí PowerShellu. Sdílené složky Azure jsou stejné jako ostatní sdílené složky, ale jsou uložené v cloudu a využívají platformu Azure. Sdílené složky Azure podporují standardní průmyslový protokol SMB a umožňují sdílení souborů mezi různými počítači, aplikacemi a instancemi. 
@@ -40,7 +40,7 @@ New-AzResourceGroup `
 ## <a name="create-a-storage-account"></a>vytvořit účet úložiště
 Účet úložiště je sdílený fond úložiště, který můžete použít k nasazování sdílených složek Azure nebo jiných prostředků úložiště, jako jsou objekty blob nebo fronty. Účet úložiště může obsahovat neomezený počet sdílených složek a sdílená složka můžete obsahovat neomezený počet souborů až do omezení kapacity účtu úložiště.
 
-Tento příklad vytvoří účet úložiště pomocí [New-AzStorageAccount](/powershell/module/az.storage/new-azstorageaccount) rutiny. Účet úložiště bude mít název *mystorageaccount<random number>* a odkaz na tento účet úložiště se uloží do proměnné **$storageAcct**. Názvy účtů úložiště musí být jedinečné, proto k názvu pomocí rutiny `Get-Random` připojte číslo, aby byl jedinečný. 
+Tento příklad vytvoří účet úložiště pomocí [New-AzStorageAccount](/powershell/module/az.storage/new-azstorageaccount) rutiny. Účet úložiště název *mystorageaccount\<náhodné číslo >* a odkaz na tento účet úložiště je uložen v proměnné **$storageAcct**. Názvy účtů úložiště musí být jedinečné, proto k názvu pomocí rutiny `Get-Random` připojte číslo, aby byl jedinečný. 
 
 ```azurepowershell-interactive 
 $storageAcct = New-AzStorageAccount `

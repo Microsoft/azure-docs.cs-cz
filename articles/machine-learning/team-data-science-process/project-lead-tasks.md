@@ -10,12 +10,12 @@ ms.topic: article
 ms.date: 11/13/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 1ee409bc9e4ad60602ddffd3d1896baf09df52da
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 4415759530985710c8376709db9955ba98066160
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57854785"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59527006"
 ---
 # <a name="tasks-for-the-project-lead-in-the-team-data-science-process"></a>Úvodní úlohy pro projekt vědeckého zpracování týmových dat
 
@@ -150,7 +150,7 @@ Pokud používáte Azure DevOps jako platformu pro hosting kódu, obvykle _adres
 
 ![10](./media/project-lead-tasks/project-leads-10-clone-project-repository-linux.png)
 
-Pokud používáte Azure DevOps jako platformu pro hosting kódu, obvykle _adresu URL SSH úložiště projektu_ je _ssh: / / < název služby Azure DevOps\>@< název služby Azure DevOps\>. VisualStudio.com:22/<Your Project Name>/\_git / < název vašeho projektu úložiště\>. V tomto příkladu máme ***ssh://mysamplegroup\@mysamplegroup.visualstudio.com:22/MyTeam/_git/DSProject1***.
+Pokud používáte Azure DevOps jako platformu pro hosting kódu, obvykle _adresu URL SSH úložiště projektu_ je _ssh: / / < název služby Azure DevOps\>@< název služby Azure DevOps\>.visualstudio.com:22/ < název vašeho projektu\>/\_git / < název vašeho projektu úložiště\>. V tomto příkladu máme ***ssh://mysamplegroup\@mysamplegroup.visualstudio.com:22/MyTeam/_git/DSProject1***.
 
 ### <a name="copy-contents-of-d3-to-d5"></a>Zkopírujte obsah D3 D5 
 

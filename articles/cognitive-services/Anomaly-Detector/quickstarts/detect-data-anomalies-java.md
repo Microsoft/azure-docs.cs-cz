@@ -9,12 +9,12 @@ ms.subservice: anomaly-detector
 ms.topic: article
 ms.date: 03/26/2019
 ms.author: aahi
-ms.openlocfilehash: 06cb4d32359014f3cbc67ed1f75988c794e6599e
-ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
+ms.openlocfilehash: 1c8ce91a0fd8805b307e1e21bc08f9050b8a47d4
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58619507"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59547035"
 ---
 # <a name="quickstart-detect-anomalies-in-your-time-series-data-using-the-anomaly-detector-rest-api-and-java"></a>Rychlý start: Detekovat anomálie ve vašich datech časových řad pomocí rozhraní REST API služby detekce anomálií a Java
 
@@ -82,7 +82,7 @@ V tomto rychlém startu můžete začít používat rozhraní API detekce anomá
 3. Přečtěte si v datovém souboru JSON
 
     ```java
-    String requestData = new String(Files.readAllBytes(Paths.get(dataPath)), "UTF-8");
+    String requestData = new String(Files.readAllBytes(Paths.get(dataPath)), "utf-8");
     ```
 
 ## <a name="create-a-function-to-send-requests"></a>Vytvoření funkce k odesílání požadavků
@@ -93,9 +93,9 @@ V tomto rychlém startu můžete začít používat rozhraní API detekce anomá
 
 3. Použijte žádosti `setHeader()` funkce nastavíte `Content-Type` záhlaví `application/json`a přidat váš klíč předplatného na `Ocp-Apim-Subscription-Key` záhlaví.
 
-4. Použijte žádosti `setEntity()` funkci pro data, která mají být odeslány.   
+4. Použijte žádosti `setEntity()` funkci pro data, která mají být odeslány.
 
-5. Použití klienta `execute()` funkce Odeslat požadavek a uložit ho. tím `CloseableHttpResponse` objektu. 
+5. Použití klienta `execute()` funkce Odeslat požadavek a uložit ho. tím `CloseableHttpResponse` objektu.
 
 6. Vytvoření `HttpEntity` objekt pro uložení obsahu odpovědi. Získat obsah s `getEntity()`. Pokud odpovědi není prázdný, vrátí jej.
 
@@ -127,16 +127,20 @@ static String sendRequest(String apiAddress, String endpoint, String subscriptio
 
 1. Vytvořit metodu nazvanou `detectAnomaliesBatch()` zjišťovat anomálie v celém data v dávce. Volání `sendRequest()` metoda vytvořené výše s koncovým bodem, adresa url, klíč předplatného a dat json. Získat výsledek a vypíše do konzoly.
 
-2. Vyhledání pozice anomálie v datové sadě. Odpověď na `isAnomaly` pole obsahuje hodnotu typu boolean týkající se určuje, zda je daný datový bod anomálie. Získat pole JSON a iteraci v rámci, tisk index žádné `true` hodnoty. Tyto hodnoty odpovídat indexu neobvyklé datových bodů, pokud některá.
+2. Pokud odpověď obsahuje `code` pole, kód chyby a chybová zpráva.
 
-    
-    ```java
-    static void detectAnomaliesBatch(String requestData) {
-        System.out.println("Detecting anomalies as a batch");
-        String result = sendRequest(batchDetectionUrl, endpoint, subscriptionKey, requestData);
-        if (result != null) {
-            System.out.println(result);
-            JSONObject jsonObj = new JSONObject(result);
+3. V opačném případě vyhledání pozice anomálie v datové sadě. Odpověď na `isAnomaly` pole obsahuje hodnotu typu boolean týkající se určuje, zda je daný datový bod anomálie. Získat pole JSON a iteraci v rámci, tisk index žádné `true` hodnoty. Tyto hodnoty odpovídat indexu neobvyklé datových bodů, pokud některá.
+
+```java
+static void detectAnomaliesBatch(String requestData) {
+    System.out.println("Detecting anomalies as a batch");
+    String result = sendRequest(batchDetectionUrl, endpoint, subscriptionKey, requestData);
+    if (result != null) {
+        System.out.println(result);
+        JSONObject jsonObj = new JSONObject(result);
+        if (jsonObj.has("code")) {
+            System.out.println(String.format("Detection failed. ErrorCode:%s, ErrorMessage:%s", jsonObj.getString("code"), jsonObj.getString("message")));
+        } else {
             JSONArray jsonArray = jsonObj.getJSONArray("isAnomaly");
             System.out.println("Anomalies found in the following data positions:");
             for (int i = 0; i < jsonArray.length(); ++i) {
@@ -146,7 +150,8 @@ static String sendRequest(String apiAddress, String endpoint, String subscriptio
             System.out.println();
         }
     }
-    ```
+}
+```
 
 ## <a name="detect-the-anomaly-status-of-the-latest-data-point"></a>Zjištění anomálií stavu nejnovější datového bodu
 
@@ -165,14 +170,14 @@ static void detectAnomaliesLatest(String requestData) {
 1. V hlavní metodě vaší aplikace přečtěte si v souboru JSON, který obsahuje data, která se přidá na požadavky.
 
 2. Volání funkce detekce anomálií dvě vytvořili výše.
-    
-    ```java
-    public static void main(String[] args) throws Exception {
-        String requestData = new String(Files.readAllBytes(Paths.get(dataPath)), "UTF-8");
-        detectAnomaliesBatch(requestData);
-        detectAnomaliesLatest(requestData);
-    }
-    ```
+
+```java
+public static void main(String[] args) throws Exception {
+    String requestData = new String(Files.readAllBytes(Paths.get(dataPath)), "utf-8");
+    detectAnomaliesBatch(requestData);
+    detectAnomaliesLatest(requestData);
+}
+```
 
 ### <a name="example-response"></a>Příklad odpovědi
 

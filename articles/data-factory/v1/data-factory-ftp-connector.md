@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 05/02/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 20f1d8ca67a38a9dc262845d87b77e2bc3fc9fb7
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 4aba7aadbe92b6c4f0ab417785e230bb6a6823df
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55810575"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59523422"
 ---
 # <a name="move-data-from-an-ftp-server-by-using-azure-data-factory"></a>Přesun dat pomocí služby Azure Data Factory ze serveru FTP
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -156,7 +156,7 @@ Následující tabulka popisuje elementy JSON jsou specifické pro službu FTP p
 | Vlastnost | Popis | Požaduje se |
 | --- | --- | --- |
 | folderPath |Podřízená cesta ke složce. Použijte řídicí znak "\" pro zvláštní znaky v řetězci. Viz ukázka propojené služby a datové sady definice příklady.<br/><br/>Můžete zkombinovat tato vlastnost se **partitionBy** cesty ke složkám podle řez start a end data a časy. |Ano |
-| fileName |Zadejte název souboru **folderPath** Pokud má tabulka, která má odkazovat na konkrétní soubor ve složce. Pokud je nezadávejte žádnou hodnotu pro tuto vlastnost, v tabulce odkazuje na všechny soubory ve složce.<br/><br/>Když **fileName** není zadaný pro výstupní datovou sadu, název generovaného souboru je v následujícím formátu: <br/><br/>Data. <Guid>.txt (například: Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt) |Ne |
+| fileName |Zadejte název souboru **folderPath** Pokud má tabulka, která má odkazovat na konkrétní soubor ve složce. Pokud je nezadávejte žádnou hodnotu pro tuto vlastnost, v tabulce odkazuje na všechny soubory ve složce.<br/><br/>Když **fileName** není zadaný pro výstupní datovou sadu, název generovaného souboru je v následujícím formátu: <br/><br/>`Data.<Guid>.txt` (Příklad: Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt) |Ne |
 | fileFilter |Určete filtr, který slouží k výběru podmnožinu souborů v **folderPath**, ne všechny soubory.<br/><br/>Povolené hodnoty jsou: `*` (více znaků) a `?` (jeden znak).<br/><br/>Příklad 1: `"fileFilter": "*.log"`<br/>Příklad 2: `"fileFilter": 2014-1-?.txt"`<br/><br/> **fileFilter** platí pro vstupní datovou sadu sdílení souborů. Tato vlastnost není podporována s HDFS Hadoop Distributed File System (). |Ne |
 | partitionedBy |Používá se k určení dynamické **folderPath** a **fileName** dat časové řady. Například můžete zadat **folderPath** , který je s parametry pro každou hodinu data. |Ne |
 | formát | Jsou podporovány následující typy formátů: **TextFormat**, **JsonFormat**, **AvroFormat**, **OrcFormat**, **ParquetFormat**. Nastavte **typ** vlastnosti v části formát na jednu z těchto hodnot. Další informace najdete v tématu [textový formát](data-factory-supported-file-and-compression-formats.md#text-format), [formátu Json](data-factory-supported-file-and-compression-formats.md#json-format), [Avro formát](data-factory-supported-file-and-compression-formats.md#avro-format), [Orc formát](data-factory-supported-file-and-compression-formats.md#orc-format), a [formát Parquet ](data-factory-supported-file-and-compression-formats.md#parquet-format) oddíly. <br><br> Pokud chcete zkopírovat soubory jsou mezi souborové úložiště (binární kopie), přeskočte část o formátu v definicích oba vstupní a výstupní datové sady. |Ne |

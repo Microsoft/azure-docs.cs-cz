@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/07/2018
 ms.author: barclayn
-ms.openlocfilehash: 9b905a81751ce5f4de4a4efbb9ff4c328269fe34
-ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
+ms.openlocfilehash: 288ad14110bd446955d6cec7439bfa40a750276c
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58904844"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59521641"
 ---
 # <a name="tutorial--deploying-hsms-into-an-existing-virtual-network-using-powershell"></a>Kurz – moduly hardwarového zabezpečení nasazení do existující virtuální sítě pomocí Powershellu
 
@@ -217,7 +217,7 @@ Ssh nástroj se používá k připojení k virtuálnímu počítači. Bude podob
 `ssh adminuser@hsmlinuxvm.westus.cloudapp.azure.com`
 
 Heslo pro použití je v souboru parametrů.
-Po přihlášení k virtuálního počítače s Linuxem se můžete přihlásit k modulu hardwarového zabezpečení pomocí privátní IP adresy nalézt v portálu pro prostředek <prefix>hsm_vnic.
+Po přihlášení k virtuálního počítače s Linuxem se můžete přihlásit k modulu hardwarového zabezpečení pomocí privátní IP adresy nalézt v portálu pro prostředek \<předpony > hsm_vnic.
 
 ```powershell
 

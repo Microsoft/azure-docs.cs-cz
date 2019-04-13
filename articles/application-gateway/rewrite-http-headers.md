@@ -5,103 +5,65 @@ services: application-gateway
 author: abshamsft
 ms.service: application-gateway
 ms.topic: article
-ms.date: 12/20/2018
+ms.date: 04/11/2019
 ms.author: absha
-ms.openlocfilehash: e89fe10768331f5b4099ce9a9e2204dd72aa0bff
-ms.sourcegitcommit: ad3e63af10cd2b24bf4ebb9cc630b998290af467
+ms.openlocfilehash: efb7b46919066beb1382d70b676a2115ea0fb8ac
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58793460"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59544141"
 ---
 # <a name="rewrite-http-headers-with-application-gateway-public-preview"></a>Přepsání hlavičky protokolu HTTP pomocí služby Application Gateway (public preview)
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-Hlavičky protokolu HTTP umožňují klienta a serveru předat další informace o požadavku nebo odpovědi. Přepsání těchto HTTP záhlaví vám pomáhá s několik důležitých scénářů, jako je například přidávání bezpečnostních záhlaví pole jako HSTS / X-XSS ochrany nebo odebrání pole hlavičky odpovědi, což může vést k odhalení citlivých informací, jako je název serveru back-endu.
-
-Služba Application Gateway nyní podporuje schopnosti přepsat záhlaví příchozí HTTP požadavky i odchozí odpovědi protokolu HTTP. Budete moct přidat, odebrat nebo aktualizovat hlavičky požadavku a odpovědi protokolu HTTP požadavku nebo odpovědi pakety přesunout mezi klientem a back-endové fondy. Je možné přepsat obě pole standardní, jakož i nestandardní hlavičky.
-
+Hlavičky protokolu HTTP umožňují klienta a serveru předat další informace o požadavku nebo odpovědi. Přepisování tyto hlavičky protokolu HTTP vám pomůže splnit několik důležitých scénářů, jako je například přidávání pole hlavičky související se zabezpečením, jako jsou HSTS / X XSS ochranu, odebírá hlavičku odpovědi pole, která může odhalit citlivé informace, vypuzovacího údaje o portech z Záhlaví X-předané-pro atd. Služba Application gateway podporuje možnost přidat, odebrat nebo aktualizovat hlaviček žádostí a odpovědí protokolu HTTP při požadavku a odpovědi pakety přesouvat mezi klientem a back-endové fondy. Poskytuje také vám umožňuje přidat podmínky pro zajištění, že určených hlaviček jsou zapsány pouze v případě, že jsou splněny určité podmínky.
 > [!NOTE]
-> 
+>
 > Podpora přepsání hlavičky protokolu HTTP je dostupná jenom pro [novou skladovou Položku [Standard_V2\]](https://docs.microsoft.com/azure/application-gateway/application-gateway-autoscaling-zone-redundant)
 
-Podpora služby Application Gateway záhlaví revize nabízí:
+## <a name="headers-supported-for-rewrite"></a>Záhlaví podporována pro přepsání
 
-- **Globální záhlaví revize**: Je možné přepsat konkrétní hlavičky pro všechny požadavky a odpovědi týkající se webu.
-- **Na základě cest záhlaví revize**: Tento typ přepsání umožňuje přepsání hlavičky pro pouze tyto požadavky a odpovědi, které se vztahují pouze na určitém webovém serveru oblast, třeba nákupní košík oblasti udávají /cart/\*.
+Možnost umožňuje přepsat všechny hlavičky v požadavku a odpovědi blokování hlavičky hostitele, připojení a Upgrade. Application gateway můžete také použít k vytvoření vlastní hlavičky a přidat je do požadavku a odpovědi směrovány přes něj. 
 
-Díky této změně budete muset:
+## <a name="rewrite-conditions"></a>Přepište podmínky
 
-1. Vytvořte nové objekty požadované pro přepsání hlavičky protokolu http: 
-   - **RequestHeaderConfiguration**: Tento objekt se používá k určení, které chcete přepsat pole hlavičky požadavku a nové hodnoty, které musí být přepsány, aby původní záhlaví.
-   - **ResponseHeaderConfiguration**: Tento objekt se používá k určení, které chcete přepsat pole hlavičky odpovědi a nové hodnoty, které musí být přepsány, aby původní záhlaví.
-   - **ActionSet**: Tento objekt obsahuje konfigurace z výše uvedených hlaviček žádostí a odpovědí. 
-   - **RewriteRule**: Tento objekt obsahuje všechny *actionSets* uvedeno výše. 
-   - **RewriteRuleSet**– tento objekt obsahuje všechny *rewriteRules* a musí být připojené k pravidlo směrování požadavku – basic nebo na základě cest.
-2. Pak budete muset připojit sadu pravidel přepisování pomocí pravidel směrování. Po vytvoření této revize konfigurace je připojen k zdroj naslouchací proces prostřednictvím pravidla směrování. Při použití základních pravidel směrování, konfigurace přepsání hlavičky je přidružený zdroj naslouchací proces a je globální záhlaví revize. Při použití pravidel směrování na základě cest, přepište Konfigurace hlavičky je definován na mapě cestu adresy URL. Ano platí jen pro konkrétní cesty oblasti lokality.
+Pomocí přepsání, které podmínky můžete vyhodnotit obsah HTTP (S) požadavků a odpovědí a provedení hlavičku přepsat jenom v případě, že jeden nebo více podmínek jsou splněny. Následující 3 typy proměnných se používají ve službě application gateway k vyhodnocení obsahu žádosti HTTP (S) a odpovědi:
 
-Můžete vytvořit více sad pravidel přepisování hlavičky protokolu http a každou sadu pravidel přepsání lze použít na víc naslouchacích procesů. Můžete však použít jediné pravidlo pro přepis adres http nastavena na konkrétním posluchačem.
+- Hlavičky protokolu HTTP v požadavku
+- Hlavičky protokolu HTTP v odpovědi
+- Application gateway serverových proměnných
 
-Je možné přepsat hodnotou v hlavičkách na:
+Podmínku můžete použít k vyhodnocení, zda určená proměnná je k dispozici, zda zadaná proměnná přesně odpovídá konkrétní hodnotu nebo zda zadané proměnné přesně odpovídá určitému vzoru. [Knihovna jazyka Perl kompatibilní regulární výrazy (PCRE)](https://www.pcre.org/) slouží k implementaci porovnávání regulárních výrazů v podmínkách. Další informace o syntaxi regulárního výrazu, najdete v článku [regulární výrazy jazyka Perl člověk stránky](http://perldoc.perl.org/perlre.html).
 
-- Textová hodnota. 
+## <a name="rewrite-actions"></a>Akce revize
 
-  *Příklad:* 
+Přepište akce se používají k určení, které chcete přepsat hlavičky požadavku a odpovědi a nové hodnoty, které musí být přepsány, aby původní záhlaví. Můžete vytvořit novou hlavičku, upravte hodnotu existující záhlaví nebo odstranit existující záhlaví. Hodnota záhlaví nové nebo existující záhlaví může být nastavena na následující typy hodnot:
 
-  ```azurepowershell-interactive
-  $responseHeaderConfiguration = New-AzApplicationGatewayRewriteRuleHeaderConfiguration -HeaderName "Strict-Transport-Security" -  HeaderValue "max-age=31536000")
-  ```
-
-- Hodnota z jiné záhlaví. 
-
-  *Příklad 1:* 
-
-  ```azurepowershell-interactive
-  $requestHeaderConfiguration= New-AzApplicationGatewayRewriteRuleHeaderConfiguration -HeaderName "X-New-RequestHeader" -HeaderValue {http_req_oldHeader}
-  ```
-
-  > [!Note] 
-  > Pokud chcete zadat hlavičku požadavku, budete muset použít syntaxe: {http_req_headerName}
-
-  *Příklad 2*:
-
-  ```azurepowershell-interactive
-  $responseHeaderConfiguration= New-AzApplicationGatewayRewriteRuleHeaderConfiguration -HeaderName "X-New-ResponseHeader" -HeaderValue {http_resp_oldHeader}
-  ```
-
-  > [!Note] 
-  > Pokud chcete zadat hlavičku odpovědi, budete muset použít syntaxe: {http_resp_headerName}
-
-- Hodnota z podporovaných serverových proměnných.
-
-  *Příklad:* 
-
-  ```azurepowershell-interactive
-  $requestHeaderConfiguration = New-AzApplicationGatewayRewriteRuleHeaderConfiguration -HeaderName "Ciphers-Used" -HeaderValue "{var_ciphers_used}"
-  ```
-
-  > [!Note] 
-  > Pokud chcete zadat proměnnou serveru, budete muset použít syntaxe: {var_serverVariable}
-
-- Kombinace výše.
+- Text 
+- Hlavička požadavku: Pokud chcete zadat hlavičku požadavku, je potřeba použijte syntaxi {http_req_*headerName*}
+- Hlavička odpovědi: Pokud chcete zadat hlavičku odpovědi, je potřeba použijte syntaxi {http_resp_*headerName*}
+- Proměnná serveru: Pokud chcete zadat proměnnou serveru, je potřeba použijte syntaxi {var_*serverVariable*}
+- Kombinaci textu, hlavičku požadavku, hlavička odpovědi a proměnné serveru.
 
 ## <a name="server-variables"></a>Serverové proměnné
 
-Serverové proměnné ukládat užitečné informace na webovém serveru. Tyto proměnné poskytují informace o serveru, připojení s klientem a aktuální požadavek na připojení, jako je například IP adresa klienta nebo typ webového prohlížeče. Tyto změny dynamicky, například při načtení nové stránky nebo odeslání formuláře.  Pomocí těchto uživatelů proměnným lze nastavit hlavičky požadavku, jakož i hlavičky odpovědi. 
+Služba Application gateway používá proměnné serveru k ukládání užitečné informace o serveru, připojení s klientem a aktuální požadavek na připojení, jako je například IP adresa klienta nebo typ webového prohlížeče. Tyto proměnné změnit dynamicky, například při načtení nové stránky nebo odeslání formuláře. Tyto proměnné serveru můžete použít k vyhodnocení podmínky revize a přepište záhlaví. 
 
-Tato funkce podporuje přepis adres hlavičky pro následující proměnné na serveru:
+Služba Application gateway podporuje následující proměnné na serveru:
 
 | Podporované serverové proměnné | Popis                                                  |
 | -------------------------- | :----------------------------------------------------------- |
+| add_x_forwarded_for_proxy  | Obsahuje "X-předané-pro" klienta polem hlavičky požadavku `client_ip` (vysvětlení obsahuje tato tabulka dole) proměnné připojí k němu ve formátu (IP1, IP2, IP3,...). Pokud není k dispozici v hlavičce žádosti klienta, pole "X-předané-pro" `add_x_forwarded_for_proxy` proměnná je rovna `$client_ip` proměnné. Tato proměnná je zvláště užitečné ve scénářích, kde chcete přepsat nastavení službou Application Gateway, Hlavička X-předané – pro tak, že hlavička obsahuje jenom IP adresy bez informace o portech zákazníků. |
 | ciphers_supported          | Vrátí seznam šifer podporovaných klientem          |
 | ciphers_used               | Vrátí řetězec šifry použitý pro navázané připojení SSL |
-| client_ip                  | IP adresa klienta, ze kterého application gateway přijal požadavek. Pokud není reverzní proxy server před application gateway a klienta, pak *client_ip* vrátí IP adresa reverzního proxy serveru. Tato proměnná je zvlášť užitečné v situacích, kde chcete přepsat záhlaví X-předané-pro nastavení službou Application Gateway, tak, aby záhlaví obsahuje jenom IP adresy bez informace o portech zákazníkům. |
+| client_ip                  | IP adresa klienta, ze kterého application gateway přijal požadavek. Pokud není reverzní proxy server před application gateway a klienta, pak *client_ip* vrátí IP adresu reverzního proxy serveru. |
 | client_port                | port klienta                                                  |
 | client_tcp_rtt             | informace o klientovi připojení TCP. k dispozici v systémech, které podporují možnost soketu TCP_INFO |
 | client_user                | Pokud používáte ověřování pomocí protokolu HTTP, uživatelské jméno zadané pro ověřování |
 | hostitel                       | v tomto pořadí priorit: název hostitele z řádku požadavku nebo název hostitele z pole hlavičky požadavku "Hostitel", nebo odpovídající žádost o název serveru |
-| cookie_*název*              | *název* souboru cookie |
+| cookie_*název*              | *název* souboru cookie                                            |
 | http_method                | Metoda použitá k odeslání požadavku adresa URL. Třeba získáte POST atd. |
 | http_status                | Stav relace, třeba: 200, 400, 403 atd.                       |
 | http_version               | žádost o protokol, obvykle "HTTP verze 1.0", "HTTP/1.1" nebo "HTTP/2.0" |
@@ -115,15 +77,57 @@ Tato funkce podporuje přepis adres hlavičky pro následující proměnné na s
 | ssl_connection_protocol    | Vrátí protokol navázané připojení SSL        |
 | ssl_enabled                | "na" if připojení funguje v režimu SSL, nebo v opačném případě prázdný řetězec |
 
+## <a name="rewrite-configuration"></a>Přepsání konfigurace
+
+Pokud chcete nakonfigurovat přepsání hlavičky protokolu HTTP, budete muset:
+
+1. Vytvořte nové objekty požadované pro přepsání hlavičky protokolu http:
+
+   - **Přepsat akci**: používá se k určení žádosti a pole hlavičky požadavku, které chcete přepsat a nové hodnoty, které musí být přepsány, aby původní záhlaví. Můžete přidružit jeden nebo další revize podmínku akce přepsání.
+
+   - **Přepsání stavu**: To je volitelné konfigurace. Když je přidána podmínka revize, se vyhodnotí obsahu žádosti HTTP (S) a odpovědi. Rozhodnutí o přepsání akci spojené s podmínkou revize se budou zakládat, zda požadavek HTTP (S) nebo odpověď shoda s podmínkou revize. 
+
+     Pokud více než jedné podmínky jsou přidružené k akci a potom akci spustí jenom v případě, že jsou splněny všechny podmínky, to znamená, logické a operace se provede.
+
+   - **Přepsat pravidla**: pravidlo pro přepis adres obsahuje více akce přepsání - přepsat kombinace podmínku.
+
+   - **Pravidlo pořadí**: pomáhá určit, jsou provedeny v pořadí, ve kterém různých pravidla pro přepis adres. To je užitečné, pokud existuje více pravidla pro přepis adres v sadě revize. Pravidlo pro přepis adres s nižší hodnotou pořadí pravidlo se nejprve provede. Pokud poskytují stejnou sekvenci pravidlo na dvě pravidla pro přepis adres budou pořadí provádění není deterministický.
+
+   - **Přepsat nastavení**: obsahuje více přepsání pravidla, která bude přidružen k pravidlo směrování požadavku.
+
+2. Budete muset připojit přepsání sady (*rewriteRuleSet*) pomocí pravidel směrování. Je to proto, že konfigurace přepsání je připojen k zdroj naslouchací proces prostřednictvím pravidla směrování. Při použití základních pravidel směrování, konfigurace přepsání hlavičky je přidružený zdroj naslouchací proces a je globální záhlaví revize. Při použití pravidel směrování na základě cest, přepište Konfigurace hlavičky je definován na mapě cestu adresy URL. Ano platí jen pro konkrétní cesty oblasti lokality.
+
+Můžete vytvořit více sad přepsání hlavičky protokolu http a každou sadu přepsání lze použít na víc naslouchacích procesů. Můžete však použít jen jeden přepsat nastavenou na konkrétním posluchačem.
+
+## <a name="common-scenarios"></a>Obvyklé scénáře
+
+Některé běžné scénáře, které vyžadují revize záhlaví jsou uvedené níže.
+
+### <a name="remove-port-information-from-the-x-forwarded-for-header"></a>Odebrat informace o portech z hlavičky X-předané-pro
+
+Služba Application gateway vloží záhlaví X-předané-pro všechny požadavky, předtím, než ji předá požadavek back-endu. Formát pro toto záhlaví je čárkou oddělený seznam IP: port. Mohou však existovat scénáře, ve kterém back-end serverů vyžadují záhlaví tak, aby obsahovala pouze IP adresy. Pro provádění takových scénářích, je možné odebrat informace o portech z hlavičky X-předané – pro záhlaví revize. Jedním ze způsobů k tomu je nastavit hlavičku add_x_forwarded_for_proxy proměnná serveru. 
+
+![Odebrání portu](media/rewrite-http-headers/remove-port.png)
+
+### <a name="modify-the-redirection-url"></a>Upravte adresu URL pro přesměrování
+
+Když back-end aplikace odešle odpověď přesměrování, můžete k přesměrování klienta na jinou adresu URL, než je určeno back-end aplikace. Jeden takový scénář je při služby app service je hostovaných za službou application gateway a vyžaduje klienta provedete přesměrování na relativní cestu (přesměrování z contoso.azurewebsites.net/path1 na contoso.azurewebsites.net/path2). 
+
+Služby app service je víceklientská služba, používá ke směrování na správný koncový bod hlavičku hostitele v žádosti. Služby App services mají výchozí název domény *. azurewebsites.net (třeba contoso.azurewebsites.net), která se liší od application gateway název domény (třeba contoso.com). Vzhledem k tomu, že původní žádost od klienta má služba application gateway název domény contoso.com jako název hostitele, službu application gateway změní název hostitele contoso.azurewebsites.net, tak, aby app service může směrovat na správný koncový bod. Když služby app service odešle odpověď přesměrování, používá stejný název hostitele v hlavičce umístění odpovědi jako v žádosti, které obdrží z aplikační brány. Klient proto způsobí, že žádost přímo contoso.azurewebsites.net/path2, místo používání přes application gateway (contoso.com/path2). Obcházení application gateway není žádoucí. 
+
+Tento problém lze vyřešit nastavením název hostitele v záhlaví umístění pro službu application gateway název domény. K tomuto účelu můžete vytvořit pravidlo pro přepis adres s podmínkou, která vyhodnotí hlavičky location v odpovědi obsahuje azurewebsites.net tak, že zadáte-li `(https?):\/\/.*azurewebsites\.net(.*)$` jako vzor a provádějí akci, kterou chcete přepsat hlavičku location, aby služba application gateway název hostitele tak, že zadáte `{http_resp_Location_1}://contoso.com{http_resp_Location_2}` jako hodnotu záhlaví.
+
+![Upravit hlavičku umístění](media/rewrite-http-headers/app-service-redirection.png)
+
+### <a name="implement-security-http-headers-to-prevent-vulnerabilities"></a>Implementace hlavičky zabezpečení HTTP, aby se zabránilo ohrožení zabezpečení
+
+Implementací potřebné hlavičky v odezvě aplikace lze napravit několik ohrožení zabezpečení. Některé z těchto záhlaví zabezpečení jsou X XSS ochranu, striktní zabezpečení přenosu, obsah-Security-Policy, atd. Služba application gateway můžete použít k nastavení těchto hlaviček pro všechny odpovědi.
+
+![Záhlaví zabezpečení](media/rewrite-http-headers/security-header.png)
+
 ## <a name="limitations"></a>Omezení
 
-- Tuto možnost přepsání hlavičky protokolu HTTP je momentálně dostupná jenom prostřednictvím Azure Powershellu, rozhraní API služby Azure a Azure SDK. Brzy bude k dispozici podporu prostřednictvím portálu a Azure CLI.
-
-- Podpora přepsání hlavičky protokolu HTTP je podporována pouze na nové SKU [Standard_V2](https://docs.microsoft.com/azure/application-gateway/application-gateway-autoscaling-zone-redundant). Možnost nebude podporovat staré skladové položky.
-
 - Přepsání hlavičky připojení, Upgrade a hostitel ještě nepodporuje.
-
-- Brzy bude k dispozici možnost podmíněně přepsání hlavičky protokolu http.
 
 - Názvy záhlaví může obsahovat jakékoli alfanumerickým znakem a konkrétní symboly definované v [RFC 7230](https://tools.ietf.org/html/rfc7230#page-27). Však aktuálně nepodporujeme "podtržítka" (\_) speciálního znaku v názvu záhlaví. 
 
@@ -133,4 +137,7 @@ Kontaktujte nás na adrese [ AGHeaderRewriteHelp@microsoft.com ](mailto:AGHeader
 
 ## <a name="next-steps"></a>Další postup
 
-Po získání informací o možnost přepsání hlavičky protokolu HTTP, přejděte na [vytvoření automatického škálování a zónově redundantní aplikační bránu, která přepíše hlavičky protokolu HTTP](tutorial-http-header-rewrite-powershell.md) nebo [hlavičky HTTP přepsat v existující automatické škálování a zónově redundantní služba application gateway](add-http-header-rewrite-rule-powershell.md)
+Zjistěte, jak přepsat hlavičky protokolu HTTP, najdete v tématech:
+
+-  [Přepsání hlavičky protokolu HTTP pomocí webu Azure portal](https://docs.microsoft.com/azure/application-gateway/rewrite-http-headers-portal)
+-  [Přepsání hlavičky protokolu HTTP pomocí Azure Powershellu](add-http-header-rewrite-rule-powershell.md)

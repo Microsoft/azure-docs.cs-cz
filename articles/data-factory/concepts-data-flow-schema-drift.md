@@ -7,12 +7,12 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 10/04/2018
-ms.openlocfilehash: 42fde2804c04b2449068d649e1c660d02e72edb1
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: aadab68185347dc0a12e0802f675efe13ecea545
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56729351"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59547140"
 ---
 # <a name="mapping-data-flow-schema-drift"></a>Mapování datového toku schématu odchylek
 
@@ -26,7 +26,7 @@ Pokud chcete chránit proti schématu odchylek, je důležité mít zařízení 
 * Definování parametrů transformace, které budou fungovat s modely dat namísto pevně zakódované pole a hodnoty
 * Definování výrazů, které porozumění vzorcům tak, aby odpovídaly příchozí pole namísto použití pole s názvem
 
-V Azure Data Factory toku dat zobrazují se zařízení prostřednictvím tohoto pracovního postupu:
+## <a name="how-to-implement-schema-drift"></a>Jak implementovat schématu odchylek
 
 * Zvolte možnost "Povolit odchylek schématu" ve vaší zdrojové transformace
 
@@ -67,3 +67,10 @@ To všechno s ukázkou toku dat objekt pro vytváření dat Azure "Taxislužby u
 
 <img src="media/data-flow/taxidrift2.png" width="800">
 
+## <a name="access-new-columns-downstream"></a>Přístup k nové sloupce směru server-klient
+
+Při generování nového sloupce s sloupec vzory dostanete později v transformace toku dat pomocí funkce výraz "byName" tyto nové sloupce.
+
+## <a name="next-steps"></a>Další postup
+
+V [jazyk výrazů tok dat](data-flow-expression-functions.md) najdete další zařízení pro sloupec vzory a schéma odchylek včetně "byName" a "byPosition".

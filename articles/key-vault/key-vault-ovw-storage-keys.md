@@ -9,12 +9,12 @@ author: prashanthyv
 ms.author: prashanthyv
 manager: barbkess
 ms.date: 03/01/2019
-ms.openlocfilehash: 5ec5109aa8079b37015f66443b8ebac905ad2fcb
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.openlocfilehash: 99b37a9b12c4b66e9b254156dfe4b59c7ab6594c
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58370555"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59526268"
 ---
 # <a name="azure-key-vault-managed-storage-account---cli"></a>Služba Azure Key Vault spravovat účet úložiště – rozhraní příkazového řádku
 
@@ -109,7 +109,7 @@ Můžete také požádat služby Key Vault ke generování tokenů SAS (sdílen�
 Po dokončení kroků uvedených výše můžete můžete spusťte následující příkazy Key Vault ke generování tokenů SAS pro vás požádat. 
 
 Seznam věcí, které by se dají naplnit v níže uvedené kroky jsou
-- Nastaví účet definice SAS s názvem "<YourSASDefinitionName>"v účtu úložiště služby KeyVault spravované"<YourStorageAccountName>"ve vašem trezoru"<VaultName>". 
+- Nastaví účet s názvem definice SAS `<YourSASDefinitionName>` na účet úložiště služby KeyVault spravované `<YourStorageAccountName>` ve vašem trezoru `<VaultName>`. 
 - Vytvoří token SAS účtu služby Blob, soubor, tabulka a fronta, pro typy prostředků, služby kontejneru a objektu, se všechna oprávnění, přes protokol https a se zadaným počátečním a koncovým datem.
 - Nastaví KeyVault cloudově spravovaného úložiště definice SAS v trezoru se šablona identifikátoru uri jako token SAS vytvořili výše, SAS typu "účet" a platný N dní
 - Načte skutečnou přístupový token z tajného kódu trezoru klíčů, které odpovídají jeho definice SAS

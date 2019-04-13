@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: mazha
-ms.openlocfilehash: 635b4e71c09a2e8b3901af5580f221bc4716831d
-ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
+ms.openlocfilehash: 3dbf0aea50f382a0b325bf068a200cde42098733
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/04/2019
-ms.locfileid: "58917766"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59547585"
 ---
 # <a name="using-azure-cdn-with-cors"></a>Používání Azure CDN s CORS
 ## <a name="what-is-cors"></a>Co je CORS?
@@ -32,7 +32,7 @@ Existují dva typy požadavků CORS *jednoduché požadavky* a *složité požad
 
 1. V prohlížeči odesílá požadavek CORS ještě **původu** hlavičku požadavku HTTP. Hodnotu této hlavičky origin, která obsluhuje nadřazenou stránku, která je definována jako kombinace *protokolu* *domény,* a *portu.*  Když stránku z https://www.contoso.com pokusy o přístup k datům uživatele v fabrikam.com původ, následující hlavičky žádosti by se odeslaly na fabrikam.com:
 
-   `Origin: https://www.contoso.com`
+   `Origin: https:\//www.contoso.com`
 
 2. Server může odpovídat s žádným z následujících akcí:
 

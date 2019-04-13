@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/14/2018
 ms.author: apimpm
-ms.openlocfilehash: 1393e548c46c23f6b50c1b18a274febb74914ae8
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.openlocfilehash: bc791fea1dfd184749e84cb7b7a912972c6a9f12
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54054489"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59523503"
 ---
 # <a name="create-subscriptions-in-azure-api-management"></a>Vytvořit odběry ve službě Azure API Management
 
@@ -38,7 +38,8 @@ Provést kroky v tomto článku, jsou následující požadavky:
 1. Vyberte **předplatná** v nabídce na levé straně.
 2. Vyberte **přidat předplatné**.
 3. Zadejte název předplatného a vyberte obor.
-4. Vyberte **Uložit**.
+4. Volitelně můžete zvolte, pokud by měl být předplatné přidružené k uživateli.
+5. Vyberte **Uložit**.
 
 ![Flexibilní předplatná](./media/api-management-subscriptions/flexible-subscription.png)
 

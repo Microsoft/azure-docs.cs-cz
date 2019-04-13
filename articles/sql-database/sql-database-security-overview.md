@@ -11,13 +11,13 @@ author: aliceku
 ms.author: aliceku
 ms.reviewer: vanto, carlrab, emlisa
 manager: craigg
-ms.date: 04/08/2019
-ms.openlocfilehash: f9387d68139119c13d57ebb135e0c0f5b7bba8ec
-ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
+ms.date: 04/11/2019
+ms.openlocfilehash: de9eb8ff33dc6d99c386ee92118a2d737ba1e476
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
-ms.locfileid: "59359045"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59523694"
 ---
 # <a name="an-overview-of-azure-sql-database-security-capabilities"></a>Přehled možností zabezpečení Azure SQL Database
 
@@ -107,7 +107,7 @@ Jako osvědčený postup, doporučit, připojení aplikace řetězec můžete za
 Například při použití ovladače ADO.NET to lze provést prostřednictvím **Encrypt = True** a **TrustServerCertificate = False**. Připojovací řetězec můžete získat z webu Azure portal, bude mít správné nastavení.
 
 > [!IMPORTANT]
-> Poznámka: Některé ovladače jiných výrobců nemusí ve výchozím nastavení používají TLS nebo využívají starší verzi protokolu TLS (< 2.0) mohl fungovat. V tomto případě systému SQL Server stále umožňuje připojení k vaší databázi. Doporučujeme však, že při hodnocení rizik zabezpečení umožnit tyto ovladače a aplikace pro připojení k SQL Database, zejména v případě, že ukládat citlivá data. 
+> Poznámka: Některé ovladače jiných výrobců nemusí ve výchozím nastavení používají TLS nebo využívají starší verzi protokolu TLS (< 1.2) mohl fungovat. V tomto případě systému SQL Server stále umožňuje připojení k vaší databázi. Doporučujeme však, že při hodnocení rizik zabezpečení umožnit tyto ovladače a aplikace pro připojení k SQL Database, zejména v případě, že ukládat citlivá data. 
 >
 > Další informace o připojení a TLS najdete v tématu [požadavky TLS](sql-database-connect-query.md#tls-considerations-for-sql-database-connectivity)
 

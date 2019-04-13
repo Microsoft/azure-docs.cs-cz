@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 03/27/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: b5c7050ac006ea2500854f8f41b134895e5e0061
-ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
+ms.openlocfilehash: 3b31e796b07bea8c11bccb3f2bb306a4279f2ca3
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58541209"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59523711"
 ---
 # <a name="how-to-implement-faceted-navigation-in-azure-search"></a>Jak v Azure Search implementovat fasetovou navigaci
 Fasetová navigace je filtrační mechanismus, který poskytuje samořízeného k podrobnostem námětů a navigace ve vyhledávání aplikací. Termín 'Fasetové navigace' může být obeznámeni, ale pravděpodobně ho před jste použili. Jak ukazuje následující příklad, Fasetové navigace není nic jiného než kategorie slouží k filtrování výsledků.
@@ -321,7 +321,7 @@ Za určitých okolností může pro vás, že omezující vlastnost počty se ne
 
 Počty omezující vlastnost může být nesprávné vzhledem k architektuře horizontálního dělení. Každý index vyhledávání má více horizontálních oddílů a každý horizontální oddíl sestavy horní N omezující vlastnosti podle počtu dokumentu, který je následně se spojí dohromady do jediného výsledku. Pokud některé horizontální oddíly mnoho odpovídající hodnoty, zatímco jiné mají méně, můžete zjistit, že chybí některé hodnoty omezujících vlastností, nebo pod počítáním ve výsledcích.
 
-I když toto chování může kdykoli změnit, pokud narazíte na toto chování ještě dnes, můžete alternativně vyřešit ho pomocí uměle nafouknutí počet:<number> na velké množství vynutit Úplné generování sestav z jednotlivých horizontálních oddílů. Pokud hodnota počtu: je větší než nebo rovna počtu jedinečných hodnot v poli, můžete je zaručeno, že přesné výsledky. Ale při vysoké počty dokumentů, je snížení výkonu, proto tuto možnost použijte, uvážlivě.
+I když toto chování může kdykoli změnit, pokud narazíte na toto chování ještě dnes, můžete alternativně vyřešit ho pomocí uměle nafouknutí počet:\<číslo > pro velký počet vynutit Úplné generování sestav z jednotlivých horizontálních oddílů. Pokud hodnota počtu: je větší než nebo rovna počtu jedinečných hodnot v poli, můžete je zaručeno, že přesné výsledky. Ale při vysoké počty dokumentů, je snížení výkonu, proto tuto možnost použijte, uvážlivě.
 
 ### <a name="user-interface-tips"></a>Tipy pro uživatelské rozhraní
 **Přidejte popisky pro každé pole v navigačním panelu omezující vlastnost**

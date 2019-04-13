@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 04/04/2019
 ms.author: tomfitz
-ms.openlocfilehash: a5350befd8d0fb1582606554314d909f7fec04c5
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: f5ff43102c42823891f2035c3f577e7def87fcb7
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59272287"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59528233"
 ---
 # <a name="move-resources-to-new-resource-group-or-subscription"></a>Přesunutí prostředků do nové skupiny prostředků nebo předplatného
 
-Tento článek ukazuje, jak Azure prostředky přesunout do jiného předplatného Azure nebo jiné skupiny prostředků ve stejném předplatném. Webu Azure portal, prostředí Azure PowerShell, rozhraní příkazového řádku Azure nebo rozhraní REST API můžete použít k přesunutí prostředků. Absolvovat kurz, naleznete v tématu [kurzu: Přesun prostředků Azure do jiné skupiny prostředků nebo předplatného](./resource-manager-tutorial-move-resources.md)
+Tento článek ukazuje, jak Azure prostředky přesunout do jiného předplatného Azure nebo jiné skupiny prostředků ve stejném předplatném. Webu Azure portal, prostředí Azure PowerShell, rozhraní příkazového řádku Azure nebo rozhraní REST API můžete použít k přesunutí prostředků.
 
 Během operace přesunu jsou zamknuté skupiny zdrojové i cílové skupině. Zápis a odstranění operace jsou blokovány o skupinách prostředků, až do dokončení přechodu. Tento Zámek znamená, že nelze přidat, aktualizovat nebo odstranit prostředky ve skupinách prostředků, ale neznamená, že prostředky jsou zmražená. Například při přesunutí serveru SQL Server a jeho databázi do nové skupiny prostředků, aplikace, která používá databázi prostředí bez výpadků. Můžete nadále číst a zapisovat do databáze.
 
@@ -361,7 +361,7 @@ Existuje několik důležitých kroků provedete před přesunutím prostředku 
 
    Pokud ID tenantů pro zdrojové a cílové předplatné nejsou stejné, použijte následující metody k odsouhlasení ID tenantů:
 
-   * [Přenos vlastnictví předplatného Azure na jiný účet](../billing/billing-subscription-transfer.md)
+   * [Přenos vlastnictví předplatného služby Azure na jiný účet](../billing/billing-subscription-transfer.md)
    * [Přiřazení nebo přidání předplatného Azure do služby Azure Active Directory](../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md)
 
 1. Cílové předplatné musí být registrováno pro poskytovatele přesouvaného prostředku. Pokud ne, zobrazí chybová zpráva oznamující, že **předplatné není zaregistrované pro typ prostředku**. Tato chyba může zobrazit při přesunutí prostředku do nového předplatného, ale, že předplatné nikdy použito příslušný typ prostředku.

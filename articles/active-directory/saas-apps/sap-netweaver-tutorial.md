@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 02/11/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c5a1034a55bc4d516244e11d035f17fcc3b94929
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: b648b8458c7f91cae6edb079fbd2ac78553dd969
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57855635"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59523779"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sap-netweaver"></a>Kurz: Integrace Azure Active Directory se SAP Netweaverem
 
@@ -135,7 +135,7 @@ Ke konfiguraci Azure AD jednotného přihlašování se SAP Netweaverem, proveď
 6. Nahraďte **název zprostředkovatele** z T01122 k `http://T01122` a klikněte na **Uložit**.
 
     > [!NOTE]
-    > Ve výchozím nastavení název zprostředkovatele pochází jako <sid> <client> formátu, ale Azure AD očekává název ve formátu <protocol>://<name>, chcete-li zachovat název zprostředkovatele jako https:// doporučenými<sid> <client> povolit více SAP Moduly NetWeaver ABAP nakonfigurovat ve službě Azure AD.
+    > Ve výchozím nastavení název zprostředkovatele pochází jako `<sid><client>` formátu, ale Azure AD očekává název ve formátu `<protocol>://<name>`, doporučenými Udržovat název zprostředkovatele jako `https://<sid><client>` umožňuje více modulů SAP NetWeaver ABAP nakonfigurovat ve službě Azure AD.
 
     ![Odkaz ke stažení certifikátu](./media/sapnetweaver-tutorial/tutorial_sapnetweaver_providername.png)
 

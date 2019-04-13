@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: ca7f749a04b569d183589fba8c788ce48f29358b
-ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
+ms.openlocfilehash: a26388de85ff6293985fe23adac8ca4d04d0de61
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58295551"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59525785"
 ---
 # <a name="encrypting-your-content-with-storage-encryption"></a>Šifrování obsahu pomocí šifrování úložiště 
 
@@ -111,7 +111,7 @@ Následují obecné kroky pro generování klíčů k obsahu, které spojují s 
 
     Vlastnost text žádosti    | Popis
     ---|---
-    ID | ContentKey ID je generována pomocí následujícího formátu "nb:kid:UUID:<NEW GUID>".
+    ID | ContentKey ID je generována pomocí následujícího formátu "nb:kid:UUID:\<nový identifikátor GUID >".
     ContentKeyType | Typ obsahu key je celé číslo, které definují klíč. Pro formát šifrování úložiště hodnota je 1.
     EncryptedContentKey | Vytvoříme nový obsahu hodnotu klíče, který je hodnota oborového 256bitového (32 bajtů). Že je klíč zašifrovaný pomocí storage šifrovací certifikát X.509, který se nám načíst ze služby Microsoft Azure Media Services pomocí provádí požadavek HTTP GET pro GetProtectionKeyId a GetProtectionKey metody. Jako příklad najdete v následujícím kódu .NET: **EncryptSymmetricKeyData** metody definované [tady](https://github.com/Azure/azure-sdk-for-media-services/blob/dev/src/net/Client/Common/Common.FileEncryption/EncryptionUtils.cs).
     ProtectionKeyId | Toto je ochrana ID klíče pro certifikát X.509 šifrování úložiště, který se použil k zašifrování naše klíče k obsahu.

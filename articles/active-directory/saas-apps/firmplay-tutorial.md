@@ -4,254 +4,195 @@ description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: daveba
+manager: mtillman
+ms.reviewer: barbkess
 ms.assetid: a6799629-7546-43f8-a966-956db32864b1
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 02/15/2017
+ms.topic: tutorial
+ms.date: 04/01/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: e2eb3085c652be1b86b6343850c5cad3dcdc4c14
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: ee638e34a2db2c397b7f536dfe80c6ea08d7738c
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56168519"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59543632"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-firmplay---employee-advocacy-for-recruiting"></a>Kurz: Integrace Azure Active Directory s FirmPlay - Advocacy zaměstnance pro nábor
 
 V tomto kurzu se dozvíte, jak integrovat FirmPlay - Advocacy zaměstnance pro nábor se službou Azure Active Directory (Azure AD).
-
 Integrace FirmPlay - Advocacy zaměstnance pro nábor s Azure AD poskytuje následující výhody:
 
-- Můžete řídit ve službě Azure AD, který má přístup k FirmPlay - Advocacy zaměstnance pro nábor
-- Můžete povolit uživatelům, aby automaticky získat přihlášení k FirmPlay - Advocacy zaměstnance pro nábor (Single Sign-On) s jejich účty Azure AD
-- Můžete spravovat své účty na jediném místě – na portálu pro správu Azure
+* Můžete řídit ve službě Azure AD, který má přístup k FirmPlay - Advocacy zaměstnance pro nábor.
+* Můžete povolit uživatelům, aby se automaticky přihlášeni k FirmPlay - Advocacy zaměstnance pro nábor (Single Sign-On) s jejich účty Azure AD.
+* Můžete spravovat své účty na jediném místě – na webu Azure portal.
 
-Pokud chcete zjistit další podrobnosti o integraci aplikací SaaS v Azure AD, přečtěte si téma [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
+Pokud chcete zjistit další podrobnosti o integraci aplikací SaaS v Azure AD, přečtěte si téma [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
 ## <a name="prerequisites"></a>Požadavky
 
 Konfigurace integrace Azure AD s FirmPlay - Advocacy zaměstnance pro nábor, potřebujete následující položky:
 
-- Předplatné Azure AD
-- FirmPlay - Advocacy zaměstnance pro přijetí jednotného přihlašování povolená předplatného
-
-
-> [!NOTE]
-> Pokud chcete vyzkoušet kroky v tomto kurzu, nedoporučujeme použití produkční prostředí.
-
-
-Pokud chcete vyzkoušet kroky v tomto kurzu, postupujte podle těchto doporučení:
-
-- Produkčním prostředí byste neměli používat, pokud to není nutné.
-- Pokud nemáte prostředí zkušební verzi Azure AD, můžete získat měsíční zkušební [tady](https://azure.microsoft.com/pricing/free-trial/).
-
+* Předplatné služby Azure AD. Pokud nemáte prostředí Azure AD, můžete získat [bezplatný účet](https://azure.microsoft.com/free/)
+* FirmPlay - Advocacy zaměstnance pro nábor jednotného přihlašování povolená předplatného
 
 ## <a name="scenario-description"></a>Popis scénáře
-V tomto kurzu je otestovat Azure AD jednotné přihlašování v testovacím prostředí. Scénář popsaný v tomto kurzu se skládá ze dvou hlavních stavebních bloků:
 
-1. Přidání FirmPlay - Advocacy zaměstnance pro nábor z Galerie
-1. Konfigurace a testování Azure AD jednotného přihlašování
+V tomto kurzu konfigurace a testování v testovacím prostředí Azure AD jednotného přihlašování.
 
+* Podporuje Advocacy zaměstnance pro nábor FirmPlay - **SP** jednotné přihlašování zahájené pomocí
 
 ## <a name="adding-firmplay---employee-advocacy-for-recruiting-from-the-gallery"></a>Přidání FirmPlay - Advocacy zaměstnance pro nábor z Galerie
+
 Ke konfiguraci integrace FirmPlay - Advocacy zaměstnance pro nábor do služby Azure AD, budete muset přidat FirmPlay - Advocacy zaměstnance pro nábor z Galerie na váš seznam spravovaných aplikací SaaS.
 
 **Chcete-li přidat FirmPlay - Advocacy zaměstnance pro nábor z galerie, postupujte následovně:**
 
-1. V  **[portálu pro správu Azure](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu. 
+1. V **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
 
-    ![Active Directory][1]
+    ![Tlačítko Azure Active Directory](common/select-azuread.png)
 
-1. Přejděte do **podnikové aplikace**. Pak přejděte na **všechny aplikace**.
+2. Přejděte do **podnikové aplikace** a pak vyberte **všechny aplikace** možnost.
 
-    ![Aplikace][2]
-    
-1. Klikněte na tlačítko **přidat** tlačítko v horní části dialogového okna.
+    ![V okně podnikové aplikace](common/enterprise-applications.png)
 
-    ![Aplikace][3]
+3. Chcete-li přidat novou aplikaci, klikněte na tlačítko **novou aplikaci** tlačítko v horní části dialogového okna.
 
-1. Do vyhledávacího pole zadejte **FirmPlay - Advocacy zaměstnance pro nábor**.
+    ![Tlačítko nové aplikace](common/add-new-app.png)
 
-    ![Vytváří se testovací uživatele služby Azure AD](./media/firmplay-tutorial/tutorial_firmplay_001.png)
+4. Do vyhledávacího pole zadejte **FirmPlay - Advocacy zaměstnance pro nábor**vyberte **FirmPlay - Advocacy zaměstnance pro nábor** z panelu výsledků klikněte **přidat** tlačítko přidáte aplikaci.
 
-1. Na panelu výsledků vyberte **FirmPlay - Advocacy zaměstnance pro nábor**a potom klikněte na tlačítko **přidat** tlačítko pro přidání aplikace.
+     ![FirmPlay - Advocacy zaměstnance pro nábor v seznamu výsledků](common/search-new-app.png)
 
-    ![Vytváří se testovací uživatele služby Azure AD](./media/firmplay-tutorial/tutorial_firmplay_0001.png)
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a otestování služby Azure AD jednotného přihlašování
 
-
-##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Konfigurace a testování Azure AD jednotného přihlašování
-V této části nakonfigurovat a otestovat Azure AD jednotné přihlašování s FirmPlay - Advocacy zaměstnance pro nábor podle testovacího uživatele nazývá "Britta Simon".
-
-Pro jednotné přihlašování pro práci služba Azure AD potřebuje vědět, co protějšek uživatel v FirmPlay – Advocacy zaměstnance pro nábor je pro uživatele ve službě Azure AD. Jinými slovy vztah odkazu mezi uživatele služby Azure AD a související uživatelské v FirmPlay - Advocacy zaměstnance pro nábor potřeba navázat.
-
-Tento odkaz vztah navázaný přiřazením hodnoty **uživatelské jméno** ve službě Azure AD jako hodnotu **uživatelské jméno** v FirmPlay - Advocacy zaměstnance pro nábor.
+V této části, nakonfigurovat a otestovat Azure AD jednotné přihlašování s FirmPlay – Advocacy zaměstnance pro nábor podle testovacího uživatele volá **Britta Simon**.
+Pro jednotné přihlašování k práci, vztah odkazu mezi uživatele služby Azure AD a související uživatelské v FirmPlay - Advocacy zaměstnance pro nábor potřeba navázat.
 
 Nakonfigurovat a otestovat Azure AD jednotné přihlašování s FirmPlay - Advocacy zaměstnance pro nábor, které potřebujete k dokončení následujících stavebních bloků:
 
-1. **[Konfigurace Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)**  – Pokud chcete, aby uživatelé mohli tuto funkci používat.
-1. **[Vytváří se testovací uživatele služby Azure AD](#creating-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
-1. **[Vytváření FirmPlay - Advocacy zaměstnance pro testovacího uživatele nábor](#creating-a-firmplay---employee-advocacy-for-recruiting-test-user)**  – Pokud chcete mít protějšek Britta Simon FirmPlay: Zaměstnanec Advocacy pro přijetí, který je propojený s Azure AD reprezentace jí.
-1. **[Přiřazení testovacího uživatele Azure AD](#assigning-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotného přihlašování.
-1. **[Testování Single Sign-On](#testing-single-sign-on)**  – Pokud chcete ověřit, jestli funguje v konfiguraci.
+1. **[Konfigurovat Azure AD Single Sign-On](#configure-azure-ad-single-sign-on)**  – Pokud chcete, aby uživatelé mohli tuto funkci používat.
+2. **[Konfigurace FirmPlay - Advocacy zaměstnance pro přijetí Single Sign-On](#configure-firmplay---employee-advocacy-for-recruiting-single-sign-on)**  – ke konfiguraci nastavení jednotného přihlašování na straně aplikace.
+3. **[Vytvořit testovacího uživatele Azure AD](#create-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
+4. **[Přiřadit uživatele Azure AD](#assign-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotného přihlašování.
+5. **[Vytvoření FirmPlay - Advocacy zaměstnance pro testovacího uživatele nábor](#create-firmplay---employee-advocacy-for-recruiting-test-user)**  – aby protějšek Britta Simon v FirmPlay – Advocacy zaměstnance pro přijímání, která souvisí s Azure AD reprezentace uživatele.
+6. **[Otestovat jednotné přihlašování](#test-single-sign-on)**  – Pokud chcete ověřit, jestli funguje v konfiguraci.
 
-### <a name="configuring-azure-ad-single-sign-on"></a>Konfigurace služby Azure AD jednotného přihlašování
+### <a name="configure-azure-ad-single-sign-on"></a>Konfigurace služby Azure AD jednotného přihlašování
 
-V této části Povolení služby Azure AD jednotného přihlašování na portálu Azure Management portal a konfigurace jednotného přihlašování ve vašich FirmPlay - zaměstnance Advocacy nábor aplikace.
+V této části můžete povolit Azure AD jednotného přihlašování na portálu Azure portal.
 
-**Ke konfiguraci Azure AD jednotné přihlašování s FirmPlay - Advocacy zaměstnance pro nábor, proveďte následující kroky:**
+Ke konfiguraci Azure AD jednotné přihlašování s FirmPlay - Advocacy zaměstnance pro nábor, proveďte následující kroky:
 
-1. V portálu pro správu Azure na **FirmPlay - Advocacy zaměstnance pro nábor** integrace stránka aplikace, klikněte na tlačítko **jednotného přihlašování**.
+1. V [webu Azure portal](https://portal.azure.com/)na **FirmPlay - Advocacy zaměstnance pro nábor** integrace stránce aplikace vyberte **jednotného přihlašování**.
 
-    ![Konfigurace jednotného přihlašování][4]
+    ![Nakonfigurovat jednotné přihlašování – odkaz](common/select-sso.png)
 
-1. Na **jednotného přihlašování** dialogového okna, jako **režimu** vyberte **přihlašování na základě SAML** chcete povolit jednotné přihlašování.
- 
-    ![Konfigurace jednotného přihlašování](./media/firmplay-tutorial/tutorial_firmplay_01.png)
+2. Na **vybrat jedinou metodu přihlašování** dialogového okna, vyberte **SAML/WS-Fed** chcete povolit jednotné přihlašování.
 
-1. Na **FirmPlay - Advocacy zaměstnanci, přijetí domény a adresy URL** sekci **přihlašovací adresa URL** textového pole zadejte adresu URL pomocí následujícímu vzoru: `https://<your-subdomain>.firmplay.com/`
+    ![Jednotné přihlašování režim výběru](common/select-saml-option.png)
 
-    ![Konfigurace jednotného přihlašování](./media/firmplay-tutorial/tutorial_firmplay_02.png)
+3. Na **nastavte si jednotné přihlašování pomocí SAML** klikněte na **upravit** ikony otevřete **základní konfiguraci SAML** dialogového okna.
 
-    > [!NOTE] 
-    > Všimněte si, že to není skutečné hodnoty. Budete muset aktualizovat tuto hodnotu skutečné přihlašovací adresa URL. Kontakt [FirmPlay - Advocacy zaměstnance pro tým podpory nábor](mailto:engineering@firmplay.com) tuto výhodu získáte. 
+    ![Upravit konfiguraci základní SAML](common/edit-urls.png)
 
-1. Na **podpisový certifikát SAML** klikněte na tlačítko **vytvořit nový certifikát**.
+4. Na **základní konfiguraci SAML** části, proveďte následující kroky:
 
-    ![Konfigurace jednotného přihlašování](./media/firmplay-tutorial/tutorial_firmplay_03.png)     
+    ![FirmPlay - Advocacy zaměstnanci, přijetí domény a adresy URL jednotné přihlašování – informace](common/sp-signonurl.png)
 
-1. Na **vytvořit nový certifikát** dialogového okna, klikněte na ikonu kalendáře a vyberte **datum vypršení platnosti**. Pak klikněte na tlačítko **Uložit** tlačítko.
+    V **přihlašovací adresa URL** textové pole, zadejte adresu URL, pomocí následujícího vzorce:  `https://<your-subdomain>.firmplay.com/`
 
-    ![Konfigurace jednotného přihlašování](./media/firmplay-tutorial/tutorial_general_300.png)
+    > [!NOTE]
+    > Hodnota není skutečný. Aktualizujte příslušnou hodnotu skutečné přihlašovací adresa URL. Kontakt [FirmPlay - Advocacy zaměstnance pro tým podpory náboru klienta](mailto:engineering@firmplay.com) má být získána hodnota. Můžete také odkazovat na tyto vzory se dají ukazuje **základní konfiguraci SAML** části webu Azure Portal.
 
-1. Na **podpisový certifikát SAML** vyberte **nastavit nový certifikát jako aktivní** a klikněte na tlačítko **Uložit** tlačítko.
+5. Na **nastavte si jednotné přihlašování pomocí SAML** stránku, **podpisový certifikát SAML** klikněte na tlačítko **Stáhnout** ke stažení **certifikát (Base64)** z se zadanými možnostmi podle vašich požadavků a uložit je ve vašem počítači.
 
-    ![Konfigurace jednotného přihlašování](./media/firmplay-tutorial/tutorial_firmplay_04.png)
+    ![Odkaz ke stažení certifikátu](common/certificatebase64.png)
 
-1. V místní nabídce **certifikát výměny** okna, klikněte na tlačítko **OK**.
+6. Na **nastavení FirmPlay - Advocacy zaměstnance pro nábor** tématu, zkopírujte příslušné adresy URL podle vašich požadavků.
 
-    ![Konfigurace jednotného přihlašování](./media/firmplay-tutorial/tutorial_general_400.png)
+    ![Zkopírování adresy URL konfigurace](common/copy-configuration-urls.png)
 
-1. Na **podpisový certifikát SAML** klikněte na tlačítko **certifikát (base64)** a uložte soubor certifikátu v počítači. 
+    a. Přihlašovací adresa URL
 
-    ![Konfigurace jednotného přihlašování](./media/firmplay-tutorial/tutorial_firmplay_05.png) 
+    b. Identifikátor Azure AD
 
-1. Na **FirmPlay - Advocacy zaměstnance pro přijetí konfigurace** klikněte na tlačítko **konfigurace FirmPlay - Advocacy zaměstnance pro nábor** otevřete **nakonfigurovat přihlašování** Dialogové okno.
+    c. Adresa URL – odhlášení
 
-    ![Konfigurace jednotného přihlašování](./media/firmplay-tutorial/tutorial_firmplay_06.png) 
+### <a name="configure-firmplay---employee-advocacy-for-recruiting-single-sign-on"></a>Konfigurace FirmPlay - Advocacy zaměstnance pro přijetí jednotného přihlašování
 
-    ![Konfigurace jednotného přihlašování](./media/firmplay-tutorial/tutorial_firmplay_07.png)
+Ke konfiguraci jednotného přihlašování na **FirmPlay - Advocacy zaměstnance pro nábor** straně, je nutné odeslat na stažený **certifikát (Base64)** a odpovídající zkopírován adresy URL z webu Azure portal [ FirmPlay - Advocacy zaměstnance pro tým podpory nábor](mailto:engineering@firmplay.com). Nastavují tohoto nastavení můžete mít správně nastavené na obou stranách připojení SAML SSO.
 
-1. Pokud chcete získat jednotné přihlašování nakonfigurované pro vaši aplikaci, kontaktujte [FirmPlay - Advocacy zaměstnance pro tým podpory nábor](mailto:engineering@firmplay.com) a poskytnout následující: 
+### <a name="create-an-azure-ad-test-user"></a>Vytvořit testovacího uživatele Azure AD 
 
-    • Na stažený **soubor certifikátu**
+Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal volá Britta Simon.
 
-    • **Adresu URL služby jednotného přihlašování SAML**
+1. Na webu Azure Portal, v levém podokně vyberte **Azure Active Directory**vyberte **uživatelé**a pak vyberte **všichni uživatelé**.
 
-    • **SAML Entity ID**
+    !["Uživatele a skupiny" a "Všechny uživatele" odkazy](common/users.png)
 
-    • **Adresa URL pro odhlášení**
+2. Vyberte **nového uživatele** v horní části obrazovky.
+
+    ![Tlačítko Nový uživatel](common/new-user.png)
+
+3. Ve vlastnosti uživatele proveďte následující kroky.
+
+    ![Dialogové okno uživatele](common/user-properties.png)
+
+    a. V **název** zadat **BrittaSimon**.
   
+    b. V **uživatelské jméno** typ pole brittasimon@yourcompanydomain.extension. Například BrittaSimon@contoso.com.
 
-### <a name="creating-an-azure-ad-test-user"></a>Vytváří se testovací uživatele služby Azure AD
-Cílem této části je vytvoření zkušebního uživatele na portálu Azure Management portal volá Britta Simon.
+    c. Vyberte **zobrazit heslo** zaškrtněte políčko a zapište si hodnotu, která se zobrazí v poli heslo.
 
-![Vytvoření uživatele Azure AD][100]
+    d. Klikněte na možnost **Vytvořit**.
 
-**Chcete-li vytvořit testovacího uživatele ve službě Azure AD, postupujte následovně:**
+### <a name="assign-the-azure-ad-test-user"></a>Přiřadit uživatele Azure AD
 
-1. V **Azure Management portal**, v levém navigačním podokně klikněte na tlačítko **Azure Active Directory** ikonu.
+V této části je povolit Britta Simon používat jednotné přihlašování Azure díky udělení přístupu k FirmPlay - Advocacy zaměstnance pro nábor.
 
-    ![Vytváří se testovací uživatele služby Azure AD](./media/firmplay-tutorial/create_aaduser_01.png) 
+1. Na webu Azure Portal, vyberte **podnikové aplikace**vyberte **všechny aplikace**a pak vyberte **FirmPlay - Advocacy zaměstnance pro nábor**.
 
-1. Přejděte na **uživatelů a skupin** a klikněte na tlačítko **všichni uživatelé** zobrazíte seznam uživatelů.
-    
-    ![Vytváří se testovací uživatele služby Azure AD](./media/firmplay-tutorial/create_aaduser_02.png) 
+    ![Okno aplikace organizace](common/enterprise-applications.png)
 
-1. V horní části okna klikněte na tlačítko **přidat** otevřít **uživatele** dialogového okna.
- 
-    ![Vytváří se testovací uživatele služby Azure AD](./media/firmplay-tutorial/create_aaduser_03.png) 
+2. V seznamu aplikací vyberte **FirmPlay - Advocacy zaměstnance pro nábor**.
 
-1. Na **uživatele** dialogového okna stránky, proveďte následující kroky:
- 
-    ![Vytváří se testovací uživatele služby Azure AD](./media/firmplay-tutorial/create_aaduser_04.png) 
+    ![FirmPlay - zaměstnance Advocacy nábor odkazu v seznamu aplikací](common/all-applications.png)
 
-    a. V **název** textové pole, typ **BrittaSimon**.
+3. V nabídce na levé straně vyberte **uživatelů a skupin**.
 
-    b. V **uživatelské jméno** textové pole, typ **e-mailová adresa** z BrittaSimon.
+    ![Odkaz "Uživatele a skupiny"](common/users-groups-blade.png)
 
-    c. Vyberte **zobrazit heslo** a zapište si hodnotu **heslo**.
+4. Klikněte na tlačítko **přidat uživatele** tlačítko a pak vyberte **uživatelů a skupin** v **přidat přiřazení** dialogového okna.
 
-    d. Klikněte na možnost **Vytvořit**. 
+    ![Podokno Přidat přiřazení](common/add-assign-user.png)
 
+5. V **uživatelů a skupin** dialogové okno Vybrat **Britta Simon** v seznamu uživatelů, klikněte **vyberte** tlačítko v dolní části obrazovky.
 
+6. Pokud očekáváte libovolnou hodnotu role v kontrolní výraz SAML a potom v **vybrat roli** dialogové okno vybrat vhodnou roli pro uživatele ze seznamu, klikněte **vyberte** tlačítko v dolní části obrazovky.
 
-### <a name="creating-a-firmplay---employee-advocacy-for-recruiting-test-user"></a>Vytváření FirmPlay - Advocacy zaměstnance pro nábor testovacího uživatele
+7. V **přidat přiřazení** dialogové okno kliknutím **přiřadit** tlačítko.
 
-V této části vytvoříte uživatele v FirmPlay - Advocacy zaměstnance pro nábor jako Britta Simon. Spojte se prosím s [FirmPlay - Advocacy zaměstnance pro tým podpory nábor](mailto:engineering@firmplay.com) k přidání uživatelů do FirmPlay - Advocacy zaměstnance pro platformu nábor.
+### <a name="create-firmplay---employee-advocacy-for-recruiting-test-user"></a>Vytvoření FirmPlay - Advocacy zaměstnance pro nábor testovacího uživatele
 
+V této části vytvoříte uživatele v FirmPlay - Advocacy zaměstnance pro nábor jako Britta Simon. Práce s [FirmPlay - Advocacy zaměstnance pro tým podpory nábor](mailto:engineering@firmplay.com) k přidání uživatelů do FirmPlay - Advocacy zaměstnance pro nábor platformu. Uživatelé musí vytvořit a aktivovat, než použití jednotného přihlašování.
 
-### <a name="assigning-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
-
-V této části je povolit Britta Simon používat jednotné přihlašování Azure tím, že udělíte přístup k FirmPlay - Advocacy zaměstnance pro nábor.
-
-![Přiřadit uživatele][200] 
-
-**Přiřadit Britta Simon FirmPlay - Advocacy zaměstnance pro nábor, proveďte následující kroky:**
-
-1. Na portálu Azure Management portal, otevřete zobrazení aplikací a přejděte do zobrazení adresáře přejít na **podnikové aplikace** klikněte **všechny aplikace**.
-
-    ![Přiřadit uživatele][201] 
-
-1. V seznamu aplikací vyberte **FirmPlay - Advocacy zaměstnance pro nábor**.
-
-    ![Konfigurace jednotného přihlašování](./media/firmplay-tutorial/tutorial_firmplay_50.png) 
-
-1. V nabídce na levé straně klikněte na tlačítko **uživatelů a skupin**.
-
-    ![Přiřadit uživatele][202] 
-
-1. Klikněte na tlačítko **přidat** tlačítko. Potom vyberte **uživatelů a skupin** na **přidat přiřazení** dialogového okna.
-
-    ![Přiřadit uživatele][203]
-
-1. Na **uživatelů a skupin** dialogového okna, vyberte **Britta Simon** v seznamu uživatelů.
-
-1. Klikněte na tlačítko **vyberte** tlačítko **uživatelů a skupin** dialogového okna.
-
-1. Klikněte na tlačítko **přiřadit** tlačítko **přidat přiřazení** dialogového okna.
-    
-
-
-### <a name="testing-single-sign-on"></a>Testování jednotného přihlašování
+### <a name="test-single-sign-on"></a>Test jednotného přihlašování 
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 
-Po kliknutí na FirmPlay - Advocacy zaměstnance pro nábor dlaždici na přístupovém panelu, vám by měl získat automaticky přihlášení k vaší FirmPlay - zaměstnance Advocacy nábor aplikace.
+Po kliknutí na FirmPlay - Advocacy zaměstnance pro nábor dlaždici na přístupovém panelu, vám by měl být automaticky přihlášeni k FirmPlay - Advocacy zaměstnance pro nábor pro která můžete nastavit jednotné přihlašování. Další informace o přístupovém panelu, naleznete v tématu [Úvod k přístupovému panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
+## <a name="additional-resources"></a>Další prostředky
 
-## <a name="additional-resources"></a>Další materiály
+- [ Seznam kurzů o integraci aplikací SaaS pomocí Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-* [Seznam kurzů o integraci aplikací SaaS pomocí Azure Active Directory](tutorial-list.md)
-* [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)
+- [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
+- [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
-
-<!--Image references-->
-
-[1]: ./media/firmplay-tutorial/tutorial_general_01.png
-[2]: ./media/firmplay-tutorial/tutorial_general_02.png
-[3]: ./media/firmplay-tutorial/tutorial_general_03.png
-[4]: ./media/firmplay-tutorial/tutorial_general_04.png
-
-[100]: ./media/firmplay-tutorial/tutorial_general_100.png
-
-[200]: ./media/firmplay-tutorial/tutorial_general_200.png
-[201]: ./media/firmplay-tutorial/tutorial_general_201.png
-[202]: ./media/firmplay-tutorial/tutorial_general_202.png
-[203]: ./media/firmplay-tutorial/tutorial_general_203.png

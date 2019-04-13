@@ -1,21 +1,19 @@
 ---
 title: Přehled služby Azure Stream Analytics
 description: Přečtěte si o službě Stream Analytics, která umožňuje v reálném čase analyzovat data streamovaná z platformy Internet věcí (IOT).
-services: stream-analytics
 author: jseb225
 ms.author: jeanb
 ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: overview
-ms.workload: data-services
 ms.custom: seodec18
 ms.date: 12/07/2018
-ms.openlocfilehash: f0104bdc4b5ea5c5c6333e12b95defafb34665b3
-ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
+ms.openlocfilehash: 09f402f81700b53eb9e4a95e36545ef02850660a
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58295500"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59524476"
 ---
 # <a name="what-is-azure-stream-analytics"></a>Co je Azure Stream Analytics?
 
@@ -51,9 +49,9 @@ Služba Azure Stream Analytics byla navržena jako snadno použitelná, flexibil
 
 ## <a name="ease-of-getting-started"></a>Snadný začátek
 
-Začít používat Azure Stream Analytics je snadné. Připojit se k více zdrojům a jímkám a vytvořit kanál od začátku do konce zabere jenom několik kliknutí. Stream Analytics se může připojit k centrům [Azure Event Hubs](https://docs.microsoft.com/azure/event-hubs/) a [Azure IoT Hub](https://docs.microsoft.com/azure/iot-hub/) a ingestovat streamovaná data. Také se může připojit ke službě [Azure Blob Storage](https://docs.microsoft.com/azure/storage/storage-introduction) a ingestovat historická data. Může kombinovat data z center událostí s dalšími zdroji dat a moduly pro zpracování. Vstup úlohy může také zahrnovat referenční data, která jsou statická nebo pomalu se měnící, a vy můžete připojit streamovaná data k těmto referenčním datům a provádět operace vyhledávání.
+Začít používat Azure Stream Analytics je snadné. Připojit se k více zdrojům a jímkám a vytvořit kanál od začátku do konce zabere jenom několik kliknutí. Stream Analytics se může připojit k centrům [Azure Event Hubs](/azure/event-hubs/) a [Azure IoT Hub](/azure/iot-hub/) a ingestovat streamovaná data. Také se může připojit ke službě [Azure Blob Storage](/azure/storage/storage-introduction) a ingestovat historická data. Může kombinovat data z center událostí s dalšími zdroji dat a moduly pro zpracování. Vstup úlohy může také zahrnovat referenční data, která jsou statická nebo pomalu se měnící, a vy můžete připojit streamovaná data k těmto referenčním datům a provádět operace vyhledávání.
 
-Stream Analytics může směrovat výstup úlohy na mnoho úložných systémů, jako [Azure Blob](https://docs.microsoft.com/azure/storage/storage-introduction), [Azure SQL Database](https://docs.microsoft.com/azure/sql-database/), [Azure Data Lake Stores](https://docs.microsoft.com/azure/data-lake-store/) nebo [Azure Cosmos DB](https://docs.microsoft.com/azure/cosmos-db/introduction). Po uložení můžete spustit dávkovou analýzu pomocí Azure HDInsight nebo poslat výstup do jiné služby, jako jsou event hubs pro využití nebo na [Power BI](https://docs.microsoft.com/power-bi/) pro vizualizace v reálném čase pomocí streamovacího rozhraní API Power BI.
+Stream Analytics může směrovat výstup úlohy na mnoho úložných systémů, jako [Azure Blob](/azure/storage/storage-introduction), [Azure SQL Database](/azure/sql-database/), [Azure Data Lake Stores](/azure/data-lake-store/) nebo [Azure Cosmos DB](/azure/cosmos-db/introduction). Po uložení můžete spustit dávkovou analýzu pomocí Azure HDInsight nebo poslat výstup do jiné služby, jako jsou event hubs pro využití nebo na [Power BI](https://docs.microsoft.com/power-bi/) pro vizualizace v reálném čase pomocí streamovacího rozhraní API Power BI.
 
 ## <a name="programmer-productivity"></a>Produktivita programátorů
 
@@ -79,7 +77,8 @@ Stream Analytics je cloudová služba, takže je optimalizovaná z hlediska nák
 ## <a name="mission-critical-ready"></a>Klíčové připravené
 Azure Stream Analytics je dostupná v několika oblastech po celém světě a je navržen pro spouštění klíčových úloh, které podporuje požadavky na spolehlivost, zabezpečení a dodržování předpisů.
 ### <a name="reliability"></a>Spolehlivost
-Azure Stream Analytics zaručuje právě-po zpracování událostí a na alespoň jedno doručení událostí, takže události se nikdy ztratí. Přesně – jedno zpracování je zaručeno, že se vybrané výstupem jak je popsáno v [záruky doručení událostí](https://docs.microsoft.com/en-us/stream-analytics-query/event-delivery-guarantees-azure-stream-analytics). Azure Stream Analytics je vestavěným funkcím pro obnovení v případě se doručení události nezdaří. Stream Analytics také poskytuje integrované vytváření kontrolních bodů pro uchování stavu vašich úloh a poskytuje opakovatelné výsledky.
+Azure Stream Analytics zaručuje právě-po zpracování událostí a na alespoň jedno doručení událostí, takže události se nikdy ztratí. Přesně – jedno zpracování je zaručeno, že se vybrané výstupem jak je popsáno v [záruky doručení událostí](/stream-analytics-query/event-delivery-guarantees-azure-stream-analytics).
+Azure Stream Analytics je vestavěným funkcím pro obnovení v případě se doručení události nezdaří. Stream Analytics také poskytuje integrované vytváření kontrolních bodů pro uchování stavu vašich úloh a poskytuje opakovatelné výsledky.
 
 Stream Analytics je spravovaná služba, zaručuje zpracování událostí s 99,9 % dostupnost na úrovni minut. Další informace najdete v tématu [Stream Analytics SLA](https://azure.microsoft.com/support/legal/sla/stream-analytics/v1_0/) stránky pro další podrobnosti. 
 

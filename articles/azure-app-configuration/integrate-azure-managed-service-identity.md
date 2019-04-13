@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/24/2019
 ms.author: yegu
-ms.openlocfilehash: 6e161bcf2c38db0fd614eac1a211218785179ec3
-ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
+ms.openlocfilehash: c0d5c2903cc61841d2868d676194e7584da48635
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58620772"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59522414"
 ---
 # <a name="tutorial-integrate-with-azure-managed-identities"></a>Kurz: Integrace s Azure spravované identity
 
@@ -75,7 +75,7 @@ Nastavení spravovaných identit na portálu, nejprve vytvořte aplikaci jako za
 
 ## <a name="use-a-managed-identity"></a>Použití spravované identity
 
-1. Otevřít *appsettings.json*a přidejte následující skript. Nahraďte *< service_endpoint >*, včetně závorkách a s adresou URL k úložišti konfigurace aplikace:
+1. Otevřít *appsettings.json*a přidejte následující skript. Nahraďte  *\<service_endpoint >*, včetně závorkách a s adresou URL k úložišti konfigurace aplikace:
 
     ```json
     "AppConfig": {

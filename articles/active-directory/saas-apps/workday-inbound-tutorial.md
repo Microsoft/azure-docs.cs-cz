@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 01/19/2019
 ms.author: chmutali
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 73e5b081e85726a1fc78d92996846faa18ce616a
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: d34bd9d7f80f72b3c6c0821ad48e6be1fd260be9
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57897618"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59524629"
 ---
 # <a name="tutorial-configure-workday-for-automatic-user-provisioning"></a>Kurz: Konfigurace Workday pro automatické zřizování uživatelů
 
@@ -50,7 +50,7 @@ Workday uživatele pracovní postupy zřizování podporuje služby zřizování
 
 ### <a name="who-is-this-user-provisioning-solution-best-suited-for"></a>Kdo je tento uživatel zřizování řešení, které nejlépe vyhovuje?
 
-Tento uživatel Workday zřizování řešení je v současné době ve verzi public preview a je ideální pro:
+Tento uživatel Workday zřizování řešení je nejvhodnější pro:
 
 * Organizace, které chtějí předem připravené, cloudové řešení pro zřizování Workday uživatelů
 
@@ -460,7 +460,7 @@ V této části můžete nakonfigurovat uživatele tok dat z Workday do Active D
 
 2. V **obor zdrojového objektu** pole, můžete vybrat, které skupiny uživatelů ve Workday by měla být v oboru pro zřizování do služby AD, díky definování sady filtrů založený na atributu. Výchozí obor je "všichni uživatelé ve Workday". Příklad filtrů:
 
-   * Příklad: Obor pro uživatele s ID pracovních procesů mezi 1000000 a 2000000
+   * Příklad: Obor pro uživatele s ID pracovních procesů mezi 1000000 a 2000000 (s výjimkou 2000000)
 
       * Atribut: WorkerID
 
@@ -1165,7 +1165,7 @@ Tato část popisuje běžně zobrazené chyby zřizování uživatelů Workday 
 |--|---|---|---|
 |1.| Chyba při instalaci agentem zřizování s chybovou zprávou:  *Služby "Microsoft Agent Azure AD Connect zřizování" (AADConnectProvisioningAgent) se nepovedlo spustit. Ověřte, zda máte dostatečná oprávnění ke spuštění systému.* | Tato chyba obvykle zobrazí pokud se pokoušíte nainstalovat zřizování agenta v řadiči domény a zásad skupiny brání službě ve spuštění.  Také se dochází, pokud máte předchozí verzi agenta spuštěného a neodinstalovali před zahájením nové instalace.| Zřizování agenta nainstalujte na server – řadič domény. Ujistěte se, že jsou před instalací nového agenta odinstalovat předchozí verze agenta.|
 |2.| Služba Windows 'Microsoft Agent Azure AD Connect zřizování' je v *počáteční* stavu a přepnutí do *systémem* stavu. | Jako součást instalace agenta Průvodce vytvoří místní účet (**NT Service\\AADConnectProvisioningAgent**) na serveru a to je **přihlášení** účet použitý pro spuštění Služba. Pokud zásady zabezpečení na serveru Windows zabrání spuštění služby místním účtům, dojde k této chybě. | Otevřít *konzoly služby*. Klikněte pravým tlačítkem na službu Windows "Microsoft Agent Azure AD Connect zřizování" a na kartě přihlášení zadejte účet správce domény, na kterém běží služba. Restartujte službu. |
-|3.| Při konfiguraci zřizování agenta v doméně AD v kroku *připojení služby Active Directory*, Průvodce trvá dlouhou dobu pokusu o načtení schématu AD a časem i vypršení časového. | Tato chyba obvykle zobrazí-li průvodce není schopen obraťte se na serveru řadiče domény služby AD kvůli problémům s bránou firewall. | Na *připojení služby Active Directory* obrazovce Průvodce při zadávání přihlašovacích údajů pro vaši doménu AD, je možné volat *vyberte prioritu řadič domény*. Tuto možnost použijte k výběru řadiče domény, který je ve stejné lokalitě jako agent serveru a ujistěte se, že neexistují žádná pravidla firewallu neblokují komunikaci. |
+|3.| Při konfiguraci zřizování agenta v doméně AD v kroku *připojení služby Active Directory*, Průvodce trvá dlouhou dobu pokusu o načtení schématu AD a časem i vypršení časového. | K této chybě obvykle dojde v případě, že se průvodce kvůli problémům s bránou firewall nemůže spojit se serverem řadiče domény AD. | Na *připojení služby Active Directory* obrazovce Průvodce při zadávání přihlašovacích údajů pro vaši doménu AD, je možné volat *vyberte prioritu řadič domény*. Tuto možnost použijte k výběru řadiče domény, který je ve stejné lokalitě jako agent serveru a ujistěte se, že neexistují žádná pravidla firewallu neblokují komunikaci. |
 
 #### <a name="connectivity-errors"></a>Chyby připojení
 
@@ -1174,14 +1174,14 @@ Pokud zřizovací služba se nemůže připojit k Workday nebo Active Directory,
 |#|Chyba scénář |Možných příčin|Doporučené řešení|
 |--|---|---|---|
 |1.| Po kliknutí na **Test připojení**, zobrazí se chybová zpráva: *Došlo k chybě připojení k službě Active Directory. Ujistěte se prosím, že je spuštěn Agent zřizování v místním a má nakonfigurovanou správnou doménu služby Active Directory.* | Tato chyba obvykle zobrazí if zřizování agenta není spuštěný nebo je brána firewall blokuje komunikaci mezi službami Azure AD a agentem zřizování. Může také uvidíte tuto chybu, pokud doména není nakonfigurována v Průvodci agenta. | Otevřít *služby* konzolu na serveru Windows k potvrzení, že je agent spuštěn. Otevřete Průvodce zřizování agenta a potvrďte, že je správné domény zaregistrovaný s agentem.  |
-|2.| Zřizování úloha přejde do stavu karantény přes víkendy (pracovní dny po ne) a dostaneme e-mailové oznámení, že dojde k chybě se synchronizací. | Jednou z běžných příčin této chyby je plánované výpadky Workday. Pokud používáte klienta Workday implementace, mějte prosím na paměti, že Workday je naplánováno časové prodlevy pro jeho implementaci tenanty prostřednictvím víkendy (obvykle z pátku soboty) a během tohoto období Workday zřizování aplikací můžou směřovat do umístit do karantény stavu, protože není možné se připojit k Workday. Získá zpět do normálního stavu po implementaci klienta Workday je zpátky do online režimu. Ve výjimečných případech může také uvidíte tuto chybu, pokud heslo uživatele systému integrace změněna z důvodu aktualizace tenanta nebo pokud obsahuje příslušný účet uzamčen nebo vypršení platnosti stavu. | Obraťte se na svého partnera Workday správce nebo integrace zobrazíte, když Workday naplánuje výpadek oznámení ignorovat během doby výpadku a zkontrolujte dostupnost po Workday instance je zpátky do online režimu.  |
+|2.| Zřizování úloha přejde do stavu karantény přes víkendy (pracovní dny po ne) a dostaneme e-mailové oznámení, že dojde k chybě se synchronizací. | Jednou z běžných příčin této chyby je plánovaná údržba aplikace Workday. Pokud používáte tenanta implementace Workday, mějte na paměti, že Workday má naplánované výpadky tenantů implementace na víkendy (obvykle od pátečního večera do sobotního rána) a během této doby můžou aplikace zřizování Workday přejít do stavu karantény, protože se k Workday nemůžou připojit. Jakmile bude tenant implementace Workday opět online, vrátí se zpět do normálního stavu. Ve výjimečných případech k této chybě může dojít také v případě, že se kvůli aktualizaci tenanta změní heslo uživatele systému integrace nebo pokud dojde k uzamčení nebo vypršení platnosti účtu. | Zjistěte od svého správce Workday nebo partnera pro integraci období plánovaných výpadků Workday, abyste během výpadků mohli ignorovat upozornění a zkontrolovat dostupnost, jakmile bude instance Workday opět online.  |
 
 
 #### <a name="ad-user-account-creation-errors"></a>Chyby při vytváření účtu uživatele AD
 
 |#|Chyba scénář |Možných příčin|Doporučené řešení|
 |--|---|---|---|
-|1.| Export selhání operace v protokolu auditu se zprávou *Chyba: OperationsError SvcErr: Došlo k chybě operace. Žádný odkaz na dokonalá není nakonfigurovaná adresářové služby. Adresářová služba je proto nelze vydat odkazy na objekty mimo tato doménová struktura.* | Tato chyba se obvykle zobrazí if *kontejner služby Active Directory* organizační jednotce není správně nastavena nebo pokud dojde k problémům s mapování výraz používá pro *parentDistinguishedName*. | Zkontrolujte *kontejner služby Active Directory* parametr organizační jednotku pro překlepy. Pokud používáte *parentDistinguishedName* v mapování atributů Ujistěte se, že se vždycky vyhodnotí jako známé kontejner v rámci domény AD. Zkontrolujte, *exportovat* protokoly událostí auditu zobrazíte vygenerovanou hodnotu. |
+|1.| Export selhání operace v protokolu auditu se zprávou *Chyba: OperationsError-SvcErr: Došlo k chybě operace. Pro adresářovou službu není nakonfigurovaný žádný nadřazený odkaz. Adresářová služba je proto nelze vydat odkazy na objekty mimo tato doménová struktura.* | Tato chyba se obvykle zobrazí if *kontejner služby Active Directory* organizační jednotce není správně nastavena nebo pokud dojde k problémům s mapování výraz používá pro *parentDistinguishedName*. | Zkontrolujte *kontejner služby Active Directory* parametr organizační jednotku pro překlepy. Pokud v mapování atributů používáte *parentDistinguishedName*, ujistěte se, že se vždy vyhodnotí jako známý kontejner v rámci domény AD. Zkontrolujte, *exportovat* protokoly událostí auditu zobrazíte vygenerovanou hodnotu. |
 |2.| Exportujte selhání operace v protokolu auditu s kódem chyby: *SystemForCrossDomainIdentityManagementBadResponse* a zpráva *Chyba: ConstraintViolation-AtrErr: Hodnota v požadavku není platná. Hodnota pro atribut nebyl v přípustném rozsahu hodnot. Podrobnosti o \nError: CONSTRAINT_ATT_TYPE - společnosti*. | Zatímco tato chyba je specifické pro *společnosti* atributu, se zobrazí tato chyba dalších vlastností, jako je *CN* také. Tato chyba se zobrazí z důvodu omezení schématu vynucená AD. Ve výchozím nastavení, jako jsou atributy *společnosti* a *CN* ve službě AD mají maximální limit 64 znaků. Pokud je hodnota pocházející z Workday víc než 64 znaků, se zobrazí tato chybová zpráva. | Zkontrolujte *exportovat* události z protokolů auditu a zobrazit tak hodnotu pro atribut hlášené v chybové zprávě. Vezměte v úvahu zkracování hodnoty pocházejí z Workday pomocí [Mid](../manage-apps/functions-for-customizing-application-data.md#mid) funkce nebo změnit mapování na atribut AD, který nemá podobné omezení délky.  |
 
 #### <a name="ad-user-account-update-errors"></a>Chyby aktualizace účtu uživatele AD

@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 03/05/2019
+ms.date: 04/01/2019
 ms.author: diberry
-ms.openlocfilehash: 42ac75b6ed0d4489ccae014b9cfe3b08269c1218
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 2a160ab7447304dc6eb14f76a723df4e8a4d9f46
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57547414"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59523099"
 ---
 # <a name="patterns-improve-prediction-accuracy"></a>Vzory zvyšte přesnost předpovědi
 Vzory jsou navržené pro zlepšení přesnosti, když několik projevy jsou velmi podobné.  Vzor umožňuje získat vyšší přesnost pro záměru bez zadání projevy mnoho více. 
@@ -31,7 +31,7 @@ Vezměte v úvahu aplikaci lidských zdrojů, která generuje sestavy v organiza
 |Kdo je na Tom podřízený?|GetOrgChart|.30|
 |Kdo je podřízenou položkou tohoto Tom?|GetOrgChart|.30|
 
-Pokud aplikace má mezi 10 a 20 projevy pomocí různých délek věty, jiné pořadí slov a dokonce během různých slova (synonymům těchto "podřízený", "manage", "zpráva"), může vrátit LUIS nízká pravděpodobnost. Společně tvoří masku usnadňují pochopení důležitosti slovosled, LUIS. 
+Pokud aplikace má mezi 10 a 20 projevy pomocí různých délek věty, jiné pořadí slov a dokonce během různých slova (synonymům těchto "podřízený", "manage", "zpráva"), může vrátit LUIS nízká pravděpodobnost. Společně tvoří masku umožňující LUIS pochopení důležitosti pořadí slov. 
 
 Způsoby řešení těchto situacích: 
 
@@ -41,7 +41,7 @@ Způsoby řešení těchto situacích:
 ## <a name="patterns-are-not-a-guarantee-of-intent"></a>Vzory nejsou zárukou záměr
 Vzory pomocí kombinace technologií předpovědi. Nastavení pro šablony utterance záměru ve vzorku není zárukou záměru předpovědí, ale je silný signál. 
 
-<a name="patterns-do-not-improve-entity-detection"/>
+<a name="patterns-do-not-improve-entity-detection"/></a>
 
 ## <a name="patterns-do-not-improve-machine-learned-entity-detection"></a>Vzory nevedou k lepšímu zjišťování počítače zjistili entity
 
@@ -50,7 +50,7 @@ Vzor je primárně určený účelem předpovědi záměry a rolí. Pattern.any 
 Nečekejte zobrazíte predikcí vylepšené entity při sbalení více projevy do jednoho modelu. Pro jednoduché entity má provést, budete muset přidání projevů nebo použijte jiný seznam entit vzorku neaktivují.
 
 ## <a name="patterns-use-entity-roles"></a>Vzory použít entitu role
-Pokud souvisí kontextově dva nebo více entit ve vzorku, použijte vzory entity [role](luis-concept-roles.md) extrahovat kontextové informace o entitách. To je ekvivalentní na podřízené položky v hierarchické entity, ale je **pouze** k dispozici ve vzorcích. 
+Pokud souvisí kontextově dva nebo více entit ve vzorku, použijte vzory entity [role](luis-concept-roles.md) extrahovat kontextové informace o entitách.  
 
 ## <a name="prediction-scores-with-and-without-patterns"></a>Predikce skóre a bez nich vzory
 Zadaný dostatek příklad projevy, LUIS bylo by možné zvýšit důvěru předpovědi vzorů. Vzory zvýšení skóre spolehlivosti aniž by musel zadávat tolik projevy.  
@@ -83,7 +83,7 @@ Vzor syntaxe podporuje následující syntaxi:
 |je nový formulář|odpovídá vnější volitelné aplikace word a povinný slova ve vzoru|
 |nový formulář|odpovídá vyžaduje pouze slova|
 
-**Seskupení** syntaxi se závorkami, mohou být vnořené dvě úrovně. Například: `(({Entity1.RoleName1} | {Entity1.RoleName2} ) | {Entity2} )`. To umožňuje libovolné tři entity lze porovnat. 
+**Seskupení** syntaxi se závorkami, mohou být vnořené dvě úrovně. Například: `(({Entity1.RoleName1} | {Entity1.RoleName2} ) | {Entity2} )`. Tato funkce umožňuje všechny tři entity lze porovnat. 
 
 Pokud Entity1 se umístění s rolemi, jako je například původ (Praha) a cíl (Cairo) a Entity 2 je název známé sestavení ze seznamu entity (RedWest-C), by následující projevy mapování pro tento model:
 
@@ -170,7 +170,7 @@ Označit volitelný text, který v utterance pomocí syntaxe regulárních výra
 |Vzor s volitelným textem|Význam|
 |--|--|
 |`[find] email about {subject} [from {person}]`|`find` a `from {person}` jsou volitelné|
-|' Je mi může pomoci [?]|Je volitelný interpunkčního znaménka.|
+|' Je mi může pomoci [?] | Je volitelný interpunkčního znaménka.|
 
 Interpunkční znaménka (`?`, `!`, `.`) ignorovat a je potřeba je pomocí syntaxe hranatá závorka ve vzorech ignorovat. 
 

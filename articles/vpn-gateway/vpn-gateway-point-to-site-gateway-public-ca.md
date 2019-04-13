@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 03/12/2019
 ms.author: cherylmc
-ms.openlocfilehash: 24956dd51ef4c2544ce28005fa3bff31113e5959
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 29f2aeee53e07adfeafb8017c489c0b830f24b36
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57848920"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59521590"
 ---
 # <a name="transition-to-a-public-ca-gateway-certificate-for-p2s"></a>Přechod na certifikát veřejné brány CA pro P2S
 
@@ -56,7 +56,7 @@ Touto změnou jsou ovlivněny pouze starší brány. Pokud váš certifikát br�
 
 ### <a name="classic"></a>Classic
 
-1. Na klientském počítači, přejděte na cestu %appdata%/Microsoft/Network/Connections/Cm/<gatewayID>. Ve složce ID brány můžete zobrazit certifikát.
+1. Na klientském počítači přejděte do umístění `%appdata%/Microsoft/Network/Connections/Cm/<gatewayID>`. Ve složce ID brány můžete zobrazit certifikát.
 2. Na kartě Obecné pro certifikát ověřte, že vystavující autorita "DigiCert globální kořenové certifikační Autority". Pokud máte nic jiného než vystavující autorita, váš certifikát brány je v rámci aktualizace a se převedou.
 
 ## <a name="2-check-certificate-transition-schedule"></a>2. Ověření plánu přechodu certifikátu

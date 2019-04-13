@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 03/25/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 609e774c36ab685d017f311a74c8680dbb9750c9
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: d4361fc37d01b351d20a273aa39f558e9b00faa4
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59283014"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59525921"
 ---
 # <a name="planning-for-an-azure-files-deployment"></a>Plánování nasazení služby Soubory Azure
 
@@ -109,9 +109,9 @@ Všechny sdílené složky můžete převést do alespoň 100 vstupně-výstupn�
 >
 > Burst Limit = 3 * Baseline IOPS. (Až max. 100 000 IOPS).
 >
-> frekvence odchozího přenosu dat = 60 MiB/s + 0.06 zřízené GiB (až 6 GB/s)
+> frekvence odchozího přenosu dat = 60 MiB/s + 0,06 * zřízené GiB
 >
-> rychlost příchozího přenosu dat = 40 MiB/s + 0,04 zřízené GiB (až 4 GB)
+> rychlost příchozího přenosu dat = 40 MiB/s + 0,04 * zřízené GiB
 
 Velikost sdílené složky je možné kdykoli zvýšit na jakýkoli čas a snížit, ale lze snížit každých 24 hodin od poslední zvýšení. IOPS a propustnosti škálování změny bude platit do 24 hodin po provedení změny velikosti.
 
@@ -128,9 +128,9 @@ Následující tabulka ukazuje několik příkladů tyto vzorce pro velikosti z�
 |10,240 *     | 10,240  | 30 až 720  | 675 | 450   |
 |33,792 *     | 33,792  | Až 100 000 | 2,088 | 1,392   |
 |51,200 *     | 51,200  | Až 100 000 | 3,132 | 2,088   |
-|100,000 *    | 100 000 | Až 100 000 | 6,204 | 4,136   |
+|102,400 *    | 100 000 | Až 100 000 | 6,204 | 4,136   |
 
-V současné době velikosti sdílené složky souborů maximálně 5 TiB jsou ve verzi public preview, zatímco o velikosti až 102 TiB v omezené veřejné verzi preview požádat o přístup k omezené veřejné verzi preview kompletní [tento průzkum.](https://aka.ms/azurefilesatscalesurvey)
+V současné době velikosti sdílené složky souborů maximálně 5 TiB jsou ve verzi public preview, zatímco o velikosti až 100 TB v omezené veřejné verzi preview požádat o přístup k omezené veřejné verzi preview kompletní [tento průzkum.](https://aka.ms/azurefilesatscalesurvey)
 
 ### <a name="bursting"></a>Shlukování
 

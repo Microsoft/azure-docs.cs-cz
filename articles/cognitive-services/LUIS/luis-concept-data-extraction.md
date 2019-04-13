@@ -1,7 +1,7 @@
 ---
 title: Extrakce dat
 titleSuffix: Language Understanding - Azure Cognitive Services
-description: Zjistěte, jaká data může být extrahována z Language Understanding (LUIS)
+description: Extrahujte data z textu utterance s záměry a entity. Zjistěte, jaká data může být extrahována z Language Understanding (LUIS).
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -9,16 +9,16 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 01/09/2019
+ms.date: 04/01/2019
 ms.author: diberry
-ms.openlocfilehash: 76f8fed8d185598d62eef5a412fda2c3fd1317bd
-ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
+ms.openlocfilehash: 35f1521884de3a4a0971b6e1c00f92a9094a8550
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58893975"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59526285"
 ---
-# <a name="data-extraction-from-intents-and-entities"></a>Extrakce dat z záměry a entity
+# <a name="extract-data-from-utterance-text-with-intents-and-entities"></a>Extrahovat data z textu utterance s záměry a entity
 Služba LUIS umožňuje získat informace z projevy přirozeného jazyka uživatele. Informace je extrahován tak, že jej lze použít program, aplikace nebo chatovací robot k akci. V následující částech se dozvíte, jaká data jsou vrácena z záměry a entity s příklady JSON.
 
 Nejtěžší data k extrakci jsou data zjištěné počítače, protože není přesný text v případě shody. Extrakce dat z počítače zjistili [entity](luis-concept-entity-types.md) musí být součástí [vytváření cyklu](luis-concept-app-iteration.md) dokud nejste jisti, můžete přijímat data očekáváte, že.
@@ -170,9 +170,11 @@ Data vrácená z koncového bodu obsahuje název entity, zjištěný text z utte
 
 |Datový objekt|Název entity|Hodnota|
 |--|--|--|
-|Jednoduché Entity|"Zákazník"|"bob jones"|
+|Jednoduché Entity|`Customer`|`bob jones`|
 
 ## <a name="hierarchical-entity-data"></a>Data hierarchická entity
+
+**Nakonec se přestanou hierarchické entity. Použití [entity role](luis-concept-roles.md) určit podtypy entity, namísto hierarchické entity.**
 
 [Hierarchické](luis-concept-entity-types.md) entity jsou zjištěné počítače a může obsahovat slova nebo fráze. Podřízené položky se identifikují podle kontextu. Pokud hledáte vztahu nadřazený podřízený se shodou přesný text, použití [seznamu](#list-entity-data) entity.
 
@@ -432,13 +434,18 @@ Získávání názvů z utterance je obtížné, protože název může být té
 [PersonName](luis-reference-prebuilt-person.md) a [GeographyV2](luis-reference-prebuilt-geographyV2.md) entity jsou dostupné v některých [jazykových verzí jazyka](luis-reference-prebuilt-entities.md). 
 
 ### <a name="names-of-people"></a>Jména osob
-Název lidí může mít některé mírné formátu v závislosti na jazyk a jazykovou verzi. Použít hierarchická entity s jména a příjmení jako podřízené položky nebo jednoduché entity s rolemi křestní jméno a příjmení. Ujistěte se, že poskytnout příklady, které používají název první a poslední v různých částech utterance, v různých délek projevy a projevy přes všechny záměry včetně žádný záměru. [Kontrola](luis-how-to-review-endpoint-utterances.md) projevy koncový bod v pravidelných intervalech, aby všechny názvy, které nebyly správně předpovědět popisků.
+
+Název lidí může mít některé mírné formátu v závislosti na jazyk a jazykovou verzi. Použít buď využitím předem připravených **[personName](luis-reference-prebuilt-person.md)** entity nebo **[jednoduchou entitu](luis-concept-entity-types.md#simple-entity)** s [role](luis-concept-roles.md) první a Příjmení. 
+
+Pokud používáte jednoduché entity, ujistěte se, že poskytnout příklady, které používají název první a poslední v různých částech utterance, v různých délek projevy a projevy přes všechny záměry včetně žádný záměru. [Kontrola](luis-how-to-review-endoint-utt.md) projevy koncový bod v pravidelných intervalech, aby všechny názvy, které nebyly správně předpovědět popisků.
 
 ### <a name="names-of-places"></a>Názvy míst
-Názvy umístění nastavují a známé jako je například města, okresy, státy, provincie a zemí. Pokud vaše aplikace používá know sadu umístěních, zvažte seznam entit. Pokud chcete najít že všechny umístit názvy, vytvořit jednoduchou entitu a poskytují řadu příkladů. Přidáte frázi seznam místních jmen posílit jaké místo názvů vypadají ve vaší aplikaci. [Kontrola](luis-how-to-review-endpoint-utterances.md) projevy koncový bod v pravidelných intervalech, aby všechny názvy, které nebyly správně předpovědět popisků.
+
+Názvy umístění nastavují a známé jako je například města, okresy, státy, provincie a zemí. Použití předem připravených entit **[geographyV2](luis-reference-prebuilt-geographyv2.md)** extrahovat informace o poloze.
 
 ### <a name="new-and-emerging-names"></a>Nové a chystané názvy
-Některé aplikace musí být schopna najít nové a chystané názvy, například produkty nebo společnosti. Tyto typy názvů je automatizování nejobtížnějších typu extrakce. Začít s jednoduchou entitu a přidat seznam frázi. [Kontrola](luis-how-to-review-endpoint-utterances.md) projevy koncový bod v pravidelných intervalech, aby všechny názvy, které nebyly správně předpovědět popisků.
+
+Některé aplikace musí být schopna najít nové a chystané názvy, například produkty nebo společnosti. Tyto typy názvů, které jsou automatizování nejobtížnějších typu extrakce. Začínat **[jednoduchou entitu](luis-concept-entity-types.md#simple-entity)** a přidejte [seznam frází](luis-concept-feature.md). [Kontrola](luis-how-to-review-endoint-utt.md) projevy koncový bod v pravidelných intervalech, aby všechny názvy, které nebyly správně předpovědět popisků.
 
 ## <a name="pattern-roles-data"></a>Vzor role dat
 Role jsou kontextové rozdíly entit.

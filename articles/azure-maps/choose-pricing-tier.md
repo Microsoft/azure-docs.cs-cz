@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
-ms.openlocfilehash: ac88bc95ac9ffe4c2f32307b0bee427829242add
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.openlocfilehash: 1bf60014b20f4cec29d661db4deb029fea4ab1d5
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56234675"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59547339"
 ---
 # <a name="choose-the-right-pricing-tier-in-azure-maps"></a>Zvolte cenovou úroveň ve službě Azure Maps vpravo
 
@@ -29,7 +29,7 @@ Cenové úrovně S0 a S1 zpracovávat různé množství dat propustnosti. Než 
 
 | Schopnost                              |        S0           |  S1      |
 |-----------------------------------------|:-------------------:|:--------:|
-| Search                                  |        ✓           |     ✓    |
+| Search (FWD (předat) / rev geokódování, co vás zajímá)  |        ✓           |     ✓    |
 | Geografické kódování služby Batch (preview)              |                   |     ✓    |
 | Mnohoúhelníky z hledání          |                   |     ✓    |
 | Směrování                                 |        ✓           |     ✓    |

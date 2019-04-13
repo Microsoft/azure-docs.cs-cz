@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/21/2019
 ms.author: spelluru
-ms.openlocfilehash: 8b2eee0bfd32b58cd751f8bf70aff1d4f460a353
-ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.openlocfilehash: 9cd2e5e211fcda7c59469d3b09e9c9e5bdefdbd6
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58340136"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59546579"
 ---
 # <a name="import-virtual-machines-from-another-lab-in-azure-devtest-labs"></a>Import virtuálních počítačů z jiného testovacího prostředí ve službě Azure DevTest Labs
 Tento článek obsahuje informace o tom, jak importovat virtuální počítače z jiného testovacího prostředí do testovacího prostředí. 
@@ -47,7 +47,7 @@ Existují dvě omezení klíčů je potřeba vědět při plánování pro impor
 - Tato funkce v současné době je podporována pouze prostřednictvím prostředí Powershell a rozhraní REST API.
 
 ## <a name="use-powershell"></a>Použití prostředí PowerShell
-Stáhněte si soubor ImportVirtualMachines.ps1 z [Githubu](https://github.com/Azure/azure-devtestlab/blob/master/Scripts/ImportVirtualMachines/ImportVirtualMachines.ps1). Skript můžete použít pro import jednoho virtuálního počítače nebo všech virtuálních počítačů v testovacím prostředí zdroje do cílového testovacího prostředí. 
+Stáhněte si soubor ImportVirtualMachines.ps1 z [Githubu](https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/Scripts/ImportVirtualMachines). Skript můžete použít pro import jednoho virtuálního počítače nebo všech virtuálních počítačů v testovacím prostředí zdroje do cílového testovacího prostředí. 
 
 ### <a name="use-powershell-to-import-a-single-vm"></a>Pomocí prostředí PowerShell pro import jednoho virtuálního počítače
 Spuštěním tohoto skriptu prostředí powershell vyžaduje určení zdrojového virtuálního počítače a cílové testovací prostředí a volitelně poskytuje nový název má použít pro cílový počítač:

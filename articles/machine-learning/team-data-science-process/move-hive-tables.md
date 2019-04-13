@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 11/04/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: d67bd26dcb2ac0b3bf909e1ef3d5ca75a0882eb3
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 28e399eaf62731d7c38cea5f5a8cb8ebf876e686
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57840643"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59522499"
 ---
 # <a name="create-hive-tables-and-load-data-from-azure-blob-storage"></a>Vytváření tabulek Hive a načtení dat z úložiště objektů Blob v Azure
 
@@ -112,7 +112,7 @@ Pokud otevřete výchozí kontejner clusteru Hadoop pomocí Průzkumníka služb
 ![Průzkumník služby Azure Storage výstup dotazu Hive](./media/move-hive-tables/output-hive-results-3.png)
 
 ### <a name="hive-editor"></a> 2. Odesílání dotazů Hive pomocí editoru Hive
-Můžete také použít konzolu dotazu (Hive Editor) tak, že zadáte adresu URL ve formátu *https://<Hadoop cluster name>.azurehdinsight.net/Home/HiveEditor* do webového prohlížeče. Musíte být přihlášeni se tato konzola, takže je nutné pověření clusteru Hadoop tady.
+Můžete také použít konzolu dotazu (Hive Editor) tak, že zadáte adresu URL ve formátu *https:\//\<název clusteru Hadoop >.azurehdinsight.net/Home/HiveEditor* do webového prohlížeče. Musíte být přihlášeni se tato konzola, takže je nutné pověření clusteru Hadoop tady.
 
 ### <a name="ps"></a> 3. Odesílání dotazů Hive pomocí příkazů prostředí PowerShell pro Azure
 Můžete také použít PowerShell k odesílání dotazů Hive. Pokyny najdete v tématu [Hive odeslání úlohy pomocí prostředí PowerShell](../../hdinsight/hadoop/apache-hadoop-use-hive-powershell.md).
@@ -149,7 +149,7 @@ Tady je dotaz Hive, který načítá data do tabulky Hive.
 
     LOAD DATA INPATH '<path to blob data>' INTO TABLE <database name>.<table name>;
 
-* **\<Cesta k datům objektu blob\>**: Pokud je soubor objektu blob k nahrání do tabulky Hive ve výchozím kontejneru clusteru HDInsight Hadoop *\<cesty k datům objektu blob\>* by měl být ve formátu *"wasb: / / / / /<directory in this container> /<blob file name>'*. Soubor objektu blob může být také v dalších kontejneru clusteru HDInsight Hadoop. V takovém případě *\<cesty k datům objektu blob\>* by měl být ve formátu *"wasb: / /<container name><storage account name>.blob.core.windows.net/<blob file name>"*.
+* **\<Cesta k datům objektu blob\>**: Pokud je soubor objektu blob k nahrání do tabulky Hive ve výchozím kontejneru clusteru HDInsight Hadoop *\<cesty k datům objektu blob\>* by měl být ve formátu *"wasb: / /\< v tomto kontejneru adresáři > /\<název souboru objektu blob > "*. Soubor objektu blob může být také v dalších kontejneru clusteru HDInsight Hadoop. V takovém případě *\<cesty k datům objektu blob\>* by měl být ve formátu *"wasb: / /\<název kontejneru >\<název účtu úložiště >.blob.core.windows.net/\<název souboru objektu blob > "*.
 
   > [!NOTE]
   > Data objektů blob k nahrání do tabulky Hive musí být ve výchozím nastavení nebo další kontejneru účtu úložiště pro Hadoop cluster. V opačném případě *NAČÍST DATA* stěžovali, nelze přístup k datům se dotaz nezdaří.

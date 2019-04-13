@@ -8,12 +8,12 @@ ms.date: 06/14/2018
 ms.author: anshan
 manager: cshankar
 ms.custom: seodec18
-ms.openlocfilehash: a9baf36221c99ece0703e2caa3f3e6c3b9364480
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: fe8b6113646589e30ff839c8bd47968138d98b03
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58312202"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59521423"
 ---
 # <a name="tutorial-create-an-azure-time-series-insights-single-page-web-app"></a>Kurz: Vytvoření jednostránkové webové aplikace Azure Time Series Insights
 
@@ -179,7 +179,7 @@ Před sestavením aplikace je potřeba ji zaregistrovat ve službě Azure AD. Re
 Kód chyby nebo chybová podmínka | Popis
 ---------------------| -----------
 *AADSTS50011: Žádná odpověď adresa je zaregistrovaný pro aplikaci.* | V registraci ve službě Azure AD chybí vlastnosti Adresa URL odpovědi. Přejděte na stránku **Nastavení** / **Adresy URL odpovědí** pro vaši registraci aplikace ve službě Azure AD. Ověřte, že se zobrazuje **přihlašovací** adresa URL zadaná v kroku 3 v části [Registrace aplikace ve službě Azure AD](#register-the-application-with-azure-ad). 
-*AADSTS50011: Odpověď url zadanou v požadavku se neshoduje s odpovědních adres URL nakonfigurované pro aplikace: "<Application ID GUID>".* | Hodnota `postLogoutRedirectUri` zadaná v kroku 4 v části [Sestavení a publikování webové aplikace](#build-and-publish-the-web-application) musí odpovídat hodnotě zadané ve vlastnosti **Nastavení** / **Adresy URL odpovědí** ve vaší registraci aplikace ve službě Azure AD. Nezapomeňte změnit také **cílovou adresu URL** tak, aby používala `https`, jako v kroku 5.e v části [Sestavení a publikování webové aplikace](#build-and-publish-the-web-application).
+*AADSTS50011: Odpověď url zadanou v požadavku se neshoduje s odpovědních adres URL nakonfigurované pro aplikaci: "\<Identifikátor GUID aplikace >'.* | Hodnota `postLogoutRedirectUri` zadaná v kroku 4 v části [Sestavení a publikování webové aplikace](#build-and-publish-the-web-application) musí odpovídat hodnotě zadané ve vlastnosti **Nastavení** / **Adresy URL odpovědí** ve vaší registraci aplikace ve službě Azure AD. Nezapomeňte změnit také **cílovou adresu URL** tak, aby používala `https`, jako v kroku 5.e v části [Sestavení a publikování webové aplikace](#build-and-publish-the-web-application).
 Webová aplikace se načte, ale zobrazí se přihlašovací stránka bez stylů pouze s textem na bílém pozadím. | Ověřte správnost cest popsaných v kroku 4 v části [Sestavení a publikování webové aplikace](#build-and-publish-the-web-application). Pokud webová aplikace nemůže najít soubory .css, stránka nebude používat správné styly.
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků

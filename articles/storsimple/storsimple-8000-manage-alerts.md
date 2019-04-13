@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 03/14/2019
 ms.author: alkohli
-ms.openlocfilehash: 38d403be1dc35b8ab4cd1b15fa259b5e6917197c
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: c3be0cdf2ef33c26dfa9d177e9b34f808b1b862a
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58314446"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59525524"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-view-and-manage-storsimple-alerts"></a>Pomocí služby Správce zařízení StorSimple můžete zobrazit a spravovat výstrahy StorSimple
 
@@ -160,7 +160,7 @@ Pokud připojení ke cloudu na zařízení StorSimple produkční selže, pak v 
 | Zařízení se pokusilo převzít <*název zařízení*>. |Ostatní/Neznámý důvod. |Pokud zjistíte velký počet těchto výstrahách, obraťte se na Microsoft Support. Jakmile je problém vyřešen, vymažte toto upozornění ze stránky s upozorněními. |
 | Služba kritické zařízení hlásí stav jako neúspěšný. |DataPath selhání služby. |Požádejte o pomoc Microsoft Support. |
 | Virtuální IP adresu pro síťové rozhraní <*dat #*> hlásí stav jako neúspěšný. |Ostatní/Neznámý důvod. |Někdy dočasné situace může způsobit, že tyto výstrahy. Pokud je to tento případ, pak tato výstraha bude automaticky vymazán po nějaké době. Pokud potíže potrvají, kontaktujte prosím podporu Microsoftu. |
-| Virtuální IP adresu pro síťové rozhraní <*dat #*> hlásí stav jako neúspěšný. |Název rozhraní: <*dat #*> IP adresa <IP address> nelze do online režimu, protože byla zjištěna duplicitní IP adresa v síti. |Ujistěte se, že duplicitní IP adresa se odebere ze sítě nebo změnit konfiguraci rozhraní s jinou IP adresu. |
+| Virtuální IP adresu pro síťové rozhraní <*dat #*> hlásí stav jako neúspěšný. |Název rozhraní: <*dat #*> IP adresa `<IP address>` nelze do online režimu, protože byla zjištěna duplicitní IP adresa v síti. |Ujistěte se, že duplicitní IP adresa se odebere ze sítě nebo změnit konfiguraci rozhraní s jinou IP adresu. |
 
 ### <a name="disaster-recovery-alerts"></a>Výstrahy pro zotavení po havárii
 
@@ -200,8 +200,8 @@ Pokud připojení ke cloudu na zařízení StorSimple produkční selže, pak v 
 | Text upozornění | Událost | Další informace o / doporučené akce |
 |:--- |:--- |:--- |
 | Nepovedlo se spustit služby StorSimple. |Chyba DataPath |Pokud to problém nevyřeší, obraťte se na oddělení podpory Microsoftu. |
-| Duplicitní IP adresa se nedetekovaly "Data0". | |Systém zjistil konflikt pro IP adresu '10.0.0.1'. Síťový prostředek "Data0" na zařízení *<device1>* je offline. Ujistěte se, že je tato IP adresa nepoužívá žádná jiná entita v této síti. Chcete-li vyřešit problémy se sítí, přejděte na [řešení potíží pomocí rutiny Get-NetAdapter](storsimple-8000-troubleshoot-deployment.md#troubleshoot-with-the-get-netadapter-cmdlet). Obraťte se na správce sítě o pomoc s řešením tohoto problému. Pokud to problém nevyřeší, obraťte se na oddělení podpory Microsoftu. |
-| Adresa IPv4 (nebo IPv6) pro 'Data0' je v režimu offline. | |Síťový prostředek "Data0" s IP adresou '10.0.0.1'. a délka "22" na zařízení předpony *<device1>* je offline. Ujistěte se, že jsou funkční porty přepínače, ke kterým je toto rozhraní připojené. Chcete-li vyřešit problémy se sítí, přejděte na [řešení potíží pomocí rutiny Get-NetAdapter](storsimple-8000-troubleshoot-deployment.md#troubleshoot-with-the-get-netadapter-cmdlet). |
+| Duplicitní IP adresa se nedetekovaly "Data0". | |Systém zjistil konflikt pro IP adresu '10.0.0.1'. Síťový prostředek "Data0" na zařízení  *\<zařízení1 >* je offline. Ujistěte se, že je tato IP adresa nepoužívá žádná jiná entita v této síti. Chcete-li vyřešit problémy se sítí, přejděte na [řešení potíží pomocí rutiny Get-NetAdapter](storsimple-8000-troubleshoot-deployment.md#troubleshoot-with-the-get-netadapter-cmdlet). Obraťte se na správce sítě o pomoc s řešením tohoto problému. Pokud to problém nevyřeší, obraťte se na oddělení podpory Microsoftu. |
+| Adresa IPv4 (nebo IPv6) pro 'Data0' je v režimu offline. | |Síťový prostředek "Data0" s IP adresou '10.0.0.1'. a délka "22" na zařízení předpony  *\<zařízení1 >* je offline. Ujistěte se, že jsou funkční porty přepínače, ke kterým je toto rozhraní připojené. Chcete-li vyřešit problémy se sítí, přejděte na [řešení potíží pomocí rutiny Get-NetAdapter](storsimple-8000-troubleshoot-deployment.md#troubleshoot-with-the-get-netadapter-cmdlet). |
 | Nelze se připojit k ověřovací službě. |Chyba DataPath |URLthat slouží k ověřování není k dispozici. Ujistěte se, že pravidla brány firewall zahrnout vzory adres URL zadaná pro zařízení StorSimple. Další informace o vzorech adres URL na webu Azure portal, přejděte na protokol https:\//aka.ms/ss-8000-network-reqs. Pokud používáte Azure Government Cloud, přejděte na vzory adresy URL na https:\//aka.ms/ss8000-gov-network-reqs.|
 
 ### <a name="performance-alerts"></a>Výstrahy výkonu

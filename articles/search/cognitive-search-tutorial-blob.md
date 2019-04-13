@@ -10,14 +10,14 @@ ms.topic: tutorial
 ms.date: 04/08/2019
 ms.author: luisca
 ms.custom: seodec2018
-ms.openlocfilehash: 088dcd366d526d08f236fb48340c6bbe18fe267c
-ms.sourcegitcommit: 41015688dc94593fd9662a7f0ba0e72f044915d6
+ms.openlocfilehash: b6e3335ba78d29896c8a253ac710e6ec0da1829a
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/11/2019
-ms.locfileid: "59501208"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59528369"
 ---
-# <a name="tutorial-call-cognitive-services-apis-in-an-azure-search-indexing-pipeline-preview"></a>Kurz: Volání rozhraní API služeb Cognitive Services v Azure Search indexování kanálu (Preview)
+# <a name="rest-tutorial-call-cognitive-services-apis-in-an-azure-search-indexing-pipeline-preview"></a>Kurz REST pro: Volání rozhraní API služeb Cognitive Services v Azure Search indexování kanálu (Preview)
 
 V tomto kurzu se naučíte, jak v Azure Search naprogramovat rozšiřování dat pomocí *kognitivních dovedností*. Dovednosti využívají možnosti analýzy image ve službě Cognitive Services a zpracování přirozeného jazyka (NLP). Prostřednictvím složení dovednosti a konfigurace můžete extrahovat text a textové reprezentace obrázek nebo soubor naskenovaného dokumentu. Můžete také zjistit jazyk, entity, klíčové fráze a další. Konečným výsledkem bude bohatý další obsah v indexu Azure Search, vytvořený kanál indexování založené na AI. 
 
@@ -67,7 +67,7 @@ Všechny požadavky vyžaduje klíč rozhraní api na každou požadavku odeslan
 
 ## <a name="prepare-sample-data"></a>Příprava ukázkových dat
 
-Kanál pro rozšiřování načítá informace ze zdrojů dat Azure. Zdrojová data musí pocházet z podporovaného typu zdroje dat [indexeru Azure Search](search-indexer-overview.md). Mějte prosím na paměti, že Azure Table Storage se nepodporuje pro kognitivního vyhledávání. Při tomto cvičení použijeme službu Blob Storage, na které ukážeme několik typů obsahu.
+Kanál pro rozšiřování načítá informace ze zdrojů dat Azure. Zdrojová data musí pocházet z podporovaného typu zdroje dat [indexeru Azure Search](search-indexer-overview.md). Azure Table Storage se nepodporuje pro kognitivního vyhledávání. Při tomto cvičení použijeme službu Blob Storage, na které ukážeme několik typů obsahu.
 
 1. [Přihlaste se k webu Azure portal](https://portal.azure.com), přejděte do svého účtu úložiště Azure, klikněte na tlačítko **objekty BLOB**a potom klikněte na tlačítko **+ kontejner**.
 
@@ -554,4 +554,4 @@ Nejrychlejší způsob, jak po kurzu vše vyčistit, je odstranit skupinu prost�
 Pokud si chcete kanál přizpůsobit nebo rozšířit, můžete použít vlastní dovednosti. Když si vytvoříte vlastní dovednost, kterou pak přidáte do sady dovedností, budete moct používat analýzu textu a obrazu, kterou si sami napíšete. 
 
 > [!div class="nextstepaction"]
-> [Příklad: vytvoření vlastních dovedností](cognitive-search-create-custom-skill-example.md)
+> [Příklad: vytvoření vlastní dovednosti](cognitive-search-create-custom-skill-example.md)

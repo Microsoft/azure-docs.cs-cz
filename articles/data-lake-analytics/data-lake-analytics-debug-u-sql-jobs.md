@@ -9,12 +9,12 @@ ms.reviewer: jasonwhowell
 ms.assetid: bcd0b01e-1755-4112-8e8a-a5cabdca4df2
 ms.topic: conceptual
 ms.date: 11/30/2017
-ms.openlocfilehash: 11587d5a0520d42d554c13a525c3b57db82326aa
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 5417f66696191cebadc2af9c6d634419a0eb8e5b
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51229471"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59526448"
 ---
 # <a name="debug-user-defined-c-code-for-failed-u-sql-jobs"></a>Ladění uživatelského kódu C# pro selhání úloh U-SQL
 
@@ -28,7 +28,7 @@ Toto video ukazuje nepovedlo vrcholu ladění v Azure Data Lake Tools pro Visual
 >
 
 > [!IMPORTANT]
-> Visual Studio vyžaduje následující dvě aktualizace pro použití této funkce: [Microsoft Visual C++ 2015 Redistributable Update 3](https://www.microsoft.com/en-us/download/details.aspx?id=53840) a [Universal C Runtime pro Windows](https://www.microsoft.com/download/details.aspx?id=50410).
+> Visual Studio vyžaduje následující dvě aktualizace pro použití této funkce: [Microsoft Visual C++ Redistributable 2015 Update 3](https://www.microsoft.com/en-us/download/details.aspx?id=53840) a [Universal C Runtime pro Windows](https://www.microsoft.com/download/details.aspx?id=50410).
 >
 
 ## <a name="download-failed-vertex-to-local-machine"></a>Nepovedlo se stáhnout vrchol do místního počítače
@@ -80,7 +80,7 @@ Pokud uživatelský kód není zahrnutý v souboru kódu na pozadí nebo nezareg
 
 2. Získání cesty ke složce projektu pro **FailedVertexDebugHost** projektu. 
 
-3. Klikněte pravým tlačítkem na **projektu přidání sestavení zdrojového kódu > vlastnosti**, vyberte **sestavení** kartu na levé straně a vložte zkopírovaný cestu končí \bin\debug jako **výstup > Výstupní cesta**. Konečné výstupní cesta je jako "<DataLakeTemp path>\fd91dd21-776e-4729-a78b-81ad85a4fba6\loiu0t1y.mfo\FailedVertexDebug\FailedVertexDebugHost\bin\Debug\".
+3. Klikněte pravým tlačítkem na **projektu přidání sestavení zdrojového kódu > vlastnosti**, vyberte **sestavení** kartu na levé straně a vložte zkopírovaný cestu končí \bin\debug jako **výstup > Výstupní cesta**. Konečné výstupní cesta je jako `<DataLakeTemp path>\fd91dd21-776e-4729-a78b-81ad85a4fba6\loiu0t1y.mfo\FailedVertexDebug\FailedVertexDebugHost\bin\Debug\`.
 
     ![Azure Data Lake Analytics U-SQL ladění nastavit cestu k souboru pdb](./media/data-lake-analytics-debug-u-sql-jobs/data-lake-analytics-set-pdb-path.png)
 

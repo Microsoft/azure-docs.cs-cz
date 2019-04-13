@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: required
 ms.date: 5/8/2017
 ms.author: aljo
-ms.openlocfilehash: 48f7153dcee45a6271919ac756ad794186faaed4
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: ee19be45915b3ff1253ec721f4334fead19647b8
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58668431"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59522381"
 ---
 # <a name="reliable-collection-object-serialization-in-azure-service-fabric"></a>Spolehlivá serializace kolekcí objektů v Azure Service Fabric
 Reliable Collections replikovat a zachování jejich položky, abyste měli jistotu, že jsou trvalé napříč počítači selhání a výpadky napájení.
@@ -96,7 +96,7 @@ public class OrderKey : IComparable<OrderKey>, IEquatable<OrderKey>
 }
 ```
 
-Tady je příklad implementace IStateSerializer<OrderKey>.
+Tady je příklad implementace IStateSerializer\<OrderKey >.
 Všimněte si, že čtení a zápis v baseValue, přetížení, která přijímají volání jejich odpovídajících přetížení pro předávání kompatibility.
 
 ```csharp

@@ -1,6 +1,6 @@
 ---
-title: Vytvoření aplikace v Pythonu s PostgreSQL v Linuxu – služba Azure App Service | Dokumentace Microsoftu
-description: Zjistěte, jak v Azure spustit aplikaci Python řízenou daty s připojením k databázi PostgreSQL.
+title: (Django) Python s PostgreSQL v Linuxu – služba Azure App Service | Dokumentace Microsoftu
+description: Zjistěte, jak v Azure spustit aplikaci Python řízenou daty s připojením k databázi PostgreSQL. Django je v tomto kurzu použili.
 services: app-service\web
 documentationcenter: python
 author: cephalin
@@ -9,15 +9,15 @@ ms.service: app-service-web
 ms.workload: web
 ms.devlang: python
 ms.topic: tutorial
-ms.date: 11/29/2018
+ms.date: 03/27/2019
 ms.author: beverst;cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 00fc92ebe8b43f16791adce1f1cb9a1d6da7fbde
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: f82cccb66c0aae93afe19259393f094d0627c801
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57534136"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59546417"
 ---
 # <a name="build-a-python-and-postgresql-app-in-azure-app-service"></a>Vytvoření aplikace Python a PostgreSQL v Azure App Service
 
@@ -166,21 +166,21 @@ V tomto kroku vytvoříte databázi PostgreSQL v Azure. Po nasazení do Azure bu
 
 Pomocí příkazu [`az postgres server create`](/cli/azure/postgres/server?view=azure-cli-latest#az-postgres-server-create) ve službě Cloud Shell vytvořte server PostgreSQL.
 
-V následujícím ukázkovém příkazu nahraďte *\<postgresql_name>* jedinečným názvem serveru a *\<admin_username>* a *\<admin_password>* nahraďte přihlašovacími údaji požadovaného uživatele. Přihlašovací údaje uživatele jsou přihlašovací údaje k účtu správce databáze. Název serveru se používá jako součást koncového bodu PostgreSQL (`https://<postgresql_name>.postgres.database.azure.com`), takže musí být jedinečný v rámci všech serverů v Azure.
+V následujícím ukázkovém příkazu nahraďte  *\<postgresql-name >* s jedinečným názvem serveru a nahradit  *\<uživatelské jméno správce >* a  *\<heslo správce >* požadované použití uživatelských přihlašovacích údajů. Přihlašovací údaje uživatele jsou přihlašovací údaje k účtu správce databáze. Název serveru se používá jako součást koncového bodu PostgreSQL (`https://<postgresql-name>.postgres.database.azure.com`), takže musí být jedinečný v rámci všech serverů v Azure.
 
 ```azurecli-interactive
-az postgres server create --resource-group myResourceGroup --name <postgresql_name> --location "West Europe" --admin-user <admin_username> --admin-password <admin_password> --sku-name B_Gen4_1
+az postgres server create --resource-group myResourceGroup --name <postgresql-name> --location "West Europe" --admin-user <admin-username> --admin-password <admin-password> --sku-name B_Gen4_1
 ```
 
 Po vytvoření serveru Azure Database for PostgreSQL se v Azure CLI zobrazí podobné informace jako v následujícím příkladu:
 
 ```json
 {
-  "administratorLogin": "<admin_username>",
-  "fullyQualifiedDomainName": "<postgresql_name>.postgres.database.azure.com",
-  "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.DBforPostgreSQL/servers/<postgresql_name>",
+  "administratorLogin": "<admin-username>",
+  "fullyQualifiedDomainName": "<postgresql-name>.postgres.database.azure.com",
+  "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.DBforPostgreSQL/servers/<postgresql-name>",
   "location": "westus",
-  "name": "<postgresql_name>",
+  "name": "<postgresql-name>",
   "resourceGroup": "myResourceGroup",
   "sku": {
     "capacity": 1,
@@ -194,24 +194,23 @@ Po vytvoření serveru Azure Database for PostgreSQL se v Azure CLI zobrazí pod
 ```
 
 > [!NOTE]
-> Zapamatujte si \<admin_username> a \<admin_password>, abyste je mohli později použít. Budete je potřebovat, abyste se mohli přihlásit k serveru Postgre a jeho databázím.
-
+> Mějte na paměti \<uživatelské jméno správce > a \<heslo správce > na později. Budete je potřebovat, abyste se mohli přihlásit k serveru Postgre a jeho databázím.
 
 ### <a name="create-firewall-rules-for-the-postgresql-server"></a>Vytvoření pravidel brány firewall pro server PostgreSQL
 
 Spusťte v Cloud Shellu následující příkazy Azure CLI, abyste umožnili přístup k databázi z prostředků Azure.
 
 ```azurecli-interactive
-az postgres server firewall-rule create --resource-group myResourceGroup --server-name <postgresql_name> --start-ip-address=0.0.0.0 --end-ip-address=0.0.0.0 --name AllowAllAzureIPs
+az postgres server firewall-rule create --resource-group myResourceGroup --server-name <postgresql-name> --start-ip-address=0.0.0.0 --end-ip-address=0.0.0.0 --name AllowAllAzureIPs
 ```
 
 > [!NOTE]
 > Toto nastavení umožňuje síťová připojení ze všech IP adres v síti Azure. Pro produkční prostředí zkuste nakonfigurovat co nejvíce omezující pravidla firewallu tak, že [použijete jen odchozí IP adresy, které používá vaše aplikace](../overview-inbound-outbound-ips.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#find-outbound-ips).
 
-Spusťte v Cloud Shellu tento příkaz znovu, ale nahraďte *\<your_ip_address>* [vaší místní IP adresou IPv4](https://www.whatsmyip.org/), abyste měli přístup k databázi.
+Ve službě Cloud Shell pomocí příkazu znovu povolit přístup ze svého místního počítače tak, že nahradíte  *\<your-ip-address >* s [vaše místní IP adresa protokolu IPv4 adresa](https://www.whatsmyip.org/).
 
 ```azurecli-interactive
-az postgres server firewall-rule create --resource-group myResourceGroup --server-name <postgresql_name> --start-ip-address=<your_ip_address> --end-ip-address=<your_ip_address> --name AllowLocalClient
+az postgres server firewall-rule create --resource-group myResourceGroup --server-name <postgresql-name> --start-ip-address=<your-ip-address> --end-ip-address=<your-ip-address> --name AllowLocalClient
 ```
 
 ## <a name="connect-python-app-to-production-database"></a>Připojení aplikace v Pythonu k produkční databázi
@@ -223,7 +222,7 @@ V tomto kroku připojíte k Azure Database for PostgreSQL, který jste vytvořil
 Ve službě Cloud Shell připojení k databázi spuštěním následujícího příkazu. Když se zobrazí výzva k zadání hesla správce, použijte stejné heslo, které jste zadali v části [Vytvoření serveru Azure Database for PostgreSQL](#create-an-azure-database-for-postgresql-server).
 
 ```bash
-psql -h <postgresql_name>.postgres.database.azure.com -U <my_admin_username>@<postgresql_name> postgres
+psql -h <postgresql-name>.postgres.database.azure.com -U <admin-username>@<postgresql-name> postgres
 ```
 
 Stejně jako v místním serveru Postgre vytvořte databázi a uživatele na serveru Azure Postgre.
@@ -245,14 +244,14 @@ V okně místního terminálu změnit proměnné prostředí databáze (které j
 
 ```bash
 # Bash
-export DBHOST="<postgresql_name>.postgres.database.azure.com"
-export DBUSER="manager@<postgresql_name>"
+export DBHOST="<postgresql-name>.postgres.database.azure.com"
+export DBUSER="manager@<postgresql-name>"
 export DBNAME="pollsdb"
 export DBPASS="supersecretpass"
 
 # PowerShell
-$Env:DBHOST = "<postgresql_name>.postgres.database.azure.com"
-$Env:DBUSER = "manager@<postgresql_name>"
+$Env:DBHOST = "<postgresql-name>.postgres.database.azure.com"
+$Env:DBUSER = "manager@<postgresql-name>"
 $Env:DBNAME = "pollsdb"
 $Env:DBPASS = "supersecretpass"
 ```
@@ -315,22 +314,21 @@ Další informace o konfiguraci WhiteNoise, najdete v článku [WhiteNoise dokum
 > [!IMPORTANT]
 > V části Nastavení databáze již následující doporučené postupy zabezpečení pomocí proměnné prostředí. Doporučení pro dokončení nasazení, najdete v části [Django dokumentaci: kontrolní seznam nasazení](https://docs.djangoproject.com/en/2.1/howto/deployment/checklist/).
 
-
 Potvrďte změny do úložiště.
 
 ```bash
 git commit -am "configure for App Service"
 ```
 
-### <a name="configure-a-deployment-user"></a>Konfigurace uživatele nasazení
+### <a name="configure-deployment-user"></a>Konfigurace uživatele nasazení
 
 [!INCLUDE [Configure deployment user](../../../includes/configure-deployment-user-no-h.md)]
 
-### <a name="create-an-app-service-plan"></a>Vytvoření plánu služby App Service 
+### <a name="create-app-service-plan"></a>Vytvoření plánu služby App Service
 
 [!INCLUDE [Create app service plan](../../../includes/app-service-web-create-app-service-plan-linux-no-h.md)]
 
-### <a name="create-a-web-app"></a>Vytvoření webové aplikace 
+### <a name="create-web-app"></a>Vytvoření webové aplikace
 
 [!INCLUDE [Create web app](../../../includes/app-service-web-create-web-app-python-linux-no-h.md)]
 
@@ -343,8 +341,10 @@ Ve službě App Service můžete nastavit proměnné prostředí jako _nastaven�
 Následující příklad určí jako nastavení aplikace podrobnosti o připojení k databázi. 
 
 ```azurecli-interactive
-az webapp config appsettings set --name <app_name> --resource-group myResourceGroup --settings DBHOST="<postgresql_name>.postgres.database.azure.com" DBUSER="manager@<postgresql_name>" DBPASS="supersecretpass" DBNAME="pollsdb"
+az webapp config appsettings set --name <app-name> --resource-group myResourceGroup --settings DBHOST="<postgresql-name>.postgres.database.azure.com" DBUSER="manager@<postgresql-name>" DBPASS="supersecretpass" DBNAME="pollsdb"
 ```
+
+Informace o tom, jak jsou tato nastavení aplikace přístupné z kódu, naleznete v tématu [přístup k proměnným prostředí](how-to-configure-python.md#access-environment-variables).
 
 ### <a name="push-to-azure-from-git"></a>Přenos z Gitu do Azure
 
@@ -368,7 +368,7 @@ remote: Kudu sync from: '/home/site/repository' to: '/home/site/wwwroot'
 . 
 remote: Deployment successful.
 remote: App container will begin restart within 10 seconds.
-To https://<app_name>.scm.azurewebsites.net/<app_name>.git 
+To https://<app-name>.scm.azurewebsites.net/<app-name>.git 
    06b6df4..6520eea  master -> master
 ```  
 
@@ -379,32 +379,22 @@ Server nasazení služby App Service se zobrazí _souboru requirements.txt_ v ko
 Přejděte do nasazené aplikace. Když se o aplikaci žádá poprvé, spuštění nějakou dobu trvá, protože se musí stáhnout a spustit kontejner. Pokud stránce vyprší časový limit nebo se na ní zobrazí chybová zpráva, počkejte několik minut a stránku aktualizujte.
 
 ```bash
-http://<app_name>.azurewebsites.net
+http://<app-name>.azurewebsites.net
 ```
 
 Měli byste vidět dotaz cyklického dotazování, který jste vytvořili dříve. 
 
 App Service zjistí projektu Django ve vašem úložišti tím, že hledají _wsgi.py_ v každé podadresář, který je vytvořen `manage.py startproject` ve výchozím nastavení. Pokud se najde soubor, načte aplikaci Django. Další informace o tom, jak služby App Service načte aplikace v Pythonu najdete v tématu [konfigurovat integrované image Python](how-to-configure-python.md).
 
-Přejděte na `<app_name>.azurewebsites.net` a přihlaste se pomocí stejného uživatele správce jste vytvořili. Pokud chcete, můžete zkuste vytvořit některé další dotazy cyklického dotazování.
+Přejděte na `<app-name>.azurewebsites.net` a přihlaste se pomocí stejného uživatele správce jste vytvořili. Pokud chcete, můžete zkuste vytvořit některé další dotazy cyklického dotazování.
 
 ![Místně spuštěná aplikace Python Django](./media/tutorial-python-postgresql-app/django-admin-azure.png)
 
 **Blahopřejeme!** Spustili jste pythonovou aplikaci ve službě App Service for Linux.
 
-## <a name="access-diagnostic-logs"></a>Přístup k diagnostickým protokolům
+## <a name="stream-diagnostic-logs"></a>Streamování diagnostických protokolů
 
-Ve službě App Service v Linuxu aplikace běží uvnitř kontejneru z výchozí image Dockeru. Protokoly konzoly z v rámci kontejneru může přistupovat k. Pokud chcete získat protokoly, nejprve zapnout protokolování kontejneru spuštěním následujícího příkazu ve službě Cloud Shell:
-
-```azurecli-interactive
-az webapp log config --name <app_name> --resource-group myResourceGroup --docker-container-logging filesystem
-```
-
-Po zapnutí protokolování kontejneru spuštěním následujícího příkazu zobrazíte datový proud protokolu:
-
-```azurecli-interactive
-az webapp log tail --name <app_name> --resource-group myResourceGroup
-```
+[!INCLUDE [Access diagnostic logs](../../../includes/app-service-web-logs-access-no-h.md)]
 
 ## <a name="manage-your-app-in-the-azure-portal"></a>Správa aplikace na webu Azure Portal
 
@@ -434,8 +424,9 @@ V tomto kurzu jste se naučili:
 Přejděte k dalšímu kurzu, kde se naučíte, jak namapovat vlastní název DNS do vaší aplikace.
 
 > [!div class="nextstepaction"]
-> [Mapování existujícího vlastního názvu DNS do služby Azure App Service](../app-service-web-tutorial-custom-domain.md)
+> [Kurz: Mapování vlastního názvu DNS do vaší aplikace](../app-service-web-tutorial-custom-domain.md)
+
+Nebo, podívejte se na další prostředky:
 
 > [!div class="nextstepaction"]
-> [Konfigurovat předdefinované Pythonu obrázků a řešení potíží s chybami](how-to-configure-python.md)
-
+> [Konfigurace aplikace v Pythonu](how-to-configure-python.md)

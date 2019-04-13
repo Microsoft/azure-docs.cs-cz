@@ -1,7 +1,7 @@
 ---
 title: Vzory přidat přesnost
 titleSuffix: Language Understanding - Azure Cognitive Services
-description: Zjistěte, jak přidat vzor šablon v aplikacích Language Understanding (LUIS) zvyšte přesnost předpovědi.
+description: Přidejte vzor šablony zvyšte přesnost předpovědi v aplikacích Language Understanding (LUIS).
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -9,17 +9,17 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 02/22/2019
+ms.date: 04/01/2019
 ms.author: diberry
-ms.openlocfilehash: 132f6eab86c02e28fe562a0c7d3357175e5813b8
-ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
+ms.openlocfilehash: 202b9632b7a7faaf955874a0300edbe5134b7fa1
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57195043"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59521250"
 ---
 # <a name="how-to-add-patterns-to-improve-prediction-accuracy"></a>Jak přidat vzorce, a zvyšte přesnost předpovědi
-Po aplikaci LUIS obdrží koncový bod projevy, použijte [vzor](luis-concept-patterns.md) zvyšte přesnost předpovědi pro projevy, které se zjistí vzor v pořadí slov a požadované aplikace word. Vzory použít konkrétní [syntaxe](luis-concept-patterns.md#pattern-syntax) označující umístění: [entity](luis-concept-entity-types.md), entity role a Nepovinný text.
+Po aplikaci LUIS obdrží koncový bod projevy, použijte [vzor](luis-concept-patterns.md) zvyšte přesnost předpovědi pro projevy, které se zjistí vzor v pořadí slov a požadované aplikace word. Vzory použít konkrétní [syntaxe](luis-concept-patterns.md#pattern-syntax) označující umístění: [entity](luis-concept-entity-types.md), entity [role](luis-concept-roles.md)a volitelný text, který.
 
 ## <a name="add-template-utterance-to-create-pattern"></a>Přidat utterance šablony k vytvoření vzorku
 1. Otevřete aplikaci tak, že vyberete jeho název na **Moje aplikace** stránce a pak vyberte **vzory** v levém panelu klikněte v části **zvýšit výkon aplikace**.
@@ -34,7 +34,7 @@ Po aplikaci LUIS obdrží koncový bod projevy, použijte [vzor](luis-concept-pa
 
     ![Snímek obrazovky pro model entity](./media/luis-how-to-model-intent-pattern/patterns-3.png)
 
-    Pokud entita obsahuje roli, naznačit roli s jedinou dvojtečku `:`po název entity, jako `{Location:Origin}`. Seznam rolí pro entity, které se zobrazí v seznamu. Vyberte roli a pak stiskněte Enter. 
+    Pokud entita obsahuje [role](luis-concept-roles.md), naznačit roli s jedinou dvojtečku `:`po název entity, jako `{Location:Origin}`. Seznam rolí pro entity, které se zobrazí v seznamu. Vyberte roli a pak stiskněte Enter. 
 
     ![Snímek obrazovky entity s rolí](./media/luis-how-to-model-intent-pattern/patterns-4.png)
 

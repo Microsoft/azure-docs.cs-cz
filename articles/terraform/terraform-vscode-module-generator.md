@@ -9,12 +9,12 @@ manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 11/08/2018
-ms.openlocfilehash: 8405624831c572f194fa0afaad2f0caa40bcf9ba
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 7e66f374a1f5f4fb050f366fdad0e787292101f8
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58001274"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59526737"
 ---
 # <a name="create-a-terraform-base-template-in-azure-using-yeoman"></a>Vytvoření základní šablony Terraformu v Azure pomocí Yeomanu
 
@@ -73,8 +73,8 @@ Z příkazovém řádku zadejte:
 1. Přejděte do nadřazeného adresáře, který má obsahovat nový, prázdný adresář, který se chystáte vytvořit.
 1. Zadejte `mkdir <new-directory-name>`.
 
-    >[!NOTE]
-    >< new-directory-name > nahraďte názvem nového adresáře. V tomto příkladu jsme pojmenovali nový adresář`GeneratorDocSample`.
+    > [!NOTE]
+    > Nahraďte `<new-directory-name>` s názvem nového adresáře. V tomto příkladu jsme pojmenovali nový adresář`GeneratorDocSample`.
 
     ![mkdir](media/terraform-vscode-module-generator/ymg-mkdir-GeneratorDocSample.png)
 
@@ -250,7 +250,7 @@ Všechny tyto položky jsou předem nainstalované ve službě Cloud Shell.
 
 1. Pokud ještě neexistuje, vytvořte složku $GOPATH: Zadejte `mkdir ~/go`.
 
-1. Vytvořte složku ve složce $GOPATH: Zadejte `mkdir ~/go/src`. Tato složka se použije k uložení a uspořádat složky jiného projektu, které mohou vytvořit, jako je například složka < your-module-name >, které vytvoříte v dalším kroku.
+1. Vytvořte složku ve složce $GOPATH: Zadejte `mkdir ~/go/src`. Tato složka se použije k uložení a uspořádat složky jiný projekt můžete vytvořit, například `<your-module-name>` složky vytvoříme v dalším kroku.
 
 1. Vytvořte složku pro uložení Terraformu modul: Zadejte `mkdir ~/go/src/<your-module-name>`.
 

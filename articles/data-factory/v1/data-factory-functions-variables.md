@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: 5293c44a3e4494593e069ab45fbc38806c6999ee
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 1d1c9ef5ba355f1944a362bf0e6f5d7ba91a700a
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57976772"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59523932"
 ---
 # <a name="azure-data-factory---functions-and-system-variables"></a>Azure Data Factory – funkce a systémové proměnné
 > [!NOTE]
@@ -59,7 +59,7 @@ Funkce ve službě data factory spolu s systémové proměnné můžete použít
 
 1. Zadávání dotazů na výběr data (najdete v článcích konektor odkazuje [aktivity přesunu dat](data-factory-data-movement-activities.md) článku.
    
-   Syntaxe pro vyvolání funkce data factory: **$$ <function>** dotazech pro výběr data a další vlastnosti v aktivity a datové sady.  
+   Syntaxe pro vyvolání funkce data factory:  **$$ \<funkce >** dotazech pro výběr data a další vlastnosti v aktivity a datové sady.  
 2. Určení vstupní závislosti pomocí funkce data factory v kolekci vstupů aktivity.
    
     pro zadání výrazy vstupní závislosti není potřeba $$.     

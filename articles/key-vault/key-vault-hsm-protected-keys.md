@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 02/12/2019
 ms.author: barclayn
-ms.openlocfilehash: 71931194c88412467252d16c5333d7a77338378c
-ms.sourcegitcommit: 956749f17569a55bcafba95aef9abcbb345eb929
+ms.openlocfilehash: 70a33b0ec55705c6fb00671cc801415cd7459558
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58630615"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59522724"
 ---
 # <a name="how-to-generate-and-transfer-hsm-protected-keys-for-azure-key-vault"></a>Postup generování a přenos chráněných pomocí HSM klíčů pro Azure Key Vault
 
@@ -228,7 +228,7 @@ Sada nástrojů obsahuje:
 * Balíček architektury Security World, jehož název začíná **BYOK-SecurityWorld - pkg-.**
 * Skript v jazyce python s názvem **verifykeypackage.py.**
 * Spustitelný soubor příkazového řádku, s názvem **KeyTransferRemote.exe** a přidružené knihovny DLL.
-* Visual C++ Redistributable Package, s názvem **vcredist_x64.exe.**
+* Vizuál C++ Distribuovatelný balíček s názvem **vcredist_x64.exe.**
 
 Zkopírujte balíček na USB Flash disku nebo jiného přenosného úložiště.
 
@@ -445,7 +445,7 @@ Při spuštění tohoto příkazu nahraďte *contosokey* nahraďte stejnou hodno
 
 Zobrazí se výzva k připojení karet správce security world.
 
-Jakmile se příkaz dokončí, uvidíte **výsledek: Úspěch** a kopie vašeho klíče se sníženými oprávněními jsou v souboru s názvem key_xferacId_<contosokey>.
+Jakmile se příkaz dokončí, uvidíte **výsledek: Úspěch** a kopie vašeho klíče se sníženými oprávněními jsou v souboru s názvem key_xferacId_\<contosokey >.
 
 Může zkontroluje seznamy řízení přístupu pomocí následujících příkazů pomocí nástrojů Thales:
 

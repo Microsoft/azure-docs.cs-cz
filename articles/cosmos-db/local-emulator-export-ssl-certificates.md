@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 06/06/2017
 author: deborahc
 ms.author: dech
-ms.openlocfilehash: 1cbf08cc903069f5b1cf81f57b7daa16f24c0216
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: cf280dfb806399a8c09838d965d71e7b18cb905f
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54043851"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59521386"
 ---
 # <a name="export-the-azure-cosmos-db-emulator-certificates-for-use-with-java-python-and-nodejs"></a>Export certifikátů emulátoru služby Azure Cosmos DB pro použití s Javou, Pythonem a Node.js
 
@@ -70,7 +70,7 @@ Oba certifikáty je možné znovu vygenerovat kliknutím na **Resetovat data** v
 
 ## <a name="how-to-use-the-certificate-in-java"></a>Použití certifikátu v Javě
 
-Pokud používáte aplikace Java nebo aplikace MongoDB využívající klienta Java, je jednodušší nainstalovat certifikát do výchozího úložiště certifikátů Javy a pak předávat příznaky -Djavax.net.ssl.trustStore=<keystore> -Djavax.net.ssl.trustStorePassword="<password>. Například zahrnutá [ukázková aplikace Java](https://localhost:8081/_explorer/index.html) závisí na výchozím úložišti certifikátů.
+Při spuštění aplikace v Javě nebo aplikace MongoDB, které používají klientskou sadou Java je snazší nainstalujte certifikát do úložiště certifikátů výchozí Java než předávání `-Djavax.net.ssl.trustStore=<keystore> -Djavax.net.ssl.trustStorePassword="<password>"` příznaky. Například zahrnutá [ukázková aplikace Java](https://localhost:8081/_explorer/index.html) závisí na výchozím úložišti certifikátů.
 
 Podle pokynů v tématu o [přidání certifikátu do úložiště certifikátů certifikační autority Javy](https://docs.microsoft.com/azure/java-add-certificate-ca-store) importujte certifikát X.509 do výchozího úložiště certifikátů Javy. Mějte na paměti, že při používání nástroje keytool budete pracovat v adresáři %JAVA_HOME%.
 

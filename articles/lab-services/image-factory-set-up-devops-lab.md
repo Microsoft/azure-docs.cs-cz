@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/25/2019
 ms.author: spelluru
-ms.openlocfilehash: 62cb8222b592660f2e7ab32d438fd4073246ee50
-ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
+ms.openlocfilehash: 5a3d6e51a71f6aab742fe042d6e6e281192319a4
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58439825"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59523014"
 ---
-# <a name="run-an-image-factory-from-azure-devops"></a>Spustit objekt pro vytváření image z Azure DevOps
+# <a name="run-an-image-factory-from-azure-devops"></a>Spuštění objektu pro vytváření imagí z Azure DevOps
 Tento článek se týká všech přípravy potřebných ke spuštění objekt pro vytváření image z Azure DevOps (dřív Visual Studio Team Services).
 
 > [!NOTE]
@@ -44,12 +44,12 @@ Azure DevOps umožňují ukládat zdrojový kód, spusťte rutinu prostředí Az
 
 Pokud máte existující účet DevOps nebo projekt, který chcete použít místo toho, tento krok přeskočte.
 
-Abyste mohli začít, vytvořte si bezplatný účet v Azure DevOps. Navštivte https://www.visualstudio.com/ a vyberte **začít zdarma** vpravo pod **Azure DevOps** (dříve VSTS). Budete muset Zvolte jedinečný název účtu a ujistěte se, že chcete spravovat kód pomocí Gitu. Jakmile se vytvoří, uložte adresu URL k vašemu týmovému projektu. Tady je ukázka adresy URL: https://<accountname>.visualstudio.com/MyFirstProject.
+Abyste mohli začít, vytvořte si bezplatný účet v Azure DevOps. Navštivte https://www.visualstudio.com/ a vyberte **začít zdarma** vpravo pod **Azure DevOps** (dříve VSTS). Budete muset Zvolte jedinečný název účtu a ujistěte se, že chcete spravovat kód pomocí Gitu. Jakmile se vytvoří, uložte adresu URL k vašemu týmovému projektu. Tady je ukázka adresy URL: `https://<accountname>.visualstudio.com/MyFirstProject`.
 
 ## <a name="check-in-the-image-factory-to-git"></a>Zkontrolujte v objektu pro vytváření bitové kopie na Git
 Všechna prostředí PowerShell, šablony a konfigurace objektu pro vytváření bitové kopie jsou umístěny v [veřejného úložiště DevTest Labs GitHub](https://github.com/Azure/azure-devtestlab/tree/master/Scripts/ImageFactory). Nejrychlejší způsob, jak získat kód do nového týmového projektu je importovat do úložiště. Tím zajistíte, že v celé úložiště DevTest Labs (tak získáte navíc dokumentů a ukázek). 
 
-1. Navštivte projekt Azure DevOps, který jste vytvořili v předchozím kroku (adresa URL vypadá jako **https://<accountname>.visualstudio.com/MyFirstProject**).
+1. Navštivte projekt Azure DevOps, který jste vytvořili v předchozím kroku (adresa URL vypadá jako **https:\//\<accountname >.visualstudio.com/MyFirstProject**).
 2. Vyberte **importovat úložiště**.
 3. Zadejte **adresu URL klonování** úložiště DevTest Labs: `https://github.com/Azure/azure-devtestlab`.
 4. Vyberte **Import**.

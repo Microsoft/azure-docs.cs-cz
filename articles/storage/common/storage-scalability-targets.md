@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 03/23/2019
 ms.author: rogarana
 ms.subservice: common
-ms.openlocfilehash: 96322c730300e360ed03f4b623db2a7f18825f55
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: e3e0e9ae4a1939aad9ab2ae42a1b51b1b00e2462
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59267697"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59521712"
 ---
 # <a name="azure-storage-scalability-and-performance-targets-for-storage-accounts"></a>Azure škálovatelnost a výkonnostní cíle Storage pro účty úložiště
 
@@ -58,13 +58,13 @@ Příklad: Jednou sdílenou složkou může dosáhnout 100 000 vstupně-výstupn
 
 |Oblast  |Cíl  |
 |---------|---------|
-|Minimální velikost                        |100 GiB      |
-|Maximální velikost                        |100 TiB      |
+|Velikost min, zřízené                        |100 GiB      |
+|Maximální počet zřízení velikost                        |100 TiB      |
 |Minimální velikost zvětšit nebo zmenšit    |1 GiB      |
 |Standardní hodnoty vstupně-výstupních operací    |1 vstupně-výstupních operací za GiB maximálně 100 000|
 |Shlukování vstupně-výstupních operací    |3 x IOPS za GiB maximálně 100 000|
-|Minimální šířka pásma                     |100        |
-|Šířka pásma |0,1 MB/s za GiB maximálně 5 GB/s     |
+|Frekvence odchozího přenosu dat         |60 MiB/s + 0,06 * zřízené GiB        |
+|Rychlost příchozího přenosu dat| 40 MiB/s + 0,04 * zřízené GiB |
 |Maximální počet snímků        |200       |
 
 #### <a name="premium-file-limits"></a>Omezení souboru Premium
@@ -89,9 +89,9 @@ Azure File Sync byly navržené s cílem neomezené využití, ale neomezené vy
 
 [!INCLUDE [storage-table-scale-targets](../../../includes/storage-tables-scale-targets.md)]
 
-## <a name="see-also"></a>Viz také
+## <a name="see-also"></a>Další informace najdete v tématech
 
-- [Podrobnosti o cenách Storage](https://azure.microsoft.com/pricing/details/storage/)
+- [Podrobnosti o cenách Storage](https://azure.microsoft.com/pricing/details/storage/)
 - [Předplatné Azure a limity, kvóty a omezení](../../azure-subscription-service-limits.md)
 - [Replikace Azure Storage](../storage-redundancy.md)
-- [Kontrolní seznam pro výkon a škálovatelnost Microsoft Azure Storage](../storage-performance-checklist.md)
+- [Kontrolní seznam pro výkon a škálovatelnost služby Microsoft Azure Storage](../storage-performance-checklist.md)

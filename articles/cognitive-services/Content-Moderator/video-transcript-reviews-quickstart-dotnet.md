@@ -10,12 +10,12 @@ ms.subservice: content-moderator
 ms.topic: article
 ms.date: 03/19/2019
 ms.author: sajagtap
-ms.openlocfilehash: 56cd608d337d817b849a0902569e9aeddeca80ab
-ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
+ms.openlocfilehash: a3d362f08765cc80b65659b406a2fac3af71f167
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58758580"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59524493"
 ---
 # <a name="create-video-transcript-reviews-using-net"></a>Vytvoření kontroly přepis videa pomocí .NET
 
@@ -154,7 +154,7 @@ Vytvořit kontrolu videa s **ContentModeratorClient.Reviews.CreateVideoReviews**
 **CreateVideoReviews** má následující povinné parametry:
 1. Řetězec obsahující typ MIME, které by se měly "application/json". 
 1. Název týmu Content Moderatoru.
-1. **IList<CreateVideoReviewsBodyItem>**  objektu. Každý **CreateVideoReviewsBodyItem** objekt představuje přezkoumání videa. Tento rychlý start vytvoří jeden revize najednou.
+1. **IList\<CreateVideoReviewsBodyItem >** objektu. Každý **CreateVideoReviewsBodyItem** objekt představuje přezkoumání videa. Tento rychlý start vytvoří jeden revize najednou.
 
 **CreateVideoReviewsBodyItem** má několik vlastností. Minimálně nastavte následující vlastnosti:
 - **Obsahu**. Adresa URL videa musí zkontrolovat.
@@ -244,15 +244,15 @@ Kromě přidání přepis videa shrnutí, je také přidat výsledek moderován�
 1. Řetězec obsahující typ MIME, které by se měly "application/json". 
 1. Název týmu Content Moderatoru.
 1. ID videa kontroly vrácený **CreateVideoReviews**.
-1. Objekt IList<TranscriptModerationBodyItem>. A **TranscriptModerationBodyItem** má následující vlastnosti:
-1. **Podmínky**. Objekt IList<TranscriptModerationBodyItemTermsItem>. A **TranscriptModerationBodyItemTermsItem** má následující vlastnosti:
+1. Objekt IList\<TranscriptModerationBodyItem >. A **TranscriptModerationBodyItem** má následující vlastnosti:
+1. **Podmínky**. Objekt IList\<TranscriptModerationBodyItemTermsItem >. A **TranscriptModerationBodyItemTermsItem** má následující vlastnosti:
 1. **Index**. Index založený na nule termín.
 1. **Termín**. Řetězec, který obsahuje výraz.
 1. **Časové razítko**. Řetězec, který obsahuje během několika sekund, čas v přepisu, ve kterém se nacházejí podmínky.
 
 Zápis musí být ve formátu WebVTT. Další informace najdete v tématu [WebVTT: Text videa na webu sleduje formátu](https://www.w3.org/TR/webvtt1/).
 
-Přidejte následující definici metody do oboru názvů VideoTranscriptReviews, třídu programu. Tato metoda odešle přepis můžete **ContentModeratorClient.TextModeration.ScreenText** metody. Také převádí výsledek na objekt IList<TranscriptModerationBodyItem>a odešle **AddVideoTranscriptModerationResult**.
+Přidejte následující definici metody do oboru názvů VideoTranscriptReviews, třídu programu. Tato metoda odešle přepis můžete **ContentModeratorClient.TextModeration.ScreenText** metody. Také převádí výsledek na objekt IList\<TranscriptModerationBodyItem > a odešle **AddVideoTranscriptModerationResult**.
 
 ```csharp
 /// <summary>

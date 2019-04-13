@@ -10,12 +10,12 @@ ms.subservice: bing-spell-check
 ms.topic: quickstart
 ms.date: 02/20/2019
 ms.author: aahi
-ms.openlocfilehash: e95006c6448bf1179d33bcd00c16d6e4246db148
-ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
+ms.openlocfilehash: 1cf46fd5ec55f0b240f6bb4adbe49c1344a4663b
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56887314"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59547675"
 ---
 # <a name="quickstart-check-spelling-with-the-bing-spell-check-rest-api-and-python"></a>Rychlý start: Kontrola pravopisu pomocí rozhraní REST API kontrolu pravopisu Bingu a Pythonu.
 
@@ -26,7 +26,6 @@ V tomto rychlém startu můžete provést první volání do rozhraní API Bingu
 * Python [3.x](https://www.python.org)
 
 [!INCLUDE [cognitive-services-bing-spell-check-signup-requirements](../../../../includes/cognitive-services-bing-spell-check-signup-requirements.md)]
-
 
 ## <a name="initialize-the-application"></a>Inicializace aplikace
 
@@ -40,7 +39,7 @@ V tomto rychlém startu můžete provést první volání do rozhraní API Bingu
 2. Vytváření proměnných pro text, který má napsat kontrolu, váš klíč předplatného a váš koncový bod pro kontrolu pravopisu Bingu.
 
     ```python
-    api_key = "enter-your-key-here"
+    api_key = "<ENTER-KEY-HERE>"
     example_text = "Hollo, wrld" # the text to be spell-checked
     endpoint = "https://api.cognitive.microsoft.com/bing/v7.0/SpellCheck"
     ```
@@ -53,7 +52,7 @@ V tomto rychlém startu můžete provést první volání do rozhraní API Bingu
     data = {'text': example_text}
     ```
 
-2. Přidáte parametry pro vaši žádost. Nastavte `mkt` parametr uvedení na trh, a `mode` k `proof`. 
+2. Přidáte parametry pro vaši žádost. Připojit na trhu kódu po `mkt=`. Kód na trhu je země, které provedete žádost z. Navíc vaše režimu kontroly pravopisu po připojení `&mode=`. Režim je buď `proof` (zachytí většina pravopisné nebo gramatické chyby) nebo `spell` (zachycuje většinu pravopisu, ale ne tolik gramatické chyby).
 
     ```python
     params = {
@@ -80,7 +79,7 @@ V tomto rychlém startu můžete provést první volání do rozhraní API Bingu
     ```
 
 2. Získání odpovědi JSON a vytisknout je.
-    
+
     ```python
     json_response = response.json()
     print(json.dumps(json_response, indent=4))
@@ -88,7 +87,7 @@ V tomto rychlém startu můžete provést první volání do rozhraní API Bingu
 
 ## <a name="example-json-response"></a>Příklad JSON odpovědi
 
-Úspěšná odpověď se vrátí ve formátu JSON, jak je znázorněno v následujícím příkladu: 
+Úspěšná odpověď se vrátí ve formátu JSON, jak je znázorněno v následujícím příkladu:
 
 ```json
 {

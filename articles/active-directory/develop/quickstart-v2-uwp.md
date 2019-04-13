@@ -13,16 +13,16 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 04/10/2019
+ms.date: 04/12/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8c61da6a55b1f4502deee056b29fdbc22ef33514
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.openlocfilehash: e7ed2830b704d379e2ecc5a5e548f831800af56d
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/11/2019
-ms.locfileid: "59490614"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59526380"
 ---
 # <a name="quickstart-call-the-microsoft-graph-api-from-a-universal-windows-platform-uwp-application"></a>Rychlý start: Volání rozhraní Microsoft Graph API z aplikace pro univerzální platformu Windows (UPW)
 
@@ -65,14 +65,14 @@ Tento rychlý start obsahuje vzorový kód, který předvádí, jak může aplik
 > #### <a name="step-1-configure-your-application"></a>Krok 1: Konfigurace aplikace
 > Aby vzorový kód pro tento rychlý start fungoval, musíte jako identifikátor URI pro přesměrování přidat **urn:ietf:wg:oauth:2.0:oob**.
 > > [!div renderon="portal" id="makechanges" class="nextstepaction"]
-> > [Provedení této změny pro mě]()
+> > [Udělat změnu za mě]()
 >
 > > [!div id="appconfigured" class="alert alert-info"]
-> > ![Už nakonfigurovali](media/quickstart-v2-uwp/green-check.png) vaše aplikace je nakonfigurovaná s těmito atributy.
+> > ![Už nakonfigurované](media/quickstart-v2-uwp/green-check.png) Vaše aplikace je nakonfigurovaná s těmito atributy.
 
 #### <a name="step-2-download-your-visual-studio-project"></a>Krok 2: Stáhněte si svůj projekt sady Visual Studio
 
- - [Stáhněte si projekt sady Visual Studio 2017](https://github.com/Azure-Samples/active-directory-dotnet-native-uwp-v2/archive/msal3x.zip)
+ - [Stažení projektu sady Visual Studio 2017](https://github.com/Azure-Samples/active-directory-dotnet-native-uwp-v2/archive/msal3x.zip)
 
 #### <a name="step-3-configure-your-visual-studio-project"></a>Krok 3: Konfigurace projektu sady Visual Studio
 
@@ -86,7 +86,7 @@ Tento rychlý start obsahuje vzorový kód, který předvádí, jak může aplik
 
 > [!div renderon="docs"]
 > Kde:
-> - `Enter_the_Application_Id_here` -je Id aplikace pro aplikace, které jste zaregistrovali.
+> - `Enter_the_Application_Id_here` je ID aplikace, kterou jste zaregistrovali.
 >
 > > [!TIP]
 > > Pokud chcete najít hodnoty z *ID aplikace*, přejděte na stránku **přehled** stránky
@@ -108,7 +108,7 @@ Tato část obsahuje další informace o tomto rychlém startu.
 Knihovna MSAL ([Microsoft.Identity.Client](https://www.nuget.org/packages/Microsoft.Identity.Client)) je knihovna používaná k přihlášení uživatelů a požádat o tokeny zabezpečení. Tokeny zabezpečení používané pro přístup k rozhraní API chráněné službou Microsoft Identity platform pro vývojáře. MSAL můžete nainstalovat spuštěním následujícího příkazu v *Konzole Správce balíčků* v sadě Visual Studio:
 
 ```powershell
-Install-Package Microsoft.Identity.Client -Pre
+Install-Package Microsoft.Identity.Client -IncludePrerelease
 ```
 
 ### <a name="msal-initialization"></a>Inicializace knihovny MSAL
@@ -145,14 +145,13 @@ Některých situacích vyžadovat vynucuje uživatelé komunikovat s Microsoft i
 - Když je nutné dvoufaktorové ověřování
 
 ```csharp
-authResult = await App.PublicClientApp.AcquireToken(scopes, this)
-                       .ExecuteAsync();
+authResult = await App.PublicClientApp.AcquireTokenInteractive(scopes)
+                      .ExecuteAsync();
 ```
 
 > |Kde:||
 > |---------|---------|
 > | `scopes` | Obsahuje požadované obory, jako například `{ "user.read" }` pro Microsoft Graph nebo `{ "api://<Application ID>/access_as_user" }` pro vlastní webová rozhraní API. |
-> | `this`| Zastupuje okno WPF, který se použije na střed dialogového okna přihlášení
 
 #### <a name="get-a-user-token-silently"></a>Získání tokenu uživatele bez upozornění
 
@@ -177,4 +176,4 @@ authResult = await App.PublicClientApp.AcquireTokenSilent(scopes, firstAccount)
 Vyzkoušejte kurz pro plochu Windows, kde najdete podrobný návod k vytváření aplikací a nových funkcí, včetně úplného popisu tohoto rychlého startu.
 
 > [!div class="nextstepaction"]
-> [UPW – kurz volání rozhraní Graph API](tutorial-v2-windows-uwp.md)
+> [Kurz pro UWP – volání rozhraní Graph API](tutorial-v2-windows-uwp.md)

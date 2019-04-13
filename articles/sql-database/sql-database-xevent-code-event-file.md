@@ -12,12 +12,12 @@ ms.author: genemi
 ms.reviewer: jrasnik
 manager: craigg
 ms.date: 03/12/2019
-ms.openlocfilehash: 0a9472dec9b76dfbde1690e11f13836746b0dfaa
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 983a090942a77c2f40e0136b00acdc0a3d49c571
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57862892"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59528335"
 ---
 # <a name="event-file-target-code-for-extended-events-in-sql-database"></a>Cílový kód souboru události pro rozšířené události ve službě SQL Database
 
@@ -463,9 +463,9 @@ GO
 
 ## <a name="output"></a>Výstup
 
-Po dokončení skriptu jazyka Transact-SQL, klikněte na buňku pod **event_data_XML** záhlaví sloupce. Jeden **<event>** element se zobrazuje, které zobrazuje jeden příkaz UPDATE.
+Po dokončení skriptu jazyka Transact-SQL, klikněte na buňku pod **event_data_XML** záhlaví sloupce. Jeden  **\<události >** element se zobrazuje, které zobrazuje jeden příkaz UPDATE.
 
-Tady je jeden **<event>** element, který byl vygenerován při testování:
+Tady je jeden  **\<události >** element, který byl vygenerován při testování:
 
 
 ```xml

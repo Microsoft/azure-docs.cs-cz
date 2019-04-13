@@ -13,17 +13,17 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/28/2018
 ms.author: bwren
-ms.openlocfilehash: 1f55e03d9a925bf939d627f376d29edf27461e74
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 8fcab1ead4ab6135e715dc173829178e43f8af2a
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56001115"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59522706"
 ---
 # <a name="windows-event-log-data-sources-in-azure-monitor"></a>Zdroje dat protokolu událostí Windows ve službě Azure Monitor
 Protokoly událostí Windows jsou jedním z nejčastěji používaných [zdroje dat](agent-data-sources.md) pro shromažďování dat pomocí agentů Windows, protože mnoho aplikací se zapisují do protokolu událostí Windows.  Kromě zadání jakékoli vlastní protokoly vytvořené pomocí aplikací, které potřebujete k monitorování může shromažďovat události z standardní protokoly jako je například systém a aplikace.
 
-![Události Windows](media/data-sources-windows-events/overview.png)     
+![Události systému Windows](media/data-sources-windows-events/overview.png)     
 
 ## <a name="configuring-windows-event-logs"></a>Protokoly událostí konfigurace Windows
 Konfigurovat protokoly událostí Windows z [dat nabídky v upřesňujícím nastavení](agent-data-sources.md#configuring-data-sources).
@@ -54,7 +54,7 @@ Záznamy událostí Windows mají typ **události** a mít vlastnosti v následu
 | EventLevelName |Závažnost události v textové podobě. |
 | EventLog |Název shromážděné události z protokolu událostí. |
 | ParameterXml |Hodnoty parametru událostí ve formátu XML. |
-| ManagementGroupName |Název skupiny pro správu pro agenty System Center Operations Manageru.  Pro ostatní agenty tato hodnota je AOI-<workspace ID> |
+| ManagementGroupName |Název skupiny pro správu pro agenty System Center Operations Manageru.  Pro ostatní agenty tato hodnota je `AOI-<workspace ID>` |
 | RenderedDescription |Popis události s hodnotami parametrů |
 | Zdroj |Zdroj události. |
 | SourceSystem |Typ agenta událost byla shromážděna z. <br> OpsManager – Windows agent, buď přímé připojení nebo spravované nástroje Operations Manager <br> Linux – všichni agenti systému Linux  <br> AzureStorage – diagnostiky Azure |

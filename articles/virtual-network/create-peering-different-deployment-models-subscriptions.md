@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/15/2017
 ms.author: jdial;anavin
-ms.openlocfilehash: c9247b37e1e475892a1561c5667dc25275f67327
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 1a066e6b75d527dcdf1b211c0ebb76a2d4520eb7
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58104110"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59528202"
 ---
 # <a name="create-a-virtual-network-peering---different-deployment-models-and-subscriptions"></a>Vytvoření partnerského vztahu virtuálních sítí – různé modely nasazení a předplatná
 
@@ -71,7 +71,7 @@ Tento kurz používá různé účty pro každé předplatné. Pokud používát
     - **Umístění**: *USA – východ*
 
 14. V **vyhledat prostředky** pole v horní části portálu zadejte *myVnetB*. Klikněte na tlačítko **myVnetB** když se zobrazí ve výsledcích hledání. Zobrazí se okno pro **myVnetB** virtuální sítě.
-15. V **myVnetB** okno, které se zobrazí, klikněte na tlačítko **vlastnosti** z svislý seznam možností na levé straně okna. Kopírovat **ID prostředku**, který se používá v pozdější fázi. Podobně jako v následujícím příkladu je ID prostředku: /subscriptions/<Subscription ID>/resourceGroups/myResourceGroupB/providers/Microsoft.ClassicNetwork/virtualNetworks/myVnetB
+15. V **myVnetB** okno, které se zobrazí, klikněte na tlačítko **vlastnosti** z svislý seznam možností na levé straně okna. Kopírovat **ID prostředku**, který se používá v pozdější fázi. Podobně jako v následujícím příkladu je ID prostředku: `/subscriptions/<Subscription ID>/resourceGroups/myResourceGroupB/providers/Microsoft.ClassicNetwork/virtualNetworks/myVnetB`
 16. Pro, proveďte kroky 5 až 9 myVnetB zadávání **UserA** v kroku 8.
 17. Odhlaste se z portálu jako UserB a přihlaste se jako UserA.
 18. V **vyhledat prostředky** pole v horní části portálu zadejte *myVnetA*. Klikněte na tlačítko **myVnetA** když se zobrazí ve výsledcích hledání. Zobrazí se okno pro **myVnet** virtuální sítě.

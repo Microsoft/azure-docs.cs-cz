@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 02/19/2019
+ms.date: 04/01/2019
 ms.author: diberry
-ms.openlocfilehash: b9ddd82d18b7f67f61e5c1589511ea6db4fa18a3
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: ea9a2df1f06ba6836ef88bc57dc3f95fd31e1ee9
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58100288"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59526558"
 ---
 # <a name="tutorial-extract-names-with-simple-entity-and-a-phrase-list"></a>Kurz: Extrahovat názvy s jednoduchou entitu a seznam fráze
 
@@ -48,7 +48,7 @@ Jednoduchá entita je vhodná pro tento typ dat, když platí následující:
 * Data nejsou správně naformátovaná, jako je tomu například u regulárních výrazů.
 * Data nejsou běžná, nejedná se například o předem připravenou entitu telefonních čísel nebo dat.
 * Data přesně neodpovídají seznamu známých slov, jako je tomu například u entity seznamu.
-* Data neobsahují jiné datové položky, nejedná se například o složenou nebo hierarchickou entitu.
+* Data neobsahují dalších datových položek, jako je například složené entity nebo kontextové role.
 
 Představte si následující promluvy z chatbota:
 

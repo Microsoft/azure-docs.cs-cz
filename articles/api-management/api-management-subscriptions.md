@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/14/2018
 ms.author: apimpm
-ms.openlocfilehash: 1f7c2bde631e42ac94ce4c0394d13e369f6ea23f
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.openlocfilehash: 6f577530c42952c6340a15110bcd37383a5fca57
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54049754"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59526584"
 ---
 # <a name="subscriptions-in-azure-api-management"></a>Předplatná ve službě Azure API Management
 
@@ -32,7 +32,7 @@ Pokud chcete získat klíč předplatného pro přístup k rozhraní API, se vy�
 
 > [!TIP]
 > API Management podporuje také další mechanismy pro zabezpečení přístupu k rozhraní API, včetně následujících příkladech:
-> - [OAuth 2.0](api-management-howto-protect-backend-with-aad.md)
+> - [OAuth2.0](api-management-howto-protect-backend-with-aad.md)
 > - [Klientské certifikáty](api-management-howto-mutual-certificates-for-clients.md)
 > - [Přidávání na seznam povolených IP](https://docs.microsoft.com/azure/api-management/api-management-access-restriction-policies#RestrictCallerIPs)
 
@@ -50,9 +50,6 @@ Tradičně, předplatná ve službě API Management souvisely vždy pomocí jedi
 > V některých případech vydavatelé rozhraní API může být vhodné publikování produktu rozhraní API veřejně bez nutnosti předplatných. Můžete zrušit **vyžadují předplatné** možnost **nastavení** stránky produktu na webu Azure Portal. Všechna rozhraní API v rámci produktu v důsledku toho lze přistupovat bez klíče rozhraní API.
 
 ### <a name="subscriptions-for-all-apis-or-an-individual-api"></a>Předplatná pro všechna rozhraní API nebo jednotlivé rozhraní API
-
-> [!NOTE]
-> Tato funkce je aktuálně dostupná jenom na úrovni řízení spotřeby API.
 
 Když jsme představili [spotřeby](https://aka.ms/apimconsumptionblog) úroveň služby API Management jsme provedli několik změn zefektivnit správu klíčů:
 - Nejprve jsme přidali dvě další obory předplatného: všechna rozhraní API a jediné rozhraní API. Obor předplatného už nejsou omezené na produktu rozhraní API. Nyní je možné vytvořit klíče, které udělit přístup k rozhraní API nebo všechna rozhraní API v rámci instance služby API Management, aniž by bylo nutné vytvořit produkt a do ní nejprve přidat rozhraní API. Kromě toho každá instance služby API Management nyní zahrnuje předplatné neměnné a všechna rozhraní API. Toto předplatné usnadňuje a jednodušší kvůli testování a ladění rozhraní API v testovací konzole.

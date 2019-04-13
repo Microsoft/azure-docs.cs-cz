@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 03/29/2019
 ms.author: spelluru
-ms.openlocfilehash: 00c32d1aaace765a1b46d5b25e82bab6e937d2ed
-ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
+ms.openlocfilehash: 66293d6d6d0e15af7d879e6784d85f9e85457aad
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58649702"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59544326"
 ---
 # <a name="tutorial-set-up-a-classroom-lab"></a>Kurz: Nastavení testovacího prostředí v učebně 
 V tomto kurzu nastavíte testovací prostředí v učebně pomocí virtuálních počítačů, které používají studenti v učebně.  
@@ -39,7 +39,7 @@ Vlastník testovacího prostředí můžete přidat ostatním uživatelům **Aut
 
 ## <a name="create-a-classroom-lab"></a>Vytvoření testovacího prostředí v učebně
 
-1. Přejděte na [web Azure Lab Services](https://labs.azure.com). 
+1. Přejděte na [web Azure Lab Services](https://labs.azure.com). Všimněte si, že aplikace Internet Explorer 11 se ještě nepodporuje. 
 2. Vyberte **Sign in** (Přihlásit se) a zadejte své přihlašovací údaje. Azure Lab Services podporuje účty organizací a účty Microsoft. 
 3. V okně **New Lab** (Nové testovací prostředí) proveďte následující akce: 
     1. Zadejte **název** testovacího prostředí. 

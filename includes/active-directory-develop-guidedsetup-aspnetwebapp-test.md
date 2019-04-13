@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 04/19/2018
 ms.author: jmprieur
 ms.custom: include file
-ms.openlocfilehash: 9b88a6f3f7e17cfc549b30d1f0d80d4cdf1c3e2d
-ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
+ms.openlocfilehash: 8795c9ab0a4dbb76327d0ead48ed33fb0cff9e86
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58919185"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59528526"
 ---
 ## <a name="test-your-code"></a>Testování kódu
 
@@ -47,7 +47,7 @@ Až přejdete na zobrazení kontroleru, byste měli vidět tabulku, která obsah
 |---|---|---|
 |**Název** |Celé jméno uživatele | Uživatel a příjmení název.
 |**Uživatelské jméno** |Uživatel<span>@domain.com</span> | Uživatelské jméno, který se používá k identifikaci uživatele.
-|**Subjekt** |Subjekt |Řetězec, který jednoznačně identifikuje uživatele na webu.|
+|**Předmět** |Subjekt |Řetězec, který jednoznačně identifikuje uživatele na webu.|
 |**ID tenanta** |Guid | A **guid** , který jedinečně reprezentuje uživatele Azure AD organizace.|
 
 Kromě toho byste měli vidět tabulku všechny deklarace identity, které jsou v žádosti o ověření. Další informace najdete v tématu [seznam deklarací identity, které jsou v tokenu ID pro Azure AD](https://docs.microsoft.com/azure/active-directory/develop/active-directory-token-and-claims).
@@ -96,5 +96,3 @@ Můžete omezit přístup k přihlášení k pouze uživatelské účty, které 
 #### <a name="option-3-use-a-custom-method-to-validate-issuers"></a>Možnost 3: Použít vlastní metodu k ověření vystavitele
 
 Můžete implementovat vlastní metodu k ověření vystavitele s použitím **IssuerValidator** parametru. Další informace o tom, jak tento parametr použijte, přečtěte si informace o [parametry tokenvalidationparameters třída](/previous-versions/visualstudio/dn464192(v=vs.114)).
-
-[!INCLUDE [Help and support](./active-directory-develop-help-support-include.md)]

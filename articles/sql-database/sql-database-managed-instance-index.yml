@@ -115,7 +115,7 @@ sections:
             values:
               - href: /azure/sql-database/sql-database-managed-instance-get-started
               - href: null
-              - href: 'https://blogs.msdn.microsoft.com/sqlserverstorageengine/20../../quick-start-script-setup-azure-network-environment-for-azure-sql-managed-instance/'
+              - href: null
               - href: 'https://github.com/Azure/azure-quickstart-templates/tree/master/101-sql-managed-instance-azure-environment'
           - title: Obnovení k určitému bodu v čase
             values:
@@ -127,7 +127,7 @@ sections:
             values:
               - href: null
               - href: null
-              - href: 'https://blogs.msdn.microsoft.com/sqlserverstorageengine/20../../recreate-dropped-database-on-azure-sql-managed-instance/'
+              - href: 'https://techcommunity.microsoft.com/t5/Azure-SQL-Database/Recreate-dropped-database-on-Azure-SQL-Managed-Instance/ba-p/386285'
               - href: null
   - title: Podrobné kurzy a studijní materiály
     items:
@@ -140,11 +140,11 @@ sections:
           - html: 'Další informace o <a href="/azure/sql-database/sql-database-managed-instance-resource-limits">vlastností hardwaru a omezení</a>, <a href="/azure/sql-database/sql-database-managed-instance-transact-sql-information">rozdílů jazyka Transact-SQL</a>, a <a href="/azure/sql-database/sql-database-managed-instance-create-manage">příkazů jazyka Transact-SQL, PowerShell, rozhraní API rozhraní příkazového řádku Azure pro konfiguraci spravovaná instance<a/>.'
           - html: '<a href="https://medium.com/azure-sqldb-managed-instance/the-ultimate-guide-for-creating-and-configuring-azure-sql-managed-instance-environment-91ff58c0be01">Konfigurace</a> virtuální síť Azure, kam se nasadí spravovanou instanci.'
           - html: '<a href="https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-vnet-configuration#validate-and-modify-an-existing-virtual-network">Ověření</a> , lze použít existující virtuální sítě Azure k nasazení spravované instance.'
-          - html: 'Připojte se k instanci pomocí <a href="https://blogs.msdn.microsoft.com/sqlserverstorageengine/20../../the-easiest-way-to-create-azure-vm-that-can-access-your-azure-sql-managed-instance/">virtuálního počítače Azure</a> nebo <a href="/azure/sql-database/sql-database-managed-instance-configure-p2s">připojeníPoint-to-site</a>, nebo <a href="https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-connect-app">aplikací</a>.'
+          - html: 'Připojte se k instanci pomocí <a href="https://techcommunity.microsoft.com/t5/Azure-SQL-Database/The-easiest-way-to-create-Azure-VM-that-can-access-your-Azure/ba-p/386247">virtuálního počítače Azure</a> nebo <a href="/azure/sql-database/sql-database-managed-instance-configure-p2s">připojeníPoint-to-site</a>, nebo <a href="https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-connect-app">aplikací</a>.'
           - html: 'Ověřte, že databáze můžete použít k migraci <a href="https://www.microsoft.com/download/details.aspx?id=53595">Data Migration Assistant</a> nebo <a href="https://blogs.msdn.microsoft.com/datamigration/20../../release-database-experimentation-assistant-dea-v2-6/">Pomocník pro experimentování ve službě Database</a>.'
           - html: Přeneste databází do spravované instance pomocí <a href="/azure/sql-database/sql-database-managed-instance-get-started-restore">nativní obnovení</a> nebo <a href="/azure/dms/tutorial-sql-server-managed-instance-online">Database Migration Service</a>.
           - html: 'Přesuňte své balíčky SSIS do <a href="/azure/data-factory/tutorial-deploy-ssis-packages-azure">Azure Data Factory</a>, SSAS tabulkových modelů za účelem <a href="https://azure.microsoft.com/resources/videos/azure-analysis-services-moving-models/">službu Azure Analysis Services</a>, a sestavy SSRS <a href="https://docs.microsoft.com/business-applications-release-notes/april18/power-bi/service/sql-server-reporting-services-ssrs-reports-power-bi-premium">Power BI Premium</a>.'
-          - html: 'Další informace o vrstvě úložiště v <a href="https://medium.com/azure-sqldb-managed-instance/file-layout-in-general-purpose-azure-sql-managed-instance-cf21fff9c76c">úrovni General Purpose</a> a použít <a href="https://blogs.msdn.microsoft.com/sqlcat/20../../storage-performance-best-practices-and-considerations-for-azure-sql-db-managed-instance-general-purpose">úložiště osvědčené postupy z hlediska výkonu a důležité informace pro úroveň služby pro obecné účely</a>.'
+          - html: 'Další informace o vrstvě úložiště v <a href="https://medium.com/azure-sqldb-managed-instance/file-layout-in-general-purpose-azure-sql-managed-instance-cf21fff9c76c">úrovni General Purpose</a> a použít <a href="https://techcommunity.microsoft.com/t5/DataCAT/Storage-performance-best-practices-and-considerations-for-Azure/ba-p/305525">úložiště osvědčené postupy z hlediska výkonu a důležité informace pro úroveň služby pro obecné účely</a>.'
           - html: 'Najít osvědčené postupy a doporučení pro <a href="https://www.youtube.com/watch?v=vO6k05Ox1iI">zabezpečení vaší instance</a>.'
           - html: 'Další informace najdete <a href="sql-database-howto-managed-instance.md">provede postupy</a> , která můžete nakonfigurovat spravované instance.'
   - title: Referenční informace
@@ -154,8 +154,10 @@ sections:
         className: cardsD
         items:
           - title: Blogy
-            html: '<p><a href="https://blogs.msdn.microsoft.com/sqlserverstorageengine/tag/managed-instance/">MSDN</a></p><p><a href="https://medium.com/azure-sqldb-managed-instance">Střednědobé používání</a></p>'
+            html: '<p><a href="https://techcommunity.microsoft.com/t5/Azure-SQL-Database/bg-p/Azure-SQL-Database/label-name/SQLServerStorageEngine">Techcommunity</a></p><p><a href="https://medium.com/azure-sqldb-managed-instance">Střední</a></p>'
           - title: Nejčastější dotazy
             html: '<p><a href="https://stackoverflow.com/questions/tagged/azure-sql-managed-instance">Stack Overflow</a></p>'
+          - title: Komunity channel
+            html: '<p><a href="https://sqlcommunity.slack.com/messages/CH854GD7D/">Komunita SQL (spravované Instance)</a></p>'
           - title: Školicí materiály
             html: '<p><a href="https://www.microsoft.com/handsonlabs/selfpacedlabs">Praktická cvičení</a></p><p><a href="https://www.microsoft.com/handsonlabs/instructorledlabs">Instrukce vedla labs</a></p>'

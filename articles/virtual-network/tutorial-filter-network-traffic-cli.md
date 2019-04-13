@@ -17,12 +17,12 @@ ms.workload: infrastructure
 ms.date: 03/30/2018
 ms.author: jdial
 ms.custom: ''
-ms.openlocfilehash: 630eddc8494b32d93035913bcb2b55f00153b1be
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: 2c24634a42fd420eae204437418b82479869bbe5
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55755505"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59525535"
 ---
 # <a name="filter-network-traffic-with-a-network-security-group-using-the-azure-cli"></a>Filtrování síťového provozu se skupinou zabezpečení sítě pomocí Azure CLI
 
@@ -196,7 +196,7 @@ Vytvoření virtuálního počítače trvá několik minut. Poznámka: Po vytvo�
 
 ## <a name="test-traffic-filters"></a>Testování filtrů provozu
 
-Použijte k vytvoření relace SSH pomocí následujícího příkazu *myVmMgmt* virtuálního počítače. Nahraďte *<publicIpAddress>* veřejnou IP adresou vašeho virtuálního počítače. V předchozím příkladu je IP adresa *13.90.242.231*.
+Použijte k vytvoření relace SSH pomocí následujícího příkazu *myVmMgmt* virtuálního počítače. Nahraďte  *\<publicIpAddress >* veřejnou IP adresou vašeho virtuálního počítače. V předchozím příkladu je IP adresa *13.90.242.231*.
 
 ```bash 
 ssh azureuser@<publicIpAddress>

@@ -12,18 +12,18 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 3/25/2019
 ms.author: rohink
-ms.openlocfilehash: 78c66ac25e9d20d9202236407d42f815879cd3f2
-ms.sourcegitcommit: ef20235daa0eb98a468576899b590c0bc1a38394
+ms.openlocfilehash: fe63b76589c841706ae335c61e56a57c3c33fb3e
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
-ms.locfileid: "59426422"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59527179"
 ---
 # <a name="name-resolution-for-resources-in-azure-virtual-networks"></a>Překlad názvů pro prostředky ve virtuálních sítích Azure
 
 V závislosti na tom, jak používat Azure k hostování IaaS, PaaS a hybridní řešení může být potřeba povolit virtuální počítače (VM) a další prostředky nasazené ve virtuální síti komunikovat mezi sebou. I když můžete povolit komunikaci s použitím IP adresy, je mnohem jednodušší použít názvy, které lze snadno zapamatuje a nemění. 
 
-Pokud prostředky nasazené ve virtuálních sítích musí překládat názvy domén na interní IP adresy, používat jeden ze dvou způsobů:
+Když prostředky nasazené ve virtuálních sítích potřebují překládat názvy domén na interní IP adresy, můžou k tomu použít jednu ze dvou metod:
 
 * [Překlad názvů poskytovaných Azure](#azure-provided-name-resolution)
 * [Překlad názvů, který používá vlastní server DNS](#name-resolution-that-uses-your-own-dns-server) (která může být předávání dotazů na servery DNS, které poskytuje Azure)
@@ -147,7 +147,7 @@ Předávání DNS také umožňuje překlad názvů DNS mezi virtuálními sít�
 
 > [!NOTE]
 > Role instance může provádět překlad názvů virtuálních počítačů ve stejné virtuální síti. Dělá to pomocí plně kvalifikovaný název, který se skládá z názvu hostitele Virtuálního počítače a **internal.cloudapp.net** příponu DNS. V takovém případě překladu je však pouze úspěšné, pokud má název virtuálního počítače, které jsou definovány v instanci role [schéma rolí (soubor .cscfg)](https://msdn.microsoft.com/library/azure/jj156212.aspx).
-> <Role name="<role-name>" vmName="<vm-name>">
+> `<Role name="<role-name>" vmName="<vm-name>">`
 >
 > Instance rolí, které je potřeba provést překlad názvů virtuálních počítačů v jiné virtuální síti (plně kvalifikovaný název domény s použitím **internal.cloudapp.net** přípona) muset učinit pomocí metody popsané v této části (vlastní servery DNS předávání mezi dvě virtuální sítě).
 >

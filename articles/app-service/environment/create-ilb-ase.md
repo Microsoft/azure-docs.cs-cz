@@ -14,12 +14,12 @@ ms.topic: quickstart
 ms.date: 06/12/2018
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: dcb38d839017d1c4ea5b6714f7c900c476ddcd6b
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.openlocfilehash: 01d982d91d772ccfd468ccdac6391f971be4f43b
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/11/2019
-ms.locfileid: "59494657"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59546538"
 ---
 # <a name="create-and-use-an-internal-load-balancer-with-an-app-service-environment"></a>Vytvoření a používání interního nástroje pro vyrovnávání zatížení ve službě App Service Environment #
 
@@ -170,7 +170,7 @@ Pokud chcete nahrát vlastní certifikáty a otestovat přístup, postupujte tak
 
 4. Nastavte službu DNS pro doménu vaší služby ASE. V doméně ve vaší službě DNS můžete použít zástupný znak. Provedete několik jednoduchých testů, upravte soubor hostitelů na vašem virtuálním počítači nastavit název aplikace na virtuální IP adresu:
 
-    a. Pokud má vaše služba ASE název domény _. ilbase.com_ a vytvoříte aplikaci s názvem _mytestapp_, bude _mytestapp.ilbase.com_. Adresu _mytestapp.ilbase.com_ potom nastavíte tak, aby se překládala na adresu interního nástroje pro vyrovnávání zatížení. (Ve Windows je soubor hostitelů v adresáři _C:\Windows\System32\drivers\etc\_.)
+    a. Pokud má vaše služba ASE název domény _. ilbase.com_ a vytvoříte aplikaci s názvem _mytestapp_, bude _mytestapp.ilbase.com_. Adresu _mytestapp.ilbase.com_ potom nastavíte tak, aby se překládala na adresu interního nástroje pro vyrovnávání zatížení. (Na Windows, je soubor hostitelů v _C:\Windows\System32\drivers\etc\\_.)
 
     b. Pokud chcete provést test publikování nasazení webu nebo získat přístup k rozšířené konzole, vytvořte záznam pro adresu _mytestapp.scm.ilbase.com_.
 

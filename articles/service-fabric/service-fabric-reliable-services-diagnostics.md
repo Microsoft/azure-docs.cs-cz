@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 8/24/2018
 ms.author: dekapur
-ms.openlocfilehash: 96fc58ca8456e9a2e539e432f0ed85f6edc1a54f
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: f49176f944aa2abfa1d355ce0bd207d1b544c275
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58664111"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59527046"
 ---
 # <a name="diagnostic-functionality-for-stateful-reliable-services"></a>Diagnostické funkce pro stavové služby Reliable Services
 Azure Service Fabric stavová spolehlivé služby StatefulServiceBase třídy vysílá [EventSource](https://msdn.microsoft.com/library/system.diagnostics.tracing.eventsource.aspx) události, které slouží k ladění služby, poskytují přehled o fungování modul runtime je a odstraňování potíží.
@@ -106,7 +106,7 @@ Modul runtime Reliable Services generuje následující události v rámci `Serv
 | --- | --- |
 | Operace zahájení transakce/s | Počet nových zápisu transakce vytvořené za sekundu.|
 | Operace s transakcemi/s | Počet operací přidání, aktualizace nebo odstranění provedených na spolehlivé kolekce za sekundu.|
-| Střední Latence vyprázdnění (ms) | Počet bajtů vyprazdňuje na disk transakční Replikátor za sekundu |
+| Vyprázdněné bajty protokolu/s | Počet bajtů vyprazdňuje na disk transakční Replikátor za sekundu |
 | Omezené operace/s | Počet operací odmítl za sekundu, které transakční Replikátor kvůli omezování. |
 | Střední Ms transakce na potvrzení | Latence průměrné potvrzení na transakci v milisekundách |
 | Střední Latence vyprázdnění (ms) | Průměrná doba trvání vyprázdnění operací disku Inicializuje transakční Replikátor v milisekundách |

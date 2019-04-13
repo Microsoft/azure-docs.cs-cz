@@ -12,12 +12,12 @@ author: sharonlo101
 ms.author: shlo
 ms.reviewer: ''
 manager: craigg
-ms.openlocfilehash: 77eb109b8826bcb6136e91ac610235f74551cecb
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: d2e51551643e154714b9d2368e63d7af9ebfa204
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57853082"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59526907"
 ---
 # <a name="visual-authoring-in-azure-data-factory"></a>Vizuální vytváření obsahu v Azure Data Factory
 Azure Data Factory uživatelské rozhraní rozhraní (UX) umožňuje vizuálně vytvoříte a nasadíte prostředky pro službu data factory bez nutnosti psát jakýkoli kód. Můžete přetáhnout aktivity na plátno kanálu, provádějte testovací běhy, využívejte iterativní ladění a nasadit a monitorovat spuštění kanálů. Existují dvě metody pro provádění vizuálního vytváření pomocí uživatelského rozhraní:
@@ -61,12 +61,12 @@ V podokně se zobrazí následující kód úložišť Azure nastavení úloži�
 | Nastavení | Popis | Hodnota |
 |:--- |:--- |:--- |
 | **Typ úložiště** | Typ úložiště kódu úložiště Azure.<br/>**Poznámka:** GitHub se momentálně nepodporuje. | Azure úložišť Git |
-| **Azure Active Directory** | Název tenanta Azure AD. | <your tenant name> |
-| **Organizace úložiště Azure** | Název organizace vašich úložišť Azure. Můžete vyhledat název organizace vašich úložišť Azure na `https://{organization name}.visualstudio.com`. Je možné [Přihlaste se k vaší organizaci Azure úložišť](https://www.visualstudio.com/team-services/git/) pro přístup k profilu Visual Studio a zobrazit projekty a úložiště. | <your organization name> |
-| **ProjectName** | Název projektu úložiště Azure. Můžete vyhledat název projektu úložiště Azure na `https://{organization name}.visualstudio.com/{project name}`. | <your Azure Repos project name> |
-| **RepositoryName** | Název úložiště kódu vašeho úložiště Azure. Projekty Azure úložiště obsahovat úložiště Git pro správu zdrojového kódu, jak se projekt rozrůstá. Můžete vytvořit nové úložiště nebo použít existující úložiště, který je již ve vašem projektu. | <your Azure Repos code repository name> |
-| **Spolupráce větve** | Větvi úložiště Azure spolupráci, které slouží k publikování. Ve výchozím nastavení je to `master`. Toto nastavení změňte, v případě, že chcete publikovat prostředky z jiné větve. | <your collaboration branch name> |
-| **Kořenová složka** | Kořenové složky ve vaší větvi spolupráci úložiště Azure. | <your root folder name> |
+| **Azure Active Directory** | Název tenanta Azure AD. | `<your tenant name>` |
+| **Organizace úložiště Azure** | Název organizace vašich úložišť Azure. Můžete vyhledat název organizace vašich úložišť Azure na `https://{organization name}.visualstudio.com`. Je možné [Přihlaste se k vaší organizaci Azure úložišť](https://www.visualstudio.com/team-services/git/) pro přístup k profilu Visual Studio a zobrazit projekty a úložiště. | `<your organization name>` |
+| **ProjectName** | Název projektu úložiště Azure. Můžete vyhledat název projektu úložiště Azure na `https://{organization name}.visualstudio.com/{project name}`. | `<your Azure Repos project name>` |
+| **RepositoryName** | Název úložiště kódu vašeho úložiště Azure. Projekty Azure úložiště obsahovat úložiště Git pro správu zdrojového kódu, jak se projekt rozrůstá. Můžete vytvořit nové úložiště nebo použít existující úložiště, který je již ve vašem projektu. | `<your Azure Repos code repository name>` |
+| **Spolupráce větve** | Větvi úložiště Azure spolupráci, které slouží k publikování. Ve výchozím nastavení je to `master`. Toto nastavení změňte, v případě, že chcete publikovat prostředky z jiné větve. | `<your collaboration branch name>` |
+| **Kořenová složka** | Kořenové složky ve vaší větvi spolupráci úložiště Azure. | `<your root folder name>` |
 | **Importovat do úložiště stávající prostředky Data Factory** | Určuje, jestli se má naimportovat stávající prostředky data factory z uživatelského rozhraní **plátno pro vytváření obsahu** do úložiště Git v úložišti Azure. Vyberte pole pro import prostředky data factory do přidružené úložiště Git ve formátu JSON. Tato akce exportuje každého prostředku zvlášť (to znamená, propojené služby a datové sady se exportují do samostatných JSONs). Když toto políčko není zaškrtnuto, nenaimportují se existující prostředky. | Vybrané (výchozí) |
 
 #### <a name="configuration-method-2-azure-repos-git-repo-ux-authoring-canvas"></a>Metoda konfigurace 2 (úložiště Git v úložišti Azure): UX plátno pro vytváření obsahu

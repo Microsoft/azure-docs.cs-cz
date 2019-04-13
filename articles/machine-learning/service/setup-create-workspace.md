@@ -10,12 +10,12 @@ ms.reviewer: sgilley
 ms.author: sgilley
 author: sdgilley
 ms.date: 03/21/2019
-ms.openlocfilehash: f417aef1fd1cc48a37399ff7a157a0e658bbbb02
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.openlocfilehash: e2304f45cef2db720adf4430868205c00714034f
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58879280"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59547944"
 ---
 # <a name="create-an-azure-machine-learning-service-workspace"></a>Vytvořit pracovní prostor služby Azure Machine Learning
 
@@ -37,7 +37,7 @@ Při vytváření pracovního prostoru jsou přidány následující prostředky
 - [Azure Key Vault](https://azure.microsoft.com/services/key-vault/)
 
 >[!Note]
->Stejně jako u jiných služeb Azure, jsou spojeny s Machine learningem určitá omezení a kvóty. [Další informace o kvótách a tom, jak požádat o další.](how-to-manage-quotas.md)
+>Stejně jako u jiných služeb Azure, jsou spojeny s Machine learningem určitá omezení a kvóty. [Další informace o kvótách a postupu, jak požádat o zvýšení.](how-to-manage-quotas.md)
 
 
 ## <a name="prerequisites"></a>Požadavky
@@ -160,7 +160,7 @@ Vytvoření pracovního prostoru v poznámkovém bloku Jupyter pomocí sady Pyth
 
 ### <a name="write-a-configuration-file"></a>Zapsání konfiguračního souboru
 
-Uložte podrobnosti pracovního prostoru v konfiguračním souboru do aktuálního adresáře. Tento soubor se nazývá *aml_config/config.json*.  
+Uložte podrobnosti pracovního prostoru v konfiguračním souboru do aktuálního adresáře. Tento soubor se nazývá *.azureml/config.json*.  
 
 Tento konfigurační soubor pracovního prostoru usnadňuje stejného pracovního prostoru načíst později. Můžete načíst pomocí jiných poznámkových bloků a skriptů ve stejném adresáři nebo podadresář pomocí kódu `ws=Workspace.from_config()` . 
 
@@ -177,13 +177,14 @@ To `write_config()` volání rozhraní API vytvoří konfigurační soubor do ak
 ```
 
 > [!TIP]
-> Použití pracovního prostoru v skriptů Pythonu nebo poznámkových bloků Jupyter, které jsou umístěny v jiných adresářích, zkopírujte tento soubor do tohoto adresáře. Soubor může být ve stejném adresáři, podadresáři s názvem *aml_config*, nebo v nadřazeném adresáři.
+> Použití pracovního prostoru v skriptů Pythonu nebo poznámkových bloků Jupyter, které jsou umístěny v jiných adresářích, zkopírujte tento soubor do tohoto adresáře. Soubor může být ve stejném adresáři, podadresáři s názvem *.azureml*, nebo v nadřazeném adresáři.
 
 ## <a name="resource-manager-template"></a>Šablony Resource Manageru
 
 Vytvoření pracovního prostoru s využitím šablony najdete v tématu [vytvořit pracovní prostor služby Azure Machine Learning pomocí šablony](how-to-create-workspace-template.md)
 
-## <a name="cli"></a>Rozhraní příkazového řádku
+<a name="cli"></a>
+## <a name="command-line-interface"></a>Rozhraní příkazového řádku
 
 Vytvoření pracovního prostoru pomocí rozhraní příkazového řádku najdete v tématu [pomocí rozšíření rozhraní příkazového řádku pro službu Azure Machine Learning](reference-azure-machine-learning-cli.md).
 

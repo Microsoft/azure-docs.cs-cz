@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/10/2017
 ms.author: kumud
-ms.openlocfilehash: 7b52d07db076b62845465ee9f22a3d794c8cdf76
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: cd026c9be2b1519d473ba02811d9e1ee90fe7a3e
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57839521"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59526210"
 ---
 # <a name="manage-an-azure-traffic-manager-profile"></a>Správa profilu Azure Traffic Manageru
 
@@ -32,7 +32,7 @@ Profil Traffic Manageru můžete vytvořit pomocí webu Azure Portal. Po vytvoř
 1. V prohlížeči se přihlaste k webu [Azure Portal](https://portal.azure.com). Pokud ještě účet nemáte, můžete si zaregistrovat [zkušební verzi na měsíc zdarma](https://azure.microsoft.com/free/). 
 2. Klikněte na **Vytvořit prostředek** > **Sítě** > **Profil služby Traffic Manager** > **Vytvořit**.
 4. Část **Vytvořit profil služby Traffic Manager** vyplňte následovně:
-    1. Do pole **Název** zadejte název profilu. Tento název musí být jedinečný v rámci zóny trafficmanager.net a ve výsledcích názvu DNS <name>, trafficmanager.net.
+    1. Do pole **Název** zadejte název profilu. Tento název musí být jedinečný v rámci zóny trafficmanager.net a ve výsledcích názvu DNS `<name>`, trafficmanager.net.
     2. Jakou **Metodu směrování** vyberte **Priorita**.
     3. V poli **Předplatné** vyberte předplatné, v rámci kterého chcete profil vytvořit.
     4. V části **Skupina prostředků** vytvořte novou skupinu prostředků, do které chcete profil umístit.

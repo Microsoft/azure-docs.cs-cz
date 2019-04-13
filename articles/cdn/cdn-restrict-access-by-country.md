@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/19/2018
 ms.author: magattus
-ms.openlocfilehash: f6efec64b4e6659b822b76e0fd7f9cc71a164094
-ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
+ms.openlocfilehash: 248a51da76cdee06e55438a706c543c70dcf141e
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/04/2019
-ms.locfileid: "58917749"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59526177"
 ---
 # <a name="restrict-azure-cdn-content-by-country"></a>Omezit přístup k obsahu Azure CDN podle země
 
@@ -48,7 +48,7 @@ Například všechny následující filtry cesta adresáře jsou platné:
 */*                                 
 */Photos/*     
 */Photos/Štrasburku /*     
-*/Photos/Strasbourg/City.PNG*
+*/Photos/Strasbourg/city.png*
 
 ### <a name="define-the-type-of-action"></a>Definování typ akce
 
@@ -59,8 +59,8 @@ Z **akce** seznamu vyberte **povolit** nebo **bloku**:
 - **Blok**: Uživatelé ze zemí zadané mají odepřený přístup k prostředkům vyžádané rekurzivní cesta. Pokud pro toto umístění nebyly nakonfigurovány žádné jiné země možnosti filtrování, pak všichni ostatní uživatelé budou mít přístup povolený.
 
 Například geografické filtrování pravidla pro blokování cestu */fotografie/Štrasburku/* filtry pro následující soubory:     
-*http://<endpoint>.azureedge.net/Photos/Strasbourg/1000.jpg*
-*http://<endpoint>.azureedge.net/Photos/Strasbourg/Cathedral/1000.jpg*
+*http:\//\<endpoint>.azureedge.net/Photos/Strasbourg/1000.jpg*
+*http:\//\<endpoint>.azureedge.net/Photos/Strasbourg/Cathedral/1000.jpg*
 
 ### <a name="define-the-countries"></a>Definovat zemí
 Z **kódy zemí** seznamu, zvolte země, pro které chcete blokovat nebo povolit pro danou cestu. 

@@ -17,12 +17,12 @@ ms.date: 04/11/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 95e5124d466c4294d83bbfa0b7ca15ff6f98e9ec
-ms.sourcegitcommit: f24b62e352e0512dfa2897362021b42e0cb9549d
+ms.openlocfilehash: b6d3d98c91b2a373e4ed8b1ae556d402cb29d0dd
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/11/2019
-ms.locfileid: "59505377"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59520749"
 ---
 # <a name="quickstart-acquire-a-token-and-call-microsoft-graph-api-from-a-windows-desktop-app"></a>Rychlý start: Získání tokenu a volat Microsoft Graph API z desktopové aplikace Windows
 
@@ -64,14 +64,14 @@ V tomto rychlém startu se dozvíte, jak napsat desktopovou aplikaci .NET pro Wi
 > #### <a name="step-1-configure-your-application-in-azure-portal"></a>Krok 1: Konfigurace aplikace na webu Azure portal
 > Aby mohl tento rychlý start fungovat, je nutné pro ukázkový kód přidat adresu URL odpovědi, například **urn: ietf:wg:oauth:2.0:oob**.
 > > [!div renderon="portal" id="makechanges" class="nextstepaction"]
-> > [Provedení této změny pro mě]()
+> > [Udělat změnu za mě]()
 >
 > > [!div id="appconfigured" class="alert alert-info"]
-> > ![Už nakonfigurovali](media/quickstart-v2-windows-desktop/green-check.png) vaše aplikace je nakonfigurovaná s těmito atributy.
+> > ![Už nakonfigurované](media/quickstart-v2-windows-desktop/green-check.png) Vaše aplikace je nakonfigurovaná s těmito atributy.
 
 #### <a name="step-2-download-your-visual-studio-project"></a>Krok 2: Stáhněte si svůj projekt sady Visual Studio
 
-[Stáhněte si projekt sady Visual Studio 2017](https://github.com/Azure-Samples/active-directory-dotnet-desktop-msgraph-v2/archive/msal3x.zip)
+[Stažení projektu sady Visual Studio 2017](https://github.com/Azure-Samples/active-directory-dotnet-desktop-msgraph-v2/archive/msal3x.zip)
 
 #### <a name="step-3-configure-your-visual-studio-project"></a>Krok 3: Konfigurace projektu sady Visual Studio
 
@@ -86,11 +86,11 @@ V tomto rychlém startu se dozvíte, jak napsat desktopovou aplikaci .NET pro Wi
 
 > [!div renderon="docs"]
 > Kde:
-> - `Enter_the_Application_Id_here` -je **ID aplikace (klient)** pro aplikace, které jste zaregistrovali.
-> - `Enter_the_Tenant_Info_Here` -je nastavená na jednu z následujících možností:
+> - Hodnota `Enter_the_Application_Id_here` je **ID aplikace (klienta)**, kterou jste zaregistrovali.
+> - Hodnota `Enter_the_Tenant_Info_Here` je nastavená na jednu z následujících možností:
 >   - Pokud vaše aplikace podporuje režim **Účty jen v tomto organizačním adresáři**, nahraďte tuto hodnotu za **ID tenanta** nebo **Název tenanta** (například contoso.microsoft.com).
->   - Pokud vaše aplikace podporuje **účty v libovolném adresáři organizace**, nahradí tato hodnota se `organizations`
->   - Pokud vaše aplikace podporuje **účty v jakékoli organizaci adresáři a osobní účty Microsoft**, nahradí tato hodnota se `common`
+>   - Pokud vaše aplikace podporuje režim **Účty v libovolném organizačním adresáři**, nahraďte tuto hodnotu za `organizations`.
+>   - Pokud vaše aplikace podporuje režim **Účty v libovolném organizačním adresáři a osobní účty Mircosoft**, nahraďte tuto hodnotu za `common`.
 >
 > > [!TIP]
 > > Hodnoty **ID aplikace (klienta)**, **ID adresáře (tenanta)** a **Podporované typy účtu** najdete na stránce **Přehled** aplikace na webu Azure Portal.
@@ -128,7 +128,7 @@ PublicClientApplicationBuilder.Create(ClientId)
 
 ### <a name="requesting-tokens"></a>Žádosti o tokeny
 
-Knihovna MSAL používá k získání tokenů dvě metody: `AcquireToken` a `AcquireTokenSilent`.
+Knihovna MSAL používá k získání tokenů dvě metody: `AcquireTokenInteractive` a `AcquireTokenSilent`.
 
 #### <a name="get-a-user-token-interactively"></a>Interaktivní získání tokenu uživatele
 
@@ -140,7 +140,7 @@ Některých situacích vyžadovat vynucuje uživatelé komunikovat s Microsoft i
 - Když je nutné dvoufaktorové ověřování
 
 ```csharp
-authResult = await App.PublicClientApp.AcquireToken(_scopes)
+authResult = await App.PublicClientApp.AcquireTokenInteractive(_scopes)
                                       .ExecuteAsync();
 ```
 
@@ -150,7 +150,7 @@ authResult = await App.PublicClientApp.AcquireToken(_scopes)
 
 #### <a name="get-a-user-token-silently"></a>Získání tokenu uživatele bez upozornění
 
-Nechcete vyžadovat, aby uživatel ověřoval přihlašovací údaje pokaždé, když potřebuje přístup k prostředku. Ve většině případů budete chtít tokeny pořizovat a obnovovat bez nutnosti zásahu uživatele. Po počáteční metodě `AcquireTokenAsync` můžete použít metodu `AcquireTokenSilentAsync` a získat tokeny pro přístup k chráněným prostředkům:
+Nechcete vyžadovat, aby uživatel ověřoval přihlašovací údaje pokaždé, když potřebuje přístup k prostředku. Ve většině případů budete chtít tokeny pořizovat a obnovovat bez nutnosti zásahu uživatele. Po počáteční metodě `AcquireTokenInteractive` můžete použít metodu `AcquireTokenSilentAsync` a získat tokeny pro přístup k chráněným prostředkům:
 
 ```csharp
 var accounts = await App.PublicClientApp.GetAccountsAsync();

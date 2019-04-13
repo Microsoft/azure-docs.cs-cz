@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 12/21/2018
+ms.date: 04/01/2019
 ms.author: diberry
-ms.openlocfilehash: 5417c1c008b5abaada158530c7c29c67e0dc1ca0
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 9083227dd81dca219666e07b70f487069413855d
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58119662"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59521267"
 ---
 # <a name="tutorial-get-exact-text-matched-data-from-an-utterance"></a>Kurz: Získat data přesně odpovídající text z utterance
 
@@ -92,7 +92,7 @@ Primární, _kanonické_, název pro každou položku je název oddělení. Mezi
 |--|--|
 |Účetnictví|acct<br>accting<br>3456|
 |Vývoj pro operace|Vývoj a provoz<br>4949|
-|Strojírenství|"Eng"<br>nesmí<br>4567|
+|Inženýrství|"Eng"<br>nesmí<br>4567|
 |Finance|dokončení<br>2020|
 |Informační technologie|IT<br>2323|
 |Uvnitř prodeje|isale<br>insale<br>1414|
@@ -185,5 +185,5 @@ V tomto kurzu jste vytvořili nový záměr, přidali jste ukázkové promluvy a
 Pokračovat v této aplikaci [přidání složenou entitu](luis-tutorial-composite-entity.md).
 
 > [!div class="nextstepaction"]
-> [Přidání hierarchické entity do aplikace](luis-quickstart-intent-and-hier-entity.md)
+> [Přidání předem připravených entit s rolí do aplikace](tutorial-entity-roles.md)
 

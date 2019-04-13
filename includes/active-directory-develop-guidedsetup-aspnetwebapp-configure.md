@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 04/11/2019
 ms.author: jmprieur
 ms.custom: include file
-ms.openlocfilehash: 123a2ece06cb58ce6dbb35a914a87eb45fbcf5be
-ms.sourcegitcommit: f24b62e352e0512dfa2897362021b42e0cb9549d
+ms.openlocfilehash: 2cdc6ea01e6c3555740102f319d0f4e8e4fc1c22
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/11/2019
-ms.locfileid: "59505789"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59528523"
 ---
 ## <a name="register-your-application"></a>Registrace vaší aplikace
 
@@ -38,17 +38,17 @@ Můžete rychle registrace vaší aplikace následujícím způsobem:
 Pokud chcete zaregistrovat aplikaci a ručně přidat informace o registraci aplikace ke svému řešení, postupujte následovně:
 
 1. Přejděte do sady Visual Studio a:
-   - v Průzkumníku řešení vyberte projekt a podívejte se na okno Vlastnosti (Pokud se nezobrazí okno Vlastnosti, stisknutím klávesy F4)
-   - Změnit protokol SSL povolený pro `True`.
-   - Klikněte pravým tlačítkem na projekt v sadě Visual Studio a pak zvolte **vlastnosti**a **webové** kartu. V *servery* části změnit *adresa Url projektu* bude adresa URL protokolu SSL.
-   - Zkopírujte adresu URL protokolu SSL. Do seznamu adresy URL pro přesměrování v portálu pro registraci seznam adres URL pro přesměrování v dalším kroku přidáte tuto adresu URL:<br/><br/>![Vlastnosti projektu](media/active-directory-develop-guidedsetup-aspnetwebapp-configure/vsprojectproperties.png)<br />
+   1. v Průzkumníku řešení vyberte projekt a podívejte se na okno Vlastnosti (Pokud se nezobrazí okno Vlastnosti, stisknutím klávesy F4).
+   1. Změnit protokol SSL povolený pro `True`.
+   1. Klikněte pravým tlačítkem na projekt v sadě Visual Studio a pak zvolte **vlastnosti**a **webové** kartu. V *servery* části změnit *adresa Url projektu* bude adresa URL protokolu SSL.
+   1. Zkopírujte adresu URL protokolu SSL. Do seznamu adresy URL pro přesměrování v portálu pro registraci seznam adres URL pro přesměrování v dalším kroku přidáte tuto adresu URL:<br/><br/>![Vlastnosti projektu](media/active-directory-develop-guidedsetup-aspnetwebapp-configure/vsprojectproperties.png)<br />
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com) pomocí pracovního nebo školního účtu nebo osobního účtu Microsoft.
 1. Pokud váš účet umožňuje přístup k více tenantům, vyberte svůj účet v pravém horním rohu a nastavte relaci portálu na požadovaného tenanta Azure AD.
 1. Přejděte na Microsoft identity platform pro vývojáře [registrace aplikací](https://go.microsoft.com/fwlink/?linkid=2083908) stránky.
 1. Vyberte **registrace nové**.
 1. Když se zobrazí stránka **Registrace aplikace**, zadejte registrační informace vaší aplikace:
-   - V části **Název** zadejte smysluplný název aplikace, který se zobrazí uživatelům aplikace, například `ASPNET-Tutorial`.
-   - Přidejte adresu URL protokolu SSL, měli jste zkopírovali ze sady Visual Studio v kroku 1 (například `https://localhost:44368/`) v **adresy URL odpovědi**a klikněte na tlačítko **zaregistrovat**.
+   1. V části **Název** zadejte smysluplný název aplikace, který se zobrazí uživatelům aplikace, například `ASPNET-Tutorial`.
+   1. Přidejte adresu URL protokolu SSL, měli jste zkopírovali ze sady Visual Studio v kroku 1 (například `https://localhost:44368/`) v **adresy URL odpovědi**a klikněte na tlačítko **zaregistrovat**.
 1. Vyberte nabídku **Ověřování**, v části **Implicitní udělení oprávnění** nastavte **Tokeny ID** a pak vyberte **Uložit**.
 1. Přidejte následující kód do `web.config` nachází v kořenové složce v části `configuration\appSettings`:
 

@@ -16,12 +16,12 @@ ms.date: 04/11/2019
 ms.author: nacanuma
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 63827c74d584053b5131fbc602a04d4d24338f47
-ms.sourcegitcommit: 41015688dc94593fd9662a7f0ba0e72f044915d6
+ms.openlocfilehash: 2021c5028637a6f7e732df61b6f7c034ef79324f
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/11/2019
-ms.locfileid: "59500324"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59547393"
 ---
 # <a name="quickstart-sign-in-users-and-acquire-an-access-token-from-a-javascript-single-page-application-spa"></a>Rychlý start: Přihlašování uživatelů a získání přístupového tokenu z jednostránkové aplikace (SPA) jazyka JavaScript
 
@@ -61,7 +61,6 @@ Pro účely tohoto rychlého startu budete potřebovat následující nastavení
 > 1. Pokud váš účet umožňuje přístup k více tenantům, vyberte svůj účet v pravém horním rohu a nastavte relaci portálu na požadovaného tenanta Azure AD.
 > 1. Přejděte na Microsoft identity platform pro vývojáře [registrace aplikací](https://go.microsoft.com/fwlink/?linkid=2083908) stránky.
 > 1. Vyberte **registrace nové**.
-> 1. Když se zobrazí stránka **Registrace aplikace**, zadejte registrační informace vaší aplikace:
 > 1. Když **zaregistrovat aplikaci** se zobrazí stránka, zadejte název pro vaši aplikaci.
 > 1. V části **podporovaných typů účtu**vyberte **účty v jakékoli organizaci adresáři a osobní účty Microsoft**.
 > 1. Vyberte **webové** platformu v rámci **identifikátor URI pro přesměrování** tématu a nastavte hodnotu na `http://localhost:30662/`.
@@ -77,7 +76,7 @@ Pro účely tohoto rychlého startu budete potřebovat následující nastavení
 > > [Tyto změny provést pro mě]()
 >
 > > [!div id="appconfigured" class="alert alert-info"]
-> > ![Už nakonfigurovali](media/quickstart-v2-javascript/green-check.png) vaše aplikace je nakonfigurovaná s těmito atributy.
+> > ![Už nakonfigurované](media/quickstart-v2-javascript/green-check.png) Vaše aplikace je nakonfigurovaná s těmito atributy.
 
 #### <a name="step-2-download-the-project"></a>Krok 2: Stáhněte si projekt
 
@@ -107,11 +106,11 @@ var applicationConfig = {
 > [!div renderon="docs"]
 >
 > Kde:
-> - `Enter_the_Application_Id_here` -je **ID aplikace (klient)** pro aplikace, které jste zaregistrovali.
-> - `Enter_the_Tenant_Info_Here` -je nastavená na jednu z následujících možností:
+> - Hodnota `Enter_the_Application_Id_here` je **ID aplikace (klienta)**, kterou jste zaregistrovali.
+> - Hodnota `Enter_the_Tenant_Info_Here` je nastavená na jednu z následujících možností:
 >   - Pokud vaše aplikace podporuje režim **Účty jen v tomto organizačním adresáři**, nahraďte tuto hodnotu za **ID tenanta** nebo **Název tenanta** (například contoso.microsoft.com).
->   - Pokud vaše aplikace podporuje **účty v libovolném adresáři organizace**, nahradí tato hodnota se `organizations`
->   - Pokud vaše aplikace podporuje **účty v jakékoli organizaci adresáři a osobní účty Microsoft**, nahradí tato hodnota se `common`
+>   - Pokud vaše aplikace podporuje režim **Účty v libovolném organizačním adresáři**, nahraďte tuto hodnotu za `organizations`.
+>   - Pokud vaše aplikace podporuje režim **Účty v libovolném organizačním adresáři a osobní účty Mircosoft**, nahraďte tuto hodnotu za `common`.
 >
 > > [!TIP]
 > > Hodnoty **ID aplikace (klienta)**, **ID adresáře (tenanta)** a **Podporované typy účtu** najdete na stránce **Přehled** aplikace na webu Azure Portal.
@@ -137,7 +136,7 @@ Po prohlížeč načítá aplikaci, klikněte na tlačítko **Sign In**.  Když 
 
 ## <a name="more-information"></a>Další informace
 
-### *<a name="msaljs"></a>msal.js*
+### <a name="msaljs"></a>*msal.js*
 
 Knihovna MSAL je knihovna používaná k přihlášení uživatelů a žádosti o tokeny pro přístup k rozhraní API chráněné službou Microsoft identity platform. Tento rychlý Start *index.html* obsahuje odkaz na knihovnu:
 

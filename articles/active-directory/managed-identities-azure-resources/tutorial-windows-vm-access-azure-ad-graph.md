@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 08/20/2018
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 49b0d9e4fad61195118c92c047340f2cd4d9e20f
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.openlocfilehash: b402fa754105b734bfc7abbd2790a2a12afc6ff4
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58480681"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59523354"
 ---
 # <a name="tutorial-use-a-windows-vm-system-assigned-managed-identity-to-access-azure-ad-graph-api"></a>Kurz: Použití spravované identity přiřazené systémem na virtuálním počítači s Windows pro přístup k rozhraní Azure AD Graph API
 
@@ -165,7 +165,7 @@ Pokud chcete k ověření vůči Azure AD Graphu použít spravovanou identitu v
    $AccessToken = $content.access_token
    ```
 
-5. Pomocí ID objektu instančního objektu identity virtuálního počítače (tuto hodnotu můžete načíst z proměnné deklarované v předchozích krocích: ``$ManagedIdentitiesServicePrincipal.ObjectId``) můžete dotazovat rozhraní Azure AD Graph API a načíst jeho členství ve skupinách. <OBJECT ID> nahraďte ID objektu z předchozího kroku a <ACCESS-TOKEN> dříve získaným přístupovým tokenem:
+5. Pomocí ID objektu instančního objektu identity virtuálního počítače (tuto hodnotu můžete načíst z proměnné deklarované v předchozích krocích: ``$ManagedIdentitiesServicePrincipal.ObjectId``) můžete dotazovat rozhraní Azure AD Graph API a načíst jeho členství ve skupinách. Nahraďte `<OBJECT ID>` s ID objektu z předchozího kroku a <`ACCESS-TOKEN>` pomocí dříve obdrženého přístupového tokenu:
 
    ```powershell
    Invoke-WebRequest 'https://graph.windows.net/<Tenant ID>/servicePrincipals/<VM Object ID>/getMemberGroups?api-version=1.6' -Method POST -Body '{"securityEnabledOnly":"false"}' -Headers @{Authorization="Bearer $AccessToken"} -ContentType "application/json"

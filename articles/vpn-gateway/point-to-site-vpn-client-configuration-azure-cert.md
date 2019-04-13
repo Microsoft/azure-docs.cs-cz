@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: cherylmc
-ms.openlocfilehash: fdf5f07f9b27a17eb4c15495c4ac9776d77f525c
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: b590dabbe4b2c6526f2c602aeed64667348eefa9
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58313936"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59525163"
 ---
 # <a name="create-and-install-vpn-client-configuration-files-for-native-azure-certificate-authentication-p2s-configurations"></a>Vytvoření a instalace konfiguračních souborů klienta VPN pro ověřování P2S konfigurace nativního certifikátu Azure
 
@@ -174,7 +174,7 @@ Můžete použít následující příkazy rozhraní příkazového řádku nebo
 2. Extrahujte soubor.
 3. Z **obecný** složky, zkopírovat nebo přesunout VpnServerRoot.cer /etc/ipsec.d/cacerts.
 4. Zkopírovat nebo přesunout cp client.p12 /etc/ipsec.d/private/. Tento soubor je klientský certifikát pro službu Azure VPN Gateway.
-5. Otevřete soubor VpnSettings.xml a zkopírujte <VpnServer> hodnotu. Tuto hodnotu použijete v dalším kroku.
+5. Otevřete soubor VpnSettings.xml a zkopírujte `<VpnServer>` hodnotu. Tuto hodnotu použijete v dalším kroku.
 6. Upravit hodnoty v následujícím příkladu a pak přidejte příklad /etc/ipsec.conf konfigurace.
   
    ```

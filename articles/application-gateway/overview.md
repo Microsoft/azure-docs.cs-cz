@@ -8,12 +8,12 @@ ms.topic: overview
 ms.custom: mvc
 ms.date: 03/20/2019
 ms.author: victorh
-ms.openlocfilehash: bb849e80e83edc4a25ad2f891d2c6c433ba0d106
-ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
+ms.openlocfilehash: 447c5b1e94b848e9e560db1188a767f2040740c0
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58225531"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59546846"
 ---
 # <a name="what-is-azure-application-gateway"></a>Co je Azure Application Gateway?
 
@@ -118,13 +118,16 @@ Další informace najdete v tématu [podpora protokolu WebSocket](https://docs.m
 
 ## <a name="rewrite-http-headers-public-preview"></a>Přepsání hlavičky protokolu HTTP (public preview)
 
-Hlavičky protokolu HTTP umožňují klienta a serveru předat další informace o požadavku nebo odpovědi. Přepsání těchto HTTP záhlaví vám pomáhá s několik důležitých scénářů, jako je například přidávání bezpečnostních záhlaví pole jako HSTS / X-XSS ochrany nebo odebírá hlavičku odpovědi pole, která může odhalit citlivé informace, jako je název serveru back-endu. 
+Hlavičky protokolu HTTP umožňují klientem a serverem pro předávání dalších informací s požadavku nebo odpovědi. Přepisování tyto hlavičky protokolu HTTP umožňuje provádět několik důležitých scénářů, jako například:
+- Přidání pole hlavičky související se zabezpečením, jako HSTS / X-XSS ochrany.
+- Odebrání pole hlavičky odpovědi, které může odhalit citlivé informace.
+- Údaje o portech z hlavičky X-předané-pro odstranění.
 
-Služba Application Gateway nyní podporuje schopnosti přepsat záhlaví příchozí HTTP požadavky i odchozí odpovědi protokolu HTTP. Budete moct přidat, odebrat nebo aktualizovat hlavičky požadavku a odpovědi protokolu HTTP požadavku nebo odpovědi pakety přesunout mezi klientem a back-endové fondy. Je možné přepsat standardní (definované v [dokumentu RFC 2616](https://www.ietf.org/rfc/rfc2616.txt)) a také pole nestandardní hlavičky.  
+Služba Application Gateway podporuje možnost přidat, odebrat nebo aktualizovat hlavičky požadavku a odpovědi protokolu HTTP, zatímco pakety žádostí a odpovědí přesunout mezi klientem a back endové fondy. Je také poskytuje možnost přidání podmínky k zajištění, že určených hlaviček jsou zapsány pouze v případě, že jsou splněny určité podmínky.
 
 Další informace o této funkci ve verzi public preview, najdete v části [hlavičky protokolu HTTP přepsat](rewrite-http-headers.md).
 
-## <a name="sizing"></a>Velikost
+## <a name="sizing"></a>Velikosti
 
 Služba Application Gateway je teď nabízíme ve třech velikostech: **Malé**, **střední**, a **velké**. Instance krátkodobého používání jsou určené pro scénáře vývoje a testování.
 

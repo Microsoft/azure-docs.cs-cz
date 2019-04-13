@@ -12,12 +12,12 @@ author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: craigg
-ms.openlocfilehash: 6c01232c9bdb685fbc54e5ebe1e1f9fa83073dc2
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: e528b70e257c41f771a1bd3e5ec811c61eb512cc
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58107793"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59526669"
 ---
 # <a name="join-an-azure-ssis-integration-runtime-to-a-virtual-network"></a>Připojte se k prostředí Azure-SSIS integration runtime k virtuální síti
 Připojte se k prostředí Azure-SSIS integration runtime (IR) ke službě Azure virtual network v následujících scénářích: 
@@ -135,9 +135,9 @@ Zobrazit [tento skript Powershellu](https://gallery.technet.microsoft.com/script
 
 ### <a name="resource-group"></a> Požadavky pro skupinu prostředků
 -   Prostředí Azure-SSIS IR je potřeba vytvořit určitým síťovým prostředkům ve stejné skupině prostředků jako virtuální síť. Tyto prostředky zahrnují následující:
-    -   Azure load balancer, s názvem  *<Guid>- azurebatch cloudserviceloadbalancer*.
-    -   Azure veřejnou IP adresu, s názvem  *<Guid>- azurebatch cloudservicepublicip*.
-    -   Skupinu zabezpečení sítě práce s názvem  *<Guid>- azurebatch cloudservicenetworksecuritygroup*. 
+    -   Azure load balancer, s názvem  *\<Guid > - azurebatch - cloudserviceloadbalancer*.
+    -   Azure veřejnou IP adresu, s názvem  *\<Guid > - azurebatch - cloudservicepublicip*.
+    -   Skupinu zabezpečení sítě práce s názvem  *\<Guid > - azurebatch - cloudservicenetworksecuritygroup*. 
 
 -   Ujistěte se, že nemáte žádný zámek prostředků na skupinu prostředků nebo předplatného, ke které patří virtuální síť. Pokud nakonfigurujete zámek jen pro čtení nebo zámek proti odstranění, spouštění a zastavování prostředí IR může selhat nebo přestane reagovat. 
 

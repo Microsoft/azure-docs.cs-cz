@@ -10,12 +10,12 @@ ms.subservice: face-api
 ms.topic: conceptual
 ms.date: 03/29/2019
 ms.author: yluiu
-ms.openlocfilehash: 02e4e73bbbc7f843a3483bab4791484b89f97dd7
-ms.sourcegitcommit: d83fa82d6fec451c0cb957a76cfba8d072b72f4f
+ms.openlocfilehash: 8502d643986392ba846d509819c6d8f63f931c07
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/02/2019
-ms.locfileid: "58862025"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59544546"
 ---
 # <a name="face-api-release-notes"></a>Zpráva k vydání verze rozhraní API pro rozpoznávání tváře
 
@@ -27,7 +27,7 @@ V tomto článku se vztahují na službu rozhraní API pro rozpoznávání tvá�
 
 ### <a name="release-changes-in-january-2019"></a>Vydávejte změny 2019. ledna
 
-* Snímek funkce pro podporu migrace dat mezi předplatnými: [Snímek](https://docs.microsoft.com/rest/api/cognitiveservices/face/snapshot). Další informace naleznete v [jak migrovat vaše data rozpoznávání tváře do jiného předplatného pro rozpoznávání tváře](Face-API-How-to-Topics/how-to-migrate-face-data.md).
+* Snímek funkce pro podporu migrace dat mezi předplatnými: [Snímek](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/snapshot-get). Další informace naleznete v [jak migrovat vaše data rozpoznávání tváře do jiného předplatného pro rozpoznávání tváře](Face-API-How-to-Topics/how-to-migrate-face-data.md).
 
 ### <a name="release-changes-in-october-2018"></a>Vydávejte změny. října 2018
 
