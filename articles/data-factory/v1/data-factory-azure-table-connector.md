@@ -106,7 +106,7 @@ Pokud je tabulka Azure sloupec typu datum a čas:
 | azureTablePartitionKeyName |Zadejte název sloupce, jejichž hodnoty se používají jako klíče oddílu. Pokud není zadán, AzureTableDefaultPartitionKeyValue slouží jako klíč oddílu. |Název sloupce. |Ne |
 | azureTableRowKeyName |Zadejte název sloupce, jejichž hodnoty sloupce se používají jako klíč řádku. Pokud není zadán, použijte identifikátor GUID pro každý řádek. |Název sloupce. |Ne |
 | azureTableInsertType |Režim vložení dat do tabulek v Azure.<br/><br/>Tato vlastnost určuje, zda existující řádky v tabulce výstup s odpovídajícími klíče oddílu a řádku mají jejich hodnoty, nahrazení nebo sloučení. <br/><br/>Další informace o tom, jak fungují tato nastavení (sloučení a nahradit), najdete v článku [vložení nebo Merge Entity](https://msdn.microsoft.com/library/azure/hh452241.aspx) a [vložení nebo nahrazení Entity](https://msdn.microsoft.com/library/azure/hh452242.aspx) témata. <br/><br> Toto nastavení se vztahuje na úrovni řádků, nikoli úrovni tabulky a ani možnost odstranění řádků ve výstupní tabulce, které neexistují ve vstupu. |Sloučit (výchozí)<br/>nahradit |Ne |
-| WriteBatchSize |Při dosažení writeBatchSize nebo writeBatchTimeout vloží data do tabulek v Azure. |Celé číslo (počet řádků) |Ne (výchozí: 10000) |
+| writeBatchSize |Při dosažení writeBatchSize nebo writeBatchTimeout vloží data do tabulek v Azure. |Celé číslo (počet řádků) |Ne (výchozí: 10000) |
 | writeBatchTimeout |Při dosažení writeBatchSize nebo writeBatchTimeout vloží data do tabulek v Azure |Časový interval<br/><br/>Příklad: "00:20:00" (20 minut) |Ne (výchozí nastavení časového limitu úložiště klienta. výchozí hodnota 90 sekundu) |
 
 ### <a name="azuretablepartitionkeyname"></a>azureTablePartitionKeyName
