@@ -13,17 +13,17 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 02/27/2019
+ms.date: 04/13/2019
 ms.author: celested
 ms.custom: aaddev
 ms.reviewer: sureshja
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1b7ab4007a94efbc48bfea67c6b954c02de0b2ba
-ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
+ms.openlocfilehash: 9cee05b1ff6c63aae07b9c04435e4ff3ae4d07ee
+ms.sourcegitcommit: b8a8d29fdf199158d96736fbbb0c3773502a092d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56887433"
+ms.lasthandoff: 04/15/2019
+ms.locfileid: "59565882"
 ---
 # <a name="application-and-service-principal-objects-in-azure-active-directory"></a>Aplikace a instanční objekty v Azure Active Directory
 
@@ -52,7 +52,7 @@ Když se zaregistrujete aplikaci Azure AD v [webu Azure portal][AZURE-Portal], j
 
 ### <a name="application-object"></a>Objekt aplikace
 
-Aplikaci Azure AD je definován tak, že je jeden a pouze aplikační objekt, který je umístěný v tenantovi Azure AD, kde byla aplikace zaregistrované, známé jako "domovskou" tenant vaší aplikace. Azure AD Graph [aplikace entity] [ AAD-Graph-App-Entity] definuje schéma pro objekt aplikace vlastnosti.
+Aplikaci Azure AD je definován tak, že je jeden a pouze aplikační objekt, který je umístěný v tenantovi Azure AD, kde byla aplikace zaregistrované, známé jako "domovskou" tenant vaší aplikace. Microsoft Graph [aplikace entity] [ MS-Graph-App-Entity] definuje schéma pro objekt aplikace vlastnosti.
 
 ### <a name="service-principal-object"></a>instanční objekt
 
@@ -60,7 +60,7 @@ Pro přístup k prostředkům, které jsou zabezpečené pomocí tenanta služby
 
 Objekt zabezpečení definuje zásady přístupu a oprávnění pro uživatele nebo aplikaci v tenantovi Azure AD. To umožňuje základní funkce, jako je ověřování uživatelů a aplikací při přihlášení a ověření při přístupu k prostředkům.
 
-Když aplikaci uděleno oprávnění pro přístup k prostředkům v tenantovi (při registraci nebo [souhlas](developer-glossary.md#consent)), se vytvoří instanční objekt. Azure AD Graph [ServicePrincipal entity] [ AAD-Graph-Sp-Entity] definuje schéma pro instanční objekt pro vlastnosti.
+Když aplikaci uděleno oprávnění pro přístup k prostředkům v tenantovi (při registraci nebo [souhlas](developer-glossary.md#consent)), se vytvoří instanční objekt. Microsoft Graph [ServicePrincipal entity] [ MS-Graph-Sp-Entity] definuje schéma pro instanční objekt pro vlastnosti.
 
 ### <a name="application-and-service-principal-relationship"></a>Aplikace a relace instančního objektu služby
 
@@ -68,7 +68,7 @@ Vezměte v úvahu objekt aplikace jako *globální* reprezentace vaší aplikace
 
 Objekt slouží aplikace jako šablony, ze které běžné a výchozí vlastnosti jsou *odvozené* pro použití při vytváření odpovídající instanční objekty. Objekt aplikace proto má vztah 1:1 s softwarové aplikace a 1:many vztahy s jeho odpovídající objekty instančního objektu služby.
 
-Hlavní název služby musí být vytvořeny v každého klienta, kde se aplikace používá, bude moct vytvořit identitu pro přihlášení a/nebo přístup k prostředkům, které se zabezpečují prostřednictvím klienta. Aplikace jedním tenantem má pouze jeden instanční objekt (v domovském tenantovi), vytvořit a vyjádření souhlasu pro použití při registraci aplikace. Více tenanty webová aplikace/rozhraní API má také objekt služby, která je vytvořená v rámci každého tenanta, kde uživatele z tohoto tenanta vyjádřil souhlas se jeho použití. 
+Hlavní název služby musí být vytvořeny v každého klienta, kde se aplikace používá, bude moct vytvořit identitu pro přihlášení a/nebo přístup k prostředkům, které se zabezpečují prostřednictvím klienta. Aplikace jedním tenantem má pouze jeden instanční objekt (v domovském tenantovi), vytvořit a vyjádření souhlasu pro použití při registraci aplikace. Více tenanty webová aplikace/rozhraní API má také objekt služby, která je vytvořená v rámci každého tenanta, kde uživatele z tohoto tenanta vyjádřil souhlas se jeho použití.
 
 > [!NOTE]
 > Všechny změny provedené na váš objekt aplikace se také projeví v jeho instanční objekt v domovském tenantovi aplikace pouze (tenanta, ve kterém byl zaregistrován). Pro víceklientské aplikace, změny pro daný aplikační objekt se neprojeví v žádné klienty příjemce instanční objekty, dokud neodebere přístup prostřednictvím [přístupového panelu aplikací](https://myapps.microsoft.com) a udělit znovu.
@@ -83,7 +83,7 @@ Následující diagram znázorňuje vztah mezi objekt aplikace a instanční obj
 - **Contoso** -tenanta používá organizace Contoso, což je příjemce **aplikací HR**
 - **Společnost Fabrikam** -tenanta, používá společnost Fabrikam organizace, které také využívá **aplikací HR**
 
-![Vztah mezi objektu aplikační a instanční objekt](./media/app-objects-and-service-principals/application-objects-relationship.png)
+![Vztah mezi objektu aplikační a instanční objekt](./media/app-objects-and-service-principals/application-objects-relationship.svg)
 
 V tomto ukázkovém scénáři:
 
@@ -95,13 +95,13 @@ V tomto ukázkovém scénáři:
 
 ## <a name="next-steps"></a>Další postup
 
-- Můžete použít [Azure AD Graph Explorer](https://graphexplorer.azurewebsites.net/) zadávat dotazy aplikaci a instanční objekty.
-- Objekt aplikace aplikace pomocí Azure AD Graph API, dostanete [webu Azure portal] [ AZURE-Portal] editoru manifestu aplikace, nebo [rutin Powershellu pro Azure AD](https://docs.microsoft.com/powershell/azure/overview?view=azureadps-2.0), reprezentovaná jeho OData [aplikace entity][AAD-Graph-App-Entity].
-- Instanční objekt aplikace přístupné prostřednictvím rozhraní Azure AD Graph API nebo [rutin Powershellu pro Azure AD](https://docs.microsoft.com/powershell/azure/overview?view=azureadps-2.0), jak je reprezentován jeho OData [ServicePrincipal entity] [ AAD-Graph-Sp-Entity].
+- Můžete použít [Microsoft Graph Exploreru](https://developer.microsoft.com/graph/graph-explorer) zadávat dotazy aplikaci a instanční objekty.
+- Objekt aplikace aplikace pomocí rozhraní Microsoft Graph API, dostanete [webu Azure portal] [ AZURE-Portal] editoru manifestu aplikace, nebo [rutin Powershellu pro Azure AD](https://docs.microsoft.com/powershell/azure/overview?view=azureadps-2.0) , reprezentovaný pomocí jeho OData [aplikace entity][MS-Graph-App-Entity].
+- Instanční objekt aplikace přístupné prostřednictvím rozhraní Microsoft Graph API nebo [rutin Powershellu pro Azure AD](https://docs.microsoft.com/powershell/azure/overview?view=azureadps-2.0), jak je reprezentován jeho OData [ServicePrincipal entity] [ MS-Graph-Sp-Entity].
 
 <!--Image references-->
 
 <!--Reference style links -->
-[AAD-Graph-App-Entity]: https://docs.microsoft.com/graph/api/resources/application
-[AAD-Graph-Sp-Entity]: https://docs.microsoft.com/graph/api/resources/serviceprincipal
+[MS-Graph-App-Entity]: https://docs.microsoft.com/graph/api/resources/application
+[MS-Graph-Sp-Entity]: https://docs.microsoft.com/graph/api/resources/serviceprincipal
 [AZURE-Portal]: https://portal.azure.com

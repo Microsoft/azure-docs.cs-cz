@@ -11,38 +11,31 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 02/14/2018
+ms.date: 04/12/2019
 ms.author: celested
 ms.reviewer: asteen
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4b72ec628e048560fbfb9da63123bbb7461811b9
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 97759ae992ebe38aa85e9b4724edeebb5285db4b
+ms.sourcegitcommit: b8a8d29fdf199158d96736fbbb0c3773502a092d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58074280"
+ms.lasthandoff: 04/15/2019
+ms.locfileid: "59565695"
 ---
 # <a name="remove-a-user-or-group-assignment-from-an-enterprise-app-in-azure-active-directory"></a>Odebrání uživatele nebo skupiny přiřazení podnikové aplikace v Azure Active Directory
-Je snadné odeberte uživatele nebo skupiny z přiřazení přístupu k jednomu s vašimi firemními aplikacemi v Azure Active Directory (Azure AD). Musí mít příslušná oprávnění ke správě podnikové aplikace a musíte být globální správce adresáře.
+Je snadné odeberte uživatele nebo skupiny z přiřazeného přístupu k jednomu s vašimi firemními aplikacemi v Azure Active Directory (Azure AD). Budete potřebovat příslušná oprávnění ke správě podnikové aplikace. A vy musíte být globální správce adresáře.
 
 > [!NOTE]
 > For Applications Microsoftu (jako jsou například aplikace Office 365) odeberte uživatelům podnikové aplikace pomocí Powershellu.
 
 ## <a name="how-do-i-remove-a-user-or-group-assignment-to-an-enterprise-app-in-the-azure-portal"></a>Jak odebrat uživatele nebo skupiny přiřazení pro podnikové aplikace na webu Azure Portal?
 1. Přihlaste se k portálu [Azure Portal](https://portal.azure.com) prostřednictvím účtu, který má k adresáři oprávnění globálního správce.
-2. Vyberte **další služby**, zadejte **Azure Active Directory** v textovém poli a pak vyberte **Enter**.
-3. Na **Azure Active Directory – *NazevAdresare***  stránka (to znamená Azure AD Directory spravujete), vyberte **podnikové aplikace**.
-
-    ![Otevření podnikové aplikace](./media/remove-user-or-group-access-portal/open-enterprise-apps.png)
-4. Na **podnikové aplikace** stránce **všechny aplikace**. Zobrazí seznam aplikací, které můžete spravovat.
-5. Na **podnikové aplikace – všechny aplikace** vyberte aplikaci.
-6. Na ***appname*** stránka (to znamená, s názvem vybranou aplikaci v názvu), vyberte **uživatelů a skupin**.
-
-    ![Vyberte uživatele nebo skupiny](./media/remove-user-or-group-access-portal/remove-app-users.png)
-7. Na ***appname*** **– uživatele a skupiny přiřazení** stránky, vyberte jednu z více uživatelů nebo skupin a potom vyberte **odebrat** příkazu. Potvrďte svoje rozhodnutí do příkazového řádku.
-
-    ![Výběrem příkazu Remove](./media/remove-user-or-group-access-portal/remove-users.png)
+1. Vyberte **všechny služby**, zadejte **Azure Active Directory** v textovém poli a pak vyberte **Enter**.
+1. Na **Azure Active Directory – *NazevAdresare***  stránka (to znamená Azure AD Directory spravujete), vyberte **podnikové aplikace**.
+1. Na **podnikové aplikace – všechny aplikace** stránku, uvidíte seznam aplikací můžete spravovat. Vyberte aplikaci.
+1. Na ***appname*** stránka s přehledem (to znamená, stránka s názvem vybranou aplikaci v názvu), vyberte **uživatelů a skupin**.
+1. Na ***appname*** **– uživatele a skupiny přiřazení** stránky, vyberte jednu z více uživatelů nebo skupin a potom vyberte **odebrat** příkazu. Potvrďte svoje rozhodnutí do příkazového řádku.
 
 ## <a name="how-do-i-remove-a-user-or-group-assignment-to-an-enterprise-app-using-powershell"></a>Jak odebrat uživatele nebo skupiny přiřazení pro podnikové aplikace pomocí Powershellu?
 1. Otevřete příkazový řádek se zvýšenými oprávněními prostředí Windows PowerShell.
@@ -50,8 +43,8 @@ Je snadné odeberte uživatele nebo skupiny z přiřazení přístupu k jednomu 
     >[!NOTE] 
     > Je potřeba nainstalovat modul Azure AD (použijte příkaz `Install-Module -Name AzureAD`). Pokud se zobrazí výzva k instalaci modulu NuGet nebo nový modul Powershellu pro Azure Active Directory V2, zadejte Y a stiskněte klávesu ENTER.
 
-2. Spustit `Connect-AzureAD` a přihlaste se pomocí uživatelského účtu globálního správce.
-3. Pomocí následujícího skriptu z aplikace odebrat uživatele a role:
+1. Spustit `Connect-AzureAD` a přihlaste se pomocí uživatelského účtu globálního správce.
+1. Pomocí následujícího skriptu z aplikace odebrat uživatele a role:
 
     ```powershell
     # Store the proper parameters

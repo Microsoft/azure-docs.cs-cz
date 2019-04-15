@@ -10,12 +10,12 @@ ms.subservice: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: v-jaswel
-ms.openlocfilehash: f5b3234c45a9ee80bc5a2c2afe67046896270802
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: dade442cb04f79ef75e65d6eb29128b105e72b40
+ms.sourcegitcommit: b8a8d29fdf199158d96736fbbb0c3773502a092d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58163782"
+ms.lasthandoff: 04/15/2019
+ms.locfileid: "59565406"
 ---
 # <a name="how-to-add-pre-trained-entities"></a>Postup přidání Pre-trained entity
 Tento kurz ukazuje, jak přidat Pre-Trained entity do modelu Learner konverzace.
@@ -62,7 +62,7 @@ Začněte na domovskou stránku webového uživatelského rozhraní.
 
 1. Vyberte **akce** na levém panelu, pak **novou akci**.
 2. Zadejte **jaké je datum?** pro **odezvy bodu robotů také...** . Předem Vytrénovaných entity nemůže být **požadované entity** rozpoznané ve výchozím nastavení pro všechny projevy.
-3. Zadejte **builtin datetimev2** pro **vyřazení opravňuje**.
+3. Zadejte **builtin datetimev2** pro **vyřazení entity**.
 4. Vyberte **Vytvořit**.
 
 ![](../media/T08_action_create_2.png)

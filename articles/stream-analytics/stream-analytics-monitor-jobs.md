@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 04/20/2017
-ms.openlocfilehash: be86287f8341b6b86064e51f8a26a8c7f97e867e
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: eaeb2b4decc7da4caa75cb2af68829b4bf7ce64d
+ms.sourcegitcommit: b8a8d29fdf199158d96736fbbb0c3773502a092d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58100798"
+ms.lasthandoff: 04/15/2019
+ms.locfileid: "59563842"
 ---
 # <a name="programmatically-create-a-stream-analytics-job-monitor"></a>Prostřednictvím kódu programu vytvořit monitorování úlohy Stream Analytics
 
@@ -22,7 +22,7 @@ Tento článek ukazuje, jak povolit monitorování pro úlohu Stream Analytics. 
 
 ## <a name="prerequisites"></a>Požadavky
 
-Než zahájíte tento postup, musíte mít následující:
+Než zahájíte tento postup, musíte mít splněné následující požadavky:
 
 * Visual Studio 2017 nebo 2015
 * [Azure .NET SDK](https://azure.microsoft.com/downloads/) stáhnout a nainstalovat
@@ -75,50 +75,47 @@ Než zahájíte tento postup, musíte mít následující:
    ```
 5. Přidáte metodu ověřování pomocné rutiny.
 
-```csharp   
-     public static string GetAuthorizationHeader()
-   
+   ```csharp   
+   public static string GetAuthorizationHeader()
+   {
+      AuthenticationResult result = null;
+      var thread = new Thread(() =>
+      {
+         try
          {
-             AuthenticationResult result = null;
-             var thread = new Thread(() =>
-             {
-                 try
-                 {
-                     var context = new AuthenticationContext(
-                         ConfigurationManager.AppSettings["ActiveDirectoryEndpoint"] +
-                         ConfigurationManager.AppSettings["ActiveDirectoryTenantId"]);
+             var context = new AuthenticationContext(
+                ConfigurationManager.AppSettings["ActiveDirectoryEndpoint"] +
+                ConfigurationManager.AppSettings["ActiveDirectoryTenantId"]);
+             result = context.AcquireToken(
+                 resource: ConfigurationManager.AppSettings["WindowsManagementUri"],
+                 clientId: ConfigurationManager.AppSettings["AsaClientId"],
+                 redirectUri: new Uri(ConfigurationManager.AppSettings["RedirectUri"]),
+                 promptBehavior: PromptBehavior.Always);
+         }
+         catch (Exception threadEx)
+         {
+             Console.WriteLine(threadEx.Message);
+         }
+     });
+
+     thread.SetApartmentState(ApartmentState.STA);
+     thread.Name = "AcquireTokenThread";
+     thread.Start();
+     thread.Join();
    
-                     result = context.AcquireToken(
-                         resource: ConfigurationManager.AppSettings["WindowsManagementUri"],
-                         clientId: ConfigurationManager.AppSettings["AsaClientId"],
-                         redirectUri: new Uri(ConfigurationManager.AppSettings["RedirectUri"]),
-                         promptBehavior: PromptBehavior.Always);
-                 }
-                 catch (Exception threadEx)
-                 {
-                     Console.WriteLine(threadEx.Message);
-                 }
-             });
-   
-             thread.SetApartmentState(ApartmentState.STA);
-             thread.Name = "AcquireTokenThread";
-             thread.Start();
-             thread.Join();
-   
-             if (result != null)
-             {
-                 return result.AccessToken;
-             }
-   
-             throw new InvalidOperationException("Failed to acquire token");
+     if (result != null)
+     {
+         return result.AccessToken;
      }
-```
+         throw new InvalidOperationException("Failed to acquire token");
+   }
+   ```
 
 ## <a name="create-management-clients"></a>Vytvoření klientů pro správu
 
 Následující kód vytvoří nezbytné proměnné a klientů pro správu.
 
-```csharp
+   ```csharp
     string resourceGroupName = "<YOUR AZURE RESOURCE GROUP NAME>";
     string streamAnalyticsJobName = "<YOUR STREAM ANALYTICS JOB NAME>";
 
@@ -136,11 +133,11 @@ Následující kód vytvoří nezbytné proměnné a klientů pro správu.
     StreamAnalyticsManagementClient(aadTokenCredentials, resourceManagerUri);
     InsightsManagementClient insightsClient = new
     InsightsManagementClient(aadTokenCredentials, resourceManagerUri);
-```
+   ```
 
 ## <a name="enable-monitoring-for-an-existing-stream-analytics-job"></a>Zapněte sledování pro existující úlohy Stream Analytics
 
-Následující kód umožní monitorování pro **existující** úlohy Stream Analytics. První část kódu provede požadavek GET na službu Stream Analytics se načíst informace o konkrétní úloze Stream Analytics. Používá *Id* vlastnosti (získané z požadavku GET) jako datový typ parametru pro metodu Put ve druhé polovině kód, který odešle PUT žádost o služby Insights povolení monitorování pro úlohu Stream Analytics.
+Následující kód umožní monitorování pro **existující** úlohy Stream Analytics. První část kódu provede požadavek GET na službu Stream Analytics se načíst informace o konkrétní úloze Stream Analytics. Používá *ID* vlastnosti (získané z požadavku GET) jako datový typ parametru pro metodu Put ve druhé polovině kód, který odešle PUT žádost o služby Insights povolení monitorování pro úlohu Stream Analytics.
 
 > [!WARNING]
 > Pokud jste už dříve povolili monitorování pro různé úlohy Stream Analytics, prostřednictvím webu Azure portal nebo prostřednictvím kódu programu přes níže uvedeného kódu, **doporučujeme vám, že zadáte stejný název účtu úložiště, který jste použili při dřív Povolit monitorování.**
@@ -152,35 +149,34 @@ Následující kód umožní monitorování pro **existující** úlohy Stream A
 > Název účtu úložiště, který můžete použít k nahrazení `<YOUR STORAGE ACCOUNT NAME>` by měla být v následujícím kódu, který je ve stejném předplatném jako úloha Stream Analytics, který chcete povolit monitorování účtu úložiště.
 > 
 > 
-> ```csharp
->     // Get an existing Stream Analytics job
+>    ```csharp
+>    // Get an existing Stream Analytics job
 >     JobGetParameters jobGetParameters = new JobGetParameters()
 >     {
 >         PropertiesToExpand = "inputs,transformation,outputs"
 >     };
 >     JobGetResponse jobGetResponse = streamAnalyticsClient.StreamingJobs.Get(resourceGroupName, streamAnalyticsJobName, jobGetParameters);
+>
+>    // Enable monitoring
+>    ServiceDiagnosticSettingsPutParameters insightPutParameters = new ServiceDiagnosticSettingsPutParameters()
+>    {
+>            Properties = new ServiceDiagnosticSettings()
+>           {
+>               StorageAccountName = "<YOUR STORAGE ACCOUNT NAME>"
+>           }
+>    };
+>   insightsClient.ServiceDiagnosticSettingsOperations.Put(jobGetResponse.Job.Id, insightPutParameters);
+>   ```
 
-    // Enable monitoring
-    ServiceDiagnosticSettingsPutParameters insightPutParameters = new ServiceDiagnosticSettingsPutParameters()
-    {
-            Properties = new ServiceDiagnosticSettings()
-            {
-                StorageAccountName = "<YOUR STORAGE ACCOUNT NAME>"
-            }
-    };
-    insightsClient.ServiceDiagnosticSettingsOperations.Put(jobGetResponse.Job.Id, insightPutParameters);
-```
 
+## <a name="get-support"></a>Získat podporu
 
-## Get support
+Potřebujete další pomoc, vyzkoušejte naše [fóru Azure Stream Analytics](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics).
 
-For further assistance, try our [Azure Stream Analytics forum](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics).
+## <a name="next-steps"></a>Další postup
 
-## Next steps
-
-* [Introduction to Azure Stream Analytics](stream-analytics-introduction.md)
-* [Get started using Azure Stream Analytics](stream-analytics-real-time-fraud-detection.md)
-* [Scale Azure Stream Analytics jobs](stream-analytics-scale-jobs.md)
-* [Azure Stream Analytics Query Language Reference](https://msdn.microsoft.com/library/azure/dn834998.aspx)
-* [Azure Stream Analytics Management REST API Reference](https://msdn.microsoft.com/library/azure/dn835031.aspx)
-
+* [Úvod do služby Azure Stream Analytics](stream-analytics-introduction.md)
+* [Začínáme používat službu Azure Stream Analytics](stream-analytics-real-time-fraud-detection.md)
+* [Škálování služby Stream Analytics](stream-analytics-scale-jobs.md)
+* [Referenční příručka k jazyku Azure Stream Analytics Query Language](https://msdn.microsoft.com/library/azure/dn834998.aspx)
+* [Referenční příručka k rozhraní REST API pro správu služby Azure Stream Analytics](https://msdn.microsoft.com/library/azure/dn835031.aspx)

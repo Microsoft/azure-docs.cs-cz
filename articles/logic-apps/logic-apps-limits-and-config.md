@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: article
 ms.date: 11/16/2018
-ms.openlocfilehash: e0a0bd0e630281d2218c74050e810fe73361c6be
-ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
+ms.openlocfilehash: c211d479efe086bb739b91034c6d9e349358b2d7
+ms.sourcegitcommit: b8a8d29fdf199158d96736fbbb0c3773502a092d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2019
-ms.locfileid: "58578539"
+ms.lasthandoff: 04/15/2019
+ms.locfileid: "59565899"
 ---
 # <a name="limits-and-configuration-information-for-azure-logic-apps"></a>Omezení a konfigurační informace pro Azure Logic Apps
 
@@ -212,12 +212,12 @@ Tady je omezený počet artefaktů pro každý účet integrace. Další informa
 | Artefakt | Omezení | Poznámky |
 |----------|-------|-------|
 | Sestavení | 50 | |
-| Konfigurace dávek | 5 |
-| Certifikáty | 50 | |
+| Konfigurace dávek | 50 |
+| Certifikáty | 500 | |
 | Obchodní smluv EDI | 500 | |
 | Obchodní partneři EDI | 500 | |
-| Maps | 500 | |
-| Schémata | 500 |
+| Maps | 1 000 | |
+| Schémata | 1 000 |
 ||||
 
 <a name="artifact-capacity-limits"></a>

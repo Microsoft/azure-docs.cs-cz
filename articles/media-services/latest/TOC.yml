@@ -29,7 +29,6 @@ items:
     href: analyze-videos-tutorial-with-api.md
   - name: Dynamické šifrování AES-128 – .NET
     href: protect-with-aes128.md
-  expanded: true
 - name: Ukázky
   items:
   - name: Ukázky kódu Azure
@@ -274,9 +273,9 @@ items:
     href: frequently-asked-questions.md
   - name: Oblasti a cloudy Azure
     href: azure-clouds-regions.md
-ms.openlocfilehash: 2b154c483e6c71016c023814818e35049ece59b7
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.openlocfilehash: adea36543cd734e61f10cb64bfba2e9557db8cf6
+ms.sourcegitcommit: b8a8d29fdf199158d96736fbbb0c3773502a092d
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/11/2019
-ms.locfileid: "59494846"
+ms.lasthandoff: 04/15/2019
+ms.locfileid: "59563516"

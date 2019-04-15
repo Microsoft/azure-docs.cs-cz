@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 04/04/2019
 ms.author: glenga
-ms.openlocfilehash: 0e4c308e745cbf2ffbc18f64101043aff3ddde35
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.openlocfilehash: 96656da078b79474dbf6576455a485d17868db49
+ms.sourcegitcommit: b8a8d29fdf199158d96736fbbb0c3773502a092d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/11/2019
-ms.locfileid: "59495681"
+ms.lasthandoff: 04/15/2019
+ms.locfileid: "59565956"
 ---
 # <a name="monitor-azure-functions"></a>Monitorování Azure Functions
 
@@ -99,7 +99,7 @@ Následující oblasti služby Application Insights může být užitečné, kdy
 
 | Tab | Popis |
 | ---- | ----------- |
-| **[Chyby](../azure-monitor/app/asp-net-exceptions.md)** |  Vytvoření grafů a výstrah na základě funkce chyby a výjimky serveru. **Název operace** je název funkce. Selhání v závislosti nezobrazí, Pokud implementujete vlastní telemetrii pro závislosti. |
+| **[selhání](../azure-monitor/app/asp-net-exceptions.md)** |  Vytvoření grafů a výstrah na základě funkce chyby a výjimky serveru. **Název operace** je název funkce. Selhání v závislosti nezobrazí, Pokud implementujete vlastní telemetrii pro závislosti. |
 | **[Výkon](../azure-monitor/app/performance-counters.md)** | Analýza problémů s výkonem. |
 | **Servery** | Zobrazení využití prostředků a propustnost na jednom serveru. Tato data mohou být užitečné při ladění scénářů, ve kterém jsou funkce bogging dolů příslušných prostředků. Servery se označují jako **instance rolí cloudové**. |
 | **[Metriky](../azure-monitor/app/metrics-explorer.md)** | Vytvoření výstrahy, které jsou založeny na metriky a grafy. Metriky zahrnují počet volání funkce, doba provádění a úspěšnosti. |
@@ -127,8 +127,8 @@ Tabulky, které jsou k dispozici jsou uvedeny v **schématu** karty na levé str
 | Table | Popis |
 | ----- | ----------- |
 | **trasování** | Protokoly vytvořené modulem runtime a kód funkce. |
-| **žádostí** | Jeden požadavek při každém vyvolání funkce. |
-| **výjimky** | Jakékoli výjimky vyvolané modulem runtime. |
+| **Požadavky** | Jeden požadavek při každém vyvolání funkce. |
+| **Výjimky** | Jakékoli výjimky vyvolané modulem runtime. |
 | **customMetrics** | Počet úspěšných a neúspěšných volání, míru úspěšnosti a doba trvání. |
 | **customEvents** | Události sledován pomocí funkce modulu runtime, například: Požadavky HTTP, které aktivují funkce. |
 | **performanceCounters** | Informace o výkonu, které funkce jsou spuštěny na servery. |
@@ -595,7 +595,9 @@ module.exports = function (context, req) {
 
 ## <a name="dependencies"></a>Závislosti
 
-Závislosti, které funkce má k jiným službám nezobrazují automaticky. Můžete napsat vlastní kód k zobrazení závislostí. Příklady najdete v tématu ukázkový kód v [ C# vlastní telemetrii části](#log-custom-telemetry-in-c-functions). Vzorový kód vede *Mapa aplikace* ve službě Application Insights, vypadá podobně jako na následujícím obrázku:
+Funkce v2 automaticky shromažďuje závislosti pro požadavky HTTP, služby Service Bus a SQL.
+
+Můžete napsat vlastní kód k zobrazení závislostí. Příklady najdete v tématu ukázkový kód v [ C# vlastní telemetrii části](#log-custom-telemetry-in-c-functions). Vzorový kód vede *Mapa aplikace* ve službě Application Insights, vypadá podobně jako na následujícím obrázku:
 
 ![Mapa aplikace](./media/functions-monitoring/app-map.png)
 

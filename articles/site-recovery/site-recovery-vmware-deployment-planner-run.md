@@ -1,25 +1,25 @@
 ---
 title: Spusťte Azure Site Recovery Deployment Planner pro zotavení po havárii VMware do Azure | Dokumentace Microsoftu
 description: Tento článek popisuje, jak spustit Azure Site Recovery Deployment Planner pro zotavení po havárii VMware do Azure.
-author: nsoneji
-manager: garavd
+author: mayurigupta13
+manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 4/9/2019
+ms.date: 4/15/2019
 ms.author: mayg
-ms.openlocfilehash: a3aef06e6ee0d3989a4da8fdd93d27d28f2eede4
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.openlocfilehash: 3a6c9e50804db573395984b8ba38838eb15b0792
+ms.sourcegitcommit: b8a8d29fdf199158d96736fbbb0c3773502a092d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59527675"
+ms.lasthandoff: 04/15/2019
+ms.locfileid: "59565423"
 ---
 # <a name="run-the-azure-site-recovery-deployment-planner-for-vmware-disaster-recovery-to-azure"></a>Spusťte Azure Site Recovery Deployment Planner pro zotavení po havárii VMware do Azure
 Tento článek představuje uživatelskou příručku k nástroji Azure Site Recovery Deployment Planner pro produkční nasazení VMware do Azure.
 
 
 ## <a name="modes-of-running-deployment-planner"></a>Režimy spuštění plánovače nasazení
-Nástroj příkazového řádku (ASRDeploymentPlanner.exe) můžete spustit v některém z následujících čtyř režimů:
+Nástroj příkazového řádku (ASRDeploymentPlanner.exe) můžete spustit v některém z následujících tří režimů:
 
 1.  [Profilace](#profile-vmware-vms)
 2.  [Generování sestav](#generate-report)
@@ -139,7 +139,7 @@ ASRDeploymentPlanner.exe -Operation StartProfiling -Virtualization VMware -Direc
 Nástroj jako výstup sestavy generuje soubor aplikace Microsoft Excel s podporou maker (soubor XLSM), který shrnuje veškerá doporučení pro nasazení. Sestava má název `DeploymentPlannerReport_<unique numeric identifier>.xlsm` a je umístěná v zadaném adresáři.
 
 >[!NOTE]
->Sestava vyžaduje nakonfigurovaný jako symbol desetinné čárky "." pro vytvoření odhadu nákladů na serveru, kde je spuštěn Plánovač nasazení služby. V případě můžete nastavit "," jako oddělovač tisíců na počítači s Windows, přejděte na "Změnit data, času nebo číselné formáty" v Ovládacích panelech a přejít na "Další nastavení" Chcete-li změnit symbol desetinné čárky na".".
+>Generování sestav vyžaduje počítač s Windows nebo Windows Server s aplikací Excel 2013 nebo novější. Symbol desetinné čárky na tomto počítači musí být nakonfigurovaný jako "." k výrobě odhady nákladů. V případě, že máte nastavený "," jako symbol desetinné čárky, přejděte prosím na "Změnit data, času nebo číselné formáty" v Ovládacích panelech a přejít na "Další nastavení" Změna symbol desetinné čárky na".".
 
 Po dokončení profilace můžete nástroj spustit v režimu generování sestav. Následující tabulka obsahuje seznam povinných a volitelných parametrů nástroje pro spuštění v režimu generování sestav.
 

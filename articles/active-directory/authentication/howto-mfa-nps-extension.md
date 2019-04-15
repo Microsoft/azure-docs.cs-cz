@@ -5,18 +5,18 @@ services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 07/11/2018
+ms.date: 04/12/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 87a416b6ff73fd658158276a02796aaae946bc20
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.openlocfilehash: 95d19068e482722bf6cd01e44d27c2719bc419a3
+ms.sourcegitcommit: b8a8d29fdf199158d96736fbbb0c3773502a092d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/11/2019
-ms.locfileid: "59491487"
+ms.lasthandoff: 04/15/2019
+ms.locfileid: "59564527"
 ---
 # <a name="integrate-your-existing-nps-infrastructure-with-azure-multi-factor-authentication"></a>Integrace vaší stávající infrastruktury NPS pomocí ověřování Azure Multi-Factor Authentication
 
@@ -78,6 +78,12 @@ NPS server musí být schopný komunikovat s následujícími adresami URL přes
 
 * https://adnotifications.windowsazure.com  
 * https://login.microsoftonline.com
+
+Kromě toho je potřeba připojení k následujícím adresám URL dokončení [instalační program adaptéru pomocí skriptu prostředí PowerShell](#run-the-powershell-script)
+
+- https://login.microsoftonline.com
+- https://provisioningapi.microsoftonline.com
+- https://aadcdn.msauth.net
 
 ## <a name="prepare-your-environment"></a>Příprava prostředí
 
@@ -142,6 +148,14 @@ Uživatelé také potřebovat postupovat podle následujících kroků k registr
 1. [Stáhněte si rozšíření NPS](https://aka.ms/npsmfa) z webu Microsoft Download Center.
 2. Binární soubor zkopírujte do Network Policy Server, kterou chcete konfigurovat.
 3. Spustit *setup.exe* a postupujte podle pokynů k instalaci. Pokud narazíte na chyby, zkontrolujte, že dvě knihovny z část předpoklady v tématu byly úspěšně nainstalovány.
+
+#### <a name="upgrade-the-nps-extension"></a>Upgrade rozšíření serveru NPS
+
+Při upgradu existujícího rozšíření NPS nainstalovat, aby se zabránilo restartování podkladový server následujících kroků:
+
+1. Stávající verzi odinstalujte
+1. Spuštění nového instalačního programu
+1. Restartujte službu serveru zásad sítě (IAS)
 
 ### <a name="run-the-powershell-script"></a>Spuštění powershellového skriptu
 
@@ -239,7 +253,7 @@ Platné – a – dokud časová razítka, která jsou v čitelné formě, lze p
 
 ### <a name="why-cant-i-sign-in"></a>Proč není se lze přihlásit?
 
-Zkontrolujte, jestli nevypršela platnost vašeho hesla. Rozšíření NPS nepodporuje změny hesel jako součást pracovního postupu přihlásit. Prosím požádejte o další pomoc pracovníky IT vaší organizace.
+Zkontrolujte, jestli nevypršela platnost vašeho hesla. Rozšíření NPS nepodporuje změny hesel jako součást pracovního postupu přihlásit. Požádejte o další pomoc pracovníky IT vaší organizace.
 
 -------------------------------------------------------------
 
@@ -270,7 +284,7 @@ Ověřte, že ze serveru, na kterém se spouští rozšíření NPS, je přístu
 
 Pokud vypršela platnost certifikátu vašeho předchozí počítač a byl vytvořen nový certifikát, odstraňte všechny certifikáty s vypršenou platností. S certifikáty s vypršenou platností může způsobit problémy s pomocí rozšíření NPS spuštění.
 
-A zkontrolujte, zda máte platný certifikát, zkontrolujte pomocí konzoly MMC Store certifikát místní účet počítače a ujistěte se, že certifikát nebyl předán, datem vypršení platnosti. Ke generování nově platný certifikát, spusťte znovu kroky v části "[spustit skript prostředí PowerShell](#run-the-powershell-script)"
+A zkontrolujte, zda máte platný certifikát, zkontrolujte pomocí konzoly MMC Store certifikát místní účet počítače a ujistěte se, že certifikát nebyl předán, datem vypršení platnosti. Ke generování nově platný certifikát, znovu provede kroky v části "[spustit skript prostředí PowerShell](#run-the-powershell-script)"
 
 ## <a name="managing-the-tlsssl-protocols-and-cipher-suites"></a>Správa protokolů TLS a SSL a šifrovacích sad
 
@@ -282,4 +296,4 @@ Doporučuje se, že starší nebo slabší šifrovací sady být vypnuto nebo od
 
 - Zjistěte, jak integrovat [Brána vzdálené plochy](howto-mfa-nps-extension-rdg.md) a [servery VPN jiných](howto-mfa-nps-extension-vpn.md) pomocí rozšíření NPS
 
-- [Řešení chybových zpráv z rozšíření NPS pro Azure Multi-Factor Authentication](howto-mfa-nps-extension-errors.md)
+- [řešení chybových zpráv z rozšíření NPS pro Azure Multi-Factor Authentication](howto-mfa-nps-extension-errors.md)

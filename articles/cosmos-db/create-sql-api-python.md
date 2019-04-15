@@ -8,12 +8,12 @@ ms.devlang: python
 ms.topic: quickstart
 ms.date: 09/24/2018
 ms.author: sngun
-ms.openlocfilehash: 269a66441529efee358cea22bb4f98b81a4b2f23
-ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
+ms.openlocfilehash: b257c1dbbed225bee9adfdb427bd036f0230ea47
+ms.sourcegitcommit: b8a8d29fdf199158d96736fbbb0c3773502a092d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56586320"
+ms.lasthandoff: 04/15/2019
+ms.locfileid: "59565057"
 ---
 # <a name="azure-cosmos-db-build-a-python-application-using-azure-cosmos-db-sql-api-account"></a>Azure Cosmos DB: Sestavení aplikace v Pythonu pomocí účtu rozhraní SQL API služby Azure Cosmos DB
 
@@ -26,7 +26,7 @@ ms.locfileid: "56586320"
 > * [Xamarin](create-sql-api-xamarin-dotnet.md)
 >  
 
-Azure Cosmos DB je globálně distribuovaná databázová služba Microsoftu pro více modelů. Můžete snadno vytvořit a dotazovat databáze dotazů, klíčů/hodnot a grafů, které tak můžou využívat výhody použitelnosti v celosvětovém měřítku a možností horizontálního škálování v jádru databáze Azure Cosmos. 
+Azure Cosmos DB je globálně distribuovaná databázová služba Microsoftu pro více modelů. Můžete rychle vytvořit a dotazovat dokumenty, klíč/hodnota a databáze grafů. Všechny tyto operace těžit z rozdělení a škálování služby Azure Cosmos DB.
 
 V tomto rychlém startu se dozvíte, jak vytvořit účet rozhraní [SQL API](sql-api-introduction.md) služby Azure Cosmos DB, databázi dokumentů a kontejner pomocí webu Azure Portal. Pak vytvoříte a spustíte aplikaci konzoly, která byla vytvořena pomocí sady Python SDK pro rozhraní [SQL API](sql-api-sdk-python.md). V tomto rychlém startu se používá verze 3.0 sady [Python SDK]. (https://pypi.org/project/azure-cosmos)
 
@@ -34,7 +34,7 @@ V tomto rychlém startu se dozvíte, jak vytvořit účet rozhraní [SQL API](sq
 
 ## <a name="prerequisites"></a>Požadavky
 
-* [Python 3.6](https://www.python.org/downloads/) se složkami \<umístění instalace\>\Python36 a \<umístění instalace>\Python36\Scripts přidanými do vaší cesty. 
+* [Python 3.6](https://www.python.org/downloads/), se `python` spustitelný soubor k dispozici ve vašich `PATH`.
 * [Visual Studio Code](https://code.visualstudio.com/)
 * [Rozšíření Python pro Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ms-python.python#overview)
 
@@ -98,7 +98,7 @@ Teď se vraťte zpátky na portál Azure Portal, kde najdete informace o připo
 
 ## <a name="review-the-code"></a>Kontrola kódu
 
-Tento krok je volitelný. Pokud chcete zjistit, jak se v kódu vytvářejí prostředky databáze, můžete si prohlédnout následující fragmenty kódu. Jinak můžete přeskočit přímo k části [Aktualizace informací o připojení](#update-your-connection-string). 
+Tento krok je volitelný. Další informace o databázi prostředků vytvořených v kódu a přeskočte k části [aktualizovat připojovací řetězec](#update-your-connection-string).
 
 Poznámka: Pokud znáte předchozí verzi sady Python SDK, možná jste zvyklí na používání termínů „kolekce“ a „dokument“. Vzhledem k tomu, že Azure Cosmos DB podporuje více modelů rozhraní API, ve verzi 3.0 sady Python SDK a novějších se používají obecné termíny „kontejner“, což může být kolekce, graf nebo tabulka, a „položka“ popisující obsah kontejneru.
 

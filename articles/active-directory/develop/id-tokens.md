@@ -1,6 +1,6 @@
 ---
-title: Odkaz tokenu Azure Active Directory ID | Dokumentace Microsoftu
-description: Další informace o použití id_tokens, protože ho vygeneroval koncové body v1.0 a v2.0 služby Azure AD.
+title: Microsoft identity platform token referenční informace o ID | Dokumentace Microsoftu
+description: Další informace o použití id_tokens, protože ho vygeneroval v1.0 Azure AD a Microsoft identity platform (v2.0) koncových bodů.
 services: active-directory
 documentationcenter: ''
 author: CelesteDG
@@ -12,20 +12,20 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/08/2019
+ms.date: 04/13/2019
 ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms:custom: fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dad1b686152101cbeaddc29974a2a1c5f13a7712
-ms.sourcegitcommit: 41015688dc94593fd9662a7f0ba0e72f044915d6
+ms.openlocfilehash: b5c296f14fd9fdc3a7555412555ea1a851f9a7b8
+ms.sourcegitcommit: b8a8d29fdf199158d96736fbbb0c3773502a092d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/11/2019
-ms.locfileid: "59500533"
+ms.lasthandoff: 04/15/2019
+ms.locfileid: "59563825"
 ---
-# <a name="id-tokens"></a>Tokeny ID
+# <a name="microsoft-identity-platform-id-tokens"></a>Microsoft identity platform ID tokenů
 
 `id_tokens` se odesílají do klientské aplikace jako součást [OpenID Connect](v1-protocols-openid-connect-code.md) toku. Může být odeslána po straně nebo místo přístupový token a klient používá k ověření uživatele.
 
@@ -64,7 +64,7 @@ Zobrazit tento token ukázkové verze 2.0 v [jwt.ms](https://jwt.ms/#id_token=ey
 
 ### <a name="payload-claims"></a>Datová část deklarace identity
 
-Tento seznam obsahuje deklarace, které jsou ve většině id_tokens ve výchozím nastavení (Pokud není uvedeno jinak).  Vaše aplikace však může využívat [nepovinných deklarací identity](active-directory-optional-claims.md) požádat o další deklarace identity v požadavku id_token.  Toto musí být v rozsahu `groups` deklaraci identity pro informace o názvu uživatele.
+Tento seznam obsahuje deklarace, které jsou ve většině id_tokens ve výchozím nastavení (Pokud není uvedeno jinak).  Vaše aplikace však může využívat [nepovinných deklarací identity](active-directory-optional-claims.md) požádat o další deklarace identity v požadavku id_token.  Toto musí být v rozsahu `groups` deklaraci identity pro informace o jeho jméno.
 
 |Deklarovat | Formát | Popis |
 |-----|--------|-------------|
@@ -77,22 +77,22 @@ Tento seznam obsahuje deklarace, které jsou ve většině id_tokens ve výchoz�
 | `c_hash`| String |Hodnota hash kódu je součástí tokeny typu ID, pouze v případě, že je vydaný ID token s autorizačního kódu OAuth 2.0. Slouží k ověření pravosti autorizační kód. Podrobnosti o provedení tohoto ověření naleznete v tématu [OpenID Connect specifikace](https://openid.net/specs/openid-connect-core-1_0.html). |
 |`at_hash`| String |Přístup, který je zahrnuta hodnota hash tokenu v ID tokeny, pouze pokud ID token vydaný s přístupovým tokenem OAuth 2.0. Slouží k ověření pravosti tokenu přístupu. Podrobnosti o provedení tohoto ověření naleznete v tématu [OpenID Connect specifikace](https://openid.net/specs/openid-connect-core-1_0.html). |
 |`aio` | Neprůhledný řetězec | Vnitřní deklarace, která používá Azure AD při zaznamenávání dat pro opakované použití tokenu. Třeba ji ignorovat.|
-|`preferred_username` | String | Primární uživatelské jméno, který reprezentuje uživatele. Může to být e-mailovou adresu, telefonní číslo nebo obecný uživatelské jméno bez zadaného formátu. Jeho hodnota je měnitelné a může v průběhu času měnit. Protože je proměnlivá, tato hodnota se nesmí používat pro autorizační rozhodnutí. `profile` Oboru se vyžaduje aby bylo možné dostávat tato deklarace identity.|
+|`preferred_username` | String | Primární uživatelské jméno, který reprezentuje uživatele. Může to být e-mailovou adresu, telefonní číslo nebo obecný uživatelské jméno bez zadaného formátu. Jeho hodnota je měnitelné a může v průběhu času měnit. Protože je proměnlivá, tato hodnota se nesmí používat pro autorizační rozhodnutí. `profile` Oboru se vyžaduje pro příjem tato deklarace identity.|
 |`email` | String | `email` Deklarace identity je k dispozici ve výchozím nastavení pro účet hosta, které mají e-mailovou adresu.  Vaše aplikace můžou požádat o deklarace identity e-mailu pro spravované uživatele (ty ze stejného tenanta jako prostředek) pomocí `email` [volitelnou deklaraci](active-directory-optional-claims.md).  Na koncový bod v2.0, vaše aplikace také můžete vyžádat `email` obor OpenID Connect - není nutné požádat o volitelnou deklaraci a obor získat deklarace identity.  Deklarace identity e-mailu podporuje pouze adresovatelný e-mailu z informací v profilu uživatele. |
-|`name` | String | `name` Deklarace identity poskytuje čitelné hodnotu, která identifikuje předmětem token. Hodnota nemusí být jedinečný, je proměnlivé a je navržena tak, aby se dá použít jenom pro účely zobrazení. `profile` Oboru se vyžaduje aby bylo možné dostávat tato deklarace identity. |
+|`name` | String | `name` Deklarace identity poskytuje čitelné hodnotu, která identifikuje předmětem token. Hodnota nemusí být jedinečný, je proměnlivé a je navržena tak, aby se dá použít jenom pro účely zobrazení. `profile` Oboru se vyžaduje pro příjem tato deklarace identity. |
 |`nonce`| String | Hodnota nonce odpovídá parametru součástí původní / authorize požadavek na zprostředkovatele identity. Pokud se neshoduje, vaše aplikace by měla odmítnout token. |
-|`oid` | Řetězec identifikátoru GUID | Neměnné identifikátor objektu v Microsoft systém identit, v tomto případě uživatelský účet. Toto ID jednoznačně identifikuje uživatele v aplikacích – dva různé aplikace přihlášení stejného uživatele se zobrazí v stejnou hodnotu `oid` deklarací identity. Vrátí toto ID jako Microsoft Graph `id` vlastnost pro daný uživatelský účet. Protože `oid` umožňuje více aplikací ke koordinaci uživatelů, `profile` oboru se vyžaduje aby bylo možné dostávat tato deklarace identity. Všimněte si, že pokud jeden uživatel existuje v několika tenantech, uživatel bude obsahovat jiný objekt ID v jednotlivých tenantů – jsou považovány za různé účty, i když se uživatel přihlašuje každý účet pomocí stejných přihlašovacích údajů. |
-|`roles`| pole řetězců | Sadu rolí, které byly přiřazeny uživateli, který je přihlášení. |
+|`oid` | Řetězec identifikátoru GUID | Neměnné identifikátor objektu v Microsoft systém identit, v tomto případě uživatelský účet. Toto ID jednoznačně identifikuje uživatele v aplikacích – dva různé aplikace přihlášení stejného uživatele se zobrazí v stejnou hodnotu `oid` deklarací identity. Vrátí toto ID jako Microsoft Graph `id` vlastnost pro daný uživatelský účet. Protože `oid` umožňuje více aplikací ke koordinaci uživatelů, `profile` oboru se vyžaduje pro příjem tato deklarace identity. Všimněte si, že pokud jeden uživatel existuje v několika tenantech, uživatel bude obsahovat jiný objekt ID v jednotlivých tenantů – budou považovány za různé účty, i když se uživatel přihlašuje každý účet pomocí stejných přihlašovacích údajů. |
+|`roles`| pole řetězců | Sada rolí, které byly přiřazeny uživateli, který je přihlášení. |
 |`rh` | Neprůhledný řetězec |Interní deklaraci identity Azure používá k odhlášením tokeny. Třeba ji ignorovat. |
-|`sub` | Řetězec identifikátoru GUID | Objekt zabezpečení, o tom, které token vyhodnocuje informace, jako je například uživatel aplikace. Tato hodnota je neměnná a nelze přiřadit nebo znovu použít. Předmět je identifikátor pairwise – je jedinečné ID konkrétní aplikace. Proto pokud jeden uživatel zaregistruje do dvou různých aplikací s využitím dva identifikátory ID jiného klienta, na aplikace, které se zobrazí dvě různé hodnoty pro deklarace identity subjektu. To může nebo nemusí být požadovaných v závislosti na požadavcích vaší architektury a ochrana osobních údajů. |
-|`tid` | Řetězec identifikátoru GUID | Identifikátor GUID, který představuje jejímž je uživatel z tenanta Azure AD. Pro pracovní a školní účty je identifikátor GUID ID neměnné tenanta organizace, které tento uživatel patří do. Pro osobní účty, je hodnota `9188040d-6c67-4c5b-b112-36a304b66dad`. `profile` Oboru se vyžaduje aby bylo možné dostávat tato deklarace identity. |
+|`sub` | Řetězec identifikátoru GUID | Objekt zabezpečení, o tom, které token vyhodnocuje informace, jako je například uživatel aplikace. Tato hodnota je neměnná a nelze přiřadit nebo znovu použít. Předmět je identifikátor pairwise – je jedinečné ID konkrétní aplikace. Pokud jeden uživatel zaregistruje do dvou různých aplikací s využitím dva identifikátory ID jiného klienta, na aplikace, které se zobrazí dvě různé hodnoty pro deklarace identity subjektu. To může nebo nemusí být vždy žádoucí v závislosti na požadavcích vaší architektury a ochrana osobních údajů. |
+|`tid` | Řetězec identifikátoru GUID | Identifikátor GUID, který představuje jejímž je uživatel z tenanta Azure AD. Pro pracovní a školní účty je identifikátor GUID ID neměnné tenanta organizace, které tento uživatel patří do. Pro osobní účty, je hodnota `9188040d-6c67-4c5b-b112-36a304b66dad`. `profile` Oboru se vyžaduje pro příjem tato deklarace identity. |
 |`unique_name` | String | Poskytuje lidsky čitelnou hodnotu, která identifikuje subjekt tokenu. Tato hodnota nemusí být jedinečný v rámci tenanta a by měla sloužit pouze pro účely zobrazení. Pouze vystavených v v1.0 `id_tokens`. |
 |`uti` | Neprůhledný řetězec | Interní deklaraci identity Azure používá k odhlášením tokeny. Třeba ji ignorovat. |
 |`ver` | Řetězec, 1.0 nebo 2.0 | Určuje verzi modulu požadavku id_token. |
 
 ## <a name="validating-an-idtoken"></a>Ověřuje se za token ID.
 
-Ověřování `id_token` je velmi podobná první krok [ověření přístupového tokenu](access-tokens.md#validating-tokens) – vašeho klienta by měl ověřit, zda správné vystavitele odeslal zpět token a že nikdo neoprávněně nemanipuloval s. Protože `id_tokens` jsou vždy token JWT, existuje mnoho knihoven pro ověření těchto tokenů – doporučujeme používat jednu z těchto spíše než to sami.
+Ověřování `id_token` je podobná první krok [ověření přístupového tokenu](access-tokens.md#validating-tokens) – vašeho klienta by měl ověřit, zda správné vystavitele odeslal zpět token a že nikdo neoprávněně nemanipuloval s. Protože `id_tokens` jsou vždy token JWT, existuje mnoho knihoven pro ověření těchto tokenů – doporučujeme používat jednu z těchto spíše než to sami.
 
 Token ověří ručně, naleznete v postupu [ověření přístupového tokenu](access-tokens.md#validating-tokens). Po ověření podpisu v tokenu, následující deklarace by měla být ověřena v požadavku id_token (ty mohou také provádí knihovny ověřování tokenů):
 
@@ -102,5 +102,5 @@ Token ověří ručně, naleznete v postupu [ověření přístupového tokenu](
 
 ## <a name="next-steps"></a>Další postup
 
-* Další informace o [přístupové tokeny služby Azure AD](access-tokens.md)
+* Další informace o [přístupové tokeny](access-tokens.md)
 * Přizpůsobení deklarací identity v požadavku id_token pomocí [nepovinných deklarací identity](active-directory-optional-claims.md).

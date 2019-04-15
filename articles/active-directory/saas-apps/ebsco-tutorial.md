@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 04/01/2019
 ms.author: jeedes
-ms.openlocfilehash: 5f5f83aa7885db4bb0d2f33f45fdf6a057b7673b
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
+ms.openlocfilehash: 2753daf225016d3bd8e07383193a1260b40a36d5
+ms.sourcegitcommit: b8a8d29fdf199158d96736fbbb0c3773502a092d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59547888"
+ms.lasthandoff: 04/15/2019
+ms.locfileid: "59564971"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-ebsco"></a>Kurz: Integrace Azure Active Directory s EBSCO
 
@@ -124,7 +124,7 @@ Ke konfiguraci Azure AD jednotné přihlašování s EBSCO, proveďte následuj�
 
     o **profilu** = klientů můžete přizpůsobit na odkaz k přesměrování uživatelů k určitému profilu (v závislosti na tom, co může zakoupit od EBSCO). Zadat ID konkrétní profil Hlavní ID jsou eds (EBSCO zjišťování služby) a ehost (EBSOCOhost databáze). Jsou uvedeny pokyny pro stejný [tady](https://help.ebsco.com/interfaces/EBSCOhost/EBSCOhost_FAQs/How_do_I_set_up_direct_links_to_EBSCOhost_profiles_and_or_databases#profile).
 
-6. EBSCO aplikací očekává, že kontrolní výrazy SAML v určitém formátu, který je potřeba přidat vlastní atribut mapování konfigurace atributy tokenu SAML. Na následujícím snímku obrazovky se zobrazí v seznamu atributů výchozí. Klikněte na tlačítko **upravit** ikony otevřete **atributy uživatele** dialogového okna.
+6. EBSCO aplikace očekává, že kontrolní výrazy SAML v určitém formátu, který je potřeba přidat vlastní atribut mapování konfigurace atributy tokenu SAML. Na následujícím snímku obrazovky se zobrazí v seznamu atributů výchozí. Klikněte na tlačítko **upravit** ikony otevřete **atributy uživatele** dialogového okna.
 
     ![image](common/edit-attribute.png)
 
@@ -253,9 +253,9 @@ Další informace o přístupovém panelu, naleznete v tématu [Úvod k přístu
 
 ## <a name="additional-sesources"></a>Další sesources
 
-- [ Seznam kurzů o integraci aplikací SaaS pomocí Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Seznam kurzů o integraci aplikací SaaS pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

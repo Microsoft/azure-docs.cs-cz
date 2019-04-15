@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 01/20/2018
 ms.author: yexu
-ms.openlocfilehash: 77be9d80d535cced48a39c47695257d4868f698c
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: b9dafd31ed84298c97932b1cdb5593eb17769ef9
+ms.sourcegitcommit: b8a8d29fdf199158d96736fbbb0c3773502a092d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59257429"
+ms.lasthandoff: 04/15/2019
+ms.locfileid: "59566001"
 ---
 # <a name="incrementally-load-data-from-multiple-tables-in-sql-server-to-an-azure-sql-database"></a>Přírůstkové načtení dat z více tabulek v SQL Serveru do databáze Azure SQL
 V tomto kurzu vytvoříte Azure Data Factory s kanálem, který načítá rozdílová data z několika tabulek v místním SQL Serveru do databáze Azure SQL.    
@@ -491,11 +491,12 @@ Tento kanál dostává jako parametr seznam tabulek. Aktivita ForEach prochází
 1. Přepněte na kartu **Jímka** a jako **Datová sada jímky** vyberte **SinkDataset**. 
         
     ![Aktivita jímky – nastavení jímky](./media/tutorial-incremental-copy-multiple-tables-portal/copy-sink-settings.png)
-1. Přepněte na kartu **Parametry** a proveďte následující kroky:
+1. Proveďte následující kroky:
 
-    1. Jako hodnotu vlastnosti **Název uložené procedury jímky** zadejte `@{item().StoredProcedureNameForMergeOperation}`.
-    1. Jako hodnotu vlastnosti **Typ tabulky jímky** zadejte `@{item().TableType}`.
-    1. V části **Datová sada jímky** jako hodnotu parametru **SinkTableName** zadejte `@{item().TABLE_NAME}`.
+    1. V **datovou sadu** vlastnost, pro **SinkTableName** parametr, zadejte `@{item().TABLE_NAME}`.
+    1. Pro **název uložené procedury** vlastnost, zadejte `@{item().StoredProcedureNameForMergeOperation}`.
+    1. Pro **typ tabulky** vlastnost, zadejte `@{item().TableType}`.
+
 
         ![Aktivita kopírování – parametry](./media/tutorial-incremental-copy-multiple-tables-portal/copy-activity-parameters.png)
 1. Přetáhněte aktivitu **Uložená procedura** z panelu nástrojů **Aktivity** na plochu návrháře kanálu. Propojte aktivitu **kopírování** s aktivitou **Uložená procedura**. 
@@ -743,6 +744,6 @@ V tomto kurzu jste provedli následující kroky:
 Pokud se chcete dozvědět víc o transformaci dat pomocí clusteru Spark v Azure, přejděte k následujícímu kurzu:
 
 > [!div class="nextstepaction"]
->[Přírůstkové načtení dat ze služby Azure SQL Database do Azure Blob storage pomocí technologie Change Tracking](tutorial-incremental-copy-change-tracking-feature-portal.md)
+>[Přírůstkové načtení dat ze služby Azure SQL Database do úložiště Azure Blob Storage pomocí technologie Change Tracking](tutorial-incremental-copy-change-tracking-feature-portal.md)
 
 

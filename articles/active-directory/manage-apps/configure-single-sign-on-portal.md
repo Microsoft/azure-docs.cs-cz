@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: app-mgmt
 ms.topic: tutorial
 ms.workload: identity
-ms.date: 12/06/2018
+ms.date: 04/08/2019
 ms.author: celested
 ms.reviewer: arvinh,luleon
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 037f5b554889d89fc0b50983d3d85d38f4345311
-ms.sourcegitcommit: dd1a9f38c69954f15ff5c166e456fda37ae1cdf2
+ms.openlocfilehash: a3d96799e69e2fdef3a4ffd1a436727e6a58da79
+ms.sourcegitcommit: b8a8d29fdf199158d96736fbbb0c3773502a092d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57571401"
+ms.lasthandoff: 04/15/2019
+ms.locfileid: "59565984"
 ---
 # <a name="tutorial-configure-saml-based-single-sign-on-for-an-application-with-azure-active-directory"></a>Kurz: Konfigurace založené na SAML jednotného přihlašování pro aplikaci pomocí Azure Active Directory
 
@@ -34,13 +34,13 @@ Tento kurz využívá Azure Portal k provedení následujících kroků:
 > * Konfigurace jednotného přihlašování založeného na SAML pro aplikaci
 > * Test nastavení SAML
 
-## <a name="before-you-begin"></a>Před zahájením
+## <a name="before-you-begin"></a>Než začnete
 
 1. Pokud aplikace nebyl přidán do vašeho tenanta Azure AD, přečtěte si téma [rychlý start: Přidání aplikace do svého tenanta Azure AD](add-application-portal.md).
 
-2. Požádejte dodavatele vaší aplikace o informace popsané v části [Konfigurace domény a adres URL](#configure-domain-and-urls).
+2. Požádejte dodavatele aplikace informace popsaného v [nakonfigurujte základní možnosti SAML](#configure-basic-saml-options).
 
-3. K testování postupů v tomto kurzu doporučujeme použít neprodukční prostředí. Pokud nemáte neprodukční prostředí Azure AD, můžete [získat měsíční zkušební verzi](https://azure.microsoft.com/pricing/free-trial/).
+3. K otestování kroky v tomto kurzu používejte mimo produkční prostředí. Pokud nemáte neprodukční prostředí Azure AD, můžete [získat měsíční zkušební verzi](https://azure.microsoft.com/pricing/free-trial/).
 
 4. Přihlaste se k [webu Azure portal](https://portal.azure.com) jako správce cloudové aplikace nebo aplikace správce pro vašeho tenanta Azure AD.
 
@@ -50,21 +50,23 @@ Po přidání aplikace do svého tenanta Azure AD, budete připraveni ke konfigu
 
 Otevření nastavení jednotného přihlašování:
 
-1. Na webu [Azure Portal](https://portal.azure.com) klikněte na levém navigačním panelu na **Azure Active Directory**. 
+1. V [webu Azure portal](https://portal.azure.com), v levém navigačním panelu vyberte **Azure Active Directory**. 
 
-2. V okně **Azure Active Directory** klikněte na **Podnikové aplikace**. Otevře se okno **Všechny aplikace**, ve kterém se zobrazí náhodný vzorek aplikací ve vašem tenantovi Azure AD. 
+2. V části **spravovat** v **Azure Active Directory** navigační panel, který se zobrazí, vyberte **podnikové aplikace**. Zobrazí se náhodného vzorku aplikací ve vašem tenantovi Azure AD. 
 
-3. V nabídce **Typ aplikace** vyberte **Všechny aplikace** a klikněte na **Použít**.
+3. V **typ aplikace** nabídce vyberte možnost **všechny aplikace**a pak vyberte **použít**.
 
-4. Zadejte název aplikace, pro kterou chcete nakonfigurovat jednotné přihlašování. Zvolte svoji vlastní aplikaci, nebo zadejte **GitHub-test** ke konfiguraci aplikace, které jste přidali v kroku [přidat aplikaci](add-application-portal.md) rychlý start.
+4. Zadejte název aplikace, pro kterou chcete nakonfigurovat jednotné přihlašování. Například můžete zadat **GitHub-test** ke konfiguraci aplikace, které jste přidali v kroku [přidat aplikaci](add-application-portal.md) rychlý start.  
 
-5. Klikněte na **Jednotné přihlašování**. V části **Režim jednotného přihlašování** se jako výchozí možnost zobrazí **Jednotné přihlašování na základě SAML**. 
+     ![Snímek obrazovky zobrazující panelu hledání aplikací.](media/configure-single-sign-on-portal/azure-portal-application-search.png)
 
-    ![Možnosti konfigurace](media/configure-single-sign-on-portal/config-options.png)
+5. Zvolte aplikaci, pro kterou chcete nakonfigurovat jednotné přihlašování.
 
-6. V horní části okna klikněte na **Uložit**. 
+6. V části **spravovat** vyberte **jednotného přihlašování**. 
 
-## <a name="configure-domain-and-urls"></a>Konfigurace domény a adres URL
+7. Vyberte **SAML** Konfigurace jednotného přihlašování. **Nastavte si jednotné přihlašování pomocí SAML - Preview** se zobrazí stránka.
+
+## <a name="configure-basic-saml-options"></a>Nakonfigurujte základní možnosti SAML
 
 Konfigurace domény a adres URL:
 
@@ -72,106 +74,94 @@ Konfigurace domény a adres URL:
 
     | Nastavení konfigurace | Iniciováno zprostředkovatelem přihlašování | Iniciováno pomocí IdP | Popis |
     |:--|:--|:--|:--|
-    | Přihlašovací adresa URL | Požaduje se | Nezadávejte | Když uživatel otevře tuto adresu URL, poskytovatel služeb ho přesměruje do Azure AD, kde se uživatel ověří a přihlásí. Azure AD používá adresu URL ke spuštění aplikace z Office 365 nebo Azure AD přístupového panelu. Když je pole prázdné, Azure AD spoléhá na zprostředkovatele identity k zahájení jednotného přihlašování, když uživatel spustí aplikaci.|
     | Identifikátor (ID entity) | Vyžaduje se pro některé aplikace | Vyžaduje se pro některé aplikace | Jednoznačně identifikuje aplikaci, pro kterou se konfiguruje jednotné přihlašování. Azure AD odešle identifikátor aplikace jako parametr cílové skupiny tokenu SAML. Abyste ověřili, že se očekává aplikace. Tato hodnota se také zobrazuje jako ID entity ve všech metadatech SAML poskytovaných aplikací.|
     | Adresa URL odpovědi | Nepovinné | Požaduje se | Určuje, kde aplikace očekává přijetí tokenu SAML. Adresa URL odpovědi se také označuje jako adresa URL ACS (Assertion Consumer Service). |
-    | Stav přenosu | Nepovinné | Nepovinné | Určuje pro aplikaci, kam má přesměrovat uživatele po dokončení ověřování. Obvykle je tato hodnota platná adresa URL aplikace, ale některé aplikace s tímto polem pracují jinak. Další informace vám sdělí dodavatel aplikace.
+    | Přihlašovací adresa URL | Požaduje se | Nezadávejte | Když uživatel otevře tuto adresu URL, poskytovatel služeb ho přesměruje do Azure AD, kde se uživatel ověří a přihlásí. Azure AD používá adresu URL ke spuštění aplikace z Office 365 nebo Azure AD přístupového panelu. Když je pole prázdné, Azure AD spoléhá na zprostředkovatele identity spusťte jednotného přihlašování, když uživatel spustí aplikaci.|
+    | Stav přenosu | Nepovinné | Nepovinné | Určuje pro aplikaci, kam má přesměrovat uživatele po dokončení ověřování. Obvykle hodnota není platná adresa URL pro aplikaci. Nicméně některé aplikace používají toto pole odlišně. Další informace vám sdělí dodavatel aplikace.
+    | Adresa URL – odhlášení | Nepovinné | Nepovinné | Používá k odeslání odpovědi odhlašování SAML zpět do aplikace.
 
-2. Zadejte požadované informace. Pokud chcete zobrazit všechna nastavení, klikněte na **Zobrazit pokročilé nastavení URL**.
 
-    ![Možnosti konfigurace](media/configure-single-sign-on-portal/config-urls.png)
+2. Chcete-li upravit základní možnosti konfigurace SAML, vyberte **upravit** ikonu (tužky) v pravém horním rohu **základní konfiguraci SAML** oddílu.
 
-3. V horní části okna klikněte na **Uložit**.
+     ![Konfigurace certifikátů](media/configure-single-sign-on-portal/basic-saml-configuration-edit-icon.png)
 
-4. Je **nastavení testu SAML** tlačítko v této části. Tento test spustíte později v části [Test jednotného přihlašování](#test-single-sign-on).
+3. Do příslušných polí na stránce zadejte informace získaný od dodavatele aplikace v kroku 1.
 
-## <a name="configure-user-attributes"></a>Konfigurace atributů uživatele
+4. V horní části stránky vyberte **Uložit**.
 
-Atributy uživatele umožňují řídit, jaké informace o službě Azure AD odešle aplikaci v tokenu SAML pokaždé, když uživatel přihlásí na. Azure AD může do aplikace odesílat například jméno, e-mail a ID zaměstnance uživatele. 
+## <a name="configure-user-attributes-and-claims"></a>Nakonfigurovat atributy uživatele a deklarace identity 
+
+Můžete řídit, jaké informace o službě Azure AD pošle aplikaci v tokenu SAML, když se uživatel přihlásí. Tyto informace můžete řídit konfigurací atributy uživatele. Můžete například nakonfigurovat služba Azure AD posílala jméno uživatele, e-mailu a ID zaměstnance do aplikace, když se uživatel přihlásí. 
 
 Pro správné fungování jednotného přihlašování můžou být tyto atributy povinné nebo volitelné. Další informace najdete v [kurzu pro konkrétní aplikaci](../saas-apps/tutorial-list.md) nebo se obraťte na dodavatele aplikace.
 
-1. Pokud chcete zobrazit všechny možnosti, klikněte na **Zobrazit a upravit všechny ostatní atributy uživatele**.
+1. Chcete-li upravit atributy uživatele a deklarace identity, vyberte **upravit** ikonu (tužky) v pravém horním rohu **atributy uživatele a deklarace identity** oddílu.
 
-    ![Konfigurace atributů uživatele](media/configure-single-sign-on-portal/config-user-attributes.png)
+   **Hodnota identifikátoru název** je nastavena výchozí hodnotu *user.principalname*. Identifikátor uživatele jednoznačně identifikuje každého uživatele v rámci aplikace. Pokud je například uživatelským jménem i jedinečným identifikátorem e-mailová adresa, nastavte tuto hodnotu na *user.mail*.
 
-2. Zadejte **Identifikátor uživatele**.
+2. Změnit **hodnota identifikátoru název**, vyberte **upravit** ikonu (tužky) **hodnota identifikátoru název** pole. Abyste provedli odpovídající změny ve formátu identifikátoru a zdroje, podle potřeby. Jakmile budete hotovi, uložte změny. Další informace o přizpůsobování deklarací identity, najdete v článku [přizpůsobení deklarací identity vystavených v tokenu SAML pro podnikové aplikace](../develop/active-directory-saml-claims-customization.md) článek.
 
-    Identifikátor uživatele jednoznačně identifikuje každého uživatele v rámci aplikace. Pokud je například uživatelským jménem i jedinečným identifikátorem e-mailová adresa, nastavte tuto hodnotu na *user.mail*.
+3. Chcete-li přidat deklaraci identity, **přidat novou deklaraci** v horní části stránky. Zadejte **název** a vyberte odpovídající zdroj. Pokud vyberete **atribut** zdroje, budete muset zvolit **zdrojový atribut** chcete použít. Pokud vyberete **překlad** zdroje, budete muset zvolit **transformace** a **parametr 1** chcete použít.
 
-3. Pokud chcete zobrazit další atributy tokenu SAML, klikněte na **Zobrazit a upravit všechny ostatní atributy uživatele**.
-
-4. Pokud mezi **Atributy tokenu SAML** chcete přidat atribut, klikněte na **Přidat atribut**. Zadejte **Název** a v nabídce vyberte **hodnotu**.
-
-5. Klikněte na **Uložit**. V tabulce se zobrazí nový atribut.
+4. Vyberte **Uložit**. Nová deklarace identity se zobrazí v tabulce.
  
-## <a name="create-a-saml-signing-certificate"></a>Vytvoření podpisového certifikátu SAML
+## <a name="generate-a-saml-signing-certificate"></a>Generování podpisového certifikátu SAML
 
 Azure AD k podepisování tokenů SAML, které odesílá do aplikace, používá certifikát. 
 
-1. Pokud chcete zobrazit všechny možnosti, klikněte na **Zobrazit pokročilé možnosti podepisování certifikátu**.
+1. Chcete-li vygenerovat nový certifikát, vyberte **upravit** ikonu (tužky) v pravém horním rohu **podpisový certifikát SAML** části.
 
-    ![Konfigurace certifikátů](media/configure-single-sign-on-portal/config-certificate.png)
+2. V **podpisový certifikát SAML** vyberte **nový certifikát**.
 
-2. Pokud chcete nakonfigurovat certifikát, klikněte na **Vytvořit nový certifikát**.
+3. V řádku nový certifikát, který se zobrazí, nastavte **datum vypršení platnosti**. Další informace o dostupných možností konfigurace, najdete v článku [pokročilé možnosti podepisování certifikátů](certificate-signing-options.md) článku.
 
-3. V **vytvořit nový certifikát** okno, nastavte **datum vypršení platnosti**a klikněte na tlačítko **Uložit**.
-
-4. Klikněte na **Aktivovat nový certifikát**.
-
-5. Další informace najdete v tématu [Pokročilé možnosti podepisování certifikátu](certificate-signing-options.md).
-
-6. Pokud chcete ponechat změny, které jste zatím provedli, nezapomeňte v horní části okna **Jednotné přihlašování** kliknout na **Uložit**. 
+4. Vyberte **Uložit** v horní části **podpisový certifikát SAML** oddílu. 
 
 ## <a name="assign-users-to-the-application"></a>Přiřazení uživatelů k aplikaci
 
-Microsoft doporučuje před postupným zavedením aplikace v rámci organizace otestovat jednotné přihlašování s několika uživateli nebo skupinami.
+Je vhodné otestovat jednotné přihlašování s několika uživateli nebo skupinami před zavedením aplikace pro vaši organizaci.
+
+> [!NOTE]
+>
+> Tyto kroky se použijí k **uživatelů a skupin** oddíl konfigurace na portálu. Po dokončení, bude nutné přejít zpět **jednotného přihlašování** části k dokončení tohoto kurzu.
 
 Přiřazení uživatele nebo skupiny k aplikaci:
 
 1. Pokud ještě není otevřeno, otevřete aplikaci na portálu.
-2. V levém okně aplikace klikněte na **Uživatelé a skupiny**.
-3. Klikněte na **Přidat uživatele**.
-4. V okně **Přidat přiřazení** klikněte na **Uživatelé a skupiny**.
-5. Pokud chcete vyhledat konkrétního uživatele, zadejte jméno uživatele do pole **Vybrat**, klikněte na zaškrtávací políčko vedle profilové fotky nebo loga uživatele a klikněte na **Vybrat**. 
-6. Vyhledejte své aktuální uživatelské jméno a vyberte ho. Volitelně můžete vybrat více uživatelů.
-7. V okně **Přidat přiřazení** klikněte na **Přiřadit**. Po dokončení se vybraní uživatelé zobrazí v seznamu **Uživatelé a skupiny**.
+2. V levém navigačním panelu pro aplikaci, vyberte **uživatelů a skupin**.
+3. Vyberte **přidat uživatele**.
+4. V **přidat přiřazení** vyberte **uživatelů a skupin**.
+5. Chcete-li vyhledat konkrétního uživatele, zadejte uživatelské jméno do **vyberte člena nebo Pozvěte externího uživatele** pole. Potom vyberte profilové fotky uživatele nebo loga a klikněte na tlačítko **vyberte**. 
+6. V **přidat přiřazení** vyberte **přiřadit**. Až budete hotovi, vybraným uživatelům se zobrazí v **uživatelů a skupin** seznamu.
 
-## <a name="configure-the-application-to-use-azure-ad"></a>Konfigurace aplikace pro používání služby Azure AD
+## <a name="set-up-the-application-to-use-azure-ad"></a>Nastavení aplikace, které používají Azure AD
 
-Už jste téměř hotovi.  Na závěr je potřeba nakonfigurovat aplikaci tak, aby používala službu Azure AD jako zprostředkovatele identity SAML. 
+Už jste téměř hotovi.  V posledním kroku budete muset nastavit aplikaci pro použití služby Azure AD jako zprostředkovatele identity SAML. 
 
-1. Posuňte se na konec okna **Jednotné přihlašování** pro vaši aplikaci. 
-
-    ![Konfigurace aplikace](media/configure-single-sign-on-portal/configure-app.png)
-
-2. Na portálu klikněte na **Konfigurovat aplikaci** a postupujte podle pokynů.
-3. Ručně vytvořte uživatelské účty v aplikaci otestovat jednotné přihlašování. Vytvořte uživatelské účty, které jste k aplikaci přiřadili v [předchozí části](#assign-users-to-the-application). 
+1. Přejděte dolů k položce **nastavení <applicationName>**  oddílu. Pro účely tohoto kurzu je volána v této části **nastavení testu Githubu**. 
+2. Zkopírujte hodnotu z každého řádku v této části. Pak vložte odpovídající řádek v každé hodnotě **základní konfiguraci SAML** oddílu. Například zkopírovat **přihlašovací adresa URL** hodnotu z **nastavení testu Githubu** části a vložte ho do **přihlašovací adresa URL** pole **základní konfiguraci SAML**  oddílu a tak dále.
+3. Když všechny hodnoty jste vložili do příslušných polí, vyberte **Uložit**.
 
 ## <a name="test-single-sign-on"></a>Test jednotného přihlašování
 
-Jste připraveni otestovat své nastavení.  
+Jste připraveni vaše nastavení testu.  
 
 1. Otevřete nastavení jednotného přihlašování pro vaši aplikaci. 
-2. Posuňte se do části **Konfigurace domény a adres URL**.
-2. Klikněte na **Otestovat nastavení SAML**. Zobrazí se možnosti testování.
+2. Přejděte **ověření jednotného přihlašování s <applicationName>**  oddílu. Pro účely tohoto kurzu je volána v této části **nastavení testu Githubu**.
+3. Vyberte **Test**. Zobrazí se možnosti testování.
+4. Vyberte **přihlásit jako aktuální uživatel**. Tento test umožňuje nejprve zjistit, zda se jednotné přihlašování funguje pro vás na správce.
 
-    ![Možnosti testování jednotného přihlašování](media/configure-single-sign-on-portal/test-single-sign-on.png) 
+Pokud dojde k chybě, zobrazí se chybová zpráva. Proveďte následující kroky:
 
-3. Klikněte na **Přihlásit se jako aktuální uživatel**. Tento test umožňuje nejprve zjistit, zda se jednotné přihlašování funguje pro vás na správce.
-4. Pokud dojde k chybě, zobrazí se chybová zpráva. Zkopírujte podrobnosti a vložte je do pole **Jak chyba vypadá?**.
+1. Zkopírujte podrobnosti a vložte je do pole **Jak chyba vypadá?**.
 
     ![Získání postupu řešení](media/configure-single-sign-on-portal/error-guidance.png)
 
-5. Klikněte na **Získat postup řešení**. Zobrazit kořenové příčiny a řešení doprovodné materiály.  V tomto příkladu se uživateli přiřadí k aplikaci.
+2. Vyberte **pomoc rozlišení**. Zobrazit kořenové příčiny a řešení doprovodné materiály.  V tomto příkladu se uživateli přiřadí k aplikaci.
 
-    ![Oprava chyby](media/configure-single-sign-on-portal/fix-error.png)
+3. Přečtěte si pokyny k řešení a potom, pokud je to možné, pokud chcete problém vyřešit.
 
-6. Přečtěte si postup řešení a pak v případě potřeby klikněte na **Opravit**.
-
-7. Spusťte test znovu, dokud se úspěšně nedokončí.
-
-
+4. Spusťte test znovu, dokud se úspěšně nedokončí.
 
 ## <a name="next-steps"></a>Další postup
 V tomto kurzu jste nakonfigurovali jednotné přihlašování – nastavení pro aplikaci. Po dokončení konfigurace jste k aplikaci přiřadili uživatele a nakonfigurovali jste aplikaci tak, aby používala jednotné přihlašování na základě SAML. Když jste to všechno dokončili, ověřili jste, jestli přihlašování SAML funguje správně.
@@ -186,7 +176,7 @@ Provedli jste tyto akce:
 > * Nakonfigurována pro použití služby Azure AD jako zprostředkovatele identity SAML
 > * Test jednotného přihlašování založeného na SAML
 
-Zavedení aplikace více uživatelům ve vaší organizaci, doporučujeme používat automatické zřizování uživatelů.
+Chcete-li zavedení aplikace více uživatelům ve vaší organizaci, použijte automatické zřizování uživatelů.
 
 > [!div class="nextstepaction"]
 > [Informace o přiřazování uživatelů s využitím automatického zřizování](configure-automatic-user-provisioning-portal.md)

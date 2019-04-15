@@ -5,15 +5,15 @@ services: site-recovery
 author: rayne-wiselman
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 04/08/2019
+ms.date: 04/15/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 6e826bd965281d60cb6d73f325fbc5a7a06da234
-ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
+ms.openlocfilehash: 412dfd690ea4ab33f249af78d4ef94c5ae5ccad2
+ms.sourcegitcommit: b8a8d29fdf199158d96736fbbb0c3773502a092d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
-ms.locfileid: "59358482"
+ms.lasthandoff: 04/15/2019
+ms.locfileid: "59565831"
 ---
 # <a name="prepare-azure-resources-for-disaster-recovery-of-on-premises-machines"></a>Příprava prostředků Azure na zotavení po havárii místních počítačů
 
@@ -70,10 +70,10 @@ K provedení těchto úloh by váš účet měl mít přiřazenou předdefinovan
 Počítače se replikují do Azure v místním spravované disky. Pokud dojde k převzetí služeb při selhání, virtuální počítače Azure vytvořené z těchto spravovaných disků a připojený k síti Azure, kterou zadáte v tomto postupu.
 
 1. Na webu [Azure Portal](https://portal.azure.com) vyberte **Vytvořit prostředek** > **Sítě** > **Virtuální síť**.
-2. Jako model nasazení nechte vybraný **Resource Manager**.
+2. Zachovat **Resource Manageru** vybrali jako model nasazení.
 3. V části **Název** zadejte název sítě. Název musí být v rámci skupiny prostředků Azure jedinečný. V tomto kurzu používáme **ContosoASRnet**.
 4. Zadejte skupinu prostředků, ve které se vytvoří síť. V tomto kurzu používáme existující skupinu prostředků **contosoRG**.
-5. V **rozsah adres**, zadejte pro rozsah adres v síti. Používáme **10.0.0.0/24**a ne pomocí podsítě.
+5. V **rozsah adres**, zadejte pro rozsah adres v síti. Používáme **10.1.0.0/24**a ne pomocí podsítě.
 6. V části **Předplatné** vyberte předplatné, ve kterém chcete síť vytvořit.
 7. V **umístění**, vyberte stejnou oblast, ve kterém byla vytvořena trezoru služby Recovery Services. V našem kurzu má **západní Evropa**. Síť musí být ve stejné oblasti jako trezor.
 8. Ponecháme výchozí možnosti základní ochrany před útoky DDoS bez koncového bodu služby v síti.

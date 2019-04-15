@@ -1,6 +1,6 @@
 ---
-title: Glosář pro vývojáře Azure Active Directory | Dokumentace Microsoftu
-description: Seznam termínů pro běžně používané funkce a koncepty pro vývojáře Azure Active Directory.
+title: Glosář Microsoft identity platform pro vývojáře | Azure
+description: Seznam termínů pro běžně používané koncepce pro vývojáře platforma identit Microsoft a funkce.
 services: active-directory
 documentationcenter: ''
 author: CelesteDG
@@ -13,21 +13,21 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 11/16/2017
+ms.date: 04/13/2019
 ms.author: celested
 ms.custom: aaddev
-ms.reviewer: elisol
+ms.reviewer: jmprieur, saeeda, jesakowi, nacanuma, dadobali
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ec06b25954d25c27cd7606f2f47aa93ef6d54244
-ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
+ms.openlocfilehash: 968da9212b52c1e7ea09d1472b312671c7a73449
+ms.sourcegitcommit: b8a8d29fdf199158d96736fbbb0c3773502a092d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58650389"
+ms.lasthandoff: 04/15/2019
+ms.locfileid: "59565513"
 ---
-# <a name="azure-active-directory-developer-glossary"></a>Glosář pro vývojáře Azure Active Directory
+# <a name="microsoft-identity-platform-developer-glossary"></a>Glosář pro vývojáře platforma identit Microsoft
 
-Tento článek obsahuje definice pro některý ze základní koncepce pro vývojáře Azure Active Directory (AD), což je užitečné při získávání informací o vývoji aplikací pro Azure AD.
+Tento článek obsahuje definice pro některý ze základní koncepce pro vývojáře a terminologii, což je užitečné při získávání informací o vývoji aplikací pomocí Microsoft identity platform.
 
 ## <a name="access-token"></a>přístupový token
 
@@ -38,11 +38,11 @@ Přístupové tokeny jsou někdy označovány jako "Uživatel + aplikace" nebo "
 * [Udělení autorizace "Autorizační kód"](#authorization-grant), koncový uživatel se ověřuje nejdříve jako vlastníka prostředku, delegování povolení klientům přístup k prostředku. Klient se ověří později při získání přístupového tokenu. Token, který můžete někdy odkazovat přesněji řečeno jako token "Uživatel + aplikace", protože představuje na uživatele, která oprávnění klientská aplikace a aplikace.
 * [Udělení autorizace "Přihlašovací údaje pro klienta"](#authorization-grant), klient poskytuje jedinou ověřování fungovat bez ověřování/autorizace vlastníka prostředku, takže token, který může být někdy se nazývá "Jen pro aplikace" token.
 
-Zobrazit [odkaz tokenu Azure AD] [ AAD-Tokens-Claims] další podrobnosti.
+Zobrazit [platforma identit Microsoft odkaz tokenu] [ AAD-Tokens-Claims] další podrobnosti.
 
-## <a name="application-id-client-id"></a>id aplikace (id klienta)
+## <a name="application-id-client-id"></a>ID aplikace (ID klienta)
 
-Jedinečný identifikátor služby Azure AD problémů, které registraci aplikace, který identifikuje konkrétní aplikaci a přidružené konfigurace. Toto id aplikace ([id klienta](https://tools.ietf.org/html/rfc6749#page-15)) se používá při ověřování požadavků a je do knihoven ověřování k dispozici v době vývoje. Id aplikace (id klienta) není tajným kódem.
+Jedinečný identifikátor služby Azure AD problémů, které registraci aplikace, který identifikuje konkrétní aplikaci a přidružené konfigurace. Toto ID aplikace ([ID klienta](https://tools.ietf.org/html/rfc6749#page-15)) se používá při ověřování požadavků a je do knihoven ověřování k dispozici v době vývoje. ID aplikace (ID klienta) není tajným kódem.
 
 ## <a name="application-manifest"></a>manifest aplikace
 
@@ -59,7 +59,7 @@ Další informace najdete v tématu [aplikační a instanční objekty][AAD-App-
 Aby bylo možné povolit aplikace a integrovat delegovat funkce správy identit a přístupu ke službě Azure AD, je nutné jej zaregistrovat s Azure AD [tenanta](#tenant). Při registraci vaší aplikace s Azure AD poskytujete konfigurace identity pro vaši aplikaci, což umožňuje integraci s Azure AD a pomocí funkcí, jako:
 
 * Robustní správu z jednotné přihlašování pomocí Azure AD Identity Management a [OpenID Connect] [ OpenIDConnect] implementace protokolu
-* Zprostředkované přístup k [chráněné zdroje](#resource-server) podle [klientské aplikace](#client-application), prostřednictvím služby Azure AD OAuth 2.0 [autorizační server](#authorization-server) implementace
+* Zprostředkované přístup k [chráněné zdroje](#resource-server) podle [klientské aplikace](#client-application), přes OAuth 2.0 [autorizačního serveru](#authorization-server)
 * [Rozhraní pro udělování souhlasu](#consent) pro Správa klientského přístupu k chráněným prostředkům podle autorizace vlastníka prostředku.
 
 Zobrazit [integrace aplikací s Azure Active Directory] [ AAD-Integrating-Apps] další podrobnosti.
@@ -93,13 +93,13 @@ Přihlašovací údaje představující [vlastníka prostředku](#resource-owner
 
 Podle definice [Framework autorizace OAuth2][OAuth2-Role-Def], server pověřená přístup tokeny k [klienta](#client-application) po úspěšném ověření [vlastníka prostředku](#resource-owner) a získání jeho povolení. A [klientská aplikace](#client-application) komunikuje pomocí autorizačního serveru za běhu pomocí jeho [autorizace](#authorization-endpoint) a [token](#token-endpoint) definovanékoncovébody,vsouladuOAuth2[udělení autorizace](#authorization-grant).
 
-V případě integrace s aplikací Azure AD, Azure AD implementuje role serveru autorizace pro aplikace Azure AD a Microsoft service rozhraní API, například [rozhraní Microsoft Graph API][Microsoft-Graph].
+V případě integrace Microsoft identity platform aplikací, platforma identit Microsoft implementuje role serveru autorizace pro aplikace Azure AD a Microsoft service rozhraní API, například [rozhraní Microsoft Graph API] [Microsoft-Graph].
 
 ## <a name="claim"></a>deklarace identity
 
 A [token zabezpečení](#security-token) obsahuje deklarace identity, které poskytují kontrolní výrazy přibližně jednu entitu (například [klientská aplikace](#client-application) nebo [vlastníka prostředku](#resource-owner)) na jinou entitu (například [server prostředků](#resource-server)). Deklarace identity jsou páry název/hodnota, která propojení faktů o token subjektu (například objekt zabezpečení, která byla ověřena podle [autorizační server](#authorization-server)). K dispozici v daný token deklarace identity jsou závislé na několika proměnnými, typ tokenu, typ přihlašovacích údajů pro ověření, předmět, konfigurace aplikace, atd.
 
-Zobrazit [odkaz tokenu Azure AD] [ AAD-Tokens-Claims] další podrobnosti.
+Zobrazit [token referenční informace k Microsoft identity platform] [ AAD-Tokens-Claims] další podrobnosti.
 
 ## <a name="client-application"></a>Klientská aplikace
 
@@ -117,7 +117,7 @@ Zobrazit [rozhraní pro udělování souhlasu](consent-framework.md) Další inf
 
 [OpenID Connect] [ OpenIDConnect-ID-Token] [token zabezpečení](#security-token) poskytované [autorizační server](#authorization-server) [koncový bod autorizace](#authorization-endpoint), který obsahuje [deklarace identity](#claim) vztahující se k ověřování koncového uživatele [vlastníka prostředku](#resource-owner). Stejně jako přístupový token, jsou také reprezentované tokeny typu ID jako digitálně podepsané [JSON Web Token (JWT)][JWT]. Na rozdíl od přístupového tokenu, ale ID token deklarace identity nejsou použity pro účely související s přístup k prostředkům a konkrétně řízení přístupu.
 
-Zobrazit [odkaz tokenu Azure AD] [ AAD-Tokens-Claims] další podrobnosti.
+Zobrazit [token referenční informace k Microsoft identity platform] [ AAD-Tokens-Claims] další podrobnosti.
 
 ## <a name="microsoft-identity-platform"></a>Microsoft Identity Platform
 
@@ -220,14 +220,14 @@ Typ [klientská aplikace](#client-application) , který spouští všechny kódu
 
 ## <a name="next-steps"></a>Další postup
 
-[Příručce vývojáře v Azure AD] [ AAD-Dev-Guide] je cílovou stránkou pro všechny služby Azure AD související s vývojem témata, včetně přehledu toho [integraci aplikací] [ AAD-How-To-Integrate] a rozumět základům [ověřování Azure AD a scénáře podporované metody ověřování][AAD-Auth-Scenarios]. Můžete také najít ukázky a kurzy v tom, jak rychle vytvořit a spustit na [Githubu](https://github.com/azure-samples?utf8=%E2%9C%93&q=active%20directory&type=&language=).
+[Microsoft identity platform – Příručka vývojáře] [ AAD-Dev-Guide] je cílovou stránkou pro všechny Microsoft identity platform související s vývojem témata, včetně přehled [aplikace integrace] [ AAD-How-To-Integrate] a rozumět základům [ověřování Microsoft identity platform a scénáře podporované metody ověřování][AAD-Auth-Scenarios]. Můžete také najít ukázky a kurzy v tom, jak rychle vytvořit a spustit na [Githubu](https://github.com/azure-samples?utf8=%E2%9C%93&q=active%20directory&type=&language=).
 
 Pomocí následujícího oddílu pro komentáře na svůj názor a pomozte Upřesnit a tvarování tohoto obsahu, včetně žádostí o nových definic nebo aktualizaci existující aplikace!
 
 <!--Image references-->
 
 <!--Reference style links -->
-[AAD-App-Manifest]:reference-azure-ad-app-manifest.md
+[AAD-App-Manifest]:reference-app-manifest.md
 [AAD-App-SP-Objects]:app-objects-and-service-principals.md
 [AAD-Auth-Scenarios]:authentication-scenarios.md
 [AAD-Dev-Guide]:azure-ad-developers-guide.md

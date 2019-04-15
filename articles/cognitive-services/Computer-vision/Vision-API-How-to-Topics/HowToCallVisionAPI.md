@@ -11,12 +11,12 @@ ms.topic: sample
 ms.date: 03/21/2019
 ms.author: kefre
 ms.custom: seodec18
-ms.openlocfilehash: 4d9ec05b2495ec54657405c00e7dd42ee10911b1
-ms.sourcegitcommit: 87bd7bf35c469f84d6ca6599ac3f5ea5545159c9
+ms.openlocfilehash: e6ebd4ff465565be49d98162cd9ca67c194593a4
+ms.sourcegitcommit: b8a8d29fdf199158d96736fbbb0c3773502a092d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58350908"
+ms.lasthandoff: 04/15/2019
+ms.locfileid: "59563366"
 ---
 # <a name="example-how-to-call-the-computer-vision-api"></a>Příklad: Jak volat rozhraní API pro počítačové zpracování obrazu
 
@@ -167,13 +167,13 @@ Tady je příklad:
 
 Pole | Type | Obsah
 ------|------|------|
-Značky  | objekt | Objekt nejvyšší úrovně pro pole značek.
-tags[].Name | string    | Klíčové slovo z klasifikátoru značek.
-tags[].Score    | číslo    | Skóre spolehlivosti z intervalu 0 až 1.
-description  | objekt   | Objekt nejvyšší úrovně pro popis.
-description.tags[] |    string  | Seznam značek.  Pokud vytvořený popisek není dostatečně spolehlivý, může mít volající k dispozici jenom značky.
-description.captions[].text | string    | Výraz, který popisuje obrázek.
-description.captions[].confidence   | číslo    | Spolehlivost výrazu.
+Značky  | `object` | Objekt nejvyšší úrovně pro pole značek.
+tags[].Name | `string`  | Klíčové slovo z klasifikátoru značek.
+tags[].Score    | `number`  | Skóre spolehlivosti z intervalu 0 až 1.
+description  | `object` | Objekt nejvyšší úrovně pro popis.
+description.tags[] |    `string`    | Seznam značek.  Pokud vytvořený popisek není dostatečně spolehlivý, může mít volající k dispozici jenom značky.
+description.captions[].text | `string`  | Výraz, který popisuje obrázek.
+description.captions[].confidence   | `number`  | Spolehlivost výrazu.
 
 ## <a name="retrieve-and-understand-the-json-output-of-domain-specific-models"></a>Načíst a pochopit výstup JSON doménově specifické modely
 
@@ -229,10 +229,10 @@ Pole kategorií představuje seznam jedné nebo několika z [86 kategorií](../C
 
 Pole   | Type  | Obsah
 ------|------|------|
-categories | objekt | Objekt nejvyšší úrovně
-categories[].name    | string   | Název z taxonomie 86 kategorií
-categories[].score  | číslo    | Skóre spolehlivosti z intervalu 0 až 1
-categories[].detail  | objekt?      | Volitelné podrobnosti o objektu
+categories | `object`   | Objekt nejvyšší úrovně
+categories[].name    | `string` | Název z taxonomie 86 kategorií
+categories[].score  | `number`  | Skóre spolehlivosti z intervalu 0 až 1
+categories[].detail  | `object?`      | Volitelné podrobnosti o objektu
 
 Všimněte si, že pokud vyhovuje více kategorií (klasifikátor 86 kategorií například vrátí při použití modelu celebrities skóre pro people_ i people_young), připojí se podrobnosti k nejobecnější shodné značce (v tomto příkladu people_).
 
