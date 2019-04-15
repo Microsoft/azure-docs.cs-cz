@@ -552,9 +552,9 @@ V následující tabulce jsou uvedené příklady toho, jak zadat **tableName** 
 
 | Schéma databáze | Název tabulky | **tableName** vlastnost JSON |
 | --- | --- | --- |
-| dbo | MyTable | MyTable or dbo.MyTable or [dbo].[MyTable] |
-| dbo1 | MyTable | dbo1.MyTable or [dbo1].[MyTable] |
-| dbo | My.Table | [My.Table] or [dbo].[My.Table] |
+| dbo | MyTable | MyTable nebo dbo.MyTable nebo [dbo].[MyTable] |
+| dbo1 | MyTable | dbo1.MyTable nebo [dbo1].[MyTable] |
+| dbo | My.Table | [My.Table] nebo [dbo].[My.Table] |
 | dbo1 | My.Table | [dbo1].[My.Table] |
 
 Pokud se zobrazí následující chyba, problém může být hodnota zadaná pro **tableName** vlastnost. V předchozí tabulce najdete správný způsob, jak určit hodnoty **tableName** vlastnost JSON.
