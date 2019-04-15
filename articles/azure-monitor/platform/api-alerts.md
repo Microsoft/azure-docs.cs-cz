@@ -36,7 +36,7 @@ Plány mají vlastnosti v následující tabulce.
 |:--- |:--- |
 | Interval |Jak často se spustí vyhledávání. Měří během několika minut. |
 | QueryTimeSpan |Časový interval nad tím, které se vyhodnotí kritéria. Musí být roven nebo větší než Interval. Měří během několika minut. |
-| Verze |Verze rozhraní API používá.  V současné době to musí být vždy nastavená na hodnotu 1. |
+| Version |Verze rozhraní API používá.  V současné době to musí být vždy nastavená na hodnotu 1. |
 
 Představte si třeba dotaz události s intervalem 15 minut a časový interval 30 minut. V tomto případě dotazu by spuštění každých 15 minut a by aktivuje upozornění, pokud kritéria nadále přeložit na hodnotu true přes víkend na 30minutové rozpětí.
 
@@ -359,9 +359,9 @@ E-mailová oznámení odeslat poštu na jeden nebo více příjemcům.  Patří 
 
 | Vlastnost | Popis |
 |:--- |:--- |
-| Příjemci |Seznam adres e-mailu. |
-| Subjekt |Předmět e-mailu. |
-| Příloha |Přílohy se momentálně nepodporují, takže to bude mít vždy hodnotu "None". |
+| Recipients |Seznam adres e-mailu. |
+| Subject |Předmět e-mailu. |
+| Attachment |Přílohy se momentálně nepodporují, takže to bude mít vždy hodnotu "None". |
 
 Následuje ukázka odezvy pro akci oznámení e-mailu s prahovou hodnotou.  
 
@@ -406,7 +406,7 @@ Nápravy zahrnují vlastnosti v následující tabulce.
 |:--- |:--- |
 | RunbookName |Název sady runbook. Musí se shodovat s publikované sady runbook v účtu automation, který je nakonfigurovaný v řešení služby Automation ve vašem pracovním prostoru Log Analytics. |
 | WebhookUri |Identifikátor URI webhooku. |
-| Vypršení platnosti |Datum vypršení platnosti a čas webhooku.  Pokud se webhook nemá vypršení platnosti, to může být libovolný platný budoucí datum. |
+| Expiry |Datum vypršení platnosti a čas webhooku.  Pokud se webhook nemá vypršení platnosti, to může být libovolný platný budoucí datum. |
 
 Tady je ukázková odpověď pro nápravné akce s prahovou hodnotou.
 
