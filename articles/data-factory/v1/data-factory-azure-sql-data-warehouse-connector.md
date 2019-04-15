@@ -72,7 +72,7 @@ Následující tabulka obsahuje popis JSON elementy, které jsou specifické pro
 | Vlastnost | Popis | Požaduje se |
 | --- | --- | --- |
 | type |Vlastnost type musí být nastavená na: **AzureSqlDW** |Ano |
-| připojovací řetězec |Zadejte informace potřebné pro připojení k instanci Azure SQL Data Warehouse pro vlastnost připojovací řetězec. Je podporován pouze základní ověřování. |Ano |
+| connectionString |Zadejte informace potřebné pro připojení k instanci Azure SQL Data Warehouse pro vlastnost připojovací řetězec. Je podporován pouze základní ověřování. |Ano |
 
 > [!IMPORTANT]
 > Konfigurace [bránu Firewall služby Azure SQL Database](https://msdn.microsoft.com/library/azure/ee621782.aspx#ConnectingFromAzure) a serveru databáze za účelem [povolit službám Azure přístup k serveru](https://msdn.microsoft.com/library/azure/ee621782.aspx#ConnectingFromAzure). Kromě toho pokud kopírujete data do služby Azure SQL Data Warehouse z mimo Azure včetně místních zdrojů dat pomocí brány pro objekt pro vytváření dat, nakonfigurujte odpovídající rozsah IP adres pro počítač, který odesílá data do Azure SQL Data Warehouse.
@@ -152,7 +152,7 @@ GO
 | rejectType |Určuje, zda je rejectValue možnost zadat hodnotu literálu nebo jako procento. |Hodnota (výchozí), procenta |Ne |
 | rejectSampleValue |Určuje počet řádků, načtěte před PolyBase přepočítá procento pozice zamítnutých řádků. |1, 2, … |Ano, pokud **rejectType** je **procento** |
 | useTypeDefault |Určuje způsob zpracování chybějící hodnoty v textových souborů s oddělovači, když PolyBase načte data z textového souboru.<br/><br/>Další informace o této vlastnosti v části argumenty [CREATE EXTERNAL FILE FORMAT (Transact-SQL)](https://msdn.microsoft.com/library/dn935026.aspx). |Hodnota TRUE, False (výchozí) |Ne |
-| WriteBatchSize |Vloží data do tabulky SQL writeBatchSize dosáhne velikosti vyrovnávací paměti |Celé číslo (počet řádků) |Ne (výchozí: 10000) |
+| writeBatchSize |Vloží data do tabulky SQL writeBatchSize dosáhne velikosti vyrovnávací paměti |Celé číslo (počet řádků) |Ne (výchozí: 10000) |
 | writeBatchTimeout |Čekací doba pro dávkové operace insert dokončit před vypršením časového limitu. |Časový interval<br/><br/> Příklad: "00: 30:00" (30 minut). |Ne |
 
 #### <a name="sqldwsink-example"></a>Příklad SqlDWSink
@@ -276,10 +276,10 @@ Následující tabulka obsahuje příklady o tom, jak zadat **tableName** vlastn
 
 | Schéma databáze | Název tabulky | Vlastnost tableName JSON |
 | --- | --- | --- |
-| vlastník databáze |Tabulka |Tabulka nebo vlastník databáze. Tabulka nebo [dbo]. [MyTable] |
-| dbo1 |Tabulka |dbo1. Tabulka nebo [dbo1]. [MyTable] |
-| vlastník databáze |My.Table |[My.Table] nebo [dbo]. [My.Table] |
-| dbo1 |My.Table |[dbo1]. [My.Table] |
+| dbo |MyTable |MyTable nebo dbo.MyTable nebo [dbo].[MyTable] |
+| dbo1 |MyTable |dbo1.MyTable nebo [dbo1].[MyTable] |
+| dbo |My.Table |[My.Table] nebo [dbo].[My.Table] |
+| dbo1 |My.Table |[dbo1].[My.Table] |
 
 Pokud se zobrazí následující chyba, můžou být problémy s hodnotou, kterou jste zadali pro vlastnost tableName. Viz tabulka pro správný způsob, jak určit hodnoty pro vlastnost tableName JSON.
 
@@ -308,17 +308,17 @@ Data Factory vytvoří v cílové úložiště se stejným názvem tabulky v úl
 | TinyInt | TinyInt |
 | Bit | Bit |
 | Decimal | Decimal |
-| Čísla | Decimal |
+| Numeric | Decimal |
 | Float | Float |
-| peníze | peníze |
+| Money | Money |
 | Real | Real |
 | SmallMoney | SmallMoney |
-| Binární hodnota | Binární hodnota |
-| varbinary | Varbinary (až 8000) |
-| Datum | Datum |
+| Binary | Binary |
+| Varbinary | Varbinary (až 8000) |
+| Date | Date |
 | DateTime | DateTime |
 | DateTime2 | DateTime2 |
-| Čas | Čas |
+| Time | Time |
 | DateTimeOffset | DateTimeOffset |
 | SmallDateTime | SmallDateTime |
 | Text | Varchar (až 8000) |
@@ -326,10 +326,10 @@ Data Factory vytvoří v cílové úložiště se stejným názvem tabulky v úl
 | Image | VarBinary (až 8000) |
 | UniqueIdentifier | UniqueIdentifier |
 | Char | Char |
-| nChar | nChar |
+| NChar | NChar |
 | VarChar | VarChar (až 8000) |
 | NVarChar | NVarChar (až 4000) |
-| XML | Varchar (až 8000) |
+| Xml | Varchar (až 8000) |
 
 [!INCLUDE [data-factory-type-repeatability-for-sql-sources](../../../includes/data-factory-type-repeatability-for-sql-sources.md)]
 
@@ -346,37 +346,37 @@ Mapování je stejné jako [mapování datového typu aplikace SQL Server pro te
 | Typ databázového stroje SQL serveru | Typ rozhraní .NET framework |
 | --- | --- |
 | bigint |Int64 |
-| Binární |Byte] |
-| Bit |Logická hodnota |
-| Char |Řetězec, Char] |
+| binary |Byte[] |
+| bit |Boolean |
+| char |String, Char[] |
 | date |DateTime |
-| Datum a čas |DateTime |
+| Datetime |DateTime |
 | datetime2 |DateTime |
-| DateTimeOffset |DateTimeOffset |
+| Datetimeoffset |DateTimeOffset |
 | Decimal |Decimal |
-| Atribut FILESTREAM (varbinary(max)) |Byte] |
+| FILESTREAM attribute (varbinary(max)) |Byte[] |
 | Float |Double |
-| image |Byte] |
-| int |Datový typ Int32 |
-| peníze |Decimal |
-| nchar |Řetězec, Char] |
-| ntext |Řetězec, Char] |
-| Číselné |Decimal |
-| nvarchar |Řetězec, Char] |
-| Real |Jednoduchá |
-| ROWVERSION |Byte] |
+| image |Byte[] |
+| int |Int32 |
+| money |Decimal |
+| nchar |String, Char[] |
+| ntext |String, Char[] |
+| numeric |Decimal |
+| nvarchar |String, Char[] |
+| real |Single |
+| rowversion |Byte[] |
 | smalldatetime |DateTime |
 | smallint |Int16 |
-| Smallmoney |Decimal |
-| SQL_VARIANT |Objekt * |
-| text |Řetězec, Char] |
-| time |Časový interval |
-| časové razítko |Byte] |
-| tinyint |Bajt |
-| UniqueIdentifier |Guid |
-| varbinary |Byte] |
-| varchar |Řetězec, Char] |
-| xml |XML |
+| smallmoney |Decimal |
+| sql_variant |Object * |
+| text |String, Char[] |
+| time |TimeSpan |
+| timestamp |Byte[] |
+| tinyint |Byte |
+| uniqueidentifier |Guid |
+| varbinary |Byte[] |
+| varchar |String, Char[] |
+| xml |Xml |
 
 Můžete také namapovat sloupce ze zdrojové datové sady na sloupce z datové sady jímky v definici aktivity kopírování. Podrobnosti najdete v tématu [mapování sloupců v datové sadě ve službě Azure Data Factory](data-factory-map-columns.md).
 
