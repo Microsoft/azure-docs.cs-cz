@@ -4,7 +4,7 @@ description: V tomto rychlém startu během několika minut nasadíte svou prvn�
 services: app-service\web
 documentationcenter: ''
 author: msangapu
-manager: cfowler
+manager: jeconnoc
 editor: ''
 ms.assetid: 582bb3c2-164b-42f5-b081-95bfcb7a502a
 ms.service: app-service-web
@@ -12,15 +12,15 @@ ms.workload: web
 ms.tgt_pltfrm: na
 ms.devlang: Java
 ms.topic: quickstart
-ms.date: 12/10/2018
+ms.date: 03/27/2019
 ms.author: msangapu
 ms.custom: mvc
-ms.openlocfilehash: 4b95c75b863cdc86dd8a1ebe8347b77b637b110c
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: af1256b4432e42f91209b622239ca55901929a1b
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57999113"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59544734"
 ---
 # <a name="quickstart-create-a-java-app-in-app-service-on-linux"></a>Rychlý start: Vytvoření aplikace v Javě ve službě App Service v Linuxu
 
@@ -99,17 +99,15 @@ Po dokončení nasazení přejděte ve webovém prohlížeči pomocí následuj�
 
 **Blahopřejeme!** Nasadili jste svou první aplikaci v Javě do služby App Service v Linuxu.
 
-
 [!INCLUDE [cli-samples-clean-up](../../../includes/cli-samples-clean-up.md)]
-
 
 ## <a name="next-steps"></a>Další postup
 
-V tomto rychlém startu jste použili Maven k vytvoření aplikace v Javě, nakonfigurována [modul plug-in Maven pro Azure Web Apps](https://github.com/Microsoft/azure-maven-plugins/tree/develop/azure-webapp-maven-plugin), pak nasadili webovou aplikaci Java archivu zabalené do služby App Service v Linuxu. Odkazovat na následující kurzy a články s návody pro další informace o hostování aplikací v Javě ve službě App Service v Linuxu.
+> [!div class="nextstepaction"]
+> [Kurz: Podnikové aplikace v Javě s PostgreSQL](tutorial-java-enterprise-postgresql-app.md)
 
-- [Kurz: Nasazení aplikace v Javě podnikové aplikace s PostgreSQL](tutorial-java-enterprise-postgresql-app.md)
-- [Konfigurace zdroje dat Tomcat](app-service-linux-java.md#tomcat)
-- [CI/CD pomocí Jenkinse](/azure/jenkins/deploy-jenkins-app-service-plugin)
-- [Nastavení nástroje pro monitorování výkonu aplikací](how-to-java-apm-monitoring.md)
-- [Příručka pro vývojáře Java pro službu App Service v Linuxu](app-service-linux-java.md)
+> [!div class="nextstepaction"]
+> [Konfigurace aplikace v Javě](configure-custom-container.md)
 
+> [!div class="nextstepaction"]
+> [CI/CD pomocí Jenkinse](/azure/jenkins/deploy-jenkins-app-service-plugin)

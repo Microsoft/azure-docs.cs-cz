@@ -23,7 +23,7 @@ items:
     href: quickstart-python.md
   - name: Vytvoření aplikace v Ruby
     href: quickstart-ruby.md
-  - name: Vytvoření aplikace v Dockeru/Go
+  - name: Spuštění vlastního kontejneru
     href: quickstart-docker-go.md
   - name: Vytvoření vícekontejnerové aplikace
     href: quickstart-multi-container.md
@@ -48,7 +48,7 @@ items:
       href: tutorial-java-enterprise-postgresql-app.md
   - name: Vícekontejnerová aplikace
     href: tutorial-multi-container-app.md
-  - name: Vlastní image Dockeru
+  - name: Spuštění kontejneru z ACR
     href: tutorial-custom-docker-image.md
   - name: Mapování vlastní domény
     href: ../app-service-web-tutorial-custom-domain.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
@@ -72,10 +72,6 @@ items:
     href: ../overview-hosting-plans.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
   - name: App Service Environment
     href: ../environment/intro.md
-  - name: Příručka pro vývojáře v Javě
-    href: app-service-linux-java.md
-  - name: Podniková příručka k Javě
-    href: app-service-java-enterprise.md
   - name: Příchozí a odchozí IP adresy
     href: ../overview-inbound-outbound-ips.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
   - name: Ověřování a autorizace
@@ -88,10 +84,22 @@ items:
   items:
   - name: Konfigurace aplikace
     items:
-    - name: Image Pythonu
-      href: how-to-configure-python.md
     - name: Použití nastavení aplikace
       href: ../web-sites-configure.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
+    - name: Konfigurace ASP.NET Core
+      href: configure-language-dotnetcore.md
+    - name: Konfigurace Node.js
+      href: configure-language-nodejs.md
+    - name: Konfigurace PHP
+      href: configure-language-php.md
+    - name: Konfigurace Javy
+      href: configure-language-java.md
+    - name: Konfigurace Pythonu
+      href: how-to-configure-python.md
+    - name: Konfigurace Ruby
+      href: configure-language-ruby.md
+    - name: Konfigurace vlastního kontejneru
+      href: configure-custom-container.md
     - name: Poskytování obsahu se službou Storage
       href: how-to-serve-content-from-azure-storage.md
   - name: Nasazení do Azure
@@ -158,8 +166,6 @@ items:
       href: ../web-sites-monitor.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
     - name: Povolení protokolů
       href: ../troubleshoot-diagnostic-logs.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
-    - name: Integrace Java APM
-      href: how-to-java-apm-monitoring.md
   - name: Správa aplikace
     items:
     - name: Zálohování aplikace
@@ -222,9 +228,9 @@ items:
         href: ../faq-open-source-technologies.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
       - name: Nejčastější dotazy ke konfiguraci a správě
         href: ../faq-configuration-and-management.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
-ms.openlocfilehash: f29fa4901e2eb8e3a6bcabcc72e4dba37041186a
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 250501832c3daaeee9935c2796e6da9df3483e35
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53719519"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59544868"

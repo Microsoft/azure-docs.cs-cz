@@ -93,7 +93,7 @@ sections:
       - type: paragraph
         text: 'Naučte se vyvíjet aplikace s využitím rozhraní Translator Text API:'
       - type: paragraph
-        text: '<a href="tutorial-wpf-translation-csharp.md">Vytvoření aplikace WPF pro Translator Text s využitím C#</a>'
+        text: '<li><a href="tutorial-wpf-translation-csharp.md">Vytvoření aplikace WPF pro Translator Text, C#</a></li><li><a href="tutorial-build-flask-app-translation-synthesis.md">Vytvoření aplikace pro překlad Flask, Python</a></li>'
   - title: Referenční informace
     items:
       - type: paragraph

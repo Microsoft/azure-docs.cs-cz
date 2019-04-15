@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/01/2019
 ms.author: apimpm
-ms.openlocfilehash: 7cbd21ce9f8e5d9d3c03eb7c626ab41b8d28498d
-ms.sourcegitcommit: f24b62e352e0512dfa2897362021b42e0cb9549d
+ms.openlocfilehash: db48db5ce9402267570ac9e41f9f4b5bec2781ad
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/11/2019
-ms.locfileid: "59505664"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59527944"
 ---
 # <a name="how-to-use-azure-api-management-with-virtual-networks"></a>Jak používat Azure API Management s virtuálními sítěmi
 Virtuální sítě Azure (Vnet) umožňuje umístit některé z vašich prostředků Azure, které řídí přístup k síti možnosti směrování Internetu jiných. Potom se dá propojit tyto sítí k místním sítím pomocí různých technologií VPN. Další informace o Azure Virtual Networks začínat tyto informace tady: [Přehled služby Azure Virtual Network](../virtual-network/virtual-networks-overview.md).
@@ -106,7 +106,7 @@ Tady je seznam častých problémech, které mohou nastat při nasazení služby
 
 * **Porty vyžadované pro službu API Management**: Příchozí a odchozí provoz do podsítě, ve kterém je nasazená API Management se dá řídit pomocí [skupinu zabezpečení sítě][Network Security Group]. Pokud některý z těchto portů jsou k dispozici, API Management nebude fungovat správně a může být nepřístupný. Jeden nebo více z těchto portů blokované je dalším běžný problémem chybnou konfiguraci při použití služby API Management pomocí virtuální sítě.
 
-Když jsou instance služby API Management je hostované ve virtuální síti, se používají porty v následující tabulce.
+<a name="required-ports"> </a> Když jsou instance služby API Management je hostované ve virtuální síti, se používají porty v následující tabulce.
 
 | Zdrojové a cílové porty | Směr          | Přenosový protokol |   [Značky služeb](../virtual-network/security-overview.md#service-tags) <br> Zdroj a cíl   | Účel (*)                                                 | Typ virtuální sítě |
 |------------------------------|--------------------|--------------------|---------------------------------------|-------------------------------------------------------------|----------------------|

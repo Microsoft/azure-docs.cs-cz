@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: sngun
 ms.custom: seodec18
-ms.openlocfilehash: e734ebb2032a5354e8701129b6a8ad913837bb52
-ms.sourcegitcommit: e43ea344c52b3a99235660960c1e747b9d6c990e
+ms.openlocfilehash: 8e8b3e647d6ef91d69a7b81ca6fdf36fc9d0f9c8
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/04/2019
-ms.locfileid: "59010613"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59523949"
 ---
 # <a name="frequently-asked-questions-about-different-apis-in-azure-cosmos-db"></a>Nejčastější dotazy ohledně různých rozhraní API ve službě Azure Cosmos DB
 
@@ -266,7 +266,7 @@ Z hlediska rozhraní REST API existuje několik možností dotazů koncové body
 | Metody REST | Možnost koncový bod/dotazu REST | Adresy URL dokumentu | Vysvětlení |
 | ------------| ------------- | ---------- | ----------- |
 | GET, PUT | /? restype =service@comp= vlastnosti| [Nastavit vlastnosti služby tabulky](https://docs.microsoft.com/rest/api/storageservices/set-table-service-properties) a [získat službu vlastnosti tabulky](https://docs.microsoft.com/rest/api/storageservices/get-table-service-properties) | Tento koncový bod se používá k nastavení pravidel CORS, konfiguraci úložiště analýzy a nastavení protokolování. CORS není aktuálně podporováno, protokolování a analýza jsou zpracovány jinak ve službě Azure Cosmos DB než tabulky v úložišti Azure |
-| MOŽNOSTI | / < název tabulky zdroje > | [Požadavek tabulky přípravné CORS](https://docs.microsoft.com/rest/api/storageservices/preflight-table-request) | Toto je část CORS, které služby Azure Cosmos DB v současné době nepodporuje. |
+| MOŽNOSTI | /\<table-resource-name> | [Požadavek tabulky přípravné CORS](https://docs.microsoft.com/rest/api/storageservices/preflight-table-request) | Toto je část CORS, které služby Azure Cosmos DB v současné době nepodporuje. |
 | GET | /? restype =service@comp= stats | [Získání statistiky Table Service](https://docs.microsoft.com/rest/api/storageservices/get-table-service-stats) | Poskytuje informace o tom, jak rychle replikuje data mezi primární a sekundární databáze. To není potřeba ve službě Cosmos DB, protože je součástí zápisy replikace. |
 | GET, PUT | /mytable? kompozice = seznamu acl | [Získejte tabulku seznamu ACL](https://docs.microsoft.com/rest/api/storageservices/get-table-acl) a [nastavte tabulku seznamu ACL](https://docs.microsoft.com/rest/api/storageservices/set-table-acl) | Tím získá a nastaví uložené zásady přístupu slouží ke správě sdílených přístupových podpisů (SAS). I když SAS se podporuje, jsou nastavit a spravovat jinak. |
 
@@ -293,7 +293,7 @@ Jestliže má některý z těchto rozdílů problém pro váš projekt, obraťte
 
 Váš názor můžete sdílet v některém z následujících způsobů:
 
-* [User voice](https://feedback.azure.com/forums/263030-azure-cosmos-db)
+* [Hlas uživatelů](https://feedback.azure.com/forums/263030-azure-cosmos-db)
 * [Fórum MSDN](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurecosmosdb)
 * [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-cosmosdb). Přetečení zásobníku je nejvhodnější pro otázek týkajících se programování. Ujistěte se, že váš dotaz je [tematické](https://stackoverflow.com/help/on-topic) a [zadejte co nejvíce podrobností jako možné, že na otázku, zrušte zaškrtnutí a zodpovědět](https://stackoverflow.com/help/how-to-ask).
 

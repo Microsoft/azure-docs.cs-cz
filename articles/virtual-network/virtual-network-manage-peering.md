@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/01/2019
 ms.author: anavin
-ms.openlocfilehash: fdc3a0030859e97cb81b8b9f6a66de1901b6eb3b
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
-ms.translationtype: HT
+ms.openlocfilehash: 6bccb1e75dc999bcb0e8c6d909abe7bffffcec8c
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/11/2019
-ms.locfileid: "59491283"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59524037"
 ---
 # <a name="create-change-or-delete-a-virtual-network-peering"></a>Vytvoření, změna nebo odstranění partnerského vztahu virtuálních sítí
 
@@ -50,7 +50,7 @@ Před vytvořením partnerského vztahu, seznamte se s požadavky a omezení a [
 5. <a name="add-peering"></a>Zadejte nebo vyberte hodnoty pro následující nastavení:
     - **Jméno:** Název partnerského vztahu musí být jedinečný v rámci virtuální sítě.
     - **Model nasazení virtuální sítě:** Vyberte které model nasazení, které chcete vytvořit partnerský vztah virtuální sítě nasazené prostřednictvím.
-    - **Znám svoje ID prostředku:** Pokud máte přístup pro čtení k virtuální síti, kterou chcete vytvořit partnerský vztah, nechte toto políčko nezaškrtnuté. Pokud nemáte přístup pro čtení k virtuální síti nebo předplatné, které chcete vytvořit partnerský vztah, zaškrtněte toto políčko. Zadejte úplné ID prostředku virtuální sítě, kterou chcete vytvořit partnerský vztah v **ID prostředku** poli zobrazeném po zaškrtnuté políčko. Prostředků zadáte ID musí být pro virtuální síť, která existuje ve stejném, nebo [nepodporuje různé](#requirements-and-constraints) Azure [oblasti](https://azure.microsoft.com/regions) jako tato virtuální síť. Úplné ID prostředku vypadá podobně jako /subscriptions/<Id>/providers/Microsoft.Network/virtualNetworks/ < virtual-network-name > /resourceGroups/ < resource-group-name >. ID prostředku pro virtuální síť můžete získat zobrazením vlastností pro virtuální síť. Zjistěte, jak zobrazit vlastnosti pro virtuální síť, najdete v článku [Správa virtuálních sítí](manage-virtual-network.md#view-virtual-networks-and-settings). Pokud předplatné na jiného tenanta Azure Active Directory než předplatné s virtuální sítí vytváření partnerských vztahů ze souvisí, z každého tenanta jako nejprve přidat uživatele [uživatele typu Host](../active-directory/b2b/add-users-administrator.md?toc=%2fazure%2fvirtual-network%2ftoc.json#add-guest-users-to-the-directory) v opačné tenanta.
+    - **Znám svoje ID prostředku:** Pokud máte přístup pro čtení k virtuální síti, kterou chcete vytvořit partnerský vztah, nechte toto políčko nezaškrtnuté. Pokud nemáte přístup pro čtení k virtuální síti nebo předplatné, které chcete vytvořit partnerský vztah, zaškrtněte toto políčko. Zadejte úplné ID prostředku virtuální sítě, kterou chcete vytvořit partnerský vztah v **ID prostředku** poli zobrazeném po zaškrtnuté políčko. Prostředků zadáte ID musí být pro virtuální síť, která existuje ve stejném, nebo [nepodporuje různé](#requirements-and-constraints) Azure [oblasti](https://azure.microsoft.com/regions) jako tato virtuální síť. Úplné prostředků vypadá podobně jako ID `/subscriptions/<Id>/resourceGroups/<resource-group-name>/providers/Microsoft.Network/virtualNetworks/<virtual-network-name>`. ID prostředku pro virtuální síť můžete získat zobrazením vlastností pro virtuální síť. Zjistěte, jak zobrazit vlastnosti pro virtuální síť, najdete v článku [Správa virtuálních sítí](manage-virtual-network.md#view-virtual-networks-and-settings). Pokud předplatné na jiného tenanta Azure Active Directory než předplatné s virtuální sítí vytváření partnerských vztahů ze souvisí, z každého tenanta jako nejprve přidat uživatele [uživatele typu Host](../active-directory/b2b/add-users-administrator.md?toc=%2fazure%2fvirtual-network%2ftoc.json#add-guest-users-to-the-directory) v opačné tenanta.
     - **Předplatné:** Vyberte [předplatné](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#subscription) ve virtuální síti, kterou chcete vytvořit partnerský vztah. Jeden nebo více odběrů jsou uvedeny v závislosti na tom, kolik předplatných má váš účet přístup pro čtení. Pokud jste zaškrtli možnost **ID prostředku** zaškrtávací políčko, toto nastavení není k dispozici.
     - **Virtuální síť:** Vyberte virtuální síť, kterou chcete vytvořit partnerský vztah. Můžete vybrat virtuální síť vytvořena prostřednictvím obou modelů nasazení Azure. Pokud chcete vybrat virtuální síť v jiné oblasti, musíte vybrat virtuální sítě [podporované oblasti](#cross-region). Musíte mít přístup pro čtení k virtuální síti, aby se nezobrazí v seznamu. Pokud virtuální síť je uvedené, ale nejde aktivovat, pravděpodobně protože adresní prostor virtuální sítě se překrývá s adresním prostorem pro tuto virtuální síť. Pokud virtuální síť adresní prostory překrývají, jsou nejde navázat partnerský vztah. Pokud jste zaškrtli možnost **ID prostředku** zaškrtávací políčko, toto nastavení není k dispozici.
     - **Povolit přístup k virtuální síti:** Vyberte **povoleno** (výchozí), pokud chcete povolit komunikaci mezi dvěma virtuálními sítěmi. Povolení komunikace mezi virtuálními sítěmi umožní prostředkům připojeným k obou virtuálních sítích komunikovat mezi sebou stejnou šířku pásma a čekací doba jakoby byly připojené ke stejné virtuální síti. Veškerá komunikace mezi prostředky ve dvou virtuálních sítích je v Azure privátní síti. **VirtualNetwork** značka služby pro skupiny zabezpečení sítě zahrnuje virtuální síť a partnerské virtuální síti. Další informace o značkách služby skupiny zabezpečení sítě najdete v tématu [přehled skupin zabezpečení sítě](security-overview.md#service-tags). Vyberte **zakázané** Pokud nechcete, aby provoz směrovat do partnerské virtuální síti. Můžete vybrat **zakázané** Pokud jste partnerský vztah virtuální sítě s jinou virtuální sítí, ale někdy chcete zakázat toku provozu mezi dvěma virtuálními sítěmi. Může se stát, že povolení/zákazu je pohodlnější než odstraníte a znovu vytvoříte partnerské vztahy. Pokud je toto nastavení zakázáno, tok nebude provoz mezi partnerskými virtuálními sítěmi.
@@ -157,9 +157,9 @@ Pokud váš účet nemá přiřazenou k jednomu z předchozích rolí, musíte b
   |Model nasazení Azure             | Předplatné  |
   |---------                          |---------|
   |Obě Resource Manager              |[Stejné](tutorial-connect-virtual-networks-portal.md)|
-  |                                   |[Odlišné](create-peering-different-subscriptions.md)|
+  |                                   |[Různé](create-peering-different-subscriptions.md)|
   |Jedna Resource Manager, druhá Classic  |[Stejné](create-peering-different-deployment-models.md)|
-  |                                   |[Odlišné](create-peering-different-deployment-models-subscriptions.md)|
+  |                                   |[Různé](create-peering-different-deployment-models-subscriptions.md)|
 
 - Zjistěte, jak vytvořit [rozbočovač a uvedenou síťovou topologii](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke?toc=%2fazure%2fvirtual-network%2ftoc.json).
 - Vytvoření partnerského vztahu virtuálních sítí pomocí [PowerShell](powershell-samples.md) nebo [rozhraní příkazového řádku Azure](cli-samples.md) ukázkové skripty nebo pomocí Azure [šablon Resource Manageru](template-samples.md)

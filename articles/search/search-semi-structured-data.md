@@ -1,6 +1,6 @@
 ---
 title: 'Kurz: Indexování částečně strutured dat v objektech BLOB JSON – Azure Search'
-description: Zjistěte, jak indexování a vyhledávání částečně strukturovaných objektů BLOB Azure JSON pomocí Azure Search a Postman.
+description: Zjistěte, jak indexování a vyhledávání částečně strukturovaných objektů BLOB Azure JSON pomocí rozhraní REST API Azure Search a Postman.
 author: HeidiSteen
 manager: cgronlun
 services: search
@@ -9,14 +9,14 @@ ms.topic: tutorial
 ms.date: 04/08/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 146b19716c1d98a4be0cdabd23f224a88e499c62
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
-ms.translationtype: HT
+ms.openlocfilehash: 147f67f40a060f3e274fe1f3fa368ebfd01711b6
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/11/2019
-ms.locfileid: "59489223"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59525343"
 ---
-# <a name="tutorial-index-and-search-semi-structured-data-json-blobs-in-azure-search"></a>Kurz: Index a prohledávání částečně strukturovaných dat (objektů BLOB JSON) ve službě Azure Search
+# <a name="rest-tutorial-index-and-search-semi-structured-data-json-blobs-in-azure-search"></a>Kurz REST pro: Index a prohledávání částečně strukturovaných dat (objektů BLOB JSON) ve službě Azure Search
 
 Služba Azure Search můžete indexovat dokumenty JSON a polí v úložiště objektů blob v Azure pomocí [indexer](search-indexer-overview.md) , který umí číst částečně strukturovaná data. Částečně strukturovaná data obsahují značky nebo označení oddělující obsah v rámci dat. Rozdělí rozdíl mezi nestrukturovaných dat, která musí být plně indexovat a formálně strukturovaná data, která dodržuje datový model, jako je schéma relační databáze, které můžete indexovat na základě na pole.
 
@@ -59,9 +59,7 @@ Všechny požadavky vyžaduje klíč rozhraní api na každou požadavku odeslan
 
 1. [Přihlaste se k webu Azure portal](https://portal.azure.com), přejděte do svého účtu úložiště Azure, klikněte na tlačítko **objekty BLOB**a potom klikněte na tlačítko **+ kontejner**.
 
-1. [Vytvořte kontejner objektů Blob](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal) obsahuje ukázková data. Protože budete používat klíč a úložiště název účtu pro připojení, ujistěte se, že úroveň veřejného přístupu kontejneru je nastavena na "Kontejner (anonymní přístup pro čtení pro kontejner)".
-
-   ![Nastavte úroveň veřejného přístupu](media/search-semi-structured-data/container-public-access-level.png "nastavte úroveň veřejného přístupu")
+1. [Vytvořte kontejner objektů Blob](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal) obsahuje ukázková data. Můžete nastavit úroveň veřejného přístupu k některému z jeho platných hodnot.
 
 1. Po vytvoření kontejneru ho otevřete a vyberte **nahrát** na panelu příkazů.
 

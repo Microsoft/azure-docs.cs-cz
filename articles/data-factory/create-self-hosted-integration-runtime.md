@@ -11,12 +11,12 @@ ms.date: 01/15/2019
 author: nabhishek
 ms.author: abnarain
 manager: craigg
-ms.openlocfilehash: 7fd4fd65b48c199527d9172b7cea89010c962f5b
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: aaa72d3a29fee28ede336a2be350015bf3cbc9b4
+ms.sourcegitcommit: b8a8d29fdf199158d96736fbbb0c3773502a092d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59261033"
+ms.lasthandoff: 04/15/2019
+ms.locfileid: "59565510"
 ---
 # <a name="create-and-configure-a-self-hosted-integration-runtime"></a>Vytvoření a konfigurace místní prostředí integration runtime
 Prostředí integration runtime (IR) je výpočetní infrastruktura, která Azure Data Factory používá pro poskytují funkce integrace dat v různých síťových prostředích. Podrobnosti o prostředí IR najdete v tématu [přehled modulu runtime integrace](concepts-integration-runtime.md).
@@ -255,7 +255,7 @@ Pokud vaše podnikové síťové prostředí používá proxy server pro příst
 
 ![Zadejte proxy server](media/create-self-hosted-integration-runtime/specify-proxy.png)
 
-Místní prostředí integration runtime používá proxy server pro připojení ke cloudové službě. Vyberte **odkaz Změnit** při počátečním nastavení. Zobrazí dialogové okno nastavení proxy serveru.
+Při konfiguraci, místní prostředí integration runtime používá proxy server se připojit ke cloudové službě, zdroj / cíl (těm, kteří používají protokol HTTP / protokol HTTPS). Toto je výběr **odkaz Změnit** při počátečním nastavení. Zobrazí dialogové okno nastavení proxy serveru.
 
 ![Nastavení proxy serveru](media/create-self-hosted-integration-runtime/set-http-proxy.png)
 

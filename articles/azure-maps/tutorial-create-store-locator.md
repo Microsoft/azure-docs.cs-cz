@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 61fdaec79e563ba4d87e73b22aba52a5c3f8251b
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: f53e21b8121006a6a6a1d2099b26e7cb28ca0ed9
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59270799"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59545293"
 ---
 # <a name="create-a-store-locator-by-using-azure-maps"></a>Vytvořit úložiště s využitím Azure Maps
 
@@ -569,7 +569,7 @@ V tomto okamžiku je všechno nastavené v uživatelském rozhraní. Teď potře
         },
 
         textOptions: {
-            textField: '{point_count_abbreviated}',
+            textField: ['get', 'point_count_abbreviated'],
             size: 12,
             font: ['StandardFont-Bold'],
             offset: [0, 0.4],
@@ -955,11 +955,11 @@ V tomto kurzu se dozvíte, jak chcete vytvořit lokátor základní úložiště
 > * Nasazení vaší Lokátor úložiště jako [webové aplikaci Azure App Service](https://docs.microsoft.com/azure/app-service/app-service-web-get-started-html). 
 > * Store vašich dat v databázi a vyhledat nejbližší umístění. Další informace najdete v tématu [prostorovými daty formátu SQL Server typy přehled](https://docs.microsoft.com/sql/relational-databases/spatial/spatial-data-types-overview?view=sql-server-2017) a [prostorová data dotázat na nejbližší soused](https://docs.microsoft.com/sql/relational-databases/spatial/query-spatial-data-for-nearest-neighbor?view=sql-server-2017).
 
-Přístup k vzorovému kódu pro tento kurz můžete získat tady:
+> [!div class="nextstepaction"]
+> [Zobrazit úplný zdrojový kód](https://github.com/Azure-Samples/AzureMapsCodeSamples/tree/master/AzureMapsCodeSamples/Tutorials/Simple%20Store%20Locator)
 
-> [Vytvořit úložiště s využitím Azure Maps](https://github.com/Azure-Samples/AzureMapsCodeSamples/tree/master/AzureMapsCodeSamples/Tutorials/Simple%20Store%20Locator)
-
-[Najdete v ukázce tady](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Simple%20Store%20Locator)
+> [!div class="nextstepaction"]
+> [Živé ukázkové zobrazení](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Simple%20Store%20Locator)
 
 Další informace o pokrytí a možnostech Azure Maps:
 

@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 04/19/2018
 ms.author: mahender
 ms.custom: seodec18
-ms.openlocfilehash: cc10c9be5bab3b84c8773d8a930473267db353ab
-ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.openlocfilehash: f37a0c9e4c664ac9631a0a07fa6f114e62939845
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53410962"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59522879"
 ---
 # <a name="how-to-configure-your-app-service-application-to-use-facebook-login"></a>Konfigurace aplikace App Service pro použití přihlášení k Facebooku
 [!INCLUDE [app-service-mobile-selector-authentication](../../includes/app-service-mobile-selector-authentication.md)]
@@ -48,7 +48,7 @@ K dokončení postupu v tomto tématu, musíte mít Facebookový účet, který 
    > Tajný kód aplikace je důležitým bezpečnostním pověřením. S kýmkoli sdílet tento tajný kód nebo distribuovat v rámci klientské aplikace.
    > 
    > 
-9. Facebookový účet, který se použije k registraci aplikace je správce aplikace. V tomto okamžiku pouze správci se můžete přihlásit do této aplikace. K ověřování ostatních účtů pro Facebook, klikněte na tlačítko **revizi aplikace** a povolit **veřejná značka < your-app-name >** k povolení obecné veřejného přístupu ověřováním služby Facebook.
+9. Facebookový účet, který se použije k registraci aplikace je správce aplikace. V tomto okamžiku pouze správci se můžete přihlásit do této aplikace. K ověřování ostatních účtů pro Facebook, klikněte na tlačítko **revizi aplikace** a povolit **Ujistěte se, \<-název_aplikace > veřejné** k povolení obecné veřejného přístupu ověřováním služby Facebook.
 
 ## <a name="secrets"> </a>Přidejte informace o službě Facebook pro vaši aplikaci
 1. Zpátky [Azure Portal], přejděte k vaší aplikaci. Klikněte na tlačítko **nastavení** > **ověřování / autorizace**a ujistěte se, že **ověřování pomocí služby App Service** je **na**.
@@ -70,6 +70,6 @@ Nyní jste připraveni používat sítě Facebook pro ověřování ve vaší ap
 
 <!-- URLs. -->
 [Vývojáři Facebooku]: https://go.microsoft.com/fwlink/p/?LinkId=268286
-[Facebook.com]: https://go.microsoft.com/fwlink/p/?LinkId=268285
+[facebook.com]: https://go.microsoft.com/fwlink/p/?LinkId=268285
 [Get started with authentication]: /en-us/develop/mobile/tutorials/get-started-with-users-dotnet/
 [Azure Portal]: https://portal.azure.com/

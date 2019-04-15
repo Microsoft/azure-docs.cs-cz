@@ -11,12 +11,12 @@ author: mx-iao
 ms.reviewer: sgilley
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: a5ddc17f6200ba2d43d67fcd2e4bcc35c224e6cb
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 9ae7795381f036bb819ce24554d8cea94ceb5552
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58004058"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59548541"
 ---
 # <a name="train-pytorch-models-with-azure-machine-learning-service"></a>Trénování modelů PyTorch službou Azure Machine Learning
 
@@ -46,7 +46,7 @@ Jsme zde, zadejte následující parametry pro konstruktor PyTorch:
 Parametr | Popis
 --|--
 `source_directory` |  Místní adresář, který obsahuje vše potřebné pro trénovací úlohu kódu. Tato složka se zkopíruje z místního počítače pro vzdálený výpočetní
-`script_params` |  Slovník zadání argumentů příkazového řádku pro cvičný skript `entry_script`, ve formě < argument příkazového řádku, hodnota > páry
+`script_params` |  Slovník zadání argumentů příkazového řádku pro cvičný skript `entry_script`, ve formě < argument příkazového řádku, hodnota > dvojice.  K určení podrobné příznak v `script_params`, použijte `<command-line argument, "">`.
 `compute_target` |  Cílové vzdálené výpočetní prostředí, který cvičný skript se spustí, v tomto případě Azure Machine Learning Compute ([AmlCompute](how-to-set-up-training-targets.md#amlcompute)) clusteru
 `entry_script` |  Cesta k souboru (vzhledem k `source_directory`) z trénovací skript ke spuštění na vzdálené výpočetní prostředky. Tento soubor a další soubory, na kterých závisí, se musí nacházet v této složce
 `conda_packages` |  Seznam balíčků Python nainstalovat přes conda vyžadované cvičný skript. Konstruktor má jiný parametr s názvem `pip_packages` , můžete použít pro všechny balíčky pip potřeby

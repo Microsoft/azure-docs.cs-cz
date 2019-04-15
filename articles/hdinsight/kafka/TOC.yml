@@ -22,19 +22,16 @@ items:
     href: apache-kafka-quickstart-resource-manager-template.md
 - name: Kurzy
   items:
-  - name: 1. Použití strukturovaného streamování Apache Sparku
+  - name: Použití strukturovaného streamování Apache Sparku
     href: ../hdinsight-apache-kafka-spark-structured-streaming.md
     maintainContext: true
-  - name: 2. Zápis/čtení z Apache Kafka pomocí Apache Stormu
+  - name: Zápis/čtení z Apache Kafka pomocí Apache Stormu
     href: ../hdinsight-apache-storm-with-kafka.md
     maintainContext: true
-  - name: 3. Použití rozhraní Apache Kafka Producer and Consumer API
+  - name: Použití rozhraní Apache Kafka Producer and Consumer API
     href: apache-kafka-producer-consumer-api.md
-  - name: 4. Vývoj aplikace s využitím rozhraní Apache Kafka Streams API
+  - name: Vývoj aplikace s využitím rozhraní Apache Kafka Streams API
     href: apache-kafka-streams-api.md
-  - name: Monitorování dostupnosti clusterů s využitím protokolů Azure Monitoru a Ambari
-    href: ../hdinsight-cluster-availability.md
-    maintainContext: true
 - name: Koncepty
   items:
   - name: Plánování kapacity
@@ -159,6 +156,9 @@ items:
       - name: Použití rozhraní Apache Ambari REST API
         href: ../hdinsight-hadoop-manage-ambari-rest-api.md
         maintainContext: true
+      - name: Monitorování dostupnosti clusterů s využitím protokolů Azure Monitoru
+        href: ../hdinsight-cluster-availability.md
+        maintainContext: true
       maintainContext: true
     - name: Správa protokolů pro cluster HDInsight
       href: ../hdinsight-log-management.md
@@ -271,9 +271,9 @@ items:
   - name: Nástroje Windows pro HDInsight
     href: ../hdinsight-hadoop-windows-tools.md
     maintainContext: true
-ms.openlocfilehash: 1bc035c80492c283364e5216184d2e943bacc3aa
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: 4549b041bc9e754aca632826c8e1a2afc7622a82
+ms.sourcegitcommit: b8a8d29fdf199158d96736fbbb0c3773502a092d
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58668139"
+ms.lasthandoff: 04/15/2019
+ms.locfileid: "59565088"

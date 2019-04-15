@@ -1,0 +1,35 @@
+### YamlMime:YamlDocument
+documentType: LandingData
+title: Dokumentace ke službě Azure NetApp Files
+metadata:
+  title: Dokumentace ke službě Azure NetApp Files
+  description: 'Zjistěte, jak nastavit a spravovat svazky pomocí Azure NetApp Files a jak k nim přistupovat.'
+  author: b-juche
+  ms.author: b-juche
+  ms.service: azure-netapp-files
+  ms.topic: landing-page
+  ms.date: 04/10/2019
+abstract:
+  description: 'Naučte se používat Azure NetApp Files k vytváření a správě účtů NetApp, fondů kapacity a svazků, konfiguraci zásad exportu, připojení svazku pro virtuální počítač a správě snímků. <p>Použití služby Azure NetApp Files vyžaduje, abyste se zapojilo do programu Public Preview. Musíte být také uvedení na seznamu povolených pro přístup k poskytovateli prostředků Azure Microsoft.NetApp. Pokud chcete požádat o zařazení do programu Public Preview, přečtěte si téma věnované <a href="azure-netapp-files-register">registraci pro Azure NetApp Files</a>.</p>'
+sections:
+  - title: Zprovoznění během 5 minut
+    items:
+      - type: paragraph
+        text: 'Zjistěte, jak nastavit službu Azure NetApp Files a vytvořit svazku s využitím těchto možností:'
+      - type: list
+        style: icon48
+        items:
+          - image:
+              src: 'https://docs.microsoft.com/azure/azure-netapp-files/media/index/get-started.svg'
+            text: portál Azure
+            href: /azure/azure-netapp-files/azure-netapp-files-quickstart-set-up-account-create-volumes
+  - title: Referenční informace
+    items:
+      - type: list
+        style: cards
+        className: cardsD
+        items:
+          - title: REST
+            html: '<p><a href="https://docs.microsoft.com/rest/api/netapp/">REST API</a></p>'
+          - title: Azure Resource Manager
+            html: '<p><a href="https://docs.microsoft.com/azure/templates/microsoft.netapp/allversions">Šablony Resource Manageru</a></p>'

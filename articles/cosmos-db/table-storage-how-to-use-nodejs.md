@@ -8,12 +8,12 @@ ms.topic: sample
 ms.date: 04/05/2018
 author: wmengmsft
 ms.author: wmeng
-ms.openlocfilehash: 58022ca4f605b4672cd9b6e22993fca8ff6dc591
-ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
+ms.openlocfilehash: 977b59c3344eaf2c4877f51afea176455d22ecc9
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55510940"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59546683"
 ---
 # <a name="how-to-use-azure-table-storage-or-the-azure-cosmos-db-table-api-from-nodejs"></a>Jak používat službu Azure Table Storage nebo rozhraní Table API služby Azure Cosmos DB z Node.js
 [!INCLUDE [storage-selector-table-include](../../includes/storage-selector-table-include.md)]
@@ -364,6 +364,8 @@ dc.table.queryEntities(tableName,
 ```
 
 Při zkoumání objektu `continuationToken` si můžete všimnout vlastností, jako jsou `nextPartitionKey`, `nextRowKey` a `targetLocation`, které je možné použít k iteraci výsledky.
+
+Můžete také použít `top` spolu s `continuationToken` nastavit velikost stránky. 
 
 ## <a name="work-with-shared-access-signatures"></a>Práce se sdílenými přístupovými podpisy
 Sdílené přístupové podpisy (SAS) představují bezpečný způsob zajištění podrobného přístupu k tabulkám bez nutnosti zadávat název nebo klíče vašeho účtu služby Storage. SAS se často používá k zajištění omezeného přístupu k datům, jako je například povolení dotazování záznamů pro mobilní aplikaci.

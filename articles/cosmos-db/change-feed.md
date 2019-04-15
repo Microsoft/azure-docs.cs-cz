@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/06/2018
 ms.reviewer: sngun
 ms.custom: seodec18
-ms.openlocfilehash: e21058d47f554ca4a057ab90433895800fb17dd9
-ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
+ms.openlocfilehash: 85a1dad9feb15550cf27cf032802af5055fdf155
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56886719"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59525632"
 ---
 # <a name="change-feed-in-azure-cosmos-db---overview"></a>Změna informačního kanálu ve službě Azure Cosmos DB – přehled
 
@@ -58,7 +58,7 @@ Pokud hodnota TTL (Time to Live) vlastnost nastavena na položku na hodnotu -1, 
 
 ### <a name="change-feed-and-etag-lsn-or-ts"></a>Kanál změn a _etag, _lsn nebo _ts
 
-Formát _etag je interní a neměla by mít závislost, protože se sice dají kdykoli měnit. _ts je úprava nebo časové razítko vytvoření. Můžete použít _ts chronologickém porovnání. _lsn je id batch přidaný pro pouze; kanálu změn představuje id transakce. Stejné _lsn může mít mnoho položek. Značka ETag na FeedResponse se liší od _etag, který se zobrazí v položce. _etag je interní identifikátor a používá se pro souběžnost ovládací prvek informuje o verzi položek, že značka ETag se používá pro pořadí úloh informačního kanálu.
+Formát _etag je interní a neměla by mít závislost, protože se sice dají kdykoli měnit. _ts je úprava nebo časové razítko vytvoření. Můžete použít _ts chronologickém porovnání. _lsn je ID batch přidaný pro pouze; kanálu změn představuje ID transakce. Stejné _lsn může mít mnoho položek. Značka ETag na FeedResponse se liší od _etag, který se zobrazí v položce. _etag je interní identifikátor a používá se pro souběžnost ovládací prvek informuje o verzi položek, že značka ETag se používá pro pořadí úloh informačního kanálu.
 
 ## <a name="change-feed-use-cases-and-scenarios"></a>Scénáře a případy použití kanálu změn
 
@@ -84,7 +84,7 @@ Například díky kanálu změn můžete provádět následující úlohy efekti
 
 Tady jsou některé scénáře, které je možné snadno implementovat pomocí kanálu změn:
 
-* V rámci vaší [bez serveru](https://azure.microsoft.com/en-us/solutions/serverless/) webových nebo mobilních aplikací, můžete sledovat události, například všechny změny do profilu vašich zákazníků, předvolby nebo jejich umístění a aktivovat určité akce, například odesílání nabízených oznámení do zařízení pomocí [Azure Functions](change-feed-functions.md).
+* V rámci vaší [bez serveru](https://azure.microsoft.com/solutions/serverless/) webových nebo mobilních aplikací, můžete sledovat události, například všechny změny do profilu vašich zákazníků, předvolby nebo jejich umístění a aktivovat určité akce, například odesílání nabízených oznámení do zařízení pomocí [Azure Functions](change-feed-functions.md).
 
 * Pokud používáte službu Azure Cosmos DB k vytvoření hry, je možné, například použití změnit informační kanál k implementaci v reálném čase žebříčky podle skóre, které se od dokončených hry.
 

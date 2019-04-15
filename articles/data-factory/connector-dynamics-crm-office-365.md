@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 11/28/2018
 ms.author: jingwang
-ms.openlocfilehash: f40be655481481946929c4d79210cb360797f174
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 772b9b191a2e6464ff481ff6661308e00ef6033a
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54017153"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59545429"
 ---
 # <a name="copy-data-from-and-to-dynamics-365-common-data-service-or-dynamics-crm-by-using-azure-data-factory"></a>Kopírování dat z a do Dynamics 365 (Common Data Service) nebo Dynamics CRM pomocí služby Azure Data Factory
 
@@ -29,7 +29,7 @@ Můžete kopírovat data z Dynamics 365 (Common Data Service) nebo Dynamics CRM 
 
 Tento konektor Dynamics podporuje následující verze Dynamics a typy ověřování. (IFD je zkratka pro nasazení přístupem k Internetu.)
 
-| Verze Dynamics | Typy ověření | Propojená služba ukázky |
+| Verze Dynamics | Typy ověřování | Propojená služba ukázky |
 |:--- |:--- |:--- |
 | Dynamics 365 online <br> Dynamics CRM Online | Office365 | [Dynamics online + ověřování Office 365](#dynamics-365-and-dynamics-crm-online) |
 | Dynamics 365 on-premises s IFD <br> Dynamics CRM 2016 on-premises s IFD <br> Dynamics CRM 2015 on-premises s IFD | IFD | [Dynamics místně pomocí Internetového + IFD vícefaktorového ověřování](#dynamics-365-and-dynamics-crm-on-premises-with-ifd) |
@@ -39,8 +39,8 @@ Pro Dynamics 365 konkrétně následující typy aplikací se podporují:
 - Dynamics 365 for Sales
 - Dynamics 365 pro služby zákazníkům
 - Dynamics 365 for Field Service
-- Dynamics 365 pro Project Service Automation
-- Dynamics 365 pro uvedení na trh
+- Dynamics 365 for Project Service Automation
+- Dynamics 365 for Marketing
 
 Třeba finanční jinými typy aplikací a operace, Talentů a podobně nejsou podporované tímto konektorem.
 
@@ -70,7 +70,7 @@ Následující vlastnosti jsou podporovány pro propojenou službu Dynamics.
 | connectVia | [Prostředí integration runtime](concepts-integration-runtime.md) se použije k připojení k úložišti. Pokud není zadán, použije výchozí prostředí Azure Integration Runtime. | Ne pro zdroj, Ano pro jímku Pokud zdroj propojené služby nemá prostředí integration runtime |
 
 >[!IMPORTANT]
->Při kopírování dat do Dynamics nelze provádět kopírování použít výchozí prostředí Azure Integration Runtime. Jinými slovy, pokud zdrojem propojená služba nemá zadaný integration runtime, explicitně [vytvořit prostředí Azure Integration Runtime](create-azure-integration-runtime.md#create-azure-ir) umístění blízko vaší instanci Dynamics. Přidružte ji v propojené službě Dynamics jako v následujícím příkladu.
+>Při kopírování dat do Dynamics nelze provádět kopírování použít výchozí prostředí Azure Integration Runtime. Jinými slovy, pokud zdrojem propojená služba nemá zadaný integration runtime, explicitně [vytvořit prostředí Azure Integration Runtime](create-azure-integration-runtime.md#create-azure-ir) umístění blízko vaší instanci Dynamics. Najít, kde je umístěn v instanci Dynamics odkazováním [seznamu oblastí pro Dynamics 365](https://docs.microsoft.com/dynamics365/customer-engagement/admin/datacenter/new-datacenter-regions). Přidružte ji v propojené službě Dynamics jako v následujícím příkladu.
 
 >[!NOTE]
 >Konektor Dynamics pro volitelné "název organizace" vlastnost použít k identifikaci vaší instance Dynamics 365 s/CRM Online. Zatímco pořád funguje, můžete se doporučujeme, abyste místo toho zadejte novou vlastnost "serviceuri:" získat lepší výkon pro instanci zjišťování.
@@ -109,7 +109,7 @@ Následující vlastnosti jsou podporovány pro propojenou službu Dynamics.
 |:--- |:--- |:--- |
 | type | Vlastnost type musí být nastavená na **Dynamics**. | Ano |
 | deploymentType | Typ nasazení Dynamics instance. Musí být **"OnPremisesWithIfd"** pro Dynamics místně pomocí internetového nasazení.| Ano |
-| název hostitele | Název hostitele serveru Dynamics na místě. | Ano |
+| hostName | Název hostitele serveru Dynamics na místě. | Ano |
 | port | Port serveru Dynamics na místě. | Ne, výchozí je 443 |
 | Název organizace | Název organizace Dynamics instance. | Ano |
 | authenticationType. | Typ ověřování pro připojení k serveru Dynamics. Zadejte **"Ifd"** pro Dynamics on-premises s IFD. | Ano |
@@ -157,7 +157,7 @@ Pro kopírování dat z a do Dynamics, nastavte vlastnost typ datové sady na **
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
 | type | Vlastnost type datové sady, musí být nastavená na **DynamicsEntity**. |Ano |
-| EntityName | Logický název entity načíst. | Ne pro zdroj (Pokud je zadán "dotaz" ve zdroji aktivity), Ano pro jímku |
+| entityName | Logický název entity načíst. | Ne pro zdroj (Pokud je zadán "dotaz" ve zdroji aktivity), Ano pro jímku |
 
 > [!IMPORTANT]
 >- Při kopírování dat z Dynamics oddílu "struktura" je volitelné, ale recommanded v Dynamics datovou sadu, aby výsledkem deterministické kopírování. Definuje sloupce název a datový typ dat aplikace Dynamics, který chcete zkopírovat. Další informace najdete v tématu [struktury datové sady](concepts-datasets-linked-services.md#dataset-structure) a [mapování datového typu pro Dynamics](#data-type-mapping-for-dynamics).
@@ -332,20 +332,20 @@ Nakonfigurujte odpovídající typ dat Data Factory ve struktuře datové sady z
 | AttributeTypeCode.Boolean | Logická hodnota | ✓ | ✓ |
 | AttributeType.Customer | Guid | ✓ | | 
 | AttributeType.DateTime | Datum a čas | ✓ | ✓ |
-| AttributeType.Decimal | Desítkově | ✓ | ✓ |
+| AttributeType.Decimal | Decimal | ✓ | ✓ |
 | AttributeType.Double | Double | ✓ | ✓ |
-| AttributeType.EntityName | Řetězec | ✓ | ✓ |
-| AttributeType.Integer | Datový typ Int32 | ✓ | ✓ |
+| AttributeType.EntityName | String | ✓ | ✓ |
+| AttributeType.Integer | Int32 | ✓ | ✓ |
 | AttributeType.Lookup | Guid | ✓ | ✓ (s jedním cílem přidružené) |
 | AttributeType.ManagedProperty | Logická hodnota | ✓ | |
-| AttributeType.Memo | Řetězec | ✓ | ✓ |
-| AttributeType.Money | Desítkově | ✓ | ✓ |
+| AttributeType.Memo | String | ✓ | ✓ |
+| AttributeType.Money | Decimal | ✓ | ✓ |
 | AttributeType.Owner | Guid | ✓ | |
-| AttributeType.Picklist | Datový typ Int32 | ✓ | ✓ |
+| AttributeType.Picklist | Int32 | ✓ | ✓ |
 | AttributeType.Uniqueidentifier | Guid | ✓ | ✓ |
-| AttributeType.String | Řetězec | ✓ | ✓ |
-| AttributeType.State | Datový typ Int32 | ✓ | ✓ |
-| AttributeType.Status | Datový typ Int32 | ✓ | ✓ |
+| AttributeType.String | String | ✓ | ✓ |
+| AttributeType.State | Int32 | ✓ | ✓ |
+| AttributeType.Status | Int32 | ✓ | ✓ |
 
 
 > [!NOTE]

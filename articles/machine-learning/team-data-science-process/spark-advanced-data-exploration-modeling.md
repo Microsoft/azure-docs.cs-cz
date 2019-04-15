@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 02/15/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 6678a37b534db5603aed245bdc8edffbf04b7f51
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 5f6145e581393d874871d214515a660f987d1d7f
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57904745"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59523745"
 ---
 # <a name="advanced-data-exploration-and-modeling-with-spark"></a>Pokročilé zkoumání a modelování dat pomocí Spark
 
@@ -114,7 +114,7 @@ Jádra PySpark, které jsou k dispozici s poznámkovými bloky Jupyter nemají p
 Jádra PySpark poskytuje některé předdefinované "Magic", které jsou speciální příkazy, které lze volat s %%. Existují dva tyto příkazy, které se používají v těchto ukázek kódu.
 
 * **%% místní** Určuje, že kód v dalších řádcích, je spuštěn lokálně. Kód musí být platný kód Pythonu.
-* **%% sql -o <variable name>**  spustí dotaz Hive proti kontext sqlContext. Pokud je předán parametr -o výsledek dotazu se ukládají v %% místní kontext Python jako Pandas DataFrame.
+* **%% sql -o \<název proměnné >** spustí dotaz Hive proti kontext sqlContext. Pokud je předán parametr -o výsledek dotazu se ukládají v %% místní kontext Python jako Pandas DataFrame.
 
 Pro další informace o jádrech pro poznámkové bloky Jupyter a předdefinované "magics", která poskytují, naleznete v tématu [jádra dostupná pro poznámkové bloky Jupyter s HDInsight Spark Linux clusterů v HDInsight](../../hdinsight/spark/apache-spark-jupyter-notebook-kernels.md).
 
