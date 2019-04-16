@@ -111,21 +111,9 @@ items:
       maintainContext: true
   - name: Spravovat
     items:
-    - name: Vytvoření clusterů s Linuxem
+    - name: Vytváření clusterů HDInsight
       href: ../hdinsight-hadoop-provision-linux-clusters.md
       items:
-      - name: Použití Azure Powershell
-        href: ../hdinsight-hadoop-create-linux-clusters-azure-powershell.md
-        maintainContext: true
-      - name: Použití cURL a rozhraní Azure REST API
-        href: ../hdinsight-hadoop-create-linux-clusters-curl-rest.md
-        maintainContext: true
-      - name: Použití sady .NET SDK
-        href: ../hdinsight-hadoop-create-linux-clusters-dotnet-sdk.md
-        maintainContext: true
-      - name: Použití Azure Classic CLI
-        href: ../hdinsight-hadoop-create-linux-clusters-azure-cli.md
-        maintainContext: true
       - name: Použití webu Azure Portal
         href: ../hdinsight-hadoop-create-linux-clusters-portal.md
         maintainContext: true
@@ -133,19 +121,41 @@ items:
         displayName: resource manager template, arm template, resource manager group
         href: ../hdinsight-hadoop-create-linux-clusters-arm-templates.md
         maintainContext: true
-      maintainContext: true
-    - name: Správa clusterů Apache Hadoop
-      href: ../hdinsight-administer-use-portal-linux.md
-      items:
-      - name: Použití sady .NET SDK
-        href: ../hdinsight-administer-use-dotnet-sdk.md
-        maintainContext: true
+      - name: Použití sady SDK pro .NET
+        href: https://docs.microsoft.com/dotnet/api/overview/azure/hdinsight?view=azure-dotnet#create-a-cluster
+      - name: Použití sady SDK pro Python
+        href: https://docs.microsoft.com/python/api/overview/azure/hdinsight?view=azure-python#create-a-cluster
+      - name: Použití sady SDK pro Javu
+        href: https://docs.microsoft.com/java/api/overview/azure/hdinsight?view=azure-java-stable#create-a-cluster
       - name: Použití Azure Powershell
-        href: ../hdinsight-administer-use-powershell.md
+        href: ../hdinsight-hadoop-create-linux-clusters-azure-powershell.md
+        maintainContext: true
+      - name: Použití cURL a rozhraní Azure REST API
+        href: ../hdinsight-hadoop-create-linux-clusters-curl-rest.md
         maintainContext: true
       - name: Použití Azure Classic CLI
-        href: ../hdinsight-administer-use-command-line.md
+        href: ../hdinsight-hadoop-create-linux-clusters-azure-cli.md
         maintainContext: true
+      - name: Vytváření clusterů na vyžádání
+        href: ../hdinsight-hadoop-create-linux-clusters-adf.md
+        maintainContext: true
+      maintainContext: true
+  - name: Správa clusterů v HDInsightu
+    href: ../hdinsight-administer-use-portal-linux.md
+    items:
+    - name: Použití sady SDK pro .NET
+      href: https://docs.microsoft.com/dotnet/api/overview/azure/hdinsight?view=azure-dotnet#management
+    - name: Použití sady SDK pro Python
+      href: https://docs.microsoft.com/python/api/overview/azure/hdinsight?view=azure-python
+    - name: Použití sady SDK pro Javu
+      href: https://docs.microsoft.com/java/api/overview/azure/hdinsight?view=azure-java-stable
+    - name: Použití sady SDK pro Go (Preview)
+      href: https://docs.microsoft.com/azure/hdinsight/hdinsight-go-sdk-overview
+    - name: Použití Azure Powershell
+      href: ../hdinsight-administer-use-powershell.md
+      maintainContext: true
+    - name: Použití Azure Classic CLI
+      href: ../hdinsight-administer-use-command-line.md
       maintainContext: true
     - name: Správa clusterů pomocí webového uživatelského rozhraní Apache Ambari
       href: ../hdinsight-hadoop-manage-ambari.md
@@ -184,6 +194,7 @@ items:
     - name: Opravy operačního systému pro cluster HDInsight
       href: ../hdinsight-os-patching.md
       maintainContext: true
+    maintainContext: true
   - name: Řešení potíží
     href: ../hdinsight-troubleshoot-guide.md
     items:
@@ -241,13 +252,13 @@ items:
     href: https://azure.microsoft.com/resources/samples/?service=hdinsight
   - name: Azure PowerShell
     href: /powershell/module/az.hdinsight
-  - name: .NET SDK
+  - name: SDK pro .NET
     href: https://docs.microsoft.com/dotnet/api/overview/azure/hdinsight?view=azure-dotnet
-  - name: Python SDK
+  - name: SDK pro Python
     href: https://docs.microsoft.com/python/api/overview/azure/hdinsight?view=azure-python
-  - name: Java SDK
-    href: https://docs.microsoft.com/java/api/overview/azure/hdinsight?view=azure-java-preview
-  - name: Go SDK
+  - name: SDK pro Javu
+    href: https://docs.microsoft.com/java/api/overview/azure/hdinsight?view=azure-java-stable
+  - name: SDK pro Go
     href: ../hdinsight-go-sdk-overview.md
   - name: REST
     href: /rest/api/hdinsight/
@@ -271,9 +282,9 @@ items:
   - name: Nástroje Windows pro HDInsight
     href: ../hdinsight-hadoop-windows-tools.md
     maintainContext: true
-ms.openlocfilehash: 4549b041bc9e754aca632826c8e1a2afc7622a82
-ms.sourcegitcommit: b8a8d29fdf199158d96736fbbb0c3773502a092d
+ms.openlocfilehash: dedffe85d9ae7fc00bcbcc9ca7c8324c4618f8c7
+ms.sourcegitcommit: 48a41b4b0bb89a8579fc35aa805cea22e2b9922c
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/15/2019
-ms.locfileid: "59565088"
+ms.locfileid: "59578726"
