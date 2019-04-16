@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 04/04/2019
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: 85c51320d2be1eac540f1d14910927c0fdccef64
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
+ms.openlocfilehash: 2c5c2bc2b8dd1930efef9833bd442fcad5566e2a
+ms.sourcegitcommit: 48a41b4b0bb89a8579fc35aa805cea22e2b9922c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59549501"
+ms.lasthandoff: 04/15/2019
+ms.locfileid: "59578777"
 ---
 # <a name="what-is-text-to-speech"></a>Co je převod textu na řeč?
 
@@ -53,10 +53,7 @@ Tato tabulka uvádí základní funkce pro převod textu na řeč:
 | Vytvoření a správa testů hlasového písma. | Ne | Ano\* |
 | Spravujte předplatná. | Ne | Ano\* |
 
-\* *Tyto služby jsou k dispozici prostřednictvím cris.ai koncového bodu. Zobrazit [Swagger odkaz](https://westus.cris.ai/swagger/ui/index).*
-
-> [!NOTE]
-> Koncové body vlastní hlasové implementovat omezení šířky pásma, která omezuje požadavky na 25 na 5 sekund. Pokud dojde k omezení využití sítě, zobrazí se oznámení prostřednictvím záhlaví zpráv.
+\* *Tyto služby jsou k dispozici prostřednictvím cris.ai koncového bodu. Zobrazit [Swagger odkaz](https://westus.cris.ai/swagger/ui/index). Tyto vlastní hlasové školení a rozhraní API pro správu implementovat omezení šířky pásma, omezení požadavků na 25 na 5 sekund, zatímco syntézu řeči samotné rozhraní API implementuje omezení, která umožňuje 200 požadavků za sekundu jako nejvyšší. Pokud dojde k omezení využití sítě, zobrazí se oznámení prostřednictvím záhlaví zpráv.*
 
 ## <a name="get-started-with-text-to-speech"></a>Začínáme s převod textu na řeč
 

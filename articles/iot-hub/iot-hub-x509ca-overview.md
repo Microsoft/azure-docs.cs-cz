@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 09/18/2017
 ms.author: eustacea
-ms.openlocfilehash: 38cbd32be30885837d2f98a9e1dd5d967b4938b4
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.openlocfilehash: b7464e5cc052ecade4a10102de947d37a63c962a
+ms.sourcegitcommit: e89b9a75e3710559a9d2c705801c306c4e3de16c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/11/2019
-ms.locfileid: "59489807"
+ms.lasthandoff: 04/15/2019
+ms.locfileid: "59571150"
 ---
 # <a name="device-authentication-using-x509-ca-certificates"></a>Zařízení ověřování pomocí certifikátů X.509 certifikační Autority
 
@@ -62,13 +62,15 @@ Proces nahrávání zahrnuje nahrát soubor, který obsahuje váš certifikát. 
 
 Důkaz vlastnictví krok zahrnuje kryptografických výzvy a procesu reakce na mezi vámi a IoT Hub.  Vzhledem k tomu, že digitální certifikát obsah jsou veřejné a proto náchylný k odposlouchávání, IoT Hub chcete zjistit, že ve skutečnosti vlastníte certifikátu certifikační Autority.  Učiní tak vygenerováním náhodné výzva, která s odpovídající privátní klíč certifikátu certifikační Autority, musíte se přihlásit.  Pokud jste ponechali privátní klíč tajného kódu a chráněné jako předtím nedoporučuje, pak pouze bude mít znalosti k dokončení tohoto kroku. Tajemství privátního klíče je zdrojem vztahu důvěryhodnosti v této metodě.  Po přihlášení na výzvu, tento krok proveďte tak, že nahrajete soubor, který obsahuje výsledky.
 
-Přečtěte si zde jak [zaregistrovat certifikát CA](iot-hub-security-x509-get-started.md#registercerts).
+Přečtěte si zde jak [zaregistrovat certifikát CA](iot-hub-security-x509-get-started.md#register-x509-ca-certificates-to-your-iot-hub)
 
 ## <a name="how-to-create-a-device-on-iot-hub"></a>Vytvoření zařízení v IoT Hubu
 
 Vylučovat zosobnění zařízení služby IoT Hub vyžaduje, abyste ho vědět, jaká zařízení mají očekávat.  To provedete tak, že vytvoříte položky zařízení v registru zařízení služby IoT Hub.  Tento proces je automatické, při použití služby IoT Hub [služby Device Provisioning](https://azure.microsoft.com/blog/azure-iot-hub-device-provisioning-service-preview-automates-device-connection-configuration/). 
 
-Přečtěte si zde jak [ručně vytvořit zařízení ve službě IoT Hub](iot-hub-security-x509-get-started.md#createdevice).
+Přečtěte si zde jak [ručně vytvořit zařízení ve službě IoT Hub](iot-hub-security-x509-get-started.md#create-an-x509-device-for-your-iot-hub).
+
+Vytvoření zařízení X.509 pro službu IoT hub
 
 ## <a name="authenticating-devices-signed-with-x509-ca-certificates"></a>Ověřování zařízení podepsané certifikáty webu X.509
 
@@ -76,7 +78,7 @@ Pomocí certifikátu webu X.509 zaregistrované a zařízení přihlásil řetě
 
 Zařízení úspěšné připojení ke službě IoT Hub je indikátorem správné nastavení a dokončení procesu ověřování.
 
-Přečtěte si zde jak [provedení tohoto kroku připojení zařízení](iot-hub-security-x509-get-started.md#authenticatedevice).
+Přečtěte si zde jak [provedení tohoto kroku připojení zařízení](iot-hub-security-x509-get-started.md#authenticate-your-x509-device-with-the-x509-certificates).
 
 ## <a name="next-steps"></a>Další kroky
 

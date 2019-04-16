@@ -18,12 +18,12 @@ ms.date: 01/25/2019
 ms.author: joflore
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: eafc379a65fda1ed64c6afee1427e704558b1ee6
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: 11d4d319fa31dd2493810dc7293d415554f79d94
+ms.sourcegitcommit: e89b9a75e3710559a9d2c705801c306c4e3de16c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59261518"
+ms.lasthandoff: 04/15/2019
+ms.locfileid: "59571116"
 ---
 # <a name="best-practices-for-conditional-access-in-azure-active-directory"></a>Osvědčené postupy pro podmíněný přístup v Azure Active Directory
 
@@ -50,7 +50,7 @@ Aby vaše zásady fungují, je nutné nakonfigurovat:
 | :--            | :--                                  | :-- |
 | **Cloudové aplikace** |Vyberte jednu nebo víc aplikací.  | Cílem zásad podmíněného přístupu je vám umožňují řídit jak Autorizovaní uživatelé můžou používat cloudové aplikace.|
 | **Uživatelé a skupiny** | Vyberte alespoň jeden uživatel nebo skupina, která má oprávnění pro přístup k vybrané cloudové aplikace. | Zásady podmíněného přístupu, který nemá žádné uživatelé a skupiny přiřazení, je neaktivní. |
-| **Ovládací prvky přístupu** | Vyberte aspoň jedno přístupu ovládací prvek. | Jestli vaše podmínky splněny, procesor zásad je potřeba vědět, co dělat. |
+| **Řízení přístupu** | Vyberte aspoň jedno přístupu ovládací prvek. | Jestli vaše podmínky splněny, procesor zásad je potřeba vědět, co dělat. |
 
 
 
@@ -109,7 +109,7 @@ Pro každé přihlášení Azure Active Directory vyhodnotí všechny zásady a 
 
 ### <a name="does-conditional-access-work-with-exchange-activesync"></a>Podmíněný přístup funguje s Exchange ActiveSync?
 
-Ano, pomocí protokolu Exchange ActiveSync v zásadách podmíněného přístupu.
+Ano, pomocí protokolu Exchange ActiveSync v zásadách podmíněného přístupu s některými [omezení](https://docs.microsoft.com/en-us/azure/active-directory/conditional-access/conditional-access-for-exo-and-spo#exchange-activesync). 
 
 ### <a name="how-should-you-configure-conditional-access-with-office-365-apps"></a>Jak byste měli nakonfigurovat podmíněný přístup aplikací Office 365?
 

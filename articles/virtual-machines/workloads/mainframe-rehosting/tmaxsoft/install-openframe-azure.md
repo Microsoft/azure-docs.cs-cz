@@ -8,12 +8,12 @@ ms.author: larryme
 ms.date: 04/02/2019
 ms.topic: article
 ms.service: virtual-machines-linux
-ms.openlocfilehash: 6b109f347ee7a917b57acfc56ab4418755295bc5
-ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
+ms.openlocfilehash: 78a8b5e7a1c5512f81315519210bc7759dd15342
+ms.sourcegitcommit: 48a41b4b0bb89a8579fc35aa805cea22e2b9922c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58896298"
+ms.lasthandoff: 04/15/2019
+ms.locfileid: "59578471"
 ---
 # <a name="install-tmaxsoft-openframe-on-azure"></a>Instalace TmaxSoft OpenFrame v Azure
 
@@ -945,7 +945,7 @@ ProSort je nástroj sloužící k řazení dat v dávkové transakce.
      export PATH
      ```
 
-6. Ke spuštění profilu bash, na příkazovém řádku zadejte: ` . .bash_profile`
+6. Ke spuštění profilu bash, na příkazovém řádku zadejte: `. .bash_profile`
 
 7. Vytvořte konfigurační soubor. Příklad:
 
@@ -1055,7 +1055,7 @@ OFCOBOL je OpenFrame Kompilátor interpretuje sálovými COBOL programy.
      0 NonFatalErrors 
      0 FatalError
      ```
-10. Použití `ofcob --version ` příkaz a zkontrolujte číslo verze na ověření instalace. Příklad:
+10. Použití `ofcob --version` příkaz a zkontrolujte číslo verze na ověření instalace. Příklad:
 
      ```
      [oframe7@ofdemo ~]$ ofcob --version 

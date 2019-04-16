@@ -10,12 +10,12 @@ ms.subservice: qna-maker
 ms.topic: article
 ms.date: 02/21/2019
 ms.author: tulasim
-ms.openlocfilehash: 462dfb2de8608eebd5609f7044bde03991fca3ca
-ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
+ms.openlocfilehash: d14e2897183a97da5e84a76b699def529f1d167e
+ms.sourcegitcommit: 48a41b4b0bb89a8579fc35aa805cea22e2b9922c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56958044"
+ms.lasthandoff: 04/15/2019
+ms.locfileid: "59579406"
 ---
 # <a name="get-a-knowledge-answer-with-the-generateanswer-api-and-metadata"></a>Získání odpovědí znalostní báze s rozhraním GenerateAnswer API a metadat
 
@@ -74,7 +74,7 @@ https://{QnA-Maker-endpoint}/knowledgebases/{knowledge-base-ID}/generateAnswer?i
 |Hlavička|Typ obsahu|string|Typ média textu odeslaného do rozhraní API. Výchozí hodnota je: "|
 |Hlavička|Autorizace|string|Klíče vašeho koncového bodu (EndpointKey xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx).|
 |Tělo POST|JSON – objekt|JSON|Dotaz s nastavením|
-|Parametr řetězce dotazu (volitelné)|`isTest`|Boolean|Pokud nastavena na hodnotu true, vrátí výsledky z `testkb` indexu vyhledávání místo publikované indexu.|
+
 
 Text JSON má několik nastavení:
 
@@ -83,6 +83,7 @@ Text JSON má několik nastavení:
 |`question`|povinné|string|Uživatel dotaz k odeslání do znalostní báze.|
 |`top`|nepovinné|integer|Číslo seřazený výsledků, které chcete zahrnout do výstupu. Výchozí hodnota je 1.|
 |`userId`|nepovinné|string|Jedinečné ID k identifikaci uživatele. Toto ID se zaznamená do protokolů chatu.|
+|`isTest`|nepovinné|Boolean|Pokud nastavena na hodnotu true, vrátí výsledky z `testkb` indexu vyhledávání místo publikované indexu.|
 |`strictFilters`|nepovinné|string|Je-li zadána, říká QnA Maker vrátit pouze odpovědi, které mají zadanou metadat.|
 
 Příklad text JSON vypadá takto:
@@ -91,6 +92,7 @@ Příklad text JSON vypadá takto:
 {
     "question": "qna maker and luis",
     "top": 6,
+    "isTest": true,
     "strictFilters": [
     {
         "name": "category",

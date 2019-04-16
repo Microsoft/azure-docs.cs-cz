@@ -10,18 +10,20 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 02/21/2019
 ms.author: v-jansko
-ms.openlocfilehash: 5c41456f1cf661fd372a565885c9196593c894ee
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: 3b938f07ef5b1feb9d5859f27423eaa79c2937cc
+ms.sourcegitcommit: 48a41b4b0bb89a8579fc35aa805cea22e2b9922c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59267902"
+ms.lasthandoff: 04/15/2019
+ms.locfileid: "59577586"
 ---
 # <a name="language-and-region-support-for-the-translator-text-api"></a>Podpora jazyka a oblasti pro rozhraní Translator Text API
 
 Translator Text API podporuje následující jazyky pro překlad textu do textu. Neurální strojový překlad sítí (NMT) je novým standardem pro strojový překlad s využitím AI vysoce kvalitní a je k dispozici jako výchozí používá Translator Text API V3 neuronových sítí systému je k dispozici.
 
 [Další informace o tom, jak funguje strojový překlad](https://www.microsoft.com/translator/mt.aspx)
+
+## <a name="translation"></a>Překlad
 
 **V2 Translator API**
 
@@ -111,25 +113,25 @@ Metoda Transliterate podporuje následující jazyky. V "do a z" "<> –" označ
 
 | Jazyk    | Kód jazyka | Skript | Do/z | Skript|
 |:----------- |:-------------:|:-------------:|:-------------:|:-------------:|
-| arabština | `ar` | arabština `Arab` | <--> | Latinská `Latn` |
-|Bengálština  | `bn` | bengálština `Beng` | <--> | Latinská `Latn` |
-| Čínština (zjednodušená) | `zh-Hans` | čínština (zjednodušená) `Hans`| <--> | Latinská `Latn` |
-| Čínština (zjednodušená) | `zh-Hans` | čínština (zjednodušená) `Hans`| <--> | Tradiční čínština `Hant`|
+| arabština | `ar` | Arabština `Arab` | <--> | Latinská `Latn` |
+|Bengálština  | `bn` | Bengálština `Beng` | <--> | Latinská `Latn` |
+| Čínština (zjednodušená) | `zh-Hans` | Zjednodušená čínština `Hans`| <--> | Latinská `Latn` |
+| Čínština (zjednodušená) | `zh-Hans` | Zjednodušená čínština `Hans`| <--> | Tradiční čínština `Hant`|
 | Čínština (tradiční) | `zh-Hant` | Tradiční čínština `Hant`| <--> | Latinská `Latn` |
-| Čínština (tradiční) | `zh-Hant` | Tradiční čínština `Hant`| <--> | čínština (zjednodušená) `Hans` |
-| Gudžarátština | `gu`  | Gudžarátština `Gujr` | --> | Latinská `Latn` |
+| Čínština (tradiční) | `zh-Hant` | Tradiční čínština `Hant`| <--> | Zjednodušená čínština `Hans` |
+| Gudžarátština | `gu`  | Gujarati `Gujr` | --> | Latinská `Latn` |
 | Hebrejština | `he` | Hebrejština `Hebr` | <--> | Latinská `Latn` |
 | Hindština | `hi` | Devanágarí `Deva` | <--> | Latinská `Latn` |
 | Japonština | `ja` | Japonština `Jpan` | <--> | Latinská `Latn` |
-| Kannadština | `kn` | Kannadština `Knda` | --> | Latinská `Latn` |
-| Malajálamština | `ml` | Malajálamština `Mlym` | --> | Latinská `Latn` |
+| Kannadština | `kn` | Kannada `Knda` | --> | Latinská `Latn` |
+| Malajálamština | `ml` | Malajalámština `Mlym` | --> | Latinská `Latn` |
 | Maráthština | `mr` | Devanágarí `Deva` | --> | Latinská `Latn` |
-| urijština | `or` | urijština `Orya` | <--> | Latinská `Latn` |
+| urijština | `or` | Oriya `Orya` | <--> | Latinská `Latn` |
 | Paňdžábština | `pa` | Gurmukhi `Guru`  | <--> | Latinská `Latn`  |
-| Srbština (cyrilice) | `sr-Cyrl` | Cyrilice `Cyrl`  | --> | Latinská `Latn` |
-| Srbština (latinka) | `sr-Latn` | Latinská `Latn` | --> | Cyrilice `Cyrl`|
+| Srbština (cyrilice) | `sr-Cyrl` | Cyrillic `Cyrl`  | --> | Latinská `Latn` |
+| Srbština (latinka) | `sr-Latn` | Latinská `Latn` | --> | Cyrillic `Cyrl`|
 | Tamilština | `ta` | Tamilština `Taml` | --> | Latinská `Latn` |
-| Telugština | `te` | Telugština `Telu` | --> | Latinská `Latn` |
+| Telugština | `te` | Telugu `Telu` | --> | Latinská `Latn` |
 | Thajština | `th` | Thajština `Thai` | <--> | Latinská `Latn` |
 
 ## <a name="dictionary"></a>Slovník
@@ -191,77 +193,8 @@ Slovník podporuje tyto jazyky do nebo z anglické využitím metod Lookup a Exa
 
 ## <a name="detect"></a>Detect
 
-Metoda rozpoznat podporuje následující jazyky. Zjištění může identifikovat, jazyků, které Microsoft Translator: nelze převést.
+Translator Text API zjistí všechny jazyky, které jsou k dispozici pro překlad a přepis.
 
-| Jazyk    |
-|:----------- |
-| Afrikánština |
-| Albánština |
-| arabština |
-| Baskičtina |
-| Běloruština |
-| Bulharština |
-| Katalánština |
-| Čínština |
-| Čínština (zjednodušená) |
-| Čínština (tradiční) |
-| Chorvatština |
-| Čeština |
-| dánština |
-| Holandština |
-| Angličtina |
-| Esperanto |
-| Estonština |
-| Finština |
-| Francouzština |
-| Galicijština |
-| Němčina |
-| Řečtina |
-| Haitská kreolština |
-| Hebrejština |
-| Hindština |
-| Maďarština |
-| Islandština |
-| Indonéština |
-| Irština |
-| italština |
-| Japonština |
-| Korejština |
-| Kurdština (Arabské písmo) |
-| Kurdština (latinka) |
-| Latinská |
-| Lotyština |
-| Litevština |
-| Makedonština |
-| Malajština |
-| Maltština |
-| norština |
-| Norština (Nynorsk) |
-| Paštština |
-| Perština |
-| polština |
-| Portugalština |
-| Rumunština |
-| ruština |
-| Srbština (cyrilice) |
-| Srbština (latinka) |
-| Slovenština |
-| Slovinština |
-| Somálština |
-| Španělština |
-| svahilština |
-| švédština |
-| Tagalogština |
-| Telugština |
-| Thajština |
-| turečtina |
-| Ukrajinština |
-| Urdština |
-| Uzbečtina (cyrilice) |
-| Uzbečtina (latinka) |
-| Vietnamština |
-| Velština |
-| Jidiš |
 
 ## <a name="access-the-translator-text-api-language-list-programmatically"></a>Programový přístup k seznamu jazyků rozhraní Translator Text API
 
@@ -294,6 +227,7 @@ Tyto jazyky jsou k dispozici pro přizpůsobení do nebo z anglické pomocí [vl
 | Hindština      | `hi`          |
 | Maďarština      | `hu`          |
 | Islandština | `is` |
+| Indonéština|   `id`    |
 | italština      | `it`          |
 | Japonština      | `ja`          |
 | Korejština      | `ko`          |

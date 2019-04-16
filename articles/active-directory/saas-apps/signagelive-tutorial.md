@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 1/11/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 672fd4d54e9e89854a3973ae7d0a5f90cd0130a8
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 36d4bb38d7a12edddac9d64ecc1ed3ee5a34456c
+ms.sourcegitcommit: 48a41b4b0bb89a8579fc35aa805cea22e2b9922c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57835380"
+ms.lasthandoff: 04/15/2019
+ms.locfileid: "59577808"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-signagelive"></a>Kurz: Integrace Azure Active Directory s Signagelive
 
@@ -28,60 +28,61 @@ V tomto kurzu se dozvíte, jak integrovat Signagelive s Azure Active Directory (
 Signagelive integraci se službou Azure AD poskytuje následující výhody:
 
 * Můžete řídit ve službě Azure AD, který má přístup k Signagelive.
-* Můžete povolit uživatelům být automaticky přihlášeni k Signagelive (Single Sign-On) s jejich účty Azure AD.
-* Můžete spravovat své účty na jediném místě – na webu Azure portal.
+* Můžete povolit uživatelům, aby se automaticky přihlášeni k Signagelive (jednotné přihlašování) s jejich účty Azure AD.
+* Můžete spravovat své účty v jednom centrálním místě: na webu Azure portal.
 
-Pokud chcete zjistit další podrobnosti o integraci aplikací SaaS v Azure AD, přečtěte si téma [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
+Další informace o integraci aplikací SaaS v Azure AD najdete v tématu [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis). Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
 ## <a name="prerequisites"></a>Požadavky
 
 Konfigurace integrace Azure AD s Signagelive, potřebujete následující položky:
 
-* Předplatné služby Azure AD. Pokud nemáte prostředí Azure AD, můžete získat měsíční zkušební verze [zde](https://azure.microsoft.com/pricing/free-trial/)
-* Signagelive jednotného přihlašování povolená předplatného
+* Předplatné služby Azure AD. Pokud nemáte prostředí Azure AD, můžete získat [zkušební verze na jeden měsíc](https://azure.microsoft.com/pricing/free-trial/).
+* Signagelive jeden znak na podporou předplatné.
 
 ## <a name="scenario-description"></a>Popis scénáře
 
 V tomto kurzu konfigurace a testování v testovacím prostředí Azure AD jednotného přihlašování.
 
-* Podporuje Signagelive **SP** jednotné přihlašování zahájené pomocí
+* Signagelive podporuje jednotné přihlašování iniciovaného Zprostředkovatelem přihlašování.
 
-## <a name="adding-signagelive-from-the-gallery"></a>Přidání Signagelive z Galerie
+## <a name="add-signagelive-from-the-gallery"></a>Přidání Signagelive z Galerie
 
-Konfigurace integrace Signagelive do služby Azure AD, budete muset přidat Signagelive z Galerie na váš seznam spravovaných aplikací SaaS.
+Pokud chcete nakonfigurovat integraci Signagelive do služby Azure AD, nejprve přidáte Signagelive z Galerie na váš seznam spravovaných aplikací SaaS.
 
-**Chcete-li přidat Signagelive z galerie, postupujte následovně:**
+Chcete-li přidat Signagelive z galerie, proveďte následující kroky:
 
-1. V **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
+1. V [webu Azure portal](https://portal.azure.com), v levém podokně, vyberte **Azure Active Directory** ikonu.
 
     ![Tlačítko Azure Active Directory](common/select-azuread.png)
 
-2. Přejděte do **podnikové aplikace** a pak vyberte **všechny aplikace** možnost.
+2. Přejděte na **podnikové aplikace**a pak vyberte **všechny aplikace** možnost.
 
     ![V okně podnikové aplikace](common/enterprise-applications.png)
 
-3. Chcete-li přidat novou aplikaci, klikněte na tlačítko **novou aplikaci** tlačítko v horní části dialogového okna.
+3. Chcete-li přidat novou aplikaci, **novou aplikaci** tlačítko v horní části dialogového okna.
 
     ![Tlačítko nové aplikace](common/add-new-app.png)
 
-4. Do vyhledávacího pole zadejte **Signagelive**vyberte **Signagelive** z panelu výsledků klikněte **přidat** tlačítko pro přidání aplikace.
+4. Do vyhledávacího pole zadejte **Signagelive**. 
 
      ![Signagelive v seznamu výsledků](common/search-new-app.png)
+
+5. Vyberte **Signagelive** v podokně výsledků a pak vyberte **přidat** tlačítko pro přidání aplikace.
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a otestování služby Azure AD jednotného přihlašování
 
 V této části je konfigurace a testování Azure AD jednotné přihlašování pomocí Signagelive podle testovacího uživatele volá **Britta Simon**.
-Pro jednotné přihlašování pro práci je potřeba navázat vztah odkazu mezi uživatele služby Azure AD a související uživatelské v Signagelive.
+Pro jednotné přihlašování pro práci je potřeba vytvořit propojení mezi uživatele služby Azure AD a související uživatel v Signagelive.
 
-Nakonfigurovat a otestovat Azure AD jednotné přihlašování s Signagelive, které potřebujete k dokončení následujících stavebních bloků:
+Nakonfigurovat a otestovat Azure AD jednotné přihlašování s Signagelive, proveďte následující stavebních bloků:
 
-1. **[Konfigurovat Azure AD Single Sign-On](#configure-azure-ad-single-sign-on)**  – Pokud chcete, aby uživatelé mohli tuto funkci používat.
-2. **[Konfigurace Signagelive Single Sign-On](#configure-signagelive-single-sign-on)**  – ke konfiguraci nastavení jednotného přihlašování na straně aplikace.
-3. **[Vytvořit testovacího uživatele Azure AD](#create-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
-4. **[Přiřadit uživatele Azure AD](#assign-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotného přihlašování.
-5. **[Vytvořit testovacího uživatele Signagelive](#create-signagelive-test-user)**  – Pokud chcete mít protějšek Britta Simon Signagelive, který je propojený s Azure AD reprezentace uživatele.
-6. **[Otestovat jednotné přihlašování](#test-single-sign-on)**  – Pokud chcete ověřit, jestli funguje v konfiguraci.
+1. [Konfigurace služby Azure AD jednotného přihlašování](#configure-azure-ad-single-sign-on) aby uživatelé mohli tuto funkci používat.
+2. [Konfigurace Signagelive jednotného přihlašování](#configure-signagelive-single-sign-on) ke konfiguraci nastavení jednotného přihlašování na straně aplikace.
+3. [Vytvořit testovacího uživatele Azure AD](#create-an-azure-ad-test-user) k otestování služby Azure AD jednotné přihlašování s Britta Simon.
+4. [Přiřadit uživatele Azure AD](#assign-the-azure-ad-test-user) umožňující Britta Simon používat Azure AD jednotného přihlašování.
+5. [Vytvoření zkušebního uživatele Signagelive](#create-a-signagelive-test-user) mít protějšek Britta Simon Signagelive, který je propojený s Azure AD zastoupení uživatele.
+6. [Otestovat jednotné přihlašování](#test-single-sign-on) k ověření, že konfigurace funguje.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurace služby Azure AD jednotného přihlašování
 
@@ -93,40 +94,40 @@ Ke konfiguraci Azure AD jednotné přihlašování s Signagelive, proveďte nás
 
     ![Nakonfigurovat jednotné přihlašování – odkaz](common/select-sso.png)
 
-2. Na **vybrat jedinou metodu přihlašování** dialogového okna, vyberte **SAML/WS-Fed** chcete povolit jednotné přihlašování.
+2. V **vybrat jedinou metodu přihlašování** dialogovém okně vyberte **SAML** povolit jednotné přihlašování.
 
     ![Jednotné přihlašování režim výběru](common/select-saml-option.png)
 
-3. Na **nastavte si jednotné přihlašování pomocí SAML** klikněte na **upravit** ikony otevřete **základní konfiguraci SAML** dialogového okna.
+3. Na **nastavit jednotné přihlašování pomocí SAML** stránce **upravit** otevřít **základní konfiguraci SAML** dialogové okno.
 
     ![Upravit konfiguraci základní SAML](common/edit-urls.png)
 
-4. Na **základní konfiguraci SAML** části, proveďte následující kroky:
+4. V **základní konfiguraci SAML** části, proveďte následující kroky:
 
     ![Signagelive domény a adresy URL jednotného přihlašování – informace](common/sp-signonurl.png)
 
-    V **přihlašovací adresa URL** textové pole, zadejte adresu URL, pomocí následujícího vzorce:  `https://login.signagelive.com/sso/<ORGANIZATIONALUNITNAME>`
+    V **přihlašovací adresa URL** zadejte adresu URL, která používá následující vzorec:  `https://login.signagelive.com/sso/<ORGANIZATIONALUNITNAME>`
 
     > [!NOTE]
-    > Hodnota není skutečný. Aktualizujte příslušnou hodnotu skutečné přihlašovací adresa URL. Kontakt [tým podpory Signagelive klienta](mailto:support@signagelive.com) má být získána hodnota. Můžete také odkazovat na tyto vzory se dají ukazuje **základní konfiguraci SAML** části webu Azure Portal.
+    > Hodnota není skutečný. Aktualizujte příslušnou hodnotu skutečné přihlašovací adresa URL. K získání hodnoty, obraťte se [tým podpory Signagelive klienta](mailto:support@signagelive.com) . Můžete také odkazovat na vzorce, které jsou uvedeny v **základní konfiguraci SAML** části webu Azure Portal.
 
-5. Na **nastavte si jednotné přihlašování pomocí SAML** stránku, **podpisový certifikát SAML** klikněte na tlačítko **Stáhnout** ke stažení **certifikát (Raw)** z se zadanými možnostmi podle vašich požadavků a uložit je ve vašem počítači.
+5. Na **nastavte si jednotné přihlašování pomocí SAML** stránku, **podpisový certifikát SAML** vyberte **Stáhnout** ke stažení **certifikát (Raw)** z se zadanými možnostmi podle vašich požadavků. Pak ho uložte na vašem počítači.
 
     ![Odkaz ke stažení certifikátu](common/certificateraw.png)
 
-6. Na **nastavení Signagelive** tématu, zkopírujte příslušné adresy URL podle vašich požadavků.
+6. V **nastavení Signagelive** tématu, zkopírujte adres(y) URL, které potřebujete.
 
     ![Zkopírování adresy URL konfigurace](common/copy-configuration-urls.png)
 
     a. Přihlašovací adresa URL
 
-    b. Identifikátor služby Azure Ad
+    b. Identifikátor Azure AD
 
     c. Adresa URL – odhlášení
 
 ### <a name="configure-signagelive-single-sign-on"></a>Konfigurace Signagelive jednotné přihlašování
 
-Ke konfiguraci jednotného přihlašování na **Signagelive** straně, je nutné odeslat na stažený **certifikát (Raw)** a vhodné zkopírovaný adresy URL z webu Azure portal [tým podpory Signagelive](mailto:support@signagelive.com). Nastavují tohoto nastavení můžete mít správně nastavené na obou stranách připojení SAML SSO.
+Konfigurace jednotného přihlašování na straně Signagelive, odeslat na stažený **certifikát (Raw)** a zkopírovat z portálu Azure portal do adresy URL [tým podpory Signagelive](mailto:support@signagelive.com). Zajišťují, že je správně nastaveno připojení SAML SSO na obou stranách.
 
 ### <a name="create-an-azure-ad-test-user"></a>Vytvořit testovacího uživatele Azure AD 
 
@@ -140,18 +141,17 @@ Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal
 
     ![Tlačítko Nový uživatel](common/new-user.png)
 
-3. Ve vlastnosti uživatele proveďte následující kroky.
+3. V **uživatele** dialogové okno pole, proveďte následující kroky.
 
     ![Dialogové okno uživatele](common/user-properties.png)
 
     a. V **název** zadejte **BrittaSimon**.
   
-    b. V **uživatelské jméno** typ pole **brittasimon\@yourcompanydomain.extension**  
-    Například BrittaSimon@contoso.com.
+    b. V **uživatelské jméno** zadejte "brittasimon@yourcompanydomain.extension". Například v takovém případě můžete například zadat "BrittaSimon@contoso.com".
 
-    c. Vyberte **zobrazit heslo** zaškrtněte políčko a zapište si hodnotu, která se zobrazí v poli heslo.
+    c. Vyberte **zobrazit heslo** zaškrtněte políčko a potom si poznamenejte hodnotu, která se zobrazí v poli heslo.
 
-    d. Klikněte na možnost **Vytvořit**.
+    d. Vyberte **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřadit uživatele Azure AD
 
@@ -169,29 +169,29 @@ V této části je povolit Britta Simon k udělení přístupu k Signagelive pou
 
     ![Odkaz "Uživatele a skupiny"](common/users-groups-blade.png)
 
-4. Klikněte na tlačítko **přidat uživatele** tlačítko a pak vyberte **uživatelů a skupin** v **přidat přiřazení** dialogového okna.
+4. Vyberte **přidat uživatele** tlačítko. Potom v **přidat přiřazení** dialogu **uživatelů a skupin**.
 
     ![Podokno Přidat přiřazení](common/add-assign-user.png)
 
-5. V **uživatelů a skupin** dialogové okno Vybrat **Britta Simon** v seznamu uživatelů, klikněte **vyberte** tlačítko v dolní části obrazovky.
+5. V **uživatelů a skupin** v dialogu **uživatelé** seznamu vyberte **Britta Simon**. Klikněte **vyberte** tlačítko v dolní části obrazovky.
 
-6. Pokud očekáváte libovolnou hodnotu role v kontrolní výraz SAML a potom v **vybrat roli** dialogové okno vybrat vhodnou roli pro uživatele ze seznamu, klikněte **vyberte** tlačítko v dolní části obrazovky.
+6. Pokud očekáváte hodnotu role v kontrolní výraz SAML, pak v **vybrat roli** dialogového okna, vyberte vhodnou roli pro uživatele ze seznamu. Klikněte **vyberte** tlačítko v dolní části obrazovky.
 
-7. V **přidat přiřazení** dialogového okna, klikněte na tlačítko **přiřadit** tlačítko.
+7. V **přidat přiřazení** dialogové okno, vyberte **přiřadit** tlačítko.
 
-### <a name="create-signagelive-test-user"></a>Vytvoření Signagelive testovacího uživatele
+### <a name="create-a-signagelive-test-user"></a>Vytvoření zkušebního uživatele Signagelive
 
-V této části vytvoříte uživatele v Signagelive jako Britta Simon. Práce s [tým podpory Signagelive](mailto:support@signagelive.com) přidat uživatele na platformě Signagelive. Uživatelé musí vytvořit a aktivovat, než použití jednotného přihlašování.
+V této části vytvoříte uživatele v Signagelive jako Britta Simon. Práce s [tým podpory Signagelive](mailto:support@signagelive.com) přidat uživatele na platformě Signagelive. Musíte vytvořit a aktivovat uživatelé používat jednotného přihlašování.
 
 ### <a name="test-single-sign-on"></a>Test jednotného přihlašování 
 
-V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
+V této části Testování služby Azure AD jednotné přihlašování – konfigurace s použitím portálu MyApps.
 
-Po kliknutí na dlaždici Signagelive na přístupovém panelu, můžete by měl být automaticky přihlášeni k Signagelive, u kterého nastavíte jednotné přihlašování. Další informace o přístupovém panelu, naleznete v tématu [Úvod k přístupovému panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Když vyberete **Signagelive** dlaždici na portálu MyApps vám by měl být automaticky přihlášeni. Další informace o portálu MyApps najdete v tématu [novinky na portálu MyApps?](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Další prostředky
+## <a name="additional-resources"></a>Další materiály
 
-- [Seznam kurzů o integraci aplikací SaaS pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [ Seznam kurzů o integraci aplikací SaaS pomocí Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 

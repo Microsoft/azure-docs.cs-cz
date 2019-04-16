@@ -5,21 +5,21 @@ services: azure-blockchain
 keywords: ''
 author: PatAltimore
 ms.author: patricka
-ms.date: 01/08/2019
+ms.date: 04/15/2019
 ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: brendal
 manager: femila
-ms.openlocfilehash: b45cd84322279d7f81cc3f047f72a75a6d898bc6
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 4d29d8e86a30f105c4aa50ec9615f8165fa238d3
+ms.sourcegitcommit: 48a41b4b0bb89a8579fc35aa805cea22e2b9922c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57452687"
+ms.lasthandoff: 04/15/2019
+ms.locfileid: "59578743"
 ---
 # <a name="azure-blockchain-workbench-configuration-reference"></a>Referenční informace pro konfiguraci Azure Blockchain Workbench
 
- Aplikace Azure Blockchain Workbench jsou více stran pracovní postupy definované konfigurace metadat a inteligentní kontraktu kódu. Konfigurace metadat definuje vysoké úrovně pracovních postupů a interakce model blockchainové aplikace. Chytrých kontraktů definovat obchodní logiku blockchainové aplikace. Aplikace Workbench použije k vygenerování uživatelského prostředí aplikace blockchain konfigurace a inteligentní kontraktu kódu.
+Aplikace Azure Blockchain Workbench jsou více stran pracovní postupy definované konfigurace metadat a inteligentní kontraktu kódu. Konfigurace metadat definuje vysoké úrovně pracovních postupů a interakce model blockchainové aplikace. Chytrých kontraktů definovat obchodní logiku blockchainové aplikace. Aplikace Workbench použije k vygenerování uživatelského prostředí aplikace blockchain konfigurace a inteligentní kontraktu kódu.
 
 Konfigurace metadat určuje pro každou aplikaci blockchain následující informace:
 

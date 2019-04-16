@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 02/20/2018
 ms.author: abshamsft
-ms.openlocfilehash: 9f881071559eaba0f6b1c86e8827993d52470baf
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.openlocfilehash: 0c4b8d1646ba851acc6a0e2d9a3b920634098846
+ms.sourcegitcommit: e89b9a75e3710559a9d2c705801c306c4e3de16c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/11/2019
-ms.locfileid: "59501960"
+ms.lasthandoff: 04/15/2019
+ms.locfileid: "59571167"
 ---
 # <a name="service-connectivity-monitor"></a>Monitorování připojení služby
 
@@ -68,7 +68,7 @@ Začněte vytvářet testy monitorování síťové připojení ke koncovým bod
 5. V **cílové**, zadejte adresu URL nebo plně kvalifikovaný název domény nebo IP adresu, ke které chcete monitorovat síťové připojení.
 6. V **číslo portu**, zadejte číslo portu, cílové služby. 
 7. V **frekvence testování**, zadejte hodnotu pro jak často chcete, aby test spuštěn. 
-8. Vyberte uzly, ze kterých chcete monitorovat síťové připojení ke službě. 
+8. Vyberte uzly, ze kterých chcete monitorovat síťové připojení ke službě. Ujistěte se, že počet agentů, které jsou přidány za test je míň než 150. Maximální 150 koncové body nebo agenty můžete otestovat všemi agenty.
 
     >[!NOTE]
     > Pro uzly Windows na serveru používá funkce založené na TCP požadavky k měření sítě. Pro uzly Windows na základě klienta používá funkce ICMP podle požadavků k měření sítě. V některých případech je cílová aplikace blokuje příchozí žádosti na základě protokolu ICMP, při uzly jsou Windows, na základě klienta. Řešení není schopen provést měření sítě. Doporučujeme používat Windows serverových uzlů v takových případech. 

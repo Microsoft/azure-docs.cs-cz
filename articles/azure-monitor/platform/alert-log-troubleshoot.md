@@ -1,6 +1,6 @@
 ---
 title: Řešení potíží s upozorněními protokolu ve službě Azure Monitor | Dokumentace Microsoftu
-description: Běžné problémy a chyby a řešení pro protokolu upozornění pravidla v Azure.
+description: Běžné problémy a chyby a řešení pro pravidla upozornění protokolů v Azure.
 author: msvijayn
 services: azure-monitor
 ms.service: azure-monitor
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 10/29/2018
 ms.author: vinagara
 ms.subservice: alerts
-ms.openlocfilehash: aa42e8975432de8ca489cf9b1b6dd509c9fb01c1
-ms.sourcegitcommit: 045406e0aa1beb7537c12c0ea1fbf736062708e8
+ms.openlocfilehash: 0c7189f1d43a114532b30b0c1aabe6f7cd4402d8
+ms.sourcegitcommit: 48a41b4b0bb89a8579fc35aa805cea22e2b9922c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/04/2019
-ms.locfileid: "59005307"
+ms.lasthandoff: 04/15/2019
+ms.locfileid: "59578709"
 ---
 # <a name="troubleshooting-log-alerts-in-azure-monitor"></a>Řešení potíží s upozorněními protokolu ve službě Azure Monitor  
 
@@ -25,7 +25,6 @@ Termín **upozornění protokolů** popisuje výstrahy, fire založené na dotaz
 
 > [!NOTE]
 > Tento článek nebere v úvahu případech, kdy se zobrazí na webu Azure portal a výstraha spuštěná pravidla a provádí přidružené skupiny akcí oznámení. Pro tyto případy, najdete informace v článku na [skupiny akcí](../platform/action-groups.md).
-
 
 ## <a name="log-alert-didnt-fire"></a>Neměli aktivovat upozornění protokolu
 
@@ -92,9 +91,94 @@ Například, pokud je nakonfigurovaný pravidel upozornění protokolů aktivova
 
 ### <a name="alert-query-output-misunderstood"></a>Dotaz na upozornění výstupu nesprávně pochopeny
 
-Poskytuje logiku pro výstrahy protokolu v dotazu analytics. Analytický dotaz může používat různé velké objemy dat a matematických funkcí.  Výstrahy služby provede dotaz na zadaných s daty pro zadané časové období. Výstrahy služby díky malých změn zadaný dotaz podle typu výstrahy zvolili. To lze zobrazit v části "Dotazu má být proveden" *konfigurovat logiku signálů* obrazovky, jak je znázorněno níže: ![Provedení dotazu](media/alert-log-troubleshoot/LogAlertPreview.png)
+Poskytuje logiku pro výstrahy protokolu v dotazu analytics. Analytický dotaz může používat různé velké objemy dat a matematických funkcí.  Výstrahy služby provede dotaz na zadaných s daty pro zadané časové období. Výstrahy služby díky malých změn zadaný dotaz podle typu výstrahy zvolili. Tato změna lze zobrazit v části "Dotazu má být proveden" *konfigurovat logiku signálů* obrazovky, jak je znázorněno níže: ![Provedení dotazu](media/alert-log-troubleshoot/LogAlertPreview.png)
 
 Jak ukazuje příklad **dotaz, který se spustí** pole je, cokoli běží služba upozornění protokolu. Můžete spustit stanovených dotazu, stejně jako timespan prostřednictvím [portál Analytics](../log-query/portals.md) nebo [rozhraní API pro analýzu](https://docs.microsoft.com/rest/api/loganalytics/) Pokud chcete pochopit, co výstraha dotazu výstup, může být před samotným vytvořením výstrahy.
+
+## <a name="log-alert-was-disabled"></a>Upozornění protokolu byla zakázána.
+
+Tady je několik důvodů, kvůli které [pravidel upozornění protokolů ve službě Azure Monitor](../platform/alerts-log.md) zakázaný službou Azure Monitor.
+
+### <a name="resource-on-which-alert-was-created-no-longer-exists"></a>Prostředek, na kterém byla výstraha vytvořena už existuje
+
+Pravidla upozornění protokolů vytvořená ve službě Azure Monitor cílit na konkrétní prostředek stejně jako pracovnímu prostoru Azure Log Analytics, Azure Application Insights aplikaci a prostředků Azure. A služba upozornění protokolu pak spustí zadaný v pravidle pro zadanou cílovou dotaz analytics. Ale po vytvoření pravidla, často uživatelé přejít odstranění z Azure nebo přesouvat v Azure – cíl pravidla upozornění. Jak již není platný cíl pravidla upozornění protokolů, pravidlo se nezdaří.
+
+V takových případech bude Azure Monitor zakažte upozornění protokolu a ujistěte se, že zákazníci nic neúčtuje zbytečně, pokud pravidlo samotné nebudou moci být prováděny průběžně pořádnou dobu jako týdně. Uživatelé najdou na přesný čas, kdy zakázal pravidel upozornění protokolů Azure Monitor prostřednictvím [protokolu aktivit Azure](../../azure-resource-manager/resource-group-audit.md). V protokolu aktivit Azure při zakázal pravidel upozornění protokolů Azure, přidání události v protokolu aktivit Azure.
+
+Ukázkové události v protokolu aktivit Azure pro pravidlo výstrahy zakazuje z důvodu nezdařeného neustálého; je uveden níže.
+
+```json
+{
+    "caller": "Microsoft.Insights/ScheduledQueryRules",
+    "channels": "Operation",
+    "claims": {
+        "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/spn": "Microsoft.Insights/ScheduledQueryRules"
+    },
+    "correlationId": "abcdefg-4d12-1234-4256-21233554aff",
+    "description": "Alert: test-bad-alerts is disabled by the System due to : Alert has been failing consistently with the same exception for the past week",
+    "eventDataId": "f123e07-bf45-1234-4565-123a123455b",
+    "eventName": {
+        "value": "",
+        "localizedValue": ""
+    },
+    "category": {
+        "value": "Administrative",
+        "localizedValue": "Administrative"
+    },
+    "eventTimestamp": "2019-03-22T04:18:22.8569543Z",
+    "id": "/SUBSCRIPTIONS/<subscriptionId>/RESOURCEGROUPS/<ResourceGroup>/PROVIDERS/MICROSOFT.INSIGHTS/SCHEDULEDQUERYRULES/TEST-BAD-ALERTS",
+    "level": "Informational",
+    "operationId": "",
+    "operationName": {
+        "value": "Microsoft.Insights/ScheduledQueryRules/disable/action",
+        "localizedValue": "Microsoft.Insights/ScheduledQueryRules/disable/action"
+    },
+    "resourceGroupName": "<Resource Group>",
+    "resourceProviderName": {
+        "value": "MICROSOFT.INSIGHTS",
+        "localizedValue": "Microsoft Insights"
+    },
+    "resourceType": {
+        "value": "MICROSOFT.INSIGHTS/scheduledqueryrules",
+        "localizedValue": "MICROSOFT.INSIGHTS/scheduledqueryrules"
+    },
+    "resourceId": "/SUBSCRIPTIONS/<subscriptionId>/RESOURCEGROUPS/<ResourceGroup>/PROVIDERS/MICROSOFT.INSIGHTS/SCHEDULEDQUERYRULES/TEST-BAD-ALERTS",
+    "status": {
+        "value": "Succeeded",
+        "localizedValue": "Succeeded"
+    },
+    "subStatus": {
+        "value": "",
+        "localizedValue": ""
+    },
+    "submissionTimestamp": "2019-03-22T04:18:22.8569543Z",
+    "subscriptionId": "<SubscriptionId>",
+    "properties": {
+        "resourceId": "/SUBSCRIPTIONS/<subscriptionId>/RESOURCEGROUPS/<ResourceGroup>/PROVIDERS/MICROSOFT.INSIGHTS/SCHEDULEDQUERYRULES/TEST-BAD-ALERTS",
+        "subscriptionId": "<SubscriptionId>",
+        "resourceGroup": "<ResourceGroup>",
+        "eventDataId": "12e12345-12dd-1234-8e3e-12345b7a1234",
+        "eventTimeStamp": "03/22/2019 04:18:22",
+        "issueStartTime": "03/22/2019 04:18:22",
+        "operationName": "Microsoft.Insights/ScheduledQueryRules/disable/action",
+        "status": "Succeeded",
+        "reason": "Alert has been failing consistently with the same exception for the past week"
+    },
+    "relatedEvents": []
+}
+```
+
+### <a name="query-used-in-log-alert-is-not-valid"></a>Dotaz použitý v protokolu upozornění není platný
+
+Každé pravidlo upozornění protokolu vytvoří ve službě Azure Monitor jako součást konfigurace musíte zadat analytický dotaz pravidelně provádět pomocí výstrah služby. Při dotazu analytics může mít správnou syntaxi v době vytvoření pravidla nebo aktualizace. Nějakou dobu po určitou dobu, zadejte dotaz do protokolu pravidlo výstrahy můžete vyvíjet problémů a způsobit tak provedení pravidlo začne docházet k chybám. Některé běžné důvody, proč dotazu analytics podle pravidel upozornění protokolů můžete vyvíjet chyby jsou:
+
+- Dotaz je zapsán do [spouštět napříč několika prostředcích](../log-query/cross-workspace-query.md) a nejméně jeden z prostředků se určí, nyní neexistuje.
+- Nepřichází žádný tok dat pro analytické platformy, které [dochází k chybě provádění dotazu](https://dev.loganalytics.io/documentation/Using-the-API/Errors) jako nejsou žádná data pro zadaný dotaz.
+- Změny v [dotazovací jazyk](https://docs.microsoft.com/azure/kusto/query/) došlo v které příkazy a funkce mají revidované formátu. Proto dříve zadaný dotaz v pravidlo upozornění už nejsou platné.
+
+Uživatel se upozornění na možná toto chování nejprve prostřednictvím [Azure Advisoru](../../advisor/advisor-overview.md). Doporučení byly přidány pro konkrétní pravidlo upozornění v Azure Advisoru v kategorii vysokou dostupnost s střední dopad a popis, jak je "Opravit vašich pravidel upozornění protokolů k zajištění monitorování". Pokud po sedmi dnech poskytuje doporučení ohledně Azure Advisor není napravit výstraha dotazu v pravidle výstrahy zadaný protokol. Azure Monitor se potom zakázat upozornění protokolu a ujistěte se, že zákazníci nic neúčtuje zbytečně, pokud pravidlo samotné nebudou moci být prováděny průběžně pořádnou dobu jako týdně.
+
+Uživatelé najdou na přesný čas, kdy zakázal pravidel upozornění protokolů Azure Monitor prostřednictvím [protokolu aktivit Azure](../../azure-resource-manager/resource-group-audit.md). V protokolu aktivit Azure Pokud je zakázán pravidel upozornění protokolů Azure – přidání události v protokolu aktivit Azure.
 
 ## <a name="next-steps"></a>Další postup
 

@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 06/26/2018
 ms.author: mihauss
 ms.subservice: blobs
-ms.openlocfilehash: 1166f98dcd39362ef5e28be12ff9e2f561ab5b1f
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 90ddb58f3499180e17df559a98ac8a46b53fb824
+ms.sourcegitcommit: 48a41b4b0bb89a8579fc35aa805cea22e2b9922c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55238207"
+ms.lasthandoff: 04/15/2019
+ms.locfileid: "59579008"
 ---
 # <a name="use-azure-cdn-to-access-blobs-with-custom-domains-over-https"></a>Přístup k objektům BLOB s použitím vlastních domén přes protokol HTTPS pomocí Azure CDN
 
@@ -67,4 +67,4 @@ Na [stránce s cenami Azure CDN](https://azure.microsoft.com/pricing/details/cdn
 ## <a name="next-steps"></a>Další postup
 
 * [Konfigurace vlastního názvu domény pro koncový bod služby Blob storage](storage-custom-domain-name.md)
-* [Hostování statického webu ve službě Azure Storage (preview)](storage-blob-static-website.md)
+* [Hostování statického webu ve službě Azure Storage](storage-blob-static-website.md)

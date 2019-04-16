@@ -4,21 +4,19 @@ description: Tento článek uvádí specifikace zdrojů dat aktuálně podporova
 services: data-catalog
 author: markingmyname
 ms.author: maghan
-ms.assetid: fd4345ca-2ed8-4c5e-9c4b-f954be2fc9f9
 ms.service: data-catalog
 ms.topic: conceptual
-ms.date: 01/18/2018
-ms.openlocfilehash: 56fa449bd665457ab1b98b67bb42ec52e0742c5f
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.date: 04/15/2019
+ms.openlocfilehash: d859fc92c4adbcd224d49601678804445a313ef7
+ms.sourcegitcommit: 48a41b4b0bb89a8579fc35aa805cea22e2b9922c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47410183"
+ms.lasthandoff: 04/15/2019
+ms.locfileid: "59579389"
 ---
 # <a name="supported-data-sources-in-azure-data-catalog"></a>Podporované zdroje dat ve službě Azure Data Catalog
 
 Metadata můžete publikovat pomocí veřejné rozhraní API nebo kliknutím-jednou registrační nástroj nebo informace o ručním zadáním přímo do služby Azure Data Catalog webového portálu. V následující tabulce najdete souhrn všech zdrojů dat, které jsou podporovány v katalogu ještě dnes a možnosti publikování pro každou. Externí data nástroje, které každý zdroj dat můžete spustit z našich zkušeností portál "open in" jsou také uvedeny. Druhá tabulka obsahuje další technické specifikace každé připojení vlastnosti zdroje dat.
-
 
 ## <a name="list-of-supported-data-sources"></a>Seznam podporovaných zdrojů dat
 
@@ -32,7 +30,7 @@ Metadata můžete publikovat pomocí veřejné rozhraní API nebo kliknutím-jed
        <td><b>Poznámky</b></td>
     </tr>
     <tr>
-      <td>Adresář Azure Data Lake Store</td>
+      <td>Adresář Azure Data Lake Store (jenom 1. generace)</td>
       <td>✓</td>
       <td>✓</td>
       <td>✓</td>
@@ -40,7 +38,7 @@ Metadata můžete publikovat pomocí veřejné rozhraní API nebo kliknutím-jed
       <td></td>
     </tr>
     <tr>
-      <td>Soubor Azure Data Lake Store</td>
+      <td>Azure Data Lake Store souboru (jen 1. generace)</td>
       <td>✓</td>
       <td>✓</td>
       <td>✓</td>
@@ -332,7 +330,7 @@ Metadata můžete publikovat pomocí veřejné rozhraní API nebo kliknutím-jed
       <td></td>
     </tr>
     <tr>
-      <td>Zobrazení PostgreSQL</td>
+      <td>PostgreSQL view</td>
       <td>✓</td>
       <td>✓</td>
       <td>✓</td>

@@ -5,16 +5,16 @@ services: automation
 ms.service: automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 06/06/2018
+ms.date: 04/11/2019
 ms.topic: article
 manager: carmonm
 ms.custom: mvc
-ms.openlocfilehash: 3cffd09a54b09a425f3b7f3519b4ceb7a04a6d08
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: df59342bebae3ac0f6e80e5b58f429fedf3c3336
+ms.sourcegitcommit: 48a41b4b0bb89a8579fc35aa805cea22e2b9922c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57855346"
+ms.lasthandoff: 04/15/2019
+ms.locfileid: "59578488"
 ---
 # <a name="enable-update-management-change-tracking-and-inventory-solutions-on-multiple-vms"></a>Povolení správy aktualizací, Change Tracking a inventář řešení na několika virtuálních počítačích
 
@@ -71,7 +71,7 @@ V následující tabulce jsou uvedeny podporované mapování:
 |EastUS<sup>1</sup>|EastUS2|
 |JapanEast|JapanEast|
 |SoutheastAsia|SoutheastAsia|
-|WestCentralUS|WestCentralUS|
+|WestCentralUS<sup>2</sup>|WestCentralUS<sup>2</sup>|
 |WestEurope|WestEurope|
 |UKSouth|UKSouth|
 |USGovVirginia|USGovVirginia|
@@ -79,8 +79,7 @@ V následující tabulce jsou uvedeny podporované mapování:
 
 <sup>1</sup> EastUS2EUAP a EastUS mapování pracovních prostorů Log Analytics pro účty Automation nejsou přesné mapování oblastmi, ale je správné mapování.
 
-> [!NOTE]
-> Z důvodu poptávky nemusí být oblasti k dispozici při vytváření pracovního prostoru účtu Automation a Log Analytics.  Pokud je to tento případ, ujistěte se, že používáte v předchozí tabulce, která může vytvářet prostředky v oblasti.
+<sup>2</sup> z důvodu omezení kapacity oblast není k dispozici při vytváření nových prostředků. To zahrnuje pracovní prostory účty Automation a Log Analytics. Dříve existující propojených prostředků v oblasti však musí i nadále fungovat.
 
 Zrušit zaškrtnutí políčka vedle libovolného virtuálního počítače, které nechcete povolit. Virtuálních počítačů, které není možné je už vybraná.
 

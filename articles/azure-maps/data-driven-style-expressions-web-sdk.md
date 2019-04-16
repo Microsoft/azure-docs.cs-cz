@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendleton
 ms.custom: codepen
-ms.openlocfilehash: 0f63ed7d00f1ae3e30cdac76606559a4e9f49f04
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: 3b234ca37783fe557baf307f198de9636b06a382
+ms.sourcegitcommit: 48a41b4b0bb89a8579fc35aa805cea22e2b9922c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59288093"
+ms.lasthandoff: 04/15/2019
+ms.locfileid: "59579491"
 ---
 # <a name="data-driven-style-expressions-web-sdk"></a>Výrazy s daty styl (Sada Web SDK)
 
@@ -43,7 +43,7 @@ Sada SDK webové mapy Azure podporuje různé typy výrazů, které lze použít
 
 | Typ výrazu | Popis |
 |---------------------|-------------|
-| [Logické výrazy](#boolean-expressions) | Logické výrazy poskytují sadu logické operátory výrazů za vaše rozhodnutí vyzkoušet logická porovnání. |
+| [Výrazy logických hodnot](#boolean-expressions) | Logické výrazy poskytují sadu logické operátory výrazů za vaše rozhodnutí vyzkoušet logická porovnání. |
 | [Barva výrazy](#color-expressions) | Barva výrazy usnadňují vytváření a manipulaci s hodnot barev. |
 | [Podmíněné výrazy](#conditional-expressions) | Podmíněné výrazy poskytují logiku operací, které jsou podobné příkazy if. |
 | [Výrazy dat](#data-expressions) | Poskytuje přístup k datům vlastnost ve funkci. |
@@ -207,7 +207,7 @@ Definuje strukturu následujícím pseudokódu `case` výrazu.
 ]
 ```
 
-**Příklad:**
+**Příklad**
 
 Následující příklad provede různých logických podmínkách, dokud nenajde ten, který se vyhodnotí jako `true`a potom vrátí, které přidružené hodnoty. Pokud se žádná logická podmínka vyhodnotí jako `true`, vrátí se hodnoty fallback. 
 
@@ -296,7 +296,7 @@ var layer = new atlas.layer.BubbleLayer(datasource, null, {
 
 A `coalesce` výraz provede sada výrazů, dokud se získá první nenulovou hodnotu a vrátí tuto hodnotu. 
 
-Definuje strukturu následujícím pseudokódu ` coalesce` výrazu. 
+Definuje strukturu následujícím pseudokódu `coalesce` výrazu. 
 
 ```javascript
 [
@@ -307,7 +307,7 @@ Definuje strukturu následujícím pseudokódu ` coalesce` výrazu.
 ]
 ```
 
-**Příklad:**
+**Příklad**
 
 Následující příklad používá `coalesce` výraz k nastavení `textField` možnost symbol vrstvy. Pokud `title` chybí vlastnost z funkce nebo nastavte na `null`, výraz zkusí pak hledá `subtitle` vlastnost, pokud jeho chybí nebo `null`, se pak přejde zpět na prázdný řetězec. 
 
@@ -375,7 +375,7 @@ Barva výrazy usnadňují vytváření a manipulaci s hodnot barev.
 | `['rgba', number, number, number, number]` | color | Vytvoří hodnotu barvy z *red*, *zelené*, *modré* součásti, které musí být v rozsahu mezi `0` a `255`a hodnota alfa v rozsahu `0` a `1`. Pokud jakékoliv součásti je mimo rozsah, výraz se o chybu. |
 | `['to-rgba']` | \[číslo, číslo, číslo, číslo\] | Vrací čtyřech prvcích pole obsahující vstupní barva *red*, *zelené*, *modré*, a *alfa* komponenty v tomto pořadí. |
 
-**Příklad:**
+**Příklad**
 
 Následující příklad vytvoří a hodnota barvy RGB, který má *red* hodnotu `255`, a *zelené* a *modré* hodnoty, které se počítají vynásobením `2.5` hodnotou `temperature` vlastnost. Jako změny teploty barva se změní na různých odstínů *red*.
 
@@ -403,7 +403,7 @@ var layer = new atlas.layer.BubbleLayer(datasource, null, {
 | `['downcase', string]` | string | Převede zadaný řetězec na malá písmena. |
 | `['upcase', string]` | string | Převede zadaný řetězec na velká písmena. |
 
-**Příklad:**
+**Příklad**
 
 Následující příklad převádí `temperature` vlastnosti bodu běží na procesorech do řetězce a zřetězí "° F" na konec.
 
@@ -461,7 +461,7 @@ Definuje strukturu následujícím pseudokódu `interpolate` výrazu.
 ]
 ```
 
-**Příklad:**
+**Příklad**
 
 V následujícím příkladu `linear interpolate` výraz k nastavení `color` na základě vlastností bublinu vrstvy `temperature` vlastnosti bodu funkce. Pokud `temperature` hodnota je menší než 60, "blue" bude vrácen, pokud mezi 60 a míň než 70, žlutá vrátí se, pokud mezi 70 a nižší než 80, "oranžové" bude vrácen, pokud se vrátí 80 nebo vyšší, "red".
 
@@ -510,7 +510,7 @@ Definuje strukturu následujícím pseudokódu `step` výrazu.
 
 Výrazy kroku vrátit hodnotu výstup stop těsně před vstupní hodnotu nebo první vstupní hodnotu, pokud vstup je menší než první stop. 
 
-**Příklad:**
+**Příklad**
 
 V následujícím příkladu `step` výraz k nastavení `color` na základě vlastností bublinu vrstvy `temperature` vlastnosti bodu funkce. Pokud `temperature` hodnota je menší než 60, "blue" bude vrácen, pokud mezi 60 a míň než 70, "žlutý" bude vrácen, pokud mezi 70 a nižší než 80, "oranžové" bude vrácen, pokud se vrátí 80 nebo vyšší, "red".
 
@@ -548,7 +548,7 @@ Výraz heat mapa hustota načte hodnotu hustota heat mapa pro každý pixel ve v
 > [!TIP]
 > Barvy v indexu 0 ve výrazu interpolace nebo výchozí barvu barvu krok definuje barvu, oblasti, kde není žádná data a je možné definovat barvu pozadí. Mnoho chtít nastavit tuto hodnotu a je transparentní nebo poloprůhledného black. 
 
-**Příklad:**
+**Příklad**
 
 Tento příklad používá výraz interpolace jakákoliv k vytvoření hladkého barva přechodu pro vykreslení heat mapa. 
 
@@ -592,7 +592,7 @@ Průběh výrazu řádku obnoví průběh přechodu řádkem čárovou vrstvu a 
 > [!NOTE]
 > `strokeGradient` Vyžaduje možnost čárovou vrstvu `lineMetrics` možnost nastavit na zdroj dat `true`.
 
-**Příklad:**
+**Příklad**
 
 V následujícím příkladu `['line-progress']` výraz použití barev přechodu stroke řádku.
 
@@ -640,7 +640,7 @@ Následujícím pseudokódu definuje strukturu výraz formátu textové pole.
 ]
 ```
 
-**Příklad:**
+**Příklad**
 
 Následující příklad formátuje text pole přidáním tučné písmo a škálování velikost písma `title` vlastnost funkce. V tomto příkladu přidá také `subtitle` vlastnost funkce na nový řádek s s horizontálně navyšovanou kapacitou dolů velikost písma.
 
@@ -697,7 +697,7 @@ Následujícím pseudokódu definuje strukturu výraz formátu textové pole.
 ]
 ```
 
-**Příklad:**
+**Příklad**
 
 V následujícím příkladu `number-format` výraz změnit způsob, jak `revenue` vlastnost funkce bod se vykreslí v `textField` možnost symbolu vrstvy tak, aby se zobrazila hodnota AMERICKÝ dolar.
 
@@ -725,7 +725,7 @@ Tato vrstva bude vykreslení funkci bodu, jak je znázorněno na následujícím
 
 A `zoom` výraz slouží k načtení aktuální úroveň přiblížení mapy v době vykreslování a je definován jako `['zoom']`. Tento výraz vrátí číslo v rozsahu úrovni rozsahu minimální a maximální Přiblížení mapy. Pomocí tohoto výrazu povoluje stylů dynamicky měnit úroveň přiblížení mapy při změně. `zoom` Výraz se dá použít jenom s `interpolate` a `step` výrazy.
 
-**Příklad:**
+**Příklad**
 
 Ve výchozím nastavení mají poloměry datových bodů ve vrstvě heat mapa vykreslena pevné pixel radius pro všechny úrovně přiblížení. Jak mapu postupně zvětšován, dohromady data agregace a vrstvě heat mapa vypadá jinak. A `zoom` výrazu je možné škálovat pomocí protokolu radius pro každou úroveň přiblížení tak, aby každý datový bod zahrnuje stejné fyzické oblasti na mapě. Díky tomu budou vrstvu heat mapy, podívejte se, statické a konzistentní vzhledem k aplikacím. Každá úroveň přiblížení mapy má dvakrát tolik pixelů vertikální i horizontální jako předchozí úroveň přiblížení. Škálování poloměr tak, aby ho zdvojnásobuje s každou úroveň přiblížení vytvoří heat mapu, která vypadá konzistentní vzhledem k aplikacím na všech úrovních zvětšení. Můžete to udělat pomocí `zoom` výrazem `base 2 exponential interpolation` výrazu, jak je znázorněno níže. 
 
@@ -756,7 +756,7 @@ Vazby proměnné výrazů uložit výsledky výpočtu v proměnné tak, aby jej 
 | \[<br/>&nbsp;&nbsp;&nbsp;&nbsp;"let"<br/>&nbsp;&nbsp;&nbsp;&nbsp;name1: řetězec,<br/>&nbsp;&nbsp;&nbsp;&nbsp;Hodnota1: žádné,<br/>&nbsp;&nbsp;&nbsp;&nbsp;Name2: řetězec,<br/>&nbsp;&nbsp;&nbsp;&nbsp;hodnota2: žádné,<br/>&nbsp;&nbsp;&nbsp;&nbsp;…<br/>&nbsp;&nbsp;&nbsp;&nbsp;childExpression<br/>\] | | Uloží jednu nebo více hodnot jako proměnné pro použití `var` výrazu v podřízených výraz, který vrátí výsledek. |
 | `['var', name: string]` | libovolné | Odkazuje na proměnnou, která byla vytvořena pomocí `let` výrazu. |
 
-**Příklad:**
+**Příklad**
 
 Tento příklad používá výraz, který vypočítá výnosy vzhledem k poměr teplotu a pak používá `case` výraz k vyhodnocení různých logických operací na této hodnotě. `let` Výrazu se používá k ukládání výnosy vzhledem k teploty poměr tak, že je potřeba vypočítat jednou a `var` výraz odkazuje na tuto proměnnou tak často, podle potřeby, aniž by bylo nutné přepočítat ho.
 
@@ -789,16 +789,16 @@ var layer = new atlas.layer.BubbleLayer(datasource, null, {
 Naleznete v následujících článcích pro další ukázky kódu, které implementují výrazy:
 
 > [!div class="nextstepaction"] 
-> [Přidání vrstvy symbolů](map-add-pin.md)
+> [Přidat vrstvu symbol](map-add-pin.md)
 
 > [!div class="nextstepaction"] 
-> [Přidání vrstvy bublin](map-add-bubble-layer.md)
+> [Přidat vrstvu bublinový](map-add-bubble-layer.md)
 
 > [!div class="nextstepaction"] 
-> [Přidání tvarů](map-add-shape.md)
+> [Přidat tvary](map-add-shape.md)
 
 > [!div class="nextstepaction"] 
-> [Přidání vrstvy heat mapy](map-add-heat-map-layer.md)
+> [Přidat vrstvu heat mapy](map-add-heat-map-layer.md)
 
 Další informace o možnostech vrstvy, které podporují výrazy:
 

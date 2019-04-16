@@ -16,12 +16,12 @@ ms.date: 04/11/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 44b11f49d788dd3c16c0cb8dd47cc59848b607ed
-ms.sourcegitcommit: f24b62e352e0512dfa2897362021b42e0cb9549d
+ms.openlocfilehash: 4b83f5e6735f5b2554af2f5e6c74a7c9095d23fd
+ms.sourcegitcommit: 48a41b4b0bb89a8579fc35aa805cea22e2b9922c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/11/2019
-ms.locfileid: "59505394"
+ms.lasthandoff: 04/15/2019
+ms.locfileid: "59579474"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-an-aspnet-web-app"></a>Rychlý start: Přidání přihlašování s Microsoftem do webové aplikace ASP.NET
 
@@ -54,21 +54,21 @@ V tomto rychlém startu se dozvíte, jak může webová aplikace ASP.NET přihla
 > 1. Vyberte **registrace nové**.
 > 1. Když se zobrazí stránka **Registrace aplikace**, zadejte registrační informace vaší aplikace:
 >      - V části **Název** zadejte smysluplný název aplikace, který se zobrazí uživatelům aplikace, například `ASPNET-Quickstart`.
->      - V části **Adresa URL odpovědi** přidejte `https://localhost:44368/` a klikněte na **Registrovat**.
+>      - Přidat `https://localhost:44368/` v **identifikátor URI pro přesměrování**a klikněte na tlačítko **zaregistrovat**.
 Vyberte nabídku **Ověřování**, v části **Implicitní udělení oprávnění** nastavte **Tokeny ID** a pak vyberte **Uložit**.
 
 > [!div class="sxs-lookup" renderon="portal"]
 > #### <a name="step-1-configure-your-application-in-azure-portal"></a>Krok 1: Konfigurace aplikace na webu Azure portal
 > Aby mohl vzorový kód pro rychlý start fungovat, musíte přidat adresu URL odpovědi ve formě `https://localhost:44368/`.
 > > [!div renderon="portal" id="makechanges" class="nextstepaction"]
-> > [Provedení této změny pro mě]()
+> > [Udělat změnu za mě]()
 >
 > > [!div id="appconfigured" class="alert alert-info"]
-> > ![Už nakonfigurovali](media/quickstart-v2-aspnet-webapp/green-check.png) vaše aplikace je nakonfigurovaná pomocí tohoto atributu
+> > ![Už nakonfigurováno](media/quickstart-v2-aspnet-webapp/green-check.png) Vaše aplikace už má tento atribut nakonfigurovaný.
 
 #### <a name="step-2-download-your-project"></a>Krok 2: Stáhněte si svůj projekt
 
-[Stáhněte si řešení sady Visual Studio 2017](https://github.com/AzureADQuickStarts/AppModelv2-WebApp-OpenIDConnect-DotNet/archive/master.zip)
+[Stáhněte si řešení Visual Studio 2017.](https://github.com/AzureADQuickStarts/AppModelv2-WebApp-OpenIDConnect-DotNet/archive/master.zip)
 
 #### <a name="step-3-configure-your-visual-studio-project"></a>Krok 3: Konfigurace projektu sady Visual Studio
 
@@ -83,11 +83,11 @@ Vyberte nabídku **Ověřování**, v části **Implicitní udělení oprávněn
 
 > [!div renderon="docs"]
 > Kde:
-> - `Enter_the_Application_Id_here` -je Id aplikace pro aplikace, které jste zaregistrovali.
-> - `Enter_the_Tenant_Info_Here` -je jedním z následujících možností:
+> - `Enter_the_Application_Id_here` je ID aplikace, kterou jste zaregistrovali.
+> - `Enter_the_Tenant_Info_Here` je jedna z následujících možností:
 >   - Pokud vaše aplikace podporuje režim **Jen moje organizace**, nahraďte tuto hodnotu za **ID tenanta** nebo **Název tenanta** (například contoso.microsoft.com).
->   - Pokud vaše aplikace podporuje **účty v libovolném adresáři organizace**, nahradí tato hodnota se `organizations`
->   - Pokud vaše aplikace podporuje **uživatele účtu Microsoft všechny**, nahradí tato hodnota se `common`
+>   - Pokud vaše aplikace podporuje režim **Účty v libovolném organizačním adresáři**, nahraďte tuto hodnotu za `organizations`.
+>   - Pokud vaše aplikace podporuje režim **Všichni uživatelé účtu Microsoft**, nahraďte tuto hodnotu za `common`.
 >
 > > [!TIP]
 > > Hodnoty *ID aplikace*, *ID adresáře (tenanta)* a *Podporované typy účtu* najdete na stránce **Přehled**.
@@ -158,7 +158,8 @@ public void Configuration(IAppBuilder app)
 
 
 > [!NOTE]
-> Nastavení `ValidateIssuer = false` je zjednodušení tohoto rychlého startu. V reálné aplikace, které potřebujete k ověření vystavitele najdete v ukázkách pochopit, jak to provést.
+> Nastavení `ValidateIssuer = false` je zjednodušení tohoto rychlého startu. Ve skutečných aplikacích budete muset ověřit vystavitele.
+> Najdete v ukázkách pochopit, jak to provést.
 
 ### <a name="initiate-an-authentication-challenge"></a>Iniciace výzvy ověřování
 
@@ -190,6 +191,6 @@ Vyzkoušejte kurz pro ASP.NET, který nabízí vyčerpávající podrobný návo
 ### <a name="learn-the-steps-to-create-the-application-used-in-this-quickstart"></a>Postup vytvoření aplikace použité v tomto rychlém startu
 
 > [!div class="nextstepaction"]
-> [Kurz přihlášení](./tutorial-v2-asp-webapp.md)
+> [Kurz týkající se přihlašování](./tutorial-v2-asp-webapp.md)
 
 [!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]

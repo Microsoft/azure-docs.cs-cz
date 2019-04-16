@@ -9,12 +9,12 @@ ms.topic: overview
 ms.date: 04/04/2019
 ms.author: babanisa
 ms.custom: seodec18
-ms.openlocfilehash: 7f501bf8496d1293a45c15908d4f2b21b6ed01d2
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.openlocfilehash: 8ceb3d2d97c63bd19333336314beb6c7444288e9
+ms.sourcegitcommit: 48a41b4b0bb89a8579fc35aa805cea22e2b9922c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/05/2019
-ms.locfileid: "59045401"
+ms.lasthandoff: 04/15/2019
+ms.locfileid: "59578403"
 ---
 # <a name="what-is-azure-event-grid"></a>Co je Azure Event Grid?
 
@@ -22,7 +22,7 @@ Azure Event Grid umožňuje snadno sestavovat aplikace pomocí architektur zalo�
 
 Pomocí filtrů můžete směrovat konkrétní události do různých koncových bodů, zahájit vícesměrové vysílání do více koncových bodů a ujistit se o spolehlivém doručení událostí.
 
-V současné době je Azure Event Grid k dispozici ve všech veřejných oblastech. Ještě není k dispozici v cloudech Azure Germany, Azure China nebo Azure Government.
+V současné době je Azure Event Grid k dispozici ve všech veřejných oblastech. Ještě není k dispozici v Azure Germany, Azure China 21Vianet nebo cloudy Azure Government.
 
 Tento článek obsahuje přehled Azure Event Gridu. Pokud chcete začít pracovat s Event Gridem, přečtěte si článek [Vytvoření a směrování vlastních událostí pomocí služby Azure Event Grid](custom-event-quickstart.md). 
 
@@ -34,30 +34,29 @@ Tento obrázek ukazuje, jak služby Event Grid propojuje zdroje a obslužné rut
 
 Úplné podrobnosti o možnostech jednotlivých zdrojů a související články najdete v tématu věnovaném [zdrojům událostí](event-sources.md). V současné době podporují odesílání událostí do Event Gridu následující služby Azure:
 
-* Předplatná Azure (operace správy)
-* Container Registry
-* Vlastní témata
-* Event Hubs
-* IoT Hub
-* Media Services
-* Skupiny prostředků (operace správy)
-* Service Bus
-* Storage Blob
-* Storage univerzální v2 (GPv2)
-* Azure Maps
+* [Předplatná Azure (operace správy)](event-sources.md#azure-subscriptions)
+* [Container Registry](event-sources.md#container-registry)
+* [Vlastní témata](event-sources.md#custom-topics)
+* [Event Hubs](event-sources.md#event-hubs)
+* [IoT Hub](event-sources.md#iot-hub)
+* [Media Services](event-sources.md#media-services)
+* [Skupiny prostředků (operace správy)](event-sources.md#resource-groups)
+* [Service Bus](event-sources.md#service-bus)
+* [Úložiště objektů Blob](event-sources.md#storage)
+* [Azure Maps](event-sources.md#maps)
 
 ## <a name="event-handlers"></a>Obslužné rutiny událostí
 
 Úplné podrobnosti o možnostech jednotlivých obslužných rutin a související články najdete v tématu věnovaném [obslužným rutinám událostí](event-handlers.md). V současné době podporují zpracování událostí z Event Gridu následující služby Azure: 
 
-* Azure Automation
-* Azure Functions
-* Event Hubs
-* Hybridní připojení
-* Logic Apps
-* Microsoft Flow
-* Queue Storage
-* Webhooky
+* [Azure Automation](event-handlers.md#azure-automation)
+* [Azure Functions](event-handlers.md#azure-functions)
+* [Event Hubs](event-handlers.md#event-hubs)
+* [Hybridní připojení](event-handlers.md#hybrid-connections)
+* [Logic Apps](event-handlers.md#logic-apps)
+* [Microsoft Flow](https://preview.flow.microsoft.com/connectors/shared_azureeventgrid/azure-event-grid/)
+* [Queue Storage](event-handlers.md#queue-storage)
+* [WebHooks](event-handlers.md#webhooks)
 
 ## <a name="concepts"></a>Koncepty
 
@@ -114,13 +113,13 @@ Azure Event Grid využívá model plateb za události, takže platíte jenom za 
 
 ## <a name="next-steps"></a>Další postup
 
-* [Směrování událostí služby Storage Blob](../storage/blobs/storage-blob-event-quickstart.md?toc=%2fazure%2fevent-grid%2ftoc.json)  
+* [Směrování událostí objektů blob úložiště](../storage/blobs/storage-blob-event-quickstart.md?toc=%2fazure%2fevent-grid%2ftoc.json)  
   Pomocí služby Event Grid můžete reagovat na události objektů blob úložiště.
-* [Vytvoření a přihlášení k odběru událostí vlastního](custom-event-quickstart.md)  
+* [Vytváření vlastních událostí a přihlášení k jejich odběru](custom-event-quickstart.md)  
   Pusťte se rovnou do práce a pomocí rychlého startu pro Azure Event Grid začněte odesílat vlastní události do libovolného koncového bodu.
-* [Jako obslužné rutiny události pomocí Logic Apps](monitor-virtual-machine-changes-event-grid-logic-app.md)  
+* [Použití Logic Apps jako obslužné rutiny událostí](monitor-virtual-machine-changes-event-grid-logic-app.md)  
   Kurz týkající se sestavení aplikace pomocí Logic Apps, která bude reagovat na události sdílené službou Event Grid.
 * [Streamování velkých objemů dat do datového skladu](event-grid-event-hubs-integration.md)  
   Kurz, ve kterém se služba Azure Functions používá ke streamování dat ze služby Event Hubs do SQL Data Warehouse.
-* [Referenční informace k rozhraní REST API služby tabulky Event](/rest/api/eventgrid)  
+* [Referenční informace k rozhraní REST API služby Event Grid](/rest/api/eventgrid)  
   Obsahuje referenční obsah pro správu odběry událostí, směrování a filtrování.

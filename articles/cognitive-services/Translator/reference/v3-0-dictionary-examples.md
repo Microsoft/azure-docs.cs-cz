@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 03/29/2018
 ms.author: v-jansko
-ms.openlocfilehash: 26f147fde58a7f9c836bdacd6d66321f0fc5529a
-ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
+ms.openlocfilehash: d48349b802023d9a05bf14898440837b7793715d
+ms.sourcegitcommit: 48a41b4b0bb89a8579fc35aa805cea22e2b9922c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/04/2019
-ms.locfileid: "58916409"
+ms.lasthandoff: 04/15/2019
+ms.locfileid: "59578261"
 ---
 # <a name="translator-text-api-30-dictionary-examples"></a>Translator Text API 3.0: Příklady slovníku
 
@@ -41,7 +41,7 @@ https://api.cognitive.microsofttranslator.com/dictionary/examples?api-version=3.
     <td>*Povinný parametr*.<br/>Verze rozhraní API požadovaná klientem. Hodnota musí být `3.0`.</td>
   </tr>
   <tr>
-    <td>Od</td>
+    <td>od</td>
     <td>*Povinný parametr*.<br/>Určuje jazyk, který vstupního textu. Zdrojový jazyk musí být jedna z [podporované jazyky](./v3-0-languages.md) součástí `dictionary` oboru.</td>
   </tr>
   <tr>
@@ -56,8 +56,8 @@ Hlavičky žádosti patří:
   <th width="20%">Hlavičky</th>
   <th>Popis</th>
   <tr>
-    <td>_Jedním autorizačním_<br/>_záhlaví_</td>
-    <td>*Hlavička požadavku požadované*.<br/>Zobrazit [dostupné možnosti pro ověřování](./v3-0-reference.md#authentication).</td>
+    <td>Ověřovací hlavičky</td>
+    <td><em>Hlavička požadavku požadované</em>.<br/>Zobrazit <a href="https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication">dostupné možnosti pro ověřování</a>.</td>
   </tr>
   <tr>
     <td>Typ obsahu</td>
@@ -123,7 +123,7 @@ Platí následující omezení:
 
 Tento příklad ukazuje, jak vyhledat příklady pro dvojici skládá z anglické termín `fly` a španělština překladu `volar`.
 
-# [<a name="curl"></a>Curl](#tab/curl)
+# <a name="curltabcurl"></a>[curl](#tab/curl)
 
 ```
 curl -X POST "https://api.cognitive.microsofttranslator.com/dictionary/examples?api-version=3.0&from=en&to=es" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json" -d "[{'Text':'fly', 'Translation':'volar'}]"

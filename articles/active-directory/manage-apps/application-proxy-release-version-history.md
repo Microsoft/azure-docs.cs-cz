@@ -16,12 +16,12 @@ ms.date: 04/05/2019
 ms.subservice: manage-apps
 ms.author: mimart
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6ab280b4647c0e8eb7083797ec00965cbaec6f8e
-ms.sourcegitcommit: 41015688dc94593fd9662a7f0ba0e72f044915d6
+ms.openlocfilehash: bf9ee43c6c6b332c05286da8e330812d7e0db6c2
+ms.sourcegitcommit: 48a41b4b0bb89a8579fc35aa805cea22e2b9922c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/11/2019
-ms.locfileid: "59502335"
+ms.lasthandoff: 04/15/2019
+ms.locfileid: "59578585"
 ---
 # <a name="azure-ad-application-proxy-version-release-history"></a>Proxy aplikací Azure AD: Historie vydaných verzí
 Tento článek obsahuje seznam verzí a funkce Proxy aplikací Azure Active Directory (Azure AD), které byly vydány. Tým služby Azure AD pravidelně aktualizuje Proxy aplikace s novými funkcemi a funkce. Konektory Proxy aplikací se automaticky aktualizují po vydání nové verze.
@@ -31,7 +31,7 @@ Tady je seznam souvisejících prostředků:
 Prostředek |  Podrobnosti
 --------- | --------- |
 Jak povolit Proxy aplikací | Požadavky na povolení Proxy aplikací a instalace a registrace konektoru jsou popsané v tomto [kurzu](application-proxy-add-on-premises-application.md).
-Principy konektorů Proxy aplikací Azure AD | Další informace o [connector management](application-proxy-connectors.md) a jak konektory automatický upgrade.
+Principy konektorů Proxy aplikací Azure AD | Další informace o [connector management](application-proxy-connectors.md) a jak konektory [automatický upgrade](application-proxy-connectors.md#automatic-updates).
 Stažení konektoru Proxy aplikace Azure AD |  [Stáhněte si nejnovější connector](https://download.msappproxy.net/subscription/d3c8b69d-6bf7-42be-a529-3fe9c2e70c90/connector/download).
 
 ## <a name="156120"></a>1.5.612.0

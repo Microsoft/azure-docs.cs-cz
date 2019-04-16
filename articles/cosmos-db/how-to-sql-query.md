@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 04/04/2019
 ms.author: mjbrown
-ms.openlocfilehash: 8e5c281a8a8b6c0b48f18bf247b451bf61a7e9dc
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: 04a88558e3aea33c6d99bd0e4f1354c4316f5529
+ms.sourcegitcommit: 48a41b4b0bb89a8579fc35aa805cea22e2b9922c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59263039"
+ms.lasthandoff: 04/15/2019
+ms.locfileid: "59579207"
 ---
 # <a name="sql-query-examples-for-azure-cosmos-db"></a>Příklady dotazů SQL pro službu Azure Cosmos DB
 
@@ -484,15 +484,15 @@ Odkazy na vlastnosti můžete použít taky v dotazech. Například `SELECT * FR
 
 V následující tabulce jsou uvedeny výsledek porovnání rovnosti v rozhraní SQL API mezi jakékoli dva typy JSON.
 
-| **OP** | **Nedefinováno** | **Null** | **Logická hodnota** | **Číslo** | **String** | **Objekt** | **Pole** |
+| **OP** | **Nedefinovaný** | **Hodnotu Null** | **Datový typ Boolean** | **Číslo** | **řetězec** | **objekt** | **Pole** |
 |---|---|---|---|---|---|---|---|
-| **Nedefinováno** | Nedefinováno | Nedefinováno | Nedefinováno | Nedefinováno | Nedefinováno | Nedefinováno | Nedefinováno |
-| **Null** | Nedefinováno | **OK** | Nedefinováno | Nedefinováno | Nedefinováno | Nedefinováno | Nedefinováno |
-| **Logická hodnota** | Nedefinováno | Nedefinováno | **OK** | Nedefinováno | Nedefinováno | Nedefinováno | Nedefinováno |
-| **Číslo** | Nedefinováno | Nedefinováno | Nedefinováno | **OK** | Nedefinováno | Nedefinováno | Nedefinováno |
-| **String** | Nedefinováno | Nedefinováno | Nedefinováno | Nedefinováno | **OK** | Nedefinováno | Nedefinováno |
-| **Objekt** | Nedefinováno | Nedefinováno | Nedefinováno | Nedefinováno | Nedefinováno | **OK** | Nedefinováno |
-| **Pole** | Nedefinováno | Nedefinováno | Nedefinováno | Nedefinováno | Nedefinováno | Nedefinováno | **OK** |
+| **Nedefinovaný** | Nedefinováno | Nedefinováno | Nedefinováno | Nedefinováno | Nedefinováno | Nedefinováno | Nedefinováno |
+| **Hodnotu Null** | Nedefinováno | **Ok** | Nedefinováno | Nedefinováno | Nedefinováno | Nedefinováno | Nedefinováno |
+| **Datový typ Boolean** | Nedefinováno | Nedefinováno | **Ok** | Nedefinováno | Nedefinováno | Nedefinováno | Nedefinováno |
+| **Číslo** | Nedefinováno | Nedefinováno | Nedefinováno | **Ok** | Nedefinováno | Nedefinováno | Nedefinováno |
+| **řetězec** | Nedefinováno | Nedefinováno | Nedefinováno | Nedefinováno | **Ok** | Nedefinováno | Nedefinováno |
+| **objekt** | Nedefinováno | Nedefinováno | Nedefinováno | Nedefinováno | Nedefinováno | **Ok** | Nedefinováno |
+| **Pole** | Nedefinováno | Nedefinováno | Nedefinováno | Nedefinováno | Nedefinováno | Nedefinováno | **Ok** |
 
 Pro operátory porovnání, jako například `>`, `>=`, `!=`, `<`, a `<=`, porovnání typů nebo mezi dvěma objekty nebo pole vytvoří `Undefined`.  
 
@@ -1238,7 +1238,7 @@ Výsledkem je:
 
 Funkce kontroly typu umožňují zkontrolujte typ výrazu v rámci dotazu SQL. Kontrola typu funkce můžete použít k určení typů vlastností v rámci položky v reálném čase, když jsou proměnné nebo neznámý. Tady je tabulka funkcí podporovaných předdefinovaných kontroly typů:
 
-| **Využití** | **Popis** |
+| **Použití** | **Popis** |
 |-----------|------------|
 | [Is_array – (výraz)](sql-api-query-reference.md#bk_is_array) | Vrátí logickou hodnotu označující, zda je typ hodnoty pole. |
 | [IS_BOOL (výraz)](sql-api-query-reference.md#bk_is_bool) | Vrátí logickou hodnotu označující, pokud je typ hodnoty logická hodnota. |
@@ -1282,7 +1282,7 @@ Následující skalární funkce provádění operací na vstupní hodnotu řet�
 | [VELKÁ (str_expr)](sql-api-query-reference.md#bk_upper) | Vrátí řetězcový výraz po převedení data znaků na malá písmena na velká písmena. |
 | [NAHRAĎTE (str_expr, str_expr str_expr.)](sql-api-query-reference.md#bk_replace) | Nahradí všechny výskyty zadaná řetězcová hodnota s jinou hodnotou řetězce. |
 | [REPLIKACE (str_expr, num_expr)](sql-api-query-reference.md#bk_replicate) | Opakuje hodnotu řetězce zadaného počtu opakování. |
-| [REVERSE (str_expr)](sql-api-query-reference.md#bk_reverse) | Vrátí hodnotu řetězce obráceném pořadí. |
+| [REVERZNÍ (str_expr)](sql-api-query-reference.md#bk_reverse) | Vrátí hodnotu řetězce obráceném pořadí. |
 
 Použití těchto funkcí, můžete spouštět dotazy následujícím postupem, který vrací rodině `id` na velká písmena:
 
@@ -1714,7 +1714,7 @@ Další příklad ukazuje, spojení, vyjádřené pomocí LINQ `SelectMany`.
 
 .NET client automaticky Iteruje přes všechny stránky výsledků dotazu v `foreach` blokuje, jak je znázorněno v předchozím příkladu. Počínaje možnosti dotazu [rozhraní REST API](#RestAPI) části jsou také k dispozici v sadě .NET SDK pomocí `FeedOptions` a `FeedResponse` tříd v `CreateDocumentQuery` metoda. Počet stránek, můžete řídit pomocí `MaxItemCount` nastavení.
 
-Můžete také explicitně kontrolovat stránkování tak, že vytvoříte `IDocumentQueryable` pomocí `IQueryable` objekt, potom načtením` ResponseContinuationToken` hodnoty a jejich předávání zpátky jako `RequestContinuationToken` v `FeedOptions`. Můžete nastavit `EnableScanInQuery` povolení vyhledávání, když dotaz nepodporuje nakonfigurované zásady indexování. Pro dělené kontejnerů, můžete použít `PartitionKey` ke spuštění dotazu jeden oddíl, i když službu Azure Cosmos DB můžete automaticky extrahovat to z text dotazu. Můžete použít `EnableCrossPartitionQuery` ke spouštění dotazů na několik oddílů.
+Můžete také explicitně kontrolovat stránkování tak, že vytvoříte `IDocumentQueryable` pomocí `IQueryable` objekt, potom načtením `ResponseContinuationToken` hodnoty a jejich předávání zpátky jako `RequestContinuationToken` v `FeedOptions`. Můžete nastavit `EnableScanInQuery` povolení vyhledávání, když dotaz nepodporuje nakonfigurované zásady indexování. Pro dělené kontejnerů, můžete použít `PartitionKey` ke spuštění dotazu jeden oddíl, i když službu Azure Cosmos DB můžete automaticky extrahovat to z text dotazu. Můžete použít `EnableCrossPartitionQuery` ke spouštění dotazů na několik oddílů.
 
 Další ukázky .NET pomocí dotazů, najdete v článku [ukázek Azure Cosmos DB .NET](https://github.com/Azure/azure-cosmosdb-dotnet) v Githubu.
 

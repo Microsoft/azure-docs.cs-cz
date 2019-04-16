@@ -13,14 +13,14 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/18/2019
+ms.date: 04/14/2019
 ms.author: kaanan
-ms.openlocfilehash: 45224b1b0ec4a4b3c93393c178f1f03baa58e10b
-ms.sourcegitcommit: f331186a967d21c302a128299f60402e89035a8d
+ms.openlocfilehash: ff5c8c4d3f6a0c87afae67404a5a39d4fe3757d9
+ms.sourcegitcommit: e89b9a75e3710559a9d2c705801c306c4e3de16c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58189134"
+ms.lasthandoff: 04/15/2019
+ms.locfileid: "59571080"
 ---
 # <a name="virtual-network-tap"></a>Naslouchací zařízení virtuální sítě
 
@@ -36,17 +36,18 @@ Virtuální síť Azure TAP (terminál přístupový bod) vám umožní průbě�
 - [Velké objemy přepínač velké objemy monitorování prostředků infrastruktury](https://www.bigswitch.com/products/big-monitoring-fabric/public-cloud/microsoft-azure)
 - [Gigamon GigaSECURE](https://blog.gigamon.com/2018/09/13/why-microsofts-new-vtap-service-works-even-better-with-gigasecure-for-azure)
 - [Ixia CloudLens](https://www.ixiacom.com/cloudlens/cloudlens-azure)
+- [Pomocí Nubeva prismatu](https://www.nubeva.com/azurevtap)
 
 ### <a name="security-analytics-networkapplication-performance-management"></a>Analýzu zabezpečení, správy výkonu sítě/aplikací
 
 - [Vzhůru zabezpečení](https://awakesecurity.com/technology-partners/microsoft-azure/)
 - [Cisco Stealthwatch Cloud](https://blogs.cisco.com/security/cisco-stealthwatch-cloud-and-microsoft-azure-reliable-cloud-infrastructure-meets-comprehensive-cloud-security)
+- [Darktrace](https://www.darktrace.com/en/azure/)
 - [ExtraHop Reveal(x)](https://www.extrahop.com/company/tech-partners/microsoft/)
 - [Fidelis Cybersecurity](https://www.fidelissecurity.com/technology-partners/microsoft-azure )
 - [Flowmon](https://www.flowmon.com/blog/azure-vtap)
 - [NetFort LANGuardian](https://www.netfort.com/languardian/solutions/visibility-in-azure-network-tap/)
 - [Netscout vSTREAM]( https://www.netscout.com/technology-partners/microsoft/azure-vtap)
-- [Pomocí Nubeva prismatu](https://www.nubeva.com/azurevtap)
 - [RSA NetWitness® Platform](https://www.rsa.com/azure)
 - [Vectra Cognito](https://vectra.ai/microsoftazure)
 
@@ -56,7 +57,7 @@ Následující obrázek ukazuje, jak virtuální sítě funguje TAP. Můžete p�
 
 ## <a name="prerequisites"></a>Požadavky
 
-Než vytvoříte virtuální síť TAP, musí obdržet e-mail s potvrzením, která jsou zaregistrovaná ve verzi preview a mít jeden nebo více virtuálních počítačů vytvořených pomocí [Azure Resource Manageru](../azure-resource-manager/resource-group-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) modelu nasazení a partnera v oblasti WestCentralUS provoz řešení pro agregaci vzoru TAP. Pokud nemáte partnerského řešení ve vaší virtuální síti, najdete v článku [partnerská řešení](#virtual-network-tap-partner-solutions) chcete nasadit některé. Můžete použít stejné virtuální síti TAP prostředku k souhrnným přenosům z několika síťovými rozhraními v jednom nebo několika předplatných. Pokud jsou monitorovaná síťová rozhraní v různých předplatných, předplatná musí být přidružený ke stejnému tenantovi Azure Active Directory. Kromě toho monitorovaných síťových rozhraní a cílový koncový bod pro agregaci TAP provozu může být v partnerských virtuálních sítích ve stejné oblasti. Pokud používáte tento model nasazení Ujistěte se, že [partnerský vztah virtuální sítě](virtual-network-peering-overview.md) před tím, než se konfigurace virtuálního síťového ODPOSLOUCHÁVÁNÍ.
+Než vytvoříte virtuální síť TAP, musí obdržet e-mail s potvrzením, která jsou zaregistrovaná ve verzi preview a mít jeden nebo více virtuálních počítačů vytvořených pomocí [Azure Resource Manageru](../azure-resource-manager/resource-group-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) modelu nasazení a partnera řešení pro agregaci klepněte na provoz ve stejné oblasti azure. Pokud nemáte partnerského řešení ve vaší virtuální síti, najdete v článku [partnerská řešení](#virtual-network-tap-partner-solutions) chcete nasadit některé. Můžete použít stejné virtuální síti TAP prostředku k souhrnným přenosům z několika síťovými rozhraními v jednom nebo několika předplatných. Pokud jsou monitorovaná síťová rozhraní v různých předplatných, předplatná musí být přidružený ke stejnému tenantovi Azure Active Directory. Kromě toho monitorovaných síťových rozhraní a cílový koncový bod pro agregaci TAP provozu může být v partnerských virtuálních sítích ve stejné oblasti. Pokud používáte tento model nasazení Ujistěte se, že [partnerský vztah virtuální sítě](virtual-network-peering-overview.md) před tím, než se konfigurace virtuálního síťového ODPOSLOUCHÁVÁNÍ.
 
 ## <a name="permissions"></a>Oprávnění
 

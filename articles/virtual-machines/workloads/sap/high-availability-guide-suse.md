@@ -16,12 +16,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 03/15/2019
 ms.author: sedusch
-ms.openlocfilehash: 9809584a3abe1d0cdde2cd6ccf90b48432d27c11
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 90ec7cf4964440d39b3f69eb9ae9708eaafe3748
+ms.sourcegitcommit: 48a41b4b0bb89a8579fc35aa805cea22e2b9922c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58007845"
+ms.lasthandoff: 04/15/2019
+ms.locfileid: "59579032"
 ---
 # <a name="high-availability-for-sap-netweaver-on-azure-vms-on-suse-linux-enterprise-server-for-sap-applications"></a>Vysoká dostupnost pro SAP NetWeaver na virtuálních počítačích Azure na SUSE Linux Enterprise Server pro aplikace SAP
 
@@ -95,7 +95,8 @@ Server systému souborů NFS, SAP NetWeaver ASCS, SAP NetWeaver SCS, SAP NetWeav
   * Připojení k primární síťová rozhraní všech virtuálních počítačů, které by měla být součástí (A) SCS/Lajících clusteru
 * Port testu
   * Port 620<strong>&lt;nr&gt;</strong>
-* Pravidla Vyrovnávání zatížení
+* Načtení 
+* pravidla vyrovnávání
   * 32<strong>&lt;nr&gt;</strong> TCP
   * 36<strong>&lt;nr&gt;</strong> TCP
   * 39<strong>&lt;nr&gt;</strong> TCP
@@ -112,7 +113,7 @@ Server systému souborů NFS, SAP NetWeaver ASCS, SAP NetWeaver SCS, SAP NetWeav
   * Připojení k primární síťová rozhraní všech virtuálních počítačů, které by měla být součástí (A) SCS/Lajících clusteru
 * Port testu
   * Port 621<strong>&lt;nr&gt;</strong>
-* Pravidla Vyrovnávání zatížení
+* Pravidla vyrovnávání zatížení
   * 33<strong>&lt;nr&gt;</strong> TCP
   * 5<strong>&lt;nr&gt;</strong>13 TCP
   * 5<strong>&lt;nr&gt;</strong>14 TCP
@@ -132,7 +133,8 @@ Na webu Azure Marketplace obsahuje bitovou kopii operačního systému SUSE Linu
 
 Můžete některou ze šablon quickstart na Githubu nasadit všechny požadované prostředky. Šablona nasadí virtuální počítače, nástroj pro vyrovnávání zatížení, dostupnosti, atd. Postupujte podle těchto kroků a nasaďte šablonu:
 
-1. Otevřít [šablony ASCS/SCS více SID] [ template-multisid-xscs] nebo [konvergované šablony] [ template-converged] na portálu Azure portal, pouze vytvoří šablonu The ASCS/SCS pravidla pro vyrovnávání zatížení pro SAP NetWeaver ASCS/SCS a Lajících instance (pouze Linux) že sblížené Šablona také vytvoří pravidla Vyrovnávání zatížení pro databázi (třeba Microsoft SQL Server nebo SAP HANA). Pokud máte v plánu pro instalaci systému SAP NetWeaver na základě a také chtít nainstalovat databázi na stejných počítačů, použijte [konvergované šablony][template-converged].
+1. Otevřít [šablony ASCS/SCS více SID] [ template-multisid-xscs] nebo [konvergované šablony] [ template-converged] na portálu Azure portal. 
+   Šablona ASCS/SCS pouze vytvoří pravidla Vyrovnávání zatížení pro SAP NetWeaver ASCS/SCS a instance Lajících (pouze Linux), zatímco sblížené Šablona také vytvoří pravidla Vyrovnávání zatížení pro databázi (třeba Microsoft SQL Server nebo SAP HANA). Pokud máte v plánu pro instalaci systému SAP NetWeaver na základě a také chtít nainstalovat databázi na stejných počítačů, použijte [konvergované šablony][template-converged].
 1. Zadejte následující parametry
    1. Předpona prostředků (pouze šablona ASCS/SCS více SID)  
       Zadejte předponu, kterou chcete použít. Hodnota se používá jako předpona pro prostředky, které jsou nasazené.
@@ -144,7 +146,7 @@ Můžete některou ze šablon quickstart na Githubu nasadit všechny požadovan�
       Vyberte jednu z Linuxových distribucí. V tomto příkladu vyberte SLES 12 BYOS
    6. Typ databáze  
       Vyberte HANA
-   7. Velikost systému SAP  
+   7. Velikost systému SAP.  
       Množství protokoly SAP poskytuje nový systém. Pokud si nejste jisti kolik protokoly SAP bude systém vyžadovat, požádejte SAP technologické partnery nebo systémový integrátor
    8. Dostupnost systému  
       Vyberte HA
@@ -198,7 +200,7 @@ Nejprve musíte vytvořit virtuální počítače pro tento cluster systému sou
          1. Klikněte na tlačítko OK
       1. Port 621**02** pro ASCS Lajících
          * Zopakujte výše uvedené kroky a vytvořte sondu stavu pro Lajících (například 621**02** a **nw1. aers hp**)
-   1. Pravidla Vyrovnávání zatížení
+   1. Pravidla vyrovnávání zatížení
       1. 32**00** TCP pro ASC
          1. Otevřete nástroj pro vyrovnávání zatížení, pravidel Vyrovnávání zatížení vyberte a klikněte na tlačítko Přidat
          1. Zadejte název nového pravidla služby load balancer (například **nw1-lb-3200**)
@@ -530,6 +532,8 @@ Následující položky jsou s předponou buď **[A]** – platí pro všechny u
 
 1. **[1]**  Vytvořit prostředky clusteru SAP
 
+Pokud používáte architekturu serveru 1 zařadit do fronty (ENSA1), definují prostředky následujícím způsobem:
+
    <pre><code>sudo crm configure property maintenance-mode="true"
    
    sudo crm configure primitive rsc_sap_<b>NW1</b>_ASCS<b>00</b> SAPInstance \
@@ -556,7 +560,37 @@ Následující položky jsou s předponou buď **[A]** – platí pro všechny u
    sudo crm configure property maintenance-mode="false"
    </code></pre>
 
+  Zavedení podpory pro zařazení do fronty server 2, včetně replikace, od SAP severozápadní 7.52 SAP. Od verze platformy 1809 ABAP, je nainstalován server zařazování 2 ve výchozím nastavení. Zobrazit SAP Poznámka [2630416](https://launchpad.support.sap.com/#/notes/2630416) pro podporu serveru 2 zařadit do fronty.
+Pokud používáte architekturu serveru 2 zařadit do fronty ([ENSA2](https://help.sap.com/viewer/cff8531bc1d9416d91bb6781e628d4e0/1709%20001/en-US/6d655c383abf4c129b0e5c8683e7ecd8.html)), definují prostředky následujícím způsobem:
+
+<pre><code>sudo crm configure property maintenance-mode="true"
+   
+   sudo crm configure primitive rsc_sap_<b>NW1</b>_ASCS<b>00</b> SAPInstance \
+    operations \$id=rsc_sap_<b>NW1</b>_ASCS<b>00</b>-operations \
+    op monitor interval=11 timeout=60 on_fail=restart \
+    params InstanceName=<b>NW1</b>_ASCS<b>00</b>_<b>nw1-ascs</b> START_PROFILE="/sapmnt/<b>NW1</b>/profile/<b>NW1</b>_ASCS<b>00</b>_<b>nw1-ascs</b>" \
+    AUTOMATIC_RECOVER=false \
+    meta resource-stickiness=5000
+   
+   sudo crm configure primitive rsc_sap_<b>NW1</b>_ERS<b>02</b> SAPInstance \
+    operations \$id=rsc_sap_<b>NW1</b>_ERS<b>02</b>-operations \
+    op monitor interval=11 timeout=60 on_fail=restart \
+    params InstanceName=<b>NW1</b>_ERS<b>02</b>_<b>nw1-aers</b> START_PROFILE="/sapmnt/<b>NW1</b>/profile/<b>NW1</b>_ERS<b>02</b>_<b>nw1-aers</b>" AUTOMATIC_RECOVER=false IS_ERS=true 
+   
+   sudo crm configure modgroup g-<b>NW1</b>_ASCS add rsc_sap_<b>NW1</b>_ASCS<b>00</b>
+   sudo crm configure modgroup g-<b>NW1</b>_ERS add rsc_sap_<b>NW1</b>_ERS<b>02</b>
+   
+   sudo crm configure colocation col_sap_<b>NW1</b>_no_both -5000: g-<b>NW1</b>_ERS g-<b>NW1</b>_ASCS
+   sudo crm configure order ord_sap_<b>NW1</b>_first_start_ascs Optional: rsc_sap_<b>NW1</b>_ASCS<b>00</b>:start rsc_sap_<b>NW1</b>_ERS<b>02</b>:stop symmetrical=false
+   
+   sudo crm node online <b>nw1-cl-0</b>
+   sudo crm configure property maintenance-mode="false"
+   </code></pre>
+
+  Pokud jste upgrade ze starší verze a přechodu k zařazení do fronty server 2, viz poznámka sap [2641019](https://launchpad.support.sap.com/#/notes/2641019). 
+
    Ujistěte se, že stav clusteru je ok a zda jsou spuštěny všechny prostředky. Není důležité na uzlu, které jsou spuštěné prostředky.
+
 
    <pre><code>sudo crm_mon -r
    
@@ -958,7 +992,7 @@ Následující testy jsou kopie testovacích případů v příručkách osvěd�
         rsc_sap_NW1_ERS02  (ocf::heartbeat:SAPInstance):   Started nw1-cl-0
    </code></pre>
 
-   Vytvoření zámku zařadit do fronty, pro příklad úpravy uživatele v su01 transakce. Spuštěním následujících příkazů jako \<sapsid > adm na uzlu, kde je spuštěná instance ASC. Příkazy se zastavit instanci ASCS a spusťte jej znovu. Zařazování zámek má dojít ke ztrátě v tomto testu.
+   Vytvoření zámku zařadit do fronty, pro příklad úpravy uživatele v su01 transakce. Spuštěním následujících příkazů jako \<sapsid > adm na uzlu, kde je spuštěná instance ASC. Příkazy se zastavit instanci ASCS a spusťte jej znovu. Pokud používáte architekturu serveru 1 zařadit do fronty, zámek zařazování má dojít ke ztrátě v tomto testu. Pokud používáte architekturu serveru 2 zařadit do fronty, zařadit do fronty se zachovají. 
 
    <pre><code>nw1-cl-1:nw1adm 54> sapcontrol -nr 00 -function StopWait 600 2
    </code></pre>

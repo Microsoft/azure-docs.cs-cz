@@ -6,15 +6,15 @@ ms.service: automation
 ms.subservice: dsc
 author: bobbytreed
 ms.author: robreed
-ms.date: 08/08/2018
+ms.date: 04/15/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 234d59f9d625af6d0309b2995cc734fad6028b1e
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 60cd2d21167739e824489e30ebd187a5fc0cc12d
+ms.sourcegitcommit: 48a41b4b0bb89a8579fc35aa805cea22e2b9922c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57767035"
+ms.lasthandoff: 04/15/2019
+ms.locfileid: "59579270"
 ---
 # <a name="getting-started-with-azure-automation-state-configuration"></a>Začínáme s Azure Automation stavu konfigurace
 
@@ -27,7 +27,7 @@ Tento článek poskytuje podrobný návod, jak pomocí Azure Automation stav kon
 Pokud chcete dokončit příklady v tomto článku, vyžadují splnění následujících předpokladů:
 
 - Účet Azure Automation. Pokyny k vytvoření účtu Azure Automation Spustit jako najdete v tématu [Účet Spustit jako pro Azure](automation-sec-configure-azure-runas-account.md).
-- Virtuální počítač Azure Resource Manageru (ne Classic) s Windows serverem 2008 R2 nebo novější. Pokyny k vytvoření virtuálního počítače najdete v tématu [Vytvoření vašeho prvního virtuálního počítače s Windows na webu Azure Portal](../virtual-machines/virtual-machines-windows-hero-tutorial.md).
+- Virtuální počítač Azure Resource Manageru (ne Classic) spuštěna [s podporovaným operačním systémem](automation-dsc-overview.md#operating-system-requirements). Pokyny k vytvoření virtuálního počítače najdete v tématu [Vytvoření vašeho prvního virtuálního počítače s Windows na webu Azure Portal](../virtual-machines/virtual-machines-windows-hero-tutorial.md).
 
 ## <a name="creating-a-dsc-configuration"></a>Vytvoření konfigurace DSC
 
@@ -149,9 +149,9 @@ Konfigurace stavu služby Azure Automation můžete použít ke správě virtuá
 1. Na **virtuálního počítače** stránku podrobností, klikněte na tlačítko **+ připojit**.
 
    > [!IMPORTANT]
-   > Tato hodnota musí být virtuální počítač Azure Resource Manageru s Windows serverem 2008 R2 nebo novější.
+   > Tato hodnota musí být spuštěn virtuální počítač Azure Resource Manageru [s podporovaným operačním systémem](automation-dsc-overview.md#operating-system-requirements).
 
-1. V **registrace** stránky, vyberte název konfigurace uzlu, které chcete použít k virtuálnímu počítači v **název konfigurace uzlu** pole. Poskytnutí názvu v tomto okamžiku je volitelný. Můžete změnit konfiguraci přiřazeném uzlu po připojení uzlu.
+2. V **registrace** stránky, vyberte název konfigurace uzlu, které chcete použít k virtuálnímu počítači v **název konfigurace uzlu** pole. Poskytnutí názvu v tomto okamžiku je volitelný. Můžete změnit konfiguraci přiřazeném uzlu po připojení uzlu.
    Zkontrolujte **restartovat uzel v případě potřeby**, pak klikněte na tlačítko **OK**.
 
    ![Snímek obrazovky okna registrace](./media/automation-dsc-getting-started/RegisterVM.png)

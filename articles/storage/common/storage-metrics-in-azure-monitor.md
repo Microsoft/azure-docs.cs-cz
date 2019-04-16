@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 09/05/2017
 ms.author: fryu
 ms.subservice: common
-ms.openlocfilehash: e9d11f7426a70d058daa75466b977e47e6e33ee8
-ms.sourcegitcommit: f24b62e352e0512dfa2897362021b42e0cb9549d
+ms.openlocfilehash: 426dd265f4d608b8dd3c9ab746479ea103419562
+ms.sourcegitcommit: 48a41b4b0bb89a8579fc35aa805cea22e2b9922c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/11/2019
-ms.locfileid: "59505766"
+ms.lasthandoff: 04/15/2019
+ms.locfileid: "59579338"
 ---
 # <a name="azure-storage-metrics-in-azure-monitor"></a>Metriky Azure Storage na platformě Azure Monitor
 
@@ -393,7 +393,7 @@ Azure Storage podporuje následující dimenze pro metriky ve službě Azure Mon
 | Název dimenze | Popis |
 | ------------------- | ----------------- |
 | BlobType | Typ objektu blob pro pouze metriky objektů Blob. Podporované hodnoty jsou **BlockBlob** a **PageBlob**. Doplňovací objekt Blob je součástí BlockBlob. |
-| Hodnota ResponseType | Typ odpovědi transakce. Dostupné hodnoty zahrnují: <br/><br/> <li>ServerOtherError: Všechny ostatní chyby na straně serveru kromě zde popsaných </li> <li> ServerBusyError: Ověřená žádost, která vrátila stavový kód HTTP 503. </li> <li> ServerTimeoutError: Ověřená žádost s vypršeným časovým limitem, který vrátil stavový kód HTTP 500. Časový limit vypršel kvůli chybě serveru. </li> <li> AuthorizationError: Ověřená žádost, která selhala kvůli neoprávněnému přístupu k datům nebo chybě autorizace. </li> <li> NetworkError: Ověřená žádost, která selhala kvůli chybě sítě. K tomu nejčastěji dochází, když klient předčasně ukončí spojení před vypršením časového limitu. </li> <li>    ClientThrottlingError: Chyba omezování využití sítě na straně klienta. </li> <li> ClientTimeoutError: Ověřená žádost s vypršeným časovým limitem, který vrátil stavový kód HTTP 500. Pokud je časový limit sítě klienta nebo časový limit žádosti nastavený na hodnotu nižší, než služba úložiště očekávala, jde o očekávané vypršení časového limitu. V opačném případě bude ohlášeno jako ServerTimeoutError. </li> <li> ClientOtherError: Všechny ostatní chyby na straně klienta kromě zde popsaných. </li> <li> Úspěch: Úspěšná žádost. </li> <li> SuccessWithThrottling: Úspěšná žádost, když klient SMB získá omezené v první pokusy o ale úspěšné počet pokusů.|
+| Hodnota ResponseType | Typ odpovědi transakce. Dostupné hodnoty zahrnují: <br/><br/> <li>ServerOtherError: Všechny ostatní chyby na straně serveru kromě zde popsaných </li> <li> ServerBusyError: Ověřená žádost, která vrátila stavový kód HTTP 503. </li> <li> ServerTimeoutError: Ověřená žádost s vypršeným časovým limitem, který vrátil stavový kód HTTP 500. Časový limit vypršel kvůli chybě serveru. </li> <li> AuthorizationError: Ověřená žádost, která selhala kvůli neoprávněnému přístupu k datům nebo chybě autorizace. </li> <li> NetworkError: Ověřená žádost, která selhala kvůli chybě sítě. K tomu nejčastěji dochází, když klient předčasně ukončí spojení před vypršením časového limitu. </li> <li>    ClientThrottlingError: Chyba omezování využití sítě na straně klienta. </li> <li> ClientTimeoutError: Ověřená žádost s vypršeným časovým limitem, který vrátil stavový kód HTTP 500. Pokud je časový limit sítě klienta nebo časový limit žádosti nastavený na hodnotu nižší, než služba úložiště očekávala, jde o očekávané vypršení časového limitu. V opačném případě bude ohlášeno jako ServerTimeoutError. </li> <li> ClientOtherError: Všechny ostatní chyby na straně klienta kromě zde popsaných. </li> <li> Úspěch: Úspěšná žádost.|
 | GeoType | Transakce z primární nebo sekundární clusteru. Dostupné hodnoty zahrnují primární a sekundární. To platí pro oprávnění ke čtení geograficky redundantní Storage(RA-GRS) při čtení objektů ze sekundární tenanta. |
 | ApiName | Název operace. Příklad: <br/> <li>CreateContainer</li> <li>DeleteBlob</li> <li>GetBlob</li> Všechny názvy operace, najdete v části [dokumentu](/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages). |
 | Authentication | Typ ověřování používaný v transakcích. Dostupné hodnoty zahrnují: <br/> <li>AccountKey: Transakce se ověřuje pomocí klíče účtu úložiště.</li> <li>SAS: Transakce se ověřuje pomocí signatur sdíleného přístupu.</li> <li>OAuth: Transakce se ověřuje pomocí přístupových tokenů OAuth.</li> <li>Anonymní: Transakce je požadováno anonymně. Neměl by zahrnovat předběžných požadavků.</li> <li>AnonymousPreflight: Transakce je předběžný požadavek.</li> |

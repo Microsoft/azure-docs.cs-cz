@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 12/11/2018
 ms.author: wolfma
-ms.openlocfilehash: 3ff49e800b8db09cbff5c07107f71532437a4572
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: ef68d02f6aa23368962e08af7b35d2b81c0e80bb
+ms.sourcegitcommit: 48a41b4b0bb89a8579fc35aa805cea22e2b9922c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58671684"
+ms.lasthandoff: 04/15/2019
+ms.locfileid: "59579798"
 ---
 ### <a name="neural-voices"></a>Neurální hlasů
 
@@ -31,7 +31,6 @@ Standardní hlasy jsou k dispozici v těchto oblastech:
 | Oblast | Koncový bod |
 |--------|----------|
 | Austrálie – východ | https://australiaeast.tts.speech.microsoft.com/cognitiveservices/v1 |
-| Brazílie – jih | https://brazilsouth.tts.speech.microsoft.com/cognitiveservices/v1 |
 | Kanada – střed | https://canadacentral.tts.speech.microsoft.com/cognitiveservices/v1 |
 | USA – střed | https://centralus.tts.speech.microsoft.com/cognitiveservices/v1 |
 | Východní Asie | https://eastasia.tts.speech.microsoft.com/cognitiveservices/v1 |
@@ -57,7 +56,6 @@ Pokud vytvoříte vlastní hlasové písmo, můžete použijte koncový bod, kte
 | Oblast | Koncový bod |
 |--------|----------|
 | Austrálie – východ | https://australiaeast.voice.speech.microsoft.com |
-| Brazílie – jih | https://brazilsouth.voice.speech.microsoft.com |
 | Kanada – střed | https://canadacentral.voice.speech.microsoft.com |
 | USA – střed | https://centralus.voice.speech.microsoft.com |
 | Východní Asie | https://eastasia.voice.speech.microsoft.com |

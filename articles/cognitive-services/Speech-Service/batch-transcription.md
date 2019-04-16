@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 2/20/2019
 ms.author: panosper
 ms.custom: seodec18
-ms.openlocfilehash: 3b403eb80bae01efe730b69b7e6a5ddaea81355a
-ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
+ms.openlocfilehash: b389d86fe4d23e3f4ee1c66e4270a74351098129
+ms.sourcegitcommit: 48a41b4b0bb89a8579fc35aa805cea22e2b9922c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56447646"
+ms.lasthandoff: 04/15/2019
+ms.locfileid: "59579355"
 ---
 # <a name="why-use-batch-transcription"></a>Proč používat službu Batch určené k transkripci?
 
@@ -88,6 +88,16 @@ Parametry konfigurace jsou k dispozici jako dokumenty JSON:
 | `PunctuationMode` | Určuje způsob zpracování interpunkce v výsledky rozpoznávání. Platné hodnoty jsou `none` který zakáže interpunkční znaménka, `dictated` což naznačuje explicitní interpunkce, `automatic` které umožní dekodér řešit interpunkční znaménka, nebo `dictatedandautomatic` což naznačuje nařízeny interpunkční znaménka nebo automaticky. | Nepovinné |
  | `AddWordLevelTimestamps` | Určuje, pokud úroveň časová razítka slovo měla být přidána do výstupu. Platné hodnoty jsou `true` umožňující slovo úrovně časová razítka a `false` (výchozí hodnota) pro jeho zakázání. | Nepovinné |
 
+### <a name="storage"></a>Úložiště
+
+Služba batch podporuje určené k transkripci [úložiště objektů Blob v Azure](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-overview) pro čtení zvuk a přepisů zápis do úložiště.
+
+## <a name="webhooks"></a>Webhooky 
+
+Dotazování na stav určené k transkripci nemusí být většina výkonné a poskytují nejlepší uživatelské prostředí. Dotazování na stav, můžete zaregistrovat zpětná volání, které oznámí klient po dokončení dlouho běžící úlohy určené k transkripci.
+
+Další podrobnosti najdete v tématu [Webhooky](webhooks.md).
+
 ## <a name="sample-code"></a>Ukázka kódu
 
 Celá ukázka je k dispozici v [ukázkového úložiště Githubu](https://aka.ms/csspeech/samples) uvnitř `samples/batch` podadresáře.
@@ -108,10 +118,6 @@ Aktuální vzorový kód neurčuje vlastního modelu. Služba používá základ
 
 > [!NOTE]
 > Pro základní přepisů není nutné deklarovat ID pro základní modely. Pokud zadáte pouze jazyk ID modelu (a žádné ID akustický model), je automaticky vybrána odpovídající akustický model. Pokud zadáte jenom ID akustický model, je automaticky vybrána odpovídající jazykový model.
-
-### <a name="supported-storage"></a>Podporované úložiště
-
-V současné době se podporuje pouze úložiště objektů Blob v Azure.
 
 ## <a name="download-the-sample"></a>Stažení ukázky
 

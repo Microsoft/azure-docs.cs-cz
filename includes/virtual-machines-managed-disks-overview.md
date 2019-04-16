@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 01/11/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 311fdb0b0a2e587e7cf8581f967ed0248de85f6d
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: 4563bb0de688a8328796badffc8a133a33f64fcc
+ms.sourcegitcommit: b8a8d29fdf199158d96736fbbb0c3773502a092d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59291652"
+ms.lasthandoff: 04/15/2019
+ms.locfileid: "59566563"
 ---
 ## <a name="benefits-of-managed-disks"></a>Výhody spravovaných disků
 
@@ -31,7 +31,7 @@ Použití spravovaných disků, můžete vytvořit až 50 000 virtuálních poč
 
 Spravované disky jsou součástí skupiny dostupnosti a zkontrolujte, že disky [virtuálních počítačů ve skupině dostupnosti](../articles/virtual-machines/windows/manage-availability.md#use-managed-disks-for-vms-in-an-availability-set) jsou dostatečně izolované od sebe, aby jediný bod selhání. Disky se automaticky umísťují do odlišných uložišť jednotek škálování (razítka). Pokud razítkem nezdaří z důvodu selhání hardwaru nebo softwaru, selžou pouze instance Virtuálních počítačů na těchto jednotkách. Například Řekněme, že máte aplikaci spuštěné na pět virtuálních počítačů a virtuální počítače jsou ve skupině dostupnosti. Disky pro tyto virtuální počítače nebudou všechny ukládat ve stejném razítka, tak pokud jedno razítko ocitne mimo provoz ostatních instancí aplikace i nadále spouštět.
 
-## <a name="integration-with-availability-zones"></a>Integrace se zónami dostupnosti
+### <a name="integration-with-availability-zones"></a>Integrace se zónami dostupnosti
 
 Spravované disky podporuje [zóny dostupnosti](../articles/availability-zones/az-overview.md), což je nabídka vysoké dostupnosti, která chrání vaše aplikace před selháními datových center. Zóny dostupnosti jsou jedinečná fyzická umístění v rámci oblasti Azure. Každá zóna se skládá z jednoho nebo více datových Center vybavených nezávislým napájením, chlazením a sítí. K zajištění odolnosti proti chybám, je minimálně tří samostatných zón ve všech oblastech, povolené. Zóny dostupnosti Azure nabízí odvětví nejlepší 99,99 % doby provozu SLA k virtuálním počítačům.
 
@@ -79,7 +79,7 @@ Spravované disky podporují také vytváření spravovanou vlastní image. Imag
 Informace o vytváření bitové kopie naleznete v následujících článcích:
 
 * [Jak zachytit spravované image zobecněného virtuálního počítače v Azure](../articles/virtual-machines/windows/capture-image-resource.md)
-* [Generalizace a zachytit virtuální počítač s Linuxem pomocí Azure CLI](../articles/virtual-machines/linux/capture-image.md)
+* [Jak generalizovat a zachytit linuxový virtuální počítač s využitím Azure CLI](../articles/virtual-machines/linux/capture-image.md)
 
 #### <a name="images-versus-snapshots"></a>Imagí a snímky
 

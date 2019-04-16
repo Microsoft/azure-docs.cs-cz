@@ -17,12 +17,12 @@ ms.date: 04/11/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: afcfd8c581ad1707a996ae5bd0c3706179ddb0e4
-ms.sourcegitcommit: f24b62e352e0512dfa2897362021b42e0cb9549d
+ms.openlocfilehash: 1150e68167ad4e932acce744cdd5eba88e49a8c4
+ms.sourcegitcommit: 48a41b4b0bb89a8579fc35aa805cea22e2b9922c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/11/2019
-ms.locfileid: "59505343"
+ms.lasthandoff: 04/15/2019
+ms.locfileid: "59579457"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-an-aspnet-core-web-app"></a>Rychlý start: Přidání přihlašování s Microsoftem do webové aplikace ASP.NET Core
 
@@ -55,9 +55,9 @@ V tomto rychlém startu se dozvíte, jak webové aplikace ASP.NET Core můžete 
 > 1. Vyberte **registrace nové**.
 > 1. Když se zobrazí stránka **Registrace aplikace**, zadejte registrační informace vaší aplikace:
 >    - V části **Název** zadejte smysluplný název aplikace, který se zobrazí uživatelům aplikace, například `AspNetCore-Quickstart`.
->    - V **adresy URL odpovědi**, přidejte `https://localhost:44321/`a vyberte **zaregistrovat**.
+>    - V **identifikátor URI pro přesměrování**, přidejte `https://localhost:44321/`a vyberte **zaregistrovat**.
 > 1. Vyberte **ověřování** nabídky a potom přidejte následující informace:
->    - V **adresy URL odpovědi**, přidejte `https://localhost:44321/signin-oidc`a vyberte **zaregistrovat**.
+>    - V **identifikátory URI přesměrování**, přidejte `https://localhost:44321/signin-oidc`a vyberte **Uložit**.
 >    - V **upřesňující nastavení** nastavte **odhlašovací adresa URL** k `https://localhost:44321/signout-oidc`.
 >    - V části **implicitní grant**, zkontrolujte **tokeny typu ID**.
 >    - Vyberte **Uložit**.
@@ -66,14 +66,14 @@ V tomto rychlém startu se dozvíte, jak webové aplikace ASP.NET Core můžete 
 > #### <a name="step-1-configure-your-application-in-the-azure-portal"></a>Krok 1: Konfigurace aplikace na webu Azure Portal
 > Pro ukázkový kód pro tento rychlý start pro práci, budete muset přidat adresy URL odpovědí jako `https://localhost:44321/` a `https://localhost:44321/signin-oidc`, přidejte odhlašovací adresa URL jako `https://localhost:44321/signout-oidc`a požádat o tokeny typu ID chcete vystavit koncový bod autorizace.
 > > [!div renderon="portal" id="makechanges" class="nextstepaction"]
-> > [Provedení této změny pro mě]()
+> > [Udělat změnu za mě]()
 >
 > > [!div id="appconfigured" class="alert alert-info"]
-> > ![Už nakonfigurovali](media/quickstart-v2-aspnet-webapp/green-check.png) vaše aplikace je nakonfigurovaná s těmito atributy.
+> > ![Už nakonfigurované](media/quickstart-v2-aspnet-webapp/green-check.png) Vaše aplikace je nakonfigurovaná s těmito atributy.
 
 #### <a name="step-2-download-your-aspnet-core-project"></a>Krok 2: Stáhněte si svůj projekt ASP.NET Core
 
-- [Stáhněte si řešení sady Visual Studio 2017](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/archive/aspnetcore2-2.zip)
+- [Stáhněte si řešení Visual Studio 2017.](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/archive/aspnetcore2-2.zip)
 
 #### <a name="step-3-configure-your-visual-studio-project"></a>Krok 3: Konfigurace projektu sady Visual Studio
 
@@ -91,8 +91,8 @@ V tomto rychlém startu se dozvíte, jak webové aplikace ASP.NET Core můžete 
 > - `Enter_the_Application_Id_here` -je **ID aplikace (klient)** pro aplikace, které jste zaregistrovali na webu Azure Portal. Můžete najít **ID aplikace (klient)** aplikace **přehled** stránky.
 > - `Enter_the_Tenant_Info_Here` -je jedním z následujících možností:
 >   - Pokud vaše aplikace podporuje **účty v tomto adresáři organizace jenom**, nahradí tato hodnota se **ID Tenanta** nebo **název Tenanta** (například) contoso.microsoft.com)
->   - Pokud vaše aplikace podporuje **účty v libovolném adresáři organizace**, nahradí tato hodnota se `organizations`
->   - Pokud vaše aplikace podporuje **uživatele účtu Microsoft všechny**, nahradí tato hodnota se `common`
+>   - Pokud vaše aplikace podporuje režim **Účty v libovolném organizačním adresáři**, nahraďte tuto hodnotu za `organizations`.
+>   - Pokud vaše aplikace podporuje režim **Všichni uživatelé účtu Microsoft**, nahraďte tuto hodnotu za `common`.
 >
 > > [!TIP]
 > > Hodnoty **ID aplikace (klienta)**, **ID adresáře (tenanta)** a **Podporované typy účtu** najdete na stránce **Přehled** aplikace na webu Azure Portal.
@@ -148,7 +148,8 @@ Na řádek obsahující `.AddAzureAd` přidá ověření Microsoft identity plat
 
 
 > [!NOTE]
-> Nastavení `ValidateIssuer = false` je zjednodušení tohoto rychlého startu. V reálné aplikace, které potřebujete k ověření vystavitele najdete v ukázkách pochopit, jak to provést.
+> Nastavení `ValidateIssuer = false` je zjednodušení tohoto rychlého startu. Ve skutečných aplikacích budete muset ověřit vystavitele.
+> Najdete v ukázkách pochopit, jak to provést.
 
 ### <a name="protect-a-controller-or-a-controllers-method"></a>Ochrana řadiče nebo akcí řadiče
 

@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 03/19/2019
 ms.author: sachdevaswati
-ms.openlocfilehash: 1a596462eb42231a356ddc4fa67b6468b63cd97c
-ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
+ms.openlocfilehash: 5e4bd3647b557b260e65e3fb1ce297892f5d7d78
+ms.sourcegitcommit: 48a41b4b0bb89a8579fc35aa805cea22e2b9922c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/02/2019
-ms.locfileid: "58849304"
+ms.lasthandoff: 04/15/2019
+ms.locfileid: "59578820"
 ---
 # <a name="back-up-sql-server-databases-in-azure-vms"></a>Zálohování databází SQL Serveru ve virtuálních počítačích Azure
 
@@ -113,7 +113,7 @@ Zjistěte databáze spuštěné na virtuálním počítači.
     - Vytvoří účet služby Azure Backup **NT Service\AzureWLBackupPluginSvc** na virtuálním počítači.
       - Všechny operace zálohování a obnovení pomocí účtu služby.
       - **NT Service\AzureWLBackupPluginSvc** potřebuje oprávnění správce systému SQL. Všechny virtuální počítače SQL serveru, vytvořené na webu Azure Marketplace jsou dostupné **SqlIaaSExtension** nainstalované. **AzureBackupWindowsWorkload** používá rozšíření **SQLIaaSExtension** automaticky získat požadované oprávnění.
-    - Pokud jste nevytvořili virtuální počítač z marketplace, pak virtuální počítač nemá **SqlIaaSExtension** nainstalované, a operace zjišťování se nezdaří s chybovou zprávou **UserErrorSQLNoSysAdminMembership**. Postupujte podle pokynů v [#fix-sql--oprávnění sysadmin] Pokud chcete tento problém vyřešit.
+    - Pokud jste nevytvořili virtuální počítač z marketplace, pak virtuální počítač nemá **SqlIaaSExtension** nainstalované, a operace zjišťování se nezdaří s chybovou zprávou **UserErrorSQLNoSysAdminMembership**. Postupujte podle [pokyny](backup-azure-sql-database.md#fix-sql-sysadmin-permissions) chcete tento problém vyřešit.
 
         ![Vyberte virtuální počítač a databáze](./media/backup-azure-sql-database/registration-errors.png)
 

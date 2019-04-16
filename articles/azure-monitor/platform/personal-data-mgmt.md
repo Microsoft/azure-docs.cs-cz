@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 05/18/2018
 ms.author: magoedte
-ms.openlocfilehash: 9112d50384aba288038343ff9a14ed55542fb722
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 0cf5a80e3eedbe7efb8463162b5b3ed489ac08c8
+ms.sourcegitcommit: 48a41b4b0bb89a8579fc35aa805cea22e2b9922c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58121345"
+ms.lasthandoff: 04/15/2019
+ms.locfileid: "59577894"
 ---
 # <a name="guidance-for-personal-data-stored-in-log-analytics-and-application-insights"></a>Pokyny pro osobní údaje uložené v Log Analytics a Application Insights
 
@@ -86,6 +86,9 @@ Jak je uvedeno v [strategie pro zpracování osobních údajů](#strategy-for-pe
 ### <a name="view-and-export"></a>Zobrazení a export
 
 Pro obě zobrazit a exportovat data žádosti [dotazování rozhraní API služby Log Analytics](https://dev.loganalytics.io/) nebo [dotazování rozhraní API služby Application Insights](https://dev.applicationinsights.io/quickstart) by měla sloužit. Logiku pro tvar data převést na odpovídající ten umožní vašim uživatelům budou jenom na vás k implementaci. [Služba Azure Functions](https://azure.microsoft.com/services/functions/) díky skvělým místem pro hostování tuto logiku.
+
+> [!IMPORTANT]
+>  Přestože většinu operací mazání může dokončení mnohem rychleji než SLA, **formální smlouva SLA pro dokončení operace vyprázdnění nastavený na 30 dnů** kvůli jejich náročné dopad na datovou platformu používá. Toto je automatizovaný proces; neexistuje žádný způsob, jak požádat o rychlejší zpracování operace.
 
 ### <a name="delete"></a>Odstranění
 

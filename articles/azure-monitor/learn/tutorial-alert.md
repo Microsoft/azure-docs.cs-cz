@@ -4,93 +4,74 @@ description: Kurz odesílání výstrah v reakci na chyby ve vaší aplikaci pom
 keywords: ''
 author: mrbullwinkle
 ms.author: mbullwin
-ms.date: 09/20/2017
+ms.date: 04/10/2019
 ms.service: application-insights
 ms.custom: mvc
 ms.topic: tutorial
 manager: carmonm
-ms.openlocfilehash: 70a11867dded3b7156f6b212ceb4756ee7c287f6
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 05285a177827cd0dd1e0e39e779a395ccfdfc0cd
+ms.sourcegitcommit: 48a41b4b0bb89a8579fc35aa805cea22e2b9922c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58079158"
+ms.lasthandoff: 04/15/2019
+ms.locfileid: "59578760"
 ---
 # <a name="monitor-and-alert-on-application-health-with-azure-application-insights"></a>Monitorování a upozornění na stav aplikace pomocí Azure Application Insights
 
-Azure Application Insights umožňuje monitorovat své aplikace a pošle vám výstrahy, když je buď nedostupné, ve kterém došlo k selhání, nebo trpí problémy s výkonem.  Tento kurz vás provede procesem vytvoření testů, který bude nepřetržitě kontrolovat dostupnost vaší aplikace a odesílat různé druhy výstrah v reakci na zjištěné problémy.  Získáte informace o těchto tématech:
+Azure Application Insights umožňuje monitorovat své aplikace a pošle vám výstrahy, když je buď nedostupné, ve kterém došlo k selhání, nebo trpí problémy s výkonem.  Tento kurz vás provede procesem vytvoření testů, který bude nepřetržitě kontrolovat dostupnost vaší aplikace.
+
+Získáte informace o těchto tématech:
 
 > [!div class="checklist"]
 > * Vytvořit test dostupnosti, který bude nepřetržitě kontrolovat odpovědi aplikace
 > * Odeslání e-mailu správce, když dojde k potížím
-> * Vytvoření výstrah na základě metrik výkonu 
-> * Pomocí aplikace logiky k odesílání telemetrických dat souhrnný podle plánu.
-
 
 ## <a name="prerequisites"></a>Požadavky
 
-K provedení kroků v tomto kurzu je potřeba:
+Pro absolvování tohoto kurzu potřebujete:
 
-- Nainstalovat [Visual Studio 2017](https://www.visualstudio.com/downloads/) s následujícími sadami funkcí:
-    - Vývoj pro ASP.NET a web
-    - Vývoj pro Azure
-    - Nasadit aplikaci .NET do Azure a [povolit sadu Application Insights SDK](../../azure-monitor/app/asp-net.md). 
+Vytvoření [prostředku Application Insights](https://docs.microsoft.com/azure/azure-monitor/learn/dotnetcore-quick-start#enable-application-insights).
 
+## <a name="sign-in-to-azure"></a>Přihlásit se k Azure
 
-## <a name="log-in-to-azure"></a>Přihlášení k Azure
 Přihlaste se k webu Azure Portal na adrese [https://portal.azure.com](https://portal.azure.com).
 
 ## <a name="create-availability-test"></a>Vytvořit test dostupnosti.
-Testy dostupnosti ve službě Application Insights umožňují automaticky otestovat aplikaci z různých míst po celém světě.   V tomto kurzu provedete jednoduchý test a ujistěte se, že aplikace je k dispozici.  Můžete také vytvořit kompletní návod k otestování jeho provozu. 
+
+Testy dostupnosti ve službě Application Insights umožňují automaticky otestovat aplikaci z různých míst po celém světě.   V tomto kurzu provedete test adresy url k zajištění, že vaše webová aplikace je k dispozici.  Můžete také vytvořit kompletní návod k otestování jeho provozu. 
 
 1. Vyberte **Application Insights** a pak vyberte své předplatné.  
-1. Vyberte **dostupnosti** pod **prošetření** nabídky a pak klikněte na tlačítko **testu přidat**.
- 
-    ![Přidat test dostupnosti](media/tutorial-alert/add-test.png)
 
-2. Zadejte název pro testovací a nechte ostatní výchozí hodnoty.  To vyžaduje domovskou stránku aplikace každých 5 minut z 5 různých geografických umístěních. 
-3. Vyberte **výstrahy** otevřít **výstrahy** panel, ve kterém můžete definovat podrobnosti o tom, jak reagovat, pokud se test nezdaří. Typ e-mailovou adresu odeslání, pokud je splněna kritéria výstrahy.  Volitelně můžete zadat adresu z webhooku volat, když je splněna kritéria výstrahy.
+2. Vyberte **dostupnosti** pod **prošetření** nabídky a pak klikněte na tlačítko **vytvořit testovací**.
 
-    ![Vytvořit test](media/tutorial-alert/create-test.png)
- 
-4. Vraťte se do panelu testu a po několika minutách se začnou zobrazovat výsledky testu dostupnosti.  Klikněte na název testu, chcete-li zobrazit podrobnosti o jednotlivých umístěních.  Bodový graf ukazuje úspěšnosti a doba trvání jednotlivých testovacích.
+    ![Přidat test dostupnosti](media/tutorial-alert/add-test-001.png)
 
-    ![Podrobnosti o testu](media/tutorial-alert/test-details.png)
+3. Zadejte název pro testovací a nechte ostatní výchozí hodnoty.  Tento výběr se aktivuje požadavky pro adresy url aplikace každých 5 minut z pěti různých geografických umístěních.
 
-5.  Můžete procházet hierarchii podrobné informace o všech určitého testu kliknutím na jeho bod v bodovém grafu.  Následující příklad ukazuje podrobnosti pro chybné žádosti.
+4. Vyberte **výstrahy** otevřít **výstrahy** rozevíracího seznamu, ve kterém můžete definovat podrobnosti o tom, jak reagovat, pokud se test nezdaří. Zvolte **v téměř reálném čase** a nastavit stav na **povoleno.**
 
-    ![Výsledek testu](media/tutorial-alert/test-result.png)
+    Typ e-mailovou adresu odeslání, pokud je splněna kritéria výstrahy.  Volitelně můžete zadat adresu z webhooku volat, když je splněna kritéria výstrahy.
+
+    ![Vytvořit test](media/tutorial-alert/create-test-001.png)
+
+5. Vraťte se do panelu testu, vyberte symbol tří teček a upravit upozornění zadejte konfiguraci pro upozornění v téměř reálném čase.
+
+    ![Upravit upozornění](media/tutorial-alert/edit-alert-001.png)
+
+6. Nastavit umístění se na větší než nebo rovna hodnotě 3. Vytvoření [skupiny akcí](https://docs.microsoft.com/azure/azure-monitor/platform/action-groups) konfigurace, který načte oznámení, když prahové hodnoty výstrahy dojde k porušení zabezpečení.
+
+    ![Uložit upozornění uživatelského rozhraní](media/tutorial-alert/save-alert-001.png)
+
+7. Po konfiguraci upozornění, klikněte na název testu, chcete-li zobrazit podrobnosti o jednotlivých umístěních. Testy lze zobrazit v obou řádku a bodového grafu vykreslení formátu k vizualizaci úspěch nebo selhání pro dané časové rozmezí.
+
+    ![Podrobnosti o testu](media/tutorial-alert/test-details-001.png)
+
+8. Můžete procházet hierarchii k podrobnostem jakéhokoli testu, kliknutím na jeho bod v bodovém grafu. Tím se spustí zobrazení podrobností transakcí začátku do konce. Následující příklad ukazuje podrobnosti pro chybné žádosti.
+
+    ![Výsledek testu](media/tutorial-alert/test-result-001.png)
   
-6. Při splnění kritérií výstrah e-mailu podobně jako následující. na té posílá na adresu, kterou jste zadali.
-
-    ![Upozornění e-mailu](media/tutorial-alert/alert-mail.png)
-
-
-## <a name="create-an-alert-from-metrics"></a>Vytvořte výstrahu z metrik
-Kromě odesílání oznámení z test dostupnosti, můžete vytvořit výstrahy ze všech metrik výkonu, která se shromažďují pro vaši aplikaci.
-
-1. Vyberte **výstrahy** z **konfigurovat** nabídky.  Otevře se panel Azure Alerts.  Můžou existovat další pravidla upozornění nakonfigurované pro jiné služby.
-1. Klikněte na tlačítko **přidat upozornění metriky**.  Otevře se panel Chcete-li vytvořit nové pravidlo upozornění.
-
-    ![Přidat upozornění metriky](media/tutorial-alert/add-metric-alert.png)
-
-1. Zadejte **název** výstrahy pravidlo a vyberte svou aplikaci v rozevírací nabídce pro **prostředků**.
-1. Vyberte **metrika** vzorků.  Označuje hodnotu této žádosti za posledních 24 hodin se zobrazí graf.  To vám usnadní nastavení podmínky pro metriku.
-
-    ![Přidání pravidla výstrahy](media/tutorial-alert/add-alert-01.png)
-
-1. Zadejte **podmínku** a **prahová hodnota** výstrahy. Toto je počet případů, kdy musí být překročen metriku pro výstrahu, který se má vytvořit. 
-1. V části **upozorňovat prostřednictvím** zkontrolujte **e-mailu vlastníci, přispěvatelé a čtenáři** pro odeslání e-mailu pro tyto uživatele, když se vyskytl výstražný stav je splněna a přidání e-mailové adresy všech dalších příjemců, kterým.  Můžete také zadat webhook nebo aplikaci logiky tady, která se spustí, když je splněna podmínka.  Toto může pokusit zmírnit zjištěný problém nebo 
-
-    ![Přidání pravidla výstrahy](media/tutorial-alert/add-alert-02.png)
-
-
-## <a name="proactively-send-information"></a>Proaktivně odeslat informace
-Upozornění se vytvářejí v reakci na konkrétní sadu problémy zjištěné ve vaší aplikaci a obvykle rezervovat výstrahy pro kritické podmínky, které vyžadují okamžitou pozornost.  Proaktivně můžete získat informace o vaší aplikaci s využitím aplikace logiky, která se spouští automaticky podle plánu.  Můžete například mít e-mailu odesílat správcům každý den se souhrnnými informacemi, které vyžaduje další hodnocení.
-
-Podrobnosti týkající se vytvoření aplikace logiky s využitím Application Insights najdete v tématu [automatizovat Application Insights procesů pomocí Logic Apps](../../azure-monitor/app/automate-with-logic-apps.md)
-
 ## <a name="next-steps"></a>Další postup
+
 Teď, když jste zjistili, jak upozorní na problémy, přejděte k dalšímu kurzu, kde se naučíte, jak analyzovat, jak uživatelé interagují s vaší aplikací.
 
 > [!div class="nextstepaction"]

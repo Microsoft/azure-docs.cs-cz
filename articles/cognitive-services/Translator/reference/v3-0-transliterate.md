@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 02/01/2019
 ms.author: v-jansko
-ms.openlocfilehash: 97a2318b7aa3591193108a8a061a15ec5692fac5
-ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
+ms.openlocfilehash: 4811e40f87962ecde75c7b2bb14e1d033e82ad44
+ms.sourcegitcommit: 48a41b4b0bb89a8579fc35aa805cea22e2b9922c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/04/2019
-ms.locfileid: "58918616"
+ms.lasthandoff: 04/15/2019
+ms.locfileid: "59577829"
 ---
 # <a name="translator-text-api-30-transliterate"></a>Translator Text API 3.0: Transliterace
 
@@ -60,8 +60,8 @@ Hlavičky žádosti patří:
   <th width="20%">Hlavičky</th>
   <th>Popis</th>
   <tr>
-    <td>_Jedním autorizačním_<br/>_záhlaví_</td>
-    <td>*Hlavička požadavku požadované*.<br/>Zobrazit [dostupné možnosti pro ověřování](./v3-0-reference.md#authentication).</td>
+    <td>Ověřovací hlavičky</td>
+    <td><em>Hlavička požadavku požadované</em>.<br/>Zobrazit <a href="https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication">dostupné možnosti pro ověřování</a>.</td>
   </tr>
   <tr>
     <td>Typ obsahu</td>
@@ -127,7 +127,7 @@ Je například odpověď JSON:
 Tady jsou možné stavové kódy HTTP, které vrátí žádost o. 
 
 <table width="100%">
-  <th width="20%">Kód stavu</th>
+  <th width="20%">Stavový kód</th>
   <th>Popis</th>
   <tr>
     <td>200</td>
@@ -165,7 +165,7 @@ Pokud dojde k chybě, vrátí požadavek také chybová odpověď JSON. Kód chy
 
 Následující příklad ukazuje, jak převést dva řetězce japonské Romanized japonštinu.
 
-# [<a name="curl"></a>Curl](#tab/curl)
+# <a name="curltabcurl"></a>[curl](#tab/curl)
 
 Datová část JSON pro požadavek v tomto příkladu:
 

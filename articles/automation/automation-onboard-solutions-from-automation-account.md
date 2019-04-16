@@ -5,16 +5,16 @@ services: automation
 ms.service: automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 10/16/2018
+ms.date: 4/11/2019
 ms.topic: conceptual
 manager: carmonm
 ms.custom: mvc
-ms.openlocfilehash: 0f5d36dfbe614e35256231a91a9e15055e2e81cb
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 41f0607908cde94ca08a4c4dfce0a47032eefbb3
+ms.sourcegitcommit: 48a41b4b0bb89a8579fc35aa805cea22e2b9922c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57843619"
+ms.lasthandoff: 04/15/2019
+ms.locfileid: "59578437"
 ---
 # <a name="onboard-update-management-change-tracking-and-inventory-solutions"></a>Začlenění řešení Update Management, Change Tracking a Inventory
 
@@ -44,7 +44,7 @@ V následující tabulce jsou uvedeny podporované mapování:
 |EastUS<sup>1</sup>|EastUS2|
 |JapanEast|JapanEast|
 |SoutheastAsia|SoutheastAsia|
-|WestCentralUS|WestCentralUS|
+|WestCentralUS<sup>2</sup>|WestCentralUS<sup>2</sup>|
 |WestEurope|WestEurope|
 |UKSouth|UKSouth|
 |USGovVirginia|USGovVirginia|
@@ -52,8 +52,7 @@ V následující tabulce jsou uvedeny podporované mapování:
 
 <sup>1</sup> EastUS2EUAP a EastUS mapování pracovních prostorů Log Analytics pro účty Automation nejsou přesné mapování oblastmi, ale je správné mapování.
 
-> [!NOTE]
-> Z důvodu poptávky nemusí být oblasti k dispozici při vytváření pracovního prostoru účtu Automation a Log Analytics.  Pokud je to tento případ, ujistěte se, že používáte v předchozí tabulce, která může vytvářet prostředky v oblasti.
+<sup>2</sup> z důvodu omezení kapacity oblast není k dispozici při vytváření nových prostředků. To zahrnuje pracovní prostory účty Automation a Log Analytics. Dříve existující propojených prostředků v oblasti však musí i nadále fungovat.
 
 Řešení Change Tracking a Inventory poskytují možnost na virtuálních počítačích [sledovat změny](automation-vm-change-tracking.md) a [inventář](automation-vm-inventory.md). V tomto kroku povolíte řešení na virtuálním počítači.
 
@@ -77,7 +76,7 @@ Pokud vybraný pracovní prostor dosud nemá řešení Update Management nebo Ch
 
 Pokud je vybraný pracovní prostor už řešení, se znovu nasadí řešení a konfigurace oboru se nepřidal do něj.
 
-## <a name="saved-searches"></a>Uložená hledání
+## <a name="saved-searches"></a>Uložené výsledky hledání
 
 Když počítač se přidá do Update Management nebo Change Tracking a Inventory řešení, se přidají do jedné ze dvou uložené výsledky hledání ve vašem pracovním prostoru. Tyto uložené výsledky hledání jsou dotazy, které obsahují počítače, které cílí na tato řešení.
 
@@ -90,7 +89,7 @@ Přejděte do účtu Automation a vyberte **uložená hledání** pod **Obecné*
 
 Vyberte buď uložené výsledky hledání, chcete-li zobrazit dotaz použitý k naplnění skupiny. Následující obrázek ukazuje dotaz a jeho výsledky:
 
-![Uložená hledání](media/automation-onboard-solutions-from-automation-account/savedsearch.png)
+![Uložené výsledky hledání](media/automation-onboard-solutions-from-automation-account/savedsearch.png)
 
 ## <a name="onboard-azure-vms"></a>Připojení virtuálních počítačů Azure
 
@@ -112,7 +111,7 @@ Ručně nainstalovat počítače nebo počítače, které již hlásí do vašeh
 
 Vyberte **spravovat počítače**. Tato akce otevře **Správa počítačů** stránky. Tato stránka umožňuje povolit řešení na vybraná sada počítačů, všech dostupných počítačích nebo povolit řešení pro všechny aktuální počítače a jeho povolení pro všechny budoucí počítače. **Spravovat počítače** může být tlačítko zašedlé, pokud jste dříve vybrali možnost **povolit na všech dostupných a budoucích počítačích**.
 
-![Uložená hledání](media/automation-onboard-solutions-from-automation-account/managemachines.png)
+![Uložené výsledky hledání](media/automation-onboard-solutions-from-automation-account/managemachines.png)
 
 ### <a name="all-available-machines"></a>Všechny dostupné počítače
 

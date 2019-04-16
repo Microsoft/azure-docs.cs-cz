@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.date: 06/11/2018
 ms.author: magattus
 ms.custom: mvc
-ms.openlocfilehash: c5eb69ddd9c621024799b940ef58c34e7caaa3ff
-ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
+ms.openlocfilehash: b80cb0d68e6875881f2a9fc97fa52531525c1cdc
+ms.sourcegitcommit: 48a41b4b0bb89a8579fc35aa805cea22e2b9922c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58294021"
+ms.lasthandoff: 04/15/2019
+ms.locfileid: "59579185"
 ---
 # <a name="tutorial-add-a-custom-domain-to-your-azure-cdn-endpoint"></a>Kurz: Přidat vlastní doménu do koncového bodu Azure CDN
 V tomto kurzu se dozvíte, jak přidat vlastní doménu do koncového bodu služby Azure Content Delivery Network (CDN). Pokud k doručování obsahu používáte síť CDN a chcete, aby se v adrese URL sítě CDN zobrazoval název vaší vlastní domény, potřebujete vlastní doménu. Srozumitelný název domény může být praktický pro vaše zákazníky a užitečný při budování značky. 
@@ -50,7 +50,7 @@ Než budete moct použít vlastní doménu u koncového bodu Azure CDN, musíte 
 K vlastní doméně a její subdoméně může současně být přidružený pouze jeden koncový bod. Pro různé koncové body služeb Azure však můžete použít různé subdomény stejné vlastní domény, a to pomocí několika záznamů CNAME. Na stejný koncový bod CDN můžete také namapovat vlastní doménu s různými subdoménami.
 
 > [!NOTE]
-> Libovolný typ záznamu aliasu je použít pro vlastní domény, pokud používáte Azure DNS jako vašeho poskytovatele domény. Tento návod používá typ záznamu CNAME. Pokud používáte A nebo typy záznamů AAAA postupujte podle stejných kroků níže při nahrazování CNAME typu záznamu podle vašeho výběru. Pokud používáte záznamu o aliasu pro přidání kořenové domény jako vlastní doménu a chcete povolit protokol SSL, je nutné použít ruční ověření, jak je popsáno [zde](https://docs.microsoft.com/azure/cdn/cdn-custom-ssl?tabs=option-1-default-enable-https-with-a-cdn-managed-certificate#custom-domain-is-not-mapped-to-your-cdn-endpoint)
+> Libovolný typ záznamu aliasu lze použít pro vlastní domény, pokud používáte Azure DNS jako vašeho poskytovatele domény. Tento návod používá typ záznamu CNAME. Pokud používáte typy záznamů A nebo AAAA, postupujte podle stejných kroků níže a nahraďte podle vašeho výběru typ záznamu CNAME. Pokud používáte záznamu o aliasu pro přidání kořenové domény jako vlastní doménu a chcete povolit protokol SSL, je nutné použít ruční ověření, jak je popsáno v [v tomto článku](https://docs.microsoft.com/azure/cdn/cdn-custom-ssl?tabs=option-1-default-enable-https-with-a-cdn-managed-certificate#custom-domain-is-not-mapped-to-your-cdn-endpoint). Další informace najdete v tématu [vrcholu zóny bodu ke koncovým bodům Azure CDN](https://docs.microsoft.com/azure/dns/dns-alias#point-zone-apex-to-azure-cdn-endpoints).
 
 ## <a name="map-the-temporary-cdnverify-subdomain"></a>Mapování dočasné subdomény cdnverify
 

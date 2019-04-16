@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 08/16/2018
 ms.author: sedusch
-ms.openlocfilehash: f1b993cf45d987cb51f64359b331f3862d054774
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
+ms.openlocfilehash: 62356ee35631373b5a5d38ed356bbb2fb489807b
+ms.sourcegitcommit: 48a41b4b0bb89a8579fc35aa805cea22e2b9922c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59549895"
+ms.lasthandoff: 04/15/2019
+ms.locfileid: "59577791"
 ---
 # <a name="setting-up-pacemaker-on-suse-linux-enterprise-server-in-azure"></a>Nastavení Pacemaker na SUSE Linux Enterprise Server v Azure
 
@@ -84,7 +84,7 @@ Spusťte následující příkazy na všech **iSCSI target virtuálních počít
 
 Spusťte následující příkazy na všech **iSCSI target virtuálních počítačů** vytvoření disků služby iSCSI pro clusterů, které jsou používány ve vašich systémů SAP. V následujícím příkladu se vytvoří SBD zařízení pro několik clusterů. To se dozvíte, jak byste použili jeden cílový server iSCSI pro několik clusterů. Zařízení SBD umísťují na disk s operačním systémem. Ujistěte se, že máte dostatek místa.
 
-**` nfs`** slouží k identifikaci clusteru systému souborů NFS **ascsnw1** slouží k identifikaci clusteru Asc **NW1**, **dbnw1** slouží k identifikaci databáze clusteru **NW1** , **systému souborů nfs 0** a **systému souborů nfs 1** jsou názvy hostitelů z uzlů clusteru systému souborů NFS **nw1-xscs-0** a **nw1 xscs 1**jsou názvy hostitelů **NW1** uzly, clusteru ASC a **nw1-db-0** a **nw1-db-1** názvy hostitelů databáze jsou uzly clusteru. Je nahraďte názvy hostitelů uzlů clusteru a identifikátor SID systému SAP.
+**`nfs`** slouží k identifikaci clusteru systému souborů NFS **ascsnw1** slouží k identifikaci clusteru Asc **NW1**, **dbnw1** slouží k identifikaci databáze clusteru **NW1** , **systému souborů nfs 0** a **systému souborů nfs 1** jsou názvy hostitelů z uzlů clusteru systému souborů NFS **nw1-xscs-0** a **nw1 xscs 1**jsou názvy hostitelů **NW1** uzly, clusteru ASC a **nw1-db-0** a **nw1-db-1** názvy hostitelů databáze jsou uzly clusteru. Je nahraďte názvy hostitelů uzlů clusteru a identifikátor SID systému SAP.
 
 <pre><code># Create the root folder for all SBD devices
 sudo mkdir /sbd
@@ -302,7 +302,7 @@ Následující položky jsou s předponou buď **[A]** – platí pro všechny u
    <b>SBD_WATCHDOG="yes"</b>
    </code></pre>
 
-   Vytvořte ` softdog` konfiguračního souboru
+   Vytvořte `softdog` konfiguračního souboru
 
    <pre><code>echo softdog | sudo tee /etc/modules-load.d/softdog.conf
    </code></pre>

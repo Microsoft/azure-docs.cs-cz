@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 02/02/2018
 ms.author: cephalin
 ms.custom: include file
-ms.openlocfilehash: 4f061dc66829c49fba6722215dc36ed2ce6464ee
-ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
+ms.openlocfilehash: cd7fc7487a41979f37c9a55baeb0b8e172e808c4
+ms.sourcegitcommit: 48a41b4b0bb89a8579fc35aa805cea22e2b9922c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58919196"
+ms.lasthandoff: 04/15/2019
+ms.locfileid: "59587005"
 ---
 Ve službě Azure Cloud Shell, nakonfigurovat přihlašovací údaje nasazení pomocí [ `az webapp deployment user set` ](/cli/azure/webapp/deployment/user?view=azure-cli-latest#az-webapp-deployment-user-set) příkazu. Tento uživatel nasazení je vyžadován pro nasazení pomocí FTP a místního Gitu do webové aplikace. Uživatelské jméno a heslo jsou na úrovni účtu. _Jsou to liší od přihlašovacích údajů vašeho předplatného Azure._
 
@@ -23,7 +23,7 @@ V následujícím příkladu nahraďte  *\<uživatelské jméno >* a  *\<heslo >
 az webapp deployment user set --user-name <username> --password <password>
 ```
 
-Získáte výstup JSON se zobrazeným heslem `null`. Pokud se zobrazí chyba `'Conflict'. Details: 409`, změňte uživatelské jméno. Pokud se zobrazí chyba ` 'Bad Request'. Details: 400`, použijte silnější heslo. Nesmí obsahovat uživatelské jméno pro nasazení "@" symbol pro místní Git nabízených oznámení.
+Získáte výstup JSON se zobrazeným heslem `null`. Pokud se zobrazí chyba `'Conflict'. Details: 409`, změňte uživatelské jméno. Pokud se zobrazí chyba `'Bad Request'. Details: 400`, použijte silnější heslo. Nesmí obsahovat uživatelské jméno pro nasazení "@" symbol pro místní Git nabízených oznámení.
 
 Konfigurace tohoto uživatele nasazení pouze jednou. Můžete ho použít pro všechna nasazení v Azure.
 

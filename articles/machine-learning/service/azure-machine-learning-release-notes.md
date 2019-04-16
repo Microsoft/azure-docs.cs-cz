@@ -10,18 +10,25 @@ ms.author: larryfr
 author: Blackmist
 ms.date: 04/08/2019
 ms.custom: seodec18
-ms.openlocfilehash: 1abf3fd5ca678f878e36e3df3f8da0c0e0b5f852
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.openlocfilehash: e58205e847dbfdae8a114221f9bd56102555eeef
+ms.sourcegitcommit: 48a41b4b0bb89a8579fc35aa805cea22e2b9922c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59528131"
+ms.lasthandoff: 04/15/2019
+ms.locfileid: "59579151"
 ---
 # <a name="azure-machine-learning-service-release-notes"></a>Zpráva k vydání verze služby Azure Machine Learning
 
 V tomto článku najdete další informace o vydaných verzích služby Azure Machine Learning.  Úplný popis jednotlivých sadách SDK navštivte referenční dokumenty pro:
 + Azure Machine Learning [ **hlavní sada SDK pro Python**](https://aka.ms/aml-sdk)
 + Azure Machine Learning [ **sady SDK pro přípravu dat**](https://aka.ms/data-prep-sdk)
+
+## <a name="2019-04-15"></a>2019-04-15
+
+### <a name="azure-portal"></a>Azure Portal
+  + Můžete teď znovu odeslat existující skript spustit v existujícím clusteru vzdálený výpočetní. 
+  + Nyní můžete spustit publikované kanálu o nové parametry na kartě kanály. 
+  + Podrobnosti o spuštění teď podporuje nový prohlížeč snímku souboru. Snímek adresáře můžete zobrazit při odeslání konkrétního spuštění. Můžete také stáhnout Poznámkový blok, který byl odeslán na spuštění testu.
 
 ## <a name="2019-04-08"></a>2019-04-08
 
@@ -49,6 +56,7 @@ V tomto článku najdete další informace o vydaných verzích služby Azure Ma
   + Rozpoznání typu sloupce teď podporuje sloupce typu Long.
   + Je opravená chyba, ve kterém byly některé hodnoty data zobrazení jako časová razítka namísto Pythonu objekty data a času.
   + Je opravená chyba, pokud byly některé počtem typu zobrazení jako hodnot datového typu Double místo celých čísel.
+
   
 ## <a name="2019-03-25"></a>2019-03-25
 

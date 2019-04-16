@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 49b247338bbb1f20082fdef2a2bc291fb6183b10
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.openlocfilehash: 8bc2acaa24637c3297af8e91f01b67e5d30f2931
+ms.sourcegitcommit: 48a41b4b0bb89a8579fc35aa805cea22e2b9922c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/11/2019
-ms.locfileid: "59493055"
+ms.lasthandoff: 04/15/2019
+ms.locfileid: "59577963"
 ---
 # <a name="reporting-options-for-azure-ad-password-management"></a>Možnosti zasílání zpráv o správě hesel Azure AD
 
@@ -50,15 +50,14 @@ V Azure portal ještě neznáte vylepšili jsme způsobu, jakým se zobrazí res
 1. Přejděte na web [Azure Portal](https://portal.azure.com).
 2. Vyberte **všechny služby** v levém podokně.
 3. Vyhledejte **Azure Active Directory** v seznamu služeb a vyberte ji.
-4. Vyberte **Uživatelé a skupiny**.
-5. Vyberte **protokoly auditu** z **uživatelů a skupin** nabídky. Zobrazí všechny události auditu, ke kterým došlo před všichni uživatelé ve vašem adresáři. Můžete filtrovat toto zobrazení můžete zobrazit všechny události související s hesly.
-6. Chcete-li filtrovat toto zobrazení můžete zobrazit jenom události související s hesly obnovení, vyberte **filtr** tlačítko v horní části podokna.
-7. Z **filtr** nabídce vyberte možnost **kategorie** rozevíracího seznamu a změňte ho na **samoobslužné správy hesel** typ kategorie.
-8. Volitelně můžete dál filtrovat seznam výběrem konkrétní **aktivity** vás zajímá.
+4. Vyberte **uživatelé** z části Správa.
+5. Vyberte **protokoly auditu** z **uživatelé** okno. Zobrazí všechny události auditu, ke kterým došlo před všichni uživatelé ve vašem adresáři. Můžete filtrovat toto zobrazení můžete zobrazit všechny události související s hesly.
+6. Z **filtr** nabídce v horní části podokna, vyberte **služby** rozevíracího seznamu a změňte ho na **samoobslužné správy hesel** typ služby.
+7. Volitelně můžete dál filtrovat seznam výběrem konkrétní **aktivity** vás zajímá.
 
 ### <a name="converged-registration-preview"></a>Konvergované registrace (preview)
 
-Pokud se účastníte ve verzi public preview sblížené registraci, najdete informace týkající se aktivity uživatele v protokolech auditování v kategorii **metody ověřování**.
+Pokud se účastníte ve verzi public preview sblížené registrace, najdete informace týkající se aktivity uživatele v protokolech auditování v rámci služby **metody ověřování**.
 
 ## <a name="description-of-the-report-columns-in-the-azure-portal"></a>Popis sloupce sestavy na webu Azure Portal
 
@@ -176,16 +175,16 @@ Následující seznam popisuje tato aktivita podrobně:
 
 ## <a name="next-steps"></a>Další postup
 
-* [Jak lze dokončit úspěšné zavedení samoobslužného resetování HESLA?](howto-sspr-deployment.md)
+* [Jak dokončit úspěšné zavedení SSPR?](howto-sspr-deployment.md)
 * [Resetování nebo změna hesla](../user-help/active-directory-passwords-update-your-own-password.md)
 * [Registrace samoobslužného resetování hesla](../user-help/active-directory-passwords-reset-register.md)
 * [Máte dotaz k licencování?](concept-sspr-licensing.md)
 * [Jaká data používá SSPR a která data byste měli naplnit pro vaše uživatele?](howto-sspr-authenticationdata.md)
-* [Jaké metody ověřování jsou dostupné pro uživatele?](concept-sspr-howitworks.md#authentication-methods)
+* [Které metody ověřování jsou dostupné pro uživatele?](concept-sspr-howitworks.md#authentication-methods)
 * [Jaké jsou možnosti zásad se SSPR?](concept-sspr-policy.md)
-* [Co je zpětný zápis hesla a proč je postaral o něm?](howto-sspr-writeback.md)
-* [Co jsou všechny možnosti v SSPR a co znamenají?](concept-sspr-howitworks.md)
-* [Myslím, že je něco poškozené. Jak mám řešit problémy SSPR?](active-directory-passwords-troubleshoot.md)
-* [Mám dotaz, který není zodpovězená jinde](active-directory-passwords-faq.md)
+* [Co je zpětný zápis hesla a proč byste se o něj měli starat?](howto-sspr-writeback.md)
+* [Jaké jsou všechny možnosti v SSPR a co znamenají?](concept-sspr-howitworks.md)
+* [Myslím, že je něco poškozené. Jak řešit problémy SSPR?](active-directory-passwords-troubleshoot.md)
+* [Mám otázku, která není zodpovězená jinde](active-directory-passwords-faq.md)
 
 [Reporting]: ./media/howto-sspr-reporting/sspr-reporting.png "Protokoly příklad aktivit auditu samoobslužného resetování HESLA ve službě Azure AD"

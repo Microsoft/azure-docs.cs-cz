@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 03/28/2019
 ms.author: snehaa
-ms.openlocfilehash: 366240c273feed559edb6e569640020046cc9471
-ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
+ms.openlocfilehash: 17cead93325da903161d95b315435d6e7b106dbb
+ms.sourcegitcommit: 48a41b4b0bb89a8579fc35aa805cea22e2b9922c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2019
-ms.locfileid: "58578641"
+ms.lasthandoff: 04/15/2019
+ms.locfileid: "59578913"
 ---
 # <a name="azure-migrate---frequently-asked-questions-faq"></a>Azure Migrate – nejčastější dotazy (FAQ)
 
@@ -60,6 +60,10 @@ Sjednotí stavy | USA – východ nebo USA (střed) – západ
 ### <a name="how-does-the-on-premises-site-connect-to-azure-migrate"></a>Jak v místní lokalitě připojit k Azure Migrate?
 
 Připojení může být přes internet nebo pomocí veřejného partnerského vztahu ExpressRoute.
+
+### <a name="what-network-connectivity-requirements-are-needed-for-azure-migrate"></a>Jaké požadavky síťového připojení jsou potřeba ke službě Azure Migrate?
+
+Adresy URL a porty potřebné ke službě Azure Migrate ke komunikaci s Azure najdete v tématu [adresy URL pro připojení k](https://docs.microsoft.com/azure/migrate/concepts-collector#urls-for-connectivity).
 
 ### <a name="can-i-harden-the-vm-set-up-with-the-ova-template"></a>Můžete posílit ochranu virtuálních počítačů s OVA šablony?
 

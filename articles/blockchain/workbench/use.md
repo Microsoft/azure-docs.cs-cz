@@ -5,17 +5,17 @@ services: azure-blockchain
 keywords: ''
 author: PatAltimore
 ms.author: patricka
-ms.date: 01/08/2019
+ms.date: 04/15/2019
 ms.topic: tutorial
 ms.service: azure-blockchain
 ms.reviewer: brendal
 manager: femila
-ms.openlocfilehash: 55207e1eb8fe1b88df7f9bfb84a1da505d0e0252
-ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
+ms.openlocfilehash: 89c83ed6d02a60978bd54fb97d37063e34f6c0c7
+ms.sourcegitcommit: 48a41b4b0bb89a8579fc35aa805cea22e2b9922c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54332213"
+ms.lasthandoff: 04/15/2019
+ms.locfileid: "59578846"
 ---
 # <a name="tutorial-using-applications-in-azure-blockchain-workbench"></a>Kurz: Používání aplikací v Azure Blockchain Workbench
 
@@ -40,7 +40,7 @@ Dozvíte se, jak provést tyto akce:
 
 Musíte se přihlásit jako člen Blockchain Workbench. Pokud nejsou žádné aplikace, uvedená, jste členem Blockchain Workbench, ale není členem žádné aplikace. Správce Blockchain Workbench můžete přiřadit členy do aplikací.
 
-## <a name="create-new-contract"></a>Vytvořit nové smlouvy. 
+## <a name="create-new-contract"></a>Vytvořit nové smlouvy.
 
 Pokud chcete vytvořit nové smlouvy, musíte být členem zadané jako kontrakt **iniciátoru**. Definování rolí aplikace a iniciátory pro kontrakt informace najdete v tématu [pracovních postupů v přehledu konfigurace](configuration.md#workflows). Informace o přiřazování členů do aplikačních rolí, najdete v části [přidat člena do aplikace](manage-users.md#add-member-to-application).
 
