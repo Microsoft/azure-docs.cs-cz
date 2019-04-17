@@ -8,18 +8,18 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: 428e20995f6d2723c5af1ba2beb18ac1336243e7
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: 5497e4956fbdc74eced302867c33a66d07d6a184
+ms.sourcegitcommit: fec96500757e55e7716892ddff9a187f61ae81f7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59259962"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59617933"
 ---
 # <a name="connect-a-generic-client-application-to-your-azure-iot-central-application-nodejs"></a>Připojení aplikace obecného klienta aplikace Azure IoT Central (Node.js)
 
 Tento článek popisuje, jak jako vývojář zařízení připojit Obecná aplikace Node.js představující skutečné zařízení do aplikace Microsoft Azure IoT Central.
 
-## <a name="before-you-begin"></a>Před zahájením
+## <a name="before-you-begin"></a>Než začnete
 
 K dokončení kroků v tomto článku budete potřebovat následující:
 
@@ -335,4 +335,4 @@ Jako operátor v aplikaci Azure IoT Central pro skutečné zařízení můžete:
 
 ## <a name="next-steps"></a>Další postup
 
-Teď, když jste zjistili, jak se připojit k aplikaci Azure IoT Central obecného klienta Node.js, navrhované dalším krokem je další způsob [připravit a připojte Raspberry Pi](howto-connect-raspberry-pi-python.md).
+Teď, když jste zjistili, jak se připojit k aplikaci Azure IoT Central obecného klienta Node.js, navrhované dalším krokem je další způsob [nastavit šablonu vlastního zařízení](howto-set-up-template.md) pro zařízení IoT.

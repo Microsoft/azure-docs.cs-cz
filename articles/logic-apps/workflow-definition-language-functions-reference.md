@@ -1,27 +1,29 @@
 ---
-title: Funkce reference pro jazyk definice pracovního postupu – Azure Logic Apps | Dokumentace Microsoftu
-description: Další informace o funkcích jazyka definice pracovního postupu pro Azure Logic Apps
+title: Referenční informace pro funkce v jazyka definice pracovního postupu – Azure Logic Apps a Microsoft Flow
+description: Referenční příručka pro funkce ve výrazech, které jsou vytvořené pomocí jazyka pro definici pracovního postupu pro Azure Logic Apps a Microsoft Flow
 services: logic-apps
 ms.service: logic-apps
+ms.suite: integration
 author: ecfan
 ms.author: estfan
-manager: jeconnoc
+ms.reviewer: klam, LADocs
 ms.topic: reference
 ms.date: 08/15/2018
-ms.reviewer: klam, LADocs
-ms.suite: integration
-ms.openlocfilehash: e58d534811fc6d6ed2bb24486c149f217a7a28a3
-ms.sourcegitcommit: f331186a967d21c302a128299f60402e89035a8d
+ms.openlocfilehash: d7ea62c51065cbe85a905b4ff78743fdc11c1e10
+ms.sourcegitcommit: fec96500757e55e7716892ddff9a187f61ae81f7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58189899"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59618205"
 ---
-# <a name="functions-reference-for-workflow-definition-language-in-azure-logic-apps"></a>Functions – reference pro jazyk pro definování pracovních postupů v Azure Logic Apps
+# <a name="functions-reference-for-workflow-definition-language-in-azure-logic-apps-and-microsoft-flow"></a>Functions – reference pro jazyk pro definování pracovních postupů v Azure Logic Apps a Microsoft Flow
 
-Některé [výrazy](../logic-apps/logic-apps-workflow-definition-language.md#expressions) v [Azure Logic Apps](../logic-apps/logic-apps-overview.md) získávají hodnoty z modulu runtime akcí, které možná ještě neexistuje, při definici pracovního postupu aplikace logiky se spustí.
-Odkaz nebo pracovat s těmito hodnotami ve výrazech, můžete použít *funkce* poskytované [jazyka definice pracovního postupu](../logic-apps/logic-apps-workflow-definition-language.md).
-Například můžete použít matematické funkce pro výpočty, například [add()](../logic-apps/workflow-definition-language-functions-reference.md#add) funkce, která vrací součet z celých čísel nebo float. Tady je pár další příklad úkoly, které můžete provádět pomocí funkce:
+Definice pracovního postupu v [Azure Logic Apps](../logic-apps/logic-apps-overview.md) a [Microsoft Flow](https://docs.microsoft.com/flow/getting-started), některé [výrazy](../logic-apps/logic-apps-workflow-definition-language.md#expressions) získávají hodnoty z modulu runtime akcí, které možná ještě neexistuje při pracovního postupu Spustí se. Pokud chcete odkazovat na tyto hodnoty nebo hodnot v těchto výrazech zpracovat, můžete použít *funkce* poskytované [jazyka definice pracovního postupu](../logic-apps/logic-apps-workflow-definition-language.md). 
+
+> [!NOTE]
+> Tato stránka odkazu platí pro Azure Logic Apps a Microsoft Flow, ale zobrazí se v dokumentaci k Azure Logic Apps. I když se tato stránka platí konkrétně pro logic apps, tyto funkce pracují pro toky a logic apps. Další informace o funkcích a výrazy v Microsoft Flow, najdete v části [použití výrazů v podmínkách](https://docs.microsoft.com/flow/use-expressions-in-conditions).
+
+Například výpočet hodnot pomocí matematické funkce, jako [add() funkce](../logic-apps/workflow-definition-language-functions-reference.md#add), pokud chcete, aby součet z celých čísel nebo float. Tady je několik dalších příkladu úkoly, které můžete provádět pomocí funkce:
 
 | Úkol | Syntaxe funkce | Výsledek |
 | ---- | --------------- | ------ |
@@ -29,8 +31,7 @@ Například můžete použít matematické funkce pro výpočty, například [ad
 | Vrátí globálně jedinečný identifikátor (GUID). | guid() |"c2ecc88d-88c8-4096-912c-d6f2e2b138ce" |
 ||||
 
-Tento článek popisuje funkce, které můžete použít při vytváření definic aplikací logiky.
-K vyhledání funkce [podle jejich Obecné](#ordered-by-purpose), pokračujte v následujících tabulkách. Nebo podrobné informace o jednotlivých funkcích naleznete v tématu [abecední seznam](#alphabetical-list).
+K vyhledání funkce [podle jejich Obecné](#ordered-by-purpose), v následujících tabulkách. Nebo podrobné informace o jednotlivých funkcích naleznete v tématu [abecední seznam](#alphabetical-list).
 
 > [!NOTE]
 > Syntaxe pro parametr definice otazník (?), který se zobrazí po parametr znamená, že parametr je volitelný.
@@ -142,7 +143,7 @@ K práci s podmínkami, porovnat hodnoty a výsledky výrazu nebo vyhodnotit rů
 
 Chcete-li změnit typ nebo formát hodnoty, můžete tyto funkce pro převod.
 Můžete například změnit hodnotu z typu Boolean na celé číslo.
-Další způsob, jakým aplikace logiky zpracovává typy obsahu při převodu, najdete v článku [zpracování typů obsahu](../logic-apps/logic-apps-content-type.md).
+Další informace o zpracování typů obsahu při převodu Logic Apps najdete v tématu [zpracování typů obsahu](../logic-apps/logic-apps-content-type.md).
 Úplný přehled o jednotlivých funkcích naleznete v tématu [abecední seznam](../logic-apps/workflow-definition-language-functions-reference.md#alphabetical-list).
 
 | Funkce pro převod | Úkol |
@@ -229,7 +230,7 @@ Pro práci s daty a časy, můžete tyto funkce date a time.
 Tyto funkce pracovních postupů vám můžou pomoct:
 
 * Získáte podrobnosti o instanci pracovního postupu za běhu.
-* Práce se vstupy pro vytvoření instance aplikace logiky.
+* Práce se vstupy pro vytvoření instance logiku aplikace a toky.
 * Odkazují na výstupy z aktivační události a akce.
 
 Můžete například odkazují na výstupy z jedné akce a použít je v rámci novější akce.
@@ -248,7 +249,7 @@ Můžete například odkazují na výstupy z jedné akce a použít je v rámci 
 | [Položky](../logic-apps/workflow-definition-language-functions-reference.md#items) | Když uvnitř pro každý nebo proveďte až do smyčky, vrácení aktuální položku zadané smyčky.|
 | [listCallbackUrl](../logic-apps/workflow-definition-language-functions-reference.md#listCallbackUrl) | Vrátí adresu "URL zpětného volání", která volá triggeru nebo akce. |
 | [multipartBody](../logic-apps/workflow-definition-language-functions-reference.md#multipartBody) | Vrátí text pro určitou část ve výstupu akce, který má více částí. |
-| [parameters](../logic-apps/workflow-definition-language-functions-reference.md#parameters) | Vrátí hodnotu pro parametr, který je popsaný v definici aplikace logiky. |
+| [parameters](../logic-apps/workflow-definition-language-functions-reference.md#parameters) | Vrátí hodnotu pro parametr, který je popsaný v definici pracovního postupu. |
 | [trigger](../logic-apps/workflow-definition-language-functions-reference.md#trigger) | Vrátíte výstupní trigger's za běhu, nebo z jiných dvojice název a hodnota JSON. Viz také [triggerOutputs](#triggerOutputs) a [triggerBody](../logic-apps/workflow-definition-language-functions-reference.md#triggerBody). |
 | [triggerBody](../logic-apps/workflow-definition-language-functions-reference.md#triggerBody) | Vrátí trigger's `body` výstupu za běhu. Zobrazit [aktivační událost](../logic-apps/workflow-definition-language-functions-reference.md#trigger). |
 | [triggerFormDataValue](../logic-apps/workflow-definition-language-functions-reference.md#triggerFormDataValue) | Vrátí jednu hodnotu, která odpovídá názvu klíče v *data formuláře* nebo *form-encoded.* aktivovat výstupy. |
@@ -1812,7 +1813,7 @@ A vracet tyto výsledky:
 ### <a name="float"></a>float
 
 Převeďte řetězec verze pro číslo s plovoucí desetinnou čárkou na skutečný číslo s plovoucí desetinnou čárkou.
-Tato funkce slouží pouze v případě, že předávání vlastní parametry do aplikace, jako je například aplikace logiky.
+Tato funkce slouží pouze v případě, že předávání vlastní parametry do aplikace, například aplikaci logiky nebo toku.
 
 ```
 float('<value>')
@@ -2766,7 +2767,7 @@ multipartBody('<actionName>', <index>)
 Zkontrolujte, zda má výraz hodnotu false.
 Vrátí hodnotu PRAVDA, pokud má výraz hodnotu false nebo vrátí hodnotu false v případě hodnoty true.
 
-```
+```json
 not(<expression>)
 ```
 
@@ -2784,7 +2785,7 @@ not(<expression>)
 
 Tyto příklady zkontrolujte, zda jsou false zadaných výrazů:
 
-```
+```json
 not(false)
 not(true)
 ```
@@ -2798,7 +2799,7 @@ A vracet tyto výsledky:
 
 Tyto příklady zkontrolujte, zda jsou false zadaných výrazů:
 
-```
+```json
 not(equals(1, 2))
 not(equals(1, 1))
 ```
@@ -2833,7 +2834,7 @@ or(<expression1>, <expression2>, ...)
 
 Tyto příklady zkontrolujte, zda má nejméně jeden výraz hodnotu true:
 
-```
+```json
 or(true, false)
 or(false, false)
 ```
@@ -2847,7 +2848,7 @@ A vracet tyto výsledky:
 
 Tyto příklady zkontrolujte, zda má nejméně jeden výraz hodnotu true:
 
-```
+```json
 or(equals(1, 1), equals(1, 2))
 or(equals(1, 2), equals(1, 3))
 ```
@@ -2861,7 +2862,7 @@ A vracet tyto výsledky:
 
 ### <a name="parameters"></a>parameters
 
-Vrátí hodnotu pro parametr, který je popsaný v definici aplikace logiky.
+Vrátí hodnotu pro parametr, který je popsaný v definici pracovního postupu.
 
 ```
 parameters('<parameterName>')

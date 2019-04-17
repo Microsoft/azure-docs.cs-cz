@@ -11,16 +11,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 07/19/2018
+ms.date: 04/15/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 80b8db3bb2e7a21011508f30492bf99c7ecca583
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 7f5e2443a285e065426e3dba0312ef6420097ef1
+ms.sourcegitcommit: fec96500757e55e7716892ddff9a187f61ae81f7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58096856"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59617206"
 ---
 # <a name="azure-active-directory-pass-through-authentication-security-deep-dive"></a>Azure Active Directory předávací ověřování podrobné informace o zabezpečení
 
@@ -136,7 +136,7 @@ Předávací ověřování zpracování požadavku na přihlášení uživatele 
 4. Uživatel zadá své uživatelské jméno do **přihlášení uživatele** stránce a potom vybere **Další** tlačítko.
 5. Uživatel zadá své heslo do **přihlášení uživatele** stránce a potom vybere **přihlášení** tlačítko.
 6. Uživatelské jméno a heslo jsou odeslány do Azure AD Služba tokenů zabezpečení ve požadavek POST protokolu HTTPS.
-7. Azure AD STS načte veřejných klíčů pro všechny agenty ověřování zaregistrovaný ve svém tenantovi ze služby Azure SQL database a heslo zašifruje pomocí nich. 
+7. Azure AD STS načte veřejných klíčů pro všechny agenty ověřování zaregistrovaný ve svém tenantovi ze služby Azure SQL database a heslo zašifruje pomocí nich.
     - Vyvolá hodnoty "N" šifrované heslo pro ověření "N" agenti zaregistrovaní ve svém tenantovi.
 8. Azure AD STS umístí žádosti o ověření hesla se skládá z uživatelského jména a hodnoty šifrované heslo, do fronty služby Service Bus, který je určený výhradně pro vašeho tenanta.
 9. Protože inicializované agentů ověřování trvalé připojení do fronty služby Service Bus, jeden z dostupných agentů ověřování načte žádosti o ověření hesla.
@@ -145,6 +145,9 @@ Předávací ověřování zpracování požadavku na přihlášení uživatele 
     - Toto rozhraní API je stejného rozhraní API, která používá služby Active Directory Federation Services (AD FS) k přihlašování uživatelů ve scénáři federované přihlášení.
     - Toto rozhraní API se spoléhá na standardním rozlišením procesu ve Windows serveru k vyhledání řadiče domény.
 12. Ověřovací Agent přijímá výsledek ze služby Active Directory, jako je například úspěch, uživatelské jméno nebo heslo není správné nebo platnost hesla vypršela.
+
+   > [!NOTE]
+   > Pokud ověřovací Agent selže během procesu přihlášení, zcela žádost o přihlášení se zahodí. Neexistuje žádné ruční schválení požadavků na přihlášení z jednoho ověřovacího agenta jiného ověřovacího agenta služby i místní. Tito agenti komunikovat jenom s cloudem a není mezi sebou.
 13. Ověřovací Agent výsledek předá zpět služby tokenů zabezpečení Azure AD přes odchozí vzájemně ověřené kanál HTTPS přes port 443. Vzájemné ověřování používá certifikát k ověřování agenta dříve vydané během registrace.
 14. Služba tokenů zabezpečení Azure AD ověří, že tento výsledek koreluje s konkrétní přihlášení žádost ve svém tenantovi.
 15. Azure AD STS pokračuje s postupem přihlášení podle konfigurace. Například pokud ověření hesla byla úspěšná, uživatel může být postiženy omezeními pro ověřování službou Multi-Factor Authentication nebo přesměrován zpět do aplikace.
@@ -181,7 +184,7 @@ Obnovit ověřovací Agent vztah důvěryhodnosti s Azure AD:
 
 ## <a name="auto-update-of-the-authentication-agents"></a>Automatické aktualizace agentů ověřování
 
-Aktualizátor aplikaci automaticky aktualizuje ověřovací Agent po vydání nové verze. Aplikace nezpracovává veškerých žádostí o ověření hesla pro vašeho tenanta. 
+Aktualizátor aplikaci automaticky aktualizuje ověřovací Agent po vydání nové verze (s opravy chyb a vylepšení výkonu). Aplikace Aktualizátoru nezpracovává veškerých žádostí o ověření hesla pro vašeho tenanta.
 
 Azure AD je hostitelem nová verze softwaru podepsané **balíček Instalační služby systému Windows (MSI)**. Soubor MSI je podepsaná pomocí [Microsoft Authenticode](https://msdn.microsoft.com/library/ms537359.aspx) s SHA256 jako algoritmus digest. 
 

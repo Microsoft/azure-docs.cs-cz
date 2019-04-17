@@ -14,14 +14,14 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: pbutlerm
-ms.openlocfilehash: c78a54d5002972339994d9590c0a3e23b5c69bd9
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.openlocfilehash: a029477dfd8046863ebfe34cd839562a0b1f3d87
+ms.sourcegitcommit: 5f348bf7d6cf8e074576c73055e17d7036982ddb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48809330"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59607790"
 ---
-<a name="pricing-for-virtual-machine-offers"></a>Ceny za virtuální počítač nabídky
+<a name="pricing-for-virtual-machine-offers"></a>Ceny nabídek virtuálních počítačů
 ==================================
 
 Existují tři způsoby, jak určit ceny pro virtuální počítač nabídky: přizpůsobené základní ceny, ceny za jádro a ceny tabulky.
@@ -109,21 +109,21 @@ Následující tabulka uvádí různé oblasti, můžete zadat vlastní základn
 | AU         | Austrálie            | AUD               |
 | AT         | Rakousko              | EUR               |
 | BH         | Bahrajn              | BHD               |
-| PODLE         | Bělorusko              | RUB               |
-| BÝT         | Belgie              | EUR               |
-| BRAZÍLIE         | Brazílie               | USD               |
-| BG         | Bulharsko             | ZAČÁTEK               |
+| BY         | Bělorusko              | RUB               |
+| BE         | Belgie              | EUR               |
+| BR         | Brazílie               | USD               |
+| BG         | Bulharsko             | BGN               |
 | CA         | Kanada               | CAD               |
 | CL         | Chile                | CLP               |
-| CO         | Kolumbie             | KOPÍROVAT               |
-| ZNAK CR         | Kostarika           | CRC               |
+| CO         | Kolumbie             | COP               |
+| CR         | Kostarika           | CRC               |
 | HR         | Chorvatsko              | HRK               |
 | CY         | Kypr               | EUR               |
 | CZ         | Česká republika       | CZK               |
 | DK         | Dánsko              | DKK               |
-| PROVEĎTE         | Dominikánská republika   | USD               |
-| ES         | Ekvádor              | USD               |
-| TŘEBA         | Egypt                | EGP               |
+| DO         | Dominikánská republika   | USD               |
+| EC         | Ekvádor              | USD               |
+| EG         | Egypt                | EGP               |
 | SV         | Salvador          | USD               |
 | EE         | Estonsko              | EUR               |
 | FI         | Finsko              | EUR               |
@@ -133,63 +133,63 @@ Následující tabulka uvádí různé oblasti, můžete zadat vlastní základn
 | GT         | Guatemala            | GTQ               |
 | HK         | Hongkong – zvláštní správní oblast        | HKD               |
 | HU         | Maďarsko              | HUF               |
-| JE         | Island              | PŘIDĚLENÍ DISKU               |
-| INDIE         | Indie                | INR               |
+| IS         | Island              | PŘIDĚLENÍ DISKU               |
+| IN         | Indie                | INR               |
 | ID         | Indonésie            | IDR               |
-| APLIKACE INTERNET EXPLORER         | Irsko              | EUR               |
+| IE         | Irsko              | EUR               |
 | IL         | Izrael               | ILS               |
 | IT         | Itálie                | EUR               |
 | JP         | Japonsko                | JPY               |
 | JO         | Jordánsko               | JOD               |
 | KZ         | Kazachstán           | KZT               |
 | KE         | Keňa                | KES               |
-| KOREA         | Jižní Korea                | KRW               |
+| KR         | Jižní Korea                | KRW               |
 | KW         | Kuvajt               | KWD               |
 | LV         | Lotyšsko               | EUR               |
 | LI         | Lichtenštejnsko        | CHF               |
 | LT         | Litva            | EUR               |
-| LOGICKÁ JEDNOTKA         | Lucembursko           | EUR               |
-| MK         | Makedonie – bývalá republika Jugoslávie       | MKD               |
-| MOJE         | Malajsie             | MYR               |
-| MT –         | Malta                | EUR               |
+| LU         | Lucembursko           | EUR               |
+| MK         | Severní Makedonie      | MKD               |
+| MY         | Malajsie             | MYR               |
+| MT         | Malta                | EUR               |
 | MX         | Mexiko               | MXN               |
 | ME         | Černá Hora           | EUR               |
-| MA         | Maroko              | MAD –               |
+| MA         | Maroko              | MAD               |
 | NL         | Nizozemsko          | EUR               |
 | NZ         | Nový Zéland          | NZD               |
 | NG         | Nigérie              | NGN               |
-| NE         | Norsko               | NOK               |
-| OBJEKTOVÝ MODEL         | Omán                 | OMR               |
+| NO         | Norsko               | NOK               |
+| OM         | Omán                 | OMR               |
 | PK         | Pákistán             | PKR               |
 | PA         | Panama               | USD               |
 | PY         | Paraguay             | PYG               |
-| PE         | Peru                 | PSANÍ PEREM               |
+| PE         | Peru                 | PEN               |
 | PH         | Filipíny          | PHP               |
 | PL         | Polsko               | PLN               |
 | PT         | Portugalsko             | EUR               |
-| ŽÁDOST O PŘIJETÍ ZMĚN         | Portoriko          | USD               |
-| KONTROLA KVALITY         | Katar                | QAR               |
+| PR         | Portoriko          | USD               |
+| QA         | Katar                | QAR               |
 | RO         | Rumunsko              | RON               |
 | RU         | Rusko               | RUB               |
 | SA         | Saúdská Arábie         | SAR               |
 | RS         | Srbsko               | RSD               |
-| ZABEZPEČENÍ         | Singapur            | SGD               |
+| SG         | Singapur            | SGD               |
 | SK         | Slovensko             | EUR               |
 | SI         | Slovinsko             | EUR               |
-| ZA         | Jihoafrická republika         | ZAR               |
+| ZA         | Jižní Afrika         | ZAR               |
 | ES         | Španělsko                | EUR               |
 | LK         | Srí Lanka            | USD               |
 | SE         | Švédsko               | SEK               |
 | CH         | Švýcarsko          | CHF               |
-| TRADIČNÍ ČÍNŠTINA         | Tchaj-wan               | TWD               |
+| TW         | Tchaj-wan               | TWD               |
 | TH         | Thajsko             | THB               |
 | TT         | Trinidad a Tobago  | TTD               |
 | TN         | Tunisko              | TND               |
 | TR         | Turecko               | TRY               |
-| UŽIVATELSKÝ AGENT         | Ukrajina              | UAH               |
+| UA         | Ukrajina              | UAH               |
 | AE         | Spojené arabské emiráty | EUR               |
 | GB         | Spojené království       | GBP               |
 | USA         | Spojené státy        | USD               |
 | UY         | Uruguay              | UYU               |
-| ODEBRAT         | Venezuela            | USD               |
+| VE         | Venezuela            | USD               |
 |  |  |  |

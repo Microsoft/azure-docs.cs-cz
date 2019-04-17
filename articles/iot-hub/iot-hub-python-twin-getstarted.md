@@ -9,19 +9,21 @@ ms.devlang: python
 ms.topic: conceptual
 ms.date: 02/21/2019
 ms.author: kgremban
-ms.openlocfilehash: edf6fa98224613ba31eeed871cbb0eaf4e614600
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 3e703c999d57cf62064291cf91059a17a959a2c3
+ms.sourcegitcommit: 5f348bf7d6cf8e074576c73055e17d7036982ddb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57535293"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59608397"
 ---
 # <a name="get-started-with-device-twins-python"></a>Začínáme s dvojčaty zařízení (Python)
+
 [!INCLUDE [iot-hub-selector-twin-get-started](../../includes/iot-hub-selector-twin-get-started.md)]
 
 Na konci tohoto kurzu budete mít dvě aplikace konzoly v Pythonu:
 
 * **AddTagsAndQuery.py**, back endové aplikace Python, které přidá značky a dotazy dvojčata zařízení.
+
 * **ReportConnectivity.py**, aplikace v Pythonu, která simuluje zařízení, která se připojuje ke službě IoT hub s dříve vytvořenou identitou zařízení a sestav stavu připojení.
 
 > [!NOTE]
@@ -30,12 +32,14 @@ Na konci tohoto kurzu budete mít dvě aplikace konzoly v Pythonu:
 K dokončení tohoto kurzu budete potřebovat následující:
 
 * [Python 2.x nebo 3.x](https://www.python.org/downloads/). Ujistěte se, že používáte 32bitovou, nebo 64bitovou instalaci podle požadavků vašeho nastavení. Po zobrazení výzvy v průběhu instalace nezapomeňte přidat Python do proměnné prostředí pro konkrétní platformu. Pokud používáte Python 2.x, možná bude nutné [nainstalovat nebo upgradovat *pip*, systém správy balíčků Pythonu](https://pip.pypa.io/en/stable/installing/).
+
 * Pokud používáte operační systém Windows, je k povolení používání nativních knihoven DLL z Pythonu potřeba [balíček distribuovatelných součástí Visual C++](https://www.microsoft.com/download/confirmation.aspx?id=48145).
+
 * Aktivní účet Azure. (Pokud účet nemáte, můžete vytvořit [bezplatný účet](https://azure.microsoft.com/pricing/free-trial/) během několika minut.)
 
 > [!NOTE]
 > Balíčky *pip* pro `azure-iothub-service-client` a `azure-iothub-device-client` jsou v současné době dostupné jenom pro operační systém Windows. Linux/Mac OS, naleznete v části operačních systémů Linux a Mac OS konkrétní na [Příprava vývojového prostředí pro jazyk Python](https://github.com/Azure/azure-iot-sdk-python/blob/master/doc/python-devbox-setup.md) příspěvku.
-> 
+>
 
 ## <a name="create-an-iot-hub"></a>Vytvoření centra IoT
 
@@ -50,26 +54,28 @@ K dokončení tohoto kurzu budete potřebovat následující:
 [!INCLUDE [iot-hub-include-create-device](../../includes/iot-hub-include-create-device.md)]
 
 ## <a name="create-the-service-app"></a>Vytvoření aplikace služby
+
 V této části vytvoříte konzolovou aplikaci v Pythonu, který přidá umístění metadat do dvojčete zařízení spojené s vaší **{ID zařízení}**. Následně se dotazuje dvojčata zařízení, které jsou uložené ve službě IoT hub, výběrem zařízení umístěných v Redmondu a ty, které vykazují mobilní připojení.
 
 1. Otevřete příkazový řádek a nainstalujte **sadu SDK služby Azure IoT Hub pro Python**. Po dokončení instalace sady SDK zavřete příkazový řádek.
 
-    ```
-    pip install azure-iothub-service-client
-    ```
+   ```
+   pip install azure-iothub-service-client
+   ```
 
-1. Pomocí textového editoru vytvořte nový **AddTagsAndQuery.py** souboru.
+2. Pomocí textového editoru vytvořte nový **AddTagsAndQuery.py** souboru.
 
 3. Přidejte následující kód, který importuje požadované moduly ze sady SDK služby:
 
-    ```python
-    import sys
-    import iothub_service_client
-    from iothub_service_client import IoTHubRegistryManager, IoTHubRegistryManagerAuthMethod
-    from iothub_service_client import IoTHubDeviceTwin, IoTHubError
-    ```
-2. Přidejte následující kód a nahraďte zástupnou hodnotu `[IoTHub Connection String]` a `[Device Id]` připojovacím řetězcem pro službu IoT hub a ID zařízení, kterou jste vytvořili v předchozích částech.
-   
+   ```python
+   import sys
+   import iothub_service_client
+   from iothub_service_client import IoTHubRegistryManager, IoTHubRegistryManagerAuthMethod
+   from iothub_service_client import IoTHubDeviceTwin, IoTHubError
+   ```
+
+4. Přidejte následující kód a nahraďte zástupnou hodnotu `[IoTHub Connection String]` a `[Device Id]` připojovacím řetězcem pro službu IoT hub a ID zařízení, kterou jste vytvořili v předchozích částech.
+  
     ```python
     CONNECTION_STRING = "[IoTHub Connection String]"
     DEVICE_ID = "[Device Id]"
@@ -80,13 +86,13 @@ V této části vytvoříte konzolovou aplikaci v Pythonu, který přidá umíst
     UPDATE_JSON_CLIENT_SEARCH = "\"connectivity\":\"cellular\""
     ```
 
-1. Přidejte následující kód, který **AddTagsAndQuery.py** souboru:
-   
+5. Přidejte následující kód, který **AddTagsAndQuery.py** souboru:
+
      ```python
     def iothub_service_sample_run():
         try:
             iothub_registry_manager = IoTHubRegistryManager(CONNECTION_STRING)
-        
+
             iothub_registry_statistics = iothub_registry_manager.get_statistics()
             print ( "Total device count                       : {0}".format(iothub_registry_statistics.totalDeviceCount) )
             print ( "Enabled device count                     : {0}".format(iothub_registry_statistics.enabledDeviceCount) )
@@ -95,26 +101,26 @@ V této části vytvoříte konzolovou aplikaci v Pythonu, který přidá umíst
 
             number_of_devices = iothub_registry_statistics.totalDeviceCount
             dev_list = iothub_registry_manager.get_device_list(number_of_devices)
-        
+
             iothub_twin_method = IoTHubDeviceTwin(CONNECTION_STRING)
 
             for device in range(0, number_of_devices):
                 if dev_list[device].deviceId == DEVICE_ID:
                     twin_info = iothub_twin_method.update_twin(dev_list[device].deviceId, UPDATE_JSON)
-        
-            print ( "Devices in Redmond: " )        
+
+            print ( "Devices in Redmond: " )
             for device in range(0, number_of_devices):
                 twin_info = iothub_twin_method.get_twin(dev_list[device].deviceId)
-         
+
                 if twin_info.find(UPDATE_JSON_SEARCH) > -1:
                     print ( dev_list[device].deviceId )
-        
+
             print ( "" )
-        
+
             print ( "Devices in Redmond using cellular network: " )
             for device in range(0, number_of_devices):
                 twin_info = iothub_twin_method.get_twin(dev_list[device].deviceId)
-                
+
                 if twin_info.find(UPDATE_JSON_SEARCH) > -1:
                     if twin_info.find(UPDATE_JSON_CLIENT_SEARCH) > -1:
                         print ( dev_list[device].deviceId )
@@ -125,11 +131,11 @@ V této části vytvoříte konzolovou aplikaci v Pythonu, který přidá umíst
         except KeyboardInterrupt:
             print ( "IoTHub sample stopped" )
     ```
-   
+
     **Registru** objekt poskytuje všechny metody, které jsou nutné k interakci s dvojčaty zařízení ze služby. Kód nejprve inicializuje **registru** objekt a potom aktualizace dvojčete zařízení pro **deviceId**, a nakonec je spuštěn dva dotazy. První vybere pouze dvojčata zařízení nachází v zařízení **Redmond43** kategorie plant a druhá zpřesnění dotaz pro výběr pouze do zařízení, které jsou také připojené přes mobilní síť.
-   
-1. Přidejte následující kód na konci **AddTagsAndQuery.py** k implementaci **iothub_service_sample_run** funkce:
-   
+
+6. Přidejte následující kód na konci **AddTagsAndQuery.py** k implementaci **iothub_service_sample_run** funkce:
+
     ```python
     if __name__ == '__main__':
         print ( "Starting the IoT Hub Device Twins Python service sample..." )
@@ -137,19 +143,20 @@ V této části vytvoříte konzolovou aplikaci v Pythonu, který přidá umíst
         iothub_service_sample_run()
     ```
 
-1. Spusťte aplikaci:
-   
+7. Spusťte aplikaci:
+
     ```cmd/sh
     python AddTagsAndQuery.py
     ```
-   
+
     Měli byste vidět jedno zařízení ve výsledcích pro kladení dotazů pro všechna zařízení nachází v **Redmond43** a žádné dotaz, který omezuje výsledky na zařízení, která používají mobilní síti.
-   
-    ![první dotaz][1]
+
+    ![první dotaz v Redmondu nezobrazuje všechna](./media/iot-hub-python-twin-getstarted/1-device-twins-python-service-sample.png)
 
 V další části můžete vytvořit aplikace pro zařízení, která hlásí informace o připojení a změní výsledek dotazu v předchozí části.
 
 ## <a name="create-the-device-app"></a>Vytvoření aplikace pro zařízení
+
 V této části vytvoříte konzolovou aplikaci v Pythonu, který se připojuje k vašemu centru jako vaše **{ID zařízení}** a pak aktualizuje jeho dvojče zařízení uživatele ohlášené vlastnosti k obsahují informace, že je připojený pomocí mobilní síti.
 
 1. Otevřete příkazový řádek a nainstalujte **sadu SDK služby Azure IoT Hub pro Python**. Po dokončení instalace sady SDK zavřete příkazový řádek.
@@ -158,7 +165,7 @@ V této části vytvoříte konzolovou aplikaci v Pythonu, který se připojuje 
     pip install azure-iothub-device-client
     ```
 
-1. Pomocí textového editoru vytvořte nový **ReportConnectivity.py** souboru.
+2. Pomocí textového editoru vytvořte nový **ReportConnectivity.py** souboru.
 
 3. Přidejte následující kód, který importuje požadované moduly ze sady SDK služby:
 
@@ -168,8 +175,8 @@ V této části vytvoříte konzolovou aplikaci v Pythonu, který se připojuje 
     from iothub_client import IoTHubClient, IoTHubClientError, IoTHubTransportProvider, IoTHubClientResult, IoTHubError
     ```
 
-2. Přidejte následující kód a nahraďte zástupnou hodnotu `[IoTHub Device Connection String]` připojovacím řetězcem pro zařízení IoT hub, jste vytvořili v předchozích částech.
-   
+4. Přidejte následující kód a nahraďte zástupnou hodnotu `[IoTHub Device Connection String]` připojovacím řetězcem pro zařízení IoT hub, jste vytvořili v předchozích částech.
+
     ```python
     CONNECTION_STRING = "[IoTHub Device Connection String]"
 
@@ -181,7 +188,7 @@ V této části vytvoříte konzolovou aplikaci v Pythonu, který se připojuje 
     SEND_REPORTED_STATE_CONTEXT = 0
     ```
 
-1. Přidejte následující kód, který **ReportConnectivity.py** soubor k implementaci zařízení dvojčat funkce:
+5. Přidejte následující kód, který **ReportConnectivity.py** soubor k implementaci zařízení dvojčat funkce:
 
     ```python
     def device_twin_callback(update_state, payload, user_context):
@@ -228,12 +235,12 @@ V této části vytvoříte konzolovou aplikaci v Pythonu, který se připojuje 
             return
         except KeyboardInterrupt:
             print ( "IoTHubClient sample stopped" )
-    ```   
+     ```
 
     **Klienta** objekt poskytuje všechny metody, které budete potřebovat pro interakci s dvojčaty zařízení ze zařízení. Předchozí kód, až se inicializuje **klienta** objekt, načte dvojče zařízení pro vaše zařízení a jeho ohlášených vlastností aktualizuje informace o připojení.
 
-1. Přidejte následující kód na konci **ReportConnectivity.py** k implementaci **iothub_client_sample_run** funkce:
-   
+6. Přidejte následující kód na konci **ReportConnectivity.py** k implementaci **iothub_client_sample_run** funkce:
+
     ```python
     if __name__ == '__main__':
         print ( "Starting the IoT Hub Device Twins Python client sample..." )
@@ -241,36 +248,34 @@ V této části vytvoříte konzolovou aplikaci v Pythonu, který se připojuje 
         iothub_client_sample_run()
     ```
 
-1. Spuštění aplikace pro zařízení
-   
+7. Spuštění aplikace pro zařízení:
+
     ```cmd/sh
     python ReportConnectivity.py
     ```
-   
+
     Měli byste vidět potvrzení, které byly aktualizovány dvojčata zařízení.
 
-    ![aktualizace dvojčat][2]
+    ![aktualizace dvojčat](./media/iot-hub-python-twin-getstarted/2-python-client-sample.png)
 
-6. Teď, když zařízení uvádět jeho informace o připojení, měl by se zobrazit v obou dotazech. Vraťte se a znovu spusťte dotazy:
-   
+8. Teď, když zařízení uvádět jeho informace o připojení, měl by se zobrazit v obou dotazech. Vraťte se a znovu spusťte dotazy:
+
     ```cmd/sh
     python AddTagsAndQuery.py
     ```
-   
+
     Tentokrát vaše **{ID zařízení}** by se měla objevit v obou výsledky dotazu.
-   
-    ![druhý dotaz][3]
+
+    ![druhý dotaz](./media/iot-hub-python-twin-getstarted/3-device-twins-python-service-sample.png)
 
 ## <a name="next-steps"></a>Další postup
+
 V tomto kurzu jste nakonfigurovali novou službu IoT Hub na webu Azure Portal a potom jste vytvořili identitu zařízení v registru identit ve službě IoT Hub. Přidá metadata zařízení jako značky z back endové aplikace a aplikace s Simulovaná zařízení zapsáno do sestavy informací o připojení k zařízení ve dvojčeti zařízení. Také jste zjistili, jak zadávat dotazy na tyto informace pomocí registru.
 
 Pomocí následujících zdrojích se dozvíte jak:
 
-* Odesílání telemetrie ze zařízení s [Začínáme se službou IoT Hub](quickstart-send-telemetry-python.md) kurzu
-* Konfigurace zařízení pomocí požadované vlastnosti dvojčete zařízení s [použití požadované vlastnosti ke konfiguraci zařízení](tutorial-device-twins.md) kurzu
-* Kontroly nad zařízeními interaktivně (například zapnutí ventilátor z aplikace řízené uživatelem), se [použití přímých metod](quickstart-control-device-python.md) kurzu.
+* Odesílání telemetrie ze zařízení s [Začínáme se službou IoT Hub](quickstart-send-telemetry-python.md) kurzu.
 
-<!-- images -->
-[1]: media/iot-hub-python-twin-getstarted/1.png
-[2]: media/iot-hub-python-twin-getstarted/2.png
-[3]: media/iot-hub-python-twin-getstarted/3.png
+* Konfigurace zařízení pomocí požadované vlastnosti dvojčete zařízení s [použití požadované vlastnosti ke konfiguraci zařízení](tutorial-device-twins.md) kurzu.
+
+* Kontroly nad zařízeními interaktivně (například zapnutí ventilátor z aplikace řízené uživatelem), se [použití přímých metod](quickstart-control-device-python.md) kurzu.

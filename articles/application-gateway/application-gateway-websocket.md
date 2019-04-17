@@ -1,18 +1,18 @@
 ---
 title: Podpora protokolu WebSocket ve službě Azure Application Gateway | Dokumentace Microsoftu
 description: Tato stránka poskytuje přehled podpory Application Gateway pomocí protokolu WebSocket.
-author: amsriva
+author: vhorne
 ms.author: amsriva
 ms.service: application-gateway
 ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 03/18/2019
-ms.openlocfilehash: bae4b3d955076679a5640717ac6f5446e3951fb9
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 54c34690e678f07d6309a1877b0ca5d0a0b274f5
+ms.sourcegitcommit: 5f348bf7d6cf8e074576c73055e17d7036982ddb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58168115"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59606901"
 ---
 # <a name="overview-of-websocket-support-in-application-gateway"></a>Přehled podpory protokolu WebSocket ve službě Application Gateway
 
@@ -32,7 +32,7 @@ K navázání připojení soketu WebSocket, konkrétní metody handshake založe
 
 ### <a name="listener-configuration-element"></a>Konfigurační prvek naslouchacího procesu
 
-Existující naslouchací proces protokolu HTTP slouží k podpoře přenos pomocí protokolu WebSocket. Tady je fragment prvku httpListeners ze souboru šablony vzorku. Je třeba naslouchacích procesů HTTP a HTTPS pro podporu protokolu WebSocket a zabezpečený přenos pomocí protokolu WebSocket. Podobně můžete použít [portál](application-gateway-create-gateway-portal.md) nebo [Powershellu](application-gateway-create-gateway-arm.md) k vytvoření služby application gateway s moduly pro naslouchání na portu 80/443 podporují přenos pomocí protokolu WebSocket.
+Existující naslouchací proces protokolu HTTP slouží k podpoře přenos pomocí protokolu WebSocket. Tady je fragment prvku httpListeners ze souboru šablony vzorku. Je třeba naslouchacích procesů HTTP a HTTPS pro podporu protokolu WebSocket a zabezpečený přenos pomocí protokolu WebSocket. Podobně můžete použít na portálu nebo v prostředí Azure PowerShell k vytvoření služby application gateway s moduly pro naslouchání na portu 80/443 podporují přenos pomocí protokolu WebSocket.
 
 ```json
 "httpListeners": [
@@ -123,5 +123,4 @@ Dalším důvodem je, že tuto sondu stavu back-endu aplikace brána podporuje p
 
 ## <a name="next-steps"></a>Další postup
 
-Po získání informací o podpora protokolu WebSocket, přejděte na [vytvoření služby application gateway](application-gateway-create-gateway.md) začít s protokol WebSocket webové aplikace s podporou.
-
+Po získání informací o podpora protokolu WebSocket, přejděte na [vytvoření služby application gateway](quick-create-powershell.md) začít s protokol WebSocket webové aplikace s podporou.

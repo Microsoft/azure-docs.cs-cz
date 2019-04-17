@@ -12,16 +12,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/14/2018
+ms.date: 4/15/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f927d1deb3da6269159e1f3f24a17c4675dc7568
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: ae83cea866367fa6a6596caa683d0287bea96c29
+ms.sourcegitcommit: fec96500757e55e7716892ddff9a187f61ae81f7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56184886"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59616203"
 ---
 # <a name="troubleshoot-azure-active-directory-pass-through-authentication"></a>Řešení potíží s Azure Active Directory předávací ověřování
 
@@ -71,6 +71,9 @@ Přejděte do **Azure Active Directory** -> **přihlášení** na [centra pro sp
 | 80007 | Ověřovací agent se nemohl připojit k Active Directory. | Zkontrolujte, jestli je dostupný z ověřovacího agenta služby Active Directory.
 | 80010 | Ověřovací agent nebyl schopen dešifrovat heslo. | Pokud se jedná o konzistentně reprodukovatelnou, instalace a registrace bude nový Agent ověřování. A odinstalovat stávající. 
 | 80011 | Ověřovací agent nebyl schopen získat dešifrovací klíč. | Pokud se jedná o konzistentně reprodukovatelnou, instalace a registrace bude nový Agent ověřování. A odinstalovat stávající.
+
+>[!IMPORTANT]
+>Předávací ověřování agentů ověření uživatelů Azure AD pomocí ověřování uživatelských jmen a hesel Active Directory pomocí volání [rozhraní API systému Win32 LogonUser](https://msdn.microsoft.com/library/windows/desktop/aa378184.aspx). V důsledku toho pokud nastavíte nastavení "Přihlášení do" ve službě Active Directory k omezení přístupu k přihlášení pracovní stanici, budete muset přidat servery, které hostují do seznamu "Přihlášení do" serverů a agentů předávací ověřování. Pokud tak neučiníte, to bude blokovat uživatelům v přihlašování k Azure AD.
 
 ## <a name="authentication-agent-installation-issues"></a>Problémy instalace agentů ověřování
 

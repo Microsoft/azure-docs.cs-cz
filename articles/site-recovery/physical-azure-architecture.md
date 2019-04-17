@@ -5,14 +5,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 03/18/2019
+ms.date: 04/16/2019
 ms.author: raynew
-ms.openlocfilehash: 9476713bdca185fd84289fca3cf7aa304ad3f9fb
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: 99aec3be893693e523dffefbb3c422222ac19a2e
+ms.sourcegitcommit: fec96500757e55e7716892ddff9a187f61ae81f7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58311420"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59616862"
 ---
 # <a name="physical-server-to-azure-disaster-recovery-architecture"></a>Fyzický server architektury pro zotavení po havárii Azure
 
@@ -25,7 +25,7 @@ Následující tabulka a obrázek poskytuje souhrnný přehled komponenty použ�
 
 **Komponenta** | **Požadavek** | **Podrobnosti**
 --- | --- | ---
-**Azure** | Předplatné Azure, účet úložiště Azure a síť Azure. | Replikovaná data z místních virtuálních počítačů se ukládají v účtu úložiště. Virtuální počítače Azure se vytvoří s replikovanými daty při můžete v průběhu převzetí místních do Azure. Virtuální počítače Azure se připojí k virtuální síti Azure po svém vytvoření.
+**Azure** | Předplatné Azure a síť Azure. | Replikovaná data z místních fyzických počítačů je uložená v Azure managed disks. Virtuální počítače Azure se vytvoří s replikovanými daty při můžete v průběhu převzetí místních do Azure. Virtuální počítače Azure se připojí k virtuální síti Azure po svém vytvoření.
 **Konfigurační server** | Jediný on-premises fyzický počítač nebo virtuální počítač VMware je nasazen na spustit všechny místní komponenty Site Recovery. Virtuální počítač běží konfigurační server, procesový server a hlavní cílový server. | Konfigurační server koordinuje komunikaci mezi místním prostředím a Azure a spravuje replikaci dat.
  **Procesový server:**  | Nainstalované ve výchozím nastavení spolu s konfiguračním serverem. | Funguje jako replikační brána. Přijímá data replikace, optimalizuje je pomocí ukládání do mezipaměti, komprese a šifrování a odesílá je do úložiště Azure.<br/><br/> Procesní server nainstaluje služba Mobility na serverech, které chcete replikovat.<br/><br/> Jak vaše nasazení poroste, můžete přidat další, samostatné procesní servery pro zpracování větší objemy přenosů replikace.
  **Hlavní cílový server** | Nainstalované ve výchozím nastavení spolu s konfiguračním serverem. | Zpracovává replikační data během navracení služeb z Azure po obnovení.<br/><br/> Pro velká nasazení můžete přidat další, samostatný hlavní cílový server navrácení služeb po obnovení.

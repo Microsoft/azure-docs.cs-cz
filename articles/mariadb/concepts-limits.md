@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 02/07/2019
-ms.openlocfilehash: 79d6e185b64fdaf332f877718487809ba6273441
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
+ms.date: 04/15/2019
+ms.openlocfilehash: e191c656c5485377f62073f52dec0b3dbee7537b
+ms.sourcegitcommit: fec96500757e55e7716892ddff9a187f61ae81f7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55895784"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59616267"
 ---
 # <a name="limitations-in-azure-database-for-mariadb"></a>Omezení ve službě Azure Database pro MariaDB
 Následující části popisují kapacitu, podpora modulu úložiště, oprávnění podpory, podpora příkaz manipulace dat a funkční omezení v databázi služby.
@@ -28,10 +28,12 @@ Maximální počet připojení na cenová úroveň a virtuálními jádry jsou n
 |Obecné použití| 8| 1250|
 |Obecné použití| 16| 2500|
 |Obecné použití| 32| 5000|
+|Obecné použití| 64| 10000|
 |Paměťově optimalizované| 2| 600|
 |Paměťově optimalizované| 4| 1250|
 |Paměťově optimalizované| 8| 2500|
 |Paměťově optimalizované| 16| 5000|
+|Paměťově optimalizované| 32| 10000|
 
 Při připojení překročí limit, může se zobrazit následující chyba:
 > ERROR 1040 (08004): Příliš mnoho připojení

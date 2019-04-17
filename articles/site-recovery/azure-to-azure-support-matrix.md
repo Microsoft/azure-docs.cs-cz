@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: raynew
-ms.openlocfilehash: f0540ff1fc1844c133e238267770b971992f61e6
-ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
+ms.openlocfilehash: 0c2ca8c17abd6ac5e540beec1bde715931e022a4
+ms.sourcegitcommit: 5f348bf7d6cf8e074576c73055e17d7036982ddb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58904997"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59609400"
 ---
 # <a name="support-matrix-for-replicating-azure-vms-from-one-region-to-another"></a>Matice podpory pro replikaci virtuálních počítačů Azure z jedné oblasti do jiného
 
@@ -24,7 +24,7 @@ Tento článek shrnuje podporované konfigurace a komponent, pokud nasazení zot
 
 **Nasazení** |  **Podpora**
 --- | ---
-**portál Azure** | Podporuje se.
+**Azure Portal** | Podporuje se.
 **PowerShell** | Podporuje se. [Další informace](azure-to-azure-powershell.md)
 **REST API** | Podporuje se.
 **Rozhraní příkazového řádku** | Aktuálně se nepodporuje.
@@ -45,7 +45,7 @@ Tento článek shrnuje podporované konfigurace a komponent, pokud nasazení zot
 Můžete replikovat a obnovovat virtuální počítače mezi všechny dvou oblastí ve stejné zeměpisné clusteru. Geografické clustery jsou definovány dodržujte při tom suverenita a data latence.
 
 
-**Geografické clusteru** | **Oblast Azure**
+**Geografické clusteru** | **Oblasti Azure**
 -- | --
 Americké | Kanada – východ, Kanada – Jih, střed USA (střed), střed USA – Západ, USA – východ, USA – východ 2, USA – Západ, USA – západ 2, střed USA, USA (střed) – sever
 Evropa | Velká Británie – Západ, Velká Británie – Jih, Severní Evropa, západní Evropa, Francie – střed, Francie – jih
@@ -99,7 +99,7 @@ Ubuntu 14.04 LTS Server | [Verze podporovaných jádra](#supported-ubuntu-kernel
 Ubuntu 16.04 LTS Server | [Verze podporovaných jádra](#supported-ubuntu-kernel-versions-for-azure-virtual-machines)<br/><br/> Ubuntu servery s použitím ověřování pomocí hesla a přihlášení a cloud-init balíček ke konfiguraci cloudu virtuálních počítačů, může být deaktivovány převzetí služeb při selhání (v závislosti na konfiguraci cloudinit) přihlášení založené na heslech. Přihlášení pomocí hesla, která může být na virtuálním počítači znovu zapnout resetováním hesla z podpory > Poradce při potížích s > nabídky nastavení (služby se převzaly virtuálního počítače na webu Azure Portal.
 Debian 7 | [Verze podporovaných jádra](#supported-debian-kernel-versions-for-azure-virtual-machines)
 Debian 8 | [Verze podporovaných jádra](#supported-debian-kernel-versions-for-azure-virtual-machines)
-SUSE Linux Enterprise Server 12 | SP1,SP2,SP3. [(Jádra podporované verze)](#supported-suse-linux-enterprise-server-12-kernel-versions-for-azure-virtual-machines)
+SUSE Linux Enterprise Server 12 | SP1,SP2,SP3,SP4. [(Jádra podporované verze)](#supported-suse-linux-enterprise-server-12-kernel-versions-for-azure-virtual-machines)
 SUSE Linux Enterprise Server 11 | SP3<br/><br/> Upgrade replikace počítačů z SP3 do SP4 se nepodporuje. Pokud byl upgradován replikovaného počítače, musíte zakázat replikaci a znovu povolte replikaci po upgradu.
 SUSE Linux Enterprise Server 11 | SP4
 Oracle Linux | 6.4, 6.5, 6.6, 6.7, 6.8, 6.9, 6.10, 7.0, 7.1, 7.2, 7.3, 7.4, 7.5 <br/><br/> Systém Red Hat kompatibilní jádra nebo nedělitelné Enterprise jádra verze 3 (UEK3).
@@ -107,7 +107,7 @@ Oracle Linux | 6.4, 6.5, 6.6, 6.7, 6.8, 6.9, 6.10, 7.0, 7.1, 7.2, 7.3, 7.4, 7.5 
 
 #### <a name="supported-ubuntu-kernel-versions-for-azure-virtual-machines"></a>Podporované verze jádra Ubuntu pro Azure virtual machines
 
-**Vydat** | **Verze služby mobility** | **Verze jádra** |
+**Vydání verze** | **Verze služby mobility** | **Verze jádra** |
 --- | --- | --- |
 14.04 LTS | 9.23 | 3.13.0-24-Generic k 3.13.0-165-generic,<br/>3.16.0-25-Generic k 3.16.0-77-generic,<br/>3.19.0-18-Generic k 3.19.0-80-generic,<br/>4.2.0-18-Generic k 4.2.0-42-generic,<br/>4.4.0-21-Generic k 4.4.0-142-generic,<br/>4.15.0-1023-Azure k 4.15.0-1037-azure |
 14.04 LTS | 9.22 | 3.13.0-24-Generic k 3.13.0-164-generic,<br/>3.16.0-25-Generic k 3.16.0-77-generic,<br/>3.19.0-18-Generic k 3.19.0-80-generic,<br/>4.2.0-18-Generic k 4.2.0-42-generic,<br/>4.4.0-21-Generic k 4.4.0-140-generic,<br/>4.15.0-1023-Azure k 4.15.0-1036-azure |
@@ -121,7 +121,7 @@ Oracle Linux | 6.4, 6.5, 6.6, 6.7, 6.8, 6.9, 6.10, 7.0, 7.1, 7.2, 7.3, 7.4, 7.5 
 
 #### <a name="supported-debian-kernel-versions-for-azure-virtual-machines"></a>Podporované verze jádra Debian pro Azure virtual machines
 
-**Vydat** | **Verze služby mobility** | **Verze jádra** |
+**Vydání verze** | **Verze služby mobility** | **Verze jádra** |
 --- | --- | --- |
 Debian 7 | 9.19,9.20,9.21,9.22,9.23 | 3.2.0-4-amd64 k 3.2.0-6-amd64, 3.16.0-0.bpo.4-amd64 |
 |||
@@ -130,9 +130,9 @@ Debian 8 | 9.19 | 3.16.0-4-amd64 k 3.16.0-6-amd64 4.9.0-0.bpo.4-amd64 k 4.9.0-0.
 
 #### <a name="supported-suse-linux-enterprise-server-12-kernel-versions-for-azure-virtual-machines"></a>Podporované verze jádra operačního systému SUSE Linux Enterprise Server 12 pro virtuální počítače Azure
 
-**Vydat** | **Verze služby mobility** | **Verze jádra** |
+**Vydání verze** | **Verze služby mobility** | **Verze jádra** |
 --- | --- | --- |
-SUSE Linux Enterprise Server 12 (SP3 SP1, SP2) | 9.23 | SP1 3.12.49-11-default k 3.12.74-60.64.40-default</br></br> SP1(LTSS) 3.12.74-60.64.45-default k 3.12.74-60.64.107-default</br></br> 4.4.21-69-default SP2 do 4.4.120-92.70-default</br></br>SP2(LTSS) 4.4.121-92.73-default k 4.4.121-92.101-default</br></br>SP3 4.4.73-5-default k 4.4.162-94.79-default |
+SUSE Linux Enterprise Server 12 (s aktualizací SP1, SP2, SP3, SP4) | 9.23 | SP1 3.12.49-11-default k 3.12.74-60.64.40-default</br></br> SP1(LTSS) 3.12.74-60.64.45-default k 3.12.74-60.64.107-default</br></br> 4.4.21-69-default SP2 do 4.4.120-92.70-default</br></br>SP2(LTSS) 4.4.121-92.73-default k 4.4.121-92.101-default</br></br>SP3 4.4.73-5-default k 4.4.162-94.79-default</br></br>SP4 4.12.14-94.41-default k 4.12.14-95.6-default |
 SUSE Linux Enterprise Server 12 (SP3 SP1, SP2) | 9.22 | SP1 3.12.49-11-default k 3.12.74-60.64.40-default</br></br> SP1(LTSS) 3.12.74-60.64.45-default k 3.12.74-60.64.107-default</br></br> 4.4.21-69-default SP2 do 4.4.120-92.70-default</br></br>SP2(LTSS) 4.4.121-92.73-default k 4.4.121-92.98-default</br></br>SP3 4.4.73-5-default k 4.4.162-94.72-default |
 SUSE Linux Enterprise Server 12 (SP3 SP1, SP2) | 9.21 | SP1 3.12.49-11-default k 3.12.74-60.64.40-default</br></br> SP1(LTSS) 3.12.74-60.64.45-default k 3.12.74-60.64.107-default</br></br> 4.4.21-69-default SP2 do 4.4.120-92.70-default</br></br>SP2(LTSS) 4.4.121-92.73-default k 4.4.121-92.98-default</br></br>SP3 4.4.73-5-default k 4.4.162-94.72-default |
 SUSE Linux Enterprise Server 12 (SP3 SP1, SP2) | 9.20 | SP1 3.12.49-11-default k 3.12.74-60.64.40-default</br></br> SP1(LTSS) 3.12.74-60.64.45-default k 3.12.74-60.64.107-default</br></br> 4.4.21-69-default SP2 do 4.4.120-92.70-default</br></br>SP2(LTSS) 4.4.121-92.73-default k 4.4.121-92.98-default</br></br>SP3 4.4.73-5-default k 4.4.162-94.69-default |
@@ -217,7 +217,7 @@ Následující tabulka shrnuje omezení Site Recovery.
 - Existují dvě omezení ke zvážení na disk, četnost změn dat a za data virtuálního počítače změny.
 - Například pokud používáme disk úrovně Premium P20, jak je popsáno v následující tabulce, Site Recovery dokáže zpracovat 5 MB provozu na disk, se na maximálně pět těmito disky na virtuální počítač, z důvodu omezení 25 MB/s celková četnost změn na virtuální počítač.
 
-**Cílové úložiště** | **Průměrná zdrojový disk vstupně-výstupních operací** |**Četnost změn dat průměrné zdrojového disku** | **Denní četnost změn dat celkový zdrojového disku**
+**Cílové úložiště** | **Průměrná zdrojový disk vstupně-výstupních operací** |**Průměrná četnost změn dat zdrojového disku** | **Celková denní četnost změn dat zdrojového disku**
 ---|---|---|---
 Storage úrovně Standard | 8 kB | 2 MB/s | 168 GB na disk
 Disk úrovně Premium P10 nebo P15 | 8 kB  | 2 MB/s | 168 GB na disk

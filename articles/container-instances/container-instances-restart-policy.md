@@ -5,14 +5,14 @@ services: container-instances
 author: dlepow
 ms.service: container-instances
 ms.topic: article
-ms.date: 03/21/2019
+ms.date: 04/15/2019
 ms.author: danlep
-ms.openlocfilehash: ef34985e7897aa751275231a28c6031d6c9747b0
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.openlocfilehash: 06872eefd0d500a22214109ad5055dd236b5a6ac
+ms.sourcegitcommit: 5f348bf7d6cf8e074576c73055e17d7036982ddb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58369957"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59606833"
 ---
 # <a name="run-containerized-tasks-with-restart-policies"></a>Spouštění kontejnerizovaných úloh pomocí zásady restartování
 
@@ -93,98 +93,9 @@ Výstup:
 
 Tento příklad ukazuje výstup, který skript odeslán do STDOUT. Kontejnerizované úlohy, ale může být místo toho zapisují svůj výstup do trvalého úložiště pro pozdější načtení. Například [sdílené složky Azure](container-instances-mounting-azure-files-volume.md).
 
-## <a name="manually-stop-and-start-a-container-group"></a>Ručně zastavit a spustit skupinu kontejnerů
-
-Bez ohledu na nakonfigurované pro zásady restartování [skupinu kontejnerů](container-instances-container-groups.md), můžete chtít ručně zastavit nebo spustit skupinu kontejnerů.
-
-* **Zastavit** - spuštěnou skupinu kontejnerů můžete zastavit ručně kdykoli – například s použitím [az container stop] [ az-container-stop] příkazu. Pro některé úlohy kontejneru, můžete chtít zastavit skupiny kontejnerů za definované období a Šetřete na náklady. 
-
-  Zastavuje se skupinu kontejnerů se ukončí a recykluje kontejnerů ve skupině; stav kontejneru nezachová. 
-
-* **Spustit** – když skupinu kontejnerů se bylo zastaveno – buď protože kontejnery ukončena sami nebo k ručnímu zastavení skupině – můžete použít [API spustit kontejner](/rest/api/container-instances/containergroups/start) nebo webu Azure portal ohledně ručního spuštění kontejnerů Skupina. Pokud image kontejneru pro každý kontejner je aktualizován, je vyžádá novou bitovou kopii. 
-
-  Počáteční skupiny kontejnerů začne nové nasazení se stejnou konfigurací kontejneru. Tuto akci můžete rychle znovu použít konfiguraci skupiny známé kontejneru, která funguje podle očekávání. Není nutné vytvořit novou skupinu kontejnerů ke spuštění stejná úloha.
-
-* **Restartujte** – je možné restartovat skupiny kontejnerů je spuštěný – například pomocí [az container restartování] [ az-container-restart] příkazu. Tato akce restartuje všechny kontejnery ve skupině kontejnerů. Pokud image kontejneru pro každý kontejner je aktualizován, je vyžádá novou bitovou kopii. 
-
-  Restartování skupiny kontejnerů je užitečné, pokud chcete k vyřešení problému nasazení. Například pokud omezení dočasný prostředek, který brání kontejnery v úspěšném spuštění, restartování skupiny můžou tyto potíže vyřešit.
-
-Po ruční spuštění nebo restartování skupiny kontejnerů, spuštění kontejneru skupiny podle nakonfigurované zásady restartování.
-
-## <a name="configure-containers-at-runtime"></a>Konfigurace kontejnery za běhu
-
-Při vytváření instance kontejneru, můžete nastavit jeho **proměnné prostředí**, stejně jako zadejte vlastní **příkazového řádku** provést při spuštění kontejneru. Tato nastavení můžete použít ve svých úlohách služby batch k přípravě každý kontejner se konfigurace pro konkrétní úlohy.
-
-## <a name="environment-variables"></a>Proměnné prostředí
-
-Nastavení proměnných prostředí ve vašem kontejneru poskytnout dynamickou konfiguraci aplikace nebo skript spustit v kontejneru. Podobá se to `--env` argument příkazového řádku k `docker run`.
-
-Například můžete změnit chování skriptu v kontejneru příkladu tak, že zadáte následující proměnné prostředí při vytváření instance kontejneru:
-
-*NumWords*: Počet odeslaných do STDOUT slov.
-
-*MinLength*: Minimální počet znaků v aplikaci word, které se mají spočítat. Větší číslo ignoruje běžná slova, jako je "z" a "the".
-
-```azurecli-interactive
-az container create \
-    --resource-group myResourceGroup \
-    --name mycontainer2 \
-    --image mcr.microsoft.com/azuredocs/aci-wordcount:latest \
-    --restart-policy OnFailure \
-    --environment-variables NumWords=5 MinLength=8
-```
-
-Zadáním `NumWords=5` a `MinLength=8` proměnných prostředí kontejneru, by měl zobrazit protokoly kontejneru různé výstup. Jakmile se zobrazí stav kontejneru *ukončeno* (použijte `az container show` zkontrolovat její stav), zobrazovat protokoly zobrazíte nový výstup:
-
-```azurecli-interactive
-az container logs --resource-group myResourceGroup --name mycontainer2
-```
-
-Výstup:
-
-```bash
-[('CLAUDIUS', 120),
- ('POLONIUS', 113),
- ('GERTRUDE', 82),
- ('ROSENCRANTZ', 69),
- ('GUILDENSTERN', 54)]
-```
-
-
-
-## <a name="command-line-override"></a>Přepsání příkazového řádku
-
-Určuje příkazový řádek, když vytváříte instanci kontejneru přepsat příkazového řádku vloženými do image kontejneru. Podobá se to `--entrypoint` argument příkazového řádku k `docker run`.
-
-Například můžete mít kontejneru příklad analyzovat text než *obce* zadáním různých příkazového řádku. Spuštění kontejneru, skript v jazyce Python *wordcount.py*, přijímá jako argument adresy URL a budou zpracovávat obsah na této stránce místo výchozího.
-
-Například chcete-li určit nejčastějších 3 pět písmeno slov v *Valentýne a Juliet*:
-
-```azurecli-interactive
-az container create \
-    --resource-group myResourceGroup \
-    --name mycontainer3 \
-    --image mcr.microsoft.com/azuredocs/aci-wordcount:latest \
-    --restart-policy OnFailure \
-    --environment-variables NumWords=3 MinLength=5 \
-    --command-line "python wordcount.py http://shakespeare.mit.edu/romeo_juliet/full.html"
-```
-
-Znovu Jakmile bude kontejner *ukončeno*, zobrazte výstup zobrazením protokolů kontejneru:
-
-```azurecli-interactive
-az container logs --resource-group myResourceGroup --name mycontainer3
-```
-
-Výstup:
-
-```bash
-[('ROMEO', 177), ('JULIET', 134), ('CAPULET', 119)]
-```
-
 ## <a name="next-steps"></a>Další postup
 
-### <a name="persist-task-output"></a>Trvalý výstup úloh
+Scénáře založené na úlohách, jako jsou dávkové zpracování velkou datovou sadu s několika kontejnery, můžou využít výhod vlastního [proměnné prostředí](container-instances-environment-variables.md) nebo [příkazové řádky](container-instances-start-command.md) za běhu.
 
 Podrobnosti o tom, jak zachovat výstup kontejnery, na kterých běží až do ukončení najdete v tématu [připojení sdílené složky Azure pomocí služby Azure Container Instances](container-instances-mounting-azure-files-volume.md).
 
@@ -194,7 +105,5 @@ Podrobnosti o tom, jak zachovat výstup kontejnery, na kterých běží až do u
 <!-- LINKS - Internal -->
 [az-container-create]: /cli/azure/container?view=azure-cli-latest#az-container-create
 [az-container-logs]: /cli/azure/container?view=azure-cli-latest#az-container-logs
-[az-container-restart]: /cli/azure/container?view=azure-cli-latest#az-container-restart
 [az-container-show]: /cli/azure/container?view=azure-cli-latest#az-container-show
-[az-container-stop]: /cli/azure/container?view=azure-cli-latest#az-container-stop
 [azure-cli-install]: /cli/azure/install-azure-cli

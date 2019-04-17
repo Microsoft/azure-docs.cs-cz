@@ -12,16 +12,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 11/27/2018
+ms.date: 04/15/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 77dadeda8bb270689530a34c3e36d33e439ea9e5
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 3b00afa3d1001ee7c48997e41fd6042763bcc9aa
+ms.sourcegitcommit: fec96500757e55e7716892ddff9a187f61ae81f7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56180381"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59616590"
 ---
 # <a name="azure-active-directory-pass-through-authentication-frequently-asked-questions"></a>Předávací ověřování služby Azure Active Directory: Nejčastější dotazy
 
@@ -50,6 +50,10 @@ Ano, podporuje předávací ověřování `Alternate ID` jako uživatelské jmé
 ## <a name="does-password-hash-synchronization-act-as-a-fallback-to-pass-through-authentication"></a>Synchronizaci hodnot hash hesel fungují jako záložní předávací ověřování?
 
 Ne. Předávací ověřování _nemá_ automatické převzetí služeb při selhání pro synchronizaci hodnot hash hesel. Aby se zabránilo neúspěšných přihlášení uživatele, měli byste nakonfigurovat předávací ověřování pro [vysoké dostupnosti](how-to-connect-pta-quick-start.md#step-4-ensure-high-availability).
+
+## <a name="what-happens-when-i-switch-from-password-hash-synchronization-to-pass-through-authentication"></a>Co se stane, když můžu přejít z synchronizaci hodnot hash hesel, předávacího ověřování?
+
+Použijete-li přepnout přihlášení metodu z synchronizaci hodnot hash hesel pro předávací ověřování služby Azure AD Connect, stane předávací ověřování primární způsob přihlášení pro uživatele ve spravovaných doménách. Mějte prosím na paměti, že hodnoty hash hesel všech uživatelů, které byly dříve synchronizovat pomocí synchronizace hodnot hash hesel zůstanou uložené v Azure AD.
 
 ## <a name="can-i-install-an-azure-ad-application-proxymanage-appsapplication-proxymd-connector-on-the-same-server-as-a-pass-through-authentication-agent"></a>Je možné nainstalovat [Proxy aplikací Azure AD](../manage-apps/application-proxy.md) konektor na stejném serveru jako Agent předávací ověřování?
 

@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 11/24/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: adbf3e4fbc0f9d49458dadaebcdd2a090030654e
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: e27c4462e7137145917d1284bfb6f8838e8a090b
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57838880"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59523592"
 ---
 # <a name="the-team-data-science-process-in-action-using-sql-data-warehouse"></a>Vědecké zpracování týmových dat v akci: použití služby SQL Data Warehouse
 V tomto kurzu jsme vás provede procesem vytvoření a nasazení modelu strojového učení pomocí SQL Data Warehouse (SQL data Warehouse) veřejně dostupné datové sady – [cesty taxíkem NYC](https://www.andresmh.com/nyctaxitrips/) datové sady. Binární klasifikační model vytvořený předpovídá, zda tip platí pro cesty a které předpovědět distribuce pro tip částky zaplacené jsou popsány také pro víc tříd klasifikačních a regresních modelů.
@@ -77,7 +77,7 @@ Nastavení prostředí Azure pro datové vědy, postupujte podle těchto kroků.
 **Zřízení vaše instance Azure SQL data Warehouse.**
 Postupujte podle dokumentace na [vytvořit SQL Data Warehouse](../../sql-data-warehouse/sql-data-warehouse-get-started-provision.md) zřídit instanci SQL Data Warehouse. Ujistěte se, že provedete zápisy na následující přihlašovací údaje SQL Data Warehouse, které se budou používat v dalších krocích.
 
-* **Server Name**: <server Name>.database.windows.net
+* **Název serveru**: \<název serveru >. database.windows.net
 * **Název SQLDW (databáze)**
 * **Uživatelské jméno**
 * **Heslo**

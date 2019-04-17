@@ -16,12 +16,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 03/015/2019
 ms.author: radeltch
-ms.openlocfilehash: 02a97852a8dc659071c3484126b921d6f7106562
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: 18bbeef833e1c82999e87451d279c0d3464af509
+ms.sourcegitcommit: fec96500757e55e7716892ddff9a187f61ae81f7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58662366"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59617763"
 ---
 # <a name="high-availability-for-sap-netweaver-on-azure-vms-on-suse-linux-enterprise-server-with-azure-netapp-files-for-sap-applications"></a>Vysoká dostupnost pro SAP NetWeaver na virtuálních počítačích Azure na SUSE Linux Enterprise serveru s Azure Files NetApp pro aplikace SAP
 
@@ -166,14 +166,11 @@ Při zvažování souborů NetApp Azure pro SAP Netweaver na architektuře opera
 
 - Minimální kapacitu fondu je 4 TB. Velikost kapacity fondu musí být v násobcích po 4 TB.
 - Minimální objem je 100 GB
-- Služba soubory Azure NetApp a všechny virtuální počítače, ve kterém se svazky souborů Azure NetApp připojí musí být ve stejné virtuální síti Azure. [Partnerský vztah virtuální sítě](https://docs.microsoft.com/en-us/azure/virtual-network/virtual-network-peering-overview) není zatím podporována NetApp soubory Azure.
+- Služba soubory Azure NetApp a všechny virtuální počítače, kde se svazky souborů NetApp Azure připojí, musí být ve stejné virtuální síti Azure nebo v [partnerský vztah virtuálních sítí](https://docs.microsoft.com/en-us/azure/virtual-network/virtual-network-peering-overview) ve stejné oblasti. Nyní se podporuje Azure souborů NetApp přístup přes VNET peering ve stejné oblasti. Přístup ke službě Azure NetApp přes globální partnerský vztah se ještě nepodporuje.
 - Vybranou virtuální síť musí mít podsíť delegovat do služby soubory Azure NetApp.
 - Služba soubory Azure NetApp v současné době podporuje pouze NFSv3 
 - Služba soubory Azure NetApp nabízí [exportovat zásady](https://docs.microsoft.com/en-gb/azure/azure-netapp-files/azure-netapp-files-configure-export-policy): povolených klientů, můžete řídit přístup typu (čtení a zápis, jen pro čtení, atd.). 
 - Funkce Azure souborů NetApp ještě není zóny. Funkce souborů NetApp Azure není momentálně ve všech zónách dostupnosti v oblasti Azure. Mějte na paměti možné důsledků latence v některých oblastech Azure. 
-
-   > [!NOTE]
-   > Mějte na paměti, že soubory NetApp Azure nepodporuje ještě partnerský vztah virtuální sítě. Nasazení virtuálních počítačů a svazky souborů NetApp Azure ve stejné virtuální síti.
 
 ## <a name="deploy-linux-vms-manually-via-azure-portal"></a>Ruční nasazení virtuálních počítačů s Linuxem pomocí webu Azure portal
 
@@ -574,6 +571,8 @@ Následující položky jsou s předponou buď **[A]** – platí pro všechny u
 
 9. **[1]**  Vytvořit prostředky clusteru SAP
 
+Pokud používáte architekturu serveru 1 zařadit do fronty (ENSA1), definují prostředky následujícím způsobem:
+
    <pre><code>sudo crm configure property maintenance-mode="true"
    
    sudo crm configure primitive rsc_sap_<b>QAS</b>_ASCS<b>00</b> SAPInstance \
@@ -599,6 +598,35 @@ Následující položky jsou s předponou buď **[A]** – platí pro všechny u
    sudo crm node online <b>anftstsapcl1</b>
    sudo crm configure property maintenance-mode="false"
    </code></pre>
+
+   Zavedení podpory pro zařazení do fronty server 2, včetně replikace, od SAP severozápadní 7.52 SAP. Od verze platformy 1809 ABAP, je nainstalován server zařazování 2 ve výchozím nastavení. Zobrazit SAP Poznámka [2630416](https://launchpad.support.sap.com/#/notes/2630416) pro podporu serveru 2 zařadit do fronty.
+Pokud používáte architekturu serveru 2 zařadit do fronty ([ENSA2](https://help.sap.com/viewer/cff8531bc1d9416d91bb6781e628d4e0/1709%20001/en-US/6d655c383abf4c129b0e5c8683e7ecd8.html)), definují prostředky následujícím způsobem:
+
+   <pre><code>sudo crm configure property maintenance-mode="true"
+   
+   sudo crm configure primitive rsc_sap_<b>QAS</b>_ASCS<b>00</b> SAPInstance \
+    operations \$id=rsc_sap_<b>QAS</b>_ASCS<b>00</b>-operations \
+    op monitor interval=11 timeout=60 on_fail=restart \
+    params InstanceName=<b>QAS</b>_ASCS<b>00</b>_<b>anftstsapvh</b> START_PROFILE="/sapmnt/<b>QAS</b>/profile/<b>QAS</b>_ASCS<b>00</b>_<b>anftstsapvh</b>" \
+    AUTOMATIC_RECOVER=false \
+    meta resource-stickiness=5000
+   
+   sudo crm configure primitive rsc_sap_<b>QAS</b>_ERS<b>01</b> SAPInstance \
+    operations \$id=rsc_sap_<b>QAS</b>_ERS<b>01</b>-operations \
+    op monitor interval=11 timeout=60 on_fail=restart \
+    params InstanceName=<b>QAS</b>_ERS<b>01</b>_<b>anftstsapers</b> START_PROFILE="/sapmnt/<b>QAS</b>/profile/<b>QAS</b>_ERS<b>01</b>_<b>anftstsapers</b>" AUTOMATIC_RECOVER=false IS_ERS=true
+   
+   sudo crm configure modgroup g-<b>QAS</b>_ASCS add rsc_sap_<b>QAS</b>_ASCS<b>00</b>
+   sudo crm configure modgroup g-<b>QAS</b>_ERS add rsc_sap_<b>QAS</b>_ERS<b>01</b>
+   
+   sudo crm configure colocation col_sap_<b>QAS</b>_no_both -5000: g-<b>QAS</b>_ERS g-<b>QAS</b>_ASCS
+   sudo crm configure order ord_sap_<b>QAS</b>_first_start_ascs Optional: rsc_sap_<b>QAS</b>_ASCS<b>00</b>:start rsc_sap_<b>QAS</b>_ERS<b>01</b>:stop symmetrical=false
+   
+   sudo crm node online <b>anftstsapcl1</b>
+   sudo crm configure property maintenance-mode="false"
+   </code></pre>
+
+   Pokud jste upgrade ze starší verze a přechodu k zařazení do fronty server 2, viz poznámka sap [2641019](https://launchpad.support.sap.com/#/notes/2641019). 
 
    Ujistěte se, že stav clusteru je ok a zda jsou spuštěny všechny prostředky. Není důležité na uzlu, které jsou spuštěné prostředky.
 
@@ -1051,7 +1079,7 @@ Následující testy jsou kopie testovacích případů v [osvědčené postupy 
         rsc_sap_QAS_ERS01  (ocf::heartbeat:SAPInstance):   Started anftstsapcl1
    </code></pre>
 
-   Vytvoření zámku zařadit do fronty, pro příklad úpravy uživatele v su01 transakce. Spuštěním následujících příkazů jako < sapsid\>adm na uzlu, kde je spuštěná instance ASC. Příkazy se zastavit instanci ASCS a spusťte jej znovu. Zařazování zámek má dojít ke ztrátě v tomto testu.
+   Vytvoření zámku zařadit do fronty, pro příklad úpravy uživatele v su01 transakce. Spuštěním následujících příkazů jako < sapsid\>adm na uzlu, kde je spuštěná instance ASC. Příkazy se zastavit instanci ASCS a spusťte jej znovu. Pokud používáte architekturu serveru 1 zařadit do fronty, zámek zařazování má dojít ke ztrátě v tomto testu. Pokud používáte architekturu serveru 2 zařadit do fronty, zařadit do fronty se zachovají. 
 
    <pre><code>anftstsapcl2:qasadm 51> sapcontrol -nr 00 -function StopWait 600 2
    </code></pre>
@@ -1066,7 +1094,7 @@ Následující testy jsou kopie testovacích případů v [osvědčené postupy 
    <pre><code>anftstsapcl2:qasadm 52> sapcontrol -nr 00 -function StartWait 600 2
    </code></pre>
 
-   Uzamčení zařazování transakce su01 by měl být ztraceny a back endu by byla obnovena. Stav prostředku po testu:
+   Zámku zařazování transakce su01 by měl být ztraceny, pokud používáte architekturu replikace 1 server zařadit do fronty a back endu by byla obnovena. Stav prostředku po testu:
 
    <pre><code>
     Resource Group: g-QAS_ASCS

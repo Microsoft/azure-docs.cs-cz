@@ -8,12 +8,12 @@ ms.devlang: c
 ms.topic: conceptual
 ms.date: 02/14/2019
 ms.author: wesmc
-ms.openlocfilehash: 3b09d9d484c6f17ee591dee9b7202a62502462ef
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: 6a895d7978f1af3914bbb9dee3594dbfffd9f317
+ms.sourcegitcommit: 5f348bf7d6cf8e074576c73055e17d7036982ddb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59268401"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59607897"
 ---
 # <a name="connect-raspberry-pi-to-azure-iot-hub-c"></a>Připojení k Azure IoT Hub (C) Raspberry Pi
 
@@ -26,8 +26,11 @@ Sadu ještě nemáte? Zkuste [online simulátor Raspberry Pi](iot-hub-raspberry-
 ## <a name="what-you-do"></a>Co můžete dělat
 
 * Vytvoření služby IoT hub.
+
 * Registrace zařízení ve službě IoT hub pro číslo pí.
+
 * Instalační program Raspberry Pi.
+
 * Spusťte ukázkovou aplikaci v Pi odeslat data ze senzorů do služby IoT hub.
 
 Připojte Raspberry Pi do služby IoT hub, kterou vytvoříte. Pak spusťte ukázkovou aplikaci v Pi shromažďovat údaje o teplotě a vlhkosti BME280 senzoru. A konečně odeslat data ze senzorů do služby IoT hub.
@@ -35,32 +38,45 @@ Připojte Raspberry Pi do služby IoT hub, kterou vytvoříte. Pak spusťte uká
 ## <a name="what-you-learn"></a>Co se naučíte
 
 * Postup vytvoření služby Azure IoT hub a získat nový připojovací řetězec zařízení.
+
 * Jak se připojit Pi s BME280 senzoru.
+
 * Jak shromažďovat data ze senzorů spuštěním ukázkové aplikace na číslo pí.
+
 * Jak odeslat data ze senzorů do služby IoT hub.
 
 ## <a name="what-you-need"></a>Co potřebujete
 
-![Co potřebujete](./media/iot-hub-raspberry-pi-kit-c-get-started/0_starter_kit.jpg)
+![Co potřebujete](./media/iot-hub-raspberry-pi-kit-c-get-started/0-starter-kit.png)
 
 * Raspberry Pi 2 nebo Raspberry Pi 3 panelu.
+
 * Aktivní předplatné Azure. Pokud nemáte účet Azure [vytvořit Bezplatný zkušební účet Azure](https://azure.microsoft.com/free/) za několik minut.
+
 * Monitorování, USB klávesnice a myši, která se připojují k pí.
+
 * Na Macu nebo počítači se systémem Windows nebo Linux.
+
 * Připojení k Internetu.
+
 * 16 GB nebo nad microSD karta.
+
 * USB SD adaptér nebo microSD karta pro vypalování image operačního systému na kartě microSD.
+
 * Mocninou čísla 2 a 5 volt zadat pomocí USB kabelu micro 6 stopy.
 
 Následující položky jsou volitelné:
 
 * Deskách Adafruit BME280 teploty, tlaku a vlhkosti senzoru.
+
 * Breadboard.
+
 * 6 F/milion můstek vodičům stanice.
+
 * Rozptýlený LED 10 mm.
 
-> [!NOTE] 
-> Tyto položky jsou volitelné, protože podpora vzorek kódu Simulovaná data ze senzorů.
+> [!NOTE]
+> Tyto položky jsou volitelné, protože data ze simulovaných senzorů podporuje vzorový kód.
 >
 
 ## <a name="create-an-iot-hub"></a>Vytvoření centra IoT
@@ -75,35 +91,47 @@ Následující položky jsou volitelné:
 
 [!INCLUDE [iot-hub-include-create-device](../../includes/iot-hub-include-create-device.md)]
 
-## <a name="setup-raspberry-pi"></a>Nastavení Raspberry Pi
+## <a name="set-up-raspberry-pi"></a>Nastavit Raspberry Pi
+
+Nyní nastavte Raspberry Pi.
 
 ### <a name="install-the-raspbian-operating-system-for-pi"></a>Instalace operačního systému Raspbian Pi
 
 Příprava pro instalaci bitové kopie Raspbian karty microSD.
 
 1. Stáhněte si Raspbian.
+
    1. [Stáhnout Raspbian Stretch s Desktopem](https://www.raspberrypi.org/downloads/raspbian/) (soubor .zip).
-   1. Extrahujte Raspbian image do složky v počítači.
-1. Instalace na kartě microSD Raspbian.
+
+   2. Extrahujte Raspbian image do složky v počítači.
+
+2. Instalace na kartě microSD Raspbian.
+
    1. [Stáhněte a nainstalujte nástroj zapisovací jednotka karty Etcher SD](https://etcher.io/).
-   1. Spusťte Etcher a vyberte Raspbian bitové kopie, které jste extrahovali v kroku 1.
-   1. Vyberte jednotku microSD karta. Všimněte si, že Etcher možná jste již vybrali správná jednotka.
-   1. Klepněte na Flash instalace Raspbian microSD karta.
-   1. Karta microSD neodeberete z počítače, po dokončení instalace. Jde bezpečně odebrat microSD karta přímo, protože Etcher automaticky vysune nebo odpojí microSD karta po dokončení.
-   1. Vložte karty microSD do pí.
+
+   2. Spusťte Etcher a vyberte Raspbian bitové kopie, které jste extrahovali v kroku 1.
+
+   3. Vyberte jednotku microSD karta. Všimněte si, že Etcher možná jste již vybrali správná jednotka.
+
+   4. Klepněte na Flash instalace Raspbian microSD karta.
+
+   5. Karta microSD neodeberete z počítače, po dokončení instalace. Jde bezpečně odebrat microSD karta přímo, protože Etcher automaticky vysune nebo odpojí microSD karta po dokončení.
+
+   6. Vložte karty microSD do pí.
 
 ### <a name="enable-ssh-and-spi"></a>Povolit SSH a SPI
 
-1. Připojit k monitoru, klávesnice a myši Pi, spusťte Pi a přihlaste Raspbian pomocí `pi` jako uživatelské jméno a `raspberry` jako heslo.
-1. Klikněte na ikonu Raspberry > **Předvolby** > **Raspberry Pi konfigurace**.
+1. Připojte se k monitoru, klávesnice a myši Pi, spusťte Pi a pak se přihlaste k Raspbian pomocí `pi` jako uživatelské jméno a `raspberry` jako heslo.
+ 
+2. Klikněte na ikonu Raspberry > **Předvolby** > **Raspberry Pi konfigurace**.
 
-   ![V nabídce Předvolby Raspbian](./media/iot-hub-raspberry-pi-kit-c-get-started/1_raspbian-preferences-menu.png)
+   ![V nabídce Předvolby Raspbian](./media/iot-hub-raspberry-pi-kit-c-get-started/1-raspbian-preferences-menu.png)
 
-1. Na **rozhraní** kartu, nastavte **SPI** a **SSH** k **povolit**a potom klikněte na tlačítko **OK**. Pokud nemáte fyzické senzory a chcete použít data ze simulovaných senzorů, tento krok je volitelný.
+3. Na **rozhraní** kartu, nastavte **SPI** a **SSH** k **povolit**a potom klikněte na tlačítko **OK**. Pokud nemáte fyzické senzory a chcete použít data ze simulovaných senzorů, tento krok je volitelný.
 
-   ![Povolit SPI a SSH v Raspberry Pi](./media/iot-hub-raspberry-pi-kit-c-get-started/2_enable-spi-ssh-on-raspberry-pi.png)
+   ![Povolit SPI a SSH v Raspberry Pi](./media/iot-hub-raspberry-pi-kit-c-get-started/2-enable-spi-ssh-on-raspberry-pi.png)
 
-> [!NOTE] 
+> [!NOTE]
 > Pokud chcete povolit SSH a SPI, najdete další referenční dokumenty na [raspberrypi.org](https://www.raspberrypi.org/documentation/remote-access/ssh/) a [RASPI-CONFIG](https://www.raspberrypi.org/documentation/configuration/raspi-config.md).
 >
 
@@ -111,9 +139,9 @@ Příprava pro instalaci bitové kopie Raspbian karty microSD.
 
 Breadboard a můstek vodičům stanice slouží k připojení kontrolku LED a BME280 PI následujícím způsobem. Pokud nemáte senzor [tuto část přeskočit](#connect-pi-to-the-network).
 
-![Připojení Raspberry Pi a snímače](./media/iot-hub-raspberry-pi-kit-c-get-started/3_raspberry-pi-sensor-connection.png)
+![Připojení Raspberry Pi a snímače](./media/iot-hub-raspberry-pi-kit-c-get-started/3-raspberry-pi-sensor-connection.png)
 
-Snímač BME280 může shromažďovat data o teplotě a vlhkosti. A bude indikátor LED blikání při komunikaci mezi zařízením a cloudem. 
+Snímač BME280 může shromažďovat data o teplotě a vlhkosti. A bude indikátor LED blikání při komunikaci mezi zařízením a cloudem.
 
 Senzor kód PIN použijte následující propojení:
 
@@ -132,18 +160,17 @@ Kliknutím zobrazíte [Raspberry Pi 2 a 3 mapování kódu Pin](https://develope
 
 Poté, co právě jste úspěšně propojili BME280 Raspberry Pi, měla by být jako obrázku níže.
 
-![Připojené Pi a BME280](./media/iot-hub-raspberry-pi-kit-c-get-started/4_connected-pi.jpg)
+![Připojené Pi a BME280](./media/iot-hub-raspberry-pi-kit-c-get-started/4-connected-pi.png)
 
 ### <a name="connect-pi-to-the-network"></a>Připojit k síti, Pi
 
 Zapněte pí pomocí USB kabelu micro a napájení. Pomocí kabelu Ethernet Pi připojení k drátové síti ani postupovat podle pokynů [pokyny od Raspberry Pi základ](https://www.raspberrypi.org/learning/software-guide/wifi/) Pi připojit k bezdrátové síti. Až váš Pi byl úspěšně připojen k síti, budete muset poznamenejte si [IP adresu vašeho pí](https://learn.adafruit.com/adafruits-raspberry-pi-lesson-3-network-setup/finding-your-pis-ip-address).
 
-![Připojený k drátové síti](./media/iot-hub-raspberry-pi-kit-c-get-started/5_power-on-pi.jpg)
-
+![Připojený k drátové síti](./media/iot-hub-raspberry-pi-kit-c-get-started/5-power-on-pi.png)
 
 ## <a name="run-a-sample-application-on-pi"></a>Spustit ukázkovou aplikaci v Pi
 
-### <a name="login-to-your-raspberry-pi"></a>Přihlaste se k Raspberry Pi
+### <a name="sign-into-your-raspberry-pi"></a>Přihlaste se k Raspberry Pi
 
 1. Použijte jednu z následujících klientů SSH z hostitelského počítače pro připojení k Raspberry Pi.
    
@@ -151,10 +178,10 @@ Zapněte pí pomocí USB kabelu micro a napájení. Pomocí kabelu Ethernet Pi p
    1. Stáhněte a nainstalujte [PuTTY](https://www.putty.org/) pro Windows. 
    1. Zkopírujte IP adresu části Pi do názvu hostitele (nebo IP adresu) a vyberte jako typ připojení SSH.
    
-   ![PuTTy](./media/iot-hub-raspberry-pi-kit-node-get-started/7_putty-windows.png)
-   
+   ![PuTTy](./media/iot-hub-raspberry-pi-kit-node-get-started/7-putty-windows.png)
+
    **Mac a uživatelé Ubuntu**
-   
+
    Pomocí integrovaného klienta SSH v systému Ubuntu nebo macOS. Možná budete muset spustit `ssh pi@<ip address of pi>` připojit Pi přes protokol SSH.
    > [!NOTE]
    > Výchozí uživatelské jméno `pi` , a heslo je `raspberry`.
@@ -189,7 +216,7 @@ Zapněte pí pomocí USB kabelu micro a napájení. Pomocí kabelu Ethernet Pi p
    cmake . && make
    ```
    
-   ![Výstup sestavení](./media/iot-hub-raspberry-pi-kit-c-get-started/7_build-output.png)
+   ![Výstup sestavení](./media/iot-hub-raspberry-pi-kit-c-get-started/7-build-output.png)
 
 1. Spuštění ukázkové aplikace spuštěním následujícího příkazu:
 
@@ -203,7 +230,7 @@ Zapněte pí pomocí USB kabelu micro a napájení. Pomocí kabelu Ethernet Pi p
 
 Měli byste vidět následující výstup, který zobrazuje data ze senzorů a zprávy, které se odesílají do služby IoT hub.
 
-![Výstup – data ze senzorů odeslané do služby IoT hub z Raspberry Pi](./media/iot-hub-raspberry-pi-kit-c-get-started/8_run-output.png)
+![Výstup – data ze senzorů odeslané do služby IoT hub z Raspberry Pi](./media/iot-hub-raspberry-pi-kit-c-get-started/8-run-output.png)
 
 ## <a name="read-the-messages-received-by-your-hub"></a>Přečtěte si zprávy přijaté službou rozbočovače
 

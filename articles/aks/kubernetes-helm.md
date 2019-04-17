@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 03/06/2019
 ms.author: zarhoads
-ms.openlocfilehash: 0ebf317bf29a378f8cbbed647d3d3e07d2aa6bab
-ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
+ms.openlocfilehash: 2fcdb72fa2717659e78e6f767bdc73b0d7be0886
+ms.sourcegitcommit: fec96500757e55e7716892ddff9a187f61ae81f7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58757170"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59618095"
 ---
 # <a name="install-applications-with-helm-in-azure-kubernetes-service-aks"></a>Instalace aplikací s nástrojem Helm ve službě Azure Kubernetes Service (AKS)
 
@@ -20,7 +20,7 @@ ms.locfileid: "58757170"
 
 Tento článek ukazuje, jak nakonfigurovat a používat Helm v clusteru Kubernetes v AKS.
 
-## <a name="before-you-begin"></a>Před zahájením
+## <a name="before-you-begin"></a>Než začnete
 
 Tento článek předpokládá, že máte existující cluster AKS. Pokud potřebujete AKS cluster, najdete v tomto rychlém startu AKS [pomocí Azure CLI] [ aks-quickstart-cli] nebo [pomocí webu Azure portal][aks-quickstart-portal].
 
@@ -133,7 +133,7 @@ Chcete-li aktualizovat seznam grafy, použijte [aktualizace úložiště helmu] 
 ```console
 $ helm repo update
 
-Hang tight while we grab the latest from your chart repositories...
+Hold tight while we grab the latest from your chart repositories...
 ...Skip local chart repository
 ...Successfully got an update from the "stable" chart repository
 Update Complete. ⎈ Happy Helming!⎈

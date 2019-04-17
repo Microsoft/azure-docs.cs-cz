@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 01/17/2019
 ms.author: avneet723
 ms.custom: include file
-ms.openlocfilehash: ec382217bfa32da19c0b98e656f3782739b26cc6
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 1f567b3d083853f9bb342bfad462e8545caa6480
+ms.sourcegitcommit: fec96500757e55e7716892ddff9a187f61ae81f7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58125265"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59630468"
 ---
 ## <a name="download-the-source-code"></a>Stáhněte si zdrojový kód
 
@@ -59,7 +59,7 @@ Pokud jste dosud vytvořili požadované prostředky Azure, postupujte podle tě
 
      Tento skript vytvoří skupinu prostředků v Azure s názvem řešení. Tato skupina prostředků obsahuje prostředky Azure, které používá akcelerátor řešení. Jakmile už nepotřebujete odpovídající prostředky můžete odstranit tuto skupinu prostředků.
 
-     Skript také přidá sadu proměnných prostředí s předponou **počítače** do místního počítače. Při spuštění kontejnerů Dockeru nebo mikroslužeb projekty místně, jejich čtení jejich hodnoty konfigurace z těchto proměnných prostředí.
+     Skript také přidá sadu proměnných prostředí s předponou **počítače** do místního počítače. Tyto proměnné prostředí zadejte podrobnosti pro vzdálené monitorování bude moct číst z prostředku Azure Key Vault. Tento prostředek Key Vault je vzdálené monitorování bude načteno jeho konfigurační hodnoty z.
 
      > [!TIP]
      > Po dokončení skriptu, také uloží proměnné prostředí do souboru s názvem  **\<domovskou složku\>\\.pcs\\\<název řešení\>.env** . Můžete je použít pro nasazení akcelerátoru řešení budoucí. Všimněte si, že všechny proměnné prostředí nastavené v místním počítači přepsat hodnoty v **služby\\skripty\\místní\\.env** souboru při spuštění **docker-compose**.
@@ -68,4 +68,12 @@ Pokud jste dosud vytvořili požadované prostředky Azure, postupujte podle tě
 
 ### <a name="use-existing-azure-resources"></a>Použít existující prostředky Azure
 
-Pokud jste již vytvořili požadované prostředky Azure, vytvořte odpovídající proměnné prostředí v místním počítači. Ty mohou být uloženy v  **\<domovskou složku\>\\.pcs\\\<název řešení\>.env** souboru z nasazení. Všimněte si, že proměnné prostředí nastavené v místním počítači přepsat hodnoty v **služby\\skripty\\místní\\.env** souboru při spuštění **docker-compose**.
+Pokud jste již vytvořili požadované prostředky Azure, vytvořte odpovídající proměnné prostředí v místním počítači.
+Nastavení proměnných prostředí pro následující:
+* **PCS_KEYVAULT_NAME** – název prostředku Azure Key Vault
+* **PCS_AAD_APPID** – ID aplikace AAD
+* **PCS_AAD_APPSECRET** -tajný klíč aplikace AAD
+
+Hodnoty konfigurace budou číst z tohoto prostředku Azure Key Vault. Tyto proměnné prostředí mohou být uloženy v  **\<domovskou složku\>\\.pcs\\\<název řešení\>.env** souboru z nasazení. Všimněte si, že proměnné prostředí nastavené v místním počítači přepsat hodnoty v **služby\\skripty\\místní\\.env** souboru při spuštění **docker-compose**.
+
+Některé konfigurace vyžaduje mikroslužby je uložené v instanci **služby Key Vault** , která byla vytvořena na původním nasazení. Odpovídající proměnné v trezoru klíčů by měl být upraven podle potřeby.

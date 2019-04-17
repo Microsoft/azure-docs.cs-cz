@@ -14,14 +14,14 @@ ms.workload: infrastructure
 ms.date: 09/10/2018
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 392dd39e2b3b0e26e7b0ba645bf5a70231167ad5
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 71970a74817665c97a9522fbc9a68dd3834252b9
+ms.sourcegitcommit: fec96500757e55e7716892ddff9a187f61ae81f7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58014398"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59616352"
 ---
-# <a name="monitoring-and-troubleshooting-from-hana-side"></a>Monitorování a řešení potíží s ze strany HANA
+# <a name="monitoring-and-troubleshooting-from-hana-side"></a>Sledování a řešení potíží na straně HANA
 
 Abyste mohli efektivně analyzovat problémy související se SAP HANA v Azure (velké instance), je vhodné zúžit hlavní příčinu problému. SAP publikoval velké množství dokumentací a pomohou vám.
 
@@ -106,7 +106,7 @@ Navíc pomocí open source [IPERF](https://iperf.fr/) nástroje (nebo podobnou) 
 
 Odkazovat [SAP, řešení potíží s HANA: Výkon sítě a potíže s připojením k](https://help.sap.com/saphelp_hanaplatform/helpdata/en/a3/ccdff1aedc4720acb24ed8826938b6/content.htm?frameset=/en/dc/6ff98fa36541e997e4c719a632cbd8/frameset.htm&amp;current_toc=/en/85/d132c3f05e40a2b20c25aa5fd6331b/plain.htm&amp;node_id=142&amp;show_children=false) lokality podrobné kroky pro řešení potíží.
 
-## <a name="storage"></a>Storage
+## <a name="storage"></a>Úložiště
 
 Z pohledu koncového uživatele aplikace (systém jako celek) běží pomalu, přestane reagovat nebo může dokonce zdát přestane reagovat, pokud dojde k problémům s výkonem vstupně-výstupních operací. V **svazky** kartu v sadě Studio SAP HANA, můžete zobrazit připojené svazky a svazky, které jsou používány jednotlivých služeb.
 

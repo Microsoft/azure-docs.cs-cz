@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 02/19/2019
 ms.reviewer: mbullwin
 ms.author: cithomas
-ms.openlocfilehash: 9d5e25e0fd00f9c0635009f684e79336d58b7b4a
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: 615eaa3df7cabad72ac321978eb01d93a7bfa988
+ms.sourcegitcommit: 5f348bf7d6cf8e074576c73055e17d7036982ddb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59263753"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59608281"
 ---
 # <a name="applicationinsightsloggerprovider-for-net-core-ilogger-logs"></a>ApplicationInsightsLoggerProvider pro .NET Core ILogger protokoly
 
@@ -414,16 +414,39 @@ Níže uvedeného kódu fragment kódu nakonfiguruje protokoly `Warning` a vyš�
 
 * Application Insights zachycení a odešle `ILogger` přihlásí pomocí stejného `TelemetryConfiguration` použitý pro každý další telemetrie. Existuje výjimka tohoto pravidla. Výchozí hodnota `TelemetryConfiguration` není plně nastavení při protokolování něco z `Program.cs` nebo `Startup.cs` samostatně, takže protokolů z těchto míst nebude mít výchozí konfigurace a proto nebude spuštěn všechny `TelemetryInitializer`s a `TelemetryProcessor`s.
 
-*5. Jaký typ telemetrie Application Insights je vytvořen z `ILogger` protokoly? nebo kde lze zobrazit `ILogger` protokolů ve službě Application Insights?*
+*5. Používám samostatného balíčku Microsoft.Extensions.Logging.ApplicationInsights a chci, aby k protokolování některé další vlastní telemetrická data ručně. Jak to mám udělat, který?*
+
+* Při použití samostatného balíčku `TelemetryClient` není aplikován na kontejnerů DI, takže se očekává, že uživatelé vytvořit novou instanci třídy `TelemetryClient` pomocí stejné konfigurace jako poskytovatel protokolovacího nástroje, jak je znázorněno níže. Tím se zajistí, že stejné konfigurace se použije pro všechny vlastní telemetrická data, jakož i zachycených ILogger.
+
+```csharp
+public class MyController : ApiController
+{
+   // This telemtryclient can be used to track additional telemetry using TrackXXX() api.
+   private readonly TelemetryClient _telemetryClient;
+   private readonly ILogger _logger;
+
+   public MyController(IOptions<TelemetryConfiguration> options, ILogger<MyController> logger)
+   {
+        _telemetryClient = new TelemetryClient(options.Value);
+        _logger = logger;
+   }  
+}
+```
+
+> [!NOTE]
+> Mějte prosím na paměti, že pokud balíček Microsoft.ApplicationInsights.AspNetCore balíčku se používá k povolení Application Insights, klikněte výše uvedeném příkladu by měl být upraven zobrazíte `TelemetryClient` přímo v konstruktoru. Zobrazit [to](https://docs.microsoft.com/azure/azure-monitor/app/asp-net-core-no-visualstudio#frequently-asked-questions) pro úplný příklad.
+
+
+*6. Jaký typ telemetrie Application Insights je vytvořen z `ILogger` protokoly? nebo kde lze zobrazit `ILogger` protokolů ve službě Application Insights?*
 
 * Zaznamená ApplicationInsightsLoggerProvider `ILogger` protokoly a vytvoří `TraceTelemetry` z něj. Pokud objektu výjimky je předán metodě Log() na objektu ILogger, pak namísto `TraceTelemetry`, `ExceptionTelemetry` se vytvoří. Tyto položky telemetrie najdete ve stejných míst jako jakýkoli jiný `TraceTelemetry` nebo `ExceptionTelemetry` pro službu Application Insights, včetně portálu analytics a místní ladicí program sady Visual Studio.
 Pokud chcete vždy odesílat `TraceTelemetry`, potom pomocí fragmentu kódu ```builder.AddApplicationInsights((opt) => opt.TrackExceptionsAsExceptionTelemetry = false);```.
 
-*5. Nejsou nainstalované sady SDK a povolte Application Insights pro aplikace Asp.Net Core pomocí rozšíření webové aplikace Azure. Použití nového poskytovatele*
+*7. Nejsou nainstalované sady SDK a povolte Application Insights pro aplikace Asp.Net Core pomocí rozšíření webové aplikace Azure. Použití nového poskytovatele*
 
 * Rozšíření Application Insights v Azure Web App pomocí předchozího poskytovatele. Pravidla filtrování můžete upravit v `appsettings.json` pro vaši aplikaci. Pokud chcete využít výhod nového poskytovatele, použijte čas sestavení instrumentace provedením závislostí nuget v sadě SDK. Tento dokument se aktualizují při rozšíření přepne na používání nového poskytovatele.
 
-*6. Jsem pomocí samostatného balíčku Microsoft.Extensions.Logging.ApplicationInsights a povolení Application Insights poskytovatele volání Tvůrce. AddApplicationInsights("ikey"). Je možné získat klíč instrumentace z konfigurace?*
+*8. Jsem pomocí samostatného balíčku Microsoft.Extensions.Logging.ApplicationInsights a povolení Application Insights poskytovatele volání Tvůrce. AddApplicationInsights("ikey"). Je možné získat klíč instrumentace z konfigurace?*
 
 
 * Upravit `Program.cs` a `appsettings.json` jak je znázorněno níže.

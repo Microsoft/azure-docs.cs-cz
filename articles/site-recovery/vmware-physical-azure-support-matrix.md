@@ -6,14 +6,14 @@ manager: carmonm
 ms.service: site-recovery
 services: site-recovery
 ms.topic: conceptual
-ms.date: 03/26/2019
+ms.date: 04/16/2019
 ms.author: raynew
-ms.openlocfilehash: 4e5a785d219e1b776a1d512512d0a2a74532c550
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: 94fd70dccf367d43b1caaa9f3a11ed934f9950ea
+ms.sourcegitcommit: fec96500757e55e7716892ddff9a187f61ae81f7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59282725"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59618052"
 ---
 # <a name="support-matrix-for-disaster-recovery--of-vmware-vms-and-physical-servers-to-azure"></a>Matice podpory pro zotavení po havárii virtuálních počítačů VMware a fyzických serverů do Azure
 
@@ -21,12 +21,12 @@ Tento článek shrnuje podporované komponenty a nastavení pro zotavení po hav
 
 Chcete-li začít používat Azure Site Recovery s nejjednodušší scénář nasazení, navštivte naši [kurzy](tutorial-prepare-azure.md). Další informace o architektuře Azure Site Recovery [tady](vmware-azure-architecture.md).
 
-## <a name="replication-scenario"></a>Scénáře replikace
+## <a name="deployment-scenario"></a>Scénář nasazení
 
 **Scénář** | **Podrobnosti**
 --- | ---
-Virtuální počítače VMware | Replikace místních virtuálních počítačů VMware do Azure. Můžete nasadit tento scénář na webu Azure Portal nebo pomocí [Powershellu](vmware-azure-disaster-recovery-powershell.md).
-Fyzické servery | Replikace místních fyzických serverů Windows/Linux do Azure. Můžete nasadit tento scénář na webu Azure Portal.
+Zotavení po havárii virtuálních počítačů VMware | Replikace místních virtuálních počítačů VMware do Azure. Můžete nasadit tento scénář na webu Azure Portal nebo pomocí [Powershellu](vmware-azure-disaster-recovery-powershell.md).
+Zotavení po havárii fyzických serverů | Replikace místních fyzických serverů Windows/Linux do Azure. Můžete nasadit tento scénář na webu Azure Portal.
 
 ## <a name="on-premises-virtualization-servers"></a>Na místních serverech virtualizace
 
@@ -96,16 +96,16 @@ Debian 8 | [9.20][9.20 UR],[9.21][9.21 UR],[9.22][9.22 UR],[9.23][9.23 UR] | 3.1
 
 ### <a name="suse-linux-enterprise-server-12-supported-kernel-versions"></a>Podporované verze jádra operačního systému SUSE Linux Enterprise Server 12
 
-**Vydat** | **Verze služby mobility** | **Verze jádra** |
+**Vydání verze** | **Verze služby mobility** | **Verze jádra** |
 --- | --- | --- |
-SUSE Linux Enterprise Server 12 (SP3 SP1, SP2) | [9.23][9.23 UR] | SP1 3.12.49-11-default k 3.12.74-60.64.40-default</br></br> SP1(LTSS) 3.12.74-60.64.45-default k 3.12.74-60.64.107-default</br></br> 4.4.21-69-default SP2 do 4.4.120-92.70-default</br></br>SP2(LTSS) 4.4.121-92.73-default k 4.4.121-92.101-default</br></br>SP3 4.4.73-5-default k 4.4.162-94.79-default |
+SUSE Linux Enterprise Server 12 (s aktualizací SP1, SP2, SP3, SP4) | [9.23][9.23 UR] | SP1 3.12.49-11-default k 3.12.74-60.64.40-default</br></br> SP1(LTSS) 3.12.74-60.64.45-default k 3.12.74-60.64.107-default</br></br> 4.4.21-69-default SP2 do 4.4.120-92.70-default</br></br>SP2(LTSS) 4.4.121-92.73-default k 4.4.121-92.101-default</br></br>SP3 4.4.73-5-default k 4.4.162-94.79-default</br></br>SP4 4.12.14-94.41-default k 4.12.14-95.6-default |
 SUSE Linux Enterprise Server 12 (SP3 SP1, SP2) | [9.22][9.22 UR] | SP1 3.12.49-11-default k 3.12.74-60.64.40-default</br></br> SP1(LTSS) 3.12.74-60.64.45-default k 3.12.74-60.64.107-default</br></br> 4.4.21-69-default SP2 do 4.4.120-92.70-default</br></br>SP2(LTSS) 4.4.121-92.73-default k 4.4.121-92.98-default</br></br>SP3 4.4.73-5-default k 4.4.162-94.72-default |
 SUSE Linux Enterprise Server 12 (SP3 SP1, SP2) | [9.21][9.21 UR] | SP1 3.12.49-11-default k 3.12.74-60.64.40-default</br></br> SP1(LTSS) 3.12.74-60.64.45-default k 3.12.74-60.64.107-default</br></br> 4.4.21-69-default SP2 do 4.4.120-92.70-default</br></br>SP2(LTSS) 4.4.121-92.73-default k 4.4.121-92.98-default</br></br>SP3 4.4.73-5-default k 4.4.156-94.72-default |
 SUSE Linux Enterprise Server 12 (SP3 SP1, SP2) | [9.20][9.20 UR] | SP1 3.12.49-11-default k 3.12.74-60.64.40-default</br></br> SP1(LTSS) 3.12.74-60.64.45-default k 3.12.74-60.64.107-default</br></br> 4.4.21-69-default SP2 do 4.4.120-92.70-default</br></br>SP2(LTSS) 4.4.121-92.73-default k 4.4.121-92.98-default</br></br>SP3 4.4.73-5-default k 4.4.156-94.64-default |
 
 ## <a name="linux-file-systemsguest-storage"></a>Úložiště systémů/hostů soubor Linuxu
 
-**Komponenta** | **Podporováno**
+**Komponenta** | **Podporuje se**
 --- | ---
 Systémy souborů | ext3, ext4, XFS
 Správce svazků | Před [9.20 verze](https://support.microsoft.com/en-in/help/4478871/update-rollup-31-for-azure-site-recovery), <br/> 1. Je podporován LVM. <br/> 2. boot na svazku LVM se nepodporuje. <br/> 3. Několik disků s operačním systémem nepodporují.<br/><br/>Z [9.20 verze](https://support.microsoft.com/en-in/help/4478871/update-rollup-31-for-azure-site-recovery) výš, se podporuje Boot na LVM. Několik disků s operačním systémem nepodporují.
@@ -127,7 +127,7 @@ Přidání disku na replikovaný virtuální počítač | Zakažte replikaci vir
 
 ## <a name="network"></a>Síť
 
-**Komponenta** | **Podporováno**
+**Komponenta** | **Podporuje se**
 --- | ---
 Seskupování síťových adaptérů sítě hostitele | Pro virtuální počítače VMware podporován. <br/><br/>Není podporováno pro replikaci fyzických počítačů.
 Hostitelské sítě VLAN | Ano.
@@ -143,7 +143,7 @@ Několik síťových adaptérů sítě hosta/server | Ano.
 
 ## <a name="azure-vm-network-after-failover"></a>Síť virtuálních počítačů Azure (po převzetí služeb při selhání)
 
-**Komponenta** | **Podporováno**
+**Komponenta** | **Podporuje se**
 --- | ---
 Azure ExpressRoute | Ano
 Interní nástroj pro vyrovnávání zatížení | Ano
@@ -156,8 +156,8 @@ Zachovat Zdrojová IP adresa | Ano
 Koncové body služby virtuální sítě Azure<br/> | Ano
 Akcelerované síťové služby | Ne
 
-## <a name="storage"></a>Storage
-**Komponenta** | **Podporováno**
+## <a name="storage"></a>Úložiště
+**Komponenta** | **Podporuje se**
 --- | ---
 Dynamický disk | Operace systémový disk musí být základní disk. <br/><br/>Datové disky můžou být dynamických disků
 Konfigurace disku dockeru | Ne
@@ -167,7 +167,6 @@ Host vSAN | Ano pro VMware<br/><br/> Není k dispozici pro fyzické servery
 Hostitel multipath (MPIO Multipath) | Ano, testováním s využitím Microsoft DSM EMC PowerPath 5.7 SP4, EMC PowerPath DSM pro CLARiiON
 Svazky virtuálního hostitele (VVols) | Ano pro VMware<br/><br/> Není k dispozici pro fyzické servery
 Host/server VMDK | Ano
-Host/server rozhraním EFI/UEFI| Partial (migrace dat do Azure pro Windows Server 2012 a novější) <br/><br/> Další informace v poznámce na konci v tabulce
 Disk sdíleného clusteru hosta/server | Ne
 Šifrované disk Host/server | Ne
 Host/server systému souborů NFS | Ne
@@ -181,18 +180,12 @@ Host/server – prostory úložiště | Ne
 Disk horké přidávat nebo odebírat hosta/server | Ne
 Host/server - vyloučení disku | Ano
 Funkce multipath hosta/server (MPIO) | Ne
+Spuštění EFI/UEFI hosta/server | Podporované při migraci virtuálních počítačů VMware nebo fyzické servery s Windows serverem 2012 nebo novější do Azure.<br/><br/> Pouze můžete replikovat virtuální počítače pro migraci. Navrácení služeb po obnovení do místní se nepodporuje.<br/><br/> Server by neměl mít více než čtyři oddíly na disku s operačním systémem.<br/><br/> Vyžaduje verzi služby Mobility 9.13 nebo vyšší.<br/><br/> Je podporován pouze v systému souborů NTFS.
 
-> [!NOTE]
-> Rozhraní UEFI spouštění virtuálních počítačů VMware s Windows serverem 2012 nebo novějším se dají migrovat do Azure. Platí následující omezení:
->
-> - Je podporována pouze migrace do Azure. Navrácení služeb po obnovení do místní lokality VMware se nepodporuje.
-> - Server by neměl mít více než čtyři oddíly na disku s operačním systémem.
-> - Je podporován pouze v systému souborů NTFS
-> - Vyžaduje verzi služby Mobility 9.13 nebo vyšší.
 
 ## <a name="azure-storage"></a>Úložiště Azure
 
-**Komponenta** | **Podporováno**
+**Komponenta** | **Podporuje se**
 --- | ---
 (Locally redundant storage) Místně redundantní úložiště | Ano
 Geograficky redundantní úložiště | Ano
@@ -208,7 +201,7 @@ Pro virtuální sítě na cílový účet úložiště mezipaměti nebo úloži�
 
 ## <a name="azure-compute"></a>Výpočetní prostředky Azure
 
-**Funkce** | **Podporováno**
+**Funkce** | **Podporuje se**
 --- | ---
 Skupiny dostupnosti | Ano
 Zóny dostupnosti | Ne
@@ -237,7 +230,7 @@ název virtuálního počítače | Od 1 do 63 znaků.<br/><br/> Pouze písmena, 
 
 Následující tabulka obsahuje omezení služby Azure Site Recovery. Tato omezení se zakládají na našich testováních, nemůžou však pokrýt všechny možné kombinace vstupně-výstupních operací aplikace. Skutečné výsledky se můžou lišit v závislosti na kombinaci vstupně-výstupních operací vaší aplikace. Nejlepších výsledků dosáhnete, důrazně doporučujeme [spustit nástroj Plánovač nasazení](site-recovery-deployment-planner.md) a provádět rozsáhlá testování aplikace pomocí testovacího převzetí služeb při získat skutečnou představu o výkonu aplikace.
 
-**Cíl ukládání replikace** | **Průměrná zdrojový disk velikost vstupně-výstupních operací** |**Četnost změn dat průměrné zdrojového disku** | **Denní četnost změn dat celkový zdrojového disku**
+**Cíl ukládání replikace** | **Průměrná velikost vstupně-výstupních operací zdrojového disku** |**Průměrná četnost změn dat zdrojového disku** | **Celková denní četnost změn dat zdrojového disku**
 ---|---|---|---
 Storage úrovně Standard | 8 kB | 2 MB/s | 168 GB na disk
 Disk úrovně Premium P10 nebo P15 | 8 kB  | 2 MB/s | 168 GB na disk
@@ -246,7 +239,7 @@ Disk úrovně Premium P10 nebo P15 | 32 kB nebo větší | 8 MB/s | 672 GB na di
 Disk úrovně Premium P20 nebo P30 nebo P40 nebo P50 | 8 kB    | 5 MB/s | 421 GB na disk
 Disk úrovně Premium P20 nebo P30 nebo P40 nebo P50 | 16 kB nebo větší |20 MB/s | 1684 GB na disk
 
-**Četnost změn dat zdrojového** | **Maximální omezení**
+**Četnost změn dat zdroje** | **Maximální omezení**
 ---|---
 Průměrná četnost změn dat na virtuální počítač| 25 MB/s
 Četnost změn dat ve špičce napříč všemi disky virtuálního počítače | 54 MB/s
@@ -256,7 +249,7 @@ Toto jsou průměrné hodnoty za předpokladu, že se vstupně-výstupní operac
 
 ## <a name="vault-tasks"></a>Trezor úlohy
 
-**Akce** | **Podporováno**
+**Akce** | **Podporuje se**
 --- | ---
 Přesun trezoru mezi skupinami prostředků<br/><br/> V rámci a napříč předplatnými | Ne
 Přesunout úložiště, sítě, virtuální počítače Azure mezi skupinami prostředků<br/><br/> V rámci a napříč předplatnými | Ne

@@ -9,17 +9,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 04/09/2019
+ms.date: 04/15/2019
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: df0593faaf8b68c793a65312b208fe858804db53
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.openlocfilehash: 82afadef58310f46046c8c3168ed93a34769b316
+ms.sourcegitcommit: 5f348bf7d6cf8e074576c73055e17d7036982ddb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/11/2019
-ms.locfileid: "59496277"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59609519"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Oprávnění role správce v Azure Active Directory
 
@@ -71,9 +71,9 @@ K dispozici jsou následující role správce:
 
   V | Můžete provést
   ----- | ----------
-  [Centrum pro dodržování předpisů Microsoft 365](https://protection.microsoft.com) | Chránit a spravovat data vaší organizace v rámci služeb Microsoft 365<br>Správa výstrah dodržování předpisů
+  [Centrum pro dodržování předpisů Microsoft 365](https://protection.office.com) | Chránit a spravovat data vaší organizace v rámci služeb Microsoft 365<br>Správa výstrah dodržování předpisů
   [Správce dodržování předpisů](https://docs.microsoft.com/office365/securitycompliance/meet-data-protection-and-regulatory-reqs-using-microsoft-cloud) | Sledování, přiřaďte a ověřte aktivit dodržování legislativních předpisů vaší organizace
-  [Centrum zabezpečení a dodržování předpisů Office 365](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d) | Správa zásad správného řízení dat<br>Proveďte šetření právní informace a data<br>Spravovat žádost o subjektu dat
+  [Office 365 zabezpečení a dodržování předpisů](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d) | Správa zásad správného řízení dat<br>Proveďte šetření právní informace a data<br>Spravovat žádost o subjektu dat
   [Intune](https://docs.microsoft.com/intune/role-based-access-control) | Zobrazit všechna data auditu Intune
   [Cloud App Security](https://docs.microsoft.com/cloud-app-security/manage-admins) | Má oprávnění jen pro čtení a může spravovat upozornění<br>Můžete vytvořit a upravit zásady souborů a povolit akce zásad správného řízení souborů<br> Můžete zobrazit všechny předdefinované sestavy v správy dat
 
@@ -81,7 +81,7 @@ K dispozici jsou následující role správce:
 
   In | Can do
   ----- | ----------
-  [Microsoft 365 compliance center](https://protection.microsoft.com) | Monitor compliance-related policies across Microsoft 365 services<br>Manage compliance alerts
+  [Microsoft 365 compliance center](https://protection.office.com) | Monitor compliance-related policies across Microsoft 365 services<br>Manage compliance alerts
   [Compliance Manager](https://docs.microsoft.com/office365/securitycompliance/meet-data-protection-and-regulatory-reqs-using-microsoft-cloud) | Track, assign, and verify your organization's regulatory compliance activities
   [Office 365 Security & Compliance Center](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d) | Manage data governance<br>Perform legal and data investigation<br>Manage Data Subject Request
   [Intune](https://docs.microsoft.com/intune/role-based-access-control) | View all Intune audit data
@@ -170,10 +170,10 @@ K dispozici jsou následující role správce:
   
   V | Můžete provést
   --- | ---
-  [Centrum zabezpečení Microsoft 365](https://protection.microsoft.com) | Monitorování zásad souvisejících se zabezpečením ve službách Microsoft 365<br>Správa ohrožení zabezpečení a upozornění<br>Zobrazení sestav
+  [Centrum zabezpečení Microsoft 365](https://protection.office.com) | Monitorování zásad souvisejících se zabezpečením ve službách Microsoft 365<br>Správa ohrožení zabezpečení a upozornění<br>Zobrazení sestav
   Centrum Identity Protection | Všechna oprávnění role Čtenář zabezpečení<br>Kromě toho možnost provádět všechny operace Centrum Identity Protection kromě resetování hesel
   [Privileged Identity Management](https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-configure) | Všechna oprávnění role Čtenář zabezpečení<br>**Nelze** Spravovat přiřazení rolí Azure AD nebo nastavení
-  [Centrum zabezpečení a dodržování předpisů Office 365](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d) | Správa zásad zabezpečení<br>Zobrazení, prozkoumání a reakce na hrozby zabezpečení<br>Zobrazení sestav
+  [Office 365 zabezpečení a dodržování předpisů](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d) | Správa zásad zabezpečení<br>Zobrazení, prozkoumání a reakce na hrozby zabezpečení<br>Zobrazení sestav
   Rozšířená ochrana před internetovými útoky Azure | Monitorování a reakce na bezpečnostní podezřelé aktivity
   Windows Defender ATP a EDR | Přiřazení rolí<br>Spravovat skupiny počítačů<br>Konfigurace koncového bodu zjišťování hrozeb a automatizovanou nápravu<br>Zobrazení, prozkoumání a reakce na výstrahy
   [Intune](https://docs.microsoft.com/intune/role-based-access-control) | Zobrazení uživatele, zařízení, registraci, konfiguraci a informace o aplikaci<br>Nelze provádět změny v Intune
@@ -185,7 +185,7 @@ K dispozici jsou následující role správce:
 
   In | Can do
   --- | ---
-  [Microsoft 365 security center](https://protection.microsoft.com) | All permissions of the Security Reader role<br>View, investigate, and respond to security threats alerts
+  [Microsoft 365 security center](https://protection.office.com) | All permissions of the Security Reader role<br>View, investigate, and respond to security threats alerts
   Identity Protection Center | All permissions of the Security Reader role<br>Additionally, the ability to perform all Identity Protection Center operations except for resetting passwords
   [Privileged Identity Management](https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-configure) | All permissions of the Security Reader role
   [Office 365 Security & Compliance Center](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d) | All permissions of the Security Reader role<br>View, investigate, and respond to security alerts
@@ -198,10 +198,10 @@ K dispozici jsou následující role správce:
 
   V | Můžete provést
   --- | ---
-  [Centrum zabezpečení Microsoft 365](https://protection.microsoft.com) | Zobrazit zásady zabezpečení ve službách Microsoft 365<br>Výstrahy a zobrazení bezpečnostních hrozeb<br>Zobrazení sestav
+  [Centrum zabezpečení Microsoft 365](https://protection.office.com) | Zobrazit zásady zabezpečení ve službách Microsoft 365<br>Výstrahy a zobrazení bezpečnostních hrozeb<br>Zobrazení sestav
   Centrum Identity Protection | Číst všechny zprávy o zabezpečení a informace o nastavení zabezpečení funkcí<br><ul><li>Anti-spam<li>Šifrování<li>Prevence ztráty dat<li>Anti-malware<li>Rozšířená ochrana před internetovými útoky<li>Anti phisingová<li>Mailflow pravidla
   [Privileged Identity Management](https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-configure) | Má přístup jen pro čtení ke všem informacím prezentované v Azure AD PIM: Zásady a sestav pro přiřazení role Azure AD, bezpečnostní kontroly a v budoucnu přístup pro čtení k zásad dat a sestav pro scénáře kromě přiřazení role Azure AD.<br>**Nelze** registrace pro Azure AD PIM nebo dělat žádné změny. PIM portálu nebo pomocí Powershellu někdo v této roli můžete aktivovat další role (například globální správce nebo správce privilegovaných rolí), pokud uživatel je pro ně oprávnění.
-  [Centrum zabezpečení a dodržování předpisů Office 365](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d) | Zobrazení zásad zabezpečení<br>Zobrazení a prošetřování bezpečnostní hrozby<br>Zobrazení sestav
+  [Office 365 zabezpečení a dodržování předpisů](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d) | Zobrazení zásad zabezpečení<br>Zobrazení a prošetřování bezpečnostní hrozby<br>Zobrazení sestav
   Windows Defender ATP a EDR | Zobrazení a prošetřování výstrah
   [Intune](https://docs.microsoft.com/intune/role-based-access-control) | Zobrazení uživatele, zařízení, registraci, konfiguraci a informace o aplikaci. Nelze provádět změny v Intune.
   [Cloud App Security](https://docs.microsoft.com/cloud-app-security/manage-admins) | Má oprávnění jen pro čtení a může spravovat upozornění

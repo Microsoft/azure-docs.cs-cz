@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/21/2019
 ms.author: jeedes
-ms.openlocfilehash: 593948c9646304da73fd25e4975e65fa71aed6e2
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: 878d9b40172313ac6c3d816cbf0da6aba5e18542
+ms.sourcegitcommit: fec96500757e55e7716892ddff9a187f61ae81f7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59275534"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59617882"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-periscope-data"></a>Kurz: Integrace Azure Active Directory s daty přes aplikaci Periscope
 
@@ -136,7 +136,7 @@ Ke konfiguraci Azure AD jednotné přihlašování s daty přes aplikaci Perisco
 
     d. Požadovanou značku **SingleLogoutService** a vložte **umístění** hodnotu **adresa URL cíle na úrovni služby** textového pole.
 
-    e. Kopírovat **identifikátor** hodnotu pro vaši instanci a vložte ji **identifikátor (Entity ID)** textové pole z **základní konfiguraci SAML** části na webu Azure portal.
+    e. Kopírovat **identifikátor** hodnotu pro vaši instanci a vložte ji **identifikátor (Entity ID)** textové pole z **základní konfiguraci SAML** části na webu Azure portal.
 
     f. První značku souboru XML, zkopírujte hodnotu **entityID** a vložte ji **vystavitele** textového pole.
 
@@ -233,7 +233,7 @@ Po kliknutí na dlaždici přes aplikaci Periscope Data na přístupovém panelu
 
 - [Seznam kurzů o integraci aplikací SaaS pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
