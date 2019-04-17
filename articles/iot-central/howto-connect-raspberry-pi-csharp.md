@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: 341b4d23664900cdf1f9a209df663ad4e6e96fe4
-ms.sourcegitcommit: ef20235daa0eb98a468576899b590c0bc1a38394
+ms.openlocfilehash: 8a7b2d15884f7a1cb8b6e72937b0f1e3b6cb8ca9
+ms.sourcegitcommit: fec96500757e55e7716892ddff9a187f61ae81f7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
-ms.locfileid: "59426354"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59616012"
 ---
 # <a name="connect-a-raspberry-pi-to-your-azure-iot-central-application-c"></a>Připojte Raspberry Pi do aplikace Azure IoT Central (C#)
 
@@ -21,7 +21,7 @@ ms.locfileid: "59426354"
 
 Tento článek popisuje, jak jako vývojář zařízení připojit Raspberry Pi do aplikace Microsoft Azure IoT Central, pomocí programovacího jazyka C#.
 
-## <a name="before-you-begin"></a>Před zahájením
+## <a name="before-you-begin"></a>Než začnete
 
 K dokončení kroků v tomto článku, budete potřebovat následující komponenty:
 
@@ -361,6 +361,4 @@ Přepínací tlačítko Nastavení
 
 ## <a name="next-steps"></a>Další postup
 
-Teď, když jste zjistili, jak se připojit k aplikaci Azure IoT Central Raspberry Pi, tady jsou další navrhované kroky:
-
-* [Připojit obecný klientská aplikace Node.js do Azure IoT Central](howto-connect-nodejs.md)
+Teď, když jste zjistili, jak se připojit k aplikaci Azure IoT Central Raspberry Pi, navrhované dalším krokem je další způsob [nastavit šablonu vlastního zařízení](howto-set-up-template.md) pro zařízení IoT.

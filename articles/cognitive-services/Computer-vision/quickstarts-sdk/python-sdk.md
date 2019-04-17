@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: quickstart
 ms.date: 04/10/2019
 ms.author: pafarley
-ms.openlocfilehash: fbdc6ca8a9d93c090c1cfda9dec41b948d95c6af
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.openlocfilehash: c9b30eb89080137e17042feb4458f2601bf48a05
+ms.sourcegitcommit: fec96500757e55e7716892ddff9a187f61ae81f7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/11/2019
-ms.locfileid: "59495341"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59617967"
 ---
 # <a name="azure-cognitive-services-computer-vision-sdk-for-python"></a>Azure Cognitive Services pro počítačové zpracování obrazu SDK pro Python
 
@@ -47,7 +47,7 @@ Vytvořit bezplatný klíč platný po dobu 7 dní s **[vyzkoušet] [ computervi
 Po vytvoření klíče zachovat následující:
 
 * Hodnotu klíče: řetězec 32 znaků ve formátu `xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx`
-* Klíče koncového bodu: adresu URL základního koncového bodu https://westcentralus.api.cognitive.microsoft.com
+* Klíče koncového bodu: adresu URL základního koncového bodu https\://westcentralus.api.cognitive.microsoft.com
 
 ### <a name="if-you-have-an-azure-subscription"></a>Pokud máte předplatné Azure
 

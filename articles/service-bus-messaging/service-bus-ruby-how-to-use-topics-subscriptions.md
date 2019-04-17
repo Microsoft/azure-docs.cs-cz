@@ -12,24 +12,34 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: ruby
 ms.topic: article
-ms.date: 01/23/2019
+ms.date: 04/15/2019
 ms.author: aschhab
-ms.openlocfilehash: 486e891ae055bdd6b6c30aeff63744acb3b0ef04
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.openlocfilehash: c2862c3521c05ba81f7a567f7951d22a9ab95c44
+ms.sourcegitcommit: 5f348bf7d6cf8e074576c73055e17d7036982ddb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55734534"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59609417"
 ---
 # <a name="how-to-use-service-bus-topics-and-subscriptions-with-ruby"></a>Jak používat témata a odběry Service Bus pomocí Ruby
  
 [!INCLUDE [service-bus-selector-topics](../../includes/service-bus-selector-topics.md)]
 
-Tento článek popisuje, jak používat témata služby Service Bus a odběrů z aplikací v Ruby. Mezi popsané scénáře patří **vytváření témat a odběrů, vytváření filtrů odběrů, odesílání zpráv** do tématu, **příjem zpráv z odběru**, a **odstranění témata a odběry**. Další informace o témata a odběry, najdete v článku [další kroky](#next-steps) oddílu.
+Tento článek popisuje, jak používat témata služby Service Bus a odběrů z aplikací v Ruby. Mezi popsané scénáře patří:
 
-[!INCLUDE [howto-service-bus-topics](../../includes/howto-service-bus-topics.md)]
+- Vytváření témat a odběrů 
+- Vytváření filtrů odběrů 
+- Odesílání zpráv do tématu 
+- Příjem zpráv z odběru
+- Odstranění témat a odběrů
 
-[!INCLUDE [service-bus-create-namespace-portal](../../includes/service-bus-create-namespace-portal.md)]
+
+## <a name="prerequisites"></a>Požadavky
+1. Předplatné Azure. K dokončení tohoto kurzu potřebujete mít účet Azure. Můžete si aktivovat vaše [výhody pro předplatitele sady Visual Studio nebo MSDN](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A85619ABF) nebo zaregistrujte [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF).
+2. Postupujte podle kroků v [rychlý start: Pomocí webu Azure portal k vytvoření tématu služby Service Bus a odběrů na téma](service-bus-quickstart-topics-subscriptions-portal.md) k vytvoření služby Service Bus **obor názvů** dostanete **připojovací řetězec**. 
+
+    > [!NOTE]
+    > Vytvoříte **tématu** a **předplatné** do tématu pomocí **Ruby** v tomto rychlém startu. 
 
 [!INCLUDE [service-bus-ruby-setup](../../includes/service-bus-ruby-setup.md)]
 

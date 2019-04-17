@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 04/08/2019
 ms.author: mayg
-ms.openlocfilehash: 895b53d4091f04f324b28a148c7937159997fa84
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: 90388d570d027aea3c897f7306a1714fd7e847b3
+ms.sourcegitcommit: fec96500757e55e7716892ddff9a187f61ae81f7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59272763"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59618079"
 ---
 # <a name="integrate-azure-expressroute-with-disaster-recovery-for-azure-vms"></a>Integrace Azure ExpressRoute se zotavení po havárii pro virtuální počítače Azure
 
@@ -32,7 +32,7 @@ ExpressRoute umožňuje rozšířit místní sítě do cloudu Microsoft Azure p�
 - **Převzetí služeb při selhání mezi oblastmi Azure**: Když dojde k výpadku, můžete převzetí služeb při selhání virtuálních počítačů Azure z primární do sekundární oblasti Azure. Po převzetí služeb při selhání do sekundární oblasti, existuje mnoho kroků provést, aby přístup k virtuálním počítačům Azure v sekundární oblasti přes ExpressRoute.
 
 
-## <a name="before-you-begin"></a>Před zahájením
+## <a name="before-you-begin"></a>Než začnete
 
 Než začnete, ujistěte se, že rozumíte následující pojmy:
 
@@ -93,7 +93,7 @@ V případě podnikového nasazení obvykle mají úlohy rozdělit mezi více vi
 - **Virtuální síť centra**. Je virtuální síť centra **virtuální síť centra zdroje**: 10.10.10.0/24.
   - Tato virtuální síť centra funguje jako vrátný.
   - Veškerá komunikace mezi podsítěmi, projděte si toto centrum.
-    - ****Hub vNet subnets**. Virtuální síť centra má dvě podsítě:
+    - **Podsítě virtuální sítě centra**. Virtuální síť centra má dvě podsítě:
     - **Podsíť síťových virtuálních zařízení**: 10.10.10.0/25. Tato podsíť obsahuje síťové virtuální zařízení (. 10.10.10.10).
     - **Podsíť brány**: 10.10.10.128/25. Tato podsíť obsahuje bránu ExpressRoute připojené k připojení ExpressRoute, který směruje k místní lokalitě přes privátní partnerský vztah domény směrování.
 - Místní datové centrum má připojení okruhu ExpressRoute prostřednictvím partnerů hrany v Hongkong –.

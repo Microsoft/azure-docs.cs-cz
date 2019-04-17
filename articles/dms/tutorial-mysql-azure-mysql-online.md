@@ -10,13 +10,13 @@ ms.service: dms
 ms.workload: data-services
 ms.custom: mvc, tutorial
 ms.topic: article
-ms.date: 04/03/2019
-ms.openlocfilehash: 0aaa88e1ebe1c8cefadbe55a8348d730ae04bb56
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.date: 04/16/2019
+ms.openlocfilehash: b39ce138677fc8933b62bd999f20abc21c0ae690
+ms.sourcegitcommit: fec96500757e55e7716892ddff9a187f61ae81f7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58883052"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59617950"
 ---
 # <a name="tutorial-migrate-mysql-to-azure-database-for-mysql-online-using-dms"></a>Kurz: Online migrace MySQL do služby Azure Database for MySQL pomocí DMS
 Pomocí služby Azure Database Migration Service můžete migrovat databáze z místní instance MySQL do služby [Azure Database for MySQL](https://docs.microsoft.com/azure/mysql/) s minimálními výpadky. Jinými slovy, můžete dosáhnout migrace s minimálními výpadky aplikace. V tomto kurzu provedete migraci ukázkové databáze **Employees** (Zaměstnanci) z místní instance MySQL verze 5.7 do služby Azure Database for MySQL pomocí aktivity online migrace ve službě Azure Database Migration Service.
@@ -120,6 +120,9 @@ SET group_concat_max_len = 8192;
  ```
         
 Spuštěním skriptu pro odstranění cizího klíče (druhý sloupec) ve výsledku dotazu odstraňte cizí klíč.
+
+> [!IMPORTANT]
+> Také nezapomeňte odebrat všechny příkazy DEFINER ze schématu, aby se zabránilo selhání migrace.
 
 Pokud vaše data obsahují trigger (trigger vložení nebo aktualizace), bude se dříve než u replikovaných dat ze zdroje vynucovat integrita dat v cíli. Během migrace se doporučuje zakázat triggery ve všech tabulkách v cíli a povolit je až po dokončení migrace.
 

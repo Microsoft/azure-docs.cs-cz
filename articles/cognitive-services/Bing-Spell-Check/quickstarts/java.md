@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-spell-check
 ms.topic: quickstart
-ms.date: 02/20/2019
+ms.date: 04/11/2019
 ms.author: aahi
-ms.openlocfilehash: d2905d05dce48b705de44780425ed2b55b02555c
-ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
+ms.openlocfilehash: a139d0558565114725c6198f64e139e5a5019c75
+ms.sourcegitcommit: fec96500757e55e7716892ddff9a187f61ae81f7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56888980"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59616691"
 ---
 # <a name="quickstart-check-spelling-with-the-bing-spell-check-rest-api-and-java"></a>Rychlý start: Kontrola pravopisu pomocí rozhraní REST API kontrolu pravopisu Bingu a Javy.
 
@@ -23,18 +23,20 @@ V tomto rychlém startu můžete provést první volání do rozhraní API Bingu
 
 ## <a name="prerequisites"></a>Požadavky
 
-Kit(JDK) vývoj Java 7 nebo novější.
+* Kit(JDK) vývoj Java 7 nebo novější.
+
+* Import [gson 2.8.5.jar](https://libraries.io/maven/com.google.code.gson%3Agson) nebo nejnovější [Gson](https://github.com/google/gson) verze. Pro spuštění příkazového řádku, přidejte `.jar` do složky s hlavní třída Java.
 
 [!INCLUDE [cognitive-services-bing-spell-check-signup-requirements](../../../../includes/cognitive-services-bing-spell-check-signup-requirements.md)]
 
-
 ## <a name="create-and-initialize-an-application"></a>Vytváření a inicializace aplikace
 
-1. Vytvoření nového projektu v Javě v vaše oblíbené prostředím IDE nebo editorem a importovat následující balíčky.
+1. Vytvoření nového projektu Java v Oblíbené prostředí IDE nebo editoru s názvem třídy, které si vyberete a importujte následující balíčky.
 
     ```java
     import java.io.*;
     import java.net.*;
+    import com.google.gson.*;
     import javax.net.ssl.HttpsURLConnection;
     ```
 
@@ -44,7 +46,7 @@ Kit(JDK) vývoj Java 7 nebo novější.
     static String host = "https://api.cognitive.microsoft.com";
     static String path = "/bing/v7.0/spellcheck";
 
-    static String key = "ENTER YOUR KEY HERE";
+    static String key = "<ENTER-KEY-HERE>";
 
     static String mkt = "en-US";
     static String mode = "proof";
@@ -58,21 +60,20 @@ Kit(JDK) vývoj Java 7 nebo novější.
    ```java
    public static void check () throws Exception {
        String params = "?mkt=" + mkt + "&mode=" + mode;
-   //...
+      // add the rest of the code snippets here (except prettify() and main())...
    }
    ```
 
-2. Vytvoří adresu URL kombinací řetězec hostitele, cestu a parametry koncového bodu. Vytvořte nový `HttpsURLConnection` obejct.
+2. Vytvoří adresu URL kombinací řetězec hostitele, cestu a parametry koncového bodu. Vytvořte nový `HttpsURLConnection` objektu.
 
     ```java
     URL url = new URL(host + path + params);
-    HttpsURLConnection connection = (HttpsURLConnection) 
+    HttpsURLConnection connection = (HttpsURLConnection) url.openConnection();
     ```
 
-3. Otevřete připojení k adrese URL. Nastaví metodu požadavku `POST`. Přidáte parametry požadavku. Ujistěte se, že váš klíč předplatného pro přidání `Ocp-Apim-Subscription-Key` záhlaví. 
+3. Otevřete připojení k adrese URL. Nastaví metodu požadavku `POST`. Přidáte parametry požadavku. Ujistěte se, že váš klíč předplatného pro přidání `Ocp-Apim-Subscription-Key` záhlaví.
 
     ```java
-    url.openConnection();
     connection.setRequestMethod("POST");
     connection.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
     connection.setRequestProperty("Ocp-Apim-Subscription-Key", key);
@@ -88,21 +89,34 @@ Kit(JDK) vývoj Java 7 nebo novější.
         wr.close();
     ```
 
-## <a name="read-the-response"></a>Čtení odpovědi
+## <a name="format-and-read-the-api-response"></a>Formátování a čtení odpovědi rozhraní API
 
-1. Vytvoření `BufferedReader` a přečíst odpověď z rozhraní API. Vytisknout na konzole.
+1. Přidejte tuto metodu do vaší třídy. Formátuje JSON pro lépe čitelný výstup.
+
+    ``` java
+    // This function prettifies the json response.
+    public static String prettify(String json_text) {
+        JsonParser parser = new JsonParser();
+        JsonElement json = parser.parse(json_text);
+        Gson gson = new GsonBuilder().setPrettyPrinting().create();
+        return gson.toJson(json);
+    }
+
+1. Create a `BufferedReader` and read the response from the API. Print it to the console.
     
     ```java
     BufferedReader in = new BufferedReader(
     new InputStreamReader(connection.getInputStream()));
     String line;
     while ((line = in.readLine()) != null) {
-        System.out.println(line);
+        System.out.println(prettify(line);
     }
     in.close();
     ```
 
-2. V hlavní funkci vaší aplikace zavolejte funkci vytvořili výše. 
+## <a name="call-the-api"></a>Volání rozhraní API
+
+V hlavní funkci vaší aplikace zavolejte metodu check() vytvořili výše.
 
     ```java
     public static void main(String[] args) {
@@ -114,10 +128,26 @@ Kit(JDK) vývoj Java 7 nebo novější.
         }
     }
     ```
-    
+
+## <a name="run-the-application"></a>Spuštění aplikace
+
+Sestavte a spusťte váš projekt.
+
+Pokud používáte příkazového řádku, použijte následující příkazy pro sestavení a spuštění aplikace.
+
+**Sestavení:**
+```bash
+javac -classpath .;gson-2.2.2.jar\* <CLASS_NAME>.java
+```
+
+**Spusťte:**
+```bash
+java -cp .;gson-2.2.2.jar\* <CLASS_NAME>
+```
+
 ## <a name="example-json-response"></a>Příklad JSON odpovědi
 
-Úspěšná odpověď se vrátí ve formátu JSON, jak je znázorněno v následujícím příkladu: 
+Úspěšná odpověď se vrátí ve formátu JSON, jak je znázorněno v následujícím příkladu:
 
 ```json
 {

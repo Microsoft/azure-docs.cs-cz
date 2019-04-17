@@ -12,12 +12,12 @@ ms.author: sashan
 ms.reviewer: mathoma, carlrab
 manager: craigg
 ms.date: 02/13/2019
-ms.openlocfilehash: 2e63c44db2391f63078f0945caa69a43c0c464cf
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 8bada96c648881a9943176c45115627a829fcc58
+ms.sourcegitcommit: 5f348bf7d6cf8e074576c73055e17d7036982ddb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58001369"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59608601"
 ---
 # <a name="configure-active-geo-replication-for-azure-sql-database-in-the-azure-portal-and-initiate-failover"></a>Konfigurace aktivní geografické replikace pro Azure SQL Database webu Azure portal a zahájit převzetí služeb při selhání
 
@@ -73,7 +73,7 @@ Sekundární databáze můžete přepnout na primární.
     ![převzetí služeb při selhání](./media/sql-database-geo-replication-failover-portal/secondaries.png)
 4. Klikněte na tlačítko **Ano** zahájíte převzetí služeb při selhání.
 
-Příkaz okamžitě přepne sekundární databázi do primární role.
+Příkaz okamžitě přepne sekundární databázi do primární role. Tento proces by měl obvykle dokončí, v rámci 30 sekund nebo i rychleji.
 
 Je na krátkou dobu, během které jsou obě databáze není k dispozici (v řádu 0 až 25 sekund), zatímco jsou přepnuté role. Pokud primární databáze má více sekundární databází, tento příkaz automaticky změní konfiguraci sekundární databáze pro připojení k nové primární. Celá operace by měla trvat necelou minutu dokončit za normálních okolností.
 

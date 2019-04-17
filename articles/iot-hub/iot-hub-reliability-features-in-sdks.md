@@ -2,37 +2,37 @@
 title: Správa připojení a spolehlivé zasílání zpráv s použitím sady SDK pro zařízení Azure IoT Hub
 description: Zjistěte, jak zlepšit zasílání zpráv při používání sad SDK pro zařízení Azure IoT Hub a připojení k zařízení
 services: iot-hub
-keywords: ''
 author: yzhong94
 ms.author: yizhon
 ms.date: 07/07/2018
 ms.topic: article
 ms.service: iot-hub
-documentationcenter: ''
-manager: timlt
-ms.devlang: na
-ms.custom: mvc
-ms.openlocfilehash: 72a30e86047dc79f8014ce4c6a38e5e370e1aab5
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 9180c27e64f26c05e6e16007b74f9aa8a98bcfe5
+ms.sourcegitcommit: 5f348bf7d6cf8e074576c73055e17d7036982ddb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58074926"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59608822"
 ---
 # <a name="manage-connectivity-and-reliable-messaging-by-using-azure-iot-hub-device-sdks"></a>Spravovat připojení a spolehlivé zasílání zpráv s použitím sady SDK pro zařízení Azure IoT Hub
 
 Tento článek obsahuje základní pokyny k návrhu aplikací zařízení, které jsou odolnější. To ukazuje, jak využít výhod připojení a spolehlivé zasílání zpráv funkcí sady SDK pro zařízení Azure IoT. Cílem této příručky je vám pomohou spravovat následující scénáře:
 
-- Opravit připojení k síti
-- Přepínání mezi různých síťových připojení
-- Opětovné připojení z důvodu chyby služby přechodného připojení
+* Opravit připojení k síti
+
+* Přepínání mezi různých síťových připojení
+
+* Opětovné připojení z důvodu chyby služby přechodného připojení
 
 Podrobnosti implementace může lišit podle jazyka. Další informace najdete v dokumentaci k rozhraní API nebo konkrétní sady SDK:
 
-- [C/Python/iOS SDK](https://github.com/azure/azure-iot-sdk-c)
-- [.NET SDK](https://github.com/Azure/azure-iot-sdk-csharp/blob/master/iothub/device/devdoc/requirements/retrypolicy.md)
-- [Java SDK](https://github.com/Azure/azure-iot-sdk-java/blob/master/device/iot-device-client/devdoc/requirement_docs/com/microsoft/azure/iothub/retryPolicy.md)
-- [Node SDK](https://github.com/Azure/azure-iot-sdk-node/wiki/Connectivity-and-Retries#types-of-errors-and-how-to-detect-them)
+* [C/Python/iOS SDK](https://github.com/azure/azure-iot-sdk-c)
+
+* [.NET SDK](https://github.com/Azure/azure-iot-sdk-csharp/blob/master/iothub/device/devdoc/requirements/retrypolicy.md)
+
+* [Java SDK](https://github.com/Azure/azure-iot-sdk-java/blob/master/device/iot-device-client/devdoc/requirement_docs/com/microsoft/azure/iothub/retryPolicy.md)
+
+* [Node SDK](https://github.com/Azure/azure-iot-sdk-node/wiki/Connectivity-and-Retries#types-of-errors-and-how-to-detect-them)
 
 ## <a name="designing-for-resiliency"></a>Návrh zohledňující odolnost proti chybám
 
@@ -47,11 +47,14 @@ V následujících částech jsou zahrnuty relevantní funkce sady SDK, které p
 Tato část poskytuje přehled o opětovné připojení a zkuste to znovu vzorky k dispozici při správě připojení. Podrobnosti o pokyny k implementaci pro použití jiné zásady opakování v zařízení aplikaci a uvádí relevantní rozhraní API sady SDK pro zařízení.
 
 ### <a name="error-patterns"></a>Vzory chyb
+
 Selhání připojení můžou probíhat současně mnoho úrovní:
 
-- Chyby sítě: odpojení soketu a název řešení chyb
-- Úroveň protokolu chyby pro přenos HTTP, AMQP a protokolu MQTT: odpojit, odkazy nebo relace s vypršelou platností
-- Chyby na úrovni aplikace, které jsou výsledkem buď místní chyb: Neplatné přihlašovací údaje nebo chování služby (například přesahuje kvótu nebo omezení)
+* Chyby sítě: odpojení soketu a název řešení chyb
+
+* Úroveň protokolu chyby pro přenos HTTP, AMQP a protokolu MQTT: odpojit, odkazy nebo relace s vypršelou platností
+
+* Chyby na úrovni aplikace, které jsou výsledkem buď místní chyb: Neplatné přihlašovací údaje nebo chování služby (například přesahuje kvótu nebo omezení)
 
 Sady SDK pro zařízení zjistit chyby ve všech třech úrovních. Chyby související s operačním systémem a hardwarových chyb nejsou zjištěny a zpracovány sad SDK pro zařízení. Sada SDK design je založen na [The přechodné selhání zpracování pokyny](/azure/architecture/best-practices/transient-faults#general-guidelines) z Azure Architecture Center.
 
@@ -60,17 +63,23 @@ Sady SDK pro zařízení zjistit chyby ve všech třech úrovních. Chyby souvis
 Následující kroky popisují proces opakovat při zjištění chyb připojení:
 
 1. Sada SDK zjistí chyby a související chybu v síti, protokol nebo aplikace.
-1. Sada SDK využívá filtr chyby určete typ chyby a rozhodněte, pokud je potřeba zkuste to znovu.
-1. Pokud sada SDK identifikuje **neopravitelné chybě**, operace, jako je připojení, odesílat a přijímat je zastavené. Sadu SDK upozorní uživatele. Mezi příklady neopravitelným chybám patří chybu ověřování a chyba špatné koncový bod.
-1. Pokud sada SDK identifikuje **zotavitelné chyby**, opakování podle zásady opakovaných pokusů zadaný, až uplyne definovaný časový limit.  Všimněte si, že sada SDK používá **exponenciální regresní s kolísání** zásady opakování ve výchozím nastavení.
-1. Když definovaný časový limit vyprší, zastaví sady SDK, pokusu o připojení nebo odeslání. Upozorní uživatele.
-1. Tato sada SDK nabízí uživatelům připojit zpětné volání pro získání změn stavu připojení.
+
+2. Sada SDK využívá filtr chyby určete typ chyby a rozhodněte, pokud je potřeba zkuste to znovu.
+
+3. Pokud sada SDK identifikuje **neopravitelné chybě**, operace, jako je připojení, odesílat a přijímat je zastavené. Sadu SDK upozorní uživatele. Mezi příklady neopravitelným chybám patří chybu ověřování a chyba špatné koncový bod.
+
+4. Pokud sada SDK identifikuje **zotavitelné chyby**, opakování podle zásady opakovaných pokusů zadaný, až uplyne definovaný časový limit.  Všimněte si, že sada SDK používá **exponenciální regresní s kolísání** zásady opakování ve výchozím nastavení.
+5. Když definovaný časový limit vyprší, zastaví sady SDK, pokusu o připojení nebo odeslání. Upozorní uživatele.
+
+6. Tato sada SDK nabízí uživatelům připojit zpětné volání pro získání změn stavu připojení.
 
 Sady SDK poskytují že tři zásady opakování:
 
-- **Exponenciální regrese s kolísání**: Tento výchozí zásady opakování je spíše agresivní na začátku a zpomalit v čase, dokud nedosáhne maximální zpoždění. Návrh vychází [z Azure Architecture Center pokyny pro opakování](https://docs.microsoft.com/azure/architecture/best-practices/retry-service-specific). 
-- **Vlastní opakování**: Pro některé jazyky sady SDK můžete navrhnout vlastní zásady opakování, který je vhodnější pro váš scénář a vložit ho do RetryPolicy. Vlastní opakování není k dispozici na SDK pro jazyk C.
-- **Žádné opakování**: Můžete nastavit zásady opakování pro "žádná opakování," Zakáže logika opakovaných pokusů. Sada SDK se pokusí připojit jednou a odešle zprávu jednou, za předpokladu, že se připojení. Tyto zásady se obvykle používá ve scénářích s aspekty šířky pásma nebo nákladů. Pokud zvolíte tuto možnost, dojde ke ztrátě zpráv, které se nepodařilo odeslat, který nepůjde obnovit.
+* **Exponenciální regrese s kolísání**: Tento výchozí zásady opakování je spíše agresivní na začátku a zpomalit v čase, dokud nedosáhne maximální zpoždění. Návrh vychází [z Azure Architecture Center pokyny pro opakování](https://docs.microsoft.com/azure/architecture/best-practices/retry-service-specific). 
+
+* **Vlastní opakování**: Pro některé jazyky sady SDK můžete navrhnout vlastní zásady opakování, který je vhodnější pro váš scénář a vložit ho do RetryPolicy. Vlastní opakování není k dispozici na SDK pro jazyk C.
+
+* **Žádné opakování**: Můžete nastavit zásady opakování pro "žádná opakování," Zakáže logika opakovaných pokusů. Sada SDK se pokusí připojit jednou a odešle zprávu jednou, za předpokladu, že se připojení. Tyto zásady se obvykle používá ve scénářích s aspekty šířky pásma nebo nákladů. Pokud zvolíte tuto možnost, dojde ke ztrátě zpráv, které se nepodařilo odeslat, který nepůjde obnovit.
 
 ### <a name="retry-policy-apis"></a>Zásady rozhraní API pro opakování
 
@@ -99,8 +108,8 @@ Pokud služba jako odpověď vrátí chybu omezení, zásady opakování se liš
 
    ```csharp
    # throttled retry policy
-   RetryPolicy retryPolicy = new ExponentialBackoff(RetryCount, TimeSpan.FromSeconds(10), TimeSpan.FromSeconds(60), TimeSpan.FromSeconds(5));
-   SetRetryPolicy(retryPolicy);
+   RetryPolicy retryPolicy = new ExponentialBackoff(RetryCount, TimeSpan.FromSeconds(10), 
+     TimeSpan.FromSeconds(60), TimeSpan.FromSeconds(5)); SetRetryPolicy(retryPolicy);
    ```
 
 Mechanismus opakování po zastaví `DefaultOperationTimeoutInMilliseconds`, který je aktuálně nastaven na 4 minuty.
@@ -109,14 +118,22 @@ Mechanismus opakování po zastaví `DefaultOperationTimeoutInMilliseconds`, kte
 
 Ukázky kódu v jiných jazycích přečtěte si následující dokumenty, implementace. Úložiště obsahuje ukázky, které demonstrují použití zásady opakování rozhraní API.
 
-- [C/Python/iOS SDK](https://github.com/azure/azure-iot-sdk-c)
-- [.NET SDK](https://github.com/Azure/azure-iot-sdk-csharp/blob/master/iothub/device/devdoc/requirements/retrypolicy.md)
-- [Java SDK](https://github.com/Azure/azure-iot-sdk-java/blob/master/device/iot-device-client/devdoc/requirement_docs/com/microsoft/azure/iothub/retryPolicy.md)
-- [Node SDK](https://github.com/Azure/azure-iot-sdk-node/wiki/Connectivity-and-Retries#types-of-errors-and-how-to-detect-them)
+* [C/Python/iOS SDK](https://github.com/azure/azure-iot-sdk-c)
+
+* [.NET SDK](https://github.com/Azure/azure-iot-sdk-csharp/blob/master/iothub/device/devdoc/requirements/retrypolicy.md)
+
+* [Java SDK](https://github.com/Azure/azure-iot-sdk-java/blob/master/device/iot-device-client/devdoc/requirement_docs/com/microsoft/azure/iothub/retryPolicy.md)
+
+* [Node SDK](https://github.com/Azure/azure-iot-sdk-node/wiki/Connectivity-and-Retries#types-of-errors-and-how-to-detect-them)
 
 ## <a name="next-steps"></a>Další postup
-- [Použití sad SDK pro zařízení a služby](./iot-hub-devguide-sdks.md)
-- [Použití sady SDK pro zařízení IoT pro C](./iot-hub-device-sdk-c-intro.md)
-- [Vývoj pro zařízení s omezením](./iot-hub-devguide-develop-for-constrained-devices.md)
-- [Vývoj pro mobilní zařízení](./iot-hub-how-to-develop-for-mobile-devices.md)
-- [Řešení potíží s odpojí zařízení](iot-hub-troubleshoot-connectivity.md)
+
+* [Použití sad SDK pro zařízení a služby](./iot-hub-devguide-sdks.md)
+
+* [Použití sady SDK pro zařízení IoT pro C](./iot-hub-device-sdk-c-intro.md)
+
+* [Vývoj pro zařízení s omezením](./iot-hub-devguide-develop-for-constrained-devices.md)
+
+* [Vývoj pro mobilní zařízení](./iot-hub-how-to-develop-for-mobile-devices.md)
+
+* [Řešení potíží s odpojí zařízení](iot-hub-troubleshoot-connectivity.md)

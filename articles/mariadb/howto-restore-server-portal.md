@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 09/24/2018
-ms.openlocfilehash: 1dc7930649a4e90c3b1c69a4f109f545f74a79f4
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.date: 04/15/2019
+ms.openlocfilehash: 23d683fea494ad0509af359d6e49519f2bc6aa99
+ms.sourcegitcommit: fec96500757e55e7716892ddff9a187f61ae81f7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58081113"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59615774"
 ---
 # <a name="how-to-backup-and-restore-a-server-in-azure-database-for-mariadb-using-the-azure-portal"></a>Zálohování a obnovení serveru ve službě Azure Database pro MariaDB pomocí webu Azure portal
 
@@ -79,7 +79,7 @@ Následující kroky obnoví ukázkový server k určitému bodu v čase:
 ## <a name="geo-restore"></a>Geografické obnovení
 Pokud jste nakonfigurovali server pro geograficky redundantní zálohy, lze vytvořit nový server ze zálohy existujícího serveru. Tento nový server lze vytvořit v libovolné oblasti Azure Database pro MariaDB je k dispozici.  
 
-1. Vyberte tlačítko **Vytvořit prostředek** (+) v levém horním rohu portálu. Zadáním **Azure Database for MariaDB** do vyhledávacího pole službu vyhledejte.
+1. Vyberte **databází** > **Azure Database pro MariaDB**. Můžete také zadat **MariaDB** do vyhledávacího pole vyhledejte službu.
 
    ![Možnost "Azure Database pro MariaDB"](./media/howto-restore-server-portal/2_navigate-to-mariadb.png)
 

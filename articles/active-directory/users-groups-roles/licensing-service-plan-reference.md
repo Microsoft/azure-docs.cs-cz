@@ -11,17 +11,17 @@ ms.service: active-directory
 ms.topic: article
 ms.workload: identity
 ms.subservice: users-groups-roles
-ms.date: 04/10/2019
+ms.date: 04/15/2019
 ms.author: curtand
 ms.reviewer: ajayanti1
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8b859c64c61264f43a88c158dc10ba6f2b2e56ce
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.openlocfilehash: e90c4e1f39deffea8a7dd7b2c0dbfdcf5e0b3555
+ms.sourcegitcommit: 5f348bf7d6cf8e074576c73055e17d7036982ddb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/11/2019
-ms.locfileid: "59495118"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59609502"
 ---
 # <a name="product-names-and-service-plan-identifiers-for-licensing"></a>Názvy produktů a identifikátory plánu služby pro licencování
 
@@ -34,7 +34,7 @@ Při správě licencí [na webu Azure portal](https://portal.azure.com/#blade/Mi
 - **Služby zahrnuté plány (popisné názvy)**: Seznam plánů služeb (popisné názvy) v rámci produktu, které odpovídá ID řetězce a identifikátor GUID
 
 >[!NOTE]
->Tyto informace jsou přesný k 17. srpna 2018.
+>Tyto informace jsou přesné od 15. dubna 2019.
 
 | Název produktu | Identifikátor řetězce | GUID | Zahrnuté plány služeb | Plány služeb zahrnuty (popisné názvy) |
 | --- | --- | --- |--- |
@@ -214,10 +214,10 @@ Současně nelze přiřadit následujících plánů služeb:
 
 Další informace o sadě pro správu licencí pomocí skupin funkcí, naleznete v následujících tématech:
 
-* [Co je licencování na základě skupin v Azure Active Directory?](../fundamentals/active-directory-licensing-whatis-azure-portal.md)
-* [Přiřazení licencí ke skupině ve službě Azure Active Directory](licensing-groups-assign.md)
-* [Identifikace a řešení problémů pro skupinu v Azure Active Directory](licensing-groups-resolve-problems.md)
-* [Migrace jednotlivě licencovaných uživatelů na licencování na základě skupiny v Azure Active Directory](licensing-groups-migrate-users.md)
+* [Co je skupina založená na licencování v Azure Active Directory?](../fundamentals/active-directory-licensing-whatis-azure-portal.md)
+* [Přiřazení licencí ke skupině v Azure Active Directory](licensing-groups-assign.md)
+* [Identifikace a řešení potíží s licencemi pro skupinu v Azure Active Directory](licensing-groups-resolve-problems.md)
+* [Postup migrace jednotlivě licencovaných uživatelů na licencování na základě skupin v Azure Active Directory](licensing-groups-migrate-users.md)
 * [Migrace uživatelů mezi licencemi produktů pomocí licencování pro skupiny ve službě Azure Active Directory](licensing-groups-change-licenses.md)
-* [Azure Active Directory na základě skupin licencí další scénáře](licensing-group-advanced.md)
+* [Další scénáře licencování na základě skupin v Azure Active Directory](licensing-group-advanced.md)
 * [Příklady prostředí PowerShell pro licencování na základě skupiny ve službě Azure AD](licensing-ps-examples.md)

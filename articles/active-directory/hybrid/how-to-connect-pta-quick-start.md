@@ -12,16 +12,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 02/19/2019
+ms.date: 04/15/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 51fc93f9508bada40885e41b39e8a87cf4e0bf3c
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: ba5455680647b90b113d31c55816a2e0b0131b33
+ms.sourcegitcommit: fec96500757e55e7716892ddff9a187f61ae81f7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58101002"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59617797"
 ---
 # <a name="azure-active-directory-pass-through-authentication-quick-start"></a>Předávací ověřování služby Azure Active Directory: Rychlý start
 
@@ -111,7 +111,15 @@ Pokud plánujete nasadit předávací ověřování v produkčním prostředí, 
 >[!IMPORTANT]
 >V produkčním prostředí doporučujeme, abyste měli aspoň 3 agentů ověřování systémem ve svém tenantovi. Platí omezení systému 40 agentů ověřování každého tenanta. A jako osvědčený postup považovat všechny servery vrstvy 0 systémy spuštěná agentů ověřování (viz [odkaz](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material)).
 
-Postupujte podle těchto pokynů ke stahování softwaru ověřovací Agent:
+Instalace více agentů předávací ověřování zajišťuje vysokou dostupnost, ale není deterministický rozložení zátěže mezi agentů ověřování. Chcete-li zjistit, kolik agentů ověřování je nutné pro vašeho tenanta, zvažte maximální a průměrné zatížení žádostí o přihlášení, které byste měli vidět ve svém tenantovi. Jako srovnávací test může zpracovávat jeden ověřovací Agent 300 až 400 ověření za sekundu na standardní 4jádrový procesor, 16 GB paměti RAM serveru.
+
+Pokud chcete odhadnout síťový provoz, použijte následující pokyny velikosti:
+- Velikost datové části je každý požadavek (0.5K + 1 tisíc * num_of_agents) bajtů. To znamená data ze služby Azure AD k ověřování agenta. Tady "num_of_agents" označuje, že počet agentů ověřování zaregistrovaný ve svém tenantovi.
+- Každou odpověď má velikost datové části 1 kB; tj. data z agentů ověřování do služby Azure AD.
+
+Pro většinu zákazníků jsou dostačující pro vysokou dostupnost a kapacitu celkem tři agentů ověřování. Měli byste nainstalovat agentů ověřování blízko řadičů domén tak zlepšit latenci přihlášení.
+
+Pokud chcete začít, postupujte podle těchto pokynů ke stahování softwaru ověřovací Agent:
 
 1. Chcete-li stáhnout nejnovější verzi agenta ověřování (verze 1.5.193.0 nebo novější), přihlaste se k [centra pro správu Azure Active Directory](https://aad.portal.azure.com) pomocí přihlašovacích údajů globálního správce vašeho tenanta.
 2. Vyberte **Azure Active Directory** v levém podokně.
@@ -141,6 +149,13 @@ Za druhé můžete vytvořit a spustit skript bezobslužné nasazení. To je už
 3. Přejděte na **C:\Program Files\Microsoft Azure AD Connect ověřovací Agent** a spusťte následující skript využívající `$cred` objekt, který jste vytvořili:
 
         RegisterConnector.ps1 -modulePath "C:\Program Files\Microsoft Azure AD Connect Authentication Agent\Modules\" -moduleName "AppProxyPSModule" -Authenticationmode Credentials -Usercredentials $cred -Feature PassthroughAuthentication
+
+>[!IMPORTANT]
+>Pokud ověřovací Agent je nainstalovaný na virtuálním počítači, nemůže klonovat virtuální počítač, který chcete nastavit jinou ověřovací Agent. Tato metoda je **nepodporované**.
+
+## <a name="step-5-configure-smart-lockout-capability"></a>Krok 5: Nakonfigurovat možnosti inteligentního uzamčení
+
+Inteligentní uzamčení pomáhá při uzamčení nesprávnými účastníky, kteří se snaží uhodnout hesla uživatelů nebo pomocí metody hrubou silou. Tím, že nakonfigurujete nastavení inteligentním uzamčením ve službě Azure AD a / nebo nastavení odpovídající uzamčení v místní službě Active Directory, dají se útoky odfiltrovat dřív, než dorazí služby Active Directory. Čtení [v tomto článku](../authentication/howto-password-smart-lockout.md) Další informace o tom, jak nakonfigurovat nastavení inteligentním uzamčením ve svém tenantovi k ochraně vašich uživatelských účtů.
 
 ## <a name="next-steps"></a>Další postup
 - [Migrace ze služby AD FS na předávací ověřování](https://aka.ms/adfstoptadp) – podrobné pokyny k migraci ze služby AD FS (nebo jiné technologie federation) na předávací ověřování.

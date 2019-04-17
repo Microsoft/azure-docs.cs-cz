@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/14/2019
 ms.author: juliako
-ms.openlocfilehash: 92fc63ed45b6f1ea377138744d19137645c916e7
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 910c593c9277efeaf72dadc52740b1c918381e19
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57882720"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59524765"
 ---
 # <a name="how-to-build-a-smooth-streaming-windows-store-application"></a>Jak vytvořit využívající Smooth Streaming aplikace Windows Store  
 
@@ -60,41 +60,42 @@ Další informace o vývoji aplikací Windows Store naleznete v tématu [vývoj 
 3. Úprava souboru kódu na pozadí
 4. Kompilace a testování aplikace
 
-**Vytvoření projektu Windows Store**
+### <a name="to-create-a-windows-store-project"></a>Vytvoření projektu Windows Store
 
 1. Spuštění sady Visual Studio; jsou podporovány verze 2012 do 2015.
-2. V nabídce **Soubor** klikněte na tlačítko **Nový** a pak klikněte na tlačítko **Projekt**.
-3. Z tohoto dialogového okna Nový projekt zadejte nebo vyberte následující hodnoty:
+1. V nabídce **Soubor** klikněte na tlačítko **Nový** a pak klikněte na tlačítko **Projekt**.
+1. Z tohoto dialogového okna Nový projekt zadejte nebo vyberte následující hodnoty:
 
-| Název | Hodnota |
-| --- | --- |
-| Šablony skupiny |Nainstalované, šablony/Visual C#Windows Store |
-| Šablona |Prázdná aplikace (XAML) |
-| Název |SSPlayer |
-| Umístění |C:\SSTutorials |
-| Název řešení |SSPlayer |
-| Vytvořit adresář pro řešení |(vybráno) |
+    | Název | Hodnota |
+    | --- | --- |
+    | Šablony skupiny |Nainstalované, šablony/Visual C#Windows Store |
+    | Šablona |Prázdná aplikace (XAML) |
+    | Název |SSPlayer |
+    | Umístění |C:\SSTutorials |
+    | Název řešení |SSPlayer |
+    | Vytvořit adresář pro řešení |(vybráno) |
 
 1. Klikněte na **OK**.
 
-**Chcete-li přidat odkaz na technologie Smooth Streaming klientské sady SDK**
+### <a name="to-add-a-reference-to-the-smooth-streaming-client-sdk"></a>Chcete-li přidat odkaz na technologie Smooth Streaming klientské sady SDK
 
 1. V Průzkumníku řešení klikněte pravým tlačítkem na **SSPlayer**a potom klikněte na tlačítko **přidat odkaz**.
-2. Zadejte nebo vyberte tyto hodnoty:
+1. Zadejte nebo vyberte tyto hodnoty:
 
-| Název | Hodnota |
-| --- | --- |
-| Referenční skupiny |Windows/rozšíření |
-| Referenční informace |Vyberte Microsoft Smooth Streaming Klientská sada SDK pro Windows 8 a Microsoft Visual C++ Runtime Package |
+    | Název | Hodnota |
+    | --- | --- |
+    | Referenční skupiny |Windows/rozšíření |
+    | Referenční informace |Vyberte Microsoft Smooth Streaming Klientská sada SDK pro Windows 8 a Microsoft Visual C++ Runtime Package |
 
 1. Klikněte na **OK**. 
 
 Po přidání odkazy, musíte vybrat cílovou platformu (x64 nebo x86), přidávání odkazů nebude fungovat pro konfiguraci platformy tak libovolný procesor.  V Průzkumníku řešení uvidíte žlutou upozornění značky pro tyto přidat odkazy.
 
-**K návrhu uživatelského rozhraní player**
+### <a name="to-design-the-player-user-interface"></a>K návrhu uživatelského rozhraní player
 
 1. V Průzkumníku řešení klikněte dvakrát klikněte na **MainPage.xaml** ho otevřete v zobrazení Návrh.
 2. Vyhledejte **&lt;mřížky&gt;** a **&lt;/Grid&gt;** značky XAML soubor a vložte následující kód mezi dvěma značkami:
+
    ```xml
          <Grid.RowDefinitions>
 
@@ -146,7 +147,7 @@ Po přidání odkazy, musíte vybrat cílovou platformu (x64 nebo x86), přidáv
 
 V tomto souboru XAML jsou některé obslužné rutiny události související s ovládacími prvky.  Je nutné definovat tyto obslužné rutiny událostí.
 
-**Úprava souboru kódu na pozadí**
+### <a name="to-modify-the-code-behind-file"></a>Úprava souboru kódu na pozadí
 
 1. V Průzkumníku řešení klikněte pravým tlačítkem na **MainPage.xaml**a potom klikněte na tlačítko **zobrazit kód**.
 2. Na začátek souboru přidejte následující příkaz using:
@@ -210,7 +211,7 @@ Dokončené souboru kódu by měl vypadat nějak takto:
 
 ![Codeview v aplikaci Visual Studio z technologie Smooth Streaming Windows Store][CodeViewPic]
 
-**Ke kompilaci a testování aplikace**
+### <a name="to-compile-and-test-the-application"></a>Ke kompilaci a testování aplikace
 
 1. Z **sestavení** nabídky, klikněte na tlačítko **nástroje Configuration Manager**.
 2. Změna **platformou aktivního řešení** tak, aby odpovídaly svou vývojovou platformu.
@@ -238,7 +239,7 @@ V této lekci obsahuje následující postupy:
 5. Přidejte posuvník související kód
 6. Kompilace a testování aplikace
 
-**Zaregistrujte obslužné rutiny Bajtový proud Smooth Streaming a předat propertyset**
+### <a name="to-register-the-smooth-streaming-byte-stream-handler-and-pass-the-propertyset"></a>Zaregistrujte obslužné rutiny Bajtový proud Smooth Streaming a předat propertyset
 
 1. V Průzkumníku řešení klikněte pravým tlačítkem myši klikněte na tlačítko **MainPage.xaml**a potom klikněte na tlačítko **zobrazit kód**.
 2. Na začátek souboru přidejte následující příkaz using:
@@ -283,7 +284,7 @@ V této lekci obsahuje následující postupy:
    ```
 6. Stisknutím klávesy **CTRL + S** k uložení souboru.
 
-**Chcete-li přidat obslužné rutiny událostí na úrovni správce adaptivní zdroje**
+### <a name="to-add-the-adaptive-source-manager-level-event-handler"></a>Chcete-li přidat obslužné rutiny událostí na úrovni správce adaptivní zdroje
 
 1. V Průzkumníku řešení klikněte pravým tlačítkem myši klikněte na tlačítko **MainPage.xaml**a potom klikněte na tlačítko **zobrazit kód**.
 2. Uvnitř **MainPage** třídy, přidejte následující datový člen:
@@ -311,7 +312,7 @@ V této lekci obsahuje následující postupy:
    ```
 5. Stisknutím klávesy **CTRL + S** k uložení souboru.
 
-**Chcete-li přidat obslužné rutiny událostí na úrovni adaptivní zdroje**
+### <a name="to-add-adaptive-source-level-event-handlers"></a>Chcete-li přidat obslužné rutiny událostí na úrovni adaptivní zdroje
 
 1. V Průzkumníku řešení klikněte pravým tlačítkem myši klikněte na tlačítko **MainPage.xaml**a potom klikněte na tlačítko **zobrazit kód**.
 2. Uvnitř **MainPage** třídy, přidejte následující datový člen:
@@ -362,7 +363,7 @@ V této lekci obsahuje následující postupy:
 
 Stejné události jsou k dispozici na adaptivní správce úroveň zdroje, které lze použít pro funkce, které jsou společné pro všechny prvky médií v aplikaci pro zpracování. Každý AdaptiveSource zahrnuje vlastní události a všechny události AdaptiveSource bude kaskádových pod AdaptiveSourceManager.
 
-**Chcete-li přidat mediální prvek obslužné rutiny událostí**
+### <a name="to-add-media-element-event-handlers"></a>Chcete-li přidat mediální prvek obslužné rutiny událostí
 
 1. V Průzkumníku řešení klikněte pravým tlačítkem myši klikněte na tlačítko **MainPage.xaml**a potom klikněte na tlačítko **zobrazit kód**.
 2. Na konci **MainPage** třídy, přidejte následující obslužné rutiny události:
@@ -398,7 +399,7 @@ Stejné události jsou k dispozici na adaptivní správce úroveň zdroje, kter�
    ```
 4. Stisknutím klávesy **CTRL + S** k uložení souboru.
 
-**Chcete-li přidat posuvníku týkající se kódu**
+### <a name="to-add-slider-bar-related-code"></a>Chcete-li přidat posuvníku týkající se kódu
 
 1. V Průzkumníku řešení klikněte pravým tlačítkem myši klikněte na tlačítko **MainPage.xaml**a potom klikněte na tlačítko **zobrazit kód**.
 2. Na začátek souboru přidejte následující příkaz using:
@@ -531,7 +532,7 @@ Stejné události jsou k dispozici na adaptivní správce úroveň zdroje, kter�
    ```
 8. Stisknutím klávesy **CTRL + S** k uložení souboru.
 
-**Ke kompilaci a testování aplikace**
+### <a name="to-compile-and-test-the-application"></a>Ke kompilaci a testování aplikace
 
 1. Stisknutím klávesy **F6** ke kompilaci projektu. 
 2. Stisknutím klávesy **F5** spusťte aplikaci.
@@ -548,7 +549,7 @@ Technologie Smooth Streaming je schopen ke streamování obsahu s více zvukové
 2. Úprava souboru kódu na pozadí
 3. Kompilace a testování aplikace
 
-**K úpravě souboru XAML**
+### <a name="to-modify-the-xaml-file"></a>K úpravě souboru XAML
 
 1. V Průzkumníku řešení klikněte pravým tlačítkem na **MainPage.xaml**a potom klikněte na tlačítko **Návrhář zobrazení**.
 2. Vyhledejte &lt;Grid.RowDefinitions&gt;a upravit RowDefinitions tak bude vypadat takto:
@@ -591,7 +592,7 @@ Technologie Smooth Streaming je schopen ke streamování obsahu s více zvukové
    ```
 4. Stisknutím klávesy **CTRL + S** a uložte změny.
 
-**Úprava souboru kódu na pozadí**
+### <a name="to-modify-the-code-behind-file"></a>Úprava souboru kódu na pozadí
 
 1. V Průzkumníku řešení klikněte pravým tlačítkem na **MainPage.xaml**a potom klikněte na tlačítko **zobrazit kód**.
 2. Uvnitř oboru názvů SSPlayer přidejte novou třídu:
@@ -807,7 +808,8 @@ Technologie Smooth Streaming je schopen ke streamování obsahu s více zvukové
             changeStreams(selectedStreams);
         }
    ```
-   **Ke kompilaci a testování aplikace**
+
+### <a name="to-compile-and-test-the-application"></a>Ke kompilaci a testování aplikace
 
 1. Stisknutím klávesy **F6** ke kompilaci projektu. 
 2. Stisknutím klávesy **F5** spusťte aplikaci.
@@ -818,13 +820,14 @@ Technologie Smooth Streaming je schopen ke streamování obsahu s více zvukové
 Dokončili jste Lekce 3.  V této lekci se přidat funkci, která zvolte datové proudy.
 
 ## <a name="lesson-4-select-smooth-streaming-tracks"></a>Lesson 4: Vyberte sleduje technologie Smooth Streaming
+
 Prezentace technologie Smooth Streaming může obsahovat více videosoubory zakódovány různé úrovně kvality (přenosové rychlosti) a jejich řešení. V této lekci vám umožní uživatelům vybrat stopy. V této lekci obsahuje následující postupy:
 
 1. Upravte soubor XAML
 2. Úprava souboru kódu na pozadí
 3. Kompilace a testování aplikace
 
-**K úpravě souboru XAML**
+### <a name="to-modify-the-xaml-file"></a>K úpravě souboru XAML
 
 1. V Průzkumníku řešení klikněte pravým tlačítkem na **MainPage.xaml**a potom klikněte na tlačítko **Návrhář zobrazení**.
 2. Vyhledejte &lt;mřížky&gt; značka s názvem **gridStreamAndBitrateSelection**, přidat následující kód na konci značky:
@@ -846,7 +849,7 @@ Prezentace technologie Smooth Streaming může obsahovat více videosoubory zak�
    ```
 3. Stisknutím klávesy **CTRL + S** se uložit změny he
 
-**Úprava souboru kódu na pozadí**
+### <a name="to-modify-the-code-behind-file"></a>Úprava souboru kódu na pozadí
 
 1. V Průzkumníku řešení klikněte pravým tlačítkem na **MainPage.xaml**a potom klikněte na tlačítko **zobrazit kód**.
 2. Uvnitř oboru názvů SSPlayer přidejte novou třídu:
@@ -1009,7 +1012,8 @@ Prezentace technologie Smooth Streaming může obsahovat více videosoubory zak�
             changeStreams(selectedStreams);
          }
    ```
-   **Ke kompilaci a testování aplikace**
+   
+### <a name="to-compile-and-test-the-application"></a>Ke kompilaci a testování aplikace
 
 1. Stisknutím klávesy **F6** ke kompilaci projektu. 
 2. Stisknutím klávesy **F5** spusťte aplikaci.
@@ -1020,6 +1024,7 @@ Prezentace technologie Smooth Streaming může obsahovat více videosoubory zak�
 Dokončili jste Lekce 4.  V této lekci se přidat funkci, která zvolte stop.
 
 ## <a name="media-services-learning-paths"></a>Mapy kurzů ke službě Media Services
+
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
 ## <a name="provide-feedback"></a>Poskytnutí zpětné vazby

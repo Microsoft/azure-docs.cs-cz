@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 04/01/2019
 ms.author: jeedes
-ms.openlocfilehash: d399e83dbd1324827cc395cbf7834672baffa791
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: 2110b1ec7d5d6b317341855ff19acf7975733e71
+ms.sourcegitcommit: fec96500757e55e7716892ddff9a187f61ae81f7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59275840"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59617865"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-percolate"></a>Kurz: Integrace Azure Active Directory s provede se perkolace
 
@@ -101,7 +101,7 @@ Ke konfiguraci Azure AD jednotné přihlašování s provede se perkolace, prove
 
     ![Upravit konfiguraci základní SAML](common/edit-urls.png)
 
-4. Na **základní konfiguraci SAML** části, pokud chcete nakonfigurovat aplikace v **IDP** iniciované režimu, uživatel nebude muset provést libovolný krok, protože aplikace je už předem integrovaných s Azure.
+4. Na **základní konfiguraci SAML** části, pokud chcete nakonfigurovat aplikace v **IDP** iniciované režimu, uživatel nebude muset provést libovolný krok, protože aplikace je už předem integrované se službou Azure.
 
     ![Provede se perkolace domény a adresy URL jednotné přihlašování – informace](common/preintegrated.png)
 
@@ -141,7 +141,7 @@ Ke konfiguraci Azure AD jednotné přihlašování s provede se perkolace, prove
 
     b. V **Entity ID** textového pole vložte hodnotu **Azure AD identifikátor** zkopírovanou z webu Azure portal.
 
-    c. V poznámkovém bloku otevřete base-64 kódovaných certifikát, který jste si stáhli z webu Azure portal, zkopírujte jeho obsah a vložte jej do **x509 certifikáty** pole.
+    c. V poznámkovém bloku otevřete base-64 kódovaných certifikát, který jste si stáhli z webu Azure portal, zkopírujte jeho obsah a vložte jej do **x509 certifikáty** pole.
 
     d. V **atribut e-mailové** textové pole, typ **emailaddress**.
 
@@ -219,9 +219,9 @@ Pokud chcete povolit Azure AD uživatelům umožní přihlásit k provede se per
 
     ![Konfigurace jednotného přihlašování](./media/percolate-tutorial/configure04.png)
 
-    a. V **e-mailu** textové pole, zadejte e-mailu uživatele, jako je brittasimon@contoso.com.
+    a. V **e-mailu** textové pole, zadejte e-mailu uživatele, jako je brittasimon@contoso.com.
 
-    b. V **Fullname** textové pole, zadejte jméno uživatele, jako je **Brittasimon**.
+    b. V **Fullname** textové pole, zadejte jméno uživatele, jako je **Brittasimon**.
 
     c. Klikněte na tlačítko **vytvořit uživatele**.
 
@@ -235,7 +235,7 @@ Po kliknutí na dlaždici provede se perkolace na přístupovém panelu, vám by
 
 - [Seznam kurzů o integraci aplikací SaaS pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

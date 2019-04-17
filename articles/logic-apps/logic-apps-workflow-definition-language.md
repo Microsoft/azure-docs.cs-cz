@@ -1,29 +1,28 @@
 ---
-title: Referenční dokumentace schématu pro jazyk definice pracovního postupu – Azure Logic Apps | Dokumentace Microsoftu
-description: Zapsat definice vlastní pracovní postup pro Azure Logic Apps s jazyka definice pracovního postupu
+title: Referenční dokumentace schématu pro jazyk definice pracovního postupu – Azure Logic Apps
+description: Referenční příručka pro schéma jazyka definice pracovního postupu ve službě Azure Logic Apps
 services: logic-apps
 ms.service: logic-apps
+ms.suite: integration
 author: ecfan
 ms.author: estfan
-manager: jeconnoc
+ms.reviewer: klam, LADocs
 ms.topic: reference
 ms.date: 04/30/2018
-ms.reviewer: klam, LADocs
-ms.suite: integration
-ms.openlocfilehash: d2de2a25d67da230d539156c851cca34335a01c2
-ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
+ms.openlocfilehash: d80ffa862546f56e93a338a7a1db031e2cb55990
+ms.sourcegitcommit: fec96500757e55e7716892ddff9a187f61ae81f7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58620832"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59616794"
 ---
 # <a name="schema-reference-for-workflow-definition-language-in-azure-logic-apps"></a>Referenční dokumentace schématu pro jazyk pro definování pracovních postupů v Azure Logic Apps
 
-Když vytvoříte pracovní postup aplikace logiky s [Azure Logic Apps](../logic-apps/logic-apps-overview.md), základní definici pracovního postupu popisuje skutečné logiku, která pro vaši aplikaci logiky. Tento popis následující strukturu, která je definována a ověřit pomocí schématu rozhraní jazyka definice pracovního postupu, který používá [zápis JSON (JavaScript Object)](https://www.json.org/).
+Když vytvoříte aplikaci logiky v [Azure Logic Apps](../logic-apps/logic-apps-overview.md), aplikace logiky má základní definice pracovního postupu, který popisuje skutečné logiku, která ve vaší aplikaci logiky. Tuto definici pracovního postupu používá [JSON](https://www.json.org/) a řídí strukturu, která se ověří pomocí schématu rozhraní jazyka definice pracovního postupu. Tento odkaz obsahuje přehled o tuto strukturu a jak definuje schéma elementů v definici pracovního postupu.
 
 ## <a name="workflow-definition-structure"></a>Struktura definice pracovního postupu
 
-Definice pracovního postupu má aspoň jeden trigger, který vytvoří instanci aplikace logiky a jednu nebo více akcí, které spouští vaše aplikace logiky.
+Definice pracovního postupu, který je vždy obsahuje aktivační událost pro vytvoření instance vaší aplikace logiky a jednu nebo více akcí, které běží po aktivaci triggeru.
 
 Tady je základní strukturu pro definici pracovního postupu:
 
@@ -51,7 +50,7 @@ Tady je základní strukturu pro definici pracovního postupu:
 
 ## <a name="parameters"></a>Parametry
 
-V `parameters` části, definovat všechny parametry pracovních postupů, které vaše aplikace logiky používá při nasazení pro příjem vstupy. Deklarace parametru a hodnoty parametrů jsou požadovány v nasazení. Před použitím těchto parametrů v dalších částech pracovního postupu, ujistěte se, že je deklarovat všechny parametry v těchto oddílech. 
+V `parameters` části, definovat všechny parametry pracovních postupů, které používá vaše definice pracovního postupu při nasazení pro příjem vstupy. Deklarace parametru a hodnoty parametrů jsou požadovány v nasazení. Před použitím těchto parametrů v dalších částech pracovního postupu, ujistěte se, že je deklarovat všechny parametry v těchto oddílech. 
 
 Tady je obecnou strukturu pro definici parametru:
 
@@ -75,7 +74,7 @@ Tady je obecnou strukturu pro definici parametru:
 | type | Ano | int, float, string, securestring, bool, pole, objekt JSON, secureobject <p><p>**Poznámka:** Pro všechna hesla, klíče a tajné klíče, použijte `securestring` a `secureobject` typy, protože `GET` operace nevrací těchto typů. Další informace o zabezpečení parametry najdete v tématu [zabezpečení aplikací logiky](../logic-apps/logic-apps-securing-a-logic-app.md#secure-action-parameters) | Typ parametru |
 | Výchozí hodnota | Ano | Stejné jako `type` | Výchozí hodnota parametru, pokud není zadána žádná hodnota, když vytvoří instanci pracovního postupu |
 | allowedValues | Ne | Stejné jako `type` | Pole s hodnotami, které přijímají parametr |
-| zprostředkovatele identity | Ne | JSON – objekt | Další parametr podrobnosti, například název nebo čitelný popis pro svou aplikaci logiky nebo použít Visual Studio nebo jinými nástroji dat doby návrhu |
+| zprostředkovatele identity | Ne | JSON – objekt | Další parametr podrobnosti, například název nebo čitelný popis pro svou aplikaci logiky nebo toku nebo dat doby návrhu použít Visual Studio nebo jinými nástroji |
 ||||
 
 ## <a name="triggers-and-actions"></a>Aktivační události a akce
@@ -107,7 +106,7 @@ Tady je obecnou strukturu pro definici výstupu:
 | hodnota | Ano | Stejné jako `type` | Návratová hodnota výstupu |
 |||||
 
-K získání výstup z běhu pracovního postupu, přečtěte si podrobnosti na webu Azure Portal a historii spuštění aplikace logiky nebo použijte [rozhraní REST API služby pracovního postupu](https://docs.microsoft.com/rest/api/logic/workflows). Můžete také předat výstup do externích systémů, například Power BI tak, že můžete vytvořit řídicí panely.
+K získání výstup z běhu pracovního postupu, zkontrolujte historii spuštění aplikace logiky a podrobnosti na webu Azure Portal nebo pomocí [rozhraní REST API služby pracovního postupu](https://docs.microsoft.com/rest/api/logic/workflows). Můžete také předat výstup do externích systémů, například Power BI tak, že můžete vytvořit řídicí panely.
 
 <a name="expressions"></a>
 
@@ -216,7 +215,7 @@ V [výrazy](#expressions) a [funkce](#functions), operátory provádět konkrét
 
 ## <a name="functions"></a>Functions
 
-Některé výrazy jejich hodnoty získat z akce modulu runtime, které možná ještě neexistuje, při spuštění aplikace logiky pro spuštění. Odkaz nebo pracovat s těmito hodnotami ve výrazech, můžete použít [ *funkce* ](../logic-apps/workflow-definition-language-functions-reference.md) poskytující jazyka definice pracovního postupu.
+Některé výrazy jejich hodnoty získat z akce modulu runtime, které nemusí ještě neexistuje, když se spustí vaše definice pracovního postupu. Odkaz nebo pracovat s těmito hodnotami ve výrazech, můžete použít [ *funkce* ](../logic-apps/workflow-definition-language-functions-reference.md) poskytující jazyka definice pracovního postupu.
 
 ## <a name="next-steps"></a>Další postup
 

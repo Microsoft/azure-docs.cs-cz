@@ -8,18 +8,18 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: 3055bf4be024065bcd8db9cf523de93a5ab6b22b
-ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
+ms.openlocfilehash: 8558168b7eb35743c0fd590ded17ef13446533c4
+ms.sourcegitcommit: fec96500757e55e7716892ddff9a187f61ae81f7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58905932"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59617814"
 ---
 # <a name="connect-an-mxchip-iot-devkit-device-to-your-azure-iot-central-application"></a>Připojení MXChip IoT DevKit zařízení do aplikace Azure IoT Central
 
 Tento článek popisuje, jak jako vývojář zařízení pro připojení MXChip IoT DevKit (DevKit) zařízení do aplikace Microsoft Azure IoT Central.
 
-## <a name="before-you-begin"></a>Před zahájením
+## <a name="before-you-begin"></a>Než začnete
 
 K dokončení kroků v tomto článku budete potřebovat následující prostředky:
 
@@ -246,8 +246,8 @@ Přepínací tlačítko Nastavení
 | Zobrazované jméno | Název pole | Návratový typ | Vstupní pole zobrazované jméno | Název vstupního pole | Typ vstupního pole |
 | ------------ | ---------- | ----------- | ------------------------ | ---------------- | ---------------- |
 | echo         | echo       | text        | hodnota pro zobrazení         | displayedValue   | text             |
-| Odpočítávání    | odpočítávání  | číslo      | Od               | countFrom        | číslo           |
+| Odpočítávání    | Odpočítávání  | číslo      | Od               | countFrom        | číslo           |
 
 ## <a name="next-steps"></a>Další postup
 
-Teď, když jste zjistili, jak připojit zařízení DevKit do aplikace Azure IoT Central, navrhované dalším krokem je [Prepare a připojte Raspberry Pi](howto-connect-raspberry-pi-python.md).
+Teď, když jste zjistili, jak se připojit k aplikaci Azure IoT Central Raspberry Pi, navrhované dalším krokem je další způsob [nastavit šablonu vlastního zařízení](howto-set-up-template.md) pro zařízení IoT.

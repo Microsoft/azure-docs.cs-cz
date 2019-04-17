@@ -9,15 +9,15 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 02/27/2019
+ms.date: 04/15/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: de2c60d4449762c4a8fcc3e2f486130f3df37c7c
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: 532701eb2c5e92e5443f69c464b561d6fa242598
+ms.sourcegitcommit: fec96500757e55e7716892ddff9a187f61ae81f7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57243615"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59617627"
 ---
 # <a name="encoding-with-media-services"></a>Kódování pomocí Media Services
 
@@ -54,19 +54,38 @@ Služba Media Services momentálně podporuje následující předdefinované k�
 
 Tyto předvolby se aktuálně podporují:
 
-- **EncoderNamedPreset.AdaptiveStreaming** (doporučeno). Další informace najdete v tématu [automatické generování přenosových](autogen-bitrate-ladder.md).
 - **EncoderNamedPreset.AACGoodQualityAudio** -vytvoří jeden soubor MP4 obsahující pouze stereo zvuk kódovaný v 192 kb/s.
+- **EncoderNamedPreset.AdaptiveStreaming** (doporučeno). Další informace najdete v tématu [automatické generování přenosových](autogen-bitrate-ladder.md).
+- **EncoderNamedPreset.ContentAwareEncodingExperimental** -zpřístupňuje experimentální předvolbu kódování obsahu. Zadaný žádný vstupní obsah, se služba pokusí automaticky určit optimální počet vrstev, odpovídající s přenosovou rychlostí a nastavení řešení pro doručování pomocí adaptivního streamování. Základní algoritmy bude časem vyvíjet. Výstup bude obsahovat soubory MP4 s videa a zvuku prokládané. Další informace najdete v tématu [experimentální přednastavení kódování obsahu](cae-experimental.md).
 - **EncoderNamedPreset.H264MultipleBitrate1080p** -vytvoří sadu 8 soubory MP4 zarovnaný GOP od 6000 kb/s až 400 kb/s a stereo AAC zvuku. Rozlišení začíná 1080p a platí až 360 p.
 - **EncoderNamedPreset.H264MultipleBitrate720p** -vytvoří sadu 6 soubory MP4 zarovnaný GOP od 3400 kb/s až 400 kb/s a stereo AAC zvuku. Rozlišení začíná 720p a platí až 360 p.
-- **EncoderNamedPreset.H264MultipleBitrateSD** -vytvoří sadu 5 soubory MP4 zarovnaný GOP od 1600 kb/s až 400 kb/s a stereo AAC zvuku. Rozlišení začíná 480p a platí až 360 p.<br/><br/>Další informace najdete v tématu [nahrávání, kódování a streamování souborů](stream-files-tutorial-with-api.md).
+- **EncoderNamedPreset.H264MultipleBitrateSD** -vytvoří sadu 5 soubory MP4 zarovnaný GOP od 1600 kb/s až 400 kb/s a stereo AAC zvuku. Rozlišení začíná 480p a platí až 360 p.
+- **EncoderNamedPreset.H264SingleBitrate1080p** – vytvoří soubor MP4 videa jsou zakódovány H.264 kodek 6750 kb/s a obrázek výšku 1080 pixelů, kde stereo zvuk jsou zakódovány kodek AAC-LC na 64 kb/s.
+- **EncoderNamedPreset.H264SingleBitrate720p** – vytvoří soubor MP4 videa jsou zakódovány H.264 kodek 4500 kb/s a výška obrázku v pixelech 720, kde stereo zvuk jsou zakódovány kodek AAC-LC na 64 kb/s.
+- **EncoderNamedPreset.H264SingleBitrateSD** – vytvoří soubor MP4 ve videu jsou zakódovány H.264 kodek 2200 kb/s a výška obrázku v pixelech 480, a stereo zvuk jsou zakódovány kodek AAC-LC na 64 kb/s.
+
+Pokud chcete zobrazit aktuální seznam přednastavení, naleznete v tématu [předdefinované předvolby pro kódování videa](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#encodernamedpreset).
+
+Pokud chcete zobrazit, jak se používají na předvolby, podívejte se na [nahrávání, kódování a streamování souborů](stream-files-tutorial-with-api.md).
 
 ### <a name="standardencoderpreset-preset"></a>Přednastavení StandardEncoderPreset
 
 [StandardEncoderPreset](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#standardencoderpreset) popisuje nastavení, která se použije při kódování vstupního videa se kodér úrovně Standard. Použijte přednastavení při přizpůsobování přednastavení transformace. 
 
-#### <a name="custom-presets"></a>Vlastní předvolby
+#### <a name="considerations"></a>Požadavky
 
-Služba Media Services plně podporuje všechny hodnoty v předvolbách pro splnění potřeb kódování a požadavky na přizpůsobení. Můžete použít **StandardEncoderPreset** přednastavení při přizpůsobování přednastavení transformace. Pro detailní vysvětlení a příklad najdete v části [přizpůsobení kódovací Předvolby](customize-encoder-presets-how-to.md).
+Při vytváření vlastní předvolby, platí následující aspekty:
+
+- Všechny hodnoty pro výšku a šířku na AVC obsahu musí být násobkem 4.
+- V Azure Media Services v3 kódování přenosových rychlostí jsou všechny bity za sekundu. Tím se liší od přednastavení pomocí rozhraní API v2, který používá kilobitů za sekundu za jednotku. Například pokud přenosovými rychlostmi ve verzi v2 byl zadán jako 128 (kilobitů za sekundu), ve verzi 3 to se nastavuje na 128000 (bitů za sekundu).
+
+#### <a name="examples"></a>Příklady
+
+Služba Media Services plně podporuje všechny hodnoty v předvolbách pro splnění potřeb kódování a požadavky na přizpůsobení. Příklady, které ukazují, jak přizpůsobit kódovací předvolby naleznete v tématu:
+
+- [Přizpůsobení předvoleb pomocí .NET](customize-encoder-presets-how-to.md)
+- [Přizpůsobení předvoleb pomocí rozhraní příkazového řádku](custom-preset-cli-howto.md)
+- [Přizpůsobení předvoleb pomocí REST](custom-preset-rest-howto.md)
 
 ## <a name="scaling-encoding-in-v3"></a>Škálování kódování ve verzi 3
 

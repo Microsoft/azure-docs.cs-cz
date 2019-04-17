@@ -5,19 +5,19 @@ services: site-recovery
 author: rayne-wiselman
 ms.service: site-recovery
 ms.topic: article
-ms.date: 03/18/2019
+ms.date: 04/16/2019
 ms.author: raynew
-ms.openlocfilehash: 76119c912ac6ad1447bfcff1f4c98e60f34b072f
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: 019c6ec776277a9102cb95cd685bbae0fc660d66
+ms.sourcegitcommit: fec96500757e55e7716892ddff9a187f61ae81f7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58317123"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59615910"
 ---
 # <a name="set-up-disaster-recovery-for-azure-vms-after-migration-to-azure"></a>Nastavení zotavení po havárii virtuálních počítačů Azure po migraci do Azure 
 
 
-Pomocí tohoto článku, pokud jste [migraci místních počítačů na virtuálních počítačích Azure](tutorial-migrate-on-premises-to-azure.md) pomocí [Site Recovery](site-recovery-overview.md) služby a teď chcete získat virtuálních počítačů nastavení pro zotavení po havárii do sekundární oblasti Azure. Tento článek popisuje Ujistěte se, že agent virtuálního počítače Azure je nainstalovaný na migrovaných virtuálních počítačů a odebrat službu Site Recovery Mobility, který se má po dokončení migrace už nepotřebujete.
+Postupujte podle tohoto článku, pokud jste [migraci místních počítačů na virtuálních počítačích Azure](tutorial-migrate-on-premises-to-azure.md) pomocí [Site Recovery](site-recovery-overview.md) služby a teď chcete získat virtuálních počítačů nastavení pro zotavení po havárii do sekundární oblasti Azure. Tento článek popisuje Ujistěte se, že agent virtuálního počítače Azure je nainstalovaný na migrovaných virtuálních počítačů a odebrat službu Site Recovery Mobility, který se má po dokončení migrace už nepotřebujete.
 
 
 
@@ -77,7 +77,7 @@ Nainstalujte [Linuxový virtuální počítač Azure](../virtual-machines/extens
         ```
     - Pro Linux Přihlaste se jako uživatel root. V terminálu přejděte do **/user/local/ASR**, a spusťte následující příkaz:
         ```
-        uninstall.sh -Y
+        ./uninstall.sh -Y
         ```
 2. Než začnete konfigurovat replikaci, restartujte virtuální počítač.
 

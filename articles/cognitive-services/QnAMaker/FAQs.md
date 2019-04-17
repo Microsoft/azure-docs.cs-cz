@@ -8,19 +8,25 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: article
-ms.date: 03/04/2019
+ms.date: 04/11/2019
 ms.author: tulasim
 ms.custom: seodec18
-ms.openlocfilehash: 5b4c9e24bdcb6aaf4efde24d747e77d6014b2539
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 8104497a1808aa4e92d62f45e37525dba2f47742
+ms.sourcegitcommit: 5f348bf7d6cf8e074576c73055e17d7036982ddb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57439464"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59607163"
 ---
 # <a name="frequently-asked-questions-for-qna-maker"></a>Nejčastější dotazy pro QnA Maker
 
 Vybraný seznam nejčastějších dotazů týkající se služba QnA Maker vám pomůže přijmout službu rychleji a s lepší výsledky.
+
+## <a name="use-the-help-bot-in-the-qna-maker-portal"></a>Použití nápovědy robota na portálu pro nástroj QnA Maker
+
+Poskytuje nástroje QnA Maker **pomáhají** robotů v rámci portálu QnA Maker můžete. Bot pomoc je k dispozici na webové stránce. Robot pomocí nástroje QnA Maker poskytuje odpovědi a poskytuje [ C# Bot Framework Kódový projekt](https://github.com/Microsoft/BotBuilder-Samples/tree/master/experimental/csharp_dotnetcore/qnamaker-support-bot) robotu, abyste se mohli rychle začít s odpovědí robota. 
+
+![! [Poskytuje nástroj QnA Maker ** bot pomoc ** v rámci portálu QnA Maker můžete.] (. / media/qnamaker-faq/use-qna-maker-help-bot-to-learn-qna-maker-service.png)](./media/qnamaker-faq/use-qna-maker-help-bot-to-learn-qna-maker-service.png#lightbox)
 
 ## <a name="manage-the-knowledge-base"></a>Správa znalostní báze
 
@@ -98,7 +104,7 @@ Aktualizujte klíče koncového bodu, pokud máte podezření, že byl napaden.
 
 ### <a name="can-i-use-the-same-azure-search-resource-for-knowledge-bases-using-multiple-languages"></a>Můžete použít stejný prostředek Azure Search pro znalostní báze pomocí více jazyků?
 
-Pokud chcete použít víc jazyků a více znalostních bází, má uživatel a vytvoří prostředek QnA Maker pro jednotlivé jazyky. Tím se vytvoří samostatné Azure vyhledávací služby pro každý jazyk. Kombinování jiný jazyk znalostních bází ve službě Azure search jednoho způsobí snížení relevance výsledků.
+Pokud chcete použít víc jazyků a více znalostních bází, má uživatel a vytvoří prostředek QnA Maker pro jednotlivé jazyky. Tím se vytvoří samostatné Azure search service pro každý jazyk. Kombinování jiný jazyk znalostních bází ve službě Azure search jednoho způsobí snížení relevance výsledků.
 
 ### <a name="how-can-i-change-the-name-of-the-azure-search-resource-used-by-qna-maker"></a>Jak můžete změnit název prostředku Azure Search používá nástroj QnA Maker?
 

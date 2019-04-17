@@ -3,98 +3,86 @@ title: Připojit zařízení s Windows IoT Core do aplikace Azure IoT Central | 
 description: Jako vývojář zařízení zjistěte, jak připojit zařízení MXChip IoT DevKit do aplikace Azure IoT Central.
 author: miriambrus
 ms.author: miriamb
-ms.date: 04/09/2018
+ms.date: 04/05/2019
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: 0312e322aea74b3ce9867d09cebc7543da40de5f
-ms.sourcegitcommit: ef20235daa0eb98a468576899b590c0bc1a38394
+ms.openlocfilehash: af6d66d2e3eae80477a151323578b930dcd7727a
+ms.sourcegitcommit: fec96500757e55e7716892ddff9a187f61ae81f7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
-ms.locfileid: "59426235"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59617848"
 ---
 # <a name="connect-a-windows-iot-core-device-to-your-azure-iot-central-application"></a>Připojit zařízení s Windows IoT Core do aplikace Azure IoT Central
 
 Tento článek popisuje, jak jako vývojář zařízení pro zařízení s Windows IoT Core připojit k aplikaci Microsoft Azure IoT Central.
 
-## <a name="before-you-begin"></a>Před zahájením
+## <a name="before-you-begin"></a>Než začnete
 
 K dokončení kroků v tomto článku budete potřebovat následující:
 
-1. Azure IoT Central aplikace vytvořené z **ukázka Devkits** šablony aplikace. Další informace najdete v [rychlém startu k vytvoření aplikace](quick-deploy-iot-central.md).
-2. Zařízení s operačním systémem Windows 10 IoT Core. V tomto návodu budeme používat Raspberry Pi.
+- Azure IoT Central aplikace vytvořené z **ukázka Devkits** šablony aplikace. Další informace najdete v [rychlém startu k vytvoření aplikace](quick-deploy-iot-central.md).
 
+- Zařízení s operačním systémem Windows 10 IoT Core. Další informace najdete v tématu [nastavení zařízení s Windows 10 IoT Core](https://docs.microsoft.com/windows/iot-core/tutorials/quickstarter/devicesetup).
 
-## <a name="sample-devkits-application"></a>**Ukázkový Devkits** aplikace
+- Vývojovém počítači s [Node.js](https://nodejs.org/) verze 8.0.0 nebo novější. Můžete spustit `node --version` na příkazovém řádku k ověření verze. Node.js je k dispozici pro širokou škálu operačních systémů.
 
-Aplikace vytvořené z **ukázka Devkits** zahrnuje šablony aplikace **Windows IoT Core** šablona zařízení s následujícími charakteristikami: 
+## <a name="the-sample-devkits-application"></a>Devkits ukázkové aplikace
 
-- Telemetrická data, která obsahuje měření pro zařízení **vlhkosti**, **teploty** a **tlak**. 
-- Nastavení zobrazení **ventilátor rychlost**.
-- Vlastnosti obsahující vlastnosti zařízení **kostka číslo** a **umístění** cloudové vlastnosti.
+Aplikace vytvořené z **ukázka Devkits** zahrnuje šablony aplikace **Windows IoT Core** šablona zařízení s následujícími charakteristikami:
 
+- Měření telemetrická data pro zařízení: **Vlhkosti**, **teploty**, a **tlak**.
+- Nastavení pro ovládací prvek **ventilátor rychlost**.
+- Vlastnosti zařízení **kostka číslo** a vlastnosti cloudu **umístění**.
 
-Najdete všechny podrobnosti o konfiguraci zařízení šablony [Podrobnosti šablony zařízení Windows IoT Core](howto-connect-windowsiotcore.md#windows-iot-core-device-template-details)
+Úplné podrobnosti o konfiguraci zařízení šablony najdete v tématu [Podrobnosti šablony zařízení Windows IoT Core](#device-template-details).
 
 ## <a name="add-a-real-device"></a>Přidání skutečného zařízení
 
-V aplikaci Azure IoT Central přidat z reálného zařízení **Windows IoT Core** šablona zařízení a zkontrolujte poznamenejte si připojovací řetězec zařízení. Další informace najdete v tématu [skutečné zařízení přidat do aplikace Azure IoT Central](tutorial-add-device.md).
+V aplikaci Azure IoT Central, použijte **Device Explorer** stránku z reálného zařízení přidáte **Windows 10 IoT Core** šablona zařízení. Poznamenejte si zařízení, podrobnosti o připojení (**ID oboru**, **ID zařízení**, a **primární klíč**). Další informace najdete v tématu [získat informace o připojení](howto-generate-connection-string.md#get-connection-information).
 
-### <a name="prepare-the-windows-iot-core-device"></a>Připravit zařízení Windows IoT Core
+## <a name="prepare-the-device"></a>Připravte zařízení
 
-Nastavení zařízení s Windows IoT Core postupujte podle podrobného průvodce na [nastavit zařízení s Windows IoT Core](https://github.com/Azure/iot-central-firmware/tree/master/WindowsIoT#setup-a-physical-device).
+U zařízení pro připojení k IoT Central potřebuje připojovací řetězec.
 
-### <a name="add-a-real-device"></a>Přidání skutečného zařízení
+[!INCLUDE [iot-central-howto-connection-string](../../includes/iot-central-howto-connection-string.md)]
 
-V aplikaci Azure IoT Central přidat z reálného zařízení **Windows IoT Core** šablona zařízení a zaznamenání podrobností o připojení zařízení (**primární klíč ID oboru, ID zařízení**). Postupujte podle těchto pokynů a [generovat připojovací řetězec zařízení](howto-generate-connection-string.md) pomocí **ID oboru**, **ID zařízení**, a **primární klíč** provedena Mějte na paměti z dříve.
+Pro kód zařízení pro přístup k připojovací řetězec uložit do souboru s názvem **connection.string.iothub** ve složce `C:\Data\Users\DefaultAccount\Documents\` na zařízení s Windows 10 IoT Core.
 
-## <a name="prepare-the-windows-10-iot-core-device"></a>Připravit zařízení Windows 10 IoT Core
+Pro kopírování **connection.string.iothub** soubor ze stolního počítače k `C:\Data\Users\DefaultAccount\Documents\` složky na vašem zařízení, můžete použít [Windows Device Portal](https://docs.microsoft.com/windows/iot-core/manage-your-device/deviceportal):
 
-### <a name="what-youll-need"></a>Co budete potřebovat
+1. Pomocí webového prohlížeče přejděte na Windows Device Portal na vašem zařízení.
+1. Chcete-li procházet soubory na vašem zařízení, zvolte **aplikace > Průzkumníka souborů**.
+1. Přejděte do **uživatele Folders\Documents**. Nahrajte **connection.string.iothub** souboru:
 
-Pokud chcete nastavit skutečné zařízení Windows 10 IoT Core, musíte nejprve mít zařízení se systémem Windows 10 IoT Core. Zjistěte, jak nastavit zařízení s Windows 10 IoT Core [tady](https://docs.microsoft.com/windows/iot-core/tutorials/quickstarter/devicesetup).
+    ![Uložit připojovací řetězec](media/howto-connect-windowsiotcore/device-portal.png)
 
-Budete také potřebovat klientské aplikace, který může komunikovat s Azure IoT Central. Můžete sestavit vlastní aplikaci pomocí sady Azure SDK a nasaďte ji do zařízení pomocí sady Visual Studio, nebo si můžete stáhnout [předem připravené ukázky](https://developer.microsoft.com/windows/iot/samples) a jednoduše nasadit a spustit ho v zařízení. 
+## <a name="deploy-and-run"></a>Nasazení a spuštění
 
-### <a name="deploying-the-sample-client-application"></a>Nasazení ukázkové aplikace klienta
+K nasazení a spuštění ukázkové aplikace ve vašem zařízení, můžete použít [Windows Device Portal](https://docs.microsoft.com/windows/iot-core/manage-your-device/deviceportal):
 
-Pokud chcete nasadit aplikaci klienta z předchozího kroku do zařízení Windows 10 IoT aby bylo možné připravit:
+1. Pomocí webového prohlížeče přejděte na Windows Device Portal na vašem zařízení.
+1. Nasadit a spustit **Azure IoT Hub Client** aplikaci, zvolte **aplikace > Rychlé spuštění ukázky**. Klikněte na tlačítko **Azure IoT Hub Client**.
+1. Klikněte na tlačítko **nasadit a spustit**.
 
-**Ujistěte se, že je připojovací řetězec je uložen na zařízení pro klientskou aplikaci používat**
-* Na ploše uložte do textového souboru s názvem connection.string.iothub připojovací řetězec.
-* Zkopírujte tento textový soubor do složku dokumentů zařízení:
-`[device-IP-address]\C$\Data\Users\DefaultAccount\Documents\connection.string.iothub`
+    ![Nasazení a spuštění](media/howto-connect-windowsiotcore/quick-run.png)
 
-Jakmile, který jste provedli, budete muset otevřít [Windows Device Portal](https://docs.microsoft.com/windows/iot-core/manage-your-device/deviceportal) tak, že zadáte http://[device-IP-address]:8080 do libovolného prohlížeče.
+Za pár minut můžete zobrazit telemetrická data z vašeho zařízení ve vaší aplikaci IoT Central.
 
-Z zde a, jak ukazuje if níže budete chtít:
-1. Rozbalte **aplikace** uzlu na levé straně.
-2. Vyberte **rychlé spuštění ukázky**.
-3. Vyberte **klienta služby Azure IoT Hub**.
-4. Vyberte **nasadit a spustit**.
+[Windows Device Portal](https://docs.microsoft.com/windows/iot-core/manage-your-device/deviceportal) obsahuje nástroje, které vám umožní potíží se zařízením:
 
-![GIF klienta služby Azure IoT Hub na Windows Device Portal](./media/howto-connect-windowsiotcore/iothubapp.gif)
+- **Aplikace správce** stránky umožňuje řídit aplikace běžící na vašem zařízení.
+- Pokud nemáte k dispozici monitorování připojení k zařízení, můžete použít **nastavení zařízení** stránky k zachycení snímků obrazovky ze zařízení. Příklad:
 
-V případě úspěchu aplikace spustí na zařízení a vypadat nějak takto:
-
-![Snímek obrazovky s Azure IoT Hub klientské aplikace](./media/howto-connect-windowsiotcore/IoTHubForegroundClientScreenshot.png)
-
-V Azure IoT Central uvidíte, jak kód spuštěný na Raspberry Pi komunikuje s aplikací:
-
-* Na **měření** stránky pro skutečné zařízení, zobrazí se telemetrie.
-* Na **vlastnosti** stránky, můžete zobrazit hodnotu ohlášené vlastnosti kostka číslo.
-* Na **nastavení** stránky, můžete změnit různá nastavení na Raspberry Pi, jako je například napětí a podporuje a rychlost.
+    ![Snímek obrazovky aplikace](media/howto-connect-windowsiotcore/iot-hub-foreground-client.png)
 
 ## <a name="download-the-source-code"></a>Stáhněte si zdrojový kód
 
-Pokud chcete prozkoumat a upravit zdrojový kód pro klientskou aplikaci, si můžete stáhnout z Githubu [tady](https://github.com/Microsoft/Windows-iotcore-samples/tree/develop/Samples/Azure/IoTHubClients). Pokud budete chtít upravit kód, postupujte podle těchto pokynů v souboru readme [tady](https://github.com/Microsoft/Windows-iotcore-samples) pro desktopové operační systém.
+Pokud chcete prozkoumat a upravit zdrojový kód pro klientskou aplikaci, můžete ji stáhnout [úložiště GitHub pro Windows-iotcore-samples](https://github.com/Microsoft/Windows-iotcore-samples/blob/master/Samples/Azure/IoTHubClients).
 
-> [!NOTE]
-> Pokud **git** není nainstalovaný ve vašem vývojovém prostředí, můžete ji stáhnout [ https://git-scm.com/download ](https://git-scm.com/download).
-
-## <a name="windows-iot-core-device-template-details"></a>Podrobnosti šablony zařízení Windows IoT Core
+## <a name="device-template-details"></a>Podrobnosti o zařízení šablony
 
 Aplikace vytvořené z **ukázka Devkits** zahrnuje šablony aplikace **Windows IoT Core** šablona zařízení s následujícími charakteristikami:
 
@@ -114,10 +102,13 @@ Aplikace vytvořené z **ukázka Devkits** zahrnuje šablony aplikace **Windows 
 | ------------ | ---------- | ----- | -------------- | ------- | ------- | ------- |
 | Ventilátor rychlost    | fanSpeed   | OT. / MIN   | 0              | 0       | 1000    | 0       |
 
-
 ### <a name="properties"></a>Vlastnosti
 
 | Type            | Zobrazované jméno | Název pole | Typ dat |
 | --------------- | ------------ | ---------- | --------- |
 | Vlastnosti zařízení | Kostka čísla   | dieNumber  | číslo    |
 | Text            | Umístění     | location   | neuvedeno       |
+
+## <a name="next-steps"></a>Další postup
+
+Teď, když jste zjistili, jak se připojit k aplikaci Azure IoT Central Raspberry Pi, navrhované dalším krokem je další způsob [nastavit šablonu vlastního zařízení](howto-set-up-template.md) pro zařízení IoT.

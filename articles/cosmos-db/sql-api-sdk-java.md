@@ -8,12 +8,12 @@ ms.devlang: java
 ms.topic: reference
 ms.date: 03/13/2019
 ms.author: sngun
-ms.openlocfilehash: 298f4d8cb62ce1d71ed8922483115606f8876d79
-ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
+ms.openlocfilehash: cb8a97a29a14ecd5601495048bcbe1aff748d892
+ms.sourcegitcommit: fec96500757e55e7716892ddff9a187f61ae81f7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58648552"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59617128"
 ---
 # <a name="azure-cosmos-db-java-sdk-for-sql-api-release-notes-and-resources"></a>Azure Cosmos DB Java SDK pro rozhraní SQL API: Zpráva k vydání verze a prostředky
 > [!div class="op_single_selector"]
@@ -127,7 +127,7 @@ Java SDK pro rozhraní API SQL podporuje synchronní operace. Pro asynchronní p
 * Přidání podpory pro kanál změn.
 * Přidání podpory pro informace o kvótě kolekce prostřednictvím RequestOptions.setPopulateQuotaInfo.
 * Přidání podpory pro uloženou proceduru skript protokolování prostřednictvím RequestOptions.setScriptLoggingEnabled.
-* Je opravená chyba, kde dotaz v režimu DirectHttps může přestat reagovat při zjištění chyb omezení.
+* Je opravená chyba, kde dotaz v režimu DirectHttps přestane reagovat při zjištění chyb omezení.
 * Oprava chyby v režimu konzistence relace.
 * Je opravená chyba, což může způsobit NullReferenceException v objektu HttpContext, když je vysoká frekvence požadavků.
 * Vylepšení výkonu DirectHttps režimu.
