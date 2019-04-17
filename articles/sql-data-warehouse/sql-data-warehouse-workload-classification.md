@@ -10,19 +10,19 @@ ms.subservice: workload management
 ms.date: 03/13/2019
 ms.author: rortloff
 ms.reviewer: jrasnick
-ms.openlocfilehash: c27856da0a5131f2c0e8dfd4d929b577a0a68421
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.openlocfilehash: 888a64de29178834fc47199a033eb6bc62858e57
+ms.sourcegitcommit: fec96500757e55e7716892ddff9a187f61ae81f7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58520127"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59617746"
 ---
 # <a name="sql-data-warehouse-workload-classification-preview"></a>Klasifikace úlohy SQL Data Warehouse (Preview)
 
 Tento článek vysvětluje proces klasifikace úlohy SQL Data Warehouse na příchozí žádosti o přiřazení třídy prostředků a důležitosti.
 
 > [!Note]
-> Úloha klasifikace je k dispozici v SQL Data Warehouse Gen2.
+> Úloha klasifikace je dostupná ve verzi preview na SQL Data Warehouse Gen2. Klasifikace úlohy správy a význam ve verzi preview je pro sestavení s datem vydání verze z 9. dubna 2019 nebo novější.  Uživatelé byste neměli používat sestavení starší než toto datum pro testování úloh správy.  K určení, zda je sestavení umožňující správu úloh, spustit, vyberte @@version při připojení k vaší instanci SQL Data Warehouse.
 
 ## <a name="classification"></a>Klasifikace
 
