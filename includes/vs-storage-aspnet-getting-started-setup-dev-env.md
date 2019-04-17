@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 09/15/2018
 ms.author: tamram
 ms.custom: include file
-ms.openlocfilehash: 634143f56bc9134f240ff42b7b5989605c8bffde
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.openlocfilehash: a7c696870e22e1692ca5ed778e47f8e4cc00615a
+ms.sourcegitcommit: 5f348bf7d6cf8e074576c73055e17d7036982ddb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45979394"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59610131"
 ---
 ## <a name="set-up-the-development-environment"></a>Nastavení vývojového prostředí
 
@@ -27,7 +27,7 @@ Tato část vás provede nastavení vývojového prostředí. To zahrnuje vytvo�
 
 1. V **nový projekt** dialogu **webové** > **webová aplikace ASP.NET (.NET Framework)**. V **název** uveďte **StorageAspNet**. Vyberte **OK**.
 
-    ![Dialogové okno snímek obrazovky nového projektu](./media/vs-storage-aspnet-getting-started-setup-dev-env/vs-storage-aspnet-getting-started-setup-dev-env-1.png)
+    ![Snímek obrazovky s dialogovým oknem Nový projekt](./media/vs-storage-aspnet-getting-started-setup-dev-env/vs-storage-aspnet-getting-started-setup-dev-env-1.png)
 
 1. V **nová webová aplikace ASP.NET** dialogu **MVC**a pak vyberte **OK**.
 
@@ -37,7 +37,7 @@ Tato část vás provede nastavení vývojového prostředí. To zahrnuje vytvo�
 
 1. V **Průzkumníka řešení**, klikněte pravým tlačítkem na projekt.
 
-2. V místní nabídce vyberte **přidat** > **připojenou službu**.
+1. V místní nabídce vyberte **přidat** > **připojenou službu**.
 
 1. V **připojené služby** dialogu **cloudové úložiště se službou Azure Storage**.
 
@@ -45,8 +45,9 @@ Tato část vás provede nastavení vývojového prostředí. To zahrnuje vytvo�
 
 1. V **služby Azure Storage** dialogovém okně vyberte účet úložiště Azure se použije pro účely tohoto kurzu. Chcete-li vytvořit nový účet úložiště Azure, vyberte **vytvořit nový účet úložiště**a vyplňte formulář. Po výběru buď existující účet úložiště nebo vytvoří nový, vyberte **přidat**. Visual Studio nainstaluje balíček NuGet pro služby Azure Storage a připojovací řetězec úložiště do **Web.config**.
 
+1. V **Průzkumníka řešení**, klikněte pravým tlačítkem na **závislosti**, zvolte **spravovat balíčky NuGet**a přidejte odkaz na balíček NuGet na nejnovější verzi Microsoft.Azure.ConfigurationManager.
+
 > [!TIP]
 > Další informace o vytvoření účtu úložiště pomocí [webu Azure portal](https://portal.azure.com), naleznete v tématu [vytvořit účet úložiště](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account).
 >
 > Můžete také vytvořit účet úložiště pomocí [prostředí Azure PowerShell](../articles/storage/common/storage-powershell-guide-full.md), [rozhraní příkazového řádku Azure](../articles/storage/common/storage-azure-cli.md), nebo [Azure Cloud Shell](../articles/cloud-shell/overview.md).
-

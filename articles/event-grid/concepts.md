@@ -7,12 +7,12 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 08/03/2018
 ms.author: spelluru
-ms.openlocfilehash: 40c749adee08e66319bed88f26c3c898428a41ad
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 1c77d0ea9e67c8d69f3f632cace164d8a0c4d921
+ms.sourcegitcommit: fec96500757e55e7716892ddff9a187f61ae81f7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54474349"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59617593"
 ---
 # <a name="concepts-in-azure-event-grid"></a>Koncepty ve službě Azure Event Grid
 
@@ -40,7 +40,7 @@ Informace o implementaci některý z podporovaných zdrojů služby Event Grid n
 
 Téma event gridu poskytuje koncový bod kam zdroji odesílá události. Vydavatel vytvoří téma event gridu a rozhodne, zda musí téma jeden nebo více než jeden zdroj událostí. Téma se používá pro kolekci souvisejících událostí. Reakce na určitých typech událostí, rozhodněte, předplatitelé témata pro přihlášení k odběru.
 
-Systém témata jsou předdefinované témata poskytované službami Azure. Nevidíte témata systém ve vašem předplatném Azure, vydavatele vlastní témata, protože k jejich odběru. K přihlášení k odběru zadáte informace o prostředku, který chcete přijímat události z. Tak dlouho, dokud mají přístup k prostředku, můžete se přihlásit k jeho události.
+Systém témata jsou předdefinované témata poskytované službami Azure. Nevidíte témata systém ve vašem předplatném Azure, vydavatele vlastní témata, protože k jejich odběru. K přihlášení k odběru zadáte informace o prostředku, který chcete přijímat události z. Za předpokladu, máte přístup k prostředku, můžete k jeho události odběru.
 
 Vlastní témata jsou aplikace a témata třetích stran. Při vytváření nebo přístupem k vlastní téma, zobrazí se v rámci předplatného tohoto vlastního tématu.
 

@@ -12,27 +12,34 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: python
 ms.topic: article
-ms.date: 09/20/2018
+ms.date: 04/15/2019
 ms.author: aschhab
-ms.openlocfilehash: a12288de2f9a7682fb433dd0d5c7905cc76c12b9
-ms.sourcegitcommit: 87bd7bf35c469f84d6ca6599ac3f5ea5545159c9
+ms.openlocfilehash: 102fe85916194648501be3d2cb39d8bcda9e9f5c
+ms.sourcegitcommit: 5f348bf7d6cf8e074576c73055e17d7036982ddb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58351656"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59607071"
 ---
 # <a name="how-to-use-service-bus-topics-and-subscriptions-with-python"></a>Jak používat témata a odběry Service Bus pomocí Pythonu
 
 [!INCLUDE [service-bus-selector-topics](../../includes/service-bus-selector-topics.md)]
 
-Tento článek popisuje, jak používat témata a odběry služby Service Bus. Ukázky jsou napsané v Pythonu a použití [balíčku sady Azure Python SDK][Azure Python package]. Mezi popsané scénáře patří **vytváření témat a odběrů**, **vytváření filtrů odběrů**, **odesílání zpráv do tématu**, **přijetí zprávy z odběru**, a **odstranění témat a odběrů**. Další informace o tématech a odběrech najdete v tématu [další kroky](#next-steps) oddílu.
+Tento článek popisuje, jak používat témata a odběry služby Service Bus. Ukázky jsou napsané v Pythonu a použití [balíčku sady Azure Python SDK][Azure Python package]. Mezi popsané scénáře patří:
 
-[!INCLUDE [howto-service-bus-topics](../../includes/howto-service-bus-topics.md)]
+- Vytváření témat a odběrů 
+- Vytváření filtrů odběrů 
+- Odesílání zpráv do tématu 
+- Příjem zpráv z odběru
+- Odstranění témat a odběrů
 
-> [!NOTE] 
-> Pokud je potřeba nainstalovat Python nebo [balíček Pythonu Azure][Azure Python package], najdete v článku [Průvodce instalací Pythonu](../python-how-to-install.md).
+## <a name="prerequisites"></a>Požadavky
+1. Předplatné Azure. K dokončení tohoto kurzu potřebujete mít účet Azure. Můžete si aktivovat váš [výhody pro předplatitele sady Visual Studio nebo MSDN](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A85619ABF) nebo si zaregistrovat [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF).
+2. Postupujte podle kroků v [rychlý start: Pomocí webu Azure portal k vytvoření tématu služby Service Bus a odběrů na téma](service-bus-quickstart-topics-subscriptions-portal.md) k vytvoření služby Service Bus **obor názvů** dostanete **připojovací řetězec**.
 
-[!INCLUDE [service-bus-create-namespace-portal](../../includes/service-bus-create-namespace-portal.md)]
+    > [!NOTE]
+    > Vytvoříte **tématu** a **předplatné** do tématu pomocí **Python** v tomto rychlém startu. 
+3. Nainstalujte [balíček Pythonu Azure][Azure Python package]. Zobrazit [Průvodce instalací Pythonu](../python-how-to-install.md).
 
 ## <a name="create-a-topic"></a>Vytvoření tématu
 

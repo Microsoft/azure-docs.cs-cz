@@ -1,33 +1,20 @@
 ---
-title: Vytvoření služby Azure Application Gateway – šablony | Dokumentace Microsoftu
-description: Tato stránka obsahuje pokyny pro vytvoření služby Azure Application Gateway pomocí šablony Azure Resource Manageru.
-documentationcenter: na
+title: Vytvoření služby Azure Application Gateway – šablony
+description: Tento článek obsahuje pokyny k vytvoření služby Azure application gateway pomocí šablony Azure Resource Manageru
 services: application-gateway
 author: vhorne
-manager: jpconnock
-editor: tysonn
 ms.service: application-gateway
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 07/31/2017
+ms.topic: conceptual
+ms.date: 4/15/2019
 ms.author: victorh
-ms.openlocfilehash: 682aac8ec6716ac59c6bdc0710065c916a0c41b6
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 113e30ab65f2cd0ff420df1c79807147a62f79f1
+ms.sourcegitcommit: 5f348bf7d6cf8e074576c73055e17d7036982ddb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58084925"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59608450"
 ---
 # <a name="create-an-application-gateway-by-using-the-azure-resource-manager-template"></a>Vytvoření služby Application Gateway pomocí šablony Azure Resource Manageru
-
-> [!div class="op_single_selector"]
-> * [Azure Portal](application-gateway-create-gateway-portal.md)
-> * [Azure Resource Manager PowerShell](application-gateway-create-gateway-arm.md)
-> * [Azure Classic PowerShell](application-gateway-create-gateway.md)
-> * [Šablona Azure Resource Manageru](application-gateway-create-gateway-arm-template.md)
-> * [Azure CLI](application-gateway-create-gateway-cli.md)
 
 Služba Azure Application Gateway je nástroj pro vyrovnávání zatížení vrstvy 7. Poskytuje převzetí služeb při selhání a směrování výkonu požadavků HTTP mezi různými servery, ať už jsou místní nebo v cloudu. Application Gateway poskytuje mnoho funkcí kontroleru doručování aplikací (ADC), včetně vyrovnávání zatížení protokolu HTTP, spřažení relace na základě souborů cookie, přesměrování zpracování SSL (Secure Sockets Layer), vlastních sond stavu, podpory více webů a mnoha dalších. Úplný seznam podporovaných funkcí najdete v tématu [Přehled služby Application Gateway](application-gateway-introduction.md)
 
@@ -243,4 +230,3 @@ Pokud chcete získat další informace o obecných možnostech vyrovnávání za
 
 * [Nástroj pro vyrovnávání zatížení Azure](https://azure.microsoft.com/documentation/services/load-balancer/)
 * [Azure Traffic Manager](https://azure.microsoft.com/documentation/services/traffic-manager/)
-

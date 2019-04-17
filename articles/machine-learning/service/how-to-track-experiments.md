@@ -1,7 +1,7 @@
 ---
 title: Protokolujte metriky během tréninková spuštění
 titleSuffix: Azure Machine Learning service
-description: Může sledovat vaše experimenty a monitorovat metriky vylepšit proces vytváření modelu. Zjistěte, jak přidat protokolování do trénovací skript, jak odeslání experimentu, jak zkontrolovat průběh spuštěné úlohy a postup zobrazení výsledků spuštění.
+description: Zjistěte, jak přidat protokolování do trénovací skript, jak odeslání experimentu, jak zkontrolovat průběh spuštěné úlohy a postup zobrazení výsledků spuštění. Může sledovat vaše experimenty a monitorovat metriky vylepšit proces vytváření modelu.
 services: machine-learning
 author: heatherbshapiro
 ms.author: hshapiro
@@ -11,16 +11,16 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: 41797caa89108448f0eaa27309046c01d7432823
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.openlocfilehash: 59a801fd149a0f647298d94522f9eefc1ea6eb9f
+ms.sourcegitcommit: 5f348bf7d6cf8e074576c73055e17d7036982ddb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/11/2019
-ms.locfileid: "59494623"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59609463"
 ---
 # <a name="log-metrics-during-training-runs-in-azure-machine-learning"></a>Protokolujte metriky během cvičení běží ve službě Azure Machine Learning
 
-Ve službě Azure Machine Learning může sledovat vaše experimenty a monitorovat metriky vylepšit proces vytváření modelu. V tomto článku se dozvíte, jak k přidání protokolování do trénovací skript, odeslat spuštění experimentu, monitorovat spuštění a zobrazení výsledků spuštění.
+V tomto článku se dozvíte, jak k přidání protokolování do trénovací skript, odeslat spuštění experimentu, monitorovat spuštění a zobrazení výsledků spuštění ve službě Azure Machine Learning. Vylepšete monitorování metrik a sledování své experimenty v procesu vytváření modelu. 
 
 ## <a name="list-of-training-metrics"></a>Seznam metrik školení 
 
@@ -389,7 +389,7 @@ Příklad 2: Model typu over-pass-the důvěrné ![model typu over-pass-the dův
 
 ### <a name="regression"></a>Regrese
 Pro každý regresní model programujte automatizované strojového učení služby Azure Machine Learning, zobrazí se následující grafy: 
-+ [Předpokládaná vs. True](#pvt)
++ [Předpokládaná vs. Hodnota TRUE](#pvt)
 + [Histogram zbytků](#histo)
 
 <a name="pvt"></a>
@@ -424,7 +424,7 @@ Funkce význam poskytuje skóre, která určuje, jak se jednotlivé funkce v pro
 Tyto poznámkové bloky předvedení konceptů v tomto článku:
 * [How-to-use-azureml/Training/Train-within-notebook](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training/train-within-notebook)
 * [How-to-use-azureml/Training/Train-on-local](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training/train-on-local)
-* [how-to-use-azureml/training/logging-api/logging-api.ipynb](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training/logging-api)
+* [How-to-use-azureml/Training/Logging-API/Logging-API.ipynb](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training/logging-api)
 
 [!INCLUDE [aml-clone-in-azure-notebook](../../../includes/aml-clone-for-examples.md)]
 

@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 04/05/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 785cf5159615b4a81740e853f2b513f0e6d74aec
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
+ms.openlocfilehash: 55dff6cf073612e3e5473da3a5f1bf722b2ccdbd
+ms.sourcegitcommit: 5f348bf7d6cf8e074576c73055e17d7036982ddb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59545837"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59608550"
 ---
 # <a name="automate-resources-in-your-datacenter-or-cloud-by-using-hybrid-runbook-worker"></a>Automatizace prostředky v datovém centru nebo v cloudu s využitím procesu Hybrid Runbook Worker
 
@@ -27,6 +27,9 @@ Následující obrázek ukazuje tuto funkci:
 Každá funkce Hybrid Runbook Worker je členem skupiny Hybrid Runbook Worker, který zadáváte při instalaci agenta. Skupina může obsahovat jeden agent, ale můžete nainstalovat více agentů ve skupině pro zajištění vysoké dostupnosti.
 
 Při spuštění sady runbook v procesu Hybrid Runbook Worker, určete skupinu, která se spouští. Každému pracovnímu procesu ve skupině se dotazuje služby Azure Automation, jestli jsou k dispozici žádné úlohy. Pokud úloha je k dispozici, má první pracovního procesu k dosažení ho. Doba zpracování do fronty úloh závisí na Hybrid worker hardwarový profil a zatížení. Nelze zadat konkrétní pracovního procesu. Procesy hybrid Runbook Worker Nesdílejte mnoho omezení, které mají Azure karantény. Nemají stejné omezení místa na disku, paměti nebo síťové sokety. Procesy hybrid Runbook Worker jsou omezené jenom k prostředkům v procesu Hybrid Runbook Worker, samotného. Kromě toho Hybrid Runbook Worker nesdílejí 180 minutu [spravedlivé sdílení](automation-runbook-execution.md#fair-share) časový limit, kterou Azure sandboxy provádět. Další informace o omezení služby Azure karantény a procesy Hybrid Runbook Worker, najdete v úloze [omezení](../azure-subscription-service-limits.md#automation-limits) stránky.
+
+> [!NOTE]
+> Procesy hybrid Runbook Worker nejsou podporované v Azure China.
 
 ## <a name="install-a-hybrid-runbook-worker"></a>Instalace procesu Hybrid Runbook Worker
 

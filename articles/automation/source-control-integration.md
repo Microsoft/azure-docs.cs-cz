@@ -6,15 +6,15 @@ ms.service: automation
 ms.subservice: process-automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 03/21/2019
+ms.date: 04/15/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 3b2df5b24a12f3d2ea5d8a03721c08f8d2a742ad
-ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
+ms.openlocfilehash: 81602f1a30fb753d7a8fcfccace581cd8c7b2f0c
+ms.sourcegitcommit: 5f348bf7d6cf8e074576c73055e17d7036982ddb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58539985"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59607088"
 ---
 # <a name="source-control-integration-in-azure-automation"></a>Integrace správy zdrojového kódu ve službě Azure Automation
 
@@ -47,7 +47,7 @@ Na **souhrnný ovládací prvek zdroje** stránce, potřebné informace a klikn�
 
 |Vlastnost  |Popis  |
 |---------|---------|
-|Název správy zdrojového kódu     | Popisný název pro správu zdrojového kódu        |
+|Název správy zdrojového kódu     | Popisný název pro správu zdrojového kódu. *Tento název může obsahovat jenom písmena a číslice.*        |
 |Typ správy zdrojového kódu     | Typ zdrojového ovládacího prvku zdroje. Dostupné možnosti jsou:</br> GitHubu</br>Úložiště Azure (Git)</br> Úložiště Azure (TFVC)        |
 |Úložiště     | Název úložiště nebo projektu. Prvních 200 úložišť jsou vráceny. K vyhledání úložiště, zadejte název do pole a klikněte na tlačítko **hledání na Githubu**.|
 |Branch     | Větev o přijetí změn zdrojových souborů ze. Cílení na větev není k dispozici pro typ ovládacího prvku zdroje TFVC.          |

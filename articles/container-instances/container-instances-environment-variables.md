@@ -5,18 +5,20 @@ services: container-instances
 author: dlepow
 ms.service: container-instances
 ms.topic: article
-ms.date: 03/21/2019
+ms.date: 04/15/2019
 ms.author: danlep
-ms.openlocfilehash: 2ea85b2b04600708381423e16408ba34b1e27566
-ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
+ms.openlocfilehash: c311eea80c604366196a0725e4f9982bb43f8b5d
+ms.sourcegitcommit: 5f348bf7d6cf8e074576c73055e17d7036982ddb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58904895"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59606884"
 ---
-# <a name="set-environment-variables"></a>Nastavení proměnných prostředí
+# <a name="set-environment-variables-in-container-instances"></a>Nastavení proměnných prostředí ve službě container instances
 
-Nastavení proměnných prostředí ve vaší službě container instances umožňuje poskytovat dynamickou konfiguraci aplikace nebo skript spustit v kontejneru. Chcete-li nastavit proměnné prostředí v kontejneru, zadejte je při vytváření instance kontejneru. Můžete nastavit proměnné prostředí při spuštění kontejneru s [rozhraní příkazového řádku Azure](#azure-cli-example), [prostředí Azure PowerShell](#azure-powershell-example)a [webu Azure portal](#azure-portal-example).
+Nastavení proměnných prostředí ve vaší službě container instances umožňuje poskytovat dynamickou konfiguraci aplikace nebo skript spustit v kontejneru. Podobá se to `--env` argument příkazového řádku k `docker run`. 
+
+Chcete-li nastavit proměnné prostředí v kontejneru, zadejte je při vytváření instance kontejneru. Tento článek ukazuje příklady nastavení proměnných prostředí při spuštění kontejneru s [rozhraní příkazového řádku Azure](#azure-cli-example), [prostředí Azure PowerShell](#azure-powershell-example)a [webu Azure portal](#azure-portal-example). 
 
 Například pokud spustíte Microsoft [aci wordcount] [ aci-wordcount] image kontejneru, můžete upravit své chování tak, že zadáte následující proměnné prostředí:
 
@@ -241,7 +243,7 @@ my-secret-value
 
 ## <a name="next-steps"></a>Další postup
 
-Scénáře založené na úlohách, jako jsou dávkové zpracování velkou datovou sadu s několika kontejnery, může přinést vlastní proměnné prostředí za běhu. Další informace o spuštěné kontejnery založené na úlohách najdete v tématu [spouštění kontejnerizovaných úloh ve službě Azure Container Instances](container-instances-restart-policy.md).
+Scénáře založené na úlohách, jako jsou dávkové zpracování velkou datovou sadu s několika kontejnery, může přinést vlastní proměnné prostředí za běhu. Další informace o spuštěné kontejnery založené na úlohách najdete v tématu [spouštění kontejnerizovaných úloh pomocí zásady restartování](container-instances-restart-policy.md).
 
 <!-- IMAGES -->
 [portal-env-vars-01]: ./media/container-instances-environment-variables/portal-env-vars-01.png

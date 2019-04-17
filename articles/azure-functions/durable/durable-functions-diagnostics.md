@@ -2,7 +2,7 @@
 title: Diagnostika v Durable Functions – Azure
 description: Zjistěte, jak diagnostikovat problémy s rozšíření Durable Functions pro službu Azure Functions.
 services: functions
-author: kashimiz
+author: ggailey777
 manager: jeconnoc
 keywords: ''
 ms.service: azure-functions
@@ -10,12 +10,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: azfuncdf
-ms.openlocfilehash: ac9abaaea7f33627332a9bc7563745b5efdf3d12
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 167f697d4928d88114a30739a1d39a576c87ac84
+ms.sourcegitcommit: 5f348bf7d6cf8e074576c73055e17d7036982ddb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57436236"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59608482"
 ---
 # <a name="diagnostics-in-durable-functions-in-azure"></a>Diagnostika v odolná služba Functions v Azure
 
@@ -323,7 +323,7 @@ Ladění přímo v kódu funkce Azure Functions podporuje a které podporují st
 > [!TIP]
 > Při nastavení zarážek, pokud chcete přerušit pouze na provádění bez opakování, můžete nastavit podmíněné zarážky, že pouze pokud konce `IsReplaying` je `false`.
 
-## <a name="storage"></a>Storage
+## <a name="storage"></a>Úložiště
 
 Ve výchozím nastavení Durable Functions ukládá stav ve službě Azure Storage. To znamená, že si můžete prohlédnout stav vaší Orchestrace pomocí nástrojů, jako [Microsoft Azure Storage Explorer](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer).
 

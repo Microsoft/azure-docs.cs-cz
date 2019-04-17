@@ -9,23 +9,23 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 04/08/2019
+ms.date: 04/15/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: f72e98d8874a5a5dc94deb882affdf66388b13c9
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
+ms.openlocfilehash: 82c438ea246ba18fa7dac2281d68a3ea7ba41db8
+ms.sourcegitcommit: fec96500757e55e7716892ddff9a187f61ae81f7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59548521"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59617712"
 ---
 # <a name="role-based-access-control-rbac-for-media-services-accounts"></a>Řízení přístupu na základě rolí (RBAC) pro účty Media Services
 
-V současné době Azure Media Services není definováno žádné konkrétní vlastních rolí ve službě. Zákazníci můžou využít integrované role **vlastníka** nebo **Přispěvatel** zobrazíte úplný přístup k účtu Azure Media Services. Hlavní rozdíl mezi těmito rolemi je: **vlastníka** můžete řídit, kdo má přístup k prostředku a **Přispěvatel** nelze. Účet čtečky integrované pouze má přístup pro čtení k účtu Media Services. 
+Azure Media Services v současné době nedefinuje žádné vlastní role konkrétní službě. Chcete-li získat úplný přístup k účtu Media Services, zákazníci mohou používat předdefinované role **vlastníka** nebo **Přispěvatel**. Hlavní rozdíl mezi těmito rolemi je: **vlastníka** můžete řídit, kdo má přístup k prostředku a **Přispěvatel** nelze. Předdefinované **čtečky** role je také možné, ale uživatel nebo aplikace bude mít pouze pro čtení přístup k rozhraní API služby Media Services. 
 
 ## <a name="design-principles"></a>Principy návrhu
 
-Jedním z klíčových principů návrhu rozhraní API v3 je vyšší zabezpečení rozhraní API. rozhraní API v3 nevrátí tajné kódy nebo přihlašovací údaje na **získat** nebo **seznamu** operace. Klíče v odpovědi mají vždy hodnotu null, jsou prázdné nebo upravené. Uživatel musí volat metodu samostatnou akci tajné kódy nebo přihlašovací údaje. **Čtečky** role nelze volat operace, takže ji nelze volat operace, jako je ContentKeyPolicies.GetPolicyPropertiesWithSecrets Asset.ListContainerSas StreamingLocator.ListContentKeys,. S samostatné akce umožňuje nastavit oprávnění zabezpečení podrobnější RBAC v vlastní roli, v případě potřeby.
+Jedním z klíčových principů návrhu rozhraní API v3 je vyšší zabezpečení rozhraní API. rozhraní API v3 nevrátí tajné kódy nebo přihlašovací údaje na **získat** nebo **seznamu** operace. Klíče v odpovědi mají vždy hodnotu null, jsou prázdné nebo upravené. Uživatel musí volat metodu samostatnou akci tajné kódy nebo přihlašovací údaje. **Čtečky** role nejde volat operace, jako je Asset.ListContainerSas StreamingLocator.ListContentKeys, ContentKeyPolicies.GetPolicyPropertiesWithSecrets. S samostatné akce umožňuje nastavit oprávnění zabezpečení podrobnější RBAC v vlastní roli, v případě potřeby.
 
 Seznam operací služby Media Services podporuje, provést:
 

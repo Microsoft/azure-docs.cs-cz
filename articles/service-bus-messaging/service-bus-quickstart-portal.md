@@ -5,17 +5,16 @@ services: service-bus-messaging
 author: spelluru
 manager: timlt
 ms.service: service-bus-messaging
-ms.devlang: dotnet
 ms.topic: quickstart
 ms.custom: mvc
 ms.date: 04/10/2019
 ms.author: spelluru
-ms.openlocfilehash: 700b58723073e425c0587665ccd884932837dcbf
-ms.sourcegitcommit: 41015688dc94593fd9662a7f0ba0e72f044915d6
+ms.openlocfilehash: 05c84f91c960bbcf7383cd2164289c8398f8dc91
+ms.sourcegitcommit: 5f348bf7d6cf8e074576c73055e17d7036982ddb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/11/2019
-ms.locfileid: "59501072"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59607751"
 ---
 # <a name="quickstart-use-azure-portal-to-create-a-service-bus-queue"></a>Rychlý start: Vytvořit frontu služby Service Bus pomocí webu Azure portal
 Tento rychlý start popisuje, jak odesílat zprávy do fronty Service Bus a přijímat je. Používá se k tomu web [Azure Portal][Azure portal], kde se vytvoří obor názvů pro odesílání zpráv a v tomto oboru názvů fronta. Dále je třeba získat v oboru názvů přihlašovací údaje pro autorizaci. Postup pak ukazuje, jak do této fronty odesílat zprávy a přijímat je z ní pomocí [knihovny .NET Standard](https://www.nuget.org/packages/Microsoft.Azure.ServiceBus).
@@ -72,7 +71,7 @@ Tato část obsahuje další podrobnosti o chování ukázkového kódu.
 
 ### <a name="get-connection-string-and-queue"></a>Získání připojovacího řetězce a fronty
 
-Název připojovacího řetězce a fronty jsou předány `Main()` metody jako argumenty příkazového řádku. `Main()` deklaruje dvě proměnné řetězce k uložení těchto hodnot:
+Název připojovacího řetězce a fronty jsou předány `Main()` metody jako argumenty příkazového řádku. Metoda `Main()` deklaruje dvě proměnné řetězce, do kterých se tyto údaje načtou:
 
 ```csharp
 static void Main(string[] args)
@@ -207,7 +206,7 @@ V tomto článku jste vytvořil obor názvů služby Service Bus a další prost
 > [Odesílání a příjem zpráv](service-bus-dotnet-get-started-with-queues.md)
 
 
-[Bezplatný účet]: https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio
+[bezplatný účet]: https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio
 [fully qualified domain name]: https://wikipedia.org/wiki/Fully_qualified_domain_name
 [Azure portal]: https://portal.azure.com/
 

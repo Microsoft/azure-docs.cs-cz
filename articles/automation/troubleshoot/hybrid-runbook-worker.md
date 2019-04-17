@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 02/12/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: c33b9c1b6cc810c3ef2f8d2637d7ac3523e0d8f9
-ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
+ms.openlocfilehash: ea6599152d3cbf1f50132f5b207c19148401f798
+ms.sourcegitcommit: 5f348bf7d6cf8e074576c73055e17d7036982ddb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58803710"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59608635"
 ---
 # <a name="troubleshoot-hybrid-runbook-workers"></a>Řešení potíží s procesy Hybrid Runbook Worker
 
@@ -195,7 +195,7 @@ Start-Service -Name HealthService
 Při pokusu o přidání funkce Hybrid Runbook Worker pomocí se zobrazí následující zpráva `Add-HybridRunbookWorker` rutiny.
 
 ```error
-Machine is already registered to a different account
+Machine is already registered
 ```
 
 #### <a name="cause"></a>Příčina

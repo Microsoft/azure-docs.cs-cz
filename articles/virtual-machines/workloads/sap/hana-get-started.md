@@ -16,12 +16,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 09/06/2018
 ms.author: hermannd
-ms.openlocfilehash: 635f519239ad00df8672472bcb6c54e6b8a59927
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 7d46e2047debe5546c6d36f245ae076cec6f73a3
+ms.sourcegitcommit: fec96500757e55e7716892ddff9a187f61ae81f7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58001699"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59618120"
 ---
 # <a name="quickstart-manual-installation-of-single-instance-sap-hana-on-azure-vms"></a>Rychlý start: Ruční instalace jedné instance SAP HANA na virtuálních počítačích Azure
 ## <a name="introduction"></a>Úvod
@@ -269,7 +269,7 @@ Před zahájením instalace SAP, ujistěte se, že obsahují názvy hostitele a 
 
 ### <a name="the-etcfstab-file"></a>Soubor/etc/fstab
 
-Je vhodné přidat **nofail** parametr souboru fstab. Tímto způsobem, pokud dojde k nějaké chybě s disky, virtuální počítač není zablokování v procesu spouštění. Ale nezapomeňte, že nemusí být k dispozici další místo na disku a procesů může zaplnit kořenové systému souborů. Pokud chybí /hana, nespustí se SAP HANA.
+Je vhodné přidat **nofail** parametr souboru fstab. Tímto způsobem, pokud dojde k nějaké chybě s disky, virtuální počítač není přestane reagovat v procesu spouštění. Ale nezapomeňte, že nemusí být k dispozici další místo na disku a procesů může zaplnit kořenové systému souborů. Pokud chybí /hana, nespustí se SAP HANA.
 
 ![Přidání parametru nofail do souboru fstab](./media/hana-get-started/image000c.jpg)
 

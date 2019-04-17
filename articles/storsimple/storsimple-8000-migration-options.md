@@ -11,19 +11,19 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 04/10/2019
+ms.date: 04/15/2019
 ms.author: alkohli
-ms.openlocfilehash: e8a5ae4a4ee9cfd5c39e8e399784ec65f2ee2660
-ms.sourcegitcommit: 41015688dc94593fd9662a7f0ba0e72f044915d6
+ms.openlocfilehash: 78508c1227c0b278041b86c3fdd698c6ad27c132
+ms.sourcegitcommit: 5f348bf7d6cf8e074576c73055e17d7036982ddb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/11/2019
-ms.locfileid: "59500902"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59608181"
 ---
 # <a name="options-to-migrate-data-from-storsimple-5000-7000-series"></a>Možnosti, jak migrovat data ze StorSimple řad 5000 – 7000 
 
 > [!IMPORTANT]
-> Do 31. července 2019 řady StorSimple 5000/7000 skončí jeho stavu podpory (SESTAVENÁ). Doporučujeme vám, že zákazníci řady StorSimple 5000/7000 migrace na jednu z alternativ popsané v dokumentu.
+> 9. července 2019 řady StorSimple 5000/7000 skončí jeho stavu podpory (SESTAVENÁ). Doporučujeme vám, že zákazníci řady StorSimple 5000/7000 migrace na jednu z alternativ popsané v dokumentu.
 
 StorSimple řad 5000 – 7000 dosahuje [konec podpory](https://support.microsoft.com/lifecycle/search?alpha=StorSimple%205000%2F7000%20Series) v červenci 2019. Zákazníci, kteří používají StorSimple řad 5000 – 7000 máte možnost upgradu na jiné službě Azure první strany hybridní služby. Tento článek popisuje dostupné k migraci dat Azure hybridní možnosti. 
 

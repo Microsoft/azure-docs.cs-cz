@@ -9,12 +9,12 @@ ms.date: 09/11/2018
 ms.topic: conceptual
 description: Rychlý vývoj na platformě Kubernetes s využitím kontejnerů a mikroslužeb v Azure
 keywords: 'Docker, Kubernetes, Azure, AKS, službě Azure Kubernetes, kontejnery, Helm, služby sítě, směrování sítě služby, kubectl, k8s '
-ms.openlocfilehash: 16b33203099765633d6bc5992fdc266aa1f28a26
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
+ms.openlocfilehash: 4617e878f2af446608ede4e0aed644848564a074
+ms.sourcegitcommit: 5f348bf7d6cf8e074576c73055e17d7036982ddb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59548776"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59609071"
 ---
 # <a name="troubleshooting-guide"></a>Průvodce odstraňováním potíží
 
@@ -357,3 +357,25 @@ azds controller create --name <cluster name> -g <resource group name> -tn <clust
 ```
 
 Po přeinstalaci řadiče znovu nasaďte pody.
+
+## <a name="incorrect-rbac-permissions-for-calling-dev-spaces-controller-and-apis"></a>Nesprávná oprávnění RBAC pro volání Dev prostory kontroleru a rozhraní API
+
+### <a name="reason"></a>Důvod
+Uživatele, kteří používají Azure Dev prostory kontroleru musí mít přístup ke čtení správce *kubeconfig* v clusteru AKS. Například je k dispozici v toto oprávnění [předdefinovaná Azure Kubernetes Service clusteru správce Role](../aks/control-kubeconfig-access.md#available-cluster-roles-permissions). Musí také mít uživatele, kteří používají Azure Dev prostory kontroleru *Přispěvatel* nebo *vlastníka* role RBAC pro kontroler.
+
+### <a name="try"></a>Vyzkoušení
+Další podrobnosti o aktualizaci oprávnění uživatele pro AKS cluster jsou k dispozici [tady](../aks/control-kubeconfig-access.md#assign-role-permissions-to-a-user).
+
+Aktualizace uživatelské role RBAC pro kontroler:
+
+1. Přihlaste se k webu Azure Portal na adrese https://portal.azure.com.
+1. Přejděte do skupiny prostředků, který obsahuje kontroler, který je obvykle stejný jako AKS cluster.
+1. Povolit *zobrazit skryté typy* zaškrtávací políčko.
+1. Klikněte na kontroleru.
+1. Otevřít *řízení přístupu (IAM)* podokně.
+1. Klikněte na *přiřazení rolí* kartu.
+1. Klikněte na tlačítko *přidat* pak *přidat přiřazení role*.
+    * Pro *Role* vyberte buď *Přispěvatel* nebo *vlastníka*.
+    * Pro *přiřadit přístup k* vyberte *uživatele, skupinu nebo instanční objekt služby Azure AD*.
+    * Pro *vyberte* vyhledejte uživatele, kterému chcete udělit oprávnění.
+1. Klikněte na *Uložit*.

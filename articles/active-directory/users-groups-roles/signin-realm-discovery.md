@@ -8,17 +8,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 04/10/2019
+ms.date: 04/15/2019
 ms.author: curtand
 ms.reviewer: kexia
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d82c1909a28de694925a12e9b801361cad1f36d2
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.openlocfilehash: 6b6846c5f907c41db16e99883be7041a68357586
+ms.sourcegitcommit: 5f348bf7d6cf8e074576c73055e17d7036982ddb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/11/2019
-ms.locfileid: "59494693"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59608771"
 ---
 # <a name="home-realm-discovery-for-azure-active-directory-sign-in-pages"></a>Zjišťování domovské sféry pro Azure Active Directory přihlašovací stránky
 
@@ -49,7 +49,7 @@ Další výhodou této práce je vylepšené chybové zprávy. Tady je několik 
     ![heslo je chybně pomocí vhodného uživatelského jména](./media/signin-realm-discovery/incorrect-password.png)
   
 > [!IMPORTANT]
-> Tato funkce může mít vliv na federované domény spoléhat na úroveň starého domény vyhledávání domovské sféry přinutit federace. Když se přidá Podpora federovaných domén aktualizace, naleznete v tématu [zjišťování domovské sféry během přihlašování pro služby Microsoft 365](https://blogs.azure.net/updates/Admin/Blogs/29/Posts/3170). Některé organizace mají do té doby trénuje jejich zaměstnanci mohli přihlásit pomocí uživatelského jména, která neexistuje v Azure Active Directory, ale obsahuje správného názvu domény, protože názvy domén nyní směruje uživatele na koncový bod domény organizace. Nové chování přihlášení to neumožňuje. Uživatel je upozorněn opravte uživatelské jméno a nejsou povoleny se přihlásit pomocí uživatelského jména, která neexistuje v Azure Active Directory.
+> Tato funkce může mít vliv na federované domény spoléhat na úroveň starého domény vyhledávání domovské sféry přinutit federace. Když se přidá Podpora federovaných domén aktualizace, naleznete v tématu [zjišťování domovské sféry během přihlašování pro služby Microsoft 365](https://azure.microsoft.com/en-us/updates/signin-hrd/). Některé organizace mají do té doby trénuje jejich zaměstnanci mohli přihlásit pomocí uživatelského jména, která neexistuje v Azure Active Directory, ale obsahuje správného názvu domény, protože názvy domén nyní směruje uživatele na koncový bod domény organizace. Nové chování přihlášení to neumožňuje. Uživatel je upozorněn opravte uživatelské jméno a nejsou povoleny se přihlásit pomocí uživatelského jména, která neexistuje v Azure Active Directory.
 >
 > Pokud vy nebo vaše organizace postupy, které jsou závislé na staré chování, je důležité pro správce organizace aktualizovat zaměstnance přihlašování a ověřování dokumentaci a školení uživatelům používat jejich uživatelské jméno Azure Active Directory pro přihlášení.
   

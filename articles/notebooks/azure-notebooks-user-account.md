@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/04/2018
+ms.date: 04/15/2019
 ms.author: kraigb
-ms.openlocfilehash: b8e5c5b14ecdbc63daf200b7d11e755822cd063b
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: 311f4d612c9deab23e7537b0c53ff3932c312cd4
+ms.sourcegitcommit: 5f348bf7d6cf8e074576c73055e17d7036982ddb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59257004"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59608006"
 ---
 # <a name="your-user-account-for-azure-notebooks"></a>Váš uživatelský účet pro poznámkové bloky Azure
 
@@ -41,6 +41,9 @@ Veškerou práci, kterou provedete v poznámkových bloků Azure je přidružen�
 Pokud si nejste jistí, vyberte **vytvořit jeden** příkazu v příkazovém řádku účtu. Můžete vytvořit nový účet Microsoft pomocí libovolné e-mailovou adresu z libovolného poskytovatele.
 
 ![Příkaz pro vytvoření nového účtu Microsoft](media/accounts/create-new-microsoft-account.png)
+
+> [!Note]
+> Pokud se pokusíte vytvořit nový účet s e-mailovou adresu, která už má účet s ním spojená, může se zobrazit zpráva "nelze zde zaregistrovat pomocí pracovního nebo školního e-mailovou adresu. Použijte osobní e-mail, třeba z Gmailu nebo Yahoo!, nebo zřiďte nový Outlookový e-mail." V takovém případě zkuste se přihlásit pracovní e-mailovou adresu bez vytvoření nového účtu.
 
 Pro dětské účty blokovaný přístup k poznámkových bloků Azure ve výchozím nastavení. Přihlašování pomocí účtu podřízený se zobrazí chyba je uvedeno níže:
 

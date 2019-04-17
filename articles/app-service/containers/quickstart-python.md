@@ -15,22 +15,18 @@ ms.topic: quickstart
 ms.date: 03/27/2019
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 8621ebf474591c253dbd9ca24b36a36287ca8cf7
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
+ms.openlocfilehash: 04f08965d161e35a9ae4423ad5d3cf80cb407b8a
+ms.sourcegitcommit: 5f348bf7d6cf8e074576c73055e17d7036982ddb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59547704"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59607768"
 ---
 # <a name="create-a-python-app-in-azure-app-service-on-linux-preview"></a>Vytvoření aplikace v Pythonu v Azure App Service v Linuxu (Preview)
 
-[App Service v Linuxu](app-service-linux-intro.md) je vysoce škálovatelná služba s automatickými opravami pro hostování webů s využitím operačního systému Linux. Tento rychlý start ukazuje, jak nasadit aplikaci v Pythonu na integrovanou image Pythonu (verze Preview) ve službě App Service v Linuxu pomocí [Azure CLI](/cli/azure/install-azure-cli).
-
-Postup v tomto článku můžete použít v případě počítačů se systémem Mac, Windows nebo Linux.
+V tomto rychlém startu nasadíte jednoduchou aplikaci v Pythonu do [App Service v Linuxu](app-service-linux-intro.md), která poskytuje je vysoce škálovatelnou a automatickými opravami pro hostování webů služby. Použití rozhraní příkazového řádku Azure ( [rozhraní příkazového řádku Azure](/cli/azure/install-azure-cli)) prostřednictvím interaktivní, založené na prohlížeči Azure Cloud Shell, takže můžete postupovat podle kroky používají počítač Mac, Linux nebo Windows.
 
 ![Ukázková aplikace spuštěná ve službě Azure](media/quickstart-python/hello-world-in-browser.png)
-
-[!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -38,6 +34,7 @@ K provedení kroků v tomto kurzu Rychlý start je potřeba:
 
 * <a href="https://www.python.org/downloads/" target="_blank">Nainstalovat Python 3.7</a>
 * <a href="https://git-scm.com/" target="_blank">Nainstalovat Git</a>.
+* Předplatné Azure. Pokud je nemáte, vytvořte [bezplatný účet](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) předtím, než začnete.
 
 ## <a name="download-the-sample-locally"></a>Místní stažení ukázky
 
@@ -174,10 +171,10 @@ return "Hello Azure!"
 
 Uložte změny a zavřete editor. K uložení použijte příkaz `^S` a k zavření příkaz `^Q`.
 
-Teď můžete aplikaci opětovně nasadit. Náhradní `<app-name>` s vaší aplikací.
+Opětovné nasazení aplikace pomocí [ `az webapp up` ](/cli/azure/ext/webapp/webapp?view=azure-cli-latest.md#ext-webapp-az-webapp-up) příkazu. Nahraďte názvem vaší aplikace pro `<app-name>`a zadejte umístění pro `<location-name>` (pomocí jedné z hodnot z uvedené [ `az account list-locations` ](/cli/azure/appservice?view=azure-cli-latest.md#az-appservice-list-locations) příkaz).
 
 ```bash
-az webapp up -n <app-name>
+az webapp up -n <app-name> -l <location-name>
 ```
 
 Po dokončení nasazení se vraťte do okna prohlížeče, které se otevřelo v kroku **Přechod do aplikace**, a aktualizujte zobrazení stránky.

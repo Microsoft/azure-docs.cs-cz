@@ -11,14 +11,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 3/27/2019
+ms.date: 4/15/2019
 ms.author: barclayn
-ms.openlocfilehash: 19e2fb7736457884d29a142e997338e3c7ef72e7
-ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
+ms.openlocfilehash: d432dc25a1995a2f0348c7626a051f46ffbf418b
+ms.sourcegitcommit: 5f348bf7d6cf8e074576c73055e17d7036982ddb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58540818"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59608857"
 ---
 # <a name="frequently-asked-questions-faq"></a>Nejčastější dotazy
 
@@ -155,6 +155,10 @@ Ano. Každé zařízení HSM je plně vyhrazená pro jednu jednoho zákazníka a
 
 Microsoft nemá žádné administrativní nebo kryptografických kontrolu nad modul hardwarového zabezpečení. Microsoft má monitorování úrovně přístupu přes sériový port připojení k načtení základní telemetrii, třeba teplota a součást stavu. To umožňuje společnosti Microsoft poskytují proaktivní oznámení o problémy se stavem. V případě potřeby zákazníka můžete zakázat tento účet.
 
+### <a name="q-what-is-the-tenantadmin-account-microsoft-uses-i-am-used-to-the-admin-user-being-admin-on-safenet-hsms"></a>Otázka: Co je "tenantadmin" účet Microsoft používá, jsem zvyklý / zvyklá uživatele s rolí správce se "admin" v modulech hardwarového zabezpečení SafeNet?
+
+Zařízení HSM se dodává s výchozí uživatel s jeho obvykle výchozí heslo správce. Microsoft nechtěli mít výchozí hesla v použití jakéhokoli zařízení je ve fondu čekání na zřízení zákazníky. To by splňovat naše striktní bezpečnostní požadavky. Z tohoto důvodu nastavíme na čas zřízení silné heslo, které se zahodí. Navíc na čas zřízení vytvoříme nového uživatele v roli správce s názvem "tenantadmin". Tento uživatel má výchozí heslo a zákazníci měnit to jako první akci při prvním protokolování do nově zřízeného zařízení. Tento proces zajišťuje vysoký stupeň zabezpečení a udržuje náš slib jediný administrativní řízení pro naše zákazníky. Je třeba poznamenat, že uživatel "tenantadmin" je možné resetovat heslo správce, pokud zákazník upřednostňuje tento účet používat. 
+
 ### <a name="q-can-microsoft-or-anyone-at-microsoft-access-keys-in-my-dedicated-hsm"></a>Otázka: Může společnost Microsoft ani nikomu v Microsoft přístupových klíčů v mé vyhrazené HSM?
 
 Ne. Microsoft nemá přístup k klíčů uložených v zákazníka přidělené vyhrazené modulu hardwarového zabezpečení.
@@ -181,7 +185,7 @@ Ano. Odeslání protokolů z modulu hardwarového zabezpečení zařízení na s
 
 ## <a name="high-availability"></a>Vysoká dostupnost
 
-### <a name="q-is-it-possible-to-configure-high-availability-in-the-same-region-or-across-multiple-regions"></a>Otázka: Je možné ke konfiguraci vysoké dostupnosti ve stejné oblasti nebo v několika oblastech?
+### <a name="q-is-it-possible-to-configure-high-availability-in-the-same-region-or-across-multiple-regions"></a>Otázka: Je možné konfigurace vysoké dostupnosti ve stejné oblasti nebo v několika oblastech?
 
 Ano. Nastavení a konfigurace vysoké dostupnosti se provádějí v poskytované Gemalto HSM klientský software. Moduly hardwarového zabezpečení ze stejné virtuální síti nebo jiných virtuálních sítí ve stejné oblasti nebo napříč oblastmi nebo v místním prostředí moduly HSM připojené k virtuální síti pomocí site-to-site nebo VPN typu point-to-point lze přidat do stejné konfigurace vysoké dostupnosti. Je třeba poznamenat, že to synchronizuje pouze materiál klíče a nejsou specifické položky, jako jsou role.
 
@@ -201,7 +205,7 @@ Ne.
 
 ### <a name="q-what-is-the-sla-for-dedicated-hsm-service"></a>Otázka: Co je smlouva SLA pro službu vyhrazené HSM?
 
-Neexistuje žádná konkrétní dobu provozu guarentee poskytnutým službě vyhrazené modulu hardwarového zabezpečení. Microsoft zajistí sítě úroveň přístupu k zařízení, a proto použít standardní síťové smlouvy Azure SLA.
+Není zaručeno konkrétní dobu provozu poskytnutým službě vyhrazené modulu hardwarového zabezpečení. Microsoft zajistí sítě úroveň přístupu k zařízení, a proto použít standardní síťové smlouvy Azure SLA.
 
 ### <a name="q-how-are-the-hsms-used-in-azure-dedicated-hsm-protected"></a>Otázka: Jak se používají moduly hardwarového zabezpečení v Azure vyhrazená chráněné HSM?
 
@@ -217,7 +221,7 @@ Důrazně doporučujeme použít zálohování zařízení v místním HSM prov�
 
 ### <a name="q-how-do-i-get-support-for-dedicated-hsm"></a>Otázka: Jak získám podporu pro vyhrazené HSM?
 
-Podporu poskytuje Microsoft a Gemalto.  Pokud máte problém s hardwarem nebo přístup k síti, žádost o podporu u Microsoftu a pokud máte potíže s vývojem pro konfiguraci, softwaru a aplikace HSM prosím rasie žádost o podporu s Gemalto. Pokud máte potíže neurčeném, vyvolat withg žádost o podporu společnosti Microsoft a pak může být zapojení Gemalto jako povinné. 
+Podporu poskytuje Microsoft a Gemalto.  Pokud máte potíže s hardwarem nebo síťovými přístup, vyvolat žádost o podporu s Microsoftem a pokud máte potíže s konfigurací modulu hardwarového zabezpečení, softwaru a vývoj aplikací, vyvolejte žádost o podporu s Gemalto. Pokud máte potíže neurčeném, žádost o podporu u Microsoftu a pak může být zapojení Gemalto jako povinné. 
 
 ### <a name="q-how-do-i-get-the-client-software-documentation-and-access-to-integration-guidance-for-the-safenet-luna-7-hsm"></a>Otázka: Jak získám klienta, software, dokumentaci a přístup k doprovodným materiálům integrace pro SafeNet Luna 7 HSM?
 

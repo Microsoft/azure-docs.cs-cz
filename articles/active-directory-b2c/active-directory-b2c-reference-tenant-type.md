@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 04/10/2017
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 67f87729dbfb792b88f28a772f15e233f0fa60dc
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 928c6316ea964472faadc82213c4c1ff81c3e038
+ms.sourcegitcommit: 5f348bf7d6cf8e074576c73055e17d7036982ddb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57452109"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59608236"
 ---
 # <a name="azure-active-directory-b2c-region-availability--data-residency"></a>Azure Active Directory B2C: Rezidence dat a dostupnost oblastí
 Dostupnost v oblastech a rezidence dat jsou dvě velmi odlišné koncepty, které se vztahují na Azure AD B2C odlišně od zbytku Azure. Tento článek vysvětluje rozdíly mezi tyto dva pojmy a porovnat, jak se vztahují na Azure a Azure AD B2C.
@@ -45,7 +45,7 @@ Data se nachází ve Spojených státech amerických pro následujících zemíc
 
 Data se nachází v Evropě pro následujících zemích nebo oblastech:
 
-> Alžírsko, Rakousko, Ázerbájdžán, Bahrajn, Bělorusko, Belgie, Bulharsko, Chorvatsko, Kypr, Česká republika, Dánsko, Egypt, Estonsko, Finsko, Francie, Německo, Řecko, Maďarsko, Island, Irsko, Izrael, Itálie, Jordánsko, Kazachstán, Keňa, Kuvajt, Lotyšska, Libanon Lichtenštejnsko, Lituania, Lucembursko, Makedonie – bývalá republika Jugoslávie, Malta, Černá Hora, Maroko, Nizozemsko, Nigérie, Norsko, Omán, Pákistán, Polsko, Portugalsko, Katar, Rumunsko, Rusko, Saúdská Arábie, Srbsko, Slovensko, Slovinsko, Jižní Afrika, Španělsko, Švédsko, Švýcarsko, Tunisko, Turecko, Ukrajina, Spojené arabské emiráty a Spojeného království.
+> Alžírsko, Rakousko, Ázerbájdžán, Bahrajn, Bělorusko, Belgie, Bulharsko, Chorvatsko, Kypr, Česká republika, Dánsko, Egypt, Estonsko, Finsko, Francie, Německo, Řecko, Maďarsko, Island, Irsko, Izrael, Itálie, Jordánsko, Kazachstán, Keňa, Kuvajt, Lotyšska, Libanon Lichtenštejnsko, Litva, Lucembursko, severní Makedonie, Malta, Černá Hora, Maroko, Nizozemsko, Nigérie, Norsko, Omán, Pákistán, Polsko, Portugalsko, Katar, Rumunsko, Rusko, Saúdská Arábie, Srbsko, Slovensko, Slovinsko, Jižní Afrika, Španělsko, Švédsko, Švýcarsko, Tunisko, Turecko, Ukrajina, Spojené arabské emiráty a Spojeného království.
 
 Zbývajících zemích nebo oblastech se v současnosti se přidávají do seznamu.  Prozatím se můžete stále použít Azure AD B2C výběrem některé z výše uvedených zemích nebo oblastech.
 
