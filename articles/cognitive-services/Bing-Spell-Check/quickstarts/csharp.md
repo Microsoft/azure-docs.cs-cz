@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-spell-check
 ms.topic: quickstart
-ms.date: 02/20/2019
+ms.date: 04/11/2019
 ms.author: aahi
-ms.openlocfilehash: b439b702fb5ae4990c8c31838fe9677cb882d2a2
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 7a17c695482f2e9c8158c437c9c40c0abcb07e67
+ms.sourcegitcommit: fec96500757e55e7716892ddff9a187f61ae81f7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57546307"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59616284"
 ---
 # <a name="quickstart-check-spelling-with-the-bing-spell-check-rest-api-and-c"></a>Rychlý start: Kontrola pravopisu pomocí rozhraní API Bingu pro kontrolu pravopisu zkontrolujte REST aC#
 
@@ -24,14 +24,17 @@ V tomto rychlém startu můžete provést první volání do rozhraní API Bingu
 ## <a name="prerequisites"></a>Požadavky
 
 * Libovolná edice sady [Visual Studio 2017](https://www.visualstudio.com/downloads/).
-* Rozhraní [Json.NET](https://www.newtonsoft.com/json), k dispozici jako balíček NuGet.
+* Chcete-li nainstalovat `Newtonsoft.Json` jako balíček NuGet v sadě Visual studio:
+    1. V Průzkumníku řešení klikněte pravým tlačítkem na soubor řešení.
+    1. Vyberte **spravovat balíčky NuGet pro řešení**.
+    1. Vyhledejte `Newtonsoft.Json` a instalaci balíčku.
 * Pokud používáte Linux nebo MacOS, bude možné spustit tuto aplikaci pomocí [Mono](https://www.mono-project.com/).
 
 [!INCLUDE [cognitive-services-bing-spell-check-signup-requirements](../../../../includes/cognitive-services-bing-spell-check-signup-requirements.md)]
 
 ## <a name="create-and-initialize-a-project"></a>Vytvoření a inicializace projektu
 
-1. Vytvořte nové konzolové řešení s názvem `SpellCheckSample` v sadě Visual Studio. Pak přidejte následující obory názvů do souboru hlavního kódu.
+1. Vytvoření nového řešení konzoly s názvem `SpellCheckSample` v sadě Visual Studio. Pak přidejte následující obory názvů do souboru hlavního kódu.
     
     ```csharp
     using System;
@@ -52,14 +55,14 @@ V tomto rychlém startu můžete provést první volání do rozhraní API Bingu
         {
             static string host = "https://api.cognitive.microsoft.com";
             static string path = "/bing/v7.0/spellcheck?";
-            static string key = "enter your key here";
+            static string key = "<ENTER-KEY-HERE>";
             //text to be spell-checked
             static string text = "Hollo, wrld!";
         }
     }
     ```
 
-3. Vytvořte proměnnou pro parametry hledání. připojit kód trhu do `mkt=` a kontrolu pravopisu režimu `&mode=`.
+3. Vytvořte proměnnou pro parametry hledání. Připojit na trhu kódu po `mkt=`. Kód na trhu je země, které provedete žádost z. Navíc vaše režimu kontroly pravopisu po připojení `&mode=`. Režim je buď `proof` (zachytí většina pravopisné nebo gramatické chyby) nebo `spell` (zachycuje většinu pravopisu, ale ne tolik gramatické chyby).
     
     ```csharp
     static string params_ = "mkt=en-US&mode=proof";
@@ -76,10 +79,10 @@ V tomto rychlém startu můžete provést první volání do rozhraní API Bingu
         client.DefaultRequestHeaders.Add("Ocp-Apim-Subscription-Key", key);
 
         HttpResponseMessage response = new HttpResponseMessage();
-        //...
+        // add the rest of the code snippets here (except for main())...
     }
 
-2. Create the URI for your request by appending your host, path, and parameters. 
+2. Create the URI for your request by appending your host, path, and parameters.
     
     ```csharp
     string uri = host + path + params_;
@@ -181,7 +184,7 @@ static void Main(string[] args)
 ## <a name="next-steps"></a>Další postup
 
 > [!div class="nextstepaction"]
-> [Vytvoření webové jednostránkové – aplikace](../tutorials/spellcheck.md)
+> [Vytvoření jednostránkové webové aplikace](../tutorials/spellcheck.md)
 
 - [Co je API kontrola pravopisu Bingu?](../overview.md)
 - [Referenční informace k rozhraní API pro kontrolu pravopisu Bingu v7](https://docs.microsoft.com/rest/api/cognitiveservices/bing-spell-check-api-v7-reference)

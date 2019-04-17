@@ -254,6 +254,8 @@ items:
       - name: Optimalizace dotazů Apache Hive
         href: ../hdinsight-hadoop-optimize-hive-query.md
         maintainContext: true
+      - name: Změny přístupu ke konfiguraci clusteru
+        href: ../hdinsight-migrate-granular-access-cluster-configurations.md
     maintainContext: true
 - name: Připravenost pro podnikové zpracování
   items:
@@ -307,12 +309,13 @@ items:
   - name: Příručka pro vývojáře v R
     href: ../../machine-learning/r-developers-guide.md
   - name: Poznámky k verzi
-    href: ../hdinsight-release-notes.md
     items:
+    - name: Poznámky k aktuální verzi
+      href: ../hdinsight-release-notes.md
+      maintainContext: true
     - name: Archivované poznámky k verzi
       href: ../hdinsight-release-notes-archive.md
       maintainContext: true
-    maintainContext: true
   - name: Plány Azure do budoucna
     href: https://azure.microsoft.com/roadmap/?category=intelligence-analytics
   - name: Získejte pomoc na fóru
@@ -326,9 +329,9 @@ items:
   - name: Nástroje Windows pro HDInsight
     href: ../hdinsight-hadoop-windows-tools.md
     maintainContext: true
-ms.openlocfilehash: cfeff50427913e7df70bd3a2af3ea83519d27cfe
-ms.sourcegitcommit: 48a41b4b0bb89a8579fc35aa805cea22e2b9922c
+ms.openlocfilehash: 918489a8dbac91078af6114ae4942d8411460a21
+ms.sourcegitcommit: fec96500757e55e7716892ddff9a187f61ae81f7
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/15/2019
-ms.locfileid: "59579083"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59615740"

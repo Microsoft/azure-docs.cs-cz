@@ -8,12 +8,12 @@ author: eamonoreilly
 ms.author: eamono
 ms.topic: conceptual
 ms.date: 10/30/2018
-ms.openlocfilehash: 7d7ebc7493ff8e272e35abafeedd8fbc52b986ab
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: bee414ada61e2cfcf7609b02ef1da7323a0fe0e3
+ms.sourcegitcommit: 5f348bf7d6cf8e074576c73055e17d7036982ddb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58002151"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59606918"
 ---
 # <a name="create-an-azure-automation-watcher-tasks-to-track-file-changes-on-a-local-machine"></a>Vytvoření Azure Automation watcher úkolů ke sledování změn souborů na místním počítači
 
@@ -36,6 +36,9 @@ K dokončení tohoto kurzu potřebujete následující:
 * Předplatné Azure. Pokud ještě žádné nemáte, můžete si [aktivovat výhody pro předplatitele MSDN](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/) nebo si zaregistrovat [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 * [Účet Automation](automation-offering-get-started.md) pro uložení sledovací proces, runbooky akcí a úlohu sledovacího procesu.
 * A [procesu hybrid runbook worker](automation-hybrid-runbook-worker.md) kde běží úlohy sledovacího procesu.
+
+> [!NOTE]
+> Úlohy sledovacího procesu služby nejsou podporovány v Azure China.
 
 ## <a name="import-a-watcher-runbook"></a>Importovat runbook sledovacích procesů
 

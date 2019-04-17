@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/05/2019
 ms.author: jeedes
-ms.openlocfilehash: 5ccf978ab33226dc029d534a343a87a796ab69e8
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: 563668780c42ca23a1904757f886581f3ad0c5e8
+ms.sourcegitcommit: fec96500757e55e7716892ddff9a187f61ae81f7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59278101"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59617299"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-tableau-online"></a>Kurz: Integrace Azure Active Directory s Tableau Online
 
@@ -144,7 +144,7 @@ Ke konfiguraci Azure AD jednotné přihlašování s Tableau Online, postupujte 
   
     a. Na webu Azure Portal, přejděte **Tableau Online** stránky integrace aplikace.
 
-    b. V ** atributy uživatele a deklarace identity *** oddíl, klikněte na ikonu pro úpravy.
+    b. V **atributy uživatele a deklarace identity** části, klikněte na ikonu pro úpravy.
 
    ![Konfigurace jednotného přihlašování](./media/tableauonline-tutorial/attributesection.png)
 
@@ -189,7 +189,7 @@ Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal
     a. V **název** zadat **BrittaSimon**.
   
     b. V **uživatelské jméno** typ pole **brittasimon@yourcompanydomain.extension**  
-    Například BrittaSimon@contoso.com.
+    Například BrittaSimon\@contoso.com
 
     c. Vyberte **zobrazit heslo** zaškrtněte políčko a zapište si hodnotu, která se zobrazí v poli heslo.
 
@@ -245,6 +245,6 @@ Když kliknete na dlaždici Tableau Online na přístupovém panelu, můžete by
 
 - [Seznam kurzů o integraci aplikací SaaS pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

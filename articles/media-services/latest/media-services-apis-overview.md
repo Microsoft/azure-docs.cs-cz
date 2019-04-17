@@ -9,15 +9,15 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 04/11/2019
+ms.date: 04/15/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: 9d1fa5786dcde70d42363dbb9af7221ca5383e64
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
+ms.openlocfilehash: ed10354047060825b4368e02160d4655e33bc8f6
+ms.sourcegitcommit: fec96500757e55e7716892ddff9a187f61ae81f7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59546394"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59617392"
 ---
 # <a name="developing-with-media-services-v3-apis"></a>Vývoj s využitím Media Services v3 rozhraní API
 
@@ -25,7 +25,8 @@ Tento článek popisuje pravidla, které se vztahují k entitám a rozhraním AP
 
 ## <a name="accessing-the-azure-media-services-api"></a>Přístup k Azure Media Services rozhraní API
 
-Pro přístup k prostředkům Azure Media Services, měli byste použít ověřování instančního objektu služby Azure Active Directory (AD). Rozhraní API služby Azure Media Services vyžaduje, že uživatel nebo aplikace, která bude rozhraní REST API požádá o přístup k prostředku účtu Azure Media Services (obvykle buď **Přispěvatel** nebo **vlastníka** role). Další informace najdete v tématu [řízení přístupu na základě rolí pro účty Media Services](rbac-overview.md).
+Pro přístup k prostředkům Azure Media Services, můžete použít ověřování instančního objektu služby Azure Active Directory (AD).
+Rozhraní API služby Media Services vyžaduje, že požádá uživatele nebo aplikace, což rozhraní REST API mít přístup k prostředku účtu Media Services a používat **Přispěvatel** nebo **vlastníka** role. Rozhraní API můžete přistupovat pomocí **čtečky** role, ale pouze **získat** nebo **seznamu**   operace bude k dispozici. Další informace najdete v tématu [řízení přístupu na základě rolí pro účty Media Services](rbac-overview.md).
 
 Místo vytvoření instančního objektu, zvažte použití spravované identity pro prostředky Azure pro přístup k rozhraní API služby Media Services prostřednictvím Azure Resource Manageru. Další informace o spravovaných identit pro prostředky Azure, najdete v článku [co je spravované identity pro prostředky Azure](../../active-directory/managed-identities-azure-resources/overview.md).
 

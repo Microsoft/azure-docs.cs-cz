@@ -1,44 +1,26 @@
 ---
-title: Vytvoření služby Azure Application Gateway – klasické rozhraní příkazového řádku Azure | Dokumentace Microsoftu
+title: Vytvoření služby Azure Application Gateway – klasické rozhraní příkazového řádku Azure
 description: Informace o vytvoření služby Application Gateway pomocí Azure classic CLI v Resource Manageru
 services: application-gateway
-documentationcenter: na
 author: vhorne
-manager: jpconnock
-editor: ''
-tags: azure-resource-manager
-ms.assetid: c2f6516e-3805-49ac-826e-776b909a9104
 ms.service: application-gateway
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 07/31/2017
+ms.topic: conceptual
+ms.date: 4/15/2019
 ms.author: victorh
-ms.openlocfilehash: e834b1633f17ecec74ae17e962de445ad8d6dccd
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 7107f45253c4f13b3378489726bf5034e104fa30
+ms.sourcegitcommit: 5f348bf7d6cf8e074576c73055e17d7036982ddb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46974421"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59608457"
 ---
 # <a name="create-an-application-gateway-by-using-the-azure-cli"></a>Vytvoření služby application gateway pomocí Azure CLI
 
-> [!div class="op_single_selector"]
-> * [Azure Portal](application-gateway-create-gateway-portal.md)
-> * [Azure Resource Manager PowerShell](application-gateway-create-gateway-arm.md)
-> * [Azure Classic PowerShell](application-gateway-create-gateway.md)
-> * [Šablona Azure Resource Manageru](application-gateway-create-gateway-arm-template.md)
-> * [Klasické rozhraní příkazového řádku Azure](application-gateway-create-gateway-cli.md)
-> * [Azure CLI](application-gateway-create-gateway-cli.md)
-> 
-> 
+Služba Azure Application Gateway je nástroj pro vyrovnávání zatížení vrstvy 7. Poskytuje převzetí služeb při selhání, směrování výkonu požadavků HTTP mezi různými servery, ať už jsou místní nebo v cloudu. Application gateway poskytuje následující funkce doručování aplikací: Vyrovnávání zatížení HTTP, spřažení relace na základě souborů cookie a přesměrování zpracování Secure Sockets Layer (SSL), vlastních sond stavu a podpory více webů.
 
-Služba Azure Application Gateway je nástroj pro vyrovnávání zatížení vrstvy 7. Poskytuje převzetí služeb při selhání, směrování výkonu požadavků HTTP mezi různými servery, ať už jsou místní nebo v cloudu. Application gateway poskytuje následující funkce doručování aplikací: načíst vyrovnávání, spřažení relace na základě souborů cookie a přesměrování zpracování Secure Sockets Layer (SSL), vlastních sond stavu protokolu HTTP a podpory více webů.
+## <a name="prerequisite-install-the-azure-cli"></a>Předpoklad: Instalace rozhraní příkazového řádku Azure CLI
 
-## <a name="prerequisite-install-the-azure-cli"></a>Předpoklad: Instalace Azure CLI
-
-K provedení kroků v tomto článku, budete muset [instalace rozhraní příkazového řádku Azure](../xplat-cli-install.md) a budete muset [Přihlaste se k Azure](/cli/azure/authenticate-azure-cli). 
+K provedení kroků v tomto článku, budete muset [instalace rozhraní příkazového řádku Azure](../xplat-cli-install.md) a budete muset [přihlášení Azure](/cli/azure/authenticate-azure-cli). 
 
 > [!NOTE]
 > Pokud nemáte účet Azure, budete potřebovat. Zde si můžete zaregistrovat [bezplatnou zkušební verzi](../active-directory/fundamentals/sign-up-organization.md).
@@ -60,15 +42,15 @@ Tento scénář bude:
 
 Azure Application Gateway vyžaduje vlastní podsíť. Při vytváření virtuální sítě, zajistěte ponechat dostatek adresního prostoru přesměrují do několika podsítí. Po nasazení služby application gateway k podsíti, budou moct přidat do podsítě jenom další aplikační brány.
 
-## <a name="log-in-to-azure"></a>Přihlášení k Azure
+## <a name="sign-in-to-azure"></a>Přihlásit se k Azure
 
-Otevřít **příkazového řádku Microsoft Azure**a přihlaste se. 
+Otevřít **příkazového řádku Microsoft Azure**a přihlaste se.
 
 ```azurecli-interactive
-azure login
+az login
 ```
 
-Jakmile zadáte v předchozím příkladu, je k dispozici kód. Přejděte na https://aka.ms/devicelogin v prohlížeči a pokračujte v procesu přihlášení.
+Jakmile zadáte v předchozím příkladu, je k dispozici kód. Přejděte na https://aka.ms/devicelogin v prohlížeči na znaménko pokračovat v procesu.
 
 ![přihlášení na zařízení cmd zobrazení][1]
 

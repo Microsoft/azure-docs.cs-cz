@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 09/28/2018
 ms.author: dobett
 ms.custom: include file
-ms.openlocfilehash: 5eb3c08792b760bf66e443f79762d91210706c92
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
+ms.openlocfilehash: cda08d44cba9e59af853b1705f538ec199ec4d3a
+ms.sourcegitcommit: fec96500757e55e7716892ddff9a187f61ae81f7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47435108"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59630469"
 ---
 Do prvního scénáře, přidejte nový typ telemetrických dat na Contoso existující **chladič** typ zařízení.
 
@@ -35,7 +35,7 @@ V následující tabulce jsou uvedeny data na žárovku zprávy do cloudu jako d
 | ------ | ----------- |
 | Status | "na" "off" |
 | Teplota | Stupně F |
-| Online | Hodnota TRUE, false |
+| online | Hodnota TRUE, false |
 
 > [!NOTE]
 > **Online** hodnota telemetrie je povinná pro všechny simulované typy.
@@ -55,7 +55,7 @@ Následující tabulka uvádí počáteční stav zařízení:
 
 | Název                     | Hodnoty |
 | ------------------------ | -------|
-| Počáteční barva            | Bílá  |
+| Počáteční barva            | White  |
 | Počáteční jas       | 75     |
 | Počáteční zbývající životnost   | 10 000 |
 | Telemetrie počáteční stav | "na"   |
@@ -72,7 +72,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 Tato příručka, budete potřebovat:
 
 * Visual Studio Code. Je možné [stáhněte si Visual Studio Code pro Mac, Linux a Windows](https://code.visualstudio.com/download).
-* .NET core. Můžete si stáhnout [.NET Core pro Windows, Mac a Linux](https://www.microsoft.com/net/download).
+* .NET Core. Můžete si stáhnout [.NET Core pro Windows, Mac a Linux](https://www.microsoft.com/net/download).
 * [C# pro Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp)
 * Postman. Můžete si stáhnout [Postman pro Mac, Windows nebo Linuxem](https://www.getpostman.com/apps).
 * [Nasadí do vašeho předplatného Azure IoT hub](../articles/iot-hub/iot-hub-create-through-portal.md). Potřebujete připojovací řetězec služby IoT hub k dokončení kroků v této příručce. Získání připojovacího řetězce z webu Azure portal.
@@ -98,13 +98,11 @@ Stáhněte a rozbalte [mikroslužeb simulace zařízení](https://github.com/Azu
 
 Otevřít **remote-monitoring-services-dotnet-master\storage-adapter** složky ve Visual Studio Code. Získáte po kliknutí na **obnovení** tlačítka a opravte všechna nevyřešené závislosti.
 
-Otevřít **.vscode/launch.json** soubor a přiřadit k připojovací řetězec služby Cosmos DB **PCS_STORAGEADAPTER_DOCUMENTDB_CONNSTRING** proměnné prostředí.
-
-<!-- Open the **WebService/appsettings.ini** file and assign your Cosmos DB connection string to the **documentdb_connstring** configuration setting.-->
+Otevřít **storage-adapter/WebService/appsettings.ini** soubor a přiřadit k připojovací řetězec služby Cosmos DB **documentDBConnectionString** proměnné.
 
 Chcete-li spustit místně mikroslužbách, klikněte na tlačítko **ladit > Spustit ladění**.
 
-**Terminálu** okně ve Visual Studio Code se zobrazí výstup ze spuštěné mikroslužeb, včetně adresy URL pro kontrolu stavu webové služby: [ http://127.0.0.1:9022/v1/status ](http://127.0.0.1:9022/v1/status). Když přejdete na tuto adresu, musí být stav "OK: aktivní a dobře".
+**Terminálu** okně ve Visual Studio Code se zobrazí výstup ze spuštěné mikroslužeb, včetně adresy URL pro kontrolu stavu webové služby: [ http://127.0.0.1:9022/v1/status ](http://127.0.0.1:9022/v1/status). Když přejdete na tuto adresu, musí být stav "OK: Aktivní a dobře".
 
 Ponechte mikroslužeb adaptér úložiště, který je spuštěn v této instanci aplikace Visual Studio Code a další kroky dokončit.
 
@@ -118,12 +116,12 @@ V této části přidáte nový **vnitřní teplota** typ telemetrie k existují
 
     | Zdroj | Cíl |
     | ------ | ----------- |
-    | Services\data\devicemodels\chiller-01.JSON | C:\temp\devicemodels\chiller-01.JSON |
-    | Services\data\devicemodels\scripts\chiller-01-State.js | C:\temp\devicemodels\scripts\chiller-01-State.js |
-    | Services\data\devicemodels\scripts\Reboot-Method.js | C:\temp\devicemodels\scripts\Reboot-Method.js |
-    | Services\data\devicemodels\scripts\FirmwareUpdate-Method.js | C:\temp\devicemodels\scripts\FirmwareUpdate-Method.js |
-    | Services\data\devicemodels\scripts\EmergencyValveRelease-Method.js | C:\temp\devicemodels\scripts\EmergencyValveRelease-Method.js |
-    | Services\data\devicemodels\scripts\IncreasePressure-Method.js | C:\temp\devicemodels\scripts\IncreasePressure-Method.js |
+    | Services\data\devicemodels\chiller-01.json | C:\temp\devicemodels\chiller-01.json |
+    | Services\data\devicemodels\scripts\chiller-01-state.js | C:\temp\devicemodels\scripts\chiller-01-state.js |
+    | Services\data\devicemodels\scripts\Reboot-method.js | C:\temp\devicemodels\scripts\Reboot-method.js |
+    | Services\data\devicemodels\scripts\FirmwareUpdate-method.js | C:\temp\devicemodels\scripts\FirmwareUpdate-method.js |
+    | Services\data\devicemodels\scripts\EmergencyValveRelease-method.js | C:\temp\devicemodels\scripts\EmergencyValveRelease-method.js |
+    | Services\data\devicemodels\scripts\IncreasePressure-method.js | C:\temp\devicemodels\scripts\IncreasePressure-method.js |
 
 1. Otevřít **C:\temp\devicemodels\chiller-01.json** souboru.
 
@@ -417,11 +415,7 @@ V této části provedete testovací typy zařízení, které jste vytvořili v 
 
 Otevřít **zařízení simulace dotnet-master** složky, které jste si stáhli z Githubu v nové instanci sady Visual Studio Code. Získáte po kliknutí na **obnovení** tlačítka a opravte všechna nevyřešené závislosti.
 
-Otevřít **.vscode/launch.json** soubor a přiřadit k připojovací řetězec služby IoT Hub **PCS_IOTHUB_CONNSTRING** proměnné prostředí. Ve stejném souboru přidejte **PCS_STORAGEADAPTER_DOCUMENTDB_CONNSTRING** proměnné prostředí a přiřazovat připojovacím řetězcem pro vaši databázi Cosmos DB.
-
-Otevřít **WebService/Properties/launchSettings.json** soubor a přiřadit k připojovací řetězec služby IoT Hub **PCS_IOTHUB_CONNSTRING** proměnné prostředí.
-
-Otevřít **WebService/appsettings.ini** soubor a upravit nastavení následujícím způsobem:
+Otevřít **WebService/appsettings.ini** soubor a přiřadit k připojovací řetězec služby Cosmos DB **documentdb_connstring** proměnné a také změnit nastavení následujícím způsobem:
 
 ```ini
 device_models_folder = C:\temp\devicemodels\

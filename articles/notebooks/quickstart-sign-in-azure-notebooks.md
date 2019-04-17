@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/25/2019
+ms.date: 04/15/2019
 ms.author: kraigb
-ms.openlocfilehash: f3effc900b79ddb7beac6a3aaf2eee0a264f7b4d
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: eb8ba7f23de99d333693430d806a8d887c55a678
+ms.sourcegitcommit: 5f348bf7d6cf8e074576c73055e17d7036982ddb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59280855"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59608165"
 ---
 # <a name="quickstart-sign-in-and-set-a-user-id"></a>Rychlý start: Přihlášení a nastavení ID uživatele
 
@@ -33,6 +33,9 @@ I když se vždy zobrazí poznámkových bloků Azure bez přihlášení, musít
 1. Po zobrazení výzvy zadejte e-mailová adresa Account Microsoft nebo pracovní nebo školní účet a vyberte **Další**. Typy účtů jsou popsány v [uživatelského účtu pro poznámkových bloků Azure](azure-notebooks-user-account.md). Pokud nemáte Account Microsoft, nebo chcete, aby jeden výhradně k použití s poznámkových bloků Azure, vyberte **vytvořit**:
 
     ![Vytvořit nový příkaz účtu Microsoft přihlásit příkazovém řádku](media/accounts/create-new-microsoft-account.png)
+
+    > [!Tip]
+    > Pokud se pokusíte vytvořit nový účet s e-mailovou adresu, která už má účet s ním spojená, může se zobrazit zpráva "nelze zde zaregistrovat pomocí pracovního nebo školního e-mailovou adresu. Použijte osobní e-mail, třeba z Gmailu nebo Yahoo!, nebo zřiďte nový Outlookový e-mail." V takovém případě zkuste se přihlásit pracovní e-mailovou adresu bez vytvoření nového účtu.
 
 1. Zadejte svoje heslo po zobrazení výzvy.
 
@@ -64,4 +67,4 @@ Odhlásit, vyberte své uživatelské jméno v pravém horním rohu stránky a p
 ## <a name="next-steps"></a>Další postup
 
 > [!div class="nextstepaction"]
-> [Rychlý start: Vytvoření a sdílení poznámkového bloku](quickstart-create-share-jupyter-notebook.md)
+> [Rychlé zprovoznění: Vytvářejte a sdílejte poznámkového bloku](quickstart-create-share-jupyter-notebook.md)

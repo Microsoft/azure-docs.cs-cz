@@ -14,12 +14,12 @@ ms.workload: infrastructure
 ms.date: 09/10/2018
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 48bea302f2f8e878275e6a7c222d703e0f31f239
-ms.sourcegitcommit: 794bfae2ae34263772d1f214a5a62ac29dcec3d2
+ms.openlocfilehash: ca4d5912d75dd7b33737f61737a209284b7a5a47
+ms.sourcegitcommit: fec96500757e55e7716892ddff9a187f61ae81f7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44392230"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59616148"
 ---
 # <a name="disaster-recovery-failover-procedure"></a>Postup převzetí služeb při selhání pro zotavení po havárii
 
@@ -87,7 +87,7 @@ Další postupně jednotlivé kroky zahrnuje obnovení provozní instance SAP HA
 1. Změnit umístění zálohy pro **/hana/logbackups** s použitím sady Studio SAP HANA.
    ![Změna umístění zálohy pro zotavení po Havárii](./media/hana-overview-high-availability-disaster-recovery/change_backup_location_dr1.png)
 
-1. SAP HANA prohledává umístění zálohování souborů a navrhne nejnovější zálohy protokolu transakcí obnovení. Kontrola může trvat několik minut, dokud jako se zobrazí následující obrazovka: ![seznam zálohy transakčního protokolu pro zotavení po Havárii](./media/hana-overview-high-availability-disaster-recovery/backup_list_dr2.PNG)
+1. SAP HANA prohledává umístění zálohování souborů a navrhne nejnovější zálohy protokolu transakcí obnovení. Kontrola může trvat několik minut, dokud na obrazovce jako se zobrazí následující: ![Seznam zálohy transakčního protokolu pro zotavení po Havárii](./media/hana-overview-high-availability-disaster-recovery/backup_list_dr2.PNG)
 
 1. Upravte některé výchozí nastavení:
 

@@ -12,14 +12,14 @@ ms.devlang: tbd
 ms.topic: conceptual
 ms.tgt_pltfrm: dotnet
 ms.workload: na
-ms.date: 01/23/2019
+ms.date: 04/15/2019
 ms.author: aschhab
-ms.openlocfilehash: 19949b555a5be21c06c3acfbbd5fb9be08dc9f23
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 892d485fb5cdaa08107870e9ab5b2b7ad9bcba5b
+ms.sourcegitcommit: 5f348bf7d6cf8e074576c73055e17d7036982ddb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57766935"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59608890"
 ---
 # <a name="get-started-with-service-bus-topics"></a>Začínáme s tématy služby Service Bus
 
@@ -27,24 +27,20 @@ ms.locfileid: "57766935"
 
 Tento kurz se zabývá následujícími kroky:
 
-1. Pomocí webu Azure Portal vytvoříme obor názvů služby Service Bus.
-2. Pomocí webu Azure Portal vytvoříme téma služby Service Bus.
-3. Pomocí webu Azure Portal vytvoříme k tomuto tématu odběr služby Service Bus.
-4. Napíšeme konzolovou aplikaci .NET Core pro odeslání sady zpráv do tématu.
-5. Napíšeme konzolovou aplikaci .NET Core pro příjem těchto zpráv z odběru.
+1. Napíšeme konzolovou aplikaci .NET Core pro odeslání sady zpráv do tématu.
+2. Napíšeme konzolovou aplikaci .NET Core pro příjem těchto zpráv z odběru.
 
 ## <a name="prerequisites"></a>Požadavky
 
-1. [Visual Studio 2017 s aktualizací Update 3 (verze 15.3, 26730.01)](https://www.visualstudio.com/vs) nebo novější.
-2. [NET Core SDK](https://www.microsoft.com/net/download/windows) verze 2.0 nebo novější.
-2. Předplatné Azure.
-
-[!INCLUDE [create-account-note](../../includes/create-account-note.md)]
-
-[!INCLUDE [service-bus-create-namespace-portal](../../includes/service-bus-create-namespace-portal.md)]
-
-[!INCLUDE [service-bus-create-topics-subscriptions-portal](../../includes/service-bus-create-topics-subscriptions-portal.md)]
-
+1. Předplatné Azure. K dokončení tohoto kurzu potřebujete mít účet Azure. Můžete si aktivovat vaše [výhody pro předplatitele sady Visual Studio nebo MSDN](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A85619ABF) nebo zaregistrujte [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF).
+2. Postupujte podle kroků v [rychlý start: Pomocí webu Azure portal k vytvoření tématu služby Service Bus a odběrů na téma](service-bus-quickstart-topics-subscriptions-portal.md) a proveďte následující úlohy:
+    1. Vytvoření služby Service Bus **obor názvů**.
+    2. Získejte **připojovací řetězec**.
+    3. Vytvoření **tématu** v oboru názvů.
+    4. Vytvoření **jedno předplatné** téma v oboru názvů.
+3. [Visual Studio 2017 s aktualizací Update 3 (verze 15.3, 26730.01)](https://www.visualstudio.com/vs) nebo novější.
+4. [NET Core SDK](https://www.microsoft.com/net/download/windows) verze 2.0 nebo novější.
+ 
 ## <a name="send-messages-to-the-topic"></a>Odesílání zpráv do tématu
 
 Abychom mohli do tématu odesílat zprávy, napíšeme v sadě Visual Studio konzolovou aplikaci v jazyce C#.
@@ -204,7 +200,7 @@ Spusťte sadu Visual Studio a vytvořte nový projekt **Konzolová aplikace (.NE
 
 ## <a name="receive-messages-from-the-subscription"></a>Příjem zpráv z odběru
 
-Pokud chcete přijímat zprávy, které jste právě odeslali, vytvořte další konzolovou aplikaci .NET Core a nainstalujte balíček NuGet **Microsoft.Azure.ServiceBus**, podobně jako předtím u aplikace odesílatele.
+Pokud chcete přijímat zprávy, které jste odeslali, vytvořte další konzolovou aplikaci .NET Core a nainstalujte **Microsoft.Azure.ServiceBus** balíček NuGet, podobně jako předtím u aplikace odesílatele.
 
 ### <a name="write-code-to-receive-messages-from-the-subscription"></a>Napsání kódu pro příjem zpráv z odběru
 

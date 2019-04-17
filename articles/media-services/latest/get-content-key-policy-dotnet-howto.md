@@ -10,20 +10,18 @@ ms.service: media-services
 ms.workload: ''
 ms.topic: article
 ms.custom: seodec18
-ms.date: 04/09/2019
+ms.date: 04/15/2019
 ms.author: juliako
-ms.openlocfilehash: 49cc2b8c151053377f8f1da0792f10a06695b332
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.openlocfilehash: 58b6f49f4bbbd93fefb9b616f92baf7ef30f7deb
+ms.sourcegitcommit: fec96500757e55e7716892ddff9a187f61ae81f7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/11/2019
-ms.locfileid: "59496314"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59615825"
 ---
 # <a name="get-a-signing-key-from-the-existing-policy"></a>Získejte podpisový klíč ze stávající zásady
 
-Jedním z klíčových principů návrhu rozhraní API v3 je vyšší zabezpečení rozhraní API. rozhraní API v3 nevrátí tajné kódy nebo přihlašovací údaje na **získat** nebo **seznamu** operace. Klíče v odpovědi mají vždy hodnotu null, jsou prázdné nebo upravené. Uživatel musí volat metodu samostatnou akci tajné kódy nebo přihlašovací údaje. **Čtečky** role nelze volat operace, takže ji nelze volat operace, jako je ContentKeyPolicies.GetPolicyPropertiesWithSecrets Asset.ListContainerSas StreamingLocator.ListContentKeys,. S samostatné akce umožňuje nastavit oprávnění zabezpečení podrobnější RBAC v vlastní roli, v případě potřeby.
-
-Další informace najdete v tématu [účty RBAC a Media Services](rbac-overview.md)
+Jedním z klíčových principů návrhu rozhraní API v3 je vyšší zabezpečení rozhraní API. rozhraní API v3 nevrátí tajné kódy nebo přihlašovací údaje na **získat** nebo **seznamu** operace. Najdete zde podrobné vysvětlení: Další informace najdete v tématu [účty RBAC a Media Services](rbac-overview.md)
 
 V příkladu v tomto článku ukazuje, jak používat .NET k získání podpisového klíče z existující zásady. 
  
@@ -45,4 +43,4 @@ Chcete-li získat klíče, použijte **GetPolicyPropertiesWithSecretsAsync**, ja
 
 ## <a name="next-steps"></a>Další postup
 
-[Návrh systému s více variantami DRM ochrany obsahu pomocí řízení přístupu](design-multi-drm-system-with-access-control.md) 
+[Návrh systému ochrany obsahu s více variantami DRM s využitím řízení přístupu](design-multi-drm-system-with-access-control.md) 

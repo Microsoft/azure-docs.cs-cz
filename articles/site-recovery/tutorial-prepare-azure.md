@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 04/15/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 412dfd690ea4ab33f249af78d4ef94c5ae5ccad2
-ms.sourcegitcommit: b8a8d29fdf199158d96736fbbb0c3773502a092d
+ms.openlocfilehash: 3d2b22fc507b209a96870daa8bf12ea9ab60a466
+ms.sourcegitcommit: fec96500757e55e7716892ddff9a187f61ae81f7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/15/2019
-ms.locfileid: "59565831"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59617409"
 ---
 # <a name="prepare-azure-resources-for-disaster-recovery-of-on-premises-machines"></a>Příprava prostředků Azure na zotavení po havárii místních počítačů
 
@@ -54,7 +54,7 @@ K provedení těchto úloh by váš účet měl mít přiřazenou předdefinovan
 
 ## <a name="create-a-recovery-services-vault"></a>Vytvoření trezoru Služeb zotavení
 
-1. Na webu Azure Portal, klikněte na tlačítko **+ vytvořit prostředek**a na Marketplace vyhledejte **služby Recovery services**.
+1. Na webu Azure Portal, klikněte na tlačítko **+ vytvořit prostředek**a na Marketplace vyhledejte **obnovení**.
 2. Klikněte na tlačítko **Backup a Site Recovery (OMS)** a na stránce Backup a Site Recovery na **vytvořit**. 
 1. V **trezor služby Recovery Services** > **název**, zadejte popisný název pro identifikaci trezoru. Pro tuto sadu kurzů používáme název **ContosoVMVault**.
 2. V **skupiny prostředků**, vyberte existující skupinu prostředků nebo vytvořte novou. Pro účely tohoto kurzu používáme **contosoRG**.

@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 09/24/2018
-ms.openlocfilehash: 4b83917a76cb4b3e24ca4f5961d3a00c4d2c9cb0
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.date: 04/15/2019
+ms.openlocfilehash: c618a4035e9ec9b1ca1986e898ea1060ac05712d
+ms.sourcegitcommit: fec96500757e55e7716892ddff9a187f61ae81f7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58077254"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59615944"
 ---
 # <a name="how-to-configure-server-parameters-in-azure-database-for-mariadb-by-using-the-azure-portal"></a>Konfigurace parametrů serveru ve službě Azure Database pro MariaDB s využitím webu Azure portal
 
@@ -46,10 +46,12 @@ InnoDB vyrovnávací paměti fondu a maximální počet připojení nejsou konfi
 |Obecné použití| 8| 15360| 1250|
 |Obecné použití| 16| 31232| 2500|
 |Obecné použití| 32| 62976| 5000|
+|Obecné použití| 64| 125952| 10000|
 |Paměťově optimalizované| 2| 7168| 600|
 |Paměťově optimalizované| 4| 15360| 1250|
 |Paměťově optimalizované| 8| 30720| 2500|
 |Paměťově optimalizované| 16| 62464| 5000|
+|Paměťově optimalizované| 32| 125952| 10000|
 
 Tyto další server parametry nejsou konfigurovatelné v systému:
 

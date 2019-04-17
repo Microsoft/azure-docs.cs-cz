@@ -1,20 +1,20 @@
 ---
-title: Přehled HDInsight 4.0 (Preview) – Azure
+title: Přehled služby Azure HDInsight 4.0
 description: Porovnání funkcí a omezení mezi HDInsight 3.6 a HDInsight 4.0 a doporučení k upgradu
 ms.service: hdinsight
-author: mamccrea
-ms.author: mamccrea
-ms.reviewer: mamccrea
+author: hrasheed-msft
+ms.author: hrasheed
+ms.reviewer: hrasheed
 ms.topic: overview
-ms.date: 10/04/2018
-ms.openlocfilehash: 34582e66dec3b2f97efba7856ccfbf678f8f1f63
-ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.date: 04/15/2019
+ms.openlocfilehash: af9f8a9e4d67c74910f60c70a0aee5c2439d6209
+ms.sourcegitcommit: 5f348bf7d6cf8e074576c73055e17d7036982ddb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53408081"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59609196"
 ---
-# <a name="hdinsight-40-overview-preview"></a>Přehled HDInsight 4.0 (Preview)
+# <a name="azure-hdinsight-40-overview"></a>Přehled služby Azure HDInsight 4.0
 
 Azure HDInsight je jedním z nejoblíbenějších služeb mezi podnikovými zákazníky pro open source Apache Hadoop a Apache Sparku a analýzy v Azure. Je Cloudová distribuce komponent Apache Hadoop v HDInsight (Hdinsight) 4.0 [Hortonworks Data Platform (HDP) 3.0](https://docs.hortonworks.com/HDPDocuments/HDP3/HDP-3.0.0/release-notes/content/relnotes.html). Tento článek obsahuje informace o nejnovější verzi Azure HDInsight a pokyny k upgradu.
 

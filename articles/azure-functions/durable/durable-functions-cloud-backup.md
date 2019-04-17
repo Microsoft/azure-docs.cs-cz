@@ -2,7 +2,7 @@
 title: FAN odesílací/fan v scénáře v Durable Functions – Azure
 description: Zjistěte, jak implementovat scénář fan-odesílací ventilátor – se změnami v rozšíření Durable Functions pro službu Azure Functions.
 services: functions
-author: kashimiz
+author: ggailey777
 manager: jeconnoc
 keywords: ''
 ms.service: azure-functions
@@ -10,12 +10,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 7bb2a68209e657b1e3ff8c3a61730d42f04a3b8a
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 0bef5f1b64ec9f322070ba5c36cab138c7327da2
+ms.sourcegitcommit: 5f348bf7d6cf8e074576c73055e17d7036982ddb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53727373"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59608499"
 ---
 # <a name="fan-outfan-in-scenario-in-durable-functions---cloud-backup-example"></a>FAN odesílací/fan v scénář v Durable Functions – cloudové zálohování příklad
 
