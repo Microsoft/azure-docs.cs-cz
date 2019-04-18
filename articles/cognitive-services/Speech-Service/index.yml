@@ -211,7 +211,7 @@ sections:
       - type: list
         style: unordered
         items:
-          - html: <a href="speech-to-text-sample.md">Převod řeči na text (SR)</a><br/>
+          - html: <a href="speech-to-text-sample.md">Převod řeči na text (rozpoznávání řeči)</a><br/>
           - html: <a href="intent.md">Rozpoznávání záměru</a><br/>
           - html: <a href="translation.md">Překlad</a>
           - html: <a href="quickstart-text-to-speech-dotnet-windows.md">Převod textu na řeč</a><br/>
@@ -234,7 +234,7 @@ sections:
             html: |
               <p><a href="https://aka.ms/csspeech/csharpref">C# API (UWP, .NET a Unity)</a></p>
               <p><a href="https://aka.ms/csspeech/cppref">Rozhraní API C++</a></p>
-              <p><a href="https://aka.ms/csspeech/javaref">Java API</a></p>
+              <p><a href="https://aka.ms/csspeech/javaref">Rozhraní API Javy</a></p>
               <p><a href="https://aka.ms/csspeech/pythonref">Rozhraní API pro Python</a></p>
               <p><a href="https://aka.ms/csspeech/objectivecref">Rozhraní API Objective-C</a></p>
               <p><a href="https://aka.ms/csspeech/javascriptref">Rozhraní JavaScript API</a></p>

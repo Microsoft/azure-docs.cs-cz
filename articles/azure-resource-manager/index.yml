@@ -60,7 +60,7 @@ sections:
         style: unordered
         className: spaced noBullet
         items:
-          - html: '<a href="https://azure.microsoft.com/resources/templates/">Šablony rychlého zprovoznění pro Azure</a>'
+          - html: '<a href="https://azure.microsoft.com/resources/templates/">Šablony Azure pro rychlý start</a>'
           - html: '<a href="https://resources.azure.com/">Azure Resource Explorer (Preview)</a>'
   - title: Referenční informace
     items:
@@ -69,7 +69,7 @@ sections:
         className: cardsD
         items:
           - title: Šablony
-            html: <p><a href="/azure/templates/">Referenční informace k šablonám</a></p><p><a href="/azure/resource-group-template-functions">Funkce šablon</a></p><p><a href="/azure/azure-resource-manager/managed-application-createuidefinition-functions">Definiční funkce uživatelského rozhraní</a></p><p><a href="/azure/azure-resource-manager/managed-application-createuidefinition-elements">Definiční prvky uživatelského rozhraní</a></p>
+            html: <p><a href="/azure/templates/">Referenční informace k šablonám</a></p><p><a href="/azure/resource-group-template-functions">Funkce šablon</a></p><p><a href="/azure/azure-resource-manager/managed-application-createuidefinition-functions">Funkce definic uživatelského rozhraní</a></p><p><a href="/azure/azure-resource-manager/managed-application-createuidefinition-elements">Definiční prvky uživatelského rozhraní</a></p>
           - title: Příkazový řádek
             html: <p><a href="/cli/azure/resource">Azure CLI</a></p><p><a href="/powershell/module/az.resources">Azure PowerShell</a></p>
           - title: Jazyky

@@ -43,6 +43,6 @@ sections:
           - title: Příkazový řádek
             html: <p><a href="/cli/azure/ext/resource-graph/graph">Azure CLI</a></p><p><a href="/powershell/module/az.resourcegraph/">Azure PowerShell</a></p>
           - title: Jazyky
-            html: <p><a href="/dotnet/api/Microsoft.Azure.Management.ResourceGraph">Sada Azure SDK pro .NET</a></p><p><a href="/python/api/azure-mgmt-resourcegraph/azure.mgmt.resourcegraph">Azure SDK pro Python</a></p>
+            html: <p><a href="/dotnet/api/Microsoft.Azure.Management.ResourceGraph">Azure SDK pro .NET</a></p><p><a href="/python/api/azure-mgmt-resourcegraph/azure.mgmt.resourcegraph">Azure SDK pro Python</a></p>
           - title: REST
             html: '<p><a href="/rest/api/azureresourcegraph/resources/resources">Referenční materiály k rozhraní API</a></p><p><a href="https://github.com/Azure/azure-rest-api-specs/tree/master/specification/resourcegraph/resource-manager/Microsoft.ResourceGraph/preview/2018-09-01-preview">2018-09-01-preview (OpenAPI)</a></p>'

@@ -47,7 +47,7 @@ sections:
       - type: list
         style: unordered
         items:
-          - html: <a href="/azure/governance/policy/tutorials/create-and-manage">Vytvoření a správa zásad Azure</a>
+          - html: <a href="/azure/governance/policy/tutorials/create-and-manage">Vytváření a správa Azure Policy</a>
           - html: <a href="/azure/governance/policy/tutorials/create-custom-policy-definition">Vytvoření vlastní definice zásad</a>
   - title: Ukázky
     items:

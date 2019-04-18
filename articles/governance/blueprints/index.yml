@@ -39,6 +39,6 @@ sections:
           - title: Příkazový řádek
             html: '<p><a href="/powershell/module/az.blueprint/#blueprint">Azure PowerShell</a></p>'
           - title: Jazyky
-            html: <p><a href="/dotnet/api/overview/azure/blueprints/management">Sada Azure SDK pro .NET</a></p>
+            html: <p><a href="/dotnet/api/overview/azure/blueprints/management">Azure SDK pro .NET</a></p>
           - title: REST
             html: <p><a href="/rest/api/blueprints/">Referenční materiály k rozhraní API</a></p>

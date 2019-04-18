@@ -68,6 +68,8 @@ items:
     href: backup-azure-backup-server-import-export-.md
   - name: Náhrada páskové knihovny
     href: backup-azure-backup-cloud-as-tape.md
+  - name: Běžné atributy zabezpečení Azure
+    href: backup-security-attributes.md
 - name: Postup
   items:
   - name: Server Azure Backup
@@ -266,8 +268,6 @@ items:
     href: /azure/templates/microsoft.recoveryservices/allversions
 - name: Zdroje a prostředky
   items:
-  - name: Běžné atributy zabezpečení
-    href: backup-security-attributes.md
   - name: Plány Azure do budoucna
     href: https://azure.microsoft.com/roadmap/
   - name: Fórum MSDN
@@ -280,9 +280,9 @@ items:
     href: https://azure.microsoft.com/updates/?product=backup
   - name: Videa
     href: https://azure.microsoft.com/documentation/videos/index/?services=backup
-ms.openlocfilehash: 6c11bfcedc01bfc3c1dfcdc16b04ddccfdaf4bb9
-ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
+ms.openlocfilehash: b9fa6548951ca06a8568a00bbafe5c24518923ab
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/02/2019
-ms.locfileid: "58851134"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59681076"
