@@ -78,8 +78,8 @@ Set-AzDiagnosticSetting -ResourceId /subscriptions/s1id1234-5679-0123-4567-89012
 | --- | --- | --- |
 | ResourceId |Ano |ID prostředku prostředku, na kterém chcete nastavit nastavení diagnostiky. |
 | StorageAccountId |Ne |ID prostředku účtu úložiště, ke kterému má být uložen diagnostické protokoly. |
-| Kategorie |Ne |Čárkou oddělený seznam kategorií protokolu povolit. |
-| Povoleno |Ano |Logická hodnota označující, jestli jsou povolené nebo zakázané pro tento prostředek diagnostiku. |
+| Categories |Ne |Čárkou oddělený seznam kategorií protokolu povolit. |
+| Enabled |Ano |Logická hodnota označující, jestli jsou povolené nebo zakázané pro tento prostředek diagnostiku. |
 | RetentionEnabled |Ne |Logická hodnota označující, zda jsou povoleny zásady uchovávání informací pro tento prostředek. |
 | RetentionInDays |Ne |Počet dní, pro které události uchování mezi 1 a 2147483647. Hodnota nula ukládá protokoly po neomezenou dobu. |
 
