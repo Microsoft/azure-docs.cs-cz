@@ -113,8 +113,8 @@ Můžete kopírovat data do Azure Search, nastavte typ zdroje v aktivitě kopír
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
 | type | Vlastnost type zdroje aktivity kopírování musí být nastavená na: **AzureSearchIndexSink** | Ano |
-| WriteBehavior | Určuje, jestli se má sloučit nebo nahradit, již existuje dokument v indexu. Zobrazit [WriteBehavior vlastnost](#writebehavior-property).<br/><br/>Povolené hodnoty jsou: **Sloučit** (výchozí), a **nahrát**. | Ne |
-| WriteBatchSize | Nahrání dat do indexu Azure Search writeBatchSize dosáhne velikosti vyrovnávací paměti. Zobrazit [WriteBatchSize vlastnost](#writebatchsize-property) podrobnosti.<br/><br/>Povolené hodnoty jsou: celé číslo 1 až 1 000; Výchozí hodnota je 1000. | Ne |
+| writeBehavior | Určuje, jestli se má sloučit nebo nahradit, již existuje dokument v indexu. Zobrazit [WriteBehavior vlastnost](#writebehavior-property).<br/><br/>Povolené hodnoty jsou: **Sloučit** (výchozí), a **nahrát**. | Ne |
+| writeBatchSize | Nahrání dat do indexu Azure Search writeBatchSize dosáhne velikosti vyrovnávací paměti. Zobrazit [WriteBatchSize vlastnost](#writebatchsize-property) podrobnosti.<br/><br/>Povolené hodnoty jsou: celé číslo 1 až 1 000; Výchozí hodnota je 1000. | Ne |
 
 ### <a name="writebehavior-property"></a>Vlastnost WriteBehavior
 
@@ -173,9 +173,9 @@ Následující tabulka určuje, zda je nebo není podporováno typem dat Azure S
 | Int32 | Ano |
 | Int64 | Ano |
 | Double | Ano |
-| Logická hodnota | Ano |
+| Boolean | Ano |
 | DataTimeOffset | Ano |
-| Pole řetězců | Ne |
+| String Array | Ne |
 | GeographyPoint | Ne |
 
 ## <a name="next-steps"></a>Další postup
