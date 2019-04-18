@@ -66,7 +66,7 @@ Azure SQL propojená služba propojuje službu Azure SQL database do služby dat
 | Vlastnost | Popis | Požaduje se |
 | --- | --- | --- |
 | type |Vlastnost type musí být nastavená na: **AzureSqlDatabase** |Ano |
-| připojovací řetězec |Zadejte informace potřebné pro připojení k instanci Azure SQL Database pro vlastnost připojovací řetězec. Je podporován pouze základní ověřování. |Ano |
+| connectionString |Zadejte informace potřebné pro připojení k instanci Azure SQL Database pro vlastnost připojovací řetězec. Je podporován pouze základní ověřování. |Ano |
 
 > [!IMPORTANT]
 > Konfigurace [bránu Firewall služby Azure SQL Database](https://msdn.microsoft.com/library/azure/ee621782.aspx#ConnectingFromAzure) serveru databáze za účelem [povolit službám Azure přístup k serveru](https://msdn.microsoft.com/library/azure/ee621782.aspx#ConnectingFromAzure). Kromě toho pokud kopírujete data do služby Azure SQL Database z mimo Azure včetně místních zdrojů dat pomocí brány pro objekt pro vytváření dat, nakonfigurujte odpovídající rozsah IP adres pro počítač, který odesílá data do služby Azure SQL Database.
@@ -148,7 +148,7 @@ GO
 | Vlastnost | Popis | Povolené hodnoty | Požaduje se |
 | --- | --- | --- | --- |
 | writeBatchTimeout |Čekací doba pro dávkové operace insert dokončit před vypršením časového limitu. |Časový interval<br/><br/> Příklad: "00: 30:00" (30 minut). |Ne |
-| WriteBatchSize |Vloží data do tabulky SQL writeBatchSize dosáhne velikosti vyrovnávací paměti. |Celé číslo (počet řádků) |Ne (výchozí: 10000) |
+| writeBatchSize |Vloží data do tabulky SQL writeBatchSize dosáhne velikosti vyrovnávací paměti. |Celé číslo (počet řádků) |Ne (výchozí: 10000) |
 | sqlWriterCleanupScript |Zadejte dotaz pro aktivitu kopírování ke spuštění tak, že po vyčištění dat určitý řez. Další informace najdete v tématu [opakovatelné kopírování](#repeatable-copy). |Příkaz dotazu. |Ne |
 | sliceIdentifierColumnName |Zadejte název sloupce pro aktivitu kopírování k vyplnění s identifikátorem automaticky generovány řez, který se používá k vyčištění dat určitý řez, kdy se znovu spustit. Další informace najdete v tématu [opakovatelné kopírování](#repeatable-copy). |Název sloupce pro sloupec s datovým typem binary(32). |Ne |
 | sqlWriterStoredProcedureName |Název uložené procedury, která definuje, jak použít zdroj dat do cílové tabulky, například na upsertuje proveďte nebo transformace pomocí vlastní obchodní logikou. <br/><br/>Mějte na paměti, bude tuto uloženou proceduru **za batch**. Pokud budete chtít provádět operace, která pouze spustí jednou a nemá nic dělat se zdrojovými daty, třeba delete nebo truncate, použijte `sqlWriterCleanupScript` vlastnost. |Název uložené procedury. |Ne |
@@ -638,37 +638,37 @@ Při přesouvání dat do a z Azure SQL Database, se používají následující
 | Typ databázového stroje SQL serveru | Typ rozhraní .NET framework |
 | --- | --- |
 | bigint |Int64 |
-| Binární |Byte] |
-| Bit |Logická hodnota |
-| Char |Řetězec, Char] |
+| binary |Byte[] |
+| bit |Boolean |
+| char |String, Char[] |
 | date |DateTime |
-| Datum a čas |DateTime |
+| Datetime |DateTime |
 | datetime2 |DateTime |
-| DateTimeOffset |DateTimeOffset |
+| Datetimeoffset |DateTimeOffset |
 | Decimal |Decimal |
-| Atribut FILESTREAM (varbinary(max)) |Byte] |
+| FILESTREAM attribute (varbinary(max)) |Byte[] |
 | Float |Double |
-| image |Byte] |
-| int |Datový typ Int32 |
-| peníze |Decimal |
-| nchar |Řetězec, Char] |
-| ntext |Řetězec, Char] |
-| Číselné |Decimal |
-| nvarchar |Řetězec, Char] |
-| Real |Jednoduchá |
-| ROWVERSION |Byte] |
+| image |Byte[] |
+| int |Int32 |
+| money |Decimal |
+| nchar |String, Char[] |
+| ntext |String, Char[] |
+| numeric |Decimal |
+| nvarchar |String, Char[] |
+| real |Single |
+| rowversion |Byte[] |
 | smalldatetime |DateTime |
 | smallint |Int16 |
-| Smallmoney |Decimal |
-| SQL_VARIANT |Objekt * |
-| text |Řetězec, Char] |
-| time |Časový interval |
-| časové razítko |Byte] |
-| tinyint |Bajt |
-| UniqueIdentifier |Guid |
-| varbinary |Byte] |
-| varchar |Řetězec, Char] |
-| xml |XML |
+| smallmoney |Decimal |
+| sql_variant |Object * |
+| text |String, Char[] |
+| time |TimeSpan |
+| timestamp |Byte[] |
+| tinyint |Byte |
+| uniqueidentifier |Guid |
+| varbinary |Byte[] |
+| varchar |String, Char[] |
+| xml |Xml |
 
 ## <a name="map-source-to-sink-columns"></a>Mapování zdroje do jímky sloupce
 Další informace o mapování sloupců v datové sadě zdroje do sloupců v datové sadě jímky, najdete v článku [mapování sloupců v datové sadě ve službě Azure Data Factory](data-factory-map-columns.md).
