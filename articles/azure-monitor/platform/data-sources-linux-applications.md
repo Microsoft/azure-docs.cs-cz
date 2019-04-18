@@ -118,8 +118,8 @@ Jakmile nakonfigurujete agenta Log Analytics pro Linux k odesílání dat do Azu
 
 | Název objektu | Název počítadla |
 |:--|:--|
-| Databáze MySQL | Místo na disku v bajtech |
-| Databáze MySQL | Tabulky |
+| MySQL Database | Místo na disku v bajtech |
+| MySQL Database | Tabulky |
 | MySQL Server | Přerušené připojení protokolu Pct |
 | MySQL Server | Připojení pomocí protokolu Pct |
 | MySQL Server | Využití místa na disku v bajtech |
