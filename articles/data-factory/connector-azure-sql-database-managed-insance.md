@@ -54,9 +54,9 @@ Pro službu Azure SQL Database Managed Instance propojené se podporují násled
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
 | type | Vlastnost type musí být nastavená na **SqlServer**. | Ano. |
-| připojovací řetězec |Tato vlastnost určuje informace připojovací řetězec, který je nezbytný pro připojení do spravované instance pomocí ověřování SQL nebo ověřování Windows. Další informace najdete v tématu v následujících příkladech. <br/>Označte toto pole jako SecureString bezpečně uložit ve službě Data Factory. Můžete také umístit hesla ve službě Azure Key Vault, a pokud se jedná o přijetí změn ověřování SQL `password` konfigurace z připojovacího řetězce. Podívejte se na příklad JSON pod tabulkou a [Store přihlašovacích údajů ve službě Azure Key Vault](store-credentials-in-key-vault.md) článku s dalšími podrobnostmi. |Ano. |
-| uživatelské jméno |Tato vlastnost určuje uživatelské jméno, pokud používáte ověřování Windows. Příkladem je **domainname\\uživatelské jméno**. |Ne. |
-| heslo |Tato vlastnost určuje heslo pro uživatelský účet, který jste zadali pro uživatelské jméno. Vyberte **SecureString** k bezpečnému ukládání connectionString informace ve službě Data Factory nebo [odkazovat tajného klíče do služby Azure Key Vault](store-credentials-in-key-vault.md). |Ne. |
+| connectionString |Tato vlastnost určuje informace připojovací řetězec, který je nezbytný pro připojení do spravované instance pomocí ověřování SQL nebo ověřování Windows. Další informace najdete v tématu v následujících příkladech. <br/>Označte toto pole jako SecureString bezpečně uložit ve službě Data Factory. Můžete také umístit hesla ve službě Azure Key Vault, a pokud se jedná o přijetí změn ověřování SQL `password` konfigurace z připojovacího řetězce. Podívejte se na příklad JSON pod tabulkou a [Store přihlašovacích údajů ve službě Azure Key Vault](store-credentials-in-key-vault.md) článku s dalšími podrobnostmi. |Ano. |
+| userName |Tato vlastnost určuje uživatelské jméno, pokud používáte ověřování Windows. Příkladem je **domainname\\uživatelské jméno**. |Ne. |
+| password |Tato vlastnost určuje heslo pro uživatelský účet, který jste zadali pro uživatelské jméno. Vyberte **SecureString** k bezpečnému ukládání connectionString informace ve službě Data Factory nebo [odkazovat tajného klíče do služby Azure Key Vault](store-credentials-in-key-vault.md). |Ne. |
 | connectVia | To [prostředí integration runtime](concepts-integration-runtime.md) se používá pro připojení k úložišti. Zřizování v místním prostředí integration runtime ve stejné virtuální síti jako spravovanou instanci. |Ano. |
 
 >[!TIP]
@@ -282,7 +282,7 @@ Ke zkopírování dat do Azure SQL Database Managed Instance, nastavte typ jímk
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
 | type | Nastavte vlastnost typ jímky aktivity kopírování **SqlSink**. | Ano. |
-| WriteBatchSize |Počet řádků, která se vloží do tabulky SQL **dávce**.<br/>Povolené hodnoty jsou celá čísla pro počet řádků. |Ne (výchozí: 10,000). |
+| writeBatchSize |Počet řádků, která se vloží do tabulky SQL **dávce**.<br/>Povolené hodnoty jsou celá čísla pro počet řádků. |Ne (výchozí: 10,000). |
 | writeBatchTimeout |Tato vlastnost určuje doba čekání na dokončení před vypršením časového limitu operace insert služby batch.<br/>Povolené jsou hodnoty pro časové období. Příkladem je "00: 30:00," což je 30 minut. |Ne. |
 | preCopyScript |Tato vlastnost určuje dotaz SQL pro aktivitu kopírování ke spuštění před zápisu dat do spravované instance. Je vyvolána pouze jednou za kopírování spustit. Tuto vlastnost můžete použít k vyčištění dat předem. |Ne. |
 | sqlWriterStoredProcedureName |Tento název je pro uloženou proceduru, která definuje, jak použít zdroj dat do cílové tabulky. Příklady postupy jsou to upsertuje nebo transformace pomocí vlastní obchodní logikou. <br/><br/>Tuto uloženou proceduru se *za batch*. Chcete-li provést operaci, která se spustí pouze jednou a nemá nic se zdrojovými daty, například delete nebo truncate, použijte `preCopyScript` vlastnost. |Ne. |
@@ -510,37 +510,37 @@ Po zkopírování dat do a z Azure SQL Database Managed Instance se používají
 | Azure SQL Database Managed Instance datového typu | Azure Data Factory dočasné datový typ |
 |:--- |:--- |
 | bigint |Int64 |
-| Binární |Byte] |
-| Bit |Logická hodnota |
-| Char |Řetězec, Char] |
+| binary |Byte[] |
+| bit |Boolean |
+| char |String, Char[] |
 | date |DateTime |
-| Datum a čas |DateTime |
+| Datetime |DateTime |
 | datetime2 |DateTime |
-| DateTimeOffset |DateTimeOffset |
+| Datetimeoffset |DateTimeOffset |
 | Decimal |Decimal |
-| Atribut FILESTREAM (varbinary(max)) |Byte] |
+| FILESTREAM attribute (varbinary(max)) |Byte[] |
 | Float |Double |
-| image |Byte] |
-| int |Datový typ Int32 |
-| peníze |Decimal |
-| nchar |Řetězec, Char] |
-| ntext |Řetězec, Char] |
-| Číselné |Decimal |
-| nvarchar |Řetězec, Char] |
-| Real |Jednoduchá |
-| ROWVERSION |Byte] |
+| image |Byte[] |
+| int |Int32 |
+| money |Decimal |
+| nchar |String, Char[] |
+| ntext |String, Char[] |
+| numeric |Decimal |
+| nvarchar |String, Char[] |
+| real |Single |
+| rowversion |Byte[] |
 | smalldatetime |DateTime |
 | smallint |Int16 |
-| Smallmoney |Decimal |
-| SQL_VARIANT |Objekt |
-| text |Řetězec, Char] |
-| time |Časový interval |
-| časové razítko |Byte] |
+| smallmoney |Decimal |
+| sql_variant |Object |
+| text |String, Char[] |
+| time |TimeSpan |
+| timestamp |Byte[] |
 | tinyint |Int16 |
-| UniqueIdentifier |Guid |
-| varbinary |Byte] |
-| varchar |Řetězec, Char] |
-| xml |XML |
+| uniqueidentifier |Guid |
+| varbinary |Byte[] |
+| varchar |String, Char[] |
+| xml |Xml |
 
 >[!NOTE]
 > Datové typy, které mapují na typ desetinné dočasné aktuálně Azure Data Factory podporuje přesnost až 28. Pokud máte data, která vyžaduje přesností větší než 28, vezměte v úvahu převodu na řetězec v příkazu jazyka SQL.
