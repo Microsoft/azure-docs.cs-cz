@@ -390,14 +390,14 @@ Pro každý typ vstupních dat se vytvoří záznam typu _WireData_. Záznamy Wi
 
 | Vlastnost | Popis |
 |---|---|
-| Počítač | Název počítače, na kterém byla data shromážděna |
+| Computer | Název počítače, na kterém byla data shromážděna |
 | TimeGenerated | Čas záznamu |
 | LocalIP | IP adresa místního počítače |
 | SessionState | Připojeno nebo Odpojeno |
 | ReceivedBytes | Množství přijatých bajtů |
 | ProtocolName | Název použitého síťového protokolu |
 | IPVersion | Verze protokolu IP |
-| Směr | Příchozí nebo odchozí |
+| Direction | Příchozí nebo odchozí |
 | MaliciousIP | IP adresa známého škodlivého zdroje |
 | Severity | Závažnost podezřelého malwaru |
 | RemoteIPCountry | Země vzdálené IP adresy |
