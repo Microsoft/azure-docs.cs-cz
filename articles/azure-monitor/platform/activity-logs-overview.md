@@ -143,9 +143,9 @@ Add-AzLogProfile -Name my_log_profile -StorageAccountId /subscriptions/s1/resour
 | Name |Ano |Název profilu protokolu. |
 | StorageAccountId |Ne |ID prostředku účtu úložiště, ke kterému má být uložen v protokolu aktivit. |
 | serviceBusRuleId |Ne |ID pravidla služby Service Bus pro obor názvů služby Service Bus, by měl mít vytvořené v služby event hubs. Je řetězec v tomto formátu: `{service bus resource ID}/authorizationrules/{key name}`. |
-| Umístění |Ano |Čárkami oddělený seznam oblasti, pro které chcete shromažďovat události protokolu aktivit. |
+| Location |Ano |Čárkami oddělený seznam oblasti, pro které chcete shromažďovat události protokolu aktivit. |
 | RetentionInDays |Ano |Počet dní pro události, které by měla být zachována, od 1 do 2147483647. Hodnota nula ukládá protokoly po neomezenou dobu (trvale). |
-| Kategorie |Ne |Čárkami oddělený seznam kategorie událostí, které se mají shromažďovat. Možné hodnoty jsou Write, Delete a akce. |
+| Category |Ne |Čárkami oddělený seznam kategorie událostí, které se mají shromažďovat. Možné hodnoty jsou Write, Delete a akce. |
 
 #### <a name="remove-a-log-profile"></a>Odebrání profilu protokolu
 
