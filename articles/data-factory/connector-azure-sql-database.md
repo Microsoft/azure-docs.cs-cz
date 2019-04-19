@@ -55,7 +55,7 @@ Pro služby Azure SQL Database, která je propojená se podporují tyto vlastnos
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
 | type | **Typ** musí být vlastnost nastavena na **AzureSqlDatabase**. | Ano |
-| připojovací řetězec | Zadejte informace potřebné pro připojení k instanci Azure SQL Database **connectionString** vlastnost. <br/>Označte toto pole jako SecureString bezpečně uložit ve službě Data Factory. Heslo/klíč instančního objektu můžete také vložit do služby Azure Key Vault, a pokud se jedná o přijetí změn ověřování SQL `password` konfigurace z připojovacího řetězce. Podívejte se na příklad JSON pod tabulkou a [Store přihlašovacích údajů ve službě Azure Key Vault](store-credentials-in-key-vault.md) článku s dalšími podrobnostmi. | Ano |
+| connectionString | Zadejte informace potřebné pro připojení k instanci Azure SQL Database **connectionString** vlastnost. <br/>Označte toto pole jako SecureString bezpečně uložit ve službě Data Factory. Heslo/klíč instančního objektu můžete také vložit do služby Azure Key Vault, a pokud se jedná o přijetí změn ověřování SQL `password` konfigurace z připojovacího řetězce. Podívejte se na příklad JSON pod tabulkou a [Store přihlašovacích údajů ve službě Azure Key Vault](store-credentials-in-key-vault.md) článku s dalšími podrobnostmi. | Ano |
 | servicePrincipalId | Zadejte ID klienta vaší aplikace. | Ano, pokud používáte ověřování Azure AD se instanční objekt služby. |
 | servicePrincipalKey | Zadejte klíč aplikace. Označte toto pole jako **SecureString** bezpečně uložit ve službě Data Factory nebo [odkazovat tajného klíče do služby Azure Key Vault](store-credentials-in-key-vault.md). | Ano, pokud používáte ověřování Azure AD se instanční objekt služby. |
 | tenant | Zadejte informace o tenantovi (domény ID tenanta nebo název) v rámci které se nachází vaše aplikace. Načtení podržením ukazatele myši v pravém horním rohu webu Azure portal. | Ano, pokud používáte ověřování Azure AD se instanční objekt služby. |
@@ -373,7 +373,7 @@ Chcete-li kopírovat data do služby Azure SQL Database, nastavte **typ** vlastn
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
 | type | **Typ** vlastnost jímky aktivity kopírování musí být nastavena na **SqlSink**. | Ano |
-| WriteBatchSize | Počet řádků, která se vloží do tabulky SQL **dávce**.<br/> Je povolená hodnota **celé číslo** (počet řádků). | Ne. Výchozí hodnota je 10000. |
+| writeBatchSize | Počet řádků, která se vloží do tabulky SQL **dávce**.<br/> Je povolená hodnota **celé číslo** (počet řádků). | Ne. Výchozí hodnota je 10000. |
 | writeBatchTimeout | Doba čekání pro dávku vložte na dokončení před vypršením časového limitu operace.<br/> Je povolená hodnota **timespan**. Příklad: "00: 30:00" (30 minut). | Ne |
 | preCopyScript | Zadejte dotaz SQL pro aktivitu kopírování ke spuštění před zápisem dat do Azure SQL Database. Pouze vyvolá se jednou za kopírování spustit. Tuto vlastnost použijte k vyčištění dat předem. | Ne |
 | sqlWriterStoredProcedureName | Název uložené procedury, která definuje, jak použít zdroj dat do cílové tabulky. Příkladem je upsertuje nebo transformovat pomocí vlastní obchodní logikou. <br/><br/>Tuto uloženou proceduru se **za batch**. Pro operace, které pouze spustit jednou a nemají co dělat se zdrojovými daty, použijte `preCopyScript` vlastnost. Příklad operace jsou delete a zkrátit. | Ne |
@@ -605,37 +605,37 @@ Při kopírování dat z nebo do služby Azure SQL Database, se používají ná
 | Azure SQL Database datový typ | Data Factory dočasné datový typ |
 |:--- |:--- |
 | bigint |Int64 |
-| Binární |Byte] |
-| Bit |Logická hodnota |
-| Char |Řetězec, Char] |
+| binary |Byte[] |
+| bit |Boolean |
+| char |String, Char[] |
 | date |DateTime |
-| Datum a čas |DateTime |
+| Datetime |DateTime |
 | datetime2 |DateTime |
-| DateTimeOffset |DateTimeOffset |
+| Datetimeoffset |DateTimeOffset |
 | Decimal |Decimal |
-| Atribut FILESTREAM (varbinary(max)) |Byte] |
+| FILESTREAM attribute (varbinary(max)) |Byte[] |
 | Float |Double |
-| image |Byte] |
-| int |Datový typ Int32 |
-| peníze |Decimal |
-| nchar |Řetězec, Char] |
-| ntext |Řetězec, Char] |
-| Číselné |Decimal |
-| nvarchar |Řetězec, Char] |
-| Real |Jednoduchá |
-| ROWVERSION |Byte] |
+| image |Byte[] |
+| int |Int32 |
+| money |Decimal |
+| nchar |String, Char[] |
+| ntext |String, Char[] |
+| numeric |Decimal |
+| nvarchar |String, Char[] |
+| real |Single |
+| rowversion |Byte[] |
 | smalldatetime |DateTime |
 | smallint |Int16 |
-| Smallmoney |Decimal |
-| SQL_VARIANT |Objekt |
-| text |Řetězec, Char] |
-| time |Časový interval |
-| časové razítko |Byte] |
-| tinyint |Bajt |
-| UniqueIdentifier |Guid |
-| varbinary |Byte] |
-| varchar |Řetězec, Char] |
-| xml |XML |
+| smallmoney |Decimal |
+| sql_variant |Object |
+| text |String, Char[] |
+| time |TimeSpan |
+| timestamp |Byte[] |
+| tinyint |Byte |
+| uniqueidentifier |Guid |
+| varbinary |Byte[] |
+| varchar |String, Char[] |
+| xml |Xml |
 
 >[!NOTE]
 > Pro mapování typů dat na typ desetinné dočasné aktuálně ADF podporují přesnost až 28. Pokud máte data s přesností větší než 28, zvažte možnost převést na řetězec v dotazu SQL.
