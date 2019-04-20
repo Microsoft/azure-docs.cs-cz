@@ -113,7 +113,7 @@ Vlastnosti pro automatizaci úloh jsou popsány v následující tabulce.
 
 | Vlastnost | Popis |
 |:--- |:--- |
-| Sady Runbook |Jeden název entity s názvem spuštění sady runbook. |
+| runbook |Jeden název entity s názvem spuštění sady runbook. |
 | parameters |Entitu pro každou hodnotu parametru vyžaduje sadu runbook. |
 
 Úloha obsahuje název sady runbook a všechny hodnoty parametrů pro odeslaný do runbooku.  Úloha by měla [závisí na]( solutions-solution-file.md#resources) runbook, který se spouští od sady runbook musí být vytvořen před skončením úlohy.  Pokud máte více sad runbook, který by měl být spuštěn můžete definovat jejich pořadí tak, že úloha závisí na jiné úlohy, které by se měl spustit první.
@@ -145,7 +145,7 @@ Vlastnosti pro certifikáty prostředky jsou popsány v následující tabulce.
 | Vlastnost | Popis |
 |:--- |:--- |
 | base64Value |Hodnoty Base 64 pro certifikát. |
-| Kryptografický otisk |Kryptografický otisk certifikátu. |
+| thumbprint |Kryptografický otisk certifikátu. |
 
 
 
@@ -171,8 +171,8 @@ Vlastnosti Credential zdroje jsou popsány v následující tabulce.
 
 | Vlastnost | Popis |
 |:--- |:--- |
-| uživatelské jméno |Uživatelské jméno pro přihlašovací údaje. |
-| heslo |Heslo pro přihlašovací údaje. |
+| userName |Uživatelské jméno pro přihlašovací údaje. |
+| password |Heslo pro přihlašovací údaje. |
 
 
 ## <a name="schedules"></a>Plány
@@ -242,8 +242,8 @@ Vlastnosti pro plány úloh jsou popsány v následující tabulce.
 
 | Vlastnost | Popis |
 |:--- |:--- |
-| Název plánu |Jeden **název** entitě s názvem podle plánu. |
-| Název sady runbook  |Jeden **název** entitě s názvem sady runbook.  |
+| schedule name |Jeden **název** entitě s názvem podle plánu. |
+| runbook name |Jeden **název** entitě s názvem sady runbook.  |
 
 
 
@@ -272,7 +272,7 @@ Vlastnosti pro proměnné prostředky jsou popsány v následující tabulce.
 | description | Volitelný popis pro proměnnou. |
 | IsEncrypted | Určuje, jestli by měl být šifrovaná proměnná. |
 | type | Tato vlastnost aktuálně nemá žádný vliv.  Datový typ proměnné určí počáteční hodnota. |
-| hodnota | Hodnota proměnné. |
+| value | Hodnota proměnné. |
 
 > [!NOTE]
 > **Typ** vlastnost aktuálně nemá žádný vliv na proměnné vytváří.  Datový typ pro proměnnou určí hodnotu.  
@@ -282,7 +282,7 @@ Pokud jste nastavili počáteční hodnotu pro proměnnou, musí nakonfigurovat 
 | Typ dat | Popis | Příklad: | Řeší na |
 |:--|:--|:--|:--|
 | string   | Hodnota uzavřete do dvojitých uvozovek.  | "\"Hello world\"" | "Hello world" |
-| Číselné  | Číselná hodnota v jednoduchých uvozovkách.| "64" | 64 |
+| numeric  | Číselná hodnota v jednoduchých uvozovkách.| "64" | 64 |
 | Boolean  | **Hodnota TRUE** nebo **false** v uvozovkách.  Všimněte si, že tato hodnota musí obsahovat malá písmena. | "true" | true (pravda) |
 | datetime | Hodnota serializovaná data.<br>Rutiny ConvertTo-Json v prostředí PowerShell můžete použít k vygenerování této hodnoty pro konkrétní datum.<br>Příklad: get datum "5/24/2017 13:14:57" \| ConvertTo-Json | "\\/Date(1495656897378)\\/" | 2017-05-24 13:14:57 |
 
