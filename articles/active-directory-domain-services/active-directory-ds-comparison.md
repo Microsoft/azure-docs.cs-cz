@@ -16,10 +16,10 @@ ms.topic: conceptual
 ms.date: 07/07/2017
 ms.author: ergreenl
 ms.openlocfilehash: fbd876ad46342dec7e2e73b92d3aafbd37cc205b
-ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58892292"
 ---
 # <a name="how-to-decide-if-azure-ad-domain-services-is-right-for-your-use-case"></a>Jak určit, pokud Azure AD Domain Services bude vyhovovat vašemu případu použití
@@ -38,7 +38,7 @@ Následující tabulka vám pomůže rozhodnout mezi pomocí Azure AD Domain Ser
 | --- |:---:|:---:|
 | [**Spravované služby**](active-directory-ds-comparison.md#managed-service) |**&#x2713;** |**&#x2715;** |
 | [**Zabezpečení nasazení**](active-directory-ds-comparison.md#secure-deployments) |**&#x2713;** |Správce musí k zabezpečení nasazení. |
-| [**Server DNS**](active-directory-ds-comparison.md#dns-server) |**&#x2713;**(spravovaná služba) |**&#x2713;** |
+| [**DNS server**](active-directory-ds-comparison.md#dns-server) |**&#x2713;**(spravovaná služba) |**&#x2713;** |
 | [**Oprávnění správce domény nebo Enterprise**](active-directory-ds-comparison.md#domain-or-enterprise-administrator-privileges) |**&#x2715;** |**&#x2713;** |
 | [**Připojení k doméně**](active-directory-ds-comparison.md#domain-join) |**&#x2713;** |**&#x2713;** |
 | [**Ověřování v doméně pomocí protokolů NTLM a Kerberos**](active-directory-ds-comparison.md#domain-authentication-using-ntlm-and-kerberos) |**&#x2713;** |**&#x2713;** |
@@ -49,7 +49,7 @@ Následující tabulka vám pomůže rozhodnout mezi pomocí Azure AD Domain Ser
 | [**Přečtěte si LDAP**](active-directory-ds-comparison.md#ldap-read) |**&#x2713;** |**&#x2713;** |
 | [**Protokol Secure LDAP (LDAPS)**](active-directory-ds-comparison.md#secure-ldap) |**&#x2713;** |**&#x2713;** |
 | [**Zápis LDAP**](active-directory-ds-comparison.md#ldap-write) |**&#x2715;** |**&#x2713;** |
-| [**Zásada skupiny**](active-directory-ds-comparison.md#group-policy) |**&#x2713;** |**&#x2713;** |
+| [**Zásady skupiny**](active-directory-ds-comparison.md#group-policy) |**&#x2713;** |**&#x2713;** |
 | [**Geograficky distribuované nasazení**](active-directory-ds-comparison.md#geo-dispersed-deployments) |**&#x2715;** |**&#x2713;** |
 
 #### <a name="managed-service"></a>Spravované služby

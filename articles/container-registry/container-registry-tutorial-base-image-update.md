@@ -9,10 +9,10 @@ ms.date: 09/24/2018
 ms.author: danlep
 ms.custom: seodec18, mvc
 ms.openlocfilehash: a5d89051ef479cf9d87ca8f921e05c6d0be12b8c
-ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58892173"
 ---
 # <a name="tutorial-automate-container-image-builds-when-a-base-image-is-updated-in-an-azure-container-registry"></a>Kurz: Při aktualizaci základní image do služby Azure container registry. automatizace sestavování imagí kontejneru 
@@ -45,9 +45,9 @@ Tento kurz předpokládá, že jste už dokončili kroky v prvních dvou kurzech
 
 Než budete pokračovat, dokončete (pokud jste to už neudělali) první dva kurzy:
 
-[Sestavování imagí kontejneru v cloudu pomocí služby Azure Container Registry úlohy](container-registry-tutorial-quick-task.md)
+[Sestavení imagí kontejnerů v cloudu pomocí Azure Container Registry Tasks](container-registry-tutorial-quick-task.md)
 
-[Automatizace sestavování imagí kontejneru s úlohami registru kontejneru Azure](container-registry-tutorial-build-task.md)
+[Automatizace sestavení imagí kontejnerů pomocí Azure Container Registry Tasks](container-registry-tutorial-build-task.md)
 
 ### <a name="configure-the-environment"></a>Konfigurace prostředí
 

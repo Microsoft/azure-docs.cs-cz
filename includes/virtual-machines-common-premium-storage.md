@@ -239,7 +239,7 @@ Pokud chcete zachovat geograficky redundantní kopie vašich snímky, můžete z
 
 Podrobné informace o provádění operací REST k objektům BLOB stránky v účtu služby premium storage najdete v tématu [operace služby se službou Azure Premium Storage s objekty Blob](https://go.microsoft.com/fwlink/?LinkId=521969).
 
-### <a name="managed-disks"></a>Managed Disks
+### <a name="managed-disks"></a>Spravované disky
 
 Snímek spravovaného disku je jen pro čtení kopie spravovaného disku. Snímek se ukládá jako standardní spravovaný disk. V současné době [přírůstkových snímků](../articles/virtual-machines/windows/incremental-snapshots.md) nejsou podporovány pro spravované disky. Informace o vytvoření snímku spravovaného disku najdete v tématu [vytvoření kopie VHD uložené jako spravovaný Azure disk pomocí spravované snímky ve Windows](../articles/virtual-machines/windows/snapshot-copy-managed-disk.md) nebo [vytvoření kopie VHD uložené jako spravovaný Azure s použitím spravovaných disků snímky v systému Linux](../articles/virtual-machines/linux/snapshot-copy-managed-disk.md).
 

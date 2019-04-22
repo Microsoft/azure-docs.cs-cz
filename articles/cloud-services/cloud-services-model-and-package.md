@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 07/05/2017
 ms.author: jeconnoc
 ms.openlocfilehash: 9c9f7dfd9ecbf085da19fc010e497caef8c18629
-ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/04/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58917307"
 ---
 # <a name="what-is-the-cloud-service-model-and-how-do-i-package-it"></a>Jaký je model cloudové služby a jak ho balíček?
@@ -92,7 +92,7 @@ Jakmile je Cloudová služba běží v Azure, můžete změnit konfiguraci prost
 
 Můžete se podívat do [schématu definice služby](/previous-versions/azure/reference/ee758711(v=azure.100)) pro lepší přehled schématu XML se tady použít, ale tady je rychlý vysvětlení některých prvků:
 
-**Lokality**  
+**Weby**  
 Obsahuje definice pro weby nebo webové aplikace, které jsou hostované ve službě IIS7.
 
 **InputEndpoints**  
@@ -110,10 +110,10 @@ Obsahuje definice pro certifikáty, které jsou potřeba pro roli. Předchozí p
 **LocalResources**  
 Obsahuje definice pro prostředky místní úložiště. Místní úložiště prostředků je vyhrazené adresáře v systému souborů virtuálního počítače, ve kterém je spuštěna instance role.
 
-**Importuje**  
+**Importy**  
 Obsahuje definice pro importované moduly. Předchozí příklad kódu ukazuje moduly pro připojení ke vzdálené ploše a připojení k Azure.
 
-**Spuštění**  
+**Startup**  
 Obsahuje úlohy, které jsou spouštěny, když se role spustila. Úkoly jsou definovány v .cmd nebo spustitelný soubor.
 
 <a name="cscfg"></a>

@@ -7,10 +7,10 @@ ms.date: 04/02/2019
 ms.topic: article
 ms.service: multiple
 ms.openlocfilehash: d83b4c89d0f37e2217974d6d1ed32ac73d8fa4df
-ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58893771"
 ---
 # <a name="micro-focus-devtest-environments-on-azure"></a>Micro zaměření vývojových/testovacích prostředí v Azure
@@ -21,7 +21,7 @@ Micro fokus uzavřel partnerství s Microsoftem nabízí atraktivní mainframov�
 
 Micro fokus nabízí změna hostování vývoj a testování změna hostování řešení, které rozšiřují existující COBOL a PL / můžu obchodních aplikací do Azure.
 
-**Další postup**
+**Další kroky**
 
 - [Instalace Micro fokus Enterprise Server 4.0 a podnikový vývojář 4.0 v Azure](./set-up-micro-focus-azure.md)
 - [Nastavit Micro fokus CICS BankDemo Micro fokus Enterprise Developer 4.0 v Azure](./demo.md)

@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 07/27/2017
 ms.author: yegu
 ms.openlocfilehash: 65e8553969aa92848b1c4496724a7b7754b5d659
-ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58895592"
 ---
 # <a name="azure-cache-for-redis-faq"></a>Nejčastější dotazy ke službě Azure Cache for Redis
@@ -80,7 +80,7 @@ Nejčastější dotazy v této části se věnují běžné monitorování a dot
 * [Proč se můj klient odpojen z mezipaměti?](#why-was-my-client-disconnected-from-the-cache)
 
 ## <a name="prior-cache-offering-faqs"></a>Nejčastější dotazy k předchozí z variant mezipaměti
-* [Kterou z variant Mezipaměti Azure si mám vybrat?](#which-azure-cache-offering-is-right-for-me)
+* [Kterou z variant mezipaměti Azure je pro mě nejlepší?](#which-azure-cache-offering-is-right-for-me)
 
 ### <a name="what-is-azure-cache-for-redis"></a>Co je Azure mezipaměti Redis?
 Pro Redis Azure Cache je založená na oblíbené open source softwaru [Redis](https://redis.io/). Poskytuje přístup k zabezpečené vyhrazené mezipaměti Azure pro Redis spravované microsoftem a přístupná z libovolné aplikace v Azure. Podrobnější přehled najdete [mezipaměti Azure Redis](https://azure.microsoft.com/services/cache/) stránky produktu na Azure.com.
@@ -192,7 +192,7 @@ StackExchange.Redis má hodně možností. Tato část pojednává o některých
 
 Obvykle jsou výchozí hodnoty klienta dostatečná. Můžete podrobně upravit možnosti na základě vašich úloh.
 
-* **Opakování**
+* **Počet opakování**
   * Obecné pokyny pro ConnectRetry a ConnectTimeout je rychle vygenerovala chybu a zkuste to znovu. Tento návod vychází z vašich úloh a kolik času na průměr přebírá pro svého klienta do příkaz Redis a přijetí odpovědi.
   * Umožňuje automaticky znovu připojila, namísto kontroluje se stav připojení a opětovné připojení sami StackExchange.Redis. **Vyhněte se použití vlastnosti ConnectionMultiplexer.IsConnected**.
   * Snowballing – někdy může narazíte na problém, kde je to zkoušet dál a opakované pokusy rozrůst a nikdy obnoví. Pokud dojde k snowballing, měli byste zvážit, pomocí algoritmu opakování exponenciálního omezení rychlosti, jak je popsáno v [obecné pokyny k opakovaným](../best-practices-retry-general.md) publikoval(a) skupina Microsoft Patterns a postupy.

@@ -26,7 +26,7 @@ Tady jsou konkrétní charakteristiky systému Kafka ve službě HDInsight:
 
 * Microsoft poskytuje smlouvu o úrovni služeb (SLA) zajišťující 99,9% dostupnost platformy Kafka. Další informace najdete v dokumentu [Informace o smlouvě SLA pro službu HDInsight](https://azure.microsoft.com/support/legal/sla/hdinsight/v1_0/).
 
-* Jako záložní úložiště pro platformu Kafka se používá služba Azure Managed Disks. Managed Disks může pro každého zprostředkovatele Kafka poskytovat až 16 TB úložiště. Informace o konfiguraci spravovaných disků s platformou Kafka na HDInsight naleznete v tématu [zvýšení škálovatelnosti systému Apache Kafka v HDInsight](apache-kafka-scalability.md).
+* Jako záložní úložiště pro platformu Kafka se používají Spravované disky Azure. Spravované disky mohou pro každého zprostředkovatele Kafka poskytovat až 16 TB úložiště. Informace o konfiguraci spravovaných disků s platformou Kafka na HDInsight naleznete v tématu [zvýšení škálovatelnosti systému Apache Kafka v HDInsight](apache-kafka-scalability.md).
 
     Další informace o spravovaných discích najdete v tématu [Azure Managed Disks](../../virtual-machines/windows/managed-disks-overview.md).
 

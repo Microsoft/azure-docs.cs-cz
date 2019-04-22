@@ -71,7 +71,7 @@ Tady jsou velikosti Azure objekty, které je možné zapisovat. Ujistěte se, ž
 | Objekt blob bloku        | ~ 4,75 TB                                                 |
 | Objekt blob stránky         | 8 TiB <br> Každý soubor odeslat ve formátu objektů blob stránky musí být zarovnaná 512 bajtů (integrální více), jinak se odeslání nezdaří. <br> VHD a VHDX jsou 512 bajtů zarovnána. |
 | Soubory Azure        | 1 TiB                                                      |
-| Managed Disks     | 4 TiB <br> Další informace o velikosti a omezení naleznete v tématu: <li>[Cíle škálovatelnosti standardních disků SSD](../virtual-machines/windows/disks-types.md#standard-ssd)</li><li>[Cíle škálovatelnosti disků Premium SSD](../virtual-machines/windows/disks-types.md#standard-hdd)</li><li>[Cíle škálovatelnosti standardní HDD](../virtual-machines/windows/disks-types.md#premium-ssd)</li><li>[Ceny a fakturace spravovaných disků](../virtual-machines/windows/disks-types.md#billing)</li>                                                     |
+| Spravované disky     | 4 TiB <br> Další informace o velikosti a omezení naleznete v tématu: <li>[Cíle škálovatelnosti standardních disků SSD](../virtual-machines/windows/disks-types.md#standard-ssd)</li><li>[Cíle škálovatelnosti disků Premium SSD](../virtual-machines/windows/disks-types.md#standard-hdd)</li><li>[Cíle škálovatelnosti standardní HDD](../virtual-machines/windows/disks-types.md#premium-ssd)</li><li>[Ceny a fakturace spravovaných disků](../virtual-machines/windows/disks-types.md#billing)</li>                                                     |
 
 ## <a name="azure-block-blob-page-blob-and-file-naming-conventions"></a>Objekt blob bloku Azure, objekty blob stránky a konvence pojmenování souboru
 

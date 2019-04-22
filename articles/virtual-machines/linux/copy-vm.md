@@ -50,7 +50,7 @@ az vm deallocate \
 
 K vytvoření kopie virtuálního počítače, vytvořte kopii základní virtuální pevný disk. Tento proces vytvoří specializované virtuální pevný disk (VHD) jako spravovaný Disk, který obsahuje stejné konfigurace a nastavení jako zdrojový virtuální počítač.
 
-Další informace o službě Azure Managed Disks najdete v tématu [Přehled služby Azure Managed Disks](../windows/managed-disks-overview.md). 
+Další informace o Spravovaných discích Azure najdete v tématu [Přehled Spravovaných disků Azure](../windows/managed-disks-overview.md). 
 
 1.  Seznam všech virtuálních počítačů a název jeho operační systém na disku s [az vm list](/cli/azure/vm#az-vm-list). Následující příklad zobrazí seznam všech virtuálních počítačů ve skupině prostředků s názvem *myResourceGroup*:
     

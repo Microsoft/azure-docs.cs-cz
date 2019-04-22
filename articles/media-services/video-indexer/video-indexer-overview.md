@@ -10,10 +10,10 @@ ms.topic: article
 ms.date: 03/12/2019
 ms.author: juliako
 ms.openlocfilehash: a182b9ec0fb945b4c2ffddd7a977df8ad9a8d250
-ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58895964"
 ---
 # <a name="what-is-video-indexer"></a>Co je Video Indexer?
@@ -81,4 +81,4 @@ Jste připraveni začít pracovat s Video Indexerem. Další informace najdete v
 
 - [Začínáme s webem Video Indexer](video-indexer-get-started.md)
 - [Zpracování obsahu pomocí rozhraní REST API služby Video Indexer](video-indexer-use-apis.md)
-- [Vložení widgetů visual ve vaší aplikaci](video-indexer-embed-widgets.md)
+- [Vložení vizuálních widgetů do vaší aplikace](video-indexer-embed-widgets.md)

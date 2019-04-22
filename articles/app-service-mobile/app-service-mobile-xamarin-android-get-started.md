@@ -15,10 +15,10 @@ ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: crdun
 ms.openlocfilehash: 29efa963a254913e3d4744ade1d161c5c8ce42e4
-ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58893346"
 ---
 # <a name="create-a-xamarinandroid-app"></a>Vytvoření aplikace Xamarin.Android
@@ -71,7 +71,7 @@ Pokud máte se sestavením řešení problémy, spusťte správce balíčků NuG
 Upozorňujeme, že všechny balíčky podpory odkazované ve vašem projektu musí mít stejnou verzi. [Balíček NuGet pro mobilní aplikace Azure](https://www.nuget.org/packages/Microsoft.Azure.Mobile.Client/)má`Xamarin.Android.Support.CustomTabs`závislost pro platformu Android, takže pokud váš projekt používá novější balíčky podpory, je nutné nainstalovat přímo tento balíček s požadovanou verzi, aby nedocházelo ke konfliktům.
 
 ## <a name="next-steps"></a>Další postup
-* [Přidání Offline synchronizace do aplikace](app-service-mobile-xamarin-android-get-started-offline-data.md)
+* [Přidání offline synchronizace do aplikace](app-service-mobile-xamarin-android-get-started-offline-data.md)
 * [Přidání ověřování do aplikace](app-service-mobile-xamarin-android-get-started-users.md)
 * [Přidání nabízených oznámení do aplikace Xamarin.Android](app-service-mobile-xamarin-android-get-started-push.md)
 * [Jak používat spravovaného klienta pro Azure Mobile Apps](app-service-mobile-dotnet-how-to-use-client-library.md)

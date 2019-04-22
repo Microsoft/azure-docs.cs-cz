@@ -31,7 +31,7 @@ Všichni předplatitelé můžou na virtuálním počítači Azure spouštět se
 ## <a name="how-much-storage-can-i-use-with-a-virtual-machine"></a>Kolik úložiště můžu využít s virtuálním počítačem?
 Každý datový disk může být až na 4 TB (4 095 GB). Počet datových disků, které můžete využít, závisí na velikosti virtuálního počítače. Podrobnosti najdete v článku [Velikosti služeb Virtual Machines](sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 
-Služba Azure Managed Disks se doporučené nabídky diskových úložišť pro použití s Azure Virtual Machines k trvalému ukládání dat. Pro každý virtuální počítač můžete použít několik služeb Managed Disks. Spravované disky nabídka dva typy odolných úložišť: Premium a Standard Managed Disks. Informace o cenách najdete v tématu [spravované disky ceny](https://azure.microsoft.com/pricing/details/managed-disks).
+Služba Azure Managed Disks se doporučené nabídky diskových úložišť pro použití s Azure Virtual Machines k trvalému ukládání dat. Pro každý virtuální počítač můžete použít několik Spravovaných disků. Spravované disky nabídka dva typy odolných úložišť: Premium a Standard Managed Disks. Informace o cenách najdete v tématu [spravované disky ceny](https://azure.microsoft.com/pricing/details/managed-disks).
 
 Účty úložiště Azure můžete také poskytují úložiště pro disk s operačním systémem a všechny datové disky. Každý disk je soubor .vhd uložený jako objekt blob stránky. Podrobnosti o cenách najdete v tématu [Podrobnosti o cenách úložiště](https://azure.microsoft.com/pricing/details/storage/).
 

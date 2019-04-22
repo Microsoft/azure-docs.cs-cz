@@ -14,10 +14,10 @@ ms.workload: na
 ms.date: 02/21/2019
 ms.author: tomfitz
 ms.openlocfilehash: 442551424fea353aa7eddef6e7eba6e934f95691
-ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58905847"
 ---
 # <a name="creating-and-deploying-azure-resource-groups-through-visual-studio"></a>Vytvoření a nasazení skupiny prostředků Azure pomocí sady Visual Studio
@@ -145,7 +145,7 @@ Teď můžete svůj projekt nasadit. Když nasadíte projekt skupiny prostředk�
     **databaseName** určuje název databáze, kterou chcete vytvořit. 
    
     ![Dialogové okno Upravit parametry](./media/vs-azure-tools-resource-groups-deployment-projects-create-deploy/provide-parameters.png)
-5. Stisknutím tlačítka **Nasadit** nasadíte projekt do Azure. Otevře se powershellová konzola mimo instanci sady Visual Studio. Po zobrazení výzvy zadejte v powershellové konzole heslo správce SQL Serveru. **Konzole PowerShellu může být skrytá za jinými položkami nebo minimalizovaná na hlavním panelu.** Najděte ji, vyberte ji a zadejte heslo.
+5. Stisknutím tlačítka **Nasadit** nasadíte projekt do Azure. Otevře se powershellová konzola mimo instanci sady Visual Studio. Po zobrazení výzvy zadejte v powershellové konzole heslo správce SQL Serveru. **Konzola PowerShellu může být skrytá za jinými položkami nebo minimalizovaná na hlavním panelu.** Najděte ji, vyberte ji a zadejte heslo.
    
    > [!NOTE]
    > Sada Visual Studio vás může požádat o instalaci rutin Azure PowerShell. Pokud k tomu budete vyzváni, nainstalujte je. Je třeba moduly Azure Powershellu k úspěšnému nasazení skupin prostředků. Skript Powershellu v projektu nefunguje s novými [modul Azure PowerShell Az](/powershell/azure/new-azureps-module-az). 

@@ -147,7 +147,7 @@ GO
 
 | Vlastnost | Popis | Povolené hodnoty | Požaduje se |
 | --- | --- | --- | --- |
-| writeBatchTimeout |Čekací doba pro dávkové operace insert dokončit před vypršením časového limitu. |Časový interval<br/><br/> Příklad: "00: 30:00" (30 minut). |Ne |
+| writeBatchTimeout |Čekací doba pro dávkové operace insert dokončit před vypršením časového limitu. |TimeSpan<br/><br/> Příklad: "00: 30:00" (30 minut). |Ne |
 | writeBatchSize |Vloží data do tabulky SQL writeBatchSize dosáhne velikosti vyrovnávací paměti. |Celé číslo (počet řádků) |Ne (výchozí: 10000) |
 | sqlWriterCleanupScript |Zadejte dotaz pro aktivitu kopírování ke spuštění tak, že po vyčištění dat určitý řez. Další informace najdete v tématu [opakovatelné kopírování](#repeatable-copy). |Příkaz dotazu. |Ne |
 | sliceIdentifierColumnName |Zadejte název sloupce pro aktivitu kopírování k vyplnění s identifikátorem automaticky generovány řez, který se používá k vyčištění dat určitý řez, kdy se znovu spustit. Další informace najdete v tématu [opakovatelné kopírování](#repeatable-copy). |Název sloupce pro sloupec s datovým typem binary(32). |Ne |
@@ -644,9 +644,9 @@ Při přesouvání dat do a z Azure SQL Database, se používají následující
 | date |DateTime |
 | Datetime |DateTime |
 | datetime2 |DateTime |
-| Datetimeoffset |DateTimeOffset |
+| Datetimeoffset |Datetimeoffset |
 | Decimal |Decimal |
-| FILESTREAM attribute (varbinary(max)) |Byte[] |
+| Atribut FILESTREAM (varbinary(max)) |Byte[] |
 | Float |Double |
 | image |Byte[] |
 | int |Int32 |
@@ -656,14 +656,14 @@ Při přesouvání dat do a z Azure SQL Database, se používají následující
 | numeric |Decimal |
 | nvarchar |String, Char[] |
 | real |Single |
-| rowversion |Byte[] |
+| ROWVERSION |Byte[] |
 | smalldatetime |DateTime |
 | smallint |Int16 |
 | smallmoney |Decimal |
 | sql_variant |Object * |
 | text |String, Char[] |
 | time |TimeSpan |
-| timestamp |Byte[] |
+| časové razítko |Byte[] |
 | tinyint |Byte |
 | uniqueidentifier |Guid |
 | varbinary |Byte[] |

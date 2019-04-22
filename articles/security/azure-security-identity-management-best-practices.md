@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 09/17/2018
 ms.author: barclayn
 ms.openlocfilehash: f872c61ad0597d2307cd244668fdfc258f7a45cb
-ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58895681"
 ---
 # <a name="azure-identity-management-and-access-control-security-best-practices"></a>Azure správu identit a řízení přístupu osvědčené postupy zabezpečení

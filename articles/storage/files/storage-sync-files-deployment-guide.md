@@ -9,10 +9,10 @@ ms.date: 07/19/2018
 ms.author: wgries
 ms.subservice: files
 ms.openlocfilehash: a5d6f7757b5a4a5a2048c9822c4f52bee6d19bfe
-ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58905116"
 ---
 # <a name="deploy-azure-file-sync"></a>Nasazení Synchronizace souborů Azure
@@ -47,16 +47,16 @@ Důrazně doporučujeme, abyste si přečetli [plánování nasazení služby so
 ## <a name="prepare-windows-server-to-use-with-azure-file-sync"></a>Příprava Windows Serveru na použití se Synchronizací souborů Azure
 Pro každý server, který chcete používat s Azure File Sync, včetně každého uzlu serveru v clusteru převzetí služeb při selhání, zakázat **konfigurace rozšířeného zabezpečení aplikace Internet Explorer**. To se vyžaduje jenom pro počáteční server registrace. Po zaregistrování serveru můžete tuto možnost znovu povolit.
 
-# [<a name="portal"></a>Portál](#tab/azure-portal)
+# <a name="portaltabazure-portal"></a>[Azure Portal](#tab/azure-portal)
 1. Otevřete správce serveru.
 2. Klikněte na tlačítko **místní Server**:  
-    ![Místní server na levé straně uživatelského rozhraní Správce serveru](media/storage-sync-files-deployment-guide/prepare-server-disable-IEESC-1.PNG)
+    !["Místního serveru" v levé části uživatelského rozhraní správce serveru](media/storage-sync-files-deployment-guide/prepare-server-disable-IEESC-1.PNG)
 3. V podokně **Vlastnosti** vyberte odkaz **Konfigurace rozšířeného zabezpečení aplikace Internet Explorer**.  
-    ![Podokno Konfigurace rozšířeného zabezpečení aplikace Internet Explorer v uživatelském rozhraní Správce serveru](media/storage-sync-files-deployment-guide/prepare-server-disable-IEESC-2.PNG)
+    ![V podokně "Konfigurace rozšířeného zabezpečení" v Uživatelském rozhraní správce serveru](media/storage-sync-files-deployment-guide/prepare-server-disable-IEESC-2.PNG)
 4. V **konfigurace rozšířeného zabezpečení aplikace Internet Explorer** dialogu **vypnout** pro **správci** a **uživatelé**:  
-    ![Automaticky otevírané okno Konfigurace rozšířeného zabezpečení aplikace Internet Explorer s vybranou možností Vypnuto](media/storage-sync-files-deployment-guide/prepare-server-disable-IEESC-3.png)
+    ![Pop – okno Konfigurace rozšířeného zabezpečení aplikace Internet Explorer s "Off" vybraná](media/storage-sync-files-deployment-guide/prepare-server-disable-IEESC-3.png)
 
-# [<a name="powershell"></a>PowerShell](#tab/azure-powershell)
+# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 Pokud chcete zakázat rozšířeného zabezpečení aplikace Internet Explorer, spusťte z relace Powershellu se zvýšenými oprávněními následující:
 
 ```powershell
@@ -82,7 +82,7 @@ Nasazení služby Azure File Sync začíná umístěním **služba synchronizace
 > [!Note]
 > Služba synchronizace úložiště Zdědit z předplatného a skupiny prostředků, které byly nasazeny do přístupová oprávnění. Doporučujeme důkladně zkontrolovat kdo má přístup k němu. Entity s oprávněním k zápisu může provést synchronizaci nové sady souborů ze serverů zaregistrovaných do tohoto úložiště synchronizační služba a způsobit, že datový tok do úložiště Azure, který je přístupný na ně.
 
-# [<a name="portal"></a>Portál](#tab/azure-portal)
+# <a name="portaltabazure-portal"></a>[Azure Portal](#tab/azure-portal)
 Pokud chcete nasadit službu synchronizace úložiště, přejděte na [webu Azure portal](https://portal.azure.com/), klikněte na tlačítko *vytvořit prostředek* a vyhledejte Azure File Sync. Ve výsledcích hledání vyberte **Azure File Sync**a pak vyberte **vytvořit** otevřít **nasadit synchronizaci úložiště** kartu.
 
 V podokně, které se otevře, zadejte následující informace:
@@ -94,7 +94,7 @@ V podokně, které se otevře, zadejte následující informace:
 
 Až budete hotovi, vyberte **vytvořit** nasadit službu synchronizace úložiště.
 
-# [<a name="powershell"></a>PowerShell](#tab/azure-powershell)
+# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 Před interakci s rutinami pro správu Azure File Sync, je potřeba importovat knihovny DLL a vytvoření kontextu správy Azure File Sync. Se totiž rutiny pro správu Azure File Sync ještě nejsou součástí moduly Azure Powershellu.
 
 > [!Note]  
@@ -170,7 +170,7 @@ New-AzureRmStorageSyncService -StorageSyncServiceName $storageSyncName
 ## <a name="install-the-azure-file-sync-agent"></a>Instalace agenta Synchronizace souborů Azure
 Agent Synchronizace souborů Azure je balíček ke stažení, který umožňuje synchronizaci Windows Serveru se sdílenou složkou Azure. 
 
-# [<a name="portal"></a>Portál](#tab/azure-portal)
+# <a name="portaltabazure-portal"></a>[Azure Portal](#tab/azure-portal)
 Agenta z si můžete stáhnout [Microsoft Download Center](https://go.microsoft.com/fwlink/?linkid=858257). Po dokončení stahování, klikněte dvakrát na balíček MSI, který chcete spustit instalaci agenta Azure File Sync.
 
 > [!Important]  
@@ -182,7 +182,7 @@ Doporučujeme, abyste udělali toto:
 
 Po dokončení instalace agenta Azure File Sync rozhraní registrace serveru se automaticky otevře. Služba synchronizace úložiště musí mít před registrací; viz následující část o tom, jak vytvořit službu synchronizace úložiště.
 
-# [<a name="powershell"></a>PowerShell](#tab/azure-powershell)
+# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 Spusťte následující kód Powershellu správnou verzi agenta Azure File Sync pro váš operační systém stáhnout a nainstalovat do vašeho systému.
 
 > [!Important]  
@@ -228,7 +228,7 @@ Registrací vašeho Windows Serveru ve službě synchronizace úložiště se vy
 > [!Note]
 > Registrace serveru používá přihlašovací údaje Azure k vytvoření vztahu důvěryhodnosti mezi službou synchronizace úložiště a systému Windows Server, ale následně serveru vytváří a používá svůj vlastní identity, která je platná tak dlouho, dokud zůstává registrovaného serveru a platnost aktuálního tokenu sdíleného přístupového podpisu (SAS úložiště). Nový token SAS nelze mu vystavit na server po zrušit, proto odebrání serveru možnost přístupu k vaší sdílené složky Azure, zastavuje se všechny synchronizace serveru.
 
-# [<a name="portal"></a>Portál](#tab/azure-portal)
+# <a name="portaltabazure-portal"></a>[Azure Portal](#tab/azure-portal)
 Uživatelské rozhraní serveru registrace otvírat automaticky po instalaci agenta Azure File Sync. Pokud tomu tak není, lze jej otevřít ručně z umístění souboru: C:\Program Files\Azure\StorageSyncAgent\ServerRegistration.exe. Když se otevře uživatelské rozhraní serveru registrace, vyberte **přihlášení** začít.
 
 Po přihlášení, zobrazí se výzva pro následující informace:
@@ -241,7 +241,7 @@ Po přihlášení, zobrazí se výzva pro následující informace:
 
 Po výběru příslušné informace, vyberte **zaregistrovat** k dokončení registrace serveru. V rámci procesu registrace se zobrazí výzva k dalšímu přihlášení.
 
-# [<a name="powershell"></a>PowerShell](#tab/azure-powershell)
+# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 ```powershell
 $registeredServer = Register-AzureRmStorageSyncServer -StorageSyncServiceName $storageSyncName
 ```
@@ -256,7 +256,7 @@ Koncový bod cloudu je ukazatel na sdílené složky Azure. Všechny koncové bo
 > [!Important]  
 > Můžete provádět změny libovolný koncový bod v cloudu nebo koncový bod serveru ve skupině synchronizace a soubory se synchronizovalo s ostatní koncové body ve skupině synchronizace. Pokud provedete změny ke koncovým bodům cloudu (Azure file share) přímo, nutné změny nejprve mají být zjišťované úlohou detekce změn v Azure File Sync. Pro koncový bod cloudu jenom jednou za 24 hodin se spustí úloha zjišťování změn. Další informace najdete v tématu [soubory Azure – nejčastější dotazy](storage-files-faq.md#afs-change-detection).
 
-# [<a name="portal"></a>Portál](#tab/azure-portal)
+# <a name="portaltabazure-portal"></a>[Azure Portal](#tab/azure-portal)
 Chcete-li vytvořit skupinu synchronizace v [webu Azure portal](https://portal.azure.com/), přejděte do služby synchronizace úložiště a pak vyberte **+ skupina synchronizace**:
 
 ![Vytvoření nové skupiny synchronizace na webu Azure Portal](media/storage-sync-files-deployment-guide/create-sync-group-1.png)
@@ -268,7 +268,7 @@ V podokně, které se otevře, zadejte následující informace pro vytvoření 
 - **Účet úložiště**: Pokud vyberete **vyberte účet úložiště**, zobrazí se další podokno, ve kterém můžete vybrat účet úložiště obsahující sdílenou složku Azure, který chcete synchronizovat s.
 - **Sdílené složky Azure**: Název sdílené složky Azure se kterým chcete synchronizovat.
 
-# [<a name="powershell"></a>PowerShell](#tab/azure-powershell)
+# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 Chcete-li vytvořit skupinu synchronizace, spusťte následující příkaz Powershellu. Nezapomeňte nahradit `<my-sync-group>` s požadovaným názvem skupiny synchronizace.
 
 ```powershell
@@ -318,7 +318,7 @@ New-AzureRmStorageSyncCloudEndpoint `
 ## <a name="create-a-server-endpoint"></a>Vytvoření koncového bodu serveru
 Koncový bod serveru představuje konkrétní umístění na zaregistrovaném serveru, například složku na svazku serveru. Koncový bod serveru musí být cesta na registrovaném serveru (spíše než připojené sdílené složky) a pokud chcete použít vrstvení cloudu, cesta musí být na svazku bez systému. Úložiště připojené k síti (NAS) se nepodporuje.
 
-# [<a name="portal"></a>Portál](#tab/azure-portal)
+# <a name="portaltabazure-portal"></a>[Azure Portal](#tab/azure-portal)
 Chcete-li přidat koncový bod serveru, přejděte do nově vytvořeného synchronizace skupiny a pak vyberte **přidat koncový bod serveru**.
 
 ![Přidání nového koncového bodu serveru v podokně skupiny synchronizace](media/storage-sync-files-deployment-guide/create-sync-group-2.png)
@@ -332,7 +332,7 @@ V podokně **Přidat koncový bod serveru** zadejte následující informace pro
 
 Chcete-li přidat koncový bod serveru **vytvořit**. Soubory jsou teď udržovat synchronizované sdílené složky Azure a Windows Server. 
 
-# [<a name="powershell"></a>PowerShell](#tab/azure-powershell)
+# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 Spusťte následující příkazy prostředí PowerShell k vytvoření koncového bodu serveru a nezapomeňte nahradit `<your-server-endpoint-path>` a `<your-volume-free-space>` s požadované hodnoty.
 
 ```powershell
@@ -417,4 +417,4 @@ Další informace najdete v tématu [spolupráce Azure File Sync s distribuovan�
 ## <a name="next-steps"></a>Další postup
 - [Přidání nebo odebrání koncového bodu Azure File Sync serveru](storage-sync-files-server-endpoint.md)
 - [Zaregistrovat nebo zrušit registraci serveru pomocí služby Azure File Sync](storage-sync-files-server-registration.md)
-- [Sledování služby Synchronizace souborů Azure](storage-sync-files-monitoring.md)
+- [Monitorování Azure File Sync](storage-sync-files-monitoring.md)

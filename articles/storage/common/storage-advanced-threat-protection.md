@@ -9,15 +9,15 @@ ms.date: 04/03/2019
 ms.author: monhaber
 ms.manager: shaik
 ms.openlocfilehash: 78338ece1bc70d8410bd71183a34aaf1a52f2d1b
-ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58904113"
 ---
 # <a name="advanced-threat-protection-for-azure-storage"></a>Advanced Threat Protection pro Azure Storage
 
-Rozšířená ochrana před internetovými útoky pro Azure Storage poskytuje další úroveň inteligentního zabezpečení, která zjistí a potenciálně nebezpečné pokusy o přístup nebo zneužití účtů úložiště. Tato úroveň ochrany lze řešení ohrožení, aniž byste museli být odborné zabezpečení nebo spravovat systémy monitorování zabezpečení. 
+Advanced Threat Protection pro Azure Storage poskytuje další vrstvu analytických nástrojů zabezpečení, která detekuje neobvyklé a potenciálně škodlivé pokusy o přístup nebo využití účtů úložiště. Tato úroveň ochrany lze řešení ohrožení, aniž byste museli být odborné zabezpečení nebo spravovat systémy monitorování zabezpečení. 
 
 Pokud dojde k anomálie v aktivitě se aktivují upozornění zabezpečení.  Tyto výstrahy zabezpečení jsou integrované s [Azure Security Center](https://azure.microsoft.com/services/security-center/)a jsou také odesílány e-mailem správci předplatného s podrobnostmi o podezřelé aktivitě a doporučení o tom, jak vyšetřením a odstraněním hrozeb.
 
@@ -80,7 +80,7 @@ Příkazy rozhraní Rest API k vytvoření, aktualizaci nebo získat nastavení 
 
 Pomocí následujících rutin prostředí PowerShell:
 
-  * [Povolit rozšířenou ochranu před internetovými útoky](https://docs.microsoft.com/powershell/module/az.security/enable-azsecurityadvancedthreatprotection)
+  * [Povolit rozšířené ochrany před internetovými útoky](https://docs.microsoft.com/powershell/module/az.security/enable-azsecurityadvancedthreatprotection)
   * [Získáte tak rozšířené ochrany před internetovými útoky](https://docs.microsoft.com/powershell/module/az.security/get-azsecurityadvancedthreatprotection)
   * [Zakázat rozšířené ochrany před internetovými útoky](https://docs.microsoft.com/powershell/module/az.security/disable-azsecurityadvancedthreatprotection)
 

@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: rimman
 ms.openlocfilehash: 012eacb172acfdeb0b82343c484c664a3f75310e
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58876698"
 ---
 # <a name="optimize-multi-region-cost-in-azure-cosmos-db"></a>Optimalizujte náklady více oblastí ve službě Azure Cosmos DB
@@ -31,7 +31,7 @@ V systému s několika hlavními databázemi, net ru k dispozici pro zápis oper
 
 Vezměte v úvahu, že máte kontejner v oblasti západní USA zřízený s propustností 10 tisíc RU/s a 1 TB dat ukládá tento měsíc. Předpokládejme, že přidáte tři oblasti: východní USA, Severní Evropa a východní Asie, každá má stejné úložiště a propustnost a chcete mít možnost zapisovat do kontejnerů ve všech oblastech, čtyři z globálně distribuovaných aplikací. Celkový měsíční vyúčtování (za předpokladu, že nabídka 31 dní) za měsíc je následujícím způsobem:
 
-|**Položka**|**Využití (měsíčně)**|**Sazba**|**Měsíční náklady**|
+|**Položka**|**Využití (měsíčně)**|**Frekvence**|**Měsíční náklady**|
 |----|----|----|----|
 |Faktura za propustnost za kontejner v oblasti západní USA (více oblastí zápisu) |10 tisíc RU/s * 24 * 31 |0,016 $ za 100 RU/s za hodinu |$1,190.40 |
 |Faktura za propustnost za 3 Další oblasti: východní USA, Severní Evropa a východní Asie (více oblastí zápisu) |(3 + 1) * 10 tisíc RU/s * 24 * 31 |0,016 $ za 100 RU/s za hodinu |$4,761.60 |

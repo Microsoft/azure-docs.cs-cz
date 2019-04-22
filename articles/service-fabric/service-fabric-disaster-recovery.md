@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
 ms.openlocfilehash: 7153a6ed4a91e59eea936f1e17d827a40bb99371
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58883237"
 ---
 # <a name="disaster-recovery-in-azure-service-fabric"></a>Zotavení po havárii v Azure Service Fabric
@@ -69,7 +69,7 @@ Například Řekněme, že selhání zdroj napájení způsobí, že rack počí
 
 Upgradovací domény jsou užitečné pro modelování oblasti, kde se to software upgradovat ve stejnou dobu. Z tohoto důvodu definování upgradu domény také často hranice, ve kterém je software odstavit během plánovaného upgradu. Upgrade aplikace Service Fabric a služby postupujte podle stejného modelu. Další informace o upgradu, upgradovacích domén a stavu modelu Service Fabric, která pomáhá zabránit nežádoucí změny v vliv na vaši službu a clusteru se zajištěním provozu najdete v těchto dokumentech:
 
- - [Upgrade aplikace](service-fabric-application-upgrade.md)
+ - [Application Upgrade](service-fabric-application-upgrade.md)
  - [Kurz upgradu aplikace](service-fabric-application-upgrade-tutorial.md)
  - [Service Fabric stavu modelu](service-fabric-health-introduction.md)
 

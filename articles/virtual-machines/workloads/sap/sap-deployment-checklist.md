@@ -17,10 +17,10 @@ ms.date: 04/01/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: fef2d42282291bb0ea6afeea03e60234d3d47a4d
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58878719"
 ---
 # <a name="sap-workload-on-azure-planning-and-deployment-checklist"></a>Úloh SAP v Azure kontrolní seznam plánování a nasazení 
@@ -59,7 +59,7 @@ V této fázi je naplánovaná migrace úloh SAP do veřejného cloudu Azure. Mi
         1.  Definujte na základě RTO a RPO vysokou dostupnost a obnovení architektura vyžaduje, aby vypadala jako
         2.  Pro zajištění vysoké dostupnosti v rámci stejné zóny zkontrolujte požadované DBMS se nabízí v Azure. Většina DBMS nabízejí synchronních metod synchronní aktivní pohotovostní režim, který doporučujeme pro produkční systémy. Také kontrola systému SAP související dokumentaci pro různé databáze počínaje [aspekty pro nasazení DBMS virtuálních počítačů Azure pro úlohy SAP](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms_guide_general) a související dokumenty
             1.  Pomocí služby clusteru převzetí služeb při selhání Windows se sdíleným diskem konfigurací pro vrstvu DBMS, jako je například pro SQL Server [tady](https://docs.microsoft.com/sql/sql-server/failover-clusters/windows/always-on-failover-cluster-instances-sql-server?view=sql-server-2017) je **není** podporována. Místo toho řešení, jako je:
-                1.  [SQL Server AlwaysOn](https://docs.microsoft.com/azure/virtual-machines/windows/sqlclassic/virtual-machines-windows-classic-ps-sql-alwayson-availability-groups) 
+                1.  [Technologie AlwaysOn systému SQL Server](https://docs.microsoft.com/azure/virtual-machines/windows/sqlclassic/virtual-machines-windows-classic-ps-sql-alwayson-availability-groups) 
                 2.  [Oracle Data Guard](https://docs.microsoft.com/azure/virtual-machines/workloads/oracle/configure-oracle-dataguard)
                 3.  [Systémové replikace HANA](https://help.sap.com/viewer/6b94445c94ae495c83a19646e7c3fd56/2.0.01/en-US/b74e16a9e09541749a745f41246a065e.html)
         3.  Pro zotavení po havárii v různých oblastech Azure zkontrolujte, jaké možnosti jsou nabízeny od různých dodavatelů DBMS. Většina z nich podporuje asynchronní replikaci nebo přesouvání protokolu
@@ -99,7 +99,7 @@ Pilotní nasazení můžete spustit před nebo v paralelní k plánování a př
       3.  Vyhodnocování a testování velikosti virtuálních počítačů Azure týkajících se propustnosti maximální velikost úložiště a propustnost sítě pro různé typy virtuálních počítačů, kterou jste zvolili ve fázi plánování. Data můžete najít v:
           1.  [Velikosti virtuálních počítačů Windows v Azure](https://docs.microsoft.com/azure/virtual-machines/windows/sizes?toc=%2fazure%2fvirtual-network%2ftoc.json). Je důležité vzít v úvahu **maximální počet mezipamětí propustností** k určení velikosti
           2.  [Velikosti virtuálních počítačů s Linuxem v Azure](https://docs.microsoft.com/azure/virtual-machines/linux/sizes?toc=%2fazure%2fvirtual-network%2ftoc.json) je důležité vzít v úvahu **maximální počet mezipamětí propustností** k určení velikosti
-   2. Storage
+   2. Úložiště
       1.  Použití [úložiště SSD na úrovni Standard Azure](https://docs.microsoft.com/azure/virtual-machines/windows/disks-types#standard-ssd) minimální, virtuální počítače představující vrstvy aplikace SAP a jiných výkonu citlivé nasazení DBMS
       2.  Vám doporučujeme nepoužívat [disky Azure HDD standardní](https://docs.microsoft.com/azure/virtual-machines/windows/disks-types#standard-hdd) obecně
       2.  Použití [Azure Premium Storage](https://docs.microsoft.com/azure/virtual-machines/windows/disks-types#premium-ssd) pro všechny virtuální počítače DBMS, které jsou vzdáleně citlivé na výkon

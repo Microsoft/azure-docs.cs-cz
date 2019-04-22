@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 04/19/2017
 ms.author: jeconnoc
 ms.openlocfilehash: ff4dd571911719e4f2ec27952785432960a56d42
-ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/04/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58917219"
 ---
 # <a name="how-to-update-a-cloud-service"></a>Postup aktualizace cloudové služby
@@ -189,4 +189,4 @@ Následující diagram znázorňuje, jak službu než obsahuje dvě role jsou di
 ## <a name="next-steps"></a>Další postup
 [Jak spravovat Cloud Services](cloud-services-how-to-manage-portal.md)  
 [Jak monitorovat Cloud Services](cloud-services-how-to-monitor.md)  
-[Postup konfigurace služby Cloud Services](cloud-services-how-to-configure-portal.md)  
+[Jak konfigurovat Cloud Services](cloud-services-how-to-configure-portal.md)  

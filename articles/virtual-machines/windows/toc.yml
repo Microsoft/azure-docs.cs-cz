@@ -439,7 +439,7 @@ items:
     href: https://azure.microsoft.com/develop/python/
   - name: Rozhraní REST pro Compute
     href: /rest/api/compute
-  - name: Rozhraní REST pro Managed Disks
+  - name: Rozhraní REST pro Spravované disky
     href: /rest/api/compute/disks
   - name: Šablona Resource Manageru
     displayName: ARM

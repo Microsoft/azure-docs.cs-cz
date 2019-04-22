@@ -9,10 +9,10 @@ ms.date: 1/8/2019
 ms.author: victorh
 ms.custom: mvc
 ms.openlocfilehash: 42d3bd2285574b4416ec06af13006353880a7ca5
-ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58903518"
 ---
 # <a name="quickstart-direct-web-traffic-with-azure-application-gateway---azure-portal"></a>Rychlý start: Přímé webového provozu s využitím Azure Application Gateway – Azure portal
@@ -177,4 +177,4 @@ K odebrání skupiny prostředků:
 ## <a name="next-steps"></a>Další postup
 
 > [!div class="nextstepaction"]
-> [Správa webového provozu s bránou application gateway pomocí Azure CLI](./tutorial-manage-web-traffic-cli.md)
+> [Správa webového provozu pomocí aplikační brány a Azure CLI](./tutorial-manage-web-traffic-cli.md)

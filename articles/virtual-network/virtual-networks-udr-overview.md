@@ -13,10 +13,10 @@ ms.workload: infrastructure-services
 ms.date: 10/26/2017
 ms.author: malop;kumud
 ms.openlocfilehash: ad35d440904c7b65e27b4ead75cec00daa20f8ff
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58878498"
 ---
 # <a name="virtual-network-traffic-routing"></a>Směrování provozu virtuální sítě
@@ -181,7 +181,7 @@ Pro objasnění konceptů v tomto článku následující části popisují:
 ### <a name="requirements"></a>Požadavky
 
 1. Implementace dvou virtuálních sítí ve stejné oblasti Azure a povolení komunikace prostředků mezi těmito virtuálními sítěmi.
-2. Povolení zabezpečené komunikace místní sítě s oběma virtuálními sítěmi přes internet prostřednictvím tunelu VPN. *Alternativně můžete použít připojení ExpressRoute, ale v tomto příkladu se používá připojení k síti VPN.*
+2. Povolení zabezpečené komunikace místní sítě s oběma virtuálními sítěmi přes internet prostřednictvím tunelu VPN. *Alternativně můžete použít připojení ExpressRoute, ale v tomto příkladu se používá připojení VPN.*
 3. Pro jednu podsíť v jedné virtuální síti:
  
     - Vynucení toku veškerého odchozího provozu z podsítě, kromě provozu do služby Azure Storage a provozu v rámci podsítě, přes virtuální síťové zařízení pro účely zkoumání a protokolování.
@@ -255,8 +255,8 @@ Směrovací tabulka pro podsíť *Subnet2* obsahuje všechny výchozí trasy a v
 
 ## <a name="next-steps"></a>Další postup
 
-- [Vytvořit tabulku trasy definované uživatelem s trasami a síťové virtuální zařízení](tutorial-create-route-table-portal.md)
-- [Konfigurace BGP pro služby Azure VPN Gateway](../vpn-gateway/vpn-gateway-bgp-resource-manager-ps.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
+- [Vytvoření směrovací tabulky definované uživatelem s trasami a virtuálními síťovými zařízeními](tutorial-create-route-table-portal.md)
+- [Konfigurace protokolu BGP pro Azure VPN Gateway](../vpn-gateway/vpn-gateway-bgp-resource-manager-ps.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
 - [Použití protokolu BGP s ExpressRoute](../expressroute/expressroute-routing.md?toc=%2fazure%2fvirtual-network%2ftoc.json#route-aggregation-and-prefix-limits)
 - [Zobrazení všech tras pro podsíť](diagnose-network-routing-problem.md). Směrovací tabulka definovaná uživatelem zobrazuje pouze trasy definované uživatelem, a ne výchozí trasy ani trasy protokolu BGP pro podsíť. Při zobrazení všech tras se zobrazí výchozí trasy, trasy protokolu BGP a trasy definované uživatelem pro podsíť, ve které je síťové rozhraní.
 - [Určení typu dalšího segmentu směrování](../network-watcher/diagnose-vm-network-routing-problem.md?toc=%2fazure%2fvirtual-network%2ftoc.json) mezi virtuálním počítačem a cílovou IP adresou. Funkce dalšího segmentu směrování ve službě Azure Network Watcher umožňuje určit, jestli provoz odchází z podsítě a směruje se tam, kam by podle vás měl.

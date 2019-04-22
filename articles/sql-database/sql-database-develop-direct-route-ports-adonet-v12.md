@@ -13,10 +13,10 @@ ms.reviewer: sstein
 manager: craigg
 ms.date: 04/03/2019
 ms.openlocfilehash: ddb115370c62371e769ef98e0031f7e0379bafbf
-ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/04/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58916168"
 ---
 # <a name="ports-beyond-1433-for-adonet-45"></a>Porty nad 1433 pro ADO.NET 4.5
@@ -82,8 +82,8 @@ Tato část vysvětluje zástupných názvů, které odkazují na verze produktu
 * Připojení ke službě Azure SQL Database V12 prostřednictvím přesměrování https://techcommunity.microsoft.com/t5/DataCAT/Connect-to-Azure-SQL-Database-V12-via-Redirection/ba-p/305362
 
 * [Seznam verzí protokolu TDS.](http://www.freetds.org/userguide/tdshistory.htm)
-* [Přehled vývoje v SQL Database](sql-database-develop-overview.md)
+* [Přehled vývoje SQL Database](sql-database-develop-overview.md)
 * [Brána firewall služby Azure SQL Database](sql-database-firewall-configure.md)
-* [Postup: Konfigurace nastavení brány firewall pro SQL Database](sql-database-configure-firewall-settings.md)
+* [Postup: Konfigurace nastavení brány firewall pro službu SQL Database](sql-database-configure-firewall-settings.md)
 
 

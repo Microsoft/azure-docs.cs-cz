@@ -142,7 +142,7 @@ Pro virtuální sítě na cílový účet úložiště mezipaměti nebo úloži�
 --- | --- | ---
 Skupiny dostupnosti | Ano | Ano
 HUB | Ano | Ano  
-Managed Disks | Ano, pro převzetí služeb při selhání.<br/><br/> Navrácení služeb po obnovení spravovaných disků se nepodporuje. | Ano, pro převzetí služeb při selhání.<br/><br/> Navrácení služeb po obnovení spravovaných disků se nepodporuje.
+Spravované disky | Ano, pro převzetí služeb při selhání.<br/><br/> Navrácení služeb po obnovení spravovaných disků se nepodporuje. | Ano, pro převzetí služeb při selhání.<br/><br/> Navrácení služeb po obnovení spravovaných disků se nepodporuje.
 
 ## <a name="azure-vm-requirements"></a>Požadavky virtuálních počítačů Azure
 

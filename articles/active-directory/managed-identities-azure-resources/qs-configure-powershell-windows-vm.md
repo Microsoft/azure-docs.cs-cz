@@ -16,10 +16,10 @@ ms.date: 11/27/2017
 ms.author: markvi
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 6f76fef3d5e6515e9d546c709ace0a4a533c0a45
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58881167"
 ---
 # <a name="configure-managed-identities-for-azure-resources-on-an-azure-vm-using-powershell"></a>Konfigurace spravovaných identit pro prostředky Azure na Virtuálním počítači Azure pomocí Powershellu
@@ -218,5 +218,5 @@ Update-AzVm -ResourceGroupName myResourceGroup -VirtualMachine $vm -IdentityType
 - [Spravované identity pro prostředky Azure – přehled](overview.md)
 - Úplné vytvoření virtuálního počítače Azure rychlých startů naleznete v tématu:
   
-  - [Vytvoření virtuálního počítače s Windows pomocí PowerShellu](../../virtual-machines/windows/quick-create-powershell.md) 
-  - [Vytvoření virtuálního počítače s Linuxem pomocí PowerShellu](../../virtual-machines/linux/quick-create-powershell.md) 
+  - [Vytvoření virtuálního počítače s Windows pomocí Powershellu](../../virtual-machines/windows/quick-create-powershell.md) 
+  - [Vytvoření virtuálního počítače s Linuxem pomocí Powershellu](../../virtual-machines/linux/quick-create-powershell.md) 

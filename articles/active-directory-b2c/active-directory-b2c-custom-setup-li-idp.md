@@ -11,10 +11,10 @@ ms.date: 04/01/2019
 ms.author: davidmu
 ms.subservice: B2C
 ms.openlocfilehash: 5dad12596dde13cfa7e0c2031d58f605061b0e20
-ms.sourcegitcommit: d83fa82d6fec451c0cb957a76cfba8d072b72f4f
-ms.translationtype: MT
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/02/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58862790"
 ---
 # <a name="set-up-sign-in-with-a-linkedin-account-using-custom-policies-in-azure-active-directory-b2c"></a>Nastavení přihlášení s účtem LinkedIn pomocí vlastních zásad v Azure Active Directory B2C
@@ -220,7 +220,7 @@ Aktualizujte předávající stranu soubor, který iniciuje cesty uživatele, kt
 
 1. Vytvořte kopii *SignUpOrSignIn.xml* ve svém pracovním adresáři a přejmenujte jej. Například přejmenujte ho na *SignUpSignInLinkedIn.xml*.
 2. Otevřete nový soubor a aktualizujte hodnotu **PolicyId** atributu **TrustFrameworkPolicy** s jedinečnou hodnotu. Například, `SignUpSignInLinkedIn`.
-3. Aktualizujte hodnotu **PublicPolicyUri** s identifikátorem URI pro zásady. Například:`http://contoso.com/B2C_1A_signup_signin_linkedin`
+3. Aktualizujte hodnotu **PublicPolicyUri** s identifikátorem URI pro zásady. Například`http://contoso.com/B2C_1A_signup_signin_linkedin`
 4. Aktualizujte hodnotu **ReferenceId** atribut **DefaultUserJourney** tak, aby odpovídaly ID nové cesty uživatele, který jste vytvořili (SignUpSignLinkedIn).
 5. Uložte provedené změny, nahrajte soubor a pak v seznamu vyberte novou zásadu.
 6. Ujistěte se, že je vybraná aplikaci Azure AD B2C, kterou jste vytvořili v **vyberte aplikaci** pole a pak ho otestujte kliknutím **spustit nyní**.
@@ -280,7 +280,7 @@ Aktualizujte předávající stranu soubor, který iniciuje cesty uživatele, kt
 
 1. Vytvořte kopii *SignUpOrSignIn.xml* ve svém pracovním adresáři a přejmenujte jej. Například přejmenujte ho na *SignUpSignInLinkedIn.xml*.
 2. Otevřete nový soubor a aktualizujte hodnotu **PolicyId** atributu **TrustFrameworkPolicy** s jedinečnou hodnotu. Například, `SignUpSignInLinkedIn`.
-3. Aktualizujte hodnotu **PublicPolicyUri** s identifikátorem URI pro zásady. Například:`http://contoso.com/B2C_1A_signup_signin_linkedin`
+3. Aktualizujte hodnotu **PublicPolicyUri** s identifikátorem URI pro zásady. Například`http://contoso.com/B2C_1A_signup_signin_linkedin`
 4. Aktualizujte hodnotu **ReferenceId** atribut **DefaultUserJourney** tak, aby odpovídaly ID nové cesty uživatele, který jste vytvořili (SignUpSignLinkedIn).
 5. Uložte provedené změny, nahrajte soubor a pak v seznamu vyberte novou zásadu.
 6. Ujistěte se, že je vybraná aplikaci Azure AD B2C, kterou jste vytvořili v **vyberte aplikaci** pole a pak ho otestujte kliknutím **spustit nyní**.

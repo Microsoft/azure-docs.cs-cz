@@ -9,10 +9,10 @@ ms.date: 12/07/2017
 ms.author: sngun
 ms.custom: seodec18
 ms.openlocfilehash: a0d2927024dff78021d433b965bb6c0149236ddd
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58876813"
 ---
 # <a name="migrate-your-data-to-azure-cosmos-db-table-api-account"></a>Migrace dat do účtu rozhraní Table API služby Azure Cosmos DB
@@ -74,9 +74,9 @@ Pokud chcete načíst připojovací řetězec zdroje při importování z účtu
 
 ![Snímek obrazovky s možnostmi zdroje HBase](./media/table-import/cosmos-connection-string.png)
 
-[Ukázkový příkaz Azure Table Storage](#azure-table-storage)
+[Ukázkový příkaz pro Azure Table Storage](#azure-table-storage)
 
-[Ukázkový příkaz Azure Cosmos DB Table API (preview)](#table-api-preview)
+[Ukázkový příkaz pro rozhraní Table API služby Azure Cosmos DB (Preview)](#table-api-preview)
 
 ### <a name="command-line-target-settings"></a>Nastavení cíle na příkazovém řádku
 
@@ -147,4 +147,4 @@ V tomto kurzu jste se naučili:
 Teď můžete pokračovat k dalšímu kurzu, kde zjistíte, jak dotazovat data pomocí rozhraní Table API služby Azure Cosmos DB. 
 
 > [!div class="nextstepaction"]
->[Jak provádět dotazy na data?](../cosmos-db/tutorial-query-table.md)
+>[Jak dotazovat data?](../cosmos-db/tutorial-query-table.md)

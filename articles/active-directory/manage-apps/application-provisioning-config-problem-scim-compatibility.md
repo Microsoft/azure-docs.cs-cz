@@ -16,10 +16,10 @@ ms.date: 12/03/2018
 ms.author: asmalser
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: c2a2c1c415d0862b2631fa749241a9ae07df3b98
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58880147"
 ---
 # <a name="known-issues-and-resolutions-with-scim-20-protocol-compliance-of-the-azure-ad-user-provisioning-service"></a>Známé problémy a řešení pomocí SCIM 2.0 protokol dodržování předpisů služby zřizování uživatelů služby Azure AD

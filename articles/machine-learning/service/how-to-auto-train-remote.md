@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.date: 12/04/2018
 ms.custom: seodec18
 ms.openlocfilehash: 6f2d71abeacee531b21a8276f621367dd39a39d9
-ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58891663"
 ---
 # <a name="train-models-with-automated-machine-learning-in-the-cloud"></a>Trénování modelů pomocí automatizovaných strojového učení v cloudu
@@ -237,8 +237,8 @@ RunDetails(remote_run).show()
 ```
 Tady je statický obrázek pomůcky.  V poznámkovém bloku můžete kliknutím na kterýkoli řádek v tabulce najdete ve vlastnostech spuštění a výstupních protokolů pro spuštění.   Rozevírací seznam nad grafem můžete také použít k zobrazení grafu jednotlivé dostupné metriky pro každou iteraci.
 
-![pomůcky tabulky](./media/how-to-auto-train-remote/table.png)
-![widgetu graf](./media/how-to-auto-train-remote/plot.png)
+![tabulka pomůcky](./media/how-to-auto-train-remote/table.png)
+![diagram pomůcky](./media/how-to-auto-train-remote/plot.png)
 
 Ve widgetu zobrazí adresu URL můžete zobrazit a prozkoumat podrobnosti o spuštění jednotlivých.
  

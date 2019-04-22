@@ -17,10 +17,10 @@ ms.date: 03/01/2019
 ms.author: cynthn
 ms.custom: mvc
 ms.openlocfilehash: 8bc151089f76e3f27ababb479f5e893ca9a99365
-ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58905371"
 ---
 # <a name="azure-cli-samples-for-windows-virtual-machines"></a>Virtuální počítače Azure CLI ukázky pro Windows

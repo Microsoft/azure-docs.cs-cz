@@ -14,10 +14,10 @@ ms.workload: na
 ms.date: 03/22/2019
 ms.author: banders
 ms.openlocfilehash: 1edc15261520d1c2cbf9bf85a62249826edc045b
-ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
-ms.translationtype: MT
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58904437"
 ---
 # <a name="manage-reservations-for-azure-resources"></a>Správa rezervací pro prostředky Azure
@@ -56,7 +56,7 @@ Delegovat správu přístupu k rezervaci:
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 2. Vyberte **všechny služby** > **rezervace** do seznamu rezervace, které máte přístup.
 3. Vyberte rezervace, které chcete delegovat přístup ostatním uživatelům.
-4. Vyberte **řízení přístupu (IAM)**.
+4. Vyberte **Řízení přístupu (IAM)**.
 5. Vyberte **přidat přiřazení role** > **Role** > **vlastníka**. Pokud chcete udělit omezený přístup, vyberte jinou roli.
 6. Zadejte e-mailovou adresu uživatele, kterého chcete přidat jako vlastníka.
 7. Vyberte uživatele a pak vyberte **Uložit**.
@@ -98,9 +98,9 @@ Delegovat správu přístupu k rezervaci:
 
 V závislosti na typu rezervace budete moci zrušit nebo si vyměňovat rezervaci. Další informace najdete v tématu zrušení a výměna oddílů v následujících tématech:
 
-- [Předplatit si virtuální počítače se službou Azure Reserved VM Instances](..//virtual-machines/windows/prepay-reserved-vm-instances.md#cancellations-and-exchanges)
-- [Předplatíte plány softwaru SUSE z Azure rezervací](../virtual-machines/linux/prepay-suse-software-charges.md#cancellation-and-exchanges-not-allowed)
-- [Předem za výpočetní prostředky, SQL Database s Azure SQL Database vyhrazené kapacity](../sql-database/sql-database-reserved-capacity.md#cancellations-and-exchanges)
+- [Předplacení virtuálních počítačů se službou Azure Reserved VM Instances](..//virtual-machines/windows/prepay-reserved-vm-instances.md#cancellations-and-exchanges)
+- [Předplacení plánů softwaru SUSE z rezervací Azure](../virtual-machines/linux/prepay-suse-software-charges.md#cancellation-and-exchanges-not-allowed)
+- [Předplacení výpočetních prostředků SQL Database se záložní kapacitou služby Azure SQL Database](../sql-database/sql-database-reserved-capacity.md#cancellations-and-exchanges)
 
 ## <a name="change-optimize-setting-for-reserved-vm-instances"></a>Změna optimalizovat nastavení Reserved VM Instances
 
@@ -129,13 +129,13 @@ Další informace o rezervacích Azure, najdete v následujících článcích:
 - [Co jsou rezervace pro Azure?](billing-save-compute-costs-reservations.md)
 
 Koupit plán služby:
-- [Předplatit si virtuální počítače se službou Azure Reserved VM Instances](../virtual-machines/windows/prepay-reserved-vm-instances.md)
-- [Předem za výpočetní prostředky, SQL Database s Azure SQL Database vyhrazené kapacity](../sql-database/sql-database-reserved-capacity.md)
+- [Předplacení virtuálních počítačů se službou Azure Reserved VM Instances](../virtual-machines/windows/prepay-reserved-vm-instances.md)
+- [Předplacení výpočetních prostředků SQL Database se záložní kapacitou služby Azure SQL Database](../sql-database/sql-database-reserved-capacity.md)
 - [Předplatíte prostředky Azure Cosmos DB pomocí služby Azure Cosmos DB vyhrazené kapacity](../cosmos-db/cosmos-db-reserved-capacity.md)
 
 Koupit plán softwaru:
 - [Předplatíte Red Hat softwarové plány z Azure rezervací](../virtual-machines/linux/prepay-rhel-software-charges.md)
-- [Předplatíte plány softwaru SUSE z Azure rezervací](../virtual-machines/linux/prepay-suse-software-charges.md)
+- [Předplacení plánů softwaru SUSE z rezervací Azure](../virtual-machines/linux/prepay-suse-software-charges.md)
 
 Princip slevu a využití:
 - [Vysvětlení, používání sleva za rezervaci virtuálních počítačů](billing-understand-vm-reservation-charges.md)

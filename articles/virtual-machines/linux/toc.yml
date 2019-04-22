@@ -429,7 +429,7 @@ items:
       items:
       - name: Migrace na Premium Storage s Azure Site Recovery
         href: migrate-to-premium-storage-using-azure-site-recovery.md
-      - name: Převod na Managed Disks
+      - name: Převod na Spravované disky
         href: convert-unmanaged-to-managed-disks.md
       - name: Převod disku mezi úrovněmi Standard a Premium
         href: convert-disk-storage.md

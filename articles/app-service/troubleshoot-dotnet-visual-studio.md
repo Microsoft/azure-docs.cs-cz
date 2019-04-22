@@ -16,10 +16,10 @@ ms.date: 08/29/2016
 ms.author: cephalin
 ms.custom: seodec18
 ms.openlocfilehash: 67fba7a921868d0e5720216208cff7c298c926f6
-ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58895009"
 ---
 # <a name="troubleshoot-an-app-in-azure-app-service-using-visual-studio"></a>Řešení potíží s aplikace ve službě Azure App Service pomocí sady Visual Studio
@@ -654,7 +654,7 @@ Na Internetu nejsou k dispozici žádné důkladné a aktuální přehled trasov
   Starý, ale stále vhodným místem k zadání základní informace o subjektu.
 * [Naslouchací procesy trasování](/dotnet/framework/debug-trace-profile/trace-listeners)<br/>
   Informace o naslouchacích procesů trasování, ale nebude zmiňovat [WebPageTraceListener](/dotnet/api/system.web.webpagetracelistener).
-* [Průvodce: Integrace ASP.NET trasování pomocí trasování System.Diagnostics](/previous-versions/b0ectfxd(v=vs.140))<br/>
+* [Návod: Integrace ASP.NET trasování pomocí trasování System.Diagnostics](/previous-versions/b0ectfxd(v=vs.140))<br/>
   Tento článek je také starý, ale zahrnuje některé další informace, které úvodní článek nepopisuje.
 * [Trasování v zobrazení syntaxe Razor rozhraní ASP.NET MVC](https://blogs.msdn.com/b/webdev/archive/2013/07/16/tracing-in-asp-net-mvc-razor-views.aspx)<br/>
   Kromě trasování v zobrazení syntaxe Razor příspěvek také vysvětluje, jak vytvořit filtr chyba protokolovat všechny neošetřené výjimky v aplikaci MVC. Informace o tom, jak protokolovat všechny neošetřené výjimky v aplikaci webových formulářů, podívejte se na příklad Global.asax v [kompletní příklad pro obslužné rutiny chyb](/previous-versions/bb397417(v=vs.140)) na webové stránce MSDN. V MVC nebo webového formuláře Pokud chcete protokolovat určité výjimky, ale nechat výchozí rozhraní zpracování se projeví, můžete zachytit a znovu vyvolat jako v následujícím příkladu:

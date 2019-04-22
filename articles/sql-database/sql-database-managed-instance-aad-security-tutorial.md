@@ -11,10 +11,10 @@ ms.reviewer: carlrab
 manager: craigg
 ms.date: 02/20/2019
 ms.openlocfilehash: 5d168264cbc392e1ba426707429f47dea70d1ea8
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58882051"
 ---
 # <a name="tutorial-managed-instance-security-in-azure-sql-database-using-azure-ad-server-principals-logins"></a>Kurz: Zabezpečení spravované instance Azure SQL Database pomocí Azure AD objekty serveru (přihlášení)
@@ -65,8 +65,8 @@ Spravovaná instance je přístupný pouze prostřednictvím privátní IP adres
 
 První server instanční objekt Azure AD (přihlášení) musejí být vytvořeny standardní účet systému SQL Server (jiné než azure AD), který je `sysadmin`. Naleznete v následujících článcích pro příklady připojení pro spravovanou instanci:
 
-- [Rychlý start: Konfigurace virtuálního počítače Azure se připojit k managed instance](sql-database-managed-instance-configure-vm.md)
-- [Rychlý start: Konfigurace připojení typu point-to-site z místní do spravované instance](sql-database-managed-instance-configure-p2s.md)
+- [Rychlé zprovoznění: Konfigurace virtuálního počítače Azure se připojit k managed instance](sql-database-managed-instance-configure-vm.md)
+- [Rychlé zprovoznění: Konfigurace připojení typu point-to-site z místní do spravované instance](sql-database-managed-instance-configure-p2s.md)
 
 > [!IMPORTANT]
 > Správce služby Azure AD používané k nastavení spravovanou instanci nelze použít k vytvoření Azure AD objekt zabezpečení serveru (přihlášení) v rámci spravované instance. Je nutné vytvořit první Azure AD objekt zabezpečení serveru (přihlášení) pomocí účtu systému SQL Server, který je `sysadmin`. Jedná se o dočasné omezení, která bude odebrána po zavedení všeobecné dostupnosti budou objekty serveru Azure AD (přihlášení) Pokud se pokusíte vytvořit přihlášení pomocí účtu správce Azure AD se zobrazí následující chyba: `Msg 15247, Level 16, State 1, Line 1 User does not have permission to perform this action.`
@@ -445,7 +445,7 @@ Přečtěte si následující [managed instance funkce zabezpečení funkce](sql
 - [Funkce Always Encrypted](/sql/relational-databases/security/encryption/always-encrypted-database-engine)
 - [Detekce hrozeb](sql-database-managed-instance-threat-detection.md) 
 - [Dynamické maskování dat](/sql/relational-databases/security/dynamic-data-masking)
-- [Zabezpečení na úrovni řádku](/sql/relational-databases/security/row-level-security) 
+- [Zabezpečení na úrovní řádků](/sql/relational-databases/security/row-level-security) 
 - [Transparentní šifrování dat (TDE)](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql)
 
 ### <a name="managed-instance-capabilities"></a>Možnosti spravované instance

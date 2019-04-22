@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 04/02/2019
 ms.author: diberry
 ms.openlocfilehash: eb125133138c6de173fdeb90024a9e5d961a929d
-ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58895152"
 ---
 # <a name="export-and-delete-your-customer-data-in-language-understanding-luis-in-cognitive-services"></a>Exportovat a odstraňovat vaše zákaznická data v Language Understanding (LUIS) ve službě Cognitive Services
@@ -39,7 +39,7 @@ Služba LUIS uživatelé mají plnou kontrolu nad odstranit všechny uživatele 
 
 | | **Uživatelský účet** | **Aplikace** | **Příklad Utterance(s)** | **Dotazy koncových uživatelů** |
 | --- | --- | --- | --- | --- |
-| **Portál** | [Odkaz](luis-concept-data-storage.md#delete-an-account) | [Odkaz](luis-how-to-start-new-app.md#delete-app) | [Odkaz](luis-concept-data-storage.md#utterances-in-an-intent) | [Aktivní učení projevy](luis-how-to-review-endpoint-utterances.md#disable-active-learning)<br>[Zaznamenané projevy](luis-concept-data-storage.md#disable-logging-utterances) |
+| **Azure Portal** | [Odkaz](luis-concept-data-storage.md#delete-an-account) | [Odkaz](luis-how-to-start-new-app.md#delete-app) | [Odkaz](luis-concept-data-storage.md#utterances-in-an-intent) | [Aktivní učení projevy](luis-how-to-review-endpoint-utterances.md#disable-active-learning)<br>[Zaznamenané projevy](luis-concept-data-storage.md#disable-logging-utterances) |
 | **Rozhraní API** | [Odkaz](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c4c) | [Odkaz](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c39) | [Odkaz](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c0b) | [Odkaz](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/58b6f32139e2bb139ce823c9) |
 
 
@@ -56,7 +56,7 @@ Chcete-li povolit [aktivně učit](luis-how-to-review-endpoint-utterances.md#ena
 
 * [Evropa](#europe)
 * [Austrálie](#australia)
-* [Spojené státy](#united-states)
+* [Spojené státy americké](#united-states)
 
 S výjimkou aktivně učit dat (podrobnosti jsou dole), následuje LUIS [postupů úložiště dat pro regionální služby](http://azuredatacentermap.azurewebsites.net/). 
 

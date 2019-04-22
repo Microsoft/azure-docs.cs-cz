@@ -19,7 +19,7 @@ ms.locfileid: "58671808"
 
 Tento článek obsahuje odpovědi na některé nejčastější dotazy ohledně Azure Managed Disks a Azure Premium SSD disky.
 
-## <a name="managed-disks"></a>Managed Disks
+## <a name="managed-disks"></a>Spravované disky
 
 **Co je Azure Managed Disks?**
 

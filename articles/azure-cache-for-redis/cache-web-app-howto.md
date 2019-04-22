@@ -16,10 +16,10 @@ ms.date: 03/26/2018
 ms.author: yegu
 ms.custom: mvc
 ms.openlocfilehash: 0c267b2fbe639d08396d8773e077483b41b9747e
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58886365"
 ---
 # <a name="quickstart-create-an-aspnet-web-app"></a>Rychlý start: Vytvoření webové aplikace ASP.NET 
@@ -276,7 +276,7 @@ Jakmile aplikaci úspěšně místně otestujete, můžete ji nasadit do Azure a
 
     | Nastavení | Doporučená hodnota | Popis |
     | ------- | :---------------: | ----------- |
-    | **App name (Název aplikace)** | Použijte výchozí hodnotu. | Po nasazení do Azure se název aplikace stane názvem hostitele této aplikace. Kvůli zachování jedinečnosti může být v případě potřeby tento název doplněný o časové razítko. |
+    | **Název aplikace** | Použijte výchozí hodnotu. | Po nasazení do Azure se název aplikace stane názvem hostitele této aplikace. Kvůli zachování jedinečnosti může být v případě potřeby tento název doplněný o časové razítko. |
     | **Předplatné** | Zvolte svoje předplatné Azure. | K tomuto předplatnému se účtují všechny související poplatky za hosting. Pokud máte několik předplatných Azure, zkontrolujte, že je vybrané to správné.|
     | **Skupina prostředků** | Použijte stejnou skupinu prostředků, ve které jste vytvořili mezipaměť (například *TestResourceGroup*). | Skupina prostředků vám pomůže spravovat všechny prostředky jako skupinu. Až budete později chtít aplikaci odstranit, stačí jen odstranit tuto skupinu. |
     | **Plán služby App Service** | Vyberte **Nový** a potom vytvořte nový plán služby App Service s názvem *TestingPlan*. <br />Použijte stejné **Umístění** jako při vytváření mezipaměti. <br />Jako velikost zvolte **Free**. | Plán služby App Service definuje sadu výpočetních prostředků pro provozování webové aplikace. |
@@ -337,4 +337,4 @@ Po chvíli se skupina prostředků včetně všech prostředků, které obsahuje
 V dalším kurzu použijete Azure Cache pro Redis v vyzkoušet realističtější scénář pro zvýšení výkonu aplikace. Tuto aplikaci aktualizujete tak, aby do mezipaměti ukládala tabulku výsledků s využitím principu s doplňováním mezipaměti aplikací pomocí ASP.NET a databáze.
 
 > [!div class="nextstepaction"]
-> [Vytvoření žebříčkové s doplňováním mezipaměti technologie ASP.NET](cache-web-app-cache-aside-leaderboard.md)
+> [Vytvoření tabulky výsledků s principem doplňování mezipaměti aplikací v ASP.NET](cache-web-app-cache-aside-leaderboard.md)

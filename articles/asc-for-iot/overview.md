@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 03/18/2019
 ms.author: mlottner
 ms.openlocfilehash: 49decb2d67c8ff16f9912fea8e8ece1a3bd9feb5
-ms.sourcegitcommit: d83fa82d6fec451c0cb957a76cfba8d072b72f4f
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/02/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58863028"
 ---
 # <a name="introducing-azure-security-center-for-iot"></a>Představujeme Azure Security Center pro IoT
@@ -56,7 +56,7 @@ Získejte výhodu nad vyvíjejícími se kybernetickými útoky pomocí pokroči
 V tomto přehledu jste se dozvěděli o funkcích a službách ASC pro IoT. Další informace o ASC pro IoT architekturu, požadavky a zjistěte, jak začít, najdete v následujících článcích:
 
 - [Architektura](architecture.md)
-- [Požadavky služeb](service-prerequisites.md)
+- [Požadavky na služby](service-prerequisites.md)
 - [Začínáme](getting-started.md)
 - [Definice řešení](quickstart-configure-your-solution.md)
 - [ASC pro IoT – nejčastější dotazy](resources-frequently-asked-questions.md)

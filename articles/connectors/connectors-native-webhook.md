@@ -12,10 +12,10 @@ ms.topic: article
 tags: connectors
 ms.date: 07/21/2016
 ms.openlocfilehash: c3047000843e054e71ec1a80313118a25e7c4905
-ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58895575"
 ---
 # <a name="create-event-based-workflows-or-actions-by-using-webhooks-and-azure-logic-apps"></a>Vytvořit pracovní postupy založené na události nebo akce pomocí webhooků a Azure Logic Apps
@@ -93,7 +93,7 @@ Tady jsou další podrobnosti o aktivační události a akce podporuje tento web
 Odběru adresu URL zpětného volání pro službu, která může volat adresu URL, která se aktivuje aplikace logiky podle potřeby.
 * Znamená, že požadované pole.
 
-| Zobrazovaný název | Název vlastnosti | Popis |
+| Zobrazovaný název | Property Name | Popis |
 | --- | --- | --- |
 | Přihlášení odběru metoda * |method |Metoda HTTP pro žádosti o předplatné |
 | Přihlášení odběru URI * |identifikátor uri |Identifikátor URI HTTP pro žádosti o předplatné |
@@ -110,11 +110,11 @@ Odběru adresu URL zpětného volání pro službu, která může volat adresu U
 
 Požadavek Webhooku
 
-| Název vlastnosti | Typ dat | Popis |
+| Property Name | Typ dat | Popis |
 | --- | --- | --- |
 | Hlavičky |objekt |Hlavičky požadavku Webhooku |
 | Tělo |objekt |Objekt požadavku Webhooku |
-| Kód stavu |int |Stavový kód žádosti o Webhooku |
+| Stavový kód |int |Stavový kód žádosti o Webhooku |
 
 ## <a name="webhook-actions"></a>Akce Webhooku
 
@@ -129,7 +129,7 @@ Požadavek Webhooku
 Adresa URL zpětného volání službě, která může volat adresu URL obnovit podle potřeby kroku pracovního postupu odběru.
 * Znamená, že požadované pole.
 
-| Zobrazovaný název | Název vlastnosti | Popis |
+| Zobrazovaný název | Property Name | Popis |
 | --- | --- | --- |
 | Přihlášení odběru metoda * |method |Metoda HTTP pro žádosti o předplatné |
 | Přihlášení odběru URI * |identifikátor uri |Identifikátor URI HTTP pro žádosti o předplatné |
@@ -146,11 +146,11 @@ Adresa URL zpětného volání službě, která může volat adresu URL obnovit 
 
 Požadavek Webhooku
 
-| Název vlastnosti | Typ dat | Popis |
+| Property Name | Typ dat | Popis |
 | --- | --- | --- |
 | Hlavičky |objekt |Hlavičky požadavku Webhooku |
 | Tělo |objekt |Objekt požadavku Webhooku |
-| Kód stavu |int |Stavový kód žádosti o Webhooku |
+| Stavový kód |int |Stavový kód žádosti o Webhooku |
 
 ## <a name="next-steps"></a>Další postup
 

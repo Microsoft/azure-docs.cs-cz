@@ -11,10 +11,10 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 07/20/2018
 ms.openlocfilehash: 57d7fecfa9bf2b27a54387072b080ed95f4e87e5
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58881207"
 ---
 # <a name="tutorial-automate-handling-emails-and-attachments-with-azure-logic-apps"></a>Kurz: Automatizovat zpracování e-mailů a jejich přílohy pomocí Azure Logic Apps
@@ -62,11 +62,11 @@ Příchozí e-maily a přílohy můžete ukládat jako objekty blob v [kontejner
    |---------|-------|-------------| 
    | **Název** | attachmentstorageacct | Název účtu úložiště | 
    | **Model nasazení** | Resource Manager | [Model nasazení](../azure-resource-manager/resource-manager-deployment-model.md) pro správu nasazení prostředků | 
-   | **Account kind (Druh účtu)** | Obecné účely | [Typ účtu úložiště](../storage/common/storage-introduction.md#types-of-storage-accounts) | 
+   | **Druh účtu** | Obecné účely | [Typ účtu úložiště](../storage/common/storage-introduction.md#types-of-storage-accounts) | 
    | **Umístění** | Západní USA | Oblast, kam se mají ukládat informace o vašem účtu úložiště | 
    | **Replikace** | Místně redundantní úložiště (LRS) | Toto nastavení určuje, jak se budou kopírovat, ukládat, spravovat a synchronizovat data. Zobrazit [místně redundantní úložiště (LRS): Redundanci dat s nízkými náklady pro službu Azure Storage](../storage/common/storage-redundancy-lrs.md). | 
    | **Výkon** | Standard | Toto nastavení specifikuje podporované datové typy a média pro ukládání dat. Další informace najdete v tématu [Typy účtů úložiště](../storage/common/storage-introduction.md#types-of-storage-accounts). | 
-   | **Secure transfer required (Vyžádání bezpečného přenosu)** | Zakázáno | Toto nastavení určuje zabezpečení vyžadované u požadavků směřujících od připojení. Další informace najdete v tématu [Vyžádání bezpečného přenosu](../storage/common/storage-require-secure-transfer.md). | 
+   | **Vyžádání bezpečného přenosu** | Zakázáno | Toto nastavení určuje zabezpečení vyžadované u požadavků směřujících od připojení. Další informace najdete v tématu [Vyžádání bezpečného přenosu](../storage/common/storage-require-secure-transfer.md). | 
    | **Předplatné** | <*název_vašeho_předplatného_Azure*> | Název vašeho předplatného Azure | 
    | **Skupina prostředků** | LA-Tutorial-RG | Název [skupiny prostředků Azure](../azure-resource-manager/resource-group-overview.md), který slouží k uspořádání a správě souvisejících prostředků <p>**Poznámka:** Skupina prostředků existuje v konkrétní oblasti. Položky z tohoto kurzu nemusí být k dispozici ve všech oblastech, snažte se nicméně používat stejnou oblast, kdykoli je to možné. | 
    | **Konfigurace virtuálních sítí** | Zakázáno | V tomto kurzu ponechejte nastavení **Zakázáno**. | 
@@ -139,10 +139,10 @@ Teď pomocí připraveného fragmentu kódu a následujícího postupu vytvořte
 
    | Nastavení | Hodnota | Popis | 
    | ------- | ----- | ----------- | 
-   | **App name (Název aplikace)** | CleanTextFunctionApp | Globálně jedinečný a popisný název vaší aplikace funkcí | 
+   | **Název aplikace** | CleanTextFunctionApp | Globálně jedinečný a popisný název vaší aplikace funkcí | 
    | **Předplatné** | <*název_vašeho_předplatného_Azure*> | Stejné předplatné Azure, jaké jste používali dříve | 
    | **Skupina prostředků** | LA-Tutorial-RG | Stejná skupina prostředků Azure, jakou jste používali dříve | 
-   | **Plán Hosting** | Plán Consumption | Toto nastavení určuje, jak se při běhu aplikace funkcí mají přidělovat a škálovat prostředky, například výpočetní výkon. Podívejte se na [porovnání plánů hostování](../azure-functions/functions-scale.md). | 
+   | **Plán hostování** | Plán Consumption | Toto nastavení určuje, jak se při běhu aplikace funkcí mají přidělovat a škálovat prostředky, například výpočetní výkon. Podívejte se na [porovnání plánů hostování](../azure-functions/functions-scale.md). | 
    | **Umístění** | Západní USA | Stejná oblast, jakou jste používali dříve | 
    | **Zásobník modulu runtime** | Upřednostňovaný jazyk | Vyberte modul runtime, který podporuje váš oblíbený programovací jazyk funkcí. Zvolte .NET pro C# a F# funkce. |
    | **Storage** | cleantextfunctionstorageacct | Vytvořte pro svou aplikaci funkcí účet úložiště. Použijte při tom jenom malá písmena a číslice. <p>**Poznámka:** Tento účet úložiště obsahuje vaše aplikace function App a liší se od vašeho dříve vytvořený účet úložiště pro přílohy e-mailu. | 
@@ -395,8 +395,7 @@ Tento krok přidá do aplikace logiky funkci Azure, kterou jste předtím vytvo�
 
    ![Výběr funkce Azure](./media/tutorial-process-email-attachments-workflow/add-action-select-azure-function.png)
 
-5. Přejmenujte obrazec funkce s použitím tohoto popisu:
-```Call RemoveHTMLFunction to clean email body```
+5. Přejmenujte obrazec funkce s použitím tohoto popisu: ```Call RemoveHTMLFunction to clean email body```
 
 6. Teď zadejte vstup, který má funkce zpracovávat. 
 
@@ -410,7 +409,7 @@ Tento krok přidá do aplikace logiky funkci Azure, kterou jste předtím vytvo�
 
       Když navíc umístíte kurzor do pole **Tělo požadavku**, zobrazí se seznam dynamického obsahu, ve kterém můžete vybrat hodnoty vlastností dostupné z předchozích akcí. 
       
-   2. V seznamu dynamického obsahu v části **Při přijetí nového e-mailu** vyberte vlastnost **Text**. Po této vlastnosti nezapomeňte přidat uzavírací složenou závorku: ```}```
+   2. V seznamu dynamického obsahu v části **Při přijetí nového e-mailu** vyberte vlastnost **Text**. Za tuto vlastnost nezapomeňte přidat uzavírací složenou závorku: ```}```
 
       ![Určení těla požadavku k předání do funkce](./media/tutorial-process-email-attachments-workflow/add-email-body-for-function-processing.png)
 
@@ -440,8 +439,7 @@ V dalším kroku přidejte akci, která vytvoří v kontejneru úložiště obje
    | **Účet úložiště** | attachmentstorageacct | Název účtu úložiště, který jste dříve vytvořili pro ukládání příloh | 
    |||| 
 
-4. Přejmenovat **vytvořit objekt blob** akce s použitím tohoto popisu:
-```Create blob for email body```
+4. Přejmenujte akci **Vytvořit objekt blob** s použitím tohoto popisu: ```Create blob for email body```
 
 5. U akce **Vytvořit objekt blob** zadejte informace a vyberte pole k vytvoření objektu blob podle následujícího příkladu:
 
@@ -507,8 +505,7 @@ Pokud chcete zpracovat všechny přílohy e-mailu, přidejte do pracovního post
 
    ![Přidání smyčky „pro každý“](./media/tutorial-process-email-attachments-workflow/add-for-each-loop.png)
 
-2. Přejmenujte smyčku s použitím tohoto popisu:
-```For each email attachment```
+2. Přejmenujte smyčku s použitím tohoto popisu: ```For each email attachment```
 
 3. Teď zadejte data, která má smyčka zpracovávat. Klikněte do pole **Vybrat výstup z předchozího postupu**, aby se zobrazil seznam dynamického obsahu, a potom zvolte **Přílohy**. 
 
@@ -531,8 +528,7 @@ V dalším kroku přidejte akci, která uloží každou přílohu jako objekt bl
 
    ![Přidání akce pro vytvoření objektu blob](./media/tutorial-process-email-attachments-workflow/create-blob-action-for-attachments.png)
 
-3. Přejmenovat **vytvořit objekt blob 2** akce s použitím tohoto popisu:
-```Create blob for each email attachment```
+3. Přejmenujte akci **Vytvořit objekt blob 2** s použitím tohoto popisu: ```Create blob for each email attachment```
 
 4. U akce **Create blob for each email attachment** zadejte informace a vyberte vlastnosti k vytvoření jednotlivých objektů blob podle následujícího příkladu:
 
@@ -597,8 +593,7 @@ V dalším kroku přidejte akci, která zajistí, aby aplikace logiky odeslala e
 
 3. Pokud se zobrazí výzva k zadání přihlašovacích údajů, přihlaste se ke svému e-mailovému účtu a Logic Apps vytvoří připojení k vašemu e-mailovému účtu.
 
-4. Přejmenovat **odeslat e-mailu** akce s použitím tohoto popisu:
-```Send email for review```
+4. Přejmenujte akci **Odeslat e-mail** s použitím tohoto popisu: ```Send email for review```
 
 5. Zadejte potřebné informace pro tuto akci a vyberte pole, která chcete do e-mailu zahrnout, jak je vidět v následujícím příkladu. Pokud chcete do textového pole přidat prázdné řádky, stiskněte Shift + Enter.  
 
@@ -608,9 +603,9 @@ V dalším kroku přidejte akci, která zajistí, aby aplikace logiky odeslala e
 
    | Nastavení | Hodnota | Poznámky | 
    | ------- | ----- | ----- | 
-   | **Tělo** | ```Please review new applicant:``` <p>```Applicant name:``` **Od** <p>```Application file location:``` **Cesta** <p>```Application email content:``` **Tělo** | Obsah textu e-mailu. Klikněte do tohoto pole, zadejte příklad textu a v seznamu dynamického obsahu vyberte tato pole: <p>- Pole **Od** v části **Při přijetí nového e-mailu** </br>- Pole **Cesta** v části **Vytvořit objekt blob pro tělo e-mailu** </br>- Pole **Text** v části **Volat funkci RemoveHTMLFunction k vymazání textu e-mailu** | 
-   | **Subjekt**  | ```ASAP - Review applicant for position:``` **Subjekt** | Předmět e-mailu, který chcete zahrnout. Klikněte do tohoto pole, zadejte příklad textu a v seznamu dynamického obsahu u položky **Při přijetí nového e-mailu** vyberte pole **Předmět**. | 
-   | **Akce** | <*recipient-email-address*> | Pro účely testování můžete použít svou vlastní e-mailovou adresu. | 
+   | **Text** | ```Please review new applicant:``` <p>```Applicant name:``` **Od** <p>```Application file location:``` **Cesta** <p>```Application email content:``` **Text** | Obsah textu e-mailu. Klikněte do tohoto pole, zadejte příklad textu a v seznamu dynamického obsahu vyberte tato pole: <p>- Pole **Od** v části **Při přijetí nového e-mailu** </br>- Pole **Cesta** v části **Vytvořit objekt blob pro tělo e-mailu** </br>- Pole **Text** v části **Volat funkci RemoveHTMLFunction k vymazání textu e-mailu** | 
+   | **Předmět**  | ```ASAP - Review applicant for position:``` **Předmět** | Předmět e-mailu, který chcete zahrnout. Klikněte do tohoto pole, zadejte příklad textu a v seznamu dynamického obsahu u položky **Při přijetí nového e-mailu** vyberte pole **Předmět**. | 
+   | **Komu** | <*recipient-email-address*> | Pro účely testování můžete použít svou vlastní e-mailovou adresu. | 
    |||| 
 
    > [!NOTE] 

@@ -8,10 +8,10 @@ ms.date: 03/15/2019
 ms.author: sngun
 ms.custom: seodec18
 ms.openlocfilehash: 8839d7ea93bcb205b1900e63d3ab98394e72cd75
-ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58904861"
 ---
 # <a name="diagnostic-logging-in-azure-cosmos-db"></a>Protokolování diagnostiky ve službě Azure Cosmos DB 
@@ -440,20 +440,20 @@ Následující tabulka popisuje obsah každé položky protokolu.
 
 | Azure Storage pole nebo vlastnost | Vlastnost protokoly Azure monitoru | Popis |
 | --- | --- | --- |
-| **time** | **TimeGenerated** | Datum a čas (UTC), kdy došlo k chybě operace. |
-| **resourceId** | **Prostředek** | Účet Azure Cosmos DB, pro kterou jsou povolené protokoly.|
-| **category** | **Kategorie** | Pro protokoly služby Azure Cosmos DB **DataPlaneRequests** je k dispozici pouze hodnota. |
-| **operationName** | **OperationName** | Název operace Tato hodnota může být některý z následujících operací: Vytvoření, aktualizaci, čtení, ReadFeed, odstranění, nahrazení, spusťte, SqlQuery, dotaz, JSQuery, Head, HeadFeed nebo Upsert.   |
-| **properties** | neuvedeno | Obsah tohoto pole jsou popsány v řádcích, které následují. |
-| **activityId** | **activityId_g** | Jedinečný identifikátor GUID pro protokolovaných operací. |
-| **UserAgent** | **userAgent_s** | Řetězec, který určuje uživatelský agent klienta, který provádí požadavek. Formát je {uživatelské jméno agenta} / {version}.|
+| **čas** | **TimeGenerated** | Datum a čas (UTC), kdy došlo k chybě operace. |
+| **ID prostředku** | **Prostředek** | Účet Azure Cosmos DB, pro kterou jsou povolené protokoly.|
+| **Kategorie** | **Kategorie** | Pro protokoly služby Azure Cosmos DB **DataPlaneRequests** je k dispozici pouze hodnota. |
+| **OperationName** | **OperationName** | Název operace Tato hodnota může být některý z následujících operací: Vytvoření, aktualizaci, čtení, ReadFeed, odstranění, nahrazení, spusťte, SqlQuery, dotaz, JSQuery, Head, HeadFeed nebo Upsert.   |
+| **Vlastnosti** | neuvedeno | Obsah tohoto pole jsou popsány v řádcích, které následují. |
+| **ID aktivity** | **activityId_g** | Jedinečný identifikátor GUID pro protokolovaných operací. |
+| **userAgent** | **userAgent_s** | Řetězec, který určuje uživatelský agent klienta, který provádí požadavek. Formát je {uživatelské jméno agenta} / {version}.|
 | **requestResourceType** | **requestResourceType_s** | Typ prostředku, u níž. Tato hodnota může být některý z těchto typů prostředků: Databáze, kontejner, dokument, přílohy, uživatele, oprávnění, uložené procedury StoredProcedure, aktivační událost, UserDefinedFunction nebo nabídky. |
 | **statusCode** | **statusCode_s** | Stav odpovědi operace. |
-| **requestResourceId** | **ResourceId** | ID prostředku, které se vztahují k požadavku. Hodnota může odkazovat na databaseRid, collectionRid nebo documentRid v závislosti na operaci provést.|
+| **requestResourceId** | **ID prostředku** | ID prostředku, které se vztahují k požadavku. Hodnota může odkazovat na databaseRid, collectionRid nebo documentRid v závislosti na operaci provést.|
 | **clientIpAddress** | **clientIpAddress_s** | IP adresa klienta. |
 | **requestCharge** | **requestCharge_s** | Počet rezervovaných jednotek, které jsou používány operace |
 | **collectionRid** | **collectionId_s** | Jedinečný Identifikátor pro kolekci.|
-| **doba trvání** | **duration_s** | Doba trvání operace v impulzech. |
+| **Doba trvání** | **duration_s** | Doba trvání operace v impulzech. |
 | **requestLength** | **requestLength_s** | Délka požadavku v bajtech. |
 | **responseLength** | **responseLength_s** | Délka odpovědi v bytech.|
 | **resourceTokenUserRid** | **resourceTokenUserRid_s** | Tato hodnota je prázdný, když [tokenech prostředků](https://docs.microsoft.com/azure/cosmos-db/secure-access-to-data#resource-tokens) se používají pro ověřování. Hodnota odkazuje na ID prostředku uživatele. |
@@ -462,7 +462,7 @@ Následující tabulka popisuje obsah každé položky protokolu.
 
 - Pochopit postup při povolování protokolování a metrik a protokolů kategorií, které podporují různé služby Azure, přečtěte si i [přehled metrik v Microsoft Azure](../monitoring-and-diagnostics/monitoring-overview-metrics.md) a [přehled o diagnostické protokoly Azure ](../azure-monitor/platform/diagnostic-logs-overview.md) článků.
 - Přečtěte si tyto články Další informace o službě event hubs:
-   - [Co je služba Azure Event Hubs?](../event-hubs/event-hubs-what-is-event-hubs.md)
-   - [Začínáme se službou Event Hubs](../event-hubs/event-hubs-csharp-ephcs-getstarted.md)
+   - [Co je Azure Event Hubs?](../event-hubs/event-hubs-what-is-event-hubs.md)
+   - [Začínáme s Event Hubs](../event-hubs/event-hubs-csharp-ephcs-getstarted.md)
 - Čtení [stáhnout metrik a diagnostických protokolů ze služby Azure Storage](../storage/blobs/storage-quickstart-blobs-dotnet.md#download-blobs).
 - Čtení [Principy prohledávání protokolů v protokoly Azure monitoru](../log-analytics/log-analytics-log-search-new.md).

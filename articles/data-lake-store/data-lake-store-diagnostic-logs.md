@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: twooley
 ms.openlocfilehash: d200f72b3c0e5634c3dca8f60a4754a14351110a
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58877954"
 ---
 # <a name="accessing-diagnostic-logs-for-azure-data-lake-storage-gen1"></a>Přístup k protokolům diagnostiky pro Azure Data Lake Storage Gen1
@@ -191,5 +191,5 @@ Azure Data Lake Storage Gen1 najdete vzorový o tom, jak zpracovávat a analyzov
 
 ## <a name="see-also"></a>Další informace najdete v tématech
 * [Přehled služby Azure Data Lake Storage Gen1](data-lake-store-overview.md)
-* [Zabezpečení dat v Data Lake Storage Gen1](data-lake-store-secure-data.md)
+* [Zabezpečení dat ve službě Data Lake Storage Gen1](data-lake-store-secure-data.md)
 

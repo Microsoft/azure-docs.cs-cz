@@ -11,10 +11,10 @@ ms.date: 09/10/2018
 ms.author: davidmu
 ms.subservice: B2C
 ms.openlocfilehash: 86de73394d96d1122abce44504d2b0fd99a01841
-ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
-ms.translationtype: MT
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/04/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58915778"
 ---
 # <a name="define-an-oauth1-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Technický profil OAuth1 definování ve vlastních zásadách pro Azure Active Directory B2C
@@ -85,7 +85,7 @@ Technický profil také vrátí hodnotu deklarace identity, které nejsou vráce
 | --------- | -------- | ----------- |
 | client_secret | Ano | Tajný kód klienta aplikace zprostředkovatele identity.   | 
 
-## <a name="redirect-uri"></a>Identifikátor URI pro přesměrování
+## <a name="redirect-uri"></a>Přesměrovat identifikátor URI
 
 Při konfiguraci adresy URL pro přesměrování vašeho zprostředkovatele identity, zadejte `https://login.microsoftonline.com/te/tenant/policyId/oauth1/authresp`. Nezapomeňte nahradit **tenanta** názvem vašeho tenanta (například contosob2c.onmicrosoft.com) a **policyId** s identifikátorem zásady (například b2c_1a_policy). Identifikátor URI pro přesměrování musí být v všechna písmena malá. Měli byste přidat UR přesměrování pro všechny zásady, které používají přihlášení zprostředkovatele identity. 
 

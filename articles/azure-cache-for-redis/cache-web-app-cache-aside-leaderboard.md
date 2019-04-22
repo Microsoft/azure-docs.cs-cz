@@ -16,10 +16,10 @@ ms.custom: mvc
 ms.date: 03/30/2018
 ms.author: yegu
 ms.openlocfilehash: 9cfb320f0623f5a93527a4dc0e8d82096980cc2c
-ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58893737"
 ---
 # <a name="tutorial-create-a-cache-aside-leaderboard-on-aspnet"></a>Kurz: Vytvoření žebříčkové s doplňováním mezipaměti technologie ASP.NET
@@ -688,8 +688,8 @@ V této části zřídíte novou databázi SQL Azure pro aplikaci, která se bud
 
     | Zástupný symbol | Navrhovaná hodnota |
     | --- | --- |
-    | *{your_username}* | Pro server databáze, který jste právě vytvořili, použijte **přihlašovací údaje správce serveru**. |
-    | *{your_password}* | Pro server databáze, který jste právě vytvořili, použijte heslo. |
+    | *{vaše_uživatelské jméno}* | Pro server databáze, který jste právě vytvořili, použijte **přihlašovací údaje správce serveru**. |
+    | *{vaše_heslo}* | Pro server databáze, který jste právě vytvořili, použijte heslo. |
 
     Když uživatelské jméno a heslo přidáte jako nastavení aplikace, nezahrnou se do vašeho kódu. Tento přístup vám pomůže přihlašovací údaje ochránit.
 

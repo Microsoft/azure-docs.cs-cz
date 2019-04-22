@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 03/24/2019
 ms.author: mlottner
 ms.openlocfilehash: f3ae69cb6c8e2a60488b4f1ff3df1bb8ab0c04ea
-ms.sourcegitcommit: d83fa82d6fec451c0cb957a76cfba8d072b72f4f
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/02/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58861974"
 ---
 # <a name="azure-security-center-for-iot-security-alerts"></a>Azure Security Center pro výstrahy zabezpečení IoT
@@ -95,4 +95,4 @@ Další podrobnosti najdete v tématu [vytvářet vlastní výstrahy](quickstart
 
 - [Přehled](overview.md)
 - [Přístup k vašim datům zabezpečení](how-to-security-data-access.md)
-- [Prozkoumání zařízení](how-to-investigate-device.md)
+- [Prozkoumat zařízení](how-to-investigate-device.md)

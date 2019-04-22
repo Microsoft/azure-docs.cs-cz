@@ -12,10 +12,10 @@ ms.custom: mvc
 ms.topic: article
 ms.date: 04/04/2019
 ms.openlocfilehash: f25bc9bc3a958b2fa97ae4d5ab3715b602110393
-ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/04/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58915471"
 ---
 # <a name="status-of-migration-scenarios-supported-by-azure-database-migration-service"></a>Stav migrace scénáře podporované službou Azure Database Migration Service
@@ -47,7 +47,7 @@ V následující tabulce jsou uvedeny Azure Database Migration Service podporu p
 | **Azure SQL DB MI** | SQL Server | ✔ | GA |
 |   | RDS SQL |  |  |
 |   | Oracle |  |   |
-| **Virtuální počítač Azure SQL** | SQL Server | ✔ | GA |
+| **Azure SQL VM** | SQL Server | ✔ | GA |
 |   | Oracle |   |   |
 | **Azure Cosmos DB** | MongoDB | ✔ | Verze Public Preview |
 | **Azure DB for MySQL** | MySQL |   |   |
@@ -66,7 +66,7 @@ Podpora Azure Database Migration Service online migrace naleznete v následujíc
 | **Azure SQL DB MI** | SQL Server | ✔ | GA |
 |   | RDS SQL | ✔ | GA |
 |   | Oracle | ✔ | Ve verzi Private preview |
-| **Virtuální počítač Azure SQL** | SQL Server |   |   |
+| **Azure SQL VM** | SQL Server |   |   |
 |   | Oracle  |  |  |
 | **Azure Cosmos DB** | MongoDB | ✔ | Verze Public Preview |
 | **Azure DB for MySQL** | MySQL | ✔ | GA |

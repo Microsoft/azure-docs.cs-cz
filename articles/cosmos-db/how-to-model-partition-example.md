@@ -7,10 +7,10 @@ ms.topic: sample
 ms.date: 3/27/2019
 ms.author: thweiss
 ms.openlocfilehash: ac1b94de4b439aab202d53b23b0d0da616a9f851
-ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/04/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58919613"
 ---
 # <a name="how-to-model-and-partition-data-on-azure-cosmos-db-using-a-real-world-example"></a>Jak model a oddílu data ve službě Azure Cosmos DB pomocí reálný příklad
@@ -573,6 +573,6 @@ Změna kanálu, kterou používáme k distribuci aktualizací do jiné kontejner
 
 Po tomto úvodu k praktické dat, modelování a vytváření oddílů můžete chtít zkontrolovat ke kontrole koncepty, kterým jsme probrali v následujících článcích:
 
-- [Práce s databázemi, kontejnery a položkami](databases-containers-items.md)
+- [Práce s databází, kontejnerů a položek](databases-containers-items.md)
 - [Dělení ve službě Azure Cosmos DB](partitioning-overview.md)
 - [Změna informačního kanálu ve službě Azure Cosmos DB](change-feed.md)

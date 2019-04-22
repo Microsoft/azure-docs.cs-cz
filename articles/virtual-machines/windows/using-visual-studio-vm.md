@@ -17,16 +17,16 @@ ms.date: 04/02/2019
 ms.author: phillee
 keywords: visualstudio
 ms.openlocfilehash: df91ba12c1ee74b8e28f75344a5cd55af018d3cd
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58884869"
 ---
 # <a name="visual-studio-images-on-azure"></a>Visual Studio Image v Azure
 Pomocí sady Visual Studio v předkonfigurovaném Azure virtuální počítač (VM) je rychlý a snadný způsob, jak přejít od ničeho nahoru a spuštění vývojové prostředí. Bitové kopie systému s různými konfiguracemi sady Visual Studio jsou k dispozici v [Azure Marketplace](https://azuremarketplace.microsoft.com/en-us/marketplace/apps?search=visual%20studio&page=1).
 
-Jste nováčky v prostředí Azure? [Vytvořte si bezplatný účet Azure](https://azure.microsoft.com/free).
+Zatím Azure neznáte? [Vytvořte si bezplatný účet Azure](https://azure.microsoft.com/free).
 
 ## <a name="what-configurations-and-versions-are-available"></a>Jaké konfigurace a verze jsou k dispozici?
 Image pro nejnovější hlavní verze, Visual Studio 2019, Visual Studio 2017 a Visual Studio 2015, najdete na webu Azure Marketplace.  Pro každý vydání hlavní verze, zobrazí původně "vydáno pro web" verzi (RTW) a nejnovější aktualizované verze.  Každá z těchto verzí nabízí edice Visual Studio Community a Visual Studio Enterprise.  Tyto Image jsou aktualizovány alespoň každý měsíc zahrnout nejnovější aktualizace sady Visual Studio a Windows.  Názvy imagí budou i nadále stejná, obsahuje popis každého obrázku nainstalovaný produkt verze a "k" datu image.

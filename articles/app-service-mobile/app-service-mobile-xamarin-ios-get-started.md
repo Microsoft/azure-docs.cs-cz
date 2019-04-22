@@ -15,10 +15,10 @@ ms.topic: conceptual
 ms.date: 10/01/2016
 ms.author: crdun
 ms.openlocfilehash: 03fb286bd24bb12f3a1e508627a2de156e185568
-ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58892428"
 ---
 # <a name="create-a-xamarinios-app"></a>Vytvoření aplikace Xamarin.iOS
@@ -71,7 +71,7 @@ Podle následujících kroků nakonfigurujte serverový projekt tak, aby použí
 >
 
 ## <a name="next-steps"></a>Další postup
-* [Přidání Offline synchronizace do aplikace](app-service-mobile-xamarin-ios-get-started-offline-data.md)
+* [Přidání offline synchronizace do aplikace](app-service-mobile-xamarin-ios-get-started-offline-data.md)
 * [Přidání ověřování do aplikace](app-service-mobile-xamarin-ios-get-started-users.md)
 * [Přidání nabízených oznámení do aplikace Xamarin.Android](app-service-mobile-xamarin-ios-get-started-push.md)
 * [Jak používat spravovaného klienta pro Azure Mobile Apps](app-service-mobile-dotnet-how-to-use-client-library.md)
@@ -88,4 +88,4 @@ Podle následujících kroků nakonfigurujte serverový projekt tak, aby použí
 [10]: ./media/app-service-mobile-xamarin-ios-get-started/mobile-quickstart-startup-ios.png
 
 <!-- URLs. -->
-[portál Azure]: https://portal.azure.com/
+[Azure Portal]: https://portal.azure.com/

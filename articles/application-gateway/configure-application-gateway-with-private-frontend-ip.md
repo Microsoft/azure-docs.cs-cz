@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 02/26/2019
 ms.author: absha
 ms.openlocfilehash: cfc63349e20aa6dbef4e0d31e81842d325bd3ec6
-ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58905533"
 ---
 # <a name="configure-an-application-gateway-with-an-internal-load-balancer-ilb-endpoint"></a>Konfigurace aplikační brány s koncovým bodem interní služby load balancer (ILB)
@@ -30,7 +30,7 @@ V tomto článku se dozvíte, jak:
 
 ## <a name="log-in-to-azure"></a>Přihlášení k Azure
 
-Přihlaste se k webu Azure portal na <https://portal.azure.com>
+Přihlaste se k webu Azure Portal na adrese <https://portal.azure.com>.
 
 ## <a name="create-an-application-gateway"></a>Vytvoření služby Application Gateway
 
@@ -70,7 +70,7 @@ Back-endového fondu se používá k směrovat požadavky do back-end serverů, 
 3. Zadejte pro virtuální počítač tyto hodnoty:
    - *myVM1* – název virtuálního počítače.
    - *azureuser* – uživatelské jméno správce.
-   - *Azure123456!* jako heslo.
+   - *Azure123456!* – heslo.
    - Vyberte **Použít existující** a pak vyberte *myResourceGroupAG*.
 4. Klikněte na **OK**.
 5. Vyberte **DS1_V2** pro velikost virtuálního počítače a klikněte na tlačítko **vyberte**.

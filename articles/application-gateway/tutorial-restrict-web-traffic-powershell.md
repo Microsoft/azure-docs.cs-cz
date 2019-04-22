@@ -12,17 +12,17 @@ ms.date: 03/25/2019
 ms.author: victorh
 ms.custom: mvc
 ms.openlocfilehash: a5a679c7a81fe7ac5fbe53fc56fe7cf63fb16976
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58885277"
 ---
 # <a name="enable-web-application-firewall-using-azure-powershell"></a>Povolení firewallu webových aplikací pomocí Azure PowerShellu
 
 > [!div class="op_single_selector"]
 >
-> - [portál Azure](application-gateway-web-application-firewall-portal.md)
+> - [Azure Portal](application-gateway-web-application-firewall-portal.md)
 > - [PowerShell](tutorial-restrict-web-traffic-powershell.md)
 > - [Azure CLI](tutorial-restrict-web-traffic-cli.md)
 >
@@ -323,4 +323,4 @@ V tomto kurzu jste se naučili:
 > * Vytvořit účet úložiště a nakonfigurovat diagnostiku
 
 > [!div class="nextstepaction"]
-> [Vytvoření služby application gateway s ukončení protokolu SSL](./tutorial-ssl-powershell.md)
+> [Vytvoření aplikační brány s ukončením protokolu SSL](./tutorial-ssl-powershell.md)

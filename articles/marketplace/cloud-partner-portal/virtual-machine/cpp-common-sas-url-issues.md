@@ -15,17 +15,17 @@ ms.topic: article
 ms.date: 09/27/2018
 ms.author: pbutlerm
 ms.openlocfilehash: abb29cd0d31288ba7bfab7024cf7657ab6b9a3d3
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58879212"
 ---
 # <a name="common-sas-url-issues-and-fixes"></a>Běžné problémy adresy URL SAS a opravy
 
 Následující tabulka uvádí některé běžné problémy při práci s sdílených přístupových podpisů (které se používají k identifikaci a sdílené složky nahraný virtuální pevné disky pro vaše řešení), spolu s návrhy řešení.
 
-| **Problém** | **Zpráva o selhání** | **Napravit** | 
+| **Problém** | **Zpráva o selhání** | **Oprava** | 
 | --------- | ------------------- | ------- | 
 | &emsp;  *Chyba při kopírování imagí* |  |  |
 | "?" nebyl nalezen v adrese URL SAS | `Failure: Copying Images. Not able to download blob using provided SAS Uri.` | Aktualizace adres URL SAS pomocí doporučené nástroje. |

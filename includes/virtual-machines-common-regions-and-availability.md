@@ -82,7 +82,7 @@ Další informace o [možnostech replikace služby Azure Storage najdete tady](.
 Ceny se liší v závislosti na zvolené dostupnosti a typu úložiště.
 
 **Azure Managed Disks**
-* Managed Disks úrovně Premium se zálohuje pomocí Solid-State (Drive) a Standard Managed Disks se zálohuje pomocí běžných rotujících disků. Služba Managed Disks úrovně Premium i Standard se účtuje na základě zřízené kapacity disku.
+* Managed Disks úrovně Premium se zálohuje pomocí Solid-State (Drive) a Standard Managed Disks se zálohuje pomocí běžných rotujících disků. Spravované disky úrovně Premium i Standard se účtují na základě zřízené kapacity disku.
 
 **Nespravované disky**
 * Premium storage je založená na Solid-State disky (SSD) a se účtuje podle kapacity disku.

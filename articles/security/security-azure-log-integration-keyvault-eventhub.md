@@ -12,10 +12,10 @@ ms.date: 01/14/2019
 ms.author: Barclayn
 ms.custom: AzLog
 ms.openlocfilehash: 7e70920e806b3d9838d693ff1fc74a3e9371319d
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58883906"
 ---
 # <a name="azure-log-integration-tutorial-process-azure-key-vault-events-by-using-event-hubs"></a>Kurz integrace protokolů Azure: Zpracování událostí služby Azure Key Vault pomocí Event Hubs
@@ -157,8 +157,7 @@ Požadavky nutné k odeslání do služby Key Vault k vygenerování protokolu a
    ```Get-AzStorageAccountKey -Name $storagename -ResourceGroupName $rgname  | ft -a```
 1. Nastavení a čtení tajného klíče ke generování dalších protokolů položky:
     
-   a. ```Set-AzKeyVaultSecret -VaultName $name -Name TestSecret -SecretValue (ConvertTo-SecureString -String 'Hi There!' -AsPlainText -Force)```
-   b. ```(Get-AzKeyVaultSecret -VaultName $name -Name TestSecret).SecretValueText```
+   a. ```Set-AzKeyVaultSecret -VaultName $name -Name TestSecret -SecretValue (ConvertTo-SecureString -String 'Hi There!' -AsPlainText -Force)``` b. ```(Get-AzKeyVaultSecret -VaultName $name -Name TestSecret).SecretValueText```
 
    ![Vrátí tajného kódu](./media/security-azure-log-integration-keyvault-eventhub/keyvaultsecret.png)
 

@@ -11,10 +11,10 @@ ms.date: 03/20/2019
 ms.author: kevin
 ms.reviewer: igorstan
 ms.openlocfilehash: fe9cd6c951f9eba73cee1bea66df88f3143859b9
-ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/02/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58846845"
 ---
 # <a name="quickstart-pause-and-resume-compute-in-azure-sql-data-warehouse-with-powershell"></a>Rychlý start: Pozastavení a obnovení výpočetních prostředků ve službě Azure SQL Data Warehouse pomocí prostředí PowerShell
@@ -23,7 +23,7 @@ Použití Powershellu k pozastavení výpočetních prostředků ve službě Azu
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
-## <a name="before-you-begin"></a>Před zahájením
+## <a name="before-you-begin"></a>Než začnete
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 

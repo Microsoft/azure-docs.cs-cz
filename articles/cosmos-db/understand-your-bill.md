@@ -8,10 +8,10 @@ ms.date: 12/07/2018
 ms.author: rimman
 ms.reviewer: sngun
 ms.openlocfilehash: d3bfe1b54409fd57f7535bac2362dc7040975061
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58877624"
 ---
 # <a name="understand-your-azure-cosmos-db-bill"></a>Vysvětlení faktury za Azure Cosmos DB
@@ -94,7 +94,7 @@ Je můžete přidávat nebo odebírat oblastí Azure kdekoli ve světě ke svém
 
 Předpokládejme, že máte kontejner služby Azure Cosmos v oblasti západní USA. Kontejneru se vytvoří s propustností 10 tisíc RU/s a 1 TB dat uložit tento měsíc. Předpokládejme, že přidáte tři oblasti (východní USA, Severní Evropa a východní Asie) ke svému účtu Azure Cosmos, každá má stejné úložiště a propustnost. Vaše celkové měsíční faktuře bude možné (za předpokladu, že 30 dní v měsíci). Váš účet by měl vypadat takto: 
 
-|**Položka** |**Využití (měsíc)** |**Sazba** |**Měsíční náklady** |
+|**Položka** |**Využití (měsíc)** |**Frekvence** |**Měsíční náklady** |
 |---------|---------|---------|-------|
 |Faktura za propustnost za kontejner v oblasti Západní USA      | 10 tisíc RU/s * 24 * 30    |0.008 za 100 RU/s za hodinu   |$576|
 |Faktura za propustnost za 3 další oblasti: Východní USA, Severní Evropa a Východní Asie       | 3 * 10 tisíc RU/s * 24 * 30    |0.008 za 100 RU/s za hodinu  |$1,728|
@@ -108,7 +108,7 @@ Předpokládejme, že máte kontejner služby Azure Cosmos v oblasti západní U
 
 Předpokládejme, že vytvoříte kontejner služby Azure Cosmos v oblasti západní USA. Kontejneru se vytvoří s propustností 10 tisíc RU/s a 1 TB dat uložit tento měsíc. Předpokládejme, že přidáte tři oblasti (východní USA, Severní Evropa a východní Asie), každá má stejné úložiště a propustnost a má možnost zapisovat do kontejnerů ve všech oblastech, které jsou spojené s vaším účtem Azure Cosmos. Celkové měsíční faktuře bude možné (za předpokladu, že 30 dní v měsíci) následujícím způsobem:
 
-|**Položka** |**Využití (měsíc)**|**Sazba** |**Měsíční náklady** |
+|**Položka** |**Využití (měsíc)**|**Frekvence** |**Měsíční náklady** |
 |---------|---------|---------|-------|
 |Faktura za propustnost za kontejner v oblasti západní USA (všechny oblasti jsou zapisovatelné)       | 10 tisíc RU/s * 24 * 30    |0,016 $ za 100 RU/s za hodinu    |$1,152 |
 |Faktura za propustnost za 3 Další oblasti: východní USA, Severní Evropa a východní Asie (všechny oblasti jsou zapisovatelné)        | (3 + 1) * 10 tis. RU/s * 24 * 30    |0,016 $ za 100 RU/s za hodinu   |$4,608 |
@@ -178,7 +178,7 @@ Vizuální změny v vaše celková zřízená propustnost během 720 hodin za m�
 
 Celkové měsíční faktuře bude možné (za předpokladu, že 30 dnů nebo 720 hodin za měsíc) se vypočítá následovně:
 
-|**Hodiny**  |**RU/s** |**Položka** |**Využití (hodiny)** |**Náklady** |
+|**hodiny**  |**RU/s** |**Položka** |**Využití (hodiny)** |**Náklady** |
 |---------|---------|---------|-------|-------|
 |[0-100] |D1:10K <br/>D2:30K <br/>C1:20K |Faktura za propustnost za kontejner v oblasti západní USA (všechny oblasti jsou zapisovatelné)  | `D1: 10K RU/sec/100 * $0.016 * 100 hours = $160` <br/>`D2: 30 K RU/sec/100 * $0.016 * 100 hours = $480` <br/>`C1: 20 K RU/sec/100 *$0.016 * 100 hours = $320` |$960  |
 | | |Faktura za propustnost za 2 dalších oblastech: Východní USA, Severní Evropa (všechny oblasti jsou zapisovatelné)  |`(2 + 1) * (60 K RU/sec /100 * $0.016) * 100 hours = $2,880`  |$2,880  |
@@ -234,7 +234,7 @@ Azure Cosmos DB vyhrazené kapacity můžete zakoupit zřízená propustnost př
 
 Vaše Celková fakturovaná částka (bez rezervované kapacity) by (předpokládá 30 dnů nebo hodin 720): 
 
-|**Oblast**| **Hodinovou cenu za 100 RU/s**|**Jednotky (RU/s)**|**Fakturovaná částka (za hodinu)**| **Fakturovaná částka (za měsíc)**|
+|**Oblast**| **Hodinovou cenu za 100 RU/s**|**Jednotky (RU/s)**|**Vyúčtované množství (hodiny)**| **Vyúčtované množství (měsíčně)**|
 |----|----|----|----|----|
 |USA – východ|$0.008 |50 K|$4|$2,880 |
 |Japonsko – východ|$0.009 |50 K| $4.50 |$3,240 |
@@ -248,7 +248,7 @@ Pojďme se podívat, že jste zakoupili rezervované kapacity místo. Můžete s
 
 Efektivně pořízeného je kredit ve výši na 8 USD za hodinu za 100 tisíc RU/s využitím ceníku v oblasti východní USA, za cenu 6.40 $ za hodinu. Pak můžete nakreslit z tuto rezervaci předplacené propustnost podle počtu hodin za zřízenou propustnost kapacitu v libovolné globální oblasti Azure v příslušné místní ceny seznam nastavení pro vaše předplatné. V tomto příkladu, kde zřídíte 50 tis. RU/s každou v USA – východ a Japonsko – východ, budete moct nakreslit 8.00 $ za zřízenou propustnost za hodinu a budou účtovat Nadlimitní 0,50 USD za hodinu (nebo $360/ měsíc). 
 
-|**Oblast**| **Hodinovou cenu za 100 RU/s**|**Jednotky (RU/s)**| **Fakturovaná částka (za hodinu)**| **Fakturovaná částka (za měsíc)**|
+|**Oblast**| **Hodinovou cenu za 100 RU/s**|**Jednotky (RU/s)**| **Vyúčtované množství (hodiny)**| **Vyúčtované množství (měsíčně)**|
 |----|----|----|----|----|
 |USA – východ|$0.008 |50 K|$4|$2,880 |
 |Japonsko – východ|$0.009 |50 K| $4.50 |$3,240 |

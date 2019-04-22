@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 01/10/2019
 ms.author: bwren
 ms.openlocfilehash: dcac701f3c1b6d64a7017c31679c019b91103ba2
-ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58904725"
 ---
 # <a name="analyze-log-data-in-azure-monitor"></a>Analyzuje data protokolů ve službě Azure Monitor
@@ -36,7 +36,7 @@ Různé způsoby, že budete používat dotazy ve službě Azure Monitor, patř�
 - **Zobrazení.**  Možnost tvorby vizualizací dat mají být zahrnuty v řídicích panelech uživatele s [Návrhář zobrazení](../platform/view-designer.md).  Protokol dotazů, které poskytují data používá [dlaždice](../platform/view-designer-tiles.md) a [části vizualizace](../platform/view-designer-parts.md) v každém zobrazení.  
 
 - **Export.**  Když importujete data protokolů ze služby Azure Monitor do aplikace Excel nebo [Power BI](../platform/powerbi.md), vytvořte dotaz protokolu pro definování dat k exportu.
-- **Prostředí PowerShell.** Skript prostředí PowerShell můžete spustit z příkazového řádku nebo runbooku Azure Automation, který používá [Get-AzOperationalInsightsSearchResults](/powershell/module/az.operationalinsights/get-azoperationalinsightssearchresults) načíst data protokolů ze služby Azure Monitor.  Tato rutina vyžaduje dotazu určit data, která mají načíst.
+- **PowerShell.** Skript prostředí PowerShell můžete spustit z příkazového řádku nebo runbooku Azure Automation, který používá [Get-AzOperationalInsightsSearchResults](/powershell/module/az.operationalinsights/get-azoperationalinsightssearchresults) načíst data protokolů ze služby Azure Monitor.  Tato rutina vyžaduje dotazu určit data, která mají načíst.
 - **Rozhraní API protokoly Azure monitoru.**  [Rozhraní API služby Azure Monitor protokoly](../platform/alerts-overview.md) umožňuje jakéhokoli klienta REST API k načtení dat protokolu z pracovního prostoru.  Žádosti rozhraní API obsahuje dotaz, který je spuštěn proti Azure Monitor k určení dat k načtení.
 
 ![Prohledávání protokolů](media/log-query-overview/queries-overview.png)

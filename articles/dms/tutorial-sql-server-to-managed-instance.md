@@ -12,10 +12,10 @@ ms.custom: mvc, tutorial
 ms.topic: article
 ms.date: 04/03/2019
 ms.openlocfilehash: cf285c18d2204da625c970a367177f86474149ab
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58880969"
 ---
 # <a name="tutorial-migrate-sql-server-to-an-azure-sql-database-managed-instance-offline-using-dms"></a>Kurz: Migrace SQL serveru do spravované instance Azure SQL Database pomocí DMS do offline režimu
@@ -184,11 +184,11 @@ Po vytvoření instance služby ji vyhledejte na webu Azure Portal, otevřete ji
     | | |
     |--------|---------|
     |**Zvolte možnost zálohování zdroje** | Zvolte možnost **Poskytnu nejnovější záložní soubory**, pokud už máte k dispozici soubory úplné zálohy, které může DMS použít k migraci databáze. Zvolte možnost **Umožním, aby služba Azure Database Migration Service vytvářela soubory zálohy**, pokud chcete, aby služba DMS nejprve provedla úplné zálohování zdrojové databáze a tuto zálohu pak použila k migraci. |
-    |**Sdíleného síťového umístění** | Místní sdílená síťová složka SMB, do které může Azure Database Migration Service ukládat zálohy zdrojové databáze. Účet služby, který spouští zdrojovou instanci SQL Serveru, musí mít oprávnění k zápisu do této sdílené síťové složky. Zadejte plně kvalifikovaný název domény nebo IP adresy serveru ve sdílené síťové složce, například \\\název_serveru.název_domény.com\záložní_složka nebo \\\IP_adressa\záložní_složka.|
+    |**Sdílení síťového umístění** | Místní sdílená síťová složka SMB, do které může Azure Database Migration Service ukládat zálohy zdrojové databáze. Účet služby, který spouští zdrojovou instanci SQL Serveru, musí mít oprávnění k zápisu do této sdílené síťové složky. Zadejte plně kvalifikovaný název domény nebo IP adresy serveru ve sdílené síťové složce, například \\\název_serveru.název_domény.com\záložní_složka nebo \\\IP_adressa\záložní_složka.|
     |**Uživatelské jméno** | Ujistěte se, že má uživatel Windows oprávnění Úplné řízení ke sdílené síťové složce, kterou jste určili dříve. Služba Azure Database Migration Service zosobní přihlašovací údaje uživatele za účelem nahrání záložních souborů do kontejneru úložiště Azure pro operaci obnovení. Pokud jsou pro migraci vybrané databáze s povoleným transparentním šifrováním dat, výše uvedený uživatel Windows musí být předdefinovaným účtem správce a pro službu Azure Database Migration Service musí být zakázaný [nástroj Řízení uživatelských účtů](https://docs.microsoft.com/windows/security/identity-protection/user-account-control/user-account-control-overview), aby bylo možné nahrávat a odstraňovat soubory certifikátů. |
     |**Heslo** | Heslo pro tohoto uživatele. |
     |**Nastavení účtu úložiště** | Identifikátor URI SAS, který poskytuje Azure Database Migration Service přístup k vaší kontejner účtu úložiště, do kterého služba nahraje zálohování souborů a, který se používá k migraci databází do spravované instance Azure SQL Database. [Zjistěte, jak získat identifikátor URI SAS pro kontejner objektů blob](https://docs.microsoft.com/azure/vs-azure-tools-storage-explorer-blobs#get-the-sas-for-a-blob-container).|
-    |**Nastavení TDE** | Pokud migrujete zdrojové databáze s transparentní šifrování dat (TDE) povolena, musíte mít oprávnění k zápisu na cíl spravované instance Azure SQL Database.  Vyberte předplatné, ve kterém Azure SQL Database managed instance zřízené z rozevírací nabídky.  V rozevírací nabídce vyberte cílovou **spravovanou instanci Azure SQL Database**. |
+    |**Nastavení transparentního šifrování dat** | Pokud migrujete zdrojové databáze s transparentní šifrování dat (TDE) povolena, musíte mít oprávnění k zápisu na cíl spravované instance Azure SQL Database.  Vyberte předplatné, ve kterém Azure SQL Database managed instance zřízené z rozevírací nabídky.  V rozevírací nabídce vyberte cílovou **spravovanou instanci Azure SQL Database**. |
 
     ![Konfigurace nastavení migrace](media/tutorial-sql-server-to-managed-instance/dms-configure-migration-settings3.png)
 

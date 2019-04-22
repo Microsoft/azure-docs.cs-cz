@@ -355,7 +355,7 @@ Než budete pokračovat, zvažte následující rozhodnutí o návrhu.
 
 * **Storage – Azure Managed Disks**
 
-   Pro úložiště virtuálního počítače pomocí Azure Managed Disks. Microsoft doporučuje službu Managed Disks pro virtuální počítače s SQL serverem. Služba Managed Disks se stará o úložiště na pozadí. Navíc, pokud jsou virtuální počítače se službou Managed Disks ve stejné skupině dostupnosti, Azure distribuuje prostředky úložiště pro zajištění odpovídající redundance. Další informace najdete v tématu [Přehled služby Azure Managed Disks](../managed-disks-overview.md). Podrobnosti o spravovaných discích ve skupině dostupnosti, najdete v části [použít spravované disky pro virtuální počítače ve skupině dostupnosti](../manage-availability.md#use-managed-disks-for-vms-in-an-availability-set).
+   Pro úložiště virtuálního počítače pomocí Azure Managed Disks. Microsoft doporučuje službu Managed Disks pro virtuální počítače s SQL serverem. Spravované disky se starají o úložiště na pozadí. Navíc, pokud jsou virtuální počítače se Spravovanými disky ve stejné skupině dostupnosti, Azure distribuuje prostředky úložiště pro zajištění odpovídající redundance. Další informace najdete v tématu [Přehled Spravovaných disků Azure](../managed-disks-overview.md). Podrobnosti o spravovaných discích ve skupině dostupnosti, najdete v části [použít spravované disky pro virtuální počítače ve skupině dostupnosti](../manage-availability.md#use-managed-disks-for-vms-in-an-availability-set).
 
 * **Sítě – privátní IP adresy v produkčním prostředí**
 

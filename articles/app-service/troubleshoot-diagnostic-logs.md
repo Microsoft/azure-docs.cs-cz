@@ -16,10 +16,10 @@ ms.date: 06/06/2016
 ms.author: cephalin
 ms.custom: seodec18
 ms.openlocfilehash: 37455c278d665d05636ec120ca91b76153e53d16
-ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58894914"
 ---
 # <a name="enable-diagnostics-logging-for-apps-in-azure-app-service"></a>Povolit protokolování diagnostiky aplikací ve službě Azure App Service
@@ -57,11 +57,11 @@ Když povolíte **konzole application diagnostics**, také zvolte **úroveň**. 
 
 | Úroveň| Kategorie součástí protokolu |
 |-|-|
-|**Zakázáno** | Žádný |
+|**Disabled** (Zakázáno) | Žádný |
 |**Chyba** | Chyby, kritické |
 |**Upozornění** | Upozornění, chyby, kritické|
-|**Informace** | Informace, upozornění, chyby, kritické|
-|**Podrobnosti** | Trasování, ladění, informace, upozornění, chyby, kritické (všechny kategorie) |
+|**Informace o** | Informace, upozornění, chyby, kritické|
+|**Verbose** | Trasování, ladění, informace, upozornění, chyby, kritické (všechny kategorie) |
 |-|-|
 
 Pro **protokolování aplikací**, můžete zapnout možnost souboru systému dočasně pro účely ladění. Tato volba vypne automaticky za 12 hodin. Můžete také zapnout možnost úložiště objektů blob kontejner objektů blob, do kterého se zapisují protokoly.
@@ -192,7 +192,7 @@ Při přihlašování do úložiště objektů blob, data se ukládají ve form�
 | Datum |Datum a čas, kdy došlo k události |
 | Úroveň |Úroveň události (například Chyba, upozornění, informace) |
 | ApplicationName |Název aplikace |
-| InstanceId |Instance aplikace, která na došlo k události |
+| ID instance |Instance aplikace, která na došlo k události |
 | EventTickCount |Datum a čas, kdy došlo k události, formát značky (větší přesnost) |
 | ID události |ID události této události<p><p>Výchozí hodnota je 0, pokud zadaný žádný |
 | Identifikátor PID |ID procesu |

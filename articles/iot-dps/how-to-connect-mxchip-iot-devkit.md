@@ -9,10 +9,10 @@ ms.service: iot-dps
 services: iot-dps
 manager: jeffya
 ms.openlocfilehash: 80e4895e0b276e701a6d7f10d8fc67649db0f188
-ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58904487"
 ---
 # <a name="use-azure-iot-hub-device-provisioning-service-auto-provisioning-to-register-the-mxchip-iot-devkit-with-iot-hub"></a>Použití Azure IoT Hub Device Provisioning Service automatického zřizování k registraci ve službě IoT Hub MXChip IoT DevKit
@@ -26,7 +26,7 @@ Tento článek popisuje, jak používat Azure IoT Hub Device Provisioning Servic
 
 [MXChip IoT DevKit](https://aka.ms/iot-devkit) je kompatibilní s Arduino deska All-in-one bohaté periferní zařízení a senzorů. Můžete vyvíjet pro něj pomocí [Workbench zařízení Azure IoT](https://aka.ms/iot-workbench) nebo [nástroje Azure IoT](https://aka.ms/azure-iot-tools) balíček rozšíření pro Visual Studio Code. DevKit se dodává s stále se rozšiřující [katalogu projektů](https://microsoft.github.io/azure-iot-developer-kit/docs/projects/) vodítko řešení Internetu věcí (IoT) prototypu, které budou využívat služeb Azure.
 
-## <a name="before-you-begin"></a>Před zahájením
+## <a name="before-you-begin"></a>Než začnete
 
 K dokončení kroků v tomto kurzu, proveďte následující úlohy:
 
@@ -108,7 +108,7 @@ V zařízení kód, je třeba zadat [Device provisioning koncový bod](/azure/io
 ## <a name="create-a-device-enrollment-entry"></a>Vytvoření položky registrace zařízení
 
 1. Na webu Azure Portal, otevřete svou službu zřizování zařízení, přejděte do části registrace spravovat a klikněte na **přidat jednotlivou registraci**.
-  ![Přidat jednotlivou registraci](media/how-to-connect-mxchip-iot-devkit/add-enrollment.png)
+  ![Přidání jednotlivé registrace](media/how-to-connect-mxchip-iot-devkit/add-enrollment.png)
 
 1. Klikněte na ikonu souboru vedle **soubor .pem nebo .cer primárního certifikátu** k nahrání `.pem` soubor generovaný.
   ![Nahrát .pem](media/how-to-connect-mxchip-iot-devkit/upload-pem.png)

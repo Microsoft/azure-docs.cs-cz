@@ -12,10 +12,10 @@ author: nabhishek
 ms.author: abnarain
 manager: craigg
 ms.openlocfilehash: ea409d6705d0146e9cb32ba11e6b785cf527739c
-ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58904572"
 ---
 # <a name="use-custom-activities-in-an-azure-data-factory-pipeline"></a>Použití vlastních aktivit v kanálu Azure Data Factory
@@ -382,10 +382,10 @@ Pokud fond používá výchozí [autoScaleEvaluationInterval](https://msdn.micro
 Viz následující články, které vysvětlují, jak transformovat data dalšími způsoby:
 
 * [Aktivita U-SQL](transform-data-using-data-lake-analytics.md)
-* [Aktivita Hivu](transform-data-using-hadoop-hive.md)
-* [Aktivita Pig](transform-data-using-hadoop-pig.md)
+* [Aktivita hivu](transform-data-using-hadoop-hive.md)
+* [Aktivita pig](transform-data-using-hadoop-pig.md)
 * [Aktivita MapReduce](transform-data-using-hadoop-map-reduce.md)
 * [Aktivita streamování Hadoop](transform-data-using-hadoop-streaming.md)
 * [Aktivita Spark](transform-data-using-spark.md)
 * [Aktivita provedení dávky služby Learning počítače](transform-data-using-machine-learning.md)
-* [Aktivita uložené procedury](transform-data-using-stored-procedure.md)
+* [Aktivita uložená procedura](transform-data-using-stored-procedure.md)

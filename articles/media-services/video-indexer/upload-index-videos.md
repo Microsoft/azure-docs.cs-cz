@@ -10,10 +10,10 @@ ms.topic: article
 ms.date: 03/05/2019
 ms.author: juliako
 ms.openlocfilehash: e6dead0f08f50b32dd963832824d9166ff2467c0
-ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58893448"
 ---
 # <a name="upload-and-index-your-videos"></a>Nahrání videí na server a jejich indexování  
@@ -85,9 +85,9 @@ Adresa URL, která se používá k upozornění zákazníků (pomocí požadavku
 
 Tento parametr použijte, pokud nezpracované nebo externí záznamy obsahují šum na pozadí. Tento parametr se používá ke konfiguraci indexovacího procesu. Můžete určit tyto hodnoty:
 
-- `Default` – Index a extrahovat přehledy s využitím audio a video
-- `AudioOnly` – Index a extrahovat přehledy s využitím zvuku pouze (ignoruje video)
-- `DefaultWithNoiseReduction` – Index a extrakce poznatků z zvuku a videa, při použití algoritmů snížení šumu na zvukový datový proud
+- `Default` – indexovat a extrahovat přehledy s využitím zvuku i videa
+- `AudioOnly` – indexovat a extrahovat přehledy s využitím jenom zvuku (video se ignoruje)
+- `DefaultWithNoiseReduction` – indexovat a extrahovat přehledy ze zvuku i videa při použití algoritmů snížení šumu na zvukový datový proud
 
 Cena závisí na vybrané možnosti indexování.  
 

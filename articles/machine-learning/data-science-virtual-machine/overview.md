@@ -16,10 +16,10 @@ ms.topic: overview
 ms.date: 10/27/2017
 ms.author: gokuma
 ms.openlocfilehash: 74fe2345af5d1249d6704c7560b42323561bc623
-ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/04/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58918242"
 ---
 # <a name="introduction-to-azure-data-science-virtual-machine-for-linux-and-windows"></a>Úvod k virtuálnímu počítači pro datové vědy pro Linux a Windows
@@ -56,7 +56,7 @@ Virtuální počítač pro datovou vědu můžete využít v tréninkových mode
 Virtuální počítač pro datovou vědu obsahuje mnoho oblíbených nástrojů pro datovou vědu a hloubkové učení, které jsou již nainstalovány a nakonfigurovány. Obsahuje taky nástroje, které usnadňují práci s různými datovými a analytickými produkty Azure, jako je Microsoft ML Server (R, Python) pro vytváření prediktivních modelů nebo SQL Server 2017 pro průzkum rozsáhlých datových sad. Součástí je také hostitel dalších nástrojů od komunity open source a od Microsoftu, ale i vzorový kód a poznámkové bloky. V následující tabulce najdete výčet a srovnání hlavních komponent, které jsou součástí edic virtuálního počítače pro datovou vědu pro Windows a Linux.
 
 
-| **Tool**                                                           | **Edice Windows** | **Edice pro Linux** |
+| **Nástroj**                                                           | **Edice pro Windows** | **Edice pro Linux** |
 | :------------------------------------------------------------------ |:-------------------:|:------------------:|
 | [Microsoft R Open](https://mran.microsoft.com/open/) s předinstalovanými oblíbenými balíčky   |Ano                      | Ano             |
 | [Microsoft ML Server (R, Python)](https://docs.microsoft.com/machine-learning-server/) Developer Edition zahrnuje: <br />  &nbsp;&nbsp;&nbsp;&nbsp;* [RevoScaleR/revoscalepy](https://docs.microsoft.com/machine-learning-server/r/concept-what-is-revoscaler) – paralelní a distribuovaná architektura s vysokým výkonem (R & Python)<br />  &nbsp;&nbsp;&nbsp;&nbsp;* [MicrosoftML](https://docs.microsoft.com/machine-learning-server/r/concept-what-is-the-microsoftml-package) – nové moderní algoritmy strojového učení od Microsoftu <br />  &nbsp;&nbsp;&nbsp;&nbsp;* [Operacionalizace R a Python](https://docs.microsoft.com/machine-learning-server/what-is-operationalization)                                            |Ano                      | Ano |
@@ -66,7 +66,7 @@ Virtuální počítač pro datovou vědu obsahuje mnoho oblíbených nástrojů 
 | Relační databáze                                                            | [SQL Server 2017](https://www.microsoft.com/sql-server/sql-server-2017) <br/> Developer Edition| [PostgreSQL](https://www.postgresql.org/) (CentOS),<br/>[SQL Server 2017](https://www.microsoft.com/sql-server/sql-server-2017) <br/> Developer Edition (Ubuntu) |
 | Databázové nástroje                                                       | * SQL Server Management Studio <br/>* SQL Server Integration Services<br/>* [bcp, sqlcmd](https://docs.microsoft.com/sql/tools/command-prompt-utility-reference-database-engine)<br /> * Ovladače ODBC/JDBC| * [SQuirreL SQL](http://squirrel-sql.sourceforge.net/) (nástroj pro dotazování), <br /> * bcp, sqlcmd <br /> * Ovladače ODBC/JDBC|
 | Škálovatelná analýza v databázi pomocí služeb SQL Server ML (R, Python) | Ano     |Ne              |
-| **[Jupyter Notebook Server](https://jupyter.org/) s následujícími jádry**                                  | Ano     | Ano |
+| **[Jupyter Notebook Server](https://jupyter.org/) s následujícími jádry:**                                  | Ano     | Ano |
 |     &nbsp;&nbsp;&nbsp;&nbsp;* R | Ano | Ano |
 |     &nbsp;&nbsp;&nbsp;&nbsp;* Python | Ano | Ano |
 |     &nbsp;&nbsp;&nbsp;&nbsp;* Julia | Ano | Ano |
@@ -75,7 +75,7 @@ Virtuální počítač pro datovou vědu obsahuje mnoho oblíbených nástrojů 
 |     &nbsp;&nbsp;&nbsp;&nbsp;* SparkR     | Ne | Ano |
 | JupyterHub (server poznámkového bloku pro více uživatelů)| Ne | Ano |
 | JupyterLab (server poznámkového bloku pro více uživatelů) | Ne | Ano (pouze Ubuntu) |
-| **Vývojářské nástroje, editory integrovaného vývojového prostředí a kód**| | |
+| **Vývojové nástroje, integrovaná vývojová prostředí a editory kódu**| | |
 | &nbsp;&nbsp;&nbsp;&nbsp;* [Visual Studio 2017 (Community Edition)](https://www.visualstudio.com/community/) s modulem plug-in Git, Azure HDInsight (Hadoop), Data Lake, nástroji SQL Server Data Tools, [Node.js](https://github.com/Microsoft/nodejstools), [Pythonem](https://aka.ms/ptvs) a [nástroji R pro Visual Studio (RTVS)](https://microsoft.github.io/RTVS-docs/) | Ano | Ne |
 | &nbsp;&nbsp;&nbsp;&nbsp;* [Visual Studio Code](https://code.visualstudio.com/) | Ano | Ano |
 | &nbsp;&nbsp;&nbsp;&nbsp;* [RStudio Desktop](https://www.rstudio.com/products/rstudio/#Desktop) | Ano | Ano |
@@ -89,7 +89,7 @@ Virtuální počítač pro datovou vědu obsahuje mnoho oblíbených nástrojů 
 | &nbsp;&nbsp;&nbsp;&nbsp;* .NET Framework | Ano | Ne |
 | Power BI Desktopu | Ano | Ne |
 | Sady SDK pro přístup ke službám Azure a Cortana Intelligence Suite | Ano | Ano |
-| **Přesun dat a nástroje pro správu** | | |
+| **Nástroje pro přesun a správu dat** | | |
 | &nbsp;&nbsp;&nbsp;&nbsp;* Průzkumník služby Azure Storage | Ano | Ano |
 | &nbsp;&nbsp;&nbsp;&nbsp;* [Azure CLI](https://docs.microsoft.com/cli/azure) | Ano | Ano |
 | &nbsp;&nbsp;&nbsp;&nbsp;* Azure Powershell | Ano | Ne |

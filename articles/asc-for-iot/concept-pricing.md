@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 03/27/2019
 ms.author: mlottner
 ms.openlocfilehash: 41b2d012ef2f6dd1ca5f57e04da43eb1a06dafde
-ms.sourcegitcommit: d83fa82d6fec451c0cb957a76cfba8d072b72f4f
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/02/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58862705"
 ---
 # <a name="pricing-and-associated-costs"></a>Ceny a související náklady
@@ -64,7 +64,7 @@ Následující tabulka obsahuje souhrn související náklady a důsledky jednot
 
 |     | Využití | Poznámka |
 | --- | --- | --- |
-| **IoT Hub quota consumption** |  |
+| **Využití kvóty služby IoT Hub** |  |
 | [Export zařízení](https://docs.microsoft.com/en-us/azure/iot-hub/iot-hub-bulk-identity-mgmt#export-devices) úlohy (dvojčete export) | Jednou za den | Zakázat _dvojčete kolekci metadat_ |
 | **Úložiště analýzy protokolů** |  |
 | Zařízení doporučení a výstrahy| Doporučení pro zabezpečení a výstrah generovaných službou | Není nepovinný |
@@ -85,6 +85,6 @@ Následující tabulka obsahuje souhrn související náklady a důsledky jednot
 ## <a name="see-also"></a>Další informace najdete v tématech
 
 - Přístup k vaší [nezpracovaná zabezpečení dat](how-to-security-data-access.md)
-- [Prozkoumání zařízení](how-to-investigate-device.md)
+- [Prozkoumat zařízení](how-to-investigate-device.md)
 - Porozumění a prozkoumávání [doporučení zabezpečení](concept-recommendations.md)
 - Porozumění a prozkoumávání [výstrahy zabezpečení](concept-security-alerts.md)

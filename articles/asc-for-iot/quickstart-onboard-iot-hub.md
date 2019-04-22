@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 03/25/2019
 ms.author: mlottner
 ms.openlocfilehash: 59021d09f2af9d430b118acdeb8aa977094e683e
-ms.sourcegitcommit: d83fa82d6fec451c0cb957a76cfba8d072b72f4f
-ms.translationtype: MT
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/02/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58862382"
 ---
 # <a name="quickstart-enable-service-in-iot-hub"></a>Rychlý start: Povolit službu ve službě IoT Hub
@@ -60,4 +60,4 @@ Blahopřejeme! Dokončení povolení ASC pro IoT ve službě IoT Hub.
 Přejděte k dalším článku se naučíte, jak nakonfigurovat řešení...
 
 > [!div class="nextstepaction"]
-> [Konfigurace vašeho řešení](quickstart-configure-your-solution.md)
+> [Konfigurace řešení](quickstart-configure-your-solution.md)

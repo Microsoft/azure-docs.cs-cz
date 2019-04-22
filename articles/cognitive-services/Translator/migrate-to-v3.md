@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 02/01/2019
 ms.author: v-jansko
 ms.openlocfilehash: d3ffdcb79a56bf2f9f4a6eb192293bbc6bab7dab
-ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/04/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58916712"
 ---
 # <a name="translator-text-api-v2-to-v3-migration"></a>Translator Text API V2 na V3 migrace
@@ -45,12 +45,12 @@ Následující seznam metod V2 a V3 identifikuje rozhraní API, která poskytne 
 |:----------- |:-------------|
 | `Translate`     | [Translate](reference/v3-0-translate.md)          |
 | `TranslateArray`      | [Translate](reference/v3-0-translate.md)        |
-| `GetLanguageNames`      | [Languages](reference/v3-0-languages.md)         |
-| `GetLanguagesForTranslate`     | [Languages](reference/v3-0-languages.md)       |
+| `GetLanguageNames`      | [Jazyky](reference/v3-0-languages.md)         |
+| `GetLanguagesForTranslate`     | [Jazyky](reference/v3-0-languages.md)       |
 | `GetLanguagesForSpeak`      | [Microsoft Speech Service](https://docs.microsoft.com/azure/cognitive-services/speech-service/language-support#text-to-speech)         |
 | `Speak`     | [Microsoft Speech Service](https://docs.microsoft.com/azure/cognitive-services/speech-service/text-to-speech)          |
-| `Detect`     | [Detect](reference/v3-0-detect.md)         |
-| `DetectArray`     | [Detect](reference/v3-0-detect.md)         |
+| `Detect`     | [Zjištění](reference/v3-0-detect.md)         |
+| `DetectArray`     | [Zjištění](reference/v3-0-detect.md)         |
 | `AddTranslation`     | Funkce se už nepodporuje.       |
 | `AddTranslationArray`    | Funkce se už nepodporuje.          |
 | `BreakSentences`      | [BreakSentence](reference/v3-0-break-sentence.md)       |
@@ -142,7 +142,7 @@ Pokud používáte api.cognitive.microsofttranslator.com koncový bod používá
 
 * [Zásady ochrany osobních údajů společnosti Microsoft](https://privacy.microsoft.com/privacystatement)
 * [Právní informace týkající se Microsoft Azure](https://azure.microsoft.com/support/legal)
-* [Online Services Terms](https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=31)
+* [Podmínky online služeb](https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=31)
 
 ## <a name="next-steps"></a>Další postup
 

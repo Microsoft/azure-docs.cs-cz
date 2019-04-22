@@ -16,22 +16,22 @@ ms.workload: infrastructure-services
 ms.date: 04/26/2017
 ms.author: victorh
 ms.openlocfilehash: 90d576fd00a39f7e871cbe0922ce131dfbe38ff0
-ms.sourcegitcommit: d83fa82d6fec451c0cb957a76cfba8d072b72f4f
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/02/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58862161"
 ---
 # <a name="create-a-custom-probe-for-application-gateway-by-using-the-portal"></a>Vytvoření vlastního testu paměti pro službu Application Gateway pomocí portálu
 
 > [!div class="op_single_selector"]
-> * [portál Azure](application-gateway-create-probe-portal.md)
+> * [Azure Portal](application-gateway-create-probe-portal.md)
 > * [Azure Resource Manager PowerShell](application-gateway-create-probe-ps.md)
 > * [Azure Classic PowerShell](application-gateway-create-probe-classic-ps.md)
 
 V tomto článku přidáte vlastní test paměti existující aplikační bráně pomocí webu Azure portal. Vlastní sondy jsou užitečné pro aplikace, které mají konkrétní stránky kontroly stavu nebo pro aplikace, které neposkytují úspěšné odpovědi na výchozí webovou aplikaci.
 
-## <a name="before-you-begin"></a>Před zahájením
+## <a name="before-you-begin"></a>Než začnete
 
 Pokud již nemáte služby application gateway, navštivte [vytvoření služby Application Gateway](application-gateway-create-gateway-portal.md) k vytvoření služby application gateway pro práci s.
 
@@ -52,12 +52,12 @@ Testy jsou nakonfigurované ve dvou krocích prostřednictvím portálu. Prvním
    |**Nastavení** | **Hodnota** | **Podrobnosti**|
    |---|---|---|
    |**Název**|customProbe|Tato hodnota je popisný název, který test, který je přístupný na portálu.|
-   |**Protocol (Protokol)**|Protokol HTTP nebo HTTPS | Protokol, který používá sondy stavu.|
+   |**Protokol**|Protokol HTTP nebo HTTPS | Protokol, který používá sondy stavu.|
    |**Hostitel**|i.e contoso.com|Tato hodnota je název hostitele, který se používá pro test paměti. Použít pouze v případě více webů je nakonfigurovaná ve službě Application Gateway, v opačném případě použijte "127.0.0.1". Tato hodnota se liší od názvu hostitele virtuálního počítače.|
    |**Cesta**|/ nebo jinou cestu|Zbývající část úplnou adresu url pro vlastní test paměti. Platná cesta začínající znakem "/". Pro výchozí cestu k protokolu http:\//contoso.com použijte "/" |
    |**Interval (sekundy)**|30|Jak často je ke kontrole stavu spuštění testu. Nedoporučuje se nastavit nižší než 30 sekund.|
    |**Časový limit (sekundy)**|30|Množství času, které čeká, než vyprší časový limit testu. Interval časového limitu musí být dostatečně vysoká, volání protokolu http lze zajistit, že je k dispozici na stránce stavu back-endu.|
-   |**Prahová hodnota pro poškozený stav**|3|Počet neúspěšných pokusů o se považoval za poškozený. Prahová hodnota 0 znamená, že okamžitě určen není v pořádku, pokud selže kontrola stavu back endu.|
+   |**Prahová hodnota špatného stavu**|3|Počet neúspěšných pokusů o se považoval za poškozený. Prahová hodnota 0 znamená, že okamžitě určen není v pořádku, pokud selže kontrola stavu back endu.|
 
    > [!IMPORTANT]
    > Název hostitele není stejný jako název serveru. Tato hodnota je název virtuálního hostitele se spuštěnou na aplikačním serveru. Sonda se odesílá do http://(host name):(port from httpsetting)/urlPath

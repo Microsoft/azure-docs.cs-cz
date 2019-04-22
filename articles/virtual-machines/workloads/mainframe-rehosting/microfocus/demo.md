@@ -6,10 +6,10 @@ ms.date: 04/02/2019
 ms.topic: article
 ms.service: multiple
 ms.openlocfilehash: be94cf0367f93f14249239fce5e09c8635a01136
-ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58892479"
 ---
 # <a name="set-up-micro-focus-cics-bankdemo-for-micro-focus-enterprise-developer-40-on-azure"></a>Nastavit Micro fokus CICS BankDemo Micro fokus Enterprise Developer 4.0 v Azure
@@ -270,6 +270,6 @@ Blahopřejeme! Je teď spuštěná CICS aplikace v Azure pomocí Micro fokus Ent
 
 - [Spuštění serveru organizace v kontejnerech Docker v Azure](run-enterprise-server-container.md)
 - [Migrace mainframů – portál](https://blogs.msdn.microsoft.com/azurecat/2018/11/16/mainframe-migration-to-azure-portal/)
-- [Virtuální počítače](https://docs.microsoft.com/azure/virtual-machines/linux/overview)
+- [Virtual Machines](https://docs.microsoft.com/azure/virtual-machines/linux/overview)
 - [Řešení potíží](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/)
-- [Demystifikace migrace mainframů do Azure](https://azure.microsoft.com/resources/demystifying-mainframe-to-azure-migration/en-us/)
+- [Uvedení mainframových migrace do Azure](https://azure.microsoft.com/resources/demystifying-mainframe-to-azure-migration/en-us/)

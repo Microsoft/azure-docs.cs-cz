@@ -318,7 +318,7 @@ Protože Azure Storage uchovává tři Image dat ve výchozím nastavení, použ
 
 Další informace najdete v tématu [replikace Azure Storage][azure-storage-redundancy].
 
-### <a name="azure-managed-disks"></a>Azure Managed Disks
+### <a name="azure-managed-disks"></a>Spravované disky Azure
 Spravované disky je typ prostředku v Azure Resource Manageru, který, doporučuje se použijí místo virtuálních pevných disků (VHD), které se ukládají v účtech úložiště Azure. Spravované disky automaticky zarovnat s Azure dostupnosti virtuálního počítače, které jsou připojeny k. Zvyšují dostupnost virtuálního počítače a služby, které jsou v něm spuštěný.
 
 Další informace najdete v tématu [Přehled služby Azure Managed Disks][azure-storage-managed-disks-overview].

@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 12/07/2018
 ms.custom: seodec18
 ms.openlocfilehash: a13d3b24cd7845de144183d9f2ea825e0e24219f
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58883713"
 ---
 # <a name="get-started-using-azure-stream-analytics-real-time-fraud-detection"></a>Začínáme používat Azure Stream Analytics: Zjišťování možných podvodů v reálném čase
@@ -415,7 +415,7 @@ Můžete pokračovat v tomto kurzu se v následujícím článku:
 
 Další informace o Stream Analytics obecně platí, najdete v těchto článcích:
 
-* [Úvod k Azure Stream Analytics](stream-analytics-introduction.md)
+* [Úvod do služby Azure Stream Analytics](stream-analytics-introduction.md)
 * [Škálování služby Stream Analytics](stream-analytics-scale-jobs.md)
 * [Referenční příručka k jazyku Azure Stream Analytics Query Language](https://msdn.microsoft.com/library/azure/dn834998.aspx)
 * [Referenční příručka k rozhraní REST API pro správu služby Azure Stream Analytics](https://msdn.microsoft.com/library/azure/dn835031.aspx)

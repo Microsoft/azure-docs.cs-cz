@@ -16,16 +16,16 @@ ms.workload: infrastructure-services
 ms.date: 04/26/2017
 ms.author: victorh
 ms.openlocfilehash: 01c1768f60da98206f0dfd041745428256f545fc
-ms.sourcegitcommit: d83fa82d6fec451c0cb957a76cfba8d072b72f4f
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/02/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58861875"
 ---
 # <a name="create-a-custom-probe-for-azure-application-gateway-classic-by-using-powershell"></a>Vytvoření vlastního testu paměti pro službu Azure Application Gateway (classic pomocí prostředí PowerShell)
 
 > [!div class="op_single_selector"]
-> * [portál Azure](application-gateway-create-probe-portal.md)
+> * [Azure Portal](application-gateway-create-probe-portal.md)
 > * [Azure Resource Manager PowerShell](application-gateway-create-probe-ps.md)
 > * [Azure Classic PowerShell](application-gateway-create-probe-classic-ps.md)
 
@@ -151,10 +151,10 @@ Konfigurační parametry jsou:
 |Parametr|Popis|
 |---|---|
 |**Název** |Referenční název pro vlastní test paměti. |
-| **Protocol (Protokol)** | Protokol použitý (možné hodnoty jsou HTTP nebo HTTPS).|
+| **Protokol** | Protokol použitý (možné hodnoty jsou HTTP nebo HTTPS).|
 | **Hostitel** a **cesty** | Úplná cesta URL, která je volána službou application gateway určit stav instance. Například, pokud máte web http:\//contoso.com/ vlastní test paměti a je možné nakonfigurovat pro "http:\//contoso.com/path/custompath.htm" pro test zkontroluje, že máte úspěšné odpovědi HTTP.|
 | **Interval** | Nakonfiguruje interval kontroly testu nezdaří v řádu sekund.|
-| **Vypršení časového limitu** | Definuje časový limit testu pro kontrolu odpovědi HTTP.|
+| **časový limit** | Definuje časový limit testu pro kontrolu odpovědi HTTP.|
 | **UnhealthyThreshold** | Počet neúspěšných odpovědí HTTP, které jsou potřebné k nastavení příznaku instance back-end jako *není v pořádku*.|
 
 Název sondy odkazuje \<BackendHttpSettings\> konfigurace přiřadit kterému fondu back-end využívá nastavení vlastní test paměti.

@@ -8,10 +8,10 @@ ms.custom: mvc
 ms.topic: quickstart
 ms.date: 04/01/2019
 ms.openlocfilehash: 4099d6ea12774fec2b24895b42d8e780bd36e2a4
-ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/04/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58917341"
 ---
 # <a name="quickstart-create-an-apache-kafka-on-hdinsight-cluster"></a>Rychlý start: Vytvoření Apache Kafka v clusteru HDInsight
@@ -102,7 +102,7 @@ K vytvoření clusteru Apache Kafka ve službě HDInsight použijte následujíc
     > K zajištění dostupnosti systému Apache Kafka ve službě HDInsight musí být položka __Počet pracovních uzlů__ nastavená na hodnotu 3 nebo vyšší. Výchozí hodnota je 4.
     
     > [!TIP]  
-    > Položka **Počet disků na pracovní uzel** konfiguruje škálovatelnost systému Apache Kafka ve službě HDInsight. Apache Kafka ve službě HDInsight používá k ukládání dat místní disky virtuálních počítačů v clusteru. Platforma Apache Kafka je náročná na vstupně-výstupní operace, proto se k zajištění vysoké propustnosti a vyšší kapacity úložiště na každý uzel využívá služba [Azure Managed Disks](../../virtual-machines/windows/managed-disks-overview.md). Typ spravovaného disku může být buď __Standardní__ (HDD), nebo __Prémiový__ (SSD). Typ disku závisí na velikosti virtuálního počítače používaného pracovními uzly (zprostředkovateli Apache Kafka). U virtuálních počítačů řady DS a GS se automaticky používají disky Premium. Všechny ostatní typy virtuálních počítačů používají standardní disky.
+    > Položka **Počet disků na pracovní uzel** konfiguruje škálovatelnost systému Apache Kafka ve službě HDInsight. Apache Kafka ve službě HDInsight používá k ukládání dat místní disky virtuálních počítačů v clusteru. Platforma Apache Kafka je náročná na vstupně-výstupní operace, proto se k zajištění vysoké propustnosti a vyšší kapacity úložiště na každý uzel využívají [Spravované disky Azure](../../virtual-machines/windows/managed-disks-overview.md). Typ spravovaného disku může být buď __Standardní__ (HDD), nebo __Prémiový__ (SSD). Typ disku závisí na velikosti virtuálního počítače používaného pracovními uzly (zprostředkovateli Apache Kafka). U virtuálních počítačů řady DS a GS se automaticky používají disky Premium. Všechny ostatní typy virtuálních počítačů používají standardní disky.
 
    ![Nastavení velikosti clusteru Apache Kafka](./media/apache-kafka-get-started/kafka-cluster-size.png)
 

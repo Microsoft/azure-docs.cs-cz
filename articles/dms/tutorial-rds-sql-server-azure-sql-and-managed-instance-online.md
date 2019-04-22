@@ -12,10 +12,10 @@ ms.custom: mvc, tutorial
 ms.topic: article
 ms.date: 04/03/2019
 ms.openlocfilehash: 4990b5f42291856c3695b4bf0eb6ec4084e9214e
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
-ms.translationtype: MT
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58886399"
 ---
 # <a name="tutorial-migrate-rds-sql-server-to-azure-sql-database-or-an-azure-sql-database-managed-instance-online-using-dms"></a>Kurz: Migrace vzdálené plochy SQL serveru do Azure SQL Database nebo spravované instance Azure SQL Database online pomocí DMS
@@ -237,7 +237,7 @@ Po vytvoření služby ji vyhledejte na webu Azure Portal, otevřete ji a pak vy
     | ------------- | ------------- |
     | **Maximální počet tabulek, načtení paralelně** | Určuje počet tabulek, které DMS spustí paralelně během migrace. Výchozí hodnota je 5, ale může být nastavena na optimální hodnotu podle potřeb konkrétního migrace založené na všechny migrace POC. |
     | **Když je oříznutá. zdrojová tabulka** | Určuje, zda DMS zkrátí cílová tabulka během migrace. Toto nastavení může být užitečné, pokud jeden nebo více tabulek se zkrátí jako součást procesu migrace. |
-    | **Konfigurovat nastavení pro data velkých objektů (LOB)** | Určuje, zda DMS migruje neomezená data LOB nebo omezení obchodní data migrovat do určité velikosti.  Když platí omezení obchodní data migrována, žádná obchodní data nad rámec tohoto limitu je oříznutá. Pro migraci produkčního prostředí, doporučujeme vybrat **Povolit neomezené velikosti LOB** se tak ztrátě dat. Při zadávání Povolit neomezené velikosti LOB, vyberte **zadat migraci obchodní data v jeden blok při LOB velikost je menší než (KB)** zaškrtávací políčko ke zlepšení výkonu. |
+    | **Konfigurace nastavení pro velké objekty (LOB) dat.** | Určuje, zda DMS migruje neomezená data LOB nebo omezení obchodní data migrovat do určité velikosti.  Když platí omezení obchodní data migrována, žádná obchodní data nad rámec tohoto limitu je oříznutá. Pro migraci produkčního prostředí, doporučujeme vybrat **Povolit neomezené velikosti LOB** se tak ztrátě dat. Při zadávání Povolit neomezené velikosti LOB, vyberte **zadat migraci obchodní data v jeden blok při LOB velikost je menší než (KB)** zaškrtávací políčko ke zlepšení výkonu. |
     
     ![Nastavení pokročilých online migrace](media/tutorial-rds-sql-to-azure-sql-and-managed-instance/dms-advanced-online-migration-settings.png)
 

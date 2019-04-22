@@ -9,10 +9,10 @@ ms.date: 04/02/2019
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to connect my corporate on-premises network(s) to my VNets using Virtual WAN and ExpressRoute.
 ms.openlocfilehash: 7b7adcc85b9274af45ddab653e875377e959e40c
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58876322"
 ---
 # <a name="tutorial-create-an-expressroute-association-using-azure-virtual-wan-preview"></a>Kurz: Vytvoření přidružení ExpressRoute pomocí Azure virtuální sítě WAN (Preview)
@@ -35,7 +35,7 @@ V tomto kurzu se naučíte:
 > Tato verze Public Preview se poskytuje bez smlouvy o úrovni služeb a neměla by se používat pro úlohy v produkčním prostředí. Některé funkce nemusí být podporované, můžou mít omezené možnosti nebo nemusí být dostupné ve všech umístěních Azure. Podrobnosti najdete v [dodatečných podmínkách použití systémů Microsoft Azure Preview](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 >
 
-## <a name="before-you-begin"></a>Před zahájením
+## <a name="before-you-begin"></a>Než začnete
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -45,7 +45,7 @@ V tomto kurzu se naučíte:
 
 Než budete moci nakonfigurovat virtuální síť WAN, je nejdříve potřeba zaregistrovat vaše předplatné pro verzi Preview. Jinak nebude možné na portálu se službou Virtual WAN pracovat. Při registraci odeslat e-mailu **azurevirtualwan\@microsoft.com** svým ID předplatného. Jakmile se vaše předplatné zaregistruje, dostanete e-mail s potvrzením.
 
-**Důležité informace o verzi Preview:**
+**Požadavky pro verzi Preview:**
 
 Okruh ExpressRoute, musí být povolená v zemi, která podporuje [ExpressRoute globální dosah](https://docs.microsoft.com/azure/expressroute/expressroute-faqs#where-is-expressroute-global-reach-supported).
 

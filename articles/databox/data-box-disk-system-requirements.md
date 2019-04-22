@@ -77,7 +77,7 @@ Tady je seznam typů úložiště, které jsou podporovány pro nahráli do Azur
 | Objekt blob bloku Azure | |
 | Objekt blob stránky Azure  | |
 | Soubory Azure  | |
-| Managed Disks | |
+| Spravované disky | |
 
 
 ## <a name="next-step"></a>Další krok

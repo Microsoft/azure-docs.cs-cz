@@ -91,7 +91,7 @@ Zástupný znak použijte k úpravě předchozí zásady a umožní žádné ima
 
 Informace o polí zásad najdete v tématu [zásad aliasy](../../governance/policy/concepts/definition-structure.md#aliases).
 
-## <a name="managed-disks"></a>Managed Disks
+## <a name="managed-disks"></a>Spravované disky
 
 Vyžadovat použití spravovaných disků, použijte následující zásady:
 

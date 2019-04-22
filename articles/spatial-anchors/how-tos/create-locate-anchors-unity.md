@@ -9,10 +9,10 @@ ms.date: 02/24/2019
 ms.topic: how-to
 ms.service: azure-spatial-anchors
 ms.openlocfilehash: d1c5f906fef495f7ef1dde5df38a84629a6d6c61
-ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/04/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58915947"
 ---
 # <a name="how-to-create-and-locate-anchors-using-azure-spatial-anchors-in-unity"></a>Jak vytvořit a vyhledejte ukotvení pomocí Azure prostorových ukotvení v Unity
@@ -22,8 +22,8 @@ ms.locfileid: "58915947"
 > * [Objective-C](create-locate-anchors-objc.md)
 > * [Swift](create-locate-anchors-swift.md)
 > * [Android Java](create-locate-anchors-java.md)
-> * [C + +/ NDK](create-locate-anchors-cpp-ndk.md)
-> * [C + +/ WinRT](create-locate-anchors-cpp-winrt.md)
+> * [C++/ SADA NDK](create-locate-anchors-cpp-ndk.md)
+> * [C++/ WinRT](create-locate-anchors-cpp-winrt.md)
 
 Azure prostorových kotvy umožňují sdílet kotvy na světě mezi různými zařízeními. Podporuje několik různých vývojových prostředích. V tomto článku začneme budete zabývat jak pomocí nástroje Azure prostorových kotvy SDK v Unity:
 

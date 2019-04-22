@@ -11,10 +11,10 @@ ms.date: 04/02/2019
 ms.topic: article
 ms.service: multiple
 ms.openlocfilehash: 8b7c2a088dc917c319acf6cad251ad53367a14b6
-ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
-ms.translationtype: MT
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58895033"
 ---
 # <a name="mainframe-rehosting-on-azure-virtual-machines"></a>Změna mainframových hostování na Azure virtual machines
@@ -92,7 +92,7 @@ Díky Azure IaaS, jako je například virtuální počítač, konkrétní systé
 
 Sálové počítače obvykle vertikálně navýšit kapacitu, při cloudových prostředích pro horizontální navýšení kapacity. Azure nabízí celou řadu [Linux](/azure/virtual-machines/linux/sizes) a [Windows](/azure/virtual-machines/windows/sizes) velikosti podle vašich potřeb. Cloud také škálování nahoru nebo dolů specifikací přesně uživatele shoda. Výpočetní výkon, úložiště a službám [škálování](/azure/architecture/best-practices/auto-scaling) na požádání v rámci modelu fakturace podle využití.
 
-### <a name="storage"></a>Storage
+### <a name="storage"></a>Úložiště
 
 V cloudu mají celou řadu možností úložiště flexibilní, škálovatelný a platíte jenom za to co potřebujete. [Azure Storage](/azure/storage/common/storage-introduction) nabízí široce škálovatelné úložiště objektů pro datové objekty, službu systému souborů pro cloud, spolehlivé úložiště a úložiště NoSQL. Pro virtuální počítače spravované a nespravované disky poskytují trvalé a zabezpečené diskové úložiště.
 
@@ -119,7 +119,7 @@ Viz také:
 - [Dokumenty White Paper o tématech sálového počítače](mainframe-white-papers.md)
 - [Migrace mainframů](/azure/architecture/cloud-adoption/infrastructure/mainframe-migration/overview)
 - [Řešení potíží](/azure/virtual-machines/troubleshooting/)
-- [Demystifikace migrace mainframů do Azure](https://azure.microsoft.com/resources/demystifying-mainframe-to-azure-migration/)
+- [Uvedení mainframových migrace do Azure](https://azure.microsoft.com/resources/demystifying-mainframe-to-azure-migration/)
 
 <!-- INTERNAL LINKS -->
 [microfocus-get-started]: /microfocus/get-started.md

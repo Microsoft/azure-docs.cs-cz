@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 06/20/2016
 ms.author: timlt
 ms.openlocfilehash: b3660901c86dd644369e6d1913e825cbd5ea316b
-ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/04/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58918463"
 ---
 # <a name="managing-azure-cloud-services-using-azure-automation"></a>Správa cloudové služby Azure pomocí Azure Automation

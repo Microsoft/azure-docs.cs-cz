@@ -9,10 +9,10 @@ editor: edprice
 tags: ''
 keywords: ''
 ms.openlocfilehash: 33d0baf10df1882baf212c3e2c2683c8ca072fcc
-ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58896326"
 ---
 # <a name="install-micro-focus-enterprise-server-40-and-enterprise-developer-40-on-azure"></a>Instalace Micro fokus Enterprise Server 4.0 a podnikový vývojář 4.0 v Azure
@@ -38,7 +38,7 @@ Než začnete, projděte si tyto požadavky:
 > [!NOTE]
 > Osvědčeným postupem je zřídit tunelové připojení virtuální privátní sítě site-to-site (VPN) nebo jumpbox tak můžete řídit přístup k virtuálním počítačům Azure.
 
-## <a name="install-enterprise-server"></a>Instalace serveru pro Enterprise
+## <a name="install-enterprise-server"></a>Instalace Enterprise Serveru
 
 1. Pro lepší zabezpečení a možnosti správy, zvažte možnost vytvořit novou skupinu prostředků jen pro tento projekt, například **RGMicroFocusEntServer**. První část názvu v Azure použijte k určení typ prostředku, aby bylo snazší pro přímé v seznamu.
 
@@ -72,7 +72,7 @@ Než začnete, projděte si tyto požadavky:
 
      ![Na obrazovce Micro fokus Enterprise serveru instalace](media/02-enterprise-server.png)
 
-### <a name="check-for-updates"></a>Vyhledat aktualizace
+### <a name="check-for-updates"></a>Zkontrolovat aktualizace
 
 Po instalaci je potřeba zkontrolovat pro všechny další aktualizace od počet požadavků, jako například distribuovatelné součásti Microsoft C++ a .NET Framework jsou nainstalovány společně s Enterprise Server.
 

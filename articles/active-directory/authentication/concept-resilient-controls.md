@@ -12,10 +12,10 @@ ms.date: 12/19/2018
 ms.author: martincoetzer
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 6e1fa72f8c7edf76ec46663fd62ee40a3a16e8cd
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58886076"
 ---
 # <a name="create-a-resilient-access-control-management-strategy-with-azure-active-directory"></a>Vytvořit strategie správy řízení odolné přístupu v Azure Active Directory
@@ -261,12 +261,12 @@ Pokud vaše organizace používá starší verzi zásad MFA na uživatele, můž
 
 ## <a name="learn-more"></a>Další informace
 
-* [Dokumentace k ověřování Azure AD](https://docs.microsoft.com/azure/active-directory/authentication/howto-mfaserver-iis)
+* [Dokumentace ke službě Azure AD Authentication](https://docs.microsoft.com/azure/active-directory/authentication/howto-mfaserver-iis)
 * [Spravovat účty pro správu nouzovou přístup ve službě Azure AD](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-emergency-access)
 * [Konfigurace pojmenovaných umístění ve službě Azure Active Directory](https://docs.microsoft.com/azure/active-directory/reports-monitoring/quickstart-configure-named-locations)
   * [Set-MsolDomainFederationSettings](https://docs.microsoft.com/powershell/module/msonline/set-msoldomainfederationsettings?view=azureadps-1.0)
 * [Jak nakonfigurovat zařízení Azure Active Directory připojená k hybridní](https://docs.microsoft.com/azure/active-directory/devices/hybrid-azuread-join-plan)
-* [Windows Hello pro firmy Průvodce nasazením](https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/hello-deployment-guide)
+* [Průvodce nasazením Windows Hello pro firmy](https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/hello-deployment-guide)
   * [Heslo – doprovodné materiály týmem Microsoft Research.](https://research.microsoft.com/pubs/265143/microsoft_password_guidance.pdf)
 * [Jaké jsou podmínky podmíněného přístupu Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/conditions)
 * [Co jsou řízení přístupu v Azure Active Directory podmíněného přístupu?](https://docs.microsoft.com/azure/active-directory/conditional-access/controls)

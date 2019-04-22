@@ -20,7 +20,7 @@ ms.locfileid: "53581496"
 
 Naučte se konfigurovat spravované disky používané systémem [Apache Kafka](https://kafka.apache.org/) v HDInsight.
 
-Platforma Kafka ve službě HDInsight používá místní disky virtuálních počítačů v clusteru HDInsight. Protože je platforma Kafka náročná na V/V prostředky, k zajištění vysoké propustnosti a vyšší kapacity úložiště na každý uzel se využívá služba [Azure Managed Disks](../../virtual-machines/windows/managed-disks-overview.md). Kdyby platforma Kafka využívala tradiční virtuální pevné disky (VHD), každý uzel by byl omezený na 1 TB. Díky službě Managed Disks můžete používat více disků, se kterými každý uzel v clusteru nabídne kapacitu až 16 TB.
+Platforma Kafka ve službě HDInsight používá místní disky virtuálních počítačů v clusteru HDInsight. Protože je platforma Kafka náročná na V/V prostředky, k zajištění vysoké propustnosti a vyšší kapacity úložiště na každý uzel se využívají [Spravované disky Azure](../../virtual-machines/windows/managed-disks-overview.md). Kdyby platforma Kafka využívala tradiční virtuální pevné disky (VHD), každý uzel by byl omezený na 1 TB. Díky spravovaným diskům můžete používat více disků, se kterými každý uzel v clusteru nabídne kapacitu až 16 TB.
 
 Následující diagram porovnává platformu Kafka ve službě HDInsight před použitím spravovaných disků a s nimi:
 

@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: twooley
 ms.openlocfilehash: 9431cc7fa12b86371ce6b2325aca8e13d264442e
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58880572"
 ---
 # <a name="get-started-with-azure-data-lake-store-using-azure-cli"></a>Začínáme s Azure Data Lake Store pomocí rozhraní příkazového řádku Azure
@@ -22,7 +22,7 @@ ms.locfileid: "58880572"
 [!INCLUDE [data-lake-storage-gen1-rename-note.md](../../includes/data-lake-storage-gen1-rename-note.md)]
 
 > [!div class="op_single_selector"]
-> * [Portál](data-lake-store-get-started-portal.md)
+> * [Azure Portal](data-lake-store-get-started-portal.md)
 > * [PowerShell](data-lake-store-get-started-powershell.md)
 > * [Azure CLI](data-lake-store-get-started-cli-2.0.md)
 >
@@ -234,6 +234,6 @@ Po zobrazení výzvy zadejte **Y**, a účet tak odstraňte.
 
 ## <a name="next-steps"></a>Další postup
 * [Použití Azure Data Lake Storage Gen1 pro potřeby velkého objemu dat](data-lake-store-data-scenarios.md) 
-* [Zabezpečení dat v Data Lake Storage Gen1](data-lake-store-secure-data.md)
+* [Zabezpečení dat ve službě Data Lake Storage Gen1](data-lake-store-secure-data.md)
 * [Použití Azure Data Lake Analytics s Data Lake Storage Gen1](../data-lake-analytics/data-lake-analytics-get-started-portal.md)
 * [Použití Azure HDInsight s Data Lake Storage Gen1](data-lake-store-hdinsight-hadoop-use-portal.md)

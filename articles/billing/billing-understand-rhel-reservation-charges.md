@@ -14,10 +14,10 @@ ms.workload: na
 ms.date: 01/22/2019
 ms.author: cwatson
 ms.openlocfilehash: fe0d0f0baa2b3d1c08e871541dce1511e00f7f87
-ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/04/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58917052"
 ---
 # <a name="understand-how-the-red-hat-linux-enterprise-software-reservation-plan-discount-is-applied-for-azure"></a>Vysvětlení použití slevy na plán rezervaci softwaru Red Hat Linux Enterprise pro Azure
@@ -160,7 +160,7 @@ Další informace o rezervacích, naleznete v následujících článcích:
 
 - [Co jsou rezervace pro Azure](billing-save-compute-costs-reservations.md)
 - [Předplatíte plány softwaru Red Hat s Azure rezervace](../virtual-machines/linux/prepay-rhel-software-charges.md)
-- [Předplatit si virtuální počítače se službou Azure Reserved VM Instances](../virtual-machines/windows/prepay-reserved-vm-instances.md)
+- [Předplacení virtuálních počítačů se službou Azure Reserved VM Instances](../virtual-machines/windows/prepay-reserved-vm-instances.md)
 - [Správa rezervací pro Azure](billing-manage-reserved-vm-instance.md)
 - [Vysvětlení využití rezervace pro vaše předplatné s průběžnými platbami](billing-understand-reserved-instance-usage.md)
 - [Vysvětlení využití rezervaci u prováděcí smlouvy Enterprise](billing-understand-reserved-instance-usage-ea.md)

@@ -17,10 +17,10 @@ ms.date: 05/16/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 24f4983f2ba1567241a6dfc6231a4925805947cd
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58878430"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-reviewsnap"></a>Kurz: Integrace Azure Active Directory s Reviewsnap
@@ -209,10 +209,10 @@ V této části Testování služby Azure AD jednotné přihlašování – konf
 Po kliknutí na dlaždici Reviewsnap na přístupovém panelu, vám by měl získat automaticky přihlášení k aplikaci Reviewsnap.
 Další informace o přístupovém panelu, naleznete v tématu [Úvod k přístupovému panelu](../user-help/active-directory-saas-access-panel-introduction.md). 
 
-## <a name="additional-resources"></a>Další materiály
+## <a name="additional-resources"></a>Další zdroje informací:
 
 * [Seznam kurzů o integraci aplikací SaaS pomocí Azure Active Directory](tutorial-list.md)
-* [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
+* [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)
 
 
 

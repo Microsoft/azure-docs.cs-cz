@@ -121,7 +121,7 @@ items:
     maintainContext: true
   - name: Diskové úložiště
     items:
-    - name: Managed Disks
+    - name: Spravované disky
       href: ../virtual-machines/windows/managed-disks-overview.md
       maintainContext: true
     - name: Výběr typu disku

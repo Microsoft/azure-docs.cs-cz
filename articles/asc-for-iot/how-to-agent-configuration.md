@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 03/26/2019
 ms.author: mlottner
 ms.openlocfilehash: 1e212e752309fd8347836d462a3394da2fca4a15
-ms.sourcegitcommit: d83fa82d6fec451c0cb957a76cfba8d072b72f4f
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/02/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58862773"
 ---
 # <a name="tutorial-configure-security-agents"></a>Kurz: Konfigurace agentů zabezpečení
@@ -140,4 +140,4 @@ Výchozí hodnoty jsou k dispozici ve správné schéma v [Githubu](https://aka.
 
 - [Vysvětlení ASC pro IoT doporučení](concept-recommendations.md)
 - [Prozkoumejte ASC pro IoT výstrahy](concept-security-alerts.md)
-- [Přístup k nezpracovaným datům zabezpečení](how-to-security-data-access.md)
+- [Přístup k datům raw zabezpečení](how-to-security-data-access.md)

@@ -15,10 +15,10 @@ ms.topic: conceptual
 ms.date: 05/15/2017
 ms.author: jeconnoc
 ms.openlocfilehash: a2eff2ca2e72ad263e3e23d0827e7603bca3fdcb
-ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/04/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58917472"
 ---
 # <a name="get-started-with-azure-cloud-services-and-aspnet"></a>Začínáme s cloudovými službami Azure Cloud Services a technologií ASP.NET
@@ -703,7 +703,7 @@ Po každé iteraci smyčky, kdy nebyla nalezena žádná zpráva fronty, se prog
 
 Obsah zprávy fronty občas způsobí chybu při zpracování. Takové zprávě se říká *nezpracovatelná zpráva* a pokud jste právě zaprotokolovali chybu a restartovali smyčku, můžete se pokoušet o zpracování této zprávy do nekonečna.  Zachycující blok proto zahrnuje podmínku, která kontroluje, jak často se aplikace pokusila aktuální zprávu zpracovat a pokud to bylo víc než pětkrát, odstraní zprávu z fronty.
 
-`ProcessQueueMessage` je volána při nalezení zpráv fronty.
+`ProcessQueueMessage` se volá při nalezení zpráv fronty.
 
 ```csharp
 private void ProcessQueueMessage(CloudQueueMessage msg)
@@ -776,6 +776,6 @@ Video úvod do osvědčených postupů a vzorů služby Azure Storage najdete v 
 Další informace najdete v následujících materiálech:
 
 * [Azure Cloud Services část 1: Úvod](https://justazure.com/microsoft-azure-cloud-services-part-1-introduction/)
-* [Správa cloudových služeb Cloud Services](cloud-services-how-to-manage-portal.md)
+* [Jak spravovat Cloud Services](cloud-services-how-to-manage-portal.md)
 * [Azure Storage](https://docs.microsoft.com/azure/storage/)
 * [Jak vybrat poskytovatele cloudových služeb](https://azure.microsoft.com/overview/choosing-a-cloud-service-provider/)

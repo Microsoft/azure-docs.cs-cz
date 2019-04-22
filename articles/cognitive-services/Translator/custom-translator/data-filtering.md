@@ -10,10 +10,10 @@ ms.date: 02/21/2019
 ms.author: v-jansko
 ms.topic: conceptual
 ms.openlocfilehash: 0871cb7e4dcbe8cf71f35f174137396bde607c54
-ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/04/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58916102"
 ---
 # <a name="data-filtering"></a>Filtrování dat
@@ -53,7 +53,7 @@ Filtrování transformace neuvozené klíčová slova do uvozený uvozovacím zn
 * `&gt;` změní `&amp;gt;`
 * `&amp;` změní `&amp;amp;`
 
-## <a name="invalid-characters"></a>Neplatné znaky.
+## <a name="invalid-characters"></a>Neplatné znaky
 Vlastní Translator odebere věty, které obsahují znak Unicode U + FFFD. Znak U + FFFD označuje neúspěšné převod kódování.
 
 ## <a name="next-steps"></a>Další postup

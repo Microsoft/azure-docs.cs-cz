@@ -11,10 +11,10 @@ author: Blackmist
 ms.date: 04/02/2019
 ms.custom: seoapril2019
 ms.openlocfilehash: 7349998325e56d5ebb78de5ca30c0127f09102aa
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58883186"
 ---
 # <a name="use-an-azure-resource-manager-template-to-create-a-workspace-for-azure-machine-learning-service"></a>Vytvořit pracovní prostor pro službu Azure Machine Learning pomocí šablony Azure Resource Manageru
@@ -192,7 +192,7 @@ Další informace o šablonách najdete v následujících článcích:
 1. Vyberte __Uložit__ použít šablonu. Zadejte následující informace a souhlas s uvedené podmínky a ujednání:
 
    * Předplatné: Vyberte předplatné Azure má použít pro tyto prostředky.
-   * Skupina prostředků: Vyberte nebo vytvořte skupinu prostředků k obsáhnutí služeb.
+   * Skupina zdrojů: Vyberte nebo vytvořte skupinu prostředků k obsáhnutí služeb.
    * Název pracovního prostoru: Název, který se má použít pro pracovní prostor Azure Machine Learning, která bude vytvořena. Název pracovního prostoru musí být dlouhý 3 až 33 znaků. Může obsahovat jenom alfanumerické znaky a "-".
    * Umístění: Vyberte umístění, kde se prostředky vytvoří.
 

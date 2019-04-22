@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 04/03/2019
 ms.author: juliako
 ms.openlocfilehash: ad8e84d84665b20bfff53cf09473bc8bce9760d8
-ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/04/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58916021"
 ---
 # <a name="live-streaming-with-azure-media-services-v3"></a>Živé streamování pomocí služby Azure Media Services v3
@@ -87,8 +87,8 @@ Při použití kódování v reálném čase pomocí Media Services nakonfiguruj
 
 ## <a name="other-important-articles"></a>Další důležité články
 
-- [Doporučené kodéry pro kódování v reálném čase](recommended-on-premises-live-encoders.md)
-- [Použití cloudového DVR](live-event-cloud-dvr.md)
+- [Doporučené kodéry](recommended-on-premises-live-encoders.md)
+- [Použití cloudového videorekordéru](live-event-cloud-dvr.md)
 - [Porovnání funkcí živého typy událostí](live-event-types-comparison.md)
 - [Stavy a fakturace](live-event-states-billing.md)
 - [Latence](live-event-latency.md)

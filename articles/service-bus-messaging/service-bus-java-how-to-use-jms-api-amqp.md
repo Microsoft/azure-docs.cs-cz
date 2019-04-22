@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 03/05/2019
 ms.author: aschhab
 ms.openlocfilehash: a7e4282a176794fe885049173ba56ce2461cd6fa
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58885549"
 ---
 # <a name="how-to-use-the-java-message-service-jms-api-with-service-bus-and-amqp-10"></a>Jak Java Message Service (JMS) rozhraní API pomocí služby Service Bus a protokolu AMQP 1.0
@@ -381,7 +381,7 @@ Tato příručka vám ukázal, jak používat funkce Service Bus pro zprostředk
 Služba Service Bus protokolu AMQP 1.0 můžete použít také z jiných jazyků, včetně .NET, C, Python a PHP. Komponenty sestavené pomocí těchto různých jazyků můžete spolehlivě výměnu zpráv a s plnou věrností pomocí protokolu AMQP 1.0 podporují ve službě Service Bus.
 
 ## <a name="next-steps"></a>Další postup
-* [Podpora AMQP 1.0 v Azure Service Bus](service-bus-amqp-overview.md)
+* [Podpora AMQP 1.0 ve službě Azure Service Bus](service-bus-amqp-overview.md)
 * [Jak rozhraní .NET API služby Service Bus pomocí protokolu AMQP 1.0](service-bus-dotnet-advanced-message-queuing.md)
 * [Service Bus AMQP 1.0 – Příručka vývojáře](service-bus-amqp-dotnet.md)
 * [Začínáme s frontami služby Service Bus](service-bus-dotnet-get-started-with-queues.md)

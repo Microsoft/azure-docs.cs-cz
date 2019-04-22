@@ -11,13 +11,13 @@ ms.topic: reference
 ms.date: 02/01/2019
 ms.author: v-jansko
 ms.openlocfilehash: 1713a05590f389a6de70d72e8d62237c7521d808
-ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/04/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58915760"
 ---
-# <a name="translator-text-api-30-languages"></a>Translator Text API 3.0: Languages
+# <a name="translator-text-api-30-languages"></a>Translator Text API 3.0: Jazyky
 
 Získá sadu jazyků aktuálně podporuje jiné operace rozhraní Translator Text API. 
 
@@ -247,7 +247,7 @@ Seznam podporovaných jazyků se často mění. Pokud chcete šetřit šířku p
 Tady jsou možné stavové kódy HTTP, které vrátí žádost o. 
 
 <table width="100%">
-  <th width="20%">Kód stavu</th>
+  <th width="20%">Stavový kód</th>
   <th>Popis</th>
   <tr>
     <td>200</td>
@@ -281,7 +281,7 @@ Pokud dojde k chybě, vrátí požadavek také chybová odpověď JSON. Kód chy
 
 Následující příklad ukazuje, jak načíst jazyky podporované pro překlad textu.
 
-# [<a name="curl"></a>Curl](#tab/curl)
+# <a name="curltabcurl"></a>[curl](#tab/curl)
 
 ```
 curl "https://api.cognitive.microsofttranslator.com/languages?api-version=3.0&scope=translation"

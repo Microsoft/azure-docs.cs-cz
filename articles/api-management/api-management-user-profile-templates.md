@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 01/09/2017
 ms.author: apimpm
 ms.openlocfilehash: 9d74cd3bd466578c61f8f12bf9b6e862c046e9bc
-ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58903756"
 ---
 # <a name="user-profile-templates-in-azure-api-management"></a>Šablony profilů uživatelů ve službě Azure API Management
@@ -318,7 +318,7 @@ Azure API Management poskytuje schopnost přizpůsobit obsah stránek portálu p
 ### <a name="controls"></a>Ovládací prvky  
  Tato šablona může používat následující [stránce ovládací prvky](api-management-page-controls.md).  
   
--   [zrušení předplatného](api-management-page-controls.md#subscription-cancel)  
+-   [subscription-cancel](api-management-page-controls.md#subscription-cancel)  
   
 ### <a name="data-model"></a>Datový model  
   

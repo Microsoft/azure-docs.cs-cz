@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 03/14/2019
 ms.author: azfuncdf
 ms.openlocfilehash: e6ae4cc527ae0828f530ab7f3904d2b3c64c910b
-ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58895745"
 ---
 # <a name="performance-and-scale-in-durable-functions-azure-functions"></a>Výkon a škálování v Durable Functions (Azure Functions)
@@ -244,4 +244,4 @@ Pokud nevidíte očekáváte, že čísla propustnost a procesoru a využití pa
 ## <a name="next-steps"></a>Další postup
 
 > [!div class="nextstepaction"]
-> [Vytvoření první funkce trvalý vC#](durable-functions-create-first-csharp.md)
+> [Vytvoření první odolné funkce v jazyce C#](durable-functions-create-first-csharp.md)

@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 10/03/2018
 ms.author: glenga
 ms.openlocfilehash: 6988fb547b07f81891efea3caad8bf34f4c8a476
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58889749"
 ---
 # <a name="azure-functions-runtime-versions-overview"></a>Přehled verze modulu runtime Azure Functions
@@ -29,7 +29,7 @@ Modul runtime verze 2.x běží na .NET Core 2, která umožňuje spustit na vš
 
 Naproti tomu modul runtime verze 1.x podporuje jenom vývoj a hostování na webu Azure Portal nebo počítačích s Windows.
 
-## <a name="languages"></a>Languages
+## <a name="languages"></a>Jazyky
 
 Modul runtime verze 2.x používá nový model rozšiřitelnosti jazyka. Ve verzi 2.x, všechny funkce v aplikaci function app musí sdílet stejný jazyk. Jazykové funkce v aplikaci function app se volí při vytváření aplikace.
 
@@ -133,6 +133,6 @@ V následující tabulce jsou uvedeny vazby, které jsou podporovány v každé 
 
 Další informace najdete v následujících materiálech:
 
-* [Kódování a testování Azure Functions místně](functions-run-local.md)
+* [Místní psaní kódu a testování funkcí Azure Functions](functions-run-local.md)
 * [Jak se zaměřit na verze modulu runtime Azure Functions](set-runtime-version.md)
 * [Poznámky k verzi](https://github.com/Azure/azure-functions-host/releases)

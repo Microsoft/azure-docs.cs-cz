@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 03/26/2019
 ms.author: sngun
 ms.openlocfilehash: aef77f121f20d867c8ec5e764d8c9639c961713d
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58876884"
 ---
 # <a name="use-mongodb-extension-commands-to-manage-data-stored-in-azure-cosmos-dbs-api-for-mongodb"></a>Spravovat data uložená v Azure Cosmos DB přes rozhraní API pro MongoDB pomocí příkazů rozšíření MongoDB 
@@ -43,7 +43,7 @@ Příkaz create database rozšíření vytvoří novou databázi MongoDB. Název
 
 Následující tabulka popisuje parametry v rámci příkazu:
 
-|**Pole**|**Type** |**Popis** |
+|**Pole**|**Typ** |**Popis** |
 |---------|---------|---------|
 | customAction   |  string  |   Název vlastního příkazu musí být "CreateDatabase".      |
 | offerThroughput | int  | Zřízená propustnost, kterou jste nastavili v databázi. Tento parametr je volitelný. |
@@ -85,7 +85,7 @@ Příkaz update databáze rozšíření aktualizuje vlastnosti přidružené k z
 
 Následující tabulka popisuje parametry v rámci příkazu:
 
-|**Pole**|**Type** |**Popis** |
+|**Pole**|**Typ** |**Popis** |
 |---------|---------|---------|
 | customAction    |    string     |   Název vlastní příkaz. Musí být "UpdateDatabase".      |
 |  offerThroughput   |  int       |     Nové zřízená propustnost, kterou chcete nastavit v databázi.    |
@@ -118,7 +118,7 @@ Příkaz get databáze rozšíření vrátí objekt databáze. Název databáze 
 Následující tabulka popisuje parametry v rámci příkazu:
 
 
-|**Pole**|**Type** |**Popis** |
+|**Pole**|**Typ** |**Popis** |
 |---------|---------|---------|
 |  customAction   |   string      |   Název vlastní příkaz. Musí být "GetDatabase"|
         
@@ -126,7 +126,7 @@ Následující tabulka popisuje parametry v rámci příkazu:
 
 Pokud příkaz proběhne úspěšně, odpověď obsahuje dokument s následující pole:
 
-|**Pole**|**Type** |**Popis** |
+|**Pole**|**Typ** |**Popis** |
 |---------|---------|---------|
 |  `ok`   |   `int`     |   Stav odpovědi. 1 == úspěch. 0 == selhání.      |
 | `database`    |    `string`        |   Název databáze.      |
@@ -160,7 +160,7 @@ Příkaz create kolekce rozšíření vytvoří novou kolekci MongoDB. Název da
 
 Následující tabulka popisuje parametry v rámci příkazu:
 
-|**Pole**|**Type** |**Popis** |
+|**Pole**|**Typ** |**Popis** |
 |---------|---------|---------|
 | customAction    | string | Název vlastní příkaz. Musí být "CreateDatabase"     |
 | kolekce      | string | Název kolekce                                   |
@@ -205,7 +205,7 @@ Příkaz update kolekce rozšíření aktualizuje vlastnosti přidružené k zad
 
 Následující tabulka popisuje parametry v rámci příkazu:
 
-|**Pole**|**Type** |**Popis** |
+|**Pole**|**Typ** |**Popis** |
 |---------|---------|---------|
 |  customAction   |   string      |   Název vlastní příkaz. Musí být "UpdateCollection".      |
 |  kolekce   |   string      |   Název kolekce.       |
@@ -240,7 +240,7 @@ Vlastní příkaz get kolekce vrátí objekt kolekce.
 Následující tabulka popisuje parametry v rámci příkazu:
 
 
-|**Pole**|**Type** |**Popis** |
+|**Pole**|**Typ** |**Popis** |
 |---------|---------|---------|
 | customAction    |   string      |   Název vlastní příkaz. Musí být "GetCollection".      |
 | kolekce    |    string     |    Název kolekce.     |
@@ -250,7 +250,7 @@ Následující tabulka popisuje parametry v rámci příkazu:
 Pokud příkaz proběhne úspěšně, odpověď obsahuje dokument s následující pole
 
 
-|**Pole**|**Type** |**Popis** |
+|**Pole**|**Typ** |**Popis** |
 |---------|---------|---------|
 |  `ok`   |    `int`     |   Stav odpovědi. 1 == úspěch. 0 == selhání.      |
 | `database`    |    `string`     |   Název databáze.      |
@@ -275,7 +275,7 @@ db.runCommand({customAction: "GetCollection", collection: "testCollection"});
 
 Pokud není zadán, obsahuje vlastní odpovědi dokument s následující pole:
 
-|**Pole**|**Type** |**Popis** |
+|**Pole**|**Typ** |**Popis** |
 |---------|---------|---------|
 |  `ok`   |    `int`     |   Stav odpovědi. 1 == úspěch. 0 == selhání.      |
 | `code`    |   `int`      |   Pouze vrátí, když příkaz se nezdařil (to znamená ok == 0). Obsahuje kód chyby: MongoDB. Toto je parametr volitelný odpovědi.      |

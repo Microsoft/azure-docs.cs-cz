@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 07/18/2017
 ms.author: jeconnoc
 ms.openlocfilehash: 0a2e2a3d817140a6ab15dab0093b4025a3bfd76c
-ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/04/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58916647"
 ---
 # <a name="common-cloud-service-startup-tasks"></a>Běžné úlohy po spuštění cloudové služby
@@ -31,7 +31,7 @@ Zobrazit [v tomto článku](cloud-services-startup-tasks.md) pochopit, jak fungu
 > 
 
 ## <a name="define-environment-variables-before-a-role-starts"></a>Definování proměnné prostředí před spuštěním role
-Pokud potřebujete proměnné prostředí definované pro specifické úlohy, použijte [prostředí] element v rámci [úloh] elementu.
+Pokud potřebujete proměnné prostředí definované pro specifické úlohy, použijte [prostředí] element v rámci [Úkol] elementu.
 
 ```xml
 <ServiceDefinition name="MyService" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceDefinition">
@@ -131,7 +131,7 @@ Druhá brána firewall řídí připojení mezi virtuálním počítačem a proc
 
 Azure vytvoří pravidla brány firewall pro procesy spuštěné v rámci své role. Například při spuštění služby nebo programu Azure automaticky vytvoří pravidla nezbytné firewallu povolující tuto službu ke komunikaci s Internetem. Nicméně pokud vytvoříte službu, která se spustí proces mimo vaše role (jako je služba COM + nebo naplánované úlohy Windows), musíte ručně vytvořit pravidlo brány firewall umožňující přístup k této službě. Pomocí úlohy po spuštění můžete vytvořit tato pravidla brány firewall.
 
-Úlohy po spuštění, který vytvoří pravidlo brány firewall musí mít [kontextu executionContext][úloh] z **se zvýšenými oprávněními**. Následující úloha spuštění pro přidání [ServiceDefinition.csdef] souboru.
+Úlohy po spuštění, který vytvoří pravidlo brány firewall musí mít [kontextu executionContext][úkol] z **se zvýšenými oprávněními**. Následující úloha spuštění pro přidání [ServiceDefinition.csdef] souboru.
 
 ```xml
 <ServiceDefinition name="MyService" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceDefinition">
@@ -306,7 +306,7 @@ Vaše úloha po spuštění kroků různých při provozu v cloudu, když je v e
 
 Tato schopnost provádět různé akce na emulátor služby výpočty a cloudy, které lze provést tak, že vytvoříte proměnnou prostředí v [ServiceDefinition.csdef] souboru. Tato proměnná prostředí pro hodnotu potom otestovat ve vaší úloze po spuštění.
 
-Chcete-li vytvořit proměnnou prostředí, přidejte [proměnnou]/[RoleInstanceValue] elementu a vytvořit hodnotu XPath `/RoleEnvironment/Deployment/@emulated`. Hodnota **ComputeEmulatorRunning %** proměnná prostředí je `true` při spuštění na emulátoru služby compute, a `false` při spouštění v cloudu.
+Chcete-li vytvořit proměnnou prostředí, přidejte [Proměnná]/[RoleInstanceValue] elementu a vytvořit hodnotu XPath `/RoleEnvironment/Deployment/@emulated`. Hodnota **ComputeEmulatorRunning %** proměnná prostředí je `true` při spuštění na emulátoru služby compute, a `false` při spouštění v cloudu.
 
 ```xml
 <ServiceDefinition name="MyService" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceDefinition">
@@ -472,12 +472,12 @@ Ukázkový výstup v **StartupLog.txt** souboru:
 ### <a name="set-executioncontext-appropriately-for-startup-tasks"></a>Nastavte kontextu executionContext odpovídajícím způsobem pro úlohy po spuštění
 Nastavte oprávnění pro úlohy po spuštění. Někdy úlohy po spuštění musí spustit se zvýšenými oprávněními, i v případě, že role běží s normálními oprávněními.
 
-[Kontextu executionContext][úloh] atribut nastaví oprávnění na úrovni úlohy po spuštění. Pomocí `executionContext="limited"` znamená, že úloha po spuštění bude mít stejnou úroveň oprávnění roli. Pomocí `executionContext="elevated"` znamená, že úloha po spuštění má oprávnění správce, která umožní úloze po spuštění k provedení úlohy správce bez oprávnění správce pro vaši roli.
+[Kontextu executionContext][úkol] atribut nastaví oprávnění na úrovni úlohy po spuštění. Pomocí `executionContext="limited"` znamená, že úloha po spuštění bude mít stejnou úroveň oprávnění roli. Pomocí `executionContext="elevated"` znamená, že úloha po spuštění má oprávnění správce, která umožní úloze po spuštění k provedení úlohy správce bez oprávnění správce pro vaši roli.
 
 Úlohy po spuštění, který vyžaduje zvýšená oprávnění příklad je úloha po spuštění, který používá **AppCmd.exe** můžete nakonfigurovat službu IIS. **AppCmd.exe** vyžaduje `executionContext="elevated"`.
 
 ### <a name="use-the-appropriate-tasktype"></a>Použít příslušné taskType
-[TaskType][úloh] atribut určuje způsob, jakým úloha po spuštění je proveden. Existují tři hodnoty: **jednoduché**, **pozadí**, a **popředí**. Úlohy na pozadí a popředí se spouští asynchronně, a potom synchronně spuštění jednoduché úlohy postupně po jednom.
+[TaskType][úkol] atribut určuje způsob, jakým úloha po spuštění je proveden. Existují tři hodnoty: **jednoduché**, **pozadí**, a **popředí**. Úlohy na pozadí a popředí se spouští asynchronně, a potom synchronně spuštění jednoduché úlohy postupně po jednom.
 
 S **jednoduché** úlohy po spuštění, můžete nastavit pořadí, ve kterém je spuštěný úkoly podle pořadí, ve kterém jsou uvedeny úkoly v souboru ServiceDefinition.csdef. Pokud **jednoduché** skončí úkol nenulový ukončovací kód a potom postup zastaví spuštění a role se nespustí.
 

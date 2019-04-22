@@ -112,7 +112,7 @@ Pro nespravované disky můžete použít místně redundantní úložiště pro
 | Scénář | Automatická replikace | Řešení zotavení po Havárii |
 | --- | --- | --- |
 | SSD disky úrovně Premium | Místní ([místně redundantní úložiště](../articles/storage/common/storage-redundancy-lrs.md)) | [Azure Backup](https://azure.microsoft.com/services/backup/) |
-| Managed Disks | Místní ([místně redundantní úložiště](../articles/storage/common/storage-redundancy-lrs.md)) | [Azure Backup](https://azure.microsoft.com/services/backup/) |
+| Spravované disky | Místní ([místně redundantní úložiště](../articles/storage/common/storage-redundancy-lrs.md)) | [Azure Backup](https://azure.microsoft.com/services/backup/) |
 | Nespravované disky místně redundantní úložiště | Místní ([místně redundantní úložiště](../articles/storage/common/storage-redundancy-lrs.md)) | [Azure Backup](https://azure.microsoft.com/services/backup/) |
 | Geograficky redundantní úložiště s nespravované disky | Mezi oblastmi ([geograficky redundantní úložiště](../articles/storage/common/storage-redundancy-grs.md)) | [Azure Backup](https://azure.microsoft.com/services/backup/)<br/>[Snímky konzistentní vzhledem k aplikacím](#alternative-solution-consistent-snapshots) |
 | Disky nespravovaného geograficky redundantní úložiště jen pro čtení | Mezi oblastmi ([geograficky redundantní úložiště jen pro čtení](../articles/storage/common/storage-redundancy-grs.md#read-access-geo-redundant-storage)) | [Azure Backup](https://azure.microsoft.com/services/backup/)<br/>[Snímky konzistentní vzhledem k aplikacím](#alternative-solution-consistent-snapshots) |

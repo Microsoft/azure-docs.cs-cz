@@ -14,10 +14,10 @@ ms.topic: conceptual
 ms.date: 10/03/2018
 ms.author: magoedte
 ms.openlocfilehash: d295a5a7eae2bdc7983e7271aa11bce1840b92dd
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58882068"
 ---
 # <a name="wire-data-20-preview-solution-in-azure-monitor"></a>Řešení Wire Data 2.0 (Preview) ve službě Azure Monitor
@@ -58,7 +58,7 @@ Protože si ale prohlížíte metadata, nemusí být užitečná při řešení 
 
 Řešení Wire Data získává data ze závislého agenta Microsoft. Agent závislostí závisí na agenta Log Analytics pro jeho připojení k Azure Monitor. To znamená, že server musí mít nainstalovaný a nakonfigurovaný pomocí agenta závislostí agenta Log Analytics. Následující tabulka popisuje připojené zdroje, které řešení Wire Data podporuje.
 
-| **Připojený zdroj** | **Podporováno** | **Popis** |
+| **Připojený zdroj** | **Podporuje se** | **Popis** |
 | --- | --- | --- |
 | Agenti systému Windows | Ano | Řešení Wire Data analyzuje a shromažďuje data z počítačů s agenty Windows. <br><br> Kromě [agenta Log Analytics pro Windows](../../azure-monitor/platform/agent-windows.md), agenti Windows vyžadují Agent služby Microsoft Dependency. Úplný seznam verzí operačních systémů najdete v [podporovaných operačních systémech](../../azure-monitor/insights/service-map-configure.md#supported-windows-operating-systems). |
 | Agenti systému Linux | Ano | Řešení Wire Data analyzuje a shromažďuje data z počítačů s agenty Linuxu.<br><br> Kromě [agenta Log Analytics pro Linux](../../azure-monitor/learn/quick-collect-linux-computer.md), agenty Linux vyžadují Agent služby Microsoft Dependency. Úplný seznam verzí operačních systémů najdete v [podporovaných operačních systémech](../../azure-monitor/insights/service-map-configure.md#supported-linux-operating-systems). |
@@ -187,7 +187,7 @@ Závislý agent se instaluje do počítačů s Windows prostřednictvím souboru
 Následujícím postupem nainstalujte závislého agenta na jednotlivé počítače s Windows:
 
 1. Instalace agenta Log Analytics, proveďte kroky v [shromažďovat data z počítačů s Windows hostovaných ve vašem prostředí](../../azure-monitor/platform/agent-windows.md).
-2. Stáhnout agenta závislosti Windows pomocí odkazu v předchozí části a potom ji spustit pomocí následujícího příkazu: `InstallDependencyAgent-Windows.exe`
+2. Stáhněte závislého agenta pro Windows pomocí odkazu v předchozí části a pak ho spusťte následujícím příkazem: `InstallDependencyAgent-Windows.exe`
 3. Pomocí průvodce agenta nainstalujte.
 4. Pokud se závislého agenta nepodaří spustit, najdete podrobné informace o chybě v protokolech. U agentů pro Windows se adresář protokolu nachází zde: %Programfiles%\Microsoft Dependency Agent\logs.
 
@@ -197,7 +197,7 @@ K instalaci z příkazového řádku použijte parametry z následující tabulk
 
 InstallDependencyAgent-Windows.exe /?
 
-| **Příznak** | **Popis** |
+| **Parametr** | **Popis** |
 | --- | --- |
 | <code>/?</code> | Získá seznam parametrů příkazového řádku. |
 | <code>/S</code> | Provede tichou instalaci bez zobrazení výzev uživateli. |
@@ -222,7 +222,7 @@ Spuštěním instalačního programu s následujícím parametrem `-help` zobraz
 InstallDependencyAgent-Linux64.bin -help
 ```
 
-| **Příznak** | **Popis** |
+| **Parametr** | **Popis** |
 | --- | --- |
 | <code>-help</code> | Získá seznam parametrů příkazového řádku. |
 | <code>-s</code> | Provede tichou instalaci bez zobrazení výzev uživateli. |

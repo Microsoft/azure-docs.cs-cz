@@ -15,10 +15,10 @@ ms.date: 03/29/2018
 ms.author: magoedte
 ms.subservice: ''
 ms.openlocfilehash: a2f90c52823664df5fdc71c55220cc660c2f68e3
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58878141"
 ---
 # <a name="manage-usage-and-costs-for-log-analytics-in-azure-monitor"></a>Správa nákladů a využití pro Log Analytics ve službě Azure Monitor
@@ -340,7 +340,7 @@ Při vytváření upozornění pro první dotaz (více než 100 GB dat během 24
 - **Definujte podmínku upozornění** – Jako cíl prostředku zadejte svůj pracovní prostor Log Analytics.
 - **Kritéria upozornění** – Zadejte následující:
    - **Název signálu** – Vyberte **Vlastní prohledávání protokolu**.
-   - **Vyhledávací dotaz** do `union withsource = $table Usage | where QuantityUnit == "MBytes" and iff(isnotnull(toint(IsBillable)), IsBillable == true, IsBillable == "true") == true | extend Type = $table | summarize DataGB = sum((Quantity / 1024)) by Type | where DataGB > 100`
+   - **Vyhledávací dotaz** na `union withsource = $table Usage | where QuantityUnit == "MBytes" and iff(isnotnull(toint(IsBillable)), IsBillable == true, IsBillable == "true") == true | extend Type = $table | summarize DataGB = sum((Quantity / 1024)) by Type | where DataGB > 100`.
    - **Logika upozornění** je **Založená na** *počtu výsledků* a **Podmínka** je *Větší než* **Prahová hodnota** *0*.
    - **Časové období** na *1440* minut a **Frekvenci upozornění** na každých *60* minut, protože se data o využití aktualizují pouze jednou za hodinu.
 - **Definujte podrobnosti upozornění** – Zadejte následující:
@@ -354,7 +354,7 @@ Při vytváření upozornění pro druhý dotaz (předpověď, že během 24 hod
 - **Definujte podmínku upozornění** – Jako cíl prostředku zadejte svůj pracovní prostor Log Analytics.
 - **Kritéria upozornění** – Zadejte následující:
    - **Název signálu** – Vyberte **Vlastní prohledávání protokolu**.
-   - **Vyhledávací dotaz** do `union withsource = $table Usage | where QuantityUnit == "MBytes" and iff(isnotnull(toint(IsBillable)), IsBillable == true, IsBillable == "true") == true | extend Type = $table | summarize EstimatedGB = sum(((Quantity * 8) / 1024)) by Type | where EstimatedGB > 100`
+   - **Vyhledávací dotaz** na `union withsource = $table Usage | where QuantityUnit == "MBytes" and iff(isnotnull(toint(IsBillable)), IsBillable == true, IsBillable == "true") == true | extend Type = $table | summarize EstimatedGB = sum(((Quantity * 8) / 1024)) by Type | where EstimatedGB > 100`.
    - **Logika upozornění** je **Založená na** *počtu výsledků* a **Podmínka** je *Větší než* **Prahová hodnota** *0*.
    - **Časové období** na *180* minut a **Frekvenci upozornění** na každých *60* minut, protože se data o využití aktualizují pouze jednou za hodinu.
 - **Definujte podrobnosti upozornění** – Zadejte následující:

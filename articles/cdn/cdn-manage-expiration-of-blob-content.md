@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 02/1/2018
 ms.author: mazha
 ms.openlocfilehash: f7fc11af8cd2574271b26f7dec62072692685672
-ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/04/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58916797"
 ---
 # <a name="manage-expiration-of-azure-blob-storage-in-azure-cdn"></a>Správa platnosti objektů Blob v Azure storage v Azure CDN
@@ -172,7 +172,7 @@ azure storage blob upload -c <connectionstring> -p cacheControl="max-age=3600" .
 ### <a name="azure-storage-services-rest-api"></a>Rozhraní REST API služby Azure storage
 Můžete použít [rozhraní REST API služby Azure storage](/rest/api/storageservices/) explicitně nastavit *x-ms-blob-cache-control* vlastnost s použitím následujících operací na vyžádání:
   
-   - [Put Blob](/rest/api/storageservices/Put-Blob)
+   - [Vložení objektu Blob](/rest/api/storageservices/Put-Blob)
    - [Vložit blokovaných webů.](/rest/api/storageservices/Put-Block-List)
    - [Nastavit vlastnosti objektu Blob](/rest/api/storageservices/Set-Blob-Properties)
 

@@ -16,15 +16,15 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e077127681f8bd7b650ab22f2d036efd7f9733ee
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58876918"
 ---
 # <a name="troubleshoot-azure-ad-connect-install-issues"></a>Řešení potíží: Potíže s instalací služby Azure AD Connect
 
-## **<a name="recommended-steps"></a>Doporučené kroky**
+## <a name="recommended-steps"></a>**Doporučené kroky**
 Zkontrolujte prosím, která [typ instalace služby Azure AD Connect](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-install-select-installation) je vhodný pro vás. Při splnění kritérií Expresní instalace, pak důrazně doporučujeme pro expresní instalace. Expresní instalace poskytuje minimální možnosti, které jsou potřebné k dokončení instalace, proto je menší pravděpodobnost, že případné problémy. 
 
 Ale pokud nesplňují kritéria Expresní instalace a musíte provést vlastní instalaci, pak tady jsou některé osvědčené postupy můžete použít, aby běžné problémy. Z důvodu zjednodušení jenom selektivní možností uvedených zde:
@@ -39,7 +39,7 @@ Ale pokud nesplňují kritéria Expresní instalace a musíte provést vlastní 
 
     ![AD doménové struktury účtu](media/tshoot-connect-install-issues/tshoot-connect-install-issues/createnewaccount.png)
 
-### **<a name="common-issues"></a>Běžné problémy**
+### <a name="common-issues"></a>**Běžné problémy**
 
 * [Problémy s připojením pomocí místní služby Active Directory](https://docs.microsoft.com/azure/active-directory/hybrid/reference-connect-adconnectivitytools).
 
@@ -47,14 +47,14 @@ Ale pokud nesplňují kritéria Expresní instalace a musíte provést vlastní 
 
 * [Oprávnění problémy s místním Active Directory](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-configure-ad-ds-connector-account).
 
-## **<a name="recommended-documents"></a>Doporučené dokumenty**
+## <a name="recommended-documents"></a>**Doporučené dokumenty**
 * [Požadavky pro Azure AD Connect](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-install-prerequisites)
 * [Výběr typu instalace pro Azure AD Connect](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-install-select-installation)
 * [Začínáme se službou Azure AD Connect s použitím expresního nastavení](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-install-express)
 * [Vlastní instalace služby Azure AD Connect](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-install-custom)
 * [Azure AD Connect: Upgrade z předchozí verze na nejnovější verzi](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-upgrade-previous-version)
 * [Azure AD Connect: Co je pracovní server?](https://docs.microsoft.com/azure/active-directory/hybrid/plan-connect-topologies#staging-server)
-* [Co je modul Powershellu ADConnectivityTool?](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-adconnectivitytools)
+* [Co je modul PowerShellu ADConnectivityTools?](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-adconnectivitytools)
 
 ## <a name="next-steps"></a>Další postup
 - [Synchronizace Azure AD Connect](how-to-connect-sync-whatis.md).

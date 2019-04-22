@@ -13,10 +13,10 @@ ms.topic: reference
 ms.date: 10/09/2018
 ms.author: syclebsc
 ms.openlocfilehash: 981ffce34c56f4becee2ed0c72da72baa220e395
-ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58894351"
 ---
 # <a name="azure-functions-f-developer-reference"></a>Služba Azure Functions F# referenční informace pro vývojáře
@@ -166,7 +166,7 @@ let Run(req: HttpRequestMessage, log: ILogger) =
 
 Následující sestavení jsou automaticky přidány pomocí Azure Functions, který je hostitelem prostředí:
 
-* `mscorlib`, 
+* `mscorlib`,
 * `System`
 * `System.Core`
 * `System.Xml`
@@ -294,7 +294,7 @@ Poskytuje cesty `#load` směrnice jsou relativní k umístění vašeho `.fsx` s
 Další informace najdete v následujících materiálech:
 
 * [F#Průvodce](/dotnet/articles/fsharp/index)
-* [Osvědčené postupy pro Azure Functions](functions-best-practices.md)
+* [Osvědčené postupy pro službu Azure Functions](functions-best-practices.md)
 * [Referenční informace pro vývojáře Azure Functions](functions-reference.md)
 * [Azure Functions aktivačními událostmi a vazbami](functions-triggers-bindings.md)
 * [Testování Azure Functions](functions-test-a-function.md)

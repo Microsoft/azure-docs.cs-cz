@@ -15,10 +15,10 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: pbutlerm
 ms.openlocfilehash: 2a8ae3ab71b258d92d9761cc813b168717e44d82
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58878005"
 ---
 # <a name="lead-management-instructions-for-azure-table"></a>Průběžná správa pokyny, jak tabulek v Azure

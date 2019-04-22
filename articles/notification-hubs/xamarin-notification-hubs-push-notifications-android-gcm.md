@@ -16,10 +16,10 @@ ms.custom: mvc
 ms.date: 03/28/2019
 ms.author: jowargo
 ms.openlocfilehash: 79913fc300f2ca66a84cf47c0e5b650b9ea2cc59
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58878770"
 ---
 # <a name="tutorial-push-notifications-to-xamarinandroid-apps-using-azure-notification-hubs"></a>Kurz: Odesílání nabízených oznámení do aplikace Xamarin.Android pomocí Azure Notification Hubs
@@ -122,8 +122,8 @@ Vaše centrum oznámení je nakonfigurováno pro práci se službou FCM. Zárove
     ```
 1. Shromážděte následující informace pro aplikaci Android a centrum oznámení:
 
-   * **Připojovací řetězec naslouchání**: Na řídicím panelu [webu Azure portal], zvolte **zobrazit připojovací řetězce**. Kopírovat `DefaultListenSharedAccessSignature` připojovací řetězec pro tuto hodnotu.
-   * **Název centra**: Název centra z [webu Azure portal]. Například *mynotificationhub2*.
+   * **Připojovací řetězec naslouchání**: Na řídicím panelu [Azure Portal], zvolte **zobrazit připojovací řetězce**. Kopírovat `DefaultListenSharedAccessSignature` připojovací řetězec pro tuto hodnotu.
+   * **Název centra**: Název centra z [Azure Portal]. Například *mynotificationhub2*.
 3. V **Průzkumníku řešení** okna, klikněte pravým tlačítkem na váš **projektu**vyberte **přidat**a pak vyberte **třídy**.
 4. Vytvoření `Constants.cs` třídy pro váš projekt Xamarin a definujte následující hodnoty konstant ve třídě. Nahraďte zástupné symboly vašimi hodnotami.
 
@@ -331,7 +331,7 @@ Nabízená oznámení se většinou posílají ve službě back-end, jako je slu
 V tomto kurzu jste poslali oznámení všem zařízením s Androidem registrovaným back-endem. Pokud se chcete naučit zasílat nabízená oznámení určitým zařízením s Androidem, pokračujte následujícím kurzem:
 
 > [!div class="nextstepaction"]
->[Nabízená oznámení odesílaná konkrétním zařízením](notification-hubs-aspnet-backend-android-xplat-segmented-gcm-push-notification.md)
+>[Zasílání nabízených oznámení do konkrétních zařízení](notification-hubs-aspnet-backend-android-xplat-segmented-gcm-push-notification.md)
 
 <!-- Anchors. -->
 [Enable Google Cloud Messaging]: #register
@@ -363,7 +363,7 @@ V tomto kurzu jste poslali oznámení všem zařízením s Androidem registrovan
 [JavaScript and HTML]: /develop/mobile/tutorials/get-started-with-push-js
 [Visual Studio s Xamarinem]: https://docs.microsoft.com/visualstudio/install/install-visual-studio
 [Visual Studio pro Mac]: https://www.visualstudio.com/vs/visual-studio-mac/
-[portál Azure]: https://portal.azure.com/
+[Azure Portal]: https://portal.azure.com/
 [wns object]: https://go.microsoft.com/fwlink/p/?LinkId=260591
 [Notification Hubs Guidance]: https://msdn.microsoft.com/library/jj927170.aspx
 [Notification Hubs How-To for Android]: https://msdn.microsoft.com/library/dn282661.aspx

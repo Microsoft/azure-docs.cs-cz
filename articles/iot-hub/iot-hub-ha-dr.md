@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 08/07/2018
 ms.author: rkmanda
 ms.openlocfilehash: 192966eef20ac59ac3a6eb14d7d450357989b851
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
-ms.translationtype: MT
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58879688"
 ---
 # <a name="iot-hub-high-availability-and-disaster-recovery"></a>IoT Hub vysokou dostupnost a zotavení po havárii
@@ -127,7 +127,7 @@ Pro zjednodušení tohoto kroku, měli byste použít idempotentní operace. Ide
 
 Tady je přehled HA/DR možnosti uvedené v tomto článku, který může sloužit jako referenční rámec zvolit možnost zprava, který vám vyhovuje řešení.
 
-| Možnost HA/DR | RTO | CÍL BODU OBNOVENÍ | Vyžaduje ruční zásah? | Implementace složitost | Další náklady dopad|
+| Možnost HA/DR | RTO | Cíl bodu obnovení (RPO) | Vyžaduje ruční zásah? | Implementace složitost | Další náklady dopad|
 | --- | --- | --- | --- | --- | --- |
 | Microsoft iniciované převzetí služeb při selhání |2 - 26 hodin.|Přečtěte si výše uvedené tabulce cíle bodu obnovení|Ne|Žádný|Žádný|
 | Ruční převzetí služeb při selhání |10 minut – 2 hodiny|Přečtěte si výše uvedené tabulce cíle bodu obnovení|Ano|Velmi nízké. Potřebujete aktivovat tuto operaci z portálu.|Žádný|

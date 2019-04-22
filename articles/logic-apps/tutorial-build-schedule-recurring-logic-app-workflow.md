@@ -11,10 +11,10 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 01/12/2018
 ms.openlocfilehash: ebc6388f1ebc7546ffda07095ead50797bde4e8b
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58884682"
 ---
 # <a name="check-traffic-on-a-schedule-with-azure-logic-apps"></a>Kontrola provozu podle plánu pomocí Azure Logic Apps
@@ -78,8 +78,7 @@ Dál přidejte [trigger](../logic-apps/logic-apps-overview.md#logic-app-concepts
 
    ![Nalezení a přidání triggeru Plán – Opakování](./media/tutorial-build-scheduled-recurring-logic-app-workflow/add-schedule-recurrence-trigger.png)
 
-2. Ve tvaru **Opakování** vyberte tlačítko **tři tečky** (**...** ) a zvolte **Přejmenovat**. Přejmenujte trigger s použitím tohoto popisu:
-```Check travel time every weekday morning```
+2. Ve tvaru **Opakování** vyberte tlačítko **tři tečky** (**...** ) a zvolte **Přejmenovat**. Přejmenujte trigger s tímto popisem: ```Check travel time every weekday morning```
 
    ![Přejmenování triggeru](./media/tutorial-build-scheduled-recurring-logic-app-workflow/rename-recurrence-schedule-trigger.png)
 
@@ -94,7 +93,7 @@ Dál přidejte [trigger](../logic-apps/logic-apps-overview.md#logic-app-concepts
    | **Interval** | 1 | Počet intervalů, po které se má čekat mezi kontrolami | 
    | **Frekvence** | Týden | Jednotka času pro opakování | 
    | **Časové pásmo** | Žádný | Platí jenom v případě, že zadáte čas spuštění. Vhodné při zadání jiného časového pásma, než je místní. | 
-   | **Počáteční čas** | Žádný | Odloží opakování na určité datum a čas. Další informace najdete v tématu [Plánování pravidelně spouštěných úloh a pracovních postupů](../connectors/connectors-native-recurrence.md). | 
+   | **Čas spuštění** | Žádný | Odloží opakování na určité datum a čas. Další informace najdete v tématu [Plánování pravidelně spouštěných úloh a pracovních postupů](../connectors/connectors-native-recurrence.md). | 
    | **V tyto dny** | Pondělí, úterý, středa, čtvrtek, pátek | Dostupné, pouze pokud je **Frekvence** nastavená na Týden. | 
    | **V těchto hodinách** | 7,8,9 | Dostupné, pouze pokud je **Frekvence** nastavená na Týden nebo Den. Vyberte hodiny, kdy se v průběhu dne spustí toto opakování. Tento příklad se spustí v celou 7., 8. a 9. hodinu. | 
    | **V těchto minutách** | 0,15,30,45 | Dostupné, pouze pokud je **Frekvence** nastavená na Týden nebo Den. Vyberte minuty, kdy se v průběhu dne spustí toto opakování. Tento příklad se spouští každých 15 minut od nulté celé hodiny. | 
@@ -130,8 +129,7 @@ Teď, když máte trigger, přidejte [akci](../logic-apps/logic-apps-overview.md
    | **Klíč rozhraní API** | <*klíč-služby-Mapy-Bing*> | Zadejte klíč Map Bing, který jste dříve dostali. Pokud nemáte k dispozici klíč služby Mapy Bing, přečtěte si, <a href="https://msdn.microsoft.com/library/ff428642.aspx" target="_blank">jak získat klíč</a>. | 
    | | | |  
 
-4. Přejmenujte akci s tímto popisem:
-```Get route and travel time with traffic```
+4. Přejmenujte akci s tímto popisem: ```Get route and travel time with traffic```
 
 5. Zadejte podrobnosti akce **Získat trasu**, například podle tohoto obrázku a popisu:
 
@@ -140,13 +138,13 @@ Teď, když máte trigger, přidejte [akci](../logic-apps/logic-apps-overview.md
    | Nastavení | Hodnota | Popis |
    | ------- | ----- | ----------- |
    | **Bod na trase 1** | <*start*> | Počátek vaší cesty | 
-   | **Waypoint 2** | <*cíl*> | Cíl vaší trasy | 
-   | **Avoid** | Žádný | Všechny položky, kterým je třeba se na trase vyhnout, jako je například dálnice, mýtné atd. | 
-   | **Optimalizace** | timeWithTraffic | Parametr k optimalizaci vaší trasy, jako je například vzdálenost, doba trvání cesty včetně dopravní situace atd. Vyberte tento parametr: timeWithTraffic | 
+   | **Bod na trase 2** | <*cíl*> | Cíl vaší trasy | 
+   | **Vyloučit** | Žádný | Všechny položky, kterým je třeba se na trase vyhnout, jako je například dálnice, mýtné atd. | 
+   | **Optimalizovat** | timeWithTraffic | Parametr k optimalizaci vaší trasy, jako je například vzdálenost, doba trvání cesty včetně dopravní situace atd. Vyberte tento parametr: timeWithTraffic | 
    | **Jednotka vzdálenosti** | <*vaše-volba*> | Jednotka vzdálenosti použitá pro trasu. V tomto článku se používá tato jednotka: "Míli"  | 
    | **Způsob cestování** | Autem | Způsob cestování pro danou trasu. Vyberte tento režim: "Řízení" | 
    | **Datum a čas přejezdu** | Žádný | Platí pouze při přejezdech | 
-   | **Typ datum a čas** | Žádný | Platí pouze při přejezdech | 
+   | **Typ datum a čas**  | Žádný | Platí pouze při přejezdech | 
    |||| 
 
    Další informace o těchto parametrech najdete v tématu [Výpočet trasy](https://msdn.microsoft.com/library/ff701717.aspx).
@@ -167,15 +165,14 @@ Ve výchozím nastavení vrátí předchozí akce **Získat trasu** aktuální �
 
    ![Vybrání akce Proměnné – Inicializovat proměnnou](./media/tutorial-build-scheduled-recurring-logic-app-workflow/select-initialize-variable-action.png)
 
-3. Přejmenujte tuto akci s použitím tohoto popisu:
-```Create variable to store travel time```
+3. Přejmenujte tuto akci s tímto popisem: ```Create variable to store travel time```
 
 4. Zadejte podrobnosti pro danou proměnnou tohoto popisu:
 
    | Nastavení | Hodnota | Popis | 
    | ------- | ----- | ----------- | 
    | **Název** | dobacesty | Název proměnné | 
-   | **Type** | Integer | Datový typ proměnné | 
+   | **Typ** | Integer | Datový typ proměnné | 
    | **Hodnota** | Výraz, který převede aktuální dobu trvání cesty ze sekund na minuty (viz postup pod touto tabulkou) | Počáteční hodnota proměnné | 
    |||| 
 
@@ -259,8 +256,7 @@ Nyní přidáte akci, která odešle e-mail, pokud doba trvání cesty překroč
 
    Logic Apps vytvoří připojení k e-mailovému účtu.
 
-4. Přejmenujte akci s tímto popisem:
-```Send email with travel time```
+4. Přejmenujte akci s tímto popisem: ```Send email with travel time```
 
 5. Do pole **Komu** zadejte e-mailovou adresu příjemce. Pro účely testování použijte svou vlastní e-mailovou adresu.
 

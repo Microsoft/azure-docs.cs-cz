@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 01/08/2019
 ms.author: raynew
 ms.openlocfilehash: 0981f4d5d9d5fcb243fc7ead6f4b529c096935d0
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58885872"
 ---
 # <a name="azure-backup---frequently-asked-questions"></a>Azure Backup – nejčastější dotazy
@@ -93,7 +93,7 @@ Ano.
 ### <a name="what-operating-systems-are-supported-for-backup"></a>Jaké operační systémy jsou podporovány pro zálohování?
 Azure Backup podporuje tyto operační systémy pro zálohování souborů a složek a aplikace, které jsou chráněné službou Azure Backup serveru a aplikace DPM.
 
-**Operační systém** | **Skladová jednotka (SKU)** | **Podrobnosti**
+**OS** | **SKU** | **Podrobnosti**
 --- | --- | ---
 Pracovní stanice | |
 Windows 10 64-bit | Enterprise, Pro, Home | Počítače by měly běžet nejnovější aktualizace Service Pack a aktualizace.

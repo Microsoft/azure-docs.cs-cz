@@ -14,10 +14,10 @@ ms.date: 08/29/2018
 ms.author: routlaw
 ms.custom: seodec18
 ms.openlocfilehash: 8db65fd9a1f271aea4ceb345f4d9dfbb6b9ff8a6
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58877376"
 ---
 # <a name="java-enterprise-guide-for-app-service-on-linux"></a>Java podniková Příručka pro službu App Service v Linuxu
@@ -119,5 +119,4 @@ App Service poskytuje nástroje, které pomáhají při řešení problémů s v
 
 -   Zapnutí protokolování kliknutím **diagnostické protokoly** v levém navigačním podokně. Klikněte na tlačítko **systému souborů** nastavit období kvótu a uchování vašeho úložiště a uložte provedené změny. Můžete najít v části tyto protokoly `/home/LogFiles/`.
 -   [Pomocí SSH se připojte k instanci aplikace](app-service-linux-ssh-support.md) si chcete zobrazit protokoly pro spouštění aplikací.
--   Kontrola diagnostické protokoly **diagnostické protokoly** panelu portálu nebo pomocí příkazového řádku Azure:
-`az webapp log tail --name <your-app-name> --resource-group <your-apps-resource-group>`
+-   Kontrola diagnostické protokoly **diagnostické protokoly** panelu portálu nebo pomocí příkazového řádku Azure: `az webapp log tail --name <your-app-name> --resource-group <your-apps-resource-group>`

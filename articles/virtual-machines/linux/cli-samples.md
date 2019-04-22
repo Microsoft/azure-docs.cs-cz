@@ -17,10 +17,10 @@ ms.date: 03/01/2019
 ms.author: cynthn
 ms.custom: mvc
 ms.openlocfilehash: fdbf402d14d3f1b3565866045a697212b6b76492
-ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58904028"
 ---
 # <a name="azure-cli-samples-for-linux-virtual-machines"></a>Ukázky v Azure CLI pro virtuální počítače s Linuxem
@@ -51,5 +51,5 @@ Následující tabulka obsahuje odkazy na skripty Bash vytvořené pomocí Azure
 |**Monitorování virtuálních počítačů**||
 | [Monitorování virtuálního počítače s protokoly Azure monitoru](./../scripts/virtual-machines-linux-cli-sample-create-vm-oms.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) | Vytvoří virtuální počítač, nainstaluje agenta Log Analytics a registraci virtuálního počítače v pracovním prostoru Log Analytics.  |
 |**Řešení potíží s virtuálními počítači**||
-| [Řešení potíží s diskem s operačním systémem virtuálního počítače](./../scripts/virtual-machines-linux-cli-sample-mount-os-disk.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) | Připojí disk s operačním systémem z jednoho virtuálního počítače jako datový disk na druhý virtuální počítač. |
+| [Řešení potíží s diskem operačního systému virtuálních počítačů](./../scripts/virtual-machines-linux-cli-sample-mount-os-disk.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) | Připojí disk s operačním systémem z jednoho virtuálního počítače jako datový disk na druhý virtuální počítač. |
 | | |

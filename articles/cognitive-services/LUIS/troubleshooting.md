@@ -12,10 +12,10 @@ ms.topic: article
 ms.date: 03/21/2019
 ms.author: diberry
 ms.openlocfilehash: 672c9d43007f954d870f8195bcad63d9cee69523
-ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58894453"
 ---
 # <a name="language-understanding-frequently-asked-questions-faq"></a>Language Understanding – nejčastější dotazy (FAQ)
@@ -64,7 +64,7 @@ Cortana, které předem sestavených aplikací byla vyřazena jako zastaralá v 
 ### <a name="how-do-i-transfer-ownership-of-a-luis-app"></a>Jak se převést vlastnictví aplikace LUIS?
 Aplikace LUIS přenést do jiného předplatného Azure, aplikace LUIS exportujte a importujte ho pomocí nového účtu. Aktualizujte ID aplikace LUIS v klientské aplikaci, která je volá. Nová aplikace může vrátit mírně odlišné LUIS skóre z původní aplikace.
 
-### <a name="a-prebuilt-entity-is-tagged-in-an-example-utterance-instead-of-my-custom-entity-how-do-i-fix-this"></a>V utterance příklad namísto Moje vlastní entity se označí předem připravených entit. Jak to mohu napravit? 
+### <a name="a-prebuilt-entity-is-tagged-in-an-example-utterance-instead-of-my-custom-entity-how-do-i-fix-this"></a>V utterance příklad namísto Moje vlastní entity se označí předem připravených entit. Jak to můžu vyřešit? 
 
 Zobrazit [řešení potíží s předem vytvořenými entitami](luis-concept-entity-types.md#troubleshooting-prebuilt-entities).
 
@@ -296,9 +296,9 @@ Následující funkce byly vydány na konferenci Build 2018:
 Další vytváření [trasy rozhraní API](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/authoring-routes.md) byly zahrnuty.
 
 Videa:
-* [Azure Friday na 2018 sestavení: Cognitive Services – Language (LUIS)](https://channel9.msdn.com/Shows/Azure-Friday/At-Build-2018-Cognitive-Services-Language-LUIS/player)
+* [Azure Friday At Build 2018: Cognitive Services – Language (LUIS)](https://channel9.msdn.com/Shows/Azure-Friday/At-Build-2018-Cognitive-Services-Language-LUIS/player)
 * [Build 2018 AI Show - co je nového službou Language Understanding](https://channel9.msdn.com/Shows/AI-Show/Whats-New-with-Language-Understanding-Service-LUIS/player)
-* [Build 2018 relace – inteligence robotů, možnosti zpracování řeči a NLU osvědčené postupy](https://channel9.msdn.com/events/Build/2018/BRK3208)
+* [Seminář na konferenci Build 2018 – Inteligence robotů, možnosti využití řeči a osvědčené postupy NLU](https://channel9.msdn.com/events/Build/2018/BRK3208)
 * [Build 2018 - aktualizace LUIS](https://channel9.msdn.com/events/Build/2018/THR3118/player)
 
 Projekty:

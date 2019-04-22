@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 3f1dbd4b6635d615cc7bed4cf5cc38234ec0c3f1
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58885991"
 ---
 # <a name="configure-azure-multi-factor-authentication-settings"></a>Konfigurovat nastavení ověřování Azure Multi-Factor Authentication
@@ -34,10 +34,10 @@ Některá z těchto nastavení se vztahují na MFA Server, Azure MFA nebo obojí
 | ------- | ----------- |
 | Uzamčení účtu | Dočasně uzamčení účtů ve službě ověřování službou Multi-Factor Authentication Pokud příliš mnoho odepřen pokusy o ověření za sebou. Tato funkce platí jenom pro uživatele, kteří zadal PIN kód pro ověření. (MFA Server) |
 | [Blokování a odblokování uživatelů](#block-and-unblock-users) | Používá k blokování konkrétní uživatele na serveru MFA (místní) nebudou moct přijímat žádosti o ověření službou Multi-Factor Authentication. Jakékoli pokusy o ověření pro blokovaného uživatele budou automaticky odepírány. Uživatelé zůstat blokované 90 dnů od doby, které jsou blokovány. |
-| [Výstraha podvodů](#fraud-alert) | Konfigurovat nastavení související s uživateli možnost nahlásit podvodné ověření požadavků |
+| [Upozornění na podvod](#fraud-alert) | Konfigurovat nastavení související s uživateli možnost nahlásit podvodné ověření požadavků |
 | Oznámení | Povolte oznámení událostí z MFA serveru. |
 | [Tokeny OATH](concept-authentication-methods.md#oath-hardware-tokens-public-preview) | Použít ke správě tokeny OATH pro uživatele v cloudových prostředích Azure MFA. |
-| [Nastavení telefonních hovorů](#phone-call-settings) | Konfigurovat nastavení související s telefonních hovorů a greetings cloudových a místních prostředích. |
+| [Nastavení telefonních hovorů.](#phone-call-settings) | Konfigurovat nastavení související s telefonních hovorů a greetings cloudových a místních prostředích. |
 | Poskytovatelé | Tím se zobrazí všechny existující zprostředkovatelé ověřování můžou přiřadit k vašemu účtu. Noví zprostředkovatelé ověřování, nemusí být vytvořena od 1. září 2018 |
 
 ## <a name="manage-mfa-server"></a>Spravovat MFA Server

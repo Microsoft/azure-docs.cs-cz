@@ -45,7 +45,7 @@ Výsledný návrh musí obsahovat:
 
 * Předplatné Azure a účet
 * Jedna skupina prostředků
-* Azure Managed Disks
+* Spravované disky Azure
 * Virtuální síť se dvěma podsítěmi
 * Skupiny dostupnosti pro virtuální počítače s podobnou roli
 * Virtuální počítače

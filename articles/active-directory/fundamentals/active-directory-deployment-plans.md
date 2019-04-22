@@ -13,10 +13,10 @@ ms.author: lizross
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 2519d8b16795512c56ce76b574b0bba91fa10da3
-ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
-ms.translationtype: MT
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58892156"
 ---
 # <a name="azure-active-directory-deployment-plans"></a>Plány nasazení Azure Active Directory
@@ -37,6 +37,6 @@ Velmi bychom uvítali váš názor na tyto dokumenty. Vyplňte tento krátký [d
 |[Přístupový panel](https://aka.ms/AccessPanelDPDownload)|Nabízejí uživatelům jednoduchý hub ke zjištění a přístupu k aplikacím. Mohly být produktivnější díky samoobslužné funkce, jako je například umožňuje žádat o přístup k nové aplikace a skupiny, nebo spravovat přístup k těmto prostředkům jménem jiných uživatelů.|
 |Služby AD FS na synchronizaci hodnot Hash hesel [ke stažení plán](https://aka.ms/ADFSTOPHSDPDownload) nebo [online plán](https://aka.ms/deploymentplans/adfs2phs)|Synchronizace hodnot hash hesel zajišťuje synchronizaci hodnot hash hesel uživatelů z místní služby Active Directory do Azure AD a umožňuje službě Azure AD ověřovat uživatele bez jakékoli interakce s místní službou Active Directory.|
 |Služby AD FS předat prostřednictvím ověřování [ke stažení plán](https://aka.ms/ADFSTOPTADPDownload) nebo [online plán](https://aka.ms/deploymentplans/adfs2pta)|Předávací ověřování Azure AD pomáhá uživatelům přihlašovat se k místním i cloudovým aplikacím s použitím stejných hesel. Tato funkce zlepšuje zkušenosti uživatelů, protože si nemusejí pamatovat další heslo, a snižuje náklady na helpdesk IT, protože se snižuje pravděpodobnost, že uživatelé zapomenou, jak se přihlásit. Když se uživatelé přihlásí pomocí Azure AD, tato funkce ověří jejich hesla přímo v místní službě Active Directory.|
-|[Proxy aplikací Azure AD](https://aka.ms/AppProxyDPDownload)|Dnešní zaměstnanci chtějí být produktivní, ať jsou kdekoli, a to neustále a na jakémkoli zařízení. Chtějí pracovat na vlastních zařízeních, ať už se jedná o tablety, telefony nebo přenosné počítače. Zaměstnanci navíc očekávají, že budou mít přístup ke všem svým aplikacím, až už jde o aplikace SaaS v cloudu nebo místní podnikové aplikace. Poskytnutí přístupu k místním aplikacím tradičně zahrnovalo virtuální privátní sítě (VPN) nebo demilitarizované zóny (DMZ). Tato řešení jsou nejen složitá a obtížně zabezpečitelná, ale jsou také nákladná na nastavení a správu. Existuje však lepší způsob. – Proxy aplikací služby Azure AD|
+|[Proxy aplikací služby Azure AD](https://aka.ms/AppProxyDPDownload)|Dnešní zaměstnanci chtějí být produktivní, ať jsou kdekoli, a to neustále a na jakémkoli zařízení. Chtějí pracovat na vlastních zařízeních, ať už se jedná o tablety, telefony nebo přenosné počítače. Zaměstnanci navíc očekávají, že budou mít přístup ke všem svým aplikacím, až už jde o aplikace SaaS v cloudu nebo místní podnikové aplikace. Poskytnutí přístupu k místním aplikacím tradičně zahrnovalo virtuální privátní sítě (VPN) nebo demilitarizované zóny (DMZ). Tato řešení jsou nejen složitá a obtížně zabezpečitelná, ale jsou také nákladná na nastavení a správu. Existuje však lepší způsob. – Proxy aplikací služby Azure AD|
 |[Zřizování uživatelů](https://aka.ms/UserProvisioningDPDownload)|Azure AD pomáhá automatizovat vytváření, údržbu a odebírání identit uživatelů v cloudových aplikacích (SaaS), jako jsou Dropbox, Salesforce, ServiceNow a další.|
 |[Zřizování WORKDAY řízené příchozí uživatelů](https://aka.ms/WorkdayDeploymentPlan)|Řízené WORKDAY příchozího zřizování uživatelů služby Active Directory vytvoří základ pro zásady správného řízení identit probíhající a zvyšuje kvalitu obchodních procesů, které jsou závislé na datech autoritativní identity. Pomocí této funkce můžete bez problémů spravovat životní cyklus identity zaměstnanců a zaměstnanců contingent tím, že nakonfigurujete pravidla, která mapují spojovač. funkci Leaver procesů (např. nové zařazení, ukončení, přenos) pro zřizování akce IT (jako je například vytvoření, povolit, Zakázat, odstraňovat účty).|

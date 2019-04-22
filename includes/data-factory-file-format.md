@@ -5,20 +5,20 @@ ms.topic: include
 ms.date: 11/09/2018
 ms.author: jingwang
 ms.openlocfilehash: 89d5483347f93cd3b57a02ced19b1e8b099a5ab0
-ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58919188"
 ---
 ## <a name="specifying-formats"></a>Zadávání formátů
 Azure Data Factory podporuje následující typy formátů:
 
-* [Formát textu](#specifying-textformat)
+* [Formát Text](#specifying-textformat)
 * [Formát JSON](#specifying-jsonformat)
 * [Formát Avro](#specifying-avroformat)
 * [Formát ORC](#specifying-orcformat)
-* [Formát parquet](#specifying-parquetformat)
+* [Formát Parquet](#specifying-parquetformat)
 
 ### <a name="specifying-textformat"></a>Zadávání formátu TextFormat
 Pokud chcete analyzovat textové soubory nebo zapisovat data v textovém formátu, nastavte vlastnost `format` `type` na hodnotu **TextFormat**. Můžete také zadat následující **nepovinné** vlastnosti v oddílu `format`. Postup konfigurace najdete v části [Příklad typu TextFormat](#textformat-example).
@@ -178,7 +178,7 @@ Aktivita kopírování může analyzovat tyto vzory souborů JSON:
 
 Dál najdete dva typy ukázek kopírování dat z souborů JSON a obecné poznámky:
 
-**Příklad 1: extrahování dat z objektu a pole**
+**Ukázka 1: Extrakce dat z objektu a pole**
 
 V této ukázce očekáváte, že jeden kořenový objekt JSON se mapuje na jeden záznam v tabulkovém výsledku. Pokud máte soubor JSON s následujícím obsahem:  
 
@@ -213,8 +213,8 @@ a chcete ho zkopírovat do tabulky Azure SQL v následujícím formátu a přito
 
 Vstupní datová sada typu **JsonFormat** je definovaná následujícím způsobem (částečná definice obsahující jenom relevantní části). A konkrétně:
 
-- `structure` oddíl definuje vlastní názvy sloupců a odpovídající datový typ při převodu do tabulkového formátu. Pokud mapování sloupců není potřeba, je tento oddíl **nepovinný**. Najdete v článku určení definice struktury pro obdélníkové datové sady část pro další podrobnosti.
-- `jsonPathDefinition` Určuje cestu JSON pro jednotlivé sloupce a udává, odkud se mají extrahovat data z. Chcete-li kopírovat data z pole, můžete použít **pole [x] .vlastnost** extrahovat hodnotu dané vlastnosti z x-tého objektu, nebo můžete použít **pole [*] .vlastnost** k nalezení hodnoty z libovolného objektu, který obsahuje Vlastnost.
+- Oddíl `structure` definuje vlastní názvy sloupců a odpovídající datový typ při převodu do tabulkového formátu. Pokud mapování sloupců není potřeba, je tento oddíl **nepovinný**. Najdete v článku určení definice struktury pro obdélníkové datové sady část pro další podrobnosti.
+- `jsonPathDefinition` určuje cestu JSON pro jednotlivé sloupce a udává, odkud se mají extrahovat data. Chcete-li kopírovat data z pole, můžete použít **pole [x] .vlastnost** extrahovat hodnotu dané vlastnosti z x-tého objektu, nebo můžete použít **pole [*] .vlastnost** k nalezení hodnoty z libovolného objektu, který obsahuje Vlastnost.
 
 ```json
 "properties": {
@@ -251,7 +251,7 @@ Vstupní datová sada typu **JsonFormat** je definovaná následujícím způsob
 }
 ```
 
-**Příklad 2: křížové použití více objektů se stejným vzorkem z pole**
+**Ukázka 2: Křížové použití více objektů se stejným vzorkem z pole**
 
 V této ukázce očekáváte, že transformujete jeden kořenový objekt JSON do několika záznamů v tabulkovém výsledku. Pokud máte soubor JSON s následujícím obsahem:  
 
@@ -286,9 +286,9 @@ a chcete ho zkopírovat do tabulky Azure SQL v následujícím formátu a přito
 
 Vstupní datová sada typu **JsonFormat** je definovaná následujícím způsobem (částečná definice obsahující jenom relevantní části). A konkrétně:
 
-- `structure` oddíl definuje vlastní názvy sloupců a odpovídající datový typ při převodu do tabulkového formátu. Pokud mapování sloupců není potřeba, je tento oddíl **nepovinný**. Najdete v článku určení definice struktury pro obdélníkové datové sady část pro další podrobnosti.
-- `jsonNodeReference` Označuje, iterovat a extrahovat data z objektů se stejným vzorem v rámci **pole** orderlines.
-- `jsonPathDefinition` Určuje cestu JSON pro jednotlivé sloupce a udává, odkud se mají extrahovat data z. V tomto příkladu jsou položky ordernumber, orderdate a city v kořenovém objektu s cestou JSON, která začíná řetězcem „$.“. Oproti tomu order_pd a order_price jsou definované pomocí cesty odvozené z elementu pole bez řetězce „$.“.
+- Oddíl `structure` definuje vlastní názvy sloupců a odpovídající datový typ při převodu do tabulkového formátu. Pokud mapování sloupců není potřeba, je tento oddíl **nepovinný**. Najdete v článku určení definice struktury pro obdélníkové datové sady část pro další podrobnosti.
+- `jsonNodeReference` určuje, že se budou iterovat a extrahovat data z objektů se stejným vzorem v rámci **pole** orderlines.
+- `jsonPathDefinition` určuje cestu JSON pro jednotlivé sloupce a udává, odkud se mají extrahovat data. V tomto příkladu jsou položky ordernumber, orderdate a city v kořenovém objektu s cestou JSON, která začíná řetězcem „$.“. Oproti tomu order_pd a order_price jsou definované pomocí cesty odvozené z elementu pole bez řetězce „$.“.
 
 ```json
 "properties": {

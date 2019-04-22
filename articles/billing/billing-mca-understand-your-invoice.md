@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 02/19/2019
 ms.author: banders
 ms.openlocfilehash: ee6317f61f95b19effd64308b88f53c027582b63
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58883005"
 ---
 # <a name="understand-terms-on-your-microsoft-customer-agreement-invoice"></a>Vysvětlení podmínek na faktuře smlouvy zákazníka se společností Microsoft
@@ -110,6 +110,6 @@ Pokud máte otázky nebo potřebujete pomoc, [vytvořit žádost o podporu](http
 ## <a name="next-steps"></a>Další postup
 
 - [Principy poplatků za fakturační profil faktury](billing-mca-understand-your-bill.md)
-- [Jak získat Azure billing invoice a denní data o využití](billing-download-azure-invoice-daily-usage-date.md)
+- [Jak získat data o denním využití a fakturu za Azure](billing-download-azure-invoice-daily-usage-date.md)
 - [Prohlédněte si ceny Azure vaší organizace](billing-ea-pricing.md)
 - [Zobrazit daňové doklady pro váš fakturační profil](billing-mca-download-tax-document.md)

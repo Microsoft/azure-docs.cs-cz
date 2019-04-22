@@ -93,7 +93,7 @@ Zachování geograficky redundantní kopie vašich snímky, můžete zkopírovat
 
 Podrobné informace o provádění operací REST k objektům BLOB stránky v účtech úložiště úrovně standard najdete v tématu [Azure Storage Services REST API](/rest/api/storageservices/Azure-Storage-Services-REST-API-Reference).
 
-### <a name="managed-disks"></a>Managed Disks
+### <a name="managed-disks"></a>Spravované disky
 
 Snímek spravovaného disku je jen pro čtení kopie spravovaného disku, který je uložený jako standardní spravovaný disk. Přírůstkových snímků nejsou aktuálně podporovány pro Managed Disks, ale bude podporovat v budoucnu.
 

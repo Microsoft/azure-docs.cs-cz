@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 03/13/2019
 ms.author: anuragm
 ms.openlocfilehash: db204c0e881200f667484daf4348c336f94a0ce7
-ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/04/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58916678"
 ---
 # <a name="troubleshoot-back-up-sql-server-on-azure"></a>Řešení potíží s zálohování SQL serveru v Azure
@@ -169,8 +169,7 @@ Tyto příznaky mohou vzniknout z důvodu nejméně jeden z následujících dů
   * Virtuální počítač byl vypnut delší dobu kvůli které konfiguraci rozšíření na něm vypršela
   * Odstranění virtuálního počítače a další virtuální počítač vytvořila se stejným názvem a ve stejné skupině prostředků jako odstraněného virtuálního počítače
   * Jeden z uzlů AG nedostali kompletní konfiguraci zálohování, k tomu může dojít buď v době registrace skupiny dostupnosti v úložišti nebo když přidá nový uzel  <br>
-   
-Ve výše uvedených scénářích se doporučuje spustit znovu zaregistrovat operace na virtuálním počítači. Tato možnost dostupná jenom přes PowerShell a brzy bude k dispozici na webu Azure Portal i.
+    Ve výše uvedených scénářích se doporučuje spustit znovu zaregistrovat operace na virtuálním počítači. Tato možnost dostupná jenom přes PowerShell a brzy bude k dispozici na webu Azure Portal i.
 
 
 ## <a name="next-steps"></a>Další postup

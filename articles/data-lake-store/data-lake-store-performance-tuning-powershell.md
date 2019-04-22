@@ -12,10 +12,10 @@ ms.topic: article
 ms.date: 01/09/2018
 ms.author: stewu
 ms.openlocfilehash: 1c554b0eee844a632e6412b6f8a285c7a2573326
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58885311"
 ---
 # <a name="performance-tuning-guidance-for-using-powershell-with-azure-data-lake-storage-gen1"></a>Průvodce laděním výkonu pro použití Powershellu s Azure Data Lake Storage Gen1
@@ -31,7 +31,7 @@ Tento článek obsahuje seznam vlastností, které můžete ladit pro zajištěn
 | PerFileThreadCount  | 10      | Pomocí tohoto parametru můžete zvolit počet paralelních vláken pro nahrávání nebo stahování jednotlivých souborů. Toto číslo představuje maximální počet vláken, které mohou být přiděleny na soubor, ale můžete dostat méně vláken v závislosti na vašem scénáři (například pokud nahráváte soubor 1 KB, dostanete jedno vlákno i když požadujete třeba 20 vláken).  |
 | ConcurrentFileCount | 10      | Tento parametr je určený zejména pro nahrávání nebo stahování složek. Tento parametr určuje počet souborů, které lze souběžně nahrávat nebo stahovat. Toto číslo představuje maximální počet souběžných souborů, které můžou nahrávat nebo stahovat najednou, ale v závislosti na vašem scénáři můžete dostat nižší souběžnost (například pokud nahráváte dva soubory, dostanete dva nahrávání souborů souběžně to i když požadujete pro 15). |
 
-**Příklad:**
+**Příklad**
 
 Tento příkaz stáhne soubory z Data Lake Storage Gen1 uživatele místní disk pomocí 20 vláken na soubor a 100 souběžných souborů.
 
@@ -45,7 +45,7 @@ Další dotaz, může být je jak určit, jakou hodnotu poskytnout vlastnosti so
 
         Total thread count = total physical cores * 6
 
-    **Příklad:**
+    **Příklad**
 
     Předpokládejme, že spouštíte příkazy prostředí PowerShell z virtuálního počítače D14, který má 16 jader.
 
@@ -56,7 +56,7 @@ Další dotaz, může být je jak určit, jakou hodnotu poskytnout vlastnosti so
 
         PerFileThreadCount = 10 threads for the first 2.5 GB + 1 thread for each additional 256 MB increase in file size
 
-    **Příklad:**
+    **Příklad**
 
     Za předpokladu, že máte 100 souborů od 1 GB až 10 GB, použijeme tedy 10 GB jako největší velikost souboru pro rovnice, který bude číst takto.
 
@@ -66,7 +66,7 @@ Další dotaz, může být je jak určit, jakou hodnotu poskytnout vlastnosti so
 
         Total thread count = PerFileThreadCount * ConcurrentFileCount
 
-    **Příklad:**
+    **Příklad**
 
     Podle ukázkových hodnot, které používáme:
 
@@ -96,7 +96,7 @@ Tato nastavení můžete dále ladit zvýšením nebo snížením hodnoty **PerF
 
 ## <a name="next-steps"></a>Další postup
 * [Použití Azure Data Lake Storage Gen1 pro potřeby velkého objemu dat](data-lake-store-data-scenarios.md) 
-* [Zabezpečení dat v Data Lake Storage Gen1](data-lake-store-secure-data.md)
+* [Zabezpečení dat ve službě Data Lake Storage Gen1](data-lake-store-secure-data.md)
 * [Použití Azure Data Lake Analytics s Data Lake Storage Gen1](../data-lake-analytics/data-lake-analytics-get-started-portal.md)
 * [Použití Azure HDInsight s Data Lake Storage Gen1](data-lake-store-hdinsight-hadoop-use-portal.md)
 

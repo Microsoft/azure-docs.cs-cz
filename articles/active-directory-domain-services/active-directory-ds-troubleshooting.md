@@ -16,10 +16,10 @@ ms.topic: conceptual
 ms.date: 01/08/2018
 ms.author: ergreenl
 ms.openlocfilehash: 48831767f72dd1b978fad5b0a9a8f2c7a11ec89d
-ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58893108"
 ---
 # <a name="azure-ad-domain-services---troubleshooting-guide"></a>Azure AD Domain Services – Průvodce odstraňováním potíží
@@ -32,15 +32,15 @@ Můžete si vyberte kroků pro řešení problémů, které odpovídají chybov�
 
 | **Chybová zpráva** | **Řešení** |
 | --- |:--- |
-| *Název contoso100.com se už používá v této síti. Zadejte název, který se nepoužívá.* |[Konflikt názvu domény ve virtuální síti](active-directory-ds-troubleshooting.md#domain-name-conflict) |
-| *Domain Services nelze povolit v tomto tenantovi Azure AD. Služba nemá dostatečná oprávnění pro aplikaci s názvem Azure AD Domain Services Sync. Odstraňte aplikaci s názvem "Azure AD Domain Services Sync" a potom se pokuste pro vašeho tenanta Azure AD povolit Domain Services.* |[Domain Services nemá dostatečná oprávnění k aplikaci Azure AD Domain Services Sync](active-directory-ds-troubleshooting.md#inadequate-permissions) |
+| *Název contoso100.com se už v síti používá. Zadejte název, který se nepoužívá.* |[Konflikt názvu domény ve virtuální síti](active-directory-ds-troubleshooting.md#domain-name-conflict) |
+| *Domain Services nelze povolit v tomto tenantovi Azure AD. Služba nemá dostatečná oprávnění pro aplikaci s názvem Azure AD Domain Services Sync. Odstraňte aplikace s názvem Azure AD Domain Services Sync a potom se pokuste pro vašeho tenanta Azure AD povolit Domain Services.* |[Domain Services nemá dostatečná oprávnění k aplikaci Azure AD Domain Services Sync](active-directory-ds-troubleshooting.md#inadequate-permissions) |
 | *Domain Services nelze povolit v tomto tenantovi Azure AD. Aplikace Domain Services ve vašem tenantovi Azure AD nemá požadovaná oprávnění k povolení Domain Services. Odstraňte aplikaci s identifikátorem aplikace d87dcbc6-a371-462e-88e3-28ad15ec4e64 a potom se pokuste pro vašeho tenanta Azure AD povolit Domain Services.* |[Aplikace Domain Services není správně nakonfigurována ve vašem tenantovi](active-directory-ds-troubleshooting.md#invalid-configuration) |
 | *Domain Services nelze povolit v tomto tenantovi Azure AD. Aplikace Microsoft Azure AD je ve vašem tenantovi Azure AD zakázaná. Povolte aplikaci s identifikátorem aplikace 00000002-0000-0000-c000-000000000000 a potom se pokuste pro vašeho tenanta Azure AD povolit Domain Services.* |[Aplikace Microsoft Graphu je zakázaná ve vašem tenantovi Azure AD](active-directory-ds-troubleshooting.md#microsoft-graph-disabled) |
 
 ### <a name="domain-name-conflict"></a>Konflikt názvů domény
 **Chybová zpráva:**
 
-*Název contoso100.com se už používá v této síti. Zadejte název, který se nepoužívá.*
+*Název contoso100.com se už v síti používá. Zadejte název, který se nepoužívá.*
 
 **Náprava:**
 
@@ -51,7 +51,7 @@ To je způsobeno konflikty názvů pro název domény v této virtuální síti.
 ### <a name="inadequate-permissions"></a>Nedostatečná oprávnění
 **Chybová zpráva:**
 
-*Domain Services nelze povolit v tomto tenantovi Azure AD. Služba nemá dostatečná oprávnění pro aplikaci s názvem Azure AD Domain Services Sync. Odstraňte aplikaci s názvem "Azure AD Domain Services Sync" a potom se pokuste pro vašeho tenanta Azure AD povolit Domain Services.*
+*Domain Services nelze povolit v tomto tenantovi Azure AD. Služba nemá dostatečná oprávnění pro aplikaci s názvem Azure AD Domain Services Sync. Odstraňte aplikace s názvem Azure AD Domain Services Sync a potom se pokuste pro vašeho tenanta Azure AD povolit Domain Services.*
 
 **Náprava:**
 

@@ -9,10 +9,10 @@ ms.date: 01/09/2019
 ms.author: owend
 ms.reviewer: minewiskan
 ms.openlocfilehash: 462625ce61f4538aa0769667648e07cc6307cbb3
-ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58891680"
 ---
 # <a name="manage-database-roles-and-users"></a>Spravovat databázové role a uživatele
@@ -45,7 +45,7 @@ Při vytváření projektu s tabelárním modelem, vytvářet role a přidat už
   
     |Oprávnění|Popis|  
     |----------------|-----------------|  
-    |**Žádný**|Členy nelze upravit schéma modelu a nelze zadávat dotazy na data.|  
+    |**Žádné**|Členy nelze upravit schéma modelu a nelze zadávat dotazy na data.|  
     |**Čtení**|Členy můžete zadávat dotazy na data (podle filtry řádků), ale nelze změnit schéma modelu.|  
     |**Číst a zpracovat**|Členové můžou dotazy na data (na základě filtrů na úrovni řádků) a spusťte proces a proces všechny operace, ale nelze změnit schéma modelu.|  
     |**Proces**|Členy můžete spustit proces a proces všechny operace. Nelze změnit schéma modelu a nelze zadávat dotazy na data.|  
@@ -126,7 +126,7 @@ V této ukázce B2B externího uživatele a skupiny se přidají do role analyti
 |------------|-----------------| 
 |[Add-RoleMember](/sql/analysis-services/powershell/analysis-services-powershell-reference)|Přidáte člena do role databáze.| 
 |[Remove-RoleMember](/sql/analysis-services/powershell/analysis-services-powershell-reference)|Odebrání člena z role databáze.|   
-|[Vyvolání ASCmd](/sql/analysis-services/powershell/analysis-services-powershell-reference)|Spusťte skript TMSL.|
+|[Invoke-ASCmd](/sql/analysis-services/powershell/analysis-services-powershell-reference)|Spusťte skript TMSL.|
 
 ## <a name="row-filters"></a>Filtry řádků  
 

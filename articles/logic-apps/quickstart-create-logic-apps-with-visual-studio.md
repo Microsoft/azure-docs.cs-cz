@@ -12,10 +12,10 @@ ms.reviewer: klam, LADocs
 ms.suite: integration
 ms.date: 04/02/2019
 ms.openlocfilehash: 10ed3ec8b29048a7ede51a6d98e9f1ebb7f44cf6
-ms.sourcegitcommit: d83fa82d6fec451c0cb957a76cfba8d072b72f4f
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/02/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58862977"
 ---
 # <a name="quickstart-create-automated-tasks-processes-and-workflows-with-azure-logic-apps---visual-studio"></a>Rychlý start: Vytváření automatizovaných úloh, procesů a pracovních postupů s Azure Logic Apps – Visual Studio
@@ -213,5 +213,5 @@ Vyberte skupinu prostředků pro vaši aplikaci logiky a pak vyberte **Přehled*
 V tomto článku jste pomocí sady Visual Studio sestavili, nasadili a spustili aplikaci logiky. Další informace o správě a provádění pokročilého nasazení aplikací logiky pomocí sady Visual Studio najdete v těchto článcích:
 
 > [!div class="nextstepaction"]
-> * [Správa aplikací logiky pomocí sady Visual Studio](../logic-apps/manage-logic-apps-with-visual-studio.md)
-> * [Vytvoření šablony nasazení pro aplikace logiky pomocí sady Visual Studio](../logic-apps/logic-apps-create-deploy-template.md)
+> * [Správa aplikací logiky s využitím sady Visual Studio](../logic-apps/manage-logic-apps-with-visual-studio.md)
+> * [Vytvoření šablon nasazení pro aplikace logiky pomocí sady Visual Studio](../logic-apps/logic-apps-create-deploy-template.md)

@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 03/26/2019
 ms.author: mlottner
 ms.openlocfilehash: d1f9d77d1f87e8d201e2cb034401bb3cae14f41b
-ms.sourcegitcommit: d83fa82d6fec451c0cb957a76cfba8d072b72f4f
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/02/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58862909"
 ---
 # <a name="security-agent-authentication-methods"></a>Metody ověřování zabezpečení agenta 
@@ -63,7 +63,7 @@ Tyto argumenty jsou popsány v následující tabulce.
 
 |Parametr|Popis|Možnosti|
 |---------|---------------|---------------|
-|**identity**|Režim ověřování| **Modul** nebo **zařízení**|
+|**Identita**|Režim ověřování| **Modul** nebo **zařízení**|
 |**type**|Typ ověřování|**SymmetricKey** nebo **SelfSignedCertificate**|
 |**filePath**|Absolutní úplnou cestu k souboru, který obsahuje certifikát nebo symetrický klíč| |
 |**gatewayHostname**|Plně kvalifikovaný název domény služby IoT Hub|Příklad: ContosoIotHub.azure-devices.net|
@@ -114,4 +114,4 @@ Upravit _LocalConfiguration.json_ s následujícími parametry:
 ## <a name="see-also"></a>Další informace najdete v tématech
 - [Přehled zabezpečení agentů](security-agent-architecture.md)
 - [Nasazení agenta pro zabezpečení](how-to-deploy-agent.md)
-- [Přístup k nezpracovaným datům zabezpečení](how-to-security-data-access.md)
+- [Přístup k datům raw zabezpečení](how-to-security-data-access.md)

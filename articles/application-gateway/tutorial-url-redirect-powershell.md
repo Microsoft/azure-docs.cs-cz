@@ -7,10 +7,10 @@ ms.service: application-gateway
 ms.date: 4/3/2019
 ms.author: victorh
 ms.openlocfilehash: febe02ac7fe4dfcb4140a8e5796c4c9fa86f6de3
-ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/04/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58918378"
 ---
 # <a name="create-an-application-gateway-with-url-path-based-redirection-using-azure-powershell"></a>Vytvoření brány Application Gateway s přesměrováním na základě cesty adresy URL pomocí Azure PowerShellu
@@ -518,4 +518,4 @@ Remove-AzResourceGroup -Name myResourceGroupAG
 ## <a name="next-steps"></a>Další postup
 
 > [!div class="nextstepaction"]
-> [Další informace o tom, co můžete dělat pomocí služby application gateway](application-gateway-introduction.md)
+> [Další informace o možnostech aplikační brány](application-gateway-introduction.md)

@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 03/26/2019
 ms.author: mlottner
 ms.openlocfilehash: 16b5525973b93bc6b073c50c0c657dcbb4679040
-ms.sourcegitcommit: d83fa82d6fec451c0cb957a76cfba8d072b72f4f
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/02/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58862212"
 ---
 # <a name="quickstart-create-an-azureiotsecurity-module-twin"></a>Rychlý start: Vytvoření azureiotsecurity dvojčete modulu
@@ -67,7 +67,7 @@ Chcete-li ověřit, jestli existuje dvojčete modulu zabezpečení pro určité 
 
 1. Ve službě Azure IoT Hub, vyberte **zařízení IoT** z **Průzkumníci** nabídky.    
 1. Zadejte ID zařízení, nebo vyberte možnost v **pole zařízení dotazu** a klikněte na tlačítko **dotazování zařízení**. 
-    ![Dotázat se na zařízení](./media/quickstart/verify-security-module-twin.png)
+    ![Dotaz zařízení](./media/quickstart/verify-security-module-twin.png)
 1. Vyberte zařízení, nebo dvojím kliknutím ho otevřete stránku Podrobnosti o zařízení. 
 1. Vyberte **modul identity** nabídky a ověřte existenci **azureiotsecurity** modulu v seznamu identit modul přidružené k zařízení. 
     ![Moduly, které jsou přidružené k zařízení](./media/quickstart/verify-security-module-twin-3.png)

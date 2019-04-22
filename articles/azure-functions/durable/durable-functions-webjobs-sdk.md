@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 04/25/2018
 ms.author: azfuncdf
 ms.openlocfilehash: df12639aaafaf3df7ae2b755d635d4fba83d846e
-ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58905083"
 ---
 # <a name="how-to-run-durable-functions-as-webjobs"></a>Jak spustit Durable Functions jako WebJobs
@@ -33,7 +33,7 @@ Tento článek předpokládá, že jste obeznámení se základy sady WebJobs SD
 
 * [Začínáme se sadou WebJobs SDK](../../app-service/webjobs-sdk-get-started.md)
 * [Vytvoření první funkce pomocí sady Visual Studio](../functions-create-your-first-function-visual-studio.md)
-* [Odolná služba Functions](durable-functions-sequence.md)
+* [Durable Functions](durable-functions-sequence.md)
 
 K dokončení kroků v tomto článku:
 
@@ -132,7 +132,7 @@ Odolná služba Functions v kontextu WebJobs se liší trochu z Durable Function
 Sada WebJobs SDK nepodporuje následující funkce Azure Functions:
 
 * [FunctionName atribut](#functionname-attribute)
-* [Trigger HTTP](#http-trigger)
+* [HTTP trigger](#http-trigger)
 * [Odolné funkce protokolu HTTP rozhraní API pro správu](#http-management-api)
 
 ### <a name="functionname-attribute"></a>FunctionName atribut

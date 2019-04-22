@@ -9,10 +9,10 @@ ms.date: 12/14/2017
 ms.author: rogarana
 ms.subservice: common
 ms.openlocfilehash: 40138a69baf9cd621b2f287b2fe035225bfd9bec
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58877484"
 ---
 #  <a name="tutorial-migrate-on-premises-data-to-cloud-storage-by-using-azcopy"></a>Kurz: Migrace místních dat do cloudového úložiště pomocí AzCopy
@@ -59,7 +59,7 @@ Názvy kontejnerů musí začínat písmenem nebo číslicí. Můžou obsahovat 
 
 Pomocí AzCopy můžete nahrát všechny soubory ve složce do úložiště objektů blob ve [Windows](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy#upload-blobs-to-blob-storage) nebo v [Linuxu](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-linux#blob-download). Pokud chcete nahrát všechny objekty blob ve složce, zadejte následující příkaz AzCopy:
 
-# [<a name="linux"></a>Linux](#tab/linux)
+# <a name="linuxtablinux"></a>[Linux](#tab/linux)
 
     azcopy \
         --source /mnt/myfolder \
@@ -67,7 +67,7 @@ Pomocí AzCopy můžete nahrát všechny soubory ve složce do úložiště obje
         --dest-key <key> \
         --recursive
 
-# [<a name="windows"></a>Windows](#tab/windows)
+# <a name="windowstabwindows"></a>[Windows](#tab/windows)
 
     AzCopy /Source:C:\myfolder /Dest:https://myaccount.blob.core.windows.net/mycontainer /DestKey:<key> /S
 ---
@@ -82,7 +82,7 @@ Pomocí AzCopy můžete [nahrávat soubory](https://docs.microsoft.com/azure/sto
 
 Pokud chcete zkopírovat pouze zdrojové prostředky, které neexistují v cíli, zadejte v příkazu AzCopy parametry `--exclude-older` i `--exclude-newer` (Linux) nebo `/XO` i `/XN` (Windows). AzCopy nahraje pouze aktualizovaná data na základě jejich časového razítka.
 
-# [<a name="linux"></a>Linux](#tab/linux)
+# <a name="linuxtablinux"></a>[Linux](#tab/linux)
 
     azcopy \
     --source /mnt/myfolder \
@@ -91,7 +91,7 @@ Pokud chcete zkopírovat pouze zdrojové prostředky, které neexistují v cíli
     --recursive \
     --exclude-older
 
-# [<a name="windows"></a>Windows](#tab/windows)
+# <a name="windowstabwindows"></a>[Windows](#tab/windows)
 
     AzCopy /Source:C:\myfolder /Dest:https://myaccount.blob.core.windows.net/mycontainer /DestKey:<key> /S /XO
 ---
@@ -102,11 +102,11 @@ Můžete vytvořit plánovanou úlohu nebo úlohu Cron, která spouští skript 
 
 Zkopírujte následující příkaz AzCopy do textového editoru. Aktualizujte hodnoty parametrů příkazu AzCopy na odpovídající hodnoty. Uložte soubor jako `script.sh` (Linux) nebo `script.bat` (Windows) pro AzCopy.
 
-# [<a name="linux"></a>Linux](#tab/linux)
+# <a name="linuxtablinux"></a>[Linux](#tab/linux)
 
     azcopy --source /mnt/myfiles --destination https://myaccount.blob.core.windows.net/mycontainer --dest-key <key> --recursive --exclude-older --exclude-newer --verbose >> Path/to/logfolder/`date +\%Y\%m\%d\%H\%M\%S`-cron.log
 
-# [<a name="windows"></a>Windows](#tab/windows)
+# <a name="windowstabwindows"></a>[Windows](#tab/windows)
 
     cd C:\Program Files (x86)\Microsoft SDKs\Azure\AzCopy
     AzCopy /Source: C:\myfolder  /Dest:https://myaccount.blob.core.windows.net/mycontainer /DestKey:<key> /V /XO /XN >C:\Path\to\logfolder\azcopy%date:~-4,4%%date:~-7,2%%date:~-10,2%%time:~-11,2%%time:~-8,2%%time:~-5,2%.log
@@ -117,7 +117,7 @@ AzCopy se spustí s možností podrobného výstupu `--verbose` (Linux) nebo `/V
 V tomto kurzu se k vytvoření plánované úlohy ve Windows používá [Schtasks](https://msdn.microsoft.com/library/windows/desktop/bb736357(v=vs.85).aspx). Příkaz [Crontab](http://crontab.org/) slouží k vytvoření úlohy Cron v Linuxu.
  **Schtasks** umožňuje správci vytvářet, odstraňovat, dotazovat, měnit, spouštět a ukončovat plánované úlohy na místním nebo vzdáleném počítači. **Cron** umožňuje uživatelům Linuxu a Unixu spouštět příkazy nebo skripty v zadaném datu a čase pomocí [výrazů Cron](https://en.wikipedia.org/wiki/Cron#CRON_expression).
 
-# [<a name="linux"></a>Linux](#tab/linux)
+# <a name="linuxtablinux"></a>[Linux](#tab/linux)
 
 Pokud chcete vytvořit úlohu Cron v Linuxu, zadejte v terminálu následující příkaz:
 
@@ -128,7 +128,7 @@ crontab -e
 
 Zadání výrazu Cron `*/5 * * * *` v příkazu značí, že se má skript prostředí `script.sh` spouštět každých pět minut. Spouštění skriptu můžete naplánovat na určitý čas každý den, měsíc nebo rok. Další informace o nastavení data a času provádění úlohy najdete v článku o [výrazech Cron](https://en.wikipedia.org/wiki/Cron#CRON_expression).
 
-# [<a name="windows"></a>Windows](#tab/windows)
+# <a name="windowstabwindows"></a>[Windows](#tab/windows)
 
 Pokud chcete vytvořit plánovanou úlohu ve Windows, zadejte na příkazovém řádku nebo v PowerShellu následující příkaz:
 

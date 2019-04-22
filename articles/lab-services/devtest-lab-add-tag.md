@@ -32,7 +32,7 @@ Zahrnout prostředky, které jsou podporovány podle klíčových slov
 * IP adresy
 * Nástroje pro vyrovnávání zatížení
 * Účty úložiště
-* Managed Disks
+* Spravované disky
 
 Můžete použít značky, kdy jste [vytvoření testovacího prostředí](devtest-lab-create-lab.md) a později je můžete spravovat prostřednictvím okna značky v části Konfigurace a nastavení.
 

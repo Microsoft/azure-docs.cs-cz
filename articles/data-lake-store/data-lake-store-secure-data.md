@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: twooley
 ms.openlocfilehash: cebdff5ed233516683df3330e8fd3332ded664e5
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58885668"
 ---
 # <a name="securing-data-stored-in-azure-data-lake-storage-gen1"></a>Zabezpečení dat uložených v Azure Data Lake Storage Gen1
@@ -152,7 +152,7 @@ Při odebrání skupiny zabezpečení seznamů ACL systému souborů Data Lake S
 * [Kopírování dat z Azure Storage BLOB do Data Lake Storage Gen1](data-lake-store-copy-data-azure-storage-blob.md)
 * [Použití Azure Data Lake Analytics s Data Lake Storage Gen1](../data-lake-analytics/data-lake-analytics-get-started-portal.md)
 * [Použití Azure HDInsight s Data Lake Storage Gen1](data-lake-store-hdinsight-hadoop-use-portal.md)
-* [Začínáme se službou Data Lake Storage Gen1 s využitím PowerShellu](data-lake-store-get-started-powershell.md)
+* [Začínáme se službou Data Lake Storage Gen1 pomocí Powershellu](data-lake-store-get-started-powershell.md)
 * [Začínáme se službou Data Lake Storage Gen1 pomocí sady .NET SDK](data-lake-store-get-started-net-sdk.md)
 * [Zobrazení protokolů diagnostiky pro Data Lake Storage Gen1](data-lake-store-diagnostic-logs.md)
 
