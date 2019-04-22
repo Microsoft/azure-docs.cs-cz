@@ -9,10 +9,10 @@ ms.date: 04/05/2019
 ms.author: seguler
 ms.subservice: common
 ms.openlocfilehash: ffd448db86c8658619da5339cd34eb9dba7e05ce
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59278424"
 ---
 # <a name="transfer-data-with-azcopy-v10-preview"></a>Přenos dat pomocí AzCopy v10 (Preview)
@@ -102,7 +102,7 @@ Pokud chcete zobrazit stránku nápovědy a příklady pro konkrétní příkaz,
 
 ## <a name="create-a-blob-container-or-file-share"></a>Vytvoření objektů blob v kontejneru nebo ve sdílené složce 
 
-**Vytvoření kontejneru objektů blob**
+**Vytvořte kontejner objektů blob**
 
 ```azcopy
 .\azcopy make "https://account.blob.core.windows.net/container-name"

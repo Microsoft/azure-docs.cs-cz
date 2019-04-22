@@ -4,15 +4,15 @@ description: Tento článek popisuje postup vytvoření a použití databáze Az
 author: rimman
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 03/31/2019
+ms.date: 04/17/2019
 ms.author: rimman
 ms.reviewer: sngun
-ms.openlocfilehash: f3bec1b279c07e62e246ebfa933b3942e38406de
-ms.sourcegitcommit: 09bb15a76ceaad58517c8fa3b53e1d8fec5f3db7
+ms.openlocfilehash: 8eaca83b7ea89737a63fe56a18505c8df7e93fdc
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58762890"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59678790"
 ---
 # <a name="work-with-databases-containers-and-items"></a>Práce s databázemi, kontejnery a položkami
 
@@ -61,7 +61,7 @@ Můžete nastavit [čas To Live (TTL)](time-to-live.md) na vybrané položky v r
 
 S použitím [Change Feed](change-feed.md), můžete se přihlásit odběru k provoznímu protokolu, který je spravovaný pro všechny logické oddíly vašeho kontejneru. Kanál změn poskytuje protokolu všechny aktualizace provedené na kontejneru spolu s před a po obrázků položek. Zobrazit [postupy vytváření reaktivních aplikací pomocí Change Feed](serverless-computing-database.md). Doba uchovávání můžete také nakonfigurovat pro změnit informační kanál pomocí kanál v kontejneru zásad změn. 
 
-Můžete zaregistrovat [uložené procedury, aktivační události, uživatelem definované funkce (UDF)](stored-procedures-triggers-udfs.md) a [sloučit postupy](how-to-manage-conflicts.md#create-a-custom-conflict-resolution-policy-with-a-stored-procedure) se váš kontejner Azure Cosmos. 
+Můžete zaregistrovat [uložené procedury, aktivační události, uživatelem definované funkce (UDF)](stored-procedures-triggers-udfs.md) a [sloučit postupy](how-to-manage-conflicts.md) se váš kontejner Azure Cosmos. 
 
 Můžete zadat [omezení unique key](unique-keys.md) na váš kontejner Azure Cosmos. Vytvořením zásady jedinečného klíče zajistíte jedinečnost jedné nebo více hodnot za klíč logického oddílu. Po vytvoření kontejneru s zásady jedinečného klíče zabraňuje vytváření nové nebo aktualizované položky s hodnotami, které duplicitní hodnoty určené omezení unique key. Další informace najdete v tématu [omezení jedinečných klíčů](unique-keys.md).
 
@@ -117,7 +117,7 @@ Každá položka Azure Cosmos má následující vlastnosti definovaná systéme
 |_etag | Vygenerované systémem | Značka entity používá pro optimistického řízení souběžnosti | Ano | Ne | Ne | Ne | Ne |
 |_ts | Vygenerované systémem | Časové razítko poslední aktualizace položky | Ano | Ne | Ne | Ne | Ne |
 |_self | Vygenerované systémem | Adresovatelný identifikátor URI položky | Ano | Ne | Ne | Ne | Ne |
-|id | Buď | Uživatelem definované jedinečný název v rámci logického oddílu. Pokud uživatel nemá určenou id, systém jej vytvoří automaticky. | Ano | Ano | Ano | Ano | Ano |
+|id | Buď | Uživatelem definované jedinečný název v rámci logického oddílu. Pokud uživatel nemá určenou ID, systém jej vytvoří automaticky. | Ano | Ano | Ano | Ano | Ano |
 |Libovolné uživatelem definované vlastnosti | Definované uživatelem | Uživatelem definované vlastnosti v rozhraní API nativní reprezentace (JSON, BSON, CQL atd.) | Ano | Ano | Ano | Ano | Ano |
 
 ### <a name="operations-on-items"></a>Operace u položek

@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 10/29/2018
 ms.author: yijenj
-ms.openlocfilehash: dba2582b29d1fc81a39387f5297852245233b708
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: 3c07f7ac2b6407a3edf53fd5d3a4b402714fefbb
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56731085"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59678900"
 ---
 # <a name="azure-marketplace-commercial-transaction-capabilities-and-considerations"></a>Azure Marketplace obchodní transakce možnosti a důležité faktory
 
@@ -44,7 +44,7 @@ Kromě seznamu a možnostmi pořízení zkušební verze publikování možnost 
 
 ## <a name="transact-general-overview"></a>Příkaz Transact obecný přehled
 
-Při použití možnosti publikování transact díky microsoftu Prodej a nasazení softwaru třetích stran s předplatným Azure zákazníka. Vydavatel nutné vzít v úvahu tak účtování poplatků za infrastrukturu Azure a vydavatele vlastní licenční poplatky za software, při výběru fakturace modelu a typ v Azure Marketplace nabídky. 
+Při použití příkazů jazyka transact publikování možnost, společnost Microsoft přináší prodeje softwaru třetích stran a nasazení některé typy nabídek s předplatným Azure zákazníka. Vydavatel nutné vzít v úvahu tak účtování poplatků za infrastrukturu Azure a vydavatele vlastní licenční poplatky za software, při výběru fakturace modelu a typ v Azure Marketplace nabídky.
 
 Možnost Transact publikování na webu Azure Marketplace aktuálně podporuje pro následující typy nabídek: Virtuální počítače, aplikace Azure nebo aplikace SaaS.
 
@@ -58,7 +58,7 @@ Pro virtuální počítače a aplikace Azure se účtují poplatky za využití 
 
 **Pro aplikace SaaS**
 
-Pro aplikace SaaS vydavatel musí odpovídat poplatky za využití infrastruktury Azure a licenční poplatky za software jako náklady na jednu položku.  Je datum vyjádřeno jako fixní měsíční poplatek, abyste zákazníka. Využití infrastruktury Azure je spravovaná a účtuje se na partnera přímo.  Poplatky za využití infrastruktury skutečný nevidí zákazníka.  Vydavatelé se obvykle optimalizované poplatky za využití infrastruktury Azure začlenit do svých ceny licencí softwaru.  Nejsou měřené licenční poplatky za software nebo na základě spotřeby.
+Pro aplikace SaaS vydavatel musí odpovídat poplatky za využití infrastruktury Azure a licenční poplatky za software jako náklady na jednu položku.  Je datum vyjádřeno jako paušální poplatek zákazníkovi. Využití infrastruktury Azure je spravovaná a účtuje se na partnera přímo.  Poplatky za využití infrastruktury skutečný nevidí zákazníka.  Vydavatelé se obvykle optimalizované poplatky za využití infrastruktury Azure začlenit do svých ceny licencí softwaru.  Nejsou měřené licenční poplatky za software nebo na základě spotřeby.
 
 ## <a name="transact-billing-models"></a>Příkaz Transact modely fakturace
 

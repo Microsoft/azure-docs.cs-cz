@@ -65,7 +65,7 @@ Pomocí služby HDInsight můžete provádět interaktivní dotazy v petabajtov�
 
 ### <a name="internet-of-things-iot"></a>Internet věcí (IoT)
 
-Pomocí služby HDInsight můžete zpracovávat streamovaná data přijímaná v reálném čase z různých zařízení. Pokud chcete získat další informace, [přečtěte si tento blogový příspěvek z Azure, který oznamuje verzi Public Preview pro Apache Kafka v HDInsightu se službou Azure Managed Disks](https://azure.microsoft.com/blog/announcing-public-preview-of-apache-kafka-on-hdinsight-with-azure-managed-disks/).
+Pomocí služby HDInsight můžete zpracovávat streamovaná data přijímaná v reálném čase z různých zařízení. Pokud chcete získat další informace, [přečtěte si tento blogový příspěvek z Azure, který oznamuje verzi Public Preview pro Apache Kafka v HDInsightu se Spravovanými disky Azure](https://azure.microsoft.com/blog/announcing-public-preview-of-apache-kafka-on-hdinsight-with-azure-managed-disks/).
 
 ![Architektura HDInsight: Internet of Things](./media/apache-hadoop-introduction/hdinsight-architecture-iot.png "architektury HDInsight IoT") 
 

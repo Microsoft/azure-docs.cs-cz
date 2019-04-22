@@ -9,10 +9,10 @@ ms.topic: tutorial
 ms.date: 02/27/2019
 ms.author: alkohli
 ms.openlocfilehash: ec2013a793f766221a66912d6de9d8da8b8106dd
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59282555"
 ---
 # <a name="tutorial-use-data-box-to-import-data-as-managed-disks-in-azure"></a>Kurz: Použijte Data Box pro import dat jako spravovaných disků v Azure
@@ -142,8 +142,8 @@ Než začnete kopírování dat, přečtěte si následující aspekty:
 
 V závislosti na tom, jestli se připojují prostřednictvím protokolu SMB nebo NFS můžete použít:
 
-- [Kopírování dat pomocí protokolu SMB](data-box-deploy-copy-data.md#copy-data-to-data-box)
-- [Kopírování dat přes systém souborů NFS](data-box-deploy-copy-data-via-nfs.md#copy-data-to-data-box)
+- [Kopírování dat prostřednictvím protokolu SMB](data-box-deploy-copy-data.md#copy-data-to-data-box)
+- [Kopírování dat pomocí systému souborů NFS](data-box-deploy-copy-data-via-nfs.md#copy-data-to-data-box)
 
 Počkejte na dokončení úloh kopírování. Ujistěte se, že úlohy kopírování dokončili bez chyb, než přejdete k dalšímu kroku.
 
@@ -179,5 +179,5 @@ V tomto kurzu jste se dozvěděli o tématech spojených se službou Azure Data 
 Přejděte k dalšímu kurzu se naučíte k odeslání vašeho zařízení Data Box zpět společnosti Microsoft.
 
 > [!div class="nextstepaction"]
-> [Odeslání do Microsoft Azure Data Box](./data-box-deploy-picked-up.md)
+> [Odeslání Azure Data Boxu do Microsoftu](./data-box-deploy-picked-up.md)
 

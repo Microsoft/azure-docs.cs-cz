@@ -16,10 +16,10 @@ ms.date: 04/03/2019
 ms.author: rolyon
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: a1f03cd518a15d08971968e04fa69954951c77e0
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/05/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59052354"
 ---
 # <a name="azure-active-directory-terms-of-use-feature"></a>Funkce Azure Active Directory Terms of Use
@@ -126,7 +126,7 @@ Jakmile dokončíte dokument podmínek použití, přidejte ho pomocí následuj
     | **Přístup ke cloudovým aplikacím pro všechny hosty** | Vytvoří se zásady podmíněného přístupu pro všechny hostů a všechny cloudové aplikace. Tyto zásady mají vliv na webu Azure portal. Jakmile se vytvoří, budete asi muset odhlásit a přihlásit. |
     | **Přístup ke cloudovým aplikacím pro všechny uživatele** | Vytvoří se zásady podmíněného přístupu pro všechny uživatele a všechny cloudové aplikace. Tyto zásady mají vliv na webu Azure portal. Jakmile se vytvoří, budete muset odhlásit a přihlásit. |
     | **Vlastní zásady** | Vyberte uživatele, skupiny a aplikace, na které se tyto podmínky použití vztahují. |
-    | **Vytvořit zásady podmíněného přístupu později** | Tyto podmínky použití se zobrazí v seznamu pro udělení řízení při vytváření zásad podmíněného přístupu. |
+    | **Vytvoření zásad podmíněného přístupu později** | Tyto podmínky použití se zobrazí v seznamu pro udělení řízení při vytváření zásad podmíněného přístupu. |
 
     >[!IMPORTANT]
     >Zásady podmíněného přístupu (včetně podmínek použití) nepodporují vynucení u účtů služeb. Doporučujeme, abyste ze zásad podmíněného přístupu všechny účty služeb vyloučili.
@@ -264,7 +264,7 @@ Tady je seznam podporovaných platforem a software.
 > | --- | --- | --- | --- | --- |
 > | **Nativní aplikace** | Ano | Ano | Ano |  |
 > | **Microsoft Edge** | Ano | Ano | Ano |  |
-> | **Internet Explorer** | Ano | Ano | Ano |  |
+> | **Aplikace Internet Explorer** | Ano | Ano | Ano |  |
 > | **(S příponou) pro Chrome** | Ano | Ano | Ano |  |
 
 Podmínky použití na zařízení má následující omezení:
@@ -386,5 +386,5 @@ Odpověď: Pokud jste nakonfigurovali obě Azure AD podmínky použití a [Intun
 
 ## <a name="next-steps"></a>Další postup
 
-- [Rychlý start: Vyžadovat podmínky použití přijmout před přístupem k cloudových aplikací](require-tou.md)
+- [Rychlé zprovoznění: Vyžadovat podmínky použití přijmout před přístupem k cloudových aplikací](require-tou.md)
 - [Osvědčené postupy pro podmíněný přístup v Azure Active Directory](best-practices.md)

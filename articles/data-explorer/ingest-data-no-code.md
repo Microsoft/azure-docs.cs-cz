@@ -8,10 +8,10 @@ ms.service: data-explorer
 ms.topic: tutorial
 ms.date: 04/07/2019
 ms.openlocfilehash: 9f4b7ee0dcc87ca03fd051be0dacedf0912b5320
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59262903"
 ---
 # <a name="tutorial-ingest-data-in-azure-data-explorer-without-one-line-of-code"></a>Kurz: Příjem dat v Průzkumníku dat Azure bez jeden řádek kódu
@@ -268,7 +268,7 @@ Diagnostické protokoly Azure Povolit export metriky pro účet úložiště neb
 
 1. Vytvoření centra událostí pomocí šablony Azure Resource Manageru na webu Azure Portal. Postupujte podle zbývajících kroků v tomto článku, klikněte pravým tlačítkem myši **nasadit do Azure** tlačítko a pak vyberte **otevřít v novém okně**. **Nasadit do Azure** tlačítko vás přesměruje na web Azure Portal.
 
-    [![Deploy Azure tlačítko](media/ingest-data-no-code/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-event-hubs-create-event-hub-and-consumer-group%2Fazuredeploy.json)
+    [![Tlačítko nasazení do Azure](media/ingest-data-no-code/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-event-hubs-create-event-hub-and-consumer-group%2Fazuredeploy.json)
 
 1. Vytvořte obor názvů služby Event Hubs a centra událostí pro diagnostické protokoly.
 
@@ -281,7 +281,7 @@ Diagnostické protokoly Azure Povolit export metriky pro účet úložiště neb
     | **Předplatné** | *Vaše předplatné* | Vyberte předplatné Azure, které chcete použít pro svoje centrum událostí.|
     | **Skupina prostředků** | *test-resource-group* | Vytvořte novou skupinu prostředků. |
     | **Umístění** | Vyberte oblast, která nejlépe vyhovuje vašim potřebám. | Vytvoření oboru názvů služby Event Hubs ve stejném umístění jako ostatní prostředky.
-    | **Název oboru názvů** | *AzureMonitoringData* | Zvolte jedinečný název, který identifikuje váš obor názvů.
+    | **Název Namespace** | *AzureMonitoringData* | Zvolte jedinečný název, který identifikuje váš obor názvů.
     | **Název centra událostí** | *DiagnosticLogsData* | Centrum událostí se nachází v rámci oboru názvů, který poskytuje jedinečný kontejner oboru. |
     | **Název skupiny uživatelů** | *adxpipeline* | Vytvořte název skupiny příjemců. Skupiny uživatelů umožňují, aby měla každá z aplikací samostatné zobrazení streamu událostí. |
     | | |
@@ -368,7 +368,7 @@ Teď je potřeba vytvořit datová připojení pro diagnostické protokoly a pro
     |---|---|---|
     | **Název datového připojení** | *DiagnosticsLogsConnection* | Název připojení, které chcete vytvořit v Azure Data Exploreru|
     | **Obor názvů centra událostí** | *AzureMonitoringData* | Název, který jste zvolili dříve a který identifikuje váš obor názvů |
-    | **Centrum událostí** | *diagnosticlogsdata* | Centrum událostí, které jste vytvořili |
+    | **Centra událostí** | *diagnosticlogsdata* | Centrum událostí, které jste vytvořili |
     | **Skupina uživatelů** | *adxpipeline* | Skupina uživatelů, kterou jste definovali v centrum událostí, které jste vytvořili |
     | | |
 
@@ -378,7 +378,7 @@ Teď je potřeba vytvořit datová připojení pro diagnostické protokoly a pro
 
      **Nastavení** | **Navrhovaná hodnota** | **Popis pole**
     |---|---|---|
-    | **Table** | *DiagnosticLogsRawRecords* | V tabulce, kterou jste vytvořili v *TestDatabase* databáze. |
+    | **Tabulka** | *DiagnosticLogsRawRecords* | V tabulce, kterou jste vytvořili v *TestDatabase* databáze. |
     | **Formát dat** | *JSON* | Formát používaný v tabulce. |
     | **Mapování sloupců** | *DiagnosticLogsRecordsMapping* | Mapování, kterou jste vytvořili v *TestDatabase* databáze, který mapuje příchozí data JSON na typy sloupců názvy a datové sady *DiagnosticLogsRecords* tabulky.|
     | | |
@@ -397,7 +397,7 @@ Opakujte kroky v části Vytvoření datového připojení pro diagnostické pro
     |---|---|---|
     | **Název datového připojení** | *ActivityLogsConnection* | Název připojení, které chcete vytvořit v Azure Data Exploreru|
     | **Obor názvů centra událostí** | *AzureMonitoringData* | Název, který jste zvolili dříve a který identifikuje váš obor názvů |
-    | **Centrum událostí** | *insights-operational-logs* | Centrum událostí, které jste vytvořili |
+    | **Centra událostí** | *insights-operational-logs* | Centrum událostí, které jste vytvořili |
     | **Skupina uživatelů** | *$Default* | Výchozí skupinu příjemců. V případě potřeby můžete vytvořit skupinu jiný příjemce. |
     | | |
 
@@ -407,7 +407,7 @@ Opakujte kroky v části Vytvoření datového připojení pro diagnostické pro
 
      **Nastavení** | **Navrhovaná hodnota** | **Popis pole**
     |---|---|---|
-    | **Table** | *ActivityLogsRawRecords* | V tabulce, kterou jste vytvořili v *TestDatabase* databáze. |
+    | **Tabulka** | *ActivityLogsRawRecords* | V tabulce, kterou jste vytvořili v *TestDatabase* databáze. |
     | **Formát dat** | *JSON* | Formát používaný v tabulce. |
     | **Mapování sloupců** | *ActivityLogsRawRecordsMapping* | Mapování, kterou jste vytvořili v *TestDatabase* databáze, který mapuje příchozí data JSON na typy sloupců názvy a datové sady *ActivityLogsRawRecords* tabulky.|
     | | |
@@ -460,4 +460,4 @@ Výsledky dotazu:
 Naučte se psát mnoho další dotazy na data, která jste rozbalili ze Průzkumník dat Azure s použitím v následujícím článku:
 
 > [!div class="nextstepaction"]
-> [Psát dotazy pro Průzkumník dat Azure](write-queries.md)
+> [Psaní dotazů pro Azure Data Explorer](write-queries.md)

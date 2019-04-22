@@ -10,10 +10,10 @@ ms.date: 04/06/2019
 ms.author: heidist
 ms.custom: seodec2018
 ms.openlocfilehash: 11b2fb5a246dfa8f5b1295a11cc57de36120898e
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59269550"
 ---
 # <a name="security-and-data-privacy-in-azure-search"></a>Zabezpečení a dat o ochraně osobních údajů ve službě Azure Search
@@ -31,7 +31,7 @@ Služba Azure Search má certifikaci pro následující normy jako [jsme oznámi
 + [Health Insurance Portability and Accountability Act (HIPAA)](https://en.wikipedia.org/wiki/Health_Insurance_Portability_and_Accountability_Act)
 + [GxP (21 CFR Part 11)](https://en.wikipedia.org/wiki/Title_21_CFR_Part_11)
 + [HITRUST](https://en.wikipedia.org/wiki/HITRUST)
-+ [PCI DSS 1. úrovně](https://en.wikipedia.org/wiki/Payment_Card_Industry_Data_Security_Standard)
++ [PCI DSS úrovně 1](https://en.wikipedia.org/wiki/Payment_Card_Industry_Data_Security_Standard)
 + [Austrálie IRAP neutajované DLM](https://asd.gov.au/infosec/irap/certified_clouds.htm)
 
 Standardy dodržování předpisů se vztahuje na funkce obecně dostupná. Při přechodu do všeobecné dostupnosti a nesmí se používat v řešeních s požadavky přísné normy, které jsou certifikované funkce ve verzi Preview. Certifikace dodržování předpisů je popsána v [dodržování předpisů přehled Microsoft Azure](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942) a [Centrum](https://www.microsoft.com/en-us/trustcenter). 

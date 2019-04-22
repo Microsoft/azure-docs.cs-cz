@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 01/22/2019
 ms.author: kgremban
 ms.openlocfilehash: 6195c37780acaf8c8f432fa09c5ac01a75363c04
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59265522"
 ---
 # <a name="upload-files-from-your-device-to-the-cloud-with-iot-hub"></a>Nahrání souborů ze zařízení do cloudu pomocí služby IoT Hub
@@ -155,7 +155,7 @@ Nyní jste připraveni ke spuštění aplikace.
 
 V tomto kurzu jste zjistili, jak zjednodušit nahrávání souborů ze zařízení pomocí možnosti nahrávání souborů služby IoT Hub. Můžete pokračovat k prozkoumání funkcí služby IoT hub a scénáře najdete v následujících článcích:
 
-* [Programové vytvoření IoT Hub](iot-hub-rm-template-powershell.md)
+* [Vytvoření centra IoT prostřednictvím kódu programu](iot-hub-rm-template-powershell.md)
 
 * [Seznámení s C SDK](iot-hub-device-sdk-c-intro.md)
 
