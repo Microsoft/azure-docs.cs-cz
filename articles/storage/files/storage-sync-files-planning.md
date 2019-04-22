@@ -9,10 +9,10 @@ ms.date: 2/7/2019
 ms.author: wgries
 ms.subservice: files
 ms.openlocfilehash: ad3b5a1d684c500eff3d20832d7aa290a13849b9
-ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
-ms.translationtype: MT
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/04/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58918633"
 ---
 # <a name="planning-for-an-azure-file-sync-deployment"></a>Plánování nasazení Synchronizace souborů Azure
@@ -295,6 +295,6 @@ Pro podporu integrace převzetí služeb při selhání mezi geograficky redunda
 ## <a name="next-steps"></a>Další postup
 * [Zvažte nastavení brány firewall a proxy](storage-sync-files-firewall-and-proxy.md)
 * [Plánování nasazení služby Soubory Azure](storage-files-planning.md)
-* [Nasazení služby Soubory Azure](storage-files-deployment-guide.md)
-* [Nasazení Synchronizace souborů Azure](storage-sync-files-deployment-guide.md)
-* [Sledování služby Synchronizace souborů Azure](storage-sync-files-monitoring.md)
+* [Nasazení služby soubory Azure](storage-files-deployment-guide.md)
+* [Nasazení služby Azure File Sync](storage-sync-files-deployment-guide.md)
+* [Monitorování Azure File Sync](storage-sync-files-monitoring.md)

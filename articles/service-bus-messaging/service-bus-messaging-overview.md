@@ -12,10 +12,10 @@ ms.date: 09/22/2018
 ms.custom: mvc
 ms.author: aschhab
 ms.openlocfilehash: dd73fd8105de2a5fd24ffa8ad5db85da5e52228c
-ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/04/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58918837"
 ---
 # <a name="what-is-azure-service-bus"></a>Co je Azure Service Bus?
@@ -125,7 +125,7 @@ Service Bus umožňuje úplnou integraci s následujícími službami Azure:
 
 Pokud chcete začít používat zasílání zpráv služby Service Bus, podívejte se na následující články:
 
-* [Porovnání služeb zasílání zpráv Azure](../event-grid/compare-messaging-services.md?toc=%2fazure%2fservice-bus-messaging%2ftoc.json&bc=%2fazure%2fservice-bus-messaging%2fbreadcrumb%2ftoc.json)
+* [Porovnání služeb Azure pro zasílání zpráv](../event-grid/compare-messaging-services.md?toc=%2fazure%2fservice-bus-messaging%2ftoc.json&bc=%2fazure%2fservice-bus-messaging%2fbreadcrumb%2ftoc.json)
 * Přečtěte si další informace o úrovních [Standard a Premium](https://azure.microsoft.com/pricing/details/service-bus/) služby Azure Service Bus a jejich cenách.
-* [Úroveň výkonu a latence aplikace Azure Service Bus úrovně Premium](https://techcommunity.microsoft.com/t5/Service-Bus-blog/Premium-Messaging-How-fast-is-it/ba-p/370722)
+* [Výkon a latence úrovně Premium služby Azure Service Bus](https://techcommunity.microsoft.com/t5/Service-Bus-blog/Premium-Messaging-How-fast-is-it/ba-p/370722)
 * Vyzkoušejte rychlé starty v [.NET](service-bus-dotnet-get-started-with-queues.md), [Javě](service-bus-java-how-to-use-queues.md) nebo [JMS](service-bus-java-how-to-use-jms-api-amqp.md).
