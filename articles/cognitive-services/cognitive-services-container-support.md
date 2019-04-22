@@ -8,14 +8,14 @@ manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.topic: article
-ms.date: 03/04/2019
+ms.date: 04/16/2019
 ms.author: diberry
-ms.openlocfilehash: c6cf3f188309891b0456b034e3809a0f0209c124
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
-ms.translationtype: MT
+ms.openlocfilehash: d84ebcdbd557a56c4c20600be67f26a084d43ed2
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/11/2019
-ms.locfileid: "59489429"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59681807"
 ---
 # <a name="container-support-in-azure-cognitive-services"></a>Podpora kontejnerů ve službě Azure Cognitive Services
 
@@ -25,7 +25,7 @@ Kontejnerizace je přístup k distribuci softwaru, ve kterém k aplikaci nebo sl
 
 Následující video ukazuje použití kontejner služeb Cognitive Services.
 
-[![Cstyly ukázku pro služby Cognitive Services](./media/index/containers-video-image.png)](https://azure.microsoft.com/resources/videos/containers-support-of-cognitive-services)
+[![Ukázkový kontejner pro služby Cognitive Services](./media/index/containers-video-image.png)](https://azure.microsoft.com/resources/videos/containers-support-of-cognitive-services)
 
 [Pro počítačové zpracování obrazu](Computer-vision/Home.md), [pro rozpoznávání tváře](Face/Overview.md), [rozhraní Text Analytics](text-analytics/overview.md), a [Language Understanding (LUIS)](LUIS/what-is-luis.md) služby jsou dostupné na [Microsoft Azure](https://azure.microsoft.com). Přihlaste se [webu Azure portal](https://portal.azure.com/) k vytvoření a prozkoumáte prostředky Azure pro tyto služby.
 
@@ -43,8 +43,8 @@ Kontejnery služby Azure Cognitive Services nabízejí následující sadu konte
 
 | Služba | Cenovou úroveň. | Kontejner | Popis |
 |---------|----------|----------|-------------|
-|[Computer Vision](Computer-vision/computer-vision-how-to-install-containers.md) |F0, S1|**Rozpoznání textu** |Extrahuje tištěný text z obrázků různé objekty s různými povrchy a pozadími, jako je potvrzení a plakáty nebo vizitky.<br/><br/>**Důležité:** Kontejner rozpoznat Text v současné době používá pouze angličtinu.<br>[Vyžádat si přístup](Computer-vision/computer-vision-how-to-install-containers.md#request-access-to-the-private-container-registry)|
-|[Tvář](Face/face-how-to-install-containers.md) |F0, S0|**Tvář** |Zjistí lidských tváří na obrázcích a Určuje atributy, včetně orientačních bodů pro rozpoznávání tváře (například ústa a oči), pohlaví, věk a další funkce rozpoznávání obličeje předpovědět počítače. Kromě zjišťování můžete pro rozpoznávání tváře zkontrolujte, jestli dvě tváře na stejnou bitovou kopii nebo jinou Image jsou stejné s použitím skóre spolehlivosti nebo porovnání proti databázi a zjistěte, jestli podobně vypadajících tváří, nebo identické pro rozpoznávání tváře již existuje. Můžete také uspořádat podobných tváří do skupin pomocí sdílené visual vlastností.<br>[Vyžádat si přístup](Face/face-how-to-install-containers.md#request-access-to-the-private-container-registry) |
+|[Počítačové zpracování obrazu](Computer-vision/computer-vision-how-to-install-containers.md) |F0, S1|**Rozpoznání textu** |Extrahuje tištěný text z obrázků různé objekty s různými povrchy a pozadími, jako je potvrzení a plakáty nebo vizitky.<br/><br/>**Důležité:** Kontejner rozpoznat Text v současné době používá pouze angličtinu.<br>[Žádost o přístup](Computer-vision/computer-vision-how-to-install-containers.md#request-access-to-the-private-container-registry)|
+|[Rozpoznávání tváře](Face/face-how-to-install-containers.md) |F0, S0|**Rozpoznávání tváře** |Zjistí lidských tváří na obrázcích a Určuje atributy, včetně orientačních bodů pro rozpoznávání tváře (například ústa a oči), pohlaví, věk a další funkce rozpoznávání obličeje předpovědět počítače. Kromě zjišťování můžete pro rozpoznávání tváře zkontrolujte, jestli dvě tváře na stejnou bitovou kopii nebo jinou Image jsou stejné s použitím skóre spolehlivosti nebo porovnání proti databázi a zjistěte, jestli podobně vypadajících tváří, nebo identické pro rozpoznávání tváře již existuje. Můžete také uspořádat podobných tváří do skupin pomocí sdílené visual vlastností.<br>[Žádost o přístup](Face/face-how-to-install-containers.md#request-access-to-the-private-container-registry) |
 |[LUIS](LUIS/luis-container-howto.md) |F0, S0|**Služba LUIS** ([image](https://go.microsoft.com/fwlink/?linkid=2043204))|Načte trénovaného nebo publikované Language Understanding modelu, označované také jako aplikace LUIS, do kontejneru dockeru a poskytuje přístup k předpovědi dotazu z koncových bodů rozhraní API kontejneru. Můžete shromažďovat protokoly dotazů z kontejneru a nahrání tyto zpět a [LUIS portál](https://www.luis.ai) zvyšte přesnost předpovědi aplikace.|
 |[Analýza textu](text-analytics/how-tos/text-analytics-how-to-install-containers.md) |F0, S|**Extrakce frází klíč** ([image](https://go.microsoft.com/fwlink/?linkid=2018757)) |Extrahuje klíčových frází pro identifikaci hlavních bodů. Například pro vstupní text „The food was delicious and there were wonderful staff“ (Jídlo bylo výborné a personál byl úžasný),vrací rozhraní API hlavní body: „food“ (jídlo) a „wonderful staff“ (úžasný personál). |
 |[Analýza textu](text-analytics/how-tos/text-analytics-how-to-install-containers.md)|F0, S|**Rozpoznávání jazyka** ([image](https://go.microsoft.com/fwlink/?linkid=2018759)) |Až 120 jazyků zjišťuje, jaké vstupní text je napsaný v jazyce a sestavy jeden jazyk kódu pro každý dokument podání žádosti. Kód jazyka spárovaný se skóre označuje sílu skóre. |

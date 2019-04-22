@@ -4,17 +4,16 @@ description: Řešení problémů při použití diagnostiky Azure v Azure Virtu
 services: azure-monitor
 author: rboucher
 ms.service: azure-monitor
-ms.devlang: dotnet
-ms.topic: conceptual
-ms.date: 07/12/2017
-ms.author: robb
 ms.subservice: diagnostic-extension
-ms.openlocfilehash: f92b2589afc8bf4eba1bfdf421ab27300b41aa91
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.topic: conceptual
+ms.date: 04/17/2019
+ms.author: robb
+ms.openlocfilehash: 81c93900acf2d75eeb8e4fdc8da7d563f3a59595
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55822132"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59699094"
 ---
 # <a name="azure-diagnostics-troubleshooting"></a>Řešení potíží diagnostiky Azure
 Tento článek popisuje informace o odstraňování potíží, které se týkají pomocí Azure Diagnostics. Další informace o diagnostice Azure najdete v tématu [přehled Azure Diagnostics](diagnostics-extension-overview.md).
@@ -82,7 +81,7 @@ Pokud nejsou žádná data pro konkrétní metrika, zkontrolujte **konfiguraci d
 Je-li konfigurace nastavena správně, ale stále nevidíte data metriky, použijte následující pokyny při řešení potíží s.
 
 
-## <a name="azure-diagnostics-isnt-starting"></a>Nespouští diagnostiky Azure
+## <a name="azure-diagnostics-is-not-starting"></a>Nespouští diagnostiky Azure
 Informace o tom, proč se nepodařilo spustit diagnostiku Azure, najdete v článku **DiagnosticsPluginLauncher.log** a **DiagnosticsPlugin.log** soubory v umístění souborů protokolu, který byl dříve.
 
 Pokud tyto protokoly označení `Monitoring Agent not reporting success after launch`, to znamená, že došlo k chybě spuštění MonAgentHost.exe. Podívejte se na protokoly v umístění, které je uvedené pro `MonAgentHost log file` v předchozí části.
@@ -97,7 +96,7 @@ Pokud narazíte **záporné** ukončovací kód, přečtěte si [ukončovací k�
 ## <a name="diagnostics-data-is-not-logged-to-azure-storage"></a>Diagnostická data se protokolují do služby Azure Storage
 Určete, jestli žádná data se povolí, nebude nebo některá data se zobrazuje.
 
-### <a name="diagnostics-infrastructure-logs"></a>Protokoly infrastruktury diagnostiky
+### <a name="diagnostics-infrastructure-logs"></a>Protokoly diagnostické infrastruktury
 Diagnostické protokoly všechny chyby v diagnostických protokolů infrastruktury. Ujistěte se, že jste povolili [zachycení diagnostické infrastruktury protokolů v konfiguraci](#how-to-check-diagnostics-extension-configuration). Pak můžete rychle vyhledat všechny relevantní chyby, které se zobrazují v `DiagnosticInfrastructureLogsTable` tabulka ve vašem účtu úložiště.
 
 ### <a name="no-data-is-appearing"></a>Žádná data
@@ -105,9 +104,16 @@ Nejčastější příčinou, které vůbec neobjeví data událostí je, že inf
 
 Řešení: Opravit konfiguraci diagnostiky a znovu nainstalujte diagnostiky.
 
-Pokud účet úložiště je správně nakonfigurované, vzdálený přístup k počítači a ověřte, zda jsou spuštěny DiagnosticsPlugin.exe a MonAgentCore.exe. Pokud neběží, postupujte podle kroků v diagnostice Azure nespouští.
+Pokud účet úložiště je správně nakonfigurované, vzdálený přístup k počítači a ověřte, že *DiagnosticsPlugin.exe* a *MonAgentCore.exe* běží. Pokud neběží, postupujte podle kroků v [Azure Diagnostics nespouští](#azure-diagnostics-is-not-starting).
 
 Pokud jsou spuštěné procesy, přejděte na [data získávání zachytávají v místním prostředí?](#is-data-getting-captured-locally) a postupujte podle pokynů.
+
+Pokud to problém nevyřeší, zkuste do:
+
+1. Odinstalace agenta
+2. Odebrat adresář C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics
+3. Znovu nainstalujte agenta
+
 
 ### <a name="part-of-the-data-is-missing"></a>Chybí část dat
 Pokud se některá data ale ne pro všechny, znamená to, že je správně nastavena datovým kanálem kolekce/přenos. Postupujte podle zde témata zúžit problém.

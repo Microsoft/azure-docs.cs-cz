@@ -14,13 +14,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
-ms.date: 03/28/2018
-ms.openlocfilehash: 570f0a825f679ec5f0cc4c62b0608ec517148161
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.date: 04/20/2019
+ms.openlocfilehash: 7a2bd8ebf2e96cf2251d98501bbf42007d43a660
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57893998"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59682997"
 ---
 # <a name="what-is-azure-machine-learning-studio"></a>Co je Azure Machine Learning Studio?
 Microsoft Azure Machine Learning Studio je nástroj pro spolupráci, ve kterém je možné přetahováním vytvářet, testovat a nasazovat řešení prediktivní analýzy dat. Machine Learning Studio publikuje modely jako webové služby, které je možné snadno využívat ve vlastních aplikacích nebo nástrojích BI, například v Excelu.
@@ -108,7 +108,7 @@ Nějaké Nápověda procházení rozsáhlé knihovny dostupných algoritmů stro
 ## <a name="deploying-a-predictive-analytics-web-service"></a>Nasazení webové služby prediktivní analýzy
 Jakmile je váš model prediktivní analýzy připraven, můžete jej přímo v nástroji Machine Learning Studio nasadit jako webovou službu. Další podrobnosti k tomuto procesu najdete v tématu [Nasazení webové služby Azure Machine Learning](publish-a-machine-learning-web-service.md).
 
-
+<a name="compare"></a>
 ## <a name="how-is-machine-learning-studio-different-from-azure-machine-learning-service"></a>Čím se liší od služby Azure Machine Learning Machine Learning Studio?
 
 [Služba Azure Machine Learning](../service/overview-what-is-azure-ml.md) poskytuje sady SDK a služby, a rychle pro přípravu dat, trénovat a nasazovat modely strojového učení. Zlepšete produktivitu a snižte náklady díky automatickému škálování výpočetních funkcí a kanálů. K těmto funkcím můžete přistupovat z opensourcových architektur Pythonu, jako jsou PyTorch, TensorFlow a scikit-learn. 

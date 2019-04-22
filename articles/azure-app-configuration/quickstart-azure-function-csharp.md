@@ -14,12 +14,12 @@ ms.tgt_pltfrm: Azure Functions
 ms.workload: tbd
 ms.date: 02/24/2019
 ms.author: yegu
-ms.openlocfilehash: 9b0c48b3a3fb3a1b4e4fbe94a368297823a86778
-ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
-ms.translationtype: MT
+ms.openlocfilehash: 7d38120c530b89230893b85829d201c14a8cba04
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2019
-ms.locfileid: "58579576"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59697290"
 ---
 # <a name="quickstart-create-an-azure-function-with-app-configuration"></a>Rychlý start: Vytvoření funkce Azure s konfigurací aplikace
 
@@ -114,4 +114,4 @@ V tomto rychlém startu provedete instalaci [Visual Studio 2017](https://visuals
 V tomto rychlém startu jste vytvořili novým úložištěm konfigurace aplikace a použít ho pomocí funkce Azure. Další informace o tom, jak používat konfiguraci aplikací, pokračujte k dalšímu kurzu, který ukazuje ověření.
 
 > [!div class="nextstepaction"]
-> [Spravované identity pro integraci prostředků Azure](./integrate-azure-managed-service-identity.md)
+> [Spravované identity pro integraci prostředků Azure](./howto-integrate-azure-managed-service-identity.md)

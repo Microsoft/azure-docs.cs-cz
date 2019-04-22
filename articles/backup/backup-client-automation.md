@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 5/24/2018
 ms.author: pvrk
-ms.openlocfilehash: c2f6d8262d47a537667ef7b25333a3beff425bbe
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.openlocfilehash: 6280ca55023fc604e70b62cabdc30cca6409d9e6
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58878685"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59698483"
 ---
 # <a name="deploy-and-manage-backup-to-azure-for-windows-serverwindows-client-using-powershell"></a>Nasazení a správa zálohování do Azure pro servery Windows / klienty Windows pomocí PowerShellu
 
@@ -200,9 +200,11 @@ Server properties updated successfully.
 
 Chránit jejich důvěrnost dat zašifrovaná data záloh odeslaných do služby Azure Backup. Šifrovací heslo je "password" se dešifrovat data v době obnovení.
 
+Budete muset vygenerovat bezpečnostní kód pin tak, že vyberete **generovat**v části **nastavení** > **vlastnosti** > **bezpečnostní kód PIN** v **trezor služby Recovery Services** části webu Azure portal. Potom použijte jako `generatedPIN` v příkazu:
+
 ```powershell
 $PassPhrase = ConvertTo-SecureString -String "Complex!123_STRING" -AsPlainText -Force
-Set-OBMachineSetting -EncryptionPassPhrase $PassPhrase
+Set-OBMachineSetting -EncryptionPassPhrase $PassPhrase -SecurityPin "<generatedPIN>"
 ```
 
 ```Output

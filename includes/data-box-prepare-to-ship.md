@@ -2,19 +2,19 @@
 author: alkohli
 ms.service: databox
 ms.topic: include
-ms.date: 01/07/2019
+ms.date: 04/16/2019
 ms.author: alkohli
-ms.openlocfilehash: c7e5231650ec1afb97a72ec0cf26cb8f80088b63
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: a8070d25e2606d8ad72ac231a0a208072c612c5c
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54440493"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59736990"
 ---
 Posledním krokem je připravit zařízení k odeslání. V tomto kroku se všechny sdílené složky zařízení převedou do režimu offline. Sdílené složky není přístupná po spuštění tohoto procesu.
 
 > [!IMPORTANT]
-> Příprava k odeslání není nutné, protože příznaky data, která není v souladu s Azure zásady vytváření názvů. Přeskočení tohoto kroku může vést dat. nahrát chyby způsobené dat bez potvrzení.
+> Příprava k odeslání není nutné, protože příznaky data, která není v souladu s Azure zásady vytváření názvů. Přeskočení tohoto kroku může vést dat. nahrát chyby způsobené nonkonformní data.
 
 1. Přejděte do části **Připravit k odeslání** a klikněte na **Zahájit přípravu**. Kontrolní součty se standardně počítají na řádku během přípravě k odeslání. Výpočet kontrolního součtu může trvat hodiny dnů v závislosti na velikosti vaše data. 
    

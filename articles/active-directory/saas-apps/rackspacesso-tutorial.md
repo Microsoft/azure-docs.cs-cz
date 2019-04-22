@@ -13,14 +13,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 03/27/2019
+ms.date: 04/15/2019
 ms.author: jeedes
-ms.openlocfilehash: 61466f3574ba7a88665a8d78818d0a4c12716bbf
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
-ms.translationtype: MT
+ms.openlocfilehash: ca6667a5353d253743a45d5db742811d8e15ed31
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59269788"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59682113"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-rackspace-sso"></a>Kurz: Integrace Azure Active Directory s jednotným Přihlašováním Rackspace
 
@@ -38,7 +38,7 @@ Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https
 
 Konfigurace integrace Azure AD s jednotným Přihlašováním Rackspace, potřebujete následující položky:
 
-* Předplatné služby Azure AD. Pokud nemáte prostředí Azure AD, můžete získat měsíční zkušební verze [zde](https://azure.microsoft.com/pricing/free-trial/)
+* Předplatné služby Azure AD. Pokud nemáte prostředí Azure AD, můžete získat [bezplatný účet](https://azure.microsoft.com/free/)
 * Jednotné přihlašování Rackspace jednotného přihlašování povolená předplatného
 
 ## <a name="scenario-description"></a>Popis scénáře
@@ -101,11 +101,21 @@ Ke konfiguraci Azure AD jednotné přihlašování s jednotným Přihlašování
 
     ![Upravit konfiguraci základní SAML](common/edit-urls.png)
 
-4. Na **základní konfiguraci SAML** části, proveďte následující kroky:
+4. Na **základní konfiguraci SAML** části nahrávání **soubor metadat poskytovatele služeb** kterou si můžete stáhnout z [URL](https://login.rackspace.com/federate/sp.xml) a proveďte následující kroky:
 
-    ![Rackspace jednotného přihlašování k doméně a adresy URL jednotného přihlašování – informace](common/sp-signonurl.png)
+    a. Klikněte na tlačítko **nahrát soubor metadat**.
 
-    V **přihlašovací adresa URL** textové pole, zadejte adresu URL:  `https://login.rackspace.com/federate/`
+    ![image](common/upload-metadata.png)
+
+    b. Klikněte na **složky logo** vyberte soubor metadat a klikněte na **nahrát**.
+
+    ![image](common/browse-upload-metadata.png)
+
+    c. Po úspěšném odeslání souboru metadat získat potřebné adresy URL automaticky vyplní automaticky.
+
+    d. V **přihlašovací adresa URL** textové pole, zadejte adresu URL: `https://login.rackspace.com/federate/`
+
+    ![Rackspace jednotného přihlašování k doméně a adresy URL jednotného přihlašování – informace](common/sp-signonurl.png)   
 
 5. Na **nastavte si jednotné přihlašování pomocí SAML** stránku, **podpisový certifikát SAML** klikněte na tlačítko **Stáhnout** ke stažení **kód XML metadat federace**  z se zadanými možnostmi podle vašich požadavků a uložit je ve vašem počítači.
 
@@ -143,7 +153,7 @@ Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal
 
     a. V **název** zadat **BrittaSimon**.
   
-    b. V **uživatelské jméno** typ pole brittasimon@yourcompanydomain.extension. Například BrittaSimon@contoso.com.
+    b. V **uživatelské jméno** typ pole `brittasimon@yourcompanydomain.extension`. Například BrittaSimon@contoso.com.
 
     c. Vyberte **zobrazit heslo** zaškrtněte políčko a zapište si hodnotu, která se zobrazí v poli heslo.
 
@@ -189,7 +199,7 @@ Po kliknutí na dlaždici Rackspace jednotného přihlašování na přístupov�
 
 - [Seznam kurzů o integraci aplikací SaaS pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

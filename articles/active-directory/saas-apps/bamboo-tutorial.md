@@ -4,133 +4,137 @@ description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: daveba
-ms.reviewer: joflore
+manager: mtillman
+ms.reviewer: barbkess
 ms.assetid: f00160c7-f4cc-43bf-af18-f04168d3767c
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 12/04/2017
+ms.topic: tutorial
+ms.date: 04/16/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5353cc921d4fc07770737bb70d02361fa0e5f438
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: MT
+ms.openlocfilehash: e25744b82b05c29b2b5615fd62a3b146ee60f45e
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56198435"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59699371"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-saml-sso-for-bamboo-by-resolution-gmbh"></a>Kurz: Integrace Azure Active Directory s jednotným Přihlašováním SAML pro bambus podle rozlišení GmbH
 
 V tomto kurzu se dozvíte, jak integrovat jednotné přihlašování SAML pro bambus podle rozlišení GmbH se službou Azure Active Directory (Azure AD).
-
 Integrace jednotného přihlašování SAML pro bambus podle rozlišení GmbH s Azure AD poskytuje následující výhody:
 
-- Můžete řídit ve službě Azure AD, který má přístup k SAML SSO pro bambus podle rozlišení GmbH.
-- Můžete povolit uživatelům, aby automaticky získat přihlášení k jednotné přihlašování SAML pro bambus podle rozlišení GmbH (Single Sign-On) s jejich účty Azure AD.
-- Můžete spravovat své účty na jediném místě – na webu Azure portal.
+* Můžete řídit ve službě Azure AD, který má přístup k SAML SSO pro bambus podle rozlišení GmbH.
+* Můžete povolit uživatelům být automaticky přihlášeni na jednotné přihlašování SAML pro bambus podle rozlišení GmbH (Single Sign-On) pomocí jejich účtů služby Azure AD.
+* Můžete spravovat své účty na jediném místě – na webu Azure portal.
 
-Pokud chcete zjistit další podrobnosti o integraci aplikací SaaS v Azure AD, přečtěte si téma [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
+Pokud chcete zjistit další podrobnosti o integraci aplikací SaaS v Azure AD, přečtěte si téma [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
 ## <a name="prerequisites"></a>Požadavky
 
 Konfigurace integrace Azure AD s jednotným Přihlašováním SAML pro bambus s rozlišení GmbH, potřebujete následující položky:
 
-- Předplatné Azure AD
-- SAML SSO pro bambus podle rozlišení GmbH jednotné přihlašování v předplatném povolené
-
-> [!NOTE]
-> Pokud chcete vyzkoušet kroky v tomto kurzu, nedoporučujeme použití produkční prostředí.
-
-Pokud chcete vyzkoušet kroky v tomto kurzu, postupujte podle těchto doporučení:
-
-- Nepoužívejte produkčním prostředí, pokud to není nutné.
-- Pokud nemáte prostředí zkušební verzi Azure AD, můžete si [získat měsíční zkušební verzi](https://azure.microsoft.com/pricing/free-trial/).
+* Předplatné služby Azure AD. Pokud nemáte prostředí Azure AD, můžete získat [bezplatný účet](https://azure.microsoft.com/free/)
+* Jednotné přihlašování SAML pro bambus podle rozlišení GmbH jednotného přihlašování povolená předplatného
 
 ## <a name="scenario-description"></a>Popis scénáře
-V tomto kurzu je otestovat Azure AD jednotné přihlašování v testovacím prostředí. Scénář popsaný v tomto kurzu se skládá ze dvou hlavních stavebních bloků:
 
-1. Přidání jednotného přihlašování SAML pro bambus podle rozlišení GmbH z Galerie
-1. Konfigurace a testování Azure AD jednotného přihlašování
+V tomto kurzu konfigurace a testování v testovacím prostředí Azure AD jednotného přihlašování.
+
+* Jednotné přihlašování SAML pro bambus tak řešení podporuje GmbH **SP a zprostředkovatele identity** jednotné přihlašování zahájené pomocí
+* Jednotné přihlašování SAML pro bambus tak řešení podporuje GmbH **JIT** zřizování uživatelů
 
 ## <a name="adding-saml-sso-for-bamboo-by-resolution-gmbh-from-the-gallery"></a>Přidání jednotného přihlašování SAML pro bambus podle rozlišení GmbH z Galerie
+
 Pokud chcete nakonfigurovat integraci jednotného přihlašování SAML pro bambus podle rozlišení GmbH do služby Azure AD, budete muset přidat jednotné přihlašování SAML pro bambus rozlišení GmbH z Galerie na váš seznam spravovaných aplikací SaaS.
 
 **Přidání jednotného přihlašování SAML pro bambus podle rozlišení GmbH z galerie, postupujte následovně:**
 
-1. V **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu. 
+1. V **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
 
-    ![Tlačítko Azure Active Directory][1]
+    ![Tlačítko Azure Active Directory](common/select-azuread.png)
 
-1. Přejděte do **podnikové aplikace**. Pak přejděte na **všechny aplikace**.
+2. Přejděte do **podnikové aplikace** a pak vyberte **všechny aplikace** možnost.
 
-    ![V okně podnikové aplikace][2]
-    
-1. Chcete-li přidat novou aplikaci, klikněte na tlačítko **novou aplikaci** tlačítko v horní části dialogového okna.
+    ![V okně podnikové aplikace](common/enterprise-applications.png)
 
-    ![Tlačítko nové aplikace][3]
+3. Chcete-li přidat novou aplikaci, klikněte na tlačítko **novou aplikaci** tlačítko v horní části dialogového okna.
 
-1. Do vyhledávacího pole zadejte **jednotné přihlašování SAML pro bambus podle rozlišení GmbH**vyberte **jednotné přihlašování SAML pro bambus podle rozlišení GmbH** z panelu výsledků klikněte **přidat** tlačítko pro přidání aplikace.
+    ![Tlačítko nové aplikace](common/add-new-app.png)
 
-    ![Jednotné přihlašování SAML pro bambus podle rozlišení GmbH v seznamu výsledků](./media/bamboo-tutorial/tutorial_bamboo_addfromgallery.png)
+4. Do vyhledávacího pole zadejte **jednotné přihlašování SAML pro bambus podle rozlišení GmbH**vyberte **jednotné přihlašování SAML pro bambus podle rozlišení GmbH** z panelu výsledků klikněte **přidat** tlačítko pro přidání aplikace.
+
+    ![Jednotné přihlašování SAML pro bambus podle rozlišení GmbH v seznamu výsledků](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a otestování služby Azure AD jednotného přihlašování
 
-V této části nakonfigurovat a otestovat Azure AD jednotné přihlašování s jednotným Přihlašováním SAML pro bambus podle rozlišení, které GmbH podle testovacího uživatele nazývá "Britta Simon".
-
-Azure AD pro jednotné přihlašování pro práci, potřebuje vědět, jaké protějšek uživatele v jednotné přihlašování SAML pro bambus pomocí řešení GmbH je pro uživatele ve službě Azure AD. Jinými slovy vztah odkazu mezi uživatele služby Azure AD a souvisejících uživatele v jednotné přihlašování SAML pro bambus podle rozlišení GmbH musí být vytvořeno.
-
-V SAML SSO pro bambus podle rozlišení GmbH, přiřaďte hodnotu **uživatelské jméno** ve službě Azure AD jako hodnotu **uživatelské jméno** a tím vytvoří vztah odkazu.
+V této části nakonfigurujete a otestovat Azure AD jednotné přihlašování s jednotným Přihlašováním SAML bambus podle rozlišení GmbH podle testovacího uživatele volá **Britta Simon**.
+Pro jednotné přihlašování pro práci vztah odkazu mezi uživatele služby Azure AD a souvisejících uživatele v jednotné přihlašování SAML pro bambus podle rozlišení GmbH musí být vytvořeno.
 
 Nakonfigurovat a otestovat Azure AD jednotné přihlašování s jednotným Přihlašováním SAML pro bambus podle rozlišení GmbH, které potřebujete k dokončení následujících stavebních bloků:
 
 1. **[Konfigurovat Azure AD Single Sign-On](#configure-azure-ad-single-sign-on)**  – Pokud chcete, aby uživatelé mohli tuto funkci používat.
-1. **[Vytvořit testovacího uživatele Azure AD](#create-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
-1. **[Vytvoření SAML SSO pro bambus rozlišení GmbH testovací uživatel](#create-a-saml-sso-for-bamboo-by-resolution-gmbh-test-user)**  – Pokud chcete mít protějšek Britta Simon v jednotné přihlašování SAML pro bambus podle rozlišení GmbH, která souvisí s Azure AD reprezentace uživatele.
-1. **[Přiřadit uživatele Azure AD](#assign-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotného přihlašování.
-1. **[Otestovat jednotné přihlašování](#test-single-sign-on)**  – Pokud chcete ověřit, jestli funguje v konfiguraci.
+2. **[Nakonfigurovat jednotné přihlašování SAML pro bambus rozlišení GmbH Single Sign-On](#configure-saml-sso-for-bamboo-by-resolution-gmbh-single-sign-on)**  – ke konfiguraci nastavení jednotného přihlašování na straně aplikace.
+3. **[Vytvořit testovacího uživatele Azure AD](#create-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
+4. **[Přiřadit uživatele Azure AD](#assign-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotného přihlašování.
+5. **[Vytvořit jednotné přihlašování SAML pro bambus rozlišení GmbH testovací uživatel](#create-saml-sso-for-bamboo-by-resolution-gmbh-test-user)**  – Pokud chcete mít protějšek Britta Simon v jednotné přihlašování SAML pro bambus podle rozlišení GmbH, která souvisí s Azure AD reprezentace uživatele.
+6. **[Otestovat jednotné přihlašování](#test-single-sign-on)**  – Pokud chcete ověřit, jestli funguje v konfiguraci.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurace služby Azure AD jednotného přihlašování
 
-V této části Povolení služby Azure AD jednotného přihlašování na portálu Azure portal a nakonfigurovat jednotné přihlašování ve vašich jednotné přihlašování SAML pro bambus rozlišení GmbH aplikace.
+V této části můžete povolit Azure AD jednotného přihlašování na portálu Azure portal.
 
-**Ke konfiguraci Azure AD jednotné přihlašování s jednotným Přihlašováním SAML pro bambus podle rozlišení GmbH, proveďte následující kroky:**
+Ke konfiguraci Azure AD jednotné přihlašování s jednotným Přihlašováním SAML pro bambus podle rozlišení GmbH, proveďte následující kroky:
 
-1. Na webu Azure Portal na **jednotné přihlašování SAML pro bambus podle rozlišení GmbH** integrace stránka aplikace, klikněte na tlačítko **jednotného přihlašování**.
+1. V [webu Azure portal](https://portal.azure.com/)na **jednotné přihlašování SAML pro bambus podle rozlišení GmbH** integrace stránce aplikace vyberte **jednotného přihlašování**.
 
-    ![Nakonfigurovat jednotné přihlašování – odkaz][4]
+    ![Nakonfigurovat jednotné přihlašování – odkaz](common/select-sso.png)
 
-1. Na **jednotného přihlašování** dialogového okna, vyberte **režimu** jako **přihlašování na základě SAML** povolit jednotné přihlašování.
- 
-    ![Jednotné přihlašování – dialogové okno](./media/bamboo-tutorial/tutorial_bamboo_samlbase.png)
+2. Na **vybrat jedinou metodu přihlašování** dialogového okna, vyberte **SAML/WS-Fed** chcete povolit jednotné přihlašování.
 
-1. Na **SAML SSO bambus podle rozlišení GmbH domény a adresy URL** části, proveďte následující kroky, pokud chcete nakonfigurovat aplikace v režimu iniciované zprostředkovatele identity:
+    ![Jednotné přihlašování režim výběru](common/select-saml-option.png)
 
-    ![Jednotné přihlašování SAML pro bambus podle rozlišení GmbH domény a adresy URL jednotné přihlašování – informace](./media/bamboo-tutorial/tutorial_bamboo_url.png)
+3. Na **nastavte si jednotné přihlašování pomocí SAML** klikněte na **upravit** ikony otevřete **základní konfiguraci SAML** dialogového okna.
 
-    a. V **identifikátor** textového pole zadejte adresu URL pomocí následujícímu vzoru: `https://<server-base-url>/plugins/servlet/samlsso`
+    ![Upravit konfiguraci základní SAML](common/edit-urls.png)
 
-    b. V **adresy URL odpovědi** textového pole zadejte adresu URL pomocí následujícímu vzoru: `https://<server-base-url>/plugins/servlet/samlsso`
+4. Na **základní konfiguraci SAML** části, pokud chcete nakonfigurovat aplikace v **IDP** iniciované režimu, proveďte následující kroky:
 
-1. Zkontrolujte **zobrazit pokročilé nastavení URL** a provést následující krok, pokud chcete nakonfigurovat aplikace v **SP** iniciované režimu:
+    ![Jednotné přihlašování SAML pro bambus podle rozlišení GmbH domény a adresy URL jednotné přihlašování – informace](common/idp-intiated.png)
 
-    ![Jednotné přihlašování SAML pro bambus podle rozlišení GmbH domény a adresy URL jednotné přihlašování – informace](./media/bamboo-tutorial/tutorial_bamboo_url1.png)
+    a. V **identifikátor** textové pole, zadejte adresu URL, pomocí následujícího vzorce: `https://<server-base-url>/plugins/servlet/samlsso`
 
-    V **přihlašovací adresa URL** textového pole zadejte adresu URL pomocí následujícímu vzoru: `https://<server-base-url>/plugins/servlet/samlsso`
-     
-    > [!NOTE] 
-    > Tyto hodnoty nejsou skutečný. Tyto hodnoty aktualizujte skutečné identifikátor, adresa URL odpovědi a přihlašovací adresa URL. Kontakt [tým podpory jednotného přihlašování SAML pro bambus podle rozlišení GmbH klienta](https://marketplace.atlassian.com/plugins/com.resolution.atlasplugins.samlsso-bamboo/server/support) k získání těchto hodnot. 
+    b. V **adresy URL odpovědi** textové pole, zadejte adresu URL, pomocí následujícího vzorce: `https://<server-base-url>/plugins/servlet/samlsso`
 
-1. Na **podpisový certifikát SAML** klikněte na tlačítko **soubor XML s metadaty** a uložte soubor metadat ve vašem počítači.
+5. Klikněte na tlačítko **nastavit další adresy URL** a provést následující krok, pokud chcete nakonfigurovat aplikace v **SP** iniciované režimu:
 
-    ![Odkaz ke stažení certifikátu](./media/bamboo-tutorial/tutorial_bamboo_certificate.png) 
+    ![Jednotné přihlašování SAML pro bambus podle rozlišení GmbH domény a adresy URL jednotné přihlašování – informace](common/metadata-upload-additional-signon.png)
 
-1. Klikněte na tlačítko **Uložit** tlačítko.
+    V **přihlašovací adresa URL** textové pole, zadejte adresu URL, pomocí následujícího vzorce:  `https://<server-base-url>/plugins/servlet/samlsso`
 
-    ![Nakonfigurovat jednotné přihlašování uložit tlačítko](./media/bamboo-tutorial/tutorial_general_400.png)
+    > [!NOTE]
+    > Tyto hodnoty nejsou skutečný. Aktualizujte tyto hodnoty skutečnou adresu URL identifikátor, adresa URL odpovědi a přihlašování. Kontakt [tým podpory jednotného přihlašování SAML pro bambus podle rozlišení GmbH klienta](https://marketplace.atlassian.com/plugins/com.resolution.atlasplugins.samlsso-bamboo/server/support) k získání těchto hodnot. Můžete také odkazovat na tyto vzory se dají ukazuje **základní konfiguraci SAML** části webu Azure Portal.
+
+6. Na **nastavte si jednotné přihlašování pomocí SAML** stránku, **podpisový certifikát SAML** klikněte na tlačítko **Stáhnout** ke stažení **kód XML metadat federace**  z se zadanými možnostmi podle vašich požadavků a uložit je ve vašem počítači.
+
+    ![Odkaz ke stažení certifikátu](common/metadataxml.png)
+
+7. Na **nastavit jednotné přihlašování SAML pro bambus rozlišení GmbH** tématu, zkopírujte příslušné adresy URL podle vašich požadavků.
+
+    ![Zkopírování adresy URL konfigurace](common/copy-configuration-urls.png)
+
+    a. Přihlašovací adresa URL
+
+    b. Identifikátor Azure AD
+
+    c. Adresa URL – odhlášení
+
+### <a name="configure-saml-sso-for-bamboo-by-resolution-gmbh-single-sign-on"></a>Nakonfigurovat jednotné přihlašování SAML pro bambus rozlišení GmbH jednotného přihlašování
 
 1. Přihlašování k SAML SSO pro bambus rozlišení GmbH společnosti lokalita jako správce.
 
@@ -142,7 +146,7 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
 
     ![Samlsingle](./media/bamboo-tutorial/tutorial_bamboo_samlsingle.png)
 
-1. Na **stránka Konfigurace modulu plug-in SIngleSignOn SAML**, klikněte na tlačítko **přidat zprostředkovatele identity**. 
+1. Na **stránka Konfigurace modulu plug-in SIngleSignOn SAML**, klikněte na tlačítko **přidat zprostředkovatele identity**.
 
     ![Přidání zprostředkovatele identity](./media/bamboo-tutorial/tutorial_bamboo_addidp.png)
 
@@ -162,7 +166,7 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
 
     ![Konfigurace identity](./media/bamboo-tutorial/tutorial_bamboo_identityconfig.png)
 
-1.  Na **Import metadat zprostředkovatele identity SAML** klikněte na stránce **načíst soubor** nahrát **soubor XML s METADATY** soubor, který jste si stáhli z webu Azure Portal.
+1. Na **Import metadat zprostředkovatele identity SAML** klikněte na stránce **načíst soubor** nahrát **soubor XML s METADATY** soubor, který jste si stáhli z webu Azure portal.
 
     ![Idpmetadata](./media/bamboo-tutorial/tutorial_bamboo_idpmetadata.png)
 
@@ -171,101 +175,71 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
 1. Klikněte na **Save settings** (Uložit nastavení).
 
     ![Uložení](./media/bamboo-tutorial/tutorial_bamboo_save.png)
-    
-> [!TIP]
-> Teď si můžete přečíst stručné verzi těchto pokynů uvnitř [webu Azure portal](https://portal.azure.com), zatímco jsou nastavení aplikace!  Po přidání této aplikace z **služby Active Directory > podnikové aplikace** části, stačí kliknout **Single Sign-On** kartu a přístup k vložené dokumentaci prostřednictvím  **Konfigurace** oblast v dolní části. Další informace o funkci vložená dokumentace: [Dokumentace ke službě Azure AD, embedded]( https://go.microsoft.com/fwlink/?linkid=845985)
 
-### <a name="create-an-azure-ad-test-user"></a>Vytvořit testovacího uživatele Azure AD
+### <a name="create-an-azure-ad-test-user"></a>Vytvořit testovacího uživatele Azure AD 
 
 Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal volá Britta Simon.
 
-   ![Vytvořit testovacího uživatele Azure AD][100]
+1. Na webu Azure Portal, v levém podokně vyberte **Azure Active Directory**vyberte **uživatelé**a pak vyberte **všichni uživatelé**.
 
-**Chcete-li vytvořit testovacího uživatele ve službě Azure AD, postupujte následovně:**
+    !["Uživatele a skupiny" a "Všechny uživatele" odkazy](common/users.png)
 
-1. Na webu Azure Portal, v levém podokně klikněte na tlačítko **Azure Active Directory** tlačítko.
+2. Vyberte **nového uživatele** v horní části obrazovky.
 
-    ![Tlačítko Azure Active Directory](./media/bamboo-tutorial/create_aaduser_01.png)
+    ![Tlačítko Nový uživatel](common/new-user.png)
 
-1. Chcete-li zobrazit seznam uživatelů, přejděte na **uživatelů a skupin**a potom klikněte na tlačítko **všichni uživatelé**.
+3. Ve vlastnosti uživatele proveďte následující kroky.
 
-    !["Uživatele a skupiny" a "Všechny uživatele" odkazy](./media/bamboo-tutorial/create_aaduser_02.png)
+    ![Dialogové okno uživatele](common/user-properties.png)
 
-1. Chcete-li otevřít **uživatele** dialogové okno, klikněte na tlačítko **přidat** v horní části **všichni uživatelé** dialogové okno.
+    a. V **název** zadat **BrittaSimon**.
+  
+    b. V **uživatelské jméno** typ pole `brittasimon@yourcompanydomain.extension`. Například BrittaSimon@contoso.com.
 
-    ![Tlačítko Přidat](./media/bamboo-tutorial/create_aaduser_03.png)
-
-1. V **uživatele** dialogové okno pole, proveďte následující kroky:
-
-    ![Dialogové okno uživatele](./media/bamboo-tutorial/create_aaduser_04.png)
-
-    a. V **název** zadejte **BrittaSimon**.
-
-    b. V **uživatelské jméno** zadejte e-mailovou adresu uživatele Britta Simon.
-
-    c. Vyberte **zobrazit heslo** zaškrtněte políčko a zapište si hodnotu, která se zobrazí **heslo** pole.
+    c. Vyberte **zobrazit heslo** zaškrtněte políčko a zapište si hodnotu, která se zobrazí v poli heslo.
 
     d. Klikněte na možnost **Vytvořit**.
- 
-### <a name="create-a-saml-sso-for-bamboo-by-resolution-gmbh-test-user"></a>Vytvoření SAML SSO pro bambus podle rozlišení GmbH testovacího uživatele
-
-Cílem této části je pro vytvoření uživatele volány Britta Simon v SAML SSO pro bambus rozlišení GmbH. Jednotné přihlašování SAML bambus podle rozlišení GmbH podporuje zřizování v čase a také uživatelům lze vytvořit ručně, obraťte se na [tým podpory jednotného přihlašování SAML pro bambus podle rozlišení GmbH klienta](https://marketplace.atlassian.com/plugins/com.resolution.atlasplugins.samlsso-bamboo/server/support) podle vašich požadavků.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřadit uživatele Azure AD
 
 V této části je povolit Britta Simon používat jednotné přihlašování Azure tím, že uděluje přístup pro jednotné přihlašování SAML pro bambus podle rozlišení GmbH.
 
-![Přiřazení role uživatele][200] 
+1. Na webu Azure Portal, vyberte **podnikové aplikace**vyberte **všechny aplikace**a pak vyberte **jednotné přihlašování SAML pro bambus podle rozlišení GmbH**.
 
-**Pomocí řešení GmbH přiřadit jednotné přihlašování SAML pro bambus Britta Simon, proveďte následující kroky:**
+    ![Okno aplikace organizace](common/enterprise-applications.png)
 
-1. Na webu Azure Portal, otevřete zobrazení aplikací a pak přejděte do zobrazení adresáře a přejděte na **podnikové aplikace** klikněte **všechny aplikace**.
+2. V seznamu aplikací vyberte **jednotné přihlašování SAML pro bambus podle rozlišení GmbH**.
 
-    ![Přiřadit uživatele][201] 
+    ![Jednotné přihlašování SAML pro bambus podle propojení GmbH řešení v seznamu aplikací](common/all-applications.png)
 
-1. V seznamu aplikací vyberte **jednotné přihlašování SAML pro bambus podle rozlišení GmbH**.
+3. V nabídce na levé straně vyberte **uživatelů a skupin**.
 
-    ![Jednotné přihlašování SAML pro bambus podle propojení GmbH řešení v seznamu aplikací](./media/bamboo-tutorial/tutorial_bamboo_app.png)  
+    ![Odkaz "Uživatele a skupiny"](common/users-groups-blade.png)
 
-1. V nabídce na levé straně klikněte na tlačítko **uživatelů a skupin**.
+4. Klikněte na tlačítko **přidat uživatele** tlačítko a pak vyberte **uživatelů a skupin** v **přidat přiřazení** dialogového okna.
 
-    ![Odkaz "Uživatele a skupiny"][202]
+    ![Podokno Přidat přiřazení](common/add-assign-user.png)
 
-1. Klikněte na tlačítko **přidat** tlačítko. Potom vyberte **uživatelů a skupin** na **přidat přiřazení** dialogového okna.
+5. V **uživatelů a skupin** dialogové okno Vybrat **Britta Simon** v seznamu uživatelů, klikněte **vyberte** tlačítko v dolní části obrazovky.
 
-    ![Podokno Přidat přiřazení][203]
+6. Pokud očekáváte libovolnou hodnotu role v kontrolní výraz SAML a potom v **vybrat roli** dialogové okno vybrat vhodnou roli pro uživatele ze seznamu, klikněte **vyberte** tlačítko v dolní části obrazovky.
 
-1. Na **uživatelů a skupin** dialogového okna, vyberte **Britta Simon** v seznamu uživatelů.
+7. V **přidat přiřazení** dialogové okno kliknutím **přiřadit** tlačítko.
 
-1. Klikněte na tlačítko **vyberte** tlačítko **uživatelů a skupin** dialogového okna.
+### <a name="create-saml-sso-for-bamboo-by-resolution-gmbh-test-user"></a>Vytvořit jednotné přihlašování SAML pro bambus podle rozlišení GmbH testovacího uživatele
 
-1. Klikněte na tlačítko **přiřadit** tlačítko **přidat přiřazení** dialogového okna.
-    
+Cílem této části je pro vytvoření uživatele volány Britta Simon v SAML SSO pro bambus rozlišení GmbH. Jednotné přihlašování SAML bambus podle rozlišení GmbH podporuje zřizování v čase a také uživatelům lze vytvořit ručně, obraťte se na [tým podpory jednotného přihlašování SAML pro bambus podle rozlišení GmbH klienta](https://marketplace.atlassian.com/plugins/com.resolution.atlasplugins.samlsso-bamboo/server/support) podle vašich požadavků.
+
 ### <a name="test-single-sign-on"></a>Test jednotného přihlašování
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 
-Po kliknutí na jednotné přihlašování SAML pro bambus podle rozlišení GmbH dlaždici na přístupovém panelu, vám by měl získat automaticky přihlášení k vaší jednotné přihlašování SAML pro bambus podle rozlišení GmbH aplikace.
-Další informace o přístupovém panelu, naleznete v tématu [Úvod k přístupovému panelu](../user-help/active-directory-saas-access-panel-introduction.md). 
+Po kliknutí na jednotné přihlašování SAML pro bambus podle rozlišení GmbH dlaždici na přístupovém panelu, by měl být automaticky přihlásíte na jednotné přihlašování SAML pro bambus podle rozlišení GmbH, u kterého nastavíte jednotné přihlašování. Další informace o přístupovém panelu, naleznete v tématu [Úvod k přístupovému panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Další zdroje informací:
+## <a name="additional-resources"></a>Další prostředky
 
-* [Seznam kurzů o integraci aplikací SaaS pomocí Azure Active Directory](tutorial-list.md)
-* [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)
+- [ Seznam kurzů o integraci aplikací SaaS pomocí Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
+- [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-
-<!--Image references-->
-
-[1]: ./media/bamboo-tutorial/tutorial_general_01.png
-[2]: ./media/bamboo-tutorial/tutorial_general_02.png
-[3]: ./media/bamboo-tutorial/tutorial_general_03.png
-[4]: ./media/bamboo-tutorial/tutorial_general_04.png
-
-[100]: ./media/bamboo-tutorial/tutorial_general_100.png
-
-[200]: ./media/bamboo-tutorial/tutorial_general_200.png
-[201]: ./media/bamboo-tutorial/tutorial_general_201.png
-[202]: ./media/bamboo-tutorial/tutorial_general_202.png
-[203]: ./media/bamboo-tutorial/tutorial_general_203.png
-
+- [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

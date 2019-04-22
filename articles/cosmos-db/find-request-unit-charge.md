@@ -4,20 +4,20 @@ description: Zjistěte, jak najít zátěž jednotek žádostí pro všechny ope
 author: ThomasWeiss
 ms.service: cosmos-db
 ms.topic: sample
-ms.date: 03/21/2019
+ms.date: 04/15/2019
 ms.author: thweiss
-ms.openlocfilehash: e3175ee136057c695ceef3cd1976b447a529c803
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.openlocfilehash: 833f815f0c84584f084e4d4637c0318f7c2daec0
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/05/2019
-ms.locfileid: "59053164"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59683830"
 ---
 # <a name="find-the-request-unit-ru-charge-in-azure-cosmos-db"></a>Najít jednotky žádosti (RU) poplatek ve službě Azure Cosmos DB
 
 Tento článek představuje různé způsoby, jak najít [jednotky žádosti](request-units.md) využití pro všechny operace pro kontejner služby Azure Cosmos. Je aktuálně možné měření toto využití pomocí webu Azure portal nebo zkontrolováním odpověď odesílanou obnovení z Azure Cosmos DB pomocí jedné ze sad SDK.
 
-## <a name="core-api"></a>Základní rozhraní API
+## <a name="sql-core-api"></a>SQL (Core) rozhraní API
 
 ### <a name="use-the-azure-portal"></a>Použití webu Azure Portal
 
@@ -25,7 +25,7 @@ Na webu Azure portal v současné době umožňuje najít zátěž žádostí pr
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 
-1. [Vytvoření nového účtu služby Azure Cosmos DB](create-sql-api-dotnet.md#create-account) a kanál s daty, nebo vyberte existující účet, který již obsahuje data.
+1. [Vytvořit nový účet Azure Cosmos](create-sql-api-dotnet.md#create-account) a kanál s daty, nebo vyberte existující účet Azure Cosmos, který již obsahuje data.
 
 1. Otevřít **Průzkumník dat** podokně a vyberte kontejner, který chcete pracovat.
 
@@ -147,7 +147,7 @@ request_charge = client.last_response_headers['x-ms-request-charge']
 
 ## <a name="azure-cosmos-dbs-api-for-mongodb"></a>Rozhraní API služby Azure Cosmos DB pro MongoDB
 
-Požádat o poplatku za jednotku je zveřejněný prostřednictvím vlastní [databáze příkaz](https://docs.mongodb.com/manual/reference/command/) s názvem `getLastRequestStatistics`. Tento příkaz vrátí dokument obsahující název poslední operaci provést, jeho zátěž žádostí a jeho trvání.
+Poplatek za jednotky žádosti je zveřejněný prostřednictvím vlastní [databáze příkaz](https://docs.mongodb.com/manual/reference/command/) s názvem `getLastRequestStatistics.` tento příkaz vrátí dokument obsahující název poslední operaci provést, jeho zátěž žádostí a jeho trvání.
 
 ### <a name="use-the-azure-portal"></a>Použití webu Azure Portal
 
@@ -155,7 +155,7 @@ Na webu Azure portal v současné době umožňuje najít zátěž žádostí pr
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 
-1. [Vytvoření nového účtu služby Azure Cosmos DB](create-mongodb-dotnet.md#create-a-database-account) a kanál s daty, nebo vyberte existující účet, který již obsahuje data.
+1. [Vytvořit nový účet Azure Cosmos](create-mongodb-dotnet.md#create-a-database-account) a kanál s daty, nebo vyberte existující účet, který již obsahuje data.
 
 1. Otevřít **Průzkumník dat** podokně a vyberte kolekci, kterou chcete pracovat.
 
@@ -195,7 +195,7 @@ Double requestCharge = stats.getDouble("RequestCharge");
 
 ### <a name="use-the-mongodb-nodejs-driver"></a>Použijte ovladač MongoDB Node.js
 
-Při použití [oficiální ovladač MongoDB Node.js](https://mongodb.github.io/node-mongodb-native/) (naleznete v tématu [v tomto rychlém startu](create-mongodb-nodejs.md) související s jeho využitím), příkazy mohou být provedeny voláním `command` metoda `Db` objektu.
+Při použití [oficiální ovladač MongoDB Node.js](https://mongodb.github.io/node-mongodb-native/) (naleznete v tématu [v tomto rychlém startu](create-mongodb-nodejs.md) související s jeho využitím), příkazy mohou být provedeny voláním `command` metoda `db` objektu.
 
 ```javascript
 db.command({ getLastRequestStatistics: 1 }, function(err, result) {
@@ -267,5 +267,9 @@ if (tableResult.RequestCharge.HasValue) // would be false when using Azure Stora
 
 Naleznete v následujících článcích se dozvíte informace o optimalizaci spotřebu jednotek žádosti:
 
+* [Jednotky žádostí a propustnost ve službě Azure Cosmos DB](request-units.md)
 * [Optimalizujte náklady zřízenou propustnost v databázi Azure Cosmos DB](optimize-cost-throughput.md)
 * [Optimalizujte náklady dotazu ve službě Azure Cosmos DB](optimize-cost-queries.md)
+* [Globálně škálujte zřízená propustnost](scaling-throughput.md)
+* [Zřizování propustnosti na kontejnerech a databází](set-throughput.md)
+* [Zřízení propustnosti pro kontejner](how-to-provision-container-throughput.md)

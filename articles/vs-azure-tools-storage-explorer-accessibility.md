@@ -1,6 +1,6 @@
 ---
-title: Usnadnění Azure Storage Explorer (Preview) | Microsoft Docs
-description: Usnadnění Azure Storage Explorer (Preview)
+title: Dostupnost Azure Storage Exploreru (Preview) | Dokumentace Microsoftu
+description: Dostupnost Azure Storage Exploreru (Preview)
 services: storage
 documentationcenter: na
 author: MrayermannMSFT
@@ -14,79 +14,98 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/20/2018
 ms.author: marayerm
-ms.openlocfilehash: 617a5c35ce059bf13fcf0b5aab415d8e431041e0
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: aa42d6b898a3cc474575f6c8dae65ff420fc8e30
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2018
-ms.locfileid: "31525927"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59698089"
 ---
-# <a name="storage-explorer-accessibility"></a>Usnadnění Průzkumníka úložiště
-## <a name="screen-readers"></a>Čtečky obrazovky
-Storage Explorer podporuje čtečky obrazovky Windows a macu. Následující čtečky obrazovky se doporučují pro každou platformu:
-* Windows: NVDA
-* Mac: Hlas
-* Linux: Čtečky obrazovky nejsou podporovány v systému Linux
+# <a name="storage-explorer-accessibility"></a>Dostupnost Storage Exploreru
 
-Pokud narazíte na problém usnadnění při použití Průzkumníka úložiště, [otevřete problém na Githubu](https://github.com/Microsoft/AzureStorageExplorer/issues).
+## <a name="screen-readers"></a>Čtečky obrazovky
+
+Průzkumníka služby Storage podporuje čtečky obrazovky na Windows a Mac. Následující čtečky obrazovky se doporučují pro každou platformu:
+
+Platforma | Čtečky obrazovky
+---------|--------------
+Windows  | NVDA
+Mac      | Hlasu na pozadí
+Linux    | (čtečky obrazovky nejsou podporovány v systému Linux)
+
+Pokud narazíte na problém přístupnost při použití Průzkumníka služby Storage, [otevřete problém na Githubu](https://github.com/Microsoft/AzureStorageExplorer/issues).
 
 ## <a name="zoom"></a>Lupa
-Můžete zvětšit text ve Storage Exploreru prostřednictvím přiblížení. Pokud chcete zvětšit, klikněte na **přiblížit** v nabídce Nápověda. Můžete taky nabídce Nápověda na oddálení a resetování úroveň přiblížení zpět na výchozí úrovni.
 
-![Přiblížení možnosti v nabídce Nápověda][0]
+Můžete zvětšit text v Průzkumníku služby Storage prostřednictvím přiblížit. Přiblížit, klikněte na **přiblížit** v nabídce Nápověda. Můžete také použít nabídky Nápověda zmenšíte a úroveň zvětšení zpět na výchozí úrovni resetování.
 
-Nastavení přiblížení či oddálení zvětšuje velikost většinu prvků uživatelského rozhraní. Doporučujeme také povolit velké text a přiblížení nastavení pro operačním systému k zajištění, že jsou správně škálovat všechny prvky uživatelského rozhraní.
+![Možnosti v nabídce Nápověda lupy][0]
 
-## <a name="high-contrast-theming"></a>Tvorba motivů vysoký kontrast
-Storage Explorer má dva vysoký kontrast motivy, **vysoký kontrast Light** a **vysoký kontrast tmavý**. Motiv, můžete změnit tak, že přejdete do podnabídky motivy v nabídce Nápověda.
+Nastavení přiblížení či oddálení zvyšuje velikost většinu prvků uživatelského rozhraní. Doporučujeme také povolit velký text a přiblížení nastavení pro váš operační systém k zajištění, že jsou všechny prvky uživatelského rozhraní správně škálovat.
 
-![Motivy dílčí nabídky][1]
+## <a name="high-contrast-themes"></a>Vysoký kontrast – motivy
 
-Nastavení motivu změní barvu většinu prvků uživatelského rozhraní. Doporučujeme také povolit vašeho operačního systému odpovídající motiv s vysokým kontrastem zajistit, aby se správně vybarví všechny prvky uživatelského rozhraní.
+Průzkumník služby Storage má dva motivy vysoký kontrast – **vysoký kontrast – světlý** a **vysoký kontrast – tmavý**. Motiv můžete změnit tak, že vyberete v nápovědě > nabídky motivů.
+
+![Podnabídka motivy][1]
+
+Nastavení motivu změní barvu většinu prvků uživatelského rozhraní. Doporučuje povolit také zajistit, že jsou všechny prvky uživatelského rozhraní správně barevný motiv s vysokým kontrastem odpovídající váš operační systém.
 
 ## <a name="shortcut-keys"></a>Klávesové zkratky
-### <a name="window-commands"></a>Příkazy okna
-|Příkaz|Klávesové zkratky|
-|--------------|------------------------|
-|Nové okno|**Ovládací prvek + Shift + N**|
-|Zavřete Editor|**Ovládací prvek + F4**|
-|Ukončit|**Ctrl + Shift + W**|
 
-### <a name="navigation-commands"></a>Příkazy navigace
-|Příkaz|Klávesové zkratky|
-|--------------|------------------------|
-|Další panely fokusu|**F6**|
-|Fokus předchozí panely|**SHIFT + F6**|
-|Průzkumník|**Ovládací prvek + Shift + E**|
-|Správa účtů|**Ctrl + Shift + A**|
-|Přepnutí straně panelu|**CTRL + B**|
-|Protokol aktivit|**Ovládací prvek + Shift + L**|
-|Akcí a vlastností|**Ovládací prvek + Shift + P**|
-|Aktuální Editor|**Ovládací prvek + Home**|
-|Další editoru|**Ovládací prvek + Page Down**|
-|Předchozí editoru|**Ovládací prvek + Page Up**|
+### <a name="window-commands"></a>Příkazy v okně
+
+Příkaz       | Klávesová zkratka
+--------------|--------------------
+Nové okno    | **Ovládací prvek + Shift + N**
+Zavřít editor  | **Ovládací prvek + F4**
+Ukončit          | **Ctrl + Shift + W**
+
+### <a name="navigation-commands"></a>Příkazy pro navigaci
+
+Příkaz                | Klávesová zkratka
+-----------------------|----------------------
+Další Panel fokus       | **F6**
+Fokus předchozí Panel   | **SHIFT + F6**
+Průzkumník               | **Ovládací prvek + Shift + E**
+Správa účtů     | **Ctrl + Shift + A**
+Přepnout bočním panelu        | **CTRL + B**
+Protokol aktivit           | **Control+Shift+L**
+Akce a vlastnosti | **Control+Shift+P**
+Aktuální Editor         | **Ovládací prvek + Home**
+Dalším Editor            | **Ovládací prvek + Page Down**
+Předchozí editoru        | **Ovládací prvek + Page Up**
 
 ### <a name="zoom-commands"></a>Příkazy Zvětšení
-|Příkaz|Klávesové zkratky|
-|--------------|------------------------|
-|Přiblížit|**+= – Ovládací prvek**|
-|Oddálit|**Ovládací prvek +-**|
 
-### <a name="blob-and-file-share-editor-commands"></a>Objekt BLOB a příkazů editoru sdílené složky souborů
-|Příkaz|Klávesové zkratky|
-|--------------|------------------------|
-|Zpět|**ALT + Šipka doleva**|
-|Přeposlat|**ALT + Šipka vpravo**|
-|Nahoru|**ALT + Šipka nahoru**|
+Příkaz  | Klávesová zkratka
+---------|------------------
+Přiblížit  | **Ovládací prvek +=**
+Oddálit | **CTRL +-**
+
+### <a name="blob-and-file-share-editor-commands"></a>Příkazy Editor sdílené složky souborů a objektů BLOB
+
+Příkaz | Klávesová zkratka
+--------|--------------------
+Zpět    | **ALT + Šipka doleva**
+Předat dál | **ALT + Šipka vpravo**
+Nahoru      | **ALT + Šipka nahoru**
+
+### <a name="editor-commands"></a>Editor příkazů
+
+Příkaz | Klávesová zkratka
+--------|------------------
+Kopírovat    | **Control+C**
+Vyjmout     | **CTRL + X**
+Vložit   | **CTRL + V**
+Obnovení  | **Ovládací prvek + R**
 
 ### <a name="other-commands"></a>Další příkazy
-|Příkaz|Klávesové zkratky|
-|--------------|------------------------|
-|Kopírovat|**CTRL + C**|
-|Vyjmout|**CTRL + X**|
-|Vložit|**CTRL + V**|
-|Nástroje pro vývojáře přepnutí|**F12**|
-|Načíst znovu|**Ovládací prvek + R**|
+
+Příkaz                | Klávesová zkratka
+-----------------------|------------------
+Přepnout vývojářské nástroje | **F12**
+Načíst znovu                 | **Alt+Control+R**
 
 [0]: ./media/vs-azure-tools-storage-explorer-accessibility/Zoom.png
 [1]: ./media/vs-azure-tools-storage-explorer-accessibility/HighContrast.png

@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 03/13/2019
 ms.author: manayar
 ms.custom: na
-ms.openlocfilehash: 07a488556bc899efa80d67ceb984b60f461b9742
-ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
+ms.openlocfilehash: 56a31770c374cdccaec4dbee751925a6da00fa59
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58541022"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59683949"
 ---
 # <a name="azure-virtual-machine-scale-sets-faqs"></a>Azure virtual machine scale sets s nejčastější dotazy
 
@@ -29,13 +29,13 @@ Získejte odpovědi na nejčastější dotazy ohledně škálovacích sad virtu�
 
 ## <a name="top-frequently-asked-questions-for-scale-sets"></a>TOP – nejčastější dotazy ke škálovacím sadám
 
-**Otázka:** Kolik virtuálních počítačů může obsahovat škálovací sada?
+### <a name="how-many-vms-can-i-have-in-a-scale-set"></a>Kolik virtuálních počítačů může obsahovat škálovací sada?
 
-**Odpověď:** Škálovací sada může obsahovat 0 až 1 000 virtuálních počítačů založených na imagích platformy nebo 0 až 600 virtuálních počítačů založených na vlastních imagích.
+Škálovací sada může obsahovat 0 až 1 000 virtuálních počítačů založených na imagích platformy nebo 0 až 600 virtuálních počítačů založených na vlastních imagích.
 
-**Otázka:** Podporují se ve škálovacích sadách datové disky?
+### <a name="are-data-disks-supported-within-scale-sets"></a>Podporují se ve škálovacích sadách datové disky?
 
-**Odpověď:** Ano. Škálovací sada může definovat konfiguraci připojených datových jednotek, která se použije na všechny virtuální počítače v sadě. Další informace najdete v tématu [Škálovací sady Azure a připojené datové disky](virtual-machine-scale-sets-attached-disks.md). Další možnosti ukládání dat zahrnují:
+Ano. Škálovací sada může definovat konfiguraci připojených datových jednotek, která se použije na všechny virtuální počítače v sadě. Další informace najdete v tématu [Škálovací sady Azure a připojené datové disky](virtual-machine-scale-sets-attached-disks.md). Další možnosti ukládání dat zahrnují:
 
 * Soubory Azure (sdílené jednotky SMB)
 * Jednotka operačního systému
@@ -43,33 +43,33 @@ Získejte odpovědi na nejčastější dotazy ohledně škálovacích sad virtu�
 * Datová služba Azure (např. tabulky Azure, objekty blob Azure)
 * Externí datová služba (např. vzdálená databáze)
 
-**Otázka:** Které oblasti Azure podporují škálovací sady?
+### <a name="which-azure-regions-support-scale-sets"></a>Které oblasti Azure podporují škálovací sady?
 
-**Odpověď:** Všechny oblasti podporují škálovací sady.
+Všechny oblasti podporují škálovací sady.
 
-**Otázka:** Jak se vytváří škálovací sada s použitím vlastní image?
+### <a name="how-do-i-create-a-scale-set-by-using-a-custom-image"></a>Jak se vytváří škálovací sada s použitím vlastní image?
 
-**Odpověď:** Vytvoření a zachycení image virtuálního počítače a pak použít jako zdroj pro svou škálovací sadu. Kurz o tom, jak vytvořit a používat vlastní image virtuálního počítače, můžete použít [rozhraní příkazového řádku Azure](tutorial-use-custom-image-cli.md) nebo [prostředí Azure PowerShell](tutorial-use-custom-image-powershell.md)
+Vytvoření a zachycení image virtuálního počítače a pak použít jako zdroj pro svou škálovací sadu. Kurz o tom, jak vytvořit a používat vlastní image virtuálního počítače, můžete použít [rozhraní příkazového řádku Azure](tutorial-use-custom-image-cli.md) nebo [prostředí Azure PowerShell](tutorial-use-custom-image-powershell.md)
 
-**Otázka:** Pokud snížím kapacitu škálovací sady z 20 na 15, které virtuální počítače budou odebrány?
+### <a name="if-i-reduce-my-scale-set-capacity-from-20-to-15-which-vms-are-removed"></a>Pokud snížím kapacitu škálovací sady z 20 na 15, které virtuální počítače budou odebrány?
 
-**Odpověď:** Virtuální počítače se ze škálovací sady odebírají rovnoměrně napříč aktualizačními doménami a doménami selhání, aby se maximalizovala dostupnost. Nejprve se odeberou virtuální počítače s nejvyšším ID.
+Virtuální počítače se ze škálovací sady odebírají rovnoměrně napříč aktualizačními doménami a doménami selhání, aby se maximalizovala dostupnost. Nejprve se odeberou virtuální počítače s nejvyšším ID.
 
-**Otázka:** A co když pak zvýším kapacitu z 15 na 18?
+### <a name="what-if-i-then-increase-the-capacity-from-15-to-18"></a>A co když pak zvýším kapacitu z 15 na 18?
 
-**Odpověď:** Pokud zvýšíte kapacitu na 18, vytvoří se 3 nové virtuální počítače. ID instance virtuálního počítače se přírůstkově zvýší oproti předchozí nejvyšší hodnotě (např. 20, 21, 22). Virtuální počítače se vyvažují mezi doménami selhání a aktualizačními doménami.
+Pokud zvýšíte kapacitu na 18, vytvoří se 3 nové virtuální počítače. ID instance virtuálního počítače se přírůstkově zvýší oproti předchozí nejvyšší hodnotě (např. 20, 21, 22). Virtuální počítače se vyvažují mezi doménami selhání a aktualizačními doménami.
 
-**Otázka:** Pokud ve škálovací sadě používám několik rozšíření, je možné vynucovat určitou posloupnost provádění?
+### <a name="when-im-using-multiple-extensions-in-a-scale-set-can-i-enforce-an-execution-sequence"></a>Pokud ve škálovací sadě používám několik rozšíření, je možné vynucovat určitou posloupnost provádění?
 
-**Odpověď:** Ano, můžete použít škálovací sady [nastavení posloupnosti rozšíření](virtual-machine-scale-sets-extension-sequencing.md).
+Ano, můžete použít škálovací sady [nastavení posloupnosti rozšíření](virtual-machine-scale-sets-extension-sequencing.md).
 
-**Otázka:** Spolupracují škálovací sady se skupinami dostupnosti Azure?
+### <a name="do-scale-sets-work-with-azure-availability-sets"></a>Spolupracují škálovací sady se skupinami dostupnosti Azure?
 
-**Odpověď:** Místní (bez oblastmi) škálovací sada používá *skupin umístění*, které fungují jako sadu implicitní dostupnosti s pěti doménami selhání a pěti aktualizačními doménami. Škálovací sady s více než 100 virtuálních počítačů pokrývají více skupin umístění. Další informace o skupinách umístění najdete v tématu [Práce s velkými škálovacími sadami virtuálních počítačů](virtual-machine-scale-sets-placement-groups.md). Skupina dostupnosti virtuálních počítačů může existovat ve stejné virtuální síti jako škálovací sada virtuálních počítačů. Běžnou konfigurací je umístění virtuálních počítačů řídicích uzlů, které často vyžadují jedinečnou konfiguraci, do skupiny dostupnosti, a datových uzlů do škálovací sady.
+Místní (bez oblastmi) škálovací sada používá *skupin umístění*, které fungují jako sadu implicitní dostupnosti s pěti doménami selhání a pěti aktualizačními doménami. Škálovací sady s více než 100 virtuálních počítačů pokrývají více skupin umístění. Další informace o skupinách umístění najdete v tématu [Práce s velkými škálovacími sadami virtuálních počítačů](virtual-machine-scale-sets-placement-groups.md). Skupina dostupnosti virtuálních počítačů může existovat ve stejné virtuální síti jako škálovací sada virtuálních počítačů. Běžnou konfigurací je umístění virtuálních počítačů řídicích uzlů, které často vyžadují jedinečnou konfiguraci, do skupiny dostupnosti, a datových uzlů do škálovací sady.
 
-**Otázka:** Spolupracují škálovací sady se zónami dostupnosti Azure?
+### <a name="do-scale-sets-work-with-azure-availability-zones"></a>Spolupracují škálovací sady se zónami dostupnosti Azure?
 
-**Odpověď:** Ano! Další informace najdete v tématu [škálovací sady zóny doc](./virtual-machine-scale-sets-use-availability-zones.md).
+Ano! Další informace najdete v tématu [škálovací sady zóny doc](./virtual-machine-scale-sets-use-availability-zones.md).
 
 
 ## <a name="autoscale"></a>Automatické škálování

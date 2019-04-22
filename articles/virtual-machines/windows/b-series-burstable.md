@@ -1,9 +1,9 @@
 ---
-title: Velikosti virtuálního počítače Windows Azure B-series | Microsoft Docs
-description: Popisuje B-series burstable velikostí virtuálních počítačů Azure.
+title: Velikosti virtuálních počítačů s Windows Azure řady B-series | Dokumentace Microsoftu
+description: Popisuje B-series zvládáním výkonových špiček velikosti virtuálních počítačů Azure.
 services: virtual-machines-windows
 documentationcenter: ''
-author: jonbeck7
+author: ayshakeen
 manager: jeconnoc
 editor: ''
 tags: azure-resource-manager
@@ -14,15 +14,15 @@ ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 09/07/2017
-ms.author: jonbeck
-ms.openlocfilehash: 366981c0a92aab80e4cbc41ff7202be42b386d6a
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.author: ayshak
+ms.openlocfilehash: 8530682baac1544de2c73186b35fdf193e1826bd
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2018
-ms.locfileid: "30917907"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59682912"
 ---
-# <a name="b-series-burstable-virtual-machine-sizes"></a>Velikosti burstable virtuálních počítačů B-series
+# <a name="b-series-burstable-virtual-machine-sizes"></a>Velikosti řady B-series zvládáním výkonových špiček virtuálních počítačů
 
 [!INCLUDE [virtual-machines-common-b-series-burstable](../../../includes/virtual-machines-common-b-series-burstable.md)]
 
@@ -36,4 +36,4 @@ ms.locfileid: "30917907"
 - [Vysokovýkonné výpočetní prostředí](sizes-hpc.md)
 
 ## <a name="next-steps"></a>Další postup
-Další informace o [Azure výpočetní jednotky (ACU)](acu.md) můžete porovnat výpočetní výkon v Azure SKU.
+Další informace o tom [Azure výpočetních jednotek (ACU)](acu.md) můžete porovnat výpočetní výkon jednotlivých SKU v Azure.

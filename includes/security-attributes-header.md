@@ -2,14 +2,14 @@
 author: msmbaldwin
 ms.service: security
 ms.topic: include
-ms.date: 03/15/2019
+ms.date: 04/17/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 2a1a69edc105177652b1559412b279416228bd7d
-ms.sourcegitcommit: 045406e0aa1beb7537c12c0ea1fbf736062708e8
+ms.openlocfilehash: cd0ab47a46e452701307986d3fbfc7cdfe040c58
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/04/2019
-ms.locfileid: "59007197"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59684578"
 ---
 Atribut zabezpečení je kvality nebo funkci, která přispívá ke schopnost služby ochrana, detekci a reakce na ohrožení zabezpečení služby Azure.
 

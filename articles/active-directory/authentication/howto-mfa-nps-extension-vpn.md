@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a5ea409b1726e82557b564f93fbd35898e9cf2cb
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.openlocfilehash: 2674e5ca12269d44e111f140fce77bd8bc0c9ae7
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58372450"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59699111"
 ---
 # <a name="integrate-your-vpn-infrastructure-with-azure-mfa-by-using-the-network-policy-server-extension-for-azure"></a>Integrovat vaše infrastruktura sítě VPN s Azure MFA pomocí rozšíření Server NPS pro Azure
 
@@ -374,7 +374,7 @@ Pokud chcete použít skript, poskytnout rozšíření správce přihlašovacíc
 
 2. Příkazovém řádku prostředí PowerShell, zadejte **cd "c:\Program Files\Microsoft\AzureMfa\Config"** a pak stiskněte Enter.
 
-3. Další příkazového řádku, zadejte **.\AzureMfsNpsExtnConfigSetup.ps1**a pak stiskněte Enter. Skript zkontroluje, zda je nainstalován modul Azure AD PowerShell. Pokud není nainstalovaná, skript nainstaluje modul pro vás.
+3. Další příkazového řádku, zadejte **.\AzureMfaNpsExtnConfigSetup.ps1**a pak stiskněte Enter. Skript zkontroluje, zda je nainstalován modul Azure AD PowerShell. Pokud není nainstalovaná, skript nainstaluje modul pro vás.
 
     ![Spuštění skriptu AzureMfsNpsExtnConfigSetup.ps1 konfigurace](./media/howto-mfa-nps-extension-vpn/image38.png)
 

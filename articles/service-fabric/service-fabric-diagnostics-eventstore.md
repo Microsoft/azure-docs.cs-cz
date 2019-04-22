@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 1/17/2019
 ms.author: srrengar
-ms.openlocfilehash: b8e1958947ced5ea2d0bd8b34667210bf935072d
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: 36d01a9e6e55ae54377ba3f983f779dbc692c49a
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58662903"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59681518"
 ---
 # <a name="eventstore-service-overview"></a>Přehled služby Eventstoru
 
@@ -72,7 +72,7 @@ V [fabricSettings.json ve vašem clusteru](service-fabric-cluster-fabric-setting
 
 ### <a name="azure-cluster"></a>Azure cluster
 
-Ve vašem clusteru šablony Azure Resource Manageru, můžete zapnout službu Eventstoru pomocí provádí [config upgradovat cluster](service-fabric-cluster-config-upgrade-azure.md) a přidáním následujícího kódu. `upgradeDescription` Části nakonfiguruje upgrade config aktivovat restartování na uzlech. Odebrat oddíl v jiné aktualizace.
+Ve vašem clusteru šablony Azure Resource Manageru, můžete zapnout službu Eventstoru pomocí provádí [config upgradovat cluster](service-fabric-cluster-config-upgrade-azure.md) a přidáním následujícího kódu, můžete použít PlacementConstraints umístit repliky Eventstoru Služba na konkrétní typ NodeType například NodeType, vyhrazená pro zajištění systémových služeb. `upgradeDescription` Části nakonfiguruje upgrade config aktivovat restartování na uzlech. Odebrat oddíl v jiné aktualizace.
 
 ```json
     "fabricSettings": [
@@ -89,6 +89,10 @@ Ve vašem clusteru šablony Azure Resource Manageru, můžete zapnout službu Ev
               {
                 "name": "MinReplicaSetSize",
                 "value": "1"
+              }
+              {
+                "name": "PlacementConstraints",
+                "value": "(NodeType==<node_type_name_here>)"
               }
             ]
           }

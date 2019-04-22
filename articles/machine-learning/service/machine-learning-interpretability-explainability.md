@@ -1,7 +1,7 @@
 ---
 title: Interpretovatelnost modelů
 titleSuffix: Azure Machine Learning service
-description: Další informace o použití sady SDK Azure Machine Learning Interpretability vysvětlit, proč váš model vytváří předpovědi. Můžete použít při trénování a odvozování pochopit, jak váš model vytváří předpovědi.
+description: Zjistěte, jak vysvětlit, proč váš model vytváří předpovědi pomocí sady SDK služby Azure Machine Learning Interpretability. Můžete použít při trénování a odvozování pochopit, jak váš model vytváří předpovědi.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,14 +10,14 @@ ms.author: mesameki
 author: mesameki
 ms.reviewer: larryfr
 ms.date: 04/09/2019
-ms.openlocfilehash: fbcafb61ecd69f58bb3c14d1b15f36f1b21f2833
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.openlocfilehash: 668551603dfa2a9c42f4538fd9a66ee646e1feb7
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/11/2019
-ms.locfileid: "59494436"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59682453"
 ---
-# <a name="azure-machine-learning-interpretability-sdk"></a>Azure Machine Learning Interpretability SDK
+# <a name="model-interpretability-with-azure-machine-learning-service"></a>Model interpretability službou Azure Machine Learning
 
 V tomto článku se dozvíte postupy vysvětlují, proč váš model provedené předpovědi ho pomocí sady Azure Machine Learning Interpretability SDK. Schopnost popisují váš model je důležitá z následujících důvodů:
 
@@ -25,9 +25,10 @@ V tomto článku se dozvíte postupy vysvětlují, proč váš model provedené 
 * Jako odborník přes data, potřebujete pochopit **jak provádět dotazy modelu, který má získat přehledy**. Musíte také nástroje a informovaně se rozhodovat na **jak vylepšit svůj model**.
 * Jako společnost, je třeba porozumět **chování modelu s použitím různých vstup distribuce** a **bude model chování při analýze specifický vstup**.
 
-Je důležité ve dvou fázích strojového učení vývojový cyklus Machine learning interpretability: **školení** čas a **odvozování** čas:
+Je důležité ve dvou fázích strojového učení vývojový cyklus Machine learning interpretability: 
 
 * Během **školení**: Návrháři model a nástroje pro vyhodnocení vyžadují interpretability nástroje, které popisují výstup z modelu zúčastněným stranám, k vytvoření vztahu důvěryhodnosti. Potřebují také přehled o modelu tak, aby můžete ladit modelu a rozhodování na, jestli odpovídá chování svých cílů. Nakonec je třeba Ujistěte se, že není tendenční modelu.
+
 * Během **odvozování**: Předpovědi musí být explainable uživatelé, kteří používají model. Například, proč modelu odepřít úvěru hypoteční nebo předpovídat, že investice portfolia s sebou nese vyšší riziko?
 
 Azure Machine Learning Interpretability SDK zahrnuje technologie vyvinutá společností Microsoft a ověřené knihovny třetích stran (například okno a LIMETKOVĚ). Sada SDK vytvoří společné rozhraní API přes integrované knihovny a integraci služby Azure Machine Learning. Pomocí této sady SDK, mohou vysvětlovat modelů strojového učení **globálně na všechny data**, nebo **místně na konkrétní datový bod** pomocí technologií stavu techniky snadným ovládáním a škálovatelným způsobem.
@@ -91,7 +92,7 @@ Funkce intelligence integrované do `TabularExplainer` bude složitější, dal�
 
 Následující diagram znázorňuje vztah mezi dvěma sadami přímo a meta explainers.
 
-[![Mvzdálený Learning Interpretability architektura](./media/machine-learning-interpretability-explainability/interpretability-architecture.png)](./media/machine-learning-interpretability-explainability/interpretability-architecture.png#lightbox)
+[![Ve službě Machine Learning Interpretability architektury](./media/machine-learning-interpretability-explainability/interpretability-architecture.png)](./media/machine-learning-interpretability-explainability/interpretability-architecture.png#lightbox)
 
 ### <a name="models-supported"></a>Podporované modely
 

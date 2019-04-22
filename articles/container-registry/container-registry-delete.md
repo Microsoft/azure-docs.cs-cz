@@ -5,20 +5,20 @@ services: container-registry
 author: dlepow
 ms.service: container-registry
 ms.topic: article
-ms.date: 01/04/2019
+ms.date: 04/04/2019
 ms.author: danlep
-ms.openlocfilehash: f3206da25a3c0727e3f9fe12190580a6c28c81a3
-ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
+ms.openlocfilehash: 1e496002c869c5d2c072773d37ed5fd5d4a5841e
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56983247"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59683456"
 ---
 # <a name="delete-container-images-in-azure-container-registry"></a>Odstranit Image kontejnerů ve službě Azure Container Registry
 
 Pokud chcete zachovat velikost svého registru kontejneru Azure, odstraníte pravidelně zastaralé image data. Zatímco některé kontejnerové Image nasadili do produkčního prostředí můžou vyžadovat dlouhodobější úložiště, jiné obvykle se dá odstranit rychleji. Například automatické sestavení a testovací scénáře, svého registru můžete vyplnit s imagí, které nikdy je možno nasadit a může být odstraněna krátce po dokončení sestavení a testování průchodu.
 
-Budete moct odstranit bitové kopie dat v několika různými způsoby, a proto je důležité pochopit, jak každá operace odstranění ovlivňuje využití úložiště. V tomto článku se nejdřív představuje komponenty imagí Dockeru registru a kontejner a potom zahrnuje několik metod pro odstranění dat obrázků.
+Budete moct odstranit bitové kopie dat v několika různými způsoby, a proto je důležité pochopit, jak každá operace odstranění ovlivňuje využití úložiště. V tomto článku se nejdřív představuje komponenty imagí Dockeru registru a kontejner a potom zahrnuje několik metod pro odstranění dat obrázků. Ukázkové skripty pro automatizaci operace odstranění.
 
 ## <a name="registry"></a>Registr
 
@@ -34,7 +34,7 @@ acr-helloworld:v1
 acr-helloworld:v2
 ```
 
-Názvy úložišť může také obsahovat [obory názvů](container-registry-best-practices.md#repository-namespaces). Obory názvů umožňují seskupit obrázků s využitím dopředné lomítko oddělené úložiště názvy, například:
+Názvy úložišť může také obsahovat [obory názvů](container-registry-best-practices.md#repository-namespaces). Obory názvů umožňují skupiny obrázků s využitím dopředné lomítko oddělené úložiště názvy, například:
 
 ```
 marketing/campaign10-18/web:v2
@@ -50,11 +50,11 @@ Image kontejneru do registru je přidružen jeden nebo více značek, obsahuje j
 
 ### <a name="tag"></a>Značka
 
-Obrázku *značka* určuje jeho verzi. Jedinou bitovou kopii v úložišti můžete přiřadit jednu nebo více značek a může být "neoznačený i." To znamená můžete odstranit všechny značky pomocí bitové kopie dat na obrázku (vrstvy) i nadále registru.
+Obrázku *značka* určuje jeho verzi. Jedinou bitovou kopii v úložišti můžete přiřadit jednu nebo více značek a může být "neoznačený i." To znamená můžete odstranit všechny značky pomocí bitové kopie dat na obrázku (vrstvy) budou i nadále v registru.
 
 Úložiště (nebo úložiště a obor názvů) plus definuje názvu obrázku značky. Vám může nabízená a vyžádaná instalace image tak, že zadáte jeho název v operaci push nebo pull.
 
-V privátním registru, jako je Azure Container Registry názvu image také zahrnuje plně kvalifikovaný název registru hostitele. Hostitel registr pro Image do služby ACR je ve formátu *acrname.azurecr.io*. Například by být úplný název první obrázek v oboru názvů 'uvádění na trh' v předchozí části:
+V privátním registru, jako je Azure Container Registry názvu image také zahrnuje plně kvalifikovaný název registru hostitele. Hostitel registr pro Image do služby ACR je ve formátu *acrname.azurecr.io* (malými písmeny). Například by být úplný název první obrázek v oboru názvů "marketing" v předchozí části:
 
 ```
 myregistry.azurecr.io/marketing/campaign10-18/web:v2
@@ -158,7 +158,7 @@ Are you sure you want to continue? (y/n): y
 ```
 
 > [!TIP]
-> Odstraňuje se *podle klíčových slov* neměly by být zaměňovány odstranění označení (Změna tagu). Značka s pomocí příkazu Azure CLI můžete odstranit [az acr úložiště Odtagujte][az-acr-repository-untag]. Když Odtagujte bitovou kopii, protože není uvolněno místo v žádné její [manifest](#manifest) a vrstvy data zůstanou uložena v registru. Pouze značky referenční samotné se odstraní.
+> Odstraňuje se *podle klíčových slov* neměly by být zaměňovány odstranění označení (Změna tagu). Značka s pomocí příkazu Azure CLI můžete odstranit [az acr úložiště Odtagujte][az-acr-repository-untag]. Když Odtagujte bitovou kopii, protože není uvolněno místo v žádné její [manifest](#manifest) a vrstva dat zůstanou v registru. Pouze značky referenční samotné se odstraní.
 
 ## <a name="delete-by-manifest-digest"></a>Odstranit manifestu ověřování algoritmem digest
 
@@ -201,7 +201,56 @@ This operation will delete the manifest 'sha256:3168a21b98836dda7eb7a846b3d73528
 Are you sure you want to continue? (y/n): y
 ```
 
-"Acr-helloworld:v2" bitová kopie je odstraněna z registru, jako jsou všechna data vrstvy jedinečný této bitové kopie. Pokud manifest je přidruženo více značek, odstraní se také všechny přidružené značky.
+`acr-helloworld:v2` Bitová kopie je odstraněna z registru, jako jsou všechna data vrstvy jedinečný této bitové kopie. Pokud manifest je přidruženo více značek, odstraní se také všechny přidružené značky.
+
+### <a name="list-digests-by-timestamp"></a>Seznam přehledu pomocí časového razítka
+
+K udržování velikosti úložiště nebo registru, můžete potřebovat odstranit pravidelně manifestu přehledu starší než ke konkrétnímu datu.
+
+Následující příkaz rozhraní příkazového řádku Azure zobrazí seznam všech manifestu digest v úložišti starší než zadané časové razítko ve vzestupném pořadí. Nahraďte `<acrName>` a `<repositoryName>` s hodnotami, které jsou vhodné pro vaše prostředí. Časové razítko může být výraz úplné datum a čas nebo datum, jako v následujícím příkladu.
+
+```azurecli
+az acr repository show-manifests --name <acrName> --repository <repositoryName> \
+--orderby time_asc -o tsv --query "[?timestamp < '2019-04-05'].[digest, timestamp]"
+```
+
+### <a name="delete-digests-by-timestamp"></a>Odstranit přehledu pomocí časového razítka
+
+Po identifikaci zastaralé manifestu přehledu, můžete spustit následující skript Bash manifestu přehledu starší než zadané časové razítko odstranění. Vyžaduje Azure CLI a **xargs**. Ve výchozím nastavení že skript provádí žádná odstranění. Změnit `ENABLE_DELETE` hodnota, která se `true` Povolit odstranění image.
+
+> [!WARNING]
+> Použijte následující ukázkový skript s rozmyslem – data odstraněná image je NEOPRAVITELNÁ. Pokud máte systémy, které o přijetí změn imagí v manifestu digest (na rozdíl od název image), byste neměli spouštět tyto skripty. Odstranění manifestu přehledu zabrání těchto systémech stahování imagí z registru. Místo potažením manifestu, zvažte využití *jedinečné tagování* schéma, [osvědčený postup doporučuje][tagging-best-practices]. 
+
+```bash
+#!/bin/bash
+
+# WARNING! This script deletes data!
+# Run only if you do not have systems
+# that pull images via manifest digest.
+
+# Change to 'true' to enable image delete
+ENABLE_DELETE=false
+
+# Modify for your environment
+# TIMESTAMP can be a date-time string such as 2019-03-15T17:55:00.
+REGISTRY=myregistry
+REPOSITORY=myrepository
+TIMESTAMP=2019-04-05  
+
+# Delete all images older than specified timestamp.
+
+if [ "$ENABLE_DELETE" = true ]
+then
+    az acr repository show-manifests --name $REGISTRY --repository $REPOSITORY \
+    --orderby time_asc --query "[?timestamp < '$TIMESTAMP'].digest" -o tsv \
+    | xargs -I% az acr repository delete --name $REGISTRY --image $REPOSITORY@% --yes
+else
+    echo "No data deleted."
+    echo "Set ENABLE_DELETE=true to enable deletion of these images in $REPOSITORY:"
+    az acr repository show-manifests --name $REGISTRY --repository $REPOSITORY \
+   --orderby time_asc --query "[?timestamp < '$TIMESTAMP'].[digest, timestamp]" -o tsv
+fi
+```
 
 ## <a name="delete-untagged-images"></a>Odstranit neoznačených obrázků
 
@@ -257,14 +306,12 @@ az acr repository show-manifests --name <acrName> --repository <repositoryName> 
 
 ### <a name="delete-all-untagged-images"></a>Odstranit všechny neoznačených obrázků
 
-Pomocí následujících ukázkových skriptech s rozmyslem – odstranit data obrázku je NEOPRAVITELNÁ.
+> [!WARNING]
+> Pomocí následujících ukázkových skriptech s rozmyslem – odstranit data obrázku je NEOPRAVITELNÁ. Pokud máte systémy, které o přijetí změn imagí v manifestu digest (na rozdíl od název image), byste neměli spouštět tyto skripty. Odstranění neoznačených obrázků zabrání těchto systémech stahování imagí z registru. Místo potažením manifestu, zvažte využití *jedinečné tagování* schéma, [osvědčený postup doporučuje][tagging-best-practices].
 
 **Azure CLI v prostředí Bash**
 
 Následující skript Bash odstraní všechny neoznačených obrázků z úložiště. Vyžaduje Azure CLI a **xargs**. Ve výchozím nastavení že skript provádí žádná odstranění. Změnit `ENABLE_DELETE` hodnota, která se `true` Povolit odstranění image.
-
-> [!WARNING]
-> Pokud máte systémy, které o přijetí změn imagí v manifestu digest (na rozdíl od název image), byste neměli spouštět tento skript. Odstranění neoznačených obrázků zabrání těchto systémech stahování imagí z registru. Místo potažením manifestu, zvažte využití *jedinečné tagování* schéma, [osvědčený postup doporučuje][tagging-best-practices].
 
 ```bash
 #!/bin/bash
@@ -293,9 +340,6 @@ fi
 **Azure CLI v prostředí PowerShell**
 
 Následující skript prostředí PowerShell odstraní všechny neoznačených obrázků z úložiště. Vyžaduje prostředí PowerShell a rozhraní příkazového řádku Azure. Ve výchozím nastavení že skript provádí žádná odstranění. Změnit `$enableDelete` hodnota, která se `$TRUE` Povolit odstranění image.
-
-> [!WARNING]
-> Pokud máte systémy, které o přijetí změn imagí v manifestu digest (na rozdíl od název image), byste neměli spouštět tento skript. Odstranění neoznačených obrázků zabrání těchto systémech stahování imagí z registru. Místo potažením manifestu, zvažte využití *jedinečné tagování* schéma, [osvědčený postup doporučuje][tagging-best-practices].
 
 ```powershell
 # WARNING! This script deletes data!

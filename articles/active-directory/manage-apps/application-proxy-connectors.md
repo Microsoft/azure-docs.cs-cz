@@ -12,12 +12,12 @@ ms.date: 11/15/2018
 ms.author: celested
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4f96a67fecead65af28a975267590ebb08c715d3
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: a787e896016b3230d389b2ec140ae6c03477d875
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57853000"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59684085"
 ---
 # <a name="understand-azure-ad-application-proxy-connectors"></a>Principy konektorů Proxy aplikací Azure AD
 
@@ -74,6 +74,8 @@ U klientů s více konektorů jako cíl automatické aktualizace jeden konektor 
 Po aktualizaci vašeho konektoru, pokud se můžete setkat s výpadky:  
 - Máte jenom jeden konektor doporučujeme nainstalovat druhý konektor a [vytvořit skupinu konektorů, která](application-proxy-connector-groups.md). To zabraňuje výpadkům a zajištění vyšší dostupnosti.  
 - Konektor byl uprostřed transakcí při zahájení aktualizace. I když dojde ke ztrátě počáteční transakce, váš prohlížeč automaticky operaci opakovat nebo můžete aktualizovat stránku. Když žádost se zopakuje, provoz se rozšíří do zálohování konektoru.
+
+Pokud chcete zobrazit informace o dřív vydaných verzí a změny, které jsou patří, naleznete v tématu [Application Proxy - historie vydaných verzí](application-proxy-release-version-history.md).
 
 ## <a name="creating-connector-groups"></a>Vytvoření skupiny konektorů
 

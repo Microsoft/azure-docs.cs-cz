@@ -13,16 +13,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/13/2019
 ms.author: magoedte
-ms.openlocfilehash: f7a0300619d82f760c0e307601efbd3987eb6067
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: a60413ee6614b638db58748ee2c0aea5d7ea32ea
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58004583"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59697885"
 ---
 # <a name="what-is-azure-monitor-for-vms-preview"></a>Co je Azure Monitor pro virtuální počítače (preview)?
 
-Azure Monitor pro virtuální počítače monitoruje virtuální počítače Azure (VM) a škálovacích sad virtuálních počítačů ve velkém měřítku. Analyzuje výkonu a stavu systému Windows a virtuální počítače s Linuxem a monitoruje jejich procesy a závislosti na jiných zdrojů a externí procesů. 
+Azure Monitor pro virtuální počítače monitoruje virtuální počítače Azure (VM) a škálovacích sad virtuálních počítačů ve velkém měřítku. Analyzuje výkon a stav virtuálních počítačů s Windows a Linuxem a monitoruje jejich procesy a závislosti na jiných prostředcích a externích procesech. 
 
 Azure Monitor pro virtuální počítače jako řešení, zahrnuje podporu pro monitorování výkonu a používání závislosti virtuálních počítačů, které jsou hostované v místním prostředí nebo jiného zprostředkovatele cloudu. Tři klíčové funkce poskytovat podrobnější informace:
 
@@ -39,7 +39,7 @@ Funkce jsou uspořádané do tří perspektiv:
 * Mapa
 
 >[!NOTE]
->V současné době funkce stavu nabízí pouze pro Azure virtual machines a virtual machine scale sets. Výkon a funkce mapování podporují virtuální počítače Azure a virtuální počítače, které jsou hostované ve vašem prostředí nebo jiný poskytovatel cloudu.
+>Funkce stavu je v současné době nabízí jenom pro virtuální počítače Azure. Výkon a funkce mapování podporují virtuální počítače Azure, škálovací sady virtuálních počítačů Azure a virtuální počítače, které jsou hostované ve vašem prostředí nebo jiný poskytovatel cloudu.
 
 Integrace s protokoly Azure monitoru poskytuje výkonné agregace a filtrování, a to analyzovat trendy v datech v čase. Tyto úlohy komplexní monitorování není možné dosáhnout s Azure Monitor nebo Service Map samostatně.  
 

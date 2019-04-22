@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: article
-ms.date: 02/21/2019
+ms.date: 04/16/2019
 ms.author: tulasim
-ms.openlocfilehash: d14e2897183a97da5e84a76b699def529f1d167e
-ms.sourcegitcommit: 48a41b4b0bb89a8579fc35aa805cea22e2b9922c
+ms.openlocfilehash: c18ededc428b215720f8a6a6857a2eabd93bff8b
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/15/2019
-ms.locfileid: "59579406"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59683582"
 ---
 # <a name="get-a-knowledge-answer-with-the-generateanswer-api-and-metadata"></a>Získání odpovědí znalostní báze s rozhraním GenerateAnswer API a metadat
 
@@ -46,7 +46,7 @@ Použití rozhraní API GenerateAnswer v váš Bot nebo aplikaci k dotazování 
 Po publikování znalostní báze, buď z [portál QnA Maker](https://www.qnamaker.ai), nebo pomocí [API](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75ff), můžete získat podrobné GenerateAnswer koncového bodu.
 
 Získat podrobnosti o vašich koncových bodů:
-1. Přihlaste se k [ https://www.qnamaker.ai ](https://www.qnamaker.ai).
+1. Přihlaste se k webu [https://www.qnamaker.ai](https://www.qnamaker.ai).
 1. V **Moje znalostních bází**, klikněte na **zobrazit kód** pro znalostní báze.
     ![Moje znalostních bází](../media/qnamaker-how-to-metadata-usage/my-knowledge-bases.png)
 1. Získáte podrobnosti o vašich GenerateAnswer koncového bodu.
@@ -64,7 +64,7 @@ Volání GenerateAnswer pomocí požadavku HTTP POST. Ukázkový kód, který uk
 **Adresa URL požadavku** má následující formát: 
 
 ```
-https://{QnA-Maker-endpoint}/knowledgebases/{knowledge-base-ID}/generateAnswer?isTest=true
+https://{QnA-Maker-endpoint}/knowledgebases/{knowledge-base-ID}/generateAnswer
 ```
 
 |Vlastnost požadavku HTTP|Název|Type|Účel|
@@ -84,7 +84,7 @@ Text JSON má několik nastavení:
 |`top`|nepovinné|integer|Číslo seřazený výsledků, které chcete zahrnout do výstupu. Výchozí hodnota je 1.|
 |`userId`|nepovinné|string|Jedinečné ID k identifikaci uživatele. Toto ID se zaznamená do protokolů chatu.|
 |`isTest`|nepovinné|Boolean|Pokud nastavena na hodnotu true, vrátí výsledky z `testkb` indexu vyhledávání místo publikované indexu.|
-|`strictFilters`|nepovinné|string|Je-li zadána, říká QnA Maker vrátit pouze odpovědi, které mají zadanou metadat.|
+|`strictFilters`|nepovinné|string|Je-li zadána, říká QnA Maker vrátit pouze odpovědi, které mají zadanou metadat. Použití `none` znamená, odpověď by měla mít žádné filtry metadat. |
 
 Příklad text JSON vypadá takto:
 

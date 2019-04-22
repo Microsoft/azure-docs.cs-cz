@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 03/06/2019
+ms.date: 04/16/2019
 ms.author: orspod
-ms.openlocfilehash: 6138fadd060051c1b4264cd844ca2a4b8c28116a
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
-ms.translationtype: MT
+ms.openlocfilehash: 756ede9cc90655163d6d53aa3ca920d2a15fb43d
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58880028"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59682487"
 ---
 # <a name="copy-data-to-or-from-azure-data-explorer-using-azure-data-factory"></a>Kopírování dat do nebo z Průzkumníku dat Azure pomocí Azure Data Factory
 
@@ -38,6 +38,9 @@ Průzkumník dat Azure konektor umožňuje postupujte takto:
 * Jako jímka připojte data do cílové tabulky.
 
 ## <a name="getting-started"></a>Začínáme
+
+>[!TIP]
+>Návod k používání konektoru Průzkumník dat Azure, najdete v článku [kopírování dat do a z Průzkumníku dat Azure pomocí Azure Data Factory](../data-explorer/data-factory-load-data.md).
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 

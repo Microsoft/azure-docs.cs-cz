@@ -8,12 +8,12 @@ ms.service: advisor
 ms.topic: article
 ms.date: 01/29/2019
 ms.author: kasparks
-ms.openlocfilehash: 140c8b2ab9b7985652a6474a1a9373e0d453b9e6
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 188a79df99a174436808acd3d964abf9357cf4c0
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57900722"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59699319"
 ---
 # <a name="reduce-service-costs-using-azure-advisor"></a>Snižte náklady na službu pomocí Azure Advisoru
 
@@ -37,9 +37,9 @@ Advisor identifikuje bran virtuální sítě, které byly nečinné po dobu víc
 
 ## <a name="buy-reserved-virtual-machine-instances-to-save-money-over-pay-as-you-go-costs"></a>Nákup rezervované instance virtuálních počítačů ušetříte peníze, než byste platili s průběžnými platbami
 
-Advisor bude zkontrolovat využívání virtuálních počítačů za posledních 30 dní a určit, pokud po zakoupení Azure rezervace můžete ušetřit peníze. Služby Advisor se dozvíte, oblasti a velikosti, ve kterém jste potenciálně většina úspory a zobrazí Odhadované úspory z nákupu rezervace. 
+Advisor bude zkontrolovat využívání virtuálních počítačů za posledních 30 dní a určit, pokud po zakoupení Azure rezervace můžete ušetřit peníze. Služby Advisor se dozvíte, oblasti a velikosti, ve kterém jste potenciálně většina úspory a zobrazí Odhadované úspory z nákupu rezervace. S Azure rezervace, předem pro můžete zakoupit základní náklady na virtuální počítače. Slevy automaticky použije nový nebo existující virtuální počítače, které mají stejné velikosti a oblasti jako vaše rezervace. [Další informace o Azure Reserved VM Instances.](https://azure.microsoft.com/pricing/reserved-vm-instances/)
 
-S Azure rezervace, předem pro můžete zakoupit základní náklady na virtuální počítače. Slevy automaticky použije nový nebo existující virtuální počítače, které mají stejné velikosti a oblasti jako vaše rezervace. [Další informace o Azure Reserved VM Instances.](https://azure.microsoft.com/pricing/reserved-vm-instances/)
+Advisor vám také oznámí rezervované instance, které máte, které vyprší během následujících 30 dní. Vám doporučí, nákupu nového rezervované instance, abyste neplatili ceny s průběžnými platbami.
 
 ## <a name="delete-unassociated-public-ip-addresses-to-save-money"></a>Odstranit nepřidružené veřejné IP adresy ušetříte peníze
 

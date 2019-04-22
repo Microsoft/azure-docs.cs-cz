@@ -17,12 +17,12 @@ ms.date: 11/13/2018
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 126eee1664d810850f63e702abe78b241649d665
-ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
+ms.openlocfilehash: f1423fddc13a6912e90b6a239921cf2a4d2662ec
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58438814"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59683729"
 ---
 # <a name="azure-active-directory-report-retention-policies"></a>Zásady uchování sestav Azure Active Directory
 
@@ -68,9 +68,9 @@ Pro zabezpečení signály, proces shromažďování začíná můžete vyjádř
 
 | Sestava                 | Azure AD Free | Azure AD Basic | Azure AD Premium P1 | Azure AD Premium P2 |
 | :--                    | :--           | :--            | :--                 | :--                 |
-| Audit adresáře        | 7 dní        |  7 dní        | 30 dní             | 30 dní             |
-| Přihlašovací aktivita       | neuvedeno           |  neuvedeno           | 30 dní             | 30 dní             |
-| Použití Azure MFA        | 30 dní       |  30 dní       | 30 dní             | 30 dní             |
+| Protokoly auditu             | 7 dní        |  7 dní        | 30 dní             | 30 dní             |
+| Přihlášení               | neuvedeno           |  neuvedeno           | 30 dní             | 30 dní             |
+| Využití Azure MFA        | 30 dní       |  30 dní       | 30 dní             | 30 dní             |
 
 Můžete zachovat data aktivit auditu a přihlaste se po dobu delší než výchozí dobu uchování uvedených výše přesměrováním do účtu služby Azure storage pomocí Azure monitoru. Další informace najdete v tématu [archiv služby Azure AD se zaznamená do účtu služby Azure storage](quickstart-azure-monitor-route-logs-to-storage-account.md).
 

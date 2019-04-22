@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 9/24/2018
 ms.author: aljo
-ms.openlocfilehash: de5522e68d1329ce2b80a4d3c7045d38c13169e5
-ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
-ms.translationtype: MT
+ms.openlocfilehash: d99000e1682b662f4bceb28096395243c894282f
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57191643"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59681603"
 ---
 # <a name="supported-service-fabric-versions"></a>Podporované verze Service Fabric
 
@@ -30,7 +30,9 @@ Přečtěte si následující dokumenty na podrobnosti o tom, jak zajistit clust
 - [Upgrade verze Service Fabric v clusteru Azure](service-fabric-cluster-upgrade.md)
 - [Upgrade Service Fabric verze na serveru windows samostatného clusteru](service-fabric-cluster-upgrade-windows-server.md)
 
-Tady je seznam podporovaných verzích Service Fabric a jejich podpora koncové datum.
+## <a name="supported-versions"></a>Podporované verze
+
+V následující tabulce jsou uvedeny podporované verze Service Fabric a jejich podpora koncové datum.
 
 | **Modul runtime Service Fabric v clusteru** | **Můžete upgradovat přímo z verze clusteru** |**Kompatibilní SDK / verze balíčku NuGet** | **Podpora datum ukončení** |
 | --- | --- |--- | --- |
@@ -45,3 +47,18 @@ Tady je seznam podporovaných verzích Service Fabric a jejich podpora koncové 
 | 6.2.* | 6.0.232.* |Menší nebo rovna verzi 3.1 |Říjen 26,2018   |
 | 6.3.* | 6.1.480.* |Menší nebo rovna verzi 3.2 |Březen 31,2019  |
 | 6.4.* | 6.2.301.* |Menší nebo rovna verze 3.3 |Aktuální verze a proto žádné datum ukončení |
+
+## <a name="supported-operating-systems"></a>Podporované operační systémy
+
+ Následující tabulka uvádí podporované operační systémy podporované verze Service Fabric.
+
+| **Operační systém** | **Verze Fabric nejstarší podporované služby** |
+| --- | --- |
+| Windows Server 2012 R2 | Všechny verze |
+| Windows Server 2016 | Všechny verze |
+| Windows Server 1709 | 6.0 |
+| Windows Server 1803 | 6.4 |
+| Windows Server 1809 | 6.4.654.9590 |
+| Windows Server 2019 | 6.4.654.9590 |
+| Linux Ubuntu 16.04 | 6.0 |
+

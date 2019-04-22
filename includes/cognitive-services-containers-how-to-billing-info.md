@@ -3,13 +3,13 @@ author: diberry
 ms.author: diberry
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 03/11/2019
-ms.openlocfilehash: 200e2dfd2dd4f9aedd9256b307491a0b207ea124
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.date: 04/16/2019
+ms.openlocfilehash: e92d1c65d9601c23e7e785f07e2de3e43ea6612b
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57964106"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59684646"
 ---
 Účtují se podle cenové úrovně prostředků Azure používá pro dotazy do kontejneru `<ApiKey>`.
 
@@ -26,7 +26,7 @@ Všechny tři z následujících možností musí být zadaný pomocí platné h
 | Možnost | Popis |
 |--------|-------------|
 | `ApiKey` | Klíč rozhraní API služby Cognitive Services prostředku lze sledovat fakturační údaje.<br/>Hodnota této možnosti musí být nastavená na klíče rozhraní API pro zřízené prostředek určený v `Billing`. |
-| `Billing` | Koncový bod služby Cognitive Services prostředek, který používá ke sledování fakturační údaje.<br/>Hodnota této možnosti musí nastavena na identifikátor URI se zřídil prostředek LUIS Azure koncový bod.|
+| `Billing` | Koncový bod služby Cognitive Services prostředek, který používá ke sledování fakturační údaje.<br/>Hodnota této možnosti musíte ke koncovému bodu identifikátor URI se zřídil prostředek Azure.|
 | `Eula` | Označuje, že jste přijali licenci pro kontejner.<br/>Hodnota této možnosti musí být nastavená na `accept`. |
 
 

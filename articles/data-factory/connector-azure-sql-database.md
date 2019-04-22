@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 04/08/2019
+ms.date: 04/16/2019
 ms.author: jingwang
-ms.openlocfilehash: d0ecf6a48735ec2ba1623f97d4760d230a6e6fbf
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: 749b5690f5814bb2f63f9f4451bba85990166acd
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59266296"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59683864"
 ---
 # <a name="copy-data-to-or-from-azure-sql-database-by-using-azure-data-factory"></a>Kopírování dat do nebo ze služby Azure SQL Database s použitím služby Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you use:"]
@@ -63,8 +63,8 @@ Pro služby Azure SQL Database, která je propojená se podporují tyto vlastnos
 
 Různými typy ověřování najdete v následujících částech na požadavky a ukázky JSON v uvedeném pořadí:
 
-- [Ověřování pomocí SQL](#sql-authentication)
-- [Azure AD ověřování tokenu aplikací: Instanční objekt](#service-principal-authentication)
+- [Ověřování SQL](#sql-authentication)
+- [Azure AD ověřování tokenu aplikací: Instanční objekt služby](#service-principal-authentication)
 - [Azure AD ověřování tokenu aplikací: Spravované identity pro prostředky Azure](#managed-identity)
 
 >[!TIP]
@@ -132,21 +132,21 @@ Pokud chcete používat ověřování tokenu aplikací služeb na základě inst
     - Klíč aplikace
     - ID tenanta
 
-1. **[Zřízení správce Azure Active Directory](../sql-database/sql-database-aad-authentication-configure.md#provision-an-azure-active-directory-administrator-for-your-azure-sql-database-server)**  pro váš server Azure SQL na portálu Azure portal, pokud jste tak již neučinili. Správce Azure AD musíte mít roli uživatele Azure AD nebo skupině Azure AD, ale nemůže být instančního objektu. Tento krok se provádí tak, aby v dalším kroku, můžete použít Azure AD identity uživatele databáze s omezením pro službu vytvořit instanční objekt.
+2. **[Zřízení správce Azure Active Directory](../sql-database/sql-database-aad-authentication-configure.md#provision-an-azure-active-directory-administrator-for-your-azure-sql-database-server)**  pro váš server Azure SQL na portálu Azure portal, pokud jste tak již neučinili. Správce Azure AD musíte mít roli uživatele Azure AD nebo skupině Azure AD, ale nemůže být instančního objektu. Tento krok se provádí tak, aby v dalším kroku, můžete použít Azure AD identity uživatele databáze s omezením pro službu vytvořit instanční objekt.
 
-1. **[Vytvořit uživatele databáze s omezením](../sql-database/sql-database-aad-authentication-configure.md#create-contained-database-users-in-your-database-mapped-to-azure-ad-identities)**  pro instanční objekt. Připojení k databázi z nebo na který se má ke kopírování dat pomocí nástrojů, jako je SSMS, identity Azure AD, který má alespoň oprávnění ALTER ANY uživatele. Spusťte následující příkaz T-SQL: 
+3. **[Vytvořit uživatele databáze s omezením](../sql-database/sql-database-aad-authentication-configure.md#create-contained-database-users-in-your-database-mapped-to-azure-ad-identities)**  pro instanční objekt. Připojení k databázi z nebo na který se má ke kopírování dat pomocí nástrojů, jako je SSMS, identity Azure AD, který má alespoň oprávnění ALTER ANY uživatele. Spusťte následující příkaz T-SQL: 
     
     ```sql
     CREATE USER [your application name] FROM EXTERNAL PROVIDER;
     ```
 
-1. **Udělte nezbytná oprávnění instančního objektu** SQL uživatelů nebo jiné obvyklým způsobem. Spusťte následující kód:
+4. **Udělte nezbytná oprávnění instančního objektu** SQL uživatelů nebo jiné obvyklým způsobem. Spusťte následující kód, nebo si přečtěte další možnosti [tady](https://docs.microsoft.com/en-us/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql?view=sql-server-2017).
 
     ```sql
     EXEC sp_addrolemember [role name], [your application name];
     ```
 
-1. **Konfigurace služby Azure SQL Database, která je propojená** ve službě Azure Data Factory.
+5. **Konfigurace služby Azure SQL Database, která je propojená** ve službě Azure Data Factory.
 
 
 #### <a name="linked-service-example-that-uses-service-principal-authentication"></a>Příklad propojené služby, který používá ověřování instančních objektů
@@ -182,31 +182,21 @@ Je možné přidružit datové továrny [spravované identity pro prostředky Az
 
 Použití spravované identity ověřování, postupujte podle těchto kroků:
 
-1. **Vytvoření skupiny ve službě Azure AD.** Nastavte spravovanou identitu člena skupiny.
-    
-   1. Najdete objekt pro vytváření spravované identity data z webu Azure portal. Přejděte do služby data factory **vlastnosti**. Zkopírujte ID služby IDENTIT.
-    
-   1. Nainstalujte [Azure AD PowerShell](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2) modulu. Přihlaste se pomocí `Connect-AzureAD` příkazu. Spuštěním následujících příkazů vytvořte skupinu a přidejte spravovanou identitu jako člena.
-      ```powershell
-      $Group = New-AzureADGroup -DisplayName "<your group name>" -MailEnabled $false -SecurityEnabled $true -MailNickName "NotSet"
-      Add-AzureAdGroupMember -ObjectId $Group.ObjectId -RefObjectId "<your data factory managed identity object ID>"
-      ```
-    
 1. **[Zřízení správce Azure Active Directory](../sql-database/sql-database-aad-authentication-configure.md#provision-an-azure-active-directory-administrator-for-your-azure-sql-database-server)**  pro váš server Azure SQL na portálu Azure portal, pokud jste tak již neučinili. Správce Azure AD může být skupina Azure AD nebo uživatel Azure AD. Když udělíte skupině pomocí spravované identity roli správce, přeskočte kroky 3 a 4. Správce bude mít plný přístup k databázi.
 
-1. **[Vytvořit uživatele databáze s omezením](../sql-database/sql-database-aad-authentication-configure.md#create-contained-database-users-in-your-database-mapped-to-azure-ad-identities)**  pro skupiny služby Azure AD. Připojení k databázi z nebo na který se má ke kopírování dat pomocí nástrojů, jako je SSMS, identity Azure AD, který má alespoň oprávnění ALTER ANY uživatele. Spusťte následující příkaz T-SQL: 
+2. **[Vytvořit uživatele databáze s omezením](../sql-database/sql-database-aad-authentication-configure.md#create-contained-database-users-in-your-database-mapped-to-azure-ad-identities)**  pro identitu spravované Data Factory. Připojení k databázi z nebo na který se má ke kopírování dat pomocí nástrojů, jako je SSMS, identity Azure AD, který má alespoň oprávnění ALTER ANY uživatele. Spusťte následující příkaz T-SQL: 
     
     ```sql
-    CREATE USER [your AAD group name] FROM EXTERNAL PROVIDER;
+    CREATE USER [your Data Factory name] FROM EXTERNAL PROVIDER;
     ```
 
-1. **Udělte skupině Azure AD nezbytná oprávnění** obvyklým způsobem pro uživatele serveru SQL a další. Například spusťte následující kód:
+3. **Identita spravované objekt pro vytváření dat nezbytná oprávnění udělit** obvyklým způsobem pro uživatele serveru SQL a další. Spusťte následující kód, nebo si přečtěte další možnosti [tady](https://docs.microsoft.com/en-us/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql?view=sql-server-2017).
 
     ```sql
-    EXEC sp_addrolemember [role name], [your AAD group name];
+    EXEC sp_addrolemember [role name], [your Data Factory name];
     ```
 
-1. **Konfigurace služby Azure SQL Database, která je propojená** ve službě Azure Data Factory.
+4. **Konfigurace služby Azure SQL Database, která je propojená** ve službě Azure Data Factory.
 
 **Příklad:**
 
@@ -611,9 +601,9 @@ Při kopírování dat z nebo do služby Azure SQL Database, se používají ná
 | date |DateTime |
 | Datetime |DateTime |
 | datetime2 |DateTime |
-| Datetimeoffset |DateTimeOffset |
+| Datetimeoffset |Datetimeoffset |
 | Decimal |Decimal |
-| FILESTREAM attribute (varbinary(max)) |Byte[] |
+| Atribut FILESTREAM (varbinary(max)) |Byte[] |
 | Float |Double |
 | image |Byte[] |
 | int |Int32 |
@@ -623,14 +613,14 @@ Při kopírování dat z nebo do služby Azure SQL Database, se používají ná
 | numeric |Decimal |
 | nvarchar |String, Char[] |
 | real |Single |
-| rowversion |Byte[] |
+| ROWVERSION |Byte[] |
 | smalldatetime |DateTime |
 | smallint |Int16 |
 | smallmoney |Decimal |
 | sql_variant |Object |
 | text |String, Char[] |
 | time |TimeSpan |
-| timestamp |Byte[] |
+| časové razítko |Byte[] |
 | tinyint |Byte |
 | uniqueidentifier |Guid |
 | varbinary |Byte[] |

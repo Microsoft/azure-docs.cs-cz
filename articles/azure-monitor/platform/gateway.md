@@ -11,14 +11,14 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 03/04/2019
+ms.date: 04/17/2019
 ms.author: magoedte
-ms.openlocfilehash: 81005c2c95c9cccb32796d1afca4208f5ff8b919
-ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
+ms.openlocfilehash: b0b221a9fe6c6482e8759664c297dbd25d0ee776
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58437335"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59699266"
 ---
 # <a name="connect-computers-without-internet-access-by-using-the-log-analytics-gateway-in-azure-monitor"></a>Připojit počítače bez připojení k Internetu pomocí brány Log Analytics ve službě Azure Monitor
 
@@ -124,9 +124,9 @@ nebo
 1. V okně pracovního prostoru v části **nastavení**vyberte **upřesňující nastavení**.
 1. Přejděte na **připojené zdroje** > **servery Windows** a vyberte **stáhnout Log Analytics gateway**.
 
-## <a name="install-the-log-analytics-gateway"></a>Instalace brány Log Analytics
+## <a name="install-log-analytics-gateway-using-setup-wizard"></a>Instalace pomocí Průvodce instalací brány Log Analytics
 
-Pokud chcete nainstalovat bránu, postupujte takto.  (Pokud jste nainstalovali předchozí verzi volá předávání Log Analytics, bude upgradována na tuto verzi.)
+Pokud chcete nainstalovat pomocí Průvodce instalací brány, postupujte takto. 
 
 1. Z cílové složky, dvakrát klikněte na panel **Log Analytics gateway.msi**.
 1. Na **úvodní** stránce vyberte **Další**.
@@ -152,6 +152,40 @@ Pokud chcete nainstalovat bránu, postupujte takto.  (Pokud jste nainstalovali p
 
    ![Snímek obrazovky z místní služby, zda je spuštěna brána OMS](./media/gateway/gateway-service.png)
 
+## <a name="install-the-log-analytics-gateway-using-the-command-line"></a>Nainstalujte si bránu Log Analytics pomocí příkazového řádku
+Stažený soubor brány je balíček Instalační služby systému Windows, který podporuje tichou instalaci z příkazového řádku nebo jiné metody automatizované. Pokud nejste obeznámeni s standardní možnosti příkazového řádku pro Instalační služby systému Windows, přečtěte si téma [možnosti příkazového řádku](https://docs.microsoft.com/windows/desktop/Msi/command-line-options).   
+
+Následující tabulka obsahuje parametry podporované instalačním programem.
+
+|Parametry| Poznámky|
+|----------|------| 
+|ČÍSLO_PORTU | Číslo portu TCP pro bránu pro naslouchání |
+|PROXY | IP adresa proxy serveru |
+|INSTALLDIR | Plně kvalifikovaná cesta k určení instalační adresář souborů softwaru brány |
+|UŽIVATELSKÉ JMÉNO | Id uživatele pro ověření proxy serveru |
+|HESLO | Heslo uživatele, Id pro ověřování pomocí serveru proxy |
+|LicenseAccepted | Zadejte hodnotu **1** ověření přijmout podmínky licenční smlouvy |
+|HASAUTH | Zadejte hodnotu **1** Pokud jsou zadány parametry uživatelského jména a HESLA |
+|HASPROXY | Zadejte hodnotu **1** při zadávání IP adresu pro **PROXY** parametr |
+
+Bezobslužná instalace brány a nakonfigurovat konkrétní proxy server s adresou, číslo portu, zadejte následující příkaz:
+
+```dos
+Msiexec.exe /I “oms gateway.msi” /qn PORTNUMBER=8080 PROXY=”10.80.2.200” HASPROXY=1 LicenseAccepted=1 
+```
+
+Pomocí možnosti příkazového řádku /qn skryje instalační program, /qb zobrazí instalační program během bezobslužné instalace.  
+
+Pokud je potřeba zadat přihlašovací údaje pro ověřování pomocí serveru proxy, zadejte následující příkaz:
+
+```dos
+Msiexec.exe /I “oms gateway.msi” /qn PORTNUMBER=8080 PROXY=”10.80.2.200” HASPROXY=1 HASAUTH=1 USERNAME=”<username>” PASSWORD=”<password>” LicenseAccepted=1 
+```
+
+Po dokončení instalace můžete potvrdit nastavení, musí být přijato (stop uživatelského jména a hesla) pomocí následujících rutin Powershellu:
+
+- **Get-OMSGatewayConfig** – vrátí brána je nakonfigurovaná k naslouchání na portu TCP.
+- **Get-OMSGatewayRelayProxy** – vrátí IP adresu proxy serveru, můžete ji nakonfigurovali pro komunikaci s.
 
 ## <a name="configure-network-load-balancing"></a>Konfigurace služby Vyrovnávání zatížení sítě 
 Bránu pro zajištění vysoké dostupnosti pomocí služby Vyrovnávání zatížení sítě (NLB) společnosti Microsoft můžete nakonfigurovat [načíst vyrovnávání sítě (NLB)](https://docs.microsoft.com/windows-server/networking/technologies/network-load-balancing), [Azure Load Balancer](../../load-balancer/load-balancer-overview.md), nebo nástroje pro vyrovnávání zatížení na základě hardwaru. Nástroje pro vyrovnávání zatížení spravuje provozu přesměrování mezi jeho uzly požadované připojení z agentů Log Analytics nebo serverů pro správu Operations Manageru. Pokud jeden server brány ocitne mimo provoz, provoz přesměrován do dalších uzlů.

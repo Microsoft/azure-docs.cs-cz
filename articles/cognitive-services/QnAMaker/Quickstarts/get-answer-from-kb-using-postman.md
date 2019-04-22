@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: quickstart
-ms.date: 04/05/2019
+ms.date: 04/16/2019
 ms.author: diberry
-ms.openlocfilehash: d12051821faa60940bf2acc569c6552561b4b3ee
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: 24bd6731faa9788dc336db199aa9776813e7348f
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59267936"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59683439"
 ---
 # <a name="quickstart-get-an-answer-from-knowledge-base-using-postman"></a>Rychlý start: Získat odpověď ze znalostní báze pomocí nástroje Postman
 
@@ -36,44 +36,42 @@ Při publikování znalostní báze **publikovat** zobrazí se stránka nastaven
 
 Žlutý čísla na následujícím obrázku určují, které název/hodnota dvojice používat v následujících krocích.
 
-[![Pvýsledky ublikovat](../media/qnamaker-quickstart-get-answer-with-postman/publish-settings.png)](../media/qnamaker-quickstart-get-answer-with-postman/publish-settings.png#lightbox)
+[![Publikování výsledků](../media/qnamaker-quickstart-get-answer-with-postman/publish-settings.png)](../media/qnamaker-quickstart-get-answer-with-postman/publish-settings.png#lightbox)
 
 Ke generování odpovědi pomocí Postman, proveďte následující kroky:
 
 1. Otevřete nástroj Postman. Pokud budete vyzváni k výběru stavebním blokem, vyberte **základní žádosti** stavebním blokem. Nastavte **název žádosti** jako `Generate QnA Maker answer`a **kolekce** jako `Generate QnA Maker answers`. Pokud nechcete uložit do kolekce, vyberte **zrušit** tlačítko.
 1. V pracovním prostoru, vyberte metodu HTTP **příspěvek**.
 
-    [![In Postman, nastavte metodu POST](../media/qnamaker-quickstart-get-answer-with-postman/postman-select-post-method.png)](../media/qnamaker-quickstart-get-answer-with-postman/postman-select-post-method.png#lightbox)
+    [![V nástroji Postman nastavte metodu POST](../media/qnamaker-quickstart-get-answer-with-postman/postman-select-post-method.png)](../media/qnamaker-quickstart-get-answer-with-postman/postman-select-post-method.png#lightbox)
 
 1. Pro adresu URL zřetězíte hodnotu hostitele (č. 2 z bitové kopie) a hodnotu Post (č. 1 z image) Chcete-li vytvořit úplnou adresu URL. Kompletní příklad adresa URL vypadá jako: 
 
     `https://qnamaker-f0.azurewebsites.net/qnamaker/knowledgebases/e1115f8c-d01b-4698-a2ed-85b0dbf3348c/generateAnswer`
 
-    [![In Postman, nastavte úplnou adresu URL](../media/qnamaker-quickstart-get-answer-with-postman/set-postman-method-and-url.png)](../media/qnamaker-quickstart-get-answer-with-postman/set-postman-method-and-url.png#lightbox)
+    [![V nástroji Postman nastavte úplnou adresu URL](../media/qnamaker-quickstart-get-answer-with-postman/set-postman-method-and-url.png)](../media/qnamaker-quickstart-get-answer-with-postman/set-postman-method-and-url.png#lightbox)
 
 1. Vyberte **záhlaví** pod poli Adresa URL a potom vyberte **hromadných úprav**. 
 
 1. Zkopírujte do textového pole hlavičky (#3 a 4 # z image).
 
-    [![In Postman, nastavit hlavičky](../media/qnamaker-quickstart-get-answer-with-postman/set-postman-headers.png)](../media/qnamaker-quickstart-get-answer-with-postman/set-postman-headers.png#lightbox)
+    [![V nástroji Postman by nastavit hlavičky](../media/qnamaker-quickstart-get-answer-with-postman/set-postman-headers.png)](../media/qnamaker-quickstart-get-answer-with-postman/set-postman-headers.png#lightbox)
 
 1. Vyberte **tělo** kartu.
 1. Vyberte **nezpracovaná** formátování a zadejte ve formátu JSON (č. 5 z image), který představuje dotaz.
 
     `{"question":"How do I programmatically update my Knowledge Base?"}`
 
-    [![Itělo hodnoty JSON nastavit n Postman](../media/qnamaker-quickstart-get-answer-with-postman/set-postman-body-json-value.png)](../media/qnamaker-quickstart-get-answer-with-postman/set-postman-body-json-value.png#lightbox)
+    [![V nástroji Postman by tělo nastavit, že hodnota JSON](../media/qnamaker-quickstart-get-answer-with-postman/set-postman-body-json-value.png)](../media/qnamaker-quickstart-get-answer-with-postman/set-postman-body-json-value.png#lightbox)
 
 1. Vyberte **odeslat** tlačítko.
 1. Odpověď obsahuje odpověď spolu s dalšími informacemi, které mohou být důležité do klientské aplikace. 
 
-    [![Itělo hodnoty JSON nastavit n Postman](../media/qnamaker-quickstart-get-answer-with-postman/receive-postman-response.png)](../media/qnamaker-quickstart-get-answer-with-postman/receive-postman-response.png#lightbox)
+    [![V nástroji Postman by tělo nastavit, že hodnota JSON](../media/qnamaker-quickstart-get-answer-with-postman/receive-postman-response.png)](../media/qnamaker-quickstart-get-answer-with-postman/receive-postman-response.png#lightbox)
 
 ## <a name="use-staging-endpoint"></a>Použít pracovní koncový bod
 
-Pokud chcete získat odpověď z pracovní koncového bodu, připojte k adrese URL se logický parametr querystring `isTest` s hodnotou `true`.
-
-`?isTest=true`
+Pokud chcete získat odpověď z pracovní koncového bodu, připojte k adrese URL se `isTest` vlastnost body.
 
 ## <a name="next-steps"></a>Další postup
 

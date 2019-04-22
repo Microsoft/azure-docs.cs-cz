@@ -1,45 +1,38 @@
 ---
 title: Kurz – vytvoření služby application gateway pomocí firewallu webových aplikací – Azure portal | Dokumentace Microsoftu
-description: Zjistěte, jak vytvořit službu application gateway s firewallem webových aplikací s využitím webu Azure portal.
+description: V tomto kurzu se dozvíte, jak vytvořit službu application gateway s firewallem webových aplikací s využitím webu Azure portal.
 services: application-gateway
 author: vhorne
-manager: jpconnock
-editor: tysonn
-tags: azure-resource-manager
 ms.service: application-gateway
-ms.topic: article
-ms.workload: infrastructure-services
-ms.date: 03/25/2019
+ms.topic: tutorial
+ms.date: 4/16/2019
 ms.author: victorh
-ms.openlocfilehash: 1284ddec4cd9cea3ea53c20d437550405dd614d9
-ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
+ms.openlocfilehash: 206895768ea48e352e4f7fe90ab597f3756586dd
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58905864"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59682844"
 ---
-# <a name="create-an-application-gateway-with-a-web-application-firewall-using-the-azure-portal"></a>Vytvoření služby application gateway s firewallem webových aplikací, pomocí webu Azure portal
+# <a name="tutorial-create-an-application-gateway-with-a-web-application-firewall-using-the-azure-portal"></a>Kurz: Vytvoření služby application gateway s firewallem webových aplikací, pomocí webu Azure portal
 
-> [!div class="op_single_selector"]
->
-> - [portál Azure](application-gateway-web-application-firewall-portal.md)
-> - [PowerShell](tutorial-restrict-web-traffic-powershell.md)
-> - [Azure CLI](tutorial-restrict-web-traffic-cli.md)
->
-> 
+V tomto kurzu se dozvíte, jak pomocí webu Azure portal k vytvoření [služba application gateway](application-gateway-introduction.md) s [firewallu webových aplikací](application-gateway-web-application-firewall-overview.md) (WAF). WAF používá k ochraně aplikace pravidla [OWASP](https://www.owasp.org/index.php/Category:OWASP_ModSecurity_Core_Rule_Set_Project). Tato pravidla zahrnují ochranu před útoky, jako je injektáž SQL, skriptování mezi weby a krádeže relací. Po vytvoření aplikační brány, můžete otestovat a ujistěte se, že funguje správně. Pomocí služby Azure Application Gateway řízení provozu webové aplikace ke konkrétním prostředkům prostřednictvím přiřazení naslouchacích procesů k portům, vytváření pravidel a přidávání prostředků do back-endový fond. Z důvodu zjednodušení tento kurz používá jednoduché uspořádání s veřejnou IP adresu front-endu, základní naslouchací proces pro hostování jedné lokalitě v této brány application gateway, dva virtuální počítače pro back-endového fondu a pravidel směrování základní požadavek.
 
-V tomto kurzu se dozvíte, jak pomocí webu Azure portal k vytvoření [služba application gateway](application-gateway-introduction.md) s [firewallu webových aplikací](application-gateway-web-application-firewall-overview.md) (WAF). WAF používá k ochraně aplikace pravidla [OWASP](https://www.owasp.org/index.php/Category:OWASP_ModSecurity_Core_Rule_Set_Project). Tato pravidla zahrnují ochranu před útoky, jako je injektáž SQL, skriptování mezi weby a krádeže relací. Po vytvoření aplikační brány, můžete otestovat a ujistěte se, že funguje správně. Pomocí služby Azure Application Gateway řízení provozu webové aplikace ke konkrétním prostředkům prostřednictvím přiřazení naslouchacích procesů k portům, vytváření pravidel a přidávání prostředků do back-endový fond. Z důvodu zjednodušení tento článek používá jednoduché uspořádání s veřejnou IP adresu front-endu, základní naslouchací proces pro hostování jedné lokalitě v této brány application gateway, dva virtuální počítače pro back-endového fondu a pravidel směrování základní požadavek.
-
-V tomto článku získáte informace o těchto tématech:
+V tomto kurzu se naučíte:
 
 > [!div class="checklist"]
 > * Vytvořit aplikační bránu se zapnutým Firewallem webových aplikací
 > * Vytvoření virtuálních počítačů použít jako servery back-endu
 > * Vytvořit účet úložiště a nakonfigurovat diagnostiku
+> * Otestování aplikační brány
 
 ![Příklad firewallu webových aplikací](./media/application-gateway-web-application-firewall-portal/scenario-waf.png)
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
+Pokud dáváte přednost, můžete dokončit tento kurz pomocí [prostředí Azure PowerShell](tutorial-restrict-web-traffic-powershell.md) nebo [rozhraní příkazového řádku Azure](tutorial-restrict-web-traffic-cli.md).
+
+Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
 ## <a name="sign-in-to-azure"></a>Přihlásit se k Azure
 
@@ -47,7 +40,7 @@ Přihlaste se k webu Azure Portal na adrese [https://portal.azure.com](https://p
 
 ## <a name="create-an-application-gateway"></a>Vytvoření služby Application Gateway
 
-U Azure ke komunikaci mezi prostředky, že vytvoříte potřebuje virtuální sítě. Můžete vytvořit novou virtuální síť, nebo použijte již existující. V tomto příkladu vytvoříme nové virtuální sítě. Virtuální síť můžete vytvořit současně s aplikační bránou. Do samostatných podsítí se vytvářejí instance Application Gateway. V tomto příkladu vytvoříte dvě podsítě: jednu pro application gateway a jinou pro back-end serverů.
+U Azure ke komunikaci mezi prostředky potřebuje virtuální sítě. Můžete vytvořit novou virtuální síť, nebo použijte již existující. V tomto příkladu vytvoříte novou virtuální síť. Virtuální síť můžete vytvořit současně s aplikační bránou. Do samostatných podsítí se vytvářejí instance Application Gateway. V tomto příkladu vytvoříte dvě podsítě: jednu pro application gateway a jinou pro back-end serverů.
 
 Vyberte **vytvořit prostředek** v nabídce vlevo na webu Azure portal. **Nový** zobrazí se okno.
 
@@ -71,9 +64,9 @@ U ostatních nastavení ponechejte výchozí hodnoty a potom klikněte na **OK**
    - **Název podsítě**: Zadejte *myAGSubnet* název podsítě.<br>Podsítě služby application gateway může obsahovat jenom aplikační brány. Jsou povoleny žádné další prostředky.
    - **Rozsah adres podsítě**: Zadejte *10.0.0.0/24* pro rozsah adres podsítě.![ Vytvoření virtuální sítě](./media/application-gateway-web-application-firewall-portal/application-gateway-vnet.png)
 3. Kliknutím na **OK** vytvořte virtuální síť a podsíť.
-4. Zvolte **konfigurace protokolu IP front-endu**. V části **konfigurace protokolu IP front-endu**, ověřte **IP adres jako typu** je nastavena na **veřejné**. V části **veřejnou IP adresu**, ověřte **vytvořit nový** zaškrtnuto. <br>Můžete nakonfigurovat IP front-endu být veřejné a privátní podle vašemu případu použití. V tomto příkladu vybereme možnost veřejná IP adresa front-endu. 
-5. Zadejte *myAGPublicIPAddress* pro název veřejné IP adresy. 
-6. Přijměte výchozí hodnoty pro další nastavení a pak vyberte **OK**.<br>Vybereme možnost výchozí hodnoty v tomto článku pro zjednodušení, ale můžete nakonfigurovat vlastní hodnoty u ostatních nastavení v závislosti na vašemu případu použití 
+4. Zvolte **konfigurace protokolu IP front-endu**. V části **konfigurace protokolu IP front-endu**, ověřte **IP adres jako typu** je nastavena na **veřejné**. V části **veřejnou IP adresu**, ověřte **vytvořit nový** zaškrtnuto. <br>Můžete nakonfigurovat IP front-endu být veřejné a privátní podle vašemu případu použití. Tady zvolíte veřejné IP adresy front-endu.
+5. Zadejte *myAGPublicIPAddress* pro název veřejné IP adresy.
+6. Přijměte výchozí hodnoty pro další nastavení a pak vyberte **OK**.<br>Zvolte výchozí hodnoty v tomto kurzu pro zjednodušení, ale můžete nakonfigurovat vlastní hodnoty u ostatních nastavení v závislosti na vašemu případu použití.
 
 ### <a name="summary-page"></a>Stránka souhrnu
 
@@ -81,12 +74,12 @@ Zkontrolujte nastavení na **Souhrn** stránce a pak vyberte **OK** vytvořit vi
 
 ## <a name="add-backend-pool"></a>Přidat back-endový fond
 
-Back-endového fondu se používá k směrovat požadavky do back-end serverů, které budou sloužit pro požadavek. Back-endové fondy se může skládat ze síťových rozhraní škálovací sady virtuálních počítačů, veřejné IP adresy, interní IP adresy nebo plně kvalifikované názvy (plně kvalifikovaný název domény) a více tenantů back EndY, jako je Azure App Service. Budete muset přidat cíle vaší back-endu do back-endový fond.
+Back-endového fondu se používá k směrovat požadavky do back-end serverů, které požadavek vyřídit. Back-endové fondy může mít síťové karty, škálovací sady virtuálních počítačů, veřejné IP adresy, interních IP adres, plně kvalifikované názvy domény (FQDN) a více tenantů back EndY, jako je Azure App Service. Přidání cíle vaší back-endu do back-endový fond.
 
-V tomto příkladu budeme používat virtuální počítače jako cíl back-endu. Můžeme použít stávající virtuální počítače nebo vytvořit nové. V tomto příkladu vytvoříte dva virtuální počítače, které Azure používá jako servery back-end pro službu application gateway. Chcete-li to provést, provedeme následující:
+V tomto příkladu použijte virtuální počítače jako cíl back-endu. Můžete použít stávající virtuální počítače nebo vytvořit nové. Tady vytvoříte dva virtuální počítače, které Azure používá jako servery back-end pro službu application gateway. Chcete-li to provést, můžete:
 
 1. Vytvořit novou podsíť *myBackendSubnet*, ve kterém se vytvoří nové virtuální počítače. 
-2. Vytvořit 2 nové virtuální počítače, *myVM* a *myVM2*, které se použijí jako servery back-end.
+2. Vytvořit dvě nové virtuální počítače, *myVM* a *myVM2*, které se použijí jako servery back-end.
 3. Instalace služby IIS na virtuálních počítačích a ověřte, že službu application gateway vytvořil úspěšně.
 4. Přidání serverů back-endu do back-endový fond.
 
@@ -113,14 +106,14 @@ Přidání podsítě do virtuální sítě, kterou jste vytvořili pomocí násl
    - **Heslo**: Enter *Azure123456!* k zadání hesla správce.
 4. Přijměte ostatní výchozí hodnoty a pak vyberte **Další: Disky**.  
 5. Přijměte **disky** karta výchozí hodnoty a pak vyberte **Další: Sítě**.
-6. Na **sítě** kartu, ověřte, že **myVNet** vybraná **virtuální síť** a **podsítě** je nastavena na  **myBackendSubnet**. Přijměte ostatní výchozí hodnoty a pak vyberte **Další: Správa**.<br>Služba Application Gateway může komunikovat s instancemi mimo virtuální síť, která je v, ale potřebujeme zajistit, že existuje připojení pomocí IP adresy. 
+6. Na **sítě** kartu, ověřte, že **myVNet** vybraná **virtuální síť** a **podsítě** je nastavena na  **myBackendSubnet**. Přijměte ostatní výchozí hodnoty a pak vyberte **Další: Správa**.<br>Služba Application Gateway může komunikovat s instancemi mimo virtuální síť, která je v, ale je potřeba zajistit, že je IP adresa připojení.
 7. Na **správu** kartu, nastavte **Diagnostika spouštění** k **vypnout**. Přijměte ostatní výchozí hodnoty a pak vyberte **revize + vytvořit**.
 8. Na **zkontrolujte + vytvořit** kartu, zkontrolujte nastavení, opravte všechny chyby ověření a potom vyberte **vytvořit**.
 9. Počkejte na dokončení před pokračováním vytváření virtuálního počítače.
 
 ### <a name="install-iis-for-testing"></a>Instalace služby IIS pro účely testování
 
-V tomto příkladu jsme se instalace služby IIS na virtuální počítače pouze pro účely ověření, že Azure application gateway úspěšně vytvořil. 
+V tomto příkladu nainstalujete IIS na virtuální počítače pouze pro účely ověření, že Azure application gateway úspěšně vytvořil. 
 
 1. Otevřít [prostředí Azure PowerShell](https://docs.microsoft.com/azure/cloud-shell/quickstart-powershell). Chcete-li to provést, vyberte **Cloud Shell** z horního navigačního panelu webu Azure portal a pak vyberte **Powershellu** z rozevíracího seznamu. 
 
@@ -203,11 +196,5 @@ K odebrání skupiny prostředků:
 
 ## <a name="next-steps"></a>Další postup
 
-V tomto článku jste zjistili, jak:
-
-> [!div class="checklist"]
-> * Vytvořit aplikační bránu se zapnutým Firewallem webových aplikací
-> * Vytvoření virtuálních počítačů použít jako servery back-endu
-> * Vytvořit účet úložiště a nakonfigurovat diagnostiku
-
-Další informace o aplikačních bran a jejich souvisejících prostředcích najdete i nadále články s postupy.
+> [!div class="nextstepaction"]
+> [Další informace o tom, co můžete dělat pomocí služby Azure Application Gateway](application-gateway-introduction.md)

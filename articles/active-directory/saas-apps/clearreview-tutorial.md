@@ -8,19 +8,20 @@ manager: mtillman
 ms.reviewer: barbkess
 ms.assetid: 8264159a-11a2-4a8c-8285-4efea0adac8c
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 01/21/2019
+ms.date: 04/16/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4aa6a88971ca69fa910435d00722dcdf12db44f1
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: cf2576aa112d58e499f0c4a16bf8e9261114974b
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57880887"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59698975"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-clear-review"></a>Kurz: Integrace Azure Active Directory s vymazat revize
 
@@ -38,7 +39,7 @@ Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https
 
 Konfigurace integrace Azure AD s vymazat revize, potřebujete následující položky:
 
-* Předplatné služby Azure AD. Pokud nemáte prostředí Azure AD, můžete získat měsíční zkušební verze [zde](https://azure.microsoft.com/pricing/free-trial/)
+* Předplatné služby Azure AD. Pokud nemáte prostředí Azure AD, můžete získat [bezplatný účet](https://azure.microsoft.com/free/)
 * Vymazat revize jednotného přihlašování povolená předplatného
 
 ## <a name="scenario-description"></a>Popis scénáře
@@ -118,33 +119,21 @@ Ke konfiguraci Azure AD jednotné přihlašování s vymazat revizi, proveďte n
     > [!NOTE]
     > Tyto hodnoty nejsou skutečný. Aktualizujte tyto hodnoty skutečnou adresu URL identifikátor, adresa URL odpovědi a přihlašování. Kontakt [tým podpory vymazat kontroly klienta](https://clearreview.com/contact/) k získání těchto hodnot. Můžete také odkazovat na tyto vzory se dají ukazuje **základní konfiguraci SAML** části webu Azure Portal.
 
-6. Vymazat revizi aplikace očekává, že kontrolní výrazy SAML v určitém formátu. Nakonfigurujte následující deklarace identity pro tuto aplikaci. Můžete spravovat hodnotami těchto atributů z **atributy uživatele** části na stránce aplikací pro integraci. Na **nastavte si jednotné přihlašování pomocí SAML** klikněte na **upravit** tlačítko Otevřít **atributy uživatele** dialogového okna.
+6. Vymazat revizi aplikace očekává, že kontrolní výrazy SAML v určitém formátu, který je potřeba přidat vlastní atribut mapování konfigurace atributy tokenu SAML. Následující snímek obrazovky ukazuje seznam výchozích atributů, přičemž **nameidentifier** je namapována na žádnou **user.userprincipalname**. Vymazat revizi aplikace očekává **nameidentifier** namapovat s **user.mail**, takže budete muset kliknout na Upravit mapování atributů **upravit** ikonu a změňte mapování atributů.
 
     ![image](common/edit-attribute.png)
 
-7. V **deklarace identity uživatelů** části na **atributy uživatele** dialogovém okně Upravit deklarace identity pomocí **ikonu pro úpravu** nebo přidání deklarace identity pomocí **přidat novou deklaraci**ke konfiguraci atribut tokenu SAML, jak je znázorněno na obrázku výše a proveďte následující kroky:
-    
-    | Název | Zdrojový atribut | 
-    | ---------------| --------------- |
-    | Hodnota identifikátoru název   | user.mail |
+7. Na **atributy uživatele a deklarace identity** dialogového okna, proveďte následující kroky:
 
-    a. Klikněte na tlačítko **přidat novou deklaraci** otevřít **spravovat deklarace identity uživatelů** dialogového okna.
+    a. Klikněte na tlačítko **ikonu pro úpravu** na pravé straně **název hodnota identifikátoru**.
 
-    ![image](common/new-save-attribute.png)
+    ![image](./media/clearreview-tutorial/attribute02.png)
 
-    ![image](common/new-attribute-details.png)
+    ![image](./media/clearreview-tutorial/attribute01.png)
 
-    b. V **název** textového pole zadejte název atributu, který je zobrazený pro tento řádek.
+    b. Z **zdrojový atribut** seznamu, vyberte **user.mail** atribut hodnotu pro tento řádek.
 
-    c. Nechte **Namespace** prázdné.
-
-    d. Vyberte zdroj jako **atribut**.
-
-    e. Z **zdrojový atribut** seznamu, zadejte hodnotu atributu zobrazený pro tento řádek.
-
-    f. Klikněte na tlačítko **Ok**
-
-    g. Klikněte na **Uložit**.
+    c. Klikněte na **Uložit**.
 
 8. Na **nastavte si jednotné přihlašování pomocí SAML** stránku, **podpisový certifikát SAML** klikněte na tlačítko **Stáhnout** ke stažení **certifikát (Base64)** z se zadanými možnostmi podle vašich požadavků a uložit je ve vašem počítači.
 
@@ -156,7 +145,7 @@ Ke konfiguraci Azure AD jednotné přihlašování s vymazat revizi, proveďte n
 
     a. Přihlašovací adresa URL
 
-    b. Identifikátor služby Azure Ad
+    b. Identifikátor Azure AD
 
     c. Adresa URL – odhlášení
 
@@ -168,7 +157,7 @@ Ke konfiguraci Azure AD jednotné přihlašování s vymazat revizi, proveďte n
 
     ![Nakonfigurovat jednotné přihlašování uložit tlačítko](./media/clearreview-tutorial/tutorial_clearreview_app_admin1.png)
 
-3. Vyberte **změnu** v dolní části stránky.
+3. V **integrace** části v dolní části stránky klikněte **změnu** tlačítko vpravo od **nastavení jednotného přihlašování**.
 
     ![Nakonfigurovat jednotné přihlašování uložit tlačítko](./media/clearreview-tutorial/tutorial_clearreview_app_admin2.png)
 
@@ -176,7 +165,7 @@ Ke konfiguraci Azure AD jednotné přihlašování s vymazat revizi, proveďte n
 
     ![Nakonfigurovat jednotné přihlašování uložit tlačítko](./media/clearreview-tutorial/tutorial_clearreview_app_admin3.png)
 
-    a. V **URL vystavitele** textového pole vložte hodnotu **Azure Ad identifikátor** zkopírovanou z webu Azure portal.
+    a. V **URL vystavitele** textového pole vložte hodnotu **Azure AD identifikátor** zkopírovanou z webu Azure portal.
 
     b. V **koncový bod SAML** textového pole vložte hodnotu **přihlašovací adresa URL** zkopírovanou z webu Azure portal.  
 
@@ -184,7 +173,7 @@ Ke konfiguraci Azure AD jednotné přihlašování s vymazat revizi, proveďte n
 
     d. Otevřete stažený certifikát v programu Poznámkový blok a vložte obsah **certifikát X.509** textového pole.   
 
-5. Klikněte na **Uložit**.
+    e. Klikněte na **Uložit**.
 
 ### <a name="create-an-azure-ad-test-user"></a>Vytvořit testovacího uživatele Azure AD 
 

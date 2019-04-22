@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.service: container-service
 ms.date: 12/03/2018
 ms.author: iainfou
-ms.openlocfilehash: 54c8e44685bb69e845c819b0c2846b188a771d71
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.openlocfilehash: 38b2654c8f3e8d302a66cac335913583bd4426ef
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58878226"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59682963"
 ---
 # <a name="preview---create-and-configure-an-azure-kubernetes-services-aks-cluster-to-use-virtual-nodes-using-the-azure-cli"></a>Ve verzi Preview – vytvoření a konfigurace clusteru služby Azure Kubernetes služby (AKS) používat virtuální uzly pomocí Azure CLI
 
@@ -23,7 +23,7 @@ Rychlé škálování úloh aplikací v clusteru služby Azure Kubernetes Servic
 >
 > Pokud narazíte na problémy s funkcemi ve verzi preview, [otevřete problém v úložišti Githubu AKS] [ aks-github] s názvem funkce ve verzi preview v název chyby.
 
-## <a name="before-you-begin"></a>Před zahájením
+## <a name="before-you-begin"></a>Než začnete
 
 Virtuální uzly povolit síťovou komunikaci mezi pody spuštěné v ACI a AKS clusteru. Pro tuto komunikaci, se vytvoří podsíť virtuální sítě a jsou přiřazeny delegovaná oprávnění. Virtuální uzly fungovat jenom s clustery AKS vytvořeného *pokročilé* sítě. Ve výchozím nastavení, AKS clustery jsou vytvořeny pomocí *základní* sítě. Tento článek ukazuje, jak vytvořit virtuální síť a podsítě a pak Nasaďte cluster AKS, který používá rozšířeného sítě.
 
@@ -56,6 +56,16 @@ Tyto oblasti jsou podporovány pro nasazení virtuálního uzlu:
 * Střed USA – západ (westcentralus)
 * Západní Evropa (westeurope)
 * USA – západ (westus)
+
+## <a name="known-limitations"></a>Známá omezení
+Virtuální funkce uzlů je silně závisí na sadě funkcí v ACI. Následující scénáře nejsou ještě podporované s virtuální uzly
+
+* Pomocí instančního objektu pro Image ACR o přijetí změn. [Alternativní řešení](https://github.com/virtual-kubelet/virtual-kubelet/blob/master/providers/azure/README.md#Private-registry) je použití [tajné klíče Kubernetes](https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/#create-a-secret-by-providing-credentials-on-the-command-line)
+* [Omezení virtuální sítě](../container-instances/container-instances-vnet.md) včetně VNet peering, Kubernetes síťové zásady a odchozí provoz do Internetu s použitím skupin zabezpečení sítě.
+* Init kontejnery
+* [Aliasy hostitelů](https://kubernetes.io/docs/concepts/services-networking/add-entries-to-pod-etc-hosts-with-host-aliases/)
+* [Argumenty](../container-instances/container-instances-exec.md#restrictions) pro spuštění v ACI
+* [Daemonsets](concepts-clusters-workloads.md#statefulsets-and-daemonsets) nenasadí podů na virtuální uzel
 
 ## <a name="launch-azure-cloud-shell"></a>Spuštění služby Azure Cloud Shell
 
@@ -93,7 +103,7 @@ az network vnet subnet create \
     --resource-group myResourceGroup \
     --vnet-name myVnet \
     --name myVirtualNodeSubnet \
-    --address-prefix 10.241.0.0/16
+    --address-prefixes 10.241.0.0/16
 ```
 
 ## <a name="create-a-service-principal"></a>Vytvoření instančního objektu
@@ -338,7 +348,7 @@ Virtuální uzly jsou často jedna komponenta škálování řešení ve služb�
 [kubectl-apply]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#apply
 [node-selector]:https://kubernetes.io/docs/concepts/configuration/assign-pod-node/
 [toleration]: https://kubernetes.io/docs/concepts/configuration/taint-and-toleration/
-[aks-github]: https://github.com/azure/aks/issues]
+[aks-github]: https://github.com/azure/aks/issues
 [virtual-node-autoscale]: https://github.com/Azure-Samples/virtual-node-autoscale
 [virtual-kubelet-repo]: https://github.com/virtual-kubelet/virtual-kubelet
 

@@ -7,12 +7,12 @@ ms.date: 03/14/2019
 ms.topic: sample
 ms.service: blueprints
 manager: carmonm
-ms.openlocfilehash: ca473474c62d0cb57c3ee76095740568398c67d7
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: c54d8aedb9464364f93a087de4bdb00c693a96ae
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59272746"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59698907"
 ---
 # <a name="overview-of-the-iso-27001-shared-services-blueprint-sample"></a>Přehled ukázky podrobného plánu ISO 27001: Sdílené služby
 
@@ -36,7 +36,7 @@ Toto prostředí je tvořené několika službami Azure, které se využívají 
 - Jako první služba Azure se nasadí [Log Analytics](../../../../azure-monitor/overview.md), aby se zajistilo, že se všechny akce a služby připojují k centrálnímu umístění, a to od okamžiku, kdy vaše zabezpečené nasazení spustíte.
 - Virtuální síť podporující podsítě pro možnosti připojení zpátky k místnímu datovému centru, zásobník příchozího a odchozího přenosu dat pro internetové připojení a podsíť sdílených služeb využívající skupiny zabezpečení sítě a skupiny zabezpečení aplikace pro kompletní mikrosegmentaci obsahující:
   - Jumpbox nebo hostitele typu bašta (bastion host) používaného pro účely správy, který je přístupný jenom přes službu [Azure Firewall](../../../../firewall/overview.md) nasazenou v podsíti stacku příchozího přenosu dat
-  - Dva virtuální počítače, na kterých běží Active Directory Directory Services (ADDS) a DNS, které jsou přístupné jenom přes tento jumpbox a které se dají nakonfigurovat jenom pro replikaci AD přes VPN nebo připojení [ExpressRoute](../../../../expressroute/expressroute-introduction.md) (nejsou nasazené v rámci podrobného plánu)
+  - Dva virtuální počítače, na kterých běží Active Directory Domain Services (ADDS) a DNS, které jsou přístupné jenom přes tento jumpbox a které se dají nakonfigurovat jenom pro replikaci AD přes VPN nebo připojení [ExpressRoute](../../../../expressroute/expressroute-introduction.md) (nejsou nasazené v rámci podrobného plánu)
   - Použití [Azure Net Watcheru](../../../../network-watcher/network-watcher-monitoring-overview.md) a standardní ochrany před útoky DDoS
 - Instance služby [Azure Key Vault](../../../../key-vault/key-vault-whatis.md), která slouží k hostování tajných kódů používaných pro virtuální počítače nasazené v prostředí sdílených služeb
 

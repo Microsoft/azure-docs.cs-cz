@@ -5,14 +5,14 @@ services: container-service
 author: iainfoulds
 ms.service: container-service
 ms.topic: article
-ms.date: 10/23/2018
+ms.date: 03/27/2019
 ms.author: iainfou
-ms.openlocfilehash: c109febc90c9dd8d9b17489c9e612f677695bd25
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.openlocfilehash: e20f881d740c5d5b73c23c933ceb3d6f19e78ef9
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55727088"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59683847"
 ---
 # <a name="create-an-https-ingress-controller-and-use-your-own-tls-certificates-on-azure-kubernetes-service-aks"></a>Vytvoření řadiče příchozího přenosu dat protokolu HTTPS a používat vlastní certifikáty TLS ve službě Azure Kubernetes Service (AKS)
 
@@ -27,21 +27,25 @@ Můžete také:
 - [Vytvoření řadiče příchozího přenosu dat, který se používá soukromé, interní sítě a IP adresy][aks-ingress-internal]
 - Vytvoření řadiče příchozího přenosu dat, která používá umožňuje šifrovat automaticky generovat certifikáty TLS [s dynamické veřejné IP adresy] [ aks-ingress-tls] nebo [se statickou veřejnou IP adresu][aks-ingress-static-tls]
 
-## <a name="before-you-begin"></a>Před zahájením
+## <a name="before-you-begin"></a>Než začnete
 
 Tento článek používá Helm k instalaci serveru NGINX kontroler příchozího přenosu dat a ukázkovou webovou aplikaci. Musíte mít Helm inicializován v rámci clusteru AKS a pomocí účtu služby pro Tiller. Ujistěte se, že používáte nejnovější verzi nástroje Helm. Pokyny k upgradu, najdete v článku [Helm instalace dokumentace][helm-install]. Další informace o konfiguraci a použití Helm, naleznete v tématu [instalace aplikací s nástrojem Helm ve službě Azure Kubernetes Service (AKS)][use-helm].
 
-Tento článek také vyžaduje, že používáte Azure CLI verze 2.0.41 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI][azure-cli-install].
+Tento článek také vyžaduje, že používáte Azure CLI verze 2.0.61 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI][azure-cli-install].
 
 ## <a name="create-an-ingress-controller"></a>Vytvoření řadiče příchozího přenosu dat
 
 Chcete-li vytvořit kontroler příchozího přenosu dat, použijte `Helm` instalace *nginx příchozího přenosu dat*. Pro přidání redundance dvě repliky řadiče příchozího přenosu dat NGINX nasazení se používají `--set controller.replicaCount` parametru. Pokud chcete naplno využívat s replikami kontroler příchozího přenosu dat, ujistěte se, že existuje více než jeden uzel v clusteru AKS.
 
 > [!TIP]
-> Následující příklad nainstaluje kontroler příchozího přenosu dat v `kube-system` oboru názvů. V případě potřeby, můžete určit jiný obor názvů pro vlastní prostředí. Pokud váš cluster AKS není povoleno RBAC, přidejte `--set rbac.create=false` příkazy.
+> Následující příklad vytvoří Kubernetes obor názvů pro prostředky příchozího přenosu dat s názvem *příchozího přenosu dat basic*. Podle potřeby zadejte obor názvů pro konkrétní prostředí. Pokud váš cluster AKS není povoleno RBAC, přidejte `--set rbac.create=false` k příkazům Helm.
 
 ```console
-helm install stable/nginx-ingress --namespace kube-system --set controller.replicaCount=2
+# Create a namespace for your ingress resources
+kubectl create namespace ingress-basic
+
+# Use Helm to deploy an NGINX ingress controller
+helm install stable/nginx-ingress --namespace ingress-basic --set controller.replicaCount=2
 ```
 
 Pro kontroler příchozího přenosu dat se vytvoří během instalace Azure veřejnou IP adresu. Tato veřejná IP adresa je statická dobu životnosti kontroleru příchozího přenosu. Pokud odstraníte kontroler příchozího přenosu dat, dojde ke ztrátě přiřazení veřejné IP adresy. Pokud potom vytvoříte řadič další příchozí přenos dat, se přiřadí novou veřejnou IP adresu. Pokud chcete zachovat použijte veřejnou IP adresu, můžete místo toho [vytvořit řadič příchozího přenosu dat se statickou veřejnou IP adresu][aks-ingress-static-tls].
@@ -49,7 +53,7 @@ Pro kontroler příchozího přenosu dat se vytvoří během instalace Azure ve�
 Chcete-li získat veřejnou IP adresu, použijte `kubectl get service` příkazu. Trvá několik minut, než IP adresu, která přiřazené příslušné službě.
 
 ```
-$ kubectl get service -l app=nginx-ingress --namespace kube-system
+$ kubectl get service -l app=nginx-ingress --namespace ingress-basic
 
 NAME                                          TYPE           CLUSTER-IP    EXTERNAL-IP    PORT(S)                      AGE
 virulent-seal-nginx-ingress-controller        LoadBalancer   10.0.48.240   40.87.46.190   80:31159/TCP,443:30657/TCP   7m
@@ -83,6 +87,7 @@ Následující příklad vytvoří název tajného kódu *aks – příchozí p�
 
 ```console
 kubectl create secret tls aks-ingress-tls \
+    --namespace ingress-basic \
     --key aks-ingress-tls.key \
     --cert aks-ingress-tls.crt
 ```
@@ -100,13 +105,16 @@ helm repo add azure-samples https://azure-samples.github.io/helm-charts/
 Vytvoření první ukázkové aplikace z grafu helmu pomocí následujícího příkazu:
 
 ```console
-helm install azure-samples/aks-helloworld
+helm install azure-samples/aks-helloworld --namespace ingress-basic
 ```
 
 Nyní instalaci druhé instance ukázkové aplikace. Pro druhou instanci zadejte nový název tak, že dvě aplikace jsou vizuálně distinct. Můžete také zadat jedinečný název služby:
 
 ```console
-helm install azure-samples/aks-helloworld --set title="AKS Ingress Demo" --set serviceName="ingress-demo"
+helm install azure-samples/aks-helloworld \
+    --namespace ingress-basic \
+    --set title="AKS Ingress Demo" \
+    --set serviceName="ingress-demo"
 ```
 
 ## <a name="create-an-ingress-route"></a>Vytvoření trasy příchozího přenosu dat
@@ -127,6 +135,7 @@ apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
   name: hello-world-ingress
+  namespace: ingress-basic
   annotations:
     kubernetes.io/ingress.class: nginx
     nginx.ingress.kubernetes.io/rewrite-target: /
@@ -208,7 +217,25 @@ $ curl -v -k --resolve demo.azure.com:443:137.117.36.18 https://demo.azure.com/h
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Tento článek používá Helm k instalaci součásti příchozího přenosu dat a ukázkové aplikace. Při nasazování grafu helmu vytvoří řada prostředky Kubernetesu. Tyto prostředky zahrnují podů, nasazení a služby. Vyčistit, nejprve seznamu Helm vydané verze s `helm list` příkazu. Vyhledejte grafy s názvem *nginx příchozího přenosu dat* a *aks-helloworld*, jak je znázorněno v následujícím příkladu výstupu:
+Tento článek používá Helm k instalaci součásti příchozího přenosu dat a ukázkové aplikace. Při nasazování grafu helmu vytvoří řada prostředky Kubernetesu. Tyto prostředky zahrnují podů, nasazení a služby. K uvolnění těchto prostředků, můžete buď odstranit obor názvů celé ukázkové nebo jednotlivé prostředky.
+
+### <a name="delete-the-sample-namespace-and-all-resources"></a>Odstranit obor názvů vzorku a všechny prostředky
+
+Chcete-li odstranit obor názvů celého vzorku, použijte `kubectl delete` příkaz a zadejte název vašeho oboru názvů. Se odstraní všechny prostředky v oboru názvů.
+
+```console
+kubectl delete namespace ingress-basic
+```
+
+Potom odeberte Helm úložiště pro aplikace hello world AKS:
+
+```console
+helm repo remove azure-samples
+```
+
+### <a name="delete-resources-individually"></a>Odstranit prostředky jednotlivě
+
+Podrobnější přístupem je můžete také odstranit jednotlivé prostředky vytvoří. Seznam Helm vydává se `helm list` příkazu. Vyhledejte grafy s názvem *nginx příchozího přenosu dat* a *aks-helloworld*, jak je znázorněno v následujícím příkladu výstupu:
 
 ```
 $ helm list
@@ -241,10 +268,16 @@ Odeberte trasu příchozího přenosu dat, která přesměruje přenosy do ukáz
 kubectl delete -f hello-world-ingress.yaml
 ```
 
-Nakonec odeberte certifikát tajný kód:
+Odstraníte certifikát tajný kód:
 
 ```console
 kubectl delete secret aks-ingress-tls
+```
+
+Nakonec můžete odstranit samotný oboru názvů. Použití `kubectl delete` příkaz a zadejte název vašeho oboru názvů:
+
+```console
+kubectl delete namespace ingress-basic
 ```
 
 ## <a name="next-steps"></a>Další postup

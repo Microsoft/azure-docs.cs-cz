@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 02/14/2019
 ms.reviewer: sergkanz
 ms.author: lagayhar
-ms.openlocfilehash: cc2d45aee170517d7e41cbda6d92bc21067732d1
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.openlocfilehash: 565f08f0c69aef393a9296f3cce90570a3f0bc2c
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/11/2019
-ms.locfileid: "59493633"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59683015"
 ---
 # <a name="telemetry-correlation-in-application-insights"></a>Korelace telemetrie v Application Insights
 
@@ -143,7 +143,7 @@ public void ConfigureServices(IServiceCollection services)
 
 | Application Insights                  | OpenTracing                                       |
 |------------------------------------   |-------------------------------------------------  |
-| `Request`,  `PageView`                 | `Span` s `span.kind = server`                  |
+| `Request`, `PageView`                 | `Span` s `span.kind = server`                  |
 | `Dependency`                          | `Span` s `span.kind = client`                  |
 | `Id` z `Request` a `Dependency`    | `SpanId`                                          |
 | `Operation_Id`                        | `TraceId`                                         |
@@ -217,7 +217,7 @@ V některých případech může být vhodné přizpůsobit způsob názvů sou�
 ## <a name="next-steps"></a>Další postup
 
 - Zápis [vlastní telemetrii](../../azure-monitor/app/api-custom-events-metrics.md).
-- Další informace o [nastavení cloud_RoleName](../../azure-monitor/app/app-map.md#set-cloud_rolename) pro dalších sad SDK.
+- Další informace o [nastavení cloud_RoleName](../../azure-monitor/app/app-map.md#set-cloud-role-name) pro dalších sad SDK.
 - Připojení všech součástí vašeho mikroslužby na Application Insights. Podívejte se [podporované platformy](../../azure-monitor/app/platforms.md).
 - Zobrazit [datový model](../../azure-monitor/app/data-model.md) pro typy Application Insights.
 - Zjistěte, jak [rozšířit a filtrování telemetrie](../../azure-monitor/app/api-filtering-sampling.md).

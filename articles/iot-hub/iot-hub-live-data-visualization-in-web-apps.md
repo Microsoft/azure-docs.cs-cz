@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 04/11/2018
 ms.author: robinsh
-ms.openlocfilehash: b870c432ea8021d9eeb14eec85ff9912b96ddc96
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: 070f37a969411cfc4caf5f2d2b089ccfae759ca2
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59270876"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59683189"
 ---
 # <a name="visualize-real-time-sensor-data-from-your-azure-iot-hub-by-using-the-web-apps-feature-of-azure-app-service"></a>Vizualizovat data ze senzorů v reálném čase ze služby Azure IoT hub pomocí funkce Web Apps služby Azure App Service
 
@@ -35,7 +35,7 @@ V tomto kurzu se dozvíte, jak k vizualizaci dat snímačů v reálném čase, k
 
 ## <a name="what-you-need"></a>Co potřebujete
 
-* [Nastavit vaše zařízení](iot-hub-raspberry-pi-kit-node-get-started.md), která zahrnuje následující požadavky:
+* Dokončení [online simulátor Raspberry Pi](iot-hub-raspberry-pi-web-simulator-get-started.md) kurzu nebo jeden z kurzů zařízení; například [Raspberry Pi s node.js](iot-hub-raspberry-pi-kit-node-get-started.md). Ty zahrnují následující požadavky:
 
   * Aktivní předplatné Azure
   * Služby Iot hub v rámci vašeho předplatného

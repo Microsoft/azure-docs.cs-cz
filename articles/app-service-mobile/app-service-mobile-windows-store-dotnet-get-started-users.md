@@ -14,12 +14,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 07/05/2017
 ms.author: panarasi
-ms.openlocfilehash: 4cc597f8aca13445034c8a1691b41018d4d9bc4b
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 7caaa1ca4cdaf7290b7ce05d17c07e565e7b51d1
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38306570"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59698671"
 ---
 # <a name="add-authentication-to-your-windows-app"></a>Přidání ověřování do aplikace pro Windows
 [!INCLUDE [app-service-mobile-selector-get-started-users](../../includes/app-service-mobile-selector-get-started-users.md)]
@@ -35,15 +35,13 @@ Tento kurz je založený na rychlý start Mobile Apps. Musíte nejdřív dokonč
 
 Zabezpečené ověřování, musíte definovat nové schéma adresy URL pro vaši aplikaci. To umožňuje ověřování systému přesměrovat zpět do aplikace po dokončení procesu ověřování. V tomto kurzu používáme schéma adresy URL _appname_ v průběhu. Můžete ale použít jakékoli schéma adresy URL, kterou zvolíte. Musí být jedinečné pro vaši mobilní aplikaci. Pokud chcete povolit přesměrování na straně serveru:
 
-1. Na [webu Azure Portal] vyberte službu App Service.
+1. V [webu Azure portal](https://ms.portal.azure.com), vyberte službu App Service.
 
 2. Klikněte na tlačítko **ověřování / autorizace** nabídky.
 
 3. V **povolené externí adresy URL pro přesměrování**, zadejte `url_scheme_of_your_app://easyauth.callback`.  **Url_scheme_of_your_app** v tomto řetězci je schéma adresy URL pro vaši mobilní aplikaci.  Měla by odpovídat specifikaci normální adresu URL pro určitý protokol (použití písmena a čísla jenom a začíná písmenem).  By měl poznamenejte řetězce, který zvolíte, jako je třeba upravit kód mobilní aplikace s schéma adresy URL na několika místech.
 
-4. Klikněte na **OK**.
-
-5. Klikněte na **Uložit**.
+4. Klikněte na **Uložit**.
 
 ## <a name="permissions"></a>Omezit oprávnění k ověření uživatelé
 [!INCLUDE [app-service-mobile-restrict-permissions-dotnet-backend](../../includes/app-service-mobile-restrict-permissions-dotnet-backend.md)]

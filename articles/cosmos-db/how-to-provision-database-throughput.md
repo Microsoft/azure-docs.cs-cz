@@ -1,29 +1,29 @@
 ---
 title: Zřízení propustnosti databáze ve službě Azure Cosmos DB
 description: Zjistěte, jak zřídit propustnost na úrovni databáze ve službě Azure Cosmos DB.
-author: markjbrown
+author: rimman
 ms.service: cosmos-db
 ms.topic: sample
-ms.date: 11/06/2018
-ms.author: mjbrown
-ms.openlocfilehash: c0a947c9cf2c1d4a11d310b9bab0774a70534a1e
-ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
+ms.date: 04/15/2019
+ms.author: rimman
+ms.openlocfilehash: da56c06e215e02ee3eefe3d0552c962a8c59011e
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58259427"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59683473"
 ---
-# <a name="provision-throughput-for-a-database-in-azure-cosmos-db"></a>Zřízení propustnosti pro databázi ve službě Azure Cosmos DB
+# <a name="provision-throughput-on-a-database-in-azure-cosmos-db"></a>Zřizování propustnosti na databázi ve službě Azure Cosmos DB
 
-Tento článek vysvětluje, jak zřídit propustnost pro kontejner databázi ve službě Azure Cosmos DB. Propustnost můžete zřídit pro jeden [kontejner](how-to-provision-container-throughput.md) nebo pro databázi a sdílet ji mezi kontejnery v rámci databáze. Informace o tom, kdy použít propustnosti kontejneru úrovni a úrovni databáze, najdete v článku [případy použití pro zřizování propustnosti na kontejnerech a databází](set-throughput.md) článku. Databáze úrovně propustnosti můžete zřídit pomocí webu Azure portal nebo sady SDK služby Azure Cosmos DB.
+Tento článek vysvětluje, jak zřídit propustnost v databázi ve službě Azure Cosmos DB. Propustnost můžete zřídit pro jeden [kontejner](how-to-provision-container-throughput.md) nebo pro databázi a sdílet ji mezi kontejnery v rámci databáze. Informace o tom, kdy použít propustnosti kontejneru úrovni a úrovni databáze, najdete v článku [případy použití pro zřizování propustnosti na kontejnerech a databází](set-throughput.md) článku. Databáze úrovně propustnosti můžete zřídit pomocí webu Azure portal nebo sady SDK služby Azure Cosmos DB.
 
-## <a name="provision-throughput-by-using-azure-portal"></a>Propustnost zřízení pomocí webu Azure portal
+## <a name="provision-throughput-using-azure-portal"></a>Zřízení propustnosti pomocí webu Azure Portal
 
 ### <a id="portal-sql"></a>Rozhraní SQL (Core) API
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 
-1. [Vytvoření nového účtu služby Azure Cosmos DB](create-sql-api-dotnet.md#create-account), nebo vyberte existující účet.
+1. [Vytvořit nový účet Azure Cosmos](create-sql-api-dotnet.md#create-account), nebo vyberte existující účet Azure Cosmos.
 
 1. Otevřít **Průzkumník dat** podokně a vyberte **novou databázi**. Zadejte následující podrobnosti:
 
@@ -34,10 +34,10 @@ Tento článek vysvětluje, jak zřídit propustnost pro kontejner databázi ve 
 
 ![Dialogové okno snímek obrazovky s novou databázi](./media/how-to-provision-database-throughput/provision-database-throughput-portal-all-api.png)
 
-## <a name="provision-throughput-by-using-net-sdk"></a>Zřizování propustnosti s použitím sady .NET SDK
+## <a name="provision-throughput-using-net-sdk"></a>Zřízení propustnosti pomocí sady .NET SDK
 
 > [!Note]
-> Propustnost pro všechna rozhraní API můžete zřídit pomocí rozhraní SQL API. Volitelně můžete v následujícím příkladu pro Apache Cassandra API také.
+> Pro všechna rozhraní API můžete zřídit propustnost pomocí sady SDK Cosmos pro rozhraní SQL API. Volitelně můžete v následujícím příkladu pro Apache Cassandra API také.
 
 ### <a id="dotnet-all"></a>Všechna rozhraní API
 
@@ -63,7 +63,9 @@ session.Execute(CREATE KEYSPACE IF NOT EXISTS myKeySpace WITH cosmosdb_provision
 
 ## <a name="next-steps"></a>Další postup
 
-Zobrazit další informace o zřizování propustnosti ve službě Azure Cosmos DB v následujících článcích:
+Naleznete v následujících článcích se dozvíte o zřízenou propustnost v databázi Azure Cosmos DB:
 
+* [Globálně škálujte zřízená propustnost](scaling-throughput.md)
+* [Zřizování propustnosti na kontejnerech a databází](set-throughput.md)
 * [Zřízení propustnosti pro kontejner](how-to-provision-container-throughput.md)
 * [Jednotky žádostí a propustnost ve službě Azure Cosmos DB](request-units.md)

@@ -7,15 +7,15 @@ services: search
 ms.service: search
 ms.devlang: NA
 ms.topic: conceptual
-ms.date: 04/05/2019
+ms.date: 04/17/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: c52ac6128ad00d9bb772816d6130f3aedc480138
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: ff2b843e00ffdf005d952cf62eab6b93c9434913
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59273392"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59699162"
 ---
 # <a name="service-limits-in-azure-search"></a>Omezení služby Azure Search
 Maximální omezuje na úložiště, úlohy a množství indexů, dokumenty, a dalších objektů závisí na tom, zda jste [zřízení Azure Search](search-create-service-portal.md) na **Free**, **základní**,  **Standardní**, nebo **optimalizované pro úložiště** cenové úrovně.
@@ -55,7 +55,7 @@ Maximální omezuje na úložiště, úlohy a množství indexů, dokumenty, a d
 | Maximální [profily skórování](https://docs.microsoft.com/rest/api/searchservice/add-scoring-profiles-to-a-search-index) každý index |100 |100 |100 |100 |100 |100 |100 |100 |
 | Maximální funkce podle profilů. |8 |8 |8 |8 |8 |8 |8 |8 |
 
-<sup>1</sup> základní služby vytvořené po pozdní 2017 mají vyšší limit 15 indexy, zdroje dat a indexerů. Services vytvořili dříve k dispozici 5. Úroveň Basic je jenom SKU s nižší maximálně 100 polí v indexu.
+<sup>1</sup> základní služby vytvořené před. prosince 2017 mají nižší omezení (5 místo 15) na indexy. Úroveň Basic je jenom SKU s nižší maximálně 100 polí v indexu.
 
 <a name="document-limits"></a>
 
@@ -81,7 +81,7 @@ Pro služby v souladu s limity pro dokumenty platí následující omezení maxi
 
 |  Free | Basic | S1 | S2 | S3 | S3&nbsp;HD |
 |-------|-------|----|----|----|-------|
-|  10 000 |1 milion |15 milionů na oddíl nebo 180 milionů na službu |60 milionů na oddíl nebo 720 milionů na službu |120 milionů na oddíl nebo 1,4 miliard na službu |1 milion na index nebo 200 milionů na oddíl |
+|  10 000 |1&nbsp;milionů |15 milionů na oddíl nebo 180 milionů na službu |60 milionů na oddíl nebo 720 milionů na službu |120 milionů na oddíl nebo 1,4 miliard na službu |1 milion na index nebo 200 milionů na oddíl |
 
 Pokud má služba omezení, které jste se blokovat, vytvořte novou službu a pak znovu publikovat veškerý obsah na tuto službu. Neexistuje žádný mechanismus pro vaši službu na nový hardware na pozadí bez problémů neukončil.
 
@@ -99,9 +99,8 @@ Omezit velikost dokumentu, nezapomeňte vyloučit bez možnosti dotazování dat
 
 ## <a name="indexer-limits"></a>Omezení indexeru
 
-Základní služby vytvořené po pozdní 2017 mají vyšší limit 15 indexy, zdroje dat, dovednosti a indexery.
+Existují maximální dobu spuštění, aby zůstatek a stabilitu ke službě jako celek, ale větší sady dat potřebovat víc indexování času, než umožňuje maximální. Pokud úloha indexování nelze dokončit v povoleném čase maximální, ji zkuste spustit podle plánu. Plánovač uchovává informace o stavu indexování. Pokud z nějakého důvodu dojde k plánované úlohy indexování, indexeru můžete pokračovat tam, kde poslední skončila v příštím plánovaném spuštění.
 
-Náročná operace, jako je například Analýza obrázků v indexování objektů blob v Azure nebo zpracování přirozeného jazyka v kognitivního vyhledávání mít kratší maximální dobu spuštění, aby ostatní úlohy indexování můžete shromáždit. Pokud úloha indexování nelze dokončit v povoleném čase maximální, ji zkuste spustit podle plánu. Plánovač uchovává informace o stavu indexování. Pokud z nějakého důvodu dojde k plánované úlohy indexování, indexeru můžete pokračovat tam, kde poslední skončila v příštím plánovaném spuštění.
 
 | Prostředek | Bezplatné&nbsp;<sup>1</sup> | Basic&nbsp;<sup>2</sup>| S1 | S2 | S3 | S3&nbsp;HD&nbsp;<sup>3</sup>|L1 |L2 |
 | -------- | ----------------- | ----------------- | --- | --- | --- | --- | --- | --- |
@@ -109,14 +108,15 @@ Náročná operace, jako je například Analýza obrázků v indexování objekt
 | Maximální počet zdrojů dat |3 |5 nebo 15 |50 |200 |200 |neuvedeno |10 |10 |
 | Maximální dovednosti <sup>4</sup> |3 |5 nebo 15 |50 |200 |200 |neuvedeno |10 |10 |
 | Maximální indexování zatížení na vyvolání |10 000 dokumentů |Omezeno pouze maximální počet dokumentů |Omezeno pouze maximální počet dokumentů |Omezeno pouze maximální počet dokumentů |Omezeno pouze maximální počet dokumentů |neuvedeno |Bez omezení |Bez omezení |
+| Minimální plán | 5 minut |5 minut |5 minut |5 minut |5 minut |5 minut |5 minut | 5 minut |
 | Maximální doba spuštění <sup>5</sup> | 1 až 3 minut |24 hodin |24 hodin |24 hodin |24 hodin |neuvedeno  |24 hodin |24 hodin |
 | Maximální doba běhu pro dovednosti kognitivního vyhledávání nebo objekt blob indexování s analýzou image <sup>5</sup> | 3 až 10 minut |2 hodiny |2 hodiny |2 hodiny |2 hodiny |neuvedeno  |2 hodiny |2 hodiny |
 | Indexování objektů blob: blob maximální velikost, MB |16 |16 |128 |256 |256 |neuvedeno  |256 |256 |
-| Indexování objektů blob: maximální počet znaků obsahu extrahují z objektu blob |32,000 |64,000 |4 miliony |4 miliony |4 miliony |neuvedeno |4 miliony |4 miliony |
+| Indexování objektů blob: maximální počet znaků obsahu extrahují z objektu blob |32,000 |64,000 |4&nbsp;milionů |4&nbsp;milionů |4&nbsp;milionů |neuvedeno |4&nbsp;milionů |4&nbsp;milionů |
 
 <sup>1</sup> bezplatné služby mají maximální doba spuštění indexeru 3 minut pro objekt blob zdroje a pro všechny ostatní zdroje dat 1 minuta. Pro AI indexování volající do služeb Cognitive Services jsou bezplatné služby omezený na 20 transakcí zdarma za den, kde je definován transakce jako dokument, který úspěšně projde přes rozšíření kanálu.
 
-<sup>2</sup> základní služby vytvořené po pozdní 2017 mají vyšší limit 15 indexy, zdroje dat a indexerů. Services vytvořili dříve k dispozici 5.
+<sup>2</sup> základní služby vytvořené před. prosince 2017 mají nižší omezení (5 místo 15) na indexery, zdroje dat a dovednosti.
 
 <sup>3</sup> S3 HD, High Density služby nezahrnují nepodporuje indexery.
 
@@ -145,11 +145,11 @@ A [kognitivního vyhledávání kanálu](cognitive-search-concept-intro.md) , kt
 
 <sup>1</sup> v Azure Search text požadavku je v souladu s maximální limit je 16 MB, nastavení praktické omezení na obsahu jednotlivá pole nebo kolekce, které jinak nejsou omezeny teoretické omezení (viz [nepodporuje data typy](https://docs.microsoft.com/rest/api/searchservice/supported-data-types) Další informace o omezení a pole složení).
 
-## <a name="api-response-limits"></a>Omezí odpověď rozhraní API
+## <a name="api-response-limits"></a>Omezení odpovědi rozhraní API
 * Maximální vrácených na stránce výsledků hledání 1 000 dokumentů
 * Maximální 100 návrhy vrátí na žádost návrh rozhraní API
 
-## <a name="api-key-limits"></a>Omezení klíč rozhraní API
+## <a name="api-key-limits"></a>Omezení klíčů rozhraní API
 Klíče rozhraní API se používají pro ověřování služby. Existují dva typy. Klíče správce jsou určené v hlavičce žádosti a udělit přístup k úplné čtení a zápis do služby. Klíče dotazu jsou jen pro čtení, zadaná na adresu URL a obvykle se distribuují klientským aplikacím.
 
 * Maximálně 2 klíče správce na službu

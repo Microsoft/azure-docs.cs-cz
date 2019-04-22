@@ -1,12 +1,18 @@
 ---
 title: Uspořádání vašich prostředků s využitím skupin pro správu Azure – zásady správného řízení Azure
-description: 'Další informace o skupinách pro správu, fungování jejich oprávnění a způsobu jejich využití'
+description: Další informace o skupinách pro správu, fungování jejich oprávnění a způsobu jejich využití
 author: rthorn17
 ms.assetid: 482191ac-147e-4eb6-9655-c40c13846672
 ms.service: azure-resource-manager
-ms.date: 02/20/2019
+ms.date: 04/17/2019
 ms.author: rithorn
 ms.topic: overview
+ms.openlocfilehash: 157701e826d6a281a60393e1ec270cf061be8214
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.translationtype: HT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59699377"
 ---
 # <a name="organize-your-resources-with-azure-management-groups"></a>Uspořádání vašich prostředků s využitím skupin pro správu Azure
 
@@ -37,11 +43,11 @@ Jedno přiřazení v rámci skupiny pro správu tak může uživatelům umožnit
 ## <a name="root-management-group-for-each-directory"></a>Kořenová skupina pro správu pro jednotlivé adresáře
 
 Každý adresář obdrží jednu skupinu pro správu nejvyšší úrovně, která se označuje jako kořenová skupina pro správu.
-Tato kořenová skupina pro správu je integrovaná do hierarchie tak, aby pod ní spadaly všechny skupiny pro správu a všechna předplatná. Tato kořenová skupina pro správu umožňuje používání globálních zásad a přiřazení RBAC na úrovni adresáře. [Globální správce Azure AD musí sám sobě zvýšit oprávnění](../../role-based-access-control/elevate-access-global-admin.md), aby v počátečním nastavení byl vlastníkem této kořenové skupiny. Jakmile je správce vlastníkem skupiny, může v rámci správy hierarchie přiřadit libovolnou roli RBAC ostatním skupinám nebo uživatelům adresáře.
+Tato kořenová skupina pro správu je integrovaná do hierarchie tak, aby pod ní spadaly všechny skupiny pro správu a všechna předplatná. Tato kořenová skupina pro správu umožňuje používání globálních zásad a přiřazení RBAC na úrovni adresáře. [Globální správce Azure AD musí sám sobě zvýšit oprávnění](../../role-based-access-control/elevate-access-global-admin.md), aby v počátečním nastavení měl pro tuto kořenovou skupinu roli správce uživatelského přístupu. Po zvýšení úrovně přístupu může správce v rámci správy hierarchie přiřadit ostatním skupinám nebo uživatelům adresáře libovolnou roli RBAC. Jako správce můžete jako vlastníka kořenové skupiny pro správu nastavit svůj vlastní účet.
 
 ### <a name="important-facts-about-the-root-management-group"></a>Důležité informace o kořenových skupinách pro správu
 
-- Název a ID kořenové skupiny pro správu jsou ve výchozím nastavení dané. Zobrazovaný název je možné kdykoli aktualizovat, aby se na webu Azure Portal zobrazoval jinak.
+- Název a ID kořenové skupiny pro správu jsou ve výchozím nastavení dané. Zobrazovaný název je možné kdykoli aktualizovat, aby se na webu Azure Portal zobrazoval jinak. Pokud chcete [změnit název](manage.md#change-the-name-of-a-management-group), musí váš účet mít pro příslušnou kořenovou skupinu pro správu roli Vlastník nebo Přispěvatel.
   - Název bude „Kořenová skupina tenanta“.
   - ID bude ID služby Azure Active Directory.
 - Kořenová skupina pro správu se na rozdíl od ostatních skupin pro správu nedá přesunout ani odstranit.  
@@ -63,7 +69,7 @@ Když libovolný uživatel začne využívat skupiny pro správu, musí proběhn
 
 ## <a name="trouble-seeing-all-subscriptions"></a>Potíže se zobrazením všech předplatných
 
-U několika adresářů, které začaly využívat skupiny pro správu v rané fázi verze Preview před 25. červnem 2018, může docházet k chybě, kdy v hierarchii nejsou všechna předplatná.  Procesy pro zařazení předplatných do hierarchie se implementovaly až po přiřazení zásad nebo role pro kořenovou skupinu pro správu v příslušném adresáři.
+U několika adresářů, které začaly využívat skupiny pro správu v rané fázi verze Preview před 25. červnem 2018, může docházet k chybě, kdy v hierarchii nejsou všechna předplatná. Proces pro zařazení předplatných do hierarchie se implementoval až po přiřazení zásad nebo role pro kořenovou skupinu pro správu v příslušném adresáři. 
 
 ### <a name="how-to-resolve-the-issue"></a>Jak tyto potíže vyřešit
 

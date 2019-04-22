@@ -2,14 +2,14 @@
 author: tamram
 ms.service: storage
 ms.topic: include
-ms.date: 3/23/2019
+ms.date: 4/11/2019
 ms.author: tamram
-ms.openlocfilehash: c4c62876ac2483851a1f60835eeee17b4ae47f13
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
-ms.translationtype: MT
+ms.openlocfilehash: b3e2f018a3f1ba2563ba8cf2df6dfd4959be592e
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58395547"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59736986"
 ---
 | Prostředek | Cíl        |
 |----------|---------------|
@@ -21,3 +21,6 @@ ms.locfileid: "58395547"
 | Maximální velikost doplňovacího objektu BLOB | 50 000 × 4 MiB (přibližně 195 GB) |
 | Maximální velikost objektu blob stránky | 8 TiB |
 | Maximální počet uložené zásady přístupu na kontejner objektů blob | 5 |
+|Nastavte propustnost pro jeden objekt blob |Až do omezení příchozí a odchozí přenos účtu úložiště<sup>1</sup> |
+
+<sup>1</sup> jeden objekt propustnost závisí na několika různými faktory, včetně, ale nikoli výhradně: souběžnosti, velikost operace, úroveň výkonu, rychlost zdroje pro nahrávání a cílové soubory ke stažení.

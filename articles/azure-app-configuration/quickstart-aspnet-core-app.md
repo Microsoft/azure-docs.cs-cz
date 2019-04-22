@@ -14,12 +14,12 @@ ms.tgt_pltfrm: ASP.NET Core
 ms.workload: tbd
 ms.date: 02/24/2019
 ms.author: yegu
-ms.openlocfilehash: 6c9b257ab88b3564253b0f48d953094f84a1d71d
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
-ms.translationtype: MT
+ms.openlocfilehash: 5a985e43c097dbea2861a5eb9fa10c526cbf089a
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/05/2019
-ms.locfileid: "59051435"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59697864"
 ---
 # <a name="quickstart-create-an-aspnet-core-app-with-azure-app-configuration"></a>Rychlý start: Vytvoření aplikace ASP.NET Core s konfigurací aplikace Azure
 
@@ -191,4 +191,4 @@ Přidat [nástroj tajný klíč správce](https://docs.microsoft.com/aspnet/core
 V tomto rychlém startu jste vytvořili novým úložištěm konfigurace aplikace a používat s webovou aplikaci ASP.NET Core prostřednictvím [poskytovatele konfigurace aplikace](https://go.microsoft.com/fwlink/?linkid=2074664). Další informace o tom, jak používat konfiguraci aplikací, pokračujte k dalšímu kurzu, který ukazuje ověření.
 
 > [!div class="nextstepaction"]
-> [Spravované identity pro integraci prostředků Azure](./integrate-azure-managed-service-identity.md)
+> [Spravované identity pro integraci prostředků Azure](./howto-integrate-azure-managed-service-identity.md)

@@ -17,12 +17,12 @@ ms.date: 02/07/2019
 ms.author: joflore
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fbc2a1bd8b751ab1b88e54876227892ea3c257a3
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.openlocfilehash: cdacdf604ab7a4ded7ddf302a217084630f60b31
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58517534"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59699027"
 ---
 # <a name="how-to-configure-risk-policies-in-azure-active-directory-identity-protection-refreshed"></a>Jak: Konfigurace zásady rizik ve službě Azure Active Directory identity protection (Aktualizovat)
 
@@ -41,7 +41,8 @@ Azure AD analyzuje každé přihlášení uživatele. Cílem analýzy je ke zji�
 
 Zásady rizik přihlašování je automatické reakce, které můžete konfigurovat pro úroveň rizika konkrétních přihlášení. V odpovědi může blokovat přístup k vašim prostředkům nebo vyžadují předávání výzvu ověřování službou Multi-Factor Authentication (MFA) k získání přístupu.
 
-   
+Pokud uživatel úspěšně dokončí výzvu k MFA aktivované zásady rizik přihlašování, poskytuje zpětnou vazbu k Identity Protection, která přihlášení pochází od legitimního uživatele. Díky tomu se přihlášení rizikové události, která aktivuje řádku vícefaktorové ověřování se automaticky zavře a Identity Protection nebudou moct Tato událost přispívat ke zvýšení úrovně rizika uživatele. Když se zásady rizik přihlašování se dá snížit noisiness v zobrazení rizikových přihlášení umožňující uživatelům sami napravit po zobrazení výzvy pro vícefaktorové ověřování a následně automaticky zavření přidružené rizikových přihlášení.
+
 ## <a name="how-do-i-access-the-sign-in-risk-policy"></a>Jak získám přístup do zásady rizik přihlašování?
    
 Zásady rizik přihlašování **konfigurovat** části na [stránku služby Azure AD Identity Protection](https://portal.azure.com/#blade/Microsoft_AAD_ProtectionCenter/IdentitySecurityDashboardMenuBlade/SignInPolicy).

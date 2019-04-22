@@ -9,12 +9,12 @@ ms.subservice: translator-text
 ms.date: 02/21/2019
 ms.author: v-rada
 ms.topic: conceptual
-ms.openlocfilehash: 3b2c5f3e02241f8c4e8a9ae87bd7436863243978
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 73fc0d26612d32f2614899c62f680ff9e85d1609
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57901521"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59698395"
 ---
 # <a name="migrate-hub-workspace-and-projects-to-custom-translator"></a>Migrace na Translator vlastní pracovní prostor centra a projekty
 
@@ -119,6 +119,7 @@ Migrace historie stránce se zobrazí následující informace jako souhrn pro k
 Pokud chcete podrobnější sestavu migrace o projekty, školení a dokumenty, máte možnost Exportovat podrobnosti jako sdílený svazek clusteru.
 
 ## <a name="implementation-notes"></a>Poznámky k implementaci
+* Systémy s jazykem dvojice není zatím k dispozici ve vlastní Translator budou k dispozici pouze pro přístup k datům nebo zrušení prostřednictvím překladače vlastní. Tyto projekty budou označeny jako "Není k dispozici" na stránce projekty. Jak je budeme povolovat nové dvojice jazyků s vlastní překlady, se stane aktivní, trénovat a nasazovat projekty. 
 * Migrace projektu z centra na vlastní Translator nebude mít žádný vliv na vaše Centrum školení nebo projekty. Jsme neodstraňujte projekty nebo dokumenty z centra během migrace a jsme není zrušení modely.
 * Jsou povolené jenom po migraci na projekt. Pokud je nutné opakovat migraci na projekt, kontaktujte nás prosím.
 * Vlastní Translator podporuje dvojice jazyků NMT do a z angličtiny. [Zobrazit úplný seznam podporovaných langauges](https://docs.microsoft.com/azure/cognitive-services/translator/language-support#customization). Centrum nevyžaduje základní modely a proto podporuje několik jazyků tisíců. Dvojici nepodporovaný jazyk, můžete migrovat, ale My pouze provést migraci dokumenty a projektu definice. Společnost Microsoft nebude moci natrénovat nový model. Kromě toho tyto dokumenty a projektů se zobrazí jako neaktivní indikaci, že nelze použít v tuto chvíli. Pokud je přidána podpora pro tyto projekty a/nebo dokumenty, budou aktivní a trainable.

@@ -13,24 +13,24 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 08/27/2018
 ms.author: apimpm
-ms.openlocfilehash: 35b4777c7de4db1f8514b24e7b1e4d11775d0ca0
-ms.sourcegitcommit: 2b2129fa6413230cf35ac18ff386d40d1e8d0677
-ms.translationtype: HT
+ms.openlocfilehash: 14d4bf6d7e1d1f474e2388c4e2ce232574ebf0d8
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43247898"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59682793"
 ---
 # <a name="add-an-api-manually"></a>Ruční přidání rozhraní API
 
-Kroky v tomto článku ukazují, jak pomocí portálu Azure Portal ručně přidat rozhraní API do instance API Managementu (APIM). Vytvořit prázdné rozhraní API a definovat ho ručně můžete třeba tehdy, když chcete napodobit rozhraní API. Podrobnosti o napodobení rozhraní API najdete v článku [Napodobení odpovědí API](mock-api-responses.md).
+Kroky v tomto článku ukazují, jak pomocí webu Azure portal ruční přidání rozhraní API na instanci služby API Management (APIM). Vytvořit prázdné rozhraní API a definovat ho ručně můžete třeba tehdy, když chcete napodobit rozhraní API. Podrobnosti o napodobení rozhraní API najdete v článku [Napodobení odpovědí API](mock-api-responses.md).
 
 Pokud chcete importovat existující rozhraní API, přečtěte si články v části [Související témata](#related-topics).
 
-V tomto článku vytvoříme prázdné rozhraní API a jako rozhraní API back-endu určíme [httpbin.org](http://httpbin.org) (veřejnou testovací službu).
+V tomto článku vytvoříme prázdné rozhraní API a jako rozhraní API back-endu určíme [httpbin.org](https://httpbin.org) (veřejnou testovací službu).
 
 ## <a name="prerequisites"></a>Požadavky
 
-Projděte si následující rychlý start: [Vytvoření instance služby Azure API Management](get-started-create-service-instance.md)
+Projděte si následující rychlý start: [Vytvoření instance Azure API Managementu](get-started-create-service-instance.md)
 
 [!INCLUDE [api-management-navigate-to-instance.md](../../includes/api-management-navigate-to-instance.md)]
 
@@ -48,10 +48,10 @@ Projděte si následující rychlý start: [Vytvoření instance služby Azure A
     |**Název**|**Hodnota**|**Popis**|
     |---|---|---|
     |**Zobrazovaný název**|„*Prázdné rozhraní API*“ |Tento název se zobrazí na portálu pro vývojáře.|
-    |**Adresa URL webové služby** (volitelné)| „*http://httpbin.org*“| Pokud chcete rozhraní API napodobit, nemusíte zadávat nic. <br/>V tomto případě zadáme [http://httpbin.org](http://httpbin.org). Je to veřejná testovací služba. <br/>Pokud chcete automaticky importovat rozhraní API, které je namapované na back-end, přečtěte si některé z témat v části [Související témata](#related-topics).|
+    |**Adresa URL webové služby** (volitelné)| „*https://httpbin.org*“| Pokud chcete rozhraní API napodobit, nemusíte zadávat nic. <br/>V tomto případě zadáme [https://httpbin.org](https://httpbin.org). Je to veřejná testovací služba. <br/>Pokud chcete automaticky importovat rozhraní API, které je namapované na back-end, přečtěte si některé z témat v části [Související témata](#related-topics).|
     |**Schéma URL**|„*HTTPS*“|V tomto případě, i když má back-end nezabezpečený přístup HTTP, určíme k back-endu zabezpečený přístup HTTPS APIM. <br/>Tento druh scénáře (HTTPS na HTTP) se nazývá ukončení protokolu HTTPS. Můžete to udělat, pokud vaše rozhraní API existuje ve virtuální síti (kde víte, že přístup je bezpečný, i když se nepoužívá HTTPS). <br/>„Ukončení protokolu HTTPS“ můžete využít k úspoře některých cyklů procesoru.|
     |**Přípona adresy URL**|„*hbin*“| Přípona je název, který identifikuje toto konkrétní rozhraní API v této instanci APIM. Musí být v této instanci APIM jedinečná.|
-    |**Produkty**|*Unlimited* |Publikujte rozhraní API jeho přidružením k produktu. Pokud chcete, aby bylo rozhraní API publikované a k dispozici pro vývojáře, přidejte ho k produktu. Můžete to udělat při vytváření rozhraní API nebo nastavit později.<br/><br/>Produkty jsou sdruženími jednoho nebo více rozhraní API. Můžete zahrnout několik rozhraní API a nabídnout je vývojářům prostřednictvím portálu pro vývojáře. <br/>Vývojáři se nejprve musí přihlásit k odběru produktu, a teprve pak získají přístup k rozhraní API. Po přihlášení k odběru získají klíč předplatného, který je možné použít pro jakékoli rozhraní API v příslušném produktu. Pokud jste vytvořili instanci služby APIM, již jste správcem, takže jste ve výchozím nastavení přihlášeni k odběru všech produktů.<br/><br/> Ve výchozím nastavení každá instance služby API Management obsahuje dva ukázkové produkty: **Starter** a **Unlimited**.| 
+    |**Produkty**|*Unlimited* |Publikujte rozhraní API jeho přidružením k produktu. Pokud chcete, aby bylo rozhraní API publikované a k dispozici pro vývojáře, přidejte ho k produktu. Můžete to udělat při vytváření rozhraní API nebo nastavit později.<br/><br/>Produkty jsou sdruženími jednoho nebo více rozhraní API. Můžete zahrnout několik rozhraní API a nabídnout je vývojářům prostřednictvím portálu pro vývojáře. <br/>Vývojáři se nejprve musí přihlásit k odběru produktu, a teprve pak získají přístup k rozhraní API. Po přihlášení k odběru získají klíč předplatného, který je možné použít pro jakékoli rozhraní API v příslušném produktu. Pokud jste vytvořili instanci služby APIM, již jste správcem, takže jste ve výchozím nastavení přihlášeni k odběru všech produktů.<br/><br/> Ve výchozím nastavení každá instance služby API Management obsahuje dva ukázkové produkty: **Starter** a **neomezené**.| 
 5. Vyberte **Vytvořit**.
 
 V tuto chvíli nemáte v APIM žádné operace, které se mapují na operace v rozhraní API back-endu. Pokud budete volat operaci, která je prezentovaná prostřednictvím back-endu, ale ne prostřednictvím APIM, může nastat chyba **404**.
@@ -107,7 +107,7 @@ Otestujte operaci na portálu Azure Portal.  Případně ji můžete otestovat n
 
 [!INCLUDE [api-management-define-api-topics.md](../../includes/api-management-define-api-topics.md)]
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 > [!div class="nextstepaction"]
 > [Transformace a ochrana publikovaného rozhraní API](transform-api.md)

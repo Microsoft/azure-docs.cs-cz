@@ -10,12 +10,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 01/09/2018
 ms.author: magoedte
-ms.openlocfilehash: 32f2833b4c1ba77564d5388bc080a7cb32d90201
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: ade12225a470b64278b9d27676ceab768f64d904
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56243769"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59698268"
 ---
 # <a name="azure-monitor-for-vms-preview-frequently-asked-questions"></a>Azure Monitor pro virtuální počítače (preview) – nejčastější dotazy
 Tato FAQ Microsoft je uveden seznam nejčastější dotazy týkající se Azure Monitor pro virtuální počítače. Pokud máte nějaké další dotazy ohledně řešení, přejděte [diskusní fórum](https://feedback.azure.com/forums/34192--general-feedback) a zveřejněte své dotazy. Pokud je dotaz pokládán často, přidáme ji k tomuto článku tak, aby jej lze rychle a snadno najít.
@@ -100,7 +100,7 @@ Azure Monitor pro virtuální počítače mapování funkce je založená na map
 * Monitorovaných virtuálních počítačů jsou teď součástí uzel skupiny klienta a prstencový graf znázorňuje podíl sledované vs nemonitorované virtuální počítače ve skupině.  To lze použít také pro filtrování seznamu počítačů, když je skupina rozbalena.
 * Monitorovaných virtuálních počítačů jsou teď součástí na uzlech skupiny portů serveru a prstencový graf znázorňuje podíl sledované vs nemonitorovaných počítačů ve skupině.  To lze použít také pro filtrování seznamu počítačů, když je skupina rozbalena.
 * Styl mapa byla aktualizována byly konzistentnější s Mapa aplikace ze služby Application insights.
-* Boční panely byly aktualizovány, ale ještě není kompletní integrace společnosti, které se podporovaly v Service Map - Update Management, Change Tracking, zabezpečení a oddělení služeb. 
+* Boční panely byly aktualizovány a nemají kompletní integrace společnosti, které se podporovaly v Service Map - Update Management, Change Tracking, zabezpečení a oddělení služeb. 
 * Možnost pro výběr skupin a počítačů k mapování byl aktualizován a nyní podporuje předplatná, skupiny prostředků, škálovací sady virtuálních počítačů Azure a cloudových služeb.
 * Nelze vytvořit nové skupiny počítačů řešení Service Map ve službě Azure Monitor pro funkci mapování virtuálních počítačů.  
 
@@ -125,6 +125,12 @@ Zatímco provedli jsme vylepšení Map pro zpracování velkých a složitých k
 ## <a name="why-does-the-network-chart-on-the-performance-tab-look-different-than-the-network-chart-on-the-azure-vm-overview-page"></a>Proč grafu sítě na kartě Výkon vypadat jinak než sítě graf na stránce Přehled virtuálních počítačů Azure?
 
 Stránka s přehledem pro virtuální počítač Azure zobrazuje grafy založené na hostitele měření aktivity ve virtuálním počítači hosta.  Sítě grafu na Přehled virtuálních počítačů Azure se zobrazí pouze síťový provoz, který se bude účtovat.  To nezahrnuje provoz mezi virtuálními sítěmi vnet.  Data a grafy, které jsou uvedené pro monitorování Azure pro virtuální počítače je na základě dat z hosta virtuálního počítače a sítě grafu se zobrazuje veškerý provoz protokolu TCP/IP, který je příchozí a odchozí tomuto virtuálnímu počítači, včetně mezi sítěmi vnet.
+
+## <a name="how-is-response-time-measured-for-data-stored-in-vmconnection-and-displayed-in-the-connection-panel-and-workbooks"></a>Jak se měří dobu odezvy pro data uložená v VMConnection a zobrazují v panelu připojení a sešity?
+
+Doba odezvy je přibližný. Protože není dokončíme instrumentaci kód aplikace, jsme není známo, ve skutečnosti zahájení žádost a při přijetí odpovědi. Místo toho podle našich zkušeností dat odesílaných na připojení a pak data vracející se zpět na toto připojení. Náš agent uchovává informace o těchto odešle a přijme a pokusí spárovat se jim: obdrží sekvenci odešle, za nímž následuje posloupnost je interpretován jako dvojici žádost odpověď. Mezi tyto operace časování je doba odezvy. Bude zahrnovat latence sítě a výpočetního času serveru.
+
+Této aproximace funguje dobře pro protokoly, které jsou na základě požadavku nebo odpovědi: jeden požadavek prochází připojení a odpověď o jedné dorazí. To platí pro HTTP (S) (bez kanálů), ale nejsou splněny pro jiné protokoly.
 
 ## <a name="are-their-limitations-if-i-am-on-the-log-analytics-free-pricing-plan"></a>Pokud jsem v Log Analytics zdarma cenového plánu jsou jejich omezení?
 Pokud jste nakonfigurovali Azure Monitor se pomocí pracovního prostoru Log Analytics *Free* cenovou úroveň, Azure Monitor pro funkci Mapa virtuální počítače se podporují pouze pět připojené počítače připojený k pracovnímu prostoru. Pokud máte pět virtuální počítače připojené k bezplatný pracovní prostor, odpojit jeden z virtuálních počítačů a pak připojit nový virtuální počítač, nový virtuální počítač není monitorovat a uvedených na stránce mapy.  

@@ -1,21 +1,21 @@
 ---
 title: Jak nakonfigurovat více hlavních databází ve službě Azure Cosmos DB
 description: Zjistěte, jak konfigurovat více hlavních databází ve vašich aplikacích ve službě Azure Cosmos DB
-author: markjbrown
+author: rimman
 ms.service: cosmos-db
 ms.topic: sample
-ms.date: 2/12/2019
-ms.author: mjbrown
-ms.openlocfilehash: 84c8e2921602bb653c0b1ef0adffd3d89e91bd78
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
+ms.date: 04/15/2019
+ms.author: rimman
+ms.openlocfilehash: b862c59002369662d37b6d6a9de28370b0000497
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56312136"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59682266"
 ---
 # <a name="how-to-configure-multi-master-in-your-applications-that-use-azure-cosmos-db"></a>Jak nakonfigurovat více hlavních databází ve svých aplikacích, které používají službu Azure Cosmos DB
 
-Pokud chcete používat funkce několika hlavními databázemi ve svých aplikacích, které potřebujete k povolení zápisů ve více oblastech a konfigurace multihomingu funkce. Multihoming je nakonfigurovaný tak, že nastavíte oblast, ve kterém je aplikace nasazená.
+Použití několika hlavními databázemi funkce ve vaší aplikaci, budete muset povolit zápisů ve více oblastech a nakonfigurovat vícenásobné navádění schopností ve službě Azure Cosmos DB. Vícenásobné navádění je nakonfigurovaný tak, že nastavíte oblast, ve kterém je aplikace nasazená.
 
 ## <a id="netv2"></a>Sady .NET SDK v2
 
@@ -43,7 +43,7 @@ CosmosClient client = new CosmosClient(config);
 
 ## <a id="java"></a>Java Async SDK
 
-Povolit více hlavních databází ve vaší sadě aplikací `policy.setUsingMultipleWriteLocations(true)` na hodnotu true a nakonfigurovat `policy.setPreferredLocations` do oblasti, ve kterém se nasazuje aplikace a služby Cosmos DB se replikuje.
+Povolit více hlavních databází ve vaší sadě aplikací `policy.setUsingMultipleWriteLocations(true)` a nakonfigurujte `policy.setPreferredLocations` do oblasti, ve kterém se nasazuje aplikace a služby Cosmos DB se replikuje.
 
 ```java
 ConnectionPolicy policy = new ConnectionPolicy();
@@ -89,14 +89,14 @@ client = cosmos_client.CosmosClient(self.account_endpoint, {'masterKey': self.ac
 
 ## <a name="next-steps"></a>Další postup
 
-Další informace o několika hlavními databázemi, globální distribuci a konzistence ve službě Azure Cosmos DB. Viz následující články:
+Dále si můžete přečíst následující články:
 
 * [Využívat relace tokeny pro správu konzistence ve službě Azure Cosmos DB](how-to-manage-consistency.md#utilize-session-tokens)
-
 * [Zásady řešení ve službě Azure Cosmos DB a typy konfliktů](conflict-resolution-policies.md)
-
 * [Vysoká dostupnost ve službě Azure Cosmos DB](high-availability.md)
-
+* [Úrovně konzistence ve službě Azure Cosmos DB](consistency-levels.md)
 * [Volba úrovně konzistence správné ve službě Azure Cosmos DB](consistency-levels-choosing.md)
-
 * [Kompromisy konzistencí, dostupností a výkonem ve službě Azure Cosmos DB](consistency-levels-tradeoffs.md)
+* [Dostupnost a výkon kompromisy pro různé úrovně konzistence](consistency-levels-tradeoffs.md)
+* [Globální škálování zřízená propustnost](scaling-throughput.md)
+* [Globální distribuce - pod pokličkou](global-dist-under-the-hood.md)

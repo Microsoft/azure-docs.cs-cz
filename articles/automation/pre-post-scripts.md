@@ -1,22 +1,22 @@
 ---
-title: Nakonfigurujte skripty před a po nasazení správy aktualizací v Azure (Preview)
+title: Nakonfigurujte skripty před a po nasazení správy aktualizací v Azure
 description: Tento článek popisuje, jak konfigurovat a spravovat před a po skriptů pro nasazení aktualizací
 services: automation
 ms.service: automation
 ms.subservice: update-management
 author: georgewallace
 ms.author: gwallace
-ms.date: 04/04/2019
+ms.date: 04/15/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 76cd877380090ccad8b2f7b7dbe79957e0eab5bb
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: 84df04a6d3fbd634524d3819657860c6a3448d65
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59263804"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59698732"
 ---
-# <a name="manage-pre-and-post-scripts-preview"></a>Spravovat skripty před a po (Preview)
+# <a name="manage-pre-and-post-scripts"></a>Spravovat skripty před a po
 
 Skripty před a po umožňují spustit Powershellové runbooky ve vašem účtu Automation před (předběžné úkolu) a po nasazení (po úloh) aktualizace. Skripty před a po spuštění v rámci Azure a ne místně. Předběžné skripty se spouští na začátku nasazení aktualizace. Spustit skripty příspěvek na konci nasazení a po žádné restartování počítače, které jsou nakonfigurované.
 
@@ -26,7 +26,7 @@ Sady runbook má být použit jako před nebo po skriptu že runbook bude potře
 
 ## <a name="using-a-prepost-script"></a>Pomocí předzálohovacího nebo pozálohovacího skriptu
 
-Použít po předem a po skript v nasazení aktualizací, začněte tím, že vytvoření nasazení aktualizace. Vyberte **předzálohovacích skriptů a skripty Post (Preview)**. Tato akce otevře **vyberte předzálohovacích skriptů a pozálohovacích skriptů** stránky.  
+Použít po předem a po skript v nasazení aktualizací, začněte tím, že vytvoření nasazení aktualizace. Vyberte **předzálohovacích skriptů a skripty příspěvek**. Tato akce otevře **vyberte předzálohovacích skriptů a pozálohovacích skriptů** stránky.  
 
 ![Vyberte skriptů](./media/pre-post-scripts/select-scripts.png)
 
@@ -206,7 +206,20 @@ $variable = Get-AutomationVariable -Name $runId
 #>      
 ```
 
-## <a name="interacting-with-non-azure-machines"></a>Interakce s počítače mimo Azure
+## <a name="interacting-with-machines"></a>Interakce s počítače
+
+Úlohy před a po spuštění jako sady runbook ve vašem účtu Automation a ne přímo na počítačích ve vašem nasazení. Úlohy před a po také spustit v rámci Azure a nebudete mít přístup pro počítače mimo Azure. Následující části vysvětlují, jak můžete pracovat s počítače přímo, jestli se virtuální počítač Azure nebo počítač mimo Azure:
+
+### <a name="interacting-with-azure-machines"></a>Interakce s počítači Azure
+
+Před a po úkoly jsou spuštěny pod sady runbook a nativně nespouštějte na virtuální počítače Azure ve vašem nasazení. K interakci s virtuální počítače Azure, musíte mít následující položky:
+
+* Účet Spustit jako
+* Sady runbook, který chcete spustit
+
+Chcete-li komunikovat s počítači Azure, měli byste použít [Invoke-AzureRmVMRunCommand](/powershell/module/azurerm.compute/invoke-azurermvmruncommand) rutiny pro interakci s virtuální počítače Azure. Příklad toho, jak to provést, podívejte se na příklad runbooku [Update Management – spustit skript pomocí příkazu Spustit](https://gallery.technet.microsoft.com/Update-Management-Run-40f470dc).
+
+### <a name="interacting-with-non-azure-machines"></a>Interakce s počítače mimo Azure
 
 Úlohy před a po spuštění v rámci Azure a nebudete mít přístup pro počítače mimo Azure. K interakci s počítači mimo Azure, musíte mít následující položky:
 
@@ -215,38 +228,7 @@ $variable = Get-AutomationVariable -Name $runId
 * Sady runbook, kterou chcete spustit místně
 * Nadřízený runbook
 
-K interakci s počítači mimo Azure, nadřazená sada runbook běží v rámci Azure. Tato sada runbook volá podřízeného runbooku se [Start-AzureRmAutomationRunbook](/powershell/module/azurerm.automation/start-azurermautomationrunbook) rutiny. Je nutné zadat `-RunOn` parametr a zadejte název funkce Hybrid Runbook Worker pro spuštění skriptu.
-
-```powershell
-$ServicePrincipalConnection = Get-AutomationConnection -Name 'AzureRunAsConnection'
-
-Add-AzureRmAccount `
-    -ServicePrincipal `
-    -TenantId $ServicePrincipalConnection.TenantId `
-    -ApplicationId $ServicePrincipalConnection.ApplicationId `
-    -CertificateThumbprint $ServicePrincipalConnection.CertificateThumbprint
-
-$AzureContext = Select-AzureRmSubscription -SubscriptionId $ServicePrincipalConnection.SubscriptionID
-
-$resourceGroup = "AzureAutomationResourceGroup"
-$aaName = "AzureAutomationAccountName"
-
-$output = Start-AzureRmAutomationRunbook -Name "StartService" -ResourceGroupName $resourceGroup  -AutomationAccountName $aaName -RunOn "hybridWorker"
-
-$status = Get-AzureRmAutomationJob -Id $output.jobid -ResourceGroupName $resourceGroup  -AutomationAccountName $aaName
-while ($status.status -ne "Completed")
-{ 
-    Start-Sleep -Seconds 5
-    $status = Get-AzureRmAutomationJob -Id $output.jobid -ResourceGroupName $resourceGroup  -AutomationAccountName $aaName
-}
-
-$summary = Get-AzureRmAutomationJobOutput -Id $output.jobid -ResourceGroupName $resourceGroup  -AutomationAccountName $aaName
-
-if ($summary.Type -eq "Error")
-{
-    Write-Error -Message $summary.Summary
-}
-```
+K interakci s počítači mimo Azure, nadřazená sada runbook běží v rámci Azure. Tato sada runbook volá podřízeného runbooku se [Start-AzureRmAutomationRunbook](/powershell/module/azurerm.automation/start-azurermautomationrunbook) rutiny. Je nutné zadat `-RunOn` parametr a zadejte název funkce Hybrid Runbook Worker pro spuštění skriptu. Příklad toho, jak to provést, podívejte se na příklad runbooku [Update Management – spustit skript místně](https://gallery.technet.microsoft.com/Update-Management-Run-6949cc44).
 
 ## <a name="abort-patch-deployment"></a>Přerušit opravy nasazení
 

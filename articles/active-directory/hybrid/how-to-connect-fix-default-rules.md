@@ -13,12 +13,12 @@ ms.date: 03/21/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f524e8cef3878816cec53575217bdb6d0fd9be7b
-ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
+ms.openlocfilehash: 761f3e6e72319a2e63d6b66f2893130ec5a82ebf
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58501253"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59698157"
 ---
 # <a name="fix-modified-default-rules-in-azure-ad-connect"></a>Oprava upravené výchozí pravidla ve službě Azure AD Connect
 
@@ -76,12 +76,12 @@ Pravidlo příchozí synchronizace znamená, že je zdroj pro atribut prostor ko
 
  ![Výchozí pravidla](media/how-to-connect-fix-default-rules/default3a.png)
 
-Postupujte podle vlastní zásady vytváření názvů pro název pravidla, tady jsme použili **vlastní ve ze služby AD - uživatel**, to znamená, že pravidlo vlastního pravidla a je v prostoru konektoru AD příchozí pravidlo do úložiště Metaverse. 
+Postupujte podle vlastní zásady vytváření názvů pro název pravidla, tady jsme použili **vlastní ve ze služby AD - uživatel**, to znamená, že pravidlo vlastního pravidla a je v prostoru konektoru AD příchozí pravidlo do úložiště Metaverse.   
 
  ![Výchozí pravidla](media/how-to-connect-fix-default-rules/default3b.png)
 
-Tak, aby budoucí údržby pravidla je jednoduché, jako jsou novinky cíle tohoto pravidla a proč je potřeba, poskytněte vlastní popis pravidla.
-Vybraná připojený systém (doménová struktura) zdrojového atributu. Pak typ objektu připojený systém a typ objektu úložiště Metaverse.
+Tak, aby budoucí údržby pravidla je jednoduché, jako je co cílem tohoto pravidla je a proč je potřeba, poskytněte vlastní popis pravidla.
+Vyberte připojený systém (doménová struktura) - zdrojového atributu. Vyberte typ objektu připojený systém a typ objekt úložiště Metaverse.
 
 Zadejte číslo prioritu v rozsahu 0 – 99 (nižší číslo, vyšší prioritu). Zachovejte další pole, jako jsou "Štítku" povolení synchronizace hesel a zakázané jako výchozí.
 

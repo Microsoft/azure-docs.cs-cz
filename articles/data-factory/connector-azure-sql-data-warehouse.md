@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 02/22/2019
+ms.date: 04/16/2019
 ms.author: jingwang
-ms.openlocfilehash: c2257dac60ed92859e3df3360ce55558b176de91
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
-ms.translationtype: MT
+ms.openlocfilehash: e3fc5a3dc5dc40078ca3a4733f6a2ba11da450f1
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58010205"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59681212"
 ---
 # <a name="copy-data-to-or-from-azure-sql-data-warehouse-by-using-azure-data-factory"></a>Kopírování dat do nebo z Azure SQL Data Warehouse pomocí Azure Data Factory 
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you're using:"]
@@ -59,7 +59,7 @@ Pro službu Azure SQL Data Warehouse propojené jsou podporovány následující
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
 | type | Vlastnost type musí být nastavená na **AzureSqlDW**. | Ano |
-| connectionString | Zadejte informace potřebné pro připojení k instanci Azure SQL Data Warehouse **connectionString** vlastnost. <br/>Označte toto pole jako SecureString bezpečně uložit ve službě Data Factory. Heslo/klíč instančního objektu můžete také vložit do služby Azure Key Vault, a pokud se jedná o přijetí změn ověřování SQL `password` konfigurace z připojovacího řetězce. Podívejte se na příklad JSON pod tabulkou a [Store přihlašovacích údajů ve službě Azure Key Vault](store-credentials-in-key-vault.md) článku s dalšími podrobnostmi. | Ano |
+| připojovací řetězec | Zadejte informace potřebné pro připojení k instanci Azure SQL Data Warehouse **connectionString** vlastnost. <br/>Označte toto pole jako SecureString bezpečně uložit ve službě Data Factory. Heslo/klíč instančního objektu můžete také vložit do služby Azure Key Vault, a pokud se jedná o přijetí změn ověřování SQL `password` konfigurace z připojovacího řetězce. Podívejte se na příklad JSON pod tabulkou a [Store přihlašovacích údajů ve službě Azure Key Vault](store-credentials-in-key-vault.md) článku s dalšími podrobnostmi. | Ano |
 | servicePrincipalId | Zadejte ID klienta vaší aplikace. | Ano, pokud používáte ověřování Azure AD se instanční objekt služby. |
 | servicePrincipalKey | Zadejte klíč aplikace. Označte toto pole jako SecureString bezpečně uložit ve službě Data Factory nebo [odkazovat tajného klíče do služby Azure Key Vault](store-credentials-in-key-vault.md). | Ano, pokud používáte ověřování Azure AD se instanční objekt služby. |
 | tenant | Zadejte informace o tenantovi (domény ID tenanta nebo název) v rámci které se nachází vaše aplikace. Podržením ukazatele myši v pravém horním rohu webu Azure portal můžete načíst ji. | Ano, pokud používáte ověřování Azure AD se instanční objekt služby. |
@@ -136,21 +136,21 @@ Pokud chcete použít ověřování pomocí tokenu aplikace služby založené n
     - Klíč aplikace
     - ID tenanta
 
-1. **[Zřízení správce Azure Active Directory](../sql-database/sql-database-aad-authentication-configure.md#provision-an-azure-active-directory-administrator-for-your-azure-sql-database-server)**  pro váš server Azure SQL na portálu Azure portal, pokud jste tak již neučinili. Správce Azure AD může být skupina Azure AD nebo uživatel Azure AD. Když udělíte skupině pomocí spravované identity roli správce, přeskočte kroky 3 a 4. Správce bude mít plný přístup k databázi.
+2. **[Zřízení správce Azure Active Directory](../sql-database/sql-database-aad-authentication-configure.md#provision-an-azure-active-directory-administrator-for-your-azure-sql-database-server)**  pro váš server Azure SQL na portálu Azure portal, pokud jste tak již neučinili. Správce Azure AD může být skupina Azure AD nebo uživatel Azure AD. Když udělíte skupině pomocí spravované identity roli správce, přeskočte kroky 3 a 4. Správce bude mít plný přístup k databázi.
 
-1. **[Vytvořit uživatele databáze s omezením](../sql-database/sql-database-aad-authentication-configure.md#create-contained-database-users-in-your-database-mapped-to-azure-ad-identities)**  pro instanční objekt. Připojení k datovému skladu z nebo na který se má ke kopírování dat pomocí nástrojů, jako je SSMS, identity Azure AD, který má alespoň oprávnění ALTER ANY uživatele. Spusťte následující příkaz T-SQL:
+3. **[Vytvořit uživatele databáze s omezením](../sql-database/sql-database-aad-authentication-configure.md#create-contained-database-users-in-your-database-mapped-to-azure-ad-identities)**  pro instanční objekt. Připojení k datovému skladu z nebo na který se má ke kopírování dat pomocí nástrojů, jako je SSMS, identity Azure AD, který má alespoň oprávnění ALTER ANY uživatele. Spusťte následující příkaz T-SQL:
     
     ```sql
     CREATE USER [your application name] FROM EXTERNAL PROVIDER;
     ```
 
-1. **Udělte nezbytná oprávnění instančního objektu** SQL uživatelů nebo jiné obvyklým způsobem. Spusťte následující kód:
+4. **Udělte nezbytná oprávnění instančního objektu** SQL uživatelů nebo jiné obvyklým způsobem. Spusťte následující kód, nebo si přečtěte další možnosti [tady](https://docs.microsoft.com/en-us/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql?view=sql-server-2017).
 
     ```sql
     EXEC sp_addrolemember [role name], [your application name];
     ```
 
-1. **Konfigurace služby Azure SQL Data Warehouse propojené** ve službě Azure Data Factory.
+5. **Konfigurace služby Azure SQL Data Warehouse propojené** ve službě Azure Data Factory.
 
 
 #### <a name="linked-service-example-that-uses-service-principal-authentication"></a>Příklad propojené služby, který používá ověřování instančních objektů
@@ -184,36 +184,23 @@ Pokud chcete použít ověřování pomocí tokenu aplikace služby založené n
 
 Je možné přidružit datové továrny [spravované identity pro prostředky Azure](data-factory-service-identity.md) , která představuje konkrétní objekt pro vytváření. Tuto spravovanou identitu můžete použít pro ověřování v Azure SQL Data Warehouse. Přístup k určené objekt pro vytváření a kopírování dat z nebo do data warehouse s použitím této identity.
 
-> [!IMPORTANT]
-> Všimněte si, že se momentálně nepodporuje PolyBase pro spravovanou identitu ověřování.
-
 Použití spravované identity ověřování, postupujte podle těchto kroků:
 
-1. **Vytvoření skupiny ve službě Azure AD.** Nastavte spravovanou identitu člena skupiny.
+1. **[Zřízení správce Azure Active Directory](../sql-database/sql-database-aad-authentication-configure.md#provision-an-azure-active-directory-administrator-for-your-azure-sql-database-server)**  pro váš server Azure SQL na portálu Azure portal, pokud jste tak již neučinili. Správce Azure AD může být skupina Azure AD nebo uživatel Azure AD. Když udělíte skupině pomocí spravované identity roli správce, přeskočte kroky 3 a 4. Správce bude mít plný přístup k databázi.
 
-   1. Najdete objekt pro vytváření spravované identity data z webu Azure portal. Přejděte do služby data factory **vlastnosti**. Zkopírujte ID služby IDENTIT.
-
-   1. Nainstalujte [Azure AD PowerShell](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2) modulu. Přihlaste se pomocí `Connect-AzureAD` příkazu. Spuštěním následujících příkazů vytvořte skupinu a přidejte spravovanou identitu jako člena.
-      ```powershell
-      $Group = New-AzureADGroup -DisplayName "<your group name>" -MailEnabled $false -SecurityEnabled $true -MailNickName "NotSet"
-      Add-AzureAdGroupMember -ObjectId $Group.ObjectId -RefObjectId "<your data factory managed identity object ID>"
-      ```
-
-1. **[Zřízení správce Azure Active Directory](../sql-database/sql-database-aad-authentication-configure.md#provision-an-azure-active-directory-administrator-for-your-azure-sql-database-server)**  pro váš server Azure SQL na portálu Azure portal, pokud jste tak již neučinili.
-
-1. **[Vytvořit uživatele databáze s omezením](../sql-database/sql-database-aad-authentication-configure.md#create-contained-database-users-in-your-database-mapped-to-azure-ad-identities)**  pro skupiny služby Azure AD. Připojení k datovému skladu z nebo na který se má ke kopírování dat pomocí nástrojů, jako je SSMS, identity Azure AD, který má alespoň oprávnění ALTER ANY uživatele. Spusťte následující příkaz T-SQL. 
+2. **[Vytvořit uživatele databáze s omezením](../sql-database/sql-database-aad-authentication-configure.md#create-contained-database-users-in-your-database-mapped-to-azure-ad-identities)**  pro identitu spravované Data Factory. Připojení k datovému skladu z nebo na který se má ke kopírování dat pomocí nástrojů, jako je SSMS, identity Azure AD, který má alespoň oprávnění ALTER ANY uživatele. Spusťte následující příkaz T-SQL. 
     
     ```sql
-    CREATE USER [your Azure AD group name] FROM EXTERNAL PROVIDER;
+    CREATE USER [your Data Factory name] FROM EXTERNAL PROVIDER;
     ```
 
-1. **Udělte skupině Azure AD nezbytná oprávnění** obvyklým způsobem pro uživatele serveru SQL a další. Například spusťte následující kód.
+3. **Identita spravované objekt pro vytváření dat nezbytná oprávnění udělit** obvyklým způsobem pro uživatele serveru SQL a další. Spusťte následující kód, nebo si přečtěte další možnosti [tady](https://docs.microsoft.com/en-us/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql?view=sql-server-2017).
 
     ```sql
-    EXEC sp_addrolemember [role name], [your Azure AD group name];
+    EXEC sp_addrolemember [role name], [your Data Factory name];
     ```
 
-1. **Konfigurace služby Azure SQL Data Warehouse propojené** ve službě Azure Data Factory.
+5. **Konfigurace služby Azure SQL Data Warehouse propojené** ve službě Azure Data Factory.
 
 **Příklad:**
 
@@ -386,7 +373,7 @@ Ke zkopírování dat do Azure SQL Data Warehouse, nastavte typ jímky v aktivit
 | rejectType | Určuje, zda **rejectValue** možnost je hodnotu literálu nebo procenta.<br/><br/>Povolené hodnoty jsou **hodnotu** (výchozí) a **procento**. | Ne |
 | rejectSampleValue | Určuje počet řádků, načtěte před PolyBase přepočítá procento pozice zamítnutých řádků.<br/><br/>Povolené hodnoty jsou 1, 2, atd. | Ano, pokud **rejectType** je **procento**. |
 | useTypeDefault | Určuje způsob zpracování chybějící hodnoty v textových souborů s oddělovači, když PolyBase načte data z textového souboru.<br/><br/>Další informace o této vlastnosti v části argumenty [CREATE EXTERNAL FILE FORMAT (Transact-SQL)](https://msdn.microsoft.com/library/dn935026.aspx).<br/><br/>Povolené hodnoty jsou **True** a **False** (výchozí). | Ne |
-| writeBatchSize | Vloží data do tabulky SQL, když dosáhne velikosti vyrovnávací paměti **writeBatchSize**. Platí, pouze pokud není použit PolyBase.<br/><br/>Je povolená hodnota **celé číslo** (počet řádků). | Ne. Výchozí hodnota je 10000. |
+| WriteBatchSize | Vloží data do tabulky SQL, když dosáhne velikosti vyrovnávací paměti **writeBatchSize**. Platí, pouze pokud není použit PolyBase.<br/><br/>Je povolená hodnota **celé číslo** (počet řádků). | Ne. Výchozí hodnota je 10000. |
 | writeBatchTimeout | Čekací doba pro dávkové operace insert dokončit před uplynutím časového limitu. Platí, pouze pokud není použit PolyBase.<br/><br/>Je povolená hodnota **timespan**. Příklad: "00: 30:00" (30 minut). | Ne |
 | preCopyScript | Zadejte dotaz SQL pro aktivitu kopírování ke spuštění před zápisem dat do Azure SQL Data Warehouse při každém spuštění. Tuto vlastnost použijte k vyčištění dat předem. | Ne |
 
@@ -415,9 +402,6 @@ Pomocí [PolyBase](https://docs.microsoft.com/sql/relational-databases/polybase/
 * Pokud vaše zdrojová data jsou v Azure Blob storage nebo Azure Data Lake Store a formát je kompatibilní s technologií PolyBase, kopii přímo do Azure SQL Data Warehouse pomocí PolyBase. Podrobnosti najdete v tématu  **[přímé kopírování pomocí PolyBase](#direct-copy-by-using-polybase)**.
 * Pokud zdrojové úložiště dat a formát polybase původně nepodporuje, použijte **[fázovaného kopírování pomocí PolyBase](#staged-copy-by-using-polybase)** místo toho funkci. Funkce dvoufázové instalace kopírování také poskytuje vyšší propustnost. Automaticky převádí data do formátu kompatibilním PolyBase. A ukládá data do úložiště objektů Blob v Azure. Pak načte data do SQL Data Warehouse.
 
-> [!IMPORTANT]
-> Všimněte si, že se momentálně nepodporuje PolyBase pro ověřování pomocí tokenu aplikace Azure AD na základě Instalační služby MSI.
-
 ### <a name="direct-copy-by-using-polybase"></a>Kopírování s přímým přístupem pomocí PolyBase
 
 SQL Data Warehouse PolyBase přímo podporuje objektů Blob v Azure a Azure Data Lake Store. Instanční objekt se používá jako zdroj a má požadavky na formát konkrétní soubor. Pokud vaše zdrojová data splňuje kritéria popsané v této části, zkopírovat přímo ze zdrojového úložiště dat do Azure SQL Data Warehouse pomocí PolyBase. Jinak použijte [fázovaného kopírování pomocí PolyBase](#staged-copy-by-using-polybase).
@@ -427,7 +411,7 @@ SQL Data Warehouse PolyBase přímo podporuje objektů Blob v Azure a Azure Data
 
 Pokud požadavky nejsou splněny, Azure Data Factory zkontroluje nastavení a automaticky přejde zpět k hromadné vložení mechanismus pro přesun dat.
 
-1. **Zdroj propojená služba** je typ úložiště objektů Blob v Azure (**službě Azure BLOB Storage**/**AzureStorage**) ověření pomocí klíče účtu nebo Azure Data Lake Úložiště Gen1 (**AzureDataLakeStore**) s ověřování instančních objektů.
+1. **Zdroj propojená služba** je typ úložiště objektů Blob v Azure (**službě Azure BLOB Storage**/**AzureStorage**) s **ověření pomocí klíče účtu**  nebo Azure Data Lake Storage Gen1 (**AzureDataLakeStore**) s **ověřování instančních objektů**.
 2. **Vstupní datová sada** typ je **AzureBlob** nebo **AzureDataLakeStoreFile**. Typ formátu podle `type` vlastnosti je **OrcFormat**, **ParquetFormat**, nebo **TextFormat**, s následující konfigurací:
 
    1. `fileName` neobsahuje filtr zástupných znaků.
@@ -552,10 +536,10 @@ V následující tabulce jsou uvedené příklady toho, jak zadat **tableName** 
 
 | Schéma databáze | Název tabulky | **tableName** vlastnost JSON |
 | --- | --- | --- |
-| dbo | MyTable | MyTable nebo dbo.MyTable nebo [dbo].[MyTable] |
-| dbo1 | MyTable | dbo1.MyTable nebo [dbo1].[MyTable] |
-| dbo | My.Table | [My.Table] nebo [dbo].[My.Table] |
-| dbo1 | My.Table | [dbo1].[My.Table] |
+| vlastník databáze | Tabulka | Tabulka nebo vlastník databáze. Tabulka nebo [dbo]. [MyTable] |
+| dbo1 | Tabulka | dbo1. Tabulka nebo [dbo1]. [MyTable] |
+| vlastník databáze | My.Table | [My.Table] nebo [dbo]. [My.Table] |
+| dbo1 | My.Table | [dbo1]. [My.Table] |
 
 Pokud se zobrazí následující chyba, problém může být hodnota zadaná pro **tableName** vlastnost. V předchozí tabulce najdete správný způsob, jak určit hodnoty **tableName** vlastnost JSON.
 
@@ -580,37 +564,37 @@ Při kopírování dat z nebo do služby Azure SQL Data Warehouse, se používaj
 | Azure SQL Data Warehouse datový typ | Data Factory dočasné datový typ |
 |:--- |:--- |
 | bigint | Int64 |
-| binary | Byte[] |
-| bit | Boolean |
-| char | String, Char[] |
+| Binární | Byte] |
+| Bit | Logická hodnota |
+| Char | Řetězec, Char] |
 | date | DateTime |
-| Datetime | DateTime |
+| Datum a čas | DateTime |
 | datetime2 | DateTime |
-| Datetimeoffset | DateTimeOffset |
+| DateTimeOffset | DateTimeOffset |
 | Decimal | Decimal |
-| FILESTREAM attribute (varbinary(max)) | Byte[] |
+| Atribut FILESTREAM (varbinary(max)) | Byte] |
 | Float | Double |
-| image | Byte[] |
-| int | Int32 |
-| money | Decimal |
-| nchar | String, Char[] |
-| ntext | String, Char[] |
-| numeric | Decimal |
-| nvarchar | String, Char[] |
-| real | Single |
-| rowversion | Byte[] |
+| image | Byte] |
+| int | Datový typ Int32 |
+| peníze | Decimal |
+| nchar | Řetězec, Char] |
+| ntext | Řetězec, Char] |
+| Číselné | Decimal |
+| nvarchar | Řetězec, Char] |
+| Real | Jednoduchá |
+| ROWVERSION | Byte] |
 | smalldatetime | DateTime |
 | smallint | Int16 |
-| smallmoney | Decimal |
-| sql_variant | Object |
-| text | String, Char[] |
-| time | TimeSpan |
-| timestamp | Byte[] |
-| tinyint | Byte |
-| uniqueidentifier | Guid |
-| varbinary | Byte[] |
-| varchar | String, Char[] |
-| xml | Xml |
+| Smallmoney | Decimal |
+| SQL_VARIANT | Objekt |
+| text | Řetězec, Char] |
+| time | Časový interval |
+| časové razítko | Byte] |
+| tinyint | Bajt |
+| UniqueIdentifier | Guid |
+| varbinary | Byte] |
+| varchar | Řetězec, Char] |
+| xml | XML |
 
 ## <a name="next-steps"></a>Další postup
 Seznam úložišť dat podporovaných jako zdroje a jímky, aktivita kopírování ve službě Azure Data Factory najdete v tématu [podporovaných úložišť dat a formáty](copy-activity-overview.md##supported-data-stores-and-formats).

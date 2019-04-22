@@ -8,12 +8,12 @@ ms.author: kasparks
 ms.service: advisor
 ms.topic: article
 ms.date: 01/29/2019
-ms.openlocfilehash: 42627649145b568b2b25411d182e5a36cdb025b0
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.openlocfilehash: 793c881d08e8feb038cc6e7ac82b7e95384e1b55
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58881184"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59699300"
 ---
 # <a name="improve-availability-of-your-application-with-azure-advisor"></a>Zlepšení dostupnosti vaší aplikace s využitím Azure Advisoru
 
@@ -65,6 +65,10 @@ Povolit [obnovitelné odstranění](https://docs.microsoft.com/azure/storage/blo
 ## <a name="configure-your-vpn-gateway-to-active-active-for-connection-resiliency"></a>Nakonfigurovat bránu VPN typu aktivní aktivní pro odolnost připojení
 
 V konfiguraci aktivní aktivní navážou obě instance brány sítě VPN tunely S2S VPN na vaše místní zařízení VPN. Pokud k události plánované údržbě nebo neplánované události dojde k jedné, provoz se měl přepnout na druhý aktivní tunel IPsec automaticky. Azure Advisor vyhledá bran VPN, které nejsou nakonfigurované jako aktivní aktivní a navrhnout, můžete nakonfigurovat pro zajištění vysoké dostupnosti.
+
+## <a name="use-production-vpn-gateways-to-run-your-production-workloads"></a>Brány VPN produkční použít ke spuštění vaší úlohy v produkčním prostředí
+
+Azure Advisor zkontroluje pro všechny brány VPN, které jsou základní SKU a doporučujeme používat místo produkčního SKU. Základní SKU je určená pro účely vývoje a testování. Produkční skladové položky nabízejí větší počet tunelových propojení, podporu protokolu BGP, možnosti konfigurace aktivní – aktivní, vlastní zásady Ipsec/IKE a vyšší stabilitu a dostupnost.
 
 ## <a name="how-to-access-high-availability-recommendations-in-advisor"></a>Jak získat přístup k doporučení k vysoké dostupnosti v Advisoru
 

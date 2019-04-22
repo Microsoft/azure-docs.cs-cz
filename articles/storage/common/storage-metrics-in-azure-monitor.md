@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 09/05/2017
 ms.author: fryu
 ms.subservice: common
-ms.openlocfilehash: 426dd265f4d608b8dd3c9ab746479ea103419562
-ms.sourcegitcommit: 48a41b4b0bb89a8579fc35aa805cea22e2b9922c
+ms.openlocfilehash: 244d7fc3caa96173e408a193e13acd656d4a7f77
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/15/2019
-ms.locfileid: "59579338"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59698771"
 ---
 # <a name="azure-storage-metrics-in-azure-monitor"></a>Metriky Azure Storage na platformě Azure Monitor
 
@@ -342,8 +342,8 @@ Azure Storage poskytuje následující metriky kapacity ve službě Azure Monito
 
 | Název metriky | Popis |
 | ------------------- | ----------------- |
-| BlobCapacity | Celkové využití úložiště objektů Blob v účtu úložiště. <br/><br/> Jednotka: B <br/> Typ agregace: Průměr <br/> Příklad hodnoty: 1024 <br/> Dimenze: BlobType ([definice](#metrics-dimensions)) |
-| BlobCount    | Počet objektů blob uložených v účtu úložiště. <br/><br/> Jednotka: Počet <br/> Typ agregace: Průměr <br/> Příklad hodnoty: 1024 <br/> Dimenze: BlobType ([definice](#metrics-dimensions)) |
+| BlobCapacity | Celkové využití úložiště objektů Blob v účtu úložiště. <br/><br/> Jednotka: B <br/> Typ agregace: Průměr <br/> Příklad hodnoty: 1024 <br/> Rozměry: **BlobType**, a **BlobTier** ([definice](#metrics-dimensions)) |
+| BlobCount    | Počet objektů blob uložených v účtu úložiště. <br/><br/> Jednotka: Počet <br/> Typ agregace: Průměr <br/> Příklad hodnoty: 1024 <br/> Rozměry: **BlobType**, a **BlobTier** ([definice](#metrics-dimensions)) |
 | ContainerCount    | Počet kontejnerů v účtu úložiště. <br/><br/> Jednotka: Počet <br/> Typ agregace: Průměr <br/> Příklad hodnoty: 1024 |
 | IndexCapacity     | Velikost úložiště využitá službou ADLS Gen2 hierarchické indexu <br/><br/> Jednotka: B <br/> Typ agregace: Průměr <br/> Příklad hodnoty: 1024 |
 
@@ -392,11 +392,12 @@ Azure Storage podporuje následující dimenze pro metriky ve službě Azure Mon
 
 | Název dimenze | Popis |
 | ------------------- | ----------------- |
-| BlobType | Typ objektu blob pro pouze metriky objektů Blob. Podporované hodnoty jsou **BlockBlob** a **PageBlob**. Doplňovací objekt Blob je součástí BlockBlob. |
-| Hodnota ResponseType | Typ odpovědi transakce. Dostupné hodnoty zahrnují: <br/><br/> <li>ServerOtherError: Všechny ostatní chyby na straně serveru kromě zde popsaných </li> <li> ServerBusyError: Ověřená žádost, která vrátila stavový kód HTTP 503. </li> <li> ServerTimeoutError: Ověřená žádost s vypršeným časovým limitem, který vrátil stavový kód HTTP 500. Časový limit vypršel kvůli chybě serveru. </li> <li> AuthorizationError: Ověřená žádost, která selhala kvůli neoprávněnému přístupu k datům nebo chybě autorizace. </li> <li> NetworkError: Ověřená žádost, která selhala kvůli chybě sítě. K tomu nejčastěji dochází, když klient předčasně ukončí spojení před vypršením časového limitu. </li> <li>    ClientThrottlingError: Chyba omezování využití sítě na straně klienta. </li> <li> ClientTimeoutError: Ověřená žádost s vypršeným časovým limitem, který vrátil stavový kód HTTP 500. Pokud je časový limit sítě klienta nebo časový limit žádosti nastavený na hodnotu nižší, než služba úložiště očekávala, jde o očekávané vypršení časového limitu. V opačném případě bude ohlášeno jako ServerTimeoutError. </li> <li> ClientOtherError: Všechny ostatní chyby na straně klienta kromě zde popsaných. </li> <li> Úspěch: Úspěšná žádost.|
-| GeoType | Transakce z primární nebo sekundární clusteru. Dostupné hodnoty zahrnují primární a sekundární. To platí pro oprávnění ke čtení geograficky redundantní Storage(RA-GRS) při čtení objektů ze sekundární tenanta. |
-| ApiName | Název operace. Příklad: <br/> <li>CreateContainer</li> <li>DeleteBlob</li> <li>GetBlob</li> Všechny názvy operace, najdete v části [dokumentu](/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages). |
-| Authentication | Typ ověřování používaný v transakcích. Dostupné hodnoty zahrnují: <br/> <li>AccountKey: Transakce se ověřuje pomocí klíče účtu úložiště.</li> <li>SAS: Transakce se ověřuje pomocí signatur sdíleného přístupu.</li> <li>OAuth: Transakce se ověřuje pomocí přístupových tokenů OAuth.</li> <li>Anonymní: Transakce je požadováno anonymně. Neměl by zahrnovat předběžných požadavků.</li> <li>AnonymousPreflight: Transakce je předběžný požadavek.</li> |
+| **BlobType** | Typ objektu blob pro pouze metriky objektů Blob. Podporované hodnoty jsou **BlockBlob**, **PageBlob**, a **Azure Data Lake Storage**. Doplňovací objekt Blob je součástí BlockBlob. |
+| **BlobTier** | Azure storage nabízí různý přístup úrovně, které vám umožňují ukládat data objektu blob cenově nejvýhodnější způsobem. Zobrazit více v [úroveň objektu blob Azure Storage](../blobs/storage-blob-storage-tiers.md). Mezi podporované hodnoty patří: <br/> <li>**Horké**: Horká úroveň</li> <li>**Studená**: Studená vrstva přístupu</li> <li>**Archiv**: Archivní vrstva</li> <li>**Premium**: Úroveň Premium pro objekt blob bloku</li> <li>**P4/P6/P10/P15/P20/P30/P40/P50/P60**: Typy úroveň pro objekt blob stránky úrovně premium</li> <li>**Standard**: Úroveň typu standardní stránky objektu Blob</li> <li>**Untiered**: Úroveň typu účtu úložiště pro obecné účely v1</li> |
+| **GeoType** | Transakce z primární nebo sekundární clusteru. Dostupné hodnoty zahrnují **primární** a **sekundární**. To platí pro oprávnění ke čtení geograficky redundantní Storage(RA-GRS) při čtení objektů ze sekundární tenanta. |
+| **Hodnota ResponseType** | Typ odpovědi transakce. Dostupné hodnoty zahrnují: <br/><br/> <li>**ServerOtherError**: Všechny ostatní chyby na straně serveru kromě zde popsaných </li> <li>**ServerBusyError**: Ověřená žádost, která vrátila stavový kód HTTP 503. </li> <li>**ServerTimeoutError**: Ověřená žádost s vypršeným časovým limitem, který vrátil stavový kód HTTP 500. Časový limit vypršel kvůli chybě serveru. </li> <li>**AuthorizationError**: Ověřená žádost, která selhala kvůli neoprávněnému přístupu k datům nebo chybě autorizace. </li> <li>**NetworkError**: Ověřená žádost, která selhala kvůli chybě sítě. K tomu nejčastěji dochází, když klient předčasně ukončí spojení před vypršením časového limitu. </li> <li>**ClientThrottlingError**: Chyba omezování využití sítě na straně klienta. </li> <li>**ClientTimeoutError**: Ověřená žádost s vypršeným časovým limitem, který vrátil stavový kód HTTP 500. Pokud je časový limit sítě klienta nebo časový limit žádosti nastavený na hodnotu nižší, než služba úložiště očekávala, jde o očekávané vypršení časového limitu. V opačném případě bude ohlášeno jako ServerTimeoutError. </li> <li>**ClientOtherError**: Všechny ostatní chyby na straně klienta kromě zde popsaných. </li> <li>**Success**: Úspěšná žádost</li> |
+| **ApiName** | Název operace. Příklad: <br/> <li>**CreateContainer**</li> <li>**DeleteBlob**</li> <li>**GetBlob**</li> Všechny názvy operace, najdete v části [dokumentu](/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages). |
+| **Ověřování** | Typ ověřování používaný v transakcích. Dostupné hodnoty zahrnují: <br/> <li>**AccountKey**: Transakce se ověřuje pomocí klíče účtu úložiště.</li> <li>**SAS**: Transakce se ověřuje pomocí signatur sdíleného přístupu.</li> <li>**OAuth**: Transakce se ověřuje pomocí přístupových tokenů OAuth.</li> <li>**Anonymní**: Transakce je požadováno anonymně. Neměl by zahrnovat předběžných požadavků.</li> <li>**AnonymousPreflight**: Transakce je předběžný požadavek.</li> |
 
 Pro podpůrné dimenze metriky je třeba zadat hodnotu dimenze zobrazíte odpovídající hodnoty metriky. Například, pokud se podíváte na **transakce** hodnotu pro odpovědi – úspěch, je potřeba vyfiltrovat **hodnotu ResponseType** dimenze s **úspěch**. Nebo pokud se podíváte na **BlobCount** hodnotu pro objekt Blob bloku, budete potřebovat k filtrování **BlobType** dimenze s **BlockBlob**.
 

@@ -3,17 +3,17 @@ title: Správa záloh pomocí řízení přístupu na základě rolí Azure.
 description: Použití řízení přístupu na základě rolí ke správě přístupu k operacím správy zálohování v trezoru služby Recovery Services.
 services: backup
 author: trinadhk
-manager: shreeshd
+manager: vijayts
 ms.service: backup
 ms.topic: conceptual
-ms.date: 12/09/2018
+ms.date: 04/17/2019
 ms.author: trinadhk
-ms.openlocfilehash: e86595ceb940ebcfa702823e9c9b8ad3ef50bb45
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.openlocfilehash: ed3797183e13a00d2c5381fa6449c111c3bc9ab9
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56674629"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59682521"
 ---
 # <a name="use-role-based-access-control-to-manage-azure-backup-recovery-points"></a>Použití řízení přístupu na základě rolí ke správě body obnovení Azure Backup
 Řízení přístupu na základě role v Azure umožňuje přesnou správu přístupu. Pomocí řízení přístupu na základě role můžete povinnosti v rámci týmu oddělit a udělit uživatelům jenom takový přístup, který potřebují k výkonu své práce.
@@ -21,7 +21,7 @@ ms.locfileid: "56674629"
 > [!IMPORTANT]
 > Role, které poskytuje Azure Backup jsou omezené na akce, které lze provést na webu Azure portal nebo prostřednictvím rozhraní REST API nebo rutiny prostředí PowerShell nebo rozhraní příkazového řádku pro trezor služby Recovery Services. Akce prováděné v Azure zálohování uživatelského rozhraní agenta klienta nebo systému System center Data Protection Manager uživatelského rozhraní nebo uživatelské rozhraní serveru služby zálohování Azure jsou mimo ovládací prvek z těchto rolí.
 
-Azure Backup poskytuje 3 vestavěné role řízení operací správy zálohování. Další informace o [předdefinovaných rolích Azure RBAC](../role-based-access-control/built-in-roles.md)
+Azure Backup obsahuje tři předdefinované role řízení operací správy zálohování. Další informace o [předdefinovaných rolích Azure RBAC](../role-based-access-control/built-in-roles.md)
 
 * [Přispěvatel zálohování](../role-based-access-control/built-in-roles.md#backup-contributor) – tato role má všechna oprávnění k vytvoření a Správa zálohování s výjimkou vytvoření trezoru služby Recovery Services a udělování přístupu jiným uživatelům. Představte si tuto roli správce správy zálohování, kdo může provádět všechny operace správy zálohování.
 * [Operátor zálohování](../role-based-access-control/built-in-roles.md#backup-operator) – tato role má oprávnění ke všemu, co přispěvatelé s výjimkou odebírání záloh a Správa zásad zálohování. Tato role je ekvivalentní k přispěvatelů s tím rozdílem, že nemůže provádět destruktivní operace, jako je zastavení zálohování s data odstranit nebo odebrat registraci místních prostředků.
@@ -60,7 +60,24 @@ Následující tabulka udává akce správy zálohování a odpovídající mini
 | Odstranit registrovaný v místním systému Windows Server/klient/SCDPM nebo serveru Azure Backup | Přispěvatel zálohování | Prostředek trezoru pro obnovení |
 
 > [!IMPORTANT]
-> Pokud zadáte Přispěvatel virtuálních počítačů v oboru prostředků virtuálního počítače a klikněte na zálohu jako součást nastavení virtuálního počítače, otevře se obrazovka 'Povolit zálohování' i v případě, že virtuální počítač je již zálohovali jako volání zkontrolujte, jestli stav zálohování funguje pouze na úrovni předplatného. Abyste tomu předešli, buď přejděte do trezoru a otevřete zobrazení zálohovaná položka virtuálního počítače nebo zadejte role Přispěvatel virtuálních počítačů na úrovni předplatného. 
+> Pokud zadáte Přispěvatel virtuálních počítačů v oboru prostředků virtuálního počítače a klikněte na zálohu jako součást nastavení virtuálního počítače, otevře se obrazovka 'Povolit zálohování' i v případě, že virtuální počítač je již zálohovali jako volání zkontrolujte, jestli stav zálohování funguje pouze na úrovni předplatného. Abyste tomu předešli, buď přejděte do trezoru a otevřete zobrazení zálohovaná položka virtuálního počítače nebo zadejte role Přispěvatel virtuálních počítačů na úrovni předplatného.
+
+## <a name="minimum-role-requirements-for-the-azure-file-share-backup"></a>Role minimální požadavky pro zálohování sdílené složky Azure File
+Následující tabulka udává akce správy zálohování a odpovídající roli potřebná k provedení operace se sdílenou složkou Azure File.
+
+| Operace správy | Vyžaduje role | Zdroje a prostředky |
+| --- | --- | --- |
+| Povolit zálohování sdílených složek Azure | Přispěvatel zálohování | Trezor služby Recovery Services |
+| | Účet úložiště | Přispěvatel prostředek účtu úložiště |
+| Zálohování virtuálního počítače na vyžádání | Operátor zálohování | Trezor služby Recovery Services |
+| Obnovení sdílené složky | Operátor zálohování | Trezor služby Recovery Services |
+| | Přispěvatel účtů úložiště | Prostředky účtu úložiště, kde jsou k dispozici obnovení zdrojové a cílové sdílené složky |
+| Obnovit jednotlivé soubory | Operátor zálohování | Trezor služby Recovery Services |
+| | Přispěvatel účtů úložiště |   Prostředky účtu úložiště, kde jsou k dispozici obnovení zdrojové a cílové sdílené složky |
+| Zastavení ochrany | Přispěvatel zálohování | Trezor služby Recovery Services |      
+| Zrušit registraci účtu úložiště z trezoru |   Přispěvatel zálohování | Trezor služby Recovery Services |
+| | Přispěvatel účtů úložiště | Prostředek účtu úložiště|
+
 
 ## <a name="next-steps"></a>Další postup
 * [Řízení přístupu podle rolí](../role-based-access-control/role-assignments-portal.md): Začínáme s RBAC na webu Azure Portal.

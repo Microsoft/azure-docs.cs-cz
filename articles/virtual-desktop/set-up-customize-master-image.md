@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: how-to
 ms.date: 04/03/2019
 ms.author: helohr
-ms.openlocfilehash: e82b9ae96ae43278e22da22702d3d899abadb1b5
-ms.sourcegitcommit: f24b62e352e0512dfa2897362021b42e0cb9549d
-ms.translationtype: MT
+ms.openlocfilehash: 9d69a24b106fc39c03b8f95758bc240916023456
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/11/2019
-ms.locfileid: "59505596"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59698311"
 ---
 # <a name="prepare-and-customize-a-master-vhd-image"></a>Příprava a přizpůsobení hlavní image VHD
 
@@ -274,7 +274,7 @@ Chcete-li přesměrovat časová pásma:
 1. Na serveru, Active Directory, spusťte **konzoly pro správu zásad skupiny**.
 2. Rozbalte doménu a objekty zásad skupiny.
 3. Klikněte pravým tlačítkem myši **objektu zásad skupiny** , který jste vytvořili pro nastavení zásad skupiny a vyberte **upravit**.
-4. V **Editor správy zásad skupiny**, přejděte na **konfigurace počítače** > **zásady** > **správy Šablony** > **součásti Windows** > **horizontu zobrazit RDSH služby** > **relace vzdálené plochy Hostitel** > **zařízení a prostředků**.
+4. V **Editor správy zásad skupiny**, přejděte na **konfigurace počítače** > **zásady** > **správy Šablony** > **součásti Windows** > **služby Vzdálená plocha** > **hostitel relace vzdálené plochy**   >  **Zařízení a prostředků**.
 5. Povolit **povolí přesměrování při časové pásmo** nastavení.
 
 Tento příkaz můžete spustit také na hlavní bitová kopie pro přesměrování časová pásma:
@@ -368,7 +368,7 @@ Postupujte podle následujících pokynů zjistíte, jak nahrát hlavní image d
 Teď, když máte image, můžete vytvořit nebo aktualizovat hostitele fondy. Další informace o tom, jak vytvořit a aktualizovat hostitele fondy, najdete v následujících článcích:
 
 - [Vytvoření fondu hostitelů pomocí šablony Azure Resource Manageru](create-host-pools-arm-template.md)
-- [Kurz: Vytvoření fondu hostitelů pomocí Azure Marketplace](create-host-pools-azure-marketplace.md)
-- [Vytvoření fondu hostitelů pomocí PowerShellu](create-host-pools-powershell.md)
-- [Nastavení sdílení profilu uživatele pro fond hostitelů](create-host-pools-user-profile.md)
-- [Konfigurace metody vyrovnávání zatížení Windows Virtual Desktop](configure-host-pool-load-balancing.md)
+- [Kurz: Vytvoření fondu hostitele pomocí webu Azure Marketplace](create-host-pools-azure-marketplace.md)
+- [Vytvoření hostitele fondu pomocí Powershellu](create-host-pools-powershell.md)
+- [Nastavení sdílené složky profilu uživatele pro fond hostitele](create-host-pools-user-profile.md)
+- [Konfigurace metody vyrovnávání zatížení virtuálního klienta Windows](configure-host-pool-load-balancing.md)

@@ -10,12 +10,12 @@ ms.reviewer: klam
 ms.assetid: 3ef16fab-d18a-48ba-8e56-3f3e0a1bcb92
 ms.topic: conceptual
 ms.date: 08/18/2016
-ms.openlocfilehash: 67f51b078b8e92592e9593d7d254e6985265eee8
-ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
+ms.openlocfilehash: d701fba39685d781d1a4c2d8a6cf194ca7eb2908
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58651265"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59683048"
 ---
 # <a name="concepts-terminology-and-entities-in-azure-scheduler"></a>Koncepty, terminologie a entity ve službě Azure Scheduler
 
@@ -41,19 +41,25 @@ Na nejvyšší úrovni rozhraní REST API služby Scheduler zpřístupňuje tyto
 
 Podporuje operace vytváření a úpravy úloh. Všechny úlohy musí patřit do existující kolekce, aby se implicitně nevytvářely další kolekce. Další informace najdete v tématu [Rozhraní REST API služby Scheduler – Úlohy](https://docs.microsoft.com/rest/api/scheduler/jobs). Tady je adresa URI pro tyto operace:
 
-`https://management.azure.com/subscriptions/{subscriptionID}/resourceGroups/{resourceGroupName}/providers/Microsoft.Scheduler/jobCollections/{jobCollectionName}/jobs/{jobName}`
+```
+https://management.azure.com/subscriptions/{subscriptionID}/resourceGroups/{resourceGroupName}/providers/Microsoft.Scheduler/jobCollections/{jobCollectionName}/jobs/{jobName}
+```
 
 ### <a name="job-collection-management"></a>Správa kolekce úloh
 
 Podporuje operace vytváření a úpravy úloh a kolekce úloh, které se mapují na kvóty a sdílená nastavení. Kvóty určují například maximální počet úloh nebo nejmenší interval opakování. Další informace najdete v tématu [Rozhraní REST API služby Scheduler – Kolekce úloh](https://docs.microsoft.com/rest/api/scheduler/jobcollections). Tady je adresa URI pro tyto operace:
 
-`https://management.azure.com/subscriptions/{subscriptionID}/resourceGroups/{resourceGroupName}/providers/Microsoft.Scheduler/jobCollections/{jobCollectionName}`
+```
+https://management.azure.com/subscriptions/{subscriptionID}/resourceGroups/{resourceGroupName}/providers/Microsoft.Scheduler/jobCollections/{jobCollectionName}
+```
 
 ### <a name="job-history-management"></a>Správa historie úloh
 
 Podporuje operaci GET pro načtení historie provádění úloh, jako je uplynulá doba úlohy a výsledky provedení úlohy, za posledních 60 dní. Zahrnuje podporu parametru řetězce dotazu pro filtrování podle stavu a statusu. Další informace najdete v tématu [Rozhraní REST API služby Scheduler – Úlohy – Výpis historie úloh](https://docs.microsoft.com/rest/api/scheduler/jobs/listjobhistory). Tady je adresa URI pro tuto operaci:
 
-`https://management.azure.com/subscriptions/{subscriptionID}/resourceGroups/{resourceGroupName}/providers/Microsoft.Scheduler/jobCollections/{jobCollectionName}/jobs/{jobName}/history`
+```
+https://management.azure.com/subscriptions/{subscriptionID}/resourceGroups/{resourceGroupName}/providers/Microsoft.Scheduler/jobCollections/{jobCollectionName}/jobs/{jobName}/history
+```
 
 ## <a name="job-types"></a>Typy úloh
 
@@ -245,7 +251,7 @@ Pokud definice JSON úlohy zahrnuje objekt **recurrence**, úloha se bude opakov
 | **interval** | Ne | 1 až 1000 (včetně) | Kladné číslo, které určuje počet časových jednotek mezi jednotlivými opakováními na základě vlastnosti **frequency** | 
 | **schedule** | Ne | Různé | Podrobnosti pro složitější a pokročilejší plány. Viz **hours**, **minutes**, **weekDays**, **months** a **monthDays**. | 
 | **hours** | Ne | 1 až 60 | Pole s hodinami, kdy se má úloha spustit | 
-| **minutes** | Ne | 1 až 60 | Pole s minutami, kdy se má úloha spustit | 
+| **minutes** | Ne | 0 až 59 | Pole s minutami, kdy se má úloha spustit | 
 | **months** | Ne | 1 až 12 | Pole s měsíci, kdy se má úloha spustit | 
 | **monthDays** | Ne | Různé | Pole se dny v měsíci, kdy se má úloha spustit | 
 | **weekDays** | Ne | Monday (pondělí), Tuesday (úterý), Wednesday (středa), Thursday (čtvrtek), Friday (pátek), Saturday (sobota), Sunday (neděle) | Pole se dny v týdnu, kdy se má úloha spustit | 

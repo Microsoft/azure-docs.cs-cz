@@ -2,18 +2,18 @@
 title: zahrnout soubor
 description: zahrnout soubor
 services: virtual-machines
-author: jonbeck7
+author: ayshakeen
 ms.service: virtual-machines
 ms.topic: include
 ms.date: 03/09/2018
-ms.author: azcspmt;jonbeck;cynthn
+ms.author: azcspmt;ayshak;cynthn
 ms.custom: include file
-ms.openlocfilehash: 0e0b78d1e492e4d0fbbf0a44b57bebc2d8d3b1e7
-ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
+ms.openlocfilehash: d76a3bb463452207e4b5b023cfe07dfd156e95f4
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58763287"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59684680"
 ---
 Řadu virtuálních počítačů B-series umožňuje vybrat velikost virtuálního počítače, ve které vám poskytne potřebné základní úroveň výkonu pro úlohy, možnost burst výkon procesoru až 100 % Intel® Broadwell E5-2673 v4 2.3 GHz nebo procesor Intel® Haswell 2.4 GHz E5-2673 v3 virtuální procesor.
 
@@ -21,9 +21,9 @@ Virtuální počítače řady B-series jsou ideální pro úlohy, které nevyža
 
 B-series se dodává v následujících šesti velikostí virtuálních počítačů:
 
-| Velikost             | Virtuální procesory  | Paměť: GiB | Dočasné úložiště (SSD): GiB | Základní výkonu procesoru virtuálního počítače | Maximální počet výkonu procesoru virtuálního počítače | Kredity bankovních / hodina | Maximální počet bankovních kredity | Max. datových disků | Maximální propustnost v mezipaměti a dočasného úložiště: IOPS / MBps | Maximální propustnost disku bez mezipaměti: IOPS / MBps | Maximální počet síťových karet |          
+| Velikost             | Virtuální procesory  | Paměť: GiB | Dočasné úložiště (SSD): GiB | Základní výkonu procesoru virtuálního počítače | Maximální počet výkonu procesoru virtuálního počítače | Kredity bankovních / hodina | Maximální počet bankovních kredity | Max. datových disků | Max. propustnost dočasného úložiště a úložiště v mezipaměti: IOPS / MBps | Maximální propustnost disku bez mezipaměti: IOPS / MBps | Maximální počet síťových karet |          
 |---------------|-------------|----------------|----------------------------|-----------------------|--------------------|--------------------|----------------|----------------------------------------|-------------------------------------------|-------------------------------------------|----------|
-| Standard_B1ls<sup>1</sup>  | 1           | 0,5              | 4                          | 5%                   | 100 %                   | 3                  | 72            | 2                                      | 200 / 10                                  | 160 / 10                                  | 2  |
+| Standard_B1ls<sup>1</sup>  | 1           | 0,5              | 4                          | 5 %                   | 100 %                   | 3                  | 72            | 2                                      | 200 / 10                                  | 160 / 10                                  | 2  |
 | Standard_B1s  | 1           | 1              | 4                          | 10 %                   | 100 %                   | 6                  | 144            | 2                       | 400 / 10                                  | 320 / 10                                  | 2  |
 | Standard_B1ms | 1           | 2              | 4                          | 20 %                   | 100 %                   | 12                 | 288           | 2                        | 800 / 10                                  | 640 / 10                                  | 2  |
 | Standard_B2s  | 2           | 4              | 8                          | 40 %                   | 200%                   | 24                 | 576            | 4                                      | 1600 / 15                                 | 1280 / 15                                 | 3  |

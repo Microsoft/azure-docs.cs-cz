@@ -8,19 +8,20 @@ manager: daveba
 ms.reviewer: barbkess
 ms.assetid: 65b2979d-9e2f-4530-bc08-546975269ebc
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 12/19/2018
+ms.date: 04/15/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f9b847fd424e14eba492018887dbc28c44100f61
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.openlocfilehash: 5e55399337e06314a5079f9d0e692a771855f8ca
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58885345"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59683568"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-goodpractice-toolkit"></a>Kurz: Integrace se sadou nástrojů GoodPractice Azure Active Directory
 
@@ -69,7 +70,7 @@ Ke konfiguraci integration GoodPractice Toolkit do služby Azure AD, budete muse
 4. Do vyhledávacího pole zadejte **GoodPractice Toolkit**vyberte **GoodPractice Toolkit** z panelu výsledků klikněte **přidat** tlačítko pro přidání aplikace.
 
      ![Sada nástrojů GoodPractice v seznamu výsledků](common/search-new-app.png)
-   ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a otestování služby Azure AD jednotného přihlašování
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a otestování služby Azure AD jednotného přihlašování
 
 V této části nakonfigurujete a testovací služby Azure AD jednotného přihlašování se sadou nástrojů GoodPractice podle testovacího uživatele volá **Britta Simon**.
 Pro jednotné přihlašování pro práci je potřeba navázat vztah odkazu mezi uživatele služby Azure AD a souvisejících uživatelů v sadě nástrojů GoodPractice.
@@ -79,8 +80,8 @@ Nakonfigurovat a otestovat Azure AD jednotného přihlašování se sadou nástr
 1. **[Konfigurovat Azure AD Single Sign-On](#configure-azure-ad-single-sign-on)**  – Pokud chcete, aby uživatelé mohli tuto funkci používat.
 2. **[Konfigurace GoodPractice Toolkit Single Sign-On](#configure-goodpractice-toolkit-single-sign-on)**  – ke konfiguraci nastavení jednotného přihlašování na straně aplikace.
 3. **[Vytvořit testovacího uživatele Azure AD](#create-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
-4. **[Vytvořit testovacího uživatele GoodPractice Toolkit](#create-goodpractice-toolkit-test-user)**  – Pokud chcete mít protějšek Britta Simon v sadě nástrojů GoodPractice, který je propojený s Azure AD reprezentace uživatele.
-5. **[Přiřadit uživatele Azure AD](#assign-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotného přihlašování.
+4. **[Přiřadit uživatele Azure AD](#assign-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotného přihlašování.
+5. **[Vytvořit testovacího uživatele GoodPractice Toolkit](#create-goodpractice-toolkit-test-user)**  – Pokud chcete mít protějšek Britta Simon v sadě nástrojů GoodPractice, který je propojený s Azure AD reprezentace uživatele.
 6. **[Otestovat jednotné přihlašování](#test-single-sign-on)**  – Pokud chcete ověřit, jestli funguje v konfiguraci.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurace služby Azure AD jednotného přihlašování
@@ -120,7 +121,7 @@ Ke konfiguraci Azure AD jednotného přihlašování se sadou nástrojů GoodPra
 
     a. Přihlašovací adresa URL
 
-    b. Identifikátor služby Azure Ad
+    b. Identifikátor Azure AD
 
     c. Adresa URL – odhlášení
 
@@ -146,8 +147,7 @@ Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal
 
     a. V **název** zadat **BrittaSimon**.
   
-    b. V **uživatelské jméno** typ pole **brittasimon\@yourcompanydomain.extension**  
-    Například BrittaSimon@contoso.com.
+    b. V **uživatelské jméno** typ pole `brittasimon\@yourcompanydomain.extension`. Například, BrittaSimon@contoso.com.
 
     c. Vyberte **zobrazit heslo** zaškrtněte políčko a zapište si hodnotu, která se zobrazí v poli heslo.
 
@@ -193,7 +193,7 @@ Po kliknutí na dlaždici GoodPractice Toolkit na přístupovém panelu, můžet
 
 - [Seznam kurzů o integraci aplikací SaaS pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

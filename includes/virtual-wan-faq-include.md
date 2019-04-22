@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/18/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 3fa261c6cb76cb95cffc602e5018e480afbb5dae
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.openlocfilehash: a89a5d753eaa241b11eb4c7eed9500c9715d405d
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58890903"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59736989"
 ---
 ### <a name="what-is-the-difference-between-an-azure-virtual-network-gateway-vpn-gateway-and-an-azure-virtual-wan-vpngateway"></a>Jaký je rozdíl mezi bránou virtuální sítě Azure (VPN Gateway) a Azure Virtual WAN vpngateway?
 
@@ -81,7 +81,7 @@ Ano. Prohlédněte si stránku s [cenami](https://azure.microsoft.com/pricing/de
 
 ### <a name="how-do-i-calculate-price-of-a-hub"></a>Výpočet ceny rozbočovače
  
-Zaplatíte služby v centru. Například 10 větve nebo na místním zařízení, která vyžadují pro připojení k Azure virtuální sítě WAN by vyžadovalo připojení k síti VPN koncové body v centru. Umožňuje to je VPN jednotky škálování 1 = 500 MB/s, to se účtuje 0.361 $/ hod. Každé připojení se účtuje 0,08 USD/hod. Pro 10 připojení, celková cena služby/hod by 0.361 $ + $. 8 / hod. Data pro provoz opouští azure účtují poplatky. 
+Zaplatíte služby v centru. Například 10 větve nebo na místním zařízení, která vyžadují pro připojení k Azure virtuální sítě WAN by vyžadovalo připojení k síti VPN koncové body v centru. Umožňuje to je VPN jednotky škálování 1 = 500 MB/s, to se účtuje 0.361 $/ hod. Každé připojení se účtuje 0,08 USD/hod. Pro 10 připojení, celková cena služby/hod by 0.361 $ + $. 8 / hod. Data pro Azure odchozího provozu poplatky. 
 
 ### <a name="how-do-new-partners-that-are-not-listed-in-your-launch-partner-list-get-onboarded"></a>Jak se onboardují noví partneři, kteří nejsou uvedení ve vašem seznamu partnerů pro spouštění?
 

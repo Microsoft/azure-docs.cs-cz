@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 04/10/2019
 ms.author: absha
 ms.custom: mvc
-ms.openlocfilehash: 16f59ecaf934813890cd25e89896182378f376ed
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
-ms.translationtype: MT
+ms.openlocfilehash: 9d52114f5d01beca53ed48ee2114dc98cc20f3a2
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59549063"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59682420"
 ---
 # <a name="rewrite-http-request-and-response-headers-with-azure-application-gateway---azure-portal"></a>Přepište hlaviček žádostí a odpovědí HTTP pomocí Azure Application Gateway – Azure portal
 
@@ -26,7 +26,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 ## <a name="before-you-begin"></a>Než začnete
 
-Musíte mít v2 s Application Gateway, skladovou Položku, protože možnost přepisování záhlaví není podporována pro v1 SKU. Pokud nemáte k dispozici v2 SKU, vytvořte [SKU v2 Application Gateway](https://docs.microsoft.com/azure/application-gateway/tutorial-autoscale-ps>) předtím, než začnete.
+Musíte mít v2 s Application Gateway, skladovou Položku, protože možnost přepisování záhlaví není podporována pro v1 SKU. Pokud nemáte k dispozici v2 SKU, vytvořte [SKU v2 Application Gateway](<https://docs.microsoft.com/azure/application-gateway/tutorial-autoscale-ps>) předtím, než začnete.
 
 ## <a name="what-is-required-to-rewrite-a-header"></a>Co je potřeba přepsat hlavičku
 

@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 01/07/2019
 ms.custom: seodec18
-ms.openlocfilehash: d75deaca7ce052d40274f1f57a8f6603a3ecdfd2
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.openlocfilehash: 9c97f23c2dfc2b1c0ff794aa20ffb58cd8b8741a
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/05/2019
-ms.locfileid: "59046151"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59683898"
 ---
 # <a name="set-up-compute-targets-for-model-training"></a>Nastavení cílových výpočetních prostředí pro trénování modelu
 
@@ -377,7 +377,6 @@ Můžete přistupovat cílových výpočetních prostředí, které jsou spojen�
 
 Další informace najdete v tématu [správy prostředků](reference-azure-machine-learning-cli.md#resource-management).
 
-
 ## <a id="submit"></a>Odeslat školení spuštění
 
 Po vytvoření konfigurace spuštění můžete použít ke spuštění experimentu.  Model kódu k odeslání školení spuštění je stejný pro všechny typy cílových výpočetních prostředí:
@@ -385,6 +384,13 @@ Po vytvoření konfigurace spuštění můžete použít ke spuštění experime
 1. Vytvořit nový experiment ke spuštění
 1. Odešlete spuštění.
 1. Vyčkat, než běžet do dokončení.
+
+> [!IMPORTANT]
+> Při odesílání spustit trénovací snímek adresáře, který obsahuje trénovací skripty se vytvoří a odešle cílového výpočetního prostředí. Uloží se také jako část testu ve vašem pracovním prostoru. Pokud změníte soubory a odeslat běh znovu, budou odeslány pouze změněné soubory.
+>
+> Chcete-li zabránit nebudou zahrnuty do snímku souborů, vytvořte [.gitignore](https://git-scm.com/docs/gitignore) nebo `.amlignore` souborů v adresáři a přidejte soubory do ní. `.amlignore` Soubor pomocí stejné syntaxe a vzor, jako [.gitignore](https://git-scm.com/docs/gitignore) souboru. Pokud existují oba soubory `.amlignore` soubor má přednost.
+> 
+> Další informace najdete v tématu [snímky](concept-azure-machine-learning-architecture.md#snapshot).
 
 ### <a name="create-an-experiment"></a>Vytvoření experimentu
 
@@ -399,8 +405,6 @@ Odeslání experimentu se `ScriptRunConfig` objektu.  Tento objekt obsahuje:
 * **source_directory**: Zdrojový adresář, který obsahuje cvičný skript
 * **skript**: Identifikujte cvičný skript
 * **run_config**: Konfigurace spuštění, který zase definuje, ve kterém bude probíhat na školení.
-
-Při odesílání spustit trénovací snímek adresáře, který obsahuje trénovací skripty se vytvoří a odešle cílového výpočetního prostředí. Další informace najdete v tématu [snímky](concept-azure-machine-learning-architecture.md#snapshot).
 
 Chcete-li například použít [místní cíl](#local) konfigurace:
 
@@ -418,8 +422,8 @@ Nebo můžete:
 ## <a name="notebook-examples"></a>Příklady poznámkového bloku
 
 Tyto poznámkové bloky příklady trénování s využitím různých cílových výpočetních prostředí najdete:
-* [how-to-use-azureml/training](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training)
-* [tutorials/img-classification-part1-training.ipynb](https://github.com/Azure/MachineLearningNotebooks/blob/master/tutorials/img-classification-part1-training.ipynb)
+* [postupy-k-použití azureml a školení](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training)
+* [kurzy/img – klasifikace – část 1 – training.ipynb](https://github.com/Azure/MachineLearningNotebooks/blob/master/tutorials/img-classification-part1-training.ipynb)
 
 [!INCLUDE [aml-clone-in-azure-notebook](../../../includes/aml-clone-for-examples.md)]
 

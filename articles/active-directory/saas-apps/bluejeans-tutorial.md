@@ -8,6 +8,7 @@ manager: daveba
 ms.reviewer: barbkess
 ms.assetid: dfc634fd-1b55-4ba8-94a8-b8288429b6a9
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +16,12 @@ ms.topic: tutorial
 ms.date: 12/31/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b22a7a86862f02c3320b7c14cc1ed878a57bd23d
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 0d1c10d9df85b04cf7b8ea7e0020bc8e802a0d5d
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57901946"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59698924"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-bluejeans"></a>Kurz: Integrace Azure Active Directory s BlueJeans
 
@@ -38,7 +39,7 @@ Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https
 
 Konfigurace integrace Azure AD s BlueJeans, potřebujete následující položky:
 
-* Předplatné služby Azure AD. Pokud nemáte prostředí Azure AD, můžete získat měsíční zkušební verze [zde](https://azure.microsoft.com/pricing/free-trial/)
+* Předplatné služby Azure AD. Pokud nemáte prostředí Azure AD, můžete získat [bezplatný účet](https://azure.microsoft.com/free/)
 * BlueJeans jednotného přihlašování povolená předplatného
 
 ## <a name="scenario-description"></a>Popis scénáře
@@ -105,14 +106,16 @@ Ke konfiguraci Azure AD jednotné přihlašování s BlueJeans, proveďte násle
 
 4. Na **základní konfiguraci SAML** části, proveďte následující kroky:
 
-    ![BlueJeans domény a adresy URL jednotného přihlašování – informace](common/sp-signonurl.png)
+    ![BlueJeans domény a adresy URL jednotného přihlašování – informace](common/sp-identifier.png)
 
-    V **přihlašovací adresa URL** textové pole, zadejte adresu URL, pomocí následujícího vzorce:  `https://<companyname>.BlueJeans.com`
+    a. V **přihlašovací adresa URL** textové pole, zadejte adresu URL, pomocí následujícího vzorce: `https://<companyname>.BlueJeans.com`
+
+    b. V **identifikátor** textové pole, zadejte adresu URL: `http://samlsp.bluejeans.com`
 
     > [!NOTE]
-    > Hodnota není skutečný. Aktualizujte příslušnou hodnotu skutečné přihlašovací adresa URL. Kontakt [tým podpory BlueJeans klienta](https://support.bluejeans.com/contact) má být získána hodnota. Můžete také odkazovat na tyto vzory se dají ukazuje **základní konfiguraci SAML** části webu Azure Portal.
+    > Hodnota přihlašovací adresa URL není skutečný. Aktualizujte příslušnou hodnotu skutečné přihlašovací adresa URL. Kontakt [tým podpory BlueJeans klienta](https://support.bluejeans.com/contact) má být získána hodnota. Můžete také odkazovat na tyto vzory se dají ukazuje **základní konfiguraci SAML** části webu Azure Portal.
 
-4. Na **nastavte si jednotné přihlašování pomocí SAML** stránku, **podpisový certifikát SAML** klikněte na tlačítko **Stáhnout** ke stažení **certifikát (Base64)** z se zadanými možnostmi podle vašich požadavků a uložit je ve vašem počítači.
+5. Na **nastavte si jednotné přihlašování pomocí SAML** stránku, **podpisový certifikát SAML** klikněte na tlačítko **Stáhnout** ke stažení **certifikát (Base64)** z se zadanými možnostmi podle vašich požadavků a uložit je ve vašem počítači.
 
     ![Odkaz ke stažení certifikátu](common/certificatebase64.png)
 
@@ -122,7 +125,7 @@ Ke konfiguraci Azure AD jednotné přihlašování s BlueJeans, proveďte násle
 
     a. Přihlašovací adresa URL
 
-    b. Identifikátor služby Azure Ad
+    b. Identifikátor Azure AD
 
     c. Adresa URL – odhlášení
 
@@ -132,11 +135,11 @@ Ke konfiguraci Azure AD jednotné přihlašování s BlueJeans, proveďte násle
 
 2. Přejděte na **správce \> nastavení skupiny \> zabezpečení**.
 
-    ![Správce](./media/bluejeans-tutorial/IC785868.png "správce")
+    ![Správce](./media/bluejeans-tutorial/ic785868.png "správce")
 
 3. V **zabezpečení** části, proveďte následující kroky:
 
-    ![Jednotné přihlašování SAML na](./media/bluejeans-tutorial/IC785869.png "SAML jednotného přihlašování")
+    ![Jednotné přihlašování SAML na](./media/bluejeans-tutorial/ic785869.png "SAML jednotného přihlašování")
 
     a. Vyberte **jednotného přihlašování SAML**.
 
@@ -144,7 +147,7 @@ Ke konfiguraci Azure AD jednotné přihlašování s BlueJeans, proveďte násle
 
 4. Přesunout pomocí následujících kroků:
 
-    ![Cesta k certifikátu](./media/bluejeans-tutorial/IC785870.png "cesta certifikátu")
+    ![Cesta k certifikátu](./media/bluejeans-tutorial/ic785870.png "cesta certifikátu")
 
     a. Klikněte na tlačítko **zvolit soubor**a nahrajte base-64 kódovaných certifikát, který jste si stáhli z portálu Azure portal.
 
@@ -156,9 +159,9 @@ Ke konfiguraci Azure AD jednotné přihlašování s BlueJeans, proveďte násle
 
 5. Přesunout pomocí následujících kroků:
 
-    ![Uložit změny](./media/bluejeans-tutorial/IC785874.png "uložit změny")
+    ![Uložit změny](./media/bluejeans-tutorial/ic785874.png "uložit změny")
 
-    a. V **id uživatele** textové pole, typ `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name`.
+    a. V **Id uživatele** textové pole, typ `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name`.
 
     b. V **e-mailu** textové pole, typ `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name`.
 
@@ -182,8 +185,7 @@ Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal
 
     a. V **název** zadat **BrittaSimon**.
   
-    b. V **uživatelské jméno** typ pole **brittasimon\@yourcompanydomain.extension**  
-    Například BrittaSimon@contoso.com.
+    b. V **uživatelské jméno** typ pole `brittasimon\@yourcompanydomain.extension`. Například, BrittaSimon@contoso.com.
 
     c. Vyberte **zobrazit heslo** zaškrtněte políčko a zapište si hodnotu, která se zobrazí v poli heslo.
 
@@ -225,18 +227,18 @@ Cílem této části je vytvořte uživatele Britta Simon v BlueJeans. BlueJeans
 
 2. Přejděte na **správce \> MANAGE USERS \> přidat uživatele**.
 
-    ![Správce](./media/bluejeans-tutorial/IC785877.png "správce")
+    ![Správce](./media/bluejeans-tutorial/ic785877.png "správce")
 
-    >[!IMPORTANT]
-    >**Přidat uživatele** karta je dostupná pouze if, v **POLOŽENÍM kartu**, **povolit automatické zřizování** není zaškrtnuta. 
+    > [!IMPORTANT]
+    > **Přidat uživatele** karta je dostupná pouze if, v **POLOŽENÍM kartu**, **povolit automatické zřizování** není zaškrtnuta.
 
 3. V **přidat uživatele** části, proveďte následující kroky:
 
-    ![Přidání uživatele](./media/bluejeans-tutorial/IC785886.png "přidat uživatele")
+    ![Přidání uživatele](./media/bluejeans-tutorial/ic785886.png "přidat uživatele")
 
     a. V **křestní jméno** textové pole, zadejte jméno uživatele, jako je **Britta**.
 
-    b. V **příjmení** textové pole, zadejte příjmení uživatele, jako je **simon**.
+    b. V **příjmení** textové pole, zadejte příjmení uživatele, jako je **Simon**.
 
     c. V **vyberte uživatelské jméno BlueJeans** textové pole, zadejte uživatelské jméno uživatele, jako je **Brittasimon**
 
@@ -244,7 +246,7 @@ Cílem této části je vytvořte uživatele Britta Simon v BlueJeans. BlueJeans
 
     e. V **společnosti** textové pole, zadejte vaší společnosti.
 
-    f. V **e-mailovou adresu** textové pole, zadejte e-mailu uživatele, jako je **brittasimon\@contoso.com**.
+    f. V **e-mailovou adresu** textové pole, zadejte e-mailu uživatele, jako je `brittasimon\@contoso.com`.
 
     g. V **vytvořit i d BlueJeans schůzky** textové pole, zadejte své ID schůzky.
 
@@ -252,7 +254,7 @@ Cílem této části je vytvořte uživatele Britta Simon v BlueJeans. BlueJeans
 
     i. Klikněte na tlačítko **pokračovat**.
 
-    ![Přidání uživatele](./media/bluejeans-tutorial/IC785887.png "přidat uživatele")
+    ![Přidání uživatele](./media/bluejeans-tutorial/ic785887.png "přidat uživatele")
 
     J. Klikněte na tlačítko **přidat uživatele**.
 
@@ -272,4 +274,3 @@ Po kliknutí na dlaždici BlueJeans na přístupovém panelu, můžete by měl b
 - [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-

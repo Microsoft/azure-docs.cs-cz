@@ -7,21 +7,23 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 04/11/2019
 ms.author: absha
-ms.openlocfilehash: efb7b46919066beb1382d70b676a2115ea0fb8ac
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
+ms.openlocfilehash: 20c484779e7ffe74ae01e33472b4cf8761d81b66
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59544141"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59682676"
 ---
-# <a name="rewrite-http-headers-with-application-gateway-public-preview"></a>Přepsání hlavičky protokolu HTTP pomocí služby Application Gateway (public preview)
+# <a name="rewrite-http-headers-with-application-gateway"></a>Přepsání hlavičky protokolu HTTP pomocí služby Application Gateway
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-Hlavičky protokolu HTTP umožňují klienta a serveru předat další informace o požadavku nebo odpovědi. Přepisování tyto hlavičky protokolu HTTP vám pomůže splnit několik důležitých scénářů, jako je například přidávání pole hlavičky související se zabezpečením, jako jsou HSTS / X XSS ochranu, odebírá hlavičku odpovědi pole, která může odhalit citlivé informace, vypuzovacího údaje o portech z Záhlaví X-předané-pro atd. Služba Application gateway podporuje možnost přidat, odebrat nebo aktualizovat hlaviček žádostí a odpovědí protokolu HTTP při požadavku a odpovědi pakety přesouvat mezi klientem a back-endové fondy. Poskytuje také vám umožňuje přidat podmínky pro zajištění, že určených hlaviček jsou zapsány pouze v případě, že jsou splněny určité podmínky.
+Hlavičky protokolu HTTP umožňují klienta a serveru předat další informace o požadavku nebo odpovědi. Přepisování tyto hlavičky protokolu HTTP vám pomůže splnit několik důležitých scénářů, jako je například přidávání pole hlavičky související se zabezpečením, jako jsou HSTS / X XSS ochranu, odebírá hlavičku odpovědi pole, které může odhalit citlivé informace, odebrat informace o portu Záhlaví X-předané-pro atd. Služba Application gateway podporuje možnost přidat, odebrat nebo aktualizovat hlaviček žádostí a odpovědí protokolu HTTP při požadavku a odpovědi pakety přesouvat mezi klientem a back-endové fondy. To poskytuje možnost přidání podmínky k zajištění, že určených hlaviček jsou zapsány pouze v případě, že jsou splněny určité podmínky. Funkce také podporuje několik [serverových proměnných](https://docs.microsoft.com/azure/application-gateway/rewrite-http-headers#server-variables) který pomoci ukládání dalších informací o požadavcích a odpovědích, a tím umožňuje vytvořit pravidla pro přepis výkonné.
 > [!NOTE]
 >
 > Podpora přepsání hlavičky protokolu HTTP je dostupná jenom pro [novou skladovou Položku [Standard_V2\]](https://docs.microsoft.com/azure/application-gateway/application-gateway-autoscaling-zone-redundant)
+
+![Přepsání hlavičky](media/rewrite-http-headers/rewrite-headers.png)
 
 ## <a name="headers-supported-for-rewrite"></a>Záhlaví podporována pro přepsání
 
@@ -35,7 +37,7 @@ Pomocí přepsání, které podmínky můžete vyhodnotit obsah HTTP (S) požada
 - Hlavičky protokolu HTTP v odpovědi
 - Application gateway serverových proměnných
 
-Podmínku můžete použít k vyhodnocení, zda určená proměnná je k dispozici, zda zadaná proměnná přesně odpovídá konkrétní hodnotu nebo zda zadané proměnné přesně odpovídá určitému vzoru. [Knihovna jazyka Perl kompatibilní regulární výrazy (PCRE)](https://www.pcre.org/) slouží k implementaci porovnávání regulárních výrazů v podmínkách. Další informace o syntaxi regulárního výrazu, najdete v článku [regulární výrazy jazyka Perl člověk stránky](http://perldoc.perl.org/perlre.html).
+Podmínku můžete použít k vyhodnocení, zda určená proměnná je k dispozici, zda zadaná proměnná přesně odpovídá konkrétní hodnotu nebo zda zadané proměnné přesně odpovídá určitému vzoru. [Knihovna jazyka Perl kompatibilní regulární výrazy (PCRE)](https://www.pcre.org/) slouží k implementaci porovnávání regulárních výrazů v podmínkách. Další informace o syntaxi regulárního výrazu, najdete v článku [regulární výrazy jazyka Perl člověk stránky](https://perldoc.perl.org/perlre.html).
 
 ## <a name="rewrite-actions"></a>Akce revize
 
@@ -124,6 +126,18 @@ Tento problém lze vyřešit nastavením název hostitele v záhlaví umístěn�
 Implementací potřebné hlavičky v odezvě aplikace lze napravit několik ohrožení zabezpečení. Některé z těchto záhlaví zabezpečení jsou X XSS ochranu, striktní zabezpečení přenosu, obsah-Security-Policy, atd. Služba application gateway můžete použít k nastavení těchto hlaviček pro všechny odpovědi.
 
 ![Záhlaví zabezpečení](media/rewrite-http-headers/security-header.png)
+
+### <a name="delete-unwanted-headers"></a>Odstranit nechtěné záhlaví
+
+Můžete chtít odebrat tyto hlavičky budou odebrány z odpovědi HTTP, který odhalí citlivé informace, jako je název serveru back-endu, operační systém, podrobnosti ke knihovně, atd. Application gateway můžete použít k jejich odebrání.
+
+![Odstraňuje se záhlaví](media/rewrite-http-headers/remove-headers.png)
+
+### <a name="check-presence-of-a-header"></a>Kontrola přítomnosti hlavičky.
+
+Můžete si vyzkoušet hlavičky protokolu HTTP požadavku nebo odpovědi na přítomnost proměnnou záhlaví nebo serveru. To je užitečné, když máte v úmyslu provést přepis záhlaví jenom v případě, že některé hlavičky je k dispozici.
+
+![Kontrola přítomnosti hlavičky.](media/rewrite-http-headers/check-presence.png)
 
 ## <a name="limitations"></a>Omezení
 

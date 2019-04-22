@@ -14,12 +14,12 @@ ms.tgt_pltfrm: .NET
 ms.workload: tbd
 ms.date: 02/24/2019
 ms.author: yegu
-ms.openlocfilehash: b4cb571653cbe69939a1cbdc92338663e4e7125f
-ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
-ms.translationtype: MT
+ms.openlocfilehash: d71e08a548809ef0de47c4a865af531732a88a4b
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2019
-ms.locfileid: "58576068"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59697273"
 ---
 # <a name="quickstart-create-a-net-framework-app-with-azure-app-configuration"></a>Rychlý start: Vytvoření .NET Framework aplikace s konfigurací aplikace Azure
 
@@ -106,4 +106,4 @@ V tomto rychlém startu provedete instalaci [Visual Studio 2017](https://visuals
 V tomto rychlém startu jste vytvořili novým úložištěm konfigurace aplikace a použít s konzolovou aplikaci .NET Framework. Další informace o tom, jak používat konfiguraci aplikací, pokračujte k dalšímu kurzu, který ukazuje ověření.
 
 > [!div class="nextstepaction"]
-> [Spravované identity pro integraci prostředků Azure](./integrate-azure-managed-service-identity.md)
+> [Spravované identity pro integraci prostředků Azure](./howto-integrate-azure-managed-service-identity.md)

@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 01/22/2019
 ms.author: danlep
 ms.custom: seodec18, mvc
-ms.openlocfilehash: 93c22475a4043d1cbf5cb0ad7f9b134e8ac717cc
-ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
+ms.openlocfilehash: f41d51981c4da9ee089282da8b8d4cc5f37a4aed
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55298411"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59682980"
 ---
 # <a name="quickstart-create-a-private-container-registry-using-the-azure-portal"></a>Rychlý start: Vytvořit privátní registr pomocí webu Azure portal
 
@@ -61,7 +61,7 @@ Příkaz po dokončení vrátí zprávu `Login Succeeded` (Přihlášení bylo �
 
 Výpis všech imagí v registru, přejděte do svého registru v portálu a vyberte **úložišť**, pak vyberte úložiště, který jste vytvořili pomocí `docker push`.
 
-V tomto příkladu vybereme **busybox** úložiště a jsme viděli `v1`-tagged image v rámci **značky**.
+V tomto příkladu vybereme **hello-world** úložiště a jsme viděli `v1`-tagged image v rámci **značky**.
 
 ![Výpis imagí kontejnerů na webu Azure Portal][qs-portal-09]
 

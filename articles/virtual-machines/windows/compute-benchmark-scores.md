@@ -15,15 +15,15 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 04/09/2018
 ms.author: cynthn;davberg
-ms.openlocfilehash: a8d071544462361e9750d3fa622467cd0000a040
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: 43d0ab6552847df7f1f2a8599dcc7cb9a8fcb57b
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39056779"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59698825"
 ---
 # <a name="compute-benchmark-scores-for-windows-vms"></a>Srovnávacích testů COMPUTE pro virtuální počítače s Windows
-Následující srovnávacích SPECInt zobrazit výpočetní výkon pro vysoce výkonné produktové řadě virtuálního počítače Azure s Windows serverem. Výpočetní srovnávacích jsou také k dispozici pro [virtuální počítače s Linuxem](../linux/compute-benchmark-scores.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). 
+Následující srovnávacích SPECInt zobrazit výpočetní výkon pro vysoce výkonné produktové řadě virtuálního počítače Azure s Windows serverem. Výpočetní srovnávacích jsou také k dispozici pro [virtuální počítače s Linuxem](../linux/compute-benchmark-scores.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 
 > [!NOTE]
 > Linux čísla byl nedávno aktualizován a obsahovat úplnější sadu virtuálních počítačů.
@@ -52,11 +52,11 @@ Následující srovnávacích SPECInt zobrazit výpočetní výkon pro vysoce v�
 ## <a name="g-series-gs-series"></a>G-series, GS-series
 | Velikost | vCPU | Uzly NUMA | Procesor | Spuštění | Průměr základní sazba | StdDev |
 | --- | --- | --- | --- | --- | --- | --- |
-| Standard_G1 Standard_GS1 |2 |1 |Intel Xeon E5-2698B v3 \@ 2 GHz |31 |71.8 |6.5 |
-| Standard_G2 Standard_GS2 |4 |1 |Intel Xeon E5-2698B v3 \@ 2 GHz |5 |133.4 |13.0 |
-| Standard_G3 Standard_GS3 |8 |1 |Intel Xeon E5-2698B v3 \@ 2 GHz |6 |242.3 |6.0 |
-| Standard_G4 Standard_GS4 |16 |1 |Intel Xeon E5-2698B v3 \@ 2 GHz |15 |398.9 |6.0 |
-| Standard_G5 Standard_GS5 |32 |2 |Intel Xeon E5-2698B v3 \@ 2 GHz |22 |762.8 |3.7 |
+| Standard_G1, Standard_GS1 |2 |1 |Intel Xeon E5-2698B v3 \@ 2 GHz |31 |71.8 |6.5 |
+| Standard_G2, Standard_GS2 |4 |1 |Intel Xeon E5-2698B v3 \@ 2 GHz |5 |133.4 |13.0 |
+| Standard_G3, Standard_GS3 |8 |1 |Intel Xeon E5-2698B v3 \@ 2 GHz |6 |242.3 |6.0 |
+| Standard_G4, Standard_GS4 |16 |1 |Intel Xeon E5-2698B v3 \@ 2 GHz |15 |398.9 |6.0 |
+| Standard_G5, Standard_GS5 |32 |2 |Intel Xeon E5-2698B v3 \@ 2 GHz |22 |762.8 |3.7 |
 
 ## <a name="h-series"></a>H-series
 | Velikost | vCPU | Uzly NUMA | Procesor | Spuštění | Průměr základní sazba  | StdDev |
@@ -66,7 +66,7 @@ Následující srovnávacích SPECInt zobrazit výpočetní výkon pro vysoce v�
 | Standard_H8m |8 |1 |Intel Xeon E5-2667 v3 \@ 3,2 GHz |5 |297.0 |1.2 |
 | Standard_H16m |16 |2 |Intel Xeon E5-2667 v3 \@ 3,2 GHz |5 |572.2 |3.9 |
 | Standard_H16r |16 |2 |Intel Xeon E5-2667 v3 \@ 3,2 GHz |5 |573.2 |2.9 |
-| Typu Standard_H16mr |16 |2 |Intel Xeon E5-2667 v3 \@ 3,2 GHz |7 |569.6 |2.8 |
+| Standard_H16mr |16 |2 |Intel Xeon E5-2667 v3 \@ 3,2 GHz |7 |569.6 |2.8 |
 
 ## <a name="about-specint"></a>O SPECint
 Čísla Windows byly vypočítané spuštěním [SPECint 2006](https://www.spec.org/cpu2006/results/rint2006.html) ve Windows serveru. SPECint byla spuštěna pomocí možnosti základní sazbu (výsledcích SPECint_rate2006), se jedna kopie na virtuální procesor. SPECint se skládá z 12 samostatných testů, každé spuštění třikrát, trvá střední hodnotu z každého testu a je k vytvoření složeného skóre vážení. Tyto testy nebyly spuštěny, pak na víc virtuálních počítačů k poskytování průměrné skóre, které jsou zobrazeny.

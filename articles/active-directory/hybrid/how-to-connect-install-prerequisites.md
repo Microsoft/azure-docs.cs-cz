@@ -16,12 +16,12 @@ ms.date: 12/28/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bd3aac6a7fb0904089f135c9af7b136eda73701f
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 2746775c72976159cdcdb6bdd86e39a5dbe3a4fc
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57835465"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59683663"
 ---
 # <a name="prerequisites-for-azure-ad-connect"></a>Požadavky pro Azure AD Connect
 Toto téma popisuje požadavky a požadavky na hardware pro Azure AD Connect.
@@ -49,6 +49,7 @@ Před instalací Azure AD Connect, existuje několik věcí, které potřebujete
 
 ### <a name="azure-ad-connect-server"></a>Server Azure AD Connect
 * Azure AD Connect nejde nainstalovat na Small Business Server nebo Windows serveru Essentials před 2019 (podporuje se Windows Server Essentials 2019). Server musí používat Windows Server standard nebo vyšší.
+* Instalace služby Azure AD Connect na řadiči domény se nedoporučuje kvůli postupy zabezpečení a víc omezující nastavení, které mohou zabránit v instalaci správně Azure AD Connect
 * Server Azure AD Connect musí mít úplným grafickým uživatelským rozhraním nainstalované. Je **nepodporuje** instalace jádra serveru.
 * Azure AD Connect musí být nainstalována v systému Windows Server 2008 R2 nebo novější. Tento server musí být připojené k doméně a může být řadič domény nebo členském serveru.
 * Pokud Azure AD Connect instalujete na Windows Server 2008 R2, pak nezapomeňte použít nejnovější opravy hotfix z webu Windows Update. Instalace není možné spustit pomocí bez opravy zabezpečení serveru.
@@ -60,6 +61,19 @@ Před instalací Azure AD Connect, existuje několik věcí, které potřebujete
 * Pokud je nasazení služby AD FS, musíte [certifikáty SSL](#ssl-certificate-requirements).
 * Pokud je nasazení služby AD FS, pak budete muset nakonfigurovat [překlad názvů](#name-resolution-for-federation-servers).
 * Pokud globální Správci mají zapnuté MFA, pak adresu URL **https://secure.aadcdn.microsoftonline-p.com** musí být v seznamu důvěryhodných serverů. Zobrazí se výzva přidat tento web do seznamu důvěryhodných webů, pokud se výzva k zadání ověřovacím testem MFA a nebyla přidána před. Můžete ho přidat do důvěryhodných serverů Internet Exploreru.
+* Společnost Microsoft doporučuje posílit zabezpečení serveru služby Azure AD Connect se útoky zabezpečení pro tato zásadní součástí sady řešení IT prostředí.  Následující doporučení níže se sníží bezpečnostní rizika pro vaši organizaci.
+
+* Nasazení služby Azure AD Connect na server připojený k doméně a omezit přístup pro správu pro správce domény nebo jiné skupiny přísně řízenými zabezpečení.
+
+Další informace naleznete v tématu: 
+
+* [Skupiny zabezpečení administrators](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/security-best-practices/appendix-g--securing-administrators-groups-in-active-directory)
+
+* [Zabezpečení účtů předdefinovaného účtu administrator](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/security-best-practices/appendix-d--securing-built-in-administrator-accounts-in-active-directory)
+
+* [Zvýšení zabezpečení a sustainment snížením rovin útoku](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access#2-reduce-attack-surfaces )
+
+* [Omezení prostoru pro útok služby Active Directory](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/security-best-practices/reducing-the-active-directory-attack-surface)
 
 ### <a name="sql-server-used-by-azure-ad-connect"></a>SQL Server používá Azure AD Connect
 * Azure AD Connect vyžaduje k ukládání dat identity databázi SQL Serveru. Ve výchozím nastavení je nainstalovaný SQL Server 2012 Express LocalDB (světle verze systému SQL Server Express). SQL Server Express má omezení velikosti 10GB, která umožňuje spravovat přibližně 100 000 objektů. Pokud je potřeba spravovat větší objem adresářových objektů, je potřeba nasměrovat Průvodce instalací na jinou instalaci systému SQL Server.
@@ -146,7 +160,7 @@ Starší než verze 1.1.614.0 Azure AD Connect ve výchozím nastavení použív
 4. Pokud chcete také protokol TLS 1.2 mezi serverem modul synchronizace a vzdálený SQL Server a ujistěte se, že máte nainstalované pro požadované verze [podpora protokolu TLS 1.2 pro Microsoft SQL Server](https://support.microsoft.com/kb/3135244).
 
 ## <a name="prerequisites-for-federation-installation-and-configuration"></a>Předpoklady pro federační instalace a konfigurace
-### <a name="windows-remote-management"></a>Vzdálená správa Windows
+### <a name="windows-remote-management"></a>Vzdálená správa systému Windows
 Při nasazení služby AD FS nebo Proxy webových aplikací pomocí služby Azure AD Connect, zkontrolujte tyto požadavky:
 
 * Pokud je cílový server k doméně, zajistěte, že je povoleno vzdálené spravované Windows

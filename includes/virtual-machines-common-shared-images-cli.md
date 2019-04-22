@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 09/13/2018
 ms.author: akjosh; cynthn
 ms.custom: include file
-ms.openlocfilehash: 547e0b08b2a57b4b9192f11907f77160142d4466
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.openlocfilehash: 36c4757feb367fd39ae94640cb8e8a0f1714a0d3
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54192121"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59736987"
 ---
 ## <a name="launch-azure-cloud-shell"></a>Spuštění služby Azure Cloud Shell
 
@@ -21,7 +21,7 @@ Azure Cloud Shell je bezplatné interaktivní prostředí, které můžete použ
 
 Pokud chcete otevřít Cloud Shell, vyberte **Vyzkoušet** v pravém horním rohu bloku kódu. Cloud Shell můžete spustit také na samostatné kartě prohlížeče na adrese [https://shell.azure.com/bash](https://shell.azure.com/bash). Zkopírujte bloky kódu výběrem možnosti **Kopírovat**, vložte je do služby Cloud Shell a potom je spusťte stisknutím klávesy Enter.
 
-## <a name="before-you-begin"></a>Před zahájením
+## <a name="before-you-begin"></a>Než začnete
 
 K dokončení příkladu v tomto článku, musíte mít existující spravované image zobecněného virtuálního počítače. Další informace najdete v tématu [kurzu: Vytvoření vlastní image virtuálního počítače Azure pomocí rozhraní příkazového řádku Azure CLI 2.0](https://docs.microsoft.com/azure/virtual-machines/linux/tutorial-custom-images). 
 
@@ -66,7 +66,7 @@ az sig image-definition create \
 
 ## <a name="create-an-image-version"></a>Vytvoření image verze 
  
-Vytvoření verze Image podle potřeby pomocí [az image Galerie vytvořit image-version](/cli/azure/sig/image-version#az-sig-image-version-create). Je potřeba předat ID spravované image se má použít jako základ pro vytvoření verze image. Můžete použít [az image list](/cli/azure/image?view#az-image-list) zobrazíte informace o imagích, které jsou ve skupině prostředků. V tomto příkladu verzi naše image je *1.0.0* a budeme vytvářet 5 celkový počet replik v *střed USA – západ*, *střed USA – jih* a východní USA 2 * oblastech.
+Vytvoření verze Image podle potřeby pomocí [az image Galerie vytvořit image-version](/cli/azure/sig/image-version#az-sig-image-version-create). Je potřeba předat ID spravované image se má použít jako základ pro vytvoření verze image. Můžete použít [az image list](/cli/azure/image?view#az-image-list) zobrazíte informace o imagích, které jsou ve skupině prostředků. V tomto příkladu verzi naše image je *1.0.0* a budeme vytvářet 5 repliky v *střed USA – západ* oblast, 1 repliky v *střed USA – jih* oblasti a 1 repliky v *USA – východ 2* oblasti.
 
 ```azurecli-interactive 
 az sig image-version create \

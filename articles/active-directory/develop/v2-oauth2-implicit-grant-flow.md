@@ -18,12 +18,12 @@ ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 453a3316288cbc0b07d82e2fad9ecc7c3d353e9b
-ms.sourcegitcommit: 41015688dc94593fd9662a7f0ba0e72f044915d6
+ms.openlocfilehash: d517828b30629cd9dfba5459b1d90913d8bc4f77
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/11/2019
-ms.locfileid: "59501310"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59698448"
 ---
 # <a name="microsoft-identity-platform-and-implicit-grant-flow"></a>Platforma identit Microsoft a implicitní tok poskytování
 
@@ -52,7 +52,7 @@ Následující diagram znázorňuje vypadá celý implicitní přihlášení tok
 
 ## <a name="send-the-sign-in-request"></a>Odeslat žádost o přihlášení
 
-Pro počáteční přihlášení uživatele do vaší aplikace, můžete odeslat [OpenID Connect](v2-protocols-oidc.md) žádost o autorizaci a získat `id_token` z koncového bodu Microsoft identity platform.
+Pro počáteční přihlášení uživatele do vaší aplikace, můžete odeslat [OpenID Connect](v2-protocols-oidc.md) žádosti o ověření a získat `id_token` z koncového bodu Microsoft identity platform.
 
 > [!IMPORTANT]
 > Úspěšně požádat o token ID registrace aplikace v [portál Azure – registrace aplikací](https://go.microsoft.com/fwlink/?linkid=2083908) stránka musí mít povolené správně, tak, že vyberete tok implicitní grant **přístupové tokeny** a **Tokeny typu ID** pod **implicitní grant** oddílu. Pokud není povolen, `unsupported_response` se vrátí Chyba: **Zadaná hodnota pro 'typ odpovědi' vstupní parametr není povolený pro tohoto klienta. Očekávaná hodnota je "kód"**

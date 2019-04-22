@@ -8,14 +8,14 @@ ms.topic: include
 ms.date: 10/16/2018
 ms.author: spelluru
 ms.custom: include file
-ms.openlocfilehash: 690e0da160042b7ac432b1a36c024a8a8f439823
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: b84b0a8e09bf739ce62dee167ff751b491765c66
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58125119"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59684663"
 ---
-## <a name="create-a-storage-account-for-event-processor-host"></a>Vytvoření účtu úložiště pro agenta Event Processor Host
+### <a name="create-a-storage-account-for-event-processor-host"></a>Vytvoření účtu úložiště pro agenta Event Processor Host
 Event Processor Host je inteligentní agent, který zjednodušuje přijímání událostí ze služby Event Hubs tím, že spravuje trvalé kontrolní body a paralelní příjmy. K vytváření kontrolních bodů vyžaduje Event Processor Host účet úložiště. Následující příklad ukazuje, jak vytvořit účet úložiště a získat jeho klíče pro přístup:
 
 1. Na webu Azure Portal v levém horním rohu obrazovky vyberte **Vytvořit prostředek**.

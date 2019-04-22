@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 03/24/2019
 ms.author: mjbrown
 ms.reviewer: sngun
-ms.openlocfilehash: 24201cfd657d4f23eb962b7407ed20262d780cf7
-ms.sourcegitcommit: 280d9348b53b16e068cf8615a15b958fccad366a
+ms.openlocfilehash: ebea55f769ca16bfa344d0a100fe16cec6d784d0
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58407415"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59684221"
 ---
 # <a name="conflict-types-and-resolution-policies"></a>Zásady řešení a typy konfliktů
 
@@ -37,11 +37,11 @@ Azure Cosmos DB nabízí flexibilní založená na zásadách mechanismus k ře�
   > [!NOTE]
   > Poslední zápis Wins je výchozí zásada řešení konfliktů. Je k dispozici pro následující rozhraní API: SQL, MongoDB, Cassandra, Gremlin a tabulky.
 
-  Další informace najdete v tématu [příklady, které používají LWW konfliktu zásad řešení](how-to-manage-conflicts.md#create-a-last-writer-wins-conflict-resolution-policy).
+  Další informace najdete v tématu [příklady, které používají LWW konfliktu zásad řešení](how-to-manage-conflicts.md).
 
 - **Vlastní**: Tato zásada řešení je určena pro sémantiku definovaného aplikací pro odsouhlasení je v konfliktu. Když tyto zásady nastavíte na váš kontejner Azure Cosmos, musíte také zaregistrovat *sloučit uloženou proceduru*. Tento postup je automaticky vyvolána při zjištění konfliktu v rámci transakce databáze na serveru. Poskytuje tento systém přesně jednou zaručit k provádění procedury sloučení jako součást závazku protokolu.  
 
-  Pokud konfigurace vašeho kontejneru s možností vlastního řešení a nezdaří jejich registrace sloučení proceduru ke kontejneru nebo sloučení postupu dojde k výjimce za běhu, konflikty se zapisují do *konfliktům kanál*. Aplikace pak je potřeba ručně vyřešit konflikty v konflikty informačního kanálu. Další informace najdete v tématu [příklady, jak používat zásady vlastní řešení a jak používat konfliktům kanál](how-to-manage-conflicts.md#create-a-last-writer-wins-conflict-resolution-policy).
+  Pokud konfigurace vašeho kontejneru s možností vlastního řešení a nezdaří jejich registrace sloučení proceduru ke kontejneru nebo sloučení postupu dojde k výjimce za běhu, konflikty se zapisují do *konfliktům kanál*. Aplikace pak je potřeba ručně vyřešit konflikty v konflikty informačního kanálu. Další informace najdete v tématu [příklady, jak používat zásady vlastní řešení a jak používat konfliktům kanál](how-to-manage-conflicts.md).
 
   > [!NOTE]
   > Vlastní konflikt zásada řešení je k dispozici pouze pro účty SQL API.
@@ -51,6 +51,5 @@ Azure Cosmos DB nabízí flexibilní založená na zásadách mechanismus k ře�
 Další informace o konfiguraci zásad řešení konfliktů:
 
 * [Jak nakonfigurovat více hlavních databází ve svých aplikacích](how-to-multi-master.md)
-* [Jak používat LWW zásada řešení konfliktů](how-to-manage-conflicts.md#create-a-last-writer-wins-conflict-resolution-policy)
-* [Jak používat vlastní konflikt zásada řešení](how-to-manage-conflicts.md#create-a-last-writer-wins-conflict-resolution-policy)
+* [Správa zásad řešení konfliktů](how-to-manage-conflicts.md)
 * [Čtení z kanálu je v konfliktu](how-to-manage-conflicts.md#read-from-conflict-feed)

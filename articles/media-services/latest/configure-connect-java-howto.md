@@ -11,20 +11,20 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/09/2019
+ms.date: 04/16/2019
 ms.author: juliako
-ms.openlocfilehash: 9177a1ae1f2939979d1f824c98b6018a83c2779f
-ms.sourcegitcommit: 41015688dc94593fd9662a7f0ba0e72f044915d6
-ms.translationtype: MT
+ms.openlocfilehash: 27a4a30dd0eb449726a99d02f2409632aa327567
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/11/2019
-ms.locfileid: "59502260"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59683422"
 ---
 # <a name="connect-to-media-services-v3-api---java"></a>Připojení k rozhraní API služby Media Services v3 – Java
 
 Tento článek popisuje, jak se připojit k Azure Media Services v3 Java SDK pomocí přihlašovacího instančního objektu služby v metodě.
 
-V tomto článku se používá Visual Studio Code pro vývoj aplikace.
+V tomto článku se používá Visual Studio Code pro vývoj ukázkovou aplikaci.
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -54,9 +54,9 @@ Při spuštění příkazu, který `pom.xml`, `App.java`, a další soubory jsou
 
 ## <a name="add-dependencies"></a>Přidat závislosti
 
-1. Ve Visual Studio Code otevřete složku, ve kterém je váš projekt. 
-1. Vyhledání a otevření `pom.xml`. 
-1. Přidá potřebné závislosti. Jeden z nich je [com.microsoft.azure.mediaservices.v2018_07_01:azure-mgmt-media](https://search.maven.org/artifact/com.microsoft.azure.mediaservices.v2018_07_01/azure-mgmt-media/1.0.0-beta/jar).
+1. Ve Visual Studio Code otevřete složku, ve kterém je váš projekt
+1. Najít a otevřít `pom.xml`
+1. Přidá potřebné závislosti
 
     ```xml
     <dependency>
@@ -74,7 +74,6 @@ Při spuštění příkazu, který `pom.xml`, `App.java`, a další soubory jsou
       <artifactId>azure-client-authentication</artifactId>
       <version>1.6.5</version>
     </dependency>
-    </dependency>
     ```
 
 ## <a name="connect-to-the-java-client"></a>Připojte se k klientskou sadou Java
@@ -84,7 +83,7 @@ Při spuštění příkazu, který `pom.xml`, `App.java`, a další soubory jsou
     ```java
     package com.azure.ams;
     ```
-2. V rámci příkazu balíčku, přidejte tyto příkazy import:
+1. V rámci příkazu balíčku, přidejte tyto příkazy import:
    
    ```java
    import com.microsoft.azure.AzureEnvironment;
@@ -92,7 +91,7 @@ Při spuštění příkazu, který `pom.xml`, `App.java`, a další soubory jsou
    import com.microsoft.azure.management.mediaservices.v2018_07_01.implementation.MediaManager;
    import com.microsoft.rest.LogLevel;
    ```
-2. Vytvoření přihlašovacích údajů Active Directory, které potřebujete k podání žádostí o, přidejte následující kód k metodě hlavní třídy App a nastavit hodnoty, které jste získali z [přístup k rozhraní API](access-api-cli-how-to.md):
+1. Vytvoření přihlašovacích údajů Active Directory, které potřebujete k podání žádostí o, přidejte následující kód k metodě hlavní třídy App a nastavit hodnoty, které jste získali z [přístup k rozhraní API](access-api-cli-how-to.md):
    
    ```java
    final String clientId = "00000000-0000-0000-0000-000000000000";
@@ -115,16 +114,15 @@ Při spuštění příkazu, který `pom.xml`, `App.java`, a další soubory jsou
       System.out.println(e.toString());
    }
    ```
+1. Spusťte aplikaci.
 
 ## <a name="see-also"></a>Další informace najdete v tématech
 
 - [Koncepty služby Media Services](concepts-overview.md)
 - [Java SDK](https://aka.ms/ams-v3-java-sdk)
-- [Referenční informace k Java](https://aka.ms/ams-v3-java-ref)
-- [https://search.maven.org/](https://search.maven.org/)
+- [Reference k Javě](https://aka.ms/ams-v3-java-ref)
+- [com.microsoft.azure.mediaservices.v2018_07_01:azure-mgmt-media](https://search.maven.org/artifact/com.microsoft.azure.mediaservices.v2018_07_01/azure-mgmt-media/1.0.0-beta/jar)
 
 ## <a name="next-steps"></a>Další postup
 
-Nyní můžete zahrnout `import com.microsoft.azure.management.mediaservices.v2018_07_01.Asset;` a začít manipulaci s entitami.<br/>
-Třeba získáte všechny prostředky ve vašem účtu: `Observable<Asset> asyncAssets = 
-                    manager.assets().listAsync(groupId, accountId).last();`
+Nyní můžete zahrnout `import com.microsoft.azure.management.mediaservices.v2018_07_01.*;` a začít manipulaci s entitami.

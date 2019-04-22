@@ -8,19 +8,20 @@ manager: daveba
 ms.reviewer: barbkess
 ms.assetid: ba9f1b3d-a4a0-4ff7-b0e7-428e0ed92142
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 12/31/2018
+ms.date: 04/02/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e86ae61a6aec6c546b36c52f3f3875cbebdc838e
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: b46135366c76abf8da5387ff0698b4dc7634d79c
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57861923"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59698538"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-absorb-lms"></a>Kurz: Integrace s LMS vyrovnat se s Azure Active Directory
 
@@ -38,7 +39,7 @@ Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https
 
 Konfigurace integrace Azure AD s vyrovnat se s LMS, potřebujete následující položky:
 
-* Předplatné služby Azure AD. Pokud nemáte prostředí Azure AD, můžete získat měsíční zkušební verze [zde](https://azure.microsoft.com/pricing/free-trial/)
+* Předplatné služby Azure AD. Pokud nemáte prostředí Azure AD, můžete získat [bezplatný účet](https://azure.microsoft.com/free/)
 * Chránit před LMS jednotné přihlášení povolený předplatného
 
 ## <a name="scenario-description"></a>Popis scénáře
@@ -120,17 +121,21 @@ Chcete-li nakonfigurovat LMS vyrovnat se s Azure AD jednotného přihlašování
     > [!NOTE]
     > Tyto hodnoty nejsou skutečný. Aktualizujte tyto hodnoty se skutečné identifikátorem a adresa URL odpovědi. Kontakt [tým podpory vyrovnat se s klienta LMS](https://support.absorblms.com/hc/) k získání těchto hodnot. Můžete také odkazovat na tyto vzory se dají ukazuje **základní konfiguraci SAML** části webu Azure Portal.
 
-5. Na **nastavte si jednotné přihlašování pomocí SAML** stránku, **podpisový certifikát SAML** klikněte na tlačítko **Stáhnout** ke stažení **soubor XML s metadaty**z se zadanými možnostmi podle vašich požadavků a uložit je ve vašem počítači.
+5. Následující snímek obrazovky ukazuje seznam výchozích atributů, přičemž **nameidentifier** je namapována na žádnou **user.userprincipalname**.
+
+    ![image](common/edit-attribute.png)
+
+6. Na **nastavte si jednotné přihlašování pomocí SAML** stránku, **podpisový certifikát SAML** klikněte na tlačítko **Stáhnout** ke stažení **kód XML metadat federace**  z se zadanými možnostmi podle vašich požadavků a uložit je ve vašem počítači.
 
     ![Odkaz ke stažení certifikátu](common/metadataxml.png)
 
-6. Na **nastavení vyrovnat se s LMS** tématu, zkopírujte příslušné adresy URL podle vašich požadavků.
+7. Na **nastavení vyrovnat se s LMS** tématu, zkopírujte příslušné adresy URL podle vašich požadavků.
 
     ![Zkopírování adresy URL konfigurace](common/copy-configuration-urls.png)
 
     a. Přihlašovací adresa URL
 
-    b. Identifikátor služby Azure Ad
+    b. Identifikátor Azure AD
 
     c. Adresa URL – odhlášení
 
@@ -162,7 +167,7 @@ Chcete-li nakonfigurovat LMS vyrovnat se s Azure AD jednotného přihlašování
 
     d. V **režimu** vyberte **iniciované zprostředkovatele Identity**.
 
-    e. V **Vlastnost Id** vyberte atribut, který jste nakonfigurovali jako identifikátor uživatele ve službě Azure AD. Například pokud *userPrincipalName* je vybrána ve službě Azure AD, vyberte **uživatelské jméno**.
+    e. V **Vlastnost Id** vyberte atribut, který jste nakonfigurovali jako identifikátor uživatele ve službě Azure AD. Například pokud *nameidentifier* je vybrána ve službě Azure AD, vyberte **uživatelské jméno**.
 
     f. Vyberte **Sha256** jako **typ podpisu**.
 
@@ -194,7 +199,7 @@ Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal
 
     a. V **název** zadat **BrittaSimon**.
   
-    b. V **uživatelské jméno** typ pole **brittasimon\@yourcompanydomain.extension**  
+    b. V **uživatelské jméno** typ pole `brittasimon\@yourcompanydomain.extension`  
     Například BrittaSimon@contoso.com.
 
     c. Vyberte **zobrazit heslo** zaškrtněte políčko a zapište si hodnotu, která se zobrazí v poli heslo.
@@ -272,7 +277,7 @@ V této části Testování služby Azure AD jednotné přihlašování – konf
 
 Po kliknutí na dlaždici vyrovnat se s LMS na přístupovém panelu, vám by měl být automaticky přihlášeni vyrovnat se s LMS, u kterého nastavíte jednotné přihlašování. Další informace o přístupovém panelu, naleznete v tématu [Úvod k přístupovému panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Další prostředky
+## <a name="additional-resources"></a>Další materiály
 
 - [Seznam kurzů o integraci aplikací SaaS pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

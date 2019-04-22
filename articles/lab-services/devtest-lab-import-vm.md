@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/11/2018
 ms.author: spelluru
-ms.openlocfilehash: 4585d151e286917c67586a02539a10ade32bdd4c
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.openlocfilehash: 9d5b7f32cb298315a5816562f548bcdafbdeb5cf
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47094515"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59682304"
 ---
 # <a name="import-vms-from-another-lab-in-azure-devtest-labs"></a>Import virtuálních počítačů z jiného testovacího prostředí ve službě Azure DevTest Labs
 Služba Azure DevTest Labs výrazně zlepšuje správu virtuálních počítačů (VM) pro vývoj a testování aktivity. Umožňuje přesunout virtuální počítač z jednoho prostředí do jiného jako tým, nebo změňte požadavky na infrastrukturu. Zde jsou uvedeny některé obvyklé scénáře, ve kterém budete muset udělat: 
@@ -42,7 +42,7 @@ Kromě toho aby bylo možné importovat virtuální počítač z jednoho prostř
 V současné době můžete importovat virtuální počítač z jednoho prostředí do jiného pouze pomocí prostředí Azure PowerShell a rozhraní REST API.
 
 ### <a name="use-powershell"></a>Použití prostředí PowerShell
-Stažení souboru skriptu prostředí PowerShell ImportVirtualMachines.ps1 z [úložiště Git v Azure DevTest Lab](https://github.com/Azure/azure-devtestlab/tree/master/Scripts/ImportVirtualMachines) na váš místní disk. 
+Stažení souboru skriptu prostředí PowerShell ImportVirtualMachines.ps1 z [úložiště Git v Azure DevTest Lab](https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/Scripts/ImportVirtualMachines) na váš místní disk. 
 
 #### <a name="import-a-single-vm"></a>Importovat jeden virtuální počítač
 Spusťte skript ImportVirtualMachines.ps1 import jednoho virtuálního počítače ze zdrojového testovacího prostředí do cílového testovacího prostředí. Můžete zadat nový název pro virtuální počítač, který je kopírování s použitím DestinationVirtualMachineName paramer. 

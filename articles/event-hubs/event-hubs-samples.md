@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: 7231b6a33c94dfe029f41f034c7674b386090d7a
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 1c1198733fb56303d328ee97152442d25dbe945a
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53104046"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59682383"
 ---
 # <a name="git-repositories-with-samples-for-azure-event-hubs"></a>Úložiště Git s ukázkami pro Azure Event Hubs 
 Ukázky služby Event Hubs můžete najít na [Githubu](https://github.com/Azure/azure-event-hubs/tree/master/samples). Tyto ukázky ukazují klíčové funkce v [Azure Event Hubs](/azure/event-hubs/). Tento článek slouží ke kategorizaci a popisuje ukázek dostupných s odkazy na každý.
@@ -50,7 +50,7 @@ Ukázky služby Event Hubs můžete najít na [Githubu](https://github.com/Azure
 Můžete najít ukázky Pythonu pro Azure Event Hubs [azure event hubs python](https://github.com/Azure/azure-event-hubs-python/tree/master/examples) úložiště GitHub.
 
 ## <a name="nodejs-samples"></a>Ukázky Node.js
-Můžete najít ukázky Node.js pro Azure Event Hubs [azure event hubs uzly](https://github.com/Azure/azure-event-hubs-node) úložiště GitHub.
+Můžete najít ukázky Node.js pro Azure Event Hubs [azure sdk pro js](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/eventhub/event-hubs/samples) úložiště GitHub.
 
 ## <a name="go-samples"></a>Ukázky v go
 Můžete najít ukázky Go pro Azure Event Hubs v [azure event hubs průběžně](https://github.com/Azure/azure-event-hubs-go/tree/master/_examples) úložiště GitHub.

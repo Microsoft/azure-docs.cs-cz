@@ -7,15 +7,15 @@ manager: cgronlun
 tags: azure-portal
 ms.service: search
 ms.topic: conceptual
-ms.date: 04/05/2019
+ms.date: 04/15/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: da8c8adacfead598a8dec6280cf3518fb7b31f49
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: b50d0c0ca9a4000cc0c725453a3ef04b4bed9275
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59270936"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59681561"
 ---
 # <a name="choose-a-pricing-tier-for-azure-search"></a>Zvolte cenovou úroveň pro službu Azure Search
 
@@ -64,35 +64,36 @@ Ve službě Azure Search existují tři způsoby, jak vynakládá ve službě Az
 
 ### <a name="1-core-service-costs-fixed-and-variable"></a>1. Náklady na službu Core (pevné a proměnné)
 
-Pro samotnou službu minimální sazba je první částí vyhledávání (1 repliky x 1 oddílu) a tato velikost je konstantní po dobu životnosti služby, protože službu nelze spustit žádnou menší než tato konfigurace. 
+Pro samotnou službu minimální sazba je první částí vyhledávání (1 repliky x 1 oddílu) a tuto dobu je pevně daná po dobu životnosti služby, protože službu nelze spustit žádnou menší než tato konfigurace. 
 
-Na následujícím snímku obrazovky za cenu jednotky je označen pro Free a Basic, S1 (S2, S3, L1 a L2 nezobrazují). Pokud jste vytvořili **základní**, **standardní**, nebo **optimalizované pro úložiště** služby, váš měsíční náklady by průměrná hodnota, která se zobrazí pro *cena-1*a *cena 2* v uvedeném pořadí. Náklady na jednotku zvýší pro každou vrstvu protože je větší na jednotlivých úrovních po sobě jdoucích výpočetní výkon a výpočetní kapacitu.
+Nad rámec minimum můžete přidat repliky a oddíly, nezávisle na sobě. Například můžete přidat pouze repliky nebo pouze oddíly. Zvyšování kapacity prostřednictvím repliky a oddíly, které tvoří součást náklady na proměnnou. 
+
+Účtování vychází [vzorec (repliky x oddíly x rychlost)](#search-units). Sazba, která bude se vám účtovat závisí na zvolené cenové úrovni.
+
+Na následujícím snímku obrazovky za cenu jednotky je označen pro Free a Basic, S1 (S2, S3, L1 a L2 nezobrazují). Pokud jste vytvořili **základní**, **standardní**, nebo **optimalizované pro úložiště** služby, váš měsíční náklady by průměrná hodnota, která se zobrazí pro *cena-1*a *cena 2* v uvedeném pořadí. Náklady na jednotku zvýší pro každou vrstvu protože je větší na jednotlivých úrovních po sobě jdoucích výpočetní výkon a výpočetní kapacitu. Kurzy pro službu Azure Search se publikují na [stránce s cenami Azure Search](https://azure.microsoft.com/pricing/details/search/).
 
 ![Za cenu jednotky](./media/search-sku-tier/per-unit-pricing.png "za cenu jednotky")
 
-Další repliky a oddíly, které jsou doplněk k počáteční náklady. Vyhledávací služba vyžaduje repliky a oddíl jednu roli od každého je minimální požadavky na konfiguraci. Nad rámec minimální je přidat repliky a oddíly, nezávisle na sobě. Například můžete přidat pouze repliky nebo pouze oddíly. 
+Při výpočtu nákladů na řešení pro hledání, Všimněte si, že ceny a kapacitu nejsou lineární (zvýší kapacitu více než zdvojnásobí náklady). Příklad toho, jak vzorec funguje, najdete v části ["Postup přidělení repliky a oddíly"](search-capacity-planning.md#how-to-allocate-replicas-and-partitions).
 
-Další repliky a oddíly, které se účtují na základě [vzorec](#search-units). Náklady na nejsou lineární (zvýší kapacitu více než zdvojnásobí náklady). Příklad toho, jak vzorec funguje, najdete v části ["Postup přidělení repliky a oddíly"](search-capacity-planning.md#how-to-allocate-replicas-and-partitions).
 
 ### <a name="2-data-egress-charges-during-indexing"></a>2. Poplatky za odchozí přenos dat během indexování
 
-Použití [indexerů Azure Search](search-indexer-overview.md) může vést k fakturaci dopad závislosti, kde jsou umístěny služby. Poplatky za odchozí přenos dat můžete eliminovat úplně, pokud vytvoříte službu Azure Search ve stejné oblasti jako vaše data.
+Použití [indexerů Azure Search](search-indexer-overview.md) může vést k účtování dopadu v závislosti na tom, kde jsou umístěny služby. Poplatky za odchozí přenos dat můžete eliminovat úplně, pokud vytvoříte službu Azure Search ve stejné oblasti jako vaše data. Následující body jsou z [šířky pásma stránce s cenami](https://azure.microsoft.com/pricing/details/bandwidth/).
 
-+ Žádné poplatky za všechna příchozí data na jakoukoli službu v Azure.
++ Microsoft nebude uplatňovat pro všechny vstupní data na jakoukoli službu v Azure nebo pro všechna výstupní data z Azure Search.
 
-+ Žádné poplatky za všechny odchozí data z Azure Search.
++ V řešení pro víc služeb neúčtují žádné poplatky pro data, překročení přenosu, když jsou všechny služby ve stejné oblasti.
 
-+ Žádné poplatky za data nebo soubory odchozí z SQL Database, Cosmos, Blob storage (vstupní do služby Azure Search), pokud jsou všechny služby ve stejné oblasti.
-
-+ Poplatky za odchozí data nebo soubory Pokud storage a Azure Search v různých oblastech.
-
-Při směrování dat v různých oblastech Azure, zobrazí se poplatky za šířku pásma na faktuře je uvedena pro tyto prostředky. Tyto poplatky, které nejsou součástí vyúčtování Azure Search, ale jsou vzhledem k tomu, že pokud o přijetí změn dat nebo souborů přenosu pomocí indexerů, zobrazí tento poplatek je ve vyúčtování celkové tady uvedené.
-
-Pokud nepoužíváte indexery, nejsou žádné poplatky za šířku pásma. 
+Poplatky za odchozí data Pokud služby jsou v různých oblastech. Tyto poplatky nejsou součástí vyúčtování Azure Search samo o sobě, ale jsou vzhledem k tomu, že pokud použijete data nebo AI obohacené indexování má načítat data z různých oblastí, zobrazí se vám tyto náklady v celkový účet tady uvedené. 
 
 ### <a name="3-ai-enriched-indexing-using-cognitive-services"></a>3. AI obohacené indexování s využitím služeb Cognitive Services
 
-Pro [indexování AI pomocí služeb Cognitive Services](cognitive-search-concept-intro.md) pouze extrakce image během hádání dokumentu se účtuje na základě počtu imagí, které jsou extrahovány z vašich dokumentů. Extrakce textu je aktuálně zdarma. Další obohacení, jako je zpracování přirozeného jazyka, jsou založeny na [integrované kognitivní dovednosti](cognitive-search-predefined-skills.md) se účtují podle prostředku služeb Cognitive Services. Obohacení se účtují za stejnou sazbu jako kdyby jste provedli úloh přímo pomocí služeb Cognitive Services.
+Pro [indexování AI pomocí služeb Cognitive Services](cognitive-search-concept-intro.md), měli byste počítat s připojení služeb Cognitive Services fakturovatelné prostředek na S0 cenovou úroveň pro zpracování s průběžnými platbami. Neexistuje žádná "hradit fixní částku" přidružené k připojení služeb Cognitive Services. Platíte jenom za zpracování, které potřebujete.
+
+Extrakce Image během hádání dokumentu je poplatek za Azure Search, fakturuje na základě počtu imagí, které jsou extrahovány z vašich dokumentů. Extrakce textu je aktuálně zdarma. 
+
+Další obohacení, jako je zpracování přirozeného jazyka, jsou založeny na [integrované kognitivní dovednosti](cognitive-search-predefined-skills.md) se účtují podle prostředku služeb Cognitive Services, za stejnou sazbu jako kdyby jste provedli úloh přímo pomocí služeb Cognitive Services. Další informace najdete v tématu [připojit prostředek služeb Cognitive Services dovedností](cognitive-search-attach-cognitive-services.md).
 
 <a name="search-units"></a>
 

@@ -13,15 +13,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 04/08/2019
+ms.date: 04/17/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: df6720d888aae313a2e6ad2ce4df458adba8742f
-ms.sourcegitcommit: b8a8d29fdf199158d96736fbbb0c3773502a092d
-ms.translationtype: MT
+ms.openlocfilehash: f289830fce184f99a0bd2dc7a21bd9457f5183ae
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/15/2019
-ms.locfileid: "59565355"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59699198"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-greenorbit"></a>Kurz: Integrace Azure Active Directory s GreenOrbit
 
@@ -56,7 +56,7 @@ Konfigurace integrace GreenOrbit do služby Azure AD, budete muset přidat Green
 
 **Chcete-li přidat GreenOrbit z galerie, postupujte následovně:**
 
-1. V  **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte **Azure Active Directory** ikonu.
+1. V **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
 
     ![Tlačítko Azure Active Directory](common/select-azuread.png)
 
@@ -68,7 +68,7 @@ Konfigurace integrace GreenOrbit do služby Azure AD, budete muset přidat Green
 
     ![Tlačítko nové aplikace](common/add-new-app.png)
 
-4. Do vyhledávacího pole zadejte **GreenOrbit**vyberte **GreenOrbit** na panelu výsledků klikněte **přidat** tlačítko pro přidání aplikace.
+4. Do vyhledávacího pole zadejte **GreenOrbit**vyberte **GreenOrbit** z panelu výsledků klikněte **přidat** tlačítko pro přidání aplikace.
 
     ![GreenOrbit v seznamu výsledků](common/search-new-app.png)
 
@@ -108,9 +108,9 @@ Ke konfiguraci Azure AD jednotné přihlašování s GreenOrbit, proveďte násl
 
     ![GreenOrbit domény a adresy URL jednotného přihlašování – informace](common/sp-identifier.png)
 
-    a. V **přihlašovací adresa URL** textové pole, zadejte adresu URL, pomocí následujícího vzorce: `https://<SUBDOMAIN>.GreenOrbit.com`
+    a. V **přihlašovací adresa URL** textové pole, zadejte adresu URL, pomocí následujícího vzorce: `https://<SUBDOMAIN>.yourcompanydomain.extension`
 
-    b. V **identifikátor (Entity ID)** textové pole, zadejte adresu URL, pomocí následujícího vzorce: `http://<SUBDOMAIN>.trial.GreenOrbit.com`
+    b. V **identifikátor (Entity ID)** textové pole, zadejte adresu URL, pomocí následujícího vzorce: `https://<SUBDOMAIN>.yourcompanydomain.extension`
 
     > [!NOTE]
     > Tyto hodnoty nejsou skutečný. Aktualizujte tyto hodnoty skutečné přihlašovací adresu URL a identifikátor. Kontakt [tým podpory GreenOrbit klienta](mailto:support@greenorbit.com) k získání těchto hodnot. Můžete také odkazovat na tyto vzory se dají ukazuje **základní konfiguraci SAML** části webu Azure Portal.
@@ -195,7 +195,7 @@ Po kliknutí na dlaždici GreenOrbit na přístupovém panelu, můžete by měl 
 
 ## <a name="additional-resources"></a>Další prostředky
 
-- [Seznam kurzů o integraci aplikací SaaS pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [ Seznam kurzů o integraci aplikací SaaS pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
