@@ -55,11 +55,11 @@ Nebo, pokud už připojení existuje, zadejte informace potřebné pro aktivačn
 
    | Vlastnost | Požaduje se | Value | Popis |
    |----------|----------|-------|-------------|
-   | Vyhledávací dotaz | Ano | <*search-words*> | Zadejte hledaná klíčová slova, které chcete použít. |
-   | Trh | Ano | <*Národní prostředí*> | Hledání národní prostředí. Výchozí hodnota je "en US", ale můžete vybrat jinou hodnotu. |
-   | Bezpečné vyhledávání | Ano | <*úroveň hledání*> | Úroveň filtru pro vyloučení obsah pro dospělé. Výchozí hodnota je "Střední", ale vyberte jinou úroveň. |
-   | Počet | Ne | <*results-count*> | Vrátí zadaný počet výsledků. Výchozí hodnota je 20, ale můžete zadat jinou hodnotu. Skutečný počet vrácených výsledků může být nižší než zadané číslo. |
-   | Posun | Ne | <*skip-value*> | Počet výsledků, chcete-li přeskočit před vrácením výsledky |
+   | Search Query | Ano | <*search-words*> | Zadejte hledaná klíčová slova, které chcete použít. |
+   | Market | Ano | <*Národní prostředí*> | Hledání národní prostředí. Výchozí hodnota je "en US", ale můžete vybrat jinou hodnotu. |
+   | Safe Search | Ano | <*úroveň hledání*> | Úroveň filtru pro vyloučení obsah pro dospělé. Výchozí hodnota je "Střední", ale vyberte jinou úroveň. |
+   | Count | Ne | <*results-count*> | Vrátí zadaný počet výsledků. Výchozí hodnota je 20, ale můžete zadat jinou hodnotu. Skutečný počet vrácených výsledků může být nižší než zadané číslo. |
+   | Offset | Ne | <*skip-value*> | Počet výsledků, chcete-li přeskočit před vrácením výsledky |
    |||||
 
    Příklad:
@@ -106,11 +106,11 @@ Ze seznamu akcí vyberte požadovanou akci.
 
    | Vlastnost | Požaduje se | Value | Popis |
    |----------|----------|-------|-------------|
-   | Vyhledávací dotaz | Ano | <*search-expression*> | Zadejte výraz pro dotazování na výsledky aktivační události. Můžete vybrat z polí v seznamu dynamického obsahu nebo vytvořte výraz s Tvůrce výrazů. |
-   | Trh | Ano | <*Národní prostředí*> | Hledání národní prostředí. Výchozí hodnota je "en US", ale můžete vybrat jinou hodnotu. |
-   | Bezpečné vyhledávání | Ano | <*úroveň hledání*> | Úroveň filtru pro vyloučení obsah pro dospělé. Výchozí hodnota je "Střední", ale vyberte jinou úroveň. |
-   | Počet | Ne | <*results-count*> | Vrátí zadaný počet výsledků. Výchozí hodnota je 20, ale můžete zadat jinou hodnotu. Skutečný počet vrácených výsledků může být nižší než zadané číslo. |
-   | Posun | Ne | <*skip-value*> | Počet výsledků, chcete-li přeskočit před vrácením výsledky |
+   | Search Query | Ano | <*search-expression*> | Zadejte výraz pro dotazování na výsledky aktivační události. Můžete vybrat z polí v seznamu dynamického obsahu nebo vytvořte výraz s Tvůrce výrazů. |
+   | Market | Ano | <*Národní prostředí*> | Hledání národní prostředí. Výchozí hodnota je "en US", ale můžete vybrat jinou hodnotu. |
+   | Safe Search | Ano | <*úroveň hledání*> | Úroveň filtru pro vyloučení obsah pro dospělé. Výchozí hodnota je "Střední", ale vyberte jinou úroveň. |
+   | Count | Ne | <*results-count*> | Vrátí zadaný počet výsledků. Výchozí hodnota je 20, ale můžete zadat jinou hodnotu. Skutečný počet vrácených výsledků může být nižší než zadané číslo. |
+   | Offset | Ne | <*skip-value*> | Počet výsledků, chcete-li přeskočit před vrácením výsledky |
    |||||
 
    Předpokládejme například, že chcete tyto výsledky, jehož název kategorie obsahuje slovo "tech".
