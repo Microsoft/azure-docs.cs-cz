@@ -10,10 +10,10 @@ ms.date: 02/05/2019
 ms.topic: conceptual
 manager: carmonm
 ms.openlocfilehash: 82baef7ce0d91713c8bef202ab0ea0925d290f3a
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/11/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59496586"
 ---
 # <a name="forward-job-status-and-job-streams-from-automation-to-azure-monitor-logs"></a>Dál stavu úlohy a datové proudy úlohy ze služby Automation na protokoly Azure monitoru
@@ -68,8 +68,7 @@ Pokud je potřeba najít *název* vašeho účtu Automation na webu Azure Portal
 
 Po spuštění tohoto skriptu, může trvat hodinu, než začnete zobrazit záznamy v protokolech Azure Monitor nové JobLogs nebo JobStreams probíhá zápis.
 
-Pokud chcete zobrazit protokoly, spuštěním následujícího dotazu v prohledávání protokolu log analytics:
-`AzureDiagnostics | where ResourceProvider == "MICROSOFT.AUTOMATION"`
+Pokud chcete zobrazit protokoly, spuštěním následujícího dotazu v prohledávání protokolu log analytics: `AzureDiagnostics | where ResourceProvider == "MICROSOFT.AUTOMATION"`
 
 ### <a name="verify-configuration"></a>Ověření konfigurace
 
@@ -137,8 +136,7 @@ Diagnostika ve službě Azure Automation vytvoří dva typy záznamů v protokol
 
 Teď, když jste začali, odesílání vaše protokoly úloh služby Automation na protokoly Azure monitoru, Podívejme se, co můžete dělat pomocí těchto protokolů uvnitř protokoly Azure monitoru.
 
-Pokud chcete zobrazit protokoly, spusťte následující dotaz:
-`AzureDiagnostics | where ResourceProvider == "MICROSOFT.AUTOMATION"`
+Pokud chcete zobrazit protokoly, spusťte následující dotaz: `AzureDiagnostics | where ResourceProvider == "MICROSOFT.AUTOMATION"`
 
 ### <a name="send-an-email-when-a-runbook-job-fails-or-suspends"></a>Odeslání e-mailu, když úlohu runbook selže nebo pozastaví
 Mezi důležité zákazníky požádá, je pro možnost odeslání e-mailu nebo odeslání zprávy, když dojde k nějaké chybě s úlohy runbooku.   

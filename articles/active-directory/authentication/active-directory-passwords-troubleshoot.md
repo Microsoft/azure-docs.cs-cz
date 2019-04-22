@@ -13,10 +13,10 @@ ms.reviewer: sahenry
 ms.custom: seo-update-azuread-jan
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 5adb857e6032e46c31a86685913277ec3eb571be
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/11/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59496399"
 ---
 # <a name="troubleshoot-self-service-password-reset"></a>Řešení potíží s resetováním hesla pomocí samoobslužné služby
@@ -285,14 +285,14 @@ K usnadnění správně, můžeme požádat, zadejte co nejvíce podrobností ne
 
 Následující články poskytují další informace o resetování hesla přes Azure AD:
 
-* [Jak lze dokončit úspěšné zavedení samoobslužného resetování HESLA?](howto-sspr-deployment.md)
+* [Jak dokončit úspěšné zavedení SSPR?](howto-sspr-deployment.md)
 * [Resetování nebo změna hesla](../user-help/active-directory-passwords-update-your-own-password.md)
-* [Registrace pro samoobslužné resetování hesla](../user-help/active-directory-passwords-reset-register.md)
+* [Registrace samoobslužného resetování hesla](../user-help/active-directory-passwords-reset-register.md)
 * [Máte dotaz k licencování?](concept-sspr-licensing.md)
 * [Jaká data používá SSPR a která data byste měli naplnit pro vaše uživatele?](howto-sspr-authenticationdata.md)
-* [Jaké metody ověřování jsou dostupné pro uživatele?](concept-sspr-howitworks.md#authentication-methods)
+* [Které metody ověřování jsou dostupné pro uživatele?](concept-sspr-howitworks.md#authentication-methods)
 * [Jaké jsou možnosti zásad se SSPR?](concept-sspr-policy.md)
-* [Co je zpětný zápis hesla a proč je postaral o něm?](howto-sspr-writeback.md)
+* [Co je zpětný zápis hesla a proč byste se o něj měli starat?](howto-sspr-writeback.md)
 * [Jak hlásit aktivitu v SSPR?](howto-sspr-reporting.md)
-* [Co jsou všechny možnosti v SSPR a co znamenají?](concept-sspr-howitworks.md)
-* [Mám dotaz, který není zodpovězená jinde](active-directory-passwords-faq.md)
+* [Jaké jsou všechny možnosti v SSPR a co znamenají?](concept-sspr-howitworks.md)
+* [Mám otázku, která není zodpovězená jinde](active-directory-passwords-faq.md)

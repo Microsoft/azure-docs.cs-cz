@@ -18,10 +18,10 @@ ms.author: dadobali
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e6340e0f349d66ecf6baaca481722396a6d786c5
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/11/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59496125"
 ---
 # <a name="quickstart-sign-in-users-and-call-the-microsoft-graph-api-from-an-ios-native-app"></a>Rychlý start: Přihlašování uživatelů a volání rozhraní Microsoft Graph API z nativních aplikací pro iOS
@@ -46,14 +46,14 @@ Tento rychlý start obsahuje vzorový kód, který předvádí, jak může nativ
 > #### <a name="step-1-configure-your-application"></a>Krok 1: Konfigurace aplikace
 > Pro ukázkový kód pro tento rychlý start pro práci, budete muset přidat adresu URL odpovědi jako `msal<AppId>://auth` (kde msal\<AppId > je tato aplikace Id).
 > > [!div renderon="portal" id="makechanges" class="nextstepaction"]
-> > [Provedení této změny pro mě]()
+> > [Udělat změnu za mě]()
 >
 > > [!div id="appconfigured" class="alert alert-info"]
-> > ![Už nakonfigurovali](media/quickstart-v2-ios/green-check.png) vaše aplikace je nakonfigurovaná pomocí tohoto atributu
+> > ![Už nakonfigurováno](media/quickstart-v2-ios/green-check.png) Vaše aplikace už má tento atribut nakonfigurovaný.
 
 #### <a name="step-2-download-your-web-server-or-project"></a>Krok 2: Stažení webového serveru nebo projektu
 
-- [Stáhněte si projekt XCode](https://github.com/Azure-Samples/active-directory-ios-swift-native-v2/archive/master.zip)
+- [Stáhněte si projekt XCode](https://github.com/Azure-Samples/active-directory-ios-swift-native-v2/archive/master.zip).
 
 #### <a name="step-3-configure-your-project"></a>Krok 3: Konfigurace projektu
 
@@ -187,9 +187,9 @@ applicationContext.acquireTokenSilent(forScopes: self.kScopes, account: applicat
 
 Vyzkoušejte kurz pro iOS, kde najdete podrobný návod k vytváření aplikací a nových funkcí, včetně úplného popisu tohoto rychlého startu.
 
-### <a name="learn-the-steps-to-create-the-application-used-in-this-quickstart"></a>Postup vytvoření aplikace použité v tomto rychlém startu
+### <a name="learn-the-steps-to-create-the-application-used-in-this-quickstart"></a>Zjistěte, jak vytvořit aplikaci použitou v tomto rychlém startu
 
 > [!div class="nextstepaction"]
-> [Kurz iOS volání rozhraní Graph API](https://docs.microsoft.com/azure/active-directory/develop/guidedsetups/active-directory-ios)
+> [Kurz volání rozhraní Graph API pro iOS](https://docs.microsoft.com/azure/active-directory/develop/guidedsetups/active-directory-ios)
 
 [!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]

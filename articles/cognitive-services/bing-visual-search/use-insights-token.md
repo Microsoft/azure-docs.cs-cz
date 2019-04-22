@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 4/05/2019
 ms.author: scottwhi
 ms.openlocfilehash: e42e56e6361b1fde7ab13655d3c57a90d7235938
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/11/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59493871"
 ---
 # <a name="use-an-insights-token-to-get-insights-for-an-image"></a>Použít insights token získat přehled o určité imagi
@@ -476,7 +476,7 @@ if __name__ == '__main__':
 ## <a name="next-steps"></a>Další postup
 
 [Vytvořit pro vizuální vyhledávání jednostránkovou webovou aplikaci](tutorial-bing-visual-search-single-page-app.md)  
-[Co je rozhraní API pro vizuální vyhledávání Bingu?](overview.md)  
-[Zkuste Cognitive Services](https://aka.ms/bingvisualsearchtryforfree)  
-[Získat bezplatnou zkušební verzi přístupový klíč](https://azure.microsoft.com/try/cognitive-services/?api=bing-visual-search-api)  
+[Co je API aplikace pro vizuální vyhledávání Bingu?](overview.md)  
+[Vyzkoušet služby Cognitive Services](https://aka.ms/bingvisualsearchtryforfree)  
+[Získání bezplatné zkušební verze přístupového klíče](https://azure.microsoft.com/try/cognitive-services/?api=bing-visual-search-api)  
 [Image - vizuálního vyhledávání](https://aka.ms/bingvisualsearchreferencedoc)

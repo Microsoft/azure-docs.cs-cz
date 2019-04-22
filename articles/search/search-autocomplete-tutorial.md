@@ -11,10 +11,10 @@ ms.date: 04/04/2019
 ms.author: mcarter
 ms.custom: seodec2018
 ms.openlocfilehash: ed2e0bd352823a932cfea719c18e05ae6c913621
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/11/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59495732"
 ---
 # <a name="example-add-suggestions-or-autocomplete-to-your-azure-search-application"></a>Příklad: Přidat nějaké návrhy nebo automatické dokončování pro vaši aplikaci Azure Search
@@ -89,7 +89,7 @@ $(function () {
 });
 ```
 
-Výše uvedený kód běží v prohlížeči při načtení stránky konfigurace uživatelské rozhraní jQuery automatické dokončování "example1a" vstupního pole.  `minLength: 3` zajišťuje, doporučení se zobrazí pouze v případě, že existují alespoň tři znaky do vyhledávacího pole.  Důležitá je hodnota source (zdroj):
+Výše uvedený kód běží v prohlížeči při načtení stránky konfigurace uživatelské rozhraní jQuery automatické dokončování "example1a" vstupního pole.  Parametr `minLength: 3` zajišťuje, že se doporučení zobrazí pouze v případě, že vyhledávací pole obsahuje alespoň tři znaky.  Důležitá je hodnota source (zdroj):
 
 ```javascript
 source: "/home/suggest?highlights=false&fuzzy=false&",

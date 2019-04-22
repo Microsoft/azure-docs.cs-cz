@@ -18,10 +18,10 @@ ms.author: dadobali
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: f1f174229da565627c0e5791f53031b338880cb3
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/11/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59495307"
 ---
 # <a name="quickstart-sign-in-users-and-call-the-microsoft-graph-api-from-an-android-app"></a>Rychlý start: Přihlašování uživatelů a volání rozhraní Microsoft Graph API z aplikace pro Android
@@ -70,14 +70,14 @@ Tento rychlý start obsahuje vzorek kódu, který demonstruje, jak může aplika
 > #### <a name="step-1-configure-your-application"></a>Krok 1: Konfigurace aplikace
 > Aby vzorek kódu pro tento rychlý start fungoval, budete muset přidat adresu URL odpovědi jako **msal{AppId}://auth** (kde {AppId} je ID vaší aplikace).
 > > [!div renderon="portal" id="makechanges" class="nextstepaction"]
-> > [Provedení této změny pro mě]()
+> > [Udělat změnu za mě]()
 >
 > > [!div id="appconfigured" class="alert alert-info"]
-> > ![Už nakonfigurovali](media/quickstart-v2-android/green-check.png) vaše aplikace je nakonfigurovaná s těmito atributy
+> > ![Už nakonfigurované](media/quickstart-v2-android/green-check.png) Vaše aplikace je nakonfigurovaná s těmito atributy.
 
 #### <a name="step-2-download-the-project"></a>Krok 2: Stáhněte si projekt
 
-* [Stáhněte si projekt Android Studio](https://github.com/Azure-Samples/active-directory-android-native-v2/archive/master.zip)
+* [Stáhnout projekt pro Android Studio](https://github.com/Azure-Samples/active-directory-android-native-v2/archive/master.zip)
 
 #### <a name="step-3-configure-your-project"></a>Krok 3: Konfigurace projektu
 
@@ -175,7 +175,7 @@ Potom inicializujte knihovnu MSAL pomocí následujícího kódu:
 
 ### <a name="requesting-tokens"></a>Žádosti o tokeny
 
-Knihovna MSAL má dvě metody používané získat tokeny: `acquireToken` a `acquireTokenSilentAsync`
+Knihovna MSAL používá k získání tokenů dvě metody: `acquireToken` a `acquireTokenSilentAsync`.
 
 #### <a name="getting-a-user-token-interactively"></a>Interaktivní získání tokenu uživatele
 
@@ -221,7 +221,7 @@ if (sample.size() == 1) {
 Vyzkoušejte kurz pro Android, kde najdete podrobný návod k vytváření aplikací a nových funkcí, včetně úplného popisu tohoto rychlého startu.
 
 > [!div class="nextstepaction"]
-> [Volání grafu rozhraní API Androidu kurz](https://docs.microsoft.com/azure/active-directory/develop/guidedsetups/active-directory-android)
+> [Kurz volání Graph API pro Android](https://docs.microsoft.com/azure/active-directory/develop/guidedsetups/active-directory-android)
 
 ### <a name="msal-for-android-library-wiki"></a>Wiki knihovny MSAL pro Android
 

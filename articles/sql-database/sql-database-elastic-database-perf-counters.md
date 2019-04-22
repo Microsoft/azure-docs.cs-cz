@@ -13,10 +13,10 @@ ms.reviewer: ''
 manager: craigg
 ms.date: 02/07/2019
 ms.openlocfilehash: 5c6c923c86ea0c5968079188c87ec3988ec30142
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/11/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59494914"
 ---
 # <a name="create-performance-counters-to-track-performance-of-shard-map-manager"></a>Vytvoření čítačů výkonu ke sledování výkonu správce mapování horizontálních oddílů
@@ -68,7 +68,7 @@ Tyto události spustit vytvoření čítače výkonu:
 
 ### <a name="see-also"></a>Další informace najdete v tématech
 
-[Přehled funkcí elastic Database](sql-database-elastic-scale-introduction.md)  
+[Přehled funkcí Elastic Database](sql-database-elastic-scale-introduction.md)  
 
 [!INCLUDE [elastic-scale-include](../../includes/elastic-scale-include.md)]
 

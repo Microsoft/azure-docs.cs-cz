@@ -9,10 +9,10 @@ ms.date: 4/9/2019
 ms.author: victorh
 ms.custom: mvc
 ms.openlocfilehash: cd7797ae3b79fb874bafc89437943b084020d800
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/11/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59492307"
 ---
 # <a name="tutorial-deploy-and-configure-azure-firewall-using-the-azure-portal"></a>Kurz: Nasazení a konfigurace brány Azure Firewall pomocí webu Azure Portal
@@ -108,7 +108,7 @@ Teď vytvoříte virtuální počítače pro jump server a server úloh a umíst
    |Název virtuálního počítače     |**SRV Jump**|
    |Oblast     |Stejné jako předchozí|
    |Uživatelské jméno správce     |**azureuser**|
-   |Heslo     |**Azure123456!**|
+   |Heslo     |**Azure123456!** –|
 
 4. V části **příchozí pravidla portů**, pro **veřejné příchozí porty**vyberte **povolit vybrané porty**.
 5. Pro **vyberte příchozí porty**vyberte **protokolu RDP (3389)**.
@@ -126,8 +126,8 @@ Použijte informace v následující tabulce ke konfiguraci další virtuální 
 |Nastavení  |Hodnota  |
 |---------|---------|
 |Podsíť|**Workload-SN**|
-|Veřejná IP adresa|**Žádný**|
-|Veřejné příchozí porty|**Žádný**|
+|Veřejná IP adresa|**Žádné**|
+|Veřejné příchozí porty|**Žádné**|
 
 ## <a name="deploy-the-firewall"></a>Nasazení brány firewall
 

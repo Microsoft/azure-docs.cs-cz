@@ -12,10 +12,10 @@ ms.custom: mvc
 ms.devlang: azure-cli
 manager: jeconnoc
 ms.openlocfilehash: 03e1ec58b0ef3ad50a04f82ced7d20119ab3ef5b
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/11/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59491453"
 ---
 # <a name="create-a-function-on-linux-using-a-custom-image"></a>Vytvoření funkce v Linuxu pomocí vlastní image
@@ -65,7 +65,7 @@ Pokud zahrnete možnost `--docker`, pro projekt se vygeneruje soubor Dockerfile.
 
 Po zobrazení výzvy zvolte modul runtime pracovního procesu z následujících jazyků:
 
-* `dotnet`: vytvoří projekt knihovny tříd .NET (.csproj).
+* `dotnet`: vytvoří projekt knihovny třídy .NET (.csproj).
 * `node`: vytvoří projekt jazyka JavaScript.
 * `python`: vytvoří projekt Python.
 
@@ -302,4 +302,4 @@ V tomto kurzu jste se naučili:
 Zjistěte, jak povolit funkci průběžné integrace, která je integrovaná v základní platformě App Service. Aplikaci funkcí můžete nakonfigurovat tak, aby se při aktualizaci image v Centru Dockeru znovu nasadil kontejner.
 
 > [!div class="nextstepaction"] 
-> [Průběžné nasazování se službou Web App for Containers](../app-service/containers/app-service-linux-ci-cd.md)
+> [Průběžné nasazování pomocí služby Web App for Containers](../app-service/containers/app-service-linux-ci-cd.md)

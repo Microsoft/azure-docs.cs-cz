@@ -10,10 +10,10 @@ ms.custom: mvc
 ms.date: 03/08/2019
 ms.author: dobett
 ms.openlocfilehash: 6338403818259c7263fe66af7d8c8840d98efbcd
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/11/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59491266"
 ---
 # <a name="quickstart-try-a-cloud-based-solution-to-manage-my-industrial-iot-devices"></a>Rychlý start: Zkuste cloudové řešení ke správě mých průmyslová zařízení IoT
@@ -64,7 +64,7 @@ Kliknutím na **Přijmout** přijměte žádost o oprávnění. Ve vašem prohl�
 
 Výchozím zobrazením je *řídicí panel*. K přecházení do jiných oblastí portálu použijte nabídku na levé straně stránky:
 
-[![Sřídicí panel kroky řešení](./media/quickstart-connected-factory-deploy/dashboard-inline.png)](./media/quickstart-connected-factory-deploy/dashboard-expanded.png#lightbox)
+[![Řídicí panel řešení](./media/quickstart-connected-factory-deploy/dashboard-inline.png)](./media/quickstart-connected-factory-deploy/dashboard-expanded.png#lightbox)
 
 Řídicí panel slouží ke správě průmyslových zařízení IoT. Připojená továrna zobrazuje globální konfiguraci továrny ve formě hierarchie. Na nejvyšší úrovni hierarchie je podnik, který obsahuje jednu nebo více továren. Každá továrna obsahuje výrobní linky a každá výrobní linka se skládá ze stanic. Na každé úrovni můžete zobrazit celkovou účinnost vybavení a klíčové ukazatele výkonu, publikovat nové uzly telemetrii a reagovat na upozornění.
 
@@ -74,13 +74,13 @@ Na řídicím panelu se zobrazují tyto položky:
 
 Panel **Celková efektivita zařízení** zobrazuje hodnoty celkové účinnosti vybavení pro celý podnik nebo továrnu / výrobní linku / stanici, kterou si právě prohlížíte. Tato hodnota se shromažďuje od zobrazení stanice až po úroveň podniku. Hodnotu celkové efektivity zařízení a elementy, ze kterých se skládá, můžete dále analyzovat.
 
-[![Oúčinnost vybavení verall](./media/quickstart-connected-factory-deploy/oee-inline.png)](./media/quickstart-connected-factory-deploy/oee-expanded.png#lightbox)
+[![Celková účinnost vybavení](./media/quickstart-connected-factory-deploy/oee-inline.png)](./media/quickstart-connected-factory-deploy/oee-expanded.png#lightbox)
 
 Celková účinnost vybavení hodnotí efektivitu výrobního procesu pomocí provozních parametrů souvisejících s výrobou. Celková efektivita zařízení je v oboru standardním měřítkem a počítá se vynásobením míry dostupnosti, míry výkonu a míry kvality: OEE = dostupnost × výkon × kvalita.
 
 Celkovou účinnost vybavení můžete hlouběji analyzovat na libovolné úrovni dat v hierarchii. Klikněte na ukazatel celkové účinnosti vybavení, dostupnosti, výkonu nebo kvality. Zobrazí se místní panel s vizualizacemi, která znázorňují data za různá časová období:
 
-[![OPodrobnosti o zařízení efektivitu verall](./media/quickstart-connected-factory-deploy/oeedetail-inline.png)](./media/quickstart-connected-factory-deploy/oeedetail-expanded.png#lightbox)
+[![Podrobné zobrazení celkové účinnosti vybavení](./media/quickstart-connected-factory-deploy/oeedetail-inline.png)](./media/quickstart-connected-factory-deploy/oeedetail-expanded.png#lightbox)
 
 Pokud chcete data dál analyzovat, klikněte na požadovaný graf.
 
@@ -88,11 +88,11 @@ Pokud chcete data dál analyzovat, klikněte na požadovaný graf.
 
 Panel **Klíčové ukazatele výkonu** udává počet jednotek vyrobených za hodinu a spotřebu energie (v kWh) pro celý podnik nebo továrnu / výrobní linku / stanici, kterou si právě prohlížíte. Tyto hodnoty se shromažďují od zobrazení stanice až po úroveň podniku.
 
-[![Kukazatele výkonu EY](./media/quickstart-connected-factory-deploy/kpis-inline.png)](./media/quickstart-connected-factory-deploy/kpis-expanded.png#lightbox)
+[![Klíčové ukazatele výkonu](./media/quickstart-connected-factory-deploy/kpis-inline.png)](./media/quickstart-connected-factory-deploy/kpis-expanded.png#lightbox)
 
 Klíčové ukazatele výkonu můžete hlouběji analyzovat na libovolné úrovni dat v hierarchii. Klikněte na ukazatel celkové účinnosti vybavení, dostupnosti, výkonu nebo kvality. Zobrazí se místní panel s vizualizacemi, která znázorňují data za různá časová období:
 
-[![KPodrobnosti o PI](./media/quickstart-connected-factory-deploy/kpidetail-inline.png)](./media/quickstart-connected-factory-deploy/kpidetail-expanded.png#lightbox)
+[![Podrobné zobrazení klíčových ukazatelů výkonu](./media/quickstart-connected-factory-deploy/kpidetail-inline.png)](./media/quickstart-connected-factory-deploy/kpidetail-expanded.png#lightbox)
 
 Pokud chcete data dál analyzovat, klikněte na požadovaný graf.
 
@@ -100,7 +100,7 @@ Pokud chcete data dál analyzovat, klikněte na požadovaný graf.
 
 Panel **Umístění továren**, na kterém se zobrazuje stav, umístění a aktuální konfigurace výroby továren v řešení. Při prvním spuštění akcelerátoru řešení se na řídicím panelu zobrazí simulovaná sada továren. Každá simulace výrobní linky se skládá ze tří skutečných serverů OPC UA, které provádějí simulované úlohy a sdílejí data. Další informace o OPC UA najdete v článku [Propojená továrna – nejčastější dotazy](iot-accelerators-faq-cf.md):
 
-[![Factory umístění](./media/quickstart-connected-factory-deploy/factorylocations-inline.png)](./media/quickstart-connected-factory-deploy/factorylocations-expanded.png#lightbox)
+[![Umístění továrny](./media/quickstart-connected-factory-deploy/factorylocations-inline.png)](./media/quickstart-connected-factory-deploy/factorylocations-expanded.png#lightbox)
 
 Můžete procházet hierarchii řešení a na každé úrovni si zobrazit hodnoty celkové účinnosti zařízení a klíčových ukazatelů výkonu:
 
@@ -112,19 +112,19 @@ Můžete procházet hierarchii řešení a na každé úrovni si zobrazit hodnot
 
 1. Klikněte na **Spotřeba energie**. Zobrazí se několik grafů znázorňujících tuto hodnotu za různá časová období. Pokud chcete data dál analyzovat, klikněte na požadovaný graf.
 
-[![VSpotřeba energie na tabulky](./media/quickstart-connected-factory-deploy/explorelocations-inline.png)](./media/quickstart-connected-factory-deploy/explorelocations-expanded.png#lightbox)
+[![Zobrazení spotřeby energie](./media/quickstart-connected-factory-deploy/explorelocations-inline.png)](./media/quickstart-connected-factory-deploy/explorelocations-expanded.png#lightbox)
 
 ### <a name="map"></a>Mapa
 
 Pokud má vaše předplatné přístup k rozhraní [API pro Mapy Bing](iot-accelerators-faq-cf.md), na mapě *Továrny* se zobrazí zeměpisné umístění a stav všech továren v řešení. Pokud chcete zobrazit podrobnosti o umístění, klikněte na umístění zobrazená na mapě.
 
-[![Map](./media/quickstart-connected-factory-deploy/map-inline.png)](./media/quickstart-connected-factory-deploy/map-expanded.png#lightbox)
+[![Mapa](./media/quickstart-connected-factory-deploy/map-inline.png)](./media/quickstart-connected-factory-deploy/map-expanded.png#lightbox)
 
 ### <a name="alarms"></a>Upozornění
 
 Na panelu **Upozornění** se zobrazí upozornění vygenerovaná v případě, že některá hlášená hodnota nebo vypočítaná hodnota celkové efektivity zařízení nebo klíčového ukazatele výkonu překročí prahovou hodnotu. Tento panel zobrazuje upozornění na všech úrovních hierarchie, od úrovně jednotlivých stanic po úroveň celého podniku. Každé upozornění obsahuje popis, datum, čas, umístění a počet výskytů:
 
-[![Alarms](./media/quickstart-connected-factory-deploy/alarms-inline.png)](./media/quickstart-connected-factory-deploy/alarms-expanded.png#lightbox)
+[![Upozornění](./media/quickstart-connected-factory-deploy/alarms-inline.png)](./media/quickstart-connected-factory-deploy/alarms-expanded.png#lightbox)
 
 Na řídicím panelu můžete analyzovat data, která upozornění způsobila. Pokud jste správce, můžete na upozornění reagovat výchozími akcemi, jako jsou tyto:
 
@@ -133,7 +133,7 @@ Na řídicím panelu můžete analyzovat data, která upozornění způsobila. P
 
 Klikněte na některé upozornění, v rozevírací nabídce **Zvolte akci** vyberte **Potvrdit upozornění** a klikněte na **Použít**:
 
-[![Aupozornění cknowledge](./media/quickstart-connected-factory-deploy/acknowledge-inline.png)](./media/quickstart-connected-factory-deploy/acknowledge-expanded.png#lightbox)
+[![Potvrzení upozornění](./media/quickstart-connected-factory-deploy/acknowledge-inline.png)](./media/quickstart-connected-factory-deploy/acknowledge-expanded.png#lightbox)
 
 Pokud chcete hlouběji analyzovat data alarmu, klikněte na graf na panelu alarmů.
 
@@ -154,4 +154,4 @@ V tomto rychlém zprovoznění jste nasadili akcelerátor řešení připojené 
 Pokud chcete zjistit, jak spravovat průmyslová zařízení IoT pomocí dalších funkcí řídicího panelu, pokračujte k následujícímu průvodci:
 
 > [!div class="nextstepaction"]
-> [Pomocí řídicího panelu připojená továrna](iot-accelerators-connected-factory-dashboard.md)
+> [Použití řídicího panelu připojené továrny](iot-accelerators-connected-factory-dashboard.md)

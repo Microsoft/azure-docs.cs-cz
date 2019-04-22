@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.custom: fasttrack-new
 services: batch
 ms.openlocfilehash: 5b7c44d3ea3394ff728adfb9d9fd72293138fb2e
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/11/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59494640"
 ---
 # <a name="use-azure-pipelines-to-build-and-deploy-hpc-solutions"></a>Kanály Azure můžete vytvářet a nasazovat řešení HPC
@@ -51,7 +51,7 @@ Základ kódu struktury použité v této ukázce se podobá takto:
 V této části se předpokládá, že máte zkušenosti s šablonami Resource Manageru verze ovládacího prvku a návrhu. Pokud nejste obeznámeni s tyto koncepty, najdete na následujících stránkách pro další informace.
 
 * [Novinky správy zdrojových kódů?](https://docs.microsoft.com/azure/devops/user-guide/source-control?view=azure-devops)
-* [Princip struktury a syntaxe šablon Azure Resource Manageru](../azure-resource-manager/resource-group-authoring-templates.md)
+* [Struktura a syntaxe šablon Azure Resource Manageru](../azure-resource-manager/resource-group-authoring-templates.md)
 
 #### <a name="azure-resource-manager-templates"></a>Šablony Azure Resource Manageru
 

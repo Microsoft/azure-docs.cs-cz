@@ -18,10 +18,10 @@ ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: a0a40c9ee06751edfb7b218cf15275019c142545
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/11/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59491317"
 ---
 # <a name="quickstart-acquire-a-token-and-call-microsoft-graph-api-from-a-console-app-using-apps-identity"></a>Rychlý start: Získání tokenu a volat Microsoft Graph API z konzoly aplikace pomocí identity aplikace
@@ -78,7 +78,7 @@ Tento rychlý start vyžaduje [.NET Core 2.2](https://www.microsoft.com/net/down
 > > [Tyto změny provést pro mě]()
 >
 > > [!div id="appconfigured" class="alert alert-info"]
-> > ![Už nakonfigurovali](media/quickstart-v2-windows-desktop/green-check.png) vaše aplikace je nakonfigurovaná s těmito atributy.
+> > ![Už nakonfigurované](media/quickstart-v2-windows-desktop/green-check.png) Vaše aplikace je nakonfigurovaná s těmito atributy.
 
 #### <a name="step-2-download-your-visual-studio-project"></a>Krok 2: Stáhněte si svůj projekt sady Visual Studio
 
@@ -100,7 +100,7 @@ Tento rychlý start vyžaduje [.NET Core 2.2](https://www.microsoft.com/net/down
     
     > [!div renderon="docs"]
     >> Kde:
-    >> * `Enter_the_Application_Id_Here` -je **ID aplikace (klient)** pro aplikace, které jste zaregistrovali.
+    >> * Hodnota `Enter_the_Application_Id_Here` je **ID aplikace (klienta)**, kterou jste zaregistrovali.
     >> * `Enter_the_Tenant_Id_Here` -Nahraďte tuto hodnotu **Id Tenanta** nebo **název Tenanta** (například contoso.microsoft.com)
     >> * `Enter_the_Client_Secret_Here` -Nahraďte tuto hodnotu s tajným klíčem klienta vytvořili v kroku 1.
 
@@ -133,7 +133,7 @@ https://login.microsoftonline.com/Enter_the_Tenant_Id_Here/adminconsent?client_i
 > [!div renderon="docs"]
 >> Kde:
 >> * `Enter_the_Tenant_Id_Here` -Nahraďte tuto hodnotu **Id Tenanta** nebo **název Tenanta** (například contoso.microsoft.com)
->> * `Enter_the_Application_Id_Here` -je **ID aplikace (klient)** pro aplikace, které jste zaregistrovali.
+>> * Hodnota `Enter_the_Application_Id_Here` je **ID aplikace (klienta)**, kterou jste zaregistrovali.
 
 > [!NOTE]
 > Může se zobrazit chyba *"AADSTS50011: Pro aplikaci není zaregistrován žádný zpáteční adresu "* po udělení souhlasu do aplikace pomocí předchozí adresou URL. To možné tuto aplikaci a adresu URL přesměrování URI - nemají prosím dokončená, chybu ignorujte.

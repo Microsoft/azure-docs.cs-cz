@@ -7,10 +7,10 @@ ms.topic: hub-page
 featureFlags:
 - clicktale
 ms.openlocfilehash: 3b35608c30262f633af073daacc8795f8eca1e7e
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/11/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59496501"
 ---
 <div id="main" class="v2">
@@ -170,13 +170,13 @@ Node.js</a>
                                                     <li>
                                                         <a class="barLink" href="/go/azure/">
                                                             <img src="https://docs.microsoft.com/media/logos/logo_Go-lightblue.svg" alt="">
-Přejít</a>
+Go</a>
                                                     </li>
                                                 </ul></td></tr></table>
                                                <h4>Modely aplikace</h4>
                                                 <ul class="noBullet">
                                                     <li><a class="barLink" href="/azure/app-service-web/">Web Apps</a></li>
-                                                    <li><a class="barLink" href="/azure/azure-functions/">Bezserverové funkce</a></li>
+                                                    <li><a class="barLink" href="/azure/azure-functions/">Funkce bez serveru</a></li>
                                                     <li><a class="barLink" href="/azure/containers/">Containers</a></li>
                                                     <li><a class="barLink" href="/azure/aks/">Mikroslužby s Kubernetes</a></li>
                                                     <li><a class="barLink" href="/azure/service-fabric/">Mikroslužby se Service Fabric</a></li>
@@ -210,7 +210,7 @@ Přejít</a>
                                                 </ul>
                                                 <h4>Umělá inteligence a Cognitive Services</h4>
                                                 <ul class="noBullet">
-                                                    <li><a class="barLink" href="/azure/machine-learning/">Machine Learning </a></li>
+                                                    <li><a class="barLink" href="/azure/machine-learning/">Machine Learning</a></li>
                                                     <li><a class="barLink" href="/azure/cognitive-services/">Cognitive Services</a></li>
                                                     <li><a class="barLink" href="/azure/notebooks/">Azure Notebooks</a></li>
                                                 </ul>
@@ -239,12 +239,12 @@ Azure PowerShell </a>
                                                     <li>
                                                         <a class="barLink" href="/azure/azure-portal/">
                                                             <img src="https://docs.microsoft.com/media/logos/logo_azure.svg" alt="">
-portál Azure </a>
+Azure Portal </a>
                                                     </li>
                                                     <li>
                                                         <a class="barLink" href="https://azure.microsoft.com/features/azure-portal/mobile-app/">
                                                             <img src="https://docs.microsoft.com/media/common/i_mobile-app-developement.svg" alt="">
-Mobilní aplikace Azure </a>
+Mobilní aplikace Azure</a>
                                                     </li>
                                                 </ul>
                                             </div>
@@ -2079,7 +2079,7 @@ Automatizace úloh Azure pomocí skriptů s využitím PowerShellu </a>
                         </ul>
                     </li>
                     <li>
-                        <a href="#network">Sítě</a>
+                        <a href="#network">Síťové služby</a>
                         <ul id="network" class="cardsA">
                             <li>
                                 <a href="/azure/networking/networking-overview">
@@ -2350,7 +2350,7 @@ Automatizace úloh Azure pomocí skriptů s využitím PowerShellu </a>
                         </ul>
                     </li>
                     <li>
-                        <a href="#storage">Úložiště</a>
+                        <a href="#storage">Storage</a>
                         <ul id="storage" class="cardsA">
                             <li>
                                 <a href="/azure/storage/">
@@ -2363,7 +2363,7 @@ Automatizace úloh Azure pomocí skriptů s využitím PowerShellu </a>
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>Úložiště</h3>
+                                                    <h3>Storage</h3>
                                                     <p>Trvalé a široce škálovatelné cloudové úložiště s vysokou dostupností</p>
                                                 </div>
                                             </div>
@@ -2759,7 +2759,7 @@ Automatizace úloh Azure pomocí skriptů s využitím PowerShellu </a>
                         </ul>
                     </li>
                     <li>
-                        <a href="#mobile">Mobilní</a>
+                        <a href="#mobile">Mobilní prostředí</a>
                         <ul id="mobile" class="cardsA">
                             <li>
                                 <a href="/azure/app-service-mobile">
@@ -5951,7 +5951,7 @@ Automatizace úloh Azure pomocí skriptů s využitím PowerShellu </a>
                 <a href="#sdkstools">Sady SDK nebo nástroje</a>
                 <ul id="sdkstools">
                     <li>
-                        <a href="#sdkstools-all">all</a>
+                        <a href="#sdkstools-all">vše</a>
                         <ul id="sdkstools-all" class="cardsF">
                             <li>
                                 <div class="container">
@@ -5974,7 +5974,7 @@ Azure pro vývojáře na platformě .NET </h3>
                                                     <a href="/dotnet/azure">Začínáme</a>
                                                 </p>
                                                 <p>
-                                                    <a href="/dotnet/api/overview/azure/?view=azure-dotnet">API – referenční informace</a>
+                                                    <a href="/dotnet/api/overview/azure/?view=azure-dotnet">Referenční materiály k rozhraní API</a>
                                                 </p>
                                             </div>
                                         </div>
@@ -5997,7 +5997,7 @@ Azure pro vývojáře v Pythonu </h3>
                                                     <a href="/python/azure">Začínáme</a>
                                                 </p>
                                                 <p>
-                                                    <a href="/python/api/overview/azure/">API – referenční informace</a>
+                                                    <a href="/python/api/overview/azure/">Referenční materiály k rozhraní API</a>
                                                 </p>
                                             </div>
                                         </div>
@@ -6020,7 +6020,7 @@ Azure pro vývojáře v Node.js </h3>
                                                     <a href="/javascript/azure/">Začínáme</a>
                                                 </p>
                                                 <p>
-                                                    <a href="/javascript/api/overview/azure/">API – referenční informace</a>
+                                                    <a href="/javascript/api/overview/azure/">Referenční materiály k rozhraní API</a>
                                                 </p>
                                             </div>
                                         </div>
@@ -6043,7 +6043,7 @@ Azure pro vývojáře v Javě </h3>
                                                     <a href="/java/azure">Začínáme</a>
                                                 </p>
                                                 <p>
-                                                    <a href="/java/api">API – referenční informace</a>
+                                                    <a href="/java/api">Referenční materiály k rozhraní API</a>
                                                 </p>
                                             </div>
                                         </div>
@@ -6114,7 +6114,7 @@ Azure CLI </h3>
                                                     <a href="/cli/azure">Začínáme</a>
                                                 </p>
                                                 <p>
-                                                    <a href="/cli/azure/reference-index">Referenční informace</a>
+                                                    <a href="/cli/azure/reference-index">Referenční materiály</a>
                                                 </p>
                                             </div>
                                         </div>
@@ -6136,7 +6136,7 @@ Azure CLI </h3>
                                                     <a href="/powershell/azure/get-started-azureps">Začínáme</a>
                                                 </p>
                                                 <p>
-                                                    <a href="/powershell/azure/overview">Referenční informace</a>
+                                                    <a href="/powershell/azure/overview">Referenční materiály</a>
                                                 </p>
                                             </div>
                                         </div>
@@ -6230,10 +6230,10 @@ Azure CLI </h3>
                                                     <a href="https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurefunctions">Azure Functions</a>
                                                 </p>
                                                 <p>
-                                                    <a href="https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurestorage">Úložiště</a>
+                                                    <a href="https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurestorage">Storage</a>
                                                 </p>
                                                 <p>
-                                                    <a href="https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-cosmosdb">Databáze Cosmos</a>
+                                                    <a href="https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-cosmosdb">Cosmos DB</a>
                                                 </p>
                                             </div>
                                         </div>
@@ -6341,7 +6341,7 @@ Azure Resource Manager </h3>
                                                     <a href="https://azure.microsoft.com/resources/templates/">Ukázkové šablony</a>
                                                 </p>
                                                 <p>
-                                                    <a href="https://docs.microsoft.com/azure/templates/">Referenční informace</a>
+                                                    <a href="https://docs.microsoft.com/azure/templates/">Referenční materiály</a>
                                                 </p>
                                             </div>
                                         </div>

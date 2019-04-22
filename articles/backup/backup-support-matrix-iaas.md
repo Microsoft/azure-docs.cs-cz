@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 02/24/2019
 ms.author: raynew
 ms.openlocfilehash: aacfe725310b3c8e4785e24b80728f0e60694814
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/11/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59496091"
 ---
 # <a name="support-matrix-for-azure-vm-backup"></a>Matice podpory pro zálohování virtuálních počítačů Azure
@@ -109,7 +109,7 @@ Obnovení souborů | Obnovení souborů z zvolený bod obnovení. Stažení skri
 
 ## <a name="support-for-file-level-restore"></a>Podpora pro obnovení na úrovni souboru
 
-**Obnovení** | **Podporováno**
+**Obnovení** | **Podporuje se**
 --- | ---
 Obnovení souborů v operačních systémech | Můžete obnovit soubory na jakýkoli počítač, který má stejné (nebo kompatibilní) operačního systému jako zálohování virtuálního počítače. Zobrazit [tabulky kompatibilní operační systém](backup-azure-restore-files-from-vm.md#system-requirements).
 Obnovení souborů na klasické virtuální počítače | Nepodporuje se.
@@ -123,7 +123,7 @@ Obnovení souborů s nastavením speciální sítě | Obnovení není podporová
 
 Následující tabulka shrnuje podporu pro zálohování během úlohy správy virtuálních počítačů, jako je například přidání nebo výměna disky virtuálních počítačů.
 
-**Obnovení** | **Podporováno**
+**Obnovení** | **Podporuje se**
 --- | ---
 Obnovení mezi předplatné/oblasti a zóny. | Nepodporuje se.
 Obnovit do existujícího virtuálního počítače | Použijte možnost nahradit disku.
@@ -141,7 +141,7 @@ Obnovit virtuální počítač v jiné virtuální sítě |   Podporuje se.<br/>
 
 **Compute** | **Podpora**
 --- | ---
-Velikost virtuálního počítače |   Libovolné velikosti virtuálního počítače Azure s nejméně 2 jádra procesoru a 1 GB paměti RAM.<br/><br/> [Získejte další informace.](https://docs.microsoft.com/azure/virtual-machines/windows/sizes)
+Velikost virtuálního počítače |   Libovolné velikosti virtuálního počítače Azure s nejméně 2 jádra procesoru a 1 GB paměti RAM.<br/><br/> [Další informace](https://docs.microsoft.com/azure/virtual-machines/windows/sizes)
 Zálohování virtuálních počítačů v [skupiny dostupnosti](https://docs.microsoft.com/azure/virtual-machines/windows/regions-and-availability#availability-sets) | Podporuje se.<br/><br/> Virtuální počítač do dostupné nastavení nelze obnovit pomocí možnosti rychlé vytvoření virtuálního počítače. Místo toho při obnovování virtuálního počítače obnovení disku a jeho použití k nasazení virtuálního počítače, nebo obnovení disku a použít k nahrazení existujícího disku.
 Zálohování virtuálních počítačů v [zóny dostupnosti](https://docs.microsoft.com/azure/availability-zones/az-overview) |  Nepodporuje se.
 Zálohování virtuálních počítačů, které jsou nasazeny pomocí [výhody použití hybridních (HUB)](https://docs.microsoft.com/azure/virtual-machines/windows/hybrid-use-benefit-licensing) | Podporuje se.
@@ -159,7 +159,7 @@ Zálohování konzistence více virtuálních počítačů | Azure Backup neposk
 Azure datových disků virtuálního počítače | Zálohování virtuálního počítače s 16 nebo méně datových disků. <br/><br/> Podporuje disk o velikosti až 4 TB.
 Velikost datového disku | Jednotlivé disk může být až 4 095 GB.<br/><br/> Pokud vaše trezory běží nejnovější verze služby Azure Backup (označuje se jako rychlé obnovení), disk o velikosti až 4 TB jsou podporovány. [Další informace](backup-instant-restore-capability.md).  
 Typ úložiště | Standardní HDD, SSD na úrovni standard, premium SSD. <br/><br/> SSD na úrovni standard se podporuje, pokud vaše trezory služby jsou upgradovány na nejnovější verzi nástroje zálohování virtuálních počítačů Azure (označují se termínem rychlé obnovení). [Další informace](backup-instant-restore-capability.md).
-Managed Disks | Podporuje se.
+Spravované disky | Podporuje se.
 Šifrovanými disky | Podporuje se.<br/><br/> Virtuální počítače Azure povolené s Azure Disk Encryption je možné zálohovat (s nebo bez aplikace Azure AD).<br/><br/> Šifrované virtuální počítače nelze obnovit na úrovni souboru nebo složky. Je nutné obnovit celý virtuální počítač.<br/><br/> Můžete povolit šifrování na virtuálních počítačích, které jsou již chráněny službou Azure Backup.
 Disky s akcelerátor zápisu | Nepodporuje se.<br/><br/> Pokud používáte nejnovější verzi zálohování virtuálních počítačů Azure (označované jako [rychlé obnovení](backup-instant-restore-capability.md)), můžete vyloučit disky s akcelerátor zápisu ze zálohy.
 Zálohování disků s odstraněním duplicit | Nepodporuje se.

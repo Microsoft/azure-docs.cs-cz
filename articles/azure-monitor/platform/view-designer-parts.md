@@ -14,10 +14,10 @@ ms.topic: conceptual
 ms.date: 03/12/2018
 ms.author: bwren
 ms.openlocfilehash: dead1fae9bc3287ed0fc80c6120914e965ef96dd
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/11/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59493021"
 ---
 # <a name="reference-guide-to-view-designer-visualization-parts-in-azure-monitor"></a>Referenční příručka k části vizualizace návrháře zobrazení ve službě Azure Monitor
@@ -38,7 +38,7 @@ Dostupné typy dlaždici Návrhář zobrazení jsou popsány v následující ta
 | [Dvě čísla a seznam](#two-numbers-and-list-part) |Záhlaví zobrazí dvě čísla, které zobrazují počty záznamů z protokolu na samostatné dotazy. V seznamu zobrazí nejlepších deset výsledků z dotazu, s grafem, který určuje relativní hodnotu číselný sloupec nebo jeho změn v průběhu času. |
 | [Prstenec a seznam](#donut-and-list-part) |Záhlaví zobrazí jedno číslo, které shrnuje hodnotu sloupce v dotazu protokolu. Prstencový graficky zobrazuje výsledky z prvních tří záznamů. |
 | [Dvě časové osy a seznam](#two-timelines-and-list-part) |Záhlaví zobrazí výsledků dvou dotazů na protokoly časem jako sloupcové grafy s popiskem, která zobrazuje jedno číslo, které shrnuje hodnotu sloupce v dotazu protokolu. V seznamu zobrazí nejlepších deset výsledků z dotazu, s grafem, který určuje relativní hodnotu číselný sloupec nebo jeho změn v průběhu času. |
-| [Informace](#information-part) |Záhlaví obsahuje statický text a nepovinný odkaz. V seznamu zobrazí jednu nebo více položek s statické nadpis a text. |
+| [Informace o](#information-part) |Záhlaví obsahuje statický text a nepovinný odkaz. V seznamu zobrazí jednu nebo více položek s statické nadpis a text. |
 | [Spojnicový graf, popisek a seznam](#line-chart-callout-and-list-part) |Záhlaví zobrazuje spojnicový graf s více řadami z dotazu protokolu průběhu času a popisek s hodnoty souhrnu. V seznamu zobrazí nejlepších deset výsledků z dotazu, s grafem, který určuje relativní hodnotu číselný sloupec nebo jeho změn v průběhu času. |
 | [Spojnicový graf a seznam](#line-chart-and-list-part) |Záhlaví se zobrazuje spojnicový graf s několika řadami z dotazu protokolu v čase. V seznamu zobrazí nejlepších deset výsledků z dotazu, s grafem, který určuje relativní hodnotu číselný sloupec nebo jeho změn v průběhu času. |
 | [Zásobník část řádku grafy](#stack-of-line-charts-part) |Zobrazí tři samostatné spojnicových grafů s více řadami z dotazu protokolu v čase. |
@@ -136,13 +136,13 @@ Záhlaví zobrazí jedno číslo, které shrnuje hodnotu sloupce v dotazu protok
 | Nová skupina |Vyberte tento odkaz můžete vytvořit novou skupinu v zobrazení, od aktuálního zobrazení. |
 | Ikona |Soubor obrázku, který se zobrazí vedle výsledek v záhlaví. |
 | Použít ikonu |Vyberte tento odkaz k zobrazení ikony. |
-| **Hlavička** | |
+| **Header** | |
 | Název |Text, který se zobrazí v horní části záhlaví. |
 | Podtitul |Text, který se zobrazí pod nadpisem v horní části záhlaví. |
 | **Prstencový** | |
 | Dotaz |Dotaz pro spuštění prstencový. Textová hodnota, která je první vlastnost a druhá vlastnost je číselná hodnota. |
 | Navigace pomocí kliknutí | Akce provedená v případě, že kliknete na záhlaví.  Další informace najdete v tématu [obecná nastavení](#click-through-navigation). |
-| **Prstencový** |**> System center** |
+| **Prstencový** |**> Center** |
 | Text |Text, který se zobrazí v části v prstencovém hodnotu. |
 | Operace |Operace, který se má provést na hodnotu vlastnosti slouží ke shrnutí jako jedinou hodnotu.<ul><li>Součet: Přidá hodnoty všechny záznamy.</li><li>Procento: Podíl záznamů vrácených hodnot v **způsobit hodnot použitých v operaci center** celkový počet záznamů v dotazu.</li></ul> |
 | Hodnoty výsledku, které se zobrazí ve středu |Volitelně vyberte znaménko plus (+) přidejte jednu nebo více hodnot. Výsledky dotazu jsou omezené na záznamy s hodnotami vlastností, které zadáte. Pokud jsou přidány žádné hodnoty, jsou zahrnuty všechny záznamy v dotazu. |
@@ -179,7 +179,7 @@ Záhlaví zobrazí výsledků dvou dotazů na protokoly časem jako sloupcové g
 | Použít ikonu |Vyberte tento odkaz k zobrazení ikony. |
 | **Název navigační** | |
 | Navigace pomocí kliknutí | Akce provedená v případě, že kliknete na záhlaví.  Další informace najdete v tématu [obecná nastavení](#click-through-navigation). |
-| **První graf<br>Druhý graf** | |
+| **První graf<br>druhý graf** | |
 | Legenda |Text, který se zobrazí pod popisek pro první řady. |
 | Barva |Barvy pro použití pro sloupce v řadě. |
 | Dotaz |Dotaz, který se má spustit pro první řady. Počet záznamů v každém časovém intervalu je reprezentován sloupců v grafu. |
@@ -208,10 +208,10 @@ Záhlaví obsahuje statický text a nepovinný odkaz. V seznamu zobrazí jednu n
 | Název skupiny |Text, který se zobrazí v horní části dlaždice. |
 | Nová skupina |Vyberte tento odkaz můžete vytvořit novou skupinu v zobrazení, od aktuálního zobrazení. |
 | Barva |Barva pozadí záhlaví. |
-| **Hlavička** | |
+| **Header** | |
 | Image |Soubor obrázku, který se zobrazí v záhlaví. |
 | Štítek |Text, který je zobrazený v záhlaví. |
-| **Hlavička** |**> Odkaz** |
+| **Header** |**> Odkaz** |
 | Štítek |Text odkazu. |
 | URL |Adresa Url odkazu. |
 | **Informační položky** | |
@@ -230,13 +230,13 @@ Záhlaví zobrazuje spojnicový graf s několika řadami z dotazu protokolu za �
 | Nová skupina |Vyberte tento odkaz můžete vytvořit novou skupinu v zobrazení, od aktuálního zobrazení. |
 | Ikona |Soubor obrázku, který se zobrazí vedle výsledek v záhlaví. |
 | Použít ikonu |Vyberte tento odkaz k zobrazení ikony. |
-| **Hlavička** | |
+| **Header** | |
 | Název |Text, který se zobrazí v horní části záhlaví. |
 | Podtitul |Text, který se zobrazí pod nadpisem v horní části záhlaví. |
 | **Spojnicový graf** | |
 | Dotaz |Dotaz, který se má spustit pro spojnicový graf. Textová hodnota, která je první vlastnost a druhá vlastnost je číselná hodnota. Tento dotaz se obvykle používá *míru* – klíčové slovo slouží ke shrnutí výsledků. Pokud dotaz používá *interval* – klíčové slovo, osy x grafu používá tento časový interval. Pokud dotaz neobsahuje *interval* – klíčové slovo, hodinových intervalech používá osy x. |
 | Navigace pomocí kliknutí | Akce provedená v případě, že kliknete na záhlaví.  Další informace najdete v tématu [obecná nastavení](#click-through-navigation). |
-| **Spojnicový graf** |**> Popis obrázku** |
+| **Spojnicový graf** |**> Callout** |
 | Název popisku |Text, který se zobrazí nad hodnotou popisku. |
 | Název řady |Hodnota vlastnosti řady, použít pro hodnotu popisku. Pokud je k dispozici žádné řady, použijí se všechny záznamy z dotazu. |
 | Operace |Operace, který se má provést na hodnotu vlastnosti slouží ke shrnutí jako jednu hodnotu pro popisek.<ul><li>Průměr: Průměr hodnot ze všech záznamů.</li><li>Počet: Počet všech záznamů, které jsou vrácené dotazem.</li><li>Poslední vzorek: Hodnota od posledního intervalu, který je součástí grafu.</li><li>Max: Maximální hodnota z intervaly, které jsou zahrnuty v grafu.</li><li>Min: Minimální hodnota z intervaly, které jsou zahrnuty v grafu.</li><li>Součet: Součet hodnot ze všech záznamů.</li></ul> |
@@ -270,7 +270,7 @@ Záhlaví zobrazuje spojnicový graf s několika řadami z dotazu protokolu v č
 | Nová skupina |Vyberte tento odkaz můžete vytvořit novou skupinu v zobrazení, od aktuálního zobrazení. |
 | Ikona |Soubor obrázku, který se zobrazí vedle výsledek v záhlaví. |
 | Použít ikonu |Vyberte tento odkaz k zobrazení ikony. |
-| **Hlavička** | |
+| **Header** | |
 | Název |Text, který se zobrazí v horní části záhlaví. |
 | Podtitul |Text, který se zobrazí pod nadpisem v horní části záhlaví. |
 | **Spojnicový graf** | |
@@ -305,10 +305,10 @@ Zásobník spojnicový graf zobrazuje tři samostatné spojnicových grafů s v�
 | Název skupiny |Text, který se zobrazí v horní části dlaždice. |
 | Nová skupina |Vyberte tento odkaz můžete vytvořit novou skupinu v zobrazení, od aktuálního zobrazení. |
 | Ikona |Soubor obrázku, který se zobrazí vedle výsledek v záhlaví. |
-| **Graf 1<br>Graf 2<br>Graf 3** |**> Záhlaví** |
+| **Graf 1<br>graf 2<br>graf 3** |**> Záhlaví** |
 | Název |Text, který se zobrazí v horní části grafu. |
 | Podtitul |Text, který se zobrazí pod nadpisem v horní části grafu. |
-| **Graf 1<br>Graf 2<br>Graf 3** |**Spojnicový graf** |
+| **Graf 1<br>graf 2<br>graf 3** |**Spojnicový graf** |
 | Dotaz |Dotaz, který se má spustit pro spojnicový graf. Textová hodnota, která je první vlastnost a druhá vlastnost je číselná hodnota. Tento dotaz se obvykle používá *míru* – klíčové slovo slouží ke shrnutí výsledků. Pokud dotaz používá *interval* – klíčové slovo, osy x grafu používá tento časový interval. Pokud dotaz neobsahuje *interval* – klíčové slovo, hodinových intervalech používá osy x. |
 | Navigace pomocí kliknutí | Akce provedená v případě, že kliknete na záhlaví.  Další informace najdete v tématu [obecná nastavení](#click-through-navigation). |
 | **Graf** |**> Osa y** |

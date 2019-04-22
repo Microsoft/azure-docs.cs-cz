@@ -9,10 +9,10 @@ ms.service: iot-industrialiot
 services: iot-industrialiot
 manager: philmea
 ms.openlocfilehash: bda40470e3ccf3a5d7b23dca38b21090e864b16a
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/11/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59491744"
 ---
 # <a name="what-is-industrial-iot-iiot"></a>Co je průmyslového IoT (IIoT)
@@ -50,4 +50,4 @@ Implementace sady OPC UA globální zjišťování serveru (GDS), která můžet
 Teď, když jsme měli Úvod do průmyslového IoT a jeho komponenty, tady je navrhované další krok:
 
 > [!div class="nextstepaction"]
-> [Co je OPC Twin](overview-opc-twin.md)
+> [Co je OPC Dvojčat](overview-opc-twin.md)

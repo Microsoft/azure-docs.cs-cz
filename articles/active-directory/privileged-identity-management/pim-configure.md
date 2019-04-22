@@ -15,10 +15,10 @@ ms.author: rolyon
 ms.custom: pim
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: be8b9fe027a023cec6c816fa641beb41e5849741
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/11/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59496074"
 ---
 # <a name="what-is-azure-ad-privileged-identity-management"></a>Co je Azure AD Privileged Identity Management?
@@ -87,7 +87,7 @@ Pro role prostředků Azure, pouze správce předplatného, vlastník prostředk
 
 PIM podporuje následující scénáře:
 
-**Jako privilegované Role správce můžete:**
+**Jako správce privilegovaných rolí můžete:**
 
 - Povolit schvalování pro konkrétní role
 - Určit schvalovatele (uživatele nebo skupiny) pro schvalování žádostí
@@ -108,5 +108,5 @@ PIM podporuje následující scénáře:
 ## <a name="next-steps"></a>Další postup
 
 - [Licenční požadavky pro použití PIM](subscription-requirements.md)
-- [Zabezpečení privilegovaného přístupu pro hybridní a cloudové nasazení ve službě Azure AD](../users-groups-roles/directory-admin-roles-secure.md?toc=%2fazure%2factive-directory%2fprivileged-identity-management%2ftoc.json)
+- [Zabezpečení privilegovaného přístupu pro hybridní a cloudová nasazení v Azure AD](../users-groups-roles/directory-admin-roles-secure.md?toc=%2fazure%2factive-directory%2fprivileged-identity-management%2ftoc.json)
 - [Nasazení PIM](pim-deployment-plan.md)

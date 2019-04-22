@@ -13,10 +13,10 @@ ms.date: 10/05/2018
 ms.reviewer: mbullwin
 ms.author: tilee
 ms.openlocfilehash: 101c985178b8269b4ff542b94b057330d0c2652a
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/11/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59496057"
 ---
 # <a name="application-insights-for-azure-functions-supported-features"></a>Funkce podporované Application Insights pro službu Azure Functions
@@ -27,7 +27,7 @@ Azure Functions nabízí [vestavěná integrace](https://docs.microsoft.com/azur
 
 | Azure Functions                       | V1                | V2 (Ignite 2018)  | 
 |-----------------------------------    |---------------    |------------------ |
-| **Application Insights SDK pro .NET**   | **2.5.0**       | **2.9.1**         |
+| **Application Insights .NET SDK**   | **2.5.0**       | **2.9.1**         |
 | | | | 
 | **Automatické shromažďování**        |                 |                   |               
 | &bull; Požadavky                     | Ano             | Ano               | 

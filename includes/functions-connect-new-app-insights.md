@@ -9,15 +9,15 @@ ms.date: 04/06/2019
 ms.author: glenga
 ms.custom: include file
 ms.openlocfilehash: b6cafcfe6c892cd43f056458fe3586da834c2fd1
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/11/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59497340"
 ---
-Funkce výrazně zjednodušuje integraci Application Insights přidat do aplikace function app z [webu Azure portal].
+Funkce výrazně zjednodušuje integraci Application Insights přidat do aplikace function app z [Azure Portal].
 
-1. V [portál][webu Azure Portal]vyberte **všechny služby > aplikace Function App**, vyberte vaši aplikaci function app a klikněte na tlačítko **Application Insights** úvodní nápis v horní části okna
+1. V [portál][azure portal]vyberte **všechny služby > aplikace Function App**, vyberte vaši aplikaci function app a klikněte na tlačítko **Application Insights** úvodní nápis v horní části okna
 
     ![Povolit Application Insights z portálu](media/functions-connect-new-app-insights/enable-application-insights.png)
 
