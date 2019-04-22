@@ -16,11 +16,11 @@ ms.workload: tbd
 ms.date: 06/15/2018
 ms.author: v-six
 ms.openlocfilehash: 7862e4d5c4dd603dacf5784df6c4194392ebc351
-ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/04/2019
-ms.locfileid: "58918191"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59783681"
 ---
 # <a name="default-temp-folder-size-is-too-small-on-a-cloud-service-webworker-role"></a>Výchozí velikost složky TEMP je příliš malá v roli cloudové služby web/worker
 Výchozí dočasný adresář role pracovního procesu nebo webové služby cloud má maximální velikost 100 MB, což může dojít v určitém okamžiku. Tento článek popisuje, jak se vyhnout nedostatku místa pro dočasný adresář.

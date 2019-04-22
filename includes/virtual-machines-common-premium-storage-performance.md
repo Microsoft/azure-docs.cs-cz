@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 09/24/2018
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 12bcf665fafca3df7fc2d21c77c2f8d2fbec84fc
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.openlocfilehash: c81b0926b88ad2f1dbb3af7c1a2c51e8a79430f9
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58542371"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59736992"
 ---
 # <a name="azure-premium-storage-design-for-high-performance"></a>Azure premium storage: návrh pro vysoký výkon
 
@@ -67,7 +67,7 @@ Latence je dlouho trvá, aplikace pro příjem jednoho požadavku, odeslání na
 
 Pokud chcete optimalizovat vaše aplikace, abyste získali lepší vstupně-výstupních operací a vyšší propustnost, bude mít vliv na latenci vaší aplikace. Po ladění výkonu aplikace, vždy vyhodnoceny latence aplikace, aby se zabránilo neočekávaným vysokou latencí chování.
 
-Přesun na jiný Disk z jednoho umístění úložiště může zahrnovat následující operace roviny řízení na Managed Disks. To je orchestrované přes pozadí kopii dat, která může trvat několik hodin, obvykle méně než 24 hodin v závislosti na množství dat na discích. Během této doby může aplikace docházet vyšší než obvykle latence čtení a některé čtení můžete získat přesměrováno do původního umístění, může trvat déle. Během tohoto období není žádný vliv na latence zápisu.
+Přesun na jiný Disk z jednoho umístění úložiště může zahrnovat následující operace roviny řízení na Managed Disks. To je orchestrované přes pozadí kopii dat, která může trvat několik hodin, obvykle méně než 24 hodin v závislosti na množství dat na discích. Během této doby vaše aplikace může docházet vyšší než obvykle latence čtení některých čtení můžete získat přesměrováno do původního umístění a může trvat déle. Během tohoto období není žádný vliv na latence zápisu.
 
 - Aktualizujte typ úložiště.
 - Odpojit a připojit disk z jednoho virtuálního počítače do jiného.
@@ -261,7 +261,8 @@ Mějte na paměti, disků Premium Storage mají vyšší výkon funkce ve srovn�
 Vysoké škálování virtuálních počítačů, které využívají Azure Premium Storage mají vícevrstvé technologií ukládání do mezipaměti volá BlobCache. BlobCache používá kombinaci RAM virtuálního počítače a místní disk SSD pro ukládání do mezipaměti. Tato mezipaměť je dostupná pro trvalé disky úrovně Premium Storage a místní disky virtuálních počítačů. Ve výchozím nastavení toto nastavení mezipaměti je nastavena pro čtení a zápis pro disky s operačním systémem a jen pro čtení pro datové disky hostované na Premium Storage. Pomocí disku na disky Storage úrovně Premium povolené ukládání do mezipaměti, virtuální počítače s vysokou škálovatelností může dosáhnout velmi vysokou úroveň výkonu, které přesahují základní výkon disku.
 
 > [!WARNING]
-> Ukládání do mezipaměti disku je podporována pouze pro disky o velikosti až 4 TB.
+> Ukládání do mezipaměti disku nepodporuje disky větší než 4 TB. Pokud více disků jsou připojeny k virtuálnímu počítači, každého disku, který je 4 TB nebo menší bude podporovat ukládání do mezipaměti.
+>
 > Změna nastavení mezipaměti disku Azure odpojí a znovu připojí cílový disk. Pokud je disk s operačním systémem, je virtuální počítač restartoval. Zastavte všechny aplikace nebo služby, které by mohly mít dopad této přerušení před změnou nastavení mezipaměti disku.
 
 Další informace o tom, jak BlobCache funguje, najdete v tématu uvnitř [Azure Premium Storage](https://azure.microsoft.com/blog/azure-premium-storage-now-generally-available-2/) blogový příspěvek.

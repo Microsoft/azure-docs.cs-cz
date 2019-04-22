@@ -10,11 +10,11 @@ ms.date: 03/20/2019
 ms.author: danlep
 ms.custom: mvc
 ms.openlocfilehash: f4bbea8acd447a731cf5c56f9876baf9183735ea
-ms.sourcegitcommit: 045406e0aa1beb7537c12c0ea1fbf736062708e8
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/04/2019
-ms.locfileid: "59005529"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59784989"
 ---
 # <a name="container-groups-in-azure-container-instances"></a>Skupin kontejnerů ve službě Azure Container Instances
 
@@ -73,7 +73,7 @@ Skupin kontejnerů sdílet IP adresy a portu oboru názvů na tuto IP adresu. Po
 
 Volitelně můžete nasadit skupiny kontejnerů do [virtuální síť Azure] [ virtual-network] (preview) umožňuje kontejnery pro bezpečnou komunikaci s ostatními prostředky ve virtuální síti.
 
-## <a name="storage"></a>Storage
+## <a name="storage"></a>Úložiště
 
 Můžete zadat externího svazků připojit v rámci skupiny kontejnerů. Můžete namapovat tyto svazky do konkrétních cest v rámci jednotlivých kontejnerů ve skupině.
 

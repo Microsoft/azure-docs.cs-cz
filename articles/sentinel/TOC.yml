@@ -1,96 +1,89 @@
-items:
 - name: Dokumentace k Azure Sentinelu verze Preview
   href: index.yml
 - name: Přehled
   href: overview.md
 - name: Šablony Rychlý start
-  items:
-  - name: Onboarding Azure Sentinelu
-    href: quickstart-onboard.md
-  - name: Získání přehledu o upozorněních
-    href: quickstart-get-visibility.md
   expanded: true
+  items:
+    - name: Onboarding Azure Sentinelu
+      href: quickstart-onboard.md
+    - name: Získání přehledu o upozorněních
+      href: quickstart-get-visibility.md
 - name: Kurzy
   items:
-  - name: Rozpoznávání podezřelých hrozeb
-    href: tutorial-detect-threats.md
-  - name: Prozkoumávání případů
-    href: tutorial-investigate-cases.md
-  - name: Reakce na hrozby
-    href: tutorial-respond-threats-playbook.md
+    - name: Rozpoznávání podezřelých hrozeb
+      href: tutorial-detect-threats.md
+    - name: Prozkoumávání případů
+      href: tutorial-investigate-cases.md
+    - name: Reakce na hrozby
+      href: tutorial-respond-threats-playbook.md
 - name: Návody
   items:
-  - name: Připojení zdrojů dat
-    href: connect-data-sources.md
-    items:
-    - name: Připojení služeb Microsoft
+    - name: Připojení zdrojů dat
+      href: connect-data-sources.md
       items:
-      - name: Připojení Azure AD
-        href: connect-azure-active-directory.md
-      - name: Připojení Office 365
-        href: connect-office-365.md
-      - name: Připojení Cloud App Security
-        href: connect-cloud-app-security.md
-      - name: Připojení protokolu aktivit Azure
-        href: connect-azure-activity.md
-      - name: Připojení Azure AD Identity Protection
-        href: connect-azure-ad-identity-protection.md
-      - name: Připojení služby Azure Information Protection
-        href: connect-azure-information-protection.md
-      - name: Připojení Azure ATP
-        href: connect-azure-atp.md
-      - name: Připojení služby Azure Security Center
-        href: connect-azure-security-center.md
-      - name: Připojení brány firewall webových aplikací Microsoftu
-        href: connect-microsoft-waf.md
-      - name: Připojení brány Windows Firewall
-        href: connect-windows-firewall.md
-      - name: Připojení událostí zabezpečení systému Windows
-        href: connect-windows-security-events.md
-    - name: Připojení externích řešení
+        - name: Připojení služeb Microsoft
+          items:
+            - name: Připojení Azure AD
+              href: connect-azure-active-directory.md
+            - name: Připojení Office 365
+              href: connect-office-365.md
+            - name: Připojení Cloud App Security
+              href: connect-cloud-app-security.md
+            - name: Připojení protokolu aktivit Azure
+              href: connect-azure-activity.md
+            - name: Připojení Azure AD Identity Protection
+              href: connect-azure-ad-identity-protection.md
+            - name: Připojení služby Azure Information Protection
+              href: connect-azure-information-protection.md
+            - name: Připojení Azure ATP
+              href: connect-azure-atp.md
+            - name: Připojení služby Azure Security Center
+              href: connect-azure-security-center.md
+            - name: Připojení brány firewall webových aplikací Microsoftu
+              href: connect-microsoft-waf.md
+            - name: Připojení brány Windows Firewall
+              href: connect-windows-firewall.md
+            - name: Připojení událostí zabezpečení systému Windows
+              href: connect-windows-security-events.md
+        - name: Připojení externích řešení
+          items:
+            - name: Připojení obecného formátu CEF
+              href: connect-common-event-format.md
+            - name: Připojení Barracudy
+              href: connect-barracuda.md
+            - name: Připojení Check Pointu
+              href: connect-checkpoint.md
+            - name: Připojení Palo Alto Networks
+              href: connect-paloalto.md
+            - name: Připojení Fortinetu
+              href: connect-fortinet.md
+            - name: Připojení F5
+              href: connect-f5.md
+            - name: Připojení Syslogu
+              href: connect-syslog.md
+            - name: Propojení Symantec ICDX
+              href: connect-symantec.md
+            - name: Připojení Cisca
+              href: connect-cisco.md
+        - name: Připojení analýzy hrozeb
+          href: connect-threat-intelligence.md
+    - name: Vyhledávání
+      href: hunting.md
       items:
-      - name: Připojení obecného formátu CEF
-        href: connect-common-event-format.md
-      - name: Připojení Barracudy
-        href: connect-barracuda.md
-      - name: Připojení Check Pointu
-        href: connect-checkpoint.md
-      - name: Připojení Palo Alto Networks
-        href: connect-paloalto.md
-      - name: Připojení Fortinetu
-        href: connect-fortinet.md
-      - name: Připojení F5
-        href: connect-f5.md
-      - name: Připojení Syslogu
-        href: connect-syslog.md
-      - name: Propojení Symantec ICDX
-        href: connect-symantec.md
-      - name: Připojení Cisca
-        href: connect-cisco.md
-    - name: Připojení analýzy hrozeb
-      href: connect-threat-intelligence.md
-  - name: Vyhledávání
-    href: hunting.md
-    items:
-    - name: Využití poznámkových bloků k vyhledávání
-      href: notebooks.md
-    - name: Využití záložek k vyhledávání
-      href: bookmarks.md
-  - name: Povolení fúze
-    href: connect-fusion.md
+        - name: Využití poznámkových bloků k vyhledávání
+          href: notebooks.md
+        - name: Využití záložek k vyhledávání
+          href: bookmarks.md
+    - name: Povolení fúze
+      href: connect-fusion.md
 - name: Zdroje a prostředky
   items:
-  - name: Užitečné materiály
-    href: resources.md
-  - name: Plány Azure do budoucna
-    href: https://azure.microsoft.com/roadmap/?category=security-identity
-  - name: Blog věnovaný zabezpečení, ochraně osobních údajů a dodržování předpisů v Azure
-    href: https://blogs.msdn.com/b/azuresecurity/
-  - name: Regionální dostupnost
-    href: https://azure.microsoft.com/regions/services/
-ms.openlocfilehash: 886f07fa45e7795251d50880a977cfbc331dfb2b
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
-ms.translationtype: HT
-ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/11/2019
-ms.locfileid: "59493980"
+    - name: Užitečné materiály
+      href: resources.md
+    - name: Plány Azure do budoucna
+      href: 'https://azure.microsoft.com/roadmap/?category=security-identity'
+    - name: 'Blog věnovaný zabezpečení, ochraně osobních údajů a dodržování předpisů v Azure'
+      href: 'https://blogs.msdn.com/b/azuresecurity/'
+    - name: Regionální dostupnost
+      href: 'https://azure.microsoft.com/regions/services/'

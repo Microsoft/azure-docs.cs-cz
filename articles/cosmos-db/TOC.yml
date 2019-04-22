@@ -1,675 +1,674 @@
-items:
 - name: Dokumentace k databázi Azure Cosmos
   href: index.yml
 - name: Přehled
   items:
-  - name: Vítá vás Azure Cosmos DB
-    href: introduction.md
+    - name: Vítá vás Azure Cosmos DB
+      href: introduction.md
 - name: Šablony Rychlý start
-  items:
-  - name: .NET
-    href: create-sql-api-dotnet.md
-  - name: .NET (Preview)
-    href: create-sql-api-dotnet-preview.md
-  - name: Java
-    href: create-sql-api-java.md
-  - name: Node.js
-    href: create-sql-api-nodejs.md
-  - name: Python
-    href: create-sql-api-python.md
-  - name: Xamarin
-    href: create-sql-api-xamarin-dotnet.md
   expanded: true
+  items:
+    - name: .NET
+      href: create-sql-api-dotnet.md
+    - name: .NET (Preview)
+      href: create-sql-api-dotnet-preview.md
+    - name: Java
+      href: create-sql-api-java.md
+    - name: Node.js
+      href: create-sql-api-nodejs.md
+    - name: Python
+      href: create-sql-api-python.md
+    - name: Xamarin
+      href: create-sql-api-xamarin-dotnet.md
 - name: Kurzy
   items:
-  - name: 1. Vytvoření a správa dat
-    items:
-    - name: Sestavení konzolové aplikace
+    - name: 1. Vytvoření a správa dat
       items:
-      - name: .NET
-        href: sql-api-get-started.md
-      - name: .NET (Preview)
-        href: sql-api-dotnet-get-started-preview.md
-      - name: .NET Core
-        href: sql-api-dotnetcore-get-started.md
-      - name: .NET Core (Preview)
-        href: sql-api-dotnet-core-get-started-preview.md
-      - name: Java
-        href: sql-api-java-get-started.md
-      - name: Async Java
-        href: sql-api-async-java-get-started.md
-      - name: Node.js
-        href: sql-api-nodejs-get-started.md
-    - name: Vytvoření webové aplikace
-      items:
-      - name: .NET
-        href: sql-api-dotnet-application.md
-      - name: .NET Preview
-        href: sql-api-dotnet-application-preview.md
-      - name: Java
-        href: sql-api-java-application.md
-      - name: Node.js
-        href: sql-api-nodejs-application.md
-      - name: Xamarin
-        href: mobile-apps-with-xamarin.md
-  - name: 2. Migrace dat
-    displayName: import
-    href: import-data.md
-  - name: 3. Dotazování dat
-    href: tutorial-query-sql-api.md
-  - name: 4. Globální distribuce dat
-    href: tutorial-global-distribution-sql-api.md
+        - name: Sestavení konzolové aplikace
+          items:
+            - name: .NET
+              href: sql-api-get-started.md
+            - name: .NET (Preview)
+              href: sql-api-dotnet-get-started-preview.md
+            - name: .NET Core
+              href: sql-api-dotnetcore-get-started.md
+            - name: .NET Core (Preview)
+              href: sql-api-dotnet-core-get-started-preview.md
+            - name: Java
+              href: sql-api-java-get-started.md
+            - name: Async Java
+              href: sql-api-async-java-get-started.md
+            - name: Node.js
+              href: sql-api-nodejs-get-started.md
+        - name: Vytvoření webové aplikace
+          items:
+            - name: .NET
+              href: sql-api-dotnet-application.md
+            - name: .NET Preview
+              href: sql-api-dotnet-application-preview.md
+            - name: Java
+              href: sql-api-java-application.md
+            - name: Node.js
+              href: sql-api-nodejs-application.md
+            - name: Xamarin
+              href: mobile-apps-with-xamarin.md
+    - name: 2. Migrace dat
+      displayName: import
+      href: import-data.md
+    - name: 3. Dotazování dat
+      href: tutorial-query-sql-api.md
+    - name: 4. Globální distribuce dat
+      href: tutorial-global-distribution-sql-api.md
 - name: Ukázky
   items:
-  - name: Ukázky .NET
-    href: sql-api-dotnet-samples.md
-  - name: Ukázky Java
-    href: sql-api-java-samples.md
-  - name: Ukázky Async Java
-    href: sql-api-async-java-samples.md
-  - name: Ukázky Node.js
-    href: sql-api-nodejs-samples.md
-  - name: Ukázky Pythonu
-    href: sql-api-python-samples.md
-  - name: PowerShell
-    href: powershell-samples.md
-  - name: Azure CLI
-    href: cli-samples.md
+    - name: Ukázky .NET
+      href: sql-api-dotnet-samples.md
+    - name: Ukázky Java
+      href: sql-api-java-samples.md
+    - name: Ukázky Async Java
+      href: sql-api-async-java-samples.md
+    - name: Ukázky Node.js
+      href: sql-api-nodejs-samples.md
+    - name: Ukázky Pythonu
+      href: sql-api-python-samples.md
+    - name: PowerShell
+      href: powershell-samples.md
+    - name: Azure CLI
+      href: cli-samples.md
 - name: Koncepty
   items:
-  - name: Globální distribuce
-    items:
-    - name: Přehled
-      displayName: replication, replicate, geo distribution
-      href: distribute-data-globally.md
-    - name: Úrovně konzistence
-      displayName: session, consistency prefix, strong, eventual, bounded staleness
-      href: consistency-levels.md
-    - name: Volba vhodné úrovně konzistence
-      displayName: session, consistency prefix, strong, eventual, bounded staleness
-      href: consistency-levels-choosing.md
-    - name: Úrovně konzistence a rozhraní API služby Cosmos DB
-      href: consistency-levels-across-apis.md
-    - name: Kompromisy mezi konzistencí, dostupností a výkonem
-      href: consistency-levels-tradeoffs.md
-    - name: Vysoká dostupnost
-      href: high-availability.md
-    - name: Globální škálování zřízené propustnosti
-      displayName: request units, RUs, RU
-      href: scaling-throughput.md
-    - name: Zásady řešení a typy konfliktů
-      displayName: last write wins, custom
-      href: conflict-resolution-policies.md
-    - name: Globální distribuce – pod pokličkou
-      href: global-dist-under-the-hood.md
-    - name: Přítomnost v konkrétních oblastech
-      href: regional-presence.md
-  - name: Dělení
-    items:
-    - name: Přehled
-      href: partitioning-overview.md
-    - name: Dělení a horizontální škálování
-      href: partition-data.md
-    - name: Vytvoření syntetického klíče oddílu
-      href: synthetic-partition-keys.md
-  - name: Zřízená propustnost
-    items:
-    - name: Jednotky žádostí
-      displayName: RUs, RU
-      href: request-units.md
-    - name: Zřízení propustnosti u kontejnerů a databází
-      displayName: request units, RUs, RU, limits, database throughput, shared throughput, container throughput
-      href: set-throughput.md
-  - name: Práce s účtem Azure Cosmos
-    href: account-overview.md
-  - name: Kontejnery a položky
-    items:
-    - name: Práce s databázemi, kontejnery a položkami
-      displayName: collection, document
-      href: databases-containers-items.md
-    - name: Referenční informace k jazyku SQL
-      displayName: collection, document
-      href: sql-api-query-reference.md
-    - name: Příklady dotazů jazyka SQL
-      displayName: collection, document, order by, where, top, value, aggregate, between, scalar, join, count, contains
-      href: how-to-sql-query.md
-    - name: Modelování dat dokumentů
-      displayName: document
-      href: modeling-data.md
-    - name: Indexování
+    - name: Globální distribuce
       items:
-      - name: Přehled
-        href: index-overview.md
-      - name: Zásady indexů
-        displayName: consistent, none
-        href: index-policy.md
-      - name: Typy indexů
-        displayName: hash, range, spatial
-        href: index-types.md
-      - name: Cesty indexů
-        href: index-paths.md
-    - name: Změna kanálu
+        - name: Přehled
+          displayName: 'replication, replicate, geo distribution'
+          href: distribute-data-globally.md
+        - name: Úrovně konzistence
+          displayName: 'session, consistency prefix, strong, eventual, bounded staleness'
+          href: consistency-levels.md
+        - name: Volba vhodné úrovně konzistence
+          displayName: 'session, consistency prefix, strong, eventual, bounded staleness'
+          href: consistency-levels-choosing.md
+        - name: Úrovně konzistence a rozhraní API služby Cosmos DB
+          href: consistency-levels-across-apis.md
+        - name: 'Kompromisy mezi konzistencí, dostupností a výkonem'
+          href: consistency-levels-tradeoffs.md
+        - name: Vysoká dostupnost
+          href: high-availability.md
+        - name: Globální škálování zřízené propustnosti
+          displayName: 'request units, RUs, RU'
+          href: scaling-throughput.md
+        - name: Zásady řešení a typy konfliktů
+          displayName: 'last write wins, custom'
+          href: conflict-resolution-policies.md
+        - name: Globální distribuce – pod pokličkou
+          href: global-dist-under-the-hood.md
+        - name: Přítomnost v konkrétních oblastech
+          href: regional-presence.md
+    - name: Dělení
       items:
-      - name: Přehled
-        href: change-feed.md
-      - name: Čtení kanálu změn
-        href: read-change-feed.md
-      - name: Procesor kanálu změn
-        href: change-feed-processor.md
-      - name: Aktivace Azure Functions
-        displayName: change feed
-        href: change-feed-functions.md
-    - name: Hodnota TTL (Time to Live)
-      displayName: delete, delete data, ttl
-      href: time-to-live.md
-    - name: Omezení jedinečných klíčů
-      href: unique-keys.md
-    - name: Řízení optimistické souběžnosti a transakce
-      href: database-transactions-optimistic-concurrency.md
-  - name: Programování na straně serveru
-    items:
-    - name: Uložené procedury, triggery a systémy souborů UDF
-      href: stored-procedures-triggers-udfs.md
-    - name: Rozhraní API pro dotazy JavaScript
-      href: javascript-query-api.md
-  - name: Optimalizace nákladů na Azure Cosmos DB
-    items:
-    - name: Cenový model
-      href: how-pricing-works.md
-    - name: Celkové náklady na vlastnictví
-      href: total-cost-ownership.md
-    - name: Vysvětlení informací na faktuře
-      href: understand-your-bill.md
-    - name: Optimalizace nákladů na zřízenou propustnost
-      displayName: request units, RUs, RU
-      href: optimize-cost-throughput.md
-    - name: Optimalizace nákladů na dotazování
-      href: optimize-cost-queries.md
-    - name: Optimalizace nákladů na úložiště
-      href: optimize-cost-storage.md
-    - name: Optimalizace nákladů na čtení a zápis
-      href: optimize-cost-reads-writes.md
-    - name: Optimalizace nákladů na více oblastí
-      href: optimize-cost-regions.md
-    - name: Optimalizace nákladů na vývoj/testování
-      href: optimize-dev-test.md
-    - name: Optimalizace nákladů s využitím záložní kapacity
-      href: cosmos-db-reserved-capacity.md
-  - name: Zabezpečení
-    items:
-    - name: Přehled
-      href: database-security.md
-    - name: Šifrování dat
-      href: database-encryption-at-rest.md
-    - name: Zabezpečený přístup k datům
-      displayName: master key, resource token, users, roles
-      href: secure-access-to-data.md
-    - name: Brána firewall protokolu IP
-      href: firewall-support.md
-    - name: Přístup z virtuálních sítí
-      href: vnet-service-endpoint.md
-  - name: Připravenost pro podnikové zpracování
-    items:
-    - name: Online zálohování a obnovení na vyžádání
-      href: online-backup-and-restore.md
-    - name: Dodržování předpisů
-      href: compliance.md
-- name: Cassandra, MongoDB a další rozhraní API
-  items:
-  - name: Rozhraní API služby Azure Cosmos DB pro MongoDB
-    items:
-    - name: Úvod
-      href: mongodb-introduction.md
-    - name: Podpora přenosového protokolu
-      href: mongodb-feature-support.md
-    - name: Šablony Rychlý start
+        - name: Přehled
+          href: partitioning-overview.md
+        - name: Dělení a horizontální škálování
+          href: partition-data.md
+        - name: Vytvoření syntetického klíče oddílu
+          href: synthetic-partition-keys.md
+    - name: Zřízená propustnost
       items:
-      - name: .NET
-        href: create-mongodb-dotnet.md
-      - name: Java
-        href: create-mongodb-java.md
-      - name: Node.js
-        href: create-mongodb-nodejs.md
-      - name: Python
-        href: create-mongodb-flask.md
-      - name: Xamarin
-        href: create-mongodb-xamarin.md
-      - name: Golang
-        href: create-mongodb-golang.md
-    - name: Kurzy
+        - name: Jednotky žádostí
+          displayName: 'RUs, RU'
+          href: request-units.md
+        - name: Zřízení propustnosti u kontejnerů a databází
+          displayName: 'request units, RUs, RU, limits, database throughput, shared throughput, container throughput'
+          href: set-throughput.md
+    - name: Práce s účtem Azure Cosmos
+      href: account-overview.md
+    - name: Kontejnery a položky
       items:
-      - name: 1. Vytvoření a správa dat
-        items:
-        - name: Aplikace konzoly Node.js
-          href: mongodb-samples.md
-        - name: Aplikace Angular a Node.js
+        - name: 'Práce s databázemi, kontejnery a položkami'
+          displayName: 'collection, document'
+          href: databases-containers-items.md
+        - name: Referenční informace k jazyku SQL
+          displayName: 'collection, document'
+          href: sql-api-query-reference.md
+        - name: Příklady dotazů jazyka SQL
+          displayName: 'collection, document, order by, where, top, value, aggregate, between, scalar, join, count, contains'
+          href: how-to-sql-query.md
+        - name: Modelování dat dokumentů
+          displayName: document
+          href: modeling-data.md
+        - name: Indexování
           items:
-          - name: Část 1 – Úvod
-            href: tutorial-develop-mongodb-nodejs.md
-          - name: Část 2 – Vytvoření aplikace Node
-            href: tutorial-develop-mongodb-nodejs-part2.md
-          - name: Část 3 – Vytvoření uživatelského rozhraní pomocí Angular
-            href: tutorial-develop-mongodb-nodejs-part3.md
-          - name: Část 4 – Vytvoření účtu
-            href: tutorial-develop-mongodb-nodejs-part4.md
-          - name: Část 5 – Připojení k databázi Cosmos DB
-            href: tutorial-develop-mongodb-nodejs-part5.md
-          - name: Část 6 – Provedení operací CRUD
-            href: tutorial-develop-mongodb-nodejs-part6.md
-        - name: Aplikace React a Node.js
-          href: tutorial-develop-mongodb-react.md
-      - name: 2. Migrace dat
-        displayName: import
-        href: https://docs.microsoft.com/azure/dms/tutorial-mongodb-cosmos-db?toc=/azure/cosmos-db/toc.json
-      - name: 3. Dotazování dat
-        href: tutorial-query-mongodb.md
-      - name: 4. Globální distribuce dat
-        href: tutorial-global-distribution-mongodb.md
-    - name: Návody
+            - name: Přehled
+              href: index-overview.md
+            - name: Zásady indexů
+              displayName: 'consistent, none'
+              href: index-policy.md
+            - name: Typy indexů
+              displayName: 'hash, range, spatial'
+              href: index-types.md
+            - name: Cesty indexů
+              href: index-paths.md
+        - name: Změna kanálu
+          items:
+            - name: Přehled
+              href: change-feed.md
+            - name: Čtení kanálu změn
+              href: read-change-feed.md
+            - name: Procesor kanálu změn
+              href: change-feed-processor.md
+            - name: Aktivace Azure Functions
+              displayName: change feed
+              href: change-feed-functions.md
+        - name: Hodnota TTL (Time to Live)
+          displayName: 'delete, delete data, ttl'
+          href: time-to-live.md
+        - name: Omezení jedinečných klíčů
+          href: unique-keys.md
+        - name: Řízení optimistické souběžnosti a transakce
+          href: database-transactions-optimistic-concurrency.md
+    - name: Programování na straně serveru
       items:
-      - name: Získání připojovacího řetězce
-        href: connect-mongodb-account.md
-      - name: Připojení s využitím Studia 3T
-        href: mongodb-mongochef.md
-      - name: Připojení s využitím Robomongo
-        href: mongodb-robomongo.md
-      - name: Připojení s využitím MongoDB
-        href: mongodb-mongoose.md
-      - name: Globální distribuce čtení
-        displayName: read preference
-        href: mongodb-readpreference.md
-      - name: Hodnota TTL – MongoDB
-        href: mongodb-time-to-live.md
-      - name: Správa indexování dat
-        href: mongodb-indexing.md
-      - name: Ukládání a správa služby Spring Data
-        href: /java/azure/spring-framework/configure-spring-data-mongodb-with-cosmos-db
-        maintainContext: true
-      - name: Příkazy rozšíření MongoDB
-        displayName: custom commands
-        href: mongodb-custom-commands.md
-  - name: Rozhraní Gremlin API
-    displayName: graph, graph database
-    items:
-    - name: Úvod
-      href: graph-introduction.md
-    - name: Podpora přenosového protokolu
-      href: gremlin-support.md
-    - name: Šablony Rychlý start
+        - name: 'Uložené procedury, triggery a systémy souborů UDF'
+          href: stored-procedures-triggers-udfs.md
+        - name: Rozhraní API pro dotazy JavaScript
+          href: javascript-query-api.md
+    - name: Optimalizace nákladů na Azure Cosmos DB
       items:
-      - name: Konzola Gremlin
-        href: create-graph-gremlin-console.md
-      - name: .NET
-        href: create-graph-dotnet.md
-      - name: Java
-        href: create-graph-java.md
-      - name: Node.js
-        href: create-graph-nodejs.md
-      - name: Python
-        href: create-graph-python.md
-      - name: PHP
-        href: create-graph-php.md
-    - name: Kurzy
+        - name: Cenový model
+          href: how-pricing-works.md
+        - name: Celkové náklady na vlastnictví
+          href: total-cost-ownership.md
+        - name: Vysvětlení informací na faktuře
+          href: understand-your-bill.md
+        - name: Optimalizace nákladů na zřízenou propustnost
+          displayName: 'request units, RUs, RU'
+          href: optimize-cost-throughput.md
+        - name: Optimalizace nákladů na dotazování
+          href: optimize-cost-queries.md
+        - name: Optimalizace nákladů na úložiště
+          href: optimize-cost-storage.md
+        - name: Optimalizace nákladů na čtení a zápis
+          href: optimize-cost-reads-writes.md
+        - name: Optimalizace nákladů na více oblastí
+          href: optimize-cost-regions.md
+        - name: Optimalizace nákladů na vývoj/testování
+          href: optimize-dev-test.md
+        - name: Optimalizace nákladů s využitím záložní kapacity
+          href: cosmos-db-reserved-capacity.md
+    - name: Zabezpečení
       items:
-      - name: 1. Dotazování dat
-        href: tutorial-query-graph.md
-    - name: Návody
+        - name: Přehled
+          href: database-security.md
+        - name: Šifrování dat
+          href: database-encryption-at-rest.md
+        - name: Zabezpečený přístup k datům
+          displayName: 'master key, resource token, users, roles'
+          href: secure-access-to-data.md
+        - name: Brána firewall protokolu IP
+          href: firewall-support.md
+        - name: Přístup z virtuálních sítí
+          href: vnet-service-endpoint.md
+    - name: Připravenost pro podnikové zpracování
       items:
-      - name: Import dat grafu
-        href: bulk-executor-graph-dotnet.md
-      - name: Dělení dat v grafu
-        href: graph-partitioning.md
-      - name: Optimalizace dotazů Gremlinu
-        href: graph-execution-profile.md
-      - name: Ukládání a správa služby Spring Data
-        href: /java/azure/spring-framework/configure-spring-data-gremlin-java-app-with-cosmos-db
-        maintainContext: true
-  - name: Rozhraní Cassandra API
-    items:
-    - name: Úvod
-      href: cassandra-introduction.md
-    - name: Podpora přenosového protokolu
-      href: cassandra-support.md
-    - name: Šablony Rychlý start
-      items:
-      - name: .NET
-        href: create-cassandra-dotnet.md
-      - name: Java
-        href: create-cassandra-java.md
-      - name: Node.js
-        href: create-cassandra-nodejs.md
-      - name: Python
-        href: create-cassandra-python.md
-    - name: Kurzy
-      items:
-      - name: 1. Vytvoření a správa dat
-        href: create-cassandra-api-account-java.md
-      - name: 2. Načtení dat
-        href: cassandra-api-load-data.md
-      - name: 3. Dotazování dat
-        href: cassandra-api-query-data.md
-      - name: 4. Migrace dat
-        displayName: import
-        href: cassandra-import-data.md
-    - name: Návody
-      items:
-      - name: Ukládání a správa služby Spring Data
-        href: /java/azure/spring-framework/configure-spring-data-apache-cassandra-with-cosmos-db
-        maintainContext: true
-      - name: Cassandra a Spark
-        items:
-        - name: Úvod
-          href: cassandra-spark-generic.md
-        - name: Připojení pomocí Databricks
-          href: cassandra-spark-databricks.md
-        - name: Připojení pomocí HDInsightu
-          href: cassandra-spark-hdinsight.md
-        - name: Vytvoření tabulky a prostoru klíčů
-          href: cassandra-spark-ddl-ops.md
-        - name: Vložení dat
-          href: cassandra-spark-create-ops.md
-        - name: Čtení dat
-          href: cassandra-spark-read-ops.md
-        - name: Upsert dat
-          href: cassandra-spark-upsert-ops.md
-        - name: Odstranění dat
-          href: cassandra-spark-delete-ops.md
-        - name: Operace agregace
-          href: cassandra-spark-aggregation-ops.md
-        - name: Kopírování dat tabulek
-          href: cassandra-spark-table-copy-ops.md
-  - name: Rozhraní Table API
-    items:
-    - name: Úvod
-      href: table-introduction.md
-    - name: Šablony Rychlý start
-      items:
-      - name: .NET
-        href: create-table-dotnet.md
-      - name: Java
-        href: create-table-java.md
-      - name: Node.js
-        href: create-table-nodejs.md
-      - name: Python
-        href: create-table-python.md
-    - name: Kurzy
-      items:
-      - name: 1. Vytvoření a správa dat
-        href: tutorial-develop-table-dotnet.md
-      - name: 2. Migrace dat
-        displayName: import
-        href: table-import.md
-      - name: 3. Dotazování dat
-        href: tutorial-query-table.md
-      - name: 4. Globální distribuce dat
-        href: tutorial-global-distribution-table.md
-    - name: Ukázky
-      items:
-      - name: .NET
-        href: table-storage-how-to-use-dotnet.md
-      - name: Java
-        href: table-storage-how-to-use-java.md
-      - name: Node.js
-        href: table-storage-how-to-use-nodejs.md
-      - name: Python
-        href: table-storage-how-to-use-python.md
-      - name: PHP
-        href: table-storage-how-to-use-php.md
-      - name: C++
-        href: table-storage-how-to-use-c-plus.md
-      - name: Ruby
-        href: table-storage-how-to-use-ruby.md
-      - name: F#
-        href: https://docs.microsoft.com/dotnet/articles/fsharp/using-fsharp-on-azure/table-storage
-    - name: Návody
-      items:
-      - name: Vytváření aplikací s využitím Table API
-        href: table-support.md
-      - name: Průvodce návrhem úložiště Table
-        href: table-storage-design-guide.md
-    - name: Referenční informace
-      items:
-      - name: .NET
-        href: table-sdk-dotnet.md
-      - name: .NET Standard
-        href: table-sdk-dotnet-standard.md
-      - name: Java
-        href: table-sdk-java.md
-      - name: Node.js
-        href: table-sdk-nodejs.md
-      - name: Python
-        href: table-sdk-python.md
-      - name: Rozhraní REST API služby Table Storage
-        href: /rest/api/storageservices/Table-Service-Concepts
+        - name: Online zálohování a obnovení na vyžádání
+          href: online-backup-and-restore.md
+        - name: Dodržování předpisů
+          href: compliance.md
+- name: 'Cassandra, MongoDB a další rozhraní API'
   expanded: true
+  items:
+    - name: Rozhraní API služby Azure Cosmos DB pro MongoDB
+      items:
+        - name: Úvod
+          href: mongodb-introduction.md
+        - name: Podpora přenosového protokolu
+          href: mongodb-feature-support.md
+        - name: Šablony Rychlý start
+          items:
+            - name: .NET
+              href: create-mongodb-dotnet.md
+            - name: Java
+              href: create-mongodb-java.md
+            - name: Node.js
+              href: create-mongodb-nodejs.md
+            - name: Python
+              href: create-mongodb-flask.md
+            - name: Xamarin
+              href: create-mongodb-xamarin.md
+            - name: Golang
+              href: create-mongodb-golang.md
+        - name: Kurzy
+          items:
+            - name: 1. Vytvoření a správa dat
+              items:
+                - name: Aplikace konzoly Node.js
+                  href: mongodb-samples.md
+                - name: Aplikace Angular a Node.js
+                  items:
+                    - name: Část 1 – Úvod
+                      href: tutorial-develop-mongodb-nodejs.md
+                    - name: Část 2 – Vytvoření aplikace Node
+                      href: tutorial-develop-mongodb-nodejs-part2.md
+                    - name: Část 3 – Vytvoření uživatelského rozhraní pomocí Angular
+                      href: tutorial-develop-mongodb-nodejs-part3.md
+                    - name: Část 4 – Vytvoření účtu
+                      href: tutorial-develop-mongodb-nodejs-part4.md
+                    - name: Část 5 – Připojení k databázi Cosmos DB
+                      href: tutorial-develop-mongodb-nodejs-part5.md
+                    - name: Část 6 – Provedení operací CRUD
+                      href: tutorial-develop-mongodb-nodejs-part6.md
+                - name: Aplikace React a Node.js
+                  href: tutorial-develop-mongodb-react.md
+            - name: 2. Migrace dat
+              displayName: import
+              href: 'https://docs.microsoft.com/azure/dms/tutorial-mongodb-cosmos-db?toc=/azure/cosmos-db/toc.json'
+            - name: 3. Dotazování dat
+              href: tutorial-query-mongodb.md
+            - name: 4. Globální distribuce dat
+              href: tutorial-global-distribution-mongodb.md
+        - name: Návody
+          items:
+            - name: Získání připojovacího řetězce
+              href: connect-mongodb-account.md
+            - name: Připojení s využitím Studia 3T
+              href: mongodb-mongochef.md
+            - name: Připojení s využitím Robomongo
+              href: mongodb-robomongo.md
+            - name: Připojení s využitím MongoDB
+              href: mongodb-mongoose.md
+            - name: Globální distribuce čtení
+              displayName: read preference
+              href: mongodb-readpreference.md
+            - name: Hodnota TTL – MongoDB
+              href: mongodb-time-to-live.md
+            - name: Správa indexování dat
+              href: mongodb-indexing.md
+            - name: Ukládání a správa služby Spring Data
+              href: /java/azure/spring-framework/configure-spring-data-mongodb-with-cosmos-db
+              maintainContext: true
+            - name: Příkazy rozšíření MongoDB
+              href: mongodb-custom-commands.md
+              displayName: custom commands
+    - name: Rozhraní Gremlin API
+      displayName: 'graph, graph database'
+      items:
+        - name: Úvod
+          href: graph-introduction.md
+        - name: Podpora přenosového protokolu
+          href: gremlin-support.md
+        - name: Šablony Rychlý start
+          items:
+            - name: Konzola Gremlin
+              href: create-graph-gremlin-console.md
+            - name: .NET
+              href: create-graph-dotnet.md
+            - name: Java
+              href: create-graph-java.md
+            - name: Node.js
+              href: create-graph-nodejs.md
+            - name: Python
+              href: create-graph-python.md
+            - name: PHP
+              href: create-graph-php.md
+        - name: Kurzy
+          items:
+            - name: 1. Dotazování dat
+              href: tutorial-query-graph.md
+        - name: Návody
+          items:
+            - name: Import dat grafu
+              href: bulk-executor-graph-dotnet.md
+            - name: Dělení dat v grafu
+              href: graph-partitioning.md
+            - name: Optimalizace dotazů Gremlinu
+              href: graph-execution-profile.md
+            - name: Ukládání a správa služby Spring Data
+              href: /java/azure/spring-framework/configure-spring-data-gremlin-java-app-with-cosmos-db
+              maintainContext: true
+    - name: Rozhraní Cassandra API
+      items:
+        - name: Úvod
+          href: cassandra-introduction.md
+        - name: Podpora přenosového protokolu
+          href: cassandra-support.md
+        - name: Šablony Rychlý start
+          items:
+            - name: .NET
+              href: create-cassandra-dotnet.md
+            - name: Java
+              href: create-cassandra-java.md
+            - name: Node.js
+              href: create-cassandra-nodejs.md
+            - name: Python
+              href: create-cassandra-python.md
+        - name: Kurzy
+          items:
+            - name: 1. Vytvoření a správa dat
+              href: create-cassandra-api-account-java.md
+            - name: 2. Načtení dat
+              href: cassandra-api-load-data.md
+            - name: 3. Dotazování dat
+              href: cassandra-api-query-data.md
+            - name: 4. Migrace dat
+              displayName: import
+              href: cassandra-import-data.md
+        - name: Návody
+          items:
+            - name: Ukládání a správa služby Spring Data
+              href: /java/azure/spring-framework/configure-spring-data-apache-cassandra-with-cosmos-db
+              maintainContext: true
+            - name: Cassandra a Spark
+              items:
+                - name: Úvod
+                  href: cassandra-spark-generic.md
+                - name: Připojení pomocí Databricks
+                  href: cassandra-spark-databricks.md
+                - name: Připojení pomocí HDInsightu
+                  href: cassandra-spark-hdinsight.md
+                - name: Vytvoření tabulky a prostoru klíčů
+                  href: cassandra-spark-ddl-ops.md
+                - name: Vložení dat
+                  href: cassandra-spark-create-ops.md
+                - name: Čtení dat
+                  href: cassandra-spark-read-ops.md
+                - name: Upsert dat
+                  href: cassandra-spark-upsert-ops.md
+                - name: Odstranění dat
+                  href: cassandra-spark-delete-ops.md
+                - name: Operace agregace
+                  href: cassandra-spark-aggregation-ops.md
+                - name: Kopírování dat tabulek
+                  href: cassandra-spark-table-copy-ops.md
+    - name: Rozhraní Table API
+      items:
+        - name: Úvod
+          href: table-introduction.md
+        - name: Šablony Rychlý start
+          items:
+            - name: .NET
+              href: create-table-dotnet.md
+            - name: Java
+              href: create-table-java.md
+            - name: Node.js
+              href: create-table-nodejs.md
+            - name: Python
+              href: create-table-python.md
+        - name: Kurzy
+          items:
+            - name: 1. Vytvoření a správa dat
+              href: tutorial-develop-table-dotnet.md
+            - name: 2. Migrace dat
+              displayName: import
+              href: table-import.md
+            - name: 3. Dotazování dat
+              href: tutorial-query-table.md
+            - name: 4. Globální distribuce dat
+              href: tutorial-global-distribution-table.md
+        - name: Ukázky
+          items:
+            - name: .NET
+              href: table-storage-how-to-use-dotnet.md
+            - name: Java
+              href: table-storage-how-to-use-java.md
+            - name: Node.js
+              href: table-storage-how-to-use-nodejs.md
+            - name: Python
+              href: table-storage-how-to-use-python.md
+            - name: PHP
+              href: table-storage-how-to-use-php.md
+            - name: C++
+              href: table-storage-how-to-use-c-plus.md
+            - name: Ruby
+              href: table-storage-how-to-use-ruby.md
+            - name: 'F#'
+              href: 'https://docs.microsoft.com/dotnet/articles/fsharp/using-fsharp-on-azure/table-storage'
+        - name: Návody
+          items:
+            - name: Vytváření aplikací s využitím Table API
+              href: table-support.md
+            - name: Průvodce návrhem úložiště Table
+              href: table-storage-design-guide.md
+        - name: Referenční informace
+          items:
+            - name: .NET
+              href: table-sdk-dotnet.md
+            - name: .NET Standard
+              href: table-sdk-dotnet-standard.md
+            - name: Java
+              href: table-sdk-java.md
+            - name: Node.js
+              href: table-sdk-nodejs.md
+            - name: Python
+              href: table-sdk-python.md
+            - name: Rozhraní REST API služby Table Storage
+              href: /rest/api/storageservices/Table-Service-Concepts
 - name: Návody
   items:
-  - name: Správa účtu Azure Cosmos
-    href: how-to-manage-database-account.md
-  - name: Globální distribuce
-    items:
-    - name: Konfigurace multi-masteru
-      href: how-to-multi-master.md
-    - name: Správa úrovní konzistence
-      displayName: session, consistency prefix, strong, eventual, bounded staleness
-      href: how-to-manage-consistency.md
-    - name: Implementace vlastní synchronizace
-      href: how-to-custom-synchronization.md
-    - name: Konfigurace zásad řešení konfliktů
-      href: how-to-manage-conflicts.md
-  - name: Zřízená propustnost
-    items:
-    - name: Zřízení propustnosti pro kontejner
-      displayName: request units, RUs, RU, collection level
-      href: how-to-provision-container-throughput.md
-    - name: Zřízení propustnosti pro databázi
-      displayName: request units, RUs, RU, shared throughput, database level
-      href: how-to-provision-database-throughput.md
-    - name: Zjištění poplatku za jednotku žádosti
-      displayName: request units, RUs, RU, charge, consumption
-      href: find-request-unit-charge.md
-  - name: Práce s kontejnery a položkami
-    items:
-    - name: Vytvoření kontejneru
-      href: how-to-create-container.md
-    - name: Dotazování na kontejner
-      href: how-to-query-container.md
-    - name: Vytváření a dělení dat – ukázka z reálného světa
-      displayName: model, partition, example
-      href: how-to-model-partition-example.md
-    - name: Konfigurace hodnoty TTL (Time to Live)
-      displayName: delete, delete data, ttl
-      href: how-to-time-to-live.md
-    - name: Práce s daty s využitím Průzkumníka služby Azure Storage
-      href: storage-explorer.md
-    - name: Práce s daty s využitím průzkumníka Azure Cosmos
-      href: data-explorer.md
-    - name: Indexování
+    - name: Správa účtu Azure Cosmos
+      href: how-to-manage-database-account.md
+    - name: Globální distribuce
       items:
-      - name: Správa indexování
-        href: how-to-manage-indexing-policy.md
-  - name: Programování na straně serveru
-    items:
-    - name: Psaní uložených procedur, triggerů a funkcí UDF
-      href: how-to-write-stored-procedures-triggers-udfs.md
-    - name: Psaní uložených procedur a triggerů s rozhraním API pro dotazy JavaScript
-      href: how-to-write-javascript-query-api.md
-    - name: Použití uložených procedur, triggerů a funkcí UDF
-      href: how-to-use-stored-procedures-triggers-udfs.md
-  - name: Zabezpečení
-    items:
-    - name: Konfigurace brány firewall protokolu P
-      href: how-to-configure-firewall.md
-    - name: Konfigurace přístupu z virtuálních sítí
-      href: how-to-configure-vnet-service-endpoint.md
-    - name: Konfigurace sdílení prostředků mezi zdroji (CORS, Cross-Origin Resource Sharing)
-      href: how-to-configure-cross-origin-resource-sharing.md
-    - name: Zabezpečení klíčů Azure Cosmos s využitím služby Key Vault
-      href: access-secrets-from-keyvault.md
-  - name: Připravenost pro podnikové zpracování
-    items:
-    - name: Obnovení dat ze zálohy
-      href: how-to-backup-and-restore.md
-  - name: Správa prostředků Azure Cosmos DB
-    items:
-    - name: Správa pomocí prostředí PowerShell
-      href: manage-account-with-powershell.md
-    - name: Správa s využitím rozhraní příkazového řádku Azure
-      href: manage-with-cli.md
-  - name: Protokolování
-    items:
-    - name: Protokolování diagnostiky
-      href: logging.md
-    - name: Protokolování aplikací pomocí funkce Logic Apps
-      href: https://docs.microsoft.com/azure/logic-apps/logic-apps-scenario-error-and-exception-handling?toc=/azure/cosmos-db/toc.json
-  - name: Monitorování
-    items:
-    - name: Monitorování s využitím metrik
-      href: use-metrics.md
-    - name: Monitorování smluv SLA
-      href: monitor-accounts.md
-  - name: Vývoj v místním prostředí
-    items:
-    - name: Použití emulátoru
-      href: local-emulator.md
-    - name: Export certifikátů
-      href: local-emulator-export-ssl-certificates.md
-    - name: Rozšíření editoru Visual Studio Code
-      href: https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-cosmosdb
-  - name: Nastavení kanálu CI/CD pro Azure DevOps
-    href: tutorial-setup-ci-cd.md
-  - name: Typy dat
-    items:
-    - name: DateTime
-      href: working-with-dates.md
-    - name: Geoprostorové
-      href: geospatial.md
-  - name: Osvědčené postupy
-    items:
-    - name: Tipy pro zvýšení výkonu
+        - name: Konfigurace multi-masteru
+          href: how-to-multi-master.md
+        - name: Správa úrovní konzistence
+          displayName: 'session, consistency prefix, strong, eventual, bounded staleness'
+          href: how-to-manage-consistency.md
+        - name: Implementace vlastní synchronizace
+          href: how-to-custom-synchronization.md
+        - name: Konfigurace zásad řešení konfliktů
+          href: how-to-manage-conflicts.md
+    - name: Zřízená propustnost
       items:
-      - name: Ladění výkonu dotazů
-        href: sql-api-query-metrics.md
-      - name: Tipy ke zvýšení výkonu pro .NET SDK
-        href: performance-tips.md
-      - name: Tipy ke zvýšení výkonu pro Java SDK
-        href: performance-tips-java.md
-      - name: Tipy ke zvýšení výkonu pro Async Java SDK
-        href: performance-tips-async-java.md
-      - name: Test výkonu – ukázková aplikace
-        href: performance-testing.md
-    - name: Nákladově efektivní čtení a zápisy
-      href: key-value-store-cost.md
-  - name: Vizualizace dat služby Cosmos DB
-    items:
-    - name: Použití Power BI
-      href: powerbi-visualize.md
-    - name: Použití Qlik Sense
-      href: visualize-qlik-sense.md
-  - name: Integrace s ostatními službami Azure
-    items:
-    - name: Změna kanálu pro řešení elektronického obchodování
-      href: changefeed-ecommerce-solution.md
-    - name: Azure App Service
-      href: create-website.md
-    - name: Indexer Azure Search
-      href: https://docs.microsoft.com/azure/search/search-howto-index-cosmosdb?toc=/azure/cosmos-db/toc.json
-    - name: Azure Functions
+        - name: Zřízení propustnosti pro kontejner
+          displayName: 'request units, RUs, RU, collection level'
+          href: how-to-provision-container-throughput.md
+        - name: Zřízení propustnosti pro databázi
+          displayName: 'request units, RUs, RU, shared throughput, database level'
+          href: how-to-provision-database-throughput.md
+        - name: Zjištění poplatku za jednotku žádosti
+          displayName: 'request units, RUs, RU, charge, consumption'
+          href: find-request-unit-charge.md
+    - name: Práce s kontejnery a položkami
       items:
-      - name: Bezserverová architektura
-        href: serverless-computing-database.md
-      - name: Vazby Azure Functions
-        href: https://docs.microsoft.com/azure/azure-functions/functions-bindings-cosmosdb?toc=/azure/cosmos-db/toc.json
-    - name: Azure Data Factory
-      href: https://docs.microsoft.com/azure/data-factory/connector-azure-cosmos-db?toc=/azure/cosmos-db/toc.json
-    - name: Azure Stream Analytics
-      href: ../stream-analytics/stream-analytics-define-outputs.md#azure-cosmos-db
-    - name: Logic Apps a Service Bus
-      href: change-feed-hl7-fhir-logic-apps.md
-    - name: Azure Event Hubs a Azure Storage
-      href: https://github.com/hdinsight/hdinsight-storm-examples/blob/master/IotExample/README.md
-    - name: Použití aplikace Spring Boot Starter
-      href: /java/azure/spring-framework/configure-spring-boot-starter-java-app-with-cosmos-db
-      maintainContext: true
-    - name: Architektura lambda
-      href: lambda-architecture.md
-    - name: Azure Databricks (konektor Spark)
-      href: spark-connector.md
-    - name: Spark a Kafka
-      href: https://docs.microsoft.com/azure/hdinsight/apache-kafka-spark-structured-streaming-cosmosdb?toc=/azure/cosmos-db/toc.json
-    - name: Ovladač ODBC
-      href: odbc-driver.md
-  - name: Knihovna Bulk Executor
-    items:
-    - name: Informace o knihovně Bulk Executoru
-      href: bulk-executor-overview.md
-    - name: Bulk Executor – knihovna .NET
-      href: bulk-executor-dot-net.md
-    - name: Bulk Executor – knihovna Java
-      href: bulk-executor-java.md
-  - name: Řešení potíží
-    items:
-    - name: Řešení potíží se sadou Java Async SDK
-      href: troubleshoot-java-async-sdk.md
-    - name: Řešení potíží se sadou .NET SDK
-      href: troubleshoot-dot-net-sdk.md
+        - name: Vytvoření kontejneru
+          href: how-to-create-container.md
+        - name: Dotazování na kontejner
+          href: how-to-query-container.md
+        - name: Vytváření a dělení dat – ukázka z reálného světa
+          displayName: 'model, partition, example'
+          href: how-to-model-partition-example.md
+        - name: Konfigurace hodnoty TTL (Time to Live)
+          displayName: 'delete, delete data, ttl'
+          href: how-to-time-to-live.md
+        - name: Práce s daty s využitím Průzkumníka služby Azure Storage
+          href: storage-explorer.md
+        - name: Práce s daty s využitím průzkumníka Azure Cosmos
+          href: data-explorer.md
+        - name: Indexování
+          items:
+            - name: Správa indexování
+              href: how-to-manage-indexing-policy.md
+    - name: Kanál změn
+      items:
+        - name: Několik triggerů Azure Cosmos DB
+          href: how-to-create-multiple-cosmos-db-triggers.md
+        - name: Řešení potíží s triggery Azure Cosmos DB
+          href: troubleshoot-changefeed-functions.md
+    - name: Programování na straně serveru
+      items:
+        - name: 'Psaní uložených procedur, triggerů a funkcí UDF'
+          href: how-to-write-stored-procedures-triggers-udfs.md
+        - name: Psaní uložených procedur a triggerů s rozhraním API pro dotazy JavaScript
+          href: how-to-write-javascript-query-api.md
+        - name: 'Použití uložených procedur, triggerů a funkcí UDF'
+          href: how-to-use-stored-procedures-triggers-udfs.md
+    - name: Zabezpečení
+      items:
+        - name: Konfigurace brány firewall protokolu P
+          href: how-to-configure-firewall.md
+        - name: Konfigurace přístupu z virtuálních sítí
+          href: how-to-configure-vnet-service-endpoint.md
+        - name: 'Konfigurace sdílení prostředků mezi zdroji (CORS, Cross-Origin Resource Sharing)'
+          href: how-to-configure-cross-origin-resource-sharing.md
+        - name: Zabezpečení klíčů Azure Cosmos s využitím služby Key Vault
+          href: access-secrets-from-keyvault.md
+    - name: Připravenost pro podnikové zpracování
+      items:
+        - name: Obnovení dat ze zálohy
+          href: how-to-backup-and-restore.md
+    - name: Správa prostředků Azure Cosmos DB
+      items:
+        - name: Správa pomocí prostředí PowerShell
+          href: manage-account-with-powershell.md
+        - name: Správa s využitím rozhraní příkazového řádku Azure
+          href: manage-with-cli.md
+    - name: Protokolování
+      items:
+        - name: Protokolování diagnostiky
+          href: logging.md
+        - name: Protokolování aplikací pomocí funkce Logic Apps
+          href: 'https://docs.microsoft.com/azure/logic-apps/logic-apps-scenario-error-and-exception-handling?toc=/azure/cosmos-db/toc.json'
+    - name: Monitorování
+      items:
+        - name: Monitorování s využitím metrik
+          href: use-metrics.md
+        - name: Monitorování smluv SLA
+          href: monitor-accounts.md
+    - name: Vývoj v místním prostředí
+      items:
+        - name: Použití emulátoru
+          href: local-emulator.md
+        - name: Export certifikátů
+          href: local-emulator-export-ssl-certificates.md
+        - name: Rozšíření editoru Visual Studio Code
+          href: 'https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-cosmosdb'
+    - name: Nastavení kanálu CI/CD pro Azure DevOps
+      href: tutorial-setup-ci-cd.md
+    - name: Typy dat
+      items:
+        - name: DateTime
+          href: working-with-dates.md
+        - name: Geoprostorové
+          href: geospatial.md
+    - name: Osvědčené postupy
+      items:
+        - name: Tipy pro zvýšení výkonu
+          items:
+            - name: Ladění výkonu dotazů
+              href: sql-api-query-metrics.md
+            - name: Tipy ke zvýšení výkonu pro .NET SDK
+              href: performance-tips.md
+            - name: Tipy ke zvýšení výkonu pro Java SDK
+              href: performance-tips-java.md
+            - name: Tipy ke zvýšení výkonu pro Async Java SDK
+              href: performance-tips-async-java.md
+            - name: Test výkonu – ukázková aplikace
+              href: performance-testing.md
+        - name: Nákladově efektivní čtení a zápisy
+          href: key-value-store-cost.md
+    - name: Vizualizace dat služby Cosmos DB
+      items:
+        - name: Použití Power BI
+          href: powerbi-visualize.md
+        - name: Použití Qlik Sense
+          href: visualize-qlik-sense.md
+    - name: Integrace s ostatními službami Azure
+      items:
+        - name: Změna kanálu pro řešení elektronického obchodování
+          href: changefeed-ecommerce-solution.md
+        - name: Azure App Service
+          href: create-website.md
+        - name: Indexer Azure Search
+          href: 'https://docs.microsoft.com/azure/search/search-howto-index-cosmosdb?toc=/azure/cosmos-db/toc.json'
+        - name: Azure Functions
+          items:
+            - name: Bezserverová architektura
+              href: serverless-computing-database.md
+            - name: Vazby Azure Functions
+              href: 'https://docs.microsoft.com/azure/azure-functions/functions-bindings-cosmosdb?toc=/azure/cosmos-db/toc.json'
+        - name: Azure Data Factory
+          href: 'https://docs.microsoft.com/azure/data-factory/connector-azure-cosmos-db?toc=/azure/cosmos-db/toc.json'
+        - name: Azure Stream Analytics
+          href: '../stream-analytics/stream-analytics-define-outputs.md#azure-cosmos-db'
+        - name: Logic Apps a Service Bus
+          href: change-feed-hl7-fhir-logic-apps.md
+        - name: Azure Event Hubs a Azure Storage
+          href: 'https://github.com/hdinsight/hdinsight-storm-examples/blob/master/IotExample/README.md'
+        - name: Použití aplikace Spring Boot Starter
+          href: /java/azure/spring-framework/configure-spring-boot-starter-java-app-with-cosmos-db
+          maintainContext: true
+        - name: Architektura lambda
+          href: lambda-architecture.md
+        - name: Azure Databricks (konektor Spark)
+          href: spark-connector.md
+        - name: Spark a Kafka
+          href: 'https://docs.microsoft.com/azure/hdinsight/apache-kafka-spark-structured-streaming-cosmosdb?toc=/azure/cosmos-db/toc.json'
+        - name: Ovladač ODBC
+          href: odbc-driver.md
+    - name: Knihovna Bulk Executor
+      items:
+        - name: Informace o knihovně Bulk Executoru
+          href: bulk-executor-overview.md
+        - name: Bulk Executor – knihovna .NET
+          href: bulk-executor-dot-net.md
+        - name: Bulk Executor – knihovna Java
+          href: bulk-executor-java.md
+    - name: Řešení potíží
+      items:
+        - name: Řešení potíží se sadou Java Async SDK
+          href: troubleshoot-java-async-sdk.md
+        - name: Řešení potíží se sadou .NET SDK
+          href: troubleshoot-dot-net-sdk.md
 - name: Referenční informace
   items:
-  - name: .NET
-    href: sql-api-sdk-dotnet.md
-  - name: .NET Core
-    href: sql-api-sdk-dotnet-core.md
-  - name: Knihovna kanálů změn .NET
-    href: sql-api-sdk-dotnet-changefeed.md
-  - name: Knihovna Bulk Executoru .v NET
-    href: sql-api-sdk-bulk-executor-dot-net.md
-  - name: Java
-    href: sql-api-sdk-java.md
-  - name: Knihovna Bulk Executoru v Javě
-    href: sql-api-sdk-bulk-executor-java.md
-  - name: Async Java
-    href: sql-api-sdk-async-java.md
-  - name: Node.js
-    href: sql-api-sdk-node.md
-  - name: Python
-    href: sql-api-sdk-python.md
-  - name: REST
-    href: /rest/api/cosmos-db/
-  - name: Poskytovatel prostředků REST
-    href: /rest/api/cosmos-db-resource-provider/
-  - name: Šablona Resource Manageru
-    href: /azure/templates/microsoft.documentdb/databaseaccounts
+    - name: .NET
+      href: sql-api-sdk-dotnet.md
+    - name: .NET Core
+      href: sql-api-sdk-dotnet-core.md
+    - name: Knihovna kanálů změn .NET
+      href: sql-api-sdk-dotnet-changefeed.md
+    - name: Knihovna Bulk Executoru .v NET
+      href: sql-api-sdk-bulk-executor-dot-net.md
+    - name: Java
+      href: sql-api-sdk-java.md
+    - name: Knihovna Bulk Executoru v Javě
+      href: sql-api-sdk-bulk-executor-java.md
+    - name: Async Java
+      href: sql-api-sdk-async-java.md
+    - name: Node.js
+      href: sql-api-sdk-node.md
+    - name: Python
+      href: sql-api-sdk-python.md
+    - name: REST
+      href: /rest/api/cosmos-db/
+    - name: Poskytovatel prostředků REST
+      href: /rest/api/cosmos-db-resource-provider/
+    - name: Šablona Resource Manageru
+      href: /azure/templates/microsoft.documentdb/databaseaccounts
 - name: Zdroje a prostředky
   items:
-  - name: Získávání dovedností pomocí Microsoft Learn
-    href: /learn/browse/?products=azure-cosmos-db
-  - name: Tahák pro dotazy
-    href: query-cheat-sheet.md
-  - name: SQL Playground
-    href: https://aka.ms/cosmos-db-playground
-  - name: Nejčastější dotazy
-    href: faq.md
-  - name: Dokumenty white paper
-    href: whitepapers.md
-  - name: Partneři
-    href: partners-migration-cosmosdb.md
-  - name: Videa
-    href: https://azure.microsoft.com/resources/videos/index/?services=cosmos-db
-  - name: Plány Azure do budoucna
-    href: https://azure.microsoft.com/roadmap/
-  - name: Vyzkoušejte si Azure Cosmos DB zdarma
-    href: https://azure.microsoft.com/try/cosmosdb/
-  - name: Ceny
-    href: https://azure.microsoft.com/pricing/details/cosmos-db/
-  - name: Případy použití
-    items:
-    - name: Běžné případy použití
-      href: use-cases.md
-    - name: Aplikace sociálních médií
-      href: social-media-apps.md
-ms.openlocfilehash: d13fd91e079349bac4e57bc0224916075389d61e
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
-ms.translationtype: HT
-ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59257854"
+    - name: Získávání dovedností pomocí Microsoft Learn
+      href: /learn/browse/?products=azure-cosmos-db
+    - name: Tahák pro dotazy
+      href: query-cheat-sheet.md
+    - name: SQL Playground
+      href: 'https://aka.ms/cosmos-db-playground'
+    - name: Nejčastější dotazy
+      href: faq.md
+    - name: Dokumenty white paper
+      href: whitepapers.md
+    - name: Partneři
+      href: partners-migration-cosmosdb.md
+    - name: Videa
+      href: 'https://azure.microsoft.com/resources/videos/index/?services=cosmos-db'
+    - name: Plány Azure do budoucna
+      href: 'https://azure.microsoft.com/roadmap/'
+    - name: Vyzkoušejte si Azure Cosmos DB zdarma
+      href: 'https://azure.microsoft.com/try/cosmosdb/'
+    - name: Ceny
+      href: 'https://azure.microsoft.com/pricing/details/cosmos-db/'
+    - name: Případy použití
+      items:
+        - name: Běžné případy použití
+          href: use-cases.md
+        - name: Aplikace sociálních médií
+          href: social-media-apps.md

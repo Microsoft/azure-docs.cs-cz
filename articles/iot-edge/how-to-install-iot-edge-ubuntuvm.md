@@ -1,7 +1,7 @@
 ---
 title: Spusťte Azure IoT Edge na virtuálních počítačích se systémem Ubuntu | Dokumentace Microsoftu
 description: Azure IoT Edge pokyny k instalaci na Ubuntu 16.04 Marketplace virtuálních počítačích Azure
-author: gregman
+author: gregman-msft
 manager: arjmands
 ms.reviewer: kgremban
 ms.service: iot-edge
@@ -9,12 +9,12 @@ services: iot-edge
 ms.topic: conceptual
 ms.date: 03/29/2019
 ms.author: gregman
-ms.openlocfilehash: 5cb15f45508b60a1b7f8c9049b8779c1b7d31150
-ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
+ms.openlocfilehash: 7062bd2dbd8c375b8dd3fad348e5cc26de8f36d2
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58757928"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59698584"
 ---
 # <a name="run-azure-iot-edge-on-ubuntu-virtual-machines"></a>Spusťte Azure IoT Edge na virtuálních počítačích se systémem Ubuntu
 
@@ -95,6 +95,6 @@ Pokud chcete se SSH do tohoto virtuálního počítače po dokončení instalace
 
 Teď, když máte zařízení IoT Edge zřízené s modulem runtime nainstalovaný, je možné [nasadit moduly IoT Edge](how-to-deploy-modules-portal.md).
 
-Pokud máte problémy s modulu runtime Edge instalaci správně, podívejte se [řešení potíží s](troubleshoot.md) stránky.
+Pokud máte potíže s modulem runtime IoT Edge instalaci správně, podívejte se [řešení potíží s](troubleshoot.md) stránky.
 
 Aktualizace stávající instalace na nejnovější verzi služby IoT Edge, najdete v článku [aktualizovat démon zabezpečení IoT Edge a modulu runtime](how-to-update-iot-edge.md).

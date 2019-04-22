@@ -11,13 +11,13 @@ ms.workload: infrastructure-services
 ms.date: 04/03/2019
 ms.author: rambala
 ms.openlocfilehash: 4923c7f2048b7368af6314d5e2288216115bc3bc
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/05/2019
-ms.locfileid: "59052654"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59784735"
 ---
-# <a name="cross-network-connectivity"></a>Připojení k síti mezi
+# <a name="cross-network-connectivity"></a>Možnosti připojení mezi sítěmi
 
 Společnost Fabrikam, Inc. má velký fyzickou přítomnost a nasazení Azure v oblasti východní USA. Společnost Fabrikam má back-end připojení mezi místní a nasazení Azure přes ExpressRoute. Podobně Contoso Ltd. má prezentace a nasazení Azure v oblasti západní USA. Contoso má back-end připojení mezi místní a nasazení Azure přes ExpressRoute.  
 

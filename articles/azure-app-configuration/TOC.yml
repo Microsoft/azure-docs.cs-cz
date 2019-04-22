@@ -1,64 +1,57 @@
-items:
 - name: Dokumentace ke službě Azure App Configuration (Preview)
   href: index.yml
 - name: Přehled
   items:
-  - name: Služba Azure App Configuration
-    href: overview.md
+    - name: Služba Azure App Configuration
+      href: overview.md
 - name: Šablony Rychlý start
-  items:
-  - name: Vytvoření aplikace v ASP.NET Core
-    href: quickstart-aspnet-core-app.md
-  - name: Vytvoření aplikace v .NET Core
-    href: quickstart-dotnet-core-app.md
-  - name: Vytvoření aplikace v .NET Frameworku
-    href: quickstart-dotnet-app.md
-  - name: Vytvořit funkci Azure
-    href: quickstart-azure-function-csharp.md
-  - name: Vytvoření aplikace v Java Springu
-    href: quickstart-java-spring-app.md
   expanded: true
+  items:
+    - name: Vytvoření aplikace v ASP.NET Core
+      href: quickstart-aspnet-core-app.md
+    - name: Vytvoření aplikace v .NET Core
+      href: quickstart-dotnet-core-app.md
+    - name: Vytvoření aplikace v .NET Frameworku
+      href: quickstart-dotnet-app.md
+    - name: Vytvořit funkci Azure
+      href: quickstart-azure-function-csharp.md
+    - name: Vytvoření aplikace v Java Springu
+      href: quickstart-java-spring-app.md
 - name: Kurzy
   items:
-  - name: Povolení dynamické konfigurace v ASP.NET Core
-    href: enable-dynamic-configuration-aspnet-core.md
-  - name: Integrace s identitou spravované služby Azure
-    href: integrate-azure-managed-service-identity.md
+    - name: Povolení dynamické konfigurace v ASP.NET Core
+      href: enable-dynamic-configuration-aspnet-core.md
+    - name: Integrace s kanálem CI/CD
+      href: integrate-ci-cd-pipeline.md
 - name: Ukázky
   items:
-  - name: Azure CLI
-    href: cli-samples.md
+    - name: Azure CLI
+      href: cli-samples.md
 - name: Koncepty
   items:
-  - name: Ukládání hodnot klíče
-    href: concept-key-value.md
-  - name: Snímek k určitému časovému okamžiku
-    href: concept-point-time-snapshot.md
+    - name: Ukládání hodnot klíče
+      href: concept-key-value.md
+    - name: Snímek k určitému časovému okamžiku
+      href: concept-point-time-snapshot.md
 - name: Návody
   items:
-  - name: Import nebo export konfiguračních dat
-    href: howto-import-export-data.md
-  - name: Integrace s kanálem CI/CD
-    href: howto-integrate-ci-cd-pipeline.md
+    - name: Integrace s identitou spravované služby Azure
+      href: howto-integrate-azure-managed-service-identity.md
+    - name: Import nebo export konfiguračních dat
+      href: howto-import-export-data.md
 - name: Referenční informace
   items:
-  - name: Zprostředkovatel konfigurace .NET Core
-    href: https://go.microsoft.com/fwlink/?linkid=2074664
-  - name: Tvůrce konfigurace .NET Framework
-    href: https://go.microsoft.com/fwlink/?linkid=2074663
-  - name: Zprostředkovatel konfigurace Java Spring
-    href: https://github.com/Microsoft/spring-cloud-azure/tree/azure-config/spring-cloud-azure-starters/spring-cloud-starter-azure-config
-  - name: .NET Azure SDK
-    href: https://github.com/Azure/azure-sdk-for-net/tree/master/src/SDKs/Azure.ApplicationModel.Configuration/data-plane
-  - name: REST
-    href: https://go.microsoft.com/fwlink/?linkid=2078296
+    - name: Zprostředkovatel konfigurace .NET Core
+      href: 'https://go.microsoft.com/fwlink/?linkid=2074664'
+    - name: Tvůrce konfigurace .NET Framework
+      href: 'https://go.microsoft.com/fwlink/?linkid=2074663'
+    - name: Zprostředkovatel konfigurace Java Spring
+      href: 'https://github.com/Microsoft/spring-cloud-azure/tree/azure-config/spring-cloud-azure-starters/spring-cloud-starter-azure-config'
+    - name: .NET Azure SDK
+      href: 'https://github.com/Azure/azure-sdk-for-net/tree/master/src/SDKs/Azure.ApplicationModel.Configuration/data-plane'
+    - name: REST
+      href: 'https://go.microsoft.com/fwlink/?linkid=2078296'
 - name: Zdroje a prostředky
   items:
-  - name: Poskytnutí zpětné vazby k produktu
-    href: https://github.com/Azure/AppConfiguration
-ms.openlocfilehash: c4712f08112a1abaf8524677746d9c0e929ee097
-ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
-ms.translationtype: HT
-ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2019
-ms.locfileid: "58576407"
+    - name: Poskytnutí zpětné vazby k produktu
+      href: 'https://github.com/Azure/AppConfiguration'

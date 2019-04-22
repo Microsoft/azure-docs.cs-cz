@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 9d67a87b182758e37c9e379a8f96a6540797ce3e
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.openlocfilehash: 95ee0a4d5d150741e59c0c2d20abebe9609e179f
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58482942"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59699009"
 ---
 # <a name="configure-an-iot-edge-device-to-act-as-a-transparent-gateway"></a>Konfigurace zařízení tak, aby fungoval jako transparentní brána IoT Edge
 
@@ -260,6 +260,18 @@ Můžete zkontrolovat, které moduly jsou spuštěny na zařízení pomocí př�
    ```
 
 6. V **šablona kontrolní** stránce **odeslat**.
+
+## <a name="open-ports-on-gateway-device"></a>Otevření portů na zařízení brány
+
+Standardní zařízení IoT Edge nepotřebují příchozí připojení na funkci, protože veškerá komunikace s IoT Hub se provádí prostřednictvím odchozího připojení. Zařízení brány se však liší, protože musí být schopný přijímat zprávy ze svých zařízení příjem dat.
+
+Pro scénáře brány pro práci musí být otevřené pro příchozí provoz z podřízené zařízení alespoň jeden z podporovaných protokolů Centrum IoT Edge. Podporované portocols jsou protokol MQTT, AMQP a protokolu HTTPS.
+
+| Port | Protocol (Protokol) |
+| ---- | -------- |
+| 8883 | MQTT |
+| 5671 | AMQP |
+| 443 | HTTPS <br> MQTT+WS <br> AMQP+WS | 
 
 ## <a name="route-messages-from-downstream-devices"></a>Směrování zpráv ze zařízení příjem dat
 Modul runtime IoT Edge může směrovat zprávy odeslané ze zařízení příjem dat, stejně jako zprávy odeslané moduly. To umožňuje provádět analýzy v modulu na bráně spuštěna před odesláním všechna data do cloudu. 
