@@ -9,10 +9,10 @@ ms.date: 04/08/2019
 ms.topic: conceptual
 ms.author: raynew
 ms.openlocfilehash: 2ab29c6e41204104320f4c2f583a24e53786bf3c
-ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
-ms.translationtype: MT
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59360536"
 ---
 # <a name="common-questions---vmware-to-azure-replication"></a>Časté otázky – VMware pro replikaci Azure
@@ -87,7 +87,7 @@ Nainstalujete na každý virtuální počítač, který chcete replikovat, pomoc
 - [Ruční instalace](vmware-physical-mobility-service-overview.md#install-mobility-agent-through-ui) z uživatelského rozhraní nebo Powershellu.
 - Nasazení pomocí nástroje nasazení, jako [System Center Configuration Manager](vmware-azure-mobility-install-configuration-mgr.md).
 
-## <a name="managed-disks"></a>Managed Disks
+## <a name="managed-disks"></a>Spravované disky
 
 ### <a name="where-does-site-recovery-replicate-data-to"></a>Kde Site Recovery replikovat data?
 

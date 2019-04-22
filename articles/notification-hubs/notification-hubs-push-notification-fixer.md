@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 04/04/2019
 ms.author: jowargo
 ms.openlocfilehash: 4af86025e714c65d0ae225b271a2d0970bb96ee8
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59281637"
 ---
 # <a name="azure-notification-hubs---diagnose-dropped-notifications"></a>Diagnostika Azure Notification Hubs – vynechaná oznámení
@@ -111,7 +111,7 @@ Protože službám oznamování platformy jsou odolnější, mají tendenci ozn�
 
 Pokud služba nabízených oznámení pokusí doručit oznámení, ale je zařízení offline, oznámení se ukládá pomocí služby nabízených oznámení po omezenou dobu. Oznámení se doručí do zařízení, když zařízení přestane být k dispozici.
 
-Pro každou aplikaci se ukládají pouze jedno poslední upozornění. Pokud více oznámení se posílají, když je zařízení offline, každé nové oznámení způsobí, že předchozí oznámení budou zahozeny. Zachovat pouze nejnovější oznámení se označuje jako *slučovací oznámení* v APN, a *sbalení* v FCM, (ta používá sbalení klíč). Pokud zařízení zůstane offline po dlouhou dobu, všechna naše oznámení, které byly uložené pro zařízení se zahodí. Další informace najdete v článku [přehled APN] a [zpráv FCM o].
+Pro každou aplikaci se ukládají pouze jedno poslední upozornění. Pokud více oznámení se posílají, když je zařízení offline, každé nové oznámení způsobí, že předchozí oznámení budou zahozeny. Zachovat pouze nejnovější oznámení se označuje jako *slučovací oznámení* v APN, a *sbalení* v FCM, (ta používá sbalení klíč). Pokud zařízení zůstane offline po dlouhou dobu, všechna naše oznámení, které byly uložené pro zařízení se zahodí. Další informace najdete v článku [přehled APN] a [O zpráv FCM].
 
 Pomocí Azure Notification Hubs můžete předat slučovací klíč prostřednictvím hlavičky protokolu HTTP pomocí obecného rozhraní API SendNotification. Například pro sadu .NET SDK můžete využít `SendNotificationAsync`. Rozhraní API SendNotification také využívá hlavičky HTTP, které jsou předány jako-je služba příslušných nabízených oznámení.
 
@@ -125,7 +125,7 @@ Tady jsou cesty k diagnostikovat původní příčinu vynechané oznámení v No
 
 Ověřte přihlašovací údaje v příslušných nabízená oznámení služby portálu pro vývojáře (APNs, FCM, Windows Notification Service a tak dále). Další informace najdete v tématu [Začínáme s Azure Notification Hubs].
 
-**portál Azure**
+**Azure Portal**
 
 Ke kontrole a odpovídat přihlašovacím údajům s těmi, které jste získali z nabízených oznámení služby portálu pro vývojáře, na webu Azure Portal, přejděte **zásady přístupu** kartu.
 
@@ -166,7 +166,7 @@ Mnozí uživatelé používají [Service Bus Exploreru](https://github.com/paolo
 
 ### <a name="verify-message-notifications"></a>Ověření zprávy s oznámením
 
-**portál Azure**
+**Azure Portal**
 
 Chcete-li odeslat testovací oznámení vašim klientům bez služby back-end provoz, v části **podpora a řešení potíží**vyberte **testovací odeslání**.
 
@@ -243,7 +243,7 @@ Tato zpráva znamená, že buď neplatné přihlašovací údaje jsou nakonfigur
 
 ### <a name="review-telemetry"></a>Zkontrolujte telemetrická data
 
-**portál Azure**
+**Azure Portal**
 
 Na portálu můžete získat rychlý přehled o všech aktivit v centru oznámení.
 

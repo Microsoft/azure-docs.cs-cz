@@ -1,5 +1,5 @@
 ---
-title: Registrace datových assetů ve službě Azure Data Catalog
+title: Registrace datových prostředků v Azure Data Catalogu
 description: Postup při registraci datových assetů v katalogu dat Azure
 author: markingmyname
 ms.author: maghan
@@ -7,13 +7,13 @@ ms.service: data-catalog
 ms.topic: tutorial
 ms.date: 04/08/2019
 ms.openlocfilehash: e89bd4806e2bb2369c100e948be51dcf32f2e123
-ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
-ms.translationtype: MT
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59362343"
 ---
-# <a name="tutorial-register-data-assets-in-azure-data-catalog"></a>Kurz: Registrace datových assetů ve službě Azure Data Catalog
+# <a name="tutorial-register-data-assets-in-azure-data-catalog"></a>Kurz: Registrace datových prostředků v Azure Data Catalogu
 
 V tomto kurzu použijete nástroj pro registraci k registraci ve službě katalogu datové assety z ukázkové databáze Azure SQL. Registrace je proces extrahování klíčových strukturálních metadat – například názvy, typy a umístění – ze zdroje dat a assetů v tomto zdroji a zkopírování těchto metadat do katalogu. Zdroj dat a datové assety zůstanou tam, kde jsou, ale jejich metadata použije katalog k tomu, aby byly tyto objekty snadněji zjistitelné a srozumitelnější.
 

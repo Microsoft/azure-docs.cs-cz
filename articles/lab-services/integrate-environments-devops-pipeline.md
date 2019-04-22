@@ -13,10 +13,10 @@ ms.topic: article
 ms.date: 04/02/2019
 ms.author: spelluru
 ms.openlocfilehash: deb5595ac6a8b0d189e5594fda8e4b60480d038c
-ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59357405"
 ---
 # <a name="integrate-environments-into-your-azure-devops-cicd-pipelines"></a>Integrace prostředí kanálech Azure DevOps CI/CD
@@ -27,7 +27,7 @@ Tento článek ukazuje, jak vytvořit a nasadit prostředí, a potom odstranit p
 - Vytvoření prostředí
 - Odstranění prostředí
 
-## <a name="before-you-begin"></a>Před zahájením
+## <a name="before-you-begin"></a>Než začnete
 Než svůj kanál CI/CD můžete integrovat s Azure DevTest Labs, nainstalovat [úloh Azure DevTest Labs](https://marketplace.visualstudio.com/items?itemName=ms-azuredevtestlabs.tasks) rozšíření z Visual Studio Marketplace. 
 
 ## <a name="create-and-configure-the-lab-for-environments"></a>Vytvoření a konfigurace testovacího prostředí pro prostředí

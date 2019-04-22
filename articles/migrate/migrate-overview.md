@@ -8,10 +8,10 @@ ms.date: 04/04/2019
 ms.author: raynew
 ms.custom: mvc
 ms.openlocfilehash: e0249535813c6b8d652775f68a696d8c25ead5a1
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59275438"
 ---
 # <a name="about-azure-migrate"></a>Informace o službě Azure Migrate
@@ -37,7 +37,7 @@ Azure Migrate vám pomůže s následujícími úlohami:
 - Azure Migrate podporuje pro posouzení migrace jenom spravované disky.
 -  Projekt Azure Migrate můžete vytvořit pouze v následujících zeměpisných oblastech. Ale to vás neomezuje vaše schopnost vytvořit posouzení pro jiné cílové umístění Azure.
 
-    **Geografie** | **Umístění úložiště**
+    **Zeměpisné oblasti** | **Umístění úložiště**
     --- | ---
     Azure Government | USA (Gov) – Virginia
     Asie | Jihovýchodní Asie a jihovýchodní Asie
@@ -62,7 +62,7 @@ Nastavení posouzení si můžete přizpůsobit podle vašich potřeb. Souhrn vl
 **Cílové umístění** | Umístění Azure, do kterého chcete migrovat.<br/><br/>Azure Migrate aktuálně podporuje 33 oblastech jako cílové umístění migrace. [Seznam oblastí najdete tady](https://azure.microsoft.com/global-infrastructure/services/). Ve výchozím nastavení cílové oblasti nastavená oblast východní USA.
 **Typ úložiště** | Typ spravované disky, které chcete přidělit pro všechny virtuální počítače, které jsou součástí posouzení. Pokud je kritérium určení velikosti *jako v místním nastavení velikosti* cílový typ disku můžete zadat buď jako disky premium (výchozí), standardní disky SSD nebo standardní HDD disky. Pro *určení velikosti na základě výkonu*, spolu s výše uvedených možností, máte také možnost vybrat automatického, která zajistí, že na disku, doporučení velikosti provádí automaticky podle data o výkonu virtuálních počítačů. Například, pokud chcete dosáhnout [jednu instanci virtuálního počítače SLA 99,9 %](https://azure.microsoft.com/support/legal/sla/virtual-machines/v1_8/), můžete chtít zadat typ úložiště jako spravované disky úrovně Premium, které zajistí, že všechny disky v posouzení se doporučují jako spravované disky úrovně Premium. Poznámka: Azure Migrate podporuje pro posouzení migrace jenom spravované disky.
 **Rezervované instance** |  Můžete zadat, jestli v Azure máte [rezervované instance](https://azure.microsoft.com/pricing/reserved-vm-instances/). Azure Migrate odhadne náklady odpovídajícím způsobem.
-**Kritérium velikosti** | Nastavení velikosti může být založen na **historie výkonu** z místních virtuálních počítačů (výchozí), nebo **jako místní**, bez zohlednění historie výkonu.
+**Kritérium určení velikosti** | Nastavení velikosti může být založen na **historie výkonu** z místních virtuálních počítačů (výchozí), nebo **jako místní**, bez zohlednění historie výkonu.
 **Historie výkonu** | Azure Migrate ve výchozím nastavení vyhodnocuje výkon místních počítačů s využitím historie výkonu za poslední den a hodnoty 95. percentilu.
 **Faktor komfortu** | Azure Migrate při posuzování počítá s rezervou (faktor komfortu). Tato rezerva se použije nad rámec dat o využití počítače pro virtuální počítače (procesor, paměť, disk a síť). Důvodem použití faktoru komfortu jsou problémy, jako jsou sezónní využití, krátká historie výkonu a pravděpodobný růst budoucího využití.<br/><br/> Například z virtuálního počítače s 10 jádry a 20% využitím je normálně ve výsledku virtuální počítač se 2 jádry. S faktorem komfortu 2,0× je však výsledkem virtuální počítač se 4 jádry. Výchozí nastavení komfortu je 1,3×.
 **Řada virtuálních počítačů** | Řada virtuálních počítačů, která se použije k odhadu velikostí. Pokud máte například produkční prostředí, které se nechystáte migrovat na virtuální počítače řady A-Series v Azure, můžete vyloučit řadu A-Series ze seznamu nebo řad. Určení velikosti se provádí pouze na základě vybraných řad.   

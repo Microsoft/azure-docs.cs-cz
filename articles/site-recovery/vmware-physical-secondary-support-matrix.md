@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 04/08/2019
 ms.author: raynew
 ms.openlocfilehash: b316d6a8293d9f23eb89e8b6fffedac316759df4
-ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59360157"
 ---
 # <a name="support-matrix-for-disaster-recovery-of-vmware-vms-and-physical-servers-to-a-secondary-site"></a>Matice podpory pro zotavení po havárii virtuálních počítačů VMware a fyzických serverů do sekundární lokality
@@ -55,7 +55,7 @@ Je možné replikovat jenom počítače s Linuxem pomocí následující úloži
 
 ## <a name="network-configuration---hostguest-vm"></a>Konfigurace sítě - hostitele nebo hosta virtuálního počítače
 
-**Konfigurace** | **Podporováno**  
+**Konfigurace** | **Podporuje se**  
 --- | --- 
 Hostitel – seskupování síťových adaptérů | Ano 
 Host - VLAN | Ano 
@@ -68,11 +68,11 @@ Hostovaný virtuální počítač – Windows/Linux - statická IP adresa | Ano
 Hosta virtuálního počítače – s více síťovými Kartami | Ano
 
 
-## <a name="storage"></a>Storage
+## <a name="storage"></a>Úložiště
 
 ### <a name="host-storage"></a>Úložiště hostitele
 
-**Úložiště (hostitel)** | **Podporováno** 
+**Úložiště (hostitel)** | **Podporuje se** 
 --- | --- 
 NFS | Ano 
 SMB 3.0 | neuvedeno 
@@ -81,7 +81,7 @@ Více cest (MPIO) | Ano
 
 ### <a name="guest-or-physical-server-storage"></a>Host nebo fyzický server úložiště
 
-**Konfigurace** | **Podporováno** 
+**Konfigurace** | **Podporuje se** 
 --- | --- 
 VMDK | Ano 
 VHD/VHDX | neuvedeno 
@@ -101,7 +101,7 @@ Více cest (MPIO) | neuvedeno
 
 ## <a name="vaults"></a>Trezory
 
-**Akce** | **Podporováno** 
+**Akce** | **Podporuje se** 
 --- | --- 
 Přesun trezorů služby mezi skupinami prostředků (v rámci předplatného ani mezi předplatnými) | Ne 
 Přesunout úložiště, sítě, virtuální počítače Azure mezi skupinami prostředků (v rámci předplatného ani mezi předplatnými) | Ne 

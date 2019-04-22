@@ -13,10 +13,10 @@ ms.reviewer: sstein
 manager: craigg
 ms.date: 01/25/2019
 ms.openlocfilehash: 7db9c6400ac7d235153a59965e34e30d9b809a81
-ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59359690"
 ---
 # <a name="how-to-use-azure-sql-database"></a>Jak používat Azure SQL Database
@@ -26,28 +26,28 @@ V této části najdete různé průvodce, skripty a vysvětlení, které vám m
 ## <a name="load-data"></a>Načtení dat
 
 - [Zkopírujte izolovanou databázi nebo databázi ve fondu v rámci Azure](sql-database-copy.md)
-- [Import databáze z BACPAC](sql-database-import.md)
-- [Export databáze do BACPAC](sql-database-export.md)
+- [Import databáze ze souboru BACPAC](sql-database-import.md)
+- [Export databáze do souboru BACPAC](sql-database-export.md)
 - [Načítání dat pomocí BCP](sql-database-load-from-csv-with-bcp.md)
 - [Načítání dat pomocí ADF](../data-factory/connector-azure-sql-database.md?toc=/azure/sql-database/toc.json)
 
 ### <a name="data-sync"></a>Synchronizace dat
 
-- [Synchronizace dat SQL](sql-database-sync-data.md)
+- [SQL Data Sync](sql-database-sync-data.md)
 - [Agent synchronizace dat](sql-database-data-sync-agent.md)
-- [Replikace změn schématu](sql-database-update-sync-schema.md)
+- [Replikovat změny schématu](sql-database-update-sync-schema.md)
 - [Monitorování pomocí OMS](sql-database-sync-monitor-oms.md)
 - [Osvědčené postupy pro synchronizaci dat](sql-database-best-practices-data-sync.md)
-- [Řešení potíží se synchronizací dat](sql-database-troubleshoot-data-sync.md)
+- [Řešení potíží s synchronizace dat](sql-database-troubleshoot-data-sync.md)
 
 ## <a name="monitoring-and-tuning"></a>Sledování a ladění
 
 - [Ruční ladění](sql-database-performance-guidance.md)
 - [Monitorování výkonu pomocí zobrazení dynamické správy](sql-database-monitoring-with-dmvs.md)
 - [Monitorování výkonu pomocí úložiště dotazů](sql-database-operate-query-store.md)
-- [Řešení potíží s výkonem s využitím služby Intelligent Insights](sql-database-intelligent-insights-troubleshoot-performance.md)
-- [Použití diagnostických protokolů Intelligent Insights](sql-database-intelligent-insights-use-diagnostics-log.md)
-- [Monitorování prostoru OLTP v paměti](sql-database-in-memory-oltp-monitoring.md)
+- [Řešení potíží s výkonem Intelligent insights](sql-database-intelligent-insights-troubleshoot-performance.md)
+- [Použít protokol diagnostiky inteligentních přehledů](sql-database-intelligent-insights-use-diagnostics-log.md)
+- [Monitorování místa na OLTP v paměti](sql-database-in-memory-oltp-monitoring.md)
 
 ### <a name="extended-events"></a>Rozšířené události
 
@@ -60,13 +60,13 @@ V této části najdete různé průvodce, skripty a vysvětlení, které vám m
 - [Konfigurace ověřování Azure AD](sql-database-aad-authentication-configure.md)
 - [Konfigurace podmíněného přístupu](sql-database-conditional-access.md)
 - [Vícefaktorové ověřování AAD](sql-database-ssms-mfa-authentication.md)
-- [Konfigurace vícefaktorového ověřování](sql-database-ssms-mfa-authentication-configure.md)
-- [Konfigurace zásad dočasného uchovávání informací](sql-database-temporal-tables-retention-policy.md)
-- [Transparentní šifrování dat s využitím služby BYOK](transparent-data-encryption-byok-azure-sql-configure.md)
-- [Obměna klíčů BYOK transparentního šifrování dat](transparent-data-encryption-byok-azure-sql-key-rotation.md)
-- [Odebrání ochrany transparentního šifrování dat](transparent-data-encryption-byok-azure-sql-remove-tde-protector.md)
+- [Konfigurace ověřování službou Multi-Factor Authentication](sql-database-ssms-mfa-authentication-configure.md)
+- [Konfigurace zásad pro dočasné uchovávání informací](sql-database-temporal-tables-retention-policy.md)
+- [Nakonfigurovat transparentní šifrování dat pomocí funkce BYOK](transparent-data-encryption-byok-azure-sql-configure.md)
+- [Obměna klíčů BYOK transparentní šifrování dat](transparent-data-encryption-byok-azure-sql-key-rotation.md)
+- [Odebrat ochrana TDE](transparent-data-encryption-byok-azure-sql-remove-tde-protector.md)
 - [Konfigurace OLTP v paměti](sql-database-in-memory-oltp-migration.md)
-- [Konfigurovat Azure Automation](sql-database-manage-automation.md)
+- [Konfigurace služby Azure Automation](sql-database-manage-automation.md)
 
 ## <a name="develop-applications"></a>Vývoj aplikací
 

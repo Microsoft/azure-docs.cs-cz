@@ -8,10 +8,10 @@ ms.topic: overview
 ms.date: 01/02/2018
 ms.author: lbosq
 ms.openlocfilehash: fd49cc6810f4a3a479748180ddb0c44aedf04e89
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59275551"
 ---
 # <a name="azure-cosmos-db-gremlin-graph-support"></a>Podpora grafu Gremlin ve službě Azure Cosmos DB
@@ -154,41 +154,41 @@ Nyní se podívejme na kroky v jazyce Gremlin, které Azure Cosmos DB podporuje.
 
 | Krok | Popis | Dokumentace TinkerPop 3.2 |
 | --- | --- | --- |
-| `addE` | Přidá okraj mezi dva vrcholy. | [Krok addE](https://tinkerpop.apache.org/docs/current/reference/#addedge-step) |
-| `addV` | Přidá do grafu vrchol. | [Krok addV](https://tinkerpop.apache.org/docs/current/reference/#addvertex-step) |
-| `and` | Zajišťuje, že všechna procházení vrátí hodnotu. | [a kroku](https://tinkerpop.apache.org/docs/current/reference/#and-step) |
-| `as` | Modulátor kroku pro přiřazení proměnné k výstupu kroku. | [jako krok](https://tinkerpop.apache.org/docs/current/reference/#as-step) |
-| `by` | Jedno krok použít s `group` a `order` | [Krok](https://tinkerpop.apache.org/docs/current/reference/#by-step) |
-| `coalesce` | Vrátí první procházení, které vrátí výsledek. | [COALESCE kroku](https://tinkerpop.apache.org/docs/current/reference/#coalesce-step) |
-| `constant` | Vrátí konstantní hodnotu. Použít s `coalesce`| [konstantní kroku](https://tinkerpop.apache.org/docs/current/reference/#constant-step) |
-| `count` | Vrátí počet procházení. | [Krok počtu](https://tinkerpop.apache.org/docs/current/reference/#count-step) |
-| `dedup` | Vrátí hodnoty s odebranými duplicitními objekty. | [krok při odstraňování duplicitních dat](https://tinkerpop.apache.org/docs/current/reference/#dedup-step) |
-| `drop` | Zahodí hodnoty (vrchol/hrana). | [Přetáhněte krok.](https://tinkerpop.apache.org/docs/current/reference/#drop-step) |
+| `addE` | Přidá okraj mezi dva vrcholy. | [addE step](https://tinkerpop.apache.org/docs/current/reference/#addedge-step) |
+| `addV` | Přidá do grafu vrchol. | [addV step](https://tinkerpop.apache.org/docs/current/reference/#addvertex-step) |
+| `and` | Zajišťuje, že všechna procházení vrátí hodnotu. | [and step](https://tinkerpop.apache.org/docs/current/reference/#and-step) |
+| `as` | Modulátor kroku pro přiřazení proměnné k výstupu kroku. | [as step](https://tinkerpop.apache.org/docs/current/reference/#as-step) |
+| `by` | Modulátor kroku používaný s krokem `group` a `order`. | [by step](https://tinkerpop.apache.org/docs/current/reference/#by-step) |
+| `coalesce` | Vrátí první procházení, které vrátí výsledek. | [coalesce step](https://tinkerpop.apache.org/docs/current/reference/#coalesce-step) |
+| `constant` | Vrátí konstantní hodnotu. Používá se s krokem `coalesce`.| [constant step](https://tinkerpop.apache.org/docs/current/reference/#constant-step) |
+| `count` | Vrátí počet procházení. | [count step](https://tinkerpop.apache.org/docs/current/reference/#count-step) |
+| `dedup` | Vrátí hodnoty s odebranými duplicitními objekty. | [dedup step](https://tinkerpop.apache.org/docs/current/reference/#dedup-step) |
+| `drop` | Zahodí hodnoty (vrchol/hrana). | [drop step](https://tinkerpop.apache.org/docs/current/reference/#drop-step) |
 | `executionProfile` | Vytvoří popis všech operací generovaných provedený krok Gremlin | [Krok executionProfile](graph-execution-profile.md) |
-| `fold` | Slouží jako bariéra, která vypočítá agregaci výsledků.| [Přeložte kroku](https://tinkerpop.apache.org/docs/current/reference/#fold-step) |
-| `group` | Seskupí hodnoty na základě zadaných popisků.| [skupiny kroku](https://tinkerpop.apache.org/docs/current/reference/#group-step) |
-| `has` | Slouží k filtrování vlastností, vrcholů a okrajů. Podporuje varianty `hasLabel`, `hasId`, `hasNot` a `has`. | [má krok](https://tinkerpop.apache.org/docs/current/reference/#has-step) |
-| `inject` | Vloží hodnoty do streamu.| [Vložit krok](https://tinkerpop.apache.org/docs/current/reference/#inject-step) |
-| `is` | Slouží k filtrování pomocí logického výrazu. | [je krok](https://tinkerpop.apache.org/docs/current/reference/#is-step) |
-| `limit` | Slouží k omezení počtu položek v procházení.| [limit kroku](https://tinkerpop.apache.org/docs/current/reference/#limit-step) |
-| `local` | Místně zabalí oddíl procházení podobně jako u vnořeného dotazu. | [místní kroku](https://tinkerpop.apache.org/docs/current/reference/#local-step) |
-| `not` | Slouží k vytvoření negace filtru. | [není kroku](https://tinkerpop.apache.org/docs/current/reference/#not-step) |
-| `optional` | Vrátí výsledek zadaného procházení, pokud vrací výsledek, jinak vrátí volající element. | [volitelný krok](https://tinkerpop.apache.org/docs/current/reference/#optional-step) |
-| `or` | Zajišťuje, že alespoň jedno procházení vrátí hodnotu. | [nebo kroku](https://tinkerpop.apache.org/docs/current/reference/#or-step) |
-| `order` | Vrátí výsledky v zadaném pořadí řazení. | [Krok pořadí](https://tinkerpop.apache.org/docs/current/reference/#order-step) |
-| `path` | Vrátí úplnou cestu procházení. | [Krok cesty](https://tinkerpop.apache.org/docs/current/reference/#path-step) |
-| `project` | Zobrazí vlastnosti jako mapu. | [Krok projektu](https://tinkerpop.apache.org/docs/current/reference/#project-step) |
-| `properties` | Vrátí vlastnosti zadaných popisků. | [vlastnosti kroku](https://tinkerpop.apache.org/docs/current/reference/#properties-step) |
-| `range` | Vyfiltruje zadaný rozsah hodnot.| [Krok rozsahu](https://tinkerpop.apache.org/docs/current/reference/#range-step) |
-| `repeat` | Opakuje krok po zadaný počet opakování. Slouží k vytváření cyklů. | [Opakujte krok](https://tinkerpop.apache.org/docs/current/reference/#repeat-step) |
-| `sample` | Slouží k zobrazení ukázkových výsledků z procházení. | [Ukázka kroku](https://tinkerpop.apache.org/docs/current/reference/#sample-step) |
-| `select` | Slouží k zobrazení výsledků z procházení. |  [Vyberte krok](https://tinkerpop.apache.org/docs/current/reference/#select-step) |
-| `store` | Slouží k zobrazení neblokujících agregací z procházení. | [Krok úložiště](https://tinkerpop.apache.org/docs/current/reference/#store-step) |
-| `tree` | Agreguje cesty z vrcholu do stromu. | [Krok stromu](https://tinkerpop.apache.org/docs/current/reference/#tree-step) |
-| `unfold` | Rozbalí iterátor jako krok.| [unfold kroku](https://tinkerpop.apache.org/docs/current/reference/#unfold-step) |
-| `union` | Sloučí výsledky z více procházení.| [sjednocení kroku](https://tinkerpop.apache.org/docs/current/reference/#union-step) |
-| `V` | Zahrnuje kroky nutné pro procházení mezi vrcholy a okraji: `V`, `E`, `out`, `in`, `both`, `outE`, `inE`, `bothE`, `outV`, `inV`, `bothV` a `otherV`. | [kroky vrcholu](https://tinkerpop.apache.org/docs/current/reference/#vertex-steps) |
-| `where` | Slouží k filtrování výsledků z procházení. Podporuje operátory `eq`, `neq`, `lt`, `lte`, `gt`, `gte` a `between`.  | [Pokud krok](https://tinkerpop.apache.org/docs/current/reference/#where-step) |
+| `fold` | Slouží jako bariéra, která vypočítá agregaci výsledků.| [fold step](https://tinkerpop.apache.org/docs/current/reference/#fold-step) |
+| `group` | Seskupí hodnoty na základě zadaných popisků.| [group step](https://tinkerpop.apache.org/docs/current/reference/#group-step) |
+| `has` | Slouží k filtrování vlastností, vrcholů a okrajů. Podporuje varianty `hasLabel`, `hasId`, `hasNot` a `has`. | [has step](https://tinkerpop.apache.org/docs/current/reference/#has-step) |
+| `inject` | Vloží hodnoty do streamu.| [inject step](https://tinkerpop.apache.org/docs/current/reference/#inject-step) |
+| `is` | Slouží k filtrování pomocí logického výrazu. | [is step](https://tinkerpop.apache.org/docs/current/reference/#is-step) |
+| `limit` | Slouží k omezení počtu položek v procházení.| [limit step](https://tinkerpop.apache.org/docs/current/reference/#limit-step) |
+| `local` | Místně zabalí oddíl procházení podobně jako u vnořeného dotazu. | [local step](https://tinkerpop.apache.org/docs/current/reference/#local-step) |
+| `not` | Slouží k vytvoření negace filtru. | [not step](https://tinkerpop.apache.org/docs/current/reference/#not-step) |
+| `optional` | Vrátí výsledek zadaného procházení, pokud vrací výsledek, jinak vrátí volající element. | [optional step](https://tinkerpop.apache.org/docs/current/reference/#optional-step) |
+| `or` | Zajišťuje, že alespoň jedno procházení vrátí hodnotu. | [or step](https://tinkerpop.apache.org/docs/current/reference/#or-step) |
+| `order` | Vrátí výsledky v zadaném pořadí řazení. | [order step](https://tinkerpop.apache.org/docs/current/reference/#order-step) |
+| `path` | Vrátí úplnou cestu procházení. | [path step](https://tinkerpop.apache.org/docs/current/reference/#path-step) |
+| `project` | Zobrazí vlastnosti jako mapu. | [project step](https://tinkerpop.apache.org/docs/current/reference/#project-step) |
+| `properties` | Vrátí vlastnosti zadaných popisků. | [properties step](https://tinkerpop.apache.org/docs/current/reference/#properties-step) |
+| `range` | Vyfiltruje zadaný rozsah hodnot.| [range step](https://tinkerpop.apache.org/docs/current/reference/#range-step) |
+| `repeat` | Opakuje krok po zadaný počet opakování. Slouží k vytváření cyklů. | [repeat step](https://tinkerpop.apache.org/docs/current/reference/#repeat-step) |
+| `sample` | Slouží k zobrazení ukázkových výsledků z procházení. | [sample step](https://tinkerpop.apache.org/docs/current/reference/#sample-step) |
+| `select` | Slouží k zobrazení výsledků z procházení. |  [select step](https://tinkerpop.apache.org/docs/current/reference/#select-step) |
+| `store` | Slouží k zobrazení neblokujících agregací z procházení. | [store step](https://tinkerpop.apache.org/docs/current/reference/#store-step) |
+| `tree` | Agreguje cesty z vrcholu do stromu. | [tree step](https://tinkerpop.apache.org/docs/current/reference/#tree-step) |
+| `unfold` | Rozbalí iterátor jako krok.| [unfold step](https://tinkerpop.apache.org/docs/current/reference/#unfold-step) |
+| `union` | Sloučí výsledky z více procházení.| [union step](https://tinkerpop.apache.org/docs/current/reference/#union-step) |
+| `V` | Zahrnuje kroky nutné pro procházení mezi vrcholy a okraji: `V`, `E`, `out`, `in`, `both`, `outE`, `inE`, `bothE`, `outV`, `inV`, `bothV` a `otherV`. | [vertex steps](https://tinkerpop.apache.org/docs/current/reference/#vertex-steps) |
+| `where` | Slouží k filtrování výsledků z procházení. Podporuje operátory `eq`, `neq`, `lt`, `lte`, `gt`, `gte` a `between`.  | [where step](https://tinkerpop.apache.org/docs/current/reference/#where-step) |
 
 Modul optimalizovaný pro zápis, který Azure Cosmos DB poskytuje, podporuje ve výchozím nastavení automatické indexování všech vlastností v rámci vrcholů a okrajů. Proto se dotazy s filtry, rozsahové dotazy, řazení nebo agregace u všech vlastností zpracovávají z indexu a efektivně předávají. Další informace o tom, jak funguje indexování ve službě Azure Cosmos DB, najdete v našem dokumentu, který se věnuje [indexování bez schémat](https://www.vldb.org/pvldb/vol8/p1668-shukla.pdf).
 

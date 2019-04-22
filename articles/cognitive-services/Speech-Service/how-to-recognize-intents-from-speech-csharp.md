@@ -11,10 +11,10 @@ ms.topic: tutorial
 ms.date: 09/24/2018
 ms.author: wolfma
 ms.openlocfilehash: 9a00dfd1186d19ce9432db8e636bffa40eb977af
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59280532"
 ---
 # <a name="tutorial-recognize-intents-from-speech-using-the-speech-sdk-for-c"></a>Kurz: Rozpoznat záměry z řeči pomocí sadou SDK pro řeč proC#
@@ -133,7 +133,7 @@ Teď model z aplikace LUIS naimportujte pomocí `LanguageUnderstandingModel.From
 
 Přidání záměrů vyžaduje tři argumenty: LUIS model (který se vytvořil a názvem `model`), záměru název a identifikátor záměru. Rozdíl mezi ID a názvem je následující.
 
-|`AddIntent()` Argument|Účel|
+|Argument `AddIntent()`|Účel|
 |--------|-------|
 |intentName |Název záměru, jak je definovaný v aplikaci LUIS. Musí přesně odpovídat názvu záměru služby LUIS.|
 |intentID    |ID přiřazené rozpoznanému záměru sadou Speech SDK. Může být jakékoli. Nemusí odpovídat názvu záměru definovanému v aplikaci LUIS. Pokud třeba stejný kód zpracovává více záměrů, můžete pro ně použít stejné ID.|
@@ -188,4 +188,4 @@ Kód z tohoto článku najdete ve složce samples/csharp/sharedcontent/console.
 ## <a name="next-steps"></a>Další postup
 
 > [!div class="nextstepaction"]
-> [Jak rozpoznávání řeči](how-to-recognize-speech-csharp.md)
+> [Rozpoznávání řeči](how-to-recognize-speech-csharp.md)

@@ -8,10 +8,10 @@ ms.topic: sample
 ms.date: 01/23/2019
 ms.author: dacoulte
 ms.openlocfilehash: 088dd8414c93b609326e7cd72828426dcb00fc28
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59274565"
 ---
 # <a name="sample---allowed-skus-for-storage-accounts-and-virtual-machines"></a>Ukázkový – povolené skladové položky pro účty úložiště a virtuální počítače
@@ -28,7 +28,7 @@ K nasazení této šablony můžete použít [Azure Portal](#deploy-with-the-por
 
 ## <a name="deploy-with-the-portal"></a>Nasazení s využitím portálu
 
-[![Deploy ukázkové zásady do Azure](https://azuredeploy.net/deploybutton.png)](https://aka.ms/getpolicy)
+[![Nasazení ukázkové zásady do Azure](https://azuredeploy.net/deploybutton.png)](https://aka.ms/getpolicy)
 
 ## <a name="deploy-with-powershell"></a>Nasazení s využitím PowerShellu
 

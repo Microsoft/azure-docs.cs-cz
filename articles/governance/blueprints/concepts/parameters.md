@@ -9,10 +9,10 @@ ms.service: blueprints
 manager: carmonm
 ms.custom: seodec18
 ms.openlocfilehash: 9b5b151c62c4294563f704dc9a0cf7daeaca874f
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59279971"
 ---
 # <a name="creating-dynamic-blueprints-through-parameters"></a>Vytváření dynamických plány prostřednictvím parametrů
@@ -76,8 +76,8 @@ Hodnota parametru definované v definici plán, podle kterého se volá **static
 
 Každý identifikátor URI v REST API používá proměnné, které je potřeba nahradit vašimi vlastními hodnotami:
 
-- `{YourMG}` -Nahraďte název skupiny pro správu
-- `{subscriptionId}` -Nahraďte ID vašeho předplatného
+- Proměnnou `{YourMG}` nahraďte názvem skupiny pro správu.
+- Proměnnou `{subscriptionId}` nahraďte ID předplatného.
 
 ##### <a name="blueprint-level-parameter"></a>Úroveň parametr podrobného plánu
 

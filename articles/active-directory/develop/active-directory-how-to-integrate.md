@@ -19,10 +19,10 @@ ms.reviewer: bryanla
 ms.custom: aaddev, seoapril2019
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 726d70c46dca712deaf4846c24976cdabcc49be9
-ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59359896"
 ---
 # <a name="integrating-with-azure-active-directory"></a>Integrace s Azure Active Directory
@@ -77,7 +77,7 @@ Integrace se službou Azure AD přináší výhody, které nevyžadují psát da
 
 ### <a name="advanced-security-features"></a>Rozšířené funkce zabezpečení
 
-**Multi-Factor Authentication**  Azure AD poskytuje nativní služby Multi-Factor authentication. Správci IT můžou vyžadovat vícefaktorové ověřování pro přístup k aplikaci, takže není potřeba tato podpora kódu sami. Další informace o [ověřování službou Multi-Factor Authentication](https://azure.microsoft.com/documentation/services/multi-factor-authentication/).
+**Ověřování službou Multi-Factor Authentication.**  Azure AD poskytuje nativní služby Multi-Factor authentication. Správci IT můžou vyžadovat vícefaktorové ověřování pro přístup k aplikaci, takže není potřeba tato podpora kódu sami. Další informace o [ověřování službou Multi-Factor Authentication](https://azure.microsoft.com/documentation/services/multi-factor-authentication/).
 
 **Neobvyklé přihlášení zjišťování.**  Azure AD zpracovává více než miliard přihlášení denně, při použití algoritmů strojového učení ke zjištění podezřelé aktivity a upozornit správce IT o možných problémech. Díky podpoře přihlášení Azure AD, vaše aplikace získá Výhodou této ochrany. Další informace o [zobrazení sestav přístupu Azure Active Directory](../active-directory-view-access-usage-reports.md).
 

@@ -10,10 +10,10 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/03/2019
 ms.openlocfilehash: b846b19d180bf19a0d023a9cd0b92393132f47d4
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59283065"
 ---
 # <a name="optimize-apache-spark-jobs"></a>Optimalizace úloh Apache Spark
@@ -33,7 +33,7 @@ Starší verze Sparku pomocí Rdd abstraktní data, Spark 1.3 a zavedl 1.6 datov
     * Přímý přístup do paměti.
     * Nízká režie uvolňování paměti (GC).
     * Není co vývojářsky přívětivé jako datové sady, protože neexistují žádné kontroly za kompilace nebo programování objektu domény.
-* **Datové sady**
+* **DataSets**
     * Dobré ve složitých kanály ETL, kterých je přijatelná dopad na výkon.
     * Nevhodní v agregacích, kde může být významný dopad na výkon.
     * Poskytuje optimalizaci dotazu prostřednictvím zprostředkující.
@@ -61,8 +61,8 @@ Když vytvoříte nový cluster Spark, máte možnost vybrat si jako výchozím 
 | Typ Store | Systém souborů | Rychlost | Přechodná | Případy použití |
 | --- | --- | --- | --- | --- |
 | Azure Blob Storage | **wasb [s]:**//url/ | **Standard** | Ano | Přechodné clusteru |
-| Azure Data Lake Storage Gen 2| **abfs[s]:**//url/ | **Rychlejší** | Ano | Přechodné clusteru |
-| Azure Data Lake Storage Gen1| **adl:**//url/ | **Rychlejší** | Ano | Přechodné clusteru |
+| Azure Data Lake Storage Gen 2| **abfs[s]:**//url/ | **Faster** | Ano | Přechodné clusteru |
+| Azure Data Lake Storage Gen1| **adl:**//url/ | **Faster** | Ano | Přechodné clusteru |
 | Local HDFS | **hdfs:**//url/ | **Nejrychlejší** | Ne | Interaktivní 24 hodin denně 7 clusteru |
 
 ## <a name="use-the-cache"></a>Použití mezipaměti

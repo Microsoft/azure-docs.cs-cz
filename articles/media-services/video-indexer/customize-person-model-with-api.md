@@ -10,10 +10,10 @@ ms.topic: article
 ms.date: 02/10/2019
 ms.author: anzaman
 ms.openlocfilehash: e5a34a75c73401c567a0e898a1ce9f85cde96586
-ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59360537"
 ---
 # <a name="customize-a-person-model-with-the-video-indexer-api"></a>Přizpůsobení modelu osoba s rozhraním API pro Video Indexer
@@ -54,7 +54,7 @@ curl -v -X POST "https://api.videoindexer.ai/{location}/Accounts/{accountId}/Cus
 
 ### <a name="request-parameters"></a>Parametry žádosti 
 
-|**Název**|**Type**|**Povinné**|**Popis**|
+|**Název**|**Typ**|**Požadováno**|**Popis**|
 |---|---|---|---|
 |location|string|Ano|Oblasti Azure, ke které se mají směrovat volání. Další informace najdete v tématu [oblastí Azure a Video Indexer](regions.md).|
 |accountId|string|Ano|Globálně jedinečný identifikátor účtu|
@@ -99,7 +99,7 @@ curl -v -X DELETE "https://api.videoindexer.ai/{location}/Accounts/{accountId}/C
 
 ### <a name="request-parameters"></a>Parametry žádosti
 
-|**Název**|**Type**|**Povinné**|**Popis**|
+|**Název**|**Typ**|**Požadováno**|**Popis**|
 |---|---|---|---|
 |location|string|Ano|Oblasti Azure, ke které se mají směrovat volání. Další informace najdete v tématu [oblastí Azure a Video Indexer](regions.md).|
 |accountId|string|Ano|Globálně jedinečný identifikátor účtu|
@@ -136,7 +136,7 @@ curl -v -X GET "https://api.videoindexer.ai/{location}/Accounts/{accountId}/Cust
 
 ### <a name="request-parameters"></a>Parametry žádosti
 
-|**Název**|**Type**|**Povinné**|**Popis**|
+|**Název**|**Typ**|**Požadováno**|**Popis**|
 |---|---|---|---|
 |location|string|Ano|Oblasti Azure, ke které se mají směrovat volání. Další informace najdete v tématu [oblastí Azure a Video Indexer](regions.md).|
 |accountId|string|Ano|Globálně jedinečný identifikátor účtu|
@@ -191,7 +191,7 @@ curl -v -X PUT "https://api.videoindexer.ai/{location}/Accounts/{accountId}/Vide
 
 ### <a name="request-parameters"></a>Parametry žádosti
 
-|**Název**|**Type**|**Povinné**|**Popis**|
+|**Název**|**Typ**|**Požadováno**|**Popis**|
 |---|---|---|---|
 |location|string|Ano|Oblasti Azure, ke které se mají směrovat volání. Další informace najdete v tématu [oblastí Azure a Video Indexer](regions.md).|
 |accountId|string|Ano|Globálně jedinečný identifikátor účtu|

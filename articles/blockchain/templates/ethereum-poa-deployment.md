@@ -11,10 +11,10 @@ ms.service: azure-blockchain
 ms.reviewer: brendal
 manager: vamelech
 ms.openlocfilehash: 3531b43e6aee1eedef811e81e192873c5b5ed561
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59274786"
 ---
 # <a name="ethereum-proof-of-authority-consortium"></a>Ethereum během testování of-authority W3C
@@ -252,7 +252,7 @@ Podrobný popis každého parametru takto:
   Výkon úložiště uzel program pro ověření|Typ spravovaný disk, na kterém každý z uzlů nasazený program pro ověření.|SSD na úrovni Standard nebo Premium|SSD úrovně Standard
   Velikost virtuálního počítače uzlu program pro ověření|Velikost virtuálního počítače pro uzly program pro ověření.|Standardní A, D standardní, standardní D-v2, řady Standard F, Standard DS a Standard služby FS|Standard D1 v2
 
-[Podrobnosti o cenách Storage](https://azure.microsoft.com/pricing/details/managed-disks/)
+[Podrobnosti o cenách Storage](https://azure.microsoft.com/pricing/details/managed-disks/)
 
 [Podrobnosti o cenách virtuálních počítačů](https://azure.microsoft.com/pricing/details/virtual-machines/windows/)
 

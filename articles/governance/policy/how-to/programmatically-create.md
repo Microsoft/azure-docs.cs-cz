@@ -9,10 +9,10 @@ ms.service: azure-policy
 manager: carmonm
 ms.custom: seodec18
 ms.openlocfilehash: ade5d55833f1d63a8d70b6eedb3c3e4bdffe590b
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59276486"
 ---
 # <a name="programmatically-create-policies-and-view-compliance-data"></a>Prostřednictvím kódu programu vytvořit zásady a zobrazit data o dodržování předpisů
@@ -252,4 +252,4 @@ Projděte si následující články pro další informace o příkazech a dotaz
 - [Moduly Azure Powershellu](/powershell/module/az.resources/#policies)
 - [Zásady příkazy rozhraní příkazového řádku Azure](/cli/azure/policy?view=azure-cli-latest)
 - [Poskytovatel prostředků Insights zásad reference k rozhraní REST API](/rest/api/policy-insights)
-- [Uspořádání vašich prostředků s využitím skupin pro správu Azure](../../management-groups/overview.md)
+- [Uspořádání prostředků se skupinami pro správu Azure](../../management-groups/overview.md)

@@ -7,10 +7,10 @@ ms.date: 04/04/2019
 ms.author: rithorn
 ms.topic: conceptual
 ms.openlocfilehash: e47ce094cd690cba4ef398bc5d5d443f7ed647e9
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59272474"
 ---
 # <a name="manage-your-resources-with-management-groups"></a>Správa vašich prostředků pomocí skupin pro správu
@@ -349,8 +349,8 @@ GET https://management.azure.com/providers/Microsoft.Management/managementgroups
 
 Další informace o řešeních pro správu najdete v následujících tématech:
 
-- [Vytvoření skupin pro správu k uspořádání prostředků Azure](create.md)
-- [Jak změnit, odstranit nebo Správa skupin pro správu](manage.md)
-- [Zkontrolujte skupiny pro správu v modulu Azure PowerShell prostředky](/powershell/module/az.resources#resources)
-- [Zkontrolujte skupiny pro správu v rozhraní REST API](/rest/api/resources/managementgroups)
-- [Zkontrolujte skupiny pro správu v Azure CLI](/cli/azure/account/management-group)
+- [Vytváření skupin pro správu pro organizaci prostředků Azure](create.md)
+- [Jak měnit, odstraňovat nebo spravovat skupiny pro správu](manage.md)
+- [Kontrola skupin pro správu v modulu Prostředky Azure PowerShellu](/powershell/module/az.resources#resources)
+- [Kontrola skupin pro správu v rozhraní REST API](/rest/api/resources/managementgroups)
+- [Kontrola skupin pro správu v Azure CLI](/cli/azure/account/management-group)

@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 4/9/2019
 ms.author: mayg
 ms.openlocfilehash: 6528b683ec9464c2b1982d631455718e6fe6f3b7
-ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59361339"
 ---
 # <a name="run-the-azure-site-recovery-deployment-planner-for-hyper-v-disaster-recovery-to-azure"></a>Spuštění plánovače nasazení služby Azure Site Recovery pro zotavení po havárii Hyper-V do Azure
@@ -254,14 +254,14 @@ Důrazně doporučujeme, abyste při plánování nasazení počítali s růstem
 
 Vygenerovaná sestava aplikace Microsoft Excel obsahuje následující informace:
 
-* [On-premises summary (Přehled místního prostředí)](hyper-v-deployment-planner-analyze-report.md#on-premises-summary)
-* [Doporučení](hyper-v-deployment-planner-analyze-report.md#recommendations)
-* [Umístění virtuálních počítačů v účtech úložiště](hyper-v-deployment-planner-analyze-report.md#vm-storage-placement-recommendation)
-* [Kompatibilní virtuální počítače](hyper-v-deployment-planner-analyze-report.md#compatible-vms)
-* [Nekompatibilní virtuální počítače](hyper-v-deployment-planner-analyze-report.md#incompatible-vms)
-* [Požadavek na místní úložiště](hyper-v-deployment-planner-analyze-report.md#on-premises-storage-requirement)
-* [Rozdělení počáteční replikace do dávek](hyper-v-deployment-planner-analyze-report.md#initial-replication-batching)
-* [Odhad nákladů](hyper-v-deployment-planner-cost-estimation.md)
+* [On-premises summary](hyper-v-deployment-planner-analyze-report.md#on-premises-summary) (Přehled místního prostředí)
+* [Recommendations](hyper-v-deployment-planner-analyze-report.md#recommendations) (Doporučení)
+* [VM-Storage placement](hyper-v-deployment-planner-analyze-report.md#vm-storage-placement-recommendation) (Umístění virtuálních počítačů ve službě Storage)
+* [Compatible VMs](hyper-v-deployment-planner-analyze-report.md#compatible-vms) (Kompatibilní virtuální počítače)
+* [Incompatible VMs](hyper-v-deployment-planner-analyze-report.md#incompatible-vms) (Nekompatibilní virtuální počítače)
+* [On-premises storage requirement](hyper-v-deployment-planner-analyze-report.md#on-premises-storage-requirement) (Požadavek na místní úložiště)
+* [IR Batching](hyper-v-deployment-planner-analyze-report.md#initial-replication-batching) (Rozdělení počáteční replikace do dávek)
+* [Cost Estimation](hyper-v-deployment-planner-cost-estimation.md) (Odhad nákladů)
 
 ![Sestava plánovače nasazení](media/hyper-v-deployment-planner-run/deployment-planner-report-h2a.png)
 

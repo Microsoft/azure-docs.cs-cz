@@ -14,10 +14,10 @@ ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: mbaldwin
 ms.openlocfilehash: 20c05bddddce4c7748e29551fe78d3e5609b2fa5
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59275891"
 ---
 # <a name="get-started-with-key-vault-certificates"></a>Začínáme s certifikáty služby Key Vault
@@ -132,4 +132,4 @@ Aktuálně nepodporujeme ES klíče ve formátu PEM.
 
 ## <a name="see-also"></a>Viz také
 
-- [Informace o klíčích, tajných kódů a certifikátů](about-keys-secrets-and-certificates.md)
+- [Informace o klíčích, tajných kódech a certifikátech](about-keys-secrets-and-certificates.md)

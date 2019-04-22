@@ -7,10 +7,10 @@ author: mayurigupta13
 ms.topic: conceptual
 ms.author: mayg
 ms.openlocfilehash: 33fc2cd19152fb6cbbffb106aa058948d39555f9
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59281705"
 ---
 # <a name="manage-site-recovery-access-with-role-based-access-control-rbac"></a>Správa přístupu k Site Recovery s řízením přístupu na základě rolí (RBAC)
@@ -38,7 +38,7 @@ Uživatel potřebuje následující oprávnění k dokončení replikace z nové
 > [!IMPORTANT]
 >Ujistěte se, že jsou přidány příslušné oprávnění na modelu nasazení (Resource Manager nebo Classic) používá pro nasazení prostředků.
 
-| **Typ prostředku** | **Deployment Model (Model nasazení)** | **Oprávnění** |
+| **Typ prostředku** | **Nasazení modelu** | **Oprávnění** |
 | --- | --- | --- |
 | Compute | Resource Manager | Microsoft.Compute/availabilitySets/read |
 |  |  | Microsoft.Compute/virtualMachines/read |
@@ -59,7 +59,7 @@ Uživatel potřebuje následující oprávnění k dokončení replikace z nové
 |  |  | Microsoft.Network/virtualNetworks/subnets/join/action |
 |  | Classic | Microsoft.ClassicNetwork/virtualNetworks/read |
 |  |  | Microsoft.ClassicNetwork/virtualNetworks/join/action |
-| Storage | Resource Manager | Microsoft.Storage/storageAccounts/read |
+| Úložiště | Resource Manager | Microsoft.Storage/storageAccounts/read |
 |  |  | Microsoft.Storage/storageAccounts/listkeys/action |
 |  | Classic | Microsoft.ClassicStorage/storageAccounts/read |
 |  |  | Microsoft.ClassicStorage/storageAccounts/listKeys/action |

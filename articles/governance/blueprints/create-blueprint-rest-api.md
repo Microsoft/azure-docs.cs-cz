@@ -9,10 +9,10 @@ ms.service: blueprints
 manager: carmonm
 ms.custom: seodec18
 ms.openlocfilehash: 043b67d4b4c708f2d243f9be04fb2a706591947b
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59273154"
 ---
 # <a name="define-and-assign-an-azure-blueprint-with-rest-api"></a>Definování a přiřazení podrobného plánu Azure Blueprint pomocí REST API
@@ -71,7 +71,7 @@ Jako první krok při definování standardního vzoru pro dodržování předpi
 Každý identifikátor URI v REST API používá proměnné, které je potřeba nahradit vašimi vlastními hodnotami:
 
 - `{YourMG}` -Nahraďte ID skupiny pro správu
-- `{subscriptionId}` -Nahraďte ID vašeho předplatného
+- Proměnnou `{subscriptionId}` nahraďte ID předplatného.
 
 > [!NOTE]
 > Podrobné plány. mohou také vytvořit na úrovni předplatného. Příklad najdete v tématu [vytvořit podrobný plán na předplatné příklad](/rest/api/blueprints/blueprints/createorupdate#subscriptionblueprint).
@@ -338,7 +338,7 @@ Každý identifikátor URI v REST API používá proměnné, které je potřeba 
 
 - `{tenantId}` -Nahraďte ID vašeho tenanta
 - `{YourMG}` -Nahraďte ID skupiny pro správu
-- `{subscriptionId}` -Nahraďte ID vašeho předplatného
+- Proměnnou `{subscriptionId}` nahraďte ID předplatného.
 
 1. Poskytněte instančnímu objektu Azure Blueprint roli **Owner** (Vlastník) cílového předplatného. AppId je statických (`f71766dc-90d9-4b7d-bd9d-4499c4331c3f`), ale ID instančního objektu služby se liší podle klienta. K vyžádání podrobností týkajících se tenanta použijte následující REST API. Používá [Azure Active Directory Graph API](../../active-directory/develop/active-directory-graph-api.md) s jinou autorizací.
 

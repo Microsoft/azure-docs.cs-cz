@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 4/3/2019
 ms.author: geetha
 ms.openlocfilehash: 893a22fb9f325625707869c8f6571d572b8f6b33
-ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59358229"
 ---
 # <a name="back-up-and-restore-encrypted-azure-vm"></a>Zálohování a obnovení šifrovaných virtuálních počítačů Azure
@@ -30,9 +30,9 @@ Azure Backup podporuje zálohování virtuálních počítačů Azure, které ma
 
 Azure Backup můžete zálohovat a obnovit virtuální počítače Azure a nemusíte aplikace Azure AD pomocí ADE dle souhrnu v následující tabulce.
 
-**Typ disku virtuálního počítače** | **ADE (klíče BEK a dm-crypt)** | **ADE a KEK**
+**Typ disku virtuálního počítače** | **ADE (BEK/dm-crypt)** | **ADE a KEK**
 --- | --- | ---
-**Nespravované** | Ano | Ano
+**nespravované** | Ano | Ano
 **Spravované**  | Ano | Ano
 
 - Další informace o [ADE](../security/azure-security-disk-encryption-overview.md), [služby Key Vault](../key-vault/key-vault-overview.md), a [KEKs](https://blogs.msdn.microsoft.com/cclayton/2017/01/03/creating-a-key-encrypting-key-kek/).

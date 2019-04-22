@@ -13,10 +13,10 @@ ms.workload: na
 ms.date: 04/08/2019
 ms.author: tomfitz
 ms.openlocfilehash: bf9faa34c1f0923761ce583c22ba4084d7bd42a8
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59278781"
 ---
 # <a name="string-functions-for-azure-resource-manager-templates"></a>Řetězec funkce pro šablony Azure Resource Manageru
@@ -27,32 +27,32 @@ Resource Manager poskytuje následující funkce pro práci s řetězci:
 * [base64ToJson](#base64tojson)
 * [base64ToString](#base64tostring)
 * [concat](#concat)
-* [obsahuje](#contains)
+* [Obsahuje](#contains)
 * [dataUri](#datauri)
 * [dataUriToString](#datauritostring)
-* [Prázdná](#empty)
+* [prázdný](#empty)
 * [endsWith](#endswith)
 * [první](#first)
-* [formát](#format)
+* [Formát](#format)
 * [identifikátor GUID](#guid)
 * [indexOf](#indexof)
-* [poslední](#last)
+* [last](#last)
 * [lastIndexOf](#lastindexof)
 * [Délka](#length)
 * [newGuid](#newguid)
 * [padLeft](#padleft)
 * [nahradit](#replace)
-* [přeskočit](#skip)
+* [skip](#skip)
 * [split](#split)
 * [startsWith](#startswith)
-* [string](#string)
+* [řetězec](#string)
 * [dílčí řetězec](#substring)
 * [Take](#take)
 * [toLower](#tolower)
 * [toUpper](#toupper)
-* [Trim](#trim)
+* [trim](#trim)
 * [uniqueString](#uniquestring)
-* [identifikátor uri](#uri)
+* [uri](#uri)
 * [uriComponent](#uricomponent)
 * [uriComponentToString](#uricomponenttostring)
 * [utcNow](#utcnow)

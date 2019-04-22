@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 04/08/2019
 ms.author: raynew
 ms.openlocfilehash: 60ca12e5b362a37eb9f85c9a0d1fc23ca99e9edc
-ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59360796"
 ---
 # <a name="support-matrix-for-disaster-recovery-of-hyper-v-vms-to-a-secondary-site"></a>Matice podpory pro zotavení po havárii virtuálních počítačů Hyper-V do sekundární lokality
@@ -36,7 +36,7 @@ Windows Server 2016 |  Cloudy VMM 2016 s kombinaci systému Windows Server 2016 
 
 Následující tabulka shrnuje podporu operačního systému pro počítače pomocí služby Site Recovery replikovat. Jakékoli úlohy můžou běžet na podporovaný operační systém.
 
-**Verze systému Windows** | **Technologie Hyper-V (s VMM)**
+**Verze Windows** | **Technologie Hyper-V (s VMM)**
 --- | ---
 Windows Server 2016 | Žádný hostovaný operační systém [podporuje technologie Hyper-V](https://docs.microsoft.com/windows-server/virtualization/hyper-v/Supported-Windows-guest-operating-systems-for-Hyper-V-on-Windows) na Windows serveru 2016 
 Windows Server 2012 R2 | Žádný hostovaný operační systém [podporuje technologie Hyper-V](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/dn792027%28v%3dws.11%29) v systému Windows Server 2012 R2
@@ -53,7 +53,7 @@ Je možné replikovat jenom počítače s Linuxem pomocí následující úloži
 
 ## <a name="network-configuration---hostguest-vm"></a>Konfigurace sítě - hostitele nebo hosta virtuálního počítače
 
-**Konfigurace** | **Podporováno**  
+**Konfigurace** | **Podporuje se**  
 --- | --- 
 Hostitel – seskupování síťových adaptérů | Ano 
 Host - VLAN | Ano 
@@ -66,11 +66,11 @@ Hostovaný virtuální počítač – Windows/Linux - statická IP adresa | Ano
 Hosta virtuálního počítače – s více síťovými Kartami | Ano
 
 
-## <a name="storage"></a>Storage
+## <a name="storage"></a>Úložiště
 
 ### <a name="host-storage"></a>Úložiště hostitele
 
-**Úložiště (hostitel)** | **Podporováno**
+**Úložiště (hostitel)** | **Podporuje se**
 --- | --- 
 NFS | neuvedeno
 SMB 3.0 |  Ano
@@ -79,7 +79,7 @@ Více cest (MPIO) | Ano
 
 ### <a name="guest-or-physical-server-storage"></a>Host nebo fyzický server úložiště
 
-**Konfigurace** | **Podporováno**
+**Konfigurace** | **Podporuje se**
 --- | --- | 
 VMDK |  neuvedeno
 VHD/VHDX | Ano (až 16 disků)
@@ -99,7 +99,7 @@ Více cest (MPIO) | Ano
 
 ## <a name="vaults"></a>Trezory
 
-**Akce** | **Podporováno**
+**Akce** | **Podporuje se**
 --- | --- 
 Přesun trezorů služby mezi skupinami prostředků (v rámci předplatného ani mezi předplatnými) |  Ne
 Přesunout úložiště, sítě, virtuální počítače Azure mezi skupinami prostředků (v rámci předplatného ani mezi předplatnými) | Ne
@@ -108,7 +108,7 @@ Přesunout úložiště, sítě, virtuální počítače Azure mezi skupinami pr
 
 Zprostředkovatel koordinuje komunikaci mezi servery VMM. 
 
-**Nejnovější** | **Aktualizace**
+**nejnovější** | **Aktualizace**
 --- | --- 
 5.1.19 ([dostupná z portálu](https://aka.ms/downloaddra) | [Nejnovější funkce a opravy](https://support.microsoft.com/kb/3155002)
 

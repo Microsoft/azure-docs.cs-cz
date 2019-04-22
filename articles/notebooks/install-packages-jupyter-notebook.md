@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 12/04/2018
 ms.author: kraigb
 ms.openlocfilehash: 504158f248cde3a399475cdec99de3e6a4ebfcc5
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59276845"
 ---
 # <a name="install-packages-from-within-a-notebook"></a>Instalace balíčků z v rámci poznámkového bloku
@@ -74,4 +74,4 @@ Paket.Package
 ## <a name="next-steps"></a>Další postup
 
 - [Postup: Konfigurace a správa projektů](configure-manage-azure-notebooks-projects.md)
-- [Postup: Předložení prezentace](present-jupyter-notebooks-slideshow.md)
+- [Postup: K dispozici prezentace](present-jupyter-notebooks-slideshow.md)

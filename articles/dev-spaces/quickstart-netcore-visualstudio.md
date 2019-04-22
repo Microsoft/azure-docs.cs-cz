@@ -14,10 +14,10 @@ manager: jeconnoc
 ms.custom: vs-azure
 ms.workload: azure-vs
 ms.openlocfilehash: 9afca253bd188556ad6a3f6e081fb2eccc4c81cb
-ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59361255"
 ---
 # <a name="quickstart-develop-with-net-core-on-kubernetes-with-azure-dev-spaces-visual-studio-2017"></a>Rychlý start: Vývoj s využitím .NET Core v Kubernetes se službou Azure Dev mezery (Visual Studio 2017)
@@ -130,4 +130,4 @@ az group delete --name MyResourceGroup --yes --no-wait
 ## <a name="next-steps"></a>Další postup
 
 > [!div class="nextstepaction"]
-> [Práce s několika kontejnery a vývoj v týmu](multi-service-netcore-visualstudio.md)
+> [Práce s více kontejnery a týmový vývoj](multi-service-netcore-visualstudio.md)

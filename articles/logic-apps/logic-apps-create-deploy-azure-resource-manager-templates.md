@@ -11,17 +11,17 @@ ms.topic: article
 ms.assetid: 7574cc7c-e5a1-4b7c-97f6-0cffb1a5d536
 ms.date: 10/15/2017
 ms.openlocfilehash: bbb10bf0174b6e06e28d171510345ed92b6642d9
-ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
-ms.translationtype: MT
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59357073"
 ---
 # <a name="deploy-logic-apps-with-azure-resource-manager-templates"></a>Nasazení aplikací logiky s využitím šablon Azure Resource Manageru
 
 Jakmile vytvoříte šablonu Azure Resource Manageru pro nasazení aplikace logiky, můžete nasadit šablonu v těchto způsobů:
 
-* [portál Azure](#portal)
+* [Azure Portal](#portal)
 * [Azure PowerShell](#powershell)
 * [Azure CLI](#cli)
 * [REST API Azure Resource Manageru](../azure-resource-manager/resource-group-template-deploy-rest.md)
@@ -33,7 +33,7 @@ Jakmile vytvoříte šablonu Azure Resource Manageru pro nasazení aplikace logi
 
 Šablony aplikace logiky můžete automaticky nasadit do Azure, můžete použít následující **nasadit do Azure** tlačítko, které jste přihlášení k webu Azure portal a vás vyzve k zadání informací o vaší aplikaci logiky. Šablony aplikace logiky nebo parametry lze potom proveďte potřebné změny.
 
-[![Deploy do Azure](./media/logic-apps-create-deploy-azure-resource-manager-templates/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-logic-app-create%2Fazuredeploy.json)
+[![Nasazení do Azure](./media/logic-apps-create-deploy-azure-resource-manager-templates/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-logic-app-create%2Fazuredeploy.json)
 
 Například jste se výzva k zadání těchto informací po přihlášení k webu Azure portal:
 
@@ -88,7 +88,7 @@ az deployment create --location <location> --template-uri https://raw.githubuser
 
 Další informace najdete v těchto tématech: 
 
-* [Nasazení prostředků pomocí šablon Resource Manageru a Azure CLI](../azure-resource-manager/resource-group-template-deploy-cli.md) 
+* [Nasazení prostředků pomocí šablon Resource Manageru a rozhraní příkazového řádku Azure](../azure-resource-manager/resource-group-template-deploy-cli.md) 
 * [`az group deployment create`](https://docs.microsoft.com/cli/azure/group/deployment?view=azure-cli-latest#az-group-deployment-create)
 * [`az deployment create`](https://docs.microsoft.com/cli/azure/deployment?view=azure-cli-latest#az-deployment-create)
 
@@ -122,4 +122,4 @@ Pokud máte dotazy, navštivte [fórum Azure Logic Apps](https://social.msdn.mic
 ## <a name="next-steps"></a>Další postup
 
 > [!div class="nextstepaction"]
-> [Monitorování aplikací logiky](../logic-apps/logic-apps-monitor-your-logic-apps.md)
+> [Monitorování Logic Apps](../logic-apps/logic-apps-monitor-your-logic-apps.md)

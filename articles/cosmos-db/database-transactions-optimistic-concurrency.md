@@ -8,10 +8,10 @@ ms.date: 04/08/2019
 ms.author: rimman
 ms.reviewer: sngun
 ms.openlocfilehash: 568f47aacf39793d4c2da46798682abc002ca33b
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59279498"
 ---
 # <a name="transactions-and-optimistic-concurrency-control"></a>Řízení optimistické souběžnosti a transakce
@@ -63,5 +63,5 @@ Další informace o databázové transakce a optimistického řízení souběžn
 
 - [Práce s databází Azure Cosmos, kontejnery a položek](databases-containers-items.md)
 - [Úrovně konzistence](consistency-levels.md)
-- [Zásady řešení a typy konfliktů](conflict-resolution-policies.md)
+- [Zásady rozlišení a typy konfliktů](conflict-resolution-policies.md)
 - [Uložené procedury, triggery a uživatelem definovaných funkcí](stored-procedures-triggers-udfs.md)

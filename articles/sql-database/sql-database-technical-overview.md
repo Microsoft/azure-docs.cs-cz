@@ -14,10 +14,10 @@ ms.reviewer: carlrab
 manager: craigg
 ms.date: 04/08/2019
 ms.openlocfilehash: ecfd0cbc3eaaae64a956568a506252fdbeddcac2
-ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59358330"
 ---
 # <a name="what-is-azure-sql-database-service"></a>Co je služba Azure SQL Database
@@ -256,8 +256,8 @@ Zákazníci SQL Database bude mít následující práva spojená s programem Az
 
   - [Vytvoření databáze SQL na webu Azure Portal](sql-database-single-database-get-started.md)  
   - [Vytvoření databáze SQL pomocí Azure CLI](sql-database-get-started-cli.md)
-  - [Vytvoření databáze SQL pomocí Powershellu](sql-database-get-started-powershell.md)
+  - [Vytvoření databáze SQL pomocí PowerShellu](sql-database-get-started-powershell.md)
 
 - Řadu ukázek v Azure CLI a PowerShellu najdete tady:
   - [Ukázky v Azure CLI pro službu SQL Database](sql-database-cli-samples.md)
-  - [Ukázky Azure Powershellu pro službu SQL Database](sql-database-powershell-samples.md)
+  - [Ukázky v Azure PowerShellu pro službu SQL Database](sql-database-powershell-samples.md)

@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 04/08/2018
 ms.author: diberry
 ms.openlocfilehash: 9d6173ee25f28aa884513d126c06a8a7c722098d
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59273834"
 ---
 # <a name="integrate-speech-service-with-your-language-understanding-app"></a>Speech service integrovat s vaší aplikací Language Understanding
@@ -66,7 +66,7 @@ V tomto článku se používá zvukové zařízení na vašem počítači. Tímt
 
 Sada SDK služby Speech je již zahrnutá jako odkaz. 
 
-[![Screenshot sady Visual Studio 2017 zobrazení balíček Microsoft.CognitiveServices.Speech NuGet](./media/luis-tutorial-speech-to-intent/nuget-package.png "zobrazování balíček Microsoft.CognitiveServices.Speech NuGet snímek obrazovky sady Visual Studio 2017")](./media/luis-tutorial-speech-to-intent/nuget-package.png#lightbox)
+[![Snímek obrazovky sady Visual Studio 2017 zobrazování balíček Microsoft.CognitiveServices.Speech NuGet](./media/luis-tutorial-speech-to-intent/nuget-package.png "zobrazování balíček Microsoft.CognitiveServices.Speech NuGet snímek obrazovky sady Visual Studio 2017")](./media/luis-tutorial-speech-to-intent/nuget-package.png#lightbox)
 
 ## <a name="modify-the-c-code"></a>Úprava kódu jazyka C#
 Otevřete soubor `Program.cs` a změňte následující proměnné:
@@ -74,7 +74,7 @@ Otevřete soubor `Program.cs` a změňte následující proměnné:
 |Název proměnné|Účel|
 |--|--|
 |LUIS_assigned_endpoint_key|Odpovídá hodnotě klíče předplatného přiřazeného k adrese URL koncového bodu ze stránky publikování|
-|LUIS_endpoint_key_region|Adresa URL koncového bodu první subdomény, odpovídá například `westus`|
+|LUIS_endpoint_key_region|Odpovídá první subdoméně adresy URL koncového bodu, například `westus`|
 |LUIS_app_ID|Odpovídá trase adresy URL koncového bodu, která následuje za **apps/**|
 
 Soubor `Program.cs` již obsahuje namapované záměry pro lidské zdroje.
@@ -98,6 +98,6 @@ Nezapomeňte odstranit adresář, jakmile budete hotovi pomocí ukázkového kó
 ## <a name="next-steps"></a>Další postup
 
 > [!div class="nextstepaction"]
-> [Integrace LUIS s využitím BOTU](luis-csharp-tutorial-build-bot-framework-sample.md)
+> [Integrace služby LUIS s chatbotem](luis-csharp-tutorial-build-bot-framework-sample.md)
 
 [LUIS]: https://docs.microsoft.com/azure/cognitive-services/luis/luis-reference-regions#luis-website
