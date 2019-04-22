@@ -9,10 +9,10 @@ ms.service: resource-graph
 manager: carmonm
 ms.custom: seodec18
 ms.openlocfilehash: 2ba48e2a21bdee0c5698bdfa314dd3bf462c1c7e
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59267765"
 ---
 # <a name="starter-resource-graph-queries"></a>Úvodní dotazy na Resource Graph
@@ -22,16 +22,16 @@ Prvním krokem k porozumění dotazům s Azure Resource Graph jsou základní zn
 Projdeme následující úvodní dotazy:
 
 > [!div class="checklist"]
-> - [Prostředky Azure počet](#count-resources)
-> - [Výpis prostředků seřazené podle názvu](#list-resources)
-> - [Zobrazit všechny virtuální počítače, které jsou seřazené podle názvu v sestupném pořadí](#show-vms)
-> - [Zobrazit prvních pět virtuálních počítačů podle názvu a jejich typ operačního systému](#show-sorted)
+> - [Počet prostředků Azure](#count-resources)
+> - [Výpis prostředků seřazených podle názvu](#list-resources)
+> - [Zobrazení všech virtuálních počítačů, které jsou seřazené podle názvu v sestupném pořadí](#show-vms)
+> - [Zobrazení prvních pěti virtuálních počítačů podle názvu a jejich typu operačního systému](#show-sorted)
 > - [Počet virtuálních počítačů podle typu operačního systému](#count-os)
-> - [Zobrazit prostředky, které obsahují úložiště](#show-storage)
-> - [Vypsat všechny veřejné IP adresy](#list-publicip)
-> - [Spočítat prostředky, které mají IP adresy nakonfigurované podle předplatného](#count-resources-by-ip)
-> - [Seznam prostředků s konkrétní značkou hodnotou](#list-tag)
-> - [Vypsat všechny účty úložiště s konkrétní značkou hodnotou](#list-specific-tag)
+> - [Zobrazení prostředků, které obsahují úložiště](#show-storage)
+> - [Seznam všech veřejných IP adres](#list-publicip)
+> - [Počet prostředků, které mají IP adresy nakonfigurované podle předplatného](#count-resources-by-ip)
+> - [Seznam prostředků s konkrétní hodnotou značky](#list-tag)
+> - [Seznam všech účtů úložiště s konkrétní hodnotou značky](#list-specific-tag)
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free) před tím, než začnete.
 
@@ -94,7 +94,7 @@ Search-AzGraph -Query "project name, location, type| where type =~ 'Microsoft.Co
 
 ## <a name="show-sorted"></a>Zobrazení prvních pěti virtuálních počítačů podle názvu a jejich typu operačního systému
 
-Tento dotaz bude používat `limit` pouze k načtení pěti odpovídajících záznamů, které jsou řazeny podle názvu. Typ prostředku Azure je `Microsoft.Compute/virtualMachines`. `project` instruuje Azure Graph prostředků vlastnosti, které chcete zahrnout.
+Tento dotaz bude používat `limit` pouze k načtení pěti odpovídajících záznamů, které jsou řazeny podle názvu. Typ prostředku Azure je `Microsoft.Compute/virtualMachines`. `project` říká Azure Resource Graph, které vlastnosti použít.
 
 ```Query
 where type =~ 'Microsoft.Compute/virtualMachines'
@@ -167,7 +167,7 @@ Search-AzGraph -Query "where type contains 'storage' | distinct type"
 
 Podobně jako v předchozím dotazu se vyhledají všechny záznamy, jejichž typ obsahuje slovo **publicIPAddresses**.
 Tento dotaz rozšíří na tomto vzoru zahrnout pouze výsledky kde **properties.ipAddress**
-`isnotempty`, který vrátí pouze **properties.ipAddress**a získat `limit` výsledky podle horní
+`isnotempty`, který vrátí pouze **properties.ipAddress**a získat `limit` výsledky v horní části
 100. V závislosti na zvoleném prostředí možná budete muset odebrat uvozovky.
 
 ```Query
@@ -251,7 +251,7 @@ Search-AzGraph -Query "where type =~ 'Microsoft.Storage/storageAccounts' | where
 ```
 
 > [!NOTE]
-> Tento příklad používá `==` pro shodu místo podmínky `=~`. `==` představuje shodu malá a velká písmena.
+> Tento příklad používá `==` pro shodu místo podmínky `=~`. `==` je shoda rozlišující velikost písmen.
 
 ## <a name="next-steps"></a>Další postup
 

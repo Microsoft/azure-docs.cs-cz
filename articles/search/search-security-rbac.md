@@ -10,10 +10,10 @@ ms.date: 04/05/2019
 ms.author: heidist
 ms.custom: seodec2018
 ms.openlocfilehash: 34def35eba1e5c1645e6e1f9a505704d153ac716
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59277763"
 ---
 # <a name="set-rbac-roles-for-administrative-access"></a>Nastavte role RBAC pro přístup pro správu
@@ -38,6 +38,6 @@ Role nejsou udělena přístupová práva ke koncovému bodu služby. Hledání 
 
 ## <a name="see-also"></a>Další informace najdete v tématech
 
-+ [Správa pomocí prostředí PowerShell](search-manage-powershell.md) 
++ [Správa s využitím PowerShellu](search-manage-powershell.md) 
 + [Výkon a optimalizace do služby Azure Search](search-performance-optimization.md)
 + [Začínáme s řízením přístupu na základě rolí na portálu Azure portal](../role-based-access-control/overview.md).

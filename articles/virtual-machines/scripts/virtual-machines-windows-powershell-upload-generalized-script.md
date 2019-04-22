@@ -1,6 +1,6 @@
 ---
 title: Nahrání generalizovaného virtuálního pevného disku do prostředí Azure PowerShell pomocí ukázkového skriptu | Microsoft Docs
-description: Ukázkový skript prostředí PowerShell nahraje generalizovaný virtuální pevný disk do Azure a vytvoří nový virtuální počítač pomocí modelu nasazení Resource Manager a služby Managed Disks.
+description: Ukázkový skript PowerShellu nahraje generalizovaný virtuální pevný disk do Azure a vytvoří nový virtuální počítač pomocí modelu nasazení Resource Manager a Spravovaných disků.
 services: virtual-machines-windows
 documentationcenter: virtual-machines
 author: cynthn

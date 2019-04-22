@@ -9,10 +9,10 @@ ms.date: 10/23/2018
 ms.author: wgries
 ms.subservice: files
 ms.openlocfilehash: 9d7162eca3c2979b1dd333bdaf95c7c43e875b9d
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/05/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59049134"
 ---
 # <a name="tutorial-extend-windows-file-servers-with-azure-file-sync"></a>Kurz: Rozšíření souborových serverů Windows s využitím Synchronizace souborů Azure
@@ -265,7 +265,7 @@ Uživatelské rozhraní serveru registrace otvírat automaticky po instalaci age
    | | |
    | ----- | ----- |
    | Hodnota | Popis |
-   | **předplatné Azure** | Předplatné, které obsahuje službu synchronizace úložiště pro účely tohoto kurzu. |
+   | **Předplatné Azure** | Předplatné, které obsahuje službu synchronizace úložiště pro účely tohoto kurzu. |
    | **Skupina prostředků** | Skupina prostředků, která obsahuje službu synchronizace úložiště. Použití _afsresgroup101918_ pro účely tohoto kurzu. |
    | **Služba synchronizace úložiště** | Název služby synchronizace úložiště. Použití _afssyncservice02_ pro účely tohoto kurzu. |
 
@@ -310,7 +310,7 @@ Koncový bod serveru představuje určitého umístění na registrovaném serve
    | **Zaregistrovaný server** | Název serveru, který jste vytvořili. Použití *afsvm101918* pro účely tohoto kurzu. |
    | **Cesta** | Cesta Windows serveru na jednotku, kterou jste vytvořili. Použití *f:\filestosync* v tomto kurzu. |
    | **Vrstvení cloudu** | Pro účely tohoto kurzu nechte tuto možnost zakázanou. |
-   | **Volné místo na svazku** | Pro účely tohoto kurzu ponechte tuto hodnotu prázdnou. |
+   | **Volné místo svazku** | Pro účely tohoto kurzu ponechte tuto hodnotu prázdnou. |
 
 1. Vyberte **Vytvořit**.
 
@@ -327,4 +327,4 @@ Vaše soubory se teď synchronizují mezi sdílenou složkou Azure a Windows Ser
 V tomto kurzu jste zjistili, základní kroky pro rozšíření kapacity úložiště Windows serveru pomocí Azure File Sync. Podrobnější pohled na plánování nasazení služby Azure File Sync naleznete v tématu:
 
 > [!div class="nextstepaction"]
-> [Plán nasazení Azure File Sync](./storage-sync-files-planning.md)
+> [Plánování nasazení Synchronizace souborů Azure](./storage-sync-files-planning.md)

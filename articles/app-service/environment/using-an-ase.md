@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 06/13/2017
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: c332b20650bef2e341a935dacae835403dc56c9b
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: a9a6c7c47a6ea81f682f453a85ee6f8e214a09a7
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53630661"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59678084"
 ---
 # <a name="use-an-app-service-environment"></a>Pomocí služby App Service environment #
 
@@ -29,7 +29,7 @@ Azure App Service Environment je nasazení služby Azure App Service do podsít�
 
 - **Front-endů**: Front-endů jsou, kde končí HTTP/HTTPS ve službě App Service environment (ASE).
 - **Pracovní procesy**: Zaměstnanci jsou prostředky, které jsou hostiteli vaše aplikace.
-- **Databáze**: Databáze obsahuje informace, které definují prostředí.
+- **Database**: Databáze obsahuje informace, které definují prostředí.
 - **Úložiště**: Úložiště se používá k hostování aplikací publikovaných zákazníka.
 
 > [!NOTE]
@@ -120,7 +120,7 @@ Adresa URL contoso.scm.external-ase.p.azurewebsites.net se používá přístup 
 
 Ve službě ASE s ILB určit doménu v době nasazení. Další informace o tom, jak vytvořit prostředí ILB ASE najdete v tématu [vytvoření a použití prostředí ILB ASE][MakeILBASE]. Pokud zadáte název domény _ilb ase.info_, aplikace v této službě ASE používala tuto doménu během vytváření aplikace. Pro aplikaci s názvem _contoso_, jsou adresy URL:
 
-- contoso.ilb ase.info
+- contoso.ilb-ase.info
 - contoso.scm.ilb-ase.info
 
 ## <a name="publishing"></a>Publikování ##
@@ -137,7 +137,7 @@ Tyto možnosti publikování všech s externí služby ASE se chovají stejně. 
 
 Hlavní rozdíl v publikování je pro službu ASE. S ILB ASE jsou všechny dostupné jenom prostřednictvím ILB koncové body pro publikování. ILB je na privátní IP adresa v podsíti služby ASE ve virtuální síti. Pokud nemáte přístup k síti na ILB, nelze publikovat všechny aplikace v této službě ASE. Jak je uvedeno v [vytvoření a použití prostředí ILB ASE][MakeILBASE], budete muset nakonfigurovat DNS pro aplikace v systému. Který obsahuje koncový bod správce řízení služeb. Pokud nejsou definované správně, nelze publikovat. Vaše Integrovaná vývojová prostředí také nutné mít přístup k síti na ILB, aby do něj publikovat přímo.
 
-Internetové systémy kontinuální integrace, jako jsou GitHub a Azure DevOps, nefungují s ILB ASE, protože koncový bod publikování není přístup k Internetu. Místo toho je potřeba použít systém kontinuální integrace, který používá model na vyžádání, jako je Dropbox.
+Hned po spuštění CI internetových systémů, jako jsou GitHub a Azure DevOps, nefungují s ILB ASE, protože koncový bod publikování není přístup k Internetu. Pro Azure DevOps můžete alternativně vyřešit to pomocí instalace agenta v místním prostředí vydání vaší interní síti, kde ji můžete oslovit ILB. Alternativně můžete také použít systém kontinuální integrace, který používá model na vyžádání, jako je Dropbox.
 
 Koncové body pro publikování pro aplikace ve službě ASE s interním nástrojem pro vyrovnávání zatížení používají doménu, pomocí které byla služba ASE s interním nástrojem pro vyrovnávání zatížení vytvořená. Zobrazí se v profilu publikování aplikace a v okně portálu aplikace (v **přehled** > **Essentials** a také v **vlastnosti**). 
 

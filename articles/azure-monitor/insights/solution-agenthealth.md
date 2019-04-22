@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 03/19/2017
 ms.author: magoedte
 ms.openlocfilehash: f431613d9fa1020f523e03c90cbe31f4d42ccf42
-ms.sourcegitcommit: ef20235daa0eb98a468576899b590c0bc1a38394
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59426218"
 ---
 #  <a name="agent-health-solution-in-azure-monitor"></a>Řešení Agent Health v monitorování Azure
@@ -76,7 +76,7 @@ Vytvoří se záznam typu **Prezenční signál**.  Vlastnosti záznamů tohoto 
 
 | Vlastnost | Popis |
 | --- | --- |
-| `Type` | *Prezenční signál*|
+| `Type` | *Heartbeat* (Prezenční signál)|
 | `Category` | Hodnota je *Direct Agent* (Přímý agent), *SCOM Agent* (Agent nástroje SCOM) nebo *SCOM Management Server* (Server pro správu nástroje SCOM).|
 | `Computer` | Název počítače.|
 | `OSType` | Operační systém Windows nebo Linux.|

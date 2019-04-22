@@ -14,17 +14,17 @@ ms.topic: overview
 ms.date: 04/05/2019
 ms.author: kraigb
 ms.openlocfilehash: 4840a9839fe1f2a31470d4a67b3755b82077fd90
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59280100"
 ---
 # <a name="overview-of-azure-notebooks"></a>Přehled Azure poznámkové bloky
 
 Azure Notebooks je bezplatná hostovaná služba pro vývoj a spouštění poznámkových bloků Jupyter v cloudu, která nevyžaduje instalaci. [Jupyter](https://jupyter.org/) (dříve IPython) je opensourcový projekt, který vám umožní snadno kombinovat text Markdownu, spustitelného kódu, trvalá data, grafiky a vizualizace na jedné, které se dají sdílet plátno, *Poznámkový blok* (image poskytuje jupyter.org):
 
-[![Examples poznámkové bloky Jupyter](https://jupyter.org/assets/jupyterpreview.png)](https://jupyter.org/assets/jupyterpreview.png#lightbox)
+[![Příklady poznámkové bloky Jupyter](https://jupyter.org/assets/jupyterpreview.png)](https://jupyter.org/assets/jupyterpreview.png#lightbox)
 
 Z důvodu této výkonnou kombinaci vysvětlující text, kód a grafické Jupyter získal oblibu pro mnoho účelů, včetně data science instrukce, čištění dat a transformace, číselná simulace, statistické modelování a vývoj modely strojového učení.
 
@@ -101,11 +101,11 @@ Do diskuse o poznámkových bloků Azure, založte problém na [úložiště Git
 
 - Šablony rychlý start:
 
-  - [Vytvoření a sdílení poznámkového bloku](quickstart-create-share-jupyter-notebook.md)
-  - [Klonování poznámkového bloku](quickstart-clone-jupyter-notebook.md)
-  - [Migrace místních poznámkových bloků Jupyter](quickstart-migrate-local-jupyter-notebook.md)
-  - [Použití vlastního prostředí](quickstart-create-jupyter-notebook-project-environment.md)
-  - [Přihlášení a nastavení ID uživatele](quickstart-sign-in-azure-notebooks.md)
+  - [Vytvářejte a sdílejte poznámkového bloku](quickstart-create-share-jupyter-notebook.md)
+  - [Klonovat poznámkového bloku](quickstart-clone-jupyter-notebook.md)
+  - [Migrovat místní aplikace Jupyter notebook](quickstart-migrate-local-jupyter-notebook.md)
+  - [Použít vlastní prostředí](quickstart-create-jupyter-notebook-project-environment.md)
+  - [Přihlaste se a nastavit ID uživatele](quickstart-sign-in-azure-notebooks.md)
 
 - Kurzy:
 
@@ -113,10 +113,10 @@ Do diskuse o poznámkových bloků Azure, založte problém na [úložiště Git
 
 - Články s návody:
   
-  - [Vytváření a klonování projektů](create-clone-jupyter-notebooks.md)
+  - [Vytvoření a klonování projekty](create-clone-jupyter-notebooks.md)
   - [Konfigurace a správa projektů](configure-manage-azure-notebooks-projects.md)
   - [Instalace balíčků z v rámci poznámkového bloku](install-packages-jupyter-notebook.md)
-  - [Předložení prezentace](present-jupyter-notebooks-slideshow.md)
+  - [K dispozici prezentace](present-jupyter-notebooks-slideshow.md)
   - [Práce s datovými soubory](work-with-project-data-files.md)
-  - [Přístup k datovým prostředkům](access-data-resources-jupyter-notebooks.md)
-  - [Použití služeb Azure Machine Learning Services](use-machine-learning-services-jupyter-notebooks.md)
+  - [Přístup k prostředkům data](access-data-resources-jupyter-notebooks.md)
+  - [Použití Azure Machine Learning Services](use-machine-learning-services-jupyter-notebooks.md)

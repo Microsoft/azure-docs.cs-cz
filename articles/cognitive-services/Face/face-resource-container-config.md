@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: conceptual
-ms.date: 04/01/2019
+ms.date: 04/16/2019
 ms.author: diberry
-ms.openlocfilehash: 73fc17ae5c65cd1a6ce47a18cbe17e6c338b7aaf
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.openlocfilehash: 4152cf90d9de2eda15a798fbf6b5b4aa4f5646f7
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58882119"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59677778"
 ---
 # <a name="configure-face-docker-containers"></a>Konfigurace kontejnery Dockeru pro rozpoznávání tváře
 
@@ -31,11 +31,11 @@ ms.locfileid: "58882119"
 
 ## <a name="apikey-configuration-setting"></a>Nastavení konfigurace ApiKey
 
-`ApiKey` Nastavení určuje klíč prostředku Azure používá ke sledování fakturačních údajů pro kontejner. Musíte zadat hodnotu pro ApiKey a hodnota musí být platný klíč pro _pro rozpoznávání tváře_ prostředek určený pro [ `Billing` ](#billing-configuration-setting) nastavení konfigurace.
+`ApiKey` Nastavení určuje klíč prostředku Azure používá ke sledování fakturačních údajů pro kontejner. Musíte zadat hodnotu pro ApiKey a hodnota musí být platný klíč pro _služeb Cognitive Services_ prostředek určený pro [ `Billing` ](#billing-configuration-setting) nastavení konfigurace.
 
 Toto nastavení najdete v následujícím místě:
 
-* Azure portal: **Rozpoznávání tváře společnosti** správy prostředků v části **klíče**
+* Azure portal: **Služby cognitive Services** správy prostředků v části **klíče**
 
 ## <a name="applicationinsights-setting"></a>Nastavení ApplicationInsights
 
@@ -43,11 +43,13 @@ Toto nastavení najdete v následujícím místě:
 
 ## <a name="billing-configuration-setting"></a>Konfigurace nastavení fakturace
 
-`Billing` Nastavení, určuje identifikátor URI koncového bodu z _pro rozpoznávání tváře_ prostředků v Azure umožňuje měřit fakturačních údajů pro kontejner. Musíte zadat hodnotu pro toto nastavení konfigurace, a hodnota musí být platný identifikátor URI koncového bodu pro _pro rozpoznávání tváře_ prostředků v Azure. Sestavy využití kontejnerů o každých 10 až 15 minut.
+`Billing` Nastavení, určuje identifikátor URI koncového bodu z _služeb Cognitive Services_ prostředků v Azure umožňuje měřit fakturačních údajů pro kontejner. Musíte zadat hodnotu pro toto nastavení konfigurace, a hodnota musí být platný identifikátor URI koncového bodu pro _služeb Cognitive Services_ prostředků v Azure. Sestavy využití kontejnerů o každých 10 až 15 minut.
 
 Toto nastavení najdete v následujícím místě:
 
-* Azure portal: **Rozpoznávání tváře společnosti** přehled s popiskem `Endpoint`
+* Azure portal: **Služby cognitive Services** přehled s popiskem `Endpoint`
+
+Nezapomeňte přidat _pro rozpoznávání tváře_ směrování na identifikátor URI koncového bodu, jak je znázorněno v příkladu. 
 
 |Požaduje se| Název | Typ dat | Popis |
 |--|------|-----------|-------------|
@@ -136,12 +138,12 @@ Nahradit {_argument_name_} s vlastními hodnotami:
 
 | Zástupný symbol | Hodnota | Formát nebo příklad |
 |-------------|-------|---|
-|{BILLING_KEY} | Koncový bod klíč prostředku pro rozpoznávání tváře. |xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx|
-|{BILLING_ENDPOINT_URI} | Fakturační hodnota koncového bodu, včetně oblasti.|`https://westcentralus.api.cognitive.microsoft.com/face/v1.0`|
+|{BILLING_KEY} | Klíč koncového bodu prostředku služeb Cognitive Services. |xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx|
+|{BILLING_ENDPOINT_URI} | Fakturační hodnota koncového bodu, včetně oblasti a směrování pro rozpoznávání tváře.|`https://westcentralus.api.cognitive.microsoft.com/face/v1.0`|
 
 > [!IMPORTANT]
 > `Eula`, `Billing`, A `ApiKey` možnosti musí být zadán pro spuštění kontejneru; v opačném případě nebude spuštění kontejneru.  Další informace najdete v tématu [fakturace](face-how-to-install-containers.md#billing).
-> Hodnota ApiKey **klíč** ze stránky klíče na prostředek Azure pro rozpoznávání tváře. 
+> Hodnota ApiKey **klíč** Azure `Cognitive Services` stránka s materiály pro klíče. 
 
 ## <a name="face-container-docker-examples"></a>Příklady kontejneru Dockeru pro rozpoznávání tváře
 

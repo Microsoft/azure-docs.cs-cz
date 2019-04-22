@@ -9,10 +9,10 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 09/14/2018
 ms.openlocfilehash: e51313bbed21459de9f717edd123887caed18f4b
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59279343"
 ---
 # <a name="understand-and-use-azure-iot-hub-sdks"></a>Pochopit a používat sady SDK služby Azure IoT Hub
@@ -47,16 +47,16 @@ Azure IoT Hub device sady SDK pro .NET:
 
 * Stáhnout z [Nuget](https://www.nuget.org/packages/Microsoft.Azure.Devices.Client/).  Obor názvů je Microsoft.Azure.Devices.Clients, která obsahuje klienty zařízení centra IoT (DeviceClient, ModuleClient).
 * [Zdrojový kód](https://github.com/Azure/azure-iot-sdk-csharp)
-* [API – referenční informace](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices?view=azure-dotnet)
-* [Reference k modulu](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.client.moduleclient?view=azure-dotnet)
+* [Referenční materiály k rozhraní API](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices?view=azure-dotnet)
+* [Odkaz na modul](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.client.moduleclient?view=azure-dotnet)
 
 Azure IoT Hub device sady SDK pro jazyk C (ANSI C - C99):
 
 * Nainstalujte z [apt-get, MBED, rozhraním Arduino IDE nebo iOS](https://github.com/Azure/azure-iot-sdk-c/blob/master/readme.md#packages-and-libraries)
 * [Zdrojový kód](https://github.com/Azure/azure-iot-sdk-c)
 * [Kompilace sady SDK pro zařízení jazyka C](https://github.com/Azure/azure-iot-sdk-c/blob/master/iothub_client/readme.md#compiling-the-c-device-sdk)
-* [API – referenční informace](https://docs.microsoft.com/azure/iot-hub/iot-c-sdk-ref/)
-* [Reference k modulu](https://docs.microsoft.com/azure/iot-hub/iot-c-sdk-ref/iothub-module-client-h)
+* [Referenční materiály k rozhraní API](https://docs.microsoft.com/azure/iot-hub/iot-c-sdk-ref/)
+* [Odkaz na modul](https://docs.microsoft.com/azure/iot-hub/iot-c-sdk-ref/iothub-module-client-h)
 * [Portování C SDK pro jiné platformy](https://github.com/Azure/azure-c-shared-utility/blob/master/devdoc/porting_guide.md)
 * [Dokumentace pro vývojáře](https://github.com/Azure/azure-iot-sdk-c/tree/master/doc) o křížové kompilace, Začínáme na různých platformách, atd.
 * [Informace o spotřebě prostředků Azure IoT Hub C SDK](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/c_sdk_resource_information.md)
@@ -65,15 +65,15 @@ Azure IoT Hub device sady SDK pro Javu:
 
 * Přidat do [Maven](https://github.com/Azure/azure-iot-sdk-java/blob/master/doc/java-devbox-setup.md#for-the-device-sdk) projektu
 * [Zdrojový kód](https://github.com/Azure/azure-iot-sdk-java)
-* [API – referenční informace](https://docs.microsoft.com/java/api/com.microsoft.azure.sdk.iot.device)
-* [Reference k modulu](https://docs.microsoft.com/java/api/com.microsoft.azure.sdk.iot.device.moduleclient?view=azure-java-stable)
+* [Referenční materiály k rozhraní API](https://docs.microsoft.com/java/api/com.microsoft.azure.sdk.iot.device)
+* [Odkaz na modul](https://docs.microsoft.com/java/api/com.microsoft.azure.sdk.iot.device.moduleclient?view=azure-java-stable)
 
 Azure IoT Hub device sady SDK pro Node.js: 
 
 * Nainstalujte z [npm](https://www.npmjs.com/package/azure-iot-device)
 * [Zdrojový kód](https://github.com/Azure/azure-iot-sdk-node)
-* [API – referenční informace](https://docs.microsoft.com/javascript/api/azure-iot-device/?view=azure-iot-typescript-latest)
-* [Reference k modulu](https://docs.microsoft.com/javascript/api/azure-iot-device/moduleclient?view=azure-node-latest)
+* [Referenční materiály k rozhraní API](https://docs.microsoft.com/javascript/api/azure-iot-device/?view=azure-iot-typescript-latest)
+* [Odkaz na modul](https://docs.microsoft.com/javascript/api/azure-iot-device/moduleclient?view=azure-node-latest)
 
 Azure IoT Hub device sady SDK pro Python: 
 
@@ -95,19 +95,19 @@ Azure IoT Hub služba SDK pro .NET:
 
 * Stáhnout z [Nuget](https://www.nuget.org/packages/Microsoft.Azure.Devices/).  Obor názvů je Microsoft.Azure.Devices, která obsahuje klienty služby Centrum IoT (RegistryManager, ServiceClients).
 * [Zdrojový kód](https://github.com/Azure/azure-iot-sdk-csharp)
-* [API – referenční informace](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices)
+* [Referenční materiály k rozhraní API](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices)
 
 Azure IoT Hub sady SDK služby pro Javu: 
 
 * Přidat do [Maven](https://github.com/Azure/azure-iot-sdk-java/blob/master/doc/java-devbox-setup.md#for-the-service-sdk) projektu
 * [Zdrojový kód](https://github.com/Azure/azure-iot-sdk-java)
-* [API – referenční informace](https://docs.microsoft.com/java/api/com.microsoft.azure.sdk.iot.service)
+* [Referenční materiály k rozhraní API](https://docs.microsoft.com/java/api/com.microsoft.azure.sdk.iot.service)
 
 Azure IoT Hub sady SDK služby pro Node.js: 
 
 * Stáhnout z [npm](https://www.npmjs.com/package/azure-iothub)
 * [Zdrojový kód](https://github.com/Azure/azure-iot-sdk-node)
-* [API – referenční informace](https://docs.microsoft.com/javascript/api/azure-iothub/?view=azure-iot-typescript-latest)
+* [Referenční materiály k rozhraní API](https://docs.microsoft.com/javascript/api/azure-iothub/?view=azure-iot-typescript-latest)
 
 Azure IoT Hub sady SDK služby pro jazyk Python: 
 
@@ -135,24 +135,24 @@ Azure zřizování zařízení a služby sady SDK pro jazyk C#:
 
 * Stáhnout z [sada SDK zařízení](https://www.nuget.org/packages/Microsoft.Azure.Devices.Provisioning.Client/) a [služby SDK](https://www.nuget.org/packages/Microsoft.Azure.Devices.Provisioning.Service/) z NuGet.
 * [Zdrojový kód](https://github.com/Azure/azure-iot-sdk-csharp/)
-* [API – referenční informace](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.provisioning.client?view=azure-dotnet)
+* [Referenční materiály k rozhraní API](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.provisioning.client?view=azure-dotnet)
 
 Azure zřizování zařízení a služby sady SDK pro jazyk C:
 
 * Nainstalujte z [apt-get, MBED, rozhraním Arduino IDE nebo iOS](https://github.com/Azure/azure-iot-sdk-c/blob/master/readme.md#packages-and-libraries)
 * [Zdrojový kód](https://github.com/Azure/azure-iot-sdk-c/blob/master/provisioning_client)
-* [API – referenční informace](https://docs.microsoft.com/azure/iot-hub/iot-c-sdk-ref/)
+* [Referenční materiály k rozhraní API](https://docs.microsoft.com/azure/iot-hub/iot-c-sdk-ref/)
 
 Azure zřizování zařízení a služby sady SDK pro Javu:
 
 * Přidat do [Maven](https://github.com/Azure/azure-iot-sdk-java/blob/master/doc/java-devbox-setup.md#for-the-service-sdk) projektu
 * [Zdrojový kód](https://github.com/Azure/azure-iot-sdk-java/blob/master/provisioning)
-* [API – referenční informace](https://docs.microsoft.com/java/api/com.microsoft.azure.sdk.iot.provisioning.device?view=azure-java-stable)
+* [Referenční materiály k rozhraní API](https://docs.microsoft.com/java/api/com.microsoft.azure.sdk.iot.provisioning.device?view=azure-java-stable)
 
 Azure zřizování zařízení a služby sady SDK pro Node.js:
 
 * [Zdrojový kód](https://github.com/Azure/azure-iot-sdk-node/tree/master/provisioning)
-* [API – referenční informace](https://docs.microsoft.com/javascript/api/overview/azure/iothubdeviceprovisioning?view=azure-node-latest)
+* [Referenční materiály k rozhraní API](https://docs.microsoft.com/javascript/api/overview/azure/iothubdeviceprovisioning?view=azure-node-latest)
 * Stáhněte si [sady SDK pro zařízení](https://badge.fury.io/js/azure-iot-provisioning-device) a [sady SDK služby](https://badge.fury.io/js/azure-iot-provisioning-service) z npm
 
 Azure zřizování zařízení a služby sady SDK pro Python:

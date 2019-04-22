@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 10/11/2018
 ms.author: raynew
 ms.openlocfilehash: 74c33d73f15c4edf63a02ea5c9a0cdcad88bb68c
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/05/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59049741"
 ---
 # <a name="contoso-migration-rebuild-an-on-premises-app-to-azure"></a>Migrace Contoso: Znovu sestavit místní aplikaci do Azure
@@ -22,13 +22,13 @@ Tento článek ukazuje, jak společnosti Contoso migruje a znovu sestaví SmartH
 Tento dokument je jednou z řady článků, které ukazují, jak fiktivní společnosti Contoso migraci místních prostředků do cloudu Microsoft Azure. Obsahuje základní informace a scénáře, které znázorňují nastavování infrastruktury migrace, posuzování migrace místních prostředků a spouštění různé druhy migrace. Scénáře jejich složitost v. Přidáme další články v čase.
 
 
-**Článek** | **Podrobnosti** | **Status**
+**Článek** | **Podrobnosti** | **Stav**
 --- | --- | ---
 [Článek 1: Přehled](contoso-migration-overview.md) | Poskytuje přehled strategie migrace společnosti Contoso, článek řady a ukázkové aplikace, které používáme. | K dispozici.
 [Článek 2: Nasazení infrastruktury Azure](contoso-migration-infrastructure.md) | Popisuje, jak společnosti Contoso připraví jeho místní a infrastrukturu Azure na migraci. Stejnou infrastrukturu se používá pro všechny články týkající se migrace. | K dispozici.
 [Článek 3: Posouzení místních prostředků](contoso-migration-assessment.md)  | Ukazuje, jak společnosti Contoso spuštění posouzení místních dvouvrstvé SmartHotel360 aplikaci spuštěnou v prostředí VMware. Contoso vyhodnocuje aplikací virtuálních počítačů pomocí [Azure Migrate](migrate-overview.md) služby a databáze aplikace SQL serveru s [Pomocníka s migrací databáze](https://docs.microsoft.com/sql/dma/dma-overview?view=sql-server-2017). | K dispozici.
 [Článek 4: Změna hostitele aplikací na virtuálních počítačích Azure a spravované Instance SQL](contoso-migration-rehost-vm-sql-managed-instance.md) | Ukazuje, jak společnosti Contoso běží lift and shift migrace do Azure pro aplikace SmartHotel360. Contoso migruje virtuální počítač front-endu aplikace pomocí [Azure Site Recovery](https://docs.microsoft.com/azure/site-recovery/site-recovery-overview)a databáze aplikace do spravované Instance SQL, pomocí [Azure Database Migration Service](https://docs.microsoft.com/azure/dms/dms-overview). | K dispozici.
-[Článek 5: Změna hostitele aplikace na virtuální počítače Azure](contoso-migration-rehost-vm.md) | Ukazuje, jak migrovat aplikace SmartHotel360 virtuálních počítačů pomocí Site Recovery pouze Contoso. | K dispozici.
+[Článek 5: Změna hostitele aplikace na virtuálních počítačích Azure](contoso-migration-rehost-vm.md) | Ukazuje, jak migrovat aplikace SmartHotel360 virtuálních počítačů pomocí Site Recovery pouze Contoso. | K dispozici.
 [Článek 6: Změna hostitele aplikace na virtuálních počítačích Azure a SQL Server Always On Availability Group](contoso-migration-rehost-vm-sql-ag.md) | Ukazuje, jak společnosti Contoso migruje aplikace SmartHotel360. Contoso využívá Site Recovery k migraci aplikace, virtuální počítače a Database Migration service, jak migrovat databázi aplikace do clusteru SQL serveru, který je chráněn skupiny dostupnosti AlwaysOn. | K dispozici.
 [Článek 7: Změna hostitele aplikace na virtuálních počítačích Azure s Linuxem](contoso-migration-rehost-linux-vm.md) | Ukazuje, jak Contoso funguje lift and shift migrace aplikace osTicket Linux na virtuální počítače Azure pomocí služby Site Recovery | K dispozici.
 [Článek 8: Změna hostitele Linuxovou aplikaci na virtuálních počítačích Azure a Azure serveru MySQL](contoso-migration-rehost-linux-vm-mysql.md) | Ukazuje, jak společnosti Contoso migruje Linuxovou aplikaci osTicket k virtuálním počítačům Azure pomocí Site Recovery a migraci databáze aplikace na instanci serveru Azure MySQL pomocí aplikace MySQL Workbench. | K dispozici.
@@ -199,7 +199,7 @@ Zřízení správce společnosti Contoso:
 
 9. Po dokončení nasazení nainstalují **kubectl** nástroj příkazového řádku. Nástroj je již nainstalován na Azure Cloud Shell.
 
-    **AZ aks install-cli**
+    **az aks install-cli**
 
 10. Připojení ke clusteru, ověřte spuštěním **kubectl get uzly** příkazu. Uzel se stejným názvem jako virtuální počítač ve skupině automaticky vytvořený prostředek.
 
@@ -393,20 +393,20 @@ Správce společnosti Contoso zřízení databáze Cosmos má být použit pro d
 
 1. Vytvoří **služby Azure Cosmos DB** na webu Azure Marketplace.
 
-    ![Databáze Cosmos](./media/contoso-migration-rebuild/cosmos1.png)
+    ![Cosmos DB](./media/contoso-migration-rebuild/cosmos1.png)
 
 2. Zadejte název (**contosomarthotel**), vyberte rozhraní SQL API a jeho následné uložení do skupiny prostředků produkční ContosoRG v hlavní oblasti USA – východ 2.
 
-    ![Databáze Cosmos](./media/contoso-migration-rebuild/cosmos2.png)
+    ![Cosmos DB](./media/contoso-migration-rebuild/cosmos2.png)
 
 3. Nová kolekce si přidají do databáze, výchozí kapacita a propustnost.
 
-    ![Databáze Cosmos](./media/contoso-migration-rebuild/cosmos3.png)
+    ![Cosmos DB](./media/contoso-migration-rebuild/cosmos3.png)
 
 
 4. Poznamenejte si informace o připojení pro databázi pro budoucí použití. 
 
-    ![Databáze Cosmos](./media/contoso-migration-rebuild/cosmos4.png)
+    ![Cosmos DB](./media/contoso-migration-rebuild/cosmos4.png)
 
 
 ### <a name="provision-computer-vision"></a>Zřizování pro počítačové zpracování obrazu

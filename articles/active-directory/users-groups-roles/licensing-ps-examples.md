@@ -15,10 +15,10 @@ ms.author: curtand
 ms.reviewer: sumitp
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 70e4e56742f45e0f6bfd80455e4d7545523a478b
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59265776"
 ---
 # <a name="powershell-examples-for-group-based-licensing-in-azure-ad"></a>Příklady prostředí PowerShell pro licencování na základě skupiny ve službě Azure AD
@@ -26,7 +26,7 @@ ms.locfileid: "59265776"
 Všechny funkce pro licencování na základě skupin je k dispozici prostřednictvím [webu Azure portal](https://portal.azure.com), a aktuálně je omezená podpora prostředí PowerShell a Microsoft Graph. Existují však některé užitečné úlohy, které lze provést pomocí stávajícího [rutin prostředí MSOnline PowerShell](https://docs.microsoft.com/powershell/msonline/v1/azureactivedirectory) a Microsoft Graph. Tento dokument obsahuje příklady, jaké jsou možnosti.
 
 > [!NOTE]
-> Než začnete, spuštěním rutin, ujistěte se, že připojení k vaší organizaci poprvé, spuštěním `Connect-MsolService` rutiny.
+> Než začnete, spuštěním rutin, ujistěte se, že připojení k vaší organizaci poprvé, spuštěním `Connect-MsolService`  rutiny.
 
 > [!WARNING]
 > Tento kód slouží jako příklad pro demonstrační účely. Pokud máte v úmyslu používat ve vašem prostředí, zvažte nejprve testování v malém měřítku, nebo v samostatné testovacího tenanta. Bude pravděpodobně nutné upravit kód pro konkrétní potřeby vašeho prostředí.
@@ -623,10 +623,10 @@ aadbe4da-c4b5-4d84-800a-9400f31d7371 User has no direct license to remove. Skipp
 
 Další informace o sadě pro správu licencí pomocí skupin funkcí, naleznete v následujících článcích:
 
-* [Co je licencování na základě skupin v Azure Active Directory?](../fundamentals/active-directory-licensing-whatis-azure-portal.md)
-* [Přiřazení licencí ke skupině ve službě Azure Active Directory](licensing-groups-assign.md)
-* [Identifikace a řešení problémů pro skupinu v Azure Active Directory](licensing-groups-resolve-problems.md)
-* [Migrace jednotlivě licencovaných uživatelů na licencování na základě skupiny v Azure Active Directory](licensing-groups-migrate-users.md)
+* [Co je skupina založená na licencování v Azure Active Directory?](../fundamentals/active-directory-licensing-whatis-azure-portal.md)
+* [Přiřazení licencí ke skupině v Azure Active Directory](licensing-groups-assign.md)
+* [Identifikace a řešení potíží s licencemi pro skupinu v Azure Active Directory](licensing-groups-resolve-problems.md)
+* [Postup migrace jednotlivě licencovaných uživatelů na licencování na základě skupin v Azure Active Directory](licensing-groups-migrate-users.md)
 * [Migrace uživatelů mezi licencemi produktů pomocí licencování pro skupiny ve službě Azure Active Directory](../users-groups-roles/licensing-groups-change-licenses.md)
-* [Azure Active Directory na základě skupin licencí další scénáře](licensing-group-advanced.md)
+* [Další scénáře licencování na základě skupin v Azure Active Directory](licensing-group-advanced.md)
 * [Příklady prostředí PowerShell pro licencování na základě skupiny v Azure Active Directory](../users-groups-roles/licensing-ps-examples.md)

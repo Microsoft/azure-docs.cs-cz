@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 09/11/2018
 ms.author: spelluru
 ms.openlocfilehash: 196b00f1268eada20d0e35473dc6eb43c9e48df6
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/05/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59045265"
 ---
 # <a name="create-service-bus-resources-using-azure-resource-manager-templates"></a>Vytvořit prostředky služby Service Bus pomocí šablon Azure Resource Manageru
@@ -36,7 +36,7 @@ Tento článek popisuje, jak vytvořit a nasadit prostředky služby Service Bus
 
 Tyto šablony služby Service Bus Azure Resource Manageru jsou k dispozici ke stažení a nasazení. Klikněte na podrobnosti o každé z nich, s odkazy na šablony na Githubu prostřednictvím následujících odkazů:
 
-* [Vytvoření oboru názvů Service Bus](service-bus-resource-manager-namespace.md)
+* [Vytvoření oboru názvů služby Service Bus](service-bus-resource-manager-namespace.md)
 * [Vytvoření oboru názvů služby Service Bus s frontou](service-bus-resource-manager-namespace-queue.md)
 * [Vytvoření oboru názvů služby Service Bus s tématem a předplatným](service-bus-resource-manager-namespace-topic.md)
 * [Vytvoření oboru názvů služby Service Bus s fronty a autorizační pravidla](service-bus-resource-manager-namespace-auth-rule.md)

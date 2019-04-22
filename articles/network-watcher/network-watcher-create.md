@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: jdial
 ms.openlocfilehash: 601a3f273a8da9100d24dfdbd13bd598b0e48884
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/05/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59051559"
 ---
 # <a name="create-an-azure-network-watcher-instance"></a>Vytvoření instance Azure Network Watcher
@@ -109,9 +109,9 @@ Teď, když máte instanci služby Network Watcher, další informace o funkcíc
 
 * [Topologie](network-watcher-topology-overview.md)
 * [Zachytávání paketů](network-watcher-packet-capture-overview.md)
-* [Ověření toku protokolu IP](network-watcher-ip-flow-verify-overview.md)
+* [Ověření IP toku](network-watcher-ip-flow-verify-overview.md)
 * [Další směrování](network-watcher-next-hop-overview.md)
-* [Zobrazení skupiny zabezpečení](network-watcher-security-group-view-overview.md)
+* [Zobrazení skupin zabezpečení](network-watcher-security-group-view-overview.md)
 * [Protokolování toků NSG](network-watcher-nsg-flow-logging-overview.md)
 * [Řešení potíží virtuální síťová brána](network-watcher-troubleshoot-overview.md)
 

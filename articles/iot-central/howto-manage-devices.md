@@ -8,14 +8,14 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: 1e67c22a55068ce42cb1eb6d9c0c9bdf8215f44e
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: a723ca6d69d45613636c7659e6566cec19b31d65
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58167979"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59679026"
 ---
-# <a name="manage-devices-in-your-azure-iot-central-application-new-ui-design"></a>Správa zařízení v aplikaci Azure IoT Central (návrh nové uživatelské rozhraní)
+# <a name="manage-devices-in-your-azure-iot-central-application"></a>Správa zařízení v aplikaci Azure IoT Central
 
 Tento článek popisuje, jak jako operátor ke správě zařízení v aplikaci Azure IoT Central. Jakožto Obsluha můžete:
 
@@ -86,7 +86,7 @@ Když si zaregistrujete zařízení spuštěním importovat v části **zrušeno
 
 1. Na levém panelu, vyberte **zrušeno přiřazení zařízení**:
 
-    ![Nepřidružené zařízení](./media/howto-manage-devices/UnassociatedDevices1.png)
+    ![Nepřidružená zařízení](./media/howto-manage-devices/UnassociatedDevices1.png)
 
 1. Vyberte zařízení, které chcete přidružit šablonu:
 

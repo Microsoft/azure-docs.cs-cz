@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 04/04/2019
 ms.author: raynew
 ms.openlocfilehash: 1b03cf648ad65960cce4ffc874cf32ad91ef7dc1
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/11/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59490633"
 ---
 # <a name="discover-and-assess-a-large-vmware-environment"></a>Zkoumání a vyhodnocení rozsáhlých prostředí VMware
@@ -56,7 +56,7 @@ V případě jednorázového zjišťování (teď zastaralé), zjišťování fu
 
 Plán zjišťování a posouzení podle následující omezení:
 
-| **Entita** | **Limit pro počítače** |
+| **Entity** | **Limit pro počítače** |
 | ---------- | ----------------- |
 | Project    | 1,500             |
 | Zjišťování  | 1,500             |
@@ -132,9 +132,9 @@ Pokud máte více projektů, budete muset stažení zařízení kolektoru pouze 
 
     Mějte na paměti, že zařízení shromažďuje data o výkonu pouze průběžně a nezjistí žádné změny konfigurace v místním prostředí (tj. přidání nebo odstranění virtuálního počítače, přidání disku atd.). Pokud dojde ke změně konfigurace v místním prostředí, následujícím způsobem můžete zajistit, že se změny projeví na portálu:
 
-    - Přidání položek (virtuálních počítačů, disků, jader atd.): Pro provedení těchto změn na webu Azure Portal, můžete zastavit zjišťování ze zařízení a znovu spustit. Tím se zajistí, že se změny aktualizují v projektu Azure Migrate.
+    - Přidání položek (virtuální počítače, disky, jádra atd.): Pokud chcete, aby se tyto změny projevily na webu Azure Portal, můžete na zařízení zastavit zjišťování a pak ho spustit znovu. Tím se zajistí, že se změny aktualizují v projektu Azure Migrate.
 
-    - Odstranění virtuálních počítačů: Kvůli způsobu, jakým je navržena na zařízení se neprojeví odstranění virtuálních počítačů i v případě zastavení a spuštění zjišťování. Důvodem je, že se data z dalších zjišťování připojují ke starším zjišťováním, a nepřepisují se. V takovém případě můžete virtuální počítač na portálu jednoduše ignorovat tak, že ho odeberete ze své skupiny a přepočítáte posouzení.
+    - Odstranění virtuálních počítačů: Vzhledem ke způsobu, jakým je zařízení navržené, se odstranění virtuálních počítačů neprojeví ani v případě, že zastavíte a znovu spustíte zjišťování. Důvodem je, že se data z dalších zjišťování připojují ke starším zjišťováním, a nepřepisují se. V takovém případě můžete virtuální počítač na portálu jednoduše ignorovat tak, že ho odeberete ze své skupiny a přepočítáte posouzení.
 
 3. V **kopírování přihlašovacích údajů projektu**, zkopírujte ID a klíč projektu. Budete je potřebovat při konfiguraci kolektoru.
 
@@ -157,7 +157,7 @@ Zkontrolujte, zda soubor OVA zabezpečené před jejím nasazením:
 
 Pro soubory OVA verze 1.0.10.4
 
-**algoritmus** | **Hodnota hash**
+**Algoritmus** | **Hodnota hash**
 --- | ---
 MD5 | 2ca5b1b93ee0675ca794dd3fd216e13d
 SHA1 | 8c46a52b18d36e91daeae62f412f5cb2a8198ee5
@@ -167,7 +167,7 @@ SHA256 | 3b3dec0f995b3dd3c6ba218d436be003a687710abab9fcd17d4bdc90a11276be
 
 Pro soubory OVA verze 1.0.9.15 (vydaná 10/23/2018)
 
-**algoritmus** | **Hodnota hash**
+**Algoritmus** | **Hodnota hash**
 --- | ---
 MD5 | e9ef16b0c837638c506b5fc0ef75ebfa
 SHA1 | 37b4b1e92b3c6ac2782ff5258450df6686c89864
@@ -175,7 +175,7 @@ SHA256 | 8a86fc17f69b69968eb20a5c4c288c194cdcffb4ee6568d85ae5ba96835559ba
 
 Pro soubory OVA verze 1.0.9.14 (vydaná 8/24/2018)
 
-**algoritmus** | **Hodnota hash**
+**Algoritmus** | **Hodnota hash**
 --- | ---
 MD5 | 6d8446c0eeba3de3ecc9bc3713f9c8bd
 SHA1 | e9f5bdfdd1a746c11910ed917511b5d91b9f939f
@@ -183,7 +183,7 @@ SHA256 | 7f7636d0959379502dfbda19b8e3f47f3a4744ee9453fc9ce548e6682a66f13c
 
 Pro soubory OVA verze 1.0.9.12
 
-**algoritmus** | **Hodnota hash**
+**Algoritmus** | **Hodnota hash**
 --- | ---
 MD5 | d0363e5d1b377a8eb08843cf034ac28a
 SHA1 | df4a0ada64bfa59c37acf521d15dcabe7f3f716b
@@ -191,7 +191,7 @@ SHA256 | f677b6c255e3d4d529315a31b5947edfe46f45e4eb4dbc8019d68d1d1b337c2e
 
 Pro soubory OVA verze 1.0.9.8:
 
-**algoritmus** | **Hodnota hash**
+**Algoritmus** | **Hodnota hash**
 --- | ---
 MD5 | b5d9f0caf15ca357ac0563468c2e6251
 SHA1 | d6179b5bfe84e123fabd37f8a1e4930839eeb0e5
@@ -199,7 +199,7 @@ SHA256 | 09c68b168719cb93bd439ea6a5fe21a3b01beec0e15b84204857061ca5b116ff
 
 Pro soubory OVA verze 1.0.9.7:
 
-**algoritmus** | **Hodnota hash**
+**Algoritmus** | **Hodnota hash**
 --- | ---
 MD5 | d5b6a03701203ff556fa78694d6d7c35
 SHA1 | f039feaa10dccd811c3d22d9a59fb83d0b01151e
@@ -278,7 +278,7 @@ Zařízení kolektoru zjistí následující konfigurační data o vybrané virt
 
 Zařízení kolektoru shromažďuje následující čítače výkonu pro každý virtuální počítač z hostitele ESXi v intervalech 20 sekund. Tyto čítače jsou čítačů vCenter a i když terminologii říká průměr, 20 sekund ukázky jsou čítačů v reálném čase. Zařízení potom zobrazí – až 20 sekund ukázky vytvořte jeden datový bod pro každých 15 minut tak, že vyberete hodnotu ve špičce ukázky 20 sekund a odesílá je do Azure. Data o výkonu pro virtuální počítače se spustí poté jsou dostupné na portálu, dvě hodiny po mají spustila zjišťování. Důrazně se doporučuje počkejte alespoň den před vytvořením posouzení založená na výkon získat přesné doporučení pro správné velikosti. Pokud chcete pro rychlé provést synchronizaci dříve, můžete vytvořit posouzení s kritérium určení velikosti jako *jako místní* které nebude považovat za data o výkonu pro určení správné velikosti.
 
-**Čítač** |  **Dopad na posouzení**
+**Counter** |  **Dopad na posouzení**
 --- | ---
 cpu.usage.average | Doporučené velikosti virtuálních počítačů a náklady  
 mem.usage.average | Doporučené velikosti virtuálních počítačů a náklady  

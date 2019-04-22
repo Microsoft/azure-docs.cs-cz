@@ -21,7 +21,7 @@ items:
         href: ../virtual-machines/windows/create-powershell-availability-zone.md
       - name: Vytvoření virtuálního počítače s Windows v zóně dostupnosti s využitím webu Azure Portal
         href: ../virtual-machines/windows/create-portal-availability-zone.md
-    - name: Managed Disks
+    - name: Spravované disky
       items:
       - name: Přidání spravovaného disku do zón dostupnosti s využitím rozhraní příkazového řádku
         href: ../virtual-machines/linux/add-disk.md#use-managed-disks

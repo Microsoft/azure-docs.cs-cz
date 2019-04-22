@@ -9,10 +9,10 @@ ms.date: 04/03/2019
 ms.author: stevelas
 ms.custom: seodec18, mvc
 ms.openlocfilehash: ba75d196bdb53fab104ab6c01391e762b4a3841b
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59270519"
 ---
 # <a name="introduction-to-private-docker-container-registries-in-azure"></a>Seznámení se soukromými registry kontejnerů Dockeru v Azure
@@ -44,9 +44,9 @@ Azure poskytuje nástroje, včetně rozhraní příkazového řádku Azure, webu
 
 * **Úložiště** – registr obsahuje jedno nebo více úložišť, které jsou virtuální skupiny imagí kontejnerů se stejným názvem, ale různých klíčových slov nebo přehledu. Azure Container Registry podporuje víceúrovňové obory názvů úložiště. S víceúrovňovými obory názvů můžete seskupovat kolekce imagí souvisejících s konkrétní aplikací nebo kolekcí aplikací pro konkrétní vývojové nebo provozní týmy. Příklad:
 
-  * `myregistry.azurecr.io/aspnetcore:1.0.1` představuje image pro celý podnik
-  * `myregistry.azurecr.io/warrantydept/dotnet-build` představuje image sloužící k vytváření aplikací .NET, sdílet v rámci záručního oddělení.
-  * `myregistry.azurecr.io/warrantydept/customersubmissions/web` představuje webovou image seskupenou v zákaznické aplikaci pro odesílání, vlastní záručním oddělením.
+  * `myregistry.azurecr.io/aspnetcore:1.0.1` představuje image pro celý podnik.
+  * `myregistry.azurecr.io/warrantydept/dotnet-build` představuje image sloužící k vytváření aplikací .NET, která je sdílená v rámci záručního oddělení.
+  * `myregistry.azurecr.io/warrantydept/customersubmissions/web` představuje webovou image seskupenou v zákaznické aplikaci pro odesílání a vlastněnou záručním oddělením.
 
 * **Obrázek** -uložen v úložišti, každé image je jen pro čtení snímek kontejneru kompatibilní s Dockerem. Registry kontejnerů Azure mohou zahrnovat image systémů Windows i Linux. Názvy imagí pro všechna nasazení kontejnerů určujete vy. Pomocí standardních [příkazů Dockeru](https://docs.docker.com/engine/reference/commandline/) můžete nahrávat image do úložiště nebo si z úložiště image stáhnout. Kromě imagí kontejnerů Azure Container Registry ukládá [týkající se obsahu formáty](container-registry-image-formats.md) například [grafy Helm](container-registry-helm-repos.md), která slouží k nasazení aplikací do Kubernetes.
 
@@ -62,4 +62,4 @@ Azure poskytuje nástroje, včetně rozhraní příkazového řádku Azure, webu
 
 * [Vytvoření registru kontejnerů pomocí webu Azure Portal](container-registry-get-started-portal.md)
 * [Vytvoření registru kontejnerů pomocí Azure CLI](container-registry-get-started-azure-cli.md)
-* [Automatizace operačního systému a rozhraní framework opravy chyb s úlohami služby ACR](container-registry-tasks-overview.md)
+* [Automatizace oprav operačního systému a architektury pomocí úloh ACR](container-registry-tasks-overview.md)

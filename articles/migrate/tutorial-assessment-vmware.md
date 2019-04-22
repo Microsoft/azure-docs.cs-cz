@@ -8,10 +8,10 @@ ms.date: 01/31/2019
 ms.author: raynew
 ms.custom: mvc
 ms.openlocfilehash: 9eab8a29db40118f2a15064c52419ecebcd4aecb
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/11/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59490313"
 ---
 # <a name="discover-and-assess-on-premises-vmware-vms-for-migration-to-azure"></a>Zjištění místních virtuálních počítačů VMware a posouzení vhodnosti jejich migrace do Azure
@@ -56,7 +56,7 @@ Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 4. Vytvořte novou skupinu prostředků.
 5. Zadejte umístění, ve kterém chcete projekt vytvořit, a pak klikněte na **Vytvořit**. Projekt Azure Migrate můžete vytvořit pouze v následujících zeměpisných oblastech. Přesto ale můžete naplánovat migraci do libovolného cílového umístění Azure. Zeměpisné umístění vybrané pro tento projekt slouží jen k uložení metadat získaných z místních virtuálních počítačů.
 
-**Geografie** | **Umístění úložiště**
+**Zeměpisné oblasti** | **Umístění úložiště**
 --- | ---
 Azure Government | USA (Gov) – Virginia
 Asie | Jihovýchodní Asie
@@ -82,9 +82,9 @@ Azure Migrate vytvoří místní virtuální počítač, kterému se říká za�
 
     Zařízení průběžně pouze shromažďuje údaje o výkonu, nezjistí změny konfigurace v místním prostředí (to znamená, přidání virtuálního počítače, odstranění, přidání disku atd.). Pokud dojde ke změně konfigurace v místním prostředí, následujícím způsobem můžete zajistit, že se změny projeví na portálu:
 
-    - Přidání položek (virtuálních počítačů, disků, jader atd.): Pro provedení těchto změn na webu Azure Portal, můžete zastavit zjišťování ze zařízení a znovu spustit. Tím se zajistí, že se změny aktualizují v projektu Azure Migrate.
+    - Přidání položek (virtuální počítače, disky, jádra atd.): Pokud chcete, aby se tyto změny projevily na webu Azure Portal, můžete na zařízení zastavit zjišťování a pak ho spustit znovu. Tím se zajistí, že se změny aktualizují v projektu Azure Migrate.
 
-    - Odstranění virtuálních počítačů: Kvůli způsobu, jakým je navržena na zařízení se neprojeví odstranění virtuálních počítačů i v případě zastavení a spuštění zjišťování. Důvodem je, že se data z dalších zjišťování připojují ke starším zjišťováním, a nepřepisují se. V takovém případě můžete virtuální počítač na portálu jednoduše ignorovat tak, že ho odeberete ze své skupiny a přepočítáte posouzení.
+    - Odstranění virtuálních počítačů: Vzhledem ke způsobu, jakým je zařízení navržené, se odstranění virtuálních počítačů neprojeví ani v případě, že zastavíte a znovu spustíte zjišťování. Důvodem je, že se data z dalších zjišťování připojují ke starším zjišťováním, a nepřepisují se. V takovém případě můžete virtuální počítač na portálu jednoduše ignorovat tak, že ho odeberete ze své skupiny a přepočítáte posouzení.
 
 
 3. V části **Kopírování přihlašovacích údajů projektu** zkopírujte ID a klíč projektu. Budete je potřebovat při konfiguraci kolektoru.
@@ -105,7 +105,7 @@ Než nasadíte soubor .OVA, zkontrolujte, jestli je bezpečný.
 
   Pro soubory OVA verze 1.0.10.11
 
-  **algoritmus** | **Hodnota hash**
+  **Algoritmus** | **Hodnota hash**
     --- | ---
     MD5 | 5f6b199d8272428ccfa23543b0b5f600
     SHA1 | daa530de6e8674a66a728885a7feb3b0a2e8ccb0
@@ -113,7 +113,7 @@ Než nasadíte soubor .OVA, zkontrolujte, jestli je bezpečný.
 
   Pro soubory OVA verze 1.0.10.9
 
-  **algoritmus** | **Hodnota hash**
+  **Algoritmus** | **Hodnota hash**
   --- | ---
   MD5 | 169f6449cc1955f1514059a4c30d138b
   SHA1 | f8d0a1d40c46bbbf78cd0caa594d979f1b587c8f
@@ -121,7 +121,7 @@ Než nasadíte soubor .OVA, zkontrolujte, jestli je bezpečný.
 
   Pro soubory OVA verze 1.0.10.4
 
-  **algoritmus** | **Hodnota hash**
+  **Algoritmus** | **Hodnota hash**
   --- | ---
   MD5 | 2ca5b1b93ee0675ca794dd3fd216e13d
   SHA1 | 8c46a52b18d36e91daeae62f412f5cb2a8198ee5
@@ -134,7 +134,7 @@ Tento model je nyní zastaralá, podpora bude poskytována stávajících zaří
 
   Pro soubory OVA verze 1.0.9.15
 
-  **algoritmus** | **Hodnota hash**
+  **Algoritmus** | **Hodnota hash**
   --- | ---
   MD5 | e9ef16b0c837638c506b5fc0ef75ebfa
   SHA1 | 37b4b1e92b3c6ac2782ff5258450df6686c89864
@@ -142,7 +142,7 @@ Tento model je nyní zastaralá, podpora bude poskytována stávajících zaří
 
   Pro soubory OVA verze 1.0.9.14
 
-  **algoritmus** | **Hodnota hash**
+  **Algoritmus** | **Hodnota hash**
   --- | ---
   MD5 | 6d8446c0eeba3de3ecc9bc3713f9c8bd
   SHA1 | e9f5bdfdd1a746c11910ed917511b5d91b9f939f
@@ -150,7 +150,7 @@ Tento model je nyní zastaralá, podpora bude poskytována stávajících zaří
 
   Pro soubory OVA verze 1.0.9.12
 
-  **algoritmus** | **Hodnota hash**
+  **Algoritmus** | **Hodnota hash**
   --- | ---
   MD5 | d0363e5d1b377a8eb08843cf034ac28a
   SHA1 | df4a0ada64bfa59c37acf521d15dcabe7f3f716b

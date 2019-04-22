@@ -9,10 +9,10 @@ ms.service: iot-dps
 services: iot-dps
 manager: philmea
 ms.openlocfilehash: 2f6e1e1a27e32e567cf0eaa8ff7a99046ed81bbe
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/05/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59050940"
 ---
 # <a name="symmetric-key-attestation"></a>Osvědčení symetrického klíče
@@ -49,7 +49,7 @@ Tady jsou součástí každý token:
 | Hodnota | Popis |
 | --- | --- |
 | {podpis} |Řetězec podpisu HMAC SHA256. Pro jednotlivé registrace tento podpis je vytvořen pomocí symetrického klíče (primární nebo sekundární) k provedení-the-hash. Pro skupiny registrací klíčem odvozeným od klíč registrace skupiny slouží k provádění-the-hash. Hodnota hash se provádí na zprávu ve formátu: `URL-encoded-resourceURI + "\n" + expiry`. **Důležité**: Klíč musí dekódovat z formátu base64. před použitím pro provádění výpočtů HMAC SHA256. Výsledek podpis musí být také kódovaná adresou URL. |
-| {resourceURI} |Identifikátor URI koncového bodu registrace, který je přístupný s tímto tokenem od ID oboru pro instanci služby Device Provisioning. Například: `{Scope ID}/registrations/{Registration ID}` |
+| {resourceURI} |Identifikátor URI koncového bodu registrace, který je přístupný s tímto tokenem od ID oboru pro instanci služby Device Provisioning. Například `{Scope ID}/registrations/{Registration ID}`. |
 | {expiry} |Řetězce UTF8 pro počet sekund od 00:00:00 UTC epocha na 1. ledna 1970. |
 | {URL-encoded-resourceURI} |Nižší malá a velká kódování URL z identifikátoru URI prostředku malými písmeny |
 | {policyName} |Název zásad sdíleného přístupu, na který odkazuje tento token. Název zásady použitý při zřizování s symetrického klíče ověření je **registrace**. |
@@ -114,6 +114,6 @@ Pokud zařízení klíče nejsou nainstalovány v objektu pro vytváření, [mod
 
 Teď, když máte představu o ověření identity symetrického klíče, přečtěte si další informace v následujících článcích:
 
-* [Rychlý start: Zřízení simulovaného zařízení pomocí symetrických klíčů](quick-create-simulated-device-symm-key.md)
+* [Rychlé zprovoznění: Zřízení simulovaného zařízení pomocí symetrických klíčů](quick-create-simulated-device-symm-key.md)
 * [Další informace o konceptech automatického zřizování](./concepts-auto-provisioning.md)
 * [Začínáme s využitím automatického zřizování](./quick-setup-auto-provision.md) 

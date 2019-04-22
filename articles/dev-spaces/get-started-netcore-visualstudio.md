@@ -12,10 +12,10 @@ ms.topic: tutorial
 description: Rychlý vývoj na platformě Kubernetes s využitím kontejnerů a mikroslužeb v Azure
 keywords: Docker, Kubernetes, Azure, AKS, službě Azure Kubernetes, kontejnery, Helm, služby sítě, směrování sítě služby, kubectl, k8s
 ms.openlocfilehash: e94134a0c7c3b44a2e4734fe1e91a19f3e26851c
-ms.sourcegitcommit: ef20235daa0eb98a468576899b590c0bc1a38394
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59425759"
 ---
 # <a name="get-started-on-azure-dev-spaces-with-net-core-and-visual-studio"></a>Začínáme s Azure Dev prostorů s .NET Core a Visual Studio
@@ -128,7 +128,7 @@ Zarážku aktivujete kliknutím na odkaz **O aplikaci** v horní části stránk
 Azure Dev Spaces neslouží jenom ke spuštění kódu v prostředí Kubernetes. Umožňuje také rychle opakovaně prohlížet změny kódu, ke kterým dochází v prostředí Kubernetes v cloudu.
 
 ### <a name="update-a-content-file"></a>Aktualizace souboru obsahu
-1. Najděte soubor `./Views/Home/Index.cshtml` a upravte kód HTML. Například, změňte řádek 70, který čte `<h2>Application uses</h2>` na něco jako: `<h2>Hello k8s in Azure!</h2>`
+1. Najděte soubor `./Views/Home/Index.cshtml` a upravte kód HTML. Můžete změnit řádek 70, na kterém je `<h2>Application uses</h2>`, třeba takto: `<h2>Hello k8s in Azure!</h2>`
 1. Uložte soubor.
 1. Přejděte do prohlížeče a aktualizujte stránku. Na webové stránce by se měl zobrazit aktualizovaný kód HTML.
 
@@ -138,7 +138,7 @@ Co se stalo? Úpravy souborů obsahu jako HTML a CSS nevyžadují rekompilaci ve
 Aktualizace souborů s kódem je o něco pracnější, protože aplikace .NET Core musí znovu sestavit a vytvořit aktualizované binární soubory aplikace.
 
 1. Zastavte ladicí program v sadě Visual Studio.
-1. Otevřete soubor kódu s názvem `Controllers/HomeController.cs`a upravit zprávu, která se zobrazí na stránce o: `ViewData["Message"] = "Your application description page.";`
+1. Otevřete soubor s kódem, který se jmenuje `Controllers/HomeController.cs`, a upravte zprávu, která se zobrazí na stránce O aplikaci: `ViewData["Message"] = "Your application description page.";`
 1. Uložte soubor.
 1. Stisknutím klávesy **F5** znovu spusťte ladění. 
 

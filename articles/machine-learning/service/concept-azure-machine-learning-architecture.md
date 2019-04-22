@@ -11,17 +11,17 @@ author: Blackmist
 ms.date: 04/15/2019
 ms.custom: seodec18
 ms.openlocfilehash: 83ca4d2bf767d338943c396330b36f3f8180e170
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/11/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59489943"
 ---
 # <a name="how-azure-machine-learning-service-works-architecture-and-concepts"></a>Fungování služby Azure Machine Learning: Architektura a koncepty
 
 Další informace o architektuře, koncepty a pracovních postupů pro službu Azure Machine Learning. Hlavní součástí služby a obecný pracovní postup pro používání služby jsou uvedeny v následujícím diagramu:
 
-[![AArchitektura služby Machine Learning zure a pracovního postupu](./media/concept-azure-machine-learning-architecture/workflow.png)](./media/concept-azure-machine-learning-architecture/workflow.png#lightbox)
+[![Architektura služby Azure Machine Learning a pracovní postup](./media/concept-azure-machine-learning-architecture/workflow.png)](./media/concept-azure-machine-learning-architecture/workflow.png#lightbox)
 
 ## <a name="workflow"></a>Pracovní postup
 
@@ -68,7 +68,7 @@ Když vytvoříte nový pracovní prostor, automaticky vytvoří několik prost�
 
 Taxonomie pracovního prostoru je znázorněn v následujícím diagramu:
 
-[![Wtaxonomie orkspace](./media/concept-azure-machine-learning-architecture/azure-machine-learning-taxonomy.svg)](./media/concept-azure-machine-learning-architecture/azure-machine-learning-taxonomy.png#lightbox)
+[![Taxonomie pracovního prostoru](./media/concept-azure-machine-learning-architecture/azure-machine-learning-taxonomy.svg)](./media/concept-azure-machine-learning-architecture/azure-machine-learning-taxonomy.png#lightbox)
 
 ## <a name="experiment"></a>Experiment
 
@@ -236,5 +236,5 @@ Abyste mohli začít se službou Azure Machine Learning, naleznete v tématu:
 
 * [Co je služba Azure Machine Learning?](overview-what-is-azure-ml.md)
 * [Vytvořit pracovní prostor služby Azure Machine Learning](setup-create-workspace.md)
-* [Kurz: Učení modelu](tutorial-train-models-with-aml.md)
+* [Kurz: Trénování modelu](tutorial-train-models-with-aml.md)
 * [Vytvoření pracovního prostoru pomocí šablony Resource Manageru](how-to-create-workspace-template.md)

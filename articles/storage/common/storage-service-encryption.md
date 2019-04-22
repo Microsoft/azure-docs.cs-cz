@@ -23,7 +23,7 @@ ms.locfileid: "55457169"
 Tato funkce automaticky šifruje data na:
 
 - Služby Azure storage:
-    - Azure Managed Disks
+    - Spravované disky Azure
     - Azure Blob Storage
     - Soubory Azure
     - Azure Queue storage

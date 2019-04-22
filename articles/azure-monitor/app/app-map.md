@@ -10,15 +10,15 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 03/14/2019
+ms.date: 03/15/2019
 ms.reviewer: sdash
 ms.author: mbullwin
-ms.openlocfilehash: 11f7bb69ed408adf87d62a4af1aa4bd87e70bd6d
-ms.sourcegitcommit: e43ea344c52b3a99235660960c1e747b9d6c990e
+ms.openlocfilehash: 89aa5006882680205816e7e5d1e7e55b9c4b2ab0
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/04/2019
-ms.locfileid: "59009191"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59678534"
 ---
 # <a name="application-map-triage-distributed-applications"></a>Mapa aplikace: Třídění distribuovaných aplikací
 
@@ -90,9 +90,9 @@ Chcete-li zobrazit aktivní výstrahy a základní pravidla, které způsobují 
 
 ![Snímek obrazovky s analytics prostředí](media/app-map/alerts-view.png)
 
-## <a name="set-cloudrolename"></a>Sada cloud_RoleName
+## <a name="set-cloud-role-name"></a>Sada název cloudové role
 
-Mapa aplikace používá `cloud_RoleName` vlastnost k identifikaci komponenty na mapě. Sada SDK služby Application Insights automaticky přidá `cloud_RoleName` vlastnost telemetrická data, protože ho vygeneroval komponenty. Například sada SDK přidá název webového serveru nebo název služby role `cloud_RoleName` vlastnost. Existují však případy, kde můžete chtít potlačit výchozí hodnotu. Přepsat cloud_RoleName a změňte, co zobrazí na mapě aplikace:
+Mapa aplikace používá **název cloudové role** vlastnost k identifikaci komponenty na mapě. Vlastnost názvu role cloud sadu SDK Application Insights automaticky přidá do telemetrických dat, protože ho vygeneroval komponenty. Sada SDK se například přidat název webového serveru nebo název role služby pro vlastnost název cloudové role. Existují však případy, kde můžete chtít potlačit výchozí hodnotu. Název cloudové role přepsat a změňte, co zobrazí na mapě aplikace:
 
 ### <a name="net"></a>.NET
 
@@ -171,9 +171,9 @@ Pokud používáte Spring Boot s Application Insights Spring Boot starter, je po
 
 `spring.application.name=<name-of-app>`
 
-Spring Boot starter bude automaticky přiřadit hodnotu zadanou pro vlastnost spring.application.name cloudRoleName.
+Spring Boot starter automaticky přiřadí název cloudové role zadaná pro vlastnost spring.application.name hodnota.
 
-Další informace o korelaci Java a konfigurování cloudRoleName rezervovat aplikace bez SpringBoot [části](https://docs.microsoft.com/azure/application-insights/application-insights-correlation#role-name) na korelace.
+Další informace o Javě korelace a jak nakonfigurovat roli v cloudových procesech název rezervovat aplikace bez SpringBoot to [části](https://docs.microsoft.com/azure/application-insights/application-insights-correlation#role-name) na korelace.
 
 ### <a name="clientbrowser-side-javascript"></a>JavaScript a prohlížeči klientů
 
@@ -186,15 +186,15 @@ appInsights.context.addTelemetryInitializer((envelope) => {
 });
 ```
 
-### <a name="understanding-cloudrolename-within-the-context-of-the-application-map"></a>Principy Cloud.RoleName v rámci kontextu Mapa aplikace
+### <a name="understanding-cloud-role-name-within-the-context-of-the-application-map"></a>Principy název cloudové role v rámci kontextu Mapa aplikace
 
-Míry, jak přemýšlet o Cloud.RoleName může být užitečné podívat se na mapu aplikace, která má více Cloud.RoleNames k dispozici:
+Pokud je to jak uvažovat o **název cloudové role**, může být užitečné podívat se na mapu aplikace, která má více rolí cloud názvů k dispozici:
 
 ![Snímek obrazovky aplikace mapy](media/app-map/cloud-rolename.png)
 
-V mapě aplikace nad jednotlivé názvy v zelené polí jsou Cloud.RoleName/role hodnoty pro různé aspekty této konkrétní distribuované aplikace. Takže pro tuto aplikaci jeho role se skládají z: `Authentication`, `acmefrontend`, `Inventory Management`, `Payment Processing Worker Role`. 
+V mapě aplikace nad jednotlivé názvy v zelené polí jsou cloudové hodnoty název role pro různé aspekty této konkrétní distribuované aplikace. Takže pro tuto aplikaci jeho role se skládají z: `Authentication`, `acmefrontend`, `Inventory Management`, `Payment Processing Worker Role`. 
 
-V případě této aplikace každý z nich `Cloud.RoleNames` také představuje jiný jedinečný prostředek Application Insights s vlastními klíči instrumentace. Protože vlastníka této aplikace má přístup ke každé z těchto čtyř nesourodé prostředky Application Insights, mapa aplikace je možné spojit dohromady mapu základní relace.
+V případě této aplikace každý z těchto názvů rolí cloud také představuje jiný jedinečný prostředek Application Insights s vlastními klíči instrumentace. Protože vlastníka této aplikace má přístup ke každé z těchto čtyř nesourodé prostředky Application Insights, mapa aplikace je možné spojit dohromady mapu základní relace.
 
 Pro [oficiální definice](https://github.com/Microsoft/ApplicationInsights-dotnet/blob/39a5ef23d834777eefdd72149de705a016eb06b0/Schema/PublicSchema/ContextTagKeys.bond#L93):
 
@@ -208,15 +208,17 @@ Pro [oficiální definice](https://github.com/Microsoft/ApplicationInsights-dotn
     715: string      CloudRoleInstance = "ai.cloud.roleInstance";
 ```
 
-Alternativně může být užitečné pro scénáře, ve kterém Cloud.RoleName zjistíte problém je chyba někde v webového front-endu, ale můžete používat webového front-endu na několik serverů s vyrovnáváním zatížení tak nebudou moct zobrazit podrobnosti ve vrstvě hlubší Cloud.RoleInstance prostřednictvím Kusto dotazy a porozumění tomu, pokud tento problém je vliv na všechny front-endové servery pro/instance webové nebo jen jeden může být velmi důležité.
+Alternativně **instance cloudové role** může být užitečné pro scénáře, ve kterém **název cloudové role** zjistíte problém je chyba někde webového front-endu, ale může být spuštěn webového front-endu napříč více s vyrovnáváním zatížení serverů tak nebudou moct zobrazit podrobnosti ve vrstvě hlubší pomocí dotazů Kusto a vědět, pokud je tento problém vliv na všechny front-endové servery pro/instance webové nebo pouze jedna může být velmi důležité.
 
-Scénář, kde můžete chtít přepsat hodnotu pro Cloud.RoleInstance může být, pokud vaše aplikace běží v prostředí kontejnerizovaných kde stačí vědět, jednotlivých server nemusí být dostatek informací k vyhledání daného problému.
+Scénář, kde můžete chtít přepsat hodnotu pro instanci role cloud může být, pokud vaše aplikace běží v prostředí kontejnerizovaných kde stačí vědět, jednotlivých server nemusí být dostatek informací k vyhledání daného problému.
 
-Další informace o tom, jak přepsat vlastnost cloud_RoleName inicializátory telemetrická data, najdete v části [přidat vlastnosti: ITelemetryInitializer](api-filtering-sampling.md#add-properties-itelemetryinitializer).
+Další informace o tom, jak přepsat vlastnosti název cloudové role s inicializátory telemetrická data, najdete v části [přidat vlastnosti: ITelemetryInitializer](api-filtering-sampling.md#add-properties-itelemetryinitializer).
 
 ## <a name="troubleshooting"></a>Řešení potíží
 
 Pokud máte problémy dostat se mapa aplikace fungovat podle očekávání, proveďte následující kroky:
+
+### <a name="general"></a>Obecné
 
 1. Ujistěte se, že používáte oficiálně podporovanou sadu SDK. Nepodporované nebo komunitní sady SDK nemusí podporovat korelaci.
 
@@ -226,9 +228,23 @@ Pokud máte problémy dostat se mapa aplikace fungovat podle očekávání, prov
 
 3. Pokud používáte Azure Functions s C#, proveďte upgrade na [funkce V2](https://docs.microsoft.com/azure/azure-functions/functions-versions).
 
-4. Potvrďte [cloud_RoleName](#set-cloud_rolename) je správně nakonfigurovaný.
+4. Potvrďte [název cloudové role](#set-cloud-role-name) je správně nakonfigurovaný.
 
 5. Pokud vám chybí závislost, ujistěte se, že je v seznamu [automaticky shromažďovaných závislostí](https://docs.microsoft.com/azure/application-insights/auto-collect-dependencies). Pokud ne, můžete ji stále najít ručně pomocí [volání TrackDependency](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics#trackdependency).
+
+### <a name="too-many-nodes-on-the-map"></a>Příliš mnoho uzly na mapě
+
+Mapa aplikace vytvoří do uzlu aplikace pro každý jedinečné cloudové název role k dispozici v žádosti o telemetrii a uzel závislosti pro každou jedinečnou kombinaci typu, cíl a název cloudové role v telemetrii závislostí. Pokud existuje víc než 10 000 uzly v telemetrii, mapa aplikace nebude možné načíst všechny uzly a odkazy, takže vaše mapa nebudou úplné. Pokud k tomu dojde, zobrazí se zpráva upozornění při zobrazení na mapě.
+
+Mapa aplikace navíc podporuje jenom až 1 000 samostatné neseskupení uzly vykreslovány najednou. Mapa aplikace pro snížení složitosti visual prostřednictvím seskupování závislosti, které mají stejný typ a volající, ale pokud telemetrických dat má příliš mnoho názvů rolí jedinečná Cloudová nebo příliš mnoho typy závislostí, tuto skupinu, budou mít dostatek a mapy nebude moci vykreslení.
+
+To pokud chcete napravit, budete muset změnit váš Instrumentační správně nastavit název cloudové role, typ závislosti a závislosti cílového pole.
+
+* Logický název závislost by měla představovat cíle závislosti. V mnoha případech je ekvivalentní k serveru nebo název prostředku závislosti. Například v případě závislosti protokolu HTTP je nastavený na název hostitele. Neměl by obsahovat jedinečné ID nebo parametry, které se mění z jednoho požadavku na jiný.
+
+* Typ závislosti by měla představovat logický typ závislosti. Závislost typické typy jsou například HTTP, SQL nebo objektů Blob v Azure. Neměl by obsahovat jedinečné identifikátory.
+
+* Účel název cloudové role je popsán v [nad části](https://docs.microsoft.com/azure/azure-monitor/app/app-map#set-cloud-role-name).
 
 ## <a name="portal-feedback"></a>Portálu zpětné vazby
 

@@ -11,13 +11,13 @@ ms.topic: conceptual
 ms.date: 03/28/2019
 ms.author: longl
 ms.openlocfilehash: 33348e637143b923719425b9674f99a475d848d9
-ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/01/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58806655"
 ---
-# <a name="specify-a-face-recognition-model"></a>Zadejte model rozpoznávání tváře
+# <a name="specify-a-face-recognition-model"></a>Určení modelu rozpoznávání obličeje
 
 Tato příručka ukazuje, jak zadat model rozpoznávání tváří pro rozpoznávání tváře, identifikaci a hledání podobnosti pomocí rozhraní API pro rozpoznávání tváře Azure.
 

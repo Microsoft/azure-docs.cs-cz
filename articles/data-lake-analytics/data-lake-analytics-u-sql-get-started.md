@@ -10,10 +10,10 @@ ms.service: data-lake-analytics
 ms.topic: conceptual
 ms.date: 06/23/2017
 ms.openlocfilehash: 9de5c7228944bd0448d9dfa833ef223140ccf0e8
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/11/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59488707"
 ---
 # <a name="get-started-with-u-sql-in-azure-data-lake-analytics"></a>Začínáme s jazykem U-SQL ve službě Azure Data Lake Analytics
@@ -225,5 +225,5 @@ Klauzule HAVING U-SQL je možné omezit výstup do skupin, které splňují zada
 Pro scénáře pokročilých agregace, naleznete v referenční dokumentaci U-SQL pro [agregovat, analýzy a odkazují na funkce](/u-sql/built-in-functions)
 
 ## <a name="next-steps"></a>Další postup
-* [Přehled Microsoft Azure Data Lake Analytics](data-lake-analytics-overview.md)
+* [Přehled služby Microsoft Azure Data Lake Analytics](data-lake-analytics-overview.md)
 * [Vývoj skriptů U-SQL pomocí nástrojů Data Lake pro Visual Studio](data-lake-analytics-data-lake-tools-get-started.md)

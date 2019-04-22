@@ -9,10 +9,10 @@ ms.topic: tutorial
 ms.service: backup
 manager: carmonm
 ms.openlocfilehash: 139ce3fd81c14f9bf97e45c8aebb83d2fb1bbe10
-ms.sourcegitcommit: ef20235daa0eb98a468576899b590c0bc1a38394
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59426609"
 ---
 # <a name="questions-about-backing-up-azure-files"></a>Dotazy týkající se zálohování Souborů Azure
@@ -113,5 +113,5 @@ Pokud se pro sdílené složky použije nová zásada, plán a uchovávání se 
 ## <a name="see-also"></a>Další informace najdete v tématech
 Tyto informace se týkají pouze zálohování Souborů Azure. Další informace o dalších oblastech služby Azure Backup najdete v některém z těchto témat s nejčastějšími dotazy ke službě Backup:
 -  [Nejčastější dotazy k trezoru služby Recovery Services](backup-azure-backup-faq.md)
--  [Azure backup – nejčastější dotazy virtuálního počítače](backup-azure-vm-backup-faq.md)
+-  [Nejčastější dotazy k zálohování virtuálních počítačů Azure](backup-azure-vm-backup-faq.md)
 -  [Nejčastější dotazy k agentovi Azure Backup](backup-azure-file-folder-backup-faq.md)

@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 04/05/2019
 ms.author: magoedte
 ms.openlocfilehash: 90c236347380bb5d5e51db56d0f431d2659a7258
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59288708"
 ---
 # <a name="create-interactive-reports-with-azure-monitor-workbooks"></a>Vytváření interaktivních sestav se sešity Azure Monitor
@@ -121,7 +121,7 @@ Každá část má svůj vlastní upřesňující nastavení, které jsou přís
 | **Jako podmíněně viditelnou** | Zadejte skryjete kroky na základě parametru v režimu čtení. |
 | **Exportovat parametr**| Povolit vybraný řádek v mřížce nebo grafu způsobit pozdější kroky změní hodnoty nebo viditelná.  |
 | **Zobrazit dotaz, když neprobíhají úpravy** | Zobrazí dotaz nad tento graf nebo tabulku, i když v režimu čtení.
-| **Zobrazit tlačítko Otevřít v Analytics, když neprobíhají úpravy** | Přidá modrou ikonou ve tvaru Analytics pravém horním rohu grafu umožňující přístup jedním kliknutím.|
+| **Zobrazit otevřít v analytics tlačítko, pokud nepoužíváte režim úprav** | Přidá modrou ikonou ve tvaru Analytics pravém horním rohu grafu umožňující přístup jedním kliknutím.|
 
 Většinu těchto nastavení jsou poměrně intuitivní, ale pro pochopení **exportovat parametr** je lepší prozkoumat sešitu která používá tuto funkci.
 

@@ -10,10 +10,10 @@ ms.date: 04/08/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to be able to order Data Box Disk to upload on-premises data from my server onto Azure.
 ms.openlocfilehash: 7c62ec722e5bb909c13b21a7b98d86dd72d9e665
-ms.sourcegitcommit: ef20235daa0eb98a468576899b590c0bc1a38394
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59425946"
 ---
 # <a name="tutorial-return-azure-data-box-disk-and-verify-data-upload-to-azure"></a>Kurz: Vrátí disku Azure Data Box a ověřte nahrání dat do Azure
@@ -156,8 +156,8 @@ Než odstraníte data ze zdroje, ujistěte se, že je máte v účtech úložiš
 
 - Vaše účty úložiště Azure. Když data zkopírujete do Data Boxu, v závislosti na jejich typu se nahrají do jedné z následujících cest v účtu služby Azure Storage.
 
-  - Pro objekty BLOB bloku a objekty BLOB stránky: `https://<storage_account_name>.blob.core.windows.net/<containername>/files/a.txt`
-  - Pro soubory Azure: `https://<storage_account_name>.file.core.windows.net/<sharename>/files/a.txt`
+  - Objekty blob bloku a objekty blob stránky: `https://<storage_account_name>.blob.core.windows.net/<containername>/files/a.txt`
+  - Soubory Azure: `https://<storage_account_name>.file.core.windows.net/<sharename>/files/a.txt`
 
     Alternativně můžete přejít na svůj účet Azure Storage na webu Azure Portal a dokončit navigaci tam.
 
@@ -200,6 +200,6 @@ V tomto kurzu jste se dozvěděli o tématech spojených s Azure Data Box Diskem
 Přejděte k dalšímu postupu, kde se naučíte, jak spravovat Data Box Disk prostřednictvím webu Azure Portal.
 
 > [!div class="nextstepaction"]
-> [Pomocí webu Azure portal ke správě disku Azure Data Box](./data-box-portal-ui-admin.md)
+> [Použití webu Azure Portal ke správě Azure Data Box Disku](./data-box-portal-ui-admin.md)
 
 

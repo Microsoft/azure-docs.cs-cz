@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/01/2019
 ms.author: anavin
-ms.openlocfilehash: e6c5a9aa3e4e173ecfc79f4072d091493677afed
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.openlocfilehash: b65bad57a300d941774f5d3e5d01967f0c13d684
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/11/2019
-ms.locfileid: "59489977"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59678475"
 ---
 # <a name="virtual-network-peering"></a>Partnerské vztahy virtuálních sítí
 
@@ -63,8 +63,7 @@ Když je mezi virtuálními sítěmi navázán partnerský vztah, můžete také
 
 ![přenos dat při partnerských vztazích virtuálních sítí](./media/virtual-networks-peering-overview/figure04.png)
 
-Průchod branou, je podporován pro VNet Peering i globální VNet Peering (preview). Můžete používat vzdálené brány nebo povolit průchod bránou v globálním partnerském vztahu virtuálních sítí ve verzi preview. Verzi preview je k dispozici ve všech oblastech Azure, Čína cloudové oblasti a oblasti cloud Government. Vyžaduje se žádná přidání na seznam povolených. Můžete otestovat ve verzi preview prostřednictvím rozhraní příkazového řádku, PowerShell, šablony nebo rozhraní API. Portál se nepodporuje ve verzi preview.
-Průchod branou mezi virtuálními sítěmi vytvořenými pomocí různých modelů nasazení (Resource Manager a Klasický model) je podporován pouze v případě, že brána je ve virtuální síti (Resource Manager). Další informace o použití brány k průchodu najdete v tématu o [konfiguraci brány VPN pro průchod v partnerském vztahu virtuální sítě](../vpn-gateway/vpn-gateway-peering-gateway-transit.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
+Průchod branou, je podporován pro VNet Peering i globální VNet Peering. Průchod branou mezi virtuálními sítěmi vytvořenými pomocí různých modelů nasazení (Resource Manager a Klasický model) je podporován pouze v případě, že brána je ve virtuální síti (Resource Manager). Další informace o použití brány k průchodu najdete v tématu o [konfiguraci brány VPN pro průchod v partnerském vztahu virtuální sítě](../vpn-gateway/vpn-gateway-peering-gateway-transit.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 
 Po nastavení partnerského vztahu mezi virtuálními sítěmi sdílejícími jedno připojení Azure ExpressRoute přenos dat prochází skrze partnerský vztah (tj. prostřednictvím páteřní sítě Azure). K připojení k místnímu okruhu lze v obou sítích nadále používat místní brány. Alternativním postupem je použití sdílené brány a konfigurace průchodu pro místní připojení.
 
@@ -100,9 +99,9 @@ Průchod bránou je vlastnost partnerského uzlu, která umožňuje, aby virtuá
     |Model nasazení Azure             | Předplatné  |
     |---------                          |---------|
     |Obě Resource Manager              |[Stejné](tutorial-connect-virtual-networks-portal.md)|
-    |                                   |[Odlišné](create-peering-different-subscriptions.md)|
+    |                                   |[Různé](create-peering-different-subscriptions.md)|
     |Jedna Resource Manager, druhá Classic  |[Stejné](create-peering-different-deployment-models.md)|
-    |                                   |[Odlišné](create-peering-different-deployment-models-subscriptions.md)|
+    |                                   |[Různé](create-peering-different-deployment-models-subscriptions.md)|
 
 * Zjistěte, jak vytvořit [hvězdicovou síťovou topologii](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke?toc=%2fazure%2fvirtual-network%2ftoc.json).
 * Prostudujte si všechna [nastavení partnerského vztahu virtuálních sítí a jejich změny](virtual-network-manage-peering.md).

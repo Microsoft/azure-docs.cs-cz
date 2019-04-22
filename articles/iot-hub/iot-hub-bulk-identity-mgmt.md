@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 07/03/2017
 ms.author: robinsh
 ms.openlocfilehash: 274b77644326cbf73696aae77b48afcbc63aa4c2
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/05/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59049968"
 ---
 # <a name="import-and-export-iot-hub-device-identities-in-bulk"></a>Import a export identity zařízení služby IoT Hub hromadné
@@ -260,7 +260,7 @@ Použít nepovinný **režimem importu** vlastnost v datech serializace import p
 | **update** |Pokud zařízení už se zadaným **ID**, přepíše stávající informace o zadané vstupní data bez ohledem na **ETag** hodnotu. <br/>Pokud zařízení neexistuje, je do souboru protokolu zapíše chybu. |
 | **updateIfMatchETag** |Pokud zařízení už se zadaným **ID**, přepíše stávající informace o zadaný vstupní data pouze v případě, že dojde **ETag** odpovídat. <br/>Pokud zařízení neexistuje, je do souboru protokolu zapíše chybu. <br/>Pokud dojde **ETag** neshoda, zápisu chyby do souboru protokolu. |
 | **createOrUpdateIfMatchETag** |Pokud zařízení se zadanou neexistuje **ID**, je nově zaregistrovaný. <br/>Pokud už zařízení existuje, stávající informace o je přepsána zadaný vstupní data pouze v případě, že dojde **ETag** odpovídat. <br/>Pokud dojde **ETag** neshoda, zápisu chyby do souboru protokolu. <br> Uživatel můžete volitelně zadat dvojčete dat spolu s daty o zařízení. Etag dvojčete-li zadán, jsou zpracovávána nezávisle na sobě ze značky etag zařízení. Pokud došlo k neshodě s existující dvojčete etag, chyba zapsána do souboru protokolu. |
-| **delete** |Pokud zařízení už se zadaným **ID**, odstraní se bez ohledem na **ETag** hodnotu. <br/>Pokud zařízení neexistuje, je do souboru protokolu zapíše chybu. |
+| **odstranění** |Pokud zařízení už se zadaným **ID**, odstraní se bez ohledem na **ETag** hodnotu. <br/>Pokud zařízení neexistuje, je do souboru protokolu zapíše chybu. |
 | **deleteIfMatchETag** |Pokud zařízení už se zadaným **ID**, odstraní se pouze v případě, že je **ETag** shodovat. Pokud zařízení neexistuje, je do souboru protokolu zapíše chybu. <br/>Pokud dojde neshodě ETag, zápisu chyby do souboru protokolu. |
 
 > [!NOTE]

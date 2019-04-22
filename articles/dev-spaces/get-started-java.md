@@ -11,10 +11,10 @@ description: Rychlý vývoj na platformě Kubernetes s využitím kontejnerů a 
 keywords: Docker, Kubernetes, Azure, AKS, službě Azure Kubernetes, kontejnery, Helm, služby sítě, směrování sítě služby, kubectl, k8s
 manager: mmontwil
 ms.openlocfilehash: b69a793d1d860bf2f2a4d52a92d4bea5cf903c0c
-ms.sourcegitcommit: ef20235daa0eb98a468576899b590c0bc1a38394
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59426303"
 ---
 # <a name="get-started-on-azure-dev-spaces-with-java"></a>Začínáme s Azure Dev prostory s Javou
@@ -108,7 +108,7 @@ Zatím máte základní webovou aplikaci, kterou můžete spustit místně. Teď
     ```
 
 Příkaz Azure CLI `azds prep` vygeneruje prostředky Dockeru a Kubernetes s výchozím nastavením:
-* `./Dockerfile` Popisuje aplikace image kontejneru, a jak zdrojový kód je vytvořena a běží v rámci kontejneru.
+* `./Dockerfile` popisuje image kontejneru aplikace a způsob vytvoření a běhu zdrojového kódu v rámci kontejneru.
 * [Helm chart](https://docs.helm.sh) v `./charts/webfrontend` popisuje, jak do Kubernetes nasadit kontejner.
 
 Celému obsahu těchto souborů prozatím rozumět nemusíte. Stojí však za zmínku, že **stejné prostředky konfigurace jako kódu pro Kubernetes a Docker můžete používat v různých fázích od vývoje až po produkci, takže si napříč různými prostředími zajistíte lepší konzistentnost**.
@@ -148,7 +148,7 @@ Tuto adresu URL otevřete v okně prohlížeče. Mělo by se zobrazit načítán
 > Azure Dev Spaces neslouží jenom ke spuštění kódu v prostředí Kubernetes. Umožňuje také rychle opakovaně prohlížet změny kódu, ke kterým dochází v prostředí Kubernetes v cloudu.
 
 1. V okně terminálu stiskněte `Ctrl+C` (kvůli zastavení `azds up`).
-1. Otevřete soubor kódu s názvem `src/main/java/com/ms/sample/webfrontend/Application.java`a upravit zprávu s pozdravem: `return "Hello from webfrontend in Azure!";`
+1. Otevřete soubor s kódem nazvaný `src/main/java/com/ms/sample/webfrontend/Application.java` a změňte úvodní zprávu: `return "Hello from webfrontend in Azure!";`
 1. Uložte soubor.
 1. V okně terminálu spusťte `azds up`.
 
@@ -215,7 +215,7 @@ Místo opětovného sestavení a nasazení nové image kontejneru po každé pro
 
 Aktualizujte webovou aplikaci v prohlížeči. V uživatelském rozhraní by se měla zobrazit vaše upravená zpráva.
 
-**Nyní máte metodu pro rychlé iterace v kódu a ladění přímo v Kubernetes.** Příště si ukážeme, jak vytvořit a volat druhý kontejner.
+**Teď máte metodu, jak rychle provádět iteraci kódu a jeho ladění v Kubernetes.** Příště si ukážeme, jak vytvořit a volat druhý kontejner.
 
 ## <a name="next-steps"></a>Další postup
 

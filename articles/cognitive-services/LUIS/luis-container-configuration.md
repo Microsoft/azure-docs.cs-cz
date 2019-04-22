@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 04/01/2019
+ms.date: 04/16/2019
 ms.author: diberry
-ms.openlocfilehash: e93a81f2c081daa58a37b1e2823d7bf0cc5a6361
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.openlocfilehash: e05998f74223ead6bb4e94b86469e51791e0263f
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58883104"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59678560"
 ---
 # <a name="configure-language-understanding-docker-containers"></a>Konfigurace kontejnery Dockeru Language Understanding 
 
@@ -30,23 +30,23 @@ Tento kontejner má následující nastavení:
 |--|--|--|
 |Ano|[ApiKey](#apikey-setting)|Lze sledovat fakturační údaje.|
 |Ne|[ApplicationInsights](#applicationinsights-setting)|Umožňuje přidat [Azure Application Insights](https://docs.microsoft.com/azure/application-insights) podporu telemetrická data do kontejneru.|
-|Ano|[Fakturace](#billing-setting)|Určuje identifikátor URI koncového bodu prostředku služby v Azure.|
+|Ano|[Billing](#billing-setting)|Určuje identifikátor URI koncového bodu prostředku služby v Azure.|
 |Ano|[Eula](#eula-setting)| Označuje, že jste přijali licenci pro kontejner.|
 |Ne|[Fluentd](#fluentd-settings)|Zápis protokolu a volitelně data metriky Fluentd server.|
 |Ne|[Http Proxy](#http-proxy-credentials-settings)|Konfigurace proxy serveru HTTP pro provedení odchozích požadavků.|
-|Ne|[Protokolování](#logging-settings)|Poskytuje podporu protokolování ASP.NET Core pro váš kontejner. |
-|Ano|[Připojí](#mount-settings)|Čtení a zápis dat z hostitelského počítače do kontejneru a z kontejneru zpět do hostitelského počítače.|
+|Ne|[Logging](#logging-settings)|Poskytuje podporu protokolování ASP.NET Core pro váš kontejner. |
+|Ano|[Mounts](#mount-settings)|Čtení a zápis dat z hostitelského počítače do kontejneru a z kontejneru zpět do hostitelského počítače.|
 
 > [!IMPORTANT]
 > [ `ApiKey` ](#apikey-setting), [ `Billing` ](#billing-setting), A [ `Eula` ](#eula-setting) nastavení se používají společně a pro všechny tři je; v opačném případě je nutné zadat platné hodnoty kontejner se nespustí. Další informace o používání těchto nastavení konfigurace pro vytvoření instance kontejneru najdete v tématu [fakturace](luis-container-howto.md#billing).
 
 ## <a name="apikey-setting"></a>Nastavení ApiKey
 
-`ApiKey` Nastavení určuje klíč prostředku Azure používá ke sledování fakturačních údajů pro kontejner. Musíte zadat hodnotu pro ApiKey a hodnota musí být platný klíč pro _Language Understanding_ prostředek určený pro [ `Billing` ](#billing-setting) nastavení konfigurace.
+`ApiKey` Nastavení určuje klíč prostředku Azure používá ke sledování fakturačních údajů pro kontejner. Musíte zadat hodnotu pro ApiKey a hodnota musí být platný klíč pro _služeb Cognitive Services_ prostředek určený pro [ `Billing` ](#billing-setting) nastavení konfigurace.
 
 Toto nastavení najdete v následujících umístěních:
 
-* Azure portal: **Language Understanding** správy prostředků v části **klíče**
+* Azure portal: **Služby cognitive Services** správy prostředků v části **klíče**
 * Služba LUIS portálu: **Nastavení koncového bodu a klíče** stránky. 
 
 Nepoužívejte starter klíč nebo klíč pro vytváření obsahu. 
@@ -57,12 +57,15 @@ Nepoužívejte starter klíč nebo klíč pro vytváření obsahu.
 
 ## <a name="billing-setting"></a>Nastavení Billing
 
-`Billing` Nastavení, určuje identifikátor URI koncového bodu z _Language Understanding_ prostředků v Azure umožňuje měřit fakturačních údajů pro kontejner. Musíte zadat hodnotu pro toto nastavení konfigurace, a hodnota musí být platný identifikátor URI koncového bodu pro _Language Understanding_ prostředků v Azure. Sestavy využití kontejnerů o každých 10 až 15 minut.
+`Billing` Nastavení, určuje identifikátor URI koncového bodu z _služeb Cognitive Services_ prostředků v Azure umožňuje měřit fakturačních údajů pro kontejner. Musíte zadat hodnotu pro toto nastavení konfigurace, a hodnota musí být platný identifikátor URI koncového bodu pro _služeb Cognitive Services_ prostředků v Azure. Sestavy využití kontejnerů o každých 10 až 15 minut.
 
 Toto nastavení najdete v následujících umístěních:
 
-* Azure portal: **Language Understanding** přehled s popiskem `Endpoint`
+* Azure portal: **Služby cognitive Services** přehled s popiskem `Endpoint`
 * Služba LUIS portálu: **Nastavení koncového bodu a klíče** stránce jako součást identifikátor URI koncového bodu.
+
+Nezapomeňte `luis/v2.0` směrování v adrese URL, jak je znázorněno v následující tabulce:
+
 
 |Požaduje se| Název | Typ dat | Popis |
 |--|------|-----------|-------------|
@@ -109,16 +112,18 @@ Následující příklady ukazují, jak napsat a použít pomocí nastavení kon
 * **Znak pro pokračování řádku**: Příkazy dockeru v následujících částech použijte zpětné lomítko `\`, jako znak pro pokračování řádku. Nahraďte nebo odstraňte tuto podle požadavků vašeho hostitelského operačního systému. 
 * **Pořadí argumentů**: Pořadí argumentů nezmění, pokud máte velmi zkušenosti s kontejnery dockeru.
 
+Nezapomeňte `luis/v2.0` směrování v adrese URL, jak je znázorněno v následující tabulce.
+
 Nahradit {_argument_name_} s vlastními hodnotami:
 
 | Zástupný symbol | Hodnota | Formát nebo příklad |
 |-------------|-------|---|
 |{ENDPOINT_KEY} | Klíč koncového bodu trénovaného aplikace LUIS. |xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx|
-|{BILLING_ENDPOINT} | Fakturační hodnota koncového bodu je k dispozici na stránce s přehledem Language Understanding webu Azure portal.|https://westus.api.cognitive.microsoft.com/luis/v2.0|
+|{BILLING_ENDPOINT} | Fakturační hodnota koncového bodu není k dispozici v Azure `Cognitive Services` stránka s přehledem. |https://westus.api.cognitive.microsoft.com/luis/v2.0|
 
 > [!IMPORTANT]
 > `Eula`, `Billing`, A `ApiKey` možnosti musí být zadán pro spuštění kontejneru; v opačném případě nebude spuštění kontejneru.  Další informace najdete v tématu [fakturace](luis-container-howto.md#billing).
-> Hodnota ApiKey **klíč** z klíče a koncových bodů stránky na portálu služby LUIS a je také k dispozici na na stránce klíče Azure Language Understanding prostředků. 
+> Hodnota ApiKey **klíč** je dostupná na Azure a z klíče a koncových bodů stránky na portálu služby LUIS `Cognitive Services` stránka s materiály pro klíče. 
 
 ### <a name="basic-example"></a>Základní příklad
 

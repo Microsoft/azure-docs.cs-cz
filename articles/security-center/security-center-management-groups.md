@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 12/19/2018
 ms.author: rkarlin
 ms.openlocfilehash: 7e26dc37c5c4f85e3db634bd961bf9308e418a03
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/05/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59045760"
 ---
 # <a name="gain-tenant-wide-visibility-for-azure-security-center"></a>Získejte potřebný Přehled celého tenanta pro Azure Security Center
@@ -58,7 +58,7 @@ Můžete uspořádat do skupin pro správu předplatných a zásad správného �
 2. Chcete-li zobrazit skupiny pro správu, vyberte **všechny služby** v hlavní nabídce Azure.
 3. V části **Obecné**vyberte **skupin pro správu**.
 
-    ![Vytvořit skupinu pro správu](./media/security-center-management-groups/all-services.png)
+    ![Vytvoření skupiny pro správu](./media/security-center-management-groups/all-services.png)
 
 ## <a name="grant-tenant-level-visibility-and-the-ability-to-assign-policies"></a>Udělují viditelnost na úrovni tenanta a schopnost přiřazení zásad
 
@@ -191,7 +191,7 @@ Odběry můžete přidat do skupiny pro správu, který jste vytvořili. Tyto kr
 V tomto článku jste zjistili, jak získat přehled celého tenanta pro Azure Security Center. Další informace o službě Security Center najdete v následujících článcích:
 
 > [!div class="nextstepaction"]
-> [Sledování stavu zabezpečení v Azure Security Center](security-center-monitoring.md)
+> [Monitorování stavu zabezpečení pomocí Azure Security Center](security-center-monitoring.md)
 
 > [!div class="nextstepaction"]
 > [Správa a reakce na výstrahy zabezpečení ve službě Azure Security Center](security-center-managing-and-responding-alerts.md)

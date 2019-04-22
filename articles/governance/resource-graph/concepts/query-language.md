@@ -9,10 +9,10 @@ ms.service: resource-graph
 manager: carmonm
 ms.custom: seodec18
 ms.openlocfilehash: 08e4f09665a3501073f55b7f5b82bf51cf508ea9
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59276673"
 ---
 # <a name="understanding-the-azure-resource-graph-query-language"></a>Principy Azure Graph prostředků dotazovací jazyk
@@ -30,11 +30,11 @@ Tady je seznam podporovaných tabulkové operátorů v grafu prostředků:
 - [Rozšíření](/azure/kusto/query/extendoperator)
 - [Limit](/azure/kusto/query/limitoperator)
 - [Řadit podle](/azure/kusto/query/orderoperator)
-- [Projekt](/azure/kusto/query/projectoperator)
+- [project](/azure/kusto/query/projectoperator)
 - [project-away](/azure/kusto/query/projectawayoperator)
 - [Ukázka](/azure/kusto/query/sampleoperator)
 - [sample-distinct](/azure/kusto/query/sampledistinctoperator)
-- [Seřadit podle](/azure/kusto/query/sortoperator)
+- [Seřadit podle:](/azure/kusto/query/sortoperator)
 - [shrnutí](/azure/kusto/query/summarizeoperator)
 - [Take](/azure/kusto/query/takeoperator)
 - [nahoru](/azure/kusto/query/topoperator)
@@ -50,7 +50,7 @@ Tady je seznam podporovaných funkcí v grafu prostředků:
 - [buildschema()](/azure/kusto/query/buildschema-aggfunction)
 - [strcat()](/azure/kusto/query/strcatfunction)
 - [isnotempty()](/azure/kusto/query/isnotemptyfunction)
-- [ToString()](/azure/kusto/query/tostringfunction)
+- [tostring()](/azure/kusto/query/tostringfunction)
 - [zip()](/azure/kusto/query/zipfunction)
 
 ## <a name="next-steps"></a>Další postup

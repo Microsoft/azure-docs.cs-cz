@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 02/14/2018
 ms.author: cherylmc
 ms.openlocfilehash: e323a8d71bbffd1d29ad793dff7b5b4a072b6979
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/05/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59046118"
 ---
 # <a name="configure-a-vnet-to-vnet-connection-classic"></a>Konfigurace připojení typu VNet-to-VNet (classic)
@@ -29,11 +29,11 @@ ms.locfileid: "59046118"
 Tento článek vám pomůže vytvořit připojení brány VPN mezi virtuálními sítěmi. Virtuální sítě se můžou nacházet ve stejné oblasti nebo v různých oblastech a můžou patřit do stejného předplatného nebo do různých předplatných. Postup v tomto článku se vztahuje k modelu nasazení classic a webu Azure portal. Tuto konfiguraci můžete vytvořit také pomocí jiného nástroje nasazení nebo pro jiný model nasazení, a to výběrem jiné možnosti z následujícího seznamu:
 
 > [!div class="op_single_selector"]
-> * [portál Azure](vpn-gateway-howto-vnet-vnet-resource-manager-portal.md)
+> * [Azure Portal](vpn-gateway-howto-vnet-vnet-resource-manager-portal.md)
 > * [PowerShell](vpn-gateway-vnet-vnet-rm-ps.md)
 > * [Azure CLI](vpn-gateway-howto-vnet-vnet-cli.md)
-> * [Azure portal (classic)](vpn-gateway-howto-vnet-vnet-portal-classic.md)
-> * [Propojení různých modelů nasazení – Azure portal](vpn-gateway-connect-different-deployment-models-portal.md)
+> * [Azure Portal (Classic)](vpn-gateway-howto-vnet-vnet-portal-classic.md)
+> * [Propojení různých modelů nasazení – Azure Portal](vpn-gateway-connect-different-deployment-models-portal.md)
 > * [Propojení různých modelů nasazení – PowerShell](vpn-gateway-connect-different-deployment-models-powershell.md)
 >
 >
@@ -54,7 +54,7 @@ Virtuální sítě, ke kterým se připojujete, může být v různých předpla
 
 Virtuální sítě může být vhodné propojit z následujících důvodů:
 
-* **Geografická redundance a geografická přítomnost mezi oblastmi**
+* **Geografická redundance napříč oblastmi a geografická přítomnost**
 
   * Můžete nastavit vlastní geografickou replikaci nebo synchronizaci se zabezpečeným připojením bez procházení koncovými body připojenými k internetu.
   * Azure Load Balancer a Microsoft nebo třetích stran technologie clusteringu můžete nastavit úlohy s vysokou dostupností s geografickou redundancí nad několika oblastmi Azure. Jedním z důležitých příkladů je nastavení technologie SQL Always On se skupinami dostupnosti nad několika oblastmi Azure.
@@ -68,7 +68,7 @@ Virtuální sítě může být vhodné propojit z následujících důvodů:
 
 Další informace o propojeních VNet-to-VNet najdete v části [Aspekty propojení VNet-to-VNet](#faq) na konci tohoto článku.
 
-### <a name="before-you-begin"></a>Před zahájením
+### <a name="before-you-begin"></a>Než začnete
 
 Před zahájením tohoto cvičení, stáhněte a nainstalujte nejnovější verzi rutin Powershellu pro Azure Service Management (SM). Další informace najdete v tématu [Instalace a konfigurace Azure PowerShellu](/powershell/azure/overview). Používáme pro většinu kroků na portálu, ale musíte použít PowerShell k vytvoření připojení mezi virtuálními sítěmi. Nelze vytvořit připojení pomocí webu Azure portal.
 
@@ -78,7 +78,7 @@ Je důležité určit rozsahy, které budete používat ke konfiguraci virtuáln
 
 Následující tabulka ukazuje příklad toho, jak definovat virtuální sítě. Používejte jako vodítko pouze oblasti. Zapište si oblastí pro vaše virtuální sítě. Tyto informace budete potřebovat pro pozdější kroky.
 
-**Příklad:**
+**Příklad**
 
 | Virtual Network | Adresní prostor | Oblast | Se připojí k místní síťové lokality |
 |:--- |:--- |:--- |:--- |

@@ -8,14 +8,14 @@ ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
-ms.openlocfilehash: dc3543af0a10c83d8ca212957a6345c8a70cd58b
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: 7fc42b24090b5fc68176fea2c7b993643ea24200
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59279937"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59678220"
 ---
-# <a name="tutorial-customize-the-azure-iot-central-operators-view-new-ui-design"></a>Kurz: Přizpůsobení zobrazení Azure IoT Central – operátor (návrh nové uživatelské rozhraní)
+# <a name="tutorial-customize-the-azure-iot-central-operators-view"></a>Kurz: Přizpůsobení zobrazení operátora Azure IoT Central
 
 Tento kurz vám jako tvůrci ukáže, jak přizpůsobit zobrazení vaší aplikace pro operátora. Když měníte aplikaci jako tvůrce, můžete zobrazit náhled zobrazení operátor v aplikaci Microsoft Azure IoT Central.
 
@@ -58,7 +58,7 @@ Jako tvůrce můžete definovat, které informace se zobrazí na řídicím pane
     | ----------- | ----- |
     | Název        | Maximální teplota |
     | Časové rozmezí  | Poslední 1 týden |
-    | Typ měrné jednotky | Telemetrická data |
+    | Typ měření | Telemetrická data |
     | Měření | Teplota |
     | Agregace | Maximum |
     | Viditelnost  | Povoleno |
@@ -160,5 +160,5 @@ V tomto kurzu jste se naučili, jak přizpůsobit zobrazení aplikace pro operá
 
 Teď když jste se naučili, jak přizpůsobit zobrazení aplikace pro operátora, můžete přejít k dalším navrhovaným krokům:
 
-* [Monitorujte svoje zařízení (jako operátor)](tutorial-monitor-devices.md)
-* [Přidat nové zařízení do vaší aplikace (jako operátor a zařízení pro vývojáře)](tutorial-add-device.md)
+* [Monitorování zařízení (jako operátor)](tutorial-monitor-devices.md)
+* [Přidání nového zařízení do aplikace (jako operátor a vývojář zařízení)](tutorial-add-device.md)

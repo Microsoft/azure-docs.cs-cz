@@ -8,10 +8,10 @@ ms.topic: tutorial
 ms.date: 10/24/2018
 ms.author: victorh
 ms.openlocfilehash: 393441e7ff620f3795e42c2cb376f99f8763f25b
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/05/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59044857"
 ---
 # <a name="tutorial-monitor-azure-firewall-logs-and-metrics"></a>Kurz: Monitorujte metriky a protokoly brány Firewall Azure
@@ -60,9 +60,9 @@ Než se data v protokolech po dokončení tohoto procesu zapnutí protokolován�
 9. Na stránce **Pracovní prostor služby Log Analytics** zadejte pro **Pracovní prostor služby Log Analytics** nový název **firewall-oms**.
 10. Vyberte předplatné, použijte existující skupinu prostředků brány firewall (**Test-FW-RG**), jako umístění vyberte **USA – východ** a u cenové úrovně zvolte **Free**.
 11. Klikněte na **OK**.
-   ![Spouští se proces konfigurace][1] pracovních prostorů OMS jsou dnes označovány jako pracovní prostory Log Analytics.  
+   ![Spuštění procesu konfigurace][1] Pracovní prostory OMS se teď označují jako pracovní prostory Log Analytics.  
 12. V části **Protokol** začněte shromažďovat protokoly pravidel aplikace a sítě kliknutím na **AzureFirewallApplicationRule** a **AzureFirewallNetworkRule**.
-   ![Uložit nastavení diagnostiky][2]
+   ![Uložení nastavení diagnostiky][2]
 13. Klikněte na **Uložit**.
 
 ## <a name="enable-logging-with-powershell"></a>Povolení protokolování prostřednictvím PowerShellu

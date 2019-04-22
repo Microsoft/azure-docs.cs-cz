@@ -17,10 +17,10 @@ ms.date: 04/02/2019
 ms.author: cynthn
 ms.custom: mvc I am an ITPro and application developer, and I want to protect (use Availability Zones) my applications and data against data center failure (to build Highly Available applications).
 ms.openlocfilehash: 557757fc4d99fe57ad545e9d2eebcce61ddb3a8f
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59268717"
 ---
 # <a name="what-are-availability-zones-in-azure"></a>Co jsou zóny dostupnosti v Azure?
@@ -57,7 +57,7 @@ Služby Azure, které podporují zóny dostupnosti jsou:
 - Linux Virtual Machines
 - Windows Virtual Machines
 - Virtual Machine Scale Sets
-- Managed Disks
+- Spravované disky
 - Load balancer úrovně Standard&#42;
 - Standardní veřejné IP adresy&#42;
 - Zónově redundantní úložiště

@@ -10,10 +10,10 @@ services: azure-maps
 manager: timlt
 ms.custom: mvc
 ms.openlocfilehash: 944a111ac0c31e755b3991f9ea101ba652c676d3
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59268756"
 ---
 # <a name="what-is-azure-maps"></a>Co je služba Azure Maps?
@@ -139,9 +139,9 @@ Ověřte, že umístění vaši aktuální IP adresu není v jedné z nepodporov
 Další informace o nových funkcích Azure Maps:
 
 > [!div class="nextstepaction"]
-> [Matice trasy, Izochronů vyhledávání IP adresy a provádění dalších akcí](https://azure.microsoft.com/blog/route-matrix-isochrones-ip-lookup-and-more-added-to-azure-maps/)
+> [Matice tras, izochrony, vyhledávání IP adresy a další](https://azure.microsoft.com/blog/route-matrix-isochrones-ip-lookup-and-more-added-to-azure-maps/).
 
 Vyzkoušejte si ukázkové aplikace demonstrující Azure Maps:
 
 > [!div class="nextstepaction"]
-> [Rychlý start: Vytvoření webové aplikace](quick-demo-map-app.md)
+> [Rychlé zprovoznění: Vytvoření webové aplikace](quick-demo-map-app.md)

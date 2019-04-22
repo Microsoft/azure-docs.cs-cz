@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 04/08/2019
 ms.reviewer: sngun
 ms.openlocfilehash: 7a8617ae2b01fc89a4c957b8610164a2b53a16f5
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59274769"
 ---
 # <a name="consistency-levels-and-azure-cosmos-db-apis"></a>Úrovně konzistence a rozhraní API služby Cosmos DB
@@ -33,7 +33,7 @@ Na rozdíl od AzureCosmos databáze Apache Cassandra neposkytuje nativní přesn
 
 Následující tabulka ukazuje, jak nativní úrovně konzistence Cassandra jsou mapované na úrovně konzistence rozhraní Azure Cosmos DB při používání rozhraní Cassandra API:  
 
-[![Cmapování modelu konzistence assandra](./media/consistency-levels-across-apis/consistency-model-mapping-cassandra.png)](./media/consistency-levels-across-apis/consistency-model-mapping-cassandra.png#lightbox)
+[![Mapování modelu konzistence Cassandra](./media/consistency-levels-across-apis/consistency-model-mapping-cassandra.png)](./media/consistency-levels-across-apis/consistency-model-mapping-cassandra.png#lightbox)
 
 ## <a id="mongo-mapping"></a>Mapování mezi úrovněmi konzistence MongoDB a Azure Cosmos DB
 
@@ -51,7 +51,7 @@ Při používání služby Azure Cosmos DB přes rozhraní API pro MongoDB:
 
 Následující tabulka ukazuje, jak nativní MongoDB zápisu/čtení otázky jsou mapovány na úrovně konzistence Azure Cosmos, při použití rozhraní API služby Azure Cosmos DB pro MongoDB:
 
-[![Mmapování modelu konzistence ongoDB](./media/consistency-levels-across-apis/consistency-model-mapping-mongodb.png)](./media/consistency-levels-across-apis/consistency-model-mapping-mongodb.png#lightbox)
+[![Mapování modelu konzistence MongoDB](./media/consistency-levels-across-apis/consistency-model-mapping-mongodb.png)](./media/consistency-levels-across-apis/consistency-model-mapping-mongodb.png#lightbox)
 
 ## <a name="next-steps"></a>Další postup
 

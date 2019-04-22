@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 02/01/2016
 ms.author: jonor;sivae
 ms.openlocfilehash: 668862714b416bd89d3b5f82caf8b0305fccae54
-ms.sourcegitcommit: ef20235daa0eb98a468576899b590c0bc1a38394
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59426524"
 ---
 # <a name="example-3-build-a-perimeter-network-to-protect-networks-with-a-firewall-udr-and-nsgs"></a>Příklad 3: Vytvořit hraniční síť k ochraně sítě s bránou firewall, směrování definovaného uživatelem a skupin zabezpečení sítě
@@ -310,7 +310,7 @@ Další objekt třídy obsahuje objekty služby, které představují porty pro 
 
 1. Upravte hodnoty tak, aby představují službu protokolu RDP pro konkrétní server. Pro AppVM01, výchozí pravidlo protokolu RDP by měl být upraven tak, aby odrážely novou službu **název**, **popis**a externí Port RDP v diagramu obrázek 8. Uvědomte si, že porty jsou změnit z výchozích RDP 3389 pro externí port pro tento konkrétní server. Například je externí port pro AppVM01 8025. Pravidlo upravené služby je znázorněna zde:
 
-   ![Pravidlo AppVM01][6]
+   ![AppVM01 Rule][6]
 
 Opakujte tento postup k vytvoření služby protokolu RDP pro ostatní servery: AppVM02 DNS01 a IIS01. Tyto služby zjednodušit pravidla v další části, chcete-li vytvořit a zřetelnější.
 

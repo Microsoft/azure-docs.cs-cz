@@ -8,10 +8,10 @@ ms.service: data-explorer
 ms.topic: quickstart
 ms.date: 01/30/2019
 ms.openlocfilehash: 19db47610449ced45fa61610bbe964042e815c7a
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/05/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59051848"
 ---
 # <a name="quickstart-ingest-blobs-into-azure-data-explorer-by-subscribing-to-event-grid-notifications"></a>Rychlý start: Ingestování objekty BLOB do Průzkumníku dat Azure pomocí přihlášení k odběru oznámení služby Event Grid
@@ -39,12 +39,12 @@ V tomto rychlém startu se dozvíte, jak nastavit [Azure Event Grid](/azure/even
     **Nastavení** | **Navrhovaná hodnota** | **Popis pole**
     |---|---|---|
     | Název | *test-grid-connection* | Název služby event grid, který chcete vytvořit.|
-    | Schéma událostí | *Schéma služby Event Grid* | Schéma, který se má použít pro event grid. |
+    | Schéma událostí | *Schéma událostí mřížky* | Schéma, který se má použít pro event grid. |
     | Typ tématu | *Účet úložiště* | Typ tématu event gridu. |
     | Prostředek tématu | *gridteststorage* | Název účtu úložiště. |
-    | Přihlásit se k odběru všech typů událostí | *Vymazat* | Nemáte, dostanete oznámení na všechny události. |
-    | Definované typy událostí | *Vytvoření objektu blob* | Chcete dostávat oznámení, pro které konkrétní události. |
-    | Typ koncového bodu | *Event Hubs* | Typ koncového bodu, do kterého odesíláte události. |
+    | Přihlásit se k odběru všech typů událostí | *clear* | Nemáte, dostanete oznámení na všechny události. |
+    | Definované typy událostí | *Vytvoření objektu BLOB* | Chcete dostávat oznámení, pro které konkrétní události. |
+    | Typ koncového bodu | *Služba Event hubs* | Typ koncového bodu, do kterého odesíláte události. |
     | Koncový bod | *test-hub* | Centrum událostí, které jste vytvořili |
     | | |
 
@@ -99,7 +99,7 @@ Teď připojení do služby event grid z Průzkumníka dat služby Azure, tak, a
 
     **Nastavení** | **Navrhovaná hodnota** | **Popis pole**
     |---|---|---|
-    | Název datového připojení | *Test připojení rozbočovače* | Název připojení, které chcete vytvořit v Průzkumníku dat Azure.|
+    | Název datového připojení | *test-hub-connection* | Název připojení, které chcete vytvořit v Průzkumníku dat Azure.|
     | Předplatné účtu úložiště | ID vašeho předplatného | ID předplatného, ve které se nachází váš účet úložiště.|
     | Účet úložiště | *gridteststorage* | Název účtu úložiště, který jste vytvořili dříve.|
     | Event Grid | *test-grid-connection* | Název služby event grid, který jste vytvořili. |
@@ -197,4 +197,4 @@ Pokud nemáte v úmyslu znovu pomocí služby event grid, vyčistit **test-hub-r
 ## <a name="next-steps"></a>Další postup
 
 > [!div class="nextstepaction"]
-> [Rychlý start: Dotazování dat v Průzkumníku dat Azure](web-query-data.md)
+> [Rychlé zprovoznění: Dotazování dat v Průzkumníku dat Azure](web-query-data.md)

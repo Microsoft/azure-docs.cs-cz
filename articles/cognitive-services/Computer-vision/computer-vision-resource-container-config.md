@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: conceptual
-ms.date: 04/01/2019
+ms.date: 04/16/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: db33ce748928b954f5447a82550c6ecde2188abf
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.openlocfilehash: 42c08864c6908e92a7ecea336f8b1bd0606760db
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58877121"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59678679"
 ---
 # <a name="configure-recognize-text-docker-containers"></a>Konfigurace kontejnery Dockeru rozpoznání textu
 
@@ -31,11 +31,11 @@ ms.locfileid: "58877121"
 
 ## <a name="apikey-configuration-setting"></a>Nastavení konfigurace ApiKey
 
-`ApiKey` Nastavení určuje klíč prostředku Azure používá ke sledování fakturačních údajů pro kontejner. Musíte zadat hodnotu pro ApiKey a hodnota musí být platný klíč pro _pro počítačové zpracování obrazu_ prostředek určený pro [ `Billing` ](#billing-configuration-setting) nastavení konfigurace.
+`ApiKey` Nastavení určuje, Azure `Cognitive Services` klíč prostředku lze sledovat fakturační údaje pro kontejner. Musíte zadat hodnotu pro ApiKey a hodnota musí být platný klíč pro _služeb Cognitive Services_ prostředek určený pro [ `Billing` ](#billing-configuration-setting) nastavení konfigurace.
 
 Toto nastavení najdete v následujícím místě:
 
-* Azure portal: **Počítačové zpracování obrazu** správy prostředků v části **klíče**
+* Azure portal: **Služby cognitive Services** správy prostředků v části **klíče**
 
 ## <a name="applicationinsights-setting"></a>Nastavení ApplicationInsights
 
@@ -43,11 +43,13 @@ Toto nastavení najdete v následujícím místě:
 
 ## <a name="billing-configuration-setting"></a>Konfigurace nastavení fakturace
 
-`Billing` Nastavení, určuje identifikátor URI koncového bodu z _pro počítačové zpracování obrazu_ prostředků v Azure umožňuje měřit fakturačních údajů pro kontejner. Musíte zadat hodnotu pro toto nastavení konfigurace, a hodnota musí být platný identifikátor URI koncového bodu pro _pro počítačové zpracování obrazu_ prostředků v Azure. Sestavy využití kontejnerů o každých 10 až 15 minut.
+`Billing` Nastavení, určuje identifikátor URI koncového bodu z _služeb Cognitive Services_ prostředků v Azure umožňuje měřit fakturačních údajů pro kontejner. Musíte zadat hodnotu pro toto nastavení konfigurace, a hodnota musí být platný identifikátor URI koncového bodu pro _služeb Cognitive Services_ prostředků v Azure. Sestavy využití kontejnerů o každých 10 až 15 minut.
 
 Toto nastavení najdete v následujícím místě:
 
-* Azure portal: **Počítačové zpracování obrazu** přehled s popiskem `Endpoint`
+* Azure portal: **Služby cognitive Services** přehled s popiskem `Endpoint`
+
+Nezapomeňte přidat `vision/v1.0` směrování na identifikátor URI koncového bodu, jak je znázorněno v následující tabulce. 
 
 |Požaduje se| Název | Typ dat | Popis |
 |--|------|-----------|-------------|
@@ -89,16 +91,18 @@ Následující příklady ukazují, jak napsat a použít pomocí nastavení kon
 * **Znak pro pokračování řádku**: Příkazy Dockeru v následujících částech použijte zpětné lomítko `\`, jako znak pro pokračování řádku. Nahraďte nebo odstraňte tuto podle požadavků vašeho hostitelského operačního systému. 
 * **Pořadí argumentů**: Pořadí argumentů nezmění, pokud máte velmi zkušenosti s kontejnery Dockeru.
 
+Nezapomeňte přidat `vision/v1.0` směrování na identifikátor URI koncového bodu, jak je znázorněno v následující tabulce. 
+
 Nahradit {_argument_name_} s vlastními hodnotami:
 
 | Zástupný symbol | Hodnota | Formát nebo příklad |
 |-------------|-------|---|
-|{BILLING_KEY} | Koncový bod klíč prostředku pro počítačové zpracování obrazu. |xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx|
+|{BILLING_KEY} | Klíč koncového bodu prostředku služeb Cognitive Services. |xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx|
 |{BILLING_ENDPOINT_URI} | Fakturační hodnota koncového bodu, včetně oblasti.|`https://westcentralus.api.cognitive.microsoft.com/vision/v1.0`|
 
 > [!IMPORTANT]
 > `Eula`, `Billing`, A `ApiKey` možnosti musí být zadán pro spuštění kontejneru; v opačném případě nebude spuštění kontejneru.  Další informace najdete v tématu [fakturace](computer-vision-how-to-install-containers.md#billing).
-> Hodnota ApiKey **klíč** ze stránky klíče na prostředky pro zpracování obrazu počítače Azure. 
+> Hodnota ApiKey **klíč** Azure `Cognitive Services` stránka s materiály pro klíče. 
 
 ## <a name="recognize-text-container-docker-examples"></a>Rozpoznávání textu kontejneru Dockeru příklady
 

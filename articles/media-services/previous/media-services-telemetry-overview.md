@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 04/01/2019
 ms.author: juliako
 ms.openlocfilehash: 8e8b493881662483e66dd835d1cc68a471b18454
-ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/01/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58803293"
 ---
 # <a name="azure-media-services-telemetry"></a>Azure Media Services telemetrie  
@@ -78,7 +78,7 @@ Vlastnost|Hodnota|Příklady a poznámky
 ---|---|---
 PartitionKey|{ID účtu} _ {entity ID}|e49bef329c29495f9b9570989682069d_64435281c50a4dd8ab7011cb0f4cdf66<br/<br/>ID účtu je součástí klíče oddílu pro zjednodušení pracovních postupů, kde více účtů Media Services jsou zápisu do stejného účtu úložiště.
 RowKey|{seconds půlnoci} _ {náhodnou hodnotu}|01688_00199<br/><br/>Klíč řádku začíná počet sekund, po půlnoci na povolit dotazy na první styl n v rámci oddílu. Další informace najdete v [tomto](../../cosmos-db/table-storage-design-guide.md#log-tail-pattern) článku. 
-Časové razítko|Datum a čas|Auto časové razítko z tabulky Azure 2016-09-09T22:43:42.241Z
+Timestamp|Datum a čas|Auto časové razítko z tabulky Azure 2016-09-09T22:43:42.241Z
 Type|Typ na subjekt poskytující telemetrická data|Kanál/StreamingEndpoint/archiv<br/><br/>Typ události je právě řetězcovou hodnotu.
 Název|Název události telemetrie|ChannelHeartbeat/StreamingEndpointRequestLog
 ObservedTime|Čas telemetrické události došlo k chybě (UTC)|2016-09-09T22:42:36.924Z<br/><br/>Poskytuje sledovaného časového entity odesílá telemetrická data (například kanál). Může být synchronizací mezi součástmi, takže tato hodnota je přibližný čas
@@ -99,7 +99,7 @@ Vlastnost|Hodnota|Příklady
 ---|---|---
 PartitionKey|PartitionKey|e49bef329c29495f9b9570989682069d_64435281c50a4dd8ab7011cb0f4cdf66
 RowKey|RowKey|01688_00199
-Časové razítko|Časové razítko|Auto časové razítko z Azure Table 2016-09-09T22:43:42.241Z
+Timestamp|Timestamp|Auto časové razítko z Azure Table 2016-09-09T22:43:42.241Z
 Type|Type|StreamingEndpoint
 Název|Název|StreamingEndpointRequestLog
 ObservedTime|ObservedTime|2016-09-09T22:42:36.924Z
@@ -118,7 +118,7 @@ Vlastnost|Hodnota|Příklady a poznámky
 ---|---|---
 PartitionKey|PartitionKey|e49bef329c29495f9b9570989682069d_64435281c50a4dd8ab7011cb0f4cdf66
 RowKey|RowKey|01688_00199
-Časové razítko|Časové razítko|Auto časové razítko z tabulky Azure 2016-09-09T22:43:42.241Z
+Timestamp|Timestamp|Auto časové razítko z tabulky Azure 2016-09-09T22:43:42.241Z
 Type|Type|Kanál
 Název|Název|ChannelHeartbeat
 ObservedTime|ObservedTime|2016-09-09T22:42:36.924Z
@@ -143,7 +143,7 @@ Vlastnost|Hodnota|Příklady a poznámky
 ---|---|---
 PartitionKey|PartitionKey|e49bef329c29495f9b9570989682069d_64435281c50a4dd8ab7011cb0f4cdf66
 RowKey|RowKey|01688_00199
-Časové razítko|Časové razítko|Auto časové razítko z tabulky Azure 2016-09-09T22:43:42.241Z
+Timestamp|Timestamp|Auto časové razítko z tabulky Azure 2016-09-09T22:43:42.241Z
 Type|Type|Archiv
 Název|Název|ArchiveHeartbeat
 ObservedTime|ObservedTime|2016-09-09T22:42:36.924Z

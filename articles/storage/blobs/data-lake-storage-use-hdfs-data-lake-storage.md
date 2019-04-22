@@ -8,57 +8,25 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: artek
 ms.subservice: data-lake-storage-gen2
-ms.openlocfilehash: 051681150501f7c5737f335f8eb48144b08bb990
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.openlocfilehash: d1c9eff08a7b9cc50ccdca4ce798ac4d0f3d35f2
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58482662"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59678016"
 ---
 # <a name="using-the-hdfs-cli-with-data-lake-storage-gen2"></a>Pomocí rozhraní příkazového řádku HDFS s Data Lake Storage Gen2
 
-Azure Data Lake Storage Gen2 umožňuje spravovat a přistupovat k datům, stejně jako při použití [souboru systému HDFS (Hadoop Distributed)](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HdfsDesign.html). Ať už máte cluster HDInsight připojený nebo spuštění úlohy Apache Spark pomocí Azure Databricks provádět analýzu na datech uložených v účtu služby Azure Storage, můžete použít rozhraní příkazového řádku (CLI) pro načítání a manipulaci s načtená data.
+Můžete přístup a spravovat data ve vašem účtu úložiště pomocí rozhraní příkazového řádku, stejně jako při použití [souboru systému HDFS (Hadoop Distributed)](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HdfsDesign.html). Tento článek obsahuje příklady, které vám pomůžou začít.
 
-## <a name="hdfs-cli-with-hdinsight"></a>HDFS rozhraní příkazového řádku s HDInsight
+Služba HDInsight poskytuje přístup do systému souborů DFS, který je místně připojen k výpočetním uzlům. V tomto systému souborů můžete přistupovat pomocí prostředí, který komunikuje přímo s HDFS a jiných systémů souborů, které podporuje Hadoop.
 
-Služba HDInsight poskytuje přístup do systému souborů DFS, který je místně připojen k výpočetním uzlům. V tomto systému souborů je přístupný pomocí prostředí, který komunikuje přímo s HDFS a jiných systémů souborů, které podporuje Hadoop. Níže jsou uvedeny často používané příkazy a odkazy na užitečné zdroje informací.
+Další informace o rozhraní příkazového řádku HDFS najdete v článku [oficiální dokumentaci](https://hadoop.apache.org/docs/r2.4.1/hadoop-project-dist/hadoop-common/FileSystemShell.html) a [Průvodce oprávnění HDFS](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HdfsPermissionsGuide.html)
 
->[!IMPORTANT]
->Účtování clusteru HDInsight spustí po vytvoření clusteru a skončí jeho odstraněním. Účtuje se poměrnou částí po minutách, takže byste cluster měli odstranit vždy, když už se nepoužívá. Zjistěte, jak odstranit cluster, najdete v našich [článek na téma](../../hdinsight/hdinsight-delete-cluster.md). Data uložená v účtu úložiště pomocí služby Data Lake Storage Gen2 povolené však přetrvává i po odstranění clusteru služby HDInsight.
+>[!NOTE]
+>Pokud používáte Azure Databricks HDInsight, a chcete pracovat s daty pomocí rozhraní příkazového řádku, můžete použít rozhraní příkazového řádku Databricks k interakci s systému souborů Databricks. Zobrazit [rozhraní příkazového řádku Databricks](https://docs.azuredatabricks.net/user-guide/dev-tools/databricks-cli.html).
 
-### <a name="create-a-file-system"></a>Vytvořit systém souborů
-
-    hdfs dfs -D "fs.azure.createRemoteFileSystemDuringInitialization=true" -ls abfs://<file-system-name>@<storage-account-name>.dfs.core.windows.net/
-
-* Nahradit `<file-system-name>` zástupným názvem, který chcete udělit systému souborů.
-
-* Nahradit `<storage-account-name>` zástupný symbol s názvem účtu úložiště.
-
-### <a name="get-a-list-of-files-or-directories"></a>Získat seznam souborů či adresářů
-
-    hdfs dfs -ls <path>
-
-Nahradit `<path>` zástupný symbol s identifikátorem URI systému souborů nebo složku systému souborů.
-
-Příklad: `hdfs dfs -ls abfs://my-file-system@mystorageaccount.dfs.core.windows.net/my-directory-name`
-
-### <a name="create-a-directory"></a>Vytvoření adresáře
-
-    hdfs dfs -mkdir [-p] <path>
-
-Nahradit `<path>` zástupný symbol systému názvu kořenového souboru nebo složky v rámci systému souborů.
-
-Příklad: `hdfs dfs -mkdir abfs://my-file-system@mystorageaccount.dfs.core.windows.net/`
-
-### <a name="delete-a-file-or-directory"></a>Odstranit soubor nebo adresář
-
-    hdfs dfs -rm <path>
-
-Nahradit `<path>` zástupný symbol s identifikátorem URI souboru nebo složky, který chcete odstranit.
-
-Příklad: `hdfs dfs -rmdir abfs://my-file-system@mystorageaccount.dfs.core.windows.net/my-directory-name/my-file-name`
-
-### <a name="use-the-hdfs-cli-with-an-hdinsight-hadoop-cluster-on-linux"></a>Použití HDFS rozhraní příkazového řádku s clusterem HDInsight Hadoop v Linuxu
+## <a name="use-the-hdfs-cli-with-an-hdinsight-hadoop-cluster-on-linux"></a>Použití HDFS rozhraní příkazového řádku s clusterem HDInsight Hadoop v Linuxu
 
 Nejprve navázat [vzdálený přístup ke službám](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-linux-information#remote-access-to-services). Pokud vyberete [SSH](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-linux-use-ssh-unix) ukázkový kód Powershellu vypadá takto:
 
@@ -72,56 +40,42 @@ hdfs dfs -mkdir /samplefolder
 ```
 Připojovací řetězec najdete tady "SSH + clusteru přihlášení" okna clusteru HDInsight na webu Azure portal. Přihlašovací údaje SSH byly zadány v době vytváření clusteru.
 
-Další informace o rozhraní příkazového řádku HDFS najdete v článku [oficiální dokumentaci](https://hadoop.apache.org/docs/r2.4.1/hadoop-project-dist/hadoop-common/FileSystemShell.html) a [HDFS oprávnění průvodce](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HdfsPermissionsGuide.html). Další informace týkající se seznamů ACL ve službě Databricks, najdete v článku [tajné kódy rozhraní příkazového řádku](https://docs.azuredatabricks.net/user-guide/dev-tools/databricks-cli.html#secrets-cli).
+>[!IMPORTANT]
+>Účtování clusteru HDInsight spustí po vytvoření clusteru a skončí jeho odstraněním. Účtuje se poměrnou částí po minutách, takže byste cluster měli odstranit vždy, když už se nepoužívá. Zjistěte, jak odstranit cluster, najdete v našich [článek na téma](../../hdinsight/hdinsight-delete-cluster.md). Data uložená v účtu úložiště pomocí služby Data Lake Storage Gen2 povolené však přetrvává i po odstranění clusteru služby HDInsight.
 
-## <a name="hdfs-cli-with-azure-databricks"></a>HDFS CLI s Azure Databricks
+## <a name="create-a-file-system"></a>Vytvořit systém souborů
 
-Databricks poskytuje snadno použitelné rozhraní příkazového řádku postavené na rozhraní REST API Databricks. Open source projektu hostována službou [Githubu](https://github.com/databricks/databricks-cli). Níže jsou uvedeny často používané příkazy.
+    hdfs dfs -D "fs.azure.createRemoteFileSystemDuringInitialization=true" -ls abfs://<file-system-name>@<storage-account-name>.dfs.core.windows.net/
 
-### <a name="get-a-list-of-files-or-directories"></a>Získat seznam souborů či adresářů
+* Nahradit `<file-system-name>` zástupným názvem, který chcete udělit systému souborů.
 
-    dbfs ls [-l]
+* Nahradit `<storage-account-name>` zástupný symbol s názvem účtu úložiště.
 
-### <a name="create-a-directory"></a>Vytvoření adresáře
+## <a name="get-a-list-of-files-or-directories"></a>Získat seznam souborů či adresářů
 
-    dbfs mkdirs
+    hdfs dfs -ls <path>
 
-### <a name="delete-a-file"></a>Odstranění souboru
+Nahradit `<path>` zástupný symbol s identifikátorem URI systému souborů nebo složku systému souborů.
 
-    dbfs rm [-r]
+Příklad: `hdfs dfs -ls abfs://my-file-system@mystorageaccount.dfs.core.windows.net/my-directory-name`
 
-Jiný způsob interakce s Databricks jsou poznámkové bloky. Zatímco Poznámkový blok má primární jazyk, můžete kombinovat jazyky zadáním jazyk % magický příkaz jazyka na začátku buňky. Konkrétně % TV umožňuje spouštět kód prostředí v poznámkovém bloku podobně jako v příkladu HDInsight dříve v tomto článku.
+## <a name="create-a-directory"></a>Vytvoření adresáře
 
-### <a name="get-a-list-of-files-or-directories"></a>Získat seznam souborů či adresářů
+    hdfs dfs -mkdir [-p] <path>
 
-    %sh ls <args>
+Nahradit `<path>` zástupný symbol systému názvu kořenového souboru nebo složky v rámci systému souborů.
 
-### <a name="create-a-directory"></a>Vytvoření adresáře
+Příklad: `hdfs dfs -mkdir abfs://my-file-system@mystorageaccount.dfs.core.windows.net/`
 
-    %sh mkdir [-p] <paths>
+## <a name="delete-a-file-or-directory"></a>Odstranit soubor nebo adresář
 
-### <a name="delete-a-file-or-a-directory"></a>Odstranit soubor nebo adresář
+    hdfs dfs -rm <path>
 
-    %sh rm [-skipTrash] URI [URI ...]
+Nahradit `<path>` zástupný symbol s identifikátorem URI souboru nebo složky, který chcete odstranit.
 
-Po spuštění clusteru Spark v Azure Databricks vytvoříte Poznámkový blok nový. Ukázkový skript Poznámkový blok bude vypadat takto:
+Příklad: `hdfs dfs -rmdir abfs://my-file-system@mystorageaccount.dfs.core.windows.net/my-directory-name/my-file-name`
 
-    #Execute basic HDFS commands invoking the shell. Display the hierarchy.
-    %sh ls /
-    #Create a sample directory.
-    %sh mkdir /samplefolder
-    #Get the ACL of the newly created directory.
-    hdfs dfs -getfacl /samplefolder
-
-Další informace o rozhraní příkazového řádku Databricks, najdete v článku [oficiální dokumentaci](https://docs.azuredatabricks.net/user-guide/dev-tools/databricks-cli.html). Další informace o poznámkových bloků, najdete v článku [poznámkových bloků](https://docs.azuredatabricks.net/user-guide/notebooks/index.html) část dokumentace.
-
-## <a name="set-file-and-directory-level-permissions"></a>Nastavte oprávnění na úrovni souborů a adresářů
-
-Nastavení a získání přístupových oprávnění na úrovni souborů a adresářů. Tady je několik příkazů, které vám pomůžou začít. 
-
-Další informace o souboru a adresáře úrovně oprávnění pro systém souborů Azure Data Lake Gen2 najdete v tématu [řízení přístupu v Azure Data Lake Storage Gen2](storage-data-lake-storage-access-control.md).
-
-### <a name="display-the-access-control-lists-acls-of-files-and-directories"></a>Zobrazí seznamy řízení přístupu (ACL) souborů a adresářů
+## <a name="display-the-access-control-lists-acls-of-files-and-directories"></a>Zobrazí seznamy řízení přístupu (ACL) souborů a adresářů
 
     hdfs dfs -getfacl [-R] <path>
 
@@ -131,7 +85,7 @@ Příklad:
 
 Zobrazit [getfacl](https://hadoop.apache.org/docs/r2.4.1/hadoop-project-dist/hadoop-common/FileSystemShell.html#getfacl)
 
-### <a name="set-acls-of-files-and-directories"></a>Nastavení seznamů ACL souborů a adresářů
+## <a name="set-acls-of-files-and-directories"></a>Nastavení seznamů ACL souborů a adresářů
 
     hdfs dfs -setfacl [-R] [-b|-k -m|-x <acl_spec> <path>]|[--set <acl_spec> <path>]
 
@@ -141,19 +95,19 @@ Příklad:
 
 Zobrazit [setfacl](https://hadoop.apache.org/docs/r2.4.1/hadoop-project-dist/hadoop-common/FileSystemShell.html#setfacl)
 
-### <a name="change-the-owner-of-files"></a>Změnit vlastníka soubory
+## <a name="change-the-owner-of-files"></a>Změnit vlastníka soubory
 
     hdfs dfs -chown [-R] <new_owner>:<users_group> <URI>
 
 Zobrazit [změnit vlastníka](https://hadoop.apache.org/docs/r2.4.1/hadoop-project-dist/hadoop-common/FileSystemShell.html#chown)
 
-### <a name="change-group-association-of-files"></a>Změnit přidružení skupiny souborů
+## <a name="change-group-association-of-files"></a>Změnit přidružení skupiny souborů
 
     hdfs dfs -chgrp [-R] <group> <URI>
 
 Zobrazit [chgrp](https://hadoop.apache.org/docs/r2.4.1/hadoop-project-dist/hadoop-common/FileSystemShell.html#chgrp)
 
-### <a name="change-the-permissions-of-files"></a>Změnit oprávnění pro soubory
+## <a name="change-the-permissions-of-files"></a>Změnit oprávnění pro soubory
 
     hdfs dfs -chmod [-R] <mode> <URI>
 
@@ -163,4 +117,6 @@ Můžete zobrazit úplný seznam příkazů na [průvodce prostředí systému s
 
 ## <a name="next-steps"></a>Další postup
 
-[Používat účet Azure Data Lake Storage Gen2 podporující v Azure Databricks](./data-lake-storage-quickstart-create-databricks-account.md) 
+* [Používat účet Azure Data Lake Storage Gen2 podporující v Azure Databricks](./data-lake-storage-quickstart-create-databricks-account.md)
+
+* [Další informace o seznamy řízení přístupu na soubory a adresáře](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-access-control)

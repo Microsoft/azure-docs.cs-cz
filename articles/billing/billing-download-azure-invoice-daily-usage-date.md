@@ -16,10 +16,10 @@ ms.topic: conceptual
 ms.date: 02/19/2019
 ms.author: banders
 ms.openlocfilehash: b78fb7d697f8a72b3c2f99c4509ea6ac5c5e5566
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59281178"
 ---
 # <a name="download-or-view-your-azure-billing-invoice-and-daily-usage-data"></a>Stažení nebo zobrazení Azure fakturační faktury a dat o denním využití
@@ -42,7 +42,7 @@ Pro většinu předplatných si můžete stáhnout z webu Azure portal faktuře.
 
 1. Vyberte své předplatné z [stránce předplatná](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) na webu Azure Portal jako [uživatele s přístupem na fakturách](billing-manage-access.md).
 
-2. Vyberte **faktury**.
+2. Vyberte **Faktury**.
 
     ![Snímek obrazovky zobrazující možnost fakturace a využití](./media/billing-download-azure-invoice-daily-usage-date/billingandusage.png)
 
@@ -58,9 +58,9 @@ Další informace o vaší faktuře najdete v tématu [vysvětlení vašeho vyú
 
 Faktury se generují pro každou [fakturační profil](billing-mca-overview.md#understand-billing-profiles) smlouvy zákazníka Microsoftu. Musí být fakturační profil vlastník, Přispěvatel, čtenář, nebo fakturovat správce stahovat faktury z portálu Azure portal.
 
-1. Hledat na **Cost Management a fakturace**.
+1. Vyhledejte **Cost Management a fakturace**.
 2. Vyberte fakturační profil.
-3. Vyberte **faktury**.
+3. Vyberte **Faktury**.
 4. V mřížce faktury najde řádek faktury, kterou chcete stáhnout.
 5. Klikněte na symbol tří teček (`...`) na konci řádku.
 6. V místní nabídce stahování vyberte **faktury**.
@@ -108,7 +108,7 @@ Získání faktury e-mailem podle pokynů výše a kliknutím na tlačítko mů�
 
 Pokud máte smlouvu Microsoft zákazníka, můžete přejít k získání faktury e-mailem. Všechny fakturační profil vlastníci, přispěvatelé, čtenáři a faktury Správci získají faktury e-mailem. Čtenáři nelze aktualizovat předvolby faktury e-mailu.
 
-1. Hledat na **Cost Management a fakturace**.
+1. Vyhledejte **Cost Management a fakturace**.
 1. Vyberte fakturační profil.
 1. V části **nastavení**vyberte **vlastnosti**.
 1. V části **fakturu e-mailem**vyberte **předvolby faktury e-mailu aktualizace**.
@@ -119,7 +119,7 @@ Pokud máte smlouvu Microsoft zákazníka, můžete přejít k získání faktur
 
 Získání faktury e-mailem podle pokynů výše a kliknutím na tlačítko můžete zrušit **Odhlásit se totiž**. Vlastníci, přispěvatelé, čtenáři a faktury správci účast získání faktury e-mailem, příliš. Pokud jste čtečku, nelze změnit předvolby faktury e-mailu.
 
-## <a name="download-usage"></a>Stáhnout využití
+## <a name="download-usage"></a>Stažení dat o využití
 
  Většina předplatných, najít souboru denního využití v [centra účtů Azure](https://account.azure.com/Subscriptions). Pokud jste zákazník EA nebo máte zákaznické smlouvy Microsoft, můžete stáhnout využití [webu Azure portal](https://portal.azure.com/). <!-- TO DO: update PayG experience to Ibiza once it ships-->
 
@@ -169,9 +169,9 @@ Zobrazovat a stahovat data o využití pro fakturační profil, musí být faktu
 
 #### <a name="download-usage-for-billed-charges"></a>Stáhnout využití fakturuje za
 
-1. Hledat na **Cost Management a fakturace**.
+1. Vyhledejte **Cost Management a fakturace**.
 2. Vyberte fakturační profil.
-3. Vyberte **faktury**.
+3. Vyberte **Faktury**.
 4. V mřížce faktury nalezen řádek odpovídající využití, které chcete stáhnout fakturu.
 5. Klikněte na symbol tří teček (`...`) na konci řádku.
 6. V místní nabídce stahování vyberte **využití Azure a poplatky za**.
@@ -180,7 +180,7 @@ Zobrazovat a stahovat data o využití pro fakturační profil, musí být faktu
 
 Můžete také stáhnout využití za měsíc k datu v aktuálním fakturačním období, to znamená, že ještě nebyly byla účtuje poplatky.
 
-1. Hledat na **Cost Management a fakturace**.
+1. Vyhledejte **Cost Management a fakturace**.
 2. Vyberte fakturační profil.
 3. V **přehled** okna, klikněte na tlačítko **Azure stáhnout využití a poplatků**.
 
@@ -195,7 +195,7 @@ Pokud máte otázky nebo potřebujete pomoc, [vytvořit žádost o podporu](http
 
 Další informace týkající se faktury a náklady, naleznete v tématu:
 
-- [Vysvětlení vašeho vyúčtování služeb Microsoft Azure](billing-understand-your-bill.md)
+- [Vysvětlení informací na faktuře za Microsoft Azure](billing-understand-your-bill.md)
 - [Vysvětlení podmínek na faktuře Azure](billing-understand-your-invoice.md)
 - [Vysvětlení podmínek na Microsoft Azure podrobné využití](billing-understand-your-usage.md)
 - [Prohlédněte si ceny Azure vaší organizace](billing-ea-pricing.md)

@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 01/11/2019
 ms.author: kraigb
 ms.openlocfilehash: d5ccf3e9f35a8d35387962278577333ff92ff02b
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59258522"
 ---
 # <a name="tutorial-create-and-run-a-jupyter-notebook-with-python"></a>Kurz: vytvoření a spuštění poznámkového bloku Jupyter s využitím Pythonu
@@ -128,7 +128,7 @@ Připraveno datový soubor a nastavení prostředí projektu můžete teď vytvo
 1. Vzhledem k tomu, že máte *souboru requirements.txt* soubor v nastavení prostředí se zobrazí zpráva "časový limit na kontejnerech dokončete připravuje." Můžete vybrat **OK** zavřete zprávu a pokračovat v práci v poznámkovém bloku; nelze spustit buňky kódu, ale dokud je plně nastavení prostředí.
 1. Poznámkový blok se otevře v rozhraní Jupyter s buňky jeden prázdný kód jako výchozí.
 
-    [![Izobrazení nového poznámkového bloku v Azure Notebooks nitial](media/tutorial/tutorial-new-notebook.png)](media/tutorial/tutorial-new-notebook.png#lightbox)
+    [![Počáteční zobrazení nového poznámkového bloku v poznámkových bloků Azure](media/tutorial/tutorial-new-notebook.png)](media/tutorial/tutorial-new-notebook.png#lightbox)
 
 ## <a name="tour-the-notebook-interface"></a>Přehled rozhraní poznámkového bloku
 
@@ -425,10 +425,10 @@ Viz také [Visual Studio Code – podpora Jupyter](https://code.visualstudio.com
 
 Články s návody:
 
-- [Vytváření a klonování projektů](create-clone-jupyter-notebooks.md)
+- [Vytvoření a klonování projekty](create-clone-jupyter-notebooks.md)
 - [Konfigurace a správa projektů](configure-manage-azure-notebooks-projects.md)
 - [Instalace balíčků z v rámci poznámkového bloku](install-packages-jupyter-notebook.md)
-- [Předložení prezentace](present-jupyter-notebooks-slideshow.md)
+- [K dispozici prezentace](present-jupyter-notebooks-slideshow.md)
 - [Práce s datovými soubory](work-with-project-data-files.md)
-- [Přístup k datovým prostředkům](access-data-resources-jupyter-notebooks.md)
-- [Použití služeb Azure Machine Learning Services](use-machine-learning-services-jupyter-notebooks.md)
+- [Přístup k prostředkům data](access-data-resources-jupyter-notebooks.md)
+- [Použití Azure Machine Learning Services](use-machine-learning-services-jupyter-notebooks.md)

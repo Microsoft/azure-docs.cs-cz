@@ -10,10 +10,10 @@ services: iot-central
 ms.custom: mvc
 manager: peterpr
 ms.openlocfilehash: 201b438601c9929e5ca3d292f9fc3d7b7ff64de8
-ms.sourcegitcommit: ef20235daa0eb98a468576899b590c0bc1a38394
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59425929"
 ---
 # <a name="tutorial-add-a-real-device-to-your-azure-iot-central-application"></a>Kurz: Přidání skutečného zařízení do aplikace Azure IoT Central
@@ -352,14 +352,14 @@ Teď, když jste se připojili skutečné zařízení do aplikace Azure IoT Cent
 
 Jako operátor se naučíte tyto postupy:
 
-* [správu zařízení](howto-manage-devices.md)
+* [Správa zařízení](howto-manage-devices.md)
 * [Použití sad zařízení](howto-use-device-sets.md)
 * [Vytvoření vlastní analýzy](howto-use-device-sets.md)
 
 Jako vývojář zařízení se naučíte tyto postupy:
 
 * [Příprava a připojení zařízení DevKit (C)](howto-connect-devkit.md)
-* [Příprava a připojení Raspberry Pi (Python)](howto-connect-raspberry-pi-python.md)
-* [Příprava a připojení Raspberry Pi (C#)](howto-connect-raspberry-pi-csharp.md)
+* [Příprava a připojte Raspberry Pi (Python)](howto-connect-raspberry-pi-python.md)
+* [Příprava a připojte Raspberry Pi (C#)](howto-connect-raspberry-pi-csharp.md)
 * [Příprava a připojit zařízení s Windows 10 IoT core (C#)](howto-connect-windowsiotcore.md)
-* [Připojit obecného klienta Node.js do aplikace Azure IoT Central](howto-connect-nodejs.md)
+* [Připojení obecného klienta Node.js k aplikaci Azure IoT Central](howto-connect-nodejs.md)

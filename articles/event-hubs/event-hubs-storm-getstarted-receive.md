@@ -15,18 +15,21 @@ ms.topic: article
 ms.custom: seodec18
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: 3c50916f648a2bce634f7aeb109147a873de1de6
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 75a96127c48186befc48b2240f78e49cd5914239
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53094606"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59679257"
 ---
 # <a name="receive-events-from-event-hubs-using-apache-storm"></a>Příjem událostí ze služby Event Hubs pomocí Apache Storm
 
 [Apache Storm](https://storm.incubator.apache.org) je distribuovaný výpočet v reálném čase, která zjednodušuje spolehlivé zpracování streamů dat bez vazby. Tato část ukazuje, jak pomocí Azure Event Hubs Storm spout příjem událostí ze služby Event Hubs. Použití Apache Storm, můžete události rozdělit mezi více procesů, které jsou hostované v různých uzlech. Integrace služby Event Hubs se Stormem zjednodušuje spotřebu událostí tím, že transparentně vytváření kontrolních bodů průběhu pomocí instalace Zookeeper pro Storm, spravuje trvalé kontrolní body a paralelní příjmy ze služby Event Hubs.
 
 Další informace o službě Event Hubs přijímat vzory, najdete v článku [Přehled služby Event Hubs][Event Hubs overview].
+
+## <a name="prerequisites"></a>Požadavky
+Než začnete pomocí rychlého startu, **vytvořit obor názvů služby Event Hubs a centra událostí**. Použití [webu Azure portal](https://portal.azure.com) k vytvoření oboru názvů typu Event Hubs a získání přihlašovacích údajů pro správu, vaše aplikace potřebuje ke komunikaci s centrem událostí. Pokud chcete vytvořit obor názvů a centra událostí, postupujte podle pokynů v [v tomto článku](event-hubs-create.md). 
 
 ## <a name="create-project-and-add-code"></a>Vytvořte projekt a přidejte kód
 

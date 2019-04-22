@@ -14,10 +14,10 @@ ms.reviewer: dhanyahk
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: f6fe7b2cefdd29f0497bbc18e969a77ac295ba42
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/05/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59051950"
 ---
 # <a name="archive-for-whats-new-in-azure-active-directory"></a>Archiv co je nového? ve službě Azure Active Directory
@@ -727,7 +727,7 @@ Při konfiguraci aplikace založené na SAML jednotného přihlašování, budet
 Další informace naleznete v tématu:
 
 - [Konfigurace jednotného přihlašování k aplikacím, které nejsou v galerii aplikací Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-custom-apps)
-- [Jak ladit jednotné přihlašování k aplikacím v Azure Active Directory založené na SAML](https://docs.microsoft.com/azure/active-directory/develop/active-directory-saml-debugging)
+- [Ladění založené na SAML jednotného přihlašování k aplikacím v Azure Active Directory](https://docs.microsoft.com/azure/active-directory/develop/active-directory-saml-debugging)
 
 ---
  
@@ -1215,7 +1215,7 @@ Azure AD Connect je preferovaný nástroj pro synchronizaci dat mezi službami A
 
 Tato verze má následující aktualizace a změny:
 
-**Oprava potíží**
+**Opravené problémy**
 
 - Opravte časové okno na úlohy na pozadí pro filtrování oddílů stránku při přechodu na další stránku.
 
@@ -1394,7 +1394,7 @@ Další informace naleznete v tématu:
 
 ---
 
-## <a name="december-2017"></a>Prosinec 2017
+## <a name="december-2017"></a>. Prosince 2017
 
 ### <a name="terms-of-use-in-the-access-panel"></a>Podmínky použití na přístupovém panelu
 
@@ -1665,7 +1665,7 @@ Nyní můžete zahrnout (nebo vyloučit) macOS jako podmínku platformy zaříze
 
 Další informace naleznete v tématu:
 
-- [Vytvoření zásady dodržování předpisů zařízením pro zařízení s macOS v Intune](https://aka.ms/macoscompliancepolicy)
+- [Vytvoření zásady dodržování předpisů pro zařízení s macOS pomocí Intune](https://aka.ms/macoscompliancepolicy)
 - [Podmíněný přístup ve službě Azure AD](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-azure-portal)
  
 ---

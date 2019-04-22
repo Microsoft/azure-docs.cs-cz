@@ -84,7 +84,7 @@ Viz také [poznámky k instalaci Linux](create-upload-generic.md#general-linux-i
 
 ## <a name="option-1-upload-a-vhd"></a>Option 1: Nahrání virtuálního pevného disku
 
-Můžete nahrát vlastní virtuální pevný disk, které máte spuštěné na místním počítači nebo které jste vyexportovali z jiného cloudu. Pokud chcete použít virtuální pevný disk k vytvoření nového virtuálního počítače Azure, budete potřebovat k nahrání virtuálního pevného disku do účtu úložiště a vytvoření spravovaného disku z virtuálního pevného disku. Další informace najdete v tématu [Přehled služby Azure Managed Disks](../windows/managed-disks-overview.md).
+Můžete nahrát vlastní virtuální pevný disk, které máte spuštěné na místním počítači nebo které jste vyexportovali z jiného cloudu. Pokud chcete použít virtuální pevný disk k vytvoření nového virtuálního počítače Azure, budete potřebovat k nahrání virtuálního pevného disku do účtu úložiště a vytvoření spravovaného disku z virtuálního pevného disku. Další informace najdete v tématu [Přehled Spravovaných disků Azure](../windows/managed-disks-overview.md).
 
 ### <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
 

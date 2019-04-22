@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 04/01/2019
 ms.author: mbullwin
 ms.openlocfilehash: 25f620cb36c2bfb548ecf08c33dc04b37118a256
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/11/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59489618"
 ---
 # <a name="monitor-azure-app-service-performance"></a>Sledování výkonu služby Azure App Service
@@ -99,7 +99,7 @@ Monitorování na straně klienta, je vyjádřit výslovný souhlas pro technolo
 * Vyberte **nastavení** > ** ** aplikace nastavení ***
    * V části Nastavení aplikace přidejte novou **název nastavení aplikace** a **hodnotu**:
 
-     Název: `APPINSIGHTS_JAVASCRIPT_ENABLED`
+     Jméno: `APPINSIGHTS_JAVASCRIPT_ENABLED`
 
      Hodnota: `true`
 
@@ -137,7 +137,7 @@ Chcete-li povolit shromažďování telemetrie s Application Insights, třeba na
 |Název nastavení aplikace |  Definice | Hodnota |
 |-----------------|:------------|-------------:|
 |ApplicationInsightsAgent_EXTENSION_VERSION | Hlavní rozšíření, které řídí monitorování modulu runtime. | `~2` |
-|XDT_MicrosoftApplicationInsights_Mode |  Ve výchozím režimu pouze základní funkce jsou povolené s cílem zajistit optimální výkon. | `default` or `recommended`. |
+|XDT_MicrosoftApplicationInsights_Mode |  Ve výchozím režimu pouze základní funkce jsou povolené s cílem zajistit optimální výkon. | `default` nebo `recommended`. |
 |InstrumentationEngine_EXTENSION_VERSION | Řídí, jestli modul přepisování binární `InstrumentationEngine` zapne. Toto nastavení má vliv na výkon a má vliv na čas úplné spuštění nebo spuštění. | `~1` |
 |XDT_MicrosoftApplicationInsights_BaseExtensions | Určuje, zda text tabulky SQL a Azure budou zachyceny spolu s volání závislostí. Upozornění ohledně výkonu: Toto nastavení vyžaduje `InstrumentationEngine`. | `~1` |
 

@@ -8,10 +8,10 @@ ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 02/21/2019
 ms.openlocfilehash: d01c825e50e30e3545a0d47e432835c658d677af
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/05/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59043877"
 ---
 # <a name="connect-to-azure-data-explorer-with-odbc"></a>Připojit do Průzkumníku dat Azure s rozhraním ODBC
@@ -100,6 +100,6 @@ Nyní jste dokončili konfiguraci rozhraní ODBC, je možné přenést ukázkov�
 
 ## <a name="next-steps"></a>Další postup
 
-[Psát dotazy pro Průzkumník dat Azure](write-queries.md)
+[Psaní dotazů pro Azure Data Explorer](write-queries.md)
 
 [Kurz: Vizualizovat data z Průzkumníka služby Azure Data v Power BI](visualize-power-bi.md)

@@ -8,10 +8,10 @@ ms.service: data-explorer
 ms.topic: tutorial
 ms.date: 09/24/2018
 ms.openlocfilehash: 70a06b75db9ff49222c2de4aa78519b32d863478
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/05/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59049876"
 ---
 # <a name="tutorial-visualize-data-from-azure-data-explorer-in-power-bi"></a>Kurz: Vizualizovat data z Průzkumníka služby Azure Data v Power BI
@@ -33,7 +33,7 @@ V tomto kurzu se naučíte:
 
 Kromě předplatných Azure a Power BI budete k dokončení tohoto kurzu potřebovat následující:
 
-* [Testovací cluster a databáze](create-cluster-database-portal.md)
+* [Testovací cluster a databázi](create-cluster-database-portal.md)
 
 * [Ukázková data StormEvents](ingest-sample-data.md). [!INCLUDE [data-explorer-storm-events](../../includes/data-explorer-storm-events.md)]
 

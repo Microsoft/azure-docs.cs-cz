@@ -29,10 +29,10 @@ ms.author:
 - btalb
 - prachank
 ms.openlocfilehash: 1e8605a41cbe610c971b891309b2149d221b8b27
-ms.sourcegitcommit: ef20235daa0eb98a468576899b590c0bc1a38394
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59426439"
 ---
 # <a name="tcpip-performance-tuning-for-azure-vms"></a>Pro virtuální počítače Azure pro optimalizaci výkonu protokolu TCP/IP
@@ -140,7 +140,7 @@ Latence sítě se řídí rychlostí světla přes síť optického vlákna. Pro
 
 | | | | |
 |-|-|-|-|
-|**Trasa**|**Vzdálenost**|**Jednosměrná čas**|**RTT**|
+|**trasy**|**vzdálenost**|**Jednosměrná čas**|**RTT**|
 |New York to San Francisco|4,148 km|21 ms|42 ms|
 |New York do Londýna|5,585 km|28 ms|56 ms|
 |New York to Sydney|15,993 km|80 ms|160 ms|
@@ -236,7 +236,7 @@ Jedná se o platné nastavení protokolu TCP pro `AutoTuningLevel`:
 
 | | | | |
 |-|-|-|-|
-|**AutoTuningLevel**|**Koeficient změny měřítka**|**Koeficient změny měřítka**|**Vzorec, který se<br/>Vypočítat maximální velikost okna**|
+|**AutoTuningLevel**|**Koeficient změny měřítka**|**Koeficient změny měřítka**|**Vzorec pro<br/>vypočítat maximální velikost okna**|
 |Zakázáno|Žádný|Žádný|Velikost okna|
 |Omezení|4|2^4|Velikost okna * (2 ^ 4)|
 |Vysoce s omezením pomocí specifikátoru|2|2^2|Velikost okna * (2 ^ 2)|

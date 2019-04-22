@@ -16,10 +16,10 @@ ms.date: 05/04/2018
 ms.author: mathoma
 ms.reviewer: jroth
 ms.openlocfilehash: bb051d37f3a1dd82d7d46bfe8b22c2ba1251be85
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59259197"
 ---
 # <a name="how-to-provision-a-windows-sql-server-virtual-machine-in-the-azure-portal"></a>Přidělení virtuálního počítače s Windows SQL serverem na webu Azure Portal
@@ -122,7 +122,7 @@ Na **disky** kartu, nakonfigurujte možnosti disku.
 * V části **Upřesnit**vyberte **Ano** během použití **Managed Disks**.
 
    > [!NOTE]
-   > Microsoft pro SQL Server doporučuje službu Managed Disks. Služba Managed Disks se stará o úložiště na pozadí. Navíc, pokud jsou virtuální počítače se službou Managed Disks ve stejné skupině dostupnosti, Azure distribuuje prostředky úložiště pro zajištění odpovídající redundance. Další informace najdete v článku [Azure Přehled služby Managed Disks] [.. / spravovaných overview.md disků). Podrobnosti o spravovaných discích ve skupině dostupnosti, najdete v článku [použít spravované disky pro virtuální počítače ve skupině dostupnosti] (.. /Manage-Availability.MD.
+   > Microsoft pro SQL Server doporučuje Spravované disky. Spravované disky se starají o úložiště na pozadí. Navíc, pokud jsou virtuální počítače se Spravovanými disky ve stejné skupině dostupnosti, Azure distribuuje prostředky úložiště pro zajištění odpovídající redundance. Další informace najdete v článku [Azure Přehled služby Managed Disks] [.. / spravovaných overview.md disků). Podrobnosti o spravovaných discích ve skupině dostupnosti, najdete v článku [použít spravované disky pro virtuální počítače ve skupině dostupnosti] (.. /Manage-Availability.MD.
 
 ![Nastavení disku virtuálního počítače SQL](media/virtual-machines-windows-portal-sql-server-provision/azure-sqlvm-disks.png)
   
@@ -158,7 +158,7 @@ Na **nastavení systému SQL Server** kartu, nakonfigurujte konkrétní nastaven
 | Nastavení |
 | --- |
 | [Připojení](#connectivity) |
-| [Authentication](#authentication) |
+| [Ověřování](#authentication) |
 | [Integrace se službou Azure Key Vault](#azure-key-vault-integration) |
 | [Konfigurace úložiště](#storage-configuration) |
 | [Automatizované opravy](#automated-patching) |
@@ -213,7 +213,7 @@ V následující tabulce jsou uvedeny parametry, které jsou nezbytné pro konfi
 | --- | --- | --- |
 | **Adresa URL služby Key Vault** |Umístění služby Key Vault |https:\//contosokeyvault.vault.azure.net/ |
 | **Název objektu zabezpečení** |Hlavní název služby Azure Active Directory. Tento název se také označuje jako ID klienta. |fde2b411-33d5-4e11-af04eb07b669ccf2 |
-| **Tajný klíč objektu zabezpečení** |Tajný klíč objektu zabezpečení služby Azure Active Directory. Tento tajný klíč se také označuje jako Tajný klíč klienta. |9VTJSQwzlFepD8XODnzy8n2V01Jd8dAjwm/azF1XDKM= |
+| **Tajný kód objektu zabezpečení** |Tajný klíč objektu zabezpečení služby Azure Active Directory. Tento tajný klíč se také označuje jako Tajný klíč klienta. |9VTJSQwzlFepD8XODnzy8n2V01Jd8dAjwm/azF1XDKM= |
 | **Název přihlašovacího údaje** |**Název přihlašovacího údaje**: Integrace se službou AZURE vytvoří přihlašovací údaje v rámci SQL serveru, díky čemuž mají přístup k trezoru klíčů virtuální počítače. Zvolte název pro tyto přihlašovací údaje. |moje_přihlaš1 |
 
 Další informace najdete v tématu [Konfigurace Integrace se službou Azure Key Vault pro virtuální počítače Azure](virtual-machines-windows-ps-sql-keyvault.md).

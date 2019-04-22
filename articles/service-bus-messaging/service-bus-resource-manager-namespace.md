@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 01/23/2019
 ms.author: spelluru
 ms.openlocfilehash: 4471c9d5b6c09bcf4d9100cccfa725f36cf9a3f8
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/05/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59045078"
 ---
 # <a name="create-a-service-bus-namespace-using-an-azure-resource-manager-template"></a>Vytvoření oboru názvů služby Service Bus pomocí šablony Azure Resource Manageru
@@ -40,7 +40,7 @@ V tomto rychlém startu vytvoříte šablonu Azure Resource Manageru, která vyt
 ## <a name="quick-deployment"></a>Rychlé nasazení
 Ke spuštění ukázky bez psaní libovolný JSON a spuštění příkazu prostředí PowerShell nebo rozhraní příkazového řádku, výběr na následující tlačítko:
 
-[![Deploy do Azure](./media/service-bus-resource-manager-namespace/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-servicebus-create-namespace%2Fazuredeploy.json)
+[![Nasazení do Azure](./media/service-bus-resource-manager-namespace/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-servicebus-create-namespace%2Fazuredeploy.json)
 
 Pokud chcete vytvořit a nasadit šablonu ručně, projděte si následující části v tomto článku.
 
@@ -203,7 +203,7 @@ Nasazení prostředků pomocí rozhraní příkazového řádku Azure, přejdět
 V tomto článku jste vytvořili obor názvů služby Service Bus. Další rychlé starty, se naučíte vytvořit frontami, tématy nebo předplatnými, zobrazovat a používat: 
 
 - [Začínáme s frontami služby Service Bus](service-bus-dotnet-get-started-with-queues.md)
-- [Začínáme s tématy služby Service Bus](service-bus-dotnet-how-to-use-topics-subscriptions.md)
+- [Začínáme s tématy Service Bus](service-bus-dotnet-how-to-use-topics-subscriptions.md)
 
 [Authoring Azure Resource Manager templates]: ../azure-resource-manager/resource-group-authoring-templates.md
 [Service Bus namespace template]: https://github.com/Azure/azure-quickstart-templates/blob/master/101-servicebus-create-namespace/

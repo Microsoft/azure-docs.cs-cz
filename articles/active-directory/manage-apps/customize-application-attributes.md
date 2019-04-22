@@ -16,10 +16,10 @@ ms.author: celested
 ms.custom: H1Hack27Feb2017
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 8a2965fecd3aca17d6c4df7e49ad466377de9762
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59267204"
 ---
 # <a name="customizing-user-provisioning-attribute-mappings-for-saas-applications-in-azure-active-directory"></a>Přizpůsobení mapování atributů zřizování pro aplikace SaaS ve službě Azure Active Directory uživatelů
@@ -124,7 +124,7 @@ Při úpravě seznam podporovaných atributů, jsou k dispozici následující v
    * *Referenční dokumentace* – atribut obsahuje ID, která odkazuje hodnotu uloženou v druhé tabulce v cílové aplikaci.
    * *Řetězec* – atribut obsahuje textový řetězec. 
 * **Primární klíč?** – Atribut určuje, zda je definován jako pole primárního klíče ve schématu cílový objekt.
-* **Povinné?** – Jestli atribut je potřeba dosazeny cílové aplikace nebo systému.
+* **Vyžaduje?** – Jestli atribut je potřeba dosazeny cílové aplikace nebo systému.
 * **Vícehodnotový?** – Jestli atribut podporuje více hodnot.
 * **Rozlišovat velikost písmen?** – Jestli hodnoty atributů jsou vyhodnocovány tak velká a malá písmena.
 * **Výraz rozhraní API** – nepoužívejte, pokud jste nedostali pokyny k tomu dokumentaci pro konkrétní zřizování konektor (například Workday).
@@ -156,7 +156,7 @@ Výběrem této možnosti vynutí efektivně Opětovná synchronizace všech už
 * [Automatizace uživatele zřizování a jeho rušení pro aplikace SaaS](user-provisioning.md)
 * [Zápis výrazů pro mapování atributů](functions-for-customizing-application-data.md)
 * [Filtry oborů pro zřizování uživatelů](define-conditional-rules-for-provisioning-user-accounts.md)
-* [Pomocí SCIM zapněte automatické zřizování uživatelů a skupin ze služby Azure Active Directory do aplikací](use-scim-to-provision-users-and-groups.md)
+* [Zapnutí automatického zřizování uživatelů a skupin ze služby Azure Active Directory do aplikací pomocí SCIM](use-scim-to-provision-users-and-groups.md)
 * [Seznam kurzů o integraci aplikací SaaS](../saas-apps/tutorial-list.md)
 
 

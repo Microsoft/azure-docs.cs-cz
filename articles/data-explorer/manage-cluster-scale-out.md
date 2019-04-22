@@ -8,10 +8,10 @@ ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 04/05/2019
 ms.openlocfilehash: 24bbddd28943adc929fbaea456eeae8165db290c
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59261594"
 ---
 # <a name="manage-cluster-scale-out-to-accommodate-changing-demand"></a>Správa clusteru škálování tak, aby vyhovovaly měnících se požadavků
@@ -47,7 +47,7 @@ Následující obrázek znázorňuje tok následujících několika krocích. Da
     | **Časová agregace** | Vyberte kritéria agregaci, jako je například **průměrné**. |
     | **Název metriky** | Vyberte metriku, chcete, aby operace škálování na základě na, například **využití mezipaměti**. |
     | **Statistika agregačního intervalu** | Výběr mezi **průměrné**, **minimální**, **maximální**, a **součet**. |
-    | **Operátor** | Vyberte příslušnou možnost, například **větší než nebo rovna hodnotě**. |
+    | **– Operátor** | Vyberte příslušnou možnost, například **větší než nebo rovna hodnotě**. |
     | **Prahová hodnota** | Zvolte příslušnou hodnotu. Pro využití mezipaměti, třeba 80 procent je dobrým výchozím bodem. |
     | **Doba trvání (v minutách)** | Zvolte odpovídající množství času pro systém vás pod rouškou zpět při výpočtu metrik. Začněte s výchozí hodnotu 10 minut. |
     |  |  |
@@ -67,8 +67,8 @@ Následující obrázek znázorňuje tok následujících několika krocích. Da
 
     | Nastavení | Popis a hodnotu |
     | --- | --- |
-    | **Minimální** | Počet instancí, které váš cluster nebude škálování níže, bez ohledu na využití. |
-    | **Maximum** | Počet instancí, které váš cluster nebude škálování nad, bez ohledu na využití. |
+    | **Minimum** | Počet instancí, které váš cluster nebude škálování níže, bez ohledu na využití. |
+    | **Maximální počet** | Počet instancí, které váš cluster nebude škálování nad, bez ohledu na využití. |
     | **Výchozí** | Výchozí počet instancí. Toto nastavení se používá, pokud dochází k problémům s čtení metrik prostředku. |
     |  |  |
 

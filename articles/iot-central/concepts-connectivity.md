@@ -9,10 +9,10 @@ ms.service: iot-central
 services: iot-central
 manager: timlt
 ms.openlocfilehash: 9e1e85d1ab1c5e7ce0cbd96c64137309c2e2916a
-ms.sourcegitcommit: ef20235daa0eb98a468576899b590c0bc1a38394
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59425963"
 ---
 # <a name="device-connectivity-in-azure-iot-central"></a>Připojení zařízení v Azure IoT Central
@@ -156,10 +156,10 @@ Když skutečné zařízení se připojí k vaší aplikace IoT Central, jeho z�
 
 Nabídka sady SDK pro zařízení Azure nejjednodušší můžete implementovat kód vašeho zařízení. Sady SDK pro následující zařízení jsou k dispozici:
 
-- [Azure IoT SDK pro C](https://github.com/azure/azure-iot-sdk-c)
+- [Sada Azure IoT SDK pro jazyk C](https://github.com/azure/azure-iot-sdk-c)
 - [Azure IoT SDK pro Python](https://github.com/azure/azure-iot-sdk-python)
-- [Azure IoT SDK pro Node.js](https://github.com/azure/azure-iot-sdk-node)
-- [Azure IoT SDK pro Javu](https://github.com/azure/azure-iot-sdk-java)
+- [Sada Azure IoT SDK pro Node.js](https://github.com/azure/azure-iot-sdk-node)
+- [Sada Azure IoT SDK pro Javu](https://github.com/azure/azure-iot-sdk-java)
 - [Azure IoT SDK pro .NET](https://github.com/azure/azure-iot-sdk-csharp)
 
 Každé zařízení připojí pomocí jedinečných připojovací řetězec identifikující zařízení. Zařízení lze připojit pouze ke službě IoT hub, ve kterém je zaregistrovaný. Při vytváření skutečných zařízení v aplikaci Azure IoT Central aplikace generuje informace, které potřebujete k vytvoření připojovací řetězec pomocí `dps-keygen`.
@@ -181,7 +181,7 @@ Následující tabulka shrnuje, jak Azure IoT Central zařízení funkce mapují
 
 Další informace o použití sady SDK pro zařízení, najdete v jednom z následujících článků příklad kódu:
 
-- [Připojit obecného klienta Node.js do aplikace Azure IoT Central](howto-connect-nodejs.md)
+- [Připojení obecného klienta Node.js k aplikaci Azure IoT Central](howto-connect-nodejs.md)
 - [Připojte Raspberry Pi zařízení do aplikace Azure IoT Central](howto-connect-raspberry-pi-python.md)
 - [Připojte zařízení za kit DevDiv do aplikace Azure IoT Central](howto-connect-devkit.md).
 
@@ -206,6 +206,6 @@ Všechna data se vyměňují mezi zařízeními a vaše Azure IoT Central je za�
 Teď, když jste se dozvěděli o připojení zařízení v Azure IoT Central, tady jsou další navrhované kroky:
 
 - [Příprava a připojte zařízení za DevKit](howto-connect-devkit.md)
-- [Příprava a připojte Raspberry Pi](howto-connect-raspberry-pi-python.md)
-- [Připojit obecného klienta Node.js do aplikace Azure IoT Central](howto-connect-nodejs.md)
-- [C SDK: Klientská sada SDK zařízení pro zřizování](https://github.com/Azure/azure-iot-sdk-c/blob/master/provisioning_client/devdoc/using_provisioning_client.md)
+- [Příprava a připojení Raspberry Pi](howto-connect-raspberry-pi-python.md)
+- [Připojení obecného klienta Node.js k aplikaci Azure IoT Central](howto-connect-nodejs.md)
+- [SDK PRO JAZYK C: Klientská sada SDK zařízení pro zřizování](https://github.com/Azure/azure-iot-sdk-c/blob/master/provisioning_client/devdoc/using_provisioning_client.md)

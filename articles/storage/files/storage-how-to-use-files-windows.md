@@ -9,10 +9,10 @@ ms.date: 06/07/2018
 ms.author: renash
 ms.subservice: files
 ms.openlocfilehash: 315bad5c4ffc3d5e8909c86cb8de703e9cb941b0
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/05/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59048839"
 ---
 # <a name="use-an-azure-file-share-with-windows"></a>Použití sdílené složky Azure s Windows
@@ -225,7 +225,7 @@ Výběrem možnosti **Otevřít** můžete otevřít konkrétní snímek.
 
 #### <a name="restore-from-a-previous-version"></a>Obnovení z předchozí verze
 Výběrem možnosti **Obnovit** můžete rekurzivně zkopírovat obsah celého adresáře v době vytvoření snímku sdílené složky do původního umístění.
- ![Obnovit tlačítko v upozornění](./media/storage-how-to-use-files-windows/snapshot-windows-restore.png) 
+ ![Tlačítko Obnovit ve zprávě upozornění](./media/storage-how-to-use-files-windows/snapshot-windows-restore.png) 
 
 ## <a name="securing-windowswindows-server"></a>Zabezpečení Windows a Windows Serveru
 Aby bylo možné připojit sdílenou složku Azure ve Windows, musí být přístupný port 445. Řada organizací port 445 blokuje kvůli bezpečnostním rizikům spojeným s protokolem SMB 1. Protokol SMB 1, označovaný také jako CIFS (Common Internet File System), je starší verze protokolu systému souborů, který je součástí Windows a Windows Serveru. Protokol SMB 1 je zastaralý, neefektivní a hlavně nezabezpečený protokol. Dobrou zprávou je, že služba Soubory Azure nepodporuje protokol SMB 1 a všechny podporované verze Windows a Windows Serveru umožňují odebrání nebo zakázání protokolu SMB 1. Vždy [důrazně doporučujeme](https://aka.ms/stopusingsmb1) ve Windows odebrat nebo zakázat klienta a server SMB 1 před použitím sdílených složek Azure v produkčním prostředí.
@@ -298,10 +298,10 @@ Set-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Services\LanmanServer\Par
 Po vytvoření tohoto klíče registru musíte server restartovat, aby se protokol SMB 1 zakázal.
 
 ### <a name="smb-resources"></a>Zdroje informací k protokolu SMB
-- [Přestat používat SMB 1](https://blogs.technet.microsoft.com/filecab/2016/09/16/stop-using-smb1/)
-- [SMB Clearinghouse produktů: 1](https://blogs.technet.microsoft.com/filecab/2017/06/01/smb1-product-clearinghouse/)
-- [Zjišťování ve vašem prostředí s DSCEA SMB 1](https://blogs.technet.microsoft.com/ralphkyttle/2017/04/07/discover-smb1-in-your-environment-with-dscea/)
-- [Vypnutí funkce SMB 1 prostřednictvím zásad skupiny](https://blogs.technet.microsoft.com/secguide/2017/06/15/disabling-smbv1-through-group-policy/)
+- [Ukončení používání protokolu SMB 1](https://blogs.technet.microsoft.com/filecab/2016/09/16/stop-using-smb1/)
+- [Informační středisko k produktu SMB 1](https://blogs.technet.microsoft.com/filecab/2017/06/01/smb1-product-clearinghouse/)
+- [Zjišťování protokolu SMB 1 v prostředí pomocí DSCEA](https://blogs.technet.microsoft.com/ralphkyttle/2017/04/07/discover-smb1-in-your-environment-with-dscea/)
+- [Zakázání protokolu SMB 1 prostřednictvím Zásad skupiny](https://blogs.technet.microsoft.com/secguide/2017/06/15/disabling-smbv1-through-group-policy/)
 
 ## <a name="next-steps"></a>Další postup
 Další informace o službě Soubory Azure najdete na těchto odkazech:

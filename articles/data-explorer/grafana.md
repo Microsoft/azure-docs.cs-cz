@@ -8,10 +8,10 @@ ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 12/05/2018
 ms.openlocfilehash: 188cb310cfc13fe2fc41ba3e01deb01068c0184d
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/05/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59048312"
 ---
 # <a name="visualize-data-from-azure-data-explorer-in-grafana"></a>Vizualizace dat v Průzkumníku dat Azure v Grafana
@@ -208,6 +208,6 @@ Nyní jste dokončili konfiguraci Průzkumník dat Azure jako zdroj dat pro Graf
 
 ## <a name="next-steps"></a>Další postup
 
-[Psát dotazy pro Průzkumník dat Azure](write-queries.md)
+[Psaní dotazů pro Azure Data Explorer](write-queries.md)
 
 [Kurz: Vizualizovat data z Průzkumníka služby Azure Data v Power BI](visualize-power-bi.md)

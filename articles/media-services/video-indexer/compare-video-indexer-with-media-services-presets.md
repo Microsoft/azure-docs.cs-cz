@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 04/07/2019
 ms.author: juliako
 ms.openlocfilehash: 2c98f6d12f4868e5f90874fe3210fe5368f7ca2d
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59270332"
 ---
 # <a name="compare-azure-media-services-v3-presets-and-video-indexer"></a>Porovnání služeb Azure Media Services v3 přednastavení a Video Indexer 
@@ -39,6 +39,6 @@ V současné době je k překrytí mezi součástmi, které nabízí [rozhraní 
 
 ## <a name="next-steps"></a>Další postup
 
-[Video Indexer s přehledem](video-indexer-overview.md)
+[Přehled Video Indexeru](video-indexer-overview.md)
 
 [Přehled služby Media Services v3](../latest/media-services-overview.md)

@@ -10,10 +10,10 @@ ms.topic: tutorial
 description: Rychlý vývoj na platformě Kubernetes s využitím kontejnerů a mikroslužeb v Azure
 keywords: Docker, Kubernetes, Azure, AKS, službě Azure Kubernetes, kontejnery, Helm, služby sítě, směrování sítě služby, kubectl, k8s
 ms.openlocfilehash: dc84844738e501a30f73104a76ff80bf00adff24
-ms.sourcegitcommit: ef20235daa0eb98a468576899b590c0bc1a38394
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59425816"
 ---
 # <a name="get-started-on-azure-dev-spaces-with-nodejs"></a>Začínáme s Azure Dev prostory s využitím Node.js
@@ -105,7 +105,7 @@ Zatím máte základní webovou aplikaci, kterou můžete spustit místně. Teď
     ```
 
 Příkaz Azure CLI `azds prep` vygeneruje prostředky Dockeru a Kubernetes s výchozím nastavením:
-* `./Dockerfile` Popisuje aplikace image kontejneru, a jak zdrojový kód je vytvořena a běží v rámci kontejneru.
+* `./Dockerfile` popisuje image kontejneru aplikace a způsob vytvoření a běhu zdrojového kódu v rámci kontejneru.
 * [Helm chart](https://docs.helm.sh) v `./charts/webfrontend` popisuje, jak do Kubernetes nasadit kontejner.
 
 Celému obsahu těchto souborů prozatím rozumět nemusíte. Stojí však za zmínku, že **stejné prostředky konfigurace jako kódu pro Kubernetes a Docker můžete používat v různých fázích od vývoje až po produkci, takže si napříč různými prostředími zajistíte lepší konzistentnost**.
@@ -160,7 +160,7 @@ Co se stalo? Úpravy souborů obsahu, jako je HTML a CSS, nevyžadují restartov
 Otevřete webovou aplikaci na mobilním zařízení s použitím veřejné adresy URL webového front-endu. Adresu URL můžete zkopírovat na svém stolním počítači a odeslat ji do zařízení, abyste ji nemuseli celou zadávat. Po načtení webové aplikace na mobilním zařízení si můžete všimnout, že na malém zařízení se uživatelské rozhraní nezobrazuje správně.
 
 Pokud chcete problém opravit, přidejte metaznačku `viewport`:
-1. Otevřete soubor `./public/index.html`
+1. Otevřete soubor `./public/index.html`.
 1. Do stávajícího prvku `head` přidejte metaznačku `viewport`:
 
     ```html
@@ -265,7 +265,7 @@ Při této konfiguraci kontejner spustí *nodemon*. Po úpravě kódu na straně
 1. Znovu upravte úvodní zprávu v souboru `server.js` a pak soubor uložte.
 1. Obnovte prohlížeč nebo klikněte na tlačítko *Aktualizovat*, aby se změny projevily.
 
-**Nyní máte metodu pro rychlé iterace v kódu a ladění přímo v Kubernetes.** Příště si ukážeme, jak vytvořit a volat druhý kontejner.
+**Teď máte metodu, jak rychle provádět iteraci kódu a jeho ladění v Kubernetes.** Příště si ukážeme, jak vytvořit a volat druhý kontejner.
 
 ## <a name="next-steps"></a>Další postup
 

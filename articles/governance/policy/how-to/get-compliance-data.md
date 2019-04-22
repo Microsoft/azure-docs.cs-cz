@@ -9,10 +9,10 @@ ms.service: azure-policy
 manager: carmonm
 ms.custom: seodec18
 ms.openlocfilehash: 84ed1632a61ae097bd2e187de4766dfc50f2503f
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59263763"
 ---
 # <a name="get-compliance-data-of-azure-resources"></a>Získat data o dodržování předpisů prostředků Azure
@@ -56,7 +56,7 @@ Volání rozhraní REST API můžete spustit skenování hodnocení pro předpla
 Každý identifikátor URI v REST API používá proměnné, které je potřeba nahradit vašimi vlastními hodnotami:
 
 - `{YourRG}` -Nahraďte názvem vaší skupiny prostředků
-- `{subscriptionId}` -Nahraďte ID vašeho předplatného
+- Proměnnou `{subscriptionId}` nahraďte ID předplatného.
 
 Kontrola podporuje vyhodnocení prostředků v rámci předplatného nebo skupiny prostředků. Spustit kontrolu oborem pomocí rozhraní REST API **příspěvek** příkazu následující identifikátor URI struktury:
 

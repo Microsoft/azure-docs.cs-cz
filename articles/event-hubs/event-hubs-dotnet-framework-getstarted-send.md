@@ -1,6 +1,6 @@
 ---
-title: Odesílání událostí pomocí rozhraní .NET Framework – Azure Event Hubs | Dokumentace Microsoftu
-description: Tento článek poskytuje návod pro vytvoření aplikace .NET Fraemwork, která zasílá události do služby Azure Event Hubs.
+title: Odesílání a příjem událostí pomocí rozhraní .NET Framework – Azure Event Hubs | Dokumentace Microsoftu
+description: Tento článek poskytuje návod pro vytvoření aplikace rozhraní .NET Framework, která zasílá události do služby Azure Event Hubs.
 services: event-hubs
 documentationcenter: ''
 author: ShubhaVijayasarathy
@@ -13,37 +13,36 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.custom: seodec18
-ms.date: 12/06/2018
+ms.date: 04/15/2019
 ms.author: shvija
-ms.openlocfilehash: 062dc707dea99ed6e5e04905a13572c234f0c172
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 0cccf6f6187f894faadbe4f572d75c483638aafd
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53091151"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59679240"
 ---
-# <a name="send-events-to-azure-event-hubs-using-the-net-framework"></a>Odeslání událostí do Azure Event Hubs pomocí rozhraní .NET Framework
+# <a name="send-events-to-or-receive-events-from-azure-event-hubs-using-net-framework"></a>Odesílání událostí do nebo přijímat události z Azure Event Hubs pomocí rozhraní .NET Framework
 Azure Event Hubs je platforma pro streamování velkých objemů dat a služba pro ingestování událostí, která je schopná přijmout a zpracovat miliony událostí za sekundu. Služba Event Hubs dokáže zpracovávat a ukládat události, data nebo telemetrické údaje produkované distribuovaným softwarem a zařízeními. Data odeslaná do centra událostí je možné transformovat a uložit pomocí libovolného poskytovatele analýz v reálném čase nebo adaptérů pro dávkové zpracování a ukládání. Podrobnější přehled služby Event Hubs najdete v tématech [Přehled služby Event Hubs](event-hubs-about.md) a [Funkce služby Event Hubs](event-hubs-features.md).
 
-Tento kurz ukazuje, jak odesílat události do centra událostí pomocí konzolové aplikace napsané v jazyce C# pomocí rozhraní .NET Framework. 
+Tento kurz ukazuje postupy při vytváření konzolových aplikací rozhraní .NET Framework v C# k odesílání událostí do nebo přijímat události z centra událostí. 
 
 ## <a name="prerequisites"></a>Požadavky
 Pro absolvování tohoto kurzu musí být splněné následující požadavky:
 
-* [Microsoft Visual Studio 2017 nebo vyšší](https://visualstudio.com).
+- [Microsoft Visual Studio 2017 nebo vyšší](https://visualstudio.com).
+- **Vytvořit obor názvů služby Event Hubs a centra událostí**. Prvním krokem je použití webu [Azure Portal](https://portal.azure.com) k vytvoření oboru názvů typu Event Hubs a získání přihlašovacích údajů pro správu, které vaše aplikace potřebuje ke komunikaci s centrem událostí. Pokud chcete vytvořit obor názvů a centra událostí, postupujte podle pokynů v [v tomto článku](event-hubs-create.md). Potom získejte **připojovací řetězec pro obor názvů centra událostí** podle pokynů v článku: [Získání připojovacího řetězce](event-hubs-get-connection-string.md#get-connection-string-from-the-portal). Připojovací řetězec použijete později v tomto kurzu.
 
-## <a name="create-an-event-hubs-namespace-and-an-event-hub"></a>Vytvoření oboru názvů Event Hubs a centra událostí
-Prvním krokem je použití webu [Azure Portal](https://portal.azure.com) k vytvoření oboru názvů typu Event Hubs a získání přihlašovacích údajů pro správu, které vaše aplikace potřebuje ke komunikaci s centrem událostí. Pokud chcete vytvořit obor názvů a centrum událostí, postupujte podle pokynů v [tomto článku](event-hubs-create.md) a pak pokračujte podle následujících pokynů v tomto kurzu.
+## <a name="send-events"></a>Odesílání událostí 
+V této části se dozvíte, jak vytvořit konzolovou aplikaci .NET Framework pro odesílání událostí do centra událostí. 
 
-Získání připojovacího řetězce pro obor názvů centra událostí podle pokynů v článku: [získání připojovacího řetězce](event-hubs-get-connection-string.md#get-connection-string-from-the-portal). Připojovací řetězec použijete později v tomto kurzu.
-
-## <a name="create-a-console-application"></a>Vytvoření konzolové aplikace
+### <a name="create-a-console-application"></a>Vytvoření konzolové aplikace
 
 Pomocí šablony projektu **Konzolová aplikace** vytvořte v sadě Visual Studio nový projekt desktopové aplikace Visual C#. Projekt pojmenujte **Odesílatel**.
    
 ![Vytvoření konzolové aplikace](./media/event-hubs-dotnet-framework-getstarted-send/create-sender-csharp1.png)
 
-## <a name="add-the-event-hubs-nuget-package"></a>Přidání balíčku NuGet služby Event Hubs
+### <a name="add-the-event-hubs-nuget-package"></a>Přidání balíčku NuGet služby Event Hubs
 
 1. V Průzkumníku řešení klikněte pravým tlačítkem na projekt **Sender** a potom klikněte na **Spravovat balíčky NuGet pro řešení**. 
 2. Klikněte na kartu **Procházet** a potom najděte `WindowsAzure.ServiceBus`. Klikněte na **Instalovat** a přijměte podmínky použití. 
@@ -52,7 +51,7 @@ Pomocí šablony projektu **Konzolová aplikace** vytvořte v sadě Visual Studi
    
     Visual Studio stáhne a nainstaluje [balíček NuGet knihovny Azure Service Bus](https://www.nuget.org/packages/WindowsAzure.ServiceBus) a přidá se na něj odkaz.
 
-## <a name="write-code-to-send-messages-to-the-event-hub"></a>Napsání kódu pro odesílání zpráv do centra událostí
+### <a name="write-code-to-send-messages-to-the-event-hub"></a>Napsání kódu pro odesílání zpráv do centra událostí
 
 1. Do horní části souboru **Program.cs** přidejte následující příkazy `using`:
    
@@ -103,14 +102,131 @@ Pomocí šablony projektu **Konzolová aplikace** vytvořte v sadě Visual Studi
       ```
 5. Spusťte program a zkontrolujte, že nejsou žádné chyby.
   
-Blahopřejeme! Nyní jste odeslali zprávy do centra událostí.
+## <a name="receive-events"></a>Příjem událostí
+V této části můžete psát aplikace konzoly rozhraní .NET Framework, která přijímá zprávy z centra událostí pomocí [Event Processor Host](event-hubs-event-processor-host.md). [Event Processor Host](event-hubs-event-processor-host.md) je třída rozhraní .NET, která zjednodušuje přijímání událostí z center událostí tím, že spravuje trvalé kontrolní body a paralelní příjmy z těchto center událostí. Pomocí třídy Event Processor Host můžete události rozdělit mezi několik příjemců, i když jsou hostovaní v různých uzlech. Tento příklad ukazuje způsob použití třídy Event Processor Host pro jednoho příjemce. [Horizontální navýšení kapacity zpracování událostí] [ Scale out Event Processing with Event Hubs] příklad ukazuje, jak pomocí třídy Event Processor Host v případě několika příjemců.
 
+[!INCLUDE [event-hubs-create-storage](../../includes/event-hubs-create-storage.md)]
+
+### <a name="create-a-console-application"></a>Vytvoření konzolové aplikace
+
+Pomocí šablony projektu **Konzolová aplikace** vytvořte v sadě Visual Studio nový projekt desktopové aplikace Visual C#. Projekt nazvěte **Receiver** (Příjemce).
+   
+![Vytvoření konzolové aplikace](./media/event-hubs-dotnet-framework-getstarted-receive-eph/create-receiver-csharp1.png)
+
+### <a name="add-the-event-hubs-nuget-package"></a>Přidání balíčku NuGet služby Event Hubs
+
+1. V Průzkumníku řešení klikněte pravým tlačítkem na projekt **Receiver** a potom klikněte na **Spravovat balíčky NuGet pro řešení**.
+2. Klikněte na kartu **Procházet** a potom najděte `Microsoft Azure Service Bus Event Hub - EventProcessorHost`. Klikněte na **Instalovat** a přijměte podmínky použití.
+   
+    ![Vyhledejte balíček NuGet hostitel procesoru událostí](./media/event-hubs-dotnet-framework-getstarted-receive-eph/create-eph-csharp1.png)
+   
+    Visual Studio stáhne, nainstaluje a přidá odkaz na [balíček NuGet třídy EventProcessorHost služby Event Hub ve službě Azure Service Bus](https://www.nuget.org/packages/Microsoft.Azure.ServiceBus.EventProcessorHost) se všemi jeho závislostmi.
+
+### <a name="implement-the-ieventprocessor-interface"></a>Implementace rozhraní IEventProcessor
+
+1. Klikněte pravým tlačítkem na projekt **Receiver**, **Přidat** a potom na **Třída**. Pojmenujte novou třídu **SimpleEventProcessor** a potom kliknutím na **Přidat** třídu vytvořte.
+   
+    ![Přidání třídy simpleeventprocessor přijímá](./media/event-hubs-dotnet-framework-getstarted-receive-eph/create-receiver-csharp2.png)
+2. Na začátek souboru SimpleEventProcessor.cs přidejte následující příkazy:
+    
+      ```csharp
+      using Microsoft.ServiceBus.Messaging;
+      using System.Diagnostics;
+      ```
+    
+3. Nahraďte následující kód pro tělo třídy:
+    
+      ```csharp
+      class SimpleEventProcessor : IEventProcessor
+      {
+        Stopwatch checkpointStopWatch;
+        
+        async Task IEventProcessor.CloseAsync(PartitionContext context, CloseReason reason)
+        {
+            Console.WriteLine("Processor Shutting Down. Partition '{0}', Reason: '{1}'.", context.Lease.PartitionId, reason);
+            if (reason == CloseReason.Shutdown)
+            {
+                await context.CheckpointAsync();
+            }
+        }
+        
+        Task IEventProcessor.OpenAsync(PartitionContext context)
+        {
+            Console.WriteLine("SimpleEventProcessor initialized.  Partition: '{0}', Offset: '{1}'", context.Lease.PartitionId, context.Lease.Offset);
+            this.checkpointStopWatch = new Stopwatch();
+            this.checkpointStopWatch.Start();
+            return Task.FromResult<object>(null);
+        }
+        
+        async Task IEventProcessor.ProcessEventsAsync(PartitionContext context, IEnumerable<EventData> messages)
+        {
+            foreach (EventData eventData in messages)
+            {
+                string data = Encoding.UTF8.GetString(eventData.GetBytes());
+        
+                Console.WriteLine(string.Format("Message received.  Partition: '{0}', Data: '{1}'",
+                    context.Lease.PartitionId, data));
+            }
+        
+            //Call checkpoint every 5 minutes, so that worker can resume processing from 5 minutes back if it restarts.
+            if (this.checkpointStopWatch.Elapsed > TimeSpan.FromMinutes(5))
+            {
+                await context.CheckpointAsync();
+                this.checkpointStopWatch.Restart();
+            }
+        }
+      }
+      ```
+    
+      Tuto třídu volá třída **EventProcessorHost** kvůli zpracování událostí přijatých z centra událostí. Třída `SimpleEventProcessor` používá stopky, aby pravidelně volala metodu kontrolního bodu v kontextu třídy **EventProcessorHost**. Tímto způsobem je zajištěno, že příjemce v případě restartování neztratí víc než pět minut práce potřebné ke zpracování.
+
+### <a name="update-the-main-method-to-use-simpleeventprocessor"></a>Aktualizace metody Main pro použití třídy SimpleEventProcessor
+
+1. Ve třídě **Program** přidejte na začátek souboru následující příkaz `using`:
+    
+      ```csharp
+      using Microsoft.ServiceBus.Messaging;
+      ```
+    
+2. Nahradit `Main` metodu `Program` třídy s následujícím kódem, kde nahradíte název centra událostí a úrovni oboru názvů připojovací řetězec, který jste si dříve uložili a účet úložiště a klíč, který jste zkopírovali v předchozí části. 
+    
+      ```csharp
+      static void Main(string[] args)
+      {
+        string eventHubConnectionString = "{Event Hubs namespace connection string}";
+        string eventHubName = "{Event Hub name}";
+        string storageAccountName = "{storage account name}";
+        string storageAccountKey = "{storage account key}";
+        string storageConnectionString = string.Format("DefaultEndpointsProtocol=https;AccountName={0};AccountKey={1}", storageAccountName, storageAccountKey);
+        
+        string eventProcessorHostName = Guid.NewGuid().ToString();
+        EventProcessorHost eventProcessorHost = new EventProcessorHost(eventProcessorHostName, eventHubName, EventHubConsumerGroup.DefaultGroupName, eventHubConnectionString, storageConnectionString);
+        Console.WriteLine("Registering EventProcessor...");
+        var options = new EventProcessorOptions();
+        options.ExceptionReceived += (sender, e) => { Console.WriteLine(e.Exception); };
+        eventProcessorHost.RegisterEventProcessorAsync<SimpleEventProcessor>(options).Wait();
+        
+        Console.WriteLine("Receiving. Press enter key to stop worker.");
+        Console.ReadLine();
+        eventProcessorHost.UnregisterEventProcessorAsync().Wait();
+      }
+      ```
+    
+3. Spusťte program a zkontrolujte, že nejsou žádné chyby.
+  
 ## <a name="next-steps"></a>Další postup
-V tomto rychlém startu jste odeslali zprávy do centra událostí pomocí rozhraní .NET Framework. Se naučíte přijímat události z centra událostí pomocí rozhraní .NET Framework, naleznete v tématu [přijímat události z centra událostí - rozhraní .NET Framework](event-hubs-dotnet-framework-getstarted-receive-eph.md).
+V následujících článcích: 
 
-<!-- Images. -->
-[19]: ./media/event-hubs-csharp-ephcs-getstarted/create-eh-proj1.png
-[20]: ./media/event-hubs-csharp-ephcs-getstarted/create-eh-proj2.png
-[21]: ./media/event-hubs-csharp-ephcs-getstarted/run-csharp-ephcs1.png
-[22]: ./media/event-hubs-csharp-ephcs-getstarted/run-csharp-ephcs2.png
+- [EventProcessorHost](event-hubs-event-processor-host.md)
+- [Funkce a terminologii používané v Azure Event Hubs](event-hubs-features.md).
+- [Nejčastější dotazy k Event Hubs](event-hubs-faq.md)
 
+
+<!-- Links -->
+[EventProcessorHost]: /dotnet/api/microsoft.servicebus.messaging.eventprocessorhost
+[Event Hubs overview]: event-hubs-about.md
+[Scale out Event Processing with Event Hubs]: https://code.msdn.microsoft.com/Service-Bus-Event-Hub-45f43fc3
+[Event Hubs Programming Guide]: event-hubs-programming-guide.md
+[Azure Storage account]:../storage/common/storage-create-storage-account.md
+[Event Processor Host]: event-hubs-event-processor-host.md
+[Azure portal]: https://portal.azure.com

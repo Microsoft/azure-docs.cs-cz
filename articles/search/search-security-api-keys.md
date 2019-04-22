@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 04/06/2019
 ms.author: heidist
 ms.openlocfilehash: 64b07d37ce9267681ccfb5de3c7201586bd85b35
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59273409"
 ---
 # <a name="create-and-manage-api-keys-for-an-azure-search-service"></a>Vytvoření a správa klíče rozhraní api pro službu Azure Search
@@ -98,5 +98,5 @@ Zabezpečení klíče je zajištěno omezení přístupu prostřednictvím port�
 ## <a name="see-also"></a>Další informace najdete v tématech
 
 + [Řízení přístupu na základě role ve službě Azure Search](search-security-rbac.md)
-+ [Správa pomocí prostředí PowerShell](search-manage-powershell.md) 
++ [Správa s využitím PowerShellu](search-manage-powershell.md) 
 + [Výkon a optimalizace článku](search-performance-optimization.md)

@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 11/27/2018
 ms.author: magoedte
 ms.openlocfilehash: 0ed6747573edf4c059eb29d28107a22706c52856
-ms.sourcegitcommit: ef20235daa0eb98a468576899b590c0bc1a38394
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59426185"
 ---
 # <a name="collect-alerts-from-nagios-and-zabbix-in-azure-monitor-from-log-analytics-agent-for-linux"></a>Shromažďovat výstrahy z řešení Nagios a Zabbix ve službě Azure Monitor z agenta Log Analytics pro Linux 
@@ -92,7 +92,7 @@ Výstrahy mají záznamy shromážděné Nagios **typ** z **výstrah** a **Sourc
 
 | Vlastnost | Popis |
 |:--- |:--- |
-| `Type` |*Výstrahy* |
+| `Type` |*Upozornění* |
 | `SourceSystem` |*Nagios* |
 | `AlertName` |Název výstrahy. |
 | `AlertDescription` | Popis výstrahy. |
@@ -108,7 +108,7 @@ Výstrahy mají záznamy shromážděné Zabbix **typ** z **výstrah** a **Sourc
 
 | Vlastnost | Popis |
 |:--- |:--- |
-| `Type` |*Výstrahy* |
+| `Type` |*Upozornění* |
 | `SourceSystem` |*Zabbix* |
 | `AlertName` | Název výstrahy. |
 | `AlertPriority` | Závažnost výstrahy.<br><br>není klasifikovaný<br>Informace<br>upozornění<br>průměr<br>Vysoká<br>po havárii  |

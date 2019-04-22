@@ -13,10 +13,10 @@ ms.reviewer: sstein
 manager: craigg
 ms.date: 12/18/2018
 ms.openlocfilehash: 62efee57f3663f1dad0446da659de16d2800bf75
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59264416"
 ---
 # <a name="create-configure-and-manage-elastic-jobs"></a>Vytvoření, konfigurace a správa elastických úloh
@@ -98,5 +98,5 @@ Skript se také musí být schopný úspěšně provést. Dosáhne toho tím, ž
 
 ## <a name="next-steps"></a>Další postup
 
-- [Vytvoření a správa Elastických úloh pomocí Powershellu](elastic-jobs-powershell.md)
-- [Vytvoření a správa Elastických úloh pomocí příkazů jazyka Transact-SQL (T-SQL)](elastic-jobs-tsql.md)
+- [Vytváření a správa elastických úloh s využitím PowerShellu](elastic-jobs-powershell.md)
+- [Vytváření a správa elastických úloh pomocí Transact-SQL (T-SQL)](elastic-jobs-tsql.md)

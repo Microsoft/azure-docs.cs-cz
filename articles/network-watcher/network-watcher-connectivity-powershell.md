@@ -14,16 +14,16 @@ ms.workload: infrastructure-services
 ms.date: 07/11/2017
 ms.author: jdial
 ms.openlocfilehash: 7df84638d7b0601352b1f77ca9c0a61b7fd5af07
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/05/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59047241"
 ---
 # <a name="troubleshoot-connections-with-azure-network-watcher-using-powershell"></a>Řešení potíží s připojením pomocí služby Azure Network Watcher pomocí Powershellu
 
 > [!div class="op_single_selector"]
-> - [Portál](network-watcher-connectivity-portal.md)
+> - [Azure Portal](network-watcher-connectivity-portal.md)
 > - [PowerShell](network-watcher-connectivity-powershell.md)
 > - [Azure CLI](network-watcher-connectivity-cli.md)
 > - [Rozhraní Azure REST API](network-watcher-connectivity-rest.md)
@@ -33,7 +33,7 @@ Zjistěte, jak používat připojení řešení Chcete-li ověřit, zda lze nav�
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="before-you-begin"></a>Před zahájením
+## <a name="before-you-begin"></a>Než začnete
 
 * Instance služby Network Watcher v oblasti, kterou chcete k řešení potíží s připojení.
 * Virtuální počítače k řešení problémů s připojením s.

@@ -13,10 +13,10 @@ ms.topic: article
 ms.date: 03/25/2019
 ms.author: spelluru
 ms.openlocfilehash: 48412b3006a462fcc9c77219f42fb41d08f2df61
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/11/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59490735"
 ---
 # <a name="create-a-custom-image-factory-in-azure-devtest-labs"></a>Vytvořte objekt pro vytváření vlastní image ve službě Azure DevTest Labs
@@ -25,9 +25,9 @@ Tento článek se věnuje nastavení zásad uchovávání informací, čištěn�
 ## <a name="prerequisites"></a>Požadavky
 Ujistěte se, že jste postupovali podle těchto článků než budete pokračovat:
 
-- [Vytvoření objektu pro vytváření imagí](image-factory-create.md)
-- [Spuštění objektu pro vytváření imagí z Azure DevOps](image-factory-set-up-devops-lab.md)
-- [Uložení vlastních imagí a jejich distribuce do několika testovacích prostředí](image-factory-save-distribute-custom-images.md)
+- [Vytvořte objekt pro vytváření bitové kopie](image-factory-create.md)
+- [Spustit objekt pro vytváření image z Azure DevOps](image-factory-set-up-devops-lab.md)
+- [Uložení vlastních imagí a distribuovat do více testovacích prostředí](image-factory-save-distribute-custom-images.md)
 
 Následující položky by už měla:
 

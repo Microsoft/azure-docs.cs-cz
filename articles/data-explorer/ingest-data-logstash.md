@@ -8,10 +8,10 @@ ms.service: data-explorer
 ms.topic: quickstart
 ms.date: 01/14/2019
 ms.openlocfilehash: e0d81454e6036d09bb74af6f522063a1aed5fffe
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/05/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59046406"
 ---
 # <a name="quickstart-ingest-data-from-logstash-to-azure-data-explorer"></a>Rychlý start: Ingestování dat z Logstash do Průzkumníku dat Azure
@@ -108,11 +108,11 @@ output {
 
 | Název parametru | Popis |
 | --- | --- |
-| **path** | Modul plug-in zapisuje události do dočasné soubory před jejich odesláním do Průzkumníku dat Azure. Tento parametr obsahuje cestu, kam by měly být zapsány soubory a výrazu času pro rotaci souborů k aktivaci nahrávání ve službě Průzkumník dat Azure.|
+| **Cesta** | Modul plug-in zapisuje události do dočasné soubory před jejich odesláním do Průzkumníku dat Azure. Tento parametr obsahuje cestu, kam by měly být zapsány soubory a výrazu času pro rotaci souborů k aktivaci nahrávání ve službě Průzkumník dat Azure.|
 | **ingest_url** | Kusto koncový bod pro komunikaci týkající se přijímání.|
 | **app_id**, **app_key**, a **app_tenant**| Přihlašovací údaje požadované pro připojení do Průzkumníku dat Azure. Nezapomeňte použít aplikace s oprávněními pro ingestování. |
-| **databáze**| Název databáze umístit události. |
-| **tabulka** | Název cílové tabulky umístit události. |
+| **database**| Název databáze umístit události. |
+| **Tabulka** | Název cílové tabulky umístit události. |
 | **Mapování** | Mapování se používá k mapování příchozího řetězce json událostí do formátu správný řádek (definuje, která vlastnost obsahuje sloupec). |
 
 ## <a name="run-logstash"></a>Spusťte Logstash

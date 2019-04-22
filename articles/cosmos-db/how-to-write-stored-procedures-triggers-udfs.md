@@ -7,10 +7,10 @@ ms.topic: sample
 ms.date: 12/11/2018
 ms.author: mjbrown
 ms.openlocfilehash: c94509fb39d1c5ebb9aec1acfe1cbacc9cd6fd4a
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59268400"
 ---
 # <a name="how-to-write-stored-procedures-triggers-and-user-defined-functions-in-azure-cosmos-db"></a>Jak napsat uložené procedury, triggery a uživatelem definovaných funkcí ve službě Azure Cosmos DB
@@ -26,7 +26,7 @@ Volání uložené procedury, aktivační události a uživatelsky definované f
 
 Uložené procedury jsou zapsány pomocí jazyka JavaScript, mohou vytvořit, aktualizovat, čtení, dotazování a odstraňování položek uvnitř kontejneru Azure Cosmos. Uložené procedury jsou registrované na kolekci a mohou pracovat v libovolné dokumentu nebo přílohy k dispozici v dané kolekci.
 
-**Příklad:**
+**Příklad**
 
 Tady je jednoduchou uloženou proceduru, která vrací odpověď "Hello World".
 

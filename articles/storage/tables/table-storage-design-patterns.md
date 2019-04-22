@@ -9,10 +9,10 @@ ms.date: 04/08/2019
 ms.author: tamram
 ms.subservice: tables
 ms.openlocfilehash: a428abd95f955a16d03c4ab86f05644f6db65da5
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59271624"
 ---
 # <a name="table-design-patterns"></a>Způsoby návrhu tabulek
@@ -197,7 +197,7 @@ Povolit vyhledávání podle příjmení pomocí struktury entit, které jsou uv
 * Vytvořte index entity do stejného oddílu jako entity zaměstnance.  
 * Vytvoření indexu entit v samostatném oddílu nebo tabulky.  
 
-<u>Možnost #1: Použití služby Blob Storage</u>  
+<u>Možnost #1: Použití služby blob storage</u>  
 
 Pro první možnost se vám vytvoření objektu blob pro každou jedinečnou příjmení a v každé úložiště objektů blob v seznamu **PartitionKey** (department) a **RowKey** (ID zaměstnance) hodnoty pro zaměstnance, kteří mají tento poslední název. Při přidání nebo odstranění zaměstnanci měli byste zajistit, že obsah objektu blob relevantní je konzistentní s entitami zaměstnance.  
 
@@ -1108,7 +1108,7 @@ Klientská aplikace může volat více asynchronních metod, jako je ten, a kaž
 
 ## <a name="next-steps"></a>Další postup
 
-- [Modelování relací](table-storage-design-modeling.md)
+- [Modelování vztahů](table-storage-design-modeling.md)
 - [Návrh pro dotazování](table-storage-design-for-query.md)
 - [Šifrování dat tabulky](table-storage-design-encrypt-data.md)
 - [Návrh pro úpravu dat](table-storage-design-for-modification.md)

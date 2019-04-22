@@ -13,10 +13,10 @@ ms.reviewer: ''
 manager: cgronlun
 ms.date: 04/04/2019
 ms.openlocfilehash: f5d43794ba80e4791c8bf24ad404069a8329518e
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/05/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59051219"
 ---
 # <a name="quickstart-use-machine-learning-services-with-r-in-azure-sql-database-preview"></a>Rychlý start: Pomocí služby Machine Learning (s jazykem R) ve službě Azure SQL Database (preview)
@@ -104,7 +104,7 @@ Následující cvičení se zaměřuje na první model interakce: jak předat k�
 
 2. Za předpokladu, že máte vše správně nastavené, se vypočítá správný výsledek a funkce R `print` vrátí výsledek do okna **Zprávy**.
 
-    **Výsledky**
+    **Results**
 
     ```text
     STDOUT message(s) from external script: 
@@ -139,7 +139,7 @@ Prozatím se podíváme pouze na výchozí vstupní a výstupní hodnoty pro sp_
     SELECT * FROM RTestData
     ```
 
-    **Výsledky**
+    **Results**
 
     ![Obsah tabulky RTestData](./media/sql-database-connect-query-r/select-rtestdata.png)
 
@@ -155,7 +155,7 @@ Prozatím se podíváme pouze na výchozí vstupní a výstupní hodnoty pro sp_
     WITH RESULT SETS (([NewColName] INT NOT NULL));
     ```
 
-    **Výsledky**
+    **Results**
 
     ![Výstup skriptu R, který vrací data z tabulky](./media/sql-database-connect-query-r/r-output-rtestdata.png)
 
@@ -192,7 +192,7 @@ Prozatím se podíváme pouze na výchozí vstupní a výstupní hodnoty pro sp_
     WITH RESULT SETS (([Col1] CHAR(20) NOT NULL));
     ```
 
-    **Výsledky**
+    **Results**
 
     ![Výsledky dotazu s použitím proměnné @script jako vstupu](./media/sql-database-connect-query-r/r-data-generated-output.png)
 
@@ -211,7 +211,7 @@ Pokud chcete zjistit, jaká verze jazyka R je nainstalovaná ve vaší databázi
 
 2. Funkce R `print` vrátí verzi do okna **Zprávy**. V následujícím příkladu výstupu vidíte, že v tomto případě je ve službě SQL Database nainstalovaný jazyk R verze 3.4.4.
 
-    **Výsledky**
+    **Results**
 
     ```text
     STDOUT message(s) from external script:
@@ -248,7 +248,7 @@ Microsoft poskytuje v rámci služby Machine Learning Services v databázi SQL �
 
 2. Výstup pochází z funkce `installed.packages()` v jazyce R a vrací se jako sada výsledků dotazu.
 
-    **Výsledky**
+    **Results**
 
     ![Nainstalované balíčky v jazyce R](./media/sql-database-connect-query-r/r-installed-packages.png)
 
@@ -359,7 +359,7 @@ Pomocí jazyka R můžete natrénovat model a uložit ho do tabulky v databázi 
     VALUES ('latest model', @model)
     ```
 
-    **Výsledky**
+    **Results**
 
     ![Natrénovaný model s dalším výstupem](./media/sql-database-connect-query-r/r-train-model-with-additional-output.png)
 
@@ -414,7 +414,7 @@ Použijte model, který jste vytvořili v předchozí části, k hodnocení pře
 
    + Názvy sloupců použité ve skriptu R není nutné předávat do výstupu uložené procedury. Tady jsme použili klauzuli WITH RESULTS k definování několika nových názvů sloupců.
 
-     **Výsledky**
+     **Results**
 
      ![Sada výsledků dotazu pro předpověď brzdné dráhy](./media/sql-database-connect-query-r/r-predict-stopping-distance-resultset.png)
 
@@ -473,7 +473,7 @@ Pokud potřebujete použít balíček, který ještě ve vaší databázi SQL ne
     View(r)
     ```
 
-    **Výsledky**
+    **Results**
 
     ![Obsah tabulky RTestData](./media/sql-database-connect-query-r/r-verify-package-install.png)
 
@@ -497,7 +497,7 @@ Pokud potřebujete použít balíček, který ještě ve vaší databázi SQL ne
 
     Na kartě Zprávy se zobrazí následující výsledek.
 
-    **Výsledky**
+    **Results**
 
     ```text
     STDOUT message(s) from external script:
@@ -523,5 +523,5 @@ Další informace o Machine Learning Services najdete v níže uvedených člán
 - [Azure SQL Database služby Machine Learning (s jazykem R)](sql-database-machine-learning-services-overview.md)
 - [SQL Server Machine Learning Services](https://docs.microsoft.com/sql/advanced-analytics/what-is-sql-server-machine-learning)
 - [Kurz: Zjistěte, analýza v databázi pomocí jazyka R na SQL serveru](https://docs.microsoft.com/sql/advanced-analytics/tutorials/sqldev-in-database-r-for-sql-developers)
-- [Návod vědy data začátku do konce R a systému SQL Server](https://docs.microsoft.com/sql/advanced-analytics/tutorials/walkthrough-data-science-end-to-end-walkthrough)
+- [Ucelený průvodce datovými vědami pro jazyk R a SQL Server](https://docs.microsoft.com/sql/advanced-analytics/tutorials/walkthrough-data-science-end-to-end-walkthrough)
 - [Kurz: Funkce RevoScaleR R s daty formátu SQL Server](https://docs.microsoft.com/sql/advanced-analytics/tutorials/deepdive-data-science-deep-dive-using-the-revoscaler-packages)

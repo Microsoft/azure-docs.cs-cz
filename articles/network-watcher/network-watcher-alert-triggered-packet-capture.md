@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: jdial
 ms.openlocfilehash: c7bfd36bb4e36b10487edbbaa40421f067c9ed3e
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/05/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59048754"
 ---
 # <a name="use-packet-capture-for-proactive-network-monitoring-with-alerts-and-azure-functions"></a>Použití zachytávání paketů pro Proaktivní monitorování sítě pomocí výstrah a Azure Functions
@@ -77,10 +77,10 @@ Prvním krokem je vytvoření funkce Azure ke zpracování upozornění a vytvo�
 
     |**Nastavení** | **Hodnota** | **Podrobnosti** |
     |---|---|---|
-    |**App name (Název aplikace)**|PacketCaptureExample|Název aplikace function app.|
+    |**Název aplikace**|PacketCaptureExample|Název aplikace function app.|
     |**Předplatné**|[Vaše předplatné] Předplatné, pro který chcete vytvořit aplikaci function app.||
     |**Skupina prostředků**|PacketCaptureRG|Skupinu prostředků k obsáhnutí aplikace function app.|
-    |**Plán Hosting**|Plán Consumption| Typ plánu vaše aplikace používá funkce. Možnosti jsou spotřeby nebo plán služby App Service. |
+    |**Plán hostování**|Plán Consumption| Typ plánu vaše aplikace používá funkce. Možnosti jsou spotřeby nebo plán služby App Service. |
     |**Umístění**|USA – střed| Oblast, ve kterém chcete vytvořit aplikaci function app.|
     |**Účet úložiště**|{automaticky generované}| Účet úložiště, Azure Functions potřebuje pro úložiště pro obecné účely.|
 
@@ -91,7 +91,7 @@ Prvním krokem je vytvoření funkce Azure ke zpracování upozornění a vytvo�
     |**Nastavení** | **Hodnota** | **Podrobnosti** |
     |---|---|---|
     |**Scénář**|Experimentální|Typ scénáře|
-    |**Pojmenování funkce**|AlertPacketCapturePowerShell|Název funkce|
+    |**Pojmenujte svoji funkci**|AlertPacketCapturePowerShell|Název funkce|
     |**Úroveň autorizace**|Funkce|Úroveň autorizace pro funkci|
 
 ![Příklad funkce][functions1]

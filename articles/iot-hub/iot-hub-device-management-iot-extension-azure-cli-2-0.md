@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 01/16/2018
 ms.author: menchi
-ms.openlocfilehash: c5d4299d2d391a25bfab579f5f78da3718afc24c
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.openlocfilehash: 6b1029c5532e106c269b47e6e184b9c93faf8d09
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48042995"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59681416"
 ---
 # <a name="use-the-iot-extension-for-azure-cli-for-azure-iot-hub-device-management"></a>Použití rozšíření IoT pro Azure CLI pro správu zařízení Azure IoT Hub
 
@@ -49,7 +49,7 @@ Spuštění rozhraní příkazového řádku Azure a rozšíření IoT pro Azure
 
 ## <a name="what-you-need"></a>Co potřebujete
 
-* Dokončení tohoto kurzu [nastavit zařízení](iot-hub-raspberry-pi-kit-node-get-started.md) což zahrnuje následující požadavky:
+* Dokončení [online simulátor Raspberry Pi](iot-hub-raspberry-pi-web-simulator-get-started.md) kurzu nebo jeden z kurzů zařízení; například [Raspberry Pi s node.js](iot-hub-raspberry-pi-kit-node-get-started.md). Ty zahrnují následující požadavky:
 
   - Aktivní předplatné Azure.
   - Azure IoT hub v rámci vašeho předplatného.
