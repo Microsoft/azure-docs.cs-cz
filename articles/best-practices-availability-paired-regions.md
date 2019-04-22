@@ -2,16 +2,17 @@
 title: 'Obchodní kontinuity podnikových procesů a zotavení po havárii (BCDR): Spárované oblasti Azure | Dokumentace Microsoftu'
 description: Další informace o Azure oblastní párování, zajistěte, aby aplikace byly odolné při výpadku datového centra.
 author: rayne-wiselman
+manager: carmon
 ms.service: multiple
 ms.topic: article
-ms.date: 12/23/2018
+ms.date: 04/17/2019
 ms.author: raynew
-ms.openlocfilehash: d27db03977b84002b59d58327af7d14fbdc713c2
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.openlocfilehash: ecbe73e02631e3c3601bd929282d467cb05b41e4
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53792308"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59678866"
 ---
 # <a name="business-continuity-and-disaster-recovery-bcdr-azure-paired-regions"></a>Obchodní kontinuity podnikových procesů a zotavení po havárii (BCDR): Spárované oblasti Azure
 
@@ -37,6 +38,7 @@ Obrázek 1 – Azure oblastních párech
 | Evropa |Severní Evropa |Západní Evropa |
 | Francie |Francie – střed|Francie – jih|
 | Německo |Německo – střed |Německo – severovýchod |
+| Německo |Německo – sever | Německo – středozápad
 | Indie |Střed Indie |Indie – jih |
 | Indie |Indie – západ |Indie – jih |
 | Japonsko |Japonsko – východ |Japonsko – západ |
@@ -45,7 +47,14 @@ Obrázek 1 – Azure oblastních párech
 | Severní Amerika |Východní USA 2 |USA – střed |
 | Severní Amerika |Středoseverní USA |Středojižní USA |
 | Severní Amerika |Západní USA 2 |Západní střed USA 
+| Severní Amerika |USA – západ 3 |USA – východ
+| Norsko |Norsko – východ |Norsko – západ
+| Jižní Afrika | Jižní Afrika – sever | Jižní Afrika – západ
+| Švédsko |Švédsko – střed |Švédsko – jih
+| Švýcarsko | Švýcarsko – sever | Švýcarsko – západ
 | Spojené království |Spojené království – západ |Velká Británie – jih |
+| Spojené království |Velká Británie – sever |Velká Británie – jih 2
+| Spojené arabské emiráty | Spojené arabské emiráty – sever | Spojené arabské emiráty Center
 | ministerstvo obrany USA |US DoD – východ |US DoD – střed |
 | US Government |USA (Gov) – Arizona |USA (Gov) – Texas |
 | US Government |US Gov – Iowa |USA (Gov) – Virginia |
@@ -53,10 +62,11 @@ Obrázek 1 – Azure oblastních párech
 
 Tabulka 1 - mapování Azure oblastních párech
 
-- Indie – západ se liší, protože je spárovaná s jinou oblastí jenom v jednom směru. Indie – jih je sekundární oblasti Indie – Západ, ale sekundární oblasti Indie – jih je střed Indie.
-- Brazílie – jih je jedinečný, protože je spárovaná s oblastí mimo svůj vlastní zeměpisné oblasti. Je sekundární oblasti Brazílie – Jih, střed USA – Jih, ale není sekundární oblasti střed USA – jih pro oblast Brazílie – jih.
-- Sekundární oblast USA (gov) Iowa je Virginie státní správy USA, ale sekundární oblast USA (gov) – Virginia není Iowa státní správy USA.
-- Sekundární oblast USA (gov) Virginie je US Gov Texas, ale sekundární oblast US Gov Texas není Virginie státní správy USA.
+- Západní Indie je spárovaná jenom v jednom směru. Indie – jih je sekundární oblasti Indie – Západ, ale sekundární oblasti Indie – jih je střed Indie.
+- Brazílie – jih je jedinečný, protože je spárovaná s oblastí mimo svůj vlastní zeměpisné oblasti. Je sekundární oblasti Brazílie – Jih, střed USA – jih. Střed USA – jih v sekundární oblasti není Brazílie – jih.
+- Sekundární oblast USA (gov) Iowa je Virginie státní správy USA.
+- Sekundární oblast USA (gov) Virginie je US Gov Texas.
+- Sekundární oblast US Gov Texas je Arizona státní správy USA.
 
 
 Doporučujeme, abyste nakonfigurovali obchodní kontinuity podnikových procesů zotavení po havárii (BCDR) napříč oblastních párech těžit ze zásad izolace a dostupnosti Azure. Pro aplikace, které podporují více aktivní oblasti doporučujeme použít obě oblasti v páru oblastí, kde je to možné. Tím se zajistí optimální dostupnost pro aplikace a čas minimalizované obnovení v případě havárie. 

@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: arthii, LADocs
 ms.topic: article
 ms.date: 10/01/2018
-ms.openlocfilehash: 91d1369b9197f6ef941d981aa9cf7539b4554d0c
-ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
-ms.translationtype: HT
+ms.openlocfilehash: 67a918b227ad3b33a2f63b17f86b94f36fbc9fa3
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/07/2019
-ms.locfileid: "54065796"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59679121"
 ---
 # <a name="install-on-premises-data-gateway-for-azure-logic-apps"></a>Instalace místní brány dat pro Azure Logic Apps
 
@@ -204,7 +204,7 @@ Pokud musíte změnit umístění vaší brány, přesunutí instalace brány do
 
 Místní brána dat vytvoří odchozí připojení k [Azure Service Bus](https://azure.microsoft.com/services/service-bus/). Pokud vaše pracovní prostředí vyžaduje, aby provoz směrován přes proxy server pro přístup k Internetu, toto omezení může bráně dat bránit v připojení ke cloudové službě brány. Pokud chcete zjistit, zda vaše síť používá proxy server, přečtěte si tento článek na webu superuser.com: 
 
-[Jak zjistím, jaké proxy serveru používám? (Webu SuperUser.com)](https://superuser.com/questions/346372/how-do-i-know-what-proxy-server-im-using) 
+[Jak zjistím, jaké proxy serveru používám? (SuperUser.com)](https://superuser.com/questions/346372/how-do-i-know-what-proxy-server-im-using) 
 
 Zadejte informace o proxy serveru pro bránu, najdete v článku [konfigurace nastavení proxy serveru](https://docs.microsoft.com/power-bi/service-gateway-proxy). Chcete-li zkontrolovat, zda proxy serveru nebo brány firewall může blokovat připojení, zkontrolujte, jestli váš počítač může ve skutečnosti připojení k Internetu a [Azure Service Bus](https://azure.microsoft.com/services/service-bus/). Z příkazového řádku Powershellu spusťte tento příkaz:
 
@@ -420,7 +420,7 @@ Tady jsou další lokality místo, kde najdete různé protokoly:
 
 | Typ protokolu | Umístění | 
 |----------|----------| 
-| **Instalační protokoly** | %localappdata%\Temp\On-premises_data_gateway_ <*RRRRMMDD*>. <*číslo*> .log | 
+| **Instalační protokoly** | %localappdata%\Temp\On-premises_data_gateway_<*yyyymmdd*>.<*number*>.log | 
 | **Konfigurační protokoly** | C:\Users\<*uživatelské jméno*> \AppData\Local\Microsoft\On-premises data gateway\GatewayConfigurator <*RRRRMMDD*>. <*číslo*>. protokol | 
 | **Protokoly služby brány Enterprise** | C:\Users\PBIEgwService\AppData\Local\Microsoft\On-Premises data gateway\Gateway <*RRRRMMDD*>. <*číslo*> .log | 
 ||| 
@@ -434,26 +434,6 @@ Najít protokoly událostí pro bránu, postupujte podle těchto kroků:
 3. Vyberte **On-premises data gateway služby**.
 
    ![Zobrazení protokolu událostí pro bránu](./media/logic-apps-gateway-install/event-viewer.png)
-
-### <a name="telemetry"></a>Telemetrická data
-
-Pro další funkce monitorování a řešení potíží můžete zapnout a shromažďovat telemetrii. 
-
-1. Přejděte do umístění pro místní data brány klienta, který obvykle najdete tady: ```C:\Program Files\On-premises data gateway```
-
-   V opačném případě se najít umístění klienta, otevřete konzolu služby ve stejném počítači, Najít **On-premises data gateway služby**a zobrazit **cesta ke spustitelnému souboru** vlastnost.
-
-2. Tím otevřete *konfigurace* souboru: **Microsoft.PowerBI.DataMovement.Pipeline.GatewayCore.dll.config**
-
-3. Změnit **SendTelemetry** hodnota, která se **true**:
-
-   ```html
-   <setting name="SendTelemetry" serializeAs="String">
-      <value>true</value>
-   </setting>
-   ```
-
-4. Uložte změny a potom restartujte službu Windows.
 
 ### <a name="review-slow-query-performance"></a>Zkontrolovat výkon pomalých dotazů
 
@@ -526,7 +506,7 @@ Pokud chcete určit dobu trvání dotazu, postupujte takto:
 
 ### <a name="trace-traffic-with-fiddler"></a>Přenos trasování pomocí Fiddleru
 
-[Fiddler](http://www.telerik.com/fiddler) je bezplatný nástroj od společnosti Telerik, který sleduje provoz HTTP. Můžete zkontrolovat tento provoz se službou Power BI z klientského počítače. Tato služba může zobrazovat chyby a jiné související informace.
+[Fiddler](https://www.telerik.com/fiddler) je bezplatný nástroj od společnosti Telerik, který sleduje provoz HTTP. Můžete zkontrolovat tento provoz se službou Power BI z klientského počítače. Tato služba může zobrazovat chyby a jiné související informace.
 
 ## <a name="next-steps"></a>Další postup
     

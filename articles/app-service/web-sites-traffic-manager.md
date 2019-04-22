@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 02/25/2016
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 11e5a654f2bfcb497eec3a4dfea81f3684f5b551
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: 79fe3bce558a8315f5fbf7dbc82a4979e8e24238
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53599804"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59677438"
 ---
 # <a name="controlling-azure-app-service-traffic-with-azure-traffic-manager"></a>Řízení provozu služby Azure App Service pomocí Azure Traffic Manageru
 > [!NOTE]
@@ -43,7 +43,7 @@ Azure Traffic Manager používá čtyři různé metody směrování. Tyto metod
 Další informace najdete v tématu [metody směrování Traffic Manageru](../traffic-manager/traffic-manager-routing-methods.md).
 
 ## <a name="app-service-and-traffic-manager-profiles"></a>App Service a profily Traffic Manageru
-Ke konfiguraci řízení provozu aplikace služby App Service, vytvořte profil ve, že používá, jeden ze tří načíst vyrovnávání metod popsaných dříve službě Azure Traffic Manager a pak přidat koncové body (v tomto případě služby App Service) pro které chcete řídit provoz do profil. Stav vaší aplikace (spuštění, zastavení nebo odstranění) je pravidelně předávají do profilu tak, aby Azure Traffic Manager může směrovat provoz odpovídajícím způsobem.
+Ke konfiguraci řízení provozu aplikace služby App Service, vytvořte profil ve, že používá, jeden z těchto čtyř načíst vyrovnávání metod popsaných dříve službě Azure Traffic Manager a pak přidat koncové body (v tomto případě služby App Service) pro které chcete řídit provoz do profil. Stav vaší aplikace (spuštění, zastavení nebo odstranění) je pravidelně předávají do profilu tak, aby Azure Traffic Manager může směrovat provoz odpovídajícím způsobem.
 
 Při použití Azure Traffic Manageru s Azure, mějte na paměti následující body:
 

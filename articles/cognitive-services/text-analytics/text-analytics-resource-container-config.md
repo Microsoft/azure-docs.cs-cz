@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: conceptual
-ms.date: 04/01/2019
+ms.date: 04/16/2019
 ms.author: diberry
-ms.openlocfilehash: 3cb6f4563cf45b9ccd377dec3db4ebab095c8a09
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
-ms.translationtype: MT
+ms.openlocfilehash: 137d7aa48595e3f21ee99c6ebe23babd7a2d32b5
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58885430"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59677761"
 ---
 # <a name="configure-text-analytics-docker-containers"></a>Konfigurace kontejnery dockeru pro analýzu textu
 
@@ -31,11 +31,11 @@ Rozhraní text Analytics poskytuje každý kontejner se společnou architekturu 
 
 ## <a name="apikey-configuration-setting"></a>Nastavení konfigurace ApiKey
 
-`ApiKey` Nastavení určuje klíč prostředku Azure používá ke sledování fakturačních údajů pro kontejner. Musíte zadat hodnotu pro ApiKey a hodnota musí být platný klíč pro _rozhraní Text Analytics_ prostředek určený pro [ `Billing` ](#billing-configuration-setting) nastavení konfigurace.
+`ApiKey` Nastavení určuje klíč prostředku Azure používá ke sledování fakturačních údajů pro kontejner. Musíte zadat hodnotu pro ApiKey a hodnota musí být platný klíč pro _služeb Cognitive Services_ prostředek určený pro [ `Billing` ](#billing-configuration-setting) nastavení konfigurace.
 
 Toto nastavení najdete v následujícím místě:
 
-* Azure portal: **Analýza textu** správy prostředků v části **klíče**
+* Azure portal: **Služby cognitive Services** správy prostředků v části **klíče**
 
 ## <a name="applicationinsights-setting"></a>Nastavení ApplicationInsights
 
@@ -43,11 +43,13 @@ Toto nastavení najdete v následujícím místě:
 
 ## <a name="billing-configuration-setting"></a>Konfigurace nastavení fakturace
 
-`Billing` Nastavení, určuje identifikátor URI koncového bodu z _rozhraní Text Analytics_ prostředků v Azure umožňuje měřit fakturačních údajů pro kontejner. Musíte zadat hodnotu pro toto nastavení konfigurace, a hodnota musí být platný koncový bod identifikátoru URI pro výraz __rozhraní Text Analytics_ prostředků v Azure. Sestavy využití kontejnerů o každých 10 až 15 minut.
+`Billing` Nastavení, určuje identifikátor URI koncového bodu z _služeb Cognitive Services_ prostředků v Azure umožňuje měřit fakturačních údajů pro kontejner. Musíte zadat hodnotu pro toto nastavení konfigurace, a hodnota musí být platný koncový bod identifikátoru URI pro výraz __služeb Cognitive Services_ prostředků v Azure. Sestavy využití kontejnerů o každých 10 až 15 minut.
 
 Toto nastavení najdete v následujícím místě:
 
-* Azure portal: **Analýza textu** přehled s popiskem `Endpoint`
+* Azure portal: **Služby cognitive Services** přehled s popiskem `Endpoint`
+
+Je třeba přidat `text/analytics/v2.0` směrování na identifikátor URI koncového bodu, jak je znázorněno v následujícím příkladu BILLING_ENDPOINT_URI.
 
 |Požaduje se| Název | Typ dat | Popis |
 |--|------|-----------|-------------|
@@ -89,16 +91,18 @@ Následující příklady ukazují, jak napsat a použít pomocí nastavení kon
 * **Znak pro pokračování řádku**: Příkazy dockeru v následujících částech použijte zpětné lomítko `\`, jako znak pro pokračování řádku. Nahraďte nebo odstraňte tuto podle požadavků vašeho hostitelského operačního systému. 
 * **Pořadí argumentů**: Pořadí argumentů nezmění, pokud máte velmi zkušenosti s kontejnery dockeru.
 
+Je třeba přidat `text/analytics/v2.0` směrování na identifikátor URI koncového bodu, jak je znázorněno v následujícím příkladu BILLING_ENDPOINT_URI.
+
 Nahradit {_argument_name_} s vlastními hodnotami:
 
 | Zástupný symbol | Hodnota | Formát nebo příklad |
 |-------------|-------|---|
-|{BILLING_KEY} | Klíč koncového bodu k dispozici na webu Azure portal Text Analytics klíče stránce prostředku pro analýzu textu. |xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx|
-|{BILLING_ENDPOINT_URI} | Fakturační hodnota koncového bodu je k dispozici na stránce s přehledem Text Analytics Azure portal.|`https://westus.api.cognitive.microsoft.com/text/analytics/v2.0`|
+|{BILLING_KEY} | Klíč koncového bodu `Cognitive Services` prostředků v Azure k dispozici `Cognitive Services` stránka klíče. |xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx|
+|{BILLING_ENDPOINT_URI} | Fakturační hodnota koncového bodu není k dispozici v Azure `Cognitive Services` stránka s přehledem.|`https://westus.api.cognitive.microsoft.com/text/analytics/v2.0`|
 
 > [!IMPORTANT]
 > `Eula`, `Billing`, A `ApiKey` možnosti musí být zadán pro spuštění kontejneru; v opačném případě nebude spuštění kontejneru.  Další informace najdete v tématu [fakturace](how-tos/text-analytics-how-to-install-containers.md#billing).
-> Hodnota ApiKey **klíč** ze stránky klíče na prostředek Azure Text Analytics. 
+> Hodnota ApiKey **klíč** Azure `Cognitive Services` stránka s materiály pro klíče. 
 
 ## <a name="keyphrase-extraction-container-docker-examples"></a>Keyphrase extrakce kontejneru dockeru příklady
 

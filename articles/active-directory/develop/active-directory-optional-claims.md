@@ -18,10 +18,10 @@ ms.reviewer: paulgarn, hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 253a5e247dbbea5fc7e0e556d8619328b43bff58
-ms.sourcegitcommit: 41015688dc94593fd9662a7f0ba0e72f044915d6
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/11/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59501055"
 ---
 # <a name="how-to-provide-optional-claims-to-your-azure-ad-app"></a>Postup: Zadejte nepovinných deklarací identity do aplikace Azure AD
@@ -103,7 +103,7 @@ Chcete-li změnit způsob, jakým se vrátí deklarace identity je možné nakon
 | Název vlastnosti  | Další název vlastnosti | Popis |
 |----------------|--------------------------|-------------|
 | `upn`          |                          | Lze použít pro odpovědi SAML a tokenů JWT a v1.0 a v2.0 tokeny. |
-|                | `include_externally_authenticated_upn`  | Zahrnuje hosta hlavní název uživatele uložené v tenantovi prostředků. Například: `foo_hometenant.com#EXT#@resourcetenant.com` |             
+|                | `include_externally_authenticated_upn`  | Zahrnuje hosta hlavní název uživatele uložené v tenantovi prostředků. Například `foo_hometenant.com#EXT#@resourcetenant.com`. |             
 |                | `include_externally_authenticated_upn_without_hash` | Stejné jako výše, s tím rozdílem, že označí-the-hash (`#`) jsou nahrazeny podtržítka (`_`), například `foo_hometenant.com_EXT_@resourcetenant.com` |
 
 #### <a name="additional-properties-example"></a>Příklad další vlastnosti
@@ -247,5 +247,5 @@ Nejsou k dispozici pro aktualizaci vlastností konfigurace identity aplikace pov
 
 Další informace o standardní deklarace identity, poskytuje Azure AD.
 
-- [Tokeny ID](id-tokens.md)
+- [Tokeny typu ID](id-tokens.md)
 - [Přístupové tokeny](access-tokens.md)

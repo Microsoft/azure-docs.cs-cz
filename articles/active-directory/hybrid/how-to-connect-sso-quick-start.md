@@ -12,16 +12,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 04/08/2019
+ms.date: 04/16/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1f8483eb0ce8f5ea890e453828d36afda61ef86f
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: 06566ab81b6af847a7eb174731105b7f43a7197f
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59256885"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59680892"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-quick-start"></a>Azure Active Directory bezproblémové jednotné přihlašování: Rychlý start
 
@@ -93,7 +93,7 @@ Postupujte podle těchto pokynů a ověřte, že jste povolili bezproblémového
 ![Azure portal: Podokno Azure AD Connect](./media/how-to-connect-sso-quick-start/sso10.png)
 
 >[!IMPORTANT]
-> Bezproblémové jednotné přihlašování vytvoří účet počítače `AZUREADSSOACC` ve vaší místní služby Active Directory (AD) v každé doménové struktuře AD. `AZUREADSSOACC` Účet počítače musí být silného chráněn z bezpečnostních důvodů. Pouze Domain Admins by měl mít možnost Spravovat účet počítače. Ujistěte se, že delegování protokolu Kerberos v tomto počítači zakázaná. Store účet počítače v jednotce organizace (OU), kde jsou bezpečné před náhodným odstraněním a mají přístup pouze Domain Admins.
+> Bezproblémové jednotné přihlašování vytvoří účet počítače `AZUREADSSOACC` ve vaší místní služby Active Directory (AD) v každé doménové struktuře AD. `AZUREADSSOACC` Účet počítače musí být silného chráněn z bezpečnostních důvodů. Pouze Domain Admins by měl mít možnost Spravovat účet počítače. Ujistěte se, že je zakázána delegování protokolu Kerberos na účet počítače a že žádný jiný účet ve službě Active Directory má oprávnění k delegování na `AZUREADSSOACC` účet počítače. Store účet počítače v jednotce organizace (OU), kde jsou bezpečné před náhodným odstraněním a mají přístup pouze Domain Admins.
 
 >[!NOTE]
 > Pokud používáte architekturu Pass-the-Hash a krádeže přihlašovacích údajů omezení rizik ve vašem místním prostředí, abyste provedli odpovídající změny zajistit, aby `AZUREADSSOACC` účet počítače nemá ukládaly do karantény kontejneru. 

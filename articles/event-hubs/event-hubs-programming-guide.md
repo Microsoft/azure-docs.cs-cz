@@ -9,12 +9,12 @@ ms.custom: seodec18
 ms.topic: article
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: e96abfbdbd9394d27fbffbcb64aa9cbfabbbcb69
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 29814cb8aef09a8ead30d6daa615554dd55135dd
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57835431"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59678577"
 ---
 # <a name="programming-guide-for-azure-event-hubs"></a>Průvodce programováním pro službu Azure Event Hubs
 Tento článek popisuje některé běžné situace při psaní kódu s využitím služby Azure Event Hubs. Předpokládá se předběžná znalost služby Event Hubs. Koncepční přehled služby Event Hubs naleznete v tématu [Přehled služby Event Hubs](event-hubs-what-is-event-hubs.md).
@@ -110,7 +110,7 @@ K použití třídy [EventProcessorHost][] může být potřeba implementovat ro
 Abyste mohli zahájit zpracování událostí, vytvořit instanci [EventProcessorHost][], poskytnutím příslušných parametrů pro vaše Centrum událostí. Příklad:
 
 > [!NOTE]
-> EventProcessorHost a související třídy jsou součástí **Microsoft.Azure.EventHubs.Processor** balíčku. Přidání balíčku do projektu sady Visual Studio podle pokynů v [v tomto článku](event-hubs-dotnet-framework-getstarted-receive-eph.md#add-the-event-hubs-nuget-package) nebo po vydání následujícího příkazu v [Konzola správce balíčků](https://docs.nuget.org/docs/start-here/using-the-package-manager-console) okna:`Install-Package Microsoft.Azure.EventHubs.Processor`.
+> EventProcessorHost a související třídy jsou součástí **Microsoft.Azure.EventHubs.Processor** balíčku. Přidání balíčku do projektu sady Visual Studio podle pokynů v [v tomto článku](event-hubs-dotnet-framework-getstarted-send.md#add-the-event-hubs-nuget-package) nebo po vydání následujícího příkazu v [Konzola správce balíčků](https://docs.nuget.org/docs/start-here/using-the-package-manager-console) okna:`Install-Package Microsoft.Azure.EventHubs.Processor`.
 
 ```csharp
 var eventProcessorHost = new EventProcessorHost(

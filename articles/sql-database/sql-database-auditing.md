@@ -11,13 +11,13 @@ author: vainolo
 ms.author: arib
 ms.reviewer: vanto
 manager: craigg
-ms.date: 04/08/2019
-ms.openlocfilehash: 9fac8291799216b4ca4527b482aefee169f7fc59
-ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
+ms.date: 04/16/2019
+ms.openlocfilehash: add3521a3961f230188e04ff23dda5aac537571a
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
-ms.locfileid: "59361275"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59680365"
 ---
 # <a name="get-started-with-sql-database-auditing"></a>Začínáme s auditem databáze SQL
 
@@ -88,6 +88,9 @@ Následující část popisuje konfigurace auditování pomocí webu Azure porta
     ![Navigační podokno][3]
 
 5. **Nové** – Teď máte několik možností pro konfiguraci kam se budou zapisovat protokoly auditu. Protokoly můžete napsat do účtu služby Azure storage, do pracovního prostoru Log Analytics k využití protokoly Azure monitoru nebo do centra událostí pro využití v Centru událostí. Můžete nakonfigurovat libovolnou kombinaci těchto možností a protokoly auditu se zapíšou do každého.
+
+   > [!WARNING]
+   > Povolení auditování ke službě Log Analytics vám budou účtovány náklady podle sazby za příjem. Prosím mějte na náklady spojené s pomocí tohoto [možnost](https://azure.microsoft.com/en-us/pricing/details/monitor/), nebo zvažte uložení auditování přihlášení účtu služby Azure storage.
 
     ![možnosti úložiště](./media/sql-database-auditing-get-started/auditing-select-destination.png)
 

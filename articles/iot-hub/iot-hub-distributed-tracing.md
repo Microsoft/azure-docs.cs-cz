@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 02/06/2019
 ms.author: jlian
 ms.openlocfilehash: 302c382a7e19e9dcc4c979d31ddc0768655a1465
-ms.sourcegitcommit: 41015688dc94593fd9662a7f0ba0e72f044915d6
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/11/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59501354"
 ---
 # <a name="trace-azure-iot-device-to-cloud-messages-with-distributed-tracing-preview"></a>Trasování zpráv typu zařízení cloud Azure IoT s distribuované trasování (preview)
@@ -36,7 +36,7 @@ V tomto článku budete používat [zařízení Azure IoT SDK pro jazyk C](./iot
 
   - **Severní Evropa**
   - **Jihovýchodní Asie**
-  - **Západní USA 2**
+  - **USA – západ 2**
 
 - Tento článek předpokládá, že jste obeznámeni s odesílání telemetrických dat do služby IoT hub. Ujistěte se, že jste dokončili [odesílání telemetrických dat C Quickstart](./quickstart-send-telemetry-c.md).
 

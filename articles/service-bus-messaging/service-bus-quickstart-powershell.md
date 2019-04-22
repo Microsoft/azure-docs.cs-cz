@@ -11,10 +11,10 @@ ms.custom: mvc
 ms.date: 04/10/2019
 ms.author: spelluru
 ms.openlocfilehash: 31b1b852c92ad671564fd54520af3f3a23b3e3c2
-ms.sourcegitcommit: 41015688dc94593fd9662a7f0ba0e72f044915d6
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/11/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59499797"
 ---
 # <a name="quickstart-use-azure-powershell-to-create-a-service-bus-queue"></a>Rychlý start: Vytvořit frontu služby Service Bus pomocí Azure Powershellu
@@ -90,7 +90,7 @@ Kód spustíte následovně:
 
 3. Přejděte do složky s ukázkou `azure-service-bus\samples\DotNet\GettingStarted\BasicSendReceiveQuickStart\BasicSendReceiveQuickStart`.
 
-4. Pokud jste to ještě neudělali, získejte pomocí následující rutiny PowerShellu připojovací řetězec. Nezapomeňte nahradit `my-resourcegroup` a `namespace-name` s určitými hodnotami: 
+4. Pokud jste to ještě neudělali, získejte pomocí následující rutiny PowerShellu připojovací řetězec. Zástupné texty `my-resourcegroup` a `namespace-name` nezapomeňte nahradit svými konkrétními hodnotami: 
 
    ```azurepowershell-interactive
    Get-AzServiceBusKey -ResourceGroupName my-resourcegroup -Namespace namespace-name -Name RootManageSharedAccessKey
@@ -128,7 +128,7 @@ Tato část obsahuje další podrobnosti o chování ukázkového kódu.
 
 ### <a name="get-connection-string-and-queue"></a>Získání připojovacího řetězce a fronty
 
-Název připojovacího řetězce a fronty jsou předány `Main()` metody jako argumenty příkazového řádku. `Main()` deklaruje dvě proměnné řetězce k uložení těchto hodnot:
+Název připojovacího řetězce a fronty jsou předány `Main()` metody jako argumenty příkazového řádku. Metoda `Main()` deklaruje dvě proměnné řetězce, do kterých se tyto údaje načtou:
 
 ```csharp
 static void Main(string[] args)
@@ -262,5 +262,5 @@ V tomto článku jste vytvořil obor názvů služby Service Bus a další prost
 > [!div class="nextstepaction"]
 > [Odesílání a příjem zpráv](service-bus-dotnet-get-started-with-queues.md)
 
-[Bezplatný účet]: https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio
+[bezplatný účet]: https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio
 [Instalace a konfigurace Azure PowerShellu]: /powershell/azure/install-Az-ps

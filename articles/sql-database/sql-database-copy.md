@@ -12,12 +12,12 @@ ms.author: sahsan
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 04/11/2019
-ms.openlocfilehash: 47aa88040b6010aeca4aeed696310505d1e17df9
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
+ms.openlocfilehash: 363803e9276a8356b52438f251391378c54f1655
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59549683"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59678934"
 ---
 # <a name="copy-a-transactionally-consistent-copy-of-an-azure-sql-database"></a>Zkopírujte transakčně konzistentní kopie databáze Azure SQL
 
@@ -25,7 +25,7 @@ Azure SQL Database nabízí několik metod pro vytvoření transakčně konziste
 
 ## <a name="overview"></a>Přehled
 
-Kopie databáze je snímek zdrojové databáze k datu požadavku kopírování. Můžete vybrat na stejný server nebo jiný server, úroveň služby a velikost výpočetního nebo různými výpočetními velikost v rámci stejné úrovně služeb (edice). Jakmile se kopírování dokončí, bude plně funkční, nezávislé databáze. V tomto okamžiku můžete upgradovat nebo downgradovat pro všechny edice. Přihlášení, uživatelů a oprávnění se dají spravovat nezávisle.  
+Kopie databáze je snímek zdrojové databáze k datu požadavku kopírování. Můžete vybrat na stejný server nebo jiný server. Můžete také ponechat úroveň služby a vypočítat velikost nebo použít velikost různými výpočetními v rámci stejné úrovně služeb (edice). Jakmile se kopírování dokončí, bude plně funkční, nezávislé databáze. V tomto okamžiku můžete upgradovat nebo downgradovat pro všechny edice. Přihlášení, uživatelů a oprávnění se dají spravovat nezávisle.  
 
 > [!NOTE]
 > [Automatizované zálohování databáze](sql-database-automated-backups.md) se používají při vytvoření kopie databáze.

@@ -18,10 +18,10 @@ ms.date: 02/05/2019
 ms.author: sedusch
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: a9e12171a8596bc9caba3bf9065bbb943139ccde
-ms.sourcegitcommit: 41015688dc94593fd9662a7f0ba0e72f044915d6
-ms.translationtype: MT
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/11/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59501327"
 ---
 # <a name="azure-virtual-machines-planning-and-implementation-for-sap-netweaver"></a>Azure Virtual Machines, plánování a implementace SAP NetWeaver
@@ -691,8 +691,8 @@ Obrázek nahoře ukazuje, že dva odběry služeb Azure máte IP adresu podrozsa
 Point-to-site VPN vyžaduje každý klientský počítač připojit pomocí vlastní sítě VPN do Azure. Pro scénáře SAP uvažujeme, připojení point-to-site není praktické. Proto žádné další odkazy jsou uvedeny pro připojení k síti VPN point-to-site.
 
 Další informace najdete tady
-* [Konfigurace připojení typu Point-to-Site k virtuální síti přes Azure Portal](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal)
-* [Konfigurace připojení Point-to-Site k virtuální síti pomocí prostředí PowerShell](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-point-to-site-rm-ps)
+* [Konfigurace připojení typu Point-to-Site k virtuální síti pomocí webu Azure Portal](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal)
+* [Konfigurace připojení typu Point-to-Site k virtuální síti pomocí PowerShellu](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-point-to-site-rm-ps)
 
 #### <a name="multi-site-vpn"></a>VPN Multi-Site
 
@@ -722,8 +722,7 @@ Expressroute umožňuje více předplatných Azure prostřednictvím jednoho okr
 #### <a name="forced-tunneling-in-case-of-cross-premises"></a>Vynucené tunelování v případě mezi různými místy
 Pro virtuální počítače připojení k místním doménám prostřednictvím site-to-site, point-to-site nebo ExpressRoute budete muset Ujistěte se, že jsou získávání pro všechny uživatele v těchto virtuálních počítačů a nasadili nastavení internetového proxy serveru. Ve výchozím nastavení se software na tyto virtuální počítače nebo uživatele, kteří používají prohlížeč pro přístup k Internetu nedařilo přes proxy server společnosti, ale by připojit přímo prostřednictvím Azure k Internetu. Ale i nastavení serveru proxy není 100 % řešení ke směrování provozu přes proxy server společnosti, protože jde o odpovědnosti softwaru a služeb ke kontrole pro proxy server. Pokud software spuštěný na virtuálním počítači, který teď nebo správce provádí úpravy nastavení, provoz do Internetu mohou být zkrácen znovu přímo prostřednictvím Azure k Internetu.
 
-Pokud se chcete vyhnout takové přímé připojení k Internetu, můžete nakonfigurovat vynucené tunelování s připojením site-to-site mezi místními a Azure. Podrobný popis funkce vynuceného tunelování se publikuje sem
-<https://azure.microsoft.com/documentation/articles/vpn-gateway-forced-tunneling-rm/>
+Pokud se chcete vyhnout takové přímé připojení k Internetu, můžete nakonfigurovat vynucené tunelování s připojením site-to-site mezi místními a Azure. Podrobný popis funkce vynuceného tunelování se publikuje sem <https://azure.microsoft.com/documentation/articles/vpn-gateway-forced-tunneling-rm/>
 
 Ve zákazníkům inzeruje výchozí trasu prostřednictvím relací vytvoření partnerského vztahu protokolu BGP ExpressRoute je povolené vynucené tunelování s ExpressRoute.
 
@@ -754,8 +753,7 @@ Jako hrubý rozhodovací strom se rozhodnout, zda systém SAP zapadá do služby
 
 **Krok 1**: Nejdůležitější informace je začít s protokoly SAP požadavkem pro daný systém SAP. Požadavky na protokoly SAP muset být rozdělen do částí DBMS a části aplikace SAP i v případě, že systém SAP je už nasazená místně v konfiguraci vrstvy 2. Stávajících systémů můžete určit nebo odhadují podle existující srovnávací testy SAP přístupové body, které často souvisí hardware používá. Výsledky najdete tady: <https://sap.com/about/benchmark.html>.
 Pro nově nasazené systémy SAP by měl prošli velikosti cvičení, které by měl určit požadavky na protokoly SAP systému.
-Viz také tento blog a přiložený dokument k určení velikosti SAP v Azure:
-<https://blogs.msdn.com/b/saponsqlserver/archive/2015/12/01/new-white-paper-on-sizing-sap-solutions-on-azure-public-cloud.aspx>
+Viz také tento blog a přiložený dokument k určení velikosti SAP v Azure: <https://blogs.msdn.com/b/saponsqlserver/archive/2015/12/01/new-white-paper-on-sizing-sap-solutions-on-azure-public-cloud.aspx>
 
 **Krok 2**: Pro existující systémy objem vstupně-výstupní operace a vstupně-výstupních operací za sekundu na server databázového systému by se mělo měřit. Pro nově plánované systémy cvičení nastavení velikosti pro nový systém také měl dát hrubý nápady požadavků na vstupně-výstupních operací na straně DBMS. Pokud nejste jisti, časem budete muset provést testování konceptu.
 
@@ -800,8 +798,7 @@ Podrobnější pokyny k instalaci, aktualizaci a konfigurace Azure Powershellu r
 
 Zkušenosti zatím bylo, prostředí PowerShell (PS) je určitě výkonnější nástroje pro nasazení virtuálních počítačů a vytvořit vlastní kroky v nasazení virtuálních počítačů. Všem zákazníkům běžící instance SAP v Azure používají rutiny PS doplnit úlohy správy, proveďte na webu Azure Portal nebo dokonce i pomocí rutiny PS výhradně pro správu jejich nasazení v Azure. Protože rutiny týkající se Azure sdílejí stejné zásady vytváření názvů jako více než 2000 rutiny související s Windows, je snadný úkol pro správce Windows využívat tyto rutiny.
 
-Podívejte se na příklad tady:
-<https://blogs.technet.com/b/keithmayer/archive/2015/07/07/18-steps-for-end-to-end-iaas-provisioning-in-the-cloud-with-azure-resource-manager-arm-powershell-and-desired-state-configuration-dsc.aspx>
+Podívejte se na příklad tady: <https://blogs.technet.com/b/keithmayer/archive/2015/07/07/18-steps-for-end-to-end-iaas-provisioning-in-the-cloud-with-azure-resource-manager-arm-powershell-and-desired-state-configuration-dsc.aspx>
 
 
 Nasazení rozšíření Azure Monitoring for SAP (viz kapitola [řešení pro monitorování Azure pro SAP] [ planning-guide-9.1] v tomto dokumentu) je možné pouze prostřednictvím Powershellu nebo rozhraní příkazového řádku. Proto je nutné vytvořit a nakonfigurovat prostředí PowerShell nebo rozhraní příkazového řádku pro nasazování nebo správu systém SAP NetWeaver v Azure.  
@@ -946,7 +943,7 @@ Virtuální počítač nemusí být zobecněn a se dají nahrát, do stavu a obr
 ##### <a name="uploading-a-vhd-and-making-it-an-azure-disk"></a>Nahrání virtuálního pevného disku a jeho Disk s Azure
 V tomto případě chceme nahrání virtuálního pevného disku, s nebo bez operačního systému a připojit k virtuálnímu počítači jako datového disku nebo ho použít jako disk s operačním systémem. Toto je vícefázový proces
 
-**PowerShell**
+**Powershell**
 
 * Přihlaste se k předplatnému pomocí *Connect AzAccount*
 * Nastavení předplatného kontext s *Set-AzContext* a parametr ID předplatného nebo SubscriptionName - naleznete v tématu <https://docs.microsoft.com/powershell/module/az.accounts/set-Azcontext>
@@ -1326,8 +1323,7 @@ Zobrazit architektury rozdíl mezi modelu classic a ARM, jak je popsáno v [v to
 
 #### <a name="configuration-of-the-sap-system-and-sap-gui-connectivity-over-the-internet"></a>Konfigurace připojení k systému SAP a SAP grafickým uživatelským rozhraním přes internet
 
-Podrobnosti najdete v článku, který popisuje podrobnosti k tomuto tématu:
-<https://blogs.msdn.com/b/saponsqlserver/archive/2014/06/24/sap-gui-connection-closed-when-connecting-to-sap-system-in-azure.aspx>
+Podrobnosti najdete v článku, který popisuje podrobnosti k tomuto tématu: <https://blogs.msdn.com/b/saponsqlserver/archive/2014/06/24/sap-gui-connection-closed-when-connecting-to-sap-system-in-azure.aspx>
 
 #### <a name="changing-firewall-settings-within-vm"></a>Změna nastavení brány Firewall na virtuálním počítači
 
@@ -2021,12 +2017,10 @@ Ale v průběhu poslední rok center vyvinutá partnery společné umístění d
 Závisí na zvolené (úrovně 2 nebo 3 vrstvy) existuje konfiguraci SAP může být potřeba zálohovat. Obsah samotných virtuálních počítačů a vytvořit zálohu databáze. Zálohy DBMS související se očekává, že provádí pomocí metody databáze. Podrobný popis různých databázích, najdete v [DBMS průvodce][dbms-guide]. Na druhé straně SAP data lze zálohovat offline způsobem (včetně obsahu databáze také) jak je popsáno v této části nebo online jak je popsáno v další části.
 
 Zálohování offline by vyžadovaly v podstatě vypnutí virtuálního počítače na webu Azure portal a zkopírovat základní disk virtuálního počítače a všechny připojené disky na virtuálním počítači. To by zachovat bodu v čase image virtuálního počítače a jeho přidružený disk. Se doporučuje zkopírovat zálohy do jiného účtu úložiště Azure. Proto postup najdete v kapitole [kopírování disků mezi účty Azure Storage] [ planning-guide-5.4.2] tohoto dokumentu se vztahují.
-Kromě vypnutí počítače pomocí webu Azure portal, jeden to také udělat prostřednictvím Powershellu nebo CLI podle postupu popsaného tady:
-<https://azure.microsoft.com/documentation/articles/virtual-machines-deploy-rmtemplates-powershell/>
+Kromě vypnutí počítače pomocí webu Azure portal, jeden to také udělat prostřednictvím Powershellu nebo CLI podle postupu popsaného tady: <https://azure.microsoft.com/documentation/articles/virtual-machines-deploy-rmtemplates-powershell/>
 
 Obnovit tento stav by obsahovat odstranění základní virtuální počítač, stejně jako původní disky základní virtuální počítač a připojené disky uložené disky kopírování zpátky do původní skupiny prostředků nebo účtu úložiště za spravované disky a pak znovu nasadit v systému.
-Tento článek ukazuje příklad, jak skriptu tento proces v prostředí Powershell:
-<http://www.westerndevs.com/azure-snapshots/>
+Tento článek ukazuje příklad, jak skriptu tento proces v prostředí Powershell: <http://www.westerndevs.com/azure-snapshots/>
 
 Zkontrolujte prosím, že k instalaci nové licence SAP od obnovení zálohování virtuálních počítačů, jak je popsáno výše se vytvoří nový klíč hardwaru.
 
@@ -2050,8 +2044,7 @@ Ostatní virtuální počítače v rámci systému SAP můžete zálohovat pomoc
 >
 > ![Linux][Logo_Linux] Linux
 >
-> Neexistuje žádný ekvivalent k Windows stínové kopie svazku v systému Linux. Proto pouze konzistentní zálohování jsou zálohy je to možné, ale není konzistentní s aplikací. Zálohování SAP DBMS by mělo být provedeno pomocí funkce DBMS. Systém souborů, které zahrnují data související s SAP můžete uložit, například pomocí cíl jak je popsáno zde:
-> <https://help.sap.com/saphelp_nw70ehp2/helpdata/en/d3/c0da3ccbb04d35b186041ba6ac301f/content.htm>
+> Neexistuje žádný ekvivalent k Windows stínové kopie svazku v systému Linux. Proto pouze konzistentní zálohování jsou zálohy je to možné, ale není konzistentní s aplikací. Zálohování SAP DBMS by mělo být provedeno pomocí funkce DBMS. Systém souborů, které zahrnují data související s SAP můžete uložit, například pomocí cíl jak je popsáno zde: <https://help.sap.com/saphelp_nw70ehp2/helpdata/en/d3/c0da3ccbb04d35b186041ba6ac301f/content.htm>
 >
 >
 

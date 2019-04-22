@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 12/10/2018
 ms.author: routlaw
 ms.custom: seodec18
-ms.openlocfilehash: bab6510af98b153ecb61db8fc49b5124aae04598
-ms.sourcegitcommit: 41015688dc94593fd9662a7f0ba0e72f044915d6
+ms.openlocfilehash: 5c9f70650f518c72a75d9a7826e7cbc30a95a00c
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/11/2019
-ms.locfileid: "59500460"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59680872"
 ---
 # <a name="java-developers-guide-for-app-service-on-linux"></a>Příručka pro vývojáře Java pro službu App Service v Linuxu
 
@@ -28,9 +28,9 @@ Tato příručka obsahuje klíčové koncepty a pokyny pro vývojáře v Javě p
 
 ## <a name="deploying-your-app"></a>Nasazení vaší aplikace
 
-Modul plug-in Maven můžete použít k nasazení souborů .jar a .war. Podrobnosti najdete na [této dokumentace](https://docs.microsoft.com/java/api/overview/azure/maven/azure-webapp-maven-plugin/readme?view=azure-java-stable) Další informace o modulu plug-in Maven.
+Můžete použít [modul plug-in Maven pro Azure App Service](/java/api/overview/azure/maven/azure-webapp-maven-plugin/readme) nasadit soubory .jar a .war. Nasazení s oblíbenými prostředími IDE také podporuje [sady Azure Toolkit pro IntelliJ](/java/azure/intellij/azure-toolkit-for-intellij) nebo [sady Azure Toolkit pro Eclipse](/java/azure/eclipse/azure-toolkit-for-eclipse).
 
-Pokud nepoužíváte Maven, metodě nasazení bude záviset na vašich typ archivu:
+V opačném případě metodě nasazení bude záviset na vašich typ archivu:
 
 - Chcete-li nasadit .war soubory na Tomcat, použijte `/api/wardeploy/` koncový bod účtovat souboru archivu. Další informace o tomto rozhraní API najdete v tématu [této dokumentace](https://docs.microsoft.com/azure/app-service/deploy-zip#deploy-war-file).
 - K nasazení souborů .jar v Java SE Image, použijte `/api/zipdeploy/` koncový bod webu kudu. Další informace o tomto rozhraní API najdete v tématu [této dokumentace](https://docs.microsoft.com/azure/app-service/deploy-zip#rest).
@@ -79,7 +79,7 @@ Integrované Image Java jsou založeny na [Alpine Linuxu](https://alpine-linux.r
 
 ## <a name="customization-and-tuning"></a>Přizpůsobení a optimalizace
 
-Azure App Service pro Linux podporuje pole vyladění a přizpůsobení prostřednictvím webu Azure Portal a rozhraní příkazového řádku. Projděte si následující články konfigurace bez Java konkrétní webové aplikace:
+Azure App Service pro Linux podporuje pole vyladění a přizpůsobení prostřednictvím webu Azure portal a rozhraní příkazového řádku. Projděte si následující články konfigurace bez Java konkrétní webové aplikace:
 
 - [Konfigurace nastavení služby App Service](/azure/app-service/web-sites-configure?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json)
 - [Nastavení vlastní domény](/azure/app-service/app-service-web-tutorial-custom-domain?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json)
@@ -93,7 +93,7 @@ Pokud chcete nastavit přidělené paměti nebo jiné možnosti modulu runtime J
 
 Na webu Azure Portal v části **nastavení aplikace** pro webovou aplikaci, vytvořte nové nastavení aplikace s názvem `JAVA_OPTS` , který obsahuje další nastavení, jako například `-Xms512m -Xmx1204m`.
 
-Pokud chcete nakonfigurovat nastavení aplikace, které z modulu plug-in Maven, add v sekci modul plug-in Azure nastavení/hodnota značek. Následující příklad nastaví konkrétní minimální a maximální heapsize Java:
+Pokud chcete nakonfigurovat nastavení aplikace, které z modulu plug-in Maven, add v sekci modul plug-in Azure nastavení/hodnota značek. Následující příklad nastaví konkrétní minimální a maximální velikost haldy Java:
 
 ```xml
 <appSettings>
@@ -182,9 +182,9 @@ Tyto pokyny platí pro všechna připojení k databázi. Je potřeba vyplnit zá
 
 | Databáze   | Název třídy ovladače                             | Ovladač JDBC                                                                      |
 |------------|-----------------------------------------------|------------------------------------------------------------------------------------------|
-| PostgreSQL | `org.postgresql.Driver`                        | [Ke stažení](https://jdbc.postgresql.org/download.html)                                    |
+| PostgreSQL | `org.postgresql.Driver`                        | [Stáhnout](https://jdbc.postgresql.org/download.html)                                    |
 | MySQL      | `com.mysql.jdbc.Driver`                        | [Stáhněte si](https://dev.mysql.com/downloads/connector/j/) (vyberte "Nezávislé na platformě") |
-| SQL Server | `com.microsoft.sqlserver.jdbc.SQLServerDriver` | [Ke stažení](https://docs.microsoft.com/sql/connect/jdbc/download-microsoft-jdbc-driver-for-sql-server?view=sql-server-2017#available-downloads-of-jdbc-driver-for-sql-server)                                                           |
+| SQL Server | `com.microsoft.sqlserver.jdbc.SQLServerDriver` | [Stáhnout](https://docs.microsoft.com/sql/connect/jdbc/download-microsoft-jdbc-driver-for-sql-server?view=sql-server-2017#available-downloads-of-jdbc-driver-for-sql-server)                                                           |
 
 Pokud chcete nakonfigurovat Tomcat používat připojení k databázi Java (JDBC) nebo rozhraní API trvalost Java (JPA), nejprve přizpůsobit `CATALINA_OPTS` proměnné prostředí, který je určen pro čtení pomocí Tomcat na začátku si. Nastavte tyto hodnoty pomocí nastavení aplikace v [modulu plug-in App Service Maven](https://github.com/Microsoft/azure-maven-plugins/blob/develop/azure-webapp-maven-plugin/README.md):
 
@@ -297,7 +297,7 @@ Pro připojení ke zdrojům dat aplikace Spring Boot, doporučujeme vytvoření 
 
     Tento připojovací řetězec je přístupné pro naši aplikaci jako proměnné prostředí s názvem `CUSTOMCONNSTR_<your-string-name>`. Například připojovací řetězec, který jsme vytvořili výše, bude mít název `CUSTOMCONNSTR_exampledb`.
 
-2. Ve vaší `application.properties` souboru, odkazují na tento řetězec připojení s názvem proměnné prostředí. V našem příkladu jsme byste použili následující.
+2. Ve vaší `application.properties` souboru, odkazují na tento připojovací řetězec s názvem proměnné prostředí. V našem příkladu jsme byste použili následující.
 
     ```yml
     app.datasource.url=${CUSTOMCONNSTR_exampledb}

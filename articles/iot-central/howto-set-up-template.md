@@ -8,14 +8,14 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: 602c7385b252daa7db22bd47f43afec3ad072263
-ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
+ms.openlocfilehash: db8c8de7a8047f7aa6a81f6a3b372d161408f1be
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58904198"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59679342"
 ---
-# <a name="set-up-a-device-template-new-ui-design"></a>Nastavit šablonu zařízení (návrh nové uživatelské rozhraní)
+# <a name="set-up-a-device-template"></a>Nastavení šablony zařízení
 
 Šablona zařízení je podrobný plán, který definuje charakteristiky a chování zařízení, která se připojuje k aplikaci Azure IoT Central.
 
@@ -138,7 +138,7 @@ Nastavení může být v jednom ze tří stavů. Zařízení odesílá tyto stav
 
 - **Čekající**: Zařízení se momentálně mění hodnotu nastavení.
 
-- **Chyba**: Zařízení vrátilo chybu.
+- **Chyba:** Zařízení vrátilo chybu.
 
 Například můžete přidat nové nastavení rychlost ventilátor tak, že vyberete **nastavení** a zadáte na novém **číslo** nastavení:
 

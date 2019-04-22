@@ -13,18 +13,18 @@ ms.date: 03/12/2018
 ms.author: ghogen
 ms.custom: aaddev, vs-azure
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8ed328b29c853e5ff75d64332f0228277cff90d4
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: a6f151251d76965cf1bc86216eac15a08f1adbc6
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56203671"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59679104"
 ---
 # <a name="diagnosing-errors-with-the-azure-active-directory-connected-service"></a>Diagnostikování chyb pomocí Azure Active Directory připojenou službu
 
 Při zjišťování předchozí kód ověřování Azure Active Directory připojit server zjistil typ nekompatibilní ověřování.
 
-Správně detekovat předchozí ověřovacího kódu v projektu, musí být sestaveny jako projekt.  Pokud k této chybě došlo ve vašem projektu nemáte předchozí ověřovacího kódu, sestavení a zkuste to znovu.
+Správně detekovat předchozí ověřovacího kódu v projektu, musí být sestaveny jako projekt.  Pokud nemáte předchozí ověřovacího kódu v projektu se zobrazí tato chyba, sestavení a zkuste to znovu.
 
 ## <a name="project-types"></a>Typy projektů
 
@@ -32,7 +32,7 @@ Připojená služba zkontroluje typ projektu, kterou vyvíjíte, takže ji můž
 
 ## <a name="compatible-authentication-code"></a>Kompatibilní ověřovacího kódu
 
-Připojenou službu také kontroluje nastavení ověřování, které byly dříve nakonfigurovány nebo jsou kompatibilní se službou. Pokud všechna nastavení jsou k dispozici, bude považován za vícenásobně případ a otevře připojená služba zobrazí nastavení.  Pokud pouze některá nastavení jsou k dispozici, bude považován za případ k chybě.
+Připojenou službu také kontroluje nastavení ověřování, které byly dříve nakonfigurovány nebo jsou kompatibilní se službou. Pokud všechna nastavení jsou k dispozici, se považuje za vícenásobně případ a otevře připojená služba zobrazí nastavení.  Pokud pouze některá nastavení jsou k dispozici, se považuje za případ k chybě.
 
 V projektu aplikace MVC kontroluje připojenou službu pro některý z následujících nastavení, které jsou výsledkem předchozího používání služby:
 
@@ -41,7 +41,7 @@ V projektu aplikace MVC kontroluje připojenou službu pro některý z následuj
     <add key="ida:AADInstance" value="" />
     <add key="ida:PostLogoutRedirectUri" value="" />
 
-Kromě toho připojené služby kontroluje pro některý z následujících nastavení v projektu webového rozhraní API, které jsou výsledkem předchozího používání služby:
+Také zkontroluje připojenou službu pro některý z následujících nastavení v projektu webového rozhraní API, které jsou výsledkem předchozího používání služby:
 
     <add key="ida:ClientId" value="" />
     <add key="ida:Tenant" value="" />
@@ -60,7 +60,7 @@ Ke zjištění ověřování Windows v projektu aplikace MVC, bude připojená h
 ```xml
 <configuration>
     <system.web>
-        <span style="background-color: yellow"><authentication mode="Windows" /></span>
+        <authentication mode="Windows" />
     </system.web>
 </configuration>
 ```
@@ -70,7 +70,7 @@ Ke zjištění ověřování Windows v projektu webového rozhraní API, hledá 
 ```xml
 <Project>
     <PropertyGroup>
-        <span style="background-color: yellow"><IISExpressWindowsAuthentication>enabled</IISExpressWindowsAuthentication></span>
+        <IISExpressWindowsAuthentication>enabled</IISExpressWindowsAuthentication>
     </PropertyGroup>
 </Project>
 ```
@@ -79,7 +79,7 @@ Ke zjištění ověřování individuálních uživatelských účtů, hledá p�
 
 ```xml
 <packages>
-    <span style="background-color: yellow"><package id="Microsoft.AspNet.Identity.EntityFramework" version="2.1.0" targetFramework="net45" /></span>
+    <package id="Microsoft.AspNet.Identity.EntityFramework" version="2.1.0" targetFramework="net45" />
 </packages>
 ```
 
@@ -88,7 +88,7 @@ Ke zjištění staré formu ověřování účtu organizace, hledá připojená 
 ```xml
 <configuration>
     <appSettings>
-        <span style="background-color: yellow"><add key="ida:Realm" value="***" /></span>
+        <add key="ida:Realm" value="***" />
     </appSettings>
 </configuration>
 ```

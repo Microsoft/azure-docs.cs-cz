@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.service: container-service
 ms.date: 12/03/2018
 ms.author: iainfou
-ms.openlocfilehash: fd538ce6821b35dc6e3932256090afdf70b4b232
-ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
+ms.openlocfilehash: 4b9e9aeab6ed24dd2179f853def02ad194fe1b67
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58755261"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59681025"
 ---
 # <a name="preview---create-and-configure-an-azure-kubernetes-services-aks-cluster-to-use-virtual-nodes-in-the-azure-portal"></a>Ve verzi Preview – vytvoření a konfigurace clusteru služby Azure Kubernetes služby (AKS) používat virtuální uzly na webu Azure Portal
 
@@ -32,6 +32,16 @@ Tyto oblasti jsou podporovány pro nasazení virtuálního uzlu:
 * Střed USA – západ (westcentralus)
 * Západní Evropa (westeurope)
 * USA – západ (westus)
+
+## <a name="known-limitations"></a>Známá omezení
+Virtuální funkce uzlů je silně závisí na sadě funkcí v ACI. Následující scénáře nejsou ještě podporované s virtuální uzly
+
+* Pomocí instančního objektu pro Image ACR o přijetí změn. [Alternativní řešení](https://github.com/virtual-kubelet/virtual-kubelet/blob/master/providers/azure/README.md#Private-registry) je použití [tajné klíče Kubernetes](https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/#create-a-secret-by-providing-credentials-on-the-command-line)
+* [Omezení virtuální sítě](../container-instances/container-instances-vnet.md) včetně VNet peering, Kubernetes síťové zásady a odchozí provoz do Internetu s použitím skupin zabezpečení sítě.
+* Init kontejnery
+* [Aliasy hostitelů](https://kubernetes.io/docs/concepts/services-networking/add-entries-to-pod-etc-hosts-with-host-aliases/)
+* [Argumenty](../container-instances/container-instances-exec.md#restrictions) pro spuštění v ACI
+* [Daemonsets](concepts-clusters-workloads.md#statefulsets-and-daemonsets) nenasadí podů na virtuální uzel
 
 ## <a name="sign-in-to-azure"></a>Přihlásit se k Azure
 

@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 12/18/2018
 ms.author: iainfou
 ms.custom: H1Hack27Feb2017, mvc, devcenter
-ms.openlocfilehash: 2c613a42278fb4064e5c1cdbff5ebd3b4000092c
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 0bbb200bdfeb88b774f561d537edc71e60b3994f
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57444833"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59680600"
 ---
 # <a name="quickstart-deploy-an-azure-kubernetes-service-aks-cluster-using-the-azure-cli"></a>Rychlý start: Nasazení clusteru služby Azure Kubernetes Service (AKS) pomocí rozhraní příkazového řádku Azure
 
@@ -120,6 +120,8 @@ spec:
       labels:
         app: azure-vote-back
     spec:
+      nodeSelector:
+        "beta.kubernetes.io/os": linux
       containers:
       - name: azure-vote-back
         image: redis
@@ -158,6 +160,8 @@ spec:
       labels:
         app: azure-vote-front
     spec:
+      nodeSelector:
+        "beta.kubernetes.io/os": linux
       containers:
       - name: azure-vote-front
         image: microsoft/azure-vote-front:v1

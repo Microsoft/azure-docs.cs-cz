@@ -10,12 +10,12 @@ ms.subservice: core
 ms.reviewer: trbye
 ms.topic: conceptual
 ms.date: 03/19/2019
-ms.openlocfilehash: e1b584d38c4583e37b7c47535c836d1fa7d428f1
-ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
+ms.openlocfilehash: c4f94dd2730dd302951b4476a292b006041b7ee8
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
-ms.locfileid: "59357250"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59680855"
 ---
 # <a name="auto-train-a-time-series-forecast-model"></a>Automaticky – train model prognózy časových řad
 
@@ -34,27 +34,27 @@ V tomto článku se dozvíte, jak pro trénování časových řad prognóz regr
 
 Nejdůležitější rozdíl mezi Prognózování úloh typ regrese a regresní typ úkolu v rámci automatizovaného machine learning je včetně funkce ve vašich datech, která představuje platné časové řady. Pravidelné časové řady má frekvenci dobře definovaný a konzistentní vzhledem k aplikacím a má hodnotu v každém bodě ukázka spojitý časový rozsah. Vezměte v úvahu z následujícího snímku souboru `sample.csv`.
 
-    week_starting,store,sales_quantity,week_of_year
+    day_datetime,store,sales_quantity,week_of_year
     9/3/2018,A,2000,36
     9/3/2018,B,600,36
-    9/10/2018,A,2300,37
-    9/10/2018,B,550,37
-    9/17/2018,A,2100,38
-    9/17/2018,B,650,38
-    9/24/2018,A,2400,39
-    9/24/2018,B,700,39
-    10/1/2018,A,2450,40
-    10/1/2018,B,650,40
+    9/4/2018,A,2300,36
+    9/4/2018,B,550,36
+    9/5/2018,A,2100,36
+    9/5/2018,B,650,36
+    9/6/2018,A,2400,36
+    9/6/2018,B,700,36
+    9/7/2018,A,2450,36
+    9/7/2018,B,650,36
 
-Tato datová sada je jednoduchý příklad týdenní prodejní data pro společnosti, která má dvě různé úložiště, A a B. kromě, je funkce pro `week_of_year` , který vám umožní modelu k detekci týdenní sezónnosti. Pole `week_starting` představuje čisté časové řady s týdenní frekvenci a pole `sales_quantity` je cílový sloupec pro spouštěním predikcí. Načtení dat do struktury Pandas dataframe, a pak pomocí `to_datetime` funkce zkontrolujte časové řady `datetime` typu.
+Tato datová sada je jednoduchý příklad denní prodejní data pro společnosti, která má dvě různé úložiště, A a B. kromě, je funkce pro `week_of_year` , který vám umožní modelu k detekci týdenní sezónnosti. Pole `day_datetime` představuje čisté časové řady s denní frekvence a pole `sales_quantity` je cílový sloupec pro spouštěním predikcí. Načtení dat do struktury Pandas dataframe, a pak pomocí `to_datetime` funkce zkontrolujte časové řady `datetime` typu.
 
 ```python
 import pandas as pd
 data = pd.read_csv("sample.csv")
-data["week_starting"] = pd.to_datetime(data["week_starting"])
+data["day_datetime"] = pd.to_datetime(data["day_datetime"])
 ```
 
-V tomto případě je již řazeno vzestupně podle času pole `week_starting`. Ale při nastavování experiment, ujistěte se, že sloupec je požadovaný čas je seřazen vzestupně sestavit platný časové řady. Předpokládejme, že data obsahují 1 000 záznamů a deterministický rozdělení ve data vytvoření trénování a testování datových sad. Pak oddělit cílového pole `sales_quantity` vytvořte předpověď trénování a testování sad.
+V tomto případě je již řazeno vzestupně podle času pole `day_datetime`. Ale při nastavování experiment, ujistěte se, že sloupec je požadovaný čas je seřazen vzestupně sestavit platný časové řady. Předpokládejme, že data obsahují 1 000 záznamů a deterministický rozdělení ve data vytvoření trénování a testování datových sad. Pak oddělit cílového pole `sales_quantity` vytvořte předpověď trénování a testování sad.
 
 ```python
 X_train = data.iloc[:950]
@@ -84,14 +84,18 @@ Pro předpověď úkoly, používá automatizované strojového učení úkony p
 |`time_column_name`|Slouží k zadání vstupních dat použít pro vytváření časové řady a jeho četnost odvození sloupce data a času.|✓|
 |`grain_column_names`|Názvy, definování skupin jednotlivé řady ve vstupních datech. Pokud není definovaný interval, datová sada se považuje za jednu časových řad.||
 |`max_horizon`|Maximální požadovaný prognózy horizontu v jednotkách frekvence časových řad.|✓|
+|`target_lags`|*n* období vpřed prodleva cílových hodnot před cvičení modelu.||
+|`target_rolling_window_size`|*n* historických období pro generování předpokládaných hodnoty, < = školení nastavení velikosti. Pokud tento parametr vynechán, *n* je nastavení úplné školení velikosti.||
 
-Vytvoření nastavení časových řad jako objekt slovníku. Nastavte `time_column_name` k `week_starting` pole v datové sadě. Definovat `grain_column_names` parametr zajistit, aby **dva samostatné skupiny časových řad** jsou vytvořené pro naše data, jeden pro úložiště A a b a konečně, nastavte `max_horizon` na 50, aby bylo možné předpovědět, pro celý test nastavení.
+Vytvoření nastavení časových řad jako objekt slovníku. Nastavte `time_column_name` k `day_datetime` pole v datové sadě. Definovat `grain_column_names` parametr zajistit, aby **dva samostatné skupiny časových řad** jsou vytvořené pro data, jeden pro úložiště A a b a konečně, nastavte `max_horizon` na 50, aby bylo možné předpovědět, pro celý test nastavení. Nastavit časové období prognózy do 10 období s `target_rolling_window_size`a prodlevu cílové hodnoty 2 období pokračovat s `target_lags` parametru.
 
 ```python
 time_series_settings = {
-    "time_column_name": "week_starting",
+    "time_column_name": "day_datetime",
     "grain_column_names": ["store"],
-    "max_horizon": 50
+    "max_horizon": 50,
+    "target_lags": 2,
+    "target_rolling_window_size": 10
 }
 ```
 
@@ -141,11 +145,11 @@ rmse = sqrt(mean_squared_error(y_actual, y_predict))
 rmse
 ```
 
-Teď, když celkové určil přesnost modelu, většina realistické dalším krokem je použít model k předpovědi Neznámý budoucí hodnoty. Jednoduše zadat sadu dat ve stejném formátu jako testovací sada `X_test` ale budoucí data a času a výsledné předpovědi sada je předpokládaných hodnoty pro každý krok časových řad. Předpokládají poslední časové řady záznamy v sadě dat byly pro týden od 12/31. ledna 2018. Předpovídá poptávku pro příští týden (nebo libovolný počet období, kolik je potřeba dala udělat předpověď, < = `max_horizon`), vytvořit jeden čas řady záznam pro každé úložiště pro týden od 01/07/2019.
+Teď, když celkové určil přesnost modelu, většina realistické dalším krokem je použít model k předpovědi Neznámý budoucí hodnoty. Jednoduše zadat sadu dat ve stejném formátu jako testovací sada `X_test` ale budoucí data a času a výsledné předpovědi sada je předpokládaných hodnoty pro každý krok časových řad. Předpokládejme, že byly poslední záznamy časových řad v datové sadě pro 12/31. ledna 2018. Předpovídá poptávku za další den (nebo libovolný počet období, kolik je potřeba dala udělat předpověď, < = `max_horizon`), vytvořit jeden čas řady záznam pro každé úložiště pro 01, 01/2019.
 
-    week_starting,store,week_of_year
-    01/07/2019,A,2
-    01/07/2019,A,2
+    day_datetime,store,week_of_year
+    01/01/2019,A,1
+    01/01/2019,A,1
 
 Opakováním kroků nezbytných k načtení této budoucí dat pro datový rámec a pak spusťte `best_run.predict(X_test)` předpovídat budoucí hodnoty.
 

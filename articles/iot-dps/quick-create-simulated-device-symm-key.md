@@ -10,10 +10,10 @@ services: iot-dps
 manager: philmea
 ms.custom: mvc
 ms.openlocfilehash: 93fc426d9de027100e70502bcf6ea3aad2c44e10
-ms.sourcegitcommit: 41015688dc94593fd9662a7f0ba0e72f044915d6
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/11/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59500205"
 ---
 # <a name="quickstart-provision-a-simulated-device-with-symmetric-keys"></a>Rychlý start: Zřízení simulovaného zařízení pomocí symetrických klíčů
@@ -205,4 +205,4 @@ Pokud chcete pokračovat v práci s touto ukázkou klienta zařízení a jejím 
 V rámci tohoto rychlého startu jste na svém počítači s Windows vytvořili simulované zařízení a pomocí služby Azure IoT Hub Device Provisioning na webu Azure Portal a symetrického klíče jste ho zřídili pro svůj IoT Hub. Pokud chcete zjistit, jak zaregistrovat zařízení prostřednictvím kódu programu, pokračujte k rychlému startu pro registraci zařízení X.509 prostřednictvím kódu programu. 
 
 > [!div class="nextstepaction"]
-> [Rychlý start Azure – registrace zařízení X.509 do služby Azure IoT Hub Device Provisioning Service](quick-enroll-device-x509-java.md)
+> [Rychlý start Azure – Registrace zařízení X.509 do služby Azure IoT Hub Device Provisioning](quick-enroll-device-x509-java.md)

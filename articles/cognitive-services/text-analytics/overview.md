@@ -11,10 +11,10 @@ ms.topic: overview
 ms.date: 04/03/2019
 ms.author: aahi
 ms.openlocfilehash: 054f0cf91904497b77fd08165808f9b4c381ecca
-ms.sourcegitcommit: 41015688dc94593fd9662a7f0ba0e72f044915d6
-ms.translationtype: MT
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/11/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59500375"
 ---
 # <a name="what-is-text-analytics-api"></a>Co je API pro analýzu textu?
@@ -67,7 +67,7 @@ I v případě, že nemáte spoustu zkušeností při programování můžete za
     * [Použití rozhraní API pro analýzu textu a MS Flowu k identifikaci mínění komentáře ve skupině Yammeru](https://docs.microsoft.com/Yammer/integrate-yammer-with-other-apps/sentiment-analysis-flow-azure?toc=%2F%2Fazure%2Fcognitive-services%2Ftext-analytics%2Ftoc.json&bc=%2F%2Fazure%2Fbread%2Ftoc.json)
     * [Integrace Power BI pomocí rozhraní Text Analytics API pro analýzu zpětné vazby od zákazníků](tutorials/tutorial-power-bi-key-phrases.md)
 * Programování v prostředí vhodné:
-    * [Analýza mínění na streamovaných datech s využitím Azure Databricks](https://docs.microsoft.com/azure/azure-databricks/databricks-sentiment-analysis-cognitive-services?toc=%2F%2Fazure%2Fcognitive-services%2Ftext-analytics%2Ftoc.json&bc=%2F%2Fazure%2Fbread%2Ftoc.json)
+    * [Analýza mínění na streamovaných datech pomocí Azure Databricks](https://docs.microsoft.com/azure/azure-databricks/databricks-sentiment-analysis-cognitive-services?toc=%2F%2Fazure%2Fcognitive-services%2Ftext-analytics%2Ftoc.json&bc=%2F%2Fazure%2Fbread%2Ftoc.json)
     * [Sestavení aplikace Flask překlad textu, analýza mínění a syntetizace řeči](https://docs.microsoft.com/azure/cognitive-services/translator/tutorial-build-flask-app-translation-synthesis?toc=%2F%2Fazure%2Fcognitive-services%2Ftext-analytics%2Ftoc.json&bc=%2F%2Fazure%2Fbread%2Ftoc.json)
 
 

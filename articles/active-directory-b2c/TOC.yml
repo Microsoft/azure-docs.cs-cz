@@ -85,8 +85,8 @@ items:
     href: add-native-application.md
   - name: Konfigurace ověřování věku
     href: basic-age-gating.md
-  - name: Konfigurace tokenů
-    href: active-directory-b2c-token-session-sso.md
+  - name: Konfigurace chování relace
+    href: session-behavior.md
   - name: Přizpůsobení jazyka
     href: active-directory-b2c-reference-language-customization.md
   - name: Přizpůsobení hesla
@@ -111,8 +111,6 @@ items:
       href: active-directory-b2c-ui-customization-custom.md
     - name: Dynamické přizpůsobení uživatelského rozhraní
       href: active-directory-b2c-ui-customization-custom-dynamic.md
-    - name: Přizpůsobení tokenů
-      href: active-directory-b2c-reference-manage-sso-and-token-configuration.md
     - name: Definování vlastních atributů
       href: active-directory-b2c-create-custom-attributes-profile-edit-custom.md
     - name: Povolení možnosti zůstat přihlášeni
@@ -147,8 +145,6 @@ items:
         href: active-directory-b2c-custom-setup-twitter-idp.md
     - name: Kontrakt stránky
       href: page-contract.md
-    - name: Předávání přístupového tokenu
-      href: idp-pass-through-custom.md
     - name: Složitost hesla
       href: active-directory-b2c-reference-password-complexity-custom.md
     - name: Změna hesla
@@ -159,6 +155,12 @@ items:
         href: active-directory-b2c-custom-setup-adfs2016-idp.md
       - name: Salesforce
         href: active-directory-b2c-setup-sf-app-custom.md
+    - name: Tokeny
+      items:
+      - name: Přizpůsobení tokenů
+        href: active-directory-b2c-reference-manage-sso-and-token-configuration.md
+      - name: Předávání přístupového tokenu
+        href: idp-pass-through-custom.md
     - name: Sledování chování uživatelů
       href: active-directory-b2c-custom-guide-eventlogger-appins.md
     - name: Referenční informace
@@ -272,10 +274,6 @@ items:
       href: active-directory-b2c-devquickstarts-ios.md
     - name: Android s využitím ověřování aplikace
       href: active-directory-b2c-devquickstarts-android.md
-  - name: Získání přístupových tokenů
-    href: active-directory-b2c-access-tokens.md
-  - name: Předávání přístupového tokenu
-    href: idp-pass-through-user-flow.md
   - name: Hlášení využití
     href: active-directory-b2c-reference-usage-reporting-api.md
   - name: Přihlašovací údaje vlastníka prostředku s heslem
@@ -284,6 +282,14 @@ items:
     href: direct-signin.md
   - name: Nastavení samoobslužného resetování hesla
     href: active-directory-b2c-reference-sspr.md
+  - name: Tokeny
+    items:
+    - name: Konfigurace tokenů
+      href: configure-tokens.md
+    - name: Předávání přístupového tokenu
+      href: idp-pass-through-user-flow.md
+    - name: Vyžádání přístupového tokenu
+      href: active-directory-b2c-access-tokens.md
   - name: Použití b2clogin.com
     href: b2clogin.md
   - name: Použití Graph API v Azure AD
@@ -326,9 +332,9 @@ items:
     href: active-directory-b2c-support.md
   - name: Videa
     href: https://azure.microsoft.com/documentation/videos/index/?services=active-directory-b2c
-ms.openlocfilehash: cebc59a7d10ce669fd8187687b80f291a07d1c06
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.openlocfilehash: de9ae82220bd464cbee7345b7f2421d02f0fc545
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58886569"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59681127"

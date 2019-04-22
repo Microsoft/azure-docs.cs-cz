@@ -15,10 +15,10 @@ ms.date: 04/11/2019
 ms.author: jmprieur
 ms.custom: include file
 ms.openlocfilehash: 86113246fab399e8364653198e9a6971317e3f2c
-ms.sourcegitcommit: f24b62e352e0512dfa2897362021b42e0cb9549d
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/11/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59505796"
 ---
 # <a name="add-sign-in-with-microsoft-to-an-aspnet-web-app"></a>Přidání přihlašování s Microsoftem do webové aplikace ASP.NET
@@ -27,7 +27,7 @@ Tato příručka ukazuje, jak implementovat přihlášení u Microsoftu pomocí 
 
 Na konci tohoto průvodce vaše aplikace budou moci přijímat přihlášení osobní účty (včetně outlook.com, live.com a další) a také pracovní a školní účty z jakéhokoli společnosti nebo organizace, která má integrované s Azure Active Directory.
 
-> Tato příručka vyžaduje Visual Studio 2017.  Nemáte ji?  [Stáhněte si Visual Studio 2017 zdarma](https://www.visualstudio.com/downloads/)
+> Tato příručka vyžaduje Visual Studio 2017.  Nemáte ji?  [Stáhnout Visual Studio 2017 zdarma](https://www.visualstudio.com/downloads/)
 
 ## <a name="how-the-sample-app-generated-by-this-guide-works"></a>Jak funguje ukázkové aplikace vygenerované v této příručce
 

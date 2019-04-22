@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: seguler
-ms.openlocfilehash: 8328ea5afb66bbecdafbb06dcbf6700194d62f9e
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 3b58dc8dabc55ba428ce6e35091a6947e5f4a824
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55864056"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59678375"
 ---
 # <a name="use-distcp-to-copy-data-between-azure-storage-blobs-and-azure-data-lake-storage-gen2"></a>Použití DistCp ke kopírování dat mezi objekty BLOB Azure Storage a Azure Data Lake Storage Gen2
 
@@ -27,7 +27,7 @@ DistCp poskytuje celou řadu parametrů příkazového řádku a důrazně dopor
 * **Existující účet úložiště Azure bez Data Lake Storage Gen2 funkcích (hierarchického oboru názvů), které přináší**.
 * **Účet služby Azure Storage s povolenou funkcí Data Lake Storage Gen2**. Pokyny k jeho vytvoření najdete v tématu [vytvoření účtu úložiště Azure Data Lake Storage Gen2](data-lake-storage-quickstart-create-account.md)
 * **Systém souborů** , který byl vytvořen v účtu úložiště s hierarchického oboru názvů povolené.
-* **Azure HDInsight cluster** s přístupem k účtu úložiště pomocí Data Lake Storage Gen2 povolena. Zobrazit [clusterů pomocí Azure Data Lake Storage Gen2 s Azure HDInsight](data-lake-storage-use-hdi-cluster.md). Ujistěte se, že se že povolení vzdálené plochy pro cluster.
+* **Azure HDInsight cluster** s přístupem k účtu úložiště pomocí Data Lake Storage Gen2 povolena. Zobrazit [clusterů pomocí Azure Data Lake Storage Gen2 s Azure HDInsight](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2?toc=%2fazure%2fstorage%2fblobs%2ftoc.json). Ujistěte se, že se že povolení vzdálené plochy pro cluster.
 
 ## <a name="use-distcp-from-an-hdinsight-linux-cluster"></a>Použití DistCp z clusteru HDInsight Linux
 

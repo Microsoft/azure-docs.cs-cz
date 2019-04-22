@@ -11,10 +11,10 @@ ms.topic: article
 ms.date: 02/13/2019
 ms.author: aahi
 ms.openlocfilehash: dfbb31ce9f61ee28fef046120474a6a170906512
-ms.sourcegitcommit: f24b62e352e0512dfa2897362021b42e0cb9549d
-ms.translationtype: MT
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/11/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59505571"
 ---
 # <a name="how-to-use-named-entity-recognition-in-text-analytics-preview"></a>Použití s názvem rozpoznávání entit v rozhraní Text Analytics (Náhled)
@@ -96,7 +96,7 @@ Podrobnosti o definici žádosti najdete v článku o [volání rozhraní API pr
 
 + Vytvořte žádost **POST**. Projděte si dokumentaci k rozhraní API pro tuto žádost: [Rozhraní API služby entity Linking](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/5ac4251d5b4ccd1554da7634)
 
-+ Nastavení koncového bodu HTTP pro extrakci entity. Musí zahrnovat `/entities` prostředků: `https://[your-region].api.cognitive.microsoft.com/text/analytics/v2.1-preview/entities`
++ Nastavení koncového bodu HTTP pro extrakci entity. Musí obsahovat prostředek `/entities`: `https://[your-region].api.cognitive.microsoft.com/text/analytics/v2.1-preview/entities`.
 
 + Nastavte hlavičku žádosti tak, aby obsahovala přístupový klíč pro operace analýzy textu. Další informace najdete v článku, který se věnuje [vyhledání koncových bodů a přístupových klíčů](text-analytics-how-to-access-key.md).
 
@@ -287,11 +287,11 @@ V tomto článku jste zjistili, koncepty a pracovní postup pro propojování en
 
 ## <a name="see-also"></a>Další informace najdete v tématech 
 
- [Přehled analýzy textu](../overview.md)  
+ [Přehled rozhraní API pro analýzu textu](../overview.md)  
  [Nejčastější dotazy](../text-analytics-resource-faq.md)</br>
- [Stránka produktu text Analytics](//go.microsoft.com/fwlink/?LinkID=759712) 
+ [Produktová stránka pro analýzu textu](//go.microsoft.com/fwlink/?LinkID=759712) 
 
 ## <a name="next-steps"></a>Další postup
 
 > [!div class="nextstepaction"]
-> [Rozhraní Text Analytics API](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1-Preview/operations/5ac4251d5b4ccd1554da7634)
+> [Rozhraní API pro analýzu textu](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1-Preview/operations/5ac4251d5b4ccd1554da7634)

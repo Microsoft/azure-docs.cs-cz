@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: article
-ms.date: 03/22/2019
+ms.date: 04/16/2019
 ms.author: diberry
-ms.openlocfilehash: 3e6b220e7193c5e683fc8a6c06a6e9e3dd3e3f6e
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.openlocfilehash: 5028a05fe74f1d19ed5e43ac797df87bbe3382e8
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58521614"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59680719"
 ---
 # <a name="install-and-run-face-containers"></a>Instalace a spouštění kontejnerů pro rozpoznávání tváře
 
@@ -32,7 +32,7 @@ Před použitím kontejnerů API pro rozpoznávání tváře, musí splňovat n�
 |--|--|
 |Modul docker| Je nutné modul Docker nainstalovaný na [hostitelský počítač](#the-host-computer). Docker nabízí balíčky, které nakonfigurují prostředí Dockeru na [macOS](https://docs.docker.com/docker-for-mac/), [Windows](https://docs.docker.com/docker-for-windows/), a [Linux](https://docs.docker.com/engine/installation/#supported-platforms). Základy Dockeru a kontejnerech základní informace o najdete v článku [přehled Dockeru](https://docs.docker.com/engine/docker-overview/).<br><br> Docker je třeba nastavit umožňující kontejnery a spojte se s odesílat fakturačních dat do Azure. <br><br> **Na Windows**, Docker musí být taky nakonfigurovaný pro podporu kontejnerů Linuxu.<br><br>|
 |Znalost Dockeru | Byste měli mít základní znalost konceptů Dockeru, jako je registrů, úložiště, kontejnery a Image kontejneru, jakož i znalost basic `docker` příkazy.| 
-|Rozhraní API pro rozpoznávání tváře prostředků |Chcete-li použít kontejner, musíte mít:<br><br>A _API pro rozpoznávání tváře_ prostředků Azure můžete získat přidružený klíč účtování a fakturace identifikátor URI koncového bodu. Obě hodnoty jsou k dispozici na stránkách portálu Azure přehled rozhraní API pro rozpoznávání tváře a klíče a jsou vyžadovány pro spuštění kontejneru.<br><br>**{BILLING_KEY}** : klíč prostředku<br><br>**{BILLING_ENDPOINT_URI}** : Příklad identifikátor URI koncového bodu je: `https://westus.api.cognitive.microsoft.com/text/analytics/v2.0`|
+|Azure `Cognitive Services` prostředků |Chcete-li použít kontejner, musíte mít:<br><br>A _služeb Cognitive Services_ prostředků Azure a související účtování klíč fakturační identifikátor URI koncového bodu. Obě hodnoty na stránce Přehled a klíče pro prostředek jsou k dispozici a jsou vyžadovány pro spuštění kontejneru. Je třeba přidat `face/v1.0` směrování na identifikátor URI koncového bodu, jak je znázorněno v následujícím příkladu BILLING_ENDPOINT_URI. <br><br>**{BILLING_KEY}** : klíč prostředku<br><br>**{BILLING_ENDPOINT_URI}** : Příklad identifikátor URI koncového bodu je: `https://westus.api.cognitive.microsoft.com/face/v1.0`|
 
 
 ## <a name="request-access-to-the-private-container-registry"></a>Požádat o přístup k registru kontejneru soukromého
@@ -86,8 +86,10 @@ Použití [dockeru spustit](https://docs.docker.com/engine/reference/commandline
 
 | Zástupný symbol | Hodnota |
 |-------------|-------|
-|{BILLING_KEY} | Tento klíč se používá ke spuštění kontejneru a je k dispozici na stránce klíče rozhraní API pro rozpoznávání tváře webu Azure portal.  |
-|{BILLING_ENDPOINT_URI} | Fakturační koncový bod hodnotu identifikátoru URI je k dispozici na stránce Přehled rozhraní API pro rozpoznávání tváře webu Azure portal.|
+|{BILLING_KEY} | Tento klíč se používá ke spuštění kontejneru a je k dispozici na Azure `Cognitive Services` stránka klíče.  |
+|{BILLING_ENDPOINT_URI} | Fakturační koncový bod hodnotu identifikátoru URI je k dispozici na Azure `Cognitive Services` stránka s přehledem. Příkladem je: `https://westus.api.cognitive.microsoft.com/face/v1.0`|
+
+Je třeba přidat `face/v1.0` směrování na identifikátor URI koncového bodu, jak je znázorněno v předchozím příkladu BILLING_ENDPOINT_URI. 
 
 Tyto parametry nahraďte vlastními hodnotami v následujícím příkladu `docker run` příkazu.
 

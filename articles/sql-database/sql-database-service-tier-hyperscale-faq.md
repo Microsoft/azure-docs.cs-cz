@@ -12,12 +12,12 @@ ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
 ms.date: 03/26/2019
-ms.openlocfilehash: 5247183f50301554a986fde474b27a9bfc67d91d
-ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
+ms.openlocfilehash: 7261a25251e93035c31004c9255612a0e3b45a2f
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58540665"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59680893"
 ---
 # <a name="faq-about-azure-sql-hyperscale-databases"></a>Nejčastější dotazy týkající se databáze Azure SQL Hyperškálováním
 
@@ -216,7 +216,7 @@ Ne. Ve verzi public preview nejde přesunout databázi Hyperškálovatelného na
 
 ### <a name="do-i-lose-any-functionality-or-capabilities-after-migration-to-the-hyperscale-service-tier"></a>Ztratit všechny možnosti nebo funkce po migraci na vrstvu služby hyperškálovatelný systém
 
-Ano. Některé funkce služby Azure SQL Database nepodporuje Hyperškálovatelného ve verzi public preview, včetně, ale nikoli výhradně dlouho období uchování zálohy. Po dokončení migrace databází do Hyperškálovatelného tyto funkce přestanou fungovat.
+Ano. Dlouhodobé uchovávání záloh ve službě Azure SQL Database nepodporuje Hyperškálovatelného ve verzi public preview. Po dokončení migrace databází do hyperškálovatelný systém tuto funkci přestane fungovat.
 
 ### <a name="can-i-move-my--on-premises-sql-server-database-or-my-sql-server-virtual-machine-database-to-hyperscale"></a>Můžu přesunout místní databázi systému SQL Server nebo virtuální počítač databázi systému SQL Server na hyperškálovatelný systém
 
@@ -295,7 +295,7 @@ Ne. Formát úložiště pro databáze hyperškálovatelný systém se liší od
 
 ### <a name="do-i-lose-any-functionality-or-capabilities-after-migration-to-the-hyperscale-service-tier"></a>Ztratit všechny možnosti nebo funkce po migraci na vrstvu služby hyperškálovatelný systém
 
-Ano. Některé funkce služby Azure SQL Database nepodporuje Hyperškálovatelného ve verzi public preview, včetně, ale nikoli výhradně transparentní šifrování dat a dlouho období uchování zálohy. Po dokončení migrace databází do Hyperškálovatelného tyto funkce přestanou fungovat.
+Ano. Dlouhodobé uchovávání záloh ve službě Azure SQL Database nepodporuje Hyperškálovatelného ve verzi public preview. Po dokončení migrace databází do hyperškálovatelný systém tuto funkci přestane fungovat.
 
 ### <a name="will-polybase-work-with-sql-database-hyperscale"></a>Polybase se práce s Hyperškálováním databáze SQL
 

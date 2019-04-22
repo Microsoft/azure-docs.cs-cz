@@ -14,10 +14,10 @@ ms.topic: conceptual
 ms.date: 04/11/2019
 ms.author: magoedte
 ms.openlocfilehash: 4476bb0a5a343fd43ce5ed70cf0e493d0ccae0e9
-ms.sourcegitcommit: f24b62e352e0512dfa2897362021b42e0cb9549d
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/11/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59505630"
 ---
 # <a name="collect-and-analyze-azure-activity-logs-in-log-analytics-workspace-in-azure-monitor"></a>Shromažďování a analýza protokolů aktivit Azure v pracovním prostoru Log Analytics ve službě Azure Monitor
@@ -54,7 +54,7 @@ Na rozdíl od většiny jiných řešení Azure Monitor není data shromážděn
 | --- | --- | --- |
 | [Agenti systému Windows](agent-windows.md) | Ne | Řešení neshromažďuje informace z agentů Windows. |
 | [Agenti systému Linux](../learn/quick-collect-linux-computer.md) | Ne | Řešení neshromažďuje informace z agentů Linuxu. |
-| [Skupina pro správu nástroje System Center Operations Manager](om-agents.md) | Ne | Řešení neshromažďuje informace z agentů odesílajících sestavy do skupiny pro správu Operations Manageru. |
+| [Skupina pro správu System Center Operations Manager](om-agents.md) | Ne | Řešení neshromažďuje informace z agentů odesílajících sestavy do skupiny pro správu Operations Manageru. |
 | [Účet služby Azure Storage](collect-azure-metrics-logs.md) | Ne | Řešení neshromažďuje informace ze služby Azure storage. |
 
 ## <a name="prerequisites"></a>Požadavky

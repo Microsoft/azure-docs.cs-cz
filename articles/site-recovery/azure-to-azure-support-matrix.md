@@ -6,14 +6,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 03/20/2019
+ms.date: 04/16/2019
 ms.author: raynew
-ms.openlocfilehash: 0c2ca8c17abd6ac5e540beec1bde715931e022a4
-ms.sourcegitcommit: 5f348bf7d6cf8e074576c73055e17d7036982ddb
+ms.openlocfilehash: 58d7aeb3c710610d93eda09b37374a167b444bd0
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2019
-ms.locfileid: "59609400"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59679002"
 ---
 # <a name="support-matrix-for-replicating-azure-vms-from-one-region-to-another"></a>Matice podpory pro replikaci virtuálních počítačů Azure z jedné oblasti do jiného
 
@@ -225,6 +225,7 @@ Disk úrovně Premium P10 nebo P15 | 16 kB | 4 MB/s |  336 GB na disk
 Disk úrovně Premium P10 nebo P15 | 32 kB nebo větší | 8 MB/s | 672 GB na disk
 Disk úrovně Premium P20 nebo P30 nebo P40 nebo P50 | 8 kB    | 5 MB/s | 421 GB na disk
 Disk úrovně Premium P20 nebo P30 nebo P40 nebo P50 | 16 kB nebo větší |20 MB/s | 1684 GB na disk
+
 ## <a name="replicated-machines---networking"></a>Replikované počítače - sítě
 **Nastavení** | **Podpora** | **Podrobnosti**
 --- | --- | ---
@@ -236,6 +237,7 @@ NSG na síťové KARTĚ | Podporováno | Přidružení NSG k síťovému rozhran
 NSG na podsítě | Podporováno | Přidružení skupiny zabezpečení sítě s podsítí pomocí Azure Automation skriptu v plánu obnovení.
 Vyhrazená IP adresa (statické) | Podporováno | Pokud má síťový adaptér na zdrojovém virtuálním počítači statickou IP adresu a cílová podsíť má stejnou IP adresu k dispozici, je přiřazen k převzetí virtuálního počítače.<br/><br/> Pokud cílová podsíť nemá stejnou IP adresu k dispozici, některou z dostupných IP adres v podsíti je vyhrazen pro virtuální počítač.<br/><br/> Můžete také určit pevnou IP adresu a podsítě v **replikované položky** > **nastavení** > **výpočty a síť**  >  **Síťová rozhraní**.
 Dynamická IP adresa | Podporováno | Pokud má síťový adaptér na zdroj dynamických IP adres, NIC se selhání pro virtuální počítač je dynamický ve výchozím nastavení.<br/><br/> Tuto hodnotu můžete změnit na pevnou IP adresu v případě potřeby.
+Několik IP adres | Nepodporuje se | Když převzetí služeb při selhání virtuálního počítače, který má síťové rozhraní s několika IP adresami, se ukládají jenom primární IP adresu síťové karty ve zdrojové oblasti. Přiřadit několik IP adres, můžete přidat virtuální počítače, které [plánu obnovení](recovery-plan-overview.md) a připojit skript pro přiřazení dalších IP adres k plánu nebo můžete provést změny ručně nebo pomocí skriptu po převzetí služeb při selhání. 
 Traffic Manager     | Podporováno | Traffic Manager vám umožňují předem nakonfigurovat tak, aby provoz se směruje do koncového bodu ve zdrojové oblasti v pravidelných intervalech a ke koncovému bodu v cílové oblasti v případě převzetí služeb při selhání.
 Azure DNS | Podporováno |
 Vlastní DNS  | Podporováno |

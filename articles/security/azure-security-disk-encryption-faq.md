@@ -5,14 +5,14 @@ author: msmbaldwin
 ms.service: security
 ms.topic: article
 ms.author: mbaldwin
-ms.date: 04/05/2019
+ms.date: 04/16/2019
 ms.custom: seodec18
-ms.openlocfilehash: d7ccf370ae2f3f9add2b73797e8938d4580d81dd
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.openlocfilehash: 2a5fb822a84792cec059aa6c78b66b3a628f25af
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/11/2019
-ms.locfileid: "59493140"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59679274"
 ---
 # <a name="azure-disk-encryption-for-iaas-vms-faq"></a>Azure Disk Encryption pro virtuální počítače IaaS – nejčastější dotazy
 
@@ -45,6 +45,7 @@ Server distribucí systému Linux, které nejsou schválené pro Azure nepodporu
 
 | Linuxové distribuce | Verze | Typ svazku podporovaný pro šifrování|
 | --- | --- |--- |
+| Ubuntu | 18.04| Disk operačního systému a dat |
 | Ubuntu | 16.04| Disk operačního systému a dat |
 | Ubuntu | 14.04.5</br>[s Azure vyladěný jádra aktualizovat, aby 4.15 nebo novější](azure-security-disk-encryption-tsg.md#bkmk_Ubuntu14) | Disk operačního systému a dat |
 | RHEL | 7.6 | Operační systém a datového disku * |

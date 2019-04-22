@@ -9,10 +9,10 @@ ms.service: iot-dps
 services: iot-dps
 manager: philmea
 ms.openlocfilehash: 248c7977752eaec86121a0dd197e5bff2621ead5
-ms.sourcegitcommit: 41015688dc94593fd9662a7f0ba0e72f044915d6
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/11/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59500273"
 ---
 # <a name="how-to-provision-legacy-devices-using-symmetric-keys"></a>Jak zřídit starší zařízení pomocí symetrických klíčů
@@ -279,7 +279,7 @@ Mějte na paměti, že zůstane klíč odvozené zařízení jsou součástí im
 ## <a name="next-steps"></a>Další postup
 
 * Přečtěte si další Reprovisioning, najdete v článku [neukončil koncepty zařízení centra IoT](concepts-device-reprovision.md) 
-* [Rychlý start: Zřízení simulovaného zařízení pomocí symetrických klíčů](quick-create-simulated-device-symm-key.md)
+* [Rychlé zprovoznění: Zřízení simulovaného zařízení pomocí symetrických klíčů](quick-create-simulated-device-symm-key.md)
 * Zrušení zřízení Další informace najdete v tématu [jak zrušit zřízení zařízení, které byly dříve automatické zřizování](how-to-unprovision-devices.md) 
 
 

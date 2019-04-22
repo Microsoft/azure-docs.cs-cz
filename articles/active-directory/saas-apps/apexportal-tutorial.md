@@ -8,19 +8,20 @@ manager: mtillman
 ms.reviewer: barbkess
 ms.assetid: db204a46-6460-4ace-bdbb-4353846723ad
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 01/17/2019
+ms.date: 04/15/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 10ffd7207367d0bbdd670fb8402775b26952ae5d
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 9d9f83e0b6136a27c0cd519a345e085040f47cc6
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57852589"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59680124"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-apex-portal"></a>Kurz: Integrace Azure Active Directory pomocí portálu vrcholu
 
@@ -68,7 +69,7 @@ Konfigurovat integraci portálu vrcholu do služby Azure AD, budete muset přida
 
 4. Do vyhledávacího pole zadejte **vrcholu portál**vyberte **vrcholu portál** z panelu výsledků klikněte **přidat** tlačítko pro přidání aplikace.
 
-     ![Portál vrcholu v seznamu výsledků](common/search-new-app.png)
+    ![Portál vrcholu v seznamu výsledků](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a otestování služby Azure AD jednotného přihlašování
 
@@ -106,9 +107,9 @@ Ke konfiguraci Azure AD jednotné přihlašování pomocí portálu vrcholu, pro
 
     ![Vrcholu portál domény a adresy URL jednotného přihlašování – informace](common/idp-intiated.png)
 
-    a. V **identifikátor** textové pole, zadejte adresu URL, pomocí následujícího vzorce: `https://<customer name>.apexanalytix.com/saml/sso.aspx`
+    a. V **identifikátor** textové pole, zadejte adresu URL, pomocí následujícího vzorce: `https://<customer name>.apexportal.net/saml/sso.aspx`
 
-    b. V **adresy URL odpovědi** textové pole, zadejte adresu URL, pomocí následujícího vzorce: `https://<customer name>.apexanalytix.com/saml/sso.aspx`
+    b. V **adresy URL odpovědi** textové pole, zadejte adresu URL, pomocí následujícího vzorce: `https://<customer name>.apexportal.net/saml/sso.aspx`
 
     > [!NOTE]
     > Tyto hodnoty nejsou skutečný. Aktualizujte tyto hodnoty se skutečné identifikátorem a adresa URL odpovědi. Kontakt [tým podpory klienta portálu vrcholu](mailto:support@apexanalytix.com) k získání těchto hodnot. Můžete také odkazovat na tyto vzory se dají ukazuje **základní konfiguraci SAML** části webu Azure Portal.
@@ -120,7 +121,7 @@ Ke konfiguraci Azure AD jednotné přihlašování pomocí portálu vrcholu, pro
 6. V **deklarace identity uživatelů** části na **atributy uživatele** dialogovém okně Upravit deklarace identity pomocí **ikonu pro úpravu** nebo přidání deklarace identity pomocí **přidat novou deklaraci**ke konfiguraci atribut tokenu SAML, jak je znázorněno na obrázku výše a proveďte následující kroky:
 
     | Název | Zdrojový atribut|
-    | ------------------- | -------------------- |
+    | -------- | --------- |
     | JMÉNO | user.givenname |
     | PŘÍJMENÍ | user.surname |
     | MAIL | user.mail |
@@ -154,7 +155,7 @@ Ke konfiguraci Azure AD jednotné přihlašování pomocí portálu vrcholu, pro
 
     a. Přihlašovací adresa URL
 
-    b. Identifikátor služby Azure Ad
+    b. Identifikátor Azure AD
 
     c. Adresa URL – odhlášení
 
@@ -180,8 +181,7 @@ Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal
 
     a. V **název** zadat **BrittaSimon**.
   
-    b. V **uživatelské jméno** typ pole **brittasimon\@yourcompanydomain.extension**  
-    Například BrittaSimon@contoso.com.
+    b. V **uživatelské jméno** typ pole `brittasimon\@yourcompanydomain.extension`. Například, BrittaSimon@contoso.com.
 
     c. Vyberte **zobrazit heslo** zaškrtněte políčko a zapište si hodnotu, která se zobrazí v poli heslo.
 
@@ -233,4 +233,3 @@ Když kliknete na dlaždici vrcholu portál na přístupovém panelu, by měl b�
 - [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-

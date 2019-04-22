@@ -8,16 +8,16 @@ ms.service: azure-functions
 ms.topic: article
 ms.date: 4/11/2019
 ms.author: alkarche
-ms.openlocfilehash: f8ddcbcb25dc45ee71304ffa1bc5c0c4d3751b61
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
-ms.translationtype: MT
+ms.openlocfilehash: 749e211c9844f644e04d5135f99d71918d65b66b
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59523728"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59680337"
 ---
 # <a name="integrate-a-function-app-with-an-azure-virtual-network"></a>Integrace aplikace function app s Azure virtual network
 
-Tento podrobný kurz ukazuje, jak pomocí služby Azure Functions pro připojení k prostředkům ve virtuální síti Azure.
+V tomto kurzu se dozvíte, jak pomocí služby Azure Functions pro připojení k prostředkům ve virtuální síti Azure.
 
 Pro účely tohoto kurzu jsme se nasazení webu z Wordpressu na virtuální počítač do privátního, bez – přístup k Internetu, virtuální sítě. Pak nasadíme funkce s přístupem k Internetu a virtuální síť. Tato funkce použije pro přístup k prostředkům z webu WordPress nasadit uvnitř virtuální sítě.
 

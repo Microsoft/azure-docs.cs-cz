@@ -10,12 +10,12 @@ ms.subservice: consume
 ms.date: 03/27/2019
 ms.author: jrj
 ms.reviewer: igorstan
-ms.openlocfilehash: 3a0c675ac9c8a782b94d127e877646bf37af1371
-ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
+ms.openlocfilehash: 6860746a1b20fe06de2dafa6035ae560bde24a29
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58621477"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59678662"
 ---
 # <a name="sql-data-warehouse-business-intelligence-partners"></a>Partneři business intelligence SQL Data Warehouse
 K vytvoření vašeho řešení začátku do konce datového skladu, vyberte z široké škály špičkové nástroje.  Tento článek se soustředí partnerských společností Microsoft s Azure SQL Data Warehouse podporuje řešení oficiální business intelligence (BI).
@@ -26,7 +26,7 @@ K vytvoření vašeho řešení začátku do konce datového skladu, vyberte z �
 | ![Birst][1] |**Birst**<br>Birst připojí na celou organizaci prostřednictvím sítě vetkané virtualizované BI instancí na horní sdílených běžné analytické prostředků infrastruktury|[Stránka produktu][birst_website]<br>[Azure Marketplace][birst_marketplace]<br> |
 | ![ClearStory dat][2] |**Data clearStory (průběžné obchodní přehledy)**<br>ClearStory dat umožňuje rychle cyklu analýzy napříč různorodých data uložená v SQL Data Warehouse. Společnosti clearStory integrované založené na Sparku platforma a analýzy aplikací rychlosti přístupu k datům a sladění různorodých datových sad. Umožňují rychlý a spolupráci průzkumu, který umožňuje podnikovým uživatelům umožňuje se běžných a získávat poznatky. |[Stránka produktu][clearstory_website]<br> |
 | ![Dundas][4] |**Dundas BI**<br>Vizualizace dat Dundas je přední globální poskytovatel Business Intelligence a vizualizace dat softwaru.  Dundas, vytváření sestav, analýzy a řídicí panely vizuálních dat poskytuje bezproblémovou integraci do obchodních aplikací a umožňuje lepší rozhodnutí a rychlejší přehledy.|[Stránka produktu][dundas_bi_website]<br>[Azure Marketplace][dundas_bi_marketplace]<br> |
-| ![IBM Cognos][3] |**IBM Cognos Analytics**< brCognos Analytics zahrnuje inteligentní samoobslužné funkce, které bylo jednoduché, srozumitelné a snadno se používá, jestli se zkušeného obchodní analytička zkoumání kinks rozsáhlé dodavatelský řetězec nebo obchodník optimalizace jediné kampaně. Cognos Analytics použije k provedení rutinní zkoumání dat, a usnadnit tak uživatelům odpovědi, které potřebují AI a další inteligentní funkce|[Stránka produktu][cognosanalytics_website]<br>|
+| ![IBM Cognos][3] |**IBM Cognos Analytics**<br>Cognos Analytics zahrnuje inteligentní samoobslužné funkce, které bylo jednoduché, srozumitelné a snadno se používá, jestli se zkušeného obchodní analytička zkoumání kinks rozsáhlé dodavatelský řetězec nebo obchodník optimalizaci jedné kampaně. Cognos Analytics použije k provedení rutinní zkoumání dat, a usnadnit tak uživatelům odpovědi, které potřebují AI a další inteligentní funkce|[Stránka produktu][cognosanalytics_website]<br>|
 | ![Informace o tvůrci][13] |**Informace o tvůrci (WebFOCUS)**<br>WebFOCUS business intelligence pomáhá podnikům používat data další strategicky napříč a nad rámec podniku. Umožňuje uživatelům a správcům umožňuje rychle vytvářet řídicí panely, které kombinace obsah z více zdrojů a formátů a poskytuje špičkové zabezpečení a komplexní zásad správného řízení, které umožňuje bezproblémové, zabezpečte diverly a sdílení jakékoli analýz a BI obsah|[Stránka produktu][informationbuilders_website]<br> |
 ![Jinfonet][5] |**Jinfonet JReport**<br>JReport je Vložitelný řešení BI pro firmy. Toto řešení umožňuje uživatelům vytvářet sestavy, řídicí panely a analýzy dat v cloudu, velké objemy dat a transakční data zdroje. Díky vizualizaci dat, můžete provést vlastní sestavy a data zjišťování pro agilní a v chodu rozhodování. |[Stránka produktu][jinfonet_website]<br> |
 | ![LogiAnalytics][6] |**Logi Analytics**<br>Společně Logi Analytics a Azure SQL Data Warehouse umožňuje vaší organizaci shromažďovat, analyzovat a okamžitě reagovat na největší a nejvíce různých datových sad v celém světě. |[Stránka produktu][logianalytics_website]<br>|

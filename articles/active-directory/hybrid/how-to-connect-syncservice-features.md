@@ -16,12 +16,12 @@ ms.date: 06/25/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 82b2b75d5505ddda91232bf1055bd70a68d333d0
-ms.sourcegitcommit: ad3e63af10cd2b24bf4ebb9cc630b998290af467
+ms.openlocfilehash: be67a6f287e2d6e77070928cbe12542857696011
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58792395"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59680277"
 ---
 # <a name="azure-ad-connect-sync-service-features"></a>Funkce služby synchronizace Azure AD Connect
 
@@ -96,7 +96,7 @@ V minulosti aktualizace pomocí služby sync z místní atribut UserPrincipalNam
 
 Další podrobnosti najdete v tématu [uživatelská jména v Office 365, Azure nebo Intune se neshodují s místními UPN nebo alternativní přihlašovací ID](https://support.microsoft.com/kb/2523192).
 
-Zapnutím této funkce povolíte synchronizační modul aktualizovat userPrincipalName, pokud je změněný v místním a pomocí synchronizace hodnot hash hesel. Pokud používáte federace, tato funkce není podporována.
+Povolení této funkce umožňuje modulu synchronizace aktualizovat userPrincipalName, pokud je změněný v místním a použijete hodnotu hash hesla synchronizace předávacím ověřováním. Pokud používáte federace, tato funkce není podporována.
 
 Tato funkce je na ve výchozím nastavení pro nově vytvořené adresářů služby Azure AD. Můžete zobrazit, pokud je tato funkce povolena pro vás spuštěním:  
 

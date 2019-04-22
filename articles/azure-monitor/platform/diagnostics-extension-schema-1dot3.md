@@ -10,10 +10,10 @@ ms.date: 09/20/2018
 ms.author: robb
 ms.subservice: diagnostic-extension
 ms.openlocfilehash: fa03017c35c76d986139eeee00eea8a9b4a00e62
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/11/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59497079"
 ---
 # <a name="azure-diagnostics-13-and-later-configuration-schema"></a>Azure Diagnostics 1.3 a novější schéma konfigurace
@@ -495,7 +495,7 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 |--------------------|-----------------|  
 |**IISLogs**|Včetně tohoto elementu v konfiguraci povoluje shromažďování protokolů služby IIS:<br /><br /> **containerName** – název kontejneru objektů blob ve vašem účtu Azure Storage, který se má použít k ukládání protokolů služby IIS.|   
 |**FailedRequestLogs**|Včetně tohoto elementu v konfiguraci umožňuje shromažďování protokolů o neúspěšných požadavků na web služby IIS nebo aplikaci. Musíte také povolit trasování možností v části **systému. Webový server** v **Web.config**.|  
-|**Zdroje dat**|Seznam adresářů pro monitorování.|
+|**DataSources**|Seznam adresářů pro monitorování.|
 
 
 
@@ -545,7 +545,7 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 |Podřízené prvky|Popis|  
 |--------------------|-----------------|  
 |**DefaultEvents**|Volitelný atribut:<br/><br/> **eventDestination** -název tabulky k uložení událostí v|  
-|**Událost**|Požadovaný atribut:<br /><br /> **ID** – id události.<br /><br /> Volitelný atribut:<br /><br /> **eventDestination** -název tabulky k uložení událostí v|  
+|**Události**|Požadovaný atribut:<br /><br /> **ID** – id události.<br /><br /> Volitelný atribut:<br /><br /> **eventDestination** -název tabulky k uložení událostí v|  
 
 
 
@@ -555,7 +555,7 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 |Podřízené prvky|Popis|  
 |--------------------|-----------------|  
 |**DefaultEvents**|Volitelný atribut:<br /><br /> **eventDestination** -název tabulky k uložení událostí v|  
-|**Událost**|Požadovaný atribut:<br /><br /> **ID** – id události.<br /><br /> Volitelný atribut:<br /><br /> **eventDestination** -název tabulky k uložení událostí v|  
+|**Události**|Požadovaný atribut:<br /><br /> **ID** – id události.<br /><br /> Volitelný atribut:<br /><br /> **eventDestination** -název tabulky k uložení událostí v|  
 
 
 
@@ -598,7 +598,7 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 
 |Podřízený Element.|Popis|  
 |-------------------|-----------------|  
-|**Zdroj dat**|Protokoly událostí Windows a shromažďovat. Požadovaný atribut:<br /><br /> **název** – dotaz XPath popisující události systému windows, které se mají shromažďovat. Příklad:<br /><br /> `Application!*[System[(Level <=3)]], System!*[System[(Level <=3)]], System!*[System[Provider[@Name='Microsoft Antimalware']]], Security!*[System[(Level <= 3)]`<br /><br /> Ke shromažďování všech událostí, zadejte "*"|  
+|**DataSource**|Protokoly událostí Windows a shromažďovat. Požadovaný atribut:<br /><br /> **název** – dotaz XPath popisující události systému windows, které se mají shromažďovat. Příklad:<br /><br /> `Application!*[System[(Level <=3)]], System!*[System[(Level <=3)]], System!*[System[Provider[@Name='Microsoft Antimalware']]], Security!*[System[(Level <= 3)]`<br /><br /> Ke shromažďování všech událostí, zadejte "*"|  
 
 
 
@@ -613,9 +613,9 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 |Atribut|Type|Popis|  
 |---------------|----------|-----------------|  
 |**bufferQuotaInMB**|**unsignedInt**|Volitelné. Určuje maximální velikost úložiště v systému souborů, která je k dispozici pro zadaná data.<br /><br /> Výchozí hodnota je 0.|  
-|**scheduledTransferLogLevelFilter**|**string**|Volitelné. Určuje minimální úroveň závažnosti pro položky protokolu, které byly převedeny. Výchozí hodnota je **Nedefinováno**, který převede všechny protokoly. Další možné hodnoty (v pořadí podle nejvíce alespoň informace) jsou **Verbose**, **informace**, **upozornění**, **chyba**a **Kritické**.|  
-|**Hodnota scheduledTransferPeriod**|**doba trvání**|Volitelné. Určuje interval mezi naplánované přenosů dat, zaokrouhluje nahoru na nejbližší minutu.<br /><br /> Výchozí hodnota je PT0S.|  
-|**jímky** |**string**| Přidat do 1.5. Volitelné. Odkazuje na umístění jímky a také posílat diagnostická data. Například Application Insights nebo Event Hubs.|  
+|**scheduledTransferLogLevelFilter**|**řetězec**|Volitelné. Určuje minimální úroveň závažnosti pro položky protokolu, které byly převedeny. Výchozí hodnota je **Nedefinováno**, který převede všechny protokoly. Další možné hodnoty (v pořadí podle nejvíce alespoň informace) jsou **Verbose**, **informace**, **upozornění**, **chyba**a **Kritické**.|  
+|**scheduledTransferPeriod**|**Doba trvání**|Volitelné. Určuje interval mezi naplánované přenosů dat, zaokrouhluje nahoru na nejbližší minutu.<br /><br /> Výchozí hodnota je PT0S.|  
+|**jímky** |**řetězec**| Přidat do 1.5. Volitelné. Odkazuje na umístění jímky a také posílat diagnostická data. Například Application Insights nebo Event Hubs.|  
 
 ## <a name="dockersources"></a>DockerSources
  *Stromové struktury: Root - DiagnosticsConfiguration - PublicConfig - WadCFG - DiagnosticMonitorConfiguration - DockerSources*
@@ -633,7 +633,7 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 
 |Název elementu|Popis|  
 |------------------|-----------------|  
-|**Jímka**|Na této stránce najdete v popisu jinde.|  
+|**jímka**|Na této stránce najdete v popisu jinde.|  
 
 ## <a name="sink-element"></a>Jímky – Element
  *Stromové struktury: SinksConfig root - WadCFG DiagnosticsConfiguration - PublicConfig – - - jímky*
@@ -644,12 +644,12 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 
 |Atribut|Type|Popis|  
 |---------------|----------|-----------------|  
-|**jméno**|string|Řetězec, který identifikuje sinkname.|  
+|**Jméno**|string|Řetězec, který identifikuje sinkname.|  
 
 |Element|Type|Popis|  
 |-------------|----------|-----------------|  
 |**Application Insights**|string|Používá pouze při odesílání dat do služby Application Insights. Obsahují Instrumentační klíč pro aktivní účet Application Insights, máte přístup.|  
-|**Kanály**|string|Jeden pro každý další filtrování datového proudu, který jste|  
+|**kanály**|string|Jeden pro každý další filtrování datového proudu, který jste|  
 
 ## <a name="channels-element"></a>Element kanály  
  *Stromové struktury: Kanály SinksConfig – jímky – root - WadCFG DiagnosticsConfiguration - PublicConfig – –*
@@ -671,8 +671,8 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 
 |Atributy|Type|Popis|  
 |----------------|----------|-----------------|  
-|**LogLevel**|**string**|Určuje minimální úroveň závažnosti pro položky protokolu, které byly převedeny. Výchozí hodnota je **Nedefinováno**, který převede všechny protokoly. Další možné hodnoty (v pořadí podle nejvíce alespoň informace) jsou **Verbose**, **informace**, **upozornění**, **chyba**a **Kritické**.|  
-|**jméno**|**string**|Jedinečný název kanálu pro odkazování na|  
+|**logLevel**|**řetězec**|Určuje minimální úroveň závažnosti pro položky protokolu, které byly převedeny. Výchozí hodnota je **Nedefinováno**, který převede všechny protokoly. Další možné hodnoty (v pořadí podle nejvíce alespoň informace) jsou **Verbose**, **informace**, **upozornění**, **chyba**a **Kritické**.|  
+|**Jméno**|**řetězec**|Jedinečný název kanálu pro odkazování na|  
 
 
 ## <a name="privateconfig-element"></a>Elementu PrivateConfig

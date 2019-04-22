@@ -11,16 +11,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 03/24/2019
+ms.date: 04/16/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: seohack1
-ms.openlocfilehash: d85c49cc8533b88382de81f8f12fde7116afb69a
-ms.sourcegitcommit: 280d9348b53b16e068cf8615a15b958fccad366a
+ms.openlocfilehash: c6f947ad6f2f8dba2df17132243eb6d918539c14
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58407585"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59678424"
 ---
 # <a name="troubleshoot-rbac-for-azure-resources"></a>Řešení potíží s RBAC pro prostředky Azure
 
@@ -29,20 +29,20 @@ V tomto článku, abyste věděli, co očekávat při používání role na webu
 ## <a name="problems-with-rbac-role-assignments"></a>Potíže s přiřazováním rolí RBAC
 
 - Pokud se nemůžete přidat přiřazení role na webu Azure Portal na **řízení přístupu (IAM)** protože **přidat** > **přidat přiřazení role** možnost je zakázaná, nebo vzhledem k tomu, že se zobrazí chyba oprávnění "Klient s id objektu nemá oprávnění k provedení akce", zkontrolujte, že jste aktuálně přihlášení jako uživatel, který má přiřazenou roli, která má `Microsoft.Authorization/roleAssignments/write` oprávnění jako [vlastníka](built-in-roles.md#owner) nebo [správce uživatelských přístupů](built-in-roles.md#user-access-administrator) v oboru, který se snažíte přiřadit roli.
-- Pokud se zobrazí chybová zpráva "žádné další přiřazení rolí je možné vytvořit. (kód: RoleAssignmentLimitExceeded) "při pokusu o přiřazení role se snaží snížit počet přiřazení rolí tak, že místo toho přiřadíte role do skupin. Azure podporuje až **2000** přiřazení rolí na jedno předplatné.
+- Pokud se zobrazí chybová zpráva "žádné další přiřazení rolí je možné vytvořit. (kód: RoleAssignmentLimitExceeded), zkuste snížit počet přiřazení rolí tím, že místo toho přiřadíte role ke skupinám. Azure podporuje až **2 000** přiřazení rolí na jedno předplatné.
 
 ## <a name="problems-with-custom-roles"></a>Potíže s vlastními rolemi
 
 - Pokud potřebujete postup, jak vytvořit vlastní roli, najdete v kurzech vlastní role pomocí [prostředí Azure PowerShell](tutorial-custom-role-powershell.md) nebo [rozhraní příkazového řádku Azure](tutorial-custom-role-cli.md).
 - Pokud se nemůžete aktualizovat existující vlastní roli, zkontrolujte, že jste aktuálně přihlášení jako uživatel, který má přiřazenou roli, která má `Microsoft.Authorization/roleDefinition/write` oprávnění jako [vlastníka](built-in-roles.md#owner) nebo [správce uživatelských přístupů](built-in-roles.md#user-access-administrator).
-- Pokud nemůžete odstranit vlastní roli a zobrazí se chybová zpráva "existuje jsou odkazují stávající přiřazení rolí role (kód: RoleDefinitionHasAssignments) ", pak přiřazení rolí se pořád používá vlastní roli. Odebrání těchto přiřazení rolí a zkuste to znovu odstranit vlastní roli.
-- Pokud se zobrazí chybová zpráva "maximální počet definic rolí překročena. Je možné vytvořit další definice rolí (kód: RoleDefinitionLimitExceeded) "při pokusu o vytvoření nové vlastní role odstranit všechny vlastní role, které nejsou používány. Azure podporuje až **2000** vlastní role v tenantovi.
-- Pokud podobně jako "klient má oprávnění k provedení akce"Microsoft.Authorization/roleDefinitions/write"v rozsahu '/Subscriptions/ {subscriptionid}', ale nebyl nalezen propojenému předplatnému" dojde k chybě při pokusu aktualizovat vlastní roli, zkontrolujte zda jeden nebo více [přiřaditelnými obory](role-definitions.md#assignablescopes) byly odstraněny v tenantovi. Pokud byla odstraněna oboru, vytvořte lístek podpory jako neexistuje žádné řešení samoobslužné služby v tuto chvíli k dispozici.
+- Pokud se vám nedaří odstranit vlastní roli a zobrazuje se chybová zpráva Na roli odkazují stávající přiřazení rolí (kód: RoleDefinitionHasAssignments), znamená to, že vlastní roli stále používají některá přiřazení rolí. Odeberte tato přiřazení rolí a zkuste vlastní roli odstranit znovu.
+- Pokud se při pokusu o vytvoření nové vlastní role zobrazí chybová zpráva Došlo k překročení limitu definic rolí. Je možné vytvořit další definice rolí (kód: RoleDefinitionLimitExceeded) "při pokusu o vytvoření nové vlastní role odstranit všechny vlastní role, které nejsou používány. Azure podporuje až **2000** vlastní role v tenantovi.
+- Pokud podobně jako "klient má oprávnění k provedení akce"Microsoft.Authorization/roleDefinitions/write"v rozsahu '/Subscriptions/ {subscriptionid}', ale nebyl nalezen propojenému předplatnému" dojde k chybě při pokusu aktualizovat vlastní roli, zkontrolujte zda jeden nebo více [přiřaditelnými obory](role-definitions.md#assignablescopes) byly odstraněny v tenantovi. Pokud se obor odstranil, vytvořte lístek podpory, protože v současné době není k dispozici žádné samoobslužné řešení.
 
 ## <a name="recover-rbac-when-subscriptions-are-moved-across-tenants"></a>Obnovení RBAC při přesouvání předplatných mezi tenanty
 
 - Pokud potřebujete postup na převod předplatného do jiné služby Azure AD tenanta, přečtěte si téma [přenos vlastnictví předplatného Azure na jiný účet](../billing/billing-subscription-transfer.md).
-- Převod předplatného do jiné služby Azure AD tenanta, všechna přiřazení rolí se trvale odstraní z tenanta Azure AD zdroje a nebudou migrována do cílového tenanta Azure AD. Budete muset znovu vytvořit přiřazení role v cílovému tenantovi.
+- Když převedete předplatné do jiného tenanta Azure AD, všechna přiřazení rolí se odstraní ze zdrojového tenanta Azure AD a nedojde k jejich migraci do cílového tenanta Azure AD. Přiřazení rolí je potřeba v cílovém tenantovi znovu vytvořit. Také budete muset znovu vytvořit ručně spravované identity pro prostředky Azure. Další informace najdete v tématu [nejčastější dotazy a známé problémy s spravovaných identit](../active-directory/managed-identities-azure-resources/known-issues.md).
 - Pokud jste Azure AD globálního správce a nemají přístup k předplatnému po byl přesunut mezi tenanty, použijte **Access management pro prostředky Azure** tímto přepínačem můžete dočasně [zvýšení vaší přístupu](elevate-access-global-admin.md) získat přístup k předplatnému.
 
 ## <a name="issues-with-service-admins-or-co-admins"></a>Problémy se správci služeb nebo spolusprávci
@@ -51,7 +51,7 @@ V tomto článku, abyste věděli, co očekávat při používání role na webu
 
 ## <a name="access-denied-or-permission-errors"></a>Přístup byl odepřen nebo chyby oprávnění
 
-- Pokud se zobrazí chyba oprávnění "Klient s id objektu nemá oprávnění k provedení akce rozsahu (kód: AuthorizationFailed) "při pokusu o vytvoření prostředku, zkontrolujte, že jste aktuálně přihlášení jako uživatel, který je přiřazena role, který má oprávnění k zápisu do zdroje na vybraný obor. Třeba ke správě virtuálních počítačů ve skupině prostředků, měli byste mít [Přispěvatel virtuálních počítačů](built-in-roles.md#virtual-machine-contributor) role na skupinu prostředků (nebo nadřazený obor). Seznam oprávnění pro každou integrovanou roli najdete v tématu [předdefinované role pro prostředky Azure](built-in-roles.md).
+- Pokud při pokusu o vytvoření prostředku dojde k chybě oprávnění Klient s ID objektu nemá oprávnění k provedení akce v oboru (kód: AuthorizationFailed), zkontrolujte, že jste přihlášeni jako uživatel s přiřazenou rolí s oprávněním k zápisu pro prostředek ve vybraném oboru. Pokud například chcete spravovat virtuální počítače ve skupině prostředků, měli byste mít roli [Přispěvatel virtuálních počítačů](built-in-roles.md#virtual-machine-contributor) pro danou skupinu prostředků (nebo nadřazený obor). Seznam oprávnění jednotlivých předdefinovaných rolí najdete v tématu [Předdefinované role pro prostředky Azure](built-in-roles.md).
 - Pokud se zobrazí chyba oprávnění "Nemáte oprávnění k vytvoření žádosti o podporu" při pokusu o vytvoření nebo aktualizaci lístek podpory, zkontrolujte, že jste aktuálně přihlášení jako uživatel, který má přiřazenou roli, která má `Microsoft.Support/supportTickets/write` oprávnění, jako je například [Přispěvatel žádostí o podporu](built-in-roles.md#support-request-contributor).
 
 ## <a name="rbac-changes-are-not-being-detected"></a>Nebyly detekovány změny RBAC
@@ -127,6 +127,6 @@ Některé funkce [Azure Functions](../azure-functions/functions-overview.md) vy�
 Můžete kliknout na tlačítko čtečky **funkce platformy** kartu a potom klikněte na tlačítko **všechna nastavení** zobrazení některých nastavení související se aplikace function app (podobně jako webová aplikace), ale nemohou upravovat některé z těchto nastavení.
 
 ## <a name="next-steps"></a>Další postup
-* [Správa přístupu k prostředkům Azure pomocí RBAC a webu Azure portal](role-assignments-portal.md)
+* [Správa přístupu k prostředkům Azure pomocí RBAC a webu Azure Portal](role-assignments-portal.md)
 * [Zobrazení protokolů aktivit se změny prostředků Azure RBAC](change-history-report.md)
 

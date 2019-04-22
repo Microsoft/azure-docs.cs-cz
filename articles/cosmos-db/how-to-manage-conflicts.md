@@ -1,21 +1,21 @@
 ---
 title: Informace o správě konfliktů mezi oblastmi ve službě Azure Cosmos DB
 description: Informace o správě konfliktů ve službě Azure Cosmos DB
-author: christopheranderson
+author: rimman
 ms.service: cosmos-db
 ms.topic: sample
-ms.date: 10/17/2018
-ms.author: chrande
-ms.openlocfilehash: c7edc9bd20b42725903201fae6349a37a8c0d9eb
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
-ms.translationtype: MT
+ms.date: 04/15/2019
+ms.author: rimman
+ms.openlocfilehash: 6f4e6fce88815490ceffd7456cde045b38e32b29
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59548815"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59680209"
 ---
 # <a name="manage-conflict-resolution-policies-in-azure-cosmos-db"></a>Správa zásad řešení konfliktu ve službě Azure Cosmos DB
 
-V případě zápisů do více oblastí platí, že pokud dojde ke konfliktu dat, můžete ho vyřešit pomocí různých zásad řešení konfliktů. Tento článek popisuje, jak spravovat zásady řešení konfliktu s použitím platformy jiný jazyk.
+S více oblastí zápisu když víc klientů zapisuje do jedné položce, je v konfliktu může dojít. Když dojde ke konfliktu, lze vyřešit konflikt pomocí různých konflikt zásad řešení. Tento článek popisuje, jak spravovat zásady řešení konfliktů.
 
 ## <a name="create-a-custom-conflict-resolution-policy"></a>Vytvoření vlastní zásady řešení konfliktů
 
@@ -82,9 +82,9 @@ manual_collection = {
 manual_collection = client.CreateContainer(database['_self'], collection)
 ```
 
-## <a name="create-a-custom-conflict-resolution-policy-with-a-stored-procedure"></a>Vytvoření zásady překladu IP adres vlastní konflikt pomocí uložené procedury
+## <a name="create-a-custom-conflict-resolution-policy-using-a-stored-procedure"></a>Vytvořit zásadu rozlišení vlastní konflikt pomocí uložené procedury
 
-Tyto ukázky předvádějí, jak nastavit kontejner s vlastní zásadou řešení konfliktů s využitím uložené procedury, která konflikt vyřeší. Tyto konflikty nezobrazují v konfliktu informačního kanálu, pokud dojde k chybě v uložené proceduře.
+Tyto ukázky předvádějí, jak vytvořit kontejner pomocí zásad vlastní konflikt řešení pomocí uložené procedury k vyřešení konfliktu. Tyto konflikty nezobrazují v konfliktu informačního kanálu, pokud dojde k chybě v uložené proceduře.
 
 ### <a id="create-custom-conflict-resolution-policy-stored-proc-dotnet"></a>.NET SDK
 
@@ -162,9 +162,9 @@ udp_collection = self.try_create_document_collection(create_client, database, ud
 
 Po vytvoření kontejneru, je nutné vytvořit `resolver` uložené procedury.
 
-## <a name="create-a-last-writer-wins-conflict-resolution-policy"></a>Vytvořit zásadu řešení konfliktu poslední zápis
+## <a name="create-a-last-writer-wins-lww-conflict-resolution-policy"></a>Vytvoření zásada řešení konfliktů poslední zápis (LWW)
 
-Tyto ukázky předvádějí, jak vytvořit kontejner s zásada řešení konfliktů poslední zápis. Pokud cesta není nastavena nebo je neplatná, bude výchozí `_ts` vlastnost. Tato vlastnost je pole časového razítka. Tyto konflikty nezobrazují v informačním kanálu ke konfliktu.
+Tyto ukázky předvádějí, jak vytvořit kontejner s zásada řešení konfliktů poslední zápis. Pokud cesta není nastavena nebo je neplatná, bude výchozí `_ts` vlastnost. Tato vlastnost je pole časového razítka. Tyto konflikty nezobrazí v informačním kanálu ke konfliktu.
 
 ### <a id="create-custom-conflict-resolution-policy-lww-dotnet"></a>.NET SDK
 
@@ -233,7 +233,7 @@ udp_collection = self.try_create_document_collection(create_client, database, ud
 
 ## <a name="read-from-conflict-feed"></a>Čtení z informačního kanálu konfliktů
 
-Tyto ukázky předvádějí, jak číst z informačního kanálu konfliktů kontejneru. Je v konfliktu se zobrazí konflikt kanálu pouze v případě, že nebyly rozpoznány automaticky.
+Tyto ukázky předvádějí, jak číst z informačního kanálu konfliktů kontejneru. Je v konfliktu se zobrazí v konfliktu, jenom informační kanál pokud jejich nešlo přeložit automaticky, například zvolili zásada řešení konfliktů ruční a nezaregistrovali uloženou proceduru.
 
 ### <a id="read-from-conflict-feed-dotnet"></a>.NET SDK
 
@@ -285,6 +285,10 @@ while conflict:
 
 Další informace o konceptech služby Azure Cosmos DB, následující:
 
+* [Globální distribuce - pod pokličkou](global-dist-under-the-hood.md)
+* [Jak nakonfigurovat více hlavních databází ve svých aplikacích](how-to-multi-master.md)
+* [Konfigurace klientů pro multihoming](how-to-manage-database-account.md#configure-clients-for-multi-homing)
+* [Přidat nebo odebrat oblasti ze svého účtu Azure Cosmos DB](how-to-manage-database-account.md#addremove-regions-from-your-database-account)
 * [Jak nakonfigurovat více hlavních databází ve svých aplikacích](how-to-multi-master.md).
 * [Dělení a distribuce dat](partition-data.md)
 * [Indexování ve službě Azure Cosmos DB](indexing-policies.md)

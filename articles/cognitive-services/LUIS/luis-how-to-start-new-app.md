@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: article
-ms.date: 03/28/2019
+ms.date: 04/16/2019
 ms.author: diberry
-ms.openlocfilehash: 72c4f23f47e0a2c6d9a96dbbe36716bc3ab665f1
-ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
+ms.openlocfilehash: daffbe3f3158bb232f7db7ac90d766661e937643
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58891425"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59679640"
 ---
 # <a name="create-a-new-luis-app-in-the-luis-portal"></a>Vytvoření nové aplikace LUIS na portálu služby LUIS
 Existuje několik způsobů, jak vytvořit aplikaci LUIS. Můžete vytvořit aplikaci LUIS v [LUIS](https://www.luis.ai) portálu, nebo prostřednictvím LUIS vytváření [rozhraní API](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c2f).
@@ -67,10 +67,19 @@ Možné chyby jsou:
 
 * Aplikace s tímto názvem už existuje. Opětovné importování aplikace a nastavení **volitelný název** na nový název. 
 
-## <a name="export-app"></a>Exportovat aplikaci
+## <a name="export-app-for-backup"></a>Exportovat aplikaci pro zálohování
 
-1. Na **Moje aplikace** stránce **novou aplikaci Import**.
-1. V **novou aplikaci Import** dialogového okna, vyberte soubor JSON, který definuje aplikaci LUIS.
+1. Na **Moje aplikace** stránce **exportovat**.
+1. Vyberte **exportovat jako JSON**. Prohlížeč stáhne aktivní verzi aplikace.
+1. Přidejte tento soubor do zálohování systému pro archivaci modelu.
+
+## <a name="export-app-for-containers"></a>Exportovat aplikaci pro kontejnery
+
+1. Na **Moje aplikace** stránce **exportovat**.
+1. Vyberte **exportovat jako kontejner** vyberte, které publikované slotu (produkční nebo fázi), kterou chcete exportovat.
+1. Použít tento soubor s vaší [LUIS kontejneru](luis-container-howto.md). 
+
+    Pokud vás zajímají export trénovaného ale ne, ale publikované model se má použít s kontejnerem služby LUIS, pokračujte **verze** stránku a z něj exportovat. 
 
 ## <a name="delete-app"></a>Odstranit aplikaci
 

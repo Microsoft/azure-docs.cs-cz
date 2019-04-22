@@ -10,14 +10,14 @@ ms.topic: overview
 ms.custom: seodec18
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: 43f8af4f2afc0f7210e49dc5b483a8d2757e6aba
-ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
+ms.openlocfilehash: 80c98bea08018780ba1d439e369ab42343d1e615
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54215350"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59680322"
 ---
-# <a name="azure-event-hubs--a-big-data-streaming-platform-and-event-ingestion-service"></a>Azure Event Hubs – Velké objemy dat platformy a události služba pro ingestování datových proudů
+# <a name="azure-event-hubs--a-big-data-streaming-platform-and-event-ingestion-service"></a>Azure Event Hubs – streamovací platforma pro velký objem dat a služba ingestování událostí
 Azure Event Hubs je velké objemy dat, platformy a události služba pro ingestování datových proudů. Může přijímat a zpracovávat miliony událostí za sekundu. Data odeslaná do centra událostí je možné transformovat a uložit pomocí libovolného poskytovatele analýz v reálném čase nebo adaptérů pro dávkové zpracování a ukládání.
 
 Některé scénáře, ve kterém můžete používat Event Hubs jsou následující scénáře:
@@ -77,11 +77,16 @@ Následující obrázek znázorňuje architekturu zpracování datového proudu 
 
 ## <a name="next-steps"></a>Další postup
 
-Pokud chcete začít používat službu Event Hubs, podívejte se na následující články:
+Abyste mohli začít používat Event Hubs, najdete v článku **odesílat a přijímat události** kurzy: 
 
-1. **Vytvoření centra událostí**: [Azure portal](event-hubs-create.md), [rozhraní příkazového řádku Azure](event-hubs-quickstart-cli.md), [prostředí Azure PowerShell](event-hubs-quickstart-powershell.md), [šablony Azure Resource Manageru](event-hubs-resource-manager-namespace-event-hub.md)
-2. **Odesílání událostí do centra událostí**: [.NET Core](event-hubs-dotnet-standard-getstarted-send.md), [rozhraní .NET Framework](event-hubs-dotnet-framework-getstarted-send.md), [Java](event-hubs-java-get-started-send.md), [Python](event-hubs-python-get-started-send.md), [Node.js](event-hubs-node-get-started-send.md), [Přejít](event-hubs-go-get-started-send.md), [C](event-hubs-c-getstarted-send.md)
-3. **Příjem událostí z centra událostí**: [.NET Core](event-hubs-dotnet-standard-getstarted-receive-eph.md), [rozhraní .NET Framework](event-hubs-dotnet-framework-getstarted-receive-eph.md), [Java](event-hubs-java-get-started-receive-eph.md), [Python](event-hubs-python-get-started-receive.md), [Node.js ](event-hubs-node-get-started-receive.md), [Přejít](event-hubs-go-get-started-receive-eph.md), [Apache Storm](event-hubs-storm-getstarted-receive.md)   
+- [.NET Core](event-hubs-dotnet-standard-getstarted-send.md)
+- [.NET Framework](event-hubs-dotnet-framework-getstarted-send.md)
+- [Java](event-hubs-java-get-started-send.md)
+- [Python](event-hubs-python-get-started-send.md)
+- [Node.js](event-hubs-node-get-started-send.md)
+- [Go](event-hubs-go-get-started-send.md)
+- [C (pouze pro odesílání)](event-hubs-c-getstarted-send.md)
+- [Apache Storm (pouze reecive)](event-hubs-storm-getstarted-receive.md)
 
 Další informace o službě Event Hubs najdete v následujících článcích:
 

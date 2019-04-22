@@ -19,10 +19,10 @@ ms.author: joflore
 ms.reviewer: spunukol
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 2250449c0ef342332945b80cb10cb9a02885b259
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/11/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59496926"
 ---
 # <a name="require-app-protection-policy-for-cloud-app-access-with-conditional-access-preview"></a>Vyžadovat zásady ochrany aplikací pro přístup k aplikaci cloudu pomocí podmíněného přístupu (preview)
@@ -208,7 +208,7 @@ Zásady podmíněného přístupu v tomto kroku nakonfigurujte následující ko
 
    - **Vyžadovat, aby zařízení bylo označené jako vyhovující**
 
-   - **Vyžadovat zásady ochrany aplikací (Preview)**
+   - **Vyžadovat zásady ochrany aplikací (preview)**
 
    - **Vyžadovat jeden z vybraných ovládacích prvků**   
  
@@ -240,7 +240,7 @@ Zásady podmíněného přístupu v tomto kroku nakonfigurujte následující ko
 
    - **Vyžadovat, aby zařízení bylo označené jako vyhovující**
 
-   - **Vyžadovat zásady ochrany aplikací (Preview)**
+   - **Vyžadovat zásady ochrany aplikací (preview)**
 
    - **Vyžadovat jeden z vybraných ovládacích prvků**
 
@@ -310,7 +310,7 @@ Zásady podmíněného přístupu v tomto kroku nakonfigurujte následující ko
 
    - **Vyžadovat, aby zařízení bylo označené jako vyhovující**
 
-   - **Vyžadovat zásady ochrany aplikací (Preview)**
+   - **Vyžadovat zásady ochrany aplikací (preview)**
 
    - **Vyžadovat všechny vybrané ovládací prvky**   
  
@@ -342,7 +342,7 @@ Zásady podmíněného přístupu v tomto kroku nakonfigurujte následující ko
 
    - **Vyžadovat, aby zařízení bylo označené jako vyhovující**
 
-   - **Vyžadovat zásady ochrany aplikací (Preview)**
+   - **Vyžadovat zásady ochrany aplikací (preview)**
 
    - **Vyžadovat všechny vybrané ovládací prvky**   
  
@@ -415,9 +415,9 @@ Zásady podmíněného přístupu v tomto kroku nakonfigurujte následující ko
 
 5. V části **ovládací prvky přístupu**, vyberte následující možnosti:
 
-   - **Vyžaduje se klientem schválená aplikace.**
+   - **Vyžadovat klientem schválenou aplikaci**
 
-   - **Vyžadovat zásady ochrany aplikací (Preview)**
+   - **Vyžadovat zásady ochrany aplikací (preview)**
 
    - **Vyžadovat jeden z vybraných ovládacích prvků**
  

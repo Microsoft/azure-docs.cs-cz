@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 12/21/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: d5120b7569acbe9735ea1a70fcb609d322d60793
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
-ms.translationtype: MT
+ms.openlocfilehash: c719bcaca91f9a6e77d79735283cf2c68404ef16
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55154367"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59680532"
 ---
 # <a name="define-a-saml-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Technický profil SAML definování ve vlastních zásadách pro Azure Active Directory B2C
 
@@ -81,21 +81,6 @@ Následující příklad ukazuje část Azure AD B2C technický profil šifrová
   </KeyInfo>
 </KeyDescriptor>
 ```
-
-## <a name="identity-provider-initiated-flow"></a>Tok iniciované zprostředkovatele identity
-
-V jedné přihlašování relaci (nevyžádané žádosti) iniciovaných zprostředkovatele identity přijde nevyžádané odpověď SAML k poskytovateli služby v tomto případě technický profil Azure AD B2C. V tomto toku uživatele neprocházejí přes webovou aplikaci nejdřív ale se přesměruje na poskytovatele identity. Při odesílání požadavku na stránce ověřování je uživateli poskytnutý poskytovatelem identity. Uživatel nedokončí přihlášení a potom se přesměruje žádost na Azure AD B2C s odpověď SAML, který obsahuje kontrolní výrazy. Azure AD B2C přečte kontrolní výrazy a vydá nový token SAML a pak přesměruje uživatele zpět do aplikace předávající strany. Provádí přesměrování **AssertionConsumerService** elementu **umístění** vlastnost.
-
-
-![SAML zprostředkovatele identity iniciované](media/saml-technical-profile/technical-profile-idp-saml-idp-initiated.png) 
-
-Při vytváření zprostředkovatele identity spuštění toku vezměte v úvahu následující požadavky zásad:
-
-- První krok Orchestrace musí být že jediný deklarací exchange, která odkazuje na technický profil SAML.
-- Technický profil musí mít metadata položky s názvem **IdpInitiatedProfileEnabled** nastavena na `true`.
-- Předávající strana zásad musí být přijímající strany SAML.
-- Předávající strana zásada musí mít metadata položky s názvem **IdpInitiatedProfileEnabled** nastavena na `true`.
-- Nevyžádané odpovědi musí být zaslána `/your-tenant/your-policy/samlp/sso/assertionconsumer` koncového bodu. Jakýkoli stav relay součástí odpovědi je předat dál předávající straně. Nahraďte následující hodnoty: **vašeho tenanta** názvem vašeho tenanta. **vaše zásady** názvem zásady pro předávající strany.
     
 ## <a name="protocol"></a>Protocol (Protokol)
 

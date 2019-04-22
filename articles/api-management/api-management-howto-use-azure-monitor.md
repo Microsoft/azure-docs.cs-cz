@@ -14,12 +14,12 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.date: 06/15/2018
 ms.author: apimpm
-ms.openlocfilehash: 6a4e9a0c33b227716227213e94948df430566065
-ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
+ms.openlocfilehash: c3148adc42cb4f899a87d894909eedff4c798575
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58622191"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59680230"
 ---
 # <a name="monitor-published-apis"></a>Monitorování publikovaných rozhraní API
 
@@ -98,7 +98,7 @@ Konfigurace upozornění:
 
 8. Zadejte název a popis pravidla výstrahy a zvolte úroveň závažnosti. 
 9. Stisknutím klávesy **vytvořit pravidlo upozornění**.
-10. Teď si vyzkoušejte pro volání rozhraní API Conference bez klíče rozhraní API. Výstraha se aktivuje, odešle e-mail správce. 
+10. Teď si vyzkoušejte pro volání rozhraní API Conference bez klíče rozhraní API. Výstraha se aktivuje a odešle e-mail správce. 
 
 ## <a name="activity-logs"></a>Protokoly aktivit
 

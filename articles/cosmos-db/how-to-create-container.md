@@ -1,36 +1,36 @@
 ---
 title: Vytvoření kontejneru ve službě Azure Cosmos DB
 description: Zjistěte, jak vytvořit kontejner ve službě Azure Cosmos DB.
-author: markjbrown
+author: rimman
 ms.service: cosmos-db
 ms.topic: sample
-ms.date: 11/06/2018
-ms.author: mjbrown
-ms.openlocfilehash: 8ce890500c31c1966254e5bca9d23c8fcdd7bb67
-ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
+ms.date: 04/17/2019
+ms.author: rimman
+ms.openlocfilehash: c075a801a877309709258dd6466e68e46d802eff
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58258288"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59680430"
 ---
 # <a name="create-an-azure-cosmos-container"></a>Vytvoření kontejneru Azure Cosmos
 
-Tento článek popisuje různé způsoby, jak vytvořit kontejner (kolekci, tabulka nebo graf). Použití na webu Azure portal, rozhraní příkazového řádku Azure nebo podporovaných sad SDK. Tento článek ukazuje, jak vytvořit kontejner, zadejte klíč oddílu a zřídit propustnost.
+Tento článek popisuje různé způsoby, jak vytvořit kontejner služby Azure Cosmos (kolekce, tabulka nebo graf). Pomocí webu Azure portal, rozhraní příkazového řádku Azure, nebo podporovaných sad SDK pro tento. Tento článek ukazuje, jak vytvořit kontejner, zadejte klíč oddílu a zřídit propustnost.
 
-## <a name="create-a-container-by-using-azure-portal"></a>Vytvořte kontejner s využitím webu Azure portal
+## <a name="create-a-container-using-azure-portal"></a>Vytvoření kontejneru pomocí webu Azure Portal
 
 ### <a id="portal-sql"></a>SQL API
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 
-1. [Vytvoření nového účtu služby Azure Cosmos DB](create-sql-api-dotnet.md#create-account), nebo vyberte existující účet.
+1. [Vytvořit nový účet Azure Cosmos](create-sql-api-dotnet.md#create-account), nebo vyberte existující účet.
 
 1. Otevřít **Průzkumník dat** podokně a vyberte **novou kolekci**. Dále zadejte následující podrobnosti:
 
    * Označuje, zda vytváříte novou databázi nebo použití existující.
    * Zadejte ID kolekce.
    * Zadejte klíč oddílu.
-   * Zadejte propustnost (třeba 1 000 ru).
+   * Zadejte propustnost, které se mají zřídit (třeba 1 000 ru).
    * Vyberte **OK**.
 
 ![Průzkumník dat – snímek obrazovky podokna s novou kolekci zvýrazněnou](./media/how-to-create-container/partitioned-collection-create-sql.png)
@@ -39,15 +39,14 @@ Tento článek popisuje různé způsoby, jak vytvořit kontejner (kolekci, tabu
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 
-1. [Vytvoření nového účtu služby Azure Cosmos DB](create-mongodb-dotnet.md#create-a-database-account), nebo vyberte existující účet.
+1. [Vytvořit nový účet Azure Cosmos](create-mongodb-dotnet.md#create-a-database-account), nebo vyberte existující účet.
 
 1. Otevřít **Průzkumník dat** podokně a vyberte **novou kolekci**. Dále zadejte následující podrobnosti:
 
    * Označuje, zda vytváříte novou databázi nebo použití existující.
    * Zadejte ID kolekce.
-   * Vyberte **neomezenou** kapacitu úložiště.
    * Zadejte klíč horizontálního oddílu.
-   * Zadejte propustnost (třeba 1 000 ru).
+   * Zadejte propustnost, které se mají zřídit (třeba 1 000 ru).
    * Vyberte **OK**.
 
 ![Snímek obrazovky z Azure Cosmos DB API pro MongoDB, dialogové okno Přidat kolekci](./media/how-to-create-container/partitioned-collection-create-mongodb.png)
@@ -56,14 +55,14 @@ Tento článek popisuje různé způsoby, jak vytvořit kontejner (kolekci, tabu
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 
-1. [Vytvoření nového účtu služby Azure Cosmos DB](create-cassandra-dotnet.md#create-a-database-account), nebo vyberte existující účet.
+1. [Vytvořit nový účet Azure Cosmos](create-cassandra-dotnet.md#create-a-database-account), nebo vyberte existující účet.
 
 1. Otevřít **Průzkumník dat** podokně a vyberte **nová tabulka**. Dále zadejte následující podrobnosti:
 
    * Označuje, zda vytváříte nový prostor klíčů, nebo použití existující.
    * Zadejte název tabulky.
    * Zadejte vlastnosti a určit primární klíč.
-   * Zadejte propustnost (třeba 1 000 ru).
+   * Zadejte propustnost, které se mají zřídit (třeba 1 000 ru).
    * Vyberte **OK**.
 
 ![Snímek obrazovky z rozhraní Cassandra API, dialogové okno Přidat tabulku](./media/how-to-create-container/partitioned-collection-create-cassandra.png)
@@ -75,7 +74,7 @@ Tento článek popisuje různé způsoby, jak vytvořit kontejner (kolekci, tabu
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 
-1. [Vytvoření nového účtu služby Azure Cosmos DB](create-graph-dotnet.md#create-a-database-account), nebo vyberte existující účet.
+1. [Vytvořit nový účet Azure Cosmos](create-graph-dotnet.md#create-a-database-account), nebo vyberte existující účet.
 
 1. Otevřít **Průzkumník dat** podokně a vyberte **nový graf**. Dále zadejte následující podrobnosti:
 
@@ -83,7 +82,7 @@ Tento článek popisuje různé způsoby, jak vytvořit kontejner (kolekci, tabu
    * Zadejte ID grafu.
    * Vyberte **neomezenou** kapacitu úložiště.
    * Zadejte klíč oddílu pro vrcholy.
-   * Zadejte propustnost (třeba 1 000 ru).
+   * Zadejte propustnost, které se mají zřídit (třeba 1 000 ru).
    * Vyberte **OK**.
 
 ![Snímek obrazovky z rozhraní Gremlin API, dialogové okno Přidat graf](./media/how-to-create-container/partitioned-collection-create-gremlin.png)
@@ -92,13 +91,12 @@ Tento článek popisuje různé způsoby, jak vytvořit kontejner (kolekci, tabu
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 
-1. [Vytvoření nového účtu služby Azure Cosmos DB](create-table-dotnet.md#create-a-database-account), nebo vyberte existující účet.
+1. [Vytvořit nový účet Azure Cosmos](create-table-dotnet.md#create-a-database-account), nebo vyberte existující účet.
 
 1. Otevřít **Průzkumník dat** podokně a vyberte **nová tabulka**. Dále zadejte následující podrobnosti:
 
    * Zadejte ID tabulky.
-   * Vyberte **neomezenou** kapacitu úložiště.
-   * Zadejte propustnost (třeba 1 000 ru).
+   * Zadejte propustnost, které se mají zřídit (třeba 1 000 ru).
    * Vyberte **OK**.
 
 ![Snímek obrazovky z rozhraní Table API, dialogové okno Přidat tabulku](./media/how-to-create-container/partitioned-collection-create-table.png)
@@ -106,7 +104,7 @@ Tento článek popisuje různé způsoby, jak vytvořit kontejner (kolekci, tabu
 > [!Note]
 > V případě rozhraní API pro tabulky se klíč oddílu zadává při každém přidání nového řádku.
 
-## <a name="create-a-container-by-using-azure-cli"></a>Vytvořte kontejner s použitím rozhraní příkazového řádku Azure
+## <a name="create-a-container-using-azure-cli"></a>Vytvoření kontejneru pomocí Azure CLI
 
 ### <a id="cli-sql"></a>SQL API
 
@@ -174,7 +172,7 @@ az cosmosdb collection create \
     --throughput 1000
 ```
 
-## <a name="create-a-container-by-using-net-sdk"></a>Vytvořte kontejner s použitím sady .NET SDK
+## <a name="create-a-container-using-net-sdk"></a>Vytvoření kontejneru pomocí sady .NET SDK
 
 ### <a id="dotnet-sql-graph"></a>Rozhraní SQL API a Gremlin API
 
@@ -198,7 +196,7 @@ db.runCommand( { shardCollection: "myDatabase.myCollection", key: { myShardKey: 
 ```
 
 > [!Note]
-> Přenosový protokol MongoDB neuvede v požadavku jednotky. Chcete-li vytvořit novou kolekci s propustností, pomocí webu Azure portal nebo rozhraní SQL API.
+> Přenosový protokol MongoDB nerozumí konceptu [jednotek žádostí](request-units.md). Nová kolekce se zřízenou propustností na něm vytvoříte pomocí webu Azure portal nebo Cosmos DB SDK pro rozhraní SQL API.
 
 ### <a id="dotnet-cassandra"></a>Rozhraní API Cassandra
 
@@ -213,3 +211,6 @@ session.Execute(CREATE TABLE myKeySpace.myTable(
 ## <a name="next-steps"></a>Další postup
 
 - [Dělení ve službě Azure Cosmos DB](partitioning-overview.md)
+- [Jednotky žádosti v Azure Cosmos DB](request-units.md)
+- [Zřizování propustnosti na kontejnerech a databází](set-throughput.md)
+- [Práce s účtem Azure Cosmos](account-overview.md)

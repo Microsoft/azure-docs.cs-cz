@@ -11,12 +11,12 @@ ms.author: mathoma
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: 6d962a40fe0e1a7658c0d5ac30c7fd04bfb7fb0f
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: bb88da48f8961969176fd67bf6e5fa346655aeac
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55475444"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59677812"
 ---
 # <a name="accelerated-database-recovery-preview"></a>Zrychlené obnovení databáze (preview)
 
@@ -42,11 +42,11 @@ Následuje obnovení databáze na SQL serveru [ARIES](https://people.eecs.berkel
 
 - **Analytická fáze**
 
-  Předání kontroly transakčního protokolu od začátku posledního úspěšného kontrolního bodu (nebo stránce nejstarší LSN) až do konce, k určení stavu každou transakci v době, kdy SQL Server se zastavil.
+  Předání kontroly transakčního protokolu od začátku posledního úspěšného kontrolního bodu (nebo stránce nejstarší nezapsaná hodnota LSN) až do konce, k určení stavu každou transakci v době, kdy SQL Server se zastavil.
 
 - **Znovu fáze**
 
-  Dopředného prohledávání jazyka transakční protokol z nejstarší nepotvrzené transakce až do konce, uveďte databázi do stavu, ve kterém se v době selhání, podle opakovaného všechny operace.
+  Dopředného prohledávání jazyka transakční protokol z nejstarší nepotvrzené transakce až do konce, uveďte databázi do stavu, ve kterém se v době selhání, podle opakovaného potvrzeny všechny operace.
 
 - **Vrátit zpět fáze**
 
@@ -56,13 +56,13 @@ Je založená na tento návrh, čas potřebný k zotavení z neočekávaného re
 
 Také zrušení/vrácení zpět velkou transakci podle tohoto návrhu můžete taky využít dlouhou dobu jako používá stejné obnovení fáze vrácení zpět, jak je popsáno výše.
 
-Kromě toho databázový stroj SQL nelze zkrátit transakčního protokolu, pokud existuje dlouhý spouštění transakce, protože jejich odpovídající záznamy protokolu jsou potřebné pro obnovení a vrácení zpět procesy. V důsledku tohoto návrhu databázový stroj SQL někteří zákazníci čelí problém, že velikost protokolu transakcí roste velmi velké a spotřebuje obrovské množství místa protokolu.
+Kromě toho databázový stroj SQL nelze zkrátit transakčního protokolu, pokud existuje dlouhý spouštění transakce, protože jejich odpovídající záznamy protokolu jsou potřebné pro obnovení a vrácení zpět procesy. V důsledku tohoto návrhu databázový stroj SQL někteří zákazníci čelí problém, že velikost protokolu transakcí roste velmi velké a spotřebuje obrovské množství místa na disku.
 
 ## <a name="the-accelerated-database-recovery-process"></a>Proces zapnuto zrychlené obnovení databáze
 
 Pravidla automatického nasazení od základu řeší výše uvedené ve zcela realizace proces obnovení modulu databáze SQL na:
 
-- Zkontrolujte konstantní čas/rychlých zabráněním museli prohledávání protokolů z/do začátku nejstarší aktivní transakce. Pomocí pravidla automatického nasazení transakční protokol je zpracována pouze z posledního úspěšného kontrolního bodu (nebo nejstarší změny stránky Number(LSN) pořadí protokolu. V důsledku toho není čas obnovení vliv dlouho spuštěná transakce.
+- Zkontrolujte konstantní čas/rychlých zabráněním museli prohledávání protokolů z/do začátku nejstarší aktivní transakce. Pomocí pravidla automatického nasazení transakční protokol je zpracována pouze z posledního úspěšného kontrolního bodu (nebo nejstarší změny stránky protokolů pořadí číslo (LSN)). V důsledku toho není čas obnovení vliv dlouho spuštěná transakce.
 - Omezit místa protokolu požadovanou transakci, protože již není nutné ke zpracování protokolu pro celou transakci. V důsledku toho transakční protokol může být zkrácená agresivně jako kontrolní body a zálohování.
 
 Na vysoké úrovni pravidla automatického nasazení dosahuje obnovení rychlé databáze správy verzí všechny úpravy fyzická databáze a pouze vrácení logické operace, které jsou omezené a můžete se vrátit zpátky prakticky okamžitě. Všechny transakce, který byl aktivní k datu zhroucení jsou označeny jako přerušena, a proto můžete ignorovat jakékoli verze generovaná tyto transakcemi souběžných uživatelských dotazy.
@@ -73,16 +73,19 @@ Proces automatického obnovení má stejné tři fáze jako aktuální proces ob
 
 - **Analytická fáze**
 
-  Proces zůstává stejná jako dnes a uveďte rekonstrukce sLog a zkopírování záznamů protokolu pro ops bez správy verzí.
+  Proces zůstává stejná jako dnes a uveďte rekonstrukce sLog a zkopírování záznamů protokolu pro operace bez správy verzí.
+  
 - **Znovu** fáze
 
   Rozdělit na dvě fáze (P)
   - Fáze 1
 
       Opakovat akci z sLog (nejstarší nepotvrzené transakce až do posledního kontrolního bodu). Opakování je rychlá operace, dokud jej potřebuje jenom o pár záznamů z sLog zpracovat.
+      
   - Fáze 2
 
      Znovu z protokolu transakcí začíná od posledního kontrolního bodu (namísto nejstarší nepotvrzené transakce)
+     
 - **Vrátit zpět fáze**
 
    Fáze vrácení změn pomocí pravidla automatického nasazení dokončí téměř okamžitě pomocí sLog ke zrušení operací bez správy verzí a trvalé verze Store (systémy současné hodnoty) s logickou vrátit k provedení řádku úrovně zpět na základě verze.
@@ -97,7 +100,7 @@ Proces automatického obnovení má stejné tři fáze jako aktuální proces ob
 
 - **Logické vrátit**
 
-  Vrátit logických zodpovídá asynchronní proces pro provádění úrovni verze řádku na základě vrátit zpět – poskytuje pro všechny verze operace odvolání okamžité transakce a vrácení zpět.
+  Vrátit logických zodpovídá asynchronní proces pro provádění akcí na úrovni řádků na základě verze zpět – poskytuje pro všechny verze operace odvolání okamžité transakce a vrácení zpět.
 
   - Uchovává informace o všech přerušené transakce
   - Provede vrácení zpět pomocí systémy současné hodnoty pro všechny uživatelské transakce

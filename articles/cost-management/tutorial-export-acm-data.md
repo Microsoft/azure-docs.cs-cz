@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.service: cost-management
 manager: dougeby
 ms.custom: seodec18
-ms.openlocfilehash: df893683c387f8d694500ae1ace93a5a146ea352
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.openlocfilehash: 6975bb872e67650b8b5729a4ac66f0825fb9a80f
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/11/2019
-ms.locfileid: "59496790"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59678135"
 ---
 # <a name="tutorial-create-and-manage-exported-data"></a>Kurz: Vytvoření a správa exportovaná data
 
@@ -45,7 +45,13 @@ Přihlaste se k webu Azure Portal na adrese [https://portal.azure.com](https://p
 
 ## <a name="create-a-daily-export"></a>Vytvořit každodenní export
 
-Vytvářeli a prohlíželi exportování dat nebo naplánovat export, otevřete v Azure portal a vyberte požadovaný obor **analýza nákladů** v nabídce. Například, přejděte na **předplatná**, vyberte předplatné, ze seznamu a pak vyberte **analýza nákladů** v nabídce. V horní části stránky analýzy nákladů, klikněte na položku **exportovat** a pak zvolte možnost exportu. Klikněte například na **naplánovat export**. Další informace o oborech najdete v tématu [pochopení a práci s obory](understand-work-scopes.md).
+Vytvářeli a prohlíželi exportování dat nebo naplánovat export, otevřete v Azure portal a vyberte požadovaný obor **analýza nákladů** v nabídce. Například, přejděte na **předplatná**, vyberte předplatné, ze seznamu a pak vyberte **analýza nákladů** v nabídce. V horní části stránky analýzy nákladů, klikněte na položku **exportovat** a pak zvolte možnost exportu. Klikněte například na **naplánovat export**.  
+
+> [!NOTE]
+> Kromě předplatných můžete vytvořit exporty na skupiny prostředků, účty, oddělení a registrací. Další informace o oborech najdete v tématu [pochopení a práci s obory](understand-work-scopes.md).
+> 
+> 
+
 
 Klikněte na tlačítko **přidat**, zadejte název pro export a pak vyberte **denní export náklady za měsíc k datu** možnost. Klikněte na **Další**.
 
@@ -113,4 +119,4 @@ V tomto kurzu jste se naučili:
 Přejděte k dalšímu kurzu, který se zabývá optimalizací a zvyšováním efektivity pomocí identifikace nečinných a nedostatečně využitých prostředků.
 
 > [!div class="nextstepaction"]
-> [Projděte si dokážete na základě doporučení pro optimalizaci](tutorial-acm-opt-recommendations.md)
+> [Kontrola optimalizačních doporučení a reakce na ně](tutorial-acm-opt-recommendations.md)

@@ -15,12 +15,12 @@ ms.topic: article
 ms.custom: seodec18
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: 6cb1f788f41fe07516d759b177e1d76405dd2bf8
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: a8f647018ba6ed3c9e951db2054036b60c7d4ab5
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57529701"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59678764"
 ---
 # <a name="send-events-to-azure-event-hubs-using-c"></a>Odesílání událostí do služby Azure Event Hubs pomocí jazyka C
 
@@ -34,13 +34,7 @@ Pro absolvování tohoto kurzu potřebujete:
 
 * Vývojové prostředí jazyka C. Tento kurz předpokládá gcc zásobníku na virtuálním počítači Azure s Linuxem s Ubuntu 14.04.
 * [Microsoft Visual Studio](https://www.visualstudio.com/).
-
-## <a name="create-an-event-hubs-namespace-and-an-event-hub"></a>Vytvoření oboru názvů Event Hubs a centra událostí
-Prvním krokem je použití webu [Azure Portal](https://portal.azure.com) k vytvoření oboru názvů typu Event Hubs a získání přihlašovacích údajů pro správu, které vaše aplikace potřebuje ke komunikaci s centrem událostí. Pokud chcete vytvořit obor názvů a centra událostí, postupujte podle pokynů v [v tomto článku](event-hubs-create.md).
-
-Získání hodnoty přístupový klíč pro Centrum událostí podle pokynů v článku: [Získání připojovacího řetězce](event-hubs-get-connection-string.md#get-connection-string-from-the-portal). V kódu, který napíšete později v tomto kurzu použijete přístupový klíč. Je výchozí název klíče: **RootManageSharedAccessKey**.
-
-Nyní postupujte podle následující kroků v tomto kurzu.
+* **Vytvořit obor názvů služby Event Hubs a centra událostí**. Použití [webu Azure portal](https://portal.azure.com) k vytvoření oboru názvů typu Event Hubs a získání přihlašovacích údajů pro správu, vaše aplikace potřebuje ke komunikaci s centrem událostí. Pokud chcete vytvořit obor názvů a centra událostí, postupujte podle pokynů v [v tomto článku](event-hubs-create.md). Získání hodnoty přístupový klíč pro Centrum událostí podle pokynů v článku: [Získání připojovacího řetězce](event-hubs-get-connection-string.md#get-connection-string-from-the-portal). V kódu, který napíšete později v tomto kurzu použijete přístupový klíč. Je výchozí název klíče: **RootManageSharedAccessKey**.
 
 ## <a name="write-code-to-send-messages-to-event-hubs"></a>Napsání kódu pro odesílání zpráv do služby Event Hubs
 V této části ukazuje, jak psát aplikace v jazyce C k odesílání událostí do vašeho centra událostí. Kód používá knihovnu kanálem AMQP od [projektu Apache Qpid](https://qpid.apache.org/). To je obdobou pomocí front a témat Service Bus pomocí protokolu AMQP from C, jak je znázorněno [v této ukázce](https://code.msdn.microsoft.com/Using-Apache-Qpid-Proton-C-afd76504). Další informace najdete v tématu [Qpid kanálem dokumentaci](https://qpid.apache.org/proton/index.html).
@@ -161,7 +155,10 @@ Spuštění aplikace pro odesílání zpráv do centra událostí.
 Blahopřejeme! Nyní jste odeslali zprávy do centra událostí.
 
 ## <a name="next-steps"></a>Další postup
-Další informace o přijímání událostí z centra událostí, klikněte na příslušný přijímající jazyk v rámci **přijímat události z centra událostí** uzel v obsahu.
+V následujících článcích:
+
+- [EventProcessorHost](event-hubs-event-processor-host.md)
+- [Funkce a terminologii používané v Azure Event Hubs](event-hubs-features.md).
 
 
 <!-- Images. -->

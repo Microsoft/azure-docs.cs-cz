@@ -9,14 +9,14 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: philmea
-ms.openlocfilehash: e4c5942dfba62a2c869e4eeceb9018fc926d9de9
-ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
+ms.openlocfilehash: 884381cc3b9aaeec29f5697485cd90c28b2bd97e
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58259533"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59681246"
 ---
-# <a name="tutorial-define-a-new-device-type-in-your-azure-iot-central-application-new-ui-design"></a>Kurz: Definujte nový typ zařízení v aplikaci Azure IoT Central (návrh nové uživatelské rozhraní)
+# <a name="tutorial-define-a-new-device-type-in-your-azure-iot-central-application"></a>Kurz: Definujte nový typ zařízení v aplikaci Azure IoT Central
 
 Tento kurz vám jako tvůrci ukáže, jak pomocí šablony zařízení definovat nový typ zařízení v aplikaci Microsoft Azure IoT Central. Šablona zařízení definuje telemetrická data, stav, vlastnosti a nastavení pro váš typ zařízení.
 

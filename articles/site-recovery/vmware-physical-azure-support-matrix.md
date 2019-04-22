@@ -10,7 +10,7 @@ ms.date: 04/16/2019
 ms.author: raynew
 ms.openlocfilehash: 94fd70dccf367d43b1caaa9f3a11ed934f9950ea
 ms.sourcegitcommit: fec96500757e55e7716892ddff9a187f61ae81f7
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/16/2019
 ms.locfileid: "59618052"
@@ -206,7 +206,7 @@ Pro virtuální sítě na cílový účet úložiště mezipaměti nebo úloži�
 Skupiny dostupnosti | Ano
 Zóny dostupnosti | Ne
 HUB | Ano
-Managed Disks | Ano
+Spravované disky | Ano
 
 ## <a name="azure-vm-requirements"></a>Požadavky virtuálních počítačů Azure
 

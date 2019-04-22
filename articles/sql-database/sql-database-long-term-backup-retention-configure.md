@@ -11,13 +11,13 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 manager: craigg
-ms.date: 03/12/2019
-ms.openlocfilehash: ec0c3b7943db87e5c6fb31dc173a5c3b36377e6c
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.date: 04/17/2019
+ms.openlocfilehash: 255f118d6dc6873364c2f8d4569e23c3e54ea83e
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57855465"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59680515"
 ---
 # <a name="manage-azure-sql-database-long-term-backup-retention"></a>Správa dlouhodobého uchovávání záloh Azure SQL Database
 
@@ -43,6 +43,9 @@ SQL Database, které můžete nakonfigurovat [uchovávání automatizovaných z�
    ![Konfigurace zásad](./media/sql-database-long-term-retention/ltr-configure-policies.png)
 
 3. Jakmile budete hotovi, klikněte na tlačítko **použít**.
+
+> [!IMPORTANT]
+> Pokud povolíte zásadu dlouhodobého uchovávání záloh, může trvat až 7 dnů pro první zálohy na viditelné a dostupné pro obnovení. Podrobné informace o zálohování cadance zleva doprava, najdete v části [dlouhodobého uchovávání záloh](sql-database-long-term-retention.md).
 
 ### <a name="view-backups-and-restore-from-a-backup-using-azure-portal"></a>Zobrazení záloh a obnovit ze zálohy pomocí webu Azure portal
 

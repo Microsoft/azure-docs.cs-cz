@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/29/2018
 ms.author: yalavi
 ms.reviewer: mbullwin
-ms.openlocfilehash: 30f853bd65c83b922faf008fbb5279c28f197f68
-ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.openlocfilehash: 772401c286a50774d201703cefcbbc12f0fcf88f
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58339002"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59678883"
 ---
 # <a name="metric-alerts-with-dynamic-thresholds-in-azure-monitor-public-preview"></a>Upozornění na metriku s dynamickými prahovými hodnotami ve službě Azure Monitor (Public Preview)
 
@@ -40,6 +40,9 @@ Upozornění s dynamickými prahovými hodnotami, je možné nakonfigurovat pomo
 Dynamickými prahovými hodnotami průběžně učí data řady metrik a pokusí se model pomocí sady algoritmů a metody. Zjistí vzory v datech, jako je například sezónnost (každou hodinu nebo každý den / týdně) a je schopný zvládnout hlučného metriky (například počítač CPU, paměť) a také metrik s nízkou rozptylu (například dostupnost a chyba rychlost).
 
 Prahové hodnoty jsou vybrány tak, že odchylky od těchto prahových hodnot označuje anomálie v chování metrik.
+
+> [!NOTE]
+> Detekce se sezónním vzoru je nastavena na hodinu, dne nebo týdne intervalu. To znamená, že jiných vzorků jako vzor bihourly nebo semiweekly nemusí být zjištěna.
 
 ## <a name="what-does-sensitivity-setting-in-dynamic-thresholds-mean"></a>Co znamená "Citlivosti" nastavení dynamickými prahovými hodnotami střední?
 
@@ -73,13 +76,23 @@ Chcete-li aktivovat upozornění, když došlo k narušení z dynamickými praho
 
 **Ignorovat data před** – uživatelé mohou také v případě potřeby definovat počáteční datum, které systém by měl zahájit výpočtu prahové hodnoty z. Typické použití případu může dojít při prostředek byl spuštěný v režimu, testování a je nyní povýšen na poskytování produkční úlohy, a proto by měl chování jakékoliv metriky během fáze testování ignorovány.
 
+## <a name="how-do-you-find-out-why-a-dynamic-thresholds-alert-was-triggered"></a>Jak můžete zjistit, proč byla spuštěna dynamickými prahovými hodnotami upozornění?
+
+Aktivované výstrahy instance v zobrazení výstrahy můžete prozkoumat buď kliknutím na odkaz v e-mailu nebo textových zpráv nebo prohlížeči zobrazte výstrahy zobrazit na webu Azure Portal. [Další informace o zobrazení výstrah](alerts-overview.md#alerts-experience).
+
+Zobrazení výstrah obsahuje:
+
+- Všechny podrobnosti metriky v tuto chvíli aktivuje dynamickými prahovými hodnotami upozornění.
+- Graf doby, ve kterém bylo upozornění aktivační událost, která zahrnuje dynamickými prahovými hodnotami, které jsou použity v tomto okamžiku v čase.
+- Schopnost poskytnout zpětnou vazbu na dynamickými prahovými hodnotami upozornění a výstrahy zobrazení prostředí, což může zlepšit budoucí detekcí.
+
 ## <a name="will-slow-behavior-change-in-the-metric-trigger-an-alert"></a>Pomalé chování změní v aktivační událost metriky upozornění?
 
 Pravděpodobně není. Jsou vhodné pro zjištění významné odchylky, spíše než pomalu se vyvíjejí problémy s dynamickými prahovými hodnotami.
 
 ## <a name="how-much-data-is-used-to-preview-and-then-calculate-thresholds"></a>Kolik dat se používá k zobrazení náhledu a pak vypočítat prahové hodnoty?
 
-Prahové hodnoty uvedené v grafu, předtím, než se vytvoří pravidlo upozornění na metriku, se počítají na základě dostatečně historická data pro výpočet hodinu nebo každý den sezónní vzory (10 dní). Klávesy na zobrazení týdenní opakování využijí dostatek historických dat k výpočtu týdenní sezónní vzory (28 dní). Jakmile se vytvoří pravidlo upozornění, dynamickými prahovými hodnotami pomocí všechny potřebné historická data, která je k dispozici a bude průběžně informace a nimiž založené na nová data zpřesnit prahové hodnoty.
+Prahové hodnoty uvedené v grafu, předtím, než se vytvoří pravidlo upozornění na metriku, se počítají na základě dostatečně historická data pro výpočet hodinu nebo každý den sezónní vzory (10 dní). Jakmile se vytvoří pravidlo upozornění, dynamickými prahovými hodnotami pomocí všechny potřebné historická data, která je k dispozici a bude průběžně informace a nimiž založené na nová data zpřesnit prahové hodnoty. To znamená, že po tento výpočet graf se také zobrazí týdenní vzory.
 
 ## <a name="how-much-data-is-needed-to-trigger-an-alert"></a>Kolik dat je potřeba aktivovat upozornění?
 

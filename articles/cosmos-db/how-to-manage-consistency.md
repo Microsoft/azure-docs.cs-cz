@@ -1,17 +1,17 @@
 ---
 title: Informace o správě konzistence ve službě Azure Cosmos DB
 description: Informace o správě konzistence ve službě Azure Cosmos DB
-author: christopheranderson
+author: rimman
 ms.service: cosmos-db
 ms.topic: sample
-ms.date: 10/17/2018
-ms.author: chrande
-ms.openlocfilehash: 7dfc299c32b25ddf939aa3efcb927697307887a2
-ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
+ms.date: 04/17/2019
+ms.author: rimman
+ms.openlocfilehash: a93bf9a9f43a0929aeb5f3d3121092739396c6a8
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58904317"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59678441"
 ---
 # <a name="manage-consistency-levels-in-azure-cosmos-db"></a>Správa úrovní konzistence ve službě Azure Cosmos DB
 
@@ -21,7 +21,7 @@ Tento článek vysvětluje, jak spravovat úrovně konzistence ve službě Azure
 
 ## <a name="configure-the-default-consistency-level"></a>Konfigurace výchozí úrovně konzistence
 
-Výchozí úroveň konzistence je úroveň konzistence, kterou klienti používají ve výchozím nastavení. Klienty můžete přepsat.
+[Výchozí úroveň konzistence](consistency-levels.md) je úroveň konzistence, kterou klienti používají ve výchozím nastavení. Klienty můžete vždy přepsat.
 
 ### <a name="cli"></a>Rozhraní příkazového řádku
 
@@ -35,7 +35,7 @@ az cosmosdb update --name <name of Cosmos DB Account> --resource-group <resource
 
 ### <a name="powershell"></a>PowerShell
 
-Tento příklad vytvoří nový účet Azure Cosmos DB s několika hlavními uzly povolena v oblastech USA – východ a USA – západ. Výchozí zásady konzistence je nastavena jako relace.
+Tento příklad vytvoří nový účet Azure Cosmos s využitím více oblastí zápisu povolené v oblastech USA – východ a USA – západ. Výchozí úroveň konzistence je nastavena na *relace* konzistence.
 
 ```azurepowershell-interactive
 $locations = @(@{"locationName"="East US"; "failoverPriority"=0},
@@ -59,15 +59,15 @@ New-AzResource -ResourceType "Microsoft.DocumentDb/databaseAccounts" `
   -Properties $CosmosDBProperties
 ```
 
-### <a name="portal"></a>Portál
+### <a name="azure-portal"></a>portál Azure
 
-Pokud chcete zobrazit nebo upravit výchozí úroveň konzistence, přihlaste se k webu Azure portal. Vyhledejte svůj účet služby Azure Cosmos DB a otevřete **výchozí konzistence** podokně. Vyberte úroveň konzistence jako nové výchozí nastavení a potom vyberte **Uložit**.
+Pokud chcete zobrazit nebo upravit výchozí úroveň konzistence, přihlaste se k webu Azure portal. Vyhledejte svůj účet Azure Cosmos a otevřít **výchozí konzistence** podokně. Vyberte úroveň konzistence jako nové výchozí nastavení a potom vyberte **Uložit**.
 
 ![Konzistence nabídky na webu Azure Portal](./media/how-to-manage-consistency/consistency-settings.png)
 
 ## <a name="override-the-default-consistency-level"></a>Přepsání výchozí úrovně konzistence
 
-Klienti mohou přepsat výchozí úroveň konzistence, který je nastaven služba. Tuto možnost můžete nastavit pro celý klienta nebo na žádost.
+Klienti můžou přepsat výchozí úroveň konzistence nastavenou službou. Úroveň konzistence můžete nastavit na každý požadavek, který přepíše výchozí úroveň konzistence nastavenou na úrovni účtu.
 
 ### <a id="override-default-consistency-dotnet"></a>.NET SDK
 
@@ -131,6 +131,8 @@ client = cosmos_client.CosmosClient(self.account_endpoint, {'masterKey': self.ac
 ```
 
 ## <a name="utilize-session-tokens"></a>Využití tokenů relace
+
+Jednou z úrovní konzistence ve službě Azure Cosmos DB je *relace* konzistence. Toto je výchozí úroveň ve výchozím nastavení použít pro účty služby Cosmos. Při práci s *relace* konzistence, klient použije token relace interně spolu s každou žádostí pro čtení nebo dotaz k zajištění, že je udržovat nastavenou úroveň konzistence.
 
 Tokeny relace spravovat ručně, získání tokenu relace z odpovědi a nastavit každý požadavek. Pokud není nutné ručně spravovat tokeny relace, není nutné používat tyto ukázky. Sada SDK uchovává informace o relaci tokeny automaticky. Pokud nenastavíte tokenu relace ručně, ve výchozím nastavení, sada SDK používá nejnovější tokenu relace.
 
@@ -209,15 +211,18 @@ item = client.ReadItem(doc_link, options)
 
 ## <a name="monitor-probabilistically-bounded-staleness-pbs-metric"></a>Monitorování metriky Pravděpodobnostně omezená neaktuálnost (PBS)
 
-Pokud chcete zobrazit metriky PBS, přejděte ke svému účtu Azure Cosmos DB na webu Azure Portal. Otevřít **metriky** podokně a vyberte **konzistence** kartu. Podívejte se na grafu s názvem **pravděpodobnost silně konzistentních čtení na základě vašich úloh (viz PBS)**.
+Jak konečný výsledek je konečné konzistence? Průměrná případech můžete nabízíme neaktuálnost hranice s ohledem na historii verzí a čas. [ **Probabilistically omezená Neaktuálnost (PBS)** ](http://pbs.cs.berkeley.edu/) metrika pokusí vyčíslení pravděpodobnost neaktuálnost a zobrazuje jako metriku. Pokud chcete zobrazit metriky PBS, přejděte k vašemu účtu Azure Cosmos na webu Azure Portal. Otevřít **metriky** podokně a vyberte **konzistence** kartu. Podívejte se na grafu s názvem **pravděpodobnost silně konzistentních čtení na základě vašich úloh (viz PBS)**.
 
 ![Graf PBS na webu Azure Portal](./media/how-to-manage-consistency/pbs-metric.png)
 
-Pomocí nabídky metriky služby Azure Cosmos DB najdete v článku tuto metriku. Nezobrazí se v prostředí Azure Monitoring metrik.
 
 ## <a name="next-steps"></a>Další postup
 
 Další informace o tom, jak spravovat konfliktů v datech, nebo přejít k další klíčovým konceptem ve službě Azure Cosmos DB. Viz následující články:
 
+* [Úrovně konzistence ve službě Azure Cosmos DB](consistency-levels.md)
 * [Správa konfliktů mezi oblastmi](how-to-manage-conflicts.md)
 * [Dělení a distribuce dat](partition-data.md)
+* [Konzistence kompromisy v návrhu systémy moderní distribuované databáze](https://www.computer.org/csdl/magazine/co/2012/02/mco2012020037/13rRUxjyX7k)
+* [Vysoká dostupnost](high-availability.md)
+* [Azure Cosmos DB SLA](https://azure.microsoft.com/support/legal/sla/cosmos-db/v1_2/)

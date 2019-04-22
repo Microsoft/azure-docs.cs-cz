@@ -10,10 +10,10 @@ services: iot-dps
 manager: philmea
 ms.custom: mvc
 ms.openlocfilehash: 344cc3b8ba3f7698f5124d464f3c277b6cb5cdde
-ms.sourcegitcommit: 41015688dc94593fd9662a7f0ba0e72f044915d6
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/11/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59500970"
 ---
 # <a name="set-up-a-device-to-provision-using-the-azure-iot-hub-device-provisioning-service"></a>Nastavení zařízení pro zřízení pomocí služby Azure IoT Hub Device Provisioning
@@ -211,5 +211,5 @@ V tomto kurzu jste se naučili:
 V dalším kurzu se dozvíte, jak zřídit zařízení pro vaše centrum IoT prostřednictvím jeho registrace do služby Azure IoT Hub Device Provisioning pro účely automatického zřízení.
 
 > [!div class="nextstepaction"]
-> [Zřízení zařízení pro službu IoT hub](tutorial-provision-device-to-hub.md)
+> [Zřízení zařízení pro centrum IoT](tutorial-provision-device-to-hub.md)
 

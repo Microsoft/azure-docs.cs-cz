@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 07/12/2018
 ms.author: v-shysun
-ms.openlocfilehash: 0688235d928584df223a3a6a6ca2821282e4cb92
-ms.sourcegitcommit: 09bb15a76ceaad58517c8fa3b53e1d8fec5f3db7
+ms.openlocfilehash: 5299437dea18510fa5f85ee27240c8afc434d125
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58762680"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59680800"
 ---
 # <a name="frequently-asked-questions-for-sql-server-running-on-windows-virtual-machines-in-azure"></a>Nejčastější dotazy ke službě SQL Server běžící na virtuálních počítačích Windows v Azure
 
@@ -56,7 +56,7 @@ Tento článek obsahuje odpovědi na některé nejběžnější otázky o spušt
 
 1. **Můžete vytvořit image virtuálního pevného disku z virtuálního počítače s SQL serverem?**
 
-   Ano, ale zde je několik důležitých informací. Je-li nasadit tento virtuální pevný disk do nového virtuálního počítače v Azure, provedete není ge část konfigurace systému SQL Server na portálu. Pak musíte spravovat možnosti konfigurace serveru SQL Server pomocí Powershellu. Navíc vám bude účtovat sazbou původně podle vaší image virtuálního počítače SQL. To platí i v případě systému SQL Server odeberete z virtuálního pevného disku před nasazením. 
+   Ano, ale zde je několik důležitých informací. Je-li nasadit tento virtuální pevný disk do nového virtuálního počítače v Azure, se nezobrazí část konfigurace systému SQL Server na portálu. Pak musíte spravovat možnosti konfigurace serveru SQL Server pomocí Powershellu. Navíc vám bude účtovat sazbou původně podle vaší image virtuálního počítače SQL. To platí i v případě systému SQL Server odeberete z virtuálního pevného disku před nasazením. 
 
 1. **Je možné nastavit konfigurace není zobrazené v galerii virtuálních počítačů (pro příklad Windows 2008 R2 a SQL Server 2012)?**
 

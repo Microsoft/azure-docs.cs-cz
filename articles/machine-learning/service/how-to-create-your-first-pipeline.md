@@ -11,12 +11,12 @@ ms.author: sanpil
 author: sanpil
 ms.date: 01/08/2019
 ms.custom: seodec18
-ms.openlocfilehash: cc561bd88c18788be3ed1b9aef8a6a985af8a6f2
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: 2e6bc0fd9de4fdba1188b40c49ebf9459d684d38
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59278543"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59679988"
 ---
 # <a name="create-and-run-a-machine-learning-pipeline-by-using-azure-machine-learning-sdk"></a>Vytvoření a spuštění kanálu strojového učení s využitím Azure Machine Learning SDK
 
@@ -253,8 +253,8 @@ trainStep = PythonScriptStep(
 
 Po definování svých kroků vytvoříte kanál pomocí některé nebo všechny tyto kroky.
 
->[!NOTE]
->Žádný soubor nebo datová je odeslána do služby Azure Machine Learning při definování kroky nebo vytváření kanálu.
+> [!NOTE]
+> Žádný soubor nebo datová je odeslána do služby Azure Machine Learning při definování kroky nebo vytváření kanálu.
 
 ```python
 # list of steps to run
@@ -289,8 +289,12 @@ Další informace najdete v tématu [balíčku azure kanálu kroky](https://docs
 
 ## <a name="submit-the-pipeline"></a>Odeslat kanálu
 
-Při odesílání kanál služby Azure Machine Learning kontroluje závislosti pro každý krok a odešle snímek zdrojový adresář, který jste zadali. Pokud není zadán žádný zdrojový adresář, se nahraje aktuální místní adresář.
+Při odesílání kanál služby Azure Machine Learning kontroluje závislosti pro každý krok a odešle snímek zdrojový adresář, který jste zadali. Pokud není zadán žádný zdrojový adresář, se nahraje aktuální místní adresář. Snímek je také uložen jako část testu ve vašem pracovním prostoru.
 
+> [!IMPORTANT]
+> Chcete-li zabránit nebudou zahrnuty do snímku souborů, vytvořte [.gitignore](https://git-scm.com/docs/gitignore) nebo `.amlignore` souborů v adresáři a přidejte soubory do ní. `.amlignore` Soubor pomocí stejné syntaxe a vzor, jako [.gitignore](https://git-scm.com/docs/gitignore) souboru. Pokud existují oba soubory `.amlignore` soubor má přednost.
+>
+> Další informace najdete v tématu [snímky](concept-azure-machine-learning-architecture.md#snapshot).
 
 ```python
 # Submit the pipeline to be run
