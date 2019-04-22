@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.date: 04/03/2019
 ms.author: cithomas
 ms.openlocfilehash: 8243523887ec9861459b2d196126237cf89bad97
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59288363"
 ---
 # <a name="application-insights-for-aspnet-core-applications"></a>Application Insights pro aplikace ASP.NET Core
@@ -107,7 +107,7 @@ Následuje ukázka změny, které mají být přidány do souboru .csproj projek
             1. Pro aplikace, které cílí na úplné rozhraní .NET Framework čítače výkonu jsou podporovány ve všech verzích SDK.
 
             Když se přidá podpora čítače výkonu v systému Linux, bude tento dokument aktualizován.
-    1. [Živé metriky](https://docs.microsoft.com/azure/application-insights/app-insights-live-stream)
+    1. [Live Metrics](https://docs.microsoft.com/azure/application-insights/app-insights-live-stream)
     1. `ILogger` protokoly závažnost `Warning` nebo výše jsou automaticky zachycené ze sady SDK verze 2.7.0-beta3 nebo vyšší. Přečtěte si další [tady](https://docs.microsoft.com/azure/azure-monitor/app/ilogger).
 
 Může trvat několik minut, než začnou zobrazovat na portálu telemetrická data. Chcete-li rychle zkontrolovat, zda vše funguje, je nejvhodnější použít [Live Metrics](https://docs.microsoft.com/azure/application-insights/app-insights-live-stream)při posílání požadavků na běžící aplikaci.

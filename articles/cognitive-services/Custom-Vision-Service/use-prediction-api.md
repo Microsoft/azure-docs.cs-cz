@@ -11,10 +11,10 @@ ms.topic: article
 ms.date: 04/02/2019
 ms.author: anroth
 ms.openlocfilehash: 1ee6edbf49bbcd2014afcf29ed3b737168a3b5bc
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/05/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59046066"
 ---
 # <a name="use-your-model-with-the-prediction-api"></a>Váš Model pomocí prediktivního rozhraní API
@@ -137,7 +137,7 @@ Při spuštění aplikace, zobrazí se výzva k zadání cesty k souboru obrázk
 V této příručce, jste zjistili, jak odeslat Image do vaší vlastní image třídění/detektor a přijetí odpovědi programově pomocí C# SDK. Dále se naučíte k dokončení scénáře začátku do konce se C#, nebo začněte používat jiný jazyk sady SDK.
 
 * [Rychlý start: .NET SDK](csharp-tutorial.md)
-* [Rychlý start: Python SDK](python-tutorial.md)
-* [Rychlý start: Java SDK](java-tutorial.md)
-* [Rychlý start: Node SDK](node-tutorial.md)
-* [Rychlý start: Go SDK](go-tutorial.md)
+* [Rychlé zprovoznění: Python SDK](python-tutorial.md)
+* [Rychlé zprovoznění: Java SDK](java-tutorial.md)
+* [Rychlé zprovoznění: Node SDK](node-tutorial.md)
+* [Rychlé zprovoznění: Go SDK](go-tutorial.md)

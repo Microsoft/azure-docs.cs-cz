@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 02/28/2019
 ms.author: v-erkell
 ms.openlocfilehash: 69921300163bd9a326f3baedd3182da887ad02c4
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59264450"
 ---
 # <a name="avere-vfxt-for-azure-faq"></a>Avere vFXT for Azure – nejčastější dotazy
@@ -286,9 +286,9 @@ Ne, vyžadují "always on" Avere vFXT clustery služby. Clustery můžete vypnou
 
 Abyste mohli začít s Avere vFXT pro Azure, přečtěte si tyto články a zjistěte, jak naplánovat a nasadit vlastní systém:
 
-* [Plánování systému Avere vFXT](avere-vfxt-deploy-plan.md)
+* [Plánování Avere vFXT systému](avere-vfxt-deploy-plan.md)
 * [Přehled nasazení](avere-vfxt-deploy-overview.md)
 * [Příprava na vytvoření clusteru vFXT Avere](avere-vfxt-prereqs.md)
-* [Nasazení clusteru vFXT Avere](avere-vfxt-deploy.md)
+* [Nasazení clusteru Avere vFXT](avere-vfxt-deploy.md)
 
 Další informace o funkcích a případech použití pro Avere vFXT, najdete v tématu [Avere vFXT pro Azure](https://azure.microsoft.com/services/storage/avere-vfxt/).

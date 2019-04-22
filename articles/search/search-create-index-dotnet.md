@@ -11,16 +11,16 @@ ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 04/08/2019
 ms.openlocfilehash: 83842893e0ffc6bb954832cd65b6312b59bbcaa3
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59269040"
 ---
 # <a name="quickstart-1---create-an-azure-search-index-in-c"></a>Rychlý start: 1 – Vytvoření indexu Azure Search vC#
 > [!div class="op_single_selector"]
 > * [C#](search-create-index-dotnet.md)
-> * [Portál](search-get-started-portal.md)
+> * [Azure Portal](search-get-started-portal.md)
 > * [PowerShell](search-howto-dotnet-sdk.md)
 > * [Postman](search-fiddler.md)
 >*
@@ -93,7 +93,7 @@ private static SearchServiceClient CreateSearchServiceClient(IConfigurationRoot 
 }
 ```
 
-`SearchServiceClient` má vlastnost `Indexes`. Tato vlastnost poskytuje všechny metody, které potřebujete k vytváření, výpisu, aktualizaci nebo odstranění indexů Azure Search.
+`Indexes` má vlastnost `SearchServiceClient`. Tato vlastnost poskytuje všechny metody, které potřebujete k vytváření, výpisu, aktualizaci nebo odstranění indexů Azure Search.
 
 > [!NOTE]
 > Třída `SearchServiceClient` spravuje připojení k vyhledávací službě. Aby se zabránilo otevírání příliš mnoha připojení, měli byste se pokusit sdílet jednu instanci třídy `SearchServiceClient` v rámci aplikace, pokud je to možné. Její metody jsou bezpečné pro přístup z více vláken a takové sdílení umožňují.

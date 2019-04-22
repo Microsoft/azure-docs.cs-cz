@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 04/03/2019
 ms.author: raynew
 ms.openlocfilehash: 142ffdadf4adb1ee07f3592624cbdddfb310b580
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59264552"
 ---
 # <a name="back-up-azure-vms-in-a-recovery-services-vault"></a>Zálohování virtuálních počítačů Azure na trezor služby Recovery Services
@@ -162,7 +162,7 @@ Prvotní zálohování se spustí podle plánu, ale může spouštět je okamži
 
 Azure Backup zálohuje virtuální počítače Azure po instalaci rozšíření virtuálního počítače Azure agenta spuštěného na počítači. Pokud byl váš virtuální počítač vytvořen z image Azure Marketplace, je agent nainstalován a spuštěn. Pokud vytváříte vlastní virtuální počítač nebo migrovat místní počítač, můžete potřebovat nainstalovat agenta ručně, jak je uvedené v tabulce.
 
-**Virtuální počítač** | **Podrobnosti**
+**VM** | **Podrobnosti**
 --- | ---
 **Windows** | 1. [Stáhněte a nainstalujte](https://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409) soubor MSI agenta.<br/><br/> 2. Instalace pomocí oprávnění správce na počítači.<br/><br/> 3. Ověření instalace. V *C:\WindowsAzure\Packages* na virtuálním počítači, klikněte pravým tlačítkem na **WaAppAgent.exe** > **vlastnosti**. Na **podrobnosti** kartě **verze produktu** by mělo být 2.6.1198.718 nebo vyšší.<br/><br/> Pokud chcete aktualizovat agenta, ujistěte se, že žádná operace zálohování běží, a [znovu nainstalujte agenta](https://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409).
 **Linux** | Nainstalujte s použitím RPM nebo DEB balíček z úložiště balíčků vaší distribuce. Toto je upřednostňovanou metodou pro instalaci a upgrade agenta Azure Linux. Všechny [poskytovatelé distribuce schválené pro](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros) balíček agenta Azure Linux integrovat do své Image a úložiště. Agent je k dispozici na [Githubu](https://github.com/Azure/WALinuxAgent), ale doporučujeme nejprve nainstalovat z něj.<br/><br/> Pokud chcete aktualizovat agenta, ujistěte se, že žádná operace zálohování jsou spuštěné a aktualizovat binární soubory.
@@ -227,7 +227,7 @@ Pokud nemáte účet proxy systému, nastavte jeden následujícím způsobem:
 4. Definujte nastavení proxy serveru.
    - Na počítačích s Linuxem:
      - Přidejte tento řádek, který **/etc/prostředí** souboru:
-       - **http_proxy = http: \/ /proxy IP adresa: proxy port**
+       - **http_proxy=http:\//proxy IP address:proxy port**
      - Přidejte tyto řádky do **/etc/waagent.conf** souboru:
          - **HttpProxy.Host=proxy IP adresa**
          - **HttpProxy.Port=proxy port**

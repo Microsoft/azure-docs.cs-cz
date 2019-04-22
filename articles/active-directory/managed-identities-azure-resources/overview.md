@@ -16,10 +16,10 @@ ms.date: 10/23/2018
 ms.author: markvi
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: d70dfceb0101c4f6dbd76f3c6b34d85e5255aa72
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59261458"
 ---
 # <a name="what-is-managed-identities-for-azure-resources"></a>Co jsou spravované identity prostředků Azure?
@@ -118,17 +118,17 @@ Informace o použití spravované identity ve virtuálním počítači s Windows
 * [Přístup ke službě Azure Data Lake Store](tutorial-windows-vm-access-datalake.md)
 * [Přístup k Azure Resource Manageru](tutorial-windows-vm-access-arm.md)
 * [Přístup k Azure SQL](tutorial-windows-vm-access-sql.md)
-* [Přístup k Azure Storage pomocí přístupové klávesy](tutorial-windows-vm-access-storage.md)
-* [Přístup k Azure Storage s použitím sdílených přístupových podpisů](tutorial-windows-vm-access-storage-sas.md)
-* [Přístup k prostředku AD mimo Azure pomocí služby Azure Key Vault](tutorial-windows-vm-access-nonaad.md)
+* [Přístup ke službě Azure Storage pomocí přístupové klávesy](tutorial-windows-vm-access-storage.md)
+* [Přístup ke službě Azure Storage pomocí sdílených přístupových podpisů](tutorial-windows-vm-access-storage-sas.md)
+* [Přístup k prostředku mimo Azure AD pomocí služby Azure Key Vault](tutorial-windows-vm-access-nonaad.md)
 
 Informace o použití spravované identity ve virtuálním počítači s Linuxem:
 
 * [Přístup ke službě Azure Data Lake Store](tutorial-linux-vm-access-datalake.md)
 * [Přístup k Azure Resource Manageru](tutorial-linux-vm-access-arm.md)
-* [Přístup k Azure Storage pomocí přístupové klávesy](tutorial-linux-vm-access-storage.md)
-* [Přístup k Azure Storage s použitím sdílených přístupových podpisů](tutorial-linux-vm-access-storage-sas.md)
-* [Přístup k prostředku AD mimo Azure pomocí služby Azure Key Vault](tutorial-linux-vm-access-nonaad.md)
+* [Přístup ke službě Azure Storage pomocí přístupové klávesy](tutorial-linux-vm-access-storage.md)
+* [Přístup ke službě Azure Storage pomocí sdílených přístupových podpisů](tutorial-linux-vm-access-storage-sas.md)
+* [Přístup k prostředku mimo Azure AD pomocí služby Azure Key Vault](tutorial-linux-vm-access-nonaad.md)
 
 Informace o použití spravované identity s dalšími službami Azure:
 
@@ -149,4 +149,4 @@ Spravované identity prostředků Azure můžete použít k ověřování ve slu
 Pokud chcete začít používat funkci spravovaných identit prostředků Azure, projděte si následující články Rychlý start:
 
 * [Použití spravované identity přiřazené systémem ve virtuálním počítači s Windows pro přístup k Resource Manageru](tutorial-windows-vm-access-arm.md)
-* [Použití spravované identity systém přiřadil virtuálního počítače s Linuxem pro přístup k Resource Manageru](tutorial-linux-vm-access-arm.md)
+* [Použití spravované identity přiřazené systémem ve virtuálním počítači s Linuxem pro přístup k Resource Manageru](tutorial-linux-vm-access-arm.md)

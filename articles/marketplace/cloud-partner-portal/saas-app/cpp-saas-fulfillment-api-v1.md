@@ -16,10 +16,10 @@ ms.date: 03/28/2019
 ms.author: pbutlerm
 ROBOTS: NOINDEX
 ms.openlocfilehash: 4908233280c69a37ea470eed2ef077cb220a7930
-ms.sourcegitcommit: e43ea344c52b3a99235660960c1e747b9d6c990e
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/04/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59009730"
 ---
 # <a name="saas-fulfillment-apis-version-1--deprecated"></a>SaaS splnění rozhraní API verze 1 (zastaralé)
@@ -55,7 +55,7 @@ Akce POST na vyřešit koncový bod umožňuje uživatelům vyřešit marketplac
 
 Když uživatel se přesměruje na web nezávislých výrobců softwaru, adresa URL obsahuje token v parametry dotazu. Výrobci má používat tento token a požádat o jeho vyřešení. Odpověď obsahuje ID předplatného SAAS jedinečný název, ID nabídky a plán pro prostředek. Tento token je platný pouze jedna hodina.
 
-*Žádost*
+*Požadavek*
 
 **POST**
 
@@ -69,7 +69,7 @@ Když uživatel se přesměruje na web nezávislých výrobců softwaru, adresa 
 
 *Hlavičky*
 
-| **Klíč hlavičky**     | **Požaduje se** | **Popis**                                                                                                                                                                                                                  |
+| **Klíč hlavičky**     | **Požadováno** | **Popis**                                                                                                                                                                                                                  |
 |--------------------|--------------|-----------------------------------------------------------|
 | x-ms-requestid     | Ne           | Jedinečnou hodnotu řetězce pro sledování žádosti z klienta, pokud možno identifikátor GUID. Pokud tuto hodnotu nezadáte, jeden se vygeneruje a k dispozici v hlavičkách odpovědi.  |
 | x-ms-correlationid | Ne           | Jedinečnou hodnotu řetězce pro operaci na straně klienta. To koreluje všech událostí z operace klienta s událostmi na straně serveru. Pokud tuto hodnotu nezadáte, jeden se vygeneruje a k dispozici v hlavičkách odpovědi. |
@@ -90,7 +90,7 @@ Když uživatel se přesměruje na web nezávislých výrobců softwaru, adresa 
 }
 ```
 
-| **Název parametru** | **Typ dat** | **Popis**                       |
+| **Název parametru** | **Datový typ** | **Popis**                       |
 |--------------------|---------------|---------------------------------------|
 | id                 | String        | ID předplatného SaaS.          |
 | subscriptionName| String| Název předplatného SaaS nastavena podle uživatele v Azure při přihlášení k odběru ve službě SaaS.|
@@ -101,7 +101,7 @@ Když uživatel se přesměruje na web nezávislých výrobců softwaru, adresa 
 
 *Kódy odpovědí*
 
-| **Kód stavu HTTP** | **Kód chyby**     | **Popis**                                                                         |
+| **Kód stavu HTTP** | **Kód chyby:**     | **Popis**                                                                         |
 |----------------------|--------------------| --------------------------------------------------------------------------------------- |
 | 200                  | `OK`                 | Token úspěšně vyřešen.                                                            |
 | 400                  | `BadRequest`         | Vyžaduje buď chybí záhlaví nebo zadaná neplatná api-version. Nepovedlo se analyzovat token, protože buď token je poškozené nebo jejichž platnost vypršela (token je platný jenom 1 hodinu po vygenerování). |
@@ -113,7 +113,7 @@ Když uživatel se přesměruje na web nezávislých výrobců softwaru, adresa 
 
 *Hlavičky odpovědi*
 
-| **Klíč hlavičky**     | **Požaduje se** | **Popis**                                                                                        |
+| **Klíč hlavičky**     | **Požadováno** | **Popis**                                                                                        |
 |--------------------|--------------|--------------------------------------------------------------------------------------------------------|
 | x-ms-requestid     | Ano          | Požadovat ID přijatou od klienta.                                                                   |
 | x-ms-correlationid | Ano          | ID korelace, pokud předaná klientem, jinak tato hodnota je ID serveru korelace.                   |
@@ -138,7 +138,7 @@ Koncový bod přihlásit k odběru umožňuje uživatelům spustit předplatné 
 
 *Hlavičky*
 
-|  **Klíč hlavičky**        | **Požaduje se** |  **Popis**                                                  |
+|  **Klíč hlavičky**        | **Požadováno** |  **Popis**                                                  |
 | ------------------     | ------------ | --------------------------------------------------------------------------------------- |
 | x-ms-requestid         |   Ne         | Jedinečnou hodnotu řetězce pro sledování žádosti z klienta, pokud možno identifikátor GUID. Pokud není zadáno, jeden se vygeneruje a k dispozici v hlavičkách odpovědi. |
 | x-ms-correlationid     |   Ne         | Jedinečnou hodnotu řetězce pro operaci na straně klienta. Tato hodnota je pro korelaci všech událostí z operace klienta s událostmi na straně serveru. Pokud není zadáno, jeden se vygeneruje a k dispozici v hlavičkách odpovědi. |
@@ -148,7 +148,7 @@ Koncový bod přihlásit k odběru umožňuje uživatelům spustit předplatné 
 | x-ms-marketplace-session-mode| Ne | Příznak pro povolení zkušebním režimu při přihlášení k odběru nabídky SaaS. Pokud nastavíte, předplatné nebude nic účtovat. To je užitečné pro nezávislé výrobce softwaru testování scénářů. Nastavte ji na **"dryrun.**|
 |  |  |  |
 
-*Tělo*
+*Text*
 
 ``` json
 {
@@ -156,14 +156,14 @@ Koncový bod přihlásit k odběru umožňuje uživatelům spustit předplatné 
 }
 ```
 
-| **Název elementu** | **Typ dat** | **Popis**                      |
+| **Název elementu** | **Datový typ** | **Popis**                      |
 |------------------|---------------|--------------------------------------|
 | planId           | (Povinné) Řetězec        | Id plánu uživatele služby SaaS je přihlášena k odběru.  |
 |  |  |  |
 
 *Kódy odpovědí*
 
-| **Kód stavu HTTP** | **Kód chyby**     | **Popis**                                                           |
+| **Kód stavu HTTP** | **Kód chyby:**     | **Popis**                                                           |
 |----------------------|--------------------|---------------------------------------------------------------------------|
 | 202                  | `Accepted`           | Aktivace předplatného SaaS pro daný plán.                   |
 | 400                  | `BadRequest`         | Vyžaduje buď chybí záhlaví nebo text ve formátu JSON má chybný formát. |
@@ -178,7 +178,7 @@ Pro odpovědi 202 vyřídit stav operace žádosti v hlavičce operace umístěn
 
 *Hlavičky odpovědi*
 
-| **Klíč hlavičky**     | **Požaduje se** | **Popis**                                                                                        |
+| **Klíč hlavičky**     | **Požadováno** | **Popis**                                                                                        |
 |--------------------|--------------|--------------------------------------------------------------------------------------------------------|
 | x-ms-requestid     | Ano          | Požadovat ID přijatou od klienta.                                                                   |
 | x-ms-correlationid | Ano          | ID korelace, pokud předaná klientem, jinak tato hodnota je ID serveru korelace.                   |
@@ -203,7 +203,7 @@ Změna koncového bodu mu umožní převést jejich aktuálně předplacenému p
 
 *Hlavičky*
 
-| **Klíč hlavičky**          | **Požaduje se** | **Popis**                                                                                                                                                                                                                  |
+| **Klíč hlavičky**          | **Požadováno** | **Popis**                                                                                                                                                                                                                  |
 |-------------------------|--------------|---------------------------------------------------------------------------------------------------------------------|
 | x-ms-requestid          | Ne           | Jedinečnou hodnotu řetězce pro sledování žádosti z klienta. Doporučujeme identifikátor GUID. Pokud není zadáno, jeden se vygeneruje a k dispozici v hlavičkách odpovědi.   |
 | x-ms-correlationid      | Ne           | Jedinečnou hodnotu řetězce pro operaci na straně klienta. Tato hodnota je pro korelaci všech událostí z operace klienta s událostmi na straně serveru. Pokud není zadáno, jeden se vygeneruje a k dispozici v hlavičkách odpovědi. |
@@ -212,7 +212,7 @@ Změna koncového bodu mu umožní převést jejich aktuálně předplacenému p
 | Autorizace           | Ano          | JSON web token (JWT) nosný token.                    |
 |  |  |  |
 
-*Tělo*
+*Text*
 
 ```json
 {
@@ -220,14 +220,14 @@ Změna koncového bodu mu umožní převést jejich aktuálně předplacenému p
 }
 ```
 
-|  **Název elementu** |  **Typ dat**  | **Popis**                              |
+|  **Název elementu** |  **Datový typ**  | **Popis**                              |
 |  ---------------- | -------------   | --------------------------------------       |
 |  planId           |  (Povinné) Řetězec         | Id plánu uživatele služby SaaS je přihlášena k odběru.          |
 |  |  |  |
 
 *Kódy odpovědí*
 
-| **Kód stavu HTTP** | **Kód chyby**     | **Popis**                                                           |
+| **Kód stavu HTTP** | **Kód chyby:**     | **Popis**                                                           |
 |----------------------|--------------------|---------------------------------------------------------------------------|
 | 202                  | `Accepted`           | Aktivace předplatného SaaS pro daný plán.                   |
 | 400                  | `BadRequest`         | Vyžaduje buď chybí záhlaví nebo text ve formátu JSON má chybný formát. |
@@ -240,7 +240,7 @@ Změna koncového bodu mu umožní převést jejich aktuálně předplacenému p
 
 *Hlavičky odpovědi*
 
-| **Klíč hlavičky**     | **Požaduje se** | **Popis**                                                                                        |
+| **Klíč hlavičky**     | **Požadováno** | **Popis**                                                                                        |
 |--------------------|--------------|--------------------------------------------------------------------------------------------------------|
 | x-ms-requestid     | Ano          | Požadovat ID přijatou od klienta.                                                                   |
 | x-ms-correlationid | Ano          | ID korelace, pokud předaná klientem, jinak tato hodnota je ID serveru korelace.                   |
@@ -253,7 +253,7 @@ Změna koncového bodu mu umožní převést jejich aktuálně předplacenému p
 
 Akce odstranění na koncovém bodu přihlásit k odběru umožňuje uživateli odstranit odběr s daným ID.
 
-*Žádost*
+*Požadavek*
 
 **DELETE**
 
@@ -267,7 +267,7 @@ Akce odstranění na koncovém bodu přihlásit k odběru umožňuje uživateli 
 
 *Hlavičky*
 
-| **Klíč hlavičky**     | **Požaduje se** | **Popis**                                                                                                                                                                                                                  |
+| **Klíč hlavičky**     | **Požadováno** | **Popis**                                                                                                                                                                                                                  |
 |--------------------|--------------| ----------------------------------------------------------|
 | x-ms-requestid     | Ne           | Jedinečnou hodnotu řetězce pro sledování žádosti z klienta. Doporučujeme identifikátor GUID. Pokud tuto hodnotu nezadáte, jeden se vygeneruje a k dispozici v hlavičkách odpovědi.                                                           |
 | x-ms-correlationid | Ne           | Jedinečnou hodnotu řetězce pro operaci na straně klienta. Tato hodnota je pro korelaci všech událostí z operace klienta s událostmi na straně serveru. Pokud není zadáno, jeden se vygeneruje a k dispozici v hlavičkách odpovědi. |
@@ -276,7 +276,7 @@ Akce odstranění na koncovém bodu přihlásit k odběru umožňuje uživateli 
 
 *Kódy odpovědí*
 
-| **Kód stavu HTTP** | **Kód chyby**     | **Popis**                                                           |
+| **Kód stavu HTTP** | **Kód chyby:**     | **Popis**                                                           |
 |----------------------|--------------------|---------------------------------------------------------------------------|
 | 202                  | `Accepted`           | Aktivace předplatného SaaS pro daný plán.                   |
 | 400                  | `BadRequest`         | Vyžaduje buď chybí záhlaví nebo text ve formátu JSON má chybný formát. |
@@ -290,7 +290,7 @@ Pro odpovědi 202 vyřídit stav operace žádosti v hlavičce operace umístěn
 
 *Hlavičky odpovědi*
 
-| **Klíč hlavičky**     | **Požaduje se** | **Popis**                                                                                        |
+| **Klíč hlavičky**     | **Požadováno** | **Popis**                                                                                        |
 |--------------------|--------------|--------------------------------------------------------------------------------------------------------|
 | x-ms-requestid     | Ano          | Požadovat ID přijatou od klienta.                                                                   |
 | x-ms-correlationid | Ano          | ID korelace, pokud předaná klientem, jinak to je ID serveru korelace.                   |
@@ -303,11 +303,11 @@ Pro odpovědi 202 vyřídit stav operace žádosti v hlavičce operace umístěn
 
 Tento koncový bod umožňuje uživateli sledovat stav aktivovaných asynchronní operace (přihlásit k odběru nebo zrušení odběru/změnit plán).
 
-*Žádost*
+*Požadavek*
 
 **GET**
 
-**https://marketplaceapi.microsoft.com/api/saas/operations/*{operationId}*?api-version=2017-04-15**
+**https://marketplaceapi.microsoft.com/api/saas/operations/*{IDoperace}*?api-version=2017-04-15**
 
 | **Název parametru**  | **Popis**                                       |
 |---------------------|-------------------------------------------------------|
@@ -317,7 +317,7 @@ Tento koncový bod umožňuje uživateli sledovat stav aktivovaných asynchronn�
 
 *Hlavičky*
 
-| **Klíč hlavičky**     | **Požaduje se** | **Popis**                                                                                                                                                                                                                  |
+| **Klíč hlavičky**     | **Požadováno** | **Popis**                                                                                                                                                                                                                  |
 |--------------------|--------------|--------------------------------------------------------------------------------------------------------------------------|
 | x-ms-requestid     | Ne           | Jedinečnou hodnotu řetězce pro sledování žádosti z klienta. Doporučujeme identifikátor GUID. Pokud tuto hodnotu nezadáte, jeden se vygeneruje a k dispozici v hlavičkách odpovědi.   |
 | x-ms-correlationid | Ne           | Jedinečnou hodnotu řetězce pro operaci na straně klienta. Tato hodnota je pro korelaci všech událostí z operace klienta s událostmi na straně serveru. Pokud tuto hodnotu nezadáte, jeden se vygeneruje a k dispozici v hlavičkách odpovědi.  |
@@ -336,7 +336,7 @@ Tento koncový bod umožňuje uživateli sledovat stav aktivovaných asynchronn�
 }
 ```
 
-| **Název parametru** | **Typ dat** | **Popis**                                                                                                                                               |
+| **Název parametru** | **Datový typ** | **Popis**                                                                                                                                               |
 |--------------------|---------------|-------------------------------------------------------------------------------------------|
 | id                 | String        | ID operace.                                                                      |
 | status             | Výčet          | Stav operace, jednu z následujících: `In Progress`, `Succeeded`, nebo `Failed`.          |
@@ -347,7 +347,7 @@ Tento koncový bod umožňuje uživateli sledovat stav aktivovaných asynchronn�
 
 *Kódy odpovědí*
 
-| **Kód stavu HTTP** | **Kód chyby**     | **Popis**                                                              |
+| **Kód stavu HTTP** | **Kód chyby:**     | **Popis**                                                              |
 |----------------------|--------------------|------------------------------------------------------------------------------|
 | 200                  | `OK`                 | Požadavek na získání úspěšně vyřešen a obsahuje tělo odpovědi.    |
 | 400                  | `BadRequest`         | Vyžaduje buď chybí záhlaví nebo byla zadána neplatná api-version. |
@@ -359,7 +359,7 @@ Tento koncový bod umožňuje uživateli sledovat stav aktivovaných asynchronn�
 
 *Hlavičky odpovědi*
 
-| **Klíč hlavičky**     | **Požaduje se** | **Popis**                                                                                        |
+| **Klíč hlavičky**     | **Požadováno** | **Popis**                                                                                        |
 |--------------------|--------------|--------------------------------------------------------------------------------------------------------|
 | x-ms-requestid     | Ano          | Požadovat ID přijatou od klienta.                                                                   |
 | x-ms-correlationid | Ano          | ID korelace, pokud předaná klientem, jinak to je ID serveru korelace.                   |
@@ -371,7 +371,7 @@ Tento koncový bod umožňuje uživateli sledovat stav aktivovaných asynchronn�
 
 Přihlášení k odběru akce Get na koncový bod umožňuje uživateli získat předplatné s identifikátorem daný prostředek.
 
-*Žádost*
+*Požadavek*
 
 **GET**
 
@@ -385,7 +385,7 @@ Přihlášení k odběru akce Get na koncový bod umožňuje uživateli získat 
 
 *Hlavičky*
 
-| **Klíč hlavičky**     | **Požaduje se** | **Popis**                                                                                           |
+| **Klíč hlavičky**     | **Požadováno** | **Popis**                                                                                           |
 |--------------------|--------------|-----------------------------------------------------------------------------------------------------------|
 | x-ms-requestid     | Ne           | Jedinečnou hodnotu řetězce pro sledování žádosti z klienta, pokud možno identifikátor GUID. Pokud tuto hodnotu nezadáte, jeden se vygeneruje a k dispozici v hlavičkách odpovědi.                                                           |
 | x-ms-correlationid | Ne           | Jedinečnou hodnotu řetězce pro operaci na straně klienta. Tato hodnota je pro korelaci všech událostí z operace klienta s událostmi na straně serveru. Pokud tuto hodnotu nezadáte, jeden se vygeneruje a k dispozici v hlavičkách odpovědi. |
@@ -406,7 +406,7 @@ Přihlášení k odběru akce Get na koncový bod umožňuje uživateli získat 
 }
 ```
 
-| **Název parametru**     | **Typ dat** | **Popis**                               |
+| **Název parametru**     | **Datový typ** | **Popis**                               |
 |------------------------|---------------|-----------------------------------------------|
 | id                     | String        | Prostředek předplatného ID SaaS v Azure.    |
 | offerId                | String        | ID nabídky, který uživatel přihlášen k odběru.         |
@@ -419,7 +419,7 @@ Přihlášení k odběru akce Get na koncový bod umožňuje uživateli získat 
 
 *Kódy odpovědí*
 
-| **Kód stavu HTTP** | **Kód chyby**     | **Popis**                                                              |
+| **Kód stavu HTTP** | **Kód chyby:**     | **Popis**                                                              |
 |----------------------|--------------------|------------------------------------------------------------------------------|
 | 200                  | `OK`                 | Požadavek na získání úspěšně vyřešen a obsahuje tělo odpovědi.    |
 | 400                  | `BadRequest`         | Vyžaduje buď chybí záhlaví nebo byla zadána neplatná api-version. |
@@ -431,7 +431,7 @@ Přihlášení k odběru akce Get na koncový bod umožňuje uživateli získat 
 
 *Hlavičky odpovědi*
 
-| **Klíč hlavičky**     | **Požaduje se** | **Popis**                                                                                        |
+| **Klíč hlavičky**     | **Požadováno** | **Popis**                                                                                        |
 |--------------------|--------------|--------------------------------------------------------------------------------------------------------|
 | x-ms-requestid     | Ano          | Požadovat ID přijatou od klienta.                                                                   |
 | x-ms-correlationid | Ano          | ID korelace, pokud předaná klientem, jinak to je ID serveru korelace.                   |
@@ -444,7 +444,7 @@ Přihlášení k odběru akce Get na koncový bod umožňuje uživateli získat 
 
 Akce Get na koncový bod předplatná umožňuje uživateli získat všechna předplatná pro všechny nabídky z ISV.
 
-*Žádost*
+*Požadavek*
 
 **GET**
 
@@ -457,7 +457,7 @@ Akce Get na koncový bod předplatná umožňuje uživateli získat všechna př
 
 *Hlavičky*
 
-| **Klíč hlavičky**     | **Požaduje se** | **Popis**                                           |
+| **Klíč hlavičky**     | **Požadováno** | **Popis**                                           |
 |--------------------|--------------|-----------------------------------------------------------|
 | x-ms-requestid     | Ne           | Jedinečnou hodnotu řetězce pro sledování žádosti z klienta. Doporučujeme identifikátor GUID. Pokud tuto hodnotu nezadáte, jeden se vygeneruje a k dispozici v hlavičkách odpovědi.             |
 | x-ms-correlationid | Ne           | Jedinečnou hodnotu řetězce pro operaci na straně klienta. Tato hodnota je pro korelaci všech událostí z operace klienta s událostmi na straně serveru. Pokud tuto hodnotu nezadáte, jeden se vygeneruje a k dispozici v hlavičkách odpovědi. |
@@ -478,7 +478,7 @@ Akce Get na koncový bod předplatná umožňuje uživateli získat všechna př
 }
 ```
 
-| **Název parametru**     | **Typ dat** | **Popis**                               |
+| **Název parametru**     | **Datový typ** | **Popis**                               |
 |------------------------|---------------|-----------------------------------------------|
 | id                     | String        | Prostředek předplatného ID SaaS v Azure.    |
 | offerId                | String        | ID nabídky, který uživatel přihlášen k odběru.         |
@@ -491,7 +491,7 @@ Akce Get na koncový bod předplatná umožňuje uživateli získat všechna př
 
 *Kódy odpovědí*
 
-| **Kód stavu HTTP** | **Kód chyby**     | **Popis**                                                              |
+| **Kód stavu HTTP** | **Kód chyby:**     | **Popis**                                                              |
 |----------------------|--------------------|------------------------------------------------------------------------------|
 | 200                  | `OK`                 | Požadavek na získání úspěšně vyřešen a obsahuje tělo odpovědi.    |
 | 400                  | `BadRequest`         | Vyžaduje buď chybí záhlaví nebo byla zadána neplatná api-version. |
@@ -503,7 +503,7 @@ Akce Get na koncový bod předplatná umožňuje uživateli získat všechna př
 
 *Hlavičky odpovědi*
 
-| **Klíč hlavičky**     | **Požaduje se** | **Popis**                                                                                        |
+| **Klíč hlavičky**     | **Požadováno** | **Popis**                                                                                        |
 |--------------------|--------------|--------------------------------------------------------------------------------------------------------|
 | x-ms-requestid     | Ano          | Požadovat ID přijatou od klienta.                                                                   |
 | x-ms-correlationid | Ano          | ID korelace, pokud předaná klientem, jinak to je ID serveru korelace.                   |
@@ -515,7 +515,7 @@ Akce Get na koncový bod předplatná umožňuje uživateli získat všechna př
 
 SaaS webhook se používá pro oznamování změn aktivně ve službě SaaS. Toto rozhraní API příspěvku má neověřené a zavolá se službou společnosti Microsoft. Očekává se, že služba SaaS volají operace rozhraní API k ověření a autorizaci před provedením akce na oznámení webhooku. 
 
-*Tělo*
+*Text*
 
 ``` json
   {
@@ -528,7 +528,7 @@ SaaS webhook se používá pro oznamování změn aktivně ve službě SaaS. Tot
   }
 ```
 
-| **Název parametru**     | **Typ dat** | **Popis**                               |
+| **Název parametru**     | **Datový typ** | **Popis**                               |
 |------------------------|---------------|-----------------------------------------------|
 | id  | String       | Jedinečné ID pro operaci aktivuje.                |
 | activityId   | String        | Jedinečnou hodnotu řetězce pro sledování žádosti ze služby. Používá se pro všechny odsouhlasení.               |

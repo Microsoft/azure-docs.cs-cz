@@ -18,10 +18,10 @@ ms.date: 05/05/2017
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 7de46a534ea7920bcae4a5b2a3316117f090a7bf
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59265062"
 ---
 # <a name="azure-virtual-machines-high-availability-for-sap-netweaver"></a>Azure Virtual Machines vysoká dostupnost pro SAP NetWeaver
@@ -196,7 +196,7 @@ Tato série článků popisuje:
     > Důrazně doporučujeme použít model nasazení Azure Resource Manageru pro vaše instalace SAP. Nabízí řadu výhod, které nejsou k dispozici v modelu nasazení classic. Další informace o Azure [modely nasazení][virtual-machines-azure-resource-manager-architecture-benefits-arm].   
     >
 * Vysoká dostupnost SAP na:
-  * ![Windows][Logo_Windows]**Windows**s použitím **systému Windows Server Failover Cluster (WSFC)** 
+  * ![Windows][Logo_Windows]**Windows**s použitím **systému Windows Server Failover Cluster (WSFC)**
   * ![Linux][Logo_Linux] **Linux**pomocí **Framework clusteru Linux**
 
 V těchto článcích se dozvíte, jak můžete chránit jediný bod selhání (SPOF) komponent, jako jsou SAP Central Services (ASCS/SCS) a systémy pro správu databáze (DBMS). Dozvíte se taky o redundantní komponenty v Azure, jako je například aplikační server SAP.

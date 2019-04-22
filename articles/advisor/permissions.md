@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 04/03/2019
 ms.author: kasparks
 ms.openlocfilehash: cbd2e456c96dbf8ca01387f0c7c17a1541dbfe55
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/05/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59052789"
 ---
 # <a name="permissions-in-azure-advisor"></a>Oprávnění ve službě Azure Advisor
@@ -22,7 +22,7 @@ Azure Advisor poskytuje doporučení v závislosti na využití a na konfiguraci
 
 Následující tabulka definuje role a přístupu, které mají v rámci služby Advisor:
 
-| **Role** | **Zobrazení doporučení** | **Upravit pravidla** | **Upravit konfigurace předplatného** | **Upravit konfigurace skupin prostředků**| **Zavřít a odložit doporučení**|
+| **Role** | **Zobrazit doporučení** | **Upravit pravidla** | **Upravit konfigurace předplatného** | **Upravit konfigurace skupin prostředků**| **Zavřít a odložit doporučení**|
 |---|:---:|:---:|:---:|:---:|:---:|
 |Vlastník předplatného|**X**|**X**|**X**|**X**|**X**|
 |Přispěvatel předplatného|**X**|**X**|**X**|**X**|**X**|
@@ -54,4 +54,4 @@ Pokud obdržíte chybu při pokusu o posunout nebo zavřít doporučení, pravd�
 Tento článek poskytla přehled používání RBAC služby Advisor na ovládací prvek uživatelských oprávnění a jak řešit běžné problémy. Další informace o službě Advisor najdete v tématu:
 
 - [Co je Azure Advisor?](https://docs.microsoft.com/azure/advisor/advisor-overview)
-- [Začínáme se službou Azure Advisor](https://docs.microsoft.com/azure/advisor/advisor-get-started)
+- [Začínáme s využitím Azure Advisoru](https://docs.microsoft.com/azure/advisor/advisor-get-started)

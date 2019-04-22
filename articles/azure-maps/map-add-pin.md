@@ -10,10 +10,10 @@ services: azure-maps
 manager: ''
 ms.custom: codepen
 ms.openlocfilehash: 2580f1177bf9e6e3a92934f88a5d8ab51894e8d9
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59269482"
 ---
 # <a name="add-a-symbol-layer-to-a-map"></a>Přidat vrstvu symbolů do mapy
@@ -76,7 +76,7 @@ Další informace o třídy a metody používané v tomto článku:
 Naleznete v následujících článcích pro další ukázky kódu pro přidání do vaše mapy:
 
 > [!div class="nextstepaction"]
-> [Přidání místního okna](map-add-popup.md)
+> [Přidání vyskakovacího okna](map-add-popup.md)
 
 > [!div class="nextstepaction"]
 > [Použití výrazů s daty styl](data-driven-style-expressions-web-sdk.md)
@@ -85,7 +85,7 @@ Naleznete v následujících článcích pro další ukázky kódu pro přidán�
 > [Přidání obrazce](map-add-shape.md)
 
 > [!div class="nextstepaction"]
-> [Přidání vrstvy bublin](map-add-bubble-layer.md)
+> [Přidat vrstvu bublinový](map-add-bubble-layer.md)
 
 > [!div class="nextstepaction"]
-> [Add HTML Makers](map-add-bubble-layer.md)
+> [Přidat tvůrci HTML](map-add-bubble-layer.md)

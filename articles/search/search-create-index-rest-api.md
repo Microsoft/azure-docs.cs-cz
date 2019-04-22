@@ -11,10 +11,10 @@ ms.devlang: rest-api
 ms.topic: conceptual
 ms.custom: seodec2018
 ms.openlocfilehash: 2deba4bf941d561fcef7c2dff804646732e7ce24
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59268020"
 ---
 # <a name="quickstart-create-an-azure-search-index-using-powershell-and-the-rest-api"></a>Rychlý start: Vytvoření indexu Azure Search pomocí prostředí PowerShell a rozhraní REST API
@@ -22,7 +22,7 @@ ms.locfileid: "59268020"
 > * [PowerShell (REST)](search-create-index-rest-api.md)
 > * [C#](search-create-index-dotnet.md)
 > * [Postman (REST)](search-fiddler.md)
-> * [Portál](search-create-index-portal.md)
+> * [Azure Portal](search-create-index-portal.md)
 > 
 
 Tento článek vás provede procesem vytvoření, načtení a dotazování Azure Search [index](search-what-is-an-index.md) pomocí Powershellu a [rozhraní REST API služby Azure Search](https://docs.microsoft.com/rest/api/searchservice/). Definice indexu a prohledávatelný obsah je k dispozici v textu žádosti jako obsah ve správném formátu JSON.

@@ -1,5 +1,5 @@
 ---
-title: Vytvoření Azure Data Catalog
+title: Vytvoření Azure Data Catalogu
 description: Rychlý start pro vytvoření služby Azure Data Catalog.
 author: markingmyname
 ms.author: maghan
@@ -7,13 +7,13 @@ ms.service: data-catalog
 ms.topic: quickstart
 ms.date: 04/05/2019
 ms.openlocfilehash: 66d178497f3403579990340b88a1153905b2a2bf
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
-ms.translationtype: MT
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59271029"
 ---
-# <a name="quickstart-create-an-azure-data-catalog"></a>Rychlý start: Vytvoření Azure Data Catalog
+# <a name="quickstart-create-an-azure-data-catalog"></a>Rychlý start: Vytvoření Azure Data Catalogu
 
 Azure Data Catalog je plně spravovaná cloudová služba, která slouží jako systém pro registraci a zjišťování podnikových datových assetů. Podrobný přehled naleznete v části [Co je Azure Data Catalog?](overview.md).
 

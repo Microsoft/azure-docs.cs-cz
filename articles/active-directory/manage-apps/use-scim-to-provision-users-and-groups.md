@@ -17,10 +17,10 @@ ms.reviewer: asmalser
 ms.custom: aaddev;it-pro;seohack1
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: a404b5e6769c7bb91b4f7b5830cea18372ec456d
-ms.sourcegitcommit: 045406e0aa1beb7537c12c0ea1fbf736062708e8
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/04/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59007153"
 ---
 # <a name="using-system-for-cross-domain-identity-management-scim-to-automatically-provision-users-and-groups-from-azure-active-directory-to-applications"></a>Automatické zřizování uživatelů a skupin ze služby Azure Active Directory do aplikací pomocí systému pro mezi doménami Identity Management (SCIM)
@@ -152,48 +152,48 @@ Tato část poskytuje příklad SCIM žádosti, protože ho vygeneroval klienta 
 >Vysvětlení, jak a kdy služba zřizování uživatelů Azure AD vydá operací popsaných níže najdete v tématu [co se stane během zřizování uživatelů?](user-provisioning.md#what-happens-during-provisioning).
 
 - [Operace uživatelů](#user-operations)
-  - [Vytvořit uživatele](#create-user)
-    - [Žádost](#request)
+  - [Vytvoření uživatele](#create-user)
+    - [Požadavek](#request)
     - [Odpověď](#response)
-  - [Načíst uživatele](#get-user)
-    - [Žádost](#request-1)
+  - [Získání uživatele](#get-user)
+    - [Požadavek](#request-1)
     - [Odpověď](#response-1)
   - [Načíst uživatele podle dotazu](#get-user-by-query)
-    - [Žádost](#request-2)
+    - [Požadavek](#request-2)
     - [Odpověď](#response-2)
   - [Načíst uživatele dotazem - nula výsledků](#get-user-by-query---zero-results)
-    - [Žádost](#request-3)
+    - [Požadavek](#request-3)
     - [Odpověď](#response-3)
   - [Aktualizace uživatele [více Vážíme si toho vlastnosti]](#update-user-multi-valued-properties)
-    - [Žádost](#request-4)
+    - [Požadavek](#request-4)
     - [Odpověď](#response-4)
   - [Aktualizace uživatele [jednou hodnotou vlastnosti]](#update-user-single-valued-properties)
-    - [Žádost](#request-5)
+    - [Požadavek](#request-5)
     - [Odpověď](#response-5)
   - [Odstranění uživatele](#delete-user)
-    - [Žádost](#request-6)
+    - [Požadavek](#request-6)
     - [Odpověď](#response-6)
 - [Operace skupiny](#group-operations)
   - [Vytvoření skupiny](#create-group)
-    - [Žádost](#request-7)
+    - [Požadavek](#request-7)
     - [Odpověď](#response-7)
-  - [Získat skupinu](#get-group)
-    - [Žádost](#request-8)
+  - [Získání skupiny](#get-group)
+    - [Požadavek](#request-8)
     - [Odpověď](#response-8)
   - [Získat skupinu podle displayName](#get-group-by-displayname)
-    - [Žádost](#request-9)
+    - [Požadavek](#request-9)
     - [Odpověď](#response-9)
   - [Aktualizovat skupinu [třetí atributy]](#update-group-non-member-attributes)
-    - [Žádost](#request-10)
+    - [Požadavek](#request-10)
     - [Odpověď](#response-10)
   - [Skupina aktualizací [přidat členy]](#update-group-add-members)
-    - [Žádost](#request-11)
+    - [Požadavek](#request-11)
     - [Odpověď](#response-11)
   - [Aktualizovat skupinu [odebrat členy]](#update-group-remove-members)
-    - [Žádost](#request-12)
+    - [Požadavek](#request-12)
     - [Odpověď](#response-12)
   - [Odstranění skupiny](#delete-group)
-    - [Žádost](#request-13)
+    - [Požadavek](#request-13)
     - [Odpověď](#response-13)
 
 ### <a name="user-operations"></a>Operace uživatelů
@@ -620,7 +620,7 @@ Pro zjednodušení tohoto procesu [ukázky kódu](https://github.com/Azure/Azure
 **Požadavky**
 
 * Visual Studio 2013 nebo novější
-* [Sada Azure SDK pro .NET](https://azure.microsoft.com/downloads/)
+* [Azure SDK pro .NET](https://azure.microsoft.com/downloads/)
 * Windows počítač, který podporuje rozhraní ASP.NET 4.5 se použije jako koncový bod SCIM. Tento počítač musí být přístupné z cloudu.
 * [Předplatné Azure s verzí zkušební verzi nebo s licencí Azure AD Premium](https://azure.microsoft.com/services/active-directory/)
 

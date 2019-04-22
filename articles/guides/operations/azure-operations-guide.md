@@ -16,10 +16,10 @@ ms.workload: infrastructure
 ms.date: 08/24/2018
 ms.author: mibender
 ms.openlocfilehash: 1222395fd8efb7cf189ae6678f6c39f5a6c63157
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/05/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59051166"
 ---
 # <a name="get-started-for-azure-it-operators"></a>Začínáme pro operátory Azure IT
@@ -277,7 +277,7 @@ Když děláte rozhodnutí o vaší skupiny prostředků, vezměte v úvahu tyto
 
 - **Proměnné**: Ty se používají pro uchování hodnoty, které se používají v rámci nasazení. Na rozdíl od parametry hodnotu proměnné není k dispozici v době nasazení. Místo toho je obtížné kódované nebo generuje dynamicky.
 
-- **prostředky**: Tato část šablony definuje prostředky k nasazení, jako jsou virtuální počítače, účty úložiště a virtuální sítě.
+- **Prostředky:** Tato část šablony definuje prostředky k nasazení, jako jsou virtuální počítače, účty úložiště a virtuální sítě.
 
 - **Výstup**: Po dokončení nasazení Resource Manageru můžete vrátit data, jako jsou dynamicky generované připojovací řetězce.
 
@@ -473,7 +473,7 @@ Místní sítě můžete připojit ke službě Azure virtual network s využití
 Vzhledem k tomu, že virtuální síť Azure je připojený k vaší místní síti, mezi různými místy, že virtuální sítě musíte použít jedinečný části adresního prostoru, který vaše organizace používá. Stejným způsobem, který různých sídlech jsou přiřazeny konkrétní podsíť protokolu IP Azure stane jinam, jak můžete svoji síť rozšířit.
 Existuje několik možností pro nasazení virtuální sítě.
 
-- [Portál](../..//virtual-network/quick-create-portal.md)
+- [Azure Portal](../..//virtual-network/quick-create-portal.md)
 
 - [PowerShell](../../virtual-network/quick-create-powershell.md)
 
@@ -491,5 +491,5 @@ Zabezpečení virtuální sítě Azure může pomoct s použitím skupiny zabezp
 
 ## <a name="next-steps"></a>Další postup
 
-- [Vytvoření virtuálního počítače s Windows](../../virtual-machines/windows/quick-create-portal.md)
+- [Vytvoření virtuálního počítače Windows](../../virtual-machines/windows/quick-create-portal.md)
 - [Vytvoření virtuálního počítače s Linuxem](../../virtual-machines/linux/quick-create-portal.md)

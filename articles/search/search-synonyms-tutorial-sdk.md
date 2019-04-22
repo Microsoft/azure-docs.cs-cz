@@ -10,10 +10,10 @@ ms.date: 03/18/2019
 ms.author: heidist
 ms.custom: seodec2018
 ms.openlocfilehash: f9cadfcf0c027f4aec4f9d4928872709ee7d3e99
-ms.sourcegitcommit: e43ea344c52b3a99235660960c1e747b9d6c990e
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/04/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59008965"
 ---
 # <a name="example-add-synonyms-for-azure-search-in-c"></a>Příklad: Přidání synonym pro službu Azure Search vC#
@@ -37,7 +37,7 @@ Požadavky kurzu zahrnují tyto položky:
 
 * [Visual Studio](https://www.visualstudio.com/downloads/)
 * [Služba Azure Search](search-create-service-portal.md)
-* [Knihovny Microsoft.Azure.Search .NET](https://aka.ms/search-sdk)
+* [Knihovna Microsoft.Azure.Search .NET](https://aka.ms/search-sdk)
 * [Jak používat Azure Search z aplikace .NET](https://docs.microsoft.com/azure/search/search-howto-dotnet-sdk)
 
 ## <a name="overview"></a>Přehled
@@ -175,4 +175,4 @@ Nejrychlejší způsob, jak vyčistit po příkladem je tak, že odstraníte sku
 V tomto příkladu jsme vám ukázali [rozhraní REST API pro synonyma](https://aka.ms/rgm6rq) v C# kód k vytvoření a odesílání pravidla mapování a poté zavolejte mapu synonym v dotazu. Další informace najdete v referenční dokumentaci [sady .NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.search) a [rozhraní REST API](https://docs.microsoft.com/rest/api/searchservice/).
 
 > [!div class="nextstepaction"]
-> [Použití synonym ve službě Azure Search](search-synonyms.md)
+> [Synonyma ve službě Azure Search](search-synonyms.md)

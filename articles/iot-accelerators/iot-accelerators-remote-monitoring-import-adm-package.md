@@ -9,10 +9,10 @@ services: iot-accelerators
 ms.date: 11/29/2018
 ms.topic: conceptual
 ms.openlocfilehash: 8100914e9a1d1489cb80de55a689e17f6d28a941
-ms.sourcegitcommit: e43ea344c52b3a99235660960c1e747b9d6c990e
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/04/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59009848"
 ---
 # <a name="import-an-automatic-device-management-package-into-your-remote-monitoring-solution-accelerator"></a>Naimportujte balíček správy automatické akcelerátor řešení vzdálené monitorování
@@ -30,14 +30,14 @@ Exportovat konfiguraci automatické správy z vývojového prostředí pomocí w
 
 1. Na webu Azure Portal přejděte k centru IoT, které používáte pro vývoj a testování zařízení IoT. Klikněte na tlačítko **konfigurace zařízení IoT**:
 
-    [![IKonfigurace zařízení oT](./media/iot-accelerators-remote-monitoring-import-adm-package/deviceconfiguration-inline.png)](./media/iot-accelerators-remote-monitoring-import-adm-package/deviceconfiguration-expanded.png#lightbox)
+    [![Konfigurace zařízení IoT](./media/iot-accelerators-remote-monitoring-import-adm-package/deviceconfiguration-inline.png)](./media/iot-accelerators-remote-monitoring-import-adm-package/deviceconfiguration-expanded.png#lightbox)
 
 1. Klikněte na položku konfigurace, které chcete použít. **Podrobnosti o konfiguraci zařízení** zobrazí se stránka:
 
-    [![IPodrobnosti konfigurace zařízení oT](./media/iot-accelerators-remote-monitoring-import-adm-package/configuration-details-inline.png)](./media/iot-accelerators-remote-monitoring-import-adm-package/configuration-details-expanded.png#lightbox)
+    [![Podrobnosti konfigurace zařízení IoT](./media/iot-accelerators-remote-monitoring-import-adm-package/configuration-details-inline.png)](./media/iot-accelerators-remote-monitoring-import-adm-package/configuration-details-expanded.png#lightbox)
 1. Klikněte na tlačítko **stažení konfiguračního souboru**:
 
-    [![Dstáhn konfiguračního souboru](./media/iot-accelerators-remote-monitoring-import-adm-package/download-inline.png)](./media/iot-accelerators-remote-monitoring-import-adm-package/download-expanded.png#lightbox)
+    [![Stáhněte si konfigurační soubor](./media/iot-accelerators-remote-monitoring-import-adm-package/download-inline.png)](./media/iot-accelerators-remote-monitoring-import-adm-package/download-expanded.png#lightbox)
 
 1. Uložení souboru JSON jako místní soubor s názvem **configuration.json**.
 

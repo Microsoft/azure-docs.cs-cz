@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 12/04/2018
 ms.author: kraigb
 ms.openlocfilehash: 2ef327721fd42e5274381834721fd987ec7e9d75
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59263277"
 ---
 # <a name="use-azure-machine-learning-service-in-a-notebook"></a>Použití služby Azure Machine Learning v poznámkovém bloku
@@ -47,7 +47,7 @@ Vybavená předem nakonfigurovaným rozhraním prostředí potřebné pro práci
 
 Dokumentace ke službě Azure Machine Learning Services obsahuje celou řadu dalších prostředků, které vás provedou práce pomocí služby Machine Learning v rámci poznámkových bloků:
 
-- [Rychlý start: Začínáme s Azure Machine Learning pomocí Pythonu](https://docs.microsoft.com/azure/machine-learning/service/quickstart-create-workspace-with-python)
+- [Rychlé zprovoznění: Začínáme s Azure Machine Learning pomocí Pythonu](https://docs.microsoft.com/azure/machine-learning/service/quickstart-create-workspace-with-python)
 - [Kurz #1: Trénování modelu klasifikace obrázků pomocí služby Azure Machine Learning](https://docs.microsoft.com/azure/machine-learning/service/tutorial-train-models-with-aml)
 - [Kurz #2: Nasadit model klasifikace image v Azure Container Instance (ACI)](https://docs.microsoft.com/azure/machine-learning/service/tutorial-deploy-models-with-aml)
 - [Kurz: Trénování modelu klasifikace pomocí automatizovaných strojového učení ve službě Azure Machine Learning](https://docs.microsoft.com/azure/machine-learning/service/tutorial-auto-train-models)

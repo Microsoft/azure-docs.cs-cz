@@ -9,10 +9,10 @@ ms.date: 01/31/2019
 ms.author: jeffpatt
 ms.subservice: files
 ms.openlocfilehash: 328edac78624c192ee139c40fe0ed1853423c639
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/05/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59051364"
 ---
 # <a name="troubleshoot-azure-file-sync"></a>Řešení problémů se Synchronizací souborů Azure
@@ -164,12 +164,12 @@ Koncový bod serveru nemůže protokolu aktivitu synchronizace z následujícíc
 Tento problém se očekává, je-li vytvořit koncový bod cloudu a používat sdílené složky Azure, který obsahuje data. Mezi koncové body cloudu a serveru můžou synchronizovat soubory musíte dokončit úlohu výčtu změn, která hledá změny ve sdílené složce Azure file. Čas k dokončení úlohy se závisí na velikosti oboru názvů do sdílené složky Azure. Po dokončení úlohy výčtu změn by měl aktualizovat stav koncového bodu serveru.
 
 ### <a id="broken-sync"></a>Jak můžu monitorovat stav synchronizace?
-# [<a name="portal"></a>Portál](#tab/portal1)
+# <a name="portaltabportal1"></a>[Azure Portal](#tab/portal1)
 V rámci jednotlivých skupin synchronizace můžete procházet hierarchii do jeho koncových bodů jednotlivých serverů a zjistit stav poslední relace dokončení synchronizace. Zelená sloupce stavu a soubory nesynchronizuje hodnoty 0 označují, že synchronizace funguje podle očekávání. Pokud to není tento případ, níže naleznete seznam běžných chyb synchronizace a ke zpracování souborů, která se synchronizují. 
 
 ![Snímek obrazovky webu Azure portal](media/storage-sync-files-troubleshoot/portal-sync-health.png)
 
-# [<a name="server"></a>Server](#tab/server)
+# <a name="servertabserver"></a>[Server](#tab/server)
 Přejděte na protokoly telemetrických dat serveru, které můžete najít v události prohlížeč na `Applications and Services Logs\Microsoft\FileSync\Agent\Telemetry`. Událost 9102 odpovídá dokončené synchronizační relaci. Vyhledejte nejnovější událost s ID 9102 pro nejnovější stav synchronizace. SyncDirection informuje, pokud tuto relaci bylo odeslání nebo stažení. Pokud je hodnota HResult 0, relace synchronizace byla úspěšná. Nenulové HResult znamená, že během synchronizace; došlo k chybě Níže naleznete seznam běžných chyb. Pokud PerItemErrorCount je větší než 0, znamená to, že některé soubory nebo složky nesynchronizovaly správně. Je možné mít HResult 0 ale PerItemErrorCount, který je větší než 0.
 
 Níže je příklad úspěšně nahrávaly. Pro účely jako stručný výtah jenom některé z hodnoty obsažené v každé 9102 události jsou uvedeny níže. 
@@ -201,10 +201,10 @@ Někdy relace synchronizace nezdaří, celkový nebo mít nenulovou PerItemError
 ---
 
 ### <a name="how-do-i-monitor-the-progress-of-a-current-sync-session"></a>Jak můžu monitorovat průběh aktuální relace synchronizace?
-# [<a name="portal"></a>Portál](#tab/portal1)
+# <a name="portaltabportal1"></a>[Azure Portal](#tab/portal1)
 V rámci skupiny pro synchronizaci přejděte na koncový bod serveru dotyčný a podívejte se na část aktivity synchronizace a zobrazit počet soubory nahrávat nebo stahovat v aktuální relaci synchronizace. Všimněte si, že tento stav bude zpozdit o přibližně 5 minut, a pokud se vaše relace synchronizace je dostatečně malá, aby dokončit během tohoto období, nemusí být hlášena na portálu. 
 
-# [<a name="server"></a>Server](#tab/server)
+# <a name="servertabserver"></a>[Server](#tab/server)
 Hledejte na poslední 9302 v telemetrická data do protokolu událostí na serveru (v prohlížeči událostí přejděte k aplikacím a službám Logs\Microsoft\FileSync\Agent\Telemetry). Tato událost ukazuje na stavu relace synchronizace. TotalItemCount označuje, kolik souborů je možné synchronizovat AppliedItemCount počet souborů, které byly synchronizovány zatím a PerItemErrorCount počet souborů, které se nedaří synchronizace (viz níže jak zacházet s tímto).
 
 ```
@@ -219,14 +219,14 @@ PerItemErrorCount: 1006.
 ---
 
 ### <a name="how-do-i-know-if-my-servers-are-in-sync-with-each-other"></a>Jak poznám, že pokud jsou servery mezi sebou synchronizované?
-# [<a name="portal"></a>Portál](#tab/portal1)
+# <a name="portaltabportal1"></a>[Azure Portal](#tab/portal1)
 Pro každý server ve skupině dané synchronizace Ujistěte se, že:
 - Jsou poslední časové razítko pro poslední pokus o synchronizaci pro nahrávání a stahování.
 - Stav je zelená pro nahrávání a stahování.
 - Synchronizace pole zobrazuje velmi málo nebo žádná zbývajících pro synchronizaci souborů.
 - Pole souborů nesynchronizuje hodnotu 0 pro nahrávání a stahování.
 
-# [<a name="server"></a>Server](#tab/server)
+# <a name="servertabserver"></a>[Server](#tab/server)
 Podívejte se na dokončení synchronizace relací, které jsou označené nástrojem 9102 události v protokolu událostí telemetrie pro každý server (v prohlížeči událostí, přejděte na `Applications and Services Logs\Microsoft\FileSync\Agent\Telemetry`). 
 
 1. Na daném serveru budete chtít Ujistěte se, že nejnovější nahrávání a stahování relace byla úspěšně dokončena. Chcete-li to provést, zkontrolujte, zda HResult a PerItemErrorCount 0 pro nahrávání a stahování (SyncDirection pole určuje, zda je dané relace nahrávání a stahování relace). Všimněte si, že pokud nevidíte relaci synchronizace nedávno dokončené, je pravděpodobné, že relace synchronizace je aktuálně v průběhu, který se dá očekávat, pokud právě přidá nebo upraví velké množství dat.
@@ -608,14 +608,14 @@ K této chybě dochází z důvodu vnitřní problém s databáze sync. Tato chy
 
 ### <a name="common-troubleshooting-steps"></a>Běžné kroky odstraňování potíží
 <a id="troubleshoot-storage-account"></a>**Ověřte, že účet úložiště existuje.**  
-# [<a name="portal"></a>Portál](#tab/azure-portal)
+# <a name="portaltabazure-portal"></a>[Azure Portal](#tab/azure-portal)
 1. Přejděte do skupiny synchronizace v rámci služby synchronizace úložiště.
 2. Vyberte koncový bod cloudu v rámci skupiny synchronizace.
 3. Poznamenejte si název sdílené složky Azure file v podokně otevřené.
 4. Vyberte propojeném účtu úložiště. Pokud se tento odkaz se nepodaří, účet úložiště odkazované se odebrala.
     ![Snímek obrazovky ukazující na panelu informací o koncový bod cloudu s odkazem na účet úložiště.](media/storage-sync-files-troubleshoot/file-share-inaccessible-1.png)
 
-# [<a name="powershell"></a>PowerShell](#tab/azure-powershell)
+# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 ```powershell
 # Variables for you to populate based on your configuration
 $agentPath = "C:\Program Files\Azure\StorageSyncAgent"
@@ -713,12 +713,12 @@ if ($storageAccount -eq $null) {
 ---
 
 <a id="troubleshoot-network-rules"></a>**Zkontrolujte, ujistěte se, že účet úložiště neobsahuje žádná pravidla sítě.**  
-# [<a name="portal"></a>Portál](#tab/azure-portal)
+# <a name="portaltabazure-portal"></a>[Azure Portal](#tab/azure-portal)
 1. Jednou v účtu úložiště vyberte **virtuální sítí a bran firewall** na levé straně účtu úložiště.
 2. V účtu úložiště **povolit přístup ze všech sítí** přepínač by měl být vybrán.
     ![Snímek obrazovky zobrazující úložiště účtu sítě a brány firewall pravidla zakázán.](media/storage-sync-files-troubleshoot/file-share-inaccessible-2.png)
 
-# [<a name="powershell"></a>PowerShell](#tab/azure-powershell)
+# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 ```powershell
 if ($storageAccount.NetworkRuleSet.DefaultAction -ne 
     [Microsoft.Azure.Commands.Management.Storage.Models.PSNetWorkRuleDefaultActionEnum]::Allow) {
@@ -729,12 +729,12 @@ if ($storageAccount.NetworkRuleSet.DefaultAction -ne
 ---
 
 <a id="troubleshoot-azure-file-share"></a>**Ujistěte se, že existuje sdílená složka Azure.**  
-# [<a name="portal"></a>Portál](#tab/azure-portal)
+# <a name="portaltabazure-portal"></a>[Azure Portal](#tab/azure-portal)
 1. Klikněte na tlačítko **přehled** v levé tabulce obsah se vrátíte na stránku hlavního úložiště účtu.
 2. Vyberte **soubory** Chcete-li zobrazit seznam sdílených složek.
 3. Ověřte sdílenou odkazuje koncového bodu cloudu se zobrazí v seznamu sdílených složek (měli jste zaznamenali to v kroku 1 výše).
 
-# [<a name="powershell"></a>PowerShell](#tab/azure-powershell)
+# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 ```powershell
 $fileShare = Get-AzStorageShare -Context $storageAccount.Context | Where-Object {
     $_.Name -eq $cloudEndpoint.StorageAccountShareName -and
@@ -748,7 +748,7 @@ if ($fileShare -eq $null) {
 ---
 
 <a id="troubleshoot-rbac"></a>**Ujistěte se, že má přístup k účtu úložiště Azure File Sync.**  
-# [<a name="portal"></a>Portál](#tab/azure-portal)
+# <a name="portaltabazure-portal"></a>[Azure Portal](#tab/azure-portal)
 1. Klikněte na tlačítko **řízení přístupu (IAM)** v obsahu vlevo.
 1. Klikněte na tlačítko **přiřazení rolí** kartu do seznamu uživatelů a aplikací (*instanční*), které mají přístup k vašemu účtu úložiště.
 1. Ověřte **hybridní služby File Sync** se zobrazí v seznamu **Čtenář a přístup k datům** role. 
@@ -761,7 +761,7 @@ if ($fileShare -eq $null) {
     - V **Role** pole, vyberte **Čtenář a přístup k datům**.
     - V **vyberte** zadejte **hybridní služby File Sync**, vyberte roli a klikněte na tlačítko **Uložit**.
 
-# [<a name="powershell"></a>PowerShell](#tab/azure-powershell)
+# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 ```powershell    
 $foundSyncPrincipal = $false
 Get-AzRoleAssignment -Scope $storageAccount.Id | ForEach-Object { 
@@ -905,7 +905,7 @@ Pokud není problém vyřešen, spusťte nástroj AFSDiag:
 6. Soubor .zip, který obsahuje protokolů a trasovací soubory se uloží do výstupního adresáře, který jste zadali.
 
 ## <a name="see-also"></a>Další informace najdete v tématech
-- [Sledování služby Synchronizace souborů Azure](storage-sync-files-monitoring.md)
+- [Monitorování Azure File Sync](storage-sync-files-monitoring.md)
 - [Služba soubory Azure – nejčastější dotazy](storage-files-faq.md)
-- [Řešení potíží s Azure Files problémy ve Windows](storage-troubleshoot-windows-file-connection-problems.md)
-- [Řešení potíží s Azure Files v Linuxu](storage-troubleshoot-linux-file-connection-problems.md)
+- [Řešení potíží se službou Azure Files ve Windows](storage-troubleshoot-windows-file-connection-problems.md)
+- [Řešení potíží se službou Azure Files v Linuxu](storage-troubleshoot-linux-file-connection-problems.md)

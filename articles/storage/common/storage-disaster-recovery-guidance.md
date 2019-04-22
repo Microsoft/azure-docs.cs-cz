@@ -9,10 +9,10 @@ ms.date: 02/25/2019
 ms.author: tamram
 ms.subservice: common
 ms.openlocfilehash: 87499c1b71e243fe976e436b525e0150689d3aa1
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/05/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59051185"
 ---
 # <a name="disaster-recovery-and-storage-account-failover-preview-in-azure-storage"></a>Po havárii pro obnovení a úložiště účtu převzetí služeb při selhání (preview) ve službě Azure Storage
@@ -180,5 +180,5 @@ V extrémních případech kde oblast je ztraceno v důsledku významné po hav�
 ## <a name="see-also"></a>Další informace najdete v tématech
 
 * [Zahájit účtu převzetí služeb při selhání (preview)](storage-initiate-account-failover.md)
-* [Navrhování aplikací s vysokou dostupností pomocí RA-GRS](storage-designing-ha-apps-with-ragrs.md)
+* [Návrh aplikací s vysokou dostupností pomocí RA-GRS](storage-designing-ha-apps-with-ragrs.md)
 * [Kurz: Sestavení aplikace s vysokou dostupností s úložištěm objektů Blob](../blobs/storage-create-geo-redundant-storage.md) 

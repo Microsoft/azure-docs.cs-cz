@@ -16,10 +16,10 @@ ms.topic: conceptual
 ms.date: 02/19/2019
 ms.author: banders
 ms.openlocfilehash: f71fe9b02765e0fc8fd5f3b7abbd54c87b08132f
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59264059"
 ---
 # <a name="view-and-download-your-microsoft-azure-invoice"></a>Zobrazit a stáhnout fakturu Microsoft Azure
@@ -38,7 +38,7 @@ Pro většinu předplatných si můžete stáhnout z webu Azure portal faktuře.
 
 1. Vyberte své předplatné z [stránce předplatná](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) na webu Azure Portal jako [uživatele s přístupem na fakturách](billing-manage-access.md).
 
-2. Vyberte **faktury**.
+2. Vyberte **Faktury**.
 
     ![Snímek obrazovky zobrazující možnost fakturace a využití](./media/billing-download-azure-invoice-daily-usage-date/billingandusage.png)
 
@@ -55,9 +55,9 @@ Další informace o vaší faktuře najdete v tématu [vysvětlení vašeho vyú
 Faktury se generují pro každou [fakturační profil](billing-mca-overview.md#understand-billing-profiles) smlouvy zákazníka Microsoftu. Musí být fakturační profil vlastník, Přispěvatel, čtenář, nebo fakturovat správce stahovat faktury z portálu Azure portal.
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
-1. Hledat na **Cost Management a fakturace**.
+1. Vyhledejte **Cost Management a fakturace**.
 1. Vyberte fakturační profil. V závislosti na přístup potřebujete nejprve vybrat fakturační účet.
-1. Vyberte **faktury**.
+1. Vyberte **Faktury**.
 1. V mřížce faktury najde řádek faktury, kterou chcete stáhnout.
 1. Klikněte na symbol tří teček (`...`) na konci řádku.
     ![Snímek obrazovky zobrazující na tři tečky na konci řádku](./media/billing-download-azure-invoice/billingprofile-invoicegrid.png)
@@ -98,7 +98,7 @@ Získání faktury e-mailem podle pokynů výše a kliknutím na tlačítko mů�
 Pokud máte smlouvu Microsoft zákazníka, můžete přejít k získání faktury e-mailem. Všechny fakturační profil vlastníci, přispěvatelé, čtenáři a faktury Správci získají faktury e-mailem. Čtenáři nelze aktualizovat předvolby faktury e-mailu.
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
-1. Hledat na **Cost Management a fakturace**.
+1. Vyhledejte **Cost Management a fakturace**.
 1. Vyberte fakturační profil. V závislosti na přístup potřebujete nejprve vybrat fakturační účet.
 1. V části **nastavení**vyberte **vlastnosti**.
 1. V části **fakturu e-mailem**vyberte **předvolby faktury e-mailu aktualizace**.
@@ -135,8 +135,8 @@ Pokud máte otázky nebo potřebujete pomoc, [vytvořit žádost o podporu](http
 
 Další informace týkající se faktury a náklady, naleznete v tématu:
 
-- [Zobrazit a stáhnout využití a poplatky Microsoft Azure](billing-download-azure-daily-usage.md)
-- [Vysvětlení vašeho vyúčtování služeb Microsoft Azure](billing-understand-your-bill.md)
+- [Zobrazovat a stahovat využití Microsoft Azure a poplatky za](billing-download-azure-daily-usage.md)
+- [Vysvětlení informací na faktuře za Microsoft Azure](billing-understand-your-bill.md)
 - [Vysvětlení podmínek na faktuře Azure](billing-understand-your-invoice.md)
 - [Vysvětlení podmínek na Microsoft Azure podrobné využití](billing-understand-your-usage.md)
 - [Prohlédněte si ceny Azure vaší organizace](billing-ea-pricing.md)

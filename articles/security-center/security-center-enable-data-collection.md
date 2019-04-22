@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 04/02/2019
 ms.author: monhaber
 ms.openlocfilehash: 63ee603f83d0c2de3bc89b8792ada4a61edb7e00
-ms.sourcegitcommit: 045406e0aa1beb7537c12c0ea1fbf736062708e8
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/04/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59006750"
 ---
 # <a name="data-collection-in-azure-security-center"></a>Shromažďování dat ve službě Azure Security Center
@@ -77,7 +77,7 @@ Centrum zabezpečení můžete automaticky vytvořit výchozí pracovní prostor
 Výběr pracovního prostoru vytvořených službou Security Center:
 
 1. V části **výchozí konfigurace pracovního prostoru**, vyberte možnost použití pracovních prostorů vytvořených službou Security center.
-   ![Vyberte cenovou úroveň][10] 
+   ![Vyberte cenovou úroveň.][10] 
 
 1. Klikněte na **Uložit**.<br>
     Security Center vytvoří nový prostředek skupiny a výchozí pracovní prostor v této informace o zeměpisné poloze a agent se připojí k tomuto pracovnímu prostoru. Zásady vytváření názvů pracovní prostor a skupiny prostředků je:<br>
@@ -138,7 +138,7 @@ Vyberte existující pracovní prostor Log Analytics:
      
     b.  Vyberte požadovaný pracovní prostor, ve kterém chcete připojit agenta kliknutím **upravit nastavení** ve sloupci nastavení z požadovaného předplatného v seznamu.
         ![Vyberte pracovní prostor][8] c. Nastavte cenovou úroveň.
-        ![Vyberte cenovou úroveň][9] 
+        ![Vyberte cenovou úroveň.][9] 
    
    >[!NOTE]
    >Pokud je pracovní prostor už **zabezpečení** nebo **SecurityCenterFree** povolené žádné řešení, ceny se nastaví automaticky. 
@@ -254,9 +254,9 @@ Microsoft Monitoring Agent, můžete nainstalovat ručně, můžete shromažďov
    a.  V hlavní nabídce služby Security Center, vyberte **zásady zabezpečení**.
      
    b.  Vyberte pracovní prostor, ve které máte v úmyslu připojení agenta. Zajistěte, aby že pracovní prostor je ve stejném předplatném, použijte ve službě Security Center a zda máte oprávnění ke čtení/zápisu v pracovním prostoru.
-       ![Výběr pracovního prostoru][8]
+       ![Vyberte pracovní prostor][8]
 3. Nastavte cenovou úroveň.
-   ![Vyberte cenovou úroveň][9] 
+   ![Vyberte cenovou úroveň.][9] 
    >[!NOTE]
    >Pokud je pracovní prostor už **zabezpečení** nebo **SecurityCenterFree** povolené žádné řešení, ceny se nastaví automaticky. 
    > 

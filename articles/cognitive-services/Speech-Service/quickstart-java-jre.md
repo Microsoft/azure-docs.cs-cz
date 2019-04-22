@@ -11,10 +11,10 @@ ms.topic: quickstart
 ms.date: 2/20/2019
 ms.author: fmegen
 ms.openlocfilehash: fe565d63e72b5ec2798dde03ba4f4bd9ff4f48a7
-ms.sourcegitcommit: e43ea344c52b3a99235660960c1e747b9d6c990e
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/04/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59009395"
 ---
 # <a name="quickstart-recognize-speech-with-the-speech-sdk-for-java"></a>Rychlý start: Rozpoznávání řeči se sadou SDK pro řeč pro Javu
@@ -84,6 +84,6 @@ Další ukázky, jako je čtení řeči z zvukový soubor, jsou k dispozici na G
 
 ## <a name="see-also"></a>Další informace najdete v tématech
 
-- [Rychlý start: Překlad řeči, jazyka Java (Windows, Linux)](quickstart-translate-speech-java-jre.md)
+- [Rychlé zprovoznění: Překlad řeči, jazyka Java (Windows, Linux)](quickstart-translate-speech-java-jre.md)
 - [Přizpůsobení akustických modelů](how-to-customize-acoustic-models.md)
 - [Přizpůsobení jazykových modelů](how-to-customize-language-model.md)

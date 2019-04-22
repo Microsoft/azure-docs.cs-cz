@@ -15,10 +15,10 @@ ms.topic: conceptual
 ms.date: 03/27/2019
 ms.author: pbutlerm
 ms.openlocfilehash: f537a43f5d4d0431e1659daa258e0c1453f2295b
-ms.sourcegitcommit: e43ea344c52b3a99235660960c1e747b9d6c990e
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/04/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59010568"
 ---
 # <a name="azure-and-appsource-marketplace-offers"></a>Azure a nabídky na webu Marketplace AppSource
@@ -58,7 +58,7 @@ Následující tabulka uvádí aktuální nabídka typů podporovaných [portál
 | [Dynamics 365 Business Central](../cloud-partner-portal-orig/cpp-business-central-offer.md) | AppSource | Balíček, který rozšiřuje toto plánování podnikových zdrojů (ERP) a systém správy firmy. |
 | [Dynamics 365 for Customer Engagement](./dyn365ce/cpp-customer-engagement-offer.md) | AppSource | Balíček, který rozšiřuje tohoto zákazníka systému pro správu (CRM) zdroje, prodej, služby, služba projektu a modulů služby pole  |
 | [Dynamics 365 for Finance and Operations](../cloud-partner-portal-orig/cpp-dynamics-365-operations-offer.md) | AppSource | Balíček, který rozšiřuje tento podnikových zdrojů (ERP) služba, která podporuje rozšířené plánování finance, operations, výroba a správa dodavatelského řetězce |
-| [Modul pro IoT Edge](./iot-edge-module/cpp-offer-process-parts.md) | Azure | Kompatibilní s Dockerem kontejner, který běží na zařízení IoT Edge.  Obsahuje malé výpočetní modulů, které používají kombinace vlastního kódu, dalších služeb Azure a služby 3. stran. |
+| [Modul IoT Edge](./iot-edge-module/cpp-offer-process-parts.md) | Azure | Kompatibilní s Dockerem kontejner, který běží na zařízení IoT Edge.  Obsahuje malé výpočetní modulů, které používají kombinace vlastního kódu, dalších služeb Azure a služby 3. stran. |
 | [Aplikace Power BI](./power-bi/cpp-power-bi-offer.md) | AppSource | Aplikace Power BI, která zabalí přizpůsobitelné obsah Power BI, včetně datových sad, sestav a řídicích panelů |
 | [Aplikace SaaS](./saas-app/cpp-saas-offer.md) | Azure | Řešení je software-as-a-service předplatné, spravuje vydavatele, kteří uživatelé přihlašovat pomocí vlastní rozhraní, která používá Azure Active Directory. |
 | [Virtuální počítač](./virtual-machine/cpp-virtual-machine-offer.md)  | Azure  | Řešení je obsažena v jednom virtuálním počítači nasadit do předplatného zákazníka.  |

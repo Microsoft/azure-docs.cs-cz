@@ -8,10 +8,10 @@ ms.service: data-explorer
 ms.topic: quickstart
 ms.date: 02/02/2018
 ms.openlocfilehash: 52bdbe6d34fb631cd4b2205dfad25399fe0e43fb
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/05/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59048383"
 ---
 # <a name="quickstart-ingest-data-from-event-hub-into-azure-data-explorer"></a>Rychlý start: Ingestovat data z centra událostí do Průzkumníku dat Azure
@@ -22,7 +22,7 @@ Azure Data Explorer je rychlá a vysoce škálovatelná služba pro zkoumání d
 
 * Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet Azure](https://azure.microsoft.com/free/) před tím, než začnete.
 
-* [Testovací cluster a databáze](create-cluster-database-portal.md)
+* [Testovací cluster a databázi](create-cluster-database-portal.md)
 
 * [Ukázková aplikace](https://github.com/Azure-Samples/event-hubs-dotnet-ingest) , který generuje data a odesílá je do centra událostí. Stáhněte si ukázkovou aplikaci v systému.
 
@@ -38,7 +38,7 @@ V tomto rychlém startu vygenerujete ukázková data a odešlete je do centra ud
 
 1. Vytvoření centra událostí, použijte ke spuštění nasazení na následující tlačítko. Klikněte pravým tlačítkem a vyberte **otevřít v novém okně**, takže můžete postupujte podle zbývajících kroků v tomto článku.
 
-    [![Deploy do Azure](media/ingest-data-event-hub/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-event-hubs-create-event-hub-and-consumer-group%2Fazuredeploy.json)
+    [![Nasazení do Azure](media/ingest-data-event-hub/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-event-hubs-create-event-hub-and-consumer-group%2Fazuredeploy.json)
 
     Výběrem tlačítka **Deploy to Azure** (Nasadit do Azure) přejdete na web Azure Portal, kde vyplníte formulář nasazení.
 
@@ -110,7 +110,7 @@ Teď se můžete z Azure Data Exploreru připojit k centru událostí. Po naváz
 
     **Nastavení** | **Navrhovaná hodnota** | **Popis pole**
     |---|---|---|
-    | Název datového připojení | *Test připojení rozbočovače* | Název připojení, které chcete vytvořit v Azure Data Exploreru|
+    | Název datového připojení | *test-hub-connection* | Název připojení, které chcete vytvořit v Azure Data Exploreru|
     | Obor názvů centra událostí | Jedinečný název oboru názvů | Název, který jste zvolili dříve a který identifikuje váš obor názvů |
     | Centrum událostí | *test-hub* | Centrum událostí, které jste vytvořili |
     | Skupina uživatelů | *test-group* | Skupina uživatelů, kterou jste definovali v centrum událostí, které jste vytvořili |
@@ -203,4 +203,4 @@ Pokud už centrum událostí nebudete chtít dál používat, vyčistěte **test
 ## <a name="next-steps"></a>Další postup
 
 > [!div class="nextstepaction"]
-> [Rychlý start: Dotazování dat v Průzkumníku dat Azure](web-query-data.md)
+> [Rychlé zprovoznění: Dotazování dat v Průzkumníku dat Azure](web-query-data.md)

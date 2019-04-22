@@ -11,10 +11,10 @@ ms.topic: quickstart
 ms.date: 4/03/2019
 ms.author: yinhew
 ms.openlocfilehash: 732816ce10836d5828e7f325a3eb3fe31627d4f4
-ms.sourcegitcommit: e43ea344c52b3a99235660960c1e747b9d6c990e
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/04/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59012238"
 ---
 # <a name="quickstart-synthesize-speech-in-c-on-windows-by-using-the-speech-sdk"></a>Rychlý start: Syntetizace řeči v C++ ve Windows s použitím sadou SDK pro řeč
@@ -68,5 +68,5 @@ Další ukázky, jako je například ukládání řeči zvukový soubor, jsou k 
 
 ## <a name="see-also"></a>Další informace najdete v tématech
 
-- [Přizpůsobení hlasových písem](how-to-customize-voice-font.md)
-- [Záznam hlasových ukázek](record-custom-voice-samples.md)
+- [Přizpůsobení hlasová písma](how-to-customize-voice-font.md)
+- [Záznam hlasu ukázky](record-custom-voice-samples.md)

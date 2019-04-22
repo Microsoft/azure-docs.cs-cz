@@ -14,17 +14,17 @@ ms.topic: article
 ms.date: 02/25/2019
 ms.author: kraigb
 ms.openlocfilehash: b8c21b908ca9162a7e44c7af1e222babc6ee1eb7
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59265606"
 ---
 # <a name="your-profile-and-user-id-for-azure-notebooks"></a>Váš profil a ID uživatele pro poznámkové bloky Azure
 
 Profil uživatele v prostoru výkonné a spolupráci poznámkových bloků Azure představuje veřejné image ostatním uživatelům:
 
-[![An poznámkových bloků Azure na stránce profil](media/accounts/profile-page.png)](media/accounts/profile-page.png#lightbox)
+[![Na stránce profilu poznámkových bloků Azure](media/accounts/profile-page.png)](media/accounts/profile-page.png#lightbox)
 
 Vaše ID uživatele je součástí adresy URL můžete použít ke sdílení projektů a poznámkové bloky. Následující seznam popisuje různé vzory adres URL:
 

@@ -16,10 +16,10 @@ ms.topic: tutorial
 ms.date: 03/11/2019
 ms.author: jeedes
 ms.openlocfilehash: e94fe3156677a507eab91eee339ed29bf7b4ad2e
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59257633"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sap-fiori"></a>Kurz: Integrace Azure Active Directory s řešení SAP Fiori
@@ -135,7 +135,7 @@ Ke konfiguraci Azure AD jednotné přihlašování pomocí SAP Fiori, proveďte 
 6. Nahraďte **název zprostředkovatele** z T01122 k `http://T01122` a klikněte na **Uložit**.
 
     > [!NOTE]
-    > Ve výchozím nastavení název zprostředkovatele pochází jako <sid><client> formátu, ale Azure AD očekává název ve formátu <protocol>://<name>, chcete-li zachovat název zprostředkovatele jako https:// doporučenými<sid><client> umožňuje více modulů SAP Fiori ABAP nakonfigurovat ve službě Azure AD .
+    > Ve výchozím nastavení název zprostředkovatele pochází jako <sid> <client> formátu, ale Azure AD očekává název ve formátu <protocol>://<name>, chcete-li zachovat název zprostředkovatele jako https:// doporučenými<sid> <client> povolit více řešení SAP Fiori Moduly ABAP nakonfigurovat ve službě Azure AD.
 
     ![Odkaz ke stažení certifikátu](./media/sapfiori-tutorial/tutorial-sapnetweaver-providername.png)
 
@@ -175,8 +175,7 @@ Ke konfiguraci Azure AD jednotné přihlašování pomocí SAP Fiori, proveďte 
 
     ![SAP Fiori domény a adresy URL jednotného přihlašování – informace](common/sp-identifier-reply.png)
 
-    d. V **přihlašovací adresa URL** textové pole, zadejte adresu URL, pomocí následujícího vzorce:
-    `https://<your company instance of SAP Fiori>`
+    d. V **přihlašovací adresa URL** textové pole, zadejte adresu URL, pomocí následujícího vzorce: `https://<your company instance of SAP Fiori>`
 
     > [!NOTE]
     > Jsme viděli někteří zákazníci ohlášení chyby nesprávné adresy URL odpovědi nakonfigurované na jejich instanci. Pokud se zobrazí tato chyba, můžete použít následující skript prostředí PowerShell jako alternativní přibližně nastavení správné adresy URL odpovědi pro vaši instanci.:
@@ -378,6 +377,6 @@ V této části vytvořte uživatele Britta Simon v řešení SAP Fiori. Fungova
 
 - [Seznam kurzů o integraci aplikací SaaS pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

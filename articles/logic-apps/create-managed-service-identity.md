@@ -10,10 +10,10 @@ ms.suite: integration
 ms.topic: article
 ms.date: 03/29/2019
 ms.openlocfilehash: 8445b67fa049116d93f3710ff108f904ca7ecd77
-ms.sourcegitcommit: e43ea344c52b3a99235660960c1e747b9d6c990e
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/04/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59010545"
 ---
 # <a name="authenticate-and-access-resources-with-managed-identities-in-azure-logic-apps"></a>Ověřování a přístup k prostředkům pomocí spravované identity v Azure Logic Apps
@@ -37,7 +37,7 @@ Přístup k prostředkům v jiných tenantů Azure Active Directory (Azure AD) a
 
 Pro systém přiřadil spravovaných identit není nutné ručně vytvořit tuto identitu. Nastavit systém přiřadil spravovanou identitu pro vaši aplikaci logiky, můžete těmito způsoby: 
 
-* [portál Azure](#azure-portal) 
+* [Azure Portal](#azure-portal) 
 * [Šablony Azure Resource Manageru](#template) 
 * [Azure PowerShell](../active-directory/managed-identities-azure-resources/howto-assign-access-powershell.md) 
 

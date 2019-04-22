@@ -12,10 +12,10 @@ author: prasanthpul
 ms.date: 12/3/2018
 ms.custom: seodec18
 ms.openlocfilehash: 33a93aa01499beb978f616f633588ba75e4b62a3
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59259180"
 ---
 # <a name="onnx-and-azure-machine-learning-create-and-deploy-interoperable-ai-models"></a>ONNX a Azure Machine Learning: Vytvoření a nasazení interoperabilní modely AI
@@ -37,7 +37,7 @@ Je také ekosystém nástrojů pro vizualizaci a zrychluje modely ONNX. Počet p
 
 [Je možné nasadit modely ONNX](#deploy) do cloudu pomocí služby Azure Machine Learning a modulu Runtime ONNX. Může být také nasazený na zařízení s Windows 10 pomocí [Windows ML](https://docs.microsoft.com/windows/ai/). Dokonce je možné nasadit do jiné platformy použití převaděče, které jsou k dispozici od komunity ONNX. 
 
-[![OVývojový diagram NNX zobrazující školení, převaděče a nasazení](media/concept-onnx/onnx.png)](./media/concept-onnx/onnx.png#lightbox)
+[![ONNX vývojový diagram znázorňující nasazení, školení a převaděče](media/concept-onnx/onnx.png)](./media/concept-onnx/onnx.png#lightbox)
 
 ## <a name="get-onnx-models"></a>Získat modely ONNX
 

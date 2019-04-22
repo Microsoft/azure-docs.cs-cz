@@ -15,10 +15,10 @@ ms.workload: required
 ms.date: 10/12/2018
 ms.author: vturecek
 ms.openlocfilehash: 5a4b7514005da9e9a998dba014fa0ea6c014397a
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59268513"
 ---
 # <a name="aspnet-core-in-service-fabric-reliable-services"></a>ASP.NET Core v Service Fabric Reliable Services
@@ -511,7 +511,7 @@ Stavové služby, které jsou volány pouze z v rámci clusteru používejte dyn
 | ServiceFabricIntegrationOptions | UseUniqueServiceUrl | S přiřazením dynamický port toto nastavení zabrání problém chybné identity popsané výše. |
 
 ## <a name="next-steps"></a>Další postup
-[Ladění aplikace Service Fabric pomocí sady Visual Studio](service-fabric-debugging-your-application.md)
+[Ladění aplikace Service Fabric pomocí Visual Studia](service-fabric-debugging-your-application.md)
 
 <!--Image references-->
 [0]:./media/service-fabric-reliable-services-communication-aspnetcore/webhost-standalone.png

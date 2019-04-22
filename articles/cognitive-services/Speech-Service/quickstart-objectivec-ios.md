@@ -11,10 +11,10 @@ ms.topic: quickstart
 ms.date: 2/20/2019
 ms.author: chlandsi
 ms.openlocfilehash: ee0be31b10c86651fa36577ad0dffccc3dc7bf59
-ms.sourcegitcommit: e43ea344c52b3a99235660960c1e747b9d6c990e
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/04/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59009267"
 ---
 # <a name="quickstart-recognize-speech-in-objective-c-on-ios-using-the-speech-sdk"></a>Rychlý start: Rozpoznávat řeč v Objective-C v iOS pomocí sady SDK pro řeč
@@ -58,10 +58,10 @@ V následujících dialogových oknech proveďte následující výběry:
     1. Zakažte vytvoření úložiště Git pro tento ukázkový projekt.
     1. V části *Project Settings* (Nastavení projektu) upravte cesty k sadě SDK.
         1. V **Obecné** kartu **vložených binárních souborů** záhlaví, přidání sady SDK knihovny jako rozhraní: **Přidat vložených binárních souborů** > **přidat další...**  > Přejít na domovský adresář a vyberte soubor `MicrosoftCognitiveServicesSpeech.framework`. Tento postup přidá hlavičku knihovny sady SDK **propojené rozhraní a knihovny** automaticky.
-        ![Přidání rozhraní Framework](media/sdk/qs-objectivec-framework.png)
+        ![Přidané rozhraní](media/sdk/qs-objectivec-framework.png)
         1. Přejděte na kartu **Build Settings** (Nastavení sestavení) a aktivujte **všechna** nastavení.
         1. Do části *Framework Search Paths* (Cesty pro hledání rozhraní) pod nadpisem **Search Paths** (Cesty pro hledání) přidejte adresář `$(SRCROOT)/..`.
-        ![Nastavení cesty pro hledání rámce](media/sdk/qs-objectivec-framework-search-paths.png)
+        ![Nastavení cesty pro hledání rozhraní](media/sdk/qs-objectivec-framework-search-paths.png)
 
 ## <a name="set-up-the-ui"></a>Nastavení uživatelského rozhraní
 

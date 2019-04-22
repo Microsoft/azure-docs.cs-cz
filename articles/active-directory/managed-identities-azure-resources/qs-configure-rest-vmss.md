@@ -16,10 +16,10 @@ ms.date: 06/25/2018
 ms.author: markvi
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: cafb3c97befd64cc6413a2eefa5e5baa9e01bf93
-ms.sourcegitcommit: e43ea344c52b3a99235660960c1e747b9d6c990e
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/04/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59009578"
 ---
 # <a name="configure-managed-identities-for-azure-resources-on-a-virtual-machine-scale-set-using-rest-api-calls"></a>Konfigurace spravovaných identit pro prostředky Azure na virtuální počítač škálovací sady s použitím volání rozhraní REST API
@@ -88,14 +88,14 @@ K vytvoření virtuálního počítače škálovací sady s povolen systém při
    PUT https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachineScaleSets/myVMSS?api-version=2018-06-01 HTTP/1.1
    ```
 
-   **Hlavičky požadavku**
+   **Hlavičky žádosti**
 
    |Hlavička požadavku  |Popis  |
    |---------|---------|
-   |*Typ obsahu*     | Povinná hodnota. Nastavte na `application/json`.        |
+   |*Content-Type*     | Povinná hodnota. Nastavte na `application/json`.        |
    |*Autorizace*     | Povinná hodnota. Nastaven na platné `Bearer` přístupový token. | 
 
-   **Text požadavku**
+   **Text žádosti**
 
    ```JSON
     {
@@ -183,14 +183,14 @@ Chcete-li systém přiřadil spravovaná identita v existující škálovací sa
    PATCH https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachineScaleSets/myVMSS?api-version=2018-06-01 HTTP/1.1
    ```
 
-   **Hlavičky požadavku**
+   **Hlavičky žádosti**
 
    |Hlavička požadavku  |Popis  |
    |---------|---------|
-   |*Typ obsahu*     | Povinná hodnota. Nastavte na `application/json`.        |
+   |*Content-Type*     | Povinná hodnota. Nastavte na `application/json`.        |
    |*Autorizace*     | Povinná hodnota. Nastaven na platné `Bearer` přístupový token. | 
 
-   **Text požadavku**
+   **Text žádosti**
 
    ```JSON
     {
@@ -216,14 +216,14 @@ Chcete-li systém přiřadil spravovaná identita v existující škálovací sa
    PATCH https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachineScaleSets/myVMSS?api-version=2018-06-01 HTTP/1.1
    ```
 
-   **Hlavičky požadavku**
+   **Hlavičky žádosti**
 
    |Hlavička požadavku  |Popis  |
    |---------|---------|
-   |*Typ obsahu*     | Povinná hodnota. Nastavte na `application/json`.        |
+   |*Content-Type*     | Povinná hodnota. Nastavte na `application/json`.        |
    |*Autorizace*     | Povinná hodnota. Nastaven na platné `Bearer` přístupový token. |
  
-   **Text požadavku**
+   **Text žádosti**
 
    ```JSON
     {
@@ -250,14 +250,14 @@ Chcete-li systém přiřadil spravovaná identita v existující škálovací sa
    PATCH https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachineScaleSets/myVMSS?api-version=2017-12-01 HTTP/1.1
    ```
 
-   **Hlavičky požadavku**
+   **Hlavičky žádosti**
 
    |Hlavička požadavku  |Popis  |
    |---------|---------|
-   |*Typ obsahu*     | Povinná hodnota. Nastavte na `application/json`.        |
+   |*Content-Type*     | Povinná hodnota. Nastavte na `application/json`.        |
    |*Autorizace*     | Povinná hodnota. Nastaven na platné `Bearer` přístupový token. | 
 
-   **Text požadavku**
+   **Text žádosti**
 
    ```JSON
     {
@@ -294,14 +294,14 @@ Zakázat systém přiřadil identitou v existující škálovací sady virtuáln
    PATCH https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachineScaleSets/myVMSS?api-version=2018-06-01 HTTP/1.1
    ```
 
-   **Hlavičky požadavku**
+   **Hlavičky žádosti**
 
    |Hlavička požadavku  |Popis  |
    |---------|---------|
-   |*Typ obsahu*     | Povinná hodnota. Nastavte na `application/json`.        |
+   |*Content-Type*     | Povinná hodnota. Nastavte na `application/json`.        |
    |*Autorizace*     | Povinná hodnota. Nastaven na platné `Bearer` přístupový token. | 
 
-   **Text požadavku**
+   **Text žádosti**
 
    ```JSON
     {
@@ -351,14 +351,14 @@ V této části se dozvíte, jak přidávat a odebírat uživatele přiřazeny s
    PUT https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachineScaleSets/myVMSS?api-version=2018-06-01 HTTP/1.1
    ```
 
-   **Hlavičky požadavku**
+   **Hlavičky žádosti**
 
    |Hlavička požadavku  |Popis  |
    |---------|---------|
-   |*Typ obsahu*     | Povinná hodnota. Nastavte na `application/json`.        |
+   |*Content-Type*     | Povinná hodnota. Nastavte na `application/json`.        |
    |*Autorizace*     | Povinná hodnota. Nastaven na platné `Bearer` přístupový token. | 
 
-   **Text požadavku**
+   **Text žádosti**
 
    ```JSON
     {
@@ -438,14 +438,14 @@ V této části se dozvíte, jak přidávat a odebírat uživatele přiřazeny s
    PUT https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachineScaleSets/myVMSS?api-version=2017-12-01 HTTP/1.1
    ```
 
-   **Hlavičky požadavku**
+   **Hlavičky žádosti**
 
    |Hlavička požadavku  |Popis  |
    |---------|---------|
-   |*Typ obsahu*     | Povinná hodnota. Nastavte na `application/json`.        |
+   |*Content-Type*     | Povinná hodnota. Nastavte na `application/json`.        |
    |*Autorizace*     | Povinná hodnota. Nastaven na platné `Bearer` přístupový token. |
  
-   **Text požadavku**
+   **Text žádosti**
 
    ```JSON
     {
@@ -533,7 +533,7 @@ V této části se dozvíte, jak přidávat a odebírat uživatele přiřazeny s
    GET https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP>/providers/Microsoft.Compute/virtualMachineScaleSets/<VMSS NAME>?api-version=2018-06-01 HTTP/1.1
    ```
 
-   **Hlavičky požadavku**
+   **Hlavičky žádosti**
 
    |Hlavička požadavku  |Popis  |
    |---------|---------|
@@ -554,14 +554,14 @@ V této části se dozvíte, jak přidávat a odebírat uživatele přiřazeny s
    PATCH https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachineScaleSets/myVMSS?api-version=2018-12-01 HTTP/1.1
    ```
 
-   **Hlavičky požadavku**
+   **Hlavičky žádosti**
 
    |Hlavička požadavku  |Popis  |
    |---------|---------|
-   |*Typ obsahu*     | Povinná hodnota. Nastavte na `application/json`.        |
+   |*Content-Type*     | Povinná hodnota. Nastavte na `application/json`.        |
    |*Autorizace*     | Povinná hodnota. Nastaven na platné `Bearer` přístupový token. | 
 
-   **Text požadavku**
+   **Text žádosti**
 
    ```JSON
     {
@@ -586,14 +586,14 @@ V této části se dozvíte, jak přidávat a odebírat uživatele přiřazeny s
    PATCH https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachineScaleSets/myVMSS?api-version=2017-12-01 HTTP/1.1
    ```
 
-   **Hlavičky požadavku**
+   **Hlavičky žádosti**
 
    |Hlavička požadavku  |Popis  |
    |---------|---------|
-   |*Typ obsahu*     | Povinná hodnota. Nastavte na `application/json`.        |
+   |*Content-Type*     | Povinná hodnota. Nastavte na `application/json`.        |
    |*Autorizace*     | Povinná hodnota. Nastaven na platné `Bearer` přístupový token. | 
 
-   **Text požadavku**
+   **Text žádosti**
 
    ```JSON
     {
@@ -622,14 +622,14 @@ V této části se dozvíte, jak přidávat a odebírat uživatele přiřazeny s
    PATCH https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachineScaleSets/myVMSS?api-version=2018-06-01 HTTP/1.1
    ```
 
-   **Hlavičky požadavku**
+   **Hlavičky žádosti**
 
    |Hlavička požadavku  |Popis  |
    |---------|---------|
-   |*Typ obsahu*     | Povinná hodnota. Nastavte na `application/json`.        |
+   |*Content-Type*     | Povinná hodnota. Nastavte na `application/json`.        |
    |*Autorizace*     | Povinná hodnota. Nastaven na platné `Bearer` přístupový token. | 
 
-   **Text požadavku**
+   **Text žádosti**
 
    ```JSON
     {
@@ -661,14 +661,14 @@ V této části se dozvíte, jak přidávat a odebírat uživatele přiřazeny s
    PATCH https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachineScaleSets/myVMSS?api-version=2017-12-01 HTTP/1.1
    ```
 
-    **Hlavičky požadavku**
+    **Hlavičky žádosti**
 
    |Hlavička požadavku  |Popis  |
    |---------|---------|
-   |*Typ obsahu*     | Povinná hodnota. Nastavte na `application/json`.        |
+   |*Content-Type*     | Povinná hodnota. Nastavte na `application/json`.        |
    |*Autorizace*     | Povinná hodnota. Nastaven na platné `Bearer` přístupový token. | 
 
-   **Text požadavku**
+   **Text žádosti**
 
    ```JSON
     {
@@ -700,7 +700,7 @@ V této části se dozvíte, jak přidávat a odebírat uživatele přiřazeny s
    GET https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP>/providers/Microsoft.Compute/virtualMachineScaleSets/<VMSS NAME>?api-version=2018-06-01 HTTP/1.1
    ```
 
-   **Hlavičky požadavku**
+   **Hlavičky žádosti**
 
    |Hlavička požadavku  |Popis  |
    |---------|---------|
@@ -722,14 +722,14 @@ V této části se dozvíte, jak přidávat a odebírat uživatele přiřazeny s
    PATCH https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachineScaleSets/myVMSS?api-version=2018-06-01 HTTP/1.1
    ```
 
-   **Hlavičky požadavku**
+   **Hlavičky žádosti**
 
    |Hlavička požadavku  |Popis  |
    |---------|---------|
-   |*Typ obsahu*     | Povinná hodnota. Nastavte na `application/json`.        |
+   |*Content-Type*     | Povinná hodnota. Nastavte na `application/json`.        |
    |*Autorizace*     | Povinná hodnota. Nastaven na platné `Bearer` přístupový token. | 
 
-   **Text požadavku**
+   **Text žádosti**
 
    ```JSON
     {
@@ -754,14 +754,14 @@ V této části se dozvíte, jak přidávat a odebírat uživatele přiřazeny s
    PATCH https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachineScaleSets/myVMSS?api-version=2017-12-01 HTTP/1.1
    ```
 
-   **Hlavičky požadavku**
+   **Hlavičky žádosti**
 
    |Hlavička požadavku  |Popis  |
    |---------|---------|
-   |*Typ obsahu*     | Povinná hodnota. Nastavte na `application/json`.        |
+   |*Content-Type*     | Povinná hodnota. Nastavte na `application/json`.        |
    |*Autorizace*     | Povinná hodnota. Nastaven na platné `Bearer` přístupový token. | 
 
-   **Text požadavku**
+   **Text žádosti**
 
    ```JSON
     {
@@ -784,14 +784,14 @@ curl 'https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroup
 PATCH https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachineScaleSets/myVMSS?api-version=2018-06-01 HTTP/1.1
 ```
 
-**Hlavičky požadavku**
+**Hlavičky žádosti**
 
 |Hlavička požadavku  |Popis  |
 |---------|---------|
-|*Typ obsahu*     | Povinná hodnota. Nastavte na `application/json`.        |
+|*Content-Type*     | Povinná hodnota. Nastavte na `application/json`.        |
 |*Autorizace*     | Povinná hodnota. Nastaven na platné `Bearer` přístupový token. | 
 
-**Text požadavku**
+**Text žádosti**
 
 ```JSON
 {
@@ -811,14 +811,14 @@ curl 'https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroup
 PATCH https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachineScaleSets/myVMSS?api-version=2018-06-01 HTTP/1.1
 ```
 
-**Hlavičky požadavku**
+**Hlavičky žádosti**
 
 |Hlavička požadavku  |Popis  |
 |---------|---------|
-|*Typ obsahu*     | Povinná hodnota. Nastavte na `application/json`.        |
+|*Content-Type*     | Povinná hodnota. Nastavte na `application/json`.        |
 |*Autorizace*     | Povinná hodnota. Nastaven na platné `Bearer` přístupový token. | 
 
-**Text požadavku**
+**Text žádosti**
 
 ```JSON
 {

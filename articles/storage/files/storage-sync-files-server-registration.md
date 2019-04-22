@@ -9,10 +9,10 @@ ms.date: 07/19/2018
 ms.author: wgries
 ms.subservice: files
 ms.openlocfilehash: 0f18467bfefdb27f2cb9c2c3f56942f679673c16
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/05/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59048433"
 ---
 # <a name="manage-registered-servers-with-azure-file-sync"></a>Správa registrovaných serverů pomocí služby Azure File Sync
@@ -193,7 +193,7 @@ Get-StorageSyncNetworkLimit | ForEach-Object { Remove-StorageSyncNetworkLimit -I
 Když Azure File Sync je hostovaný na virtuálním počítači spuštěná ve virtualizačním hostiteli systému Windows Server, můžete regulovat úložiště využití vstupně-výstupní operace kvality služby úložiště (kvalita služby úložiště). Zásada QoS pro úložiště můžete nastavit jako maximální počet (nebo omezení, třeba jak se bude vynucovat omezení StorageSyncNetwork výše) nebo jako minimální (nebo rezervace). Nastavení minimální místo maximální umožňuje Azure File Sync prudce zvýšit výkon rychlejší využívat šířku pásma úložiště k dispozici, pokud ho nepoužívají jiné úlohy. Další informace najdete v tématu [kvality služby úložiště](https://docs.microsoft.com/windows-server/storage/storage-qos/storage-qos-overview).
 
 ## <a name="see-also"></a>Další informace najdete v tématech
-- [Plánování nasazení Synchronizace souborů Azure](storage-sync-files-planning.md)
-- [Nasazení Synchronizace souborů Azure](storage-sync-files-deployment-guide.md)
-- [Sledování služby Synchronizace souborů Azure](storage-sync-files-monitoring.md)
-- [Řešení problémů se Synchronizací souborů Azure](storage-sync-files-troubleshoot.md)
+- [Plánování nasazení služby Azure File Sync](storage-sync-files-planning.md)
+- [Nasazení služby Azure File Sync](storage-sync-files-deployment-guide.md)
+- [Monitorování Azure File Sync](storage-sync-files-monitoring.md)
+- [Řešení potíží s Azure File Sync](storage-sync-files-troubleshoot.md)

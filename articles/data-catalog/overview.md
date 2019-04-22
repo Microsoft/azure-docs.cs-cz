@@ -7,10 +7,10 @@ ms.service: data-catalog
 ms.topic: overview
 ms.date: 04/05/2019
 ms.openlocfilehash: cd20fc6ae71a0dd96a0006de8c81050bb0646905
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
-ms.translationtype: MT
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59287431"
 ---
 # <a name="what-is-azure-data-catalog"></a>Co je Azure Data Catalog?
@@ -65,12 +65,12 @@ Další informace o možnostech katalogu Data Catalog naleznete v tématu:
 * [Jak se připojit ke zdrojům dat](data-catalog-how-to-connect.md)
 * [Jak pracovat s velkým objemem dat](data-catalog-how-to-big-data.md)
 * [Jak spravovat datové prostředky](data-catalog-how-to-manage.md)
-* [Jak nastavit slovník Business Glossary](data-catalog-how-to-business-glossary.md)
+* [Jak nastavit obchodní glosář](data-catalog-how-to-business-glossary.md)
 * [Nejčastější dotazy](data-catalog-frequently-asked-questions.md)
 
 ## <a name="next-steps"></a>Další postup
 
 Abyste mohli začít s katalogem Data Catalog:
 
-* [Rychlý start: Vytvoření Azure Data Catalog](data-catalog-get-started.md)
+* [Rychlé zprovoznění: Vytvoření Azure Data Catalog](data-catalog-get-started.md)
 * [Otevřete Azure Data Catalog](https://www.azuredatacatalog.com)

@@ -16,10 +16,10 @@ ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: ''
 ms.openlocfilehash: 497571a65510f806d7d7994c9dc37f9a00b65a5f
-ms.sourcegitcommit: 045406e0aa1beb7537c12c0ea1fbf736062708e8
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/04/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59006719"
 ---
 # <a name="understand-deny-assignments-for-azure-resources"></a>Vysvětlení zamítnout přiřazení pro prostředky Azure
@@ -59,7 +59,7 @@ Tento článek popisuje, jak zakázat přiřazení jsou definovány.
 Pro podporu zamítnout přiřazení, **systémem definovaná hlavní** je zavedený. Tento objekt zabezpečení představuje uživatele, skupiny, instančních objektů a spravovaných identit v adresáři Azure AD. Pokud je ID objektu zabezpečení žádný identifikátor GUID `00000000-0000-0000-0000-000000000000` a typ objektu zabezpečení je `SystemDefined`, objekt zabezpečení představuje všechny objekty zabezpečení. `SystemDefined` je možné kombinovat s `ExcludePrincipals` pro všechny objekty zabezpečení, s výjimkou někteří uživatelé odepření. `SystemDefined` má následující omezení:
 
 - Lze použít pouze ve `Principals` a nelze jej použít v `ExcludePrincipals`.
-- `Principals[i].Type` Musí být nastaveno na `SystemDefined`.
+- `Principals[i].Type` musí být nastaveno na `SystemDefined`.
 
 ## <a name="next-steps"></a>Další postup
 

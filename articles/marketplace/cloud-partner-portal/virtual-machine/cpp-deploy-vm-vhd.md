@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 11/30/2018
 ms.author: pbutlerm
 ms.openlocfilehash: f37ab1b9eef5be4aff6e5f8aecebc3688592f040
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/05/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59046678"
 ---
 # <a name="deploy-a-vm-from-your-vhds"></a>Nasazení virtuálního počítače z virtuálních pevných disků
@@ -38,8 +38,8 @@ Další informace o imagích virtuálních počítačů, najdete v těchto pří
 
 Pokud jste tak již neučinili, nainstalujte prostředí Azure PowerShell a rozhraní příkazového řádku Azure, pomocí následujících pokynů:
 
-- [Instalace prostředí Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-Az-ps)
-- [Instalace rozhraní příkazového řádku Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)
+- [Instalace Azure PowerShellu](https://docs.microsoft.com/powershell/azure/install-Az-ps)
+- [Instalace rozhraní příkazového řádku Azure](https://docs.microsoft.com/cli/azure/install-azure-cli)
 
 
 ## <a name="deployment-steps"></a>Kroky nasazení

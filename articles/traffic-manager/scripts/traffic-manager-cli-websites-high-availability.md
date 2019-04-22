@@ -16,10 +16,10 @@ ms.workload: traffic-manager
 ms.date: 04/26/2018
 ms.author: kumud
 ms.openlocfilehash: 6c610a1cddb0854878d4c2bd5531f88a1cf2ec51
-ms.sourcegitcommit: e43ea344c52b3a99235660960c1e747b9d6c990e
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/04/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59009100"
 ---
 # <a name="route-traffic-for-high-availability-of-applications-using-azure-cli"></a>Směrování provozu pro zajištění vysoké dostupnosti aplikací pomocí rozhraní příkazového řádku Azure
@@ -50,8 +50,8 @@ Tento skript k vytvoření skupiny prostředků, webové aplikace, profilu služ
 
 | Příkaz | Poznámky |
 |---|---|
-| [Vytvoření skupiny az](https://docs.microsoft.com/cli/azure/group) | Vytvoří skupinu prostředků, ve které se ukládají všechny prostředky. |
-| [Vytvořit plán služby App Service az](https://docs.microsoft.com/cli/azure/appservice/plan) | Vytvoří plán služby App Service. Podobá se trochu serverové farmy pro vaši webovou aplikaci Azure. |
+| [az group create](https://docs.microsoft.com/cli/azure/group) | Vytvoří skupinu prostředků, ve které se ukládají všechny prostředky. |
+| [az appservice plan create](https://docs.microsoft.com/cli/azure/appservice/plan) | Vytvoří plán služby App Service. Podobá se trochu serverové farmy pro vaši webovou aplikaci Azure. |
 | [Vytvoření webové az webapp](https://docs.microsoft.com/cli/azure/webapp#az-webapp-create) | Vytvoří webovou aplikaci Azure v rámci plánu služby App Service. |
 | [Vytvoření profilu traffic Manageru az sítě](https://docs.microsoft.com/cli/azure/network/traffic-manager/profile) | Vytvoří profil služby Azure Traffic Manager. |
 | [Vytvoření koncového bodu az network traffic Manageru](https://docs.microsoft.com/cli/azure/network/traffic-manager/endpoint) | Přidá do profilu služby Azure Traffic Manager koncový bod. |

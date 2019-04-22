@@ -9,10 +9,10 @@ ms.date: 04/03/2019
 ms.topic: conceptual
 manager: philmea
 ms.openlocfilehash: 8c73c55b059b4d3ca7136889122c11ab332b3f76
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59270502"
 ---
 # <a name="as-a-csp-create-and-manage-an-azure-iot-central-application-on-behalf-of-your-customer"></a>Jako zprostředkovatel kryptografických služeb vytvářet a spravovat Azure IoT Central aplikace jménem vašich zákazníků 
@@ -95,4 +95,4 @@ Můžete vybrat některou ze šablon dostupné aplikace pro novou aplikaci Azure
 Teď, když jste se naučili, jak vytvořit aplikaci Azure IoT Central, propojený, je zde navrhované další krok:
 
 > [!div class="nextstepaction"]
-> [Správa vaší aplikace](howto-administer.md)
+> [Spravovat aplikaci](howto-administer.md)

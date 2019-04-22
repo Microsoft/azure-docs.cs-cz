@@ -10,10 +10,10 @@ ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 03/20/2019
 ms.openlocfilehash: 1194407122123797c2564c96ac452b9582b017a4
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59264943"
 ---
 # <a name="quickstart-3---query-an-azure-search-index-in-c"></a>Rychlý start: 3 – dotazování indexu Azure Search vC#

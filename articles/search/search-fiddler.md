@@ -11,17 +11,17 @@ ms.date: 04/08/2019
 ms.author: heidist
 ms.custom: seodec2018
 ms.openlocfilehash: 0e14131ce45d20b99c1b5d5885cb1eb24c975d03
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59269108"
 ---
 # <a name="quickstart-explore-azure-search-rest-apis-using-postman"></a>Rychlý start: Prozkoumejte službu REST API služby Azure Search pomocí nástroje Postman
 > [!div class="op_single_selector"]
 > * [Postman](search-fiddler.md)
 > * [C#](search-create-index-dotnet.md)
-> * [Portál](search-get-started-portal.md)
+> * [Azure Portal](search-get-started-portal.md)
 > * [PowerShell](search-howto-dotnet-sdk.md)
 >*
 
@@ -228,7 +228,7 @@ Tento dotaz vyhledá výraz „motel“ a ve výsledcích hledání vrátí poč
 
 
 ## <a name="get-index-properties"></a>Získání vlastností indexu
-Můžete také zadávat dotazy systémové informace můžete získat počet dokumentů a spotřebu úložiště: `https://mydemo.search.windows.net/indexes/hotels/stats?api-version=2017-11-11`
+Můžete také zadat dotazy na informace o systému a získat počet dokumentů a spotřebu úložiště: `https://mydemo.search.windows.net/indexes/hotels/stats?api-version=2017-11-11`
 
 V nástroji Postman by vaše žádost měla vypadat podobně jako v následujícím příkladu a odpověď by měla obsahovat počet dokumentů a využité místo v bajtech.
 
@@ -274,7 +274,7 @@ Následující příklad dotazu je převzatý z článku [Operace prohledání i
 
         GET /indexes/hotels/docs?search=*&$orderby=lastRenovationDate desc&api-version=2017-11-11
 
-**Po nahrazení mezer znakem + (v části lastRenovationDate + desc):**
+**Po nahrazení mezer znakem + (v části lastRenovationDate+desc):**
 
         GET /indexes/hotels/docs?search=*&$orderby=lastRenovationDate+desc&api-version=2017-11-11
 
@@ -286,8 +286,8 @@ Ve Fiddleru klikněte na kartu **Kontroly**, klikněte na kartu **Hlavičky** a 
 
 Klienti REST jsou neocenitelní při zkoumání bez přípravy, ale teď, když víte, jak fungují rozhraní REST API, můžete pokračovat s kódem. Další kroky najdete na následujících odkazech:
 
-+ [Rychlý start: Vytvoření indexu pomocí .NET SDK](search-create-index-dotnet.md)
-+ [Rychlý start: Vytvoření indexu (REST) pomocí Powershellu](search-create-index-rest-api.md)
++ [Rychlé zprovoznění: Vytvoření indexu pomocí .NET SDK](search-create-index-dotnet.md)
++ [Rychlé zprovoznění: Vytvoření indexu (REST) pomocí Powershellu](search-create-index-rest-api.md)
 
 <!--Image References-->
 [1]: ./media/search-fiddler/fiddler-url.png

@@ -11,10 +11,10 @@ ms.topic: quickstart
 ms.date: 4/03/2019
 ms.author: yinhew
 ms.openlocfilehash: a013189e45b1c1c8eeb88d62a718d495c0c415a2
-ms.sourcegitcommit: e43ea344c52b3a99235660960c1e747b9d6c990e
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/04/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59012245"
 ---
 # <a name="quickstart-synthesize-speech-with-the-speech-sdk-for-net-framework-windows"></a>Rychlý start: Syntetizace řeči se sadou SDK pro řeč pro rozhraní .NET Framework (Windows)
@@ -70,5 +70,5 @@ K dokončení tohoto projektu budete potřebovat:
 
 ## <a name="see-also"></a>Další informace najdete v tématech
 
-- [Přizpůsobení hlasových písem](how-to-customize-voice-font.md)
-- [Záznam hlasových ukázek](record-custom-voice-samples.md)
+- [Přizpůsobení hlasová písma](how-to-customize-voice-font.md)
+- [Záznam hlasu ukázky](record-custom-voice-samples.md)

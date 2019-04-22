@@ -19,10 +19,10 @@ ms.author: joflore
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: a92d10f67533efc2f5893b012aefbcb92efee59a
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59258738"
 ---
 # <a name="what-are-access-controls-in-azure-active-directory-conditional-access"></a>Co jsou řízení přístupu v Azure Active Directory podmíněného přístupu?
@@ -76,9 +76,9 @@ Můžete nakonfigurovat zásady podmíněného přístupu, které jsou založen�
 
 Vaše zařízení potřebuje k registraci do služby Azure AD, než může být označený jako kompatibilní. Pokud chcete zaregistrovat zařízení, máte tři možnosti: 
 
-- [Zařízení zaregistrovaná v Azure AD](../devices/overview.md#azure-ad-registered-devices)
+- [Podpora k zařízením Azure AD zaregistrované](../devices/overview.md#azure-ad-registered-devices)
 - [Zařízení připojená k Azure AD](../devices/overview.md#azure-ad-joined-devices)  
-- [Hybridní zařízení připojená k Azure AD](../devices/overview.md#hybrid-azure-ad-joined-devices)
+- [Zařízení připojená k hybridní službě Azure AD](../devices/overview.md#hybrid-azure-ad-joined-devices)
 
 Další informace najdete v tématu [vyžadování spravovaných zařízení pro přístup k aplikaci cloud s podmíněným přístupem](require-managed-devices.md).
 

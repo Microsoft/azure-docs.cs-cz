@@ -9,10 +9,10 @@ ms.date: 09/15/2018
 ms.author: vinagara
 ms.subservice: alerts
 ms.openlocfilehash: d3285a6b2aa09dd78bbb63c384bd1f65c17034ff
-ms.sourcegitcommit: 045406e0aa1beb7537c12c0ea1fbf736062708e8
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/04/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59006950"
 ---
 # <a name="create-view-and-manage-log-alerts-using-azure-monitor"></a>Vytvoření, zobrazení a Správa upozornění protokolů pomocí Azure monitoru

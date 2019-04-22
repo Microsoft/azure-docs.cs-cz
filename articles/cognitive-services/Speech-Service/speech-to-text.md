@@ -12,10 +12,10 @@ ms.date: 03/13/2019
 ms.author: erhopf
 ms.custom: seodec18
 ms.openlocfilehash: 9e6bc1264e668ba5c6593ce36e721f54e685c391
-ms.sourcegitcommit: e43ea344c52b3a99235660960c1e747b9d6c990e
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/04/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59008488"
 ---
 # <a name="what-is-speech-to-text"></a>Co je převod řeči na text?
@@ -84,7 +84,7 @@ Kromě univerzální model používaný hlasové služby můžete vytvořit vlas
 |-------|-------------|
 | [Akustický model](how-to-customize-acoustic-models.md) | Vytvoření vlastního akustického modelu je užitečné, pokud vaše aplikace, nástroje nebo zařízení se používají v konkrétním prostředí, stejně jako v automobilu nebo objekt pro vytváření s konkrétní záznam podmínky. Ukázky zahrnují řeč s přízvukem, určité zvuky na pozadí nebo použití určitého mikrofonu pro nahrávání. |
 | [Jazykový model](how-to-customize-language-model.md) | Vytvoření vlastního jazykového modelu pro zlepšení přepis slovník specifických pro dané odvětví a gramatiku, jako jsou lékařské terminologie nebo žargonu IT. |
-| [Výslovnost modelu](how-to-customize-pronunciation.md) | Pomocí vlastních výslovnost modelu můžete definovat zapsané ve fonetické formuláře a zobrazení slovo nebo termín. Je vhodný pro zpracování vlastní podmínky, jako jsou názvy produktů nebo zkratky. Vše, co potřebujete, abyste mohli začít se výslovnost soubor – soubor .txt jednoduché. |
+| [Model výslovnosti](how-to-customize-pronunciation.md) | Pomocí vlastních výslovnost modelu můžete definovat zapsané ve fonetické formuláře a zobrazení slovo nebo termín. Je vhodný pro zpracování vlastní podmínky, jako jsou názvy produktů nebo zkratky. Vše, co potřebujete, abyste mohli začít se výslovnost soubor – soubor .txt jednoduché. |
 
 > [!NOTE]
 > Možnosti vlastního nastavení se liší podle jazyka a národního prostředí (viz [podporované jazyky](supported-languages.md)).
@@ -102,9 +102,9 @@ Pokud vaše aplikace, nástroje nebo produkty používají rozhraní API pro zpr
 ## <a name="reference-docs"></a>Referenční dokumenty
 
 * [Speech SDK](speech-sdk-reference.md)
-* [Speech Devices SDK](speech-devices-sdk.md)
-* [REST API: Převod řeči na text](rest-speech-to-text.md)
-* [REST API: Převod textu na řeč](rest-text-to-speech.md)
+* [Rozpoznávání řeči zařízení SDK](speech-devices-sdk.md)
+* [REST API: Speech-to-text](rest-speech-to-text.md)
+* [REST API: Text-to-speech](rest-text-to-speech.md)
 * [REST API: Přepis služby batch a přizpůsobení](https://westus.cris.ai/swagger/ui/index)
 
 ## <a name="next-steps"></a>Další postup

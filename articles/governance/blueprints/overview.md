@@ -8,10 +8,10 @@ ms.topic: overview
 ms.service: blueprints
 manager: carmonm
 ms.openlocfilehash: 960b8145e5f53c6c37820604fd634ccf5fd77c6b
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59259418"
 ---
 # <a name="overview-of-the-azure-blueprints-service"></a>Přehled služby Azure podrobné plány
@@ -85,9 +85,9 @@ Každá **publikovaná** **verze** podrobného plánu se může přiřadit k exi
 
 Pokud chcete použít podrobné plány, musíte mít udělená oprávnění prostřednictvím [řízení přístupu na základě role](../../role-based-access-control/overview.md). Abyste mohli podrobné plány vytvářet, váš účet potřebuje tato oprávnění:
 
-- `Microsoft.Blueprint/blueprints/write` -Vytvořit definici podrobného plánu
-- `Microsoft.Blueprint/blueprints/artifacts/write` – Vytváření artefaktů v definici podrobného plánu
-- `Microsoft.Blueprint/blueprints/versions/write` -Publikovat podrobný plán
+- `Microsoft.Blueprint/blueprints/write` – vytvořit definici podrobného plánu
+- `Microsoft.Blueprint/blueprints/artifacts/write` – vytvořit artefakty v definici podrobného plánu
+- `Microsoft.Blueprint/blueprints/versions/write` – publikovat podrobný plán
 
 Pokud chcete podrobné plány odstranit, váš účet potřebuje tato oprávnění:
 
@@ -100,8 +100,8 @@ Pokud chcete podrobné plány odstranit, váš účet potřebuje tato oprávněn
 
 Pokud chcete podrobný plán přiřadit nebo zrušit jeho přiřazení, váš účet potřebuje tato oprávnění:
 
-- `Microsoft.Blueprint/blueprintAssignments/write` -Přiřadit podrobný plán
-- `Microsoft.Blueprint/blueprintAssignments/delete` -Zrušit přiřazení podrobný plán
+- `Microsoft.Blueprint/blueprintAssignments/write` – přiřadit podrobný plán
+- `Microsoft.Blueprint/blueprintAssignments/delete` – zrušit přiřazení podrobného plánu
 
 > [!NOTE]
 > Protože se přiřazení podrobného plánu vytvářejí v předplatném, musí se oprávnění pro přiřazení a zrušení přiřazení podrobného plánu udělit v oboru předplatného nebo do oboru předplatného zdědit.

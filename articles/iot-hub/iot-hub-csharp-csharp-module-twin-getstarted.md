@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 04/26/2018
 ms.author: menchi
 ms.openlocfilehash: 3b10ae0998acbb010e61ebb41c602c7d42bc14fa
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59263158"
 ---
 # <a name="get-started-with-iot-hub-module-identity-and-module-twin-using-net-back-end-and-net-device"></a>Začínáme s IoT Hub identit a modul dvojče zařízení pomocí back-endu .NET a .NET zařízení
@@ -64,7 +64,7 @@ V této části vytvoříte na simulovaném zařízení konzolovou aplikaci .NET
 
     ![Podrobnosti o modulu na webu Azure Portal](./media/iot-hub-csharp-csharp-module-twin-getstarted/module-detail.png)
 
-4. **Vytvoření konzolové aplikace v UpdateModuleTwinReportedProperties**
+4. **Create UpdateModuleTwinReportedProperties console app**
 
     Do horní části souboru **Program.cs** přidejte následující příkazy `using`:
 

@@ -18,10 +18,10 @@ ms.reviewer: hirsin, justhu
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 69440fb99439231cdc046ef48bddfa852c17924c
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59271794"
 ---
 # <a name="authentication-and-authorization-error-codes"></a>Kódy chyb autorizace a ověřování
@@ -153,7 +153,7 @@ Hledáte informace o chybových kódech AADSTS, které jsou vráceny od služby 
 | AADSTS70007 | UnsupportedResponseMode – aplikace vrátil nepodporovanou hodnotu `response_mode` při vyžádání tokenu.  |
 | AADSTS70008 | ExpiredOrRevokedGrant - obnovovacího tokenu vypršela platnost kvůli nečinnosti. Token, který byl vydán na XXX a byla pro určitou dobu neaktivní. |
 | AADSTS70011 | InvalidScope - rozsahem požadovaným aplikace je neplatný. |
-| AADSTS70012 | MsaServerError - při ověřování uživatele MSA (příjemce) došlo k chybě serveru. Zkuste to znova. Pokud k chybě dochází opakovaně, [otevřete požadavek na podporu](../fundamentals/active-directory-troubleshooting-support-howto.md). |
+| AADSTS70012 | MsaServerError - při ověřování uživatele MSA (příjemce) došlo k chybě serveru. Zkuste to znova. Pokud bude nadále selhávat, [vytvořit lístek podpory](../fundamentals/active-directory-troubleshooting-support-howto.md) |
 | AADSTS70016 | AuthorizationPending – chyba tok OAuth 2.0 zařízení. Ověření čeká na vyřízení. Zařízení se pokusí navázat požadavku dotazování. |
 | AADSTS70018 | BadVerificationCode – neplatný ověřovací kód z důvodu uživatele zadáte nesprávné uživatelského kódu pro tok kódu zařízení. Autorizace není schválený. |
 | AADSTS70019 | Ověřovací kód CodeExpired – platnost vypršela. Požádejte uživatele, zkuste přihlásit. |

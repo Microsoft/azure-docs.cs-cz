@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 04/13/2018
 ms.author: chrisgre
 ms.openlocfilehash: 0302146634904ccf1d87220d3a24553149e10372
-ms.sourcegitcommit: e43ea344c52b3a99235660960c1e747b9d6c990e
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/04/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59012962"
 ---
 # <a name="automatic-iot-device-management-at-scale-using-the-azure-cli"></a>Automatická správa zařízení IoT ve velkém měřítku pomocí Azure CLI
@@ -196,7 +196,7 @@ az iot hub configuration delete --config-id [configuration id] \
 
 V tomto článku jste zjistili, jak konfigurovat a monitorovat zařízení IoT ve velkém měřítku. Další informace o správě služby Azure IoT Hub na následujících odkazech:
 
-* [Správa identit zařízení služby IoT Hub hromadné](iot-hub-bulk-identity-mgmt.md)
+* [Hromadná správa identit zařízení služby IoT Hub](iot-hub-bulk-identity-mgmt.md)
 * [Metriky služby IoT Hub](iot-hub-metrics.md)
 * [Monitorování operací](iot-hub-operations-monitoring.md)
 

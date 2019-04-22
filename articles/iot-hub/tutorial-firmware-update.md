@@ -13,10 +13,10 @@ ms.workload: na
 ms.date: 02/22/2019
 ms.custom: mvc
 ms.openlocfilehash: 1418a9815e155a0c491fc65b16307fa2755bd964
-ms.sourcegitcommit: e43ea344c52b3a99235660960c1e747b9d6c990e
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/04/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59008898"
 ---
 # <a name="tutorial-implement-a-device-firmware-update-process"></a>Kurz: Implementujte proces aktualizace firmwaru zařízení
@@ -115,10 +115,10 @@ Back-endová aplikace vytvoří následující konfiguraci:
 
 Konfigurace obsahuje následující části:
 
-* `content` Určuje firmware požadovaných vlastností odeslaných vybraným zařízením.
-* `metrics` Určuje dotazy ke spuštění této sestavy stav aktualizace firmwaru.
-* `targetCondition` Vybere zařízení, která obdrží aktualizaci firmwaru.
-* `priorty` Nastaví relativní prioritu této konfigurace do jiné konfigurace.
+* `content` určuje požadované vlastnosti firmwaru odesílané do vybraných zařízení.
+* `metrics` určuje dotazy, které se mají spustit a které hlásí stav aktualizace firmwaru.
+* `targetCondition` vybírá zařízení, která obdrží aktualizaci firmwaru.
+* `priorty` nastavuje relativní prioritu této konfigurace vzhledem k ostatním konfiguracím.
 
 Back-endová aplikace k vytvoření konfigurace, která nastaví požadované vlastnosti, používá následující kód:
 
@@ -209,4 +209,4 @@ az group delete --name tutorial-iot-hub-rg
 V tomto kurzu jste zjistili, jak pro svá připojená zařízení implementovat proces aktualizace firmwaru. Přejděte k dalšímu kurzu, kde se naučíte, jak použít nástroje na portálu Azure IoT Hub a příkazy rozhraní příkazového řádku Azure k testování připojení zařízení.
 
 > [!div class="nextstepaction"]
-> [Použití simulovaného zařízení k otestování připojení k službě IoT hub](tutorial-connectivity.md)
+> [Použití simulovaného zařízení pro otestování připojení k IoT Hubu](tutorial-connectivity.md)

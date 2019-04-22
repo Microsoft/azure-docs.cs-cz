@@ -8,10 +8,10 @@ ms.date: 04/08/2019
 ms.author: rimman
 ms.reviewer: sngun
 ms.openlocfilehash: a76e277bf56861bcaefb5bf7f8b3b3bc03ad1164
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59266422"
 ---
 # <a name="consistency-availability-and-performance-tradeoffs"></a>Kompromisy mezi konzistencí, dostupností a výkonem 
@@ -24,7 +24,7 @@ Azure Cosmos DB blíží konzistence dat jako celé spektrum od volby. Tento př
 - *Omezená neaktuálnost*
 - *Relace*
 - *Konzistentní předpona*
-- *Nahodilé*
+- *Konečný výsledek*
 
 Každý model poskytuje dostupnost a výkon kompromisy a je zajištěná komplexní smlouvy SLA.
 
@@ -50,7 +50,7 @@ V prostředí s globálně distribuovanou databázi je přímý vztah mezi konzi
 
 Následující tabulka definuje vztahy mezi konzistence modelu a datům odolnosti za přítomnosti široké výpadku oblasti. Je důležité si uvědomit, že v distribuovaném systému i přes silná konzistence, není možné mít distribuované databáze s RPO a RTO nula kvůli věty. Další informace o tom, proč najdete v tématu [úrovně konzistence ve službě Azure Cosmos DB](consistency-levels.md).
 
-|**Oblasti**|**Režim replikace**|**Úrovně konzistence**|**Cíl bodu obnovení (RPO)**|**RTO**|
+|**Položky nakoupené**|**Režim replikace**|**Úrovně konzistence**|**CÍL BODU OBNOVENÍ**|**RTO**|
 |---------|---------|---------|---------|---------|
 |1|Jednoho nebo několika hlavními databázemi|Všechny úrovně konzistence|< 240 minut|< 1 týden|
 |>1|Single Master|Relace, konzistentní předpona, konečný výsledek|< 15 minut|< 15 minut|

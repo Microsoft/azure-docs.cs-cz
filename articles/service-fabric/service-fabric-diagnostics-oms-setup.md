@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 02/20/2019
 ms.author: srrengar
 ms.openlocfilehash: ba4d25c749a1c1b99559ce4033fe90d671701d66
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/05/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59046474"
 ---
 # <a name="set-up-azure-monitor-logs-for-a-cluster"></a>Nastavte si protokoly Azure monitoru pro cluster
