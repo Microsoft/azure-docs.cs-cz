@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 04/07/2019
 ms.author: rkarlin
 ms.openlocfilehash: 77587b0b7506ef0ccadbeb6d1f010f5b6a72d93e
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/11/2019
-ms.locfileid: "59495186"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59793599"
 ---
 # <a name="connect-data-from-office-365-logs"></a>Připojíte si data z Office 365 protokoly
 

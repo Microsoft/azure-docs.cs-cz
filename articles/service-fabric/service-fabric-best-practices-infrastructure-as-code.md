@@ -15,11 +15,11 @@ ms.workload: NA
 ms.date: 01/23/2019
 ms.author: pepogors
 ms.openlocfilehash: 9224ecebed35a631514c5254703ad2694675d40e
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/05/2019
-ms.locfileid: "59049616"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59793810"
 ---
 # <a name="infrastructure-as-code"></a>Infrastruktura jako kód
 
@@ -53,7 +53,7 @@ New-AzResourceGroupDeployment -Name $ResourceGroupName -TemplateFile $Template -
 
 ## <a name="azure-service-fabric-resources"></a>Prostředky Azure Service Fabric
 
-Do vašeho clusteru Service Fabric pomocí Azure Resource Manageru můžete nasadit aplikace a služby. Zobrazit [spravovat aplikace a služby jako prostředky Azure Resource Manageru](https://docs.microsoft.com/azure/service-fabric/service-fabric-application-arm-resource) podrobnosti. Níže jsou nejlepší postup Service Fabric konkrétní prostředky aplikace chcete zahrnout do vašich prostředků šablony Resource Manageru.
+Aplikace a služby můžete do clusteru Service Fabric nasadit prostřednictvím Azure Resource Manageru. Zobrazit [spravovat aplikace a služby jako prostředky Azure Resource Manageru](https://docs.microsoft.com/azure/service-fabric/service-fabric-application-arm-resource) podrobnosti. Níže jsou nejlepší postup Service Fabric konkrétní prostředky aplikace chcete zahrnout do vašich prostředků šablony Resource Manageru.
 
 ```json
 {

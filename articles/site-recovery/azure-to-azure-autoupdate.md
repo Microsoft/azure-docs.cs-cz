@@ -9,11 +9,11 @@ ms.topic: article
 ms.date: 11/27/2018
 ms.author: rajanaki
 ms.openlocfilehash: 67eb01ad596393c9095d72670e61b8c09776c588
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/05/2019
-ms.locfileid: "59049230"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59792924"
 ---
 # <a name="automatic-update-of-the-mobility-service-in-azure-to-azure-replication"></a>Automatická aktualizace služby Mobility v replikaci z Azure do Azure
 
@@ -519,7 +519,7 @@ Pokud se vyskytl problém s automatickými aktualizacemi, zobrazí se oznámení
 
 Pokud nelze povolit automatické aktualizace, přečtěte si následující běžné chyby a doporučené akce:
 
-- **Chyba**: Nemáte oprávnění vytvořit účet Spustit jako pro Azure (instanční objekt) a udělit tomuto instančnímu objektu roli Přispěvatel.
+- **Chyba:** Nemáte oprávnění vytvořit účet Spustit jako pro Azure (instanční objekt) a udělit tomuto instančnímu objektu roli Přispěvatel.
 
    **Doporučená akce**: Ujistěte se, že účet přihlášení je přiřazen jako přispěvatele a zkuste to znovu. Přečtěte si část požadovaná oprávnění v [použití portálu k vytvoření aplikace a instančního objektu, který má přístup k prostředkům Azure AD](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-create-service-principal-portal#required-permissions) Další informace o přiřazování oprávnění.
  
@@ -527,10 +527,10 @@ Pokud nelze povolit automatické aktualizace, přečtěte si následující bě�
 
    ![Site Recovery service tlačítko Opravit v nastavení aktualizací rozšíření](./media/azure-to-azure-autoupdate/repair.png)
 
-- **Chyba**: Účet Spustit jako nemá oprávnění pro přístup k prostředku služby recovery services.
+- **Chyba:** Účet Spustit jako nemá oprávnění pro přístup k prostředku služby recovery services.
 
     **Doporučená akce**: Odstranit a potom [znovu vytvořte účet Spustit jako](https://docs.microsoft.com/azure/automation/automation-create-runas-account). Nebo, ujistěte se, že aplikace Azure Active Directory účtu Automation spustit jako má přístup k prostředku služby recovery services.
 
-- **Chyba**: Účet Spustit jako se nenašel. Jeden z nich byl odstraněn nebo není vytvořená: aplikace Azure Active Directory, instanční objekt, Role, prostředek certifikátu služby Automation, asset připojení Automation – nebo kryptografický otisk není mezi certifikátem a připojením identický. 
+- **Chyba:** Účet Spustit jako se nenašel. Jeden z nich byl odstraněn nebo není vytvořená: aplikace Azure Active Directory, instanční objekt, Role, prostředek certifikátu služby Automation, asset připojení Automation – nebo kryptografický otisk není mezi certifikátem a připojením identický. 
 
     **Doporučená akce**: Odstranit a potom [znovu vytvořte účet Spustit jako](https://docs.microsoft.com/azure/automation/automation-create-runas-account).

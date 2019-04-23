@@ -8,11 +8,11 @@ ms.topic: tutorial
 ms.service: blueprints
 manager: carmonm
 ms.openlocfilehash: d315fb5fe3ce7844946e6a9405a9a5f6a0be8b9d
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59272270"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59791605"
 ---
 # <a name="protect-new-resources-with-azure-blueprints-resource-locks"></a>Ochrana nové prostředky podle zámky prostředků Azure podrobné plány
 
@@ -131,7 +131,7 @@ Jakmile se definice podrobného plánu se úspěšně **publikováno**, je možn
 
    - Základy
 
-     - **Předplatná**: Vyberte jednu nebo několik předplatných, které jsou ve skupině pro správu uloží vaše definice podrobného plánu. Pokud vyberete více než jedno předplatné, vytvoří se pro každý pomocí zadaných parametrů přiřazení.
+     - **Předplatná:** Vyberte jednu nebo několik předplatných, které jsou ve skupině pro správu uloží vaše definice podrobného plánu. Pokud vyberete více než jedno předplatné, vytvoří se pro každý pomocí zadaných parametrů přiřazení.
      - **Název přiřazení**: Název je předem vyplněna můžete vycházet z názvu definice podrobného plánu. Chceme, aby toto přiřazení představují uzamčení novou skupinu prostředků, takže upravte název přiřazení k _přiřazení uzamčen – účet úložiště – TestingBPLocks_.
      - **Umístění**: Vyberte oblast pro spravovanou identitu, která má být vytvořen v. Podrobný plán Azure Blueprint používá tuto spravovanou identitu k aplikaci všech artefaktů v přiřazené podrobného plánu. Další informace najdete v tématu [Spravované identity pro zdroje Azure](../../../active-directory/managed-identities-azure-resources/overview.md).
        Pro účely tohoto kurzu vyberte _USA – východ 2_.

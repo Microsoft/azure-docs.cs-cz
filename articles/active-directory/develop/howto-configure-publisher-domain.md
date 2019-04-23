@@ -18,11 +18,11 @@ ms.reviewer: lenalepa, sureshja, zachowd
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: efbf448770bfcf797d6bf01cd3c28dc98023adff
-ms.sourcegitcommit: 41015688dc94593fd9662a7f0ba0e72f044915d6
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/11/2019
-ms.locfileid: "59502275"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59793889"
 ---
 # <a name="how-to-configure-an-applications-publisher-domain-preview"></a>Postup: Nakonfigurovat doménu vydavatele aplikace (Preview)
 
