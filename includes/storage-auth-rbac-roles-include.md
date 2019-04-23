@@ -9,11 +9,11 @@ ms.date: 03/21/2019
 ms.author: tamram
 ms.custom: include file
 ms.openlocfilehash: 9b8418dba12748915666c6a91ee65b37c0f59ace
-ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
-ms.translationtype: MT
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58807501"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59803733"
 ---
 Azure poskytuje následující předdefinované role RBAC pro přístup k datům úložiště:
 

@@ -1,68 +1,61 @@
-items:
 - name: Azure
   tocHref: /azure/
   topicHref: /azure/index
   items:
-  - name: Key Vault
-    tocHref: /azure/
-    topicHref: /azure/key-vault/index
+    - name: Key Vault
+      tocHref: /azure/
+      topicHref: /azure/key-vault/index
 - name: Azure
   tocHref: /java/
   topicHref: /azure/index
   items:
-  - name: Key Vault
-    tocHref: /java/azure/
-    topicHref: /azure/key-vault/
-    items:
-    - name: Spring
-      tocHref: /java/azure/spring-framework/
-      topicHref: /java/azure/spring-framework/
+    - name: Key Vault
+      tocHref: /java/azure/
+      topicHref: /azure/key-vault/
+      items:
+        - name: Spring
+          tocHref: /java/azure/spring-framework/
+          topicHref: /java/azure/spring-framework/
 - name: Azure
   tocHref: /powershell/
   topicHref: /azure/index
   items:
-  - name: Key Vault
-    tocHref: /powershell/module/
-    topicHref: /azure/key-vault/
-    items:
-    - name: Rutiny PowerShellu pro Key Vault
-      tocHref: /powershell/module/az.keyvault/
-      topicHref: /powershell/module/az.keyvault/
+    - name: Key Vault
+      tocHref: /powershell/module/
+      topicHref: /azure/key-vault/
+      items:
+        - name: Rutiny PowerShellu pro Key Vault
+          tocHref: /powershell/module/az.keyvault/
+          topicHref: /powershell/module/az.keyvault/
 - name: Azure
   tocHref: /cli/
   topicHref: /azure/index
   items:
-  - name: Key Vault
-    tocHref: /cli/azure/
-    topicHref: /azure/key-vault/
-    items:
-    - name: Reference k rozhraní příkazového řádku služby Key Vault
-      tocHref: /cli/azure/keyvault/
+    - name: Key Vault
+      tocHref: /cli/azure/
       topicHref: /azure/key-vault/
       items:
-      - name: Certifikáty
-        tocHref: /cli/azure/keyvault/certificate
-        topicHref: /azure/key-vault/
-      - name: Klíče
-        tocHref: /cli/azure/keyvault/key
-        topicHref: /azure/key-vault/
-      - name: Tajné kódy
-        tocHref: /cli/azure/keyvault/secret
-        topicHref: /azure/key-vault/
+        - name: Reference k rozhraní příkazového řádku služby Key Vault
+          tocHref: /cli/azure/keyvault/
+          topicHref: /azure/key-vault/
+          items:
+            - name: Certifikáty
+              tocHref: /cli/azure/keyvault/certificate
+              topicHref: /azure/key-vault/
+            - name: Klíče
+              tocHref: /cli/azure/keyvault/key
+              topicHref: /azure/key-vault/
+            - name: Tajné kódy
+              tocHref: /cli/azure/keyvault/secret
+              topicHref: /azure/key-vault/
 - name: Azure
   tocHref: /sccm/
   topicHref: /azure/index
   items:
-  - name: Key Vault
-    tocHref: /sccm/apps/
-    topicHref: /azure/key-vault/index
-    items:
-    - name: Spouštění skriptů SCCM
-      tocHref: /sccm/apps/deploy-use/
+    - name: Key Vault
+      tocHref: /sccm/apps/
       topicHref: /azure/key-vault/index
-ms.openlocfilehash: 3a11cee3221ccff773291ede56415af09d80120b
-ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
-ms.translationtype: HT
-ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/02/2019
-ms.locfileid: "58848811"
+      items:
+        - name: Spouštění skriptů SCCM
+          tocHref: /sccm/apps/deploy-use/
+          topicHref: /azure/key-vault/index
