@@ -11,11 +11,11 @@ ms.date: 03/25/2019
 ms.author: davidmu
 ms.subservice: B2C
 ms.openlocfilehash: 1d4f7460d53e721ca1cba7aba6c6ef9c45111ee5
-ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58435436"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60316404"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-google-account-using-azure-active-directory-b2c"></a>Nastavení registrace a přihlášení pomocí účtu Google pomocí Azure Active Directory B2C
 

@@ -15,12 +15,12 @@ ms.workload: na
 ms.date: 02/27/2017
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 2ce65aa4efba735305208f7a6d761bc2814d1b8f
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 1dfc1b0e0576402624bfe62de0e206d9bd7cd1b0
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38718882"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60302864"
 ---
 # <a name="use-storsimple-device-manager-to-manage-access-control-records-for-storsimple-virtual-array"></a>Pomocí Správce zařízení StorSimple ke správě záznamy řízení přístupu pro StorSimple Virtual Array
 

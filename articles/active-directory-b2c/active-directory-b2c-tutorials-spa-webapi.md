@@ -11,11 +11,11 @@ ms.topic: tutorial
 ms.service: active-directory
 ms.subservice: B2C
 ms.openlocfilehash: 13cbf1e81e0d203c181efb0881ec2a437cbaef24
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55752173"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60315656"
 ---
 # <a name="tutorial-grant-access-to-an-aspnet-core-web-api-from-a-single-page-application-using-azure-active-directory-b2c"></a>Kurz: Udělení přístupu k webovému rozhraní API ASP.NET Core z jednostránkové aplikace pomocí Azure Active Directory B2C
 
@@ -24,7 +24,7 @@ V tomto kurzu se dozvíte, jak volání Azure Active Directory (Azure AD) B2C AS
 V tomto kurzu se naučíte:
 
 > [!div class="checklist"]
-> * Přidání webového rozhraní API aplikaci
+> * Přidání aplikace webového rozhraní API
 > * Konfigurace oborů pro webové rozhraní API
 > * Udělení oprávnění k webovému rozhraní API
 > * Konfigurace ukázky aplikace k používání aplikace
@@ -35,7 +35,7 @@ V tomto kurzu se naučíte:
 
 Dokončete kroky a požadavky [kurzu: Povolit jednostránkové aplikace ověřování účtů pomocí Azure Active Directory B2C](active-directory-b2c-tutorials-spa.md).
 
-## <a name="add-a-web-api-application"></a>Přidání webového rozhraní API aplikaci
+## <a name="add-a-web-api-application"></a>Přidání aplikace webového rozhraní API
 
 Webové rozhraní API prostředky musí být zaregistrovaní ve vašem tenantovi předtím, než může přijímat a reagovat na požadavky na chráněný prostředek v klientských aplikacích, které se přístupový token.
 
@@ -174,7 +174,7 @@ Jakmile se zaregistrujete nebo přihlásíte pomocí uživatelského účtu, uk�
 V tomto kurzu jste se naučili:
 
 > [!div class="checklist"]
-> * Přidání webového rozhraní API aplikaci
+> * Přidání aplikace webového rozhraní API
 > * Konfigurace oborů pro webové rozhraní API
 > * Udělení oprávnění k webovému rozhraní API
 > * Konfigurace ukázky aplikace k používání aplikace

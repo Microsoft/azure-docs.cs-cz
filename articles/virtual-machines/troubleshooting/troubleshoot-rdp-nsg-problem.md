@@ -14,11 +14,11 @@ ms.workload: infrastructure
 ms.date: 11/20/2018
 ms.author: genli
 ms.openlocfilehash: c32612c411f275220f549eea79276fa5a7232fd0
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52954608"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60318931"
 ---
 #  <a name="cannot-connect-remotely-to-a-vm-because-rdp-port-is-not-enabled-in-nsg"></a>Nelze vzdáleně připojit k virtuálnímu počítači protože RDP port není povolené v NSG
 
@@ -47,8 +47,8 @@ Pokud chcete povolit port RDP v skupinu zabezpečení sítě, postupujte podle t
     **Název**: Port_3389 </br>
     **Port**: 3389 </br>
     **Protokol**: TCP </br>
-    **Zdroj**: žádné </br>
-    **Cíle**: žádné </br>
+    **Zdroj**: Všechny </br>
+    **Cíle**: Všechny </br>
     **Akce**: Povolit </br>
 
 Pokud určíte zdrojovou IP adresu, toto nastavení umožní provoz pouze z konkrétní IP adresu nebo rozsah IP adres pro připojení k virtuálnímu počítači. Ujistěte se, že počítač, který používáte ke spuštění relace protokolu RDP je v rozsahu.

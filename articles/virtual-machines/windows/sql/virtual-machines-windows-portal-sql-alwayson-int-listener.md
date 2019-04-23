@@ -15,11 +15,11 @@ ms.workload: iaas-sql-server
 ms.date: 02/16/2017
 ms.author: mikeray
 ms.openlocfilehash: 3b90ae3e9808b22b6d6c41e3ac11bec0293bd4bf
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58107878"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60326058"
 ---
 # <a name="configure-a-load-balancer-for-an-always-on-availability-group-in-azure"></a>Konfigurace nástroje pro vyrovnávání zatížení pro skupinu dostupnosti AlwaysOn v Azure
 Tento článek vysvětluje, jak vytvořit nástroj pro vyrovnávání zatížení pro skupinu dostupnosti AlwaysOn SQL serveru ve službě Azure virtual machines, které jsou spuštěny pomocí Azure Resource Manageru. Skupině dostupnosti vyžaduje nástroj pro vyrovnávání zatížení, pokud jsou instance systému SQL Server na virtuálních počítačích Azure. Nástroje pro vyrovnávání zatížení ukládá IP adresu pro naslouchací proces skupiny dostupnosti. V případě skupiny dostupnosti pokrývá více oblastí, musí každá oblast nástroj pro vyrovnávání zatížení.
@@ -63,7 +63,7 @@ Nejprve vytvořte nástroj pro vyrovnávání zatížení.
 
 5. V **vytvořit nástroj pro vyrovnávání zatížení** dialogové okno nástroje pro vyrovnávání zatížení nakonfigurujte následujícím způsobem:
 
-   | Nastavení | Hodnota |
+   | Nastavení | Value |
    | --- | --- |
    | **Název** |Textový název, který představuje nástroj pro vyrovnávání zatížení. Například **sqlLB**. |
    | **Typ** |**Interní**: Většina implementací pomocí interního nástroje, které umožňuje aplikacím v rámci stejné virtuální síti připojit ke skupině dostupnosti.  </br> **Externí**: Umožňuje aplikacím pro připojení ke skupině dostupnosti prostřednictvím veřejného Internetu. |
@@ -109,7 +109,7 @@ Sonda definuje, jak Azure ověří, které z instance systému SQL Server aktuá
 
 3. Konfigurace testu na **přidat test** okno. Konfigurace testu, použijte následující hodnoty:
 
-   | Nastavení | Hodnota |
+   | Nastavení | Value |
    | --- | --- |
    | **Název** |Textový název, který představuje sondy. Například **SQLAlwaysOnEndPointProbe**. |
    | **Protokol** |**TCP** |
@@ -135,7 +135,7 @@ Pravidla Vyrovnávání zatížení nakonfigurovat, jak nástroj pro vyrovnává
 
 3. Na **pravidla Vyrovnávání zatížení přidat** okně konfigurovat pravidlo Vyrovnávání zatížení. Použijte následující nastavení: 
 
-   | Nastavení | Hodnota |
+   | Nastavení | Value |
    | --- | --- |
    | **Název** |Textový název, který představuje pravidla Vyrovnávání zatížení. Například **SQLAlwaysOnEndPointListener**. |
    | **Protokol** |**TCP** |
@@ -221,7 +221,7 @@ Chcete-li přidat IP adresu nástroji pro vyrovnávání zatížení pomocí web
 
 7. Přidáte sondu stavu pomocí následujících nastavení:
 
-   |Nastavení |Hodnota
+   |Nastavení |Value
    |:-----|:----
    |**Název** |Název pro identifikaci sondy.
    |**Protokol** |TCP
@@ -235,7 +235,7 @@ Chcete-li přidat IP adresu nástroji pro vyrovnávání zatížení pomocí web
 
 10. Konfigurace nové pravidlo s použitím následujícího nastavení Vyrovnávání zatížení:
 
-    |Nastavení |Hodnota
+    |Nastavení |Value
     |:-----|:----
     |**Název** |Název pro identifikaci pravidlo Vyrovnávání zatížení. 
     |**Front-endové IP adresy** |Vyberte IP adresu, kterou jste vytvořili. 
@@ -246,7 +246,7 @@ Chcete-li přidat IP adresu nástroji pro vyrovnávání zatížení pomocí web
     |**Sonda stavu** |Zvolte test, který jste vytvořili.
     |**Trvalost relace** |Žádný
     |**Časový limit nečinnosti (minuty)** |Výchozí (4)
-    |**Plovoucí IP adresa (přímá odpověď ze serveru vrácené)** | Povoleno
+    |**Plovoucí IP adresa (přímá odpověď ze serveru vrácené)** | Enabled
 
 ### <a name="configure-the-availability-group-to-use-the-new-ip-address"></a>Konfigurace skupiny dostupnosti používat novou IP adresu
 
@@ -284,7 +284,7 @@ Pokud skupinu dostupnosti se účastní distribuované skupiny dostupnosti, nás
 
 1. Vytvořte pravidlo s tímto nastavením Vyrovnávání zatížení:
 
-   |Nastavení |Hodnota
+   |Nastavení |Value
    |:-----|:----
    |**Název** |Název pro identifikaci pravidlo Vyrovnávání zatížení pro distribuované skupině dostupnosti. 
    |**Front-endové IP adresy** |Pomocí stejné IP adresy front-endu jako skupiny dostupnosti.
@@ -295,7 +295,7 @@ Pokud skupinu dostupnosti se účastní distribuované skupiny dostupnosti, nás
    |**Sonda stavu** |Zvolte test, který jste vytvořili.
    |**Trvalost relace** |Žádný
    |**Časový limit nečinnosti (minuty)** |Výchozí (4)
-   |**Plovoucí IP adresa (přímá odpověď ze serveru vrácené)** | Povoleno
+   |**Plovoucí IP adresa (přímá odpověď ze serveru vrácené)** | Enabled
 
 Tento postup opakujte pro nástroj pro vyrovnávání zatížení na další, které jsou součástí skupiny dostupnosti distribuované skupiny dostupnosti.
 

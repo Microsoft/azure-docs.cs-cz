@@ -11,11 +11,11 @@ ms.date: 09/11/2018
 ms.author: davidmu
 ms.subservice: B2C
 ms.openlocfilehash: 56534589c89fefb38f206f1c57da7996ae43e81d
-ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56428495"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60316438"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-facebook-account-using-azure-active-directory-b2c"></a>Nastavení registrace a přihlášení pomocí účtu sítě Facebook pomocí Azure Active Directory B2C
 

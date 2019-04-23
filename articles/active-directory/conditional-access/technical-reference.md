@@ -12,11 +12,11 @@ manager: daveba
 ms.reviewer: spunukol
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 0e87a4c7ebafd8ddcfa54c87b189316b0ce98b0f
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59358996"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60301212"
 ---
 # <a name="azure-active-directory-conditional-access-settings-reference"></a>Odkaz nastavení podmíněného přístupu Azure Active Directory
 
@@ -142,7 +142,7 @@ Toto rozšíření automaticky nasazovat do prohlížečů Chrome, vytvořte ná
 |    |    |
 | --- | --- |
 | Cesta | HKEY_LOCAL_MACHINE\Software\Policies\Google\Chrome\ExtensionInstallForcelist |
-| Název | 1 |
+| Name | 1 |
 | Type | REG_SZ (String) |
 | Data | ppnbnpeolgkicgegkbkbjmhlideopiji; https://clients2.google.com/service/update2/crx |
 
@@ -151,7 +151,7 @@ Chrome podpoře v **Windows 8.1 a 7**, vytvořte následující klíč registru:
 |    |    |
 | --- | --- |
 | Cesta | HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Google\Chrome\AutoSelectCertificateForUrls |
-| Název | 1 |
+| Name | 1 |
 | Type | REG_SZ (String) |
 | Data | {"vzor": "https://device.login.microsoftonline.comfiltr","": {"VYSTAVITELE": {"CN": "MS-organizace přístup"}}} |
 

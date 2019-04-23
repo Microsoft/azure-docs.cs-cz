@@ -12,11 +12,11 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 2d5a196af8ee6a7d41833185136a76255be4082a
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58371739"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60358951"
 ---
 # <a name="how-to-require-two-step-verification-for-a-user"></a>Jak vyžadovat dvoustupňové ověřování pro uživatele
 
@@ -44,7 +44,7 @@ Uživatelské účty v Azure Multi-Factor Authentication mají následující t�
 | Status | Popis | Neprohlížečové aplikace, které jsou ovlivněny | Vliv prohlížečových aplikací | Vliv na moderní ověřování |
 |:---:|:---:|:---:|:--:|:--:|
 | Zakázáno |Výchozí stav nového uživatele není zaregistrované v Azure MFA. |Ne |Ne |Ne |
-| Povoleno |Uživatel byl zaregistrován v Azure MFA, ale nebyla zaregistrována. Zobrazí se výzva k registraci při příštím přihlášení. |Ne.  Nadále fungovat až do dokončení procesu registrace. | Ano. Po vypršení platnosti relace, je požadována registrace Azure MFA.| Ano. Po vypršení platnosti přístupového tokenu, je požadována registrace Azure MFA. |
+| Enabled |Uživatel byl zaregistrován v Azure MFA, ale nebyla zaregistrována. Zobrazí se výzva k registraci při příštím přihlášení. |Ne.  Nadále fungovat až do dokončení procesu registrace. | Ano. Po vypršení platnosti relace, je požadována registrace Azure MFA.| Ano. Po vypršení platnosti přístupového tokenu, je požadována registrace Azure MFA. |
 | Vynuceno |Uživatel byl zaregistrován a dokončil proces registrace pro Azure MFA. |Ano. Aplikace potřebujete hesla aplikace. |Ano. Azure MFA je povinný při přihlášení. | Ano. Azure MFA je povinný při přihlášení. |
 
 Stav uživatele odráží, jestli správce zaregistroval je v Azure MFA a určuje, zda jsou dokončit proces registrace.
@@ -82,7 +82,7 @@ Po povolení uživatelů je upozorněte e-mailem. Sdělte jim, že budete vyzvá
 
 Chcete-li změnit stav uživatele pomocí [Azure AD PowerShell](/powershell/azure/overview), změňte `$st.State`. Existují tři možné stavy:
 
-* Povoleno
+* Enabled
 * Vynuceno
 * Zakázáno  
 

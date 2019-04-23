@@ -11,11 +11,11 @@ ms.topic: article
 ms.date: 08/23/2018
 tags: connectors
 ms.openlocfilehash: 7785d1788e8d5e9b432a8189345f293ebf05ef7c
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58878396"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60313964"
 ---
 # <a name="manage-ibm-db2-resources-with-azure-logic-apps"></a>IBM DB2 prostředky spravovat pomocí Azure Logic Apps
 
@@ -29,7 +29,7 @@ Konektor DB2 zahrnuje klienta společnosti Microsoft, který komunikuje přes s�
 
 Konektor IBM DB2 podporuje tyto platformy IBM DB2 a verze IBM DB2 kompatibilní produktů, jako je například dashDB IBM Bluemix, které podporují distribuované relační databáze architektury (DRDA) SQL přístup správce (SQLAM) verze 10 a 11:
 
-| Platforma | Verze | 
+| Platforma | Version | 
 |----------|---------|
 | IBM DB2 pro z/OS | 11.1, 10.1 |
 | IBM DB2 pro mi | 7.3, 7.2, 7.1 |

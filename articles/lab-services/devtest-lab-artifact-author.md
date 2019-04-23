@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 07/11/2018
 ms.author: spelluru
 ms.openlocfilehash: 0d1e269a1818f013bc14842bc541216d7f31bc84
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58116822"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60311121"
 ---
 # <a name="create-custom-artifacts-for-your-devtest-labs-virtual-machine"></a>Při vytváření vlastních artefaktů pro virtuální počítač DevTest Labs
 

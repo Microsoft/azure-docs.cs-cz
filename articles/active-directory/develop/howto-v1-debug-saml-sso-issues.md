@@ -17,17 +17,17 @@ ms.custom: aaddev
 ms.reviewer: luleon, hirsin, smalser
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 9fcc6cb40d83c06a1c9f0a97c72565464e74e655
-ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58336066"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60299644"
 ---
 # <a name="debug-saml-based-single-sign-on-to-applications-in-azure-active-directory"></a>Ladění založené na SAML jednotného přihlašování k aplikacím v Azure Active Directory
 
 Zjistěte, jak najít a opravit [jednotného přihlašování](../manage-apps/what-is-single-sign-on.md) problémy pro aplikace v Azure Active Directory (Azure AD), které podporují [zabezpečení kontrolního výrazu SAML (Markup Language) 2.0](https://en.wikipedia.org/wiki/Security_Assertion_Markup_Language). 
 
-## <a name="before-you-begin"></a>Před zahájením
+## <a name="before-you-begin"></a>Než začnete
 
 Doporučujeme vám však nainstalovat [Moje aplikace zabezpečené přihlašování rozšíření](../user-help/my-apps-portal-end-user-troubleshoot.md#im-having-trouble-installing-the-my-apps-secure-sign-in-extension). Toto rozšíření prohlížeče umožňuje snadno získat požadavek SAML a informace odpověď SAML, které potřebujete k řešení problémů s jednotným přihlašováním. V případě, že nemůžete instalovat rozšíření, tento článek ukazuje, jak vyřešit problémy s i bez nainstalované rozšíření.
 

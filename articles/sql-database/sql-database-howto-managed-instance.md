@@ -11,13 +11,13 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein, carlr
 manager: craigg
-ms.date: 01/25/2019
-ms.openlocfilehash: 93be58ac231ff2b88c6618c549c9d1975977b91f
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: HT
+ms.date: 04/16/2019
+ms.openlocfilehash: 886f06e8640891ac09d1e4624335a7bfebcd3def
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59799146"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60340787"
 ---
 # <a name="how-to-use-a-managed-instance-in-azure-sql-database"></a>Jak používat ve službě Azure SQL Database managed instance
 
@@ -36,7 +36,7 @@ V tomto článku najdete různé průvodce, skripty a vysvětlení, které vám 
 - [Konfigurace stávající virtuální síť a podsíť pro spravovanou instanci](sql-database-managed-instance-configure-vnet-subnet.md) – Pokud chcete provést konfiguraci stávající virtuální síť a podsíť k nasazení spravované instance v rámci, tady najdete skript, který kontroluje, [požadavky na síťovou](sql-database-managed-instance-connectivity-architecture.md#network-requirements) a ujistěte se nakonfiguruje podle požadavků vaší podsítě.
 - [Konfigurace vlastního DNS](sql-database-managed-instance-custom-dns.md) – je potřeba nakonfigurovat vlastní DNS, pokud chcete přístup k externím prostředkům ve vlastních doménách z vaší spravované instance přes odkazovaný server db profily e-mailu.
 - [Synchronizace konfigurace sítě](sql-database-managed-instance-sync-network-configuration.md) – se může stát, že i když jste [vaší aplikace integrované s Azure Virtual Network](../app-service/web-sites-integrate-with-vnet.md), můžete&#39;t navázat připojení k managed instance. Jednou z věcí, které můžete zkusit se aktualizovat konfiguraci sítě pro váš plán služby.
-- [Vyhledat IP adresu koncového bodu správy](sql-database-managed-instance-find-management-endpoint-ip-address.md) – spravovaná instance používá veřejného koncového bodu správy – pouze pro účely. Můžete určit IP adresu koncového bodu správy pomocí skriptů je popsáno zde.
+- [Vyhledat IP adresu koncového bodu správy](sql-database-managed-instance-find-management-endpoint-ip-address.md) – spravovaná instance používá veřejný koncový bod pro účely správy. Můžete určit IP adresu koncového bodu správy pomocí skriptů je popsáno zde.
 - [Ověření integrované firewall ochrany](sql-database-managed-instance-management-endpoint-verify-built-in-firewall.md) – spravovaná instance je pak chráněn rozhraním integrovanou bránu firewall, které umožní provoz pouze nezbytné porty. Můžete zkontrolovat a ověření integrované brány firewall pravidla pomocí skriptů je popsáno v této příručce.
 - [Připojení aplikací](sql-database-managed-instance-connect-app.md) – spravovaná instance je umístěn ve vaší vlastní privátní virtuální sítě Azure s privátní IP adresu. Další informace o různých schématech připojení aplikací k vaší spravované instance.
 

@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 09/21/2018
 ms.author: aschhab
 ms.openlocfilehash: b90e87310bf6dec505176b7f4d4cb9e15ac57c20
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55891806"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60307773"
 ---
 # <a name="service-bus-messaging-exceptions"></a>Výjimky zasílání zpráv Service Bus
 Tento článek uvádí některé výjimky generované zasílání zpráv rozhraní API Microsoft Azure Service Bus. Tento odkaz se může změnit, proto zkontrolujte novinky.

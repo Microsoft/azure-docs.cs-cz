@@ -13,11 +13,11 @@ ms.topic: conceptual
 ms.date: 05/10/2018
 ms.author: mbaldwin
 ms.openlocfilehash: 0f8aafce4c4feeed742504db84664e4dfd472ca6
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59787545"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60304927"
 ---
 # <a name="azure-key-vault-throttling-guidance"></a>Doprovodné materiály k omezování služby Azure Key Vault
 

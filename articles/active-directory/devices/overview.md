@@ -18,11 +18,11 @@ ms.author: joflore
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: c5b736c75f65fa5dfc2f3132a43ac0485bc58d19
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58520305"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60296477"
 ---
 # <a name="what-is-device-management-in-azure-active-directory"></a>Co je správa zařízení v Azure Active Directory?
 

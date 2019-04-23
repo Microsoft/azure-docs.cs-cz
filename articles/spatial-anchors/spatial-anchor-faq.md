@@ -9,13 +9,13 @@ ms.date: 02/24/2019
 ms.topic: overview
 ms.service: azure-spatial-anchors
 ms.openlocfilehash: d38f7a22d90c62b245e49e6bdb0a3041c4f1023f
-ms.sourcegitcommit: 68ba7916a6ff8dd40f5037e57059733d74374954
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/24/2019
-ms.locfileid: "56753589"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60303289"
 ---
-# <a name="frequently-asked-questions-about-azure-spatial-anchors"></a>Nejčastější dotazy ohledně Azure prostorových kotvy
+# <a name="frequently-asked-questions-about-azure-spatial-anchors"></a>Nejčastější dotazy k Azure Spatial Anchors
 
 Azure prostorových kotvy je spravovaná Cloudová služba a platformu pro vývojáře, které se dají více uživatelů, prostorově vědět smíšené reality prostředí napříč HoloLens, iOS a androidem.
 
@@ -85,7 +85,7 @@ Datum obecné dostupnosti (GA) bude brzy oznámena.
 
 **Odpověď:** Můžete vytvořit účet Azure prostorových kotvy dnes v oblasti Azure – Východ USA 2. To znamená, že oba výpočty a úložiště, které běží na ní takové tuto službu jsou v této oblasti. Ale nutné dodat, neexistují žádná omezení toho, kde se nachází vaši klienti. V budoucnu ještě rozšíříme regionální dostupnosti služby pro všechny primární oblasti Azure.
 
-**Otázka: Poplatky za Azure prostorových kotvy? Jste někdy účtovat?**
+**Otázka: Je služba Azure Spatial Anchors zpoplatněná? Jste někdy účtovat?**
 
 **Odpověď:** Můžete najít podrobnosti o cenách služby ve verzi Preview na naše [stránce s cenami](https://azure.microsoft.com/pricing/details/spatial-anchors/).
 

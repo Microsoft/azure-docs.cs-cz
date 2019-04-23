@@ -11,11 +11,11 @@ ms.topic: tutorial
 ms.service: active-directory
 ms.subservice: B2C
 ms.openlocfilehash: 90a6a88ff0dc5aab1163e471b24cd1d00e548a1b
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55755114"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60315928"
 ---
 # <a name="tutorial-grant-access-to-a-nodejs-web-api-from-a-desktop-app-using-azure-active-directory-b2c"></a>Kurz: Poskytnutí přístupu k webovému rozhraní API Node.js z desktopové aplikace pomocí Azure Active Directory B2C
 
@@ -24,7 +24,7 @@ V tomto kurzu se dozvíte, jak volat prostředek webového rozhraní API Node.js
 V tomto kurzu se naučíte:
 
 > [!div class="checklist"]
-> * Přidání webového rozhraní API aplikaci
+> * Přidání aplikace webového rozhraní API
 > * Konfigurace oborů pro webové rozhraní API
 > * Udělení oprávnění k webovému rozhraní API
 > * Ukázku aktualizovat, a k používání aplikace
@@ -35,7 +35,7 @@ V tomto kurzu se naučíte:
 
 Dokončete kroky a požadavky [kurzu: Povolení aplikace klasické pracovní plochy ověřování účtů pomocí Azure Active Directory B2C](active-directory-b2c-tutorials-desktop-app.md).
 
-## <a name="add-a-web-api-application"></a>Přidání webového rozhraní API aplikaci
+## <a name="add-a-web-api-application"></a>Přidání aplikace webového rozhraní API
 
 Webové rozhraní API prostředky musí být zaregistrovaní ve vašem tenantovi předtím, než může přijímat a reagovat na požadavky na chráněný prostředek v klientských aplikacích, které se přístupový token. 
 
@@ -120,7 +120,7 @@ Desktopová aplikace odešle požadavek do webového rozhraní API k a získá o
 V tomto kurzu jste se naučili:
 
 > [!div class="checklist"]
-> * Přidání webového rozhraní API aplikaci
+> * Přidání aplikace webového rozhraní API
 > * Konfigurace oborů pro webové rozhraní API
 > * Udělení oprávnění k webovému rozhraní API
 > * Ukázku aktualizovat, a k používání aplikace

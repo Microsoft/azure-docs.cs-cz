@@ -18,11 +18,11 @@ ms.author: joflore
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 516a2d3b0f81bcef1ed636be9d1da9a270cc7069
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58520016"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60297330"
 ---
 # <a name="how-to-manage-devices-using-the-azure-portal"></a>Správa zařízení pomocí webu Azure portal
 
@@ -246,7 +246,7 @@ Zobrazení seznamu můžete upravit kliknutím na **Sloupce** na panelu nástroj
 
 Abyste omezili zobrazovaná data na úroveň, která vám vyhovuje, můžete filtrovat data přihlašování s využitím následujících polí:
 
-- Kategorie
+- Category
 - Typ prostředku aktivity
 - Aktivita
 - Rozsah dat

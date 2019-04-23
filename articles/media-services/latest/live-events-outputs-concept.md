@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 03/30/2019
 ms.author: juliako
 ms.openlocfilehash: 00dab8381c26a6331dd325eacd4a550892bd3411
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: MT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59495169"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60325829"
 ---
 # <a name="live-events-and-live-outputs"></a>Živé události a výstupy
 
@@ -34,7 +34,7 @@ A [živá událost](https://docs.microsoft.com/rest/api/media/liveevents) může
 
 ### <a name="pass-through"></a>Průchod
 
-![Předávací](./media/live-streaming/pass-through.svg)
+![Průchozí](./media/live-streaming/pass-through.svg)
 
 Při použití předávané **živé události** se spoléháte na váš místní kodér pro kódování v reálném čase, že vygeneruje stream videa s několika přenosovými rychlostmi a odešle ho jako informační kanál příspěvku do živé události (pomocí protokolu RTMP nebo fragmentovaného MP4). Živá událost potom přenese příchozí streamy videa bez dalšího zpracování. Taková předávací živá událost je optimalizovaná pro dlouho běžící živé události nebo lineární živé streamování 24×365. Při vytváření tohoto typu živé události zadejte None (LiveEventEncodingType.None).
 
@@ -48,7 +48,7 @@ Podívejte se na příklad kódu .NET v [MediaV3LiveApp](https://github.com/Azur
 
 ### <a name="live-encoding"></a>Kódování v reálném čase  
 
-![živé kódování](./media/live-streaming/live-encoding.svg)
+![Kódování v reálném čase](./media/live-streaming/live-encoding.svg)
 
 Při použití kódování v reálném čase pomocí Media Services nakonfigurujte místní kodér pro kódování v reálném čase tak, aby jako informační kanál příspěvku do živé události odesílal video s jednou přenosovou rychlostí (pomocí protokolu RTMP nebo fragmentovaného MP4). Živá událost tento příchozí stream s jednou přenosovou rychlostí zakóduje do [streamu videa s několika přenosovými rychlostmi](https://en.wikipedia.org/wiki/Adaptive_bitrate_streaming) a zpřístupní ho k doručení na zařízení pro přehrávání přes protokoly, jako jsou MPEG-DASH, HLS a Smooth Streaming. Při vytváření tohoto typu živé události jako typ kódování zadejte **Standard** (LiveEventEncodingType.Standard).
 

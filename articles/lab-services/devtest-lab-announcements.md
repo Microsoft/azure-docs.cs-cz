@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/17/2018
 ms.author: spelluru
-ms.openlocfilehash: fca78c86849ef8210bb3aaeb8ad96e1fba3d7c05
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 2fe31271fa84bc4170bd431a4aadbcafc0df9086
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57542484"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60311478"
 ---
 # <a name="post-an-announcement-to-a-lab-in-azure-devtest-labs"></a>Odeslání oznámení do testovacího prostředí ve službě Azure DevTest Labs
 
@@ -37,8 +37,8 @@ Funkce oznámení je určena pro použití dočasného oznámení.  Můžete sna
 
 1. Přihlaste se k webu [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040).
 1. V případě potřeby vyberte **všechny služby**a pak vyberte **DevTest Labs** ze seznamu. (Testovací prostředí může již zobrazený na řídicím panelu v části **všechny prostředky**).
-1. V seznamu testovacích prostředí vyberte prostředí, ve kterém chcete odeslat oznámení.  
-1. Cvičení **přehled** vyberte **konfigurace a zásad**.  
+1. V seznamu testovacích prostředí vyberte prostředí, ve kterém chcete odeslat oznámení.
+1. Cvičení **přehled** vyberte **konfigurace a zásad**.
 
     ![Konfigurace a zásad tlačítko](./media/devtest-lab-announcements/devtestlab-config-and-policies.png)
 
@@ -83,7 +83,7 @@ Pokud už nechcete zobrazit toto oznámení uživatelům testovacího prostřed�
 [!INCLUDE [devtest-lab-try-it-out](../../includes/devtest-lab-try-it-out.md)]
 
 ## <a name="azure-resource-manager-template"></a>Šablona Azure Resource Manageru
-Oznámení můžete zadat jako součást šablony Azure Resource Manageru, jak je znázorněno v následujícím příkladu: 
+Oznámení můžete zadat jako součást šablony Azure Resource Manageru, jak je znázorněno v následujícím příkladu:
 
 ```json
 {
@@ -119,7 +119,7 @@ Oznámení můžete zadat jako součást šablony Azure Resource Manageru, jak j
                 "support": {
                     "markdown": "",
                     "enabled": "Enabled"
-                }                
+                }
             },
             "resources": [
                 {
@@ -167,4 +167,4 @@ Oznámení můžete zadat jako součást šablony Azure Resource Manageru, jak j
 
 ## <a name="next-steps"></a>Další postup
 * Pokud změníte nebo nastavte zásady testovacího prostředí, můžete chtít odeslat oznámení informovat uživatele. [Nastavení zásad a plánů](devtest-lab-set-lab-policy.md) poskytuje informace o použití omezení a pravidla týkající se celém předplatném pomocí vlastních zásad.
-* Prozkoumejte [Galerie šablon QuickStart pro Azure Resource Manageru DevTest Labs](https://github.com/Azure/azure-devtestlab/tree/master/Samples).
+* Prozkoumejte [Galerie šablon QuickStart pro Azure Resource Manageru DevTest Labs](https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/QuickStartTemplates).

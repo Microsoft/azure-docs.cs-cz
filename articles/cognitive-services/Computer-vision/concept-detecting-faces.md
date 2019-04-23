@@ -1,22 +1,22 @@
 ---
 title: Rozpoznání tváře - pro počítačové zpracování obrazu
 titleSuffix: Azure Cognitive Services
-description: Koncepty související s funkce rozpoznávání tváře z rozhraní API pro počítačové zpracování obrazu.
+description: Další koncepty související s funkce rozpoznávání tváře z rozhraní API pro počítačové zpracování obrazu.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: conceptual
-ms.date: 02/11/2019
+ms.date: 04/17/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 1056b8be113d56342aea8f83d5325737f7ecb93b
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
+ms.openlocfilehash: 699192aba87bb009d7dbddddcc9579883bb71db9
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56308447"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60368105"
 ---
 # <a name="face-detection-with-computer-vision"></a>Rozpoznávání tváře se pro počítačové zpracování obrazu
 

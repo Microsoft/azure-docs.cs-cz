@@ -15,12 +15,12 @@ ms.date: 02/02/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: cab5b9317102a86dd75d2cb7e5a820cf64d2e831
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: b808654baded5bbe721866441a8d1115eff7bcaa
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57535542"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60308870"
 ---
 # <a name="view-activity-logs-for-rbac-changes-to-azure-resources"></a>Zobrazení protokolů aktivit se změny prostředků Azure RBAC
 
@@ -43,7 +43,7 @@ Chcete-li zobrazit protokoly aktivit pomocí webu Azure portal je nejjednodušš
 
 Protokol aktivit na portálu má několik filtrů. Tady jsou filtry související RBAC:
 
-|Filtr  |Hodnota  |
+|Filtr  |Value  |
 |---------|---------|
 |Kategorie události     | <ul><li>Správa</li></ul>         |
 |Operace     | <ul><li>Vytvořit přiřazení role</li> <li>Odstranit přiřazení role</li> <li>Vytvořit nebo aktualizovat vlastní definici role</li> <li>Odstranit definice rolí</li></ul>      |
@@ -66,7 +66,7 @@ Get-AzLog -StartTime (Get-Date).AddDays(-7) | Where-Object {$_.Authorization.Act
 Tento příkaz vypíše všechny změny definice rolí ve skupině prostředků za posledních sedm dnů:
 
 ```azurepowershell
-Get-AzLog -ResourceGroupName pharma-sales-projectforecast -StartTime (Get-Date).AddDays(-7) | Where-Object {$_.Authorization.Action -like 'Microsoft.Authorization/roleDefinitions/*'}
+Get-AzLog -ResourceGroupName pharma-sales -StartTime (Get-Date).AddDays(-7) | Where-Object {$_.Authorization.Action -like 'Microsoft.Authorization/roleDefinitions/*'}
 ```
 
 Tento příkaz jsou uvedeny všechny přiřazení role a role definition změny v rámci předplatného za posledních sedm dnů a zobrazí výsledky v seznamu:
@@ -88,7 +88,7 @@ EventTimestamp          : 4/20/2018 9:18:05 PM
 $_.Authorization.Action : Microsoft.Authorization/roleAssignments/write
 Properties              :
                           requestbody    : {"Id":"22222222-2222-2222-2222-222222222222","Properties":{"PrincipalId":"33333333-3333-3333-3333-333333333333","RoleDefinitionId":"/subscriptions/00000000-0000-0000-0000-000000000000/providers
-                          /Microsoft.Authorization/roleDefinitions/b24988ac-6180-42a0-ab88-20f7382dd24c","Scope":"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/pharma-sales-projectforecast"}}
+                          /Microsoft.Authorization/roleDefinitions/b24988ac-6180-42a0-ab88-20f7382dd24c","Scope":"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/pharma-sales"}}
 
 ```
 
@@ -99,7 +99,7 @@ Chcete-li zobrazit protokoly aktivit pomocí Azure CLI, použijte [az monitor pr
 Tento příkaz vypíše protokoly aktivit ve skupině prostředků od počáteční čas:
 
 ```azurecli
-az monitor activity-log list --resource-group pharma-sales-projectforecast --start-time 2018-04-20T00:00:00Z
+az monitor activity-log list --resource-group pharma-sales --start-time 2018-04-20T00:00:00Z
 ```
 
 Tento příkaz vypíše protokolů aktivit pro poskytovatele prostředků autorizace od počáteční čas:
@@ -108,7 +108,7 @@ Tento příkaz vypíše protokolů aktivit pro poskytovatele prostředků autori
 az monitor activity-log list --resource-provider "Microsoft.Authorization" --start-time 2018-04-20T00:00:00Z
 ```
 
-## <a name="azure-monitor-logs"></a>Protokoly Azure monitoru
+## <a name="azure-monitor-logs"></a>Protokoly služby Azure Monitor
 
 [Protokoly Azure monitoru](../log-analytics/log-analytics-overview.md) je jiný nástroj, můžete použít ke shromažďování a analýze RBAC změny provedené u všech vašich prostředků Azure. Protokoly Azure monitoru má následující výhody:
 

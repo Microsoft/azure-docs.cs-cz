@@ -9,18 +9,18 @@ ms.date: 01/23/2017
 ms.author: muralikk
 ms.subservice: common
 ms.openlocfilehash: b80ba1cbe168270ec591bdd38859408eae387bbf
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58311709"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60320580"
 ---
 # <a name="sample-workflow-to-prepare-hard-drives-for-an-import-job"></a>Ukázkový pracovní postup pro přípravu pevných disků pro úlohu importu
 Toto téma vás provede kompletní proces přípravy disků pro úlohu importu.  
   
 Tento příklad importuje následující data do účtu úložiště Azure okno s názvem `mystorageaccount`:  
   
-|Umístění|Popis|  
+|Location|Popis|  
 |--------------|-----------------|  
 |H:\Video|Kolekce videa, 5 TB celkové.|  
 |H:\Photo|Kolekce fotografií, celkem 30 GB.|  
@@ -44,7 +44,7 @@ V dalším kroku výpočetní můžete určit, kolik pevné disky jsou potřeba,
   
 V tomto příkladu by měla stačit dva 3 TB pevné disky. Nicméně, protože zdrojový adresář `H:\Video` má 5 TB dat a kapacita jednu pevném disku je pouze 3 TB, je nutné přerušit `H:\Video` do menších dva adresáře: `H:\Video1` a `H:\Video2`, před spuštěním Microsoft Azure Nástroje pro import/Export. Tento krok provede následující adresáře zdrojových souborů:  
   
-|Umístění|Velikost|Cílový virtuální adresář nebo objekt blob|  
+|Location|Velikost|Cílový virtuální adresář nebo objekt blob|  
 |--------------|----------|-------------------------------------------|  
 |H:\Video1|2,5 TB|https:\//mystorageaccount.blob.core.windows.net/video|  
 |H:\Video2|2,5 TB|https:\//mystorageaccount.blob.core.windows.net/video|  

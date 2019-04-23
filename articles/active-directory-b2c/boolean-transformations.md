@@ -11,11 +11,11 @@ ms.date: 09/10/2018
 ms.author: davidmu
 ms.subservice: B2C
 ms.openlocfilehash: fea0f8c2c2bcab94202916594e66514f2ec87396
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55180122"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60314623"
 ---
 # <a name="boolean-claims-transformations"></a>Logická hodnota deklarace identity transformace
 

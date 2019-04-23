@@ -7,17 +7,17 @@ ms.subservice: performance
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
-author: juliemsft
-ms.author: jrasnick
+author: stevestein
+ms.author: sstein
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 03/20/2019
-ms.openlocfilehash: c6dc49204c0a7e1cb0d1116e29746eed2fe52f8d
-ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
-ms.translationtype: MT
+ms.date: 04/18/2019
+ms.openlocfilehash: 471ded9cd94623929630155f1a3c613bf00576a8
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58286257"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60331812"
 ---
 # <a name="scale-single-database-resources-in-azure-sql-database"></a>Škálování izolované databáze prostředků ve službě Azure SQL Database
 
@@ -27,7 +27,7 @@ Tento článek popisuje, jak škálovat výpočetní a úložné prostředky dos
 > [!IMPORTANT]
 > Modul Azure PowerShell – Resource Manager je stále podporuje Azure SQL Database, ale všechny budoucí vývoj je Az.Sql modulu. Tyto rutiny najdete v části [AzureRM.Sql](https://docs.microsoft.com/powershell/module/AzureRM.Sql/). Argumenty pro příkazy v modulu Az a moduly AzureRm podstatně totožné.
 
-## <a name="change-compute-resources-vcores-or-dtus"></a>Změna výpočetní prostředky (virtuální jádra nebo Dtu)
+## <a name="change-compute-size-vcores-or-dtus"></a>Změnit velikost výpočty (jader nebo Dtu)
 
 Po počátečním výběru počet virtuálních jader a počet jednotek Dtu, můžete vertikálně izolovanou databázi směrem nahoru nebo dolů dynamicky na základě aktuálních zkušeností pomocí [webu Azure portal](sql-database-single-databases-manage.md#manage-an-existing-sql-database-server), [příkazů jazyka Transact-SQL](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current#examples-1), [ Prostředí PowerShell](/powershell/module/az.sql/set-azsqldatabase), [rozhraní příkazového řádku Azure](/cli/azure/sql/db#az-sql-db-update), nebo [rozhraní REST API](https://docs.microsoft.com/rest/api/sql/databases/update).
 
@@ -67,6 +67,37 @@ Latence změnit úroveň služby nebo změnit velikost výpočetních izolovanou
 > [!TIP]
 > Monitorování operací v průběhu najdete v tématu: [Správa operací pomocí rozhraní SQL API REST](https://docs.microsoft.com/rest/api/sql/operations/list), [správě operací pomocí rozhraní příkazového řádku](/cli/azure/sql/db/op), [sledování operací s použitím jazyka T-SQL](/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database) a tyto dva příkazy Powershellu: [Get-AzSqlDatabaseActivity](/powershell/module/az.sql/get-azsqldatabaseactivity) a [Stop-AzSqlDatabaseActivity](/powershell/module/az.sql/stop-azsqldatabaseactivity).
 
+### <a name="cancelling-service-tier-changes-or-compute-rescaling-operations"></a>Ruší se změny úrovně služby nebo výpočetní operace změny měřítka
+
+Úroveň služby změnit nebo výpočetní změny měřítka operace se dá zrušit.
+
+#### <a name="azure-portal"></a>portál Azure
+
+Na kartě s přehledem databáze, přejděte na **oznámení** a kliknutím na dlaždici, která probíhající operace:
+
+![Probíhající operaci](media/sql-database-single-database-scale/ongoing-operations.png)
+
+Pak klikněte na tlačítko s popiskem **zrušit tuto operaci**.
+
+![Zrušte probíhající operaci](media/sql-database-single-database-scale/cancel-ongoing-operation.png)
+
+#### <a name="powershell"></a>PowerShell
+
+Z příkazového řádku Powershellu se nastavit `$ResourceGroupName`, `$ServerName`, a `$DatabaseName`, a pak spusťte následující příkaz:
+
+```PowerShell
+$OperationName = (az sql db op list --resource-group $ResourceGroupName --server $ServerName --database $DatabaseName --query "[?state=='InProgress'].name" --out tsv)
+if(-not [string]::IsNullOrEmpty($OperationName))
+    {
+        (az sql db op cancel --resource-group $ResourceGroupName --server $ServerName --database $DatabaseName --name $OperationName)
+        "Operation " + $OperationName + " has been canceled"
+    }
+    else
+    {
+        "No service tier change or compute rescaling operation found"
+    }
+```
+
 ### <a name="additional-considerations-when-changing-service-tier-or-rescaling-compute-size"></a>Další aspekty při změně služby velikost výpočetní vrstvě nebo změny měřítka
 
 - Pokud provádíte upgrade na vyšší úroveň služby nebo vypočítat velikost, maximální velikost databáze se nezvyšuje, pokud explicitně neurčíte větší velikost (maxsize).
@@ -77,7 +108,7 @@ Latence změnit úroveň služby nebo změnit velikost výpočetních izolovanou
 - Nabídky služeb pro obnovení se u různých úrovní služeb liší. Pokud přecházíte na **základní** vrstvy, je zkrátit období uchovávání záloh. Zobrazit [záloh Azure SQL Database](sql-database-automated-backups.md).
 - Nové vlastnosti databáze se nepoužijí, dokud nebudou změny dokončeny.
 
-### <a name="billing-during-rescaling"></a>Fakturace během změny měřítka
+### <a name="billing-during-compute-rescaling"></a>Během změny měřítka výpočetní fakturace
 
 Se vám účtovat každá hodina existence databáze pomocí nejvyšší úroveň služby a vypočítat velikost, která během této hodiny využívalo, bez ohledu na využití nebo na to, jestli byl databáze aktivní kratší dobu než hodinu. Například pokud vytvoření izolované databáze a po pěti minutách ji odstraníte vyúčtování projeví účtovat jedna hodina používání databáze.
 
@@ -102,9 +133,9 @@ Se vám účtovat každá hodina existence databáze pomocí nejvyšší úrove�
 > [!IMPORTANT]
 > Za určitých okolností budete muset zmenšit databázi uvolnění nevyužívaného místa. Další informace najdete v tématu [spravovat místo souborů ve službě Azure SQL Database](sql-database-file-space-management.md).
 
-## <a name="dtu-based-purchasing-model-limitations-of-p11-and-p15-when-the-maximum-size-greater-than-1-tb"></a>Nákupní model založený na DTU: Omezení pro P11 a P15 při maximální velikosti větší než 1 TB
+## <a name="p11-and-p15-constraints-when-max-size-greater-than-1-tb"></a>P11 a P15 omezení při maximální velikosti větší než 1 TB
 
-Více než 1 TB úložiště na úrovni Premium je aktuálně k dispozici ve všech oblastech s výjimkou: Čína – východ, Čína – sever, Německo – střed, Německo – severovýchod, střed USA – Západ, oblastí pro úlohy ministerstva obrany USA a US Government centrální. V těchto oblastech je úložiště na úrovni Premium omezeno na 1 TB. Další informace najdete v tématu [aktuálních omezení pro P11 – P15](sql-database-single-database-scale.md#dtu-based-purchasing-model-limitations-of-p11-and-p15-when-the-maximum-size-greater-than-1-tb). Následující požadavky a omezení platí pro databáze P11 a P15 s maximální velikostí větší než 1 TB:
+Více než 1 TB úložiště na úrovni Premium je aktuálně k dispozici ve všech oblastech s výjimkou: Čína – východ, Čína – sever, Německo – střed, Německo – severovýchod, střed USA – Západ, oblastí pro úlohy ministerstva obrany USA a US Government centrální. V těchto oblastech je úložiště na úrovni Premium omezeno na 1 TB. Následující požadavky a omezení platí pro databáze P11 a P15 s maximální velikostí větší než 1 TB:
 
 - Maximální velikost databáze P11 nebo P15 byl někdy nastavený na hodnotu větší než 1 TB, potom můžete ho jenom obnovit nebo zkopírován do databáze P11 nebo P15.  Databázi lze následně měřítka velikosti různými výpočetními zadaná velikost místa přidělená v okamžiku stala operace není delší než maximální velikost omezení novou velikost výpočetních.
 - Pro scénáře aktivní geografickou replikaci:

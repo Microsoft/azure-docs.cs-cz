@@ -1,5 +1,5 @@
 ---
-title: Ukázky kódu pro Azure Active Directory | Dokumentace Microsoftu
+title: Ukázky kódu Azure Active Directory verze 1.0 | Dokumentace Microsoftu
 description: Index služby Azure Active Directory (koncový bod verze 1.0) obsahuje ukázky kódu, uspořádané podle scénáře.
 services: active-directory
 documentationcenter: dev-center-name
@@ -18,12 +18,12 @@ ms.author: celested
 ms.reviewer: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 64c199df2012e6ce3b3de5f34989cf5cbc135fdc
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: b7e88c672e72549d813971ce72fc7b85ee8619eb
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58101019"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60298528"
 ---
 # <a name="azure-active-directory-code-samples-v10-endpoint"></a>Ukázky kódu Azure Active Directory (koncový bod verze 1.0)
 

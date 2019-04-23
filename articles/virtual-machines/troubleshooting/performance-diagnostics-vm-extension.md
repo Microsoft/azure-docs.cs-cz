@@ -15,11 +15,11 @@ ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: genli
 ms.openlocfilehash: 769305cc3d838832f8f445ac9623a1724603f968
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58002730"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60307852"
 ---
 # <a name="azure-performance-diagnostics-vm-extension-for-windows"></a>Rozšíření virtuálního počítače výkonu Azure Diagnostics pro Windows
 
@@ -109,7 +109,7 @@ Postupujte podle těchto pokynů k instalaci rozšíření na virtuálních poč
     > [!NOTE]
     > Rozšíření spustí po úspěšném zřízení. Má dvě minuty nebo méně k dokončení pro základní scénáře. Pro další scénáře spustí během trvání zadaly během instalace.
 
-## <a name="remove-the-extension"></a>Odebrat rozšíření
+## <a name="remove-the-extension"></a>Odebrání rozšíření
 Odebrat rozšíření z virtuálního počítače, postupujte podle těchto kroků:
 
 1. Přihlaste se k [webu Azure portal](https://portal.azure.com), vyberte virtuální počítač, ze kterého chcete odebrat toto rozšíření a pak vyberte **rozšíření** okno. 

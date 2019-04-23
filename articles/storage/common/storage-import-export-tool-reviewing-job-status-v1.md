@@ -9,11 +9,11 @@ ms.date: 01/26/2017
 ms.author: muralikk
 ms.subservice: common
 ms.openlocfilehash: 306e3ccf19ba8db2de01e4b20a52707215a4a040
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55470361"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60320702"
 ---
 # <a name="reviewing-azure-importexport-job-status-with-copy-log-files"></a>Kontrola stavu úlohy Azure Import/Export s použitím kopií souborů protokolu
 Když služba Microsoft Azure Import/Export zpracovává disky přidružené k importu nebo exportu úloze, zapíše kopírování souborů protokolu do účtu úložiště do nebo ze kterého jsou importu nebo exportu objektů BLOB. Soubor protokolu obsahuje podrobný stav o jednotlivých souborech, které se importovaná nebo exportovaná. Když odešlete dotaz na stav dokončené úlohy; vrátí se adresa URL pro každý soubor protokolu kopírování Zobrazit [Get Job](https://docs.microsoft.com/rest/api/storageimportexport/Jobs/Get) Další informace.  

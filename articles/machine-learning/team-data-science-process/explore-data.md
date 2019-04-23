@@ -12,11 +12,11 @@ ms.date: 11/08/2018
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: d4d2bc3292926144f13508780885e082f2b1fdc3
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57866305"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60303617"
 ---
 # <a name="explore-data-in-the-team-data-science-process"></a>Zkoumání dat v rámci vědeckého zkoumání týmových dat
 

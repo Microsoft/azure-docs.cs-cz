@@ -13,22 +13,22 @@ ms.devlang: multiple
 ms.topic: overview
 ms.tgt_pltfrm: multiple
 ms.workload: media
-ms.date: 03/29/2019
+ms.date: 04/18/2019
 ms.author: juliako
 ms.custom: mvc
-ms.openlocfilehash: c65c797612e179a9f3c02696d827131f5c830b3c
-ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
+ms.openlocfilehash: 6876ffd76c5a7ba5745e8014bca2abdc5e5264a2
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58755907"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60321940"
 ---
-# <a name="what-is-azure-media-services-v3"></a>Co jsou Azure Media Services v3?
+# <a name="azure-media-services-v3-overview"></a>Přehled služby Azure Media Services v3
 
 Azure Media Services je cloudová platforma, která umožňuje vytvářet řešení zajišťující streamování videa ve vysílací kvalitě, vylepšovat dostupnost a distribuci, analyzovat obsah a nejenom to. Ať už vyvíjíte aplikace, provozujete call centrum, zastupujete orgán státní správy nebo pracujete v zábavním průmyslu, služba Media Services vám pomůže vytvořit aplikace, ve kterých zpřístupníte svůj mediální obsah široké základně uživatelů, v nejoblíbenějších mobilních zařízeních a prohlížečích, jaké dnes existují, a v prvotřídní kvalitě. 
 
 > [!NOTE]
-> V současné době nelze použít na webu Azure portal ke správě prostředků v3. Použití [rozhraní REST API](https://aka.ms/ams-v3-rest-ref), [rozhraní příkazového řádku](https://aka.ms/ams-v3-cli-ref), nebo jeden z podporovaných [sady SDK](developers-guide.md).
+> Aktuálně nemůžete spravovat prostředky v3 pomocí webu Azure Portal. Použijte rozhraní [REST API](https://aka.ms/ams-v3-rest-ref), [rozhraní příkazového řádku](https://aka.ms/ams-v3-cli-ref) nebo některou z podporovaných sad [SDK](developers-guide.md).
 
 ## <a name="what-can-i-do-with-media-services"></a>Co všechno jde dělat v Media Services?
 
@@ -46,7 +46,7 @@ Ve službě Media Services můžete vytvářet různé pracovní postupy pro pr�
 
 ## <a name="how-can-i-get-started-with-v3"></a>Jak začít s v3? 
 
-Naučte se kódovat a balit obsah, streamování videa na vyžádání, vysílat živě, analyzovat vaše videa pomocí Media Services v3. Kurzy, reference k rozhraní API a další dokumentace ukazují, jak bezpečně doručovat živé video a video na vyžádání nebo zvukový stream, který se škáluje milionům uživatelů.
+Naučíte se kódovat a balit obsah, streamovat videa na vyžádání, živě vysílat a analyzovat vaše videa pomocí Media Services v3. Kurzy, reference k rozhraní API a další dokumentace ukazují, jak bezpečně doručovat živé video a video na vyžádání nebo zvukový stream, který se škáluje milionům uživatelů.
 
 Než začnete s vývojem, projděte si [základní koncepty](concepts-overview.md)<br/>
 
@@ -74,11 +74,15 @@ Kurzy ukazují postupy založené na scénářích pro některé nejčastější
 
 * [Vytvoření účtu – rozhraní příkazového řádku](create-account-cli-how-to.md)
 * [Přístup k rozhraní API – rozhraní příkazového řádku](access-api-cli-how-to.md)
-* [Začněte vyvíjet s využitím sady SDK](developers-guide.md)
+* [Zahájení vývoje s využitím sad SDK](developers-guide.md)
 * [Kódování pomocí protokolu HTTPS jako vstup - úlohy .NET](job-input-from-http-how-to.md)  
 * [Monitorování událostí – portál](monitor-events-portal-how-to.md)
 * [Dynamicky šifrovat pomocí několika variant DRM – .NET](protect-with-drm.md) 
 * [Kódování s vlastní transformace – rozhraní příkazového řádku](custom-preset-cli-howto.md)
+
+## <a name="provide-feedback"></a>Poskytnutí zpětné vazby
+
+Podívejte se [komunita Azure Media Services](media-services-community.md) článek a zobrazit různé způsoby můžete klást otázky, poskytnout zpětnou vazbu a aktualizace o Media Services.
 
 ## <a name="next-steps"></a>Další postup
 

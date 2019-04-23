@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 4/27/2018
 ms.author: shhurst
 ms.openlocfilehash: 5aa5ea2a39a0fb9f969e965fed14063522197cda
-ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50085774"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60303767"
 ---
 # <a name="handle-large-messages-with-chunking-in-azure-logic-apps"></a>Zpracování velkých zpráv s dělením dat do bloků v Azure Logic Apps
 
@@ -117,18 +117,18 @@ Tyto kroky popisují podrobný postup, který Logic Apps se používá pro nahr�
 
 1. Aplikace logiky odesílá počáteční požadavek HTTP POST a PUT s prázdným textem zprávy. Hlavičky žádosti obsahuje tyto informace o obsahu, který chce, aby se aplikace logiky k nahrání do bloků dat:
 
-   | Pole hlavičky požadavku Logic Apps | Hodnota | Typ | Popis |
+   | Pole hlavičky požadavku Logic Apps | Value | Type | Popis |
    |---------------------------------|-------|------|-------------|
-   | **x-ms přenos režim** | rozdělený do bloků dat | Řetězec | Označuje, že obsah se nahraje do bloků dat |
-   | **x-ms-content-length** | <*Délka obsahu*> | Integer | Celý obsah velikost v bajtech před dělením dat do bloků |
+   | **x-ms-transfer-mode** | rozdělený do bloků dat | String | Označuje, že obsah se nahraje do bloků dat |
+   | **x-ms-content-length** | <*content-length*> | Integer | Celý obsah velikost v bajtech před dělením dat do bloků |
    ||||
 
 2. Koncový bod odpoví "200" stavový kód úspěchu a této volitelné informace:
 
-   | Pole hlavičky odpovědi koncového bodu | Typ | Požaduje se | Popis |
+   | Pole hlavičky odpovědi koncového bodu | Type | Povinné | Popis |
    |--------------------------------|------|----------|-------------|
-   | **x-ms-hodnota chunk-size** | Integer | Ne | Velikost bloku navrhované dat v bajtech |
-   | **Umístění** | Řetězec | Ne | Adresa URL umístění kam má odesílat zprávy HTTP PATCH |
+   | **x-ms-chunk-size** | Integer | Ne | Velikost bloku navrhované dat v bajtech |
+   | **Umístění** | String | Ne | Adresa URL umístění kam má odesílat zprávy HTTP PATCH |
    ||||
 
 3. Aplikace logiky vytvoří a odešle zpracování zpráv HTTP PATCH - spolu tyto informace:
@@ -137,11 +137,11 @@ Tyto kroky popisují podrobný postup, který Logic Apps se používá pro nahr�
 
    * Následující záhlaví obsahuje informace o obsahu bloku dat odeslaných v každé zprávě opravy:
 
-     | Pole hlavičky požadavku Logic Apps | Hodnota | Typ | Popis |
+     | Pole hlavičky požadavku Logic Apps | Value | Type | Popis |
      |---------------------------------|-------|------|-------------|
-     | **Content-Range** | <*rozsah*> | Řetězec | Rozsah bajtů u aktuálního bloku obsahu, včetně počáteční hodnotu, koncová hodnota a celková velikost obsahu, například: "bajtů = 0-1023/10100" |
-     | **Content-Type** | <*Typ obsahu*> | Řetězec | Typ bloku obsahu |
-     | **Content-Length** | <*Délka obsahu*> | Řetězec | Délka velikost v bajtech aktuální blok dat |
+     | **Content-Range** | <*rozsah*> | String | Rozsah bajtů u aktuálního bloku obsahu, včetně počáteční hodnotu, koncová hodnota a celková velikost obsahu, například: "bajtů = 0-1023/10100" |
+     | **Content-Type** | <*content-type*> | String | Typ bloku obsahu |
+     | **Content-Length** | <*content-length*> | String | Délka velikost v bajtech aktuální blok dat |
      |||||
 
 4. Po každém požadavku PATCH potvrdí koncový bod potvrzení pro každý blok reakcí "200" stavovým kódem.

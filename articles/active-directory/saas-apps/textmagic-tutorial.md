@@ -16,11 +16,11 @@ ms.topic: tutorial
 ms.date: 03/07/2019
 ms.author: jeedes
 ms.openlocfilehash: 66d0d791e4f32fc0828d400db7b59d836d221aee
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59261798"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60315619"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-textmagic"></a>Kurz: Integrace Azure Active Directory s TextMagic
 
@@ -114,7 +114,7 @@ Ke konfiguraci Azure AD jednotné přihlašování s TextMagic, proveďte násle
 
 6. Kromě toho výše TextMagic aplikace očekává, že několik dalších atributů musí být předány zpět odpověď SAML. V **deklarace identity uživatelů** části na **atributy uživatele** dialogového okna, proveďte následující kroky pro přidání atributu tokenu SAML, jak je znázorněno v následující tabulka:
 
-    | Název |   Zdrojový atribut| Obor názvů  |
+    | Name |   Zdrojový atribut| Obor názvů  |
     | --------------- | --------------- | --------------- |
     | Společnosti | user.companyname | http://schemas.xmlsoap.org/ws/2005/05/identity/claims |
     | Jméno               | user.givenname |  http://schemas.xmlsoap.org/ws/2005/05/identity/claims |

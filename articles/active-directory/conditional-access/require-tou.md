@@ -12,11 +12,11 @@ manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: c37a58cb9f9d1082d02854f43e511e5431d90c13
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58894247"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60302053"
 ---
 # <a name="quickstart-require-terms-of-use-to-be-accepted-before-accessing-cloud-apps"></a>Rychlý start: Vyžadovat podmínky použití přijmout před přístupem k cloudových aplikací
 
@@ -102,7 +102,7 @@ Tato část ukazuje, jak vytvořit zásady podmíněného přístupu vyžaduje. 
 
 V zásadách nastavte:
 
-| Nastavení | Hodnota |
+| Nastavení | Value |
 | --- | --- |
 | Uživatelé a skupiny | Isabella Simonsen |
 | Cloudové aplikace | Správa Microsoft Azure |
@@ -114,7 +114,7 @@ V zásadách nastavte:
 
 1. Na **nový** stránku, **název** textové pole, typ **vyžadují podmínky použití pro Isabella**.
 
-   ![Název](./media/require-tou/71.png)
+   ![Name](./media/require-tou/71.png)
 
 1. V **přiřazení** klikněte na tlačítko **uživatelů a skupin**.
 

@@ -1,6 +1,6 @@
 ---
-title: Přihlaste se lístku podpory prostřednictvím Správce zařízení StorSimple | Microsoft Docs
-description: Popisuje Správce zařízení StorSimple diagnostikovat schopnosti a vysvětluje, jak ji použít k řešení potíží s pole virtuální zařízení StorSimple.
+title: Lístku podpory prostřednictvím Správce zařízení StorSimple | Dokumentace Microsoftu
+description: Popisuje Správce zařízení StorSimple diagnostikovat funkce a vysvětluje, jak ho použít k řešení StorSimple Virtual Array.
 services: storsimple
 documentationcenter: ''
 author: manuaery
@@ -14,44 +14,44 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2016
 ms.author: manuaery
-ms.openlocfilehash: 658afbc178814389fefd7941e2ca030741bd08e8
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 9ac87bbf5089dd20b8c6eeec0b970a7767b3dcda
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23875911"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60302563"
 ---
-# <a name="use-the-storsimple-device-manager-service-to-log-a-support-request-for-the-storsimple-virtual-array"></a>Používat službu StorSimple Manager zařízení k protokolu žádosti o podporu pro pole virtuální zařízení StorSimple
+# <a name="use-the-storsimple-device-manager-service-to-log-a-support-request-for-the-storsimple-virtual-array"></a>Protokolování žádosti o podporu pro StorSimple Virtual Array pomocí služby Správce zařízení StorSimple
 
 ## <a name="overview"></a>Přehled
 
-Správce zařízení StorSimple poskytuje schopnost **protokolu nové žádosti o podporu** v okně Souhrn služby. Tento článek vysvětluje, jak můžete protokolu nové žádosti o podporu a správu životního cyklu z portálu.
+Správce zařízení StorSimple poskytuje schopnost **protokolu novou žádost o podporu** v okně s přehledem služby. Tento článek vysvětluje, jak můžete protokolovat novou žádost o podporu a správa životního cyklu z v rámci portálu.
 
 ## <a name="new-support-request"></a>Nová žádost o podporu
 
-V závislosti na vaší [plán podpory](https://azure.microsoft.com/support/plans/), můžete vytvořit lístky žádostí o podporu pro problém na virtuální zařízení StorSimple pole přímo z okna souhrnu service Manager zařízení StorSimple.
+V závislosti na vaší [plán podpory](https://azure.microsoft.com/support/plans/), nemůžete vytvářet lístky žádostí o podporu pro problém na vaše StorSimple Virtual array přímo v okně s přehledem služby Správce zařízení StorSimple.
 
-#### <a name="to-log-a-new-request"></a>Do protokolu novou žádost o
+#### <a name="to-log-a-new-request"></a>Pro novou žádost o přihlášení
 
-1. Přejděte do služby Správce zařízení StorSimple. V okně Souhrn nastavení služby, přejděte na **podporu + Poradce při potížích s** části a pak klikněte na **nová žádost o podporu**.
+1. Přejděte do služby Správce zařízení StorSimple. V nastavení okno s přehledem služby, přejděte na **podpora a řešení potíží** části a pak klikněte na tlačítko **nová žádost o podporu**.
    
     ![Nová žádost o podporu](./media/storsimple-virtual-array-log-support-ticket/log-support-ticket1.png)
 
 2. V **Základy** okno, postupujte takto:
 
-    1. Z **vydat typ** rozevíracího seznamu vyberte **technické**. 
+    1. Z **typ problému** rozevíracího seznamu vyberte **technické**. 
     
-    2. Aktuální **předplatné**, **služby** typ a **prostředků** (zařízení služby StorSimple Manager) se automaticky vybraná. 
+    2. Aktuální **předplatné**, **služby** typ a **prostředků** (služba Správce zařízení StorSimple) jsou automaticky zvolí. 
 
-    3. Zadejte jeden nebo více zařízení zaregistrován ke službě, který má problémy.
+    3. Zadejte jeden nebo více zařízení zaregistrovaná ke službě, která mají problémy.
 
-    4. Zvolte odpovídající **plán podpory** Pokud máte více schématy spojené s vaším předplatným. Je nutné placený plán podpory povolit technická podpora.
+    4. Zvolte odpovídající **plán podpory** Pokud máte více plánů spojených s vaším předplatným. Potřebujete placený plán podpory umožňuje technické podpory.
 
-3. V **kroku 2**, vyberte **závažnost** a určete, jestli tento problém se týká pole nebo služby StorSimple Manager zařízení. Také vyberte **kategorie** pro toto vydání a zadejte více **podrobnosti** o problému.
+3. V **kroku 2**, zvolte **závažnost** a zadat, pokud tento problém má vztah k poli nebo ve službě Správce zařízení StorSimple. Zvolte, **kategorie** pro toto vydání a poskytují více **podrobnosti** o problému.
    
     ![Nová žádost o podporu](./media/storsimple-virtual-array-log-support-ticket/log-support-ticket2.png)
 
-4. V **krok 3**, zadejte své kontaktní informace. Microsoft Support bude tyto informace používat k oslovení vám další informace, diagnostiku a řešení.
+4. V **kroku 3**, zadejte kontaktní údaje. Microsoft Support bude tyto informace slouží k kontaktovat, další informace, diagnostiku a řešení.
    
     ![Nová žádost o podporu](./media/storsimple-virtual-array-log-support-ticket/log-support-ticket3.png)
 
@@ -61,11 +61,11 @@ Po vytvoření lístku můžete spravovat lístek v celém jeho životním cyklu
 
 #### <a name="to-manage-your-support-requests"></a>Ke správě žádostí o podporu
 
-Chcete-li se na stránku nápovědy a podpory, přejděte na **procházet > Nápověda a podpora**.
+Přejděte na stránku pro nápovědu a podporu získáte **procházet > Nápověda a podpora**.
 
 ![Spravovat žádosti o podporu](./media/storsimple-virtual-array-log-support-ticket/manage-support-tickets.png)
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
-Zjistěte, jak [diagnostikovat a vyřešit problémy související s virtuální zařízení StorSimple pole](storsimple-virtual-array-diagnose-problems.md)
+Zjistěte, jak [diagnostikovat a řešit problémy související se StorSimple Virtual array](storsimple-virtual-array-diagnose-problems.md)
 

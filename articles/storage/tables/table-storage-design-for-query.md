@@ -9,11 +9,11 @@ ms.date: 04/23/2018
 ms.author: sngun
 ms.subservice: tables
 ms.openlocfilehash: 97373f6f0138d3ed8028ed4327b7e6cf90ad76a7
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55470735"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60325863"
 ---
 # <a name="design-for-querying"></a>Návrh pro dotazování
 Náročné na prostředky, zápis náročné na prostředky nebo kombinaci obou, může se načíst řešení Table service. Tento článek se zaměřuje na věcí berte v úvahu při návrhu vaší služby Table service pro podporu operací čtení efektivně. Návrh, že podporuje operace čtení efektivně je obvykle také efektivní pro operace zápisu. Existují však další důležité informace k berte v úvahu při navrhování pro podporu operací zápisu, popsanou v článku [návrhu pro úpravu dat](table-storage-design-for-modification.md).

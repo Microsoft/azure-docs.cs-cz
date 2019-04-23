@@ -11,11 +11,11 @@ ms.topic: article
 ms.date: 04/30/2018
 ms.author: v-jaswel
 ms.openlocfilehash: e0a0a88e249c0a032e5afaeea14b9b3cfcbdc319
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58080656"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60322916"
 ---
 ## <a name="control-flow"></a>Tok řízení
 

@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 11/11/2016
 ms.author: alkohli
 ms.openlocfilehash: dbab2aaab2c12bef07748f54e5864d042f1c982a
-ms.sourcegitcommit: 922f7a8b75e9e15a17e904cc941bdfb0f32dc153
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52333560"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60302476"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-view-jobs-for-the-storsimple-virtual-array"></a>Slouží k zobrazení úloh pro StorSimple Virtual Array do služby Správce zařízení StorSimple
 ## <a name="overview"></a>Přehled
@@ -54,12 +54,12 @@ Proveďte následující kroky, chcete-li zobrazit podrobnosti libovolné úlohy
 3. V dolní části stránky klikněte na tlačítko **podrobnosti**.
 4. V **podrobnosti** dialogovém okně můžete zobrazit stav, podrobnosti a statistiku časových údajů. Následující obrázek znázorňuje příklad **podrobnosti úlohy zálohování** dialogové okno.
    
-    ![Podrobnosti úlohy](./media/storsimple-virtual-array-manage-jobs/ova-jobs-details.png)
+    ![Podrobnosti o úloze](./media/storsimple-virtual-array-manage-jobs/ova-jobs-details.png)
 
 #### <a name="job-failures-when-the-virtual-machine-is-paused-in-the-hypervisor"></a>Selhání úlohy, když se virtuální počítač pozastaví v hypervisoru
 Když úloha je ve průběh StorSimple Virtual Array a zařízení (virtuální počítač zřízený v hypervisoru) je pozastaven na více než 15 minut, úloha se nezdaří. To je z důvodu času StorSimple Virtual Array nejsou synchronizovány s časem služby Microsoft Azure. 
 
-Zobrazí se následující chyba: "čas zařízení není synchronizovaný s časem služby Microsoft Azure o víc než 15 minut. Ujistěte se, že hypervisoru a zařízení, které časy jsou synchronizovány pomocí serveru NTP. Ověřte, že zde nejsou žádné problémy s připojením. K řešení problémů s připojením, spusťte diagnostické testy z místního webového uživatelského rozhraní vašeho virtuálního zařízení."
+Zobrazí se následující chyba: "Čas zařízení není synchronizovaný s časem služby Microsoft Azure o víc než 15 minut. Ujistěte se, že hypervisoru a zařízení, které časy jsou synchronizovány pomocí serveru NTP. Ověřte, že zde nejsou žádné problémy s připojením. K řešení problémů s připojením, spusťte diagnostické testy z místního webového uživatelského rozhraní vašeho virtuálního zařízení."
 
 Tyto chyby se vztahují na úlohy zálohování, obnovení, aktualizace a převzetí služeb při selhání. Pokud zřízení virtuálního počítače Hyper-v na počítači nakonec synchronizuje čas s vaší hypervisoru. Jakmile se to stane, můžete restartovat úlohy.
 

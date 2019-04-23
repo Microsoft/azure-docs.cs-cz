@@ -11,11 +11,11 @@ ms.date: 04/16/2019
 ms.author: davidmu
 ms.subservice: B2C
 ms.openlocfilehash: 674a20fc96cf5b86219222d746525a3559ae9d09
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59681093"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60315775"
 ---
 # <a name="session-and-single-sign-on-configuration-in-azure-active-directory-b2c"></a>Relace a konfigurace jednotného přihlašování v Azure Active Directory B2C
 

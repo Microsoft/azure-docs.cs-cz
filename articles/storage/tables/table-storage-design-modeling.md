@@ -9,11 +9,11 @@ ms.date: 04/23/2018
 ms.author: sngun
 ms.subservice: tables
 ms.openlocfilehash: 5d83e61282d2f21a3016997e324d0f58eff15e78
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55813003"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60502499"
 ---
 # <a name="modeling-relationships"></a>Modelování relací
 Tento článek popisuje proces modelování při návrhu řešení Azure Table storage.

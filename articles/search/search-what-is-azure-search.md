@@ -10,11 +10,11 @@ ms.date: 02/01/2019
 ms.author: heidist
 ms.custom: seodec2018
 ms.openlocfilehash: 8893d8a55f77b54c9327e913af192ad39df46ba2
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58090011"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60307943"
 ---
 # <a name="what-is-azure-search"></a>Co je Azure Search?
 Azure Search je cloudové řešení pro vyhledávání v podobě služby, které poskytuje vývojářům rozhraní API a nástroje, aby mohli přidat výkonné vyhledávání v soukromém heterogenním obsahu ve webových, mobilních a firemních aplikacích. Dotazování se provádí nad indexem definovaným uživatelem.
@@ -30,7 +30,7 @@ Funkce se zveřejňuje prostřednictvím jednoduchého rozhraní [REST API](/res
 
 ## <a name="feature-summary"></a>Shrnutí funkce
 
-| Kategorie | Funkce |
+| Category | Funkce |
 |----------|----------|
 |Fulltextové vyhledávání a analýza textu | [Fulltextové vyhledávání](search-lucene-query-architecture.md) je primární případ použití pro většinu vyhledávacích aplikací. Dotazy se dají formulovat pomocí podporované syntaxe. <br/><br/>[**Jednoduchá syntaxe dotazů**](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search) poskytuje logické operátory, operátory pro hledání slovních spojení, operátory pro přípony a operátory priority.<br/><br/>[**Syntaxe dotazů Lucene**](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search) zahrnuje všechny operace v jednoduché syntaxi s rozšířeními pro přibližné vyhledávání, vyhledávání blízkých výrazů, zvyšování skóre termínu a regulární výrazy.|
 |Kognitivní vyhledávání (Preview) | [Algoritmy využívající AI](cognitive-search-concept-intro.md) pro analýzu obrázků a textu je možné použít v kanálu indexování k extrahování textových informací z nezpracovaného obsahu. Mezi příklady [integrovaných dovedností](cognitive-search-predefined-skills.md) patří optické rozpoznávání znaků (umožňuje prohledávání naskenovaných obrázků JPEG), rozpoznávání entit (identifikuje organizaci, název nebo umístění) a rozpoznávání klíčových frází. Můžete také [naprogramovat vlastní dovednosti](cognitive-search-create-custom-skill-example.md), které připojíte ke kanálu. |

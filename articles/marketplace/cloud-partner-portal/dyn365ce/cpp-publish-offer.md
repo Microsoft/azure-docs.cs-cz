@@ -15,11 +15,11 @@ ms.topic: conceptual
 ms.date: 12/28/2018
 ms.author: pbutlerm
 ms.openlocfilehash: eeb0fa84e8cd5ac6a499e02edd5879c5bbdd8ead
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54082631"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60308780"
 ---
 # <a name="publish-a-dynamics-365-for-customer-engagement-offer"></a>Publikování Dynamics 365 Customer Engagement nabídky.
 

@@ -9,11 +9,11 @@ ms.date: 02/24/2019
 ms.topic: overview
 ms.service: azure-spatial-anchors
 ms.openlocfilehash: 780c3da24d20418919670f09aa064003e3d96b90
-ms.sourcegitcommit: 956749f17569a55bcafba95aef9abcbb345eb929
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58629662"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60332006"
 ---
 # <a name="how-to-create-and-locate-anchors-using-azure-spatial-anchors"></a>Jak vytvořit a vyhledejte ukotvení pomocí prostorových kotev vztahů Azure
 
@@ -37,7 +37,7 @@ Další informace, pokračujte výběrem vývojového prostředí:
 > [Java v Androidu](how-tos/create-locate-anchors-java.md)
 
 > [!div class="nextstepaction"]
-> [C + +/ NDK v Androidu](how-tos/create-locate-anchors-cpp-ndk.md)
+> [C++/ Sada NDK v Androidu](how-tos/create-locate-anchors-cpp-ndk.md)
 
 > [!div class="nextstepaction"]
-> [C + +/ WinRT na HoloLens](how-tos/create-locate-anchors-cpp-winrt.md)
+> [C++/ WinRT na HoloLens](how-tos/create-locate-anchors-cpp-winrt.md)

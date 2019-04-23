@@ -15,11 +15,11 @@ ms.workload: multiple
 ms.date: 12/06/2018
 ms.author: bikang
 ms.openlocfilehash: 65dcceb2e55ec0927630b32670d2f915a01903bf
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58667943"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60303159"
 ---
 # <a name="sfctl-store"></a>sfctl store
 Provedení operace na úrovni základní soubor na úložiště imagí clusteru.

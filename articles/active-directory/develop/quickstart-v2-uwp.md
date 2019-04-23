@@ -17,18 +17,18 @@ ms.date: 04/12/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e7ed2830b704d379e2ecc5a5e548f831800af56d
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.openlocfilehash: d9d2e9aa5e5e805b302763f5417110cdd078eb3b
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59526380"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60298675"
 ---
 # <a name="quickstart-call-the-microsoft-graph-api-from-a-universal-windows-platform-uwp-application"></a>Rychlý start: Volání rozhraní Microsoft Graph API z aplikace pro univerzální platformu Windows (UPW)
 
 [!INCLUDE [active-directory-develop-applies-v2-msal](../../../includes/active-directory-develop-applies-v2-msal.md)]
 
-Tento rychlý start obsahuje vzorový kód, který předvádí, jak může aplikace pro Univerzální platformu Windows (UPW) přihlašovat uživatele s osobním nebo pracovním a školním účtem, získat přístupový token a volat rozhraní Microsoft Graph API.
+Tento rychlý Start obsahuje ukázku kódu, který ukazuje, jak aplikace univerzální platformy Windows (UPW) může přihlásit uživatele pomocí osobních účtů nebo pracovní a školní účty, získat přístupový token a volání rozhraní Microsoft Graph API.
 
 ![Ukazuje, jak ukázková aplikace vygenerované v tomto rychlém startu funguje](media/quickstart-v2-uwp/uwp-intro.svg)
 
@@ -72,7 +72,7 @@ Tento rychlý start obsahuje vzorový kód, který předvádí, jak může aplik
 
 #### <a name="step-2-download-your-visual-studio-project"></a>Krok 2: Stáhněte si svůj projekt sady Visual Studio
 
- - [Stažení projektu sady Visual Studio 2017](https://github.com/Azure-Samples/active-directory-dotnet-native-uwp-v2/archive/msal3x.zip)
+ - [Stáhněte si Visual Studio projekt](https://github.com/Azure-Samples/active-directory-dotnet-native-uwp-v2/archive/msal3x.zip)
 
 #### <a name="step-3-configure-your-visual-studio-project"></a>Krok 3: Konfigurace projektu sady Visual Studio
 
@@ -89,7 +89,7 @@ Tento rychlý start obsahuje vzorový kód, který předvádí, jak může aplik
 > - `Enter_the_Application_Id_here` je ID aplikace, kterou jste zaregistrovali.
 >
 > > [!TIP]
-> > Pokud chcete najít hodnoty z *ID aplikace*, přejděte na stránku **přehled** stránky
+> > Najít hodnotu *ID aplikace*, přejděte **přehled** části portálu
 
 #### <a name="step-4-run-your-application"></a>Krok 4: Spusťte aplikaci
 
@@ -119,7 +119,7 @@ Odkaz na knihovnu MSAL můžete přidat tak, že přidáte následující kód:
 using Microsoft.Identity.Client;
 ```
 
-Potom inicializujte knihovnu MSAL pomocí následujícího kódu:
+Potom MSAL je inicializován pomocí následujícího kódu:
 
 ```csharp
 public static IPublicClientApplication PublicClientApp;
@@ -133,11 +133,11 @@ PublicClientApp = new PublicClientApplicationBuilder.Create(ClientId)
 
 ### <a name="requesting-tokens"></a>Žádosti o tokeny
 
-Knihovna MSAL má dvě metody pro získávání tokenů interaktivně: `AcquireTokenInteractive` a `AcquireTokenSilent`.
+Knihovna MSAL má dvě metody pro získávání tokenů v aplikaci UWP: `AcquireTokenInteractive` a `AcquireTokenSilent`.
 
 #### <a name="get-a-user-token-interactively"></a>Interaktivní získání tokenu uživatele
 
-Některých situacích vyžadovat vynucuje uživatelé komunikovat s Microsoft identity platform koncového bodu prostřednictvím automaticky otevíraném okně buď ověření přihlašovacích údajů nebo udělit souhlas. Možné příklady:
+Některé situace vyžadují vynucení uživatelům interakci s Microsoft identity platform koncového bodu prostřednictvím automaticky otevíraném okně buď ověření přihlašovacích údajů nebo udělit souhlas. Možné příklady:
 
 - První uživatelé přihlašují k aplikaci
 - Když je potřeba, aby uživatelé znovu zadali svoje přihlašovací údaje, protože vypršela platnost hesla
@@ -155,7 +155,7 @@ authResult = await App.PublicClientApp.AcquireTokenInteractive(scopes)
 
 #### <a name="get-a-user-token-silently"></a>Získání tokenu uživatele bez upozornění
 
-Nechcete vyžadovat, aby uživatel ověřoval přihlašovací údaje pokaždé, když potřebuje přístup k prostředku. Ve většině případů budete chtít tokeny pořizovat a obnovovat bez nutnosti zásahu uživatele. Po počáteční metodě `AcquireTokenAsync` můžete použít metodu `AcquireTokenSilent` a získat tokeny pro přístup k chráněným prostředkům:
+Použití `AcquireTokenSilent` metodu k získání tokenů pro přístup k chráněným prostředkům po počáteční `AcquireTokenAsync` metody. Nechcete vyžaduje, aby uživatel k ověření přihlašovacích údajů pokaždé, když potřebují přístup k prostředku. Ve většině případů budete chtít token pořízení a obnovení bez nutnosti zásahu uživatele
 
 ```csharp
 var accounts = await App.PublicClientApp.GetAccountsAsync();

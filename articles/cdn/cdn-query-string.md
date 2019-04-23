@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 06/11/2018
 ms.author: magattus
 ms.openlocfilehash: f0dab3dc81c626e3e7f8c79b4142e5eb4f2a1276
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49093795"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60324737"
 ---
 # <a name="control-azure-cdn-caching-behavior-with-query-strings---standard-tier"></a>Ovládací prvek Azure CDN pomocí řetězců dotazu – úroveň standard chování ukládání do mezipaměti
 > [!div class="op_single_selector"]
@@ -35,9 +35,9 @@ S Azure Content Delivery Network (CDN), můžete řídit, jak jsou soubory ulož
 
 K dispozici jsou tři režimy řetězec dotazu:
 
-- **Ignorovat řetězce dotazů**: výchozí režim. V tomto režimu se uzel CDN point of presence (POP) předá řetězce dotazu z žadatel na zdrojový server na první požadavek a ukládá do mezipaměti assetu. Všechny následné požadavky assetu, které se obsluhují z POP ignorovat řetězce dotazu do vypršení platnosti mezipaměti asset.
+- **Ignorovat řetězce dotazů**: Výchozí režim. V tomto režimu se uzel CDN point of presence (POP) předá řetězce dotazu z žadatel na zdrojový server na první požadavek a ukládá do mezipaměti assetu. Všechny následné požadavky assetu, které se obsluhují z POP ignorovat řetězce dotazu do vypršení platnosti mezipaměti asset.
 
-- **Nepoužívat ukládání do mezipaměti pro řetězce dotazu**: V tomto režimu žádostí s řetězci dotazu se neukládají do mezipaměti v CDN POP uzlu. Uzel POP načte asset přímo ze zdrojového serveru a předává je žadateli spolu s každou žádostí.
+- **Nepoužívat ukládání do mezipaměti pro řetězce dotazu**: V tomto režimu žádostí s řetězci dotazu neukládají do mezipaměti v CDN POP uzlu. Uzel POP načte asset přímo ze zdrojového serveru a předává je žadateli spolu s každou žádostí.
 
 - **Ukládat do mezipaměti každou jedinečnou adresu URL**: V tomto režimu se každý požadavek s jedinečnou adresu URL, včetně řetězce dotazu, je považován za jedinečný prostředek s vlastní mezipaměti. Například je odpověď ze zdrojového serveru pro žádost o example.ashx?q=test1 ukládají do mezipaměti na uzlu POP a vrátil pro následné mezipaměti s stejný řetězec dotazu. Žádost o example.ashx?q=test2 je uložené v mezipaměti jako samostatný prostředek s vlastní nastavení time to live.
    

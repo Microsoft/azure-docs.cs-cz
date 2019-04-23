@@ -1,6 +1,6 @@
 ---
-title: Zásady zálohování Snapshot Manager zařízení StorSimple | Microsoft Docs
-description: Popisuje, jak pomocí modulu snap-in konzoly MMC StorSimple Snapshot Manager vytvořit a spravovat zásady zálohování, které řídí naplánovaných záloh.
+title: Zásady zálohování StorSimple Snapshot Manageru | Dokumentace Microsoftu
+description: Popisuje způsob použití modulu snap-in konzoly MMC StorSimple Snapshot Manageru k vytvoření a Správa zásad zálohování, které ovládací prvek naplánovaných záloh.
 services: storsimple
 documentationcenter: NA
 author: SharS
@@ -14,83 +14,83 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 06/05/2017
 ms.author: v-sharos
-ms.openlocfilehash: 218c89e403673c16c72da95aa2c1d685bbed5a86
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 7dac26b058b959011e38b4373369b8a1115d2705
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23875470"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60303221"
 ---
-# <a name="use-storsimple-snapshot-manager-to-create-and-manage-backup-policies"></a>Pomocí StorSimple Snapshot Manager vytvořit a spravovat zásady zálohování
+# <a name="use-storsimple-snapshot-manager-to-create-and-manage-backup-policies"></a>Vytvoření a Správa zásad zálohování pomocí StorSimple Snapshot Manageru
 ## <a name="overview"></a>Přehled
-Zásady zálohování vytvoří plán pro zálohování dat svazku místně nebo v cloudu. Když vytvoříte zásadu zálohování, můžete také zadat zásady uchovávání informací. (Můžete uchovávat maximálně 64 snímky.) Další informace o zásady zálohování najdete v tématu [zálohování typy](storsimple-what-is-snapshot-manager.md#backup-types-and-backup-policies) v [řady StorSimple 8000: hybridní cloudové řešení](storsimple-overview.md).
+Zásady zálohování vytvoří plán pro zálohování dat svazek, místně nebo v cloudu. Při vytváření zásady zálohování, můžete také zadat zásady uchovávání informací. (Můžete uchovávat maximálně 64 snímky.) Další informace o zásady zálohování, naleznete v tématu [zálohování typy](storsimple-what-is-snapshot-manager.md#backup-types-and-backup-policies) v [řady StorSimple 8000 series: řešení hybridního cloudového](storsimple-overview.md).
 
-Tento kurz vysvětluje postup:
+Tento kurz vysvětluje následující postupy:
 
-* Vytvořit zásady zálohování
+* Vytvoření zásady zálohování
 * Upravit zásady zálohování
-* Odstranit zásady zálohování
+* Odstraňování zásady zálohování
 
-## <a name="create-a-backup-policy"></a>Vytvořit zásady zálohování
-Použijte následující postup k vytvoření nové zásady zálohování.
+## <a name="create-a-backup-policy"></a>Vytvoření zásady zálohování
+Pomocí následujícího postupu vytvořte nové zásady zálohování.
 
-#### <a name="to-create-a-backup-policy"></a>Chcete-li vytvořit zásady zálohování
-1. Klikněte na ikonu plochy spusťte StorSimple Snapshot Manager.
+#### <a name="to-create-a-backup-policy"></a>Chcete-li vytvořit zásadu zálohování
+1. Klepněte na ikonu klasické pracovní plochy spusťte StorSimple Snapshot Manageru.
 2. V **oboru** podokně klikněte pravým tlačítkem na **zásady zálohování**a klikněte na tlačítko **vytvořit zásadu zálohování**.
 
-    ![Vytvořit zásady zálohování](./media/storsimple-snapshot-manager-manage-backup-policies/HCS_SSM_Create_BU_policy.png)
+    ![Vytvoření zásady zálohování](./media/storsimple-snapshot-manager-manage-backup-policies/HCS_SSM_Create_BU_policy.png)
 
     **Vytvořit zásadu** zobrazí se dialogové okno.
 
-    ![Vytvoření zásady – karta Obecné](./media/storsimple-snapshot-manager-manage-backup-policies/HCS_SSM_Create_policy_general.png)
-3. Na **Obecné** proveďte následující informace:
+    ![Vytvoření zásad – karta Obecné](./media/storsimple-snapshot-manager-manage-backup-policies/HCS_SSM_Create_policy_general.png)
+3. Na **Obecné** kartu, zadejte následující informace:
 
-   1. V **název** textového pole zadejte název pro tuto zásadu.
-   2. V **svazku skupiny** textového pole, zadejte název skupiny svazku přidružených k zásadě.
+   1. V **název** textového pole zadejte název zásady.
+   2. V **skupiny svazků** textového pole, zadejte název skupiny svazků přidružených k zásadě.
    3. Vyberte buď **místní snímek** nebo **cloudových snímků**.
-   4. Vyberte počet snímků, které chcete zachovat. Pokud vyberete **všechny**, 64 snímky bude zachována (maximum).
-4. Klikněte **plán** kartě.
+   4. Vyberte počet snímků, pokud chcete zachovat. Pokud vyberete **všechny**, 64 snímky budou zachovány (maximum).
+4. Klikněte na tlačítko **plán** kartu.
 
-    ![Vytvoření zásady – karta plán](./media/storsimple-snapshot-manager-manage-backup-policies/HCS_SSM_Create_policy_schedule.png)
-5. Na **plán** proveďte následující informace:
+    ![Vytvoření zásad – Záložka plánu](./media/storsimple-snapshot-manager-manage-backup-policies/HCS_SSM_Create_policy_schedule.png)
+5. Na **plán** kartu, zadejte následující informace:
 
-   1. Klikněte **povolit** políčko naplánovat další zálohování.
-   2. V části **nastavení**, vyberte **jednou**, **denní**, **týdenní**, nebo **měsíční**.
-   3. V **spustit** textového pole, klikněte na ikonu kalendáři a vyberte počáteční datum.
-   4. V části **Upřesnit nastavení**, můžete nastavit volitelné opakování plány a koncové datum.
+   1. Klikněte na tlačítko **povolit** zaškrtávací políčko k naplánování dalším zálohování.
+   2. V části **nastavení**vyberte **jednou**, **denní**, **týdenní**, nebo **měsíční**.
+   3. V **Start** textové pole, klikněte na ikonu kalendáře a vyberte počáteční datum.
+   4. V části **Upřesnit nastavení**, lze nastavit volitelný plány opakování a koncové datum.
    5. Klikněte na **OK**.
 
-Po vytvoření zásady zálohování, tyto informace se zobrazí v **výsledky** podokně:
+Po vytvoření zásady zálohování se zobrazí následující informace v **výsledky** podokna:
 
 * **Název** – název zásady zálohování.
 * **Typ** – místní snímek nebo cloudový snímek.
-* **Svazek skupiny** – skupině svazku přidružených k zásadě.
+* **Skupiny svazků** – skupiny svazků přidružených k zásadě.
 * **Uchování** – počet snímků uchovávají; maximální počet je 64.
-* **Vytvořit** – datum, tato zásada byla vytvořena.
-* **Povolit** – jestli zásady je aktuálně v platnosti: **True** označuje, že je v platnosti; **False** signalizuje, že není platný.
+* **Vytvoření** – datum, které tato zásada byla vytvořena.
+* **Povolené** – Určuje, zda zásady je aktuálně v platnosti: **Hodnota TRUE** označuje, že je v platnosti; **False** označuje, že není platná.
 
 ## <a name="edit-a-backup-policy"></a>Upravit zásady zálohování
-Chcete-li upravit existující zásady zálohování použijte následující postup.
+Pomocí následujícího postupu upravit existující zásadu zálohování.
 
 #### <a name="to-edit-a-backup-policy"></a>Chcete-li upravit zásady zálohování
-1. Klikněte na ikonu plochy spusťte StorSimple Snapshot Manager.
-2. V **oboru** podokně klikněte **zásady zálohování** uzlu. Zobrazí všechny zásady zálohování v **výsledky** podokně.
-3. Klikněte pravým tlačítkem na zásadu, kterou chcete upravit a pak klikněte na tlačítko **upravit**.
+1. Klepněte na ikonu klasické pracovní plochy spusťte StorSimple Snapshot Manageru.
+2. V **oboru** podokně klikněte na tlačítko **zásady zálohování** uzlu. Všechny zásady zálohování se zobrazí v **výsledky** podokně.
+3. Klikněte pravým tlačítkem na zásadu, kterou chcete upravit a potom klikněte na tlačítko **upravit**.
 
     ![Upravit zásady zálohování](./media/storsimple-snapshot-manager-manage-backup-policies/HCS_SSM_Edit_BU_policy.png)
-4. Když **vytvořit zásadu** okno se zobrazí, zadejte změny a pak klikněte na tlačítko **OK**.
+4. Když **vytvořit zásadu** okna se zobrazí, zadejte změny a pak klikněte na tlačítko **OK**.
 
-## <a name="delete-a-backup-policy"></a>Odstranit zásady zálohování
-Pomocí následujícího postupu můžete odstranit zásady zálohování.
+## <a name="delete-a-backup-policy"></a>Odstraňování zásady zálohování
+Pomocí následujícího postupu odstranit zásady zálohování.
 
 #### <a name="to-delete-a-backup-policy"></a>Chcete-li odstranit zásady zálohování
-1. Klikněte na ikonu plochy spusťte StorSimple Snapshot Manager.
-2. V **oboru** podokně klikněte **zásady zálohování** uzlu. Zobrazí všechny zásady zálohování v **výsledky** podokně.
-3. Klikněte pravým tlačítkem na zásadu zálohování, který chcete odstranit a potom klikněte na **odstranit**.
-4. Jakmile se zobrazí zpráva o potvrzení, klikněte na tlačítko **Ano**.
+1. Klepněte na ikonu klasické pracovní plochy spusťte StorSimple Snapshot Manageru.
+2. V **oboru** podokně klikněte na tlačítko **zásady zálohování** uzlu. Všechny zásady zálohování se zobrazí v **výsledky** podokně.
+3. Klikněte pravým tlačítkem na zásadu zálohování, který chcete odstranit a potom klikněte na tlačítko **odstranit**.
+4. Jakmile se zobrazí potvrzovací zpráva, klikněte na tlačítko **Ano**.
 
-    ![Odstranit zásady zálohování potvrzení](./media/storsimple-snapshot-manager-manage-backup-policies/HCS_SSM_Delete_BU_policy.png)
+    ![Zásady zálohování potvrzení odstranění](./media/storsimple-snapshot-manager-manage-backup-policies/HCS_SSM_Delete_BU_policy.png)
 
-## <a name="next-steps"></a>Další kroky
-* Zjistěte, jak [použít ke správě vašeho řešení StorSimple Snapshot Manager zařízení StorSimple](storsimple-snapshot-manager-admin.md).
-* Zjistěte, jak [pomocí StorSimple Snapshot Manager můžete zobrazit a spravovat úlohy zálohování](storsimple-snapshot-manager-manage-backup-jobs.md).
+## <a name="next-steps"></a>Další postup
+* Zjistěte, jak [použít ke správě vašeho řešení StorSimple Snapshot Manageru zařízení StorSimple](storsimple-snapshot-manager-admin.md).
+* Zjistěte, jak [pomocí StorSimple Snapshot Manageru k zobrazení a Správa úloh zálohování](storsimple-snapshot-manager-manage-backup-jobs.md).

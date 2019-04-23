@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/17/2018
 ms.author: spelluru
-ms.openlocfilehash: 38ec93afd27ac75a97a28fef59bd10fafdf963c9
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: e4d9aeb527461cc7292235fef1de0abdfa4242bd
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51247037"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60311345"
 ---
 # <a name="add-tags-to-a-lab-in-azure-devtest-labs"></a>Přidání značek do testovacího prostředí ve službě Azure DevTest Labs
 
@@ -42,8 +42,8 @@ Každá značka se skládá z **název**/**hodnotu** pár. Můžete například 
 
 1. Přihlaste se k webu [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040).
 1. V případě potřeby vyberte **všechny služby**a pak vyberte **DevTest Labs** ze seznamu. Vaše testovací prostředí může již zobrazený na řídicím panelu v části **všechny prostředky**.
-1. V seznamu testovacích prostředí vyberte prostředí, ve které chcete přidat nebo správě značek.  
-1. Cvičení **přehled** vyberte **konfigurace a zásad**.  
+1. V seznamu testovacích prostředí vyberte prostředí, ve které chcete přidat nebo správě značek.
+1. Cvičení **přehled** vyberte **konfigurace a zásad**.
 
     ![Konfigurace a zásad tlačítko](./media/devtest-lab-add-tag/devtestlab-config-and-policies.png)
 
@@ -56,7 +56,7 @@ Každá značka se skládá z **název**/**hodnotu** pár. Můžete například 
 
 Na značky se vztahují následující omezení:
 
-* Každý prostředek nebo skupina prostředků může mít maximálně 15 párů název/hodnota značek. Toto omezení se vztahuje pouze na značky použité přímo na prostředek nebo skupinu prostředků. Skupina prostředků může obsahovat řadu prostředků, z nichž každý má 15 párů název/hodnota značek. 
+* Každý prostředek nebo skupina prostředků může mít maximálně 15 párů název/hodnota značek. Toto omezení se vztahuje pouze na značky použité přímo na prostředek nebo skupinu prostředků. Skupina prostředků může obsahovat řadu prostředků, z nichž každý má 15 párů název/hodnota značek.
 * Název značky je omezen na 512 znaků a hodnota značky je omezena na 256 znaků. Pro účty úložiště je název značky omezen na 128 znaků a hodnota značky je omezena na 256 znaků.
 * Prostředky ve skupině prostředků nedědí značky použité na danou skupinu prostředků.
 
@@ -66,4 +66,4 @@ Na značky se vztahují následující omezení:
 
 ## <a name="next-steps"></a>Další postup
 * Pomocí vlastních zásad, můžete použít omezení a pravidla týkající se vašeho předplatného. Zásady, které definujete může být nutné, aby všechny prostředky hodnotu pro konkrétní značku. Další informace najdete v tématu [nastavení zásad a plánů](devtest-lab-set-lab-policy.md).
-* Prozkoumejte [Galerie šablon QuickStart pro Azure Resource Manageru DevTest Labs](https://github.com/Azure/azure-devtestlab/tree/master/Samples).
+* Prozkoumejte [Galerie šablon QuickStart pro Azure Resource Manageru DevTest Labs](https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/QuickStartTemplates).

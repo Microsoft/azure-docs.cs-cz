@@ -10,11 +10,11 @@ ms.reviewer: klam, LADocs
 ms.topic: article
 ms.date: 11/16/2018
 ms.openlocfilehash: c211d479efe086bb739b91034c6d9e349358b2d7
-ms.sourcegitcommit: b8a8d29fdf199158d96736fbbb0c3773502a092d
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/15/2019
-ms.locfileid: "59565899"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60303668"
 ---
 # <a name="limits-and-configuration-information-for-azure-logic-apps"></a>Omezení a konfigurační informace pro Azure Logic Apps
 
@@ -93,7 +93,7 @@ Tady jsou limity pro běh aplikace logiky jeden:
 
 ### <a name="global-logic-apps-service"></a>Globální služba Logic Apps
 
-| Název | Omezení | Poznámky |
+| Name | Omezení | Poznámky |
 | ---- | ----- | ----- |
 | Akce: Spuštění za 5 minut | Výchozí limit je 100 000, ale maximální limit je 300 000. | Chcete-li změnit výchozí omezení, [spuštění aplikace logiky v režimu "Vysoká propustnost"](../logic-apps/logic-apps-workflow-actions-triggers.md#run-high-throughput-mode), což je ve verzi preview. Nebo můžete distribuovat zatížení napříč více než jedné aplikace logiky podle potřeby. |
 | Akce: Odchozí souběžných volání | ~2,500 | Můžete snížit počet souběžných požadavků nebo zkrátit dobu trvání podle potřeby. |
@@ -105,7 +105,7 @@ Tady jsou limity pro běh aplikace logiky jeden:
 
 ### <a name="integration-service-environment-ise"></a>Prostředí integrační služby (ISE)
 
-| Název | Omezení | Poznámky |
+| Name | Omezení | Poznámky |
 |------|-------|-------|
 | Základní jednotka limit provádění. | 10 000 spuštění akcí za 5 minut <br>což je přibližně 80 milionů spuštění akcí za měsíc | |
 | Limit škálování jednotek spuštění | 5 000 akcí spuštění za 5 minut <br>což je přibližně 40 milionů spuštění akcí za měsíc | |

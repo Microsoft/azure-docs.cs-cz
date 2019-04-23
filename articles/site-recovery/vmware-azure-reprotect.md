@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 3/12/2019
 ms.author: mayg
 ms.openlocfilehash: 4202d95b540efb98b526f8a8abd17da22a908ebe
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57771805"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60482902"
 ---
 # <a name="reprotect-and-fail-back-machines-to-an-on-premises-site-after-failover-to-azure"></a>Znovunastavení ochrany a navrácení služeb po back počítače k místní lokalitě po převzetí služeb při selhání do Azure
 
@@ -22,7 +22,7 @@ Získejte rychlý přehled zhlédnout následující video o tom, jak převzetí
 > [!VIDEO https://channel9.msdn.com/Series/Azure-Site-Recovery/VMware-to-Azure-with-ASR-Video5-Failback-from-Azure-to-On-premises/player]
 
 
-## <a name="before-you-begin"></a>Před zahájením
+## <a name="before-you-begin"></a>Než začnete
 
 Pokud jste použili k vytvoření virtuálních počítačů šablony, ujistěte se, že každý virtuální počítač má svůj vlastní identifikátor UUID disků. Pokud UUID na místním virtuálním počítači konfliktu s UUID hlavního cíle, protože oba byly vytvořeny ze stejné šablony, opětovného nastavování ochrany se nezdaří. Nasazení jiný hlavní cíl, který nebyl vytvořen ze stejné šablony. Všimněte si následujících informací:
 - Pokud se pokoušíte navrácení služeb po obnovení alternativního serveru vCenter, ujistěte se, že se zjistí nové vCenter a hlavní cílový server. Typické symptomem je, že nejsou dostupné úložiště dat, nebo nejsou viditelné v **znovunastavení ochrany** dialogové okno.

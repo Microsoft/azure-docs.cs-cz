@@ -11,11 +11,11 @@ ms.date: 09/21/2018
 ms.author: davidmu
 ms.subservice: B2C
 ms.openlocfilehash: ca96dbd2073540d47fe09caaa8a337e292445590
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58486763"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60316336"
 ---
 # <a name="set-up-sign-in-with-a-salesforce-saml-provider-by-using-custom-policies-in-azure-active-directory-b2c"></a>Přihlaste se pomocí zprostředkovatele Salesforce SAML lze nastavit pomocí vlastních zásad v Azure Active Directory B2C
 

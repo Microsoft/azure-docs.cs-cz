@@ -16,11 +16,11 @@ ms.date: 04/3/2017
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: b4be5087af70e10e5a73ea2a183a25b326aea664
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57433463"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60341020"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-servicechannel"></a>Kurz: Integrace Azure Active Directory s kanálu ServiceChannel
 

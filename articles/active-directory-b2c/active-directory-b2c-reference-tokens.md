@@ -11,11 +11,11 @@ ms.date: 04/16/2019
 ms.author: davidmu
 ms.subservice: B2C
 ms.openlocfilehash: 11361bc6ab75e873e1b4081dcfc6492abc093b54
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59680260"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60316931"
 ---
 # <a name="overview-of-tokens-in-azure-active-directory-b2c"></a>Přehled tokenů v Azure Active Directory B2C
 
@@ -50,18 +50,18 @@ Deklarace identity v tokenech ID nebudou zobrazeny v libovolném pořadí. Nová
 
 V následující tabulce jsou uvedeny deklarace identity, můžete očekávat v tokeny typu ID a přístupové tokeny vydané službou Azure AD B2C.
 
-| Název | Deklarovat | Příklad hodnoty | Popis |
+| Name | Deklarovat | Příklad hodnoty | Popis |
 | ---- | ----- | ------------- | ----------- |
 | Cílová skupina | `aud` | `90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6` | Identifikuje zamýšlený příjemce tokenu. Cílová skupina pro Azure AD B2C je ID aplikace. Vaše aplikace by měl ověřit tuto hodnotu a odmítnout token, pokud neodpovídá. Cílové skupiny je synonymní s prostředkem. |
 | Vystavitel | `iss` |`https://{tenant}.b2clogin.com/775527ff-9a37-4307-8b3d-cc311f58d925/v2.0/` | Identifikuje službu tokenů zabezpečení (STS), který vytvoří a vrátí token. Také určuje adresář, ve kterém byl uživatel ověřený. Vaše aplikace měla ověřit deklarace identity vystavitele tak, abyste měli jistotu, že token pochází od vhodný koncový bod. |
 | Vystaveno | `iat` | `1438535543` | Čas, kdy byl vydán token, jsou reprezentovány v unixovém čase. |
 | Čas vypršení platnosti | `exp` | `1438539443` | Čas, kdy token, který se stane neplatným, reprezentovány v unixovém čase. Aplikace by měla používat tato deklarace identity k ověření platnosti dobu životnosti tokenu. |
 | Neplatný před | `nbf` | `1438535543` | Čas, kdy začne platit, token reprezentovány v unixovém čase. Tentokrát je obvykle stejné jako čas, kdy byl token vydán. Aplikace by měla používat tato deklarace identity k ověření platnosti dobu životnosti tokenu. |
-| Verze | `ver` | `1.0` | Verze token ID, jak jsou definovány pomocí Azure AD B2C. |
+| Version | `ver` | `1.0` | Verze token ID, jak jsou definovány pomocí Azure AD B2C. |
 | Kód hash | `c_hash` | `SGCPtt01wxwfgnYZy2VJtQ` | Kód hash zahrnuté v tokenu ID jenom v případě, že token, který vydává spolu s autorizačního kódu OAuth 2.0. Hodnota hash kódu slouží k ověření pravosti autorizační kód. Další informace o tom, jak toto ověření proveďte najdete v tématu [OpenID Connect specifikace](https://openid.net/specs/openid-connect-core-1_0.html).  |
 | Hodnota hash tokenu přístupu | `at_hash` | `SGCPtt01wxwfgnYZy2VJtQ` | Hash tokenu přístupu zahrnuté v tokenu ID jenom v případě, že token, který vydává spolu s přístupového tokenu OAuth 2.0. Algoritmus hash tokenu přístupu slouží k ověření pravosti tokenu přístupu. Další informace o tom, jak toto ověření proveďte najdete v tématu [specifikace OpenID Connect](https://openid.net/specs/openid-connect-core-1_0.html)  |
 | Hodnota Nonce | `nonce` | `12345` | Hodnotu nonce je strategie zmírnit útoky opětovného přehrání tokenu. Aplikace může zadat hodnotu nonce v žádost o autorizaci s použitím `nonce` parametr dotazu. Hodnota je zadat v požadavku je vygenerován bez jakýchkoli úprav v `nonce` pouze ID tokenu deklarací identity. Tato deklarace identity umožňuje vaší aplikaci můžete ověřit hodnoty na hodnotu zadanou v požadavku. Toto ověření během procesu ověření tokenu ID má vaše aplikace provést. |
-| Subjekt | `sub` | `884408e1-2918-4cz0-b12d-3aa027d7563b` | Objekt zabezpečení, o tom, které token vyhodnocuje informace, jako je například uživatel aplikace. Tato hodnota je neměnná a nelze přiřadit nebo znovu použít. Slouží k provádění kontroly autorizace bezpečně, třeba když se používá token pro přístup k prostředku. Ve výchozím nastavení deklarace identity subjektu se vyplní ID objektu uživatele v adresáři. |
+| Subject | `sub` | `884408e1-2918-4cz0-b12d-3aa027d7563b` | Objekt zabezpečení, o tom, které token vyhodnocuje informace, jako je například uživatel aplikace. Tato hodnota je neměnná a nelze přiřadit nebo znovu použít. Slouží k provádění kontroly autorizace bezpečně, třeba když se používá token pro přístup k prostředku. Ve výchozím nastavení deklarace identity subjektu se vyplní ID objektu uživatele v adresáři. |
 | Informace o třídě kontext ověřování | `acr` | Neuvedeno | Použít pouze se staršími zásadami. |
 | Rozhraní framework zásady důvěryhodnosti | `tfp` | `b2c_1_signupsignin1` | Název zásad, která byla použita k získání tokenu ID. |
 | Čas ověřování | `auth_time` | `1438535543` | Čas, kdy uživatel naposledy zadali přihlašovací údaje, je vyjádřena v unixovém čase. |

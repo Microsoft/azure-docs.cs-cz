@@ -14,11 +14,11 @@ ms.topic: overview
 ms.date: 05/21/2018
 ms.author: spelluru
 ms.openlocfilehash: 964f5624a3a588a1520a08365c5fa9c783114e48
-ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56958826"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60303736"
 ---
 # <a name="introduction-to-classroom-labs"></a>Úvod k testovacímu prostředí v učebnách
 Služba Azure Lab Services vám umožňuje rychle vytvořit cloudové testovací prostředí v učebně. Vyučující vytvoří testovací prostředí v učebně, zřídí virtuální počítače s Windows nebo Linuxem, nainstaluje nezbytný software a nástroje a zpřístupní je studentům. Studenti se ve třídě připojí k virtuálním počítačům v testovacím prostředí a budou je používat na projekty, úkoly a aktivity ve vyučování. 

@@ -9,11 +9,11 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.date: 08/17/2018
 ms.openlocfilehash: 506f623fe928cf122a16630844996c981cc20e9e
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58791724"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60330342"
 ---
 # <a name="azure-cosmos-db-table-net-api-download-and-release-notes"></a>Rozhraní .NET API tabulky Azure Cosmos DB: Stáhněte si a poznámky k verzi
 
@@ -82,7 +82,7 @@ Nové funkce a funkce a optimalizace jsou přidány pouze aktuální sadu SDK, p
 Služba odmítne všechny žádosti do služby Azure Cosmos DB pomocí vyřazeno sady SDK.
 <br/>
 
-| Verze | Datum vydání | Datum vyřazení z provozu |
+| Version | Datum vydání | Datum vyřazení z provozu |
 | --- | --- | --- |
 | [2.1.0](#2.1.0) |22. ledna 2019|--- |
 | [2.0.0](#2.0.0) |26. září 2018|--- |

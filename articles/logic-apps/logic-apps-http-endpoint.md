@@ -17,11 +17,11 @@ ms.custom: H1Hack27Feb2017
 ms.date: 03/31/2017
 ms.author: klam; LADocs
 ms.openlocfilehash: c58b39f8e2d49eeb3e64c7ffce1d34d7a7b7b780
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57904367"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60304050"
 ---
 # <a name="call-trigger-or-nest-workflows-with-http-endpoints-in-logic-apps"></a>Volání triggeru, nebo vnořené pracovní postupy s koncovými body HTTP ve službě logic apps
 
@@ -275,7 +275,7 @@ Tady je schéma JSON vypadá nyní **odpovědi** akce:
 
 ## <a name="q--a"></a>Dotazy a odpovědi
 
-#### <a name="q-what-about-url-security"></a>OTÁZKA: Jak je to adresa URL zabezpečení?
+#### <a name="q-what-about-url-security"></a>Otázka: Jak je to adresa URL zabezpečení?
 
 Odpověď: Azure bezpečně generuje logic app zpětného volání adresy URL pomocí sdílený přístupový podpis (SAS). Tento podpis prochází jako parametr dotazu a musí ověřit dříve, než můžete aktivovat svou aplikaci logiky. Azure generuje podpis pomocí jedinečnou kombinaci tajný klíč aplikace logiky, název aktivační události a operace, která se provádí. Takže pokud někdo získá přístup k logiky tajný klíč aplikace, že nelze generovat platný podpis.
 
@@ -285,7 +285,7 @@ Odpověď: Azure bezpečně generuje logic app zpětného volání adresy URL po
    > * Sdílený přístupový klíč se zobrazí v adrese URL.
    > * Mezi zákazníky aplikace logiky nemůže spravovat zásady zabezpečení obsahu z důvodu sdílené domény.
 
-#### <a name="q-can-i-configure-http-endpoints-further"></a>OTÁZKA: Můžete nakonfigurovat další koncové body HTTP?
+#### <a name="q-can-i-configure-http-endpoints-further"></a>Otázka: Můžete nakonfigurovat další koncové body HTTP?
 
 Odpověď: Ano, koncové body HTTP podporují pokročilejší konfigurace prostřednictvím [ **API Management**](../api-management/api-management-key-concepts.md). Tato služba nabízí taky možnost si můžete konzistentně spravovat všechna svoje rozhraní API, včetně aplikací logiky, nastavte si vlastní názvy domén, použijte další metody ověřování a informace, například:
 
@@ -294,7 +294,7 @@ Odpověď: Ano, koncové body HTTP podporují pokročilejší konfigurace prost�
 * Nastavení rozhraní API správy domén ve [webu Azure portal](https://portal.azure.com/ "webu Azure portal")
 * Nastavte zásady pro kontrolu pro základní ověřování
 
-#### <a name="q-what-changed-when-the-schema-migrated-from-the-december-1-2014-preview"></a>OTÁZKA: Co se změnilo při migraci schématu z 1. prosince 2014 ve verzi preview?
+#### <a name="q-what-changed-when-the-schema-migrated-from-the-december-1-2014-preview"></a>Otázka: Co se změnilo při migraci schématu z 1. prosince 2014 ve verzi preview?
 
 Odpověď: Tady je přehled o tyto změny:
 

@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.date: 06/26/2017
 ms.author: adigan
 ms.openlocfilehash: c6160570644da108ba713e8229b38f9587495c92
-ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55299414"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60337574"
 ---
 # <a name="data-model-for-azure-backup-reports"></a>Datový model pro sestavy Azure Backup
 Tento článek popisuje datový model Power BI používá k vytváření sestav Azure Backup. Pomocí tohoto modelu, můžete filtrovat existující sestavy na základě příslušných polí a další důležité je, vytvořit vlastní sestavy pomocí tabulek a polí v modelu. 
@@ -30,8 +30,8 @@ Tato tabulka obsahuje základní polí a agregací přes různé výstrahy souvi
 | Pole | Typ dat | Popis |
 | --- | --- | --- |
 | #AlertsCreatedInPeriod |Celé číslo |Počet upozornění vytvořená ve vybraném časovém období |
-| %ActiveAlertsCreatedInPeriod |Procentuální podíl |Procento aktivních výstrah ve vybraném časovém období |
-| %CriticalAlertsCreatedInPeriod |Procentuální podíl |Procento kritické výstrahy za vybrané časové období |
+| %ActiveAlertsCreatedInPeriod |Procento |Procento aktivních výstrah ve vybraném časovém období |
+| %CriticalAlertsCreatedInPeriod |Procento |Procento kritické výstrahy za vybrané časové období |
 | AlertOccurrenceDate |Datum |Datum, kdy byla výstraha vytvořena |
 | AlertSeverity |Text |Závažnost výstrahy, například kritický |
 | AlertStatus |Text |Stav výstrahy například aktivní |
@@ -82,7 +82,7 @@ Tato tabulka obsahuje základní polí a agregací v různých oblastech souvise
 | Pole | Typ dat | Popis |
 | --- | --- | --- |
 | #JobsCreatedInPeriod |Celé číslo |Počet úloh vytvořených ve vybraném časovém období |
-| %FailuresForJobsCreatedInPeriod |Procentuální podíl |Procento celkové selháním úloh ve vybraném časovém období |
+| %FailuresForJobsCreatedInPeriod |Procento |Procento celkové selháním úloh ve vybraném časovém období |
 | 80thPercentileDataTransferredInMBForBackupJobsCreatedInPeriod |Desetinné číslo |80 hodnoty percentilu data přenesená v MB pro **zálohování** úlohy vytvořené ve vybraném časovém období |
 | AsOnDateTime |Datum a čas |Nejnovější čas aktualizace pro vybraný řádek |
 | AvgBackupDurationInMinsForJobsCreatedInPeriod |Desetinné číslo |Průměrná doba v minutách pro **dokončené zálohování** úlohy vytvořené ve vybraném časovém období |
@@ -149,7 +149,7 @@ Tato tabulka obsahuje základní polí a agregací přes různé chráněné pol
 | ProtectedServerName |Text |Název chráněného serveru, na které zálohovaná položka patří |
 | RegisteredContainerId |Text |ID kontejneru zaregistrované pro zálohování |
 
-### <a name="storage"></a>Storage
+### <a name="storage"></a>Úložiště
 Tato tabulka obsahuje základní polí a agregací přes různá pole týkající se úložiště.
 
 | Pole | Typ dat | Popis |

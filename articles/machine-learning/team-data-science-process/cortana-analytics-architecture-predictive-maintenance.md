@@ -12,11 +12,11 @@ ms.date: 03/14/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=garyericson, previous-ms.author=garye
 ms.openlocfilehash: 057607a67de72fa3607f584772693a31c9448fd6
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55457730"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60303713"
 ---
 # <a name="architecture-of-the-cortana-intelligence-solution-template-for-predictive-maintenance-in-aerospace"></a>Architektura šablony řešení Cortana Intelligence pro prediktivní údržby v leteckém průmyslu
 Následující diagram obsahuje přehled architektury aplikace [šablony řešení Cortana Intelligence pro prediktivní údržbu](https://gallery.cortanaanalytics.com/SolutionTemplate/Predictive-Maintenance-for-Aerospace-1).

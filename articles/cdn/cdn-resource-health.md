@@ -1,6 +1,6 @@
 ---
-title: Monitorování stavu prostředků Azure CDN | Microsoft Docs
-description: Naučte se monitorovat stav svých prostředků Azure CDN pomocí Azure Resource Health.
+title: Monitorování stavu prostředků Azure CDN | Dokumentace Microsoftu
+description: Zjistěte, jak monitorovat stav svých prostředků Azure CDN pomocí Azure Resource Health.
 services: cdn
 documentationcenter: .net
 author: zhangmanling
@@ -14,54 +14,54 @@ ms.tgt_pltfrm: na
 ms.workload: integration
 ms.date: 01/23/2017
 ms.author: mazha
-ms.openlocfilehash: 37fe208f5087f318e665e76825127854b4a11c98
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: ad4bf7ae97a08f89b9d82e1d4e025a5bd5d47fc1
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23842892"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60324669"
 ---
 # <a name="monitor-the-health-of-azure-cdn-resources"></a>Monitorování stavu prostředků Azure CDN
   
-Stav Azure CDN prostředku je podmnožinou [stavu prostředků Azure](../resource-health/resource-health-overview.md).  Stav prostředků Azure můžete sledovat stav CDN prostředků a přijímat řešitelné pokyny k odstraňování problémů.
+Azure CDN Resource health je podmnožinou [Azure resource health](../resource-health/resource-health-overview.md).  Azure resource health slouží k monitorování stavu prostředků CDN a dostávat podrobné pokyny k odstraňování problémů.
 
 >[!IMPORTANT] 
->Stav prostředku Azure CDN pouze aktuálně účty pro stav globální doručování a možnosti rozhraní API.  Stav prostředku Azure CDN neověřuje jednotlivých koncových bodů CDN.
+>Stav prostředku Azure CDN pouze aktuálně účty pro stav globální doručování CDN a funkcí rozhraní API.  Stav prostředku Azure CDN neověřuje jednotlivých koncových bodů CDN.
 >
->Signály, které kanálu stav prostředku Azure CDN může být až o 15 minut zpožděna.
+>Signály, které kanálu stavu prostředků Azure CDN může být až 15 minut zpožděné.
 
-## <a name="how-to-find-azure-cdn-resource-health"></a>Postup nalezení stav prostředku Azure CDN
+## <a name="how-to-find-azure-cdn-resource-health"></a>Postup k zjištění stavu prostředků Azure CDN
 
-1. V [portál Azure](https://portal.azure.com), přejděte na svůj profil CDN.
+1. V [webu Azure portal](https://portal.azure.com), přejděte na svůj profil CDN.
 
-2. Klikněte **nastavení** tlačítko.
+2. Klikněte na tlačítko **nastavení** tlačítko.
 
     ![Tlačítko Nastavení](./media/cdn-resource-health/cdn-profile-settings.png)
 
-3. V části *podpory a řešení potíží s*, klikněte na tlačítko **stav prostředku**.
+3. V části *podpora a řešení potíží*, klikněte na tlačítko **Resource health**.
 
     ![Stav prostředku CDN](./media/cdn-resource-health/cdn-resource-health3.png)
 
 >[!TIP] 
->Můžete také vyhledat CDN prostředky uvedené v *stav prostředku* dlaždice v nástroji *Nápověda a podpora* okno.  Můžete rychle získat k *Nápověda a podpora* kliknutím v kroužku **?** v pravém horním rohu portálu.
+>Můžete také vyhledat prostředky CDN, které jsou uvedené v *Resource health* v dlaždici *Nápověda a podpora* okno.  Můžete rychle získat *Nápověda a podpora* kliknutím v kroužku **?** v pravém horním rohu portálu.
 >
 > ![Nápověda a podpora](./media/cdn-resource-health/cdn-help-support.png)
 
 ## <a name="azure-cdn-specific-messages"></a>Azure CDN konkrétní zprávy
 
-Stavy související s stav prostředku Azure CDN najdete níže.
+Stavy související s Azure CDN služba resource health najdete níže.
 
-|Zpráva | Doporučená akce |
+|Zpráva | Doporučená akce |
 |---|---|
-|Vám může mít zastavena, odebráno nebo špatně nakonfigurovaný minimálně jeden koncové body CDN | Vám může mít zastavena, odebráno nebo špatně nakonfigurovaný minimálně jeden koncové body CDN.|
-|Je nám líto, služba správy CDN není aktuálně dostupná | Pravidelně kontrolujte stav aktualizací; Pokud váš problém přetrvává po čase očekávané řešení, obraťte se na podporu.|
-|Je nám líto, že koncové body CDN může být ovlivněno probíhající problémy s některé z našich poskytovatelů CDN | Pravidelně kontrolujte stav aktualizací; Pomocí nástroje Poradce při potížích se dozvíte, jak k testování počátečního a koncového bodu CDN; Pokud váš problém přetrvává po čase očekávané řešení, obraťte se na podporu. |
-|Je nám líto, změny konfigurace koncového bodu CDN pozorují zpoždění šíření | Pravidelně kontrolujte stav aktualizací; Pokud vaše změny konfigurace nebudou rozšířeny plně v očekávaném čase, kontaktujte podporu.|
-|Je nám líto, že nemůžeme mají problémy načítání na doplňkovém portálu | Pravidelně kontrolujte stav aktualizací; Pokud váš problém přetrvává po čase očekávané řešení, obraťte se na podporu.|
-Je nám líto, že nemůžeme mají problémy se některé z našich poskytovatelů CDN | Pravidelně kontrolujte stav aktualizací; Pokud váš problém přetrvává po čase očekávané řešení, obraťte se na podporu. |
+|Možná jste zastavili, odebrali nebo chybně nakonfigurovali nejméně jeden koncový bod CDN. | Možná jste zastavili, odebrali nebo chybně nakonfigurovali nejméně jeden koncový bod CDN.|
+|Je nám líto, ale služba pro správu CDN není aktuálně k dispozici. | Kontrolujte stav aktualizací; Pokud váš problém nevyřeší ani po očekávané době řešení, obraťte se na podporu.|
+|Je nám líto, ale na koncové body CDN můžou mít vliv aktuální problémy s některými z našich poskytovatelů CDN. | Kontrolujte stav aktualizací; Použijte nástroj řešení potíží se naučíte testování původu a koncový bod CDN; Pokud váš problém nevyřeší ani po očekávané době řešení, obraťte se na podporu. |
+|Je nám líto, ale při šíření změn konfigurace koncových bodů CDN dochází ke zpožděním. | Kontrolujte stav aktualizací; Pokud se změny konfigurace plně nerozšíří v očekávaném čase, obraťte se na podporu.|
+|Je nám líto, ale objevují se problémy při načítání doplňkového portálu. | Kontrolujte stav aktualizací; Pokud váš problém nevyřeší ani po očekávané době řešení, obraťte se na podporu.|
+Je nám líto, ale setkáváme se s problémy u některých z našich poskytovatelů CDN. | Kontrolujte stav aktualizací; Pokud váš problém nevyřeší ani po očekávané době řešení, obraťte se na podporu. |
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
-- [Přečtěte si přehled o stavu prostředků Azure.](../resource-health/resource-health-overview.md)
-- [Řešení problémů s kompresí CDN](./cdn-troubleshoot-compression.md)
-- [Řešení problémů s chyb 404](./cdn-troubleshoot-endpoint.md)
+- [Přečtěte si přehled o stavu prostředků Azure](../resource-health/resource-health-overview.md)
+- [Řešení potíží s kompresí CDN](./cdn-troubleshoot-compression.md)
+- [Řešení potíží s chyby 404](./cdn-troubleshoot-endpoint.md)

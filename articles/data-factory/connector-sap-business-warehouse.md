@@ -13,11 +13,11 @@ ms.topic: conceptual
 ms.date: 08/07/2018
 ms.author: jingwang
 ms.openlocfilehash: 9a0abcd70b4aeb2369604bafa924136122206e0a
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54022276"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60309109"
 ---
 # <a name="copy-data-from-sap-business-warehouse-using-azure-data-factory"></a>Kopírování dat z řešení SAP Business Warehouse pomocí Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -181,9 +181,9 @@ Kopírování dat ze SAP BW, se používají následující mapování z datový
 | LRAW | Byte[] |
 | PREC | Int16 |
 | QUAN | Decimal |
-| NEZPRACOVANÉ | Byte[] |
+| RAW | Byte[] |
 | RAWSTRING | Byte[] |
-| ŘETĚZEC | String |
+| STRING | String |
 | JEDNOTKA | String |
 | DAT | String |
 | NUMC | String |

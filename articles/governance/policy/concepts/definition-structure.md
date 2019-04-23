@@ -9,11 +9,11 @@ ms.service: azure-policy
 manager: carmonm
 ms.custom: seodec18
 ms.openlocfilehash: 7bb25aa1f77a49363fe2e08d1430282b9b33caae
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59549350"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60311637"
 ---
 # <a name="azure-policy-definition-structure"></a>Struktura definic Azure Policy
 
@@ -287,7 +287,7 @@ V následujícím příkladu `concat` slouží k vytváření vyhledávacího po
 }
 ```
 
-### <a name="value"></a>Hodnota
+### <a name="value"></a>Value
 
 Podmínky lze vybrat také pomocí **hodnota**. **Hodnota** zkontroluje podmínky proti [parametry](#parameters), [podporované šablony funkce](#policy-functions), nebo literály.
 **Hodnota** je spárovaná s žádným nepodporuje [podmínku](#conditions).

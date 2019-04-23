@@ -2,7 +2,6 @@
 title: Použití sady Azure Toolkit pro IntelliJ s Hortonworks Sandbox
 description: Zjistěte, jak pomocí nástrojů HDInsight v sadě Azure Toolkit pro IntelliJ s Hortonworks Sandbox.
 keywords: nástroje hadoop, hive query, intellij, hortonworks sandbox, sada azure toolkit pro intellij
-services: hdinsight
 author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
@@ -11,11 +10,11 @@ ms.topic: conceptual
 ms.date: 05/16/2018
 ms.author: hrasheed
 ms.openlocfilehash: 98f22f531ca15bf88cd7d0a9add2851651e2eec7
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
-ms.translationtype: MT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58118319"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60343285"
 ---
 # <a name="use-hdinsight-tools-for-intellij-with-hortonworks-sandbox"></a>Použití nástrojů HDInsight pro IntelliJ s Hortonworks Sandbox
 
