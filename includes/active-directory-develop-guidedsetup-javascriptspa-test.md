@@ -16,7 +16,7 @@ ms.author: nacanuma
 ms.custom: include file
 ms.openlocfilehash: c13c9ece54d512adf271532a4ac17876a88d733e
 ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/18/2019
 ms.locfileid: "59803746"
