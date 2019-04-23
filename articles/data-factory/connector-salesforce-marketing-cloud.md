@@ -13,11 +13,11 @@ ms.topic: conceptual
 ms.date: 01/09/2019
 ms.author: jingwang
 ms.openlocfilehash: de472cd25997b0c48f258927b2617c2399b2bb21
-ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54353358"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60405439"
 ---
 # <a name="copy-data-from-salesforce-marketing-cloud-using-azure-data-factory-preview"></a>Kopírování dat z cloudu marketingových Salesforce pomocí Azure Data Factory (Preview)
 

@@ -15,12 +15,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c02f094def3828d0839025f4b7dea48ee64adcc8
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 3346f7a5af2a22cb7b7ece312fc367a874095668
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57543182"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60410720"
 ---
 # <a name="developer-guidance-for-azure-active-directory-conditional-access"></a>Informace pro vývojáře pro podmíněný přístup Azure Active Directory
 
@@ -104,7 +104,7 @@ Následující části popisují běžných scénářů, které jsou složitěj�
 
 ## <a name="scenario-app-performing-the-on-behalf-of-flow"></a>Scénář: Aplikace provádí tok on-behalf-of
 
-V tomto scénáři provedeme tento případ, ve kterém nativní aplikace volá webové služby nebo rozhraní API. Pak tato služba nemá [he "on-behalf-of" toku k volání příjem dat služby. V našem případě jsme použili naše zásady podmíněného přístupu u podřízené služby (webové rozhraní API 2) a používají nativní aplikace namísto aplikace typu server/démon. 
+V tomto scénáři provedeme tento případ, ve kterém nativní aplikace volá webové služby nebo rozhraní API. Pak tato služba nemá tok "on-behalf-of" volat podřízené služby. V našem případě jsme použili naše zásady podmíněného přístupu u podřízené služby (webové rozhraní API 2) a používají nativní aplikace namísto aplikace typu server/démon. 
 
 ![Aplikace provádí vývojový diagram on-behalf-of](./media/conditional-access-dev-guide/app-performing-on-behalf-of-scenario.png)
 
@@ -145,7 +145,7 @@ claims={"access_token":{"polids":{"essential":true,"Values":["<GUID>"]}}}
 
 ![Aplikace přístup k více službám požaduje nový token](./media/conditional-access-dev-guide/app-accessing-multiple-services-new-token.png)
 
-Pokud aplikace používá knihovnu ADAL, nepovedlo se získat token je vždy opakovat interaktivně. Pokud dojde k této interaktivní žádosti, koncový uživatel má příležitost k zajištění souladu s podmíněným přístupem. To platí, pokud je žádost `AcquireTokenSilentAsync` nebo `PromptBehavior.Never` v takovém případě musí aplikace provádět interaktivní ```AcquireToken``` požadavku poskytnout příležitosti k zajištění souladu se zásadami koncového užívání.
+Pokud aplikace používá knihovnu ADAL, nepovedlo se získat token je vždy opakovat interaktivně. Pokud dojde k této interaktivní žádosti, koncový uživatel má příležitost k zajištění souladu s podmíněným přístupem. To platí, pokud je žádost `AcquireTokenSilentAsync` nebo `PromptBehavior.Never` v takovém případě musí aplikace provádět interaktivní ```AcquireToken``` požadavku poskytnout koncovému uživateli možnost pro dosažení souladu se zásadami.
 
 ## <a name="scenario-single-page-app-spa-using-adaljs"></a>Scénář: Jednostránkové aplikace (SPA) pomocí ADAL.js
 

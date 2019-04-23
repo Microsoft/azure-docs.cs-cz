@@ -11,11 +11,11 @@ ms.date: 12/06/2018
 ms.author: davidmu
 ms.subservice: B2C
 ms.openlocfilehash: 265f1405a8779cdca101f18cf37b64f1933c2ff3
-ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58400752"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60419170"
 ---
 # <a name="configure-the-resource-owner-password-credentials-flow-in-azure-active-directory-b2c-using-a-custom-policy"></a>Konfigurace tok vlastníka prostředku heslo přihlašovacích údajů v Azure Active Directory B2C pomocí vlastních zásad
 
@@ -267,11 +267,11 @@ Generovat volání rozhraní API pomocí aplikace pro vývoj oblíbených rozhra
 - Nahraďte `your-tenant-name` s názvem vašeho tenanta Azure AD B2C.
 - Nahraďte `B2C_1A_ROPC_Auth` úplným názvem zásady pověření heslo vlastníka prostředku.
 
-| Klíč | Hodnota |
+| Klíč | Value |
 | --- | ----- |
 | uživatelské jméno | `user-account` |
-| heslo | `password1` |
-| grant_type | heslo |
+| password | `password1` |
+| grant_type | password |
 | scope | openid `application-id` offline_access |
 | client_id | `application-id` |
 | response_type | Token požadavku id_token |
@@ -312,7 +312,7 @@ Vytvoření volání POST podobný tomu, který je vidět tady. Pomocí informac
 - Nahraďte `your-tenant-name` s názvem vašeho tenanta Azure AD B2C.
 - Nahraďte `B2C_1A_ROPC_Auth` úplným názvem zásady pověření heslo vlastníka prostředku.
 
-| Klíč | Hodnota |
+| Klíč | Value |
 | --- | ----- |
 | grant_type | refresh_token |
 | response_type | id_token |

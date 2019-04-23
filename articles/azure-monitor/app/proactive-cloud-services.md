@@ -14,11 +14,11 @@ ms.date: 06/07/2018
 ms.reviewer: harelbr
 ms.author: mbullwin
 ms.openlocfilehash: 219ba632d7688f1a428378309828b689698d2fe5
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54019470"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60409501"
 ---
 # <a name="alert-on-issues-in-azure-cloud-services-using-the-azure-diagnostics-integration-with-azure-application-insights"></a>Upozornění na problémy v Azure Cloud Services pomocí integrace diagnostiky Azure pomocí Azure Application Insights
 

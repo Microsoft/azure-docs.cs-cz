@@ -15,11 +15,11 @@ ms.topic: conceptual
 ms.date: 11/26/2018
 ms.author: pbutlerm
 ms.openlocfilehash: 99c41dc010ae589cc43c093646fd1c05c1333f7e
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54265120"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60342810"
 ---
 # <a name="windows-remote-management-over-https"></a>Vzdálená správa Windows přes protokol HTTPS
 

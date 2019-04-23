@@ -15,17 +15,17 @@ ms.workload: na
 ms.date: 01/25/2019
 ms.author: juliako
 ms.openlocfilehash: 7e668852346de1b48bd34658dea001435ba8a625
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57842205"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60405473"
 ---
 # <a name="cli-example-create-an-azure-media-services-account"></a>Příklad rozhraní příkazového řádku: Vytvoření účtu Azure Media Services
 
 Skript Azure CLI v tomto tématu znázorňuje, jak vytvořit účet služby Azure Media Services. 
 
-Účet Media Services a všechny přidružené úložiště účty musí být ve stejném předplatném Azure. Doporučujeme použít účty úložiště ve stejném umístění jako účet Media Services.
+Účet Media Services a všechny přidružené účty úložiště musí být ve stejném předplatném Azure. Doporučujeme použít účty úložiště ve stejném umístění jako účet Media Services.
 
 [!INCLUDE [media-services-cli-instructions.md](../../../../includes/media-services-cli-instructions.md)]
 

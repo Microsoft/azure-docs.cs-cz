@@ -15,11 +15,11 @@ ms.workload: infrastructure
 ms.date: 11/30/2018
 ms.author: jdial
 ms.openlocfilehash: 346299dff8354bfca56a1f348c8f66e90da89632
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54020825"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60391395"
 ---
 # <a name="quickstart-create-a-virtual-network-using-the-azure-portal"></a>Rychlý start: Vytvoření virtuální sítě pomocí Portálu Azure
 
@@ -37,13 +37,13 @@ Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 
 1. V **vytvořit virtuální síť**, zadejte nebo vyberte tyto informace:
 
-    | Nastavení | Hodnota |
+    | Nastavení | Value |
     | ------- | ----- |
-    | Název | Zadejte *myVirtualNetwork*. |
+    | Name | Enter *myVirtualNetwork*. |
     | Adresní prostor | Zadejte *10.1.0.0/16*. |
     | Předplatné | Vyberte své předplatné.|
     | Skupina prostředků | Vyberte **vytvořit nový**, zadejte *myResourceGroup*a pak vyberte **OK**. |
-    | Umístění | Vyberte **USA – východ**.|
+    | Location | Vyberte **USA – východ**.|
     | Podsíť - Name | Zadejte *myVirtualSubnet*. |
     | Podsíť – Rozsah adres | Zadejte *10.1.0.0/24*. |
 
@@ -59,13 +59,13 @@ Vytvořte ve virtuální síti dva virtuální počítače:
 
 1. V **vytvořit virtuální počítač – základní informace o**, zadejte nebo vyberte tyto informace:
 
-    | Nastavení | Hodnota |
+    | Nastavení | Value |
     | ------- | ----- |
     | **PODROBNOSTI O PROJEKTU** | |
     | Předplatné | Vyberte své předplatné. |
     | Skupina prostředků | Vyberte **MyResourceGroup**. Jste vytvořili v předchozí části. |
     | **PODROBNOSTI O INSTANCI** |  |
-    | Název virtuálního počítače | Zadejte *myVm1*. |
+    | Název virtuálního počítače | Enter *myVm1*. |
     | Oblast | Vyberte **USA – východ**. |
     | Možnosti dostupnosti | Ponechte výchozí nastavení **žádné redundance infrastruktury požadované**. |
     | Image | Ponechte výchozí nastavení **systému Windows Server 2016 Datacenter**. |
@@ -85,7 +85,7 @@ Vytvořte ve virtuální síti dva virtuální počítače:
 
 1. V **vytvoření virtuálního počítače – sítě**, vyberte tyto informace:
 
-    | Nastavení | Hodnota |
+    | Nastavení | Value |
     | ------- | ----- |
     | Virtuální síť | Ponechte výchozí nastavení **myVirtualNetwork**. |
     | Podsíť | Ponechte výchozí nastavení **myVirtualSubnet (10.1.0.0/24)**. |
@@ -99,9 +99,9 @@ Vytvořte ve virtuální síti dva virtuální počítače:
 
 1. V **vytvořit účet úložiště**, zadejte nebo vyberte tyto informace:
 
-    | Nastavení | Hodnota |
+    | Nastavení | Value |
     | ------- | ----- |
-    | Název | Zadejte *myvmstorageaccount*. |
+    | Name | Zadejte *myvmstorageaccount*. |
     | Account kind (Druh účtu) | Ponechte výchozí nastavení **úložiště (verze 1 pro obecné účely)**. |
     | Výkon | Ponechte výchozí nastavení **standardní**. |
     | Replikace | Ponechte výchozí nastavení **místně redundantní úložiště (LRS)**. |

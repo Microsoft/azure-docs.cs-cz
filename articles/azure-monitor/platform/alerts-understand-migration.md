@@ -8,11 +8,11 @@ ms.date: 03/19/2018
 ms.author: snmuvva
 ms.subservice: alerts
 ms.openlocfilehash: a45a0cff606bc854924d5da0841b26e1cb9031bb
-ms.sourcegitcommit: 956749f17569a55bcafba95aef9abcbb345eb929
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58632129"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60347596"
 ---
 # <a name="understand-how-the-migration-tool-works"></a>Pochopit, jak funguje nástroj pro migraci
 

@@ -16,18 +16,18 @@ ms.topic: conceptual
 ms.date: 06/22/2018
 ms.author: ergreenl
 ms.openlocfilehash: 1102a8c80b0040c7044d64c674d956d339238623
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58086645"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60417346"
 ---
 # <a name="join-a-red-hat-enterprise-linux-7-virtual-machine-to-a-managed-domain"></a>Připojení virtuálního počítače Red Hat Enterprise Linux 7 ke spravované doméně
 V tomto článku se dozvíte, jak propojit virtuální počítače s Red Hat Enterprise Linux (RHEL) 7 ke spravované doméně Azure AD Domain Services.
 
 [!INCLUDE [active-directory-ds-prerequisites.md](../../includes/active-directory-ds-prerequisites.md)]
 
-## <a name="before-you-begin"></a>Před zahájením
+## <a name="before-you-begin"></a>Než začnete
 K provádění úkolů uvedených v tomto článku, budete potřebovat:  
 1. Platný **předplatného Azure**.
 2. **Adresář Azure AD** – buď synchronizaci s místním adresářem nebo výhradně cloudový adresář.

@@ -14,11 +14,11 @@ ms.date: 05/02/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 4aba7aadbe92b6c4f0ab417785e230bb6a6823df
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59523422"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60486579"
 ---
 # <a name="move-data-from-an-ftp-server-by-using-azure-data-factory"></a>Přesun dat pomocí služby Azure Data Factory ze serveru FTP
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -69,7 +69,7 @@ Následující tabulka popisuje elementy JSON jsou specifické pro službu FTP p
 | hostitel |Zadejte název nebo IP adresu serveru FTP. |Ano |&nbsp; |
 | authenticationType. |Zadejte typ ověřování. |Ano |Basic, anonymní |
 | uživatelské jméno |Zadejte uživatele, který má přístup k serveru FTP. |Ne |&nbsp; |
-| heslo |Zadejte heslo pro uživatele (uživatelské jméno). |Ne |&nbsp; |
+| password |Zadejte heslo pro uživatele (uživatelské jméno). |Ne |&nbsp; |
 | encryptedCredential |Zadejte šifrované přihlašovací údaje pro přístup k serveru FTP. |Ne |&nbsp; |
 | gatewayName |Zadejte název brány v brána správy dat pro připojení k serveru FTP na místě. |Ne |&nbsp; |
 | port |Zadejte port, na kterém naslouchá FTP server. |Ne |21 |

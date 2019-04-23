@@ -17,11 +17,11 @@ ms.date: 07/12/2018
 ms.author: cynthn
 ms.subservice: disks
 ms.openlocfilehash: 18730f662f36000e1efc826c35bebde79dbf0e79
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58013614"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60328778"
 ---
 # <a name="convert-azure-managed-disks-storage-from-standard-to-premium-or-premium-to-standard"></a>Převést Azure spravované diskové úložiště úroveň ze Standard na Premium a Premium na Standard
 
@@ -29,7 +29,7 @@ Existují čtyři [typy disků](disks-types.md) Azure spravované disky: Azure U
 
 Tento článek ukazuje, jak převést spravovaných disků z úrovně Standard na Premium a Premium na Standard s využitím rozhraní příkazového řádku Azure. Pro instalaci nebo upgrade nástroj, najdete v článku [instalace Azure CLI](/cli/azure/install-azure-cli).
 
-## <a name="before-you-begin"></a>Před zahájením
+## <a name="before-you-begin"></a>Než začnete
 
 * Převod disku vyžaduje restartování virtuálního počítače (VM), proto naplánujte migraci diskové úložiště během už existujícího časového období údržby.
 * Pro nespravované disky první [převod na managed disks](convert-unmanaged-to-managed-disks.md) tak můžete přepínat mezi možnostmi úložiště.

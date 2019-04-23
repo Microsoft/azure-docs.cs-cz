@@ -14,11 +14,11 @@ ms.date: 03/16/2018
 ms.reviewer: mazhar
 ms.author: mbullwin
 ms.openlocfilehash: 6119f1116d255f7cd2a2bfc20e86eeca9e5dfe82
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54121154"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60523490"
 ---
 # <a name="walkthrough-enabling-telemetry-for-microsoft-dynamics-crm-online-using-application-insights"></a>Průvodce: Zapnutí Telemetrie pro Microsoft Dynamics CRM Online pomocí Application Insights
 V tomto článku se dozvíte, jak získat telemetrická data z [Microsoft Dynamics CRM Online](https://www.dynamics.com/) pomocí [Azure Application Insights](https://azure.microsoft.com/services/application-insights/). Provedeme procesem kompletní proces přidávání skript Application Insights do vaší aplikace, zachycení dat a vizualizace dat.
@@ -44,7 +44,7 @@ Pro monitorování vaší aplikace, přidejte sadu Application Insights SDK do v
 1. Otevřete instanci CRM Online a přihlášení s oprávněními správce.
 2. Otevřete Microsoft Dynamics CRM nastavení přizpůsobení, přizpůsobení systému
 
-    ![Nastavení aplikace Microsoft Dynamics CRM](./media/sample-mscrm/00001.png)
+    ![Microsoft Dynamics CRM settings](./media/sample-mscrm/00001.png)
 
     ![Nastavení > Přizpůsobení](./media/sample-mscrm/00002.png)
 

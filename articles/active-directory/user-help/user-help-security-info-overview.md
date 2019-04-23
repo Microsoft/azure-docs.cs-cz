@@ -13,11 +13,11 @@ ms.date: 02/11/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 234c7244f438926f43ddf31234a38c9034a6ca52
-ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56453221"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60473222"
 ---
 # <a name="security-info-preview-overview"></a>Přehled bezpečnostních údajů (Preview)
 Můžete nastavit dvoustupňové ověřování a resetování hesla na své bezpečnostní údaje **bezpečnostní údaje** stránky. Můžete také upravit své bezpečnostní údaje a změnit výchozí metodu z této stránky

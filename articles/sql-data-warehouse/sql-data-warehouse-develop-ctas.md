@@ -12,11 +12,11 @@ ms.author: mlee3gsd
 ms.reviewer: jrasnick
 ms.custom: seoapril2019
 ms.openlocfilehash: c8e9f3ccdfaee64f75443f6a4eb89a3df7c48b0e
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59680090"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60403704"
 ---
 # <a name="create-table-as-select-ctas-in-azure-sql-data-warehouse"></a>Vytvoření TABLE AS SELECT (CTAS) ve službě Azure SQL Data Warehouse
 

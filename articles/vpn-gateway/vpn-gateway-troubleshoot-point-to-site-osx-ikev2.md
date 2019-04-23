@@ -16,11 +16,11 @@ ms.workload: infrastructure-services
 ms.date: 03/27/2018
 ms.author: alzam
 ms.openlocfilehash: 0c058cb6547d67469d3138dc331b6181c07e6e65
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53087520"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60457034"
 ---
 # <a name="troubleshoot-point-to-site-vpn-connections-from-mac-os-x-vpn-clients"></a>Řešení potíží s připojeními Point-to-Site VPN z klientů se systémem Mac OS X VPN
 
@@ -63,7 +63,7 @@ Tento článek pomáhá řešit problémy s připojením Point-to-Site v Mac OS 
 
 Pokud je všechno správně nastavené, opakujte předchozí kroky Stáhnout [Wireshark](https://www.wireshark.org/#download) a proveďte zachycení paketů.
 
-1. Filtrovat podle *isakmp* a podívejte se na **IKE_SA** paketů. Je třeba podívat na podrobnosti návrh přidružení zabezpečení v rámci **datová část: přidružení zabezpečení**. 
+1. Filtrovat podle *isakmp* a podívejte se na **IKE_SA** paketů. Je třeba podívat na podrobnosti návrh přidružení zabezpečení v rámci **datové části: Nabídky přidružení zabezpečení**. 
 2. Ověřte, že klient a server mají společnou sadu.
 
    ![paketů](./media/vpn-gateway-troubleshoot-point-to-site-osx-ikev2/packet5.jpg) 

@@ -13,11 +13,11 @@ ms.topic: conceptual
 ms.date: 02/01/2019
 ms.author: jingwang
 ms.openlocfilehash: 3fa7612b9e4cd8a714e60879229bd0d39349494f
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57441436"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60405922"
 ---
 # <a name="copy-data-from-and-to-oracle-by-using-azure-data-factory"></a>Kopírování dat z a do databáze Oracle pomocí služby Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -58,7 +58,7 @@ Následující vlastnosti jsou podporovány pro Oracle propojenou službu.
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
 | type | Vlastnost type musí být nastavená na **Oracle**. | Ano |
-| připojovací řetězec | Určuje informace potřebné pro připojení k instanci databáze Oracle. <br/>Označte toto pole jako SecureString bezpečně uložit ve službě Data Factory. Heslo můžete také vložit do služby Azure Key Vault a o přijetí změn `password` konfigurace z připojovacího řetězce. Podívejte se na následující ukázky a [Store přihlašovacích údajů ve službě Azure Key Vault](store-credentials-in-key-vault.md) článku s dalšími podrobnostmi. <br><br>**Podporovaný typ připojení**: Můžete použít **Oracle SID** nebo **název služby Oracle** k identifikaci vaší databáze:<br>– Pokud používáte SID: `Host=<host>;Port=<port>;Sid=<sid>;User Id=<username>;Password=<password>;`<br>– Pokud používáte název služby: `Host=<host>;Port=<port>;ServiceName=<servicename>;User Id=<username>;Password=<password>;` | Ano |
+| connectionString | Určuje informace potřebné pro připojení k instanci databáze Oracle. <br/>Označte toto pole jako SecureString bezpečně uložit ve službě Data Factory. Heslo můžete také vložit do služby Azure Key Vault a o přijetí změn `password` konfigurace z připojovacího řetězce. Podívejte se na následující ukázky a [Store přihlašovacích údajů ve službě Azure Key Vault](store-credentials-in-key-vault.md) článku s dalšími podrobnostmi. <br><br>**Podporovaný typ připojení**: Můžete použít **Oracle SID** nebo **název služby Oracle** k identifikaci vaší databáze:<br>– Pokud používáte SID: `Host=<host>;Port=<port>;Sid=<sid>;User Id=<username>;Password=<password>;`<br>– Pokud používáte název služby: `Host=<host>;Port=<port>;ServiceName=<servicename>;User Id=<username>;Password=<password>;` | Ano |
 | connectVia | [Prostředí integration runtime](concepts-integration-runtime.md) se použije k připojení k úložišti. Můžete použít modul Integration Runtime nebo prostředí Azure Integration Runtime (Pokud vaše úložiště dat je veřejně dostupná). Pokud není zadán, použije výchozí prostředí Azure Integration Runtime. |Ne |
 
 >[!TIP]
@@ -238,7 +238,7 @@ Pro kopírování dat do databáze Oracle, nastavte typ jímky v aktivitě kopí
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
 | type | Nastavte vlastnost typ jímky aktivity kopírování **třídě OracleSink**. | Ano |
-| WriteBatchSize | Vloží data do tabulky SQL writeBatchSize dosáhne velikosti vyrovnávací paměti.<br/>Povolené hodnoty jsou Integer (počet řádků). |Ne (výchozí hodnota je 10 000) |
+| writeBatchSize | Vloží data do tabulky SQL writeBatchSize dosáhne velikosti vyrovnávací paměti.<br/>Povolené hodnoty jsou Integer (počet řádků). |Ne (výchozí hodnota je 10 000) |
 | writeBatchTimeout | Čekací doba pro dávkové operace insert dokončit před vypršením časového limitu.<br/>Povolené jsou hodnoty Timespan. Příkladem je 00:30:00 (30 minut). | Ne |
 | preCopyScript | Zadejte dotaz SQL pro aktivitu kopírování ke spuštění před zápisu dat do Oracle při každém spuštění. Tuto vlastnost můžete použít k vyčištění dat předem. | Ne |
 

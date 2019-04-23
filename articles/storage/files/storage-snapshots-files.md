@@ -9,11 +9,11 @@ ms.date: 01/17/2018
 ms.author: renash
 ms.subservice: files
 ms.openlocfilehash: 8d6bca12ae1df0cab7be3e1c54467d32063bacaf
-ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57195285"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60444091"
 ---
 # <a name="overview-of-share-snapshots-for-azure-files"></a>Přehled snímků sdílených složek pro soubory Azure 
 Služba soubory Azure umožňuje využít snímky sdílené složky nebo sdílené složky. Sdílejte zachytávání snímků sdílené složky stavu v daném okamžiku v čase. V tomto článku popisujeme, jaké možnosti poskytuje snímky sdílené složky a jak můžete využít z nich ve vašem případě vlastní použití.

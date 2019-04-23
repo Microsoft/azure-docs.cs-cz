@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 02/28/2019
 ms.author: banders
 ms.openlocfilehash: be8c7fcebca224196d9eac7d22387989b1bdfd46
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57890929"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60371920"
 ---
 # <a name="get-billing-ownership-of-azure-subscriptions-from-other-users"></a>Získat fakturační vlastnictví předplatného Azure od jiných uživatelů
 
@@ -35,16 +35,16 @@ Tento článek se týká fakturační účet Microsoft zákaznické smlouvy. [Za
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 
-2. Hledat na **Cost Management a fakturace**.
+2. Vyhledejte **Cost Management a fakturace**.
 
    ![Snímek obrazovky zobrazující Azure portal vyhledejte Správa nákladů a fakturace](./media/billing-mca-request-billing-ownership/billing-search-cost-management-billing.png)
 
-3. Přejděte do části faktury. V závislosti na přístup budete muset vybrat fakturační účet nebo fakturační profil. Fakturace účtu nebo profil, vyberte **fakturovat oddíly** a potom část faktury.
+3. Přejděte do oddílu faktury. V závislosti na přístup budete muset vybrat fakturační účet nebo fakturační profil. Fakturace účtu nebo profil, vyberte **fakturovat oddíly** a potom část faktury.
    <!-- Todo - Add a screenshot -->
 
 4. Vyberte **o převod** ze strany vlevo.
 
-5. V horní části stránky vyberte **přidat**.
+5. V horní části stránky vyberte **Přidat**.
 
 6. Zadejte e-mailová adresa uživatele, který požadujete vlastnictví fakturace z. Uživatel musí být účet správce na fakturační účet programu služeb Microsoft Online Service nebo vlastníkem účtu v rámci smlouvy Enterprise. Další informace najdete v tématu [zobrazit vaše fakturační účty na webu Azure portal](billing-view-all-accounts.md).
 
@@ -64,11 +64,11 @@ Tento článek se týká fakturační účet Microsoft zákaznické smlouvy. [Za
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 
-2. Hledat na **Cost Management a fakturace**.
+2. Vyhledejte **Cost Management a fakturace**.
 
    ![Snímek obrazovky zobrazující Azure portal vyhledejte Správa nákladů a fakturace](./media/billing-mca-request-billing-ownership/billing-search-cost-management-billing.png)
 
-3. Přejděte do části faktury. V závislosti na přístup budete muset vybrat fakturační účet nebo fakturační profil. Fakturace účtu nebo profil, vyberte **fakturovat oddíly** a potom část faktury.
+3. Přejděte do oddílu faktury. V závislosti na přístup budete muset vybrat fakturační účet nebo fakturační profil. Fakturace účtu nebo profil, vyberte **fakturovat oddíly** a potom část faktury.
    <!-- Todo - Add a screenshot -->
 
 4. Vyberte **o převod** ze strany vlevo.

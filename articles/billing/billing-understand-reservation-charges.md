@@ -1,7 +1,6 @@
 ---
 title: Vysvětlení rezervace slevy pro Azure SQL Database | Dokumentace Microsoftu
 description: Zjistěte, jak sleva za rezervaci se použije ke spouštění databází Azure SQL Database.
-services: billing
 documentationcenter: ''
 author: yashesvi
 manager: yashar
@@ -11,22 +10,28 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/08/2018
+ms.date: 04/13/2019
 ms.author: banders
-ms.openlocfilehash: aa4fc43efab8c168fd5351ec60def7a3d0eefada
-ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
+ms.openlocfilehash: 4b4c6b390e9b3a0cf764f998523fe3c1cdc66026
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58649437"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60370283"
 ---
-# <a name="understand-how-a-reservation-discount-is-applied-to-azure-sql-databases"></a>Vysvětlení, jak se sleva za rezervaci použije k Azure SQL Database.
+# <a name="how-a-reservation-discount-is-applied-to-azure-sql-databases"></a>Jak se sleva za rezervaci použije k Azure SQL Database.
 
 Po nákupu Azure SQL Database vyhrazené kapacity sleva za rezervaci se automaticky využije na databáze SQL, které odpovídají atributy a množství rezervace. Rezervace pokrývá náklady na výpočty pro SQL Database. Software, úložiště a sítě vám budeme účtovat za běžné sazby. Může zahrnovat náklady na licencování pro SQL Database s [zvýhodněné hybridní využití Azure](https://azure.microsoft.com/pricing/hybrid-benefit/).
 
 Rezervované instance virtuálních počítačů najdete v části [slevy pochopit Azure Reserved VM Instances](billing-understand-vm-reservation-charges.md).
 
-## <a name="reservation-discount-applied-to-sql-databases"></a>Sleva za rezervaci u databází SQL
+## <a name="how-reservation-discount-is-applied"></a>Jak se uplatňuje sleva ve výši rezervace
+
+Sleva za rezervaci se "*použití – it nebo ztratit – it*". Ano Pokud nemáte odpovídající prostředky pro hodinu, potom ztratíte množství rezervací pro určitou hodinu. Nelze provést vpřed nevyužité vyhrazené hodin.
+
+Při vypínání prostředek sleva za rezervaci automaticky použije další odpovídající prostředek v zadaném oboru. Pokud systém nenašel žádné odpovídající prostředky v zadaném oboru, pak jsou vyhrazené hodin *ztráty*.
+
+## <a name="discount-applied-to-sql-databases"></a>Slevy u databází SQL
 
  Sleva za rezervované kapacity databáze SQL se využije ke spouštění databází SQL po hodinách. Rezervace, které můžete zakoupit odpovídá využití služby compute, protože ho vygeneroval spuštěné databáze SQL. V případě služeb SQL Database, které neběží celou hodinu, se rezervace automaticky využije pro ostatní služby SQL Database odpovídající atributům rezervace. Sleva můžete použít SQL Database. ty jsou spuštěny souběžně. Pokud nemáte k dispozici SQL Database. ty spustit pro celou hodinu odpovídající atributy rezervace, neobdržíte všech výhod sleva za rezervaci pro určitou hodinu.
 
@@ -40,7 +45,11 @@ Zbytek těchto příkladech se předpokládá, že je databáze SQL vyhrazený k
 - Scénář 3: Spusťte jeden 16jádrový procesor, SQL Database od 13: 00 do 1:30 odp. Při spouštění další 16 jader SQL Database z 1:30 do 2 hodin. Obě jsou zahrnuté do sleva za rezervaci.
 - Scénář 4: Spusťte jeden 16jádrový procesor, SQL Database od 13: 00 do 1:45 pm. Při spouštění další 16 jader SQL Database z 1:30 do 2 hodin. Vám budou účtovány průběžných platbách za překryv 15 minut. Sleva za rezervaci se vztahuje na výpočetní využití pro zbytek času.
 
-K pochopení a zobrazení aplikace vaše rezervace Azure na fakturaci využití sestav, naleznete v tématu [pochopit Azure rezervace využití](https://go.microsoft.com/fwlink/?linkid=862757).
+K pochopení a zobrazení aplikace vaše rezervace Azure na fakturaci využití sestav, naleznete v tématu [pochopit Azure rezervace využití](billing-understand-reserved-instance-usage-ea.md).
+
+## <a name="need-help-contact-us"></a>Potřebujete pomoc? Kontaktujte nás
+
+Pokud máte otázky nebo potřebujete pomoc, [vytvořit žádost o podporu](https://go.microsoft.com/fwlink/?linkid=2083458).
 
 ## <a name="next-steps"></a>Další postup
 
@@ -52,8 +61,4 @@ Další informace o rezervacích Azure, najdete v následujících článcích:
 - [Správa rezervací Azure](billing-manage-reserved-vm-instance.md)
 - [Vysvětlení využití rezervace pro vaše předplatné s průběžnými platbami](billing-understand-reserved-instance-usage.md)
 - [Vysvětlení využití rezervaci u prováděcí smlouvy Enterprise](billing-understand-reserved-instance-usage-ea.md)
-- [Vysvětlení využití rezervace pro předplatná CSP](https://docs.microsoft.com/partner-center/azure-reservations)
-
-## <a name="need-help-contact-us"></a>Potřebujete pomoc? Kontaktujte nás
-
-Pokud máte otázky nebo potřebujete pomoc, [vytvořit žádost o podporu](https://go.microsoft.com/fwlink/?linkid=2083458).
+- [Vysvětlení využití rezervace pro předplatná CSP](/partner-center/azure-reservations)

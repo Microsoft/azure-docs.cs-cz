@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.custom: seodec18
-ms.openlocfilehash: eb1c302bf1954492ba2a7a78d16fc697fdf4b687
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 381ecd4681bf1d7abfc8939e256bf84db9bc2172
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58080433"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60460546"
 ---
 # <a name="diagnose-and-troubleshoot"></a>Diagnostika a řešení potíží
 

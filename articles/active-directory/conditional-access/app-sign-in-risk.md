@@ -12,11 +12,11 @@ manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: d5defdf2d33d32042775271fe01aba377687ae75
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58891561"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60413287"
 ---
 # <a name="quickstart-block-access-when-a-session-risk-is-detected-with-azure-active-directory-conditional-access"></a>Rychlý start: Blokovat přístup, když se zjistí ohrožení relace s podmíněným přístupem Azure Active Directory  
 
@@ -55,7 +55,7 @@ Scénář v tomto rychlém startu se používá u přihlášení v prohlížeči
 
 Tato část ukazuje, jak vytvořit zásady podmíněného přístupu vyžaduje. V zásadách nastavte:
 
-| Nastavení | Hodnota |
+| Nastavení | Value |
 | --- | --- |
 | Uživatelé a skupiny | Alain Charon  |
 | Cloudové aplikace | Všechny cloudové aplikace |
@@ -78,11 +78,11 @@ Tato část ukazuje, jak vytvořit zásady podmíněného přístupu vyžaduje. 
 
 1. Na **podmíněného přístupu** klikněte na stránku, na panelu nástrojů v horní části **přidat**.
 
-   ![Název](./media/app-sign-in-risk/108.png)
+   ![Name](./media/app-sign-in-risk/108.png)
 
 1. Na **nový** stránku, **název** textové pole, typ **blokovat přístup k úrovni střední riziko**.
 
-   ![Název](./media/app-sign-in-risk/104.png)
+   ![Name](./media/app-sign-in-risk/104.png)
 
 1. V **přiřazení** klikněte na tlačítko **uživatelů a skupin**.
 

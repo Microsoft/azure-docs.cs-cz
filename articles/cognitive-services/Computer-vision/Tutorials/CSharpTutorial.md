@@ -1,22 +1,22 @@
 ---
 title: 'Ukázka: Prozkoumejte aplikace zpracování bitové kopie vC#'
-titleSuffix: Computer Vision - Cognitive Services - Azure
-description: Prozkoumejte základní aplikaci Windows, který používá rozhraní API pro počítačové zpracování obrazu ve službě Microsoft Cognitive Services. Provádějte optické rozpoznávání znaků (OCR), vytvářejte miniatury a pracujte s vizuálními funkcemi obrázku.
+titleSuffix: Azure Cognitive Services
+description: Prozkoumejte základní aplikaci Windows, který používá rozhraní API pro počítačové zpracování obrazu ve službě Azure Cognitive Services. Provádějte optické rozpoznávání znaků (OCR), vytvářejte miniatury a pracujte s vizuálními funkcemi obrázku.
 services: cognitive-services
 author: PatrickFarley
 manager: nolachar
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: sample
-ms.date: 02/08/2019
+ms.date: 04/17/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: a23e45cb1e75305f41c81077c90282352327b72d
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
+ms.openlocfilehash: 63b5130e3cade54a2fbc432b2391ad3ee1ea8a1a
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56310937"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60408156"
 ---
 # <a name="sample-explore-an-image-processing-app-with-c"></a>Ukázka: Prozkoumejte zpracování aplikace pomocí bitové kopieC#
 
@@ -33,7 +33,7 @@ Prozkoumejte základní aplikace Windows, která používá pro počítačové z
 Prozkoumáte ukázkovou aplikaci, ujistěte se, že splnění následujících požadavků:
 
 * Musíte mít [Visual Studio 2015](https://visualstudio.microsoft.com/downloads/) nebo novější.
-* Musíte mít klíč předplatného pro počítačové zpracování obrazu. Abyste získali klíč předplatného, přejděte k tématu [Jak získat klíče předplatného](../Vision-API-How-to-Topics/HowToSubscribe.md).
+* Musíte mít klíč předplatného pro počítačové zpracování obrazu. Můžete získat bezplatné zkušební verze klíče z [zkuste služby Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision). Nebo, postupujte podle pokynů v [vytvoření účtu služeb Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) k přihlášení pro počítačové zpracování obrazu a získejte klíč.
 
 ## <a name="get-the-sample-app"></a>Získání ukázkové aplikace
 

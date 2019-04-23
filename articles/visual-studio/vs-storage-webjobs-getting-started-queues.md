@@ -13,11 +13,11 @@ ms.topic: article
 ms.date: 12/02/2016
 ms.author: ghogen
 ms.openlocfilehash: f6f1a3a7f0a406e1dbb40f4bfc6a358da7ac68fa
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57999547"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60391169"
 ---
 # <a name="getting-started-with-azure-queue-storage-and-visual-studio-connected-services-webjob-projects"></a>Začínáme s Azure Queue storage a Visual Studio připojené služby (webové úlohy projektů)
 [!INCLUDE [storage-try-azure-tools-queues](../../includes/storage-try-azure-tools-queues.md)]
@@ -96,7 +96,7 @@ Můžete použít **QueueTrigger** s následujícími typy:
 ## <a name="polling-algorithm"></a>Algoritmus cyklického dotazování
 Sada SDK implementuje exponenciální regresní algoritmu náhodných aby se snížil dopad nečinné fronty dotazovat se na náklady za transakce úložiště.  Když je nalezena zpráva, sady SDK čeká dvou sekund a pak vyhledá další zprávy. Když je nalezena žádná zpráva čeká před dalším pokusem o čtyři sekundy. Po následujících neúspěšných pokusech o získání zpráv fronty dobu čekání i nadále zvyšovat, dokud nedosáhne maximální doba čekání, výchozí nastavení je jedna minuta. [Maximální doba čekání je možné konfigurovat](#how-to-set-configuration-options).
 
-## <a name="multiple-instances"></a>Více instancí
+## <a name="multiple-instances"></a>Několik instancí
 Pokud vaše webová aplikace běží na více instancí, průběžné WebJobs běží na každém počítači, a každý počítač bude čekat aktivační události a pokusí se spouštět službu functions. V některých případech to může vést k některé funkce zpracování stejných dat dvakrát takže funkce by měly být idempotentní (napsána tak, aby opakovaně volání se stejnými vstupními daty nevytvoří duplicitních výsledků).  
 
 ## <a name="parallel-execution"></a>Paralelní provádění

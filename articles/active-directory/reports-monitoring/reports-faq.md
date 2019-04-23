@@ -17,11 +17,11 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 6fc90d62f889bfd9f439a7e8955f049c6c979746
-ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58437437"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60437035"
 ---
 # <a name="frequently-asked-questions-around-azure-active-directory-reports"></a>Nejčastější dotazy týkající se sestav Azure Active Directory
 

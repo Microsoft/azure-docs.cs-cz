@@ -15,11 +15,11 @@ ms.reviewer: jairoc
 ms.custom: user-help, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: a317680a39d4594aacdf84ccdf963bb84bfbf07b
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57452018"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60473774"
 ---
 # <a name="potential-reasons-for-the-you-cant-get-there-from-here-error-message"></a>Možné důvody chybová zpráva "Se tam nelze dostat z tohoto"
 Při přístupu k interním webu aplikacím nebo službám vaší organizace, může se zobrazit chybová zpráva s upozorněním, **se tam nelze dostat z tohoto**. Tato zpráva znamená, že vaše organizace má zavést zásady zařízení brání v přístupu k prostředkům vaší organizace. Zatímco může skončit by bylo nutné kontaktovat Helpdesk chcete tento problém vyřešit, tady je pár věcí, které můžete nejdřív vyzkoušet.

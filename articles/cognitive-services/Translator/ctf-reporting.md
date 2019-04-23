@@ -11,11 +11,11 @@ ms.topic: conceptual
 ms.date: 12/14/2017
 ms.author: v-jansko
 ms.openlocfilehash: da321aa2a4db441fa5bb51e4986d00889cb7482d
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58917392"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60513715"
 ---
 # <a name="how-to-use-collaborative-translation-framework-ctf-reporting"></a>Jak použít vytváření sestav CTF (Collaborative Translation Framework)
 
@@ -36,7 +36,7 @@ Koncový bod rozhraní API CTF generování sestav https://api.microsofttranslat
 
 
 ## <a name="methods"></a>Metody
-| Název |    Popis|
+| Name |    Popis|
 |:---|:---|
 | GetUserTranslationCounts Method | Získáte počet překlady, které jsou vytvořené tímto uživatelem. |
 | GetUserTranslations Method | Načte překlady, které jsou vytvořené tímto uživatelem. |

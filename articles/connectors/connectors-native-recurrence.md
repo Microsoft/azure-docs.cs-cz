@@ -12,11 +12,11 @@ tags: connectors
 ms.topic: article
 ms.date: 01/08/2019
 ms.openlocfilehash: eb22539d1f433e396935f82e4cb3786d5699d21a
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58083950"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60447437"
 ---
 # <a name="create-and-run-recurring-tasks-and-workflows-with-azure-logic-apps"></a>Vytváření a spouštění opakovaných úloh a pracovních postupů s Azure Logic Apps
 
@@ -95,7 +95,7 @@ Aktivaci vaší aplikace logiky a spustit pouze jednou v budoucnu najdete v tém
 
 Můžete nakonfigurovat tyto vlastnosti pro trigger opakování.
 
-| Název | Požaduje se | Název vlastnosti | Type | Popis | 
+| Name | Požaduje se | Název vlastnosti | Type | Popis | 
 |----- | -------- | ------------- | ---- | ----------- | 
 | **Frekvence** | Ano | frequency | String | Jednotka času pro opakování: **Druhý**, **minutu**, **hodinu**, **den**, **týden**, nebo **měsíc** | 
 | **Interval** | Ano | interval | Integer | Kladné celé číslo, který popisuje, jak často pracovní postup spouští na základě frekvence. <p>Výchozí interval je 1. Toto jsou minimální a maximální intervaly: <p>-Měsíc: 1 – 16 měsíců </br>-Den: 1 – 500 dnů </br>-Hodinu: 1 – 12 000 hodin </br>-Minutu: 1-72,000 minut </br>-Sekundu: 1-9,999,999 sekund<p>Například pokud je interval 6 a je frekvence "Měsíc", pak opakování je každých 6 měsíců. | 

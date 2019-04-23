@@ -11,11 +11,11 @@ ms.date: 03/18/2019
 ms.author: davidmu
 ms.subservice: B2C
 ms.openlocfilehash: cf9c6f6a54c38f00e477e2a9d62e72ab5faccdef
-ms.sourcegitcommit: 72cc94d92928c0354d9671172979759922865615
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58418920"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60317968"
 ---
 # <a name="developer-notes-for-custom-policies-in-azure-active-directory-b2c"></a>Poznámky pro vývojáře pro vlastní zásady v Azure Active Directory B2C
 

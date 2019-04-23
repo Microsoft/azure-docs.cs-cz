@@ -10,11 +10,11 @@ ms.topic: article
 ms.date: 05/01/2018
 ms.author: chliang
 ms.openlocfilehash: 5ca9a0d5dcbf5b2525f547562b5838ded7441a66
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57551893"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60408277"
 ---
 # <a name="use-the-anomaly-finder-api-with-javascript"></a>Vyhledávač anomálií rozhraní API pomocí jazyka Javascript
 

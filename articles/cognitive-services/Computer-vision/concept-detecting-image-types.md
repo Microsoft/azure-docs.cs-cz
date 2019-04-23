@@ -12,11 +12,11 @@ ms.date: 03/11/2019
 ms.author: pafarley
 ms.custom: seodec18
 ms.openlocfilehash: 37cdac16a51a30bdaf1ba0266bab7fdd1f2990f0
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57895443"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60368283"
 ---
 # <a name="detecting-image-types-with-computer-vision"></a>Zjišťování typy obrázků s pro počítačové zpracování obrazu
 
@@ -26,7 +26,7 @@ S [analyzovat Image](https://westus.dev.cognitive.microsoft.com/docs/services/5a
 
 Počítačové zpracování obrazu analyzuje bitovou kopii a vyhodnotí pravděpodobnost, že image klipart na škále od 0 do 3, jak je popsáno v následující tabulce.
 
-| Hodnota | Význam |
+| Value | Význam |
 |-------|---------|
 | 0 | Není klipart |
 | 1 | Nejednoznačný |

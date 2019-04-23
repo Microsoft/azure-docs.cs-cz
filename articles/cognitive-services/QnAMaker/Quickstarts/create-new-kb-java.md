@@ -11,11 +11,11 @@ ms.topic: quickstart
 ms.date: 02/04/2019
 ms.author: diberry
 ms.openlocfilehash: ddeccd34cbdc72d76d8dd26e36a533f44a9274b8
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55866300"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60480687"
 ---
 # <a name="quickstart-create-a-knowledge-base-in-qna-maker-using-java"></a>Rychlý start: Vytvoření znalostní báze v jazyce Java pomocí nástroje QnA Maker
 

@@ -18,11 +18,11 @@ ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 6d69ddbd38798d0667ce69fb7696597a972b5098
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56166993"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60455609"
 ---
 # <a name="plan-for-hybrid-identity-lifecycle"></a>Plánování životního cyklu hybridní Identity
 Identita je jedním ze základů strategii enterprise mobility a aplikaci přístup. Jestli se přihlašujete vaše mobilní zařízení nebo aplikaci SaaS, vaše identita je klíčem k získání přístupu ke všemu, co. Na nejvyšší úrovni řešení pro správu identit zahrnuje sjednocení a synchronizaci mezi vaší identity úložišť, což zahrnuje automatizuje a centralizuje proces zřizování prostředků. Řešení identit by měl být centralizované identitou napříč místním i cloudovým a zároveň použít určitou formu federace identit pro zachovat centralizované ověřování a bezpečně sdílet a spolupracovat s externími uživateli a firmy. Prostředky v rozsahu od operačních systémů a aplikací na osoby ve ani pod něj nespadá s organizací. Organizační struktura může být upraven, aby odpovídal zřizování zásad a postupů.

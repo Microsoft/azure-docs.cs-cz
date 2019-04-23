@@ -8,11 +8,11 @@ ms.topic: article
 ms.date: 10/18/2018
 ms.author: cherylmc
 ms.openlocfilehash: ddc42023bae3403e7778327a40316462c85222c0
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58005525"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60390020"
 ---
 # <a name="create-a-route-based-vpn-gateway-using-the-azure-portal"></a>Vytvoření trasové brány VPN pomocí webu Azure portal
 

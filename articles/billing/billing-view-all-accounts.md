@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 05/11/2018
 ms.author: banders
 ms.openlocfilehash: 31e4eb1d6493c8de99ac48e09dfb2b8b6481b70a
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57854275"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60369184"
 ---
 # <a name="view-your-billing-accounts-in-azure-portal"></a>Zobrazit vaše fakturační účty na webu Azure portal  
 
@@ -39,7 +39,7 @@ Obor je uzel v rámci fakturační účet, který uživatelé použít k zobraze
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 
-2. Hledat na **Cost Management a fakturace**.
+2. Vyhledejte **Cost Management a fakturace**.
 
    ![Snímek obrazovky zobrazující Azure search na portálu](./media/billing-view-all-accounts/billing-search-cost-management-billing.png)
 

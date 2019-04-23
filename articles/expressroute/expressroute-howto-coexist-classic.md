@@ -1,5 +1,5 @@
 ---
-title: 'Konfigurace připojení VPN Site-to-Site a ExpressRoute – existovat vedle sebe: classic: Azure | Dokumentace Microsoftu'
+title: 'Konfigurace připojení typu ExpressRoute a VPN typu Site-to-Site – existovat vedle sebe: classic: Azure | Dokumentace Microsoftu'
 description: Tento článek vás provede konfigurací ExpressRoute a připojení VPN typu site-to-site, která mohou v modelu nasazení Classic existovat vedle sebe.
 documentationcenter: na
 services: expressroute
@@ -10,11 +10,11 @@ ms.date: 12/06/2018
 ms.author: charwen
 ms.custom: seodec18
 ms.openlocfilehash: 70e7c689acac094890545ac1e65374e9377a0be0
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53084205"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60370393"
 ---
 # <a name="configure-expressroute-and-site-to-site-coexisting-connections-classic"></a>Konfigurace společně používaných připojení typu Site-to-Site a ExpressRoute (Classic)
 > [!div class="op_single_selector"]

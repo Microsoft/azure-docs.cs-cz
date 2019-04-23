@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 04-04-2019
 ms.author: barbaraselden
 ms.reviewer: ''
-ms.openlocfilehash: fe8f9f271599d688878d61aee64273690d02c2b8
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
-ms.translationtype: HT
+ms.openlocfilehash: 44393f80ab6ea01f0c2f52cb01dcd6241fab3d2d
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59685761"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60442534"
 ---
 # <a name="plan-an-azure-ad-application-proxy-deployment"></a>Plánování nasazení služby Azure AD Application Proxy
 
@@ -158,7 +158,7 @@ Následující prvky návrhu by měl zvýšit úspěchu pilotního nasazení imp
 3. Pak přidejte metodu jednotného přihlašování pro vaši aplikaci a znovu otestujte ověření přístupu.
 4. Použití podmíněného přístupu a zásad MFA podle potřeby. Testování a ověřování přístupu.
 
-**Řešení potíží s nástroji**: Při odstraňování potíží, vždy začněte tím, že ověření přístupu k publikované aplikaci z prohlížeče na hostiteli konektoru a potvrďte, že aplikace funguje podle očekávání. Tím jednodušší instalaci, tím snazší tak, aby určit hlavní příčinu, proto zvažte pro reprodukci problémy s minimální konfigurací, jako je třeba použití pouze jeden konektor a bez jednotného přihlašování. V některých případech může být velmi nepostradatelnost pro řešení potíží s přístup nebo obsah v aplikacích, které jsou přístupné prostřednictvím proxy serveru webové ladění nástrojů, jako jsou společnosti Telerik Fiddler. Fiddler se mohou chovat i jako proxy server, které vám pomůžou trasování a ladění provoz pro mobilní platformy, jako je iOS a Android a prakticky cokoli, které lze nastavit na trasu přes proxy server. Zobrazit [Průvodce odstraňováním potíží](/application-proxy-troubleshoot.md) Další informace.
+**Řešení potíží s nástroji**: Při odstraňování potíží, vždy začněte tím, že ověření přístupu k publikované aplikaci z prohlížeče na hostiteli konektoru a potvrďte, že aplikace funguje podle očekávání. Tím jednodušší instalaci, tím snazší tak, aby určit hlavní příčinu, proto zvažte pro reprodukci problémy s minimální konfigurací, jako je třeba použití pouze jeden konektor a bez jednotného přihlašování. V některých případech může být velmi nepostradatelnost pro řešení potíží s přístup nebo obsah v aplikacích, které jsou přístupné prostřednictvím proxy serveru webové ladění nástrojů, jako jsou společnosti Telerik Fiddler. Fiddler se mohou chovat i jako proxy server, které vám pomůžou trasování a ladění provoz pro mobilní platformy, jako je iOS a Android a prakticky cokoli, které lze nastavit na trasu přes proxy server. Zobrazit [Průvodce odstraňováním potíží](application-proxy-troubleshoot.md) Další informace.
 
 ## <a name="implement-your-solution"></a>Implementovat řešení
 

@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 02/28/2019
 ms.author: amberb
 ms.openlocfilehash: 1e8c3e6863b9cd8f2f5ced18a57918c32c865e75
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57544592"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60372217"
 ---
 # <a name="track-azure-credit-balance-for-microsoft-customer-agreement"></a>Sledovat zůstatek kreditu Azure pro smlouvu zákazníků společnosti Microsoft
 
@@ -33,11 +33,11 @@ Tento článek se týká fakturační účet Microsoft zákaznické smlouvy. [Za
 
 1. Přihlaste se k webu [Azure Portal]( https://portal.azure.com).
 
-2. Hledat na **Cost Management a fakturace**.
+2. Vyhledejte **Cost Management a fakturace**.
 
    ![Snímek obrazovky zobrazující vyhledávání v portálu pro správu nákladů a fakturace](./media/billing-mca-check-azure-credits-balance/billing-search-cost-management-billing.png)
 
-3. Přejdete na fakturační profil. V závislosti na přístup budete muset vybrat fakturační účet. Fakturační účet, vyberte **fakturace profily** a potom fakturační profil.
+3. Přejděte na fakturační profil. V závislosti na úrovni vašeho přístupu možná budete muset vybrat fakturační účet. Fakturační účet, vyberte **fakturace profily** a potom fakturační profil.
 
 4. Vyberte **kredity Azure**.
 

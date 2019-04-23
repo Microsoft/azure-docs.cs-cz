@@ -13,11 +13,11 @@ ms.author: lizross
 ms.reviewer: olhaun
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 696b6b14b2a369e8b80ac615fc77fa7f48f51c57
-ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56959931"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60474254"
 ---
 # <a name="manually-add-an-account-to-the-app"></a>Ručně přidat účet do aplikace
 Pokud fotoaparátu nemůže zachytit kód QR, můžete ručně přidat informace o vašem účtu do aplikace Microsoft Authenticator pro dvoufaktorové ověřování. Tento postup funguje pro pracovní nebo školní účty a účty jiných společností než Microsoft.

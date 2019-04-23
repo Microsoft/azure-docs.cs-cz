@@ -15,11 +15,11 @@ ms.workload: infrastructure-services
 ms.date: 01/09/2019
 ms.author: roiyz
 ms.openlocfilehash: 5adc86b161770f2502b6ef9cf5ec2189ec3d4f99
-ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58619921"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60388671"
 ---
 # <a name="nvidia-gpu-driver-extension-for-windows"></a>Grafický procesor NVIDIA ovladač rozšíření pro Windows
 
@@ -35,7 +35,7 @@ Rozšíření je také dostupná k instalaci ovladačů NVIDIA GPU na [virtuáln
 
 Toto rozšíření podporuje následující OSs:
 
-| Distribuce | Verze |
+| Distribuce | Version |
 |---|---|
 | Windows 10 (až do verze 1803)| Jádro |
 | Windows Server 2016 | Jádro |
@@ -71,7 +71,7 @@ Následující kód JSON ukazuje schématu pro rozšíření.
 
 ### <a name="properties"></a>Vlastnosti
 
-| Název | Hodnota / příklad | Typ dat |
+| Name | Hodnota / příklad | Typ dat |
 | ---- | ---- | ---- |
 | apiVersion | 2015-06-15 | date |
 | vydavatele | Microsoft.HpcCompute | string |

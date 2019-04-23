@@ -9,11 +9,11 @@ ms.date: 2/25/2019
 ms.author: cherylmc
 ms.custom: seodec18
 ms.openlocfilehash: c4998712d77771a5600c06183a76254548289372
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58080078"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60365090"
 ---
 # <a name="configure-expressroute-direct-by-using-the-azure-cli"></a>Konfigurace ExpressRoute přímo pomocí rozhraní příkazového řádku Azure
 

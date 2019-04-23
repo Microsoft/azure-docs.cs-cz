@@ -8,16 +8,16 @@ ms.service: storage
 ms.topic: quickstart
 ms.date: 12/14/2018
 ms.author: tamram
-ms.openlocfilehash: a1a931573967f12eb7abc791bd951dc6e1e9e60b
-ms.sourcegitcommit: 5f348bf7d6cf8e074576c73055e17d7036982ddb
+ms.openlocfilehash: 8dff81d3f3594798a1b08184af0098f3bd86c12c
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2019
-ms.locfileid: "59607394"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60392037"
 ---
 # <a name="quickstart-upload-download-and-list-blobs-with-python"></a>Rychlý start: Nahrávání, stahování a výpis objektů BLOB pomocí Pythonu
 
-V tomto rychlém startu naleznete v tématu Jak používat Python k nahrání, stažení a výpis objektů BLOB bloku v kontejneru v úložišti objektů Blob v Azure. Objekty BLOB jsou jednoduché objekty, které může obsahovat jakýkoli objem textových nebo binárních dat (například obrázky, dokumenty, streamování médií, archivovat data atd.) a se liší ve službě Azure Storage ze sdílené složky, bez schématu tabulky a fronty zpráv. (Další informace najdete v tématu [Úvod do služby Azure Storage](/azure/storage/common/storage-introduction.md).)
+V tomto rychlém startu naleznete v tématu Jak používat Python k nahrání, stažení a výpis objektů BLOB bloku v kontejneru v úložišti objektů Blob v Azure. Objekty BLOB jsou jednoduché objekty, které může obsahovat jakýkoli objem textových nebo binárních dat (například obrázky, dokumenty, streamování médií, archivovat data atd.) a se liší ve službě Azure Storage ze sdílené složky, bez schématu tabulky a fronty zpráv. (Další informace najdete v tématu [Úvod do služby Azure Storage](/azure/storage/common/storage-introduction).)
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -45,7 +45,7 @@ Tento příkaz naklonuje úložiště *Azure-Samples/storage-blobs-python-quicks
 V aplikaci zadejte název účtu úložiště a klíč účtu pro vytvoření objektu `BlockBlobService`. V Průzkumníku řešení vašeho integrovaného vývojového prostředí (IDE) otevřete soubor *example.py*. Nahraďte hodnoty `accountname` a `accountkey` názvem a klíčem vašeho účtu. 
 
 ```python 
-block_blob_service = BlockBlobService(account_name='accountname', account_key='accountkey') 
+block_blob_service = BlockBlobService(account_name = 'accountname', account_key = 'accountkey') 
 ```
 
 ## <a name="run-the-sample"></a>Spuštění ukázky
@@ -92,11 +92,11 @@ Jakmile budete mít CloudBlobContainer, vytvořte instanci objektu **CloudBlockB
 V této části vytvoříte instance objektů, vytvoříte nový kontejner a pak nastavíte oprávnění ke kontejneru tak, aby objekty blob byly veřejné. Kontejner má název **quickstartblobs**. 
 
 ```python 
-# Create the BlockBlockService that is used to call the Blob service for the storage account
-block_blob_service = BlockBlobService(account_name='accountname', account_key='accountkey') 
+# Create the BlockBlockService that is used to call the Blob service for the storage account.
+block_blob_service = BlockBlobService(account_name = 'accountname', account_key = 'accountkey') 
  
 # Create a container called 'quickstartblobs'.
-container_name ='quickstartblobs'
+container_name = 'quickstartblobs'
 block_blob_service.create_container(container_name) 
 
 # Set the permission so the blobs are public.
@@ -106,29 +106,29 @@ block_blob_service.set_container_acl(container_name, public_access=PublicAccess.
 
 Úložiště objektů blob podporuje objekty blob bloku, doplňovací objekty blob a objekty blob stránky. Nejčastěji používané jsou objekty blob bloku, které se používají také v tomto rychlém startu.  
 
-Pokud chcete nahrát soubor do objektu blob, získejte úplnou cestu k souboru spojením názvu adresáře a názvu souboru na místním disku. Pak můžete soubor nahrát do zadané cesty pomocí metody `create\_blob\_from\_path`. 
+Pokud chcete nahrát soubor do objektu blob, získejte úplnou cestu k souboru spojením názvu adresáře a názvu souboru na místním disku. Pak můžete soubor nahrát do zadané cesty pomocí metody `create_blob_from_path`. 
 
-Vzorový kód vytvoří místní soubor, který se použije k nahrání a stažení. Soubor k nahrání uloží do proměnné `file\_path\_to\_file` a název objektu blob do proměnné `local\_file\_name`. Následující příklad nahraje soubor do kontejneru **quickstartblobs**.
+Vzorový kód vytvoří místní soubor, který použije k nahrání a stažení. soubor k nahrání *full_path_to_file* a název objektu blob jako *local_file_name*. Následující příklad nahraje soubor do kontejneru **quickstartblobs**.
 
 ```python
 # Create a file in Documents to test the upload and download.
-local_path=os.path.expanduser("~\Documents")
-local_file_name ="QuickStart_" + str(uuid.uuid4()) + ".txt"
-full_path_to_file =os.path.join(local_path, local_file_name)
+local_path = os.path.expanduser("~\Documents")
+local_file_name = "QuickStart_" + str(uuid.uuid4()) + ".txt"
+full_path_to_file = os.path.join(local_path, local_file_name)
 
 # Write text to the file.
-file = open(full_path_to_file,  'w')
+file = open(full_path_to_file, 'w')
 file.write("Hello, World!")
 file.close()
 
 print("Temp file = " + full_path_to_file)
 print("\nUploading to Blob storage as blob" + local_file_name)
 
-# Upload the created file, use local_file_name for the blob name
+# Upload the created file, use local_file_name for the blob name.
 block_blob_service.create_blob_from_path(container_name, local_file_name, full_path_to_file)
 ```
 
-V případě úložiště objektů blob můžete k nahrání použít několik metod. Například pokud máte paměťový proud, můžete místo metody `create\_blob\_from\_path` použít metodu `create\_blob\_from\_stream`. 
+V případě úložiště objektů blob můžete k nahrání použít několik metod. Například pokud máte paměťový proud, můžete místo metody `create_blob_from_path` použít metodu `create_blob_from_stream`. 
 
 Objekty blob bloku můžou mít velikost až 4,7 TB a můžou být čímkoli od tabulky aplikace Excel po velké videosoubory. Objekty blob stránky se používají hlavně pro soubory VHD využívané virtuálními počítači IaaS. Doplňovací objekty blob se používají k protokolování, například když chcete zapisovat do souboru a pak přidávat další informace. Většina objektů blob ukládaných do úložiště jsou typu blok.
 
@@ -137,7 +137,7 @@ Objekty blob bloku můžou mít velikost až 4,7 TB a můžou být čímkoli od 
 Seznam souborů v kontejneru můžete získat pomocí metody `list_blobs`. Tato metoda vrací generátor. Následující kód načte seznam objektů blob &mdash; pak je ve smyčce projde &mdash; a zobrazí názvy nalezených objektů blob v kontejneru.  
 
 ```python
-# List the blobs in the container
+# List the blobs in the container.
 print("\nList blobs in the container")
 generator = block_blob_service.list_blobs(container_name)
 for blob in generator:
@@ -146,21 +146,21 @@ for blob in generator:
 
 ### <a name="download-the-blobs"></a>Stažení objektů blob
 
-Objekty blob můžete stáhnout na místní disk pomocí metody `the get\_blob\_to\_path`. Následující kód stáhne objekt blob nahraný v předchozí části. K názvu objektu blob se přidá přípona *_DOWNLOADED*, takže na místním disku uvidíte oba soubory. 
+Stáhněte objekty BLOB na místní disk pomocí `get_blob_to_path` metody. Následující kód stáhne objekt blob nahraný v předchozí části. K názvu objektu blob se přidá přípona *_DOWNLOADED*, takže na místním disku uvidíte oba soubory. 
 
 ```python
 # Download the blob(s).
 # Add '_DOWNLOADED' as prefix to '.txt' so you can see both files in Documents.
-full_path_to_file2 = os.path.join(local_path, string.replace(local_file_name ,'.txt', '_DOWNLOADED.txt'))
+full_path_to_file2 = os.path.join(local_path, string.replace(local_file_name, '.txt', '_DOWNLOADED.txt'))
 print("\nDownloading blob to " + full_path_to_file2)
 block_blob_service.get_blob_to_path(container_name, local_file_name, full_path_to_file2)
 ```
 
 ### <a name="clean-up-resources"></a>Vyčištění prostředků
-Pokud už nepotřebujete objekty blob nahrané v rámci tohoto rychlého startu, můžete celý kontejner odstranit pomocí metody `delete\_container`. Pokud místo toho chcete odstranit jednotlivé soubory, použijte metodu `delete\_blob`.
+Pokud už nepotřebujete objekty blob nahrané v rámci tohoto rychlého startu, můžete celý kontejner odstranit pomocí metody `delete_container`. Pokud místo toho chcete odstranit jednotlivé soubory, použijte metodu `delete_blob`.
 
 ```python
-# Clean up resources. This includes the container and the temp files
+# Clean up resources. This includes the container and the temp files.
 block_blob_service.delete_container(container_name)
 os.remove(full_path_to_file)
 os.remove(full_path_to_file2)

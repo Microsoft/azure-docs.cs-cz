@@ -14,11 +14,11 @@ ms.workload: na
 ms.date: 02/28/2019
 ms.author: banders
 ms.openlocfilehash: 780870cc71e95507a52ba6a9338026f895a96ac1
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57834893"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60370886"
 ---
 # <a name="understand-microsoft-customer-agreement-administrative-roles-in-azure"></a>Vysvětlení smlouvy zákazníků společnosti Microsoft pro správu role v Azure
 
@@ -163,7 +163,7 @@ Následující tabulky popisují, jaké role, které potřebujete k provádění
 |Správa fakturace pro produkty pro části faktury jako zrušit, vypnout automatické prodloužení platnosti a další|✔|✔|✘|✘|✘|✘|✘|
 |Změna části faktury pro produkty|✔|✔|✘|✘|✘|✘|✘|
 
-### <a name="manage-subscriptions-for-invoice-section"></a>Správa předplatných pro části faktury
+### <a name="manage-subscriptions-for-invoice-section"></a>Spravovat předplatná pro oddíl faktury
 
 |Úlohy|Vlastník oddílu faktur|Přispěvatel oddílu faktur|Čtenář oddílu faktur|Tvůrce předplatného Azure|Vlastník fakturačního účtu|Přispěvatel fakturačního účtu|Čtenář fakturačního účtu
 |---|---|---|---|---|---|---|---|
@@ -185,7 +185,7 @@ Následující tabulka ukazuje, jakou roli, budete potřebovat k provádění ú
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 
-2. Hledat na **Cost Management a fakturace**.
+2. Vyhledejte **Cost Management a fakturace**.
 
    ![Snímek obrazovky zobrazující Azure search na portálu](./media/billing-understand-mca-roles/billing-search-cost-management-billing.png)
 

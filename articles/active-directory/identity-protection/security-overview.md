@@ -18,11 +18,11 @@ ms.author: joflore
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 610668768c7baca13cb60caf1d810cced31ebec3
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58516429"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60452929"
 ---
 # <a name="azure-active-directory-identity-protection---security-overview"></a>Azure Active Directory Identity Protection – zabezpečení – přehled
 
@@ -69,7 +69,7 @@ Dlaždice 'Nechráněné rizikových přihlášení' zobrazuje počet za posledn
 Dlaždice 'Starší verze ověřování' Zobrazí počet za poslední týden starší verze ověřování ve vaší organizaci. Protokoly pro ověřování na starší verze nepodporují metody moderní zabezpečení, jako jsou MFA. Pokud chcete zabránit starší verze ověřování, můžete použít zásady podmíněného přístupu. Kliknutím na dlaždici "Starší verze ověřování" verze vás přesměrují na "Identity zabezpečení skóre".
 
 
-### <a name="identity-secure-score"></a>Skóre zabezpečení identit
+### <a name="identity-secure-score"></a>Identity Secure Score
 
 Skóre zabezpečení Identity opatření a porovnává lepšímu zabezpečení vzorů odvětví. Pokud kliknete na dlaždici "Identita zabezpečení skóre (Preview)", přesměruje se do okna "Identity zabezpečení skóre (Preview)' Pokud podrobnější informace o stavu zabezpečení.
 

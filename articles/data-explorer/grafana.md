@@ -8,11 +8,11 @@ ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 12/05/2018
 ms.openlocfilehash: 188cb310cfc13fe2fc41ba3e01deb01068c0184d
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59048312"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60446856"
 ---
 # <a name="visualize-data-from-azure-data-explorer-in-grafana"></a>Vizualizace dat v Průzkumníku dat Azure v Grafana
 
@@ -156,7 +156,7 @@ S instanční objekt služby, které jsou přiřazeny *prohlížeče* roli, mů�
     | ID předplatného | ID PŘEDPLATNÉHO | SubscriptionId |
     | ID tenanta | ID adresáře | tenant |
     | ID klienta | ID aplikace | appId |
-    | Tajný klíč klienta | Heslo | heslo |
+    | Tajný klíč klienta | Heslo | password |
     | | | |
 
 1. Vyberte **uložit a otestovat**.

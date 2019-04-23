@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/29/2019
 ms.author: jingwang
-ms.openlocfilehash: b86aef7de048690d689a87d4fb844f77ea986445
-ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
+ms.openlocfilehash: 5d2d5948d817cbe80d00b74ef104ebaffcb511fb
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55297460"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60405966"
 ---
 # <a name="copy-data-from-office-365-into-azure-using-azure-data-factory-preview"></a>Zkopírovat data z Office 365 do Azure pomocí Azure Data Factory (Preview) 
 
@@ -27,7 +27,7 @@ Tento článek ukazuje, jak použít aktivitu kopírování ke zkopírování da
 
 ## <a name="supported-capabilities"></a>Podporované funkce
 
-Prozatím se v rámci jednoho kopírování můžete pouze **kopírování dat z Office 365 do [Azure Blob Storage](connector-azure-blob-storage.md), [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md), a [(Azure Data Lake Storage Gen2 Ve verzi Preview)](connector-azure-data-lake-storage.md) ve formátu JSON** (zadejte setOfObjects). Pokud chcete načíst do jiné typy úložišť dat, nebo v jiných formátů Office 365, můžete vytvořit řetězové první aktivitu kopírování s aktivitou kopírování dalších dál načítat data do všech [podporovaná ADF cílového úložiště](copy-activity-overview.md#supported-data-stores-and-formats) (viz část o" podporované jako jímka"sloupce v tabulce"Podporovaná úložiště dat a formátech").
+Prozatím se v rámci jednoho kopírování můžete pouze **kopírování dat z Office 365 do [Azure Blob Storage](connector-azure-blob-storage.md), [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md), a [Azure Data Lake Storage Gen2 ](connector-azure-data-lake-storage.md) ve formátu JSON** (zadejte setOfObjects). Pokud chcete načíst do jiné typy úložišť dat, nebo v jiných formátů Office 365, můžete vytvořit řetězové první aktivitu kopírování s aktivitou kopírování dalších dál načítat data do všech [podporovaná ADF cílového úložiště](copy-activity-overview.md#supported-data-stores-and-formats) (viz část o" podporované jako jímka"sloupce v tabulce"Podporovaná úložiště dat a formátech").
 
 >[!IMPORTANT]
 >- Předplatné Azure, který obsahuje objekt pro vytváření dat a úložiště dat jímky musí být ve stejném tenantovi Azure Active Directory (Azure AD) jako tenant Office 365.

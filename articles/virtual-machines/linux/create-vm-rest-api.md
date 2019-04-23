@@ -16,11 +16,11 @@ ms.workload: infrastructure
 ms.date: 06/05/2018
 ms.author: cynthn
 ms.openlocfilehash: 2b078cd769a9b4e5e66fe132fd4ef73ec4621efc
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57447842"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60391357"
 ---
 # <a name="create-a-linux-virtual-machine-that-uses-ssh-authentication-with-the-rest-api"></a>Vytvoření virtuálního počítače s Linuxem, které využívá ověřování SSH pomocí rozhraní REST API
 
@@ -63,7 +63,7 @@ Obecné informace o práci s požadavky rozhraní REST API najdete v tématu [so
 
 Následující běžné definice slouží k sestavení hlavní část žádosti:
 
-| Název                       | Požaduje se | Typ                                                                                | Popis  |
+| Name                       | Požaduje se | Typ                                                                                | Popis  |
 |----------------------------|----------|-------------------------------------------------------------------------------------|--------------|
 | location                   | True     | string                                                                              | Umístění prostředku. |
 | jméno                       |          | string                                                                              | Název virtuálního počítače. |
@@ -137,7 +137,7 @@ Můžete použít klienta vaši volbu pro odeslání požadavku HTTP. Můžete t
 
 Existují dva úspěšné odpovědi pro operaci vytvoření nebo aktualizaci virtuálního počítače:
 
-| Název        | Typ                                                                              | Popis |
+| Name        | Typ                                                                              | Popis |
 |-------------|-----------------------------------------------------------------------------------|-------------|
 | 200 OK      | [VirtualMachine](/rest/api/compute/virtualmachines/createorupdate#virtualmachine) | OK          |
 | 201 – vytvořeno | [VirtualMachine](/rest/api/compute/virtualmachines/createorupdate#virtualmachine) | Vytvořeno     |

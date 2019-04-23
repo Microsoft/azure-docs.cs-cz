@@ -8,12 +8,12 @@ ms.service: advisor
 ms.topic: article
 ms.date: 01/29/2019
 ms.author: kasparks
-ms.openlocfilehash: 0b2d242519e7e8981a905d6adb1f3c0f091afe38
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 6cca6692da37714c76f5241ed14e24c967b00563
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59698941"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60467693"
 ---
 # <a name="improve-performance-of-azure-applications-with-azure-advisor"></a>Zvýšení výkonu aplikace na platformě Azure s využitím Azure Advisoru
 

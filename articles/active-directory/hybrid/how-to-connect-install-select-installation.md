@@ -17,11 +17,11 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 90a624a6b3b4696899af0d8606f653df260cc201
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56173262"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60348276"
 ---
 # <a name="select-which-installation-type-to-use-for-azure-ad-connect"></a>Výběr typu instalace pro Azure AD Connect
 Azure AD Connect zahrnuje dva typy instalace pro novou instalaci: expresní a přizpůsobenou. Toto téma pomáhá při rozhodování, kterou možnost použít během instalace.
@@ -35,7 +35,7 @@ Předpokládá:
 - Máte účet správce podnikové sítě, které můžete použít k instalaci.
 - Máte méně než 100 000 objektů ve vašem místním Active Directory.
 
-Získáte:
+Získáte tyto možnosti:
 
 - [Synchronizace hodnot hash hesel](how-to-connect-password-hash-synchronization.md) z místního do služby Azure AD pro jednotné přihlašování.
 - Konfigurace, která se synchronizuje [uživatele, skupiny, kontakty a počítače s Windows 10](concept-azure-ad-connect-sync-default-configuration.md).

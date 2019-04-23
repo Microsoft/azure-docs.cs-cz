@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 02/08/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 6b25da9b2569b0185d41684c45a22a3eb3377511
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
+ms.openlocfilehash: ff7af2204f9e05a1ba4ef800c63c3ad462242350
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56313071"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60368557"
 ---
 # <a name="detect-color-schemes-in-images"></a>Zjištění barevná schémata v obrázcích
 
@@ -30,7 +30,7 @@ Počítačové zpracování obrazu také vrátí hodnotu typu boolean označují
 
 Následující příklad ukazuje odpověď JSON pro počítačové zpracování obrazu vrácený při zjišťování na barevném schématu na obrázku. V tomto případě na obrázku není černobílý bitové kopie, ale jsou černá dominantní popředí a pozadí a dominantní barvy pro bitovou kopii jako celek je černobílý.
 
-![Na horách](./Images/mountain_vista.png)
+![Horská oblast venku při západu slunce s obrysem osoby](./Images/mountain_vista.png)
 
 ```json
 {

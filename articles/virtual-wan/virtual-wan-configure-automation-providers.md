@@ -9,11 +9,11 @@ ms.date: 10/04/2018
 ms.author: cherylmc
 Customer intent: As a Virtual WAN software-defined connectivity provider, I want to set up a provisioning environment.
 ms.openlocfilehash: a4664e628af5824b7b197cbdb5c5af602a3a4476
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49958682"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60459933"
 ---
 # <a name="virtual-wan-partners"></a>Virtuální sítě WAN partnerů
 
@@ -28,7 +28,7 @@ Větev zařízení (zařízení VPN zákazníka v místním nebo SDWAN CPE) obvy
 * Otestování portálového prostředí z Azure virtuální sítě WAN.
 * Rozhodněte, kterou část kroky připojení chcete automatizovat. Na co nejnižší doporučujeme automatizace:
 
-  * Access Control
+  * Řízení přístupu
   * Nahrání informací o zařízeních větev do Azure virtuální sítě WAN
   * Stažení Azure konfigurace a nastavení připojení z větve zařízení v Azure virtuální sítě WAN
 
@@ -203,19 +203,19 @@ Konfigurační soubor zařízení obsahuje nastavení, které se má použít p�
 
 V následujících částech kombinace podporovaných zásad Azure po iniciátor pro tunelové propojení.
 
-**Fáze 1**
+**Phase-1**
 
-* DH_GROUP_2 AES_256, SHA1,
-* DH_GROUP_2 AES_256, SHA_256,
+* AES_256, SHA1, DH_GROUP_2
+* AES_256, SHA_256, DH_GROUP_2
 * AES_128, SHA1, DH_GROUP_2
 * AES_128, SHA_256, DH_GROUP_2
-* DH_GROUP_2 3DES, SHA1,
-* DH_GROUP_2 3DES, SHA_256,
+* 3DES, SHA1, DH_GROUP_2
+* 3DES, SHA_256, DH_GROUP_2
 
-**Fáze 2**
+**Phase-2**
 
-* GCM_AES_256 GCM_AES_256, PFS_NONE
-* AES_256 SHA_1, PFS_NONE
+* GCM_AES_256, GCM_AES_256, PFS_NONE
+* AES_256, SHA_1, PFS_NONE
 * CBC_3DES, SHA_1, PFS_NONE
 * AES_256, SHA_256, PFS_NONE
 * AES_128, SHA_1, PFS_NONE
@@ -225,43 +225,43 @@ V následujících částech kombinace podporovaných zásad Azure po iniciátor
 
 V následujících částech kombinace podporovaných zásad Azure po respondér pro tunelové propojení.
 
-**Fáze 1**
+**Phase-1**
 
-* DH_GROUP_2 AES_256, SHA1,
-* DH_GROUP_2 AES_256, SHA_256,
+* AES_256, SHA1, DH_GROUP_2
+* AES_256, SHA_256, DH_GROUP_2
 * AES_128, SHA1, DH_GROUP_2
 * AES_128, SHA_256, DH_GROUP_2
-* DH_GROUP_2 3DES, SHA1,
-* DH_GROUP_2 3DES, SHA_256,
+* 3DES, SHA1, DH_GROUP_2
+* 3DES, SHA_256, DH_GROUP_2
 
-**Fáze 2**
+**Phase-2**
 
-* GCM_AES_256 GCM_AES_256, PFS_NONE
-* AES_256 SHA_1, PFS_NONE
+* GCM_AES_256, GCM_AES_256, PFS_NONE
+* AES_256, SHA_1, PFS_NONE
 * CBC_3DES, SHA_1, PFS_NONE
 * AES_256, SHA_256, PFS_NONE
 * AES_128, SHA_1, PFS_NONE
 * CBC_3DES, SHA_256, PFS_NONE
 * PFS_NONE CBC_DES, SHA_1, 
-* PFS_1 AES_256 SHA_1,
-* PFS_2 AES_256 SHA_1,
-* PFS_14 AES_256 SHA_1,
+* AES_256, SHA_1, PFS_1
+* AES_256, SHA_1, PFS_2
+* AES_256, SHA_1, PFS_14
 * AES_128, SHA_1, PFS_1
 * AES_128, SHA_1, PFS_2
 * AES_128, SHA_1, PFS_14
-* PFS_1 CBC_3DES, SHA_1,
-* PFS_2 CBC_3DES, SHA_1,
-* PFS_2 CBC_3DES, SHA_256,
-* PFS_1 AES_256, SHA_256,
-* PFS_2 AES_256, SHA_256,
-* PFS_14 AES_256, SHA_256,
-* PFS_24 AES_256 SHA_1,
-* PFS_24 AES_256, SHA_256,
+* CBC_3DES, SHA_1, PFS_1
+* CBC_3DES, SHA_1, PFS_2
+* CBC_3DES, SHA_256, PFS_2
+* AES_256, SHA_256, PFS_1
+* AES_256, SHA_256, PFS_2
+* AES_256, SHA_256, PFS_14
+* AES_256, SHA_1, PFS_24
+* AES_256, SHA_256, PFS_24
 * AES_128, SHA_256, PFS_NONE
 * AES_128, SHA_256, PFS_1
 * AES_128, SHA_256, PFS_2
 * AES_128, SHA_256, PFS_14
-* PFS_14 CBC_3DES, SHA_1,
+* CBC_3DES, SHA_1, PFS_14
 
 ### <a name="does-everything-need-to-match-between-the-virtual-hub-vpngateway-policy-and-my-on-premises-sdwanvpn-device-or-sd-wan-configuration"></a>Všechno, co musí shodovat zásad vpngateway virtuální rozbočovač a Moje zařízení SDWAN/VPN v místním nebo SD-WAN konfigurace?
 

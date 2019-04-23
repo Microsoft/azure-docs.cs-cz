@@ -11,11 +11,11 @@ ms.date: 12/03/2018
 ms.author: davidmu
 ms.subservice: B2C
 ms.openlocfilehash: a8ad5c3091c3c78aa31dbf38eb6b3032e4dc7662
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55870958"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60317299"
 ---
 # <a name="enable-keep-me-signed-in-kmsi-in-azure-active-directory-b2c"></a>Povolení možnosti zůstat přihlášeni v (políčko zůstat Přihlášeni) v Azure Active Directory B2C
 

@@ -13,11 +13,11 @@ ms.reviewer: carlrab, sashan
 manager: craigg
 ms.date: 04/17/2019
 ms.openlocfilehash: ec9f5aa8163ea9bb838b1a95ab8ad49233a72643
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59698225"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60392610"
 ---
 # <a name="high-availability-and-azure-sql-database"></a>Vysoká dostupnost a Azure SQL Database
 

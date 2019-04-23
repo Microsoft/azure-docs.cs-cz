@@ -19,11 +19,11 @@ ms.custom: aaddev
 ms.reviewer: jmprieur, saeeda, jesakowi, nacanuma, dadobali
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 968da9212b52c1e7ea09d1472b312671c7a73449
-ms.sourcegitcommit: b8a8d29fdf199158d96736fbbb0c3773502a092d
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/15/2019
-ms.locfileid: "59565513"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60410380"
 ---
 # <a name="microsoft-identity-platform-developer-glossary"></a>Glosář pro vývojáře platforma identit Microsoft
 

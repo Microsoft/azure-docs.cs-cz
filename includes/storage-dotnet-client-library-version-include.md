@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: tamram
 ms.openlocfilehash: 64fd5c80f082ba05591fd6ab66d4a8787a75d74a
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59793789"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60406459"
 ---
 > [!NOTE]
 > K dokončení tohoto kurzu musíte mít nainstalovanou knihovnu Azure Storage Common Library for .NET (Preview). Nejnovější verzi ke stažení můžete najít na [NuGetu](https://www.nuget.org/packages/Microsoft.Azure.Storage.Common/).

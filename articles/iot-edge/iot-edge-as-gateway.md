@@ -10,11 +10,11 @@ ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
 ms.openlocfilehash: e0aafc6e5a6926ad70aa5df335f45b841955cab9
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56877585"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60445145"
 ---
 # <a name="how-an-iot-edge-device-can-be-used-as-a-gateway"></a>Použití zařízení IoT Edge jako brána
 

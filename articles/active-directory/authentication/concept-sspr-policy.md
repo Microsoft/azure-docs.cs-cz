@@ -12,11 +12,11 @@ manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 4d9055ef11bc5c117efc6d4de87d4ca8ec73a661
-ms.sourcegitcommit: 223604d8b6ef20a8c115ff877981ce22ada6155a
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58360499"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60359020"
 ---
 # <a name="password-policies-and-restrictions-in-azure-active-directory"></a>Zásady hesel a omezení v Azure Active Directory
 
@@ -39,18 +39,18 @@ Zásada dvě brány vyžaduje dva druhy ověřovacích dat, například **e-mail
   * Správce Exchange
   * Správce Skypu pro firmy
   * Správce uživatelů
-  * Uživatelé zapisující do adresáře
+  * Uživatelé s oprávněním k zápisu do adresářů
   * Globální správce ani správce společnosti
   * Správce SharePointu
   * Správce dodržování předpisů
-  * Správce aplikace
+  * Správce aplikací
   * Správce zabezpečení
   * Správce privilegovaných rolí
   * Správce Intune
   * Správce služby proxy aplikace
   * Správce Dynamics 365
   * Správce služby Power BI
-  * Správce ověření
+  * Správce ověřování
   * Správce privilegované ověřování
 
 * Pokud ve zkušební verzi předplatného; po uplynutí 30 dnů nebo

@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 04/03/2019
+ms.date: 04/19/2019
 ms.author: pareshmu
-ms.openlocfilehash: 01e48a7f78be16d51878b5458174a35253841539
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 9dfa0c620162ba2f0f1bfa8897dc2f34a226ed93
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59006528"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60364035"
 ---
 # <a name="expressroute-partners-and-peering-locations"></a>Partneři ExpressRoute a umístění partnerského vztahu
 
@@ -44,8 +44,8 @@ Následující tabulka obsahuje mapování oblastí Azure na umístění Express
 | --- | --- | --- | --- |
 | **Australská vláda** | 1 | Austrálie – střed, Austrálie – střed 2 |Canberra, Canberra2 |
 | **Evropa** | 1 |Francie – střed, Francie – jih, Severní Evropa, Západní Evropa, Velká Británie – západ, Velká Británie – jih |Amsterdam, Amsterdam2, Dublin, London, London2, Marseille, Newport(Wales), Paris, Zurich |
-| **Severní Amerika** | 1 |Východní USA, Západní USA, Východní USA 2, Západní USA 2, Střed USA, Střed USA – jih, Střed USA – sever, Střed USA – západ, Střední Kanada, Východní Kanada |Atlanta, Chicago, Dallas, Denver, Las Vegas, Los Angeles, Miami, New York, San Antonio, Seattle, Silicon Valley, Washington DC, Washington DC2, Montreal, Quebec City, Toronto |
-| **Asie** | 2 |Východní Asie, Jihovýchodní Asie |Hongkong, Kuala Lumpur, Singapur, singapur2, Tchaj-pej |
+| **Severní Amerika** | 1 |Východní USA, Západní USA, Východní USA 2, Západní USA 2, Střed USA, Střed USA – jih, Střed USA – sever, Střed USA – západ, Střední Kanada, Východní Kanada |Atlanta, Chicago, Dallas, Denver, Las Vegas, Los Angeles, Miami, New York, San Antonio, Seattle, Silicon Valley, Silicon Valley2, Washington DC, Washington DC2, Montreal, Quebec City, Toronto |
+| **Asie** | 2 |Východní Asie, Jihovýchodní Asie |Hongkong – zvláštní administrativní oblast, Kuala Lumpur, Singapur, singapur2, Tchaj-pej |
 | **Austrálie** | 2 |Austrálie – jihovýchod, Austrálie – východ |Melbourne, Perth, Sydney | 
 | **Indie** | 2 |Indie – západ, Indie – střed, Indie – jih |Čennaj, Čennaj2, Bombaj, Bombaj2 |
 | **Japonsko** | 2 |Japonsko – západ, Japonsko – východ |Ósaka, Tokio |
@@ -88,7 +88,7 @@ Následující tabulka uvádí umístění připojení a poskytovatele služby p
 | **Denver** | CoreSite | CoreSite, Megaport, Zayo |
 | **Dubai** | Spojené arabské emiráty Etisalat | Spojené arabské emiráty Etisalat |
 | **Dublin** | Equinix | Colt, eir, Equinix, Interxion, Megaport |
-| **Hongkong** | Equinix | Aryaka Networks, British Telecom, China Telecom Global, Equinix, Megaport, NTT Communications, Orange, PCCW Global Limited, Tata Communications, Verizon |
+| **Hongkong – zvláštní administrativní oblast** | Equinix | Aryaka Networks, British Telecom, China Telecom Global, Equinix, Megaport, NTT Communications, Orange, PCCW Global Limited, Tata Communications, Verizon |
 | **Johannesburg** | Teraco | Internet Solutions – Cloud Connect, Liquid Telecom, Teraco |
 | **Kuala Lumpur** | TIME dotCom | TIME dotCom |
 | **Las Vegas** | Přepínač | CenturyLink Cloud Connect, Megaport |
@@ -112,6 +112,7 @@ Následující tabulka uvádí umístění připojení a poskytovatele služby p
 | **Seattle** | Equinix | Aryaka Networks, Equinix, Level 3 Communications, Megaport, Zayo |
 | **Soul** | KINX | KINX, LG CNS, Sejong Telecom |
 | **Silicon Valley** | Equinix | Aryaka Networks, AT & T NetBond, British Telecom, CenturyLink Cloud Connect, tak Coresite, Equinix, InterCloud, IX oslovit PacketFabric, Level 3 Communications, Megaport, Orange, Sprintu, Tata Communications, Verizon, Zayo |
+| **Silicon Valley2** | Coresite | Coresite | 
 | **Singapur** | Equinix | Aryaka Networks, AT&T NetBond, British Telecom, Epsilon Global Communications, Equinix, InterCloud, Level 3 Communications, Megaport, NTT Communications, Orange, SingTel, Tata Communications, Telstra Corporation, Verizon, Vodafone |
 | **Singapur2** | Globální přepínač | Colt epsilon – globální Communications, Megaport, SingTel |
 | **Sydney** | Equinix | AARNet, AT&T NetBond, British Telecom, Equinix, Kordia, Megaport, NEXTDC, NTT Communications, Optus, Orange, Telstra Corporation, Verizon |
@@ -136,7 +137,7 @@ Následující tabulka uvádí umístění připojení a poskytovatele služby p
 | **San Antonio** | Megaport |
 | **Silicon Valley** | Equinix, Level 3 Communications, Verizon |
 | **Seattle** | Equinix, Megaport |
-| **Washington, D.C.** |AT&T NetBond, Equinix, Level 3 Communications, Verizon |
+| **Washington, D.C.** |AT&T NetBond, Equinix, Level 3 Communications, Megaport, Verizon |
 
 ### <a name="china"></a>Čína
 | **Umístění** | **Poskytovatelé služeb** |
@@ -180,7 +181,7 @@ Pokud poskytovatel připojení není v předchozích částech uvedený, můžet
 | **Dallas** | Equinix, Megaport | Axtel, C3ntro Telecom, Cox Business, Data Foundry, Transtelco |
 | **Frankfurt** | Telecity | BICS, Cinia, Nianet, QSC AG |
 | **Hamburg** | Equinix | Cinia |
-| **Hongkong** | Equinix | Ředitel pro Macroview telekomunikaci |
+| **Hongkong – zvláštní administrativní oblast** | Equinix | Ředitel pro Macroview telekomunikaci |
 | **Johannesburg** | Teraco | MTN |
 | **Londýn** | BICS, Equinix, euNetworks, Telecity | Bezeq International Ltd., CoreAzure, Epsilon Telecommunications Limited, Exponential E, HSO, NexGen Networks, Proximus, Tamares Telecom, Zain |
 | **Los Angeles** | Equinix |Transtelco |

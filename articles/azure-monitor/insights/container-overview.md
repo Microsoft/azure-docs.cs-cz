@@ -14,11 +14,11 @@ ms.workload: infrastructure-services
 ms.date: 09/24/2018
 ms.author: magoedte
 ms.openlocfilehash: d137576b4beb5cf36dce99ffb1869049f37b60b2
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57881261"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60494639"
 ---
 # <a name="overview-of-monitoring-containers-in-azure"></a>Přehled monitorování kontejnerů v Azure
 S Azure můžete efektivně monitorovat a spravovat vaše úlohy nasazené v Azure kontejnery s Kubernetes a Docker. Je důležité pochopit, jak jsou kontejnery s několika aplikacemi mikroslužeb provádění k zajištění spolehlivých služeb ve velkém měřítku a monitorování plán podpory. Tento článek poskytuje stručný přehled správy a možnosti v Azure vám pomůžou pochopit jejich monitorování, a které jsou vhodné na základě vašich požadavků.

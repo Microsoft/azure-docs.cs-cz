@@ -15,11 +15,11 @@ ms.topic: conceptual
 ms.date: 03/12/2019
 ms.author: pbutlerm
 ms.openlocfilehash: fd3f5750f050db0d57a8747b28798c04f666b077
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59796507"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60525607"
 ---
 # <a name="manage-your-azure-marketplace-and-appsource-publisher-profile"></a>Správa profilu vydavatele Azure Marketplace a AppSource
 

@@ -11,11 +11,11 @@ ms.date: 09/10/2018
 ms.author: davidmu
 ms.subservice: B2C
 ms.openlocfilehash: cbc96f7f7c5f8020472708caaead3faff7a26673
-ms.sourcegitcommit: 5f348bf7d6cf8e074576c73055e17d7036982ddb
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2019
-ms.locfileid: "59609213"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60405684"
 ---
 # <a name="localization-string-ids"></a>ID lokalizace řetězce
 

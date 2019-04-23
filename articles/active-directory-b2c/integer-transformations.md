@@ -11,11 +11,11 @@ ms.date: 09/10/2018
 ms.author: davidmu
 ms.subservice: B2C
 ms.openlocfilehash: 358ee07b8fd32edded084d406e490cae9f557fdd
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55159502"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60397137"
 ---
 # <a name="integer-claims-transformations"></a>Celé číslo deklarace identity transformace
 
@@ -30,7 +30,7 @@ Long – datový typ se převede na datový typ string.
 | Položka | TransformationClaimType | Typ dat | Poznámky |
 | ---- | ----------------------- | --------- | ----- |
 | InputClaim | InputClaim | Long | Typ ClaimType převést na řetězec. |
-| outputClaim | outputClaim | řetězec | Typ ClaimType, který je vytvořen po zavolání této ClaimsTransformation. |
+| outputClaim | outputClaim | string | Typ ClaimType, který je vytvořen po zavolání této ClaimsTransformation. |
 
 V tomto příkladu `numericUserId` deklarace identity s typem hodnoty dlouho je převedena na `UserId` deklarace identity s typem hodnoty řetězce.
 

@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 03/13/2019
 ms.author: banders
 ms.openlocfilehash: daa7f6a116578fa8d1f2b5bf825a6f4cd48f7f64
-ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58648295"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60370653"
 ---
 # <a name="understand-azure-reservation-usage-for-your-enterprise-enrollment"></a>Vysvětlení využití rezervace Azure u prováděcí smlouvy Enterprise
 
@@ -31,7 +31,7 @@ Pokud jste si zakoupili rezervace v kontextu s průběžnými platbami fakturace
 
 V dalších částech předpokládají, že používáte virtuální počítač Standard_D1_v2 Windows oblasti USA – východ a vaší rezervace informace vypadá jako v následující tabulce:
 
-| Pole | Hodnota |
+| Pole | Value |
 |---| --- |
 |ReservationId |8f82d880-d33e-4e0d-bcb5-6bcb5de0c719|
 |Množství |1|
@@ -57,7 +57,7 @@ V dalších částech používat Azure SQL Database jako příklad k popisu sest
 
 Předpokládejme, že používáte SQL Database Gen 4 oblasti USA – východ a vaší rezervace informace vypadá jako v následující tabulce:
 
-| Pole | Hodnota |
+| Pole | Value |
 |---| --- |
 |ReservationId |8244e673-83e9-45ad-b54b-3f5295d37cae|
 |Množství |2|

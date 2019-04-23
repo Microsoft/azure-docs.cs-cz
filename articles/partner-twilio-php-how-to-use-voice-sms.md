@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 11/25/2014
 ms.author: microsofthelp@twilio.com
 ms.openlocfilehash: a51cd589702320ecb55e6a2e3c5f0a6139e281fe
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54158070"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60422351"
 ---
 # <a name="how-to-use-twilio-for-voice-and-sms-capabilities-in-php"></a>Postup použití Twilia pro hlasové hovory a SMS v jazyce PHP.
 Tato příručka ukazuje, jak k provádění běžných programovacích úloh pomocí služby Twilio API v Azure. Pokryté scénáře zahrnují vytváření telefonních hovorů a posílání zpráv služby krátké zprávy (SMS). Další informace o Twilio a používání hlasové hovory a SMS ve svých aplikacích najdete v tématu [další kroky](#NextSteps) oddílu.
@@ -48,12 +48,12 @@ Následuje seznam příkazů Twilio. Další informace o ostatních příkazů a
 * **&lt;Shromážděte&gt;**: Shromažďuje číslice zadané na klávesnici telefonu.
 * **&lt;Zavěšení&gt;**: Ukončí volání.
 * **&lt;Přehrát&gt;**: Přehraje zvukový soubor.
-* **&lt;Pozastavit&gt;**: Bezobslužná počká zadaný počet sekund.
-* **&lt;Záznam&gt;**: Zaznamenává hlasové volajícího a vrátí adresu URL souboru, který obsahuje záznam.
+* **&lt;Pause&gt;**: Bezobslužná počká zadaný počet sekund.
+* **&lt;Record&gt;**: Zaznamenává hlasové volajícího a vrátí adresu URL souboru, který obsahuje záznam.
 * **&lt;Přesměrovat&gt;**: Řízení přenosů volání nebo odeslání SMS TwiML na jinou adresu URL.
 * **&lt;Odmítnout&gt;**: Odmítne příchozí volání na vaše číslo Twilio bez vám fakturace
 * **&lt;Řekněme, že&gt;**: Převede text na řeč, který je k volání.
-* **&lt;SMS&gt;**: Odešle zprávu SMS.
+* **&lt;Sms&gt;**: Odešle zprávu SMS.
 
 ### <a id="TwiML"></a>TwiML
 TwiML je sada instrukcí založený na formátu XML podle Twilio příkazy, které informují o Twilio, jak zpracovat hovor nebo SMS.

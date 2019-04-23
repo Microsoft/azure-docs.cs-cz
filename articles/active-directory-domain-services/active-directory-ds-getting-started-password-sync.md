@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 04/02/2018
 ms.author: ergreenl
-ms.openlocfilehash: 6778df746a64f944b51570f8774c0e84c7d88658
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: ad905f93a8c4b03fd6ccc9edb93b52f23bcb2c58
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55194691"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60417430"
 ---
 # <a name="enable-password-hash-synchronization-to-azure-active-directory-domain-services"></a>Povolení synchronizace hodnot hash hesel do služby Azure Active Directory Domain Services
 V předchozích úlohách jste povolili službu Azure Active Directory Domain Services pro tenanta služby Azure Active Directory (Azure AD). Další úlohou je povolení synchronizace hodnot hash hesel požadovaných pro ověřování protokolů NTLM (NT LAN Manager) a Kerberos do služby Azure AD Domain Services. Po nastavení synchronizace hodnot hash hesel se uživatelé můžou přihlásit ke spravované doméně s použitím podnikových přihlašovacích údajů.
@@ -28,6 +28,7 @@ V předchozích úlohách jste povolili službu Azure Active Directory Domain Se
 Potřebný postup se liší pro uživatelské účty jenom cloudu a uživatelské účty synchronizované z místního adresáře pomocí služby Azure AD Connect. 
 
 <br>
+
 | **Typ uživatelského účtu** | **Požadovaný postup** |
 | --- |---|
 | **Cloudové uživatelské účty vytvořené ve službě Azure AD** |**&#x2713;** [Postupujte podle pokynů v tomto článku](active-directory-ds-getting-started-password-sync.md#task-5-enable-password-hash-synchronization-to-your-managed-domain-for-cloud-only-user-accounts) |

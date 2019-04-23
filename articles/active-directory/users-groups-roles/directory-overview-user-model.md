@@ -15,11 +15,11 @@ services: active-directory
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 775a03a82c1fc432e65ce45309a5af3febb448a9
-ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56428217"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60472277"
 ---
 # <a name="users-groups-licensing-and-roles-for-large-organizations"></a>Uživatelé, skupiny, licencování a role pro velké organizace
 

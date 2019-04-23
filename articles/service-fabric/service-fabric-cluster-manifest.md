@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 11/12/2018
 ms.author: dekapur
 ms.openlocfilehash: f94a65e469fdb3cee4f02bc5a8f6f5a4a1ea5a16
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58662325"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60386716"
 ---
 # <a name="configuration-settings-for-a-standalone-windows-cluster"></a>Nastavení konfigurace pro samostatný cluster Windows
 Tento článek popisuje konfiguraci nastavení samostatného clusteru Azure Service Fabric, který je možné nastavit v *ClusterConfig.json* souboru. Tento soubor použije k zadání informací o uzlech clusteru, konfigurace zabezpečení, jakož i síťové topologie z hlediska chybových nebo upgradovacích doménách.  Po změně nebo přidání nastavení konfigurace, můžete je buď [vytvoření samostatného clusteru](service-fabric-cluster-creation-for-windows-server.md) nebo [upgradovat konfiguraci samostatného clusteru](service-fabric-cluster-config-upgrade-windows-server.md).

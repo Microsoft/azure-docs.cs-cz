@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 02/15/2017
 ms.author: dx@sendgrid.com
 ms.openlocfilehash: 91d28802b4af23da5b8060fa7c8f9a7e843a7dab
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52840261"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60444735"
 ---
 # <a name="how-to-send-email-using-sendgrid-with-azure"></a>Odeslání e-mailů pomocí Sendgridu s Azure
 ## <a name="overview"></a>Přehled
@@ -71,7 +71,7 @@ Přidejte následující deklarace oborů názvů kód na začátek souboru C# v
     using SendGrid;
     using SendGrid.Helpers.Mail;
 
-## <a name="how-to-create-an-email"></a>Postupy: vytvoření e-mailu
+## <a name="how-to-create-an-email"></a>Postup: Vytvořit e-mailu
 Použití **SendGridMessage** objekt k vytvoření e-mailovou zprávu. Jakmile je vytvořen objekt zprávy, můžete nastavit vlastnosti a metody, včetně e-mailu odesílatele, příjemce e-mailu a zadání předmětu a textu e-mailu.
 
 Následující příklad ukazuje, jak vytvořit objekt zcela naplněná e-mailu:
@@ -95,7 +95,7 @@ Následující příklad ukazuje, jak vytvořit objekt zcela naplněná e-mailu:
 
 Další informace o všech vlastností a metod podporovaných **SendGrid** zadejte naleznete v tématu [sendgrid-csharp] [ sendgrid-csharp] na Githubu.
 
-## <a name="how-to-send-an-email"></a>Postupy: odesílání e-mailu
+## <a name="how-to-send-an-email"></a>Postup: Odeslání e-mailu
 Po vytvoření e-mailovou zprávu, můžete ho pomocí rozhraní API Sendgridu odeslat. Alternativně můžete použít [. NET společnosti součástí knihovny][NET-library].
 
 Odesílání e-mailů vyžaduje, abyste zadali svůj klíč rozhraní API SendGrid. Pokud potřebujete zobrazit podrobnosti o tom, jak nakonfigurovat klíče rozhraní API, navštivte prosím klíče rozhraní API Sendgridu [dokumentaci][documentation].
@@ -142,7 +142,7 @@ Následující příklady ukazují, jak k odesílání e-mailovou zprávu pomoc�
         }
     }
     
-## <a name="how-to-send-email-from-asp-net-core-api-using-mailhelper-class"></a>Postupy: odeslání e-mailu z horizontálních oddílů pomocí třídy MailHelper rozhraní ASP .NET Core API
+## <a name="how-to-send-email-from-asp-net-core-api-using-mailhelper-class"></a>Postup: Odeslání e-mailu z horizontálních oddílů pomocí třídy MailHelper rozhraní ASP .NET Core API
 
 Následujícím příkladu je možné odeslat e-mail více osob z pomocí rozhraní API ASP .NET Core `MailHelper` třídu `SendGrid.Helpers.Mail` oboru názvů. V tomto příkladu používáme ASP .NET Core 1.0. 
 
@@ -218,7 +218,7 @@ V řadiči, po vložení `IConfiguration` rozhraní, můžeme použít `CreateSi
        }
     }
     
-## <a name="how-to-add-an-attachment"></a>Postupy: Přidání přílohy
+## <a name="how-to-add-an-attachment"></a>Postup: Přidat přílohu
 Přílohy se dají přidat na zprávu voláním **AddAttachment** metoda a minimálně zadáte název souboru a kódování Base64 obsah ke kterému chcete připojit. Může obsahovat více přiložených, zavoláním této metody jednou pro každý soubor, budete chtít připojit nebo s použitím **AddAttachments** metody. Následující příklad ukazuje, přidávání přílohy ke zprávě:
 
     var banner2 = new Attachment()
@@ -231,7 +231,7 @@ Přílohy se dají přidat na zprávu voláním **AddAttachment** metoda a minim
     };
     msg.AddAttachment(banner2);
 
-## <a name="how-to-use-mail-settings-to-enable-footers-tracking-and-analytics"></a>Postupy: použití nastavení e-mailu k povolení zápatí, sledování a analýza
+## <a name="how-to-use-mail-settings-to-enable-footers-tracking-and-analytics"></a>Postup: Pomocí nastavení e-mailu můžete povolit zápatí, sledování a analýza
 SendGrid umožňuje zajistit další e-mailové funkce prostřednictvím nastavení pošty a sledování nastavení. Tato nastavení můžete přidat do e-mailovou zprávu povolit konkrétní funkce, jako je například sledování kliknutí, Google analytics, předplatné, sledování a tak dále. Úplný seznam aplikací, najdete v článku [nastavení dokumentaci][settings-documentation].
 
 Aplikace lze použít u **SendGrid** e-mailové zprávy pomocí metod, které implementují jako součást **SendGridMessage** třídy. Následující příklady ukazují zápatí a klikněte na tlačítko filtry pro sledování:
@@ -247,7 +247,7 @@ Následující příklady ukazují zápatí a klikněte na tlačítko filtry pro
 ### <a name="click-tracking"></a>Sledování kliknutí.
     msg.SetClickTracking(true);
 
-## <a name="how-to-use-additional-sendgrid-services"></a>Postupy: použití služeb další SendGrid
+## <a name="how-to-use-additional-sendgrid-services"></a>Postup: Pomocí služby SendGrid další
 SendGrid nabízí několik rozhraní API a webhooky, které vám umožní využívat další funkce v aplikaci Azure. Další podrobnosti najdete v tématu [Reference k rozhraní API SendGrid][SendGrid API documentation].
 
 ## <a name="next-steps"></a>Další postup

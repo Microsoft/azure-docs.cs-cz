@@ -10,11 +10,11 @@ ms.topic: sample
 ms.date: 05/10/2017
 ms.reviewer: sngun
 ms.openlocfilehash: 70b48b16a0fcc54025101e61aec3715fb91fea86
-ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58500304"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60446121"
 ---
 # <a name="get-an-azure-cosmos-db-connection-string-for-mongodb-apps-using-powershell"></a>Získání připojovacího řetězce služby Azure Cosmos DB pro aplikace MongoDB pomocí PowerShellu
 

@@ -1,5 +1,5 @@
 ---
-title: Kopírování dat do nebo z Průzkumníku dat Azure pomocí Azure Data Factory | Dokumentace Microsoftu
+title: Kopírování dat do nebo z Průzkumníku dat Azure pomocí Azure Data Factory
 description: Zjistěte, jak kopírovat data do nebo z Průzkumníku dat Azure s využitím aktivity kopírování v kanálu Azure Data Factory.
 services: data-factory
 documentationcenter: ''
@@ -12,13 +12,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 04/16/2019
-ms.author: orspod
-ms.openlocfilehash: 756ede9cc90655163d6d53aa3ca920d2a15fb43d
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
-ms.translationtype: HT
+ms.author: orspodek
+ms.openlocfilehash: f501257903f3b7c621512f06d1c8c7109e22db1e
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59682487"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60394502"
 ---
 # <a name="copy-data-to-or-from-azure-data-explorer-using-azure-data-factory"></a>Kopírování dat do nebo z Průzkumníku dat Azure pomocí Azure Data Factory
 
@@ -219,4 +219,7 @@ Pro kopírování dat do Průzkumníku dat Azure, nastavte vlastnost typ v jímk
 ```
 
 ## <a name="next-steps"></a>Další postup
-Seznam úložišť dat podporovaných jako zdroje a jímky v aktivitě kopírování ve službě Azure Data Factory najdete v tématu [podporovanými úložišti dat](copy-activity-overview.md#supported-data-stores-and-formats).
+
+* Seznam úložišť dat podporovaných jako zdroje a jímky v aktivitě kopírování ve službě Azure Data Factory najdete v tématu [podporovanými úložišti dat](copy-activity-overview.md#supported-data-stores-and-formats).
+
+* Další informace o [kopírování dat z Azure Data Factory do Průzkumníku dat Azure](/azure/data-explorer/data-factory-load-data).

@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 03/13/2019
 ms.author: banders
 ms.openlocfilehash: 14bd7b61038bf938f7d370eaf6e16d71b5da43ca
-ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58652531"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60370316"
 ---
 # <a name="understand-azure-reservation-usage-for-your-pay-as-you-go-subscription"></a>Vysvětlení využití Azure rezervace pro vaše předplatné s průběžnými platbami
 
@@ -33,7 +33,7 @@ Tento článek předpokládá, že se má rezervace použít na jedno předplatn
 
 V dalších částech předpokládají, že používáte virtuální počítač Windows Standard_DS1_v2 oblasti USA – východ a vaše rezervovaných virtuálních počítačů instance informace vypadá jako v následující tabulce:
 
-| Pole | Hodnota |
+| Pole | Value |
 |---| :---: |
 |ReservationId |8117adfb-1d94-4675-be2b-f3c1bca808b6|
 |Množství |1|
@@ -68,7 +68,7 @@ V dalších částech používat Azure SQL Database jako příklad k popisu sest
 
 Předpokládejme, že používáte SQL Database Gen 4 oblasti USA – východ a vaší rezervace informace vypadá jako v následující tabulce:
 
-| Pole | Hodnota |
+| Pole | Value |
 |---| --- |
 |ReservationId |446ec809-423d-467c-8c5c-bbd5d22906b1|
 |Množství |2|

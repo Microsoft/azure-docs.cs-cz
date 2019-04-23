@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 04/19/2017
 ms.author: jeconnoc
 ms.openlocfilehash: ce88dcaedf32f293fc121cda2a088388c99badee
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53603823"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60337510"
 ---
 # <a name="overview-of-azure-cloud-services"></a>Přehled služby Azure Cloud Services
 Azure Cloud Services je příkladem [platforma jako služba](https://azure.microsoft.com/overview/what-is-paas/) (PaaS). Stejně jako [služby Azure App Service](../app-service/overview.md), tato technologie je navržen pro podporu aplikací, které jsou škálovatelné, spolehlivé a mají levný provoz. Stejným způsobem, App Service je proto hostována na virtuálních počítačích (VM), je příliš Azure Cloud Services. Máte však větší kontrolu nad virtuálními počítači. Svůj vlastní software můžete nainstalovat na virtuálních počítačích, které používají Azure Cloud Services a které můžete přistupovat vzdáleně.

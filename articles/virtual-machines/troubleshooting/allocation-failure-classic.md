@@ -13,19 +13,19 @@ ms.topic: troubleshooting
 ms.date: 11/01/2018
 ms.author: genli
 ms.openlocfilehash: 7cd7897e3a0b940bbc636b2fbc3dbbc13b7cf540
-ms.sourcegitcommit: 6678e16c4b273acd3eaf45af310de77090137fa1
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50748421"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60505545"
 ---
 # <a name="troubleshooting-steps-specific-to-allocation-failure-scenarios-in-the-classic-deployment-model"></a>Kroků pro řešení problémů konkrétních chybových scénářů při přidělování v modelu nasazení classic
 
 Následují obvyklé scénáře přidělení, které způsobují požadavek na přidělení na připnout. Každý scénář dále v tomto článku začneme budete zabývat.
 
 - Změna velikosti virtuálního počítače nebo přidat virtuální počítače nebo instance rolí do existující cloudové služby
-- Restartování virtuálních počítačů částečně zastaveno (přidělení zrušeno)
-- Restartování virtuálních počítačů plně zastaveno (přidělení zrušeno)
+- Restartování částečně zastavených (uvolněných) virtuálních počítačů
+- Restartování úplně zastavených (uvolněných) virtuálních počítačů
 - Nasazení pracovního a produkčního prostředí (platforma jako služba jenom)
 - Skupina vztahů (virtuální počítač nebo služba blízkosti)
 - Spřažení – na základě skupin virtuální sítě
@@ -54,7 +54,7 @@ Pokud je chyba Upgrade_VMSizeNotSupported *, zkuste jinou velikost virtuálního
 
 Pokud je chyba GeneralError *, je pravděpodobné, že typ prostředku (třeba konkrétní velikosti virtuálního počítače) se podporuje v clusteru, ale clusteru nemá žádné volné prostředky v tuto chvíli. Podobně jako výše popsaném scénáři, přidejte požadované výpočetní prostředek procesem vytvoření nové cloudové služby (Všimněte si, že má novou cloudovou službu k použití různých virtuálních IP adres) a regionální virtuální síť používat pro připojení cloudových služeb.
 
-## <a name="restart-partially-stopped-deallocated-vms"></a>Restartování virtuálních počítačů částečně zastaveno (přidělení zrušeno)
+## <a name="restart-partially-stopped-deallocated-vms"></a>Restartování částečně zastavených (uvolněných) virtuálních počítačů
 **Chyba**
 
 GeneralError *
@@ -70,7 +70,7 @@ Pokud je akceptovatelná podle použití různých virtuálních IP adres, odstr
 * Pokud váš existující cloudovou službu používá regionální virtuální síť, jednoduše přidejte novou cloudovou službu do stejné virtuální síti.
 * Pokud vaše existující cloudovou službu nepoužívá regionální virtuální síť, vytvořte novou virtuální síť pro novou cloudovou službu a potom [připojte existující virtuální síti novou virtuální síť](https://azure.microsoft.com/blog/vnet-to-vnet-connecting-virtual-networks-in-azure-across-different-regions/). Přečtěte si více o [regionálních virtuálních sítích](https://azure.microsoft.com/blog/2014/05/14/regional-virtual-networks/).
 
-## <a name="restart-fully-stopped-deallocated-vms"></a>Restartování virtuálních počítačů plně zastaveno (přidělení zrušeno)
+## <a name="restart-fully-stopped-deallocated-vms"></a>Restartování úplně zastavených (uvolněných) virtuálních počítačů
 **Chyba**
 
 GeneralError *
@@ -116,7 +116,7 @@ New_General * nebo New_VMSizeNotSupported *
 
 **Příčinu Připnutí clusteru**
 
-Před zavedením regionálních virtuálních sítích, bylo potřeba virtuální síť přidružit k skupinu vztahů. V důsledku toho výpočetní prostředky, které umístí do skupiny vztahů jsou vázány stejná omezení, jak je popsáno v "přidělení scénář: Skupina vztahů (virtuální počítač nebo službu do blízkosti)" výše uvedené části. Výpočetní prostředky, které jsou vázané na jednom clusteru.
+Před zavedením regionálních virtuálních sítích, bylo potřeba virtuální síť přidružit k skupinu vztahů. V důsledku toho výpočetní prostředky, které umístí do skupiny vztahů jsou vázány stejná omezení, jak je popsáno v "přidělení scénář: Skupina vztahů (virtuální počítač nebo službu do blízkosti) "výše uvedené části. Výpočetní prostředky, které jsou vázané na jednom clusteru.
 
 **Alternativní řešení**
 

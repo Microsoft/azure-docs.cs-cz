@@ -13,11 +13,11 @@ ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: jingwang
 ms.openlocfilehash: 6793fbcc50711e10231b87fa6e1f11f54f90d325
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54018428"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60445430"
 ---
 # <a name="copy-data-from-xero-using-azure-data-factory-preview"></a>Kopírování dat z platformy Xero pomocí Azure Data Factory (Preview)
 

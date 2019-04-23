@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 08/31/2017
 ms.author: banders
 ms.openlocfilehash: 77c1a85136b2117af7396b8eec2d8b92b335d61d
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57897448"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60369921"
 ---
 # <a name="understand-terms-on-your-microsoft-azure-invoice"></a>Vysvětlení podmínek na faktuře Microsoft Azure
 
@@ -31,7 +31,7 @@ Mějte na paměti několik věcí:
 
 -   Až 24 hodin využití na konci předchozího fakturačního období může zobrazit na aktuální faktuře.
 
--   Poplatky uvedené na výpisu vyúčtování pro mezinárodní zákazníky slouží pouze jako odhad. Bank mohou mít různé náklady pro míry úspěšnosti.
+-   Poplatky uvedené na výpisu vyúčtování pro mezinárodní zákazníky slouží pouze jako odhad. Směnné kurzy jednotlivých bank se můžou lišit.
 
 >[!VIDEO https://www.youtube.com/embed/jWG1lyJe3Mg]
 
@@ -99,7 +99,7 @@ Následující tabulka popisuje záhlaví sloupců poplatky za využití uveden�
 
 | Označení |Popis |
 | --- | --- |
-| Název |Identifikuje službu nejvyšší úrovně za využití |
+| Name |Identifikuje službu nejvyšší úrovně za využití |
 | Type |Definuje typ služeb Azure, který může mít vliv na sazbu |
 | Prostředek |Určuje měrnou jednotku pro měření spotřebovávanou |
 | Oblast |Určuje polohu datacentra pro určité služby, které se počítají na základě umístění datového centra |
@@ -107,7 +107,7 @@ Následující tabulka popisuje záhlaví sloupců poplatky za využití uveden�
 | Zahrnuje |Množství měřiče, které je zdarma v aktuálním fakturačním období |
 | Fakturovatelné |Ukazuje rozdíl mezi spotřebované množství a zahrnuté množství. Tuto částku vám budeme fakturovat. U nabídek s průběžnými platbami se nabídka nezahrnuje žádné množství je tento součet stejný jako spotřebované množství |
 | Sazba |Sazba se účtuje za fakturovatelnou jednotku |
-| Hodnota |Zobrazuje výsledek součinu sloupce Nadlimitní množství sloupcem sazba. Pokud spotřebované množství nepřekročí zahrnuté množství, neplatí žádné poplatky v tomto sloupci. |
+| Value |Zobrazuje výsledek součinu sloupce Nadlimitní množství sloupcem sazba. Pokud spotřebované množství nepřekročí zahrnuté množství, neplatí žádné poplatky v tomto sloupci. |
 | Dílčí součet |Součet všech vaše náklady před zdaněním za tento fakturační období |
 | Celkový součet |Součet všech poplatků po zdanění za tento fakturační období |
 

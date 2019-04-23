@@ -5,18 +5,18 @@ services: billing
 author: dhirajgandhi
 manager: dhgandhi
 ms.author: banders
-ms.date: 03/12/2018
+ms.date: 03/12/2019
 ms.service: billing
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: ecbdf182fe2da7413e6d27ef5775dbaa7ad60806
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 6bf61e2afd96e3923938ac4f815d34ae08f7c618
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59270179"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60371261"
 ---
 # <a name="link-a-partner-id-to-your-azure-accounts"></a>Propojit ID partnera účtů Azure
 
@@ -57,29 +57,29 @@ Až budete mít přístup k prostředkům zákazníka, použijte na webu Azure p
 1. Nainstalujte [AzureRM.ManagementPartner](https://www.powershellgallery.com/packages/AzureRM.ManagementPartner) modul prostředí PowerShell.
 
 2. Přihlaste se do tenanta zákazníka s účtem uživatele nebo instanční objekt služby. Další informace najdete v tématu [Přihlaste se pomocí prostředí PowerShell](https://docs.microsoft.com/powershell/azure/authenticate-azureps).
- 
+
    ```azurepowershell-interactive
-    C:\> Connect-AzAccount -TenantId XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX 
+    C:\> Connect-AzAccount -TenantId XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX
    ```
 
 3. Odkaz na nové ID partnera. ID partnera [programu Microsoft Partner Network](https://partner.microsoft.com/) ID pro vaši organizaci.
 
     ```azurepowershell-interactive
-    C:\> new-AzureRmManagementPartner -PartnerId 12345 
+    C:\> new-AzManagementPartner -PartnerId 12345
     ```
 
 #### <a name="get-the-linked-partner-id"></a>Získejte ID propojené partnera
 ```azurepowershell-interactive
-C:\> get-AzureRmManagementPartner 
+C:\> get-AzManagementPartner
 ```
 
 #### <a name="update-the-linked-partner-id"></a>Aktualizace ID propojené partnera
 ```azurepowershell-interactive
-C:\> Update-AzureRmManagementPartner -PartnerId 12345 
+C:\> Update-AzManagementPartner -PartnerId 12345
 ```
 #### <a name="delete-the-linked-partner-id"></a>Odstranit ID propojené partnera
 ```azurepowershell-interactive
-C:\> remove-AzureRmManagementPartner -PartnerId 12345 
+C:\> remove-AzManagementPartner -PartnerId 12345
 ```
 
 ### <a name="use-the-azure-cli-to-link-to-a-new-partner-id"></a>Použití rozhraní příkazového řádku Azure pro odkaz na nové ID partnera.
@@ -87,13 +87,13 @@ C:\> remove-AzureRmManagementPartner -PartnerId 12345
 
     ```azurecli-interactive
     C:\ az extension add --name managementpartner
-    ``` 
+    ```
 
 2. Přihlaste se do tenanta zákazníka s účtem uživatele nebo instanční objekt služby. Další informace najdete v tématu [Přihlaste se pomocí Azure CLI](https://docs.microsoft.com/cli/azure/authenticate-azure-cli?view=azure-cli-latest).
 
     ```azurecli-interactive
     C:\ az login --tenant <tenant>
-    ``` 
+    ```
 
 3. Odkaz na nové ID partnera. ID partnera [programu Microsoft Partner Network](https://partner.microsoft.com/) ID pro vaši organizaci.
 
@@ -104,17 +104,17 @@ C:\> remove-AzureRmManagementPartner -PartnerId 12345
 #### <a name="get-the-linked-partner-id"></a>Získejte ID propojené partnera
 ```azurecli-interactive
 C:\ az managementpartner show
-``` 
+```
 
 #### <a name="update-the-linked-partner-id"></a>Aktualizace ID propojené partnera
 ```azurecli-interactive
 C:\ az managementpartner update --partner-id 12345
-``` 
+```
 
 #### <a name="delete-the-linked-partner-id"></a>Odstranit ID propojené partnera
 ```azurecli-interactive
 C:\ az managementpartner delete --partner-id 12345
-``` 
+```
 
 ## <a name="next-steps"></a>Další postup
 
@@ -136,12 +136,12 @@ Propojení ID partnera a účet se provádí pro každého zákazníka tenanta. 
 
 **Můžete dalších partnerů nebo zákazníky za upravit nebo odebrat propojení s ID partnera?**
 
-Odkaz na úrovni účtu uživatele souvisí. Pouze můžete upravit nebo odebrat odkaz na ID partnera. Zákazníka a dalšími partnery, nelze změnit propojení ID partnera. 
+Odkaz na úrovni účtu uživatele souvisí. Pouze můžete upravit nebo odebrat odkaz na ID partnera. Zákazníka a dalšími partnery, nelze změnit propojení ID partnera.
 
 
 **U kterého ID MPN by měl používat když Moje společnost má víc?**
 
-Můžete použít libovolné platné ID MPN s výjimkou orgnization(v-org) vyžaduje ID MPN. Většina partneři zvolit MPN ID pro zeměpisné oblasti, kde se zákazník nachází nebo služby jsou distribuována.
+Můžete použít libovolné platné ID MPN s výjimkou virtuální organization(v-org) ID MPN. Většina partneři zvolit MPN ID pro zeměpisné oblasti, kde se zákazník nachází nebo služby jsou distribuována.
 
 **Kde najdu vliv na výnosy vytváření sestav pro ID propojené partnera?**
 
@@ -158,4 +158,3 @@ Nelze zobrazit zákazníka v sestavách z následujících důvodů
 **Odkaz partnera, se kterým ID funguje s Azure Stack?**
 
 Ano, je možné propojit ID partnera pro službu Azure Stack.
-

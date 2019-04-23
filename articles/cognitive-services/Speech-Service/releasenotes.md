@@ -12,11 +12,11 @@ ms.date: 4/5/2019
 ms.author: wolfma
 ms.custom: seodec18
 ms.openlocfilehash: e40d9a2ac0e95ae72aed927f8a527eb1e092079d
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59549401"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60480465"
 ---
 # <a name="release-notes"></a>Poznámky k verzi
 

@@ -17,11 +17,11 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 26f3fe9c2483dda3b9350c110b2e8adf60dcd21e
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58803149"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60387209"
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Azure AD Connect: Historie vydaných verzí
 Tým služby Azure Active Directory (Azure AD) pravidelně aktualizuje s novými funkcemi a funkce služby Azure AD Connect. Ne všechny položky se vztahují na všechny cílové skupiny.
@@ -387,7 +387,7 @@ Uzamčení přístupu k účtu služby AD DS díky implementaci následující z
 *   Odeberte všechny položky řízení přístupu pro daný objekt, s výjimkou ACE konkrétní sama na sebe. Chcete zachovat beze změny výchozích oprávnění, pokud jde o sama na sebe.
 *   Přiřadíte tato konkrétní oprávnění:
 
-Type     | Název                          | Access               | Platí pro
+Type     | Name                          | Access               | Platí pro
 ---------|-------------------------------|----------------------|--------------|
 Povolit    | SYSTÉM                        | Úplné řízení         | Tento objekt  |
 Povolit    | Enterprise Admins             | Úplné řízení         | Tento objekt  |

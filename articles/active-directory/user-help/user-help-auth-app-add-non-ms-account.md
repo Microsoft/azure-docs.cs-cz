@@ -13,11 +13,11 @@ ms.author: lizross
 ms.reviewer: olhaun
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e6f94ba30c06fc6975ab212c895cecefe5d383fa
-ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56453643"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60473902"
 ---
 # <a name="add-your-non-microsoft-accounts"></a>Přidat své účty jiných společností než Microsoft
 Přidáte vaše účty jiných společností než Microsoft, jako pro Google, Facebook nebo Githubu do aplikace Microsoft Authenticator pro dvoufaktorové ověřování. Aplikace Microsoft Authenticator funguje s každou aplikaci, která používá dvojúrovňového ověřování a jakýkoli účet, který podporuje podle času jednorázového hesla (TOTP) normami.

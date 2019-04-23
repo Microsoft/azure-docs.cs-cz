@@ -16,11 +16,11 @@ ms.author: celested
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 5ee322dd3ff6ccd68b09645fb46b1488b17819bb
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56871685"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60440411"
 ---
 # <a name="problems-signing-in-to-an-on-premises-application-using-the-azure-ad-application-proxy"></a>Potíže při přihlašování k místní aplikaci pomocí proxy aplikací služby Azure AD
 
@@ -34,27 +34,27 @@ Následující dokumenty vám mohou pomoci při řešení některých nejběžn�
   * [Můžu se k aplikaci dostat, ale načítá se příliš dlouho](application-proxy-page-load-speed-problem.md)
   * [Můžu se k aplikaci dostat, ale odkazy na stránce aplikace nefungují](application-proxy-page-links-broken-problem.md)
 
-## <a name="im-having-a-connectivity-problem-my-application"></a>Mám potíže s připojením Moje aplikace
+## <a name="im-having-a-connectivity-problem-my-application"></a>Mám problém s připojením k aplikaci
   Následující dokumenty vám mohou pomoci při řešení některých nejběžnějších problémů v této kategorii.
   * [Nevím, které porty pro aplikaci otevřít](application-proxy-connectivity-ports-how-to.md)
   * [Vyskytl se problém, protože ve skupině konektorů pro aplikaci nebyl žádný funkční konektor](application-proxy-connectivity-no-working-connector.md)
 
-## <a name="im-having-a-problem-configuring-the-azure-ad-application-proxy-in-the-admin-portal"></a>Mám potíže s konfigurací v portálu pro správu Azure AD Application Proxy
+## <a name="im-having-a-problem-configuring-the-azure-ad-application-proxy-in-the-admin-portal"></a>Mám problém s konfigurací Proxy aplikací služby AD na portálu pro správu
   Následující dokumenty vám mohou pomoci při řešení některých nejběžnějších problémů v této kategorii.
   * [Mám potíže s konfigurací aplikace aplikačního proxy serveru](application-proxy-config-how-to.md)
   * [Nevím, jak nakonfigurovat jednotné přihlašování k aplikaci aplikačního proxy serveru](application-proxy-config-sso-how-to.md)
   * [Vyskytl se problém při vytváření aplikace na portálu pro správu](application-proxy-config-problem.md)
 
-## <a name="im-having-a-problem-setting-up-back-end-authentication-to-my-application"></a>Mám potíže s nastavením ověřování back-end pro aplikaci
+## <a name="im-having-a-problem-setting-up-back-end-authentication-to-my-application"></a>Mám problém s nastavením back-endového ověřování pro aplikaci
   Následující dokumenty vám mohou pomoci při řešení některých nejběžnějších problémů v této kategorii.
   * [Nevím, jak nakonfigurovat omezené delegování Kerberos](application-proxy-back-end-kerberos-constrained-delegation-how-to.md)
   * [Nevím, jak nakonfigurovat aplikaci pro používání PingAccessu](application-proxy-back-end-ping-access-how-to.md)
 
-## <a name="im-having-a-problem-when-signing-in-to-my-application"></a>Mám potíže při přihlašování k aplikaci
+## <a name="im-having-a-problem-when-signing-in-to-my-application"></a>Mám problém s přihlášením k aplikaci
   Následující dokumenty vám mohou pomoci při řešení některých nejběžnějších problémů v této kategorii.
   * [Zobrazuje se chyba „Není přístup k podnikové aplikaci“](application-proxy-sign-in-bad-gateway-timeout-error.md)
 
-## <a name="im-having-a-problem-with-the-application-proxy-agent-connector"></a>Mám potíže s konektorem agenta aplikačního proxy serveru
+## <a name="im-having-a-problem-with-the-application-proxy-agent-connector"></a>Mám problém s konektorem agenta Proxy aplikací
   Následující dokumenty vám mohou pomoci při řešení některých nejběžnějších problémů v této kategorii.
   * [Mám problémy s instalací konektorem agenta aplikačního proxy serveru](application-proxy-connector-installation-problem.md)
 

@@ -12,11 +12,11 @@ manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: cd5ab513034d6e2946dcb31f3a31dbf86f14873e
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58895981"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60412947"
 ---
 # <a name="quickstart-require-mfa-for-specific-apps-with-azure-active-directory-conditional-access"></a>Rychlý start: Vyžadovat vícefaktorové ověřování pro konkrétní aplikace s podmíněným přístupem Azure Active Directory
 
@@ -56,7 +56,7 @@ Tato část ukazuje, jak vytvořit zásady podmíněného přístupu vyžaduje. 
 
 V zásadách nastavte:
 
-| Nastavení | Hodnota |
+| Nastavení | Value |
 | --- | --- |
 | Uživatelé a skupiny | Isabella Simonsen |
 | Cloudové aplikace | Správa Microsoft Azure |
@@ -82,7 +82,7 @@ V zásadách nastavte:
 
 1. Na **nový** stránku, **název** textové pole, typ **vyžadovat vícefaktorové ověřování pro přístup na portál Azure**.
 
-   ![Název](./media/app-based-mfa/05.png)
+   ![Name](./media/app-based-mfa/05.png)
 
 1. V **přiřazení** klikněte na tlačítko **uživatelů a skupin**.
 

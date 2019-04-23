@@ -10,11 +10,11 @@ ms.topic: conceptual
 ms.service: service-fabric-mesh
 manager: chackdan
 ms.openlocfilehash: 36d0b49f1b9fb1ca5d13283146d134137a5cb028
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57900637"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60419060"
 ---
 # <a name="manage-service-fabric-mesh-application-secrets"></a>Správa tajných klíčů aplikací Service Fabric sítě
 Sítě pro Service Fabric podporuje tajné kódy jako prostředky Azure. Tajný klíč služby prostředků infrastruktury sítě může být libovolné citlivé textové informace, jako je například úložiště připojovací řetězce, hesla nebo jiné hodnoty, které mají být uloženy a bezpečně přenášet. Tento článek ukazuje, jak pomocí Service Fabric Secure Store Service můžete nasadit a spravovat tajné kódy.
