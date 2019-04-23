@@ -12,12 +12,12 @@ ms.topic: sample
 ms.date: 07/03/2013
 ms.author: glenga
 ms.custom: mvc
-ms.openlocfilehash: 689764543f5d927273f92deecbfd43e282fc028c
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
-ms.translationtype: HT
+ms.openlocfilehash: 84cc4e92419e683f8d2c29883b26148fdef23356
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46961361"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60325717"
 ---
 # <a name="bind-a-custom-ssl-certificate-to-a-function-app"></a>Vazba vlastního certifikátu SSL na aplikaci funkcí
 
@@ -55,7 +55,7 @@ Tento skript používá následující příkazy. Každý příkaz v tabulce odk
 | [az functionapp config ssl upload](https://docs.microsoft.com/cli/azure/functionapp/config/ssl#az-functionapp-config-ssl-upload) | Nahraje do aplikace funkcí certifikát SSL. |
 | [az functionapp config ssl bind](https://docs.microsoft.com/cli/azure/functionapp/config/ssl#az-functionapp-config-ssl-bind) | Vytvoří vazbu nahraného certifikátu SSL na aplikaci funkcí. |
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Další informace o Azure CLI najdete v [dokumentaci k Azure CLI](https://docs.microsoft.com/cli/azure).
 

@@ -15,11 +15,11 @@ ms.workload: NA
 ms.date: 04/10/2019
 ms.author: aljo
 ms.openlocfilehash: 46c9b37e9bb8613b34dea6705320f5689eeb51d8
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59526533"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60386818"
 ---
 # <a name="customize-service-fabric-cluster-settings"></a>Nastavení clusteru Service Fabric
 Tento článek popisuje různé nastavení prostředků infrastruktury pro cluster Service Fabric, kterou můžete přizpůsobit. Pro clustery hostovaných v Azure, můžete upravit pomocí nastavení [webu Azure portal](https://portal.azure.com) nebo s použitím šablony Azure Resource Manageru. Další informace najdete v tématu [upgradovat konfiguraci clusteru Azure](service-fabric-cluster-config-upgrade-azure.md). Pro samostatné clustery, můžete upravit nastavení aktualizací *ClusterConfig.json* souborů a provádění konfigurace upgradu ve vašem clusteru. Další informace najdete v tématu [upgradovat konfiguraci samostatného clusteru](service-fabric-cluster-config-upgrade-windows-server.md).
@@ -378,7 +378,7 @@ Tady je seznam prostředků infrastruktury nastavení, které můžete přizpůs
 
 | **Parametr** | **Povolené hodnoty** | **Zásady upgradu** | **Doprovodné materiály nebo krátký popis** |
 | --- | --- | --- | --- |
-|Povoleno |Logická hodnota, výchozí hodnota je false |Statická|Příznak povoleno ImageStoreService. Výchozí: false |
+|Enabled |Logická hodnota, výchozí hodnota je false |Statická|Příznak povoleno ImageStoreService. Výchozí: false |
 |MinReplicaSetSize | Int, výchozí hodnota je 3 |Statická|MinReplicaSetSize pro ImageStoreService. |
 |PlacementConstraints | řetězec, výchozí hodnota je "" |Statická| PlacementConstraints pro ImageStoreService. |
 |QuorumLossWaitDuration | Čas v sekundách, výchozí hodnota je hodnota MaxValue |Statická| Zadejte časový interval v sekundách. QuorumLossWaitDuration pro ImageStoreService. |

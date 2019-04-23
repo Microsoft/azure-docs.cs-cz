@@ -16,11 +16,11 @@ ms.date: 12/24/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 395d3887e35d6e9c043d4d947b605e71eb58bd6b
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57897329"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60270865"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-iprova"></a>Kurz: Integrace Azure Active Directory s iProva
 
@@ -134,7 +134,7 @@ Ke konfiguraci Azure AD jednotné přihlašování s iProva, postupujte podle t�
 
 6. V **deklarace identity uživatelů** tématu **atributy uživatele** dialogového okna nastavte atribut tokenu SAML, jak je znázorněno na předchozím obrázku. Postupujte následovně.
 
-    | Název | Zdrojový atribut| Obor názvů |
+    | Name | Zdrojový atribut| Obor názvů |
     | ---------------| -------- | -----|
     | `samaccountname` | `user.onpremisessamaccountname`| `http://schemas.xmlsoap.org/ws/2005/05/identity/claims`|
     | | |

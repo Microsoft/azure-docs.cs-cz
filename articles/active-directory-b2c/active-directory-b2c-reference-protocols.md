@@ -11,11 +11,11 @@ ms.date: 11/30/2018
 ms.author: davidmu
 ms.subservice: B2C
 ms.openlocfilehash: 47c99b14a41ac50e13198f934e38718e205e6e79
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55175635"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60317017"
 ---
 # <a name="azure-ad-b2c-authentication-protocols"></a>Azure AD B2C: Protokoly pro ověřování
 Azure Active Directory B2C (Azure AD B2C) poskytuje identitu jako služba pro vaše aplikace díky podpoře dvou standardních oborových protokolů: OpenID Connect a OAuth 2.0. Služba je kompatibilní se standardy, ale žádné dvě implementace těchto protokolů můžete jemně lišit. 

@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 07/18/2017
 ms.author: jeconnoc
 ms.openlocfilehash: 0a2e2a3d817140a6ab15dab0093b4025a3bfd76c
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58916647"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60406391"
 ---
 # <a name="common-cloud-service-startup-tasks"></a>Běžné úlohy po spuštění cloudové služby
 Tento článek obsahuje několik příkladů běžných úloh po spuštění, které můžete provádět v cloudové službě. Úlohy po spuštění můžete použít k provádění operací před zahájením roli. Operace, které můžete chtít provést zahrnout instalaci součásti, registrace komponent COM, nastavení klíče registru nebo spouští se dlouho běžící proces. 

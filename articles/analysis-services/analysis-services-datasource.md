@@ -9,11 +9,11 @@ ms.date: 04/17/2019
 ms.author: owend
 ms.reviewer: minewiskan
 ms.openlocfilehash: ed18fd985173a4d978edccedc8b6e5cf527f16dd
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59698721"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60327135"
 ---
 # <a name="data-sources-supported-in-azure-analysis-services"></a>Zdroje dat podporované ve službě Azure Analysis Services
 
@@ -72,7 +72,7 @@ Připojení k místní zdroje dat z a serveru Azure AS vyžadují místní brán
 |Databáze IBM Informix<sup>[1](#tab1400b) </sup> (beta verze) |
 |Dokument JSON<sup>[1](#tab1400b)</sup>     |  
 |Řádky z binárního souboru<sup>[1](#tab1400b)</sup>     | 
-|Databáze MySQL     | 
+|MySQL Database     | 
 |Datový kanál OData<sup>[1](#tab1400b)</sup>     |  
 |Dotaz rozhraní ODBC     | 
 |OLE DB     |   

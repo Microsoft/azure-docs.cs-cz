@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 04/19/2017
 ms.author: jeconnoc
 ms.openlocfilehash: 4ca26c7b8fbfebbce8cfcb9915a7db12e5ad2352
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59793844"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60337404"
 ---
 # <a name="certificates-overview-for-azure-cloud-services"></a>Přehled certifikátů pro Azure Cloud Services
 Certifikáty se používají v Azure pro cloudové služby ([služby certifikátů](#what-are-service-certificates)) a pro ověřování pomocí rozhraní API pro správu ([certifikáty pro správu](#what-are-management-certificates)). Toto téma obsahuje obecný přehled o oba typy certifikátů, jak k [vytvořit](#create) a jejich nasazení do Azure.

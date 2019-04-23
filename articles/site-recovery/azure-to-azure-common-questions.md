@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.date: 03/29/2019
 ms.topic: conceptual
 ms.author: asgang
-ms.openlocfilehash: 66d57677b216130316c6a3ddd9a6cff993540808
-ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
-ms.translationtype: MT
+ms.openlocfilehash: 52a5022b49bac990321c3cf8661aa2a04e93b39a
+ms.sourcegitcommit: c884e2b3746d4d5f0c5c1090e51d2056456a1317
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58649879"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60149729"
 ---
 # <a name="common-questions-azure-to-azure-replication"></a>Nejčastější dotazy: Replikace z Azure do Azure
 
@@ -67,7 +67,7 @@ Pomocí služby Site Recovery můžete replikovat a obnovovat virtuální počí
 
 Ne, Site Recovery nevyžaduje připojení k Internetu. Ale vyžaduje přístup k adresám URL služby Site Recovery a IP rozsahy, jak je uvedeno v [v tomto článku](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-about-networking#outbound-connectivity-for-ip-address-ranges).
 
-### <a name="can-i-replicate-the-application-having-separate-resource-group-for-separate-tiers"></a>Můžete replikovat aplikace má samostatné skupiny prostředků pro samostatné úrovně? 
+### <a name="can-i-replicate-the-application-having-separate-resource-group-for-separate-tiers"></a>Můžete replikovat aplikace má samostatné skupiny prostředků pro samostatné úrovně?
 Ano, můžete replikovat aplikace a konfigurace zotavení po havárii mějte samostatné skupiny prostředků moc.
 Například pokud máte aplikace s jednotlivých úrovní aplikace, databáze a webové v samostatné skupiny prostředků, pak budete muset kliknout [Průvodce replikace](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-how-to-enable-replication#enable-replication) třikrát pro ochranu u všech úrovní. Azure Site Recovery replikuje tyto tři úrovně ve třech jinou skupinu prostředků.
 
@@ -89,11 +89,12 @@ V současné době většina aplikací můžete obnovit také ze snímků konzis
 ### <a name="what-is-the-frequency-of-crash-consistent-recovery-point-generation"></a>Co je frekvence generování bod obnovení konzistentní při selhání?
 Site Recovery vytvoří bod obnovení konzistentní při selhání každých 5 minut.
 
-### <a name="what-is-an-application-consistent-recovery-point"></a>Co je bod obnovení konzistentní? 
-Body obnovení konzistentní vzhledem k aplikaci vytvořené ze snímků konzistentních s aplikací. Body obnovení konzistentní zachycení stejná data jako snímky konzistentní při selhání, a uveďte všechna data v paměti a všechny probíhající transakce. Kvůli další obsah snímky konzistentními se nejvíce podílejí a trvat nejdéle provádět. Doporučujeme, abyste body obnovení konzistentní pro databázi operačních systémů a aplikací, jako je SQL Server.
+### <a name="what-is-an-application-consistent-recovery-point"></a>Co je bod obnovení konzistentní?
+Body obnovení konzistentní vzhledem k aplikaci vytvořené ze snímků konzistentních s aplikací. Body obnovení konzistentní zachycení stejná data jako snímky konzistentní při selhání, a uveďte všechna data v paměti a všechny probíhající transakce.
+Kvůli další obsah snímky konzistentními se nejvíce podílejí a trvat nejdéle provádět. Doporučujeme, abyste body obnovení konzistentní pro databázi operačních systémů a aplikací, jako je SQL Server.
 
 ### <a name="what-is-the-impact-of-application-consistent-recovery-points-on-application-performance"></a>Co je dopad existence body obnovení konzistentní s aplikací na výkon aplikace?
-Vzhledem k tomu, body obnovení konzistentní zachytí všechna data v paměti a v procesu vyžaduje architekturu jako třeba stínové kopie svazku v systému windows pro uvedení aplikace. To, v případě velmi často aktivace může mít dopad na výkon Pokud už je velmi vytížený zatížení. Obvykle doporučuje nepoužívat s nízkou frekvencí pro body obnovení konzistentní vzhledem k aplikaci pro jiné databázové úlohy a to i pro databázové úlohy 1 hodinu je dostatečná. 
+Vzhledem k tomu, body obnovení konzistentní zachytí všechna data v paměti a v procesu vyžaduje architekturu jako třeba stínové kopie svazku v systému windows pro uvedení aplikace. To, v případě velmi často aktivace může mít dopad na výkon Pokud už je velmi vytížený zatížení. Obvykle doporučuje nepoužívat s nízkou frekvencí pro body obnovení konzistentní vzhledem k aplikaci pro jiné databázové úlohy a to i pro databázové úlohy 1 hodinu je dostatečná.
 
 ### <a name="what-is-the-minimum-frequency-of-application-consistent-recovery-point-generation"></a>Co je minimální frekvenci generování bod obnovení konzistentní s aplikací?
 Site Recovery můžete vytvoří jako bod obnovení konzistentní s minimální frekvenci za 1 hodinu.
@@ -216,7 +217,11 @@ To závisí na situace. Například pokud zdrojové oblasti virtuální počíta
 Množství času pro navrácení služeb po obnovení po opětovného nastavování ochrany, je obvykle podobný čas potřebný pro převzetí služeb při selhání z primární oblasti do sekundární oblasti.
 
 ## <a name="capacity"></a>Kapacita
-### <a name="does-site-recovery-work-with-reserved-instance"></a>Funguje Site Recovery s rezervované Instance?
+
+### <a name="how-is-capacity-assured-in-target-region-for-azure-vms"></a>Jak je kapacita Buďte bez obav v cílové oblasti pro virtuální počítače Azure?
+Azure Site Recovery (ASR) tým pracuje s týmem správy kapacity Azure naplánovat dostatek kapacity infrastruktury, ve snaze zajistit, aby virtuální počítače chráněné službou Azure Site Recovery pro po havárii se obnovení bylo úspěšně nasazeno v oblasti zotavení po havárii vždy, když jsou spuštěny operace převzetí služeb při selhání Azure Site Recovery.
+
+### <a name="does-site-recovery-work-with-reserved-instances"></a>Funguje Site Recovery s rezervovanými instancemi?
 Ano, můžete si koupit [rezervace instancí](https://azure.microsoft.com/pricing/reserved-vm-instances/) v DR oblasti a operace převzetí služeb při selhání Azure Site Recovery je používají. </br> Žádná další konfigurace je nutná od zákazníků.
 
 

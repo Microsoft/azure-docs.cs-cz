@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 3/8/2019
 ms.openlocfilehash: cae75f4d64c8b3f74cc40e94a675c0f10a6bd9ec
-ms.sourcegitcommit: f596d88d776a3699f8c8cf98415eb874187e2a48
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2019
-ms.locfileid: "58111935"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60312705"
 ---
 # <a name="copy-new-and-changed-files-by-lastmodifieddate-with-azure-data-factory"></a>Kopírovat nové a změněné soubory podle LastModifiedDate s Azure Data Factory
 

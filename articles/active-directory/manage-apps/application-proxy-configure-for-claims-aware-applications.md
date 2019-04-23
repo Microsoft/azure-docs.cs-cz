@@ -16,11 +16,11 @@ ms.author: celested
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: dc5be2f5bbeb901888edc1e69953fdeb8de566c0
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56187130"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60293459"
 ---
 # <a name="working-with-claims-aware-apps-in-application-proxy"></a>Práce s deklaracemi identity aplikace v Proxy aplikací
 [S deklaracemi identity aplikace](https://msdn.microsoft.com/library/windows/desktop/bb736227.aspx) provést přesměrování do tokenů zabezpečení služby (STS). Služba tokenů zabezpečení přihlašovacích údajů požádá uživatele výměnou za token a pak přesměruje uživatele k aplikaci. Existuje několik způsobů, jak povolit Proxy aplikace pro práci s těmito přesměrování. Tento článek slouží ke konfiguraci svého nasazení s deklaracemi identity aplikace. 

@@ -11,13 +11,13 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 manager: craigg
-ms.date: 03/12/2019
-ms.openlocfilehash: cf163b2b01b4205a4a3d2123263988998130c42a
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.date: 04/19/2019
+ms.openlocfilehash: f382cc547640969f934b94405b635c9e84f10791
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58848383"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60009063"
 ---
 # <a name="use-auto-failover-groups-to-enable-transparent-and-coordinated-failover-of-multiple-databases"></a>Povolit transparentní a koordinovaný převzetí služeb při selhání několika databází pomocí skupiny automatické převzetí služeb při selhání
 
@@ -40,7 +40,7 @@ Pro dosažení skutečné obchodní kontinuity podnikových procesů, je přidá
 
 ## <a name="auto-failover-group-terminology-and-capabilities"></a>Terminologie skupiny-automatické převzetí služeb při selhání a možnosti
 
-- **Skupiny převzetí služeb při selhání**
+- **Skupiny převzetí služeb při selhání (MLHOVÉ)**
 
   Skupina převzetí služeb při selhání je skupina databází spravovaných jediný server SQL Database nebo v rámci jednoho managed instance, můžete převzetí služeb při selhání jako jednotku do jiné oblasti pro případ, že některá nebo všechna primární databáze nedostupné kvůli výpadku v primární oblasti.
 
@@ -77,11 +77,11 @@ Pro dosažení skutečné obchodní kontinuity podnikových procesů, je přidá
 
   - **Server služby SQL Database záznam DNS CNAME pro naslouchací proces pro čtení i zápis**
 
-     Na server služby SQL Database, je vytvořen záznam DNS CNAME pro skupinu převzetí služeb při selhání, který odkazuje na aktuální primární adresy URL jako `failover-group-name.database.windows.net`.
+     Na server služby SQL Database, je vytvořen záznam DNS CNAME pro skupinu převzetí služeb při selhání, který odkazuje na aktuální primární adresy URL jako `<fog-name>.database.windows.net`.
 
   - **Spravované záznam Instance DNS CNAME pro naslouchací proces pro čtení i zápis**
 
-     Na Managed Instance, je vytvořen záznam DNS CNAME pro skupinu převzetí služeb při selhání, který odkazuje na aktuální primární adresy URL jako `failover-group-name.zone_id.database.windows.net`.
+     Na Managed Instance, je vytvořen záznam DNS CNAME pro skupinu převzetí služeb při selhání, který odkazuje na aktuální primární adresy URL jako `<fog-name>.zone_id.database.windows.net`.
 
 - **Převzetí služeb při selhání jen pro čtení naslouchacího procesu skupiny**
 
@@ -89,11 +89,11 @@ Pro dosažení skutečné obchodní kontinuity podnikových procesů, je přidá
 
   - **Server služby SQL Database záznam DNS CNAME pro naslouchacího zápisu jen pro čtení**
 
-     Na server služby SQL Database, je vytvořen záznam DNS CNAME pro posluchače jen pro čtení, který odkazuje na adresu URL sekundární jako `failover-group-name.secondary.database.windows.net`.
+     Na server služby SQL Database, je vytvořen záznam DNS CNAME pro posluchače jen pro čtení, který odkazuje na adresu URL sekundární jako `'.secondary.database.windows.net`.
 
   - **Spravované záznam Instance DNS CNAME naslouchacího procesu jen pro čtení**
 
-     Na Managed Instance, je vytvořen záznam DNS CNAME pro posluchače jen pro čtení, který odkazuje na adresu URL sekundární jako `failover-group-name.zone_id.database.windows.net`.
+     Na Managed Instance, je vytvořen záznam DNS CNAME pro posluchače jen pro čtení, který odkazuje na adresu URL sekundární jako `<fog-name>.zone_id.database.windows.net`.
 
 - **Automatické převzetí služeb při selhání zásad**
 
@@ -156,11 +156,11 @@ Při návrhu služby s kontinuita podnikových procesů v paměti, dodržujte n�
 
 - **Pro úlohy OLTP použijte naslouchací proces pro čtení i zápis**
 
-  Při provádění operací s online zpracováním transakcí, použití `failover-group-name.database.windows.net` jako server pro adresu URL a připojení se automaticky přesměrovaní na primární. Tuto adresu URL nezměnil převzetí služeb při selhání. Všimněte si, že že převzetí služeb při selhání zahrnuje aktualizaci, kterou záznam DNS, takže připojení klientů se přesměrují na nový primární až po klientské mezipaměti DNS je aktualizováno.
+  Při provádění operací s online zpracováním transakcí, použití `<fog-name>.database.windows.net` jako server pro adresu URL a připojení se automaticky přesměrovaní na primární. Tuto adresu URL nezměnil převzetí služeb při selhání. Všimněte si, že že převzetí služeb při selhání zahrnuje aktualizaci, kterou záznam DNS, takže připojení klientů se přesměrují na nový primární až po klientské mezipaměti DNS je aktualizováno.
 
 - **Pro úlohy jen pro čtení použijte naslouchacího zápisu jen pro čtení**
 
-  Pokud nemáte logicky izolované úlohy jen pro čtení, který je odolný vůči určitým odolnost dat, můžete v aplikaci použít sekundární databáze. Pro relace jen pro čtení, použijte `failover-group-name.secondary.database.windows.net` jako server pro adresu URL a připojení se automaticky přesměrovaní na sekundární. Doporučuje se také, abyste určili v připojovacím řetězci číst záměr pomocí **ApplicationIntent = ReadOnly**.
+  Pokud nemáte logicky izolované úlohy jen pro čtení, který je odolný vůči určitým odolnost dat, můžete v aplikaci použít sekundární databáze. Pro relace jen pro čtení, použijte `<fog-name>.secondary.database.windows.net` jako server pro adresu URL a připojení se automaticky přesměrovaní na sekundární. Doporučuje se také, abyste určili v připojovacím řetězci číst záměr pomocí **ApplicationIntent = ReadOnly**.
 
 - **Připravit pro snížení výkonu**
 
@@ -206,7 +206,7 @@ Pokud vaše aplikace používá jako datovou vrstvu Managed Instance, postupujte
 
 - **Pro úlohy OLTP použijte naslouchací proces pro čtení i zápis**
 
-  Při provádění operací s online zpracováním transakcí, použití `failover-group-name.zone_id.database.windows.net` jako server pro adresu URL a připojení se automaticky přesměrovaní na primární. Tuto adresu URL nezměnil převzetí služeb při selhání. Převzetí služeb zahrnuje aktualizace záznamu DNS, takže připojení klientů se přesměrují na nový primární až po klientské mezipaměti DNS je aktualizováno. Protože sekundární instance sdílí s primární zóny DNS, klientská aplikace bude moct znovu připojit k němu pomocí stejného certifikátu SAN.
+  Při provádění operací s online zpracováním transakcí, použití `<fog-name>.zone_id.database.windows.net` jako server pro adresu URL a připojení se automaticky přesměrovaní na primární. Tuto adresu URL nezměnil převzetí služeb při selhání. Převzetí služeb zahrnuje aktualizace záznamu DNS, takže připojení klientů se přesměrují na nový primární až po klientské mezipaměti DNS je aktualizováno. Protože sekundární instance sdílí s primární zóny DNS, klientská aplikace bude moct znovu připojit k němu pomocí stejného certifikátu SAN.
 
 - **Připojte se přímo do geograficky replikované sekundární databáze pro dotazy jen pro čtení**
 
@@ -214,8 +214,8 @@ Pokud vaše aplikace používá jako datovou vrstvu Managed Instance, postupujte
 
   > [!NOTE]
   > V některých úrovně služby Azure SQL Database podporuje použití [repliky jen pro čtení](sql-database-read-scale-out.md) načíst vyrovnávat zatížení dotazu jen pro čtení použitím kapacita jednu repliku pouze pro čtení a `ApplicationIntent=ReadOnly` parametr v připojení řetězec. Když nakonfigurujete geograficky replikované sekundární můžete tuto funkci pro připojení k buď jen pro čtení repliky v primárním umístění nebo v geograficky replikovaného umístění.
-  > - Pro připojení k repliky jen pro čtení v primárním umístění, použijte `failover-group-name.zone_id.database.windows.net`.
-  > - Pro připojení k jen pro čtení repliky v sekundární lokalitě, použijte `failover-group-name.secondary.zone_id.database.windows.net`.
+  > - Pro připojení k repliky jen pro čtení v primárním umístění, použijte `<fog-name>.zone_id.database.windows.net`.
+  > - Pro připojení k jen pro čtení repliky v sekundární lokalitě, použijte `<fog-name>.secondary.zone_id.database.windows.net`.
 
 - **Připravit pro snížení výkonu**
 

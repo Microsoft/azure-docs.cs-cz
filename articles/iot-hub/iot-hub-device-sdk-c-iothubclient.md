@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.date: 08/29/2017
 ms.author: yizhon
 ms.openlocfilehash: dd3b693271326c85688a275a65b67ad6257220e3
-ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50024752"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60400690"
 ---
 # <a name="azure-iot-device-sdk-for-c--more-about-iothubclient"></a>Pro zařízení Azure IoT SDK pro jazyk C – Další informace pro IoTHubClient
 
@@ -235,7 +235,7 @@ Argumenty, které mají **pro IoTHubClient\_CreateFromConnectionString** jsou p�
 HostName=IOTHUBNAME.IOTHUBSUFFIX;DeviceId=DEVICEID;SharedAccessKey=SHAREDACCESSKEY
 ```
 
-Existují čtyři úryvky informace v tomto řetězci: název služby IoT Hub, IoT Hub příponu, ID zařízení a sdílený přístupový klíč. Při vytváření IoT hub instance na webu Azure Portal získáte ze služby IoT hub plně kvalifikovaný název domény (FQDN) – to umožňuje název centra IoT (první část úplný název domény) a IoT hub přípony (zbytek plně kvalifikovaný název domény). Při registraci zařízení ve službě IoT Hub, zobrazí se ID zařízení a sdílený přístupový klíč (jak je popsáno v [předchozím článku](iot-hub-device-sdk-c-intro.md)).
+Existují čtyři úryvky informace v tomto řetězci: Název služby IoT Hub, IoT Hub příponu, ID zařízení a sdílený přístupový klíč. Při vytváření IoT hub instance na webu Azure Portal získáte ze služby IoT hub plně kvalifikovaný název domény (FQDN) – to umožňuje název centra IoT (první část úplný název domény) a IoT hub přípony (zbytek plně kvalifikovaný název domény). Při registraci zařízení ve službě IoT Hub, zobrazí se ID zařízení a sdílený přístupový klíč (jak je popsáno v [předchozím článku](iot-hub-device-sdk-c-intro.md)).
 
 **Pro IoTHubClient\_CreateFromConnectionString** představuje jeden způsob, jak inicializovat knihovnu. Pokud dáváte přednost, můžete vytvořit nový **IOTHUB\_klienta\_zpracování** pomocí těchto jednotlivých parametrů místo připojovací řetězec zařízení. Toho můžete dosáhnout s následujícím kódem:
 

@@ -10,11 +10,11 @@ ms.topic: tutorial
 ms.service: event-hubs-messaging
 ms.custom: mvc
 ms.openlocfilehash: 9eea40a8ad2f08099b2662a0e7539c326d4d143e
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57779041"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60343584"
 ---
 # <a name="tutorial-enable-virtual-networks-integration-and-firewalls-on-event-hubs-namespace"></a>Kurz: Povolení integrace virtuální sítě a brány firewall na obor názvů Event Hubs
 

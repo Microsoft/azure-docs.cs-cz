@@ -18,11 +18,11 @@ ms.topic: article
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 646119f223067fac5ee36574fb10273819251cce
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59547052"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60295946"
 ---
 # <a name="how-to-investigate-risky-users-and-sign-ins"></a>Jak: Prozkoumávání rizikových uživatelů a přihlášení 
 
@@ -46,7 +46,7 @@ Váš první vstupní bod do této sestavy je **prošetření** části na strá
 
 Sestava rizikových uživatelů má výchozí zobrazení, který ukazuje:
 
-- Název
+- Name
 
 - Stav rizika
 
@@ -105,7 +105,7 @@ Kromě toho můžete:
 
 Abyste omezili zobrazovaná data na úroveň, která vám vyhovuje, můžete filtrovat rizikový uživatel data s využitím následujících výchozích polí:
 
-- Název
+- Name
 
 - Uživatelské jméno
 

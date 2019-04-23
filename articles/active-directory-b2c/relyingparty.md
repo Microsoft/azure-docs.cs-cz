@@ -11,11 +11,11 @@ ms.date: 01/25/2019
 ms.author: davidmu
 ms.subservice: B2C
 ms.openlocfilehash: 5d42568a738d946d7df65601044b9797a35f6b1f
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55176008"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60360397"
 ---
 # <a name="relyingparty"></a>RelyingParty
 

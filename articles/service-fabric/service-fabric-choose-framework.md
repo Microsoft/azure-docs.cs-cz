@@ -15,11 +15,11 @@ ms.workload: NA
 ms.date: 11/02/2017
 ms.author: vturecek
 ms.openlocfilehash: d764cbe2df78cb9029a4109caa2998ddded5d6ff
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58665708"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60341960"
 ---
 # <a name="service-fabric-programming-model-overview"></a>Přehled programovacího modelu Service Fabric
 Service Fabric nabízí několik způsobů, jak zapisovat a spravovat vaše služby. Služby můžete zvolit použití rozhraní API služby Service Fabric plně využít funkce platformy a aplikace rozhraní. Služby mohou být také všechny zkompilovaný spustitelný program napsané v libovolném jazyce nebo kód spuštěný v kontejneru hostovaná v clusteru Service Fabric.

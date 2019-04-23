@@ -14,11 +14,11 @@ ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: d69bd931f2f8c72fd1e6fc79c16662ea367617d6
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58802010"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60248219"
 ---
 # <a name="restore-or-remove-a-recently-deleted-user-using-azure-active-directory"></a>Obnovení nebo odeberte nedávno odstraněného uživatele pomocí služby Azure Active Directory
 Po odstranění uživatele účet zůstane v pozastaveném stavu po dobu 30 dnů. Během tohoto časového období 30 dnů uživatelský účet můžete obnovit, spolu se všemi vlastnostmi. Po uplynutí 30 dnů okno uživatele je automaticky a chcete trvale odstranit.

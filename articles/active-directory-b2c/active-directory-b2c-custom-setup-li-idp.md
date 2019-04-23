@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 04/01/2019
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 5dad12596dde13cfa7e0c2031d58f605061b0e20
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: HT
+ms.openlocfilehash: 5bf1126a7015e668f3770835535b81c93d01cbda
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58862790"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60387073"
 ---
 # <a name="set-up-sign-in-with-a-linkedin-account-using-custom-policies-in-azure-active-directory-b2c"></a>Nastavení přihlášení s účtem LinkedIn pomocí vlastních zásad v Azure Active Directory B2C
 
@@ -94,7 +94,7 @@ Pokud chcete uživatelům umožní přihlásit se účtem LinkedIn, musíte defi
             <Key Id="client_secret" StorageReferenceId="B2C_1A_LinkedInSecret" />
           </CryptographicKeys>
           <OutputClaims>
-            <OutputClaim ClaimTypeReferenceId="socialIdpUserId" PartnerClaimType="id" />
+            <OutputClaim ClaimTypeReferenceId="issuerUserId" PartnerClaimType="id" />
             <OutputClaim ClaimTypeReferenceId="givenName" PartnerClaimType="firstName" />
             <OutputClaim ClaimTypeReferenceId="surname" PartnerClaimType="lastName" />
             <OutputClaim ClaimTypeReferenceId="identityProvider" DefaultValue="linkedin.com" />
@@ -192,13 +192,13 @@ V tuto chvíli je nastavený zprostředkovatele identity, ale není k dispozici 
 Teď, když máte tlačítko na místě, budete potřebovat odkázat na akci. Akce v tomto případě je pro Azure AD B2C ke komunikaci s účtem LinkedIn k získání tokenu.
 
 1. Najít **OrchestrationStep** , který obsahuje `Order="2"` v cestě uživatele.
-2. Přidejte následující **ClaimsExchange** a ujistěte se, že používáte stejnou hodnotu pro element **Id** , který jste použili pro **TargetClaimsExchangeId**:
+2. Přidejte následující **ClaimsExchange** a ujistěte se, že používáte stejnou hodnotu pro ID, které jste použili pro element **TargetClaimsExchangeId**:
 
     ```XML
     <ClaimsExchange Id="LinkedInExchange" TechnicalProfileReferenceId="LinkedIn-OAUTH" />
     ```
     
-    Aktualizujte hodnotu **TechnicalProfileReferenceId** k **Id** technického profilu, který jste vytvořili dříve. Například, `LinkedIn-OAUTH`.
+    Aktualizujte hodnotu **TechnicalProfileReferenceId** ID technického profilu, který jste vytvořili dříve. Například, `LinkedIn-OAUTH`.
 
 3. Uložit *TrustFrameworkExtensions.xml* souboru a nahrajte ji znovu pro ověření.
 
@@ -207,7 +207,7 @@ Teď, když máte tlačítko na místě, budete potřebovat odkázat na akci. Ak
 Probíhá komunikace s Azure AD B2c prostřednictvím aplikace, kterou vytvoříte ve vašem tenantovi. Tato část obsahuje seznam volitelné kroky, které můžete použít k vytvoření aplikace testů, pokud jste tak již neučinili.
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
-2. Ujistěte se, že používáte adresáře, který obsahuje vašeho tenanta Azure AD B2C kliknutím **filtr adresářů a předplatných** v horní nabídce a výběrem adresáře, který obsahuje váš tenant.
+2. Ujistěte se, že používáte adresáře, který obsahuje vašeho tenanta Azure AD B2C. Vyberte **filtr adresářů a předplatných** v horní nabídce a vyberte adresář, který obsahuje váš tenant.
 3. Zvolte **všechny služby** v horním levém horním rohu webu Azure portal a poté vyhledejte a vyberte **Azure AD B2C**.
 4. Vyberte **aplikací**a pak vyberte **přidat**.
 5. Zadejte název aplikace, například *testapp1*.
@@ -252,13 +252,13 @@ V tuto chvíli je nastavený zprostředkovatele identity, ale není k dispozici 
 Teď, když máte tlačítko na místě, budete potřebovat odkázat na akci. Akce v tomto případě je pro Azure AD B2C ke komunikaci s účtem LinkedIn k získání tokenu.
 
 1. Najít **OrchestrationStep** , který obsahuje `Order="2"` v cestě uživatele.
-2. Přidejte následující **ClaimsExchange** a ujistěte se, že používáte stejnou hodnotu pro element **Id** , který jste použili pro **TargetClaimsExchangeId**:
+2. Přidejte následující **ClaimsExchange** a ujistěte se, že používáte stejnou hodnotu pro ID, které jste použili pro element **TargetClaimsExchangeId**:
 
     ```XML
     <ClaimsExchange Id="LinkedInExchange" TechnicalProfileReferenceId="LinkedIn-OAUTH" />
     ```
     
-    Aktualizujte hodnotu **TechnicalProfileReferenceId** k **Id** technického profilu, který jste vytvořili dříve. Například, `LinkedIn-OAUTH`.
+    Aktualizujte hodnotu **TechnicalProfileReferenceId** ID technického profilu, který jste vytvořili dříve. Například, `LinkedIn-OAUTH`.
 
 3. Uložit *TrustFrameworkExtensions.xml* souboru a nahrajte ji znovu pro ověření.
 
@@ -267,7 +267,7 @@ Teď, když máte tlačítko na místě, budete potřebovat odkázat na akci. Ak
 Probíhá komunikace s Azure AD B2c prostřednictvím aplikace, kterou vytvoříte ve vašem tenantovi. Tato část obsahuje seznam volitelné kroky, které můžete použít k vytvoření aplikace testů, pokud jste tak již neučinili.
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
-2. Ujistěte se, že používáte adresáře, který obsahuje vašeho tenanta Azure AD B2C kliknutím **filtr adresářů a předplatných** v horní nabídce a výběrem adresáře, který obsahuje váš tenant.
+2. Ujistěte se, že používáte adresáře, který obsahuje vašeho tenanta Azure AD B2C. Vyberte **filtr adresářů a předplatných** v horní nabídce a vyberte adresář, který obsahuje váš tenant.
 3. Zvolte **všechny služby** v horním levém horním rohu webu Azure portal a poté vyhledejte a vyberte **Azure AD B2C**.
 4. Vyberte **aplikací**a pak vyberte **přidat**.
 5. Zadejte název aplikace, například *testapp1*.

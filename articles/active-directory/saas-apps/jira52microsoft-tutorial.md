@@ -13,15 +13,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 04/10/2019
+ms.date: 04/22/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: df8cb048964830f62fe483da63d24356f46538b7
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 003666d5bb3c309e501bcf76a15beb47340f9150
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59501371"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60267766"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-jira-saml-sso-by-microsoft-v52"></a>Kurz: Integrace Azure Active Directory s jednotným Přihlašováním SAML JIRA Microsoft (V5.2)
 
@@ -37,7 +37,7 @@ Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https
 
 ## <a name="description"></a>Popis
 
-Povolit jednotné přihlašování pomocí účtu Microsoft Azure Active Directory serverem Atlassian JIRA. Tímto způsobem všichni uživatelé vaší organizace můžete použít přihlašovací údaje Azure AD s přihlášením do aplikace systému JIRA. Tento modul plug-in používá protokol SAML 2.0 pro federaci.
+Povolit jednotné přihlašování pomocí účtu Microsoft Azure Active Directory serverem Atlassian JIRA. Tímto způsobem všichni uživatelé vaší organizace můžete použít přihlašovací údaje služby Azure AD k přihlášení do aplikace systému JIRA. Tento modul plug-in používá protokol SAML 2.0 pro federaci.
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -66,7 +66,7 @@ Pokud chcete vyzkoušet kroky v tomto kurzu, postupujte podle těchto doporučen
 * JIRA podporuje také 6.0 k 7.12. Další podrobnosti získáte kliknutím [JIRA SAML SSO společností Microsoft](jiramicrosoft-tutorial.md)
 
 > [!NOTE]
-> Mějte prosím na paměti, že JIRA také podporuje Linux Ubuntu 16.04 verze
+> Mějte prosím na paměti, že naše JIRA modul plug-in funguje taky na Ubuntu 16.04 verze
 
 ## <a name="scenario-description"></a>Popis scénáře
 

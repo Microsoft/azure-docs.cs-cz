@@ -12,11 +12,11 @@ ms.date: 11/30/2018
 ms.author: davidmu
 ms.subservice: B2C
 ms.openlocfilehash: 161c1ec72b14f4cc1b2517a0dc6282f0548575b3
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55182298"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60317488"
 ---
 # <a name="quickstart-set-up-sign-in-for-a-desktop-app-using-azure-active-directory-b2c"></a>Rychlý start: Nastavení přihlášení pro desktopovou aplikaci pomocí služby Azure Active Directory B2C 
 

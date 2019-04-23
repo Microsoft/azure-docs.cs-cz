@@ -11,11 +11,11 @@ ms.topic: article
 ms.date: 04/30/2018
 ms.author: v-jaswel
 ms.openlocfilehash: 6436193dadb5933074fdce861a31672a0f4849de
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55227331"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60313130"
 ---
 # <a name="demo-password-reset"></a>Ukázka: Resetování hesla
 Tento kurz představuje robota jednoduché technické podpory, který vám pomůže s resetování hesla s využitím learner konverzace. Model bodu robotů také další toky netriviální dialogové okno a více zapnout včetně třídy mimo doménu pořadí. Úkol můžete udělat bez kódu nebo entity.

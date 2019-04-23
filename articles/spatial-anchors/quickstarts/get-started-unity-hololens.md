@@ -8,12 +8,12 @@ ms.author: crtreasu
 ms.date: 02/24/2019
 ms.topic: quickstart
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 56b164d9612fd1bef8caf9ae0de679f65595bc39
-ms.sourcegitcommit: 956749f17569a55bcafba95aef9abcbb345eb929
+ms.openlocfilehash: ce9bca3f11911677a6009b4cfe0c3f6413b9f837
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58629487"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60240583"
 ---
 # <a name="quickstart-create-a-hololens-unity-app-that-uses-azure-spatial-anchors"></a>Rychlý start: Vytvoření aplikace HoloLens Unity, která používá Azure prostorových kotvy
 
@@ -78,6 +78,8 @@ Po dokončení exportu složku obsahující exportované HoloLens projekt, kter�
 Ve složce, klikněte dvakrát na **HelloAR U3D.sln** otevřete projekt v sadě Visual Studio.
 
 Změnit **konfigurace řešení** k **vydání**, změnit **platforma řešení** k **x86**a vyberte **zařízení**  z možnosti cíl nasazení.
+
+Pokud v HoloLens 2, použijte **ARM** jako **platforma řešení**, namísto **x86**.
 
    ![Konfigurace Visual Studio](./media/get-started-unity-hololens/visual-studio-configuration.png)
 

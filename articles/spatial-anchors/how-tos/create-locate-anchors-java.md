@@ -8,12 +8,12 @@ ms.author: ramonarguelles
 ms.date: 02/24/2019
 ms.topic: how-to
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 163edd544a2d93e380b8906df3e0055711321c95
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: HT
+ms.openlocfilehash: 09736396342505c8ec44cc83bf66f7c0ef893f80
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58918854"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60333603"
 ---
 # <a name="how-to-create-and-locate-anchors-using-azure-spatial-anchors-in-java"></a>Jak vytvořit a vyhledejte ukotvení pomocí Azure prostorových ukotvení v jazyce Java
 
@@ -39,7 +39,7 @@ K dokončení tohoto průvodce, ujistěte se, že máte:
 - Přečtěte si [přehled Azure prostorových kotvy](../overview.md).
 - Dokončit jeden z [zprovoznění během 5 minut](../index.yml).
 - Základní znalosti jazyka Java.
-- Základní znalosti <a href="https://developers.google.com/ar/discover/" target="_blank">ARCore</a> 1.5.
+- Základní znalosti <a href="https://developers.google.com/ar/discover/" target="_blank">ARCore</a> 1.7.
 
 [!INCLUDE [Start](../../../includes/spatial-anchors-create-locate-anchors-start.md)]
 

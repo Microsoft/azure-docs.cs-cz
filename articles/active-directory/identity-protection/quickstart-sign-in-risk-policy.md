@@ -18,11 +18,11 @@ ms.author: joflore
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 4f5127342f97a90103ef56efbd7465832440ec0f
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58521801"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60381781"
 ---
 # <a name="quickstart-block-access-when-a-session-risk-is-detected-with-azure-active-directory-identity-protection"></a>Rychlý start: Blokovat přístup, když se zjistí ohrožení relace s Azure Active Directory Identity Protection  
 
@@ -67,7 +67,7 @@ Scénář v tomto rychlém startu se používá u přihlášení v prohlížeči
 
 Tato část ukazuje, jak vytvořit zásady podmíněného přístupu vyžaduje rizika přihlášení. V zásadách nastavte:
 
-|Nastavení |Hodnota|
+|Nastavení |Value|
 |---     | --- |
 | Uživatelé  | Alain Charon  |
 | Podmínky | Riziko přihlášení, střední a vyšší |

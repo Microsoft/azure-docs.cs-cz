@@ -1,7 +1,6 @@
 ---
-title: Sleva za plán rezervaci SUSE a použití – Azure | Dokumentace Microsoftu
-description: Zjistěte, jak SUSE plán slevy pro softwaru SUSE na virtuálních počítačích.
-services: billing
+title: Sleva plán softwaru – Azure | Dokumentace Microsoftu
+description: Zjistěte, jak software plán slevy pro software na virtuálních počítačích.
 documentationcenter: ''
 author: yashesvi
 manager: yashar
@@ -11,22 +10,46 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/28/2018
+ms.date: 04/12/2019
 ms.author: banders
-ms.openlocfilehash: 4305db991a8129b0ae4205300051391df893c52c
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: HT
+ms.openlocfilehash: bcbf5ab48f3476a911fc4ade1eb0c395fb335d43
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58917783"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60370219"
 ---
-# <a name="understand-how-the-suse-linux-enterprise-software-reservation-plan-discount-is-applied-for-azure"></a>Vysvětlení použití slevy na plán rezervaci softwaru SUSE Linux Enterprise pro Azure
+# <a name="azure-software-plan-discount"></a>Slevy plán softwaru Azure
 
-Po nákupu plánu operačním systémem SUSE Linux se automaticky využije slevy na nasazených SUSE virtuálních počítačů (VM), které odpovídají rezervace. Plán pro SUSE Linux zahrnují náklady na provozování softwaru SUSE na Virtuálním počítači Azure.
+Plány Azure software SUSE a Red Hat jsou rezervace, které platí pro nasazené virtuální počítače. Sleva plán softwaru se použijí pro využití softwaru nasazených virtuálních počítačů, které odpovídají rezervace.
 
-Koupit správného plánu operačním systémem SUSE Linux, musíte pochopit, jaké virtuální počítače SUSE spustíte a počet virtuálních procesorů v těchto virtuálních počítačů. Použijte následující části vám pomůže identifikovat ze souboru CSV využití, co chcete koupit.
+Při vypnutí virtuálního počítače se automaticky sleva k jinému odpovídající virtuálnímu počítači, pokud je k dispozici. Plán softwaru zahrnují náklady na provozování softwaru na virtuálním počítači. Další poplatky, jako jsou výpočty, úložiště a sítě se účtují samostatně.
 
-## <a name="discount-applies-to-different-vm-sizes"></a>Sleva za vztahuje na různé velikosti virtuálních počítačů
+Koupit správného plánu, musíte pochopit využívání virtuálních počítačů a počet virtuálních procesorů v těchto virtuálních počítačů. Použijte následující části vám pomůže identifikovat, co chcete koupit, podle data o využití.
+
+## <a name="how-reservation-discount-is-applied"></a>Jak se uplatňuje sleva ve výši rezervace
+
+Sleva za rezervaci se "*použití – it nebo ztratit – it*". Ano Pokud nemáte odpovídající prostředky pro hodinu, potom ztratíte množství rezervací pro určitou hodinu. Nelze provést vpřed nevyužité vyhrazené hodin.
+
+Při vypínání prostředek sleva za rezervaci automaticky použije další odpovídající prostředek v zadaném oboru. Pokud systém nenašel žádné odpovídající prostředky v zadaném oboru, pak jsou vyhrazené hodin *ztráty*.
+
+## <a name="review-redhat-vm-usage-before-you-buy"></a>Zkontrolujte využití virtuálních počítačů Red Hat před zakoupením
+
+Získejte název produktu od data o využití a koupit plán Red Hat pomocí stejného typu a velikosti.
+
+Například, pokud vaše použití má produkt **Red Hat Enterprise Linux - 1-4 virtuální procesory licence virtuálního počítače**, byste si zakoupit **Red Hat Enterprise Linux** pro **1 – 4 virtuální procesor virtuálního počítače**.
+
+<!--ADD RHEL SCREENSHOT -->
+
+## <a name="review-suse-vm-usage-before-you-buy"></a>Zkontrolujte využití virtuálního počítače SUSE před zakoupením
+
+Získejte název produktu od data o využití a koupit plán SUSE pomocí stejného typu a velikosti.
+
+Například, pokud je využití produktu **operačním systémem SUSE Linux Enterprise Server Priorita – 2 až 4 virtuální procesory podpora virtuálních počítačů**, byste si zakoupit **operačním systémem SUSE Linux Enterprise Server Priority** pro **2 – 4 virtuální procesory**.
+
+![Příklad výběru produktu k nákupu](./media/billing-understand-suse-reservation-charges/select-suse-linux-enterprise-server-priority-2-4-vcpu.png)
+
+## <a name="discount-applies-to-different-vm-sizes-for-suse-plans"></a>Sleva za vztahuje na různé velikosti virtuálních počítačů pro plány SUSE
 
 Jako rezervované instance virtuálních počítačů, SUSE plánování nákupy nabízejí flexibilitu velikost instance. To znamená, že slevy platí i při nasazení virtuálního počítače se počet různých virtuálních procesorů. Sleva se vztahuje na různé velikosti virtuálních počítačů v rámci plánu softwaru.
 
@@ -39,8 +62,6 @@ Například pokud jste koupit plán pro SUSE Linux Enterprise Server pro HPC Pri
 - nebo % 77 0.77 nebo o virtuální počítač s 5 nebo víc virtuálních procesorů.
 
 Poměr 5 nebo víc virtuálních procesorů je 2.6. Proto rezervace pro SUSE s virtuálním Počítačem s 5 nebo víc virtuálních procesorů se týká pouze část náklady na software, což je přibližně % 77.
-
-## <a name="understand-suse-vm-usage-before-you-buy"></a>Vysvětlení využití virtuálního počítače SUSE před zakoupením
 
 Následující tabulky popisují softwarové plány, které si můžete koupit rezervaci pro jejich využití měřičů a poměry pro každý.
 
@@ -122,6 +143,10 @@ Azure portal marketplace názvy:
 |Počet jader SLES 3-4 virtuální procesory |0c3ebb4c-db7d-4125-b45a-0534764d4bda|1.92308|D4s_v3|
 |SLES 5 + virtuálních procesorů |7b349b65-d906-42e5-833f-b2af38513468|2.30769| D8s_v3|
 
+## <a name="need-help-contact-us"></a>Potřebujete pomoc? Kontaktujte nás
+
+Pokud máte otázky nebo potřebujete pomoc, [vytvořit žádost o podporu](https://go.microsoft.com/fwlink/?linkid=2083458).
+
 ## <a name="next-steps"></a>Další postup
 
 Další informace o rezervacích, naleznete v následujících článcích:
@@ -132,7 +157,3 @@ Další informace o rezervacích, naleznete v následujících článcích:
 - [Správa rezervací Azure](billing-manage-reserved-vm-instance.md)
 - [Vysvětlení využití rezervace pro vaše předplatné s průběžnými platbami](billing-understand-reserved-instance-usage.md)
 - [Vysvětlení využití rezervaci u prováděcí smlouvy Enterprise](billing-understand-reserved-instance-usage-ea.md)
-
-## <a name="need-help-contact-us"></a>Potřebujete pomoc? Kontaktujte nás
-
-Pokud máte otázky nebo potřebujete pomoc, [vytvořit žádost o podporu](https://go.microsoft.com/fwlink/?linkid=2083458).

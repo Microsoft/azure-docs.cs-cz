@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/02/2018
 ms.author: shants
-ms.openlocfilehash: db8fd40b9c573d04d9442c64fb058902a771eca0
-ms.sourcegitcommit: 72cc94d92928c0354d9671172979759922865615
+ms.openlocfilehash: cfd88118b483067f4c6ee62ee013a2202f0d7e67
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58418869"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60301740"
 ---
 # <a name="handling-planned-maintenance-notifications-for-windows-virtual-machines"></a>Zpracování oznámení plánované údržby pro virtuální počítače s Windows
 
@@ -81,7 +81,7 @@ Můžete také pomocí Azure Powershellu a zjistěte, kdy jsou virtuální poč�
  
 Informace o údržbě je vrácen pouze v případě, že se plánované údržby. Pokud žádná údržba je naplánována tak, že má vliv na virtuální počítač, rutina nevrací žádné informace o údržbě. 
 
-[!INCLUDE [updated-for-az-vm.md](../../../includes/updated-for-az-vm.md)]
+[!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
 
 ```powershell
 Get-AzVM -ResourceGroupName rgName -Name vmName -Status
@@ -89,7 +89,7 @@ Get-AzVM -ResourceGroupName rgName -Name vmName -Status
 
 V části MaintenanceRedeployStatus se vrátí následující vlastnosti: 
 
-| Hodnota | Popis   |
+| Value | Popis   |
 |-------|---------------|
 | IsCustomerInitiatedMaintenanceAllowed | Určuje, zda lze spustit údržbu na virtuálním počítači v tuto chvíli |
 | PreMaintenanceWindowStartTime         | Začátek samoobslužné časové období údržby při údržby můžete spustit na virtuálním počítači |

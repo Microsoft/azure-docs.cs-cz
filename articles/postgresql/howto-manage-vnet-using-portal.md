@@ -1,17 +1,17 @@
 ---
 title: Vytvoření a správě Azure Database for PostgreSQL VNet koncové body služby a pravidla pomocí webu Azure portal
 description: Vytvoření a správě Azure Database for PostgreSQL VNet koncové body služby a pravidla pomocí webu Azure portal
-author: mbolz
+author: bolzmj
 ms.author: mbolz
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 10/23/2018
-ms.openlocfilehash: bf34b99ca1d328a2de47aade0dcdff5b584ff07c
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: HT
+ms.openlocfilehash: 0f11894e939f589134720f22deb99390e14db9fb
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59793534"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60421632"
 ---
 # <a name="create-and-manage-azure-database-for-postgresql-vnet-service-endpoints-and-vnet-rules-by-using-the-azure-portal"></a>Vytvoření a správě Azure Database for PostgreSQL VNet koncové body služby a pravidla virtuální sítě pomocí webu Azure portal
 Koncové body služeb virtuální sítě (VNet) a pravidla rozšiřují privátní adresní prostor virtuální sítě pro váš server Azure Database for PostgreSQL. Přehled služby Azure Database pro koncové body služby virtuální sítě PostgreSQL, včetně omezení, naleznete v tématu [– Azure Database for koncové body služby virtuální sítě serveru PostgreSQL](concepts-data-access-and-security-vnet.md). Koncové body služby virtuální sítě jsou k dispozici ve všech podporovaných oblastí pro službu Azure Database for PostgreSQL.

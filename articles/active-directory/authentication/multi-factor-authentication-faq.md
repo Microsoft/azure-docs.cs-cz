@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 707e0aecdaf2a579d086e012519182078c1a6303
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: e0277180f0d768bbcc83a0d8d05fbc4b8b25301e
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58313222"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60357473"
 ---
 # <a name="frequently-asked-questions-about-azure-multi-factor-authentication"></a>Nejčastější dotazy k Azure Multi-Factor Authentication
 
@@ -142,7 +142,7 @@ Pokud vaše organizace nemá starší verze klientů, by neměla uživatelům po
 > [!NOTE]
 > Moderní ověřování pro klienty Office 2013
 >
-> Hesla aplikací jsou jenom pro aplikace, které nepodporují moderní ověřování. Podpora moderních ověřovacích protokolů klientech Office 2013, ale je potřeba nakonfigurovat. Novější klienti Office automaticky podporují moderních ověřovacích protokolů. Další informace najdete v tématu [oznámení veřejné preview moderní ověřování Office 2013](https://blogs.office.com/2015/03/23/office-2013-modern-authentication-public-preview-announced/).
+> Hesla aplikací jsou jenom pro aplikace, které nepodporují moderní ověřování. Podpora moderních ověřovacích protokolů klientech Office 2013, ale je potřeba nakonfigurovat. Moderní ověřování je nyní k dispozici všem zákazníkům s verzí update. března 2015 nebo novější pro Office 2013. Další informace najdete v tématu [Office 2013 moderní ověřování oznámení veřejné Preview verze](https://www.microsoft.com/en-us/microsoft-365/blog/2015/03/23/office-2013-modern-authentication-public-preview-announced/).
 
 **Otázka: Moji uživatelé prohlašují, že někdy nedostávají textovou zprávu nebo se odpovědět na obousměrné textové zprávy, ale ověření vyprší časový limit.**
 

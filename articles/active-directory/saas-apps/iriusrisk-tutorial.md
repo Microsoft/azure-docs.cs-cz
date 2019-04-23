@@ -17,11 +17,11 @@ ms.date: 12/21/2017
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 2c862628fb05e7518166d8e782c2e64538de785e
-ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58652395"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60270212"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-iriusrisk"></a>Kurz: Integrace Azure Active Directory s IriusRisk
 

@@ -15,11 +15,11 @@ ms.workload: NA
 ms.date: 2/25/2019
 ms.author: srrengar
 ms.openlocfilehash: 7a4cccf774d89229810c1668f38e4e2ef99fa79d
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58663940"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60393035"
 ---
 # <a name="list-of-service-fabric-events"></a>Seznam událostí Service Fabric 
 
@@ -40,7 +40,7 @@ Tady je seznam těchto událostí Service Fabric uspořádané podle entity.
 
 Najdete další podrobnosti o clusteru upgrady [tady](service-fabric-cluster-upgrade-windows-server.md).
 
-| ID události | Název | Kategorie | Popis |Zdroj (úloha) | Úroveň | 
+| ID události | Name | Category | Popis |Zdroj (úloha) | Úroveň | 
 | --- | --- | --- | --- | --- | --- | 
 | 29627 | ClusterUpgradeStarted | Upgrade | Bylo zahájeno upgradu clusteru | CM | Informační |
 | 29628 | ClusterUpgradeCompleted | Upgrade | Dokončení upgradu clusteru | CM | Informační | 
@@ -52,7 +52,7 @@ Najdete další podrobnosti o clusteru upgrady [tady](service-fabric-cluster-upg
 
 **Události životního cyklu uzlu** 
 
-| ID události | Název | Kategorie | Popis |Zdroj (úloha) | Úroveň |
+| ID události | Name | Category | Popis |Zdroj (úloha) | Úroveň |
 | --- | --- | ---| --- | --- | --- | 
 | 18602 | NodeDeactivateCompleted | StateTransition | Deaktivace uzlu byla dokončena. | FM | Informační | 
 | 18603 | NodeUp | StateTransition | Cluster zjistil, že uzel má spuštění | FM | Informační | 
@@ -69,7 +69,7 @@ Najdete další podrobnosti o clusteru upgrady [tady](service-fabric-cluster-upg
 
 **Události životního cyklu aplikace**
 
-| ID události | Název | Kategorie | Popis |Zdroj (úloha) | Úroveň | 
+| ID události | Name | Category | Popis |Zdroj (úloha) | Úroveň | 
 | --- | --- | --- | --- | --- | --- | 
 | 29620 | ApplicationCreated | Životní cyklus | Vytvoření nové aplikace | CM | Informační | 
 | 29625 | ApplicationDeleted | Životní cyklus | Existující aplikace byla odstraněna. | CM | Informační | 
@@ -79,7 +79,7 @@ Najdete další podrobnosti o clusteru upgrady [tady](service-fabric-cluster-upg
 
 Najdete další podrobnosti o upgradech aplikací [tady](service-fabric-application-upgrade.md).
 
-| ID události | Název | Kategorie | Popis |Zdroj (úloha) | Úroveň | 
+| ID události | Name | Category | Popis |Zdroj (úloha) | Úroveň | 
 | --- | --- | ---| --- | --- | --- | 
 | 29621 | ApplicationUpgradeStarted | Upgrade | Upgrade aplikace byla spuštěna. | CM | Informační | 
 | 29622 | ApplicationUpgradeCompleted | Upgrade | Upgrade aplikace byla dokončena. | CM | Informační | 
@@ -91,7 +91,7 @@ Najdete další podrobnosti o upgradech aplikací [tady](service-fabric-applicat
 
 **Události životního cyklu služeb**
 
-| ID události | Název | Kategorie | Popis |Zdroj (úloha) | Úroveň | 
+| ID události | Name | Category | Popis |Zdroj (úloha) | Úroveň | 
 | --- | --- | ---| --- | --- | --- |
 | 18657 | ServiceCreated | Životní cyklus | Byla vytvořena nová služba | FM | Informační | 
 | 18658 | ServiceDeleted | Životní cyklus | Existující služba se odstranila. | FM | Informační | 
@@ -100,7 +100,7 @@ Najdete další podrobnosti o upgradech aplikací [tady](service-fabric-applicat
 
 **Události pohybu oddílu**
 
-| ID události | Název | Kategorie | Popis |Zdroj (úloha) | Úroveň | 
+| ID události | Name | Category | Popis |Zdroj (úloha) | Úroveň | 
 | --- | --- | ---| --- | --- | --- |
 | 18940 | PartitionReconfigured | Životní cyklus | Rekonfigurace oddílu byla dokončena. | RA | Informační | 
 
@@ -108,7 +108,7 @@ Najdete další podrobnosti o upgradech aplikací [tady](service-fabric-applicat
 
 **Události životního cyklu kontejneru** 
 
-| ID události | Název | Popis |Zdroj (úloha) | Úroveň | Verze |
+| ID události | Name | Popis |Zdroj (úloha) | Úroveň | Version |
 | --- | --- | ---| --- | --- | --- |
 | 23074 | ContainerActivated | Bylo zahájeno kontejneru | Hostování | Informační | 1 |
 | 23075 | ContainerDeactivated | Kontejner se zastavila. | Hostování | Informační | 1 |
@@ -124,21 +124,21 @@ Najdete další podrobnosti o upgradech aplikací [tady](service-fabric-applicat
 
 **Události sestavy stavu clusteru**
 
-| ID události | Název | Popis |Zdroj (úloha) | Úroveň | Verze |
+| ID události | Name | Popis |Zdroj (úloha) | Úroveň | Version |
 | --- | --- | --- | --- | --- | --- |
 | 54428 | ClusterNewHealthReport | Je k dispozici nová sestava stavu clusteru | HM | Informační | 1 |
 | 54437 | ClusterHealthReportExpired | Vypršela platnost existující sestavy stavu clusteru | HM | Informační | 1 |
 
 **Události sestavy stavu uzlu**
 
-| ID události | Název | Popis |Zdroj (úloha) | Úroveň | Verze |
+| ID události | Name | Popis |Zdroj (úloha) | Úroveň | Version |
 | --- | --- | ---| --- | --- | --- |
 | 54423 | NodeNewHealthReport | Je k dispozici nová sestava stavu uzlu | HM | Informační | 1 |
 | 54432 | NodeHealthReportExpired | Vypršela platnost existující sestavy stavu uzlu | HM | Informační | 1 |
 
 **Události sestavy stavu aplikace**
 
-| ID události | Název | Popis |Zdroj (úloha) | Úroveň | Verze |
+| ID události | Name | Popis |Zdroj (úloha) | Úroveň | Version |
 | --- | --- | ---| --- | --- | --- |
 | 54425 | ApplicationNewHealthReport | Byla vytvořena nová sestava stavu aplikace. Jde o nenasazené aplikace. | HM | Informační | 1 |
 | 54426 | DeployedApplicationNewHealthReport | Vytvoření nové sestavy stavu nasazení aplikace | HM | Informační | 1 |
@@ -149,21 +149,21 @@ Najdete další podrobnosti o upgradech aplikací [tady](service-fabric-applicat
 
 **Sestava události služby Service health**
 
-| ID události | Název | Popis |Zdroj (úloha) | Úroveň | Verze |
+| ID události | Name | Popis |Zdroj (úloha) | Úroveň | Version |
 | --- | --- | ---| --- | --- | --- |
 | 54424 | ServiceNewHealthReport | Nová sestava health service byla vytvořena. | HM | Informační | 1 |
 | 54433 | ServiceHealthReportExpired | Vypršela platnost existující sestavy stavu služby | HM | Informační | 1 |
 
 **Události sestavy stav oddílu**
 
-| ID události | Název | Popis |Zdroj (úloha) | Úroveň | Verze |
+| ID události | Name | Popis |Zdroj (úloha) | Úroveň | Version |
 | --- | --- | ---| --- | --- | --- |
 | 54422 | PartitionNewHealthReport | Vytvoření nové sestavy stav oddílu | HM | Informační | 1 |
 | 54431 | PartitionHealthReportExpired | Existující sestavy stav oddílu vypršela platnost. | HM | Informační | 1 |
 
 **Události sestavy stavu repliky**
 
-| ID události | Název | Popis |Zdroj (úloha) | Úroveň | Verze |
+| ID události | Name | Popis |Zdroj (úloha) | Úroveň | Version |
 | --- | --- | ---| --- | --- | --- |
 | 54429 | StatefulReplicaNewHealthReport | Sestava stavu stavové replika byla vytvořena. | HM | Informační | 1 |
 | 54430 | StatelessInstanceNewHealthReport | Nová sestava stavu bezstavové instance byla vytvořena. | HM | Informační | 1 |
@@ -174,28 +174,28 @@ Najdete další podrobnosti o upgradech aplikací [tady](service-fabric-applicat
 
 **Chaos relace události**
 
-| ID události | Název | Popis |Zdroj (úloha) | Úroveň | Verze |
+| ID události | Name | Popis |Zdroj (úloha) | Úroveň | Version |
 | --- | --- | ---| --- | --- | --- |
 | 50021 | ChaosStarted | Bylo zahájeno Chaos testovací relaci | Testovatelnosti | Informační | 1 |
 | 50023 | ChaosStopped | Chaos testování relace byla zastavena. | Testovatelnosti | Informační | 1 |
 
 **Chaos uzel události**
 
-| ID události | Název | Popis |Zdroj (úloha) | Úroveň | Verze |
+| ID události | Name | Popis |Zdroj (úloha) | Úroveň | Version |
 | --- | --- | ---| --- | --- | --- |
 | 50033 | ChaosNodeRestartScheduled | Uzel je naplánováno restartuje jako součást Chaos testovací relaci | Testovatelnosti | Informační | 1 |
 | 50087 | ChaosNodeRestartCompleted | Uzel dokončení se restartuje jako součást Chaos testovací relaci | Testovatelnosti | Informační | 1 |
 
 **Události aplikace chaosu**
 
-| ID události | Název | Popis |Zdroj (úloha) | Úroveň | Verze |
+| ID události | Name | Popis |Zdroj (úloha) | Úroveň | Version |
 | --- | --- | ---| --- | --- | --- |
 | 50053 | ChaosCodePackageRestartScheduled | Restartování balíček kódu je naplánovaná během Chaos testovací relaci | Testovatelnosti | Informační | 1 |
 | 50101 | ChaosCodePackageRestartCompleted | Restartování balíček kódu byla dokončena během Chaos testovací relaci | Testovatelnosti | Informační | 1 |
 
 **Chaos oddílu události**
 
-| ID události | Název | Popis |Zdroj (úloha) | Úroveň | Verze |
+| ID události | Name | Popis |Zdroj (úloha) | Úroveň | Version |
 | --- | --- | ---| --- | --- | --- |
 | 50069 | ChaosPartitionPrimaryMoveScheduled | Primární oddíl je naplánováno přesunout jako součást Chaos testovací relaci | Testovatelnosti | Informační | 1 |
 | 50077 | ChaosPartitionSecondaryMoveScheduled | Sekundární oddílu je naplánováno přesunout jako součást Chaos testovací relaci | Testovatelnosti | Informační | 1 |
@@ -203,7 +203,7 @@ Najdete další podrobnosti o upgradech aplikací [tady](service-fabric-applicat
 
 **Události repliky chaosu**
 
-| ID události | Název | Popis |Zdroj (úloha) | Úroveň | Verze |
+| ID události | Name | Popis |Zdroj (úloha) | Úroveň | Version |
 | --- | --- | ---| --- | --- | --- |
 | 50047 | ChaosReplicaRestartScheduled | Restartování replika byla plánována jako součást Chaos testovací relaci | Testovatelnosti | Informační | 1 |
 | 50051 | ChaosReplicaRemovalScheduled | Jako součást Chaos testovací relaci bylo naplánováno odstranění repliky | Testovatelnosti | Informační | 1 |
@@ -213,7 +213,7 @@ Najdete další podrobnosti o upgradech aplikací [tady](service-fabric-applicat
 
 **Události modulu Correlation**
 
-| ID události | Název | Popis |Zdroj (úloha) | Úroveň | Verze |
+| ID události | Name | Popis |Zdroj (úloha) | Úroveň | Version |
 | --- | --- | ---| --- | --- | --- |
 | 65011 | CorrelationOperational | Byl zjištěn korelaci | Testovatelnosti | Informační | 1 |
 
@@ -221,7 +221,7 @@ Najdete další podrobnosti o upgradech aplikací [tady](service-fabric-applicat
 
 Tady je úplný seznam událostí Service Fabric poskytuje starší než verze 6.2.
 
-| ID události | Název | Zdroj (úloha) | Úroveň |
+| ID události | Name | Zdroj (úloha) | Úroveň |
 | --- | --- | --- | --- |
 | 25620 | NodeOpening | FabricNode | Informační |
 | 25621 | NodeOpenedSuccess | FabricNode | Informační |

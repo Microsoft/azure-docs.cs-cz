@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.date: 6/8/2018
 ms.author: adigan
 ms.openlocfilehash: fb064c39fa014515fb2a3f4ccc96ce216f2f7b2e
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55493503"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60254472"
 ---
 # <a name="back-up-sql-server-on-stack"></a>Zálohování SQL serveru v zásobníku
 Tento článek slouží ke konfiguraci Microsoft Azure Backup Server (MABS) k ochraně databází systému SQL Server ve službě Azure Stack.

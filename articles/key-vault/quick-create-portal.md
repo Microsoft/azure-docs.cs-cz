@@ -14,11 +14,11 @@ ms.custom: mvc
 ms.date: 03/14/2019
 ms.author: barclayn
 ms.openlocfilehash: 0902e3fb64a73a095b457306aa561c13519e4066
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58000614"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60203597"
 ---
 # <a name="quickstart-set-and-retrieve-a-secret-from-azure-key-vault-using-the-azure-portal"></a>Rychlý start: Nastavení a načtení tajného klíče ze služby Azure Key Vault pomocí webu Azure portal
 

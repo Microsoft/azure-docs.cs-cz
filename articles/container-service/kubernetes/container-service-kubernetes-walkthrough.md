@@ -10,11 +10,11 @@ ms.date: 02/26/2018
 ms.author: iainfou
 ms.custom: H1Hack27Feb2017, mvc, devcenter
 ms.openlocfilehash: 70c9fec818147b76feb306cc47ba2e72cd865fe8
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55659605"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60335015"
 ---
 # <a name="deprecated-deploy-kubernetes-cluster-for-linux-containers"></a>(NEPOUŽÍVANÉ) Nasazení clusteru Kubernetes pro kontejnery Linuxu
 

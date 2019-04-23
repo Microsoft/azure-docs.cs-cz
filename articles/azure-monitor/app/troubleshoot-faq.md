@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 12/17/2018
 ms.author: mbullwin
-ms.openlocfilehash: 6834ab15f3d46b8b7116a48b0e970f553eb65ba8
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.openlocfilehash: 46c387ab175bfd3613e00be8e7b3a899aa025a7f
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58521810"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60373313"
 ---
 # <a name="application-insights-frequently-asked-questions"></a>Application Insights: Nejčastější dotazy
 
@@ -134,7 +134,7 @@ Další informace pro [ASP.NET](api-filtering-sampling.md) nebo [Java](java-filt
 
 ## <a name="how-are-city-country-and-other-geo-location-data-calculated"></a>Jak se počítají města, země a další geografické umístění dat?
 
-Podíváme se IP adresa (IPv4 nebo IPv6) webového klienta pomocí [GeoLite2](http://dev.maxmind.com/geoip/geoip2/geolite2/).
+Podíváme se IP adresa (IPv4 nebo IPv6) webového klienta pomocí [GeoLite2](https://dev.maxmind.com/geoip/geoip2/geolite2/).
 
 * Telemetrická data prohlížeče: Můžeme shromažďovat IP adresu odesílatele.
 * Telemetrie serveru: Modul Application Insights shromažďuje IP adresu klienta. Nejsou shromažďovány Pokud `X-Forwarded-For` nastavena.

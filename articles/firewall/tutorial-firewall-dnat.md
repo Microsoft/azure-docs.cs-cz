@@ -9,11 +9,11 @@ ms.date: 11/28/2018
 ms.author: victorh
 ms.custom: mvc
 ms.openlocfilehash: df57faad770b252228b6c55d4caff775acfe3594
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57531160"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60192931"
 ---
 # <a name="tutorial-filter-inbound-traffic-with-azure-firewall-dnat-using-the-azure-portal"></a>Kurz: Filtrování příchozího provozu pomocí DNAT služby Azure Firewall a webu Azure Portal
 
@@ -148,12 +148,12 @@ Po dokončení nasazení si poznamenejte privátní IP adresu virtuálního poč
 3. Klikněte na bránu **Firewall** a potom vyberte **Vytvořit**. 
 4. Na stránce **Vytvoření brány firewall** nakonfigurujte bránu firewall podle následující tabulky:
 
-   |Nastavení  |Hodnota  |
+   |Nastavení  |Value  |
    |---------|---------|
-   |Název     |FW-DNAT-test|
+   |Name     |FW-DNAT-test|
    |Předplatné     |\<Vaše předplatné\>|
    |Skupina prostředků     |**Použít existující**: RG-DNAT-Test |
-   |Umístění     |Vyberte dříve použité umístění.|
+   |Location     |Vyberte dříve použité umístění.|
    |Volba virtuální sítě     |**Použít existující**: VN-Hub|
    |Veřejná IP adresa     |**Vytvořte novou**. Veřejná IP adresa musí být typu Standardní SKU.|
 

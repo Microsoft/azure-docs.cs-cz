@@ -13,16 +13,16 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
-ms.date: 11/13/2018
+ms.date: 11/18/2018
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4bf777917bc2e09f08cbfaac6334bf9bda198f01
-ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
+ms.openlocfilehash: a8fefc2eb2e642b5c7ac93b8a1cfc25a54c3b646
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58439379"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60437132"
 ---
 # <a name="sign-in-activity-report-error-codes"></a>Kódy chyb sestavě aktivit přihlašování 
 
@@ -174,9 +174,11 @@ Můžete také programově přistupovat pomocí data přihlášení [API pro vyt
 |81012|Toto není chybovou podmínku. Označuje, že tento uživatel pokoušel se přihlásit ke službě Azure AD se liší od uživatele přihlášené k zařízení. Tento kód v protokolech můžete bezpečně ignorovat.|
 |90010|Požadavek není podporován z různých důvodů. Například požadavku pomocí metody Nepodporovaná žádost (podporuje se jenom metody POST) nebo token, který byl vyžádán podpisový algoritmus se nepodporuje. Obraťte se na vývojáře aplikace.|
 |90014| Chybí povinné pole. pro zprávy protokolu, obraťte se na vlastníka aplikace. Pokud jste vlastníkem aplikace, ujistěte se, že máte všechny potřebné parametry pro žádost o přihlášení. |
+|90051| Delegování neplatný Token. Je zadáno neplatné ID národního cloudu ({cloudId}).|
 |90072| Účet musí být nejprve přidán jako externí uživatel v tenantovi. Odhlášení a přihlaste se znovu pomocí jiné služby Azure AD účtu.|
 |90094| Udělení vyžaduje oprávnění správce. Požádejte správce tenanta k poskytnutí souhlasu pro tuto aplikaci.|
 |500133| Výraz se nenachází v jeho platný časový rozsah. Ujistěte se, že jej před použitím pro uživatele kontrolní výraz nevyprší platnost přístupového tokenu nebo požádat o nový token.|
+|530021|Aplikace nesplňuje požadavky podmíněného přístupu, které jsou schválené aplikace.|
 
 ## <a name="next-steps"></a>Další postup
 

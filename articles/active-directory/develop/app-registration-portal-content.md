@@ -11,11 +11,11 @@ ms.service: active-directory
 ROBOTS: NOINDEX,NOFOLLOW
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 9da94a72f4beb176c552964230cc2362f313bdeb
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56185848"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60300587"
 ---
 # <a name="azure-active-directory-guided-setup-steps"></a>Azure Active Directory na základě pokynů k instalaci
 

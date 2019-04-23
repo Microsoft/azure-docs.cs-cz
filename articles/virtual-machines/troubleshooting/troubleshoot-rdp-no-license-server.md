@@ -14,11 +14,11 @@ ms.workload: infrastructure
 ms.date: 10/23/2018
 ms.author: genli
 ms.openlocfilehash: 550b971602d1736e0ba3981a5b7ca546862ea034
-ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50913849"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60318948"
 ---
 # <a name="remote-desktop-license-server-isnt-available-when-you-connect-to-an-azure-vm"></a>Licenčního serveru vzdálené plochy není k dispozici, když se připojíte k virtuálnímu počítači Azure
 
@@ -127,6 +127,6 @@ Chcete-li vyřešit tento problém [zálohování disku s operačním systémem]
 
 4. Pokud licenční server vzdálené plochy je nakonfigurovaná a funkční, ujistěte se, že licenční server vzdálené plochy se aktivuje pomocí licence pro klientský přístup.
 
-## <a name="need-help-contact-support"></a>Potřebujete pomoct? Kontaktování podpory
+## <a name="need-help-contact-support"></a>Potřebujete pomoc? Kontaktování podpory
 
 Pokud stále potřebujete pomoc, [obraťte se na podporu](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) k vyřešení problému.

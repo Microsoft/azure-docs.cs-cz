@@ -18,11 +18,11 @@ ms.date: 10/25/2018
 ms.author: joflore
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 5f1b23862edeabbf8e03d4589fa3f22a3fab9f72
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58520985"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60353155"
 ---
 # <a name="group-policy-and-mdm-settings"></a>Nastavení zásad skupiny a MDM
 Použijte tyto zásady skupiny a nastavení správy mobilních zařízení jenom na zařízeních vlastněných společností, protože tyto zásady platí pro celé zařízení uživatele. Zásady MDM zakázání synchronizace nastavení pro osobní použití, zařízení ve vlastnictví uživatele bude mít negativní vliv na použití těchto zařízení. Kromě toho další uživatelské účty na zařízení také ovlivňuje zásady.
@@ -33,7 +33,7 @@ Následující tabulky popisují nastavení zásad, která je k dispozici.
 ## <a name="mdm-settings"></a>Nastavení MDM
 Nastavení zásad MDM platí pro Windows 10 a Windows 10 Mobile.  Podpora Windows 10 Mobile je dostupná jenom pro účet Microsoft na základě roaming prostřednictvím účtu OneDrive.  Najdete [zařízení a koncových bodů](enterprise-state-roaming-windows-settings-reference.md) podrobnosti o jaká zařízení se podporují pro synchronizaci Azure AD na základě.
 
-| Název | Popis |
+| Name | Popis |
 | --- | --- |
 | Povolit připojení k účtu Microsoft |Umožňuje uživatelům provést ověření pomocí účtu Microsoft na zařízení |
 | Povolit synchronizaci nastavení |Umožňuje uživatelům zpřístupní Windows nastavení a data aplikací; Zakázání této zásady zakážete synchronizace, jakož i zálohování na mobilních zařízeních |
@@ -43,7 +43,7 @@ Nastavení zásad skupiny platí pro zařízení s Windows 10, která jsou přip
 
 Tato nastavení se nacházejí ve: `Computer Configuration > Administrative Templates > Windows Components > Sync your settings` 
 
-| Název | Popis |
+| Name | Popis |
 | --- | --- |
 | Účty: Blokovat účty Microsoft |Nastavení této zásady zabrání uživatelům v přidávání nových účtů Microsoft na tomto počítači |
 | Se nesynchronizují |Zabrání uživatelům zpřístupní Windows nastavení a data aplikací |

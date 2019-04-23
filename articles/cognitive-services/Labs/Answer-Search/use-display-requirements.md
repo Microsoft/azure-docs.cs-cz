@@ -11,11 +11,11 @@ ms.topic: conceptual
 ms.date: 04/13/2018
 ms.author: rosh
 ms.openlocfilehash: 085cb20e4dad92ed55b5ba0914c677aa50f3ac97
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55875327"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60345749"
 ---
 # <a name="project-answer-search-use-and-display-requirements"></a>Hledání odpovědí projektu použít a zobrazit požadavky
 

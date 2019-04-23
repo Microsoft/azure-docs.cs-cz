@@ -14,11 +14,11 @@ ms.topic: conceptual
 ms.date: 07/11/2018
 ms.author: meirm
 ms.openlocfilehash: 97d8d6fac93ebabac8fb319ce2f1ab8719f5f86b
-ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58756568"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60452649"
 ---
 # <a name="azure-monitor-for-service-providers"></a>Azure Monitor pro poskytovatele služeb
 Pracovní prostory log Analytics ve službě Azure Monitor může pomoct, poskytovatelům spravovaných služeb (MSP), pro velké podniky, nezávislí výrobci softwaru (ISV) a poskytovatelů hostitelských služeb spravovat a monitorovat servery v jeho místní nebo cloudovou infrastrukturu. 

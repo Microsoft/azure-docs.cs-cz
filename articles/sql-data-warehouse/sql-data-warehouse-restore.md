@@ -11,11 +11,11 @@ ms.date: 08/29/2018
 ms.author: kevin
 ms.reviewer: igorstan
 ms.openlocfilehash: ebbcbcc3d0934800980b7d8e00895b11ff2747b7
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57838931"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60310395"
 ---
 # <a name="restoring-azure-sql-data-warehouse"></a>Obnovení Azure SQL Data Warehouse 
 V tomto článku se dozvíte, jak provést následující webu Azure portal a prostředí PowerShell:
@@ -26,7 +26,7 @@ V tomto článku se dozvíte, jak provést následující webu Azure portal a pr
 - Obnovit z geografické zálohy
 - Vytvoření kopie vašeho datového skladu z bodu obnovení definovaný uživatelem
 
-## <a name="before-you-begin"></a>Před zahájením
+## <a name="before-you-begin"></a>Než začnete
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 

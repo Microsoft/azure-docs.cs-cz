@@ -11,17 +11,20 @@ author: aliceku
 ms.author: aliceku
 ms.reviewer: vanto
 manager: craigg
-ms.date: 03/12/2019
-ms.openlocfilehash: 28bb6fbc3b6b9552850244d608e6587e8a9052de
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.date: 04/19/2019
+ms.openlocfilehash: 6ad4cf251ad09adb7e1f11ebd42d7eab0d6a9183
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57890997"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60330919"
 ---
 # <a name="azure-sql-transparent-data-encryption-with-customer-managed-keys-in-azure-key-vault-bring-your-own-key-support"></a>Azure SQL transparentního šifrování dat pomocí klíčů spravovaných zákazníkem ve službě Azure Key Vault: Your Own Key podpoře
 
 [Transparentní šifrování dat (TDE)](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption) službou Azure Key Vault umožňuje šifrování databáze šifrovací klíč (DEK) pomocí spravované zákazníkem asymetrický klíč s názvem ochrana TDE integrace. Taky obvykle označuje jako přineste si vlastní klíč (BYOK) podpory transparentního šifrování dat.  Ve scénáři BYOK ochrana TDE uložený v vlastněných zákazníky a spravovat [Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-secure-your-key-vault), systém Azure založené na cloudu externí správu klíčů. Může být ochrana TDE [generované](https://docs.microsoft.com/azure/key-vault/about-keys-secrets-and-certificates) pomocí trezoru klíčů nebo [přenést](https://docs.microsoft.com/azure/key-vault/key-vault-hsm-protected-keys) k trezoru klíčů ze zařízení s on premises modulu hardwarového zabezpečení. Klíč DEK transparentní šifrování dat, který je uložený na spouštěcí stránku databáze, je šifrovaný a dešifrovat pomocí ochrana TDE uložené ve službě Azure Key Vault, které nikdy neopustí.  SQL Database musí být udělena oprávnění pro key vault k dešifrování a šifrování klíče DEK vlastněné zákazníkem. Pokud jsou odvolané oprávnění logického SQL serveru k trezoru klíčů, databázi nebudou k dispozici a všechna data jsou zašifrovaná. Ochrana TDE pro službu Azure SQL Database je nastavená na úrovni logického SQL serveru a zdědí všechny databáze, které jsou spojené s tímto serverem. Pro [spravované Instance Azure SQL](https://docs.microsoft.com/azure/sql-database/sql-database-howto-managed-instance), ochrana TDE je nastavená na úrovni instance a jeho zdědí všechny *šifrované* databází u dané instance. Termín *server* odkazuje současně na serveru a instance v tomto dokumentu, pokud není uvedeno jinak.
+
+> [!NOTE]
+> Transparentní šifrování dat díky integraci služby Azure Key Vault (přineste si vlastní klíč) pro Azure SQL Database Managed Instance je ve verzi preview.
 
 S TDE a integrace Azure Key Vault můžete uživatele řídit úlohy správy klíčů, včetně rotace klíčů služby key vault oprávnění, zálohy klíčů a povolit auditování a generování sestav na všechny ochrany transparentní šifrování dat pomocí funkce Azure Key Vault. Key Vault poskytuje centrální správu klíčů, využívá modulů úzce monitorovaných hardwarového zabezpečení (HSM) a umožňuje oddělení povinností mezi správou klíčů a dat, které vám pomohou splnit dodržování předpisů se zásadami zabezpečení.  
 

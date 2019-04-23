@@ -17,11 +17,11 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 1d5f4dec48d81b032de293bb6c68ad62ac48d475
-ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57193054"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60347874"
 ---
 # <a name="azure-ad-connect-sync-scheduler"></a>Synchronizace Azure AD Connect: Scheduler
 Toto téma popisuje (označovaný také jako integrované plánovače ve službě Azure AD Connect sync synchronizační stroj).

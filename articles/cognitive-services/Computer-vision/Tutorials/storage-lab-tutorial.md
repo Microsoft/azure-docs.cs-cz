@@ -1,5 +1,5 @@
 ---
-title: 'Kurz: Generovat metadata pro Image služby Azure Storage'
+title: 'Kurz: Generovat metadata pro Image Azure'
 titleSuffix: Azure Cognitive Services
 description: V tomto kurzu se dozvíte, jak integrovat službu Azure pro počítačové zpracování obrazu do webové aplikace generovat metadata pro Image.
 services: cognitive-services
@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: tutorial
-ms.date: 01/03/2019
+ms.date: 04/17/2019
 ms.author: pafarley
-ms.openlocfilehash: e5124b07a5aff67d53213149565ddae4ea6dda33
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: a755a0bada0dbf6797465ea40ddbb30a84e3f289
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57447995"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60202006"
 ---
 # <a name="tutorial-use-computer-vision-to-generate-image-metadata-in-azure-storage"></a>Kurz: Můžete generovat metadata obrázků ve službě Azure Storage pro počítačové zpracování obrazu
 
@@ -52,11 +52,11 @@ Budete muset vytvořit prostředek pro počítačové zpracování obrazu k vaš
 
 1. Vraťte se do nabídky pro skupinu prostředků a klikněte na předplatné rozhraní API pro počítačové zpracování obrazu, který jste právě vytvořili. Zkopírujte adresu URL v části **koncový bod** k někde měli snadno k dispozici to za chvíli. Pak klikněte na tlačítko **zobrazení přístupových klíčů**.
 
-    ![Zobrazení přístupových klíčů](../Images/copy-vision-endpoint.png)
+    ![Stránky Azure portal se koncový bod adresy URL a přístup klíče odkazu uvedeno](../Images/copy-vision-endpoint.png)
 
 1. V dalším okně, zkopírujte hodnotu **klíč 1** do schránky.
 
-    ![Zkopírování přístupového klíče](../Images/copy-vision-key.png)
+    ![Správa klíčů dialogové okno, pomocí tlačítka pro kopírování uvedených](../Images/copy-vision-key.png)
 
 ## <a name="add-computer-vision-credentials"></a>Přidat přihlašovací údaje pro počítačové zpracování obrazu
 
@@ -136,7 +136,7 @@ Uložte změny v sadě Visual Studio a stiskněte klávesu **Ctrl + F5** ke spu�
 
 Chcete-li zobrazit všechny připojené metadat, zobrazíte kontejner úložiště, které používáte pro obrázky pomocí Průzkumníka služby Azure Storage. Klikněte pravým tlačítkem na některý z objektů BLOB v kontejneru a vyberte **vlastnosti**. V dialogovém okně uvidíte seznam párů klíč hodnota. Popis počítačem vytvořené bitové kopie je uložena v položky "Titulek" a hledat klíčová slova jsou uloženy v "Tag0," "značky 1" a tak dále. Jakmile budete hotovi, klikněte na tlačítko **zrušit** zavřete dialogové okno.
 
-![Metadata objektu blob](../Images/blob-metadata.png)
+![Obrázek vlastnosti dialogového okna, s uvedené značky metadat](../Images/blob-metadata.png)
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 

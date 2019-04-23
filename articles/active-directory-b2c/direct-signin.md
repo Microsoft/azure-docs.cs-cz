@@ -11,11 +11,11 @@ ms.date: 06/18/2018
 ms.author: davidmu
 ms.subservice: B2C
 ms.openlocfilehash: c66fc9ecb608d211c839bab720e8f3f37b96fd5d
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55169225"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60389818"
 ---
 # <a name="set-up-direct-sign-in-using-azure-active-directory-b2c"></a>Nastavit přímé přihlášení pomocí Azure Active Directory B2C
 

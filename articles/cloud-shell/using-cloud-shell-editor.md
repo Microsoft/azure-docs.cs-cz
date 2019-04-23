@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 07/24/2018
 ms.author: damaerte
 ms.openlocfilehash: 7f597bb5cba1a12bdb93325fe2b877ffc644e3e4
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57243155"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60199185"
 ---
 # <a name="using-the-azure-cloud-shell-editor"></a>Pomocí editoru Azure Cloud Shell
 

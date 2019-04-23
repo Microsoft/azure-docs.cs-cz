@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.workload: azure-vs
 ms.date: 03/06/2018
 ms.author: ghogen
-ms.openlocfilehash: 703e969fe31def329be60037cceba27864063b4e
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: 924719a8371f4d41cb9ead09252d8f3d3424326a
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44304046"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60406442"
 ---
 # <a name="enable-remote-desktop-connection-for-a-role-in-azure-cloud-services-using-visual-studio"></a>Povolení připojení ke vzdálené ploše pro roli v cloudových službách Azure pomocí sady Visual Studio
 
@@ -95,7 +95,7 @@ Pokud chcete používat rozšíření RDP ze služeb Azure DevOps, uveďte násl
 
 1. Po kroků sestavení přidejte **nasazení cloudové služby Azure** kroku a nastavte jeho vlastnosti.
 
-1. Po dokončení kroku nasazení přidat **prostředí Azure Powershell** krok, nastavte jeho **zobrazovaný název** vlastnost na hodnotu "Nasazení: povolení protokolu RDP rozšíření Azure" (nebo jiný vhodný název) a vyberte příslušnou Azure předplatné.
+1. Po dokončení kroku nasazení přidat **prostředí Azure Powershell** krok, nastavte jeho **zobrazovaný název** vlastnost "nasazení Azure: Povolit rozšíření RDP"(nebo jiný vhodný název) a vyberte příslušné předplatné Azure.
 
 1. Nastavte **typ skriptu** na "Vloženě" a vložte následující kód do **zpracování vloženého skriptu** pole. (Můžete také vytvořit `.ps1` souboru ve vašem projektu pomocí tohoto skriptu **typ skriptu** "Cesta k souboru skriptu" a sadu **cesta ke skriptu** tak, aby odkazoval na soubor.)
 
@@ -146,6 +146,6 @@ Po publikování vaší cloudové služby v Azure a povolení vzdálené plochy,
 
 3. Zadejte uživatelské jméno a heslo, které jste vytvořili dříve. Nyní jste se přihlásili do vzdálené relace.
 
-## <a name="additional-resources"></a>Další zdroje informací:
+## <a name="additional-resources"></a>Další materiály
 
 [Jak konfigurovat Cloud Services](cloud-services-how-to-configure-portal.md)

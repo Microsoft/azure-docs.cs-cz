@@ -9,11 +9,11 @@ ms.author: tarcher
 ms.date: 08/09/2018
 ms.topic: tutorial
 ms.openlocfilehash: 0ef754b792654281f2a12b8eee613434896d5476
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58092204"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60396610"
 ---
 # <a name="use-ansible-to-manage-your-azure-dynamic-inventories"></a>Správa dynamického inventáře vaše Azure pomocí Ansible
 Ansible je možné načítat informace o inventáři z různých zdrojů (včetně cloudových zdrojů, jako je Azure) do *dynamický inventář*. V tomto článku budete používat [Azure Cloud Shell](./ansible-run-playbook-in-cloudshell.md) ke konfiguraci dynamického inventáře Ansible Azure, ve kterém vytvoříte dva virtuální počítače, označit jednu z těchto virtuálních počítačů a na označené virtuální počítače nainstalujete server Nginx.

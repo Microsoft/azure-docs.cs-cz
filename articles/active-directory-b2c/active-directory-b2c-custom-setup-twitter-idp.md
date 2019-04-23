@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 09/20/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: f2f70f16d27e8244e0fa3a259e963100f78aef55
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 6f1301a26c7f880802ec873506060df6b423f54f
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55154424"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60318049"
 ---
 # <a name="set-up-sign-in-with-a-twitter-account-by-using-custom-policies-in-azure-active-directory-b2c"></a>Přihlaste se pomocí účtu sítě Twitter lze nastavit pomocí vlastních zásad v Azure Active Directory B2C
 
@@ -46,7 +46,7 @@ Pokud chcete použít Twitteru jako zprostředkovatele identity v Azure AD B2C, 
 Potřebujete ukládat tajný klíč, který jste si dříve poznamenali ve vašem tenantovi Azure AD B2C.
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
-2. Ujistěte se, že používáte adresáře, který obsahuje vašeho tenanta Azure AD B2C kliknutím **filtr adresářů a předplatných** v horní nabídce a výběrem adresáře, který obsahuje váš tenant.
+2. Ujistěte se, že používáte adresáře, který obsahuje vašeho tenanta Azure AD B2C. Vyberte **filtr adresářů a předplatných** v horní nabídce a vyberte adresář, který obsahuje váš tenant.
 3. Zvolte **všechny služby** v horním levém horním rohu webu Azure portal a poté vyhledejte a vyberte **Azure AD B2C**.
 4. Na stránce s přehledem, vyberte **architekturu rozhraní identit - PREVIEW**.
 5. Vyberte **klíče zásad** a pak vyberte **přidat**.
@@ -87,7 +87,7 @@ Pokud chcete uživatelům umožní přihlásit pomocí účtu sítě Twitter, mu
             <Key Id="client_secret" StorageReferenceId="B2C_1A_TwitterSecret" />
           </CryptographicKeys>
           <OutputClaims>
-            <OutputClaim ClaimTypeReferenceId="socialIdpUserId" PartnerClaimType="user_id" />
+            <OutputClaim ClaimTypeReferenceId="issuerUserId" PartnerClaimType="user_id" />
             <OutputClaim ClaimTypeReferenceId="displayName" PartnerClaimType="screen_name" />
             <OutputClaim ClaimTypeReferenceId="email" />
             <OutputClaim ClaimTypeReferenceId="identityProvider" DefaultValue="twitter.com" />
@@ -142,13 +142,13 @@ V tuto chvíli je nastavený zprostředkovatele identity, ale není k dispozici 
 Teď, když máte tlačítko na místě, budete potřebovat odkázat na akci. Akce v tomto případě je pro Azure AD B2C pro komunikaci pomocí účtu Twitteru získat token.
 
 1. Najít **OrchestrationStep** , který obsahuje `Order="2"` v cestě uživatele.
-2. Přidejte následující **ClaimsExchange** a ujistěte se, že používáte stejnou hodnotu pro element **Id** , který jste použili pro **TargetClaimsExchangeId**:
+2. Přidejte následující **ClaimsExchange** a ujistěte se, že používáte stejnou hodnotu pro ID, které jste použili pro element **TargetClaimsExchangeId**:
 
     ```XML
     <ClaimsExchange Id="TwitterExchange" TechnicalProfileReferenceId="Twitter-OAUTH1" />
     ```
     
-    Aktualizujte hodnotu **TechnicalProfileReferenceId** k **Id** technického profilu, který jste vytvořili dříve. Například, `Twitter-OAUTH1`.
+    Aktualizujte hodnotu **TechnicalProfileReferenceId** ID technického profilu, který jste vytvořili dříve. Například, `Twitter-OAUTH1`.
 
 3. Uložit *TrustFrameworkExtensions.xml* souboru a nahrajte ji znovu pro ověření.
 
@@ -157,7 +157,7 @@ Teď, když máte tlačítko na místě, budete potřebovat odkázat na akci. Ak
 Probíhá komunikace s Azure AD B2c prostřednictvím aplikace, kterou vytvoříte ve vašem tenantovi. Tato část obsahuje seznam volitelné kroky, které můžete použít k vytvoření aplikace testů, pokud jste tak již neučinili.
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
-2. Ujistěte se, že používáte adresáře, který obsahuje vašeho tenanta Azure AD B2C kliknutím **filtr adresářů a předplatných** v horní nabídce a výběrem adresáře, který obsahuje váš tenant.
+2. Ujistěte se, že používáte adresáře, který obsahuje vašeho tenanta Azure AD B2C. Vyberte **filtr adresářů a předplatných** v horní nabídce a vyberte adresář, který obsahuje váš tenant.
 3. Zvolte **všechny služby** v horním levém horním rohu webu Azure portal a poté vyhledejte a vyberte **Azure AD B2C**.
 4. Vyberte **aplikací**a pak vyberte **přidat**.
 5. Zadejte název aplikace, například *testapp1*.

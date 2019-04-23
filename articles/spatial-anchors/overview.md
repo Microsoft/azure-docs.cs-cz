@@ -9,11 +9,11 @@ ms.date: 02/24/2019
 ms.topic: overview
 ms.service: azure-spatial-anchors
 ms.openlocfilehash: 2451922f0eb49a5ccee036db72eb046760287dca
-ms.sourcegitcommit: 956749f17569a55bcafba95aef9abcbb345eb929
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58628863"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60240480"
 ---
 # <a name="azure-spatial-anchors-overview"></a>Přehled služby Azure prostorových kotvy
 

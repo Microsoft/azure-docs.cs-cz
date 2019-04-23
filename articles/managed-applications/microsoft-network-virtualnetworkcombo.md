@@ -1,6 +1,6 @@
 ---
-title: Azure elementu VirtualNetworkCombo uživatelského rozhraní | Microsoft Docs
-description: Popisuje element Microsoft.Network.VirtualNetworkCombo uživatelského rozhraní pro portál Azure.
+title: Azure prvek uživatelského rozhraní VirtualNetworkCombo | Dokumentace Microsoftu
+description: Popisuje element Microsoft.Network.VirtualNetworkCombo uživatelského rozhraní pro Azure portal.
 services: managed-applications
 documentationcenter: na
 author: tfitzmac
@@ -13,24 +13,24 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/28/2018
 ms.author: tomfitz
-ms.openlocfilehash: 2c2553d9ffb1dfbe032385fb77e234a8b96cb239
-ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
+ms.openlocfilehash: b0437338b403ff19761173d08be3938d07f13f55
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37110061"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60252516"
 ---
 # <a name="microsoftnetworkvirtualnetworkcombo-ui-element"></a>Microsoft.Network.VirtualNetworkCombo UI element
-Skupina ovládacích prvků pro výběr nový nebo existující virtuální síť.
+Skupina ovládacích prvků pro výběr nové nebo existující virtuální sítě.
 
 ## <a name="ui-sample"></a>Ukázka uživatelského rozhraní
-Když uživatel vybere nové virtuální sítě, uživatel můžete přizpůsobit název každé podsítě a předponu adresy. Konfigurace podsítí je volitelné.
+Když uživatel vybere nové virtuální sítě, může uživatel přizpůsobit název každé podsítě a předponu adresy. Konfigurace podsítě je volitelné.
 
-![Microsoft.Network.VirtualNetworkCombo nový](./media/managed-application-elements/microsoft.network.virtualnetworkcombo-new.png)
+![Microsoft.Network.VirtualNetworkCombo new](./media/managed-application-elements/microsoft.network.virtualnetworkcombo-new.png)
 
-Když uživatel vybere existující virtuální síť, musí uživatel mapovat každou podsíť, kterou vyžaduje nasazení šablony do existující podsítí. Podsítě v takovém případě se vyžaduje konfigurace.
+Když uživatel vybere existující virtuální síť, uživatel musí být namapovaný každou podsíť, kterou vyžaduje nasazení šablony do existující podsítě. Konfigurace podsítě v tomto případě je povinný.
 
-![Existující Microsoft.Network.VirtualNetworkCombo](./media/managed-application-elements/microsoft.network.virtualnetworkcombo-existing.png)
+![Microsoft.Network.VirtualNetworkCombo existing](./media/managed-application-elements/microsoft.network.virtualnetworkcombo-existing.png)
 
 ## <a name="schema"></a>Schéma
 ```json
@@ -86,14 +86,14 @@ Když uživatel vybere existující virtuální síť, musí uživatel mapovat k
 ```
 
 ## <a name="remarks"></a>Poznámky
-- -Li zadána, první nepřekrývají adres předpony velikosti `defaultValue.addressPrefixSize` je určen automaticky v závislosti na existující virtuální sítě v rámci předplatného uživatele.
+- Je-li zadána, první překrývat Předpona velikosti adresy `defaultValue.addressPrefixSize` je určen automaticky v závislosti na existující virtuální sítě v předplatném uživatele.
 - Výchozí hodnota pro `defaultValue.name` a `defaultValue.addressPrefixSize` je **null**.
-- `constraints.minAddressPrefixSize` musí být zadán. Žádné existující virtuální sítě s adresním prostorem menší než zadaná hodnota jsou k dispozici pro výběr.
-- `subnets` musí být zadán, a `constraints.minAddressPrefixSize` pro každou podsíť musí být zadána.
-- Při vytváření nové virtuální sítě, předpona adresy každou podsíť je vypočtena automaticky na základě předponu adresy virtuální sítě a příslušné `addressPrefixSize`.
-- Při použití existující virtuální sítě, podsítě, menší než příslušných `constraints.minAddressPrefixSize` jsou k dispozici pro výběr. Kromě toho-li zadána, podsítě, které nemají alespoň `minAddressCount` dostupné adresy jsou k dispozici pro výběr. Výchozí hodnota je **0**. K zajištění, že jsou k dispozici adresy souvislé, zadejte **true** pro `requireContiguousAddresses`. Výchozí hodnota je **true**.
-- Vytvoření podsítě v existující virtuální síť se nepodporuje.
-- Pokud `options.hideExisting` je **true**, uživatel nemůže vybrat existující virtuální síť. Výchozí hodnota je **false**.
+- `constraints.minAddressPrefixSize` je třeba zadat. Všechny existující virtuální sítě s adresním prostorem menší než zadaná hodnota je k dispozici pro výběr.
+- `subnets` musí být zadána, a `constraints.minAddressPrefixSize` musí být zadán pro každou podsíť.
+- Při vytváření nové virtuální sítě, předpona adresy každé podsíti se vypočítá automaticky podle předponu adresy virtuální sítě a funkcím `addressPrefixSize`.
+- Při použití existující virtuální sítě, podsítě menší než příslušné `constraints.minAddressPrefixSize` jsou k dispozici pro výběr. Kromě toho pokud zadán, podsítě, které nemají alespoň `minAddressCount` jsou k dispozici pro výběr dostupných adres. Výchozí hodnota je **0**. Ujistěte se, že jsou dostupné adresy souvislé, zadejte **true** pro `requireContiguousAddresses`. Výchozí hodnota je **true**.
+- Vytvoření podsítě v existující virtuální sítě se nepodporuje.
+- Pokud `options.hideExisting` je **true**, uživatel nemůže vybrat stávající virtuální síť. Výchozí hodnota je **false**.
 
 ## <a name="sample-output"></a>Ukázkový výstup
 
@@ -119,5 +119,5 @@ Když uživatel vybere existující virtuální síť, musí uživatel mapovat k
 ```
 
 ## <a name="next-steps"></a>Další postup
-* Úvod do vytváření definic uživatelského rozhraní, najdete v části [Začínáme s CreateUiDefinition](create-uidefinition-overview.md).
-* Popis společných vlastností v prvky uživatelského rozhraní najdete v tématu [CreateUiDefinition elementy](create-uidefinition-elements.md).
+* Úvod do vytváření definic uživatelského rozhraní, naleznete v tématu [Začínáme s funkcí CreateUiDefinition](create-uidefinition-overview.md).
+* Popis společné vlastnosti v prvcích uživatelského rozhraní, naleznete v tématu [CreateUiDefinition prvky](create-uidefinition-elements.md).

@@ -11,11 +11,11 @@ ms.topic: tutorial
 ms.service: active-directory
 ms.subservice: B2C
 ms.openlocfilehash: a1842859723173412df2053a242ebe9ca4cf7f32
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55754021"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60386941"
 ---
 # <a name="tutorial-enable-authentication-in-a-native-client-application-using-azure-active-directory-b2c"></a>Kurz: Povolení ověřování v nativní klientské aplikace pomocí Azure Active Directory B2C
 

@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/24/2018
 ms.author: kumud
-ms.openlocfilehash: 2cd3fdc9387952277c25fa07c62a0faae2993089
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 16822a4928f0a68146bdb55f5bab4dd99df6236b
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54478242"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60329535"
 ---
 # <a name="direct-traffic-to-specific-endpoints-based-on-user-subnet-using-traffic-manager"></a>Směrování provozu do konkrétních koncových bodů na základě podsítě uživatele pomocí služby Traffic Manager
 
@@ -61,34 +61,37 @@ V této části vytvoříte dva virtuální počítače *InternalWebsite* a *Pro
 1. V levém horním rohu webu Azure Portal vyberte **Vytvořit prostředek** > **Compute** > **Virtuální počítač s Windows Serverem 2016**.
 2. V části **Základy** zadejte nebo vyberte následující informace, u zbývajících nastavení přijměte výchozí hodnoty a pak vyberte **Vytvořit**:
 
-    |Nastavení|Hodnota|
+    |Nastavení|Value|
     |---|---|
-    |Název|InternalWebsite|
+    |Name|InternalWebsite|
     |Uživatelské jméno| Zadejte libovolné uživatelské jméno.|
     |Heslo| Zadejte libovolné heslo. Heslo musí obsahovat nejméně 12 znaků a musí splňovat [zadané požadavky na složitost](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm).|
     |Skupina prostředků| Vyberte **Nová** a zadejte *myResourceGroupTM1*.|
-    |Umístění| Vyberte **USA – východ**.|
+    |Location| Vyberte **USA – východ**.|
     |||
+
 4. V části **Zvolte velikost** vyberte velikost virtuálního počítače.
 5. V části **Nastavení** vyberte následující hodnoty a pak vyberte **OK**:
     
-    |Nastavení|Hodnota|
+    |Nastavení|Value|
     |---|---|
     |Virtuální síť| Vyberte **Virtuální síť** a v části **Vytvořit virtuální síť** jako **Název** zadejte *myVNet1* a jako podsíť zadejte *mySubnet*.|
     |Skupina zabezpečení sítě|Vyberte **Basic** a v rozevíracím seznamu **Vyberte veřejné příchozí porty** vyberte **HTTP** a **RDP**. |
     |Diagnostika spouštění|Vyberte **Zakázáno**.|
     |||
+
 6. V části **Vytvořit** na kartě **Souhrn** vyberte **Vytvořit** a spusťte nasazování virtuálního počítače.
 
 7. Zopakujte kroky 1 až 6 s následujícími změnami:
 
-    |Nastavení|Hodnota|
+    |Nastavení|Value|
     |---|---|
     |Skupina prostředků | Vyberte **Nová** a zadejte *myResourceGroupTM2*.|
-    |Umístění|Západní Evropa|
+    |Location|Západní Evropa|
     |Název virtuálního počítače | ProdWebsite|
     |Virtuální síť | Vyberte **Virtuální síť** a v části **Vytvořit virtuální síť** jako **Název** zadejte *myVNet2* a jako podsíť zadejte *mySubnet*.|
     |||
+
 8. Vytvoření virtuálních počítačů trvá několik minut. Nepokračujte ve zbývajících krocích, dokud se oba virtuální počítače nevytvoří.
 
 #### <a name="install-iis-and-customize-the-default-web-page"></a>Instalace služby IIS a přizpůsobení výchozí webové stránky
@@ -142,9 +145,9 @@ V této části vytvoříte virtuální počítač *UserVMUS* v oblasti Azure**U
 1. V levém horním rohu webu Azure Portal vyberte **Vytvořit prostředek** > **Compute** > **Windows Server 2016 Datacenter**.
 2. V části **Základy** zadejte nebo vyberte následující informace, u zbývajících nastavení přijměte výchozí hodnoty a pak vyberte **Vytvořit**:
 
-    |Nastavení|Hodnota|
+    |Nastavení|Value|
     |---|---|
-    |Název|*UserVMUS*|
+    |Name|*UserVMUS*|
     |Uživatelské jméno| Zadejte libovolné uživatelské jméno.|
     |Heslo| Zadejte libovolné heslo. Heslo musí obsahovat nejméně 12 znaků a musí splňovat [zadané požadavky na složitost](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm).|
     |Skupina prostředků| Vyberte **Existující** a pak vyberte *myResourceGroupTM1*.|
@@ -152,7 +155,8 @@ V této části vytvoříte virtuální počítač *UserVMUS* v oblasti Azure**U
 
 4. V části **Zvolte velikost** vyberte velikost virtuálního počítače.
 5. V části **Nastavení** vyberte následující hodnoty a pak vyberte **OK**:
-    |Nastavení|Hodnota|
+
+    |Nastavení|Value|
     |---|---|
     |Virtuální síť| Vyberte **Virtuální síť** a v části **Vytvořit virtuální síť** jako **Název** zadejte *myVNet3* a jako podsíť zadejte *mySubnet3*.|
     |Skupina zabezpečení sítě|Vyberte **Basic** a v rozevíracím seznamu **Vyberte veřejné příchozí porty** vyberte **HTTP** a **RDP**. |
@@ -163,7 +167,7 @@ V této části vytvoříte virtuální počítač *UserVMUS* v oblasti Azure**U
 
 7. Zopakujte kroky 1 až 5 s následujícími změnami:
 
-    |Nastavení|Hodnota|
+    |Nastavení|Value|
     |---|---|
     |Název virtuálního počítače | *UserVMEurope*|
     |Skupina prostředků | Vyberte **Existující** a pak zadejte *myResourceGroupTM2*.|
@@ -177,9 +181,10 @@ Vytvořte profil služby Traffic Manager, který vám umožní na základě zdro
 
 1. V levém horním rohu obrazovky vyberte **Vytvořit prostředek** > **Sítě** > **Profil služby Traffic Manager** > **Vytvořit**.
 2. V části **Vytvořit profil služby Traffic Manager** zadejte nebo vyberte následující informace, u zbývajících nastavení přijměte výchozí hodnoty a pak vyberte **Vytvořit**:
-    | Nastavení                 | Hodnota                                              |
+
+    | Nastavení                 | Value                                              |
     | ---                     | ---                                                |
-    | Název                   | Tento název musí být jedinečný v rámci zóny trafficmanager.net a ve výsledcích názvu DNS trafficmanager.net, který slouží k přístupu k vašemu profilu služby Traffic Manager.                                   |
+    | Name                   | Tento název musí být jedinečný v rámci zóny trafficmanager.net a ve výsledcích názvu DNS trafficmanager.net, který slouží k přístupu k vašemu profilu služby Traffic Manager.                                   |
     | Metoda směrování          | Jako metodu směrování vyberte **Podsíť**.                                       |
     | Předplatné            | Vyberte své předplatné.                          |
     | Skupina prostředků          | Vyberte **Existující** a zadejte *myResourceGroupTM1*. |
@@ -196,10 +201,10 @@ Přidejte oba virtuální počítače se službou IIS (*InternalWebsite* & *Prod
 2. V okně **Profil služby Traffic Manager** v části **Nastavení** klikněte na **Koncové body** a pak na **Přidat**.
 3. Zadejte nebo vyberte následující informace, u zbývajících nastavení přijměte výchozí hodnoty a pak vyberte **OK**:
 
-    | Nastavení                 | Hodnota                                              |
+    | Nastavení                 | Value                                              |
     | ---                     | ---                                                |
-    | Typ                    | Koncový bod Azure                                   |
-    | Název           | myInternalWebSiteEndpoint                                        |
+    | Type                    | Koncový bod Azure                                   |
+    | Name           | myInternalWebSiteEndpoint                                        |
     | Typ cílového prostředku           | Veřejná IP adresa                          |
     | Cílový prostředek          | **Zvolte veřejnou IP adresu** a zobrazí se výpis prostředků s veřejnými IP adresami ve stejném předplatném. Jako **Prostředek** vyberte veřejnou IP adresu *InternalWebsite-ip*. Toto je veřejná IP adresa virtuálního počítače se serverem služby IIS v oblasti USA – východ.|
     |  Nastavení směrování podsítě    |   Přidejte IP adresu testovacího virtuálního počítače *UserVMUS*. Všechny dotazy uživatelů pocházející z tohoto virtuálního počítače se budou směrovat do koncového bodu *InternalWebSiteEndpoint*.    |

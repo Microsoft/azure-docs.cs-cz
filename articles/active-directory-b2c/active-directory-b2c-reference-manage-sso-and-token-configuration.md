@@ -11,11 +11,11 @@ ms.date: 10/09/2018
 ms.author: davidmu
 ms.subservice: B2C
 ms.openlocfilehash: c0f5be7fd77ae195b66f8a8fb052ab8573d48171
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
-ms.translationtype: MT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55856355"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60317169"
 ---
 # <a name="manage-sso-and-token-customization-using-custom-policies-in-azure-active-directory-b2c"></a>Správa jednotného přihlašování a token přizpůsobení pomocí vlastních zásad v Azure Active Directory B2C
 

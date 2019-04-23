@@ -13,11 +13,11 @@ ms.reviewer: ''
 manager: craigg
 ms.date: 02/08/2019
 ms.openlocfilehash: a067d83c32f11e0bf091b0efc5528995ab6a021a
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
-ms.translationtype: MT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55990066"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60341638"
 ---
 # <a name="azure-sql-database-glossary-of-terms"></a>Azure SQL Database Glosář termínů
 

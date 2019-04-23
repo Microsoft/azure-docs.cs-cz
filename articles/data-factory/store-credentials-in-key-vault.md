@@ -12,11 +12,11 @@ ms.topic: conceptual
 ms.date: 03/13/2019
 ms.author: jingwang
 ms.openlocfilehash: a7d440509e2b823400cde83c1ac2ec054c37eb74
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57896207"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60311874"
 ---
 # <a name="store-credential-in-azure-key-vault"></a>Store přihlašovacích údajů ve službě Azure Key Vault
 

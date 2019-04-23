@@ -17,11 +17,11 @@ ms.author: joflore
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 21c89d9d686c4af594aa7a0fd921471105669e02
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58518146"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60354532"
 ---
 # <a name="azure-active-directory-conditional-access-faqs"></a>Azure Active Directory, podmíněného přístupu, nejčastější dotazy
 

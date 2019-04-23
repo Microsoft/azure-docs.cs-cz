@@ -14,11 +14,11 @@ ms.reviewer: mbullwin
 ms.pm_owner: daviste;NumberByColors
 ms.author: daviste
 ms.openlocfilehash: 7d378c2f72035c3584e1f5cd3c1f0fb9a5d5c2ed
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54119863"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60372277"
 ---
 # <a name="users-sessions-and-events-analysis-in-application-insights"></a>Uživatelé, relace a události analýzy ve službě Application Insights
 

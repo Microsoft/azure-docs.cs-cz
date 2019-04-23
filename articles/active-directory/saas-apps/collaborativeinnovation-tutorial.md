@@ -15,11 +15,11 @@ ms.date: 01/22/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 8252dea33ff5cde07e021421d9772a69ea9f143b
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57840830"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60281224"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-collaborative-innovation"></a>Kurz: Integrace Azure Active Directory s spolupráci inovace
 
@@ -119,7 +119,7 @@ Ke konfiguraci Azure AD jednotné přihlašování s spolupráci inovace, prove�
 
 6. V **deklarace identity uživatelů** části na **atributy uživatele** dialogovém okně Upravit deklarace identity pomocí **ikonu pro úpravu** nebo přidání deklarace identity pomocí **přidat novou deklaraci**ke konfiguraci atribut tokenu SAML, jak je znázorněno na obrázku výše a proveďte následující kroky: 
 
-    | Název | Zdrojový atribut|
+    | Name | Zdrojový atribut|
     | ---------------| --------------- |
     | givenName | user.givenname |
     | Příjmení | user.surname |

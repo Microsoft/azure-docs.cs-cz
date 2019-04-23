@@ -10,18 +10,18 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: a13ca362bf08b86297641061992f0820f0b624c5
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: HT
+ms.openlocfilehash: e8bfa5a3e60efe860b5e7197d96ebe5ce3a86030
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58916763"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60418266"
 ---
 # <a name="define-an-openid-connect-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Definování profilu technické OpenId Connect ve vlastních zásadách pro Azure Active Directory B2C
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-Azure Active Directory (Azure AD) B2C poskytuje podporu pro [OpenId Connect](https://openid.net/2015/04/17/openid-connect-certification-program/) protokol zprostředkovatele identity. OpenID Connect 1.0 definuje vrstvu identit přes OAuth 2.0 a představuje nejmodernější optimalizaci pspo v moderních ověřovacích protokolů.  Technický profil může provést federaci s OpenId Connect s OpenId Connect základě zprostředkovatele identity, jako je Azure AD umožňují uživatelům přihlásit se s jejich existujícími sociálních sítí nebo podnikové identity.
+Azure Active Directory (Azure AD) B2C poskytuje podporu pro [OpenId Connect](https://openid.net/2015/04/17/openid-connect-certification-program/) protokol zprostředkovatele identity. OpenID Connect 1.0 definuje vrstvu identit přes OAuth 2.0 a představuje nejmodernější optimalizaci pspo v moderních ověřovacích protokolů. S OpenId Connect technický profil může provést federaci s OpenId Connect založené na zprostředkovateli identity, jako je Azure AD. Federování s využitím zprostředkovatele identity umožňuje uživatelům Přihlaste se pomocí své stávající sociálních sítí nebo podnikové identity.
 
 ## <a name="protocol"></a>Protocol (Protokol)
 
@@ -52,7 +52,7 @@ Azure Active Directory (Azure AD) B2C poskytuje podporu pro [OpenId Connect](htt
 
 Následující příklad ukazuje deklarace vrácené poskytovatelem Account Microsoft identity:
 
-- **Sub** deklarace identity, který je namapovaný na **socialIdpUserId** deklarací identity.
+- **Sub** deklarace identity, který je namapovaný na **issuerUserId** deklarací identity.
 - **Název** deklarace identity, který je namapovaný na **displayName** deklarací identity.
 - **E-mailu** bez mapování názvů.
 
@@ -65,7 +65,7 @@ Technický profil také vrátí hodnotu deklarace identity, které nejsou vráce
 <OutputClaims>
   <OutputClaim ClaimTypeReferenceId="identityProvider" DefaultValue="live.com" />
   <OutputClaim ClaimTypeReferenceId="authenticationSource" DefaultValue="socialIdpAuthentication" />
-  <OutputClaim ClaimTypeReferenceId="socialIdpUserId" PartnerClaimType="sub" />
+  <OutputClaim ClaimTypeReferenceId="issuerUserId" PartnerClaimType="sub" />
   <OutputClaim ClaimTypeReferenceId="displayName" PartnerClaimType="name" />
   <OutputClaim ClaimTypeReferenceId="email" />
 </OutputClaims>
@@ -81,7 +81,7 @@ Technický profil také vrátí hodnotu deklarace identity, které nejsou vráce
 | ProviderName | Ne | Název zprostředkovatele identity. |
 | response_types | Ne | Typ odpovědi podle specifikace OpenID Connect Core 1.0. Možné hodnoty: `id_token`, `code`, nebo `token`. |
 | response_mode | Ne | Metoda, která používá zprostředkovatel identity k odesílání výsledek zpět do Azure AD B2C. Možné hodnoty: `query`, `form_post` (výchozí), nebo `fragment`. |
-| scope | Ne | Rozsah definovaný podle specifikace OpenID Connect 1.0 jádra na žádost o přístup. Například `openid`, `profile`, a `email`. |
+| scope | Ne | Obor požadavku, který je definován podle specifikace OpenID Connect Core 1.0. Například `openid`, `profile`, a `email`. |
 | HttpBinding | Ne | Očekávané vazby HTTP na token a deklarací identity tokenu koncové body přístupu. Možné hodnoty: `GET` nebo `POST`.  |
 | ValidTokenIssuerPrefixes | Ne | Klíč, který lze použít k přihlášení na jednotlivé klienty při použití zprostředkovatele identity s více tenanty jako je Azure Active Directory. |
 | UsePolicyInRedirectUri | Ne | Určuje, jestli se má použít při vytváření identifikátor URI pro přesměrování zásady. Při konfiguraci vaší aplikace v poskytovateli identit, musíte zadat identifikátor URI pro přesměrování. Přesměrování identifikátor URI odkazuje na Azure AD B2C, `https://login.microsoftonline.com/te/{tenant}/oauth2/authresp` (login.microsoftonline.com může změnit pomocí vašeho tenanta name.b2clogin.com).  Pokud zadáte `false`, budete muset přidat identifikátor URI přesměrování pro jednotlivé zásady použití. Například: `https://login.microsoftonline.com/te/{tenant}/{policy}/oauth2/authresp`. |

@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 03/27/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 5a87563e54e0d932acefc5bd5808ac49b3cbf30a
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 7a592a7d0d8c9d32de83c92b258c4678dc3f8166
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58005239"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60188264"
 ---
 # <a name="tutorial-automatically-scale-a-virtual-machine-scale-set-with-azure-powershell"></a>Kurz: Automatické škálování virtuálního počítače škálovací sady pomocí Azure Powershellu
 
@@ -72,7 +72,7 @@ Teď pomocí rutiny [New-AzureRmAutoscaleRule](/powershell/module/AzureRM.Insigh
 
 Pro toto pravidlo se používají následující parametry:
 
-| Parametr               | Vysvětlení                                                                                                         | Hodnota          |
+| Parametr               | Vysvětlení                                                                                                         | Value          |
 |-------------------------|---------------------------------------------------------------------------------------------------------------------|----------------|
 | *-MetricName*           | Metrika výkonu, která se má monitorovat a na kterou se mají použít akce škálovací sady.                                                   | Procento CPU |
 | *-TimeGrain*            | Četnost shromažďování metrik pro účely analýzy.                                                                   | 1 minuta       |

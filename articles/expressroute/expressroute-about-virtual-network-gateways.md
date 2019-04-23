@@ -9,11 +9,11 @@ ms.date: 02/20/2019
 ms.author: mialdrid
 ms.custom: seodec18
 ms.openlocfilehash: d9c607114d6c6c56c25303a88dcc11f4ab804eb4
-ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57404329"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60367939"
 ---
 # <a name="about-virtual-network-gateways-for-expressroute"></a>O branách virtuálních sítí pro ExpressRoute
 Bránu virtuální sítě slouží k posílání síťového provozu mezi virtuálními sítěmi Azure a místními umístěními. Bránu virtuální sítě můžete použít pro provoz ExpressRoute nebo VPN provoz. Tento článek se zaměřuje na brány virtuální sítě ExpressRoute a obsahuje informace o SKU, zvýšily výkon s SKU a brány typů.

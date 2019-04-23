@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 03/01/2019
 ms.author: enewman
 ms.openlocfilehash: 9848f197800c391285c4065685b910685f0ac64b
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57318786"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60312075"
 ---
 # <a name="create-an-environment-with-self-contained-service-fabric-cluster-in-azure-devtest-labs"></a>Vytvoření prostředí s samostatný cluster Service Fabric v Azure DevTest Labs
 Tento článek obsahuje informace o tom, jak vytvořit prostředí pomocí samostatný cluster Service Fabric v Azure DevTest Labs. 

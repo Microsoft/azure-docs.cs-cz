@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: mazha
-ms.openlocfilehash: b885098ff0efeb4d723cbaaac46fbb57cb40f2ea
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: HT
+ms.openlocfilehash: 4df8e5d4560a813c47319833a8cd91726abcb8e6
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59790987"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60323763"
 ---
 # <a name="troubleshooting-cdn-file-compression"></a>Poradce při potížích s kompresí souborů CDN
 V tomto článku vám pomůžou s řešením problémů s [kompresí souborů CDN](cdn-improve-performance.md).
@@ -117,5 +117,5 @@ Způsobilé pro kompresi, soubor musí splňovat následující požadavky na ve
 **Prostřednictvím** hlavičky protokolu HTTP označuje na webový server, že žádost je předáván podle proxy serveru.  Webové servery Microsoft IIS ve výchozím nastavení Nekomprimovat odpovědi obsahuje žádost **prostřednictvím** záhlaví.  Chcete-li přepsat toto chování, postupujte takto:
 
 * **IIS 6**: [Nastavte HcNoCompressionForProxies = "FALSE" ve vlastnostech metabáze služby IIS](/previous-versions/iis/6.0-sdk/ms525390(v=vs.90))
-* **Služba IIS 7 a vyšší**: [Nastavte **noCompressionForHttp10** a **noCompressionForProxies** na hodnotu False v konfiguraci serveru](http://www.iis.net/configreference/system.webserver/httpcompression)
+* **Služba IIS 7 a vyšší**: [Nastavte **noCompressionForHttp10** a **noCompressionForProxies** na hodnotu False v konfiguraci serveru](https://www.iis.net/configreference/system.webserver/httpcompression)
 

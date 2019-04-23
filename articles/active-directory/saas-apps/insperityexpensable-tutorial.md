@@ -16,11 +16,11 @@ ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: jeedes
 ms.openlocfilehash: b049b6526b0053c79b313d3d51a94a7706d5f93c
-ms.sourcegitcommit: b8a8d29fdf199158d96736fbbb0c3773502a092d
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/15/2019
-ms.locfileid: "59565729"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60271102"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-insperity-expensable"></a>Kurz: Integrace Azure Active Directory s Insperity ExpensAble
 

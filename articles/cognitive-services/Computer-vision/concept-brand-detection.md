@@ -8,16 +8,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: conceptual
-ms.date: 01/26/2019
+ms.date: 04/17/2019
 ms.author: pafarley
-ms.openlocfilehash: abeca204296bcb3933013f2b7434b8c558f62e50
-ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
+ms.openlocfilehash: d32beaa51471ccab19804122bfbcb33a6b1a5e3d
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58496583"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60203014"
 ---
-# <a name="brand-detection"></a>Detekce značky
+# <a name="detect-popular-brands-in-images"></a>Zjištění oblíbených značek na obrázcích
 
 Detekce značky je speciální režim [objektu zjišťování](concept-object-detection.md) , která používá databázi tisíce globální loga pro identifikaci obchodních značek v obrázcích nebo ve videích. Tuto funkci můžete použít třeba ke zjišťování, které značky jsou nejoblíbenější na sociálních sítích nebo nejrozšířenější v umístění média produktu.
 

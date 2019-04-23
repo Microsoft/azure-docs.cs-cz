@@ -14,11 +14,11 @@ ms.topic: conceptual
 ms.date: 11/13/2018
 ms.author: magoedte
 ms.openlocfilehash: dcd546b4b4d8e47395535cd37e1629166c8c2e7f
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58002339"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60394825"
 ---
 # <a name="log-analytics-faq"></a>Nejčastější dotazy k Log Analytics
 
@@ -29,11 +29,11 @@ Tato FAQ Microsoft je uveden seznam nejčastější dotazy o službě Log Analyt
 
 ## <a name="new-logs-experience"></a>Nové prostředí pro protokoly
 
-### <a name="q-whats-the-difference-between-the-new-logs-experience-and-log-analytics"></a>OTÁZKA: Jaký je rozdíl mezi nové prostředí pro protokoly a Log Analytics?
+### <a name="q-whats-the-difference-between-the-new-logs-experience-and-log-analytics"></a>Otázka: Jaký je rozdíl mezi nové prostředí pro protokoly a Log Analytics?
 
 Odpověď: Jsou to samé. [Log Analytics je integrované jako funkci ve službě Azure Monitor](../../azure-monitor/azure-monitor-rebrand.md) poskytnout více sjednocené prostředí pro monitorování. Nové prostředí protokolů ve službě Azure Monitor je přesně stejný jako dotazy Log Analytics, které už jste dosud používali mnoho zákazníků.
 
-### <a name="q-can-i-still-use-log-search"></a>OTÁZKA: Pomocí prohledávání protokolů 
+### <a name="q-can-i-still-use-log-search"></a>Otázka: Pomocí prohledávání protokolů 
 
 Odpověď: Hledání v protokolu je stále k dispozici na portálu OMS a na webu Azure Portal v části názvu aktuálně **protokoly (classic)**. Na portálu OMS se oficiálně dostupné jenom do 15. ledna 2019. Klasickým prostředím protokolů na webu Azure portal postupně vyřadíme a nahradí nové protokoly prostředí. 
 
@@ -107,7 +107,7 @@ Odpověď: V závislosti na tom, jaké aktualizace souhrnu nástroje Operations 
 
 Aktualizace textu řetězce *OMS* je zahrnuta v sadě management pack, které se mají importovat ručně. Pokud chcete zobrazit aktuální text a funkce, postupujte podle pokynů na nejnovější systém System Center Operations Manager aktualizace znalostní BÁZE kumulativní článku a aktualizací konzoly nástroje.
 
-### <a name="q-is-there-an-on-premises-version-of-log-analytics"></a>OTÁZKA: Existuje místní verzi služby Log Analytics?
+### <a name="q-is-there-an-on-premises-version-of-log-analytics"></a>Otázka: Existuje místní verzi služby Log Analytics?
 
 Odpověď: Ne. Log Analytics je škálovatelná Cloudová služba, která zpracovává a ukládá velké objemy dat. 
 
@@ -177,14 +177,14 @@ Tato změna můžete také provést na webu Azure Portal.
 
 Nelze přesunout data z jednoho pracovního prostoru Log Analytics do jiného nebo změnit oblasti, která Log Analytics data jsou uložena v.
 
-### <a name="q-how-do-i-add-log-analytics-to-system-center-operations-manager"></a>OTÁZKA: Jak mohu přidat Log Analytics na System Center Operations Manager?
+### <a name="q-how-do-i-add-log-analytics-to-system-center-operations-manager"></a>Otázka: Jak mohu přidat Log Analytics na System Center Operations Manager?
 
 Odpověď:  Aktualizace na nejnovější kumulativní aktualizaci a import sad management Pack vám umožní připojit Operations Manageru k Log Analytics.
 
 >[!NOTE]
 >Připojení nástroje Operations Manager ke službě Log Analytics je dostupná jenom pro System Center Operations Manager 2012 SP1 a novější.
 
-### <a name="q-how-can-i-confirm-that-an-agent-is-able-to-communicate-with-log-analytics"></a>OTÁZKA: Jak můžete ověřit, že agent je schopen komunikovat s Log Analytics?
+### <a name="q-how-can-i-confirm-that-an-agent-is-able-to-communicate-with-log-analytics"></a>Otázka: Jak můžete ověřit, že agent je schopen komunikovat s Log Analytics?
 
 Odpověď: Aby bylo zajištěno, že agent může komunikovat s OMS, přejděte na: Ovládací prvek panelu, zabezpečení a nastavení, **agenta Microsoft Monitoring Agent**.
 
@@ -192,19 +192,19 @@ V části **Azure Log Analytics (OMS)** kartu, vyhledejte zelená značka zaškr
 
 Žlutá ikona upozornění znamená, že agent má problémy komunikace se službou Log Analytics. Jedním z běžných důvodů je, že služba Microsoft Monitoring Agent byla zastavena. Pomocí Správce řízení služeb se restartovat službu.
 
-### <a name="q-how-do-i-stop-an-agent-from-communicating-with-log-analytics"></a>OTÁZKA: Jak můžu Zastavit agenta v komunikaci se službou Log Analytics?
+### <a name="q-how-do-i-stop-an-agent-from-communicating-with-log-analytics"></a>Otázka: Jak můžu Zastavit agenta v komunikaci se službou Log Analytics?
 
 Odpověď: V nástroji System Center Operations Manager odeberte počítač ze seznamu spravovaných počítačů OMS. Nástroj Operations Manager aktualizuje konfiguraci agenta k již ukládání dat do Log Analytics. U agentů přímo připojené ke službě Log Analytics můžete zastavit komunikaci prostřednictvím: Ovládací prvek panelu, zabezpečení a nastavení, **agenta Microsoft Monitoring Agent**.
 V části **Azure Log Analytics (OMS)**, odeberte všechny pracovní prostory uvedené.
 
-### <a name="q-why-am-i-getting-an-error-when-i-try-to-move-my-workspace-from-one-azure-subscription-to-another"></a>OTÁZKA: Proč se při pokusu o přesunutí Můj pracovní prostor z jednoho předplatného Azure na jiný dochází k chybě?
+### <a name="q-why-am-i-getting-an-error-when-i-try-to-move-my-workspace-from-one-azure-subscription-to-another"></a>Otázka: Proč se při pokusu o přesunutí Můj pracovní prostor z jednoho předplatného Azure na jiný dochází k chybě?
 
 Odpověď: Pokud chcete přesunout pracovní prostor na jiné předplatné nebo skupinu prostředků, musíte nejprve zrušit propojení účtu Automation v pracovním prostoru. Pro zrušení propojení s účtem Automation je potřeba odebrat následující řešení, pokud jsou v pracovním prostoru nainstalovaná: Update Management, Change Tracking nebo spuštění/zastavení virtuálních počítačů mimo špičku, se odeberou. Po odebrání těchto řešení zrušení propojení účtu Automation vyberte **propojené pracovní prostory** v levém podokně v automatizaci účtu prostředek a klikněte na tlačítko **zrušit propojení pracovního prostoru** na pásu karet.
  > Odebrat řešení je třeba znovu nainstalovat v pracovním prostoru a propojení služby Automation s pracovním prostorem musí revidovat po přesunutí.
 
 Ujistěte se, že máte oprávnění v obou předplatných Azure.
 
-### <a name="q-why-am-i-getting-an-error-when-i-try-to-update-a-savedsearch"></a>OTÁZKA: Proč se při pokusu aktualizovat elementu SavedSearch dochází k chybě?
+### <a name="q-why-am-i-getting-an-error-when-i-try-to-update-a-savedsearch"></a>Otázka: Proč se při pokusu aktualizovat elementu SavedSearch dochází k chybě?
 
 Odpověď: Je třeba přidat 'etag' v těle rozhraní API nebo vlastností šablony Azure Resource Manageru:
 ```

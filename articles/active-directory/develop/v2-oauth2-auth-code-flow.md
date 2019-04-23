@@ -19,11 +19,11 @@ ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 79e0ebce5704e7b61956568f5ebbce6ea6cbc3af
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59500953"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60299236"
 ---
 # <a name="microsoft-identity-platform-and-oauth-20-authorization-code-flow"></a>Platforma identit Microsoft a tok autorizačního kódu OAuth 2.0
 

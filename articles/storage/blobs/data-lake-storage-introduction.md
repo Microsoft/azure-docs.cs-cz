@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: jamesbak
 ms.subservice: data-lake-storage-gen2
-ms.openlocfilehash: b25a47e929ef540ad3a74a86d431962d37cde434
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
-ms.translationtype: MT
+ms.openlocfilehash: 8777a7504c48b22d0e670dd9f0d28016ac8918db
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58009430"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60009459"
 ---
 # <a name="introduction-to-azure-data-lake-storage-gen2"></a>Úvod do služby Azure Data Lake Storage Gen2
 
@@ -43,7 +43,7 @@ V minulosti cloudové analýzy došlo k ohrožení v oblasti výkonu, správy a 
 
 -   **Nákladově efektivní**: Data Lake Storage Gen2 nabízí kapacitu úložiště s nízkými náklady a transakce. Jako přechody data prostřednictvím jejich kompletní životní cyklus, fakturační sazby změnit uchování nákladů na minimum prostřednictvím integrované funkce, jako [životní cyklus úložiště objektů Blob v Azure](storage-lifecycle-management-concepts.md).
 
--   **Optimalizované ovladač**: Ovladač abfs [speciálně optimalizovaná](data-lake-storage-abfs-driver.md) pro analýzy velkých objemů dat. Zobrazují se prostřednictvím koncového bodu systému souborů dfs, odpovídající rozhraní REST API dfs.core.windows.net.
+-   **Optimalizované ovladač**: Ovladač ABFS [speciálně optimalizovaná](data-lake-storage-abfs-driver.md) pro analýzy velkých objemů dat. Zobrazují se prostřednictvím koncového bodu rozhraní REST API pro odpovídající `dfs.core.windows.net`.
 
 ### <a name="scalability"></a>Škálovatelnost
 
@@ -64,7 +64,7 @@ Níže jsou ekvivalentní entity, jak je popsáno v různých koncepty. Pokud ne
 | Koncept                                | Nejvyšší úrovně organizace | Nižší úrovně organizace                                            | Datový kontejner |
 |----------------------------------------|------------------------|---------------------------------------------------------------------|----------------|
 | Objekty BLOB – storage pro obecné účely objektu | Kontejner              | Virtuální adresář (sada SDK pouze – neposkytuje atomic manipulaci s) | Objekt blob           |
-| ADLS Gen2 – analýzy úložiště          | systém souborů             | Adresář                                                           | File           |
+| ADLS Gen2 – analýzy úložiště          | Systém souborů             | Adresář                                                           | File           |
 
 ## <a name="supported-open-source-platforms"></a>Podporované opensourcové platformy
 

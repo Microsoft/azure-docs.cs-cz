@@ -16,18 +16,18 @@ ms.workload: infrastructure
 ms.date: 04/05/2018
 ms.author: danlep
 ms.custom: ''
-ms.openlocfilehash: ee714cd87676c519c1bbfca2c08b62287299114e
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: cdd9910bfef96f56cfa8c8e81363ff9bdb40f444
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55700617"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60328727"
 ---
 # <a name="create-a-linux-virtual-machine-in-an-availability-zone-with-the-azure-cli"></a>Vytvoření virtuálního počítače s Linuxem v zóně dostupnosti s využitím rozhraní příkazového řádku Azure
 
 Tento článek prochází jednotlivé kroky k vytvoření virtuálního počítače s Linuxem v zóně dostupnosti Azure pomocí Azure CLI. [Zóna dostupnosti](../../availability-zones/az-overview.md) je fyzicky oddělená zóna v oblasti Azure. Zóny dostupnosti se používají k ochraně aplikací a dat před málo pravděpodobným selháním nebo ztrátou celého datového centra.
 
-Pokud chcete využít zóny dostupnosti, vytvořte virtuální počítač v [podporované oblasti Azure](../../availability-zones/az-overview.md#regions-that-support-availability-zones).
+Pokud chcete využít zóny dostupnosti, vytvořte virtuální počítač v [podporované oblasti Azure](../../availability-zones/az-overview.md#services-support-by-region).
 
 Ujistěte se, že máte nainstalovanou nejnovější verzi [rozhraní příkazového řádku Azure](/cli/azure/install-az-cli2) a jste přihlášení k účtu Azure pomocí [az login](/cli/azure/reference-index).
 
@@ -102,7 +102,7 @@ Vytvoření virtuálního počítače může několik minut trvat. Po vytvořen�
 
 Po nasazení virtuálního počítače v zóně dostupnosti spravovaného disku pro virtuální počítač se vytvoří ve stejné zóně dostupnosti. Ve výchozím nastavení je vytvořen v této oblasti také veřejnou IP adresu. Následující příklady získat informace o těchto prostředcích.
 
-Chcete-li ověřit, že spravovaný disk Virtuálního počítače je v zóně dostupnosti, použijte [az vm show](/cli/azure/vm) příkaz pro zjištění id disku. V tomto příkladu je id disku uložené v proměnné, která se používá v pozdější fázi. 
+Chcete-li ověřit, že spravovaný disk Virtuálního počítače je v zóně dostupnosti, použijte [az vm show](/cli/azure/vm) příkaz vrátí ID disku. V tomto příkladu je ID disku uložené v proměnné, která se používá v pozdější fázi. 
 
 ```azurecli-interactive
 osdiskname=$(az vm show -g myResourceGroupVM -n myVM --query "storageProfile.osDisk.name" -o tsv)

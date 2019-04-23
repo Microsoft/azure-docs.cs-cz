@@ -12,11 +12,11 @@ ms.topic: article
 ms.date: 02/12/2019
 ms.author: diberry
 ms.openlocfilehash: f23212a854fb37dda89fd2bf6b223cf0dc69526b
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56167559"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60198692"
 ---
 # <a name="how-to-manage-authors-and-collaborators"></a>Jak spravovat autorů a spolupracovníci 
 

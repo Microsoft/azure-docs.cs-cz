@@ -1,17 +1,17 @@
 ---
 title: Metody a procesy pro zavádění služby Azure Data Catalog
 description: Tento článek představuje přístup a proces pro organizace uvažující o přijmutí služby Azure Data Catalog, včetně definování vize, identifikace klíčových případů obchodního použití a výběr pilotního projektu.
-author: markingmyname
-ms.author: maghan
+author: JasonWHowell
+ms.author: jasonh
 ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 04/05/2019
-ms.openlocfilehash: 86b8e4a6d2e976c706acea6eab608504ad31a5b9
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: MT
+ms.openlocfilehash: 62eb51e48ab688abcf39ba3c8d57aaccf6f47cb6
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59263260"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60003424"
 ---
 # <a name="approach-and-process-for-adopting-azure-data-catalog"></a>Metody a procesy pro zavádění služby Azure Data Catalog
 

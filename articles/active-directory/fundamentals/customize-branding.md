@@ -14,11 +14,11 @@ ms.reviewer: kexia
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 9fb657d2c2cd4eeae0eb96dd37505a1c47278725
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58103056"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60247783"
 ---
 # <a name="add-branding-to-your-organizations-azure-active-directory-sign-in-page"></a>Přidat branding vaší organizace Azure Active Directory přihlašovací stránky
 Pomocí loga vaší organizace a vlastní barevná schémata poskytují konzistentní vzhled a představu o přihlašovacích stránek služby Azure Active Directory (Azure AD). Vaše přihlašovací stránky se zobrazí při přihlášení uživatele k vaší organizaci webové aplikace, jako je Office 365, který používá Azure AD jako zprostředkovatele identity.

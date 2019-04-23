@@ -14,12 +14,12 @@ ms.tgt_pltfrm: Spring
 ms.workload: tbd
 ms.date: 01/08/2019
 ms.author: yidon
-ms.openlocfilehash: e52c14051d038ae36af9f31f1ab13da11d032a17
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: HT
+ms.openlocfilehash: d023c6ec9c3d24400fd2b7b9fcce9568aa851214
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59699283"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60202226"
 ---
 # <a name="quickstart-create-a-java-spring-app-with-app-configuration"></a>Rychlý start: Vytvoření aplikace Java Spring pomocí konfigurace aplikace
 
@@ -35,30 +35,11 @@ V tomto rychlém startu provedete instalaci podporované [Java Development Kit (
 
 ## <a name="create-an-app-configuration-store"></a>Vytvoření úložiště konfigurace aplikace
 
-1. Pokud chcete vytvořit novým úložištěm konfigurace aplikace, přihlaste se k [webu Azure portal](https://aka.ms/azconfig/portal). V levém horním rohu stránky vyberte **+ vytvořit prostředek**. V **Hledat na Marketplace** zadejte **konfigurace aplikace** a stiskněte klávesu Enter.
-
-    ![Hledat konfigurace aplikace](./media/quickstarts/azure-app-configuration-new.png)
-
-2. Vyberte **konfigurace aplikace** z výsledků hledání a pak vyberte **vytvořit**.
-
-3. Na **konfigurace aplikace** > **vytvořit** stránky, zadejte následující nastavení.
-
-    | Nastavení | Navrhovaná hodnota | Popis |
-    |---|---|---|
-    | **Název prostředku** | Globálně jedinečný název | Zadejte název jedinečné prostředků pro prostředek aplikace konfigurace úložiště. Název musí být řetězec o délce 1 až 63 znaků a může obsahovat jenom čísla, písmena a znak `-`. Název nesmí začínat ani končit `-` znak a po sobě jdoucích `-` znaky nejsou platné.  |
-    | **Předplatné** | Vaše předplatné | Vyberte předplatné Azure, který chcete použít k otestování konfigurace aplikace. Pokud má váš účet jenom jedno předplatné, je automaticky vybrána a **předplatné** rozevíracím seznamu nezobrazí. |
-    | **Skupina prostředků** | *AppConfigTestResources* | Vyberte nebo vytvořte skupinu prostředků pro prostředek úložiště konfigurace vaší aplikace. Tato skupina je užitečné pro uspořádání různé prostředky, které můžete chtít odstranit tak, že odstraníte skupinu prostředků ve stejnou dobu. Další informace najdete v tématu [Použití skupin prostředků ke správě prostředků Azure](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview). |
-    | **Umístění** | *USA (střed)* | Pomocí **Umístění** určete zeměpisné umístění, ve kterém se prostředek služby SignalR bude hostovat. Pro zajištění nejlepšího výkonu vytvořte prostředek ve stejné oblasti jako součásti vaší aplikace. |
-
-    ![Vytvoření úložiště konfigurace aplikace](./media/quickstarts/azure-app-configuration-create.png)
-
-4. Vyberte **Vytvořit**. Nasazení může trvat několik minut déle.
-
-5. Po dokončení nasazení vyberte **nastavení** > **přístupové klíče**. Poznamenejte buď primární jen pro čtení nebo primární čtení a zápis připojovací řetězec klíče. Tento připojovací řetězec použijete později ke konfiguraci vaší aplikace ke komunikaci s úložišti konfigurace aplikace, kterou jste vytvořili.
+[!INCLUDE [azure-app-configuration-create](../../includes/azure-app-configuration-create.md)]
 
 6. Vyberte **klíč/hodnota Explorer** > **+ vytvořit** přidáte následující páry klíč hodnota:
 
-    | Klíč | Hodnota |
+    | Klíč | Value |
     |---|---|
     | /Application/config.Message | Dobrý den, |
 
@@ -172,4 +153,4 @@ V tomto rychlém startu jste vytvořili novým úložištěm konfigurace aplikac
 Další informace o tom, jak používat konfiguraci aplikací, pokračujte k dalšímu kurzu, který ukazuje ověření.
 
 > [!div class="nextstepaction"]
-> [Spravované identity pro integraci prostředků Azure](./howto-integrate-azure-managed-service-identity.md)
+> [Integrace spravovaných identit](./howto-integrate-azure-managed-service-identity.md)

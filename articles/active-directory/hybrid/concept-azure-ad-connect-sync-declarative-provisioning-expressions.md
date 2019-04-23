@@ -17,11 +17,11 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: cdc7c9dba49bf37db1f039d43b0450c65884c74b
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56181979"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60245504"
 ---
 # <a name="azure-ad-connect-sync-understanding-declarative-provisioning-expressions"></a>Synchronizace Azure AD Connect: Principy výrazů deklarativního zřizování
 Synchronizace Azure AD Connect navazuje na deklarativní zřizování poprvé byla představena v produktu Forefront Identity Manager 2010. Umožňuje implementovat obchodní logiku integrace naprosto bez nutnosti psát zkompilovaný kód.

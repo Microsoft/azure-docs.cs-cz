@@ -11,11 +11,11 @@ ms.date: 09/10/2018
 ms.author: davidmu
 ms.subservice: B2C
 ms.openlocfilehash: d36abb669490b3d3f6818c018b3844a82ecd0617
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55564781"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60384226"
 ---
 # <a name="date-claims-transformations"></a>Datum deklarace identity transformace
 
@@ -29,8 +29,8 @@ Kontroluje, že jeden datum a čas deklarace identity (datový typ string) je po
 
 | Položka | TransformationClaimType | Typ dat | Poznámky |
 | ---- | ----------------------- | --------- | ----- |
-| InputClaim | leftOperand | řetězec | Typ první deklaraci identity, které by měly být pozdější než druhý deklarace identity. |
-| InputClaim | rightOperand | řetězec | Druhý typ deklarace identity, který by měl být dřívější než první deklaraci identity. |
+| InputClaim | leftOperand | string | Typ první deklaraci identity, které by měly být pozdější než druhý deklarace identity. |
+| InputClaim | rightOperand | string | Druhý typ deklarace identity, který by měl být dřívější než první deklaraci identity. |
 | InputParameter | AssertIfEqualTo | Boolean | Určuje, zda by měla předat Tento kontrolní výraz, pokud levý operand je rovna pravého operandu. |
 | InputParameter | AssertIfRightOperandIsNotPresent | Boolean | Určuje, zda by měla předat Tento kontrolní výraz, pokud chybí pravého operandu. |
 | InputParameter | TreatAsEqualIfWithinMillseconds | int | Určuje počet milisekund, aby mezi těmito dvěma data a času vzít v úvahu dobu je rovno (například účet pro posun hodin). |
@@ -143,7 +143,7 @@ Zjistit, zda jeden data a času je později, dřívější nebo roven jinému. V
 | ---- | ----------------------- | --------- | ----- |
 | InputClaim | firstDateTime | Datum a čas | První datum a čas pro porovnání, ať už jde o dřívější nebo pozdější než druhý data a času. Hodnota Null, dojde k výjimce. |
 | InputClaim | secondDateTime | Datum a čas | Druhý datum a čas pro porovnání, ať už jde o dřívější nebo pozdější než první datum a čas. Aktuální datetTime je považován za hodnotu Null. |
-| InputParameter | – Operátor | řetězec | Jeden z následujících hodnot: stejné, novější než nebo dřívější. |
+| InputParameter | – Operátor | string | Jeden z následujících hodnot: stejné, novější než nebo dřívější. |
 | InputParameter | timeSpanInSeconds | int | Přidáte časový interval pro první datum a čas. |
 | outputClaim | výsledek | Boolean | Typ ClaimType, který je vytvořen po zavolání této ClaimsTransformation. |
 

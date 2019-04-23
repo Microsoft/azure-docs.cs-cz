@@ -12,11 +12,11 @@ ms.topic: article
 ms.date: 04/10/2019
 ms.author: juliako
 ms.openlocfilehash: d6e5142bec29f58671c553b7b32bb72202cae263
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59544173"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60322698"
 ---
 # <a name="azure-media-services-v3-frequently-asked-questions"></a>Nejčastější dotazy k Azure Media Services v3
 

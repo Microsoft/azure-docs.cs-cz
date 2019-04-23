@@ -18,11 +18,11 @@ ms.date: 10/25/2018
 ms.author: joflore
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 97d0be1dfd77035a3522ef8a6b3f4ac93ae20741
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58519285"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60353830"
 ---
 # <a name="enable-enterprise-state-roaming-in-azure-active-directory"></a>Povolení služby Enterprise State Roaming v Azure Active Directory
 Enterprise State Roaming je k dispozici pro všechny organizace s Azure AD Premium nebo Enterprise Mobility + Security (EMS) licence. Další informace o tom, jak získat předplatné Azure AD, najdete v článku [stránce produktu Azure AD](https://azure.microsoft.com/services/active-directory).

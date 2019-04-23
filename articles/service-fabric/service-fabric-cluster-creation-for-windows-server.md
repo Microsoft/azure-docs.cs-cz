@@ -15,11 +15,11 @@ ms.workload: NA
 ms.date: 2/21/2019
 ms.author: dekapur
 ms.openlocfilehash: 3e9e3afd5172783c6b5ed8e6342ce9927353d006
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58665113"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60386839"
 ---
 # <a name="create-a-standalone-cluster-running-on-windows-server"></a>Vytvoření samostatného clusteru běžící na Windows serveru
 Azure Service Fabric můžete použít k vytvoření clusterů Service Fabric na všechny virtuální počítače nebo počítače se systémem Windows Server. To znamená, že můžete nasadit a spouštět aplikace Service Fabric v jakémkoli prostředí, které obsahuje sadu propojených počítačů Windows serveru, už to jsou v místním prostředí nebo jakýkoli jiný poskytovatel cloudu. Service Fabric nabízí instalační balíček pro vytváření clusterů Service Fabric volá samostatného balíčku Windows serveru.

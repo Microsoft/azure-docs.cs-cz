@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 10/28/2018
 ms.author: rkarlin
 ms.openlocfilehash: f4558c6fdb1e5e4f0ffb7a4b4fdb1ab62eb4cfa9
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58121277"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60332943"
 ---
 # <a name="remediate-security-configurations-in-azure-security-center"></a>Opravit konfigurace zabezpečení v Azure Security Center
 Azure Security Center analyzuje denně operační systém (OS) virtuálních počítačů (VM) a počítačů pro konfiguraci, které by mohly znamenat virtuálních počítačů a počítačů, které jsou zranitelnější vůči útokům. Security Center doporučuje, abyste vyřešili ohrožení zabezpečení, když vaše konfigurace operačního systému se neshoduje s pravidla konfigurace doporučené zabezpečení a doporučuje změny konfigurace, které tyto nedostatky zabezpečení řeší.

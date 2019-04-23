@@ -19,11 +19,11 @@ ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: dad05221376fa5871aadf6d89dcb15dff55a6dfa
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59490709"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60300168"
 ---
 # <a name="microsoft-identity-platform-protocols"></a>Protokoly Microsoft identity platform
 
@@ -64,7 +64,7 @@ https://login.microsoftonline.com/{tenant}/oauth2/v2.0/token
 
 Kde `{tenant}` může trvat jednu ze čtyř různých hodnot:
 
-| Hodnota | Popis |
+| Value | Popis |
 | --- | --- |
 | `common` | Umožňuje uživatelům s osobní účty Microsoft a pracovních nebo školních účtů ze služby Azure AD pro přihlášení do aplikace. |
 | `organizations` | Umožňuje jenom uživatelům s pracovních nebo školních účtů ze služby Azure AD pro přihlášení do aplikace. |

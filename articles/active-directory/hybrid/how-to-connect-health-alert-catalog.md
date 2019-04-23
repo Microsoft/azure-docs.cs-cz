@@ -15,11 +15,11 @@ ms.date: 03/15/2018
 ms.author: zhiweiw
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: c64f9f835393c5ad2bf6022e4a274e8e2eeb1830
-ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58435929"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60349857"
 ---
 # <a name="azure-active-directory-connect-health-alert-catalog"></a>Azure Active Directory Connect Health katalog upozornění 
 

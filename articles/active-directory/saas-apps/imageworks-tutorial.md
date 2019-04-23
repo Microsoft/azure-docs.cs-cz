@@ -16,11 +16,11 @@ ms.date: 02/20/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 2cde9d4efd3d6eb5bc987a4bf7eb423447ceddc2
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59274327"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60273845"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-image-works"></a>Kurz: Integrace Azure Active Directory s IMAGE FUNGUJE
 

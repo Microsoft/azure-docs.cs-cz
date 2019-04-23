@@ -9,11 +9,11 @@ ms.date: 07/20/2018
 ms.author: tamram
 ms.custom: mvc
 ms.openlocfilehash: 1bd237d4b8ecd826caf4ba9a150f1dd50f0c5bb6
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51259985"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60392723"
 ---
 # <a name="monitor-and-troubleshoot-a-cloud-storage-application"></a>Monitorování a řešení potíží s aplikací cloudového úložiště
 
@@ -107,7 +107,7 @@ Po otevření protokolu můžete zobrazit události úložiště. Jak je vidět 
 
 Dalším nástrojem, který můžete použít k práci se svým účtem úložiště včetně kontejneru **$logs** a protokolů, které obsahuje, je [Průzkumník služby Storage](https://azure.microsoft.com/features/storage-explorer/).
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Ve čtvrté a poslední části série jste zjistili, jak monitorovat a řešit potíže se svým účtem úložiště, a naučili jste se například:
 

@@ -16,11 +16,11 @@ ms.date: 02/21/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 850f5e3f96439e1fea0a77b94f2ed733cc451bdf
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59267255"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60275874"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-heybuddy"></a>Kurz: Integrace Azure Active Directory s HeyBuddy
 
@@ -122,7 +122,7 @@ Ke konfiguraci Azure AD jednotné přihlašování s HeyBuddy, proveďte násled
 
 6. Kromě toho výše HeyBuddy aplikace očekává, že několik dalších atributů musí být předány zpět odpověď SAML. V **deklarace identity uživatelů** části na **atributy uživatele** dialogového okna, proveďte následující kroky pro přidání atributu tokenu SAML, jak je znázorněno v následující tabulka:
 
-    | Název |  Zdrojový atribut|
+    | Name |  Zdrojový atribut|
     | -------- | --------- |
     | Role  | user.assignedroles |
     | | |

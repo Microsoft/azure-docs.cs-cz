@@ -17,11 +17,11 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 8b1c0d33a7d920f76bcbea6d8d6babc7390003bc
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56196582"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60383583"
 ---
 # <a name="topologies-for-azure-ad-connect"></a>Topologie pro Azure AD Connect
 Tento článek popisuje různé místní a topologie služby Azure Active Directory (Azure AD), ve kterých pomocí synchronizace Azure AD Connect jako klíče integrační řešení. Tento článek popisuje podporované a nepodporované konfigurace.

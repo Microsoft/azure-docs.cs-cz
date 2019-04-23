@@ -16,11 +16,11 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: d2ba74961eb549afd2fcf7c10f2d8b981e389a2c
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57845084"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60381629"
 ---
 # <a name="troubleshooting-errors-during-synchronization"></a>Řešení chyb při synchronizaci
 Při synchronizaci dat identity z Windows Server Active Directory (AD DS) do Azure Active Directory (Azure AD), může dojít k chybám. Tento článek obsahuje přehled různých typů chyb synchronizace, některé z možných scénářů, které způsobují tyto chyby a potenciální způsoby, jak opravit chyby. Tento článek obsahuje běžné typy chyb a nemusí zahrnovat všechny možné chyby.

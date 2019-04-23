@@ -14,18 +14,20 @@ ms.tgt_pltfrm: .NET Core
 ms.workload: tbd
 ms.date: 02/24/2019
 ms.author: yegu
-ms.openlocfilehash: 3f15b6bf5ff3cc1949794ebc1ee2a5f62158cede
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: HT
+ms.openlocfilehash: b8937b22054e55c8bfe7bc4c7726dc5bae5de6d8
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59698618"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60203754"
 ---
 # <a name="quickstart-create-a-net-core-app-with-app-configuration"></a>Rychlý start: Vytvoření .NET Core aplikace s konfigurací aplikace
 
 Konfigurace aplikace pro Azure je služba spravované konfigurace v Azure. Můžete ho snadno ukládat a spravovat nastavení aplikace na jednom místě, který je oddělen od kódu. V tomto rychlém startu se dozvíte, jak tuto službu začlenit do aplikace konzoly .NET Core.
 
 Provést kroky v tomto rychlém startu můžete použít libovolný editor kódu. [Visual Studio Code](https://code.visualstudio.com/) skvělou možnost je k dispozici ve Windows, macOS a Linux platformy.
+
+![Běh aplikace rychlý start](./media/quickstarts/dotnet-core-app-run.png)
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -36,6 +38,14 @@ To provedete v tomto rychlém startu, nainstalujete [.NET Core SDK](https://dotn
 ## <a name="create-an-app-configuration-store"></a>Vytvoření úložiště konfigurace aplikace
 
 [!INCLUDE [azure-app-configuration-create](../../includes/azure-app-configuration-create.md)]
+
+6. Vyberte **klíč/hodnota Explorer** > **+ vytvořit** přidáte následující páry klíč hodnota:
+
+    | Klíč | Value |
+    |---|---|
+    | TestApp:Settings:Message | Data z konfigurace aplikace Azure |
+
+    Ponechte **popisek** a **typ obsahu** zatím prázdný.
 
 ## <a name="create-a-net-core-console-app"></a>Vytvoření konzolové aplikace .NET Core
 
@@ -57,7 +67,7 @@ Můžete použít [rozhraní příkazového řádku .NET Core (CLI)](https://doc
 
         dotnet restore
 
-3. Otevřít *Program.cs*a přidejte odkaz na poskytovatele konfigurace aplikace konfigurace .NET Core.
+3. Otevřít *Program.cs*a přidejte odkaz na poskytovatele konfigurace pro aplikace .NET Core.
 
     ```csharp
     using Microsoft.Extensions.Configuration;
@@ -99,8 +109,6 @@ Můžete použít [rozhraní příkazového řádku .NET Core (CLI)](https://doc
 
         dotnet run
 
-    ![Běh aplikace rychlý start](./media/quickstarts/dotnet-core-app-run.png)
-
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
 [!INCLUDE [azure-app-configuration-cleanup](../../includes/azure-app-configuration-cleanup.md)]
@@ -110,4 +118,4 @@ Můžete použít [rozhraní příkazového řádku .NET Core (CLI)](https://doc
 V tomto rychlém startu jste vytvořili novým úložištěm konfigurace aplikace a použít s konzolovou aplikaci .NET Core prostřednictvím [poskytovatele konfigurace aplikace](https://go.microsoft.com/fwlink/?linkid=2074664). Další informace o tom, jak používat konfiguraci aplikací, pokračujte k dalšímu kurzu, který ukazuje ověření.
 
 > [!div class="nextstepaction"]
-> [Spravované identity pro integraci prostředků Azure](./howto-integrate-azure-managed-service-identity.md)
+> [Integrace spravovaných identit](./howto-integrate-azure-managed-service-identity.md)

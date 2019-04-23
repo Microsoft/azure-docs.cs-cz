@@ -12,11 +12,11 @@ ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: twooley
 ms.openlocfilehash: be8d4172476ca0613e80e62739b9ab36f8ab4c3b
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58881150"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60197741"
 ---
 # <a name="service-to-service-authentication-with-azure-data-lake-storage-gen1-using-net-sdk"></a>Ověřování služba služba s Azure Data Lake Storage Gen1 pomocí sady .NET SDK
 > [!div class="op_single_selector"]
@@ -41,11 +41,11 @@ V tomto článku se dozvíte o tom, jak pomocí sady .NET SDK provádět ověřo
 2. V nabídce **Soubor** klikněte na položku **Nový** a potom klikněte na položku **Projekt**.
 3. V části **Nový projekt** zadejte nebo vyberte tyto hodnoty:
 
-   | Vlastnost | Hodnota |
+   | Vlastnost | Value |
    | --- | --- |
-   | Kategorie |Šablony/Visual C#/Windows |
+   | Category |Šablony/Visual C#/Windows |
    | Šablona |Konzolová aplikace |
-   | Název |VytvořeníAplikaceADL |
+   | Name |VytvořeníAplikaceADL |
 4. Projekt vytvoříte kliknutím na **OK**.
 
 5. Přidejte do projektu balíčky NuGet.

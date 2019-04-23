@@ -9,11 +9,11 @@ ms.date: 12/06/2018
 ms.author: cherylmc
 ms.custom: seodec18
 ms.openlocfilehash: 2d7fb060896de8df266489451a11ba343760c747
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53079955"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60367468"
 ---
 # <a name="router-configuration-samples-to-set-up-and-manage-routing"></a>Ukázky konfigurace směrovače nastavit a spravovat směrování
 Tato stránka obsahuje rozhraní a směrování ukázky konfigurace pro Cisco IOS-XE a Juniper MX řady směrovače, při práci se službou ExpressRoute. Ty by měla být ukázky pouze pokyny a nesmí se používat je. Můžete pracovat s vaším dodavatelem přijít s odpovídající konfigurací pro vaši síť. 

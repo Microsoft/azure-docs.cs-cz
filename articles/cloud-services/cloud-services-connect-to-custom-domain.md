@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 07/18/2017
 ms.author: jeconnoc
 ms.openlocfilehash: 8bee2e2038ee39c777e1ca09994ad21872d2029a
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57530054"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60337336"
 ---
 # <a name="connecting-azure-cloud-services-roles-to-a-custom-ad-domain-controller-hosted-in-azure"></a>Připojení k řadiči domény AD hostované v Azure vlastní role Azure Cloud Services
 Nejprve nastavíme virtuální síť (VNet) v Azure. Potom přidáme Active Directory řadiče domény (hostované na virtuálním počítači Azure) do virtuální sítě. Dále jsme se přidat existující role cloudové služby na předem vytvořené virtuální síti a potom připojit k řadiči domény.

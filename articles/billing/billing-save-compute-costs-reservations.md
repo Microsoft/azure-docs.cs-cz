@@ -1,34 +1,24 @@
 ---
 title: Co jsou rezervace Azure? | Dokumenty Microsoft
 description: Přečtěte si o Azure rezervace a ceny a Ušetřete na virtuálních počítačů, databází SQL, Azure Cosmos DB a další náklady na prostředky.
-services: billing
 author: yashesvi
 manager: yashar
 ms.service: billing
 ms.topic: conceptual
-ms.date: 03/22/2019
+ms.date: 04/13/2019
 ms.author: banders
-ms.openlocfilehash: 1349a05e1dd235c7b375335ae2c9fed16170a61f
-ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
+ms.openlocfilehash: b20983c45cd62b9812cdb52de32a6e29da459efe
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58649386"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60370794"
 ---
 # <a name="what-are-azure-reservations"></a>Co jsou rezervace Azure?
 
 Azure rezervací můžete ušetřit platíte předem za jeden rok nebo tři roky virtuálních počítačů, SQL Database výpočetní kapacitu, propustnost služby Azure Cosmos DB nebo další prostředky Azure. Platíte předem, můžete získat slevu na prostředky, které používáte. Rezervace může výrazně snížit virtuálního počítače SQL database výpočetní služby Azure Cosmos DB, nebo jiný prostředek stojí až 72 % oproti průběžným platbám. Rezervace poskytovat fakturační slevy a neovlivní jejich běhový stav vašich prostředků.
 
-Můžete si koupit rezervaci [webu Azure portal](https://aka.ms/reservations). Další informace najdete v následujících článcích:
-
-Plány služby:
-- [Virtuální počítače se službou Azure Reserved VM Instances](../virtual-machines/windows/prepay-reserved-vm-instances.md)
-- [Rezervované kapacity prostředků Azure Cosmos DB pomocí služby Azure Cosmos DB](../cosmos-db/cosmos-db-reserved-capacity.md)
-- [Rezervované kapacity výpočetních prostředků SQL Database s využitím Azure SQL Database](../sql-database/sql-database-reserved-capacity.md)
-
-Softwarové plány:
-- [Plány softwaru Red Hat z Azure rezervací](../virtual-machines/linux/prepay-rhel-software-charges.md)
-- [Plány softwaru SUSE z Azure rezervací](../virtual-machines/linux/prepay-suse-software-charges.md)
+Můžete si koupit rezervaci [webu Azure portal](https://aka.ms/reservations).
 
 ## <a name="why-buy-a-reservation"></a>Proč si koupit rezervaci?
 
@@ -41,7 +31,6 @@ Plány služby:
 - Rezervovaná Instance virtuálního počítače: Rezervace pokrývá jenom náklady na výpočetní výkon virtuálního počítače. Nezahrnuje další poplatky za software, sítě nebo úložiště.
 - Azure Cosmos DB rezervované kapacity: Rezervace se věnuje zajištěné propustnosti pro vaše prostředky. Nezahrnuje úložiště a sítě poplatky.
 - Databáze SQL vyhrazený vCore: Výpočetní náklady jsou součástí rezervaci. Licence se fakturuje samostatně.
-- Azure Cosmos DB rezervované kapacity: Rezervace pokrývá zajištěné propustnosti pro vaše prostředky, nezahrnuje poplatky za úložiště a sítě.
 
 Pro virtuální počítače Windows a SQL Database, může zahrnovat náklady na licencování s [zvýhodněné hybridní využití Azure](https://azure.microsoft.com/pricing/hybrid-benefit/).
 
@@ -53,28 +42,46 @@ Zákazníkům se smlouvou EA může omezit nákupy správcům EA zakázáním **
 
 Sleva za rezervaci se vztahuje pouze na prostředky spojené s typy předplatného Enterprise, s průběžnými platbami nebo poskytovatel CSP.
 
+## <a name="reservation-scope"></a>Obor rezervace
+
+Obor rezervace určuje prostředky, u kterých bude použito sleva za rezervaci. Obor rezervace může mít následující hodnoty:
+
+**Sdílený obor** – sleva za rezervaci se využije na odpovídající prostředky v rámci oprávněných předplatných v rámci kontextu fakturace.
+
+- Pro zákazníky se smlouvou Enterprise je kontext fakturace registraci.
+ Pro zákazníky s průběžnými platbami fakturace obor je všechny oprávněné předplatné vytvořili správce účtu.
+
+**Jedno předplatné** – sleva za rezervaci se využije na odpovídající prostředky ve vybraném předplatném.
+
+Je možné [aktualizovat rozsah po nákupu rezervace](billing-manage-reserved-vm-instance.md#change-the-reservation-scope).
+
+## <a name="discounted-subscription-and-offer-types"></a>Zlevněné typy předplatného a nabídky
+
+Slevy rezervace platí pro následující oprávněné předplatné a nabízí typy.
+
+- Smlouvy Enterprise (nabízejí čísla: MS-AZR-0017P nebo MS-AZR - 0148 P)
+- Průběžné platby (nabízejí čísla: MS-AZR-0003P nebo MS-AZR - 0023 P)
+- Předplatná CSP
+
+Prostředky, které běží v rámci předplatného s jinými typy nabídky nepřijímají sleva za rezervaci.
+
 ## <a name="how-is-a-reservation-billed"></a>Jak se účtuje rezervace?
 
 Rezervace jsou zpoplatněné nad rámec platby vázané na předplatné. Pokud máte předplatné Enterprise, náklady na rezervaci se odečte od váš zůstatek peněžního závazku. Pokud váš zůstatek peněžního závazku využívání služeb nezahrnuje náklady na rezervaci, bude se vám účtovat Nadlimitní využití. Pokud máte předplatné s průběžnými platbami, platební karty, kterou máte v účtu je účtována okamžitě. Bude se vám účtovat na faktuře uvidíte poplatky na další faktuře.
 
 ## <a name="how-reservation-discount-is-applied"></a>Jak se uplatňuje sleva ve výši rezervace
 
-Sleva za rezervaci se vztahuje na využití prostředků, která odpovídá atributy, které jste vybrali při nákupu rezervace. Atributy zahrnout rozsahu, kde spustit odpovídající virtuální počítače, databáze SQL, Azure Cosmos DB nebo jiné prostředky. Například pokud chcete sleva za rezervaci pro čtyři virtuální počítače Standard D2 v oblasti západní USA, vyberte předplatné, ve kterém běží virtuální počítače. Pokud jsou virtuální počítače spuštěné v různých předplatných v rámci vaší registrace účtu, vyberte obor jako sdílené. Sdílený obor umožňuje sleva za rezervaci použít napříč předplatnými. Rozsah můžete změnit po nákupu rezervace. Další informace najdete v tématu [spravovat Azure rezervace](billing-manage-reserved-vm-instance.md).
+Sleva za rezervaci se vztahuje na využití prostředků odpovídající atributy, které jste vybrali při nákupu rezervace. Atributy zahrnout rozsahu, kde spustit odpovídající virtuální počítače, databáze SQL, Azure Cosmos DB nebo jiné prostředky. Například pokud chcete sleva za rezervaci čtyři virtuální počítače Standard D2 v oblasti západní USA, vyberte předplatné, ve kterém běží virtuální počítače.
+
+Sleva za rezervaci se "*použití – it nebo ztratit – it*". Pokud nemáte k dispozici odpovídající prostředky pro hodinu, potom můžete přijít o množství rezervací pro určitou hodinu. Nelze provést vpřed nevyužité vyhrazené hodin.
+
+Při vypínání prostředek sleva za rezervaci automaticky použije další odpovídající prostředek v zadaném oboru. Pokud systém nenašel žádné odpovídající prostředky v zadaném oboru, pak jsou vyhrazené hodin *ztráty*.
+
+Například může být později vytvořte prostředek a mít odpovídající rezervaci, která je historického. V tomto příkladu sleva za rezervaci automaticky použije nový odpovídající prostředek.
+
+Pokud jsou virtuální počítače spuštěné v různých předplatných v rámci vaší registrace účtu, vyberte obor jako sdílené. Sdílený obor umožňuje sleva za rezervaci použít napříč předplatnými. Rozsah můžete změnit po nákupu rezervace. Další informace najdete v tématu [spravovat Azure rezervace](billing-manage-reserved-vm-instance.md).
 
 Sleva za rezervaci se vztahuje pouze na prostředky spojené s typy předplatného Enterprise, s průběžnými platbami nebo poskytovatel CSP. Prostředky, které běží v rámci předplatného s jinými typy nabídky nepřijímají sleva za rezervaci.
-
-Abyste lépe pochopili, jak ovlivňuje rezervace fakturace, najdete v následujících článcích:
-
-Plány služby:
-
-- [Vysvětlení, že slevách na využití platformy Azure Reserved VM Instances](billing-understand-vm-reservation-charges.md)
-- [Vysvětlení sleva za rezervaci Azure](billing-understand-vm-reservation-charges.md)
-- [Vysvětlení sleva za rezervaci služby Azure Cosmos DB](billing-understand-cosmosdb-reservation-charges.md)
-
-Softwarové plány:
-
-- [Vysvětlení sleva za rezervaci Azure a použití pro Red Hat](billing-understand-rhel-reservation-charges.md)
-- [Vysvětlení sleva za rezervaci Azure a použití pro SUSE](billing-understand-suse-reservation-charges.md)
 
 ## <a name="when-the-reservation-term-expires"></a>Vypršení platnosti období rezervace
 
@@ -96,10 +103,16 @@ Pokud máte otázky nebo potřebujete pomoc, [vytvořit žádost o podporu](http
 
 ## <a name="next-steps"></a>Další postup
 
-- Zahájení ukládání na virtuálních počítačích po zakoupení [rezervované Instance virtuálního počítače](../virtual-machines/windows/prepay-reserved-vm-instances.md), [SQL Database rezervované kapacity](../sql-database/sql-database-reserved-capacity.md), nebo [služby Azure Cosmos DB rezervované kapacity](../cosmos-db/cosmos-db-reserved-capacity.md).
 - Další informace o rezervacích Azure najdete v následujících článcích:
     - [Správa rezervací Azure](billing-manage-reserved-vm-instance.md)
     - [Vysvětlení využití rezervace pro vaše předplatné s průběžnými platbami](billing-understand-reserved-instance-usage.md)
     - [Vysvětlení využití rezervaci u prováděcí smlouvy Enterprise](billing-understand-reserved-instance-usage-ea.md)
     - [Náklady na software Windows, které nejsou součástí rezervace](billing-reserved-instance-windows-software-costs.md)
-    - [Rezervace Azure v programu Partnerské centrum Cloud Solution Provider (CSP)](https://docs.microsoft.com/partner-center/azure-reservations)
+    - [Rezervace Azure v programu Partnerské centrum Cloud Solution Provider (CSP)](/partner-center/azure-reservations)
+
+- Další informace o rezervacích pro plány služby:
+    - [Virtuální počítače se službou Azure Reserved VM Instances](../virtual-machines/windows/prepay-reserved-vm-instances.md)
+    - [Rezervované kapacity prostředků Azure Cosmos DB pomocí služby Azure Cosmos DB](../cosmos-db/cosmos-db-reserved-capacity.md)
+    - [Rezervované kapacity výpočetních prostředků SQL Database s využitím Azure SQL Database](../sql-database/sql-database-reserved-capacity.md) Další informace o rezervacích pro softwarové plány:
+    - [Plány softwaru Red Hat z Azure rezervací](../virtual-machines/linux/prepay-rhel-software-charges.md)
+    - [Plány softwaru SUSE z Azure rezervací](../virtual-machines/linux/prepay-suse-software-charges.md)

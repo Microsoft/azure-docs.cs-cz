@@ -16,11 +16,11 @@ ms.topic: tutorial
 ms.date: 03/28/2019
 ms.author: jeedes
 ms.openlocfilehash: 98ab9904f8afc5c74d9f043b0964bc56b49670cc
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59269771"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60335863"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-policystat"></a>Kurz: Integrace Azure Active Directory s PolicyStat
 
@@ -124,7 +124,7 @@ Ke konfiguraci Azure AD jednotné přihlašování s PolicyStat, proveďte násl
 
 6. Kromě toho výše PolicyStat aplikace očekává, že několik dalších atributů musí být předány zpět odpověď SAML. V **deklarace identity uživatelů** části na **atributy uživatele** dialogového okna, proveďte následující kroky pro přidání atributu tokenu SAML, jak je znázorněno v následující tabulka:
 
-    | Název | Zdrojový atribut |
+    | Name | Zdrojový atribut |
     |------------------- | -------------------- |
     | uid | ExtractMailPrefix([mail]) |
 

@@ -9,12 +9,12 @@ ms.service: service-bus-messaging
 ms.topic: article
 ms.date: 01/23/2019
 ms.author: aschhab
-ms.openlocfilehash: 9446bbd4783aaf20f1bc9079ec43f7050274bf11
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: a0581ef43e8a3c02126612a21122db559a941370
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55095610"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60311160"
 ---
 # <a name="azure-service-bus-geo-disaster-recovery"></a>Azure Service Bus Geo-zotavení po havárii
 
@@ -129,7 +129,7 @@ Mějte na paměti následující aspekty brát v úvahu v této vydané verzi:
 SKU služby Service Bus úrovně Premium podporuje také [zóny dostupnosti](../availability-zones/az-overview.md), poskytuje umístění s izolací chyb v rámci oblasti Azure.
 
 > [!NOTE]
-> Podpora zóny dostupnosti Azure Service Bus úrovně Premium je k dispozici pouze [oblastí Azure](../availability-zones/az-overview.md#regions-that-support-availability-zones) kde zóny dostupnosti jsou k dispozici.
+> Podpora zóny dostupnosti Azure Service Bus úrovně Premium je k dispozici pouze [oblastí Azure](../availability-zones/az-overview.md#services-support-by-region) kde zóny dostupnosti jsou k dispozici.
 
 Zóny dostupnosti můžete povolit na pouze nové obory názvů pomocí webu Azure portal. Service Bus nepodporuje migraci z existující oborů názvů. Po povolení na váš obor názvů nejde zakázat redundanci zón.
 

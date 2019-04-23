@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 5068692d5f12b5b6c8b0476a789123ef9fd1dc75
-ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
+ms.openlocfilehash: 2d862d07a65c3fb28b49a82692ea575f787b9750
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55508806"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60313847"
 ---
 # <a name="claimsproviders"></a>ClaimsProviders
 
@@ -55,7 +55,7 @@ Zprostředkovatel deklarací identity obsahuje sadu [technické profily](technic
 | Zobrazovaný název | 0:1 | Řetězec, který obsahuje název, který může být zobrazen uživatelům. |
 | [TechnicalProfiles](technicalprofiles.md) | 0:1 | Sada technické profily, které podporuje zprostředkovatel deklarací identity |
 
-**ClaimsProvider** slouží k uspořádání vašich technické profily se týkají zprostředkovatele deklarací identity. Následující příklad ukazuje zprostředkovatele deklarací identity Azure Active Directory s Azure Active Directory technické profily:
+**ClaimsProvider** slouží k uspořádání vztah technické profily k zprostředkovatele deklarací identity. Následující příklad ukazuje zprostředkovatele deklarací identity Azure Active Directory s Azure Active Directory technické profily:
 
 ```XML
 <ClaimsProvider>

@@ -7,11 +7,11 @@ ms.topic: tutorial
 ms.date: 03/01/2019
 ms.author: zhshang
 ms.openlocfilehash: 28fb3295ef02d508ef04299398a61ea59828df35
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59278821"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60254022"
 ---
 # <a name="tutorial-azure-signalr-service-authentication-with-azure-functions"></a>Kurz: Azure SignalR služby ověřování s využitím Azure Functions
 
@@ -57,7 +57,7 @@ Místně sestavíte a otestujete aplikaci Azure Functions. Tato aplikace bude m�
     |---|---|
     | Název prostředku | Jedinečný název instance služby SignalR |
     | Skupina prostředků | Vytvořit novou skupinu prostředků s jedinečným názvem |
-    | Umístění | Vyberte umístění, které je blízko vás. |
+    | Location | Vyberte umístění, které je blízko vás. |
     | Cenová úroveň | Free |
 
 1. Klikněte na možnost **Vytvořit**.
@@ -149,7 +149,7 @@ Při prvním otevření chatovací aplikace v prohlížeči se vyžadují platn�
     |---|---|
     | Složka aplikace funkcí | Vyberte hlavní složku projektu. |
     | Šablona | Trigger HTTP |
-    | Název | Vyjednávání |
+    | Name | Vyjednávání |
     | Úroveň autorizace | Anonymní |
 
     Složka s názvem **vyjednávání** se vytvoří, která obsahuje novou funkci.
@@ -315,12 +315,12 @@ Aplikaci funkcí spuštěnou v Azure vyžaduje účet služby Azure Storage. Tak
 
 1. Zadejte následující informace.
 
-    | Název | Hodnota |
+    | Název | Value |
     |---|---|
     | Předplatné | Vyberte předplatné obsahující instance služby SignalR |
     | Skupina prostředků | Vyberte stejnou skupinu prostředků. |
     | Název prostředku | Jedinečný název pro účet úložiště |
-    | Umístění | Vybrat stejné umístění jako ostatní prostředky |
+    | Location | Vybrat stejné umístění jako ostatní prostředky |
     | Výkon | Standard |
     | Account kind (Druh účtu) | StorageV2 (obecné účely V2) |
     | Replikace | Místně redundantní úložiště (LRS) |
@@ -449,7 +449,7 @@ K hostování webové aplikace využijeme funkci statického webu ve službě Az
 
 1. Zadejte následující hodnoty:
 
-    | Název | Hodnota |
+    | Name | Value |
     |---|---|
     | Předplatné | Vyberte své předplatné. |
     | Účet úložiště | Vyberte účet úložiště, který jste vytvořili dříve |

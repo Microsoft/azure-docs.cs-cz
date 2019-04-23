@@ -15,12 +15,12 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 03/11/2019
 ms.author: jowargo
-ms.openlocfilehash: 60dbef0f0d6532c9cd30c59902236b7ae4e70b0e
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
-ms.translationtype: MT
+ms.openlocfilehash: 642e586371a0ce6abe362f8b10b54bfd8baff678
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59524187"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59998919"
 ---
 # <a name="push-notifications-with-azure-notification-hubs-frequently-asked-questions"></a>Nabízená oznámení pomocí Azure Notification Hubs: Nejčastější dotazy
 
@@ -53,17 +53,6 @@ Pro úrovně Basic a Standard centra oznámení správně nakonfigurovaných apl
 
 > [!NOTE]
 > Protože nabízená oznámení závisí na systémy oznámení platforem třetích stran (například Apple APNS a Google FCM), není zaručeno smlouvu SLA pro doručování tyto zprávy. Po Notification Hubs odešle dávek systémy oznámení platforem (zaručené smlouvy SLA), je odpovědností systémů oznámení platforem k doručování nabízených oznámení (žádná smlouva SLA zaručeno, že).
-
-### <a name="which-customers-are-using-notification-hubs"></a>Které zákazníci používají Notification Hubs?
-
-Mnozí uživatelé používají Notification Hubs. Tady jsou uvedené některé důležité položky:
-
-* Sochi 2014: Stovky zájmových skupin, 3 + miliony zařízení a 150 + milionů oznámení odeslaných za dva týdny. [Případová studie: Sochi]
-* Skanska: [Případová studie: Skanska]
-* Seattle časy: [Případová studie: Časy Praha]
-* Mural.ly: [Případová studie: Mural.ly]
-* 7Digital: [Případová studie: 7Digital]
-* Aplikace pro Bing: Desítky milionů zařízení odesílat oznámení 3 miliony za den.
 
 ### <a name="how-do-i-upgrade-or-downgrade-my-hub-or-namespace-to-a-different-tier"></a>Jak můžu upgradovat nebo downgradovat Moje centrum nebo oboru názvů do jiné úrovně?
 
@@ -219,11 +208,6 @@ Můžete také programově přístup k metrikám. Další informace najdete v n�
 [Azure Portal]: https://portal.azure.com
 [Ceník Notification Hubs]: https://azure.microsoft.com/pricing/details/notification-hubs/
 [Notification Hubs SLA]: https://azure.microsoft.com/support/legal/sla/
-[Případová studie: Sochi]: https://customers.microsoft.com/Pages/CustomerStory.aspx?recid=7942
-[Případová studie: Skanska]: https://customers.microsoft.com/Pages/CustomerStory.aspx?recid=5847
-[Případová studie: Časy Praha]: https://customers.microsoft.com/Pages/CustomerStory.aspx?recid=8354
-[Případová studie: Mural.ly]: https://customers.microsoft.com/Pages/CustomerStory.aspx?recid=11592
-[Případová studie: 7Digital]: https://customers.microsoft.com/Pages/CustomerStory.aspx?recid=3684
 [Rozhraní REST API Notification Hubs]: https://msdn.microsoft.com/library/azure/dn530746.aspx
 [Kurzy Začínáme centra oznámení]: https://azure.microsoft.com/documentation/articles/notification-hubs-ios-get-started/
 [Kurz k aplikacím pro Chrome]: https://azure.microsoft.com/documentation/articles/notification-hubs-chrome-get-started/

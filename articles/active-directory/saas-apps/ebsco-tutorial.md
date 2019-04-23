@@ -16,11 +16,11 @@ ms.topic: tutorial
 ms.date: 04/01/2019
 ms.author: jeedes
 ms.openlocfilehash: 2753daf225016d3bd8e07383193a1260b40a36d5
-ms.sourcegitcommit: b8a8d29fdf199158d96736fbbb0c3773502a092d
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/15/2019
-ms.locfileid: "59564971"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60280180"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-ebsco"></a>Kurz: Integrace Azure Active Directory s EBSCO
 
@@ -133,7 +133,7 @@ Ke konfiguraci Azure AD jednotné přihlašování s EBSCO, proveďte následuj�
 
 7. Kromě toho výše EBSCO aplikace očekává, že několik dalších atributů musí být předány zpět odpověď SAML. V **deklarace identity uživatelů** části na **atributy uživatele** dialogového okna, proveďte následující kroky pro přidání atributu tokenu SAML, jak je znázorněno v následující tabulka: 
 
-    | Název | Zdrojový atribut|
+    | Name | Zdrojový atribut|
     | ---------------| --------------- |    
     | FirstName   | user.givenname |
     | LastName   | user.surname |

@@ -9,11 +9,11 @@ ms.date: 04/03/2017
 ms.author: snmuvva
 ms.subservice: alerts
 ms.openlocfilehash: 264f3eb042a3c29523ed93df93dfa6d45c00ae87
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54465662"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60345770"
 ---
 # <a name="have-a-classic-metric-alert-notify-a-non-azure-system-using-a-webhook"></a>Mít klasických upozornění na metriku oznámení do systému mimo Azure, pomocí webhooku
 Použití webhooků pro směrování Azure oznámení s dalšími systémy pro následné zpracování nebo vlastní akce. Webhooku v upozornění můžete směrovat do služby, které posílat SMS zprávy do protokolu chyb, které chcete upozornit tým prostřednictvím chatu nebo zasílání zpráv služby, nebo pro různé další akce. 

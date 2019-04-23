@@ -9,11 +9,11 @@ ms.author: tarcher
 ms.topic: tutorial
 ms.date: 12/17/2018
 ms.openlocfilehash: 025a8182d32a7d0d00a48795c848d356eb1c3d4e
-ms.sourcegitcommit: d89b679d20ad45d224fd7d010496c52345f10c96
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57792442"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60396788"
 ---
 # <a name="create-change-or-delete-an-azure-route-table-using-ansible"></a>Vytvoření, změna nebo odstranění Azure směrovací tabulky pomocí Ansible
 Azure automaticky směruje provoz mezi Azure podsítěmi virtuálních sítí a místní sítí. Pokud chcete změnit výchozí směrování v Azure, můžete udělat tak, že vytvoříte [směrovací tabulka](https://docs.microsoft.com/azure/virtual-network/virtual-networks-udr-overview).

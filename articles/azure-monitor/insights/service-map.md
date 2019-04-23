@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/28/2018
 ms.author: magoedte
-ms.openlocfilehash: 2abec4d9d74cf58503dec667080f478b1fec06ff
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.openlocfilehash: 0c654070e2bbeb8ee5dbc64fe9b4f58ee97f2e47
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58485148"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60404192"
 ---
 # <a name="using-service-map-solution-in-azure"></a>Pomocí řešení Service Map v Azure
 Service Map automaticky rozpozná komponenty aplikace v systémech Windows a Linux a mapuje komunikaci mezi službami. Služba Service Map poskytuje zobrazení vašich serverů tak, jak si je představujete – jako vzájemně propojené systémy, které zajišťují důležité služby. Service Map zobrazuje propojení mezi servery, procesy, latenci příchozích a odchozích připojení a porty napříč libovolnou architekturou propojenou protokolem TCP. Nevyžaduje se přitom žádná konfigurace kromě instalace agenta.
@@ -299,22 +299,22 @@ Pokud chcete spravovat náklady a složitost, záznamy o připojení nepředstav
 
 | Vlastnost | Popis |
 |:--|:--|
-|Směr |Směr připojení, je hodnota *příchozí* nebo *odchozí* |
-|Počítač |Plně kvalifikovaný název domény počítače |
-|Proces |Identita procesu nebo skupin procesů, inicializace a přijímá připojení |
-|SourceIp |IP adresa zdroje |
-|DestinationIp |Cílové IP adresy |
-|DestinationPort |Číslo portu cíle |
-|Protocol (Protokol) |Protokol použitý pro připojení.  Hodnoty *tcp*. |
+| `Direction` |Směr připojení, je hodnota *příchozí* nebo *odchozí* |
+| `Machine` |Plně kvalifikovaný název domény počítače |
+| `Process` |Identita procesu nebo skupin procesů, inicializace a přijímá připojení |
+| `SourceIp` |IP adresa zdroje |
+| `DestinationIp` |Cílové IP adresy |
+| `DestinationPort` |Číslo portu cíle |
+| `Protocol` |Protokol použitý pro připojení.  Hodnoty *tcp*. |
 
 Aby se zohlednily dopadu seskupení, informace o počtu seskupených fyzických připojení najdete v následující vlastnosti záznamu:
 
 | Vlastnost | Popis |
 |:--|:--|
-|LinksEstablished |Počet fyzických síťových připojení, které se vytvořily časovém období vytváření sestav |
-|LinksTerminated |Počet fyzických síťových připojení, která byla ukončena časovém období vytváření sestav |
-|LinksFailed |Počet fyzických síťových připojení, které selhaly časovém období vytváření sestav. Tyto informace jsou aktuálně k dispozici pouze pro odchozí připojení. |
-|LinksLive |Počet fyzických síťových připojení, které se otevřelo na konci generování sestav časový interval|
+| `LinksEstablished` |Počet fyzických síťových připojení, které se vytvořily časovém období vytváření sestav |
+| `LinksTerminated` |Počet fyzických síťových připojení, která byla ukončena časovém období vytváření sestav |
+| `LinksFailed` |Počet fyzických síťových připojení, které selhaly časovém období vytváření sestav. Tyto informace jsou aktuálně k dispozici pouze pro odchozí připojení. |
+| `LinksLive` |Počet fyzických síťových připojení, které se otevřelo na konci generování sestav časový interval|
 
 #### <a name="metrics"></a>Metriky
 
@@ -322,12 +322,12 @@ Kromě metrik počet připojení informace o objemu dat odeslaných a přijatýc
 
 | Vlastnost | Popis |
 |:--|:--|
-|BytesSent |Celkový počet bajtů, které byly odeslány časovém období vytváření sestav |
-|BytesReceived |Celkový počet bajtů, které byly přijaty časovém období vytváření sestav |
-|Odezvy |Počet odpovědí zjištěnými časovém období vytváření sestav. 
-|ResponseTimeMax |Maximální doba odezvy (milisekundy) zjištěnými časovém období vytváření sestav.  Pokud žádná hodnota vlastnosti je prázdná.|
-|ResponseTimeMin |Minimální doba odezvy (milisekundy) zjištěnými časovém období vytváření sestav.  Pokud žádná hodnota vlastnosti je prázdná.|
-|ResponseTimeSum |Součet všech doby odezvy (milisekundy) zjištěnými časovém období vytváření sestav.  Pokud žádná hodnota, vlastnost je prázdné|
+| `BytesSent` |Celkový počet bajtů, které byly odeslány časovém období vytváření sestav |
+| `BytesReceived` |Celkový počet bajtů, které byly přijaty časovém období vytváření sestav |
+| `Responses` |Počet odpovědí zjištěnými časovém období vytváření sestav. 
+| `ResponseTimeMax` |Maximální doba odezvy (milisekundy) zjištěnými časovém období vytváření sestav.  Pokud žádná hodnota vlastnosti je prázdná.|
+| `ResponseTimeMin` |Minimální doba odezvy (milisekundy) zjištěnými časovém období vytváření sestav.  Pokud žádná hodnota vlastnosti je prázdná.|
+| `ResponseTimeSum` |Součet všech doby odezvy (milisekundy) zjištěnými časovém období vytváření sestav.  Pokud žádná hodnota, vlastnost je prázdné|
 
 Doba odezvy je třetí typ dat ohlašovaný – jak dlouho volající věnovat časový limit na žádosti zaslané prostřednictvím připojení ke zpracování a reagovalo oddělení vzdálený koncový bod. Doba odezvy hlášené je odhad doby odezvy true na základním protokolu aplikace. To je vypočítán s použitím heuristické metody založené na sledování tok dat mezi zdrojovou a cílovou konec připojení k fyzické síti. Koncepčně je rozdíl mezi časem poslední bajt požadavku opouští odesílatele a čas při přijetí posledního bajtu odpovědi k němu. Tyto dva časové razítko se používají od sebe odděluje událostí žádostí a odpovědí na jedno fyzické připojení. Rozdíl mezi nimi představuje doba odezvy jedné žádosti. 
 
@@ -348,26 +348,26 @@ Pro usnadnění práce IP adresu ke konci vzdáleného připojení je součást�
 
 | Vlastnost | Popis |
 |:--|:--|
-|RemoteCountry |Název země hostování RemoteIp.  Například *USA* |
-|RemoteLatitude |Zeměpisná poloha, zeměpisná šířka.  Například *47.68* |
-|RemoteLongitude |Informace o zeměpisné poloze délky.  Například *-122.12* |
+| `RemoteCountry` |Název země hostování RemoteIp.  Například *USA* |
+| `RemoteLatitude` |Zeměpisná poloha, zeměpisná šířka.  Například *47.68* |
+| `RemoteLongitude` |Informace o zeměpisné poloze délky.  Například *-122.12* |
 
 #### <a name="malicious-ip"></a>Škodlivá IP adresa
 Každá vlastnost RemoteIp v *VMConnection* tabulky je porovnávána s sadu IP adres pomocí známých škodlivých aktivit. Pokud se zjistí, RemoteIp jako škodlivý naplní se následující vlastnosti (jsou prázdné, pokud IP adresa se považuje za škodlivou) v záznamu následující vlastnosti:
 
 | Vlastnost | Popis |
 |:--|:--|
-|MaliciousIp |Vzdálená adresa IP adres |
-|IndicatorThreadType |Indikátor hrozeb zjistila je jeden z následujících hodnot *Botnet*, *C2*, *CryptoMining*, *Darknet*, *před útoky DDos* , *MaliciousUrl*, *Malware*, *Phishing*, *Proxy*, *PUA*, *Seznamu ke zhlédnutí*.   |
-|Popis |Popis zjištěných hrozeb. |
-|TLPLevel |Úroveň protokolu semaforu (algoritmus TLP) je jedna z definovaných hodnot *prázdné*, *zelená*, *žlutou*, *Red*. |
-|Spolehlivost |Hodnoty jsou *0 – 100*. |
-|Severity |Hodnoty jsou *0 – 5*, kde *5* je nejzávažnější a *0* není natolik vůbec. Výchozí hodnota je *3*.  |
-|FirstReportedDateTime |První zprostředkovatel ohlásil indikátoru. |
-|LastReportedDateTime |Čas posledního ukazatele viděla Interflow. |
-|IsActive |Označuje deaktivují se s indikátory *True* nebo *False* hodnotu. |
-|ReportReferenceLink |Obsahuje odkazy na sestavy související se daný pozorovat. |
-|AdditionalInformation |Poskytuje další informace, pokud je k dispozici informace o zjištěných hrozeb. |
+| `MaliciousIp` |Vzdálená adresa IP adres |
+| `IndicatorThreadType` |Indikátor hrozeb zjistila je jeden z následujících hodnot *Botnet*, *C2*, *CryptoMining*, *Darknet*, *před útoky DDos* , *MaliciousUrl*, *Malware*, *Phishing*, *Proxy*, *PUA*, *Seznamu ke zhlédnutí*.   |
+| `Description` |Popis zjištěných hrozeb. |
+| `TLPLevel` |Úroveň protokolu semaforu (algoritmus TLP) je jedna z definovaných hodnot *prázdné*, *zelená*, *žlutou*, *Red*. |
+| `Confidence` |Hodnoty jsou *0 – 100*. |
+| `Severity` |Hodnoty jsou *0 – 5*, kde *5* je nejzávažnější a *0* není natolik vůbec. Výchozí hodnota je *3*.  |
+| `FirstReportedDateTime` |První zprostředkovatel ohlásil indikátoru. |
+| `LastReportedDateTime` |Čas posledního ukazatele viděla Interflow. |
+| `IsActive` |Označuje deaktivují se s indikátory *True* nebo *False* hodnotu. |
+| `ReportReferenceLink` |Obsahuje odkazy na sestavy související se daný pozorovat. |
+| `AdditionalInformation` |Poskytuje další informace, pokud je k dispozici informace o zjištěných hrozeb. |
 
 ### <a name="servicemapcomputercl-records"></a>ServiceMapComputer_CL records
 Záznamy typu *ServiceMapComputer_CL* mít data inventáře pro servery s agenty řešení Service Map. Tyto záznamy mají vlastnosti v následující tabulce:
@@ -399,7 +399,7 @@ Záznamy typu *ServiceMapProcess_CL* mít data inventáře pro procesy připojen
 
 | Vlastnost | Popis |
 |:--|:--|
-| `Type | *ServiceMapProcess_CL* |
+| `Type` | *ServiceMapProcess_CL* |
 | `SourceSystem` | *OpsManager* |
 | `ResourceId` | Jedinečný identifikátor procesu v rámci pracovního prostoru |
 | `ResourceName_s` | Jedinečný identifikátor procesu v počítači, na kterém je spuštěná|

@@ -11,11 +11,11 @@ ms.date: 04/17/2018
 ms.author: kevin
 ms.reviewer: igorstan
 ms.openlocfilehash: 6324eb11b334fd6a00e30d6f2fc6d1bec3f7a82c
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57870819"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60310014"
 ---
 # <a name="restore-an-azure-sql-data-warehouse-powershell"></a>Obnovení služby Azure SQL Data Warehouse (PowerShell)
 > [!div class="op_single_selector"]
@@ -28,7 +28,7 @@ ms.locfileid: "57870819"
 
 V tomto článku se dozvíte, jak obnovit službu Azure SQL Data Warehouse pomocí prostředí PowerShell.
 
-## <a name="before-you-begin"></a>Před zahájením
+## <a name="before-you-begin"></a>Než začnete
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 

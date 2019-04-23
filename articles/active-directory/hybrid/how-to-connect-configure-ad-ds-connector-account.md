@@ -11,12 +11,12 @@ ms.date: 01/14/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6510105af8c019b1aca5333f516a10667edaadb5
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 6911b19c680c2fdb8c372347c4dd0fca60bb0e0b
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58000869"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60245533"
 ---
 # <a name="azure-ad-connectconfigure-ad-ds-connector-account-permissions"></a>Azure AD Connect: Konfigurace oprávnění účtu AD DS konektoru 
 
@@ -69,13 +69,19 @@ Get-Command -Module AdSyncConfig
 
 Každá rutina má stejné parametry k zadání účtu AD DS konektoru a k přepnutí AdminSDHolder. K určení účtu AD DS konektor, můžete zadat název účtu a doménu nebo jenom účet rozlišující název (DN),
 
-například: 
+například:
 
-`Set-ADSyncPasswordHashSyncPermissions -ADConnectorAccountName ADaccount -ADConnectorAccountDomain Contoso`
+```powershell
+Set-ADSyncPasswordHashSyncPermissions -ADConnectorAccountName <ADAccountName> -ADConnectorAccountDomain <ADDomainName>
+```
 
-Nebo; 
+Nebo;
 
-`Set-ADSyncPasswordHashSyncPermissions -ADConnectorAccountDN 'CN=ADaccount,OU=AADconnect,DC=Contoso,DC=com'`
+```powershell
+Set-ADSyncPasswordHashSyncPermissions -ADConnectorAccountDN <ADAccountDN>
+```
+
+Nezapomeňte nahradit `<ADAccountName>`, `<ADDomainName>` a `<ADAccountDN>` nahraďte odpovídajícími hodnotami pro vaše prostředí.
 
 V případě, že nechcete měnit oprávnění ke kontejneru AdminSDHolder, použijte přepínač `-SkipAdminSdHolders`. 
 
@@ -130,7 +136,7 @@ Set-ADSyncBasicReadPermissions -ADConnectorAccountDN <String> [-ADobjectDN <Stri
 Tato rutina se nastavit následující oprávnění: 
  
 
-|Type |Název |Access |Platí pro| 
+|Type |Name |Access |Platí pro| 
 |-----|-----|-----|-----|
 |Povolit |Účet konektoru služby AD DS |Číst všechny vlastnosti |Objekty odvozené zařízení| 
 |Povolit |Účet konektoru služby AD DS|Číst všechny vlastnosti |Odvozené objekty InetOrgPerson| 
@@ -156,7 +162,7 @@ Set-ADSyncMsDsConsistencyGuidPermissions -ADConnectorAccountDN <String> [-ADobje
 
 Tato rutina se nastavit následující oprávnění: 
 
-|Type |Název |Access |Platí pro|
+|Type |Name |Access |Platí pro|
 |-----|-----|-----|-----| 
 |Povolit|Účet konektoru služby AD DS|Vlastnost pro čtení/zápis|Následné uživatelské objekty|
 
@@ -176,7 +182,7 @@ Set-ADSyncPasswordHashSyncPermissions -ADConnectorAccountDN <String> [<CommonPar
 
 Tato rutina se nastavit následující oprávnění: 
 
-|Type |Název |Access |Platí pro|
+|Type |Name |Access |Platí pro|
 |-----|-----|-----|-----| 
 |Povolit |Účet konektoru služby AD DS |Replikace změn adresáře |Pouze tento objekt (kořenové domény)| 
 |Povolit |Účet konektoru služby AD DS |Replikace změn adresáře vše |Pouze tento objekt (kořenové domény)| 
@@ -196,7 +202,7 @@ Set-ADSyncPasswordWritebackPermissions -ADConnectorAccountDN <String> [-ADobject
 ```
 Tato rutina se nastavit následující oprávnění: 
 
-|Type |Název |Access |Platí pro|
+|Type |Name |Access |Platí pro|
 |-----|-----|-----|-----| 
 |Povolit |Účet konektoru služby AD DS |Resetování hesla |Následné uživatelské objekty| 
 |Povolit |Účet konektoru služby AD DS |Zapsat vlastnost lockoutTime |Následné uživatelské objekty| 
@@ -216,7 +222,7 @@ Set-ADSyncUnifiedGroupWritebackPermissions -ADConnectorAccountDN <String> [-ADob
  
 Tato rutina se nastavit následující oprávnění: 
 
-|Type |Název |Access |Platí pro|
+|Type |Name |Access |Platí pro|
 |-----|-----|-----|-----| 
 |Povolit |Účet konektoru služby AD DS |Obecný čtení/zápisu |Všechny atributy skupiny typ objektu a podobjektů| 
 |Povolit |Účet konektoru služby AD DS |Vytvoření nebo odstranění podřízený objekt |Všechny atributy skupiny typ objektu a podobjektů| 
@@ -239,7 +245,7 @@ Set-ADSyncExchangeHybridPermissions -ADConnectorAccountDN <String> [-ADobjectDN 
 Tato rutina se nastavit následující oprávnění:  
  
 
-|Type |Název |Access |Platí pro|
+|Type |Name |Access |Platí pro|
 |-----|-----|-----|-----| 
 |Povolit |Účet konektoru služby AD DS |Čtení a zápis všech vlastností |Následné uživatelské objekty| 
 |Povolit |Účet konektoru služby AD DS |Čtení a zápis všech vlastností |Odvozené objekty InetOrgPerson| 
@@ -261,7 +267,7 @@ Set-ADSyncExchangeMailPublicFolderPermissions -ADConnectorAccountDN <String> [-A
 ```
 Tato rutina se nastavit následující oprávnění: 
 
-|Type |Název |Access |Platí pro|
+|Type |Name |Access |Platí pro|
 |-----|-----|-----|-----| 
 |Povolit |Účet konektoru služby AD DS |Číst všechny vlastnosti |Odvozené objekty PublicFolder| 
 
@@ -286,7 +292,7 @@ Set-ADSyncRestrictedPermissions -ADConnectorAccountDN'CN=ADConnectorAccount,CN=U
 
 Tato rutina se nastavit následující oprávnění: 
 
-|Type |Název |Access |Platí pro|
+|Type |Name |Access |Platí pro|
 |-----|-----|-----|-----| 
 |Povolit |SYSTÉM |Úplné řízení |Tento objekt 
 |Povolit |Enterprise Admins |Úplné řízení |Tento objekt 

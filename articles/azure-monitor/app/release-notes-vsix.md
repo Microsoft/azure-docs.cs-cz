@@ -14,11 +14,11 @@ ms.date: 03/20/2017
 ms.reviewer: aruna
 ms.author: mbullwin
 ms.openlocfilehash: 0befc5e00cf31960a0ecda3f739e65477c740edd
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54028229"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60373871"
 ---
 # <a name="release-notes-for-developer-analytics-tools"></a>Poznámky k verzi pro Developer Analytics Tools
 
@@ -124,7 +124,7 @@ ms.locfileid: "54028229"
 ### <a name="azure-application-insights-trends"></a>Trendy Azure Application Insights
 Azure Application Insights je nový nástroj v sadě Visual Studio, který můžete použít k analýze, jak funguje vaše aplikace v čase. Abyste mohli začít na **Application Insights** panelu nástrojů tlačítko nebo v okně hledání Application Insights zvolte **prozkoumat trendy Telemetrie**. Případně na **zobrazení** nabídky, klikněte na tlačítko **ostatní Windows**a potom klikněte na **trendy Application Insights**. Zvolte jeden z pěti běžných dotazů, abyste mohli začít. Můžete analyzovat různé datové sady založené na typy telemetrie, časových rozsahů a dalších vlastností. Pokud chcete vyhledat anomálie v datech, vyberte jednu z možností anomálií v **typ zobrazení** rozevíracího seznamu. Možnosti filtrování v dolní části okna usnadňují zdokonalování v konkrétních podmnožinách vaší telemetrie.
 
-![Trendy Application Insights](./media/release-notes-vsix/Trends.png)
+![Application Insights Trends](./media/release-notes-vsix/Trends.png)
 
 ### <a name="exceptions-in-codelens"></a>Výjimky v CodeLens
 Ve funkci CodeLens se teď zobrazuje telemetrie výjimek. Pokud váš projekt jste se připojili ke službě Application Insights, uvidíte počet výjimek, ke kterým došlo v každé metodě v produkčním prostředí za posledních 24 hodin. Z funkce CodeLens můžete přejít k vyhledávání nebo trendy výjimek podrobněji prozkoumat.
@@ -248,7 +248,7 @@ Přidali jsme nová karta s předdefinované dotazy pro všechna data souvisejí
 ### <a name="forward-and-back-history-in-search"></a>Vpřed a zpět v historii hledání
 Teď můžete přejít vpřed a zpět mezi výsledky hledání.
 
-![Zpět](./media/release-notes-vsix/GoBAck.png)
+![Přejít zpět](./media/release-notes-vsix/GoBAck.png)
 
 ## <a name="version-41"></a>Verze 4.1
 Tato verze přináší několik nových funkcí a aktualizací. Musíte mít nainstalovanou nainstalovat tuto verzi Update 1.

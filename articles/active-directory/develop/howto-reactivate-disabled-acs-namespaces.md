@@ -17,11 +17,11 @@ ms.reviewer: jlu
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 534c0463cd8aee9fccfa183586b946032dada722
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58094554"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60299695"
 ---
 # <a name="how-to-reactivate-disabled-access-control-service-namespaces"></a>Postup: Opětovná aktivace zakázaných oborů názvů služby Access Control Service
 
@@ -93,7 +93,7 @@ Další rozšíření se už být automaticky schvalovat. Pokud budete potřebov
 1. Připojte se k webu Azure portal a vytvoření [novou žádost o podporu](https://portal.azure.com/#create/Microsoft.Support).
 1. Vyplňte formulář nové žádosti o podporu, jak je znázorněno v následujícím příkladu.
 
-    | Pole žádosti o podporu | Hodnota |
+    | Pole žádosti o podporu | Value |
     |-----------------------|--------------------|
     | **Typ problému** | `Technical` |
     | **Předplatné** | Nastavte na předplatné |

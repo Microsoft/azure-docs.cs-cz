@@ -19,11 +19,11 @@ ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 021e13dafcc659337d4096a068e224312e69db1b
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56870937"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60353456"
 ---
 # <a name="manage-and-customize-active-directory-federation-services-by-using-azure-ad-connect"></a>Správa a přizpůsobení služby AD FS pomocí služby Azure AD Connect
 Tento článek popisuje, jak spravovat a upravovat Active Directory Federation Services (AD FS) pomocí služby Azure Active Directory (Azure AD) Connect. Zahrnuje také dalších běžných úkolů služby AD FS, které možná bude potřeba provést kompletní konfiguraci farmy služby AD FS.

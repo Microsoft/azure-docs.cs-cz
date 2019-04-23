@@ -10,11 +10,11 @@ ms.topic: conceptual
 ms.author: raynew
 manager: carmonm
 ms.openlocfilehash: 050e3032d47b8215ae1aef8492c247031275ab86
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58094639"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60237614"
 ---
 # <a name="azure-backup-server-protection-matrix"></a>Systém ochrany Azure Backup Serveru
 
@@ -22,7 +22,7 @@ Tento článek obsahuje seznam různých serverů a úloh, které můžete chrá
 
 ## <a name="protection-support-matrix"></a>Systém podpory replikace z ochrany
 
-|Úloha|Verze|Server Azure Backup</br> installation|Azure Backup</br> Server V3|Azure Backup</br> Server V2|Ochrana a obnovení|
+|Úloha|Version|Server Azure Backup</br> installation|Azure Backup</br> Server V3|Azure Backup</br> Server V2|Ochrana a obnovení|
 |------------|-----------|---------------|--------------|---------------|-----------------|
 |Klientské počítače (64bitové a 32bitové)|Windows 10|Fyzický server<br /><br />Virtuální počítač s technologií Hyper-V<br /><br />Virtuální počítač VMware|Ano|Ano|Svazek, sdílená složka, složka, soubory, svazky s odstraněnými<br /><br />Chráněné svazky musí obsahovat systém souborů NTFS. FAT a FAT32 nejsou podporovány.<br /><br />Svazky musí mít aspoň 1 GB. Aplikace DPM používá k pořízení snímku dat službu Stínová kopie svazku (VSS) a snímek funguje, pouze pokud je svazek aspoň 1 GB.|
 |Klientské počítače (64bitové a 32bitové)|Windows 8.1|Fyzický server<br /><br />Virtuální počítač s technologií Hyper-V|Ano|Ano|Soubory<br /><br />Chráněné svazky musí obsahovat systém souborů NTFS. FAT a FAT32 nejsou podporovány.<br /><br />Svazky musí mít aspoň 1 GB. Aplikace DPM používá k pořízení snímku dat službu Stínová kopie svazku (VSS) a snímek funguje, pouze pokud je svazek aspoň 1 GB.|

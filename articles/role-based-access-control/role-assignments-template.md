@@ -14,11 +14,11 @@ ms.date: 02/02/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.openlocfilehash: 537ee35e96a41cd02605319e244d39c6567c3bf1
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56337199"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60344580"
 ---
 # <a name="manage-access-to-azure-resources-using-rbac-and-azure-resource-manager-templates"></a>Správa přístupu k prostředkům Azure pomocí šablon Azure Resource Manageru a RBAC
 
@@ -252,5 +252,5 @@ Pokud chcete nasadit předchozí šablonu pomocí Azure CLI, postupujte takto.
 ## <a name="next-steps"></a>Další postup
 
 - [Rychlé zprovoznění: Vytvoření a nasazení šablon Azure Resource Manageru pomocí webu Azure portal](../azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal.md)
-- [Princip struktury a syntaxe šablon Azure Resource Manageru](../azure-resource-manager/resource-group-authoring-templates.md)
+- [Struktura a syntaxe šablon Azure Resource Manageru](../azure-resource-manager/resource-group-authoring-templates.md)
 - [Šablony Azure pro rychlý start](https://azure.microsoft.com/resources/templates/?term=rbac)

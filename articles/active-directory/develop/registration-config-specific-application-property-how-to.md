@@ -16,11 +16,11 @@ ms.date: 09/11/2018
 ms.author: celested
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 1e4362e45ff8eee13b9203b9103266c60b4833a9
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56173194"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60299052"
 ---
 # <a name="how-to-fill-out-specific-fields-for-a-custom-developed-application"></a>Jak vyplnit konkrétní pole pro vlastní vyvinuté aplikaci
 
@@ -41,7 +41,7 @@ Tento článek obsahuje stručný popis všechna dostupná pole ve formuláři p
 
 | Pole            | Popis                                                                              |
 |------------------|------------------------------------------------------------------------------------------|
-| Název             | Název aplikace. Musí mít minimálně 4 znaky.                |
+| Name             | Název aplikace. Musí mít minimálně 4 znaky.                |
 | Typ aplikace | **Webovou aplikaci/webové rozhraní API**: Aplikace, která představuje webovou aplikaci, webové rozhraní API nebo obojí 
 | |**Nativní**: Aplikace, která se dá nainstalovat na počítač nebo zařízení uživatele           |
 | Přihlašovací adresa URL      | Adresa URL, kde se uživatel může přihlásit k používání aplikace                                  |

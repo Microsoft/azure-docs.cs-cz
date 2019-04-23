@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 09/25/2017
 ms.author: damaerte
 ms.openlocfilehash: 2834bc7d9456c1177bdd2c235b8211a1edde6e42
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57244974"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60199410"
 ---
 # <a name="pricing"></a>Ceny
 Bash ve službě Cloud Shell a PowerShell ve službě Cloud Shell se vztahují na následující informace.

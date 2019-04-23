@@ -19,11 +19,11 @@ ms.custom: aaddev
 ms.reviewer: hirsin
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: d976a43173ce4f9deee0a723a895b40678e173b3
-ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58437879"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60250509"
 ---
 # <a name="single-sign-on-saml-protocol"></a>Protokol pro jednotné přihlašování – SAML
 
@@ -50,7 +50,7 @@ xmlns:samlp="urn:oasis:names:tc:SAML:2.0:protocol">
 | Parametr |  | Popis |
 | --- | --- | --- |
 | ID | Požaduje se | Azure AD používá tento atribut naplnit `InResponseTo` atribut vrácené odpovědi. ID nesmí začínat číslicí, takže běžných strategií je předřaďte řetězec jako "id" na řetězcové vyjádření identifikátoru GUID. Například `id6c1c178c166d486687be4aaf5e482730` je platné ID. |
-| Verze | Požaduje se | Tento parametr by měl být nastaven na **2.0**. |
+| Version | Požaduje se | Tento parametr by měl být nastaven na **2.0**. |
 | IssueInstant | Požaduje se | Toto je řetězec data a času s hodnotou UTC a [("o") formátu round-trip](https://msdn.microsoft.com/library/az4se3k1.aspx). Azure AD očekává, že hodnota data a času tohoto typu, ale nebude vyhodnocení nebo použijte hodnotu. |
 | AssertionConsumerServiceUrl | Nepovinné | Pokud je zadán, musí odpovídat tento parametr `RedirectUri` cloudové služby ve službě Azure AD. |
 | ForceAuthn | Nepovinné | To je logická hodnota. Pokud je hodnota true, znamená to, že uživatel bude muset znovu ověřit, i v případě, že mají platný relace s Azure AD. |
@@ -100,7 +100,7 @@ Jsou-li zadán, `ProxyCount` atribut, `IDPListOption` nebo `RequesterID` element
 ### <a name="signature"></a>Podpis
 Nejsou zahrnuté `Signature` prvek `AuthnRequest` prvky, jako je Azure AD nepodporuje podepsané žádosti o ověření.
 
-### <a name="subject"></a>Subjekt
+### <a name="subject"></a>Subject
 Azure AD ignoruje `Subject` prvek `AuthnRequest` elementy.
 
 ## <a name="response"></a>Odpověď
@@ -211,7 +211,7 @@ Ke generování digitálního podpisu, používá podpisový klíč v Azure AD `
     </ds:Signature>
 ```
 
-#### <a name="subject"></a>Subjekt
+#### <a name="subject"></a>Subject
 
 Určuje objekt, který je předmětem příkazy v kontrolního výrazu. Obsahuje `NameID` element, který představuje ověřeného uživatele. `NameID` Hodnota je cílový identifikátor, který se přesměruje pouze k poskytovateli služby, která je cílová skupina pro daný token. Je trvalé – možné odvolat, ale nikdy je přiřazena. Je také neprůhledný, neodhalí nic o uživateli a nelze použít jako identifikátor pro dotazy atributů.
 

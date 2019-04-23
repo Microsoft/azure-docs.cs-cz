@@ -9,11 +9,11 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 07/18/2018
 ms.openlocfilehash: bb402a5a059fb6f2836bddbd951220271ca77ba3
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57534357"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60400592"
 ---
 # <a name="control-access-to-iot-hub"></a>Řízení přístupu k IoT Hubu
 
@@ -134,7 +134,7 @@ Token zabezpečení má následující formát:
 
 Tady jsou očekávané hodnoty:
 
-| Hodnota | Popis |
+| Value | Popis |
 | --- | --- |
 | {podpis} |Řetězec podpisu HMAC SHA256 formuláře: `{URL-encoded-resourceURI} + "\n" + expiry`. **Důležité**: Klíč je dekódovat z formátu base64 a použít jako klíč pro provádění výpočtů HMAC SHA256. |
 | {resourceURI} |Předponu identifikátoru URI (podle segmentů) koncových bodů, které lze přistupovat pomocí tohoto tokenu, počínaje název hostitele služby IoT hub (žádný protokol). Například `myHub.azure-devices.net/devices/device1`. |

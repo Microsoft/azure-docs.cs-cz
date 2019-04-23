@@ -11,11 +11,11 @@ ms.date: 09/25/2017
 ms.author: davidmu
 ms.subservice: B2C
 ms.openlocfilehash: 502b769e1a25874bfa5a9e8f082361605a52ccf6
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55165672"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60362028"
 ---
 # <a name="secure-your-restful-service-by-using-client-certificates"></a>Zabezpečení služby RESTful pomocí klientských certifikátů
 

@@ -19,11 +19,11 @@ author: billmath
 ms.custom: ''
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 8bd46bb820c7127c4fa6105fcc0be73bb66024c6
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57446635"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60245725"
 ---
 # <a name="manage-ad-fs-trust-with-azure-ad-using-azure-ad-connect"></a>Správa vztah důvěryhodnosti služby AD FS pomocí Azure AD pomocí služby Azure AD Connect
 
@@ -48,7 +48,7 @@ Azure AD Connect spravuje **pouze** související nastavení se vztah důvěryho
 | Pravidla transformace vystavení | Počet pravidel deklarací identity, které jsou potřeba pro zajištění optimálního výkonu funkce služby Azure AD ve federované nastavení nejsou k dispozici. Azure AD Connect zajišťuje, že vztah důvěryhodnosti Azure AD je vždy nakonfigurovanou správnou sadu pravidel deklarací identity doporučené. |
 | Alternativní id | Pokud se synchronizace je nakonfigurován pro použití alternativní id, Azure AD Connect konfiguraci služby AD FS provádět ověření pomocí alternativní id. |
 | Automatické metadata update | Vztah důvěryhodnosti s Azure AD je nakonfigurovaný pro automatické metadata aktualizací. Služba AD FS pravidelně kontroluje metadata vztahu důvěryhodnosti Azure AD a udržuje je aktuální v případě, že se změní na straně služby Azure AD. |
-| Ověření integrované Windows (IWA) | Během operace připojení k hybridní službě Azure AD je povoleno IWA pro registraci zařízení pro usnadnění připojení k hybridní službě Azure AD pro zařízení s nižší úrovně |
+| Integrované ověřování systému Windows (IWA) | Během operace připojení k hybridní službě Azure AD je povoleno IWA pro registraci zařízení pro usnadnění připojení k hybridní službě Azure AD pro zařízení s nižší úrovně |
 
 ## <a name="execution-flows-and-federation-settings-configured-by-azure-ad-connect"></a>Spuštění toků a nastavení federace Azure AD Connect
 

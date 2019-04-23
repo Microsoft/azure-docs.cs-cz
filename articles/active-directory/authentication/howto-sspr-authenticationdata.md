@@ -12,11 +12,11 @@ manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 5a0d7edb6c7faafcad55e827c2d9e3d2eeea40f5
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58371362"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60358021"
 ---
 # <a name="deploy-password-reset-without-requiring-end-user-registration"></a>Nasazení resetování hesla bez vyžadování registrace koncového uživatele
 

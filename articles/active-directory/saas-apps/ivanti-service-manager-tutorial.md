@@ -16,11 +16,11 @@ ms.date: 02/25/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: d9130717f7846c81bee2bf4892a13fcf6042257c
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59261713"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60269726"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-ivanti-service-manager-ism"></a>Kurz: Integrace s Azure Active Directory s Ivanti Service Manager (ISM)
 

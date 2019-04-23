@@ -7,11 +7,11 @@ ms.topic: reference
 ms.date: 02/13/2019
 ms.author: tomfitz
 ms.openlocfilehash: dd6836ef4f859ce77c1a56095d32373d8e08f468
-ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56270381"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60388059"
 ---
 # <a name="tag-support-for-azure-resources"></a>Podpora značek pro prostředky Azure
 Tento článek popisuje, zda typ prostředku podporuje [značky](resource-group-using-tags.md).
@@ -239,7 +239,7 @@ Chcete-li získat stejná data jako soubor hodnot oddělených čárkami, stáhn
 | reservationOrders/rozdělení | Ne | 
 | reservationOrders/swap | Ne | 
 | rezervace | Ne | 
-| zdroje | Ne | 
+| prostředky | Ne | 
 | validateReservationOrder | Ne | 
 
 ## <a name="microsoftcdn"></a>Microsoft.Cdn
@@ -612,7 +612,7 @@ Chcete-li získat stejná data jako soubor hodnot oddělených čárkami, stáhn
 | myareas/oblasti/galleryitems | Ne | 
 | myareas/galleryitems | Ne | 
 | Registrace | Ne | 
-| zdroje | Ne | 
+| prostředky | Ne | 
 | retrieveresourcesbyid | Ne | 
 
 ## <a name="microsoftguestconfiguration"></a>Microsoft.GuestConfiguration
@@ -776,7 +776,7 @@ Chcete-li získat stejná data jako soubor hodnot oddělených čárkami, stáhn
 | ------------- | ----------- |
 | getEntities | Ne | 
 | managementGroups | Ne | 
-| zdroje | Ne | 
+| prostředky | Ne | 
 | startTenantBackfill | Ne | 
 | tenantBackfillStatus | Ne | 
 
@@ -864,7 +864,7 @@ Chcete-li získat stejná data jako soubor hodnot oddělených čárkami, stáhn
 | dnszones/TXT | Ne | 
 | expressRouteCircuits | Ano | 
 | expressRouteServiceProviders | Ne | 
-| frontdoors | Ano | 
+| frontdoory | Ano | 
 | frontdoorWebApplicationFirewallPolicies | Ano | 
 | getDnsResourceReference | Ne | 
 | interfaceEndpoints | Ano | 
@@ -972,7 +972,7 @@ Chcete-li získat stejná data jako soubor hodnot oddělených čárkami, stáhn
 ## <a name="microsoftresourcegraph"></a>Microsoft.ResourceGraph
 | Typ prostředku | Podporuje značky |
 | ------------- | ----------- |
-| zdroje | Ne | 
+| prostředky | Ne | 
 | subscriptionsStatus | Ne | 
 
 ## <a name="microsoftresourcehealth"></a>Microsoft.ResourceHealth
@@ -994,7 +994,7 @@ Chcete-li získat stejná data jako soubor hodnot oddělených čárkami, stáhn
 | notifyResourceJobs | Ne | 
 | Zprostředkovatelé | Ne | 
 | resourceGroups | Ne | 
-| zdroje | Ne | 
+| prostředky | Ne | 
 | předplatná | Ne | 
 | Předplatná a poskytovatelé | Ne | 
 | subscriptions/resourceGroups | Ne | 
@@ -1193,7 +1193,7 @@ Chcete-li získat stejná data jako soubor hodnot oddělených čárkami, stáhn
 | Typ prostředku | Podporuje značky |
 | ------------- | ----------- |
 | providerRegistrations | Ano | 
-| zdroje | Ano | 
+| prostředky | Ano | 
 
 ## <a name="microsofttimeseriesinsights"></a>Microsoft.TimeSeriesInsights
 | Typ prostředku | Podporuje značky |

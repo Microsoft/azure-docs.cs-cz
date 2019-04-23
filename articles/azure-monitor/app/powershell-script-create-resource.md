@@ -13,11 +13,11 @@ ms.topic: conceptual
 ms.date: 11/19/2016
 ms.author: mbullwin
 ms.openlocfilehash: 8a7b19dd6e5bc08c0c7e278b514ecaa9dc13a00e
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58485234"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60254483"
 ---
 # <a name="powershell-script-to-create-an-application-insights-resource"></a>Rutina PowerShell pro vytvoření prostředku Application Insights
 

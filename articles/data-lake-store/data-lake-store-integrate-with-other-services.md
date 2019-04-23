@@ -13,11 +13,11 @@ ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: twooley
 ms.openlocfilehash: e28863f9980d6403bef1f88de01b7a9b5271b444
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58879297"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60197081"
 ---
 # <a name="integrating-azure-data-lake-storage-gen1-with-other-azure-services"></a>Integrace s dalšími službami Azure, Azure Data Lake Storage Gen1
 Azure Data Lake Storage Gen1 lze použít ve spojení s dalšími službami Azure umožňující širší škálu scénářů. V následujícím článku seznam služeb, které Gen1 úložiště Data Lake je možné integrovat se službou.

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dcb825a193071d263d800dafdd6296246eb74aec
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 77154ef35242c55724becb77595dbd5ecf8a4da9
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57878189"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60359054"
 ---
 # <a name="password-management-frequently-asked-questions"></a>Správa hesel – nejčastější dotazy
 
@@ -46,7 +46,7 @@ Tyto nejčastější dotazy je rozdělený do následujících částí:
   >
 * **Otázka:  Můžete definovat data resetování hesel jménem uživatelů?**
 
-  > **Odpověď:** Ano, můžete tak učinit pomocí Azure AD Connect, PowerShell, [webu Azure portal](https://portal.azure.com), nebo Centrum pro správu Office 365. Další informace najdete v tématu [obnovit Data používaná hesla pomocí samoobslužné služby Azure AD](howto-sspr-authenticationdata.md).
+  > **Odpověď:** Ano, můžete tak učinit pomocí Azure AD Connect, PowerShell, [webu Azure portal](https://portal.azure.com), nebo [centra pro správu služeb Microsoft 365](https://admin.microsoft.com). Další informace najdete v tématu [obnovit Data používaná hesla pomocí samoobslužné služby Azure AD](howto-sspr-authenticationdata.md).
   >
   >
 * **Otázka:  Můžete synchronizovat data k zodpovězení bezpečnostních otázek v místním?**

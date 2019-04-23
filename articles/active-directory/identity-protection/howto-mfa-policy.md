@@ -13,20 +13,20 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/19/2019
+ms.date: 04/17/2019
 ms.author: joflore
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b563b0fb8dc12cbdcdd256a97134f9ff02988915
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: HT
+ms.openlocfilehash: abd1049551d7dbc4823636dfdc00f64afab72cdf
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59698958"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60294836"
 ---
 # <a name="how-to-configure-the-multi-factor-authentication-registration-policy"></a>Jak: Konfigurace zásady registrace pro vícefaktorové ověřování
 
-Služba Azure AD Identity Protection umožňuje správu zavedení registracích vícefaktorového ověřování (MFA) tím, že nakonfigurujete zásadu, která vyžaduje registrace MFA. Tento článek vysvětluje, co zásady je možné pro příslušný jeho konfiguraci.
+Služba Azure AD Identity Protection umožňuje správu zavedení registracích vícefaktorového ověřování (MFA) tím, že nakonfigurujete zásadu, která vyžaduje registrace MFA. Tento článek vysvětluje, co zásady je možné pro a jeho konfiguraci.
 
 ## <a name="what-is-the-multi-factor-authentication-registration-policy"></a>Co jsou zásady registrace služby Multi-Factor authentication?
 

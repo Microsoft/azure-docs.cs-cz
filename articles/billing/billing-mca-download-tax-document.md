@@ -16,11 +16,11 @@ ms.date: 02/21/2019
 ms.author: banders
 ms.custom: seodec18
 ms.openlocfilehash: 82b568d5a6abae1f061166afc1c80ef639df036c
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57248908"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60371542"
 ---
 # <a name="view-the-tax-documents-for-your-microsoft-customer-agreement"></a>Zobrazit daňové doklady pro smlouvy Microsoft zákazníka
 
@@ -31,9 +31,9 @@ Tento článek se týká fakturační účet Microsoft zákaznické smlouvy. [Za
 Musí být vlastníkem, přispěvatelem, Čtenář nebo faktury správce fakturace profilu zobrazovat a stahovat daňové doklady. Další informace o rolích fakturace pro smlouvy Microsoft zákazníka najdete v tématu [fakturace profilu role a úlohy](billing-understand-mca-roles.md#billing-profile-roles-and-tasks).
 <!-- TO DO: add link to manage access doc for MCA -->
 
-1. Hledat na **Cost Management a fakturace**.
+1. Vyhledejte **Cost Management a fakturace**.
 2. Vyberte fakturační profil.
-3. Vyberte **faktury**.
+3. Vyberte **Faktury**.
 4. V mřížce faktury nalezen řádek odpovídající daňový doklad, který chcete stáhnout fakturu.
 5. Klikněte na symbol tří teček (`...`) na konci řádku.
 6. Vyberte **daňový doklad**. V závislosti na zemi fakturace profilu může se zobrazit více než jeden dokument daň za fakturu.

@@ -13,11 +13,11 @@ ms.date: 04/15/2019
 ms.author: juliako
 ms.custom: seodec18
 ms.openlocfilehash: 5ae7563892cb4792f5c329b2850d7b88d37c0e7d
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: MT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59698261"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60322359"
 ---
 # <a name="developing-with-media-services-v3-apis"></a>Vývoj s využitím Media Services v3 rozhraní API
 

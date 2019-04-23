@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: 8558168b7eb35743c0fd590ded17ef13446533c4
-ms.sourcegitcommit: fec96500757e55e7716892ddff9a187f61ae81f7
-ms.translationtype: MT
+ms.openlocfilehash: 82222dd927f46761941a6a750d96222cc626e71b
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2019
-ms.locfileid: "59617814"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60006178"
 ---
 # <a name="connect-an-mxchip-iot-devkit-device-to-your-azure-iot-central-application"></a>Připojení MXChip IoT DevKit zařízení do aplikace Azure IoT Central
 
@@ -24,7 +24,7 @@ Tento článek popisuje, jak jako vývojář zařízení pro připojení MXChip 
 K dokončení kroků v tomto článku budete potřebovat následující prostředky:
 
 1. Azure IoT Central aplikace vytvořené z **ukázka Devkits** šablony aplikace. Další informace najdete v [rychlém startu k vytvoření aplikace](quick-deploy-iot-central.md).
-1. DevKit zařízení. Koupit DevKit zařízení, najdete v tématu [MXChip IoT DevKit](http://mxchip.com/az3166).
+1. DevKit zařízení. Koupit DevKit zařízení, najdete v tématu [MXChip IoT DevKit](https://microsoft.github.io/azure-iot-developer-kit/).
 
 ## <a name="sample-devkits-application"></a>Ukázková aplikace Devkits
 
@@ -208,12 +208,12 @@ Aplikace vytvořené z této šablony Devkits ukázkové aplikace zahrnovat šab
 | gyroscopeZ     | mdps   | -2000   | 2000    | 0              |
 
 #### <a name="states"></a>Stavy 
-| Název          | Zobrazované jméno   | NORMÁLNÍ | UPOZORNĚNÍ: | NEBEZPEČÍ | 
+| Name          | Zobrazované jméno   | NORMÁLNÍ | UPOZORNĚNÍ: | NEBEZPEČÍ | 
 | ------------- | -------------- | ------ | ------- | ------ | 
 | Devicestate povolená   | Stav zařízení   | Zelená  | Orange  | Červená    | 
 
 #### <a name="events"></a>Události 
-| Název             | Zobrazované jméno      | 
+| Name             | Zobrazované jméno      | 
 | ---------------- | ----------------- | 
 | ButtonBPressed   | Stiskne tlačítko B  | 
 
@@ -246,7 +246,7 @@ Přepínací tlačítko Nastavení
 | Zobrazované jméno | Název pole | Návratový typ | Vstupní pole zobrazované jméno | Název vstupního pole | Typ vstupního pole |
 | ------------ | ---------- | ----------- | ------------------------ | ---------------- | ---------------- |
 | echo         | echo       | text        | hodnota pro zobrazení         | displayedValue   | text             |
-| Odpočítávání    | Odpočítávání  | číslo      | Od               | countFrom        | číslo           |
+| odpočítávání    | Odpočítávání  | číslo      | Od               | countFrom        | číslo           |
 
 ## <a name="next-steps"></a>Další postup
 

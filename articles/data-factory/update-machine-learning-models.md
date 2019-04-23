@@ -13,11 +13,11 @@ ms.topic: conceptual
 ms.date: 01/16/2018
 ms.author: shlo
 ms.openlocfilehash: 8f1320db0af85f6c83a9daf8e17a691336c9b251
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58164455"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60335470"
 ---
 # <a name="update-azure-machine-learning-models-by-using-update-resource-activity"></a>Aktualizace modelů Azure Machine Learning s využitím aktivity aktualizace prostředku
 Tento článek doplňuje hlavní Azure Data Factory – článek integrace Azure Machine Learning: [Vytváření prediktivních kanálů pomocí Azure Machine Learning a Azure Data Factory](transform-data-using-machine-learning.md). Pokud jste tak již neučinili, přečtěte si v hlavním článku před přečtení tohoto článku.

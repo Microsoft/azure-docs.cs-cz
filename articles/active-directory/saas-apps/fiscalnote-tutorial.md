@@ -16,11 +16,11 @@ ms.date: 02/12/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 592d885656ee7753054f020f5768a75a5d43a489
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57886316"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60278698"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-fiscalnote"></a>Kurz: Integrace Azure Active Directory s FiscalNote
 
@@ -120,7 +120,7 @@ Ke konfiguraci Azure AD jednotné přihlašování s FiscalNote, proveďte násl
 
 6. Kromě toho výše FiscalNote aplikace očekává, že několik dalších atributů musí být předány zpět odpověď SAML. V **deklarace identity uživatelů** části na **atributy uživatele** dialogového okna, proveďte následující kroky pro přidání atributu tokenu SAML, jak je znázorněno v následující tabulka:
 
-    | Název | Zdrojový atribut|
+    | Name | Zdrojový atribut|
     | ---------------| ----------------|
     | familyName| user.surname|
     | e-mail| user.mail|

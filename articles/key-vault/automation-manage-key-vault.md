@@ -14,11 +14,11 @@ ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: magoedte
 ms.openlocfilehash: ace32968808dfa919e6ca5d5777818d2672249fe
-ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58224869"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60306066"
 ---
 # <a name="managing-azure-key-vault-using-azure-automation"></a>Správa služby Azure Key Vault pomocí Azure Automation.
 

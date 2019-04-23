@@ -17,11 +17,11 @@ ms.date: 09/24/2018
 ms.author: andret
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: a6119baf79b9323a5c1ad06d75e1410f632015f0
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59548547"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60299315"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-an-aspnet-web-app"></a>Rychlý start: Přidání přihlašování s Microsoftem do webové aplikace ASP.NET
 
@@ -288,9 +288,9 @@ Výběrem odkazu zobrazíte deklarace identity uživatele. Tato akce vás převe
 
  Měli byste vidět tabulku obsahující základní vlastnosti přihlášeného uživatele:
 
-| Vlastnost | Hodnota | Popis |
+| Vlastnost | Value | Popis |
 |---|---|---|
-| Název | {User Full Name} | Jméno a příjmení uživatele |
+| Name | {User Full Name} | Jméno a příjmení uživatele |
 | Uživatelské jméno | <span>user@domain.com</span> | Uživatelské jméno identifikující přihlášeného uživatele |
 | Subjekt| {Subject} |Řetězec pro jednoznačnou identifikaci přihlášení uživatele na webu |
 | ID tenanta | {Guid} | Identifikátor *guid*, který jedinečně identifikuje organizaci Azure AD uživatele |

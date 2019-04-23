@@ -17,11 +17,11 @@ ms.author: celested
 ms.reviewer: japere,asteen
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: bd3ae06c42452d425f041543715336827048ccb2
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58076441"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60293983"
 ---
 # <a name="problem-using-self-service-application-access"></a>Potíže s použitím samoobslužného přístupu k aplikacím
 

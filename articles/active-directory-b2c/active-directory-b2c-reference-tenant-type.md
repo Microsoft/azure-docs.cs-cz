@@ -11,11 +11,11 @@ ms.date: 04/10/2017
 ms.author: davidmu
 ms.subservice: B2C
 ms.openlocfilehash: 928c6316ea964472faadc82213c4c1ff81c3e038
-ms.sourcegitcommit: 5f348bf7d6cf8e074576c73055e17d7036982ddb
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2019
-ms.locfileid: "59608236"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60317081"
 ---
 # <a name="azure-active-directory-b2c-region-availability--data-residency"></a>Azure Active Directory B2C: Rezidence dat a dostupnost oblastí
 Dostupnost v oblastech a rezidence dat jsou dvě velmi odlišné koncepty, které se vztahují na Azure AD B2C odlišně od zbytku Azure. Tento článek vysvětluje rozdíly mezi tyto dva pojmy a porovnat, jak se vztahují na Azure a Azure AD B2C.

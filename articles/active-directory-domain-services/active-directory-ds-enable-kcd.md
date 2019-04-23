@@ -16,11 +16,11 @@ ms.topic: conceptual
 ms.date: 06/22/2018
 ms.author: ergreenl
 ms.openlocfilehash: 5569344a2df560036b99dea40c466302f5e6fe4c
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55159269"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60359364"
 ---
 # <a name="configure-kerberos-constrained-delegation-kcd-on-a-managed-domain"></a>Konfigurace omezeného delegování protokolu Kerberos (KCD) ve spravované doméně
 Mnoho aplikací se musí pro přístup k prostředkům v kontextu uživatele. Služba Active Directory podporuje mechanismus delegování protokolu Kerberos, která umožňuje tento případ použití volána. Kromě toho můžete omezit delegování tak, že je v kontextu uživatele přístupný pouze konkrétní prostředky. Spravované domény služby Azure AD Domain Services se liší od tradiční domén služby Active Directory, protože jejich bezpečněji uzamčen.

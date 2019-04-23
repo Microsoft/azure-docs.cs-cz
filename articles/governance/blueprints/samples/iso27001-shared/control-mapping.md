@@ -7,12 +7,12 @@ ms.date: 03/14/2019
 ms.topic: sample
 ms.service: blueprints
 manager: carmonm
-ms.openlocfilehash: bd945d49949afb679a376ce98b866fc5dee54ade
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 9290609136d1314762d9f716531464ad2496fb63
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59699232"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60005294"
 ---
 # <a name="control-mapping-of-the-iso-27001-shared-services-blueprint-sample"></a>Mapování ovládacího prvku vzorku ISO 27001 Shared Services podrobného plánu
 
@@ -71,7 +71,7 @@ Tento podrobný plán přiřadí tři [Azure Policy](../../../policy/overview.md
 
 ## <a name="a925-review-of-user-access-rights"></a>Přehled A.9.2.5 uživatelská přístupová práva
 
-Azure implementuje [řízení přístupu na základě rolí](../../../../role-based-access-control/overview.md) (RBAC) k pomáhá spravovat, kdo má přístup k prostředkům v Azure. Pomocí webu Azure portal, můžete zkontrolovat, kdo má přístup k prostředkům Azure a jejich oprávnění. Tento podrobný plán přiřadí čtyři [Azure Policy](../../../policy/overview.md) definice auditovat účty, které by měl být nastaveno jako prioritní ke kontrole, včetně odepsanou účtů a externí účty se zvýšenými oprávněními.
+Azure implementuje [řízení přístupu na základě rolí](../../../../role-based-access-control/overview.md) (RBAC), které vám pomůžou spravovat, kdo má přístup k prostředkům v Azure. Pomocí webu Azure portal, můžete zkontrolovat, kdo má přístup k prostředkům Azure a jejich oprávnění. Tento podrobný plán přiřadí čtyři [Azure Policy](../../../policy/overview.md) definice auditovat účty, které by měl být nastaveno jako prioritní ke kontrole, včetně odepsanou účtů a externí účty se zvýšenými oprávněními.
 
 - [Preview]: Audit deprecated accounts on a subscription
 - [Preview]: Audit deprecated accounts with owner permissions on a subscription
@@ -80,7 +80,7 @@ Azure implementuje [řízení přístupu na základě rolí](../../../../role-ba
 
 ## <a name="a926-removal-or-adjustment-of-access-rights"></a>Odebrání A.9.2.6 nebo úpravu přístupová práva
 
-Azure implementuje [řízení přístupu na základě rolí](../../../../role-based-access-control/overview.md) (RBAC) k pomáhá spravovat, kdo má přístup k prostředkům v Azure. Pomocí [Azure Active Directory](../../../../active-directory/fundamentals/active-directory-whatis.md) a RBAC, můžete aktualizovat role uživatele tak, aby odrážely změn v organizaci. Pokud je nepotřebujete, účtů může blokovat přihlášení (nebo odstranit), která okamžitě Odebere přístupová práva k prostředkům Azure. Tento podrobný plán přiřadí dva [Azure Policy](../../../policy/overview.md) definice auditovat odepsanou účet, který by měl být pro odebrání.
+Azure implementuje [řízení přístupu na základě rolí](../../../../role-based-access-control/overview.md) (RBAC), které vám pomůžou spravovat, kdo má přístup k prostředkům v Azure. Pomocí [Azure Active Directory](../../../../active-directory/fundamentals/active-directory-whatis.md) a RBAC, můžete aktualizovat role uživatele tak, aby odrážely změn v organizaci. Pokud je nepotřebujete, účtů může blokovat přihlášení (nebo odstranit), která okamžitě Odebere přístupová práva k prostředkům Azure. Tento podrobný plán přiřadí dva [Azure Policy](../../../policy/overview.md) definice auditovat odepsanou účet, který by měl být pro odebrání.
 
 - [Preview]: Audit deprecated accounts on a subscription
 - [Preview]: Audit deprecated accounts with owner permissions on a subscription
@@ -155,7 +155,7 @@ Tento podrobný plán vám pomůže zajistit, že systémové události jsou zaz
 
 ## <a name="a1244-clock-synchronization"></a>Synchronizace hodin A.12.4.4
 
-Tento podrobný plán vám pomůže zajistit, že systémové události jsou zaznamenána přiřazením sedm Azure definic zásad, které, které auditování protokolu nastavení pro prostředky Azure. Protokoly Azure využívají k vytvoření záznamu čas korelační události napříč prostředky synchronizovat interní hodiny.
+Tento podrobný plán vám pomůže zajistit, že systémové události jsou zaznamenána přiřazením sedm definic Azure Policy, které auditování nastavení protokolu pro prostředky Azure. Protokoly Azure využívají k vytvoření záznamu čas korelační události napříč prostředky synchronizovat interní hodiny.
 
 - [Preview]: Nasazení agenta závislostí auditu - obrázku (operačního systému virtuálního počítače) neuvedené v seznamu
 - [Preview]: Auditovat nasazení agenta závislostí v VMSS - obrázku (operačního systému virtuálního počítače) neuvedené v seznamu

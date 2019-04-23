@@ -12,11 +12,11 @@ ms.topic: quickstart
 ms.date: 01/23/2019
 ms.author: diberry
 ms.openlocfilehash: 055cbb8df3d91e1a3ada3fdbb471e74d146b86b2
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55874885"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60197064"
 ---
 # <a name="quickstart-get-intent-using-go"></a>Rychlý start: Získání záměru pomocí jazyka Go
 

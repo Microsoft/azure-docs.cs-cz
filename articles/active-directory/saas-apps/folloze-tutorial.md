@@ -16,11 +16,11 @@ ms.date: 01/17/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 41f867e2700c7b3f5d70d76c78a32e0fa3361d56
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57892621"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60278613"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-folloze"></a>Kurz: Integrace Azure Active Directory s Folloze
 
@@ -112,7 +112,7 @@ Ke konfiguraci Azure AD jednotné přihlašování s Folloze, proveďte následu
 
 6. V **deklarace identity uživatelů** části na **atributy uživatele** dialogového okna, nakonfigurovat atribut tokenu SAML, jak je znázorněno na obrázku výše a proveďte následující kroky:
 
-    | Název |  Zdrojový atribut|
+    | Name |  Zdrojový atribut|
     | ---------------| --------- |
     | Email | user.othermail |
     | Nameasemail | user.userprincipalname |

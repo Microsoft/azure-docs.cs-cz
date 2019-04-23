@@ -14,12 +14,12 @@ ms.tgt_pltfrm: Azure Functions
 ms.workload: tbd
 ms.date: 02/24/2019
 ms.author: yegu
-ms.openlocfilehash: 7d38120c530b89230893b85829d201c14a8cba04
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: HT
+ms.openlocfilehash: 914fe30e0b474f5d2c3ca14be6a6eb2e13cfdbf8
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59697290"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60202748"
 ---
 # <a name="quickstart-create-an-azure-function-with-app-configuration"></a>Rychlý start: Vytvoření funkce Azure s konfigurací aplikace
 
@@ -39,6 +39,14 @@ V tomto rychlém startu provedete instalaci [Visual Studio 2017](https://visuals
 
 [!INCLUDE [azure-app-configuration-create](../../includes/azure-app-configuration-create.md)]
 
+6. Vyberte **klíč/hodnota Explorer** > **+ vytvořit** přidáte následující páry klíč hodnota:
+
+    | Klíč | Value |
+    |---|---|
+    | TestApp:Settings:Message | Data z konfigurace aplikace Azure |
+
+    Ponechte **popisek** a **typ obsahu** zatím prázdný.
+
 ## <a name="create-a-function-app"></a>Vytvoření Function App
 
 [!INCLUDE [Create a project using the Azure Functions template](../../includes/functions-vstools-create.md)]
@@ -51,7 +59,7 @@ V tomto rychlém startu provedete instalaci [Visual Studio 2017](https://visuals
     Microsoft.Extensions.Configuration.AzureAppConfiguration 1.0.0 preview or later
     ```
 
-2. Otevřít *Function1.cs*a přidejte odkaz na poskytovatele konfigurace aplikace konfigurace .NET Core.
+2. Otevřít *Function1.cs*a přidejte odkaz na poskytovatele konfigurace pro aplikace .NET Core.
 
     ```csharp
     using Microsoft.Extensions.Configuration.AzureAppConfiguration;
@@ -114,4 +122,4 @@ V tomto rychlém startu provedete instalaci [Visual Studio 2017](https://visuals
 V tomto rychlém startu jste vytvořili novým úložištěm konfigurace aplikace a použít ho pomocí funkce Azure. Další informace o tom, jak používat konfiguraci aplikací, pokračujte k dalšímu kurzu, který ukazuje ověření.
 
 > [!div class="nextstepaction"]
-> [Spravované identity pro integraci prostředků Azure](./howto-integrate-azure-managed-service-identity.md)
+> [Integrace spravovaných identit](./howto-integrate-azure-managed-service-identity.md)

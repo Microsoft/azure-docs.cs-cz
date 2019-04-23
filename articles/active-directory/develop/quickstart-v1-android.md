@@ -19,11 +19,11 @@ ms.reviewer: dadobali
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 9537748f8dd3ee027236c73e9587ff6b78ded7f3
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56207581"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60299437"
 ---
 # <a name="quickstart-sign-in-users-and-call-the-microsoft-graph-api-from-an-android-app"></a>Rychlý start: Přihlašování uživatelů a volání rozhraní Microsoft Graph API z aplikace pro Android
 
@@ -116,7 +116,7 @@ Budete potřebovat nativní klientskou aplikaci zaregistrovanou u Microsoftu pro
 Veškerou konfiguraci tohoto ukázkového kódu najdete v souboru ***src/main/java/com/azuresamples/azuresampleapp/MainActivity.java***.
 
 1. Konstantu `CLIENT_ID` nahraďte položkou `ApplicationID`.
-2. Konstantu `REDIRECT URI` nahraďte identifikátorem URI pro přesměrování, který jste nakonfigurovali dříve (`http://localhost`).
+2. Konstantu `REDIRECT URI` nahraďte identifikátorem `Redirect URI` pro přesměrování, který jste nakonfigurovali dříve (`http://localhost`).
 
 ## <a name="step-4-run-the-sample"></a>Krok 4: Spuštění ukázky
 

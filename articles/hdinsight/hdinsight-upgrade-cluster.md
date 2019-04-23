@@ -9,11 +9,11 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/04/2017
 ms.openlocfilehash: 266de596633201b5590a6433d078cc05f2a267b4
-ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "53994517"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60306162"
 ---
 # <a name="upgrade-hdinsight-cluster-to-a-newer-version"></a>Upgrade clusteru HDInsight na novější verzi
 Abyste mohli využívat nejnovější funkce HDInsight, doporučujeme, abyste clustery HDInsight upgradovali na nejnovější verzi. Postupujte níže uvedených pokynů k upgradu vašeho HDInsight clusteru verze.

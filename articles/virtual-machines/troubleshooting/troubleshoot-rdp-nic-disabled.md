@@ -14,18 +14,18 @@ ms.workload: infrastructure
 ms.date: 11/12/2018
 ms.author: genli
 ms.openlocfilehash: 742026a8ff35f318f58674ebc2fb5c03e45161a8
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53133328"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60318999"
 ---
 #  <a name="cannot-remote-desktop-to-a-vm-because-the-network-interface-is-disabled"></a>Nelze provést vzdálené plochy k virtuálnímu počítači, protože síťové rozhraní je zakázaná.
 
 Tento článek vysvětluje, jak vyřešit problém, ve kterém nemůžete provádět připojení ke vzdálené ploše do Azure Windows Virtual Machines (VM) je zakázána. síťové rozhraní.
 
 > [!NOTE]
-> Azure nabízí dva různé modely nasazení pro vytváření a práci s prostředky: [nástroj Resource Manager a klasický režim](../../azure-resource-manager/resource-manager-deployment-model.md). Tento článek se věnuje modelu nasazení Resource Manageru, který vám doporučujeme používat pro nová nasazení namísto modelu nasazení classic.
+> Azure má dva různé modely nasazení pro vytváření a práci s prostředky: [Resource Manager a classic](../../azure-resource-manager/resource-manager-deployment-model.md). Tento článek se věnuje modelu nasazení Resource Manageru, který vám doporučujeme používat pro nová nasazení namísto modelu nasazení classic.
 
 ## <a name="symptoms"></a>Příznaky
 

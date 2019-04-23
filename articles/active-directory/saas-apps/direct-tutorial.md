@@ -16,11 +16,11 @@ ms.topic: tutorial
 ms.date: 04/01/2019
 ms.author: jeedes
 ms.openlocfilehash: 18519c64e1bba82e60cc431cb5f634a30ad68e92
-ms.sourcegitcommit: b8a8d29fdf199158d96736fbbb0c3773502a092d
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/15/2019
-ms.locfileid: "59565610"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60280576"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-direct"></a>Kurz: Integrace Azure Active Directory s přímým
 

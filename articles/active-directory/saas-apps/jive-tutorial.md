@@ -16,11 +16,11 @@ ms.topic: tutorial
 ms.date: 03/14/2019
 ms.author: jeedes
 ms.openlocfilehash: 5073961e15b3d0dcf0df0fd97d3f8a4568f79eb5
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59269754"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60267434"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-jive"></a>Kurz: Integrace Azure Active Directory s Jive
 

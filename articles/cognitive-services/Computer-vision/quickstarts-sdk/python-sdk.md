@@ -1,21 +1,21 @@
 ---
 title: 'Rychlý start: Python SDK'
 titleSuffix: Azure Cognitive Services
-description: V tomto rychlém startu se dozvíte, jak používat sadu Python SDK pro běžné úlohy.
+description: V tomto rychlém startu se dozvíte, jak pomocí sady Python SDK pro běžné úlohy, jako například Analýza obrázků, získat popis, rozpoznání textu a generování miniatur.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: quickstart
-ms.date: 04/10/2019
+ms.date: 04/17/2019
 ms.author: pafarley
-ms.openlocfilehash: c9b30eb89080137e17042feb4458f2601bf48a05
-ms.sourcegitcommit: fec96500757e55e7716892ddff9a187f61ae81f7
+ms.openlocfilehash: 95705e7b7a372867e33c86826f44e380407dfee1
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2019
-ms.locfileid: "59617967"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60336809"
 ---
 # <a name="azure-cognitive-services-computer-vision-sdk-for-python"></a>Azure Cognitive Services pro počítačové zpracování obrazu SDK pro Python
 

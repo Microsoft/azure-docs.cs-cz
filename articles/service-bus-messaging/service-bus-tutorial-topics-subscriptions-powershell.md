@@ -10,11 +10,11 @@ ms.topic: tutorial
 ms.service: service-bus-messaging
 ms.custom: mvc
 ms.openlocfilehash: 845fc32d527158258304a92c6855017c9d8c0492
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59049553"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60332537"
 ---
 # <a name="tutorial-update-inventory-using-powershell-and-topicssubscriptions"></a>Kurz: Aktualizovat inventáře pomocí Powershellu a témata nebo předplatná
 

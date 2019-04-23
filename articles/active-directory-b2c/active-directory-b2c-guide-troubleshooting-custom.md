@@ -11,11 +11,11 @@ ms.date: 05/07/2017
 ms.author: davidmu
 ms.subservice: B2C
 ms.openlocfilehash: b33b76175558c71720c15a2a4e206e26a60f1f95
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58880640"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60317713"
 ---
 # <a name="troubleshoot-azure-ad-b2c-custom-policies-and-identity-experience-framework"></a>Řešení potíží s vlastní zásady Azure AD B2C a architekturu rozhraní identit
 

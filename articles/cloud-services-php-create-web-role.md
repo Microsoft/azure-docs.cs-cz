@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 04/11/2018
 ms.author: msangapu
 ms.openlocfilehash: 83834104dd73e4381947903196ad35c3497b64a1
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52425672"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60337557"
 ---
 # <a name="create-php-web-and-worker-roles"></a>Vytvoření rolí pracovního procesu a webu PHP
 
@@ -26,13 +26,13 @@ ms.locfileid: "52425672"
 
 Tato příručka obsahuje pokyny k vytvoření webové nebo pracovní role PHP v prostředí pro vývoj Windows, vybrat konkrétní verzi PHP z "integrované" verze k dispozici, změňte konfiguraci PHP, povolit rozšíření a nakonec nasadit do Azure. Také popisuje, jak nakonfigurovat webové nebo pracovní role, použít modul runtime PHP (s vlastní konfigurace a rozšíření), který zadáte.
 
-Azure nabízí tři výpočetní modely spouštění aplikací: Azure App Service, Azure Virtual Machines a Azure Cloud Services. Všechny tři modely podporují PHP. Cloud Services, které zahrnuje webové a pracovní role, poskytuje *platforma jako služba (PaaS)*. Webová role v rámci cloudové služby poskytuje vyhrazený webový server Internetové informační služby (IIS) pro hostování front-endových webových aplikací. Role pracovního procesu dokážou spouštět asynchronní, dlouhotrvající nebo trvalé úlohy, které jsou nezávislé na vstupu nebo interakci uživatelů.
+V rámci systému Azure jsou dostupné tři výpočetní modely ke spouštění aplikací: Azure App Service, Azure Virtual Machines a Azure Cloud Services. Všechny tři modely podporují PHP. Cloud Services, které zahrnuje webové a pracovní role, poskytuje *platforma jako služba (PaaS)*. Webová role v rámci cloudové služby poskytuje vyhrazený webový server Internetové informační služby (IIS) pro hostování front-endových webových aplikací. Role pracovního procesu dokážou spouštět asynchronní, dlouhotrvající nebo trvalé úlohy, které jsou nezávislé na vstupu nebo interakci uživatelů.
 
 Další informace o těchto možnostech najdete v tématu [poskytovaný platformou Azure možností hostování výpočetních řešení](cloud-services/cloud-services-choose-me.md).
 
 ## <a name="download-the-azure-sdk-for-php"></a>Stažení sady Azure SDK pro PHP
 
-[Sady Azure SDK pro jazyk PHP](php-download-sdk.md) se skládá z několika součástí. Tento článek bude používat dva z nich: prostředí Azure PowerShell a emulátory Azure. Tyto dvě složky lze nainstalovat pomocí instalačního programu webové platformy. Další informace najdete v tématu [Instalace a konfigurace Azure PowerShellu](/powershell/azure/overview).
+[Sady Azure SDK pro jazyk PHP](php-download-sdk.md) se skládá z několika součástí. V tomto článku budete používat dva z nich: Emulátory Azure a Azure Powershellu. Tyto dvě složky lze nainstalovat pomocí instalačního programu webové platformy. Další informace najdete v tématu [Instalace a konfigurace Azure PowerShellu](/powershell/azure/overview).
 
 ## <a name="create-a-cloud-services-project"></a>Vytvořte projekt cloudové služby
 

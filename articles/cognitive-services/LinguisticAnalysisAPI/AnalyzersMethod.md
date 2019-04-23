@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 06/30/2016
 ms.author: lesun
 ROBOTS: NOINDEX
-ms.openlocfilehash: 9338e87644554ac8b3121c5341cea6f2bc512a97
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 1b33b60f674eebb15fdc6112e1d630b93b98494b
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55878183"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60404707"
 ---
 # <a name="analyzers-method"></a>Metoda analyzers
 
@@ -32,15 +32,17 @@ Odpověď obsahuje jejich [názvy](Analyzer-Names.md) a jazyky podporované jedn
 <br>
 
 ## <a name="response-parameters"></a>Parametry odpovědi
-Název | Typ | Popis
+
+Name | Typ | Popis
 -----|------|--------------
 Jazyky | seznam řetězců | seznam kódů dvě písmeno ISO jazyků, pro které je možné tento analyzátor.
-id   | řetězec | Jedinečné ID pro tento analyzátor
-Typ | řetězec | široký typ analyzátoru zde
-Specifikace | řetězec | Název specifikace použité pro tento analyzátor
-Implementace | řetězec | Popis modelu a/nebo algoritmus za tento analyzátor
+id   | string | Jedinečné ID pro tento analyzátor
+Typ | string | široký typ analyzátoru zde
+Specifikace | string | Název specifikace použité pro tento analyzátor
+Implementace | string | Popis modelu a/nebo algoritmus za tento analyzátor
 
 <br>
+
 ## <a name="example"></a>Příklad:
 ZÍSKAT /analyzers
 

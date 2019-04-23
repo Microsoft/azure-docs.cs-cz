@@ -11,11 +11,11 @@ ms.date: 09/10/2018
 ms.author: davidmu
 ms.subservice: B2C
 ms.openlocfilehash: ccc1f94b9411a158b5c60509e09bd3edc0a61640
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59795149"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60359870"
 ---
 # <a name="userjourneys"></a>UserJourneys
 
@@ -99,7 +99,7 @@ Chcete-li určit seřazený seznam kroků Orchestrace, **OrchestrationSteps** pr
 
 | Element | Výskyty | Popis |
 | ------- | ----------- | ----------- |
-| Hodnota | 1: n | ClaimTypeReferenceId, aby se dalo dotazovat pro. Jiný element hodnota obsahuje hodnotu, která se má zkontrolovat.</li></ul>|
+| Value | 1: n | ClaimTypeReferenceId, aby se dalo dotazovat pro. Jiný element hodnota obsahuje hodnotu, která se má zkontrolovat.</li></ul>|
 | Akce | 1:1 | Akce, která má být provedena, pokud v jednom z kroků Orchestrace předpoklad platí. Pokud hodnota `Action` je nastavena na `SkipThisOrchestrationStep`, přidružené `OrchestrationStep` by neměl být spouštěn. | 
 
 #### <a name="preconditions-examples"></a>Příklady předběžné podmínky

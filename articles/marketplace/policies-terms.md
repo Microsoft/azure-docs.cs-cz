@@ -9,13 +9,13 @@ ms.topic: article
 ms.date: 02/25/2019
 ms.author: v-qiwe
 ms.openlocfilehash: 9dc4bfa1f2435488f7d6513f9c14e82da33a4d64
-ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56890416"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60322749"
 ---
-# <a name="azure-marketplace-policies-and-terms"></a>Zásady Azure Marketplace a podmínky
+# <a name="azure-marketplace-policies-and-terms"></a>Podmínky a zásady Azure Marketplace
 
 >[!Note]
 >"Marketplace" nebo "Azure Marketplace" znamená, že ve vlastnictví společnosti Microsoft nebo provozovaných platformy, ale s názvem, přes který může zobrazovat nabídky nebo získala zákazníkům. Pokud není uvedeno jinak, zahrnuje Marketplace na webu Azure Portal Marketplace, na webu Azure Marketplace a AppSource.

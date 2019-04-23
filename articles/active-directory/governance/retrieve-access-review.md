@@ -17,11 +17,11 @@ ms.author: rolyon
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: eae4bafb3eefcee2785c784030d7be8dde66988e
-ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2019
-ms.locfileid: "58578696"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60245827"
 ---
 # <a name="retrieve-access-review-results-for-groups-or-applications-in-azure-ad-access-reviews"></a>Načíst kontroly přístupu pro skupiny a aplikace ve službě Azure AD výsledky kontroly přístupu
 

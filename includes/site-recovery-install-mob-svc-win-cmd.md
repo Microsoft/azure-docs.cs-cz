@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: raynew
 ms.openlocfilehash: 9fe3b66de83ebc2cd0bf3a56a45456668c069191
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58105134"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60301154"
 ---
 1. Zkopírujte instalační program k místní složce (třeba C:\Temp) na serveru, který chcete chránit. Jako správce z příkazového řádku spusťte následující příkazy:
 

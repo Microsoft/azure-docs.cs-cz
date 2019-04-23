@@ -9,14 +9,14 @@ editor: spelluru
 ms.service: service-bus
 ms.devlang: na
 ms.topic: article
-ms.date: 01/23/2019
+ms.date: 04/23/2019
 ms.author: aschhab
 ms.openlocfilehash: 52475a3976ef8897ffed07c499eb06e7476c0156
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58136289"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60310974"
 ---
 # <a name="use-firewall-rules"></a>Pomocí pravidel brány Firewall
 
@@ -110,8 +110,8 @@ Parametry šablony:
         "type": "Microsoft.ServiceBus/namespaces",
         "location": "[parameters('location')]",
         "sku": {
-          "name": "Standard",
-          "tier": "Standard"
+          "name": "Premium",
+          "tier": "Premium"
         },
         "properties": { }
       },

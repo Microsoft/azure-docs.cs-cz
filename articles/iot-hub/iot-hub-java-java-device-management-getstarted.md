@@ -10,11 +10,11 @@ ms.devlang: java
 ms.topic: conceptual
 ms.date: 08/08/2017
 ms.openlocfilehash: 6dcec5b72be8868a83a5760ef95117d3e751bcc3
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57538098"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60399393"
 ---
 # <a name="get-started-with-device-management-java"></a>Začínáme se správou zařízení (Java)
 

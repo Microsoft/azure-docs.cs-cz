@@ -14,11 +14,11 @@ ms.date: 02/11/2019
 ms.author: spelluru
 ms.reviewer: christianreddington,anthdela,juselph
 ms.openlocfilehash: 75ce5d6a88b5398bd010cc363b4241bc90068f55
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57436568"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60192995"
 ---
 # <a name="governance-of-azure-devtest-labs-infrastructure---application-migration-and-integration"></a>Zásady správného řízení infrastruktury Azure DevTest Labs - migrace aplikací a integrace
 Po vytvoření prostředí laboratoře vývoj/testování, je potřeba uvažovat o na následující otázky:

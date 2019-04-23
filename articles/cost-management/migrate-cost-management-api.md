@@ -11,11 +11,11 @@ ms.service: cost-management
 manager: micflan
 ms.custom: ''
 ms.openlocfilehash: e4c5607089efb247620766fb311b97cae3772770
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59279869"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60311937"
 ---
 # <a name="migrate-from-enterprise-agreement-to-microsoft-customer-agreement-apis"></a>Migraci na smlouvu Enterprise pro smlouvy zákazníků společnosti Microsoft
 
@@ -187,7 +187,7 @@ Název vlastnosti obsahující pole záznamů využití změněn od dat k _hodno
 | ExtendedCost a nákladů | costInBillingCurrency | &nbsp;  |
 | ID instance | resourceId | &nbsp;  |
 | Je pravidelný poplatek | Žádný | &nbsp;  |
-| Umístění | location | &nbsp;  |
+| Location | location | &nbsp;  |
 | Kategorie měřiče | meterCategory | Přesné řetězcové hodnoty se mohou lišit. |
 | ID měřiče | meterId | Přesné řetězcové hodnoty se liší. |
 | Název měřiče | meterName | Přesné řetězcové hodnoty se mohou lišit. |

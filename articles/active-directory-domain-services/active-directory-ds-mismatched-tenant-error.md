@@ -16,11 +16,11 @@ ms.topic: conceptual
 ms.date: 12/11/2017
 ms.author: ergreenl
 ms.openlocfilehash: d3586293574cc71011ad96fece5e5a4fdfa0b70f
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55191988"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60417188"
 ---
 # <a name="resolve-mismatched-directory-errors-for-existing-azure-ad-domain-services-managed-domains"></a>Řešení chyb adresáře pro existující spravované domény služby Azure AD Domain Services
 Máte existující spravovanou doménu služby Azure AD Domain Services. Přejděte na web Azure Portal a zobrazení spravované domény, zobrazí se následující chybová zpráva:

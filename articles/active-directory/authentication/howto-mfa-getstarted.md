@@ -12,11 +12,11 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 6c2c5006eb050b70b783ab8199724e0e98766381
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59358108"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60359304"
 ---
 # <a name="planning-a-cloud-based-azure-multi-factor-authentication"></a>Plánování ověřování Azure Multi-Factor Authentication založené na cloudu
 
@@ -237,7 +237,7 @@ Pokud máte nasazené instance NPS a používá už, odkazovat [integrace vaší
 
 Zvolte, co se stane při pokusu o ověření uživatele, která nejsou zaregistrovaná pomocí vícefaktorového ověřování. Pomocí nastavení registru `REQUIRE_USER_MATCH` v cestě registru `HKLM\Software\Microsoft\AzureMFA` můžete řídit chování funkce. Toto nastavení nemá možnost jediné konfiguraci.
 
-| Klíč | Hodnota | Výchozí |
+| Klíč | Value | Výchozí |
 | --- | --- | --- |
 | `REQUIRE_USER_MATCH` | TRUE / FALSE | Není nastavený (ekvivalentní na hodnotu TRUE) |
 
@@ -304,7 +304,7 @@ Sestavy pro Azure MFA
 
 Azure Multi-Factor Authentication poskytuje sestavy na webu Azure portal:
 
-| Sestava | Umístění | Popis |
+| Sestava | Location | Popis |
 | --- | --- | --- |
 | Využití a odhalování výstrahy | Azure AD > přihlášení | Poskytuje informace o celkové využití: uživatelský souhrn a podrobnosti o uživateli; také historie upozornění na podvod odeslaných během období zadán. |
 

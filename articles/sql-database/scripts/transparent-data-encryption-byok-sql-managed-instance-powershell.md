@@ -11,17 +11,17 @@ author: MladjoA
 ms.author: mlandzic
 ms.reviewer: vanto, carlrab
 manager: craigg
-ms.date: 04/09/2019
-ms.openlocfilehash: c08b5559fd599fb297f294a54aed67c65676aee4
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: HT
+ms.date: 04/19/2019
+ms.openlocfilehash: 8eb924b3dc6ff912db402596c763dd69b85147a3
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59783390"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60390711"
 ---
-# <a name="manage-transparent-data-encryption-in-a-managed-instance-using-your-own-key-from-azure-key-vault"></a>Správa transparentního šifrování dat v Managed Instance pomocí vlastního klíče ze služby Azure Key Vault
+# <a name="manage-transparent-data-encryption-in-a-managed-instance-using-your-own-key-from-azure-key-vault-preview"></a>Správa transparentního šifrování dat v Managed Instance pomocí vlastního klíče ze služby Azure Key Vault (Preview)
 
-Tento ukázkový skript Powershellu nakonfiguruje transparentní šifrování dat (TDE) ve scénáři přineste si vlastní klíč pro spravované Instance Azure SQL, použití klíče ze služby Azure Key Vault. Další informace o transparentní šifrování dat s podporou přineste si vlastní klíč (BYOK), najdete v článku [TDE vlastního klíče do Azure SQL](../transparent-data-encryption-byok-azure-sql.md).
+Tento ukázkový skript Powershellu nakonfiguruje transparentní šifrování dat (TDE) ve scénáři přineste si vlastní klíč (preview) pro spravované Instance Azure SQL, použití klíče ze služby Azure Key Vault. Další informace o transparentní šifrování dat s podporou přineste si vlastní klíč (BYOK), najdete v článku [TDE vlastního klíče do Azure SQL](../transparent-data-encryption-byok-azure-sql.md).
 
 ## <a name="prerequisites"></a>Požadavky
 

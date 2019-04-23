@@ -13,14 +13,14 @@ ms.topic: conceptual
 ms.date: 02/07/2018
 ms.author: jingwang
 ms.openlocfilehash: cdd83c3ff9d34a5e8b7f2c164136ab82f498ffb5
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54022967"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60343762"
 ---
 # <a name="copy-data-from-sap-hana-using-azure-data-factory"></a>Kopírování dat ze SAP HANA pomocí Azure Data Factory
-> [!div class="op_single_selector" title1="Vyberte verzi služby Data Factory, kterou používáte:"]
+> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
 > * [Verze 1](v1/data-factory-sap-hana-connector.md)
 > * [Aktuální verze](connector-sap-hana.md)
 
@@ -162,23 +162,23 @@ Kopírování dat ze SAP HANA, se používají následující mapování z typů
 
 | Typ dat SAP HANA | Data factory dočasné datový typ |
 |:--- |:--- |
-| ALPHANUM | Řetězec |
+| ALPHANUM | String |
 | BIGINT | Int64 |
-| OBJEKT BLOB | Byte] |
-| DATOVÝ TYP BOOLEAN | Bajt |
-| DATOVÝ TYP CLOB | Byte] |
+| BLOB | Byte[] |
+| DATOVÝ TYP BOOLEAN | Byte |
+| DATOVÝ TYP CLOB | Byte[] |
 | DATE (Datum) | DateTime |
-| DECIMAL | Desítkově |
-| DOUBLE | Jednoduchá |
-| INT | Datový typ Int32 |
-| NVARCHAR | Řetězec |
-| REAL | Jednoduchá |
+| DECIMAL | Decimal |
+| DOUBLE | Single |
+| INT | Int32 |
+| NVARCHAR | String |
+| REAL | Single |
 | SECONDDATE | DateTime |
 | SMALLINT | Int16 |
-| ČAS | Časový interval |
+| ČAS | TimeSpan |
 | ČASOVÉ RAZÍTKO | DateTime |
-| TINYINT | Bajt |
-| VARCHAR | Řetězec |
+| TINYINT | Byte |
+| VARCHAR | String |
 
 ## <a name="known-limitations"></a>Známá omezení
 

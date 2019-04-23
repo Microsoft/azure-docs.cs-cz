@@ -7,12 +7,12 @@ ms.service: storage
 ms.topic: article
 ms.date: 04/03/2019
 ms.author: tamram
-ms.openlocfilehash: 86bb7e736754cbc6a93bba5fff5d8d1877b1e3b4
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: e85cfb6d7b44924ce7f17fdedb7f1b52350ab598
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58916576"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60392394"
 ---
 # <a name="set-and-retrieve-properties-and-metadata"></a>Nastavení a načtení vlastností a metadat
 
@@ -27,7 +27,7 @@ Načítání hodnot vlastností a metadat pro prostředek úložiště je dvoust
 > [!IMPORTANT]
 > Pokud zjistíte, že hodnoty vlastnosti nebo metadata pro prostředek úložiště nebyly vyplněna, zkontrolujte, že váš kód volá **FetchAttributes** nebo **FetchAttributesAsync** metody.
 >
-> Dvojice název/hodnota metadata jsou platná hlavičky protokolu HTTP a proto by měl splňovat všechna omezení, kterými se řídí hlavičky protokolu HTTP. Metadata názvy musí být platné názvy záhlaví HTTP, může obsahovat pouze znaky ASCII a zacházet jako malá a velká písmena. Hodnoty metadat, který obsahuje jiné znaky než ASCII by měl být s kódováním Base64 nebo kódovaná adresou URL.
+> Dvojice název/hodnota metadata jsou platná hlavičky protokolu HTTP a proto by měl splňovat všechna omezení, kterými se řídí hlavičky protokolu HTTP. Metadata názvy musí být platné názvy hlavičky protokolu HTTP a platný C# identifikátory, může obsahovat pouze znaky ASCII a zacházet jako malá a velká písmena. Hodnoty metadat, který obsahuje jiné znaky než ASCII by měl být s kódováním Base64 nebo kódovaná adresou URL.
 
 ## <a name="setting-and-retrieving-properties"></a>Nastavení a načtení vlastností
 Chcete-li načíst hodnoty vlastností, zavolejte **FetchAttributesAsync** metodu na objekt blob nebo kontejner k naplnění vlastnosti, pak si můžete přečíst hodnoty.

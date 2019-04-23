@@ -9,11 +9,11 @@ ms.date: 3/20/2019
 ms.author: yzheng
 ms.subservice: common
 ms.openlocfilehash: 2de194e501c05ba0bdb9971ca6045e67a42b0fd9
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59681722"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60392462"
 ---
 # <a name="manage-the-azure-blob-storage-lifecycle"></a>Správa životního cyklu úložiště objektů Blob v Azure
 
@@ -116,7 +116,7 @@ Každé pravidlo v rámci zásady má několik parametrů:
 | Název parametru | Typ parametru | Poznámky | Požaduje se |
 |----------------|----------------|-------|----------|
 | jméno           | String |Název pravidla může obsahovat až 256 znaků. Název pravidla je velká a malá písmena.  Musí být jedinečný v rámci zásady. | True |
-| povoleno | Logická hodnota | Nepovinný datový typ boolean Povolit pravidlo, které se dočasné zakázán. Výchozí hodnota je hodnota true, pokud není nastaven. | False | 
+| povoleno | Boolean | Nepovinný datový typ boolean Povolit pravidlo, které se dočasné zakázán. Výchozí hodnota je hodnota true, pokud není nastaven. | False | 
 | type           | Hodnoty výčtu | Je aktuální platný typ `Lifecycle`. | True |
 | Definice     | Objekt, který definuje pravidlo životního cyklu | Každá definice se skládá sada filtru a skupinu akcí. | True |
 

@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: raynew
 ms.openlocfilehash: cd18d71d26410767a2d3119c12a1339bdc84bd33
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58107137"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60301456"
 ---
 1. Na konfiguračním serveru spusťte soubor CSPSConfigtool.exe. Je k dispozici jako zástupce na ploše a umístěný ve složce *umístění instalace*\home\svsystems\bin.
 2. Klikněte na **Správa účtu** > **Přidat účet**.

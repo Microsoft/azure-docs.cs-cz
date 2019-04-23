@@ -15,11 +15,11 @@ ms.topic: conceptual
 ms.date: 09/18/2018
 ms.author: pbutlerm
 ms.openlocfilehash: 0fc82229e158ed35b97203b11d08841c683c45ce
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48809324"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60398016"
 ---
 <a name="app-publishing-steps"></a>Postup publikování aplikace
 ====================

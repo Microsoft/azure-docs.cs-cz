@@ -16,11 +16,11 @@ ms.topic: article
 ms.date: 07/23/2018
 ms.author: genli
 ms.openlocfilehash: 85296b4549d7c9499b8d0b815ddf1cd2e85e2b1b
-ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58259580"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60337421"
 ---
 # <a name="configuration-and-management-issues-for-azure-cloud-services-frequently-asked-questions-faqs"></a>Konfigurace a správy problémů pro Azure Cloud Services: Nejčastější dotazy (FAQ)
 
@@ -311,7 +311,7 @@ Vazba SNI lze nastavit pomocí rutiny Powershellu **New-WebBinding** v úloze po
     
 Jak je popsáno [tady](https://technet.microsoft.com/library/ee790567.aspx), $sslFlags může být jedna z hodnot následujícím způsobem:
 
-|Hodnota|Význam|
+|Value|Význam|
 ------|------
 |0|Žádné SNI|
 |1|SNI povoleno |

@@ -17,11 +17,11 @@ ms.author: celested
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: f72cbd719cea585144be3757f0791a74bde452ab
-ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56416764"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60299188"
 ---
 # <a name="quickstart-secure-a-web-api-with-azure-active-directory"></a>Rychlý start: Zabezpečení webového rozhraní API pomocí Azure Active Directory
 
@@ -82,7 +82,7 @@ az ad app create --display-name node-aad-demo --homepage http://localhost --iden
 
 Abyste se mohli připojit k Azure Active Directory, potřebujete následující informace:
 
-| Název  | Popis | Název proměnné v konfiguračním souboru |
+| Name  | Popis | Název proměnné v konfiguračním souboru |
 | ------------- | ------------- | ------------- |
 | Název tenanta  | [Název tenanta](quickstart-create-new-tenant.md), kterého použijete k ověřování. | `tenantName`  |
 | ID klienta  | ID klienta je výraz OAuth používaný jako _ID aplikace_ v AAD. |  `clientID`  |

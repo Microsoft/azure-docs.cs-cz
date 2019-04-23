@@ -13,11 +13,11 @@ ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: twooley
 ms.openlocfilehash: cebdff5ed233516683df3330e8fd3332ded664e5
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58885668"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60198167"
 ---
 # <a name="securing-data-stored-in-azure-data-lake-storage-gen1"></a>Zabezpečení dat uložených v Azure Data Lake Storage Gen1
 Zabezpečení dat v Azure Data Lake Storage Gen1 je přístup založený na třech krocích.  Jak na základě rolí přístup ovládacího prvku (RBAC) a seznamy řízení přístupu (ACL) musí být nastavena na plně povolit přístup k datům pro uživatele a skupiny zabezpečení.

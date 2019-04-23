@@ -11,11 +11,11 @@ ms.topic: quickstart
 ms.date: 03/12/2019
 ms.author: aahi
 ms.openlocfilehash: 7209df902f03a7055e142dcbbb7743b6832958b6
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57863776"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60344106"
 ---
 # <a name="quickstart-use-the-bing-web-search-sdk-for-java"></a>Rychlý start: Použijte vyhledávání na webu Bingu sady SDK pro Javu
 

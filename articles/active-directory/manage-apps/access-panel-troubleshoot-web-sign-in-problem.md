@@ -17,11 +17,11 @@ ms.author: celested
 ms.reviwer: japere,asteen
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 7f7418c16d5d5312d2a9a7913da49941ef0a7870
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58090453"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60294000"
 ---
 # <a name="problem-signing-in-to-the-access-panel-website"></a>Potížím při přihlašování k webu přístupového panelu
 

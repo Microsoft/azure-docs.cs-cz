@@ -16,11 +16,11 @@ ms.topic: conceptual
 ms.date: 06/26/2018
 ms.author: ergreenl
 ms.openlocfilehash: ef21383db52d45d996f2c6c1d6900ebba2349635
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55203075"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60359394"
 ---
 # <a name="create-a-group-managed-service-account-gmsa-on-an-azure-ad-domain-services-managed-domain"></a>Vytvoření účtu skupiny spravované služby (gMSA) ve spravované doméně Azure AD Domain Services
 V tomto článku se dozvíte, jak vytvořit účty spravované služby ve spravované doméně Azure AD Domain Services.

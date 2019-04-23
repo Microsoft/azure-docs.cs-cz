@@ -7,12 +7,12 @@ ms.service: storage
 ms.topic: article
 ms.date: 04/26/2017
 ms.author: tamram
-ms.openlocfilehash: e27be86a7a14a38c5083949a1a7255574d2d0dc6
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 3996f22db2f5dc597939995a2699c4fe228821e3
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46956077"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60392551"
 ---
 # <a name="manage-anonymous-read-access-to-containers-and-blobs"></a>Správa anonymního přístupu pro čtení ke kontejnerům a objektům blob
 Můžete povolit anonymní, veřejný přístup pro čtení kontejneru a jeho objekty BLOB v úložišti objektů Blob v Azure. Díky tomu můžete udělit přístup jen pro čtení k těmto prostředkům bez sdílení klíč účtu a bez nutnosti sdíleného přístupového podpisu (SAS).
@@ -24,9 +24,9 @@ Ve výchozím kontejneru a všech objektů BLOB v něm přístupná jenom vlastn
 
 Konfigurovat kontejner s následujícími oprávněními:
 
-* **Žádné veřejné přístup pro čtení:** kontejneru a jeho objekty BLOB je přístupný pouze vlastník účtu úložiště. Toto je výchozí pro všechny nové kontejnery.
-* **Veřejný přístup pro objekty BLOB pouze pro čtení:** objektů BLOB v kontejneru můžete číst anonymní žádosti, ale kontejnerů dat není k dispozici. Anonymní klienty nelze vytvořit výčet objektů BLOB v kontejneru.
-* **Úplné veřejné oprávnění ke čtení:** všech kontejnerů a objektů blob data je možné načíst pomocí anonymní žádosti. Klienty můžete zobrazit výčet objektů BLOB v kontejneru pomocí anonymní žádosti, ale nelze vytvořit výčet kontejnery v rámci účtu úložiště.
+* **Žádné veřejné oprávnění ke čtení:** Kontejner a jeho objekty BLOB je přístupný pouze vlastník účtu úložiště. Toto je výchozí pro všechny nové kontejnery.
+* **Veřejné oprávnění ke čtení pro objekty BLOB pouze:** Objekty BLOB v kontejneru můžete číst anonymní žádosti, ale k datům kontejneru není k dispozici. Anonymní klienty nelze vytvořit výčet objektů BLOB v kontejneru.
+* **Úplné veřejné oprávnění ke čtení:** Všech kontejnerů a data objektů blob můžete číst anonymní žádosti. Klienty můžete zobrazit výčet objektů BLOB v kontejneru pomocí anonymní žádosti, ale nelze vytvořit výčet kontejnery v rámci účtu úložiště.
 
 Nastavení kontejneru oprávnění můžete použít následující:
 
@@ -124,7 +124,7 @@ Následující tabulka uvádí operace, které může být volána anonymním u�
 | Nastavení ACL kontejneru |Pouze vlastník |Pouze vlastník |
 | Odstranění kontejneru |Pouze vlastník |Pouze vlastník |
 | Výpis objektů BLOB |Vše |Pouze vlastník |
-| Vložení objektu Blob |Pouze vlastník |Pouze vlastník |
+| Put Blob |Pouze vlastník |Pouze vlastník |
 | Získání objektu Blob |Vše |Vše |
 | Získání vlastností objektu Blob |Vše |Vše |
 | Nastavit vlastnosti objektu Blob |Pouze vlastník |Pouze vlastník |
@@ -140,7 +140,7 @@ Následující tabulka uvádí operace, které může být volána anonymním u�
 | Zapůjčení objektu Blob |Pouze vlastník |Pouze vlastník |
 | Vložit stránky |Pouze vlastník |Pouze vlastník |
 | Získání rozsahů stránek |Vše |Vše |
-| Doplňovací objekt Blob |Pouze vlastník |Pouze vlastník |
+| Připojit objekt blob |Pouze vlastník |Pouze vlastník |
 
 ## <a name="next-steps"></a>Další postup
 

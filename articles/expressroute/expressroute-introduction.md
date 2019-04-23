@@ -9,11 +9,11 @@ ms.date: 10/18/2018
 ms.author: mialdrid
 ms.custom: seodec18
 ms.openlocfilehash: 56baabb95a7873b48a27943a58b8e26c56efb6b7
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53139550"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60364316"
 ---
 # <a name="expressroute-overview"></a>Přehled ExpressRoute
 ExpressRoute umožňuje rozšířit vaše místní sítě do cloudu Microsoftu přes soukromé připojení zajišťované poskytovatelem připojení. Pomocí ExpressRoute může vytvořit připojení ke cloudovým službám Microsoftu, jako je například Microsoft Azure, Office 365 nebo Dynamics 365.

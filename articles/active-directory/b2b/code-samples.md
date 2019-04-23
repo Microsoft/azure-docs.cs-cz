@@ -13,11 +13,11 @@ ms.reviewer: sasubram
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: bdce3e557a7b9ad76b2a4bfe533d1272832ea72f
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58088872"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60355824"
 ---
 # <a name="azure-active-directory-b2b-collaboration-code-and-powershell-samples"></a>Kód a ukázky PowerShellu spolupráce B2B služby Azure Active Directory
 
@@ -26,7 +26,7 @@ Externí uživatele můžete do organizace pozvat hromadně pomocí e-mailových
 
 1. Připravte si soubor CSV. Vytvořte nový soubor CSV a pojmenujte ho invitations.csv. V tomto příkladu soubor uložíme do adresáře C:\data a bude obsahovat následující informace:
   
-   Název                  |  InvitedUserEmailAddress (E-mailová adresa pozvaného uživatele)
+   Name                  |  InvitedUserEmailAddress (E-mailová adresa pozvaného uživatele)
    --------------------- | --------------------------
    Pozvaný uživatel B2B z Gmailu     | b2binvitee@gmail.com
    Pozvaný uživatel B2B z Outlooku   | b2binvitee@outlook.com

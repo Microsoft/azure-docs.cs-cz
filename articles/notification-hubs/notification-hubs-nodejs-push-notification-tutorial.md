@@ -15,12 +15,12 @@ ms.devlang: javascript
 ms.topic: article
 ms.date: 01/04/2019
 ms.author: jowargo
-ms.openlocfilehash: d90f23f52ca4c0cce3d853114acf673aa085d3c5
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
-ms.translationtype: MT
+ms.openlocfilehash: bdeba401e99ad16555b9f6ea00017fc525302983
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57889776"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59994994"
 ---
 # <a name="sending-push-notifications-with-azure-notification-hubs-and-nodejs"></a>Odesílání nabízených oznámení pomocí Azure Notification Hubs a Node.js
 
@@ -63,25 +63,24 @@ Pokud chcete používat Azure Notification Hubs, budete muset stáhnout a použ�
 > Další informace o instalaci NPM official je přínosné pro [NPM blogu](https://blog.npmjs.org/post/85484771375/how-to-install-npm).
 
 ### <a name="import-the-module"></a>Import modulu
-
 Pomocí textového editoru, přidejte následující k hornímu okraji `server.js` souboru aplikace:
 
-    ```javascript
-    var azure = require('azure');
-    ```
+```javascript
+var azure = require('azure-sb');
+```
 
 ### <a name="set-up-an-azure-notification-hub-connection"></a>Nastavit připojení k centru oznámení Azure
 
 `NotificationHubService` Objekt vám umožní pracovat s notification hubs. Následující kód vytvoří `NotificationHubService` objekt pro centra oznámení s názvem `hubname`. Přidejte do horní části `server.js` soubor po příkazu k importu modulu azure:
 
-    ```javascript
-    var notificationHubService = azure.createNotificationHubService('hubname','connectionstring');
-    ```
+```javascript
+var notificationHubService = azure.createNotificationHubService('hubname','connectionstring');
+```
 
 Získat připojení `connectionstring` hodnotu [Azure Portal] provedením následujících kroků:
 
 1. V levém navigačním podokně klikněte na tlačítko **Procházet**.
-2. Vyberte **Notification Hubs**a pak vyhledejte centrum, které chcete použít pro ukázku. Můžete se podívat do [Windows Store Začínáme kurzu](notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md) Pokud potřebujete pomoc při vytvoření nového centra oznámení.
+2. Vyberte **Notification Hubs**a pak vyhledejte centrum, které chcete použít pro ukázku. Můžete se podívat do [Windows Store Začínáme kurzu](notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md) Pokud potřebujete pomoc s vytvořením nového centra oznámení.
 3. Vyberte **nastavení**.
 4. Klikněte na **zásady přístupu**. Uvidíte oba připojovací řetězce sdílené a úplný přístup.
 
@@ -111,18 +110,18 @@ Další informace o formátu datové části, najdete v článku **datové čás
 
 Následující kód používá `GcmService` instance vystavené `NotificationHubService` k odesílání nabízených oznámení na všechny registrované klienty.
 
-    ```javascript
-    var payload = {
-      data: {
-        message: 'Hello!'
-      }
-    };
-    notificationHubService.gcm.send(null, payload, function(error){
-      if(!error){
-        //notification sent
-      }
-    });
-    ```
+```javascript
+var payload = {
+  data: {
+    message: 'Hello!'
+  }
+};
+notificationHubService.gcm.send(null, payload, function(error){
+  if(!error){
+    //notification sent
+  }
+});
+```
 
 ### <a name="how-to-send-push-notifications-to-ios-applications"></a>Postup: Odesílání nabízených oznámení do aplikací pro iOS
 
@@ -136,16 +135,16 @@ Formát datové části Další informace najdete v tématu **datová část ozn
 
 Následující kód používá `ApnsService` instance vystavené `NotificationHubService` odeslat zprávu oznámení na všechny klienty:
 
-    ```javascript
-    var payload={
-        alert: 'Hello!'
-      };
-    notificationHubService.apns.send(null, payload, function(error){
-      if(!error){
-         // notification sent
-      }
-    });
-    ```
+```javascript
+var payload={
+    alert: 'Hello!'
+  };
+notificationHubService.apns.send(null, payload, function(error){
+  if(!error){
+      // notification sent
+  }
+});
+```
 
 ### <a name="how-to-send-push-notifications-to-windows-phone-applications"></a>Postup: Odesílání nabízených oznámení do aplikace Windows Phone
 
@@ -162,14 +161,14 @@ Seznam platných `TargetName`, `NotificationClass` a možnosti záhlaví, podív
 
 Následující ukázkový kód používá `MpnsService` instance vystavené `NotificationHubService` k odesílání nabízených oznámení:
 
-    ```javascript
-    var payload = '<?xml version="1.0" encoding="utf-8"?><wp:Notification xmlns:wp="WPNotification"><wp:Toast><wp:Text1>string</wp:Text1><wp:Text2>string</wp:Text2></wp:Toast></wp:Notification>';
-    notificationHubService.mpns.send(null, payload, 'toast', 22, function(error){
-      if(!error){
-        //notification sent
-      }
-    });
-    ```
+```javascript
+var payload = '<?xml version="1.0" encoding="utf-8"?><wp:Notification xmlns:wp="WPNotification"><wp:Toast><wp:Text1>string</wp:Text1><wp:Text2>string</wp:Text2></wp:Toast></wp:Notification>';
+notificationHubService.mpns.send(null, payload, 'toast', 22, function(error){
+  if(!error){
+    //notification sent
+  }
+});
+```
 
 ### <a name="how-to-send-push-notifications-to-universal-windows-platform-uwp-applications"></a>Postup: Odesílání nabízených oznámení do aplikace univerzální platformy Windows (UPW)
 
@@ -185,14 +184,14 @@ Seznam platné typy a hlavičky požadavku najdete v tématu [nabízená oznáme
 
 Následující kód používá `WnsService` instance vystavené `NotificationHubService` k odesílání nabízených oznámení do aplikace pro UPW:
 
-    ```javascript
-    var payload = '<toast><visual><binding template="ToastText01"><text id="1">Hello!</text></binding></visual></toast>';
-    notificationHubService.wns.send(null, payload , 'wns/toast', function(error){
-      if(!error){
-         // notification sent
-      }
-    });
-    ```
+```javascript
+var payload = '<toast><visual><binding template="ToastText01"><text id="1">Hello!</text></binding></visual></toast>';
+notificationHubService.wns.send(null, payload , 'wns/toast', function(error){
+  if(!error){
+      // notification sent
+  }
+});
+```
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -15,11 +15,11 @@ ms.topic: conceptual
 ms.date: 09/17/2018
 ms.author: pbutlerm
 ms.openlocfilehash: bc6ca73d7cfbef73350d24be60c078994ea761c3
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57853201"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60397842"
 ---
 <a name="how-to-create-your-new-microsoft-dynamics-365-business-central-offer"></a>Vytvoření nové nabídky Microsoft Dynamics 365 Business Central
 ====================================================================
@@ -30,7 +30,7 @@ Definování atributů, přihlaste se k Microsoft [portál partnerů cloudu](htt
 
 1. Na portál Cloud Partner, v levém navigačním panelu klikněte na **+ nová nabídka** a vyberte **Dynamics 365 Business Central** ze seznamu aplikací.
 
-   ![Vytvořit novou nabídku](./media/d365-financials/image003.png)
+   ![Vytvoření nové nabídky](./media/d365-financials/image003.png)
 
 2. Nová nabídka zobrazení "Editoru" teď pro vás otevřen a jste připravení začít s vytvářením obsahu.
 

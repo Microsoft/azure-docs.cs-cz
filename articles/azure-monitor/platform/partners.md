@@ -9,11 +9,11 @@ ms.date: 03/14/2019
 ms.author: robb
 ms.subservice: ''
 ms.openlocfilehash: cf06645ddcb825ca866d88a1f7724fd3b3e7987b
-ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58402401"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60338134"
 ---
 # <a name="azure-monitor-partner-integrations"></a>Integrace partnerů Azure Monitor
 

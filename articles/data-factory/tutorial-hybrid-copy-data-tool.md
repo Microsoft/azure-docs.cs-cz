@@ -12,11 +12,11 @@ ms.topic: tutorial
 ms.date: 04/09/2018
 ms.author: abnarain
 ms.openlocfilehash: 26bc6861602cae349c8ebaafefe070c119a93e87
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59261511"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60329046"
 ---
 # <a name="copy-data-from-an-on-premises-sql-server-database-to-azure-blob-storage-by-using-the-copy-data-tool"></a>Kopírování dat z místní databáze SQL Serveru do úložiště objektů blob v Azure pomocí nástroje pro kopírování dat
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]

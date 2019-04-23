@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 04/16/2018
 ms.author: yizhon
 ms.openlocfilehash: 5256a58a2b68584888abcac915392d8e389e9772
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54054533"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60399364"
 ---
 # <a name="develop-for-mobile-devices-using-azure-iot-sdks"></a>Vývoj pro mobilní zařízení pomocí sad SDK Azure IoT
 
@@ -29,7 +29,7 @@ C SDK pro Azure IoT Hub je napsána v C99 pro zajištění maximální přenosit
 
 Tato dokumentace provede postupy při vývoji aplikace zařízení nebo aplikace služby na zařízení s iOS:
 
-* [Rychlý start: Odesílání telemetrických dat ze zařízení do služby IoT hub](quickstart-send-telemetry-ios.md)  
+* [Rychlé zprovoznění: Odesílání telemetrických dat ze zařízení do služby IoT hub](quickstart-send-telemetry-ios.md)  
 * [Odesílání zpráv z cloudu do zařízení pomocí služby IoT hub](iot-hub-ios-swift-c2d.md) 
 
 ### <a name="develop-with-azure-iot-hub-cocoapod-libraries"></a>Vývoj s využitím Azure IoT Hub CocoaPod knihovny
@@ -47,8 +47,8 @@ Sada Azure IoT Hub Java SDK podporuje platformy Android.  Pro konkrétní verzi 
 
 Tato dokumentace provede postupy při vývoji aplikace zařízení nebo aplikace služby na zařízeních s Androidem pomocí Gradle a Android Studio:
 
-* [Rychlý start: Odesílání telemetrických dat ze zařízení do služby IoT hub](quickstart-send-telemetry-android.md)  
-* [Rychlý start: Řízení zařízení](quickstart-control-device-android.md) 
+* [Rychlé zprovoznění: Odesílání telemetrických dat ze zařízení do služby IoT hub](quickstart-send-telemetry-android.md)  
+* [Rychlé zprovoznění: Řízení zařízení](quickstart-control-device-android.md) 
 
 ## <a name="next-steps"></a>Další postup
 

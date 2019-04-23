@@ -9,13 +9,13 @@ ms.topic: quickstart
 ms.service: stream-analytics
 ms.custom: mvc
 ms.openlocfilehash: 7762a48fd34973872fe4d0b00906a03a18d52867
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
-ms.translationtype: MT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52311921"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60398133"
 ---
-# <a name="quickstart-create-a-stream-analytics-job-by-using-the-azure-portal"></a>Rychlý start: Vytvoření úlohy Stream Analytics pomocí webu Azure Portal
+# <a name="quickstart-create-a-stream-analytics-job-by-using-the-azure-portal"></a>Rychlý start: Vytvoření úlohy Stream Analytics pomocí webu Azure portal
 
 V tomto rychlém startu se naučíte, jak začít vytvořením úlohy Stream Analytics. V tomto rychlém startu definujete úlohu Stream Analytics, která načte streamování dat v reálném čase a filtry zprávy s teplotu vyšší než 27. Vaší úlohy Stream Analytics bude číst data ze služby IoT Hub device transformaci dat a zapisovat data zpět do kontejneru v úložišti objektů blob. Vstupní data použitá v tomto rychlém startu je generován simulátor Raspberry Pi online. 
 
@@ -44,7 +44,7 @@ Než začnete definovat úlohu Stream Analytics, měli byste data, která je nov
 
    ![Vytvořit IoT Hub](./media/stream-analytics-quick-create-portal/create-iot-hub.png)
 
-4. Vyberte **Další: nastavení velikosti a měřítka**.
+4. Vyberte **Další: Nastavení velikosti a měřítka**.
 
 5. Zvolte si **Úroveň ceny a škálování**. Pro účely tohoto rychlého startu vyberte **F1 – Free** vrstvy, pokud je stále k dispozici v rámci předplatného. Další informace najdete v tématu [ceny služby IoT Hub](https://azure.microsoft.com/pricing/details/iot-hub/).
 
@@ -91,7 +91,7 @@ Než začnete definovat úlohu Stream Analytics, měli byste data, která je nov
    |Název úlohy   |  MyASAJob   |   Zadejte název pro identifikaci úlohy Stream Analytics. Název úlohy Stream Analytics může obsahovat jen alfanumerické znaky, spojovníky a podtržítka a musí být dlouhý 3 až 63 znaků. |
    |Předplatné  | \<Vaše předplatné\> |  Vyberte předplatné Azure, které chcete použít pro vaši úlohu. |
    |Skupina prostředků   |   asaquickstart-resourcegroup  |   Vyberte stejnou skupinu prostředků jako službu IoT Hub. |
-   |Umístění  |  \<Vyberte oblast nejbližší vašim uživatelům.\> | Vyberte zeměpisnou polohu, kde je možné hostovat úlohu Stream Analytics. V zájmu vyššího výkonu a nižších nákladů za přenos dat zvolte umístění co nejbližší vašim uživatelům. |
+   |Location  |  \<Vyberte oblast nejbližší vašim uživatelům.\> | Vyberte zeměpisnou polohu, kde je možné hostovat úlohu Stream Analytics. V zájmu vyššího výkonu a nižších nákladů za přenos dat zvolte umístění co nejbližší vašim uživatelům. |
    |Jednotky streamování  | 1  |   Jednotky streamování představují výpočetní prostředky nutné k provedení úlohy. Ve výchozím nastavení je tato hodnota nastavená na 1. Podrobnosti o škálování jednotek streamování najdete v článku věnovaném [principům a úpravám jednotek streamování](stream-analytics-streaming-unit-consumption.md).   |
    |Hostitelské prostředí  |  Cloud  |   Úlohy Stream Analytics můžete nasadit do cloudu nebo do hraničního zařízení. Možnost Cloud umožňuje nasazení do Azure Cloud, možnost Edge do zařízení IoT Edge. |
 

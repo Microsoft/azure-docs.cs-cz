@@ -8,12 +8,12 @@ ms.subservice: cosmosdb-table
 ms.devlang: dotnet
 ms.topic: reference
 ms.date: 10/18/2018
-ms.openlocfilehash: 38b283ed666b39b4e090bd95051a4454a9b47e62
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 4b193dd41c137907e56e2bf38b18ebcf2f2b481a
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57975657"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60326860"
 ---
 # <a name="azure-cosmos-db-table-net-standard-api-download-and-release-notes"></a>Standardní rozhraní .NET API tabulky Azure Cosmos DB: Stáhněte si a poznámky k verzi
 > [!div class="op_single_selector"]
@@ -33,6 +33,9 @@ ms.locfileid: "57975657"
 |**Aktuální podporované architektury**|[Microsoft .NET Standard 2.0](https://www.nuget.org/packages/NETStandard.Library)|
 
 ## <a name="release-notes"></a>Poznámky k verzi
+
+### <a name="a-name101101"></a><a name="1.0.1"/>1.0.1
+* Opravy chyb
 
 ### <a name="a-name100100"></a><a name="1.0.0"/>1.0.0
 * Verzi všeobecné dostupnosti
@@ -60,8 +63,9 @@ ms.locfileid: "57975657"
 ## <a name="release-and-retirement-dates"></a>Datum vydání verze a vyřazení z provozu
 Společnost Microsoft poskytuje oznámení alespoň **12 měsíců** před vyřazením z provozu sady SDK ulehčení přechodu na verzi novější nebo podporované.
 
-| Verze | Datum vydání | Datum vyřazení z provozu |
+| Version | Datum vydání | Datum vyřazení z provozu |
 | --- | --- | --- |
+| [1.0.1](#1.0.1) |19. dubna 2019 |--- |
 | [1.0.0](#1.0.0) |13. března 2019 |--- |
 | [0.11.0-Preview](#0.11.0-preview) |5. března 2019 |--- |
 | [0.10.1-preview](#0.10.1-preview) |22. ledna 2019 |--- |

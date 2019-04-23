@@ -11,11 +11,11 @@ ms.date: 11/30/2018
 ms.author: davidmu
 ms.subservice: B2C
 ms.openlocfilehash: 931fd0714977fb4c5f79aa32691881f9794a44cd
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55198312"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60317214"
 ---
 # <a name="enable-multi-factor-authentication-in-azure-active-directory-b2c"></a>Povolení služby Multi-Factor authentication v Azure Active Directory B2C
 

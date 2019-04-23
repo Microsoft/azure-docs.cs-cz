@@ -7,11 +7,11 @@ ms.service: postgresql
 ms.topic: conceptual
 ms.date: 10/22/2018
 ms.openlocfilehash: a82984ce4c2a2e44306abaa63265e0c25cc6ace4
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56310287"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60422113"
 ---
 # <a name="optimize-bulk-inserts-and-use-transient-data-on-an-azure-database-for-postgresql-server"></a>Optimalizujte operace hromadného vložení a používat přechodné data ve službě Azure Database pro PostgreSQL server 
 Tento článek popisuje, jak můžete optimalizovat operace hromadného vložení a přechodné data ve službě Azure Database použít pro PostgreSQL server.

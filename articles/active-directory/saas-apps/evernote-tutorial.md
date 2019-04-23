@@ -16,11 +16,11 @@ ms.topic: tutorial
 ms.date: 04/10/2019
 ms.author: jeedes
 ms.openlocfilehash: 2ce05e904484a6d773a0132734208b87e161f960
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59499916"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60279739"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-evernote"></a>Kurz: Integrace Azure Active Directory s Evernote
 

@@ -11,11 +11,11 @@ ms.date: 09/10/2018
 ms.author: davidmu
 ms.subservice: B2C
 ms.openlocfilehash: bc6cc7b07d3dce43a666b3e5b0a958b41cdd3131
-ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58651504"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60313813"
 ---
 # <a name="claimstransformations"></a>ClaimsTransformations
 
@@ -96,7 +96,7 @@ Seznam funkcí transformace deklarací identity, které je možné zahrnout cest
 | --------- | ----------- |----------- |
 | ID | Ano | Identifikátor, který je odkaz na parametr metody transformace deklarací identity. Každá metoda transformace deklarací identity má své vlastní hodnoty. V tabulce transformace deklarací identity pro úplný seznam dostupných hodnot. |
 | DataType | Ano | Typ dat parametr, jako je řetězec, logická hodnota, Int nebo data a času podle výčtu datového typu ve schématu XML vlastní zásady. Tento typ se používá k provedení aritmetické operace správně. Každá transformace deklarací identity má své vlastní hodnoty. Zobrazit [odkaz na transformaci deklarací](#claims-transformations-reference) úplný seznam dostupných hodnot. |
-| Hodnota | Ano | Hodnota, která je předána verbatim transformace. Některé hodnoty libovolného, některé z nich můžete vybrat z metody transformace deklarací identity. |
+| Value | Ano | Hodnota, která je předána verbatim transformace. Některé hodnoty libovolného, některé z nich můžete vybrat z metody transformace deklarací identity. |
 
 ### <a name="outputclaims"></a>OutputClaims
 

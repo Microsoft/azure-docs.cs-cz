@@ -2,18 +2,18 @@
 title: Nejčastější dotazy k Azure Data Catalog
 description: Nejčastější dotazy týkající se Azure Data Catalog, včetně možnosti zjišťování zdrojů dat, poznámky a správu.
 services: data-catalog
-author: markingmyname
-ms.author: maghan
+author: JasonWHowell
+ms.author: jasonh
 ms.assetid: 5c7e209a-458c-4bb4-96bb-7ed178f9528a
 ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 01/18/2018
-ms.openlocfilehash: f08825c17c1ba61fc09edc1d8f2c226af8d4266f
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
-ms.translationtype: MT
+ms.openlocfilehash: 7c5241b9df23bb0334a39f2c684fd1bdff40b4c2
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51231460"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59998445"
 ---
 # <a name="azure-data-catalog-frequently-asked-questions"></a>Nejčastější dotazy k Azure Data Catalog
 Tento článek obsahuje odpovědi na nejčastější dotazy týkající se služby Azure Data Catalog.
@@ -27,10 +27,10 @@ Data Catalog řeší výzvy "nejasná data" a zdroj dat zjišťování tak, aby 
 ## <a name="what-are-its-target-audiences"></a>Jaké jsou jeho cílové skupiny?
 Katalog data Catalog je určen pro technická a Netechnická uživatele, včetně:
 
-* Data vývojáři a odborníky na BI a analytických: uživatelů, kteří zodpovídají za vytváření obsahu dat a analýz pro ostatní využívají.
-* Data stewards: uživatelé, kteří mají znalosti o datech, co to znamená, a jak je určena pro použití.
-* Spotřebitelé dat: lidí, kteří potřebují mít možnost snadno zjišťovat, pochopit a připojte se k datům, která potřebují pro výkon své práce s použitím nástroje podle vlastní volby.
-* Centrální IT: lidé zjistitelnost stovkám zdrojů dat podnikoví uživatelé, kteří potřebují, a kteří potřebují spravovat dohledu nad jak se data používají a kým.
+* Data vývojáři a odborníky na BI a analytických: Uživatelů, kteří zodpovídají za vytváření obsahu dat a analýz pro ostatní využívají.
+* Stewards dat: Uživatelé, kteří mají znalosti o datech, co to znamená, a jak je určena pro použití.
+* Spotřebitelé dat: Lidé, kteří potřebují mít možnost snadno zjišťovat, pochopit a připojení k datům, která potřebují pro výkon své práce s použitím nástroje podle vlastní volby.
+* Centrální IT: Lidé zjistitelnost stovkám zdrojů dat podnikoví uživatelé, kteří potřebují, a kteří potřebují spravovat dohledu nad jak se data používají a kým.
 
 ## <a name="what-is-its-availability-by-region"></a>Co je její dostupnost podle oblasti?
 Data katalogu služeb jsou aktuálně dostupné v následujících datových centrech:

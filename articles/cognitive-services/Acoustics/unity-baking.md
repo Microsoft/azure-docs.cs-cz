@@ -11,11 +11,11 @@ ms.topic: tutorial
 ms.date: 03/20/2019
 ms.author: kegodin
 ms.openlocfilehash: 8875674b0f9c621a573dda591b4dc2b6f018a83c
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59790225"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60388222"
 ---
 # <a name="project-acoustics-unity-bake-tutorial"></a>Projekt Akustika Unity, která má označení vytvoření kurz
 Tento kurz popisuje Akustika pečení s Akustika projektu v Unity.

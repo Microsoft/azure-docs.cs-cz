@@ -9,12 +9,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 04/08/2019
 ms.author: jingwang
-ms.openlocfilehash: 9e30337eb8acaa6dc3386f5e60285faa80dd6307
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: d7e2ecd9c9c27140fff4d483e01eaaca632e929a
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59257905"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60394421"
 ---
 # <a name="supported-file-formats-and-compression-codecs-in-azure-data-factory"></a>Podporované formáty souborů a komprese kodeky ve službě Azure Data Factory
 
@@ -478,7 +478,7 @@ Je třeba počítat s následujícím:
 
 * Komplexní datové typy se nepodporují (STRUCT, MAP, seznam, SJEDNOCENÍ).
 * Prázdné znaky v názvu sloupce se nepodporuje.
-* Orc mají tři [možnosti komprese](http://hortonworks.com/blog/orcfile-in-hdp-2-better-compression-better-performance/): NONE, ZLIB A SNAPPY. Data Factory podporuje čtení dat ze souborů ORC v libovolném z těchto komprimovaných formátů. K načtení dat využívá kompresní kodek v metadatech. Při zápisu do souboru ORC ale Data Factory využívá možnost ZLIB, která je pro formát ORC výchozí. V současnosti toto chování nejde potlačit.
+* Orc mají tři [možnosti komprese](https://hortonworks.com/blog/orcfile-in-hdp-2-better-compression-better-performance/): NONE, ZLIB A SNAPPY. Data Factory podporuje čtení dat ze souborů ORC v libovolném z těchto komprimovaných formátů. K načtení dat využívá kompresní kodek v metadatech. Při zápisu do souboru ORC ale Data Factory využívá možnost ZLIB, která je pro formát ORC výchozí. V současnosti toto chování nejde potlačit.
 
 > [!IMPORTANT]
 > Pro kopírování pověřený modul Integration Runtime například mezi místním prostředím a cloudem úložiště dat, pokud soubory ORC nekopírujete **jako-je**, je potřeba nainstalovat **64bitové prostředí JRE 8 (Java Runtime Environment) nebo OpenJDK**  na svém počítači reakcí na Incidenty. Viz odstavec s dalšími podrobnostmi.

@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 06/06/2018
 ms.author: erikre
 ms.openlocfilehash: 15725989ef786f94421eddf647f101e3e73633fb
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57890759"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60370811"
 ---
 # <a name="review-subscription-billing-using-rest-apis"></a>Zkontrolujte fakturace předplatného pomocí rozhraní REST API
 

@@ -11,11 +11,11 @@ ms.reviewer: klam, LADocs
 ms.suite: integration
 tags: connectors
 ms.openlocfilehash: 971d38fa0fbd47f0deb815577033bbe684aac32f
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58310672"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60312572"
 ---
 # <a name="create-and-manage-files-in-box-with-azure-logic-apps"></a>Vytvářet a spravovat soubory v boxu pomocí Azure Logic Apps
 

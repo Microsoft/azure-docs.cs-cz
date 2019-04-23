@@ -12,11 +12,11 @@ ms.date: 01/10/2019
 ms.author: v-gedod
 ms.custom: seodec2018
 ms.openlocfilehash: 1d6f4bb2bda550c72566243b2d2d98b1685e9147
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58119798"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60323225"
 ---
 # <a name="quickstart-perform-a-news-search-with-the-bing-news-search-sdk-for-python"></a>Rychlý start: Provádění sadou SDK pro vyhledávání zpráv Bingu pro vyhledávání zpráv pro Python
 

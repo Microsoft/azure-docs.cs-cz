@@ -1,7 +1,6 @@
 ---
 title: Rozhraní API pro rezervaci Azure automation | Dokumentace Microsoftu
 description: Další informace o rozhraní API služby Azure, můžete získat prostřednictvím kódu programu informace o rezervaci.
-services: billing
 documentationcenter: ''
 author: yashesvi
 manager: yashesvi
@@ -12,14 +11,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/10/2018
+ms.date: 04/13/2019
 ms.author: banders
-ms.openlocfilehash: 7e5697073b9406d915eda99a5e71e3123c48073a
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 246278df61d4f13e2634a1cdfc5ff6b635cecbbf
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57880210"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60371202"
 ---
 # <a name="apis-for-azure-reservation-automation"></a>Rozhraní API pro rezervaci Azure automation
 
@@ -55,7 +54,7 @@ Pokud zjistíte, že vaše organizace rezervace se podceňované:
 
 - Zajistěte, aby virtuální počítače, které vytváří organizace na velikost virtuálního počítače, který je na rezervaci.
 - Ujistěte se, že je velikost flexibilita instancí na. Další informace najdete v tématu [spravovat rezervace - změna optimalizovat nastavení Reserved VM instances](billing-manage-reserved-vm-instance.md#change-optimize-setting-for-reserved-vm-instances).
-- Změňte rozsah rezervace sdílet tak, aby platil šířeji. Další informace najdete v tématu [Správa rezervací – změnit obor pro rezervaci](billing-manage-reserved-vm-instance.md#change-the-scope-for-a-reservation).
+- Změňte rozsah rezervace sdílet tak, aby platil šířeji. Další informace najdete v tématu [Správa rezervací – změnit obor pro rezervaci](billing-manage-reserved-vm-instance.md#change-the-reservation-scope).
 - Výměna nevyužité množství. Další informace najdete v tématu [Správa rezervací – zrušení a výměnu](billing-manage-reserved-vm-instance.md#cancellations-and-exchanges).
 
 ## <a name="give-access-to-reservations"></a>Poskytnout přístup k rezervace
@@ -68,7 +67,7 @@ Získání seznamu všech rezervací, že uživatel má přístup k pomocí [rez
 
 ## <a name="split-or-merge-reservation"></a>Dělené tunelové propojení nebo sloučení rezervace
 
-Po nákupu více než jednu instanci prostředků v rámci rezervace, můžete přiřadit instancí v rámci této rezervaci do různých předplatných. Obor rezervace můžete změnit tak, aby se vztahuje na všechna předplatná v rámci stejného kontextu fakturace. Ale pro účely náklady na správu nebo plánování rozpočtu, můžete chtít zachovat oboru jako "jedno předplatné" a přiřaďte rezervované instance pro konkrétní předplatné. 
+Po nákupu více než jednu instanci prostředků v rámci rezervace, můžete přiřadit instancí v rámci této rezervaci do různých předplatných. Obor rezervace můžete změnit tak, aby se vztahuje na všechna předplatná v rámci stejného kontextu fakturace. Ale pro účely náklady na správu nebo plánování rozpočtu, můžete chtít zachovat oboru jako "jedno předplatné" a přiřaďte rezervované instance pro konkrétní předplatné.
 
 Pokud chcete rozdělit rezervaci, použijte rozhraní API [rezervace - rozdělit](/rest/api/reserved-vm-instances/reservation/split). Rezervaci můžete rozdělit pomocí prostředí PowerShell. Další informace najdete v tématu [Správa rezervací - rezervace rozdělit do dvou rezervace](billing-manage-reserved-vm-instance.md#split-a-single-reservation-into-two-reservations).
 
@@ -76,7 +75,7 @@ Chcete-li sloučit dvě rezervace do jednu rezervaci, použijte rozhraní API [r
 
 ## <a name="change-scope-for-a-reservation"></a>Změnit obor pro rezervaci.
 
-Rozsah rezervace může být jedno předplatné nebo všechna předplatná v fakturační kontextu. Je-li nastavit obor na jedno předplatné, rezervace porovnáváno s prostředky ve vybraném předplatném. Je-li nastavit obor na sdílené Azure odpovídá rezervace k prostředkům, které běží ve všech předplatných v rámci kontextu fakturace. Kontext fakturace je závislá na předplatné, které jste použili k koupit rezervaci. Další informace najdete v tématu [Správa rezervací – Změna rozsahu](billing-manage-reserved-vm-instance.md#change-the-scope-for-a-reservation).
+Rozsah rezervace může být jedno předplatné nebo všechna předplatná v fakturační kontextu. Je-li nastavit obor na jedno předplatné, rezervace porovnáváno s prostředky ve vybraném předplatném. Je-li nastavit obor na sdílené Azure odpovídá rezervace k prostředkům, které běží ve všech předplatných v rámci kontextu fakturace. Kontext fakturace je závislá na předplatné, které jste použili k koupit rezervaci. Další informace najdete v tématu [Správa rezervací – Změna rozsahu](billing-manage-reserved-vm-instance.md#change-the-reservation-scope).
 
 Chcete-li změnit obor prostřednictvím kódu programu, použijte rozhraní API [rezervace - aktualizace](/rest/api/reserved-vm-instances/reservation/update).
 

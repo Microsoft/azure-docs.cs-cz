@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 04/16/2019
+ms.date: 04/19/2019
 ms.author: jingwang
-ms.openlocfilehash: e3fc5a3dc5dc40078ca3a4733f6a2ba11da450f1
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
+ms.openlocfilehash: b97d21503e8dcd75906581faf1851533bcd69fa6
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59681212"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60203373"
 ---
 # <a name="copy-data-to-or-from-azure-sql-data-warehouse-by-using-azure-data-factory"></a>Kopírování dat do nebo z Azure SQL Data Warehouse pomocí Azure Data Factory 
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you're using:"]
@@ -399,22 +399,29 @@ Další informace o tom, jak pomocí funkce PolyBase načteme efektivně SQL Dat
 
 Pomocí [PolyBase](https://docs.microsoft.com/sql/relational-databases/polybase/polybase-guide) je účinný způsob, jak načíst větší množství dat do Azure SQL Data Warehouse s vysokou propustností. Zobrazí se vám velké zvýšení propustnosti pomocí PolyBase místo výchozího mechanismu hromadné vložení. Zobrazit [výkonu](copy-activity-performance.md#performance-reference) podrobné porovnání. Návod s případu použití, naleznete v tématu [načtení 1 TB do Azure SQL Data Warehouse](https://docs.microsoft.com/azure/data-factory/v1/data-factory-load-sql-data-warehouse).
 
-* Pokud vaše zdrojová data jsou v Azure Blob storage nebo Azure Data Lake Store a formát je kompatibilní s technologií PolyBase, kopii přímo do Azure SQL Data Warehouse pomocí PolyBase. Podrobnosti najdete v tématu  **[přímé kopírování pomocí PolyBase](#direct-copy-by-using-polybase)**.
+* Pokud vaše zdrojová data nejsou v **objektů Blob v Azure, Azure Data Lake Storage Gen1 nebo Azure Data Lake Storage Gen2**a **formát je PolyBase kompatibilní**, můžete použít aktivitu kopírování, která přímo vyvolat PolyBase nechejte systém Azure SQL Data Warehouse načíst data ze zdroje. Podrobnosti najdete v tématu  **[přímé kopírování pomocí PolyBase](#direct-copy-by-using-polybase)**.
 * Pokud zdrojové úložiště dat a formát polybase původně nepodporuje, použijte **[fázovaného kopírování pomocí PolyBase](#staged-copy-by-using-polybase)** místo toho funkci. Funkce dvoufázové instalace kopírování také poskytuje vyšší propustnost. Automaticky převádí data do formátu kompatibilním PolyBase. A ukládá data do úložiště objektů Blob v Azure. Pak načte data do SQL Data Warehouse.
 
 ### <a name="direct-copy-by-using-polybase"></a>Kopírování s přímým přístupem pomocí PolyBase
 
-SQL Data Warehouse PolyBase přímo podporuje objektů Blob v Azure a Azure Data Lake Store. Instanční objekt se používá jako zdroj a má požadavky na formát konkrétní soubor. Pokud vaše zdrojová data splňuje kritéria popsané v této části, zkopírovat přímo ze zdrojového úložiště dat do Azure SQL Data Warehouse pomocí PolyBase. Jinak použijte [fázovaného kopírování pomocí PolyBase](#staged-copy-by-using-polybase).
+SQL Data Warehouse PolyBase přímo podporuje objektů Blob v Azure, Azure Data Lake Storage Gen1 a Azure Data Lake Storage Gen2. Pokud vaše zdrojová data splňuje kritéria popsané v této části, zkopírovat přímo ze zdrojového úložiště dat do Azure SQL Data Warehouse pomocí PolyBase. Jinak použijte [fázovaného kopírování pomocí PolyBase](#staged-copy-by-using-polybase).
 
 > [!TIP]
-> Ke zkopírování dat efektivně z Data Lake Store do služby SQL Data Warehouse, přečtěte si informace z [Azure Data Factory umožňuje ještě snadněji a pohodlné odhalit další poznatky z dat při použití Data Lake Store s využitím SQL Data Warehouse](https://blogs.msdn.microsoft.com/azuredatalake/2017/04/08/azure-data-factory-makes-it-even-easier-and-convenient-to-uncover-insights-from-data-when-using-data-lake-store-with-sql-data-warehouse/).
+> Efektivní zkopírovat data do SQL Data Warehouse, přečtěte si informace z [Azure Data Factory umožňuje ještě snadněji a pohodlné odhalit další poznatky z dat při použití Data Lake Store s využitím SQL Data Warehouse](https://blogs.msdn.microsoft.com/azuredatalake/2017/04/08/azure-data-factory-makes-it-even-easier-and-convenient-to-uncover-insights-from-data-when-using-data-lake-store-with-sql-data-warehouse/).
 
 Pokud požadavky nejsou splněny, Azure Data Factory zkontroluje nastavení a automaticky přejde zpět k hromadné vložení mechanismus pro přesun dat.
 
-1. **Zdroj propojená služba** je typ úložiště objektů Blob v Azure (**službě Azure BLOB Storage**/**AzureStorage**) s **ověření pomocí klíče účtu**  nebo Azure Data Lake Storage Gen1 (**AzureDataLakeStore**) s **ověřování instančních objektů**.
-2. **Vstupní datová sada** typ je **AzureBlob** nebo **AzureDataLakeStoreFile**. Typ formátu podle `type` vlastnosti je **OrcFormat**, **ParquetFormat**, nebo **TextFormat**, s následující konfigurací:
+1. **Zdroj propojená služba** se tyto typy a metody ověřování:
 
-   1. `fileName` neobsahuje filtr zástupných znaků.
+    | Typ úložiště podporované zdroje dat | Podporovaný typ ověřování zdroje |
+    |:--- |:--- |
+    | [Azure Blob](connector-azure-blob-storage.md) | Ověření pomocí klíče účtu |
+    | [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md) | Ověřování instančních objektů |
+    | [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md) | Ověření pomocí klíče účtu |
+
+2. **Zdrojové datové sady formátu** je **ParquetFormat**, **OrcFormat**, nebo **TextFormat**, s následující konfigurací:
+
+   1. `folderPath` a `fileName` neobsahují filtr zástupných znaků.
    2. `rowDelimiter` musí být **\n**.
    3. `nullValue` je buď nastavit na **prázdný řetězec** ("") nebo jako výchozí, vlevo a `treatEmptyAsNull` ponechané jako výchozí nebo nastavený na hodnotu true.
    4. `encodingName` je nastavena na **utf-8**, což je výchozí hodnota.
@@ -423,7 +430,7 @@ Pokud požadavky nejsou splněny, Azure Data Factory zkontroluje nastavení a au
 
       ```json
       "typeProperties": {
-        "folderPath": "<blobpath>",
+        "folderPath": "<path>",
         "format": {
             "type": "TextFormat",
             "columnDelimiter": "<any delimiter>",
@@ -431,10 +438,6 @@ Pokud požadavky nejsou splněny, Azure Data Factory zkontroluje nastavení a au
             "nullValue": "",
             "encodingName": "utf-8",
             "firstRowAsHeader": <any>
-        },
-        "compression": {
-            "type": "GZip",
-            "level": "Optimal"
         }
       },
       ```
@@ -536,10 +539,10 @@ V následující tabulce jsou uvedené příklady toho, jak zadat **tableName** 
 
 | Schéma databáze | Název tabulky | **tableName** vlastnost JSON |
 | --- | --- | --- |
-| vlastník databáze | Tabulka | Tabulka nebo vlastník databáze. Tabulka nebo [dbo]. [MyTable] |
-| dbo1 | Tabulka | dbo1. Tabulka nebo [dbo1]. [MyTable] |
-| vlastník databáze | My.Table | [My.Table] nebo [dbo]. [My.Table] |
-| dbo1 | My.Table | [dbo1]. [My.Table] |
+| dbo | Tabulka | MyTable nebo dbo.MyTable nebo [dbo].[MyTable] |
+| dbo1 | Tabulka | dbo1. Tabulka nebo [dbo1].[MyTable] |
+| dbo | My.Table | [My.Table] nebo [dbo].[My.Table] |
+| dbo1 | My.Table | [dbo1].[My.Table] |
 
 Pokud se zobrazí následující chyba, problém může být hodnota zadaná pro **tableName** vlastnost. V předchozí tabulce najdete správný způsob, jak určit hodnoty **tableName** vlastnost JSON.
 

@@ -10,18 +10,18 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: fde556c60f823f4bd287ca5672503158c7292f51
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: HT
+ms.openlocfilehash: e92378cca445191f42708bd6348b1c75b29da1a1
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58918922"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60361060"
 ---
 # <a name="define-an-oauth2-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Technický profil OAuth2 definování ve vlastních zásadách pro Azure Active Directory B2C
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-Azure Active Directory (Azure AD) B2C poskytuje podporu pro zprostředkovatele identity protokolu OAuth2. Toto je primární protokol pro delegované ověřování a autorizace. Další informace najdete v tématu [RFC 6749 OAuth 2.0 autorizace rámci](https://tools.ietf.org/html/rfc6749). Technický profil může provést federaci s OAuth2 s OAuth2 podle zprostředkovatele identity, jako je Facebook nebo Live.com, umožňuje uživatelům přihlásit se s jejich existujícími sociálních sítí nebo podnikové identity.
+Azure Active Directory (Azure AD) B2C poskytuje podporu pro zprostředkovatele identity protokolu OAuth2. OAuth2 je primární protokol pro delegované ověřování a autorizace. Další informace najdete v tématu [RFC 6749 OAuth 2.0 autorizace rámci](https://tools.ietf.org/html/rfc6749). S OAuth2 technický profil může provést federaci pomocí zprostředkovatele identity na základě OAuth2, jako je Facebook. Federování s využitím zprostředkovatele identity umožňuje uživatelům Přihlaste se pomocí své stávající sociálních sítí nebo podnikové identity.
 
 ## <a name="protocol"></a>Protocol (Protokol)
 
@@ -54,7 +54,7 @@ Následující příklad ukazuje deklarace vrácené poskytovatelem identity Fac
 
 - **Křestní_jméno** deklarace identity se mapuje na **givenName** deklarací identity.
 - **Příjmení** deklarace identity se mapuje na **příjmení** deklarací identity.
-- **DisplayName** deklarace identity bez mapování názvů...
+- **DisplayName** deklarace identity bez mapování názvů.
 - **E-mailu** deklarace identity bez mapování názvů.
 
 Technický profil také vrátí hodnotu deklarace identity, které nejsou vrácené zprostředkovatelem identity: 
@@ -64,7 +64,7 @@ Technický profil také vrátí hodnotu deklarace identity, které nejsou vráce
 
 ```xml
 <OutputClaims>
-  <OutputClaim ClaimTypeReferenceId="socialIdpUserId" PartnerClaimType="id" />
+  <OutputClaim ClaimTypeReferenceId="issuerUserId" PartnerClaimType="id" />
   <OutputClaim ClaimTypeReferenceId="givenName" PartnerClaimType="first_name" />
   <OutputClaim ClaimTypeReferenceId="surname" PartnerClaimType="last_name" />
   <OutputClaim ClaimTypeReferenceId="displayName" PartnerClaimType="name" />
@@ -90,7 +90,7 @@ Technický profil také vrátí hodnotu deklarace identity, které nejsou vráce
 | ClaimsEndpointFormat | Ne | Hodnota parametru řetězce dotazu formátu. Například můžete nastavit na hodnotu jako hodnota `json` v tomto LinkedIn deklarací koncový bod `https://api.linkedin.com/v1/people/~?format=json`. | 
 | ProviderName | Ne | Název zprostředkovatele identity. |
 | response_mode | Ne | Metoda, která používá zprostředkovatel identity k odesílání výsledek zpět do Azure AD B2C. Možné hodnoty: `query`, `form_post` (výchozí), nebo `fragment`. |
-| scope | Ne | Rozsah žádosti o přístup, definována podle specifikace OAuth2 zprostředkovatele identity. Například `openid`, `profile`, a `email`. |
+| scope | Ne | Obor požadavku, který je definován podle specifikace OAuth2 zprostředkovatele identity. Například `openid`, `profile`, a `email`. |
 | HttpBinding | Ne | Očekávané vazby HTTP na token a deklarací identity tokenu koncové body přístupu. Možné hodnoty: `GET` nebo `POST`.  |
 | ResponseErrorCodeParamName | Ne | Název parametru, který obsahuje chybovou zprávu vrácenou přes HTTP 200 (Ok). |
 | ExtraParamsInAccessTokenEndpointResponse | Ne | Obsahuje další parametry, které se můžete vrátit v odpovědi z **AccessTokenEndpoint** některé poskytovateli identity. Například odpověď z **AccessTokenEndpoint** obsahuje další parametr, například `openid`, což je povinný parametr kromě access_token v **ClaimsEndpoint** dotazu žádosti o řetězec. Více názvy parametrů by být uvozeny řídicími znaky a oddělené čárkou ',' oddělovač. |
@@ -102,7 +102,7 @@ Technický profil také vrátí hodnotu deklarace identity, které nejsou vráce
 
 | Atribut | Požadováno | Popis |
 | --------- | -------- | ----------- |
-| client_secret | Ano | Tajný kód klienta aplikace zprostředkovatele identity. Šifrovací klíč je požadován, pouze v případě, **response_types** metadat je nastavena na `code`. V tomto případě Azure AD B2C umožňuje jiného volání k výměně autorizačního kódu pro přístupový token. Pokud metadata nastavená na `id_token` kryptografický klíč můžete vynechat.  |  
+| client_secret | Ano | Tajný kód klienta aplikace zprostředkovatele identity. Šifrovací klíč je požadován, pouze v případě, **response_types** metadat je nastavena na `code`. V tomto případě Azure AD B2C umožňuje jiného volání k výměně autorizačního kódu pro přístupový token. Pokud metadata nastavená na `id_token`, můžete vynechat kryptografický klíč. |  
 
 ## <a name="redirect-uri"></a>Přesměrovat identifikátor URI
 

@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 03/01/2019
 ms.author: juliako
 ms.openlocfilehash: 9952a7bbac1eb79de0d3425f839e3bd30196844e
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57243886"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60322280"
 ---
 # <a name="live-event-types-comparison"></a>Porovnání typů živé události
 
@@ -57,7 +57,7 @@ Následující tabulka obsahuje porovnání funkcí těchto dvou typů živá ud
 
 ## <a name="system-presets"></a>Předvolby systému
 
-Při použití kódování v reálném čase (živá událost nastavena na **standardní**), použitá předvolba kódování definuje, jak příchozím datovém proudu je zakódován do více přenosových rychlostí nebo vrstvy. V současné době jediná povolená hodnota je přednastavený kontext *Default720p* (výchozí).
+Při použití kódování v reálném čase (živá událost nastavená na Standard) **předvolba kódování** definuje způsob, jakým se příchozí stream kóduje do několika přenosových rychlostí nebo vrstev. V současné době jediná povolená hodnota je přednastavený kontext *Default720p* (výchozí).
 
 **Default720p** bude kódování videa do následujících 6 vrstev.
 
@@ -73,7 +73,7 @@ Při použití kódování v reálném čase (živá událost nastavena na **sta
 | 200 |340 |192 |30 |Vysoký |Video_340x192_200kbps |
 
 > [!NOTE]
-> Pokud musíte použít vlastní předvolba živé kódování, obraťte se prosím amshelp@microsoft.com. Měli byste určit požadovanou tabulku rozlišení a přenosových rychlostí. Ověřte, že existuje pouze jedna vrstva na 720p a maximálně 6 vrstvy.
+> Pokud potřebujete použít vlastní předvolbu kódování v reálném čase, obraťte se na amshelp@microsoft.com. Měli byste uvést tabulku požadovaných rozlišení a přenosových rychlostí. Ověřte, že existuje pouze jedna vrstva s rozlišením 720p a maximálně 6 vrstev celkem.
 
 ### <a name="output-audio-stream"></a>Výstup zvukový Stream
 

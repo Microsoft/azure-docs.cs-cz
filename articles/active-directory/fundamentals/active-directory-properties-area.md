@@ -13,11 +13,11 @@ ms.reviewer: bpham
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 98b4e3585f25a0b081e30c5524678a0f7bb27942
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56187266"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60248501"
 ---
 # <a name="add-your-organizations-privacy-info-using-azure-active-directory"></a>Přidání informací o ochraně osobních údajů vaší organizace pomocí služby Azure Active Directory
 Tento článek vysvětluje, jak může správce tenanta přidat informace týkající se ochrany osobních údajů v organizaci tenanta Azure Active Directory (Azure AD), na webu Azure portal.

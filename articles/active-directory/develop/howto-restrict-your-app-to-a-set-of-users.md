@@ -18,11 +18,11 @@ ms.reviewer: ''
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 17b76a25b3c5c2c3ce4dc4217389706a4b24d837
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56210284"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60410055"
 ---
 # <a name="how-to-restrict-your-app-to-a-set-of-users"></a>Postup: Omezení aplikace na sadu uživatelů
 

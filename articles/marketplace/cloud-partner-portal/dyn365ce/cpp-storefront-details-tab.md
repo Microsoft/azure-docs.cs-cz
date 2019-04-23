@@ -15,11 +15,11 @@ ms.topic: conceptual
 ms.date: 01/03/2019
 ms.author: pbutlerm
 ms.openlocfilehash: f9cbf5033d0ffb84959de94db052626dd1d131c8
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57997947"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60311245"
 ---
 # <a name="dynamics-365-for-customer-engagement-storefront-details-tab"></a>Dynamics 365 pro kartu Podrobnosti z prodejních míst zapojení zákazníků
 
@@ -52,7 +52,7 @@ Kde následující tabulka popisuje pole na této kartě:
 |    **Pole**          |  **Popis**               |
 |  ---------------      |  ---------------               |
 |  Odvětví           | Vyberte obory (maximálně dva), které odpovídá doporučené aplikace. Pokud žádný vztahuje, můžete vybrat žádnou možnosti.  |
-|  Kategorie           | Vyberte příslušné kategorie, které jsou relevantní pro danou aplikaci. Výběr jednoho a tři možnosti.  |
+|  Categories           | Vyberte příslušné kategorie, které jsou relevantní pro danou aplikaci. Výběr jednoho a tři možnosti.  |
 |  Typ aplikace             | Vyberte typ zkušební verzi, která je povolená aplikace na AppSource. **Bezplatné** označuje vaší aplikace se dá používat bez poplatků; **Zkušební** označuje, že můžou zákazníci vyzkouší vaši aplikaci na krátkou dobu bez poplatků; a **Kontaktujte mě** označuje, že zákazníci můžou požádat o zkušební verzi aplikaci na AppSource.  |
 | Odkaz na nápovědu pro vaši aplikaci | Adresa URL pro dokumentaci online nebo jiný prostředek nápovědy pro aplikaci.  |
 | Podporované země/oblasti | Místní nabídka dialogu Výběr zeměpisné oblasti, kde se nabízí aplikace.  Po celém světě distribuce je výchozí hodnota. |

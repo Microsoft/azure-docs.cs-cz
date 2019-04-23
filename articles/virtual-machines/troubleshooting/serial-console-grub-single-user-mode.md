@@ -15,11 +15,11 @@ ms.workload: infrastructure-services
 ms.date: 08/14/2018
 ms.author: alsin
 ms.openlocfilehash: ca2523a1101a21740a318a304f9bec491d4de2f9
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58106232"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60307060"
 ---
 # <a name="use-serial-console-to-access-grub-and-single-user-mode"></a>Použít pro přístup k GRUB a Jednouživatelský režim konzoly sériového portu
 GRUB je součet Unified spouštěcí zavaděč, který je pravděpodobně první, co se zobrazí, když virtuálního počítače. Vzhledem k tomu, že ji zobrazí předtím, než byl spuštěn operační systém, není přístupná přes protokol SSH. Z GRUB budete moci změnit konfiguraci spuštění pro spuštění do režimu jednoho uživatele, mimo jiné.

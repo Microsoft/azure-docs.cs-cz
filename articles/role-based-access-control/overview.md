@@ -15,11 +15,11 @@ ms.date: 03/13/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.openlocfilehash: fd5c47bb3c7bc3dfc9c0e140531ff832e7e6ef56
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58011035"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60344905"
 ---
 # <a name="what-is-role-based-access-control-rbac-for-azure-resources"></a>Co je řízení přístupu na základě rolí (RBAC) pro prostředky Azure?
 
@@ -136,6 +136,6 @@ V následující části popisujeme obecné kroky, které se v modelu RBAC použ
 ## <a name="next-steps"></a>Další postup
 
 - [Rychlé zprovoznění: Obsahuje zobrazení přístupu uživatelů k prostředkům Azure pomocí webu Azure portal](check-access.md)
-- [Správa přístupu k prostředkům Azure pomocí RBAC a webu Azure portal](role-assignments-portal.md)
+- [Správa přístupu k prostředkům Azure pomocí RBAC a webu Azure Portal](role-assignments-portal.md)
 - [Vysvětlení různých rolí v Azure](rbac-and-directory-admin-roles.md)
 - [Přechodu na podnikový Cloud: Správa přístupu k prostředkům v Azure](/azure/architecture/cloud-adoption/getting-started/azure-resource-access)

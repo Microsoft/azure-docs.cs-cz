@@ -11,11 +11,11 @@ ms.date: 12/13/2018
 ms.author: davidmu
 ms.subservice: B2C
 ms.openlocfilehash: a9e58139d248daed19f4fe35c7d33ede9dfe64b0
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55195966"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60317186"
 ---
 # <a name="configure-password-change-using-custom-policies-in-azure-active-directory-b2c"></a>Konfigurace Změna hesla pomocí vlastních zásad v Azure Active Directory B2C
 

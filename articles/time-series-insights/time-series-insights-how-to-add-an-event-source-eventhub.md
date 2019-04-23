@@ -12,11 +12,11 @@ ms.topic: conceptual
 ms.date: 11/30/2018
 ms.custom: seodec18
 ms.openlocfilehash: d4a80358535429f53b582abe8560757028159070
-ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53557780"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60197799"
 ---
 # <a name="add-an-event-hub-event-source-to-your-time-series-insights-environment"></a>Přidání zdroje událostí centra událostí do prostředí Time Series Insights
 

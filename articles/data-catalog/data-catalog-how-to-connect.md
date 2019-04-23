@@ -2,18 +2,18 @@
 title: Jak se připojit ke zdrojům dat ve službě Azure Data Catalog
 description: Článek zvýraznění jak se připojit ke zdrojům dat zjištěným pomocí služby Azure Data Catalog.
 services: data-catalog
-author: markingmyname
-ms.author: maghan
+author: JasonWHowell
+ms.author: jasonh
 ms.assetid: 4e6b27a5-cf75-4012-b88c-333c1fe638e8
 ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 01/18/2018
-ms.openlocfilehash: 973077b56f1a777d917a94f9c1470e6f8c15a489
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
-ms.translationtype: MT
+ms.openlocfilehash: c64340491dba11870364610a6c2ff62e25c1328a
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47405050"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60000568"
 ---
 # <a name="how-to-connect-to-data-sources"></a>Jak se připojit ke zdrojům dat
 ## <a name="introduction"></a>Úvod
@@ -37,11 +37,11 @@ Při použití "Otevřít v..." nabídky pro zdroje dat na portálu Azure Data C
 
 | Otevřít v aplikaci | Přípona souboru / protokol | Verze podporované aplikace |
 | --- | --- | --- |
-| Excel |ODC |Aplikace Excel 2010 nebo novější |
-| Excel (prvních 1000) |ODC |Aplikace Excel 2010 nebo novější |
-| Power Query |XLSX |Nainstalované aplikace Excel 2016 a Excel 2010 nebo Excel 2013 pomocí Power Query pro Excel add-in |
+| Excel |.odc |Aplikace Excel 2010 nebo novější |
+| Excel (prvních 1000) |.odc |Aplikace Excel 2010 nebo novější |
+| Power Query |.xlsx |Nainstalované aplikace Excel 2016 a Excel 2010 nebo Excel 2013 pomocí Power Query pro Excel add-in |
 | Power BI Desktopu |.pbix |Power BI Desktopu z července 2016 nebo novější |
-| SQL Server Data Tools |vsweb: / / |Visual Studio 2013 Update 4 nebo novější pomocí nástrojů SQL Server nainstalovaný |
+| SQL Server Data Tools |vsweb:// |Visual Studio 2013 Update 4 nebo novější pomocí nástrojů SQL Server nainstalovaný |
 | Správce sestav |http:// |Zobrazit [požadavky na prohlížeč pro SQL Server Reporting Services](https://technet.microsoft.com/library/ms156511.aspx) |
 
 ## <a name="your-data-your-tools"></a>Vaše data, vaše nástroje

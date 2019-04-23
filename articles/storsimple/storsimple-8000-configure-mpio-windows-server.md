@@ -15,11 +15,11 @@ ms.workload: NA
 ms.date: 03/26/2018
 ms.author: alkohli
 ms.openlocfilehash: eda134257edb851eea076459b44e02fc59028f46
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58078138"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60363245"
 ---
 # <a name="configure-multipath-io-for-your-storsimple-device"></a>Nakonfigurujte funkci Multipath I/O pro zařízení StorSimple
 
@@ -84,7 +84,7 @@ Funkce MPIO, musí být nakonfigurovaný k identifikaci svazky zařízení StorS
 3. Vyberte **přidanou podporou pro zařízení iSCSI**a potom klikněte na tlačítko **přidat**.  
    ![Vlastnosti funkce MPIO zjistit více cest](./media/storsimple-configure-mpio-windows-server/IC741003.png)
 4. Restartujte server po zobrazení výzvy.
-5. V **vlastnosti funkce MPIO** dialogové okno, klikněte na tlačítko **funkce MPIO zařízení** kartu. Klikněte na **Přidat**.
+5. V **vlastnosti funkce MPIO** dialogové okno, klikněte na tlačítko **funkce MPIO zařízení** kartu. Klikněte na tlačítko **Add** (Přidat).
     </br>![Funkce MPIO vlastnosti funkce MPIO zařízení](./media/storsimple-configure-mpio-windows-server/IC741004.png)
 6. V **přidat podporu funkce MPIO** dialogovém okně **ID hardwaru zařízení**, zadejte sériové číslo zařízení. Sériové číslo zařízení získáte přístup ke službě Správce zařízení StorSimple. Přejděte do **zařízení > řídicí panel**. Sériové číslo zařízení se zobrazí v pravém **rychlý přehled** podokně řídicího panelu zařízení.
     </br>

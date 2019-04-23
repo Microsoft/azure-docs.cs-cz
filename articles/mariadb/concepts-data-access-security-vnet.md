@@ -7,11 +7,11 @@ ms.service: mariadb
 ms.topic: conceptual
 ms.date: 02/26/2019
 ms.openlocfilehash: 5a4e6819eeff2a2c8efaf3807c38cc06f7c35002
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59006689"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60332819"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-azure-database-for-mariadb"></a>Použití koncové body služeb virtuální sítě a pravidel pro službu Azure Database pro MariaDB
 

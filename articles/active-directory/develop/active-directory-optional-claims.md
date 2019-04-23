@@ -18,11 +18,11 @@ ms.reviewer: paulgarn, hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 253a5e247dbbea5fc7e0e556d8619328b43bff58
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59501055"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60300140"
 ---
 # <a name="how-to-provide-optional-claims-to-your-azure-ad-app"></a>Postup: Zadejte nepovinných deklarací identity do aplikace Azure AD
 
@@ -52,7 +52,7 @@ Sada nepovinných deklarací identity ve výchozím nastavení dostupné pro pou
 
 **Tabulka 2: V1.0 a V2.0 volitelné množině deklarací identity**
 
-| Název                       |  Popis   | Typ tokenu | Typ uživatele | Poznámky  |
+| Name                       |  Popis   | Typ tokenu | Typ uživatele | Poznámky  |
 |----------------------------|----------------|------------|-----------|--------|
 | `auth_time`                | Čas, kdy naposledy ověření uživatele. Specifikace OpenID Connect najdete v tématu.| JWT        |           |  |
 | `tenant_region_scope`      | Oblast prostředku tenanta | JWT        |           | |
@@ -80,7 +80,7 @@ Tyto deklarace jsou vždy součástí v1.0 tokenů Azure AD, ale není součást
 
 **Tabulka 3: Pouze pro verze 2.0 nepovinných deklarací identity**
 
-| JWT Claim     | Název                            | Popis                                | Poznámky |
+| JWT Claim     | Name                            | Popis                                | Poznámky |
 |---------------|---------------------------------|-------------|-------|
 | `ipaddr`      | IP adresa                      | IP adresa přihlášení z klienta.   |       |
 | `onprem_sid`  | Místní identifikátor zabezpečení |                                             |       |
@@ -164,7 +164,7 @@ Deklaruje nepovinných deklarací identity požadovaný aplikací. Aplikace mů�
 
 **Tabulka 5: Vlastnosti typu OptionalClaims**
 
-| Název        | Typ                       | Popis                                           |
+| Name        | Typ                       | Popis                                           |
 |-------------|----------------------------|-------------------------------------------------------|
 | `idToken`     | Kolekce (OptionalClaim) | Nepovinné deklarace vrácené v tokenu JWT ID. |
 | `accessToken` | Kolekce (OptionalClaim) | Nepovinné deklarace vrácené v přístupovém tokenu JWT. |
@@ -177,7 +177,7 @@ Pokud podporovaná konkrétní deklarace identity, můžete také upravit chová
 
 **Tabulka 6: Vlastnosti typu OptionalClaim**
 
-| Název                 | Typ                    | Popis                                                                                                                                                                                                                                                                                                   |
+| Name                 | Typ                    | Popis                                                                                                                                                                                                                                                                                                   |
 |----------------------|-------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | `name`                 | Edm.String              | Název volitelnou deklaraci.                                                                                                                                                                                                                                                                           |
 | `source`               | Edm.String              | Zdroj (objekt adresáře) deklarace identity. Jsou předdefinované deklarace identity a uživatelem definované vlastnosti rozšíření deklarací identity. Pokud zdrojová hodnota je null, deklarace identity je předdefinovaný volitelnou deklaraci. Pokud zdrojová hodnota je uživatel, je hodnota vlastnosti název vlastnosti rozšíření v objektu user. |

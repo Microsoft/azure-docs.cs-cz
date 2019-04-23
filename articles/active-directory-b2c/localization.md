@@ -11,11 +11,11 @@ ms.date: 09/10/2018
 ms.author: davidmu
 ms.subservice: B2C
 ms.openlocfilehash: 8f252b536c80ad997f3c0eb10b10d5cb8c330fc6
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55187551"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60401744"
 ---
 # <a name="localization"></a>Lokalizace
 
@@ -41,7 +41,7 @@ ms.locfileid: "55187551"
 
 | Atribut | Požadováno | Popis |
 | --------- | -------- | ----------- |
-| Povoleno | Ne | Možné hodnoty: `true` nebo `false`. |
+| Enabled | Ne | Možné hodnoty: `true` nebo `false`. |
 
 **Lokalizace** prvek obsahuje následující prvky XML
 

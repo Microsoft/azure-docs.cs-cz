@@ -16,11 +16,11 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 40e125f8e1e7909c5866a03c0571f49ec42d690a
-ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58437930"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60287393"
 ---
 # <a name="risky-sign-ins-report-in-the-azure-active-directory-portal"></a>Sestavy rizikových přihlášení na portálu Azure Active Directory
 
@@ -44,7 +44,7 @@ Sestavy rizikových přihlášení jsou k dispozici uživatelům v následujíc�
 
 - Správce zabezpečení
 - Globální správce
-- Čtecí zařízení pro zabezpečení
+- Čtenář zabezpečení
 
 Zjistěte, jak přiřadit správní role pro uživatele v Azure Active Directory, najdete v článku [zobrazení a přiřazení rolí správce ve službě Azure Active Directory](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-manage-roles-portal).
 

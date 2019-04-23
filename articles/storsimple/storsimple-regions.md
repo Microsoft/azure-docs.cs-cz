@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/16/2017
 ms.author: alkohli
-ms.openlocfilehash: 7e35aa8120c455b8cc0d0881a9ceb5120c57deff
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
-ms.translationtype: MT
+ms.openlocfilehash: ff2ea89c257a4941c801f3056450e005a9b37039
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52969664"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59996046"
 ---
 # <a name="available-regions-for-your-storsimple"></a>Dostupné oblasti pro StorSimple
 
@@ -45,7 +45,7 @@ Při prvním vytvoření služby StorSimple Device Manager definujte oblast nebo
 
 Tady je seznam oblastí, kde služby Správce zařízení StorSimple je k dispozici pro veřejný cloud Azure a je možné nasadit.
 
-![storsimple zařízení – Správce service oblastí](./media/storsimple-region/storsimple-device-manager-service-regions.png)
+![storsimple-device-manager-service-regions](./media/storsimple-region/storsimple-device-manager-service-regions.png)
 
 Pro cloud Azure Government je dostupná v datacentrech v Iowě státní správy USA a US Gov Virginie ve službě Správce zařízení StorSimple.
 
@@ -69,7 +69,7 @@ Pokud používáte StorSimple 8100 nebo 8600 fyzické zařízení, zařízení j
 
 | #  | Země        | #  | Země     | #  | Země      | #  | Země              |
 |----|----------------|----|-------------|----|--------------|----|----------------------|
-| 1  | Austrálie      | 16 | Hongkong   | 31 | Nový Zéland  | 46 | Jižní Afrika         |
+| 1  | Austrálie      | 16 | Hongkong – zvláštní správní oblast| 31 | Nový Zéland  | 46 | Jižní Afrika         |
 | 2  | Rakousko        | 17 | Maďarsko     | 32 | Nigérie      | 47 | Jižní Korea          |
 | 3  | Bahrajn        | 18 | Island     | 33 | Norsko       | 48 | Španělsko                |
 | 4  | Belgie        | 19 | Indie       | 34 | Peru         | 49 | Srí Lanka            |
@@ -80,7 +80,7 @@ Pokud používáte StorSimple 8100 nebo 8600 fyzické zařízení, zařízení j
 | 9  | Česká republika | 24 | Japonsko       | 39 | Katar        | 54 | Turecko               |
 | 10 | Dánsko        | 25 | Keňa       | 40 | Rumunsko      | 55 | Ukrajina              |
 | 11 | Egypt          | 26 | Kuvajt      | 41 | Rusko       | 56 | Spojené arabské emiráty |
-| 12 | Finsko        | 27 | Macao       | 42 | Saúdská Arábie | 57 | Spojené království       |
+| 12 | Finsko        | 27 | Macao – zvláštní administrativní oblast   | 42 | Saúdská Arábie | 57 | Spojené království       |
 | 13 | Francie         | 28 | Malajsie    | 43 | Singapur    | 58 | Spojené státy        |
 | 14 | Německo        | 29 | Mexiko      | 44 | Slovensko     | 59 | Vietnam              |
 | 15 | Řecko         | 30 | Nizozemsko | 45 | Slovinsko     | 60 | Chorvatsko              |

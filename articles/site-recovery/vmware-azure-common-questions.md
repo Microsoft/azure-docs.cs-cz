@@ -5,15 +5,15 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 services: site-recovery
-ms.date: 04/08/2019
+ms.date: 04/18/2019
 ms.topic: conceptual
 ms.author: raynew
-ms.openlocfilehash: 2ab29c6e41204104320f4c2f583a24e53786bf3c
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: d0e39f9e24b3c486eccd71eb1c19823cfd33391a
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59360536"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60004767"
 ---
 # <a name="common-questions---vmware-to-azure-replication"></a>Časté otázky – VMware pro replikaci Azure
 
@@ -111,7 +111,7 @@ Replikace nových virtuálních počítačů na účet úložiště je dostupný
 
 ### <a name="can-i-change-the-managed-disk-type-after-machine-is-protected"></a>Můžete změnit typ spravovaného disku, jakmile je chráněný počítač?
 
-Ano, můžete snadno [změnit typ spravovaného disku](https://docs.microsoft.com/azure/virtual-machines/windows/convert-disk-storage). Pokud je to možné typ spravovaného disku, počkejte však body obnovení čerstvé chcete vygenerovat, pokud je potřeba testovat převzetí služeb při selhání nebo převzetí služeb při selhání po provedení změny.
+Ano, můžete snadno [změnit typ spravovaného disku](https://docs.microsoft.com/azure/virtual-machines/windows/convert-disk-storage). Před změnou typu, zkontrolujte následek odvolání adres URL SAS pro disk, a to tak, že přejdete na prostředek spravovaného disku na portálu Azure portal. V okně Přehled zrušte všechny probíhající exportu. Po odvolání adres URL SAS, změňte typ disku během několika minut. Pokud změníte typ spravovaného disku, počkejte však body čerstvé obnovení Azure Site Recovery vygenerovat. Pomocí nové body obnovení pro všechny testovací převzetí služeb při selhání nebo převzetí služeb při selhání do budoucna.
 
 ### <a name="can-i-switch-replication-from-managed-disks-to-unmanaged-disks"></a>Můžete přepínat replikace z spravované disky do nespravované disky?
 

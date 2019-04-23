@@ -1,6 +1,6 @@
 ---
-title: Stream protokolů služby Azure Active Directory na Splunk používat Azure Monitor (preview) | Dokumentace Microsoftu
-description: Zjistěte, jak integrace protokolů Azure Active Directory s Splunk pomocí Azure monitoru (preview)
+title: Stream protokolů služby Azure Active Directory na Splunk používat Azure Monitor | Dokumentace Microsoftu
+description: Zjistěte, jak integrace protokolů Azure Active Directory s Splunk pomocí Azure monitoru
 services: active-directory
 documentationcenter: ''
 author: MarkusVi
@@ -13,18 +13,18 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
-ms.date: 11/13/2018
+ms.date: 04/18/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 94039655a6cbe7878fa1f61ce759485392dc7e98
-ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
+ms.openlocfilehash: 70befad3208f34fe62fbb0a59cea4bf6ea01ce16
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58438848"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60284798"
 ---
-# <a name="integrate-azure-ad-logs-with-splunk-using-azure-monitor-preview"></a>Integrace protokolů Azure AD s Splunk používat Azure Monitor (preview)
+# <a name="integrate-azure-ad-logs-with-splunk-using-azure-monitor"></a>Integrace protokolů Azure AD s Splunk používat Azure Monitor
 
 V tomto článku se dozvíte, jak integrovat Splunk protokoly služby Azure Active Directory (Azure AD) pomocí Azure monitoru. První směrování protokolů do služby Azure event hub a pak integruje centra událostí se Splunk.
 

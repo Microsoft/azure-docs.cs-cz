@@ -1,6 +1,6 @@
 ---
 title: Vlastní sestavy od Verizonu | Dokumentace Microsoftu
-description: 'Můžete zobrazit vzorce používání vaší sítě CDN pomocí následující sestavy: šířky pásma, přenesená Data, přístupy, stavy mezipaměti, poměr přístupů do mezipaměti, přenesená Data IPV4/IPV6.'
+description: 'Vzorce používání vaší sítě CDN můžete zobrazit pomocí následující sestavy: Přenesená Data šířky pásma, přístupy, stavy mezipaměti, poměr, přenesená Data IPV4/IPV6 přístupů do mezipaměti.'
 services: cdn
 documentationcenter: ''
 author: mdgattuso
@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 10/11/2017
 ms.author: magattus
 ms.openlocfilehash: 75a1fb4beb4025dc3ec63d29944331d07be35d8a
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49092062"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60323547"
 ---
 # <a name="custom-reports-from-verizon"></a>Vlastní sestavy od Verizonu
 
@@ -45,11 +45,11 @@ Vlastní sestavu protokolování dat začíná hodinu potom, co povolíte vlastn
 
 Generovat vlastní sestavy tak, že definujete následující možnosti sestavy:
 
-- Metriky: Jsou podporovány následující možnosti:
+- Metriky: Podporovány jsou následující možnosti:
 
    - Počet přístupů: Určuje celkový počet požadavků, které jsou směrované na edge CNAME, na kterých je povoleno vlastní možnosti vytváření sestav. Tato metrika nezahrnuje stavový kód, který je vrácen do klienta.
 
-   - Data Transfer: Určuje celkové množství dat přenášených ze serverů edge klientům protokolu HTTP (například webové prohlížeče) pro požadavky, které jsou směrované na edge CNAME, na kterých je povoleno vlastní možnosti vytváření sestav. Objem přenesených dat se vypočte tak přidání hlavičky odpovědi do těla odpovědi. V důsledku toho objemu dat přenesených pro každý prostředek je větší než skutečná velikost.
+   - Přenesená data: Určuje celkové množství dat přenášených ze serverů edge klientům protokolu HTTP (například webové prohlížeče) pro požadavky, které jsou směrované na edge CNAME, na kterých je povoleno vlastní možnosti vytváření sestav. Objem přenesených dat se vypočte tak přidání hlavičky odpovědi do těla odpovědi. V důsledku toho objemu dat přenesených pro každý prostředek je větší než skutečná velikost.
 
 - Seskupení: Určuje typ statistické údaje, které jsou uvedeny níže pruhový graf. Podporovány jsou následující možnosti:
 

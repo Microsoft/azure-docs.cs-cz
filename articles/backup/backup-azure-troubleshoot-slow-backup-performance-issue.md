@@ -9,11 +9,11 @@ ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: genli
 ms.openlocfilehash: f24a60ab9bdcf1231085de4edeeb89ce1edf4e80
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51248465"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60337625"
 ---
 # <a name="troubleshoot-slow-backup-of-files-and-folders-in-azure-backup"></a>Řešení potíží s pomalým zálohováním souborů a složek ve službě Azure Backup
 Tento článek obsahuje pokyny k odstraňování problémů, které vám pomohou diagnostikovat příčiny pomalého výkonu zálohování souborů a složek, při použití Azure Backup. Pokud používáte agenta Azure Backup k zálohování souborů, záložní proces může trvat déle než obvykle. Toto zpoždění může být způsobena jednou nebo více z následujících akcí:
@@ -31,7 +31,7 @@ Také důrazně doporučujeme, abyste se seznámili [nejčastějších dotazech 
 
 <a id="cause1"></a>
 
-## <a name="cause-performance-bottlenecks-on-the-computer"></a>Příčina: Kritické body výkonu v počítači
+## <a name="cause-performance-bottlenecks-on-the-computer"></a>Příčina: Kritické body výkonu na počítači
 Kritická místa v počítači, který je právě zálohován může to způsobit prodlevy. Počítači umožňuje čtení nebo zápisu na disk nebo dostupnou šířku pásma pro odesílání dat přes síť, například může způsobit kritické body.
 
 Windows poskytuje integrované nástroje, která je volána [sledování výkonu](https://technet.microsoft.com/magazine/2008.08.pulse.aspx) (Perfmon) ke zjištění těchto kritické body.
@@ -68,7 +68,7 @@ Antivirové programy doporučujeme můžete vyloučit následující soubory a u
 
 <a id="cause3"></a>
 
-## <a name="cause-backup-agent-running-on-an-azure-virtual-machine"></a>Příčina: Zálohování agenta spuštěného na virtuálním počítači Azure
+## <a name="cause-backup-agent-running-on-an-azure-virtual-machine"></a>Příčina: Agent zálohování spuštěný na virtuálním počítači Azure
 Pokud používáte agenta zálohování na virtuálním počítači, sníží se výkon než při spuštění na fyzickém počítači. Očekává se z důvodu omezení vstupně-výstupních operací.  Můžete však optimalizovat výkon díky přepínání datových jednotek, které jsou zálohovány do služby Azure Premium Storage. Pracujeme na opravě tohoto problému a oprava bude k dispozici v budoucí verzi.
 
 <a id="cause4"></a>

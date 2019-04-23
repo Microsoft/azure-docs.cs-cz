@@ -9,11 +9,11 @@ ms.date: 02/25/2019
 ms.author: jaredro
 ms.custom: seodec18
 ms.openlocfilehash: 1d7bb72dab622cd0b18d1da1aa34a651e1443997
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58095530"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60365073"
 ---
 # <a name="how-to-configure-expressroute-direct"></a>Konfigurace ExpressRoute přímo
 

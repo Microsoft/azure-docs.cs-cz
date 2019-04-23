@@ -11,11 +11,11 @@ ms.workload: infrastructure-services
 ms.date: 12/04/2018
 ms.author: kumud
 ms.openlocfilehash: 083bdf9c5aec640fbbd7757b307ac47178e0b14b
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58076135"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60329891"
 ---
 # <a name="traffic-manager-endpoint-monitoring"></a>Monitorování koncových bodů Traffic Manageru
 
@@ -69,12 +69,12 @@ Stav monitorování koncového bodu je hodnota generované Traffic Manageru, kte
 
 | Stav profilu | Stav koncového bodu | Stav monitorování koncového bodu | Poznámky |
 | --- | --- | --- | --- |
-| Zakázáno |Povoleno |Neaktivní |Profil je zakázané. I když je povolen stav koncového bodu, přednost má stav profilu (zakázáno). Koncové body v profilech zakázané nejsou monitorovány. Kód odpovědi NXDOMAIN se vrátí dotaz DNS. |
+| Zakázáno |Enabled |Neaktivní |Profil je zakázané. I když je povolen stav koncového bodu, přednost má stav profilu (zakázáno). Koncové body v profilech zakázané nejsou monitorovány. Kód odpovědi NXDOMAIN se vrátí dotaz DNS. |
 | &lt;Všechny&gt; |Zakázáno |Zakázáno |Koncový bod je zakázané. Zakázané koncových bodů nejsou monitorovány. Koncový bod není zahrnutý v odpovědi DNS, proto, že neobdrží provoz. |
-| Povoleno |Povoleno |Online |Koncový bod se sleduje a je v pořádku. Je součástí odpovědí DNS a může přijímat provoz. |
-| Povoleno |Povoleno |Sníženo |Monitorování kontroly stavu koncových bodů se nedaří. Koncový bod není zahrnutý v odpovědi DNS a nepřijímá provoz. <br>Jedinou výjimkou je to je-li všechny koncové body jsou degradované, v takovém případě všechny z nich jsou považovány za který se má vrátit v odpovědi na dotaz).</br>|
-| Povoleno |Povoleno |CheckingEndpoint |Je monitorovaný koncový bod, ale ještě nebyly přijaty výsledky první test paměti. CheckingEndpoint se o dočasný stav, který se obvykle nachází bezprostředně po přidání nebo povolení koncového bodu v profilu. Koncový bod v tomto stavu je zahrnutý v odpovědi DNS a může přijímat provoz. |
-| Povoleno |Povoleno |Zastaveno |Cloudové služby nebo webové aplikace, odkazující na koncový bod není spuštěná. Zkontrolujte nastavení cloudové služby nebo webové aplikace. To může také dojít, pokud koncový bod je koncový bod typu vnořené a podřízené profilu je zakázán nebo je neaktivní. <br>Koncový bod s ve stavu Zastaveno není monitorován. Není součástí odpovědí DNS a ne přijímat provoz. Jedinou výjimkou je to je, pokud všechny koncové body jsou degradované, v takovém případě všechny z nich bude považovat za který se má vrátit v odpovědi na dotaz.</br>|
+| Enabled |Enabled |Online |Koncový bod se sleduje a je v pořádku. Je součástí odpovědí DNS a může přijímat provoz. |
+| Enabled |Enabled |Sníženo |Monitorování kontroly stavu koncových bodů se nedaří. Koncový bod není zahrnutý v odpovědi DNS a nepřijímá provoz. <br>Jedinou výjimkou je to je-li všechny koncové body jsou degradované, v takovém případě všechny z nich jsou považovány za který se má vrátit v odpovědi na dotaz).</br>|
+| Enabled |Enabled |CheckingEndpoint |Je monitorovaný koncový bod, ale ještě nebyly přijaty výsledky první test paměti. CheckingEndpoint se o dočasný stav, který se obvykle nachází bezprostředně po přidání nebo povolení koncového bodu v profilu. Koncový bod v tomto stavu je zahrnutý v odpovědi DNS a může přijímat provoz. |
+| Enabled |Enabled |Zastaveno |Cloudové služby nebo webové aplikace, odkazující na koncový bod není spuštěná. Zkontrolujte nastavení cloudové služby nebo webové aplikace. To může také dojít, pokud koncový bod je koncový bod typu vnořené a podřízené profilu je zakázán nebo je neaktivní. <br>Koncový bod s ve stavu Zastaveno není monitorován. Není součástí odpovědí DNS a ne přijímat provoz. Jedinou výjimkou je to je, pokud všechny koncové body jsou degradované, v takovém případě všechny z nich bude považovat za který se má vrátit v odpovědi na dotaz.</br>|
 
 Podrobnosti o tom, jak se počítá stav monitorování koncového bodu pro vnořené koncové body, naleznete v tématu [vnořené profily Traffic Manageru](traffic-manager-nested-profiles.md).
 
@@ -88,10 +88,10 @@ Stav monitorování profilu je kombinací stav nakonfigurovaný profil a koncov�
 | Stav profilu (jak je nakonfigurovaná) | Stav monitorování koncového bodu | Profil sledování stavu | Poznámky |
 | --- | --- | --- | --- |
 | Zakázáno |&lt;žádné&gt; nebo profil s žádné definované koncové body. |Zakázáno |Profil je zakázané. |
-| Povoleno |Stav aspoň jeden koncový bod má snížený výkon. |Sníženo |Zkontrolujte hodnoty stavu jednotlivých koncových bodů k určení, jaké koncové body vyžadují další pozornost. |
-| Povoleno |Stav aspoň jeden koncový bod je Online. Žádné koncové body mají stav snížený. |Online |Služba přijímá provoz. Nevyžaduje se žádná další akce. |
-| Povoleno |Stav aspoň jeden koncový bod je CheckingEndpoint. Žádné koncové body jsou ve stavu Online nebo snížený. |CheckingEndpoints |Tento přechod stavu nastane, pokud profilu, pokud se vytvořil nebo povolil. Stav koncového bodu se kontroluje poprvé. |
-| Povoleno |Stavy všechny koncové body v profilu jsou zakázané nebo Stopped nebo profil, který nemá žádné definované koncové body. |Neaktivní |Žádné koncové body jsou aktivní, ale profil, který je stále povolen. |
+| Enabled |Stav aspoň jeden koncový bod má snížený výkon. |Sníženo |Zkontrolujte hodnoty stavu jednotlivých koncových bodů k určení, jaké koncové body vyžadují další pozornost. |
+| Enabled |Stav aspoň jeden koncový bod je Online. Žádné koncové body mají stav snížený. |Online |Služba přijímá provoz. Nevyžaduje se žádná další akce. |
+| Enabled |Stav aspoň jeden koncový bod je CheckingEndpoint. Žádné koncové body jsou ve stavu Online nebo snížený. |CheckingEndpoints |Tento přechod stavu nastane, pokud profilu, pokud se vytvořil nebo povolil. Stav koncového bodu se kontroluje poprvé. |
+| Enabled |Stavy všechny koncové body v profilu jsou zakázané nebo Stopped nebo profil, který nemá žádné definované koncové body. |Neaktivní |Žádné koncové body jsou aktivní, ale profil, který je stále povolen. |
 
 ## <a name="endpoint-failover-and-recovery"></a>Koncový bod převzetí služeb při selhání a obnovení
 

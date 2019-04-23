@@ -1,7 +1,6 @@
 ---
 title: Zobrazit rezervace pro prostředky Azure | Dokumentace Microsoftu
 description: Zjistěte, jak zobrazení Azure rezervací na webu Azure Portal.
-services: billing
 documentationcenter: ''
 author: yashesvi
 manager: yashar
@@ -11,31 +10,35 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/03/2018
+ms.date: 04/13/2019
 ms.author: banders
-ms.openlocfilehash: bf18d845b7128c8d6f740555f1a0f791767240ae
-ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
+ms.openlocfilehash: 872837c774368820527b12778b1a7dd4ddc5c7af
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58650219"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60369165"
 ---
 # <a name="view-azure-reservations-in-the-azure-portal"></a>Zobrazení Azure rezervací na webu Azure Portal
 
 V závislosti na typu předplatného a oprávnění existuje několik způsobů, jak zobrazit rezervace pro Azure.
 
-## <a name="view-reservations-as-owner-or-reader"></a>Zobrazit rezervace jako vlastník nebo čtenáře
+## <a name="view-purchased-reservations"></a>Zobrazit zakoupená rezervace
 
-Ve výchozím nastavení, při nákupu rezervace, je správce účtu může zobrazit a rezervace. Vy a správce účtu automaticky získáte roli vlastníka na rezervaci. Povolit ostatním uživatelům zobrazit rezervace, je musíte přidat jako **vlastníka** nebo **čtečky** na rezervaci. Další informace najdete v tématu [přidání nebo změna uživatelů, kteří můžou spravovat rezervaci](billing-manage-reserved-vm-instance.md#add-or-change-users-who-can-manage-a-reservation).
- 
+Ve výchozím nastavení, při nákupu rezervace, je správce účtu může zobrazit a rezervace. Vy a správce účtu automaticky získáte roli vlastníka na objednávka rezervace a rezervace. Povolit ostatním uživatelům zobrazit rezervace, je musíte přidat jako **vlastníka** nebo **čtečky** v objednávce rezervace nebo rezervace.
+
+Další informace najdete v tématu [přidání nebo změna uživatelů, kteří můžou spravovat rezervaci](billing-manage-reserved-vm-instance.md#add-or-change-users-who-can-manage-a-reservation).
+
 Chcete-li zobrazit rezervace jako vlastník nebo čtečka otisku prstů,
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
-1. Hledat na **rezervace**.
-
-    ![Snímek obrazovky zobrazující Azure search na portálu](./media/billing-view-reservation/portal-reservation-search.png)
-
-1. Zobrazí seznam rezervací, kde máte roli vlastníka nebo Čtenář.
+2. Hledat na **rezervace**.
+    ![Snímek obrazovky zobrazující Azure search na portálu](./media/billing-view-reservation/portal-reservation-search.png)  
+3. Tento seznam obsahuje všechny rezervace, kde máte roli vlastníka nebo Čtenář. Každá položka zobrazuje procento poslední známé využití.  
+    ![Příklad zobrazující seznam rezervací](./media/billing-view-reservation/view-reservations.png)
+4. Vyberte rezervaci a zobrazit trend využití za posledních pět dní.  
+    ![Příklad zobrazující rezervace využití trend](./media/billing-view-reservation/reservation-utilization.png)
+5. Můžete získat také [rezervace využití](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-usage) pomocí rozhraní API využití rezervovaných instancí a s [Microsoft Azure Consumption Insights Power BI content pack](/power-bi/service-connect-to-azure-consumption-insights).
 
 Pokud potřebujete změnit obor rezervace, rezervaci dělené tunelové propojení, nebo změnit, kdo může spravovat rezervaci, naleznete v tématu [spravovat Azure rezervace](billing-manage-reserved-vm-instance.md).
 
@@ -46,7 +49,7 @@ Pokud potřebujete změnit obor rezervace, rezervaci dělené tunelové propojen
 Chcete-li zobrazit transakce rezervace na webu Azure portal
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
-1. Hledat na **Cost Management a fakturace**.
+1. Vyhledejte **Cost Management a fakturace**.
 
     ![Snímek obrazovky zobrazující Azure search na portálu](./media/billing-view-reservation/portal-cm-billing-search.png)
 

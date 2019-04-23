@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.date: 09/06/2016
 ms.author: yizhon
 ms.openlocfilehash: 0a7e30be374ae5095e206ce0e519e51bb58f1f00
-ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50024854"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60399232"
 ---
 # <a name="azure-iot-device-sdk-for-c--more-about-serializer"></a>Pro zařízení Azure IoT SDK pro jazyk C – Další informace pro serializátor
 
@@ -64,21 +64,21 @@ Co není ukázáno v tomto příkladu jsou další datové typy, které jsou pod
 
 Jsou podporovány následující typy dat v modelů vytvořených pomocí **serializátor** knihovny:
 
-| Typ | Popis |
+| Type | Popis |
 | --- | --- |
 | double |dvojité přesnosti s plovoucí desetinnou čárkou číslo s desetinnou čárkou |
 | int |32bitové celé číslo |
 | float |číslo s plovoucí desetinnou čárkou desetinnou čárkou a jednoduchou přesností |
-| zem. šířka |dlouhé celé číslo |
+| Long |dlouhé celé číslo |
 | int8\_t |8bitové celé číslo |
-| Int16\_t |16bitové celé číslo |
-| datový typ Int32\_t |32bitové celé číslo |
-| Int64\_t |64bitové celé číslo |
-| BOOL |Boolean |
+| int16\_t |16bitové celé číslo |
+| int32\_t |32bitové celé číslo |
+| int64\_t |64bitové celé číslo |
+| bool |Boolean |
 | ascii\_char\_ptr |Řetězec ASCII |
-| EDM\_DATUM\_ČAS\_POSUN |posun času datum |
+| EDM\_DATE\_TIME\_OFFSET |posun času datum |
 | EDM\_GUID |GUID |
-| EDM\_BINÁRNÍ |Binární |
+| EDM\_BINÁRNÍ |binary |
 | DEKLAROVAT\_– STRUKTURA |Komplexní datový typ. |
 
 Začněme s posledním datovým typem. **DECLARE\_struktura** umožňuje definovat komplexních datových typů, které jsou seskupeními primitivní typy. Tyto skupiny umožňuje definovat model, který vypadá takto:
@@ -194,7 +194,7 @@ Pokud tento kód spustit, je následující zpráva odeslána do služby IoT Hub
 {"aDouble":1.100000000000000, "aInt":2, "aFloat":3.000000, "aLong":4, "aInt8":5, "auInt8":6, "aInt16":7, "aInt32":8, "aInt64":9, "aBool":true, "aAsciiCharPtr":"ascii string 1", "aDateTimeOffset":"2015-09-14T21:18:21Z", "aGuid":"00010203-0405-0607-0809-0A0B0C0D0E0F", "aBinary":"AQID"}
 ```
 
-Všimněte si, že serializace je ve formátu JSON, což je formát generovaných **serializátor** knihovny. Všimněte si také, že každý člen serializovaný objekt JSON odpovídá členů **TestType** , který jsme definovali v náš model. Tyto hodnoty také přesně shodují, se používají v kódu. Mějte však na paměti, že binární data jsou s kódováním base64: "AQID" je base64 kódování {0x01, 0x02, 0x03}.
+Všimněte si, že serializace je ve formátu JSON, což je formát generovaných **serializátor** knihovny. Všimněte si také, že každý člen serializovaný objekt JSON odpovídá členů **TestType** , který jsme definovali v náš model. Tyto hodnoty také přesně shodují, se používají v kódu. Mějte však na paměti, že je binární data s kódováním base64: "AQID" je base64 kódování {0x01, 0x02, 0x03}.
 
 Tento příklad ukazuje výhodou použití **serializátor** knihovny – umožňuje poslat JSON do cloudu, bez nutnosti explicitně serializace v naší aplikaci. Všechno, co musíme starat o je nastavit hodnoty dat událostí do náš model a následným voláním jednoduchá rozhraní API k odeslání události do cloudu.
 
@@ -233,7 +233,7 @@ WITH_DATA(HumidityEvent, Humidity)
 END_NAMESPACE(Contoso);
 ```
 
-Všimněte si, že model zahrnuje dvě data události: **teploty** a **vlhkosti**. Na rozdíl od předchozích případech typ každé události je struktura definovány pomocí **DECLARE\_struktura**. **TemperatureEvent** zahrnuje měření teploty a časové razítko; **HumidityEvent** obsahuje měření vlhkosti a časové razítko. Tento model získáváme přirozený způsob modelování dat pro výše popsaného scénáře. Když budeme události odesílat do cloudu, budeme vám posílat buď teploty/časové razítko nebo pár vlhkosti/časové razítko.
+Všimněte si, že tento model zahrnuje dvě data události: **Teplota** a **vlhkosti**. Na rozdíl od předchozích případech typ každé události je struktura definovány pomocí **DECLARE\_struktura**. **TemperatureEvent** zahrnuje měření teploty a časové razítko; **HumidityEvent** obsahuje měření vlhkosti a časové razítko. Tento model získáváme přirozený způsob modelování dat pro výše popsaného scénáře. Když budeme události odesílat do cloudu, budeme vám posílat buď teploty/časové razítko nebo pár vlhkosti/časové razítko.
 
 Událostí teplotní nám můžete odeslat do cloudu pomocí kódu, jako jsou následující:
 
@@ -514,7 +514,7 @@ Pokud odesíláte zprávy do zařízení, bude to provést prostřednictvím sad
 {"Name" : "", "Parameters" : "" }
 ```
 
-E-mail posíláte serializovaný objekt JSON s dvě vlastnosti: **název** je název akce (zpráva) a **parametry** obsahuje parametry akce.
+E-mail posíláte serializovaný objekt JSON s dvě vlastnosti: **Název** je název akce (zpráva) a **parametry** obsahuje parametry akce.
 
 Pro příklad, který má být vyvolán **SetAirResistance** tuto zprávu můžete odeslat do zařízení:
 

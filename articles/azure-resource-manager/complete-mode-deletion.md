@@ -6,12 +6,12 @@ ms.service: azure-resource-manager
 ms.topic: reference
 ms.date: 02/13/2019
 ms.author: tomfitz
-ms.openlocfilehash: b38b1af8c72b814813804a49642668c28f3898d6
-ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
-ms.translationtype: MT
+ms.openlocfilehash: fded37fee844a01f4d51518f2ca56dcf575704b2
+ms.sourcegitcommit: c884e2b3746d4d5f0c5c1090e51d2056456a1317
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56302683"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60150145"
 ---
 # <a name="deletion-of-azure-resources-for-complete-mode-deployments"></a>Odstranění prostředků Azure pro úplný režim nasazení
 Tento článek popisuje, jak postupovat při odstranění, když není v šabloně, která je nasazena v režimu úplné typy prostředků.
@@ -23,24 +23,24 @@ Typy prostředků označené `No` nejsou automaticky odstraněny při není v š
 Chcete-li získat stejná data jako soubor hodnot oddělených čárkami, stáhněte si [dokončení deletion.csv režimu](https://github.com/tfitzmac/resource-capabilities/blob/master/complete-mode-deletion.csv).
 
 ## <a name="microsoftaad"></a>Microsoft.AAD
-| Typ prostředku | Úplný režim odstranění |
+| Typ prostředku | Úplné odstranění režimu |
 | ------------- | ----------- |
 | DomainServices | Ano | 
 | DomainServices/oucontainer | Ne | 
 
 ## <a name="microsoftaadiam"></a>microsoft.aadiam
-| Typ prostředku | Úplný režim odstranění |
+| Typ prostředku | Úplné odstranění režimu |
 | ------------- | ----------- |
 | diagnosticSettings | Ne | 
 | diagnosticSettingsCategories | Ne | 
 
 ## <a name="microsoftaddons"></a>Microsoft.Addons
-| Typ prostředku | Úplný režim odstranění |
+| Typ prostředku | Úplné odstranění režimu |
 | ------------- | ----------- |
 | supportProviders | Ne | 
 
 ## <a name="microsoftadhybridhealthservice"></a>Microsoft.ADHybridHealthService
-| Typ prostředku | Úplný režim odstranění |
+| Typ prostředku | Úplné odstranění režimu |
 | ------------- | ----------- |
 | aadsupportcases | Ne | 
 | addsservices | Ne | 
@@ -52,7 +52,7 @@ Chcete-li získat stejná data jako soubor hodnot oddělených čárkami, stáhn
 | services | Ne | 
 
 ## <a name="microsoftadvisor"></a>Microsoft.Advisor
-| Typ prostředku | Úplný režim odstranění |
+| Typ prostředku | Úplné odstranění režimu |
 | ------------- | ----------- |
 | Konfigurace | Ne | 
 | generateRecommendations | Ne | 
@@ -60,7 +60,7 @@ Chcete-li získat stejná data jako soubor hodnot oddělených čárkami, stáhn
 | potlačení | Ne | 
 
 ## <a name="microsoftalertsmanagement"></a>Microsoft.AlertsManagement
-| Typ prostředku | Úplný režim odstranění |
+| Typ prostředku | Úplné odstranění režimu |
 | ------------- | ----------- |
 | actionRules | Ne | 
 | výstrahy | Ne | 
@@ -72,24 +72,24 @@ Chcete-li získat stejná data jako soubor hodnot oddělených čárkami, stáhn
 | smartGroups | Ne | 
 
 ## <a name="microsoftanalysisservices"></a>Microsoft.AnalysisServices
-| Typ prostředku | Úplný režim odstranění |
+| Typ prostředku | Úplné odstranění režimu |
 | ------------- | ----------- |
 | servers | Ano | 
 
 ## <a name="microsoftapimanagement"></a>Microsoft.ApiManagement
-| Typ prostředku | Úplný režim odstranění |
+| Typ prostředku | Úplné odstranění režimu |
 | ------------- | ----------- |
 | reportFeedback | Ne | 
 | service | Ano | 
 | validateServiceName | Ne | 
 
 ## <a name="microsoftattestation"></a>Microsoft.Attestation
-| Typ prostředku | Úplný režim odstranění |
+| Typ prostředku | Úplné odstranění režimu |
 | ------------- | ----------- |
 | attestationProviders | Ne | 
 
 ## <a name="microsoftauthorization"></a>Microsoft.Authorization
-| Typ prostředku | Úplný režim odstranění |
+| Typ prostředku | Úplné odstranění režimu |
 | ------------- | ----------- |
 | classicAdministrators | Ne | 
 | denyAssignments | Ne | 
@@ -104,7 +104,7 @@ Chcete-li získat stejná data jako soubor hodnot oddělených čárkami, stáhn
 | roleDefinitions | Ne | 
 
 ## <a name="microsoftautomation"></a>Microsoft.Automation
-| Typ prostředku | Úplný režim odstranění |
+| Typ prostředku | Úplné odstranění režimu |
 | ------------- | ----------- |
 | automationAccounts | Ano | 
 | automationAccounts/configurations | Ano | 
@@ -114,7 +114,7 @@ Chcete-li získat stejná data jako soubor hodnot oddělených čárkami, stáhn
 | automationAccounts/webhooks | Ne | 
 
 ## <a name="microsoftazuregeneva"></a>Microsoft.Azure.Geneva
-| Typ prostředku | Úplný režim odstranění |
+| Typ prostředku | Úplné odstranění režimu |
 | ------------- | ----------- |
 | environments | Ne | 
 | prostředí/účty | Ne | 
@@ -122,24 +122,24 @@ Chcete-li získat stejná data jako soubor hodnot oddělených čárkami, stáhn
 | prostředí/účty nebo obory názvů/konfigurace | Ne | 
 
 ## <a name="microsoftazureactivedirectory"></a>Microsoft.AzureActiveDirectory
-| Typ prostředku | Úplný režim odstranění |
+| Typ prostředku | Úplné odstranění režimu |
 | ------------- | ----------- |
 | b2cDirectories | Ano | 
 
 ## <a name="microsoftazurestack"></a>Microsoft.AzureStack
-| Typ prostředku | Úplný režim odstranění |
+| Typ prostředku | Úplné odstranění režimu |
 | ------------- | ----------- |
 | registrations | Ano | 
 | registrations/customerSubscriptions | Ne | 
 | registrace a produkty | Ne | 
 
 ## <a name="microsoftbatch"></a>Microsoft.Batch
-| Typ prostředku | Úplný režim odstranění |
+| Typ prostředku | Úplné odstranění režimu |
 | ------------- | ----------- |
 | batchAccounts | Ano | 
 
 ## <a name="microsoftbilling"></a>Microsoft.Billing
-| Typ prostředku | Úplný režim odstranění |
+| Typ prostředku | Úplné odstranění režimu |
 | ------------- | ----------- |
 | billingAccounts | Ne | 
 | billingAccounts/billingProfiles | Ne | 
@@ -193,18 +193,18 @@ Chcete-li získat stejná data jako soubor hodnot oddělených čárkami, stáhn
 | usagePlans | Ne | 
 
 ## <a name="microsoftbingmaps"></a>Microsoft.BingMaps
-| Typ prostředku | Úplný režim odstranění |
+| Typ prostředku | Úplné odstranění režimu |
 | ------------- | ----------- |
 | mapApis | Ano | 
 | updateCommunicationPreference | Ne | 
 
 ## <a name="microsoftbiztalkservices"></a>Microsoft.BizTalkServices
-| Typ prostředku | Úplný režim odstranění |
+| Typ prostředku | Úplné odstranění režimu |
 | ------------- | ----------- |
 | BizTalk | Ano | 
 
 ## <a name="microsoftblueprint"></a>Microsoft.Blueprint
-| Typ prostředku | Úplný režim odstranění |
+| Typ prostředku | Úplné odstranění režimu |
 | ------------- | ----------- |
 | blueprintAssignments | Ne | 
 | blueprintAssignments/assignmentOperations | Ne | 
@@ -215,20 +215,20 @@ Chcete-li získat stejná data jako soubor hodnot oddělených čárkami, stáhn
 | plány/verze/artefaktů | Ne | 
 
 ## <a name="microsoftbotservice"></a>Microsoft.BotService
-| Typ prostředku | Úplný režim odstranění |
+| Typ prostředku | Úplné odstranění režimu |
 | ------------- | ----------- |
 | botServices | Ano | 
 | botServices/channels | Ne | 
 | botServices/připojení | Ne | 
 
 ## <a name="microsoftcache"></a>Microsoft.Cache
-| Typ prostředku | Úplný režim odstranění |
+| Typ prostředku | Úplné odstranění režimu |
 | ------------- | ----------- |
 | Redis | Ano | 
 | RedisConfigDefinition | Ne | 
 
 ## <a name="microsoftcapacity"></a>Microsoft.Capacity
-| Typ prostředku | Úplný režim odstranění |
+| Typ prostředku | Úplné odstranění režimu |
 | ------------- | ----------- |
 | appliedReservations | Ne | 
 | calculatePrice | Ne | 
@@ -243,11 +243,11 @@ Chcete-li získat stejná data jako soubor hodnot oddělených čárkami, stáhn
 | reservationOrders/rozdělení | Ne | 
 | reservationOrders/swap | Ne | 
 | rezervace | Ne | 
-| zdroje | Ne | 
+| prostředky | Ne | 
 | validateReservationOrder | Ne | 
 
 ## <a name="microsoftcdn"></a>Microsoft.Cdn
-| Typ prostředku | Úplný režim odstranění |
+| Typ prostředku | Úplné odstranění režimu |
 | ------------- | ----------- |
 | edgenodes | Ne | 
 | profiles | Ano | 
@@ -257,14 +257,14 @@ Chcete-li získat stejná data jako soubor hodnot oddělených čárkami, stáhn
 | validateProbe | Ne | 
 
 ## <a name="microsoftcertificateregistration"></a>Microsoft.CertificateRegistration
-| Typ prostředku | Úplný režim odstranění |
+| Typ prostředku | Úplné odstranění režimu |
 | ------------- | ----------- |
 | objednávky certifikátu | Ano | 
 | certifikáty objednávky certifikátu | Ne | 
 | validateCertificateRegistrationInformation | Ne | 
 
 ## <a name="microsoftclassiccompute"></a>Microsoft.ClassicCompute
-| Typ prostředku | Úplný režim odstranění |
+| Typ prostředku | Úplné odstranění režimu |
 | ------------- | ----------- |
 | Možnosti | Ne | 
 | domainNames | Ne | 
@@ -283,12 +283,12 @@ Chcete-li získat stejná data jako soubor hodnot oddělených čárkami, stáhn
 | virtualMachines/diagnosticSettings | Ne | 
 
 ## <a name="microsoftclassicinfrastructuremigrate"></a>Microsoft.ClassicInfrastructureMigrate
-| Typ prostředku | Úplný režim odstranění |
+| Typ prostředku | Úplné odstranění režimu |
 | ------------- | ----------- |
 | classicInfrastructureResources | Ne | 
 
 ## <a name="microsoftclassicnetwork"></a>Microsoft.ClassicNetwork
-| Typ prostředku | Úplný režim odstranění |
+| Typ prostředku | Úplné odstranění režimu |
 | ------------- | ----------- |
 | Možnosti | Ne | 
 | expressRouteCrossConnections | Ne | 
@@ -302,7 +302,7 @@ Chcete-li získat stejná data jako soubor hodnot oddělených čárkami, stáhn
 | virtualNetworks/virtualNetworkPeerings | Ne | 
 
 ## <a name="microsoftclassicstorage"></a>Microsoft.ClassicStorage
-| Typ prostředku | Úplný režim odstranění |
+| Typ prostředku | Úplné odstranění režimu |
 | ------------- | ----------- |
 | Možnosti | Ne | 
 | disks | Ne | 
@@ -318,18 +318,18 @@ Chcete-li získat stejná data jako soubor hodnot oddělených čárkami, stáhn
 | vmImages | Ne | 
 
 ## <a name="microsoftcognitiveservices"></a>Microsoft.CognitiveServices
-| Typ prostředku | Úplný režim odstranění |
+| Typ prostředku | Úplné odstranění režimu |
 | ------------- | ----------- |
 | accounts | Ano | 
 
 ## <a name="microsoftcommerce"></a>Microsoft.Commerce
-| Typ prostředku | Úplný režim odstranění |
+| Typ prostředku | Úplné odstranění režimu |
 | ------------- | ----------- |
 | RateCard | Ne | 
 | UsageAggregates | Ne | 
 
 ## <a name="microsoftcompute"></a>Microsoft.Compute
-| Typ prostředku | Úplný režim odstranění |
+| Typ prostředku | Úplné odstranění režimu |
 | ------------- | ----------- |
 | availabilitySets | Ano | 
 | disks | Ano | 
@@ -350,7 +350,7 @@ Chcete-li získat stejná data jako soubor hodnot oddělených čárkami, stáhn
 | virtualMachineScaleSets/virtualMachines/networkInterfaces | Ne | 
 
 ## <a name="microsoftconsumption"></a>Microsoft.Consumption
-| Typ prostředku | Úplný režim odstranění |
+| Typ prostředku | Úplné odstranění režimu |
 | ------------- | ----------- |
 | AggregatedCost | Ne | 
 | Zůstatky | Ne | 
@@ -373,13 +373,13 @@ Chcete-li získat stejná data jako soubor hodnot oddělených čárkami, stáhn
 | UsageDetails | Ne | 
 
 ## <a name="microsoftcontainerinstance"></a>Microsoft.ContainerInstance
-| Typ prostředku | Úplný režim odstranění |
+| Typ prostředku | Úplné odstranění režimu |
 | ------------- | ----------- |
 | containerGroups | Ano | 
 | serviceAssociationLinks | Ne | 
 
 ## <a name="microsoftcontainerregistry"></a>Microsoft.ContainerRegistry
-| Typ prostředku | Úplný režim odstranění |
+| Typ prostředku | Úplné odstranění režimu |
 | ------------- | ----------- |
 | registries | Ano | 
 | Registry/sestavení | Ne | 
@@ -405,24 +405,24 @@ Chcete-li získat stejná data jako soubor hodnot oddělených čárkami, stáhn
 | Registry a webhooky/příkaz ping | Ne | 
 
 ## <a name="microsoftcontainerservice"></a>Microsoft.ContainerService
-| Typ prostředku | Úplný režim odstranění |
+| Typ prostředku | Úplné odstranění režimu |
 | ------------- | ----------- |
 | containerServices | Ano | 
 | managedClusters | Ano | 
 
 ## <a name="microsoftcontentmoderator"></a>Microsoft.ContentModerator
-| Typ prostředku | Úplný režim odstranění |
+| Typ prostředku | Úplné odstranění režimu |
 | ------------- | ----------- |
 | applications | Ano | 
 | updateCommunicationPreference | Ne | 
 
 ## <a name="microsoftcortanaanalytics"></a>Microsoft.CortanaAnalytics
-| Typ prostředku | Úplný režim odstranění |
+| Typ prostředku | Úplné odstranění režimu |
 | ------------- | ----------- |
 | accounts | Ano | 
 
 ## <a name="microsoftcostmanagement"></a>Microsoft.CostManagement
-| Typ prostředku | Úplný režim odstranění |
+| Typ prostředku | Úplné odstranění režimu |
 | ------------- | ----------- |
 | Výstrahy | Ne | 
 | BillingAccounts | Ne | 
@@ -436,7 +436,7 @@ Chcete-li získat stejná data jako soubor hodnot oddělených čárkami, stáhn
 | Reports | Ne | 
 
 ## <a name="microsoftcustomerinsights"></a>Microsoft.CustomerInsights
-| Typ prostředku | Úplný režim odstranění |
+| Typ prostředku | Úplné odstranění režimu |
 | ------------- | ----------- |
 | hubs | Ano | 
 | rozbočovače/authorizationPolicies | Ne | 
@@ -453,33 +453,33 @@ Chcete-li získat stejná data jako soubor hodnot oddělených čárkami, stáhn
 | rozbočovače/widgetTypes | Ne | 
 
 ## <a name="microsoftdatabox"></a>Microsoft.DataBox
-| Typ prostředku | Úplný režim odstranění |
+| Typ prostředku | Úplné odstranění režimu |
 | ------------- | ----------- |
 | jobs | Ano | 
 
 ## <a name="microsoftdataboxedge"></a>Microsoft.DataBoxEdge
-| Typ prostředku | Úplný režim odstranění |
+| Typ prostředku | Úplné odstranění režimu |
 | ------------- | ----------- |
 | DataBoxEdgeDevices | Ano | 
 
 ## <a name="microsoftdatabricks"></a>Microsoft.Databricks
-| Typ prostředku | Úplný režim odstranění |
+| Typ prostředku | Úplné odstranění režimu |
 | ------------- | ----------- |
 | workspaces | Ano | 
 | workspaces/virtualNetworkPeerings | Ne | 
 
 ## <a name="microsoftdatacatalog"></a>Microsoft.DataCatalog
-| Typ prostředku | Úplný režim odstranění |
+| Typ prostředku | Úplné odstranění režimu |
 | ------------- | ----------- |
 | catalogs | Ano | 
 
 ## <a name="microsoftdataconnect"></a>Microsoft.DataConnect
-| Typ prostředku | Úplný režim odstranění |
+| Typ prostředku | Úplné odstranění režimu |
 | ------------- | ----------- |
 | connectionManagers | Ano | 
 
 ## <a name="microsoftdatafactory"></a>Microsoft.DataFactory
-| Typ prostředku | Úplný režim odstranění |
+| Typ prostředku | Úplné odstranění režimu |
 | ------------- | ----------- |
 | dataFactories | Ano | 
 | dataFactories/diagnosticSettings | Ne | 
@@ -488,7 +488,7 @@ Chcete-li získat stejná data jako soubor hodnot oddělených čárkami, stáhn
 | objekty pro vytváření/integrationRuntimes | Ne | 
 
 ## <a name="microsoftdatalakeanalytics"></a>Microsoft.DataLakeAnalytics
-| Typ prostředku | Úplný režim odstranění |
+| Typ prostředku | Úplné odstranění režimu |
 | ------------- | ----------- |
 | accounts | Ano | 
 | accounts/dataLakeStoreAccounts | Ne | 
@@ -496,34 +496,34 @@ Chcete-li získat stejná data jako soubor hodnot oddělených čárkami, stáhn
 | accounts/storageAccounts/containers | Ne | 
 
 ## <a name="microsoftdatalakestore"></a>Microsoft.DataLakeStore
-| Typ prostředku | Úplný režim odstranění |
+| Typ prostředku | Úplné odstranění režimu |
 | ------------- | ----------- |
 | accounts | Ano | 
 | accounts/eventGridFilters | Ne | 
 | účty/firewallRules | Ne | 
 
 ## <a name="microsoftdatamigration"></a>Microsoft.DataMigration
-| Typ prostředku | Úplný režim odstranění |
+| Typ prostředku | Úplné odstranění režimu |
 | ------------- | ----------- |
 | services | Ano | 
 | services/projects | Ano | 
 
 ## <a name="microsoftdbformariadb"></a>Microsoft.DBforMariaDB
-| Typ prostředku | Úplný režim odstranění |
+| Typ prostředku | Úplné odstranění režimu |
 | ------------- | ----------- |
 | servers | Ano | 
 | servery pro/recoverableServers | Ne | 
 | servery pro/virtualNetworkRules | Ne | 
 
 ## <a name="microsoftdbformysql"></a>Microsoft.DBforMySQL
-| Typ prostředku | Úplný režim odstranění |
+| Typ prostředku | Úplné odstranění režimu |
 | ------------- | ----------- |
 | servers | Ano | 
 | servery pro/recoverableServers | Ne | 
 | servery pro/virtualNetworkRules | Ne | 
 
 ## <a name="microsoftdbforpostgresql"></a>Microsoft.DBforPostgreSQL
-| Typ prostředku | Úplný režim odstranění |
+| Typ prostředku | Úplné odstranění režimu |
 | ------------- | ----------- |
 | servers | Ano | 
 | servery pro/poradci | Ne | 
@@ -534,7 +534,7 @@ Chcete-li získat stejná data jako soubor hodnot oddělených čárkami, stáhn
 | servers/waitStatistics | Ne | 
 
 ## <a name="microsoftdevices"></a>Microsoft.Devices
-| Typ prostředku | Úplný režim odstranění |
+| Typ prostředku | Úplné odstranění režimu |
 | ------------- | ----------- |
 | IotHubs | Ano | 
 | IotHubs/eventGridFilters | Ne | 
@@ -542,12 +542,12 @@ Chcete-li získat stejná data jako soubor hodnot oddělených čárkami, stáhn
 | Použití | Ne | 
 
 ## <a name="microsoftdevspaces"></a>Microsoft.DevSpaces
-| Typ prostředku | Úplný režim odstranění |
+| Typ prostředku | Úplné odstranění režimu |
 | ------------- | ----------- |
 | Kontrolery | Ano | 
 
 ## <a name="microsoftdevtestlab"></a>Microsoft.DevTestLab
-| Typ prostředku | Úplný režim odstranění |
+| Typ prostředku | Úplné odstranění režimu |
 | ------------- | ----------- |
 | labs | Ano | 
 | praktická cvičení/serviceRunners | Ano | 
@@ -555,13 +555,13 @@ Chcete-li získat stejná data jako soubor hodnot oddělených čárkami, stáhn
 | schedules | Ano | 
 
 ## <a name="microsoftdocumentdb"></a>Microsoft.DocumentDB
-| Typ prostředku | Úplný režim odstranění |
+| Typ prostředku | Úplné odstranění režimu |
 | ------------- | ----------- |
 | databaseAccountNames | Ne | 
 | databaseAccounts | Ano | 
 
 ## <a name="microsoftdomainregistration"></a>Microsoft.DomainRegistration
-| Typ prostředku | Úplný režim odstranění |
+| Typ prostředku | Úplné odstranění režimu |
 | ------------- | ----------- |
 | domains | Ano | 
 | domény/domainOwnershipIdentifiers | Ne | 
@@ -570,14 +570,14 @@ Chcete-li získat stejná data jako soubor hodnot oddělených čárkami, stáhn
 | validateDomainRegistrationInformation | Ne | 
 
 ## <a name="microsoftdynamicslcs"></a>Microsoft.DynamicsLcs
-| Typ prostředku | Úplný režim odstranění |
+| Typ prostředku | Úplné odstranění režimu |
 | ------------- | ----------- |
 | lcsprojects | Ne | 
 | lcsprojects/clouddeployments | Ne | 
 | lcsprojects nebo konektory | Ne | 
 
 ## <a name="microsofteventgrid"></a>Microsoft.EventGrid
-| Typ prostředku | Úplný režim odstranění |
+| Typ prostředku | Úplné odstranění režimu |
 | ------------- | ----------- |
 | domains | Ano | 
 | domény a témat | Ne | 
@@ -587,7 +587,7 @@ Chcete-li získat stejná data jako soubor hodnot oddělených čárkami, stáhn
 | topicTypes | Ne | 
 
 ## <a name="microsofteventhub"></a>Microsoft.EventHub
-| Typ prostředku | Úplný režim odstranění |
+| Typ prostředku | Úplné odstranění režimu |
 | ------------- | ----------- |
 | clusters | Ano | 
 | namespaces | Ano | 
@@ -598,13 +598,13 @@ Chcete-li získat stejná data jako soubor hodnot oddělených čárkami, stáhn
 | namespaces/eventhubs/consumergroups | Ne | 
 
 ## <a name="microsoftfeatures"></a>Microsoft.Features
-| Typ prostředku | Úplný režim odstranění |
+| Typ prostředku | Úplné odstranění režimu |
 | ------------- | ----------- |
 | Database | Ne | 
 | Zprostředkovatelé | Ne | 
 
 ## <a name="microsoftgallery"></a>Microsoft.Gallery
-| Typ prostředku | Úplný režim odstranění |
+| Typ prostředku | Úplné odstranění režimu |
 | ------------- | ----------- |
 | Zaregistrovat | Ne | 
 | galleryitems | Ne | 
@@ -616,33 +616,33 @@ Chcete-li získat stejná data jako soubor hodnot oddělených čárkami, stáhn
 | myareas/oblasti/galleryitems | Ne | 
 | myareas/galleryitems | Ne | 
 | Registrace | Ne | 
-| zdroje | Ne | 
+| prostředky | Ne | 
 | retrieveresourcesbyid | Ne | 
 
 ## <a name="microsoftguestconfiguration"></a>Microsoft.GuestConfiguration
-| Typ prostředku | Úplný režim odstranění |
+| Typ prostředku | Úplné odstranění režimu |
 | ------------- | ----------- |
 | guestConfigurationAssignments | Ne | 
 | software | Ne | 
 
 ## <a name="microsofthanaonazure"></a>Microsoft.HanaOnAzure
-| Typ prostředku | Úplný režim odstranění |
+| Typ prostředku | Úplné odstranění režimu |
 | ------------- | ----------- |
 | hanaInstances | Ano | 
 
 ## <a name="microsofthdinsight"></a>Microsoft.HDInsight
-| Typ prostředku | Úplný režim odstranění |
+| Typ prostředku | Úplné odstranění režimu |
 | ------------- | ----------- |
-| clusters | Ano | 
+| clusters | Ne | 
 | clustery/aplikace | Ne | 
 
 ## <a name="microsoftimportexport"></a>Microsoft.ImportExport
-| Typ prostředku | Úplný režim odstranění |
+| Typ prostředku | Úplné odstranění režimu |
 | ------------- | ----------- |
 | jobs | Ano | 
 
 ## <a name="microsoftinformationprotection"></a>Microsoft.InformationProtection
-| Typ prostředku | Úplný režim odstranění |
+| Typ prostředku | Úplné odstranění režimu |
 | ------------- | ----------- |
 | labelGroups | Ne | 
 | labelGroups/popisky | Ne | 
@@ -651,7 +651,7 @@ Chcete-li získat stejná data jako soubor hodnot oddělených čárkami, stáhn
 | labelGroups/labels/subLabels/conditions | Ne | 
 
 ## <a name="microsoftinsights"></a>microsoft.insights
-| Typ prostředku | Úplný režim odstranění |
+| Typ prostředku | Úplné odstranění režimu |
 | ------------- | ----------- |
 | actiongroups | Ano | 
 | activityLogAlerts | Ano | 
@@ -683,23 +683,23 @@ Chcete-li získat stejná data jako soubor hodnot oddělených čárkami, stáhn
 | workbooks | Ano | 
 
 ## <a name="microsoftintune"></a>Microsoft.Intune
-| Typ prostředku | Úplný režim odstranění |
+| Typ prostředku | Úplné odstranění režimu |
 | ------------- | ----------- |
 | diagnosticSettings | Ne | 
 | diagnosticSettingsCategories | Ne | 
 
 ## <a name="microsoftiotcentral"></a>Microsoft.IoTCentral
-| Typ prostředku | Úplný režim odstranění |
+| Typ prostředku | Úplné odstranění režimu |
 | ------------- | ----------- |
 | IoTApps | Ano | 
 
 ## <a name="microsoftiotspaces"></a>Microsoft.IoTSpaces
-| Typ prostředku | Úplný režim odstranění |
+| Typ prostředku | Úplné odstranění režimu |
 | ------------- | ----------- |
 | Graph | Ano | 
 
 ## <a name="microsoftkeyvault"></a>Microsoft.KeyVault
-| Typ prostředku | Úplný režim odstranění |
+| Typ prostředku | Úplné odstranění režimu |
 | ------------- | ----------- |
 | deletedVaults | Ne | 
 | vaults | Ano | 
@@ -707,7 +707,7 @@ Chcete-li získat stejná data jako soubor hodnot oddělených čárkami, stáhn
 | Trezory/tajných klíčů | Ne | 
 
 ## <a name="microsoftkusto"></a>Microsoft.Kusto
-| Typ prostředku | Úplný režim odstranění |
+| Typ prostředku | Úplné odstranění režimu |
 | ------------- | ----------- |
 | clusters | Ano | 
 | clustery a databází | Ne | 
@@ -715,41 +715,41 @@ Chcete-li získat stejná data jako soubor hodnot oddělených čárkami, stáhn
 | clustery/databází/eventhubconnections | Ne | 
 
 ## <a name="microsoftlabservices"></a>Microsoft.LabServices
-| Typ prostředku | Úplný režim odstranění |
+| Typ prostředku | Úplné odstranění režimu |
 | ------------- | ----------- |
 | labaccounts | Ano | 
 | uživatelé | Ne | 
 
 ## <a name="microsoftlocationbasedservices"></a>Microsoft.LocationBasedServices
-| Typ prostředku | Úplný režim odstranění |
+| Typ prostředku | Úplné odstranění režimu |
 | ------------- | ----------- |
 | accounts | Ano | 
 
 ## <a name="microsoftlocationservices"></a>Microsoft.LocationServices
-| Typ prostředku | Úplný režim odstranění |
+| Typ prostředku | Úplné odstranění režimu |
 | ------------- | ----------- |
 | accounts | Ano | 
 
 ## <a name="microsoftloganalytics"></a>Microsoft.LogAnalytics
-| Typ prostředku | Úplný režim odstranění |
+| Typ prostředku | Úplné odstranění režimu |
 | ------------- | ----------- |
 | Protokoly | Ne | 
 
 ## <a name="microsoftlogic"></a>Microsoft.Logic
-| Typ prostředku | Úplný režim odstranění |
+| Typ prostředku | Úplné odstranění režimu |
 | ------------- | ----------- |
 | integrationAccounts | Ano | 
 | workflows | Ano | 
 
 ## <a name="microsoftmachinelearning"></a>Microsoft.MachineLearning
-| Typ prostředku | Úplný režim odstranění |
+| Typ prostředku | Úplné odstranění režimu |
 | ------------- | ----------- |
 | commitmentPlans | Ano | 
 | Webové služby | Ano | 
 | Pracovní prostory | Ano | 
 
 ## <a name="microsoftmachinelearningexperimentation"></a>Microsoft.MachineLearningExperimentation
-| Typ prostředku | Úplný režim odstranění |
+| Typ prostředku | Úplné odstranění režimu |
 | ------------- | ----------- |
 | accounts | Ano | 
 | accounts/workspaces | Ano | 
@@ -759,39 +759,39 @@ Chcete-li získat stejná data jako soubor hodnot oddělených čárkami, stáhn
 | teamAccounts/pracovních prostorů a projektů | Ano | 
 
 ## <a name="microsoftmachinelearningmodelmanagement"></a>Microsoft.MachineLearningModelManagement
-| Typ prostředku | Úplný režim odstranění |
+| Typ prostředku | Úplné odstranění režimu |
 | ------------- | ----------- |
 | accounts | Ano | 
 
 ## <a name="microsoftmachinelearningservices"></a>Microsoft.MachineLearningServices
-| Typ prostředku | Úplný režim odstranění |
+| Typ prostředku | Úplné odstranění režimu |
 | ------------- | ----------- |
 | workspaces | Ano | 
 | pracovní prostory a výpočetní prostředí | Ne | 
 
 ## <a name="microsoftmanagedidentity"></a>Microsoft.ManagedIdentity
-| Typ prostředku | Úplný režim odstranění |
+| Typ prostředku | Úplné odstranění režimu |
 | ------------- | ----------- |
 | Identity | Ne | 
 | userAssignedIdentities | Ano | 
 
 ## <a name="microsoftmanagement"></a>Microsoft.Management
-| Typ prostředku | Úplný režim odstranění |
+| Typ prostředku | Úplné odstranění režimu |
 | ------------- | ----------- |
 | getEntities | Ne | 
 | managementGroups | Ne | 
-| zdroje | Ne | 
+| prostředky | Ne | 
 | startTenantBackfill | Ne | 
 | tenantBackfillStatus | Ne | 
 
 ## <a name="microsoftmaps"></a>Microsoft.Maps
-| Typ prostředku | Úplný režim odstranění |
+| Typ prostředku | Úplné odstranění režimu |
 | ------------- | ----------- |
 | accounts | Ano | 
 | accounts/eventGridFilters | Ne | 
 
 ## <a name="microsoftmarketplace"></a>Microsoft.Marketplace
-| Typ prostředku | Úplný režim odstranění |
+| Typ prostředku | Úplné odstranění režimu |
 | ------------- | ----------- |
 | Nabízí | Ne | 
 | offerTypes | Ne | 
@@ -805,19 +805,19 @@ Chcete-li získat stejná data jako soubor hodnot oddělených čárkami, stáhn
 | produkty | Ne | 
 
 ## <a name="microsoftmarketplaceapps"></a>Microsoft.MarketplaceApps
-| Typ prostředku | Úplný režim odstranění |
+| Typ prostředku | Úplné odstranění režimu |
 | ------------- | ----------- |
 | classicDevServices | Ano | 
 | updateCommunicationPreference | Ne | 
 
 ## <a name="microsoftmarketplaceordering"></a>Microsoft.MarketplaceOrdering
-| Typ prostředku | Úplný režim odstranění |
+| Typ prostředku | Úplné odstranění režimu |
 | ------------- | ----------- |
 | Smlouvy | Ne | 
 | offertypes | Ne | 
 
 ## <a name="microsoftmedia"></a>Microsoft.Media
-| Typ prostředku | Úplný režim odstranění |
+| Typ prostředku | Úplné odstranění režimu |
 | ------------- | ----------- |
 | mediaservices | Ano | 
 | mediaservices/accountFilters | Ne | 
@@ -837,12 +837,12 @@ Chcete-li získat stejná data jako soubor hodnot oddělených čárkami, stáhn
 | mediaservices/transforms/jobs | Ne | 
 
 ## <a name="microsoftmigrate"></a>Microsoft.Migrate
-| Typ prostředku | Úplný režim odstranění |
+| Typ prostředku | Úplné odstranění režimu |
 | ------------- | ----------- |
 | projects | Ano | 
 
 ## <a name="microsoftnetwork"></a>Microsoft.Network
-| Typ prostředku | Úplný režim odstranění |
+| Typ prostředku | Úplné odstranění režimu |
 | ------------- | ----------- |
 | applicationGateways | Ano | 
 | applicationSecurityGroups | Ano | 
@@ -868,7 +868,7 @@ Chcete-li získat stejná data jako soubor hodnot oddělených čárkami, stáhn
 | dnszones/TXT | Ne | 
 | expressRouteCircuits | Ano | 
 | expressRouteServiceProviders | Ne | 
-| frontdoors | Ano | 
+| frontdoory | Ano | 
 | frontdoorWebApplicationFirewallPolicies | Ano | 
 | getDnsResourceReference | Ne | 
 | interfaceEndpoints | Ano | 
@@ -903,13 +903,13 @@ Chcete-li získat stejná data jako soubor hodnot oddělených čárkami, stáhn
 | webApplicationFirewallPolicies | Ano | 
 
 ## <a name="microsoftnotificationhubs"></a>Microsoft.NotificationHubs
-| Typ prostředku | Úplný režim odstranění |
+| Typ prostředku | Úplné odstranění režimu |
 | ------------- | ----------- |
 | namespaces | Ano | 
 | namespaces/notificationHubs | Ano | 
 
 ## <a name="microsoftoperationalinsights"></a>Microsoft.OperationalInsights
-| Typ prostředku | Úplný režim odstranění |
+| Typ prostředku | Úplné odstranění režimu |
 | ------------- | ----------- |
 | zařízení | Ne | 
 | linkTargets | Ne | 
@@ -920,7 +920,7 @@ Chcete-li získat stejná data jako soubor hodnot oddělených čárkami, stáhn
 | pracovní prostory/dotazu | Ne | 
 
 ## <a name="microsoftoperationsmanagement"></a>Microsoft.OperationsManagement
-| Typ prostředku | Úplný režim odstranění |
+| Typ prostředku | Úplné odstranění režimu |
 | ------------- | ----------- |
 | managementassociations | Ne | 
 | managementconfigurations | Ano | 
@@ -928,7 +928,7 @@ Chcete-li získat stejná data jako soubor hodnot oddělených čárkami, stáhn
 | views | Ano | 
 
 ## <a name="microsoftpolicyinsights"></a>Microsoft.PolicyInsights
-| Typ prostředku | Úplný režim odstranění |
+| Typ prostředku | Úplné odstranění režimu |
 | ------------- | ----------- |
 | policyEvents | Ne | 
 | policyStates | Ne | 
@@ -936,35 +936,35 @@ Chcete-li získat stejná data jako soubor hodnot oddělených čárkami, stáhn
 | nápravy | Ne | 
 
 ## <a name="microsoftportal"></a>Microsoft.Portal
-| Typ prostředku | Úplný režim odstranění |
+| Typ prostředku | Úplné odstranění režimu |
 | ------------- | ----------- |
 | konzoly nástroje | Ne | 
 | dashboards | Ano | 
 | userSettings | Ne | 
 
 ## <a name="microsoftpowerbi"></a>Microsoft.PowerBI
-| Typ prostředku | Úplný režim odstranění |
+| Typ prostředku | Úplné odstranění režimu |
 | ------------- | ----------- |
 | workspaceCollections | Ano | 
 
 ## <a name="microsoftpowerbidedicated"></a>Microsoft.PowerBIDedicated
-| Typ prostředku | Úplný režim odstranění |
+| Typ prostředku | Úplné odstranění režimu |
 | ------------- | ----------- |
 | capacities | Ano | 
 
 ## <a name="microsoftprojectoxford"></a>Microsoft.ProjectOxford
-| Typ prostředku | Úplný režim odstranění |
+| Typ prostředku | Úplné odstranění režimu |
 | ------------- | ----------- |
 | accounts | Ano | 
 
 ## <a name="microsoftrecoveryservices"></a>Microsoft.RecoveryServices
-| Typ prostředku | Úplný režim odstranění |
+| Typ prostředku | Úplné odstranění režimu |
 | ------------- | ----------- |
 | backupProtectedItems | Ne | 
 | vaults | Ano | 
 
 ## <a name="microsoftrelay"></a>Microsoft.Relay
-| Typ prostředku | Úplný režim odstranění |
+| Typ prostředku | Úplné odstranění režimu |
 | ------------- | ----------- |
 | namespaces | Ano | 
 | obory názvů a autorizačních pravidel | Ne | 
@@ -974,13 +974,13 @@ Chcete-li získat stejná data jako soubor hodnot oddělených čárkami, stáhn
 | obory názvů/wcfrelays/autorizačních pravidel | Ne | 
 
 ## <a name="microsoftresourcegraph"></a>Microsoft.ResourceGraph
-| Typ prostředku | Úplný režim odstranění |
+| Typ prostředku | Úplné odstranění režimu |
 | ------------- | ----------- |
-| zdroje | Ne | 
+| prostředky | Ne | 
 | subscriptionsStatus | Ne | 
 
 ## <a name="microsoftresourcehealth"></a>Microsoft.ResourceHealth
-| Typ prostředku | Úplný režim odstranění |
+| Typ prostředku | Úplné odstranění režimu |
 | ------------- | ----------- |
 | availabilityStatuses | Ne | 
 | childAvailabilityStatuses | Ne | 
@@ -990,7 +990,7 @@ Chcete-li získat stejná data jako soubor hodnot oddělených čárkami, stáhn
 | oznámení | Ne | 
 
 ## <a name="microsoftresources"></a>Microsoft.Resources
-| Typ prostředku | Úplný režim odstranění |
+| Typ prostředku | Úplné odstranění režimu |
 | ------------- | ----------- |
 | nasazení | Ne | 
 | Nasazení/operace | Ne | 
@@ -998,7 +998,7 @@ Chcete-li získat stejná data jako soubor hodnot oddělených čárkami, stáhn
 | notifyResourceJobs | Ne | 
 | Zprostředkovatelé | Ne | 
 | resourceGroups | Ne | 
-| zdroje | Ne | 
+| prostředky | Ne | 
 | předplatná | Ne | 
 | Předplatná a poskytovatelé | Ne | 
 | subscriptions/resourceGroups | Ne | 
@@ -1009,25 +1009,25 @@ Chcete-li získat stejná data jako soubor hodnot oddělených čárkami, stáhn
 | Tenanti | Ne | 
 
 ## <a name="microsoftsaas"></a>Microsoft.SaaS
-| Typ prostředku | Úplný režim odstranění |
+| Typ prostředku | Úplné odstranění režimu |
 | ------------- | ----------- |
 | applications | Ano | 
 | saasresources | Ne | 
 
 ## <a name="microsoftscheduler"></a>Microsoft.Scheduler
-| Typ prostředku | Úplný režim odstranění |
+| Typ prostředku | Úplné odstranění režimu |
 | ------------- | ----------- |
 | flows | Ano | 
 | jobcollections | Ano | 
 
 ## <a name="microsoftsearch"></a>Microsoft.Search
-| Typ prostředku | Úplný režim odstranění |
+| Typ prostředku | Úplné odstranění režimu |
 | ------------- | ----------- |
 | resourceHealthMetadata | Ne | 
 | searchServices | Ano | 
 
 ## <a name="microsoftsecurity"></a>Microsoft.Security
-| Typ prostředku | Úplný režim odstranění |
+| Typ prostředku | Úplné odstranění režimu |
 | ------------- | ----------- |
 | advancedThreatProtectionSettings | Ne | 
 | výstrahy | Ne | 
@@ -1062,13 +1062,13 @@ Chcete-li získat stejná data jako soubor hodnot oddělených čárkami, stáhn
 | workspaceSettings | Ne | 
 
 ## <a name="microsoftsecuritygraph"></a>Microsoft.SecurityGraph
-| Typ prostředku | Úplný režim odstranění |
+| Typ prostředku | Úplné odstranění režimu |
 | ------------- | ----------- |
 | diagnosticSettings | Ne | 
 | diagnosticSettingsCategories | Ne | 
 
 ## <a name="microsoftservicebus"></a>Microsoft.ServiceBus
-| Typ prostředku | Úplný režim odstranění |
+| Typ prostředku | Úplné odstranění režimu |
 | ------------- | ----------- |
 | namespaces | Ano | 
 | obory názvů a autorizačních pravidel | Ne | 
@@ -1083,13 +1083,13 @@ Chcete-li získat stejná data jako soubor hodnot oddělených čárkami, stáhn
 | premiumMessagingRegions | Ne | 
 
 ## <a name="microsoftservicefabric"></a>Microsoft.ServiceFabric
-| Typ prostředku | Úplný režim odstranění |
+| Typ prostředku | Úplné odstranění režimu |
 | ------------- | ----------- |
 | clusters | Ano | 
 | clustery/aplikace | Ne | 
 
 ## <a name="microsoftservicefabricmesh"></a>Microsoft.ServiceFabricMesh
-| Typ prostředku | Úplný režim odstranění |
+| Typ prostředku | Úplné odstranění režimu |
 | ------------- | ----------- |
 | applications | Ano | 
 | gateways | Ano | 
@@ -1098,12 +1098,12 @@ Chcete-li získat stejná data jako soubor hodnot oddělených čárkami, stáhn
 | volumes | Ano | 
 
 ## <a name="microsoftsignalrservice"></a>Microsoft.SignalRService
-| Typ prostředku | Úplný režim odstranění |
+| Typ prostředku | Úplné odstranění režimu |
 | ------------- | ----------- |
 | SignalR | Ano | 
 
 ## <a name="microsoftsolutions"></a>Microsoft.Solutions
-| Typ prostředku | Úplný režim odstranění |
+| Typ prostředku | Úplné odstranění režimu |
 | ------------- | ----------- |
 | applianceDefinitions | Ano | 
 | appliances | Ano | 
@@ -1112,7 +1112,7 @@ Chcete-li získat stejná data jako soubor hodnot oddělených čárkami, stáhn
 | jitRequests | Ano | 
 
 ## <a name="microsoftsql"></a>Microsoft.SQL
-| Typ prostředku | Úplný režim odstranění |
+| Typ prostředku | Úplné odstranění režimu |
 | ------------- | ----------- |
 | managedInstances | Ano |
 | managedInstances/databáze | Ano (viz poznámka níže) |
@@ -1140,14 +1140,14 @@ Chcete-li získat stejná data jako soubor hodnot oddělených čárkami, stáhn
 
 
 ## <a name="microsoftsqlvirtualmachine"></a>Microsoft.SqlVirtualMachine
-| Typ prostředku | Úplný režim odstranění |
+| Typ prostředku | Úplné odstranění režimu |
 | ------------- | ----------- |
 | SqlVirtualMachineGroups | Ano | 
 | SqlVirtualMachineGroups/AvailabilityGroupListeners | Ne | 
 | SqlVirtualMachines | Ano | 
 
 ## <a name="microsoftstorage"></a>Microsoft.Storage
-| Typ prostředku | Úplný režim odstranění |
+| Typ prostředku | Úplné odstranění režimu |
 | ------------- | ----------- |
 | storageAccounts | Ano | 
 | storageAccounts/blobServices | Ne | 
@@ -1158,7 +1158,7 @@ Chcete-li získat stejná data jako soubor hodnot oddělených čárkami, stáhn
 | Použití | Ne | 
 
 ## <a name="microsoftstoragesync"></a>Microsoft.StorageSync
-| Typ prostředku | Úplný režim odstranění |
+| Typ prostředku | Úplné odstranění režimu |
 | ------------- | ----------- |
 | storageSyncServices | Ano | 
 | storageSyncServices/registeredServers | Ne | 
@@ -1168,12 +1168,12 @@ Chcete-li získat stejná data jako soubor hodnot oddělených čárkami, stáhn
 | storageSyncServices/workflows | Ne | 
 
 ## <a name="microsoftstorsimple"></a>Microsoft.StorSimple
-| Typ prostředku | Úplný režim odstranění |
+| Typ prostředku | Úplné odstranění režimu |
 | ------------- | ----------- |
 | managers | Ano | 
 
 ## <a name="microsoftstreamanalytics"></a>Microsoft.StreamAnalytics
-| Typ prostředku | Úplný režim odstranění |
+| Typ prostředku | Úplné odstranění režimu |
 | ------------- | ----------- |
 | streamingjobs | Ano (viz poznámka níže) | 
 | streamingjobs/diagnosticSettings | Ne | 
@@ -1182,25 +1182,25 @@ Chcete-li získat stejná data jako soubor hodnot oddělených čárkami, stáhn
 > Při spuštění streamingjobs nelze přidat značku. Zastavte prostředek, který chcete přidat značku.
 
 ## <a name="microsoftsubscription"></a>Microsoft.Subscription
-| Typ prostředku | Úplný režim odstranění |
+| Typ prostředku | Úplné odstranění režimu |
 | ------------- | ----------- |
 | CreateSubscription | Ne | 
 | SubscriptionDefinitions | Ne | 
 | SubscriptionOperations | Ne | 
 
 ## <a name="microsoftsupport"></a>microsoft.support
-| Typ prostředku | Úplný režim odstranění |
+| Typ prostředku | Úplné odstranění režimu |
 | ------------- | ----------- |
 | supporttickets | Ne | 
 
 ## <a name="microsoftterraformoss"></a>Microsoft.TerraformOSS
-| Typ prostředku | Úplný režim odstranění |
+| Typ prostředku | Úplné odstranění režimu |
 | ------------- | ----------- |
 | providerRegistrations | Ano | 
-| zdroje | Ano | 
+| prostředky | Ano | 
 
 ## <a name="microsofttimeseriesinsights"></a>Microsoft.TimeSeriesInsights
-| Typ prostředku | Úplný režim odstranění |
+| Typ prostředku | Úplné odstranění režimu |
 | ------------- | ----------- |
 | environments | Ano | 
 | prostředí/accessPolicies | Ne | 
@@ -1208,14 +1208,14 @@ Chcete-li získat stejná data jako soubor hodnot oddělených čárkami, stáhn
 | prostředí/referenceDataSets | Ano | 
 
 ## <a name="microsoftvisualstudio"></a>microsoft.visualstudio
-| Typ prostředku | Úplný režim odstranění |
+| Typ prostředku | Úplné odstranění režimu |
 | ------------- | ----------- |
 | account | Ano | 
 | account/extension | Ano | 
 | account/project | Ano | 
 
 ## <a name="microsoftweb"></a>Microsoft.Web
-| Typ prostředku | Úplný režim odstranění |
+| Typ prostředku | Úplné odstranění režimu |
 | ------------- | ----------- |
 | apiManagementAccounts | Ne | 
 | apiManagementAccounts/apiAcls | Ne | 
@@ -1262,18 +1262,18 @@ Chcete-li získat stejná data jako soubor hodnot oddělených čárkami, stáhn
 | verifyHostingEnvironmentVnet | Ne | 
 
 ## <a name="microsoftwindowsdefenderatp"></a>Microsoft.WindowsDefenderATP
-| Typ prostředku | Úplný režim odstranění |
+| Typ prostředku | Úplné odstranění režimu |
 | ------------- | ----------- |
 | diagnosticSettings | Ne | 
 | diagnosticSettingsCategories | Ne | 
 
 ## <a name="microsoftwindowsiot"></a>Microsoft.WindowsIoT
-| Typ prostředku | Úplný režim odstranění |
+| Typ prostředku | Úplné odstranění režimu |
 | ------------- | ----------- |
 | DeviceServices | Ano | 
 
 ## <a name="microsoftworkloadmonitor"></a>Microsoft.WorkloadMonitor
-| Typ prostředku | Úplný režim odstranění |
+| Typ prostředku | Úplné odstranění režimu |
 | ------------- | ----------- |
 | components | Ne | 
 | componentsSummary | Ne | 

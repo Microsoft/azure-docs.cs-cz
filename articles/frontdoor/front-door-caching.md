@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/10/2018
 ms.author: sharadag
-ms.openlocfilehash: e022a7661997d231e291a4d09611bb6e95bee262
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.openlocfilehash: fb00c09680c6a80bc093c6f02ccd8d7269b8748c
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59528306"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60306134"
 ---
 # <a name="caching-with-azure-front-door-service"></a>Ukládání do mezipaměti službou Azure přední dveře
 Následující dokument pro branou určuje chování pomocí pravidel směrování, které mají povolené ukládání do mezipaměti.
@@ -104,7 +104,7 @@ Následující pořadí záhlaví se používá k určení, jak dlouho bude polo
 2. Cache-Control: Parametr maxage =\<sekund >
 3. Vypršení platnosti: \<http datum >
 
-Hlavičky Cache-Control odpovědi, které označují, že odpověď nebudou zapisována do mezipaměti jako je například Cache-Control: privátní, Cache-Control: no-cache a Cache-Control: no-store jsou zachované. Pokud na serveru POP pro stejnou adresu URL jsou vydávaných za pochodu více požadavků, jsou však může sdílet odpovědi.
+Hlavičky Cache-Control odpovědi, které označují, že odpověď nebudou zapisována do mezipaměti jako je například Cache-Control: privátní, Cache-Control: no-cache a Cache-Control: no-store jsou zachované. Pokud na serveru POP pro stejnou adresu URL jsou vydávaných za pochodu více požadavků, jsou však může sdílet odpovědi. Pokud je k dispozici žádné Cache-Control výchozí chování je, že AFD bude ukládat do mezipaměti prostředků pro X doba kde X je náhodně vyberou se mezi 1 až 3 dny.
 
 
 ## <a name="request-headers"></a>Hlavičky požadavku

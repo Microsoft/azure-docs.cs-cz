@@ -13,15 +13,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 04/10/2019
+ms.date: 04/22/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9a0911588141552e616e8555380b14c910225840
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 5dd8af0ed016dca5ab9c14b117a2673ca214e08c
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59501355"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60268921"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-jira-saml-sso-by-microsoft"></a>Kurz: Integrace Azure Active Directory s jednotným Přihlašováním SAML JIRA společností Microsoft
 
@@ -37,7 +37,7 @@ Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https
 
 ## <a name="description"></a>Popis
 
-Povolit jednotné přihlašování pomocí účtu Microsoft Azure Active Directory serverem Atlassian JIRA. Tímto způsobem všichni uživatelé vaší organizace můžete použít přihlašovací údaje Azure AD s přihlášením do aplikace systému JIRA. Tento modul plug-in používá protokol SAML 2.0 pro federaci.
+Povolit jednotné přihlašování pomocí účtu Microsoft Azure Active Directory serverem Atlassian JIRA. Tímto způsobem všichni uživatelé vaší organizace můžete použít přihlašovací údaje služby Azure AD k přihlášení do aplikace systému JIRA. Tento modul plug-in používá protokol SAML 2.0 pro federaci.
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -67,7 +67,7 @@ Pokud chcete vyzkoušet kroky v tomto kurzu, postupujte podle těchto doporučen
 * JIRA podporuje také 5.2. Další podrobnosti získáte kliknutím [Microsoft Azure Active Directory jednotného přihlašování pro JIRA 5.2](jira52microsoft-tutorial.md)
 
 > [!NOTE]
-> Mějte prosím na paměti, že JIRA také podporuje Linux Ubuntu 16.04 verze
+> Mějte prosím na paměti, že naše JIRA modul plug-in funguje taky na Ubuntu 16.04 verze
 
 ## <a name="scenario-description"></a>Popis scénáře
 

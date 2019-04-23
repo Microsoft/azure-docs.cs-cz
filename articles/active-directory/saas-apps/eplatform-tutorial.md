@@ -15,11 +15,11 @@ ms.topic: tutorial
 ms.date: 03/05/2019
 ms.author: jeedes
 ms.openlocfilehash: 5b73712e114b3542caa5aa05570d509c93df019e
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59276588"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60280046"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-eplatform"></a>Kurz: Integrace Azure Active Directory s ePlatform
 
@@ -123,7 +123,7 @@ Ke konfiguraci Azure AD jednotné přihlašování s ePlatform, proveďte násle
 
 8. Kromě toho výše ePlatform aplikace očekává, že několik dalších atributů musí být předány zpět odpověď SAML. V **deklarace identity uživatelů** části na **atributy uživatele** dialogového okna, proveďte následující kroky pro přidání atributu tokenu SAML, jak je znázorněno v následující tabulka:
 
-    | Název | Zdrojový atribut |
+    | Name | Zdrojový atribut |
     | ---------------| --------------- |
     | upn | user.userprincipalname |
 

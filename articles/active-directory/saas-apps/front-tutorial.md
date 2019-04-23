@@ -15,11 +15,11 @@ ms.topic: tutorial
 ms.date: 02/15/2019
 ms.author: jeedes
 ms.openlocfilehash: 6c050bd7cc620776d4e9cb5afd8d11637d11ab4d
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57895717"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60278815"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-front"></a>Kurz: Integrace Azure Active Directory pomocí Front
 

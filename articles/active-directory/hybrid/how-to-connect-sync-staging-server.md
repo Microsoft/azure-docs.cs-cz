@@ -17,11 +17,11 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 176b8509892ef16b631697a686471e7fa52bb380
-ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57196366"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60381556"
 ---
 # <a name="azure-ad-connect-staging-server-and-disaster-recovery"></a>Azure AD Connect: Pracovní server a zotavení po havárii
 Se serverem v pracovním režimu můžete provést změny v konfiguraci a zobrazit náhled změn před provedením server aktivní. Také umožňuje spustit úplný import a úplnou synchronizaci za účelem ověření, že všechny změny se očekává, že před provedením těchto změn do vašeho provozního prostředí.
@@ -73,8 +73,8 @@ Nyní máte připravené změny do služby Azure AD a místní AD (Pokud použí
 
 #### <a name="verify"></a>Ověřit
 1. Spusťte příkazový řádek a přejděte na `%ProgramFiles%\Microsoft Azure AD Sync\bin`
-2. Spusťte: `csexport "Name of Connector" %temp%\export.xml /f:x` Název konektoru můžete najít v synchronizační služba. Má název "contoso.com – AAD" podobně jako pro Azure AD.
-3. Spusťte: `CSExportAnalyzer %temp%\export.xml > %temp%\export.csv` Když máte soubor ve složce % temp % s názvem export.csv, které se dají prozkoumat v aplikaci Microsoft Excel. Tento soubor obsahuje všechny změny, které mají být exportovány.
+2. Spuštěním příkazu `csexport "Name of Connector" %temp%\export.xml /f:x` Název konektoru můžete najít v synchronizační služba. Má název "contoso.com – AAD" podobně jako pro Azure AD.
+3. Spuštěním příkazu `CSExportAnalyzer %temp%\export.xml > %temp%\export.csv` Když máte soubor ve složce % temp % s názvem export.csv, které se dají prozkoumat v aplikaci Microsoft Excel. Tento soubor obsahuje všechny změny, které mají být exportovány.
 4. Proveďte potřebné změny data nebo konfigurace a projít tyto kroky opakujte (Import a synchronizaci a ověřte, zda) až se očekává, že změny, které mají být exportovány.
 
 **Vysvětlení souboru export.csv** většina souboru je zřejmých. Některé zkratky obsahu:

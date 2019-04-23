@@ -16,12 +16,12 @@ ms.date: 11/13/2018
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 02fc505c8f14f4cc0e486502060a16af47c68bbc
-ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
+ms.openlocfilehash: 4afcbffa778c902c1b32979c69ca91ab0955f739
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58439018"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60286830"
 ---
 # <a name="azure-active-directory-risk-events"></a>Azure Active Directory rizikových událostí
 
@@ -52,7 +52,7 @@ V současné době Azure Active Directory zjistí šest typy rizikových událos
 Podrobnější informace o získání zjištěné rizikové události se váže k předplatnému služby Azure AD. 
 
 * S **edice Azure AD Premium P2**, získáte nejpodrobnější informace o základní všechna nalezení. 
-* S **edice Azure AD Premium P1**, detekce, které nejsou pokryty všemi licence se zobrazí jako rizikovou událost **přihlášení s dalšími riziky zjistil**.
+* S **edice Azure AD Premium P1**, pokročilé detekce (například vlastnosti neznámého přihlášení) se vztahuje licence a zobrazí se pod názvem **přihlášení s dalšími riziky zjistil** . Kromě toho jsou skryté pole úroveň rizika a rizika podrobností.
 
 Při zjišťování rizikových událostí již představuje důležitou součástí ochrany identit, máte také možnost ručně řešení nebo implementovat automatické odpovědi prostřednictvím konfigurace zásad podmíněného přístupu. Další informace najdete v tématu [Azure Active Directory Identity Protection](../active-directory-identityprotection.md).
 
