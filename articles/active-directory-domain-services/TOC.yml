@@ -1,154 +1,147 @@
-items:
 - name: Dokumentace ke službě Azure AD Domain Services
   href: index.yml
 - name: Přehled
   items:
-  - name: Co je služba Azure Active Directory Domain Services?
-    href: active-directory-ds-overview.md
-  - name: Nejčastější dotazy
-    href: active-directory-ds-faqs.md
-  - name: Hodí se pro vás?
-    items:
-    - name: Porovnání s AD na Windows Serveru
-      href: active-directory-ds-comparison.md
-    - name: Porovnání se službou Azure AD Join
-      href: active-directory-ds-compare-with-azure-ad-join.md
-  - name: Co je nového?
-    href: https://azure.microsoft.com/updates/?product=active-directory-ds
-  - name: Funkce
-    href: active-directory-ds-features.md
-  - name: Scénáře
-    href: active-directory-ds-scenarios.md
-  - name: Jak funguje synchronizace
-    href: active-directory-ds-synchronization.md
-  - name: Kompatibilní software jiných výrobců
-    href: active-directory-ds-compatible-software.md
+    - name: Co je služba Azure Active Directory Domain Services?
+      href: active-directory-ds-overview.md
+    - name: Nejčastější dotazy
+      href: active-directory-ds-faqs.md
+    - name: Hodí se pro vás?
+      items:
+        - name: Porovnání s AD na Windows Serveru
+          href: active-directory-ds-comparison.md
+        - name: Porovnání se službou Azure AD Join
+          href: active-directory-ds-compare-with-azure-ad-join.md
+    - name: Co je nového?
+      href: 'https://azure.microsoft.com/updates/?product=active-directory-ds'
+    - name: Funkce
+      href: active-directory-ds-features.md
+    - name: Scénáře
+      href: active-directory-ds-scenarios.md
+    - name: Jak funguje synchronizace
+      href: active-directory-ds-synchronization.md
+    - name: Kompatibilní software jiných výrobců
+      href: active-directory-ds-compatible-software.md
 - name: Začínáme
   items:
-  - name: 'Úloha 1: Konfigurace základního nastavení'
-    href: active-directory-ds-getting-started.md
-  - name: 'Úloha 2: Konfigurace nastavení sítě'
-    href: active-directory-ds-getting-started-network.md
-  - name: 'Úloha 3: Konfigurace skupiny správců a povolení služby Azure AD Domain Services'
-    href: active-directory-ds-getting-started-admingroup.md
-  - name: 'Úloha 4: Aktualizace nastavení DNS pro virtuální síť'
-    href: active-directory-ds-getting-started-dns.md
-  - name: 'Úloha 5: Povolení synchronizace hodnoty hash hesel'
-    href: active-directory-ds-getting-started-password-sync.md
+    - name: 'Úloha 1: Konfigurace základního nastavení'
+      href: active-directory-ds-getting-started.md
+    - name: 'Úloha 2: Konfigurace nastavení sítě'
+      href: active-directory-ds-getting-started-network.md
+    - name: 'Úloha 3: Konfigurace skupiny správců a povolení služby Azure AD Domain Services'
+      href: active-directory-ds-getting-started-admingroup.md
+    - name: 'Úloha 4: Aktualizace nastavení DNS pro virtuální síť'
+      href: active-directory-ds-getting-started-dns.md
+    - name: 'Úloha 5: Povolení synchronizace hodnoty hash hesel'
+      href: active-directory-ds-getting-started-password-sync.md
 - name: Postup
   items:
-  - name: Kontrola stavu spravované domény
-    href: active-directory-ds-check-health.md
-  - name: Použití Azure AD Domain Services v předplatných Azure CSP
-    href: active-directory-ds-csp.md
-  - name: Povolení služby Azure AD Domain Services pomocí PowerShellu
-    href: active-directory-ds-enable-using-powershell.md
-  - name: Konfigurace synchronizace s vymezeným oborem z Azure AD do spravované domény
-    href: active-directory-ds-scoped-synchronization.md
-  - name: Zabezpečení spravované domény
-    href: active-directory-ds-secure-your-domain.md
-  - name: Vytvoření OU ve spravované doméně
-    href: active-directory-ds-admin-guide-create-ou.md
-  - name: Vytvoření skupinového účtu spravované služby ve spravované doméně
-    href: active-directory-ds-create-gmsa.md
-  - name: Správa zásad skupiny ve spravované doméně
-    href: active-directory-ds-admin-guide-administer-group-policy.md
-  - name: Konfigurace zásad hesel ve spravované doméně
-    href: active-directory-ds-password-policy.md
-  - name: Výběr virtuální sítě
-    href: active-directory-ds-networking.md
-  - name: Nasazení aplikací
-    items:
-    - name: Konfigurace podpory pro synchronizaci profilu pro SharePoint Server
-      href: active-directory-ds-enable-sharepoint-profile-sync.md
-    - name: Konfigurace omezeného delegování Kerberos
-      href: active-directory-ds-enable-kcd.md
-    - name: Nasazení proxy aplikace služby Azure AD
-      href: active-directory-ds-deploy-azure-app-proxy.md
-  - name: Odstranění spravované domény
-    href: active-directory-ds-disable-aadds.md
+    - name: Kontrola stavu spravované domény
+      href: active-directory-ds-check-health.md
+    - name: Použití Azure AD Domain Services v předplatných Azure CSP
+      href: active-directory-ds-csp.md
+    - name: Povolení služby Azure AD Domain Services pomocí PowerShellu
+      href: active-directory-ds-enable-using-powershell.md
+    - name: Konfigurace synchronizace s vymezeným oborem z Azure AD do spravované domény
+      href: active-directory-ds-scoped-synchronization.md
+    - name: Zabezpečení spravované domény
+      href: active-directory-ds-secure-your-domain.md
+    - name: Vytvoření OU ve spravované doméně
+      href: active-directory-ds-admin-guide-create-ou.md
+    - name: Vytvoření skupinového účtu spravované služby ve spravované doméně
+      href: active-directory-ds-create-gmsa.md
+    - name: Správa zásad skupiny ve spravované doméně
+      href: active-directory-ds-admin-guide-administer-group-policy.md
+    - name: Konfigurace zásad hesel ve spravované doméně
+      href: active-directory-ds-password-policy.md
+    - name: Výběr virtuální sítě
+      href: active-directory-ds-networking.md
+    - name: Nasazení aplikací
+      items:
+        - name: Konfigurace podpory pro synchronizaci profilu pro SharePoint Server
+          href: active-directory-ds-enable-sharepoint-profile-sync.md
+        - name: Konfigurace omezeného delegování Kerberos
+          href: active-directory-ds-enable-kcd.md
+        - name: Nasazení proxy aplikace služby Azure AD
+          href: active-directory-ds-deploy-azure-app-proxy.md
+    - name: Odstranění spravované domény
+      href: active-directory-ds-disable-aadds.md
 - name: Připojení ke spravované doméně
   items:
-  - name: Virtuální počítač s Windows Serverem
-    href: active-directory-ds-admin-guide-join-windows-vm-portal.md
-  - name: Virtuální počítač s Windows Serverem ze šablony
-    href: active-directory-ds-join-windows-vm-template.md
-  - name: CentOS
-    href: active-directory-ds-join-centos-linux-vm.md
-  - name: CoreOS
-    href: active-directory-ds-join-coreos-linux-vm.md
-  - name: Red Hat Enterprise Linux
-    href: active-directory-ds-join-rhel-linux-vm.md
-  - name: Ubuntu Server
-    href: active-directory-ds-join-ubuntu-linux-vm.md
+    - name: Virtuální počítač s Windows Serverem
+      href: active-directory-ds-admin-guide-join-windows-vm-portal.md
+    - name: Virtuální počítač s Windows Serverem ze šablony
+      href: active-directory-ds-join-windows-vm-template.md
+    - name: CentOS
+      href: active-directory-ds-join-centos-linux-vm.md
+    - name: CoreOS
+      href: active-directory-ds-join-coreos-linux-vm.md
+    - name: Red Hat Enterprise Linux
+      href: active-directory-ds-join-rhel-linux-vm.md
+    - name: Ubuntu Server
+      href: active-directory-ds-join-ubuntu-linux-vm.md
 - name: Správa spravované domény
   items:
-  - name: Správa spravované domény
-    href: active-directory-ds-admin-guide-administer-domain.md
-  - name: Správa DNS ve spravované doméně
-    href: active-directory-ds-admin-guide-administer-dns.md
-  - name: Aktualizace e-mailových oznámení
-    href: active-directory-ds-notifications.md
+    - name: Správa spravované domény
+      href: active-directory-ds-admin-guide-administer-domain.md
+    - name: Správa DNS ve spravované doméně
+      href: active-directory-ds-admin-guide-administer-dns.md
+    - name: Aktualizace e-mailových oznámení
+      href: active-directory-ds-notifications.md
 - name: Konfigurace zabezpečeného protokolu LDAP pro spravovanou doménu
   items:
-  - name: 'Úloha 1: Získání certifikátu pro protokol LDAPS'
-    href: active-directory-ds-admin-guide-configure-secure-ldap.md
-  - name: 'Úloha 2: Export certifikátu protokolu LDAPS'
-    href: active-directory-ds-admin-guide-configure-secure-ldap-export-pfx.md
-  - name: 'Úloha 3: Povolení protokolu LDAPS pro spravované domény s využitím webu Azure Portal'
-    href: active-directory-ds-admin-guide-configure-secure-ldap-enable-ldaps.md
-  - name: 'Úloha 4: Konfigurace DNS pro přístup ke spravované doméně z internetu'
-    href: active-directory-ds-ldaps-configure-dns.md
-  - name: 'Úloha 5: Vytvoření vazby ke spravované doméně a uzamknutí přístupu přes Secure LDAP'
-    href: active-directory-ds-ldaps-bind-lockdown.md
-  - name: Řešení potíží s protokolem Secure LDAP
-    href: active-directory-ds-ldaps-troubleshoot.md
+    - name: 'Úloha 1: Získání certifikátu pro protokol LDAPS'
+      href: active-directory-ds-admin-guide-configure-secure-ldap.md
+    - name: 'Úloha 2: Export certifikátu protokolu LDAPS'
+      href: active-directory-ds-admin-guide-configure-secure-ldap-export-pfx.md
+    - name: 'Úloha 3: Povolení protokolu LDAPS pro spravované domény s využitím webu Azure Portal'
+      href: active-directory-ds-admin-guide-configure-secure-ldap-enable-ldaps.md
+    - name: 'Úloha 4: Konfigurace DNS pro přístup ke spravované doméně z internetu'
+      href: active-directory-ds-ldaps-configure-dns.md
+    - name: 'Úloha 5: Vytvoření vazby ke spravované doméně a uzamknutí přístupu přes Secure LDAP'
+      href: active-directory-ds-ldaps-bind-lockdown.md
+    - name: Řešení potíží s protokolem Secure LDAP
+      href: active-directory-ds-ldaps-troubleshoot.md
 - name: Řešení potíží
   items:
-  - name: Průvodce odstraňováním potíží
-    href: active-directory-ds-troubleshooting.md
-  - name: Řešení výstrah
-    href: active-directory-ds-troubleshoot-alerts.md
-    items:
-    - name: Oprava narušené konfigurace NSG
-      href: active-directory-ds-troubleshoot-nsg.md
-    - name: Obnovení chybějících objektů služby
-      href: active-directory-ds-troubleshoot-service-principals.md
-    - name: Chyby protokolu Secure LDAP
-      href: active-directory-ds-troubleshoot-ldaps.md
-  - name: Řešení chyb neshod tenantů
-    href: active-directory-ds-mismatched-tenant-error.md
-  - name: Pozastavené domény
-    href: active-directory-ds-suspension.md
+    - name: Průvodce odstraňováním potíží
+      href: active-directory-ds-troubleshooting.md
+    - name: Řešení výstrah
+      href: active-directory-ds-troubleshoot-alerts.md
+      items:
+        - name: Oprava narušené konfigurace NSG
+          href: active-directory-ds-troubleshoot-nsg.md
+        - name: Obnovení chybějících objektů služby
+          href: active-directory-ds-troubleshoot-service-principals.md
+        - name: Chyby protokolu Secure LDAP
+          href: active-directory-ds-troubleshoot-ldaps.md
+    - name: Řešení chyb neshod tenantů
+      href: active-directory-ds-mismatched-tenant-error.md
+    - name: Pozastavené domény
+      href: active-directory-ds-suspension.md
 - name: Referenční informace
   items:
-  - name: Ukázky kódů
-    href: https://azure.microsoft.com/resources/samples/?service=active-directory
+    - name: Ukázky kódů
+      href: 'https://azure.microsoft.com/resources/samples/?service=active-directory'
 - name: Související
   items:
-  - name: Azure Active Directory
-    href: ../active-directory/fundamentals/active-directory-whatis.md
-  - name: Azure Active Directory B2C
-    href: ../active-directory-b2c/active-directory-b2c-overview.md
-  - name: Multi-Factor Authentication
-    href: ../active-directory/authentication/multi-factor-authentication.md
+    - name: Azure Active Directory
+      href: ../active-directory/fundamentals/active-directory-whatis.md
+    - name: Azure Active Directory B2C
+      href: ../active-directory-b2c/active-directory-b2c-overview.md
+    - name: Multi-Factor Authentication
+      href: ../active-directory/authentication/multi-factor-authentication.md
 - name: Zdroje a prostředky
   items:
-  - name: Fórum Azure AD pro názory
-    href: https://feedback.azure.com/forums/169401-azure-active-directory
-  - name: Plány Azure do budoucna
-    href: https://azure.microsoft.com/roadmap/?category=security-identity
-  - name: Kontaktujte nás
-    href: active-directory-ds-contact-us.md
-  - name: Ceny
-    href: https://azure.microsoft.com/pricing/details/active-directory-ds/
-  - name: Cenová kalkulačka
-    href: https://azure.microsoft.com/pricing/calculator/
-  - name: Aktualizace služeb
-    href: https://azure.microsoft.com/updates/?product=active-directory-ds
-ms.openlocfilehash: 8559569df09bf611286730868f50d0bf1878182b
-ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
-ms.translationtype: HT
-ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58341114"
+    - name: Fórum Azure AD pro názory
+      href: 'https://feedback.azure.com/forums/169401-azure-active-directory'
+    - name: Plány Azure do budoucna
+      href: 'https://azure.microsoft.com/roadmap/?category=security-identity'
+    - name: Kontaktujte nás
+      href: active-directory-ds-contact-us.md
+    - name: Ceny
+      href: 'https://azure.microsoft.com/pricing/details/active-directory-ds/'
+    - name: Cenová kalkulačka
+      href: 'https://azure.microsoft.com/pricing/calculator/'
+    - name: Aktualizace služeb
+      href: 'https://azure.microsoft.com/updates/?product=active-directory-ds'

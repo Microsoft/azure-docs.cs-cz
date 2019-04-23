@@ -1,96 +1,89 @@
-items:
 - name: Dokumentace ke službě Service Bus Relay
   href: index.yml
 - name: Přehled
   items:
-  - name: Co je Relay?
-    href: relay-what-is-it.md
+    - name: Co je Relay?
+      href: relay-what-is-it.md
 - name: Kurzy
   items:
-  - name: Hybridní připojení
-    items:
-    - name: Odesílání a příjem zpráv – webové sokety .NET
-      href: relay-hybrid-connections-dotnet-get-started.md
-    - name: Odesílání a příjem zpráv – .NET HTTP
-      href: relay-hybrid-connections-http-requests-dotnet-get-started.md
-    - name: Odesílání a příjem zpráv – webové sokety .NET
-      href: relay-hybrid-connections-node-get-started.md
-    - name: Odesílání a příjem zpráv – Node HTTP
-      href: relay-hybrid-connections-http-requests-node-get-started.md
-  - name: Windows Communication Foundation (WCF)
-    items:
-    - name: Zveřejnění místní služby WCF pro webovou aplikaci v cloudu
-      href: service-bus-dotnet-hybrid-app-using-service-bus-relay.md
-    - name: Zveřejnění místní služby WCF pro klienta WCF mimo vaši síť
-      href: service-bus-relay-tutorial.md
-    - name: Zveřejnění místní služby WCF REST pro klienta mimo vaši síť
-      href: service-bus-relay-rest-tutorial.md
+    - name: Hybridní připojení
+      items:
+        - name: Odesílání a příjem zpráv – webové sokety .NET
+          href: relay-hybrid-connections-dotnet-get-started.md
+        - name: Odesílání a příjem zpráv – .NET HTTP
+          href: relay-hybrid-connections-http-requests-dotnet-get-started.md
+        - name: Odesílání a příjem zpráv – webové sokety .NET
+          href: relay-hybrid-connections-node-get-started.md
+        - name: Odesílání a příjem zpráv – Node HTTP
+          href: relay-hybrid-connections-http-requests-node-get-started.md
+    - name: Windows Communication Foundation (WCF)
+      items:
+        - name: Zveřejnění místní služby WCF pro webovou aplikaci v cloudu
+          href: service-bus-dotnet-hybrid-app-using-service-bus-relay.md
+        - name: Zveřejnění místní služby WCF pro klienta WCF mimo vaši síť
+          href: service-bus-relay-tutorial.md
+        - name: Zveřejnění místní služby WCF REST pro klienta mimo vaši síť
+          href: service-bus-relay-rest-tutorial.md
 - name: Ukázky
   items:
-  - name: Hybridní připojení
-    href: https://github.com/Azure/azure-relay/tree/master/samples/hybrid-connections
-  - name: WCF Relay
-    href: https://github.com/Azure/azure-relay/tree/master/samples/wcf-relay
+    - name: Hybridní připojení
+      href: 'https://github.com/Azure/azure-relay/tree/master/samples/hybrid-connections'
+    - name: WCF Relay
+      href: 'https://github.com/Azure/azure-relay/tree/master/samples/wcf-relay'
 - name: Koncepty
   items:
-  - name: Ověřování a autorizace
-    href: relay-authentication-and-authorization.md
-  - name: Protokol pro hybridní připojení
-    href: relay-hybrid-connections-protocol.md
+    - name: Ověřování a autorizace
+      href: relay-authentication-and-authorization.md
+    - name: Protokol pro hybridní připojení
+      href: relay-hybrid-connections-protocol.md
 - name: Postup
   items:
-  - name: Plánování a návrh
-    items:
-    - name: Migrace z ACS do SAS
-      href: relay-migrate-acs-sas.md
-  - name: Vývoj
-    items:
-    - name: Vytvoření oboru názvů
-      href: relay-create-namespace-portal.md
-    - name: Použití služby WCF Relay ke zveřejnění služeb WCF pro externí klienty
-      href: relay-wcf-dotnet-get-started.md
-    - name: Dostupná rozhraní API
-      href: relay-api-overview.md
+    - name: Plánování a návrh
       items:
-      - name: .NET
-        href: relay-hybrid-connections-dotnet-api-overview.md
-      - name: Node
-        href: relay-hybrid-connections-node-ws-api-overview.md
-  - name: Spravovat
-    items:
-    - name: Monitorování služby Azure Relay s využitím služby Azure Monitor
-      href: relay-metrics-azure-monitor.md
+        - name: Migrace z ACS do SAS
+          href: relay-migrate-acs-sas.md
+    - name: Vývoj
+      items:
+        - name: Vytvoření oboru názvů
+          href: relay-create-namespace-portal.md
+        - name: Použití služby WCF Relay ke zveřejnění služeb WCF pro externí klienty
+          href: relay-wcf-dotnet-get-started.md
+        - name: Dostupná rozhraní API
+          href: relay-api-overview.md
+          items:
+            - name: .NET
+              href: relay-hybrid-connections-dotnet-api-overview.md
+            - name: Node
+              href: relay-hybrid-connections-node-ws-api-overview.md
+    - name: Spravovat
+      items:
+        - name: Monitorování služby Azure Relay s využitím služby Azure Monitor
+          href: relay-metrics-azure-monitor.md
 - name: Referenční informace
   items:
-  - name: .NET
-    items:
-    - name: Microsoft.Azure.Relay
-      href: /dotnet/api/microsoft.azure.relay
-    - name: Microsoft.ServiceBus
-      href: /dotnet/api/Microsoft.ServiceBus
-  - name: Výjimky
-    href: relay-exceptions.md
-  - name: Nastavení portu
-    href: relay-port-settings.md
+    - name: .NET
+      items:
+        - name: Microsoft.Azure.Relay
+          href: /dotnet/api/microsoft.azure.relay
+        - name: Microsoft.ServiceBus
+          href: /dotnet/api/Microsoft.ServiceBus
+    - name: Výjimky
+      href: relay-exceptions.md
+    - name: Nastavení portu
+      href: relay-port-settings.md
 - name: Zdroje a prostředky
   items:
-  - name: Plány Azure do budoucna
-    href: https://azure.microsoft.com/roadmap/?category=enterprise-integration
-  - name: Nejčastější dotazy
-    href: relay-faq.md
-  - name: Blog
-    href: https://blogs.msdn.microsoft.com/servicebus/
-  - name: Ceny
-    href: https://azure.microsoft.com/pricing/details/service-bus/
-  - name: Cenová kalkulačka
-    href: https://azure.microsoft.com/pricing/calculator/
-  - name: Ukázky
-    href: https://github.com/azure/azure-relay/tree/master/samples
-  - name: Stack Overflow
-    href: https://stackoverflow.com/questions/tagged/azure-servicebusrelay
-ms.openlocfilehash: c90beee9189b54bf3dddc0773ce024eba0762b05
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
-ms.translationtype: HT
-ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57883844"
+    - name: Plány Azure do budoucna
+      href: 'https://azure.microsoft.com/roadmap/?category=enterprise-integration'
+    - name: Nejčastější dotazy
+      href: relay-faq.md
+    - name: Blog
+      href: 'https://blogs.msdn.microsoft.com/servicebus/'
+    - name: Ceny
+      href: 'https://azure.microsoft.com/pricing/details/service-bus/'
+    - name: Cenová kalkulačka
+      href: 'https://azure.microsoft.com/pricing/calculator/'
+    - name: Ukázky
+      href: 'https://github.com/azure/azure-relay/tree/master/samples'
+    - name: Stack Overflow
+      href: 'https://stackoverflow.com/questions/tagged/azure-servicebusrelay'

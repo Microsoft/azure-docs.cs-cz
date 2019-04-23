@@ -1,78 +1,71 @@
-items:
 - name: Dokumentace ke správě zařízení
   href: index.yml
 - name: Přehled
   items:
-  - name: Co je správa zařízení v Azure AD?
-    href: overview.md
-  - name: Co je Enterprise State Roaming?
-    href: enterprise-state-roaming-overview.md
+    - name: Co je správa zařízení v Azure AD?
+      href: overview.md
+    - name: Co je Enterprise State Roaming?
+      href: enterprise-state-roaming-overview.md
 - name: Kurzy
-  items:
-  - name: Konfigurace připojení k hybridní službě Azure AD pro spravované domény
-    href: hybrid-azuread-join-managed-domains.md
-  - name: Konfigurace připojení k hybridní službě Azure AD pro federované domény
-    href: hybrid-azuread-join-federated-domains.md
-  - name: Ruční konfigurace připojení k hybridní službě Azure AD
-    href: hybrid-azuread-join-manual.md
-  - name: Konfigurace připojení k Azure AD během prvního spuštění Windows 10
-    href: azuread-joined-devices-frx.md
   expanded: false
+  items:
+    - name: Konfigurace připojení k hybridní službě Azure AD pro spravované domény
+      href: hybrid-azuread-join-managed-domains.md
+    - name: Konfigurace připojení k hybridní službě Azure AD pro federované domény
+      href: hybrid-azuread-join-federated-domains.md
+    - name: Ruční konfigurace připojení k hybridní službě Azure AD
+      href: hybrid-azuread-join-manual.md
+    - name: Konfigurace připojení k Azure AD během prvního spuštění Windows 10
+      href: azuread-joined-devices-frx.md
 - name: Koncepty
-  items:
-  - name: Jednotné přihlašování k místním prostředkům
-    href: azuread-join-sso.md
   expanded: false
-- name: Návody
   items:
-  - name: Správa zařízení pomocí webu Azure Portal
-    href: device-management-azure-portal.md
-  - name: Správa zastaralých zařízení
-    href: manage-stale-devices.md
-  - name: Plánování implementace připojení ke službě Azure AD
-    href: azureadjoin-plan.md
-  - name: Plánování implementace připojení k hybridní službě Azure AD
-    href: hybrid-azuread-join-plan.md
-  - name: Řízení připojení vašich zařízení k hybridní službě Azure AD
-    href: hybrid-azuread-join-control.md
-  - name: Přiřazení místních správců k zařízením připojeným k Azure AD
-    href: assign-local-admin.md
-  - name: Povolení služby Enterprise State Roaming
-    href: enterprise-state-roaming-enable.md
-  - name: Řešení potíží s aktuálními počítači s Windows připojenými k hybridní službě Azure AD
-    href: troubleshoot-hybrid-join-windows-current.md
-  - name: Řešení potíží s počítači starší verze s Windows připojenými k hybridní službě Azure AD
-    href: troubleshoot-hybrid-join-windows-legacy.md
-  - name: Řešení potíží se službou Enterprise State Roaming
-    href: enterprise-state-roaming-troubleshooting.md
-  - name: Nejčastější dotazy
-    href: faq.md
-  - name: Nejčastější dotazy k povolení služby Enterprise State Roaming
-    href: enterprise-state-roaming-faqs.md
+    - name: Jednotné přihlašování k místním prostředkům
+      href: azuread-join-sso.md
+- name: Návody
   expanded: true
+  items:
+    - name: Správa zařízení pomocí webu Azure Portal
+      href: device-management-azure-portal.md
+    - name: Správa zastaralých zařízení
+      href: manage-stale-devices.md
+    - name: Plánování implementace připojení ke službě Azure AD
+      href: azureadjoin-plan.md
+    - name: Plánování implementace připojení k hybridní službě Azure AD
+      href: hybrid-azuread-join-plan.md
+    - name: Řízení připojení vašich zařízení k hybridní službě Azure AD
+      href: hybrid-azuread-join-control.md
+    - name: Přiřazení místních správců k zařízením připojeným k Azure AD
+      href: assign-local-admin.md
+    - name: Povolení služby Enterprise State Roaming
+      href: enterprise-state-roaming-enable.md
+    - name: Řešení potíží s aktuálními počítači s Windows připojenými k hybridní službě Azure AD
+      href: troubleshoot-hybrid-join-windows-current.md
+    - name: Řešení potíží s počítači starší verze s Windows připojenými k hybridní službě Azure AD
+      href: troubleshoot-hybrid-join-windows-legacy.md
+    - name: Řešení potíží se službou Enterprise State Roaming
+      href: enterprise-state-roaming-troubleshooting.md
+    - name: Nejčastější dotazy
+      href: faq.md
+    - name: Nejčastější dotazy k povolení služby Enterprise State Roaming
+      href: enterprise-state-roaming-faqs.md
 - name: Referenční informace
   items:
-  - name: Nastavení objektu zásad skupiny služby Enterprise State Roaming
-    href: enterprise-state-roaming-group-policy-settings.md
-  - name: Nastavení Windows služby Enterprise State Roaming
-    href: enterprise-state-roaming-windows-settings-reference.md
+    - name: Nastavení objektu zásad skupiny služby Enterprise State Roaming
+      href: enterprise-state-roaming-group-policy-settings.md
+    - name: Nastavení Windows služby Enterprise State Roaming
+      href: enterprise-state-roaming-windows-settings-reference.md
 - name: Zdroje a prostředky
   items:
-  - name: Fórum Azure pro názory
-    href: https://feedback.azure.com/forums/169401-azure-active-directory
-  - name: Fórum MSDN
-    href: https://social.msdn.microsoft.com/Forums/azure/home?forum=WindowsAzureAD
-  - name: Ceny
-    href: https://azure.microsoft.com/pricing/details/active-directory/
-  - name: Aktualizace služeb
-    href: ../fundamentals/whats-new.md
-  - name: Stack Overflow
-    href: https://stackoverflow.com/questions/tagged/azure-active-directory
-  - name: Videa
-    href: https://azure.microsoft.com/documentation/videos/index/?services=active-directory
-ms.openlocfilehash: c55f0c43b8af390d95c0dc3b70ff7037793ac7bc
-ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
-ms.translationtype: HT
-ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54388291"
+    - name: Fórum Azure pro názory
+      href: 'https://feedback.azure.com/forums/169401-azure-active-directory'
+    - name: Fórum MSDN
+      href: 'https://social.msdn.microsoft.com/Forums/azure/home?forum=WindowsAzureAD'
+    - name: Ceny
+      href: 'https://azure.microsoft.com/pricing/details/active-directory/'
+    - name: Aktualizace služeb
+      href: ../fundamentals/whats-new.md
+    - name: Stack Overflow
+      href: 'https://stackoverflow.com/questions/tagged/azure-active-directory'
+    - name: Videa
+      href: 'https://azure.microsoft.com/documentation/videos/index/?services=active-directory'

@@ -1,62 +1,55 @@
-items:
 - name: Dokumentace k zásadám správného řízení Azure
   href: index.yml
 - name: Přehled
-  items:
-  - name: Správa Azure
-    href: azure-management.md
   expanded: true
+  items:
+    - name: Správa Azure
+      href: azure-management.md
 - name: Komponenty a služby
-  items:
-  - name: Skupiny pro správu
-    items:
-    - name: Přehled
-      href: management-groups/index.md
-    - name: Vytvořit
-      href: management-groups/create.md
-    - name: Spravovat
-      href: management-groups/manage.md
-  - name: Resource Graph
-    href: resource-graph/overview.md
-  - name: Zásada
-    href: policy/overview.md
-  - name: Blueprint
-    href: blueprints/overview.md
   expanded: true
+  items:
+    - name: Skupiny pro správu
+      items:
+        - name: Přehled
+          href: management-groups/index.md
+        - name: Vytvořit
+          href: management-groups/create.md
+        - name: Spravovat
+          href: management-groups/manage.md
+    - name: Resource Graph
+      href: resource-graph/overview.md
+    - name: Zásada
+      href: policy/overview.md
+    - name: Blueprint
+      href: blueprints/overview.md
 - name: Implementace
-  items:
-  - name: Přechod na podnikový cloud
-    items:
-    - name: Co jsou zásady správného řízení cloudových prostředků?
-      href: /azure/architecture/cloud-adoption/getting-started/what-is-governance?toc=/azure/governance/toc.json
-    - name: Zásady správného řízení přístupu k prostředkům v Azure
-      href: /azure/architecture/cloud-adoption/getting-started/azure-resource-access?toc=/azure/governance/toc.json
-    - name: Návrh zásad správného řízení pro jeden tým
-      href: /azure/architecture/cloud-adoption/governance/governance-single-team?toc=/azure/governance/toc.json
-    - name: Návrh zásad správného řízení pro několik týmů
-      href: /azure/architecture/cloud-adoption/governance/governance-multiple-teams?toc=/azure/governance/toc.json
-  - name: Vygenerované podnikové uživatelské prostředí v Azure
-    items:
-    - name: Zásady správného řízení pro předplatná
-      href: /azure/architecture/cloud-adoption/appendix/azure-scaffold?toc=/azure/governance/toc.json
-    - name: Implementace vygenerovaného podnikového uživatelského prostředí v Azure
-      href: /azure/architecture/cloud-adoption/appendix/azure-scaffold-examples?toc=/azure/governance/toc.json
   expanded: true
+  items:
+    - name: Přechod na podnikový cloud
+      items:
+        - name: Co jsou zásady správného řízení cloudových prostředků?
+          href: /azure/architecture/cloud-adoption/getting-started/what-is-governance?toc=/azure/governance/toc.json
+        - name: Zásady správného řízení přístupu k prostředkům v Azure
+          href: /azure/architecture/cloud-adoption/getting-started/azure-resource-access?toc=/azure/governance/toc.json
+        - name: Návrh zásad správného řízení pro jeden tým
+          href: /azure/architecture/cloud-adoption/governance/governance-single-team?toc=/azure/governance/toc.json
+        - name: Návrh zásad správného řízení pro několik týmů
+          href: /azure/architecture/cloud-adoption/governance/governance-multiple-teams?toc=/azure/governance/toc.json
+    - name: Vygenerované podnikové uživatelské prostředí v Azure
+      items:
+        - name: Zásady správného řízení pro předplatná
+          href: /azure/architecture/cloud-adoption/appendix/azure-scaffold?toc=/azure/governance/toc.json
+        - name: Implementace vygenerovaného podnikového uživatelského prostředí v Azure
+          href: /azure/architecture/cloud-adoption/appendix/azure-scaffold-examples?toc=/azure/governance/toc.json
 - name: Zdroje a prostředky
   items:
-  - name: Plány Azure do budoucna
-    href: https://azure.microsoft.com/roadmap/
-  - name: Cenová kalkulačka
-    href: https://azure.microsoft.com/pricing/calculator/
-  - name: User Voice
-    href: https://feedback.azure.com/forums/915958-azure-governance
-  - name: Video k zásadám správného řízení
-    href: https://www.youtube.com/watch?v=MhGbKjlmuRs
-  - name: Kanál YouTube pro zásady správného řízení
-    href: https://www.youtube.com/channel/UCZZ3-oMrVI5ssheMzaWC4uQ
-ms.openlocfilehash: 1d6a62a682762060898d8599c5cee18929ef86e1
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
-ms.translationtype: HT
-ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56673900"
+    - name: Plány Azure do budoucna
+      href: 'https://azure.microsoft.com/roadmap/'
+    - name: Cenová kalkulačka
+      href: 'https://azure.microsoft.com/pricing/calculator/'
+    - name: User Voice
+      href: 'https://feedback.azure.com/forums/915958-azure-governance'
+    - name: Video k zásadám správného řízení
+      href: 'https://www.youtube.com/watch?v=MhGbKjlmuRs'
+    - name: Kanál YouTube pro zásady správného řízení
+      href: 'https://www.youtube.com/channel/UCZZ3-oMrVI5ssheMzaWC4uQ'

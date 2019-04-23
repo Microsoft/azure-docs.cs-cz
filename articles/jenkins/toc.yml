@@ -1,81 +1,74 @@
-items:
 - name: Jenkins v Azure
   href: index.yml
 - name: Přehled
   items:
-  - name: Jenkins v Azure
-    href: overview.md
+    - name: Jenkins v Azure
+      href: overview.md
 - name: Šablony Rychlý start
-  items:
-  - name: Vytvoření serveru Jenkins
-    href: install-jenkins-solution-template.md
   expanded: true
-- name: Kurzy
   items:
-  - name: 1. Instalace
-    items:
     - name: Vytvoření serveru Jenkins
       href: install-jenkins-solution-template.md
-  - name: 2. Konfigurace
-    items:
-    - name: Škálování s využitím Azure Container Instances
-      href: /azure/container-instances/container-instances-jenkins
-      maintainContext: true
-    - name: Škálování pomocí agentů virtuálních počítačů Azure
-      href: jenkins-azure-vm-agents.md
-  - name: 3. Implementace CI/CD
-    items:
-    - name: AKS
+- name: Kurzy
+  items:
+    - name: 1. Instalace
       items:
-      - name: Průběžná integrace a doručování do Kubernetes
-        href: /azure/aks/jenkins-continuous-deployment
-        maintainContext: true
-      - name: Nasazení do AKS s využitím vzoru modrá/zelená
-        href: jenkins-aks-blue-green-deployment.md
-    - name: App Service
+        - name: Vytvoření serveru Jenkins
+          href: install-jenkins-solution-template.md
+    - name: 2. Konfigurace
       items:
-      - name: Vytvoření prostředků Azure v úloze kanálu
-        href: execute-cli-jenkins-pipeline.md
-      - name: Nasazení aplikace z GitHubu do App Service
-        href: tutorial-jenkins-deploy-web-app-azure-app-service.md
-    - name: Použití Jenkinse s Azure DevOps
-      href: /azure/virtual-machines/linux/tutorial-build-deploy-jenkins
-      maintainContext: true
-    - name: Nasazení do Azure Functions
-      href: jenkins-azure-functions-deploy.md
-    - name: Publikování do Azure Storage
-      href: /azure/storage/storage-java-jenkins-continuous-integration-solution
-      maintainContext: true
-    - name: Průběžná integrace a doručování do virtuálních počítačů s Linuxem
-      href: /azure/virtual-machines/linux/tutorial-jenkins-github-docker-cicd
-      maintainContext: true
-    - name: CI/CD do Service Fabric
-      href: /azure/service-fabric/service-fabric-cicd-your-linux-applications-with-jenkins
-      maintainContext: true
+        - name: Škálování s využitím Azure Container Instances
+          href: /azure/container-instances/container-instances-jenkins
+          maintainContext: true
+        - name: Škálování pomocí agentů virtuálních počítačů Azure
+          href: jenkins-azure-vm-agents.md
+    - name: 3. Implementace CI/CD
+      items:
+        - name: AKS
+          items:
+            - name: Průběžná integrace a doručování do Kubernetes
+              href: /azure/aks/jenkins-continuous-deployment
+              maintainContext: true
+            - name: Nasazení do AKS s využitím vzoru modrá/zelená
+              href: jenkins-aks-blue-green-deployment.md
+        - name: App Service
+          items:
+            - name: Vytvoření prostředků Azure v úloze kanálu
+              href: execute-cli-jenkins-pipeline.md
+            - name: Nasazení aplikace z GitHubu do App Service
+              href: tutorial-jenkins-deploy-web-app-azure-app-service.md
+        - name: Použití Jenkinse s Azure DevOps
+          href: /azure/virtual-machines/linux/tutorial-build-deploy-jenkins
+          maintainContext: true
+        - name: Nasazení do Azure Functions
+          href: jenkins-azure-functions-deploy.md
+        - name: Publikování do Azure Storage
+          href: /azure/storage/storage-java-jenkins-continuous-integration-solution
+          maintainContext: true
+        - name: Průběžná integrace a doručování do virtuálních počítačů s Linuxem
+          href: /azure/virtual-machines/linux/tutorial-jenkins-github-docker-cicd
+          maintainContext: true
+        - name: CI/CD do Service Fabric
+          href: /azure/service-fabric/service-fabric-cicd-your-linux-applications-with-jenkins
+          maintainContext: true
 - name: Postupy
   items:
-  - name: Použití modulu plug-in App Service
-    href: deploy-jenkins-app-service-plugin.md
+    - name: Použití modulu plug-in App Service
+      href: deploy-jenkins-app-service-plugin.md
 - name: Ukázky
   items:
-  - name: Ukázkové úlohy a skripty
-    href: https://github.com/azure/jenkins
+    - name: Ukázkové úlohy a skripty
+      href: 'https://github.com/azure/jenkins'
 - name: Zdroje a prostředky
   items:
-  - name: Moduly plug-in Jenkinse pro Azure
-    href: jenkins-plugins.md
-  - name: Plány Azure do budoucna
-    href: https://azure.microsoft.com/roadmap/
-  - name: Domovská stránka Jenkinse
-    href: https://jenkins.io/
-  - name: Domovská stránka Jenkinse X
-    href: https://jenkins-x.io
-  - name: Architektura Jenkinse
-    href: /azure/architecture/reference-architectures/jenkins/
-    maintainContext: true
-ms.openlocfilehash: c83891a0037f009d539f2d1101697a554f478b1d
-ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
-ms.translationtype: HT
-ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58621358"
+    - name: Moduly plug-in Jenkinse pro Azure
+      href: jenkins-plugins.md
+    - name: Plány Azure do budoucna
+      href: 'https://azure.microsoft.com/roadmap/'
+    - name: Domovská stránka Jenkinse
+      href: 'https://jenkins.io/'
+    - name: Domovská stránka Jenkinse X
+      href: 'https://jenkins-x.io'
+    - name: Architektura Jenkinse
+      href: /azure/architecture/reference-architectures/jenkins/
+      maintainContext: true

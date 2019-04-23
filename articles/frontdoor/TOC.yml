@@ -1,107 +1,100 @@
-items:
 - name: Dokumentace ke službě Front Door Service
   href: index.yml
 - name: Přehled
   items:
-  - name: Co je Azure Front Door Service?
-    href: front-door-overview.md
+    - name: Co je Azure Front Door Service?
+      href: front-door-overview.md
 - name: Šablony Rychlý start
   items:
-  - name: Vytvoření služby Front Door
-    href: quickstart-create-front-door.md
+    - name: Vytvoření služby Front Door
+      href: quickstart-create-front-door.md
 - name: Kurzy
   items:
-  - name: Přidání vlastní domény do služby Front Door
-    href: front-door-custom-domain.md
-  - name: Povolení HTTPS pro vlastní doménu
-    href: front-door-custom-domain-https.md
-  - name: Nastavení zásad geografického filtrování pro službu Front Door
-    href: front-door-tutorial-geo-filtering.md
+    - name: Přidání vlastní domény do služby Front Door
+      href: front-door-custom-domain.md
+    - name: Povolení HTTPS pro vlastní doménu
+      href: front-door-custom-domain-https.md
+    - name: Nastavení zásad geografického filtrování pro službu Front Door
+      href: front-door-tutorial-geo-filtering.md
 - name: Ukázky
   items:
-  - name: Šablony Resource Manageru
-    href: front-door-quickstart-template-samples.md
+    - name: Šablony Resource Manageru
+      href: front-door-quickstart-template-samples.md
 - name: Koncepty
   items:
-  - name: Back-endy a back-endové fondy
-    href: front-door-backend-pool.md
-  - name: Ukládání do mezipaměti s využitím služby Front Door
-    href: front-door-caching.md
-  - name: Geografické filtrování
-    href: front-door-geo-filtering.md
-  - name: Sondy stavu
-    href: front-door-health-probes.md
-  - name: Jak Front Door zpracovává směrování pro požadavky
-    href: front-door-route-matching.md
-  - name: Podpora HTTP/2
-    href: front-door-http2.md
-  - name: Podpora hlaviček protokolů HTTP
-    href: front-door-http-headers-protocol.md
-  - name: Vyrovnávání zatížení s využitím sady pro doručování aplikací Azure
-    href: front-door-lb-with-azure-app-delivery-suite.md
-  - name: Monitorování
-    href: front-door-diagnostics.md
-  - name: Architektura směrování
-    href: front-door-routing-architecture.md
-  - name: Metody směrování provozu
-    href: front-door-routing-methods.md
-  - name: Přepsání adresy URL
-    href: front-door-url-rewrite.md
-  - name: WAF
-    items:
-    - name: Přehled
-      href: waf-overview.md
-    - name: Vlastní pravidla
-      href: waf-front-door-custom-rules.md
-    - name: Nastavení zásad
-      href: waf-front-door-policy-settings.md
-    - name: Monitorování a protokolování
-      href: waf-front-door-monitor.md
+    - name: Back-endy a back-endové fondy
+      href: front-door-backend-pool.md
+    - name: Ukládání do mezipaměti s využitím služby Front Door
+      href: front-door-caching.md
+    - name: Geografické filtrování
+      href: front-door-geo-filtering.md
+    - name: Sondy stavu
+      href: front-door-health-probes.md
+    - name: Jak Front Door zpracovává směrování pro požadavky
+      href: front-door-route-matching.md
+    - name: Podpora HTTP/2
+      href: front-door-http2.md
+    - name: Podpora hlaviček protokolů HTTP
+      href: front-door-http-headers-protocol.md
+    - name: Vyrovnávání zatížení s využitím sady pro doručování aplikací Azure
+      href: front-door-lb-with-azure-app-delivery-suite.md
+    - name: Monitorování
+      href: front-door-diagnostics.md
+    - name: Architektura směrování
+      href: front-door-routing-architecture.md
+    - name: Metody směrování provozu
+      href: front-door-routing-methods.md
+    - name: Přepsání adresy URL
+      href: front-door-url-rewrite.md
+    - name: WAF
+      items:
+        - name: Přehled
+          href: waf-overview.md
+        - name: Vlastní pravidla
+          href: waf-front-door-custom-rules.md
+        - name: Nastavení zásad
+          href: waf-front-door-policy-settings.md
+        - name: Monitorování a protokolování
+          href: waf-front-door-monitor.md
 - name: Návody
   items:
-  - name: Řešení potíží
-    items:
-    - name: Řešení potíží se směrováním
-      href: front-door-troubleshoot-routing.md
-    - name: Povolené certifikační autority
-      href: front-door-troubleshoot-allowed-ca.md
-  - name: Konfigurace WAF
-    items:
-    - name: Konfigurace zásad WAF – portál
-      href: waf-front-door-create-portal.md
-    - name: Konfigurace zásad WAF – Azure PowerShell
-      href: waf-front-door-custom-rules-powershell.md
-    - name: Konfigurace vlastního kódu odpovědi
-      href: waf-front-door-configure-custom-response-code.md
-    - name: Konfigurace limitu frekvence WAF – Azure PowerShell
-      href: waf-front-door-rate-limit-powershell.md
+    - name: Řešení potíží
+      items:
+        - name: Řešení potíží se směrováním
+          href: front-door-troubleshoot-routing.md
+        - name: Povolené certifikační autority
+          href: front-door-troubleshoot-allowed-ca.md
+    - name: Konfigurace WAF
+      items:
+        - name: Konfigurace zásad WAF – portál
+          href: waf-front-door-create-portal.md
+        - name: Konfigurace zásad WAF – Azure PowerShell
+          href: waf-front-door-custom-rules-powershell.md
+        - name: Konfigurace vlastního kódu odpovědi
+          href: waf-front-door-configure-custom-response-code.md
+        - name: Konfigurace limitu frekvence WAF – Azure PowerShell
+          href: waf-front-door-rate-limit-powershell.md
 - name: Nejčastější dotazy
   items:
-  - name: Nejčastější dotazy ke službě Front Door
-    href: front-door-faq.md
-  - name: Nejčastější dotazy k WAF
-    href: waf-faq.md
+    - name: Nejčastější dotazy ke službě Front Door
+      href: front-door-faq.md
+    - name: Nejčastější dotazy k WAF
+      href: waf-faq.md
 - name: Referenční informace
   items:
-  - name: Azure CLI
-    href: /cli/azure/ext/front-door/
-  - name: Azure PowerShell
-    href: /powershell/module/az.frontdoor
-  - name: REST API
-    href: /rest/api/frontdoor
+    - name: Azure CLI
+      href: /cli/azure/ext/front-door/
+    - name: Azure PowerShell
+      href: /powershell/module/az.frontdoor
+    - name: REST API
+      href: /rest/api/frontdoor
 - name: Zdroje a prostředky
   items:
-  - name: Plány Azure do budoucna
-    href: https://azure.microsoft.com/roadmap/
-  - name: Ceny
-    href: https://azure.microsoft.com/pricing/details/frontdoor/
-  - name: Cenová kalkulačka
-    href: https://azure.microsoft.com/pricing/calculator/
-  - name: Aktualizace služeb
-    href: https://azure.microsoft.com/updates/?product=frontdoor
-ms.openlocfilehash: 7ac4e84bf714dabdbfb0c587122287d02b6b3bbe
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
-ms.translationtype: HT
-ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59680107"
+    - name: Plány Azure do budoucna
+      href: 'https://azure.microsoft.com/roadmap/'
+    - name: Ceny
+      href: 'https://azure.microsoft.com/pricing/details/frontdoor/'
+    - name: Cenová kalkulačka
+      href: 'https://azure.microsoft.com/pricing/calculator/'
+    - name: Aktualizace služeb
+      href: 'https://azure.microsoft.com/updates/?product=frontdoor'

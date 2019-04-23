@@ -1,614 +1,607 @@
-items:
 - name: Dokumentace k Azure Active Directory
   href: index.md
 - name: Přehled
   items:
-  - name: Představení služby Azure Active Directory
-    href: fundamentals/active-directory-whatis.md
-  - name: Správa identit Azure
-    href: fundamentals/identity-fundamentals.md
-  - name: Vysvětlení řešení identit Azure
-    href: fundamentals/understand-azure-identity-solutions.md
-  - name: Přidružení předplatných Azure
-    href: fundamentals/active-directory-how-subscriptions-associated-directory.md
-  - name: Požadavky na data a rezidence
-    href: fundamentals/active-directory-data-storage-eu.md
-  - name: Nejčastější dotazy
-    href: fundamentals/active-directory-faq.md
-  - name: Co je nového?
-    href: fundamentals/whats-new.md
+    - name: Představení služby Azure Active Directory
+      href: fundamentals/active-directory-whatis.md
+    - name: Správa identit Azure
+      href: fundamentals/identity-fundamentals.md
+    - name: Vysvětlení řešení identit Azure
+      href: fundamentals/understand-azure-identity-solutions.md
+    - name: Přidružení předplatných Azure
+      href: fundamentals/active-directory-how-subscriptions-associated-directory.md
+    - name: Požadavky na data a rezidence
+      href: fundamentals/active-directory-data-storage-eu.md
+    - name: Nejčastější dotazy
+      href: fundamentals/active-directory-faq.md
+    - name: Co je nového?
+      href: fundamentals/whats-new.md
 - name: Začínáme
   items:
-  - name: Registrace do Azure AD Premium
-    href: fundamentals/active-directory-get-started-premium.md
-  - name: Přidání vlastního názvu domény
-    href: fundamentals/add-custom-domain.md
-  - name: Konfigurace brandingu společnosti
-    href: fundamentals/customize-branding.md
-  - name: Přidání uživatelů do Azure AD
-    href: fundamentals/add-users-azure-active-directory.md
-  - name: Přiřazení licencí k uživatelům
-    href: fundamentals/license-users-groups.md
-  - name: Konfigurace samoobslužného resetování hesla
-    href: authentication/quickstart-sspr.md
-  - name: Přidání informací o ochraně osobních údajů vaší organizace do Azure AD
-    href: active-directory-properties-area.md
-  - name: Přístup ke službě Azure Active Directory a vytvoření nového tenanta
-    href: fundamentals/active-directory-access-create-new-tenant.md
+    - name: Registrace do Azure AD Premium
+      href: fundamentals/active-directory-get-started-premium.md
+    - name: Přidání vlastního názvu domény
+      href: fundamentals/add-custom-domain.md
+    - name: Konfigurace brandingu společnosti
+      href: fundamentals/customize-branding.md
+    - name: Přidání uživatelů do Azure AD
+      href: fundamentals/add-users-azure-active-directory.md
+    - name: Přiřazení licencí k uživatelům
+      href: fundamentals/license-users-groups.md
+    - name: Konfigurace samoobslužného resetování hesla
+      href: authentication/quickstart-sspr.md
+    - name: Přidání informací o ochraně osobních údajů vaší organizace do Azure AD
+      href: active-directory-properties-area.md
+    - name: Přístup ke službě Azure Active Directory a vytvoření nového tenanta
+      href: fundamentals/active-directory-access-create-new-tenant.md
 - name: Postup
   items:
-  - name: Plánování a návrh
-    items:
-    - name: Pochopení architektury Azure AD
-      href: fundamentals/active-directory-architecture.md
-    - name: Mapování deklarací v Azure Active Directory
-      href: develop/active-directory-claims-mapping.md
-    - name: Nasazení řešení s hybridní identitou
-      href: hybrid/plan-hybrid-identity-design-considerations-overview.md
+    - name: Plánování a návrh
       items:
-      - name: Určení požadavků
-        items:
-        - name: Identita
-          href: hybrid/plan-hybrid-identity-design-considerations-business-needs.md
-        - name: Synchronizace adresářů
-          href: hybrid/plan-hybrid-identity-design-considerations-directory-sync-requirements.md
-        - name: Vícefaktorové ověřování
-          href: hybrid/plan-hybrid-identity-design-considerations-multifactor-auth-requirements.md
-        - name: Strategie životního cyklu identit
-          href: hybrid/plan-hybrid-identity-design-considerations-lifecycle-adoption-strategy.md
-      - name: Plánování zabezpečení dat
-        href: hybrid/plan-hybrid-identity-design-considerations-data-protection-strategy.md
-        items:
-        - name: Ochrana dat
-          href: hybrid/plan-hybrid-identity-design-considerations-dataprotection-requirements.md
-        - name: Správa obsahu
-          href: hybrid/plan-hybrid-identity-design-considerations-contentmgt-requirements.md
-        - name: Řízení přístupu
-          href: hybrid/plan-hybrid-identity-design-considerations-accesscontrol-requirements.md
-        - name: Reakce na incidenty
-          href: hybrid/plan-hybrid-identity-design-considerations-incident-response-requirements.md
-      - name: Plánování životního cyklu identity
-        items:
+        - name: Pochopení architektury Azure AD
+          href: fundamentals/active-directory-architecture.md
+        - name: Mapování deklarací v Azure Active Directory
+          href: develop/active-directory-claims-mapping.md
+        - name: Nasazení řešení s hybridní identitou
+          href: hybrid/plan-hybrid-identity-design-considerations-overview.md
+          items:
+            - name: Určení požadavků
+              items:
+                - name: Identita
+                  href: hybrid/plan-hybrid-identity-design-considerations-business-needs.md
+                - name: Synchronizace adresářů
+                  href: hybrid/plan-hybrid-identity-design-considerations-directory-sync-requirements.md
+                - name: Vícefaktorové ověřování
+                  href: hybrid/plan-hybrid-identity-design-considerations-multifactor-auth-requirements.md
+                - name: Strategie životního cyklu identit
+                  href: hybrid/plan-hybrid-identity-design-considerations-lifecycle-adoption-strategy.md
+            - name: Plánování zabezpečení dat
+              href: hybrid/plan-hybrid-identity-design-considerations-data-protection-strategy.md
+              items:
+                - name: Ochrana dat
+                  href: hybrid/plan-hybrid-identity-design-considerations-dataprotection-requirements.md
+                - name: Správa obsahu
+                  href: hybrid/plan-hybrid-identity-design-considerations-contentmgt-requirements.md
+                - name: Řízení přístupu
+                  href: hybrid/plan-hybrid-identity-design-considerations-accesscontrol-requirements.md
+                - name: Reakce na incidenty
+                  href: hybrid/plan-hybrid-identity-design-considerations-incident-response-requirements.md
+            - name: Plánování životního cyklu identity
+              items:
+                - name: Úlohy
+                  href: hybrid/plan-hybrid-identity-design-considerations-hybrid-id-management-tasks.md
+                - name: Strategie přijetí
+                  href: hybrid/plan-hybrid-identity-design-considerations-identity-adoption-strategy.md
+            - name: Další kroky
+              href: hybrid/plan-hybrid-identity-design-considerations-nextsteps.md
+            - name: Porovnání nástrojů
+              href: hybrid/plan-hybrid-identity-design-considerations-tools-comparison.md
+    - name: Správa uživatelů
+      items:
+        - name: Přidání nových uživatelů do Azure AD
+          href: fundamentals/add-users-azure-active-directory.md
+        - name: Správa uživatelských profilů
+          href: fundamentals/active-directory-users-profile-azure-portal.md
+        - name: Resetování uživatelského hesla
+          href: fundamentals/active-directory-users-reset-password-azure-portal.md
+        - name: Přiřazení uživatelů k rolím správce
+          href: fundamentals/active-directory-users-assign-role-azure-portal.md
+        - name: Přidání uživatelů typu host z jiného adresáře (B2B)
+          href: b2b/what-is-b2b.md
+          items:
+            - name: Správci přidávají uživatele B2B
+              href: b2b/add-users-administrator.md
+            - name: Informační pracovníci přidávají uživatele B2B
+              href: b2b/add-users-information-worker.md
+            - name: Rozhraní API a přizpůsobení
+              href: b2b/customize-invitation-api.md
+            - name: Federace Googlu
+              href: b2b/google-federation.md
+            - name: Ukázky kódu a Azure PowerShellu
+              href: b2b/code-samples.md
+            - name: Ukázka portálu se samoobslužnou registrací
+              href: b2b/self-service-portal.md
+            - name: E-mail s pozváním
+              href: b2b/invitation-email-elements.md
+            - name: Uplatnění pozvánky
+              href: b2b/redemption-experience.md
+            - name: Přidání uživatelů B2B bez pozvánky
+              href: b2b/add-user-without-invite.md
+            - name: Povolení nebo blokování pozvánek
+              href: b2b/allow-deny-list.md
+            - name: Podmíněný přístup pro B2B
+              href: b2b/conditional-access.md
+            - name: Zásady sdílení B2B
+              href: b2b/delegate-invitations.md
+            - name: Přidání uživatele B2B do role
+              href: b2b/add-guest-to-role.md
+            - name: Dynamické skupiny a uživatelé B2B
+              href: b2b/use-dynamic-groups.md
+            - name: Opuštění organizace
+              href: b2b/leave-the-organization.md
+            - name: Auditování a sestavy
+              href: b2b/auditing-and-reporting.md
+            - name: B2B pro hybridní organizace
+              href: b2b/hybrid-organizations.md
+              items:
+                - name: Udělení přístupu uživatelům B2B k místním aplikacím
+                  href: b2b/hybrid-cloud-to-on-premises.md
+                - name: Udělení přístupu místním uživatelům ke cloudovým aplikacím
+                  href: b2b/hybrid-on-premises-to-cloud.md
+            - name: Externí sdílení Office 365 a B2B
+              href: b2b/o365-external-user.md
+            - name: Licencování B2B
+              href: b2b/licensing-guidance.md
+            - name: Aktuální omezení
+              href: b2b/current-limitations.md
+            - name: Nejčastější dotazy
+              href: b2b/faq.md
+            - name: Řešení potíží s B2B
+              href: b2b/troubleshoot.md
+            - name: Principy uživatelů B2B
+              href: b2b/user-properties.md
+            - name: Token uživatele B2B
+              href: b2b/user-token.md
+            - name: B2B pro integrované aplikace Azure AD
+              href: b2b/configure-saas-apps.md
+            - name: Mapování deklarací identity uživatelů B2B
+              href: b2b/claims-mapping.md
+            - name: Porovnání spolupráce B2B s B2C
+              href: b2b/compare-with-b2c.md
+            - name: Získání podpory pro B2B
+              href: b2b/get-support.md
+    - name: Správa skupin a členů
+      href: fundamentals/active-directory-manage-groups.md
+      items:
+        - name: Správa skupin
+          href: fundamentals/active-directory-groups-create-azure-portal.md
+        - name: Odstranění skupiny a jejích členů
+          href: fundamentals/active-directory-groups-delete-group.md
+        - name: Správa nastavení skupin
+          href: fundamentals/active-directory-groups-settings-azure-portal.md
+    - name: Správa sestav
+      href: reports-monitoring/overview-reports.md
+      items:
+        - name: Aktivita přihlášení
+          href: reports-monitoring/concept-sign-ins.md
+        - name: Aktivita auditování
+          href: reports-monitoring/concept-audit-logs.md
+        - name: Ohrožení uživatelé
+          href: reports-monitoring/concept-user-at-risk.md
+        - name: Riziková přihlášení
+          href: reports-monitoring/concept-risky-sign-ins.md
+        - name: Rizikové události
+          href: reports-monitoring/concept-risk-events.md
+        - name: Monitorování protokolů pomocí Azure Monitoru
+          href: reports-monitoring/concept-activity-logs-in-azure-monitor.md
+        - name: Nejčastější dotazy
+          href: reports-monitoring/reports-faq.md
         - name: Úlohy
-          href: hybrid/plan-hybrid-identity-design-considerations-hybrid-id-management-tasks.md
-        - name: Strategie přijetí
-          href: hybrid/plan-hybrid-identity-design-considerations-identity-adoption-strategy.md
-      - name: Další kroky
-        href: hybrid/plan-hybrid-identity-design-considerations-nextsteps.md
-      - name: Porovnání nástrojů
-        href: hybrid/plan-hybrid-identity-design-considerations-tools-comparison.md
-  - name: Správa uživatelů
-    items:
-    - name: Přidání nových uživatelů do Azure AD
-      href: fundamentals/add-users-azure-active-directory.md
-    - name: Správa uživatelských profilů
-      href: fundamentals/active-directory-users-profile-azure-portal.md
-    - name: Resetování uživatelského hesla
-      href: fundamentals/active-directory-users-reset-password-azure-portal.md
-    - name: Přiřazení uživatelů k rolím správce
-      href: fundamentals/active-directory-users-assign-role-azure-portal.md
-    - name: Přidání uživatelů typu host z jiného adresáře (B2B)
-      href: b2b/what-is-b2b.md
+          items:
+            - name: Stažení sestavy přihlašování
+              href: reports-monitoring/quickstart-download-sign-in-report.md
+            - name: Stažení sestavy auditu
+              href: reports-monitoring/quickstart-download-audit-report.md
+            - name: Konfigurace pojmenovaných umístění
+              href: reports-monitoring/quickstart-configure-named-locations.md
+            - name: Vyhledávání sestav aktivit
+              href: reports-monitoring/howto-find-activity-reports.md
+            - name: Použití balíčku obsahu Power BI služby Azure AD
+              href: reports-monitoring/howto-power-bi-content-pack.md
+            - name: Oprava uživatelů označených příznakem rizika
+              href: reports-monitoring/howto-remediate-users-flagged-for-risk.md
+            - name: Směrování protokolů aktivit do centra událostí Azure
+              href: reports-monitoring/quickstart-azure-monitor-stream-logs-to-event-hub.md
+            - name: Archivace protokolů aktivit do účtu úložiště Azure
+              href: reports-monitoring/quickstart-azure-monitor-route-logs-to-storage-account.md
+            - name: Integrace protokolů aktivit s využitím Splunku pomocí Azure Monitoru
+              href: reports-monitoring/tutorial-integrate-activity-logs-with-splunk.md
+            - name: Integrace protokolů aktivit s využitím SumoLogicu pomocí Azure Monitoru
+              href: reports-monitoring/howto-integrate-activity-logs-with-sumologic.md
+            - name: Integrace protokolů aktivit s využitím Log Analytics pomocí Azure Monitoru
+              href: reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md
+        - name: Referenční informace
+          items:
+            - name: Uchovávání
+              href: reports-monitoring/reference-reports-data-retention.md
+            - name: Latence
+              href: reports-monitoring/reference-reports-latencies.md
+            - name: Reference k aktivitě auditování
+              href: reports-monitoring/reference-audit-activities.md
+            - name: Kódy chyb aktivit přihlašování
+              href: reports-monitoring/reference-sign-ins-error-codes.md
+            - name: Interpretace schéma protokolu auditu ve službě Azure Monitor
+              href: reports-monitoring/reference-azure-monitor-audit-log-schema.md
+            - name: Interpretace schéma protokolu přihlašování ve službě Azure Monitor
+              href: reports-monitoring/reference-azure-monitor-sign-ins-log-schema.md
+        - name: Řešení potíží
+          items:
+            - name: Chybějící data v protokolech aktivit Azure AD
+              href: reports-monitoring/troubleshoot-missing-audit-data.md
+            - name: Chybějící data v souborech ke stažení
+              href: reports-monitoring/troubleshoot-missing-data-download.md
+            - name: Chyby balíčku obsahu protokolů aktivit Azure AD
+              href: reports-monitoring/troubleshoot-content-pack.md
+            - name: Chyby v rozhraní API pro vytváření sestav Azure AD
+              href: reports-monitoring/troubleshoot-graph-api.md
+        - name: Programový přístup
+          href: reports-monitoring/concept-reporting-api.md
+          items:
+            - name: Požadavky
+              href: reports-monitoring/howto-configure-prerequisites-for-reporting-api.md
+            - name: Použití certifikátů
+              href: reports-monitoring/tutorial-access-api-with-certificates.md
+    - name: Správa hesel
+      href: authentication/concept-sspr-howitworks.md
+    - name: Správa aplikací
       items:
-      - name: Správci přidávají uživatele B2B
-        href: b2b/add-users-administrator.md
-      - name: Informační pracovníci přidávají uživatele B2B
-        href: b2b/add-users-information-worker.md
-      - name: Rozhraní API a přizpůsobení
-        href: b2b/customize-invitation-api.md
-      - name: Federace Googlu
-        href: b2b/google-federation.md
-      - name: Ukázky kódu a Azure PowerShellu
-        href: b2b/code-samples.md
-      - name: Ukázka portálu se samoobslužnou registrací
-        href: b2b/self-service-portal.md
-      - name: E-mail s pozváním
-        href: b2b/invitation-email-elements.md
-      - name: Uplatnění pozvánky
-        href: b2b/redemption-experience.md
-      - name: Přidání uživatelů B2B bez pozvánky
-        href: b2b/add-user-without-invite.md
-      - name: Povolení nebo blokování pozvánek
-        href: b2b/allow-deny-list.md
-      - name: Podmíněný přístup pro B2B
-        href: b2b/conditional-access.md
-      - name: Zásady sdílení B2B
-        href: b2b/delegate-invitations.md
-      - name: Přidání uživatele B2B do role
-        href: b2b/add-guest-to-role.md
-      - name: Dynamické skupiny a uživatelé B2B
-        href: b2b/use-dynamic-groups.md
-      - name: Opuštění organizace
-        href: b2b/leave-the-organization.md
-      - name: Auditování a sestavy
-        href: b2b/auditing-and-reporting.md
-      - name: B2B pro hybridní organizace
-        href: b2b/hybrid-organizations.md
-        items:
-        - name: Udělení přístupu uživatelům B2B k místním aplikacím
-          href: b2b/hybrid-cloud-to-on-premises.md
-        - name: Udělení přístupu místním uživatelům ke cloudovým aplikacím
-          href: b2b/hybrid-on-premises-to-cloud.md
-      - name: Externí sdílení Office 365 a B2B
-        href: b2b/o365-external-user.md
-      - name: Licencování B2B
-        href: b2b/licensing-guidance.md
-      - name: Aktuální omezení
-        href: b2b/current-limitations.md
-      - name: Nejčastější dotazy
-        href: b2b/faq.md
-      - name: Řešení potíží s B2B
-        href: b2b/troubleshoot.md
-      - name: Principy uživatelů B2B
-        href: b2b/user-properties.md
-      - name: Token uživatele B2B
-        href: b2b/user-token.md
-      - name: B2B pro integrované aplikace Azure AD
-        href: b2b/configure-saas-apps.md
-      - name: Mapování deklarací identity uživatelů B2B
-        href: b2b/claims-mapping.md
-      - name: Porovnání spolupráce B2B s B2C
-        href: b2b/compare-with-b2c.md
-      - name: Získání podpory pro B2B
-        href: b2b/get-support.md
-  - name: Správa skupin a členů
-    href: fundamentals/active-directory-manage-groups.md
-    items:
-    - name: Správa skupin
-      href: fundamentals/active-directory-groups-create-azure-portal.md
-    - name: Odstranění skupiny a jejích členů
-      href: fundamentals/active-directory-groups-delete-group.md
-    - name: Správa nastavení skupin
-      href: fundamentals/active-directory-groups-settings-azure-portal.md
-  - name: Správa sestav
-    href: reports-monitoring/overview-reports.md
-    items:
-    - name: Aktivita přihlášení
-      href: reports-monitoring/concept-sign-ins.md
-    - name: Aktivita auditování
-      href: reports-monitoring/concept-audit-logs.md
-    - name: Ohrožení uživatelé
-      href: reports-monitoring/concept-user-at-risk.md
-    - name: Riziková přihlášení
-      href: reports-monitoring/concept-risky-sign-ins.md
-    - name: Rizikové události
-      href: reports-monitoring/concept-risk-events.md
-    - name: Monitorování protokolů pomocí Azure Monitoru
-      href: reports-monitoring/concept-activity-logs-in-azure-monitor.md
-    - name: Nejčastější dotazy
-      href: reports-monitoring/reports-faq.md
-    - name: Úlohy
-      items:
-      - name: Stažení sestavy přihlašování
-        href: reports-monitoring/quickstart-download-sign-in-report.md
-      - name: Stažení sestavy auditu
-        href: reports-monitoring/quickstart-download-audit-report.md
-      - name: Konfigurace pojmenovaných umístění
-        href: reports-monitoring/quickstart-configure-named-locations.md
-      - name: Vyhledávání sestav aktivit
-        href: reports-monitoring/howto-find-activity-reports.md
-      - name: Použití balíčku obsahu Power BI služby Azure AD
-        href: reports-monitoring/howto-power-bi-content-pack.md
-      - name: Oprava uživatelů označených příznakem rizika
-        href: reports-monitoring/howto-remediate-users-flagged-for-risk.md
-      - name: Směrování protokolů aktivit do centra událostí Azure
-        href: reports-monitoring/quickstart-azure-monitor-stream-logs-to-event-hub.md
-      - name: Archivace protokolů aktivit do účtu úložiště Azure
-        href: reports-monitoring/quickstart-azure-monitor-route-logs-to-storage-account.md
-      - name: Integrace protokolů aktivit s využitím Splunku pomocí Azure Monitoru
-        href: reports-monitoring/tutorial-integrate-activity-logs-with-splunk.md
-      - name: Integrace protokolů aktivit s využitím SumoLogicu pomocí Azure Monitoru
-        href: reports-monitoring/howto-integrate-activity-logs-with-sumologic.md
-      - name: Integrace protokolů aktivit s využitím Log Analytics pomocí Azure Monitoru
-        href: reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md
-    - name: Referenční informace
-      items:
-      - name: Uchovávání
-        href: reports-monitoring/reference-reports-data-retention.md
-      - name: Latence
-        href: reports-monitoring/reference-reports-latencies.md
-      - name: Reference k aktivitě auditování
-        href: reports-monitoring/reference-audit-activities.md
-      - name: Kódy chyb aktivit přihlašování
-        href: reports-monitoring/reference-sign-ins-error-codes.md
-      - name: Interpretace schéma protokolu auditu ve službě Azure Monitor
-        href: reports-monitoring/reference-azure-monitor-audit-log-schema.md
-      - name: Interpretace schéma protokolu přihlašování ve službě Azure Monitor
-        href: reports-monitoring/reference-azure-monitor-sign-ins-log-schema.md
-    - name: Řešení potíží
-      items:
-      - name: Chybějící data v protokolech aktivit Azure AD
-        href: reports-monitoring/troubleshoot-missing-audit-data.md
-      - name: Chybějící data v souborech ke stažení
-        href: reports-monitoring/troubleshoot-missing-data-download.md
-      - name: Chyby balíčku obsahu protokolů aktivit Azure AD
-        href: reports-monitoring/troubleshoot-content-pack.md
-      - name: Chyby v rozhraní API pro vytváření sestav Azure AD
-        href: reports-monitoring/troubleshoot-graph-api.md
-    - name: Programový přístup
-      href: reports-monitoring/concept-reporting-api.md
-      items:
-      - name: Požadavky
-        href: reports-monitoring/howto-configure-prerequisites-for-reporting-api.md
-      - name: Použití certifikátů
-        href: reports-monitoring/tutorial-access-api-with-certificates.md
-  - name: Správa hesel
-    href: authentication/concept-sspr-howitworks.md
-  - name: Správa aplikací
-    items:
-    - name: Přehled
-      href: manage-apps/what-is-application-management.md
-    - name: Začínáme
-      href: manage-apps/plan-an-application-integration.md
-    - name: Kurzy integrace aplikací SaaS
-      href: saas-apps/tutorial-list.md
-    - name: Zřizování a rušení zřízení uživatelů pro aplikace SaaS
-      href: manage-apps/user-provisioning.md
-      items:
-      - name: Kurzy integrace aplikací
-        href: saas-apps/tutorial-list.md
-      - name: Automatizace zřizování pro aplikace s podporou SCIM
-        href: manage-apps/use-scim-to-provision-users-and-groups.md
-      - name: Přizpůsobení mapování atributů
-        href: manage-apps/customize-application-attributes.md
-      - name: Zápis výrazů pro mapování atributů
-        href: manage-apps/functions-for-customizing-application-data.md
-      - name: Použití filtrů oborů
-        href: manage-apps/define-conditional-rules-for-provisioning-user-accounts.md
-      - name: Sestavy pro automatické zřizování uživatelů
-        href: manage-apps/check-status-user-account-provisioning.md
-      - name: Řešení potíží se zřizováním uživatelů
-        href: active-directory-application-provisioning-content-map.md
-    - name: Vzdálený přístup k aplikací s App Proxy
-      href: manage-apps/application-proxy.md
-      items:
-      - name: Začínáme
-        items:
-        - name: Povolení proxy aplikace
-          href: manage-apps/application-proxy-enable.md
-        - name: Publikování aplikací
-          href: manage-apps/application-proxy-publish-azure-portal.md
-        - name: Vlastní domény
-          href: manage-apps/application-proxy-configure-custom-domain.md
-      - name: Jednotné přihlašování
-        href: manage-apps/application-proxy-single-sign-on.md
-        items:
-        - name: Jednotné přihlašování s KCD
-          href: manage-apps/application-proxy-configure-single-sign-on-with-kcd.md
-        - name: Jednotné přihlašování se záhlavími
-          href: manage-apps/application-proxy-configure-single-sign-on-with-ping-access.md
-        - name: Jednotné přihlašování s ukládáním hesel do trezoru
-          href: manage-apps/application-proxy-configure-single-sign-on-password-vaulting.md
-      - name: Koncepty
-        items:
-        - name: Konektory
-          href: manage-apps/application-proxy-connectors.md
-        - name: Zabezpečení
-          href: manage-apps/application-proxy-security.md
-        - name: Sítě
-          href: manage-apps/application-proxy-network-topology.md
-        - name: Upgrade z TMG nebo UAG
-          href: manage-apps/application-proxy-migration.md
-      - name: Pokročilá konfigurace
-        items:
-        - name: Publikování v samostatných sítích
-          href: manage-apps/application-proxy-connector-groups.md
-        - name: Proxy servery
-          href: manage-apps/application-proxy-configure-connectors-with-proxy-servers.md
-        - name: Aplikace pracující s deklaracemi
-          href: manage-apps/application-proxy-configure-for-claims-aware-applications.md
-        - name: Nativní klientské aplikace
-          href: manage-apps/application-proxy-configure-native-client-application.md
-        - name: Bezobslužná instalace
-          href: manage-apps/application-proxy-register-connector-powershell.md
-        - name: Vlastní domovská stránka
-          href: manage-apps/application-proxy-configure-custom-home-page.md
-        - name: Převod vložených odkazů
-          href: manage-apps/application-proxy-configure-hard-coded-link-translation.md
-        - name: Zástupné znaky
-          href: manage-apps/application-proxy-wildcard.md
-        - name: Odebrání osobních údajů
-          href: manage-apps/application-proxy-remove-personal-data.md
-      - name: Názorné postupy publikování
-        items:
-        - name: Vzdálená plocha
-          href: manage-apps/application-proxy-integrate-with-remote-desktop-services.md
-        - name: SharePoint
-          href: manage-apps/application-proxy-integrate-with-sharepoint-server.md
-        - name: Microsoft Teams
-          href: manage-apps/application-proxy-integrate-with-teams.md
-        - name: Tableau
-          href: manage-apps/application-proxy-integrate-with-tableau.md
-        - name: Qlik
-          href: manage-apps/application-proxy-qlik.md
-      - name: PowerShell
-        href: https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0#application_proxy_application_management
-      - name: Řešení potíží
-        href: manage-apps/application-proxy-troubleshoot.md
-    - name: Správa podnikových aplikací
-      items:
-      - name: Přidání aplikace
-        href: manage-apps/add-application-portal.md
-      - name: Zobrazení aplikací klienta
-        href: manage-apps/view-applications-portal.md
-      - name: Konfigurace jednotného přihlašování
-        href: manage-apps/configure-single-sign-on-portal.md
-      - name: Přiřazení uživatelů
-        href: manage-apps/assign-user-or-group-access-portal.md
-      - name: Přizpůsobení brandingu
-        href: manage-apps/change-name-or-logo-portal.md
-      - name: Zákaz přihlašování uživatelů
-        href: manage-apps/disable-user-sign-in-portal.md
-      - name: Odebrání uživatelů
-        href: manage-apps/remove-user-or-group-access-portal.md
-      - name: Správa zřizování uživatelských účtů
-        href: manage-apps/configure-automatic-user-provisioning-portal.md
-      - name: Pokročilé podepisování certifikátů pro aplikace SAML
-        href: manage-apps/certificate-signing-options.md
-      - name: Skrytí aplikace v uživatelském prostředí
-        href: manage-apps/hide-application-from-user-portal.md
-    - name: Konfigurace automatického zrychlení přihlašování pomocí zásad HRD
-      href: manage-apps/configure-authentication-for-federated-users-portal.md
-    - name: Migrace aplikací AD FS do Azure AD
-      href: manage-apps/migrate-adfs-apps-to-azure.md
-    - name: Správa přístupu k aplikacím
-      href: manage-apps/what-is-access-management.md
-      items:
-      - name: Přístup s jednotným přihlašováním
-        href: manage-apps/what-is-single-sign-on.md
-      - name: Certifikáty pro jednotné přihlašování
-        href: manage-apps/manage-certificates-for-federated-single-sign-on.md
-      - name: Omezení tenanta
-        href: manage-apps/tenant-restrictions.md
-      - name: Použití uživatelů zřizování SCIM
-        href: manage-apps/use-scim-to-provision-users-and-groups.md
-    - name: Prostředí vyjádření souhlasu s aplikací Azure AD
-      href: develop/application-consent-experience.md
-    - name: Řešení potíží
-      items:
-      - name: Přístupový panel
-        items:
-        - name: Aplikace se nezobrazuje
-          href: manage-apps/access-panel-troubleshoot-application-not-appearing.md
-        - name: Zobrazuje e neočekávaná aplikace
-          href: manage-apps/access-panel-troubleshoot-unexpected-application.md
-        - name: Nejde se přihlásit
-          href: manage-apps/access-panel-troubleshoot-web-sign-in-problem.md
-        - name: Chyba při instalaci rozšíření prohlížeče
-          href: manage-apps/access-panel-extension-problem-installing.md
-        - name: Jak využívat samoobslužný přístup k aplikacím
-          href: manage-apps/access-panel-manage-self-service-access.md
-        - name: Chyba při využívání samoobslužného přístupu k aplikacím
-          href: manage-apps/access-panel-troubleshoot-self-service-access.md
-      - name: Přidání aplikace
-        items:
-        - name: Volba typu aplikace
-          href: manage-apps/choose-application-type.md
-        - name: Běžné problémy – aplikace v galerii
-          href: manage-apps/adding-gallery-app-common-problems.md
-        - name: Běžné problémy – aplikace mimo galerii
-          href: manage-apps/adding-non-gallery-app-common-problems.md
-      - name: Proxy aplikací
-        items:
-        - name: Potíže při zobrazování stránky aplikace
-          href: manage-apps/application-proxy-page-appearance-broken-problem.md
-        - name: Načítání aplikace trvá příliš dlouho
-          href: manage-apps/application-proxy-page-load-speed-problem.md
-        - name: Odkazy na stránce aplikace nefungují
-          href: manage-apps/application-proxy-page-links-broken-problem.md
-        - name: Jaké porty je potřeba odemknout pro mou aplikaci
-          href: manage-apps/application-proxy-connectivity-ports-how-to.md
-        - name: Ve skupině konektorů není žádný fungující konektor pro mou aplikaci
-          href: manage-apps/application-proxy-connectivity-no-working-connector.md
-        - name: Konfigurace na portálu pro správu
-          href: manage-apps/application-proxy-config-how-to.md
-        - name: Konfigurace jednotného přihlašování k mé aplikaci
-          href: manage-apps/application-proxy-config-sso-how-to.md
-        - name: Potíže při vytváření aplikace na portálu pro správu
-          href: manage-apps/application-proxy-config-problem.md
-        - name: Konfigurace omezeného delegování Kerberos
-          href: manage-apps/application-proxy-back-end-kerberos-constrained-delegation-how-to.md
-        - name: Konfigurace s využitím PingAccess
-          href: manage-apps/application-proxy-back-end-ping-access-how-to.md
-        - name: Chyba typu Není přístup k podnikové aplikaci
-          href: manage-apps/application-proxy-sign-in-bad-gateway-timeout-error.md
-        - name: Potíže při instalaci konektoru agenta proxy aplikací
-          href: manage-apps/application-proxy-connector-installation-problem.md
-      - name: Registrace aplikací
-        items:
-        - name: Zadání polí pro objekt aplikace
-          href: develop/registration-config-specific-application-property-how-to.md
-        - name: Změna výchozího nastavení životnosti tokenu
-          href: develop/registration-config-change-token-lifetime-how-to.md
-      - name: Authentication
-        items:
-        - name: Konfigurace koncových bodů
-          href: develop/registration-config-how-to.md
-      - name: Podmíněný přístup
-        items:
-        - name: Zákazník nesplnil předběžné požadavky registrace zařízení
-          href: active-directory-conditional-access.md
-        - name: Jak a kdy se uplatní vypnutá pravidla corpnet?
-          href: https://aka.ms/calocation
-        - name: Jak zvýšit počet zařízení, které může uživatel zaregistrovat ve službě Azure AD?
-          href: active-directory-azureadjoin-setup.md
-        - name: Jak nastavit podmíněný přístup pro Exchange Online?
-          href: https://aka.ms/csforexchange
-        - name: Jak nastavit podmíněný přístup pro zařízení s Windows 7?
-          href: active-directory-conditional-access.md#device-based-conditional-access
-        - name: Aplikace, které jsou podporované s podmíněným přístupem
-          href: active-directory-conditional-access-supported-apps.md
-      - name: Vyhledání rozhraní API
-        items:
-        - name: Vyhledání rozhraní API
-          href: develop/api-find-an-api-how-to.md
-      - name: Správa přístupu
-        items:
-        - name: Přiřazení uživatelů a skupin k aplikaci
-          href: manage-apps/methods-for-assigning-users-and-groups.md
-        - name: Odebrání přístupu uživatele k aplikaci
-          href: manage-apps/methods-for-removing-user-access.md
-        - name: Konfigurace samoobslužného přiřazení aplikace
-          href: manage-apps/manage-self-service-access.md
-        - name: Přiřazený neočekávaný uživatel
-          href: manage-apps/ways-users-get-assigned-to-applications.md
-        - name: Neočekávaná aplikace v seznamu aplikací
-          href: manage-apps/application-types.md
-      - name: Aplikace s více tenanty
-        items:
-        - name: Konfigurace nové aplikace
-          href: develop/setup-multi-tenant-app.md
-        - name: Přidání do galerie aplikací
-          href: develop/registration-config-multi-tenant-application-add-to-gallery-how-to.md
-      - name: Oprávnění
-        items:
-        - name: Volba oprávnění pro rozhraní API
-          href: develop/perms-for-given-api.md
-        - name: Delegovaná oprávnění versus oprávnění aplikace
-          href: develop/delegated-and-app-perms.md
-        - name: Souhlas pro aplikaci
-          href: develop/consent-framework.md
-      - name: Zřizování
-        items:
-        - name: Jak dlouho to trvá
-          href: manage-apps/application-provisioning-when-will-provisioning-finish-specific-user.md
-        - name: Hodiny – aplikace v galerii
-          href: manage-apps/application-provisioning-when-will-provisioning-finish.md
-        - name: Konfigurace zřizování uživatelů – aplikace v galerii
-          href: manage-apps/application-provisioning-config-how-to.md
-        - name: Potíže s konfigurací zřizování uživatelů – aplikace v galerii
-          href: manage-apps/application-provisioning-config-problem.md
-        - name: Potíže při ukládání přihlašovacích údajů správce při konfiguraci zřizování uživatelů – aplikace v galerii
-          href: manage-apps/application-provisioning-config-problem-storage-limit.md
-        - name: Uživatelé nejsou zřízení – aplikace v galerii
-          href: manage-apps/application-provisioning-config-problem-no-users-provisioned.md
-        - name: Zřízení nesprávných uživatelů – aplikace v galerii
-          href: manage-apps/application-provisioning-config-problem-wrong-users-provisioned.md
-        - name: Problémy s kompatibilitou SCIM – aplikace mimo galerii
-          href: manage-apps/application-provisioning-config-problem-scim-compatibility.md
-      - name: Jednotné přihlašování
-        items:
-        - name: Volba metody
-          href: manage-apps/single-sign-on-modes.md
-        - name: Konfigurace
-          href: develop/registration-config-sso-how-to.md
-        - name: Konfigurace federovaného jednotného přihlašování – aplikace v galerii
-          href: manage-apps/configure-federated-single-sign-on-gallery-applications.md
-        - name: Běžné potíže s konfigurací federovaného jednotného přihlašování – aplikace v galerii
-          href: manage-apps/configure-federated-single-sign-on-gallery-applications-problems.md
-        - name: Konfigurace federovaného jednotného přihlašování – aplikace mimo galerii
-          href: manage-apps/configure-federated-single-sign-on-non-gallery-applications.md
-        - name: Běžné potíže s konfigurací federovaného jednotného přihlašování – aplikace mimo galerii
-          href: manage-apps/configure-federated-single-sign-on-non-gallery-applications-problems.md
-        - name: Konfigurace hesel – aplikace v galerii
-          href: manage-apps/configure-password-single-sign-on-gallery-applications.md
-        - name: Běžné potíže s konfigurací hesel – aplikace v galerii
-          href: manage-apps/configure-password-single-sign-on-gallery-applications-problems.md
-        - name: Konfigurace hesel – aplikace mimo galerii
-          href: manage-apps/configure-password-single-sign-on-non-gallery-applications.md
-        - name: Běžné potíže s konfigurací hesel – aplikace mimo galerii
-          href: manage-apps/configure-password-single-sign-on-non-gallery-applications-problems.md
-      - name: Potíže s přihlášením uživatelů
-        items:
-        - name: Neočekávaná výzva k poskytnutí souhlasu
-          href: manage-apps/application-sign-in-unexpected-user-consent-prompt.md
-        - name: Chyba souhlasu uživatele
-          href: manage-apps/application-sign-in-unexpected-user-consent-error.md
-        - name: Potíže s přihlašováním z vlastního portálu
-          href: manage-apps/application-sign-in-other-problem-deeplink.md
-        - name: Potíže s přihlašováním z přístupového panelu
-          href: manage-apps/application-sign-in-other-problem-access-panel.md
-        - name: Chyba na přihlašovací stránce aplikace
-          href: manage-apps/application-sign-in-problem-application-error.md
-        - name: Potíže s jednotným přihlašováním pomocí hesla – aplikace mimo galerii
-          href: manage-apps/application-sign-in-problem-password-sso-non-gallery.md
-        - name: Potíže s jednotným přihlašováním pomocí hesla – aplikace v galerii
-          href: manage-apps/application-sign-in-problem-password-sso-gallery.md
-        - name: Potíže s přihlášením k aplikaci Microsoftu
-          href: manage-apps/application-sign-in-problem-first-party-microsoft.md
-        - name: Potíže s federovaným jednotným přihlašováním – aplikace mimo galerii
-          href: manage-apps/application-sign-in-problem-federated-sso-non-gallery.md
-        - name: Potíže s federovaným jednotným přihlašováním – aplikace v galerii
-          href: manage-apps/application-sign-in-problem-federated-sso-gallery.md
-        - name: Potíže s vlastní vyvinutou aplikací
-          href: manage-apps/application-sign-in-problem-custom-dev.md
-        - name: Potíže s místní aplikací – proxy aplikací
-          href: manage-apps/application-sign-in-problem-on-premises-application-proxy.md
-  - name: Správa adresáře
-    items:
-    - name: Azure AD Connect
-      href: hybrid/whatis-hybrid-identity.md
-    - name: Vlastní názvy domén
-      items:
-      - name: Rychlý start
-        href: fundamentals/add-custom-domain.md
+        - name: Přehled
+          href: manage-apps/what-is-application-management.md
+        - name: Začínáme
+          href: manage-apps/plan-an-application-integration.md
+        - name: Kurzy integrace aplikací SaaS
+          href: saas-apps/tutorial-list.md
+        - name: Zřizování a rušení zřízení uživatelů pro aplikace SaaS
+          href: manage-apps/user-provisioning.md
+          items:
+            - name: Kurzy integrace aplikací
+              href: saas-apps/tutorial-list.md
+            - name: Automatizace zřizování pro aplikace s podporou SCIM
+              href: manage-apps/use-scim-to-provision-users-and-groups.md
+            - name: Přizpůsobení mapování atributů
+              href: manage-apps/customize-application-attributes.md
+            - name: Zápis výrazů pro mapování atributů
+              href: manage-apps/functions-for-customizing-application-data.md
+            - name: Použití filtrů oborů
+              href: manage-apps/define-conditional-rules-for-provisioning-user-accounts.md
+            - name: Sestavy pro automatické zřizování uživatelů
+              href: manage-apps/check-status-user-account-provisioning.md
+            - name: Řešení potíží se zřizováním uživatelů
+              href: active-directory-application-provisioning-content-map.md
+        - name: Vzdálený přístup k aplikací s App Proxy
+          href: manage-apps/application-proxy.md
+          items:
+            - name: Začínáme
+              items:
+                - name: Povolení proxy aplikace
+                  href: manage-apps/application-proxy-enable.md
+                - name: Publikování aplikací
+                  href: manage-apps/application-proxy-publish-azure-portal.md
+                - name: Vlastní domény
+                  href: manage-apps/application-proxy-configure-custom-domain.md
+            - name: Jednotné přihlašování
+              href: manage-apps/application-proxy-single-sign-on.md
+              items:
+                - name: Jednotné přihlašování s KCD
+                  href: manage-apps/application-proxy-configure-single-sign-on-with-kcd.md
+                - name: Jednotné přihlašování se záhlavími
+                  href: manage-apps/application-proxy-configure-single-sign-on-with-ping-access.md
+                - name: Jednotné přihlašování s ukládáním hesel do trezoru
+                  href: manage-apps/application-proxy-configure-single-sign-on-password-vaulting.md
+            - name: Koncepty
+              items:
+                - name: Konektory
+                  href: manage-apps/application-proxy-connectors.md
+                - name: Zabezpečení
+                  href: manage-apps/application-proxy-security.md
+                - name: Sítě
+                  href: manage-apps/application-proxy-network-topology.md
+                - name: Upgrade z TMG nebo UAG
+                  href: manage-apps/application-proxy-migration.md
+            - name: Pokročilá konfigurace
+              items:
+                - name: Publikování v samostatných sítích
+                  href: manage-apps/application-proxy-connector-groups.md
+                - name: Proxy servery
+                  href: manage-apps/application-proxy-configure-connectors-with-proxy-servers.md
+                - name: Aplikace pracující s deklaracemi
+                  href: manage-apps/application-proxy-configure-for-claims-aware-applications.md
+                - name: Nativní klientské aplikace
+                  href: manage-apps/application-proxy-configure-native-client-application.md
+                - name: Bezobslužná instalace
+                  href: manage-apps/application-proxy-register-connector-powershell.md
+                - name: Vlastní domovská stránka
+                  href: manage-apps/application-proxy-configure-custom-home-page.md
+                - name: Převod vložených odkazů
+                  href: manage-apps/application-proxy-configure-hard-coded-link-translation.md
+                - name: Zástupné znaky
+                  href: manage-apps/application-proxy-wildcard.md
+                - name: Odebrání osobních údajů
+                  href: manage-apps/application-proxy-remove-personal-data.md
+            - name: Názorné postupy publikování
+              items:
+                - name: Vzdálená plocha
+                  href: manage-apps/application-proxy-integrate-with-remote-desktop-services.md
+                - name: SharePoint
+                  href: manage-apps/application-proxy-integrate-with-sharepoint-server.md
+                - name: Microsoft Teams
+                  href: manage-apps/application-proxy-integrate-with-teams.md
+                - name: Tableau
+                  href: manage-apps/application-proxy-integrate-with-tableau.md
+                - name: Qlik
+                  href: manage-apps/application-proxy-qlik.md
+            - name: PowerShell
+              href: 'https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0#application_proxy_application_management'
+            - name: Řešení potíží
+              href: manage-apps/application-proxy-troubleshoot.md
+        - name: Správa podnikových aplikací
+          items:
+            - name: Přidání aplikace
+              href: manage-apps/add-application-portal.md
+            - name: Zobrazení aplikací klienta
+              href: manage-apps/view-applications-portal.md
+            - name: Konfigurace jednotného přihlašování
+              href: manage-apps/configure-single-sign-on-portal.md
+            - name: Přiřazení uživatelů
+              href: manage-apps/assign-user-or-group-access-portal.md
+            - name: Přizpůsobení brandingu
+              href: manage-apps/change-name-or-logo-portal.md
+            - name: Zákaz přihlašování uživatelů
+              href: manage-apps/disable-user-sign-in-portal.md
+            - name: Odebrání uživatelů
+              href: manage-apps/remove-user-or-group-access-portal.md
+            - name: Správa zřizování uživatelských účtů
+              href: manage-apps/configure-automatic-user-provisioning-portal.md
+            - name: Pokročilé podepisování certifikátů pro aplikace SAML
+              href: manage-apps/certificate-signing-options.md
+            - name: Skrytí aplikace v uživatelském prostředí
+              href: manage-apps/hide-application-from-user-portal.md
+        - name: Konfigurace automatického zrychlení přihlašování pomocí zásad HRD
+          href: manage-apps/configure-authentication-for-federated-users-portal.md
+        - name: Migrace aplikací AD FS do Azure AD
+          href: manage-apps/migrate-adfs-apps-to-azure.md
+        - name: Správa přístupu k aplikacím
+          href: manage-apps/what-is-access-management.md
+          items:
+            - name: Přístup s jednotným přihlašováním
+              href: manage-apps/what-is-single-sign-on.md
+            - name: Certifikáty pro jednotné přihlašování
+              href: manage-apps/manage-certificates-for-federated-single-sign-on.md
+            - name: Omezení tenanta
+              href: manage-apps/tenant-restrictions.md
+            - name: Použití uživatelů zřizování SCIM
+              href: manage-apps/use-scim-to-provision-users-and-groups.md
+        - name: Prostředí vyjádření souhlasu s aplikací Azure AD
+          href: develop/application-consent-experience.md
+        - name: Řešení potíží
+          items:
+            - name: Přístupový panel
+              items:
+                - name: Aplikace se nezobrazuje
+                  href: manage-apps/access-panel-troubleshoot-application-not-appearing.md
+                - name: Zobrazuje e neočekávaná aplikace
+                  href: manage-apps/access-panel-troubleshoot-unexpected-application.md
+                - name: Nejde se přihlásit
+                  href: manage-apps/access-panel-troubleshoot-web-sign-in-problem.md
+                - name: Chyba při instalaci rozšíření prohlížeče
+                  href: manage-apps/access-panel-extension-problem-installing.md
+                - name: Jak využívat samoobslužný přístup k aplikacím
+                  href: manage-apps/access-panel-manage-self-service-access.md
+                - name: Chyba při využívání samoobslužného přístupu k aplikacím
+                  href: manage-apps/access-panel-troubleshoot-self-service-access.md
+            - name: Přidání aplikace
+              items:
+                - name: Volba typu aplikace
+                  href: manage-apps/choose-application-type.md
+                - name: Běžné problémy – aplikace v galerii
+                  href: manage-apps/adding-gallery-app-common-problems.md
+                - name: Běžné problémy – aplikace mimo galerii
+                  href: manage-apps/adding-non-gallery-app-common-problems.md
+            - name: Proxy aplikací
+              items:
+                - name: Potíže při zobrazování stránky aplikace
+                  href: manage-apps/application-proxy-page-appearance-broken-problem.md
+                - name: Načítání aplikace trvá příliš dlouho
+                  href: manage-apps/application-proxy-page-load-speed-problem.md
+                - name: Odkazy na stránce aplikace nefungují
+                  href: manage-apps/application-proxy-page-links-broken-problem.md
+                - name: Jaké porty je potřeba odemknout pro mou aplikaci
+                  href: manage-apps/application-proxy-connectivity-ports-how-to.md
+                - name: Ve skupině konektorů není žádný fungující konektor pro mou aplikaci
+                  href: manage-apps/application-proxy-connectivity-no-working-connector.md
+                - name: Konfigurace na portálu pro správu
+                  href: manage-apps/application-proxy-config-how-to.md
+                - name: Konfigurace jednotného přihlašování k mé aplikaci
+                  href: manage-apps/application-proxy-config-sso-how-to.md
+                - name: Potíže při vytváření aplikace na portálu pro správu
+                  href: manage-apps/application-proxy-config-problem.md
+                - name: Konfigurace omezeného delegování Kerberos
+                  href: manage-apps/application-proxy-back-end-kerberos-constrained-delegation-how-to.md
+                - name: Konfigurace s využitím PingAccess
+                  href: manage-apps/application-proxy-back-end-ping-access-how-to.md
+                - name: Chyba typu Není přístup k podnikové aplikaci
+                  href: manage-apps/application-proxy-sign-in-bad-gateway-timeout-error.md
+                - name: Potíže při instalaci konektoru agenta proxy aplikací
+                  href: manage-apps/application-proxy-connector-installation-problem.md
+            - name: Registrace aplikací
+              items:
+                - name: Zadání polí pro objekt aplikace
+                  href: develop/registration-config-specific-application-property-how-to.md
+                - name: Změna výchozího nastavení životnosti tokenu
+                  href: develop/registration-config-change-token-lifetime-how-to.md
+            - name: Authentication
+              items:
+                - name: Konfigurace koncových bodů
+                  href: develop/registration-config-how-to.md
+            - name: Podmíněný přístup
+              items:
+                - name: Zákazník nesplnil předběžné požadavky registrace zařízení
+                  href: active-directory-conditional-access.md
+                - name: Jak a kdy se uplatní vypnutá pravidla corpnet?
+                  href: 'https://aka.ms/calocation'
+                - name: 'Jak zvýšit počet zařízení, které může uživatel zaregistrovat ve službě Azure AD?'
+                  href: active-directory-azureadjoin-setup.md
+                - name: Jak nastavit podmíněný přístup pro Exchange Online?
+                  href: 'https://aka.ms/csforexchange'
+                - name: Jak nastavit podmíněný přístup pro zařízení s Windows 7?
+                  href: 'active-directory-conditional-access.md#device-based-conditional-access'
+                - name: 'Aplikace, které jsou podporované s podmíněným přístupem'
+                  href: active-directory-conditional-access-supported-apps.md
+            - name: Vyhledání rozhraní API
+              items:
+                - name: Vyhledání rozhraní API
+                  href: develop/api-find-an-api-how-to.md
+            - name: Správa přístupu
+              items:
+                - name: Přiřazení uživatelů a skupin k aplikaci
+                  href: manage-apps/methods-for-assigning-users-and-groups.md
+                - name: Odebrání přístupu uživatele k aplikaci
+                  href: manage-apps/methods-for-removing-user-access.md
+                - name: Konfigurace samoobslužného přiřazení aplikace
+                  href: manage-apps/manage-self-service-access.md
+                - name: Přiřazený neočekávaný uživatel
+                  href: manage-apps/ways-users-get-assigned-to-applications.md
+                - name: Neočekávaná aplikace v seznamu aplikací
+                  href: manage-apps/application-types.md
+            - name: Aplikace s více tenanty
+              items:
+                - name: Konfigurace nové aplikace
+                  href: develop/setup-multi-tenant-app.md
+                - name: Přidání do galerie aplikací
+                  href: develop/registration-config-multi-tenant-application-add-to-gallery-how-to.md
+            - name: Oprávnění
+              items:
+                - name: Volba oprávnění pro rozhraní API
+                  href: develop/perms-for-given-api.md
+                - name: Delegovaná oprávnění versus oprávnění aplikace
+                  href: develop/delegated-and-app-perms.md
+                - name: Souhlas pro aplikaci
+                  href: develop/consent-framework.md
+            - name: Zřizování
+              items:
+                - name: Jak dlouho to trvá
+                  href: manage-apps/application-provisioning-when-will-provisioning-finish-specific-user.md
+                - name: Hodiny – aplikace v galerii
+                  href: manage-apps/application-provisioning-when-will-provisioning-finish.md
+                - name: Konfigurace zřizování uživatelů – aplikace v galerii
+                  href: manage-apps/application-provisioning-config-how-to.md
+                - name: Potíže s konfigurací zřizování uživatelů – aplikace v galerii
+                  href: manage-apps/application-provisioning-config-problem.md
+                - name: Potíže při ukládání přihlašovacích údajů správce při konfiguraci zřizování uživatelů – aplikace v galerii
+                  href: manage-apps/application-provisioning-config-problem-storage-limit.md
+                - name: Uživatelé nejsou zřízení – aplikace v galerii
+                  href: manage-apps/application-provisioning-config-problem-no-users-provisioned.md
+                - name: Zřízení nesprávných uživatelů – aplikace v galerii
+                  href: manage-apps/application-provisioning-config-problem-wrong-users-provisioned.md
+                - name: Problémy s kompatibilitou SCIM – aplikace mimo galerii
+                  href: manage-apps/application-provisioning-config-problem-scim-compatibility.md
+            - name: Jednotné přihlašování
+              items:
+                - name: Volba metody
+                  href: manage-apps/single-sign-on-modes.md
+                - name: Konfigurace
+                  href: develop/registration-config-sso-how-to.md
+                - name: Konfigurace federovaného jednotného přihlašování – aplikace v galerii
+                  href: manage-apps/configure-federated-single-sign-on-gallery-applications.md
+                - name: Běžné potíže s konfigurací federovaného jednotného přihlašování – aplikace v galerii
+                  href: manage-apps/configure-federated-single-sign-on-gallery-applications-problems.md
+                - name: Konfigurace federovaného jednotného přihlašování – aplikace mimo galerii
+                  href: manage-apps/configure-federated-single-sign-on-non-gallery-applications.md
+                - name: Běžné potíže s konfigurací federovaného jednotného přihlašování – aplikace mimo galerii
+                  href: manage-apps/configure-federated-single-sign-on-non-gallery-applications-problems.md
+                - name: Konfigurace hesel – aplikace v galerii
+                  href: manage-apps/configure-password-single-sign-on-gallery-applications.md
+                - name: Běžné potíže s konfigurací hesel – aplikace v galerii
+                  href: manage-apps/configure-password-single-sign-on-gallery-applications-problems.md
+                - name: Konfigurace hesel – aplikace mimo galerii
+                  href: manage-apps/configure-password-single-sign-on-non-gallery-applications.md
+                - name: Běžné potíže s konfigurací hesel – aplikace mimo galerii
+                  href: manage-apps/configure-password-single-sign-on-non-gallery-applications-problems.md
+            - name: Potíže s přihlášením uživatelů
+              items:
+                - name: Neočekávaná výzva k poskytnutí souhlasu
+                  href: manage-apps/application-sign-in-unexpected-user-consent-prompt.md
+                - name: Chyba souhlasu uživatele
+                  href: manage-apps/application-sign-in-unexpected-user-consent-error.md
+                - name: Potíže s přihlašováním z vlastního portálu
+                  href: manage-apps/application-sign-in-other-problem-deeplink.md
+                - name: Potíže s přihlašováním z přístupového panelu
+                  href: manage-apps/application-sign-in-other-problem-access-panel.md
+                - name: Chyba na přihlašovací stránce aplikace
+                  href: manage-apps/application-sign-in-problem-application-error.md
+                - name: Potíže s jednotným přihlašováním pomocí hesla – aplikace mimo galerii
+                  href: manage-apps/application-sign-in-problem-password-sso-non-gallery.md
+                - name: Potíže s jednotným přihlašováním pomocí hesla – aplikace v galerii
+                  href: manage-apps/application-sign-in-problem-password-sso-gallery.md
+                - name: Potíže s přihlášením k aplikaci Microsoftu
+                  href: manage-apps/application-sign-in-problem-first-party-microsoft.md
+                - name: Potíže s federovaným jednotným přihlašováním – aplikace mimo galerii
+                  href: manage-apps/application-sign-in-problem-federated-sso-non-gallery.md
+                - name: Potíže s federovaným jednotným přihlašováním – aplikace v galerii
+                  href: manage-apps/application-sign-in-problem-federated-sso-gallery.md
+                - name: Potíže s vlastní vyvinutou aplikací
+                  href: manage-apps/application-sign-in-problem-custom-dev.md
+                - name: Potíže s místní aplikací – proxy aplikací
+                  href: manage-apps/application-sign-in-problem-on-premises-application-proxy.md
     - name: Správa adresáře
-      href: fundamentals/active-directory-administer.md
-    - name: Integrace místních identit pomocí Azure AD Connect
-      href: hybrid/whatis-hybrid-identity.md
-    - name: Konfigurace životnosti tokenů
-      href: develop/active-directory-configurable-token-lifetimes.md
-  - name: Zabezpečení identit
-    items:
-    - name: Privileged Identity Management
-      href: privileged-identity-management/pim-configure.md?toc=%2fazure%2factive-directory%2ftoc.json
-  - name: Řešení potíží
-    href: fundamentals/active-directory-troubleshooting-support-howto.md
-  - name: Nasazení testování konceptu (POC) Azure AD
-    items:
-    - name: 'Playbook PoC: Úvod'
-      href: active-directory-playbook-intro.md
-    - name: 'Playbook PoC: Komponenty'
-      href: active-directory-playbook-ingredients.md
-    - name: 'Playbook PoC: Implementace'
-      href: active-directory-playbook-implementation.md
-    - name: 'Playbook PoC: Stavební bloky'
-      href: active-directory-playbook-building-blocks.md
+      items:
+        - name: Azure AD Connect
+          href: hybrid/whatis-hybrid-identity.md
+        - name: Vlastní názvy domén
+          items:
+            - name: Rychlý start
+              href: fundamentals/add-custom-domain.md
+        - name: Správa adresáře
+          href: fundamentals/active-directory-administer.md
+        - name: Integrace místních identit pomocí Azure AD Connect
+          href: hybrid/whatis-hybrid-identity.md
+        - name: Konfigurace životnosti tokenů
+          href: develop/active-directory-configurable-token-lifetimes.md
+    - name: Zabezpečení identit
+      items:
+        - name: Privileged Identity Management
+          href: privileged-identity-management/pim-configure.md?toc=%2fazure%2factive-directory%2ftoc.json
+    - name: Řešení potíží
+      href: fundamentals/active-directory-troubleshooting-support-howto.md
+    - name: Nasazení testování konceptu (POC) Azure AD
+      items:
+        - name: 'Playbook PoC: Úvod'
+          href: active-directory-playbook-intro.md
+        - name: 'Playbook PoC: Komponenty'
+          href: active-directory-playbook-ingredients.md
+        - name: 'Playbook PoC: Implementace'
+          href: active-directory-playbook-implementation.md
+        - name: 'Playbook PoC: Stavební bloky'
+          href: active-directory-playbook-building-blocks.md
 - name: Referenční informace
   items:
-  - name: Ukázky kódů
-    href: https://azure.microsoft.com/resources/samples/?service=active-directory
-  - name: Rutiny Azure PowerShellu
-    href: /powershell/azure/overview
-  - name: Java API – referenční informace
-    href: /java/api
-  - name: .NET API
-    href: /active-directory/adal/microsoft.identitymodel.clients.activedirectory
+    - name: Ukázky kódů
+      href: 'https://azure.microsoft.com/resources/samples/?service=active-directory'
+    - name: Rutiny Azure PowerShellu
+      href: /powershell/azure/overview
+    - name: Java API – referenční informace
+      href: /java/api
+    - name: .NET API
+      href: /active-directory/adal/microsoft.identitymodel.clients.activedirectory
 - name: Související
   items:
-  - name: Multi-Factor Authentication
-    href: /azure/multi-factor-authentication/
-  - name: Azure AD Connect
-    href: hybrid/whatis-hybrid-identity.md
-  - name: Azure AD Connect Health
-    href: hybrid/whatis-hybrid-identity-health.md
-  - name: Azure AD pro vývojáře
-    href: ./develop/active-directory-how-to-integrate.md
-  - name: Azure AD Privileged Identity Management
-    href: ./privileged-identity-management/pim-configure.md
+    - name: Multi-Factor Authentication
+      href: /azure/multi-factor-authentication/
+    - name: Azure AD Connect
+      href: hybrid/whatis-hybrid-identity.md
+    - name: Azure AD Connect Health
+      href: hybrid/whatis-hybrid-identity-health.md
+    - name: Azure AD pro vývojáře
+      href: ./develop/active-directory-how-to-integrate.md
+    - name: Azure AD Privileged Identity Management
+      href: ./privileged-identity-management/pim-configure.md
 - name: Zdroje a prostředky
   items:
-  - name: Plány nasazení služby Azure AD
-    href: ./fundamentals/active-directory-deployment-plans.md
-  - name: Fórum Azure pro názory
-    href: https://feedback.azure.com/forums/169401-azure-active-directory
-  - name: Plány Azure do budoucna
-    href: https://azure.microsoft.com/roadmap/?category=security-identity
-  - name: Fórum MSDN
-    href: https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=WindowsAzureAD
-  - name: Ceny
-    href: https://azure.microsoft.com/pricing/details/active-directory/
-  - name: Cenová kalkulačka
-    href: https://azure.microsoft.com/pricing/calculator/
-  - name: Aktualizace služeb
-    href: https://azure.microsoft.com/updates/?product=active-directory
-  - name: Stack Overflow
-    href: https://stackoverflow.com/questions/tagged/azure-active-directory
-  - name: Videa
-    href: https://azure.microsoft.com/documentation/videos/index/?services=active-directory
-ms.openlocfilehash: 91b16e11806ca9c7f5fc931110ae337ddc2ecec3
-ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
-ms.translationtype: HT
-ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58341556"
+    - name: Plány nasazení služby Azure AD
+      href: ./fundamentals/active-directory-deployment-plans.md
+    - name: Fórum Azure pro názory
+      href: 'https://feedback.azure.com/forums/169401-azure-active-directory'
+    - name: Plány Azure do budoucna
+      href: 'https://azure.microsoft.com/roadmap/?category=security-identity'
+    - name: Fórum MSDN
+      href: 'https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=WindowsAzureAD'
+    - name: Ceny
+      href: 'https://azure.microsoft.com/pricing/details/active-directory/'
+    - name: Cenová kalkulačka
+      href: 'https://azure.microsoft.com/pricing/calculator/'
+    - name: Aktualizace služeb
+      href: 'https://azure.microsoft.com/updates/?product=active-directory'
+    - name: Stack Overflow
+      href: 'https://stackoverflow.com/questions/tagged/azure-active-directory'
+    - name: Videa
+      href: 'https://azure.microsoft.com/documentation/videos/index/?services=active-directory'

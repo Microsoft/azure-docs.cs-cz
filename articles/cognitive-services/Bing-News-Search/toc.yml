@@ -1,118 +1,111 @@
-items:
 - name: Dokumentace k Vyhledávání zpráv Bingu
   href: index.yml
 - name: Přehled
-  items:
-  - name: Co je rozhraní API Bingu pro vyhledávání zpráv?
-    href: search-the-web.md
-  - name: Porovnání rozhraní API pro vyhledávání Bingu
-    href: ../Bing-Web-Search/bing-api-comparison.md
-    maintainContext: true
   expanded: true
+  items:
+    - name: Co je rozhraní API Bingu pro vyhledávání zpráv?
+      href: search-the-web.md
+    - name: Porovnání rozhraní API pro vyhledávání Bingu
+      href: ../Bing-Web-Search/bing-api-comparison.md
+      maintainContext: true
 - name: Šablony Rychlý start
   items:
-  - name: REST API
-    items:
-    - name: Pomocí C#
-      href: csharp.md
-    - name: Pomocí Javy
-      href: java.md
-    - name: Pomocí Node.js
-      href: nodejs.md
-    - name: Pomocí PHP
-      href: php.md
-    - name: Pomocí Pythonu
-      href: python.md
-    - name: Pomocí Ruby
-      href: ruby.md
-    - name: Pomocí Go
-      href: go.md
-  - name: Sada SDK
-    items:
-    - name: Pomocí C#
-      href: news-search-sdk-quickstart.md
-    - name: Pomocí Node.js
-      href: news-search-sdk-node-quickstart.md
-    - name: Pomocí Pythonu
-      href: news-sdk-python-quickstart.md
-    - name: Pomocí Javy
-      href: news-sdk-java-quickstart.md
+    - name: REST API
+      items:
+        - name: 'Pomocí C#'
+          href: csharp.md
+        - name: Pomocí Javy
+          href: java.md
+        - name: Pomocí Node.js
+          href: nodejs.md
+        - name: Pomocí PHP
+          href: php.md
+        - name: Pomocí Pythonu
+          href: python.md
+        - name: Pomocí Ruby
+          href: ruby.md
+        - name: Pomocí Go
+          href: go.md
+    - name: Sada SDK
+      items:
+        - name: 'Pomocí C#'
+          href: news-search-sdk-quickstart.md
+        - name: Pomocí Node.js
+          href: news-search-sdk-node-quickstart.md
+        - name: Pomocí Pythonu
+          href: news-sdk-python-quickstart.md
+        - name: Pomocí Javy
+          href: news-sdk-java-quickstart.md
 - name: Kurzy
   items:
-  - name: Vytvoření jednostránkové webové aplikace
-    href: tutorial-bing-news-search-single-page-app.md
+    - name: Vytvoření jednostránkové webové aplikace
+      href: tutorial-bing-news-search-single-page-app.md
 - name: Ukázky
   items:
-  - name: Ukázky kódů
-    href: https://azure.microsoft.com/resources/samples/?sort=0&service=cognitive-services&term=Bing+News+Search
+    - name: Ukázky kódů
+      href: 'https://azure.microsoft.com/resources/samples/?sort=0&service=cognitive-services&term=Bing+News+Search'
 - name: Návody
   items:
-  - name: Zpracování zvýrazňování nalezených položek
-    href: hit-highlighting.md
-  - name: Stránkování novinek
-    href: paging-news.md
-  - name: Změna velikosti a oříznutí miniatur
-    href: resize-and-crop-thumbnails.md
-  - name: Upgrade rozhraní API z v5 na v7
-    href: bing-news-upgrade-guide-v5-to-v7.md
-  - name: Práce se sadou Visual Studio
-    items:
-    - name: Použití připojené služby Vyhledávání zpráv Bingu
-      href: vs-bing-news-search-connected-service.md
+    - name: Zpracování zvýrazňování nalezených položek
+      href: hit-highlighting.md
+    - name: Stránkování novinek
+      href: paging-news.md
+    - name: Změna velikosti a oříznutí miniatur
+      href: resize-and-crop-thumbnails.md
+    - name: Upgrade rozhraní API z v5 na v7
+      href: bing-news-upgrade-guide-v5-to-v7.md
+    - name: Práce se sadou Visual Studio
+      items:
+        - name: Použití připojené služby Vyhledávání zpráv Bingu
+          href: vs-bing-news-search-connected-service.md
 - name: Koncepty
   items:
-  - name: Odesílání dotazů pro vyhledávání
-    href: concepts/send-search-queries.md
-  - name: Vyhledávání zpráv
-    href: concepts/search-for-news.md
+    - name: Odesílání dotazů pro vyhledávání
+      href: concepts/send-search-queries.md
+    - name: Vyhledávání zpráv
+      href: concepts/search-for-news.md
 - name: Referenční informace
   items:
-  - name: Rozhraní API Bingu pro vyhledávání zpráv v7
-    href: https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference
-  - name: Rozhraní API Bingu pro vyhledávání zpráv v5
-    href: https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v5-reference
-  - name: Sady SDK
-    items:
-    - name: .NET
-      href: https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/bingnews?view=azure-dotnet
-    - name: Java
-      href: https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/newssearch?view=azure-java-stable
-    - name: Python
-      href: https://docs.microsoft.com/python/api/overview/azure/cognitiveservices/newssearch?view=azure-python
-    - name: Node.js
-      href: https://docs.microsoft.com/javascript/api/overview/azure/cognitiveservices/newssearch?view=azure-node-latest
-    - name: Přejít
-      href: https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/newssearch
-  - name: Požadavky na zobrazení a použití
-    href: ../Bing-Web-Search/use-display-requirements.md
-    maintainContext: true
+    - name: Rozhraní API Bingu pro vyhledávání zpráv v7
+      href: 'https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference'
+    - name: Rozhraní API Bingu pro vyhledávání zpráv v5
+      href: 'https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v5-reference'
+    - name: Sady SDK
+      items:
+        - name: .NET
+          href: 'https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/bingnews?view=azure-dotnet'
+        - name: Java
+          href: 'https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/newssearch?view=azure-java-stable'
+        - name: Python
+          href: 'https://docs.microsoft.com/python/api/overview/azure/cognitiveservices/newssearch?view=azure-python'
+        - name: Node.js
+          href: 'https://docs.microsoft.com/javascript/api/overview/azure/cognitiveservices/newssearch?view=azure-node-latest'
+        - name: Přejít
+          href: 'https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/newssearch'
+    - name: Požadavky na zobrazení a použití
+      href: ../Bing-Web-Search/use-display-requirements.md
+      maintainContext: true
 - name: Zdroje a prostředky
   items:
-  - name: Ceny
-    href: https://azure.microsoft.com/pricing/details/cognitive-services/search-api/news/
-  - name: UserVoice
-    href: https://cognitive.uservoice.com/forums/911449-bing-news-search-api
-  - name: Stack Overflow
-    href: https://stackoverflow.com/search?q=bing+news+search
-  - name: Regionální dostupnost
-    href: https://azure.microsoft.com/global-infrastructure/services/
-  - name: Plány Azure do budoucna
-    href: https://azure.microsoft.com/roadmap/
-  - name: Znalostní báze
-    href: https://cognitive.uservoice.com/knowledgebase/topics/127875-bing-search-web-image-video-news-autosuggest
-  - name: Získání klíče rozhraní API
-    href: https://azure.microsoft.com/try/cognitive-services/?api=bing-news-search-api
-  - name: Vyzkoušejte si to!
-    href: https://dev.cognitive.microsoft.com/docs/services/56b43f72cf5ff8098cef380a/operations/56f02400dbe2d91900c68553
-  - name: Koncové body Vyhledávání zpráv Bingu
-    href: endpoint-news.md
-  - name: Podpora jazyků a oblastí
-    href: language-support.md
-  - name: Analýzy pro rozhraní API Bingu pro vyhledávání zpráv
-    href: bing-news-stats.md
-ms.openlocfilehash: 2f560504a582de36ccd55c7755d9113e68a8bf4a
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
-ms.translationtype: HT
-ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57306710"
+    - name: Ceny
+      href: 'https://azure.microsoft.com/pricing/details/cognitive-services/search-api/news/'
+    - name: UserVoice
+      href: 'https://cognitive.uservoice.com/forums/911449-bing-news-search-api'
+    - name: Stack Overflow
+      href: 'https://stackoverflow.com/search?q=bing+news+search'
+    - name: Regionální dostupnost
+      href: 'https://azure.microsoft.com/global-infrastructure/services/'
+    - name: Plány Azure do budoucna
+      href: 'https://azure.microsoft.com/roadmap/'
+    - name: Znalostní báze
+      href: 'https://cognitive.uservoice.com/knowledgebase/topics/127875-bing-search-web-image-video-news-autosuggest'
+    - name: Získání klíče rozhraní API
+      href: 'https://azure.microsoft.com/try/cognitive-services/?api=bing-news-search-api'
+    - name: Vyzkoušejte si to!
+      href: 'https://dev.cognitive.microsoft.com/docs/services/56b43f72cf5ff8098cef380a/operations/56f02400dbe2d91900c68553'
+    - name: Koncové body Vyhledávání zpráv Bingu
+      href: endpoint-news.md
+    - name: Podpora jazyků a oblastí
+      href: language-support.md
+    - name: Analýzy pro rozhraní API Bingu pro vyhledávání zpráv
+      href: bing-news-stats.md

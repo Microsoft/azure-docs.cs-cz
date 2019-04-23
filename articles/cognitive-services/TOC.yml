@@ -1,40 +1,33 @@
-items:
 - name: Dokumentace ke službě Azure Cognitive Services
   href: index.md
 - name: Přehled
-  items:
-  - name: Co je služba Cognitive Services?
-    href: Welcome.md
-  - name: Podpora jazyků
-    href: language-support.md
-  - name: Podpora kontejnerů
-    href: cognitive-services-container-support.md
   expanded: true
+  items:
+    - name: Co je služba Cognitive Services?
+      href: Welcome.md
+    - name: Podpora jazyků
+      href: language-support.md
+    - name: Podpora kontejnerů
+      href: cognitive-services-container-support.md
 - name: Šablony Rychlý start
   items:
-  - name: Vytvoření účtu
-    href: cognitive-services-apis-create-account.md
-  - name: Authentication
-    href: authentication.md
+    - name: Vytvoření účtu
+      href: cognitive-services-apis-create-account.md
+    - name: Authentication
+      href: authentication.md
 - name: Zdroje a prostředky
   items:
-  - name: Plány Azure do budoucna
-    href: https://azure.microsoft.com/roadmap/?category=cognitive-services
-  - name: Ceny
-    href: https://azure.microsoft.com/pricing/details/cognitive-services/
-  - name: Cenová kalkulačka
-    href: https://azure.microsoft.com/pricing/calculator/
-  - name: Videa
-    href: https://azure.microsoft.com/resources/videos/index/?services=cognitive-services
-  - name: Aktualizace služeb
-    href: https://azure.microsoft.com/updates/?product=cognitive-services
-  - name: Pravidla chování
-    href: https://go.microsoft.com/fwlink/?LinkId=698895
-  - name: Znalostní báze
-    href: https://cognitive.uservoice.com/knowledgebase
-ms.openlocfilehash: 975c681b3cd30fe7f5b3bd6cd39371a9d66ff27a
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
-ms.translationtype: HT
-ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57545409"
+    - name: Plány Azure do budoucna
+      href: 'https://azure.microsoft.com/roadmap/?category=cognitive-services'
+    - name: Ceny
+      href: 'https://azure.microsoft.com/pricing/details/cognitive-services/'
+    - name: Cenová kalkulačka
+      href: 'https://azure.microsoft.com/pricing/calculator/'
+    - name: Videa
+      href: 'https://azure.microsoft.com/resources/videos/index/?services=cognitive-services'
+    - name: Aktualizace služeb
+      href: 'https://azure.microsoft.com/updates/?product=cognitive-services'
+    - name: Pravidla chování
+      href: 'https://go.microsoft.com/fwlink/?LinkId=698895'
+    - name: Znalostní báze
+      href: 'https://cognitive.uservoice.com/knowledgebase'

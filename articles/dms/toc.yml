@@ -1,103 +1,96 @@
-items:
 - name: Dokumentace ke službě Database Migration Service
   href: index.yml
 - name: Přehled
   items:
-  - name: Co je Database Migration Service (DMS)?
-    href: dms-overview.md
+    - name: Co je Database Migration Service (DMS)?
+      href: dms-overview.md
 - name: Šablony Rychlý start
   items:
-  - name: Vytvoření služby – Portál
-    href: quickstart-create-data-migration-service-portal.md
+    - name: Vytvoření služby – Portál
+      href: quickstart-create-data-migration-service-portal.md
 - name: Kurzy
   items:
-  - name: Offline migrace SQL Serveru do Azure SQL DB
-    href: tutorial-sql-server-to-azure-sql.md
-  - name: Online migrace SQL Serveru do Azure SQL DB
-    href: tutorial-sql-server-azure-sql-online.md
-  - name: Offline migrace SQL Serveru do Azure SQL DB MI
-    href: tutorial-sql-server-to-managed-instance.md
-  - name: Online migrace SQL Serveru do Azure SQL DB MI
-    href: tutorial-sql-server-managed-instance-online.md
-  - name: Online migrace SQL Serveru RDS do Azure SQL DB nebo Azure SQL DB MI
-    href: tutorial-rds-sql-server-azure-sql-and-managed-instance-online.md
-  - name: Online migrace MySQL do Azure DB for MySQL
-    href: tutorial-mysql-azure-mysql-online.md
-  - name: Online migrace PostgreSQL do Azure DB for PostgreSQL
-    href: tutorial-postgresql-azure-postgresql-online.md
-  - name: Offline migrace MongoDB do rozhraní Mongo API služby Azure Cosmos DB
-    href: tutorial-mongodb-cosmos-db.md
-  - name: Online migrace MongoDB do rozhraní Mongo API služby Azure Cosmos DB
-    href: tutorial-mongodb-cosmos-db-online.md
+    - name: Offline migrace SQL Serveru do Azure SQL DB
+      href: tutorial-sql-server-to-azure-sql.md
+    - name: Online migrace SQL Serveru do Azure SQL DB
+      href: tutorial-sql-server-azure-sql-online.md
+    - name: Offline migrace SQL Serveru do Azure SQL DB MI
+      href: tutorial-sql-server-to-managed-instance.md
+    - name: Online migrace SQL Serveru do Azure SQL DB MI
+      href: tutorial-sql-server-managed-instance-online.md
+    - name: Online migrace SQL Serveru RDS do Azure SQL DB nebo Azure SQL DB MI
+      href: tutorial-rds-sql-server-azure-sql-and-managed-instance-online.md
+    - name: Online migrace MySQL do Azure DB for MySQL
+      href: tutorial-mysql-azure-mysql-online.md
+    - name: Online migrace PostgreSQL do Azure DB for PostgreSQL
+      href: tutorial-postgresql-azure-postgresql-online.md
+    - name: Offline migrace MongoDB do rozhraní Mongo API služby Azure Cosmos DB
+      href: tutorial-mongodb-cosmos-db.md
+    - name: Online migrace MongoDB do rozhraní Mongo API služby Azure Cosmos DB
+      href: tutorial-mongodb-cosmos-db-online.md
 - name: Návody
   items:
-  - name: Použití PowerShellu k migraci SQL Serveru do Azure SQL DB
-    href: howto-sql-server-to-azure-sql-powershell.md
-  - name: Použití PowerShellu k migraci SQL Serveru do Azure SQL DB MI
-    href: howto-sql-server-to-azure-sql-mi-powershell.md
-  - name: Monitorování aktivit migrace
-    href: how-to-monitor-migration-activity.md
-  - name: Migrace balíčků SSIS do Azure
-    href: how-to-migrate-ssis-packages.md
+    - name: Použití PowerShellu k migraci SQL Serveru do Azure SQL DB
+      href: howto-sql-server-to-azure-sql-powershell.md
+    - name: Použití PowerShellu k migraci SQL Serveru do Azure SQL DB MI
+      href: howto-sql-server-to-azure-sql-mi-powershell.md
+    - name: Monitorování aktivit migrace
+      href: how-to-monitor-migration-activity.md
+    - name: Migrace balíčků SSIS do Azure
+      href: how-to-migrate-ssis-packages.md
 - name: Zdroje a prostředky
   items:
-  - name: Stav scénáře migrace databází
-    href: resource-scenario-status.md
-  - name: Přehled požadavků
-    href: pre-reqs.md
-  - name: Síťové topologie pro migrace Azure SQL DB MI
-    href: resource-network-topologies.md
-  - name: Známé problémy
-    items:
-    - name: Známé problémy – online migrace do Azure SQL DB
-      href: known-issues-azure-sql-online.md
-    - name: Známé problémy – online migrace do Azure DB for MySQL
-      href: known-issues-azure-mysql-online.md
-    - name: Známé problémy – online migrace do Azure DB for PostgreSQL
-      href: known-issues-azure-postgresql-online.md
-  - name: Videa
-    items:
-    - name: Použití průvodce migrací databází
-      href: https://azure.microsoft.com/resources/videos/how-to-use-the-azure-database-migration-guide/
-    - name: Proces migrace a doporučené nástroje/služby
-      href: https://azure.microsoft.com/resources/videos/overview-of-migration-and-recommended-tools-services/
-    - name: Splnění požadavků a vytvoření instance DMS
-      href: https://azure.microsoft.com/resources/videos/how-to-address-prerequisites-and-create-a-dms-instance/
-    - name: Migrace SQL Serveru 2008 do Azure SQL Database MI
-      href: https://azure.microsoft.com/resources/videos/how-to-migrate-sql-server-2008-or-r2-to-azure-sqldbmi/
-    - name: Migrace PostgreSQL do Azure Database for PostgreSQL
-      href: https://azure.microsoft.com/resources/videos/how-to-migrate-postgresql-to-azure-postgresql-online-dms-and-cli/
-    - name: Monitorování online migrace a provedení přímé migrace
-      href: https://azure.microsoft.com/resources/videos/how-to-monitor-online-migration-and-perform-cutover/
-    - name: Migrace Oracle do Azure SQL Database
-      href: https://azure.microsoft.com/resources/videos/how-to-migrate-oracle-to-sqldb-online/
-    - name: Migrace MongoDB do Azure Cosmos DB
-      href: https://azure.microsoft.com/resources/videos/how-to-migrate-mongodb-to-cosmos-db/
-  - name: Nástroje a pokyny
-    items:
-    - name: Dostupné služby a nástroje pro scénáře migrace dat
-      href: dms-tools-matrix.md
-    - name: Průvodce migrací databází
-      href: https://aka.ms/datamigration
-    - name: Data Migration Assistant
-      href: https://aka.ms/dma
-    - name: Pomocník s migrací SQL Serveru
-      href: https://aka.ms/ssma
-    - name: Pomocník pro experimentování s databázemi
-      href: https://aka.ms/dea-docs
-  - name: Nejčastější dotazy
-    href: faq.md
-  - name: Zpětná vazba na webu User Voice
-    href: https://feedback.azure.com/forums/906100-azure-database-migration-service
-  - name: Ceny
-    href: https://aka.ms/dms-pricing
-  - name: Aktualizace služeb
-    href: https://azure.microsoft.com/updates/?product=database-migration
-  - name: Plány Azure do budoucna
-    href: https://azure.microsoft.com/roadmap/
-ms.openlocfilehash: 9cbf896989373638cd97e28ab4e5303b49958887
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
-ms.translationtype: HT
-ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57555971"
+    - name: Stav scénáře migrace databází
+      href: resource-scenario-status.md
+    - name: Přehled požadavků
+      href: pre-reqs.md
+    - name: Síťové topologie pro migrace Azure SQL DB MI
+      href: resource-network-topologies.md
+    - name: Známé problémy
+      items:
+        - name: Známé problémy – online migrace do Azure SQL DB
+          href: known-issues-azure-sql-online.md
+        - name: Známé problémy – online migrace do Azure DB for MySQL
+          href: known-issues-azure-mysql-online.md
+        - name: Známé problémy – online migrace do Azure DB for PostgreSQL
+          href: known-issues-azure-postgresql-online.md
+    - name: Videa
+      items:
+        - name: Použití průvodce migrací databází
+          href: 'https://azure.microsoft.com/resources/videos/how-to-use-the-azure-database-migration-guide/'
+        - name: Proces migrace a doporučené nástroje/služby
+          href: 'https://azure.microsoft.com/resources/videos/overview-of-migration-and-recommended-tools-services/'
+        - name: Splnění požadavků a vytvoření instance DMS
+          href: 'https://azure.microsoft.com/resources/videos/how-to-address-prerequisites-and-create-a-dms-instance/'
+        - name: Migrace SQL Serveru 2008 do Azure SQL Database MI
+          href: 'https://azure.microsoft.com/resources/videos/how-to-migrate-sql-server-2008-or-r2-to-azure-sqldbmi/'
+        - name: Migrace PostgreSQL do Azure Database for PostgreSQL
+          href: 'https://azure.microsoft.com/resources/videos/how-to-migrate-postgresql-to-azure-postgresql-online-dms-and-cli/'
+        - name: Monitorování online migrace a provedení přímé migrace
+          href: 'https://azure.microsoft.com/resources/videos/how-to-monitor-online-migration-and-perform-cutover/'
+        - name: Migrace Oracle do Azure SQL Database
+          href: 'https://azure.microsoft.com/resources/videos/how-to-migrate-oracle-to-sqldb-online/'
+        - name: Migrace MongoDB do Azure Cosmos DB
+          href: 'https://azure.microsoft.com/resources/videos/how-to-migrate-mongodb-to-cosmos-db/'
+    - name: Nástroje a pokyny
+      items:
+        - name: Dostupné služby a nástroje pro scénáře migrace dat
+          href: dms-tools-matrix.md
+        - name: Průvodce migrací databází
+          href: 'https://aka.ms/datamigration'
+        - name: Data Migration Assistant
+          href: 'https://aka.ms/dma'
+        - name: Pomocník s migrací SQL Serveru
+          href: 'https://aka.ms/ssma'
+        - name: Pomocník pro experimentování s databázemi
+          href: 'https://aka.ms/dea-docs'
+    - name: Nejčastější dotazy
+      href: faq.md
+    - name: Zpětná vazba na webu User Voice
+      href: 'https://feedback.azure.com/forums/906100-azure-database-migration-service'
+    - name: Ceny
+      href: 'https://aka.ms/dms-pricing'
+    - name: Aktualizace služeb
+      href: 'https://azure.microsoft.com/updates/?product=database-migration'
+    - name: Plány Azure do budoucna
+      href: 'https://azure.microsoft.com/roadmap/'

@@ -12,11 +12,11 @@ ms.topic: landing-page
 ms.date: 06/19/2017
 ms.author: carolz
 ms.openlocfilehash: 6f0d3eae8c005b7e26f425a4411042fdc050fdef
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52995479"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60422419"
 ---
 <div class="content">
     <h1>OpenShift v Azure</h1>

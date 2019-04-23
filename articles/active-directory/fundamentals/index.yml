@@ -1,16 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: afe1deb23efcdad88965364aca6ce1d1741117f4
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
-ms.translationtype: HT
-ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55103840"
 documentType: LandingData
 title: Základní dokumentace ke službě Azure Active Directory
 metadata:
-  document_id: 
+  document_id: null
   title: Základní dokumentace ke službě Azure Active Directory
-  description: Přečtěte si o základních konceptech a procesech, které jsou k dispozici při používání služby Azure Active Directory.
+  description: 'Přečtěte si o základních konceptech a procesech, které jsou k dispozici při používání služby Azure Active Directory.'
   services: active-directory
   ms.subservice: fundamentals
   author: eross-msft
@@ -20,34 +14,34 @@ metadata:
   ms.date: 09/07/2018
   ms.author: lizross
 abstract:
-  description: Seznamte se se základními koncepty a procesy služby Azure Active Directory (Azure AD), včetně toho, jak vytvářet základní uživatele a skupiny a jak vytvořit základní prostředí pro zahájení práce.
+  description: 'Seznamte se se základními koncepty a procesy služby Azure Active Directory (Azure AD), včetně toho, jak vytvářet základní uživatele a skupiny a jak vytvořit základní prostředí pro zahájení práce.'
 sections:
-- title: Zprovoznění během 5 minut
-  items:
-  - type: paragraph
-    text: Přečtěte si, jak začít pracovat s portálem Azure Active Directory.
-  - type: list
-    style: icon48
+  - title: Zprovoznění během 5 minut
     items:
-    - image:
-        src: ./media/index/i_portal.png
-      text: Přístup ke službě Azure AD a vytvoření tenanta
-      href: active-directory-access-create-new-tenant.md
-    - image:
-        src: ./media/index/i_tasks.png
-      text: Zobrazení skupin a členů
-      href: active-directory-groups-view-azure-portal.md
-- title: Podrobní průvodci
-  items:
-  - type: paragraph
-    text: Další informace o provádění základních úloh a jejich nastavení ve vašem prostředí Azure Active Directory
-  - type: list
-    style: unordered
+      - type: paragraph
+        text: 'Přečtěte si, jak začít pracovat s portálem Azure Active Directory.'
+      - type: list
+        style: icon48
+        items:
+          - image:
+              src: ./media/index/i_portal.png
+            text: Přístup ke službě Azure AD a vytvoření tenanta
+            href: active-directory-access-create-new-tenant.md
+          - image:
+              src: ./media/index/i_tasks.png
+            text: Zobrazení skupin a členů
+            href: active-directory-groups-view-azure-portal.md
+  - title: Podrobní průvodci
     items:
-    - html: <a href="/azure/active-directory/fundamentals/active-directory-get-started-premium">Registrace do Azure AD Premium</a>
-    - html: <a href="/azure/active-directory/fundamentals/add-custom-domain">Jak přidat vlastní název domény</a>
-    - html: <a href="/azure/active-directory/fundamentals/active-directory-groups-create-azure-portal">Jak vytvořit základní skupinu a přidat členy</a>
-    - html: <a href="/azure/active-directory/fundamentals/active-directory-accessmanagement-managing-group-owners">přidat vlastníky skupiny</a>
-    - html: <a href="/azure/active-directory/fundamentals/add-users-azure-active-directory">Jak přidat nového uživatele</a>
-    - html: <a href="/azure/active-directory/fundamentals/active-directory-users-assign-role-azure-portal">Jak uživatelům přiřadit role</a>
-    - html: <a href="/azure/active-directory/fundamentals/license-users-groups">Jak uživatelům přiřadit licence</a>
+      - type: paragraph
+        text: Další informace o provádění základních úloh a jejich nastavení ve vašem prostředí Azure Active Directory
+      - type: list
+        style: unordered
+        items:
+          - html: <a href="/azure/active-directory/fundamentals/active-directory-get-started-premium">Registrace do Azure AD Premium</a>
+          - html: <a href="/azure/active-directory/fundamentals/add-custom-domain">Jak přidat vlastní název domény</a>
+          - html: <a href="/azure/active-directory/fundamentals/active-directory-groups-create-azure-portal">Jak vytvořit základní skupinu a přidat členy</a>
+          - html: <a href="/azure/active-directory/fundamentals/active-directory-accessmanagement-managing-group-owners">přidat vlastníky skupiny</a>
+          - html: <a href="/azure/active-directory/fundamentals/add-users-azure-active-directory">Jak přidat nového uživatele</a>
+          - html: <a href="/azure/active-directory/fundamentals/active-directory-users-assign-role-azure-portal">Jak uživatelům přiřadit role</a>
+          - html: <a href="/azure/active-directory/fundamentals/license-users-groups">Jak uživatelům přiřadit licence</a>

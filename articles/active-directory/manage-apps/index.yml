@@ -1,57 +1,51 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 3d7b9dff034aca6c7602ea72fadfcdc53b11fe15
-ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
-ms.translationtype: HT
-ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58335874"
 documentType: LandingData
 title: Dokumentace ke správě aplikací
 metadata:
   title: Dokumentace ke správě aplikací Azure AD – Azure Active Directory
-  description: Zjistěte, jak spravovat a nasazovat aplikace s využitím Azure Active Directory.
+  description: 'Zjistěte, jak spravovat a nasazovat aplikace s využitím Azure Active Directory.'
   services: active-directory
   author: barbkess
   manager: daveba
   layout: LandingPage
-  ms.assetid: 
+  ms.assetid: null
   ms.service: active-directory
   ms.topic: landing-page
   ms.date: 09/14/2018
   ms.author: barbkess
 abstract:
-  description: Azure Active Directory poskytuje zabezpečený a hladký přístup ke cloudovým a místním aplikacím. Navíc není potřeba spravovat hesla. Vaši koncoví uživatelé se mohou jednou přihlásit a získat přístup k Office 365 a tisícům dalších aplikací. Další informace o správě a nasazení aplikací najdete v našich průvodcích, šablonách a rychlých zprovozněních.
+  description: 'Azure Active Directory poskytuje zabezpečený a hladký přístup ke cloudovým a místním aplikacím. Navíc není potřeba spravovat hesla. Vaši koncoví uživatelé se mohou jednou přihlásit a získat přístup k Office 365 a tisícům dalších aplikací. Další informace o správě a nasazení aplikací najdete v našich průvodcích, šablonách a rychlých zprovozněních.'
   aside:
     image:
-      alt: 
+      alt: null
       height: 110
       src: media/index/video.png
       width: 250
-    title: Zabezpečení přístupu pro vaše aplikace s využitím Azure AD (1:47)
-    href: https://youtu.be/BSUuXXcJKCk/
+    title: 'Zabezpečení přístupu pro vaše aplikace s využitím Azure AD (1:47)'
+    href: 'https://youtu.be/BSUuXXcJKCk/'
     width: 250
 sections:
-- title: Zprovoznění během 5 minut
-  items:
-  - type: paragraph
-    text: Naučíte se, jak přidat aplikaci pro uživatele s přístupem přes Azure Active Directory.
-  - type: list
-    style: icon48
+  - title: Zprovoznění během 5 minut
     items:
-    - image:
-        src: https://docs.microsoft.com/media/common/i_protect.svg
-      text: Přidání aplikace
-      href: https://docs.microsoft.com/azure/active-directory/manage-apps/add-application-portal
-    - image:
-        src: https://docs.microsoft.com/media/common/i_protect.svg
-      text: Zobrazení vašich aplikací
-      href: https://docs.microsoft.com/azure/active-directory/manage-apps/view-applications-portal
-- title: Podrobné kurzy
-  items:
-  - type: paragraph
-    text: Zjistěte, jak povolit jednoduchý a bezpečný přihlašovací proces pro vaše aplikace.
-  - type: list
-    style: unordered
+      - type: paragraph
+        text: 'Naučíte se, jak přidat aplikaci pro uživatele s přístupem přes Azure Active Directory.'
+      - type: list
+        style: icon48
+        items:
+          - image:
+              src: 'https://docs.microsoft.com/media/common/i_protect.svg'
+            text: Přidání aplikace
+            href: 'https://docs.microsoft.com/azure/active-directory/manage-apps/add-application-portal'
+          - image:
+              src: 'https://docs.microsoft.com/media/common/i_protect.svg'
+            text: Zobrazení vašich aplikací
+            href: 'https://docs.microsoft.com/azure/active-directory/manage-apps/view-applications-portal'
+  - title: Podrobné kurzy
     items:
-    - html: <a href="https://docs.microsoft.com/azure/active-directory/saas-apps/">Kurzy k aplikacím Saas</a>
-    - html: <a href="/azure/active-directory/manage-apps/configure-single-sign-on-portal">Konfigurace jednotného přihlašování</a>
+      - type: paragraph
+        text: 'Zjistěte, jak povolit jednoduchý a bezpečný přihlašovací proces pro vaše aplikace.'
+      - type: list
+        style: unordered
+        items:
+          - html: '<a href="https://docs.microsoft.com/azure/active-directory/saas-apps/">Kurzy k aplikacím Saas</a>'
+          - html: <a href="/azure/active-directory/manage-apps/configure-single-sign-on-portal">Konfigurace jednotného přihlašování</a>

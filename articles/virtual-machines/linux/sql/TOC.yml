@@ -1,45 +1,38 @@
-items:
 - name: Přehled
   items:
-  - name: Linuxové virtuální počítače s SQL Serverem
-    href: sql-server-linux-virtual-machines-overview.md
+    - name: Linuxové virtuální počítače s SQL Serverem
+      href: sql-server-linux-virtual-machines-overview.md
 - name: Šablony Rychlý start
   items:
-  - name: Vytvoření virtuálního počítače SQL – portál
-    href: provision-sql-server-linux-virtual-machine.md
+    - name: Vytvoření virtuálního počítače SQL – portál
+      href: provision-sql-server-linux-virtual-machine.md
 - name: Referenční informace
   items:
-  - name: Azure CLI
-    href: /cli/azure/
-  - name: PowerShell
-    href: /powershell/azure/overview
-  - name: T-SQL
-    href: https://msdn.microsoft.com/library/azure/bb510741.aspx
-  - name: Ovladače SQL Serveru
-    href: https://msdn.microsoft.com/library/mt654049.aspx
-  - name: REST
-    href: /rest/api/
+    - name: Azure CLI
+      href: /cli/azure/
+    - name: PowerShell
+      href: /powershell/azure/overview
+    - name: T-SQL
+      href: 'https://msdn.microsoft.com/library/azure/bb510741.aspx'
+    - name: Ovladače SQL Serveru
+      href: 'https://msdn.microsoft.com/library/mt654049.aspx'
+    - name: REST
+      href: /rest/api/
 - name: Zdroje a prostředky
   items:
-  - name: Nejčastější dotazy
-    href: sql-server-linux-faq.md
-  - name: Dokumentace k SQL Serveru na Linuxu
-    href: https://docs.microsoft.com/sql/linux/sql-server-linux-overview
-  - name: Ceny
-    href: ../../windows/sql/virtual-machines-windows-sql-server-pricing-guidance.md?toc=%2fazure%2fvirtual-machines%2flinux%2fsql%2ftoc.json
-  - name: PaaS nebo IaaS?
-    href: ../../../sql-database/sql-database-paas-vs-sql-server-iaas.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fsql%2ftoc.json
-  - name: SQL Server Data Tools (SSDT)
-    href: https://docs.microsoft.com/sql/ssdt/download-sql-server-data-tools-ssdt
-  - name: Nástroje SQL Serveru
-    href: https://docs.microsoft.com/sql/tools/overview-sql-tools
-  - name: Plány Azure do budoucna
-    href: https://azure.microsoft.com/roadmap/?category=compute
-  - name: Stack Overflow
-    href: https://stackoverflow.com/search?q=%5Bazure-virtual-machine%5D+sql+server
-ms.openlocfilehash: 3e44ef418b474ddd88fa232362e1b38db791e0ba
-ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
-ms.translationtype: HT
-ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58341420"
+    - name: Nejčastější dotazy
+      href: sql-server-linux-faq.md
+    - name: Dokumentace k SQL Serveru na Linuxu
+      href: 'https://docs.microsoft.com/sql/linux/sql-server-linux-overview'
+    - name: Ceny
+      href: ../../windows/sql/virtual-machines-windows-sql-server-pricing-guidance.md?toc=%2fazure%2fvirtual-machines%2flinux%2fsql%2ftoc.json
+    - name: PaaS nebo IaaS?
+      href: ../../../sql-database/sql-database-paas-vs-sql-server-iaas.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fsql%2ftoc.json
+    - name: SQL Server Data Tools (SSDT)
+      href: 'https://docs.microsoft.com/sql/ssdt/download-sql-server-data-tools-ssdt'
+    - name: Nástroje SQL Serveru
+      href: 'https://docs.microsoft.com/sql/tools/overview-sql-tools'
+    - name: Plány Azure do budoucna
+      href: 'https://azure.microsoft.com/roadmap/?category=compute'
+    - name: Stack Overflow
+      href: 'https://stackoverflow.com/search?q=%5Bazure-virtual-machine%5D+sql+server'

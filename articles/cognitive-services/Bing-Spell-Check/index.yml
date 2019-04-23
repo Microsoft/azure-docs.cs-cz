@@ -1,16 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: daf643a96195bc5f8f30652eaf1e7b071d63fa87
-ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
-ms.translationtype: HT
-ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56888232"
 documentType: LandingData
 title: Dokumentace k rozhraní API pro kontrolu pravopisu Bingu
 metadata:
   document_id: ce69fd12-adf8-11e7-abc4-cec278b6b50a
-  title: Dokumentace k rozhraní API pro kontrolu pravopisu Bingu – kurzy, reference k rozhraní API – Azure Cognitive Services | Microsoft Docs
-  description: Naučte se používat rozhraní API Bingu pro kontrolu pravopisu k získání navržených oprav pro textové dokumenty. Kurzy vám ukážou, jak vytvářet aplikace, které toto rozhraní API používají.
+  title: 'Dokumentace k rozhraní API pro kontrolu pravopisu Bingu – kurzy, reference k rozhraní API – Azure Cognitive Services | Microsoft Docs'
+  description: 'Naučte se používat rozhraní API Bingu pro kontrolu pravopisu k získání navržených oprav pro textové dokumenty. Kurzy vám ukážou, jak vytvářet aplikace, které toto rozhraní API používají.'
   services: cognitive-services
   author: aahill
   manager: cgronlun
@@ -22,87 +16,87 @@ metadata:
   ms.date: 02/19/2019
   ms.author: aahi
 abstract:
-  description: Rozhraní API Bingu pro kontrolu pravopisu umožňuje provést kontextovou kontrolu gramatiky a pravopisu. Bing vyvinul webovou kontrolu pravopisu, která využívá strojové učení a statistický strojový překlad, aby se neustále se rozvíjející a vysoce kontextový algoritmus dynamicky trénoval. Kontrola pravopisu je založená na rozsáhlém korpusu webových hledání a dokumentů. Pomocí našich šablon Rychlý start, kurzů a ukázek se naučíte různými způsoby analyzovat obsah.
+  description: 'Rozhraní API Bingu pro kontrolu pravopisu umožňuje provést kontextovou kontrolu gramatiky a pravopisu. Bing vyvinul webovou kontrolu pravopisu, která využívá strojové učení a statistický strojový překlad, aby se neustále se rozvíjející a vysoce kontextový algoritmus dynamicky trénoval. Kontrola pravopisu je založená na rozsáhlém korpusu webových hledání a dokumentů. Pomocí našich šablon Rychlý start, kurzů a ukázek se naučíte různými způsoby analyzovat obsah.'
 sections:
-- items:
-  - type: list
-    style: cards
-    className: cardsM
-    columns: 3
+  - items:
+      - type: list
+        style: cards
+        className: cardsM
+        columns: 3
+        items:
+          - href: /azure/cognitive-services/bing-spell-check/overview
+            html: <p>Další informace o rozhraní API pro kontrolu pravopisu Bingu</p>
+            image:
+              src: ../media/index/i_overview.svg
+            title: Co je rozhraní API pro kontrolu pravopisu Bingu?
+          - href: /azure/cognitive-services/bing-spell-check/concepts/sending-requests
+            html: '<p>Zjistěte, jak odesílat žádosti o kontrolu pravopisu do rozhraní API pro kontrolu pravopisu Bingu.</p>'
+            image:
+              src: ../media/index/i_guidelines.svg
+            title: Žádosti o kontrolu pravopisu
+          - href: /azure/cognitive-services/bing-spell-check/concepts/using-spell-check
+            html: <p>Další informace o použití různých režimů kontroly pravopisu rozhraní API</p>
+            image:
+              src: ../media/index/i_guidelines.svg
+            title: Odpověď Vyhledávání obrázků
+  - title: Zprovoznění během 5 minut
     items:
-    - href: /azure/cognitive-services/bing-spell-check/overview
-      html: <p>Další informace o rozhraní API pro kontrolu pravopisu Bingu</p>
-      image:
-        src: ../media/index/i_overview.svg
-      title: Co je rozhraní API pro kontrolu pravopisu Bingu?
-    - href: /azure/cognitive-services/bing-spell-check/concepts/sending-requests
-      html: <p>Zjistěte, jak odesílat žádosti o kontrolu pravopisu do rozhraní API pro kontrolu pravopisu Bingu.</p>
-      image:
-        src: ../media/index/i_guidelines.svg
-      title: Žádosti o kontrolu pravopisu
-    - href: /azure/cognitive-services/bing-spell-check/concepts/using-spell-check
-      html: <p>Další informace o použití různých režimů kontroly pravopisu rozhraní API</p>
-      image:
-        src: ../media/index/i_guidelines.svg
-      title: Odpověď Vyhledávání obrázků
-- title: Zprovoznění během 5 minut
-  items:
-  - type: paragraph
-    text: 'Začněte využívat rozhraní API Bingu pro kontrolu pravopisu. Zadejte dotaz a prohlédněte si příslušnou odpověď JSON:'
-  - type: list
-    style: icon48
+      - type: paragraph
+        text: 'Začněte využívat rozhraní API Bingu pro kontrolu pravopisu. Zadejte dotaz a prohlédněte si příslušnou odpověď JSON:'
+      - type: list
+        style: icon48
+        items:
+          - image:
+              src: media/index/logo_csharp.svg
+            text: 'C&#35;'
+            href: quickstarts/csharp
+          - image:
+              src: media/index/logo_java.svg
+            text: Java
+            href: quickstarts/java
+          - image:
+              src: media/index/logo_nodejs.svg
+            text: Node.js
+            href: quickstarts/nodejs
+          - image:
+              src: media/index/logo_php.svg
+            text: PHP
+            href: quickstarts/php
+          - image:
+              src: media/index/logo_python.svg
+            text: Python
+            href: quickstarts/python
+          - image:
+              src: media/index/logo_ruby.svg
+            text: Ruby
+            href: quickstarts/ruby
+  - title: Podrobné kurzy
     items:
-    - image:
-        src: media/index/logo_csharp.svg
-      text: C&#35;
-      href: quickstarts/csharp
-    - image:
-        src: media/index/logo_java.svg
-      text: Java
-      href: quickstarts/java
-    - image:
-        src: media/index/logo_nodejs.svg
-      text: Node.js
-      href: quickstarts/nodejs
-    - image:
-        src: media/index/logo_php.svg
-      text: PHP
-      href: quickstarts/php
-    - image:
-        src: media/index/logo_python.svg
-      text: Python
-      href: quickstarts/python
-    - image:
-        src: media/index/logo_ruby.svg
-      text: Ruby
-      href: quickstarts/ruby
-- title: Podrobné kurzy
-  items:
-  - type: paragraph
-    text: 'Naučte se vyvíjet aplikace s využitím rozhraní API pro kontrolu pravopisu Bingu:'
-  - type: list
-    style: unordered
+      - type: paragraph
+        text: 'Naučte se vyvíjet aplikace s využitím rozhraní API pro kontrolu pravopisu Bingu:'
+      - type: list
+        style: unordered
+        items:
+          - html: <a href="tutorials/spellcheck.md">Jednostránková webová aplikace</a>
+  - title: Ukázky
     items:
-    - html: <a href="tutorials/spellcheck.md">Jednostránková webová aplikace</a>
-- title: Ukázky
-  items:
-  - type: paragraph
-    text: 'Projděte si ukázky pro rozhraní API Bingu pro kontrolu pravopisu:'
-  - type: list
-    style: unordered
+      - type: paragraph
+        text: 'Projděte si ukázky pro rozhraní API Bingu pro kontrolu pravopisu:'
+      - type: list
+        style: unordered
+        items:
+          - html: <a href="sdk.md">Ukázky kódu</a>
+  - title: Referenční informace
     items:
-    - html: <a href="sdk.md">Ukázky kódu</a>
-- title: Referenční informace
-  items:
-  - type: list
-    style: cards
-    className: cardsD
-    items:
-    - title: REST
-      html: <p><a href="https://docs.microsoft.com/rest/api/cognitiveservices/bing-spell-check-api-v7-reference">Referenční informace k rozhraní API pro kontrolu pravopisu Bingu v7</a></p> <p><a href="https://docs.microsoft.com/rest/api/cognitiveservices/bing-spell-check-api-v5-reference">Referenční informace k rozhraní API pro kontrolu pravopisu Bingu v5</a> (stará verze)</p>
-    - title: Sady SDK
-      html: <p><a href="https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/bingspellcheck?view=azure-dotnet">.NET</a></p> <p><a href="https://docs.microsoft.com/javascript/api/overview/azure/cognitiveservices/spellcheck?view=azure-node-latest">Node.js</a></p> <p><a href="https://docs.microsoft.com/python/api/overview/azure/cognitiveservices/spellcheck?view=azure-python">Python</a></p> <p><a href="https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/spellcheck">Go</a></p> <p><a href="https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/spellcheck?view=azure-java-stable">Java</a></p>
-    - title: PowerShell
-      html: <p><a href="https://docs.microsoft.com/powershell/module/az.cognitiveservices/#cognitive_services">Azure PowerShell</a></p>
-    - title: Rozhraní příkazového řádku
-      html: <p><a href="https://docs.microsoft.com/cli/azure/cognitiveservices?view=azure-cli-latest#az-cognitiveservices-list">Azure CLI</a></p>
+      - type: list
+        style: cards
+        className: cardsD
+        items:
+          - title: REST
+            html: '<p><a href="https://docs.microsoft.com/rest/api/cognitiveservices/bing-spell-check-api-v7-reference">Referenční informace k rozhraní API pro kontrolu pravopisu Bingu v7</a></p> <p><a href="https://docs.microsoft.com/rest/api/cognitiveservices/bing-spell-check-api-v5-reference">Referenční informace k rozhraní API pro kontrolu pravopisu Bingu v5</a> (stará verze)</p>'
+          - title: Sady SDK
+            html: '<p><a href="https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/bingspellcheck?view=azure-dotnet">.NET</a></p> <p><a href="https://docs.microsoft.com/javascript/api/azure-cognitiveservices-spellcheck?view=azure-node-latest">Node.js</a></p> <p><a href="https://docs.microsoft.com/python/api/overview/azure/cognitiveservices/spellcheck?view=azure-python">Python</a></p> <p><a href="https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/spellcheck">Go</a></p> <p><a href="https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/spellcheck?view=azure-java-stable">Java</a></p>'
+          - title: PowerShell
+            html: '<p><a href="https://docs.microsoft.com/powershell/module/az.cognitiveservices/#cognitive_services">Azure PowerShell</a></p>'
+          - title: Rozhraní příkazového řádku
+            html: '<p><a href="https://docs.microsoft.com/cli/azure/cognitiveservices?view=azure-cli-latest#az-cognitiveservices-list">Azure CLI</a></p>'

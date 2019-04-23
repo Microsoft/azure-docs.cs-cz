@@ -1,16 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 2f8e833088ffdf819e387fd28ae88508d5fe6d00
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
-ms.translationtype: HT
-ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58519917"
 abstract:
-  description: Zjistěte, jak do aplikací a webů zapracovat inteligentní algoritmy s využitím těchto produktů Azure Machine Learning.  Kurzy, rychlá zprovoznění, reference k rozhraní API a příklady vám ukážou, jak na to.
+  description: 'Zjistěte, jak do aplikací a webů zapracovat inteligentní algoritmy s využitím těchto produktů Azure Machine Learning.  Kurzy, rychlá zprovoznění, reference k rozhraní API a příklady vám ukážou, jak na to.'
 documentType: LandingData
 metadata:
   author: j-martens
-  description: Naučte se, jak do vašich aplikací, webů a robotů integrovat inteligentní algoritmy, které umožní vidět a slyšet vaše zákazníky, mluvit s nimi a porozumět jejich požadavkům prostřednictvím přirozených způsobů komunikace. Kurzy, rychlá zprovoznění, reference k rozhraní API a příklady vám ukážou, jak na to.
+  description: 'Naučte se, jak do vašich aplikací, webů a robotů integrovat inteligentní algoritmy, které umožní vidět a slyšet vaše zákazníky, mluvit s nimi a porozumět jejich požadavkům prostřednictvím přirozených způsobů komunikace. Kurzy, rychlá zprovoznění, reference k rozhraní API a příklady vám ukážou, jak na to.'
   ms.author: jmartens
   ms.subservice: core
   ms.date: 12/04/2018
@@ -19,86 +13,86 @@ metadata:
   ms.tgt_pltfrm: na
   ms.topic: landing-page
   services: machine-learning
-  title: Dokumentace ke službě Azure Machine Learning – kurzy, reference k rozhraní API | Microsoft Docs
+  title: 'Dokumentace ke službě Azure Machine Learning – kurzy, reference k rozhraní API | Microsoft Docs'
 sections:
-- items:
-  - className: cardsM
-    columns: 2
-    items:
-    - href: /azure/machine-learning/service/overview-what-is-azure-ml
-      html: <p>Další informace o tom, jak tato funkce poskytuje odborníkům na data možnost vyvíjet a spravovat řešení AI<br/> pomocí nástrojů Pythonu a Azure CLI a knihoven s využitím široké škály výpočetních služeb a dat Azure. Další informace...</p>
-      image:
-        src: /azure/machine-learning/media/index/i_machine-learning.svg
-      title: Služba Azure Machine Learning
-    style: cards
-    type: list
-- items:
-  - text: 'Nastavte službu Azure Machine Learning a začněte ji využívat:'
-    type: paragraph
-  - text: <b>Rychlá zprovoznění:</b>
-    type: paragraph
   - items:
-    - html: <a href="service/quickstart-run-cloud-notebook">Spuštění experimentu v cloudu</a> (nevyžaduje se žádná instalace)
-    - html: <a href="service/quickstart-run-local-notebook">Spuštění experimentu s využitím místního serveru poznámkového bloku</a> (místní instalace SDK)
-    style: unordered
-    type: list
-  - text: <b>Kurz klasifikace dat s využitím dat MNIST:</b>
-    type: paragraph
+      - className: cardsM
+        columns: 2
+        items:
+          - href: /azure/machine-learning/service/overview-what-is-azure-ml
+            html: '<p>Další informace o tom, jak tato funkce poskytuje odborníkům na data možnost vyvíjet a spravovat řešení AI<br/> pomocí nástrojů Pythonu a Azure CLI a knihoven s využitím široké škály výpočetních služeb a dat Azure. Další informace...</p>'
+            image:
+              src: /azure/machine-learning/media/index/i_machine-learning.svg
+            title: Služba Azure Machine Learning
+        style: cards
+        type: list
   - items:
-    - html: 'Část 1: <a href="service/tutorial-train-models-with-aml">Trénování vlastního modelu</a>'
-    - html: 'Část 2: <a href="service/tutorial-deploy-models-with-aml">Nasazení tohoto modelu</a>'
-    style: unordered
-    type: list
-  - text: <b>Kurz modelování regrese s využitím dat newyorské taxislužby:</b>
-    type: paragraph
+      - text: 'Nastavte službu Azure Machine Learning a začněte ji využívat:'
+        type: paragraph
+      - text: '<b>Rychlá zprovoznění:</b>'
+        type: paragraph
+      - items:
+          - html: <a href="service/quickstart-run-cloud-notebook">Spuštění experimentu v cloudu</a> (nevyžaduje se žádná instalace)
+          - html: <a href="service/quickstart-run-local-notebook">Spuštění experimentu s využitím místního serveru poznámkového bloku</a> (místní instalace SDK)
+        style: unordered
+        type: list
+      - text: '<b>Kurz klasifikace dat s využitím dat MNIST:</b>'
+        type: paragraph
+      - items:
+          - html: 'Část 1: <a href="service/tutorial-train-models-with-aml">Trénování vlastního modelu</a>'
+          - html: 'Část 2: <a href="service/tutorial-deploy-models-with-aml">Nasazení tohoto modelu</a>'
+        style: unordered
+        type: list
+      - text: '<b>Kurz modelování regrese s využitím dat newyorské taxislužby:</b>'
+        type: paragraph
+      - items:
+          - html: 'Část 1: <a href="service/tutorial-data-prep">Příprava dat pro modelování</a>'
+          - html: 'Část 2: <a href="service/tutorial-auto-train-models">Automatické trénování modelů ML</a>'
+        style: unordered
+        type: list
+      - text: '<b>Využívání vašich modelů:</b>'
+        type: paragraph
+      - items:
+          - html: <a href="service/how-to-consume-web-service">Využití modelu žádost-odpověď</a>
+          - html: <a href="service/how-to-run-batch-predictions">Dávkové predikce s využitím kanálů ML</a>
+        style: unordered
+        type: list
+    title: Rychlé starty a kurzy
   - items:
-    - html: 'Část 1: <a href="service/tutorial-data-prep">Příprava dat pro modelování</a>'
-    - html: 'Část 2: <a href="service/tutorial-auto-train-models">Automatické trénování modelů ML</a>'
-    style: unordered
-    type: list
-  - text: <b>Využívání vašich modelů:</b>
-    type: paragraph
-  - items:
-    - html: <a href="service/how-to-consume-web-service">Využití modelu žádost-odpověď</a>
-    - html: <a href="service/how-to-run-batch-predictions">Dávkové predikce s využitím kanálů ML</a>
-    style: unordered
-    type: list
-  title: Rychlé starty a kurzy
-- items:
-  - className: cardsM
-    columns: 2
-    items:
-    - href: /azure/cognitive-services/
-      html: <p>Rozhraní API, která podporují inteligentní algoritmy pro aplikace, weby a roboty</p>
-      image:
-        src: /azure/machine-learning/media/index/cognitive-services.png
-      title: Cognitive Services
-    - href: /azure/machine-learning/studio/
-      html: <p>Nástroj pro spolupráci, ve kterém je možné přetahováním vytvářet, testovat a nasazovat řešení prediktivní analýzy dat s využitím R nebo Pythonu. </p>
-      image:
-        src: /azure/machine-learning/media/index/machine-learning-studio.svg
-      title: Azure Machine Learning Studio
-    - href: /sql/advanced-analytics/r/r-services
-      html: <p>Analýzy v databázích s podporou pro R i Python.</p>
-      image:
-        src: /azure/machine-learning/media/index/logo_sql.png
-      title: SQL Server Machine Learning Services
-    - href: /machine-learning-server/
-      html: <p>Flexibilní podniková platforma pro strojové učení, která podporuje nasazení R a Pythonu ve Windows, Linuxu a clusterech HDInsight Spark a Hadoop.</p>
-      image:
-        src: /azure/machine-learning/media/index/ml-server.png
-      title: Server Microsoft Machine Learning
-    - href: /azure/machine-learning/team-data-science-process
-      html: <p>Metodologie pro datové vědy založená na spolupráci, která týmům pomáhá efektivně dodávat prediktivní analytická řešení a inteligentní aplikace.</p>
-      image:
-        src: /azure/machine-learning/media/index/tdsp.png
-      title: Vědecké zpracování týmových dat
-    - href: /azure/machine-learning/data-science-virtual-machine/
-      html: <p>Experimentujte bez nutnosti instalace nebo konfigurace softwaru s využitím těchto virtuálních počítačů pro datové vědy (DSVM) a hluboké učení (DLVM). Oblíbené nástroje pro analýzu dat, strojové učení a AI jsou nainstalované předem.</p>
-      image:
-        src: /azure/machine-learning/media/index/virtualmachine.svg
-      title: Virtuální počítač pro datové vědy
-    style: cards
-    type: list
-  title: Další technologie Microsoftu pro strojové učení
+      - className: cardsM
+        columns: 2
+        items:
+          - href: /azure/cognitive-services/
+            html: '<p>Rozhraní API, která podporují inteligentní algoritmy pro aplikace, weby a roboty</p>'
+            image:
+              src: /azure/machine-learning/media/index/cognitive-services.png
+            title: Cognitive Services
+          - href: /azure/machine-learning/studio/
+            html: "<p>Nástroj pro spolupráci, ve kterém je možné přetahováním vytvářet, testovat a nasazovat řešení prediktivní analýzy dat s využitím R nebo Pythonu.\_</p>"
+            image:
+              src: /azure/machine-learning/media/index/machine-learning-studio.svg
+            title: Azure Machine Learning Studio
+          - href: /sql/advanced-analytics/r/r-services
+            html: <p>Analýzy v databázích s podporou pro R i Python.</p>
+            image:
+              src: /azure/machine-learning/media/index/logo_sql.png
+            title: SQL Server Machine Learning Services
+          - href: /machine-learning-server/
+            html: '<p>Flexibilní podniková platforma pro strojové učení, která podporuje nasazení R a Pythonu ve Windows, Linuxu a clusterech HDInsight Spark a Hadoop.</p>'
+            image:
+              src: /azure/machine-learning/media/index/ml-server.png
+            title: Server Microsoft Machine Learning
+          - href: /azure/machine-learning/team-data-science-process
+            html: '<p>Metodologie pro datové vědy založená na spolupráci, která týmům pomáhá efektivně dodávat prediktivní analytická řešení a inteligentní aplikace.</p>'
+            image:
+              src: /azure/machine-learning/media/index/tdsp.png
+            title: Vědecké zpracování týmových dat
+          - href: /azure/machine-learning/data-science-virtual-machine/
+            html: '<p>Experimentujte bez nutnosti instalace nebo konfigurace softwaru s využitím těchto virtuálních počítačů pro datové vědy (DSVM) a hluboké učení (DLVM). Oblíbené nástroje pro analýzu dat, strojové učení a AI jsou nainstalované předem.</p>'
+            image:
+              src: /azure/machine-learning/media/index/virtualmachine.svg
+            title: Virtuální počítač pro datové vědy
+        style: cards
+        type: list
+    title: Další technologie Microsoftu pro strojové učení
 title: Dokumentace ke službě Azure Machine Learning

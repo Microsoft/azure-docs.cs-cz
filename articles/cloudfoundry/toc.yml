@@ -1,40 +1,33 @@
-items:
 - name: Dokumentace ke Cloud Foundry
   href: index.md
 - name: Šablony Rychlý start
-  items:
-  - name: Šablona Marketplace
-    href: https://azuremarketplace.microsoft.com/marketplace/apps/pivotal.pivotal-cloud-foundry
   expanded: true
+  items:
+    - name: Šablona Marketplace
+      href: 'https://azuremarketplace.microsoft.com/marketplace/apps/pivotal.pivotal-cloud-foundry'
 - name: Kurzy
   items:
-  - name: Vytvoření CF v Azure
-    href: /azure/cloudfoundry/create-cloud-foundry-on-azure
-  - name: Nasazení aplikace CF do Azure
-    href: /azure/virtual-machines/linux/cloudfoundry-deploy-your-first-app
-  - name: Použití OSBA s aplikací v PCF
-    href: /azure/cloudfoundry/use-osba-pcf-app
-  - name: CloudFoundry v Azure
-    href: /azure/virtual-machines/linux/cloudfoundry-get-started
-  - name: Nasazení CF OMS Nozzle
-    href: /azure/cloudfoundry/cloudfoundry-oms-nozzle
-  - name: Integrace Cloud Foundry s Azure
-    href: /azure/cloudfoundry/how-cloud-foundry-integrates-with-azure
+    - name: Vytvoření CF v Azure
+      href: /azure/cloudfoundry/create-cloud-foundry-on-azure
+    - name: Nasazení aplikace CF do Azure
+      href: /azure/virtual-machines/linux/cloudfoundry-deploy-your-first-app
+    - name: Použití OSBA s aplikací v PCF
+      href: /azure/cloudfoundry/use-osba-pcf-app
+    - name: CloudFoundry v Azure
+      href: /azure/virtual-machines/linux/cloudfoundry-get-started
+    - name: Nasazení CF OMS Nozzle
+      href: /azure/cloudfoundry/cloudfoundry-oms-nozzle
+    - name: Integrace Cloud Foundry s Azure
+      href: /azure/cloudfoundry/how-cloud-foundry-integrates-with-azure
 - name: Zdroje a prostředky
   items:
-  - name: Plány Azure do budoucna
-    href: https://azure.microsoft.com/roadmap/
-  - name: Web Cloud Foundry
-    href: https://docs.cloudfoundry.org/
-  - name: Instalace CF v Azure
-    href: https://docs.pivotal.io/pivotalcf/1-11/customizing/pcf_azure.html
-  - name: Pivotal a Azure
-    href: https://pivotal.io/partners/microsoft
-  - name: Modul plug-in Azure DevOps pro CF
-    href: https://github.com/Microsoft/vsts-cloudfoundry
-ms.openlocfilehash: b702d42142bd809e678792f1f07a3e104f1e21c1
-ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
-ms.translationtype: HT
-ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54229213"
+    - name: Plány Azure do budoucna
+      href: 'https://azure.microsoft.com/roadmap/'
+    - name: Web Cloud Foundry
+      href: 'https://docs.cloudfoundry.org/'
+    - name: Instalace CF v Azure
+      href: 'https://docs.pivotal.io/pivotalcf/1-11/customizing/pcf_azure.html'
+    - name: Pivotal a Azure
+      href: 'https://pivotal.io/partners/microsoft'
+    - name: Modul plug-in Azure DevOps pro CF
+      href: 'https://github.com/Microsoft/vsts-cloudfoundry'

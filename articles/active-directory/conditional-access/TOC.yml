@@ -1,81 +1,74 @@
-items:
 - name: Dokumentace k podmíněnému přístupu
   href: index.yml
 - name: Přehled
   items:
-  - name: Co je podmíněný přístup?
-    href: overview.md
+    - name: Co je podmíněný přístup?
+      href: overview.md
 - name: Šablony Rychlý start
   items:
-  - name: Vyžadování MFA pro specifické aplikace
-    href: app-based-mfa.md
-  - name: Vyžadování přijetí podmínek použití
-    href: require-tou.md
-  - name: Blokování přístupu, pokud se zjistí riziko relace
-    href: app-sign-in-risk.md
+    - name: Vyžadování MFA pro specifické aplikace
+      href: app-based-mfa.md
+    - name: Vyžadování přijetí podmínek použití
+      href: require-tou.md
+    - name: 'Blokování přístupu, pokud se zjistí riziko relace'
+      href: app-sign-in-risk.md
 - name: Kurzy
   items:
-  - name: Migrace klasických zásad MFA
-    href: policy-migration-mfa.md
+    - name: Migrace klasických zásad MFA
+      href: policy-migration-mfa.md
 - name: Koncepty
-  items:
-  - name: Základní ochrana
-    href: baseline-protection.md
-  - name: Podmínky
-    href: conditions.md
-  - name: Podmínky umístění
-    href: location-condition.md
-  - name: Ovládací prvky
-    href: controls.md
-  - name: Závislosti služeb
-    href: service-dependencies.md
-  - name: Nástroj What If
-    href: what-if-tool.md
   expanded: false
-- name: Návody
   items:
-  - name: Plánování nasazení podmíněného přístupu
-    href: plan-conditional-access.md
-  - name: Osvědčené postupy
-    href: best-practices.md
-  - name: Blokování starší verze ověřování
-    href: block-legacy-authentication.md
-  - name: Řízení přístupu k Exchangi Online a SharePointu Online
-    href: conditional-access-for-exo-and-spo.md
-  - name: Migrace klasických zásad
-    href: policy-migration.md
-  - name: Vyžadování klientem schválených aplikací
-    href: app-based-conditional-access.md
-  - name: Vyžadování zásad ochrany aplikací
-    href: app-protection-based-conditional-access.md
-  - name: Vyžadování spravovaných zařízení
-    href: require-managed-devices.md
-  - name: Vyžadování MFA pro pokusy o přístup z nedůvěryhodných sítí
-    href: untrusted-networks.md
-  - name: Vyžadování podmínek použití
-    href: terms-of-use.md
+    - name: Základní ochrana
+      href: baseline-protection.md
+    - name: Podmínky
+      href: conditions.md
+    - name: Podmínky umístění
+      href: location-condition.md
+    - name: Ovládací prvky
+      href: controls.md
+    - name: Závislosti služeb
+      href: service-dependencies.md
+    - name: Nástroj What If
+      href: what-if-tool.md
+- name: Návody
   expanded: true
+  items:
+    - name: Plánování nasazení podmíněného přístupu
+      href: plan-conditional-access.md
+    - name: Osvědčené postupy
+      href: best-practices.md
+    - name: Blokování starší verze ověřování
+      href: block-legacy-authentication.md
+    - name: Řízení přístupu k Exchangi Online a SharePointu Online
+      href: conditional-access-for-exo-and-spo.md
+    - name: Migrace klasických zásad
+      href: policy-migration.md
+    - name: Vyžadování klientem schválených aplikací
+      href: app-based-conditional-access.md
+    - name: Vyžadování zásad ochrany aplikací
+      href: app-protection-based-conditional-access.md
+    - name: Vyžadování spravovaných zařízení
+      href: require-managed-devices.md
+    - name: Vyžadování MFA pro pokusy o přístup z nedůvěryhodných sítí
+      href: untrusted-networks.md
+    - name: Vyžadování podmínek použití
+      href: terms-of-use.md
 - name: Referenční informace
   items:
-  - name: Technické referenční informace
-    href: technical-reference.md
+    - name: Technické referenční informace
+      href: technical-reference.md
 - name: Zdroje a prostředky
   items:
-  - name: Fórum Azure pro názory
-    href: https://feedback.azure.com/forums/169401-azure-active-directory
-  - name: Fórum MSDN
-    href: https://social.msdn.microsoft.com/Forums/azure/home?forum=WindowsAzureAD
-  - name: Ceny
-    href: https://azure.microsoft.com/pricing/details/active-directory/
-  - name: Aktualizace služeb
-    href: ../fundamentals/whats-new.md
-  - name: Stack Overflow
-    href: https://stackoverflow.com/questions/tagged/azure-active-directory
-  - name: Videa
-    href: https://azure.microsoft.com/documentation/videos/index/?services=active-directory
-ms.openlocfilehash: 1db270043ea996b72f47ee00dbd07f1bd33a1e48
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: HT
-ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59787028"
+    - name: Fórum Azure pro názory
+      href: 'https://feedback.azure.com/forums/169401-azure-active-directory'
+    - name: Fórum MSDN
+      href: 'https://social.msdn.microsoft.com/Forums/azure/home?forum=WindowsAzureAD'
+    - name: Ceny
+      href: 'https://azure.microsoft.com/pricing/details/active-directory/'
+    - name: Aktualizace služeb
+      href: ../fundamentals/whats-new.md
+    - name: Stack Overflow
+      href: 'https://stackoverflow.com/questions/tagged/azure-active-directory'
+    - name: Videa
+      href: 'https://azure.microsoft.com/documentation/videos/index/?services=active-directory'

@@ -1,181 +1,174 @@
-items:
 - name: Dokumentace ke správě uživatelů
   href: index.yml
 - name: Přehled
   items:
-  - name: Uživatelé, skupiny, licencování a role
-    href: directory-overview-user-model.md
+    - name: 'Uživatelé, skupiny, licencování a role'
+      href: directory-overview-user-model.md
 - name: Šablony Rychlý start
   items:
-  - name: Přidání uživatelů do Azure AD
-    href: /azure/active-directory/fundamentals/add-users-azure-active-directory?context=azure/active-directory/users-groups-roles/context/ugr-context
-  - name: Přiřazení licencí k uživatelům
-    href: /azure/active-directory/fundamentals/license-users-groups?context=azure/active-directory/users-groups-roles/context/ugr-context
-  - name: Nastavení konce platnosti skupiny
-    href: groups-quickstart-expiration.md
-  - name: Nastavení zásad pojmenování skupin
-    href: groups-quickstart-naming-policy.md
+    - name: Přidání uživatelů do Azure AD
+      href: /azure/active-directory/fundamentals/add-users-azure-active-directory?context=azure/active-directory/users-groups-roles/context/ugr-context
+    - name: Přiřazení licencí k uživatelům
+      href: /azure/active-directory/fundamentals/license-users-groups?context=azure/active-directory/users-groups-roles/context/ugr-context
+    - name: Nastavení konce platnosti skupiny
+      href: groups-quickstart-expiration.md
+    - name: Nastavení zásad pojmenování skupin
+      href: groups-quickstart-naming-policy.md
 - name: Kurzy
   items:
-  - name: Vytvoření dynamicky naplněné skupiny
-    href: groups-dynamic-tutorial.md
+    - name: Vytvoření dynamicky naplněné skupiny
+      href: groups-dynamic-tutorial.md
 - name: Koncepty
-  items:
-  - name: Delegování rolí správce Azure AD
-    href: roles-concept-delegation.md
-  - name: Porovnání výchozích uživatelských oprávnění
-    href: /azure/active-directory/fundamentals/users-default-permissions?context=azure/active-directory/users-groups-roles/context/ugr-context
-  - name: Porovnání rolí Azure a Azure AD
-    href: /azure/role-based-access-control/rbac-and-directory-admin-roles?context=azure/active-directory/users-groups-roles/context/ugr-context
-  - name: Základy licencování na základě skupin
-    href: /azure/active-directory/fundamentals/active-directory-licensing-whatis-azure-portal?context=azure/active-directory/users-groups-roles/context/ugr-context
   expanded: true
+  items:
+    - name: Delegování rolí správce Azure AD
+      href: roles-concept-delegation.md
+    - name: Porovnání výchozích uživatelských oprávnění
+      href: /azure/active-directory/fundamentals/users-default-permissions?context=azure/active-directory/users-groups-roles/context/ugr-context
+    - name: Porovnání rolí Azure a Azure AD
+      href: /azure/role-based-access-control/rbac-and-directory-admin-roles?context=azure/active-directory/users-groups-roles/context/ugr-context
+    - name: Základy licencování na základě skupin
+      href: /azure/active-directory/fundamentals/active-directory-licensing-whatis-azure-portal?context=azure/active-directory/users-groups-roles/context/ugr-context
 - name: Návody
-  items:
-  - name: Správa uživatelů
-    items:
-    - name: Přidání nových uživatelů do Azure AD
-      href: /azure/active-directory/fundamentals/add-users-azure-active-directory?context=azure/active-directory/users-groups-roles/context/ugr-context
-    - name: Správa uživatelských profilů
-      href: /azure/active-directory/fundamentals/active-directory-users-profile-azure-portal?context=azure/active-directory/users-groups-roles/context/ugr-context
-    - name: Sdílení uživatelských účtů
-      href: users-sharing-accounts.md
-    - name: Přiřazení uživatelů k rolím správce
-      href: /azure/active-directory/fundamentals/active-directory-users-assign-role-azure-portal?context=azure/active-directory/users-groups-roles/context/ugr-context
-    - name: Obnovit odstraněného uživatele
-      href: /azure/active-directory/fundamentals/active-directory-users-restore?context=azure/active-directory/users-groups-roles/context/ugr-context
-    - name: Přidání uživatelů B2B
-      href: /azure/active-directory/b2b/what-is-b2b?context=azure/active-directory/users-groups-roles/context/ugr-context
-    - name: Přiřazení role uživateli B2B
-      href: /azure/active-directory/b2b/add-guest-to-role?context=azure/active-directory/users-groups-roles/context/ugr-context
-    - name: Dynamické skupiny a B2B
-      href: /azure/active-directory/b2b/use-dynamic-groups?context=azure/active-directory/users-groups-roles/context/ugr-context
-  - name: Správa adresáře
-    items:
-    - name: Správa adresáře
-      href: /azure/active-directory/fundamentals/active-directory-administer?context=azure/active-directory/users-groups-roles/context/ugr-context
-    - name: Správa názvů domén
-      href: domains-manage.md
-    - name: Odstranění adresáře
-      href: directory-delete-howto.md
-    - name: Několik adresářů
-      href: licensing-directory-independence.md
-    - name: Samoobslužné přihlášení
-      href: directory-self-service-signup.md
-    - name: Převzetí adresáře
-      href: domains-admin-takeover.md
-    - name: Azure AD Connect
-      href: /azure/active-directory/connect/active-directory-aadconnect?context=azure/active-directory/users-groups-roles/context/ugr-context
-  - name: Správa skupin
-    items:
-    - name: Správa přístupu s využitím skupin
-      href: /azure/active-directory/fundamentals/active-directory-manage-groups?context=azure/active-directory/users-groups-roles/context/ugr-context
-    - name: Správa skupin na webu Azure Portal
-      href: /azure/active-directory/fundamentals/active-directory-groups-create-azure-portal?context=azure/active-directory/users-groups-roles/context/ugr-context
-    - name: Správa skupin s využitím PowerShellu pro Graph (v2)
-      href: groups-settings-v2-cmdlets.md
-    - name: Správa skupin MSOnline s využitím PowerShellu
-      href: groups-settings-cmdlets.md
-    - name: Správa členů skupin
-      href: /azure/active-directory/fundamentals/active-directory-groups-members-azure-portal?context=azure/active-directory/users-groups-roles/context/ugr-context
-    - name: Správa vlastníků skupin
-      href: /azure/active-directory/fundamentals/active-directory-accessmanagement-managing-group-owners?context=azure/active-directory/users-groups-roles/context/ugr-context
-    - name: Správa skupin ve skupinách
-      href: /azure/active-directory/fundamentals/active-directory-groups-membership-azure-portal?context=azure/active-directory/users-groups-roles/context/ugr-context
-    - name: Přidání skupinového přístupu k aplikacím SaaS
-      href: groups-saasapps.md
-    - name: Referenční informace k pojmenování skupin
-      href: groups-naming-policy.md
-    - name: Referenční informace k vypršení platnosti skupin
-      href: groups-lifecycle.md
-    - name: Obnovení odstraněných skupin nebo skupin, kterým vypršela platnost
-      href: groups-restore-deleted.md
-    - name: Správa nastavení skupin
-      href: /azure/active-directory/fundamentals/active-directory-groups-settings-azure-portal?context=azure/active-directory/users-groups-roles/context/ugr-context
-    - name: Nastavení samoobslužných funkcí pro skupiny
-      href: groups-self-service-management.md
-    - name: Dynamické skupiny
-      items:
-      - name: Vytvoření dynamické skupiny
-        href: groups-create-rule.md
-      - name: Pravidla dynamických skupin
-        href: groups-dynamic-membership.md
-      - name: Změna typu členství ve skupině
-        href: groups-change-type.md
-  - name: Přiřazení licencí
-    items:
-    - name: Přiřazení licencí ke skupině
-      href: licensing-groups-assign.md
-    - name: Řešení problémů se skupinovými licencemi
-      href: licensing-groups-resolve-problems.md
-    - name: Změna uživatelů na skupinové licencování
-      href: licensing-groups-migrate-users.md
-    - name: Změna licencí pro uživatele
-      href: licensing-groups-change-licenses.md
-    - name: Další scénáře
-      href: licensing-group-advanced.md
-    - name: Skupinové licencování s využitím PowerShellu
-      href: licensing-ps-examples.md
-    - name: ID plánů služeb pro licencování
-      href: licensing-service-plan-reference.md
-  - name: Role správce Azure AD
-    items:
-    - name: Role a oprávnění
-      href: directory-assign-admin-roles.md
-    - name: Zobrazení a přiřazení rolí
-      href: directory-manage-roles-portal.md
-    - name: Přiřazení rolí s využitím PowerShellu
-      href: roles-assign-powershell.md
-    - name: Delegování rolí správce aplikace
-      href: roles-delegate-app-roles.md
-    - name: Role s nejnižšími oprávněními podle úkolu
-      href: roles-delegate-by-task.md
-    - name: Role Microsoft 365
-      href: roles-m365-workload-docs.md
-    - name: Zabezpečení role správce
-      items:
-      - name: Plánování zabezpečení rolí
-        href: directory-admin-roles-secure.md
-      - name: Vytvoření nouzových účtů
-        href: directory-emergency-access.md
-    - name: Jednotky pro správu
-      href: directory-administrative-units.md
-  - name: Správa přihlašování
-    items:
-    - name: Přizpůsobení brandingu společnosti
-      href: /azure/active-directory/fundamentals/customize-branding?context=azure/active-directory/users-groups-roles/context/ugr-context
-    - name: Možnosti přihlášení
-      href: signin-account-support.md
-    - name: Zjišťování domovské sféry
-      href: signin-realm-discovery.md
-  - name: Integrace služeb s Azure AD
-    items:
-    - name: Integrace LinkedInu s Azure AD
-      href: linkedin-integration.md
-    - name: Sdílení dat LinkedInu
-      href: linkedin-user-consent.md
-  - name: Řešení potíží
-    items:
-    - name: Získání podpory pro Azure AD
-      href: /azure/active-directory/fundamentals/active-directory-troubleshooting-support-howto?context=azure/active-directory/users-groups-roles/context/ugr-context
-    - name: Řešení potíží se skupinami
-      href: groups-troubleshooting.md
-    - name: Řešení potíží se skupinovým licencováním
-      href: licensing-groups-resolve-problems.md
   expanded: true
+  items:
+    - name: Správa uživatelů
+      items:
+        - name: Přidání nových uživatelů do Azure AD
+          href: /azure/active-directory/fundamentals/add-users-azure-active-directory?context=azure/active-directory/users-groups-roles/context/ugr-context
+        - name: Správa uživatelských profilů
+          href: /azure/active-directory/fundamentals/active-directory-users-profile-azure-portal?context=azure/active-directory/users-groups-roles/context/ugr-context
+        - name: Sdílení uživatelských účtů
+          href: users-sharing-accounts.md
+        - name: Přiřazení uživatelů k rolím správce
+          href: /azure/active-directory/fundamentals/active-directory-users-assign-role-azure-portal?context=azure/active-directory/users-groups-roles/context/ugr-context
+        - name: Obnovit odstraněného uživatele
+          href: /azure/active-directory/fundamentals/active-directory-users-restore?context=azure/active-directory/users-groups-roles/context/ugr-context
+        - name: Přidání uživatelů B2B
+          href: /azure/active-directory/b2b/what-is-b2b?context=azure/active-directory/users-groups-roles/context/ugr-context
+        - name: Přiřazení role uživateli B2B
+          href: /azure/active-directory/b2b/add-guest-to-role?context=azure/active-directory/users-groups-roles/context/ugr-context
+        - name: Dynamické skupiny a B2B
+          href: /azure/active-directory/b2b/use-dynamic-groups?context=azure/active-directory/users-groups-roles/context/ugr-context
+    - name: Správa adresáře
+      items:
+        - name: Správa adresáře
+          href: /azure/active-directory/fundamentals/active-directory-administer?context=azure/active-directory/users-groups-roles/context/ugr-context
+        - name: Správa názvů domén
+          href: domains-manage.md
+        - name: Odstranění adresáře
+          href: directory-delete-howto.md
+        - name: Několik adresářů
+          href: licensing-directory-independence.md
+        - name: Samoobslužné přihlášení
+          href: directory-self-service-signup.md
+        - name: Převzetí adresáře
+          href: domains-admin-takeover.md
+        - name: Azure AD Connect
+          href: /azure/active-directory/connect/active-directory-aadconnect?context=azure/active-directory/users-groups-roles/context/ugr-context
+    - name: Správa skupin
+      items:
+        - name: Správa přístupu s využitím skupin
+          href: /azure/active-directory/fundamentals/active-directory-manage-groups?context=azure/active-directory/users-groups-roles/context/ugr-context
+        - name: Správa skupin na webu Azure Portal
+          href: /azure/active-directory/fundamentals/active-directory-groups-create-azure-portal?context=azure/active-directory/users-groups-roles/context/ugr-context
+        - name: Správa skupin s využitím PowerShellu pro Graph (v2)
+          href: groups-settings-v2-cmdlets.md
+        - name: Správa skupin MSOnline s využitím PowerShellu
+          href: groups-settings-cmdlets.md
+        - name: Správa členů skupin
+          href: /azure/active-directory/fundamentals/active-directory-groups-members-azure-portal?context=azure/active-directory/users-groups-roles/context/ugr-context
+        - name: Správa vlastníků skupin
+          href: /azure/active-directory/fundamentals/active-directory-accessmanagement-managing-group-owners?context=azure/active-directory/users-groups-roles/context/ugr-context
+        - name: Správa skupin ve skupinách
+          href: /azure/active-directory/fundamentals/active-directory-groups-membership-azure-portal?context=azure/active-directory/users-groups-roles/context/ugr-context
+        - name: Přidání skupinového přístupu k aplikacím SaaS
+          href: groups-saasapps.md
+        - name: Referenční informace k pojmenování skupin
+          href: groups-naming-policy.md
+        - name: Referenční informace k vypršení platnosti skupin
+          href: groups-lifecycle.md
+        - name: 'Obnovení odstraněných skupin nebo skupin, kterým vypršela platnost'
+          href: groups-restore-deleted.md
+        - name: Správa nastavení skupin
+          href: /azure/active-directory/fundamentals/active-directory-groups-settings-azure-portal?context=azure/active-directory/users-groups-roles/context/ugr-context
+        - name: Nastavení samoobslužných funkcí pro skupiny
+          href: groups-self-service-management.md
+        - name: Dynamické skupiny
+          items:
+            - name: Vytvoření dynamické skupiny
+              href: groups-create-rule.md
+            - name: Pravidla dynamických skupin
+              href: groups-dynamic-membership.md
+            - name: Změna typu členství ve skupině
+              href: groups-change-type.md
+    - name: Přiřazení licencí
+      items:
+        - name: Přiřazení licencí ke skupině
+          href: licensing-groups-assign.md
+        - name: Řešení problémů se skupinovými licencemi
+          href: licensing-groups-resolve-problems.md
+        - name: Změna uživatelů na skupinové licencování
+          href: licensing-groups-migrate-users.md
+        - name: Změna licencí pro uživatele
+          href: licensing-groups-change-licenses.md
+        - name: Další scénáře
+          href: licensing-group-advanced.md
+        - name: Skupinové licencování s využitím PowerShellu
+          href: licensing-ps-examples.md
+        - name: ID plánů služeb pro licencování
+          href: licensing-service-plan-reference.md
+    - name: Role správce Azure AD
+      items:
+        - name: Role a oprávnění
+          href: directory-assign-admin-roles.md
+        - name: Zobrazení a přiřazení rolí
+          href: directory-manage-roles-portal.md
+        - name: Přiřazení rolí s využitím PowerShellu
+          href: roles-assign-powershell.md
+        - name: Delegování rolí správce aplikace
+          href: roles-delegate-app-roles.md
+        - name: Role s nejnižšími oprávněními podle úkolu
+          href: roles-delegate-by-task.md
+        - name: Role Microsoft 365
+          href: roles-m365-workload-docs.md
+        - name: Zabezpečení role správce
+          items:
+            - name: Plánování zabezpečení rolí
+              href: directory-admin-roles-secure.md
+            - name: Vytvoření nouzových účtů
+              href: directory-emergency-access.md
+        - name: Jednotky pro správu
+          href: directory-administrative-units.md
+    - name: Správa přihlašování
+      items:
+        - name: Přizpůsobení brandingu společnosti
+          href: /azure/active-directory/fundamentals/customize-branding?context=azure/active-directory/users-groups-roles/context/ugr-context
+        - name: Možnosti přihlášení
+          href: signin-account-support.md
+        - name: Zjišťování domovské sféry
+          href: signin-realm-discovery.md
+    - name: Integrace služeb s Azure AD
+      items:
+        - name: Integrace LinkedInu s Azure AD
+          href: linkedin-integration.md
+        - name: Sdílení dat LinkedInu
+          href: linkedin-user-consent.md
+    - name: Řešení potíží
+      items:
+        - name: Získání podpory pro Azure AD
+          href: /azure/active-directory/fundamentals/active-directory-troubleshooting-support-howto?context=azure/active-directory/users-groups-roles/context/ugr-context
+        - name: Řešení potíží se skupinami
+          href: groups-troubleshooting.md
+        - name: Řešení potíží se skupinovým licencováním
+          href: licensing-groups-resolve-problems.md
 - name: Referenční informace
   items:
-  - name: Graph API
-    href: https://developer.microsoft.com/graph/docs/api-reference/v1.0/resources/azure_ad_overview
-  - name: Azure AD CLI
-    href: https://docs.microsoft.com/cli/azure/ad
-  - name: Azure AD PowerShell pro Graph
-    href: https://docs.microsoft.com/powershell/azure/active-directory/install-adv2?view=azureadps-2.0
-  - name: Omezení služby Azure AD
-    href: directory-service-limits-restrictions.md
-ms.openlocfilehash: 97c2ebbe65f3382ee59d8c3bdb9dad9060cf31b6
-ms.sourcegitcommit: 48a41b4b0bb89a8579fc35aa805cea22e2b9922c
-ms.translationtype: HT
-ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/15/2019
-ms.locfileid: "59577659"
+    - name: Graph API
+      href: 'https://developer.microsoft.com/graph/docs/api-reference/v1.0/resources/azure_ad_overview'
+    - name: Azure AD CLI
+      href: 'https://docs.microsoft.com/cli/azure/ad'
+    - name: Azure AD PowerShell pro Graph
+      href: 'https://docs.microsoft.com/powershell/azure/active-directory/install-adv2?view=azureadps-2.0'
+    - name: Omezení služby Azure AD
+      href: directory-service-limits-restrictions.md

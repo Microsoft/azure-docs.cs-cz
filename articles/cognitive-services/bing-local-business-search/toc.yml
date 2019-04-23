@@ -1,52 +1,46 @@
-items:
 - name: Dokumentace k rozhraní API Bingu pro místní obchodní vyhledávání
   href: index.yml
   expanded: true
+  items: null
 - name: Přehled
-  items:
-  - name: Co je rozhraní API Bingu pro místní obchodní vyhledávání?
-    href: overview.md
-  - name: Porovnání rozhraní API pro vyhledávání Bingu
-    href: ../Bing-Web-Search/bing-api-comparison.md
-    maintainContext: true
   expanded: true
+  items:
+    - name: Co je rozhraní API Bingu pro místní obchodní vyhledávání?
+      href: overview.md
+    - name: Porovnání rozhraní API pro vyhledávání Bingu
+      href: ../Bing-Web-Search/bing-api-comparison.md
+      maintainContext: true
 - name: Šablony Rychlý start
   items:
-  - name: REST API
-    items:
-    - name: Pomocí C#
-      href: quickstarts/local-quickstart.md
-    - name: Pomocí Javy
-      href: quickstarts/local-search-java-quickstart.md
-    - name: Pomocí Node
-      href: quickstarts/local-search-node-quickstart.md
-    - name: Pomocí Pythonu
-      href: quickstarts/local-search-python-quickstart.md
-    expanded: true
+    - name: REST API
+      expanded: true
+      items:
+        - name: 'Pomocí C#'
+          href: quickstarts/local-quickstart.md
+        - name: Pomocí Javy
+          href: quickstarts/local-search-java-quickstart.md
+        - name: Pomocí Node
+          href: quickstarts/local-search-node-quickstart.md
+        - name: Pomocí Pythonu
+          href: quickstarts/local-search-python-quickstart.md
 - name: Koncepty
   items:
-  - name: Práce s dotazy a odpověďmi
-    href: local-search-query-response.md
-  - name: Filtrování výsledků podle nastavení geografických hranic
-    href: specify-geographic-search.md
-  - name: Kategorie místního obchodního vyhledávání
-    href: local-categories.md
+    - name: Práce s dotazy a odpověďmi
+      href: local-search-query-response.md
+    - name: Filtrování výsledků podle nastavení geografických hranic
+      href: specify-geographic-search.md
+    - name: Kategorie místního obchodního vyhledávání
+      href: local-categories.md
 - name: Referenční informace
   items:
-  - name: Požadavky na zobrazení a použití
-    href: ../Bing-Web-Search/use-display-requirements.md
-    maintainContext: true
-  - name: Referenční informace k rozhraní API pro místní obchodní vyhledávání
-    href: local-search-reference.md
+    - name: Požadavky na zobrazení a použití
+      href: ../Bing-Web-Search/use-display-requirements.md
+      maintainContext: true
+    - name: Referenční informace k rozhraní API pro místní obchodní vyhledávání
+      href: local-search-reference.md
 - name: Zdroje a prostředky
   items:
-  - name: Zkuste Cognitive Services
-    href: https://azure.microsoft.com/en-us/try/cognitive-services/?api=bing-web-search-api
-  - name: Informace o cenách
-    href: https://azure.microsoft.com/en-us/pricing/details/cognitive-services/search-api/
-ms.openlocfilehash: 14c891c74accb4cca537e24ddbdcb99ae36618c9
-ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
-ms.translationtype: HT
-ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55507497"
+    - name: Zkuste Cognitive Services
+      href: 'https://azure.microsoft.com/en-us/try/cognitive-services/?api=bing-web-search-api'
+    - name: Informace o cenách
+      href: 'https://azure.microsoft.com/en-us/pricing/details/cognitive-services/search-api/'

@@ -1,16 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 00752e0b42b907699e9f314c2f216b69c9d3b2e8
-ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
-ms.translationtype: HT
-ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55506732"
 documentType: LandingData
 title: Dokumentace ke správě podnikových uživatelů – Azure Active Directory
 metadata:
-  document_id: 
-  title: Dokumentace k uživatelům, skupinám, rolím a licencím služby Azure Active Directory
-  description: Naučte se využívat uživatele, skupiny, role a licence ke správě ověřování s využitím cloudových služeb Azure ve vašem tenantovi.
+  document_id: null
+  title: 'Dokumentace k uživatelům, skupinám, rolím a licencím služby Azure Active Directory'
+  description: 'Naučte se využívat uživatele, skupiny, role a licence ke správě ověřování s využitím cloudových služeb Azure ve vašem tenantovi.'
   services: active-directory
   ms.subservice: users-groups-roles
   author: curtand
@@ -20,33 +14,33 @@ metadata:
   ms.date: 01/31/2019
   ms.author: curtand
 abstract:
-  description: Nástroje pro správu uživatelů služby Azure AD, jako jsou skupiny a přiřazení rolí správců, vám pomůže rychleji zvládnout nejdůležitější úlohy a zajistit možnost růstu. Licence nebo přístup k aplikacím SaaS můžete místo jednotlivců přiřazovat celým skupinám. Můžete také delegovat oprávnění a distribuovat tak režii spojenou se správou identit Azure AD.
+  description: 'Nástroje pro správu uživatelů služby Azure AD, jako jsou skupiny a přiřazení rolí správců, vám pomůže rychleji zvládnout nejdůležitější úlohy a zajistit možnost růstu. Licence nebo přístup k aplikacím SaaS můžete místo jednotlivců přiřazovat celým skupinám. Můžete také delegovat oprávnění a distribuovat tak režii spojenou se správou identit Azure AD.'
 sections:
-- title: Zprovoznění během 5 minut
-  items:
-  - type: paragraph
-    text: Naučte se používat nástroje pro správu ve službě Azure Active Directory
-  - type: list
-    style: unordered
+  - title: Zprovoznění během 5 minut
     items:
-    - html: <a href="/azure/active-directory/fundamentals/add-users-azure-active-directory">Přidání uživatelů do Azure AD</a>
-    - html: <a href="/azure/active-directory/fundamentals/license-users-groups">Přiřazení licencí k uživatelům</a>
-    - html: <a href="/azure/active-directory/fundamentals/active-directory-get-started-premium">Registrace do Azure AD Premium</a>
-    - html: <a href="/azure/active-directory/users-groups-roles/groups-quickstart-expiration">Nastavení konce platnosti pro skupiny vytvořené uživatelem</a>
-    - html: <a href="/azure/active-directory/users-groups-roles/groups-quickstart-naming-policy">Nastavení zásad pojmenování pro skupiny vytvořené uživatelem</a>
-- title: Podrobné kurzy
-  items:
-  - type: paragraph
-    text: Další informace o dynamickém naplňování skupin ve službě Azure Active Directory
-  - type: list
-    style: unordered
+      - type: paragraph
+        text: Naučte se používat nástroje pro správu ve službě Azure Active Directory
+      - type: list
+        style: unordered
+        items:
+          - html: <a href="/azure/active-directory/fundamentals/add-users-azure-active-directory">Přidání uživatelů do Azure AD</a>
+          - html: <a href="/azure/active-directory/fundamentals/license-users-groups">Přiřazení licencí k uživatelům</a>
+          - html: <a href="/azure/active-directory/fundamentals/active-directory-get-started-premium">Registrace do Azure AD Premium</a>
+          - html: <a href="/azure/active-directory/users-groups-roles/groups-quickstart-expiration">Nastavení konce platnosti pro skupiny vytvořené uživatelem</a>
+          - html: <a href="/azure/active-directory/users-groups-roles/groups-quickstart-naming-policy">Nastavení zásad pojmenování pro skupiny vytvořené uživatelem</a>
+  - title: Podrobné kurzy
     items:
-    - html: <a href="/azure/active-directory/users-groups-roles/groups-dynamic-tutorial">Vytvoření dynamicky naplněné skupiny</a>
-- title: Referenční informace
-  items:
-  - type: list
-    style: cards
-    className: cardsD
+      - type: paragraph
+        text: Další informace o dynamickém naplňování skupin ve službě Azure Active Directory
+      - type: list
+        style: unordered
+        items:
+          - html: <a href="/azure/active-directory/users-groups-roles/groups-dynamic-tutorial">Vytvoření dynamicky naplněné skupiny</a>
+  - title: Referenční informace
     items:
-    - title: Referenční odkazy
-      html: <p><a href="https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0">Rutiny Azure AD PowerShellu</a></p>
+      - type: list
+        style: cards
+        className: cardsD
+        items:
+          - title: Referenční odkazy
+            html: '<p><a href="https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0">Rutiny Azure AD PowerShellu</a></p>'

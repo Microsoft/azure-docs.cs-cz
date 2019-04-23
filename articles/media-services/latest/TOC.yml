@@ -242,6 +242,9 @@
       href: /azure/templates/microsoft.media/allversions
 - name: Zdroje a prostředky
   items:
+    - name: Komunita Azure Media Services
+      displayName: 'forums, twitter, feedback'
+      href: media-services-community.md
     - name: Plány Azure do budoucna
       href: 'https://azure.microsoft.com/roadmap/?category=web-mobile'
     - name: Ceny

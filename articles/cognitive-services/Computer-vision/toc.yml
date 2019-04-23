@@ -1,208 +1,201 @@
-items:
 - name: Dokumentace k rozhraní API pro počítačové zpracování obrazu
   href: index.yml
 - name: Přehled
-  items:
-  - name: Co je počítačové zpracování obrazu?
-    href: Home.md
   expanded: true
+  items:
+    - name: Co je počítačové zpracování obrazu?
+      href: Home.md
 - name: Šablony Rychlý start
   items:
-  - name: S využitím REST API
-    items:
-    - name: Analýza vzdáleného obrázku
+    - name: S využitím REST API
       items:
-      - name: cURL
-        href: QuickStarts/curl-analyze.md
-      - name: Přejít
-        href: QuickStarts/go-analyze.md
-      - name: Java
-        href: QuickStarts/java-analyze.md
-      - name: JavaScript
-        href: QuickStarts/javascript-analyze.md
-      - name: Node.js
-        href: QuickStarts/node-analyze.md
-      - name: PHP
-        href: QuickStarts/php-analyze.md
-      - name: Python
-        href: QuickStarts/python-analyze.md
-      - name: Ruby
-        href: QuickStarts/ruby-analyze.md
-    - name: Analýza místního obrázku
+        - name: Analýza vzdáleného obrázku
+          items:
+            - name: cURL
+              href: QuickStarts/curl-analyze.md
+            - name: Přejít
+              href: QuickStarts/go-analyze.md
+            - name: Java
+              href: QuickStarts/java-analyze.md
+            - name: JavaScript
+              href: QuickStarts/javascript-analyze.md
+            - name: Node.js
+              href: QuickStarts/node-analyze.md
+            - name: PHP
+              href: QuickStarts/php-analyze.md
+            - name: Python
+              href: QuickStarts/python-analyze.md
+            - name: Ruby
+              href: QuickStarts/ruby-analyze.md
+        - name: Analýza místního obrázku
+          items:
+            - name: 'C#'
+              href: QuickStarts/CSharp-analyze.md
+            - name: Python
+              href: QuickStarts/python-disk.md
+        - name: Vytvoření miniatury
+          items:
+            - name: 'C#'
+              href: QuickStarts/CSharp-thumb.md
+            - name: cURL
+              href: QuickStarts/curl-thumb.md
+            - name: Přejít
+              href: QuickStarts/go-thumb.md
+            - name: Java
+              href: QuickStarts/java-thumb.md
+            - name: JavaScript
+              href: QuickStarts/javascript-thumb.md
+            - name: Node.js
+              href: QuickStarts/node-thumb.md
+            - name: PHP
+              href: QuickStarts/php-thumb.md
+            - name: Python
+              href: QuickStarts/python-thumb.md
+            - name: Ruby
+              href: QuickStarts/ruby-thumb.md
+        - name: Extrakce tištěného textu
+          items:
+            - name: 'C#'
+              href: QuickStarts/CSharp-print-text.md
+            - name: cURL
+              href: QuickStarts/curl-print-text.md
+            - name: Přejít
+              href: QuickStarts/go-print-text.md
+            - name: Java
+              href: QuickStarts/java-print-text.md
+            - name: JavaScript
+              href: QuickStarts/javascript-print-text.md
+            - name: Node.js
+              href: QuickStarts/node-print-text.md
+            - name: PHP
+              href: QuickStarts/php-print-text.md
+            - name: Python
+              href: QuickStarts/python-print-text.md
+            - name: Ruby
+              href: QuickStarts/ruby-print-text.md
+        - name: Extrakce rukou psaného textu
+          items:
+            - name: 'C#'
+              href: QuickStarts/CSharp-hand-text.md
+            - name: Java
+              href: QuickStarts/java-hand-text.md
+            - name: JavaScript
+              href: QuickStarts/javascript-hand-text.md
+            - name: Python
+              href: QuickStarts/python-hand-text.md
+        - name: Použití doménového modelu
+          items:
+            - name: PHP
+              href: QuickStarts/php-domain.md
+            - name: Python
+              href: QuickStarts/python-domain.md
+    - name: S využitím .NET SDK
       items:
-      - name: C#
-        href: QuickStarts/CSharp-analyze.md
-      - name: Python
-        href: QuickStarts/python-disk.md
-    - name: Vytvoření miniatury
-      items:
-      - name: C#
-        href: QuickStarts/CSharp-thumb.md
-      - name: cURL
-        href: QuickStarts/curl-thumb.md
-      - name: Přejít
-        href: QuickStarts/go-thumb.md
-      - name: Java
-        href: QuickStarts/java-thumb.md
-      - name: JavaScript
-        href: QuickStarts/javascript-thumb.md
-      - name: Node.js
-        href: QuickStarts/node-thumb.md
-      - name: PHP
-        href: QuickStarts/php-thumb.md
-      - name: Python
-        href: QuickStarts/python-thumb.md
-      - name: Ruby
-        href: QuickStarts/ruby-thumb.md
-    - name: Extrakce tištěného textu
-      items:
-      - name: C#
-        href: QuickStarts/CSharp-print-text.md
-      - name: cURL
-        href: QuickStarts/curl-print-text.md
-      - name: Přejít
-        href: QuickStarts/go-print-text.md
-      - name: Java
-        href: QuickStarts/java-print-text.md
-      - name: JavaScript
-        href: QuickStarts/javascript-print-text.md
-      - name: Node.js
-        href: QuickStarts/node-print-text.md
-      - name: PHP
-        href: QuickStarts/php-print-text.md
-      - name: Python
-        href: QuickStarts/python-print-text.md
-      - name: Ruby
-        href: QuickStarts/ruby-print-text.md
-    - name: Extrakce rukou psaného textu
-      items:
-      - name: C#
-        href: QuickStarts/CSharp-hand-text.md
-      - name: Java
-        href: QuickStarts/java-hand-text.md
-      - name: JavaScript
-        href: QuickStarts/javascript-hand-text.md
-      - name: Python
-        href: QuickStarts/python-hand-text.md
-    - name: Použití doménového modelu
-      items:
-      - name: PHP
-        href: QuickStarts/php-domain.md
-      - name: Python
-        href: QuickStarts/python-domain.md
-  - name: S využitím .NET SDK
-    items:
-    - name: Analýza obrázku
-      href: quickstarts-sdk/csharp-analyze-sdk.md
-    - name: Vytvoření miniatury
-      href: quickstarts-sdk/csharp-thumb-sdk.md
-    - name: Extrakce textu
-      href: quickstarts-sdk/csharp-hand-text-sdk.md
-  - name: Používání sady Python SDK
-    href: quickstarts-sdk/python-sdk.md
+        - name: Analýza obrázku
+          href: quickstarts-sdk/csharp-analyze-sdk.md
+        - name: Vytvoření miniatury
+          href: quickstarts-sdk/csharp-thumb-sdk.md
+        - name: Extrakce textu
+          href: quickstarts-sdk/csharp-hand-text-sdk.md
+    - name: Používání sady Python SDK
+      href: quickstarts-sdk/python-sdk.md
 - name: Kurzy
   items:
-  - name: Generování metadat pro obrázky
-    href: Tutorials/storage-lab-tutorial.md
+    - name: Generování metadat pro obrázky
+      href: Tutorials/storage-lab-tutorial.md
 - name: Koncepty
   items:
-  - name: Označování obrázků značkami
-    href: concept-tagging-images.md
-  - name: Detekování objektů
-    href: concept-object-detection.md
-  - name: Rozpoznávání značek
-    href: concept-brand-detection.md
-  - name: Kategorizace obrázků
-    href: concept-categorizing-images.md
-  - name: Popisování obrázků
-    href: concept-describing-images.md
-  - name: Rozpoznávání tváří
-    href: concept-detecting-faces.md
-  - name: Rozpoznávání typů obrázků
-    href: concept-detecting-image-types.md
-  - name: Rozpoznávání obsahu specifického pro doménu
-    href: concept-detecting-domain-content.md
-  - name: Rozpoznávání barevných schémat
-    href: concept-detecting-color-schemes.md
-  - name: Generování miniatur
-    href: concept-generating-thumbnails.md
-  - name: Rozpoznávání tištěného a ručně psaného textu
-    href: concept-recognizing-text.md
-  - name: Rozpoznávání obsahu pro dospělé a nevhodného obsahu
-    href: concept-detecting-adult-content.md
+    - name: Označování obrázků značkami
+      href: concept-tagging-images.md
+    - name: Detekování objektů
+      href: concept-object-detection.md
+    - name: Rozpoznávání značek
+      href: concept-brand-detection.md
+    - name: Kategorizace obrázků
+      href: concept-categorizing-images.md
+    - name: Popisování obrázků
+      href: concept-describing-images.md
+    - name: Rozpoznávání tváří
+      href: concept-detecting-faces.md
+    - name: Rozpoznávání typů obrázků
+      href: concept-detecting-image-types.md
+    - name: Rozpoznávání obsahu specifického pro doménu
+      href: concept-detecting-domain-content.md
+    - name: Rozpoznávání barevných schémat
+      href: concept-detecting-color-schemes.md
+    - name: Generování miniatur
+      href: concept-generating-thumbnails.md
+    - name: Rozpoznávání tištěného a ručně psaného textu
+      href: concept-recognizing-text.md
+    - name: Rozpoznávání obsahu pro dospělé a nevhodného obsahu
+      href: concept-detecting-adult-content.md
 - name: Návody
   items:
-  - name: Použití počítačového zpracování obrazu
-    items:
-    - name: Java
-      href: Tutorials/java-tutorial.md
-    - name: JavaScript
-      href: Tutorials/javascript-tutorial.md
-    - name: Python
-      href: Tutorials/PythonTutorial.md
-  - name: Získání klíčů předplatného
-    href: Vision-API-How-to-Topics/HowToSubscribe.md
-  - name: Volání rozhraní API pro počítačové zpracování obrazu
-    href: Vision-API-How-to-Topics/HowToCallVisionAPI.md
-  - name: Použití kontejnerů
-    items:
-    - name: Instalace a spuštění kontejnerů
-      href: computer-vision-how-to-install-containers.md
-    - name: Konfigurace kontejnerů
-      href: computer-vision-resource-container-config.md
-  - name: Použití připojené služby počítačového zpracování obrazu
-    href: vs-computer-vision-connected-service.md
-  - name: Analýza videa v reálném čase
-    href: Vision-API-How-to-Topics/HowtoAnalyzeVideo_Vision.md
+    - name: Použití počítačového zpracování obrazu
+      items:
+        - name: Java
+          href: Tutorials/java-tutorial.md
+        - name: JavaScript
+          href: Tutorials/javascript-tutorial.md
+        - name: Python
+          href: Tutorials/PythonTutorial.md
+    - name: Volání rozhraní API pro počítačové zpracování obrazu
+      href: Vision-API-How-to-Topics/HowToCallVisionAPI.md
+    - name: Použití kontejnerů
+      items:
+        - name: Instalace a spuštění kontejnerů
+          href: computer-vision-how-to-install-containers.md
+        - name: Konfigurace kontejnerů
+          href: computer-vision-resource-container-config.md
+    - name: Použití připojené služby počítačového zpracování obrazu
+      href: vs-computer-vision-connected-service.md
+    - name: Analýza videa v reálném čase
+      href: Vision-API-How-to-Topics/HowtoAnalyzeVideo_Vision.md
 - name: Referenční informace
   items:
-  - name: Azure CLI
-    href: https://docs.microsoft.com/cli/azure/cognitiveservices?view=azure-cli-latest#az_cognitiveservices_list
-  - name: Azure PowerShell
-    href: https://aka.ms/azure-powershell-cognitiveservices
-  - name: Rozhraní API pro počítačové zpracování obrazu v2.0
-    href: https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44
-  - name: Rozhraní API pro počítačové zpracování obrazu v1.0
-    href: https://westus.dev.cognitive.microsoft.com/docs/services/56f91f2d778daf23d8ec6739
-  - name: Sady SDK
-    items:
-    - name: .NET
-      href: https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/computervision?view=azure-dotnet
-    - name: Node.js
-      href: https://docs.microsoft.com/javascript/api/overview/azure/cognitiveservices/computervision?view=azure-node-latest
-    - name: Python
-      href: https://docs.microsoft.com/python/api/overview/azure/cognitiveservices/computervision?view=azure-python
-    - name: Přejít
-      href: https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.0/computervision
-    - name: Android (Java)
-      href: https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/computervision?view=azure-java-stable
-    - name: Swift
-      href: https://github.com/DanilaVladi/Microsoft-Cognitive-Services-Swift-SDK
+    - name: Azure CLI
+      href: 'https://docs.microsoft.com/cli/azure/cognitiveservices?view=azure-cli-latest#az_cognitiveservices_list'
+    - name: Azure PowerShell
+      href: 'https://aka.ms/azure-powershell-cognitiveservices'
+    - name: Rozhraní API pro počítačové zpracování obrazu v2.0
+      href: 'https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44'
+    - name: Rozhraní API pro počítačové zpracování obrazu v1.0
+      href: 'https://westus.dev.cognitive.microsoft.com/docs/services/56f91f2d778daf23d8ec6739'
+    - name: Sady SDK
+      items:
+        - name: .NET
+          href: 'https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/computervision?view=azure-dotnet'
+        - name: Node.js
+          href: 'https://docs.microsoft.com/javascript/api/overview/azure/cognitiveservices/computervision?view=azure-node-latest'
+        - name: Python
+          href: 'https://docs.microsoft.com/python/api/overview/azure/cognitiveservices/computervision?view=azure-python'
+        - name: Přejít
+          href: 'https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.0/computervision'
+        - name: Android (Java)
+          href: 'https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/computervision?view=azure-java-stable'
+        - name: Swift
+          href: 'https://github.com/DanilaVladi/Microsoft-Cognitive-Services-Swift-SDK'
 - name: Zdroje a prostředky
   items:
-  - name: Ukázky
-    items:
-    - name: Aplikace pro zpracování obrázků
-      href: Tutorials/CSharpTutorial.md
-    - name: Další ukázky Počítačového zpracování obrazu
-      href: https://azure.microsoft.com/resources/samples/?service=cognitive-services&term=vision
-  - name: Nejčastější dotazy
-    href: FAQ.md
-  - name: Ceny a omezení
-    href: https://azure.microsoft.com/pricing/details/cognitive-services/computer-vision
-  - name: UserVoice
-    href: https://cognitive.uservoice.com/forums/430309-computer-vision-api
-  - name: Taxonomie kategorií
-    href: Category-Taxonomy.md
-  - name: Stack Overflow
-    href: https://stackoverflow.com/questions/tagged/microsoft-cognitive
-  - name: Plány Azure do budoucna
-    href: https://azure.microsoft.com/updates/?product=cognitive-services
-  - name: Regionální dostupnost
-    href: https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services
-ms.openlocfilehash: 2fc31b518155f49cd17b86780e6accbacc2ba354
-ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
-ms.translationtype: HT
-ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57192305"
+    - name: Ukázky
+      items:
+        - name: Aplikace pro zpracování obrázků
+          href: Tutorials/CSharpTutorial.md
+        - name: Další ukázky Počítačového zpracování obrazu
+          href: 'https://azure.microsoft.com/resources/samples/?service=cognitive-services&term=vision'
+    - name: Nejčastější dotazy
+      href: FAQ.md
+    - name: Taxonomie kategorií
+      href: Category-Taxonomy.md
+    - name: Podpora jazyků
+      href: language-support.md
+    - name: Ceny a omezení
+      href: 'https://azure.microsoft.com/pricing/details/cognitive-services/computer-vision'
+    - name: UserVoice
+      href: 'https://cognitive.uservoice.com/forums/430309-computer-vision-api'
+    - name: Stack Overflow
+      href: 'https://stackoverflow.com/questions/tagged/microsoft-cognitive'
+    - name: Plány Azure do budoucna
+      href: 'https://azure.microsoft.com/updates/?product=cognitive-services'
+    - name: Regionální dostupnost
+      href: 'https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services'

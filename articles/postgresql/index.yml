@@ -1,15 +1,9 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 9fb6f65c05f6789177923a3e62e8978bb5cdf457
-ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
-ms.translationtype: HT
-ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56992103"
 documentType: LandingData
 title: Dokumentace k Azure Database for PostgreSQL
 metadata:
   document_id: c0fe8cd3-35da-e3e5-718e-8f3cf2f87f34
-  title: Dokumentace k Azure PostgreSQL – kurzy, reference k rozhraní API | Dokumentace Microsoftu
+  title: 'Dokumentace k Azure PostgreSQL – kurzy, reference k rozhraní API | Dokumentace Microsoftu'
   description: Azure Database for PostgreSQL je služba relačních databází v cloudu Microsoftu vytvořená pro vývojáře na základě opensourcového databázového stroje PostgreSQL.
   author: rachel-msft
   ms.author: raagyema
@@ -17,64 +11,64 @@ metadata:
   ms.topic: landing-page
   ms.date: 02/25/2019
 abstract:
-  description: Azure Database for PostgreSQL je služba relačních databází založená na open source databázovém stroji Postgres.  Je to nabídka plně spravované databáze jako služby schopné spravovat důležité úlohy s předvídatelným výkonem, zabezpečením, vysokou dostupností a možností dynamického škálování.  Vyvíjejte aplikace pomocí Azure Database for PostgreSQL s využitím open source nástrojů a platformy podle vašeho výběru.  Naučte se používat Azure Database for Azure Database for PostgreSQL prostřednictvím našich šablon Rychlý start, kurzů a ukázek.
+  description: 'Azure Database for PostgreSQL je služba relačních databází založená na open source databázovém stroji Postgres.  Je to nabídka plně spravované databáze jako služby schopné spravovat důležité úlohy s předvídatelným výkonem, zabezpečením, vysokou dostupností a možností dynamického škálování.  Vyvíjejte aplikace pomocí Azure Database for PostgreSQL s využitím open source nástrojů a platformy podle vašeho výběru.  Naučte se používat Azure Database for Azure Database for PostgreSQL prostřednictvím našich šablon Rychlý start, kurzů a ukázek.'
 sections:
-- title: Zprovoznění během 5 minut
-  items:
-  - type: paragraph
-    text: 'Naučte se vytvářet databáze PostgreSQL s použitím:'
-  - type: list
-    style: icon48
+  - title: Zprovoznění během 5 minut
     items:
-    - image:
-        src: https://docs.microsoft.com/azure/sql-database/media/index/portal.svg
-      text: Azure Portal
-      href: /azure/postgresql/quickstart-create-server-database-portal
-    - image:
-        src: https://docs.microsoft.com/azure/sql-database/media/index/cli.svg
-      text: Azure CLI
-      href: /azure/postgresql/quickstart-create-server-database-azure-cli
-- title: Podrobné kurzy
-  items:
-  - type: paragraph
-    text: 'Naučte se:'
-  - type: list
-    style: ordered
+      - type: paragraph
+        text: 'Naučte se vytvářet databáze PostgreSQL s použitím:'
+      - type: list
+        style: icon48
+        items:
+          - image:
+              src: 'https://docs.microsoft.com/azure/sql-database/media/index/portal.svg'
+            text: Azure Portal
+            href: /azure/postgresql/quickstart-create-server-database-portal
+          - image:
+              src: 'https://docs.microsoft.com/azure/sql-database/media/index/cli.svg'
+            text: Azure CLI
+            href: /azure/postgresql/quickstart-create-server-database-azure-cli
+  - title: Podrobné kurzy
     items:
-    - html: Návrh databáze&#58; <a href="/azure/postgresql/tutorial-design-database-using-azure-portal">Web Azure Portal</a> | <a href="/azure/postgresql/tutorial-design-database-using-azure-cli">Azure CLI</a>
-    - html: <a href="/azure/app-service/containers/tutorial-python-postgresql-app?toc=%2fazure%2fpostgresql%2ftoc.json">Vytvoření webové aplikace pomocí Pythonu a rozhraní příkazového řádku</a>
-    - html: <a href="/azure/postgresql/tutorial-monitor-and-tune">Monitorování a vyladění služby</a>
-- title: Získávání dovedností pomocí Microsoft Learn
-  items:
-  - type: list
-    style: cards
-    className: cardsFTitle
+      - type: paragraph
+        text: 'Naučte se:'
+      - type: list
+        style: ordered
+        items:
+          - html: 'Návrh databáze&#58; <a href="/azure/postgresql/tutorial-design-database-using-azure-portal">Web Azure Portal</a> | <a href="/azure/postgresql/tutorial-design-database-using-azure-cli">Azure CLI</a>'
+          - html: <a href="/azure/app-service/containers/tutorial-python-postgresql-app?toc=%2fazure%2fpostgresql%2ftoc.json">Vytvoření webové aplikace pomocí Pythonu a rozhraní příkazového řádku</a>
+          - html: <a href="/azure/postgresql/tutorial-monitor-and-tune">Monitorování a vyladění služby</a>
+  - title: Získávání dovedností pomocí Microsoft Learn
     items:
-    - title: Vytvoření serveru Azure Database for PostgreSQL
-      href: /learn/modules/create-azure-db-for-postgresql-server/
-      image:
-        src: /learn/achievements/create-azure-db-for-postgresql-server.svg
-        href: /learn/modules/create-azure-db-for-postgresql-server/
-  - type: paragraph
-    text: <a href="/learn/browse/?products=azure">Další interaktivní výuka...</a>
-- title: Ukázky
-  items:
-  - type: paragraph
-    text: Vyhledání skriptů pro správu běžných úkolů
-  - type: list
-    style: unordered
-    className: spaced noBullet
+      - type: list
+        style: cards
+        className: cardsFTitle
+        items:
+          - title: Vytvoření serveru Azure Database for PostgreSQL
+            href: /learn/modules/create-azure-db-for-postgresql-server/
+            image:
+              src: /learn/achievements/create-azure-db-for-postgresql-server.svg
+              href: /learn/modules/create-azure-db-for-postgresql-server/
+      - type: paragraph
+        text: <a href="/learn/browse/?products=azure">Další interaktivní výuka...</a>
+  - title: Ukázky
     items:
-    - html: <a href="/azure/postgresql/sample-scripts-azure-cli">Azure CLI</a>
-- title: Referenční informace
-  items:
-  - type: list
-    style: cards
-    className: cardsD
+      - type: paragraph
+        text: Vyhledání skriptů pro správu běžných úkolů
+      - type: list
+        style: unordered
+        className: spaced noBullet
+        items:
+          - html: <a href="/azure/postgresql/sample-scripts-azure-cli">Azure CLI</a>
+  - title: Referenční informace
     items:
-    - title: Příkazový řádek
-      html: <p><a href="/cli/azure/postgres">Azure CLI</a></p>
-    - title: REST
-      html: <p><a href="/rest/api/postgresql">REST API</a></p>
-    - title: Azure Resource Manager
-      html: <p><a href="/azure/templates/microsoft.dbforpostgresql/allversions">Šablony Resource Manageru</a></p>
+      - type: list
+        style: cards
+        className: cardsD
+        items:
+          - title: Příkazový řádek
+            html: <p><a href="/cli/azure/postgres">Azure CLI</a></p>
+          - title: REST
+            html: <p><a href="/rest/api/postgresql">REST API</a></p>
+          - title: Azure Resource Manager
+            html: <p><a href="/azure/templates/microsoft.dbforpostgresql/allversions">Šablony Resource Manageru</a></p>

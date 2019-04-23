@@ -1,15 +1,9 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 08426b9cb6dee2abd445f2e29eb4bf4d20a6e06d
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
-ms.translationtype: HT
-ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55475668"
 documentType: LandingData
 title: Dokumentace k virtuálním počítačům Azure pro datové vědy
 metadata:
   title: Dokumentace k virtuálním počítačům pro datové vědy – Azure
-  description: Naučíte se využívat virtuální počítač pro datové vědy, experimentální prostředí v cloudu Azure vytvořené speciálně pro účely datových věd. Obsahuje řadu oblíbených předinstalovaných nástrojů datové vědy a dalších funkcí a je předem nakonfigurovaná, abyste mohli hned začít sestavovat inteligentní aplikace pro pokročilou analýzu.
+  description: 'Naučíte se využívat virtuální počítač pro datové vědy, experimentální prostředí v cloudu Azure vytvořené speciálně pro účely datových věd. Obsahuje řadu oblíbených předinstalovaných nástrojů datové vědy a dalších funkcí a je předem nakonfigurovaná, abyste mohli hned začít sestavovat inteligentní aplikace pro pokročilou analýzu.'
   services: machine-learning
   author: gopitk
   manager: cgronlun
@@ -21,45 +15,45 @@ metadata:
   ms.date: 01/18/2018
   ms.author: gokuma
 abstract:
-  description: Virtuální počítače pro datové vědy a hloubkové učení jsou přizpůsobené image virtuálních počítačů v Azure jsou vybavené nástroji pro datové vědy, které slouží k sestavování inteligentních aplikací pro rozšířené analýzy.
+  description: 'Virtuální počítače pro datové vědy a hloubkové učení jsou přizpůsobené image virtuálních počítačů v Azure jsou vybavené nástroji pro datové vědy, které slouží k sestavování inteligentních aplikací pro rozšířené analýzy.'
 sections:
-- title: Zprovoznění během 5 minut
-  items:
-  - type: paragraph
-    text: 'Naučíte se nastavit virtuální počítač pro datové vědy založený na Windows nebo Linuxu:'
-  - type: list
-    style: unordered
+  - title: Zprovoznění během 5 minut
     items:
-    - html: <a href="provision-vm.md">Windows</a>
-    - html: <a href="linux-dsvm-intro.md">Linux CentOS</a>
-    - html: <a href="dsvm-ubuntu-intro.md">Linux Ubuntu</a>
-- title: Podrobné kurzy
-  items:
-  - type: paragraph
-    text: 'Naučte se zřizovat a používat virtuální počítače pro datové vědy:'
-  - type: list
-    style: ordered
+      - type: paragraph
+        text: 'Naučíte se nastavit virtuální počítač pro datové vědy založený na Windows nebo Linuxu:'
+      - type: list
+        style: unordered
+        items:
+          - html: <a href="provision-vm.md">Windows</a>
+          - html: <a href="linux-dsvm-intro.md">Linux CentOS</a>
+          - html: <a href="dsvm-ubuntu-intro.md">Linux Ubuntu</a>
+  - title: Podrobné kurzy
     items:
-    - html: <a href="provision-vm">Zřízení virtuálního počítače pro datové vědy s Windows</a>
-    - html: <a href="vm-do-ten-things">Použití virtuálního počítače pro datové vědy s Windows</a>
-    - html: <a href="linux-dsvm-intro">Zřízení virtuálního počítače pro datové vědy se systémem Linux CentOS</a>
-    - html: <a href="dsvm-ubuntu-intro">Zřízení virtuálního počítače pro datové vědy se systémem Linux Ubuntu</a>
-    - html: <a href="linux-dsvm-walkthrough">Použití virtuálního počítače pro datové vědy s Linuxem</a>
-- title: Další technologie Azure Machine Learning
-  items:
-  - type: paragraph
-    text: 'Další technologie dostupné ve službách Azure Machine Learning:'
-  - type: list
-    style: cards
-    className: cardsFTitle
+      - type: paragraph
+        text: 'Naučte se zřizovat a používat virtuální počítače pro datové vědy:'
+      - type: list
+        style: ordered
+        items:
+          - html: <a href="provision-vm">Zřízení virtuálního počítače pro datové vědy s Windows</a>
+          - html: <a href="vm-do-ten-things">Použití virtuálního počítače pro datové vědy s Windows</a>
+          - html: <a href="linux-dsvm-intro">Zřízení virtuálního počítače pro datové vědy se systémem Linux CentOS</a>
+          - html: <a href="dsvm-ubuntu-intro">Zřízení virtuálního počítače pro datové vědy se systémem Linux Ubuntu</a>
+          - html: <a href="linux-dsvm-walkthrough">Použití virtuálního počítače pro datové vědy s Linuxem</a>
+  - title: Další technologie Azure Machine Learning
     items:
-    - title: Služba Azure Machine Learning (Preview)
-      href: /azure/machine-learning/service/
-      image:
-        src: media/index/i_machine-learning.svg
-        href: /azure/machine-learning/service/
-    - title: Azure Machine Learning Studio
-      href: /azure/machine-learning/studio/
-      image:
-        src: media/index/machine-learning-studio.svg
-        href: /azure/machine-learning/studio/
+      - type: paragraph
+        text: 'Další technologie dostupné ve službách Azure Machine Learning:'
+      - type: list
+        style: cards
+        className: cardsFTitle
+        items:
+          - title: Služba Azure Machine Learning (Preview)
+            href: /azure/machine-learning/service/
+            image:
+              src: media/index/i_machine-learning.svg
+              href: /azure/machine-learning/service/
+          - title: Azure Machine Learning Studio
+            href: /azure/machine-learning/studio/
+            image:
+              src: media/index/machine-learning-studio.svg
+              href: /azure/machine-learning/studio/

@@ -1,63 +1,56 @@
-items:
 - name: Dokumentace k funkci SQL Server Stretch Database
   href: index.md
 - name: Přehled
   items:
-  - name: Co je Stretch Database?
-    href: /sql/sql-server/stretch-database/stretch-database
-  - name: Omezení a blokující problémy
-    href: /sql/sql-server/stretch-database/limitations-for-stretch-database
+    - name: Co je Stretch Database?
+      href: /sql/sql-server/stretch-database/stretch-database
+    - name: Omezení a blokující problémy
+      href: /sql/sql-server/stretch-database/limitations-for-stretch-database
 - name: Začínáme
   items:
-  - name: Identifikace databází a tabulek
-    href: /sql/sql-server/stretch-database/stretch-database-databases-and-tables-stretch-database-advisor
-  - name: Spuštění průvodce
-    href: /sql/sql-server/stretch-database/get-started-by-running-the-enable-database-for-stretch-wizard
+    - name: Identifikace databází a tabulek
+      href: /sql/sql-server/stretch-database/stretch-database-databases-and-tables-stretch-database-advisor
+    - name: Spuštění průvodce
+      href: /sql/sql-server/stretch-database/get-started-by-running-the-enable-database-for-stretch-wizard
 - name: Postup
   items:
-  - name: Povolení
-    items:
-    - name: Povolení databáze
-      href: /sql/sql-server/stretch-database/enable-stretch-database-for-a-database
-    - name: Povolení tabulky
-      href: /sql/sql-server/stretch-database/enable-stretch-database-for-a-table
-    - name: Výběr řádků pro migraci
-      href: /sql/sql-server/stretch-database/select-rows-to-migrate-by-using-a-filter-function-stretch-database
-  - name: Spravovat
-    items:
-    - name: Monitorování migrace dat
-      href: /sql/sql-server/stretch-database/monitor-and-troubleshoot-data-migration-stretch-database
-    - name: Pozastavení a obnovení migrace
-      href: /sql/sql-server/stretch-database/pause-and-resume-data-migration-stretch-database
-    - name: Správa a řešení potíží
-      href: /sql/sql-server/stretch-database/manage-and-troubleshoot-stretch-database
-    - name: Zálohování
-      href: /sql/sql-server/stretch-database/backup-stretch-enabled-databases-stretch-database
-    - name: Obnovení
-      href: /sql/sql-server/stretch-database/restore-stretch-enabled-databases-stretch-database
-    - name: Zakázání služby Stretch Database
-      href: /sql/sql-server/stretch-database/disable-stretch-database-and-bring-back-remote-data
+    - name: Povolení
+      items:
+        - name: Povolení databáze
+          href: /sql/sql-server/stretch-database/enable-stretch-database-for-a-database
+        - name: Povolení tabulky
+          href: /sql/sql-server/stretch-database/enable-stretch-database-for-a-table
+        - name: Výběr řádků pro migraci
+          href: /sql/sql-server/stretch-database/select-rows-to-migrate-by-using-a-filter-function-stretch-database
+    - name: Spravovat
+      items:
+        - name: Monitorování migrace dat
+          href: /sql/sql-server/stretch-database/monitor-and-troubleshoot-data-migration-stretch-database
+        - name: Pozastavení a obnovení migrace
+          href: /sql/sql-server/stretch-database/pause-and-resume-data-migration-stretch-database
+        - name: Správa a řešení potíží
+          href: /sql/sql-server/stretch-database/manage-and-troubleshoot-stretch-database
+        - name: Zálohování
+          href: /sql/sql-server/stretch-database/backup-stretch-enabled-databases-stretch-database
+        - name: Obnovení
+          href: /sql/sql-server/stretch-database/restore-stretch-enabled-databases-stretch-database
+        - name: Zakázání služby Stretch Database
+          href: /sql/sql-server/stretch-database/disable-stretch-database-and-bring-back-remote-data
 - name: Referenční informace
   items:
-  - name: Ukázky kódů
-    href: https://azure.microsoft.com/resources/samples/?service=sql-server-database
+    - name: Ukázky kódů
+      href: 'https://azure.microsoft.com/resources/samples/?service=sql-server-database'
 - name: Zdroje a prostředky
   items:
-  - name: Plány Azure do budoucna
-    href: https://azure.microsoft.com/roadmap/
-  - name: Blog
-    href: https://blogs.technet.microsoft.com/dataplatforminsider/tag/stretch-database/
-  - name: Ceny
-    href: https://azure.microsoft.com/pricing/details/sql-server-stretch-database/
-  - name: Cenová kalkulačka
-    href: https://azure.microsoft.com/pricing/calculator/
-  - name: Aktualizace služeb
-    href: https://azure.microsoft.com/updates/?product=sql-server-stretch-database
-  - name: Videa
-    href: https://azure.microsoft.com/documentation/videos/index/?services=sql-server-stretch-database
-ms.openlocfilehash: ba3a3cfe763f17e07dc4bcd0c3106acbc352577f
-ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
-ms.translationtype: HT
-ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58340655"
+    - name: Plány Azure do budoucna
+      href: 'https://azure.microsoft.com/roadmap/'
+    - name: Blog
+      href: 'https://blogs.technet.microsoft.com/dataplatforminsider/tag/stretch-database/'
+    - name: Ceny
+      href: 'https://azure.microsoft.com/pricing/details/sql-server-stretch-database/'
+    - name: Cenová kalkulačka
+      href: 'https://azure.microsoft.com/pricing/calculator/'
+    - name: Aktualizace služeb
+      href: 'https://azure.microsoft.com/updates/?product=sql-server-stretch-database'
+    - name: Videa
+      href: 'https://azure.microsoft.com/documentation/videos/index/?services=sql-server-stretch-database'

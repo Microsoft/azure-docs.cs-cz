@@ -1,142 +1,135 @@
-items:
 - name: Container Instances
   href: index.yml
 - name: Přehled
   items:
-  - name: Služba Azure Container Instances
-    href: container-instances-overview.md
+    - name: Služba Azure Container Instances
+      href: container-instances-overview.md
 - name: Šablony Rychlý start
-  items:
-  - name: Nasazení instance kontejneru – Rozhraní příkazového řádku
-    href: container-instances-quickstart.md
-  - name: Nasazení instance kontejneru – Portál
-    href: container-instances-quickstart-portal.md
-  - name: Nasazení instance kontejneru – PowerShell
-    href: container-instances-quickstart-powershell.md
   expanded: true
+  items:
+    - name: Nasazení instance kontejneru – Rozhraní příkazového řádku
+      href: container-instances-quickstart.md
+    - name: Nasazení instance kontejneru – Portál
+      href: container-instances-quickstart-portal.md
+    - name: Nasazení instance kontejneru – PowerShell
+      href: container-instances-quickstart-powershell.md
 - name: Kurzy
   items:
-  - name: Vytvoření a nasazení image kontejneru
-    items:
-    - name: 1. Vytvoření image kontejneru
-      href: container-instances-tutorial-prepare-app.md
-    - name: 2. Vytvoření registru kontejneru
-      href: container-instances-tutorial-prepare-acr.md
-    - name: 3. Nasazení aplikace
-      href: container-instances-tutorial-deploy-app.md
-  - name: Nasazení skupiny více kontejnerů
-    items:
-    - name: Nasazení skupiny kontejnerů – YAML
-      href: container-instances-multi-container-yaml.md
-    - name: Nasazení skupiny kontejnerů – Resource Manager
-      href: container-instances-multi-container-group.md
+    - name: Vytvoření a nasazení image kontejneru
+      items:
+        - name: 1. Vytvoření image kontejneru
+          href: container-instances-tutorial-prepare-app.md
+        - name: 2. Vytvoření registru kontejneru
+          href: container-instances-tutorial-prepare-acr.md
+        - name: 3. Nasazení aplikace
+          href: container-instances-tutorial-deploy-app.md
+    - name: Nasazení skupiny více kontejnerů
+      items:
+        - name: Nasazení skupiny kontejnerů – YAML
+          href: container-instances-multi-container-yaml.md
+        - name: Nasazení skupiny kontejnerů – Resource Manager
+          href: container-instances-multi-container-group.md
 - name: Ukázky
   items:
-  - name: Ukázky kódů
-    href: https://azure.microsoft.com/resources/samples/?sort=0&term=aci
-  - name: Šablony Resource Manageru
-    href: container-instances-samples-rm.md
+    - name: Ukázky kódů
+      href: 'https://azure.microsoft.com/resources/samples/?sort=0&term=aci'
+    - name: Šablony Resource Manageru
+      href: container-instances-samples-rm.md
 - name: Koncepty
   items:
-  - name: Skupiny kontejnerů
-    href: container-instances-container-groups.md
-  - name: Kvóty a omezení
-    href: container-instances-quotas.md
-  - name: Dostupnost v oblastech
-    href: container-instances-region-availability.md
-  - name: Vztah k orchestrátorům
-    href: container-instances-orchestrator-relationship.md
+    - name: Skupiny kontejnerů
+      href: container-instances-container-groups.md
+    - name: Kvóty a omezení
+      href: container-instances-quotas.md
+    - name: Dostupnost v oblastech
+      href: container-instances-region-availability.md
+    - name: Vztah k orchestrátorům
+      href: container-instances-orchestrator-relationship.md
 - name: Návody
   items:
-  - name: Nasazení
-    items:
-    - name: Nasazení ve virtuální síti (Preview)
-      href: container-instances-vnet.md
-    - name: Nasazení ze služby Azure Container Registry
-      href: container-instances-using-azure-container-registry.md
-  - name: Scénáře kontejnerů
-    items:
-    - name: Nastavení zásad restartování pro jednorázové úlohy
-      href: container-instances-restart-policy.md
-    - name: Nastavení proměnných prostředí (env)
-      href: container-instances-environment-variables.md
-    - name: Přepsání vstupního bodu kontejneru
-      href: container-instances-start-command.md
-    - name: Spuštění příkazu (exec)
-      href: container-instances-exec.md
-    - name: Spuštění úlohy sestavení Jenkinse
-      href: container-instances-jenkins.md
-    - name: Použití spravované identity (Preview)
-      href: container-instances-managed-identity.md
-    - name: Použití prostředků GPU (Preview)
-      href: container-instances-gpu.md
-  - name: Připojení datových svazků
-    items:
-    - name: Sdílená složka Azure
-      href: container-instances-volume-azure-files.md
-    - name: Tajný kód
-      href: container-instances-volume-secret.md
-    - name: Prázdný adresář
-      href: container-instances-volume-emptydir.md
-    - name: Naklonované úložiště Git
-      href: container-instances-volume-gitrepo.md
-  - name: Správa spuštěných kontejnerů
-    items:
-    - name: Konfigurace testů aktivity
-      href: container-instances-liveness-probe.md
-    - name: Zastavení a spuštění kontejnerů
-      href: container-instances-stop-start.md
-    - name: Aktualizace spuštěných kontejnerů
-      href: container-instances-update.md
-  - name: Monitorování a protokolování
-    items:
-    - name: Monitorování využití procesoru a paměti
-      href: container-instances-monitor.md
-    - name: Získání událostí a protokolů kontejneru
-      href: container-instances-get-logs.md
-    - name: Protokolování s využitím Azure Log Analytics
-      href: container-instances-log-analytics.md
-  - name: Řešení potíží
-    items:
-    - name: Řešení běžných potíží
-      href: container-instances-troubleshooting.md
+    - name: Nasazení
+      items:
+        - name: Nasazení ve virtuální síti (Preview)
+          href: container-instances-vnet.md
+        - name: Nasazení ze služby Azure Container Registry
+          href: container-instances-using-azure-container-registry.md
+    - name: Scénáře kontejnerů
+      items:
+        - name: Nastavení zásad restartování pro jednorázové úlohy
+          href: container-instances-restart-policy.md
+        - name: Nastavení proměnných prostředí (env)
+          href: container-instances-environment-variables.md
+        - name: Přepsání vstupního bodu kontejneru
+          href: container-instances-start-command.md
+        - name: Spuštění příkazu (exec)
+          href: container-instances-exec.md
+        - name: Spuštění úlohy sestavení Jenkinse
+          href: container-instances-jenkins.md
+        - name: Použití spravované identity (Preview)
+          href: container-instances-managed-identity.md
+        - name: Použití prostředků GPU (Preview)
+          href: container-instances-gpu.md
+    - name: Připojení datových svazků
+      items:
+        - name: Sdílená složka Azure
+          href: container-instances-volume-azure-files.md
+        - name: Tajný kód
+          href: container-instances-volume-secret.md
+        - name: Prázdný adresář
+          href: container-instances-volume-emptydir.md
+        - name: Naklonované úložiště Git
+          href: container-instances-volume-gitrepo.md
+    - name: Správa spuštěných kontejnerů
+      items:
+        - name: Konfigurace testů aktivity
+          href: container-instances-liveness-probe.md
+        - name: Zastavení a spuštění kontejnerů
+          href: container-instances-stop-start.md
+        - name: Aktualizace spuštěných kontejnerů
+          href: container-instances-update.md
+    - name: Monitorování a protokolování
+      items:
+        - name: Monitorování využití procesoru a paměti
+          href: container-instances-monitor.md
+        - name: Získání událostí a protokolů kontejneru
+          href: container-instances-get-logs.md
+        - name: Protokolování s využitím Azure Log Analytics
+          href: container-instances-log-analytics.md
+    - name: Řešení potíží
+      items:
+        - name: Řešení běžných potíží
+          href: container-instances-troubleshooting.md
 - name: Referenční informace
   items:
-  - name: Azure CLI
-    href: /cli/azure/container
-  - name: REST
-    href: /rest/api/container-instances
-  - name: PowerShell
-    href: /powershell/module/az.containerinstance
-  - name: .NET
-    href: /dotnet/api/overview/azure/containerinstance
-  - name: Python
-    href: /python/api/overview/azure/containerinstance
-  - name: Java
-    href: /java/api/overview/azure/containerinstance
-  - name: Node.js
-    href: /javascript/api/overview/azure/containerinstances
-  - name: Šablona Resource Manageru
-    href: /azure/templates/microsoft.containerinstance/containergroups
+    - name: Azure CLI
+      href: /cli/azure/container
+    - name: REST
+      href: /rest/api/container-instances
+    - name: PowerShell
+      href: /powershell/module/az.containerinstance
+    - name: .NET
+      href: /dotnet/api/overview/azure/containerinstance
+    - name: Python
+      href: /python/api/overview/azure/containerinstance
+    - name: Java
+      href: /java/api/overview/azure/containerinstance
+    - name: Node.js
+      href: /javascript/api/overview/azure/containerinstances
+    - name: Šablona Resource Manageru
+      href: /azure/templates/microsoft.containerinstance/containergroups
 - name: Zdroje a prostředky
   items:
-  - name: Získávání dovedností pomocí Microsoft Learn
-    href: /learn/browse/?products=azure-container-instances
-  - name: Dostupnost v oblastech
-    href: https://azure.microsoft.com/regions/services/
-  - name: Ceny
-    href: https://azure.microsoft.com/pricing/details/container-instances/
-  - name: Plán
-    href: https://azure.microsoft.com/roadmap/
-  - name: Poskytnutí zpětné vazby k produktu
-    href: https://feedback.azure.com/forums/602224-azure-container-instances
-  - name: Stack Overflow
-    href: https://stackoverflow.com/questions/tagged/azure-container-instances
-  - name: Videa
-    href: https://azure.microsoft.com/resources/videos/index/?services=container-instances&sort=newest
-ms.openlocfilehash: 5a95264c8fc909e58a2db0f423ded86225d5a71c
-ms.sourcegitcommit: 5f348bf7d6cf8e074576c73055e17d7036982ddb
-ms.translationtype: HT
-ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2019
-ms.locfileid: "59608414"
+    - name: Získávání dovedností pomocí Microsoft Learn
+      href: /learn/browse/?products=azure-container-instances
+    - name: Dostupnost v oblastech
+      href: 'https://azure.microsoft.com/regions/services/'
+    - name: Ceny
+      href: 'https://azure.microsoft.com/pricing/details/container-instances/'
+    - name: Plán
+      href: 'https://azure.microsoft.com/roadmap/'
+    - name: Poskytnutí zpětné vazby k produktu
+      href: 'https://feedback.azure.com/forums/602224-azure-container-instances'
+    - name: Stack Overflow
+      href: 'https://stackoverflow.com/questions/tagged/azure-container-instances'
+    - name: Videa
+      href: 'https://azure.microsoft.com/resources/videos/index/?services=container-instances&sort=newest'

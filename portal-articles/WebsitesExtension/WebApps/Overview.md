@@ -9,11 +9,11 @@ ms.topic: article
 ms.date: 04/27/2017
 ms.author: sewatson
 ms.openlocfilehash: be918ecef3a9fb346d9aa441bef9b4c3991009d6
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53606465"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60530860"
 ---
 # <a name="app-service-documentation"></a>Dokumentace ke službě App Service
 Azure App Service umožňuje vytvářet a hostovat webové aplikace v programovacím jazyce podle vašeho výběru, aniž by bylo potřeba zabývat se správou infrastruktury, jazykem nebo modulem runtime webové architektury. Nabízí automatické škálování a vysokou dostupnost, podporuje systémy Windows a Linux a umožňuje automatizované nasazení z Githubu, Azure DevOps Services nebo libovolného úložiště Git. Naučte se používat službu Azure App Service prostřednictvím našich šablon Rychlý start, kurzů a ukázek.
