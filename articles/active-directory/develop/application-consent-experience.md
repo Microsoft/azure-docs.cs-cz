@@ -17,11 +17,11 @@ ms.author: celested
 ms.reviewer: zachowd
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: a7de892143e1c69953cc60429ea0d24df194f0df
-ms.sourcegitcommit: 41015688dc94593fd9662a7f0ba0e72f044915d6
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/11/2019
-ms.locfileid: "59500477"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59795181"
 ---
 # <a name="understanding-azure-ad-application-consent-experiences"></a>Prostředí vyjádření souhlasu s aplikací Azure AD
 
@@ -50,7 +50,7 @@ Následující diagram a tabulka poskytují informace o stavebních bloků výzv
 | 2 | Název | Změny názvů založené na tom, jestli uživatelé projít tok vyjádření souhlasu uživatele nebo správce. V toku souhlasu uživatele název bude "Požadováno oprávnění" při v toku souhlasu správce názvu bude mít další řádek "Accept pro vaši organizaci". |
 | 3 | Logo aplikace | Tato image by měly pomoci uživatelům mají vizuální upozornění, jestli tato aplikace je aplikace určené pro přístup k. Tento obrázek pochází od vývojáře aplikací a vlastnictví tohoto obrázku není ověřený. |
 | 4 | App name (Název aplikace) | Tato hodnota by měla informovat uživatele, který aplikace žádá o přístup ke svým datům. Poznámka: Tento název je k dispozici vývojáři a vlastnictví tento název aplikace není ověřený. |
-| 5 | Publisher domain | Tato hodnota by měla poskytnout uživatelům s doménou, které mohou být možné vyhodnotit důvěryhodnost. Tato doména je poskytována vývojáři a ověřit vlastnictví domény vydavatele. |
+| 5 | Doména vydavatele | Tato hodnota by měla poskytnout uživatelům s doménou, které mohou být možné vyhodnotit důvěryhodnost. Tato doména je poskytována vývojáři a ověřit vlastnictví domény vydavatele. |
 | 6 | Oprávnění | Tento seznam obsahuje klientská aplikace požaduje oprávnění. Uživatelé by měla vždy posoudíte typy vašich oprávnění žádá chcete pochopit, jaká data aplikace klienta se oprávnění pro přístup k jejich jménem, pokud je přijmou. Jako vývojář aplikací je nejvhodnější pro vyžádání přístupu k oprávnění s nejnižšími oprávněními. |
 | 7 | Popis oprávnění | Tato hodnota je poskytována služba zveřejňující oprávnění. Chcete-li zobrazit popis oprávnění, musí přepnout na dvojitou šipku vedle oprávnění. |
 | 8 | Podmínky pro aplikaci | Tyto podmínky obsahují odkazy na podmínky služby a o ochraně osobních údajů příkazu aplikace. Vydavatel je zodpovědná za sbalování již nemají svá pravidla v podmínkách služby. Kromě toho je zodpovědná za zveřejnění způsobu použití a sdílení dat uživatele ve své prohlášení o ochraně osobních údajů vydavatele. Pokud vydavatel neobsahuje odkazy na tyto hodnoty pro víceklientské aplikace, bude uveden tučně upozornění na příkazovém řádku souhlas. |

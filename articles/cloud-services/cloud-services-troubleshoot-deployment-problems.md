@@ -16,11 +16,11 @@ ms.workload: tbd
 ms.date: 06/15/2018
 ms.author: v-six
 ms.openlocfilehash: cc2a0177525013736445db5fd1befa478dc9b9b8
-ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/04/2019
-ms.locfileid: "58916848"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59798566"
 ---
 # <a name="troubleshoot-cloud-service-deployment-problems"></a>Řešení problémů s nasazením cloudové služby
 Když nasazujete balíček aplikace cloudové služby do Azure, můžete získat informace o nasazení z **vlastnosti** podokně webu Azure Portal. Podrobné informace v tomto podokně můžete použít k vyřešení problémů s cloudovou službou a zadání těchto informací k podpoře Azure při otevírání novou žádost o podporu.

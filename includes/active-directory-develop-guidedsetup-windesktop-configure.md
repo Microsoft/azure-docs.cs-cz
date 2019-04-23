@@ -16,7 +16,7 @@ ms.author: jmprieur
 ms.custom: include file
 ms.openlocfilehash: 5eaee4f932c4e42f6fed3d839314346b3a93f360
 ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/18/2019
 ms.locfileid: "59799530"
