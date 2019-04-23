@@ -11,11 +11,11 @@ ms.date: 05/06/2018
 ms.author: davidmu
 ms.subservice: B2C
 ms.openlocfilehash: 62846fe744e7295f58902481400ce91770c916da
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59798097"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60406474"
 ---
 # <a name="manage-user-data-in-azure-active-directory-b2c"></a>Správa údajů uživatele ve službě Azure Active Directory B2C
 

@@ -15,11 +15,11 @@ ms.workload: NA
 ms.date: 11/02/2017
 ms.author: vturecek
 ms.openlocfilehash: 4682e47e664384a6869e1a74e3de6d9083db082b
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58669446"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60387543"
 ---
 # <a name="learn-about-the-differences-between-cloud-services-and-service-fabric-before-migrating-applications"></a>Další informace o rozdílech mezi cloudovými službami a Service Fabric před migrací aplikací.
 Microsoft Azure Service Fabric je platforma aplikací generace cloud pro vysoce škálovatelné, vysoce spolehlivých distribuovaných aplikací. Zavádí řadu nových funkcí pro balení, nasazování, upgradu a správy distribuovaných cloudových aplikací. 

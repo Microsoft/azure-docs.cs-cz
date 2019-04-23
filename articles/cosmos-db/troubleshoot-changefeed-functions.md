@@ -7,12 +7,12 @@ ms.date: 04/16/2019
 ms.author: maquaran
 ms.topic: troubleshooting
 ms.reviewer: sngun
-ms.openlocfilehash: 5416c576e6392b7c5714ef83f152453aeff8d964
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
-ms.translationtype: HT
+ms.openlocfilehash: 40d9aba4ff8fd78f6369729ddc16238e65bfc169
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59685768"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60404686"
 ---
 # <a name="diagnose-and-troubleshoot-issues-when-using-azure-cosmos-db-trigger-in-azure-functions"></a>Diagnostika a řešení problémů při používání aktivační událost Azure Cosmos DB ve službě Azure Functions
 
@@ -31,7 +31,7 @@ Tento článek vždy vrátíme se k Azure Functions V2 pokaždé, když modul ru
 
 Klíčové funkce balíček rozšíření je k poskytování podpory pro aktivační událost Azure Cosmos DB a vazby. Zahrnuje také [.NET SDK služby Azure Cosmos DB](sql-api-sdk-dotnet-core.md), což je užitečné, pokud budete chtít pracovat s Azure Cosmos DB prostřednictvím kódu programu bez použití aktivační události a vazby.
 
-Pokud položky chcete používat Azure Cosmos DB SDK, ujistěte se, že nepřidáte do svého projektu odkaz na jiný balíček NuGet. Místo toho **nechat přeložit pomocí balíček rozšíření Azure Functions odkazu sady SDK**.
+Pokud chcete používat Azure Cosmos DB SDK, ujistěte se, že nepřidáte do svého projektu odkaz na jiný balíček NuGet. Místo toho **nechat přeložit pomocí balíček rozšíření Azure Functions odkazu sady SDK**.
 
 Kromě toho pokud ručně vytvoříte svoji vlastní instanci služby [klienta služby Azure Cosmos DB SDK](./sql-api-sdk-dotnet-core.md), měli byste postupovat podle vzor pouze jedna instance klienta s [použitím Singleton vzor přístupu](../azure-functions/manage-connections.md#documentclient-code-example-c) . Tento proces se vyhnuli případným potížím soketu ve vašich operací.
 

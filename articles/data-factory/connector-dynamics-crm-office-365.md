@@ -13,11 +13,11 @@ ms.topic: conceptual
 ms.date: 11/28/2018
 ms.author: jingwang
 ms.openlocfilehash: 772b9b191a2e6464ff481ff6661308e00ef6033a
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59545429"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60535316"
 ---
 # <a name="copy-data-from-and-to-dynamics-365-common-data-service-or-dynamics-crm-by-using-azure-data-factory"></a>Kopírování dat z a do Dynamics 365 (Common Data Service) nebo Dynamics CRM pomocí služby Azure Data Factory
 
@@ -66,7 +66,7 @@ Následující vlastnosti jsou podporovány pro propojenou službu Dynamics.
 | serviceUri | Adresa URL služby vaší Dynamics instance, například `https://adfdynamics.crm.dynamics.com`. | Ano |
 | authenticationType. | Typ ověřování pro připojení k serveru Dynamics. Zadejte **"Office 365"** Dynamics online. | Ano |
 | uživatelské jméno | Zadejte uživatelské jméno pro připojení k Dynamics. | Ano |
-| heslo | Zadejte heslo pro uživatelský účet, který jste zadali pro uživatelské jméno. Označte toto pole jako SecureString bezpečně uložit ve službě Data Factory nebo [odkazovat tajného klíče do služby Azure Key Vault](store-credentials-in-key-vault.md). | Ano |
+| password | Zadejte heslo pro uživatelský účet, který jste zadali pro uživatelské jméno. Označte toto pole jako SecureString bezpečně uložit ve službě Data Factory nebo [odkazovat tajného klíče do služby Azure Key Vault](store-credentials-in-key-vault.md). | Ano |
 | connectVia | [Prostředí integration runtime](concepts-integration-runtime.md) se použije k připojení k úložišti. Pokud není zadán, použije výchozí prostředí Azure Integration Runtime. | Ne pro zdroj, Ano pro jímku Pokud zdroj propojené služby nemá prostředí integration runtime |
 
 >[!IMPORTANT]
@@ -114,7 +114,7 @@ Následující vlastnosti jsou podporovány pro propojenou službu Dynamics.
 | Název organizace | Název organizace Dynamics instance. | Ano |
 | authenticationType. | Typ ověřování pro připojení k serveru Dynamics. Zadejte **"Ifd"** pro Dynamics on-premises s IFD. | Ano |
 | uživatelské jméno | Zadejte uživatelské jméno pro připojení k Dynamics. | Ano |
-| heslo | Zadejte heslo pro uživatelský účet, který jste zadali pro uživatelské jméno. Můžete zvolit toto pole označení SecureString bezpečně uložit ve službě ADF nebo ukládání hesel ve službě Azure Key Vault a umožnit aktivity kopírování o přijetí změn z něj při kopírování dat – Další informace z [Store přihlašovacích údajů ve službě Key Vault](store-credentials-in-key-vault.md). | Ano |
+| password | Zadejte heslo pro uživatelský účet, který jste zadali pro uživatelské jméno. Můžete zvolit toto pole označení SecureString bezpečně uložit ve službě ADF nebo ukládání hesel ve službě Azure Key Vault a umožnit aktivity kopírování o přijetí změn z něj při kopírování dat – Další informace z [Store přihlašovacích údajů ve službě Key Vault](store-credentials-in-key-vault.md). | Ano |
 | connectVia | [Prostředí integration runtime](concepts-integration-runtime.md) se použije k připojení k úložišti. Pokud není zadán, použije výchozí prostředí Azure Integration Runtime. | Ne pro zdroj, Ano pro jímku |
 
 >[!IMPORTANT]
@@ -275,8 +275,8 @@ Ke zkopírování dat do Dynamics, nastavte typ jímky v aktivitě kopírování
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
 | type | Nastavte vlastnost typ jímky aktivity kopírování **DynamicsSink**. | Ano |
-| WriteBehavior | Chování zápisu operace.<br/>Povolená hodnota je **"Upsert"**. | Ano |
-| WriteBatchSize | Počet řádků dat zapsaných do Dynamics v každé dávce. | Ne (výchozí hodnota je 10) |
+| writeBehavior | Chování zápisu operace.<br/>Povolená hodnota je **"Upsert"**. | Ano |
+| writeBatchSize | Počet řádků dat zapsaných do Dynamics v každé dávce. | Ne (výchozí hodnota je 10) |
 | ignoreNullValues | Určuje, jestli se mají ignorovat během operace zápisu hodnot null ze vstupních dat (s výjimkou polí klíčů).<br/>Povolené hodnoty jsou **true** a **false**.<br>- **Hodnota TRUE**: Data ponechte beze změny po provedení operace upsert/aktualizace cílového objektu. Definovaná výchozí hodnota vložte, když provedete operaci vložení.<br/>- **False**: Pokud tak učiníte, operace upsert/aktualizace, aktualizace dat v cílového objektu na hodnotu NULL. Vložení hodnoty NULL, když provedete operaci vložení. | Ne (výchozí hodnota je false) |
 
 >[!NOTE]
@@ -329,15 +329,15 @@ Nakonfigurujte odpovídající typ dat Data Factory ve struktuře datové sady z
 | Datový typ Dynamics | Data Factory dočasné datový typ | Podporované jako zdroj | Podporované jako jímka |
 |:--- |:--- |:--- |:--- |
 | AttributeTypeCode.BigInt | Dlouhé | ✓ | ✓ |
-| AttributeTypeCode.Boolean | Logická hodnota | ✓ | ✓ |
+| AttributeTypeCode.Boolean | Boolean | ✓ | ✓ |
 | AttributeType.Customer | Guid | ✓ | | 
-| AttributeType.DateTime | Datum a čas | ✓ | ✓ |
+| AttributeType.DateTime | Datetime | ✓ | ✓ |
 | AttributeType.Decimal | Decimal | ✓ | ✓ |
 | AttributeType.Double | Double | ✓ | ✓ |
 | AttributeType.EntityName | String | ✓ | ✓ |
 | AttributeType.Integer | Int32 | ✓ | ✓ |
 | AttributeType.Lookup | Guid | ✓ | ✓ (s jedním cílem přidružené) |
-| AttributeType.ManagedProperty | Logická hodnota | ✓ | |
+| AttributeType.ManagedProperty | Boolean | ✓ | |
 | AttributeType.Memo | String | ✓ | ✓ |
 | AttributeType.Money | Decimal | ✓ | ✓ |
 | AttributeType.Owner | Guid | ✓ | |

@@ -17,11 +17,11 @@ ms.date: 02/23/2017
 ms.author: rickstercdn
 ms.custom: mvc
 ms.openlocfilehash: 2f63bbc444367afdad32615d0f6132e8986a6160
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56670345"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60505704"
 ---
 # <a name="quick-create-a-virtual-machine-with-the-azure-cli"></a>Rychlé vytvoření virtuálního počítače pomocí Azure CLI
 

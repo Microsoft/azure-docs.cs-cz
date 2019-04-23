@@ -16,11 +16,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 06/15/2017
 ms.openlocfilehash: 727379edb60756ca8cb3e5ebdc29cd38858945e4
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57857551"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60345595"
 ---
 # <a name="enable-logging-for-azure-machine-learning-studio-web-services"></a>Povolení protokolování pro webové služby Azure Machine Learning Studio
 Tento dokument obsahuje informace o možnosti protokolování webových služeb Machine Learning Studio. Protokolování poskytuje další informace, jenom číslo chyby a zprávy, které vám můžou pomoct vyřešit vaše volání rozhraní API pro Machine Learning Studio.  

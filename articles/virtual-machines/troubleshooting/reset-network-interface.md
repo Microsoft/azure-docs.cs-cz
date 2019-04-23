@@ -13,11 +13,11 @@ ms.topic: troubleshooting
 ms.date: 11/16/2018
 ms.author: genli
 ms.openlocfilehash: 3a8e005f8678deef9fc4aebd2d620619fe6074bc
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55982875"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60307286"
 ---
 # <a name="how-to-reset-network-interface-for-azure-windows-vm"></a>Resetování síťové rozhraní pro virtuální počítač Windows Azure 
 

@@ -1,5 +1,5 @@
 ---
-title: Rozpoznat tištěné, rukou psaný text – pro počítačové zpracování obrazu
+title: Rozpoznání tisk/rukou textu pro počítačové zpracování obrazu
 titleSuffix: Azure Cognitive Services
 description: Koncepty související s uznání tištěné a rukou psaný text v obrázků s využitím rozhraní API pro počítačové zpracování obrazu.
 services: cognitive-services
@@ -8,19 +8,19 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: conceptual
-ms.date: 02/19/2019
+ms.date: 04/17/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 9bb574fcb9782aad41ea0fd276b8addee19caf01
-ms.sourcegitcommit: 89b5e63945d0c325c1bf9e70ba3d9be6888da681
+ms.openlocfilehash: f7fd13b0b6df0b07543216e3c612520e528c1176
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/08/2019
-ms.locfileid: "57588971"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60367999"
 ---
 # <a name="recognize-printed-and-handwritten-text"></a>Rozpoznávání tištěného a ručně psaného textu
 
-Počítačové zpracování obrazu poskytuje několik služeb, které detekovat a extrahovat tištěné nebo rukou psaný text, který se zobrazí v obrázcích. To je užitečné v širokou škálu scénářů, jako je zapisování, zdravotnickými záznamy, zabezpečení a bankovnictví. Následující tři části Podrobnosti o třech různých rozpoznávání textu rozhraní API, každý optimalizovaná pro použití v odlišných situacích.
+Počítačové zpracování obrazu poskytuje několik služeb, které detekovat a extrahovat tištěné nebo rukou psaný text, který se zobrazí v obrázcích. To je užitečné v širokou škálu scénářů, jako je poznámek, zdravotnickými záznamy, zabezpečení a bankovnictví. Následující tři části Podrobnosti o třech různých rozpoznávání textu rozhraní API, každý optimalizovaná pro použití v odlišných situacích.
 
 ## <a name="read-api"></a>Rozhraní API pro čtení
 
@@ -45,13 +45,11 @@ Pokud používáte předplatné bezplatné vrstvy, rozhraní API pro čtení zpr
 
 ## <a name="ocr-optical-character-recognition-api"></a>OCR (optické rozpoznávání znaků) rozhraní API
 
-Rozhraní API pro počítačové zpracování obrazu optické rozpoznávání znaků (OCR) je podobný rozhraní API pro čtení, ale je provedena synchronně a není optimalizovaná pro velké dokumenty. Používá starší model rozpoznávání ale pracuje s více jazyků.
-
-OCR podporuje 25 jazycích: Arabské, čínština (zjednodušená), Čínské tradiční čínština, čeština, dánština, holandština, angličtina, finština, francouzština, němčina, řečtina, maďarština, italština, japonština, korejština, norština, polština, portugalština, rumunština, ruština, srbština (cyrilice a latinky), slovenština, španělština, Švédština a turečtina. OCR automaticky zjišťuje jazyk zjištěné textu.
+Rozhraní API pro počítačové zpracování obrazu optické rozpoznávání znaků (OCR) je podobný rozhraní API pro čtení, ale je provedena synchronně a není optimalizovaná pro velké dokumenty. Používá starší model rozpoznávání ale pracuje s více jazyky; Zobrazit [jazykovou podporu](language-support.md#text-recognition) úplný seznam podporovaných jazyků.
 
 V případě potřeby OCR opravuje otočení rozpoznaný text tak, že vrací rotačních posun ve stupních, o osy vodorovný obrázek. OCR také poskytuje souřadnice rámec jednotlivých slov, jak je znázorněno na následujícím obrázku.
 
-![Diagram znázorňující střídajících obrázek a text probíhá čtení a vymezeny](./Images/vision-overview-ocr.png)
+![Obrázek se otočí a jeho textu se čtení a vymezeny](./Images/vision-overview-ocr.png)
 
 Zobrazit [OCR referenční dokumenty](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fc) Další informace.
 

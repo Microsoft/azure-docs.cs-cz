@@ -16,11 +16,11 @@ ms.date: 12/03/2018
 ms.author: asnegi
 ms.custom: mvc, devcenter
 ms.openlocfilehash: b5e4ad30a65b25140cfb2c80dd15d8cd28fb827b
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57850849"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60419216"
 ---
 # <a name="mount-highly-available-service-fabric-reliable-disk-based-volume-in-a-service-fabric-mesh-application"></a>Připojit svazek s vysokou dostupností Service Fabric Reliable založené na disku v aplikaci Service Fabric mřížky 
 Běžnou metodu zachování stavu s využitím kontejnerové aplikace je použití vzdáleného úložiště, jako je Azure File Storage nebo databáze, jako je Azure Cosmos DB. Tím se spojují významné pro čtení a zápisu latence sítě do vzdáleného úložiště.

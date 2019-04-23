@@ -1,6 +1,6 @@
 ---
-title: Stream protokolů služby Azure Active Directory do Azure monitoru protokolů (preview) | Dokumentace Microsoftu
-description: Zjistěte, jak integrace protokolů Azure Active Directory s Azure Monitor protokoly (preview)
+title: Stream protokolů služby Azure Active Directory do protokolů Azure Monitor | Dokumentace Microsoftu
+description: Zjistěte, jak integrace protokolů Azure Active Directory s protokoly Azure monitoru
 services: active-directory
 documentationcenter: ''
 author: MarkusVi
@@ -13,18 +13,20 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
-ms.date: 11/13/2018
+ms.date: 04/18/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 056a529101ffc39170ea057832bcd50b283505be
-ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
+ms.openlocfilehash: 213fb6e73ae2fc4314320d0e3e593632d8eb7f85
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58436265"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60437303"
 ---
-# <a name="integrate-azure-ad-logs-with-azure-monitor-logs-preview"></a>Integrace protokolů Azure AD s protokoly Azure monitoru (preview)
+# <a name="integrate-azure-ad-logs-with-azure-monitor-logs"></a>Integrace protokolů Azure AD s protokoly Azure monitoru
+
+[!INCLUDE [azure-monitor-log-analytics-rebrand](../../../includes/azure-monitor-log-analytics-rebrand.md)]
 
 Protokoly služby Azure Monitor vám umožní k dotazování dat. Chcete-li najít konkrétní události, analýze trendů a provádět korelaci v různých zdrojích dat. Díky integraci služby Azure AD protokoly aktivit Azure Monitor protokoly, teď můžete provádět úkoly, jako je:
 
@@ -37,8 +39,6 @@ Toto video z relace Ignite ukazuje výhody použití protokoly Azure monitoru pr
 > [!VIDEO https://www.youtube.com/embed/MP5IaCTwkQg?start=1894]
 
 V tomto článku se dozvíte, jak integrovat protokoly služby Azure Active Directory (Azure AD) pomocí Azure monitoru.
-
-[!INCLUDE [azure-monitor-log-analytics-rebrand](../../../includes/azure-monitor-log-analytics-rebrand.md)]
 
 ## <a name="supported-reports"></a>Podporované sestavy
 
@@ -60,7 +60,7 @@ Pokud chcete používat tuto funkci, potřebujete tyto položky:
 * Uživatele, který je *globálním správcem* nebo *správcem zabezpečení* pro tohoto tenanta Azure AD.
 * Pracovní prostor Log Analytics ve vašem předplatném Azure. Zjistěte, jak [vytvořit pracovní prostor Log Analytics](https://docs.microsoft.com/azure/log-analytics/log-analytics-quick-create-workspace).
 
-## <a name="send-logs-to-azure-monitor-logs"></a>Odeslání protokolů s protokoly Azure monitoru
+## <a name="send-logs-to-azure-monitor"></a>Odeslání protokolů do Azure monitoru
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com). 
 
@@ -80,7 +80,7 @@ Pokud chcete používat tuto funkci, potřebujete tyto položky:
 
 7. Po přibližně 15 minut ověřte, že události se streamují do pracovního prostoru Log Analytics.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 * [Analýza služby Azure AD protokolů aktivit se protokoly Azure monitoru](howto-analyze-activity-logs-log-analytics.md)
 * [Nainstalovat a používat zobrazení log analytics pro Azure Active Directory](howto-install-use-log-analytics-views.md)

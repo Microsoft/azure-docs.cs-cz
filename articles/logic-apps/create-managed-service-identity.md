@@ -10,11 +10,11 @@ ms.suite: integration
 ms.topic: article
 ms.date: 03/29/2019
 ms.openlocfilehash: 8445b67fa049116d93f3710ff108f904ca7ecd77
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59010545"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60428069"
 ---
 # <a name="authenticate-and-access-resources-with-managed-identities-in-azure-logic-apps"></a>Ověřování a přístup k prostředkům pomocí spravované identity v Azure Logic Apps
 
@@ -59,7 +59,7 @@ Chcete-li povolit systém přiřadil spravovanou identitu pro vaši aplikaci log
 
    ![Identifikátory GUID pro ID objektu](./media/create-managed-service-identity/object-id.png)
 
-   | Vlastnost | Hodnota | Popis | 
+   | Vlastnost | Value | Popis | 
    |----------|-------|-------------| 
    | **ID objektu** | <*identity-resource-ID*> | Globálně jedinečný identifikátor (GUID), který představuje systém přiřadil spravované identity pro vaše aplikace logiky v tenantovi Azure AD | 
    ||| 
@@ -111,7 +111,7 @@ Když Azure vytvářet aplikace logiky, definice pracovního postupu vaší apli
 }
 ```
 
-| Vlastnost | Hodnota | Popis | 
+| Vlastnost | Value | Popis | 
 |----------|-------|-------------|
 | **principalId** | <*principal-ID*> | Globálně jedinečný identifikátor (GUID), který představuje aplikace logiky v tenantovi Azure AD a někdy se zobrazí jako "ID objektu" nebo `objectID` | 
 | **ID Tenanta** | <*Azure-AD-tenant-ID*> | Globálně jedinečný identifikátor (GUID), který představuje tenanta Azure AD, kde aplikace logiky je teď členem. Instanční objekt v tenantovi Azure AD má stejný název jako instanci aplikace logiky. | 

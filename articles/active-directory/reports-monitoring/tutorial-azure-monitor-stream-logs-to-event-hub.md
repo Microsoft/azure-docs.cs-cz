@@ -1,6 +1,6 @@
 ---
-title: Kurz – Streamování protokolů Azure Active Directory do centra událostí Azure (Preview) | Microsoft Docs
-description: Zjistěte, jak nastavit službu Azure Diagnostics, aby předávala protokoly Azure Active Directory do centra událostí (Preview)
+title: Kurz – Stream Azure Active Directory protokolů do centra událostí Azure | Dokumentace Microsoftu
+description: Zjistěte, jak nastavit Azure Diagnostics tak, aby nabízel protokoly služby Azure Active Directory do centra událostí
 services: active-directory
 documentationcenter: ''
 author: MarkusVi
@@ -13,18 +13,18 @@ ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
-ms.date: 11/13/2018
+ms.date: 04/18/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e85a3c43054aeb758eb1e0da9ce1086bfa653180
-ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
+ms.openlocfilehash: 906da7ac6b0086e4efca7c38171668a08f687d19
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58436927"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60437213"
 ---
-# <a name="tutorial-stream-azure-active-directory-logs-to-an-azure-event-hub-preview"></a>Kurz: Stream protokolů služby Azure Active Directory do centra událostí Azure (preview)
+# <a name="tutorial-stream-azure-active-directory-logs-to-an-azure-event-hub"></a>Kurz: Stream protokolů služby Azure Active Directory do centra událostí Azure
 
 V tomto kurzu se dozvíte, jak nastavit nastavení diagnostiky Azure Monitor k Azure Active Directory (Azure AD) streamování protokolů do služby Azure event hub. Tento mechanismus můžete použít k integraci svých protokolů s nástroji pro správu akcí a informací o zabezpečení (SIEM) třetích stran, jako je Splunk nebo QRadar.
 

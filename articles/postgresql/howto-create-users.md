@@ -7,11 +7,11 @@ ms.service: postgresql
 ms.topic: conceptual
 ms.date: 10/16/2018
 ms.openlocfilehash: 33c107c46b314136fa3d43f8e7881e096afa374c
-ms.sourcegitcommit: 87bd7bf35c469f84d6ca6599ac3f5ea5545159c9
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58351078"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60422266"
 ---
 # <a name="create-users-in-azure-database-for-postgresql-server"></a>Vytvoření uživatelů ve službě Azure Database pro PostgreSQL server 
 Tento článek popisuje, jak vytvořit uživatele v serveru Azure Database for PostgreSQL.

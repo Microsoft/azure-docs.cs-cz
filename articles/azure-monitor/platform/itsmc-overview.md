@@ -14,11 +14,11 @@ ms.topic: conceptual
 ms.date: 05/24/2018
 ms.author: v-jysur
 ms.openlocfilehash: abbd26779cefaf52c6f2247a5d27db25f280c930
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58118046"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60395718"
 ---
 # <a name="connect-azure-to-itsm-tools-using-it-service-management-connector"></a>Připojení Azure k nástrojům ITSM pomocí IT Service Management Connector
 
@@ -192,14 +192,14 @@ ServiceDeskWorkItemType_s="Incident"
 - Uzavřel
 - Zdroj
 - Přiřazené k
-- Kategorie
+- Category
 - Název
 - Popis
 - Datum vytvoření
 - Datum uzavření
 - Datum vyřešení
 - Datum poslední změny
-- Počítač
+- Computer
 
 
 **Pracovní položky:** **Žádosti o změnu**
@@ -215,7 +215,7 @@ ServiceDeskWorkItemType_s="ChangeRequest"
 - Přiřazené k
 - Název
 - Type
-- Kategorie
+- Category
 - Stav
 - Eskalace
 - Konflikt stavu
@@ -233,7 +233,7 @@ ServiceDeskWorkItemType_s="ChangeRequest"
 - Datum zahájení práce
 - Datum ukončení práce
 - Popis
-- Počítač
+- Computer
 
 ## <a name="output-data-for-a-servicenow-incident"></a>Výstupní data pro ServiceNow incident
 
@@ -249,13 +249,13 @@ ServiceDeskWorkItemType_s="ChangeRequest"
 | ClosedBy_s  | Uzavřel |
 | Source_s| Typ kontaktu |
 | AssignedTo_s | Přiřazeno  |
-| Category_s | Kategorie |
+| Category_s | Category |
 | Title_s|  Krátký popis |
 | Description_s|  Poznámky |
 | CreatedDate_t|  Otevřeno |
 | ClosedDate_t| Uzavřeno|
 | ResolvedDate_t|Vyřešeno|
-| Počítač  | Položky konfigurace |
+| Computer  | Položky konfigurace |
 
 ## <a name="output-data-for-a-servicenow-change-request"></a>Žádost o změnu výstupní data pro ServiceNow
 
@@ -267,7 +267,7 @@ ServiceDeskWorkItemType_s="ChangeRequest"
 | AssignedTo_s | Přiřazeno  |
 | Title_s|  Krátký popis |
 | Type_s|  Type |
-| Category_s|  Kategorie |
+| Category_s|  Category |
 | CRState_s|  Stav|
 | Urgency_s|  Naléhavost |
 | Priority_s| Priorita|
@@ -280,7 +280,7 @@ ServiceDeskWorkItemType_s="ChangeRequest"
 | WorkStartDate_t  | Skutečné počáteční datum |
 | WorkEndDate_t | Skutečné koncové datum|
 | Description_s | Popis |
-| Počítač  | Položky konfigurace |
+| Computer  | Položky konfigurace |
 
 
 ## <a name="troubleshoot-itsm-connections"></a>Řešení potíží s připojení ITSM

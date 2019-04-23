@@ -16,11 +16,11 @@ ms.topic: conceptual
 ms.date: 10/26/2017
 ms.author: ergreenl
 ms.openlocfilehash: d4f50ea89f2623d387fb77acb09e609def547468
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55178932"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60359428"
 ---
 # <a name="choose-between-azure-active-directory-join-and-azure-active-directory-domain-services"></a>Výběr mezi připojení k Azure Active Directory a Azure Active Directory Domain Services
 Tento článek popisuje rozdíly mezi připojení ke službě Azure Active Directory (AD) a Azure AD Domain Services a pomůže vám zvolit založené na případy použití.

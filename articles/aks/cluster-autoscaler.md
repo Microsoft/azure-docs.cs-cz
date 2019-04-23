@@ -8,11 +8,11 @@ ms.topic: article
 ms.date: 01/29/2019
 ms.author: iainfou
 ms.openlocfilehash: d8e095303161002d10914ca7c3213ac0c6894e5d
-ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58444030"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60467119"
 ---
 # <a name="preview---automatically-scale-a-cluster-to-meet-application-demands-on-azure-kubernetes-service-aks"></a>Ve verzi Preview – automatické škálování clusteru, které splňují požadavky aplikace ve službě Azure Kubernetes Service (AKS)
 
@@ -25,7 +25,7 @@ V tomto článku se dozvíte, jak povolit a spravovat automatického škálován
 >
 > Pokud narazíte na problémy s funkcemi ve verzi preview, [otevřete problém v úložišti Githubu AKS] [ aks-github] s názvem funkce ve verzi preview v název chyby.
 
-## <a name="before-you-begin"></a>Před zahájením
+## <a name="before-you-begin"></a>Než začnete
 
 Tento článek vyžaduje použití Azure CLI verze 2.0.55 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI][azure-cli-install].
 

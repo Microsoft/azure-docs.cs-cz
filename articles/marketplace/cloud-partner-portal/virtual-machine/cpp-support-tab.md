@@ -15,15 +15,15 @@ ms.topic: article
 ms.date: 10/19/2018
 ms.author: pbutlerm
 ms.openlocfilehash: 35ac9d0c4b0188724c91cdcf4f33b645dd92e98a
-ms.sourcegitcommit: 17633e545a3d03018d3a218ae6a3e4338a92450d
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2018
-ms.locfileid: "49639715"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60343205"
 ---
 # <a name="virtual-machine-support-tab"></a>Kartu Podpora virtuálního počítače
 
-**Podporují** karty **nová nabídka** stránce můžete zadat uživatele a technické podpory prostředků pro vaši nabídku.  Je rozdělené do tří oblastí: **Engineering**, **zákaznickou podporu**, a **Support URLs**.
+**Podporují** karty **nová nabídka** stránce můžete zadat uživatele a technické podpory prostředků pro vaši nabídku.  Je rozdělené do tří oblastí: **Technické**, **zákaznickou podporu**, a **podporují adresy URL**.
 
 ![Podpora karty ve formuláři nová nabídka pro virtuální počítače](./media/publishvm_012.png)
 
@@ -41,7 +41,7 @@ Kde:
 | **Telefon**                 | Telefonní číslo pro zákaznickou podporu                                            |
 | *Podporovat adresy URL*  | Podpora lokality, které společnost Microsoft použije, když vaši zákazníci otevřít lístky podpory |
 | **Veřejné Azure**          | Adresa URL webu podpory veřejný internet                                         |
-| **Cloud Azure Government**| Adresa URL webu podpory cloud government                                        |
+| **Azure Government Cloud**| Adresa URL webu podpory cloud government                                        |
 |  |  |
 
 

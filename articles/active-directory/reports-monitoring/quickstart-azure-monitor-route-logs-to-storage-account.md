@@ -1,6 +1,6 @@
 ---
-title: Kurz – Azure Active Directory archivu protokoly do účtu služby storage (preview) | Dokumentace Microsoftu
-description: Zjistěte, jak nastavit službu Azure Diagnostics, aby předávala protokoly Azure Active Directory do účtu úložiště (Preview)
+title: Kurz – protokoluje archivu Azure Active Directory do účtu úložiště | Dokumentace Microsoftu
+description: Zjistěte, jak nastavit Azure Diagnostics tak, aby nabízel protokoly služby Azure Active Directory do účtu úložiště
 services: active-directory
 documentationcenter: ''
 author: MarkusVi
@@ -13,18 +13,18 @@ ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
-ms.date: 11/13/2018
+ms.date: 04/18/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6d34b41e780466d9ab734b9dbd0e58016dba7b10
-ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
+ms.openlocfilehash: 0198fe1ce61c8f78e315d1166a7ea03aae20d592
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58434717"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60437515"
 ---
-# <a name="tutorial-archive-azure-ad-logs-to-an-azure-storage-account-preview"></a>Kurz: Archivovat protokoly služby Azure AD do účtu služby Azure storage (preview)
+# <a name="tutorial-archive-azure-ad-logs-to-an-azure-storage-account"></a>Kurz: Archivovat protokoly služby Azure AD pro účet úložiště Azure
 
 V tomto kurzu se dozvíte, jak nastavit diagnostiku ve službě Azure Monitor na směrování protokolů Azure Active Directory (Azure AD) do účtu úložiště Azure.
 

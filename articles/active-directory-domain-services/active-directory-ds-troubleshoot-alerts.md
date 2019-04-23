@@ -16,11 +16,11 @@ ms.topic: article
 ms.date: 11/02/2018
 ms.author: ergreenl
 ms.openlocfilehash: 7d99f5a5d027c825fa1145328bb9576229ce39b4
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58121991"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60416513"
 ---
 # <a name="azure-ad-domain-services---troubleshoot-alerts"></a>Azure AD Domain Services – řešení výstrah
 Tento článek obsahuje Průvodce řešením potíží pro všechny výstrahy, které mohou nastat ve vaší spravované doméně.

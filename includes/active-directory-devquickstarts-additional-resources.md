@@ -15,13 +15,13 @@ ms.date: 10/04/2018
 ms.author: celested
 ms.custom: include file
 ms.openlocfilehash: 6738f8b05c31b87a0cd244c91126479e9a637e88
-ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48814086"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60454823"
 ---
-## <a name="additional-resources"></a>Další zdroje informací:
+## <a name="additional-resources"></a>Další materiály
 
 * [Dokumentace ke službě Microsoft identity platform (Azure Active Directory pro vývojáře)](../articles/active-directory/develop/index.yml)
 * [Ukázky Azure AD na GitHubu](https://github.com/Azure-Samples/?utf8=%E2%9C%93&query=active-directory)

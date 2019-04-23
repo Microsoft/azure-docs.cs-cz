@@ -15,11 +15,11 @@ ms.topic: conceptual
 ms.date: 09/14/2018
 ms.author: pbutlerm
 ms.openlocfilehash: ec7fc3a7877cf0bffac0043a74c34d6f0f04826b
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48809539"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60362369"
 ---
 <a name="seller-insights-faq"></a>Prodejce Insights – nejčastější dotazy
 ===================
@@ -36,7 +36,7 @@ Definice metriky hodnot v souboru transakcí najdete v článku [definice Insigh
 <a name="see-customer-details-of-transactions-for-which-ive-been-paid"></a>Viz podrobnosti o zákazníkovi transakcí, pro které jste byla zaplacena mi
 -------------------------------------------------------------
 
-Po stažení transakcí z modulu výběr, vyhledejte sloupec s názvem **výběr stav**a použijte filtr, aby se zobrazily pouze hodnotu "Paid na více instancí." Tyto sloupce se zobrazí podrobnosti o zákazníkovi obsahující: **název společnosti**, **zákaznických e-mailů**, **zemi zákazníka**, **stav odběratele**, a **poštovní směrovací číslo zákazníka**.
+Po stažení transakcí z modulu výběr, vyhledejte sloupec s názvem **výběr stav**a použijte filtr, aby se zobrazily pouze hodnotu "Paid na více instancí." Tyto sloupce se zobrazí podrobnosti o zákazníkovi obsahující: **Název společnosti**, **zákaznických e-mailů**, **zemi zákazníka**, **stav odběratele**, a **poštovní směrovací číslo zákazníka**.
 
 
 <a name="calculate-my-open-accounts-receivable"></a>Vypočítat Moje otevřít pohledávek
@@ -48,7 +48,7 @@ Po stažení transakcí z modulu výběr, vyhledejte sloupec s názvem **výběr
 <a name="calculate-revenue-by-customer-usage-period"></a>Vypočítat výnosy podle: období využití zákazníka
 ------------------------------------------
 
-Po stažení transakcí z modulu výběr, vyhledejte sloupec s názvem **stav transakce**a hodnota "Paid" filtru.   Pro každou transakci uvedený, sloupec s názvem **výběr částka (PC)** představuje velikost byly placené.  Pro odhad doby využití asociovaný s transakcí, použít sloupec **datum poplatku**, což je aproximace posledního dne spotřeby pro období, na kterou se vztahuje transakci.
+Po stažení transakcí z modulu výběr, vyhledejte sloupec s názvem **stav transakce**a hodnota "Paid" filtru.   Pro každou transakci uvedený, sloupec s názvem **výběr částka (PC)** představuje velikost byly placené.  Pro odhad doby využití asociovaný s transakcí, použít sloupec **datum poplatku**, což je aproximace posledního dne spotřeby pro období, na kterou se vztahuje transakci.
 
 
 <a name="calculate-your-bad-debt"></a>Vypočítat nedobytné pohledávky

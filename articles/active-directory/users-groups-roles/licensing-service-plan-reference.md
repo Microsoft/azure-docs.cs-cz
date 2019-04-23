@@ -17,11 +17,11 @@ ms.reviewer: ajayanti1
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e90c4e1f39deffea8a7dd7b2c0dbfdcf5e0b3555
-ms.sourcegitcommit: 5f348bf7d6cf8e074576c73055e17d7036982ddb
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2019
-ms.locfileid: "59609502"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60469366"
 ---
 # <a name="product-names-and-service-plan-identifiers-for-licensing"></a>Názvy produktů a identifikátory plánu služby pro licencování
 

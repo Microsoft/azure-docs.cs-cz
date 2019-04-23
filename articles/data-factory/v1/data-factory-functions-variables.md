@@ -14,11 +14,11 @@ ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
 ms.openlocfilehash: 1d1c9ef5ba355f1944a362bf0e6f5d7ba91a700a
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59523932"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60486511"
 ---
 # <a name="azure-data-factory---functions-and-system-variables"></a>Azure Data Factory – funkce a systémové proměnné
 > [!NOTE]
@@ -78,11 +78,11 @@ V tématu [vlastní data a řetězce formátu časových](https://msdn.microsoft
 ### <a name="functions"></a>Functions
 V následujících tabulkách jsou uvedeny všechny funkce v Azure Data Factory:
 
-| Kategorie | Funkce | Parametry | Popis |
+| Category | Funkce | Parametry | Popis |
 | --- | --- | --- | --- |
 | Čas |AddHours(X,Y) |X: DateTime <br/><br/>Y: int |Přidá do okamžiku X Y hodin. <br/><br/>Příklad: `9/5/2013 12:00:00 PM + 2 hours = 9/5/2013 2:00:00 PM` |
 | Čas |AddMinutes(X,Y) |X: DateTime <br/><br/>Y: int |Přidá Y minut X.<br/><br/>Příklad: `9/15/2013 12: 00:00 PM + 15 minutes = 9/15/2013 12: 15:00 PM` |
-| Čas |StartOfHour(X) |X: Datum a čas |Získá počáteční čas pro hodinu představovanou komponentu hodin hodnoty X. <br/><br/>Příklad: `StartOfHour of 9/15/2013 05: 10:23 PM is 9/15/2013 05: 00:00 PM` |
+| Čas |StartOfHour(X) |X: Datetime |Získá počáteční čas pro hodinu představovanou komponentu hodin hodnoty X. <br/><br/>Příklad: `StartOfHour of 9/15/2013 05: 10:23 PM is 9/15/2013 05: 00:00 PM` |
 | Datum |AddDays(X,Y) |X: DateTime<br/><br/>Y: int |Přidá Y dní X. <br/><br/>Příklad: 9/15/2013 12:00:00 PM + 2 dnů = 9/17/2013 12:00:00 PM.<br/><br/>Lze odečíst dny příliš zadáním Y jako záporné číslo.<br/><br/>Příklad: `9/15/2013 12:00:00 PM - 2 days = 9/13/2013 12:00:00 PM`. |
 | Datum |AddMonths(X,Y) |X: DateTime<br/><br/>Y: int |Přidá Y měsíců X.<br/><br/>`Example: 9/15/2013 12:00:00 PM + 1 month = 10/15/2013 12:00:00 PM`.<br/><br/>Je příliš odečíst měsíců zadáním Y jako záporné číslo.<br/><br/>Příklad: `9/15/2013 12:00:00 PM - 1 month = 8/15/2013 12:00:00 PM`.|
 | Datum |AddQuarters(X,Y) |X: DateTime <br/><br/>Y: int |Přidá Y * X 3 měsíců.<br/><br/>Příklad: `9/15/2013 12:00:00 PM + 1 quarter = 12/15/2013 12:00:00 PM` |

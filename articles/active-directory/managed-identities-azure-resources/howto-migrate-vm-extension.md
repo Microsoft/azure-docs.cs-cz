@@ -15,11 +15,11 @@ ms.workload: identity
 ms.date: 02/25/2018
 ms.author: markvi
 ms.openlocfilehash: 5b3c6c99b05320ee53c3ff49f5c299650c32e939
-ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58498328"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60440815"
 ---
 # <a name="how-to-stop-using-the-virtual-machine-managed-identities-extension-and-start-using-the-azure-instance-metadata-service"></a>Postup zastavení virtuálního počítače pomocí spravované identity rozšíření a začít používat službu Azure Instance Metadata
 
@@ -95,7 +95,7 @@ Ke zřízení virtuálního počítače škálovací nastavit rozšíření se �
 
 Zřizování rozšíření virtuálního počítače může selhat z důvodu chyby vyhledávání DNS. Pokud k tomu dojde, restartujte virtuální počítač a zkuste to znovu. 
 
-### <a name="remove-the-extension"></a>Odebrat rozšíření 
+### <a name="remove-the-extension"></a>Odebrání rozšíření 
 Chcete-li odebrat rozšíření, použijte `-n ManagedIdentityExtensionForWindows` nebo `-n ManagedIdentityExtensionForLinux` přepnout (v závislosti na typu virtuálních počítačů) s [odstranění rozšíření az vm](https://docs.microsoft.com/cli/azure/vm/), nebo [az vmss extension delete](https://docs.microsoft.com/cli/azure/vmss) pro škálování virtuálních počítačů Nastaví pomocí Azure CLI nebo `Remove-AzVMExtension` pro prostředí Powershell:
 
 ```azurecli-interactive

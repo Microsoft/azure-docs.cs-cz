@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.date: 08/13/2018
 ms.author: asrastog
 ms.openlocfilehash: 94d3599fe919cf648be7115be68002d2aa458ee3
-ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55744837"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60400639"
 ---
 # <a name="iot-hub-message-routing-query-syntax"></a>Syntaxi dotazů směrování zpráv služby IoT Hub
 
@@ -53,10 +53,10 @@ Vlastnosti systému identifikaci obsahu a zdrojové zpráv.
 
 | Vlastnost | Typ | Popis |
 | -------- | ---- | ----------- |
-| contentType | řetězec | Uživatel Určuje typ obsahu zprávy. Povolit dotazu na obsah zprávy, by měl být tato hodnota nastavena application/JSON. |
-| contentEncoding | řetězec | Uživatel Určuje typ kódování zprávy. Povolené hodnoty jsou UTF-8, UTF-16, UTF-32, pokud typ obsahu je nastaven na application/JSON. |
-| iothub-connection-device-id | řetězec | Tato hodnota nastavena ve službě IoT Hub a identifikuje ID zařízení. Dotaz, použijte `$connectionDeviceId`. |
-| iothub-enqueuedtime | řetězec | Tato hodnota nastavena ve službě IoT Hub a představuje skutečný čas zařadit zprávu ve formátu UTC. Dotaz, použijte `enqueuedTime`. |
+| contentType | string | Uživatel Určuje typ obsahu zprávy. Povolit dotazu na obsah zprávy, by měl být tato hodnota nastavena application/JSON. |
+| contentEncoding | string | Uživatel Určuje typ kódování zprávy. Povolené hodnoty jsou UTF-8, UTF-16, UTF-32, pokud typ obsahu je nastaven na application/JSON. |
+| iothub-connection-device-id | string | Tato hodnota nastavena ve službě IoT Hub a identifikuje ID zařízení. Dotaz, použijte `$connectionDeviceId`. |
+| iothub-enqueuedtime | string | Tato hodnota nastavena ve službě IoT Hub a představuje skutečný čas zařadit zprávu ve formátu UTC. Dotaz, použijte `enqueuedTime`. |
 
 Jak je popsáno v [zpráv IoT Hub](iot-hub-devguide-messages-construct.md), existují další systémové vlastnosti ve zprávě. Kromě **contentType**, **contentEncoding**, a **enqueuedTime**, **connectionDeviceId** a  **connectionModuleId** může být dotazována také.
 

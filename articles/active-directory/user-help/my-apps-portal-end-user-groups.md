@@ -13,12 +13,12 @@ ms.author: lizross
 ms.reviewer: kasimpso
 ms.custom: user-help, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5af86ad12eed4901e577149b9f20216d5004663b
-ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.openlocfilehash: 578ca5fa1de338a92280e2dc7cc252fb616e2111
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58340458"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60483280"
 ---
 # <a name="update-your-groups-info-from-the-my-apps-portal"></a>Aktualizovat údaje skupiny z portálu Moje aplikace
 Můžete použít pracovní nebo školní účet s webovou **Moje aplikace** portál, zobrazit a spustit řadu aplikace vaší organizace založené na cloudu, chcete-li aktualizovat některé z vašeho profilu a účtu informace zobrazíte vaše **skupiny** informace a k provádění **kontrol přístupu** vašich aplikací a skupin. Pokud nemáte přístup k **Moje aplikace** portálu, musíte požádat o Helpdesk oprávnění.
@@ -58,6 +58,8 @@ Pokud vám správce udělil oprávnění k zobrazení **skupiny** dlaždice, mů
     - **Upravte existující skupinu.** Upravte podrobnosti pro všechny vlastní skupiny. Konkrétní pokyny najdete v článku [upravit existující skupinu](#edit-an-existing-group) části tohoto článku.
 
     - **Přidat nebo odebrat členy.** Přidat nebo odebrat členy skupin, které vlastníte. Konkrétní pokyny najdete v článku [přidat nebo odebrat člena](#add-or-remove-a-member) části tohoto článku.
+
+    - **Prodlužte platnost skupiny Office 365.** Pokud vaše organizace umožňuje, můžete obnovit vaše skupiny Office 365. Konkrétní pokyny najdete v článku [obnovit skupinu Office 365](#renew-an-office-365-group) části tohoto článku. 
 
     - **Odstraňte skupinu.** Odstraňte všechny skupiny, které vlastníte. Konkrétní pokyny najdete v článku [odstranit skupinu](#delete-a-group) části tohoto článku.
 
@@ -117,6 +119,18 @@ Můžete přidat nebo odebrat členy pro všechny vlastní skupiny.
 3. Pokud jste přidali člen omylem nebo pokud Člen opustil organizaci, můžete odebrat člena výběrem **člena odebrat** u názvu člena *&lt;group_name&gt;* stránky.
 
     ![Odebrat člena, se zvýrazněným odkazem odebrání](media/my-apps-portal/my-apps-portal-remove-member-link.png)
+
+## <a name="renew-an-office-365-group"></a>Obnovit skupinu Office 365
+Pokud vaše organizace umožňuje, můžete obnovit skupinu Office 365, rozšíří vaše datum vypršení platnosti.
+
+### <a name="to-renew-a-group"></a>Chcete-li obnovit skupinu
+1. Vyberte skupinu Office 365, kterou chcete obnovit a pak vyberte **obnovit skupinu**.
+
+    ![Obnovit skupinu Office 365, rozšíření datum vypršení platnosti](media/my-apps-portal/my-apps-portal-renew-group-link.png)
+
+2. Klikněte na tlačítko **OK** potvrzovací zprávu zavřete.
+
+    Po aktualizaci stránky uvidíte aktualizovaný **poslední obnovit** a **skupině vypršení platnosti** kalendářní data.
 
 ## <a name="delete-a-group"></a>Odstranění skupiny
 Kdykoli můžete odstranit jakékoli vlastní skupiny. Nicméně pokud omylem odstraníte skupinu budete mít a vytvořte ho znovu přidat členy.

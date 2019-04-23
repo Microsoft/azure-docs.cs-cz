@@ -15,11 +15,11 @@ ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
 ms.openlocfilehash: d5aea441f15cbf7a2a444439c06cd5f74a559d3f
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58670332"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60386422"
 ---
 # <a name="placement-policies-for-service-fabric-services"></a>Zásady umístění služeb service fabric
 Zásady umístění jsou další pravidla, které lze použít k řízení umístění služby v některé konkrétní, méně běžné scénáře. Mezi příklady tyto scénáře patří:

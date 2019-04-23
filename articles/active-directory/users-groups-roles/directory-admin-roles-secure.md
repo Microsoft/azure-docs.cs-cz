@@ -15,11 +15,11 @@ ms.custom: it-pro
 ms.reviewer: martincoetzer; MarkMorow
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 81d09978c3333a5b76c09f8c7dac85998d342f03
-ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58287226"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60472821"
 ---
 # <a name="securing-privileged-access-for-hybrid-and-cloud-deployments-in-azure-ad"></a>Zabezpečení privilegovaného přístupu pro hybridní a cloudové nasazení ve službě Azure AD
 
@@ -387,7 +387,7 @@ Pokud je potřeba určit [přenos vlastnictví předplatného Azure na jiný ú�
 
 Další informace o tom, jak Microsoft Office 365 zpracovává bezpečnostní incidenty v oblasti, naleznete v tématu [Správa incidentů zabezpečení v Microsoft Office 365](https://aka.ms/Office365SIM).
 
-## <a name="faq-common-questions-we-receive-regarding-securing-privileged-access"></a>NEJČASTĚJŠÍ DOTAZY: Běžné otázky, které se týkají zabezpečení privilegovaného přístupu  
+## <a name="faq-common-questions-we-receive-regarding-securing-privileged-access"></a>Nejčastější dotazy: Běžné otázky, které se týkají zabezpečení privilegovaného přístupu  
 
 **Otázka:** Co mám dělat, když mám nebyly dosud implementován součásti žádné zabezpečený přístup?
 

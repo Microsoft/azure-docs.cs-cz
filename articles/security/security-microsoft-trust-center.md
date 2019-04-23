@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: terrylan
-ms.openlocfilehash: 794c78e6e31c58563b68a58774db90af98a44d95
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 289b9b0cb2532069c01fc9c687c844bd917355f7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56111029"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60445681"
 ---
 # <a name="microsoft-trust-center"></a>Centrum zabezpečení Microsoftu
 Informace o zabezpečení Azure lokality na Azure.com nabízí informace budete potřebovat k plánování, návrhu, nasazení, konfigurovat a spravovat svoje Cloudová řešení bezpečně. Ve službě Microsoft Trust center máte také informace, které potřebujete být jistí, že je zabezpečení platformy Azure, na kterém jste spustili vašich služeb.

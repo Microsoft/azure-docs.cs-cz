@@ -7,11 +7,11 @@ ms.service: postgresql
 ms.topic: conceptual
 ms.date: 10/22/2018
 ms.openlocfilehash: 96793cb1785a7ffa86331285f401453641b50dac
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55820862"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60421052"
 ---
 # <a name="optimize-query-time-with-the-toast-table-storage-strategy"></a>Optimalizace času dotazu s strategie úložiště tabulky informační zprávy 
 Tento článek popisuje, jak optimalizovat dotaz časy s strategie úložiště zvětšená atribut technika (informační zpráva) tabulky úložiště.

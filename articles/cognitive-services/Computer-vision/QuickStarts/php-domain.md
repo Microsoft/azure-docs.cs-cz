@@ -1,5 +1,5 @@
 ---
-title: 'Rychlý start: Obsah specifický pro doménu image - REST, PHP'
+title: 'Rychlý start: Obsahu specifického pro doménu – REST, PHP'
 titleSuffix: Azure Cognitive Services
 description: V tomto rychlém startu použijete doménový model k identifikaci památek na obrázku pomocí rozhraní API pro počítačové zpracování obrazu a PHP.
 services: cognitive-services
@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: quickstart
-ms.date: 03/11/2019
+ms.date: 04/17/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 2c1801296247ace081a34a137fe3f3bea7a55974
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 902894ccce28ee1ba05430c7e697c3ca47887795
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57877016"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60408423"
 ---
 # <a name="quickstart-recognize-domain-specific-content-using-the-rest-api-and-php-with-computer-vision"></a>Rychlý start: Rozpoznávání obsahu specifického pro doménu pomocí rozhraní REST API a PHP s pro počítačové zpracování obrazu
 
@@ -28,7 +28,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 - Musíte mít nainstalovaný [PHP](https://secure.php.net/downloads.php).
 - Musíte mít nainstalovaný [Pear](https://pear.php.net).
-- Musíte mít klíč předplatného pro počítačové zpracování obrazu. Abyste získali klíč předplatného, přejděte k tématu [Jak získat klíče předplatného](../Vision-API-How-to-Topics/HowToSubscribe.md).
+- Musíte mít klíč předplatného pro počítačové zpracování obrazu. Můžete získat bezplatné zkušební verze klíče z [zkuste služby Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision). Nebo, postupujte podle pokynů v [vytvoření účtu služeb Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) k přihlášení pro počítačové zpracování obrazu a získejte klíč.
 
 ## <a name="create-and-run-the-sample"></a>Vytvoření a spuštění ukázky
 

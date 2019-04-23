@@ -16,18 +16,18 @@ ms.topic: conceptual
 ms.date: 06/22/2018
 ms.author: ergreenl
 ms.openlocfilehash: 5b70a16d1da8f939a23bf7a96a03098463cfc529
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55203330"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60417159"
 ---
 # <a name="join-a-windows-server-virtual-machine-to-a-managed-domain-using-a-resource-manager-template"></a>Připojte se k virtuálnímu počítači s Windows serverem do spravované domény pomocí šablony Resource Manageru
 V tomto článku se dozvíte, jak propojit virtuální počítače s Windows serverem do spravované domény služby Azure AD Domain Services pomocí šablon Resource Manageru.
 
 [!INCLUDE [active-directory-ds-prerequisites.md](../../includes/active-directory-ds-prerequisites.md)]
 
-## <a name="before-you-begin"></a>Před zahájením
+## <a name="before-you-begin"></a>Než začnete
 K provádění úkolů uvedených v tomto článku, budete potřebovat:
 1. Platný **předplatného Azure**.
 2. **Adresář Azure AD** – buď synchronizaci s místním adresářem nebo výhradně cloudový adresář.
@@ -100,7 +100,7 @@ Po úspěšném dokončení nasazení zadaný virtuální počítače Windows js
 
 
 ## <a name="related-content"></a>Související obsah
-* [Přehled prostředí Azure PowerShell](/powershell/azure/overview)
+* [Přehled Azure PowerShellu](/powershell/azure/overview)
 * [Šablony rychlý start Azure – nový virtuální počítač připojit k doméně](https://azure.microsoft.com/resources/templates/201-vm-domain-join/)
 * [Šablony rychlý start Azure – stávající virtuální počítače připojit k doméně](https://azure.microsoft.com/resources/templates/201-vm-domain-join-existing/)
 * [Nasazení prostředků pomocí šablon Resource Manageru a Azure PowerShellu](../azure-resource-manager/resource-group-template-deploy.md)

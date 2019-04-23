@@ -13,12 +13,12 @@ ms.devlang: na
 ms.date: 03/04/2019
 ms.topic: quickstart
 ms.author: jgao
-ms.openlocfilehash: 84025953e74cb2ace358aa041f55dc1498d22f2f
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 4fe859b1343e2aea71bd41a3b7742a29bbff389f
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58079056"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60464092"
 ---
 # <a name="quickstart-create-and-deploy-azure-resource-manager-templates-by-using-the-azure-portal"></a>Rychlý start: Vytvoření a nasazení šablon Azure Resource Manageru pomocí webu Azure portal
 
@@ -42,7 +42,7 @@ Mnoho vývojářů zkušení šablony pomocí této metody můžete generovat š
     ![Vytvoření účtu Azure Storage na portálu Azure Portal](./media/resource-manager-quickstart-create-templates-use-the-portal/azure-resource-manager-template-tutorial-create-storage-account-portal.png)
 3. Zadejte následující informace:
 
-    |Název|Hodnota|
+    |Name|Value|
     |----|----|
     |**Skupina prostředků**|Vyberte **vytvořit nový**a zadejte název skupiny prostředků podle svého výběru. Na snímku obrazovky má skupina prostředků název *mystorage1016rg*. Skupina prostředků je kontejner pro prostředky Azure. Skupiny prostředků usnadňuje správu prostředků Azure. |
     |**Název**|Zadejte jedinečný název účtu úložiště. Název účtu úložiště musí být jedinečný v rámci všechno, co Azure a obsahovat jenom malá písmena a číslice. Název musí být dlouhý 3 až 24 znaků. Pokud se zobrazí chybová zpráva s oznámením "název účtu úložiště 'mystorage1016' se už používá", zkuste použít  **&lt;vaše_jméno > úložiště&lt;dnešní datum v MMDD >**, například  **johndolestorage1016**. Další informace najdete v tématu [pravidla a omezení pojmenování](/azure/architecture/best-practices/naming-conventions#naming-rules-and-restrictions).|
@@ -153,7 +153,7 @@ Azure vyžaduje, aby každá služba Azure měla jedinečný název. Nasazení m
 8. Vyberte **Uložit**.
 9. Zadejte následující hodnoty:
 
-    |Název|Hodnota|
+    |Name|Value|
     |----|----|
     |**Skupina prostředků**|Vyberte název skupiny prostředků, kterou jste vytvořili v předchozí části. |
     |**Umístění**|Vyberte umístění pro účet úložiště. Například **USA (střed)**. |

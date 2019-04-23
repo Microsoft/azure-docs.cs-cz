@@ -15,11 +15,11 @@ ms.workload: infrastructure-services
 ms.date: 04/11/2018
 ms.author: genli
 ms.openlocfilehash: 174bc4895bbad4546392581c2c769aac762d6106
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59492375"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60457472"
 ---
 # <a name="troubleshooting-azure-point-to-site-connection-problems"></a>Řešení potíží: Problémy s připojením Azure point-to-site
 
@@ -45,7 +45,7 @@ Chcete-li tento problém vyřešit, postupujte podle těchto kroků:
 
 2. Ujistěte se, že tyto certifikáty jsou ve správném umístění:
 
-    | Certifikát | Umístění |
+    | Certifikát | Location |
     | ------------- | ------------- |
     | AzureClient.pfx  | Aktuální uživatel\osobní\certifikáty |
     | Azuregateway-*GUID*.cloudapp.net  | Aktuální User\Trusted kořenové certifikační autority|
@@ -122,7 +122,7 @@ Při pokusu o připojení ke službě Azure virtual network pomocí klienta VPN,
 
 1. Ujistěte se, že tyto certifikáty jsou ve správném umístění:
 
-    | Certifikát | Umístění |
+    | Certifikát | Location |
     | ------------- | ------------- |
     | AzureClient.pfx  | Aktuální uživatel\osobní\certifikáty |
     | Azuregateway-*GUID*.cloudapp.net  | Aktuální User\Trusted kořenové certifikační autority|

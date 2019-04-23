@@ -9,11 +9,11 @@ ms.topic: article
 ms.date: 09/27/2018
 ms.author: alkohli
 ms.openlocfilehash: d62ad37e6bbe9c89ef803cefc43f373e287a7af7
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58100441"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60462323"
 ---
 # <a name="open-a-support-ticket-for-azure-data-box"></a>Vytvořit lístek podpory Azure Data Box 
 
@@ -22,7 +22,7 @@ Tento článek se týká k Azure Data Box a disku Azure Data Box, které jsou sp
 * Jak vytvořit žádost o podporu.
 * Jak spravovat životní cyklus žádost o podporu z v rámci portálu.
 
-## <a name="create-a-support-request"></a>Vytvořit žádost o podporu
+## <a name="create-a-support-request"></a>Vytvoření žádosti o podporu
 
 Proveďte následující kroky a vytvoříte žádost o podporu:
 

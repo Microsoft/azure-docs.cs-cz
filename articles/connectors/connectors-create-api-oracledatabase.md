@@ -12,11 +12,11 @@ ms.reviewer: klam, LADocs
 ms.suite: integration
 tags: connectors
 ms.openlocfilehash: 06f65aef203b4f0d765f21b9d17b90081de85c94
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57551751"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60453544"
 ---
 # <a name="get-started-with-the-oracle-database-connector"></a>Začínáme s konektorem databáze Oracle
 
@@ -95,19 +95,19 @@ Tento článek ukazuje, jak použít konektor Oracle Database v aplikaci logiky.
 
 ## <a name="common-errors"></a>Běžné chyby
 
-#### <a name="error-cannot-reach-the-gateway"></a>**Chyba**: Nelze navázat spojení s bránou
+#### <a name="error-cannot-reach-the-gateway"></a>**Chyba:** Nelze navázat spojení s bránou
 
 **Příčina:** Místní brána dat není možné se připojit ke cloudu. 
 
 **Zmírnění dopadů**: Ujistěte se, že je brána spuštěna na místním počítači, kde jste nainstalovali, a že se může připojit k Internetu.  Doporučujeme vám, Ne instalaci brány na počítači, který může být vypnuté nebo v režimu spánku. Můžete také restartovat místní služba brány dat (PBIEgwService).
 
-#### <a name="error-the-provider-being-used-is-deprecated-systemdataoracleclient-requires-oracle-client-software-version-817-or-greater-see-httpsgomicrosoftcomfwlinkplinkid272376httpsgomicrosoftcomfwlinkplinkid272376-to-install-the-official-provider"></a>**Chyba**: Použitý zprostředkovatel je zastaralý: "System.Data.OracleClient vyžaduje software klienta Oracle version 8.1.7 nebo vyšší.". Zobrazit [ https://go.microsoft.com/fwlink/p/?LinkID=272376 ](https://go.microsoft.com/fwlink/p/?LinkID=272376) a nainstalujte si oficiálního zprostředkovatele.
+#### <a name="error-the-provider-being-used-is-deprecated-systemdataoracleclient-requires-oracle-client-software-version-817-or-greater-see-httpsgomicrosoftcomfwlinkplinkid272376httpsgomicrosoftcomfwlinkplinkid272376-to-install-the-official-provider"></a>**Chyba:** Použitý zprostředkovatel je zastaralý: "System.Data.OracleClient vyžaduje software klienta Oracle version 8.1.7 nebo vyšší.". Zobrazit [ https://go.microsoft.com/fwlink/p/?LinkID=272376 ](https://go.microsoft.com/fwlink/p/?LinkID=272376) a nainstalujte si oficiálního zprostředkovatele.
 
 **Příčina:** Sada SDK klienta Oracle není nainstalovaná na počítači, kde je spuštěná na místní bránu dat.  
 
 **Řešení:** Stáhněte a nainstalujte na stejném počítači jako místní brána dat sada SDK klienta Oracle.
 
-#### <a name="error-table-tablename-does-not-define-any-key-columns"></a>**Chyba**: Tabulka '[Tablename]' nedefinuje žádné klíčové sloupce
+#### <a name="error-table-tablename-does-not-define-any-key-columns"></a>**Chyba:** Tabulka '[Tablename]' nedefinuje žádné klíčové sloupce
 
 **Příčina:** Tabulka nemá primární klíč.  
 

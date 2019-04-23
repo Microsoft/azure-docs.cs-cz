@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.openlocfilehash: 91cde6965f3635d6d2acfaf581f570779020f8ff
-ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54232222"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60445285"
 ---
 # <a name="azure-iot-edge-certificate-usage-detail"></a>Podrobnosti o použití certifikátu Azure IoT Edge
 
@@ -118,7 +118,7 @@ Zobrazí se hierarchie certifikátů hloubky reprezentované na snímku obrazovk
 | Certifikát zprostředkující certifikační Autority | Azure IoT Hub zprostředkující certifikát pouze Test                                                                 |
 | Certifikát certifikační Autority zařízení       | iotgateway.CA ("iotgateway" byla předána jako < brány název hostitele > pohodlí skripty)      |
 | Certifikát pracovního vytížení certifikační Autority     | certifikační autorita iotedge pracovního vytížení                                                                                       |
-| Certifikát serveru centra IoT Edge | iotedgegw.Local (shoduje s názvem "hostitele" z config.yaml)                                                |
+| IoT Edge Hub Server Certificate | iotedgegw.Local (shoduje s názvem "hostitele" z config.yaml)                                                |
 
 ## <a name="next-steps"></a>Další postup
 

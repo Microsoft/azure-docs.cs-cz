@@ -18,11 +18,11 @@ ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e734b932976896b2fb4d86e2627b7827d40a2545
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56189885"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60454861"
 ---
 # <a name="plan-for-enhancing-data-security-through-a-strong-identity-solution"></a>Plán pro zlepšení zabezpečení dat prostřednictvím řešení využívá silné identity
 Prvním krokem při ochraně dat je identifikovat, kdo má přístup k těmto datům. Navíc musíte mít řešení identit, které můžete integrovat do vašeho systému pro poskytování možností ověřování a autorizace. Ověřování a autorizace se často zaměňuje za číslo mezi sebou a nesprávně pochopeny, jejich role. Ve skutečnosti jsou různé, jak je znázorněno na následujícím obrázku:

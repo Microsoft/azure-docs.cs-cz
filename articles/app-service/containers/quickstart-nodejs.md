@@ -16,11 +16,11 @@ ms.date: 03/27/2019
 ms.author: msangapu
 ms.custom: seodec18
 ms.openlocfilehash: 54602425ae6e1ff65a8445355af2eca09d495b05
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59548674"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60397039"
 ---
 # <a name="create-a-nodejs-app-in-azure-app-service-on-linux"></a>Vytvoření aplikace Node.js ve službě Azure App Service v Linuxu
 

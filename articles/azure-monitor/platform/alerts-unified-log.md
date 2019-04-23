@@ -9,11 +9,11 @@ ms.date: 2/20/2019
 ms.author: vinagara
 ms.subservice: alerts
 ms.openlocfilehash: 194fba3296359f5f7d29a37425a938fe08f1332b
-ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56452878"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60345872"
 ---
 # <a name="log-alerts-in-azure-monitor"></a>Upozornění protokolů ve službě Azure Monitor
 
@@ -102,13 +102,13 @@ Představte si třeba situaci, kde chcete výstrahu Pokud jakýkoli počítač p
 - **Časové období:** 30 minut<br>
 - **Četnosti upozornění:** pěti minut<br>
 - **Alert Logic - podmínku a prahovou hodnotu:** Větší než 90<br>
-- **Pole skupiny (agregaci na):** Počítač
+- **Pole skupiny (agregaci na):** Computer
 - **Aktivovat upozornění na základě:** Celkový počet poruší větší než 2<br>
 
 Dotaz by vytvořit průměrnou hodnotu pro každý počítač v intervalech 5 minut.  Tento dotaz se spustí každých 5 minut, než se data shromážděná za předchozí 30 minut. Protože je pole Skupina (agregaci v), zvolené úložiště se sloupcovou strukturou "Computer" - pro různé hodnoty "Computer" je rozdělit AggregatedValue a průměrné využití procesoru pro každý počítač, je určen pro bin dobu 5 minut.  (Řekněme) tři počítače, bude výsledkem vzorku dotazu pro níže.
 
 
-|TimeGenerated [UTC] |Počítač  |AggregatedValue  |
+|TimeGenerated [UTC] |Computer  |AggregatedValue  |
 |---------|---------|---------|
 |20xx-xx-xxT01:00:00Z     |   srv01.contoso.com      |    72     |
 |20xx-xx-xxT01:00:00Z     |   srv02.contoso.com      |    91     |

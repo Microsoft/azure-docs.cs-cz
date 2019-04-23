@@ -11,11 +11,11 @@ ms.date: 04/17/2018
 ms.author: rortloff
 ms.reviewer: igorstan
 ms.openlocfilehash: 69a76ae9d6f355fe401b438ec2ab89d6606ba46c
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55463476"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60402326"
 ---
 # <a name="group-by-options-in-sql-data-warehouse"></a>Seskupit podle možnosti ve službě SQL Data Warehouse
 Tipy pro implementaci skupinu podle možnosti ve službě Azure SQL Data Warehouse pro vývoj řešení.

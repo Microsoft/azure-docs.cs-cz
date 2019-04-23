@@ -7,11 +7,11 @@ ms.service: postgresql
 ms.topic: conceptual
 ms.date: 10/25/2018
 ms.openlocfilehash: 428a22f79008130448bef65f14322d6880b1b367
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55814363"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60422695"
 ---
 # <a name="optimize-query-statistics-collection-on-an-azure-database-for-postgresql-server"></a>Optimalizace kolekce statistik dotazů na serveru Azure Database for PostgreSQL 
 Tento článek popisuje, jak optimalizovat kolekce statistik dotazů na serveru Azure Database for PostgreSQL.

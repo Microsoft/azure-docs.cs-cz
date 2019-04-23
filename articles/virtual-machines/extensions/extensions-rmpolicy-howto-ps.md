@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 03/23/2018
 ms.author: roiyz;cynthn
-ms.openlocfilehash: 4dc68127f2d19426c372be027634bb2563dbfa6c
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
+ms.openlocfilehash: dfaeff5e8f90e72645293d15c454f78f17b08fb0
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56341653"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60387328"
 ---
 # <a name="use-azure-policy-to-restrict-extensions-installation-on-windows-vms"></a>Instalace rozšíření na virtuálních počítačích s Windows pomocí zásad Azure
 
@@ -26,7 +26,7 @@ Pokud chcete zabránit použití nebo instalace některých rozšíření na va�
 
 Tento kurz používá prostředí Azure PowerShell ve službě Cloud Shell, která se neustále aktualizuje na nejnovější verzi. 
 
-[!INCLUDE [updated-for-az-vm.md](../../../includes/updated-for-az-vm.md)]
+[!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
 
 ## <a name="create-a-rules-file"></a>Vytvoření souboru pravidel
 

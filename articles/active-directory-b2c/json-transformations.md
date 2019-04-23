@@ -11,11 +11,11 @@ ms.date: 09/10/2018
 ms.author: davidmu
 ms.subservice: B2C
 ms.openlocfilehash: 88d447f86dd54fc9479a6d7d2006b9a8639ad09e
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58089229"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60396843"
 ---
 # <a name="json-claims-transformations"></a>JSON deklarace identity transformace
 
@@ -100,7 +100,7 @@ V následujícím příkladu transformace deklarací identity extrahuje následu
 ```    
 
 - Vstupní deklarace identity:
-  - **jsonSourceClaim**: [{"klíče": "email", "value": "someone@example.com"}, {"klíče": "displayName", "value": "Uživatel"}, {"klíče": "membershipNum", "value": 6353399}, {"klíče": "aktivní", "value": true}, {"klíče": "datum narození", "value": "1980-09-23T00:0 [[[0:00Z"}]
+  - **jsonSourceClaim**: [{"klíče": "email", "value": "someone@example.com"}, {"klíče": "displayName", "value": "Uživatel"}, {"klíče": "membershipNum", "value": 6353399}, {"klíče": "aktivní", "value": true}, {"klíče": "datum narození", "value": "1980-09-23T00:0 0:00Z"}]
 - Vstupní parametry:
     - **errorOnMissingClaims**: false
     - **includeEmptyClaims**: false

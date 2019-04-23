@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 02/28/2019
 ms.author: zarhoads
 ms.openlocfilehash: d7df4d2c7e824f143201e2c6af220730bcd38fb2
-ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58755979"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60466927"
 ---
 # <a name="scaling-options-for-applications-in-azure-kubernetes-service-aks"></a>Škálování možností pro aplikace ve službě Azure Kubernetes Service (AKS)
 

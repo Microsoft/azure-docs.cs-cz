@@ -10,11 +10,11 @@ ms.date: 07/13/2017
 ms.author: robb
 ms.subservice: diagnostic-extension
 ms.openlocfilehash: c2d577bd4c89046136a3465ff554e9662dd0ce19
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54478123"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60396155"
 ---
 # <a name="streaming-azure-diagnostics-data-in-the-hot-path-by-using-event-hubs"></a>Streamování dat diagnostiky Azure do horké cesty s využitím služby Event Hubs
 Diagnostika Azure nabízí flexibilní možnosti, jak shromažďovat metriky a protokoly z cloudové služby virtuálních počítačů (VM) a přenést výsledky do služby Azure Storage. Od března 2016 (SDK 2.9) časový rámec, můžete odeslání diagnostiky do vlastní zdroje dat a přenos dat kritickou cestu během několika sekund pomocí [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/).

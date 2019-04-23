@@ -2,7 +2,6 @@
 title: Co je Apache Hive a HiveQL – Azure HDInsight
 description: Apache Hive se systémem datového skladu pro Apache Hadoop. Můžete dotazovat data uložená v Hive s využitím HiveQL, který podobný příkazů jazyka Transact-SQL. V tomto dokumentu zjistěte, jak pomocí Azure HDInsight Hive a HiveQL.
 keywords: hiveql, co je hive, hiveql s hadoop, použití hive, zjistěte, hive, co je hive
-services: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -11,11 +10,11 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 03/26/2019
 ms.openlocfilehash: 1f0746436fa980b6becfa7a88560734aa07a54e2
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: MT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58801925"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60342827"
 ---
 # <a name="what-is-apache-hive-and-hiveql-on-azure-hdinsight"></a>Co je Apache Hive a HiveQL v Azure HDInsight?
 

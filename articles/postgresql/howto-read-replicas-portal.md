@@ -7,11 +7,11 @@ ms.service: postgresql
 ms.topic: conceptual
 ms.date: 04/01/2019
 ms.openlocfilehash: bf1fb1c1343173949ecb6348284cb537282b277b
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59787659"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60420665"
 ---
 # <a name="create-and-manage-read-replicas-from-the-azure-portal"></a>Vytvořit a spravovat repliky pro čtení z webu Azure portal
 

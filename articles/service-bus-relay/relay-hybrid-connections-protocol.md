@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/02/2018
 ms.author: clemensv
-ms.openlocfilehash: 913e702cc72472e81937bfe3b0939695daadc011
-ms.sourcegitcommit: f983187566d165bc8540fdec5650edcc51a6350a
+ms.openlocfilehash: e96d0103a03e841f39e8adb88215f6d6e24a305a
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/13/2018
-ms.locfileid: "45543506"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60420038"
 ---
 # <a name="azure-relay-hybrid-connections-protocol"></a>Azure Relay Hybrid Connections protokolu
 
@@ -243,8 +243,8 @@ Pokud dojde k chybě, můžete službu odpověď následujícím způsobem:
 
 | Param                   | Požaduje se | Popis                              |
 | ----------------------- | -------- | ---------------------------------------- |
-| SB. hybridní připojení statusCode        | Ano      | Číselný kód stavu protokolu HTTP.                |
-| SB. hybridní připojení statusDescription | Ano      | Lidské čitelné důvod pro odmítnutí. |
+| sb-hc-statusCode        | Ano      | Číselný kód stavu protokolu HTTP.                |
+| sb-hc-statusDescription | Ano      | Lidské čitelné důvod pro odmítnutí. |
 
 Výsledný identifikátoru URI se pak použije k navázání připojení soketu WebSocket.
 

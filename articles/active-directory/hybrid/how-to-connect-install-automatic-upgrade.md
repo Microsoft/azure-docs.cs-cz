@@ -17,11 +17,11 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: bfd61b78ca3027ade1f2f48dec33e0a8ed508d3d
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58003916"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60349814"
 ---
 # <a name="azure-ad-connect-automatic-upgrade"></a>Azure AD Connect: Automatický upgrade
 Tato funkce byla zavedena v systému sestavení [1.1.105.0 (všeobecně dostupné. února 2016)](reference-connect-version-history.md#111050).  Tato funkce byla aktualizována v [sestavení 1.1.561](reference-connect-version-history.md#115610) a teď podporuje další scénáře, které dříve nebyly podporovány.
@@ -39,7 +39,7 @@ Aktuální stav automatického upgradu lze zobrazit pomocí rutiny Powershellu `
 
 | Stav | Poznámka |
 | --- | --- |
-| Povoleno |Je povolen automatický upgrade. |
+| Enabled |Je povolen automatický upgrade. |
 | Pozastaveno |Nastavte pouze v systému. Systém je **není aktuálně** nárok na automatické upgrady. |
 | Zakázáno |Automatický upgrade je zakázaná. |
 

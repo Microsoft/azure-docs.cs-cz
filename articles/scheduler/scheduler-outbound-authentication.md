@@ -9,17 +9,17 @@ ms.reviewer: klam
 ms.assetid: 6707f82b-7e32-401b-a960-02aae7bb59cc
 ms.topic: article
 ms.date: 08/15/2016
-ms.openlocfilehash: 88f2fe0781bad4b652826b6a8d1961dd39b063e1
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 42d6ec93a3382f494b49fb574c4aee5e8eec142a
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46993325"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60344343"
 ---
 # <a name="outbound-authentication-for-azure-scheduler"></a>Ověřování odchozích připojení pro Azure Scheduler
 
 > [!IMPORTANT]
-> [Služba Azure Logic Apps](../logic-apps/logic-apps-overview.md) nahrazuje Azure Scheduleru, která se vyřazuje. K plánování úloh, [místo toho vyzkoušet Azure Logic Apps](../scheduler/migrate-from-scheduler-to-logic-apps.md). 
+> [Azure Logic Apps](../logic-apps/logic-apps-overview.md) nahrazuje službu Azure Scheduler, která se vyřazuje z provozu. K plánování úloh [místo ní zkuste použít Azure Logic Apps](../scheduler/migrate-from-scheduler-to-logic-apps.md). 
 
 Azure Scheduleru úlohy může být nutné volat služby, které vyžadují ověřování, jako je například jiných služeb Azure, Salesforce.com, Facebook a zabezpečené vlastní weby. Volané služby můžete určit, jestli úloha Scheduleru můžete přistupovat k požadovaným prostředkům. 
 
@@ -48,7 +48,7 @@ Při přidání pomocí ověřování `ClientCertificate` model, určit tyto dal
 |---------|----------|-------------|
 | **ověřování** (nadřazený element) | Objekt ověřování pro použití klientský certifikát SSL |
 | **type** | Ano | Typ ověřování. Pro klientské certifikáty SSL, je hodnota `ClientCertificate`. |
-| **PFX** | Ano | Obsah souboru PFX s kódováním base64 |
+| **pfx** | Ano | Obsah souboru PFX s kódováním base64 |
 | **Heslo** | Ano | Heslo pro přístup k souboru PFX |
 ||| 
 
@@ -60,8 +60,8 @@ Při přidání pomocí ověřování `ClientCertificate` model, určit tyto dal
 |---------|-------------| 
 | **ověřování** (nadřazený element) | Objekt ověřování pro použití klientský certifikát SSL |
 | **type** | Typ ověřování. Pro klientské certifikáty SSL, je hodnota `ClientCertificate`. |
-| **Miniatura certifikátu** |Kryptografický otisk certifikátu |
-| **CertificateSubjectName** |Rozlišující název subjektu certifikátu |
+| **certificateThumbprint** |Kryptografický otisk certifikátu |
+| **certificateSubjectName** |Rozlišující název subjektu certifikátu |
 | **certificateExpiration** | Datum vypršení platnosti certifikátu |
 ||| 
 
@@ -287,9 +287,9 @@ Při přidání pomocí ověřování `ActiveDirectoryOAuth` model, určit tyto 
 | **ověřování** (nadřazený element) | Ano | Objekt ověřování pro použití ověřování ActiveDirectoryOAuth |
 | **type** | Ano | Typ ověřování. ActiveDirectoryOAuth ověřování, je hodnota `ActiveDirectoryOAuth`. |
 | **tenanta** | Ano | Identifikátor tenanta pro tenanta Azure AD. Chcete-li najít identifikátor tenanta pro tenanta Azure AD, spusťte `Get-AzureAccount` v prostředí Azure PowerShell. |
-| **Cílová skupina** | Ano | Tato hodnota nastavená na `https://management.core.windows.net/`. | 
-| **ID klienta** | Ano | Identifikátor klienta pro aplikaci Azure AD | 
-| **Tajný klíč** | Ano | Tajný klíč pro klienta, který žádá token | 
+| **audience** | Ano | Tato hodnota nastavená na `https://management.core.windows.net/`. | 
+| **clientId** | Ano | Identifikátor klienta pro aplikaci Azure AD | 
+| **secret** | Ano | Tajný klíč pro klienta, který žádá token | 
 |||| 
 
 ### <a name="response-body---active-directory-oauth"></a>Text odpovědi – Active Directory OAuth
@@ -301,8 +301,8 @@ Při přidání pomocí ověřování `ActiveDirectoryOAuth` model, určit tyto 
 | **ověřování** (nadřazený element) | Objekt ověřování pro použití ověřování ActiveDirectoryOAuth |
 | **type** | Typ ověřování. ActiveDirectoryOAuth ověřování, je hodnota `ActiveDirectoryOAuth`. | 
 | **tenanta** | Identifikátor tenanta pro tenanta Azure AD |
-| **Cílová skupina** | Tato hodnota nastavená na `https://management.core.windows.net/`. |
-| **ID klienta** | Identifikátor klienta pro aplikaci Azure AD |
+| **audience** | Tato hodnota nastavená na `https://management.core.windows.net/`. |
+| **clientId** | Identifikátor klienta pro aplikaci Azure AD |
 ||| 
 
 ### <a name="sample-rest-request---active-directory-oauth"></a>Ukázka požadavku REST - Active Directory OAuth

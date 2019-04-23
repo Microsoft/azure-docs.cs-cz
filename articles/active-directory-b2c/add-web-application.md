@@ -11,11 +11,11 @@ ms.topic: conceptual
 ms.service: active-directory
 ms.subservice: B2C
 ms.openlocfilehash: c1c640fa2c03f584aa9be62ae6ad123377ef53cd
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59680753"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60383911"
 ---
 # <a name="add-a-web-api-application-to-your-azure-active-directory-b2c-tenant"></a>Přidání webového rozhraní API aplikace do svého tenanta Azure Active Directory B2C
 

@@ -12,11 +12,11 @@ ms.topic: conceptual
 ms.date: 04/04/2019
 ms.author: glenga
 ms.openlocfilehash: 96656da078b79474dbf6576455a485d17868db49
-ms.sourcegitcommit: b8a8d29fdf199158d96736fbbb0c3773502a092d
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/15/2019
-ms.locfileid: "59565956"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60406636"
 ---
 # <a name="monitor-azure-functions"></a>Monitorování Azure Functions
 
@@ -148,7 +148,7 @@ Modul runtime poskytuje `customDimensions.LogLevel` a `customDimensions.Category
 
 Application Insights můžete používat bez vlastní konfigurace. Výchozí konfigurace může způsobit velké objemy dat. Pokud používáte předplatné sady Visual Studio v Azure, může dosáhnete limitu vaše data Application Insights. Dále v tomto článku se dozvíte, jak nakonfigurovat a upravit data, která vaše funkce posílat do Application Insights. Aplikace function App, protokolování je nastaveno v [host.json] souboru.
 
-### <a name="categories"></a>Kategorie
+### <a name="categories"></a>Categories
 
 Zahrnuje protokolovacího nástroje Azure Functions *kategorie* pro každý protokol. Kategorie určuje, které části kódu modulu runtime nebo kód vaší funkce zapsáno do protokolu. 
 

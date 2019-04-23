@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/17/2017
 ms.author: cawa
-ms.openlocfilehash: 61bb5601cf20e9f6e4fba1300d8f84c9d039e564
-ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
-ms.translationtype: MT
+ms.openlocfilehash: 38a857b1d309b92c48137a46655155e0e131908c
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58225089"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60459241"
 ---
 # <a name="get-started-with-storage-explorer"></a>Začínáme se Storage Explorerem
 
@@ -99,7 +99,7 @@ Kromě toho můžete pracovat s účty úložiště v globálním i národním A
 
 2. V levém podokně se teď zobrazí všem účtům Azure, které jste přihlášeni. Chcete-li připojit k jinému účtu, vyberte **přidat účet**
 
-3. Pokud chcete k přihlašování do národních cloudů nebo Azure Stack, klikněte na **prostředí Azure** rozevírací nabídku a zvolte který Azure cloud, který chcete použít. Po výběru prostředí, klikněte na tlačítko **přihlásit...**  tlačítko. Pokud se přihlašujete ke službě Azure Stack, najdete v článku [připojení Storage Exploreru k předplatnému Azure Stack](azure-stack/user/azure-stack-storage-connect-se.md) Další informace.
+3. Pokud chcete k přihlašování do národních cloudů nebo Azure Stack, klikněte na **prostředí Azure** rozevírací nabídku a zvolte který Azure cloud, který chcete použít. Po výběru prostředí, klikněte na tlačítko **přihlásit...**  tlačítko. Pokud se přihlašujete ke službě Azure Stack, najdete v článku [připojení Storage Exploreru k předplatnému Azure Stack](/azure-stack/user/azure-stack-storage-connect-se) Další informace.
 
     ![Přihlaste se možnost][2]
 

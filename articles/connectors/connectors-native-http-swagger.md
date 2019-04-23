@@ -12,11 +12,11 @@ tags: connectors
 ms.topic: article
 ms.date: 07/18/2016
 ms.openlocfilehash: 9408b66f74391b080ef46c758b07850b2ae8de57
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58893383"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60448618"
 ---
 # <a name="call-rest-endpoints-with-http--swagger-connector-in-azure-logic-apps"></a>Koncové body REST s HTTP + Swagger pro volání konektoru v Azure Logic Apps
 
@@ -113,7 +113,7 @@ Odpověď protokolu HTTP
 ### <a name="http-responses"></a>Odpovědi protokolu HTTP
 Při volání různé akce, může se zobrazit některé odpovědi. Následuje tabulka, která bude uvádět odpovídající odpovědí a popisy.
 
-| Název | Popis |
+| Name | Popis |
 | --- | --- |
 | 200 |OK |
 | 202 |Přijato |

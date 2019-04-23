@@ -12,11 +12,11 @@ manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: d58c019cf3d801ce938a4ca6eca70b1606bf4ff6
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59264467"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60415850"
 ---
 # <a name="enforce-azure-ad-password-protection-for-windows-server-active-directory"></a>Vynucení ochrany hesla Azure AD pro Windows Server Active Directory
 

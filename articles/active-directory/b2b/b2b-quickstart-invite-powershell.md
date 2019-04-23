@@ -12,11 +12,11 @@ ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 7b9274652b7164a4aef71499912cb8b38ace29ff
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57854445"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60413886"
 ---
 # <a name="quickstart-add-a-guest-user-with-powershell"></a>Rychlý start: Přidání uživatele typu host s využitím PowerShellu
 

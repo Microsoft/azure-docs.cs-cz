@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 12/19/2018
 ms.author: cherylmc
 ms.openlocfilehash: 032b6a4f5147d06a4613a827a0372437dca47f47
-ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/20/2018
-ms.locfileid: "53651635"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60407541"
 ---
 # <a name="create-a-site-to-site-connection-in-the-azure-portal"></a>Vytvoření připojení typu Site-to-Site na webu Azure Portal
 
@@ -30,7 +30,7 @@ Připojení brány VPN typu Site-to-Site slouží k připojení místní sítě 
 
 ![Diagram připojení VPN Gateway typu Site-to-Site mezi různými místy](./media/vpn-gateway-howto-site-to-site-resource-manager-portal/site-to-site-diagram.png)
 
-## <a name="before-you-begin"></a>Před zahájením
+## <a name="before-you-begin"></a>Než začnete
 
 Před zahájením konfigurace ověřte, že splňujete následující kritéria:
 
@@ -42,7 +42,7 @@ Před zahájením konfigurace ověřte, že splňujete následující kritéria:
 
 V příkladech v tomto článku se používají následující hodnoty. Tyto hodnoty můžete použít k vytvoření testovacího prostředí nebo můžou sloužit k lepšímu pochopení příkladů v tomto článku. Další celkové informace o nastavení VPN Gateway najdete v tématu [Informace o nastavení služby VPN Gateway](vpn-gateway-about-vpn-gateway-settings.md).
 
-* **Název virtuální sítě:** Virtuální sítě TestVNet1
+* **Název virtuální sítě:** TestVNet1
 * **Adresní prostor:** 10.1.0.0/16
 * **Předplatné:** Předplatné, které chcete použít
 * **Skupina prostředků:** TestRG1
@@ -51,12 +51,12 @@ V příkladech v tomto článku se používají následující hodnoty. Tyto hod
 * **Název podsítě brány:** GatewaySubnet (Toto se automaticky vyplnit na portálu)
 * **Rozsah adres podsítě brány:** 10.1.255.0/27
 * **DNS Server:** 8.8.8.8 – volitelné. IP adresa vašeho serveru DNS
-* **Název brány virtuální sítě:** Brány VNet1GW
+* **Název brány virtuální sítě:** VNet1GW
 * **Veřejná IP adresa:** VNet1GWIP
 * **Typ sítě VPN:** Trasové
 * **Typ připojení:** Site-to-site (IPsec)
 * **Typ brány:** Síť VPN
-* **Název brány místní sítě:** Web1
+* **Název brány místní sítě:** Site1
 * **Název připojení:** VNet1toSite1
 * **Sdílený klíč:** V tomto příkladu použijeme abc123. Můžete ale použít cokoli, co je kompatibilní s hardwarem sítě VPN. Důležité je, že si tyto hodnoty odpovídají na obou stranách připojení.
 

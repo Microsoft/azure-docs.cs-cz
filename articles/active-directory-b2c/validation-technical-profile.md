@@ -11,11 +11,11 @@ ms.date: 09/10/2018
 ms.author: davidmu
 ms.subservice: B2C
 ms.openlocfilehash: 466ed4c2bd353e4a5ec3bec5535b70a90446ee0b
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58483892"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60418269"
 ---
 # <a name="define-a-validation-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Technický profil ověření definování ve vlastních zásadách pro Azure Active Directory B2C
 
@@ -72,7 +72,7 @@ S vlastním potvrzením technický profil může definovat profil technické ov�
 
 | Element | Výskyty | Popis |
 | ------- | ----------- | ----------- |
-| Hodnota | 1: n | Data, která se používá kontrolu. Pokud je typ této kontroly `ClaimsExist`, toto pole určuje ClaimTypeReferenceId dotazu. Pokud je typ kontroly `ClaimEquals`, toto pole určuje ClaimTypeReferenceId dotazu. Zatímco jiný element hodnota obsahuje hodnotu, která se má zkontrolovat.|
+| Value | 1: n | Data, která se používá kontrolu. Pokud je typ této kontroly `ClaimsExist`, toto pole určuje ClaimTypeReferenceId dotazu. Pokud je typ kontroly `ClaimEquals`, toto pole určuje ClaimTypeReferenceId dotazu. Zatímco jiný element hodnota obsahuje hodnotu, která se má zkontrolovat.|
 | Akce | 1:1 | Akce, která se má vzít při splnění předběžná kontrola v rámci na krok Orchestrace. Hodnota **akce** je nastavena na `SkipThisValidationTechnicalProfile`. Určuje, že by neměl být spouštěn technický profil přidruženého ověřování. |
 
 ### <a name="example"></a>Příklad:

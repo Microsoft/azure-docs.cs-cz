@@ -10,11 +10,11 @@ ms.date: 05/15/2017
 ms.author: tamram
 ms.subservice: blobs
 ms.openlocfilehash: 5dcb9f16b589b8332d5fcf35c9d8b4cd914460f2
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58012542"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60392496"
 ---
 # <a name="shared-access-signatures-part-2-create-and-use-a-sas-with-blob-storage"></a>Sdílené přístupové podpisy, část 2: Vytvoření a použití SAS s úložištěm objektů Blob
 

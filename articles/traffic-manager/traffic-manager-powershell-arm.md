@@ -12,11 +12,11 @@ ms.workload: infrastructure-services
 ms.date: 03/16/2017
 ms.author: kumud
 ms.openlocfilehash: 2ce2e2b35d731c3edfed931d158b420e66ed5620
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59045743"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60329764"
 ---
 # <a name="using-powershell-to-manage-traffic-manager"></a>Použití Powershellu ke správě Traffic Manageru
 
@@ -61,7 +61,7 @@ Následující tabulka popisuje parametry:
 
 | Parametr | Popis |
 | --- | --- |
-| Název |Název prostředku pro prostředek profilu Traffic Manageru. Profily ve stejné skupině prostředků musí mít jedinečné názvy. Tento název se liší od názvu DNS pro dotazy DNS. |
+| Name |Název prostředku pro prostředek profilu Traffic Manageru. Profily ve stejné skupině prostředků musí mít jedinečné názvy. Tento název se liší od názvu DNS pro dotazy DNS. |
 | ResourceGroupName |Název skupiny prostředků obsahující profil prostředek. |
 | TrafficRoutingMethod |Určuje metodu směrování provozu umožňuje určit, který koncový bod je vrácený v odpovědi dotazu DNS. Možné hodnoty jsou "Výkonu", "Vážená" nebo "Priority". |
 | RelativeDnsName |Určuje název hostitele část názvu DNS, který poskytuje tento profil služby Traffic Manager. Tato hodnota je v kombinaci s názvem domény DNS, použitá pro zformování plně kvalifikovaný název domény (FQDN) profilu Azure Traffic Manager. Například nastavení hodnoty "contoso" stane "contoso.trafficmanager.net." |

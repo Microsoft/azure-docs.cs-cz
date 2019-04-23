@@ -16,11 +16,11 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 82139178d4c1db4774d539180e41e49699d8ee12
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56174210"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60382374"
 ---
 # <a name="troubleshoot-object-synchronization-with-azure-ad-connect-sync"></a>Řešení potíží s synchronizace objektů pomocí synchronizace Azure AD Connect
 Tento článek popisuje kroky pro řešení potíží s synchronizace objektů pomocí úlohy řešení potíží. Podívejte se na řešení potíží s fungování v Azure Active Directory (Azure AD) Connect najdete [Toto krátké video](https://aka.ms/AADCTSVideo).

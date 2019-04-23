@@ -16,11 +16,11 @@ ms.date: 03/11/2019
 ms.author: kumud
 ms.custom: mvc
 ms.openlocfilehash: 77e322e32d19433d9ce4629c2e04c8bbd7e17f3f
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57858231"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60405498"
 ---
 # <a name="quickstart-create-a-standard-load-balancer-to-load-balance-vms-using-the-azure-portal"></a>Rychlý start: Vytvoření Load Balanceru úrovně Standard pro vyrovnávání zatížení virtuálních počítačů pomocí webu Azure Portal
 
@@ -39,11 +39,11 @@ V této části vytvoříte Load balanceru úrovně Standard, který pomáhá vy
 1. V levém horním rohu obrazovky vyberte **vytvořit prostředek** > **sítě** > **nástroje pro vyrovnávání zatížení**.
 2. V **Základy** karty **vytvořit nástroj pro vyrovnávání zatížení** stránky, zadejte nebo vyberte následující informace, přijměte výchozí hodnoty pro zbývající nastavení a pak vyberte **revize + vytvořit**:
 
-    | Nastavení                 | Hodnota                                              |
+    | Nastavení                 | Value                                              |
     | ---                     | ---                                                |
     | Předplatné               | Vyberte své předplatné.    |    
     | Skupina prostředků         | Vyberte **vytvořit nový** a typ *myResourceGroupSLB* v textovém poli.|
-    | Název                   | *myLoadBalancer*                                   |
+    | Name                   | *myLoadBalancer*                                   |
     | Oblast         | Vyberte **Západní Evropa**.                                        |
     | Type          | Vyberte **veřejné**.                                        |
     | Skladová jednotka (SKU)           | Vyberte **standardní**.                          |
@@ -73,9 +73,9 @@ Povolit nástroje pro vyrovnávání zatížení pro monitorování stavu vaší
 1. Vyberte **všechny služby** v nabídce vlevo vyberte **všechny prostředky**a pak vyberte **myLoadBalancer** v seznamu prostředků.
 2. V části **nastavení**vyberte **sondy stavu**a pak vyberte **přidat**.
     
-    | Nastavení | Hodnota |
+    | Nastavení | Value |
     | ------- | ----- |
-    | Název | Zadejte *myHealthProbe*. |
+    | Name | Zadejte *myHealthProbe*. |
     | Protocol (Protokol) | Vyberte **HTTP**. |
     | Port | Zadejte *80*.|
     | Interval | Zadejte *15* počet **Interval** v sekundách mezi pokusy o testování. |
@@ -90,9 +90,9 @@ Pravidlo Load Balanceru slouží k definování způsobu distribuce provozu do v
 2. V části **nastavení**vyberte **pravidla Vyrovnávání zatížení**a pak vyberte **přidat**.
 3. Ke konfiguraci pravidla vyrovnávání zatížení použijte tyto hodnoty:
     
-    | Nastavení | Hodnota |
+    | Nastavení | Value |
     | ------- | ----- |
-    | Název | Enter *myHTTPRule*. |
+    | Name | Enter *myHTTPRule*. |
     | Protocol (Protokol) | Vyberte **TCP**. |
     | Port | Zadejte *80*.|
     | Back-endový port | Zadejte *80*. |
@@ -110,13 +110,13 @@ V této části vytvořit virtuální síť, vytvořte dva virtuální počíta�
 
 1. V **vytvořit virtuální síť**, zadejte nebo vyberte tyto informace:
 
-    | Nastavení | Hodnota |
+    | Nastavení | Value |
     | ------- | ----- |
-    | Název | Zadejte *myVNet*. |
+    | Name | Zadejte *myVNet*. |
     | Adresní prostor | Zadejte *10.1.0.0/16*. |
     | Předplatné | Vyberte své předplatné.|
     | Skupina prostředků | Vyberte existující prostředek - *myResourceGroupSLB*. |
-    | Umístění | Vyberte **Západní Evropa**.|
+    | Location | Vyberte **Západní Evropa**.|
     | Podsíť - Name | Zadejte *myBackendSubnet*. |
     | Podsíť – Rozsah adres | Zadejte *10.1.0.0/24*. |
 1. Ponechejte zbývající výchozí hodnoty a vyberte **vytvořit**.

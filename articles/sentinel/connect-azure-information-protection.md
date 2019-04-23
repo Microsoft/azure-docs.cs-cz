@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 04/07/2019
 ms.author: rkarlin
 ms.openlocfilehash: 2f970910e19b3c1ed9d262d356c49848f4248b09
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59790837"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60443938"
 ---
 # <a name="connect-data-from-azure-information-protection"></a>Připojení dat ze služby Azure Information Protection
 

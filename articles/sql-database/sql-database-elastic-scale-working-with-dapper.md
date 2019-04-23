@@ -13,11 +13,11 @@ ms.reviewer: ''
 manager: craigg
 ms.date: 12/04/2018
 ms.openlocfilehash: c6ca7637c8e251fa29781503ffc18227c51bb4da
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58002294"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60335283"
 ---
 # <a name="using-elastic-database-client-library-with-dapper"></a>Používání klientské knihovny pro elastické databáze s Dapperem
 Tento dokument je pro vývojáře, kteří využívají Dapperem k vytváření aplikací, ale také chtít využívat [nástrojů elastic database](sql-database-elastic-scale-introduction.md) k vytvoření tohoto horizontálního dělení implementují pro horizontální navýšení kapacity datovou vrstvu aplikace.  Tento dokument ukazuje změny v aplikacích Dapperem, které jsou potřebné k integraci s nástroji elastic database. Našim hlavním cílem je sestavování, Správa elastických databází horizontálních oddílů a směrování závislé na datech s Dapperem. 

@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 12/21/2017
 ms.author: rli
 ms.openlocfilehash: 877d994968dbc575c8baa7ac4c8a40b76f6d617f
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59283473"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60323820"
 ---
 # <a name="azure-cdn-rules-engine-match-conditions"></a>Azure CDN stroj pravidel splňují podmínky 
 Tento článek obsahuje podrobný popis dostupných odpovídají podmínkám pro sítě Azure Content Delivery Network (CDN) [stroj pravidel](cdn-rules-engine.md).
@@ -35,7 +35,7 @@ Můžete například použít podmínku shody pro:
 
 Podmínka shody vždy platí výchozí sadu funkcí pro všechny požadavky.
 
-Název | Účel
+Name | Účel
 -----|--------
 [Vždy](#always) | Výchozí sada funkcí se vztahuje na všechny požadavky.
 
@@ -43,7 +43,7 @@ Název | Účel
 
 Podmínka shody zařízení identifikuje žádosti z mobilního zařízení na základě jeho vlastností.  
 
-Název | Účel
+Name | Účel
 -----|--------
 [zařízení](#device) | Identifikuje žádosti z mobilního zařízení na základě jeho vlastností.
 
@@ -51,7 +51,7 @@ Název | Účel
 
 Podmínky shody umístění identifikaci požadavků v závislosti na umístění žadatele.
 
-Název | Účel
+Name | Účel
 -----|--------
 [JAKO číslo](#as-number) | Určuje požadavky, které pocházejí z určité síti.
 [Země](#country) | Určuje požadavky, které pocházejí ze zadaného zemí.
@@ -60,7 +60,7 @@ Název | Účel
 
 Podmínky shody původu identifikaci požadavků, které odkazují na úložiště Content Delivery Network nebo zákazník zdrojový server.
 
-Název | Účel
+Name | Účel
 -----|--------
 [CDN Origin](#cdn-origin) | Identifikuje požadavky na obsah uložený v úložišti síť Content Delivery Network.
 [Zákazníka](#customer-origin) | Identifikuje požadavky na obsah uložený na původním serveru konkrétního zákazníka.
@@ -69,7 +69,7 @@ Název | Účel
 
 Podmínky shody žádost o identifikaci požadavků na základě jejich vlastností.
 
-Název | Účel
+Name | Účel
 -----|--------
 [IP adresa klienta](#client-ip-address) | Určuje požadavky, které pocházejí z konkrétní IP adresy.
 [Parametr souboru cookie](#cookie-parameter) | Ověří soubory cookie související s každou žádostí pro zadanou hodnotu.
@@ -86,7 +86,7 @@ Název | Účel
 
 Podmínky shody URL identifikaci požadavků podle jejich adresy URL.
 
-Název | Účel
+Name | Účel
 -----|--------
 [Adresář cesty URL](#url-path-directory) | Identifikuje požadavky podle jejich relativní cesty.
 [Rozšíření cesty adresy URL](#url-path-extension) | Identifikuje požadavky podle jejich přípony názvu souboru.
@@ -752,7 +752,7 @@ Informace o klíči:
 
 Ukázková konfigurace v následující tabulce se předpokládá, že pokud požadavek odpovídá zadanému vzoru adresy URL je splněna podmínka tuto shodu:
 
-Hodnota                   | Relativní vzhledem k    | Výsledek 
+Value                   | Relativní vzhledem k    | Výsledek 
 ------------------------|----------------|-------
 */test.html */test.php  | Kořenový adresář nebo původu | Tento model je nalezena shoda s požadavky na prostředky s názvem "test.html" nebo "test.php" v jakékoli složce.
 /80ABCD/origin/text/*   | Hlavní stránka           | Tento model je nalezena shoda, pokud požadovaný prostředek splňuje následující kritéria: <br />– Musí být umístěny na zákazníka původu názvem "origin". <br />– Relativní cesta musí začínat znakem složku s názvem "text". To znamená, že požadovaný prostředek se může nacházet ve složce "text" nebo jeden z jejích podsložek rekurzivní.
@@ -868,7 +868,7 @@ Informace o klíči:
 #### <a name="sample-scenarios"></a>Ukázkové scénáře
 Následující příklad ukazuje, jak se tato možnost funguje v konkrétních situacích:
 
-Název  | Hodnota |  Výsledek
+Name  | Value |  Výsledek
 ------|-------|--------
 Uživatel  | Joe   | Tento model je nalezena shoda, pokud je řetězec dotazu pro požadovanou adresu URL "? uživatel = joe."
 Uživatel  | *     | Tento model je nalezena shoda, pokud řetězec dotazu pro požadovanou adresu URL obsahuje parametr uživatele.
@@ -895,7 +895,7 @@ Informace o klíči:
     
 - Některé znaky vyžadují kódování URL. Použijte symbol procenta na adresu URL kódování následující znaky:
 
-   Znak | Kódování URL | Hodnota
+   Znak | Kódování URL | Value
    ----------|--------------|------
    Kosmické aktivity     | %20          | \%20
    &         | %25          | \%25
@@ -906,7 +906,7 @@ Informace o klíči:
 
    Příklad:
 
-   Hodnota | Interpretováno jako 
+   Value | Interpretováno jako 
    ------|---------------
    \\+    | +
    \\\\+   | \\+
@@ -960,7 +960,7 @@ Informace o klíči:
 #### <a name="sample-scenarios"></a>Ukázkové scénáře
 Následující příklad ukazuje, jak se tato možnost funguje v konkrétních situacích:
 
- Název                 | Popis
+ Name                 | Popis
  ---------------------|------------
 user=joe              | Tento model je nalezena shoda, pokud je řetězec dotazu pro požadovanou adresu URL "? uživatel = joe."
 \*user=\* \*optout=\* | Tento model je nalezena shoda, když dotaz adresy URL CDN obsahuje uživatele nebo optout parametru.

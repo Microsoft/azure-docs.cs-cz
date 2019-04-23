@@ -8,11 +8,11 @@ ms.topic: article
 ms.date: 03/01/2019
 ms.author: iainfou
 ms.openlocfilehash: 65e94a271fc8fc72ac74d51af3cf7b717f8410b0
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59785240"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60467166"
 ---
 # <a name="manually-create-and-use-a-volume-with-azure-files-share-in-azure-kubernetes-service-aks"></a>Ručně vytvořit a používat svazku se sdílenou složku služby soubory Azure ve službě Azure Kubernetes Service (AKS)
 
@@ -137,7 +137,7 @@ Volumes:
 
 Výchozí *režimu souboru fileMode* a *dirMode* hodnoty se liší mezi verzemi Kubernetes, jak je popsáno v následující tabulce.
 
-| version | hodnota |
+| version | value |
 | ---- | ---- |
 | v1.6.x, v1.7.x | 0777 |
 | v1.8.0-v1.8.5 | 0700 |

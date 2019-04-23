@@ -16,11 +16,11 @@ ms.topic: conceptual
 ms.date: 06/15/2018
 ms.author: banders
 ms.openlocfilehash: b67f3c590be290515329af390b4d3d79a9746112
-ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58339223"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60369801"
 ---
 # <a name="sign-up-for-an-office-365-subscription-with-your-azure-account"></a>Zaregistrujte si předplatné Office 365 pomocí svého účtu Azure
 Pokud jste předplatitelem Azure, můžete si zaregistrovat předplatné služeb Office 365 účtu Azure. Pokud jste součástí organizace, který má předplatné Azure, můžete vytvořit předplatných Office 365 pro uživatele ve vaší stávající Azure Active Directory (Azure AD). Zaregistrujte se k Office 365 pomocí účtu, který má oprávnění globálním správcem nebo správcem pro fakturaci ve vašem tenantovi Azure Active Directory. Další informace najdete v tématu [zkontrolujte Moje oprávnění účtu ve službě Azure AD](#RoleInAzureAD) a [přiřazení rolí správce v Azure Active Directory](../active-directory/users-groups-roles/directory-assign-admin-roles.md).

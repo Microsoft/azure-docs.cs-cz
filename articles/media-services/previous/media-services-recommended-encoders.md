@@ -10,11 +10,11 @@ ms.date: 03/20/2019
 ms.topic: article
 ms.service: media-services
 ms.openlocfilehash: 373ce1d10af87603b1bdd6339c94891187c35d8c
-ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58295364"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60332648"
 ---
 # <a name="recommended-on-premises-encoders"></a>Doporučené místní kodéry
 Když živého streamování pomocí služby Azure Media Services, můžete zadat, jak chcete, aby váš kanál pro příjem vstupního datového proudu. Pokud se rozhodnete použít kodér v místním prostředí pomocí živého kódování kanálu, by měl váš kodér push datový proud s jednou přenosovou rychlostí vysoce kvalitní jako výstup. Pokud budete chtít pomocí kodéru on premises průchozích kanálů, by měl váš kodér push datového proudu s více přenosovými rychlostmi jako výstup s všechny požadované výstupu kvality. Další informace najdete v tématu [živé streamování pomocí na místních kodérů](media-services-live-streaming-with-onprem-encoders.md).
@@ -23,22 +23,22 @@ Azure Media Services doporučuje používat jednu z následujících kodéry, kt
 - Adobe Flash Media Live Encoder 3.2
 - Haivision Makito X HEVC
 - Haivision KB
-- Telestream Wirecast 8.1 +
+- Telestream Wirecast 8.1+
 - Telestream Wirecast S
-- Řez Teradek 756
+- Teradek Slice 756
 - TriCaster 8000
 - Tricaster Mini HD-4
 - OBS Studio
 - VMIX
 - xStream
-- Přepínání Studio (iOS)
+- Switcher Studio (iOS)
 
 Azure Media Services doporučuje používat jednu z následující kodéry, které mají s více přenosovými rychlostmi fragmentovaný soubor MP4 (technologie Smooth Streaming) jako výstup:
-- Média pro Excel Hero za provozu a Hero 4K (UHD/HEVC)
-- Ateme TITAN za provozu
+- Media Excel Hero Live a Hero 4K (UHD/HEVC)
+- Ateme TITAN Live
 - Cisco Digital Media Encoder 2200
 - Elemental Live
-- Envivio 4Caster C4 obecné III
+- Envivio 4Caster C4 Gen III
 - Imagine Communications Selenio MCP3
 
 > [!NOTE]

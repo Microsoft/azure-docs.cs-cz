@@ -13,11 +13,11 @@ ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 7015abcfe3c53e2180d617bd2c78ecd44c42af7a
-ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58295619"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60412745"
 ---
 # <a name="the-elements-of-the-b2b-collaboration-invitation-email---azure-active-directory"></a>Prvky B2B spolupráce e-mailová pozvánka – Azure Active Directory
 
@@ -28,7 +28,7 @@ E-mailových pozvánek jsou zásadní pro partnery na palubě jako uživatele sp
 ## <a name="explaining-the-email"></a>S vysvětlením, e-mailu
 Podívejme se na několik elementů e-mailu, abyste věděli, jak nejlépe používat jejich funkce.
 
-### <a name="subject"></a>Subjekt
+### <a name="subject"></a>Subject
 Předmět e-mailu odpovídá následujícímu vzoru: Zveme vás k &lt;tenantname&gt; organizace
 
 ### <a name="from-address"></a>Adresa odesílatele

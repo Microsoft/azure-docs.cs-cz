@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 01/23/2019
 ms.author: aschhab
 ms.openlocfilehash: 34829482e570354c1ab1e1fd6cec0c96b993cd83
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58167027"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60403907"
 ---
 # <a name="amqp-10-support-in-service-bus"></a>Podpora AMQP 1.0 ve službě Service Bus
 Místních i cloudových služeb Azure Service Bus [sběrnice služby pro Windows Server (Service Bus 1.1)](https://msdn.microsoft.com/library/dn282144.aspx) podporu upřesnit jejich zařazování do fronty protokolu zpráv (AMQP) 1.0. AMQP umožňuje vytvářet různé platformy, hybridní aplikace pomocí otevřeného protokolu. Můžete sestavit aplikace pomocí komponenty, které jsou sestaveny na základě různých jazyků a architektur a, na kterých běží v různých operačních systémech. Všechny tyto součásti mohou připojit ke službě Service Bus a bez problémů výměnu strukturovaných obchodní zpráv efektivně a s plnou věrností.

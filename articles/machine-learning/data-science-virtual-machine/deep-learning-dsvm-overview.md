@@ -16,11 +16,11 @@ ms.topic: conceptual
 ms.date: 03/16/2018
 ms.author: gokuma
 ms.openlocfilehash: 879f5939f110fb841ad160bf09f597edcdd86d31
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55452834"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60502185"
 ---
 # <a name="introduction-to-the-deep-learning-virtual-machine"></a>Úvod do hloubkového učení virtuálního počítače
 

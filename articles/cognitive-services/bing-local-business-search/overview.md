@@ -10,11 +10,11 @@ ms.topic: article
 ms.date: 11/01/2018
 ms.author: rosh
 ms.openlocfilehash: fb3b375a66ac9b05ad26287b7c39ce8e748ad699
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57780316"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60336707"
 ---
 # <a name="what-is-bing-local-business-search"></a>Co je místní firmy vyhledávání Bingu?
 Místní firmy API pro vyhledávání Bingu je služba RESTful, která umožňuje aplikace vyhledejte informace o místních firmách na základě dotazů vyhledávání. Například `q=<business-name> in Redmond, Washington`, nebo `q=Italian restaurants near me`. 

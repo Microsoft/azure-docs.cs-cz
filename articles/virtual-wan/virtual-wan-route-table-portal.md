@@ -9,11 +9,11 @@ ms.date: 03/27/2019
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to create a route table using the portal.
 ms.openlocfilehash: 2c8b3b4671fd14f9b10b8491861ae2c652f0188b
-ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2019
-ms.locfileid: "58580580"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60461650"
 ---
 # <a name="create-a-virtual-wan-hub-route-table-for-nvas-azure-portal"></a>Vytvoření virtuální sítě WAN centra směrovací tabulky pro síťová virtuální zařízení: portál Azure
 
@@ -21,7 +21,7 @@ Tento článek popisuje, jak řídit provoz od rozbočovače síťové virtuáln
 
 ![Diagram virtuální sítě WAN](./media/virtual-wan-route-table/vwanroute.png)
 
-## <a name="before-you-begin"></a>Před zahájením
+## <a name="before-you-begin"></a>Než začnete
 
 Ověřte, že splňujete následující kritéria:
 

@@ -1,6 +1,6 @@
 ---
-title: Plánování kapacity pro aplikace Service Fabric | Microsoft Docs
-description: Popisuje, jak identifikovat počet výpočetních uzlů, které jsou potřebné pro aplikace Service Fabric
+title: Plánování kapacity pro aplikace Service Fabric | Dokumentace Microsoftu
+description: Popisuje, jak určit počet výpočetních uzlů požadovaných pro aplikaci Service Fabric
 services: service-fabric
 documentationcenter: .net
 author: mani-ramaswamy
@@ -14,28 +14,28 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 2/23/2018
 ms.author: subramar
-ms.openlocfilehash: ac8abbdbbe9125ea036d837c08e1089aa6d1e55d
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: d7ca566b86ed79aa773d7af2553223c79ed9944a
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34212853"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60341998"
 ---
 # <a name="capacity-planning-for-service-fabric-applications"></a>Plánování kapacity pro aplikace Service Fabric
-Tento dokument se naučíte, jak odhadovat objem prostředků (procesory, paměť RAM, disk v úložišti), budete muset spustit aplikace Azure Service Fabric. Je běžné pro požadavky na prostředky pro časem změnit. Několik prostředků se obvykle vyžadují, jako je vývoj/testování vaší služby a pak vyžadují více prostředků, jak můžete přejít do produkčního prostředí a aplikace zvětšování popularita. Při návrhu vaší aplikace, pečlivě promyslete požadavky na dlouhodobé a rozhodování, umožňujících služby škálování potřeby vysoké zákazníka.
+Tento dokument vás naučí, jak odhadnout objem prostředků (procesory, paměť RAM, diskové úložiště), budete muset spustit vaše aplikace Azure Service Fabric. Je běžné, že požadavky na prostředky do v průběhu času měnit. Obvykle potřebujete několik prostředků, při vývoji a testování vaší služby, a pak přejdete do produkčního prostředí a vaše aplikace poroste popularita vyžadují více prostředků. Při návrhu aplikace pečlivě promyslete dlouhodobé požadavky a rozhodovat, které umožňují službě škálovat podle potřeby vysoké zákazníka.
 
- Když vytvoříte cluster Service Fabric, je rozhodnout, jaké druhy virtuální počítače (VM) se skládá clusteru. Každý virtuální počítač se dodává s omezené množství prostředků ve formě procesorů (jader a rychlost), šířku pásma sítě, paměť RAM a diskových úložišť. S růstem vaší služby v čase, můžete upgradovat na virtuální počítače, které nabízejí větší prostředky nebo přidejte další virtuální počítače do clusteru. Pokud chcete provést k tomu, musí vaše služba architektury původně, ho můžete využít výhod nové virtuální počítače, které se dynamicky přidají do clusteru.
+ Při vytváření clusteru Service Fabric je rozhodnout, jaké typy virtuálních počítačů (VM) tvoří cluster. Každý virtuální počítač součástí omezené množství prostředků ve formě procesorů (jader a rychlost), šířky pásma sítě, RAM a diskové úložiště. S růstem vaší služby v čase, můžete upgradovat na virtuální počítače, které nabízejí větší prostředků a/nebo přidat další virtuální počítače do clusteru. Na druhém, musí vaše služba navrhovat zpočátku tak ji můžete využít výhod nových virtuálních počítačů, které získat dynamicky přidat do clusteru.
 
-Některé služby spravovat málo na žádná data na vlastních virtuálních počítačů. Plánování kapacity pro tyto služby proto měli zaměřit především na výkon, což znamená, výběrem příslušné procesorů (jader a rychlost) virtuálních počítačů. Kromě toho byste měli zvážit šířky pásma sítě, včetně jak často dochází k síťové přenosy a kolik dat je přenosu. Pokud vaše služba potřebuje provést a taky zvýší využití služby, můžete přidat další virtuální počítače v clusteru a zatížení vyrovnávání síťové požadavky napříč všech virtuálních počítačích.
+Některé služby spravovat malý na no data na samotných virtuálních počítačích. Plánování kapacity pro tyto služby by proto zaměřují především na výkon, což znamená, že vyberete příslušný procesorů (jader a rychlost) virtuálních počítačů. Kromě toho byste měli zvážit šířky pásma sítě, včetně jak často dochází k síťové přenosy a kolik data přenášejí. Pokud vaše služba potřebuje provést i zvýšení využití služeb, můžete přidat další virtuální počítače clusteru a zatížení vyrovnávání síťové požadavky ve všech virtuálních počítačích.
 
-Pro služby, které spravují velké objemy dat na virtuálních počítačích měli primárně na velikosti zaměřit plánování kapacity. Proto měli pečlivě zvážit kapacitu paměti RAM Virtuálního počítače a diskových úložišť. Systém správy virtuální paměti v systému Windows umožňuje místa na disku vypadat RAM do kódu aplikace. Kromě toho poskytuje modulu runtime Service Fabric inteligentní stránkování zachovat data pouze aktivní v paměti a přesunutí pomaleji přístupná data na disk. Aplikace můžou proto používat více paměti, než je fyzicky k dispozici ve virtuálním počítači. S víc paměti RAM zvyšuje výkon, jednoduše, vzhledem k tomu, že virtuální počítač můžete ponechat další diskového úložiště v paměti RAM. Virtuální počítač, který vyberete by měl mít disk dostatečně velký pro ukládání dat, která chcete na virtuálním počítači. Podobně virtuální počítač by měl mít dostatek paměti RAM, kde přinášejí výkonu, které očekáváte. Pokud časem naroste data vaší služby, můžete přidat další virtuální počítače do clusteru a oddíl data mezi všechny virtuální počítače.
+Pro služby, které spravují velkého objemu dat na virtuálních počítačích plánování kapacity byste se zaměřit primárně na velikosti. To znamená měli byste pečlivě zvážit kapacitu paměti RAM Virtuálního počítače a disku úložiště. Virtuální paměti systému pro správu ve Windows umožňuje místo na disku RAM vypadat, aby kód aplikace. Kromě toho modul runtime Service Fabric poskytuje inteligentní stránkování uchovávání pouze výměně dat v paměti a přechod na studená data na disk. Proto můžou aplikace použít více paměti, než je fyzicky k dispozici na virtuálním počítači. S více paměti RAM zvyšuje výkon, jednoduše, protože virtuální počítač můžete ponechat další diskové úložiště v paměti RAM. Virtuální počítač, který vyberete by měl mít dostatečně velký pro uložení dat, který chcete na virtuálním počítači disk. Podobně tento virtuální počítač by měl mít dostatek paměti RAM, kde přinášejí výkonu, které očekáváte. Pokud vaše služba objemu postupně, můžete přidat další virtuální počítače do clusteru a třídění dat ve všech virtuálních počítačích.
 
-## <a name="determine-how-many-nodes-you-need"></a>Určit, kolik uzly, budete potřebovat
-Vytváření oddílů služby umožňuje škálovat data vaší služby. Další informace o vytváření oddílů, najdete v části [dělení Service Fabric](service-fabric-concepts-partitioning.md). Každý oddíl se musí vejít do jednoho virtuálního počítače, ale více oddílů (malé) mohou být umístěny na jeden virtuální počítač. Ano s více oddíly malé vám dává větší flexibilitu, než má několik větší oddíly. O kompromisu je, že spousta oddíly zvyšuje režii Service Fabric a napříč oddíly nelze provést zpracovaných operací. Je zde také další potenciální síťový provoz Pokud kódu služby často potřebuje přístup k kusy data, která za provozu v různých oddílů. Při navrhování vaší služby, pečlivě zvažte tyto výhody a nevýhody přijaty ve efektivní strategie dělení.
+## <a name="determine-how-many-nodes-you-need"></a>Určení počtu uzlů, které potřebujete
+Dělení služby můžete horizontálně navýšit kapacitu vaší služby data. Další informace o dělení najdete v tématu [vytváření oddílů Service Fabric](service-fabric-concepts-partitioning.md). Každý oddíl musí vejít do jednoho virtuálního počítače, ale více oddílů (malé) mohou být umístěny na jeden virtuální počítač. Tedy s více malých oddílů umožňuje větší flexibilitu než s několika větší oddíly. Nutný kompromis je, že spousta oddílů zvyšuje režii Service Fabric a nemůže provést přerušené provedené operace napříč oddíly. Je také další potenciální síťový provoz Pokud kódu služby se často potřebuje přístup k byly v různých oddílech. Při navrhování vaší služby, pečlivě zvažte tyto výhody a nevýhody můžete přejít na efektivní strategie dělení.
 
-Předpokládejme, že aplikace má jeden stavové služby, která má velikost úložiště, který chcete dosáhnout DB_Size GB v roce. Chcete-li přidat další aplikace (a oddíly) jako prostředí růstu nad rámec tohoto roku.  Replikace faktor (RF), která určuje počet replik služby má dopad na celkový DB_Size. Celkový počet DB_Size napříč všechny repliky je násobí hodnotou DB_Size faktor replikace.  Node_Size představuje místa nebo RAM disku na jeden uzel, který chcete použít pro vaši službu. Pro nejlepší výkon DB_Size by měl začlenit do paměti v clusteru a je třeba zvolit Node_Size, který je kolem paměť RAM virtuálního počítače. Přidělí Node_Size, která je větší než kapacita paměti RAM, se spoléhat na stránkování poskytované modulu runtime Service Fabric. Proto nemusí být optimální, pokud se považuje za aktivního celého datového výkon (od té doby dat je stránkovaného vstup/výstup). Pro mnoho služeb, kde je aktivní pouze část dat, je však cenově výhodnější.
+Předpokládejme, že aplikace obsahuje jeden stavové služby, který má velikost úložiště, který očekáváte, že se jejich DB_Size GB v roce. Chcete-li přidat víc aplikací (a oddíly) jak dochází k růstu za daný rok.  Faktor replikace (RF), která určuje počet replik pro vaši službu má dopad na celkový počet DB_Size. Celkový počet DB_Size přes všechny repliky je faktor replikace vynásobené DB_Size.  Node_Size představuje prostor/RAM disku na jeden uzel, který chcete použít pro vaši službu. Pro zajištění nejlepšího výkonu DB_Size by se měl vejít do paměti napříč clusterem a je třeba zvolit Node_Size, který spočívá v paměti RAM virtuálního počítače. Přidělením Node_Size, který je větší než kapacita paměti RAM, jste závislí na stránkování poskytuje modul runtime Service Fabric. Proto nemusí být optimální, pokud všechna data se považuje za aktivní výkon (od té doby data se stránkováním vstup a výstup). U řady služeb, kde je aktivní jenom část data, je cenově výhodnější.
 
-Počet uzlů, které jsou potřebné pro maximální výkon můžete vypočítat následujícím způsobem:
+Počet uzlů, vyžaduje se pro maximální výkon může být vypočítán takto:
 
 ```
 Number of Nodes = (DB_Size * RF)/Node_Size
@@ -43,24 +43,24 @@ Number of Nodes = (DB_Size * RF)/Node_Size
 ```
 
 
-## <a name="account-for-growth"></a>Účet pro růst
-Můžete vypočítat počet uzlů podle DB_Size, které očekáváte, že služby růst, kromě DB_Size, které začne s. Potom růst počet uzlů s růstem vaší služby, aby nejsou předimenzování počet uzlů. Ale počet oddílů by měl být podle počtu uzlů, které jsou potřebné, pokud používáte služby v maximální růstu.
+## <a name="account-for-growth"></a>Počítat s nárůstem
+Můžete vypočítat počet uzlů podle DB_Size, který očekáváte, že vaše služba rozrůstá, kromě DB_Size, který jste začali. Potom růst počtu uzlů vaší služby tak, aby se bylo potřeba zřizovat z počtu uzlů. Ale počet oddílů, by měla vycházet z počtu uzlů, které jsou potřebné, pokud používáte služby na maximální růstu.
 
-Je vhodné mít některé další počítače, které jsou k dispozici kdykoli tak, aby bylo možné zpracovat všechny neočekávané špičky nebo selhání, (například pokud několika virtuálními počítači přejděte).  Při kapacitu navíc by měl být určen pomocí vaší očekávané špičky, výchozí bod je můžete vyhradit několik navíc za virtuální počítače (5-10 procent navíc).
+Je dobré mít některé další počítače, které jsou dostupné kdykoli, aby (například pokud několik virtuálních počítačů, přejděte) můžete zpracovávat všechny neočekávaným nárůstem nebo selhání.  Když kapacita navíc byste měli určit podle očekávané špičky použití, je výchozí bod rezervovat několik dalších virtuálních počítačů (% 5 až 10 Další).
 
-Podle předchozích předpokládá jednu stavové služby. Pokud máte více než jeden stavové služby, budete muset přidat DB_Size spojené s jinými službami do rovnice. Alternativně můžete vypočítat počet uzlů samostatně pro každou stavové služby.  Vaše služba může mít repliky nebo oddíly, které nejsou spárovány. Uvědomte si, že oddíly mohou mít i více dat než jiné. Další informace o vytváření oddílů, najdete v části [dělení článek o osvědčených postupech](service-fabric-concepts-partitioning.md). Ale předchozí vztah je oddíl a repliky lhostejné, protože Service Fabric zajistí, že repliky jsou rozprostřeny mezi uzly optimalizovaným způsobem.
+Předchozí předpokládá jednu stavové služby. Pokud máte více než jeden stavové služby, budete muset přidat DB_Size spojené s jinými službami do rovnice. Alternativně můžete vypočítat počet uzlů samostatně pro každý stavové služby.  Vaše služba může mít repliky nebo oddíly, které nejsou vyváženy. Uvědomte si, že oddíly mohou mít i více dat než jiné. Další informace o dělení najdete v tématu [článek věnovaný tomu, osvědčené postupy vytváření oddílů](service-fabric-concepts-partitioning.md). Předchozí rovnice ale oddílů a replik nezávislá, protože Service Fabric zajišťuje, že tyto repliky jsou rozprostřeny mezi uzly optimalizovaným způsobem.
 
-## <a name="use-a-spreadsheet-for-cost-calculation"></a>Používání tabulky pro výpočet nákladů
-Nyní ve vzorci přidejme některé reálná čísla. [Příklad tabulky](https://servicefabricsdkstorage.blob.core.windows.net/publicrelease/SF%20VM%20Cost%20calculator-NEW.xlsx) ukazuje, jak plánování kapacity pro aplikaci, která obsahuje tři typy datových objektů. Pro každý objekt jsme Přibližná jeho velikost a kolik objekty že Očekáváme, že má. Můžeme také vybrat kolik repliky chceme každého typu objektu. Tabulku vypočítá celkové množství paměti k uložení do clusteru.
+## <a name="use-a-spreadsheet-for-cost-calculation"></a>Pomocí tabulky pro výpočet nákladů
+Teď můžeme ve vzorci vložit některé reálná čísla. [Tabulky příklad](https://servicefabricsdkstorage.blob.core.windows.net/publicrelease/SF%20VM%20Cost%20calculator-NEW.xlsx) ukazuje, jak plánování kapacity pro aplikace, která obsahuje tři typy datových objektů. Pro každý objekt budeme blížit jeho velikost a počet objektů, že chceme mít. Můžeme také vybrat počet replik chceme, aby každý typ objektu. Tabulky vypočítá celkové množství paměti se ukládají v clusteru.
 
-Potom jsme zadejte velikost virtuálního počítače a měsíční náklady. Podle velikosti virtuálního počítače, tabulce zjistíte minimální počet oddílů, které je nutné použít k rozdělení dat, aby se fyzicky vejít na uzly. Očekáváte větší počet oddílů pro přizpůsobení výpočetní konkrétní aplikace a je třeba síťový provoz. Tabulku zobrazuje počet oddílů, které budete spravovat objekty uživatelského profilu zvýšilo 1 až šest.
+Potom jsme zadat velikost virtuálního počítače a měsíční náklady. Na základě velikosti virtuálního počítače tabulky zjistíte, minimální počet oddílů, které je nutné použít k rozdělení data fyzicky vejít na uzlech. Může mít větší počet oddílů, aby odpovídala konkrétním výpočtu vaší aplikace a je třeba síťový provoz. Tabulka ukazuje, že počet oddílů, které spravujete uživatelské objekty profilu zvýšil z nich se má šest.
 
-Nyní založená na všechny tyto informace, tabulku zobrazuje, může získat všechna data s požadovanou oddíly a repliky fyzicky na 26 uzly clusteru. Však tento cluster by hustě balí, takže můžete chtít, aby dokázala pojmout selhání uzlů a upgrady některé další uzly. Tabulku také ukazuje, že s více než 57 uzly poskytuje žádná další hodnota, protože bude mít prázdný uzly. Chcete znovu přejděte výše 57 uzly přesto zohlednit selhání uzlů a upgrady. Tabulku tak, aby odpovídala konkrétním potřebám vaší aplikace, můžete upravit.   
+Nyní na základě této informace tabulky ukazuje, že by mohla fyzicky získá všechna data s požadovanou oddíly a replikami v 26 uzlu clusteru. Ale tento cluster by hustě balí, proto je vhodné některé další uzly selhání uzlů a upgrady. Tabulka také ukazuje, že máte víc než 57 uzly neposkytuje žádnou další hodnotu, protože bude mít prázdné uzly. Chcete znovu, přesto přejít nad 57 uzly selhání uzlů a upgrady. Můžete upravit tabulku tak, aby odpovídala konkrétním potřebám vaší aplikace.   
 
 ![Tabulky pro výpočet nákladů][Image1]
 
 ## <a name="next-steps"></a>Další postup
-Podívejte se na [dělení Service Fabric služby] [ 10] Další informace o vytváření oddílů služby.
+Podívejte se na [služeb vytváření oddílů Service Fabric] [ 10] Další informace o dělení vaší služby.
 
 <!--Image references-->
 [Image1]: ./media/SF-Cost.png

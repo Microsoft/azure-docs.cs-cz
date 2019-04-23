@@ -7,13 +7,13 @@ ms.topic: conceptual
 ms.date: 10/31/2018
 ms.author: v-erkell
 ms.openlocfilehash: e72e6d969649de09389ee38b94e874fad98ee08f
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50633810"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60409205"
 ---
-# <a name="authorize-non-owners-to-deploy-avere-vfxt"></a>Povolit bez vlastníků nasazení Avere vFXT
+# <a name="authorize-non-owners-to-deploy-avere-vfxt"></a>Oprávnění k nasazení Avere vFXT pro jiné uživatele než vlastníky
 
 Tyto pokyny jsou alternativní řešení, která umožňuje uživateli bez předplatného oprávnění vlastníka k vytvoření Avere vFXT systému Azure.
 

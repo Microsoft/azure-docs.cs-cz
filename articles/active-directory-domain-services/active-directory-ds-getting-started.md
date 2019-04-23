@@ -16,17 +16,17 @@ ms.topic: conceptual
 ms.date: 05/23/2018
 ms.author: ergreenl
 ms.openlocfilehash: 637ad62744affa37630df9c841f3c7529674e788
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58122905"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60418157"
 ---
 # <a name="enable-azure-active-directory-domain-services-using-the-azure-portal"></a>Povolit Azure Active Directory Domain Services pomocí webu Azure portal
 Tento článek ukazuje, jak povolit Azure Active Directory Domain Services (Azure AD DS) pomocí webu Azure portal.
 
 
-## <a name="before-you-begin"></a>Před zahájením
+## <a name="before-you-begin"></a>Než začnete
 K dokončení úkolů uvedených v tomto článku, budete potřebovat:
 
 * Platný **předplatného Azure**.

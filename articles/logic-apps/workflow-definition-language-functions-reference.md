@@ -10,11 +10,11 @@ ms.reviewer: klam, LADocs
 ms.topic: reference
 ms.date: 08/15/2018
 ms.openlocfilehash: d7ea62c51065cbe85a905b4ff78743fdc11c1e10
-ms.sourcegitcommit: fec96500757e55e7716892ddff9a187f61ae81f7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2019
-ms.locfileid: "59618205"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60502249"
 ---
 # <a name="functions-reference-for-workflow-definition-language-in-azure-logic-apps-and-microsoft-flow"></a>Functions – reference pro jazyk pro definování pracovních postupů v Azure Logic Apps a Microsoft Flow
 
@@ -641,14 +641,14 @@ addProperty(<object>, '<property>', <value>)
 
 | Parametr | Požaduje se | Typ | Popis |
 | --------- | -------- | ---- | ----------- |
-| <*objekt*> | Ano | Objekt | Objekt JSON, ve které chcete přidat vlastnost |
+| <*objekt*> | Ano | Object | Objekt JSON, ve které chcete přidat vlastnost |
 | <*property*> | Ano | String | Název vlastnosti, která má přidat |
 | <*Hodnota*> | Ano | Všechny | Hodnota pro vlastnost |
 |||||
 
 | Návratová hodnota | Type | Popis |
 | ------------ | ---- | ----------- |
-| <*updated-object*> | Objekt | Aktualizovaný objekt JSON se zadanou vlastností |
+| <*updated-object*> | Object | Aktualizovaný objekt JSON se zadanou vlastností |
 ||||
 
 *Příklad*
@@ -759,12 +759,12 @@ and(<expression1>, <expression2>, ...)
 
 | Parametr | Požaduje se | Typ | Popis |
 | --------- | -------- | ---- | ----------- |
-| <*Expression1*>, <*expression2*>,... | Ano | Logická hodnota | Výrazy ke kontrole |
+| <*Expression1*>, <*expression2*>,... | Ano | Boolean | Výrazy ke kontrole |
 |||||
 
 | Návratová hodnota | Type | Popis |
 | ------------ | -----| ----------- |
-| PRAVDA nebo NEPRAVDA | Logická hodnota | Vrátí hodnotu PRAVDA, pokud jsou splněny všechny výrazy. Vrátí hodnotu false, pokud se alespoň jeden výraz je nepravdivý. |
+| PRAVDA nebo NEPRAVDA | Boolean | Vrátí hodnotu PRAVDA, pokud jsou splněny všechny výrazy. Vrátí hodnotu false, pokud se alespoň jeden výraz je nepravdivý. |
 ||||
 
 *Příklad 1*
@@ -926,7 +926,7 @@ A vrátí výsledek: `"hello"`
 
 <a name="binary"></a>
 
-### <a name="binary"></a>Binární
+### <a name="binary"></a>binary
 
 Vrátí binární verze řetězce.
 
@@ -1020,7 +1020,7 @@ bool(<value>)
 
 | Návratová hodnota | Type | Popis |
 | ------------ | ---- | ----------- |
-| PRAVDA nebo NEPRAVDA | Logická hodnota | Logická verze pro zadanou hodnotu |
+| PRAVDA nebo NEPRAVDA | Boolean | Logická verze pro zadanou hodnotu |
 ||||
 
 *Příklad*
@@ -1131,7 +1131,7 @@ Konkrétně tato funkce funguje u těchto typů kolekce:
 
 | Návratová hodnota | Type | Popis |
 | ------------ | ---- | ----------- |
-| PRAVDA nebo NEPRAVDA | Logická hodnota | Vrátí hodnotu PRAVDA, pokud byla položka nalezena. Vrátí hodnotu false po nebyl nalezen. |
+| PRAVDA nebo NEPRAVDA | Boolean | Vrátí hodnotu PRAVDA, pokud byla položka nalezena. Vrátí hodnotu false po nebyl nalezen. |
 ||||
 
 *Příklad 1*
@@ -1678,7 +1678,7 @@ empty([<collection>])
 
 | Návratová hodnota | Type | Popis |
 | ------------ | ---- | ----------- |
-| PRAVDA nebo NEPRAVDA | Logická hodnota | Vrátí hodnotu PRAVDA, pokud kolekce je prázdná. Vrátí hodnotu NEPRAVDA, pokud není prázdný. |
+| PRAVDA nebo NEPRAVDA | Boolean | Vrátí hodnotu PRAVDA, pokud kolekce je prázdná. Vrátí hodnotu NEPRAVDA, pokud není prázdný. |
 ||||
 
 *Příklad*
@@ -1715,7 +1715,7 @@ endsWith('<text>', '<searchText>')
 
 | Návratová hodnota | Type | Popis |
 | ------------ | ---- | ----------- |
-| PRAVDA nebo NEPRAVDA  | Logická hodnota | Vrátí hodnotu PRAVDA, pokud se najde poslední podřetězec. Vrátí hodnotu false po nebyl nalezen. |
+| PRAVDA nebo NEPRAVDA  | Boolean | Vrátí hodnotu PRAVDA, pokud se najde poslední podřetězec. Vrátí hodnotu false po nebyl nalezen. |
 ||||
 
 *Příklad 1*
@@ -1756,7 +1756,7 @@ equals('<object1>', '<object2>')
 
 | Návratová hodnota | Type | Popis |
 | ------------ | ---- | ----------- |
-| PRAVDA nebo NEPRAVDA | Logická hodnota | Vrátí hodnotu PRAVDA, pokud obě jsou ekvivalentní. Vrátí hodnotu NEPRAVDA, pokud není ekvivalentní. |
+| PRAVDA nebo NEPRAVDA | Boolean | Vrátí hodnotu PRAVDA, pokud obě jsou ekvivalentní. Vrátí hodnotu NEPRAVDA, pokud není ekvivalentní. |
 ||||
 
 *Příklad*
@@ -2041,7 +2041,7 @@ greater('<value>', '<compareTo>')
 
 | Návratová hodnota | Type | Popis |
 | ------------ | ---- | ----------- |
-| PRAVDA nebo NEPRAVDA | Logická hodnota | Vrátí hodnotu PRAVDA, pokud je první hodnota větší než druhá hodnota. Vrátí hodnotu false, pokud první hodnota je větší nebo menší než druhá hodnota. |
+| PRAVDA nebo NEPRAVDA | Boolean | Vrátí hodnotu PRAVDA, pokud je první hodnota větší než druhá hodnota. Vrátí hodnotu false, pokud první hodnota je větší nebo menší než druhá hodnota. |
 ||||
 
 *Příklad*
@@ -2078,7 +2078,7 @@ greaterOrEquals('<value>', '<compareTo>')
 
 | Návratová hodnota | Type | Popis |
 | ------------ | ---- | ----------- |
-| PRAVDA nebo NEPRAVDA | Logická hodnota | Vrátí hodnotu PRAVDA, pokud první hodnota je větší než nebo rovna hodnotě druhá hodnota. Vrátí hodnotu NEPRAVDA, pokud je první hodnota menší než druhá hodnota. |
+| PRAVDA nebo NEPRAVDA | Boolean | Vrátí hodnotu PRAVDA, pokud první hodnota je větší než nebo rovna hodnotě druhá hodnota. Vrátí hodnotu NEPRAVDA, pokud je první hodnota menší než druhá hodnota. |
 ||||
 
 *Příklad*
@@ -2144,7 +2144,7 @@ if(<expression>, <valueIfTrue>, <valueIfFalse>)
 
 | Parametr | Požaduje se | Typ | Popis |
 | --------- | -------- | ---- | ----------- |
-| <*Výraz*> | Ano | Logická hodnota | Výraz, který má zkontrolovat |
+| <*Výraz*> | Ano | Boolean | Výraz, který má zkontrolovat |
 | <*valueIfTrue*> | Ano | Všechny | Hodnota, která má vrácené v případě, kdy je výraz pravdivý |
 | <*valueIfFalse*> | Ano | Všechny | Hodnota, která má vrátit, pokud má výraz hodnotu false |
 |||||
@@ -2530,7 +2530,7 @@ less('<value>', '<compareTo>')
 
 | Návratová hodnota | Type | Popis |
 | ------------ | ---- | ----------- |
-| PRAVDA nebo NEPRAVDA | Logická hodnota | Vrátí hodnotu PRAVDA, pokud je první hodnota menší než druhá hodnota. Vrátí hodnotu false, pokud první hodnota je roven nebo větší než druhá hodnota. |
+| PRAVDA nebo NEPRAVDA | Boolean | Vrátí hodnotu PRAVDA, pokud je první hodnota menší než druhá hodnota. Vrátí hodnotu false, pokud první hodnota je roven nebo větší než druhá hodnota. |
 ||||
 
 *Příklad*
@@ -2567,7 +2567,7 @@ lessOrEquals('<value>', '<compareTo>')
 
 | Návratová hodnota | Type | Popis |
 | ------------ | ---- | ----------- |
-| PRAVDA nebo NEPRAVDA  | Logická hodnota | Vrátí hodnotu PRAVDA, pokud je první hodnota menší než druhá hodnota. Vrátí hodnotu false, pokud první hodnota je větší než druhá hodnota. |
+| PRAVDA nebo NEPRAVDA  | Boolean | Vrátí hodnotu PRAVDA, pokud je první hodnota menší než druhá hodnota. Vrátí hodnotu false, pokud první hodnota je větší než druhá hodnota. |
 ||||
 
 *Příklad*
@@ -2773,12 +2773,12 @@ not(<expression>)
 
 | Parametr | Požaduje se | Typ | Popis |
 | --------- | -------- | ---- | ----------- |
-| <*Výraz*> | Ano | Logická hodnota | Výraz, který má zkontrolovat |
+| <*Výraz*> | Ano | Boolean | Výraz, který má zkontrolovat |
 |||||
 
 | Návratová hodnota | Type | Popis |
 | ------------ | ---- | ----------- |
-| PRAVDA nebo NEPRAVDA | Logická hodnota | Vrátí hodnotu PRAVDA, pokud má výraz hodnotu false. Vrátí hodnotu false, pokud má výraz hodnotu true. |
+| PRAVDA nebo NEPRAVDA | Boolean | Vrátí hodnotu PRAVDA, pokud má výraz hodnotu false. Vrátí hodnotu false, pokud má výraz hodnotu true. |
 ||||
 
 *Příklad 1*
@@ -2822,12 +2822,12 @@ or(<expression1>, <expression2>, ...)
 
 | Parametr | Požaduje se | Typ | Popis |
 | --------- | -------- | ---- | ----------- |
-| <*Expression1*>, <*expression2*>,... | Ano | Logická hodnota | Výrazy ke kontrole |
+| <*Expression1*>, <*expression2*>,... | Ano | Boolean | Výrazy ke kontrole |
 |||||
 
 | Návratová hodnota | Type | Popis |
 | ------------ | ---- | ----------- |
-| PRAVDA nebo NEPRAVDA | Logická hodnota | Vrátí hodnotu PRAVDA, pokud alespoň jeden výraz hodnotu true. Vrátí hodnotu false, pokud jsou všechny výrazy hodnotu false. |
+| PRAVDA nebo NEPRAVDA | Boolean | Vrátí hodnotu PRAVDA, pokud alespoň jeden výraz hodnotu true. Vrátí hodnotu false, pokud jsou všechny výrazy hodnotu false. |
 ||||
 
 *Příklad 1*
@@ -3002,13 +3002,13 @@ removeProperty(<object>, '<property>')
 
 | Parametr | Požaduje se | Typ | Popis |
 | --------- | -------- | ---- | ----------- |
-| <*objekt*> | Ano | Objekt | Objekt JSON z, ve které chcete odebrat vlastnost |
+| <*objekt*> | Ano | Object | Objekt JSON z, ve které chcete odebrat vlastnost |
 | <*property*> | Ano | String | Název vlastnosti, která má odebrat |
 |||||
 
 | Návratová hodnota | Type | Popis |
 | ------------ | ---- | ----------- |
-| <*updated-object*> | Objekt | Aktualizovaný objekt JSON bez zadané vlastnosti |
+| <*updated-object*> | Object | Aktualizovaný objekt JSON bez zadané vlastnosti |
 ||||
 
 *Příklad*
@@ -3032,14 +3032,14 @@ setProperty(<object>, '<property>', <value>)
 
 | Parametr | Požaduje se | Typ | Popis |
 | --------- | -------- | ---- | ----------- |
-| <*objekt*> | Ano | Objekt | Objekt JSON, jehož vlastnosti chcete nastavit |
+| <*objekt*> | Ano | Object | Objekt JSON, jehož vlastnosti chcete nastavit |
 | <*property*> | Ano | String | Název vlastnosti existujících nebo nových nastavení |
 | <*Hodnota*> | Ano | Všechny | Hodnota k nastavení pro zadanou vlastnost |
 |||||
 
 | Návratová hodnota | Type | Popis |
 | ------------ | ---- | ----------- |
-| <*updated-object*> | Objekt | Aktualizovaný objekt JSON jehož nastavenou |
+| <*updated-object*> | Object | Aktualizovaný objekt JSON jehož nastavenou |
 ||||
 
 *Příklad*
@@ -3226,7 +3226,7 @@ startsWith('<text>', '<searchText>')
 
 | Návratová hodnota | Type | Popis |
 | ------------ | ---- | ----------- |
-| PRAVDA nebo NEPRAVDA  | Logická hodnota | Vrátí hodnotu PRAVDA, když se najde dílčí řetězec začíná. Vrátí hodnotu false po nebyl nalezen. |
+| PRAVDA nebo NEPRAVDA  | Boolean | Vrátí hodnotu PRAVDA, když se najde dílčí řetězec začíná. Vrátí hodnotu false po nebyl nalezen. |
 ||||
 
 *Příklad 1*
@@ -4106,7 +4106,7 @@ xml('<value>')
 
 | Návratová hodnota | Type | Popis |
 | ------------ | ---- | ----------- |
-| <*xml-version*> | Objekt | Kódovaný XML pro zadaný řetězec nebo objekt JSON |
+| <*xml-version*> | Object | Kódovaný XML pro zadaný řetězec nebo objekt JSON |
 ||||
 
 *Příklad 1*

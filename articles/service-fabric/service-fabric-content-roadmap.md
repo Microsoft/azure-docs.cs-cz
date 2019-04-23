@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 12/08/2017
 ms.author: atsenthi
-ms.openlocfilehash: adbe101455bc200bc6be439920736b756f08b695
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: dfe08152f986ccac3dabe7b3bb21e7653ee812a4
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58667986"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60394374"
 ---
 # <a name="so-you-want-to-learn-about-service-fabric"></a>Proto chcete se dozvědět o službě Service Fabric?
 Azure Service Fabric je platforma distribuovaných systémů usnadňující balení, nasazování a spravování škálovatelných a spolehlivých mikroslužeb.  Service Fabric má velký plochy, ale a existuje mnoho dalších informací.  Tento článek poskytuje stručný Service Fabric a popisuje základní koncepty programovacích modelů životního cyklu aplikací, testování, clustery a sledování stavu. Čtení [přehled](service-fabric-overview.md) a [co jsou mikroslužby?](service-fabric-overview-microservices.md) úvod a jak Service Fabric umožňuje vytvářet mikroslužby. Tento článek obsahuje úplný seznam obsahu, ale propojit pro přehled a získávání Začínáme články pro každou oblast Service Fabric. 
@@ -165,7 +165,7 @@ Generování sestav můžete provést ve:
 * Interní watchdogs spuštění na uzlech Service Fabric, které nejsou implementované jako služeb Service Fabric.
 * Externí watchdogs, které pro zjišťování prostředků z mimo cluster Service Fabric (například monitorování službě, jako je Gomez).
 
-Komponenty Service Fabric hned po spuštění sestavy stavu všech entit v clusteru. [Systémovými stavovými sestavami](service-fabric-understand-and-troubleshoot-with-system-health-reports.md) poskytují vhled do aplikací a clusteru a příznak funkce problémů prostřednictvím služby health. Pro aplikace a služby systémovými stavovými sestavami ověřte, že entity jsou implementovány a chovají správně z hlediska modulu runtime Service Fabric. Sestavy poskytují jakékoli sledování stavu obchodní logiky služby ani detekovat ukončování "zamrzlých" procesů. Chcete-li přidat konkrétní informace o stavu pro vaši službu logic [implementaci vlastních stavových sestav](service-fabric-report-health.md) ve vašich službách.
+Komponenty Service Fabric hned po spuštění sestavy stavu všech entit v clusteru. [Systémovými stavovými sestavami](service-fabric-understand-and-troubleshoot-with-system-health-reports.md) poskytují vhled do aplikací a clusteru a příznak funkce problémů prostřednictvím služby health. Pro aplikace a služby systémovými stavovými sestavami ověřte, že entity jsou implementovány a chovají správně z hlediska modulu runtime Service Fabric. Sestavy poskytují jakékoli sledování stavu obchodní logiky služby ani detekovat procesy, které se přestaly odpovídat. Chcete-li přidat konkrétní informace o stavu pro vaši službu logic [implementaci vlastních stavových sestav](service-fabric-report-health.md) ve vašich službách.
 
 Service Fabric poskytuje několik způsobů [zobrazení sestav health](service-fabric-view-entities-aggregated-health.md) agregovat v health store:
 * [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md) nebo jiné nástroje pro vizualizaci.

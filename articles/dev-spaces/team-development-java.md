@@ -11,11 +11,11 @@ description: Rychlý vývoj na platformě Kubernetes s využitím kontejnerů a 
 keywords: 'Docker, Kubernetes, Azure, AKS, službě Azure Kubernetes, kontejnery, Helm, služby sítě, směrování sítě služby, kubectl, k8s '
 manager: mmontwil
 ms.openlocfilehash: 29a50a871702985b64c594d5bd3700d4e29f40df
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59788305"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60368193"
 ---
 [!INCLUDE [](../../includes/devspaces-team-development-1.md)]
 

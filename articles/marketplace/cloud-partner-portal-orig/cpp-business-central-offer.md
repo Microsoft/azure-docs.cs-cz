@@ -15,13 +15,13 @@ ms.topic: conceptual
 ms.date: 11/01/2018
 ms.author: pbutlerm
 ms.openlocfilehash: b5fdcb3269a63e6f0d961bf2ab9f5f2a4a4005ab
-ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51038896"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60398314"
 ---
-# <a name="dynamics-365-business-central-offer"></a>Nabídka Dynamics 365 Business Central
+# <a name="dynamics-365-business-central-offer"></a>Dynamics 365 Business Central offer
 
 <table> <tr> <td>Tato část vysvětluje, jak publikovat aplikace Dynamics 365 Business Central řešení Microsoftu <a href="https://appsource.microsoft.com">AppSource Marketplace</a>. Microsoft <a href="https://dynamics.microsoft.com/business-central">Microsoft Dynamics 365 Business Central</a> je podnikových zdrojů (ERP) systému, které zpracovávají širokou škálu obchodních procesů, včetně finance, operations, zadejte řetězec, CRM a řízení projektů pro plánování a elektronické obchodování. Balíčky Premium také podporují správu služeb a výroby. </td> <td><img src="./media/d365-financials/dynbuscen-icon1.png"  alt="Dynamics 365 Business Central icon" /></td> </tr> </table>
 

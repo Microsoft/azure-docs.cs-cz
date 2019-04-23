@@ -13,11 +13,11 @@ ms.date: 12/10/2018
 ms.author: abnarain
 ms.reviewer: douglasl
 ms.openlocfilehash: 562ce675acc43002ce468d60f8a8c412410be86c
-ms.sourcegitcommit: 956749f17569a55bcafba95aef9abcbb345eb929
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58630808"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60395227"
 ---
 # <a name="transform-data-by-using-databricks-in-azure-data-factory"></a>Transformace dat pomocí Databricks v Azure Data Factory
 

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 95d19068e482722bf6cd01e44d27c2719bc419a3
-ms.sourcegitcommit: b8a8d29fdf199158d96736fbbb0c3773502a092d
+ms.openlocfilehash: a945316df27460fef48a8bb4d43e46d412d2ae81
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/15/2019
-ms.locfileid: "59564527"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60359159"
 ---
 # <a name="integrate-your-existing-nps-infrastructure-with-azure-multi-factor-authentication"></a>Integrace vaší stávající infrastruktury NPS pomocí ověřování Azure Multi-Factor Authentication
 
@@ -76,14 +76,14 @@ Při instalaci rozšíření, musíte pro vašeho tenanta Azure AD directory ID 
 
 NPS server musí být schopný komunikovat s následujícími adresami URL přes porty 80 a 443.
 
-* https://adnotifications.windowsazure.com  
-* https://login.microsoftonline.com
+* https:\//adnotifications.windowsazure.com  
+* https:\//login.microsoftonline.com
 
 Kromě toho je potřeba připojení k následujícím adresám URL dokončení [instalační program adaptéru pomocí skriptu prostředí PowerShell](#run-the-powershell-script)
 
-- https://login.microsoftonline.com
-- https://provisioningapi.microsoftonline.com
-- https://aadcdn.msauth.net
+- https:\//login.microsoftonline.com
+- https:\//provisioningapi.microsoftonline.com
+- https:\//aadcdn.msauth.net
 
 ## <a name="prepare-your-environment"></a>Příprava prostředí
 
@@ -207,7 +207,7 @@ Jakmile povolíte MFA pro klienta RADIUS pomocí rozšíření serveru NPS, veš
 
 Pokud máte uživatele, která nejsou zaregistrovaná pro vícefaktorové ověřování, můžete určit, co se stane při pokusu o ověření. Pomocí nastavení registru *REQUIRE_USER_MATCH* v cestě registru *HKLM\Software\Microsoft\AzureMFA* můžete řídit chování funkce. Toto nastavení nemá možnost jediné konfiguraci:
 
-| Klíč | Hodnota | Výchozí |
+| Klíč | Value | Výchozí |
 | --- | ----- | ------- |
 | REQUIRE_USER_MATCH | TRUE NEBO FALSE | Není nastavený (ekvivalentní na hodnotu TRUE) |
 

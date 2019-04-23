@@ -9,12 +9,12 @@ ms.author: grhuynh
 ms.service: genomics
 ms.topic: article
 ms.date: 12/07/2017
-ms.openlocfilehash: df329d42022f4e56b3d6d4d26519acd42caa1ae4
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 7198e64a11a3aa23643cc2bfb5ecff884c6a1b48
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56881817"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60445545"
 ---
 # <a name="microsoft-genomics-common-questions"></a>Microsoft Genomics: Časté dotazy
 
@@ -73,6 +73,7 @@ Klíč účtu úložiště se používá k vytvoření krátkodobé přístupov�
 ## <a name="what-genome-references-can-i-use"></a>Jaké genomu odkazuje můžu použít?
 
 Podporují se tyto odkazy:
+
  |Referenční informace              | Hodnota `-pa/--process-args` |
  |:-------------         |:-------------                 |
  |b37                    | `R=b37m1`                     |
@@ -84,15 +85,15 @@ Podporují se tyto odkazy:
 
 msgen rozumí konfigurační soubory v následujícím formátu:
 * Všechny možnosti jsou k dispozici jako páry klíč hodnota s hodnotami z klíče oddělené dvojtečkou.
-Prázdné znaky se ignoruje.
+  Prázdné znaky se ignoruje.
 * Řádky začínající `#` jsou ignorovány.
 * Některý argument příkazového řádku v dlouhém formátu můžete převést na klíč tak, že odstranění jeho přední pomlčky a nahrazení pomlčky mezi slovy podtržítky. Tady je několik příkladů převod:
 
- |argument příkazového řádku            | Řádek konfiguračního souboru |
- |:-------------                   |:-------------                 |
- |`-u/--api-url-base https://url`  | *api_url_base:https://url*    |
- |`-k/--access-key KEY`            | *access_key:Key*              |      
- |`-pa/--process-args R=B37m1`     | *process_args:R-b37m1*        |  
+  |argument příkazového řádku            | Řádek konfiguračního souboru |
+  |:-------------                   |:-------------                 |
+  |`-u/--api-url-base https://url`  | *api_url_base:https://url*    |
+  |`-k/--access-key KEY`            | *access_key:Key*              |      
+  |`-pa/--process-args R=B37m1`     | *process_args:R-b37m1*        |  
 
 ## <a name="next-steps"></a>Další postup
 

@@ -11,11 +11,11 @@ ms.reviewer: klam, deli, LADocs
 ms.suite: integration
 ms.date: 10/05/2018
 ms.openlocfilehash: 0fec590523fa130af2e5670a92914c056df289d1
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50229613"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60512241"
 ---
 # <a name="quickstart-create-and-manage-automated-logic-app-workflows---visual-studio-code"></a>Rychlý start: Vytvoření a správa pracovních postupů aplikace logiky automatizované – Visual Studio Code
 
@@ -56,7 +56,7 @@ Než začnete, ujistěte se, že máte tyto položky:
 
 <a name="sign-in-azure"></a>
 
-## <a name="sign-in-to-azure"></a>Přihlášení k Azure
+## <a name="sign-in-to-azure"></a>Přihlásit se k Azure
 
 1. Otevřete Visual Studio Code. Na panelu nástrojů Visual Studio Code vyberte ikonu Azure. 
 
@@ -110,7 +110,7 @@ Než začnete, ujistěte se, že máte tyto položky:
 
 1. Vyberte umístění datového centra, kam chcete uložit metadata aplikace logiky.
 
-   ![Vyberte umístění.](./media/create-logic-apps-visual-studio-code/select-location.png)
+   ![Vybrat umístění](./media/create-logic-apps-visual-studio-code/select-location.png)
 
 1. Zadejte název pro svou aplikaci logiky a potom stiskněte klávesu ENTER.
 

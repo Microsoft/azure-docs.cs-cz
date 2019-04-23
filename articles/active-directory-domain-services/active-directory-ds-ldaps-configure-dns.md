@@ -16,18 +16,18 @@ ms.topic: conceptual
 ms.date: 08/01/2018
 ms.author: ergreenl
 ms.openlocfilehash: 122282d168246e34aaa4a6369f7433b167355887
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55152990"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60416734"
 ---
 # <a name="configure-dns-to-access-an-azure-ad-domain-services-managed-domain-using-secure-ldap-ldaps"></a>Konfigurace DNS pro přístup k spravované doméně služby Azure AD Domain Services pomocí zabezpečeného protokolu LDAP (LDAPS)
 
-## <a name="before-you-begin"></a>Před zahájením
+## <a name="before-you-begin"></a>Než začnete
 Kompletní [úloha 3: povolení protokolu LDAPS pro spravované domény pomocí webu Azure portal](active-directory-ds-admin-guide-configure-secure-ldap-enable-ldaps.md)
 
-## <a name="task-4-configure-dns-to-access-the-managed-domain-from-the-internet"></a>Úloha 4: Konfigurace DNS pro přístup ke spravované doméně z Internetu
+## <a name="task-4-configure-dns-to-access-the-managed-domain-from-the-internet"></a>Úloha 4: Konfigurace DNS pro přístup ke spravované doméně z internetu
 > [!TIP]
 > **Nepovinná úloha** – Pokud nemáte v plánu přístup ke spravované doméně pomocí protokolu LDAPS přes internet, přeskočte tuto úlohu konfigurace.
 >

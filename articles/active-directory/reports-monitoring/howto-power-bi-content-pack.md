@@ -16,11 +16,11 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 934562147fedcc81b16fd1ad2534af5662ef4b78
-ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58436825"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60437599"
 ---
 # <a name="how-to-use-the-azure-active-directory-power-bi-content-pack"></a>Jak používat balíček obsahu Azure Active Directory Power BI
 
@@ -59,7 +59,7 @@ Výsledky můžete také filtrovat tak, že vyberete konkrétní datum nebo umí
 
 - Uživatelské jméno
 - IP adresa
-- Umístění 
+- Location 
 - Stav přihlášení 
 
 **Trychtýř SSPR**: Tato sestava pomáhá pochopit, jak se používá nástroj pro samoobslužné resetování HESLA ve vaší organizaci. Můžete zobrazit, kolik o resetování hesla bylo prostřednictvím nástroje SSPR a kolik z nich byly úspěšné. Můžete také podrobnější informace o selhání resetování hesel a pochopit, proč k některým chybám došlo. 

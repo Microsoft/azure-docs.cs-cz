@@ -1,6 +1,6 @@
 ---
-title: Postup pro integraci protokolů Azure Active Directory ArcSight používat Azure Monitor (preview) | Dokumentace Microsoftu
-description: Zjistěte, jak integrace protokolů Azure Active Directory s ArcSight používat Azure Monitor (preview)
+title: Postup pro integraci protokolů Azure Active Directory ArcSight používat Azure Monitor | Dokumentace Microsoftu
+description: Zjistěte, jak integrace protokolů Azure Active Directory s ArcSight používat Azure Monitor
 services: active-directory
 documentationcenter: ''
 author: MarkusVi
@@ -13,18 +13,18 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
-ms.date: 12/03/2018
+ms.date: 04/19/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6bd7101c641cf69112975cd0431a08ec74f99aac
-ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
+ms.openlocfilehash: 08a265637274f396497da37706391bf44e0c9107
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58438100"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60437018"
 ---
-# <a name="integrate-azure-active-directory-logs-with-arcsight-using-azure-monitor-preview"></a>Integrace protokolů Azure Active Directory s ArcSight používat Azure Monitor (preview)
+# <a name="integrate-azure-active-directory-logs-with-arcsight-using-azure-monitor"></a>Integrace protokolů Azure Active Directory s ArcSight používat Azure Monitor
 
 [Micro ArcSight fokus](https://software.microfocus.com/products/siem-security-information-event-management/overview) je událostí (SIEM) řešení pro správu zabezpečení, která umožňuje detekovat a reagovat na hrozby zabezpečení ve vaší platformě. Teď můžete protokoly služby Azure Active Directory (Azure AD) směrovat ArcSight používat Azure Monitor pomocí ArcSight konektoru pro Azure AD. Tato funkce umožňuje monitorovat pro případ ohrožení zabezpečení pomocí ArcSight vašeho tenanta.  
 
@@ -59,4 +59,4 @@ Stáhnout a otevřít [Průvodce konfigurací pro ArcSight SmartConnector pro Ce
 
 ## <a name="next-steps"></a>Další postup
 
-* [Průvodce konfigurací pro ArcSight SmartConnector pro Centrum událostí Azure Monitor](https://community.softwaregrp.com/dcvta86296/attachments/dcvta86296/connector-documentation/1232/2/Microsoft%20Azure%20Monitor%20Event%20Hub.pdf)
+[Průvodce konfigurací pro ArcSight SmartConnector pro Centrum událostí Azure Monitor](https://community.softwaregrp.com/dcvta86296/attachments/dcvta86296/connector-documentation/1232/2/Microsoft%20Azure%20Monitor%20Event%20Hub.pdf)

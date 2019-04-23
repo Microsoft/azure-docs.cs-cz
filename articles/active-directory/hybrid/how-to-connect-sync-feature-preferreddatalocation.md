@@ -17,11 +17,11 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 3a7b9c8827979ac4135bcaf4dfeef7cd5de02b2d
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58118438"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60348181"
 ---
 # <a name="azure-active-directory-connect-sync-configure-preferred-data-location-for-office-365-resources"></a>Synchronizace Azure Active Directory Connect: Nakonfigurovat upřednostňované umístění dat pro prostředky služeb Office 365
 Účelem tohoto tématu je pro vás provedou postupem konfigurace atribut upřednostňované umístění dat ve službě Azure Active Directory (Azure AD) Connect sync. Při použití možnosti geografickým oblastem v Office 365, můžete použít tento atribut k určení geografické umístění dat uživatele v Office 365. (Podmínky *oblasti* a *geograficky* zaměňují.)
@@ -124,9 +124,9 @@ Pravidlo příchozí synchronizace povoluje hodnotu atributu přejít ze zdrojov
 3. Chcete-li vytvořit nové příchozí pravidlo, vyberte **přidat nové pravidlo**.
 4. V části **popis** kartu, zadejte následující konfiguraci:
 
-    | Atribut | Hodnota | Podrobnosti |
+    | Atribut | Value | Podrobnosti |
     | --- | --- | --- |
-    | Název | *Zadejte název* | Například "v ze služby AD – uživatel preferredDataLocation" |
+    | Name | *Zadejte název* | Například "v ze služby AD – uživatel preferredDataLocation" |
     | Popis | *Zadejte vlastní popis* |  |
     | Připojený systém | *Vyberte konektor služby Active Directory on-premises* |  |
     | Typ objektu systému připojené | **Uživatel** |  |
@@ -139,7 +139,7 @@ Pravidlo příchozí synchronizace povoluje hodnotu atributu přejít ze zdrojov
 
     | Typ toku | Cílový atribut | Zdroj | Použít jednou | Sloučit typu |
     | --- | --- | --- | --- | --- |
-    |Přímé | preferredDataLocation | Vyberte zdrojový atribut | Není zaškrtnuto | Aktualizace |
+    |Direct | preferredDataLocation | Vyberte zdrojový atribut | Není zaškrtnuto | Aktualizace |
 
 7. Chcete-li vytvořit příchozí pravidlo, vyberte **přidat**.
 
@@ -153,9 +153,9 @@ Pravidlo odchozí synchronizace povoluje hodnotu atributu z úložiště metaver
 3. Vyberte **přidat nové pravidlo**.
 4. V části **popis** kartu, zadejte následující konfiguraci:
 
-    | Atribut | Hodnota | Podrobnosti |
+    | Atribut | Value | Podrobnosti |
     | ----- | ------ | --- |
-    | Název | *Zadejte název* | Například "Out do služby Azure AD – uživatel preferredDataLocation" |
+    | Name | *Zadejte název* | Například "Out do služby Azure AD – uživatel preferredDataLocation" |
     | Popis | *Zadejte popis* ||
     | Připojený systém | *Vyberte konektor Azure AD* ||
     | Typ objektu systému připojené | **Uživatel** ||
@@ -165,7 +165,7 @@ Pravidlo odchozí synchronizace povoluje hodnotu atributu z úložiště metaver
 
 5. Přejděte **Scoping filtr** karta a přidat jednu skupinu filtr oborů s dvou klauzulí:
 
-    | Atribut | Operátor | Hodnota |
+    | Atribut | Operátor | Value |
     | --- | --- | --- |
     | sourceObjectType | ROVNO | Uživatel |
     | cloudMastered | NOTEQUAL | True |
@@ -176,7 +176,7 @@ Pravidlo odchozí synchronizace povoluje hodnotu atributu z úložiště metaver
 
     | Typ toku | Cílový atribut | Zdroj | Použít jednou | Sloučit typu |
     | --- | --- | --- | --- | --- |
-    | Přímé | preferredDataLocation | preferredDataLocation | Není zaškrtnuto | Aktualizace |
+    | Direct | preferredDataLocation | preferredDataLocation | Není zaškrtnuto | Aktualizace |
 
 7. Zavřít **přidat** vytvoření odchozí pravidla.
 

@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.date: 11/13/2018
 ms.author: lyrana
 ms.openlocfilehash: 4ea4479d77e06940bed50859341952ffbcbbda46
-ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51711051"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60533822"
 ---
 # <a name="connect-and-authenticate-to-apis"></a>Připojit a provést ověření rozhraní API
 
@@ -25,11 +25,11 @@ K integraci aplikace nebo služby pomocí Azure AD musí vývojář nejdřív ap
 
 [Scénáře pěti primární aplikace](https://docs.microsoft.com/azure/active-directory/develop/v2-app-types) jsou podporovány službou Azure AD:
 
-* Jednostránkové aplikace (SPA): uživatel potřebuje pro přihlášení k jednostránková aplikace, která je zabezpečena pomocí služby Azure AD.
-* Webový prohlížeč na webovou aplikaci: uživatel potřebuje pro přihlášení k webové aplikaci, která je zabezpečena pomocí služby Azure AD.
-* Nativní aplikace pro webové rozhraní API: nativní aplikaci, která běží na telefonu, tabletu nebo počítači potřebuje ověřit uživatele k získání zdroje z webového rozhraní API, která je zabezpečena pomocí služby Azure AD.
-* Webové aplikace k webovému rozhraní API: webová aplikace je potřeba získat prostředky z webového rozhraní API zabezpečené pomocí Azure AD.
-* Proces démon nebo server aplikace webového rozhraní API: aplikace proces démon nebo serverovou aplikaci s žádné webové uživatelské rozhraní je potřeba získat prostředky z webového rozhraní API zabezpečené pomocí Azure AD.
+* Jednostránkové aplikace (SPA): Uživatel musí přihlásit k jednostránkovou aplikaci, která je zabezpečena pomocí služby Azure AD.
+* Webový prohlížeč na webovou aplikaci: Uživatel musí přihlásit k webové aplikaci, která je zabezpečena pomocí služby Azure AD.
+* Nativní aplikace pro webové rozhraní API: Nativní aplikaci, která běží na telefonu, tabletu nebo počítači potřebuje ověřit uživatele k získání zdroje z webového rozhraní API, která je zabezpečena pomocí služby Azure AD.
+* Webové aplikace k webovému rozhraní API: Webová aplikace je potřeba získat prostředky z webového rozhraní API zabezpečené pomocí Azure AD.
+* Proces démon nebo server aplikace webového rozhraní API: Démon aplikace nebo serverovou aplikaci s žádné webové uživatelské rozhraní je potřeba získat prostředky z webového rozhraní API zabezpečené pomocí Azure AD.
 
 Knihovna ověřování Windows Azure nabízí mnoho způsobů, jak získat tokeny služby Active Directory. Podrobnosti o do knihovny a ukázky kódu, naleznete v tématu [v tomto článku](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/wiki).
 

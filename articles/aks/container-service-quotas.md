@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 04/01/2019
 ms.author: iainfou
 ms.openlocfilehash: 8feeaf2e8ee99405ed0de8291fc97dc50db6a386
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59798840"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60466552"
 ---
 # <a name="quotas-and-region-availability-for-azure-kubernetes-service-aks"></a>Kvóty a dostupnost oblastí pro Azure Kubernetes Service (AKS)
 

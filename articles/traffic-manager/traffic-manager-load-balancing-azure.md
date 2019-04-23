@@ -13,11 +13,11 @@ ms.workload: na
 ms.date: 10/27/2016
 ms.author: limichel
 ms.openlocfilehash: 906e1840f35ab14997c727551b893a0219eb78d8
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58099014"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60330437"
 ---
 # <a name="using-load-balancing-services-in-azure"></a>Použití služby Vyrovnávání zatížení v Azure
 

@@ -17,11 +17,11 @@ ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: genli
 ms.openlocfilehash: f4d733e29d2ba8213e1832f2c604b726283ab3e1
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50417391"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60318693"
 ---
 # <a name="troubleshooting-specific-rdp-error-messages-to-a-windows-vm-in-azure"></a>Řešení problémů konkrétních chybových zpráv protokolu RDP k virtuálnímu počítači s Windows v Azure
 Při použití připojení ke vzdálené ploše na Windows virtuální počítač (VM) v Azure, může se zobrazit zpráva konkrétní chyba. Tento článek podrobně popisuje některé z běžnějších chybové zprávy došlo k spolu se řešení potíží s kroky k jejich řešení. Pokud máte problémy s připojením k virtuálnímu počítači pomocí protokolu RDP není ale proveďte dojde k určité chybové zprávě, najdete v článku [Průvodce odstraňováním potíží pro vzdálenou plochu](troubleshoot-rdp-connection.md).
@@ -31,7 +31,7 @@ Informace o určité chybové zprávy naleznete v následujících tématech:
 * [Vzdálená relace byla odpojena, protože nejsou žádné vzdálené plochy licenční servery mohly poskytnout licenci k dispozici](#rdplicense).
 * [Vzdálená plocha nenašla počítač "name"](#rdpname).
 * [Došlo k chybě ověřování. Místní úřad zabezpečení nelze kontaktovat](#rdpauth).
-* [Chyba zabezpečení Windows: vaše přihlašovací údaje nefungovala](#wincred).
+* [Chyba zabezpečení Windows: Vaše přihlašovací údaje nefungovala](#wincred).
 * [Počítač se nemůže připojit ke vzdálenému počítači](#rdpconnect).
 
 <a id="rdplicense"></a>
@@ -70,7 +70,7 @@ Obsahuje části adresy tohoto souboru protokolu RDP:
 ## <a name="an-authentication-error-has-occurred-the-local-security-authority-cannot-be-contacted"></a>Došlo k chybě ověřování. Místní úřad zabezpečení nelze kontaktovat.
 Příčina: Cílový virtuální počítač nelze najít oprávnění zabezpečení v části název své přihlašovací údaje uživatele.
 
-Při své uživatelské jméno ve tvaru *SecurityAuthority*\\*uživatelské jméno* (Příklad: CORP\User1), *SecurityAuthority* část je buď Virtuálního počítače název počítače (pro místní autority zabezpečení) nebo název domény služby Active Directory.
+Při své uživatelské jméno ve tvaru *SecurityAuthority*\\*uživatelské jméno* (Příklad: Uživatel CORP\User1) *SecurityAuthority* část je název počítače Virtuálního počítače (pro místní autority zabezpečení) nebo název domény služby Active Directory.
 
 Možná řešení:
 
@@ -80,7 +80,7 @@ Možná řešení:
 
 <a id="wincred"></a>
 
-## <a name="windows-security-error-your-credentials-did-not-work"></a>Chyba zabezpečení Windows: vaše přihlašovací údaje nebyla úspěšná.
+## <a name="windows-security-error-your-credentials-did-not-work"></a>Chyba zabezpečení Windows: Pověření nebyla úspěšná.
 Příčina: Cílový virtuální počítač nemůže ověřit název účtu a heslo.
 
 Počítače se systémem Windows můžete ověřit přihlašovací údaje místní účet nebo účet domény.
@@ -99,7 +99,7 @@ Pokud potřebujete změnit heslo účtu místního správce, přečtěte si tém
 <a id="rdpconnect"></a>
 
 ## <a name="this-computer-cant-connect-to-the-remote-computer"></a>Tento počítač se nemůže připojit ke vzdálenému počítači.
-Příčina: Účet, který se používá k připojení nemá vzdálené plochy přihlašovací práva.
+Příčina: Účet, který se používá k připojení ke vzdálené ploše přihlašovací práva nemá.
 
 Každý počítač Windows má skupinu místní uživatelé vzdálené plochy, která obsahuje účty a skupiny, které se můžete přihlásit do něj vzdáleně. Členové místní skupiny administrators také mají přístup, i když tyto účty nejsou uvedené v místní skupině uživatelů vzdálené plochy. Pro počítače připojené k doméně místní skupiny administrators obsahuje také správci domény pro doménu.
 

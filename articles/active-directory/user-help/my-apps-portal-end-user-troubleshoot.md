@@ -14,11 +14,11 @@ ms.reviewer: kasimpso
 ms.custom: user-help, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: a6e87ae0a8adf28176d9a97cbf1b78943179884a
-ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58340106"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60475023"
 ---
 # <a name="troubleshoot-problems-with-the-my-apps-portal"></a>Poradce při potížích s na portálu Moje aplikace
 Pokud máte problémy s přihlašováním k nebo pomocí **Moje aplikace** portál, zkuste tyto tipy pro řešení potíží než požádáte o pomoc helpdesk nebo správce.

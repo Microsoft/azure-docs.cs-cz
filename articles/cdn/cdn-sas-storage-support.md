@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 06/21/2018
 ms.author: magattus
 ms.openlocfilehash: 7edf0a9f8d4eb4c01b6d80fd82a1061b6cbb1e35
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58918548"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60324100"
 ---
 # <a name="using-azure-cdn-with-sas"></a>Používání Azure CDN pomocí SAS
 

@@ -9,11 +9,11 @@ ms.date: 8/17/2018
 ms.author: rambala
 ms.custom: seodec18
 ms.openlocfilehash: 14f65851e50ed25024524f6d988ba2b2f2b3aeba
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53083780"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60367659"
 ---
 # <a name="configure-bfd-over-expressroute"></a>Konfigurace BFD přes ExpressRoute
 
@@ -21,7 +21,7 @@ ExpressRoute podporuje obousměrné předávání detekce (BFD) přes privátní
 
 ## <a name="need-for-bfd"></a>Potřebu BFD
 
-Následující diagram znázorňuje výhodu, že povolení BFD přes okruh ExpressRoute: [ ![1]][1]
+Následující diagram znázorňuje výhodu, že povolení BFD přes okruh ExpressRoute: [![1]][1]
 
 Můžete povolit okruh ExpressRoute, buď pomocí připojení vrstvy 2 nebo spravovaná připojení vrstvy 3. V obou případech Pokud jsou na cestě připojení ExpressRoute, jeden nebo více zařízení vrstvy 2 odpovědnost zjišťování jakýchkoliv odkazů v cestě je nadřízená protokolu BGP.
 

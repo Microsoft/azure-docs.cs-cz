@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 01/03/2019
 ms.author: iainfou
-ms.openlocfilehash: 40588ec29eb6f7c33ba5e1d6071caf5c8ed43424
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
+ms.openlocfilehash: 141aacc71d129bb45dc53774af876d5b07b7fc86
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54450165"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60466445"
 ---
 # <a name="use-azure-role-based-access-controls-to-define-access-to-the-kubernetes-configuration-file-in-azure-kubernetes-service-aks"></a>Pomocí ovládacích prvků přístupu na základě rolí Azure definují přístup k konfigurační soubor Kubernetes ve službě Azure Kubernetes Service (AKS)
 
@@ -20,7 +20,7 @@ Můžete pracovat s clustery Kubernetes pomocí `kubectl` nástroj. Rozhraní p�
 
 Tento článek ukazuje, jak přiřadit role RBAC tohoto limitu, který můžete získat informace o konfiguraci pro AKS cluster.
 
-## <a name="before-you-begin"></a>Před zahájením
+## <a name="before-you-begin"></a>Než začnete
 
 Tento článek předpokládá, že máte existující cluster AKS. Pokud potřebujete AKS cluster, najdete v tomto rychlém startu AKS [pomocí Azure CLI] [ aks-quickstart-cli] nebo [pomocí webu Azure portal][aks-quickstart-portal].
 
@@ -147,4 +147,4 @@ Pro zvýšení zabezpečení přístupu ke clusterům AKS [integrace ověření 
 [az-ad-user-show]: /cli/azure/ad/user#az-ad-user-show
 [az-role-assignment-create]: /cli/azure/role/assignment#az-role-assignment-create
 [az-role-assignment-delete]: /cli/azure/role/assignment#az-role-assignment-delete
-[aad-integration]: aad-integration.md
+[aad-integration]: azure-ad-integration.md

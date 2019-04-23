@@ -4,18 +4,18 @@ description: Ověřování EDI a generování potvrzení s X12 dekodér zpráv v
 services: logic-apps
 ms.service: logic-apps
 ms.suite: integration
-author: divyaswarnkar
-ms.author: divswa
-ms.reviewer: jonfan, estfan, LADocs
+author: ecfan
+ms.author: estfan
+ms.reviewer: jonfan, divswa, LADocs
 ms.topic: article
 ms.assetid: 4fd48d2d-2008-4080-b6a1-8ae183b48131
 ms.date: 01/27/2017
-ms.openlocfilehash: e3d2a458c2cece5e3f01fdb9e3d403b3fb78dd2b
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
-ms.translationtype: MT
+ms.openlocfilehash: a952685353214e116219fc63c4acbeac188765ff
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43121641"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60427362"
 ---
 # <a name="decode-x12-messages-in-azure-logic-apps-with-enterprise-integration-pack"></a>Dekódování X12 zpráv ve službě Azure Logic Apps sadou Enterprise Integration Pack
 
@@ -89,13 +89,13 @@ X12 dekódování connector provádí tyto úlohy:
   * Ověří proti dalších kontrolních čísel skupiny v výměna kontrolní číslo skupiny.
   * Ověří, že kontrolní číslo sady transakcí pro ostatní transakce sada kontrolních čísel v této skupině.
 * Rozdělí výměna do sady transakcí nebo zachová celý výměny:
-  * Rozdělit výměnu jako sady transakcí – pozastavit sady transakcí při chybě: Nastaví výměny rozdělí do transakce a Parsuje každá sada transakcí. 
+  * Rozdělit výměnu jako sady transakcí – pozastavit sady transakcí při chybě: Výměna rozdělí do transakce nastaví a Parsuje každá sada transakcí. 
   X12 dekódování akce vypíše pouze ty transakce sad, které neúspěšné ověření na `badMessages`a nastaví zbývající transakce na výstupy `goodMessages`.
-  * Rozdělit výměnu jako sady transakcí – pozastavit výměnu při chybě: Nastaví výměny rozdělí do transakce a Parsuje každá sada transakcí. 
+  * Rozdělit výměnu jako sady transakcí – pozastavit výměnu při chybě: Výměna rozdělí do transakce nastaví a Parsuje každá sada transakcí. 
   Pokud je jeden nebo více transakcí nastaví v výměna neúspěšné ověření, X12 dekódování akce vypíše všechny transakce nastaví v této výměny na `badMessages`.
-  * Zachovat výměnu – pozastavit sady transakcí při chybě: zachování výměna a celé výměně dávkové zpracování. 
+  * Zachovat výměnu – pozastavit sady transakcí při chybě: Zachovat výměnu a celé výměně dávkové zpracování. 
   X12 dekódování akce vypíše pouze ty transakce sad, které neúspěšné ověření na `badMessages`a nastaví zbývající transakce na výstupy `goodMessages`.
-  * Zachovat výměnu – pozastavit výměnu při chybě: zachování výměna a celé výměně dávkové zpracování. 
+  * Zachovat výměnu – pozastavit výměnu při chybě: Zachovat výměnu a celé výměně dávkové zpracování. 
   Pokud je jeden nebo více transakcí nastaví v výměna neúspěšné ověření, X12 dekódování akce vypíše všechny transakce nastaví v této výměny na `badMessages`. 
 * Generuje technické a/nebo funkční potvrzení (je-li konfigurováno).
   * Technické potvrzení vygeneruje jako výsledek ověření záhlaví. Technické potvrzení hlásí stav zpracování výměny záhlaví a koncová část adresy příjemce.

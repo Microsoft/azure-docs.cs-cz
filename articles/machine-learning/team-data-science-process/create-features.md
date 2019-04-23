@@ -12,11 +12,11 @@ ms.date: 11/21/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 8b0973007a78b492cff1c5ffc2ce1e43116a0847
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57835080"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60398598"
 ---
 # <a name="feature-engineering-in-data-science"></a>Konstrukce funkcí v datové vědy
 Tento článek vysvětluje účely vytváření funkcí a poskytuje příklady jejich rolí v procesu rozšíření dat služby machine learning. Příklady slouží ke znázornění tohoto procesu jsou vykreslovány vedle z Azure Machine Learning Studio. 

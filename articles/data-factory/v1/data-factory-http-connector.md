@@ -13,11 +13,11 @@ ms.date: 05/22/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: f7e070788d2fc11addcafc30d9f232f194f44782
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54017255"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60318474"
 ---
 # <a name="move-data-from-an-http-source-by-using-azure-data-factory"></a>Přesun dat z zdroje HTTP pomocí Azure Data Factory
 
@@ -57,7 +57,7 @@ Následující tabulka popisuje elementy JSON, které jsou specifické pro HTTP 
 | url | Základní adresa URL webového serveru. | Ano |
 | authenticationType. | Určuje typ ověřování. Povolené hodnoty jsou **anonymní**, **základní**, **Digest**, **Windows**, a **ClientCertificate**. <br><br> Naleznete v dalších částech tohoto článku pro další vlastnosti a ukázky JSON pro typy ověřování. | Ano |
 | enableServerCertificateValidation | Určuje, zda povolit ověření certifikátu serveru SSL, pokud se zdrojový webový server služby protokolu HTTPS. Pokud váš server HTTPS používá certifikát podepsaný svým držitelem, nastavte na **false**. | Ne<br /> (výchozí hodnota je **true**) |
-| Název brány | Název instance brány správy dat pro připojení ke zdroji v místním HTTP. | Ano, pokud se kopírují data z místní zdroje HTTP |
+| gatewayName | Název instance brány správy dat pro připojení ke zdroji v místním HTTP. | Ano, pokud se kopírují data z místní zdroje HTTP |
 | encryptedCredential | Šifrované přihlašovací údaje pro přístup ke koncovému bodu HTTP. Hodnota se automaticky generuje při konfiguraci ověřovací údaje v Průvodci kopírovat nebo s použitím **ClickOnce** dialogové okno. | Ne<br /> (platí jenom v případě, že kopírování dat z místní server HTTP) |
 
 Podrobnosti o nastavení přihlašovacích údajů pro zdroj dat místní HTTP konektoru najdete v tématu [přesun dat mezi místním zdrojům a cloudem pomocí brány správy dat](data-factory-move-data-between-onprem-and-cloud.md).
@@ -69,7 +69,7 @@ Nastavte **authenticationType** k **základní**, **Digest**, nebo **Windows**. 
 | Vlastnost | Popis | Požaduje se |
 | --- | --- | --- |
 | uživatelské jméno | Uživatelské jméno pro použití pro přístup ke koncovému bodu HTTP. | Ano |
-| heslo | Heslo pro uživatele (**uživatelské jméno**). | Ano |
+| password | Heslo pro uživatele (**uživatelské jméno**). | Ano |
 
 **Příklad: Používá ověřování Basic, Digest nebo Windows**
 
@@ -98,7 +98,7 @@ Chcete-li použít základní ověřování, nastavte **authenticationType** k *
 | --- | --- | --- |
 | embeddedCertData | Obsah s kódováním Base64 binární data ze souboru PFX. | Zadejte buď **embeddedCertData** nebo **certThumbprint** |
 | certThumbprint | Kryptografický otisk certifikátu, který byl nainstalován na počítači brány úložiště certifikátů. Platí jenom v případě, že kopírování dat z místních zdroje HTTP. | Zadejte buď **embeddedCertData** nebo **certThumbprint** |
-| heslo | Heslo, který je spojen s certifikátem. | Ne |
+| password | Heslo, který je spojen s certifikátem. | Ne |
 
 Pokud používáte **certThumbprint** pro ověřování a certifikát, který je nainstalován v osobním úložišti místního počítače, udělte oprávnění ke čtení pro službu brány:
 
@@ -162,10 +162,10 @@ Některé části souboru JSON datové sady, jako je například struktura, dost
 |:--- |:--- |:--- |
 | type | **Typ** datové sady, musí být nastaveno na **Http**. | Ano |
 | relativeUrl | Relativní adresa URL k prostředku, který obsahuje data. Když cestu nezadáte, použije se pouze adresu URL, která je zadána v definici propojené služby. <br><br> K vytvoření dynamické adresy URL, můžete použít [funkce Data Factory a systémové proměnné](data-factory-functions-variables.md). Příklad: **relativeUrl**: **$$Text.Format ("/ Moje/tuto sestavu? měsíc = {0: yyyy} – {0:MM} & fmt = csv", SliceStart)**. | Ne |
-| requestMethod | Metoda protokolu HTTP. Povolené hodnoty jsou **získat** a **příspěvek**. | Ne <br />(výchozí hodnota je **získat**) |
+| requestMethod | Metoda HTTP Povolené hodnoty jsou **získat** a **příspěvek**. | Ne <br />(výchozí hodnota je **získat**) |
 | additionalHeaders | Další hlavičky požadavků HTTP. | Ne |
 | Includesearchresults: true | Obsah žádosti protokolu HTTP. | Ne |
-| formát | Pokud chcete *načtení dat z koncového bodu HTTP jako-je* bez je analýza kódu, přejděte **formátu** nastavení. <br><br> Pokud chcete analyzovat obsah odpovědi HTTP při kopírování, jsou podporovány následující typy formátů: **TextFormat**, **JsonFormat**, **AvroFormat**, **OrcFormat**, a **ParquetFormat**. Další informace najdete v tématu [textový formát](data-factory-supported-file-and-compression-formats.md#text-format), [formátu JSON](data-factory-supported-file-and-compression-formats.md#json-format), [formát Avro](data-factory-supported-file-and-compression-formats.md#avro-format), [formát Orc](data-factory-supported-file-and-compression-formats.md#orc-format), a [formát Parquet](data-factory-supported-file-and-compression-formats.md#parquet-format). |Ne |
+| formát | Pokud chcete *načtení dat z koncového bodu HTTP jako-je* bez je analýza kódu, přejděte **formátu** nastavení. <br><br> Pokud chcete analyzovat obsah odpovědi HTTP při kopírování, jsou podporovány následující typy formátů: **TextFormat**, **JsonFormat**, **AvroFormat**, **OrcFormat**, and **ParquetFormat**. Další informace najdete v tématu [textový formát](data-factory-supported-file-and-compression-formats.md#text-format), [formátu JSON](data-factory-supported-file-and-compression-formats.md#json-format), [formát Avro](data-factory-supported-file-and-compression-formats.md#avro-format), [formát Orc](data-factory-supported-file-and-compression-formats.md#orc-format), a [formát Parquet](data-factory-supported-file-and-compression-formats.md#parquet-format). |Ne |
 | Komprese | Zadejte typ a úroveň komprese pro data. Podporované typy: **GZip**, **Deflate**, **BZip2**, a **ZipDeflate**. Podporované úrovně: **Optimální** a **nejrychlejší**. Další informace najdete v tématu [formáty souborů a komprese ve službě Azure Data Factory](data-factory-supported-file-and-compression-formats.md#compression-support). |Ne |
 
 **Příklad: Pomocí metody GET (výchozí)**
@@ -223,7 +223,7 @@ V současné době když zdroj v aktivitě kopírování je **HttpSource** zadej
 
 | Vlastnost | Popis | Požaduje se |
 | -------- | ----------- | -------- |
-| httpRequestTimeout | Časový limit ( **TimeSpan** hodnotu) pro požadavek HTTP získat odpověď. Časový limit je získat odpověď, nevypršel časový limit pro čtení dat odpovědi. | Ne<br />(výchozí hodnota: **00: 01:40**) |
+| httpRequestTimeout | Časový limit ( **TimeSpan** hodnotu) pro požadavek HTTP získat odpověď. Časový limit je získat odpověď, nevypršel časový limit pro čtení dat odpovědi. | Ne<br />(výchozí hodnota: **00:01:40**) |
 
 ## <a name="supported-file-and-compression-formats"></a>Podporované formáty souborů a komprese
 

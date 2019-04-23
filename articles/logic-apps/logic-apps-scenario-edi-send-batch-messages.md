@@ -8,12 +8,12 @@ ms.author: divswa
 ms.reviewer: estfan, LADocs
 ms.topic: article
 ms.date: 08/19/2018
-ms.openlocfilehash: 7e058b7cebb9c2cdc3fb8b97bf99554b2f26dd8c
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: d6d3a7111f3a5e49e32eba8ca4f09d692538cb87
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43121571"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60427880"
 ---
 # <a name="send-edi-messages-in-batches-to-trading-partners-with-azure-logic-apps"></a>Odesílání zpráv EDI v dávkách obchodními partnery pomocí Azure Logic Apps
 
@@ -59,13 +59,13 @@ Pro tento příjemce služby batch, zadejte v dávkovém režimu, název, krité
 
 2. [Propojení aplikace logiky ke svému účtu integrace](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md#link-account).
 
-3. V návrháři pro Logic Apps, přidejte **Batch** triggeru, který spouští pracovního postupu aplikace logiky. Do vyhledávacího pole zadejte jako filtr "batch". Vyberte tento trigger: **dávkové zprávy**
+3. V návrháři pro Logic Apps, přidejte **Batch** triggeru, který spouští pracovního postupu aplikace logiky. Do vyhledávacího pole zadejte jako filtr "batch". Vyberte tento trigger: **Zprávy služby batch**
 
    ![Přidání triggeru Batch](./media/logic-apps-scenario-EDI-send-batch-messages/add-batch-receiver-trigger.png)
 
 4. Nastavte služby batch příjemce vlastnosti: 
 
-   | Vlastnost | Hodnota | Poznámky | 
+   | Vlastnost | Value | Poznámky | 
    |----------|-------|-------|
    | **Režim dávky** | Vložené |  |  
    | **Název dávky** | TestBatch | K dispozici pouze s **vložené** režimu služby batch | 
@@ -84,7 +84,7 @@ Pro tento příjemce služby batch, zadejte v dávkovém režimu, název, krité
 
    1. Pod triggerem dávky, zvolte **nový krok**.
 
-   2. Do vyhledávacího pole zadejte "X 12 batch" jako filtr a vyberte tuto akci (libovolná verze): **kódování Batch <*verze*>-X12** 
+   2. Do vyhledávacího pole zadejte "X 12 batch" jako filtr a vyberte tuto akci (libovolná verze): **Kódování batch <*verze*>-X12** 
 
       ![Vyberte X12 kódování Batch akce](./media/logic-apps-scenario-EDI-send-batch-messages/add-batch-encode-action.png)
 
@@ -98,7 +98,7 @@ Pro tento příjemce služby batch, zadejte v dávkovém režimu, název, krité
       |----------|-------------|
       | **Název X12 smlouvy** | Otevřete seznam a vyberte stávající smlouvy. <p>Pokud je seznam prázdný, ujistěte se, že jste [propojit účet integrace aplikace logiky](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md#link-account) , který má smlouvu chcete. | 
       | **BatchName** | Klikněte do tohoto pole a jakmile se objeví v seznamu dynamického obsahu vyberte **název dávky** token. | 
-      | **%{PartitionName/** | Klikněte do tohoto pole a jakmile se objeví v seznamu dynamického obsahu vyberte **název oddílu** token. | 
+      | **PartitionName** | Klikněte do tohoto pole a jakmile se objeví v seznamu dynamického obsahu vyberte **název oddílu** token. | 
       | **Položky** | Zavřete okno Podrobnosti položky a klikněte do tohoto pole. Jakmile se objeví v seznamu dynamického obsahu vyberte **dávce položky** token. | 
       ||| 
 
@@ -126,7 +126,7 @@ K Ujistěte se, že vaše batch příjemce funguje podle očekávání, můžete
 
    | Vlastnost | Popis | 
    |----------|-------------|
-   | **– Metoda** | Z tohoto seznamu, vyberte **příspěvek**. | 
+   | **Metoda** | Z tohoto seznamu, vyberte **příspěvek**. | 
    | **Identifikátor URI** | Umožňuje vygenerovat URI pro vaši žádost o bin a do tohoto pole zadejte tento identifikátor URI. | 
    | **Text** | Klikněte do tohoto pole a po otevření seznamu dynamického obsahu vyberte **tělo** token, který se zobrazí v části, **kódování Batch podle názvu smlouvy**. <p>Pokud nevidíte **tělo** token vedle **kódování Batch podle názvu smlouvy**vyberte **zobrazit další**. | 
    ||| 
@@ -149,9 +149,9 @@ Teď vytvořte jeden nebo více aplikací logiky, které odesílání zpráv do 
 
 * Ujistěte se, že vaše batch příjemce a odesílatele batch sdílet stejné oblasti Azure *a* předplatného Azure. Pokud ne, nemůžete vybrat příjemce batch při vytváření odesílatele služby batch, protože nejsou navzájem viditelné.
 
-1. Vytvořit jinou aplikaci logiky s tímto názvem: "SendX12MessagesToBatch" 
+1. Vytvořte jinou aplikaci logiky s tímto názvem: "SendX12MessagesToBatch" 
 
-2. Do vyhledávacího pole zadejte jako filtr "při požadavku http". Vyberte tento trigger: **přijetí požadavku HTTP je při** 
+2. Do vyhledávacího pole zadejte jako filtr "při požadavku http". Vyberte tento trigger: **Při přijetí požadavku HTTP** 
    
    ![Přidání triggeru požadavku](./media/logic-apps-scenario-EDI-send-batch-messages/add-request-trigger-sender.png)
 
@@ -160,7 +160,7 @@ Teď vytvořte jeden nebo více aplikací logiky, které odesílání zpráv do 
    1. V akci požadavku HTTP, zvolte **nový krok**.
 
    2. Do vyhledávacího pole zadejte jako filtr "batch". 
-   Vyberte **akce** seznamu a pak vyberte tuto akci: **zvolte pracovní postup Logic Apps s dávkovými triggery – odeslání zprávy do služby batch**
+   Vyberte **akce** seznamu a pak vyberte tuto akci: **Zvolte pracovní postup Logic Apps s dávkovými triggery – odeslání zprávy do služby batch**
 
       ![Vyberte "Zvolte pracovní postup Logic Apps s dávkovými triggery"](./media/logic-apps-scenario-EDI-send-batch-messages/batch-sender-select-batch-trigger.png)
 
@@ -176,7 +176,7 @@ Teď vytvořte jeden nebo více aplikací logiky, které odesílání zpráv do 
 
    | Vlastnost | Popis | 
    |----------|-------------| 
-   | **Název dávky** | Název dávky definované aplikací logiky příjemce, který je v tomto příkladu "TestBatch" <p>**Důležité**: název dávky ověří za běhu a název určený příjemce aplikace logiky se musí shodovat. Změna názvu služby batch způsobí, že odesílatel služby batch k selhání. | 
+   | **Název dávky** | Název dávky definované aplikací logiky příjemce, který je v tomto příkladu "TestBatch" <p>**Důležité**: Název dávky ověří za běhu a musí odpovídat názvu určené aplikace logiky příjemce. Změna názvu služby batch způsobí, že odesílatel služby batch k selhání. | 
    | **Obsah zprávy** | Obsah pro zprávu chcete odeslat, který je **tělo** tokenu v tomto příkladu | 
    ||| 
    

@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 06/05/2018
 ms.author: anshan
 ms.custom: seodec18
-ms.openlocfilehash: 8ed3213a40370b1ab2beb15a989a22017b058d65
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 5e3005eb8f548e562e037431ae5fd89f82ec2100
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55812068"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60330725"
 ---
 # <a name="tutorial-explore-the-azure-time-series-insights-javascript-client-library"></a>Kurz: Zkoumání javascriptové klientské knihovny pro službu Azure Time Series Insights
 
@@ -28,6 +28,9 @@ V tomto kurzu získáte informace o těchto tématech:
 > * Ukázková aplikace TSI
 > * Javascriptová klientská knihovna pro TSI
 > * Použití knihovny v ukázkové aplikaci k vizualizaci dat TSI
+
+> [!NOTE]
+> Zdrojové soubory Time Series Insights ukázkové aplikace můžete najít v poskytnutých [ukázkového úložiště Githubu](https://github.com/Microsoft/tsiclient/tree/tutorial/pages/tutorial).
 
 ## <a name="video"></a>Video: 
 
@@ -57,7 +60,7 @@ V tomto kurzu se k prozkoumání zdrojového kódu aplikace, včetně použití 
 
 ### <a name="page-source-and-structure"></a>Zdrojový kód a struktura stránky
 
-Nejprve se podívejme na zdrojový kód v HTML a JavaScriptu, který zajišťuje fungování stránky vykreslené v prohlížeči. Nebudeme procházet všechny elementy, ale seznámíte se s hlavními částmi a získáte představu, jak stránka funguje:
+Nejprve se podívejme se [HTML a JavaScript zdrojový kód](https://github.com/Microsoft/tsiclient/blob/tutorial/pages/tutorial/index.html) , který je za stránky, který je vykreslen v prohlížeči. Nebudeme procházet všechny elementy, ale seznámíte se s hlavními částmi a získáte představu, jak stránka funguje:
 
 1. Otevřete v prohlížeči **Vývojářské nástroje**. Prozkoumejte elementy HTML, ze kterých se skládá aktuální stránka (označují se také jako strom HTML nebo DOM).
 
@@ -109,7 +112,7 @@ Jak jsme zmínili dříve, tato ukázka je jednostránková aplikace, která k o
 
 2. Později si aplikace vyžádá přístupový token ze služby Azure AD. Přístupový token se vystavuje pro omezenou sadu oprávnění a pro konkrétní identifikátor služby nebo rozhraní API (https://api.timeseries.azure.com). Identifikátor služby nebo rozhraní API se také označuje jako „cílová skupina“ tokenu. Oprávnění tokenu se vystavují jménem přihlášeného uživatele. Identifikátor služby nebo rozhraní API je další vlastností obsaženou v registraci aplikace ve službě Azure AD. Jakmile knihovna ADAL vrátí do aplikace přístupový token, předává se pak při přístupu k rozhraním API služby TSI jako nosný token.
 
-   [!code-javascript[head-sample](~/samples-javascript/pages/tutorial/index.html?range=145-204&highlight=4-9,36-39)]
+   [!code-javascript[head-sample](~/samples-javascript/pages/tutorial/index.html?range=147-204&highlight=4-9,36-39)]
 
 ### <a name="control-identification"></a>Identifikace ovládacího prvku
 
@@ -191,7 +194,7 @@ Podívejte se na kód několika standardních ovládacích prvků grafů ukázan
 
 Jak je popsané v kroku 3 v části [Zdrojový kód a struktura stránky](#page-source-and-structure), ovládací prvky grafů jsou na stránce uspořádané do řádků, z nichž každý obsahuje řádek s popisným názvem. V tomto příkladu se všechny tři naplňované grafy nacházejí pod elementem `<div>` s nadpisem Multiple Chart Types From the Same Data (Několik typů grafů s použitím stejných dat) a jsou svázané se třemi elementy `<div>` pod ním:
 
-[!code-javascript[code-sample1-line-bar-pie](~/samples-javascript/pages/tutorial/index.html?range=59-73&highlight=1,5,9,13)]
+[!code-html[code-sample1-line-bar-pie](~/samples-javascript/pages/tutorial/index.html?range=59-73&highlight=1,5,9,13)]
 
 V následující části kódu JavaScriptu se podle výše popsaného vzoru vytvoří agregační výrazy TSI, použijí se k odeslání dotazu na data TSI a vykreslí se tři grafy. Všimněte si použití tří typů z oboru názvů `tsiClient.ux` (`LineChart`, `BarChart` a `PieChart`) k vytvoření a vykreslení příslušných grafů. Všimněte si také, že všechny tři grafy můžou využívat stejná data agregačního výrazu `transformedResult`:
 
@@ -283,9 +286,12 @@ V tomto kurzu jste se naučili:
 > * Použití rozhraní API v javascriptové klientské knihovně pro TSI
 > * Použití JavaScriptu k vytvoření ovládacích prvků grafů a jejich naplnění daty TSI
 
-Jak je popsáno výše, ukázková aplikace TSI využívá ukázkovou sadu dat. Další informace o tom, jak vytvořit vlastní prostředí TSI a sadu dat, najdete v následujícím článku:
+Jak je vidět, TSI ukázková aplikace používá ukázkové datové sady. Další informace o tom, jak vytvořit vlastní prostředí TSI a sadu dat, najdete v následujícím článku:
 
 > [!div class="nextstepaction"]
 > [Kurz: Vytvoření prostředí Azure Time Series Insights](tutorial-create-populate-tsi-environment.md)
 
+Nebo zobrazení souborů zdrojového TSI ukázkové aplikace:
 
+> [!div class="nextstepaction"]
+> [TSI úložiště ukázkové aplikace](https://github.com/Microsoft/tsiclient/tree/tutorial/pages/tutorial)

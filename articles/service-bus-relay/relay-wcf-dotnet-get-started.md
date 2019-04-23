@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 12/20/2017
 ms.author: spelluru
 ms.openlocfilehash: ee78227f645cbeded7a5c689750db835faf1055f
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55728308"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60420061"
 ---
 # <a name="how-to-use-azure-relay-wcf-relays-with-net"></a>Jak používat Azure Relay WCF propojení s využitím .NET
 Tento článek popisuje, jak pomocí služby Azure Relay. Ukázky jsou napsané v C# a používají API Windows Communication Foundation (WCF) s rozšířeními, které jsou součástí sestavení Service Bus. Další informace o službě Azure relay, najdete v článku [přehled Azure Relay](relay-what-is-it.md).

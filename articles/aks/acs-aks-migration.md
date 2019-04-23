@@ -10,11 +10,11 @@ ms.date: 06/13/2018
 ms.author: nobun
 ms.custom: mvc
 ms.openlocfilehash: 910c96988ec0a8b8aa7b6ac8ce287c4fdc59e177
-ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58649964"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60467557"
 ---
 # <a name="migrating-from-azure-container-service-acs-to-azure-kubernetes-service-aks"></a>Migrace ze služby Azure Container Service (ACS) do služby Azure Kubernetes Service (AKS)
 
@@ -48,7 +48,7 @@ Zatímco AKS spravuje rovina řízení Kubernetes, definujete stále velikosti a
 
 Příklad:
 
-| Název | Počet | Velikost virtuálního počítače | Operační systém |
+| Name | Počet | Velikost virtuálního počítače | Operační systém |
 | --- | --- | --- | --- |
 | agentpool0 | 3 | Standard_D8_v2 | Linux |
 | agentpool1 | 1 | Standard_D2_v2 | Windows |

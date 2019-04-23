@@ -16,11 +16,11 @@ ms.topic: conceptual
 ms.date: 09/21/2017
 ms.author: ergreenl
 ms.openlocfilehash: 0659586512b36c51c5058271fa5e1bdb46efbc3b
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55193280"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60416848"
 ---
 # <a name="deployment-scenarios-and-use-cases"></a>Scénáře nasazení a případy použití
 V této části se podíváme na několik scénáře a případy použití, které využívají samosprávné domény služby Azure Active Directory (AD).

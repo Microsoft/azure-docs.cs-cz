@@ -9,11 +9,11 @@ ms.date: 05/07/2017
 ms.author: ancav
 ms.subservice: autoscale
 ms.openlocfilehash: e6423f2ce3659fd3dd738dcc8a990261bc7bf60c
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58088379"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60334335"
 ---
 # <a name="get-started-with-auto-scale-by-custom-metric-in-azure"></a>Začínáme s automatické škálování na vlastní metrika v Azure
 Tento článek popisuje, jak škálovat prostředek vlastní metriky na webu Azure portal.

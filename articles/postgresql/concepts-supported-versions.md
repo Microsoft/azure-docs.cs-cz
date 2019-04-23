@@ -7,18 +7,18 @@ ms.service: postgresql
 ms.topic: conceptual
 ms.date: 11/12/2018
 ms.openlocfilehash: 5b06128979bf448a0b85084d5178d9291beb7691
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53542782"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60422061"
 ---
 # <a name="supported-postgresql-database-versions"></a>Podporované verze databáze PostgreSQL
 Microsoft, zaměřuje na podporu n-2 verze stroje PostgreSQL služba Azure Database for PostgreSQL. Verze by aktuální hlavní verze v Azure (n) a dvě předchozí hlavní verze (-2).
 
 Azure Database for PostgreSQL aktuálně podporuje následující verze:
 
-## <a name="postgresql-version-105"></a>Verze PostgreSQL 10.5
+## <a name="postgresql-version-105"></a>PostgreSQL Version 10.5
 Odkazovat [PostgreSQL dokumentaci](https://www.postgresql.org/docs/10/static/release-10-5.html) Další informace o vylepšeních a opravách v této podverze.
 
 ## <a name="postgresql-version-9610"></a>Verze PostgreSQL 9.6.10

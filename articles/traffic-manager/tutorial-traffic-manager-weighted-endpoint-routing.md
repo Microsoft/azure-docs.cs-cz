@@ -9,11 +9,11 @@ ms.topic: tutorial
 ms.date: 10/15/2018
 ms.author: kumud
 ms.openlocfilehash: 50790e50602fbc8d302a67ea9963a4e492ce2f0b
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58009753"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60329649"
 ---
 # <a name="tutorial-control-traffic-routing-with-weighted-endpoints-by-using-traffic-manager"></a>Kurz: Řídit směrování provozu s koncovými body vážený pomocí Traffic Manageru
 
@@ -52,19 +52,19 @@ V této části vytvoříte dva virtuální počítače (*myIISVMEastUS* a *myII
 1. V levém horním rohu webu Azure Portal vyberte **Vytvořit prostředek** > **Compute** > **Virtuální počítač s Windows Serverem 2016**.
 2. V části **Základy** zadejte nebo vyberte následující informace. U ostatních nastavení přijměte výchozí hodnoty a pak vyberte **Vytvořit**.
 
-    |Nastavení|Hodnota|
+    |Nastavení|Value|
     |---|---|
-    |Název|Zadejte **myIISVMEastUS**.|
+    |Name|Zadejte **myIISVMEastUS**.|
     |Uživatelské jméno| Zadejte libovolné uživatelské jméno.|
     |Heslo| Zadejte libovolné heslo. Heslo musí obsahovat nejméně 12 znaků a musí splňovat [zadané požadavky na složitost](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm).|
     |Skupina prostředků| Vyberte **Nová** a zadejte **myResourceGroupTM1**.|
-    |Umístění| Vyberte **USA – východ**.|
+    |Location| Vyberte **USA – východ**.|
     |||
 
 4. V části **Zvolte velikost** vyberte velikost virtuálního počítače.
 5. V části **Nastavení** vyberte následující hodnoty a pak vyberte **OK**:
     
-    |Nastavení|Hodnota|
+    |Nastavení|Value|
     |---|---|
     |Virtuální síť| Vyberte **Virtuální síť**. V části **Vytvořit virtuální síť** jako **Název** zadejte **myVNet1**. Jako **Podsíť** zadejte **mySubnet**.|
     |Skupina zabezpečení sítě|Vyberte **Basic**. V rozevíracím seznamu **Vyberte veřejné příchozí porty** vyberte **HTTP** a **RDP**. |
@@ -75,10 +75,10 @@ V této části vytvoříte dva virtuální počítače (*myIISVMEastUS* a *myII
 
 7. Zopakujte kroky 1 až 6 s následujícími změnami:
 
-    |Nastavení|Hodnota|
+    |Nastavení|Value|
     |---|---|
     |Skupina prostředků | Vyberte **Nová** a zadejte **myResourceGroupTM2**.|
-    |Umístění|Zadejte **Západní Evropa**.|
+    |Location|Zadejte **Západní Evropa**.|
     |Název virtuálního počítače | Zadejte **myIISVMWEurope**.|
     |Virtuální síť | Vyberte **Virtuální síť**. V části **Vytvořit virtuální síť** jako **Název** zadejte **myVNet2**. Jako **Podsíť** zadejte **mySubnet**.|
     |||
@@ -130,9 +130,9 @@ V této části vytvoříte virtuální počítač *mVMEastUS*. Tento virtuáln�
 1. V levém horním rohu webu Azure Portal vyberte **Vytvořit prostředek** > **Compute** > **Virtuální počítač s Windows Serverem 2016**.
 2. V části **Základy** zadejte nebo vyberte následující informace. U ostatních nastavení přijměte výchozí hodnoty a pak vyberte **Vytvořit**:
 
-    |Nastavení|Hodnota|
+    |Nastavení|Value|
     |---|---|
-    |Název|Zadejte **myVMEastUS**.|
+    |Name|Zadejte **myVMEastUS**.|
     |Uživatelské jméno| Zadejte libovolné uživatelské jméno.|
     |Heslo| Zadejte libovolné heslo. Heslo musí obsahovat nejméně 12 znaků a musí splňovat [zadané požadavky na složitost](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm).|
     |Skupina prostředků| Vyberte **Použít existující** a pak vyberte **myResourceGroupTM1**.|
@@ -141,7 +141,7 @@ V této části vytvoříte virtuální počítač *mVMEastUS*. Tento virtuáln�
 4. V části **Zvolte velikost** vyberte velikost virtuálního počítače.
 5. V části **Nastavení** vyberte následující hodnoty a pak vyberte **OK**:
 
-    |Nastavení|Hodnota|
+    |Nastavení|Value|
     |---|---|
     |Virtuální síť| Vyberte **Virtuální síť**. V části **Vytvořit virtuální síť** jako **Název** zadejte **myVNet3**. Jako podsíť zadejte **mySubnet**.|
     |Skupina zabezpečení sítě|Vyberte **Basic**. V rozevíracím seznamu **Vyberte veřejné příchozí porty** vyberte **HTTP** a **RDP**. |
@@ -157,9 +157,9 @@ Vytvořte profil služby Traffic Manager založený na metodě **váženého** s
 1. V levém horním rohu obrazovky vyberte **Vytvořit prostředek** > **Sítě** > **Profil služby Traffic Manager** > **Vytvořit**.
 2. V části **Vytvořit profil služby Traffic Manager** zadejte nebo vyberte následující informace. U ostatních nastavení přijměte výchozí hodnoty a pak vyberte **Vytvořit**.
 
-    | Nastavení                 | Hodnota                                              |
+    | Nastavení                 | Value                                              |
     | ---                     | ---                                                |
-    | Název                   | Zadejte jedinečný název v rámci zóny trafficmanager.net. Výsledkem bude název DNS trafficmanager.net, který bude sloužit k přístupu k vašemu profilu služby Traffic Manager.                                   |
+    | Name                   | Zadejte jedinečný název v rámci zóny trafficmanager.net. Výsledkem bude název DNS trafficmanager.net, který bude sloužit k přístupu k vašemu profilu služby Traffic Manager.                                   |
     | Metoda směrování          | Vyberte metodu **váženého** směrování.                                       |
     | Předplatné            | Vyberte své předplatné.                          |
     | Skupina prostředků          | Vyberte **Použít existující** a pak vyberte **myResourceGroupTM1**. |
@@ -175,10 +175,10 @@ Přidejte dva virtuální počítače se službou myIISVMEastUS servery služby 
 2. V okně **Profil služby Traffic Manager** v části **Nastavení** vyberte **Koncové body** > **Přidat**.
 3. Zadejte nebo vyberte následující informace. U ostatních nastavení přijměte výchozí hodnoty a pak vyberte **OK**.
 
-    | Nastavení                 | Hodnota                                              |
+    | Nastavení                 | Value                                              |
     | ---                     | ---                                                |
     | Type                    | Zadejte koncový bod Azure.                                   |
-    | Název           | Zadejte **myEastUSEndpoint**.                                        |
+    | Name           | Zadejte **myEastUSEndpoint**.                                        |
     | Typ cílového prostředku           | Vyberte **Veřejná IP adresa**.                          |
     | Cílový prostředek          | Zvolte veřejnou IP adresu a zobrazí se výpis prostředků s veřejnými IP adresami ve stejném předplatném. Jako **Prostředek** vyberte veřejnou IP adresu **myIISVMEastUS-ip**. Toto je veřejná IP adresa virtuálního počítače se serverem služby IIS v oblasti USA – východ.|
     |  Hmotnost      | Zadejte **100**.        |

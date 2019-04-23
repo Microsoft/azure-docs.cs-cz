@@ -15,11 +15,11 @@ ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: genli
 ms.openlocfilehash: cb414abcbbf2db7b7cd6a3d724e50010beeef647
-ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52275731"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60318297"
 ---
 # <a name="how-to-use-perfinsights"></a>Použití PerfInsights
 
@@ -121,7 +121,7 @@ Informace o virtuální počítač Windows, disků nebo konfigurace fondů úlo�
 | Trasování diagnostiky výkonu *  | Ano                        | Ano                                | Ano                      | Ano                  | Ano                  |
 | Čítače sledování výkonu **      |                            |                                    | Ano                      |                      | Ano                  |
 | SMB čítačů trasování **              |                            |                                    |                          | Ano                  |                      |
-| Trasování SQL serveru čítač **       |                            |                                    | Ano                      |                      | Ano                  |
+| SQL Server counter trace **       |                            |                                    | Ano                      |                      | Ano                  |
 | Trasování nástroje XPerf                       |                            |                                    |                          |                      | Ano                  |
 | Ovladače StorPort trasování                    |                            |                                    |                          |                      | Ano                  |
 | Trasování sítě                     |                            |                                    |                          | Ano                  | Ano                  |
@@ -132,15 +132,15 @@ Informace o virtuální počítač Windows, disků nebo konfigurace fondů úlo�
 
 Běží na pozadí pro shromažďování dat a diagnostikovat problémy s výkonem probíhající modul založený na pravidlech. Aktuálně jsou podporovány následující pravidla:
 
-- Pravidlo HighCpuUsage: zjistí vysokou období využití procesoru a uvádí hlavních spotřebitelů využití procesoru během těchto období přistupovalo.
-- Pravidlo HighDiskUsage: zjistí období využití disku na fyzických discích a ukazuje využití příjemci nejvyšší disku během těchto období přistupovalo.
-- Pravidlo HighResolutionDiskMetric: ukazuje metriky latence vstupně-výstupních operací, propustnosti a vstupně-výstupních operací na 50 milisekund u každého fyzického disku. Pomáhá rychle identifikovat období omezování disku.
-- Pravidlo HighMemoryUsage: zjistí období využití velkého množství paměti a zobrazí hlavní paměti spotřebitele využití během těchto období přistupovalo.
+- HighCpuUsage pravidlo: Zjistí vysokou období využití procesoru a uvádí hlavních spotřebitelů využití procesoru během těchto období přistupovalo.
+- HighDiskUsage pravidlo: Zjistí období využití disku na fyzických discích a ukazuje využití příjemci nejvyšší disku během těchto období přistupovalo.
+- HighResolutionDiskMetric pravidlo: Zobrazuje metriky latence vstupně-výstupních operací, propustnosti a vstupně-výstupních operací na 50 milisekund u každého fyzického disku. Pomáhá rychle identifikovat období omezování disku.
+- HighMemoryUsage pravidlo: Zjistí období využití velkého množství paměti a zobrazuje hlavní paměti spotřebitele využití během těchto období přistupovalo.
 
 > [!NOTE] 
 > V současné době se podporují Windows, které zahrnují rozhraní .NET Framework 4.5 nebo novější verze.
 
-### <a name="performance-counter-trace-"></a>Čítače sledování výkonu (\*\*)
+### <a name="performance-counter-trace-"></a>Čítače sledování výkonu (*)
 
 Shromažďuje následující čítače výkonu:
 
@@ -156,7 +156,7 @@ Shromažďuje následující čítače výkonu:
 #### <a name="for-azure-files"></a>Pro soubory Azure
 \SMB sdílených složek klienta
 
-### <a name="diskspd-benchmark-trace-"></a>Trasování srovnávacího testu Diskspd (\*\*\*)
+### <a name="diskspd-benchmark-trace-"></a>Trasování srovnávacího testu Diskspd (*)
 Diskspd vstupně-výstupních operací úloh testy (Disk s operačním systémem [zápis] a jednotky fondu [r/w])
 
 ## <a name="run-the-perfinsights-tool-on-your-vm"></a>Spusťte nástroj PerfInsights na vašem virtuálním počítači

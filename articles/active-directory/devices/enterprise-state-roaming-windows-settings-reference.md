@@ -18,11 +18,11 @@ ms.date: 01/30/2019
 ms.author: joflore
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e6c80ee5d2a4d72be131c6a781cf793d1981e780
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58521070"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60353218"
 ---
 # <a name="windows-10-roaming-settings-reference"></a>Referenční informace k nastavení roamingu pro Windows 10
 Následuje úplný seznam všech nastavení, které budou s roamingem nebo zálohování ve Windows 10. 
@@ -76,7 +76,7 @@ Nastavení, která není roaming nebo synchronizace nebude patřit do skupiny.
 | **Seznam aplikací**: seznam nainstalovaných aplikací |X |zálohování |Ostatní |
 | **Bluetooth**: všechna nastavení Bluetooth |X |X | |
 | **Příkazový řádek**: Command prompt "Výchozí" nastavení |Synchronizace |X |Interní |
-| **přihlašovací údaje**: Schránka na pověření |Synchronizace |Synchronizace |heslo |
+| **přihlašovací údaje**: Schránka na pověření |Synchronizace |Synchronizace |password |
 | **Datum, čas a oblasti**: Automatický čas (Internet čas synchronizace) |Synchronizace |Synchronizace |language |
 | **Datum, čas a oblasti**: 24 hodin |Synchronizace |X |language |
 | **Datum, čas a oblasti**: datum a čas |Synchronizace |X |language |

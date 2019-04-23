@@ -1,6 +1,6 @@
 ---
 title: Zabezpečení vaší spravované domény Azure Active Directory Domain Services | Dokumentace Microsoftu
-description: Zabezpečení vaší spravované domény
+description: Zabezpečení spravované domény
 services: active-directory-ds
 documentationcenter: ''
 author: eringreenlee
@@ -16,11 +16,11 @@ ms.topic: article
 ms.date: 09/25/2018
 ms.author: ergreenl
 ms.openlocfilehash: 3797c76f1537f86357f7ca68ffed4758eb1bdc9a
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55173758"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60416496"
 ---
 # <a name="secure-your-azure-ad-domain-services-managed-domain"></a>Zabezpečení vaší spravované domény služby Azure AD Domain Services
 Tento článek pomáhá vám zabezpečit vaši spravovanou doménu. Můžete vypnout používání slabé šifrovacích sad a zakázat synchronizaci hodnot hash přihlašovacích údajů protokolů NTLM.

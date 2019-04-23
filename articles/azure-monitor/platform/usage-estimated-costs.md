@@ -5,16 +5,16 @@ author: dalekoetke
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: conceptual
-ms.date: 08/11/2018
+ms.date: 04/18/2019
 ms.author: mbullwin
 ms.reviewer: Dale.Koetke
 ms.subservice: ''
-ms.openlocfilehash: 2e59699b667215d4b09e4d87c1776431631348e8
-ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
+ms.openlocfilehash: 7117e7287f601b306893cb02dc5d7599d7c6224d
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58754249"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60453757"
 ---
 # <a name="monitoring-usage-and-estimated-costs-in-azure-monitor"></a>Monitorování využití a odhadované náklady ve službě Azure Monitor
 
@@ -102,155 +102,14 @@ Odhad nákladů ukazuje účinky tyto změny.
 
 ## <a name="moving-to-the-new-pricing-model"></a>Přechod na nový cenový model
 
-Pokud jste se rozhodli přijme nový cenový model pro odběr, vyberte **výběr cenového modelu** možnosti v horní části **využití a odhadované náklady** stránky:
+Pokud jste se rozhodli přijme nový cenový model pro dané předplatné, přejděte na každý prostředek Application Insights, otevřete **využití a odhadované náklady** a ujistěte se, že je v cenové úrovni Basic a přejděte na každý Log Analytics pracovní prostor, otevřete **cenová úroveň** stránky a přejděte **Per GB (2018)** cenovou úroveň. 
 
-![Monitorování využití a odhadované náklady na nový cenový model snímku obrazovky](./media/usage-estimated-costs/006.png)
-
-**Výběr cenového modelu** stránka se otevře. Zobrazí seznam všech předplatných, které jste zobrazili na předchozí stránce:
-
-![Ceny – snímek obrazovky výběru modelu](./media/usage-estimated-costs/007.png)
-
-Chcete-li přejít u určitého předplatného na nový cenový model, stačí vybrat pole a vyberte **Uložit**. Můžete přesunout zpátky na starší cenový model stejným způsobem. Mějte na paměti vlastníkem tohoto předplatného nebo oprávnění přispěvatele je potřeba změnit cenový model.
+> [!NOTE]
+> Požadavek, aby všechny prostředky Application Insights a pracovní prostory Log Analytics v rámci daného předplatného přijmout nejnovější cenový model se odebralo, umožní větší funkce a jednodušší konfigurace. 
 
 ## <a name="automate-moving-to-the-new-pricing-model"></a>Automatizovat přechod na nový cenový model
 
-Následující skripty vyžaduje modul Azure PowerShell. Chcete-li zkontrolovat, pokud máte nejnovější verzi naleznete v tématu [instalace modulu Azure PowerShell](/powershell/azure/install-az-ps).
+Jak bylo uvedeno výše, už není potřeba přesunout všechny prostředky pro sledování v rámci předplatného na nový cenový model ve stejnou dobu a proto ``migratetonewpricingmodel`` akce nebude mít žádný vliv. Nyní můžete přesunout prostředky Application Insights a pracovní prostory Log Analytics samostatně do nejnovější cenové úrovně.  
 
-Až budete mít nejnovější verzi Azure Powershellu, je nejprve třeba spustit ``Connect-AzAccount``.
+Automatizace této změny je popsána pro Application Insights s použitím [Set-AzureRmApplicationInsightsPricingPlan](https://docs.microsoft.com/powershell/module/azurerm.applicationinsights/set-azurermapplicationinsightspricingplan) s ``-PricingPlan "Basic"`` a používání Log Analytics [Set-AzureRmOperationalInsightsWorkspace](https://docs.microsoft.com/powershell/module/AzureRM.OperationalInsights/Set-AzureRmOperationalInsightsWorkspace) s ``-sku "PerGB2018"``. 
 
-``` PowerShell
-# To check if your subscription is eligible to adjust pricing models.
-$ResourceID ="/subscriptions/<Subscription-ID-Here>/providers/microsoft.insights"
-Invoke-AzResourceAction `
- -ResourceId $ResourceID `
- -ApiVersion "2017-10-01" `
- -Action listmigrationdate `
- -Force
-```
-
-Pod isGrandFatherableSubscription výsledkem TRUE označuje, že toto předplatné cenový model lze přesunout mezi cenovými modely. Chybějící hodnoty v rámci optedInDate znamená, že toto předplatné je aktuálně nastavený na starý cenový model.
-
-```
-isGrandFatherableSubscription optedInDate
------------------------------ -----------
-                         True            
-```
-
-Toto předplatné migrovat na nový cenový model, spusťte:
-
-```powershell
-$ResourceID ="/subscriptions/<Subscription-ID-Here>/providers/microsoft.insights"
-Invoke-AzResourceAction `
- -ResourceId $ResourceID `
- -ApiVersion "2017-10-01" `
- -Action migratetonewpricingmodel `
- -Force
-```
-
-Potvrďte, že změny se úspěšně znovu spustit:
-
-```powershell
-$ResourceID ="/subscriptions/<Subscription-ID-Here>/providers/microsoft.insights"
-Invoke-AzResourceAction `
- -ResourceId $ResourceID `
- -ApiVersion "2017-10-01" `
- -Action listmigrationdate `
- -Force
-```
-
-Pokud byla migrace úspěšná, váš výsledek by měl nyní vypadat:
-
-```
-isGrandFatherableSubscription optedInDate                      
------------------------------ -----------                      
-                         True 2018-05-31T13:52:43.3592081+00:00
-```
-
-OptInDate nyní obsahuje časové razítko z když toto předplatné výslovného souhlasu na nový cenový model.
-
-Pokud je potřeba vrátit zpět na starý cenový model, měli byste spustit:
-
-```powershell
- $ResourceID ="/subscriptions/<Subscription-ID-Here>/providers/microsoft.insights"
-Invoke-AzResourceAction `
- -ResourceId $ResourceID `
- -ApiVersion "2017-10-01" `
- -Action rollbacktolegacypricingmodel `
- -Force
-```
-
-Pokud pak znovu spusťte předchozí skript, který má ``-Action listmigrationdate``, měli byste vidět optedInDate prázdnou hodnotu, která byla vrácena vašeho předplatného na starší verzi cenového modelu.
-
-Pokud máte více předplatných, které chcete migrovat, které jsou hostované ve stejném tenantovi můžete například vytvořit vlastní typ variant použití kusů z následujících skriptů:
-
-```powershell
-#Query tenant and create an array comprised of all of your tenants subscription IDs
-$TenantId = <Your-tenant-id>
-$Tenant =Get-AzSubscription -TenantId $TenantId
-$Subscriptions = $Tenant.Id
-```
-
-Pokud chcete zkontrolovat, jestli jsou všechna předplatná v tenantovi nárok na nový cenový model, můžete spustit:
-
-```powershell
-Foreach ($id in $Subscriptions)
-{
-$ResourceID ="/subscriptions/$id/providers/microsoft.insights"
-Invoke-AzResourceAction `
- -ResourceId $ResourceID `
- -ApiVersion "2017-10-01" `
- -Action listmigrationdate `
- -Force
-}
-```
-
-Skript může být kontrast další tak, že vytvoříte skript, který generuje tří polí. Jedno pole bude obsahovat všechny předplatné ID, které mají ```isGrandFatherableSubscription``` nastavena na hodnotu True a optedInDate momentálně nemá hodnotu. Druhé pole žádné předplatné aktuálně na nový cenový model. A třetí pole vyplní pouze ID předplatných ve vašem tenantovi, který se nevztahuje na nový cenový model:
-
-```powershell
-[System.Collections.ArrayList]$Eligible= @{}
-[System.Collections.ArrayList]$NewPricingEnabled = @{}
-[System.Collections.ArrayList]$NotEligible = @{}
-
-Foreach ($id in $Subscriptions)
-{
-$ResourceID ="/subscriptions/$id/providers/microsoft.insights"
-$Result= Invoke-AzResourceAction `
- -ResourceId $ResourceID `
- -ApiVersion "2017-10-01" `
- -Action listmigrationdate `
- -Force
-
-     if ($Result.isGrandFatherableSubscription -eq $True -and [bool]$Result.optedInDate -eq $False)
-     {
-     $Eligible.Add($id)
-     }
-
-     elseif ($Result.isGrandFatherableSubscription -eq $True -and [bool]$Result.optedInDate -eq $True)
-     {
-     $NewPricingEnabled.Add($id)
-     }
-
-     elseif ($Result.isGrandFatherableSubscription -eq $False)
-     {
-     $NotEligible.add($id)
-     }
-}
-```
-
-> [!NOTE]
-> V závislosti na počtu předplatných, která skript výše může trvat nějakou dobu pro spuštění. Z důvodu použití metody .add() bude okno Powershellu echo narůstající hodnoty jako položky budou přidány do každého pole.
-
-Teď, když máte předplatné rozdělené do tří polí byste měli pečlivě zkontrolovat výsledky. Můžete chtít vytvořit záložní kopii obsah polí tak, aby mohli snadno vrátit změny budete chtít v budoucnu. Pokud jste se rozhodli, byste chtěli převést všechny oprávněné předplatné, které jsou aktuálně podle starého cenového modelu na nový cenový model, který tento úkol je teď možné dosáhnout s:
-
-```powershell
-Foreach ($id in $Eligible)
-{
-$ResourceID ="/subscriptions/$id/providers/microsoft.insights"
-Invoke-AzResourceAction `
- -ResourceId $ResourceID `
- -ApiVersion "2017-10-01" `
- -Action migratetonewpricingmodel `
- -Force
-}
-
-```

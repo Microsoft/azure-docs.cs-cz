@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/11/2018
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: cea8522a9f3eb8fa98821c1cb08d92a9524d5ce4
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 8bbc86f5c6fe0f30968a1ba5bd5fa28160ef6963
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57876795"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60372862"
 ---
 # <a name="generating-smart-cropped-thumbnails-with-computer-vision"></a>Generuje se oříznou kolem smart miniatury s pro počítačové zpracování obrazu
 
@@ -38,15 +38,15 @@ Můžete také získat nezpracovaný ohraničující souřadnice pole tohoto ste
 
 Vygenerované miniatury můžou výrazně lišit v závislosti na tom, zadejte pro výšku, šířku a inteligentní oříznutí, jak je znázorněno na následujícím obrázku.
 
-![Miniatury](./Images/thumbnail-demo.png)
+![Horská oblast obrázku vedle různých konfiguracích oříznutí](./Images/thumbnail-demo.png)
 
 Následující tabulka ukazuje typické miniatury generovaných pro počítačové zpracování obrazu pro příklad Image. Miniatury byly vygenerovány pro zadanou cílovou výšku a šířku 50 pixelů a inteligentní oříznutí povolené.
 
 | Image | Miniatura |
 |-------|-----------|
-|![Osoba na rock Horská oblast, abyste se při západu slunce](./Images/mountain_vista.png) | ![Horská oblast venku miniaturu](./Images/mountain_vista_thumbnail.png) |
+|![Horská oblast venku při západu slunce s obrysem osoby](./Images/mountain_vista.png) | ![Miniatura venku Mountain při západu slunce s obrysem osoby](./Images/mountain_vista_thumbnail.png) |
 |![Bílé květinu zeleným pozadím](./Images/flower.png) | ![Analýza květinu miniaturu pro zpracování obrazu](./Images/flower_thumbnail.png) |
-|![Žena stropu budovy objektu apartment](./Images/woman_roof.png) | ![Žena stříška miniaturu](./Images/woman_roof_thumbnail.png) |
+|![Žena stropu budovy objektu apartment](./Images/woman_roof.png) | ![miniaturu se ženou stropu budovy objektu apartment](./Images/woman_roof_thumbnail.png) |
 
 ## <a name="next-steps"></a>Další postup
 

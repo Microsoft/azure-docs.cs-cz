@@ -9,11 +9,11 @@ ms.date: 10/23/2018
 ms.author: wgries
 ms.subservice: files
 ms.openlocfilehash: 9d7162eca3c2979b1dd333bdaf95c7c43e875b9d
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59049134"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60461780"
 ---
 # <a name="tutorial-extend-windows-file-servers-with-azure-file-sync"></a>Kurz: Rozšíření souborových serverů Windows s využitím Synchronizace souborů Azure
 
@@ -218,7 +218,7 @@ K nasazení služby Azure File Sync, je třeba nejprve umístit **služba synchr
 
    V podokně, které se otevře, zadejte následující informace:
 
-   | Hodnota | Popis |
+   | Value | Popis |
    | ----- | ----- |
    | **Název** | Jedinečný název (pro každé předplatné) služby synchronizace úložiště.<br><br>Použití _afssyncservice02_ pro účely tohoto kurzu. |
    | **Předplatné** | Předplatné Azure, které používáte pro účely tohoto kurzu. |
@@ -264,7 +264,7 @@ Uživatelské rozhraní serveru registrace otvírat automaticky po instalaci age
 
    | | |
    | ----- | ----- |
-   | Hodnota | Popis |
+   | Value | Popis |
    | **Předplatné Azure** | Předplatné, které obsahuje službu synchronizace úložiště pro účely tohoto kurzu. |
    | **Skupina prostředků** | Skupina prostředků, která obsahuje službu synchronizace úložiště. Použití _afsresgroup101918_ pro účely tohoto kurzu. |
    | **Služba synchronizace úložiště** | Název služby synchronizace úložiště. Použití _afssyncservice02_ pro účely tohoto kurzu. |
@@ -283,7 +283,7 @@ Skupina synchronizace definuje topologii synchronizace sady souborů. Skupina sy
 
 1. Zadejte následující informace, chcete-li vytvořit skupinu synchronizace s koncovým bodem cloudové:
 
-   | Hodnota | Popis |
+   | Value | Popis |
    | ----- | ----- |
    | **Název skupiny synchronizace** | Tento název musí být jedinečný v rámci služby synchronizace úložiště, ale může to být libovolný název, který vám dává smysl. Použití *afssyncgroup* pro účely tohoto kurzu.|
    | **Předplatné** | Předplatné, do kterého jste nasadili službu synchronizace úložiště pro účely tohoto kurzu. |
@@ -306,7 +306,7 @@ Koncový bod serveru představuje určitého umístění na registrovaném serve
 
    | | |
    | ----- | ----- |
-   | Hodnota | Popis |
+   | Value | Popis |
    | **Zaregistrovaný server** | Název serveru, který jste vytvořili. Použití *afsvm101918* pro účely tohoto kurzu. |
    | **Cesta** | Cesta Windows serveru na jednotku, kterou jste vytvořili. Použití *f:\filestosync* v tomto kurzu. |
    | **Vrstvení cloudu** | Pro účely tohoto kurzu nechte tuto možnost zakázanou. |

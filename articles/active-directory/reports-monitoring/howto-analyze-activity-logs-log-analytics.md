@@ -1,6 +1,6 @@
 ---
-title: Analýza protokolů aktivit Azure Active Directory pomocí Azure monitoru protokolů (preview) | Dokumentace Microsoftu
-description: Naučte se analyzovat protokoly aktivit Azure Active Directory pomocí Azure monitoru protokolů (preview)
+title: Analýza protokolů aktivit Azure Active Directory pomocí protokolů Azure Monitor | Dokumentace Microsoftu
+description: Naučte se analyzovat protokoly aktivit Azure Active Directory pomocí protokolů z Azure monitoru
 services: active-directory
 documentationcenter: ''
 author: MarkusVi
@@ -13,18 +13,18 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
-ms.date: 11/13/2018
-ms.author: markvi
-ms.reviewer: dhanyahk
+ms.date: 04/18/2019
+ms.author: priyamo
+ms.reviewer: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6e195dd0e52b4938e829ea0aec1f4cc3ef7107c0
-ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
+ms.openlocfilehash: 1651bb2898a2bd1e3e0c3fbbce77dc4106d76e7a
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58436800"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60438169"
 ---
-# <a name="analyze-azure-ad-activity-logs-with-azure-monitor-logs-preview"></a>Analýza služby Azure AD protokolů aktivit se protokoly Azure monitoru (preview)
+# <a name="analyze-azure-ad-activity-logs-with-azure-monitor-logs"></a>Analýza služby Azure AD protokolů aktivit se protokoly Azure monitoru
 
 Poté co [integrovat Azure AD protokolů aktivit se protokoly Azure monitoru](howto-integrate-activity-logs-with-log-analytics.md), sílu protokoly Azure Monitor můžete použít k získání přehledu o vašem prostředí. Můžete také nainstalovat [protokolu zobrazení analytics pro Azure AD aktivitu protokoly](howto-install-use-log-analytics-views.md) získat přístup k předdefinované sestavy na základě auditu a události přihlášení ve vašem prostředí.
 

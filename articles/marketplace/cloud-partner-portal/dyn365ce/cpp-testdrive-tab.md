@@ -15,11 +15,11 @@ ms.topic: conceptual
 ms.date: 12/25/2018
 ms.author: pbutlerm
 ms.openlocfilehash: 373312b4c7f05fe41c9ca8165b8ff6f1b0e56f1b
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57454965"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60322831"
 ---
 # <a name="dynamics-365-for-customer-engagement-application-test-drive-tab"></a>Dynamics 365 Customer Engagement aplikaci Test Drive karta
 
@@ -47,7 +47,7 @@ Následující tabulka popisuje pole k nastavení testovací verze pro vaši apl
 |    ---------                  |  ---------------                |
 |      Popis              |   Popište, co se dá dělat na vaše testovací verze. Základní značky HTML můžete použít k formátování tento popis. Například &lt;p&gt;, &lt;em&gt;, &lt;ul&gt;, &lt;li&gt;, &lt;ol&gt;a záhlaví.  |
 |  Uživatelská příručka                  |   Nahrajte uživatelská příručka pro vaši zákazníci můžou použít pro vás provedl možnostmi, testovací verze. Tento dokument musí být soubor PDF.              |
-|  Test jednotky – ukázkové Video (volitelné) |  Můžete zadat video s návodem, vaše testovací verze. Zákazník může sledovat toto video předtím, než si testovací jízdu. Zadejte URL adresu videa na YouTube nebo Vimeo. Pokud vyberete **+ přidat Video**, budete vyzváni k zadání následujících informací:<ul><li>Název</li><li>zprostředkovatele identity</li><li>Miniatura (ve formátu PNG, 533 x 324 pixelů)</li></ul>  |
+|  Test jednotky – ukázkové Video (volitelné) |  Můžete zadat video s návodem, vaše testovací verze. Zákazník může sledovat toto video předtím, než si testovací jízdu. Zadejte URL adresu videa na YouTube nebo Vimeo. Pokud vyberete **+ přidat Video**, budete vyzváni k zadání následujících informací:<ul><li>Name</li><li>zprostředkovatele identity</li><li>Miniatura (ve formátu PNG, 533 x 324 pixelů)</li></ul>  |
 |   |   |
 
 

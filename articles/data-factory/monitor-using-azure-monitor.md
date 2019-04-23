@@ -13,11 +13,11 @@ ms.topic: conceptual
 ms.date: 12/11/2018
 ms.author: shlo
 ms.openlocfilehash: e96e462709ab0c715c831bd10c628869d5c617fe
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58013314"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60319116"
 ---
 # <a name="alert-and-monitor-data-factories-using-azure-monitor"></a>Výstrahy a monitorování datové továrny pomocí Azure monitoru
 Cloudové aplikace jsou složité s řadu pohyblivých částí. Monitorování poskytuje data k zajištění, že systém zůstane vaší aplikace v provozu a spuštěná v dobrém stavu. Také pomáhá stave vypnout potenciální problémy a řešení potíží s poslední těch, které jsou. Kromě toho můžete data monitorování získat podrobný přehled o vaší aplikaci. Tyto znalosti můžete dozvíte, jak zlepšit výkon aplikace nebo udržovatelnosti nebo automatizaci akcí, které by jinak vyžadují ruční zásah.
@@ -112,7 +112,7 @@ https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnost
 | Protokoly| Komplexní typ| Název kategorie diagnostických protokolů pro typ prostředku. Pokud chcete získat seznam kategorií protokol diagnostiky pro prostředek, nejprve proveďte operaci NAČÍST nastavení diagnostiky. |
 | category| String| Pole kategorie protokolu a jejich zásady uchovávání informací |
 | timeGrain | String | Členitost metriky, které jsou zachyceny ve formátu ISO 8601 doby trvání. Musí být PT1M (jednu minutu)|
-| povoleno| Logická hodnota | Určuje, zda je povoleno shromažďování této kategorie metriky nebo protokolu pro tento prostředek|
+| povoleno| Boolean | Určuje, zda je povoleno shromažďování této kategorie metriky nebo protokolu pro tento prostředek|
 | parametru retentionPolicy.| Komplexní typ| Popisuje zásady uchovávání informací pro kategorii metrika nebo protokolu. Používá se pro pouze možnost účtu úložiště.|
 | dny| Int| Počet dnů uchování metriky nebo protokoly. Hodnota 0 protokoly uchovává po neomezenou dobu. Používá se pro pouze možnost účtu úložiště. |
 

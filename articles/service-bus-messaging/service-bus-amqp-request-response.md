@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 01/23/2019
 ms.author: aschhab
 ms.openlocfilehash: c22ba0b57ed1161e1f7e2082d2ba21f27b656da1
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58121566"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60402679"
 ---
 # <a name="amqp-10-in-microsoft-azure-service-bus-request-response-based-operations"></a>AMQP 1.0 ve službě Microsoft Azure Service Bus: operace založené na žádost odpověď
 
@@ -591,7 +591,7 @@ Každá položka mapování pole obsahuje následující vlastnosti:
 
 `filter` může být buď z následujících typů:
 
-| Název popisovače | Popisovač kódu | Hodnota |
+| Název popisovače | Popisovač kódu | Value |
 | --- | --- | ---|
 | `com.microsoft:sql-filter:list` | 0x000001370000006 | Filtr SQL |
 | `com.microsoft:correlation-filter:list` | 0x000001370000009 | Korelační filtr |
@@ -620,7 +620,7 @@ Každá položka mapování pole obsahuje následující vlastnosti:
 
 `ruleAction` může být jeden z následujících typů:
 
-| Název popisovače | Popisovač kódu | Hodnota |
+| Název popisovače | Popisovač kódu | Value |
 | --- | --- | ---|
 | `com.microsoft:empty-rule-action:list` | 0x0000013700000005 | Prázdné pravidlo akce – akce žádná pravidla, která je k dispozici |
 | `com.microsoft:sql-rule-action:list` | 0x0000013700000006 | SQL Rule Action |

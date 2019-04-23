@@ -17,11 +17,11 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: c0afc31bf08a5037d91885bc6a85c6aeaf858825
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57436651"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60386538"
 ---
 # <a name="troubleshoot-connectivity-issues-with-azure-ad-connect"></a>Řešení potíží s připojením u služby Azure AD Connect
 Tento článek vysvětluje, jak funguje připojení mezi Azure AD Connect a službou Azure AD a jak řešit problémy s připojením. Tyto problémy jsou pravděpodobně se zobrazí v prostředí s proxy serverem.

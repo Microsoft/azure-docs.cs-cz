@@ -11,11 +11,11 @@ ms.date: 11/30/2018
 ms.author: davidmu
 ms.subservice: B2C
 ms.openlocfilehash: ca3fd76cfeb09fe4e18a04bff38e166928ef38b2
-ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58401775"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60313348"
 ---
 # <a name="configure-the-resource-owner-password-credentials-flow-in-azure-ad-b2c"></a>Nakonfigurujte tok přihlašovacího hesla vlastníka prostředku v Azure AD B2C
 
@@ -68,11 +68,11 @@ Generovat volání rozhraní API pomocí oblíbených rozhraní API vývoje apli
 
 `https://yourtenant.b2clogin.com/<yourtenant.onmicrosoft.com>/oauth2/v2.0/token?p=B2C_1_ROPC_Auth`
 
-| Klíč | Hodnota |
+| Klíč | Value |
 | --- | ----- |
 | uživatelské jméno | leadiocl@outlook.com |
-| heslo | Passxword1 |
-| grant_type | heslo |
+| password | Passxword1 |
+| grant_type | password |
 | scope | openid \<bef2222d56-552f-4a5b-b90a-1988a7d634c3> offline_access |
 | client_id | \<bef2222d56-552f-4a5b-b90a-1988a7d634c3> |
 | response_type | Token požadavku id_token |
@@ -108,7 +108,7 @@ Vytvoření volání POST podobný tomu vidíte tady pomocí informací v násle
 
 `https://yourtenant.b2clogin.com/<yourtenant.onmicrosoft.com>/oauth2/v2.0/token?p=B2C_1_ROPC_Auth`
 
-| Klíč | Hodnota |
+| Klíč | Value |
 | --- | ----- |
 | grant_type | refresh_token |
 | response_type | id_token |

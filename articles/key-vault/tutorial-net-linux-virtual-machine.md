@@ -13,11 +13,11 @@ ms.date: 12/21/2018
 ms.author: pryerram
 ms.custom: mvc
 ms.openlocfilehash: 354ffb14eb95e7f09256f337ffea069cff14b226
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57306557"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60460855"
 ---
 # <a name="tutorial-how-to-use-azure-key-vault-with-azure-linux-virtual-machine-in-net"></a>Kurz: Jak používat Azure Key Vault s Linuxových virtuálních počítačů Azure v .NET
 

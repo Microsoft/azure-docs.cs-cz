@@ -16,11 +16,11 @@ ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: jeedes
 ms.openlocfilehash: a297c9db22d81ee3c32be4732198ba25b8f5a8f8
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59280192"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60339159"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-timeoffmanager"></a>Kurz: Integrace Azure Active Directory s TimeOffManager
 
@@ -118,7 +118,7 @@ Ke konfiguraci Azure AD jednotné přihlašování s TimeOffManager, proveďte n
 
 6. Kromě toho výše TimeOffManager aplikace očekává, že několik dalších atributů musí být předány zpět odpověď SAML. V **deklarace identity uživatelů** části na **atributy uživatele** dialogového okna, proveďte následující kroky pro přidání atributu tokenu SAML, jak je znázorněno v následující tabulka: 
 
-    | Název | Zdrojový atribut|
+    | Name | Zdrojový atribut|
     | --- | --- |
     | jméno |User.givenName |
     | Příjmení |User.Surname |

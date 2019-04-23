@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 10/23/2018
 ms.author: genli
-ms.openlocfilehash: c9accf09da240f6d3235edd3c9da1876529d8654
-ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
+ms.openlocfilehash: 5458a02c09a3600875c7300b27c5a87a735b2f1b
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58650738"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60318877"
 ---
 # <a name="remote-desktop-services-isnt-starting-on-an-azure-vm"></a>Vzdálená plocha nespouští na Virtuálním počítači Azure
 
@@ -57,7 +57,7 @@ Při pokusu o připojení k virtuálnímu počítači se vyskytnout následujíc
 K tomuto problému dochází, protože na virtuálním počítači není spuštěná služba Vzdálená plocha. Příčiny mohou záviset na následující scénáře: 
 
 - Inicializace služby je nastaven na **zakázané**. 
-- Služba inicializace padá nebo přestanou reagovat. 
+- Služba řízení padá nebo neodpovídá. 
 - Inicializace nespouští z důvodu nesprávné konfigurace.
 
 ## <a name="solution"></a>Řešení

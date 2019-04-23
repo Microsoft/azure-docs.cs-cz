@@ -13,11 +13,11 @@ ms.date: 02/13/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 115354985284b090fef890068ade6ddaf5867f04
-ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56457676"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60474106"
 ---
 # <a name="overview-about-changing-your-security-info-preview-methods-and-information"></a>Přehled o změně metody (preview) informace o zabezpečení a informace
 Můžete přidat, upravit, odstranit a změnit výchozí metodu informace o zabezpečení v rámci **bezpečnostní údaje** stránky. Další informace o jednotlivých metod a jak změnit vaše údaje najdete v článku přidružené, založených na volání metody.
@@ -25,7 +25,7 @@ Můžete přidat, upravit, odstranit a změnit výchozí metodu informace o zabe
 ## <a name="two-factor-verification-versus-password-reset-authentication"></a>Dvojúrovňové ověřování oproti heslo resetovat ověřování
 Zabezpečení informací o metody se používají pro obě dvojúrovňového ověřování a pro resetování hesla. Ne všechny metody však lze použít pro obojí.
 
-|Metoda|Používá pro|
+|Metoda|Použití|
 |------|--------|
 |Aplikace Authenticator|Dvoufaktorové ověřování a resetováním hesla ověřování.|
 |Text zprávy|Dvoufaktorové ověřování a resetováním hesla ověřování.|

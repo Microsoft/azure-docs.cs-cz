@@ -8,11 +8,11 @@ ms.topic: tutorial
 ms.date: 11/15/2017
 ms.author: sngun
 ms.openlocfilehash: 0580129d8a1e8500a7be1b0728bacc947f4ece5a
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54043868"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60447297"
 ---
 # <a name="build-mobile-applications-with-xamarin-and-azure-cosmos-db"></a>Vytváření mobilních aplikací s Xamarinem a Azure Cosmos DB
 

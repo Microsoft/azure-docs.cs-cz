@@ -9,11 +9,11 @@ ms.topic: tutorial
 ms.date: 03/19/2019
 ms.author: alkohli
 ms.openlocfilehash: 72d6ce58a986ddd0d0976d99de5ca3426d78f0b9
-ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58287158"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60463003"
 ---
 # <a name="tutorial-return-azure-data-box-and-verify-data-upload-to-azure"></a>Kurz: Vrátí zařízení Azure Data Box a ověřte nahrání dat do Azure
 

@@ -13,19 +13,19 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/27/2019
 ms.author: magoedte
-ms.openlocfilehash: 15be0039006d322c3d5e19d4ef141d1543c7b1c0
-ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
-ms.translationtype: MT
+ms.openlocfilehash: 2f500ea127d3f2042e7c97eeace592b4da8d8d0e
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2019
-ms.locfileid: "58580670"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60494830"
 ---
 # <a name="how-to-update-azure-monitor-for-containers-to-enable-metrics"></a>Postup aktualizace Azure Monitor k zapnutí metrik pro kontejnery
 Azure Monitor pro kontejnery zavádí podporu pro shromažďování metrik z uzlů clusterů služby Kubernetes v Azure (AKS) a podů a jejich zápis do úložiště metrik Azure monitoru. Tato změna má poskytovat vylepšené včasnosti při zobrazení agregační výpočty (průměr, počet, Max, Min, součet) v grafech výkonu, podpory připínat grafy výkonu v Azure portal řídicí panely a podporují upozornění na metriku.
 
 Jako součást této funkce jsou povoleny následující metriky:
 
-| Metriky oboru názvů | Metrika | Popis |
+| Obor názvů metriky | Metrika | Popis |
 |------------------|--------|-------------|
 | insights.container/nodes | cpuUsageMillicores cpuUsagePercentage, memoryRssBytes, memoryRssPercentage, memoryWorkingSetBytes, memoryWorkingSetPercentage, nodesCount | Jedná se o *uzel* metriky a zahrnují *hostitele* jako dimenze a také<br> Název uzlu jako hodnotu *hostitele* dimenze. |
 | insights.container/pods | podCount | Jedná se o *pod* metriky a patří jako dimenze - ControllerName, Kubernetes obor názvů, název, fáze. |
@@ -35,7 +35,7 @@ Aktualizuje se cluster pro podporu těchto nových funkcí lze provést z webu A
 Buď zpracování přiřadí **monitorování metrik vydavatele** roli instančnímu objektu služby clusteru tak, aby se data shromažďují pomocí agenta mohou být publikovány na váš prostředek clustery. Monitorování metrik vydavatele má oprávnění pouze pro nabízené metriky pro prostředek, ho nelze změnit jakýkoliv stav, aktualizovat prostředek ani načíst žádná data. Další informace o roli najdete v tématu [role vydavatele monitorování metrik](../../role-based-access-control/built-in-roles.md#monitoring-metrics-publisher).
 
 ## <a name="prerequisites"></a>Požadavky 
-Než začnete, ujistěte se, že jste členem **[vlastníka](https://docs.microsoft.com/en-us/azure/role-based-access-control/built-in-role.mds#owner)** role v prostředku clusteru AKS a Povolit shromažďování uzlu pod metrik výkonu. 
+Než začnete, ujistěte se, že jste členem **[vlastníka](https://docs.microsoft.com/en-us/azure/role-based-access-control/built-in-role.md#owner)** role v prostředku clusteru AKS a Povolit shromažďování uzlu pod metrik výkonu. 
 
 Pokud se rozhodnete používat rozhraní příkazového řádku Azure, musíte nejprve nainstalovat a používat rozhraní příkazového řádku místně. Musíte používat Azure CLI verze 2.0.59 nebo novější. Zjistěte verzi, spusťte `az --version`. Pokud potřebujete instalaci nebo upgrade rozhraní příkazového řádku Azure, najdete v článku [instalace rozhraní příkazového řádku Azure](https://docs.microsoft.com/cli/azure/install-azure-cli). 
 

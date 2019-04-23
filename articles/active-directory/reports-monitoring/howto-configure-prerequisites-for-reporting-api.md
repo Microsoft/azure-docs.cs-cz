@@ -18,11 +18,11 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 8ab30dfeccc4ae1c7b09a8f48846ffb9e71cfc23
-ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58436740"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60438944"
 ---
 # <a name="prerequisites-to-access-the-azure-active-directory-reporting-api"></a>Požadavky pro přístup k API pro vytváření sestav Azure Active Directory
 
@@ -41,7 +41,7 @@ Pokud chcete připravit váš přístup k rozhraní API pro generování sestav,
 
 Chcete-li získat přístup k datům sestav prostřednictvím rozhraní API, budete muset mít jednu z následujících rolí přiřadit:
 
-- Čtecí zařízení pro zabezpečení
+- Čtenář zabezpečení
 
 - Správce zabezpečení
 

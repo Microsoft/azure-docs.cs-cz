@@ -11,14 +11,14 @@ ms.service: azure-monitor
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 04/01/2019
+ms.date: 04/17/2019
 ms.author: magoedte
-ms.openlocfilehash: ebe2c2b488e3d71597dd24f5504a14dd7ce6671e
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: HT
+ms.openlocfilehash: bbd7c733c7c089328d2fbe016426fe9de3a6b5ce
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59791537"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60494622"
 ---
 # <a name="how-to-set-up-alerts-for-performance-problems-in-azure-monitor-for-containers"></a>Jak nastavit výstrahy pro problémy s výkonem ve službě Azure Monitor pro kontejnery
 Azure Monitor pro kontejnery sleduje výkon úloh kontejneru, které jsou nasazeny do služby Azure Container Instances nebo spravovat clustery Kubernetes, které jsou hostované ve službě Azure Kubernetes Service (AKS).
@@ -285,5 +285,5 @@ Postupujte podle těchto kroků k vytvoření upozornění protokolu ve službě
 
 ## <a name="next-steps"></a>Další postup
 
-* Zobrazení [protokolu Příklady dotazů](container-insights-analyze.md#search-logs-to-analyze-data) Další informace o předdefinovaných dotazů a příklady k vyhodnocování nebo přizpůsobit pro jiné scénáře výstrah.
-* Další informace o Azure Monitor a monitorovat další aspekty vašeho clusteru AKS najdete v tématu [zobrazení Azure Kubernetes Service health](container-insights-analyze.md).
+- Zobrazení [protokolu Příklady dotazů](container-insights-log-search.md#search-logs-to-analyze-data) předem definovaných dotazů a příklady, které vyhodnotí nebo přizpůsobení pro výstrahy vizualizace a analýza vašich clusterů.
+- Další informace o Azure Monitor a monitorovat další aspekty vašeho clusteru AKS najdete v tématu [zobrazení Azure Kubernetes Service health](container-insights-analyze.md).

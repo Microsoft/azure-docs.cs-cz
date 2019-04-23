@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/15/2018
 ms.author: yagup;jdial
-ms.openlocfilehash: cb61366a672a48cdc84e14f40d889e646e0e23b8
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
+ms.openlocfilehash: 2f283421a851914822f5b0c9d05ed6bc929d28c4
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59545395"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60429864"
 ---
 # <a name="traffic-analytics"></a>Analýza provozu
 
@@ -130,14 +130,6 @@ Informace o tom, jak kontrolovat přístupová oprávnění uživatelů najdete 
 ### <a name="enable-network-watcher"></a>Povolení Network Watcheru
 
 Analýza provozu, musíte mít existující network watcheru nebo [povolit network watcher](network-watcher-create.md) v jednotlivých oblastech, které mají skupiny zabezpečení sítě, které chcete analyzovat provoz pro. Analýza provozu se dá nastavit pro skupiny zabezpečení sítě hostovaná v některém z [podporované oblasti](#supported-regions).
-
-### <a name="re-register-the-network-resource-provider"></a>Znovu zaregistrujte poskytovatele prostředků sítě
-
-Než budete moct použít analýzu provozu, je nutné znovu zaregistrovat poskytovatele prostředků sítě. Klikněte na tlačítko **vyzkoušet** do následujícího okna kódu a otevřete Azure Cloud Shell. Cloud Shell automaticky zaznamenává je do ke svému předplatnému Azure. Jakmile službě Cloud Shell se otevře, zadejte následující příkaz pro opětovné zaregistrování poskytovatel síťových prostředků:
-
-```azurepowershell-interactive
-Register-AzResourceProvider -ProviderNamespace "Microsoft.Network"
-```
 
 ### <a name="select-a-network-security-group"></a>Vyberte skupinu zabezpečení sítě
 

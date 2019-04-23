@@ -8,14 +8,14 @@ ms.reviewer: jasonh
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 04/15/2019
-ms.openlocfilehash: c3c5484d865c73a6f478ffc9ad4c3fc86c2c8170
-ms.sourcegitcommit: fec96500757e55e7716892ddff9a187f61ae81f7
+ms.openlocfilehash: 64856d53168a7676cf279da2d8675ce81e1985f7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2019
-ms.locfileid: "59618999"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60447722"
 ---
-# <a name="copy-data-from-azure-data-factory-to-azure-data-explorer"></a>Kopírování dat z Azure Data Factory do Průzkumníku dat Azure
+# <a name="copy-data-to-azure-data-explorer-using-azure-data-factory"></a>Kopírování dat do Průzkumníku dat Azure pomocí Azure Data Factory 
 
 Průzkumník služby Azure Data je rychlé a plně spravované datové služby analytics pro analýzu v reálném čase na velké objemy dat streamované z mnoha zdrojů, jako je například aplikace, weby a zařízení IoT. Opakovaně zkoumat data a identifikovat vzory a anomálie k vylepšení produktů, vylepšení zkušeností zákazníků, monitorovat zařízení a zvýšit operace. Prozkoumejte nové dotazy a získejte odpovědi v řádu minut. Azure Data Factory je služba pro integraci plně spravovaný cloudový datový. Služby můžete použít k naplnění databáze Průzkumník dat Azure s daty ze stávajícího systému a ušetřit čas při vytváření vlastních analytických řešení.
 
@@ -32,7 +32,7 @@ V tomto článku se dozvíte, jak načíst data z Amazonu S3 do Průzkumníku da
 
 * Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet Azure](https://azure.microsoft.com/free/) před tím, než začnete.
 * [Průzkumník dat Azure clusteru a databáze služby](create-cluster-database-portal.md)
-* Amazon S3.
+* Zdroj dat
 
 ## <a name="create-a-data-factory"></a>Vytvoření datové továrny
 
@@ -147,10 +147,6 @@ Průzkumník dat Nová propojená služba Azure se vytvoří pro kopírování d
 
     ![ADX cílového úložiště dat.](media/data-factory-load-data/destination-data-store.png)
 
-1. V **zvolte výstupní soubor nebo složku**, zadejte název složky výstupu, zjistěte nastavení a vyberte **Další**.
-
-    ![Zadejte výstupní složka](media/data-factory-load-data/specify-path.png)
-
 1. V **mapování tabulky**, nastavte název cílové tabulky a vyberte **Další**.
 
     ![Mapování tabulek cílový dataset](media/data-factory-load-data/destination-dataset-table-mapping.png)
@@ -186,6 +182,8 @@ Průzkumník dat Nová propojená služba Azure se vytvoří pro kopírování d
 
 ## <a name="next-steps"></a>Další postup
 
-* Další informace o úpravách propojené služby, datové sady a kanály ve službě [uživatelské rozhraní služby Data Factory](/azure/data-factory/quickstart-create-data-factory-portal)
+* Další informace o [Průzkumník dat Azure konektor](/azure/data-factory/connector-azure-data-explorer) ve službě Azure Data Factory.
+
+* Další informace o úpravách propojené služby, datové sady a kanály ve službě [uživatelské rozhraní služby Data Factory](/azure/data-factory/quickstart-create-data-factory-portal).
 
 * Další informace o [Průzkumník dat Azure dotazy](/azure/data-explorer/web-query-data) pro dotazování na data.

@@ -9,11 +9,11 @@ ms.date: 02/22/2019
 ms.author: nikiest
 ms.subservice: logs
 ms.openlocfilehash: b6009471048232b52020e4bef6272ed8cb1bd35b
-ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58497750"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60345812"
 ---
 # <a name="archive-the-azure-activity-log"></a>Archivace protokolu aktivit Azure
 V tomto článku vám ukážeme, jak pomocí webu Azure portal, rutin Powershellu nebo CLI pro různé platformy pro archivaci vaše [ **protokolu aktivit Azure** ](../../azure-monitor/platform/activity-logs-overview.md) v účtu úložiště. Tato možnost je užitečná, pokud byste chtěli zachovat váš protokol aktivit déle než 90 dnů (s úplnou kontrolou nad zásady uchovávání informací) pro audit, statické analýzy nebo pro zálohování. Pokud potřebujete události uchovávat po 90 dní nebo méně nepotřebujete nastavit archivaci do účtu úložiště, protože události protokolu aktivit se zachovají na platformě Azure po dobu 90 dnů bez povolení archivace.
@@ -61,7 +61,7 @@ Archivace protokolu aktivit některou z níže uvedených metod, že nastavíte 
 | StorageAccountId |Ano |ID prostředku účtu úložiště, ke kterému má být uložen protokolů aktivit. |
 | Umístění |Ano |Čárkami oddělený seznam oblasti, pro které chcete shromažďovat události protokolu aktivit. Můžete zobrazit seznam všech oblastí pro vaše předplatné pomocí `(Get-AzLocation).Location`. |
 | RetentionInDays |Ne |Počet dní pro události, které by měla být zachována, od 1 do 365. Hodnota nula ukládá protokoly po neomezenou dobu (trvale). |
-| Kategorie |Ne |Čárkami oddělený seznam kategorie událostí, které se mají shromažďovat. Možné hodnoty jsou Write, Delete a akce.  Pokud se nezadá, pak všechny možné hodnoty jsou považovány za |
+| Categories |Ne |Čárkami oddělený seznam kategorie událostí, které se mají shromažďovat. Možné hodnoty jsou Write, Delete a akce.  Pokud se nezadá, pak všechny možné hodnoty jsou považovány za |
 
 ## <a name="archive-the-activity-log-via-cli"></a>Archivace protokolu aktivit prostřednictvím rozhraní příkazového řádku
 

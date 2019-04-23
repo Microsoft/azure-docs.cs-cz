@@ -10,18 +10,18 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 86de73394d96d1122abce44504d2b0fd99a01841
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: HT
+ms.openlocfilehash: 3fe839de8cbaa0b321b0b0602b000b7575224dde
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58915778"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60361094"
 ---
 # <a name="define-an-oauth1-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Technický profil OAuth1 definování ve vlastních zásadách pro Azure Active Directory B2C
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-Azure Active Directory (Azure AD) B2C poskytuje podporu pro [protokol OAuth 1.0](https://tools.ietf.org/html/rfc5849) zprostředkovatele identity. Tento článek popisuje, jaké jsou specifikace technický profil pro interakci s zprostředkovatele deklarací identity, která podporuje tento protokol standardizované. Technický profil může provést federaci s OAuth1 s OAuth1 podle zprostředkovatele identity, jako je Twitter, umožňuje uživatelům přihlásit se s jejich existujícími sociálních sítí nebo podnikové identity.
+Azure Active Directory (Azure AD) B2C poskytuje podporu pro [protokol OAuth 1.0](https://tools.ietf.org/html/rfc5849) zprostředkovatele identity. Tento článek popisuje, jaké jsou specifikace technický profil pro interakci s zprostředkovatele deklarací identity, která podporuje tento protokol standardizované. S OAuth1 technický profil může provést federaci pomocí zprostředkovatele identity na základě OAuth1, jako je Twitter. Federování s využitím zprostředkovatele identity umožňuje uživatelům Přihlaste se pomocí své stávající sociálních sítí nebo podnikové identity.
 
 ## <a name="protocol"></a>Protocol (Protokol)
 
@@ -46,7 +46,7 @@ Azure Active Directory (Azure AD) B2C poskytuje podporu pro [protokol OAuth 1.0]
 
 Následující příklad ukazuje deklarace vrácené poskytovatelem identity Twitteru:
 
-- **User_id** deklarace identity, který je namapovaný na **socialIdpUserId** deklarací identity.
+- **User_id** deklarace identity, který je namapovaný na **issuerUserId** deklarací identity.
 - **Screen_name** deklarace identity, který je namapovaný na **displayName** deklarací identity.
 - **E-mailu** deklarace identity bez mapování názvů.
 
@@ -57,7 +57,7 @@ Technický profil také vrátí hodnotu deklarace identity, které nejsou vráce
 
 ```xml
 <OutputClaims>
-  <OutputClaim ClaimTypeReferenceId="socialIdpUserId" PartnerClaimType="user_id" />
+  <OutputClaim ClaimTypeReferenceId="issuerUserId" PartnerClaimType="user_id" />
   <OutputClaim ClaimTypeReferenceId="displayName" PartnerClaimType="screen_name" />
   <OutputClaim ClaimTypeReferenceId="email" />
   <OutputClaim ClaimTypeReferenceId="identityProvider" DefaultValue="twitter.com" />
@@ -87,7 +87,7 @@ Technický profil také vrátí hodnotu deklarace identity, které nejsou vráce
 
 ## <a name="redirect-uri"></a>Přesměrovat identifikátor URI
 
-Při konfiguraci adresy URL pro přesměrování vašeho zprostředkovatele identity, zadejte `https://login.microsoftonline.com/te/tenant/policyId/oauth1/authresp`. Nezapomeňte nahradit **tenanta** názvem vašeho tenanta (například contosob2c.onmicrosoft.com) a **policyId** s identifikátorem zásady (například b2c_1a_policy). Identifikátor URI pro přesměrování musí být v všechna písmena malá. Měli byste přidat UR přesměrování pro všechny zásady, které používají přihlášení zprostředkovatele identity. 
+Při konfiguraci adresy URL pro přesměrování vašeho zprostředkovatele identity, zadejte `https://login.microsoftonline.com/te/tenant/policyId/oauth1/authresp`. Nezapomeňte nahradit **tenanta** názvem vašeho tenanta (například contosob2c.onmicrosoft.com) a **policyId** s identifikátorem zásady (například b2c_1a_policy). Identifikátor URI pro přesměrování musí být v všechna písmena malá. Přidáte adresu URL pro přesměrování pro všechny zásady, které používají přihlášení zprostředkovatele identity. 
 
 Pokud používáte **b2clogin.com** domény namísto **login.microsoftonline.com** Ujistěte se, že použití b2clogin.com místo login.microsoftonline.com.
 

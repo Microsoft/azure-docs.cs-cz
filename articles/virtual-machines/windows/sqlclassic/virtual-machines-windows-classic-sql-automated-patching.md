@@ -17,11 +17,11 @@ ms.date: 03/07/2018
 ms.author: mathoma
 ms.reviewer: jroth
 ms.openlocfilehash: aa912e3eb76d72e7a79c83d7e51d493310bd36b3
-ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54331312"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60362131"
 ---
 # <a name="automated-patching-for-sql-server-in-azure-virtual-machines-classic"></a>Automatizované opravy pro SQL Server na virtuálních počítačích Azure (klasické)
 > [!div class="op_single_selector"]
@@ -30,12 +30,12 @@ ms.locfileid: "54331312"
 > 
 > 
 
-Automatizované opravy vytváří časového období údržby pro virtuální počítač Azure s SQL serverem. Automatické aktualizace lze nainstalovat pouze během tohoto časového období údržby. Pro SQL Server tím se zajistí, že aktualizace systému a jakékoli přidružené požadavky na restarty vyskytovat na nejlepší možné době pro databázi. 
+Automatizované opravy vytváří časového období údržby pro virtuální počítač Azure s SQL serverem. Automatizované aktualizace je možné nainstalovat pouze během tohoto časového období údržby. Pro SQL Server tím se zajistí, že aktualizace systému a jakékoli přidružené požadavky na restarty vyskytovat na nejlepší možné době pro databázi. 
 
 > [!IMPORTANT]
-> Pouze aktualizace Windows označené **důležité** jsou nainstalovány. Další aktualizace SQL serveru, jako je kumulativní aktualizace, musí ručně doinstalovat. 
+> Nainstalují se pouze aktualizace Windows označené jako **Důležité**. Ostatní aktualizace SQL Serveru, jako jsou kumulativní aktualizace, je potřeba nainstalovat ručně. 
 
-Automatizované opravy závisí [rozšíření agenta SQL Server IaaS](../classic/sql-server-agent-extension.md).
+Automatizované opravy závisí na [rozšíření agenta SQL Server IaaS](../classic/sql-server-agent-extension.md).
 
 > [!IMPORTANT] 
 > Azure má dva různé modely nasazení pro vytváření a práci s prostředky: [Resource Manager a Classic](../../../azure-resource-manager/resource-manager-deployment-model.md). Tento článek se věnuje modelu nasazení Classic. Microsoft doporučuje, aby byl ve většině nových nasazení použit model Resource Manager. Chcete-li zobrazit Resource Manageru verze tohoto článku, najdete v článku [automatizované opravy pro SQL Server v Azure virtuální počítače Resource Manageru](../sql/virtual-machines-windows-sql-automated-patching.md).

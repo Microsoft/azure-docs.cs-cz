@@ -6,19 +6,25 @@ author: rimman
 manager: kfile
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 03/13/2019
+ms.date: 04/13/2019
 ms.author: banders
 ms.reviewer: sngun
-ms.openlocfilehash: 8386d1c43761cfb27746b003d136419f72d7d4ae
-ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
+ms.openlocfilehash: d5a13e4466234d73bafe8dbe76cae92955cf64bd
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58648533"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60370743"
 ---
 # <a name="understand-how-the-reservation-discount-is-applied-to-azure-cosmos-db"></a>Vysvětlení, jak sleva za rezervaci se použije ke službě Azure Cosmos DB
 
 Po nákupu Azure Cosmos DB vyhrazené kapacity sleva za rezervaci se automaticky využije na prostředky Azure Cosmos DB, které odpovídají atributy a množství rezervace. Rezervace se věnuje zajištěné propustnosti pro prostředky Azure Cosmos DB. Nezahrnuje softwaru, sítě, úložiště, nebo předdefinované kontejneru poplatky.
+
+## <a name="how-reservation-discount-is-applied"></a>Jak se uplatňuje sleva ve výši rezervace
+
+Sleva za rezervaci se "*použití – it nebo ztratit – it*". Ano Pokud nemáte odpovídající prostředky pro hodinu, potom ztratíte množství rezervací pro určitou hodinu. Nelze provést vpřed nevyužité vyhrazené hodin.
+
+Při vypínání prostředek sleva za rezervaci automaticky použije další odpovídající prostředek v zadaném oboru. Pokud systém nenašel žádné odpovídající prostředky v zadaném oboru, pak jsou vyhrazené hodin *ztráty*.
 
 ## <a name="reservation-discount-applied-to-azure-cosmos-db-accounts"></a>Sleva za rezervaci použitý k účtům Azure Cosmos DB
 

@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 08/01/2016
 ms.author: mlearned
 ms.openlocfilehash: a2a730e2c3ca466a2705f053d7db0db12d7941da
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59786917"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60458706"
 ---
 # <a name="continuous-integration-in-azure-devops-services-using-azure-resource-group-deployment-projects"></a>Průběžná integrace služby Azure DevOps pomocí projekty nasazení skupiny prostředků Azure
 K nasazení šablony Azure, můžete provádět úlohy v různých fázích: Kopírovat sestavení, testování, do Azure (tzv. "Přípravného") a nasaďte šablonu. Existují dva různé způsoby nasazování šablon ke službám Azure DevOps. Obě metody poskytují stejné výsledky, proto zvolte ten, který nejlépe vyhovuje požadavkům vašeho pracovního postupu.

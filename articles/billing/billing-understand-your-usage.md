@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 08/31/2017
 ms.author: banders
 ms.openlocfilehash: a143fc6d9dbd78ae365f943a00ac9f8492d5e51c
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57897142"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60369620"
 ---
 # <a name="understand-terms-on-your-microsoft-azure-detailed-usage-charges"></a>Vysvětlení podmínek vašeho Microsoft Azure podrobných poplatků za využití 
 
@@ -57,7 +57,7 @@ V horní části souboru CSV podrobné informace o využití obsahuje seznam slu
 |Překročení |Zobrazuje poplatky za měřiče, které překračují výši závazku spojeného s nabídkou na 6 nebo 12 měsíců |
 |Sazba závazku |Ukazuje sazbu závazku založenou na celkové výši závazku spojeného s nabídkou na 6 nebo 12 měsíců |
 |Sazba |Sazba se účtuje za fakturovatelnou jednotku |
-|Hodnota |Zobrazuje výsledek součinu sloupce Nadlimitní množství sloupcem sazba. Pokud spotřebované množství nepřekročí zahrnuté množství, neplatí žádné poplatky v tomto sloupci. |
+|Value |Zobrazuje výsledek součinu sloupce Nadlimitní množství sloupcem sazba. Pokud spotřebované množství nepřekročí zahrnuté množství, neplatí žádné poplatky v tomto sloupci. |
 
 ### <a name="daily-usage"></a>Denní využívání
 

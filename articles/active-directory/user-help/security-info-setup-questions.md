@@ -13,11 +13,11 @@ ms.date: 02/13/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 3e5d1546c658631911f25c43e94275f00c7a5140
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57901878"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60474595"
 ---
 # <a name="set-up-security-info-preview-to-use-security-questions"></a>Upravit informace o zabezpečení (preview) tak, aby použít bezpečnostní otázky
 Můžete následujícím postupem přidáte, že vaše heslo resetováno metoda. Po nastavení tím prvním, můžete se vrátit k **bezpečnostní údaje** stránku chcete přidat, aktualizovat nebo odstranit informace o zabezpečení.

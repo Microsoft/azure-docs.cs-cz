@@ -1,6 +1,6 @@
 ---
 title: Zasílání oznámení aplikacím pro Univerzální platformu Windows službou Azure Notification Hubs | Microsoft Docs
-description: V tomto kurzu zjistíte, jak pomocí služby Azure Notification Hubs odesílat nabízená oznámení do aplikace Univerzální platformy Windows.
+description: Naučte se používat Azure Notification Hubs k odesílání nabízených oznámení do aplikace univerzální platformy Windows.
 services: notification-hubs
 documentationcenter: windows
 author: jwargo
@@ -15,23 +15,23 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 03/22/2019
 ms.author: jowargo
-ms.openlocfilehash: 093528dff09c71b999d58f0285044340fa0ec360
-ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
+ms.openlocfilehash: b9fa54a24c5d96f0d3ad48034907f2c6fe5cb385
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58403200"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60426800"
 ---
 # <a name="tutorial-send-notifications-to-universal-windows-platform-apps-by-using-azure-notification-hubs"></a>Kurz: Odesílat oznámení do aplikací pro univerzální platformu Windows pomocí Azure Notification Hubs
 
 [!INCLUDE [notification-hubs-selector-get-started](../../includes/notification-hubs-selector-get-started.md)]
 
-V tomto kurzu vytvoříte centrum oznámení, které posílá nabízená oznámení aplikaci pro Univerzální platformu Windows (UPW). Vytvoříte prázdnou aplikaci pro Windows Store, která přijímá nabízená oznámení ze Služby nabízených oznámení Windows (WNS). Potom můžete použít centrum oznámení k vysílání nabízených oznámení do všech zařízení, na kterých běží vaše aplikace.
+V tomto kurzu vytvoříte centrum oznámení, které posílá nabízená oznámení aplikaci pro Univerzální platformu Windows (UPW). Vytvoříte prázdnou aplikaci pro Windows Store, která přijímá nabízená oznámení ze Služby nabízených oznámení Windows (WNS). Potom můžete používat vaše Centrum oznámení k vysílání nabízených oznámení pro všechna zařízení, na kterých běží vaše aplikace.
 
 > [!NOTE]
 > Dokončený kód pro tento kurz najdete na [GitHubu](https://github.com/Azure/azure-notificationhubs-samples/tree/master/dotnet/GetStartedWindowsUniversal).
 
-V tomto kurzu provedete následující kroky:
+Můžete provést následující kroky:
 
 > [!div class="checklist"]
 > * Vytvoření aplikace ve Windows Storu
@@ -45,6 +45,11 @@ V tomto kurzu provedete následující kroky:
 - [Microsoft Visual Studio Community 2015](https://www.visualstudio.com/products/visual-studio-community-vs) nebo novější
 - [Nainstalované nástroje pro vývoj aplikací pro UPW](https://msdn.microsoft.com/windows/uwp/get-started/get-set-up)
 - Aktivní účet Windows Store
+- Ujistěte se, že **dostávat oznámení z aplikací a dalších odesílatelů** je povolené nastavení. 
+    - Spuštění **nastavení** okna ve vašem počítači.
+    - Vyberte **systému** dlaždici.
+    - Vyberte **oznámení a akce** v levé nabídce. 
+    - Ujistěte se, že **dostávat oznámení z aplikací a dalších odesílatelů** je povolené nastavení. Pokud není povolený, povolte ho. 
 
 Dokončení tohoto kurzu je předpokladem pro všechny ostatní kurzy služby Notification Hubs pro aplikace UPW.
 
@@ -170,8 +175,7 @@ Příjem oznámení ve vaší aplikaci můžete rychle otestovat odesláním ozn
     ![Oznámení](./media/notification-hubs-windows-store-dotnet-get-started/test-notification-message.png)
 
 ## <a name="next-steps"></a>Další postup
-
-V tomto kurzu jste z portálu nebo konzolové aplikace odeslali vysílané oznámení všem zařízením s Windows. Pokud se chcete naučit posílat nabízená oznámení jenom určitým zařízením, pokračujte následujícím kurzem:
+Jste odeslali oznámení vysílání pro všechna vaše zařízení Windows pomocí portálu nebo konzolové aplikace. Pokud se chcete naučit posílat nabízená oznámení jenom určitým zařízením, pokračujte následujícím kurzem:
 
 > [!div class="nextstepaction"]
 >[Zasílání nabízených oznámení určitým zařízením](

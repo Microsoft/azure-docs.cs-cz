@@ -11,11 +11,11 @@ ms.topic: reference
 ms.date: 03/29/2018
 ms.author: rosh
 ms.openlocfilehash: 69db722295c9c81d45913bd078fe9cc5ab74c512
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58104705"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60462584"
 ---
 # <a name="project-url-preview-v7-reference"></a>Odkaz na projekt ve verzi Preview se adresy URL v7
 
@@ -73,7 +73,7 @@ Níže jsou hlavičky, které mohou zahrnovat požadavek a odpověď.
 ## <a name="query-parameters"></a>Parametry dotazu
 Žádost mohou zahrnovat tyto parametry dotazu. Zobrazte požadovaný sloupec pro požadované parametry. Adresa URL musíte zakódovat parametry dotazu. Dotaz musí být absolutní adresa URL se schématem http nebo https; Nepodporujeme relativní adresy URL nebo jiná schémata, jako je ftp: / /
 
-|Název|Hodnota|Type|Požaduje se|
+|Name|Value|Type|Požaduje se|
 |----------|-----------|----------|--------------|
 |<a name="mkt" />mkt|Trh, odkud pochází výsledky. <br /><br />Seznam možných hodnot na trhu najdete v článku kódy na trhu.<br /><br /> **POZNÁMKA:** Rozhraní API ve verzi Preview URL aktuálně podporuje jenom USA podle zeměpisného umístění a angličtině.<br /><br />|String|Ano|
 |<a name="query" />q|Adresa URL ve verzi preview|String|Ano|
@@ -83,7 +83,7 @@ Níže jsou hlavičky, které mohou zahrnovat požadavek a odpověď.
 ## <a name="response-objects"></a>Objekty odpovědi
 Schéma odpovědi je buď [webové stránky] nebo ErrorResponse, stejně jako v hledání webového rozhraní API. Pokud požadavek selže, je objekt nejvyšší úrovně [ErrorResponse](#errorresponse) objektu.
 
-|Objekt|Popis|
+|Object|Popis|
 |------------|-----------------|
 |[WebPage](#webpage)|Nejvyšší úroveň objektu JSON, který obsahuje atributy ve verzi preview.|
 
@@ -102,7 +102,7 @@ Definuje chyby, ke které došlo k chybě.
 ### <a name="errorresponse"></a>ErrorResponse
 Objekt nejvyšší úrovně, který obsahuje odpověď, pokud požadavek selže.
 
-|Název|Hodnota|Type|
+|Name|Value|Type|
 |----------|-----------|----------|
 |_type|Pomocný parametr typu.|String|
 |<a name="errors" />Chyby|Seznam chyb, které popisují důvody, proč žádost selhala.|[Chyba](#error)]|
@@ -110,7 +110,7 @@ Objekt nejvyšší úrovně, který obsahuje odpověď, pokud požadavek selže.
 ### <a name="webpage"></a>Webová stránka
 Definuje informace o webové stránce ve verzi preview.
 
-|Název|Hodnota|Type|
+|Name|Value|Type|
 |----------|-----------|----------|
 |jméno|Název stránky, ne tedy nutně Nadpis HTML|String|
 |url|Adresu URL, kterou byl ve skutečnosti procházen (žádosti může provedli přesměrování)|String|
@@ -119,7 +119,7 @@ Definuje informace o webové stránce ve verzi preview.
 |primaryImageOfPage/contentUrl|Adresa URL reprezentativní image zahrnout ve verzi preview|String|
 
 ### <a name="identifiable"></a>Údaje
-|Název|Hodnota|Type|
+|Name|Value|Type|
 |-------------|-----------------|----------|
 |id|Identifikátor prostředku|String|
 

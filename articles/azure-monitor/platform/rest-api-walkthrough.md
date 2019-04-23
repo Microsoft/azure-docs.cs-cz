@@ -9,11 +9,11 @@ ms.date: 03/19/2018
 ms.author: mcollier
 ms.subservice: ''
 ms.openlocfilehash: ddbc00155c3c5c136f7d33861e9ad5177df77470
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59528063"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60452980"
 ---
 # <a name="azure-monitoring-rest-api-walkthrough"></a>Azure návod monitorování rozhraní REST API
 

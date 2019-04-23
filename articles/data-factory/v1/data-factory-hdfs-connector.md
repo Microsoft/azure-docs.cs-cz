@@ -14,11 +14,11 @@ ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 4ae5b3b9016af0d35e40d66d527e51230e0f11ce
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59527213"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60486536"
 ---
 # <a name="move-data-from-on-premises-hdfs-using-azure-data-factory"></a>Přesun dat z místní HDFS pomocí Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -70,8 +70,8 @@ Propojená služba propojuje úložiště dat do služby data factory. Vytvořen
 | type |Vlastnost type musí být nastavená na: **Hdfs** |Ano |
 | URL |Adresa URL HDFS |Ano |
 | authenticationType. |Anonymní, nebo Windows. <br><br> Použití **ověřování protokolem Kerberos** konektor HDFS najdete v tématu [v této části](#use-kerberos-authentication-for-hdfs-connector) odpovídajícím způsobem nastavit v místním prostředí. |Ano |
-| uživatelské jméno |Ověřování uživatelského jména pro Windows. Pro ověřování protokolem Kerberos, zadejte `<username>@<domain>.com`. |Ano (pro ověřování systému Windows) |
-| heslo |Heslo pro ověřování Windows. |Ano (pro ověřování systému Windows) |
+| userName |Ověřování uživatelského jména pro Windows. Pro ověřování protokolem Kerberos, zadejte `<username>@<domain>.com`. |Ano (pro ověřování systému Windows) |
+| password |Heslo pro ověřování Windows. |Ano (pro ověřování systému Windows) |
 | gatewayName |Název brány, který služba Data Factory měla použít pro připojení k HDFS. |Ano |
 | encryptedCredential |[Nové AzDataFactoryEncryptValue](https://docs.microsoft.com/powershell/module/az.datafactory/new-azdatafactoryencryptvalue) výstup přihlašovacích údajů pro přístup. |Ne |
 

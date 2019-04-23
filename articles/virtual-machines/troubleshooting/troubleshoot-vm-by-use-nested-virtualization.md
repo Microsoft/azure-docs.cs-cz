@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 11/01/2018
 ms.author: genli
 ms.openlocfilehash: c84d015da907c8792f09d1d60e6bc8eddb7e2957
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51005594"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60444298"
 ---
 # <a name="troubleshoot-a-problem-azure-vm-by-using-nested-virtualization-in-azure"></a>Řešení potíží problém virtuálního počítače Azure pomocí vnořená virtualizace v Azure
 
@@ -41,7 +41,7 @@ Připojte problémový virtuální počítač, virtuální počítač zachránit
 
     -  Operační systém: Windows Server 2016 Datacenter
 
-    -  Velikost: Libovolné řady V3 s nejméně dvěma jader že podporu vnořené virtualizace. Další informace najdete v tématu [Představujeme nové velikosti počítačů Dv3 a Ev3](https://azure.microsoft.com/blog/introducing-the-new-dv3-and-ev3-vm-sizes/).
+    -  Velikost: Jakoukoli řadu V3 s minimálně dvě jádra, které podporují vnořená virtualizace. Další informace najdete v tématu [Představujeme nové velikosti počítačů Dv3 a Ev3](https://azure.microsoft.com/blog/introducing-the-new-dv3-and-ev3-vm-sizes/).
 
     -  Stejné umístění, účet úložiště a skupině prostředků jako problémový virtuální počítač.
 
@@ -71,7 +71,7 @@ Připojte problémový virtuální počítač, virtuální počítač zachránit
 
 13. Povolit server k instalaci role Hyper-V. Tato akce trvá několik minut a na server se automaticky restartuje.
 
-## <a name="step-2-create-the-problem-vm-on-the-rescue-vms-hyper-v-server"></a>Krok 2: Vytvoření problémový virtuální počítač na serveru Hyper-V virtuálního počítače zachránit
+## <a name="step-2-create-the-problem-vm-on-the-rescue-vms-hyper-v-server"></a>Krok 2: Vytvořit problém virtuálního počítače na serveru Hyper-V virtuálního počítače zachránit
 
 1.  Zaznamenejte název disku v problémový virtuální počítač a pak odstraňte problém virtuálního počítače. Ujistěte se, abyste všechny připojené disky. 
 

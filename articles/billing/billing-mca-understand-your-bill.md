@@ -16,11 +16,11 @@ ms.workload: na
 ms.date: 02/19/2019
 ms.author: banders
 ms.openlocfilehash: f93152ae3db926fb989c219d1e515abaf0281bf4
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57837877"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60372097"
 ---
 # <a name="understand-the-charges-on-your-microsoft-customer-agreements-invoice"></a>Principy poplatků za na faktuře smlouvy zákazníka Microsoftu
 

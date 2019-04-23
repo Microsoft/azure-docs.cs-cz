@@ -14,11 +14,11 @@ ms.topic: troubleshooting
 ms.date: 06/15/2018
 ms.author: delhan
 ms.openlocfilehash: d96d75f4f2623476f7af4e6eea930c1f2c503e3a
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51226909"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60306947"
 ---
 # <a name="how-to-reset-local-linux-password-on-azure-vms"></a>Jak resetovat heslo místního systému Linux na virtuálních počítačích Azure
 

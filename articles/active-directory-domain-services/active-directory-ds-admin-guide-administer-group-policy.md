@@ -16,18 +16,18 @@ ms.topic: conceptual
 ms.date: 06/22/2018
 ms.author: ergreenl
 ms.openlocfilehash: deaa6a9ff49fea2093c94a039aab0d7de0c95359
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55177113"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60417980"
 ---
 # <a name="administer-group-policy-on-an-azure-ad-domain-services-managed-domain"></a>Správa zásad skupiny ve spravované doméně služby Azure AD Domain Services
 Azure Active Directory Domain Services zahrnuje předdefinované objekty zásad skupiny (GPO) pro kontejnery "Uživatelé AADDC" a "Kontejnery počítače AADDC". Můžete přizpůsobit tyto předdefinované objekty zásad skupiny ke konfigurování zásad skupiny ve spravované doméně. Členové skupiny 'Správci AAD DC' kromě toho můžete vytvořit své vlastní vlastní organizační jednotky ve spravované doméně. Můžete také vytvořit vlastní objekty zásad skupiny a propojují se s těmito vlastní organizační jednotky. Uživatelé, kteří patří do skupiny "Správci AAD DC" jsou udělena oprávnění pro správu zásad skupiny ve spravované doméně.
 
 [!INCLUDE [active-directory-ds-prerequisites.md](../../includes/active-directory-ds-prerequisites.md)]
 
-## <a name="before-you-begin"></a>Před zahájením
+## <a name="before-you-begin"></a>Než začnete
 K provádění úkolů uvedených v tomto článku, budete potřebovat:
 
 1. Platný **předplatného Azure**.

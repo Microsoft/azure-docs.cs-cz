@@ -17,11 +17,11 @@ ms.reviewer: asteen
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 97759ae992ebe38aa85e9b4724edeebb5285db4b
-ms.sourcegitcommit: b8a8d29fdf199158d96736fbbb0c3773502a092d
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/15/2019
-ms.locfileid: "59565695"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60443075"
 ---
 # <a name="remove-a-user-or-group-assignment-from-an-enterprise-app-in-azure-active-directory"></a>Odebrání uživatele nebo skupiny přiřazení podnikové aplikace v Azure Active Directory
 Je snadné odeberte uživatele nebo skupiny z přiřazeného přístupu k jednomu s vašimi firemními aplikacemi v Azure Active Directory (Azure AD). Budete potřebovat příslušná oprávnění ke správě podnikové aplikace. A vy musíte být globální správce adresáře.

@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/25/2019
+ms.date: 04/18/2019
 ms.author: mlottner
-ms.openlocfilehash: 59021d09f2af9d430b118acdeb8aa977094e683e
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: HT
+ms.openlocfilehash: cac2f740c1b2ae109f29ce44cd035fc6a83dd148
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58862382"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60505423"
 ---
 # <a name="quickstart-enable-service-in-iot-hub"></a>Rychlý start: Povolit službu ve službě IoT Hub
 
@@ -45,7 +45,7 @@ Tento článek obsahuje vysvětlení, jak povolit Azure Security Center (ASC) pr
 Pokud chcete povolit zabezpečení ve službě IoT Hub, postupujte takto: 
 
 1. Otevřete váš **služby IoT Hub** na webu Azure portal. 
-2. Vyberte a otevřete **zabezpečení** v levé nabídce. 
+2. V části **zabezpečení** nabídky, klikněte na tlačítko **přehled**, pak klikněte na tlačítko **Start ve verzi preview**. 
 3. Zvolte **povolit zabezpečení IoT**. 
 4. Zadejte podrobnosti vašeho pracovního prostoru Log Analytics. 
    - Zvolit k uložení **nezpracovaných událostí** kromě výchozí informace typy úložiště se zaškrtnutým políčkem **nezpracovaných událostí** přepnout **na**. 

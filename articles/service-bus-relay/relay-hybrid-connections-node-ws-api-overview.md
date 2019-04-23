@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/23/2018
 ms.author: spelluru
-ms.openlocfilehash: bf0173f9c9802be689f7f3a893d381a251a2b16a
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: 794e797e504d6064c13ffe0a4ed131e668d86e97
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43701132"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60421603"
 ---
 # <a name="relay-hybrid-connections-node-api-overview"></a>Přehled rozhraní API uzlu hybridní připojení přenosu
 
@@ -135,7 +135,7 @@ Argumenty konstruktoru:
 
 `RelayedServer` instance vysílat tři události, které vám umožní zpracování příchozích požadavků, připojení a zjišťování chybové stavy. Musí přihlásit k odběru `connect` událostí ke zpracování zpráv. 
 
-##### <a name="headers"></a>hlavičky
+##### <a name="headers"></a>Záhlaví
 
 ```JavaScript 
 function(headers)

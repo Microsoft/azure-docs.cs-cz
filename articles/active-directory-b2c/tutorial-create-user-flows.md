@@ -11,11 +11,11 @@ ms.date: 02/01/2019
 ms.author: davidmu
 ms.subservice: B2C
 ms.openlocfilehash: b76d56b17973c04992a8855917c814ced649bd0f
-ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58338254"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60418764"
 ---
 # <a name="tutorial-create-user-flows-in-azure-active-directory-b2c"></a>Kurz: Vytvořit toky uživatelů v Azure Active Directory B2C
 

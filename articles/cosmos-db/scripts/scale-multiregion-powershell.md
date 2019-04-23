@@ -10,11 +10,11 @@ ms.topic: sample
 ms.date: 05/10/2017
 ms.reviewer: sngun
 ms.openlocfilehash: 02628401bed6e65784bf7ddc4a7082f617640cf9
-ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58496140"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60448465"
 ---
 # <a name="replicate-an-azure-cosmos-db-database-account-in-multiple-regions-and-configure-failover-priorities-using-powershell"></a>Replikace účtu databáze Azure Cosmos DB ve více oblastech a konfigurace priorit převzetí služeb při selhání pomocí PowerShellu
 

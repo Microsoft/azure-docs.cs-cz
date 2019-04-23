@@ -8,11 +8,11 @@ ms.service: data-explorer
 ms.topic: quickstart
 ms.date: 03/25/2019
 ms.openlocfilehash: 553564be494b4175cba937b583d49ad84a8d0e66
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59526516"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60447396"
 ---
 # <a name="create-an-azure-data-explorer-cluster-and-database-by-using-powershell"></a>Vytvoření clusteru Průzkumník dat Azure a databáze pomocí prostředí PowerShell
 
@@ -67,7 +67,7 @@ Následující kroky nejsou nutné, pokud spouštíte příkazy ve službě Azur
 
    |**Nastavení** | **Navrhovaná hodnota** | **Popis pole**|
    |---|---|---|
-   | Název | *mykustocluster* | Požadovaný název vašeho clusteru.|
+   | Name | *mykustocluster* | Požadovaný název vašeho clusteru.|
    | Skladová jednotka (SKU) | *D13_v2* | Skladová položka, která se použije pro váš cluster. |
    | ResourceGroupName | *testrg* | Název skupiny prostředků, ve kterém se cluster vytvoří. |
 
@@ -92,7 +92,7 @@ Pokud výsledek obsahuje `provisioningState` s `Succeeded` hodnotu, pak clusteru
    |**Nastavení** | **Navrhovaná hodnota** | **Popis pole**|
    |---|---|---|
    | Název clusteru | *mykustocluster* | Název clusteru s novou databází.|
-   | Název | *mykustodatabase* | Název databáze.|
+   | Name | *mykustodatabase* | Název databáze.|
    | ResourceGroupName | *testrg* | Název skupiny prostředků, ve kterém se cluster vytvoří. |
    | SoftDeletePeriod | *3650:00:00:00* | Množství času, které data zůstanou k dispozici pro dotazy. |
    | HotCachePeriod | *3650:00:00:00* | Množství času, které data zůstanou v mezipaměti. |

@@ -16,11 +16,11 @@ ms.topic: sample
 ms.date: 11/07/2017
 ms.author: fryu
 ms.openlocfilehash: 02b4cfcc6d88430701f653665269532a4eb7092f
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59799248"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60460635"
 ---
 # <a name="calculate-the-total-billing-size-of-a-blob-container"></a>Výpočet fakturace celkové velikosti kontejneru objektů blob
 

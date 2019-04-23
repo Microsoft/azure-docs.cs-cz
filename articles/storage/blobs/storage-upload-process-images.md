@@ -10,11 +10,11 @@ ms.date: 11/26/2018
 ms.author: tamram
 ms.custom: mvc
 ms.openlocfilehash: 7d06d23af8d4d4f0282f6eb743c0f47dba80e3f0
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58015303"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60391616"
 ---
 # <a name="tutorial-upload-image-data-in-the-cloud-with-azure-storage"></a>Kurz: Odeslání dat obrázků do cloudu v Azure Storage
 

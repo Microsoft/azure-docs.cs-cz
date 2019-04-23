@@ -18,11 +18,11 @@ ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 47273bf687d88e82afba5de878f08bd53422479c
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56204764"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60381306"
 ---
 # <a name="determine-identity-requirements-for-your-hybrid-identity-solution"></a>Určení požadavků na identity pro vaše řešení hybridní identity
 Prvním krokem při navrhování řešení s hybridní identitou je určit požadavky organizace obchodní, který bude využívání tohoto řešení.  Hybridní identita Spustí podpůrnou roli (podporuje jiná řešení cloudových tím, že poskytuje ověřování) a přejde k poskytuje nové a zajímavé funkce, které odhalují nových úloh pro uživatele.  Požadavky na návrh hybridní identity, bude určovat tyto úlohy nebo služby, které chcete přijmout pro vaše uživatele.  Tyto služby a úlohy muset využít hybridní identity v místním prostředí i v cloudu.  

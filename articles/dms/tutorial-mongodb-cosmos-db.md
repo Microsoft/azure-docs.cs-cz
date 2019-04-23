@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.custom: mvc, tutorial
 ms.topic: article
 ms.date: 04/03/2019
-ms.openlocfilehash: 68cf4561d24a84c5aacefbe5fbd11bcd7e0576aa
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: HT
+ms.openlocfilehash: 01a64345285149a50c226ebb344982425a813156
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58878549"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60463376"
 ---
 # <a name="tutorial-migrate-mongodb-to-azure-cosmos-dbs-api-for-mongodb-offline-using-dms"></a>Kurz: Migrace MongoDB API služby Azure Cosmos DB pro MongoDB offline pomocí DMS
 Azure Database Migration Service můžete použít k provedení offline migrace (jednorázová) databází z místní nebo cloudové instance MongoDB API služby Azure Cosmos DB pro MongoDB.
@@ -32,6 +32,7 @@ V tomto kurzu migrujete datové sady v databáze MongoDB hostované ve virtuáln
 
 ## <a name="prerequisites"></a>Požadavky
 Pro absolvování tohoto kurzu je potřeba provést následující:
+- [Dokončit před migrací](../cosmos-db/mongodb-pre-migration.md) kroky, jako třeba odhadnout propustnost, volba klíče oddílu a zásady indexování.
 - [Vytvoření rozhraní API služby Azure Cosmos DB pro účet MongoDB](https://ms.portal.azure.com/#create/Microsoft.DocumentDB).
 - Vytvoření Azure Virtual Network (VNET) pro Azure Database Migration Service pomocí modelu nasazení Azure Resource Manageru, který poskytuje připojení site-to-site k vašich zdrojových serverů s místními pomocí [ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) nebo [VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways).
 
@@ -175,6 +176,10 @@ Po vytvoření služby ji vyhledejte na webu Azure Portal, otevřete ji a pak vy
 - Po dokončení migrace můžete zkontrolovat svůj účet služby Azure Cosmos DB k ověření, že se úspěšně migrovaly všechny kolekce.
 
     ![Stav aktivity dokončeno](media/tutorial-mongodb-to-cosmosdb/dms-cosmosdb-data-explorer.png)
+
+## <a name="post-migration-optimization"></a>Optimalizace po migraci
+
+Po dokončení migrace dat uložených v databázi MongoDB API služby Azure Cosmos DB pro MongoDB můžete připojit ke službě Azure Cosmos DB a spravovat data. Můžete také provádět další pomigrační kroky optimalizace, jako – optimalizace zásady indexování, aktualizovat výchozí úroveň konzistence nebo konfigurace globální distribuce pro váš účet Azure Cosmos DB. Další podrobnosti najdete v tématu [po migraci optimalizace](../cosmos-db/mongodb-post-migration.md) článku. 
 
 ## <a name="additional-resources"></a>Další materiály
 

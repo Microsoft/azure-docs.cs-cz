@@ -10,11 +10,11 @@ ms.date: 01/17/2019
 ms.topic: article
 ms.service: media-services
 ms.openlocfilehash: c7d895cd87122374a79a520643580a179961fba3
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58317319"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60405354"
 ---
 # <a name="recommended-live-streaming-encoders"></a>Doporučené datové proudy kodéry
 
@@ -31,19 +31,19 @@ Podrobné informace o kódování v reálném čase pomocí služby Media Servic
 
 ## <a name="live-encoders-that-output-rtmp"></a>Kodéry výstupu RTMP
 
-Služba Media Services se doporučuje používat jednu z následující kodéry, které mají RTMP jako výstup. Jsou podporované schémata URL `rtmp://` nebo `rtmps://`.
+Služba Media Services doporučuje používat jeden z následujících kodérů pro kódování v reálném čase, které mají RTMP jako výstup. Jsou podporované schémata URL `rtmp://` nebo `rtmps://`.
 
 > [!NOTE]
-> Při streamování přes RTMP, zkontrolujte nastavení brány firewall nebo proxy serveru pro potvrzení, že jsou otevřené odchozí porty TCP 1935 a 1936.
+> Při streamování přes RTMP zkontrolujte nastavení brány firewall nebo proxy serveru, aby se zajistilo, že jsou otevřené odchozí porty TCP 1935 a 1936.
 
 - Adobe Flash Media Live Encoder 3.2
 - Haivision KB
 - Haivision Makito X HEVC
 - OBS Studio
-- Přepínání Studio (iOS)
-- Telestream Wirecast 8.1 +
+- Switcher Studio (iOS)
+- Telestream Wirecast 8.1+
 - Telestream Wirecast S
-- Řez Teradek 756
+- Teradek Slice 756
 - TriCaster 8000
 - Tricaster Mini HD-4
 - VMIX
@@ -53,12 +53,12 @@ Služba Media Services se doporučuje používat jednu z následující kodéry,
 
 Služba Media Services se doporučuje používat jednu z následující kodéry, které mají s více přenosovými rychlostmi technologie Smooth Streaming (fragmentovaný MP4) jako výstup. Jsou podporované schémata URL `http://` nebo `https://`.
 
-- Ateme TITAN za provozu
+- Ateme TITAN Live
 - Cisco Digital Media Encoder 2200
 - Elemental Live
-- Envivio 4Caster C4 obecné III
+- Envivio 4Caster C4 Gen III
 - Imagine Communications Selenio MCP3
-- Média pro Excel Hero za provozu a Hero 4K (UHD/HEVC)
+- Media Excel Hero Live a Hero 4K (UHD/HEVC)
 
 ## <a name="configuring-on-premises-live-encoder-settings"></a>Konfigurace místní kodér služby live Encoding nastavení
 

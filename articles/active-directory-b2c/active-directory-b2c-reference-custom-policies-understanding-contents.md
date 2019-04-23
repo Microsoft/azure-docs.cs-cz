@@ -11,11 +11,11 @@ ms.date: 04/25/2017
 ms.author: davidmu
 ms.subservice: B2C
 ms.openlocfilehash: dbd57e53fbaec4368e3c8ce9600bce1d37bcab8f
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55173203"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60317322"
 ---
 # <a name="understanding-the-custom-policies-of-the-azure-ad-b2c-custom-policy-starter-pack"></a>Principy vlastní zásady úvodní balíček Azure AD B2C vlastních zásad
 

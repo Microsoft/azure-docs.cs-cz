@@ -16,11 +16,11 @@ ms.date: 06/02/2017
 ms.author: alkohli
 ms.custom: ''
 ms.openlocfilehash: e05a37122647d4979089f0ba00b1fc15f9b84b0f
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57433650"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60321677"
 ---
 # <a name="replace-a-hardware-component-on-your-storsimple-8000-series-device"></a>Vyměňovat hardwarové součásti na vašem zařízení řady StorSimple 8000
 
@@ -46,7 +46,7 @@ Následující tabulka popisuje bezpečnosti ikony používané v těchto kurzec
 | ![Ikona pokyny pro čtení](./media/storsimple-hardware-component-replacement/ReadInstructions.png) |**Nejprve přečíst všechny pokyny** | |
 | ![Nebezpečí ikona tipu](./media/storsimple-hardware-component-replacement/TipHazard.png) |**Tip ohrožení** | |
 
-### <a name="before-you-begin"></a>Před zahájením
+### <a name="before-you-begin"></a>Než začnete
 Seznamte se s informacemi o zařízení a bezpečný přístup z více ikony v tomto kurzu používá bezpečnosti. Přejděte na [bezpečně instalaci a provozování zařízení StorSimple](storsimple-safety.md) podrobnější informace. Nezapomeňte si přečíst [bezpečnostní opatření](storsimple-safety.md#handling-precautions) před zpracovat zařízení StorSimple.
 
 Před pokusem o nahrazení komponenty, zvažte následující informace.

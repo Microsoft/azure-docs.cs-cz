@@ -9,11 +9,11 @@ ms.date: 2/14/2018
 ms.author: robb
 ms.subservice: ''
 ms.openlocfilehash: 59cb14c86963d956b0bd63f65b10776dff4aa97f
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59698072"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60452717"
 ---
 # <a name="azure-monitor-powershell-quick-start-samples"></a>Úvodní ukázky v Azure Powershellu pro monitorování
 Tento článek ukazuje ukázkové příkazy prostředí PowerShell můžete získat přístup k funkcím Azure Monitor.
@@ -140,9 +140,9 @@ Můžete vytvořit e-mailu a webhook vlastností pomocí `New-AzAlertRuleEmail` 
 
 Následující tabulka popisuje parametry a hodnoty použité k vytvoření upozornění použitím metrik.
 
-| parametr | hodnota |
+| parametr | value |
 | --- | --- |
-| Název |simpletestdiskwrite |
+| Name |simpletestdiskwrite |
 | Umístění tohoto upozornění pravidla |USA – východ |
 | ResourceGroup |montest |
 | TargetResourceId |/subscriptions/s1/resourceGroups/montest/providers/Microsoft.Compute/virtualMachines/testconfig |

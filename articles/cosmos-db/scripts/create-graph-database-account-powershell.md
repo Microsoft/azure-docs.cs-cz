@@ -10,11 +10,11 @@ ms.topic: sample
 ms.date: 05/29/2018
 ms.reviewer: sngun
 ms.openlocfilehash: 06f4379a0100b4a0d5335ed6e8c99bb16160715d
-ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58497376"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60446631"
 ---
 # <a name="azure-cosmos-db-create-a-gremlin-api-account-using-powershell"></a>Azure Cosmos DB: Vytvoření účtu rozhraní Gremlin API pomocí Powershellu
 

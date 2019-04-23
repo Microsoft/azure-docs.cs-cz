@@ -17,11 +17,11 @@ ms.author: celested
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: a6e74ad04f10865a830d27c1814be10eeff3ad59
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56182965"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60443211"
 ---
 # <a name="no-users-are-being-provisioned-to-an-azure-ad-gallery-application"></a>Žádní uživatelé se nezřizují k aplikaci Galerie Azure AD
 Po dokončení automatické zřizování konfigurace pro aplikaci (včetně ověření, že jsou platné přihlašovací údaje aplikace do služby Azure AD pro připojení k aplikaci k dispozici), potom uživatele a/nebo skupiny připravené k aplikaci. Zřizování se určuje podle následujících akcí:

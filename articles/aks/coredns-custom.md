@@ -8,11 +8,11 @@ ms.topic: article
 ms.date: 03/15/2019
 ms.author: jnoller
 ms.openlocfilehash: 9186c5ff7c6fbc68487a1ccff0fc1d2d1478df79
-ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58405839"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60466441"
 ---
 # <a name="customize-coredns-with-azure-kubernetes-service"></a>Přizpůsobení CoreDNS pomocí služby Azure Kubernetes
 
@@ -25,7 +25,7 @@ Tento článek ukazuje, jak používat ConfigMaps pro základní přizpůsobení
 > [!NOTE]
 > `kube-dns` nabízí různé [možnosti přizpůsobení] [ kubednsblog] přes mapu config Kubernetes. Je CoreDNS **není** zpětně kompatibilní s kube-dns. Pro použití s CoreDNS musí aktualizovat všechna vlastní nastavení, které jste použili dříve.
 
-## <a name="before-you-begin"></a>Před zahájením
+## <a name="before-you-begin"></a>Než začnete
 
 Tento článek předpokládá, že máte existující cluster AKS. Pokud potřebujete AKS cluster, najdete v rychlém startu AKS [pomocí Azure CLI] [aks – rychlý start cli] nebo [pomocí webu Azure portal] [aks – rychlý start – portál].
 

@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 01/20/2019
 ms.author: juliako
 ms.openlocfilehash: 394370738bc7996a221300540e68404986d91310
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58850628"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60322246"
 ---
 # <a name="diagnostic-logs-schemas"></a>Schémata diagnostických protokolů
 
@@ -38,7 +38,7 @@ Podrobný popis schématu nejvyšší úrovně diagnostické protokoly najdete v
 
 Tyto vlastnosti jsou specifické pro schéma doručení klíče protokolu.
 
-|Název|Popis|
+|Name|Popis|
 |---|---|
 |keyId|ID požadovaný klíč.|
 |keyType|Můžou mít jednu z následujících hodnot: "Clear" (bez šifrování), "FairPlay", "PlayReady" nebo "Widevine".|

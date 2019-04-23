@@ -13,11 +13,11 @@ ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: jingwang
 ms.openlocfilehash: 012057c7d01924ab1998a010b6ea0c7d83651a4d
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54017799"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60405916"
 ---
 # <a name="copy-data-from-phoenix-using-azure-data-factory"></a>Kopírování dat z Phoenixu s využitím Azure Data Factory 
 
@@ -45,7 +45,7 @@ Phoenix propojené služby jsou podporovány následující vlastnosti:
 | hostitel | IP adresu nebo název hostitele serveru Phoenix. (to znamená 192.168.222.160)  | Ano |
 | port | Port TCP, který Phoenix server používá k naslouchání pro připojení klientů. Výchozí hodnota je 8765. Pokud se připojíte k Azure HDInsights, zadejte port 443. | Ne |
 | httpPath | Částečné adresa URL odpovídající Phoenix serveru. (to znamená /gateway/sandbox/phoenix/version). Zadejte `/hbasephoenix0` při použití HDInsights clusteru.  | Ne |
-| authenticationType. | Mechanismus ověřování používaný pro připojení k serveru Phoenix. <br/>Povolené hodnoty jsou: **Anonymní**, **UsernameAndPassword**, **WindowsAzureHDInsightService** | Ano |
+| authenticationType. | Mechanismus ověřování používaný pro připojení k serveru Phoenix. <br/>Povolené hodnoty jsou: **Anonymous**, **UsernameAndPassword**, **WindowsAzureHDInsightService** | Ano |
 | uživatelské jméno | Uživatelské jméno pro připojení k serveru Phoenix.  | Ne |
 | heslo | Heslo odpovídající uživatelskému jménu. Označte toto pole jako SecureString bezpečně uložit ve službě Data Factory nebo [odkazovat tajného klíče do služby Azure Key Vault](store-credentials-in-key-vault.md). | Ne |
 | enableSsl | Určuje, zda jsou šifrované připojení k serveru pomocí SSL. Výchozí hodnota je false.  | Ne |

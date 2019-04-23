@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 02/28/2019
 ms.author: banders
 ms.openlocfilehash: 90f832319fa2343003af58bd99eb64c0cbd94dd8
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57894542"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60371723"
 ---
 # <a name="set-up-your-billing-account-for-a-microsoft-customer-agreement"></a>Nastavení účtu fakturační zákaznické smlouvy Microsoft
 
@@ -205,11 +205,11 @@ K dokončení instalace, musíte mít přístup k nové fakturační účet a sm
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 
-2. Hledat na **Cost Management a fakturace**.
+2. Vyhledejte **Cost Management a fakturace**.
 
    ![Snímek obrazovky zobrazující Azure search na portálu](./media/billing-mca-setup-account/billing-search-cost-management-billing.png)
 
-3. Vyberte fakturační profil. V závislosti na přístup budete muset vybrat fakturační účet. Fakturační účet, vyberte **fakturace profily** a potom fakturační profil.
+3. Vyberte fakturační profil. V závislosti na úrovni vašeho přístupu možná budete muset vybrat fakturační účet. Fakturační účet, vyberte **fakturace profily** a potom fakturační profil.
 
 4. Vyberte **předplatná Azure** na levé straně.
 
@@ -221,11 +221,11 @@ Předplatná Azure, které jsou přešel ze smlouvu Enterprise k nové fakturač
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 
-2. Hledat na **Cost Management a fakturace**.
+2. Vyhledejte **Cost Management a fakturace**.
 
    ![Snímek obrazovky zobrazující Azure search na portálu](./media/billing-mca-setup-account/billing-search-cost-management-billing.png)
 
-3. Vyberte oddíl faktury. V závislosti na přístup budete muset vybrat fakturační účet nebo fakturační profil.  Fakturační účet nebo fakturační profil, vyberte **fakturovat oddíly** a potom část faktury.
+3. Vyberte oddíl faktury. V závislosti na úrovni vašeho přístupu možná budete muset vybrat fakturační účet nebo fakturační profil.  Fakturační účet nebo fakturační profil, vyberte **fakturovat oddíly** a potom část faktury.
 
     ![Snímek obrazovky zobrazující seznam přechod příspěvek části faktury](./media/billing-mca-setup-account/billing-mca-invoice-sections-post-transition.png)
 
@@ -241,11 +241,11 @@ Azure rezervace, které jsou přesunuty z smlouva Enterprise Agreement enrollmen
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 
-2. Hledat na **Cost Management a fakturace**.
+2. Vyhledejte **Cost Management a fakturace**.
 
    ![Snímek obrazovky zobrazující Azure search na portálu](./media/billing-mca-setup-account/billing-search-cost-management-billing.png)
 
-3. Vyberte fakturační profil, který vytvořili pro vaši registraci. V závislosti na přístup budete muset vybrat fakturační účet.  Fakturační účet, vyberte **fakturace profily** a potom fakturační profil.
+3. Vyberte fakturační profil, který vytvořili pro vaši registraci. V závislosti na úrovni vašeho přístupu možná budete muset vybrat fakturační účet.  Fakturační účet, vyberte **fakturace profily** a potom fakturační profil.
 
 4. Vyberte **řízení přístupu (IAM)** z levé strany.
 
@@ -257,7 +257,7 @@ Tito správci jsou uvedené jako vlastníky profil při organizace, které jsou 
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 
-2. Hledat na **Cost Management a fakturace**.
+2. Vyhledejte **Cost Management a fakturace**.
 
    ![Snímek obrazovky zobrazující Azure search na portálu](./media/billing-mca-setup-account/billing-search-cost-management-billing.png).
 

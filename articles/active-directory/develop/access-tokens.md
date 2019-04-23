@@ -18,11 +18,11 @@ ms.reviewer: hirsin
 ms.custom: fasttrack-edit
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 07e140ef9f561625bb89498c6b6591734e8a9b10
-ms.sourcegitcommit: b8a8d29fdf199158d96736fbbb0c3773502a092d
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/15/2019
-ms.locfileid: "59563755"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60411400"
 ---
 # <a name="microsoft-identity-platform-access-tokens"></a>Microsoft identity platform přístupové tokeny
 
@@ -101,7 +101,7 @@ Deklarace identity jsou k dispozici pouze v případě, že existuje hodnota do 
 | `azp` | Řetězec identifikátoru GUID | Pouze k dispozici v tokenech verze 2.0. ID aplikace pomocí tokenu klienta. Aplikace může fungovat jako samotné nebo jménem uživatele. ID aplikace obvykle představuje objekt aplikace, ale může také představovat instanční objekt ve službě Azure AD. |
 | `azpacr` | "0", "1" nebo "2" | Pouze k dispozici v tokenech verze 2.0. Určuje, jak došlo k ověření klienta. Pro veřejné klienta hodnota je "0". Pokud používáte ID klienta a tajný kód klienta, hodnota je "1". Pokud certifikát klienta byla použita pro ověřování, hodnota je "2". |
 | `groups` | Pole JSON identifikátorů GUID | Poskytuje ID objektů, které představují členství ve skupinách daného subjektu. Tyto hodnoty jsou jedinečné (viz ID objektu) a lze jej bezpečně používat při správě přístupu, jako je například vynucování autorizaci pro přístup k prostředku. Skupiny součástí skupiny deklarace identity jsou nakonfigurované na základě jednotlivých aplikací prostřednictvím `groupMembershipClaims` vlastnost [manifest aplikace](reference-app-manifest.md). Hodnotu null, vyloučí všechny skupiny, hodnota "Skupiny SecurityGroup" bude obsahovat pouze členství ve skupinách zabezpečení Active Directory a hodnota "Vše" bude obsahovat skupiny zabezpečení a Office 365 distribuční seznamy. <br><br>Najdete v článku `hasgroups` deklarace identity níže podrobnosti o použití `groups` deklarace identity s implicitního udělení. <br>Pro další toky Pokud počet skupin, které je uživatel v překročí limit (150 pro SAML, 200 pro token JWT), je při překročení limitu deklarace identity přidána do zdroje deklarací identity, které odkazují na koncový bod grafu, který obsahuje seznam skupin pro daného uživatele. |
-| `hasgroups` | Logická hodnota | Pokud jsou k dispozici, vždy `true`, které označuje, že uživatel je v aspoň jedné skupině. Použité místo `groups` deklaraci identity pro tokeny Jwt implicitní grant toků, pokud celé skupiny deklarací identity i fragment URI nad rámec omezení délky adresu URL (aktuálně 6 nebo více skupin). Označuje, že klient musí použít graf k určení skupin uživatele (`https://graph.windows.net/{tenantID}/users/{userID}/getMemberObjects`). |
+| `hasgroups` | Boolean | Pokud jsou k dispozici, vždy `true`, které označuje, že uživatel je v aspoň jedné skupině. Použité místo `groups` deklaraci identity pro tokeny Jwt implicitní grant toků, pokud celé skupiny deklarací identity i fragment URI nad rámec omezení délky adresu URL (aktuálně 6 nebo více skupin). Označuje, že klient musí použít graf k určení skupin uživatele (`https://graph.windows.net/{tenantID}/users/{userID}/getMemberObjects`). |
 | `groups:src1` | JSON – objekt | Pro žádosti o tokeny, které nejsou omezena délka (naleznete v tématu `hasgroups` výše), ale stále příliš velký pro daný token, odkaz na seznam úplné skupiny pro uživatele je součástí. Pro tokeny Jwt jako deklaraci distribuovaný pro SAML jako novou deklaraci místo `groups` deklarací identity. <br><br>**Příklad hodnoty tokenů JWT**: <br> `"groups":"src1"` <br> `"_claim_sources`: `"src1" : { "endpoint" : "https://graph.windows.net/{tenantID}/users/{userID}/getMemberObjects" }` |
 | `preferred_username` | String | Primární uživatelské jméno, který reprezentuje uživatele. Může to být e-mailovou adresu, telefonní číslo nebo obecný uživatelské jméno bez zadaného formátu. Jeho hodnota je měnitelné a může v průběhu času měnit. Protože je proměnlivá, tato hodnota se nesmí používat pro autorizační rozhodnutí.  Může sloužit pro uživatelské jméno Rady ale. `profile` Oboru se vyžaduje pro příjem tato deklarace identity. |
 | `name` | String | Poskytuje čitelné hodnotu, která identifikuje předmětem token. Hodnota nemusí být jedinečný, je proměnlivé a je navržena tak, aby se dá použít jenom pro účely zobrazení. `profile` Oboru se vyžaduje pro příjem tato deklarace identity. |
@@ -135,7 +135,7 @@ Následující deklarace identity se zahrnou v1.0 tokeny, pokud je k dispozici, 
 
 Microsoft identity můžete ověřovat různými způsoby, které můžou být relevantní pro vaši aplikaci. `amr` Deklarace identity je pole, které mohou obsahovat více položek, jako například `["mfa", "rsa", "pwd"]`, pro ověření, který používá heslo a ověřovací aplikaci.
 
-| Hodnota | Popis |
+| Value | Popis |
 |-----|-------------|
 | `pwd` | Ověřování pomocí hesla uživatele Microsoft heslo nebo tajný klíč klienta aplikace. |
 | `rsa` | Ověřování bylo založeno na důkaz klíč RSA, například s [aplikaci Microsoft Authenticator](https://aka.ms/AA2kvvu). Jedná se o Pokud ověřovací token JWT podepsaný svým držitelem provedenou službou vlastněných X509 certifikátu. |

@@ -9,17 +9,17 @@ ms.reviewer: klam
 ms.assetid: 5ec78e60-a9b9-405a-91a8-f010f3872d50
 ms.topic: article
 ms.date: 08/16/2016
-ms.openlocfilehash: d647de379972bac317a213e2f8925c0ff8c3372c
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 50ab6cfefe4a7df9d671e7fd1287aa16b803f260
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46947920"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60533354"
 ---
 # <a name="high-availability-and-reliability-for-azure-scheduler"></a>Vysoká dostupnost a spolehlivost Azure Scheduleru
 
 > [!IMPORTANT]
-> [Služba Azure Logic Apps](../logic-apps/logic-apps-overview.md) nahrazuje Azure Scheduleru, která se vyřazuje. K plánování úloh, [místo toho vyzkoušet Azure Logic Apps](../scheduler/migrate-from-scheduler-to-logic-apps.md). 
+> [Azure Logic Apps](../logic-apps/logic-apps-overview.md) nahrazuje službu Azure Scheduler, která se vyřazuje z provozu. K plánování úloh [místo ní zkuste použít Azure Logic Apps](../scheduler/migrate-from-scheduler-to-logic-apps.md). 
 
 Azure Scheduler poskytuje [vysoké dostupnosti](https://docs.microsoft.com/azure/architecture/guide/pillars#availability) a spolehlivost vašich úloh. Další informace najdete v tématu [smlouva SLA pro Scheduler](https://azure.microsoft.com/support/legal/sla/scheduler).
 
@@ -50,7 +50,7 @@ Azure Scheduler zaručuje vlastní vysokou dostupnost, ale používá jiný př�
 
 <a name="retry-policies"></a>
 
-### <a name="retry-policies"></a>Zásady opakování
+### <a name="retry-policies"></a>Zásady opakování pokusů
 
 Azure Scheduler vám umožňuje nastavit zásady opakování. Pokud úloha selže, pak ve výchozím nastavení, Plánovač opakování úlohy čtyři víckrát v 30sekundovém intervalech. Můžete provádět takové zásady opakování agresivnější, jako například 10krát v 30sekundovém intervalech nebo méně agresivní, jako například dvakrát na denních intervalech.
 
@@ -74,5 +74,5 @@ Zjistěte, jak nastavit alternativní koncový bod, najdete v článku [errorAct
 
 * [Co je Azure Scheduler?](scheduler-intro.md)
 * [Koncepty, terminologie a hierarchie entit](scheduler-concepts-terms.md)
-* [Sestavení komplexních plánů a pokročilé opakování](scheduler-advanced-complexity.md)
-* [Limity, kvóty, výchozí hodnoty a kódy chyb](scheduler-limits-defaults-errors.md)
+* [Vytváření složitých plánů a pokročilých opakování](scheduler-advanced-complexity.md)
+* [Omezení, kvóty, výchozí hodnoty a kódy chyb](scheduler-limits-defaults-errors.md)

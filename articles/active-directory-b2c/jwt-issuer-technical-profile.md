@@ -11,11 +11,11 @@ ms.date: 10/30/2018
 ms.author: davidmu
 ms.subservice: B2C
 ms.openlocfilehash: 247ebdc8156453062eefe6738c5c281d393a9923
-ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58436050"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60396763"
 ---
 # <a name="define-a-technical-profile-for-a-jwt-token-issuer-in-an-azure-active-directory-b2c-custom-policy"></a>Definování technický profil pro vystavitele tokenu JWT ve vlastních zásadách pro Azure Active Directory B2C
 

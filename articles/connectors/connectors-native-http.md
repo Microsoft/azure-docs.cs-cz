@@ -12,11 +12,11 @@ ms.topic: article
 tags: connectors
 ms.date: 08/25/2018
 ms.openlocfilehash: 01da06ca55199989a3a27012bec101580f5ef853
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57442201"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60447548"
 ---
 # <a name="call-http-or-https-endpoints-with-azure-logic-apps"></a>Volání koncových bodů HTTP nebo HTTPS s Azure Logic Apps
 

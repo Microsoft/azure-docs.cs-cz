@@ -15,11 +15,11 @@ ms.topic: conceptual
 ms.date: 09/17/2018
 ms.author: pbutlerm
 ms.openlocfilehash: f69a7f9ca94c0a83098300f01e9413b342bd4ae8
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49389361"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60397901"
 ---
 <a name="how-to-fill-out-the-storefront-details-form"></a>Jak vyplňte formulář podrobností z prodejních míst
 ===========================================
@@ -42,7 +42,7 @@ Tento popis se zobrazí na AppSource, pod vaší **nabízejí Souhrn**. Při pop
 
 Vyberte odvětví, že vaše aplikace je nejlepší zarovnán. Pokud vaše aplikace má vztah k více oborů, můžete nechat prázdné
 
-### <a name="categories"></a>Kategorie
+### <a name="categories"></a>Categories
 
 Vyberte příslušné kategorie, které jsou relevantní pro vaši aplikaci. Vyberte alespoň jednu kategorii a maximálně tři. Vybrat pečlivě, protože zákazníkům můžete hledat v AppSource podle kategorie
 

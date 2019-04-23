@@ -10,11 +10,11 @@ ms.assetid: ad8a6992-02c7-47d4-a108-62fc5a0777a3
 ms.topic: conceptual
 ms.date: 05/03/2018
 ms.openlocfilehash: 3269d38b691ec4dd9573a241c89dadc285787143
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51254022"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60408108"
 ---
 # <a name="install-data-lake-tools-for-visual-studio"></a>Instalace nástrojů Data Lake Tools pro Visual Studio
 
@@ -22,7 +22,7 @@ Naučte se používat sadu Visual Studio k vytváření účtů Azure Data Lake 
 
 ## <a name="prerequisites"></a>Požadavky
 
-* **Visual Studio:** Podporovány jsou všechny edice kromě Express.
+* **Visual Studio**: Podporují se všechny edice kromě Express.
     * Visual Studio 2017
     * Visual Studio 2015
     * Visual Studio 2013
@@ -33,9 +33,9 @@ Naučte se používat sadu Visual Studio k vytváření účtů Azure Data Lake 
 
 Nástroje Azure Data Lake pro Visual Studio se podporují v sadě Visual Studio 2017 verze 15.3 nebo novější. Tento nástroj je součástí sad funkcí **Ukládání a zpracování dat** a **Vývoj pro Azure** v Instalačním programu pro Visual Studio. V rámci instalace sady Visual Studio povolte jednu z těchto dvou sad funkcí.  
 
-Sadu funkcí **Ukládání a zpracování dat** povolíte následujícím způsobem: ![Povolení sady funkcí Ukládání a zpracování dat](./media/data-lake-analytics-data-lake-tools-get-started/data-lake-tools-for-vs-2017-install-01.png)
+Povolit **ukládání a zpracování dat** pracovního vytížení, jak je znázorněno: ![Povolení úlohy zpracování a ukládání dat.](./media/data-lake-analytics-data-lake-tools-get-started/data-lake-tools-for-vs-2017-install-01.png)
 
-Sadu funkcí **Vývoj pro Azure** povolíte následujícím způsobem: ![Povolení sady funkcí Vývoj pro Azure](./media/data-lake-analytics-data-lake-tools-get-started/data-lake-tools-for-vs-2017-install-02.png)
+Povolit **vývoj pro Azure** pracovního vytížení, jak je znázorněno: ![Povolte úlohu vývoj pro Azure](./media/data-lake-analytics-data-lake-tools-get-started/data-lake-tools-for-vs-2017-install-02.png)
 
 ## <a name="install-azure-data-lake-tools-for-visual-studio-2013-and-2015"></a>Instalace nástrojů Azure Data Lake pro Visual Studio 2013 a 2015
 

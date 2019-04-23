@@ -14,11 +14,11 @@ ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: mbaldwin
 ms.openlocfilehash: b7e3aca133e2e9614ab83be83c20a4dbc2ae5fe2
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57542379"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60461225"
 ---
 # <a name="key-vault-versions"></a>Verze Key Vaultu
 

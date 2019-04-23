@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 11/30/2018
 ms.author: patricka
 ms.openlocfilehash: f23d2b02bc2a23c5333a48a50532c03f3aa6a031
-ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54355471"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60455652"
 ---
 [!INCLUDE [active-directory-b2c-portal-navigate-b2c-service](active-directory-b2c-portal-navigate-b2c-service.md)]
 
@@ -45,7 +45,7 @@ Vyberte **spustit tok uživatele**. Ověřte nastavení uvedená v tabulce a kli
 
 ![Vyberte možnost spustit tok uživatele.](media/active-directory-b2c-create-sign-in-sign-up-policy/run-user-flow-b2c-signup-signin.png)
 
-| Nastavení      | Hodnota  |
+| Nastavení      | Value  |
 | ------------ | ------ |
 | **Aplikace** | Aplikace Contoso B2C |
 | **Adresa URL odpovědi** | `https://localhost:44316/` |

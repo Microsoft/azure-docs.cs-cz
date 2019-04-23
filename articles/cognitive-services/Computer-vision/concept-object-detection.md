@@ -1,28 +1,28 @@
 ---
 title: Zjišťování objektu - pro počítačové zpracování obrazu
 titleSuffix: Azure Cognitive Services
-description: Koncepty související s zjišťování objektu pomocí rozhraní API pro počítačové zpracování obrazu.
+description: Další koncepty související s funkcí zjišťování objektu z rozhraní API pro počítačové zpracování obrazu – využití a omezení.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: conceptual
-ms.date: 03/11/2019
+ms.date: 04/17/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 7e3311aab74f58e3936039393eab76dee12b83ea
-ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
+ms.openlocfilehash: 012ab849c926de332da55361c79c76c5a1311169
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58496934"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60368033"
 ---
-# <a name="object-detection"></a>Detekce objektů
+# <a name="detect-common-objects-in-images"></a>Zjištění běžně používané objekty v obrázcích
 
 Detekce objektů je podobný [označování](concept-tagging-images.md), ale rozhraní API Vrátí souřadnice ohraničujícího pole (v pixelech) pro každý objekt se nenašel. Například pokud image obsahuje pes, cat a osoby, rozpoznat operace se zobrazí seznam těchto objektů spolu s jejich souřadnice na obrázku. Tato funkce slouží ke zpracování vztahy mezi objekty v obrázku. Můžete ho taky určit, zda existuje více instancí stejné značky v obraze.
 
-Rozhraní API pro detekci se vztahuje na základě objektů nebo věci živých identifikovat na obrázku značky. V tomto okamžiku není žádné formální vztah mezi taxonomii značek a taxonomie zjišťování objektu. Na koncepční úroveň rozhraní API pro detekci pouze vyhledá objekty a živých věcí, zatímco rozhraní API pro značku použít také jako "vnitřních" kontextové podmínkami, které nelze lokalizovat s funkcí ohraničování polí.
+Rozhraní API pro detekci se vztahuje na základě objektů nebo věci živých identifikovat na obrázku značky. Aktuálně neexistuje žádné formální vztah mezi taxonomii značek a taxonomie zjišťování objektu. Na koncepční úroveň rozhraní API pro detekci pouze vyhledá objekty a živých věcí, zatímco rozhraní API pro značku použít také jako "vnitřních" kontextové podmínkami, které nelze lokalizovat s funkcí ohraničování polí.
 
 ## <a name="object-detection-example"></a>Příklad zjištění objektu
 

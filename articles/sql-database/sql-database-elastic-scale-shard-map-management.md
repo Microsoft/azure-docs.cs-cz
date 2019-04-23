@@ -13,11 +13,11 @@ ms.reviewer: ''
 manager: craigg
 ms.date: 01/25/2019
 ms.openlocfilehash: a9c857ab9e9a3cfc0d1314600b612c4e6293173d
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55476787"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60332273"
 ---
 # <a name="scale-out-databases-with-the-shard-map-manager"></a>Horizontální navýšení kapacity databáze pomocí Správce mapování horizontálních oddílů
 
@@ -59,7 +59,7 @@ Elastické škálování podporuje následující typy jako klíče horizontáln
 | identifikátor GUID |Uuid |
 | Byte  |Byte |
 | datetime | časové razítko |
-| Časový interval | doba trvání|
+| TimeSpan | doba trvání|
 | DateTimeOffset |offsetdatetime |
 
 ### <a name="list-and-range-shard-maps"></a>Mapy horizontálních oddílů seznamu a rozsahu
