@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 03/02/2019
 ms.author: ellacroi
-ms.openlocfilehash: 2eabe0c234df6165b78e2dc55dcdc73067aabaa6
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 34b9fadc976d3f37612f59a7fc8520c48b178f5c
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59273222"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60009021"
 ---
 # <a name="marketplace-faqs"></a>Nejčastější dotazy k Marketplace
 
@@ -488,7 +488,7 @@ Závislosti se pro nabídky na Azure Marketplace nespravují automaticky. Pečli
 
 Azure Marketplace je dostupný pro zákazníky Microsoft Azure v těchto zemích:
 
-Alžírsko, Argentina, Austrálie, Bahrajn, Belgie, Bělorusko, Brazílie, Bulharsko, Černá Hora, Česká republika, Dánsko, Dominikánská republika, Egypt, Ekvádor, Estonsko, Filipíny, Finsko, Francie, Guatemala, Hongkong, Chile, Chorvatsko, Indie, Indonésie, Irsko, Island, Itálie, Izrael, Japonsko, Jižní Afrika, Jižní Korea, Jordánsko, Kanada, Katar, Kazachstán, Keňa, Kolumbie, Kostarika, Kuvajt, Kypr, Lichtenštejnsko, Litva, Lotyšsko, Lucembursko, Maďarsko, Makedonie, Malajsie, Malta, Maroko, Mexiko, Německo, Nigérie, Nizozemsko, Norsko, Nový Zéland, Omán, Pákistán, Panama, Paraguay, Peru, Polsko, Portoriko, Portugalsko, Rakousko, Rumunsko, Rusko, Řecko, Salvador, Saúdská Arábie, Singapur, Slovensko, Slovinsko, Spojené arabské emiráty, Spojené království, Srbsko, Srí Lanka, Španělsko, Švédsko, Švýcarsko, Thajsko, Tchaj-wan, Trinidad a Tobago, Tunisko, Turecko, Ukrajina, Uruguay, USA a Venezuela.
+Alžírsko, Argentina, Austrálie, Rakousko, Bahrajn, Bělorusko, Belgie, Brazílie, Bulharsko, Kanada, Chile, Kolumbie, Kostarika, Chorvatsko, Kypr, Česká republika, Dánsko, Dominikánská republika, Ekvádor, Egypt, El Salvador, Estonsko, Finsko, Francie, Německo, Řecko , Guatemala, Hongkong, Chorvatsko, Island, Indie, Indonésie, Irsko, Izrael, Itálie, Japonsko, Jordánsko, Kazachstán, Keňa, Kuvajt, Lotyšsko, Lichtenštejnsko, Litva, Lucembursko, severní Makedonie, Malajsie, Malta, Mexiko, Černá Hora, Maroko, Nizozemsko, nové Zélandu, Nigérie, Norsko, Omán, Pákistán, Panama, Paraguay, Peru, Filipíny, Polsko, Portugalsko, Portoriko, Katar, Rumunsko, Rusko, Saúdská Arábie, Srbsko, Singapur, Slovensko, Slovinsko, Jižní Afrika, Jižní Korea, Španělsko, Srí Lanka, Švédsko, Švýcarsko, Tchaj-wan, Thajsko, Trinidad a Tobago, Tunisko, Turecko, Ukrajina, Spojené arabské emiráty, Spojené království, USA, Uruguay, Venezuela.
 
 **Jak definovat Moje geografickou dostupností umožňující prodej v různých zemích?**
 

@@ -11,12 +11,12 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 04/16/2019
 ms.author: diberry
-ms.openlocfilehash: 137d7aa48595e3f21ee99c6ebe23babd7a2d32b5
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
+ms.openlocfilehash: 1333aefc145e95223624f42a28ec0bb31ab70065
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59677761"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60011754"
 ---
 # <a name="configure-text-analytics-docker-containers"></a>Konfigurace kontejnery dockeru pro analýzu textu
 
@@ -53,7 +53,7 @@ Je třeba přidat `text/analytics/v2.0` směrování na identifikátor URI konco
 
 |Požaduje se| Název | Typ dat | Popis |
 |--|------|-----------|-------------|
-|Ano| `Billing` | Řetězec | Identifikátor URI koncového bodu fakturace<br><br>Příklad:<br>`Billing=https://westus.api.cognitive.microsoft.com/text/analytics/v2.0` |
+|Ano| `Billing` | Řetězec | Identifikátor URI koncového bodu fakturace<br><br>Příklad:<br>`Billing=https://westus.api.cognitive.microsoft.com/text/analytics/v2.1` |
 
 ## <a name="eula-setting"></a>Nastavení Eula
 
@@ -79,7 +79,7 @@ Kontejnery pro analýzu textu nepoužívejte vstup nebo výstup připojí k ulo�
 
 Syntaxe umístění hostitele připojení se liší v závislosti na operačním systému hostitele. Kromě toho [hostitelský počítač](how-tos/text-analytics-how-to-install-containers.md#the-host-computer)na umístění připojení nemusí být přístupné z důvodu konfliktu mezi oprávnění používat účet služby docker a hostiteli připojit umístění oprávnění. 
 
-|Nepovinné| Název | Typ dat | Popis |
+|Nepovinné| Name | Typ dat | Popis |
 |-------|------|-----------|-------------|
 |Nepovolené| `Input` | String | Text Analytics kontejnery Nepoužívejte toto.|
 |Nepovinné| `Output` | String | Cíl připojení výstupu. Výchozí hodnota je `/output`. Toto je umístění protokolů. To zahrnuje protokoly kontejneru. <br><br>Příklad:<br>`--mount type=bind,src=c:\output,target=/output`|
@@ -98,15 +98,15 @@ Nahradit {_argument_name_} s vlastními hodnotami:
 | Zástupný symbol | Hodnota | Formát nebo příklad |
 |-------------|-------|---|
 |{BILLING_KEY} | Klíč koncového bodu `Cognitive Services` prostředků v Azure k dispozici `Cognitive Services` stránka klíče. |xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx|
-|{BILLING_ENDPOINT_URI} | Fakturační hodnota koncového bodu není k dispozici v Azure `Cognitive Services` stránka s přehledem.|`https://westus.api.cognitive.microsoft.com/text/analytics/v2.0`|
+|{BILLING_ENDPOINT_URI} | Fakturační hodnota koncového bodu není k dispozici v Azure `Cognitive Services` stránka s přehledem.|`https://westus.api.cognitive.microsoft.com/text/analytics/v2.1`|
 
 > [!IMPORTANT]
 > `Eula`, `Billing`, A `ApiKey` možnosti musí být zadán pro spuštění kontejneru; v opačném případě nebude spuštění kontejneru.  Další informace najdete v tématu [fakturace](how-tos/text-analytics-how-to-install-containers.md#billing).
 > Hodnota ApiKey **klíč** Azure `Cognitive Services` stránka s materiály pro klíče. 
 
-## <a name="keyphrase-extraction-container-docker-examples"></a>Keyphrase extrakce kontejneru dockeru příklady
+## <a name="key-phrase-extraction-container-docker-examples"></a>Příklady docker kontejneru extrakce klíčových frází
 
-Následující příklady docker jsou pro kontejner keyphrase extrakce. 
+Následující příklady docker jsou pro kontejner extrakce klíčových frází. 
 
 ### <a name="basic-example"></a>Základní příklad 
 

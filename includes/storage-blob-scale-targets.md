@@ -2,14 +2,14 @@
 author: tamram
 ms.service: storage
 ms.topic: include
-ms.date: 4/11/2019
+ms.date: 4/20/2019
 ms.author: tamram
-ms.openlocfilehash: b3e2f018a3f1ba2563ba8cf2df6dfd4959be592e
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
+ms.openlocfilehash: d96f400332b7953b34a157b3b52cf00bb20db76e
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59736986"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60012492"
 ---
 | Prostředek | Cíl        |
 |----------|---------------|
@@ -23,4 +23,4 @@ ms.locfileid: "59736986"
 | Maximální počet uložené zásady přístupu na kontejner objektů blob | 5 |
 |Nastavte propustnost pro jeden objekt blob |Až do omezení příchozí a odchozí přenos účtu úložiště<sup>1</sup> |
 
-<sup>1</sup> jeden objekt propustnost závisí na několika různými faktory, včetně, ale nikoli výhradně: souběžnosti, velikost operace, úroveň výkonu, rychlost zdroje pro nahrávání a cílové soubory ke stažení.
+<sup>1</sup> jeden objekt propustnost závisí na několika různými faktory, včetně, ale nikoli výhradně: souběžnosti, velikost požadavku, úroveň výkonu, rychlost zdroje pro nahrávání a cílové soubory ke stažení. Abyste mohli využívat [objektů blob bloku vysoce propustné](https://azure.microsoft.com/blog/high-throughput-with-azure-blob-storage/) vylepšení výkonu, použijte velikost > 4 MiB (> 256 MiB pro úložiště objektů blob bloku výkon úrovně premium nebo pro Data Lake Storage Gen2) požadavku Put Blob nebo Vložit blok.

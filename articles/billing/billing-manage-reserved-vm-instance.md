@@ -1,24 +1,23 @@
 ---
 title: Správa Azure rezervace | Dokumentace Microsoftu
 description: Zjistěte, jak můžete změnit obor předplatného a správa přístupu pro Azure rezervace.
-services: billing
+ms.service: billing
 documentationcenter: ''
 author: yashesvi
 manager: yashesvi
 editor: ''
-ms.service: billing
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/22/2019
+ms.date: 04/13/2019
 ms.author: banders
-ms.openlocfilehash: 1edc15261520d1c2cbf9bf85a62249826edc045b
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 9a5b200ffb9441b90875c7764786004ff5f1e8a1
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58904437"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59994944"
 ---
 # <a name="manage-reservations-for-azure-resources"></a>Správa rezervací pro prostředky Azure
 
@@ -29,7 +28,19 @@ Pokud jste si zakoupili rezervované instance virtuálních počítačů Azure, 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="change-the-scope-for-a-reservation"></a>Změnit obor pro rezervaci.
+## <a name="reservation-order-and-reservation"></a>Objednávka rezervace a rezervace
+
+Když si koupíte rezervace, rezervaci, jsou vytvořeny dva objekty: **Objednávka rezervace** a **rezervace**.
+
+Při nákupu objednávky rezervace má jednu rezervaci pod ním. Akce, jako je rozdělit, sloučení, částečné náhrada nebo exchange vytvářet nová rezervace pod **objednávka rezervace**.
+
+Chcete-li zobrazit objednávky rezervace, přejděte na **rezervace** > vyberte rezervace a klikněte **ID objednávky rezervace**.
+
+![Příklad zobrazující ID objednávky rezervace podrobnosti objednávky rezervace ](./media/billing-manage-reserved-vm-instance/reservation-order-details.png)
+
+Rezervace dědí oprávnění z jeho objednávka rezervace.
+
+## <a name="change-the-reservation-scope"></a>Změnit obor rezervace
 
  Vaše sleva za rezervaci se vztahuje na virtuální počítače, databáze SQL, Azure Cosmos DB nebo další prostředky, které odpovídají vaší rezervace a spustit v rámci rezervace. Kontext fakturace je závislá na předplatné použité k koupit rezervaci.
 
@@ -47,9 +58,12 @@ Obor se vztahuje pouze na nabídku průběžných plateb MS-AZR-0003P nebo MS-AZ
 
 ## <a name="add-or-change-users-who-can-manage-a-reservation"></a>Přidání nebo změna uživatelů, kteří můžou spravovat rezervaci
 
-Správu rezervace můžete delegovat přidáním lidí do rolí rezervace. Ve výchozím nastavení má roli vlastníka rezervace osoba, která rezervaci zakoupila, a správce účtu.
+Přidáním uživatelů do role v objednávce rezervace nebo rezervace můžete delegovat správu rezervace. Ve výchozím nastavení osoby, která umístí objednávka rezervace a správce účtu mít roli vlastník v objednávce rezervace a rezervace.
 
-Z předplatných, které získáte slevy na rezervaci můžete spravovat přístup k rezervace nezávisle na sobě. Pokud někomu poskytnete oprávnění ke správě rezervace, který je nedává práva ke správě předplatného. A pokud někomu poskytnete oprávnění ke správě předplatných v rámci oboru rezervaci, která nedává jejich práva ke správě rezervace.
+Můžete spravovat přístup k objednávky rezervace a rezervace nezávisle z předplatných, které získávají sleva za rezervaci. Pokud někomu poskytnete oprávnění ke správě objednávka rezervace nebo rezervace, není jim dát oprávnění ke správě předplatného. Podobně pokud někomu poskytnete oprávnění ke správě předplatného v oboru rezervaci, ho nedává jejich práva ke správě objednávka rezervace nebo rezervace.
+
+K provedení exchange nebo refundaci, uživatel musí mít přístup k objednávka rezervace. Když někdo udělí oprávnění, je vhodné udělit oprávnění k objednávka rezervace není rezervace.
+
 
 Delegovat správu přístupu k rezervaci:
 

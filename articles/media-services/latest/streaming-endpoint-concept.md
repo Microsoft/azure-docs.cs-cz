@@ -9,14 +9,14 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 04/01/2019
+ms.date: 04/16/2019
 ms.author: juliako
-ms.openlocfilehash: 2e715e5280794172451a333624a954340a1a60fe
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 4a29da2b070133f87ca5fdab0be607368c83790f
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58881014"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59999446"
 ---
 # <a name="streaming-endpoints"></a>Koncové body streamování
 
@@ -52,7 +52,6 @@ Funkce|Standard|Premium
 ---|---|---
 Zdarma prvních 15 dnů| Ano |Ne
 Propustnost |Až 600 MB/s při Azure CDN se nepoužívá. Škálování s CDN.|200 MB/s za jednotku (SU) pro streaming. Škálování s CDN.
-SLA | 99.9|99,9 (200 MB/s za SU).
 CDN|Azure CDN, třetích stran CDN nebo žádné CDN.|Azure CDN, třetích stran CDN nebo žádné CDN.
 Ceny jsou poměrně přepočítané| Denně|Denně
 Dynamické šifrování|Ano|Ano
@@ -86,7 +85,7 @@ Tato část obsahuje podrobnosti o některé vlastnosti Endpoint streamování. 
 
     Níže jsou očekávané zóny DNS pro použití v záznamu o ověření pro různé oblasti Azure.
   
-  - Severní Amerika, Evropa, Singapur, Hongkong, Japonska:
+  - Severní Amerika, Evropa, Singapur, Hongkong – zvláštní administrativní oblast, Japonska:
       
     - `media.azure.net`
     - `verifydns.media.azure.net`

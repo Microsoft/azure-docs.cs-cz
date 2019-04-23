@@ -1,6 +1,6 @@
 ---
-title: Azure elementu TextBlock uživatelského rozhraní | Microsoft Docs
-description: Popisuje element Microsoft.Common.TextBlock uživatelského rozhraní pro portál Azure.
+title: Azure prvku TextBlock uživatelského rozhraní | Dokumentace Microsoftu
+description: Popisuje element Microsoft.Common.TextBlock uživatelského rozhraní pro Azure portal.
 services: managed-applications
 documentationcenter: na
 author: tfitzmac
@@ -13,15 +13,15 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/27/2018
 ms.author: tomfitz
-ms.openlocfilehash: cd4d1aed666b2c64ade700a768df0525029b392c
-ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
+ms.openlocfilehash: 0dcd8ba1b1bacd990c91ce90ef0013caac446cdc
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37062736"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60251570"
 ---
-# <a name="microsoftcommontextblock-ui-element"></a>Element Microsoft.Common.TextBlock uživatelského rozhraní
-Ovládací prvek, který slouží k přidání textu do rozhraní portálu.
+# <a name="microsoftcommontextblock-ui-element"></a>Prvek uživatelského rozhraní Microsoft.Common.TextBlock
+Ovládací prvek, který je možné přidat text do rozhraní portálu.
 
 ## <a name="ui-sample"></a>Ukázka uživatelského rozhraní
 ![Microsoft.Common.TextBox](./media/managed-application-elements/microsoft.common.textblock.png)
@@ -49,5 +49,5 @@ Ovládací prvek, který slouží k přidání textu do rozhraní portálu.
 ```
 
 ## <a name="next-steps"></a>Další postup
-* Úvod do vytváření definic uživatelského rozhraní, najdete v části [Začínáme s CreateUiDefinition](create-uidefinition-overview.md).
-* Popis společných vlastností v prvky uživatelského rozhraní najdete v tématu [CreateUiDefinition elementy](create-uidefinition-elements.md).
+* Úvod do vytváření definic uživatelského rozhraní, naleznete v tématu [Začínáme s funkcí CreateUiDefinition](create-uidefinition-overview.md).
+* Popis společné vlastnosti v prvcích uživatelského rozhraní, naleznete v tématu [CreateUiDefinition prvky](create-uidefinition-elements.md).

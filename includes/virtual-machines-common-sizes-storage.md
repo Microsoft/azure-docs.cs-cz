@@ -5,22 +5,27 @@ services: virtual-machines
 author: jonbeck7
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 04/02/2019
+ms.date: 04/17/2019
 ms.author: azcspmt;jonbeck;cynthn
 ms.custom: include file
-ms.openlocfilehash: c5e6a44409e082f10a532759e3403f6b5801fdca
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
-ms.translationtype: MT
+ms.openlocfilehash: 6c83298b102d6782647f3baebf6f98e43cb3ad7f
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59551505"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60011839"
 ---
 Úložiště optimalizované velikosti virtuálních počítačů nabízejí Vysoká propustnost disku a vstupně-výstupní operace a jsou ideální pro velké objemy dat, SQL, NoSQL databáze, datových skladů a velké transakční databáze.  Mezi příklady patří Cassandra, MongoDB, Cloudera a Redis. Tento článek obsahuje informace o počtu virtuálních procesorů, datové disky a síťové adaptéry, jakož i místní úložiště propustnost a šířku pásma sítě pro jednotlivé optimalizované velikosti.
 
 Lsv2 řady funkcí vysokou propustnost, nízká latence, namapuje přímo místní úložiště NVMe systémem [AMD EPYC &trade; 7551 procesoru](https://www.amd.com/en/products/epyc-7000-series) s všechny boost core 2.55 GHz a maximální nárůst 3.0 GHz. Virtuální počítače řady Lsv2 se dodávají ve velikostech od 8 do 80 virtuálních procesorů s konfigurací souběžného multithreadingu.  K dispozici je 8 GiB paměti na virtuální procesor a jedno 1,92TB zařízení NVMe SSD M.2 na 8 virtuálních procesorů. Pro L80s v2 je k dispozici 19,2 TB (10 × 1,92 TB).
 
 > [!NOTE]
-> Virtuální počítače Lsv2-series jsou optimalizované pro použití místního disku v uzlu připojené přímo k virtuálnímu počítači a nepoužívat trvalých datových disků. Díky tomu větší IOPs a propustnost pro vaše úlohy. Lsv2 řad nepodporuje vytváření z místní mezipaměti a zvyšuje dosažitelné vstupně-výstupních operací trvalých datových disků. Vysoká propustnost a IOPS místního disku budou virtuální počítače řady Lsv2 ideální pro úložišť typu NoSQL, jako je například Apache Cassandra a MongoDB, které replikujte data napříč několika virtuálních počítačů k přetrvávání v případě selhání jednoho virtuálního počítače.
+> Virtuální počítače Lsv2-series jsou optimalizované pro použití místního disku v uzlu připojené přímo k virtuálnímu počítači a nepoužívat trvalých datových disků. Díky tomu větší IOPs a propustnost pro vaše úlohy. Lsv2 a řada Ls-series nepodporují vytváření místní mezipaměti a zvyšuje dosažitelné vstupně-výstupních operací trvalých datových disků.
+>
+> Vysoká propustnost a IOPs místního disku díky Lsv2 a virtuální počítače řady Ls-series ideální pro úložišť typu NoSQL, jako je například Apache Cassandra a MongoDB, které replikujte data napříč několika virtuálních počítačů k přetrvávání v případě selhání jednoho virtuálního počítače.
+>
+> Další informace najdete v tématu [optimalizace výkonu na virtuálních počítačích řady Lsv2](../articles/virtual-machines/linux/storage-performance.md).  
+
 
 ## <a name="lsv2-series"></a>Řada Lsv2
 

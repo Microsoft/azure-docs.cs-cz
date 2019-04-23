@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 03/25/2019
 ms.author: ramamill
-ms.openlocfilehash: 3b354492778426d1e3c31e53e277fd9be1e22c93
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: MT
+ms.openlocfilehash: 929a4e4366c9e94ed4e1915406914991624f6baa
+ms.sourcegitcommit: c884e2b3746d4d5f0c5c1090e51d2056456a1317
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59048108"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60149627"
 ---
 # <a name="about-the-mobility-service-for-vmware-vms-and-physical-servers"></a>Informace o službě Mobility pro virtuální počítače VMware a fyzické servery
 
@@ -115,7 +115,7 @@ Během nabízená instalace agenta mobility následující kroky se provádějí
 #### <a name="installation-settings"></a>Nastavení instalace
 **Nastavení** | **Podrobnosti**
 --- | ---
-Využití | UnifiedAgent.exe/role < MS|MT – > /InstallLocation  <Install Location> /silent "VmWare" / Platform
+Využití | UnifiedAgent.exe/role < MS/MT > /InstallLocation  <Install Location> /silent "VmWare" / Platform
 Instalační protokoly | Under %ProgramData%\ASRSetupLogs\ASRUnifiedAgentInstaller.log.
 / Role | Instalace povinných parametrů. Určuje, zda by měla nainstalovat služba Mobility (MS) nebo hlavní cíl (MT).
 /InstallLocation| Volitelný parametr. Určuje umístění instalace služby Mobility (libovolné složky).
@@ -154,7 +154,7 @@ Protokoly konfigurace agenta | V části % ProgramData%\ASRSetupLogs\ASRUnifiedA
 #### <a name="installation-settings"></a>Nastavení instalace
 **Nastavení** | **Podrobnosti**
 --- | ---
-Využití | . / install -d \<Umístění_instalace > - r < MS|MT> -v VmWare -q
+Využití | ./install -d <Install Location> -r <MS/MT> -v VmWare -q
 -r | Instalace povinných parametrů. Určuje, zda by měla nainstalovat služba Mobility (MS) nebo hlavní cíl (MT).
 -d | Volitelný parametr. Určuje umístění instalace služby Mobility: /usr/local/ASR.
 -v | Povinné. Určuje platformu, na kterém je nainstalovaná služba Mobility. **VMware** pro virtuální počítače VMware a fyzických serverů. **Azure** pro virtuální počítače Azure.

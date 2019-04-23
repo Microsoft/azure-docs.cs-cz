@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/27/2019
+ms.date: 04/18/2019
 ms.author: mlottner
-ms.openlocfilehash: 56378e94bf448da4c3047c30be3ae25887f113b5
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 6182662cb0da7fa5bcd3f329ada9ca5851490724
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59792213"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60007878"
 ---
 # <a name="investigate-a-suspicious-iot-device"></a>Prozkoumat podezřelé zařízení IoT
 
@@ -43,7 +43,7 @@ Ve výchozím nastavení ukládá ASC pro IoT výstrah zabezpečení a doporuče
 Přejděte pracovního prostoru Log Analytics pro úložiště dat:
 
 1. Otevřete své Centrum IoT 
-1. Klikněte na tlačítko **zabezpečení**a pak vyberte **nastavení**.
+1. V části **zabezpečení**, klikněte na tlačítko **přehled**a pak vyberte **nastavení**.
 1. Změňte podrobností o konfiguraci pracovního prostoru Log Analytics. 
 1. Klikněte na **Uložit**. 
 
@@ -94,7 +94,7 @@ Tato data použijte k zjištění:
 
 ### <a name="open-ports"></a>Otevřít porty
 
-Najít následující dotaz kql použít na více instancí, které porty v zařízení se právě používají, nebo byla použita: 
+Chcete-li zjistit, které porty v zařízení jsou právě používány, nebo byly použity, použijte následující dotaz kql: 
 
   ~~~
   let device = "YOUR_DEVICE_ID";
@@ -147,12 +147,12 @@ Uživatelé, kteří přihlášení na zařízení a zjistěte, použijte tento 
 
     Use the query results to discover:
   1. Kteří uživatelé přihlášení k zařízení?
-  2. Máte uživatele, kteří přihlášení pro přihlášení?
+  2. Jsou uživatelé, kteří úspěšně přihlášení, má pro přihlášení?
   3. Z neočekávané nebo očekávaných IP adres připojit uživatele, kteří přihlášení?
   
 ### <a name="process-list"></a>Seznam procesů
 
-Chcete-li zjistit, jestli seznam procesů je jako očekávané použití následující dotaz kql: 
+Chcete-li zjistit, pokud je seznam procesů podle očekávání, použijte tento dotaz kql: 
 
   ~~~
   let device = "YOUR_DEVICE_ID";
@@ -188,4 +188,5 @@ Chcete-li zjistit, jestli seznam procesů je jako očekávané použití násled
   3. Žádné spuštění příkazového řádku obsahovat správné a očekávaných argumentů?
 
 ## <a name="next-steps"></a>Další postup
+
 Po prošetření zařízení a získat lepší přehled rizik, můžete chtít zvážit [konfigurace vlastních výstrah](quickstart-create-custom-alerts.md) a zlepšit tak stav zabezpečení řešení IoT. Pokud ještě nemáte agenta do zařízení, vezměte v úvahu [nasazení agenta zabezpečení](how-to-deploy-agent.md) nebo [změna konfigurace existujícího agenta zařízení](how-to-agent-configuration.md) dosáhnout lepších výsledků. 

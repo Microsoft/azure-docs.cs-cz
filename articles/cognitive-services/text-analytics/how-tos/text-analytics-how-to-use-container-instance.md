@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: article
 ms.date: 01/22/2019
 ms.author: diberry
-ms.openlocfilehash: 3541376331725fddcd58d94625f5d761ef159c97
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
-ms.translationtype: MT
+ms.openlocfilehash: 95ba3c905541d2168dcbbc1bb2c1bc1d05468cb5
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59526491"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60006416"
 ---
 # <a name="deploy-the-language-detection-container-to-azure-kubernetes-service"></a>Nasazení kontejneru detekce jazyka do služby Azure Kubernetes Service
 
@@ -325,7 +325,7 @@ Tato část používá **kubectl** rozhraní příkazového řádku pro komunika
     |Řádku 78<br> `image` Vlastnost|Umístění Image pro jazyk image do vašeho registru kontejneru<br>`<container-registry-name>.azurecr.io/language:1.1.006770001-amd64-preview`|
     |95 řádku<br> `name` Vlastnost|Tajný klíč registru kontejneru pro bitovou kopii, označuje jako `<client-secret>` v předchozí části.|
     |Řádku 91<br> `apiKey` Vlastnost|Klíč prostředku text analytics|
-    |92 řádku<br> `billing` Vlastnost|Fakturační koncový bod pro prostředek text analytics.<br>`https://westus.api.cognitive.microsoft.com/text/analytics/v2.0`|
+    |92 řádku<br> `billing` Vlastnost|Fakturační koncový bod pro prostředek text analytics.<br>`https://westus.api.cognitive.microsoft.com/text/analytics/v2.1`|
 
     Protože **apiKey** a **fakturace koncový bod** jsou nastaveny jako součást definice Orchestrace Kubernetes, kontejner webu nemusí vědět o těchto a předat je jako součást požadavku. Kontejner web odkazuje na kontejner detekce jazyka podle názvu produktu orchestrator `language`. 
 

@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: article
-ms.date: 03/12/2019
+ms.date: 04/18/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: 51f5355e365d0dcf7a103deab3356f015e75641e
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
-ms.translationtype: MT
+ms.openlocfilehash: 58f6d6cf8bf16f7c35bab35a69cfcdf8759f66ae
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57897504"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60006824"
 ---
 # <a name="boundaries-for-your-luis-model-and-keys"></a>Hranice pro LUIS model a klíče
 Služba LUIS má několik oblasti hranic. První je [modelu hranice](#model-boundaries), který určuje záměrů, entit a funkcí v LUIS. Druhá oblast je [kvóty](#key-limits) podle typu klíče. Je třetí oblasti hranic [klávesové kombinace](#keyboard-controls) pro řízení webu LUIS. Je čtvrtý oblast [mapování oblasti world](luis-reference-regions.md) mezi LUIS vytváření webu a LUIS [koncový bod](luis-glossary.md#endpoint) rozhraní API. 
@@ -47,16 +47,16 @@ Pokud vaše aplikace překračuje omezení modelů služby LUIS a hranice, zvaž
 
 * Znak výchozí maximální počet je 50 znaků. 
 
-## <a name="intent-and-entity-naming"></a>Pojmenování entity a záměr
-Nepoužívejte tyto znaky v názvech záměr a entity:
+<a name="intent-and-entity-naming"></a>
 
-|Znak|Název|
+## <a name="object-naming"></a>Objekt pojmenování
+
+Nepoužívejte tyto znaky v následující názvy.
+
+|Object|Vyloučení znaků|
 |--|--|
-|`{`|Levá složená závorka|
-|`}`|Pravá složená závorka|
-|`[`|Levá závorka|
-|`]`|Pravá hranatá závorka|
-|`\`|Zpětné lomítko|
+|Názvy záměr, entit a role|`:`<br>`$`|
+|Název verze|`\`<br> `/`<br> `:`<br> `?`<br> `&`<br> `=`<br> `*`<br> `+`<br> `(`<br> `)`<br> `%`<br> `@`<br> `$`<br> `~`<br> `!`<br> `#`|
 
 ## <a name="key-usage"></a>Použití klíče
 

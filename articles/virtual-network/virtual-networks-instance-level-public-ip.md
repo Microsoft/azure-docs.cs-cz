@@ -15,17 +15,17 @@ ms.workload: infrastructure-services
 ms.date: 08/03/2018
 ms.author: genli
 ms.openlocfilehash: 2f6db23e02c836dea6d640757d12275b654ad468
-ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50024615"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60186795"
 ---
 # <a name="instance-level-public-ip-classic-overview"></a>Instance přehled úrovně veřejných IP adres (Classic)
 Instance úrovně veřejné IP (ILPIP) je veřejnou IP adresu můžete přiřadit přímo k instanci role virtuálního počítače nebo cloudové služby, nikoli do cloudové služby, který váš virtuální počítač nebo instanci role jsou umístěny v. ILPIP nepřijímá místo z virtuální IP (VIP), který je přiřazen ke cloudové službě. Místo toho je další IP adresu, můžete použít pro připojení přímo k vaší instanci virtuálního počítače nebo role.
 
 > [!IMPORTANT]
-> Azure má dva různé modely nasazení pro vytváření prostředků a práci s nimi: [Resource Manager a klasický model](../azure-resource-manager/resource-manager-deployment-model.md?toc=%2fazure%2fvirtual-network%2ftoc.json). Tento článek se věnuje použití klasického modelu nasazení. Společnost Microsoft doporučuje vytváření virtuálních počítačů prostřednictvím Resource Manageru. Ujistěte se, že rozumíte jak [IP adresy](virtual-network-ip-addresses-overview-classic.md) fungovat v Azure.
+> Azure má dva různé modely nasazení pro vytváření a práci s prostředky:  [Resource Manager a classic](../azure-resource-manager/resource-manager-deployment-model.md?toc=%2fazure%2fvirtual-network%2ftoc.json). Tento článek se věnuje použití klasického modelu nasazení. Společnost Microsoft doporučuje vytváření virtuálních počítačů prostřednictvím Resource Manageru. Ujistěte se, že rozumíte jak [IP adresy](virtual-network-ip-addresses-overview-classic.md) fungovat v Azure.
 
 ![Rozdíl mezi ILPIP a virtuální IP adresy](./media/virtual-networks-instance-level-public-ip/Figure1.png)
 

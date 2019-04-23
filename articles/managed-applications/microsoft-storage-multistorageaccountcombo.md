@@ -1,6 +1,6 @@
 ---
-title: Azure elementu MultiStorageAccountCombo uživatelského rozhraní | Microsoft Docs
-description: Popisuje element Microsoft.Storage.MultiStorageAccountCombo uživatelského rozhraní pro portál Azure.
+title: Azure prvek uživatelského rozhraní MultiStorageAccountCombo | Dokumentace Microsoftu
+description: Popisuje element Microsoft.Storage.MultiStorageAccountCombo uživatelského rozhraní pro Azure portal.
 services: managed-applications
 documentationcenter: na
 author: tfitzmac
@@ -13,15 +13,15 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/28/2018
 ms.author: tomfitz
-ms.openlocfilehash: f5fa81d53e1728e8f566a2a39aed8311828b20c7
-ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
+ms.openlocfilehash: 08b65770414e9ee1cb5e478427fe7654b2bb9a78
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37108701"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60252432"
 ---
-# <a name="microsoftstoragemultistorageaccountcombo-ui-element"></a>Element Microsoft.Storage.MultiStorageAccountCombo uživatelského rozhraní
-Skupina ovládacích prvků pro vytváření několik účtů úložiště s názvy, které začínají běžné předponou.
+# <a name="microsoftstoragemultistorageaccountcombo-ui-element"></a>Microsoft.Storage.MultiStorageAccountCombo UI element
+Skupina ovládacích prvků pro vytváření několika účty úložiště s názvy, které začínají běžnou předponu.
 
 ## <a name="ui-sample"></a>Ukázka uživatelského rozhraní
 ![Microsoft.Storage.MultiStorageAccountCombo](./media/managed-application-elements/microsoft.storage.multistorageaccountcombo.png)
@@ -53,11 +53,11 @@ Skupina ovládacích prvků pro vytváření několik účtů úložiště s ná
 ```
 
 ## <a name="remarks"></a>Poznámky
-- Hodnota `defaultValue.prefix` je zřetězen s jeden nebo více celých čísel na generování pořadí názvy účtů úložiště. Například pokud `defaultValue.prefix` je **sa** a `count` je **2**, pak názvy účtů úložiště **SA 1** a **SA 2** se generují. Názvy účtů úložiště generovaného ověření jedinečnosti automaticky.
-- Názvy účtů úložiště jsou generovány lexicographically podle `count`. Například pokud `count` je 10 a názvy účtů úložiště končit letopočty celých čísel (01, 02, 03).
+- Hodnota pro `defaultValue.prefix` je zřetězená s celými čísly jeden nebo více ke generování pořadí v názvech účtů úložiště. Například pokud `defaultValue.prefix` je **sa** a `count` je **2**, pak názvy účtů úložiště **SA 1** a **SA 2** jsou generovány. Názvy účtů generované úložiště se automaticky ověří jedinečný.
+- Názvy účtů úložiště jsou generovány na základě lexikograficky `count`. Například pokud `count` je 10 a názvy účtů úložiště končit dvěma číslicemi celá čísla (01, 02, 03).
 - Výchozí hodnota pro `defaultValue.prefix` je **null**a pro `defaultValue.type` je **Premium_LRS**.
-- Žádný typ, nebyly zadány v `constraints.allowedTypes` skryt a jakýmikoli nebyly zadány v `constraints.excludedTypes` se zobrazí. `constraints.allowedTypes` a `constraints.excludedTypes` obě jsou nepovinné, ale nelze používat současně.
-- Kromě vytváření názvy účtů úložiště `count` slouží k nastavení odpovídající multiplikátor pro element. Podporuje statické hodnoty, jako je třeba **2**, nebo jako dynamické hodnoty z jiný element `[steps('step1').storageAccountCount]`. Výchozí hodnota je **1**.
+- Jakýkoli typ není zadáno v `constraints.allowedTypes` je skrytá a libovolný typ není zadáno v `constraints.excludedTypes` se zobrazí. `constraints.allowedTypes` a `constraints.excludedTypes` jsou volitelné, ale nelze používat současně.
+- Kromě vytváření názvy účtů úložiště, `count` slouží k nastavení odpovídající multiplikátor pro element. Statická hodnota, jako je třeba podporuje **2**, nebo dynamickou hodnotu z jiných prvků, jako je `[steps('step1').storageAccountCount]`. Výchozí hodnota je **1**.
 
 ## <a name="sample-output"></a>Ukázkový výstup
 
@@ -71,5 +71,5 @@ Skupina ovládacích prvků pro vytváření několik účtů úložiště s ná
 ```
 
 ## <a name="next-steps"></a>Další postup
-* Úvod do vytváření definic uživatelského rozhraní, najdete v části [Začínáme s CreateUiDefinition](create-uidefinition-overview.md).
-* Popis společných vlastností v prvky uživatelského rozhraní najdete v tématu [CreateUiDefinition elementy](create-uidefinition-elements.md).
+* Úvod do vytváření definic uživatelského rozhraní, naleznete v tématu [Začínáme s funkcí CreateUiDefinition](create-uidefinition-overview.md).
+* Popis společné vlastnosti v prvcích uživatelského rozhraní, naleznete v tématu [CreateUiDefinition prvky](create-uidefinition-elements.md).

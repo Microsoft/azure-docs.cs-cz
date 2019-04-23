@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 02/05/2019
 ms.author: sedusch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a9e12171a8596bc9caba3bf9065bbb943139ccde
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: d4798f8c3e262129135a6677ccf90dc0fb3be7f2
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59501327"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59999531"
 ---
 # <a name="azure-virtual-machines-planning-and-implementation-for-sap-netweaver"></a>Azure Virtual Machines, plánování a implementace SAP NetWeaver
 
@@ -1141,8 +1141,8 @@ Můžete také zkopírovat virtuální pevné disky mezi předplatnými. Další
 
 Základní tok logiky rutiny PS vypadá takto:
 
-* Vytvořte kontext účtu úložiště pro **zdroj** účtu úložiště pomocí *New-AzStorageContext* -naleznete v tématu <https://docs.microsoft.com/powershell/module/azure.storage/new-AzStoragecontext>
-* Vytvořte kontext účtu úložiště pro **cílové** účtu úložiště pomocí *New-AzStorageContext* -naleznete v tématu <https://docs.microsoft.com/powershell/module/azure.storage/new-AzStoragecontext>
+* Vytvořte kontext účtu úložiště pro **zdroj** účtu úložiště pomocí *New-AzStorageContext* -naleznete v tématu <https://docs.microsoft.com/powershell/module/az.storage/new-AzStoragecontext>
+* Vytvořte kontext účtu úložiště pro **cílové** účtu úložiště pomocí *New-AzStorageContext* -naleznete v tématu <https://docs.microsoft.com/powershell/module/az.storage/new-AzStoragecontext>
 * Začít kopírovat s
 
 ```powershell

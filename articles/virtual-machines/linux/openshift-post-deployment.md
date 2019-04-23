@@ -4,7 +4,7 @@ description: Další úkoly pro za OpenShift cluster byla nasazena.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: haroldwongms
-manager: joraio
+manager: mdotson
 editor: ''
 tags: azure-resource-manager
 ms.assetid: ''
@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 02/02/2019
+ms.date: 04/19/2019
 ms.author: haroldw
-ms.openlocfilehash: cf3a3ca1f751ce9eed5ee5c5397c1d9c864a1dd6
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: fba29cd55f2d765faa107de3a8961032ef44deec
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58903671"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59997391"
 ---
 # <a name="post-deployment-tasks"></a>Úlohy po nasazení
 
@@ -151,30 +151,9 @@ Zkontrolujte, zda že bude text zarovnán v rámci identityProviders správně. 
 
 Restartujte hlavní služby OpenShift na všechny hlavní uzly:
 
-**OpenShift Container Platform (OCP) s více hlavních serverů**
-
 ```bash
-sudo systemctl restart atomic-openshift-master-api
-sudo systemctl restart atomic-openshift-master-controllers
-```
-
-**OpenShift Container Platform se na jediném masteru**
-
-```bash
-sudo systemctl restart atomic-openshift-master
-```
-
-**OKD s více hlavních serverů**
-
-```bash
-sudo systemctl restart origin-master-api
-sudo systemctl restart origin-master-controllers
-```
-
-**OKD s na jediném masteru**
-
-```bash
-sudo systemctl restart origin-master
+sudo /usr/local/bin/master-restart api
+sudo /usr/local/bin/master-restart controllers
 ```
 
 V konzole nástroje OpenShift, uvidíte teď dvě možnosti pro ověřování: htpasswd_auth a [registrace aplikace].
@@ -186,7 +165,7 @@ Existují tři způsoby, jak přidat agenta Log Analytics do OpenShift.
 - Povolení rozšíření virtuálního počítače Azure Monitor na každém uzlu Openshiftu
 - Instalace agenta Log Analytics jako démon OpenShift-set
 
-Úplné pokyny se nachází tady: https://docs.microsoft.com/azure/log-analytics/log-analytics-containers#configure-a-log-analytics-agent-for-red-hat-openshift.
+Přečtěte si celý [pokyny](https://docs.microsoft.com/azure/log-analytics/log-analytics-containers#configure-a-log-analytics-agent-for-red-hat-openshift) další podrobnosti.
 
 ## <a name="configure-metrics-and-logging"></a>Konfigurace metrik a protokolování
 
@@ -196,74 +175,9 @@ OpenShift Container Platform Marketplace nabídka také nabízí možnost povole
 
 Pokud metriky / během instalace clusteru není povoleno protokolování, můžete je snadno povolit po jejich výskytu.
 
-### <a name="ansible-inventory-pre-work"></a>Před pracovní inventáře Ansible
-
-Zkontrolujte soubor inventáře ansible (/ etc/ansible/hostitele) má příslušných proměnných pro metriky / protokolování. Soubor inventáře můžete najít na různých hostitelích, na základě šablony použité.
-
-Pro šablony OpenShift Container a nabídky Marketplace se nachází soubor inventáře na Bastion host. Pro šablonu OKD inventáře soubor se nachází na hostiteli master-0 nebo bastion host na základě větve používá.
-
-1. Upravte soubor /etc/ansible/hosts a přidejte následující řádky za část zprostředkovatele Identity (# Povolit HTPasswdPasswordIdentityProvider). Pokud tyto řádky jsou již přítomny, nemusíte je znovu přidat.
-
-   OpenShift / OKD verze 3.9 a starší
-
-   ```yaml
-   # Setup metrics
-   openshift_hosted_metrics_deploy=false
-   openshift_metrics_cassandra_storage_type=dynamic
-   openshift_metrics_start_cluster=true
-   openshift_metrics_hawkular_nodeselector={"type":"infra"}
-   openshift_metrics_cassandra_nodeselector={"type":"infra"}
-   openshift_metrics_heapster_nodeselector={"type":"infra"}
-   openshift_hosted_metrics_public_url=https://metrics.$ROUTING/hawkular/metrics
-
-   # Setup logging
-   openshift_hosted_logging_deploy=false
-   openshift_hosted_logging_storage_kind=dynamic
-   openshift_logging_fluentd_nodeselector={"logging":"true"}
-   openshift_logging_es_nodeselector={"type":"infra"}
-   openshift_logging_kibana_nodeselector={"type":"infra"}
-   openshift_logging_curator_nodeselector={"type":"infra"}
-   openshift_master_logging_public_url=https://kibana.$ROUTING
-   ```
-
-   OpenShift / OKD verze 3.10 a vyšší
-
-   ```yaml
-   # Setup metrics
-   openshift_metrics_install_metrics=false
-   openshift_metrics_start_cluster=true
-   openshift_metrics_hawkular_nodeselector={"node-role.kubernetes.io/infra":"true"}
-   openshift_metrics_cassandra_nodeselector={"node-role.kubernetes.io/infra":"true"}
-   openshift_metrics_heapster_nodeselector={"node-role.kubernetes.io/infra":"true"}
-
-   # Setup logging
-   openshift_logging_install_logging=false
-   openshift_logging_fluentd_nodeselector={"logging":"true"}
-   openshift_logging_es_nodeselector={"node-role.kubernetes.io/infra":"true"}
-   openshift_logging_kibana_nodeselector={"node-role.kubernetes.io/infra":"true"}
-   openshift_logging_curator_nodeselector={"node-role.kubernetes.io/infra":"true"}
-   openshift_logging_master_public_url=https://kibana.$ROUTING
-   ```
-
-3. Nahraďte řetězec použitý pro možnost openshift_master_default_subdomain ve stejném souboru /etc/ansible/hosts $ROUTING.
-
 ### <a name="azure-cloud-provider-in-use"></a>Poskytovatel cloudu Azure používá
 
 SSH bastionu uzel nebo první hlavní uzly (na základě šablony a větve používá) pomocí přihlašovacích údajů zadali při nasazení. Vydejte následující příkaz:
-
-**OpenShift Container Platform 3.7 nebo starší**
-
-```bash
-ansible-playbook /usr/share/ansible/openshift-ansible/playbooks/byo/openshift-cluster/openshift-metrics.yml \
--e openshift_metrics_install_metrics=True \
--e openshift_metrics_cassandra_storage_type=dynamic
-
-ansible-playbook /usr/share/ansible/openshift-ansible/playbooks/byo/openshift-cluster/openshift-logging.yml \
--e openshift_logging_install_logging=True \
--e openshift_hosted_logging_storage_kind=dynamic
-```
-
-**OpenShift Container Platform 3.9 a novější**
 
 ```bash
 ansible-playbook /usr/share/ansible/openshift-ansible/playbooks/openshift-metrics/config.yml \
@@ -271,75 +185,17 @@ ansible-playbook /usr/share/ansible/openshift-ansible/playbooks/openshift-metric
 -e openshift_metrics_cassandra_storage_type=dynamic
 
 ansible-playbook /usr/share/ansible/openshift-ansible/playbooks/openshift-logging/config.yml \
--e openshift_logging_install_logging=True \
--e openshift_logging_es_pvc_dynamic=true
-```
-
-**OKD 3.7 nebo starší**
-
-```bash
-ansible-playbook ~/openshift-ansible/playbooks/byo/openshift-cluster/openshift-metrics.yml \
--e openshift_metrics_install_metrics=True \
--e openshift_metrics_cassandra_storage_type=dynamic
-
-ansible-playbook ~/openshift-ansible/playbooks/byo/openshift-cluster/openshift-logging.yml \
--e openshift_logging_install_logging=True \
--e openshift_hosted_logging_storage_kind=dynamic
-```
-
-**OKD 3.9 a novější**
-
-```bash
-ansible-playbook ~/openshift-ansible/playbooks/byo/openshift-cluster/openshift-metrics.yml \
--e openshift_metrics_install_metrics=True \
--e openshift_metrics_cassandra_storage_type=dynamic
-
-ansible-playbook ~/openshift-ansible/playbooks/openshift-logging/config.yml \
 -e openshift_logging_install_logging=True \
 -e openshift_logging_es_pvc_dynamic=true
 ```
 
 ### <a name="azure-cloud-provider-not-in-use"></a>Nepoužíváte Azure poskytovatel cloudu
 
-SSH bastionu uzel nebo první hlavní uzly (na základě šablony a větve používá) pomocí přihlašovacích údajů zadali při nasazení. Vydejte následující příkaz:
-
-
-**OpenShift Container Platform 3.7 nebo starší**
-
-```bash
-ansible-playbook /usr/share/ansible/openshift-ansible/playbooks/byo/openshift-cluster/openshift-metrics.yml \
--e openshift_metrics_install_metrics=True
-
-ansible-playbook /usr/share/ansible/openshift-ansible/playbooks/byo/openshift-cluster/openshift-logging.yml \
--e openshift_logging_install_logging=True
-```
-
-**OpenShift Container Platform 3.9 a novější**
-
 ```bash
 ansible-playbook /usr/share/ansible/openshift-ansible/playbooks/openshift-metrics/config.yml \
 -e openshift_metrics_install_metrics=True
 
 ansible-playbook /usr/share/ansible/openshift-ansible/playbooks/openshift-logging/config.yml \
--e openshift_logging_install_logging=True
-```
-
-**OKD 3.7 nebo starší**
-
-```bash
-ansible-playbook ~/openshift-ansible/playbooks/byo/openshift-cluster/openshift-metrics.yml \
--e openshift_metrics_install_metrics=True
-
-ansible-playbook ~/openshift-ansible/playbooks/byo/openshift-cluster/openshift-logging.yml \
--e openshift_logging_install_logging=True
-```
-
-**OKD 3.9 a novější**
-
-```bash
-ansible-playbook ~/openshift-ansible/playbooks/byo/openshift-cluster/openshift-metrics.yml \
--e openshift_metrics_install_metrics=True
-ansible-playbook ~/openshift-ansible/playbooks/openshift-logging/config.yml \
 -e openshift_logging_install_logging=True
 ```
 
@@ -348,8 +204,9 @@ ansible-playbook ~/openshift-ansible/playbooks/openshift-logging/config.yml \
 Otevřete službu Service Broker pro Azure nebo OSBA, umožňuje zřizovat služby Azure Cloud Services přímo z OpenShift. Osba, POUŽIJTE v implementaci otevřené rozhraní API služby Service Broker for Azure. Otevřené rozhraní API služby Service Broker je specifikace, která definuje společný jazyk pro cloud, kterému zprostředkovatelů, které cloud nativních aplikací můžete použít ke správě cloudových služeb bez zámku v.
 
 Nainstalovat OSBA OpenShift, postupujte podle pokynů tady: https://github.com/Azure/open-service-broker-azure#openshift-project-template. 
+> [!NOTE]
+> Pouze dokončete kroky v části šablony projektu OpenShift a ne celý oddíl instalace.
 
 ## <a name="next-steps"></a>Další postup
 
 - [Začínáme s OpenShift Container Platform](https://docs.openshift.com/container-platform)
-- [Začínáme s OKD](https://docs.okd.io/latest)

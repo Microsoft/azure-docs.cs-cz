@@ -15,27 +15,30 @@ ms.topic: quickstart
 ms.date: 03/26/2018
 ms.author: cephalin;robmcm
 ms.custom: seodec18
-ms.openlocfilehash: 6bf0562d222bce07f74ef5355ad0e3d6b8844c33
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
-ms.translationtype: MT
+ms.openlocfilehash: 3af585ede27536dfb644dd374e54183c3539d585
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58096618"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60007351"
 ---
 # <a name="create-your-first-java-web-app-in-azure"></a>Vytvoření první webové Java aplikace ve službě Azure
 
 [Azure App Service ](overview.md) je vysoce škálovatelná služba s automatickými opravami pro hostování webů. Tento kurz Rychlý start ukazuje, jak nasadit webovou Java aplikaci do služby App Service pomocí [integrovaného vývojového prostředí Eclipse pro vývojáře na platformě Java EE](https://www.eclipse.org/).
 
-> [!NOTE]
->
-> Kroky v tomto rychlém startu ukazují, jak publikovat webovou aplikaci v Javě do služby App Service pomocí integrovaného vývojového prostředí (IDE) Eclipse, ale můžete použít i IntelliJ IDEA Ultimate Edition nebo Community Edition. Další informace najdete v tématu [Vytvoření webové aplikace Hello World pro Azure pomocí IntelliJ](/java/azure/intellij/azure-toolkit-for-intellij-create-hello-world-web-app).
->
+> [!IMPORTANT]
+> Azure App Service v Linuxu je také možnost hostitel webové aplikace v Javě v Linuxu pomocí spravované nabídky Tomcat, Java SE a WildFly nativně. Pokud vás zajímá Začínáme se službou App Service v Linuxu, přečtěte si téma [rychlý start: Vytvoření aplikace v Javě ve službě App Service v Linuxu](containers/quickstart-java.md).
 
 Po dokončení tohoto rychlého startu bude vaše aplikace při zobrazení ve webovém prohlížeči vypadat podobně jako na následujícím obrázku:
 
 ![Hello Azure! Ukázková webová aplikace](./media/app-service-web-get-started-java/browse-web-app-1.png)
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
+
+> [!NOTE]
+>
+> Kroky v tomto rychlém startu ukazují, jak publikovat webovou aplikaci v Javě do služby App Service pomocí integrovaného vývojového prostředí (IDE) Eclipse, ale můžete použít i IntelliJ IDEA Ultimate Edition nebo Community Edition. Další informace najdete v tématu [Vytvoření webové aplikace Hello World pro Azure pomocí IntelliJ](/java/azure/intellij/azure-toolkit-for-intellij-create-hello-world-web-app).
+>
 
 ## <a name="prerequisites"></a>Požadavky
 

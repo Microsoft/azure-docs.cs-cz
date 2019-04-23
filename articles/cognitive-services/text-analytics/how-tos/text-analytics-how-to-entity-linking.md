@@ -8,18 +8,18 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: article
-ms.date: 02/13/2019
+ms.date: 04/16/2019
 ms.author: aahi
-ms.openlocfilehash: dfbb31ce9f61ee28fef046120474a6a170906512
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: c179620d6858658dface5f706f7994d51f1a199b
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59505571"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59997304"
 ---
-# <a name="how-to-use-named-entity-recognition-in-text-analytics-preview"></a>Použití s názvem rozpoznávání entit v rozhraní Text Analytics (Náhled)
+# <a name="how-to-use-named-entity-recognition-in-text-analytics"></a>Použití s názvem rozpoznávání entit v rozhraní Text Analytics
 
-[Rozhraní API pro rozpoznávání entit](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1-Preview/operations/5ac4251d5b4ccd1554da7634) převezme nestrukturovaného textu a pro každý dokument JSON vrátí seznam jednoznačně rozlišit entit s odkazy na další informace na webu (Wikipedia a Bing). 
+[s názvem Entity rozhraní API pro rozpoznávání](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/5ac4251d5b4ccd1554da7634) převezme nestrukturovaného textu a pro každý dokument JSON vrátí seznam jednoznačně rozlišit entit s odkazy na další informace na webu (Wikipedia a Bing). 
 
 ## <a name="entity-linking-and-named-entity-recognition"></a>Propojování entit a rozpoznávání pojmenovaných entit
 
@@ -28,12 +28,10 @@ Rozhraní Text Analytics `entities` pojmenované rozpoznávání entit (NER) a r
 ### <a name="entity-linking"></a>Entity Linking
 Propojování entit je schopnost identifikovat a rozpoznat identity entity v textu (například určující, zda "Mars" je používán jako globální úrovni nebo Roman i war). Tento proces vyžaduje přítomnost který rozpoznáno entity jsou propojeny – Wikipedia slouží jako znalostní báze pro základní znalosti `entities` koncový bod pro analýzu textu.
 
-V rozhraní Text Analytics [verze 2.0](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/5ac4251d5b4ccd1554da7634)pouze propojování entit je k dispozici.
-
 ### <a name="named-entity-recognition-ner"></a>Rozpoznávání pojmenovaných entit (NER)
 Rozpoznávání entit s názvem (NER) je schopnost určit různé entity v textu a uspořádejte je do kategorií na předem definované třídy. Níže jsou uvedeny podporované tříd entit.
 
-V rozhraní Text Analytics [verze 2.1-Preview](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1-Preview/operations/5ac4251d5b4ccd1554da7634), propojování entit a rozpoznávání pojmenovaných entit (NER) jsou k dispozici.
+V rozhraní Text Analytics [verze 2.1](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/5ac4251d5b4ccd1554da7634), propojování entit a rozpoznávání pojmenovaných entit (NER) jsou k dispozici.
 
 ### <a name="language-support"></a>Podpora jazyků
 
@@ -44,7 +42,7 @@ Použití rozhraní entity linking v různých jazycích vyžaduje použití odp
 | Type  | SubType | Příklad: |
 |:-----------   |:------------- |:---------|
 | Person (Osoba)        | NENÍ K DISPOZICI\*         | "Jan", "Billem Gatesem"     |
-| Umístění      | NENÍ K DISPOZICI\*         | "Redmond, Washington", "Paříž"  |
+| Location      | NENÍ K DISPOZICI\*         | "Redmond, Washington", "Paříž"  |
 | Organizace  | NENÍ K DISPOZICI\*         | "Microsoft".   |
 | Množství      | Číslo        | "6", "six"     | 
 | Množství      | Procento    | "50 %", "50 %"| 
@@ -71,7 +69,7 @@ Použití rozhraní entity linking v různých jazycích vyžaduje použití odp
 
 ## <a name="preparation"></a>Příprava
 
-Musíte mít dokumenty JSON v tomto formátu: ID, text, kód jazyka.
+Dokumenty JSON musí mít v tomto formátu: ID, text, jazyk
 
 Seznam aktuálně podporovaných jazyků najdete v části [tento seznam](../text-analytics-supported-languages.md).
 
@@ -94,16 +92,16 @@ Velikost dokumentu musí být v jednom dokumentu v části 5 120 znaků a může
 
 Podrobnosti o definici žádosti najdete v článku o [volání rozhraní API pro analýzu textu](text-analytics-how-to-call-api.md). Pro usnadnění znovu uvádíme následující body:
 
-+ Vytvořte žádost **POST**. Projděte si dokumentaci k rozhraní API pro tuto žádost: [Rozhraní API služby entity Linking](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/5ac4251d5b4ccd1554da7634)
++ Vytvořte žádost **POST**. Projděte si dokumentaci k rozhraní API pro tuto žádost: [Rozhraní API služby entity Linking](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/5ac4251d5b4ccd1554da7634)
 
-+ Nastavení koncového bodu HTTP pro extrakci entity. Musí obsahovat prostředek `/entities`: `https://[your-region].api.cognitive.microsoft.com/text/analytics/v2.1-preview/entities`.
++ Nastavení koncového bodu HTTP pro extrakci entity. Musí obsahovat prostředek `/entities`: `https://[your-region].api.cognitive.microsoft.com/text/analytics/v2.1/entities`.
 
 + Nastavte hlavičku žádosti tak, aby obsahovala přístupový klíč pro operace analýzy textu. Další informace najdete v článku, který se věnuje [vyhledání koncových bodů a přístupových klíčů](text-analytics-how-to-access-key.md).
 
 + V textu žádosti zadejte kolekci dokumentů JSON, kterou jste si připravili pro tuto analýzu.
 
 > [!Tip]
-> Použijte aplikaci [Postman](text-analytics-how-to-call-api.md) nebo otevřete **konzolu pro testování rozhraní API** v [dokumentaci](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1-Preview/operations/5ac4251d5b4ccd1554da7634) a vytvořte strukturu žádosti a pomocí příkazu POST ji odešlete do služby.
+> Použijte aplikaci [Postman](text-analytics-how-to-call-api.md) nebo otevřete **konzolu pro testování rozhraní API** v [dokumentaci](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/5ac4251d5b4ccd1554da7634) a vytvořte strukturu žádosti a pomocí příkazu POST ji odešlete do služby.
 
 ## <a name="step-2-post-the-request"></a>Krok 2: Odeslat žádost
 
@@ -280,18 +278,16 @@ Příklad výstupu pro rozhraní entity linking se zobrazí následující:
 
 V tomto článku jste zjistili, koncepty a pracovní postup pro propojování entit pomocí analýzy textu ve službě Cognitive Services. Souhrn:
 
-+ [Entity rozhraní API](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1-Preview/operations/5ac4251d5b4ccd1554da7634) je k dispozici pro vybrané jazyky.
-+ Dokumenty JSON obsahují v textu žádosti ID, text a kód jazyka.
++ [Entity rozhraní API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/5ac4251d5b4ccd1554da7634) je k dispozici pro vybrané jazyky.
++ Dokumenty JSON v textu požadavku zahrnují ID, text a jazyka kódu.
 + Žádost POST je určená pro koncový bod `/entities` a používá individuální [přístupový klíč a koncový bod](text-analytics-how-to-access-key.md), které jsou platné pro dané předplatné.
 + Výstup odezvy, který se skládá z propojené entity (včetně jistotu, že skóre, posuny a webové odkazy pro každý dokument ID) lze použít v jakékoli aplikace
-
-## <a name="see-also"></a>Další informace najdete v tématech 
-
- [Přehled rozhraní API pro analýzu textu](../overview.md)  
- [Nejčastější dotazy](../text-analytics-resource-faq.md)</br>
- [Produktová stránka pro analýzu textu](//go.microsoft.com/fwlink/?LinkID=759712) 
 
 ## <a name="next-steps"></a>Další postup
 
 > [!div class="nextstepaction"]
-> [Rozhraní API pro analýzu textu](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1-Preview/operations/5ac4251d5b4ccd1554da7634)
+> [Rozhraní API pro analýzu textu](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/5ac4251d5b4ccd1554da7634)
+
+* [Přehled rozhraní API pro analýzu textu](../overview.md)  
+* [Nejčastější dotazy](../text-analytics-resource-faq.md)</br>
+* [Produktová stránka pro analýzu textu](//go.microsoft.com/fwlink/?LinkID=759712) 

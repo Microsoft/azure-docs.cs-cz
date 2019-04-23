@@ -14,15 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/11/2018
 ms.author: spelluru
-ms.openlocfilehash: 9d5b7f32cb298315a5816562f548bcdafbdeb5cf
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
-ms.translationtype: MT
+ms.openlocfilehash: cb4a3ec9be82957b4c0366ec232f1147c52d0251
+ms.sourcegitcommit: c884e2b3746d4d5f0c5c1090e51d2056456a1317
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59682304"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60148768"
 ---
 # <a name="import-vms-from-another-lab-in-azure-devtest-labs"></a>Import virtuálních počítačů z jiného testovacího prostředí ve službě Azure DevTest Labs
-Služba Azure DevTest Labs výrazně zlepšuje správu virtuálních počítačů (VM) pro vývoj a testování aktivity. Umožňuje přesunout virtuální počítač z jednoho prostředí do jiného jako tým, nebo změňte požadavky na infrastrukturu. Zde jsou uvedeny některé obvyklé scénáře, ve kterém budete muset udělat: 
+Služba Azure DevTest Labs výrazně zlepšuje správu virtuálních počítačů (VM) pro vývoj a testování aktivity. Umožňuje přesunout virtuální počítač z jednoho prostředí do jiného jako tým, nebo změňte požadavky na infrastrukturu. Zde jsou uvedeny některé obvyklé scénáře, ve kterém budete muset udělat:
 
 - Osobu v týmu přesune do jiné skupiny v rámci podniku a chce využít vývoj pro virtuální počítače do testovacího prostředí nového týmu.
 - Skupina dosáhl kvóty úrovni předplatného a chce rozdělit týmy do více předplatných.
@@ -42,10 +42,10 @@ Kromě toho aby bylo možné importovat virtuální počítač z jednoho prostř
 V současné době můžete importovat virtuální počítač z jednoho prostředí do jiného pouze pomocí prostředí Azure PowerShell a rozhraní REST API.
 
 ### <a name="use-powershell"></a>Použití prostředí PowerShell
-Stažení souboru skriptu prostředí PowerShell ImportVirtualMachines.ps1 z [úložiště Git v Azure DevTest Lab](https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/Scripts/ImportVirtualMachines) na váš místní disk. 
+Stažení souboru skriptu prostředí PowerShell ImportVirtualMachines.ps1 z [úložiště Git v Azure DevTest Lab](https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/Scripts/ImportVirtualMachines) na váš místní disk.
 
 #### <a name="import-a-single-vm"></a>Importovat jeden virtuální počítač
-Spusťte skript ImportVirtualMachines.ps1 import jednoho virtuálního počítače ze zdrojového testovacího prostředí do cílového testovacího prostředí. Můžete zadat nový název pro virtuální počítač, který je kopírování s použitím DestinationVirtualMachineName paramer. 
+Spusťte skript ImportVirtualMachines.ps1 import jednoho virtuálního počítače ze zdrojového testovacího prostředí do cílového testovacího prostředí. Můžete zadat nový název pro virtuální počítač, který je kopírování s použitím DestinationVirtualMachineName paramer.
 
 ```powershell
 ./ImportVirtualMachines.ps1 -SourceSubscriptionId "<ID of the subscription that contains the source VM>" `
@@ -58,7 +58,7 @@ Spusťte skript ImportVirtualMachines.ps1 import jednoho virtuálního počíta�
 
 
 #### <a name="importing-all-vms"></a>Import všech virtuálních počítačů
-Při spuštění skriptu ImportVirtualMachines.ps1, pokud nezadáte virtuálního počítače v testovacím prostředí zdroj, skript importuje všechny virtuální počítače v testovacím prostředí zdroje do cílového testovacího prostředí. 
+Při spuštění skriptu ImportVirtualMachines.ps1, pokud nezadáte virtuálního počítače v testovacím prostředí zdroj, skript importuje všechny virtuální počítače v testovacím prostředí zdroje do cílového testovacího prostředí.
 
 ```powershell
 ./ImportVirtualMachines.ps1 -SourceSubscriptionId "<ID of the subscription that contains the source VM>" `
@@ -68,7 +68,7 @@ Při spuštění skriptu ImportVirtualMachines.ps1, pokud nezadáte virtuálníh
 ```
 
 ### <a name="use-rest-api"></a>Použití rozhraní REST API
-Volání rozhraní REST API proti testovacím/cílová a předejte mu zdrojové prostředí, předplatné a informace o virtuálním počítači jako parametry, jak je znázorněno v následujícím příkladu: 
+Volání rozhraní REST API proti testovacím/cílová a předejte mu zdrojové prostředí, předplatné a informace o virtuálním počítači jako parametry, jak je znázorněno v následujícím příkladu:
 
 ```json
 POST https://management.azure.com/subscriptions/<ID of the target/destination subscription>/resourceGroups/<Name of the resource group that contains the destination lab>/providers/Microsoft.DevTestLab/labs/<Name of the lab to which the VMs are copied>/ImportVirtualMachine?api-version=2017-04-26-preview
@@ -82,5 +82,3 @@ POST https://management.azure.com/subscriptions/<ID of the target/destination su
 
 - Informace o změně velikosti virtuálního počítače najdete v tématu [změnit velikost virtuálního počítače](devtest-lab-resize-vm.md).
 - Informace o opětovné nasazení virtuálního počítače najdete v tématu [opětovné nasazení virtuálního počítače](devtest-lab-redeploy-vm.md).
-
-

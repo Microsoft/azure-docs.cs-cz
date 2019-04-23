@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 06/17/2018
 ms.author: cynthn
-ms.openlocfilehash: a1743e677e1005e5b4479c1d431b6b8bdbe77c8f
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
-ms.translationtype: MT
+ms.openlocfilehash: d1db228f4c73cc00cd32ca6ae5b86056db68f05b
+ms.sourcegitcommit: c884e2b3746d4d5f0c5c1090e51d2056456a1317
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57848690"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60148947"
 ---
 # <a name="log-in-to-a-linux-virtual-machine-in-azure-using-azure-active-directory-authentication-preview"></a>Přihlaste se k virtuální počítač s Linuxem v Azure pomocí ověřování Azure Active Directory (Preview)
 
@@ -43,7 +43,7 @@ Existuje mnoho výhod používání ověřování Azure AD k přihlášení do v
 
 Následující distribucí systému Linux jsou aktuálně podporované ve verzi preview tato funkce:
 
-| Distribuce | Verze |
+| Distribuce | Version |
 | --- | --- |
 | CentOS | CentOS 6, CentOS 7 |
 | Debian | Debian 9 |
@@ -83,7 +83,7 @@ Vytvoření virtuálního počítače a podpůrných prostředků trvá několik
 
 ## <a name="install-the-azure-ad-login-vm-extension"></a>Nainstalovat rozšíření virtuálního počítače přihlášení k Azure AD
 
-Přihlásit se k virtuálnímu počítači s Linuxem pomocí přihlašovacích údajů Azure AD, nainstalujte protokolu Azure Active Directory v rozšíření virtuálního počítače. Rozšíření virtuálních počítačů jsou malých aplikací, které poskytují konfiguraci a automatizaci úloh po nasazení na virtuálních počítačích Azure. Použití [sada rozšíření az vm](/cli/azure/vm/extension#az-vm-extension-set) k instalaci *AADLoginForLinux* rozšíření na virtuální počítač s názvem *myVM* v *myResourceGroup* prostředků Skupina:
+Přihlásit se k virtuálnímu počítači s Linuxem pomocí přihlašovacích údajů Azure AD, nainstalujte rozšíření virtuálního počítače přihlášení Azure Active Directory. Rozšíření virtuálních počítačů jsou malých aplikací, které poskytují konfiguraci a automatizaci úloh po nasazení na virtuálních počítačích Azure. Použití [sada rozšíření az vm](/cli/azure/vm/extension#az-vm-extension-set) k instalaci *AADLoginForLinux* rozšíření na virtuální počítač s názvem *myVM* v *myResourceGroup* prostředků Skupina:
 
 ```azurecli-interactive
 az vm extension set \

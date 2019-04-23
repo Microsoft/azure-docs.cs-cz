@@ -1,17 +1,17 @@
 ---
 title: Povolení replikace virtuálních počítačů VMware pro zotavení po havárii do Azure pomocí Azure Site Recovery | Dokumentace Microsoftu
 description: Tento článek popisuje, jak povolit virtuálních počítačů VMware pro replikaci do Azure pro zotavení po havárii pomocí Azure Site Recovery.
-author: mayurigupta13
+author: Rajeswari-Mamilla
 ms.service: site-recovery
-ms.date: 3/6/2019
+ms.date: 4/18/2019
 ms.topic: conceptual
-ms.author: mayg
-ms.openlocfilehash: 472ff7810852bd03ef322cd5eb647c3d61f09b01
-ms.sourcegitcommit: 72cc94d92928c0354d9671172979759922865615
-ms.translationtype: MT
+ms.author: ramamill
+ms.openlocfilehash: ba55afbd62bbbc2290d1daaebf77becc249c1d8b
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58418104"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60004733"
 ---
 # <a name="enable-replication-to-azure-for-vmware-vms"></a>Povolit replikaci do Azure pro virtuální počítače VMware
 
@@ -89,7 +89,7 @@ V dalším kroku ověřte vlastnosti zdrojového virtuálního počítače. Měj
     ![Okno vlastností výpočty a síť](./media/vmware-azure-enable-replication/vmproperties.png)
 
     * Název virtuálního počítače Azure: V případě potřeby změňte název, který má splňovat požadavky na Azure.
-    * Cílová velikost virtuálního počítače nebo typ virtuálního počítače: Výchozí velikost virtuálního počítače je vybrán založené na zdroji velikost virtuálního počítače. Můžete vybrat jinou velikost virtuálního počítače na základě vašich potřeb kdykoli před převzetí služeb při selhání. Všimněte si, že velikost zdrojového disku také podle velikosti disku virtuálního počítače, a můžete změnit jenom po převzetí služeb při selhání. Další informace o velikosti disku a vstupně-výstupních operací sazby za [škálovatelnost a výkonnostní cíle pro disky virtuálních počítačů na Windows](../virtual-machines/windows/disk-scalability-targets.md).
+    * Cílová velikost virtuálního počítače nebo typ virtuálního počítače: Výchozí velikost virtuálního počítače je zvolena podle několika parametrů, které zahrnují počet disků, počet NIC, procesoru počet jader, paměti a dostupné velikosti rolí virtuálních počítačů v cílové oblasti Azure. Azure Site Recovery vybere první dostupné velikosti virtuálních počítačů, které splňuje všechna kritéria. Můžete vybrat jinou velikost virtuálního počítače na základě vašich potřeb kdykoli před převzetí služeb při selhání. Všimněte si, že velikost zdrojového disku také podle velikosti disku virtuálního počítače, a můžete změnit jenom po převzetí služeb při selhání. Další informace o velikosti disku a vstupně-výstupních operací sazby za [škálovatelnost a výkonnostní cíle pro disky virtuálních počítačů na Windows](../virtual-machines/windows/disk-scalability-targets.md).
 
     *  Skupina zdrojů: Můžete vybrat [skupiny prostředků](https://docs.microsoft.com/azure/virtual-machines/windows/infrastructure-resource-groups-guidelines), ze které virtuální počítač stane součástí příspěvek převzetí služeb při selhání. Můžete změnit toto nastavení kdykoli před převzetí služeb při selhání. Po převzetí služeb při selhání Pokud migrujete virtuální počítač do jiné skupiny prostředků, nastavení ochrany pro tento virtuální počítač přerušit.
     * Skupina dostupnosti: Můžete vybrat [dostupnosti](https://docs.microsoft.com/azure/virtual-machines/windows/infrastructure-availability-sets-guidelines) Pokud váš virtuální počítač musí být součástí příspěvek převzetí služeb při selhání. Když vyberete skupinu dostupnosti, mějte tyto informace:

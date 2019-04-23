@@ -9,11 +9,11 @@ ms.date: 10/11/2018
 ms.author: johnkem
 ms.subservice: logs
 ms.openlocfilehash: 6e67b049ca179b1e93bcf645afd89b4a2eb0048d
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57436473"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60236163"
 ---
 # <a name="supported-services-schemas-and-categories-for-azure-diagnostic-logs"></a>Podporované služby, schémat a kategorie pro diagnostické protokoly Azure
 
@@ -23,7 +23,7 @@ Kombinace typu prostředku (k dispozici v `resourceId` vlastnost) a `category` j
 
 ## <a name="top-level-diagnostic-logs-schema"></a>Schéma nejvyšší úrovně diagnostické protokoly
 
-| Název | Požadované a volitelné | Popis |
+| Name | Požadované a volitelné | Popis |
 |---|---|---|
 | time | Požaduje se | Časové razítko (UTC) události. |
 | resourceId | Požaduje se | ID prostředku prostředků, které události, protože ho. Pro tenanta služby to je /tenants/tenant-id/providers/provider-name formuláře. |
@@ -81,7 +81,7 @@ Schéma protokolů diagnostiky prostředků se liší podle kategorie prostředk
 | Brány virtuálních sítí | Schéma není k dispozici. |
 
 ## <a name="supported-log-categories-per-resource-type"></a>Podporované kategorie protokolu na typ prostředku
-|Typ prostředku|Kategorie|Zobrazovaný název kategorie|
+|Typ prostředku|Category|Zobrazovaný název kategorie|
 |---|---|---|
 |Microsoft.AnalysisServices/servers|Modul|Modul|
 |Microsoft.AnalysisServices/servers|Služba|Služba|

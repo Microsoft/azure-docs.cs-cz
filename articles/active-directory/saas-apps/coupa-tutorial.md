@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 01/25/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4156ef264069b5f926f28f766a201dceb29a512b
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 29ca16e149852d044fdd6f6ea0baf0b11ccb75cf
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57834791"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60280843"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-coupa"></a>Kurz: Integrace Azure Active Directory s Coupa
 
@@ -114,16 +114,16 @@ Ke konfiguraci Azure AD jednotné přihlašování s Coupa, proveďte následuj�
 
     | Prostředí  | zprostředkovatele identity |
     |:-------------|----|
-    | Izolovaný prostor | `devsso35.coupahost.com`|
-    | Výroba | `prdsso40.coupahost.com`|
+    | Izolovaný prostor | `sso-stg1.coupahost.com`|
+    | Výroba | `sso-prd1.coupahost.com`|
     | | |
 
     c. V **adresy URL odpovědi** textové pole, zadejte adresu URL:
 
     | Prostředí | zprostředkovatele identity |
     |------------- |----|
-    | Izolovaný prostor | `https://devsso35.coupahost.com/sp/ACS.saml2`|
-    | Výroba | `https://prdsso40.coupahost.com/sp/ACS.saml2`|
+    | Izolovaný prostor | `https://sso-stg1.coupahost.com/sp/ACS.saml2`|
+    | Výroba | `https://sso-prd1.coupahost.com/sp/ACS.saml2`|
     | | |
 
 4. Na **nastavte si jednotné přihlašování pomocí SAML** stránku, **podpisový certifikát SAML** klikněte na tlačítko **Stáhnout** ke stažení **kód XML metadat federace**  z se zadanými možnostmi podle vašich požadavků a uložit je ve vašem počítači.

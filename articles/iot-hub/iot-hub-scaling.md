@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 04/02/2018
 ms.author: wesmc
-ms.openlocfilehash: 0214fbbe1ecc0d0b6b20b740ec898f24cf5b58ec
-ms.sourcegitcommit: e89b9a75e3710559a9d2c705801c306c4e3de16c
-ms.translationtype: MT
+ms.openlocfilehash: 8be2e59898ea5fcca1dbf1710974d0420941973e
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/15/2019
-ms.locfileid: "59571290"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60002132"
 ---
 # <a name="choose-the-right-iot-hub-tier-for-your-solution"></a>Zvolte správné úrovně služby IoT Hub pro vaše řešení
 
@@ -83,7 +83,7 @@ Rozdíl v podporované možnosti mezi úrovněmi basic a standard služby IoT Hu
 | [Odeslat událost zařízení](https://docs.microsoft.com/rest/api/iothub/device/senddeviceevent) | Ano | Ano |
 | Odeslání události modulu | Ano | Ano |
 | [Aktualizovat stav nahrávání souboru](https://docs.microsoft.com/rest/api/iothub/device/updatefileuploadstatus) | Ano | Ano |
-| [Operace hromadného zařízení](/rest/api/iot-dps/runbulkenrollmentoperation/runbulkenrollmentoperation) | Ano, s výjimkou funkce IoT Edge | Ano | 
+| [Operace hromadného zařízení](/rest/api/iot-dps/runbulkenrollmentoperation/runbulkenrollmentgroupoperation) | Ano, s výjimkou funkce IoT Edge | Ano | 
 | [Vyprázdnit frontu příkazů](https://docs.microsoft.com/rest/api/iothub/service/purgecommandqueue) |   | Ano |
 | [Získáte, dvojče zařízení](https://docs.microsoft.com/rest/api/iothub/service/gettwin) |   | Ano |
 | Získáte, dvojče zařízení |   | Ano |

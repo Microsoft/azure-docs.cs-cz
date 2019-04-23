@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/28/2019
 ms.author: spelluru
-ms.openlocfilehash: 28f963ab807cbd679b7efe8b034ab91f2893198e
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
-ms.translationtype: MT
+ms.openlocfilehash: 6985bd0bbae858ad258e723ef4d6d6d687b2c86e
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58659452"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60005345"
 ---
 # <a name="enable-and-use-remote-desktop-for-linux-virtual-machines-in-a-lab-in-azure-lab-services"></a>Povolení a používání vzdálené plochy pro virtuální počítače s Linuxem v testovacím prostředí v Azure Lab Services
 Tento článek ukazuje, jak provádět následující úlohy:
@@ -35,6 +35,7 @@ Při vytváření testovacího prostředí, můžete povolit učitelé **připoj
 > [!IMPORTANT] 
 > Povolení **připojení ke vzdálené ploše** pouze se otevře **RDP** port na počítačích s Linuxem. Jako učitel, připojte se k počítači s Linuxem pomocí protokolu SSH poprvé a instalaci balíčků pomocí protokolu RDP a grafickým uživatelským rozhraním, aby mohl připojit k počítači s Linuxem pomocí protokolu RDP později. Potom můžete **publikovat** bitovou kopii, studenti mohli RDP v pro virtuální počítače s Linuxem studentů. 
 
+## <a name="supported-operating-systems"></a>Podporované operační systémy
 Připojení ke vzdálené ploše v současné době se podporuje pro následující operační systémy:
 
 - openSUSE skok 42.3

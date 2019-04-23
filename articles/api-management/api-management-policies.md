@@ -1,6 +1,6 @@
 ---
-title: Zásady služby Azure API Management | Microsoft Docs
-description: Další informace o zásady, které jsou k dispozici pro použití v Azure API Management.
+title: Zásady služby Azure API Management | Dokumentace Microsoftu
+description: Přečtěte si o zásadách, které jsou k dispozici pro použití v Azure API Managementu.
 services: api-management
 documentationcenter: ''
 author: vladvino
@@ -13,67 +13,68 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/19/2017
 ms.author: apimpm
-ms.openlocfilehash: f617abc164761b4839b188822585eaa4eb0aacd6
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
-ms.translationtype: MT
+ms.openlocfilehash: 7f1352b018fe9ea46b0f0824ba53ee0204c7dc7c
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "33936891"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60005515"
 ---
 # <a name="api-management-policies"></a>Zásady služby API Management
 Tato část obsahuje odkaz pro následující zásady služby API Management. Informace o přidávání a konfiguraci zásad najdete v tématu [zásady ve službě API Management](api-management-howto-policies.md).  
   
- Zásady jsou vynikající funkcí systému, která vydavatelům umožňuje měnit chování rozhraní API prostřednictvím konfigurace. Zásady představují kolekci příkazů, které jsou prováděny postupně v požadavku nebo odezvy z rozhraní API. Oblíbené příkazy patří převod formátu XML do formátu JSON a četnosti omezení omezit množství příchozích volání od vývojáře. Jsou dostupné ihned mnoho další zásady.  
+ Zásady jsou vynikající funkcí systému, která vydavatelům umožňuje měnit chování rozhraní API prostřednictvím konfigurace. Zásady představují kolekci příkazů, které jsou spouštěny postupně na požadavku nebo odezvy z rozhraní API. Oblíbené příkazy patří převod formátu XML do formátu JSON a četnosti omezení omezit množství příchozích volání od vývojáře. Mnoho více zásad jsou dostupné ihned.  
   
  Výrazy zásad můžete použít jako hodnoty atributů nebo textové hodnoty v libovolných zásadách API Management (pokud zásady neurčí jinak). Některé zásady, například [řízení toku](api-management-advanced-policies.md#choose) a [nastavená proměnná](api-management-advanced-policies.md#set-variable), jsou založené na výrazech zásad. Další informace najdete v článcích [Pokročilé zásady](api-management-advanced-policies.md#AdvancedPolicies) a [Výrazy zásad](api-management-policy-expressions.md).  
   
-##  <a name="ProxyPolicies"></a> zásady  
+##  <a name="ProxyPolicies"></a> Zásady  
   
 -   [Zásady omezení přístupu](api-management-access-restriction-policies.md#AccessRestrictionPolicies)  
-    -   [Kontrola HTTP záhlaví](api-management-access-restriction-policies.md#CheckHTTPHeader) -vynucuje existence nebo hodnoty hlavičky protokolu HTTP.  
-    -   [Omezení četnosti volání podle předplatného](api-management-access-restriction-policies.md#LimitCallRate) -špičky využití brání rozhraní API omezením četnosti volání, na základě za předplatné.  
-    -   [Omezení četnosti volání podle klíče](api-management-access-restriction-policies.md#LimitCallRateByKey) -špičky využití brání rozhraní API omezením četnosti volání, na základě na klíč.  
-    -   [Omezit volající IP adresy](api-management-access-restriction-policies.md#RestrictCallerIPs) -filtry (umožňuje nebo zakazuje) volání z konkrétní IP adresy a rozsahy adres.  
-    -   [Nastavení kvóty využití podle předplatného](api-management-access-restriction-policies.md#SetUsageQuota) -umožňuje vynucovat obnovitelných nebo doba života volání svazku nebo šířky pásma kvótu, na základě za předplatné.  
-    -   [Nastavení kvóty využití podle klíče](api-management-access-restriction-policies.md#SetUsageQuotaByKey) -umožňuje vynucovat obnovitelných nebo doba života volání svazku nebo šířky pásma kvótu, na základě na klíč.  
-    -   [Ověření JWT](api-management-access-restriction-policies.md#ValidateJWT) -vynucuje existence a platnosti token JWT extrahovány ze zadaného záhlaví HTTP nebo parametr zadaný dotaz.  
+    -   [Kontrola protokolu HTTP hlavičce](api-management-access-restriction-policies.md#CheckHTTPHeader) -vynucuje existence a/nebo hodnotu hlavičky protokolu HTTP.  
+    -   [Omezení četnosti volání podle předplatného](api-management-access-restriction-policies.md#LimitCallRate) -špičky využití brání rozhraní API omezením četnosti volání podle předplatného.  
+    -   [Omezení četnosti volání podle klíče](api-management-access-restriction-policies.md#LimitCallRateByKey) -špičky využití brání rozhraní API omezením četnosti volání, na základě za klíč.  
+    -   [Omezení IP adresy volajícího](api-management-access-restriction-policies.md#RestrictCallerIPs) – filtry (umožňuje nebo zakazuje) volání z konkrétních IP adres a rozsahy adres.  
+    -   [Nastavení kvóty využití podle předplatného](api-management-access-restriction-policies.md#SetUsageQuota) – slouží k vynucování obnovitelných nebo doba života volání svazku a/nebo šířku pásma kvóty, na základě předplatného.  
+    -   [Nastavení kvóty využití podle klíče](api-management-access-restriction-policies.md#SetUsageQuotaByKey) – slouží k vynucování obnovitelných nebo doba života volání svazku a/nebo šířku pásma kvóty, na základě za klíč.  
+    -   [Ověřit token JWT](api-management-access-restriction-policies.md#ValidateJWT) -vynucuje existenci a platnost extrahují z zadanou hlavičku protokolu HTTP nebo parametr dotazu zadaný token JWT.  
 -   [Pokročilé zásady](api-management-advanced-policies.md#AdvancedPolicies)  
-    -   [Řízení toku](api-management-advanced-policies.md#choose) – podmíněně platí příkazy zásad na základě vyhodnocení výrazy logických hodnot.  
-    -   [Předat dál žádost](api-management-advanced-policies.md#ForwardRequest) -předá požadavek back-end službu.  
-    -   [Protokol do centra událostí](api-management-advanced-policies.md#log-to-eventhub) -odešle zprávy v zadaném formátu do zprávy Cíl definované entity protokolovacího nástroje.  
-    -   [Opakujte](api-management-advanced-policies.md#Retry) -opakování provádění příkazů závorkách zásad, pokud a dokud nebude splněna podmínka. Spuštění se opakovaly zadaným časovým intervalům a až zadaný počet opakování.  
-    -   [Vrátí odpověď](api-management-advanced-policies.md#ReturnResponse) -přerušení způsobených kanálu provádění a vrátí zadanou odpověď přímo na volajícího.  
-    -   [Odeslání žádosti o jednorázové jednoduché](api-management-advanced-policies.md#SendOneWayRequest) -odešle požadavek na zadanou adresu URL bez čekání na odpověď.  
-    -   [Odeslání požadavku](api-management-advanced-policies.md#SendRequest) -odešle požadavek na zadanou adresu URL.  
-    -   [Nastavená proměnná](api-management-advanced-policies.md#set-variable) -zachovat hodnotu do proměnné s názvem kontext pro pozdější přístup.  
-    -   [Nastaví metodu požadavku](api-management-advanced-policies.md#SetRequestMethod) -vám umožní změnit metodu protokolu HTTP pro žádost.  
-    -   [Nastavit stavový kód](api-management-advanced-policies.md#SetStatus) -změní stavový kód protokolu HTTP se zadanou hodnotou.  
-    -   [Trasování](api-management-advanced-policies.md#Trace) -přidá řetězec do [rozhraní API Inspector](https://azure.microsoft.com/documentation/articles/api-management-howto-api-inspector/) výstup.  
-    -   [Počkejte](api-management-advanced-policies.md#Wait) -čeká pro uzavřené [odeslán požadavek na](api-management-advanced-policies.md#SendRequest), [získat hodnotu z mezipaměti](api-management-caching-policies.md#GetFromCacheByKey), nebo [řízení toku](api-management-advanced-policies.md#choose) zásady k dokončení než budete pokračovat.  
+    -   [Řízení toku](api-management-advanced-policies.md#choose) – podmíněné příkazy zásad na základě vyhodnocení logické výrazy platí.  
+    -   [Dopředné požadavek](api-management-advanced-policies.md#ForwardRequest) -předá požadavek back-end službu.  
+    -   [Protokolování do Eventhubu](api-management-advanced-policies.md#log-to-eventhub) -odesílá zprávy v zadaném formátu do cíl zprávy určené entity protokolovacího nástroje.  
+    -   [Zkuste](api-management-advanced-policies.md#Retry) -opakuje spouštění příkazů uzavřených zásady, pokud a dokud je podmínka splněna. Spuštění se opakovaly s zadaným časovým intervalům a až po zadaný počet opakování.  
+    -   [Vrací odpověď](api-management-advanced-policies.md#ReturnResponse) -kanálu přeruší provádění a vrátí zadanou odpověď přímo na volajícího.  
+    -   [Odeslat jednosměrný požadavek](api-management-advanced-policies.md#SendOneWayRequest) – odešle požadavek na zadanou adresu URL bez čekání na odpověď.  
+    -   [Poslat žádost o](api-management-advanced-policies.md#SendRequest) – odešle požadavek na zadanou adresu URL.  
+    -   [Nastavit proměnnou](api-management-advanced-policies.md#set-variable) – zachovat hodnotu do proměnné pojmenovaného kontextu pro pozdější přístup.  
+    -   [Nastaví metodu požadavku](api-management-advanced-policies.md#SetRequestMethod) -vám umožní změnit metodu HTTP pro žádost.  
+    -   [Nastavené kódy stavu](api-management-advanced-policies.md#SetStatus) – změní stavový kód HTTP se zadanou hodnotou.  
+    -   [Trasování](api-management-advanced-policies.md#Trace) – přidá řetězec do [pro inspekci API](https://azure.microsoft.com/documentation/articles/api-management-howto-api-inspector/) výstup.  
+    -   [Počkejte](api-management-advanced-policies.md#Wait) – čeká uzavřen [požadavků na odeslání](api-management-advanced-policies.md#SendRequest), [získat hodnotu z mezipaměti](api-management-caching-policies.md#GetFromCacheByKey), nebo [řízení toku](api-management-advanced-policies.md#choose) zásady než budete pokračovat, dokončete.  
 -   [Zásady ověřování](api-management-authentication-policies.md#AuthenticationPolicies)  
-    -   [Ověřování Basic](api-management-authentication-policies.md#Basic) -ověření pomocí back-end službu pomocí základního ověřování.  
-    -   [Ověřování pomocí certifikátu klienta](api-management-authentication-policies.md#ClientCertificate) -ověření pomocí back-end službu pomocí klientských certifikátů.  
+    -   [Ověřování pomocí Basic](api-management-authentication-policies.md#Basic) – ověřování pomocí back-end službu pomocí základního ověřování.  
+    -   [Ověřování pomocí certifikátu klienta](api-management-authentication-policies.md#ClientCertificate) – ověřování pomocí služby back-end pomocí klientských certifikátů.  
+    -   [Ověřování pomocí spravované identity](api-management-authentication-policies.md#ManagedIdentity) – ověřování pomocí služby back-end pomocí klientských certifikátů.  
 -   [Zásady ukládání do mezipaměti](api-management-caching-policies.md#CachingPolicies)  
-    -   [Získat z mezipaměti](api-management-caching-policies.md#GetFromCache) -provést mezipaměti vyhledat a vrátit platnou odpověď uložená v mezipaměti pokud je k dispozici.  
-    -   [Úložiště pro mezipaměť](api-management-caching-policies.md#StoreToCache) -ukládá do mezipaměti odpovědi podle konfigurace zadané mezipaměti ovládacího prvku.  
-    -   [Získat hodnotu z mezipaměti](api-management-caching-policies.md#GetFromCacheByKey) -načíst položky v mezipaměti podle klíče.  
-    -   [Uložení v mezipaměti hodnoty](api-management-caching-policies.md#StoreToCacheByKey) -uložit položky do mezipaměti podle klíče.  
-    -   [Odebrat hodnotu z mezipaměti](api-management-caching-policies.md#RemoveCacheByKey) -odebrání položky v mezipaměti podle klíče.  
+    -   [Získat z mezipaměti](api-management-caching-policies.md#GetFromCache) -provádět mezipaměti vyhledat a vracet platnou odpověď uložená v mezipaměti-li k dispozici.  
+    -   [Store do mezipaměti](api-management-caching-policies.md#StoreToCache) -ukládá do mezipaměti odpovědi závislosti na konfiguraci mezipaměti zadaný ovládací prvek.  
+    -   [Získat hodnotu z mezipaměti](api-management-caching-policies.md#GetFromCacheByKey) – načtení položky v mezipaměti podle klíče.  
+    -   [Store hodnota v mezipaměti](api-management-caching-policies.md#StoreToCacheByKey) -Store položku v mezipaměti podle klíče.  
+    -   [Odebrat hodnotu z mezipaměti](api-management-caching-policies.md#RemoveCacheByKey) -odebrat položku v mezipaměti podle klíče.  
 -   [Mezidoménové zásady](api-management-cross-domain-policies.md#CrossDomainPolicies)  
-    -   [Povolit volání mezi doménami](api-management-cross-domain-policies.md#AllowCrossDomainCalls) -zpřístupní rozhraní API z Adobe Flash a Microsoft Silverlight založené na prohlížeči klientů.  
-    -   [CORS](api-management-cross-domain-policies.md#CORS) – přidává podporu (CORS), aby operace nebo rozhraní API umožňující volání napříč doménami založené na prohlížeči klientů pro sdílení prostředků různého původu.  
-    -   [JSONP](api-management-cross-domain-policies.md#JSONP) -přidá JSON s podporou odsazení (JSONP) operace nebo rozhraní API, chcete-li povolit volání mezi doménami z klientů JavaScript založené na prohlížeči.  
+    -   [Povolit volání mezi doménami](api-management-cross-domain-policies.md#AllowCrossDomainCalls) -zpřístupňuje rozhraní API z Adobe Flash a Silverlight Microsoftu založené na prohlížeči klientů.  
+    -   [CORS](api-management-cross-domain-policies.md#CORS) – přidá prostředků mezi zdroji (CORS) podporu o operaci nebo rozhraní API pro povolit volání mezi doménami založené na prohlížeči klientů pro sdílení obsahu.  
+    -   [JSONP](api-management-cross-domain-policies.md#JSONP) – přidá JSON s podporou odsazení (JSONP) pro operaci nebo rozhraní API pro volání mezi doménami založené na prohlížeči klientů JavaScript povolit.  
 -   [Zásady transformace](api-management-transformation-policies.md#TransformationPolicies)  
-    -   [Převést JSON do XML](api-management-transformation-policies.md#ConvertJSONtoXML) – převede požadavku nebo odpovědi textu z JSON do XML.  
-    -   [Převést na JSON XML](api-management-transformation-policies.md#ConvertXMLtoJSON) – převede požadavku nebo odpovědi textu z XML do formátu JSON.  
-    -   [Najít a nahradit řetězec v textu](api-management-transformation-policies.md#Findandreplacestringinbody) – najde dílčí řetězec požadavku nebo odpovědi a nahradí je jiný dílčí řetězec.  
-    -   [Maskování adresy URL v obsahu](api-management-transformation-policies.md#MaskURLSContent) -znovu zapíše (masky) odkazy v odpovědi body tak, aby ukazovaly na ekvivalentní propojení prostřednictvím brány.  
-    -   [Nastavení back-end služby](api-management-transformation-policies.md#SetBackendService) -změny službě back-end pro příchozí žádosti.  
-    -   [Tělo nastavit](api-management-transformation-policies.md#SetBody) -nastaví obsah zprávy pro příchozí a odchozí požadavky.  
-    -   [Set – hlavička protokolu HTTP](api-management-transformation-policies.md#SetHTTPheader) – přiřazuje hodnotu existující odpovědi nebo hlavička požadavku nebo přidá hlavičku odpovědi nebo žádost o nový.  
-    -   [Nastavte parametr řetězce dotazu](api-management-transformation-policies.md#SetQueryStringParameter) – přidá, nahradí hodnotu nebo odstraní parametr řetězce dotazu požadavku.  
-    -   [Přepsání adresy URL](api-management-transformation-policies.md#RewriteURL) – převede adresu URL požadavku z jeho veřejné formuláře do formuláře očekává webovou službou.  
-    -   [Transformace XML pomocí transformaci XSLT](api-management-transformation-policies.md#XSLTransform) -použije transformaci XSL na XML v textu požadavku nebo odpovědi.  
+    -   [Převést JSON na XML](api-management-transformation-policies.md#ConvertJSONtoXML) – převede požadavku nebo odpovědi zprávy z formátu JSON, který se XML.  
+    -   [Převést XML na JSON](api-management-transformation-policies.md#ConvertXMLtoJSON) – převede požadavku nebo odpovědi text ze souboru XML na JSON.  
+    -   [Najít a nahradit řetězec v těle](api-management-transformation-policies.md#Findandreplacestringinbody) – najde dílčí řetězec požadavku nebo odpovědi a nahradí jiný dílčí řetězec.  
+    -   [Maskovat adresy URL v obsahu](api-management-transformation-policies.md#MaskURLSContent) – přepíše (masky) odkazy v odpovědi body tak, aby ukazovaly na ekvivalentní propojení prostřednictvím brány.  
+    -   [Nastavte Back-endová služba](api-management-transformation-policies.md#SetBackendService) – změní back-end službu pro příchozí požadavek.  
+    -   [Nastavit text](api-management-transformation-policies.md#SetBody) – nastaví text zprávy pro příchozí a odchozí požadavky.  
+    -   [Set – hlavička protokolu HTTP](api-management-transformation-policies.md#SetHTTPheader) – přiřadí hodnotu existující odpověď a/nebo hlavička požadavku nebo přidá hlavičku odpovědi a/nebo žádost o nový.  
+    -   [Nastavte parametr řetězce dotazu](api-management-transformation-policies.md#SetQueryStringParameter) – přidá, nahradí hodnotu nebo odstraní parametru řetězce dotazu požadavku.  
+    -   [Přepisu adresy URL](api-management-transformation-policies.md#RewriteURL) – převede adrese URL žádosti z jeho veřejné formuláře do formuláře, byl očekáván webová služba.  
+    -   [Transformace XML pomocí XSLT](api-management-transformation-policies.md#XSLTransform) -transformace XSL se vztahuje na XML v textu požadavku nebo odpovědi.  
 
 
 
@@ -81,6 +82,6 @@ Tato část obsahuje odkaz pro následující zásady služby API Management. In
 Práce se zásadami pro další informace najdete v tématu:
 
 + [Zásady ve službě API Management](api-management-howto-policies.md)
-+ [Transformuje rozhraní API](transform-api.md)
-+ [Referenční informace o zásadách](api-management-policy-reference.md) pro úplný seznam příkazy zásad a jejich nastavení
++ [Transformujte rozhraní API](transform-api.md)
++ [Referenční příručce o zásadách](api-management-policy-reference.md) úplný seznam zásad příkazy a jejich nastavení
 + [Ukázky zásad](policy-samples.md)   

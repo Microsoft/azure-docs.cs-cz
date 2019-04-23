@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: overview
 ms.date: 02/24/2019
 ms.author: yegu
-ms.openlocfilehash: 8c2c31b4d87ac2db123c0cae63679e3773734b4f
-ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
+ms.openlocfilehash: a76eab5d51dd73fb6b38ebebaa8421e789274f84
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58226279"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60201286"
 ---
 # <a name="what-is-azure-app-configuration"></a>Co je konfigurace aplikace pro Azure?
 
@@ -68,4 +68,5 @@ Nejjednodušší způsob, jak přidat, je obchod s aplikacemi konfigurace do va�
 
 ## <a name="next-steps"></a>Další postup
 
-* [Rychlé zprovoznění: Vytvoření webové aplikace ASP.NET](quickstart-aspnet-core-app.md) 
+> [!div class="nextstepaction"]
+> [Vytvoření webové aplikace ASP.NET Core](./quickstart-aspnet-core-app.md)  

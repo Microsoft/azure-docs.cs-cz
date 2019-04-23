@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: conceptual
 ms.date: 02/28/2019
 ms.author: normesta
-ms.openlocfilehash: 89cfdbdaa034bae5ca736ccb9164255b833ed75d
-ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
-ms.translationtype: MT
+ms.openlocfilehash: d56fb411eb032e5e6227d68cd8abe02c0e30850b
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57194704"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60006858"
 ---
 # <a name="known-issues-with-azure-data-lake-storage-gen2"></a>Známé problémy s Azure Data Lake Storage Gen2
 
@@ -47,13 +47,13 @@ Nespravované disky virtuálních počítačů (VM) závisí na zakázaném rozh
 
 Rozhraní API služby BLOB Storage a Azure Data Lake Gen2 API nejsou interoperabilní mezi sebou.
 
-Pokud máte nástroje, aplikace, služby nebo skripty, které používají rozhraní API služby Blob, a chcete použít pro práci se veškerý obsah, který nahrajete do vašeho účtu, potom nepovolí hierarchického oboru názvů na svůj účet Blob storage než stane rozhraní API služby Blob vzájemná spolupráce s Gen2 API služby Azure Data Lake. Použití účtu úložiště bez hierarchického oboru názvů pak nebudete mít přístup k Data Lake Storage Gen2 konkrétní funkce, jako je například adresář a systém souborů znamená seznamy řízení přístupu.
+Pokud máte nástroje, aplikace, služby nebo skripty, které používají rozhraní API služby Blob, a chcete použít pro práci se veškerý obsah, který nahrajete do vašeho účtu, potom nepovolí hierarchického oboru názvů na svůj účet Blob storage než stane rozhraní API služby Blob vzájemná spolupráce s Gen2 API služby Azure Data Lake. Použití účtu úložiště bez hierarchického oboru názvů znamená, že pak nebudete mít přístup k Data Lake Storage Gen2 specifické funkce, jako je například adresář a soubor seznamy řízení přístupu k systému.
 
 ## <a name="azure-storage-explorer"></a>Azure Storage Explorer
 
 K zobrazení nebo Správa účtů Data Lake Storage Gen2 pomocí Průzkumníka služby Azure Storage, potřebujete alespoň verzi `1.6.0` nástroje, která je k dispozici jako [zdarma ke stažení](https://azure.microsoft.com/features/storage-explorer/).
 
-Všimněte si, že verze Průzkumníka služby Storage, který je vložen do portálu Azure Portal se aktuálně podporují zobrazení a Správa účtů Data Lake Storage Gen2 s povolenou funkci hierarchického oboru názvů.
+Všimněte si, že verze Průzkumníka služby Storage, který je vložen do portálu Azure portal se aktuálně podporují zobrazení a Správa účtů Data Lake Storage Gen2 s povolenou funkci hierarchického oboru názvů.
 
 ## <a name="blob-viewing-tool"></a>Nástroj pro zobrazení objektů BLOB
 

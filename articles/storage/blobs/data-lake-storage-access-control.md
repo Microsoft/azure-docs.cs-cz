@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: jamesbak
-ms.openlocfilehash: 4ba8977180e33256bfdc6652811495a02a9ef19c
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: MT
+ms.openlocfilehash: e8d7d77128acd4bdb81a99ac6756a5e28b4a408f
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58802948"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60001588"
 ---
 # <a name="access-control-in-azure-data-lake-storage-gen2"></a>Řízení přístupu v Azure Data Lake Storage Gen2
 
@@ -126,7 +126,7 @@ Uživatel, který položku vytvořil, je automaticky jejím vlastníkem. Vlastn�
 
 ### <a name="the-owning-group"></a>Vlastnící skupina
 
-V seznamech ACL POSIX je přidružený každý uživatel *primární skupina*. Uživatel „alice“ může například patřit do skupiny „finance“. Alice může patřit do více skupin, ale jedna skupina je vždy určena jako její primární skupina. Když Alice vytvoří soubor v rámci specifikace POSIX, bude jako vlastnící skupina tohoto souboru nastavena její primární skupina, což je v tomto případě skupina „finance“. Jinak se vlastnící skupina chová podobně jako přiřazená oprávnění pro jiné uživatele nebo skupiny.
+V seznamech ACL POSIX je přidružený každý uživatel *primární skupina*. Uživatel "Alice" může například patřit do skupiny "finance". Alice může patřit do více skupin, ale jedna skupina je vždy určena jako její primární skupina. Když Alice vytvoří soubor v rámci specifikace POSIX, bude jako vlastnící skupina tohoto souboru nastavena její primární skupina, což je v tomto případě skupina „finance“. Jinak se vlastnící skupina chová podobně jako přiřazená oprávnění pro jiné uživatele nebo skupiny.
 
 #### <a name="assigning-the-owning-group-for-a-new-file-or-directory"></a>Přiřazuje se vlastnící skupina pro nový soubor nebo adresář
 
@@ -285,7 +285,7 @@ Identifikátor GUID se zobrazí, pokud položka představuje uživatele a tohoto
 
 Při definování seznamů ACL pro instanční objekty, je potřeba použít ID objektu (OID) z *instanční objekt služby* pro registraci aplikace, kterou jste vytvořili. Je důležité si uvědomit, že registrovaných aplikací mají samostatné instančního objektu v konkrétní tenanta Azure AD. Registrovaná aplikace mají OID, který se zobrazuje na webu Azure portal, ale *instanční objekt služby* má jiný identifikátor objektu (různé).
 
-Chcete-li získat identifikátor OID pro instanční objekt, který odpovídá registrace aplikace, můžete použít `az ad sp show` příkazu. Zadejte ID aplikace jako parametr. Tady je příklad týkající se získání identifikátor OID pro instanční objekt, který odpovídá registrace aplikace s Id aplikace = 18218b12 1895-43e9-ad80-6e8fc1ea88ce. V Azure CLI, spusťte následující příkaz:
+Chcete-li získat identifikátor OID pro instanční objekt, který odpovídá registrace aplikace, můžete použít `az ad sp show` příkazu. Zadejte ID aplikace jako parametr. Tady je příklad týkající se získání identifikátor OID pro instanční objekt, který odpovídá registrace aplikace s ID aplikace = 18218b12 1895-43e9-ad80-6e8fc1ea88ce. V Azure CLI, spusťte následující příkaz:
 
 `az ad sp show --id 18218b12-1895-43e9-ad80-6e8fc1ea88ce --query objectId
 <<OID will be displayed>>`

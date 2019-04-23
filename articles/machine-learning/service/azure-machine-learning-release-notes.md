@@ -10,12 +10,12 @@ ms.author: larryfr
 author: Blackmist
 ms.date: 04/08/2019
 ms.custom: seodec18
-ms.openlocfilehash: e58205e847dbfdae8a114221f9bd56102555eeef
-ms.sourcegitcommit: 48a41b4b0bb89a8579fc35aa805cea22e2b9922c
-ms.translationtype: MT
+ms.openlocfilehash: 7fc0d3a2e29a2aaa06d88f25828ff676d615939d
+ms.sourcegitcommit: c884e2b3746d4d5f0c5c1090e51d2056456a1317
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/15/2019
-ms.locfileid: "59579151"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60149559"
 ---
 # <a name="azure-machine-learning-service-release-notes"></a>Zpráva k vydání verze služby Azure Machine Learning
 
@@ -23,12 +23,39 @@ V tomto článku najdete další informace o vydaných verzích služby Azure Ma
 + Azure Machine Learning [ **hlavní sada SDK pro Python**](https://aka.ms/aml-sdk)
 + Azure Machine Learning [ **sady SDK pro přípravu dat**](https://aka.ms/data-prep-sdk)
 
+## <a name="2019-04-17"></a>2019-04-17
+
+### <a name="azure-machine-learning-data-prep-sdk-v112"></a>Sada SDK v1.1.2 pro přípravu dat Azure Machine Learning
+
+Poznámka: Data Prep Python SDK se už nevyžaduje instalaci `numpy` a `pandas` balíčky. Zobrazit [aktualizovat pokyny k instalaci](https://aka.ms/aml-data-prep-installation).
+
++ **Nové funkce**
+  + Nyní můžete Pivot transformace.
+    + Postupy: Průvodce: [Poznámkový blok pivotu](https://aka.ms/aml-data-prep-pivot-nb)
+  + Můžete teď použít regulární výrazy v nativních funkcích.
+    + Příklady:
+      + `dflow.filter(dprep.RegEx('pattern').is_match(dflow['column_name']))`
+      + `dflow.assert_value('column_name', dprep.RegEx('pattern').is_match(dprep.value))`
+  + Teď můžete použít `to_upper`  a `to_lower`  funkce ve výrazu jazyka.
+  + Nyní uvidíte počet jedinečných hodnot jednotlivých sloupců dat profilu.
+  + Pro některé běžně používané čtečky kroky, můžete nyní předat `infer_column_types` argument. Pokud je nastavena na `True`, přípravy dat se pokusí zjistit a automaticky převést typ sloupce.
+    + `inference_arguments` je nyní zastaralá.
+  + Nyní můžete volat `Dataflow.shape`.
+
++ **Opravy chyb a vylepšení**
+  + `keep_columns` nyní přijímá další argument nepovinný `validate_column_exists`, který ověří, zda se výsledek `keep_columns` bude obsahovat žádné sloupce.
+  + Všechny kroky reader (které čtení ze souboru) nyní přijímají argument další volitelné `verify_exists`.
+  + Vylepšení výkonu čtení z pandas dataframe a získávání dat profilů.
+  + Je opravená chyba, kdy dělení krokovat z toku dat nebyl úspěšný, jeden index.
+
 ## <a name="2019-04-15"></a>2019-04-15
 
 ### <a name="azure-portal"></a>Azure Portal
++ **Nové funkce**
   + Můžete teď znovu odeslat existující skript spustit v existujícím clusteru vzdálený výpočetní. 
   + Nyní můžete spustit publikované kanálu o nové parametry na kartě kanály. 
   + Podrobnosti o spuštění teď podporuje nový prohlížeč snímku souboru. Snímek adresáře můžete zobrazit při odeslání konkrétního spuštění. Můžete také stáhnout Poznámkový blok, který byl odeslán na spuštění testu.
+   + Nyní můžete zrušit spuštění nadřazené z webu Azure Portal.
 
 ## <a name="2019-04-08"></a>2019-04-08
 

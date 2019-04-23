@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 08/07/2018
 ms.author: rkmanda
-ms.openlocfilehash: 192966eef20ac59ac3a6eb14d7d450357989b851
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 7479d9a230bd28c2ed2e4c8c79ba9301028af36c
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58879688"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60007623"
 ---
 # <a name="iot-hub-high-availability-and-disaster-recovery"></a>IoT Hub vysokou dostupnost a zotavení po havárii
 
@@ -82,8 +82,6 @@ Možnost ručního převzetí služeb při selhání je vždy k dispozici pro po
 > - Cvičení testu se nebude provádět na centra IoT hub, které se používají v produkčním prostředí.
 >
 > - Ruční převzetí služeb při selhání není vhodné používat jako mechanismus trvale migrace mezi oblastmi Azure geograficky spárované rozbočovače. To by způsobilo zvýšenou latencí pro operace, které se provádí proti centra ze zařízení s adresami v původní primární oblast.
->
-> - Ruční převzetí služeb při selhání je aktuálně ve verzi preview a není k dispozici v následujících oblastech Azure. Východní USA, západní USA, Severní Evropa, západní Evropa, Brazílie – Jih, střed USA – jih.
 
 ### <a name="failback"></a>Navrácení služeb po obnovení
 

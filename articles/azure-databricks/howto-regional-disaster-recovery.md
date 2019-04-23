@@ -8,12 +8,12 @@ ms.service: azure-databricks
 ms.workload: big-data
 ms.topic: conceptual
 ms.date: 03/13/2019
-ms.openlocfilehash: 354f6014e3230b65a0c4f1cd7507e58ca94474dd
-ms.sourcegitcommit: f331186a967d21c302a128299f60402e89035a8d
-ms.translationtype: MT
+ms.openlocfilehash: bd91d9201e81c884b48b41de27146c186eeb9598
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58188097"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60000840"
 ---
 # <a name="regional-disaster-recovery-for-azure-databricks-clusters"></a>Místní zotavení po havárii pro clustery Azure Databricks
 
@@ -247,7 +247,7 @@ Pokud chcete vytvořit vlastní regionálního obnovení topologie, postupujte p
 
 8. **Migrace úložiště objektů blob v Azure a připojí k Azure Data Lake Store**
 
-   Ručně znovu připojit všechny [úložiště objektů Blob v Azure](https://docs.azuredatabricks.net/spark/latest/data-sources/azure/azure-storage.html) a [Azure Data Lake Store (1. generace)](https://docs.azuredatabricks.net/spark/latest/data-sources/azure/azure-datalake.html) přípojné body pomocí řešení založené na poznámkového bloku. Prostředky úložiště by byl připojený v primárním pracovním prostorem a má jej opakovat sekundární pracovního prostoru. Neexistuje žádné externí rozhraní API pro připojení.
+   Ručně znovu připojit všechny [úložiště objektů Blob v Azure](https://docs.azuredatabricks.net/spark/latest/data-sources/azure/azure-storage.html) a [Azure Data Lake Store (2. generace)](https://docs.azuredatabricks.net/spark/latest/data-sources/azure/azure-datalake-gen2.html) přípojné body pomocí řešení založené na poznámkového bloku. Prostředky úložiště by byl připojený v primárním pracovním prostorem a má jej opakovat sekundární pracovního prostoru. Neexistuje žádné externí rozhraní API pro připojení.
 
 9. **Migrace clusteru init skriptů**
 

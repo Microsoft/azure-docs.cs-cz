@@ -2,18 +2,18 @@
 title: Koncepce pro vývojáře Azure Data Catalog
 description: Úvod do klíčových konceptů v Azure Data Catalog konceptuální model, jako vystavené prostřednictvím rozhraní API REST katalogu.
 services: data-catalog
-author: markingmyname
-ms.author: maghan
+author: JasonWHowell
+ms.author: jasonh
 ms.assetid: 89de9137-a0a4-40d1-9f8d-625acad31619
 ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 01/18/2018
-ms.openlocfilehash: bca006ab33379f52281f77fb5a04a24022bac373
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
-ms.translationtype: MT
+ms.openlocfilehash: 42e4b545a48bcbd0ad4b7faf077ebdbfe21648b1
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58314549"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60006688"
 ---
 # <a name="azure-data-catalog-developer-concepts"></a>Koncepce pro vývojáře Azure Data Catalog
 Microsoft **Azure Data Catalog** je plně spravovaná Cloudová služba, která poskytuje možnosti pro zjišťování zdrojů dat a crowdsourcingová metadata zdroje dat. Vývojáři můžou využívat službu přes jeho rozhraní REST API. Vysvětlení pojmů implementované ve službě je důležité pro vývojáře úspěšně integrovat **Azure Data Catalog**.
@@ -85,7 +85,7 @@ Tyto vlastnosti se vztahují na všechny typy prostředků kořenové a všechny
 
 <table>
 <tr><td><b>Název vlastnosti</b></td><td><b>Datový typ</b></td><td><b>Komentáře</b></td></tr>
-<tr><td>fromSourceSystem</td><td>Logická hodnota</td><td>Označuje, zda dat položky je odvozen ze zdrojového systému (např. Sql Server Database, Oracle Database) nebo definovaných uživatelem.</td></tr>
+<tr><td>fromSourceSystem</td><td>Boolean</td><td>Označuje, zda dat položky je odvozen ze zdrojového systému (např. Sql Server Database, Oracle Database) nebo definovaných uživatelem.</td></tr>
 </table>
 
 ### <a name="common-root-properties"></a>Společné vlastnosti kořenové
@@ -105,7 +105,7 @@ Tyto vlastnosti se vztahují na všechny typy není typu singleton poznámky (po
 ### <a name="root-asset-types"></a>Typy prostředků kořenové
 Kořenové asset typy jsou typy, které představují různé druhy datových assetů, které mohou být registrovány v katalogu. Pro každý typ kořenového je zobrazení, která popisuje asset a poznámky, které jsou zahrnuté v zobrazení. Název zobrazení byste měli použít ve odpovídající segment adresy url {view_name} při publikování assetu pomocí rozhraní REST API.
 
-<table><tr><td><b>Typ prostředku (název zobrazení)</b></td><td><b>Další vlastnosti</b></td><td><b>Datový typ</b></td><td><b>Povolené poznámky</b></td><td><b>Komentáře</b></td></tr><tr><td>Tabulka ("tabulky")</td><td></td><td></td><td>Popis<p>FriendlyName<p>Značka<p>Schéma<p>ColumnDescription<p>ColumnTag<p> Odborník<p>Preview<p>AccessInstruction<p>TableDataProfile<p>ColumnDataProfile<p>ColumnDataClassification<p>Dokumentace<p></td><td>Tabulka představuje žádná tabulková data.  Příklad: SQL tabulka, zobrazení SQL, tabulka tabulkové služby Analysis Services, Analysis Services Multidimensional dimenze, tabulka Oracle atd.   </td></tr><tr><td>Míry ("opatření")</td><td></td><td></td><td>Popis<p>FriendlyName<p>Značka<p>Odborník<p>AccessInstruction<p>Dokumentace<p></td><td>Tento typ reprezentuje míra Analysis Services.</td></tr><tr><td></td><td>Míra</td><td>Sloupec</td><td></td><td>Metadata popisující míry</td></tr><tr><td></td><td>isCalculated </td><td>Logická hodnota</td><td></td><td>Určuje, pokud je míra počítá nebo ne.</td></tr><tr><td></td><td>measureGroup</td><td>String</td><td></td><td>Hmotných kontejnerů pro míru</td></tr><td>Klíčový ukazatel výkonu "(KPI)</td><td></td><td></td><td>Popis<p>FriendlyName<p>Značka<p>Odborník<p>AccessInstruction<p>Dokumentace</td><td></td></tr><tr><td></td><td>measureGroup</td><td>String</td><td></td><td>Hmotných kontejnerů pro míru</td></tr><tr><td></td><td>goalExpression</td><td>String</td><td></td><td>Číselný výraz MDX nebo výpočet, který vrátí cílovou hodnotu klíčového ukazatele výkonu.</td></tr><tr><td></td><td>valueExpression</td><td>String</td><td></td><td>Multidimenzionální číselný výraz, který vrací aktuální hodnotu klíčového ukazatele výkonu.</td></tr><tr><td></td><td>statusExpression</td><td>String</td><td></td><td>Výraz MDX, který představuje stav klíčového ukazatele výkonu k určitému bodu v čase.</td></tr><tr><td></td><td>trendExpression</td><td>String</td><td></td><td>Výraz MDX, který se vyhodnotí jako hodnota klíčového ukazatele výkonu v čase. Trend může být jakékoli podle času kritérium, které je užitečné v kontextu konkrétní obchodní.</td>
+<table><tr><td><b>Typ prostředku (název zobrazení)</b></td><td><b>Další vlastnosti</b></td><td><b>Datový typ</b></td><td><b>Povolené poznámky</b></td><td><b>Komentáře</b></td></tr><tr><td>Tabulka ("tabulky")</td><td></td><td></td><td>Popis<p>FriendlyName<p>Značka<p>Schéma<p>ColumnDescription<p>ColumnTag<p> Odborník<p>Preview<p>AccessInstruction<p>TableDataProfile<p>ColumnDataProfile<p>ColumnDataClassification<p>Dokumentace<p></td><td>Tabulka představuje žádná tabulková data.  Příklad: SQL tabulka, zobrazení SQL, tabulka tabulkové služby Analysis Services, Analysis Services Multidimensional dimenze, tabulka Oracle atd.   </td></tr><tr><td>Míry ("opatření")</td><td></td><td></td><td>Popis<p>FriendlyName<p>Značka<p>Odborník<p>AccessInstruction<p>Dokumentace<p></td><td>Tento typ reprezentuje míra Analysis Services.</td></tr><tr><td></td><td>Míra</td><td>Sloupec</td><td></td><td>Metadata popisující míry</td></tr><tr><td></td><td>isCalculated </td><td>Boolean</td><td></td><td>Určuje, pokud je míra počítá nebo ne.</td></tr><tr><td></td><td>measureGroup</td><td>String</td><td></td><td>Hmotných kontejnerů pro míru</td></tr><td>Klíčový ukazatel výkonu "(KPI)</td><td></td><td></td><td>Popis<p>FriendlyName<p>Značka<p>Odborník<p>AccessInstruction<p>Dokumentace</td><td></td></tr><tr><td></td><td>measureGroup</td><td>String</td><td></td><td>Hmotných kontejnerů pro míru</td></tr><tr><td></td><td>goalExpression</td><td>String</td><td></td><td>Číselný výraz MDX nebo výpočet, který vrátí cílovou hodnotu klíčového ukazatele výkonu.</td></tr><tr><td></td><td>valueExpression</td><td>String</td><td></td><td>Multidimenzionální číselný výraz, který vrací aktuální hodnotu klíčového ukazatele výkonu.</td></tr><tr><td></td><td>statusExpression</td><td>String</td><td></td><td>Výraz MDX, který představuje stav klíčového ukazatele výkonu k určitému bodu v čase.</td></tr><tr><td></td><td>trendExpression</td><td>String</td><td></td><td>Výraz MDX, který se vyhodnotí jako hodnota klíčového ukazatele výkonu v čase. Trend může být jakékoli podle času kritérium, které je užitečné v kontextu konkrétní obchodní.</td>
 <tr><td>Sestavy ("zprávy")</td><td></td><td></td><td>Popis<p>FriendlyName<p>Značka<p>Odborník<p>AccessInstruction<p>Dokumentace<p></td><td>Tento typ reprezentuje sestavy služby SQL Server Reporting Services </td></tr><tr><td></td><td>assetCreatedDate</td><td>String</td><td></td><td></td></tr><tr><td></td><td>assetCreatedBy</td><td>String</td><td></td><td></td></tr><tr><td></td><td>assetModifiedDate</td><td>String</td><td></td><td></td></tr><tr><td></td><td>assetModifiedBy</td><td>String</td><td></td><td></td></tr><tr><td>Kontejner ("kontejnery")</td><td></td><td></td><td>Popis<p>FriendlyName<p>Značka<p>Odborník<p>AccessInstruction<p>Dokumentace<p></td><td>Tento typ reprezentuje kontejner jiných prostředcích, třeba SQL database, kontejneru objektů BLOB systému Azure nebo model služby Analysis Services.</td></tr></table>
 
 ### <a name="annotation-types"></a>Anotace typů
@@ -189,7 +189,7 @@ Běžné typy může sloužit jako typy vlastností, ale nejsou položky.
 <tr><td></td><td>type</td><td>string</td><td>datový typ sloupce nebo atributu. Povolené typy závisí na sourceType datového prostředku.  Je podporován pouze podmnožinu typů.</td></tr>
 <tr><td></td><td>maxLength</td><td>int</td><td>Maximální povolená délka pro sloupec nebo atributu. Odvozena z datového zdroje. Platí jenom pro některé typy zdrojů.</td></tr>
 <tr><td></td><td>Přesnost</td><td>byte</td><td>Přesnost sloupce nebo atributu. Odvozena z datového zdroje. Platí jenom pro některé typy zdrojů.</td></tr>
-<tr><td></td><td>IsNullable</td><td>Logická hodnota</td><td>Určuje, zda sloupec může mít hodnotu null, nebo ne. Odvozena z datového zdroje. Platí jenom pro některé typy zdrojů.</td></tr>
+<tr><td></td><td>IsNullable</td><td>Boolean</td><td>Určuje, zda sloupec může mít hodnotu null, nebo ne. Odvozena z datového zdroje. Platí jenom pro některé typy zdrojů.</td></tr>
 <tr><td></td><td>Výraz</td><td>string</td><td>Pokud je hodnota počítaného sloupce, toto pole obsahuje výraz, který vyjadřuje hodnotu. Odvozena z datového zdroje. Platí jenom pro některé typy zdrojů.</td></tr>
 
 <tr><td>ColumnDataProfile</td><td></td><td></td><td></td></tr>

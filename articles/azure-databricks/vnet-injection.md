@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.service: azure-databricks
 ms.topic: conceptual
 ms.date: 03/18/2019
-ms.openlocfilehash: c29d2e1df0979481c0c8a1e1f2cd4d22b013212a
-ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
-ms.translationtype: MT
+ms.openlocfilehash: 2db588a0cf67d7826408139e8facb43a2e897951
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58227574"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60003441"
 ---
 # <a name="deploy-azure-databricks-in-your-virtual-network-preview"></a>Nasazení Azure Databricks ve vaší virtuální síti (Preview)
 
@@ -37,7 +37,7 @@ Rozhraní nasazení pracovního prostoru Azure Databricks na portálu Azure port
 
 Virtuální síť, která nasazení pracovního prostoru Azure Databricks k musí splňovat následující požadavky:
 
-### <a name="location"></a>Umístění
+### <a name="location"></a>Location
 
 Virtuální sítě se musí nacházet ve stejném umístění jako pracovní prostor Azure Databricks.
 
@@ -121,7 +121,7 @@ Pokud použijete tuto šablonu bez také použití šablony skupiny zabezpečen�
 
 Pokud použijete [webu Azure portal](https://docs.azuredatabricks.net/administration-guide/cloud-configurations/azure/vnet-inject.html#vnet-inject-portal) nebo [šablon Azure Resource Manageru](https://docs.azuredatabricks.net/administration-guide/cloud-configurations/azure/vnet-inject.html#vnet-inject-advanced) k vytvoření skupiny zabezpečení sítě, je nutné ručně seznam povolených následující provoz na podsítě.
 
-|Směr|Protocol (Protokol)|Zdroj|Zdrojový port|Cíl|Cílový port|
+|Direction|Protocol (Protokol)|Zdroj|Zdrojový port|Cíl|Cílový port|
 |---------|--------|------|-----------|-----------|----------------|
 |Příchozí|\*|VirtualNetwork|\*|\*|\*|
 |Příchozí|\*|Rovina řízení adres IP pro NAT|\*|\*|22|
@@ -188,7 +188,7 @@ Možné příčiny: Kontejner nemůže komunikovat s hostující instanci nebo D
 
 ### <a name="notebook-command-errors"></a>Poznámkový blok příkazu chyby
 
-**Příkaz přestává**
+**Příkaz nereaguje.**
 
 Možná příčina: pracovního procesu worker komunikace je blokovaná. Vyřešit, ujistěte se, že pravidla zabezpečení příchozích požadavků.
 

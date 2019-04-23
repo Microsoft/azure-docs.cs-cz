@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/01/2019
 ms.author: apimpm
-ms.openlocfilehash: db48db5ce9402267570ac9e41f9f4b5bec2781ad
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
-ms.translationtype: MT
+ms.openlocfilehash: 532c1051522410c496fb3809c06c7e3a74340adb
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59527944"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60006042"
 ---
 # <a name="how-to-use-azure-api-management-with-virtual-networks"></a>Jak používat Azure API Management s virtuálními sítěmi
 Virtuální sítě Azure (Vnet) umožňuje umístit některé z vašich prostředků Azure, které řídí přístup k síti možnosti směrování Internetu jiných. Potom se dá propojit tyto sítí k místním sítím pomocí různých technologií VPN. Další informace o Azure Virtual Networks začínat tyto informace tady: [Přehled služby Azure Virtual Network](../virtual-network/virtual-networks-overview.md).
@@ -74,7 +74,8 @@ Chcete-li provést postup popsaný v tomto článku, budete potřebovat:
 
      ![Vyberte sítě VPN][api-management-setup-vpn-select]
 
-5. Klikněte na tlačítko **Uložit** v horní části obrazovky.
+5. Klikněte na tlačítko **Uložit** v horním navigačním panelu.
+6. Klikněte na tlačítko **konfigurace sítě použít** v horním navigačním panelu.
 
 > [!NOTE]
 > Virtuální IP adresy instance API Management se změní pokaždé, když virtuální síť je povoleno nebo zakázáno.
@@ -108,7 +109,7 @@ Tady je seznam častých problémech, které mohou nastat při nasazení služby
 
 <a name="required-ports"> </a> Když jsou instance služby API Management je hostované ve virtuální síti, se používají porty v následující tabulce.
 
-| Zdrojové a cílové porty | Směr          | Přenosový protokol |   [Značky služeb](../virtual-network/security-overview.md#service-tags) <br> Zdroj a cíl   | Účel (*)                                                 | Typ virtuální sítě |
+| Zdrojové a cílové porty | Direction          | Přenosový protokol |   [Značky služeb](../virtual-network/security-overview.md#service-tags) <br> Zdroj a cíl   | Účel (*)                                                 | Typ virtuální sítě |
 |------------------------------|--------------------|--------------------|---------------------------------------|-------------------------------------------------------------|----------------------|
 | * / 80, 443                  | Příchozí            | TCP                | INTERNET / VIRTUAL_NETWORK            | Komunikace klienta do API managementu                      | Externí             |
 | * / 3443                     | Příchozí            | TCP                | ApiManagement / VIRTUAL_NETWORK       | Koncový bod správy pro Azure portal a Powershellu         | Externí a interní  |

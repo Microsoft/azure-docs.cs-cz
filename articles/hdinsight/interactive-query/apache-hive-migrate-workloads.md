@@ -8,12 +8,12 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.topic: howto
 ms.date: 04/15/2019
-ms.openlocfilehash: 708df64802ace17fa77b4e0a695c9f1c3bd18a77
-ms.sourcegitcommit: 5f348bf7d6cf8e074576c73055e17d7036982ddb
-ms.translationtype: MT
+ms.openlocfilehash: 958a3249fd2e8af9faeb827f07efc21c8184a100
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2019
-ms.locfileid: "59610202"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60006977"
 ---
 # <a name="migrate-azure-hdinsight-36-hive-workloads-to-hdinsight-40"></a>Migrace úloh Hive ke službě Azure HDInsight 3.6 do HDInsight 4.0
 
@@ -54,7 +54,31 @@ Vaší úlohy Hive může obsahovat kombinaci kyseliny a jiných kyseliny tabulk
 alter table myacidtable compact 'major';
 ```
 
-Tato komprimace totiž tabulky HDInsight 3.6 a HDInsight 4.0 kyseliny pochopit odpovídající zásadám ACID rozdíly jiný. Komprimace vynucuje čisté kontejner, který záruky konzistence tabulky. Po dokončení komprimace předchozí kroky pro migraci metastore a tabulka stačit používat žádné tabulky HDInsight 3.6 kyseliny v HDInsight 4.0.
+Tato komprimace totiž HDInsight 3.6 a HDInsight 4.0 kyseliny tabulky porozumět rozdílům v modelu ACID odlišně. Komprimace vynucuje čisté kontejner, který záruky konzistence. Oddíl 4 [Hive dokumentace k migraci](https://docs.hortonworks.com/HDPDocuments/Ambari-2.7.3.0/bk_ambari-upgrade-major/content/prepare_hive_for_upgrade.html) obsahuje pokyny pro hromadné komprimační tabulky kyseliny HDInsight 3.6.
+
+Po dokončení kroků migrace a komprimace metastore můžete migrovat skutečný datový sklad. Po dokončení migrace sklad Hive, datový sklad HDInsight 4.0 bude mít následující vlastnosti:
+
+* Externí tabulky v HDInsight 3.6 bude externích tabulek v HDInsight 4.0
+* Non transakční spravované tabulek v HDInsight 3.6 bude externích tabulek v HDInsight 4.0
+* Transakční spravované tabulek v HDInsight 3.6 bude spravované tabulek v HDInsight 4.0
+
+Budete muset upravit vlastnosti služby warehouse před provedením migrace. Například pokud očekáváte, že některé tabulky budou mít přístup třetích stran (jako je cluster HDInsight 3.6), tabulky musí být externím po dokončení migrace. Všechny spravované tabulek v HDInsight 4.0, je transakční. Proto spravované tabulek v HDInsight 4.0 by měl k měla přístup pouze clustery HDInsight 4.0.
+
+Jakmile jsou správně nastaveny vlastnosti vaší tabulky, spusťte nástroj pro migraci sklad Hive z jednoho z hlavním uzlům clusteru pomocí SSH prostředí:
+
+1. Připojte se k vaší hlavního uzlu clusteru pomocí SSH. Pokyny najdete v tématu [připojení k HDInsight pomocí SSH](../hdinsight-hadoop-linux-use-ssh-unix.md)
+1. Otevřete prostředí přihlášení jako uživatel Hive spuštěním `sudo su - hive`
+1. Určení verze zásobníku datovou platformou Hortonworks spuštěním `ls /usr/hdp`. Bude se zobrazovat verze řetězec, který byste měli použít následující příkaz.
+1. Spusťte následující příkaz z prostředí. Nahraďte `${{STACK_VERSION}}` s řetězce verze z předchozího kroku:
+
+```bash
+/usr/hdp/${{STACK_VERSION}}/hive/bin/hive --config /etc/hive/conf --service  strictmanagedmigration --hiveconf hive.strict.managed.tables=true  -m automatic  automatic  --modifyManagedTables --oldWarehouseRoot /apps/hive/warehouse
+```
+
+Po dokončení nástroj pro migraci, bude váš sklad Hive připraven pro HDInsight 4.0. 
+
+> [!Important]
+> Spravované tabulek v HDInsight 4.0 (včetně tabulek se migroval z 3.6) by neměl přistupují jiné služby nebo aplikace, včetně clusterů HDInsight 3.6.
 
 ## <a name="secure-hive-across-hdinsight-versions"></a>Zabezpečte Hive v HDInsight verze
 
@@ -74,9 +98,9 @@ V HDInsight 4.0 bylo nahrazeno tématem Beeline HiveCLI. HiveCLI klienta thriftu
 
 Klient grafického uživatelského rozhraní pro interakci s serveru Hive v HDInsight 3.6 je zobrazení Ambari Hive. HDInsight 4.0 nahradí zobrazení Hive s Hortonworks Data Analytics Studio (DAS). DAS není dodávají spolu s HDInsight clustery out-of-box a není oficiálně podporovaných balíčků. Ale DAS můžete nainstalovat na clusteru takto:
 
-1. Stáhněte si [DAS balíček instalační skript](https://hdiconfigactions.blob.core.windows.net/dasinstaller/install-das-mpack.sh) a spustit ho v obou hlavním uzlům clusteru. Jako akci skriptu není spusťte tento skript.
-2. Stáhněte si [DAS služby instalační skript](https://hdiconfigactions.blob.core.windows.net/dasinstaller/install-das-component.sh) a spustíme ji jako akci skriptu. Vyberte **hlavní uzly** jako typ uzlu podle výběru z rozhraní akce skriptu.
-3. Po dokončení akce skriptu, přejděte do Ambari a vyberte **Data Analytics Studio** ze seznamu služeb. Všechny služby DAS se zastaví. V pravém horním rohu vyberte **akce** a **Start**. Teď můžete spustit a ladit dotazů s DAS.
+Spusťte skript akce u vašeho clusteru, s "Hlavní uzly" jako typ uzlu pro provádění. Vložte následující identifikátor URI do textového pole označená "URI skriptu Bash": https://hdiconfigactions.blob.core.windows.net/dasinstaller/LaunchDASInstaller.sh
+
+
 
 Po nainstalování DAS dotazy, které jste spustili v prohlížeči dotazy nevidíte, proveďte následující kroky:
 

@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 01/24/2018
 ms.author: sngun
-ms.openlocfilehash: cf90f7231362d147914e22419c9008d2628a483f
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
-ms.translationtype: MT
+ms.openlocfilehash: 81adf643541b5a4486694026acec49129ef8e5a6
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57861889"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60000619"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-and-net"></a>Tipy ke zvýšení výkonu pro službu Azure Cosmos DB a .NET
 
@@ -48,8 +48,8 @@ Takže pokud máte s dotazem "Jak můžu vylepšit výkon Moje databáze?" Zvaž
      |Režim připojení  |Podporovaný protokol  |Podporovaných sad SDK  |Služba API/port  |
      |---------|---------|---------|---------|
      |brána  |   HTTPS    |  Všechny sady SDK    |   SQL(443), Mongo(10250, 10255, 10256), Table(443), Cassandra(10350), Graph(443)    |
-     |Přímé    |    HTTPS     |  .NET a Java SDK    |   Porty v rozsahu 20 10 000-000    |
-     |Přímé    |     TCP    |  .NET SDK    | Porty v rozsahu 20 10 000-000 |
+     |Direct    |    HTTPS     |  .NET a Java SDK    |   Porty v rozsahu 20 10 000-000    |
+     |Direct    |     TCP    |  .NET SDK    | Porty v rozsahu 20 10 000-000 |
 
      Azure Cosmos DB nabízí jednoduchý a otevřené rozhraní RESTful programovací model přes protokol HTTPS. Kromě toho nabízí efektivní protokolu TCP, který je také RESTful svůj model komunikace a je dostupný prostřednictvím klienta .NET SDK. Přímé TCP i protokol HTTPS používat protokol SSL pro počáteční ověřování a šifrování přenosu. Pro zajištění nejlepšího výkonu použijte protokol TCP, pokud je to možné.
 
@@ -85,6 +85,11 @@ Takže pokud máte s dotazem "Jak můžu vylepšit výkon Moje databáze?" Zvaž
 4. **Zvyšte počet vláken nebo úloh**
 
     Od volání do služby Azure Cosmos DB v síti, budete muset lišit stupně paralelního zpracování žádostí o tak, aby klientská aplikace stráví velmi málo dobu čekání mezi požadavky. Pokud například používáte. NET společnosti [Task Parallel Library](https://msdn.microsoft.com//library/dd460717.aspx), vytvořte v pořadí 100s úlohy čtení a zápis do služby Azure Cosmos DB.
+
+5. **Povolit akcelerované síťové služby**
+
+   Pokud chcete snížit latenci a kolísání v procesoru, doporučujeme vám, že klientské virtuální počítače jsou akcelerované síťové služby povolena. Najdete v článku [vytvořit virtuální počítač Windows s Akcelerovanými síťovými službami](../virtual-network/create-vm-accelerated-networking-powershell.md) nebo [vytvořit virtuální počítač s Linuxem s Akcelerovanými síťovými službami](../virtual-network/create-vm-accelerated-networking-cli.md) články povolit akcelerované síťové služby.
+
 
 ## <a name="sdk-usage"></a>Použití sady SDK
 1. **Nainstalujte nejnovější sadu SDK**

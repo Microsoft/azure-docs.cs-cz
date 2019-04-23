@@ -10,18 +10,21 @@ ms.date: 03/05/2019
 ms.topic: conceptual
 manager: carmonm
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 74b099c648fa4dd1c735cc76c82efbc102d9843c
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
-ms.translationtype: MT
+ms.openlocfilehash: 5e997d9e9f38fee52cd9fc007fe12cac68e3aa5a
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57443041"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60008677"
 ---
 # <a name="track-changes-in-your-environment-with-the-change-tracking-solution"></a>Sledování změn ve vašem prostředí pomocí řešení Change Tracking
 
 Tento článek vám pomůže používat řešení Change Tracking snadno identifikovat změny ve vašem prostředí. Řešení sleduje změny softwaru Windows a Linux, Windows a Linuxem soubory, klíče registru Windows, služby Windows a Linuxové procesy démon. Určení změn konfigurace vám může pomoct přesně určit provozní problémy.
 
 Změny nainstalovaného softwaru, služby Windows, Windows registru a souborů a procesy démon Linuxu na monitorovaných serverech se odesílají do služby Azure Monitor v cloudu pro zpracování. Logika platí pro přijatá data a cloudové službě zaznamenává data. Podle informací uvedených na řídicím panelu řešení Change Tracking, můžete snadno zobrazit změny, které byly provedeny v serverové infrastruktuře.
+
+> [!NOTE]
+> Azure Automation Change Tracking sleduje změny ve službě virtual machines. Pokud chcete sledovat změny vlastností Azure Resource Manageru, najdete v článku grafu prostředků Azure [historii změn](../governance/resource-graph/how-to/get-resource-changes.md).
 
 ## <a name="supported-windows-operating-systems"></a>Podporované operační systémy Windows
 
@@ -76,7 +79,7 @@ Použijte následující postup ke konfiguraci sledování souborů na počíta�
 
 |Vlastnost  |Popis  |
 |---------|---------|
-|Povoleno     | Určuje, pokud je použito nastavení.        |
+|Enabled     | Určuje, pokud je použito nastavení.        |
 |Název položky     | Popisný název souboru, který má být sledovány.        |
 |Skupina     | Název skupiny pro logické seskupení souborů.        |
 |Zadat cestu     | Cesta ke kontrole souboru. Příklad: "/etc/*.conf"       |
@@ -99,7 +102,7 @@ Použijte následující postup ke konfiguraci soubory sledování na počítač
 
 |Vlastnost  |Popis  |
 |---------|---------|
-|Povoleno     | Určuje, pokud je použito nastavení.        |
+|Enabled     | Určuje, pokud je použito nastavení.        |
 |Název položky     | Popisný název souboru, který má být sledovány.        |
 |Skupina     | Název skupiny pro logické seskupení souborů.        |
 |Zadat cestu     | Cesta, ve které se má soubor hledat, například: c:\temp\\\*.txt.<br>Můžete použít také proměnnou prostředí, například %winDir%\System32\\\*.*.       |
@@ -131,7 +134,7 @@ Pomocí následujících kroků nakonfigurovat sledování klíčů registru v p
 
 |Vlastnost  |Popis  |
 |---------|---------|
-|Povoleno     | Určuje, pokud je použito nastavení.        |
+|Enabled     | Určuje, pokud je použito nastavení.        |
 |Název položky     | Popisný název klíče registru, které se mají sledovat.        |
 |Skupina     | Název skupiny pro logické seskupení klíče registru.        |
 |Klíč registru systému Windows   | Cesta ke kontrole pro klíč registru. Příklad: "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\User Shell Folders\Common Startup"      |

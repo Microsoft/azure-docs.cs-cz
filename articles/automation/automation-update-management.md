@@ -6,15 +6,15 @@ ms.service: automation
 ms.subservice: update-management
 author: georgewallace
 ms.author: gwallace
-ms.date: 04/11/2019
+ms.date: 04/22/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: b938a2b3ea8ee4ab8bcc594b4b40db9384d22551
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
-ms.translationtype: MT
+ms.openlocfilehash: f49b8ef3717675ae6d93d07218a00f2c22890de0
+ms.sourcegitcommit: c884e2b3746d4d5f0c5c1090e51d2056456a1317
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59679070"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60149695"
 ---
 # <a name="update-management-solution-in-azure"></a>Řešení Update Management v Azure
 
@@ -208,7 +208,7 @@ Spustit hledání v protokolu, který vrací informace o počítači, aktualizac
 
 ## <a name="install-updates"></a>Instalovat aktualizace
 
-Po aktualizace se vyhodnocuje pro všechny systémy Linux a Windows počítače ve vašem pracovním prostoru, můžete nainstalovat požadované aktualizace vytvořením *nasazení aktualizací*. Pro vytvoření nasazení aktualizace, musí mít přístup pro zápis do účtu Automation a je určená k zápisu do žádné virtuální počítače Azure, které jsou v nasazení. Nasazení aktualizací je plánovaná instalace požadovaných aktualizací pro jeden nebo více počítačů. Zadáte datum a čas pro nasazení a počítač nebo skupinu počítačů, které chcete zahrnout do oboru nasazení. Další informace o skupinách počítačů najdete v tématu [skupiny počítačů v Azure Monitor protokoly](../azure-monitor/platform/computer-groups.md).
+Po aktualizace se vyhodnocuje pro všechny systémy Linux a Windows počítače ve vašem pracovním prostoru, můžete nainstalovat požadované aktualizace vytvořením *nasazení aktualizací*. Pro vytvoření nasazení aktualizace, musí mít přístup pro zápis do účtu Automation a přístup pro zápis pro všechny virtuální počítače Azure, která je určená v nasazení. Nasazení aktualizací je plánovaná instalace požadovaných aktualizací pro jeden nebo více počítačů. Zadáte datum a čas pro nasazení a počítač nebo skupinu počítačů, které chcete zahrnout do oboru nasazení. Další informace o skupinách počítačů najdete v tématu [skupiny počítačů v Azure Monitor protokoly](../azure-monitor/platform/computer-groups.md).
 
 Když do svého nasazení aktualizací zahrnete skupiny počítačů, členství ve skupině se vyhodnotí jenom jednou, v době vytvoření plánu. Následné změny ve skupině se neprojeví. K orientaci použijte [dynamické skupiny](#using-dynamic-groups), tyto skupiny jsou vyřešené v době nasazení a jsou definované v dotazu pro virtuální počítače Azure nebo uložené výsledky hledání pro virtuální počítače mimo Azure.
 
@@ -223,7 +223,7 @@ Chcete-li vytvořit nové nasazení aktualizace, vyberte **naplánovat nasazení
 
 | Vlastnost | Popis |
 | --- | --- |
-| Název |Jedinečný název pro identifikaci nasazení aktualizace. |
+| Name |Jedinečný název pro identifikaci nasazení aktualizace. |
 |Operační systém| Linux nebo Windows|
 | Skupiny aktualizace |Pro počítače v Azure definujte dotaz na základě kombinace předplatného, skupiny prostředků, míst a značky vytvářet dynamické skupiny virtuálních počítačů Azure má zahrnout do vašeho nasazení. </br></br>Pro počítače mimo Azure vyberte existující uložené výsledky hledání a vyberte skupinu počítačů mimo Azure zahrnout do nasazení. </br></br>Další informace najdete v tématu [dynamické skupiny](automation-update-management.md#using-dynamic-groups)|
 | Počítače k aktualizaci |Vyberte uložená hledání, importované skupiny, nebo vybrat počítač z rozevíracího seznamu a vyberte jednotlivé počítače. Pokud zvolíte možnost **Počítače**, ve sloupci **PŘIPRAVENOST AGENTA AKTUALIZACE** se zobrazí připravenost počítačů.</br> Další informace o různých způsobech vytvoření skupiny počítačů v Azure Monitor protokolů, najdete v článku [skupiny počítačů v protokoly Azure monitoru](../azure-monitor/platform/computer-groups.md) |
@@ -333,8 +333,8 @@ $ServiceManager.AddService2($ServiceId,7,"")
 
 ## <a name="third-party"></a> Opravy třetích stran ve Windows
 
-Správa aktualizací spoléhá na službu WSUS nebo Windows Update o opravu podporované systémy Windows. Nástroje, jako je [System Center Updates Publisher](/sccm/sum/tools/updates-publisher
-) (Updates Publisher) umožní publikovat vlastní aktualizace do služby WSUS. Tento scénář umožňuje správu aktualizovat opravu počítačů, které pomocí služby WSUS jako jejich úložiště aktualizací se softwarem třetích stran. Informace o konfiguraci nástroje Updates Publisher najdete v tématu [nainstalovat Updates Publisher](/sccm/sum/tools/install-updates-publisher).
+Správa aktualizací spoléhá na úložiště místně nakonfigurované aktualizací na opravu podporované systémy Windows. Toto je WSUS nebo Windows Update. Nástroje, jako je [System Center Updates Publisher](/sccm/sum/tools/updates-publisher
+) (Updates Publisher) umožní publikovat vlastní aktualizace do služby WSUS. Tento scénář umožňuje aktualizovat správu počítačů opravy, které pomocí System Center Configuration Manager jako jejich úložiště aktualizací se softwarem třetích stran. Informace o konfiguraci nástroje Updates Publisher najdete v tématu [nainstalovat Updates Publisher](/sccm/sum/tools/install-updates-publisher).
 
 ## <a name="ports"></a>Plánování sítě
 

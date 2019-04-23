@@ -3,16 +3,16 @@ title: Přehled služby Azure Resource Graph
 description: Zjistěte, jak služba Graph prostředků Azure umožňuje složitých dotazů na prostředky v potřebném měřítku.
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 03/29/2019
+ms.date: 03/30/2019
 ms.topic: overview
 ms.service: resource-graph
 manager: carmonm
-ms.openlocfilehash: 28efdabc024fd32c83ba966b15284ec6ff368d4d
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: d76a5b32403bd14f18181580f891925130808922
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59788990"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60002880"
 ---
 # <a name="overview-of-the-azure-resource-graph-service"></a>Přehled služby Azure Graph prostředků
 
@@ -21,11 +21,13 @@ Azure Resource Graph je služba v Azure, která je navržená k rozšíření sp
 - Možnost dotazu ohledně zdrojů s komplexním filtrováním, seskupováním a řazením podle vlastností zdroje.
 - Schopnost postupně prozkoumat zdroje založené na požadavcích správy a převést výsledný výraz na definici zásad.
 - Schopnost posoudit dopad uplatnění zásad v rozsáhlém cloudovém prostředí.
+- Schopnost [podrobně popisují změny vlastnosti prostředku](./how-to/get-resource-changes.md) (preview).
 
 V této dokumentaci si podrobně projdete jednotlivé funkce.
 
 > [!NOTE]
-> Azure Resource Graph je využíván novou funkcí prohlížení portálu Azure Portal "Všechny zdroje". Je navržen tak, abychom zákazníkům s nutnost spravovat prostředí ve velkém měřítku.
+> Azure Graph prostředků používá nové procházení "Všechny materiály" prostředí webu Azure portal a Azure Policy [historii změn](../policy/how-to/determine-non-compliance.md#change-history-preview).
+> _vizuální diff_. Je navržena tak, aby pomáhá zákazníkům spravovat prostředí ve velkém měřítku.
 
 ## <a name="how-does-resource-graph-complement-azure-resource-manager"></a>Jak Resource Graph doplňuje Azure Resource Manager
 
@@ -33,13 +35,19 @@ Azure Resource Manager aktuálně odesílá data do omezené mezipaměti prostř
 
 S Azure Resource Graph můžete získat přístup k těmto vlastnostem, které poskytovatelé zdrojů vrátí, aniž by bylo nutné provádět individuální vyvolání u každého poskytovatele zdrojů. Seznam podporovaných typů prostředků, Hledat **Ano** v [prostředky pro nasazení úplný režim](../../azure-resource-manager/complete-mode-deletion.md) tabulky.
 
+Graf prostředků Azure můžete:
+
+- Přístup k vlastnostem vrácenou poskytovatele prostředků, aniž byste museli provádět jednotlivých volání na každý poskytovatel prostředků.
+- Zobrazení posledních 14 dní historie změn provedených na prostředek zobrazíte vlastnosti změnit a kdy. (Preview)
+
 ## <a name="the-query-language"></a>Dotazovací jazyk
 
 Teď, když už chápete lépe, co je Azure Resource Graph, pusťme se do vytváření dotazů.
 
 Je důležité pochopit, že je na základě grafu prostředků Azure dotazovací jazyk [Kusto dotazovací jazyk](../../data-explorer/data-explorer-overview.md) používá Průzkumník dat Azure.
 
-Nejprve se podívejte na podrobnosti o operacích a funkcích, které lze použít s Azure Resource Graph, viz [ jazyk dotazu pro graf zdrojů ](./concepts/query-language.md). Chcete-li procházet zdroje, podívejte se na [ prozkoumat zdroje ](./concepts/explore-resources.md).
+Nejprve se podívejte na podrobnosti o operacích a funkcích, které lze použít s Azure Resource Graph, viz [ jazyk dotazu pro graf zdrojů ](./concepts/query-language.md).
+Chcete-li procházet zdroje, podívejte se na [ prozkoumat zdroje ](./concepts/explore-resources.md).
 
 ## <a name="permissions-in-azure-resource-graph"></a>Oprávnění v Azure Resource Graph
 
@@ -58,7 +66,7 @@ Diagram zdrojů podporuje rozhraní příkazového řádku Azure, Azure Powershe
 
 ## <a name="next-steps"></a>Další postup
 
-- Spusťte svůj první dotaz prostřednictvím [Azure CLI](first-query-azurecli.md)
-- Spusťte svůj první dotaz prostřednictvím [Azure PowerShell](first-query-powershell.md)
-- Začněte se [Starter dotazy](./samples/starter.md)
-- Vylepšete své porozumění pomocí [Pokročilých dotazů](./samples/advanced.md)
+- Spusťte svůj první dotaz s [rozhraní příkazového řádku Azure](first-query-azurecli.md).
+- Spusťte svůj první dotaz s [prostředí Azure PowerShell](first-query-powershell.md).
+- Začněte s [Starter dotazy](./samples/starter.md).
+- Přehled s [pokročilé dotazy](./samples/advanced.md).

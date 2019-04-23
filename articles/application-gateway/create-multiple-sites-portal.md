@@ -1,24 +1,24 @@
 ---
-title: Vytvoření služby application gateway, který je hostitelem více webů – portál Azure portal
-description: Informace o vytvoření služby application gateway, který je hostitelem více webů pomocí webu Azure portal.
+title: Kurz – vytvoření služby application gateway, který je hostitelem více webů pomocí webu Azure portal
+description: V tomto kurzu se dozvíte, jak vytvořit službu application gateway, který je hostitelem více webů pomocí webu Azure portal.
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
-ms.topic: article
-ms.date: 2/20/2019
+ms.topic: tutorial
+ms.date: 4/18/2019
 ms.author: victorh
-ms.openlocfilehash: 86be94404e7ab492beeebd6a467d23e68e7bce6b
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
-ms.translationtype: MT
+ms.openlocfilehash: 3e27a79c7a6e3d39679118f532dd464a32463d69
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58080163"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59999021"
 ---
-# <a name="create-and-configure-an-application-gateway-to-host-multiple-web-sites-using-the-azure-portal"></a>Vytvoření a konfigurace aplikační brány pro hostování více webů pomocí webu Azure portal
+# <a name="tutorial-create-and-configure-an-application-gateway-to-host-multiple-web-sites-using-the-azure-portal"></a>Kurz: Vytvoření a konfigurace aplikační brány pro hostování více webů pomocí webu Azure portal
 
-Můžete použít na webu Azure portal [konfigurace hostování několika webů s](multiple-site-overview.md) při vytváření [služba application gateway](overview.md). V tomto článku definujte fondy adres back-end pomocí služby virtual machines. Pak na základě domén, které vám patří, nakonfigurujete naslouchací procesy a pravidla, aby se webový provoz přesměroval na příslušné servery ve fondech. Tento článek předpokládá, že jste vlastníkem více domén a používá příklady *www.contoso.com* a *www.fabrikam.com*.
+Můžete použít na webu Azure portal [konfigurace hostování několika webů s](multiple-site-overview.md) při vytváření [služba application gateway](overview.md). V tomto kurzu definujte fondy adres back-end pomocí služby virtual machines. Pak na základě domén, které vám patří, nakonfigurujete naslouchací procesy a pravidla, aby se webový provoz přesměroval na příslušné servery ve fondech. V tomto kurzu se předpokládá, že vlastníte několik domén, a jako příklady se používají domény *www.contoso.com* a *www.fabrikam.com*.
 
-V tomto článku získáte informace o těchto tématech:
+V tomto kurzu se naučíte:
 
 > [!div class="checklist"]
 > * Vytvoření služby Application Gateway
@@ -146,7 +146,7 @@ V tomto příkladu vytvoříte dva virtuální počítače, které se použijí 
 
 Pravidla se zpracovávají v pořadí, v kterém jsou uvedena, a provoz se směruje pomocí prvního odpovídajícího pravidla bez ohledu na specifickou podobu. Pokud máte například na stejném portu pravidlo založené na základním naslouchacím procesu a pravidlo založené na naslouchacím procesu pro více webů, musí být pravidlo s naslouchacím procesem pro více webů uvedeno před pravidlem se základním naslouchacím procesem, aby fungovalo podle očekávání. 
 
-V tomto příkladu vytvoříte dvě nová pravidla a odstraníte výchozí pravidlo, které se vytvořilo při vytvoření aplikační brány. 
+V tomto příkladu vytvoříte dvě nová pravidla a odstranit výchozí pravidlo vytvořené při vytvoření aplikační brány.
 
 1. Klikněte na tlačítko **pravidla** a potom klikněte na tlačítko **základní**.
 2. Zadejte *contosoRule* pro název.
@@ -179,6 +179,18 @@ Jakmile vytvoříte aplikační bránu s veřejnou IP adresou, získáte adresu 
 
     ![Testování webu Fabrikam v aplikační bráně](./media/create-multiple-sites-portal/application-gateway-iistest2.png)
 
+## <a name="clean-up-resources"></a>Vyčištění prostředků
+
+Pokud už nepotřebujete prostředky, které jste vytvořili ve službě application gateway, odeberte skupinu prostředků. Odstraněním skupiny prostředků je taky odebrat application gateway a všechny související prostředky.
+
+K odebrání skupiny prostředků:
+
+1. V nabídce vlevo na webu Azure portal vyberte **skupiny prostředků**.
+2. Na **skupiny prostředků** stránky, vyhledejte **myResourceGroupAG** v seznamu, vyberte ji.
+3. Na **stránce skupiny prostředků**vyberte **odstranit skupinu prostředků**.
+4. Zadejte *myResourceGroupAG* pro **zadejte název skupiny prostředků** a pak vyberte **odstranit**
+
 ## <a name="next-steps"></a>Další postup
 
-[Konfigurace služby App Service pomocí služby Application Gateway](create-web-app.md)
+> [!div class="nextstepaction"]
+> [Další informace o tom, co můžete dělat pomocí služby Azure Application Gateway](application-gateway-introduction.md)

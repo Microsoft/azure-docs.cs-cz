@@ -15,11 +15,11 @@ ms.workload: tbd
 ms.date: 02/14/2017
 ms.author: yegu
 ms.openlocfilehash: 3aa2e9e773eb0c07b5f10a57dabf1138b9f3f288
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56232905"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60232919"
 ---
 # <a name="aspnet-output-cache-provider-for-azure-cache-for-redis"></a>Poskytovatel výstupní mezipaměti ASP.NET pro mezipaměť Azure redis Cache
 Poskytovatel výstupní mezipaměti redis cache je mechanismus úložiště mimo proces pro výstupní data v mezipaměti. Tato data jsou speciálně pro úplné odpovědi protokolu HTTP (stránce ukládání výstupu do mezipaměti). Zprostředkovatel zpřístupní nový výstupní mezipaměť zprostředkovatele rozšíření bod, která byla zavedena v rozhraní ASP.NET 4.

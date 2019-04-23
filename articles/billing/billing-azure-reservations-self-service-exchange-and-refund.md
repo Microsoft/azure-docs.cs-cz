@@ -1,7 +1,6 @@
 ---
 title: Samoobslužná služba výměny a vrácení peněz rezervací Azure | Dokumentace Microsoftu
 description: Zjistěte, jak mohou vyměňovat nebo náhrady Azure rezervace.
-services: billing
 documentationcenter: ''
 author: yashesvi
 manager: yashesvi
@@ -11,20 +10,22 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/5/2019
+ms.date: 04/13/2019
 ms.author: banders
-ms.openlocfilehash: aa1a218fbf0bc7eacac65b50e4ee1f86791e2b3b
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 54578746ea8029a760663edc456660f98358abc5
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59281977"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60009306"
 ---
 # <a name="self-service-exchanges-and-refunds-for-azure-reservations"></a>Samoobslužná služba výměny a finanční prostředky Azure rezervací
 
-Rezervace Azure poskytují flexibilitu, která vám pomohou splnit potřeby vyvíjející. Můžete si mohou vyměňovat rezervace pro jiné rezervace stejného typu. Rezervace, až 50 000 USD za rok, můžete také vrátit, pokud ho už nepotřebují.
+Rezervace Azure poskytují flexibilitu, která vám pomohou splnit potřeby vyvíjející. Rezervaci si můžete vyměnit za jinou rezervaci stejného typu. Za rezervaci si také můžete nechat vrátit peníze, pokud už ji nepotřebujete, a to až do 50 000 USD za rok.
 
-Schopnosti samoobslužné služby exchange a zrušení není k dispozici pro US Government zákazníci se smlouvou Enterprise. Jsou podporovány dalších typů předplatného pro státní správu USA, včetně průběžných plateb a CSP.
+Možnost samoobslužné výměny nebo zrušení není k dispozici pro zákazníky s předplatným US Government se smlouvou Enterprise. Jsou podporovány dalších typů předplatného pro státní správu USA, včetně průběžných plateb a CSP.
+
+V objednávce rezervace vyměnit nebo vrátit stávající rezervaci musí mít přístup vlastníka.
 
 ## <a name="exchange-an-existing-reserved-instance"></a>Výměna existující rezervované instance
 
@@ -32,14 +33,14 @@ Vyměňujete vaší rezervace se ve třech rychlých krocích [webu Azure portal
 
 1. Vyberte rezervace, které chcete vrátit a klikněte na tlačítko **Exchange**.  
     ![Obrázek příkladu rezervace vrátit](./media/billing-azure-reservations-self-service-exchange-and-refund/exchange-refund-return.png)
-2. Vyberte produkt virtuálního počítače, který chcete zakoupit a zadejte množství. Ujistěte se, že je nová nákupní celkem více než návratový celkem. [Určení správné velikosti před nákupem](../virtual-machines/windows/prepay-reserved-vm-instances.md#determine-the-right-vm-size-before-you-buy).  
+2. Vyberte produkt virtuálního počítače, který chcete koupit, a zadejte množství. Ujistěte se, že je nová nákupní celkem více než návratový celkem. [Určení správné velikosti před nákupem](../virtual-machines/windows/prepay-reserved-vm-instances.md#determine-the-right-vm-size-before-you-buy).  
     ![Obrázek příkladu virtuálních počítačů produktu nákupu se systému exchange](./media/billing-azure-reservations-self-service-exchange-and-refund/exchange-refund-select-purchase.png)
 3. Zkontrolujte a dokončete transakci.  
     ![Obrázek příkladu virtuálních počítačů produktu nákupu se serveru exchange, dokončení vrácení](./media/billing-azure-reservations-self-service-exchange-and-refund/exchange-refund-confirm-exchange.png)
 
 Náhrada rezervaci, přejděte na **podrobnosti o rezervaci** a klikněte na tlačítko **refundaci**.
 
-## <a name="how-return-and-exchange-transactions-are-processed"></a>Jakým způsobem se vrátit a zpracování transakcí exchange
+## <a name="how-transactions-are-processed"></a>Zpracování transakcí
 
 Nejdřív Microsoft zruší stávající rezervaci a náhrad poměrně velikost pro tuto rezervaci. Pokud dojde systému exchange, zpracování nového nákupu. Společnost Microsoft zpracovává finanční prostředky pomocí jedné z následujících metod, v závislosti na typu vašeho účtu a platby:
 
@@ -49,7 +50,7 @@ Peníze se přidá do peněžních závazků pro výměnu a náhrad Pokud původ
 
 Pokud původnímu nákupu bylo provedeno jako Nadlimitní využití, společnost Microsoft vydává dobropis.
 
-### <a name="pay-as-you-go-invoice-payment-customers-and-cloud-solution-provider-program"></a>Zákazníci s průběžnými platbami faktury platby a programu Cloud solution provider
+### <a name="pay-as-you-go-invoice-payments-and-csp-program"></a>Platby fakturami průběžných platbách a programu CSP
 
 Původní fakturu nákupu rezervace se zruší a vytvoří novou fakturu náhradu. Pro výměny informací zobrazuje nový faktury náhrady a nový nákup. Částka se upraví na nákup. Pokud pouze refundovat rezervaci, zůstane poměrné částky se společností Microsoft a dojde k přenastavení proti nákup budoucí rezervace.
 
@@ -74,7 +75,7 @@ Původní faktury se zruší a vytvoří novou fakturu. Z vaší platební karty
 - Pouze vlastníci rezervace může zpracovat refundaci. [Zjistěte, jak přidat nebo změnit uživatelům, kteří můžou spravovat rezervaci](billing-manage-reserved-vm-instance.md#add-or-change-users-who-can-manage-a-reservation).
 - Společnost Microsoft si vyhrazuje právo účtovat penalizace 12 % pro všechny vrátí, i když není v sankce aktuálně neúčtují žádné poplatky.
 
-## <a name="exchange-a-non-premium-storage-vm-reservation-for-a-premium-storage-reservation"></a>Výměna jiné úrovně než premium storage rezervaci virtuálních počítačů pro rezervaci úložiště úrovně premium
+## <a name="exchange-non-premium-storage-for-premium-storage"></a>Exchange bez premium storage pro storage úrovně premium
 
 Můžete si mohou vyměňovat rezervace zakoupit pro velikost virtuálního počítače, který nepodporuje odpovídající velikost virtuálního počítače, který nemá službu storage úrovně premium. Například _F1_ pro _F1s_. Chcete-li serveru exchange, přejděte na podrobnosti o rezervaci a klikněte na tlačítko **Exchange**. Exchange není resetování období rezervované instance nebo vytvořit novou transakci.
 

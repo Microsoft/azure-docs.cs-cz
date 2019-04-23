@@ -16,11 +16,11 @@ ms.date: 02/25/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 97bbb6b802f4a7a6378f283efd02cfb74873a903
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59266813"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60255780"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-lucidchart"></a>Kurz: Integrace Azure Active Directory s Lucidchart
 

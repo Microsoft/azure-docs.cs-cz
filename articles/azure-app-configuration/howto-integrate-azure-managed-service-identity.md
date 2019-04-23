@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/24/2019
 ms.author: yegu
-ms.openlocfilehash: c2afc96ca5f7e30d5474f66bdad0cfec88a89580
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 84dddf5ed9c31e8585480319af189d31e39163e5
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59700192"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59998987"
 ---
 # <a name="tutorial-integrate-with-azure-managed-identities"></a>Kurz: Integrace s Azure spravované identity
 
@@ -194,8 +194,6 @@ Poskytovatelé konfigurace aplikace pro rozhraní .NET Framework a jazyka Java S
 [!INCLUDE [azure-app-configuration-cleanup](../../includes/azure-app-configuration-cleanup.md)]
 
 ## <a name="next-steps"></a>Další postup
-
-V tomto kurzu jste přidali do Azure se identita spravované služby pro přístup ke konfiguraci aplikací pro zjednodušení a zlepšení Správa přihlašovacích údajů pro vaši aplikaci. Další informace o tom, jak používat konfiguraci aplikací, i nadále ukázky Azure CLI.
 
 > [!div class="nextstepaction"]
 > [Ukázky rozhraní příkazového řádku](./cli-samples.md)

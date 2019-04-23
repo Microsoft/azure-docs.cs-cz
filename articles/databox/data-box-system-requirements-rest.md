@@ -6,18 +6,18 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: article
-ms.date: 02/05/2019
+ms.date: 04/19/2019
 ms.author: alkohli
-ms.openlocfilehash: 5770cd9a4955013100b7e58698eed77da10c0583
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
-ms.translationtype: MT
+ms.openlocfilehash: 71e0ebf7d7851ae65a6fba67a1695d755fd98bb1
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58012253"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60004563"
 ---
 # <a name="azure-data-box-blob-storage-requirements"></a>Požadavky na úložiště Azure Data Box Blob
 
-Tento článek obsahuje seznam verzí rozhraní API služby Azure, sady SDK a nástrojů podporovaných pomocí služby Data Box Blob storage. Pole objektů Blob úložiště dat poskytuje funkce správy objektů blob se sémantikou konzistentních s Azure. Tento článek shrnuje také známé rozdíly úložiště objektů Blob v Azure Data Box ze služby Azure Storage.
+Tento článek obsahuje seznam verzí rozhraní API služby Azure, klientské knihovny Azure a nástrojů podporovaných pomocí služby Data Box Blob storage. Pole objektů Blob úložiště dat poskytuje funkce správy objektů blob se sémantikou konzistentních s Azure. Tento článek shrnuje také známé rozdíly úložiště objektů Blob v Azure Data Box ze služby Azure Storage.
 
 Doporučujeme, abyste si informace o pečlivě před připojení k úložišti objektů Blob pole Data a pak zpátky na ni odkazovat podle potřeby.
 
@@ -38,7 +38,7 @@ Doporučujeme, abyste si informace o pečlivě před připojení k úložišti o
 
 S úložištěm objektů Blob Data pole jsou podporovány následující verze rozhraní API služby Azure Storage:
 
-Verze Public preview (Azure Data Box 1.8 a vyšší)
+Azure Data Box 1.8 a vyšší
 
 - [2017-11-09](/rest/api/storageservices/version-2017-11-09)
 - [2017-07-29](/rest/api/storageservices/version-2017-07-29)
@@ -46,20 +46,7 @@ Verze Public preview (Azure Data Box 1.8 a vyšší)
 - [2016-05-31](/rest/api/storageservices/version-2016-05-31)
 - [2015-12-11](/rest/api/storageservices/version-2015-12-11)
 - [2015-07-08](/rest/api/storageservices/version-2015-07-08)
-- [2015-04-05](/rest/api/storageservices/version-2015-04-05)
-
-## <a name="supported-sdk-versions"></a>Podporované verze sady SDK
-
-|     Klientská knihovna     |     Úložiště objektů Blob pole data podporovaná verze     |     Odkaz             |     Koncový bod specifikace         |
-|------------------------|-------------------------------------------------|---------------------------------------------|------------------------------------|
-|    .NET                |    Z 6.2.0 k 8.7.0.                         |    Balíček Nuget:   https://www.nuget.org/packages/WindowsAzure.Storage/ <br>Verze Githubu:   https://github.com/Azure/azure-storage-net/releases                                                                      |    souboru app.config                 |
-|    Java                |    Z 4.1.0 k 6.1.0                          |    Maven balíček:   https://mvnrepository.com/artifact/com.microsoft.azure/azure-storage   <br>Verze Githubu:   https://github.com/Azure/azure-storage-java/releases                                                      |    Nastavení připojovací řetězce         |
-|    Node.js             |    Z 1.1.0 k 2.7.0                          |    Odkaz na NPM:   https://www.npmjs.com/package/azure-storage   (Příklad: spuštění "npm nainstalujte azure-storage@2.7.0")   <br>Verze Githubu:   https://github.com/Azure/azure-storage-node/releases                            |    Deklarace instance služby    |
-|    C++                 |    Z 2.4.0 k 3.1.0                          |    Balíček Nuget:   https://www.nuget.org/packages/wastorage.v140/   <br>Verze Githubu:   https://github.com/Azure/azure-storage-cpp/releases                                                                            |    Nastavení připojovací řetězce         |
-|    PHP                 |    Z 0.15.0 nastavená na 1.0.0                         |    Verze Githubu:   https://github.com/Azure/azure-storage-php/releases   <br>Instalace přes Composer (viz podrobnosti níže)                                                                                                   |    Nastavení připojovací řetězce         |
-|    Python              |    Z 0.30.0 nastavená na 1.0.0                         |    Verze Githubu:   https://github.com/Azure/azure-storage-python/releases                                                                                                                                              |    Deklarace instance služby    |
-|    Ruby                |    Z 0.12.1 na 1.0.1                         |    Balíček RubyGems:<br>Běžné:   https://rubygems.org/gems/azure-storage-common/   <br>Objekt BLOB: https://rubygems.org/gems/azure-storage-blob/      <br>Verze Githubu:   https://github.com/Azure/azure-storage-ruby/releases    |                                   |
-
+- [2015-04-05](/rest/api/storageservices/version-2015-04-05) |
 ## <a name="supported-azure-client-libraries"></a>Podporované klientské knihovny Azure
 
 Pro úložiště objektů Blob pole dat jsou konkrétní klientské knihovny a požadavky na příponu určitého koncového bodu. Koncové body pole datový objekt Blob úložiště nemají úplná parita s nejnovější verzí služby REST API služby Azure Blob Storage, najdete v článku [podporované verze pro Azure Data Box 1.8 a vyšší](#supported-api-versions). Klientské knihovny pro úložiště musíte mít na paměti, která je kompatibilní s rozhraním REST API verze.
@@ -68,12 +55,12 @@ Pro úložiště objektů Blob pole dat jsou konkrétní klientské knihovny a p
 
 | Klientská knihovna     |Úložiště objektů Blob pole data podporovaná verze     | Odkaz   |     Koncový bod specifikace      |
 |--------------------|--------------------------------------------|--------|---------------------------------|
-|    .NET                |    8.7.0                                           |    Balíček Nuget:   https://www.nuget.org/packages/WindowsAzure.Storage/8.7.0    <br>Verze Githubu:   https://github.com/Azure/azure-storage-net/releases/tag/v8.7.0                                                                                                                                                                                               |    souboru app.config                 |
-|    Java                |    6.1.0                                           |    Maven balíček:   https://mvnrepository.com/artifact/com.microsoft.azure/azure-storage/6.1.0   <br>Verze Githubu:   https://github.com/Azure/azure-storage-java/releases/tag/v6.1.0                                                                                                                                                                              |    Nastavení připojovací řetězce         |
-|    Node.js             |    2.7.0                                           |    Odkaz na NPM:   https://www.npmjs.com/package/azure-storage   (Spuštění: Nainstalujte npm azure-storage@2.7.0)   <br>Verze Githubu:   https://github.com/Azure/azure-storage-node/releases/tag/v2.7.0                                                                                                                                                                        |    Deklarace instance služby    |
-|    C++                 |    3.1.0                                           |    Balíček Nuget:   https://www.nuget.org/packages/wastorage.v140/3.1.0   <br>Verze Githubu:   https://github.com/Azure/azure-storage-cpp/releases/tag/v3.1.0                                                                                                                                                                                                     |    Nastavení připojovací řetězce         |
-|    PHP                 |    1.0.0                                           |    Verze Githubu:<br>Běžné: https://github.com/Azure/azure-storage-php/releases/tag/v1.0.0-common   <br>Objekt BLOB: https://github.com/Azure/azure-storage-php/releases/tag/v1.0.0-blob      <br>Instalace přes Composer (Chcete-li získat další informace, viz podrobnosti níže.)                                                                                                             |    Nastavení připojovací řetězce         |
-|    Python              |    1.0.0                                           |    Verze Githubu:<br>Běžné:   https://github.com/Azure/azure-storage-python/releases/tag/v1.0.0-common <br>Objekt BLOB:   https://github.com/Azure/azure-storage-python/releases/tag/v1.0.0-blob                                                                                                                                                                          |    Deklarace instance služby    |
+|    .NET                |    9.2.0                                           |    Balíček Nuget:   https://www.nuget.org/packages/WindowsAzure.Storage/9.2.0    <br>Verze Githubu:   https://github.com/Azure/azure-storage-net/releases/tag/v9.2.0                                                                                                                                                                                               |    souboru app.config                 |
+|    Java                |    7.0.0                                           |    Maven balíček:   https://mvnrepository.com/artifact/com.microsoft.azure/azure-storage/6.1.0   <br>Verze Githubu:   https://github.com/Azure/azure-storage-java/releases/tag/v7.0.0                                                                                                                                                                              |    Nastavení připojovací řetězce         |
+|    Node.js             |    2.8.3                                           |    Odkaz na NPM:   https://www.npmjs.com/package/azure-storage   (Spuštění: `npm install azure-storage@2.7.0`)   <br>Verze Githubu:   https://github.com/Azure/azure-storage-node/releases/tag/v2.8.3                                                                                                                                                                        |    Deklarace instance služby    |
+|    C++                 |    5.2.0                                           |    Balíček Nuget:   https://www.nuget.org/packages/wastorage.v140/5.2.0   <br>Verze Githubu:   https://github.com/Azure/azure-storage-cpp/releases/tag/v5.2.0                                                                                                                                                                                                     |    Nastavení připojovací řetězce         |
+|    PHP                 |    1.2.0                                           |    Verze Githubu:<br>Běžné: https://github.com/Azure/azure-storage-php/releases/tag/v1.2.0-common   <br>Objekt BLOB: https://github.com/Azure/azure-storage-php/releases/tag/v1.2.0-blob      <br>Instalace přes Composer (Chcete-li získat další informace, viz podrobnosti níže.)                                                                                                             |    Nastavení připojovací řetězce         |
+|    Python              |    1.1.0                                           |    Verze Githubu:<br>Běžné:   https://github.com/Azure/azure-storage-python/releases/tag/v1.0.0-common <br>Objekt BLOB:   https://github.com/Azure/azure-storage-python/releases/tag/v1.1.0-blob                                                                                                                                                                          |    Deklarace instance služby    |
 |    Ruby                |    1.0.1                                           |    Balíček RubyGems:<br>Běžné:   https://rubygems.org/gems/azure-storage-common/versions/1.0.1   <br>Objekt BLOB: https://rubygems.org/gems/azure-storage-blob/versions/1.0.1         <br>Verze Githubu:<br>Běžné: https://github.com/Azure/azure-storage-ruby/releases/tag/v1.0.1-common   <br>Objekt BLOB: https://github.com/Azure/azure-storage-ruby/releases/tag/v1.0.1-blob          |    Nastavení připojovací řetězce         |
 
 
@@ -81,22 +68,22 @@ Pro úložiště objektů Blob pole dat jsou konkrétní klientské knihovny a p
 ### <a name="install-php-client-via-composer---current"></a>Instalace klienta PHP prostřednictvím autora – aktuální
 
 Chcete-li nainstalovat prostřednictvím autora: (take blob jako příklad).
-Vytvořte soubor s názvem souboru composer.json v kořenovém adresáři projektu s následujícím kódem:
+1. Vytvořte soubor s názvem souboru composer.json v kořenovém adresáři projektu s následujícím kódem:
 
-```
- {
-   "require": {
-   "Microsoft/azure-storage-blob":"1.0.0"
-   }
-```
+    ```
+    {
+    "require": {
+    "Microsoft/azure-storage-blob":"1.2.0"
+    }
+    ```
 
-Stáhněte si `composer.phar` do kořenového adresáře projektu.
+2. Stáhněte si `composer.phar` do kořenového adresáře projektu.
 
-Spustit: Nainstalujte php composer.phar.
+3. Spustit: Nainstalujte php composer.phar.
 
 ### <a name="endpoint-declaration"></a>Koncový bod deklarace
 
-Koncový bod úložiště objektů Blob v Azure Data Box obsahuje dvě části: název oblasti a domény zařízení Data Box. V poli datový objekt Blob storage SDK, je výchozí koncový bod \<Sériové č. zařízení >. microsoftdatabox.com.  Další informace o koncový bod služby blob service, přejděte na [připojit přes pole datový objekt Blob úložiště](data-box-deploy-copy-data-via-rest.md).
+Koncový bod úložiště objektů Blob v Azure Data Box obsahuje dvě části: název oblasti a domény zařízení Data Box. V poli datový objekt Blob storage SDK, je výchozí koncový bod `\<serial no. of the device>.microsoftdatabox.com`.  Další informace o koncový bod služby blob service, přejděte na [připojit přes pole datový objekt Blob úložiště](data-box-deploy-copy-data-via-rest.md).
  
 ## <a name="examples"></a>Příklady
 

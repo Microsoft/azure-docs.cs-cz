@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/08/2018
 ms.author: cynthn
-ms.openlocfilehash: 24cff3a2ec4d0bed7a030ca430eaa698eb4a7325
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 7fa903f65a6c7d244ff424eae4a0def258b50bbc
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59278764"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59994703"
 ---
 # <a name="create-a-virtual-machine-scale-set-that-uses-availability-zones"></a>Vytvoření škálovací sady virtuálního počítače, který používá zóny dostupnosti
 
@@ -62,7 +62,7 @@ Když nasadíte škálovací sadu virtuálních počítačů, můžete použít 
 
 Při vytváření škálovací sady v jedné oblasti, můžete ovládací prvek zóně, ve které všechny tyto instance virtuálních počítačů v a spravuje škálovací sady a pravidla automatického škálování provedou jenom v rámci této zóny. Zónově redundantní škálovací sada vám umožní vytvářet jedné škálovací sadě, která zahrnuje více zón. Při vytváření instancí virtuálních počítačů se ve výchozím nastavení jsou rovnoměrně vyvažují napříč zónami. Dojde k výpadku v jedné ze zón, škálovací sady nejsou škálovat automaticky na zvýšení kapacity. Osvědčený postup je nakonfigurovat pravidla automatického škálování podle využití procesoru nebo paměti. Pravidla automatického škálování by umožnilo škálovací sady na ztrátu instancí virtuálních počítačů v této jednu zónu horizontálním navýšením kapacity nových instancí ve zbývajících provozní zónách.
 
-K používání zón dostupnosti, musí být vytvořené škálovací sady v [podporované oblasti Azure](../availability-zones/az-overview.md#regions-that-support-availability-zones). Můžete vytvořit škálovací sadu, která používá zón dostupnosti s jedním z následujících metod:
+K používání zón dostupnosti, musí být vytvořené škálovací sady v [podporované oblasti Azure](../availability-zones/az-overview.md#services-support-by-region). Můžete vytvořit škálovací sadu, která používá zón dostupnosti s jedním z následujících metod:
 
 - [Azure Portal](#use-the-azure-portal)
 - Azure CLI

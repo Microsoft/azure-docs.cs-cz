@@ -5,15 +5,15 @@ services: storage
 author: xyh1
 ms.service: storage
 ms.topic: article
-ms.date: 03/26/2019
+ms.date: 04/18/2019
 ms.author: hux
 ms.subservice: blobs
-ms.openlocfilehash: 32328b89e8a220269f0d07c3700566db5b899d5b
-ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
-ms.translationtype: MT
+ms.openlocfilehash: 7fd9992db79b2517256d85ca3fd8f3bf409afa48
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58445691"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59996018"
 ---
 # <a name="store-business-critical-data-in-azure-blob-storage"></a>Store důležitých podnikových dat ve službě Azure Blob storage
 
@@ -41,7 +41,7 @@ Neměnné úložiště podporuje následující funkce:
 
 - **Konfigurace na úrovni kontejneru**: Uživatelé můžou konfigurovat zásady uchovávání informací podle času a blokování z právních důvodů značek na úrovni kontejneru. S použitím jednoduché nastavení na úrovni kontejneru, uživatel může vytvořit a zamknout zásady uchovávání informací podle času, rozšíření intervaly uchovávání informací, nastavení a vymazat právních a další. Tyto zásady platí pro všechny objekty BLOB v kontejneru, stávající i nové.
 
-- **Podpora protokolování auditu**: Každý kontejner obsahuje protokolu auditu. Zobrazuje až o pěti uchovávání informací podle času příkazy pro zásady uzamčené uchovávání informací podle času s délkou maximálně tři protokoly pro rozšíření interval uchovávání informací. Protokol pro uchovávání informací podle času, obsahuje ID uživatele, typ příkazu, časová razítka a interval uchovávání informací. Pro právních důvodů protokol obsahuje ID uživatele, typ příkazu, časová razítka a značky blokování z právních důvodů. Tento protokol se uchovávají po dobu jeho existence kontejneru, v souladu s pokyny k dodržování legislativních 17a-4(f) Sekundu. [Protokolu aktivit Azure](../../azure-monitor/platform/activity-logs-overview.md) ukazuje komplexnější protokolu všechny aktivity rovina řízení; při povolování [diagnostické protokoly Azure](../../azure-monitor/platform/diagnostic-logs-overview.md) uchovává a zobrazuje operace roviny dat. Zodpovídá za uživatele k ukládání těchto protokolů trvale, jak může být nezbytný pro zákonné nebo jiné účely.
+- **Podpora protokolování auditu**: Každý kontejner obsahuje zásady protokolu auditu. Zobrazuje až sedm podle času uchování příkazy pro zásady uzamčené uchovávání informací podle času a obsahuje ID uživatele, typ příkazu, časová razítka a interval uchovávání informací. Pro právních důvodů protokol obsahuje ID uživatele, typ příkazu, časová razítka a značky blokování z právních důvodů. Tento protokol se uchovávají po dobu životnosti zásady, v souladu s pokyny k dodržování legislativních 17a-4(f) Sekundu. [Protokolu aktivit Azure](../../azure-monitor/platform/activity-logs-overview.md) ukazuje komplexnější protokolu všechny aktivity rovina řízení; při povolování [diagnostické protokoly Azure](../../azure-monitor/platform/diagnostic-logs-overview.md) uchovává a zobrazuje operace roviny dat. Zodpovídá za uživatele k ukládání těchto protokolů trvale, jak může být nezbytný pro zákonné nebo jiné účely.
 
 ## <a name="how-it-works"></a>Jak to funguje
 
@@ -82,15 +82,28 @@ V následující tabulce jsou uvedeny typy operace objektů blob, které jsou za
 
 <sup>1</sup> aplikace umožňuje tyto operace jednou vytvořit nový objekt blob. Všechny následné přepsat operace na existující cestu objektů blob v kontejneru prvku neměnné nejsou povoleny.
 
+## <a name="supported-values"></a>Podporované hodnoty
+
+### <a name="time-based-retention"></a>Uchovávání informací podle času
+- Maximální počet kontejnerů pomocí uzamčené podle času neměnné zásady pro účet úložiště je 1 000.
+- Minimální interval je 1 den. Maximální počet je 146,000 dnů (400 let).
+- Maximální počet úprav rozšířit interval uchovávání informací pro uzamčené podle času neměnné zásady pro kontejner, je 5.
+- Pro kontejner zachováno maximálně 7 protokoly auditu zásady uchovávání informací podle času po dobu trvání zásady.
+
+### <a name="legal-hold"></a>Blokování z právních důvodů
+- Maximální počet kontejnerů pomocí nastavení skupiny s povinností uchování pro účet úložiště je 1 000.
+- Pro kontejner maximálního počtu značek skupiny s povinností uchování je 10.
+- Minimální délka značku blokování z právních důvodů je 3 alfanumerické znaky. Maximální délka je 23 alfanumerických znaků.
+- Pro kontejner podržte maximálně 10 právní zásady auditu, které protokoly se uchovávají po dobu trvání zásady.
+
 ## <a name="pricing"></a>Ceny
 
 Neexistuje žádné další poplatky za použití této funkce. Stejným způsobem jako regulární proměnlivých dat vychází z neměnnými daty. Podrobnosti o cenách Azure Blob Storage, najdete v článku [stránce s cenami služby Azure Storage](https://azure.microsoft.com/pricing/details/storage/blobs/).
 
 ## <a name="getting-started"></a>Začínáme
-Neměnné storage je dostupné jenom pro obecné účely v2 a účty Blob Storage. Tyto účet se musí spravovat přes [Azure Resource Manageru](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview). Informace o upgradu existující obecné účely v1 účtu služby storage najdete v tématu [upgradovat účet úložiště](../common/storage-account-upgrade.md).
+Neměnné storage je dostupné jenom pro obecné účely v2 a účty Blob Storage. Tyto účty musí být řízeny prostřednictvím [Azure Resource Manageru](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview). Informace o upgradu existující obecné účely v1 účtu služby storage najdete v tématu [upgradovat účet úložiště](../common/storage-account-upgrade.md).
 
 Nejnovější verze [webu Azure portal](https://portal.azure.com), [rozhraní příkazového řádku Azure](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest), a [prostředí Azure PowerShell](https://github.com/Azure/azure-powershell/releases) podporují neměnné úložiště pro úložiště objektů Blob v Azure. [Podpora knihovny klienta](#client-libraries) je také k dispozici.
-
 
 ### <a name="azure-portal"></a>portál Azure
 
@@ -152,16 +165,6 @@ Tyto klientské knihovny podporují neměnné úložiště pro úložiště obje
 - [Klientská knihovna Python verze 2.0.0 verze Release Candidate, 2 a novější](https://pypi.org/project/azure-mgmt-storage/2.0.0rc2/)
 - [Klientské knihovny pro Javu](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/storage/resource-manager/Microsoft.Storage/preview/2018-03-01-preview)
 
-## <a name="supported-values"></a>Podporované hodnoty
-
-- Minimální interval je za jeden den. Maximální počet je 146,000 dnů (400 let).
-- Maximální počet kontejnerů uzamčené neměnné zásadami pro účet úložiště je 1 000.
-- Maximální počet kontejnerů pomocí nastavení skupiny s povinností uchování pro účet úložiště je 1 000.
-- Pro kontejner maximálního počtu značek skupiny s povinností uchování je 10.
-- Maximální délka značku blokování z právních důvodů je 23 alfanumerických znaků. Minimální délka je tři znaky.
-- Pro kontejner je maximální počet povolených uchování interval rozšíření pro uzamčené neměnné zásady tři.
-- Pro kontejner s uzamčené neměnné zásady uchování maximálně pět protokoly zásad uchovávání informací podle času a maximálně 10 právní zásady, které protokoly se uchovávají po dobu trvání kontejneru.
-
 ## <a name="faq"></a>Nejčastější dotazy
 
 **Můžete uvést dokumentaci ČERV dodržování předpisů?**
@@ -178,7 +181,7 @@ Ne, můžete použít neměnné úložiště pomocí jakékoli existující nebo
 
 **Můžete použít skupiny s povinností uchování i zásady uchovávání informací podle času?**
 
-Kontejner můžete mít skupiny s povinností uchování a zásadu uchovávání informací podle času ve stejnou dobu. Všechny objekty BLOB v tomto kontejneru zůstat v neměnného stavu, dokud všechny právních důvodů jsou vymazány, i v případě, že vypršela platnost jejich efektivní uchovávají. Naopak objekt blob zůstanou v neměnného stavu do vypršení platnosti doby uchování efektivní, i v případě, že byly odstraněny všechny právních důvodů.
+Ano, kontejner může mít skupiny s povinností uchování a zásadu uchovávání informací podle času, ve stejnou dobu. Všechny objekty BLOB v tomto kontejneru zůstat v neměnného stavu, dokud všechny právních důvodů jsou vymazány, i v případě, že vypršela platnost jejich efektivní uchovávají. Naopak objekt blob zůstanou v neměnného stavu do vypršení platnosti doby uchování efektivní, i v případě, že byly odstraněny všechny právních důvodů.
 
 **Jsou určeny pouze pro soudního řízení zásad blokování z právních důvodů nebo existují jiné scénáře použití?**
 
@@ -202,13 +205,13 @@ V případě neuhrazení zásady uchovávání informací normální data použi
 
 **Nabízíte zkušební období nebo období odkladu pouze na vyzkoušení této funkce?**
 
-Ano. Při prvním vytvoření zásady uchovávání informací podle času je *odemknout* stavu. V tomto stavu můžete provádět požadované změny pro interval uchovávání informací, jako je například zvýšení nebo snížení a dokonce odstranit zásady. Jakmile se zásady uzamknou, zůstane uzamčena než interval uchovávání informací vyprší. Tato uzamčená zásada zabraňuje odstranění a změny interval uchovávání informací. Důrazně doporučujeme používat *odemknout* pouze pro zkušební účely a zamknout zásady v období 24 hodin. Tyto postupy umožňují v souladu s Sekundu 17a-4(f) a nařízení.
+Ano. Při prvním vytvoření zásady uchovávání informací podle času je v *odemknout* stavu. V tomto stavu můžete provádět požadované změny pro interval uchovávání informací, jako je například zvýšení nebo snížení a dokonce odstranit zásady. Jakmile se zásady uzamknou, zůstane uzamčena než interval uchovávání informací vyprší. Tato uzamčená zásada zabraňuje odstranění a změny interval uchovávání informací. Důrazně doporučujeme používat *odemknout* pouze pro zkušební účely a zamknout zásady v období 24 hodin. Tyto postupy umožňují v souladu s Sekundu 17a-4(f) a nařízení.
 
 **Můžete použít obnovitelné odstranění vedle zásady neměnná služba blob?**
 
 Ano. [Obnovitelné odstranění pro úložiště objektů Blob v Azure](storage-blob-soft-delete.md) platí pro všechny kontejnery v rámci účtu úložiště bez ohledu na skupiny s povinností uchování a zásady uchovávání informací podle času. Doporučujeme povolit obnovitelného odstranění pro zvýšení ochrany před veškeré neměnná ČERV zásady se použijí a potvrzení. 
 
-**Je tato funkce dostupná v národních cloudech a cloudech pro státní správu?**
+**Pokud je funkce k dispozici?**
 
 Neměnné storage je dostupné v oblastech Azure veřejné, Číny a vládního. Pokud neměnné úložiště není ve vaší oblasti k dispozici, obraťte se prosím na podporu a e-mailu azurestoragefeedback@microsoft.com.
 

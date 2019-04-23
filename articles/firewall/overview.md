@@ -10,11 +10,11 @@ ms.date: 3/29/2019
 ms.author: victorh
 Customer intent: As an administrator, I want to evaluate Azure Firewall so I can determine if I want to use it.
 ms.openlocfilehash: 7f313af75e78db8a60fe6864c41cd8e6c5a3ad9b
-ms.sourcegitcommit: 956749f17569a55bcafba95aef9abcbb345eb929
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58629949"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60193026"
 ---
 # <a name="what-is-azure-firewall"></a>Co je brána Azure Firewall?
 
@@ -54,7 +54,7 @@ Značka služby představuje skupinu předpon IP adres a tím pomáhá minimaliz
 
 ### <a name="threat-intelligence"></a>Analýza hrozeb
 
-Filtrování podle intelligence hrozeb je možné povolit pro bránu firewall, aby upozornění a zakazují provoz z/do známé škodlivé IP adresy a domény. IP adresy a domény pocházejí z analýzy hrozeb Microsoft informačního kanálu.
+Pro bránu firewall můžete povolit filtrování na základě analýzy hrozeb, které bude upozorňovat na provoz směřující z nebo do známých škodlivých IP adres nebo domén a odepírat takový provoz. Tyto IP adresy a domény se přebírají z informačního kanálu analýzy hrozeb Microsoftu.
 
 ### <a name="outbound-snat-support"></a>Podpora pro odchozí SNAT
 

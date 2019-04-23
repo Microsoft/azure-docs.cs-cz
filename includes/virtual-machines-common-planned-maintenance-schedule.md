@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
 ms.openlocfilehash: c7fe0d6f8e03501cca7a8b98f95286b6a21c0476
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55735722"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60232798"
 ---
 ## <a name="multi-and-single-instance-vms"></a>Virtuální počítače jedné Instance a více
 Mnoho zákazníků a systémem Azure počet je důležité, můžete naplánovat při své virtuální počítače této oblasti podstupovali plánované údržby kvůli výpadku – přibližně 15 minut –, který nastane během údržby. Můžete použít skupiny dostupnosti, které pomáhá řídit při zřízené virtuální počítače přijímat plánované údržby.

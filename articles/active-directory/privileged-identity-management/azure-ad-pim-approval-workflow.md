@@ -17,11 +17,11 @@ ms.author: rolyon
 ms.custom: pim
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 47e9033b33c70a72a1685696f75a442e88eed033
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59493565"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60289720"
 ---
 # <a name="approve-or-deny-requests-for-azure-ad-roles-in-pim"></a>Schválit nebo zamítnout žádosti pro role Azure AD v PIM
 

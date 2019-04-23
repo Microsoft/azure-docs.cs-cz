@@ -10,12 +10,12 @@ ms.subservice: bing-web-search
 ms.topic: article
 ms.date: 09/25/2018
 ms.author: aahi
-ms.openlocfilehash: 9cd9adfd9d882f3781f519846ce22767123da36c
-ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
-ms.translationtype: MT
+ms.openlocfilehash: f5e75b30a7c196bb238c7bcb9c4704c1aec5e771
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58652259"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59999112"
 ---
 # <a name="language-and-region-support-for-the-bing-web-search-api"></a>Podpora jazyka a oblasti pro rozhraní API webové vyhledávání Bingu
 
@@ -40,7 +40,7 @@ Alternativně můžete zadat na trh `mkt` parametr dotazu a kód z **trhy** tabu
 |Finsko|FI|
 |Francie|FR|
 |Německo|DE|
-|Hongkong|HK|
+|Hongkong – zvláštní správní oblast|HK|
 |Indie|IN|
 |Indonésie|ID|
 |Itálie|IT|
@@ -83,7 +83,7 @@ Alternativně můžete zadat na trh `mkt` parametr dotazu a kód z **trhy** tabu
 |Finsko|Finština|fi-FI|
 |Francie|Francouzština|fr-FR|
 |Německo|Němčina|de-DE|
-|Hongkong|Tradiční čínština|zh-HK|
+|Hongkong – zvláštní správní oblast|Tradiční čínština|zh-HK|
 |Indie|Angličtina|en-IN|
 |Indonésie|Angličtina|cs ID|
 |Itálie|italština|IT-IT|

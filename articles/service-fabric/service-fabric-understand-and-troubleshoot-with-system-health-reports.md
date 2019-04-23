@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 2/28/2018
 ms.author: oanapl
-ms.openlocfilehash: 4322fd60bb30b9eb6ac18c72e75127006acf5149
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
-ms.translationtype: MT
+ms.openlocfilehash: caeef04a27cec7bbeda5dd96335d9b7bd1a8eca0
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59528182"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60007453"
 ---
 # <a name="use-system-health-reports-to-troubleshoot"></a>Řešení problémů pomocí sestav o stavu systému
 Komponenty služby Azure Service Fabric vám na všechny entity v clusteru předem připravené sestav stravu systému. [Health store](service-fabric-health-introduction.md#health-store) vytvoří a odstraní entity, které jsou založeny na sestavách systému. Je také uspořádány v hierarchii, který explicitně zaznamenává interakce entity.
@@ -29,7 +29,7 @@ Komponenty služby Azure Service Fabric vám na všechny entity v clusteru před
 > 
 > 
 
-Systémovými stavovými sestavami poskytují přehled o clusteru a funkčnost aplikace a příznak problémy. Pro aplikace a služby systémovými stavovými sestavami ověřte, že entity jsou implementovány a chovají správně z hlediska Service Fabric. Sestavy neposkytují žádné sledování stavu obchodní logiku, služby nebo detekce ukončování "zamrzlých" procesů. Uživatel služby obohatit tak data stavu informace specifické pro jejich logiku.
+Systémovými stavovými sestavami poskytují přehled o clusteru a funkčnost aplikace a příznak problémy. Pro aplikace a služby systémovými stavovými sestavami ověřte, že entity jsou implementovány a chovají správně z hlediska Service Fabric. Sestavy neposkytují žádné sledování stavu obchodní logiku, služby nebo detekce procesy, které nereagují. Uživatel služby obohatit tak data stavu informace specifické pro jejich logiku.
 
 > [!NOTE]
 > Sestav o stavu odeslané watchdogs uživatel vidí jenom *po* součásti systému vytvoření entity. Při odstranění entity úložišti health automaticky odstraní všechny sestav stavu s ním spojená. Totéž platí, když je vytvořena nová instance entity. Příkladem je, když je vytvořena nová instance repliky stavové trvalé služby. Všechny sestavy přidružené k původní instanci se odstraní a vymaže se z úložiště.

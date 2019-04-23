@@ -16,12 +16,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/11/2018
 ms.author: mikeray
-ms.openlocfilehash: 3bb829e7cc99ee0d6e2d02f7ed3880d6c0226123
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
-ms.translationtype: MT
+ms.openlocfilehash: a758cce85645e72bfd9434a69393133d3da6b57d
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58486314"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60011363"
 ---
 # <a name="configure-sql-server-failover-cluster-instance-on-azure-virtual-machines"></a>Konfigurace Instance clusteru převzetí služeb při selhání SQL serveru na virtuálních počítačích Azure
 
@@ -64,7 +64,7 @@ Kompletní informace o licencování SQL serveru najdete v tématu [ceny](https:
 
 Celé řešení v Azure můžete vytvořit ze šablony. Příklad šablony je k dispozici na Githubu [šablony pro rychlý start Azure](https://github.com/MSBrett/azure-quickstart-templates/tree/master/sql-server-2016-fci-existing-vnet-and-ad). V tomto příkladu není určená nebo testování pro jakékoli konkrétní úlohy. Můžete spustit šablonu pro vytváření SQL Server FCI s S2D úložiště připojené k vaší doméně. Můžete vyhodnotit šablony a upravit pro vaše záměry.
 
-## <a name="before-you-begin"></a>Před zahájením
+## <a name="before-you-begin"></a>Než začnete
 
 Existuje několik věcí, které potřebujete znát a několik věcí, které budete potřebovat na místě, než budete pokračovat.
 
@@ -399,7 +399,7 @@ Pokud chcete vytvořit nástroj pro vyrovnávání zatížení:
 
    - **Název**: Název sondy stavu.
    - **Protokol**: TCP.
-   - **Port**: Nastavte na dostupný port TCP. Tento port vyžaduje port brány firewall otevřít. Použití [stejný port](#ports) jste nastavili pro sondu stavu na bránu firewall.
+   - **Port**: Nastavit port, který jste vytvořili v bráně firewall pro sondu stavu v [tento krok](#ports). V příkladu v tomto článku se používá TCP port `59999`.
    - **Interval**: 5 sekund.
    - **Prahová hodnota špatného stavu**: 2 po sobě jdoucích selhání.
 
@@ -421,7 +421,7 @@ Pokud chcete vytvořit nástroj pro vyrovnávání zatížení:
    - **Sonda stavu**: Použijte sondu stavu, který jste nakonfigurovali v předchozích krocích.
    - **Trvalost relace**: Žádné.
    - **Časový limit (minuty) nečinnosti**: 4.
-   - **Plovoucí IP adresa (přímá odpověď ze serveru vrácené)**: Povoleno
+   - **Plovoucí IP adresa (přímá odpověď ze serveru vrácené)**: Enabled
 
 1. Klikněte na **OK**.
 

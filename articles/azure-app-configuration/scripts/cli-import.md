@@ -15,11 +15,11 @@ ms.date: 02/24/2019
 ms.author: yegu
 ms.custom: mvc
 ms.openlocfilehash: 0df8e19d3c6f0680f1eb1b0157c3bee5c9841e4c
-ms.sourcegitcommit: 30a0007f8e584692fe03c0023fe0337f842a7070
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57575082"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60234406"
 ---
 # <a name="import-to-an-azure-app-configuration-store"></a>Importovat do úložiště Azure konfigurace aplikace
 

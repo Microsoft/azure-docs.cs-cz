@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/17/2018
 ms.author: spelluru
-ms.openlocfilehash: 2c15cac7897e25018057aa47cc2043050ed0ae5b
-ms.sourcegitcommit: b254db346732b64678419db428fd9eb200f3c3c5
-ms.translationtype: MT
+ms.openlocfilehash: cb5a08730b47cb5df3116aa4a54554ef0ee6f260
+ms.sourcegitcommit: c884e2b3746d4d5f0c5c1090e51d2056456a1317
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53413196"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60149746"
 ---
 # <a name="create-or-modify-labs-automatically-using-azure-resource-manager-templates-and-powershell"></a>Vytvoření a úpravy testovacích prostředí automaticky pomocí šablon Azure Resource Manageru a Powershellu
 
@@ -28,7 +28,7 @@ DevTest Labs poskytuje mnoho šablon Azure Resource Manageru a skripty prostřed
 Tento článek pomůže vás provede procesem použití těchto šablon a skripty pro automatizaci vytváření, úpravu a nasazení vaší laboratoře. Tento článek také se dozvíte, kde najdete další informace o tom, jak pomocí prostředí PowerShell provádět několik běžných úloh ve službě DevTest Labs.
 
 ## <a name="step-1-gather-your-templates-and-scripts"></a>Krok 1: Shromážděte šablony a skripty
-Můžete najít předem vytvořených [šablon Azure Resource Manageru](https://github.com/Azure/azure-devtestlab/tree/master/ARMTemplates) a [skripty prostředí PowerShell](https://github.com/Azure/azure-devtestlab/tree/master/Scripts) v našich veřejných [úložiště GitHub](https://github.com/Azure/azure-devtestlab). Použijte je jako-je, nebo si je přizpůsobit pro vaše potřeby a uložit je ve vašem vlastním [privátní úložiště Git](devtest-lab-add-artifact-repo.md).
+Můžete najít předem vytvořených [šablon Azure Resource Manageru](https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/QuickStartTemplates) a [skripty prostředí PowerShell](https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/Scripts) v našich veřejných [úložiště GitHub](https://github.com/Azure/azure-devtestlab). Použijte je jako-je, nebo si je přizpůsobit pro vaše potřeby a uložit je ve vašem vlastním [privátní úložiště Git](devtest-lab-add-artifact-repo.md).
 
 ## <a name="step-2-modify-your-azure-resource-manager-template"></a>Krok 2: Úprava šablony Azure Resource Manageru
 Můžete postupovat podle kroků uvedených v [vytvoření první šablony Azure Resource Manageru](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-create-first-template) Pokud nikdy jste vytvořili šablonu před.

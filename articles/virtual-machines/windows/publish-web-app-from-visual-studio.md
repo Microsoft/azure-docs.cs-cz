@@ -13,12 +13,12 @@ ms.workload: azure-vs
 ms.topic: conceptual
 ms.date: 11/03/2017
 ms.author: ghogen
-ms.openlocfilehash: d5fd6041f21700ffddd3b2c4755b7ce01691681e
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: 5298721b7f60cec677c22faf1b35011aab02defb
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44304078"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60204326"
 ---
 # <a name="publish-an-aspnet-web-app-to-an-azure-vm-from-visual-studio"></a>Publikování webové aplikace v ASP.NET do virtuálního počítače Azure ze sady Visual Studio
 
@@ -68,7 +68,7 @@ Následující část popisuje, jak publikovat existující webové aplikace ASP
 
 10. Podívejte se na okno výstupu a zkontrolovat průběh operace publikování.
 
-    ![Okno výstup]
+    ![Okno Výstup]
 
 11. Při úspěšném publikování spustí prohlížeči otevřít adresu URL nově publikovaného webu.
 
@@ -125,7 +125,7 @@ Pokud chcete nastavit kanál průběžného doručování s kanály Azure, pře�
 [Azure VM selektor]: ../../../includes/media/publish-web-app-from-visual-studio/ChooseVM-SelectVM.png
 [Nástroj WebDeploy přihlášení]: ../../../includes/media/publish-web-app-from-visual-studio/WebDeployLogin.png
 [Chyba certifikátu]: ../../../includes/media/publish-web-app-from-visual-studio/CertificateError.png
-[Okno výstup]: ../../../includes/media/publish-web-app-from-visual-studio/OutputWindow.png
+[Okno Výstup]: ../../../includes/media/publish-web-app-from-visual-studio/OutputWindow.png
 [Publikovat stránku – tlačítko Publikovat]: ../../../includes/media/publish-web-app-from-visual-studio/PublishPagePublishButton.png
 [Publikovat stránku – tlačítko Nastavení]: ../../../includes/media/publish-web-app-from-visual-studio/PublishPageSettingsButton.png
 [Publikovat nastavení – stránka připojení]: ../../../includes/media/publish-web-app-from-visual-studio/PublishSettingsConnectionPage.png

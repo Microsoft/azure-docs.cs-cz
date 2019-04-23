@@ -1,76 +1,109 @@
 ---
 title: Azure Cosmos DB zásadám indexování
-description: Zjistěte, jak funguje indexování ve službě Azure Cosmos DB. Zjistěte, jak konfigurovat a měnit zásady indexování pro automatické indexování a vyšší výkon.
-author: rimman
+description: Zjistěte, jak konfigurovat a měnit výchozí zásady pro automatické indexování a vyšší výkon ve službě Azure Cosmos DB indexování.
+author: ThomasWeiss
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 04/08/2019
-ms.author: rimman
-ms.openlocfilehash: 6998db1679e67f8ac4bf7c81ea9373c66a9618ee
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.author: thweiss
+ms.openlocfilehash: 67bc3076be91ade140b39b7dd8037299902546a9
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59278560"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60005090"
 ---
-# <a name="index-policy-in-azure-cosmos-db"></a>Zásady indexu ve službě Azure Cosmos DB
+# <a name="indexing-policies-in-azure-cosmos-db"></a>Zásady indexování ve službě Azure Cosmos DB
 
-Můžete přepsat výchozí zásady na kontejner služby Azure Cosmos indexování nakonfigurováním následující parametry:
+Každý kontejner ve službě Azure Cosmos DB, má zásady indexování, který určuje, jak položky kontejneru se má indexovat. Výchozí zásady pro indexování nově vytvořeny kontejnery indexy každou vlastnost každé položce, vynucování rozsah indexů pro libovolný řetězec nebo číslo, a zadejte prostorové indexy pro libovolný objekt GeoJSON bodu. To umožňuje získat vysokého výkonu dotazu bez nutnosti uvažovat o indexování a správou indexů předem.
 
-* **Zahrnout nebo vyloučit položky a cesty z indexu**: Můžete vyloučit nebo zahrnout konkrétní položky v indexu, při vložení nebo nahrazení položek v rámci kontejneru. Můžete také zahrnout nebo vyloučit určité cesty/vlastnosti indexovaných napříč kontejnery. Cesty může obsahovat jeden vzor zástupných znaků, například *.
+V některých případech můžete chtít přepsat toto automatické chování, aby lépe vyhovovala vašim požadavkům. Zásady indexování kontejneru můžete přizpůsobit tak, že nastavíte její *indexování režimu*a zahrnout nebo vyloučit *cesty vlastností*.
 
-* **Konfigurovat typy index**: Kromě toho rozsahu indexované cesty, můžete přidat jiné typy indexů, například prostorových.
+## <a name="indexing-mode"></a>Indexování režimu
 
-* **Konfigurace režimů index**: Pomocí zásady indexování v kontejneru můžete nakonfigurovat různé režimy indexování například *konzistentní* nebo *žádný*.
+Azure Cosmos DB podporuje dva režimy indexování:
 
-## <a name="indexing-modes"></a>Indexování režimy
+- **Konzistentní**: Pokud zásady indexování kontejneru je nastavena na konzistentní, index se aktualizuje synchronně, jak vytvářet, aktualizovat nebo odstranit položky. To znamená, že by se konzistence čtení dotazy [konzistence pro účet nakonfigurovaný](consistency-levels.md).
 
-Azure Cosmos DB podporuje dva režimy indexování, které můžete konfigurovat v kontejneru Azure Cosmos prostřednictvím zásady indexování:
+- **Žádný**: Pokud zásady indexování kontejneru je nastavena na hodnotu None, indexování efektivně zakázaná v tomto kontejneru. To se běžně používá, když kontejner se používá jako čistě úložiště dvojic klíč hodnota bez nutnosti sekundární indexy. Může také pomoct urychlení hromadnou operací vložení.
 
-* **Konzistentní**: Pokud zásady kontejneru Azure Cosmos je nastavená na *konzistentní*, dotazy na konkrétní kontejner postupujte podle stejné úrovně konzistence, jako je určeno pro čtení bod (například silná, ohraničená odolnost, relace, nebo konečné). 
+## <a name="including-and-excluding-property-paths"></a>Zahrnutí a vyloučení cesty vlastností
 
-  Index se aktualizuje synchronně při aktualizaci položky. Například insert, replace, aktualizace a operace odstranění na položku způsobí aktualizace indexu. Konzistentní indexování podporuje konzistentních dotazů za cenu vliv na propustnost zápisu. Snížení propustnosti zápisu, závisí na "cesty zahrnuty v indexu" a "úrovně konzistence." Konzistentní indexování režim je navržen tak, abyste měli přehled o všech aktualizacích index a okamžitě poskytovat dotazy.
+Vlastní zásady indexování můžete zadat vlastnost cesty, které jsou výslovně zahrnuty nebo vyloučeny ze indexování. Díky optimalizaci počet cest, která jsou indexována, můžete snížit velikost úložiště využitá službou kontejner a zlepšení latence operace zápisu. Tyto cesty jsou definovány následující [metody popsané v části Přehled indexování](index-overview.md#from-trees-to-property-paths) s těmito přídavky:
 
-* **Žádný**: Kontejner, který nemá žádný index režim nemá žádný index s ním spojená. To se běžně používá, pokud je databáze Azure Cosmos použít jako úložiště klíč / hodnota a položky jsou přístupné jenom podle jejich ID vlastnosti.
+- cesta, která vede na skalární hodnota (řetězec nebo číslo) končí `/?`
+- elementy v matici, jsou vyřešeny společně `/[]` zápis (místo `/0`, `/1` atd.)
+- `/*` zástupný znak můžete použít tak, aby odpovídaly elementy pod uzlem
 
-  > [!NOTE]
-  > Konfigurace režimu indexování jako *žádný* má vedlejší účinek vyřadit všechny stávající indexy. Tuto možnost používejte, pokud vaše vzorce přístupu vyžaduje ID nebo odkaz na sebe sama pouze.
+Znovu trvá stejný příklad:
 
-Úrovně konzistence dotazu se udržuje podobné standardních operací čtení. Databáze Azure Cosmos vrátí chybu, když odešlete dotaz na kontejner, který má *žádný* indexování režimu. Dotazy můžete spustit jako kontroly prostřednictvím explicitního **x-ms-documentdb-enable kontroly** záhlaví v rozhraní REST API nebo **EnableScanInQuery** vyžádat možnost pomocí sady .NET SDK. Některé dotazu funkce, jako je klauzule ORDER BY není momentálně podporované s **EnableScanInQuery**, protože se stanoví odpovídající index.
+    {
+        "locations": [
+            { "country": "Germany", "city": "Berlin" },
+            { "country": "France", "city": "Paris" }
+        ],
+        "headquarters": { "country": "Belgium", "employees": 250 }
+        "exports": [
+            { "city": "Moscow" },
+            { "city": "Athens" }
+        ]
+    }
+
+- `headquarters`společnosti `employees` cesta `/headquarters/employees/?`
+- `locations`" `country` cesta `/locations/[]/country/?`
+- Cesta k ničemu v rámci `headquarters` je `/headquarters/*`
+
+Cesta je explicitně obsažen v zásady indexování, je také nutné definovat index typy, které bude použito na tuto cestu a pro každý typ indexu, tento index se vztahuje na datový typ:
+
+| Typ indexu | Povolené cílové datové typy |
+| --- | --- |
+| Rozsah | Řetězec nebo číslo |
+| Spatial | Point, LineString nebo mnohoúhelníku |
+
+Například jsme zahrnuli `/headquarters/employees/?` cesty a určit, že `Range` indexu bude použito na tuto cestu pro obě `String` a `Number` hodnoty.
+
+### <a name="includeexclude-strategy"></a>Zahrnutí a vyloučení strategie
+
+Žádné zásady indexování musí obsahovat kořenová cesta `/*` jako vloženou nebo Vyloučená cesta.
+
+- Zahrnují kořenovou cestou za účelem selektivně vyloučit cesty, které není třeba indexovat. To je doporučená, protože umožňuje proaktivně indexovat žádné nové vlastnosti, který může být přidán do modelu služby Azure Cosmos DB.
+- Vylučte kořenovou cestou za účelem selektivně zahrnout cesty, které je třeba indexovat.
+
+Zobrazit [v této části](how-to-manage-indexing-policy.md#indexing-policy-examples) indexování příklady zásad.
 
 ## <a name="modifying-the-indexing-policy"></a>Úprava zásady indexování
 
-Ve službě Azure Cosmos DB můžete kdykoli aktualizovat zásady indexování kontejneru. Změna zásady indexování v kontejneru Azure Cosmos může vést ke změně tvaru index. Tato změna ovlivní cesty, které můžete indexovat, jejich přesnosti a modelu konzistence indexu samotný. Změna zásady indexování efektivně vyžaduje transformaci starého indexu do nového indexu.
+Zásady indexování kontejneru je aktualizovat v každém okamžiku [pomocí webu Azure portal nebo jeden z podporovaných sad SDK](how-to-manage-indexing-policy.md). Aktualizace zásady indexování aktivuje transformace od starého indexu do nového, která se provádí online i lokálně (takže žádné další úložný prostor se spotřebovává během operace). Index starou zásadu se efektivně transformuje na novou zásadu bez ovlivnění dostupnosti zápisu nebo ke kontejneru zřízené propustnosti. Index transformace je asynchronní operace a čas potřebný k dokončení závisí na zřízenou propustnost, počet položek a jejich velikost. 
 
-### <a name="index-transformations"></a>Index transformace
+> [!NOTE]
+> Probíhá vytvoření nového indexu, dotazy nesmí vracet odpovídající výsledky a udělá to bez vrátí všechny chyby. To znamená, že výsledky dotazu nemusí být konzistentní, dokud se nedokončí transformace indexu. Je možné sledovat průběh index transformace [pomocí jedné ze sad SDK](how-to-manage-indexing-policy.md).
 
-Všechny transformace indexu jsou prováděny online. Položek indexovaných za starou zásadu se efektivně transformují na nové zásady bez ovlivnění dostupnosti zápisu nebo ke kontejneru zřízené propustnosti. Konzistence čtení a zápisu operace, které se provádějí pomocí rozhraní REST API, SDK, nebo pomocí uložených procedur a aktivačních událostí nemá vliv při transformaci indexu.
+Pokud nové zásady indexování režim je nastaven na konzistentní, jiné indexování změny zásad lze použít během transformace indexu. Spuštění transformace indexu se dá zrušit tak, že nastavíte zásady indexování režim na hodnotu None (což bude okamžitě drop index).
 
-Změna zásady indexování je asynchronní operace a čas k dokončení operace závisí na počtu položek, zřízená propustnost a velikost položek. Probíhá vytvoření nového indexu, dotaz nemusí vrátit všechny odpovídající výsledky, v případě dotazů pomocí indexu, pro který je právě upravuje a dotazy nebudou nalezeny žádné chyby nebo selhání. Probíhá vytvoření nového indexu, dotazy jsou konzistentní bez ohledu na to indexování konfiguraci režimu. Po indexu transformace se dokončí, budete i nadále konzistentní výsledky. To platí pro dotazy vydané rozhraní, jako je například rozhraní REST API, SDK, nebo uložených procedur a aktivačních událostí. Transformace indexu se provádí asynchronně, na pozadí na replikách pomocí náhradních prostředků, které jsou k dispozici pro konkrétní repliky.
+## <a name="indexing-policies-and-ttl"></a>Zásady indexování a hodnota TTL
 
-Všechny transformace index probíhají na místě. Azure Cosmos DB nespravuje dvě kopie index. Žádné další místo na disku tak je vyžaduje nebo spotřebovanými v kontejnery, když dojde k transformaci indexu.
+[Time-to-Live (TTL) funkce](time-to-live.md) vyžaduje, aby byly aktivní v kontejneru je zapnuté indexování. To znamená, že:
 
-Po změně zásady indexování, změny se použijí u přesunout z původní index na nový index a primárně vycházejí indexování konfigurace režimu. Indexování konfigurace režimu hrají hlavní roli ve srovnání s další vlastnosti, jako je například zahrnutý/vyloučený cesty, index typy a přesnost.
+- není možné aktivovat TTL na kontejner, ve kterém indexování režim je nastaven na hodnotu None,
+- není možné nastavit indexování režim na hodnotu None na kontejner, kde se hodnota TTL aktivovat.
 
-Pokud staré a nové zásady indexování **konzistentní** indexování, databáze Azure Cosmos provede transformaci indexu online. Nelze použít jiné indexování změnu zásad, který má konzistentní indexování režimu, zatímco probíhá transformace. Při přesunu do žádné indexování režimu index se okamžitě ukončí. Přechod na hodnotu None je užitečné, když chcete zrušit transformaci v průběhu a začít pracovat s různé zásady indexování.
+Pro scénáře, kde žádná cesta k vlastnosti musí indexovat, ale hodnota TTL je nutné můžete použít zásady indexování pomocí:
 
-## <a name="modifying-the-indexing-policy---examples"></a>Úprava zásady indexování – příklady
+- indexování režim nastavený na konzistentní, a
+- žádná cesta součástí a
+- `/*` jako pouze Vyloučená cesta.
 
-Následující jsou nejběžnější případy použití, pokud chcete aktualizovat zásady indexování:
+## <a name="obsolete-attributes"></a>Zastaralé atributy
 
-* Pokud chcete mít konzistentní výsledky při normálním provozu, ale vrátit zpět **žádný** indexování režimu při importu dat hromadně.
+Při práci se zásadami indexování, může dojít k následující atributy, které jsou nyní zastaralé:
 
-* Pokud chcete začít používat funkce indexování na aktuální kontejnery Azure Cosmos. Můžete například použít geoprostorové dotazy, které vyžaduje typ prostorového indexu nebo ORDER BY / řetězec dotazy na rozsah, které vyžadují index typu rozsah řetězec.
-
-* Pokud chcete ručně vybrat vlastnosti, které mají indexovat a změnit v čase, chcete-li upravit pro vaše úlohy.
-
-* Pokud chcete ladit indexování přesnosti pro zlepšení výkonu dotazů nebo ke snížení spotřebovaného úložiště.
+- `automatic` Logická hodnota definované v kořenovém adresáři zásady indexování. Nyní je ignorována a může být nastaven na `true`, když používáte nástroj vyžaduje.
+- `precision` je číslo definované na úrovni index pro zahrnuté cesty. Nyní je ignorována a může být nastaven na `-1`, když používáte nástroj vyžaduje.
+- `hash` je index typ, který je nyní nahrazena druh rozsahu.
 
 ## <a name="next-steps"></a>Další postup
 
 Další informace o indexování v následujících článcích:
 
-* [Indexování – přehled](index-overview.md)
-* [Index typy](index-types.md)
-* [Index cesty](index-paths.md)
-* [Jak spravovat zásady indexování](how-to-manage-indexing-policy.md)
+- [Indexování – přehled](index-overview.md)
+- [Jak spravovat zásady indexování](how-to-manage-indexing-policy.md)

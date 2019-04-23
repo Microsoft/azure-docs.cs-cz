@@ -1,29 +1,29 @@
 ---
-title: Spusťte příkazy prostředí PowerShell nebo rozhraní příkazového řádku Azure v rámci identity Azure AD pro přístup k datům objektu blob a fronty | Dokumentace Microsoftu
-description: Azure CLI a Powershellu podporu přihlášení pomocí identity Azure AD ke spouštění příkazů na data objektů blob a fronty Azure Storage. Přístupový token je k dispozici pro relaci a použít k autorizaci volání operace. Oprávnění, závisí na roli RBAC přiřazenou k identitě služby Azure AD.
+title: Spusťte příkazy prostředí PowerShell nebo rozhraní příkazového řádku Azure pomocí přihlašovacích údajů Azure AD pro přístup k datům objektu blob nebo fronty | Dokumentace Microsoftu
+description: Azure CLI a Powershellu podporu přihlášení pomocí přihlašovacích údajů Azure AD ke spouštění příkazů na data objektů blob a fronty Azure Storage. Přístupový token je k dispozici pro relaci a použít k autorizaci volání operace. Oprávnění, závisí na role RBAC přiřazená k objektu zabezpečení služby Azure AD.
 services: storage
 author: tamram
 ms.service: storage
 ms.topic: article
-ms.date: 03/26/2019
+ms.date: 04/19/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: a0972beff48e07b6ce8afdcec10581300f59ed41
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 96be1e600c8d5895cc0eb5b058ce17f7265fa0a9
+ms.sourcegitcommit: c884e2b3746d4d5f0c5c1090e51d2056456a1317
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59786994"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60149644"
 ---
-# <a name="use-an-azure-ad-identity-to-access-blob-and-queue-data-with-cli-or-powershell"></a>Identity Azure AD pro přístup k datům objektu blob a fronty pomocí Powershellu nebo rozhraní příkazového řádku
+# <a name="run-azure-cli-or-powershell-commands-with-azure-ad-credentials-to-access-blob-or-queue-data"></a>Spusťte příkazy prostředí PowerShell nebo rozhraní příkazového řádku Azure pomocí přihlašovacích údajů Azure AD pro přístup k datům objektu blob nebo fronty
 
-Azure Storage poskytuje rozšíření pro Azure CLI a Powershellu, které vám umožní přihlásit a spuštění příkazů skriptu v rámci Azure Active Directory (Azure AD) identity. Identity Azure AD může být uživatele, skupinu nebo instanční objekt služby aplikace nebo může se jednat [spravované identity pro prostředky Azure](../../active-directory/managed-identities-azure-resources/overview.md). Můžete přiřadit oprávnění pro přístup k datům objektu blob a fronty k identitě služby Azure AD prostřednictvím řízení přístupu na základě role (RBAC). Další informace o rolích RBAC ve službě Azure Storage najdete v tématu [Správa přístupových práv k datům služby Azure Storage pomocí RBAC](storage-auth-aad-rbac.md).
+Azure Storage poskytuje rozšíření pro Azure CLI a Powershellu, které vám umožní přihlásit a spuštění příkazů skriptu s přihlašovacími údaji služby Azure Active Directory (Azure AD). Při přihlášení k Azure CLI nebo Powershellu pomocí přihlašovacích údajů Azure AD, je vrácena přístupového tokenu OAuth 2.0. Tento token slouží automaticky podle prostředí PowerShell nebo rozhraní příkazového řádku k autorizaci následná data operace s úložištěm objektů Blob nebo fronty. Pro podporované operace je už nebude potřeba předat klíč k účtu nebo token SAS pomocí příkazu.
 
-Při přihlášení k Azure CLI nebo Powershellu s Azure AD identity, je vrácena přístupového tokenu pro přístup k Azure Storage v rámci této identity. Tento token se pak automaticky použije pomocí Powershellu nebo rozhraní příkazového řádku k autorizaci operace využívající službu Azure Storage. Pro podporované operace je už nebude potřeba předat klíč k účtu nebo token SAS pomocí příkazu.
+Můžete přiřadit oprávnění k datům objektu blob a fronty k objektu zabezpečení Azure AD prostřednictvím řízení přístupu na základě role (RBAC). Další informace o rolích RBAC ve službě Azure Storage najdete v tématu [Správa přístupových práv k datům služby Azure Storage pomocí RBAC](storage-auth-aad-rbac.md).
 
 ## <a name="supported-operations"></a>Podporované operace
 
-Rozšíření jsou podporovány pro operace s kontejnery a fronty. Operace, které může volat závisí na oprávněních udělených identity Azure AD, se kterým přihlásíte k Azure CLI nebo Powershellu. Oprávnění pro kontejnery služby Azure Storage nebo fronty jsou přiřazeny prostřednictvím řízení přístupu na základě role (RBAC). Například pokud čtecí modul dat role je přiřazená k identitě, poté můžete spouštět příkazy skriptu, které číst data z kontejneru nebo fronty. Pokud role Přispěvatel Data je přiřazená k identitě, poté můžete spouštět příkazy skriptu, které číst, zapsat nebo odstranit kontejner nebo fronty nebo data, která obsahují. 
+Rozšíření jsou podporovány pro operace s kontejnery a fronty. Operace, které může volat závisí na oprávněních udělených k objektu zabezpečení služby Azure AD, se kterým přihlásíte k Azure CLI nebo Powershellu. Oprávnění pro kontejnery služby Azure Storage nebo fronty jsou přiřazeny prostřednictvím řízení přístupu na základě role (RBAC). Například, pokud jste přiřadili **Čtenář dat objektu Blob** roli a potom spuštěním příkazů skriptu, které načítají data z kontejneru nebo fronty. Pokud jste přiřadili **Přispěvatel dat objektu Blob** role, pak je můžete spustit příkazy skriptu, které číst, zapsat nebo odstranit kontejner nebo fronty nebo data obsahují. 
 
 Podrobnosti o oprávněních požadovaných pro každou operaci služby Azure Storage v kontejneru nebo fronty, naleznete v tématu [oprávnění pro volání operace REST](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-rest-operations).  
 
@@ -129,5 +129,5 @@ Následující příklad ukazuje, jak vytvořit kontejner ve nový účet úlož
 ## <a name="next-steps"></a>Další postup
 
 - Další informace o rolích RBAC pro Azure storage najdete v tématu [Správa přístupových práv k datům úložiště pomocí RBAC](storage-auth-aad-rbac.md).
-- Další informace o použití spravované identity pro prostředky Azure pomocí služby Azure Storage, najdete v článku [ověřit přístup k objektům BLOB a fronty Azure spravovaných identit pro prostředky Azure](storage-auth-aad-msi.md).
+- Další informace o použití spravované identity pro prostředky Azure pomocí služby Azure Storage, najdete v článku [ověření přístupu k objektům BLOB a fronty s Azure Active Directory a spravovaným identitám pro prostředky Azure](storage-auth-aad-msi.md).
 - Zjistěte, jak autorizovat přístup ke kontejnerům a front z v rámci aplikace úložiště, najdete v článku [pomocí služby Azure AD s aplikacemi úložiště](storage-auth-aad-app.md).

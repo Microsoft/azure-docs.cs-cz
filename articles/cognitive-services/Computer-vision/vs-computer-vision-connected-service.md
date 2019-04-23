@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.date: 03/01/2018
 ms.author: ghogen
 ms.custom: seodec18
-ms.openlocfilehash: 6a576f2817069d7095ea863198168be083d0c6b5
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
-ms.translationtype: MT
+ms.openlocfilehash: 3e83c1629848083ae4d899ae01ae32c2c946b2b3
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57450938"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59995060"
 ---
 # <a name="use-connected-services-in-visual-studio-to-connect-to-the-computer-vision-api"></a>Připojení k rozhraní API pro počítačové zpracování obrazu s využitím připojených služeb v sadě Visual Studio
 
@@ -38,15 +38,15 @@ Tento článek a jeho doprovodné články obsahují podrobnosti k použití fun
 1. V **Průzkumníku řešení** zvolte **Přidat**  > **Připojená služba**.
    Zobrazí se stránka Připojená služba se službami, které můžete přidat do projektu.
 
-   ![Snímek obrazovky nabídky klikněte pravým tlačítkem na projekt sady Visual Studio: Přidat > připojená služba](../media/vs-common/Connected-Service-Menu.PNG)
+   ![Klikněte pravým tlačítkem na nabídku projektu sady Visual Studio: Přidat > připojená služba](../media/vs-common/Connected-Service-Menu.PNG)
 
 1. V nabídce dostupných služeb zvolte **Rozhraní API služeb Cognitive Services pro počítačové zpracování obrazu**.
 
-   ![v nabídce připojené služby, zvýraznění Analýza obrázků pomocí pro počítačové zpracování obrazu](./media/vs-computer-vision-connected-service/Cog-Vision-Connected-Service-0.PNG)
+   ![Nabídka propojené služby: Díky analýze obrázků... popsané](./media/vs-computer-vision-connected-service/Cog-Vision-Connected-Service-0.PNG)
 
    Pokud jste přihlášení k sadě Visual Studio a máte ke svému účtu přidružené předplatné Azure, zobrazí se stránka s rozevíracím seznamem vašich předplatných.
 
-   ![Okno s zvýrazněnou rozevírací nabídce předplatných sady Visual Studio "Rozhraní API pro počítačové zpracování obrazu"](media/vs-computer-vision-connected-service/Cog-Vision-Connected-Service-1.PNG)
+   ![Rozhraní API pro zpracování obrazu okno počítač se zvýrazněnou rozevírací nabídce předplatných](media/vs-computer-vision-connected-service/Cog-Vision-Connected-Service-1.PNG)
 
 1. Vyberte předplatné, které chcete použít, a pak zvolte název rozhraní API pro počítačové zpracování obrazu, nebo zvolte odkaz Upravit a změňte automaticky vygenerovaný název, zvolte skupinu prostředků a cenovou úroveň.
 
@@ -98,7 +98,7 @@ Tento článek a jeho doprovodné články obsahují podrobnosti k použití fun
 
 1. Klikněte pravým tlačítkem na soubor obrázku, zvolte Vlastnosti a pak zvolte **Kopírovat, pokud je novější**. 
 
-   ![Okno aplikace bitové kopie vlastnosti; Kopírovat do výstupního adresáře nastavená na Kopírovat, pokud je novější](media/vs-computer-vision-connected-service/Cog-Vision-Connected-Service-5.PNG) 
+   ![okno Vlastnosti obrázku; Kopírovat do výstupního adresáře nastavit na Kopírovat, pokud je novější](media/vs-computer-vision-connected-service/Cog-Vision-Connected-Service-5.PNG) 
  
 1. Nahraďte metodu Configure následujícím kódem pro přístup k rozhraní API pro počítačové zpracování obrazu a otestování obrázku.
 
@@ -256,7 +256,7 @@ Tento článek a jeho doprovodné články obsahují podrobnosti k použití fun
 
 Pokud už ji nepotřebujete, odstraňte skupinu prostředků. Tím se odstraní služba Cognitive Services a související prostředky. Odstranění skupiny prostředků přes portál:
 
-1. Do pole Hledat v horní části portálu zadejte název vaší skupiny prostředků. Až se ve výsledcích hledání zobrazí skupina prostředků použitá v tomto rychlém startu, vyberte ji.
+1. Do pole Hledat v horní části portálu zadejte název vaší skupiny prostředků. Jakmile se ve výsledcích hledání zobrazí skupina prostředků použitá v tomto rychlém startu, vyberte ji.
 2. Vyberte **Odstranit skupinu prostředků**.
 3. Do pole **ZADEJTE NÁZEV SKUPINY PROSTŘEDKŮ:** zadejte název vaší skupiny prostředků a vyberte **Odstranit**.
 

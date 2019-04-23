@@ -6,14 +6,14 @@ author: mayurigupta13
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 3/8/2019
+ms.date: 4/18/2019
 ms.author: mayg
-ms.openlocfilehash: f8179f5e647039737a59afdd04d345bf465acfdf
-ms.sourcegitcommit: 235cd1c4f003a7f8459b9761a623f000dd9e50ef
-ms.translationtype: MT
+ms.openlocfilehash: bf4cce8a224db81b8db7fae6a69b8b578bb3d47a
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/11/2019
-ms.locfileid: "57726341"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60004988"
 ---
 # <a name="azure-expressroute-with-azure-site-recovery"></a>Azure ExpressRoute pomocí Azure Site Recovery
 
@@ -39,6 +39,15 @@ Další informace a porovnání domény směrování ExpressRoute [tady](../expr
 Azure Site Recovery nabízí zotavení po havárii a migraci do Azure pro místní [virtuálních počítačů Hyper-V](hyper-v-azure-architecture.md), [virtuálních počítačů VMware](vmware-azure-architecture.md), a [fyzických serverů](physical-azure-architecture.md). Data replikace pro všechny místní do scénáře služby Azure, se odesílají a ukládají v účtu služby Azure Storage. Během replikace neplatíte žádné poplatky za virtuální počítače. Při spuštění převzetí služeb při selhání do Azure Site Recovery automaticky vytvoří virtuální počítače Azure IaaS.
 
 Site Recovery replikuje data do účtu úložiště Azure přes veřejný koncový bod. Pro účely replikace Site Recovery ExpressRoute, můžete využít [veřejného partnerského vztahu](../expressroute/expressroute-circuit-peerings.md#publicpeering) (zastaralé pro nové vytvoření) nebo [partnerský vztah Microsoftu](../expressroute/expressroute-circuit-peerings.md#microsoftpeering). Partnerský vztah Microsoftu je doporučené směrování domény pro replikaci. Ujistěte se, že [síťové požadavky](vmware-azure-configuration-server-requirements.md#network-requirements) splnění pro replikaci. Po virtuálních počítačů nebo serverů převzetí služeb při selhání ke službě Azure virtual network, k nim můžete přistupovat pomocí [soukromého partnerského vztahu](../expressroute/expressroute-circuit-peerings.md#privatepeering). Replikace není podporována přes privátní partnerský vztah.
+
+V případě použití proxy serveru na místní a chcete použít ExpressRoute pro provoz replikace, budete muset nakonfigurovat seznam obcházení proxy serveru na konfigurační Server a procesových serverů. Postupujte následovně:
+
+- Stáhněte si nástroj PsExec z [tady](https://aka.ms/PsExec) pro přístup k systému uživatelský kontext.
+- Spusťte aplikaci Internet Explorer v kontextu uživatele systému spuštěním následujícího příkazového řádku psexec -s -i "%programfiles%\Internet Explorer\iexplore.exe"
+- Přidat nastavení proxy serveru v Internet Exploreru
+- V seznamu obcházení přidejte adresu URL služby Azure storage *. blob.core.windows.net
+
+Tím se zajistí, že pouze provoz replikace prochází přes ExpressRoute, ale můžete komunikaci přes proxy server.
 
 Kombinované scénáře je reprezentován v následujícím diagramu: ![V místní – Azure pomocí ExpressRoute](./media/concepts-expressroute-with-site-recovery/site-recovery-with-expressroute.png)
 

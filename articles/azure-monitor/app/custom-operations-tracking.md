@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 06/30/2017
 ms.reviewer: sergkanz
 ms.author: mbullwin
-ms.openlocfilehash: 8e082f15cff616b9dc63fbf4ad51e94d078a04f3
-ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
-ms.translationtype: MT
+ms.openlocfilehash: ae6e0e186f5cc0c9e3f0cd02d45d57c079eb3539
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/28/2018
-ms.locfileid: "53811286"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59995536"
 ---
 # <a name="track-custom-operations-with-application-insights-net-sdk"></a>Sledování vlastních operací pomocí Application Insights .NET SDK
 
@@ -203,7 +203,7 @@ public async Task Process(BrokeredMessage message)
 }
 ```
 
-### <a name="azure-storage-queue"></a>Fronty Azure Storage
+### <a name="azure-storage-queue"></a>Azure Storage queue
 Následující příklad ukazuje, jak sledovat [fronty Azure Storage](../../storage/queues/storage-dotnet-how-to-use-queues.md) operace a korelovat telemetrie mezi výrobce, příjemce a Azure Storage. 
 
 Fronta úložiště má rozhraní API protokolu HTTP. Všechna volání do fronty jsou sledovány pomocí Application Insights závislost Collector pro požadavky HTTP.
@@ -384,12 +384,13 @@ V případě některých front může odstranění z fronty více zpráv s jeden
 Každou zprávu by měl být zpracovány v svůj vlastní tok řízení asynchronní. Další informace najdete v tématu [odchozí závislosti sledování](#outgoing-dependencies-tracking) oddílu.
 
 ## <a name="long-running-background-tasks"></a>Dlouho běžící úlohy na pozadí
+
 Některé aplikace spusťte dlouhotrvající operace, které mohou být způsobeny požadavky uživatelů. Z pohledu trasování a instrumentace se neliší od požadavku nebo závislost instrumentace: 
 
 ```csharp
 async Task BackgroundTask()
 {
-    var operation = telemetryClient.StartOperation<RequestTelemetry>(taskName);
+    var operation = telemetryClient.StartOperation<DependencyTelemetry>(taskName);
     operation.Telemetry.Type = "Background";
     try
     {
@@ -414,9 +415,9 @@ async Task BackgroundTask()
 }
 ```
 
-V tomto příkladu `telemetryClient.StartOperation` vytvoří `RequestTelemetry` a vyplní kontextu korelace. Řekněme, že máte nadřazené operace, který byl vytvořen příchozích požadavků, které naplánované operace. Tak dlouho, dokud `BackgroundTask` starty v této asynchronní řízení toku jako příchozího požadavku, jsou korelována se nadřazené operace. `BackgroundTask` a všechny vnořené telemetrie položky se automaticky korelují s požadavkem, který způsobil, i po ukončení požadavku.
+V tomto příkladu `telemetryClient.StartOperation` vytvoří `DependencyTelemetry` a vyplní kontextu korelace. Řekněme, že máte nadřazené operace, který byl vytvořen příchozích požadavků, které naplánované operace. Tak dlouho, dokud `BackgroundTask` starty v této asynchronní řízení toku jako příchozího požadavku, jsou korelována se nadřazené operace. `BackgroundTask` a všechny vnořené telemetrie položky se automaticky korelují s požadavkem, který způsobil, i po ukončení požadavku.
 
-Spuštění úkolu z vlákna na pozadí, který nemá žádné operace (`Activity`) přidružen, `BackgroundTask` nemá žádné nadřazené. Však to mohou vnořené operace. Všechny položky telemetrie hlášená z úlohy jsou korelována `RequestTelemetry` vytvořené v `BackgroundTask`.
+Spuštění úkolu z vlákna na pozadí, který nemá žádné operace (`Activity`) přidružen, `BackgroundTask` nemá žádné nadřazené. Však to mohou vnořené operace. Všechny položky telemetrie hlášená z úlohy jsou korelována `DependencyTelemetry` vytvořené v `BackgroundTask`.
 
 ## <a name="outgoing-dependencies-tracking"></a>Odchozí závislosti sledování
 Můžete sledovat vlastní typ závislosti nebo operace, která není podporována službou Application Insights.

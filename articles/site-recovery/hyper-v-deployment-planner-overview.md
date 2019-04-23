@@ -2,17 +2,17 @@
 title: Informace o Azure Site Recovery Deployment Planner pro zotavení po havárii virtuálních počítačů Hyper-V do Azure | Dokumentace Microsoftu
 description: Přečtěte si o zotavení po havárii Azure Site Recovery nasazení Planneru Hyper-V do Azure.
 author: mayurigupta13
-manager: garavd
+manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 4/9/2019
+ms.date: 4/18/2019
 ms.author: mayg
-ms.openlocfilehash: 43431c401f13117af1f60d3affd284fc125be7eb
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: e40a6b69b1cc4785b3055eaa31905c9ee88170e2
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59360267"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60001503"
 ---
 # <a name="about-the-azure-site-recovery-deployment-planner-for-hyper-v-disaster-recovery-to-azure"></a>Informace o Azure Site Recovery Deployment Planner pro zotavení po havárii Hyper-V do Azure
 
@@ -73,7 +73,7 @@ Nástroj poskytuje následující podrobnosti:
 | | **Z VMware do Azure** |**Z Hyper-V do Azure**|**Z Azure do Azure**|**Z Hyper-V do sekundární lokality**|**Z VMware do sekundární lokality**
 --|--|--|--|--|--
 Podporované scénáře |Ano|Ano|Ne|Ano*|Ne
-Podporovaná verze | vCenter 6.5, 6.0 nebo 5.5| Windows Server 2016, Windows Server 2012 R2 | Není k dispozici |Windows Server 2016, Windows Server 2012 R2|Není k dispozici
+Podporovaná verze | vCenter 6.7, 6.5, 6.0 nebo 5.5| Windows Server 2016, Windows Server 2012 R2 | Není k dispozici |Windows Server 2016, Windows Server 2012 R2|Není k dispozici
 Podporovaná konfigurace|vCenter, ESXi| Cluster Hyper-V, hostitel Hyper-V|Není k dispozici|Cluster Hyper-V, hostitel Hyper-V|Není k dispozici|
 Počet serverů, které jde profilovat, na spuštěnou instanci Plánovače nasazení služby Azure Site Recovery |Jeden (virtuální počítače, které patří k jednomu vCenter Serveru nebo jednomu serveru ESXi, jde profilovat najednou)|Více (virtuální počítače napříč více hostiteli nebo hostitelskými clustery jde profilovt najednou)| Není k dispozici |Více (virtuální počítače napříč více hostiteli nebo hostitelskými clustery jde profilovt najednou)| Není k dispozici
 
@@ -132,7 +132,7 @@ Pokud máte předchozí verzi plánovače nasazení, proveďte jednu z následuj
   >Každý nový Deployment Planner je kumulativní aktualizací souboru .zip. Nemusíte kopírovat nejnovější soubory do předchozí složky. Můžete vytvořit a použít novou složku.
 
 ## <a name="version-history"></a>Historie verzí
-Nejnovější verze nástroje Azure Site Recovery Deployment Planner je 2.3.
+Nejnovější verze nástroje Azure Site Recovery Deployment Planner je 2.4.
 Odkazovat na [Azure Site Recovery historie verzí plánovače nasazení](https://social.technet.microsoft.com/wiki/contents/articles/51049.asr-deployment-planner-version-history.aspx) stránky pro opravy přidané v jednotlivých aktualizacích.
 
 

@@ -9,12 +9,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 03/21/2018
 ms.author: mamccrea
-ms.openlocfilehash: 8055b5d7e6c53abc385a99d9190a38603ebb968b
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: f2b7136ec21416e31c2af658974577023a4494de
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50417442"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60240351"
 ---
 # <a name="connect-to-data-sources-from-azure-databricks"></a>Připojení ke zdrojům dat z Azure Databricks
 
@@ -31,7 +31,7 @@ Následující seznam obsahuje zdroje dat v Azure, které můžete použít s Az
 - [Azure SQL database](https://docs.azuredatabricks.net/spark/latest/data-sources/sql-databases.html)
 
     Tento odkaz poskytuje rozhraní API datového rámce pro připojení k databázím SQL pomocí JDBC a tom, jak řídit paralelismu čtení prostřednictvím JDBC rozhraní. Toto téma obsahuje podrobné příklady použití rozhraní Scala API s využitím zkrácený Pythonu a příklady Spark SQL na konci.
-- [Azure Data Lake Store](https://docs.azuredatabricks.net/spark/latest/data-sources/azure/azure-datalake.html)
+- [Azure Data Lake Store](https://docs.azuredatabricks.net/spark/latest/data-sources/azure/azure-datalake-gen2.html)
 
     Tento odkaz obsahuje příklady, jak používat instanční objekt služby Azure Active Directory k ověření pomocí Data Lake Store. Obsahuje také pokyny o tom, jak přistupovat k datům v Data Lake Store z Azure Databricks.
 

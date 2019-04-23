@@ -16,11 +16,11 @@ ms.date: 06/23/2017
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 70d4e507087e645c9bfd41e7ef6b90098079ab1d
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56202430"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60259034"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-learnupon"></a>Kurz: Integrace Azure Active Directory s LearnUpon
 

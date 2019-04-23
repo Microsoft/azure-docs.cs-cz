@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 3/29/2019
 ms.author: sujayt
-ms.openlocfilehash: 42db22d39a7c87363cf97f874c85955a09cbe653
-ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
-ms.translationtype: MT
+ms.openlocfilehash: a6c9c690efe8b75cd1a939de1c68cf4e5bd40d70
+ms.sourcegitcommit: c884e2b3746d4d5f0c5c1090e51d2056456a1317
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58651539"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60149310"
 ---
 # <a name="about-networking-in-azure-to-azure-replication"></a>O možnostech sítě v replikaci z Azure do Azure
 
@@ -48,7 +48,7 @@ Pokud k řízení odchozího připojení používáte proxy server brány firewa
 
 **Adresa URL** | **Podrobnosti**  
 --- | ---
-*.blob.core.windows.net | Vyžaduje, aby data je možné zapisovat na účet úložiště mezipaměti ve zdrojové oblasti z virtuálního počítače. Pokud znáte všechny mezipaměti účty úložiště pro virtuální počítače, můžete seznam povolených adresy URL účtu úložiště přizpůsobilo (Ex: cache1.blob.core.windows.net a cache2.blob.core.windows.net) namísto *. blob.core.windows.net
+*.blob.core.windows.net | Vyžaduje, aby data je možné zapisovat na účet úložiště mezipaměti ve zdrojové oblasti z virtuálního počítače. Pokud znáte všechny mezipaměti účty úložiště pro virtuální počítače, můžete seznam povolených adresy URL účtu konkrétní úložiště (Ex: cache1.blob.core.windows.net a cache2.blob.core.windows.net) namísto *. blob.core.windows.net
 login.microsoftonline.com | Vyžaduje se pro autorizaci a ověřování k adresám URL služby Site Recovery.
 *.hypervrecoverymanager.windowsazure.com | Vyžaduje, aby mohla probíhat komunikace služby Site Recovery z virtuálního počítače. Pokud váš proxy server brány firewall podporuje IP adresy, můžete použít odpovídající "Site Recovery IP".
 *.servicebus.windows.net | Vyžaduje, aby data monitorování a diagnostiky Site Recovery lze zapsat z virtuálního počítače. Pokud váš proxy server brány firewall podporuje IP adresy, můžete použít odpovídající "Site Recovery monitorování IP".
@@ -96,13 +96,19 @@ Rozsahy adres IP pro obnovení lokality jsou následující:
    Velká Británie – jih 2 | 13.87.37.4| 13.87.34.139
    Velká Británie – sever | 51.142.209.167 | 13.87.102.68
    Jižní Korea – střed | 52.231.28.253 | 52.231.32.85
-   Jižní Korea – jih | 52.231.298.185 | 52.231.200.144
+   Jižní Korea – jih | 52.231.198.185 | 52.231.200.144
    Francie – střed | 52.143.138.106 | 52.143.136.55
    Francie – jih | 52.136.139.227 |52.136.136.62
    Austrálie, střed| 20.36.34.70 | 20.36.46.142
    Austrálie – střed 2| 20.36.69.62 | 20.36.74.130
    Jižní Afrika – západ | 102.133.72.51 | 102.133.26.128
    Jižní Afrika – sever | 102.133.160.44 | 102.133.154.128
+   USA (Gov) – Virginia | 52.227.178.114 | 23.97.0.197
+   US Gov – Iowa | 13.72.184.23 | 23.97.16.186
+   USA (Gov) – Arizona | 52.244.205.45 | 52.244.48.85
+   USA (Gov) – Texas | 52.238.119.218 | 52.238.116.60
+   US DoD – východ | 52.181.164.103 | 52.181.162.129
+   US DoD – střed | 52.182.95.237 | 52.182.90.133
 ## <a name="example-nsg-configuration"></a>Příklad konfigurace NSG
 
 Tento příklad ukazuje postup při konfiguraci pravidla skupiny zabezpečení sítě pro virtuální počítač k replikaci.

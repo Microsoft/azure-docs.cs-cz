@@ -8,12 +8,12 @@ ms.author: crtreasu
 ms.date: 02/24/2019
 ms.topic: quickstart
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: a5d34b2964d805cdbeced0d4fad3dd889da9f3e8
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: b8ee1bdfece35d774cdc79595a495b0b3719a836
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57900620"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60234106"
 ---
 # <a name="quickstart-create-an-ios-app-with-azure-spatial-anchors-in-either-swift-or-objective-c"></a>Rychlý start: Vytvoření aplikace pro iOS pomocí Azure prostorových ukotvení v Swift a Objective-C
 
@@ -88,15 +88,15 @@ Dalším krokem je konfigurace aplikace pro používání identifikátor účtu 
 
 # <a name="swifttabopenproject-swift"></a>[Swift](#tab/openproject-swift)
 
-Otevřít `iOS/Swift/SampleSwift/ViewController.swift`.
+Otevřít `iOS/Swift/SampleSwift/ViewControllers/BaseViewController.swift`.
 
-Vyhledejte `SpatialAnchorsAccountKey` pole a nahraďte `Set me` klíčem účtu.
+Vyhledejte `spatialAnchorsAccountKey` pole a nahraďte `Set me` klíčem účtu.
 
-Vyhledejte `SpatialAnchorsAccountId` pole a nahraďte `Set me` s identifikátor účtu.
+Vyhledejte `spatialAnchorsAccountId` pole a nahraďte `Set me` s identifikátor účtu.
 
 # <a name="objective-ctabopenproject-objc"></a>[Objective-C](#tab/openproject-objc)
 
-Otevřít `iOS/Objective-C/SampleObjC/ViewController.m`.
+Otevřít `iOS/Objective-C/SampleObjC/BaseViewController.m`.
 
 Vyhledejte `SpatialAnchorsAccountKey` pole a nahraďte `Set me` klíčem účtu.
 

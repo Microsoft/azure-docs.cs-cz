@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 06/15/2018
 ms.author: abnarain
-ms.openlocfilehash: 1a575a172e4ff567cc20442c7a9779e1d52dbbba
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
-ms.translationtype: MT
+ms.openlocfilehash: 635b45fe7f0108795c34f51081fa374c604036b2
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58099980"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59996118"
 ---
 #  <a name="security-considerations-for-data-movement-in-azure-data-factory"></a>Informace o zabezpečení pro přesouvání dat ve službě Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -137,9 +137,9 @@ Následující tabulka shrnuje sítě a doporučené konfigurace modulu runtime 
 
 | Zdroj      | Cíl                              | Konfigurace sítě                    | Instalace prostředí Integration Runtime                |
 | ----------- | ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
-| Lokálně | Virtuální počítače a cloudové aplikace nasazené ve virtuálních sítích | (Point-to-site a site-to-site) VPN typu IPSec | Místní prostředí integration runtime může být nainstalována na místní nebo na virtuálním počítači ve virtuální síti Azure. |
-| Lokálně | Virtuální počítače a cloudové aplikace nasazené ve virtuálních sítích | ExpressRoute (soukromého partnerského vztahu)           | Místní prostředí integration runtime může být nainstalována na místní nebo na virtuálním počítači ve virtuální síti Azure. |
-| Lokálně | Službám Azure, které mají veřejný koncový bod | ExpressRoute (veřejného partnerského vztahu)            | Místní prostředí integration runtime musí být nainstalovaný místní. |
+| Lokálně | Virtuální počítače a cloudové aplikace nasazené ve virtuálních sítích | (Point-to-site a site-to-site) VPN typu IPSec | Místní prostředí integration runtime musí být nainstalován na virtuálním počítači ve virtuální síti Azure.  |
+| Lokálně | Virtuální počítače a cloudové aplikace nasazené ve virtuálních sítích | ExpressRoute (soukromého partnerského vztahu)           | Místní prostředí integration runtime musí být nainstalován na virtuálním počítači ve virtuální síti Azure.  |
+| Lokálně | Službám Azure, které mají veřejný koncový bod | ExpressRoute (partnerský vztah Microsoftu)            | Místní prostředí integration runtime může být nainstalovaná na místním nebo na virtuálním počítači Azure. |
 
 Následující obrázky znázorňují použití místní prostředí IR pro přesun dat mezi místní databáze a služby Azure pomocí ExpressRoute a VPN typu IPSec (s Azure Virtual Network):
 
@@ -174,7 +174,7 @@ Následující tabulka uvádí požadavky na příchozí port pro bránu Windows
 
 | Příchozí porty | Popis                              |
 | ------------- | ---------------------------------------- |
-| 8050 (TCP)    | Vyžaduje šifrování rutina prostředí PowerShell, jak je popsáno v [šifrovat přihlašovací údaje pro místní úložiště dat ve službě Azure Data Factory](encrypt-credentials-self-hosted-integration-runtime.md)a pomocí aplikace Správce pověření bezpečně nastavíte přihlašovací údaje pro místní úložiště dat v místním prostředí integration runtime. |
+| 8060 (TCP)    | Vyžaduje šifrování rutina prostředí PowerShell, jak je popsáno v [šifrovat přihlašovací údaje pro místní úložiště dat ve službě Azure Data Factory](encrypt-credentials-self-hosted-integration-runtime.md)a pomocí aplikace Správce pověření bezpečně nastavíte přihlašovací údaje pro místní úložiště dat v místním prostředí integration runtime. |
 
 ![Požadavky na porty brány](media/data-movement-security-considerations/gateway-port-requirements.png) 
 
@@ -193,7 +193,7 @@ Následující cloudovými úložišti dat vyžadují IP adresu počítače mís
 
 **Je možné sdílet místní prostředí integration runtime v různých datových továren?**
 
-Tato funkce zatím nepodporujeme. Aktivně pracujeme na něj.
+Ano. Další podrobnosti najdete [tady](https://azure.microsoft.com/blog/sharing-a-self-hosted-integration-runtime-infrastructure-with-multiple-data-factories/).
 
 **Jaké jsou požadavky na porty pro místní prostředí integration runtime pro práci?**
 

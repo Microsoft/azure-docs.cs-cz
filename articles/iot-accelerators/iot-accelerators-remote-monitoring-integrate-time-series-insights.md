@@ -8,12 +8,12 @@ ms.date: 09/12/2018
 ms.topic: conceptual
 ms.service: iot-accelerators
 services: iot-accelerators
-ms.openlocfilehash: 850d8bbb525763e0e7d0c0441173180b7c469dd8
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
-ms.translationtype: MT
+ms.openlocfilehash: 4cc9b0051eaa12eee07f067352126ad159107a83
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58085146"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60007470"
 ---
 # <a name="integrate-azure-time-series-insights-with-remote-monitoring"></a>Integrace služby Azure Time Series Insights se vzdáleným monitorováním
 
@@ -57,12 +57,12 @@ V dalším kroku nasaďte Time Series Insights jako zdroj dalších do vašeho �
 
 1. Pokud chcete vytvořit prostředí Time Series Insights, použijte hodnoty v následující tabulce:
 
-    | Nastavení | Hodnota |
+    | Nastavení | Value |
     | ------- | ----- |
     | Název prostředí | Na následujícím snímku obrazovky používá název **contorosrmtsi**. Po dokončení tohoto kroku, zvolte svůj vlastní jedinečný název. |
     | Předplatné | Z rozevíracího seznamu vyberte své předplatné Azure. |
     | Skupina prostředků | **Použít existující**. Vyberte název existující skupiny prostředků vzdáleného monitorování. |
-    | Umístění | Používáme **USA – východ**. Pokud je to možné vytvořte ve stejné oblasti jako vaše řešení vzdálené monitorování vašeho prostředí. |
+    | Location | Používáme **USA – východ**. Pokud je to možné vytvořte ve stejné oblasti jako vaše řešení vzdálené monitorování vašeho prostředí. |
     | Skladová jednotka (SKU) |**S1** |
     | Kapacita | **1** |
 
@@ -86,7 +86,7 @@ Vytvořte nový zdroj událostí k připojení ke službě IoT hub. Ujistěte se
 
 1. Pokud chcete nakonfigurovat službu IoT hub jako nový zdroj událostí, použijte hodnoty v následující tabulce:
 
-    | Nastavení | Hodnota |
+    | Nastavení | Value |
     | ------- | ----- |
     | Název zdroje událostí | Na následujícím snímku obrazovky používá název **contosorm-iot-hub**. Po dokončení tohoto kroku, použijte vlastní jedinečný název. |
     | Zdroj | **IoT Hub** |
@@ -236,6 +236,9 @@ Konfigurace prostředí, které `basic` nasazení aktualizované mikroslužeb.
 1. Přejděte **Správce služby Azure Stream Analytics** a úpravy docker compose souboru tak, že přidáte `PCS_TELEMETRY_STORAGE_TYPE`.
 
 1. Restartujte kontejnerů dockeru pomocí `sudo ./start.sh` z virtuálního počítače.
+
+> [!NOTE]
+> V konfiguraci uvedené výš proměnných prostředí je platný pro vzdálené monitorování verze starší než verze 1.0.2
 
 ### <a name="standard-deployments"></a>Standardní nasazení
 

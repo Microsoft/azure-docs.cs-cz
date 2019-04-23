@@ -12,12 +12,12 @@ ms.topic: tutorial
 ms.date: 02/24/2019
 ms.author: yegu
 ms.custom: mvc
-ms.openlocfilehash: a92c00148d4b612a4360e3843d66503d528928cd
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 7db796b33bab941f038afab1b80127aded50b54a
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59700131"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60000009"
 ---
 # <a name="integrate-with-a-cicd-pipeline"></a>Integrace s kanálem CI/CD
 
@@ -92,4 +92,7 @@ Provedete sestavení do cloudu s Azure DevOps například, ujistěte se, že [ro
 
 ## <a name="next-steps"></a>Další postup
 
-* [Spravované identity pro integraci prostředků Azure](./howto-integrate-azure-managed-service-identity.md)
+V tomto kurzu jste exportovali Azure aplikace konfigurační data pro použití v kanálu nasazení. Další informace o tom, jak používat konfiguraci aplikací, i nadále ukázky Azure CLI.
+
+> [!div class="nextstepaction"]
+> [Integrace spravovaných identit](./howto-integrate-azure-managed-service-identity.md)

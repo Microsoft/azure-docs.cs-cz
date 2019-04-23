@@ -8,14 +8,14 @@ ms.topic: include
 ms.date: 03/21/2019
 ms.author: tamram
 ms.custom: include file
-ms.openlocfilehash: 9b8418dba12748915666c6a91ee65b37c0f59ace
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 026717dff2b6883eb643497dec91226e4afe8133
+ms.sourcegitcommit: c884e2b3746d4d5f0c5c1090e51d2056456a1317
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59803733"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60150213"
 ---
-Azure poskytuje následující předdefinované role RBAC pro přístup k datům úložiště:
+Azure poskytuje následující předdefinované role RBAC pro autorizaci přístupu k datům objektu blob a fronty pomocí služby Azure AD a protokolem OAuth:
 
 - [Vlastník dat objektů Blob úložiště](../articles/role-based-access-control/built-in-roles.md#storage-blob-data-owner): Slouží k nastavení vlastnictví a správě řízení přístupu POSIX pro Azure Data Lake Storage Gen2 (preview). Další informace najdete v tématu [řízení přístupu v Azure Data Lake Storage Gen2](../articles/storage/blobs/data-lake-storage-access-control.md).
 - [Přispěvatel dat objektu Blob úložiště](../articles/role-based-access-control/built-in-roles.md#storage-blob-data-contributor): Slouží k udělení oprávnění ke čtení/zápis/delete k prostředkům úložiště objektů Blob.
@@ -25,7 +25,5 @@ Azure poskytuje následující předdefinované role RBAC pro přístup k datům
 - [Data úložiště fronty zpráv procesoru](../articles/role-based-access-control/built-in-roles.md#storage-queue-data-message-processor): Slouží k udělení náhled, načíst a odstranit oprávnění pro zprávy ve frontách Azure Storage.
 - [Data úložiště fronty zpráv odesílatele](../articles/role-based-access-control/built-in-roles.md#storage-queue-data-message-sender): Použít k udělení oprávnění přidat do zprávy ve frontách Azure Storage.
 
-> [!IMPORTANT]
-> Přiřazení rolí pro RBAC může trvat až pět minut na dokončení propagace.
-
-Další informace o tom, předdefinované role jsou definované pro službu Azure Storage, najdete v článku [pochopení definic rolí](../articles/role-based-access-control/role-definitions.md#management-and-data-operations-preview). Informace o vytváření vlastních rolí RBAC najdete v tématu [vytváření vlastních rolí pro řízení přístupu](../articles/role-based-access-control/custom-roles.md). 
+> [!NOTE]
+> Mějte na paměti, která přiřazení rolí pro RBAC může trvat až pět minut na dokončení propagace.

@@ -8,12 +8,12 @@ ms.service: batch
 ms.topic: article
 ms.date: 03/14/2019
 ms.author: lahugh
-ms.openlocfilehash: f6693de861658c7174614e80906ee83633fcb313
-ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
-ms.translationtype: MT
+ms.openlocfilehash: 679a1c60e44694bde86cafba21d7f1d2c6fb94d9
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58501088"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59995621"
 ---
 # <a name="creating-and-using-resource-files"></a>Vytvoření a použití souborů prostředků
 
@@ -72,7 +72,7 @@ Alternativu ke generování adresy URL SAS, je povolení anonymní, veřejné op
 
 Namísto konfigurace a vytvoření adresy URL SAS, můžete použít název kontejneru úložiště Azure pro přístup k datům objektu blob. Kontejner úložiště, který používá musí v účtu úložiště Azure, který je propojený s vaším účtem Batch, označované jako autostorage účtu. Pomocí názvu kontejneru úložiště účtu autostorage lze jednorázově přeskočit přihlašování, konfigurace a vytvoření adresy URL SAS pro přístup ke kontejneru úložiště.
 
-V tomto příkladu předpokládáme, že data, která má být použit pro vytvoření souboru prostředků je již v účtu služby Azure Storage, který je propojený s vaším účtem Batch. Pokud nemáte účet autostorage, podívejte se na postup v [vytvoření účtu Batch](/create-a-batch-account.md) podrobnosti o tom, jak vytvořit a propojit účet.
+V tomto příkladu předpokládáme, že data, která má být použit pro vytvoření souboru prostředků je již v účtu služby Azure Storage, který je propojený s vaším účtem Batch. Pokud nemáte účet autostorage, podívejte se na postup v [vytvoření účtu Batch](batch-account-create-portal.md) podrobnosti o tom, jak vytvořit a propojit účet.
 
 S použitím propojený účet úložiště, není nutné vytvořit a nakonfigurovat adresy URL SAS pro kontejner úložiště. Místo toho zadejte název kontejneru úložiště ve vašem připojeném účtu úložiště.
 

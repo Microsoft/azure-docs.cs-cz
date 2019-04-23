@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 12/19/2018
 ms.author: zarhoads
 ms.custom: mvc
-ms.openlocfilehash: 42437130d30a405af47289ae16d9851fb506a598
-ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
-ms.translationtype: MT
+ms.openlocfilehash: dc3d4f0b2658c82a50f58d976a47607dead1abce
+ms.sourcegitcommit: c884e2b3746d4d5f0c5c1090e51d2056456a1317
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58756273"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60149525"
 ---
 # <a name="tutorial-run-applications-in-azure-kubernetes-service-aks"></a>Kurz: Spouštění aplikací ve službě Azure Kubernetes Service (AKS)
 
@@ -28,7 +28,7 @@ V dalších kurzech se tato aplikace je škálovat a aktualizovat.
 
 Tento rychlý start předpokládá základní znalosti konceptů Kubernetes. Další informace najdete v tématu [Kubernetes pro Azure Kubernetes Service (AKS) základní koncepty][kubernetes-concepts].
 
-## <a name="before-you-begin"></a>Před zahájením
+## <a name="before-you-begin"></a>Než začnete
 
 V předchozích kurzech se aplikace zabalila do image kontejneru, tato image se odeslala do Azure Container Registry a vytvořil se cluster Kubernetes.
 
@@ -52,7 +52,7 @@ V ukázkovém souboru manifestu z úložiště git naklonovaného v prvním kurz
 vi azure-vote-all-in-one-redis.yaml
 ```
 
-Nahraďte *microsoft* názvem vašeho přihlašovacího serveru ACR. Název image najdete na řádku 47 souboru manifestu. Následující příklad ukazuje výchozí název image:
+Nahraďte *microsoft* názvem vašeho přihlašovacího serveru ACR. Název bitové kopie se nachází na řádku 51 souboru manifestu. Následující příklad ukazuje výchozí název image:
 
 ```yaml
 containers:

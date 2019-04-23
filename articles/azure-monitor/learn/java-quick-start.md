@@ -1,22 +1,22 @@
 ---
 title: Rychlý start pro Azure Application Insights | Dokumentace Microsoftu
-description: Pokyny pro rychlé nastavení webové aplikace v Javě pro monitorování s využitím Application Insights
+description: Pokyny pro rychlé nastavení webové aplikace v Javě pro monitorování pomocí Application Insights
 services: application-insights
 keywords: ''
 author: mrbullwinkle
 ms.author: mbullwin
 ms.reviewer: lagayhar
-ms.date: 07/11/2018
+ms.date: 04/18/2019
 ms.service: application-insights
 ms.custom: mvc
 ms.topic: quickstart
 manager: carmonm
-ms.openlocfilehash: 25335081e594c64b8d8cee02eebec6119e609618
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
-ms.translationtype: MT
+ms.openlocfilehash: e1574b55f9f14daba1831ba7f73b7f9ebde4c7f6
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55891494"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60006892"
 ---
 # <a name="start-monitoring-your-java-web-application"></a>Zahájení monitorování webové aplikace v Javě
 
@@ -36,9 +36,9 @@ Pokud dynamický webový projekt v Javě nemáte, můžete si ho vytvořit pomoc
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
-Pokud dáváte přednost rozhraní Spring, zkuste [nakonfigurovat aplikaci Spring Boot Initializer, abyste mohli použít příručku ke službě Application Insights](https://docs.microsoft.com/java/azure/spring-framework/configure-spring-boot-java-applicationinsights).
+Pokud dáváte přednost Spring framework, zkuste [nakonfigurovat aplikaci Spring Boot inicializátor použít Průvodce Application Insights](https://docs.microsoft.com/java/azure/spring-framework/configure-spring-boot-java-applicationinsights)
 
-## <a name="log-in-to-the-azure-portal"></a>Přihlášení k portálu Azure Portal
+## <a name="sign-in-to-the-azure-portal"></a>Přihlášení k webu Azure Portal
 
 Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 
@@ -46,13 +46,15 @@ Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 
 Application Insights může shromažďovat telemetrická data ze všech aplikací připojených k internetu bez ohledu na to, jestli jsou spuštěné místně nebo v cloudu. Pokud chcete tato data začít zobrazovat, použijte následující kroky.
 
-1. Vyberte **Vytvořit prostředek** > **Monitorování a správa** > **Application Insights**.
+1. Vyberte **Vytvořit prostředek** > **Vývojářské nástroje** > **Application Insights**.
 
-   ![Přidání prostředku Application Insights](./media/java-quick-start/001-j.png)
+   ![Přidání prostředku Application Insights](./media/java-quick-start/1createresourseappinsights.png)
+
+   ![Přidání prostředku Application Insights](./media/java-quick-start/2createjavaapp.png)
 
    Zobrazí se konfigurační pole. K vyplnění vstupních polí použijte následující tabulku.
 
-    | Nastavení        | Hodnota           | Popis  |
+    | Nastavení        | Value           | Popis  |
    | ------------- |:-------------|:-----|
    | **Název**      | Globálně jedinečná hodnota | Název identifikující aplikaci, kterou monitorujete |
    | **typ aplikace** | Webová aplikace Java | Typ aplikace, kterou monitorujete |
@@ -90,21 +92,21 @@ Application Insights může shromažďovat telemetrická data ze všech aplikac�
 
 ## <a name="start-monitoring-in-the-azure-portal"></a>Zahájení monitorování na webu Azure Portal
 
-1. Teď můžete znovu otevřít stránku **Přehled** služby Application Insights na webu Azure Portal, kde jste získali svůj instrumentační klíč, a zobrazit podrobné informace o aktuálně spuštěné aplikaci.
+1. Teď můžete znovu otevřít Application Insights **přehled** stránky na webu Azure Portal k zobrazení podrobností o aktuálně spuštěné aplikaci.
 
-   ![Nabídka Přehled služby Application Insights](./media/java-quick-start/overview-001.png)
+   ![Nabídka Přehled služby Application Insights](./media/java-quick-start/3overview.png)
 
 2. Po kliknutí na **Mapa aplikace** se zobrazí rozložení vztahů závislosti mezi komponentami vaší aplikace. U každé komponenty se zobrazují klíčové ukazatele výkonu, jako je zatížení, výkon, selhání a upozornění.
 
-   ![Mapa aplikace](./media/java-quick-start/application-map-001.png)
+   ![Mapa aplikace](./media/java-quick-start/4appmap.png)
 
-3. Klikněte na ikonu **Analýza aplikace** ![Ikona Mapa aplikace](./media/java-quick-start/006.png). Otevře se **Application Insights – Analytics** s bohatým dotazovacím jazykem pro analýzu všech dat shromážděných službou Application Insights. V tomto případě jsme za vás vytvořili dotaz, který vykreslí počet požadavků ve formě grafu. Můžete psát své vlastní dotazy pro analýzu dalších dat.
+3.  Klikněte na **analýzy aplikací** ikonu ![ikona Mapa aplikace](./media/java-quick-start/006.png) **zobrazit v Analytics**.  Otevře se **Application Insights – Analytics** s bohatým dotazovacím jazykem pro analýzu všech dat shromážděných službou Application Insights. V tomto případě jsme za vás vytvořili dotaz, který vykreslí počet požadavků ve formě grafu. Můžete psát své vlastní dotazy pro analýzu dalších dat.
 
-   ![Graf analýzy uživatelských požadavků za časové období](./media/java-quick-start/0010-j.png)
+   ![Graf analýzy uživatelských požadavků za časové období](./media/java-quick-start/5analytics.png)
 
-4. Vraťte se na stránku **Přehled** a prozkoumejte grafy klíčových ukazatelů výkonu.  Tento řídicí panel poskytuje statistické údaje o stavu vaší aplikace, včetně počtu příchozích požadavků, doby jejich trvání a všech chyb, ke kterým došlo.
+4. Vraťte se na stránku **Přehled** a prozkoumejte grafy klíčových ukazatelů výkonu. Tento řídicí panel poskytuje statistické údaje o stavu vaší aplikace, včetně počtu příchozích požadavků, doby jejich trvání a všech chyb, ke kterým došlo.
 
-   ![Graf s časovou osou přehledu stavu](./media/java-quick-start/overview-perf.png)
+   ![Graf s časovou osou přehledu stavu](./media/java-quick-start/6kpidashboards.png)
 
    Pokud chcete povolit, aby se graf **Page View Load Time** naplnil **telemetrií na straně klienta**, na každou stránku, kterou chcete sledovat, přidejte následující skript:
 
@@ -130,13 +132,13 @@ Application Insights může shromažďovat telemetrická data ze všech aplikac�
 
 5. Klikněte na **Live Stream**. Tady najdete živé metriky související s výkonem vaší webové aplikace v Javě. **Live Metrics Stream** zahrnuje údaje o počtu příchozích požadavků, době jejich trvání a všech chybách, ke kterým došlo. Nejdůležitější metriky výkonu, jako je procesor a paměť, můžete také monitorovat v reálném čase.
 
-   ![Grafy metrik serveru](./media/java-quick-start/livemetricsjava.png)
+   ![Grafy metrik serveru](./media/java-quick-start/7livemetrics.png)
 
 Pokud se chcete o monitorování Javy dozvědět víc, podívejte se na [další dokumentaci k Javě pro App Insights](./../../azure-monitor/app/java-get-started.md).
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Pokud chcete pokračovat v práci s dalšími rychlými starty nebo kurzy, nevymazávejte prostředky vytvořené v rámci tohoto rychlého startu. Pokud pokračovat nechcete, pomocí následujících kroků odstraňte všechny prostředky vytvořené tímto rychlým startem na webu Azure Portal.
+Po dokončení testování, můžete odstranit skupinu prostředků a všechny související prostředky. Chcete proto podle následujících pokynů.
 
 1. Na webu Azure Portal v nabídce vlevo klikněte na **Skupiny prostředků** a pak na **myResourceGroup**.
 2. Na stránce skupiny prostředků klikněte na **Odstranit**, do textového pole zadejte **myResourceGroup** a pak klikněte na **Odstranit**.

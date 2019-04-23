@@ -14,11 +14,11 @@ ms.topic: tutorial
 ms.date: 11/22/2017
 ms.author: apimpm
 ms.openlocfilehash: 76a509c1cb9277ac72f99ec9ebfc239bfd71390c
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53969178"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60234706"
 ---
 # <a name="import-a-logic-app-as-an-api"></a>Import aplikace logiky jako rozhraní API
 

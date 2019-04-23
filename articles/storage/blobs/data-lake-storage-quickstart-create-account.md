@@ -8,16 +8,16 @@ ms.service: storage
 ms.topic: quickstart
 ms.date: 12/06/2018
 ms.author: jamesbak
-ms.openlocfilehash: 2eb57268aece081423b6b0beaa314a244b6fdd8f
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
-ms.translationtype: MT
+ms.openlocfilehash: 50cd039395b477a93d050458c2a014e768fc5f0a
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57456002"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59995672"
 ---
 # <a name="quickstart-create-an-azure-data-lake-storage-gen2-storage-account"></a>Rychlý start: Vytvoření účtu úložiště Azure Data Lake Storage Gen2
 
-Azure Data Lake Storage Gen2 [podporuje hierarchické službu Namespace](data-lake-storage-introduction.md) poskytující nativní adresářového souborový systém přizpůsobené pro práci s souboru systému HDFS (Hadoop Distributed). Přístup k datům v Data Lake Storage Gen2 je z HDFS možný prostřednictvím [ovladače ABFS](data-lake-storage-abfs-driver.md).
+Azure Data Lake Storage Gen2 [podporuje hierarchického oboru názvů](data-lake-storage-introduction.md) poskytující nativní adresářového souborový systém přizpůsobené pro práci s souboru systému HDFS (Hadoop Distributed). Přístup k datům v Data Lake Storage Gen2 je z HDFS možný prostřednictvím [ovladače ABFS](data-lake-storage-abfs-driver.md).
 
 Tento rychlý start ukazuje, jak vytvořit účet pomocí webu [Azure Portal](https://portal.azure.com/), [Azure PowerShellu](https://docs.microsoft.com/powershell/azure/overview) nebo prostřednictvím [Azure CLI](https://docs.microsoft.com/cli/azure?view=azure-cli-latest).
 
@@ -29,7 +29,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 |-----------|--------------|
 |Portál     | Žádný         |
 |PowerShell | Tento rychlý start vyžaduje PowerShell verze modulu Az.Storage **0,7** nebo novější. Aktuální verzi zjistíte spuštěním `Get-Module -ListAvailable Az.Storage` příkazu. Pokud po spuštění tohoto příkazu se zobrazí žádné výsledky, nebo pokud verze jiných než **0,7** se zobrazí, pak budete muset upgradovat modul prostředí powershell. Zobrazit [upgradovat modul prostředí powershell](#upgrade-your-powershell-module) části této příručky.
-|Rozhraní příkazového řádku        | Pokud se chcete přihlásit k Azure s spouštět příkazy Azure CLI, máte dvě možnosti: <ul><li>Příkazy rozhraní příkazového řádku můžete spouštět na webu Azure Portal ve službě Azure Cloud Shell. </li><li>Můžete nainstalovat rozhraní příkazového řádku a příkazy rozhraní příkazového řádku spouštět místně.</li></ul>|
+|Rozhraní příkazového řádku        | Přihlásit do Azure a spouštět příkazy rozhraní příkazového řádku Azure v jednom ze dvou způsobů: <ul><li>Příkazy rozhraní příkazového řádku můžete spouštět na webu Azure Portal ve službě Azure Cloud Shell. </li><li>Můžete nainstalovat rozhraní příkazového řádku a příkazy rozhraní příkazového řádku spouštět místně.</li></ul>|
 
 Při práci s příkazovým řádkem můžete spustit Azure Cloud Shell nebo nainstalovat rozhraní příkazového řádku místně.
 
@@ -128,7 +128,7 @@ Instalace modulu Az.Storage
 Install-Module Az.Storage -Repository PSGallery -AllowPrerelease -AllowClobber -Force
 ```
 
-### <a name="log-in-to-your-azure-subscription"></a>Přihlaste se ke svému předplatnému Azure
+### <a name="sign-in-to-your-azure-subscription"></a>Přihlaste se ke svému předplatnému Azure
 
 Použití `Login-AzAccount` příkaz a postupujte podle pokynů na obrazovce pokynů k ověření.
 
@@ -178,7 +178,7 @@ Remove-AzResourceGroup -Name $resourceGroup
 
 Pokud chcete spustit Azure Cloud Shell, přihlaste se k [webu Azure portal](https://portal.azure.com).
 
-Pokud se chcete přihlásit k místní instalaci rozhraní příkazového řádku, spusťte přihlašovací příkaz:
+Pokud chcete k přihlášení k místní instalaci rozhraní příkazového řádku spusťte přihlašovací příkaz:
 
 ```cli
 az login

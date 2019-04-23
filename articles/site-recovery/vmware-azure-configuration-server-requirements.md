@@ -8,18 +8,17 @@ services: site-recovery
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: raynew
-ms.openlocfilehash: 4f13c1beb23687b46074671fe01a0f42b26c8c03
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
-ms.translationtype: MT
+ms.openlocfilehash: 399dcd744819cf4cb5d9f5f9636967c34e186a0e
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58312916"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60004597"
 ---
 # <a name="configuration-server-requirements-for-vmware-disaster-recovery-to-azure"></a>Požadavky na konfiguraci serveru pro zotavení po havárii VMware do Azure
 
 Při použití se nasadíte místní konfigurační server [Azure Site Recovery](site-recovery-overview.md) pro zotavení po havárii virtuálních počítačů VMware a fyzických serverů do Azure.
 
-- Konfigurace serveru souřadnice komunikaci mezi místní VMware a Azure. Spravuje taky data replikace.
 - Konfigurace serveru souřadnice komunikaci mezi místní VMware a Azure. Spravuje taky data replikace.
 - [Další informace](vmware-azure-architecture.md) o součásti konfiguračního serveru a procesů.
 

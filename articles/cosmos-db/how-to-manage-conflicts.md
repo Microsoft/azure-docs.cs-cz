@@ -1,21 +1,244 @@
 ---
 title: Informace o správě konfliktů mezi oblastmi ve službě Azure Cosmos DB
 description: Informace o správě konfliktů ve službě Azure Cosmos DB
-author: rimman
+author: markjbrown
 ms.service: cosmos-db
 ms.topic: sample
-ms.date: 04/15/2019
-ms.author: rimman
-ms.openlocfilehash: 6f4e6fce88815490ceffd7456cde045b38e32b29
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
+ms.date: 04/16/2019
+ms.author: mjbrown
+ms.openlocfilehash: fb9850548f0bfb71b797830eb0d5fdfddbc32306
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59680209"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59997015"
 ---
 # <a name="manage-conflict-resolution-policies-in-azure-cosmos-db"></a>Správa zásad řešení konfliktu ve službě Azure Cosmos DB
 
 S více oblastí zápisu když víc klientů zapisuje do jedné položce, je v konfliktu může dojít. Když dojde ke konfliktu, lze vyřešit konflikt pomocí různých konflikt zásad řešení. Tento článek popisuje, jak spravovat zásady řešení konfliktů.
+
+## <a name="create-a-last-writer-wins-conflict-resolution-policy"></a>Vytvořit zásadu řešení konfliktu poslední zápis
+
+Tyto ukázky předvádějí, jak vytvořit kontejner s zásada řešení konfliktů poslední zápis. Výchozí cesta pro poslední zápis je pole časového razítka nebo `_ts` vlastnost. To může být také nastaven na cestu pro číselný typ definovaný uživatelem. Konflikt wins nejvyšší hodnota. Pokud cesta není nastavena nebo je neplatná, bude výchozí `_ts`. Konflikty byly vyřešeny tato zásada nezobrazí v informačním kanálu ke konfliktu. Tyto zásady můžete použít všechny rozhraní API.
+
+### <a id="create-custom-conflict-resolution-policy-lww-dotnet"></a>.NET SDK
+
+```csharp
+DocumentCollection lwwCollection = await createClient.CreateDocumentCollectionIfNotExistsAsync(
+  UriFactory.CreateDatabaseUri(this.databaseName), new DocumentCollection
+  {
+      Id = this.lwwCollectionName,
+      ConflictResolutionPolicy = new ConflictResolutionPolicy
+      {
+          Mode = ConflictResolutionMode.LastWriterWins,
+          ConflictResolutionPath = "/myCustomId",
+      },
+  });
+```
+
+### <a id="create-custom-conflict-resolution-policy-lww-java-async"></a>Java Async SDK
+
+```java
+DocumentCollection collection = new DocumentCollection();
+collection.setId(id);
+ConflictResolutionPolicy policy = ConflictResolutionPolicy.createLastWriterWinsPolicy("/myCustomId");
+collection.setConflictResolutionPolicy(policy);
+DocumentCollection createdCollection = client.createCollection(databaseUri, collection, null).toBlocking().value();
+```
+
+### <a id="create-custom-conflict-resolution-policy-lww-java-sync"></a>Java Sync SDK
+
+```java
+DocumentCollection lwwCollection = new DocumentCollection();
+lwwCollection.setId(this.lwwCollectionName);
+ConflictResolutionPolicy lwwPolicy = ConflictResolutionPolicy.createLastWriterWinsPolicy("/myCustomId");
+lwwCollection.setConflictResolutionPolicy(lwwPolicy);
+DocumentCollection createdCollection = this.tryCreateDocumentCollection(createClient, database, lwwCollection);
+```
+
+### <a id="create-custom-conflict-resolution-policy-lww-javascript"></a>Node.js/JavaScript/TypeScript SDK
+
+```javascript
+const database = client.database(this.databaseName);
+const { container: lwwContainer } = await database.containers.createIfNotExists(
+  {
+    id: this.lwwContainerName,
+    conflictResolutionPolicy: {
+      mode: "LastWriterWins",
+      conflictResolutionPath: "/myCustomId"
+    }
+  }
+);
+```
+
+### <a id="create-custom-conflict-resolution-policy-lww-python"></a>Python SDK
+
+```python
+udp_collection = {
+                'id': self.udp_collection_name,
+                'conflictResolutionPolicy': {
+                    'mode': 'LastWriterWins',
+                    'conflictResolutionPath': '/myCustomId'
+                    }
+                }
+udp_collection = self.try_create_document_collection(create_client, database, udp_collection)
+```
+
+## <a name="create-a-custom-conflict-resolution-policy-using-a-stored-procedure"></a>Vytvořit zásadu rozlišení vlastní konflikt pomocí uložené procedury
+
+Tyto ukázky předvádějí, jak nastavit kontejner s vlastní zásadou řešení konfliktů s využitím uložené procedury, která konflikt vyřeší. Tyto konflikty nezobrazují v konfliktu informačního kanálu, pokud dojde k chybě v uložené proceduře. Po vytvoření zásady s kontejnerem, budete muset vytvořit uloženou proceduru. Sady .NET SDK ukázka níže ukazuje příklad, který. Tato zásada je podporována pouze na jádro (SQL) rozhraní Api.
+
+### <a name="sample-custom-conflict-resolution-stored-procedure"></a>Ukázka vlastních konfliktů uložené procedury
+
+Vlastní konflikt řešení uložené procedury musí být implementovaná pomocí signatura funkce je uvedeno níže. Název funkce se nemusí shodovat s názvem používá při registraci uloženou proceduru s kontejnerem ale zjednodušit, pojmenování. Tady je popis parametrů, které je nutné implementovat pro tuto uloženou proceduru.
+
+- **incomingItem**: Položka se přidají nebo aktualizují v potvrzení, která generuje konflikty. Má hodnotu null pro operace odstranění.
+- **existingItem**: Aktuálně zabýváme položky. Tato hodnota je null v aktualizaci a hodnotu null pro insert nebo delete.
+- **isTombstone**: Logická hodnota označující, pokud incomingItem je v konfliktu s dříve odstraněné položky. V případě hodnoty true, má také existingItem hodnotu null.
+- **conflictingItems**: Pole v potvrzené verzi všechny položky v kontejneru, které jsou v konfliktu s incomingItem na id nebo jakékoli jiné vlastnosti jedinečný index.
+
+> [!IMPORTANT]
+> Stejně jako pomocí uložené procedury, postup řešení konfliktu vlastních můžete přístup k žádným datům se stejným klíčem oddílu a můžete provést všechny vložit, aktualizovat nebo odstranit operaci k řešení konfliktů.
+
+
+Tento postup ukázka uložených řeší konflikty tak, že vyberete nejnižší hodnotu z `/myCustomId` cestu.
+
+```javascript
+function resolver(incomingItem, existingItem, isTombstone, conflictingItems) {
+  var collection = getContext().getCollection();
+
+  if (!incomingItem) {
+      if (existingItem) {
+
+          collection.deleteDocument(existingItem._self, {}, function (err, responseOptions) {
+              if (err) throw err;
+          });
+      }
+  } else if (isTombstone) {
+      // delete always wins.
+  } else {
+      if (existingItem) {
+          if (incomingItem.myCustomId > existingItem.myCustomId) {
+              return; // existing item wins
+          }
+      }
+
+      var i;
+      for (i = 0; i < conflictingItems.length; i++) {
+          if (incomingItem.myCustomId > conflictingItems[i].myCustomId) {
+              return; // existing conflict item wins
+          }
+      }
+
+      // incoming item wins - clear conflicts and replace existing with incoming.
+      tryDelete(conflictingItems, incomingItem, existingItem);
+  }
+
+  function tryDelete(documents, incoming, existing) {
+      if (documents.length > 0) {
+          collection.deleteDocument(documents[0]._self, {}, function (err, responseOptions) {
+              if (err) throw err;
+
+              documents.shift();
+              tryDelete(documents, incoming, existing);
+          });
+      } else if (existing) {
+          collection.replaceDocument(existing._self, incoming,
+              function (err, documentCreated) {
+                  if (err) throw err;
+              });
+      } else {
+          collection.createDocument(collection.getSelfLink(), incoming,
+              function (err, documentCreated) {
+                  if (err) throw err;
+              });
+      }
+  }
+}
+```
+
+### <a id="create-custom-conflict-resolution-policy-stored-proc-dotnet"></a>.NET SDK
+
+```csharp
+DocumentCollection udpCollection = await createClient.CreateDocumentCollectionIfNotExistsAsync(
+  UriFactory.CreateDatabaseUri(this.databaseName), new DocumentCollection
+  {
+      Id = this.udpCollectionName,
+      ConflictResolutionPolicy = new ConflictResolutionPolicy
+      {
+          Mode = ConflictResolutionMode.Custom,
+          ConflictResolutionProcedure = string.Format("dbs/{0}/colls/{1}/sprocs/{2}", this.databaseName, this.udpCollectionName, "resolver"),
+      },
+  });
+
+//Create the stored procedure
+await clients[0].CreateStoredProcedureAsync(
+UriFactory.CreateStoredProcedureUri(this.databaseName, this.udpCollectionName, "resolver"), new StoredProcedure
+{
+    Id = "resolver",
+    Body = File.ReadAllText(@"resolver.js")
+});
+```
+
+### <a id="create-custom-conflict-resolution-policy-stored-proc-java-async"></a>Java Async SDK
+
+```java
+DocumentCollection collection = new DocumentCollection();
+collection.setId(id);
+ConflictResolutionPolicy policy = ConflictResolutionPolicy.createCustomPolicy("resolver");
+collection.setConflictResolutionPolicy(policy);
+DocumentCollection createdCollection = client.createCollection(databaseUri, collection, null).toBlocking().value();
+```
+
+Po vytvoření kontejneru, je nutné vytvořit `resolver` uložené procedury.
+
+### <a id="create-custom-conflict-resolution-policy-stored-proc-java-sync"></a>Java Sync SDK
+
+```java
+DocumentCollection udpCollection = new DocumentCollection();
+udpCollection.setId(this.udpCollectionName);
+ConflictResolutionPolicy udpPolicy = ConflictResolutionPolicy.createCustomPolicy(
+        String.format("dbs/%s/colls/%s/sprocs/%s", this.databaseName, this.udpCollectionName, "resolver"));
+udpCollection.setConflictResolutionPolicy(udpPolicy);
+DocumentCollection createdCollection = this.tryCreateDocumentCollection(createClient, database, udpCollection);
+```
+
+Po vytvoření kontejneru, je nutné vytvořit `resolver` uložené procedury.
+
+### <a id="create-custom-conflict-resolution-policy-stored-proc-javascript"></a>Node.js/JavaScript/TypeScript SDK
+
+```javascript
+const database = client.database(this.databaseName);
+const { container: udpContainer } = await database.containers.createIfNotExists(
+  {
+    id: this.udpContainerName,
+    conflictResolutionPolicy: {
+      mode: "Custom",
+      conflictResolutionProcedure: `dbs/${this.databaseName}/colls/${
+        this.udpContainerName
+      }/sprocs/resolver`
+    }
+  }
+);
+```
+
+Po vytvoření kontejneru, je nutné vytvořit `resolver` uložené procedury.
+
+### <a id="create-custom-conflict-resolution-policy-stored-proc-python"></a>Python SDK
+
+```python
+udp_collection = {
+  'id': self.udp_collection_name,
+  'conflictResolutionPolicy': {
+      'mode': 'Custom',
+      'conflictResolutionProcedure': 'dbs/' + self.database_name + "/colls/" + self.udp_collection_name + '/sprocs/resolver'
+      }
+  }
+udp_collection = self.try_create_document_collection(create_client, database, udp_collection)
+```
+
+Po vytvoření kontejneru, je nutné vytvořit `resolver` uložené procedury.
+
 
 ## <a name="create-a-custom-conflict-resolution-policy"></a>Vytvoření vlastní zásady řešení konfliktů
 
@@ -82,158 +305,9 @@ manual_collection = {
 manual_collection = client.CreateContainer(database['_self'], collection)
 ```
 
-## <a name="create-a-custom-conflict-resolution-policy-using-a-stored-procedure"></a>Vytvořit zásadu rozlišení vlastní konflikt pomocí uložené procedury
-
-Tyto ukázky předvádějí, jak vytvořit kontejner pomocí zásad vlastní konflikt řešení pomocí uložené procedury k vyřešení konfliktu. Tyto konflikty nezobrazují v konfliktu informačního kanálu, pokud dojde k chybě v uložené proceduře.
-
-### <a id="create-custom-conflict-resolution-policy-stored-proc-dotnet"></a>.NET SDK
-
-```csharp
-DocumentCollection udpCollection = await createClient.CreateDocumentCollectionIfNotExistsAsync(
-  UriFactory.CreateDatabaseUri(this.databaseName), new DocumentCollection
-  {
-      Id = this.udpCollectionName,
-      ConflictResolutionPolicy = new ConflictResolutionPolicy
-      {
-          Mode = ConflictResolutionMode.Custom,
-          ConflictResolutionProcedure = string.Format("dbs/{0}/colls/{1}/sprocs/{2}", this.databaseName, this.udpCollectionName, "resolver"),
-      },
-  });
-```
-
-Po vytvoření kontejneru, je nutné vytvořit `resolver` uložené procedury.
-
-### <a id="create-custom-conflict-resolution-policy-stored-proc-java-async"></a>Java Async SDK
-
-```java
-DocumentCollection collection = new DocumentCollection();
-collection.setId(id);
-ConflictResolutionPolicy policy = ConflictResolutionPolicy.createCustomPolicy("resolver");
-collection.setConflictResolutionPolicy(policy);
-DocumentCollection createdCollection = client.createCollection(databaseUri, collection, null).toBlocking().value();
-```
-
-Po vytvoření kontejneru, je nutné vytvořit `resolver` uložené procedury.
-
-### <a id="create-custom-conflict-resolution-policy-stored-proc-java-sync"></a>Java Sync SDK
-
-```java
-DocumentCollection udpCollection = new DocumentCollection();
-udpCollection.setId(this.udpCollectionName);
-ConflictResolutionPolicy udpPolicy = ConflictResolutionPolicy.createCustomPolicy(
-        String.format("dbs/%s/colls/%s/sprocs/%s", this.databaseName, this.udpCollectionName, "resolver"));
-udpCollection.setConflictResolutionPolicy(udpPolicy);
-DocumentCollection createdCollection = this.tryCreateDocumentCollection(createClient, database, udpCollection);
-```
-
-Po vytvoření kontejneru, je nutné vytvořit `resolver` uložené procedury.
-
-### <a id="create-custom-conflict-resolution-policy-stored-proc-javascript"></a>Node.js/JavaScript/TypeScript SDK
-
-```javascript
-const database = client.database(this.databaseName);
-const { container: udpContainer } = await database.containers.createIfNotExists(
-  {
-    id: this.udpContainerName,
-    conflictResolutionPolicy: {
-      mode: "Custom",
-      conflictResolutionProcedure: `dbs/${this.databaseName}/colls/${
-        this.udpContainerName
-      }/sprocs/resolver`
-    }
-  }
-);
-```
-
-Po vytvoření kontejneru, je nutné vytvořit `resolver` uložené procedury.
-
-### <a id="create-custom-conflict-resolution-policy-stored-proc-python"></a>Python SDK
-
-```python
-udp_collection = {
-  'id': self.udp_collection_name,
-  'conflictResolutionPolicy': {
-    'mode': 'Custom',
-    'conflictResolutionProcedure': 'dbs/' + self.database_name + "/colls/" + self.udp_collection_name + '/sprocs/resolver'
-    }
-}
-udp_collection = self.try_create_document_collection(create_client, database, udp_collection)
-```
-
-Po vytvoření kontejneru, je nutné vytvořit `resolver` uložené procedury.
-
-## <a name="create-a-last-writer-wins-lww-conflict-resolution-policy"></a>Vytvoření zásada řešení konfliktů poslední zápis (LWW)
-
-Tyto ukázky předvádějí, jak vytvořit kontejner s zásada řešení konfliktů poslední zápis. Pokud cesta není nastavena nebo je neplatná, bude výchozí `_ts` vlastnost. Tato vlastnost je pole časového razítka. Tyto konflikty nezobrazí v informačním kanálu ke konfliktu.
-
-### <a id="create-custom-conflict-resolution-policy-lww-dotnet"></a>.NET SDK
-
-```csharp
-DocumentCollection lwwCollection = await createClient.CreateDocumentCollectionIfNotExistsAsync(
-  UriFactory.CreateDatabaseUri(this.databaseName), new DocumentCollection
-  {
-      Id = this.lwwCollectionName,
-      ConflictResolutionPolicy = new ConflictResolutionPolicy
-      {
-          Mode = ConflictResolutionMode.LastWriterWins,
-          ConflictResolutionPath = "/regionId",
-      },
-  });
-```
-
-### <a id="create-custom-conflict-resolution-policy-lww-java-async"></a>Java Async SDK
-
-```java
-DocumentCollection collection = new DocumentCollection();
-collection.setId(id);
-ConflictResolutionPolicy policy = ConflictResolutionPolicy.createLastWriterWinsPolicy(conflictResolutionPath);
-collection.setConflictResolutionPolicy(policy);
-DocumentCollection createdCollection = client.createCollection(databaseUri, collection, null).toBlocking().value();
-```
-
-### <a id="create-custom-conflict-resolution-policy-lww-java-sync"></a>Java Sync SDK
-
-```java
-DocumentCollection lwwCollection = new DocumentCollection();
-lwwCollection.setId(this.lwwCollectionName);
-ConflictResolutionPolicy lwwPolicy = ConflictResolutionPolicy.createLastWriterWinsPolicy("/regionId");
-lwwCollection.setConflictResolutionPolicy(lwwPolicy);
-DocumentCollection createdCollection = this.tryCreateDocumentCollection(createClient, database, lwwCollection);
-```
-
-### <a id="create-custom-conflict-resolution-policy-lww-javascript"></a>Node.js/JavaScript/TypeScript SDK
-
-```javascript
-const database = client.database(this.databaseName);
-const { container: lwwContainer } = await database.containers.createIfNotExists(
-  {
-    id: this.lwwContainerName,
-    conflictResolutionPolicy: {
-      mode: "LastWriterWins",
-      conflictResolutionPath: "/regionId"
-    }
-  }
-);
-```
-
-Pokud vynecháte `conflictResolutionPath` vlastnost, použije se výchozí `_ts` vlastnost.
-
-### <a id="create-custom-conflict-resolution-policy-lww-python"></a>Python SDK
-
-```python
-udp_collection = {
-                'id': self.udp_collection_name,
-                'conflictResolutionPolicy': {
-                    'mode': 'Custom',
-                    'conflictResolutionProcedure': 'dbs/' + self.database_name + "/colls/" + self.udp_collection_name + '/sprocs/resolver'
-                    }
-                }
-udp_collection = self.try_create_document_collection(create_client, database, udp_collection)
-```
-
 ## <a name="read-from-conflict-feed"></a>Čtení z informačního kanálu konfliktů
 
-Tyto ukázky předvádějí, jak číst z informačního kanálu konfliktů kontejneru. Je v konfliktu se zobrazí v konfliktu, jenom informační kanál pokud jejich nešlo přeložit automaticky, například zvolili zásada řešení konfliktů ruční a nezaregistrovali uloženou proceduru.
+Tyto ukázky předvádějí, jak číst z informačního kanálu konfliktů kontejneru. Je v konfliktu se zobrazí v kanálu jenom v případě, že nebyly rozpoznány automaticky, nebo pokud používáte vlastní konflikt zásada konflikt.
 
 ### <a id="read-from-conflict-feed-dotnet"></a>.NET SDK
 

@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/20/2019
+ms.date: 04/16/2019
 ms.author: willzhan
-ms.openlocfilehash: 75073058647f8e27a048e5ba0673a3d7e3f6a465
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
-ms.translationtype: MT
+ms.openlocfilehash: 974062b06c58ee23a001066a70a08675e2e94e48
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58311250"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60008105"
 ---
 # <a name="offline-playready-streaming-for-windows-10"></a>PlayReady offline Streaming pro Windows 10  
 
@@ -27,9 +27,12 @@ ms.locfileid: "58311250"
 > * [Verze 3](../latest/offline-plaready-streaming-for-windows-10.md)
 > * [Verze 2](offline-playready-streaming-windows-10.md)
 
+> [!NOTE]
+> Do Media Services v2 se nepřidávají žádné nové funkce. <br/>Projděte si nejnovější verzi, [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/). Viz také [pokyny k migraci z v2 na v3](../latest/migrate-from-v2-to-v3.md)
+
 Azure Media Services podporují offline stažení/přehrávání s ochranou DRM. Tento článek se zaměřuje na offline podporu Azure Media Services pro Windows 10/PlayReady klientů. Si můžete přečíst o podporu offline režimu pro iOS/FairPlay a zařízení s Androidem/Widevine v následujících článcích:
 
-- [Offline FairPlay Streaming pro iOS](media-services-protect-hls-with-offline-fairplay.md)
+- [Streamování FairPlay pro iOS v offline režimu](media-services-protect-hls-with-offline-fairplay.md)
 - [Offline Widevine streamování pro Android](offline-widevine-for-android.md)
 
 ## <a name="overview"></a>Přehled

@@ -2,17 +2,17 @@
 title: Jak zabezpečit přístup k Azure Data Catalog
 description: Tento článek vysvětluje postup při zabezpečení katalogu dat a jeho datovým assetům.
 services: data-catalog
-author: markingmyname
-ms.author: maghan
+author: JasonWHowell
+ms.author: jasonh
 ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 01/18/2018
-ms.openlocfilehash: de67ca0c209f9a61b00c5451a27a1198d0de3724
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
-ms.translationtype: MT
+ms.openlocfilehash: 6c09b509399647f4cacbc96427200da5a1b00ac9
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57532899"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60010740"
 ---
 # <a name="how-to-secure-access-to-data-catalog-and-data-assets"></a>Jak zabezpečit přístup ke katalogu dat a datových assetů
 > [!IMPORTANT]

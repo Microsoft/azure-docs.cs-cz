@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/15/2018
 ms.author: tomfitz
-ms.openlocfilehash: abd1329f2ebac90bf846dfd5fc5b307ddb5e52bd
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.openlocfilehash: 2330197b4512dfdd72de3529145103b644594e25
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47095476"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60252095"
 ---
 # <a name="microsoftcommoninfobox-ui-element"></a>Prvek uživatelského rozhraní Microsoft.Common.InfoBox
 Ovládací prvek, který přidá informační okno. Do pole obsahuje důležité text nebo upozornění, které pomáhají uživatelům pochopit, jaké hodnoty, který píše. Můžete také propojit na identifikátor URI pro další informace.

@@ -8,17 +8,17 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: conceptual
-ms.date: 02/11/2019
+ms.date: 04/17/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 07fdaa22532f48cc39b6c524d85fdfe625f8b80c
-ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.openlocfilehash: 257da397e11843ee96e93f7b3e9bc5ada29822cf
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58337122"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60203275"
 ---
-# <a name="categorize-images"></a>Kategorizace obrázků
+# <a name="categorize-images-by-subject-matter"></a>Kategorizace podle odborník na danou Image
 
 Kromě značek a popis pro počítačové zpracování obrazu vrací na základě taxonomie kategorií v obrázku. Na rozdíl od značky kategorie jsou uspořádány do hierarchie dědičného nadřazené a podřízené a jsou méně z nich (na rozdíl od tisíce značky 86). Všechny názvy kategorií jsou v angličtině. Kategorizace to provést, samostatně nebo společně s modelem novější značky.
 
@@ -53,7 +53,7 @@ Následující odpověď JSON ukazuje, co pro počítačové zpracování obrazu
 
 Následující tabulka ukazuje typické bitové kopie sady a kategorie vrátil pro počítačové zpracování obrazu pro každé image.
 
-| Image | Kategorie |
+| Image | Category |
 |-------|----------|
 | ![Čtyřmi lidmi kompenzaci společně jako skupina](./Images/family_photo.png) | people_group |
 | ![Štěněte chladniček na grassy pole](./Images/cute_dog.png) | animal_dog |

@@ -9,21 +9,18 @@ ms.topic: conceptual
 ms.date: 12/31/2018
 ms.author: adgera
 ms.custom: seodec18
-ms.openlocfilehash: 9a1d328f79405b14ffd84e07cb915566bd686c8e
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
-ms.translationtype: MT
+ms.openlocfilehash: 1746e1d53be01e6c40b5d1948c666960970b75a0
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54120950"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60001979"
 ---
 # <a name="azure-digital-twins-swagger-reference-documentation"></a>Digitální dvojče Swagger referenční dokumentace k Azure
 
 Každá instance zřízené digitální dvojče Azure zahrnuje vlastní automaticky generované referenční dokumentaci Swagger.
 
 [Swagger](https://swagger.io/), nebo [OpenAPI](https://www.openapis.org/), sjednotí komplexní informace o rozhraní API do prostředek referenční dokumentace pro interaktivní a jazykově nezávislé. Swagger obsahuje důležité referenční materiály, o které datové části JSON, metod HTTP a konkrétní koncové body používat k provedení operací k rozhraní API.
-
-> [!IMPORTANT]
-> Podpora pro ověřování Swaggeru je dočasně zakázané ve verzi Public Preview.
 
 ## <a name="swagger-summary"></a>Souhrn swagger
 
@@ -98,7 +95,42 @@ Příklady také kódy chyb umožňující ladit nebo vylepšit selhání testů
 Další informace o interaktivním testování požadavků, které jsou chráněné pomocí OAuth 2.0, najdete v článku [oficiální dokumentaci](https://swagger.io/docs/specification/authentication/oauth2/).
 
 > [!NOTE]
-> Podpora pro ověřování OAuth 2.0 je dočasně zakázané ve verzi Public Preview.
+> Uživatel instančního objektu, který vytvořil digitální dvojče Azure bude mít přiřazení rolí správce místa a budete moct vytvořit přiřazení dalších rolí pro ostatní uživatele.
+
+1. Postupujte podle kroků v [v tomto rychlém startu](https://docs.microsoft.com/azure/active-directory/develop/quickstart-v1-integrate-apps-with-azure-ad) k vytvoření aplikace Azure AD typu ***webovou aplikaci nebo API***. Nebo můžete znovu použít existující registraci aplikace.
+
+2. Přidejte následující adresa url odpovědi k registraci aplikace:
+
+    ```plaintext
+    https://YOUR_SWAGGER_URL/ui/oauth2-redirect-html
+    ```
+    | Name  | Nahradit hodnotou | Příklad: |
+    |---------|---------|---------|
+    | YOUR_SWAGGER_URL | Vaši adresu URL dokumentace k rozhraní REST API pro správu nalézt v portálu  | `https://yourDigitalTwinsName.yourLocation.azuresmartspaces.net/management/swagger` |
+
+3. Udělení oprávnění pro vaši aplikaci pro přístup k digitální dvojče Azure. V části **požadovaná oprávnění**, zadejte `Azure Digital Twins` a vyberte **delegovaná oprávnění**. Potom vyberte **udělit oprávnění**.
+
+    ![Registrace aplikace Azure AD přidat rozhraní api](../../includes/media/digital-twins-permissions/aad-app-req-permissions.png)
+
+4. Konfigurace manifestu aplikace povolit implicitní tok OAuth 2.0. Klikněte na tlačítko **Manifest** otevřete manifest aplikace pro vaši aplikaci. Nastavte *oauth2AllowImplicitFlow* k `true`.
+
+    ![Azure AD implicitní tok](../../includes/media/digital-twins-permissions/aad-app-allow-implicit-flow.png)
+
+5. Zkopírujte ID aplikace Azure AD.
+
+6. Klikněte na tlačítko Autorizovat na stránce swagger.
+
+    ![Povolit tlačítko swagger](../../includes/media/digital-twins-permissions/swagger-select-authorize-btn.png)
+
+7. Do pole client_id vložte ID aplikace.
+
+    ![Pole client_id swagger](../../includes/media/digital-twins-permissions/swagger-auth-form.png)
+
+    ![Swagger udělení oprávnění aplikace](../../includes/media/digital-twins-permissions/swagger-grant-application-permissions.png)
+
+8. Teď byste měli vidět nositele předaný ověřovací token v hlavičce autorizace a identita přihlášeného uživatele zobrazí ve výsledku.
+
+    ![Token výsledek swagger](../../includes/media/digital-twins-permissions/swagger-token-example.png)
 
 ## <a name="next-steps"></a>Další postup
 

@@ -16,12 +16,12 @@ ms.date: 09/10/2018
 ms.author: celested
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0522311c12da8416504a6d502e1e2247ff8ce15b
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 256ca5c2f26a6bac6bdfd09e4dd6294ec5a569ca
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58104144"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60292193"
 ---
 # <a name="problems-signing-in-to-a-microsoft-application"></a>Potíže při přihlašování k aplikaci Microsoftu
 
@@ -31,7 +31,7 @@ Existují tři hlavní způsoby, že uživatel může získat přístup k aplika
 
 -   Pro aplikace v Office 365 nebo jiné placené sad, mají uživatelé udělen přístup prostřednictvím **přiřazení licence** buď přímo do svého uživatelského účtu, nebo prostřednictvím skupiny pomocí našich přiřazení schopností skupinové licence.
 
--   Pro aplikace, které společnost Microsoft nebo třetích stran publikuje zpřístupněna bezplatně pro může je používat kdokoli, může být uživatelé udělili přístup prostřednictvím **souhlasu uživatele**. This0 znamená, že přihlášení k aplikaci pomocí svého účtu Azure AD práce nebo do školy a mohla mít přístup k některé omezenou sadu dat na svém účtu.
+-   Pro aplikace, které společnost Microsoft nebo třetích stran publikuje zpřístupněna bezplatně pro může je používat kdokoli, může být uživatelé udělili přístup prostřednictvím **souhlasu uživatele**. To znamená, že přihlášení k aplikaci pomocí svého účtu Azure AD práce nebo do školy a mohla mít přístup k některé omezenou sadu dat na svůj účet.
 
 -   Pro aplikace, které společnost Microsoft nebo 3. stran publikuje zpřístupněna bezplatně pro může je používat kdokoli, uživatelé mohou také být udělen přístup prostřednictvím **souhlas správce**. To znamená, že správce určil, že aplikace může je používat kdokoli v organizaci, přihlaste se k aplikaci pomocí účtu globálního správce a udělit přístup všem uživatelům v organizaci.
 

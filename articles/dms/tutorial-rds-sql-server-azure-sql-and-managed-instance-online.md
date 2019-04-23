@@ -1,6 +1,6 @@
 ---
-title: 'Kurz: Azure Database Migration Service můžete provést online migraci vzdálené plochy SQL serveru do Azure SQL Database nebo spravované instance Azure SQL Database | Dokumentace Microsoftu'
-description: Zjistěte, jak provést online migrace ze vzdálené plochy SQL serveru do Azure SQL Database nebo spravované instance Azure SQL Database s využitím Azure Database Migration Service.
+title: 'Kurz: Pomocí Azure Database Migration Service online migrace vzdálené plochy SQL serveru do služby Azure SQL Database nebo spravované instance Azure SQL Database | Dokumentace Microsoftu'
+description: Zjistěte, jak provést online migraci z SQL serveru vzdálené plochy ke službě Azure SQL Database nebo ke službě Azure SQL Database managed instance s využitím Azure Database Migration Service.
 services: dms
 author: HJToland3
 ms.author: jtoland
@@ -10,13 +10,13 @@ ms.service: dms
 ms.workload: data-services
 ms.custom: mvc, tutorial
 ms.topic: article
-ms.date: 04/03/2019
-ms.openlocfilehash: 4990b5f42291856c3695b4bf0eb6ec4084e9214e
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.date: 04/20/2019
+ms.openlocfilehash: 7294236a7b79ad093480e9063d886dd30ccf7fc1
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58886399"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59998970"
 ---
 # <a name="tutorial-migrate-rds-sql-server-to-azure-sql-database-or-an-azure-sql-database-managed-instance-online-using-dms"></a>Kurz: Migrace vzdálené plochy SQL serveru do Azure SQL Database nebo spravované instance Azure SQL Database online pomocí DMS
 Azure Database Migration Service můžete použít k migraci databází z instance SQL serveru vzdálené plochy k [Azure SQL Database](https://docs.microsoft.com/azure/sql-database/) nebo [Azure SQL Database managed instance](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-index) s minimálními výpadky. V tomto kurzu, migrujete **Adventureworks2012** obnovit databáze na SQL serveru vzdálené plochy instanci systému SQL Server 2012 (nebo novější) do Azure SQL Database nebo Azure SQL Database managed instance s využitím Azure Database Migration Služba.
@@ -187,7 +187,14 @@ Po vytvoření služby ji vyhledejte na webu Azure Portal, otevřete ji a pak vy
  
 3. Vyberte **+ Nový projekt migrace**.
 4. Na **nový projekt migrace** obrazovky, zadejte název projektu, v **serveru typ zdroje** textového pole, vyberte **AWS RDS pro SQL Server**v  **Cílový typ serveru** textového pole, vyberte **Azure SQL Database**.
+
+    > [!NOTE]
+    > Typ cílového serveru, vyberte **Azure SQL Database** pro migraci do obou singleton databázi Azure SQL Database a také o službě Azure SQL Database managed instance.
+
 5. V **zvolte typ aktivity** vyberte **Online data migrace**.
+
+    > [!IMPORTANT]
+    > Je potřeba vybrat možnost **Online data migrace**; offline migrace nejsou podporované pro tento scénář.
 
     ![Vytvoření projektu Database Migration Service](media/tutorial-rds-sql-to-azure-sql-and-managed-instance/dms-create-project4.png)
 

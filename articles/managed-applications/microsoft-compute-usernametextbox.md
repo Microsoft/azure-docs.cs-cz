@@ -1,6 +1,6 @@
 ---
-title: Azure elementu UserNameTextBox uživatelského rozhraní | Microsoft Docs
-description: Popisuje element Microsoft.Compute.UserNameTextBox uživatelského rozhraní pro portál Azure.
+title: Azure prvek uživatelského rozhraní UserNameTextBox | Dokumentace Microsoftu
+description: Popisuje element Microsoft.Compute.UserNameTextBox uživatelského rozhraní pro Azure portal.
 services: managed-applications
 documentationcenter: na
 author: tfitzmac
@@ -12,15 +12,15 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/27/2018
 ms.author: tomfitz
-ms.openlocfilehash: 9f07c5bf9ba1f1880fa142beb52455522425e68d
-ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
+ms.openlocfilehash: 88ab13329a719ba1e1b8a7b5fba2f7a2d381eca2
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37063297"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60251354"
 ---
-# <a name="microsoftcomputeusernametextbox-ui-element"></a>Element Microsoft.Compute.UserNameTextBox uživatelského rozhraní
-Ovládací prvek textové pole s integrované ověřování systému Windows a Linux uživatelská jména.
+# <a name="microsoftcomputeusernametextbox-ui-element"></a>Prvek uživatelského rozhraní Microsoft.Compute.UserNameTextBox
+Ovládací prvek textové pole s integrované ověřování Windows a Linuxem uživatelská jména.
 
 ## <a name="ui-sample"></a>Ukázka uživatelského rozhraní
 ![Microsoft.Compute.UserNameTextBox](./media/managed-application-elements/microsoft.compute.usernametextbox.png)
@@ -44,11 +44,11 @@ Ovládací prvek textové pole s integrované ověřování systému Windows a L
 ```
 
 ## <a name="remarks"></a>Poznámky
-- Pokud `constraints.required` je nastaven na **true**, pak textového pole musí mít hodnotu úspěšně ověřit. Výchozí hodnota je **true**.
+- Pokud `constraints.required` je nastavena na **true**, potom do textového pole musí mít hodnotu úspěšně ověřit. Výchozí hodnota je **true**.
 - `osPlatform` musí být zadán, a může být buď **Windows** nebo **Linux**.
-- `constraints.regex` je vzor regulárního výrazu jazyka JavaScript. -Li zadána, hodnota textového pole musí odpovídat vzorku úspěšně ověřit. Výchozí hodnota je **null**.
-- `constraints.validationMessage` je řetězec k zobrazení při jeho hodnotu neprojde ověřením určeného `constraints.regex`. Pokud není zadaný, se používají zpráv integrované ověření textového pole. Výchozí hodnota je **null**.
-- Tento element má integrované ověřování, který je založen na hodnotu zadanou pro `osPlatform`. Integrované ověřování můžete použít vlastní regulární výraz. Pokud nezadáte hodnotu `constraints.regex` je určeno, aktivaci předdefinované a vlastní ověření.
+- `constraints.regex` je vzor regulárního výrazu jazyka JavaScript. Je-li zadána, textového pole Hodnota musí odpovídat vzoru úspěšně ověřit. Výchozí hodnota je **null**.
+- `constraints.validationMessage` řetězec má zobrazit, když hodnota v textovém poli neprojde ověřením určené `constraints.regex`. Pokud není zadán, se používají textového pole předdefinovaných ověřovacích zpráv. Výchozí hodnota je **null**.
+- Tento element má integrované ověřování, který je založen na hodnotu zadanou pro `osPlatform`. Integrované ověřování lze použít spolu s vlastní regulární výraz. Pokud hodnotu `constraints.regex` není zadán, pak se aktivují předdefinované a vlastní ověření.
 
 ## <a name="sample-output"></a>Ukázkový výstup
 ```json
@@ -56,5 +56,5 @@ Ovládací prvek textové pole s integrované ověřování systému Windows a L
 ```
 
 ## <a name="next-steps"></a>Další postup
-* Úvod do vytváření definic uživatelského rozhraní, najdete v části [Začínáme s CreateUiDefinition](create-uidefinition-overview.md).
-* Popis společných vlastností v prvky uživatelského rozhraní najdete v tématu [CreateUiDefinition elementy](create-uidefinition-elements.md).
+* Úvod do vytváření definic uživatelského rozhraní, naleznete v tématu [Začínáme s funkcí CreateUiDefinition](create-uidefinition-overview.md).
+* Popis společné vlastnosti v prvcích uživatelského rozhraní, naleznete v tématu [CreateUiDefinition prvky](create-uidefinition-elements.md).

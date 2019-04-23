@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/17/2018
 ms.author: spelluru
-ms.openlocfilehash: 00f64deaa5e02f9bb74baaf86bfdf71690a3345d
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
-ms.translationtype: MT
+ms.openlocfilehash: ec79f6a9b255d44e66b901a0aae263c8dbbf2863
+ms.sourcegitcommit: c884e2b3746d4d5f0c5c1090e51d2056456a1317
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51248244"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60149856"
 ---
 # <a name="scale-quotas-and-limits-in-devtest-labs"></a>Kvóty a omezení škálování ve službě DevTest Labs
 Při práci ve službě DevTest Labs, můžete si všimnout, že jsou některé výchozí limity pro několik prostředků Azure, které mohou ovlivnit služby DevTest Labs. Tato omezení jsou označovány jako **kvóty**.
@@ -28,7 +28,7 @@ Při práci ve službě DevTest Labs, můžete si všimnout, že jsou některé 
 
 Každého prostředku Azure můžete použít, dokud se nedostanete kvóta. Každé předplatné má samostatné kvóty a využití se sleduje podle předplatného.
 
-Například každé předplatné má výchozí kvóta 20 jader. Proto pokud vytváříte virtuální počítače ve vaší laboratoři s čtyři jádra, pak můžete pouze vytvořit pět virtuálních počítačů. 
+Například každé předplatné má výchozí kvóta 20 jader. Proto pokud vytváříte virtuální počítače ve vaší laboratoři s čtyři jádra, pak můžete pouze vytvořit pět virtuálních počítačů.
 
 [Předplatné a omezení služby Azure](https://docs.microsoft.com/azure/azure-subscription-service-limits) jsou uvedeny některé nejběžnější kvóty pro prostředky Azure. Prostředky se nejčastěji používá v testovacím prostředí, pro které můžete narazit kvóty, zahrnují počet jader virtuálního počítače, veřejné IP adresy, síťové rozhraní, spravované disky, přiřazení role RBAC a okruhy ExpressRoute.
 
@@ -67,4 +67,4 @@ Tyto kroky ukazují, jak požádat o zvýšení kvóty prostřednictvím [webu A
 [!INCLUDE [devtest-lab-try-it-out](../../includes/devtest-lab-try-it-out.md)]
 
 ### <a name="next-steps"></a>Další postup
-* Prozkoumejte [Galerie šablon QuickStart pro Azure Resource Manageru DevTest Labs](https://github.com/Azure/azure-devtestlab/tree/master/Samples).
+* Prozkoumejte [Galerie šablon QuickStart pro Azure Resource Manageru DevTest Labs](https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/QuickStartTemplates).

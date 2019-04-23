@@ -19,11 +19,11 @@ ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: a77118edd08faf6d40897a916ee85e2b6e20d3bb
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58103447"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60298253"
 ---
 # <a name="azure-ad-saml-token-reference"></a>Odkaz tokenu Azure AD SAML
 
@@ -32,7 +32,7 @@ Azure Active Directory (Azure AD) vysílá několika typy tokenů zabezpečení 
 ## <a name="claims-in-saml-tokens"></a>Deklarace identity v tokenech SAML
 
 > [!div class="mx-codeBreakAll"]
-> | Název | Equivalent JWT Claim | Popis | Příklad: |
+> | Name | Equivalent JWT Claim | Popis | Příklad: |
 > | --- | --- | --- | ------------|
 > |Cílová skupina | `aud` |Zamýšlený příjemce tokenu. Aplikace, která přijímá token musí zkontrolujte, že hodnoty cílové skupiny je správný a odmítnout všechny tokeny, určené pro jinou cílovou skupinu. | `<AudienceRestriction>`<br>`<Audience>`<br>`https://contoso.com`<br>`</Audience>`<br>`</AudienceRestriction>`  |
 > | Okamžik ověření | |Zaznamenává data a času, kdy došlo k ověřování. | `<AuthnStatement AuthnInstant="2011-12-29T05:35:22.000Z">` | 
@@ -44,10 +44,10 @@ Azure Active Directory (Azure AD) vysílá několika typy tokenů zabezpečení 
 > |IssuedAt | `iat` |Ukládá čas, kdy byl token vydán. Často se používá k měření token aktuálnosti. | `<Assertion ID="_d5ec7a9b-8d8f-4b44-8c94-9812612142be" IssueInstant="2014-01-06T20:20:23.085Z" Version="2.0" xmlns="urn:oasis:names:tc:SAML:2.0:assertion">` |
 > |Vystavitel | `iss` |Identifikuje službu tokenů zabezpečení (STS), který vytvoří a vrátí token. V tokenech, které vrací Azure AD že vystavitel je sts.windows.net. Identifikátor GUID v hodnotě deklarace identity vystavitele je ID tenanta adresáře Azure AD. ID tenanta je identifikátor neměnné a spolehlivé adresáře. | `<Issuer>https://sts.windows.net/cbb1a5ac-f33b-45fa-9bf5-f37db0fed422/</Issuer>` |
 > |Příjmení | `family_name` |Jak je definováno v objektu uživatele Azure AD poskytuje poslední jméno, příjmení nebo příjmení uživatele. | `<Attribute Name=" http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname">`<br>`<AttributeValue>Miller<AttributeValue>` |
-> |Název | `unique_name` |Poskytuje lidsky čitelnou hodnotu, která identifikuje subjekt tokenu. Tato hodnota nemusí být jedinečný v rámci tenanta a je určený pouze pro účely zobrazení. | `<Attribute Name="http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name">`<br>`<AttributeValue>frankm@contoso.com<AttributeValue>`|
+> |Name | `unique_name` |Poskytuje lidsky čitelnou hodnotu, která identifikuje subjekt tokenu. Tato hodnota nemusí být jedinečný v rámci tenanta a je určený pouze pro účely zobrazení. | `<Attribute Name="http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name">`<br>`<AttributeValue>frankm@contoso.com<AttributeValue>`|
 > |ID objektu | `oid` |Obsahuje jedinečný identifikátor objektu ve službě Azure AD. Tato hodnota je neměnná a nelze přiřadit nebo znovu použít. ID objektu použijte k identifikaci objektu v dotazech ke službě Azure AD. | `<Attribute Name="http://schemas.microsoft.com/identity/claims/objectidentifier">`<br>`<AttributeValue>528b2ac2-aa9c-45e1-88d4-959b53bc7dd0<AttributeValue>` |
 > |Role | `roles` |Představuje všechny aplikační role, které předmět bylo uděleno přímo i nepřímo prostřednictvím členství ve skupinách a je možné vynutit řízení přístupu na základě rolí. Aplikační role jsou definované na základě jednotlivých aplikací prostřednictvím `appRoles` vlastnosti manifestu aplikace. `value` Vlastnost jednotlivé aplikační role je hodnota, která se zobrazí v deklarace identity rolí. | `<Attribute Name="http://schemas.microsoft.com/ws/2008/06/identity/claims/role">`|
-> |Subjekt | `sub` |Určuje objekt o tom, které token vyhodnocuje informace, jako je například uživatel aplikace. Tato hodnota je neměnná a nejde ji přiřadit nebo opakovaně používat, proto ji lze použít k provedení kontroly autorizace bezpečně. Protože předmět je vždy přítomna v tokenech problémy s Azure AD, je doporučeno použití této hodnoty v rámci obecné účely autorizace systému. <br> `SubjectConfirmation` není deklarace identity. Popisuje, jak ověřit předmětem token. `Bearer` Označuje, předmět je potvrzen jejich vlastnictví tokenu. | `<Subject>`<br>`<NameID>S40rgb3XjhFTv6EQTETkEzcgVmToHKRkZUIsJlmLdVc</NameID>`<br>`<SubjectConfirmation Method="urn:oasis:names:tc:SAML:2.0:cm:bearer" />`<br>`</Subject>`|
+> |Subject | `sub` |Určuje objekt o tom, které token vyhodnocuje informace, jako je například uživatel aplikace. Tato hodnota je neměnná a nejde ji přiřadit nebo opakovaně používat, proto ji lze použít k provedení kontroly autorizace bezpečně. Protože předmět je vždy přítomna v tokenech problémy s Azure AD, je doporučeno použití této hodnoty v rámci obecné účely autorizace systému. <br> `SubjectConfirmation` není deklarace identity. Popisuje, jak ověřit předmětem token. `Bearer` Označuje, předmět je potvrzen jejich vlastnictví tokenu. | `<Subject>`<br>`<NameID>S40rgb3XjhFTv6EQTETkEzcgVmToHKRkZUIsJlmLdVc</NameID>`<br>`<SubjectConfirmation Method="urn:oasis:names:tc:SAML:2.0:cm:bearer" />`<br>`</Subject>`|
 > |ID tenanta | `tid` |Neměnné a jednorázovým identifikátor, který identifikuje tenantu Active directory, která token vydala. Tuto hodnotu můžete použít pro přístup k prostředkům specifickým pro tenanta adresáře v aplikaci s více tenanty. Tuto hodnotu můžete například použít k identifikaci tenanta služby ve volání rozhraní Graph API. | `<Attribute Name="http://schemas.microsoft.com/identity/claims/tenantid">`<br>`<AttributeValue>cbb1a5ac-f33b-45fa-9bf5-f37db0fed422<AttributeValue>`|
 > |Živostnost tokenu | `nbf`, `exp` |Definuje časový interval, ve kterém je token platný. Služba, která ověří token, který by měl ověřte, že aktuální datum v rámci dobu životnosti tokenu, jiný ji by měl odmítnout token. Služba může umožnit až pět minut mimo rozsah životnost tokenu aby se zohlednily případné rozdíly v čase ("čas Nerovnoměrná distribuce") mezi službami Azure AD a služby. | `<Conditions`<br>`NotBefore="2013-03-18T21:32:51.261Z"`<br>`NotOnOrAfter="2013-03-18T22:32:51.261Z"`<br>`>` <br>|
 

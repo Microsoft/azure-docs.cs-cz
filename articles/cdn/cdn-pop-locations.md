@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/01/2019
 ms.author: magattus
-ms.openlocfilehash: 1370785f730fbbc9ceaea67e4f615de7d2041204
-ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
-ms.translationtype: MT
+ms.openlocfilehash: 53002fba9883d4ae0276ee1d91e915587f89177b
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56990608"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60007674"
 ---
 # <a name="azure-cdn-coverage-by-metro"></a>Azure CDN pokrytí Metro 
 > [!div class="op_single_selector"]
@@ -44,7 +44,7 @@ Tento článek uvádí aktuální metrem obsahující point-of-presence (POP) um
 | Afrika | Kapské město, Jihoafrická republika<br />Johannesburg, Jihoafrická republika | Johannesburg, Jihoafrická republika | Jižní Afrika |
 | Střední východ | Dubai, Spojené arabské emiráty | Maskat, Omán<br />Fujirah, Spojené arabské emiráty | Katar<br />Spojené arabské emiráty |
 | Indie | Čennaj, Indie<br />Bombaj, Indie<br />Nové Dillí, Indie | Bangalore, Indie<br />Čennaj, Indie<br />Bombaj, Indie<br />Nové Dillí, Indie<br /> | Indie |
-| Asie | Hongkong<br />Ósaka, Japonsko<br />Tokio, Japonsko<br />Kuala Lumpur, Malaysia<br />Manila, Filipíny<br />Singapur<br />Busan, Jižní Korea<br />Soul, Jižní Korea<br />Taipei, Tchaj-wan<br />Bangkok, Thajsko | Hongkong<br />Batam, Indonésie<br />Jakarta, Indonesia<br />Ósaka, Japonsko<br />Tokio, Japonsko<br />Singapur<br />Busan, Jižní Korea<br />Soul, Jižní Korea<br />Kao-Siung, Tchaj-wan | Hongkong<br />Indonésie<br />Izrael<br />Japonsko<br />Macao<br />Malajsie<br />Filipíny<br />Singapur<br />Jižní Korea<br />Tchaj-wan<br />Thajsko<br />Turecko<br />Vietnam |
+| Asie | Hongkong – zvláštní správní oblast<br />Ósaka, Japonsko<br />Tokio, Japonsko<br />Kuala Lumpur, Malaysia<br />Manila, Filipíny<br />Singapur<br />Busan, Jižní Korea<br />Soul, Jižní Korea<br />Taipei, Tchaj-wan<br />Bangkok, Thajsko | Hongkong – zvláštní správní oblast<br />Batam, Indonésie<br />Jakarta, Indonesia<br />Ósaka, Japonsko<br />Tokio, Japonsko<br />Singapur<br />Busan, Jižní Korea<br />Soul, Jižní Korea<br />Kao-Siung, Tchaj-wan | Hongkong – zvláštní správní oblast<br />Indonésie<br />Izrael<br />Japonsko<br />Macao – zvláštní administrativní oblast<br />Malajsie<br />Filipíny<br />Singapur<br />Jižní Korea<br />Tchaj-wan<br />Thajsko<br />Turecko<br />Vietnam |
 | Austrálie a Nový Zéland | Brisbane, Austrálie<br />Melbourne, Austrálie<br />Perth, Austrálie<br />Sydney, Austrálie<br />Auckland, Nový Zéland | Melbourne, Austrálie<br />Sydney, Austrálie<br />Auckland, Nový Zéland | Austrálie<br />Nový Zéland |
 
 

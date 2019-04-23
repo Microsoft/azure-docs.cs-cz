@@ -8,12 +8,12 @@ ms.author: rgarcia
 ms.date: 04/03/2019
 ms.topic: tutorial
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 64f78b04d433c81302499addf15c3d19621bbf9f
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 9838add4f83434848d61f3ae86db71765efdc59a
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59788339"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59995723"
 ---
 # <a name="tutorial-step-by-step-instructions-to-create-a-new-android-app-using-azure-spatial-anchors"></a>Kurz: Podrobné pokyny k vytvoření nové aplikace pro Android pomocí Azure prostorových kotvy
 
@@ -57,12 +57,12 @@ Upravit `app\manifests\AndroidManifest.xml` zahrnout následující položky v k
 </application>
 ```
 
-Upravit `Gradle Scripts\build.gradle (Module: app)` přidejte následující položku. Takto se zajistí, že vaše aplikace cílí na verzi 1.5 ARCore (podpora bude brzy dostupná ARCore 1.6 + na prostorový kotvy Azure). Po této změně, může se zobrazit oznámení z Gradle s výzvou k synchronizaci: klikněte na tlačítko **synchronizovat nyní**.
+Upravit `Gradle Scripts\build.gradle (Module: app)` přidejte následující položku. Tento kód, který zajistí vaše aplikace cílí ARCore verze 1.7. Po této změně, může se zobrazit oznámení z Gradle s výzvou k synchronizaci: klikněte na tlačítko **synchronizovat nyní**.
 
 ```
 dependencies {
     ...
-    implementation 'com.google.ar:core:1.5.0'
+    implementation 'com.google.ar:core:1.7.0'
     ...
 }
 ```
@@ -71,7 +71,7 @@ dependencies {
 
 <a href="https://developers.google.com/ar/develop/java/sceneform/" target="_blank">_Sceneform_ </a> usnadňuje vykreslení realistické 3D scény v aplikacích pro rozšířené Reality, bez nutnosti učit OpenGL.
 
-Upravit `Gradle Scripts\build.gradle (Module: app)` zahrnout následující položky. Tento kód vám umožní vaši aplikaci, aby používala jazykovým konstrukcím z Javy 8, které `Sceneform` vyžaduje. Také zajistí vaší aplikaci zaměřuje `Sceneform` verze 1.5, protože to by měla odpovídat verzi ARCore vaše aplikace používá. Po této změně, může se zobrazit oznámení z Gradle s výzvou k synchronizaci: klikněte na tlačítko **synchronizovat nyní**.
+Upravit `Gradle Scripts\build.gradle (Module: app)` zahrnout následující položky. Tento kód vám umožní vaši aplikaci, aby používala jazykovým konstrukcím z Javy 8, které `Sceneform` vyžaduje. Také zajistí vaší aplikaci zaměřuje `Sceneform` verze 1.7, protože to by měla odpovídat verzi ARCore vaše aplikace používá. Po této změně, může se zobrazit oznámení z Gradle s výzvou k synchronizaci: klikněte na tlačítko **synchronizovat nyní**.
 
 ```
 android {
@@ -85,7 +85,7 @@ android {
 
 dependencies {
     ...
-    implementation 'com.google.ar.sceneform.ux:sceneform-ux:1.5.0'
+    implementation 'com.google.ar.sceneform.ux:sceneform-ux:1.7.0'
     ...
 }
 ```

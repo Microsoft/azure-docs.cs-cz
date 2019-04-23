@@ -11,12 +11,12 @@ ms.topic: sample
 ms.date: 03/21/2019
 ms.author: kefre
 ms.custom: seodec18
-ms.openlocfilehash: fb684a59362e0f7b6ccdc2ca05fda1b89def2835
-ms.sourcegitcommit: 87bd7bf35c469f84d6ca6599ac3f5ea5545159c9
-ms.translationtype: MT
+ms.openlocfilehash: feafb983a7b9e4aea6091753842b03a65ccd3ca5
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58351843"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60001554"
 ---
 # <a name="how-to-analyze-videos-in-real-time"></a>Jak analyzovat videa v reálném čase
 
@@ -194,7 +194,7 @@ Druhá ukázková aplikace je o něco zajímavější a umožňuje zvolit, kter�
 
 Ve většině režimů bude mezi živým videem vlevo a vizualizovanou analýzou vpravo viditelné zpoždění. Toto zpoždění představuje dobu, jakou trvá volání rozhraní API. Výjimkou je v režimu "EmotionsWithClientFaceDetect", který provádí rozpoznávání tváře lokálně na klientském počítači pomocí OpenCV, před odesláním žádné obrázky do služeb Cognitive Services. Díky tomu můžeme detekovanou tvář vizualizovat okamžitě a emoce aktualizovat později, jakmile se vrátí volání rozhraní API. To demonstruje možnost „hybridního“ přístupu, kdy je možné určité jednoduché zpracování provést na straně klienta, a v případě potřeby je rozšířit o pokročilejší analýzu pomocí rozhraní API služeb Cognitive Services.
 
-![Snímek obrazovky zobrazující image se značkami zobrazí LiveCameraSample aplikace](../../Video/Images/FramebyFrame.jpg)
+![Snímek obrazovky LiveCameraSample aplikaci zobrazující image pomocí zobrazení značek](../../Video/Images/FramebyFrame.jpg)
 
 ### <a name="integrating-into-your-codebase"></a>Integrace do základu kódu
 
@@ -216,7 +216,7 @@ Funkce knihovny VideoFrameAnalyzer pro rozpoznávání obrazu, hlasu, videa nebo
 
 ## <a name="summary"></a>Souhrn
 
-V této příručce jste se naučili analyzovat živé video streamy téměř v reálném čase pomocí rozhraní API pro rozpoznávání tváře, počítačové zpracování obrazu a rozpoznávání emocí a zjistili, jak můžete využít náš ukázkový kód. Svou vlastní aplikaci můžete začít sestavovat s využitím bezplatných klíčů rozhraní API na [registrační stránce služby Microsoft Cognitive Services](https://azure.microsoft.com/try/cognitive-services/). 
+V této příručce jste se naučili analyzovat živé video streamy téměř v reálném čase pomocí rozhraní API pro rozpoznávání tváře, počítačové zpracování obrazu a rozpoznávání emocí a zjistili, jak můžete využít náš ukázkový kód. Svou vlastní aplikaci můžete začít sestavovat s využitím bezplatných klíčů rozhraní API na [registrační stránce služby Azure Cognitive Services](https://azure.microsoft.com/try/cognitive-services/). 
 
 Můžete poskytnout zpětnou vazbu a návrhů v [úložiště GitHub](https://github.com/Microsoft/Cognitive-Samples-VideoFrameAnalysis/), nebo na další názory široké rozhraní API, na našem [webu UserVoice](https://cognitive.uservoice.com/).
 

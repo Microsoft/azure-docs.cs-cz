@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 05/23/2017
 ms.author: cynthn
 ROBOTS: NOINDEX
-ms.openlocfilehash: a7181c91424e1d905329eefd13f926d0b2700081
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: e1ed419892412c1fb9334fed74b82c53154723ed
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56864970"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60252425"
 ---
 # <a name="how-to-create-an-unmanaged-vm-image-from-an-azure-vm"></a>Vytvoření nespravované image virtuálního počítače z virtuálního počítače Azure
 
@@ -29,7 +29,7 @@ Tento článek se týká použití účtů úložiště. Doporučujeme použít 
 
 Tento článek popisuje, jak používat Azure PowerShell k vytvoření image generalizovaného virtuálního počítače Azure pomocí účtu úložiště. Potom můžete image k vytvoření virtuálního počítače s jinou. Na obrázku obsahuje disk s operačním systémem a datové disky, které jsou připojené k virtuálnímu počítači. Na obrázku neobsahuje prostředky virtuální sítě, proto musíte nastavit tyto prostředky při vytváření nového virtuálního počítače. 
 
-[!INCLUDE [updated-for-az-vm.md](../../../includes/updated-for-az-vm.md)]
+[!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
 
 ## <a name="generalize-the-vm"></a>Generalizace virtuálního počítače 
 Tato část ukazuje, jak zobecnit pro použití jako image virtuálního počítače Windows. Zobecňuje se virtuální počítač odebere všechny osobní informace o vašem účtu, mimo jiné a připraví počítač, který má být použit jako obrázek. Podrobnosti o nástroji Sysprep najdete v tématu [použití nástroje Sysprep: Úvod](https://technet.microsoft.com/library/bb457073.aspx).
@@ -116,7 +116,7 @@ Můžete získat adresu URL image ze souboru šablony JSON. Přejděte **prostř
    
 Můžete si taky ověřit identifikátor URI na portálu. Na obrázku je zkopírován do kontejneru s názvem **systému** ve vašem účtu úložiště. 
 
-## <a name="create-a-vm-from-the-image"></a>Vytvoření virtuálního počítače z image
+## <a name="create-a-vm-from-the-image"></a>Vytvořte z této image virtuální počítač.
 
 Nyní můžete vytvořit jeden nebo více virtuálních počítačů z nespravované image.
 

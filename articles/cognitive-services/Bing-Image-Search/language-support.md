@@ -10,12 +10,12 @@ ms.subservice: bing-image-search
 ms.topic: article
 ms.date: 03/04/2019
 ms.author: aahi
-ms.openlocfilehash: 92316d3f84f0a8d3cda0e98fd8ae751eb78b7e56
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
-ms.translationtype: MT
+ms.openlocfilehash: a4c315d2696b081a4f2ac646d097e76ff9562380
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57337698"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60009476"
 ---
 # <a name="language-and-region-support-for-the-bing-image-search-api"></a>Podpora jazyka a oblasti pro rozhraní API Bingu pro vyhledávání obrázků
 
@@ -47,7 +47,7 @@ Alternativně můžete zadat pomocí země/oblast `cc` parametr dotazu. Pokud ch
 |Finsko|FI|
 |Francie|FR|
 |Německo|DE|
-|Hongkong|HK|
+|Hongkong – zvláštní správní oblast|HK|
 |Indie|IN|
 |Indonésie|ID|
 |Itálie|IT|
@@ -91,7 +91,7 @@ Alternativně můžete zadat pomocí země/oblast `cc` parametr dotazu. Pokud ch
 |Finsko|Finština|fi-FI|
 |Francie|Francouzština|fr-FR|
 |Německo|Němčina|de-DE|
-|Hongkong|Tradiční čínština|zh-HK|
+|Hongkong – zvláštní správní oblast|Tradiční čínština|zh-HK|
 |Indie|Angličtina|en-IN|
 |Indonésie|Angličtina|cs ID|
 |Itálie|italština|IT-IT|

@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: overview
 ms.date: 03/21/2019
 ms.author: helohr
-ms.openlocfilehash: 6385838064c408ccfa23dacbd5785f8e82f3cc8b
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: MT
+ms.openlocfilehash: 58fb1d73509ab52551bead4526dfb47588cf1ec6
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59049426"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60004580"
 ---
 # <a name="what-is-windows-virtual-desktop-preview"></a>Co je Windows Virtual Desktop Preview? 
 
@@ -54,13 +54,16 @@ Můžete také přiřadit a připojení uživatelů k virtuálním klientům:
 
 Existuje několik věcí, které je potřeba nastavit virtuální plochy Windows a úspěšně připojit vaše uživatele pro své stolní počítače Windows a aplikací.
 
-Nejprve zkontrolujte, zda máte [odpovídající licence](https://azure.microsoft.com/pricing/details/virtual-desktop/) pro vaše uživatele, založené na stolní počítače a aplikace, máte v úmyslu nasadit:
+Virtuální Desktop Windows aktuálně podporuje pouze následující dva operační systémy:
+- Windows 10 Enterprise více relací
+- Windows Server 2016
+
+Plánujeme přidat podporu pro následující operační systémy, takže se ujistěte, že máte [odpovídající licence](https://azure.microsoft.com/pricing/details/virtual-desktop/) pro vaše uživatele, založené na stolní počítače a aplikace, máte v úmyslu nasadit:
 
 |Operační systém|Požadovaná licence|
 |---|---|
-|Více Windows 10 Enterprise nebo Windows 10 single relaci|Microsoft 365 E3, E5, A3, A5, Business, F1<br>Windows E3, E5, A3, A5|
-|Windows 7|Microsoft 365 E3, E5, A3, A5, Business, F1<br>Windows E3, E5, A3, A5|
-|Windows Server 2012 R2, 2016, 2019|Licence VP licence pro klientský přístup (CAL) s programem Software Assurance|
+
+| Více relací Windows 10 Enterprise nebo Windows 10 Enterprise | Microsoft E3, E5, A3, A5, firmy<br>Windows E3, E5, A3, A5| |Windows 7 Enterprise |Microsoft E3, E5, A3, A5, Business<br>A3 E3 a E5, Windows, A5 | | Windows Server 2012 R2, 2016, 2019 | Licence VP licence pro klientský přístup (CAL) s programem Software Assurance |
 
 Vaše infrastruktura potřebuje následující akce pro podporu virtuální plochy Windows:
 

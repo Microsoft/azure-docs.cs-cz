@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 0203/26/2019
 ms.author: bwren
-ms.openlocfilehash: 59213c5391b5b652eeead05c4a5af761571fcece
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: ec037b16840afe669ac3934beaa832f850cdcfb0
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59798942"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60003679"
 ---
 # <a name="logs-in-azure-monitor"></a>Protokoly v Azure Monitoru
 
@@ -112,7 +112,7 @@ Azure Monitor může shromažďovat data protokolu z různých zdrojů v rámci 
 
 | Data | Popis |
 |:---|:---|
-| Azure Monitor for Containers | Data inventáře a výkonu shromážděné [monitorování Azure pro kontejnery](../insights/container-insights-overview.md). Zobrazit [podrobnosti o kontejneru shromažďování dat](../insights/container-insights-analyze.md#container-data-collection-details) seznam tabulek. |
+| Azure Monitor pro kontejnery | Data inventáře a výkonu shromážděné [monitorování Azure pro kontejnery](../insights/container-insights-overview.md). Zobrazit [podrobnosti o kontejneru shromažďování dat](../insights/container-insights-log-search.md#container-records) seznam tabulek. |
 | Azure Monitor pro virtuální počítače | Data mapy a výkonu shromážděné [monitorování Azure pro virtuální počítače](../insights/vminsights-overview.md). Zobrazit [jak provádět dotazy protokolů ze služby Azure Monitor pro virtuální počítače](../insights/vminsights-log-search.md) podrobnosti o dotazování na tato data. |
 
 ### <a name="custom"></a>Vlastní 

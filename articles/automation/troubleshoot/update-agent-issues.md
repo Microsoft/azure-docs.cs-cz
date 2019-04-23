@@ -4,17 +4,17 @@ description: Informace o řešení potíží s agentem Update Management.
 services: automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 12/14/2018
+ms.date: 04/22/2019
 ms.topic: conceptual
 ms.service: automation
 ms.subservice: update-management
 manager: carmonm
-ms.openlocfilehash: d4331942526b3dbda376605db2618ceeaec3f60a
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
-ms.translationtype: MT
+ms.openlocfilehash: 864fe70d7702680f21234a1a15c02515b19f770b
+ms.sourcegitcommit: c884e2b3746d4d5f0c5c1090e51d2056456a1317
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58165994"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60149610"
 ---
 # <a name="understand-the-windows-agent-check-results-in-update-management"></a>Vysvětlení výsledky kontroly agenta Windows v Update Management
 
@@ -25,6 +25,9 @@ V následujícím seznamu jsou tři připravenosti stavy, které počítač mů�
 * **Připraveno** – aktualizace agenta nasazení a byla posledního kontaktu s méně než hodinou.
 * **Odpojení** – nasazení aktualizace agenta a byl naposledy zobrazeno více než 1 hodinou.
 * **Není nakonfigurováno** – aktualizace agenta nebyl nalezen nebo nebyl dokončen registrace.
+
+> [!NOTE]
+> Pravděpodobně dojde k mírnému zpoždění mezi co se zobrazí na webu Azure portal a aktuální stav stroje.
 
 ## <a name="start-the-troubleshooter"></a>Spustit Poradce při potížích
 

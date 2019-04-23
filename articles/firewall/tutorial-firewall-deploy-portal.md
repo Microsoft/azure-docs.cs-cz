@@ -9,11 +9,11 @@ ms.date: 4/9/2019
 ms.author: victorh
 ms.custom: mvc
 ms.openlocfilehash: cd7797ae3b79fb874bafc89437943b084020d800
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59492307"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60194216"
 ---
 # <a name="tutorial-deploy-and-configure-azure-firewall-using-the-azure-portal"></a>Kurz: Nasazení a konfigurace brány Azure Firewall pomocí webu Azure Portal
 
@@ -102,7 +102,7 @@ Teď vytvoříte virtuální počítače pro jump server a server úloh a umíst
 2. Vyberte **Výpočty** a potom v seznamu Doporučené vyberte **Windows Server 2016 Datacenter**.
 3. Zadejte pro virtuální počítač tyto hodnoty:
 
-   |Nastavení  |Hodnota  |
+   |Nastavení  |Value  |
    |---------|---------|
    |Skupina prostředků     |**Test-FW-RG**|
    |Název virtuálního počítače     |**SRV Jump**|
@@ -123,7 +123,7 @@ Teď vytvoříte virtuální počítače pro jump server a server úloh a umíst
 
 Použijte informace v následující tabulce ke konfiguraci další virtuální počítač s názvem **Srv pracovní**. Zbývající část konfigurace je stejná jako u virtuálního počítače Srv-Jump.
 
-|Nastavení  |Hodnota  |
+|Nastavení  |Value  |
 |---------|---------|
 |Podsíť|**Workload-SN**|
 |Veřejná IP adresa|**Žádné**|
@@ -138,12 +138,12 @@ Nasaďte do virtuální sítě bránu firewall.
 3. Vyberte **brány Firewall** a pak vyberte **vytvořit**.
 4. Na stránce **Vytvoření brány firewall** nakonfigurujte bránu firewall podle následující tabulky:
 
-   |Nastavení  |Hodnota  |
+   |Nastavení  |Value  |
    |---------|---------|
    |Předplatné     |\<Vaše předplatné\>|
    |Skupina prostředků     |**Test-FW-RG** |
-   |Název     |**Test-FW01**|
-   |Umístění     |Vyberte dříve použité umístění.|
+   |Name     |**Test-FW01**|
+   |Location     |Vyberte dříve použité umístění.|
    |Volba virtuální sítě     |**Použít existující**: **Test-FW-VN**|
    |Veřejná IP adresa     |**Vytvořte novou**. Veřejná IP adresa musí být typu Standardní SKU.|
 

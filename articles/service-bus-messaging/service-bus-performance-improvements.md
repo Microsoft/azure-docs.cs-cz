@@ -10,12 +10,12 @@ ms.service: service-bus-messaging
 ms.topic: article
 ms.date: 09/14/2018
 ms.author: aschhab
-ms.openlocfilehash: edd7a397598bcb5941f3ac1b29d385d6eac40f8d
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: f5ce8a237bc2ba7fe15acfcd6afa0edcda7ef713
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59501633"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59996014"
 ---
 # <a name="best-practices-for-performance-improvements-using-service-bus-messaging"></a>Osvědčené postupy pro zlepšení výkonu pomocí zasílání zpráv Service Bus
 
@@ -94,6 +94,15 @@ MessagingFactory messagingFactory = MessagingFactory.Create(namespaceUri, mfs);
 ```
 
 Dávkování nemá vliv na počet účtovaných operací zasílání zpráv a je k dispozici pouze pro použití protokolu klienta služby Service Bus [Microsoft.ServiceBus.Messaging](https://www.nuget.org/packages/WindowsAzure.ServiceBus/) knihovny. Protokol HTTP nepodporuje dávkování.
+
+> [!NOTE]
+> Nastavení BatchFlushInterval zajišťuje, že dávkování implicitní z pohledu aplikace. To znamená aplikace provádí SendAsync() a CompleteAsync() volá a neprovede konkrétnímu volání služby Batch.
+>
+> Dávkování na straně klienta explicitní můžete implementovat s využitím pod volání metody - 
+> ```csharp
+> Task SendBatchAsync (IEnumerable<BrokeredMessage> messages);
+> ```
+> Tady celková velikost zpráv musí být menší než maximální velikost podporovaná cenovou úroveň.
 
 ## <a name="batching-store-access"></a>Dávkování přístupu ke službě store
 

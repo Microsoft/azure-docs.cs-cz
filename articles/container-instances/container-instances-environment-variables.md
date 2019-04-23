@@ -5,14 +5,14 @@ services: container-instances
 author: dlepow
 ms.service: container-instances
 ms.topic: article
-ms.date: 04/15/2019
+ms.date: 04/17/2019
 ms.author: danlep
-ms.openlocfilehash: c311eea80c604366196a0725e4f9982bb43f8b5d
-ms.sourcegitcommit: 5f348bf7d6cf8e074576c73055e17d7036982ddb
-ms.translationtype: MT
+ms.openlocfilehash: 4a4b19338d96094f28b4f4bedd8042723f67f10a
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2019
-ms.locfileid: "59606884"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59994771"
 ---
 # <a name="set-environment-variables-in-container-instances"></a>Nastavení proměnných prostředí ve službě container instances
 
@@ -143,14 +143,11 @@ Azure:\
 
 ## <a name="azure-portal-example"></a>Příklad pomocí portálu Azure
 
-Chcete-li nastavit proměnné prostředí při spuštění kontejneru na webu Azure Portal, zadejte je do **konfigurace** stránce při vytváření kontejneru.
+Chcete-li nastavit proměnné prostředí při spuštění kontejneru na webu Azure Portal, zadejte je do **Upřesnit** stránce při vytváření kontejneru.
 
-Při nasazení pomocí portálu jste aktuálně omezeni na tři proměnné a je nutné je zadat v tomto formátu: `"variableName":"value"`
-
-Chcete-li zobrazit příklad, spusťte [aci wordcount] [ aci-wordcount] kontejner s *NumWords* a *MinLength* proměnné.
-
-1. V **konfigurace**, nastavte **zásady restartování** k *při selhání*
-2. Zadejte `"NumWords":"5"` první proměnné, vyberte **Ano** pod **přidat další proměnné prostředí**a zadejte `"MinLength":"8"` druhé proměnné. Vyberte **OK** ověřte a pak nasaďte kontejner.
+1. Na **Upřesnit** nastavte **zásady restartování** k *při selhání*
+2. V části **proměnné prostředí**, zadejte `NumWords` s hodnotou `5` první proměnné a zadejte `MinLength` s hodnotou `8` druhé proměnné. 
+1. Vyberte **revize + vytvořit** ověřte a pak nasaďte kontejner.
 
 ![Stránce portálu zobrazují prostředí proměnné povolení tlačítka a textová pole][portal-env-vars-01]
 

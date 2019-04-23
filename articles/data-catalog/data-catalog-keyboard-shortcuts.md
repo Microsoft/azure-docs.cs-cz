@@ -2,18 +2,18 @@
 title: Klávesové zkratky pro Azure Data Catalog
 description: Tento článek popisuje klávesové zkratky pro Azure Data Catalog.
 services: data-catalog
-author: markingmyname
-ms.author: maghan
+author: JasonWHowell
+ms.author: jasonh
 ms.assetid: 00b77c88-fbca-4e6f-a175-d40b5cbbf144
 ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 01/18/2018
-ms.openlocfilehash: 35fcdf7e08f57c563cf28e7a6d8f1595cf31f7d7
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
-ms.translationtype: MT
+ms.openlocfilehash: ed101df5cd3d6e5754b88c5f66807f9fda846cf4
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47409050"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60000772"
 ---
 # <a name="keyboard-shortcuts-for-azure-data-catalog"></a>Klávesové zkratky pro Azure Data Catalog
 ## <a name="keyboard-shortcuts-for-the-data-catalog-data-source-registration-tool"></a>Nástroj pro registraci zdroje klávesové zkratky pro data katalogu Data Catalog
@@ -34,14 +34,14 @@ ms.locfileid: "47409050"
 ### <a name="data-source-selection-page"></a>Stránka Výběr zdroje dat
 | Operace | Stisknutím klávesy |
 | --- | --- |
-| Přejít na další stránku (je-li povoleno) |ALT + N |
+| Přejít na další stránku (je-li povoleno) |ALT+N |
 | Vybraný typ změnit, pokud je zaměřena na dlaždici |VLEVO NAHOŘE, vpravo nebo šipka dolů |
 
 ### <a name="data-source-connection-page"></a>Stránka připojení zdroje dat
 | Operace | Stisknutím klávesy |
 | --- | --- |
 | Přejít na předchozí stránku (je-li povoleno) |ALT+P |
-| Tlačítko Připojit. |ALT + C |
+| Tlačítko Připojit. |ALT+C |
 
 ### <a name="connection-context-page"></a>Připojení kontextu stránky
 | Operace | Stisknutím klávesy |
@@ -56,7 +56,7 @@ ms.locfileid: "47409050"
 ### <a name="publish-progress-page"></a>Publikovat stranu průběh
 | Operace | Stisknutím klávesy |
 | --- | --- |
-| Tlačítko Storno. |ALT + C |
+| Tlačítko Storno. |ALT+C |
 | Tlačítko Registrovat více objektů |ALT+R |
 | Tlačítko pro zobrazení portálu |ALT+V |
 
@@ -64,7 +64,7 @@ ms.locfileid: "47409050"
 | Operace | Stisknutím klávesy |
 | --- | --- |
 | Tlačítko Uložit (je-li povoleno) |ALT+S |
-| Tlačítko Storno. |ALT + C |
+| Tlačítko Storno. |ALT+C |
 
 ## <a name="keyboard-shortcuts-for-the-data-catalog-portal"></a>Klávesové zkratky pro portál služby Data Catalog
 | Operace | Stisknutím klávesy |

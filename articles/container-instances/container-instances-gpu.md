@@ -6,20 +6,20 @@ author: dlepow
 manager: jeconnoc
 ms.service: container-instances
 ms.topic: article
-ms.date: 11/29/2018
+ms.date: 04/17/2019
 ms.author: danlep
-ms.openlocfilehash: cc47ca07a843daf5cc35d23b838761166d39bdcc
-ms.sourcegitcommit: 87bd7bf35c469f84d6ca6599ac3f5ea5545159c9
-ms.translationtype: MT
+ms.openlocfilehash: 5073b68f6ef3de330671e3ea25056e0cae976360
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58351367"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60000653"
 ---
 # <a name="deploy-container-instances-that-use-gpu-resources"></a>Nasazení instance kontejnerů, které používají prostředky GPU
 
 Pro spouštění určité úlohy náročné na výpočetní prostředky v Azure Container Instances, nasazení vaše [skupiny kontejnerů](container-instances-container-groups.md) s *GPU prostředky*. Instance kontejnerů ve skupině mají přístup k jedné nebo více GPU NVIDIA Tesla při spouštění úloh kontejneru, jako je například CUDA a obsáhlý learning aplikací.
 
-Jak je znázorněno v tomto článku, když nasadíte skupinu kontejnerů s využitím můžete přidat prostředky GPU [soubor YAML](container-instances-multi-container-yaml.md) nebo [šablony Resource Manageru](container-instances-multi-container-group.md).
+Tento článek popisuje postup přidání prostředků GPU, když nasadíte skupinu kontejnerů s využitím [soubor YAML](container-instances-multi-container-yaml.md) nebo [šablony Resource Manageru](container-instances-multi-container-group.md). Můžete také určit prostředky GPU při nasazení instance kontejneru na webu Azure portal.
 
 > [!IMPORTANT]
 > Tato funkce je aktuálně ve verzi preview a některé [platí omezení](#preview-limitations). Verze Preview vám zpřístupňujeme pod podmínkou, že budete souhlasit s [dodatečnými podmínkami použití][terms-of-use]. Některé aspekty této funkce se můžou před zveřejněním změnit.
@@ -61,7 +61,7 @@ Při nasazování prostředků GPU, nastavte prostředky procesoru a paměti vho
 
 * **Ceny** – podobně jako na skupiny kontejnerů bez prostředků GPU, Azure účtuje poplatky za pro prostředky využité nad *doba trvání* skupiny kontejnerů s prostředky GPU. Doba trvání se počítá od času si přetáhněte svůj první kontejner image, dokud skupina kontejnerů ukončí. Nezahrnuje dobu nasazení skupiny kontejnerů.
 
-  Ceny jsou pro skupiny kontejnerů s GPU prostředků než pro skupiny kontejnerů bez vyšší. Zobrazit [podrobnosti o cenách](https://azure.microsoft.com/pricing/details/container-instances/).
+  Zobrazit [podrobnosti o cenách](https://azure.microsoft.com/pricing/details/container-instances/).
 
 * **Ovladače CUDA** – Container instances, s GPU prostředky jsou předem zřízené ovladače NVIDIA CUDA a vyvinuté kontejnerové moduly runtime, abyste mohli používat Image kontejneru pro CUDA, úlohy.
 

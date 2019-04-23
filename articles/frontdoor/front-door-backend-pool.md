@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/10/2018
 ms.author: sharadag
-ms.openlocfilehash: 2372f49c7280ee5c817f3d2f98cc80a196dae5f5
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: HT
+ms.openlocfilehash: 543e237a4a8390a8ebf74d0eb2a1f4be41dcd911
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58879195"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60193706"
 ---
 # <a name="backends-and-backend-pools-in-azure-front-door-service"></a>Fondy back-end a back-EndY branou služby Azure
 Tento článek popisuje koncepty o tom, jak mapovat nasazení aplikace s branou služby Azure. Také vysvětluje různé podmínky v konfiguraci branou kolem back-EndY aplikací.
@@ -26,7 +26,7 @@ Back-end je rovna instance nasazení vaší aplikace v oblasti. Branou služba p
 
 Back-EndY Service branou odkazovat na název hostitele nebo veřejnou IP adresu vaší aplikace, která může obsluhovat požadavky klientů. Back-EndY, neměly by být zaměňovány s databázová vrstva, vrstva úložiště a tak dále. Back-EndY by měla zobrazit jako veřejný koncový bod služby back-endu aplikace. Při přidání back-endu do back-endový fond branou, je nutné přidat také následující:
 
-- **Typ hostitele back-endu**. Typ prostředku, který chcete přidat. Přední dveře služba podporuje automatické zjišťování z back-EndY aplikací z app service, cloudovou službu nebo úložiště. Pokud chcete jinému prostředku v Azure nebo dokonce i mimo Azure back-endu, vyberte **vlastního hostitele**.
+- **Typ hostitele back-endu**. Typ prostředku, který chcete přidat. Přední dveře služba podporuje automatické zjišťování z vašeho back-EndY aplikací ze služby app service, cloudovou službu nebo úložiště. Pokud chcete jinému prostředku v Azure nebo dokonce i mimo Azure back-endu, vyberte **vlastního hostitele**.
 
     >[!IMPORTANT]
     >Během konfigurace rozhraní API není ověřit, jestli je nepřístupný z branou prostředí back-endu. Ujistěte se, že branou dosáhnout back-endu.
@@ -43,7 +43,7 @@ Back-EndY Service branou odkazovat na název hostitele nebo veřejnou IP adresu 
 
 Požadavky branou předány back-endu obsahovat pole hlavičky hostitele, který back-endu používá k načtení na cílový prostředek. Hodnota tohoto pole obvykle pochází z identifikátoru URI back-endu a má hostitele a port.
 
-Například pro webovou žádost\.contoso.com bude mít hlavičky www hostitele\.contoso.com. Pokud pomocí webu Azure portal nakonfigurovat back-endu, výchozí hodnota pro toto pole je název hostitele back-endu. Pokud back-endu je contoso-westus.azurewebsites.net na webu Azure Portal, bude hodnota vyplní automaticky back-endu hlavičku hostitele contoso westus.azurewebsites.net. Ale pokud použijete šablony Azure Resource Manageru nebo jiným způsobem bez explicitní nastavení tohoto pole, branou služby odešle příchozí název hostitele jako hodnota pro hlavičku hostitele. Pokud byl požadavek pro www\.contoso.com a back-endu je contoso-westus.azurewebsites.net, který má prázdný záhlaví pole, nastaví hlavičku hostitele branou služba jako webové\.contoso.com.
+Například pro webovou žádost\.contoso.com bude mít hlavičky www hostitele\.contoso.com. Pokud pomocí webu Azure portal nakonfigurovat back-endu, výchozí hodnota pro toto pole je název hostitele back-endu. Pokud back-endu je contoso-westus.azurewebsites.net na webu Azure Portal, bude vyplní automaticky hodnota hlavičky hostitele back-endu contoso westus.azurewebsites.net. Ale pokud použijete šablony Azure Resource Manageru nebo jiným způsobem bez explicitní nastavení tohoto pole, branou služby odešle příchozí název hostitele jako hodnota pro hlavičku hostitele. Pokud byl požadavek pro www\.contoso.com a back-endu je contoso-westus.azurewebsites.net, který má prázdný záhlaví pole, nastaví hlavičku hostitele branou služba jako webové\.contoso.com.
 
 Většina back-EndY aplikací (Azure Web Apps, Blob storage a Cloud Services) vyžadují Hlavička hostitele shodovala s doménou back-endu. Hostitele front-endu, který směruje do back-endu se však použít jiný název hostitele, jako je například www\.contoso.azurefd.net.
 
@@ -83,7 +83,7 @@ Nastavení back-endový fond Vyrovnávání zatížení definují, jak vyhodnocu
 
 - **Ukázkové velikosti**. Určuje, kolik ukázky sond stavu potřebujeme má zohlednit při vyhodnocování stavu back-endu.
 
-- **Velikost vzorku úspěšné**. Definuje velikost vzorku jak už jsme zmínili, počet úspěšných ukázky potřebné k volání back-endu v pořádku. Předpokládejme například, intervalem branou stavu testu je 30 sekund, velikost vzorku je 5 sekund, a velikost vzorku úspěšné 3 sekundy. Pokaždé, když vyhodnotíme stav sondy pro back-endu, podíváme na posledních pět ukázky víc než 150 sekund (5 × 30). Alespoň tři úspěšné testy, je potřeba deklarovat back-end jako v pořádku.
+- **Velikost vzorku úspěšné**. Definuje velikost vzorku jak už jsme zmínili, počet úspěšných ukázky potřebné k volání back-endu v pořádku. Předpokládejme například, intervalem branou stavu testu je 30 sekund, velikost vzorku je 5 a velikost vzorku úspěšné je 3. Pokaždé, když vyhodnotíme stav sondy pro back-endu, podíváme na posledních pět ukázky víc než 150 sekund (5 × 30). Alespoň tři úspěšné testy, je potřeba deklarovat back-end jako v pořádku.
 
 - **Latence citlivosti (Další latence)**. Definuje, zda chcete, aby vstupní brána k odesílání požadavku do back-endů do rozsahu citlivosti měření latence nebo předat požadavek na nejbližší back-endu.
 

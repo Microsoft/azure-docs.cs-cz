@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/21/2019
 ms.author: kumud;tyao
-ms.openlocfilehash: a7b4975a81c0966e5cbff0c8b940c9231e66f32b
-ms.sourcegitcommit: 280d9348b53b16e068cf8615a15b958fccad366a
-ms.translationtype: MT
+ms.openlocfilehash: 1d6343705e8d27fb2d22827cf792de332861456e
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58407636"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60007963"
 ---
 # <a name="what-is-geo-filtering-on-a-domain-for-azure-front-door"></a>Co je geografické filtrování v doméně pro branou Azure?
 
@@ -97,7 +97,7 @@ Můžete nakonfigurovat zásady geografického filtrování pro vaše branou bu�
 | GR | Řecko|
 | GT | Guatemala|
 | GY | Guyana|
-| HK | Hongkong|
+| HK | Hongkong – zvláštní správní oblast|
 | HN | Honduras|
 | HR | Chorvatsko|
 | HT | Haiti|
@@ -132,15 +132,15 @@ Můžete nakonfigurovat zásady geografického filtrování pro vaše branou bu�
 | LT | Litva|
 | LU | Lucembursko|
 | LV | Lotyšsko|
-| LY | Libyjská arabská džamahíríja|
+| LY | Libye |
 | MA | Maroko|
 | MD | Moldavská republika|
 | MG | Madagaskar|
-| MK | Makedonie|
+| MK | Severní Makedonie|
 | ML | Mali|
 | MM | Myanmar|
 | MN | Mongolsko|
-| MO | Macao|
+| MO | Macao – zvláštní administrativní oblast|
 | MQ | Martinik|
 | MR | Mauritánie|
 | MT | Malta|

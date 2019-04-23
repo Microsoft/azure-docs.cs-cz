@@ -8,15 +8,15 @@ ms.topic: article
 ms.date: 3/11/2019
 ms.author: victorh
 ms.openlocfilehash: 4ef9089c94d9e806cc519c4f8243cdcb7e73953a
-ms.sourcegitcommit: 1902adaa68c660bdaac46878ce2dec5473d29275
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/11/2019
-ms.locfileid: "57730532"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60194027"
 ---
 # <a name="azure-firewall-threat-intelligence-based-filtering---public-preview"></a>Brána Firewall před internetovými útoky Azure na základě logiky filtrování – ve verzi Public Preview
 
-Filtrování podle intelligence hrozeb je možné povolit pro bránu firewall, aby upozornění a zakazují provoz z/do známé škodlivé IP adresy a domény. IP adresy a domény pocházejí z analýzy hrozeb Microsoft informačního kanálu. [Intelligent Security Graph](https://www.microsoft.com/en-us/security/operations/intelligence) využívá Microsoft analýzu hrozeb a používá víc služeb, včetně Azure Security Center.
+Pro bránu firewall můžete povolit filtrování na základě analýzy hrozeb, které bude upozorňovat na provoz směřující z nebo do známých škodlivých IP adres nebo domén a odepírat takový provoz. Tyto IP adresy a domény se přebírají z informačního kanálu analýzy hrozeb Microsoftu. [Intelligent Security Graph](https://www.microsoft.com/en-us/security/operations/intelligence) využívá Microsoft analýzu hrozeb a používá víc služeb, včetně Azure Security Center.
 
 ![Analýza hrozeb brány firewall](media/threat-intel/firewall-threat.png)
 

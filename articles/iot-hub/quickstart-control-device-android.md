@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 03/15/2019
 ms.author: wesmc
-ms.openlocfilehash: e3b0c0703cb46087db38121055117b50f97ad03f
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: MT
+ms.openlocfilehash: 4f9f4ccb53f9530122f0a2463f8f45b596856282
+ms.sourcegitcommit: c884e2b3746d4d5f0c5c1090e51d2056456a1317
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59006572"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60149678"
 ---
 # <a name="quickstart-control-a-device-connected-to-an-iot-hub-android"></a>Rychlý start: Řízení zařízení připojená ke službě IoT hub (Android)
 
@@ -125,15 +125,13 @@ Zařízení SDK ukázkovou aplikaci můžete spustit na fyzické zařízení s A
    > * Verze modulu plug-in Android Gradle a Gradle z projektu odkazováno jsou zastaralé pro vaši verzi systému Android Studio. Postupujte podle [tyto pokyny](https://developer.android.com/studio/releases/gradle-plugin) odkaz a nainstalujte správná verze modulu plug-in a Gradle pro vaši instalaci.
    > * Licenční smlouvy pro sadu Android SDK není podepsaný. Postupujte podle pokynů ve výstupu sestavení k podepisování licenční smlouvy a stáhnout sadu SDK.
 
-
 4. Po dokončení sestavení kliknutím na **spustit** > **spuštění "aplikace"**. Konfigurace aplikace pro spuštění na fyzické zařízení s Androidem nebo emulátoru Androidu. Další informace o spouštění aplikace pro Android na fyzické zařízení nebo emulátoru najdete v tématu [spuštění aplikace](https://developer.android.com/training/basics/firstapp/running-app).
 
 5. Jakmile aplikace načte, klikněte na tlačítko **Start** tlačítko Zahájit odesílání telemetrických dat do služby IoT Hub:
 
-    ![Aplikace](media/quickstart-send-telemetry-android/sample-screenshot.png)
+    ![Snímek obrazovky ukázkové aplikace klientské zařízení s androidem](media/quickstart-control-device-android/sample-screenshot.png)
 
 Tato aplikace musí zůstat spuštěné na phycial zařízení nebo emulátoru při spuštění služby SDK ukázku aktualizovat interval telemetrie za běhu.
-
 
 ## <a name="read-the-telemetry-from-your-hub"></a>Čtení telemetrických dat z centra
 
@@ -146,12 +144,12 @@ V této části budete používat Azure Cloud Shell s [rozšíření IoT](https:
     ```azurecli-interactive
     az iot hub monitor-events --hub-name YourIoTHubName --output table
     ```
+
     Na následujícím snímku obrazovky se zobrazí výstup jako IoT hub přijímá telemetrická data odesílaná zařízení s Androidem:
 
-      ![Čtení zpráv zařízení pomocí Azure CLI](media/quickstart-send-telemetry-android/read-data.png)
+      ![Čtení zpráv zařízení pomocí Azure CLI](media/quickstart-control-device-android/read-data.png)
 
 Ve výchozím nastavení telemetrie aplikace odesílá telemetrická data ze zařízení s Androidem každých 5 sekund. V další části použijete volání přímé metody aktualizovat interval telemetrie pro zařízení s Androidem IoT.
-
 
 ## <a name="call-the-direct-method"></a>Volání přímé metody
 
@@ -180,7 +178,6 @@ Aplikace back-end služby IoT Hub se obvykle běží v cloudu, kde se snadněji 
    > * Verze modulu plug-in Android Gradle a Gradle z projektu odkazováno jsou zastaralé pro vaši verzi systému Android Studio. Postupujte podle [tyto pokyny](https://developer.android.com/studio/releases/gradle-plugin) odkaz a nainstalujte správná verze modulu plug-in a Gradle pro vaši instalaci.
    > * Licenční smlouvy pro sadu Android SDK není podepsaný. Postupujte podle pokynů ve výstupu sestavení k podepisování licenční smlouvy a stáhnout sadu SDK.
 
-
 4. Po dokončení sestavení kliknutím na **spustit** > **spuštění "aplikace"**. Konfigurace aplikace pro spuštění na samostatné fyzické zařízení s Androidem nebo emulátoru Androidu. Další informace o spouštění aplikace pro Android na fyzické zařízení nebo emulátoru najdete v tématu [spuštění aplikace](https://developer.android.com/training/basics/firstapp/running-app).
 
 5. Jakmile aplikace načte, aktualizujte **nastavit Interval pro zasílání zpráv** hodnota, která se **1000** a klikněte na tlačítko **Invoke**.
@@ -192,8 +189,6 @@ Aplikace back-end služby IoT Hub se obvykle běží v cloudu, kde se snadněji 
 6. Aplikace se zobrazí potvrzení určující, zda metoda proveden úspěšně, nebo ne.
 
     ![Potvrzení přímé metody](media/quickstart-control-device-android/direct-method-ack.png)
-
-
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 

@@ -1,64 +1,99 @@
 ---
 title: Indexování ve službě Azure Cosmos DB
 description: Zjistěte, jak funguje indexování ve službě Azure Cosmos DB.
-author: rimman
+author: ThomasWeiss
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 04/08/2019
-ms.author: rimman
-ms.openlocfilehash: ecf53251020ce1b639a5bf8da65f5d31ff699db9
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: MT
+ms.author: thweiss
+ms.openlocfilehash: 3bb8913725acf04f71aba8b4c4350235f2c44dfb
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59265691"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59996726"
 ---
 # <a name="indexing-in-azure-cosmos-db---overview"></a>Indexování ve službě Azure Cosmos DB – přehled
 
-Azure Cosmos DB je nezávislý na schématu databáze a umožňuje rychle iterovat aplikace bez nutnosti schéma nebo správu indexů. Ve výchozím nastavení služby Azure Cosmos DB automaticky indexuje všechny položky ve vašem kontejneru bez potřeby schématu nebo sekundárních indexů, od vývojářů.
+Azure Cosmos DB je nezávislý na schématu databáze, která umožňuje iterovat aplikace bez nutnosti schéma nebo správu indexů. Ve výchozím nastavení, služby Azure Cosmos DB automaticky indexuje každou vlastnost pro všechny položky ve vaší [kontejneru](databases-containers-items.md#azure-cosmos-containers) aniž byste museli definovat žádné schéma nebo nakonfigurovat sekundární indexy.
 
-## <a name="items-as-trees"></a>Položky jako stromové struktury
+Cílem tohoto článku je vysvětlují, jak službu Azure Cosmos DB indexuje data a způsob používání mechanismu indexy pro zlepšení výkonu dotazů. Doporučujeme projít tento oddíl prozkoumáte přizpůsobení [zásadám indexování](index-policy.md).
 
-Promítnutí položky v kontejneru jako dokumenty JSON a představující jako stromové struktury, služby Azure Cosmos DB sjednotí strukturu a hodnoty instancí napříč položky na sjednocení konceptu **dynamicky kódovaný strukturu cesty** . V této reprezentaci každého popisku v dokumentu JSON, který obsahuje názvy vlastností a jejich hodnoty, bude uzel stromu. Listy stromu obsahovat skutečných hodnot a zprostředkujících uzly obsahují informace o schématu. Na následujícím obrázku představuje stromů vytvořené pro dvě položky (1 a 2) v kontejneru Azure Cosmos:
+## <a name="from-items-to-trees"></a>Z položky na stromy
 
-![Strom reprezentaci pro dvě různé položky v kontejneru Azure Cosmos](./media/index-overview/indexing-as-tree.png)
+Pokaždé, když je položka uložená v kontejneru, jeho obsah je promítat jako dokument JSON a potom převést na strom reprezentace. To znamená, že každé vlastnosti této položky získá reprezentována jako uzel ve stromu. Kořenový uzel pseudo se vytvoří jako nadřazená k vlastnostem na první úrovni položky. Uzly typu list obsahovat skutečná skalárních hodnot provést u položky.
 
-Kořenový uzel pseudo se vytvoří jako nadřazený pro skutečné uzly odpovídající popisky v dokumentu JSON pod. Vnořené datové struktury jednotka hierarchii ve stromové struktuře. Zprostředkující umělé uzly s popiskem s číselnými hodnotami (například 0, 1,...) se použijí pro zastoupení výčtů a indexy pole.
+Jako příklad vezměte v úvahu tuto položku:
 
-## <a name="index-paths"></a>Cesty indexů
+    {
+        "locations": [
+            { "country": "Germany", "city": "Berlin" },
+            { "country": "France", "city": "Paris" }
+        ],
+        "headquarters": { "country": "Belgium", "employees": 250 },
+        "exports": [
+            { "city": "Moscow" },
+            { "city": "Athens" }
+        ]
+    }
 
-Azure Cosmos DB projekty položky v kontejneru Azure Cosmos jako dokumenty JSON a indexu jako stromové struktury. Pak můžete ladit zásady index u cest v rámci stromu. Můžete zahrnout nebo vyloučit cesty ze indexování. To můžete nabízet zápisu Vylepšený výkon a snížit index úložiště pro scénáře, ve kterém jsou dopředu známé vzory dotazů. Další informace najdete v tématu [Index cesty](index-paths.md).
+Bude reprezentovat stromu následující:
 
-## <a name="indexing-under-the-hood"></a>Indexování: Pohled pod kapotu
+![Předchozí položka reprezentována jako strom](./media/index-overview/item-as-tree.png)
 
-Databáze Azure Cosmos se vztahuje *automatického indexování* k datům, kde každá cesta ve stromové struktuře indexována, pokud nakonfigurujete tak, aby vylučovat určité cesty.
+Všimněte si, jak jsou pole kódovány ve stromové struktuře: Každá položka v poli získá zprostředkující uzel s názvem s indexem tuto položku v poli (0, 1 atd.).
 
-Azure Cosmos, který využívá databázi obrácený index datová struktura k ukládání informací o každé položky a k usnadnění efektivnější reprezentaci pro dotazování. Strom indexu je dokument, který je vytvořený pomocí spojení všech stromů představujících jednotlivé položky v kontejneru. Index strom roste v průběhu času jako nové položky se přidají nebo aktualizují existující položky v kontejneru. Na rozdíl od indexování relační databáze Azure Cosmos DB nerestartuje indexování od nuly, jako jsou zavedeny nové pole. Nové položky jsou přidány do stávající struktury indexu. 
+## <a name="from-trees-to-property-paths"></a>Ze stromů cesty vlastností
 
-Každý uzel stromu. index je index záznam obsahující hodnoty popisek a umístění, volá se, *termín*a ID položek, volá se, *příspěvky*. Příspěvky ve složených závorkách (například {1,2}) obrácenou index obrázku odpovídají položkám, jako *Dokument1* a *Document2* obsahující hodnotu daného popisku. Důležité nepřímo rovnoměrně zpracovávání popisků schémat a hodnoty instance je, že všechno, co je zabalena uvnitř velký index. Hodnotu instance, která se stále listy neopakuje, může být v různých rolích napříč položky popisky jiné schéma, ale je stejná jako hodnota. Následující obrázek ukazuje obrácenou indexování pro dvě různé položky:
+Důvod, proč Azure Cosmos DB transformuje položky do stromové struktury totiž umožňuje vlastnosti se nesmí odkazovat pomocí jeho cest v rámci stromů. K získání cesty pro vlastnost, můžeme procházení stromu od kořenového uzlu s danou vlastností a zřetězit popisky každého procházený uzlu.
 
-![Indexování pod pokličkou, obrácený indexu](./media/index-overview/inverted-index.png)
+Tady jsou cesty pro každou vlastnost z příklad položky popsané výše:
 
-> [!NOTE]
-> Obráceným indexu může vypadat podobně jako indexování strukturám používaným v vyhledávacího webu v načítání informací o doméně. Pomocí této metody služby Azure Cosmos DB umožňuje vyhledávat databáze pro libovolné položky bez ohledu na jeho strukturu schématu.
+    /locations/0/country: "Germany"
+    /locations/0/city: "Berlin"
+    /locations/1/country: "France"
+    /locations/1/city: "Paris"
+    /headquarters/country: "Belgium"
+    /headquarters/employees: 250
+    /exports/0/city: "Moscow"
+    /exports/1/city: "Athens"
 
-Normalizovaná cesta kóduje index dopředné cesta od kořenové hodnotě spolu s informací o typu hodnoty. Cesta a hodnota jsou kódovány poskytnout různé typy indexovat jako je oblast, prostorová atd. Hodnota kódování je navržené pro poskytování jedinečných hodnot nebo složení cesty.
+Při zápisu položky služby Azure Cosmos DB efektivně indexuje každou vlastnost cesty a jeho odpovídající hodnota.
+
+## <a name="index-kinds"></a>Index typy
+
+Azure Cosmos DB v současné době podporuje dva druhy indexů:
+
+**Rozsah** typ indexu se používá pro:
+
+- dotazy na rovnost: `SELECT * FROM container c WHERE c.property = 'value'`
+- dotazy v rozsahu: `SELECT * FROM container c WHERE c.property > 'value'` (se dá použít pro `>`, `<`, `>=`, `<=`, `!=`)
+- `ORDER BY` dotazy: `SELECT * FROM container c ORDER BY c.property`
+- `JOIN` dotazy: `SELECT child FROM container c JOIN child IN c.properties WHERE child = 'value'`
+
+Rozsah indexů lze na skalární hodnoty (řetězec nebo číslo).
+
+**Prostorových** typ indexu se používá pro:
+
+- geoprostorové dotazy vzdálenost: `SELECT * FROM container c WHERE ST_DISTANCE(c.property, { "type": "Point", "coordinates": [0.0, 10.0] }) < 40`
+- geoprostorové v rámci dotazů: `SELECT * FROM container c WHERE ST_WITHIN(c.property, {"type": "Point", "coordinates": [0.0, 10.0] } })`
+
+Prostorové indexy jde použít na správný formát [GeoJSON](geospatial.md) objekty. LineStrings bodů a mnohoúhelníků jsou aktuálně podporovány.
 
 ## <a name="querying-with-indexes"></a>Dotazování s indexy
 
-Obráceným index umožňuje identifikovat dokumenty, které odpovídají predikátu dotazu rychle dotazu. Zpracováním schéma a hodnoty instance rovnoměrně z hlediska cesty obrácenou index je také stromu. Proto index a výsledky můžete být serializován na platný dokument JSON a vrátit jako samotných dokumentech, jako jsou vráceny ve stromové struktuře. Tato metoda umožňuje recursing přes výsledky pro další dotazování. Následující obrázek ukazuje příklad indexování v dotazu bodu:  
+Cesty extrahovat názvy při indexování dat usnadňují vyhledání index při zpracování dotazu. To provede spárováním odpovídajících `WHERE` klauzule dotazu se seznamem indexované cesty, je možné k identifikaci položky, které odpovídají predikátu dotazu velmi rychle.
 
-![Příklad dotazu bodu](./media/index-overview/index-point-query.png)
+Zvažte například následující dotaz: `SELECT location FROM location IN company.locations WHERE location.country = 'France'`. Predikátu dotazu (filtrování položek, kde libovolného umístění má "France" jako jeho země) by odpovídala cestě zvýrazněný červenou barvou níže:
 
-Rozsah dotazu *GermanTax* je [uživatelem definovanou funkci](stored-procedures-triggers-udfs.md#udfs) spouštěny jako součást zpracování dotazů. Uživatelem definované funkce je všechny registrované, funkce JavaScriptu, která dokáže poskytovat bohaté programovací logiky integrované do dotazu. Následující obrázek ukazuje příklad indexování v dotazu na rozsah:
+![Odpovídající konkrétní cestě v rámci stromu](./media/index-overview/matching-path.png)
 
-![Příklad dotazu rozsahu](./media/index-overview/index-range-query.png)
+> [!NOTE]
+> `ORDER BY` Klauzule *vždy* potřebuje rozsah indexu a selže, pokud cesta odkazuje na nemá.
 
 ## <a name="next-steps"></a>Další postup
 
 Další informace o indexování v následujících článcích:
 
 - [Zásady indexování](index-policy.md)
-- [Index typy](index-types.md)
-- [Index cesty](index-paths.md)
 - [Jak spravovat zásady indexování](how-to-manage-indexing-policy.md)

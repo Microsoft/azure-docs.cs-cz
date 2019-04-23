@@ -1,6 +1,6 @@
 ---
-title: Azure elementu OptionsGroup uživatelského rozhraní | Microsoft Docs
-description: Popisuje element Microsoft.Common.OptionsGroup uživatelského rozhraní pro portál Azure.
+title: Azure prvek uživatelského rozhraní OptionsGroup | Dokumentace Microsoftu
+description: Popisuje element Microsoft.Common.OptionsGroup uživatelského rozhraní pro Azure portal.
 services: managed-applications
 documentationcenter: na
 author: tfitzmac
@@ -13,15 +13,15 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/27/2018
 ms.author: tomfitz
-ms.openlocfilehash: e51061dc781e4ec6e822cde9cc450887ff3b1368
-ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
+ms.openlocfilehash: 9aee881844e9338cc1da2484a94c8355f2516c82
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37061181"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60252013"
 ---
-# <a name="microsoftcommonoptionsgroup-ui-element"></a>Element Microsoft.Common.OptionsGroup uživatelského rozhraní
-Ovládací prvek výběru s řádek dostupných možností.
+# <a name="microsoftcommonoptionsgroup-ui-element"></a>Prvek uživatelského rozhraní Microsoft.Common.OptionsGroup
+Výběr ovládacího prvku s řádkem dostupných možností.
 
 ## <a name="ui-sample"></a>Ukázka uživatelského rozhraní
 ![Microsoft.Common.OptionsGroup](./media/managed-application-elements/microsoft.common.optionsgroup.png)
@@ -52,9 +52,9 @@ Ovládací prvek výběru s řádek dostupných možností.
 ```
 
 ## <a name="remarks"></a>Poznámky
-- Popisek pro `constraints.allowedValues` je zobrazený text pro položku, a jeho hodnota může být výstupní hodnotu elementu při výběru.
-- -Li zadána, výchozí hodnota musí být součástí štítek `constraints.allowedValues`. Pokud není zadaný, první položky v `constraints.allowedValues` je standardně vybraná. Výchozí hodnota je **null**.
-- `constraints.allowedValues` musí obsahovat alespoň jednu položku.
+- Popisek `constraints.allowedValues` je zobrazený text pro položku a její hodnota je výstupní hodnota elementu, který vyberete.
+- Je-li zadán, výchozí hodnota musí být k dispozici v popisku `constraints.allowedValues`. Pokud není zadán, první položky v `constraints.allowedValues` je standardně vybraná. Výchozí hodnota je **null**.
+- `constraints.allowedValues` musí mít alespoň jednu položku.
 
 ## <a name="sample-output"></a>Ukázkový výstup
 ```json
@@ -62,5 +62,5 @@ Ovládací prvek výběru s řádek dostupných možností.
 ```
 
 ## <a name="next-steps"></a>Další postup
-* Úvod do vytváření definic uživatelského rozhraní, najdete v části [Začínáme s CreateUiDefinition](create-uidefinition-overview.md).
-* Popis společných vlastností v prvky uživatelského rozhraní najdete v tématu [CreateUiDefinition elementy](create-uidefinition-elements.md).
+* Úvod do vytváření definic uživatelského rozhraní, naleznete v tématu [Začínáme s funkcí CreateUiDefinition](create-uidefinition-overview.md).
+* Popis společné vlastnosti v prvcích uživatelského rozhraní, naleznete v tématu [CreateUiDefinition prvky](create-uidefinition-elements.md).

@@ -7,41 +7,37 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.tgt_pltfrm: arduino
-ms.date: 03/21/2019
+ms.date: 04/17/2019
 ms.author: wesmc
-ms.openlocfilehash: 0c6189dfd02a4bdd3662f4fa50dbb812fe995884
-ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
-ms.translationtype: MT
+ms.openlocfilehash: 7a2cb110d5be74e23e8e782fc02873786e8813e9
+ms.sourcegitcommit: c884e2b3746d4d5f0c5c1090e51d2056456a1317
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58438478"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60149712"
 ---
 # <a name="connect-iot-devkit-az3166-to-azure-iot-hub"></a>IoT DevKit AZ3166 se připojit ke službě Azure IoT Hub
 
 [!INCLUDE [iot-hub-get-started-device-selector](../../includes/iot-hub-get-started-device-selector.md)]
 
-Můžete použít [MXChip IoT DevKit](https://microsoft.github.io/azure-iot-developer-kit/) k vývoji a řešení Internetu věcí (IoT) prototypu, které budou využívat služeb Microsoft Azure. Zahrnuje kompatibilní s Arduino panel s bohatou periferní zařízení a senzorů, balíček panel open source a stále se rozšiřující [katalogu projektů](https://microsoft.github.io/azure-iot-developer-kit/docs/projects/).
-
-## <a name="what-you-do"></a>Co můžete dělat
-
-V tomto článku budete používat [Visual Studio Code](https://code.visualstudio.com/), napříč platformami zdrojový kód editor, spolu s [nástroje Azure IoT](https://aka.ms/azure-iot-tools) balíček rozšíření.
-
-DevKit se připojí k Azure IoT hub, kterou vytvoříte. Potom shromažďovat teploty a vlhkosti data ze senzorů a odesílání dat do služby IoT hub.
-
-DevKit ještě nemáte? Zkuste [DevKit simulátor](https://azure-samples.github.io/iot-devkit-web-simulator/) nebo [nákupu DevKit](https://aka.ms/iot-devkit-purchase).
+Můžete použít [MXChip IoT DevKit](https://microsoft.github.io/azure-iot-developer-kit/) k vývoji a řešení Internetu věcí (IoT) prototypu, které budou využívat služeb Microsoft Azure. Zahrnuje kompatibilní s Arduino panel s bohatou periferní zařízení a senzorů, balíček s open source panelu a bohaté [Galerie ukázek](https://microsoft.github.io/azure-iot-developer-kit/docs/projects/).
 
 ## <a name="what-you-learn"></a>Co se naučíte
 
-* Jak se připojit IoT DevKit k dispozici bezdrátový přístupový bod a příprava vývojového prostředí.
 * Postup vytvoření služby IoT hub a registrace zařízení pro MXChip IoT DevKit.
-* Jak shromažďovat data ze senzorů pomocí Průvodce ukázkovou aplikaci na MXChip IoT DevKit.
-* Jak odeslat data ze senzorů do služby IoT hub.
+* Jak se připojit IoT DevKit připojení Wi-Fi a nakonfigurovat připojovací řetězec služby IoT Hub.
+* Postup odesílání telemetrických dat ze senzorů DevKit ke službě IoT hub.
+* Jak připravit vývojové prostředí a vývoj aplikací pro IoT DevKit.
+
+DevKit ještě nemáte? Zkuste [DevKit simulátor](https://azure-samples.github.io/iot-devkit-web-simulator/) nebo [nákupu DevKit](https://aka.ms/iot-devkit-purchase).
 
 ## <a name="what-you-need"></a>Co potřebujete
 
-* Deska MXChip IoT DevKit pomocí kabelu Micro USB. [Získat](https://aka.ms/iot-devkit-purchase).
-* Počítač se systémem Windows 10 nebo macOS 10.10 +.
+* Panel MXChip IoT DevKit s Micro USB kabelu. [Získat](https://aka.ms/iot-devkit-purchase).
+* Počítač se systémem Windows 10, macOS 10.10 + nebo Ubuntu 18.04 +.
 * Aktivní předplatné Azure. [Aktivace bezplatné 30denní zkušební verze Microsoft Azure účtu](https://azureinfo.microsoft.com/us-freetrial.html).
+
+[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
   
 ## <a name="prepare-your-hardware"></a>Připravte svůj hardware
 
@@ -62,90 +58,104 @@ DevKit se připojte k počítači, postupujte podle těchto kroků:
 
    ![Připojení hardwaru](media/iot-hub-arduino-devkit-az3166-get-started/getting-started/connect.jpg)
 
-## <a name="configure-wi-fi"></a>Konfigurace Wi-Fi
+## <a name="quickstart-send-telemetry-from-devkit-to-an-iot-hub"></a>Rychlý start: Odesílání telemetrických dat z DevKit do služby IoT Hub
 
-Spolehněte se na připojení k Internetu projekty IoT. Použijte následující pokyny ke konfiguraci DevKit pro připojení k Wi-Fi.
+Rychlý start používá předem kompilovaných firmware DevKit odesílání telemetrických dat do služby IoT Hub. Předtím, než ji spustíte, vytvoření služby IoT hub a registrace zařízení v centru.
 
-### <a name="enter-ap-mode"></a>Zadejte režim Asie a Tichomoří
+### <a name="create-an-iot-hub"></a>Vytvoření centra IoT
 
-Podržte tlačítko B, nabízených oznámení a uvolněte tlačítko resetovat a pak uvolněte tlačítko B. Vaše DevKit přejde do režimu přístupový bod ke konfiguraci Wi-Fi. Na obrazovce se zobrazí identifikátor service set identifier (SSID) DevKit a konfigurace portálu IP adresy.
+[!INCLUDE [iot-hub-include-create-hub](../../includes/iot-hub-include-create-hub.md)]
 
-![Resetovat tlačítko, tlačítko B a SSID](media/iot-hub-arduino-devkit-az3166-get-started/getting-started/wifi-ap.jpg)
+### <a name="register-a-device"></a>Registrování zařízení
 
-![Nastavení režimu Asie a Tichomoří](media/iot-hub-arduino-devkit-az3166-get-started/getting-started/set-ap-mode.gif)
+Zařízení musí být zaregistrované ve vašem centru IoT, aby se mohlo připojit. V tomto rychlém startu zaregistrujete simulované zařízení pomocí služby Azure Cloud Shell.
 
-### <a name="connect-to-devkit-ap"></a>Připojte se k DevKit Asie a Tichomoří
+1. Spusťte následující příkaz v Azure Cloud Shell vytvořte identitu zařízení.
 
-Nyní použijte jiné povolené Wi-Fi zařízení (počítač nebo mobilní telefon) pro připojení k SSID DevKit (zvýrazněný na předchozím obrázku). Ponechte prázdné heslo.
+   **YourIoTHubName**: Nahraďte tento zástupný text pod názvem, který jste vybrali pro službu IoT hub.
 
-![Informace o síti a tlačítko pro připojení](media/iot-hub-arduino-devkit-az3166-get-started/getting-started/connect-ssid.png)
+   **MyNodeDevice**: Název zařízení, které se registrace. Použití **MyNodeDevice** jak je znázorněno. Pokud zvolíte jiný název pro vaše zařízení, musíte použít tento název v rámci tohoto článku a aktualizujte název zařízení v ukázkové aplikace před spuštěním je.
 
-### <a name="configure-wi-fi-for-the-devkit"></a>Konfigurace Wi-Fi DevKit
+    ```azurecli-interactive
+    az iot hub device-identity create --hub-name YourIoTHubName --device-id MyNodeDevice
+    ```
 
-Otevřete IP adresou uvedenou na obrazovce DevKit do svého počítače nebo mobilního telefonu prohlížeče, vyberte, který chcete DevKit pro připojení k síti Wi-Fi a pak zadejte heslo. Vyberte **Connect** (Připojit).
+1. Spuštěním následujícího příkazu ve službě Azure Cloud Shell získejte _připojovací řetězec zařízení_ pro zařízení, které jste právě zaregistrovali:
 
-![Pole pro heslo a tlačítko pro připojení](media/iot-hub-arduino-devkit-az3166-get-started/getting-started/wifi-portal.png)
+   **YourIoTHubName**: Nahraďte tento zástupný text pod názvem, který jste vybrali pro službu IoT hub.
 
-Když je připojení úspěšné, DevKit restartuje za pár sekund. Zobrazí název sítě Wi-Fi a IP adresu na obrazovce:
+    ```azurecli-interactive
+    az iot hub device-identity show-connection-string --hub-name YourIoTHubName --device-id MyNodeDevice --output table
+    ```
 
-![Název sítě Wi-Fi a IP adresy](media/iot-hub-arduino-devkit-az3166-get-started/getting-started/wifi-ip.jpg)
+    Poznamenejte si připojovací řetězec zařízení, který vypadá nějak takto:
 
-> [!NOTE]
-> Pro IoT DevKit práci budete potřebovat síť 2,4 GHz. Modul Wi-Fi na IoT DevKit není kompatibilní s 5GHz sítí. Zkontrolujte [nejčastější dotazy k](https://microsoft.github.io/azure-iot-developer-kit/docs/faq/#wi-fi-configuration) další podrobnosti.
+   `HostName={YourIoTHubName}.azure-devices.net;DeviceId=MyNodeDevice;SharedAccessKey={YourSharedAccessKey}`
 
-Po dokončení konfigurace Wi-Fi svoje přihlašovací údaje se uloží na zařízení pro toto připojení i v případě, zařízení je odpojen. Pokud nakonfigurujete DevKit pro Wi-Fi v domácnosti a pak proveďte DevKit kanceláři, je potřeba překonfigurovat režimu Asie a Tichomoří (cena začíná na krok v části "Zadejte přístupový bod režim") pro připojení DevKit pro pobočku Wi-Fi.
+    Tuto hodnotu použijete později v tomto rychlém startu.
 
-## <a name="start-using-the-devkit"></a>Začněte používat DevKit
+### <a name="send-devkit-telemetry"></a>Odesílání telemetrických dat DevKit
 
-Výchozí aplikaci spuštěnou v prostředí DevKit zkontroluje nejnovější verzi firmwaru a zobrazí data ze senzorů diagnostiku za vás.
+DevKit se připojí k koncový bod specifický pro zařízení ve službě IoT hub a odesílá telemetrická data teploty a vlhkosti.
 
-### <a name="upgrade-to-the-latest-firmware"></a>Upgrade na nejnovější firmware
+1. Stáhněte si nejnovější verzi [GetStarted firmware](https://aka.ms/devkit/prod/getstarted/latest) pro IoT DevKit.
 
-> [!NOTE]
-> Od verze 1.1 DevKit umožňuje BEZPEČNÉ ST v zaváděcího programu pro spouštění. Budete muset upgradovat firmware, pokud používáte verzi nižší než verze 1.1.
+1. Ujistěte se, že IoT DevKit připojte k počítači přes USB. Otevřete Průzkumníka souborů je velkokapacitní paměťové zařízení USB, volá **AZ3166**.
+    ![Otevřít Windows Explorer](media/iot-hub-arduino-devkit-az3166-get-started/quickstarts/az3166-usb.png)
 
-Pokud potřebujete upgrade firmwaru, se na obrazovce zobrazil firmware aktuální a nejnovější verze. Chcete-li provést upgrade, postupujte [Upgrade firmwaru](https://microsoft.github.io/azure-iot-developer-kit/docs/firmware-upgrading/) průvodce.
+1. Operace přetažení firmware si právě stáhli do velkokapacitní paměťové zařízení a bude automaticky flash.
+    ![Zkopírujte firmwaru](media/iot-hub-arduino-devkit-az3166-get-started/quickstarts/copy-firmware.png)
 
-![Zobrazení aktuálních a nejnovější firmware verzí](media/iot-hub-arduino-devkit-az3166-get-started/getting-started/firmware.jpg)
+1. Na DevKit, podržte tlačítko **B**, push a verzi **resetování** tlačítka a potom verzi **B**. Vaše DevKit přejde do režimu přístupový bod. Pokud chcete potvrdit, na obrazovce se zobrazí identifikátor service set identifier (SSID) DevKit a konfigurace portálu IP adresy.
+    ![Resetovat tlačítko, tlačítko B a SSID](media/iot-hub-arduino-devkit-az3166-get-started/quickstarts/wifi-ap.jpg)
 
-> [!NOTE]
-> Toto je jednorázová úsilí. Poté, co začít s vývojem pro DevKit a nahrát aplikaci, budou přicházet nejnovější firmware s vaší aplikací.
+    ![Nastavení režimu Asie a Tichomoří](media/iot-hub-arduino-devkit-az3166-get-started/quickstarts/set-ap-mode.gif)
 
-### <a name="test-various-sensors"></a>Testování různých senzorů
+1. Použít webový prohlížeč v různých Wi-Fi povolené nastavení zařízení (počítač nebo mobilní telefon) pro připojení k IoT DevKit SSID zobrazí v předchozím kroku. Pokud ho vyzve k zadání hesla, nevyplňujte.
+    ![Připojit SSID](media/iot-hub-arduino-devkit-az3166-get-started/quickstarts/connect-ssid.png)
 
-Kliknutím na tlačítko B testování snímačům. Pokračujte stisknutím a uvolněním tlačítka B k cyklování skrze každý senzoru.
+1. Otevřít **192.168.0.1** v prohlížeči. Vyberte Wi-Fi, který chcete, aby IoT DevKit připojit, zadejte heslo Wi-Fi a pak vložte připojovací řetězec zařízení, které jste provedli, mějte na paměti z dříve. Potom klikněte na Uložit.
+    ![Konfigurace uživatelského rozhraní](media/iot-hub-arduino-devkit-az3166-get-started/quickstarts/configuration-ui.png)
 
-![Zobrazit tlačítko B a snímače](media/iot-hub-arduino-devkit-az3166-get-started/getting-started/sensors.jpg)
+    > [!NOTE]
+    > IoT DevKit podporuje pouze sítě 2,4 GHz. Zkontrolujte [nejčastější dotazy k](https://microsoft.github.io/azure-iot-developer-kit/docs/faq/#wi-fi-configuration) další podrobnosti.
+
+1. Wi-Fi zařízení a informace o připojovacím řetězci se uloží do IoT DevKit po zobrazení stránky výsledků.
+    ![Konfigurace výsledků](media/iot-hub-arduino-devkit-az3166-get-started/quickstarts/configuration-ui-result.png)
+
+    > [!NOTE]
+    > Po dokončení konfigurace Wi-Fi svoje přihlašovací údaje se uloží na zařízení pro toto připojení i v případě, zařízení je odpojen.
+
+1. IoT DevKit restartuje za pár sekund. Na obrazovce DevKit zobrazí IP adresa DevKit následuje telemetrická data, včetně teploty a vlhkosti hodnotu s počet zpráv odeslat do služby Azure IoT Hub.
+    ![Wi-Fi IP](media/iot-hub-arduino-devkit-az3166-get-started/quickstarts/wifi-ip.jpg)
+
+    ![Odesílání dat](media/iot-hub-arduino-devkit-az3166-get-started/quickstarts/sending-data.jpg)
 
 ## <a name="prepare-the-development-environment"></a>Příprava vývojového prostředí
 
-### <a name="install-azure-iot-tools"></a>Instalace nástrojů Azure IoT
+Použijte následující postup DevKit Příprava vývojového prostředí:
 
-V této části, který nainstalujete [rozhraním Arduino IDE](https://www.arduino.cc/en/Main/Software) spolu s [Visual Studio Code](https://code.visualstudio.com/), editor zdrojového kódu různých platformách.
-
-Taky nainstalujete [nástroje Azure IoT](https://aka.ms/azure-iot-tools) balíček rozšíření pro Visual Studio Code. Doporučujeme používat [nástroje Azure IoT](https://aka.ms/azure-iot-tools) balíček rozšíření pro Visual Studio Code pro vývoj aplikací na DevKit. Balíček rozšíření Azure IoT nástroje obsahuje [Workbench zařízení Azure IoT](https://aka.ms/iot-workbench) sloužící k vývoji a ladění na různých zařízeních IoT devkit. [Azure IoT Hub Toolkit](https://aka.ms/iot-toolkit), také součástí balíček rozšíření pro nástroje Azure IoT, se používá ke správě a interakci s Azure IoT Hubs.
-
-Můžete sledovat ty [Channel 9](https://channel9.msdn.com/) videa, která mají přehled o jejich význam:
-* [Úvod do nové aplikace IoT Workbench rozšíření pro VS Code](https://channel9.msdn.com/Shows/Internet-of-Things-Show/IoT-Workbench-extension-for-VS-Code)
-* [Co je nového v rozšíření IoT Toolkit pro VS Code](https://channel9.msdn.com/Shows/Internet-of-Things-Show/Whats-new-in-the-IoT-Toolkit-extension-for-VS-Code)
-
-Použijte následující postup Příprava vývojového prostředí pro DevKit:
+### <a name="install-visual-studio-code-with-azure-iot-tools-extension-package"></a>Instalace Visual Studio Code pomocí balíčku rozšíření nástroje Azure IoT
 
 1. Nainstalujte [rozhraním Arduino IDE](https://www.arduino.cc/en/Main/Software). Poskytuje nezbytné sady nástrojů pro kompilaci a nahrání kódu Arduino.
     * **Windows:** Používejte verzi Instalační služby systému Windows. Neinstalujte z App Store.
     * **macOS**: Přetáhnout myší extrahované **Arduino.app** do `/Applications` složky.
     * **Ubuntu**: Například rozbalte do složky `$HOME/Downloads/arduino-1.8.8`
 
-2. Nainstalujte [Visual Studio Code](https://code.visualstudio.com/), editor zdrojového kódu napříč platformami s výkonné vývojářské nástroje, jako je doplňování kódu IntelliSense a ladění.
+2. Nainstalujte [Visual Studio Code](https://code.visualstudio.com/), editor zdrojového kódu napříč platformami s výkonné funkci intellisense, dokončování kódu a ladění, podpora, jakož i bohatá rozšíření lze nainstalovat z webu marketplace.
 
 3. Spusťte VS Code, vyhledejte **Arduino** v marketplace pro rozšíření a nainstalujte ho. Toto rozšíření nabízí vylepšené prostředí pro vývoj na platformě Arduino.
     ![Nainstalujte Arduino](media/iot-hub-arduino-devkit-az3166-get-started/getting-started/install-arduino.png)
 
-4. Vyhledejte **nástroje Azure IoT** v marketplace pro rozšíření a nainstalujte ho.
+4. Vyhledejte [nástroje Azure IoT](https://aka.ms/azure-iot-tools) v marketplace pro rozšíření a nainstalujte ho.
     ![Instalace nástrojů Azure IoT](media/iot-hub-arduino-devkit-az3166-get-started/getting-started/install-azure-iot-tools.png)
 
+    Nebo použijte tento odkaz s přímým přístupem:
     > [!div class="nextstepaction"]
     > [Nainstalovat balíček rozšíření pro nástroje Azure IoT](vscode:extension/vsciot-vscode.azure-iot-tools)
+
+    > [!NOTE]
+    > Balíček rozšíření Azure IoT nástroje obsahuje [Workbench zařízení Azure IoT](https://aka.ms/iot-workbench) sloužící k vývoji a ladění na různých zařízeních IoT devkit. [Azure IoT Hub Toolkit](https://aka.ms/iot-toolkit), také součástí balíček rozšíření pro nástroje Azure IoT, se používá ke správě a interakci s Azure IoT Hubs.
 
 5. Konfigurace VS Code s rozhraním Arduino nastavení.
 
@@ -184,7 +194,7 @@ Použijte následující postup Příprava vývojového prostředí pro DevKit:
 
 [Sv-odkaz/V2](https://www.st.com/en/development-tools/st-link-v2.html) je rozhraní USB používající IoT DevKit ke komunikaci s počítači pro vývoj. Budete muset nainstalovat na Windows tak, aby zařízení zkompilovaný kód, který DevKit. Postupujte podle kroků specifické pro operační systém umožňující počítači přístup k zařízení.
 
-* **Windows:** Stáhnout a nainstalovat ovladač USB z [STMicroelectronics webu](https://www.st.com/en/development-tools/stsw-link009.html) pro [přímý odkaz](https://aka.ms/stlink-v2-windows).
+* **Windows:** Stáhnout a nainstalovat ovladač USB z [STMicroelectronics webu](https://www.st.com/en/development-tools/stsw-link009.html) nebo [přímý odkaz](https://aka.ms/stlink-v2-windows).
 * **macOS**: Žádný ovladač je vyžadován pro macOS.
 * **Ubuntu**: Spuštění příkazů v terminálu a odhlásit se a přihlásit projeví se změna skupiny:
     ```bash
@@ -197,11 +207,13 @@ Použijte následující postup Příprava vývojového prostředí pro DevKit:
     sudo usermod -a -G plugdev $(whoami)
     ```
 
-Nyní vše je nastaveno s Příprava a konfigurace vývojového prostředí. Dejte nám ukázku "Hello World" sestavit pro IoT: odesílá telemetrická data o teplotě do služby Azure IoT Hub.
+Nyní vše je nastaveno s Příprava a konfigurace vývojového prostředí. Dejte nám sestavte ukázku GetStarted, které jste právě spustili.
 
 ## <a name="build-your-first-project"></a>Svůj první projekt sestavit
 
 ### <a name="open-sample-code-from-sample-gallery"></a>Otevřete ukázkový kód z Galerie ukázek
+
+IoT DevKit obsahuje rozsáhlé Galerii ukázek, které můžete použít další připojení DevKit k různým službám Azure.
 
 1. Ujistěte se, že je vaše IoT DevKit **Nepřipojeno** k vašemu počítači. Nejprve spusťte VS Code a DevKit připojte se k počítači.
 
@@ -211,6 +223,8 @@ Nyní vše je nastaveno s Příprava a konfigurace vývojového prostředí. Dej
     ![Otevřete ukázkový](media/iot-hub-arduino-devkit-az3166-get-started/getting-started/open-sample.png)
 
 ### <a name="provision-azure-iot-hub-and-device"></a>Zřízení Azure IoT Hub a zařízení
+
+Namísto zřizování Azure IoT Hub a zařízení z portálu Azure portal vám pomůžou ho v nástroji VS Code aniž byste museli opustit vývojové prostředí.
 
 1. V novém okně otevřeném projektu, klikněte na tlačítko `F1` otevřete paletu příkazů, zadejte a vyberte **Workbench zařízení Azure IoT: Zřízení služby Azure...** . Postupujte podle podrobného průvodce na dokončení zřízení služby Azure IoT Hub a vytvoření zařízení IoT Hub.
     ![Příkaz zřizování](media/iot-hub-arduino-devkit-az3166-get-started/getting-started/provision.png)

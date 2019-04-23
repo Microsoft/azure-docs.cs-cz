@@ -1,5 +1,5 @@
 ---
-title: Platforma identit Microsoft používá k přihlášení uživatele, kteří používají ROPC | Azure
+title: Platforma identit Microsoft používá k přihlášení uživatelů pomocí udělení přihlašovacích údajů (ROPC) hesla vlastníka prostředku | Azure
 description: Podpora prohlížeče bez ověřování toky pomocí udělení přihlašovacích údajů heslo vlastníka prostředku.
 services: active-directory
 documentationcenter: ''
@@ -12,23 +12,24 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 04/12/2019
+ms.date: 04/20/2019
 ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8c1372263bfa3f684d30ad583bfb6a9d434c3cc2
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 9cfa28cae87c8a9a97e1c64b96f75ae4c6eab08d
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59499933"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60004937"
 ---
 # <a name="microsoft-identity-platform-and-the-oauth-20-resource-owner-password-credential"></a>Platforma identit Microsoft a přístupové heslo vlastníka prostředku OAuth 2.0
 
-Microsoft identity platform podporuje [udělit pověření heslo vlastníka prostředku (ROPC)](https://tools.ietf.org/html/rfc6749#section-4.3), který umožňuje aplikaci přihlásit uživatele pomocí přímo zpracování své heslo. Tok ROPC vyžaduje vysoký stupeň důvěryhodnosti a uživatel vystavení a vývojáři měli používat jenom tento tok při toky, které bezpečnější, nemohou být použity.
+Microsoft identity platform podporuje [udělit pověření heslo vlastníka prostředku (ROPC)](https://tools.ietf.org/html/rfc6749#section-4.3), který umožňuje aplikaci přihlásit uživatele pomocí přímo zpracování své heslo. Tok ROPC vyžaduje vysoký stupeň důvěryhodnosti a uživatel vystavení a tento tok měli používat jenom v případě, že toky, které bezpečnější, nelze použít.
 
 > [!IMPORTANT]
+>
 > * Koncový bod Microsoft identity platform podporuje pouze ROPC pro klienty Azure AD, ne osobní účty. To znamená, že je nutné použít koncový bod specifickým pro tenanta (`https://login.microsoftonline.com/{TenantId_or_Name}`) nebo `organizations` koncového bodu.
 > * Osobní účty, které se pozvat do tenanta služby Azure AD nemůže použít ROPC.
 > * Účty, které nemají hesla prostřednictvím ROPC přihlásit. V tomto scénáři doporučujeme místo toho použít odlišný tok pro vaši aplikaci.
@@ -38,7 +39,7 @@ Microsoft identity platform podporuje [udělit pověření heslo vlastníka pros
 
 Následující diagram znázorňuje tok ROPC.
 
-![ROPC toku](media/v2-oauth2-ropc/v2-oauth-ropc.png)
+![ROPC toku](./media/v2-oauth2-ropc/v2-oauth-ropc.svg)
 
 ## <a name="authorization-request"></a>Žádost o autorizaci
 
@@ -69,11 +70,11 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 | `grant_type` | Požaduje se | Musí být nastaveno na `password`. |
 | `username` | Požaduje se | E-mailovou adresu uživatele. |
 | `password` | Požaduje se | Heslo uživatele. |
-| `scope` | Doporučené | Místo oddělený seznam [obory](v2-permissions-and-consent.md), nebo oprávnění, které aplikace vyžaduje. Tyto rozsahy musí vyjádřit souhlas předem správcem nebo uživatelem v interaktivní tok. |
+| `scope` | Doporučené | Místo oddělený seznam [obory](v2-permissions-and-consent.md), nebo oprávnění, které aplikace vyžaduje. Ve interaktivního toku správce nebo uživatel musí vyjádřit souhlas. do těchto oborů předem. |
 
 ### <a name="successful-authentication-response"></a>Ověření úspěšné odpovědi
 
-Následuje příklad úspěšné odpovědi tokenu:
+Následující příklad ukazuje úspěšné odpovědi tokenu:
 
 ```json
 {
@@ -105,7 +106,7 @@ Pokud uživatel není k dispozici správné uživatelské jméno nebo heslo, neb
 |------ | ----------- | -------------|
 | `invalid_grant` | Ověřování se nezdařilo. | Přihlašovací údaje byly nesprávná nebo klient nemá souhlas pro požadované obory. Pokud nejsou obory, `consent_required` se vrátí chyba. Pokud k tomu dojde, klient by měl uživatele poslat na výzvu k interaktivní pomocí webview nebo prohlížeče. |
 | `invalid_request` | Požadavek byl nesprávně vytvořen. | Typ udělení oprávnění nepodporuje `/common` nebo `/consumers` kontextu ověřování.  Místo nich se používá `/organizations`. |
-| `invalid_client` | Aplikace je nesprávně nastavený | K tomu může dojít, pokud `allowPublicClient` vlastnost není nastavena na hodnotu true v [manifest aplikace](reference-app-manifest.md). `allowPublicClient` Vlastnost je potřeba, proto ROPC udělení nemá identifikátor URI přesměrování. Azure AD nemůže určit, pokud je aplikace veřejným klientem aplikace nebo aplikace důvěrnému klientovi, pokud je nastavena. Všimněte si, že ROPC je podporována pouze pro veřejné klientské aplikace. |
+| `invalid_client` | Aplikace je nesprávně nastavený | K tomu může dojít, pokud `allowPublicClient` vlastnost není nastavena na hodnotu true v [manifest aplikace](reference-app-manifest.md). `allowPublicClient` Vlastnost je potřeba, proto ROPC udělení nemá identifikátor URI přesměrování. Azure AD nemůže určit, pokud je aplikace veřejným klientem aplikace nebo aplikace důvěrnému klientovi, pokud je nastavena. ROPC je podporována pouze pro veřejné klientské aplikace. |
 
 ## <a name="learn-more"></a>Další informace
 

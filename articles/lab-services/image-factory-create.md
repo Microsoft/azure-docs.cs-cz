@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/25/2019
 ms.author: spelluru
-ms.openlocfilehash: e51c56f54a4e30b5e9094388ed92aa0a62ba0840
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: cf1bb31614c04d6073bc40c510fc43b2f8e4e189
+ms.sourcegitcommit: c884e2b3746d4d5f0c5c1090e51d2056456a1317
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59796306"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60148981"
 ---
 # <a name="create-a-custom-image-factory-in-azure-devtest-labs"></a>Vytvořte objekt pro vytváření vlastní image ve službě Azure DevTest Labs
-V tomto článku se dozvíte, jak vytvořit objekt pro vytváření vlastní image pomocí dostupných v ukázkových skriptech [úložiště Git](https://github.com/Azure/azure-devtestlab/tree/master/Scripts/ImageFactory).
+V tomto článku se dozvíte, jak vytvořit objekt pro vytváření vlastní image pomocí dostupných v ukázkových skriptech [úložiště Git](https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/Scripts/ImageFactory).
 
 ## <a name="whats-an-image-factory"></a>Co je objekt pro vytváření image?
 Objekt pro vytváření bitové kopie je konfigurace jako kódu řešení, která sestavuje a distribuuje imagí automaticky v pravidelných intervalech s požadovanou konfigurací. Obrázky v objektu pro vytváření bitové kopie jsou vždy aktuální a průběžnou údržbu není téměř nulové po je celý proces automatizovat. A vzhledem k tomu, že všechny požadované konfigurace jsou již v bitové kopii, šetří čas z ručně po vytvoření virtuálního počítače s operačním systémem základní konfigurace systému.
@@ -39,7 +39,7 @@ Toto řešení umožňuje rychlost vytváření virtuálních počítačů z vla
 
 ![Souhrnný přehled řešení](./media/create-image-factory/high-level-view-of-solution.png)
 
-Je [rozšíření VSTS pro DevTest Labs](https://marketplace.visualstudio.com/items?itemName=ms-azuredevtestlabs.tasks) , která umožňuje spustit tyto jednotlivé kroky: 
+Je [rozšíření VSTS pro DevTest Labs](https://marketplace.visualstudio.com/items?itemName=ms-azuredevtestlabs.tasks) , která umožňuje spustit tyto jednotlivé kroky:
 
 - Vytvoření vlastní image
 - Vytvoření virtuálního počítače

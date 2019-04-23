@@ -17,11 +17,11 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 31fe3877fd6098b18686b9d99a012cbfbef7c300
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58122973"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60244338"
 ---
 # <a name="azure-ad-connect-sync-make-a-change-to-the-default-configuration"></a>Synchronizace Azure AD Connect: Proveďte změnu výchozí konfigurace
 Cílem tohoto článku je pro vás provedou postupem provést změny ve výchozí konfiguraci ve službě Azure Active Directory (Azure AD) Connect sync. Obsahuje postup pro některé běžné scénáře. Se znalostí by měl být schopen provést jednoduché změny do vaší vlastní konfigurace na základě vlastních obchodních pravidel.
@@ -266,9 +266,9 @@ Pravidlo příchozí synchronizace povoluje hodnotu atributu tok z zdrojový atr
 3. Klikněte na tlačítko **přidat nové pravidlo** tlačítko vytvořením nového příchozího pravidla.
 4. V části **popis** kartu, zadejte následující konfiguraci:
 
-    | Atribut | Hodnota | Podrobnosti |
+    | Atribut | Value | Podrobnosti |
     | --- | --- | --- |
-    | Název | *Zadejte název* | Například *v ze služby AD – UserType uživatele* |
+    | Name | *Zadejte název* | Například *v ze služby AD – UserType uživatele* |
     | Popis | *Zadejte popis* |  |
     | Připojený systém | *Vyberte místní AD connector.* |  |
     | Typ objektu systému připojené | **Uživatel** |  |
@@ -278,7 +278,7 @@ Pravidlo příchozí synchronizace povoluje hodnotu atributu tok z zdrojový atr
 
 5. Přejděte na **Scoping filtr** karta a přidat **jednoho oboru filtru skupiny** s následující klauzuli:
 
-    | Atribut | Operátor | Hodnota |
+    | Atribut | Operátor | Value |
     | --- | --- | --- |
     | adminDescription | NOTSTARTWITH | Uživatel\_ |
 
@@ -288,7 +288,7 @@ Pravidlo příchozí synchronizace povoluje hodnotu atributu tok z zdrojový atr
 
     | Typ toku | Cílový atribut | Zdroj | Použít jednou | Sloučit typu |
     | --- | --- | --- | --- | --- |
-    | Přímé | UserType | extensionAttribute1 | Není zaškrtnuto | Aktualizace |
+    | Direct | UserType | extensionAttribute1 | Není zaškrtnuto | Aktualizace |
 
     Například budete chtít odvodit hodnotu pro atribut UserType z dalších vlastností. Například chcete synchronizovat všechny uživatele jako hosta, pokud jejich místní atribut userPrincipalName AD končí část domény <em>@partners.fabrikam123.org</em>. Můžete implementovat výrazu takto:
 
@@ -308,9 +308,9 @@ Pravidlo odchozí synchronizace povoluje hodnotu atributu, které jsou předáv�
 3. Klikněte na tlačítko **přidat nové pravidlo** tlačítko.
 4. V části **popis** kartu, zadejte následující konfiguraci:
 
-    | Atribut | Hodnota | Podrobnosti |
+    | Atribut | Value | Podrobnosti |
     | ----- | ------ | --- |
-    | Název | *Zadejte název* | Například *na AAD – UserType uživatele* |
+    | Name | *Zadejte název* | Například *na AAD – UserType uživatele* |
     | Popis | *Zadejte popis* ||
     | Připojený systém | *Vyberte konektor AAD* ||
     | Typ objektu systému připojené | **Uživatel** ||
@@ -320,7 +320,7 @@ Pravidlo odchozí synchronizace povoluje hodnotu atributu, které jsou předáv�
 
 5. Přejděte na **Scoping filtr** karta a přidat **jednoho oboru filtru skupiny** pomocí dvou klauzulí:
 
-    | Atribut | Operátor | Hodnota |
+    | Atribut | Operátor | Value |
     | --- | --- | --- |
     | sourceObjectType | ROVNO | Uživatel |
     | cloudMastered | NOTEQUAL | True |
@@ -331,7 +331,7 @@ Pravidlo odchozí synchronizace povoluje hodnotu atributu, které jsou předáv�
 
     | Typ toku | Cílový atribut | Zdroj | Použít jednou | Sloučit typu |
     | --- | --- | --- | --- | --- |
-    | Přímé | UserType | UserType | Není zaškrtnuto | Aktualizace |
+    | Direct | UserType | UserType | Není zaškrtnuto | Aktualizace |
 
 7. Klikněte na tlačítko **přidat** vytvoření odchozí pravidla.
 

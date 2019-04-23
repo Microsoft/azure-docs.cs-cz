@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 04/16/2019
+ms.date: 04/19/2019
 ms.author: jingwang
-ms.openlocfilehash: 5e37d9c0c242de1bd95a93f12171a2a4271b064d
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
+ms.openlocfilehash: 6056df9aa9079887bfb06ca20ad564eb52baff38
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59680702"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60008694"
 ---
 # <a name="copy-data-from-and-to-salesforce-by-using-azure-data-factory"></a>Kopírování dat z a do Salesforce pomocí služby Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -35,7 +35,7 @@ Konkrétně tento konektor Salesforce podporuje:
 - Edice Salesforce Developer, Professional, Enterprise nebo neomezený.
 - Kopírování dat z a do produkčního prostředí Salesforce, izolovaný prostor a vlastní domény.
 
-Konektor Salesforce je postavený na rozhraní REST API služby Salesforce se [v45](https://developer.salesforce.com/docs/atlas.en-us.218.0.api_rest.meta/api_rest/dome_versions.htm) pro kopírování dat z a [v40](https://developer.salesforce.com/docs/atlas.en-us.208.0.api_asynch.meta/api_asynch/asynch_api_intro.htm) pro kopírování dat do.
+Konektor Salesforce je postavený na rozhraní API REST/hromadné Salesforce se [v45](https://developer.salesforce.com/docs/atlas.en-us.218.0.api_rest.meta/api_rest/dome_versions.htm) pro kopírování dat z a [v40](https://developer.salesforce.com/docs/atlas.en-us.208.0.api_asynch.meta/api_asynch/asynch_api_intro.htm) pro kopírování dat do.
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -65,7 +65,7 @@ Následující vlastnosti jsou podporovány pro Salesforce, propojené služby.
 | type |Vlastnost type musí být nastavená na **Salesforce**. |Ano |
 | environmentUrl | Zadejte adresu URL Salesforce instance. <br> – Výchozí hodnota je `"https://login.salesforce.com"`. <br> – Chcete-li kopírovat data z karantény, zadejte `"https://test.salesforce.com"`. <br> -Ke zkopírování dat z vlastní domény, zadejte, například `"https://[domain].my.salesforce.com"`. |Ne |
 | uživatelské jméno |Zadejte uživatelské jméno uživatelského účtu. |Ano |
-| heslo |Zadejte heslo pro uživatelský účet.<br/><br/>Označte toto pole jako SecureString bezpečně uložit ve službě Data Factory nebo [odkazovat tajného klíče do služby Azure Key Vault](store-credentials-in-key-vault.md). |Ano |
+| password |Zadejte heslo pro uživatelský účet.<br/><br/>Označte toto pole jako SecureString bezpečně uložit ve službě Data Factory nebo [odkazovat tajného klíče do služby Azure Key Vault](store-credentials-in-key-vault.md). |Ano |
 | Token securityToken |Zadejte token zabezpečení pro uživatelský účet. Pokyny o tom, jak obnovit a získat token zabezpečení najdete v tématu [získat token zabezpečení](https://help.salesforce.com/apex/HTViewHelpDoc?id=user_security_token.htm). Obecné informace o tokeny zabezpečení najdete v tématu [zabezpečení a rozhraní API](https://developer.salesforce.com/docs/atlas.en-us.api.meta/api/sforce_api_concepts_security.htm).<br/><br/>Označte toto pole jako SecureString bezpečně uložit ve službě Data Factory nebo [odkazovat tajného klíče do služby Azure Key Vault](store-credentials-in-key-vault.md). |Ano |
 | connectVia | [Prostředí integration runtime](concepts-integration-runtime.md) se použije k připojení k úložišti. Pokud není zadán, použije výchozí prostředí Azure Integration Runtime. | Ne pro zdroj, Ano pro jímku pokud propojený zdroj služba nemá modul runtime integrace |
 
@@ -235,9 +235,9 @@ Ke zkopírování dat do služby Salesforce, nastavte typ jímky v aktivitě kop
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
 | type | Nastavte vlastnost typ jímky aktivity kopírování **SalesforceSink**. | Ano |
-| WriteBehavior | Chování zápisu pro operaci.<br/>Povolené hodnoty jsou **vložit** a **Upsert**. | Ne (výchozí hodnota je vložení) |
+| writeBehavior | Chování zápisu pro operaci.<br/>Povolené hodnoty jsou **vložit** a **Upsert**. | Ne (výchozí hodnota je vložení) |
 | externalIdFieldName | Název pole externího ID operace upsert. Zadané pole musí být definován jako "Pole externího Id" v objektu Salesforce. V odpovídající vstupní data nemůže mít hodnotu NULL. | Ano pro "Upsert" |
-| WriteBatchSize | Počet řádků dat zapsaných do Salesforce v každé dávce. | Ne (výchozí hodnota je 5 000) |
+| writeBatchSize | Počet řádků dat zapsaných do Salesforce v každé dávce. | Ne (výchozí hodnota je 5 000) |
 | ignoreNullValues | Určuje, jestli se má ignorovat hodnot NULL ze vstupních dat během operace zápisu.<br/>Povolené hodnoty jsou **true** a **false**.<br>- **Hodnota TRUE**: Ponechte data v cílovém objektu beze změny po provedení operace upsert nebo aktualizace. Definovaná výchozí hodnota vložte, když provedete operaci vložení.<br/>- **False**: Pokud tak učiníte, operace upsert nebo aktualizace, aktualizace dat v cílového objektu na hodnotu NULL. Vložení hodnoty NULL, když provedete operaci vložení. | Ne (výchozí hodnota je false) |
 
 **Příklad: Salesforce jímky v aktivitě kopírování**
@@ -316,7 +316,7 @@ Při kopírování dat ze služby Salesforce se používají následující mapo
 | Datový typ Salesforce | Data Factory dočasné datový typ |
 |:--- |:--- |
 | Automatické číslo |String |
-| Zaškrtávací políčko |Logická hodnota |
+| Zaškrtávací políčko |Boolean |
 | Měna |Decimal |
 | Datum |DateTime |
 | Datum a čas |DateTime |

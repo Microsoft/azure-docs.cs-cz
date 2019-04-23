@@ -16,11 +16,11 @@ ms.date: 04/02/2018
 ms.author: celested
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 346d7249d4dd755fc794cd3d9d5be8b32195ef90
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56210369"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60291292"
 ---
 # <a name="how-to-configure-self-service-application-assignment"></a>Jak nakonfigurovat samoobslužné přiřazení aplikací
 

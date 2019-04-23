@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: cdca2823962c442c9142fa439795269f419aa489
-ms.sourcegitcommit: f331186a967d21c302a128299f60402e89035a8d
-ms.translationtype: MT
+ms.openlocfilehash: fa4487b07f130947ac5da2a5dbae6776b06acbe7
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58189678"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60009890"
 ---
 # <a name="input-metadata"></a>Vstupní Metadata 
 
@@ -38,7 +38,7 @@ Obsahuje kolekci [AssetFile element](media-services-input-metadata-schema.md#Ass
 
 Podívejte se příklad XML na konci tohoto článku: [Ukázkový kód XML](media-services-input-metadata-schema.md#xml).  
 
-| Název | Popis |
+| Name | Popis |
 | --- | --- |
 | **AssetFile**<br /><br /> minOccurs="1" maxOccurs="unbounded" |Jeden podřízený prvek. Další informace najdete v tématu [AssetFile element](media-services-input-metadata-schema.md#AssetFile). |
 
@@ -48,7 +48,7 @@ Podívejte se příklad XML na konci tohoto článku: [Ukázkový kód XML](medi
  Podívejte se příklad XML na konci tohoto článku: [Ukázkový kód XML](media-services-input-metadata-schema.md#xml).  
 
 ### <a name="attributes"></a>Atributy
-| Název | Typ | Popis |
+| Name | Typ | Popis |
 | --- | --- | --- |
 | **Název**<br /><br /> Požaduje se |**xs:string** |Název souboru prostředku. |
 | **Velikost**<br /><br /> Požaduje se |**xs:long** |Velikost souboru prostředku v bajtech. |
@@ -65,7 +65,7 @@ Podívejte se příklad XML na konci tohoto článku: [Ukázkový kód XML](medi
 > 
 
 ### <a name="child-elements"></a>Podřízené prvky
-| Název | Typ | Popis |
+| Name | Typ | Popis |
 | --- | --- | --- |
 | **Programy**<br /><br /> minOccurs="0" | |Kolekce všech [programy element](media-services-input-metadata-schema.md#Programs) po souboru prostředku ve formátu MPEG-TS. |
 | **VideoTracks**<br /><br /> minOccurs="0" | |Každý soubor fyzický prostředek může obsahovat nula nebo více sleduje videa prokládané do formátu odpovídajícího kontejneru. Tento prvek obsahuje kolekci všech [VideoTracks](media-services-input-metadata-schema.md#VideoTracks) , které jsou součástí souboru prostředku. |
@@ -76,7 +76,7 @@ Podívejte se příklad XML na konci tohoto článku: [Ukázkový kód XML](medi
 Podívejte se příklad XML na konci tohoto článku: [Ukázkový kód XML](media-services-input-metadata-schema.md#xml).  
 
 ### <a name="attributes"></a>Atributy
-| Název | Typ | Popis |
+| Name | Typ | Popis |
 | --- | --- | --- |
 | **ID**<br /><br /> Požaduje se |**xs:int** |Index založený na nule tento záznam zvuku nebo videa.<br /><br /> Toto není nutně, že TrackID jako použití v souboru MP4. |
 | **Kodek** |**xs:string** |Sledovat videa kodek řetězec. |
@@ -92,7 +92,7 @@ Podívejte se příklad XML na konci tohoto článku: [Ukázkový kód XML](medi
 > 
 
 ### <a name="child-elements"></a>Podřízené prvky
-| Název | Typ | Popis |
+| Name | Typ | Popis |
 | --- | --- | --- |
 | **Dispozice**<br /><br /> minOccurs="0" maxOccurs="1" |[StreamDispositionType](media-services-input-metadata-schema.md#StreamDispositionType) |Obsahuje informace o prezentace (například, jestli konkrétní zvukové stopy je pro slabozraké uživatele). |
 | **Metadata**<br /><br /> minOccurs="0" maxOccurs="unbounded" |[MetadataType](media-services-input-metadata-schema.md#MetadataType) |Obecný klíč/hodnota řetězce, které lze použít pro uložení různých informací. Například klíč = "jazyk" a hodnota = "eng". |
@@ -105,7 +105,7 @@ Podívejte se příklad XML na konci tohoto článku: [Ukázkový kód XML](medi
  Podívejte se příklad XML na konci tohoto článku: [Ukázkový kód XML](media-services-input-metadata-schema.md#xml).  
 
 ### <a name="attributes"></a>Atributy
-| Název | Typ | Popis |
+| Name | Typ | Popis |
 | --- | --- | --- |
 | **SampleFormat** |**xs:string** |Vzor formátu. |
 | **ChannelLayout** |**xs: řetězec** |Kanál rozložení. |
@@ -122,7 +122,7 @@ Typ představuje konkrétní videa sledovat v souboru prostředku.
 Podívejte se příklad XML na konci tohoto článku: [Ukázkový kód XML](media-services-input-metadata-schema.md#xml).  
 
 ### <a name="attributes"></a>Atributy
-| Název | Typ | Popis |
+| Name | Typ | Popis |
 | --- | --- | --- |
 | **FourCC**<br /><br /> Požaduje se |**xs:string** |Kodek videa FourCC kódu. |
 | **Profil** |**xs: řetězec** |Sledovat video profilu. |
@@ -146,7 +146,7 @@ Podívejte se příklad XML na konci tohoto článku: [Ukázkový kód XML](medi
 Podívejte se příklad XML na konci tohoto článku: [Ukázkový kód XML](media-services-input-metadata-schema.md#xml).  
 
 ### <a name="attributes"></a>Atributy
-| Název | Typ | Popis |
+| Name | Typ | Popis |
 | --- | --- | --- |
 | **key**<br /><br /> Požaduje se |**xs:string** |Klíč v páru klíč/hodnota. |
 | **value**<br /><br /> Požaduje se |**xs:string** |Hodnota ve dvojici klíč/hodnota. |
@@ -155,7 +155,7 @@ Podívejte se příklad XML na konci tohoto článku: [Ukázkový kód XML](medi
 **ProgramType** je globální komplexní typ, který popisuje programu.  
 
 ### <a name="attributes"></a>Atributy
-| Název | Typ | Popis |
+| Name | Typ | Popis |
 | --- | --- | --- |
 | **ProgramId**<br /><br /> Požaduje se |**xs:int** |Id programu |
 | **NumberOfPrograms**<br /><br /> Požaduje se |**xs:int** |Počet aplikací. |
@@ -170,7 +170,7 @@ Podívejte se příklad XML na konci tohoto článku: [Ukázkový kód XML](medi
 Podívejte se příklad XML na konci tohoto článku: [Ukázkový kód XML](media-services-input-metadata-schema.md#xml).  
 
 ### <a name="attributes"></a>Atributy
-| Název | Typ | Popis |
+| Name | Typ | Popis |
 | --- | --- | --- |
 | **Výchozí**<br /><br /> Požaduje se |**xs: int** |Tento atribut nastavte na 1. to znamená, že toto je výchozí prezentace. |
 | **Dub**<br /><br /> Požaduje se |**xs:int** |Tento atribut nastavte na 1. to znamená, že jde o dubbed prezentace. |
@@ -179,7 +179,7 @@ Podívejte se příklad XML na konci tohoto článku: [Ukázkový kód XML](medi
 | **Text**<br /><br /> Požaduje se |**xs:int** |Tento atribut nastavte na 1. to znamená, že toto sledování obsahuje text. |
 | **Karaoke**<br /><br /> Požaduje se |**xs:int** |Tento atribut nastavte na 1. to znamená, že to představuje jeden směr karaoke (hudby na pozadí, žádné hlasy zpěváků). |
 | **Vynucené**<br /><br /> Požaduje se |**xs:int** |Tento atribut nastavte na 1. to znamená, že jde o vynucené prezentace. |
-| **HearingImpaired**<br /><br /> Požaduje se |**xs:int** |Tento atribut nastavte na 1. to znamená, že tato směr určený pro sluchu narušena. |
+| **HearingImpaired**<br /><br /> Požaduje se |**xs:int** |Tento atribut nastavte na 1. to znamená, že tato směr určený pro uživatele, kteří se sluchem. |
 | **VisualImpaired**<br /><br /> Požaduje se |**xs:int** |Tento atribut nastavte na 1. to znamená, že tato směr určený pro uživatele se zrakovým postižením. |
 | **CleanEffects**<br /><br /> Požaduje se |**xs: int** |Tento atribut nastavte na 1. to znamená, že tento blok má čisté účinky. |
 | **AttachedPic**<br /><br /> Požaduje se |**xs: int** |Tento atribut nastavte na 1. to znamená, že tento blok má obrázky. |
@@ -188,7 +188,7 @@ Podívejte se příklad XML na konci tohoto článku: [Ukázkový kód XML](medi
 Element obálky, která uchovává více **Program** elementy.  
 
 ### <a name="child-elements"></a>Podřízené prvky
-| Název | Typ | Popis |
+| Name | Typ | Popis |
 | --- | --- | --- |
 | **Program**<br /><br /> minOccurs="0" maxOccurs="unbounded" |[ProgramType](media-services-input-metadata-schema.md#ProgramType) |Soubory prostředků, které jsou ve formátu MPEG-TS obsahuje informace o aplikacích v souboru prostředku. |
 
@@ -198,7 +198,7 @@ Element obálky, která uchovává více **Program** elementy.
  Podívejte se příklad XML na konci tohoto článku: [Ukázkový kód XML](media-services-input-metadata-schema.md#xml).  
 
 ### <a name="child-elements"></a>Podřízené prvky
-| Název | Typ | Popis |
+| Name | Typ | Popis |
 | --- | --- | --- |
 | **VideoTrack**<br /><br /> minOccurs="0" maxOccurs="unbounded" |[VideoTrackType (dědí nastavení z TrackType)](media-services-input-metadata-schema.md#VideoTrackType) |Obsahuje informace o videu sleduje v souboru prostředku. |
 
@@ -208,7 +208,7 @@ Element obálky, která uchovává více **Program** elementy.
  Podívejte se příklad XML na konci tohoto článku: [Ukázkový kód XML](media-services-input-metadata-schema.md#xml).  
 
 ### <a name="elements"></a>Elementy
-| Název | Typ | Popis |
+| Name | Typ | Popis |
 | --- | --- | --- |
 | **AudioTrack**<br /><br /> minOccurs="0" maxOccurs="unbounded" |[AudioTrackType (dědí nastavení z TrackType)](media-services-input-metadata-schema.md#AudioTrackType) |Obsahuje informace o zvukové stopy v souboru prostředku. |
 

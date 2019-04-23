@@ -11,13 +11,13 @@ author: bonova
 ms.author: bonova
 ms.reviewer: sstein, carlrab, vanto
 manager: craigg
-ms.date: 04/08/2019
-ms.openlocfilehash: 15b7bfc9e1d747fcefdbba03ca254a9604197b5f
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.date: 04/16/2019
+ms.openlocfilehash: 46c6972e20df69da236c151516d7d889f9db6084
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59361818"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60002744"
 ---
 # <a name="use-sql-database-advanced-data-security-with-virtual-networks-and-near-100-compatibility"></a>Použití rozšířené zabezpečení dat s virtuálními sítěmi a téměř 100 % kompatibility SQL Database
 
@@ -126,7 +126,7 @@ Možnost nasazení spravované instance kombinuje rozšířené funkce zabezpeč
 Managed instance poskytuje další bezpečnostní izolaci od ostatních tenantů v cloudu Azure. Izolace zabezpečení zahrnuje:
 
 - [Implementace nativní virtuální sítě](sql-database-managed-instance-connectivity-architecture.md) a připojení k vaší místní prostředí pomocí Azure Express Route nebo VPN Gateway.
-- Koncový bod SQL se zobrazují jen prostřednictvím privátní IP adresy, což bezpečné připojení z Azure privátní nebo hybridní sítě.
+- Ve výchozím nasazení je koncový bod SQL zobrazují jen prostřednictvím privátní IP adresy, což bezpečné připojení z Azure privátní nebo hybridní sítě.
 - Jedním tenantem pomocí vyhrazené základní infrastruktura (výpočetní prostředky, úložiště).
 
 Následující diagram popisuje různé možnosti připojení pro vaše aplikace:
@@ -226,7 +226,7 @@ Možnost nasazení spravované instance umožňuje správce systému, abyste str
 
 V následující tabulce jsou uvedeny několik vlastností, které jsou přístupné prostřednictvím jazyka Transact SQL, můžete použít ke zjištění, že vaše aplikace pracuje s spravovanou instanci a načíst důležité vlastnosti.
 
-|Vlastnost|Hodnota|Poznámka|
+|Vlastnost|Value|Poznámka|
 |---|---|---|
 |`@@VERSION`|Microsoft SQL Azure (RTM) - 12.0.2000.8 2018-03-07 Copyright (C) 2018 Microsoft Corporation.|Tato hodnota je stejné jako u databáze SQL.|
 |`SERVERPROPERTY ('Edition')`|SQL Azure|Tato hodnota je stejné jako u databáze SQL.|

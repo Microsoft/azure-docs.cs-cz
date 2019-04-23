@@ -10,12 +10,12 @@ ms.subservice: manage
 ms.date: 12/04/2018
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: a5b4d9fac1d2fb3ec1a45f34784552b2d41f2cf1
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
-ms.translationtype: MT
+ms.openlocfilehash: dc78fbc93d625b39379e07f240eef7fbad10d194
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59679325"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60003849"
 ---
 # <a name="troubleshooting-azure-sql-data-warehouse"></a>Řešení potíží s Azure SQL Data Warehouse
 Tento článek uvádí běžné otázka Poradce při potížích.
@@ -33,7 +33,7 @@ Tento článek uvádí běžné otázka Poradce při potížích.
 | Problém                                                        | Řešení                                                   |
 | :----------------------------------------------------------- | :----------------------------------------------------------- |
 | Průzkumník objektů systému Visual Studio chybí uživatel AAD           | Jedná se o známý problém.  Jako alternativní řešení, zobrazení uživatelů v [sys.database_principals][sys.database_principals].  Zobrazit [ověřování do služby Azure SQL Data Warehouse] [ Authentication to Azure SQL Data Warehouse] Další informace o používání služby Azure Active Directory se službou SQL Data Warehouse. |
-| Příručka skriptování, pomocí Průvodce skriptovací nebo připojení přes SSMS je pomalá, ukončování "zamrzlých" nebo vytváření chyb | Ujistěte se, že uživatelé byly vytvořeny v hlavní databázi. V možnosti skriptování Ujistěte se také, že edice modulu a je nastaven jako "Microsoft Azure SQL Data Warehouse edici" modul typu "Microsoft Azure SQL Database". |
+| Příručka skriptování, pomocí Průvodce skriptovací nebo připojení přes SSMS je pomalá, neodpovídá nebo vytvoření chyby | Ujistěte se, že uživatelé byly vytvořeny v hlavní databázi. V možnosti skriptování Ujistěte se také, že edice modulu a je nastaven jako "Microsoft Azure SQL Data Warehouse edici" modul typu "Microsoft Azure SQL Database". |
 | Generovat skripty selže v aplikaci SSMS                             | Generování skriptu pro SQL data warehouse se nezdaří, pokud je možnost "Vygenerovat skript pro závislé objekty" nastavena na hodnotu "True". Jako alternativní řešení, musí uživatelé ručně přejděte na Nástroje -> Možnosti -> Průzkumník objektů systému SQL Server -> Generovat skript pro závislé možnosti a nastavení na hodnotu false |
 
 ## <a name="performance"></a>Výkon

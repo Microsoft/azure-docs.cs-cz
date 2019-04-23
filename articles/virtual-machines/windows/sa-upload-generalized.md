@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 05/18/2017
 ms.author: cynthn
 ROBOTS: NOINDEX
-ms.openlocfilehash: cd81eb3d62332bba67f0056a6f7b49279bc50c4f
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 5b38d022d372e7d35ba2dbeaef90660ce95f73fa
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59788808"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60250734"
 ---
 # <a name="upload-a-generalized-vhd-to-azure-to-create-a-new-vm"></a>Nahrání generalizovaného virtuálního pevného disku do Azure a vytvořte nový virtuální počítač
 
@@ -31,7 +31,7 @@ Pokud chcete k vytvoření virtuálního počítače ze specializovaného VHD v 
 
 Toto téma popisuje používání účtů úložiště, ale doporučujeme zákazníkům přesunutí místo toho použít Managed Disks. Kompletní návod, jak o tom, jak připravit, nahrání a vytvoření nového virtuálního počítače pomocí spravované disky, najdete v části [vytvoření nového virtuálního počítače z generalizovaného virtuálního pevného disku nahráli do Azure pomocí Managed Disks](upload-generalized-managed.md).
 
-[!INCLUDE [updated-for-az-vm.md](../../../includes/updated-for-az-vm.md)]
+[!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
 
 ## <a name="prepare-the-vm"></a>Příprava virtuálního počítače
 

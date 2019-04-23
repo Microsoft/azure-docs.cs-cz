@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 07/11/2018
 ms.author: robinsh
 ms.custom: mvc
-ms.openlocfilehash: ff8ef576a0dae0f03cc0c80f83ce0c24cf3945a2
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
-ms.translationtype: MT
+ms.openlocfilehash: 40a7bba99068ebc2368e413199cf966bd2e4f25c
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58093731"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60002897"
 ---
 # <a name="tutorial-perform-manual-failover-for-an-iot-hub-public-preview"></a>Kurz: Proveďte ruční převzetí služeb při selhání pro službu IoT hub (verze public preview)
 
@@ -49,9 +49,6 @@ V tomto kurzu provedete následující úlohy:
 
     **Oblast:** Vyberte oblast ve vaší blízkosti, která je součástí verze Preview. Tento kurz používá oblast `westus2`. Převzetí služeb při selhání se dá provést jenom mezi geograficky spárovanými oblastmi Azure. S oblastí westus2 je geograficky spárovaná oblast WestCentralUS.
     
-   > [!NOTE]
-   > Ruční převzetí služeb při selhání je aktuálně ve verzi public preview a je *není* k dispozici v následujících oblastech Azure: Východní USA, západní USA, Severní Evropa, západní Evropa, Brazílie – jih a střední část jihu USA.
-
    **Název centra IoT Hub:** Zadejte název vašeho IoT Hubu. Název centra musí být globálně jedinečný. 
 
    ![Snímek obrazovky s podoknem Základy pro vytvoření IoT Hubu](./media/tutorial-manual-failover/create-hub-02-basics.png)

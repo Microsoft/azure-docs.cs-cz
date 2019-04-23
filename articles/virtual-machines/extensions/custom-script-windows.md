@@ -2,29 +2,24 @@
 title: Rozšíření vlastních skriptů Azure pro Windows | Dokumentace Microsoftu
 description: Automatizace úkolů konfigurace virtuálních počítačů s Windows pomocí rozšíření vlastních skriptů
 services: virtual-machines-windows
-documentationcenter: ''
-author: georgewallace
 manager: carmonm
-editor: ''
-tags: azure-resource-manager
-ms.assetid: f4181fee-7a9d-4a1c-b517-52956f5b7fa1
+author: georgewallace
 ms.service: virtual-machines-windows
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 12/05/2018
+ms.date: 04/15/2019
 ms.author: gwallace
-ms.openlocfilehash: 075813feadfb81fe8f7d337dfc5f7ba01bd41e86
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: e2b36633996f961d100f0a98abb09135fd4393e4
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59698678"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60007079"
 ---
 # <a name="custom-script-extension-for-windows"></a>Rozšíření vlastních skriptů pro Windows
 
-Rozšíření vlastních skriptů stahuje a spouští skripty na virtuálních počítačích Azure. Toto rozšíření je užitečné pro konfiguraci po nasazení, instalaci softwaru nebo jakékoli jiné úlohy konfigurace nebo správy. Skripty si můžete stáhnout z Azure Storage nebo z GitHubu, případně je za běhu rozšíření najdete na portálu Azure Portal. Rozšíření vlastních skriptů integruje šablony Azure Resource Manageru a je možné ho spustit také pomocí rozhraní příkazového řádku Azure, PowerShellu, portálu Azure Portal nebo REST API pro virtuální počítač Azure.
+Rozšíření vlastních skriptů stahuje a spouští skripty na virtuálních počítačích Azure. Toto rozšíření je užitečné pro konfiguraci po nasazení, instalace softwaru nebo jakékoli jiné konfigurace nebo úlohy správy. Skripty si můžete stáhnout z Azure Storage nebo z GitHubu, případně je za běhu rozšíření najdete na portálu Azure Portal. Rozšíření vlastních skriptů integruje šablony Azure Resource Manageru a bude možné spustit pomocí rozhraní příkazového řádku Azure, Powershellu, portálu Azure portal nebo rozhraní REST API pro virtuální počítač Azure.
 
 Tento dokument podrobně popisuje, jak použít rozšíření vlastních skriptů pomocí modulu Azure PowerShell, šablon Azure Resource Manageru a podrobnosti o řešení potíží v systémech Windows.
 
@@ -32,40 +27,38 @@ Tento dokument podrobně popisuje, jak použít rozšíření vlastních skript�
 
 > [!NOTE]  
 > Nepoužívejte ke spuštění rutiny Update-AzVM se stejný virtuální počítač jako svůj parametr, protože bude čekat na sobě rozšíření vlastních skriptů.  
->   
-> 
 
 ### <a name="operating-system"></a>Operační systém
 
-Rozšíření vlastních skriptů pro Linux se spustí na rozšíření nepodporuje rozšíření OSs, další informace najdete v tomto [článku](https://support.microsoft.com/en-us/help/4078134/azure-extension-supported-operating-systems).
+Vlastní skript rozšíření pro Windows se spustit rozšíření nepodporuje rozšíření OSs, další informace, najdete v tomto [rozšíření Azure podporované operační systémy](https://support.microsoft.com/help/4078134/azure-extension-supported-operating-systems).
 
 ### <a name="script-location"></a>Umístění skriptu
 
-Můžete použít rozšíření použijte svoje přihlašovací údaje úložiště objektů Blob v Azure pro přístup k úložišti objektů Blob v Azure. Umístění skriptu, případně může být kdekoli, tak dlouho, dokud virtuální počítač může směrovat do tohoto koncového bodu, jako je například GitHub, interní souborový server atd.
-
+Můžete nakonfigurovat rozšíření použijte svoje přihlašovací údaje úložiště objektů Blob v Azure pro přístup k úložišti objektů Blob v Azure. Umístění skriptu kdekoli, může být jako virtuální počítač můžete směrovat do tohoto koncového bodu, jako je GitHub nebo interní souborového serveru.
 
 ### <a name="internet-connectivity"></a>Připojení k Internetu
-Pokud potřebujete stáhnout skript externě jako GitHub nebo služby Azure Storage, potom další brány firewall nebo sítě skupiny zabezpečení musí být otevřené porty. Například pokud váš skript nachází ve službě Azure Storage, můžete povolit přístup pomocí značky služeb Azure NSG pro [úložiště](https://docs.microsoft.com/azure/virtual-network/security-overview#service-tags).
 
-Pokud váš skript je na místním serveru, pak může i nadále potřebovat další brány firewall nebo sítě zabezpečení musejí být otevřeny porty skupiny.
+Pokud potřebujete stáhnout skript externě jako z Githubu nebo služby Azure Storage, pak další brány firewall a portů skupiny zabezpečení sítě muset otevřít. Například pokud váš skript nachází ve službě Azure Storage, můžete povolit přístup pomocí značky služeb Azure NSG pro [úložiště](../../virtual-network/security-overview.md#service-tags).
+
+Pokud váš skript je na místním serveru, pak může stále potřebovat další brány firewall a porty skupina zabezpečení sítě je potřeba otevřít.
 
 ### <a name="tips-and-tricks"></a>Tipy a triky
-* Nejvyšší chybovost pro toto rozšíření je z důvodu chyby syntaxe v skriptu testu, které skript se spustí bez chyb, a také vložit další protokolování do skriptu, aby bylo snazší najít, kde se nezdařilo.
-* Psát skripty, které jsou idempotentní, takže pokud získat spusťte znovu více než jednou omylem, nesmí způsobit změny systému.
-* Zajistěte, aby že skripty nevyžadují uživatelský vstup při spuštění.
-* Není povoleno pro spuštění skriptu 90 minut, cokoli delšího způsobí selhání zřizování rozšíření.
-* Neumisťujte restartování uvnitř skriptu, tato akce způsobí problémy s další rozšíření, které se nainstalují. Restartování příspěvek rozšíření nebude pokračovat po restartování. 
-* Pokud máte skript, který způsobí restartování, instalace aplikací a spouštět skripty atd. Můžete naplánovat pomocí naplánované úlohy Windows, nebo pomocí nástrojů, jako je DSC, Chef, Puppet rozšíření nebo restartování.
-* Rozšíření se spustí jenom skript jednou, pokud chcete spustit skript na každém spuštění počítače, je nutné použít příponu k vytvoření naplánované úlohy Windows.
-* Pokud chcete naplánovat, kdy bude skript spuštěn, používejte k vytvoření naplánované úlohy Windows rozšíření. 
-* Když je spuštěný skript, zobrazí se pouze "přenos" stav rozšíření z webu Azure portal nebo rozhraní příkazového řádku. Pokud chcete častější aktualizace stavu spuštění skriptu, bude nutné vytvořit svoje vlastní řešení.
-* Rozšíření vlastních skriptů nativně nepodporuje proxy servery, ale můžete použít nástroj pro přenos souborů, která podporuje proxy servery v rámci skriptu, jako například *Curl* 
-* Mějte na jiné než výchozí umístění adresáře, které skripty nebo příkazy může záviset na, mají logiku pro tuto situaci.
 
+* Nejvyšší chybovost pro toto rozšíření je z důvodu chyby syntaxe v skriptu testu, které skript se spustí bez chyb, a také vložit další protokolování do skriptu, aby bylo snazší najít, kde se nezdařilo.
+* Psát skripty, které jsou idempotentní. Tím se zajistí, že pokud spusťte znovu omylem, nesmí způsobit změny systému.
+* Zajistěte, aby skripty za běhu nevyžadovaly uživatelský vstup.
+* Skript může běžet maximálně 90 minut. Pokud poběží déle, způsobí to selhání zřizování rozšíření.
+* Nepoužívejte ve skriptu restartování, protože tato akce způsobí problémy s dalšími instalovanými rozšířeními. Instalace rozšíření po restartování nebude pokračovat.
+* Pokud máte skript, který bude dojít k restartování, instalace aplikací a spouštět skripty, můžete naplánovat restartování pomocí naplánované úlohy Windows nebo pomocí nástrojů, jako je DSC, Chef nebo Puppet rozšíření.
+* Rozšíření spustí skript pouze jednou. Pokud chcete spustit skript při každém spuštění, musíte pomocí rozšíření vytvořit naplánovanou úlohu Windows.
+* Pokud chcete naplánovat, kdy se skript spustí, měli byste pomocí rozšíření vytvořit naplánovanou úlohu Windows.
+* Když je skript spuštěný, na webu Azure Portal nebo v rozhraní příkazového řádku se rozšíření zobrazí pouze v přechodném stavu. Pokud chcete častější aktualizace stavu spuštěného skriptu, budete si muset vytvořit vlastní řešení.
+* Rozšíření vlastních skriptů nativně nepodporuje proxy servery, ale můžete použít nástroj pro přenos souborů, která podporuje proxy servery v rámci skriptu, jako například *Curl*
+* Udržujte si přehled o jiných než výchozích umístěních adresářů, na kterých můžou vaše skripty nebo příkazy záviset, a zajistěte si logiku pro řešení takové situace.
 
 ## <a name="extension-schema"></a>Schéma rozšíření
 
-Konfiguraci rozšíření vlastních skriptů určuje věci, jako je umístění skriptu a příkazu ke spuštění. Uložit tuto konfiguraci v konfiguračních souborech, zadejte na příkazovém řádku nebo ho zadat v šabloně Azure Resource Manageru. 
+Konfiguraci rozšíření vlastních skriptů určuje věci, jako je umístění skriptu a příkazu ke spuštění. Uložit tuto konfiguraci v konfiguračních souborech, zadejte na příkazovém řádku nebo ho zadat v šabloně Azure Resource Manageru.
 
 Ukládat citlivá data v chráněném konfigurace, který je šifrovaný a dešifrovat jenom uvnitř virtuálního počítače. Chráněné konfigurace je užitečná při provádění příkazu zahrnuje tajné kódy jako jsou hesla.
 
@@ -103,7 +96,9 @@ Tyto položky by měly považovat za citlivá data a zadaný v konfiguraci chrá
     }
 }
 ```
-**Poznámka:** – pouze jednu verzi rozšíření lze nainstalovat na virtuálním počítači v bodě v čase, zadání vlastní skript dvakrát ve stejné šablony Resource Manageru pro stejný virtuální počítač se nezdaří. 
+
+> [!NOTE]
+> Pouze jednu verzi rozšíření lze nainstalovat na virtuálním počítači v bodě v čase, zadání vlastní skript dvakrát v šabloně Resource Manageru pro stejný virtuální počítač selže.
 
 ### <a name="property-values"></a>Hodnoty vlastností
 
@@ -123,13 +118,15 @@ Tyto položky by měly považovat za citlivá data a zadaný v konfiguraci chrá
 >Tyto názvy vlastností rozlišují malá a velká písmena. Aby se zabránilo problémů s nasazením, použijte názvy, jak je znázorněno zde.
 
 #### <a name="property-value-details"></a>Podrobnosti o hodnotě vlastnosti
+
 * `commandToExecute`: (**požadované**, string) skript vstupního bodu ke spuštění. Místo toho použijte toto pole, pokud váš příkaz obsahuje tajné kódy jako jsou hesla, nebo vaše fileUris citlivé.
-  * `fileUris`: (volitelné, pole řetězců) adresy URL pro soubory ke stažení.
-  * `timestamp` (volitelné, 32bitové celé číslo), použijte toto pole pouze pro aktivaci opětovné spuštění skriptu, tak, že změníte hodnotu tohoto pole.  Libovolné celé číslo je přijatelné; musí být pouze jiný než předchozí hodnota.
-  * `storageAccountName`: (volitelné, string) název účtu úložiště. Pokud zadáte přihlašovací údaje úložiště všechny `fileUris` musí být adresy URL pro objekty BLOB Azure.
-  * `storageAccountKey`: (volitelné, string) přístupový klíč účtu úložiště
+* `fileUris`: (volitelné, pole řetězců) adresy URL pro soubory ke stažení.
+* `timestamp` (volitelné, 32bitové celé číslo), použijte toto pole pouze pro aktivaci opětovné spuštění skriptu, tak, že změníte hodnotu tohoto pole.  Libovolné celé číslo je přijatelné; musí být pouze jiný než předchozí hodnota.
+* `storageAccountName`: (volitelné, string) název účtu úložiště. Pokud zadáte přihlašovací údaje úložiště všechny `fileUris` musí být adresy URL pro objekty BLOB Azure.
+* `storageAccountKey`: (volitelné, string) přístupový klíč účtu úložiště
 
 Následující hodnoty lze nastavit v nastavení veřejná nebo chráněná, rozšíření odmítnou jakékoli konfigurace, ve kterém níže uvedené hodnoty se nastavují v nastavení veřejné a chráněné.
+
 * `commandToExecute`
 
 Pomocí veřejného nastavení může být užitečné pro ladění, ale doporučuje se, že používáte chráněná nastavení pro.
@@ -138,73 +135,107 @@ Nastavení veřejné odesílají ve formátu prostého textu do virtuálních po
 
 ## <a name="template-deployment"></a>Nasazení šablon
 
-Rozšíření virtuálního počítače Azure je možné nasadit s využitím šablon Azure Resource Manageru. Schéma JSON, který je podrobněji popsán v předchozí části lze použít v šabloně Azure Resource Manageru pro spuštění pomocí rozšíření vlastních skriptů při nasazení šablony Azure Resource Manageru. Následující ukázky ukazují, jak použít rozšíření vlastních skriptů:
+Rozšíření virtuálního počítače Azure je možné nasadit s využitím šablon Azure Resource Manageru. Schéma JSON, který je podrobněji popsán v předchozí části lze použít v šabloně Azure Resource Manageru pro spuštění pomocí rozšíření vlastních skriptů při nasazení. Následující ukázky ukazují, jak použít rozšíření vlastních skriptů:
 
 * [Kurz: Nasazení rozšíření virtuálních počítačů pomocí šablon Azure Resource Manageru](../../azure-resource-manager/resource-manager-tutorial-deploy-vm-extensions.md)
 * [Nasaďte dvě vrstvy aplikace na Windows a Azure SQL DB](https://github.com/Microsoft/dotnet-core-sample-templates/tree/master/dotnet-core-music-windows)
 
 ## <a name="powershell-deployment"></a>Nasazení pomocí Powershellu
 
-`Set-AzVMCustomScriptExtension` Příkaz je možné přidat do existujícího virtuálního počítače rozšíření vlastních skriptů. Další informace najdete v tématu [Set-AzVMCustomScriptExtension](https://docs.microsoft.com/powershell/module/az.compute/set-azvmcustomscriptextension).
+`Set-AzVMCustomScriptExtension` Příkaz je možné přidat do existujícího virtuálního počítače rozšíření vlastních skriptů. Další informace najdete v tématu [Set-AzVMCustomScriptExtension](/powershell/module/az.compute/set-azvmcustomscriptextension).
 
 ```powershell
-Set-AzVMCustomScriptExtension -ResourceGroupName myResourceGroup `
-    -VMName myVM `
+Set-AzVMCustomScriptExtension -ResourceGroupName <resourceGroupName> `
+    -VMName <vmName> `
     -Location myLocation `
-    -FileUri myURL `
+    -FileUri <fileUrl> `
     -Run 'myScript.ps1' `
     -Name DemoScriptExtension
 ```
-## <a name="further-examples"></a>Další příklady
 
-### <a name="using-multiple-script"></a>Použití více skriptu
-V tomto příkladu máte tři skripty, které se používají k vytvoření serveru, volání "commandToExecute", první skript, budete mít možnosti, jak se nazývají ostatní, například můžete mít hlavní skript, který určuje provádění s chybou vpravo zpracování, protokolování a správu stavu.
+## <a name="additional-examples"></a>Další příklady
+
+### <a name="using-multiple-scripts"></a>Používat několik skriptů
+
+V tomto příkladu máte tři skripty, které se používají k vytvoření vašeho serveru. **CommandToExecute** volá první skript, pak máte možnosti, jak ostatní jsou volány. Například můžete mít hlavní skript, který řídí zpracování, zpracování chyb správné, protokolování a správu stavu. Skripty se stáhnou do místního počítače ke spuštění. Například v `1_Add_Tools.ps1` by volat `2_Add_Features.ps1` přidáním `.\2_Add_Features.ps1` pro skript a opakujte tento proces pro jiné skripty definujete v `$settings`.
 
 ```powershell
-
 $fileUri = @("https://xxxxxxx.blob.core.windows.net/buildServer1/1_Add_Tools.ps1",
 "https://xxxxxxx.blob.core.windows.net/buildServer1/2_Add_Features.ps1",
 "https://xxxxxxx.blob.core.windows.net/buildServer1/3_CompleteInstall.ps1")
 
-$Settings = @{"fileUris" = $fileUri};
+$settings = @{"fileUris" = $fileUri};
 
-$storageaccname = "xxxxxxx"
-$storagekey = "1234ABCD"
-$ProtectedSettings = @{"storageAccountName" = $storageaccname; "storageAccountKey" = $storagekey; "commandToExecute" = "powershell -ExecutionPolicy Unrestricted -File 1_Add_Tools.ps1"};
+$storageAcctName = "xxxxxxx"
+$storageKey = "1234ABCD"
+$protectedSettings = @{"storageAccountName" = $storageAcctName; "storageAccountKey" = $storageKey; "commandToExecute" = "powershell -ExecutionPolicy Unrestricted -File 1_Add_Tools.ps1"};
 
 #run command
-Set-AzVMExtension -ResourceGroupName myRG `
-    -Location myLocation ` 
-    -VMName myVM ` 
-    -Name "buildserver1" ` 
-    -Publisher "Microsoft.Compute" ` 
-    -ExtensionType "CustomScriptExtension" ` 
-    -TypeHandlerVersion "1.9" ` 
-    -Settings $Settings ` 
-    -ProtectedSettings $ProtectedSettings `
+Set-AzVMExtension -ResourceGroupName <resourceGroupName> `
+    -Location <locationName> `
+    -VMName <vmName> `
+    -Name "buildserver1" `
+    -Publisher "Microsoft.Compute" `
+    -ExtensionType "CustomScriptExtension" `
+    -TypeHandlerVersion "1.9" `
+    -Settings $settings    `
+    -ProtectedSettings $protectedSettings `
 ```
 
 ### <a name="running-scripts-from-a-local-share"></a>Spouštění skriptů z místní sdílené složky
-V tomto příkladu můžete chtít použít místní server protokolu SMB pro umístění vašeho skriptu mějte na paměti, není nutné předat další nastavení, v jiném, s výjimkou *commandToExecute*.
+
+V tomto příkladu můžete chtít použít místní server protokolu SMB pro umístění vašeho skriptu. Tímto způsobem, není potřeba zadávat žádné další nastavení, s výjimkou **commandToExecute**.
 
 ```powershell
-$ProtectedSettings = @{"commandToExecute" = "powershell -ExecutionPolicy Unrestricted -File \\filesvr\build\serverUpdate1.ps1"};
- 
-Set-AzVMExtension -ResourceGroupName myRG 
-    -Location myLocation ` 
-    -VMName myVM ` 
-    -Name "serverUpdate" 
+$protectedSettings = @{"commandToExecute" = "powershell -ExecutionPolicy Unrestricted -File \\filesvr\build\serverUpdate1.ps1"};
+
+Set-AzVMExtension -ResourceGroupName <resourceGroupName> `
+    -Location <locationName> `
+    -VMName <vmName> `
+    -Name "serverUpdate"
     -Publisher "Microsoft.Compute" `
-    -ExtensionType "CustomScriptExtension" ` 
+    -ExtensionType "CustomScriptExtension" `
     -TypeHandlerVersion "1.9" `
-    -ProtectedSettings $ProtectedSettings
+    -ProtectedSettings $protectedSettings
 
 ```
 
 ### <a name="how-to-run-custom-script-more-than-once-with-cli"></a>Jak spustit vlastní skript více než jednou pomocí rozhraní příkazového řádku
+
 Pokud chcete spustit více než jednou rozšíření vlastních skriptů, lze provést pouze tuto akci za těchto podmínek:
-1. Parametr "Name" rozšíření je stejný jako předchozí nasazení rozšíření.
-2. Je nutné aktualizovat jinak konfigurace nebude znovu spustit příkaz. Můžete přidat v dynamických vlastností do příkazu, jako je časové razítko.
+
+* Rozšíření **název** parametru je stejný jako předchozí nasazení rozšíření.
+* Aktualizace jinak konfigurace nebude znovu spustit příkaz. Můžete přidat v dynamických vlastností do příkazu, jako je časové razítko.
+
+## <a name="classic-vms"></a>Klasické virtuální počítače
+
+Pokud chcete nasadit rozšíření vlastních skriptů na klasické virtuální počítače, můžete na webu Azure portal nebo rutin Classic Azure PowerShell.
+
+### <a name="azure-portal"></a>portál Azure
+
+Přejděte do prostředku klasický virtuální počítač. Vyberte **rozšíření** pod **nastavení**.
+
+Klikněte na tlačítko **+ přidat** a v seznamu prostředků vyberte **rozšíření vlastních skriptů**.
+
+Na **nainstalovat rozšíření** stránky, vyberte místní soubor prostředí PowerShell a vyplňte všechny argumenty a klikněte na tlačítko **Ok**.
+
+### <a name="powershell"></a>PowerShell
+
+Použití [Set-AzureVMCustomScriptExtension](/powershell/module/servicemanagement/azure/set-azurevmcustomscriptextension) rutinu je možné přidat do existujícího virtuálního počítače rozšíření vlastních skriptů.
+
+```powershell
+# define your file URI
+$fileUri = 'https://xxxxxxx.blob.core.windows.net/scripts/Create-File.ps1'
+
+# create vm object
+$vm = Get-AzureVM -Name <vmName> -ServiceName <cloudServiceName>
+
+# set extension
+Set-AzureVMCustomScriptExtension -VM $vm -FileUri $fileUri -Run 'Create-File.ps1'
+
+# update vm
+$vm | Update-AzureVM
+```
 
 ## <a name="troubleshoot-and-support"></a>Řešení potíží a podpora
 
@@ -213,37 +244,41 @@ Pokud chcete spustit více než jednou rozšíření vlastních skriptů, lze pr
 Data o stavu nasazení rozšíření se dají načíst z portálu Azure portal a pomocí modulu Azure PowerShell. Pokud chcete zobrazit stav nasazení rozšíření pro daný virtuální počítač, spusťte následující příkaz:
 
 ```powershell
-Get-AzVMExtension -ResourceGroupName myResourceGroup -VMName myVM -Name myExtensionName
+Get-AzVMExtension -ResourceGroupName <resourceGroupName> -VMName <vmName> -Name myExtensionName
 ```
 
-Rozšíření provádění výstup je zaznamenán soubory nalezené v následujícím adresáři na cílovém virtuálním počítači.
+Rozšíření výstup je zaznamenán soubory nalezené v následující složce na cílovém virtuálním počítači.
+
 ```cmd
 C:\WindowsAzure\Logs\Plugins\Microsoft.Compute.CustomScriptExtension
 ```
 
-Zadané soubory se stáhnou do následující složky v cílovém virtuálním počítači.
+Zadané soubory se stáhnou do následující složky na cílovém virtuálním počítači.
+
 ```cmd
 C:\Packages\Plugins\Microsoft.Compute.CustomScriptExtension\1.*\Downloads\<n>
 ```
+
 kde `<n>` je desítkové celé číslo, které mohou změnit mezi spuštěními rozšíření.  `1.*` Hodnota odpovídá aktuálnímu skutečnou `typeHandlerVersion` hodnotu rozšíření.  Například může být skutečného adresáře `C:\Packages\Plugins\Microsoft.Compute.CustomScriptExtension\1.8\Downloads\2`.  
 
 Při provádění `commandToExecute` příkazu rozšíření nastaví tento adresář (třeba `...\Downloads\2`) jako aktuální pracovní adresář. Tento proces umožňuje použít relativní cesty pro vyhledání souborů prostřednictvím `fileURIs` vlastnost. Najdete v následující tabulce příklady.
 
 Cesta pro stažení absolutní může lišit v čase, je lepší zvolit cesty relativní skript v `commandToExecute` string, kdykoli je to možné. Příklad:
+
 ```json
-    "commandToExecute": "powershell.exe . . . -File \"./scripts/myscript.ps1\""
+"commandToExecute": "powershell.exe . . . -File \"./scripts/myscript.ps1\""
 ```
 
-Informace o cestě po první segment identifikátoru URI je zachován z důvodu soubory stahované prostřednictvím `fileUris` seznam vlastností.  Jak je znázorněno v následující tabulce, stahované soubory jsou mapovány na stažení podadresáře tak, aby odrážely struktury `fileUris` hodnoty.  
+Informace o cestě po první segment identifikátoru URI je uchovávat soubory stahované prostřednictvím `fileUris` seznam vlastností.  Jak je znázorněno v následující tabulce, stahované soubory jsou mapovány na stažení podadresáře tak, aby odrážely struktury `fileUris` hodnoty.  
 
 #### <a name="examples-of-downloaded-files"></a>Příklady stažené soubory
 
-| Identifikátor URI v fileUris | Relativní umístění | Stáhnout absolutní umístění * |
+| Identifikátor URI v fileUris | Relativní umístění | Stáhnout absolutní umístění <sup>1</sup> |
 | ---- | ------- |:--- |
 | `https://someAcct.blob.core.windows.net/aContainer/scripts/myscript.ps1` | `./scripts/myscript.ps1` |`C:\Packages\Plugins\Microsoft.Compute.CustomScriptExtension\1.8\Downloads\2\scripts\myscript.ps1`  |
 | `https://someAcct.blob.core.windows.net/aContainer/topLevel.ps1` | `./topLevel.ps1` | `C:\Packages\Plugins\Microsoft.Compute.CustomScriptExtension\1.8\Downloads\2\topLevel.ps1` |
 
-\* Jako výše, absolutní adresář cesty změnit během životního cyklu virtuálního počítače, ale ne v rámci jednoho spuštění rozšíření customscript by.
+<sup>1</sup> absolutní adresář cesty změnit během životního cyklu virtuálního počítače, ale ne v rámci jednoho spuštění rozšíření customscript by.
 
 ### <a name="support"></a>Podpora
 

@@ -12,12 +12,12 @@ ms.date: 12/14/2017
 ms.author: glenga
 ms.reviewer: sunayv
 ms.custom: ''
-ms.openlocfilehash: 49000d4fd61e7cd061b415d50545a7f5ee56f3fb
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
-ms.translationtype: MT
+ms.openlocfilehash: afb97c1c14422f15a3fc2c00b2101c4a36675556
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45579119"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60002475"
 ---
 # <a name="call-a-function-from-powerapps"></a>Volání funkce z PowerApps
 [PowerApps](https://powerapps.microsoft.com) platformy je určená pro obchodní specialisty k vytváření aplikací bez kódu pro tradiční aplikace. Profesionální vývojáři mohou pomocí Azure Functions rozšířit možnosti PowerApps, při stínění tvůrci aplikace PowerApps z technické podrobnosti.
@@ -38,6 +38,9 @@ V tomto tématu se dozvíte, jak:
 > * Přidání ovládacích prvků pro zobrazení dat v aplikaci.
 > * Přidání ovládacích prvků pro volání funkce a zobrazovat data.
 > * Spuštění aplikace k určení, zda na opravy je nákladově efektivní.
+
+> [!IMPORTANT]
+> OpenAPI funkce je aktuálně ve verzi preview a je dostupná jenom pro verzi 1.x modulu runtime Azure Functions.
 
 ## <a name="prerequisites"></a>Požadavky
 

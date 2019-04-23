@@ -1,6 +1,6 @@
 ---
 title: Azure SQL Database – čtení dotazy na replikách | Dokumentace Microsoftu
-description: Azure SQL Database poskytuje možnost zatížení vyrovnávat jen pro čtení úlohy s využitím kapacity repliky jen pro čtení – volá horizontální navýšení kapacity pro čtení.
+description: Azure SQL Database umožňuje Vyrovnávání zatížení jen pro čtení úlohy s využitím kapacity repliky jen pro čtení – volá horizontální navýšení kapacity pro čtení.
 services: sql-database
 ms.service: sql-database
 ms.subservice: scale-out
@@ -11,39 +11,36 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: sstein, carlrab
 manager: craigg
-ms.date: 03/28/2019
-ms.openlocfilehash: d9ad859ef24b51dc337dc23281d2fe4e1eada1e6
-ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
-ms.translationtype: MT
+ms.date: 04/19/2019
+ms.openlocfilehash: cbcdcfd151951334246a4e85d9f521a15bb6269d
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58619887"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60006144"
 ---
-# <a name="use-read-only-replicas-to-load-balance-read-only-query-workloads"></a>Načtení vyrovnávat zatížení dotazu jen pro čtení pomocí repliky jen pro čtení
+# <a name="use-read-only-replicas-to-load-balance-read-only-query-workloads"></a>Použít repliky jen pro čtení pro úlohy dotazu jen pro čtení – nástroj pro vyrovnávání zatížení
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 > [!IMPORTANT]
 > Modul Azure PowerShell – Resource Manager je stále podporuje Azure SQL Database, ale všechny budoucí vývoj je Az.Sql modulu. Tyto rutiny najdete v části [AzureRM.Sql](https://docs.microsoft.com/powershell/module/AzureRM.Sql/). Argumenty pro příkazy v modulu Az a moduly AzureRm podstatně totožné.
 
-**Horizontální navýšení kapacity pro čtení** vám umožní načíst jen pro čtení úlohy serveru zůstatek Azure SQL Database pomocí kapacita jednu repliku pouze pro čtení.
+Jako součást [architektura pro vysokou dostupnost](./sql-database-high-availability.md#premium-and-business-critical-service-tier-availability), každá databáze v rámci úrovně služeb Premium, pro důležité obchodní informace nebo velkokapacitní je automaticky zřízena primární repliku a několika sekundárních replik. Sekundární repliky se zřizují se stejnou velikostí výpočetních jako primární repliku. **Horizontální navýšení kapacity pro čtení** funkce umožňuje Vyrovnávání zatížení SQL jen pro čtení na zatížení databáze využití kapacity o jednu z replik jen pro čtení místo sdílení repliky pro čtení i zápis. Tímto způsobem úlohy jen pro čtení budou z hlavní úlohy čtení a zápis izolovaných a nebude mít vliv na jeho výkon. Tato funkce je určena pro aplikace, které zahrnují logicky oddělené úlohy jen pro čtení, jako jsou třeba analýzy. Získají může zvýšit efektivitu tuto dodatečnou kapacitu bez dalších poplatků.
 
-Každá databáze na úrovni Premium ([nákupní model založený na DTU](sql-database-service-tiers-dtu.md)) nebo na úrovni pro důležité obchodní informace ([nákupní model založený na virtuálních jádrech](sql-database-service-tiers-vcore.md)) je automaticky zřízena několik replik AlwaysON Podpora smlouva SLA o dostupnosti. To je znázorněno v následujícím diagramu.
+Následující diagram znázorňuje pomocí databázi pro důležité obchodní informace.
 
 ![Repliky jen pro čtení](media/sql-database-read-scale-out/business-critical-service-tier-read-scale-out.png)
 
-Sekundární repliky se zřizují se stejnou velikostí výpočetních jako primární repliku. **Horizontální navýšení kapacity pro čtení** funkce vám umožní načíst zůstatek SQL jen pro čtení na zatížení databáze využití kapacity o jednu z replik jen pro čtení místo sdílení repliky pro čtení i zápis. Tímto způsobem úlohy jen pro čtení budou z hlavní úlohy čtení a zápis izolovaných a nebude mít vliv na jeho výkon. Tato funkce je určená pro aplikace, které zahrnují logicky oddělené úlohy jen pro čtení, jako jsou třeba analýzy a proto by mohl získat zvýšit efektivitu tuto dodatečnou kapacitu bez dalších poplatků.
+Ve výchozím nastavení na nové úrovně Premium, pro důležité obchodní informace a velkokapacitní databáze je povolena funkce škálování pro čtení. Pokud je nakonfigurované připojovací řetězec SQL `ApplicationIntent=ReadOnly`, aplikace bude přesměrován prostřednictvím brány do repliky jen pro čtení této databáze. Informace o tom, jak používat `ApplicationIntent` vlastnost, naleznete v tématu [zadání záměru aplikace](https://docs.microsoft.com/sql/relational-databases/native-client/features/sql-server-native-client-support-for-high-availability-disaster-recovery#specifying-application-intent).
 
-Použít funkci škálování pro čtení s danou databází, musíte výslovně povolit ho při vytváření databáze nebo později změnou jeho konfigurace přes PowerShell voláním [Set-AzSqlDatabase](/powershell/module/az.sql/set-azsqldatabase) nebo [New-AzSqlDatabase](/powershell/module/az.sql/new-azsqldatabase) rutiny nebo pomocí rozhraní REST API Azure Resource Manageru [databází – vytvořit nebo aktualizovat](https://docs.microsoft.com/rest/api/sql/databases/createorupdate) metoda.
-
-Po povolení horizontální navýšení kapacity pro čtení pro databázi aplikace připojení k databázi, budete přesměrováni bránou repliky pro čtení a zápis nebo jen pro čtení replik databáze podle `ApplicationIntent` vlastnost gurovaný připojovací řetězec vaší aplikace. Informace o tom, `ApplicationIntent` vlastnost, naleznete v tématu [zadání záměru aplikace](https://docs.microsoft.com/sql/relational-databases/native-client/features/sql-server-native-client-support-for-high-availability-disaster-recovery#specifying-application-intent).
-
-Pokud je zakázán horizontální navýšení kapacity pro čtení nebo nastavte vlastnost ReadScale v vrstvu Nepodporovaná služba, všechna připojení jsou směrované na repliky pro čtení i zápis, nezávisle `ApplicationIntent` vlastnost.
+Pokud chcete zajistit, že aplikace se připojí k primární replice, bez ohledu na to `ApplicationIntent` nastavení připojovacího řetězce SQL, je nutné explicitně zakázat čtení Škálováním při vytváření databáze nebo při změně jeho konfiguraci. Například pokud databázi upgradovat z úrovně Standard nebo obecné účely na úroveň Premium, pro důležité obchodní informace nebo Velkokapacitní a ujistěte se, že všechna připojení dále přejděte k primární replice, zakažte horizontální navýšení kapacity pro čtení. Podrobnosti o tom, jak zakázat najdete v tématu [povolit a zakázat horizontální navýšení kapacity pro čtení](#enable-and-disable-read-scale-out).
 
 > [!NOTE]
 > Dotaz Data Store, rozšířených událostí, SQL Profiler a auditu funkce nejsou podporovány u replik jen pro čtení. 
+
 ## <a name="data-consistency"></a>Konzistence dat
 
-Jednou z výhod repliky je, že tyto repliky jsou vždy transakčně konzistentní stav, ale v různých okamžicích v době může některé malé latence mezi existovat různých replik. Horizontální navýšení kapacity pro čtení podporuje relace úrovně konzistence. Znamená to, pokud relace jen pro čtení obnoví po připojení chyby způsobené nedostupnost repliky, je možné přesměrovat do repliky, který není 100 % naskočíte repliky pro čtení i zápis. Podobně pokud aplikace zapíše data pomocí relace pro čtení i zápis a okamžitě přečte pomocí relaci jen pro čtení, je možné, že nejnovější aktualizace nejsou okamžitě viditelné v replice. Latence je způsobené operací asynchronní transakce protokolu znovu.
+Jednou z výhod repliky je, že tyto repliky jsou vždy transakčně konzistentní stav, ale v různých okamžicích v době může některé malé latence mezi existovat různých replik. Horizontální navýšení kapacity pro čtení podporuje relace úrovně konzistence. Znamená to, pokud relace jen pro čtení obnoví po připojení chyby způsobené nedostupnost repliky, může být přesměrován na repliky, který není 100 % naskočíte repliky pro čtení i zápis. Podobně pokud aplikace zapíše data pomocí relace pro čtení i zápis a okamžitě přečte pomocí relaci jen pro čtení, je možné, že nejnovější aktualizace nejsou okamžitě viditelné v replice. Latence je způsobené operací asynchronní transakce protokolu znovu.
 
 > [!NOTE]
 > Jsou nízké latence replikace v rámci oblasti a tato situace není obvyklé.
@@ -87,35 +84,43 @@ Při připojení k replice jen pro čtení, můžete přistupovat pomocí metrik
 
 ## <a name="enable-and-disable-read-scale-out"></a>Povolení a zákaz horizontální navýšení kapacity pro čtení
 
-Ve výchozím nastavení v je povolené horizontální navýšení kapacity pro čtení [Managed Instance](sql-database-managed-instance.md) úroveň pro důležité obchodní informace. By měla být explicitně povolená v [databáze umístěna na serveru služby SQL Database](sql-database-servers.md) úrovně Premium a pro důležité obchodní informace. Metody pro povolení a zakázání horizontální navýšení kapacity pro čtení je zde popsáno.
+Horizontální navýšení kapacity pro čtení je ve výchozím nastavení úrovně služeb Premium, pro důležité obchodní informace a velkokapacitní povolená. Horizontální navýšení kapacity pro čtení nelze povolit v úrovních služeb Basic, Standard nebo obecné účely. Horizontální navýšení kapacity pro čtení je v Hyperškálovacím databází nakonfigurovaných v 0 repliky automaticky zakázána. 
 
-### <a name="powershell-enable-and-disable-read-scale-out"></a>PowerShell: Povolení a zákaz horizontální navýšení kapacity pro čtení
+Můžete zakázat a znovu povolit škálování čtení na izolované databáze a elastický fond databází Premium nebo pro důležité obchodní informace vrstvy služeb pomocí následujících metod.
+
+> [!NOTE]
+> Zakázat horizontální navýšení kapacity pro čtení je k dispozici z důvodu zpětné kompatibility.
+
+### <a name="azure-portal"></a>portál Azure
+
+Můžete spravovat nastavení Sacle navýšením kapacity pro čtení na **konfigurovat** databázové okno. 
+
+### <a name="powershell"></a>PowerShell
 
 Správa Škálováním pro čtení v prostředí Azure PowerShell vyžaduje prosince 2016 prostředí Azure PowerShell verze nebo novější. Nejnovější verze prostředí PowerShell najdete v části [prostředí Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-az-ps).
 
-Povolení nebo zakázání čtení horizontální navýšení kapacity v prostředí Azure PowerShell vyvoláním [Set-AzSqlDatabase](/powershell/module/az.sql/set-azsqldatabase) rutiny a předejte hodnotu požadovaného – `Enabled` nebo `Disabled` --pro `-ReadScale` parametr. Alternativně můžete použít [New-AzSqlDatabase](/powershell/module/az.sql/new-azsqldatabase) rutina pro vytvoření nové databáze s čtení horizontální navýšení kapacity povolena.
+Můžete zakázat nebo znovu povolit čtení Scale-Out v prostředí Azure PowerShell vyvoláním [Set-AzSqlDatabase](/powershell/module/az.sql/set-azsqldatabase) rutiny a předejte hodnotu požadovaného – `Enabled` nebo `Disabled` --pro `-ReadScale` parametr. 
 
-Například chcete povolit číst horizontální navýšení kapacity pro existující databáze (položky v lomených závorkách nahraďte správné hodnoty pro vaše prostředí a vyřadit ostrých závorek):
+Chcete-li zakázat čtení horizontální navýšení kapacity na existující databázi (položky v lomených závorkách nahraďte správné hodnoty pro vaše prostředí a vyřadit ostrých závorek):
+
+```powershell
+Set-AzSqlDatabase -ResourceGroupName <myresourcegroup> -ServerName <myserver> -DatabaseName <mydatabase> -ReadScale Disabled
+```
+Chcete-li zakázat čtení horizontální navýšení kapacity na novou databázi (položky v lomených závorkách nahraďte správné hodnoty pro vaše prostředí a vyřadit ostrých závorek):
+
+```powershell
+New-AzSqlDatabase -ResourceGroupName <myresourcegroup> -ServerName <myserver> -DatabaseName <mydatabase> -ReadScale Disabled -Edition Premium
+```
+
+Chcete-li znovu povolit čtení horizontální navýšení kapacity na existující databázi (položky v lomených závorkách nahraďte správné hodnoty pro vaše prostředí a vyřadit ostrých závorek):
 
 ```powershell
 Set-AzSqlDatabase -ResourceGroupName <myresourcegroup> -ServerName <myserver> -DatabaseName <mydatabase> -ReadScale Enabled
 ```
 
-Chcete-li zakázat čtení horizontální navýšení kapacity pro existující databázi (položky v lomených závorkách nahraďte správné hodnoty pro vaše prostředí a vyřadit ostrých závorek):
+### <a name="rest-api"></a>REST API
 
-```powershell
-Set-AzSqlDatabase -ResourceGroupName <myresourcegroup> -ServerName <myserver> -DatabaseName <mydatabase> -ReadScale Disabled
-```
-
-Chcete-li vytvořit novou databázi s čtení horizontální navýšení kapacity povolena (položky v lomených závorkách nahraďte správné hodnoty pro vaše prostředí a vyřadit ostrých závorek):
-
-```powershell
-New-AzSqlDatabase -ResourceGroupName <myresourcegroup> -ServerName <myserver> -DatabaseName <mydatabase> -ReadScale Enabled -Edition Premium
-```
-
-### <a name="rest-api-enable-and-disable-read-scale-out"></a>REST API: Povolení a zákaz horizontální navýšení kapacity pro čtení
-
-K vytvoření databáze s čtení horizontální navýšení kapacity povolena, nebo k povolení nebo zakázání čtení horizontální navýšení kapacity pro existující databázi, vytvořit nebo aktualizovat odpovídající entita databáze s `readScale` nastavenou na `Enabled` nebo `Disabled` stejně jako v následující ukázky požadavek.
+K vytvoření databáze s čtení horizontální navýšení kapacity zakázán, nebo chcete-li změnit nastavení pro existující databázi, použijte metodu s `readScale` vlastnost nastavena na hodnotu `Enabled` nebo `Disabled` stejně jako v následující ukázkový požadavek.
 
 ```rest
 Method: PUT
@@ -124,7 +129,7 @@ Body:
 {
    "properties":
    {
-      "readScale":"Enabled"
+      "readScale":"Disabled"
    }
 }
 ```
@@ -137,12 +142,11 @@ Databáze TempDB nejsou replikována do repliky jen pro čtení. Každá replika
 
 ## <a name="using-read-scale-out-with-geo-replicated-databases"></a>Horizontální navýšení kapacity pro čtení pomocí geograficky replikované databáze
 
-Pokud používáte další horizontální navýšení kapacity načíst vyrovnávat zatížení jen pro čtení na databázi, která je geograficky replikovaný (například jako člen skupiny převzetí služeb při selhání), ujistěte se, že pro čtení pro primární a geograficky replikovanou sekundární databází je povolené horizontální navýšení kapacity. Tato konfigurace zajistí, že pokud vaše aplikace připojuje k nové primární po převzetí služeb při selhání bude pokračovat stejné prostředí vyrovnávání zatížení. Pokud se chcete připojit do geograficky replikované sekundární databáze se Škálováním pro čtení povolené, vaše relace `ApplicationIntent=ReadOnly` se budou směrovat na jednu z replik stejným způsobem můžeme směrovat připojení na primární databázi.  Relace bez `ApplicationIntent=ReadOnly` se budou směrovat na primární repliku geograficky replikované sekundární, což je také jen pro čtení. Protože geograficky replikované sekundární databáze má jiný koncový bod než primární databázi, v minulosti pro přístup k sekundární ho nebyl vyžadují `ApplicationIntent=ReadOnly`. K zajištění zpětné kompatibility `sys.geo_replication_links` zobrazení dynamické správy ukazuje `secondary_allow_connections=2` (nepovoluje se žádné připojení klienta).
+Pokud používáte škálování čtení na úlohy jen pro čtení – nástroj pro vyrovnávání zatížení v databázi, která je geograficky replikovaný (například jako člen skupiny převzetí služeb při selhání), ujistěte se, že čtení horizontální navýšení kapacity je povolena na primární a geograficky replikované sekundární databáze. Tato konfigurace zajistí, že pokud vaše aplikace připojuje k nové primární po převzetí služeb při selhání bude pokračovat stejné prostředí vyrovnávání zatížení. Pokud se chcete připojit do geograficky replikované sekundární databáze se Škálováním pro čtení povolené, vaše relace `ApplicationIntent=ReadOnly` se budou směrovat na jednu z replik stejným způsobem můžeme směrovat připojení na primární databázi.  Relace bez `ApplicationIntent=ReadOnly` se budou směrovat na primární repliku geograficky replikované sekundární, což je také jen pro čtení. Protože geograficky replikované sekundární databáze má koncový bod jiné než primární databázi, v minulosti pro přístup k sekundární ho nebyl vyžadují `ApplicationIntent=ReadOnly`. K zajištění zpětné kompatibility `sys.geo_replication_links` zobrazení dynamické správy ukazuje `secondary_allow_connections=2` (nepovoluje se žádné připojení klienta).
 
 > [!NOTE]
 > Kruhové dotazování nebo jakékoli jiné s vyrovnáváním zatížení směrování mezi místní replik sekundární databáze se nepodporuje.
 
 ## <a name="next-steps"></a>Další postup
 
-- Informace o použití prostředí PowerShell k nastavení čtení horizontální navýšení kapacity najdete v tématu [Set-AzSqlDatabase](/powershell/module/az.sql/set-azsqldatabase) nebo [New-AzSqlDatabase](/powershell/module/az.sql/new-azsqldatabase) rutiny.
-- Informace o nastavení čtení horizontální navýšení kapacity pomocí rozhraní REST API najdete v tématu [databází – vytvořit nebo aktualizovat](https://docs.microsoft.com/rest/api/sql/databases/createorupdate).
+- Informace o nabídce Hyperškálovatelného SQL Database najdete v tématu [úroveň služby Hyperškálovatelného](./sql-database-service-tier-hyperscale.md).

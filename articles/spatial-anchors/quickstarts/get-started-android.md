@@ -8,16 +8,16 @@ ms.author: crtreasu
 ms.date: 02/24/2019
 ms.topic: quickstart
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 8f2a5fdaf2222de7a802e8ff2a1f6fdb37dae4c3
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 003e9beb3a319802754397efae3b636f51de9e52
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57880031"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60234380"
 ---
 # <a name="quickstart-create-an-android-app-with-azure-spatial-anchors"></a>Rychlý start: Vytvoření aplikace pro Android pomocí Azure prostorových kotvy
 
-Tento rychlý Start obsahuje postup pro vytvoření aplikace pro Android s využitím [prostorových kotvy Azure](../overview.md) v jazyce Java nebo C + +/ sada NDK. Azure prostorových kotvy je služba napříč platformami pro vývojáře, která vám umožní vytvořit prostředí hybridní realita s využitím objektů, které se zachovávají jejich umístění na zařízeních v čase. Jakmile budete hotovi, budete mít aplikaci ARCore Android, která můžete uložit a odvolat prostorových ukotvení.
+Tento rychlý Start obsahuje postup pro vytvoření aplikace pro Android s využitím [prostorových kotvy Azure](../overview.md) v obou Java nebo C++/NDK. Azure prostorových kotvy je služba napříč platformami pro vývojáře, která vám umožní vytvořit prostředí hybridní realita s využitím objektů, které se zachovávají jejich umístění na zařízeních v čase. Jakmile budete hotovi, budete mít aplikaci ARCore Android, která můžete uložit a odvolat prostorových ukotvení.
 
 Dozvíte se, jak provést tyto akce:
 
@@ -37,7 +37,7 @@ Abyste mohli absolvovat tento rychlý start, ujistěte se, že máte následují
   - Pokud spuštěný v systému macOS, zajistit správné fungování Gitu instalovaných pomocí instalace HomeBrew. Jako jeden řádek, terminálu zadejte následující příkaz: `/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"`. Potom spusťte `brew install git`.
   - K vytvoření vzorku NDK, budete také muset nainstalovat NDK a CMake 3.6 SDK Tools v nástroji Android Studio.
 - A <a href="https://developer.android.com/studio/debug/dev-options" target="_blank">developer povolené</a> a <a href="https://developers.google.com/ar/discover/supported-devices" target="_blank">ARCore podporující</a> zařízení s Androidem.
-- Aplikace musí cílit na ARCore 1.5 (podpora ARCore 1.6 + budou již brzy)
+- Aplikace musí cílit na ARCore 1.7.
 
 [!INCLUDE [Create Spatial Anchors resource](../../../includes/spatial-anchors-get-started-create-resource.md)]
 
@@ -45,7 +45,7 @@ Abyste mohli absolvovat tento rychlý start, ujistěte se, že máte následují
 
 [!INCLUDE [Clone Sample Repo](../../../includes/spatial-anchors-clone-sample-repository.md)]
 
-Pokud vytváříte ukázkové sady Android NDK, budete muset stáhnout `arcore_c_api.h` z [tady](https://raw.githubusercontent.com/google-ar/arcore-android-sdk/v1.5.0/libraries/include/arcore_c_api.h) a umístit ji `Android\NDK\libraries\include`.
+Pokud vytváříte ukázkové sady Android NDK, budete muset stáhnout `arcore_c_api.h` z [tady](https://raw.githubusercontent.com/google-ar/arcore-android-sdk/v1.7.0/libraries/include/arcore_c_api.h) a umístit ji `Android\NDK\libraries\include`.
 
 Otevřete Android Studio.
 

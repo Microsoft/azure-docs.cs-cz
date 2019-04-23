@@ -10,12 +10,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/31/2019
 ms.author: raynew
-ms.openlocfilehash: 8269cde7c1be5ba5671bafdae850d88c43db27ea
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
-ms.translationtype: MT
+ms.openlocfilehash: d3a2ffdedda7f541fb1a3f37a8b40bc7af3dcb57
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55497923"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59996505"
 ---
 # <a name="install-azure-backup-server-on-azure-stack"></a>Instalace Azure Backup Serveru v Azure Stacku
 
@@ -61,7 +61,7 @@ Pokud sdílené s jinými virtuálními počítači, účet úložiště, veliko
 Každý virtuální počítač Azure Stack je součástí úložiště na dočasném disku, který je k dispozici uživateli jako svazek `D:\`. Místní pracovní oblasti vyžadované nástrojem Azure Backup můžete nakonfigurovat uložená v `D:\`, a umístění mezipaměti můžete umístit na `C:\`. Tímto způsobem je potřeba carved od datových disků připojených k virtuálnímu počítači Azure Backup serveru žádné úložiště.
 
 ### <a name="storing-backup-data-on-local-disk-and-in-azure"></a>Ukládání zálohovaných dat na místním disku a v Azure
-Azure Backup Server ukládá zálohovaná data na disky Azure připojené k virtuálnímu počítači pro obnovení. Jakmile disky a prostoru úložiště jsou připojené k virtuálnímu počítači, Azure Backup Server spravuje úložiště za vás. Úložiště zálohování dat závisí na počtu a velikosti disků připojených ke každému [virtuálním počítači Azure Stack](../azure-stack/user/azure-stack-storage-overview.md). Jednotlivé velikosti virtuálního počítače Azure Stack je maximální počet disků, které lze připojit k virtuálnímu počítači. Například je A2 čtyři disky. A3 je osm disky. A4 je 16 disků. Znovu velikosti a počtu disků, určuje fondu celkový úložiště záloh.
+Azure Backup Server ukládá zálohovaná data na disky Azure připojené k virtuálnímu počítači pro obnovení. Jakmile disky a prostoru úložiště jsou připojené k virtuálnímu počítači, Azure Backup Server spravuje úložiště za vás. Úložiště zálohování dat závisí na počtu a velikosti disků připojených ke každému [virtuálním počítači Azure Stack](/azure-stack/user/azure-stack-storage-overview). Jednotlivé velikosti virtuálního počítače Azure Stack je maximální počet disků, které lze připojit k virtuálnímu počítači. Například je A2 čtyři disky. A3 je osm disky. A4 je 16 disků. Znovu velikosti a počtu disků, určuje fondu celkový úložiště záloh.
 
 > [!IMPORTANT]
 > Měli byste **není** zachovat provozní obnovení (backup) data na disky připojené k Azure Backup Server více než pět dní.
@@ -73,7 +73,7 @@ Pokud chcete ukládat zálohovaná data v Azure, vytvořte nebo použijte trezor
  
 ### <a name="scaling-deployment"></a>Škálování nasazení
 Pokud chcete změnit měřítko nasazení, máte následující možnosti:
-  - Vertikální navýšení kapacity – zvýšíte velikost virtuálního počítače Azure Backup serveru z řady pro řadu D a místní úložiště [podle pokynů virtuálním počítači Azure Stack](../azure-stack/user/azure-stack-manage-vm-disks.md).
+  - Vertikální navýšení kapacity – zvýšíte velikost virtuálního počítače Azure Backup serveru z řady pro řadu D a místní úložiště [podle pokynů virtuálním počítači Azure Stack](/azure-stack/user/azure-stack-manage-vm-disks).
   - Přesměrování zpracování dat – odešlete starší data do Azure a zachovat pouze nejnovější data v úložišti připojeném k serveru Azure Backup.
   - Horizontální navýšení kapacity – přidat další servery pro zálohování Azure k ochraně úloh.
 

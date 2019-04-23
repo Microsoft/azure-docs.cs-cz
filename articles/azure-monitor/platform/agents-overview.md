@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 11/14/2018
 ms.author: magoedte
-ms.openlocfilehash: 8b10cb0d66103410159a09ca156be3ea180c068b
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
-ms.translationtype: MT
+ms.openlocfilehash: 89e73a4578134493a25ec3cbd2385433a2b36156
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58371923"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60003492"
 ---
 # <a name="overview-of-the-azure-monitoring-agents"></a>Přehled služby Azure agentů monitorování 
 Microsoft Azure poskytuje několik způsobů, jak shromažďovat různé typy dat z virtuálních počítačů se systémem Microsoft Windows a Linux hostované v Azure, vaše datové centrum nebo jiných poskytovatelů cloudových služeb. Jsou tři typy agenty, které jsou k dispozici pro monitorování virtuálního počítače:
@@ -70,7 +70,7 @@ Dříve byly spojeny několik služeb Azure jako *Operations Management Suite*, 
 * Služby Azure, jako [Application Insights](https://docs.microsoft.com/azure/application-insights/) a [Azure Security Center](https://docs.microsoft.com/azure/security-center/), která nativně ukládají data přímo do Log Analytics.  
 
 ## <a name="dependency-agent"></a>Agent závislostí
-Agent závislostí vyvinula jako součást řešení Service Map, který byl původně vytvořen externě od Microsoftu. [Řešení Service Map](../insights/service-map.md) a [monitorování Azure pro virtuální počítače](../insights/vminsights-overview.md) vyžaduje, aby Agent závislostí ve Windows a Linuxu virtuálních počítačů a integruje do agenta Log Analytics shromažďuje zjištění dat o procesech spuštěných na virtuální počítače a procesu externí závislosti. Tato data ukládá v pracovním prostoru Log Analytics a vizualizuje zjištěných vzájemně propojených součástí.
+Agent závislostí vyvinula jako součást řešení Service Map, který se původně vyvinutý microsoftem. [Řešení Service Map](../insights/service-map.md) a [monitorování Azure pro virtuální počítače](../insights/vminsights-overview.md) vyžaduje, aby Agent závislostí ve Windows a Linuxu virtuálních počítačů a integruje do agenta Log Analytics ke shromažďování zjištěná data o procesech spuštěných na virtuální počítače a procesu externí závislosti. Tato data ukládá v pracovním prostoru Log Analytics a vizualizuje zjištěných vzájemně propojených součástí.
 
 Možná bude nutné určitou kombinaci těchto agentů monitorování virtuálního počítače. Agenty je možné nainstalovat vedle sebe jako rozšíření Azure, ale v Linuxu, agenta Log Analytics *musí* nainstalovat první, jinak se instalace nezdaří. 
 

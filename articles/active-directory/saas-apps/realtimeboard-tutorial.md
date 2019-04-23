@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: jeedes
-ms.openlocfilehash: fb7302497d4331a9e39c8a3c50393646b663f7d8
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: MT
+ms.openlocfilehash: 81aa38c1c7783c7e0357f8f69f4d4484d26873e9
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59283133"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60006944"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-realtimeboard"></a>Kurz: Integrace Azure Active Directory s RealtimeBoard
 
@@ -131,7 +131,7 @@ Ke konfiguraci Azure AD jednotné přihlašování s RealtimeBoard, proveďte n�
 
 ### <a name="configure-realtimeboard-single-sign-on"></a>Konfigurace RealtimeBoard jednotné přihlašování
 
-Ke konfiguraci jednotného přihlašování na **RealtimeBoard** straně, je nutné odeslat na stažený **kód XML metadat federace** a vhodné zkopírovaný adresy URL z webu Azure portal [RealtimeBoard podpory tým](). Nastavují tohoto nastavení můžete mít správně nastavené na obou stranách připojení SAML SSO.
+Ke konfiguraci jednotného přihlašování na **RealtimeBoard** straně, je nutné odeslat na stažený **kód XML metadat federace** a odpovídající zkopírován adresy URL z webu Azure portal RealtimeBoard týmu podpory. Nastavují tohoto nastavení můžete mít správně nastavené na obou stranách připojení SAML SSO.
 
 ### <a name="create-an-azure-ad-test-user"></a>Vytvořit testovacího uživatele Azure AD 
 

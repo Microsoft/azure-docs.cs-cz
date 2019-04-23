@@ -12,18 +12,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/21/2019
 ms.author: spelluru
-ms.openlocfilehash: 9cd2e5e211fcda7c59469d3b09e9c9e5bdefdbd6
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
-ms.translationtype: MT
+ms.openlocfilehash: ca6ed58cfabb5027830828812c4820c1b586875c
+ms.sourcegitcommit: c884e2b3746d4d5f0c5c1090e51d2056456a1317
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59546579"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60148896"
 ---
 # <a name="import-virtual-machines-from-another-lab-in-azure-devtest-labs"></a>Import virtuálních počítačů z jiného testovacího prostředí ve službě Azure DevTest Labs
-Tento článek obsahuje informace o tom, jak importovat virtuální počítače z jiného testovacího prostředí do testovacího prostředí. 
+Tento článek obsahuje informace o tom, jak importovat virtuální počítače z jiného testovacího prostředí do testovacího prostředí.
 
 ## <a name="scenarios"></a>Scénáře
-Tady je několik scénářů, které je potřeba importovat virtuální počítače z jednoho prostředí do jiného testovacího prostředí: 
+Tady je několik scénářů, které je potřeba importovat virtuální počítače z jednoho prostředí do jiného testovacího prostředí:
 
 - Jednotlivec v týmu se přesouvá do jiné skupiny v rámci podniku a chce využít desktop pro vývojáře pro nový tým DevTest Labs.
 - Skupině dosáhne [kvóty na úrovni předplatného](../azure-subscription-service-limits.md) a chce rozdělit týmy do několika předplatných
@@ -34,8 +34,8 @@ Tato funkce umožňuje naimportovat virtuální počítače v jedné laboratoři
 
 Proces trvat delší dobu a to má vliv následující faktory:
 
-- Počet/velikost disků, které jsou připojeny ke zdrojovému počítači (protože se jedná o operaci kopírování a operace přesunu) 
-- Vzdálenost k cíli (například oblast východní USA do Asie – jihovýchod).  
+- Počet/velikost disků, které jsou připojeny ke zdrojovému počítači (protože se jedná o operaci kopírování a operace přesunu)
+- Vzdálenost k cíli (například oblast východní USA do Asie – jihovýchod).
 
 Po dokončení procesu zdrojového virtuálního počítače zůstane vypnout a nové, jeden je spuštěna v cílovém prostředí.
 
@@ -47,12 +47,12 @@ Existují dvě omezení klíčů je potřeba vědět při plánování pro impor
 - Tato funkce v současné době je podporována pouze prostřednictvím prostředí Powershell a rozhraní REST API.
 
 ## <a name="use-powershell"></a>Použití prostředí PowerShell
-Stáhněte si soubor ImportVirtualMachines.ps1 z [Githubu](https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/Scripts/ImportVirtualMachines). Skript můžete použít pro import jednoho virtuálního počítače nebo všech virtuálních počítačů v testovacím prostředí zdroje do cílového testovacího prostředí. 
+Stáhněte si soubor ImportVirtualMachines.ps1 z [Githubu](https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/Scripts/ImportVirtualMachines). Skript můžete použít pro import jednoho virtuálního počítače nebo všech virtuálních počítačů v testovacím prostředí zdroje do cílového testovacího prostředí.
 
 ### <a name="use-powershell-to-import-a-single-vm"></a>Pomocí prostředí PowerShell pro import jednoho virtuálního počítače
 Spuštěním tohoto skriptu prostředí powershell vyžaduje určení zdrojového virtuálního počítače a cílové testovací prostředí a volitelně poskytuje nový název má použít pro cílový počítač:
 
-```powershell 
+```powershell
 ./ImportVirtualMachines.ps1 -SourceSubscriptionId "<ID of the subscription that contains the source lab>" `
                             -SourceDevTestLabName "<Name of the source lab>" `
                             -SourceVirtualMachineName "<Name of the VM to be imported from the source lab> " `
@@ -63,7 +63,7 @@ Spuštěním tohoto skriptu prostředí powershell vyžaduje určení zdrojovéh
 
 ### <a name="use-powershell-to-import-all-vms-in-the-source-lab"></a>Použití Powershellu k importu všech virtuálních počítačů v testovacím prostředí zdroje
 Pokud zdrojový virtuální počítač není zadán, skript automaticky importuje všechny virtuální počítače ve službě DevTest Labs.  Příklad:
- 
+
 ```powershell
 ./ImportVirtualMachines.ps1 -SourceSubscriptionId "<ID of the subscription that contains the source lab>" `
                             -SourceDevTestLabName "<Name of the source lab>" `
@@ -83,7 +83,7 @@ POST https://management.azure.com/subscriptions/<DestinationSubscriptionID>/reso
 ```
 
 ## <a name="next-steps"></a>Další postup
-Viz následující články: 
+Viz následující články:
 
 - [Nastavení zásad pro testovací prostředí](devtest-lab-get-started-with-lab-policies.md)
 - [Nejčastější dotazy](devtest-lab-faq.md)

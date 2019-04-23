@@ -16,11 +16,11 @@ ms.topic: tutorial
 ms.date: 04/01/2019
 ms.author: jeedes
 ms.openlocfilehash: c2b32d1c96a01282aa8cdbae1d55976a89abea81
-ms.sourcegitcommit: b8a8d29fdf199158d96736fbbb0c3773502a092d
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/15/2019
-ms.locfileid: "59563997"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60277745"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-glassfrog"></a>Kurz: Integrace Azure Active Directory s GlassFrog
 

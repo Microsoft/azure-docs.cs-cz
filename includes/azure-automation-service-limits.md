@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 12/13/2018
 ms.author: gwallace
 ms.custom: include file
-ms.openlocfilehash: 61f82771e53ac9bb594484b29bb109a03cee674b
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
-ms.translationtype: MT
+ms.openlocfilehash: b701183fa270b1aad9a622a21c5ce0795fc8057f
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57553467"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60012491"
 ---
 #### <a name="process-automation"></a>Automatizace procesů
 
@@ -22,6 +22,7 @@ ms.locfileid: "57553467"
 | Maximální počet nových úlohách, které se dají odeslat každých 30 sekund na účet služby Azure Automation (nonscheduled úlohy) |100 |Při dosažení tohoto limitu, selhání následné žádosti k vytvoření úlohy. Klient obdrží odpověď.|
 | Maximální počet souběžných úloh spuštěných na stejnou instanci času na účet služby Automation (nonscheduled úlohy) |200 |Při dosažení tohoto limitu, selhání následné žádosti k vytvoření úlohy. Klient obdrží odpověď.|
 | Maximální velikost úložiště metadat úlohy pro období posledních 30 dnů | 10 GB (přibližně 4 miliony úlohy)|Při dosažení tohoto limitu, selhání následné žádosti k vytvoření úlohy. |
+| Omezení maximální úlohy služby stream|1MB|Jeden datový proud nemůže být větší než 1 MB.|
 | Maximální počet modulů, které mohou být naimportovány každých 30 sekund na účet služby Automation |5 ||
 | Maximální velikost modulu |100 MB ||
 | Úlohy úrovně Free doby běhu |500 minut na předplatné za kalendářní měsíc ||

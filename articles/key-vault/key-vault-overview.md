@@ -14,11 +14,11 @@ ms.custom: mvc
 ms.date: 01/07/2019
 ms.author: barclayn
 ms.openlocfilehash: 06f1a2b33b177cf667fc2d3c5932f7ff117d2bdc
-ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57195468"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60201274"
 ---
 # <a name="what-is-azure-key-vault"></a>Co je Azure Key Vault?
 

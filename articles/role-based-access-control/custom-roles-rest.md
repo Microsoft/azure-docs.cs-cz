@@ -12,23 +12,39 @@ ms.workload: multiple
 ms.tgt_pltfrm: rest-api
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 02/20/2019
+ms.date: 04/18/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: cec75f757789be4f962cf2b0fbf6b9443a4453cc
-ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
-ms.translationtype: MT
+ms.openlocfilehash: 4024f6fdb40c752ef61f348d15f681e81d81c08c
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56588190"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59999770"
 ---
 # <a name="create-custom-roles-for-azure-resources-using-the-rest-api"></a>Vytvoření vlastních rolí pro prostředky Azure pomocí rozhraní REST API
 
 Pokud [předdefinované role pro prostředky Azure](built-in-roles.md) nesplňují konkrétním potřebám vaší organizace, můžete vytvořit vlastní role. Tento článek popisuje, jak vytvořit a spravovat vlastní role pomocí rozhraní REST API.
 
-## <a name="list-roles"></a>Výpis rolí
+## <a name="list-custom-roles"></a>Výpis vlastních rolí
 
-Chcete-li vypsat všechny role nebo získat informace o jedné role pomocí názvu zobrazení, použijte [definice rolí – seznam](/rest/api/authorization/roledefinitions/list) rozhraní REST API. K volání tohoto rozhraní API, musíte mít přístup k `Microsoft.Authorization/roleDefinitions/read` operace v oboru. Několik [předdefinované role](built-in-roles.md) je udělen přístup k této operace.
+Chcete-li vypsat všechny vlastní role v adresáři, použijte [definice rolí – seznam](/rest/api/authorization/roledefinitions/list) rozhraní REST API.
+
+1. Začněte s následující žádosti:
+
+    ```http
+    GET https://management.azure.com/providers/Microsoft.Authorization/roleDefinitions?api-version=2015-07-01&$filter={filter}
+    ```
+
+1. Nahraďte *{filter}* s typem role.
+
+    | Filtr | Popis |
+    | --- | --- |
+    | `$filter=type%20eq%20'CustomRole'` | Filtrovat podle typu CustomRole |
+
+## <a name="list-custom-roles-at-a-scope"></a>Seznam vlastních rolí v oboru
+
+K zobrazení seznamu vlastních rolí v oboru, použijte [definice rolí – seznam](/rest/api/authorization/roledefinitions/list) rozhraní REST API.
 
 1. Začněte s následující žádosti:
 
@@ -44,20 +60,41 @@ Chcete-li vypsat všechny role nebo získat informace o jedné role pomocí náz
     | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1` | Skupina prostředků |
     | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1/ providers/Microsoft.Web/sites/mysite1` | Prostředek |
 
-1. Nahraďte *{filter}* splňující podmínku, kterou chcete použít k filtrování seznamu rolí.
+1. Nahraďte *{filter}* s typem role.
 
     | Filtr | Popis |
     | --- | --- |
-    | `$filter=atScopeAndBelow()` | Seznam rolí, které jsou k dispozici pro přiřazení v zadaném rozsahu a všechny jeho podřízené obory. |
+    | `$filter=type%20eq%20'CustomRole'` | Filtrovat podle typu CustomRole |
+
+## <a name="list-a-custom-role-definition-by-name"></a>Seznam definice vlastních rolí podle názvu
+
+Chcete-li získat informace o vlastní role podle jeho zobrazovaného názvu, použijte [definice rolí – získání](/rest/api/authorization/roledefinitions/get) rozhraní REST API.
+
+1. Začněte s následující žádosti:
+
+    ```http
+    GET https://management.azure.com/{scope}/providers/Microsoft.Authorization/roleDefinitions?api-version=2015-07-01&$filter={filter}
+    ```
+
+1. V rámci identifikátoru URI nahradit *{oboru}* s rozsahem, pro které chcete seznam rolí.
+
+    | Rozsah | Type |
+    | --- | --- |
+    | `subscriptions/{subscriptionId}` | Předplatné |
+    | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1` | Skupina prostředků |
+    | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1/ providers/Microsoft.Web/sites/mysite1` | Prostředek |
+
+1. Nahraďte *{filter}* se zobrazovaným názvem pro roli.
+
+    | Filtr | Popis |
+    | --- | --- |
     | `$filter=roleName%20eq%20'{roleDisplayName}'` | Kódování URL formulář přesné zobrazovaného názvu role. Pro instanci `$filter=roleName%20eq%20'Virtual%20Machine%20Contributor'` |
 
-### <a name="get-information-about-a-role"></a>Získání informací o roli
+## <a name="list-a-custom-role-definition-by-id"></a>Seznam definice vlastních rolí podle ID
 
-Pokud chcete získat informace o roli pomocí jeho identifikátoru definice role, použít [definice rolí – získání](/rest/api/authorization/roledefinitions/get) rozhraní REST API. K volání tohoto rozhraní API, musíte mít přístup k `Microsoft.Authorization/roleDefinitions/read` operace v oboru. Několik [předdefinované role](built-in-roles.md) je udělen přístup k této operace.
+Chcete-li získat informace o vlastní role podle jejího jedinečného identifikátoru, použijte [definice rolí – získání](/rest/api/authorization/roledefinitions/get) rozhraní REST API.
 
-Pokud chcete získat informace o jedné role pomocí názvu zobrazení, najdete v předchozí [seznamu rolí](custom-roles-rest.md#list-roles) oddílu.
-
-1. Použití [definice rolí – seznam](/rest/api/authorization/roledefinitions/list) rozhraní REST API pro získání identifikátoru GUID pro roli. Předdefinované role, můžete také získat identifikátor z [předdefinované role](built-in-roles.md).
+1. Použití [definice rolí – seznam](/rest/api/authorization/roledefinitions/list) rozhraní REST API pro získání identifikátoru GUID pro roli.
 
 1. Začněte s následující žádosti:
 
@@ -77,7 +114,7 @@ Pokud chcete získat informace o jedné role pomocí názvu zobrazení, najdete 
 
 ## <a name="create-a-custom-role"></a>Vytvoření vlastní role
 
-Chcete-li vytvořit vlastní roli, použijte [definice rolí – vytvořit nebo aktualizovat](/rest/api/authorization/roledefinitions/createorupdate) rozhraní REST API. K volání tohoto rozhraní API, musíte mít přístup k `Microsoft.Authorization/roleDefinitions/write` všechny operace `assignableScopes`. Předdefinovaných rolí pouze [vlastníka](built-in-roles.md#owner) a [správce uživatelských přístupů](built-in-roles.md#user-access-administrator) je udělen přístup k této operace. 
+Chcete-li vytvořit vlastní roli, použijte [definice rolí – vytvořit nebo aktualizovat](/rest/api/authorization/roledefinitions/createorupdate) rozhraní REST API. K volání tohoto rozhraní API, musíte být přihlášeni pomocí uživatele, který má přiřazenou roli, která má `Microsoft.Authorization/roleDefinitions/write` oprávnění ve všech `assignableScopes`. Předdefinovaných rolí pouze [vlastníka](built-in-roles.md#owner) a [správce uživatelských přístupů](built-in-roles.md#user-access-administrator) patří toto oprávnění.
 
 1. Projděte si seznam [operace poskytovatele prostředků](resource-provider-operations.md) , které jsou k dispozici se vytvořit oprávnění pro vlastní roli.
 
@@ -168,9 +205,9 @@ Chcete-li vytvořit vlastní roli, použijte [definice rolí – vytvořit nebo 
 
 ## <a name="update-a-custom-role"></a>Aktualizace vlastní role
 
-Chcete-li aktualizovat vlastní roli, použijte [definice rolí – vytvořit nebo aktualizovat](/rest/api/authorization/roledefinitions/createorupdate) rozhraní REST API. K volání tohoto rozhraní API, musíte mít přístup k `Microsoft.Authorization/roleDefinitions/write` všechny operace `assignableScopes`. Předdefinovaných rolí pouze [vlastníka](built-in-roles.md#owner) a [správce uživatelských přístupů](built-in-roles.md#user-access-administrator) je udělen přístup k této operace. 
+Chcete-li aktualizovat vlastní roli, použijte [definice rolí – vytvořit nebo aktualizovat](/rest/api/authorization/roledefinitions/createorupdate) rozhraní REST API. K volání tohoto rozhraní API, musíte být přihlášeni pomocí uživatele, který má přiřazenou roli, která má `Microsoft.Authorization/roleDefinitions/write` oprávnění ve všech `assignableScopes`. Předdefinovaných rolí pouze [vlastníka](built-in-roles.md#owner) a [správce uživatelských přístupů](built-in-roles.md#user-access-administrator) patří toto oprávnění.
 
-1. Použití [definice rolí – seznam](/rest/api/authorization/roledefinitions/list) nebo [definice rolí – získání](/rest/api/authorization/roledefinitions/get) rozhraní REST API a získat informace o vlastní roli. Další informace najdete v tématu dříve [seznamu rolí](custom-roles-rest.md#list-roles) oddílu.
+1. Použití [definice rolí – seznam](/rest/api/authorization/roledefinitions/list) nebo [definice rolí – získání](/rest/api/authorization/roledefinitions/get) rozhraní REST API a získat informace o vlastní roli. Další informace najdete v tématu dříve [seznamu vlastních rolí](#list-custom-roles) oddílu.
 
 1. Začněte s následující žádosti:
 
@@ -252,9 +289,9 @@ Chcete-li aktualizovat vlastní roli, použijte [definice rolí – vytvořit ne
 
 ## <a name="delete-a-custom-role"></a>Odstranění vlastní role
 
-Pokud chcete odstranit vlastní roli, použijte [odstranit definice rolí –](/rest/api/authorization/roledefinitions/delete) rozhraní REST API. K volání tohoto rozhraní API, musíte mít přístup k `Microsoft.Authorization/roleDefinitions/delete` všechny operace `assignableScopes`. Předdefinovaných rolí pouze [vlastníka](built-in-roles.md#owner) a [správce uživatelských přístupů](built-in-roles.md#user-access-administrator) je udělen přístup k této operace. 
+Pokud chcete odstranit vlastní roli, použijte [odstranit definice rolí –](/rest/api/authorization/roledefinitions/delete) rozhraní REST API. K volání tohoto rozhraní API, musíte být přihlášeni pomocí uživatele, který má přiřazenou roli, která má `Microsoft.Authorization/roleDefinitions/delete` oprávnění ve všech `assignableScopes`. Předdefinovaných rolí pouze [vlastníka](built-in-roles.md#owner) a [správce uživatelských přístupů](built-in-roles.md#user-access-administrator) patří toto oprávnění.
 
-1. Použití [definice rolí – seznam](/rest/api/authorization/roledefinitions/list) nebo [definice rolí – získání](/rest/api/authorization/roledefinitions/get) rozhraní REST API pro získání identifikátoru GUID vlastní role. Další informace najdete v tématu dříve [seznamu rolí](custom-roles-rest.md#list-roles) oddílu.
+1. Použití [definice rolí – seznam](/rest/api/authorization/roledefinitions/list) nebo [definice rolí – získání](/rest/api/authorization/roledefinitions/get) rozhraní REST API pro získání identifikátoru GUID vlastní role. Další informace najdete v tématu dříve [seznamu vlastních rolí](#list-custom-roles) oddílu.
 
 1. Začněte s následující žádosti:
 

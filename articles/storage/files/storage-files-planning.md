@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 03/25/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: d4361fc37d01b351d20a273aa39f558e9b00faa4
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
-ms.translationtype: MT
+ms.openlocfilehash: e2b2621ac8ee5b9ee84aaa978e8b915c98c5b702
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59525921"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59998449"
 ---
 # <a name="planning-for-an-azure-files-deployment"></a>Plánování nasazení služby Soubory Azure
 
@@ -92,20 +92,22 @@ Služba soubory Azure nabízí dvě úrovně výkonu: standard a premium.
 |Severní Evropa  | Ne |
 |Západní Evropa   | Ano|
 |Jihovýchodní Asie       | Ano|
+|Východní Asie     | Ne |
 |Japonsko – východ    | Ne |
+|Japonsko – západ    | Ne |
 |Korea – střed | Ne |
 |Austrálie – východ| Ne |
 
 ### <a name="provisioned-shares"></a>Zřízené sdílené složky
 
-Premium sdílené složky (preview) se zřizují podle pevný poměr GiB/IOPS a propustnosti. Pro každý GiB zřízené sdílené složky budou vydány lístky jeden IOPS a propustnost 0,1 MiB/s až po maximální limity jednotlivou sdílenou složku. Minimální povolená zřizování je 100 GB s minimální IOPS a propustnosti. Velikost sdílené složky je možné kdykoli zvýšit na jakýkoli čas a snížit, ale lze snížit každých 24 hodin od poslední zvýšení.
+Premium sdílené složky (preview) se zřizují podle pevný poměr GiB/IOPS a propustnosti. Pro každý GiB zřízené sdílené složky budou vydány lístky jeden IOPS a propustnost 0,1 MiB/s až po maximální limity jednotlivou sdílenou složku. Minimální povolená zřizování je 100 GB s minimální IOPS a propustnosti.
 
 Na jak kapacita systému dovolí můžete převést všechny sdílené složky až tři vstupně-výstupních operací za GiB zřízeném úložišti po dobu 60 minut nebo i delší dobu v závislosti na velikosti sdílené složky. Nových sdílených složek začněte s kreditem úplné burst na základě zřízené kapacity.
 
-Všechny sdílené složky můžete převést do alespoň 100 vstupně-výstupních operací a cíl propustnost 100 MiB/s. Sdílené složky musí být zřízený v přírůstcích po 1 GB. Minimální velikost je 100 GB, nejbližší velikost 101 GIB a tak dále.
+Sdílené složky musí být zřízený v přírůstcích po 1 GB. Minimální velikost je 100 GB, nejbližší velikost 101 GIB a tak dále.
 
 > [!TIP]
-> Standardní hodnoty vstupně-výstupních operací = 100 + 1 * zřízené GiB. (Až max. 100 000 IOPS).
+> Standardní hodnoty vstupně-výstupních operací = 1 * zřízené GiB. (Až max. 100 000 IOPS).
 >
 > Burst Limit = 3 * Baseline IOPS. (Až max. 100 000 IOPS).
 >
@@ -113,13 +115,13 @@ Všechny sdílené složky můžete převést do alespoň 100 vstupně-výstupn�
 >
 > rychlost příchozího přenosu dat = 40 MiB/s + 0,04 * zřízené GiB
 
-Velikost sdílené složky je možné kdykoli zvýšit na jakýkoli čas a snížit, ale lze snížit každých 24 hodin od poslední zvýšení. IOPS a propustnosti škálování změny bude platit do 24 hodin po provedení změny velikosti.
+Velikost sdílené složky je možné kdykoli zvýšit, ale lze snížit až po 24 hodinách od poslední zvýšení. Po uplynutí 24 hodin bez zvýšení velikosti, může snížit velikost sdílené složky tolikrát, kolikrát, dokud znovu zvýšit. IOPS a propustnosti škálování změny bude platit za pár minut po provedení změny velikosti.
 
 Následující tabulka ukazuje několik příkladů tyto vzorce pro velikosti zřízené sdílené složky:
 
 (Velikosti udávají * jsou v omezené veřejné verzi preview)
 
-|Kapacita (GB) | Standardní hodnoty vstupně-výstupních operací | Omezení datové sekvence | Výchozí přenos dat (MiB/s) | Příchozí přenos dat (MiB/s) |
+|Kapacita (GB) | Standardní hodnoty vstupně-výstupních operací | Vstupně-výstupních operací datové sekvence | Výchozí přenos dat (MiB/s) | Příchozí přenos dat (MiB/s) |
 |---------|---------|---------|---------|---------|
 |100         | 100     | Až 300     | 66   | 44   |
 |500         | 500     | Až 1 500   | 90   | 60   |
@@ -136,20 +138,20 @@ V současné době velikosti sdílené složky souborů maximálně 5 TiB jsou v
 
 Premium sdílené složky můžete převést jejich vstupně-výstupních operací až faktor tři. Shlukování je automatizovaná a funguje podle platební systém. Shlukování funguje jak kapacita systému dovolí a burst limit není zárukou, sdílené složky můžete burst *až* limit.
 
-Pokaždé, když se provoz pro vaše fileshares je nižší než standardní hodnoty vstupně-výstupních operací se začnou hromadit ve shluku kbelíku kredity. Sdílenou složku 100 GB má například 100 standardní hodnoty vstupně-výstupních operací. Pokud skutečný provoz ve sdílené složce se 40 vstupně-výstupních operací pro konkrétní interval 1 sekundu, 60 nevyužité vstupně-výstupních operací se kompenzací burst kbelík. Tyto kredity se potom použije později při operace by došlo k vstupně-výstupních operací směrného plánu.
+Pokaždé, když se provoz pro svou sdílenou složku je nižší než standardní hodnoty vstupně-výstupních operací se začnou hromadit ve shluku kbelíku kredity. Sdílenou složku 100 GB má například 100 standardní hodnoty vstupně-výstupních operací. Pokud skutečný provoz ve sdílené složce se 40 vstupně-výstupních operací pro konkrétní interval 1 sekundu, 60 nevyužité vstupně-výstupních operací se kompenzací burst kbelík. Tyto kredity se potom použije později při operace by došlo k vstupně-výstupních operací směrného plánu.
 
 > [!TIP]
-> Velikost intervalu omezení burst = Baseline_IOPS * 2 * 3600.
+> Velikost kbelíku burst = Baseline_IOPS * 2 * 3600.
 
-Pokaždé, když se sdílenou složku překračuje základní vstupně-výstupních operací a má Kredity v intervalu burst, bude rozšíření. Sdílené složky můžete nadále burst tak dlouho, dokud se zbývající kredity, ale menší než 50 tiB sdílené složky zůstanou pouze na burst limit až na jednu hodinu. Sdílené složky, které jsou větší než 50 TiB technicky může překročit tento limit jednu hodinu, až dvě hodiny, ale to je na základě počtu kreditů burst operace, které. Každý vstupně-výstupní operace nad rámec standardních hodnot IOPS spotřebovává jednoho kredity a jakmile jsou využité všechny kredity sdílenou složku by vrátil se standardními hodnotami vstupně-výstupních operací.
+Pokaždé, když se sdílenou složku překračuje základní vstupně-výstupních operací a má Kredity v intervalu burst, bude rozšíření. Sdílené složky můžete nadále burst tak dlouho, dokud se zbývající kredity, ale menší než 50 TiB sdílené složky zůstanou pouze na burst limit až na jednu hodinu. Sdílené složky, které jsou větší než 50 TiB technicky může překročit tento limit jednu hodinu, až dvě hodiny, ale to je na základě počtu kreditů burst operace, které. Každý vstupně-výstupní operace nad rámec standardních hodnot IOPS spotřebovává jednoho kredity a jakmile jsou využité všechny kredity sdílenou složku by vrátil se standardními hodnotami vstupně-výstupních operací.
 
 Kredity sdílené složky mají tři stavy:
 
 - Účtují, když sdílení souborů používá méně než standardní hodnoty vstupně-výstupních operací.
 - Odmítnutí, pokud shlukování sdílené složky.
-- Zbývající na nule, když nejsou žádná kredity nebo standardní hodnoty konfigurace vstupně-výstupních operací se používají.
+- Zbývající konstantní, když nejsou žádná kredity nebo standardní hodnoty konfigurace vstupně-výstupních operací se používají.
 
-Nové spuštění sdílené složky souboru s úplnou počtem Kredity v jeho burst intervalu
+Nové spuštění sdílené složky souboru s úplnou počtem Kredity v jeho burst intervalu Kredity Burst nebude operace, pokud sdílenou složku vstupně-výstupních operací klesnou pod standardních hodnot IOPS kvůli omezování serverem.
 
 ## <a name="file-share-redundancy"></a>Zálohování sdílené složky souboru
 

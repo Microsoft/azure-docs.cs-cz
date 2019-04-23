@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 03/14/2019
 ms.author: anantr
 ms.component: alerts
-ms.openlocfilehash: 8f8dcff0b72ea92e835c0702113a9cb6a7678e86
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: MT
+ms.openlocfilehash: c18227a491478d0d8010761440a54fd088344b39
+ms.sourcegitcommit: c884e2b3746d4d5f0c5c1090e51d2056456a1317
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58851728"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60149372"
 ---
 # <a name="common-alert-schema"></a>Běžné schéma upozornění
 
@@ -39,14 +39,14 @@ Ve společném schématu produktu výstrahy se primárně projevit v oznámení 
 |:---|:---|
 | SMS | Konzistentní SMS šablonu pro všechny typy výstrah. |
 | Email | Konzistentní vzhledem k aplikacím a podrobné e-mailovou šablonu, abyste mohli snadno diagnostikovat potíže vhodným způsobem zasáhnout. Vložený hloubkové odkazy na instanci výstrahy na portálu a daný prostředek Ujistěte se, že můžete rychle přejít do procesu nápravy. |
-| Funkce Webhooku/logika aplikace/Azure functions | Konzistentní strukturu JSON pro všechny typy výstrah, které vám umožní snadno vytvářet integrace mezi různé typy výstrah. |
+| Webhooku/logika aplikace nebo Azure funkce/Automation Runbook | Konzistentní strukturu JSON pro všechny typy výstrah, které vám umožní snadno vytvářet integrace mezi různé typy výstrah. |
 
 Nové schéma také umožní pohodlnější a pestřejší prostředí upozornění využití napříč na webu Azure portal a mobilní aplikace Azure v blízké budoucnosti. 
 
-[Další informace o schématu definice pro Webhooky a Logic Apps/Azure Functions.](https://aka.ms/commonAlertSchemaDefinitions)
+[Další informace o definici schématu pro Runbooky funkce/Automation, Webhooků/Logic Apps nebo Azure.](https://aka.ms/commonAlertSchemaDefinitions)
 
 > [!NOTE]
-> Tyto akce nepodporují ve společném schématu produktu výstrahy: Konektor ITSM, Runbook služby Automation.
+> Tyto akce nepodporují ve společném schématu produktu výstrahy: Konektor ITSM.
 
 ## <a name="how-do-i-enable-the-common-alert-schema"></a>Jak povolit ve společném schématu produktu upozornění?
 
@@ -54,11 +54,10 @@ Můžete vyjádřit výslovný souhlas nebo odhlásit ve společném schématu v
 
 > [!NOTE]
 > 1. Následující typy výstrah podporují ve společném schématu produktu ve výchozím nastavení (žádné optimalizované vyžadovat):
->     * Upozornění na selhání anomálií
+>     * Upozornění inteligentního zjišťování
 > 1. Následující typy výstrah aktuálně nepodporují ve společném schématu produktu:
->     * Upozornění na stav služby
->     * Protokol aktivit – upozornění zabezpečení
 >     * Výstrahy vygenerované [monitorování Azure pro virtuální počítače](https://docs.microsoft.com/azure/azure-monitor/insights/vminsights-overview)
+>     * Výstrahy vygenerované [Azure Cost Management](https://docs.microsoft.com/azure/billing/billing-cost-management-budget-scenario)
 
 ### <a name="through-the-azure-portal"></a>Na webu Azure portal
 
@@ -69,7 +68,7 @@ Můžete vyjádřit výslovný souhlas nebo odhlásit ve společném schématu v
 
 ### <a name="through-the-action-groups-rest-api"></a>Prostřednictvím rozhraní REST API skupiny akcí
 
-Můžete také použít [akce skupiny API](https://docs.microsoft.com/rest/api/monitor/actiongroups) můžete vyjádřit výslovný souhlas ve společném schématu produktu výstrah. Při provádění [vytvořit nebo aktualizovat](https://docs.microsoft.com/rest/api/monitor/actiongroups/createorupdate) volání rozhraní REST API můžete nastavit příznak "useCommonAlertSchema" na "true" (se vyjádřit výslovný souhlas) nebo "Nepravda" (výslovný souhlas) pro některý z následujících akcí - e-mailu nebo webhooku/logika aplikace nebo Azure funkce.
+Můžete také použít [akce skupiny API](https://docs.microsoft.com/rest/api/monitor/actiongroups) můžete vyjádřit výslovný souhlas ve společném schématu produktu výstrah. Při provádění [vytvořit nebo aktualizovat](https://docs.microsoft.com/rest/api/monitor/actiongroups/createorupdate) volání rozhraní REST API můžete nastavit příznak "useCommonAlertSchema" na "true" (se vyjádřit výslovný souhlas) nebo "Nepravda" (výslovný souhlas) pro některý z následujících akcí - e-mailu nebo webhooku/logika aplikace nebo Azure funkce/automatizace sady runbook.
 
 Například následující text provedené žádosti [vytvořit nebo aktualizovat](https://docs.microsoft.com/rest/api/monitor/actiongroups/createorupdate) rozhraní REST API se postupujte takto:
 
@@ -125,7 +124,7 @@ Například následující text provedené žádosti [vytvořit nebo aktualizova
 
 ## <a name="next-steps"></a>Další postup
 
-- [Společné definice upozornění schématu Webhooků/Logic Apps/Azure functions.](https://aka.ms/commonAlertSchemaDefinitions)
+- [Běžné definice upozornění schémat pro Webhooky a Logic Apps nebo Azure funkce/automatizace sady Runbook.](https://aka.ms/commonAlertSchemaDefinitions)
 
 
 

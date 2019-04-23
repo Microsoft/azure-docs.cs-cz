@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/19/2019
+ms.date: 04/16/2019
 ms.author: willzhan, dwgeo
-ms.openlocfilehash: a0e3b0758f8c70bec14d533ef62ce75f57a198cb
-ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
-ms.translationtype: MT
+ms.openlocfilehash: 31da745727d567e1b3b85b3508df368d78ad84a0
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58259648"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60002659"
 ---
 # <a name="offline-fairplay-streaming-for-ios"></a>Offline FairPlay Streaming pro iOS 
 
@@ -27,7 +27,10 @@ ms.locfileid: "58259648"
 > * [Verze 3](../latest/offline-fairplay-for-ios.md)
 > * [Verze 2](media-services-protect-hls-with-offline-fairplay.md)
 
- Azure Media Services nabízí sadu dobře navržené [obsahu služby ochrany](https://azure.microsoft.com/services/media-services/content-protection/) této cover:
+> [!NOTE]
+> Do Media Services v2 se nepřidávají žádné nové funkce. <br/>Projděte si nejnovější verzi, [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/). Viz také [pokyny k migraci z v2 na v3](../latest/migrate-from-v2-to-v3.md)
+
+Azure Media Services nabízí sadu dobře navržené [obsahu služby ochrany](https://azure.microsoft.com/services/media-services/content-protection/) této cover:
 
 - Microsoft PlayReady
 - Google Widevine

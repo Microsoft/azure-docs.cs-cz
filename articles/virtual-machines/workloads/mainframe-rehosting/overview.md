@@ -10,12 +10,12 @@ ms.author: larryme
 ms.date: 04/02/2019
 ms.topic: article
 ms.service: multiple
-ms.openlocfilehash: 8b7c2a088dc917c319acf6cad251ad53367a14b6
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: c1d7b52bdce77ca108781a999a8a85b3e3fca0b8
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58895033"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60004410"
 ---
 # <a name="mainframe-rehosting-on-azure-virtual-machines"></a>Změna mainframových hostování na Azure virtual machines
 
@@ -53,7 +53,7 @@ TmaxSoft OpenFrame je Oblíbené mainframových rehosting řešení používá v
 Jak začít:
 
 - [Začínáme s TmaxSoft OpenFrame](./tmaxsoft/get-started.md)
-- [Stažení elektronické knihy](https://azure.microsoft.com/resources/install-tmaxsoft-openframe-azure/)
+- [Stažení elektronické knihy](https://azure.microsoft.com/resources/install-tmaxsoft-openframe-on-azure/)
 
 ## <a name="ibm-zdt-120"></a>IBM zD & T 12.0
 

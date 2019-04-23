@@ -15,11 +15,11 @@ ms.topic: tutorial
 ms.date: 02/18/2019
 ms.author: jeedes
 ms.openlocfilehash: 0424b21c60d4ae86f7802d1b3ca2a0d7bbe35759
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59281620"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60277835"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-getthere"></a>Kurz: Integrace Azure Active Directory s GetThere
 
@@ -126,7 +126,7 @@ Ke konfiguraci Azure AD jednotné přihlašování s GetThere, proveďte násled
 
 6. Kromě toho výše GetThere aplikace očekává, že několik dalších atributů musí být předány zpět odpověď SAML. V **deklarace identity uživatelů** části na **atributy uživatele** dialogového okna, proveďte následující kroky pro přidání atributu tokenu SAML, jak je znázorněno v následující tabulka:
 
-    | Název |  Zdrojový atribut |  Obor názvů |
+    | Name |  Zdrojový atribut |  Obor názvů |
     | ---------------| --------------- | --------------- |
     | Název webu | "Zajistit dobu hodnotu podle vaší organizaci" | http://schemas.xmlsoap.org/ws/2005/05/identity/claims/sitename |
     | Uživatelské jméno |  user.mail | http://schemas.xmlsoap.org/ws/2005/05/identity/claims/username |

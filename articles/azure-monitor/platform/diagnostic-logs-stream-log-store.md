@@ -5,15 +5,15 @@ author: johnkemnetz
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: conceptual
-ms.date: 04/04/2018
+ms.date: 04/18/2019
 ms.author: johnkem
 ms.subservice: logs
-ms.openlocfilehash: 33d8f2e7c65a786d1ecb389574fe186efb6fb705
-ms.sourcegitcommit: 956749f17569a55bcafba95aef9abcbb345eb929
+ms.openlocfilehash: b17978da3195b364f868d33ab7ad9faa1544e9ec
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58630792"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60238015"
 ---
 # <a name="stream-azure-diagnostic-logs-to-log-analytics-workspace-in-azure-monitor"></a>Diagnostické protokoly Azure Stream do pracovního prostoru Log Analytics ve službě Azure Monitor
 
@@ -107,7 +107,7 @@ Protože mnoho prostředků odeslat datové typy se odesílají do stejné tabul
  
 V tabulce AzureDiagnostics bude vypadat následovně, s ukázkovými daty:  
  
-| ResourceProvider | Kategorie | A | B | C | D | E | F | G | H | I |
+| ResourceProvider | Category | A | B | C | D | E | F | G | H | I |
 | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- |
 | Microsoft.Resource1 | AuditLogs | x1 | y1 | z1 |
 | Microsoft.Resource2 | ErrorLogs | | | | q1 | w1 | e1 |
@@ -124,7 +124,7 @@ Azure Data Factory, z důvodu velmi podrobné sadu protokolů, je prostředek, k
 - *Uživatel parametry definované pro všechny aktivity v kanálu*: bude nový sloupec, který vytvoří pro každý parametr jedinečně pojmenovaná uživatele pro všechny aktivity. 
 - *Aktivita vstupy a výstupy*: tyto aktivity aktivity se liší a generují velké množství sloupců z důvodu jejich podrobné povahy. 
  
-Jako s širší návrhy řešení níže, se doporučuje k izolaci ADF protokoly do své vlastní pracovní prostor, který minimalizuje riziko tyto protokoly vliv na jiné typy protokolů shromažďují ve vašich pracovních prostorů. Očekáváme, že připravili protokoly služby Azure Data Factory dostupná roku 2019 poloviny dubna.
+Jako s širší návrhy řešení níže, se doporučuje k izolaci ADF protokoly do své vlastní pracovní prostor, který minimalizuje riziko tyto protokoly vliv na jiné typy protokolů shromažďují ve vašich pracovních prostorů. Očekáváme, že připravili protokoly služby Azure Data Factory k dispozici brzy.
  
 #### <a name="workarounds"></a>Alternativní řešení
 Krátkodobé, dokud předefinovat limit 500 sloupce, doporučujeme k oddělení do samostatných pracovních prostorů pro snížení rizika vzniku dosažení limitu podrobné datové typy.

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 01/22/2019
 ms.author: yegu
 ms.custom: include file
-ms.openlocfilehash: 0f066915046e363932652c104fabe96ed0a9d4c4
-ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
-ms.translationtype: MT
+ms.openlocfilehash: 9b86f2e05e2cb42470061bd6398b4200607f2418
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58227180"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60012281"
 ---
 1. Pokud chcete vytvořit novým úložištěm konfigurace aplikace, přihlaste se k [webu Azure portal](https://aka.ms/azconfig/portal). V levém horním rohu stránky vyberte **+ vytvořit prostředek**. V **Hledat na Marketplace** zadejte **konfigurace aplikace** a stiskněte klávesu Enter.
 
@@ -35,14 +35,3 @@ ms.locfileid: "58227180"
 4. Vyberte **Vytvořit**. Nasazení může trvat několik minut déle.
 
 5. Po dokončení nasazení vyberte **nastavení** > **přístupové klíče**. Poznamenejte buď primární jen pro čtení nebo primární čtení a zápis připojovací řetězec klíče. Tento připojovací řetězec použijete později ke konfiguraci vaší aplikace ke komunikaci s úložišti konfigurace aplikace, kterou jste vytvořili.
-
-6. Vyberte **klíč/hodnota Explorer** > **+ vytvořit** přidáte následující páry klíč hodnota:
-
-    | Klíč | Hodnota |
-    |---|---|
-    | TestApp:Settings:BackgroundColor | White |
-    | TestApp:Settings:FontSize | 24 |
-    | TestApp:Settings:FontColor | Black |
-    | TestApp:Settings:Message | Data z konfigurace aplikace Azure |
-
-    Ponechte **popisek** a **typ obsahu** zatím prázdný.

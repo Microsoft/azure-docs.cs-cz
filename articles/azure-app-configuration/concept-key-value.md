@@ -12,12 +12,12 @@ ms.topic: overview
 ms.workload: tbd
 ms.date: 02/24/2019
 ms.author: yegu
-ms.openlocfilehash: 352bc20bb4082dd14b810a6afe85653cfd67e7e1
-ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
-ms.translationtype: MT
+ms.openlocfilehash: 24216d1bf82789d2d0fc312d9af4c06fa3c8cf4e
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58224465"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60011278"
 ---
 # <a name="key-value-store"></a>Ukládání hodnot klíče
 
@@ -106,4 +106,5 @@ Konfigurační data uložená v úložišti konfigurace aplikace, která zahrnuj
 
 ## <a name="next-steps"></a>Další postup
 
-* [Koncept: Snímek bodu v čase](concept-point-time-snapshot.md)  
+> [!div class="nextstepaction"]
+> [Snímek bodu v čase](./concept-point-time-snapshot.md)  

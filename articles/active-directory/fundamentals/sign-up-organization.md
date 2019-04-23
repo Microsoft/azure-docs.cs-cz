@@ -14,11 +14,11 @@ ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: bec4385b77ce44e87ed1f947a5a7a3e3d0d52fc6
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58101359"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60246900"
 ---
 # <a name="sign-up-your-organization-to-use-azure-active-directory"></a>Zaregistrujte vaší organizaci a používat službu Azure Active Directory
 Zaregistrovat do služby Azure Active Directory (Azure AD) nebo nové předplatné Microsoft Azure, buď pomocí:

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: .NET
 ms.workload: tbd
 ms.date: 02/24/2019
 ms.author: yegu
-ms.openlocfilehash: d71e08a548809ef0de47c4a865af531732a88a4b
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: HT
+ms.openlocfilehash: 33deea0805ffa89bcc6a64f34a97a4e080690da9
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59697273"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60203662"
 ---
 # <a name="quickstart-create-a-net-framework-app-with-azure-app-configuration"></a>Rychlý start: Vytvoření .NET Framework aplikace s konfigurací aplikace Azure
 
@@ -36,6 +36,14 @@ V tomto rychlém startu provedete instalaci [Visual Studio 2017](https://visuals
 ## <a name="create-an-app-configuration-store"></a>Vytvoření úložiště konfigurace aplikace
 
 [!INCLUDE [azure-app-configuration-create](../../includes/azure-app-configuration-create.md)]
+
+6. Vyberte **klíč/hodnota Explorer** > **+ vytvořit** přidáte následující páry klíč hodnota:
+
+    | Klíč | Value |
+    |---|---|
+    | TestApp:Settings:Message | Data z konfigurace aplikace Azure |
+
+    Ponechte **popisek** a **typ obsahu** zatím prázdný.
 
 ## <a name="create-a-net-console-app"></a>Vytvoření konzolové aplikace .NET
 
@@ -106,4 +114,4 @@ V tomto rychlém startu provedete instalaci [Visual Studio 2017](https://visuals
 V tomto rychlém startu jste vytvořili novým úložištěm konfigurace aplikace a použít s konzolovou aplikaci .NET Framework. Další informace o tom, jak používat konfiguraci aplikací, pokračujte k dalšímu kurzu, který ukazuje ověření.
 
 > [!div class="nextstepaction"]
-> [Spravované identity pro integraci prostředků Azure](./howto-integrate-azure-managed-service-identity.md)
+> [Integrace spravovaných identit](./howto-integrate-azure-managed-service-identity.md)

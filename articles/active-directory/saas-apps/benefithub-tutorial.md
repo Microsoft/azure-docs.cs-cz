@@ -16,11 +16,11 @@ ms.date: 02/06/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: f70bfbac98904752baa093076ce66f0de4993ea2
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57849937"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60283128"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-benefithub"></a>Kurz: Integrace Azure Active Directory s BenefitHub
 
@@ -115,7 +115,7 @@ Ke konfiguraci Azure AD jednotné přihlašování s BenefitHub, proveďte násl
 
 6. V **deklarace identity uživatelů** části na **atributy uživatele** dialogovém okně Upravit deklarace identity pomocí **ikonu pro úpravu** nebo přidání deklarace identity pomocí **přidat novou deklaraci**ke konfiguraci atribut tokenu SAML, jak je znázorněno na obrázku výše a proveďte následující kroky:
 
-    | Název | Zdrojový atribut|
+    | Name | Zdrojový atribut|
     | ----------- | --------------- |
     | kódu organizace | < kódu organizace > |
     | | |

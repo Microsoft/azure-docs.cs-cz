@@ -5,15 +5,15 @@ services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: edge
-ms.topic: overview
+ms.topic: article
 ms.date: 03/15/2019
 ms.author: alkohli
-ms.openlocfilehash: af72bc4ced556b8ea7493e4100b0ab06931e8e2d
-ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
-ms.translationtype: MT
+ms.openlocfilehash: 3a8d1f93930d2b298eeb7d10a73624b9a19bcc0e
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58405984"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60007776"
 ---
 # <a name="troubleshoot-your-azure-data-box-edge-issues"></a>Řešení problémů Azure Data Box Edge 
 

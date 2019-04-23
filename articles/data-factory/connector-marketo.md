@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: jingwang
-ms.openlocfilehash: 94ecf05272ecb29f914bb00fa407a564fef96c17
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
-ms.translationtype: MT
+ms.openlocfilehash: d6d6517a85997265021573b2f9d481c81283c216
+ms.sourcegitcommit: c884e2b3746d4d5f0c5c1090e51d2056456a1317
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55562075"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60148828"
 ---
 # <a name="copy-data-from-marketo-using-azure-data-factory-preview"></a>Kopírování dat ze služby Marketo pomocí Azure Data Factory (Preview)
 
@@ -33,7 +33,7 @@ Kopírovat data ze služby Marketo pro jakékoli podporovaného úložiště dat
 Poskytuje integrované ovladače chcete umožnit připojení k Azure Data Factory, proto není nutné ručně nainstalovat všechny ovladače používání tohoto konektoru.
 
 >[!NOTE]
->Tento konektor služby Marketo je postavená na službě Marketo REST API. Mějte na paměti, služby Marketo má [limit souběžných žádostí](http://developers.marketo.com/rest-api/) na straně služby. Pokud dosáhnete chyby se říká "při pokusu o použití rozhraní REST API došlo k chybě: Max. rychlost překročil se limit "100" s "20" sekund (606) "nebo" při pokusu o použití rozhraní REST API došlo k chybě: Souběžný přístup omezit '10' bylo dosaženo (615) ", zvažte snížení kopírování souběžných spuštění aktivit a snížit počet požadavků ve službě.
+>Tento konektor služby Marketo je postavená na službě Marketo REST API. Mějte na paměti, služby Marketo má [limit souběžných žádostí](https://developers.marketo.com/rest-api/) na straně služby. Pokud dosáhnete chyby se říká "při pokusu o použití rozhraní REST API došlo k chybě: Max. rychlost překročil se limit "100" s "20" sekund (606) "nebo" při pokusu o použití rozhraní REST API došlo k chybě: Souběžný přístup omezit '10' bylo dosaženo (615) ", zvažte snížení kopírování souběžných spuštění aktivit a snížit počet požadavků ve službě.
 
 ## <a name="getting-started"></a>Začínáme
 

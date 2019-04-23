@@ -1,6 +1,6 @@
 ---
-title: Pomocí konfigurace požadovaného stavu s sady škálování virtuálního počítače | Microsoft Docs
-description: Použití škálování virtuálních počítačů sad s Azure rozšíření DSC
+title: Pomocí Desired State Configuration se Škálovacími sadami virtuálních počítačů | Dokumentace Microsoftu
+description: Použití virtuálního počítače škálovacích sad s Azure rozšíření DSC
 services: virtual-machine-scale-sets
 documentationcenter: ''
 author: zjalexander
@@ -16,18 +16,18 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: na
 ms.date: 04/05/2017
 ms.author: zachal
-ms.openlocfilehash: a68a5f31952d636c054b66dc0bb6ec0579cd7192
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 24a37d352413ff9ac55ce8e189691988383950f3
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2018
-ms.locfileid: "30908999"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60203988"
 ---
-# <a name="using-virtual-machine-scale-sets-with-the-azure-dsc-extension"></a>Použití škálování virtuálních počítačů sad s Azure rozšíření DSC
-[Sady škálování virtuálního počítače](virtual-machine-scale-sets-overview.md) lze použít s [Azure požadovaného stavu konfigurace (DSC)](../virtual-machines/windows/extensions-dsc-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) rozšíření obslužné rutiny. Sady škálování virtuálního počítače zadejte způsob, jak nasadit a spravovat velké počty virtuálních počítačů a můžete Elasticky škálovat a odhlašování v reakci na zatížení. DSC slouží ke konfiguraci virtuálních počítačů jako jejich uvést do režimu online, používají produkční softwaru.
+# <a name="using-virtual-machine-scale-sets-with-the-azure-dsc-extension"></a>Použití virtuálního počítače škálovacích sad s Azure rozšíření DSC
+[Virtual Machine Scale Sets](virtual-machine-scale-sets-overview.md) jde použít s [Azure Desired State Configuration (DSC)](../virtual-machines/windows/extensions-dsc-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) obslužné rutiny rozšíření. Škálovací sady virtuálních počítačů poskytují způsob, jak nasadit a spravovat velké počty virtuálních počítačů a dá se pružně škálovat a odhlašování v reakci na zatížení. DSC se používá ke konfiguraci virtuálních počítačů při jejich režimu online, takže jsou spuštěné provozního softwaru.
 
-## <a name="differences-between-deploying-to-virtual-machines-and-virtual-machine-scale-sets"></a>Rozdíly mezi nasazením do virtuálních počítačů a sady škálování virtuálního počítače
-Podkladová struktura šablony pro sadu škálování virtuálního počítače se mírně liší od jeden virtuální počítač. Konkrétně jeden virtuální počítač nasadí rozšíření pod uzlem "virtualMachines". Existuje položka typu "rozšíření", kde je DSC přidat do šablony
+## <a name="differences-between-deploying-to-virtual-machines-and-virtual-machine-scale-sets"></a>Rozdíly mezi nasazením pro virtuální počítače a Škálovací sady virtuálních počítačů
+Podkladová struktura šablony pro škálovací sadu virtuálních počítačů se mírně liší od jednoho virtuálního počítače. Konkrétně jeden virtuální počítač nasadí rozšíření v uzlu "virtuálních počítačů". Existuje položka typu "rozšíření", kde DSC je přidána do šablony
 
 ```
 "resources": [
@@ -66,7 +66,7 @@ Podkladová struktura šablony pro sadu škálování virtuálního počítače 
       ]
 ```
 
-Oddíl "vlastnosti" "VirtualMachineProfile", "extensionProfile" atribut má uzel sady škálování virtuálního počítače. V části "rozšíření" je přidána DSC
+Uzel sady škálování virtuálního počítače nemá oddíl "properties" "VirtualMachineProfile", "extensionProfile" atribut. DSC se přidá do části "rozšíření"
 
 ```
 "extensionProfile": {
@@ -98,14 +98,14 @@ Oddíl "vlastnosti" "VirtualMachineProfile", "extensionProfile" atribut má uzel
 ```
 
 ## <a name="behavior-for-a-virtual-machine-scale-set"></a>Chování pro Škálovací sadu virtuálních počítačů
-Chování pro sadu škálování virtuálního počítače je stejný jako u chování pro jeden virtuální počítač. Když je vytvořen nový virtuální počítač, je automaticky zajištěna s příponou DSC. Pokud na novější verzi WMF je požadován pro rozšíření, virtuální počítač se restartuje před uveden do režimu online. Jakmile je online, stáhne .zip konfigurace DSC a zřídit ve virtuálním počítači. Další podrobnosti naleznete v [přehled rozšíření DSC Azure](../virtual-machines/windows/extensions-dsc-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+Chování pro škálovací sadu virtuálních počítačů je stejné jako chování pro jeden virtuální počítač. Když se vytvoří nový virtuální počítač, automaticky zřídí se s rozšíření DSC. Pokud rozšíření vyžaduje novější verzi WMF, před chystají restartování virtuálního počítače. Až bude online, stáhne ZIP konfigurace DSC a zřízení na virtuálním počítači. Další podrobnosti najdete v [přehled rozšíření DSC Azure](../virtual-machines/windows/extensions-dsc-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 
 ## <a name="next-steps"></a>Další postup
 Zkontrolujte [šablony Azure Resource Manageru pro rozšíření DSC](../virtual-machines/windows/extensions-dsc-template.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 
 Zjistěte, jak [rozšíření DSC bezpečně zpracovává pověření](../virtual-machines/windows/extensions-dsc-credentials.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). 
 
-Další informace o obslužná rutina rozšíření Azure DSC najdete v tématu [Úvod do rozšíření obslužné rutiny konfigurace požadovaného stavu Azure](../virtual-machines/windows/extensions-dsc-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). 
+Další informace o obslužné rutiny rozšíření DSC Azure najdete v tématu [Úvod do obslužné rutiny rozšíření Azure Desired State Configuration](../virtual-machines/windows/extensions-dsc-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). 
 
-Další informace o DSC Powershellu [přejděte do centra dokumentace k prostředí PowerShell](https://msdn.microsoft.com/powershell/dsc/overview). 
+Další informace o prostředí PowerShell DSC [navštívit centrum dokumentace Powershellu](https://msdn.microsoft.com/powershell/dsc/overview). 
 

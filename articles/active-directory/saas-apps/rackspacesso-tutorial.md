@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 04/15/2019
 ms.author: jeedes
-ms.openlocfilehash: ca6667a5353d253743a45d5db742811d8e15ed31
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
+ms.openlocfilehash: fd420ea3fc4faae7fe4510a72204d71acaa3549a
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59682113"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60009921"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-rackspace-sso"></a>Kurz: Integrace Azure Active Directory s jednotným Přihlašováním Rackspace
 
@@ -72,7 +72,7 @@ Konfigurace integrace Rackspace jednotné přihlašování do služby Azure AD, 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a otestování služby Azure AD jednotného přihlašování
 
 V této části nakonfigurujete a testovací služby Azure AD jednotné přihlašování s jednotným Přihlašováním Rackspace podle testovacího uživatele volá **Britta Simon**.
-Pro jednotné přihlašování pro práci je potřeba navázat vztah odkazu mezi uživatele služby Azure AD a související uživatelské v Rackspace jednotného přihlašování.
+Pokud používáte jednotné přihlašování Rackspace, Rackspace uživatelé se automaticky vytvoří při prvním přihlášení k portálu Rackspace. 
 
 Nakonfigurovat a otestovat Azure AD jednotné přihlašování s jednotným Přihlašováním Rackspace, které potřebujete k dokončení následujících stavebních bloků:
 
@@ -80,8 +80,8 @@ Nakonfigurovat a otestovat Azure AD jednotné přihlašování s jednotným Při
 2. **[Konfigurace Rackspace jednotného přihlašování Single Sign-On](#configure-rackspace-sso-single-sign-on)**  – ke konfiguraci nastavení jednotného přihlašování na straně aplikace.
 3. **[Vytvořit testovacího uživatele Azure AD](#create-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
 4. **[Přiřadit uživatele Azure AD](#assign-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotného přihlašování.
-5. **[Vytvořit testovacího uživatele jednotného přihlašování Rackspace](#create-rackspace-sso-test-user)**  – Pokud chcete mít protějšek Britta Simon v Rackspace jednotného přihlašování, který je propojený s Azure AD reprezentace uživatele.
-6. **[Otestovat jednotné přihlašování](#test-single-sign-on)**  – Pokud chcete ověřit, jestli funguje v konfiguraci.
+1. **[Nastavit mapování atributů v Ovládacích panelech Rackspace](#set-up-attribute-mapping-in-the-rackspace-control-panel)**  – Pokud chcete přiřadit Rackspace role uživatelů Azure AD.
+1. **[Otestovat jednotné přihlašování](#test-single-sign-on)**  – Pokud chcete ověřit, jestli funguje v konfiguraci.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurace služby Azure AD jednotného přihlašování
 
@@ -121,21 +121,21 @@ Ke konfiguraci Azure AD jednotné přihlašování s jednotným Přihlašování
 
     ![Odkaz ke stažení certifikátu](common/metadataxml.png)
 
-6. Na **nastavit jednotné přihlašování Rackspace** tématu, zkopírujte příslušné adresy URL podle vašich požadavků.
-
-    ![Zkopírování adresy URL konfigurace](common/copy-configuration-urls.png)
-
-    a. Přihlašovací adresa URL
-
-    b. Identifikátor Azure AD
-
-    c. Adresa URL – odhlášení
+Tento soubor se nahraje k Rackspace k vyplnění požadovaných nastavení konfigurace federace identit.
 
 ### <a name="configure-rackspace-sso-single-sign-on"></a>Konfigurace jednotného přihlašování Rackspace jednotného přihlašování
 
-Ke konfiguraci jednotného přihlašování na **jednotného přihlašování Rackspace** straně, je nutné odeslat na stažený **kód XML metadat federace** a vhodné zkopírovaný adresy URL z webu Azure portal [tým podpory Rackspace jednotného přihlašování ](https://support.rackspace.com/). Nastavují tohoto nastavení můžete mít správně nastavené na obou stranách připojení SAML SSO.
+Ke konfiguraci jednotného přihlašování na **jednotného přihlašování Rackspace** na straně:
 
-### <a name="create-an-azure-ad-test-user"></a>Vytvořit testovacího uživatele Azure AD 
+1. V dokumentaci na [přidat zprostředkovatele Identity v Ovládacích panelech](https://developer.rackspace.com/docs/rackspace-federation/gettingstarted/add-idp-cp/)
+1. To vás provede kroky pro:
+    1. Vytvoření nového zprostředkovatele Identity
+    1. Zadejte e-mailové doméně, která budou uživatelé používat k identifikaci vaší společnosti při přihlášení.
+    1. Nahrát **kód XML metadat federace** dříve stažené z ovládacího panelu Azure.
+
+To se správně nakonfigurovat základní nastavení jednotného přihlašování, které jsou potřebné pro připojení k Azure a Rackspace.
+
+### <a name="create-an-azure-ad-test-user"></a>Vytvořit testovacího uživatele Azure AD
 
 Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal volá Britta Simon.
 
@@ -185,15 +185,58 @@ V této části je povolit Britta Simon používat jednotné přihlašování Az
 
 7. V **přidat přiřazení** dialogové okno kliknutím **přiřadit** tlačítko.
 
-### <a name="create-rackspace-sso-test-user"></a>Vytvořit testovacího uživatele Rackspace jednotného přihlašování
+### <a name="set-up-attribute-mapping-in-the-rackspace-control-panel"></a>Nastavení mapování atributů v Ovládacích panelech Rackspace
 
-V této části vytvořte uživatele Britta Simon v Rackspace jednotného přihlašování. Práce s [tým podpory jednotného přihlašování Rackspace](https://support.rackspace.com/) přidat uživatele na platformě Rackspace jednotného přihlašování. Uživatelé musí vytvořit a aktivovat, než použití jednotného přihlašování.
+Rackspace používá **zásady mapování atributů** Rackspace rolí a skupin přiřadit uživatelům jednotné přihlašování. **Zásady mapování atributů** výrazném konfigurační pole uživatel vyžaduje Rackspace deklarace identity Azure AD SAML. Další dokumentaci najdete v Rackspace [základy mapování atributů dokumentaci](https://developer.rackspace.com/docs/rackspace-federation/attribmapping-basics/). Některé aspekty:
 
-### <a name="test-single-sign-on"></a>Test jednotného přihlašování 
+* Pokud chcete přiřadit různé úrovně přístupu Rackspace pomocí skupin Azure AD, musíte povolit ve službě Azure deklaraci skupiny **jednotného přihlašování Rackspace** nastavení jednotného přihlašování. **Zásady mapování atributů** se pak použije tak, aby odpovídaly těmto skupinám na požadovanou Rackspace role a skupiny:
+
+    ![Deklarace nastavení skupin](common/sso-groups-claim.png)
+
+* Ve výchozím nastavení Azure AD pošle skupiny UID v Azure AD v deklaraci identity SAML, a název skupiny. Pokud synchronizujete vaší místní služby Active Directory do služby Azure AD, ale máte možnost odeslat skutečné názvy skupin:
+
+    ![Název nastavení deklarace skupiny](common/sso-groups-claims-names.png)
+
+Následující příklad **zásady mapování atributů** ukazuje:
+1. Nastavení Rackspace uživatelské jméno `user.name` deklarace identity SAML. Můžete použít jakýkoli nárok, ale je nejběžnější nastavit pole obsahující e-mailovou adresu uživatele.
+1. Nastavení rolí Rackspace `admin` a `billing:admin` pro uživatele to provede spárováním odpovídajících skupiny Azure AD, název skupiny nebo UID skupiny. A *nahrazení* z `"{0}"` v `roles` pole se používá a budou nahrazeny výsledky `remote` pravidlo výrazy.
+1. Použití `"{D}"` *výchozí nahrazení* umožňuje načíst další pole SAML tím, že hledají standardního a dobře známé deklarace identity SAML v exchangi SAML Rackspace.
+
+```yaml
+---
+mapping:
+    rules:
+    - local:
+        user:
+          domain: "{D}"
+          name: "{At(http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name)}"
+          email: "{D}"
+          roles:
+              - "{0}"
+          expire: "{D}"
+      remote:
+          - path: |
+              (
+                if (mapping:get-attributes('http://schemas.microsoft.com/ws/2008/06/identity/claims/groups')='7269f9a2-aabb-9393-8e6d-282e0f945985') then ('admin', 'billing:admin') else (),
+                if (mapping:get-attributes('http://schemas.microsoft.com/ws/2008/06/identity/claims/groups')='MyAzureGroup') then ('admin', 'billing:admin') else ()
+              )
+            multiValue: true
+  version: RAX-1
+```
+> [!TIP]
+> Ujistěte se, že používáte textový editor, který validuje syntaxi YAML při úpravách souboru zásad.
+
+Zobrazit Rackspace [základy mapování atributů dokumentaci](https://developer.rackspace.com/docs/rackspace-federation/attribmapping-basics/) Další příklady.
+
+### <a name="test-single-sign-on"></a>Test jednotného přihlašování
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 
 Po kliknutí na dlaždici Rackspace jednotného přihlašování na přístupovém panelu, můžete by měl být automaticky přihlášeni na jednotné přihlašování Rackspace, u kterého nastavíte jednotné přihlašování. Další informace o přístupovém panelu, naleznete v tématu [Úvod k přístupovému panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+
+Můžete také použít **ověřit** tlačítko **jednotného přihlašování Rackspace** jednotné přihlašování – nastavení:
+
+   ![Tlačítko Ověřit jednotného přihlašování](common/sso-validate-sign-on.png)
 
 ## <a name="additional-resources"></a>Další prostředky
 

@@ -11,13 +11,13 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: sashan,moslake,josack
 manager: craigg
-ms.date: 03/01/2019
-ms.openlocfilehash: 5b11f9bc25cd0fcc8a83a2eeaf5cc1746a63200e
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
-ms.translationtype: MT
+ms.date: 04/18/2019
+ms.openlocfilehash: 04a5b98daf94275c6a95503c518248abeaeaeaa6
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58093884"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59998273"
 ---
 # <a name="sql-database-resource-limits-for-azure-sql-database-server"></a>Limity prostředků SQL Database pro server Azure SQL Database
 
@@ -55,7 +55,7 @@ Při zjištění vysokou výpočetní využití, možnosti omezení rizik:
 - Zvětšení velikosti výpočetního databáze nebo elastického fondu pro databázi poskytnout další výpočetní prostředky. Zobrazit [škálování izolované databáze prostředků](sql-database-single-database-scale.md) a [škálování elastického fondu prostředků](sql-database-elastic-pool-scale.md).
 - Optimalizace dotazů, aby se snížilo využití prostředků každého dotazu. Další informace najdete v tématu [dotazu ladění/Hinting](sql-database-performance-guidance.md#query-tuning-and-hinting).
 
-### <a name="storage"></a>Storage
+### <a name="storage"></a>Úložiště
 
 Když databáze využité dosáhne limitu maximální velikost, vloží databáze a aktualizací, které zvyšují velikost dat a klienti obdrží [chybová zpráva](sql-database-develop-error-messages.md). Databáze VYBERE a odstraní se nadále probíhat úspěšně.
 
@@ -75,7 +75,7 @@ Pokud dochází k vysoké využití relace nebo pracovního procesu, možnosti o
 - Optimalizace dotazů, aby se snížilo využití prostředků každého dotazu, je-li příčinou využití zvýšenou pracovního procesu je z důvodu kolize pro výpočetní prostředky. Další informace najdete v tématu [dotazu ladění/Hinting](sql-database-performance-guidance.md#query-tuning-and-hinting).
 
 ## <a name="transaction-log-rate-governance"></a>Transakční protokol míra zásad správného řízení 
-Transakční protokol míra zásad správného řízení je proces ve službě Azure SQL Database používá k omezení vysoké ingestování účtovat sazby platné pro úlohy, jako jsou hromadné vložení SELECT INTO a sestavení indexu. Tato omezení jsou sledovány a vynucují na úrovni sekunda pro míru generování záznamů protokolu, omezení propustnosti bez ohledu na to, kolik IOs může být vydaný pro datové soubory.  Rychlost generování protokolu transakcí aktuálně se škálují lineárně až bod, který je závislá na hardwaru, pomocí protokolu maximální rychlost povoleno, se 48 MB/s s nákupem modelu virtuálních jader. 
+Transakční protokol míra zásad správného řízení je proces ve službě Azure SQL Database používá k omezení vysoké ingestování účtovat sazby platné pro úlohy, jako jsou hromadné vložení SELECT INTO a sestavení indexu. Tato omezení jsou sledovány a vynucují na úrovni sekunda pro míru generování záznamů protokolu, omezení propustnosti bez ohledu na to, kolik IOs může být vydaný pro datové soubory.  Rychlost generování protokolu transakcí aktuálně se škálují lineárně až bod, který je závislá na hardwaru, pomocí protokolu maximální rychlost povoleno, se 96 MB/s s nákupem modelu virtuálních jader. 
 
 > [!NOTE]
 > Skutečné fyzické soubory transakčních protokolů Iosu se řídí nebo jsou omezena. 
@@ -98,7 +98,7 @@ Směrování protokolu míra správce přenosu je prezentované prostřednictví
 |||
 
 Při zjištění omezení frekvence protokolu, který brzdí požadované škálovatelnost, zvažte následující možnosti:
-- Vertikálně navýšit kapacitu na vyšší úroveň zajistí maximální rychlost protokolu 48 MB/s. 
+- Vertikálně navýšit kapacitu na vyšší úroveň zajistí maximální rychlost protokolu 96 MB/s. 
 - Pokud se načítají data je přechodná, tedy přípravu dat v procesu ETL, to je možné načíst do databáze tempdb (která je zaznamenána minimálně). 
 - Pro analytické scénáře zaveďte do Clusterované zahrnutých tabulky columnstore. Tím se snižuje frekvence požadovaný protokol důsledku komprese. Tato technika zvýší využití procesoru a platí jenom pro datové sady, které využívají samosprávné Clusterované indexy columnstore. 
 

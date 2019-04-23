@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: conceptual
-ms.date: 02/13/2019
+ms.date: 02/26/2019
 ms.author: aahi
-ms.openlocfilehash: 9d0a803f8a397d3c24f083188b6186acf4dde809
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
-ms.translationtype: MT
+ms.openlocfilehash: 720a6c57d4f1a6079f78244559a25018349bd378
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58122871"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60011235"
 ---
 # <a name="how-to-call-the-text-analytics-rest-api"></a>Volání REST API pro analýzu textu
 
@@ -26,7 +26,7 @@ Každý požadavek musí obsahovat svůj přístupový klíč a koncový bod HTT
 Připomínáme, že pro analýzu textu je bezstavové, takže nejsou žádné datové prostředky se mají spravovat. Nahrání text analyzován přijetí, a výsledky se vrátí okamžitě volající aplikaci.
 
 > [!Tip]
-> Pro jednorázové volání, uvidíte, jak funguje rozhraní API, je možné posílat požadavky POST z integrovaného **testovací rozhraní API konzoly**, k dispozici na všech [stránky dokumentace rozhraní API](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c6). Neexistuje žádné nastavení, a jediným požadavkem je na dokumenty JSON a přístupový klíč vložte do požadavku. 
+> Pro jednorázové volání, uvidíte, jak funguje rozhraní API, je možné posílat požadavky POST z integrovaného **testovací rozhraní API konzoly**, k dispozici na všech [stránky dokumentace rozhraní API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c6). Neexistuje žádné nastavení, a jediným požadavkem je na dokumenty JSON a přístupový klíč vložte do požadavku. 
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -60,10 +60,10 @@ Služba přijímá požádat o velikost až 1 MB. Pokud používáte Postman (ne
 
    Koncové body prostředků jsou následujícím způsobem (vaší oblasti se mohou lišit):
 
-   + `https://westus.api.cognitive.microsoft.com/text/analytics/v2.0/sentiment`
-   + `https://westus.api.cognitive.microsoft.com/text/analytics/v2.0/keyPhrases`
-   + `https://westus.api.cognitive.microsoft.com/text/analytics/v2.0/languages`
-   + `https://westus.api.cognitive.microsoft.com/text/analytics/v2.1-preview/entities`
+   + `https://westus.api.cognitive.microsoft.com/text/analytics/v2.1/sentiment`
+   + `https://westus.api.cognitive.microsoft.com/text/analytics/v2.1/keyPhrases`
+   + `https://westus.api.cognitive.microsoft.com/text/analytics/v2.1/languages`
+   + `https://westus.api.cognitive.microsoft.com/text/analytics/v2.1/entities`
 
 2. Nastavte tři hlavičky žádosti:
 
@@ -81,10 +81,10 @@ Služba přijímá požádat o velikost až 1 MB. Pokud používáte Postman (ne
 
 5. Vložte několik dokumentů JSON ve formátu, který je platný pro určené analýzy. Další informace o konkrétní analýzy najdete v tématech níže:
 
-   + [Rozpoznávání jazyka](text-analytics-how-to-language-detection.md)  
-   + [Extrakce klíčových frází](text-analytics-how-to-keyword-extraction.md)  
-   + [Analýza subjektivního hodnocení](text-analytics-how-to-sentiment-analysis.md)  
-   + [Rozpoznávání entit (Preview)](text-analytics-how-to-entity-linking.md)  
+  + [Rozpoznávání jazyka](text-analytics-how-to-language-detection.md)  
+  + [Extrakce klíčových frází](text-analytics-how-to-keyword-extraction.md)  
+  + [Analýza subjektivního hodnocení](text-analytics-how-to-sentiment-analysis.md)  
+  + [Rozpoznávání entit](text-analytics-how-to-entity-linking.md)  
 
 
 6. Klikněte na tlačítko **odeslat** odešlete žádost. Můžete odeslat až 100 požadavků za minutu. 

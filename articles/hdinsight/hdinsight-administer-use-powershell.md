@@ -7,40 +7,25 @@ author: hrasheed-msft
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 11/06/2018
+ms.date: 04/17/2019
 ms.author: tylerfox
-ms.openlocfilehash: 09574647aae8725a614dd20fd0247b0f8cf8b68a
-ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
-ms.translationtype: MT
+ms.openlocfilehash: 6cf05437d5fc181a9fadae110a44efd88d06a2da
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58446988"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60011606"
 ---
 # <a name="manage-apache-hadoop-clusters-in-hdinsight-by-using-azure-powershell"></a>Spravovat clustery systému Apache Hadoop v HDInsight pomocí Azure Powershellu
 [!INCLUDE [selector](../../includes/hdinsight-portal-management-selector.md)]
 
-Prostředí Azure PowerShell slouží k řízení a automatizaci nasazení a správu vašich úloh v Azure. V tomto článku se dozvíte, jak spravovat [Apache Hadoop](https://hadoop.apache.org/) clustery v Azure HDInsight pomocí Azure Powershellu. Seznam rutin Powershellu pro HDInsight najdete v tématu [Reference k rutinám HDInsight](https://msdn.microsoft.com/library/azure/dn479228.aspx).
+Prostředí Azure PowerShell slouží k řízení a automatizaci nasazení a správu vašich úloh v Azure. V tomto článku se dozvíte, jak spravovat [Apache Hadoop](https://hadoop.apache.org/) clustery v Azure HDInsight pomocí modulu Azure PowerShell Az. Seznam rutin Powershellu pro HDInsight najdete v tématu [Az.HDInsight odkaz](https://docs.microsoft.com/powershell/module/az.hdinsight).
 
-**Požadavky**
+## <a name="prerequisites"></a>Požadavky
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+* Předplatné Azure. Viz [Získání bezplatné zkušební verze Azure](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/).
 
-Před zahájením tohoto článku, musíte mít následující položky:
-
-* **Předplatné Azure**. Viz [Získání bezplatné zkušební verze Azure](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/).
-
-## <a name="install-azure-powershell"></a>Instalace prostředí Azure PowerShell
-[!INCLUDE [upgrade-powershell](../../includes/hdinsight-use-latest-powershell.md)]
-
-Pokud jste nainstalovali Azure PowerShell verze 0.9 x, musíte ho odinstalovat před instalací novější verze.
-
-Pokud chcete zkontrolovat verzi nainstalovaného powershellu:
-
-```powershell
-Get-Module *Az*
-```
-
-Odinstalovat starší verze, spusťte v ovládacím panelu Programy a funkce.
+* PowerShell [Az modulu](https://docs.microsoft.com/powershell/azure/overview) nainstalované.
 
 ## <a name="create-clusters"></a>Vytváření clusterů
 Zobrazit [vytvoření linuxových clusterech v HDInsight pomocí Azure Powershellu](hdinsight-hadoop-create-linux-clusters-azure-powershell.md)
@@ -75,9 +60,6 @@ Remove-AzResourceGroup -Name <Resource Group Name>
 ## <a name="scale-clusters"></a>Škálování clusterů
 Funkce škálování clusteru umožňuje změnit počet uzlů pracovního procesu se používá cluster, který běží v Azure HDInsight bez nutnosti nového vytváření clusteru.
 
-> [!NOTE]  
-> Pouze clustery HDInsight verze 3.1.3 nebo vyšší nejsou podporovány. Pokud si nejste jistí verze vašeho clusteru, můžete zkontrolovat na stránce Vlastnosti.  Zobrazit [výpisu a zobrazení clusterů](hdinsight-administer-use-portal-linux.md#showClusters).
-
 Dopad Změna počtu datových uzlů pro každý typ clusteru podporuje HDInsight:
 
 * Apache Hadoop
@@ -90,9 +72,9 @@ Dopad Změna počtu datových uzlů pro každý typ clusteru podporuje HDInsight
     Bezproblémově můžete přidat nebo odebrat uzly do clusteru HBase během jejího běhu. Oblastní servery jsou automaticky rovnoměrně rozdělen do několika minut od dokončení operace škálování. Můžete však také ručně vyvážit místní servery. přihlášením k hlavnímu uzlu clusteru a pak spusťte následující příkazy z okna příkazového řádku:
 
     ```bash
-    >pushd %HBASE_HOME%\bin
-    >hbase shell
-    >balancer
+    pushd %HBASE_HOME%\bin
+    hbase shell
+    balancer
     ```
 
 * Apache Storm
@@ -169,6 +151,10 @@ Je stejným způsobem jako HTTP udělení nebo odvolání přístupu. Pokud clus
 ## <a name="find-the-default-storage-account"></a>Najít výchozí účet úložiště
 Následující skript prostředí PowerShell ukazuje, jak získat výchozí název účtu úložiště a související informace:
 
+> [!IMPORTANT]  
+> Hodnoty pro `DefaultStorageAccount`, a `DefaultStorageContainer` nebudou zobrazeny z [Get-AzHDInsightCluster](https://docs.microsoft.com/powershell/module/az.hdinsight/get-azhdinsightcluster) při [zabezpečený přenos](../storage/common/storage-require-secure-transfer.md) je povolená v účtu úložiště.
+
+
 ```powershell
 #Connect-AzAccount
 $clusterName = "<HDInsight Cluster Name>"
@@ -226,34 +212,14 @@ Zobrazit [použití Apache Sqoop s HDInsight](hadoop/hdinsight-use-sqoop.md).
 Zobrazit [použití Apache Oozie s Hadoopem Apache k definování a spuštění workflowu v HDInsight](hdinsight-use-oozie-linux-mac.md).
 
 ## <a name="upload-data-to-azure-blob-storage"></a>Nahrání dat do úložiště objektů Blob v Azure
-Viz [Nahrání dat do služby HDInsight][hdinsight-upload-data].
+
+Zobrazit [nahrání dat do HDInsight](hdinsight-upload-data.md).
 
 ## <a name="see-also"></a>Viz také
+
 * [Referenční dokumentace k rutinám HDInsight](https://msdn.microsoft.com/library/azure/dn479228.aspx)
 * [Spravovat clustery systému Apache Hadoop v HDInsight pomocí webu Azure portal](hdinsight-administer-use-portal-linux.md)
-* [Správa HDInsight pomocí rozhraní příkazového řádku][hdinsight-admin-cli]
-* [Vytvoření clusterů HDInsight][hdinsight-provision]
-* [Nahrání dat do služby HDInsight][hdinsight-upload-data]
-* [Odeslání úloh systému Apache Hadoop prostřednictvím kódu programu][hdinsight-submit-jobs]
-* [Začínáme se službou Azure HDInsight][hdinsight-get-started]
-
-[azure-purchase-options]: https://azure.microsoft.com/pricing/purchase-options/
-[azure-member-offers]: https://azure.microsoft.com/pricing/member-offers/
-[azure-free-trial]: https://azure.microsoft.com/pricing/free-trial/
-
-[hdinsight-get-started]:hadoop/apache-hadoop-linux-tutorial-get-started.md
-[hdinsight-provision]: hdinsight-hadoop-provision-linux-clusters.md
-[hdinsight-provision-custom-options]: hdinsight-hadoop-provision-linux-clusters.md#configuration
-[hdinsight-submit-jobs]:hadoop/submit-apache-hadoop-jobs-programmatically.md
-
-[hdinsight-admin-cli]: hdinsight-administer-use-command-line.md
-[hdinsight-storage]: hdinsight-hadoop-use-blob-storage.md
-[hdinsight-use-hive]:hadoop/hdinsight-use-hive.md
-[hdinsight-use-mapreduce]:hadoop/hdinsight-use-mapreduce.md
-[hdinsight-upload-data]: hdinsight-upload-data.md
-
-[hdinsight-powershell-reference]: https://msdn.microsoft.com/library/dn858087.aspx
-
-[powershell-install-configure]: /powershell/azureps-cmdlets-docs
-
-[image-hdi-ps-provision]: ./media/hdinsight-administer-use-powershell/HDI.PS.Provision.png
+* [Správa HDInsight pomocí rozhraní příkazového řádku](hdinsight-administer-use-command-line.md)
+* [Vytvoření clusterů HDInsight](hdinsight-hadoop-provision-linux-clusters.md)
+* [Odeslání úloh systému Apache Hadoop prostřednictvím kódu programu](hadoop/submit-apache-hadoop-jobs-programmatically.md)
+* [Začínáme s Azure HDInsight](hadoop/apache-hadoop-linux-tutorial-get-started.md)

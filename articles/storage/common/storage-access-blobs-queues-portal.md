@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 03/19/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: b56cbfbc9dfde8b1a7d43d55ee85c34fde385902
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 5eba650ac2a052f264d82260e9fc07bf195235da
+ms.sourcegitcommit: c884e2b3746d4d5f0c5c1090e51d2056456a1317
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58846387"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60148930"
 ---
 # <a name="use-the-azure-portal-to-access-blob-or-queue-data"></a>Pomocí webu Azure portal pro přístup k datům objektu blob nebo fronty
 
@@ -41,13 +41,13 @@ Při pokusu o přístup k datům objektu blob nebo fronty na webu Azure Portal, 
 Pro přístup k datům objektu blob nebo fronty na webu Azure Portal pomocí svého účtu Azure AD, musí být splněné pro vás i následující příkazy:
 
 - Jste byli přiřazeni Azure Resource Manageru [čtečky](../../role-based-access-control/built-in-roles.md#reader) role minimálně s vymezeným oborem úroveň účtu úložiště nebo vyšší. **Čtečky** role uděluje oprávnění nejvíce s omezeným přístupem, ale jiné role Azure Resource Manageru, který uděluje přístup k prostředkům správy účtu úložiště je také přijatelné.
-- Jste byli přiřazeni buď vestavěná nebo vlastní roli, která poskytuje přístup k objektům BLOB nebo fronty data.
+- Jste byli přiřazeni buď vestavěná nebo vlastní roli, která poskytuje přístup k datům objektu blob nebo fronty.
 
 **Čtečky** přiřazení role nebo jiné přiřazení role Azure Resource Manageru je nutné, aby uživatel můžete zobrazit a procházet prostředky správy účtu úložiště na webu Azure Portal. Role RBAC, které udělují přístup k datům objektu blob nebo fronty bez možnosti udělovat přístup k prostředkům správy účtu úložiště. Uživatel pro přístup k datům objektu blob nebo fronty na portálu, potřebuje oprávnění k procházení prostředků účtu úložiště. Další informace o tomto požadavku najdete v tématu [přiřadit role Čtenář pro přístup k portálu](../common/storage-auth-aad-rbac-portal.md#assign-the-reader-role-for-portal-access).
 
 Předdefinované role, které podporují přístup k datům objektu blob nebo fronty patří:
 
-- [Vlastník dat objektů Blob úložiště](../../role-based-access-control/built-in-roles.md#storage-blob-data-owner): Pro POSIX řízení přístupu pro Azure Data Lake Storage Gen2 (preview).
+- [Vlastník dat objektů Blob úložiště](../../role-based-access-control/built-in-roles.md#storage-blob-data-owner): Pro řízení přístupu POSIX pro Azure Data Lake Storage Gen2.
 - [Přispěvatel dat objektu Blob úložiště](../../role-based-access-control/built-in-roles.md#storage-blob-data-contributor): Oprávnění ke čtení/zápis/odstranění pro objekty BLOB.
 - [Čtenář dat objektu Blob úložiště](../../role-based-access-control/built-in-roles.md#storage-blob-data-reader): Oprávnění jen pro čtení pro objekty BLOB.
 - [Přispěvatel dat fronty služby Storage](../../role-based-access-control/built-in-roles.md#storage-queue-data-contributor): Oprávnění pro čtení/zápis/delete pro fronty.

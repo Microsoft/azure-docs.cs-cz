@@ -11,11 +11,11 @@ ms.service: application-insights
 ms.topic: conceptual
 manager: carmonm
 ms.openlocfilehash: 0b544bfcb59bf4c2b44e6b666fcd33e9fb493692
-ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54330649"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60256630"
 ---
 # <a name="log-based-and-pre-aggregated-metrics-in-application-insights"></a>Na základě protokolů a předem agregovaných metrik ve službě Application Insights
 
@@ -65,7 +65,7 @@ Kolekce vlastních metrik dimenze je ve výchozím nastavení vypnuta vzhledem k
 
 Pomocí Průzkumníka metrik služby Azure Monitor k vykreslení grafy z předem agregovat a založené na protokolech metriky a vytvořit řídicí panely s grafy. Po vybrání požadovaného prostředku Application Insights, pomocí nástroje pro výběr oboru názvů můžete přepínat mezi úrovněmi standard (preview) a metrikami založenými na protokolu, nebo vybrat vlastní metriky oboru názvů:
 
-![Metriky oboru názvů](./media/pre-aggregated-metrics-log-metrics/002-metric-namespace.png)
+![Obor názvů metriky](./media/pre-aggregated-metrics-log-metrics/002-metric-namespace.png)
 
 ## <a name="next-steps"></a>Další postup
 

@@ -14,12 +14,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.author: jowargo
 ms.date: 04/08/2019
-ms.openlocfilehash: 559dd5ecfa4615e42e4f7ac40008e69c9210e2a4
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 64c2cd0ed1572fdaaa42f4731519ba6d5c320f1c
+ms.sourcegitcommit: c884e2b3746d4d5f0c5c1090e51d2056456a1317
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59799469"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60149125"
 ---
 # <a name="registration-management"></a>Správa registrací
 
@@ -36,11 +36,11 @@ Registrace zařízení ve službě Centrum oznámení se provádí pomocí **reg
 Registrace přidruží popisovač služby oznamování platformy (PNS) pro zařízení se značkami a případně šablony. Popisovač systému oznámení platformy může být parametr ChannelURI, token zařízení nebo id registrace FCM. Značky se používají k oznámení směrovat na správná sada popisovače zařízení. Další informace najdete v tématu [směrování a výrazy označení](notification-hubs-tags-segment-push-message.md). Šablony slouží k provedení transformace za registraci. Další informace najdete v tématu [Šablony](notification-hubs-templates-cross-platform-push-messages.md).
 
 > [!NOTE]
-> Azure Notification Hubs podporuje maximálně 60 značek na registraci.
+> Azure Notification Hubs podporuje maximálně 60 značek na zařízení.
 
 ### <a name="installations"></a>Instalace
 
-Instalace je vylepšený vlastnosti související s registrací, který obsahuje kontejner nabízených oznámení. Je nejnovější a nejlepší přístup k registraci zařízení. Však není podporována sadou SDK pro .NET na straně klienta ([SDK centra oznámení pro back-endové operace](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/)) ještě.  To znamená, že pokud se registrace ze samotného klientského zařízení, je třeba použít [rozhraní REST API pro Notification Hubs](https://msdn.microsoft.com/library/mt621153.aspx) přístup pro podporu instalace. Pokud používáte službu back-endu, byste měli moct používat [SDK centra oznámení pro back-endové operace](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/).
+Instalace je vylepšený vlastnosti související s registrací, který obsahuje kontejner nabízených oznámení. Je nejnovější a nejlepší přístup k registraci zařízení. Však není podporována sadou SDK pro .NET na straně klienta ([SDK centra oznámení pro back-endové operace](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/)) ještě.  To znamená, že pokud se registrace ze samotného klientského zařízení, je třeba použít [rozhraní REST API pro Notification Hubs](https://docs.microsoft.com/en-us/rest/api/notificationhubs/create-overwrite-installation) přístup pro podporu instalace. Pokud používáte službu back-endu, byste měli moct používat [SDK centra oznámení pro back-endové operace](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/).
 
 Tady jsou některé klíčové výhody použití zařízení:
 
@@ -48,7 +48,7 @@ Tady jsou některé klíčové výhody použití zařízení:
 - Instalační model podporuje formát speciální značka (`$InstallationId:{INSTALLATION_ID}`), která umožňuje odesílání oznámení přímo do konkrétních zařízení. Například, pokud kód aplikace nastaví ID instalace `joe93developer` pro toto konkrétní zařízení, Vývojář můžete cílit na toto zařízení při odesílání oznámení `$InstallationId:{joe93developer}` značky. To umožňuje cílit na konkrétní zařízení bez nutnosti vytvářet další kód.
 - Použití zařízení také vám umožní registraci částečné aktualizace. Částečné aktualizace instalace je požadováno pomocí metody PATCH [JSON-Patch standard](https://tools.ietf.org/html/rfc6902). To je užitečné, pokud chcete aktualizovat značky na registraci. Není nutné stáhnout celý registrace a pak znovu odeslat všechny předchozí značky.
 
-Instalace může obsahovat následující vlastnosti. Úplný seznam vlastností instalace, najdete v části [vytvoření nebo instalaci přepsat rozhraní REST API](https://msdn.microsoft.com/library/azure/mt621153.aspx) nebo [vlastnosti instalace](https://msdn.microsoft.com/library/azure/microsoft.azure.notificationhubs.installation_properties.aspx).
+Instalace může obsahovat následující vlastnosti. Úplný seznam vlastností instalace, najdete v části [vytvoření nebo instalaci přepsat rozhraní REST API](https://docs.microsoft.com/en-us/rest/api/notificationhubs/create-overwrite-installation) nebo [vlastnosti instalace](https://msdn.microsoft.com/library/azure/microsoft.azure.notificationhubs.installation_properties.aspx).
 
 ```json
 // Example installation format to show some supported properties

@@ -4,7 +4,7 @@ description: Řešení potíží s nasazení OpenShift v Azure.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: haroldwongms
-manager: joraio
+manager: mdotson
 editor: ''
 tags: azure-resource-manager
 ms.assetid: ''
@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 02/02/2019
+ms.date: 04/19/2019
 ms.author: haroldw
-ms.openlocfilehash: c65e76fb9453e93e856c76f397d187f9ee740fbd
-ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
-ms.translationtype: MT
+ms.openlocfilehash: af6746e7246b8783e5bdbef34cf1b57427aa7ebb
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58540342"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60001112"
 ---
 # <a name="troubleshoot-openshift-deployment-in-azure"></a>Řešení potíží s nasazení OpenShift v Azure
 
@@ -42,9 +42,9 @@ Připojte přes SSH k hostiteli playbook ansible. OKD šablony (verzi 3.9 a star
 
 ## <a name="log-files"></a>Soubory protokolu
 
-Soubory protokolu (stderr a stdout) pro skripty Příprava hostitele jsou umístěny v /var/lib/waagent/custom-script/download/0 na všech hostitelích. Pokud došlo k chybě při přípravě hostitele, zobrazte tyto soubory protokolu k určení chybu.
+Soubory protokolu (stderr a stdout) pro skripty Příprava hostitele jsou umístěny v `/var/lib/waagent/custom-script/download/0` na všech hostitelích. Pokud došlo k chybě při přípravě hostitele, zobrazte tyto soubory protokolu k určení chybu.
 
-Pokud skripty přípravy proběhla úspěšně, souborů protokolů v adresáři /var/lib/waagent/custom-script/download/1 hostitele playbook ansible nutné prověřit. Pokud během vlastní instalace OpenShift došlo k chybě, soubor stdout zobrazí chyba. Tyto informace slouží k další pomoc požádejte podporu.
+Pokud skripty přípravy proběhla úspěšně, pak v protokolu souborů v `/var/lib/waagent/custom-script/download/1` directory hostitele playbook ansible bude nutné prověřit. Pokud během vlastní instalace OpenShift došlo k chybě, soubor stdout zobrazí chyba. Tyto informace slouží k další pomoc požádejte podporu.
 
 Příklad výstupu
 
@@ -93,11 +93,11 @@ Většina běžných chyb při instalaci jsou:
 
 ### <a name="private-key-has-a-passphrase"></a>Privátní klíč má přístupové heslo
 
-Zobrazí se vám chyba, že oprávnění bylo odepřeno pro SSH. Připojte přes SSH k hostiteli playbook ansible vyhledat heslo privátního klíče.
+Zobrazí se vám chyba, že oprávnění bylo odepřeno pro ssh. SSH k hostiteli playbook ansible vyhledat heslo privátního klíče.
 
 ### <a name="key-vault-secret-with-private-key-wasnt-created-correctly"></a>Tajný kód trezoru klíčů se soukromým klíčem nebyl správně vytvořen.
 
-Privátní klíč se vloží do hostitele playbook ansible - ~/.ssh/id_rsa. Potvrďte, že tento soubor je správná. Testování tak, že otevřete relaci SSH k jednomu z uzlů clusteru z hostitele playbook ansible.
+Privátní klíč se zkopíruje do hostitele playbook ansible - ~/.ssh/id_rsa. Potvrďte, že tento soubor je správná. Testování tak, že otevřete relaci SSH k jednomu z uzlů clusteru z hostitele playbook ansible.
 
 ### <a name="service-principal-credentials-were-entered-incorrectly"></a>Přihlašovací údaje instančního objektu služby byly zadány správně
 

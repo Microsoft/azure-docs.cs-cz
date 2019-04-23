@@ -10,12 +10,12 @@ ms.subservice: bing-custom-search
 ms.topic: conceptual
 ms.date: 09/25/2018
 ms.author: v-gedod
-ms.openlocfilehash: 942e61b0ee69402d516982c66a852d5e26304809
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
-ms.translationtype: MT
+ms.openlocfilehash: e395fc96c560c6c6c1671e472840ba0f2a316d98
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55859433"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60006773"
 ---
 # <a name="language-and-region-support-for-the-bing-custom-search-api"></a>Podpora jazyka a oblasti pro rozhraní API pro vlastní vyhledávání Bingu
 
@@ -42,7 +42,7 @@ Můžete zadat, země/oblast pomocí `cc` parametr dotazu. Pokud chcete zadat ur
 |Finsko|FI|
 |Francie|FR|
 |Německo|DE|
-|Hongkong|HK|
+|Hongkong – zvláštní správní oblast|HK|
 |Indie|IN|
 |Indonésie|ID|
 |Itálie|IT|
@@ -86,7 +86,7 @@ Můžete zadat, země/oblast pomocí `cc` parametr dotazu. Pokud chcete zadat ur
 |Finsko|Finština|fi-FI|
 |Francie|Francouzština|fr-FR|
 |Německo|Němčina|de-DE|
-|Hongkong|Tradiční čínština|zh-HK|
+|Hongkong – zvláštní administrativní oblast|Tradiční čínština|zh-HK|
 |Indie|Angličtina|en-IN|
 |Indonésie|Angličtina|cs ID|
 |Itálie|italština|IT-IT|

@@ -4,7 +4,7 @@ description: Požadavky na nasazení OpenShift v Azure.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: haroldwongms
-manager: joraio
+manager: mdotson
 editor: ''
 tags: azure-resource-manager
 ms.assetid: ''
@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 02/02/2019
+ms.date: 04/19/2019
 ms.author: haroldw
-ms.openlocfilehash: f4fd33b250bf1f79610f4363e85b97be87892d78
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
-ms.translationtype: MT
+ms.openlocfilehash: d8a9b82e51c837af6343ddf851545d02299aa527
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57449958"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60001641"
 ---
 # <a name="common-prerequisites-for-deploying-openshift-in-azure"></a>Běžné požadavky pro nasazení OpenShift v Azure
 
@@ -28,19 +28,19 @@ Tento článek popisuje běžné požadavky pro nasazení OpenShift Container Pl
 
 Instalace OpenShift používá runbooků Ansible. Ansible používá Secure Shell (SSH) pro připojení na všechny hostitele clusterů, dokončete kroky instalace.
 
-Když ansible zahájí připojení SSH ke vzdáleným hostitelům, nelze zadat heslo. Z tohoto důvodu se privátní klíč nemůže mít heslo (heslo), s ním spojená nebo nasazení se nezdaří.
+Ansible provádí připojení SSH vzdáleného hostitele, nelze zadat heslo. Z tohoto důvodu se privátní klíč nemůže mít heslo (heslo), s ním spojená nebo nasazení se nezdaří.
 
-Protože virtuální počítače (VM) nasazovat pomocí šablon Azure Resource Manageru, stejný veřejný klíč se používá pro přístup ke všem virtuálním počítačům. Potřebujete připojení k virtuálnímu počítači, který se spustí i všechny playbooky vkládat odpovídající privátní klíč. K tomuto účelu bezpečně použít trezor klíčů Azure k předávání privátní klíč k virtuálnímu počítači.
+Protože virtuální počítače (VM) nasazovat pomocí šablon Azure Resource Manageru, stejný veřejný klíč se používá pro přístup ke všem virtuálním počítačům. Odpovídající privátní klíč musí být na virtuálním počítači, který se spustí i všechny playbooky. K provedení této akce bezpečně, trezor klíčů Azure slouží k předání privátní klíč k virtuálnímu počítači.
 
-Pokud je potřeba jako trvalé úložiště pro kontejnery, trvalé svazky jsou povinné. OpenShift podporuje Azure virtuálních pevných disků (VHD) pro tuto funkci, ale Azure je nutné nejprve konfigurovat jako poskytovatele cloudu.
+Pokud je potřeba jako trvalé úložiště pro kontejnery, trvalé svazky jsou povinné. OpenShift podporuje Azure virtuálních pevných disků (VHD) pro trvalé svazky, ale Azure je nutné nejprve konfigurovat jako poskytovatele cloudu.
 
 V tomto modelu OpenShift:
 
-- Vytvoří objekt VHD v účtu služby Azure Storage nebo spravovaný disk.
+- Vytvoří objekt VHD v účtu služby Azure storage nebo spravovaný disk.
 - Připojí VHD k virtuálnímu počítači a naformátuje svazek.
 - Připojí svazek pod.
 
-Pro tuto konfiguraci pro práci OpenShift potřebuje oprávnění k provedení těchto úloh v Azure. Můžete toho dosáhnout pomocí instančního objektu. Instanční objekt je účet zabezpečení v Azure Active Directory, která jsou udělena oprávnění k prostředkům.
+Pro tuto konfiguraci pro práci OpenShift potřebuje oprávnění k provedení těchto úloh v Azure. Instanční objekt služby se používá pro tento účel. Instanční objekt je účet zabezpečení v Azure Active Directory, která jsou udělena oprávnění k prostředkům.
 
 Instanční objekt musí mít přístup k účtům úložiště a virtuální počítače, které tvoří cluster. Pokud všechny prostředky clusteru OpenShift nasadit do jedné skupiny prostředků, instanční objekt můžete udělit oprávnění této skupiny prostředků.
 
@@ -60,7 +60,7 @@ az login
 ```
 ## <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
 
-Vytvořte skupinu prostředků pomocí příkazu [az group create](/cli/azure/group). Skupina prostředků Azure je logický kontejner, ve kterém se nasazují a spravují prostředky Azure. Doporučujeme použít skupiny vyhrazených prostředků pro hostování služby key vault. Tato skupina je oddělené od skupiny prostředků, do které prostředky clusteru Openshiftu nasazovat.
+Vytvořte skupinu prostředků pomocí příkazu [az group create](/cli/azure/group). Skupina prostředků Azure je logický kontejner, ve kterém se nasazují a spravují prostředky Azure. Použijte skupiny vyhrazených prostředků pro hostování služby key vault. Tato skupina je oddělené od skupiny prostředků, do které prostředky clusteru Openshiftu nasazovat.
 
 Následující příklad vytvoří skupinu prostředků s názvem *keyvaultrg* v *eastus* umístění:
 
@@ -136,6 +136,33 @@ Poznamenejte si vlastnost appId vrácenou příkazem:
 
 Další informace o instančních objektů najdete v tématu [vytvoření instančního objektu Azure pomocí rozhraní příkazového řádku Azure](https://docs.microsoft.com/cli/azure/create-an-azure-service-principal-azure-cli?view=azure-cli-latest).
 
+## <a name="prerequisites-applicable-only-to-resource-manager-template"></a>Požadavky platí pouze pro šablony Resource Manageru
+
+Tajné kódy bude nutné vytvořit pro privátní klíč SSH (**sshPrivateKey**), tajný klíč klienta Azure AD (**aadClientSecret**), heslo správce OpenShift (**openshiftPassword** ) a heslo nebo aktivace klíče správce předplatného Red Hat (**rhsmPasswordOrActivationKey**).  Navíc pokud se používají vlastní certifikáty SSL, pak šest další tajné kódy bude nutné vytvořit - **routingcafile**, **routingcertfile**, **routingkeyfile**, **mastercafile**, **mastercertfile**, a **masterkeyfile**.  Tyto parametry se vysvětlené podrobněji.
+
+Šablona odkazuje na konkrétní názvy tajných kódů tak můžete **musí** použijte názvy tučné uvedené výše (rozlišuje velikost písmen).
+
+### <a name="custom-certificates"></a>Vlastní certifikáty
+
+Ve výchozím nastavení bude nasazení šablony OpenShift clusteru pomocí certifikátů podepsaných svým držitelem pro webovou konzolu OpenShift a domény směrování. Pokud chcete používat vlastní certifikáty SSL, nastavte "routingCertType" k "vlastní" a "masterCertType" k "vlastní".  Musíte pro certifikáty certifikační Autority, certifikátu a klíče soubory ve formátu .pem.  Je možné použít vlastní certifikáty pro jednu, ale nikoli u druhého.
+
+Budete potřebovat k ukládání těchto souborů v tajných kódů služby Key Vault.  Stejné služby Key Vault použijte jako jste použili pro privátní klíč.  Místo vyžadovat 6 další vstupy pro názvů tajných klíčů, je šablona pevně zakódované použít konkrétní názvy tajných kódů pro každý soubor certifikátu SSL.  Store data certifikátu pomocí informací v následující tabulce.
+
+| Název tajného kódu      | Soubor certifikátu   |
+|------------------|--------------------|
+| mastercafile     | soubor předlohové certifikační Autority     |
+| mastercertfile   | hlavní soubor certifikátu.   |
+| masterkeyfile    | soubor hlavních klíčů    |
+| routingcafile    | soubor směrovací certifikační Autority    |
+| routingcertfile  | Směrování souboru certifikátu  |
+| routingkeyfile   | směrování soubor klíče   |
+
+Vytvoření tajných kódů pomocí Azure CLI. Tady je příklad.
+
+```bash
+az keyvault secret set --vault-name KeyVaultName -n mastercafile --file ~/certificates/masterca.pem
+```
+
 ## <a name="next-steps"></a>Další postup
 
 Tento článek popisuje v následujících tématech:
@@ -146,4 +173,4 @@ Tento článek popisuje v následujících tématech:
 V dalším kroku nasaďte OpenShift cluster:
 
 - [Nasazení OpenShift Container Platform](./openshift-container-platform.md)
-- [Nasazení OKD](./openshift-okd.md)
+- [Nasazení OpenShift Container platformy samosprávné Marketplace nabídku](./openshift-marketplace-self-managed.md)

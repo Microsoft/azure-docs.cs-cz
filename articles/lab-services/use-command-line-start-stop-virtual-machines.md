@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/25/2019
 ms.author: spelluru
-ms.openlocfilehash: 51c45fdb0c96e84d3f37f485279aa805361f3818
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: HT
+ms.openlocfilehash: a8132735d1af08055e9341608dcac0564ed4b927
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59798925"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60236686"
 ---
 # <a name="use-command-line-tools-to-start-and-stop-azure-devtest-labs-virtual-machines"></a>Pomocí nástrojů příkazového řádku spouštět a zastavovat virtuální počítače Azure DevTest Labs
 V tomto článku se dozvíte, jak pomocí Azure Powershellu nebo Azure CLI spuštěním a zastavením virtuálních počítačů v testovacím prostředí ve službě Azure DevTest Labs. Můžete vytvořit skripty Powershellu/CLI k automatizaci těchto operací. 
@@ -34,7 +34,7 @@ Ale v některých případech můžete chtít automatizovat spouštění a zasta
 - Použijte jako úloha v pracovním postupu CI/CD na začátku toku, používejte virtuální počítače podle počítače sestavení, testovací počítače ani infrastrukturu a poté zastavte virtuální počítače po dokončení procesu. Příklad tohoto by objekt pro vytváření vlastní image s Azure DevTest Labs.  
 
 ## <a name="azure-powershell"></a>Azure PowerShell
-Následující skript prostředí PowerShell spustí virtuální počítač v testovacím prostředí. [Vyvolání AzResourceAction](/powershell/module/az.resources/invoke-azresourceaction?view=azurermps-6.13.0) se zaměřuje především pro tento skript. **ResourceId** parametr je plně kvalifikované ID prostředku pro virtuální počítač v testovacím prostředí. **Akce** parametr je tam, kde **Start** nebo **Zastavit** možnosti se nastavují v závislosti na tom, co je potřeba.
+Následující skript prostředí PowerShell spustí virtuální počítač v testovacím prostředí. [Vyvolání AzResourceAction](/powershell/module/az.resources/invoke-azresourceaction?view=azps-1.7.0) se zaměřuje především pro tento skript. **ResourceId** parametr je plně kvalifikované ID prostředku pro virtuální počítač v testovacím prostředí. **Akce** parametr je tam, kde **Start** nebo **Zastavit** možnosti se nastavují v závislosti na tom, co je potřeba.
 
 ```powershell
 # The id of the subscription

@@ -1,6 +1,6 @@
 ---
-title: Protokoly aktivit Azure Active Directory ve službě Azure Monitor (Preview) | Microsoft Docs
-description: Úvod do služby Azure Active Directory aktivit protokolů ve službě Azure Monitor (preview)
+title: Protokoly aktivit v Azure Active Directory ve službě Azure Monitor | Dokumentace Microsoftu
+description: Úvod do služby Azure Active Directory aktivit protokolů ve službě Azure Monitor
 services: active-directory
 documentationcenter: ''
 author: MarkusVi
@@ -13,20 +13,20 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
-ms.date: 11/13/2018
+ms.date: 04/22/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0469f69f026c578de9598401e69262279669d19f
-ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
+ms.openlocfilehash: 894c42e4102a3565ff43798d33afb4046fda76bd
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58436298"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60286693"
 ---
-# <a name="azure-ad-activity-logs-in-azure-monitor-preview"></a>Protokoly aktivit Azure AD ve službě Azure Monitor (Preview)
+# <a name="azure-ad-activity-logs-in-azure-monitor"></a>Protokoly aktivit v Azure AD ve službě Azure Monitor
 
-Protokoly aktivit Azure Active Directory (Azure AD) můžete nyní provést směrování na několik koncových bodů pro dlouho období uchovávání dat a dat přehledy. Verze public preview služby Azure AD protokolů ve službě Azure Monitor vám umožní:
+Protokoly aktivit Azure Active Directory (Azure AD) můžete provést směrování na několik koncových bodů pro dlouho období uchovávání dat a dat přehledy. Tato funkce umožňuje:
 
 * Protokoly aktivit archiv služby Azure AD pro účet úložiště Azure pro data uchovávat po delší dobu.
 * Protokoly aktivit Stream služby Azure AD do služby Azure event hub Analytics pomocí oblíbených nástrojů informace o zabezpečení a správu událostí (SIEM), jako je například Splunk a QRadar.
@@ -72,14 +72,14 @@ Pokud už máte licenci Azure AD, potřebujete k vytvoření účtu úložiště
 
 Každá událost protokolu auditu zabere v úložišti dat asi 2 kB. V případě tenanta se 100 000 uživateli, ve kterém dojde asi k 1,5 milionu událostí denně, byste za den spotřebovali asi 3 GB úložiště. Vzhledem k tomu, že k zápisům dochází v dávkách asi po pěti minutách, můžete očekávat asi 9 000 operací zápisu za měsíc. 
 
-Následující tabulka obsahuje odhad nákladů na účet úložiště pro obecné účely v2 v oblasti Západní USA s dobou uchování minimálně jeden rok, v závislosti na velikosti tenanta. Přesnější odhad objemu dat, který můžete ve své aplikaci očekávat, vám poskytne [cenová kalkulačka služby Azure Storage](https://azure.microsoft.com/pricing/details/storage/blobs/). 
+Následující tabulka obsahuje odhad nákladů na účet úložiště pro obecné účely v2 v oblasti Západní USA s dobou uchování minimálně jeden rok, v závislosti na velikosti tenanta. Přesnější odhad objemu dat, který můžete ve své aplikaci očekávat, vám poskytne [cenová kalkulačka služby Azure Storage](https://azure.microsoft.com/pricing/details/storage/blobs/). Tabulka obsahuje pouze náklady na zpracování a ukládání a ne náklady na předplatné. 
 
-| Kategorie protokolu | Počet uživatelů | Počet událostí za den | Objem dat za měsíc (odhad) | Náklady za měsíc (odhad) | Náklady za rok (odhad) |
-|--------------|-----------------|----------------------|--------------------------------------|----------------------------|---------------------------|
-| Auditování | 100 000 | 1,5&nbsp;milionu | 90 GB | 1,93 USD | 23,12 USD |
-| Auditování | 1 000 | 15 000 | 900 MB | 0,02 USD | 0,24 USD |
-| Přihlášení | 1 000 | 34 800 | 4 GB | 0,13 USD | 1,56 USD |
-| Přihlášení | 100 000 | 15&nbsp;milionů | 1,7 TB | 35,41 USD | 424,92 USD | 
+
+| Kategorie protokolu       | Počet uživatelů | Počet událostí za den | Událostí za měsíc (30 dnů) | Cena za měsíc v USD (est.) |
+| ---                | ---             | ---            | ---                        | ---                          | 
+| Audit a přihlášení | 100 000         | 16,500,000     | 495,000,000                | $1093                        |
+| Auditování              | 100 000         | 1,500,000      | 45,000,000                 | $246.66                      |
+| Přihlášení           | 100 000         | 15,000,000     | 450,000,000                | $847.28                      |
 
 
 ### <a name="event-hub-messages-for-activity-logs"></a>Zprávy centra událostí pro protokoly aktivit

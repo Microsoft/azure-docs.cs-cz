@@ -12,12 +12,12 @@ ms.author: aliceku
 ms.reviewer: vanto, carlrab, emlisa
 manager: craigg
 ms.date: 04/11/2019
-ms.openlocfilehash: de9eb8ff33dc6d99c386ee92118a2d737ba1e476
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
-ms.translationtype: MT
+ms.openlocfilehash: cb4ff203a69e04aeaff6d446d6ce3719f4158305
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59523694"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60001078"
 ---
 # <a name="an-overview-of-azure-sql-database-security-capabilities"></a>Přehled možností zabezpečení Azure SQL Database
 
@@ -88,9 +88,9 @@ SQL Database chrání vaše zákaznická data tím, že poskytuje možnosti dete
 
 Auditování služby SQL Database sleduje databázové aktivity a pomáhá udržovat dodržování standardů zabezpečení díky zaznamenávání databázových událostí k auditu protokolu v účtu úložiště Azure vlastněné zákazníkem. Auditování umožňuje uživatelům sledovat probíhající databázové aktivity a pomocí analýzy a zkoumání historické aktivity identifikovat potenciální hrozby nebo možné zneužití a narušení zabezpečení. Další informace najdete v článku s [auditování služby SQL Database](sql-database-auditing.md).  
 
-### <a name="threat-detection"></a>Detekce hrozeb
+### <a name="advanced-threat-protection"></a>Rozšířená ochrana před internetovými útoky
 
-Detekce vylepšuje auditování prostřednictvím analýzy protokolů auditu pro neobvyklé chování a potenciálně škodlivých hrozeb se pokusí o přístup k databázím nebo jejich zneužití. Vytvoří se výstrahy pro podezřelé aktivity nebo vzory přístupu k neobvyklé například útoky prostřednictvím injektáže SQL, potenciální data po infiltraci a útoky na hesla hrubou silou. Výstrahy detekce hrozeb se z pohledu [Azure Security Center](https://azure.microsoft.com/services/security-center/), kde jsou uvedeny podrobnosti o podezřelých aktivitách a doporučení pro další šetření uveden spolu s akce ke zmírnění hrozby. Detekce hrozeb stojí 15 USD a server za měsíc. Prvních 60 dní je zdarma. Další informace najdete v tématu [Začínáme s detekcí hrozeb SQL Database](sql-database-threat-detection.md).
+Rozšířená ochrana před internetovými útoky analyzuje vaše protokoly SQL serveru ke zjištění neobvyklé chování a potenciálně nebezpečné pokusy o přístup k databázím nebo jejich zneužití. Upozornění se vytvářejí pro podezřelé aktivity, jako jsou Injektáž SQL, potenciální data po infiltraci a hrubou vynutit útoků nebo anomálií v přístupu vzory pro zachycení eskalaci oprávnění a ohrožených pověření použít. Výstrahy jsou z pohledu [Azure Security Center](https://azure.microsoft.com/services/security-center/), kde jsou uvedeny podrobnosti o podezřelých aktivitách a doporučení pro další šetření uveden spolu s akce ke zmírnění hrozby. Je možné povolit rozšířené ochrany před internetovými útoky na serveru pro žádné další poplatky. Další informace najdete v tématu [Začínáme s SQL Database Advanced Threat Protection](sql-database-threat-detection.md).
 
 ![azure-database-td.jpg](media/sql-database-security-overview/azure-database-td.jpg)
 

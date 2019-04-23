@@ -11,11 +11,11 @@ ms.topic: article
 ms.date: 03/25/2019
 ms.author: jowargo
 ms.openlocfilehash: 9942b1d4d8b5d538f5150a36e596753282039be7
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58488270"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60234264"
 ---
 # <a name="configure-baidu-cloud-push-settings-for-a-notification-hub-in-the-azure-portal"></a>Konfigurace nastavení nabízených shluk Baidu pro Centrum oznámení na webu Azure Portal
 V tomto článku se dozvíte, jak nakonfigurovat nastavení nabízených shluk Baidu pro centra oznámení Azure pomocí webu Azure portal. 

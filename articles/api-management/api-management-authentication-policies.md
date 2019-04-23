@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/27/2017
 ms.author: apimpm
-ms.openlocfilehash: 4c4c03fffa5786bf3a50f4d2c03511f0a2de0f48
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
-ms.translationtype: MT
+ms.openlocfilehash: 9ee4a9fb5c63061eed32389b5672652aad01208a
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51250947"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59994932"
 ---
 # <a name="api-management-authentication-policies"></a>Zásady ověřování služby API Management
 Toto téma obsahuje odkaz pro následující zásady služby API Management. Informace o přidávání a konfiguraci zásad najdete v tématu [zásady ve službě API Management](https://go.microsoft.com/fwlink/?LinkID=398186).  
@@ -29,6 +29,8 @@ Toto téma obsahuje odkaz pro následující zásady služby API Management. Inf
 -   [Ověřování pomocí Basic](api-management-authentication-policies.md#Basic) – ověřování pomocí back-end službu pomocí základního ověřování.  
   
 -   [Ověřování pomocí certifikátu klienta](api-management-authentication-policies.md#ClientCertificate) – ověřování pomocí služby back-end pomocí klientských certifikátů.  
+
+-   [Ověřování pomocí spravované identity](api-management-authentication-policies.md#ManagedIdentity) – ověřování pomocí [se identita spravované](../active-directory/managed-identities-azure-resources/overview.md) pro službu API Management.  
   
 ##  <a name="Basic"></a> Ověřování pomocí Basic  
  Použití `authentication-basic` zásad ověřování s back-end službu pomocí základního ověřování. Tato zásada nastavuje na hodnotu odpovídající přihlašovací údaje zadané v zásadách HTTP autorizační hlavičky.  
@@ -47,23 +49,23 @@ Toto téma obsahuje odkaz pro následující zásady služby API Management. Inf
   
 ### <a name="elements"></a>Elementy  
   
-|Název|Popis|Požaduje se|  
+|Name|Popis|Požaduje se|  
 |----------|-----------------|--------------|  
-|ověřování – basic|Kořenový element.|Ano|  
+|authentication-basic|Kořenový element.|Ano|  
   
 ### <a name="attributes"></a>Atributy  
   
-|Název|Popis|Požaduje se|Výchozí|  
+|Name|Popis|Požaduje se|Výchozí|  
 |----------|-----------------|--------------|-------------|  
 |uživatelské jméno|Určuje uživatelské jméno základní přihlašovací údaje.|Ano|neuvedeno|  
-|heslo|Určuje heslo základní přihlašovací údaje.|Ano|neuvedeno|  
+|password|Určuje heslo základní přihlašovací údaje.|Ano|neuvedeno|  
   
 ### <a name="usage"></a>Využití  
  Tyto zásady můžete použít v následujících zásad [oddíly](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) a [obory](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).  
   
 -   **Části zásad:** příchozí  
   
--   **Zásady obory:** rozhraní API  
+-   **Obory zásad:** Rozhraní API  
   
 ##  <a name="ClientCertificate"></a> Ověřování pomocí certifikátu klienta  
  Použití `authentication-certificate` zásad ověřování s back-endové služby pomocí klientského certifikátu. Certifikát se musí být [nainstalováno do API managementu](https://go.microsoft.com/fwlink/?LinkID=511599) první a je identifikován jeho kryptografický otisk.  
@@ -82,23 +84,58 @@ Toto téma obsahuje odkaz pro následující zásady služby API Management. Inf
   
 ### <a name="elements"></a>Elementy  
   
-|Název|Popis|Požaduje se|  
+|Name|Popis|Požaduje se|  
 |----------|-----------------|--------------|  
-|certifikát pro ověřování|Kořenový element.|Ano|  
+|authentication-certificate|Kořenový element.|Ano|  
   
 ### <a name="attributes"></a>Atributy  
   
-|Název|Popis|Požaduje se|Výchozí|  
+|Name|Popis|Požaduje se|Výchozí|  
 |----------|-----------------|--------------|-------------|  
-|Kryptografický otisk|Kryptografický otisk certifikátu klienta.|Ano|neuvedeno|  
+|thumbprint|Kryptografický otisk certifikátu klienta.|Ano|neuvedeno|  
   
 ### <a name="usage"></a>Využití  
  Tyto zásady můžete použít v následujících zásad [oddíly](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) a [obory](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).  
   
 -   **Části zásad:** příchozí  
   
--   **Zásady obory:** rozhraní API  
+-   **Obory zásad:** Rozhraní API  
+
+##  <a name="ManagedIdentity"></a> Ověřování pomocí spravované identity  
+ Použití `authentication-managed-identity` zásad ověřování s využitím služby back-end pomocí spravované identity služby API Management. Efektivní ochranu nastavují pomocí spravované identity k získání přístupového tokenu z Azure Active Directory pro přístup k zadaný prostředek. 
   
+### <a name="policy-statement"></a>Prohlášení o zásadách  
+  
+```xml  
+<authentication-managed-identity resource="resource" output-token-variable-name="token-variable" ignore-error="true|false"/>  
+```  
+  
+### <a name="example"></a>Příklad:  
+  
+```xml  
+<authentication-managed-identity resource="https://graph.windows.net" output-token-variable-name="test-access-token" ignore-error="true" /> 
+```  
+  
+### <a name="elements"></a>Elementy  
+  
+|Name|Popis|Požaduje se|  
+|----------|-----------------|--------------|  
+|authentication-managed-identity |Kořenový element.|Ano|  
+  
+### <a name="attributes"></a>Atributy  
+  
+|Name|Popis|Požaduje se|Výchozí|  
+|----------|-----------------|--------------|-------------|  
+|prostředek|řetězec. Identifikátor URI ID aplikace z cílové webové rozhraní API (zabezpečené prostředků) v Azure Active Directory.|Ano|neuvedeno|  
+|výstup token proměnnou název|řetězec. Název kontextové proměnné, která se zobrazí hodnota tokenu jako typ objektu, který `string`.|Ne|neuvedeno|  
+|ignore-error|Datový typ Boolean. Pokud nastavit `true`, kanál zásady budou i nadále spouštět i v případě, že se získat přístupový token.|Ne|false (nepravda)|  
+  
+### <a name="usage"></a>Využití  
+ Tyto zásady můžete použít v následujících zásad [oddíly](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) a [obory](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).  
+  
+-   **Části zásad:** příchozí  
+  
+-   **Zásady obory:** globální, produktu, rozhraní API, operace  
 
 ## <a name="next-steps"></a>Další postup
 Práce se zásadami pro další informace najdete v tématu:

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/29/2019
 ms.author: bwren
-ms.openlocfilehash: eebf3709657382eb403041e6637e32e5f5d43b15
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 974a3391c592a1caf7bdcc6d9e01032f0c73aaa6
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59789718"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60002863"
 ---
 # <a name="create-custom-fields-in-a-log-analytics-workspace-in-azure-monitor"></a>Vytvoření vlastních polí v pracovním prostoru Log Analytics ve službě Azure Monitor
 
@@ -81,7 +81,7 @@ Můžete zobrazit seznam všech vlastních polí ve skupině pro správu z **Up�
 Existují dva způsoby, jak odstranit vlastní pole.  První je **odebrat** možnost pro každé pole při prohlížení seznamu dokončení, jak je popsáno výše.  Další metodou je načíst záznam a klikněte na tlačítko vlevo od pole.  V nabídce bude mít možnost odstranit vlastní pole.
 
 ## <a name="sample-walkthrough"></a>Ukázkový názorný postup
-Následující části vás provede úplný příklad vytvoření vlastního pole.  V tomto příkladu získává název služby v události Windows, které označují mění se stav služby.  To závisí na události vytvořené ve správci řízení služeb v systému znaménko počítačích s Windows.  Pokud chcete postupovat podle tohoto příkladu, musí být [shromažďování událostí informace v systémovém protokolu](data-sources-windows-events.md).
+Následující části vás provede úplný příklad vytvoření vlastního pole.  V tomto příkladu získává název služby v události Windows, které označují mění se stav služby.  To závisí na události vytvořené během spuštění systému na počítačích s Windows pomocí Správce řízení služeb.  Pokud chcete postupovat podle tohoto příkladu, musí být [shromažďování událostí informace v systémovém protokolu](data-sources-windows-events.md).
 
 Jsme zadejte následující dotaz, který vrátí všechny události ze Správce řízení služeb, které mají ID události z 7036, což je událost, která znamená spouštění nebo zastavování služby.
 

@@ -9,11 +9,11 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 09/05/2018
 ms.openlocfilehash: 14c563fda48bc7c54dcce1e1ccbfba716b6c73ad
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59049599"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60201378"
 ---
 # <a name="reference---iot-hub-quotas-and-throttling"></a>Reference – IoT Hub kvóty a omezování
 

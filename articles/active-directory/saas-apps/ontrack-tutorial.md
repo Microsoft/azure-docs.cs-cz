@@ -16,11 +16,11 @@ ms.topic: tutorial
 ms.date: 03/13/2019
 ms.author: jeedes
 ms.openlocfilehash: 570200a3befbe6205025a2410c4083d38dd11eb9
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59262920"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60247499"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-ontrack"></a>Kurz: Integrace Azure Active Directory s OnTrack
 
@@ -126,7 +126,7 @@ Ke konfiguraci Azure AD jednotné přihlašování s OnTrack, proveďte následu
 
 6. Kromě toho výše OnTrack aplikace očekává, že několik dalších atributů musí být předány zpět odpověď SAML. V **deklarace identity uživatelů** části na **atributy uživatele** dialogového okna, proveďte následující kroky pro přidání atributu tokenu SAML, jak je znázorněno v následující tabulka:
 
-    | Název | Zdrojový atribut|
+    | Name | Zdrojový atribut|
     | -------------- | ----------------|    
     | Role uživatele      | "42F432" |
     | Hyperion kódu  | "12345" |

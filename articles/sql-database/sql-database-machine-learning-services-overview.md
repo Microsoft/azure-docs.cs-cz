@@ -1,6 +1,6 @@
 ---
 title: Azure SQL Database služby Machine Learning s přehled R (preview)
-description: Toto téma popisuje Azure SQL Database Machine Learning Services (s jazykem R) a vysvětluje, jak to funguje.
+description: Tento článek popisuje Azure SQL Database Machine Learning Services (s jazykem R) a vysvětluje, jak to funguje.
 services: sql-database
 ms.service: sql-database
 ms.custom: ''
@@ -11,12 +11,12 @@ ms.author: davidph
 ms.reviewer: carlrab
 manager: cgronlun
 ms.date: 03/01/2019
-ms.openlocfilehash: e6d6250da4df6ab267ef28f8f15a73c8cbc68618
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
-ms.translationtype: MT
+ms.openlocfilehash: 172bf201e2327f5ae8db0ac3c82f2f07e3f0ffc9
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57762055"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59997474"
 ---
 # <a name="azure-sql-database-machine-learning-services-with-r-preview"></a>Azure SQL Database služby Machine Learning s jazykem R (preview)
 
@@ -35,21 +35,23 @@ Služby Machine Learning je funkce služby Azure SQL Database, používá se ke 
 
 ## <a name="what-you-can-do-with-r"></a>Co můžete dělat s jazykem R
 
-Využijte sílu jazyka R k poskytování pokročilých analýz a strojového učení v databázi. Tato schopnost přináší výpočty a zpracování, kde jsou data uložená, takže odpadá potřeba k získání dat přes síť. Také využijte možnosti balíčky R organizace k poskytování pokročilé analýzy ve velkém měřítku.
+Využijte sílu jazyka R k poskytování pokročilých analýz a strojového učení v databázi. Tato schopnost přináší výpočty a zpracování, kde jsou data uložená, takže odpadá potřeba k získání dat přes síť. Navíc můžete využít sílu balíčky R organizace k poskytování pokročilé analýzy ve velkém měřítku.
 
 Služby Machine Learning zahrnuje základní distribuci R překrývající se balíčky jazyka R enterprise od Microsoftu. Funkce jazyka R a algoritmy Microsoftu jsou navržené pro škálování a nástroj pro prediktivní analýzy, statistické modelování, vizualizace dat a špičkový algoritmů strojového učení.
 
 ### <a name="r-packages"></a>Balíčky R
 
-Nejběžnější balíčky opensourcového jazyka R jsou předem nainstalované ve službě Machine Learning Services. Následující balíčky R od společnosti Microsoft jsou zahrnuté také:
+Nejběžnější balíčky R open source jsou předem nainstalované ve službě Machine Learning Services. Následující balíčky R od společnosti Microsoft jsou zahrnuté také:
 
 | Balíček R | Popis|
 |-|-|
-| [Microsoft R Open](https://mran.microsoft.com/rro) | Microsoft R Open je vylepšená distribuce R od společnosti Microsoft. Jde kompletní platforma open source pro statistickou analýzu a datové vědy. Je založený na a 100 % kompatibilní s jazykem R a obsahuje další možnosti pro vylepšení výkonu a reprodukovatelnosti. |
+| [Microsoft R Open](https://mran.microsoft.com/rro) | Microsoft R Open je vylepšená distribuce R od společnosti Microsoft. Je kompletní platforma open source pro statistickou analýzu a datové vědy. Je založený na a 100 % kompatibilní s jazykem R a obsahuje další možnosti pro vylepšení výkonu a reprodukovatelnosti. |
 | [RevoScaleR](https://docs.microsoft.com/sql/advanced-analytics/r/ref-r-revoscaler) | RevoScaleR je primární knihovna pro škálovatelné R. funkce v této knihovně patří mezi nejčastěji používaná. Transformace dat a manipulaci s statistického shrnutí, vizualizace a mnoho forem modelování a analýzy jsou součástí těchto knihoven. Kromě toho funkce v těchto knihoven automaticky distribuují úlohy napříč dostupná jádra pro paralelní zpracování, umožňuje pracovat na bloky dat, která jsou koordinuje a spravuje výpočetní modul. |
 | [MicrosoftML (R)](https://docs.microsoft.com/sql/advanced-analytics/r/ref-r-microsoftml) | MicrosoftML přidá algoritmů strojového učení k vytvoření vlastních modelů pro analýzu textu, Analýza obrázků a analýza mínění. |
 
-Kromě předem nainstalovaných balíčků, můžete [nainstalovat další balíčky](sql-database-connect-query-r.md#add-package).
+<!-- Add this back when the new package-related article is written
+In addition to the pre-installed packages, you can [install additional packages](sql-database-quickstart-r-create-script.md#add-a-package).
+-->
 
 <a name="signup"></a>
 

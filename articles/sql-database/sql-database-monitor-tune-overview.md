@@ -12,12 +12,12 @@ ms.author: danil
 ms.reviewer: jrasnik, carlrab
 manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: 1afe1b437d82759cdfd085f018c31db33264dbf5
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
+ms.openlocfilehash: 0c93888af16ed7f7162f38c73be5f6330c886c65
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59683169"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60001571"
 ---
 # <a name="monitoring-and-performance-tuning"></a>Sledování a ladění výkonu
 
@@ -85,9 +85,9 @@ Pokud zjistíte, že máte problém s výkonem souvisejících s běží, je va�
 > [!IMPORTANT]
 > Sada dotazů T-SQL pomocí těchto zobrazení dynamické správy k řešení potíží využití procesoru, naleznete v tématu [procesoru identifikovat problémy s výkonem](sql-database-monitoring-with-dmvs.md#identify-cpu-performance-issues).
 
-### <a name="troubleshoot-queries-with-parameter-sensitive-query-execution-plan-issues"></a>Řešení potíží s dotazy s problémy plán spuštění závislé na parametru dotazu
+### <a name="ParamSniffing"></a> Řešení potíží s dotazy s problémy plán spuštění závislé na parametru dotazu
 
-Potíže s parametrem citlivé plán (PSP) odkazuje na scénáři, kde Optimalizátor dotazů generuje plán provádění dotazu, který je ideální jenom pro konkrétní parametr (nebo sadu hodnot) a bude plánů v mezipaměti optimální zadání hodnot parametrů používaných pro počet po sobě jdoucích spuštění. Optimální jiné plány může pak způsobit problémy s výkonem dotazů a celkovou propustnost snížení zatížení.
+Potíže s parametrem citlivé plán (PSP) odkazuje na scénáři, kde Optimalizátor dotazů generuje plán provádění dotazu, který je ideální jenom pro konkrétní parametr (nebo sadu hodnot) a bude plánů v mezipaměti optimální zadání hodnot parametrů používaných pro počet po sobě jdoucích spuštění. Optimální jiné plány může pak způsobit problémy s výkonem dotazů a celkovou propustnost snížení zatížení. Další informace o parametru pro analýzu sítě a zpracování dotazů, najdete v článku [Průvodce architekturou zpracování dotazu](https://docs.microsoft.com/sql/relational-databases/query-processing-architecture-guide.md7#ParamSniffing).
 
 Existuje několik řešení zmírnit problémy, každá má přidružené kompromisy a nevýhody:
 
@@ -102,17 +102,17 @@ Existuje několik řešení zmírnit problémy, každá má přidružené kompro
 
 Další informace o řešení těchto typů problémů najdete v tématu:
 
-- To [cítit parametr](https://blogs.msdn.microsoft.com/queryoptteam/20../../i-smell-a-parameter/) blogový příspěvek
-- To [Slon a pro analýzu sítě myši parametr](https://www.brentozar.com/archive/2013/06/the-elephant-and-the-mouse-or-parameter-sniffing-in-sql-server/) blogový příspěvek
-- To [dynamické srovnání plánu kvality pro parametrizované dotazy sql](https://blogs.msdn.microsoft.com/conor_cunningham_msft/20../../conor-vs-dynamic-sql-vs-procedures-vs-plan-quality-for-parameterized-queries/) blogový příspěvek
+- To [můžu cítit parametr](https://blogs.msdn.microsoft.com/queryoptteam/2006/03/31/i-smell-a-parameter/) blogový příspěvek
+- To [dynamické srovnání plánu kvality pro parametrizované dotazy sql](https://blogs.msdn.microsoft.com/conor_cunningham_msft/2009/06/03/conor-vs-dynamic-sql-vs-procedures-vs-plan-quality-for-parameterized-queries/) blogový příspěvek
+- To [techniky optimalizace dotazů SQL v SQL serveru: Parametr Sniffing](https://www.sqlshack.com/query-optimization-techniques-in-sql-server-parameter-sniffing/) blogový příspěvek
 
 ### <a name="troubleshooting-compile-activity-due-to-improper-parameterization"></a>Řešení potíží s aktivitu kompilace z důvodu nesprávné Parametrizace
 
 Když má dotaz literály, databázový stroj zvolí možnost automaticky parametrizovat příkaz nebo uživatel můžete explicitně parametrizovat kvůli snížení počtu zkompiluje. Vysoké využití procesoru může způsobit vysoký počet zkompiluje dotazu pomocí stejného vzoru, ale jiné hodnoty literálu. Podobně pokud jen částečně parametrizace dotazu, který se bude mít literály, databázový stroj parametrizovat ho dále.  Níže je příklad částečně parametrizovaného dotazu:
 
 ```sql
-select * from t1 join t2 on t1.c1=t2.c1
-where t1.c1=@p1 and t2.c2='961C3970-0E54-4E8E-82B6-5545BE897F8F'
+SELECT * FROM t1 JOIN t2 ON t1.c1 = t2.c1
+WHERE t1.c1 = @p1 AND t2.c2 = '961C3970-0E54-4E8E-82B6-5545BE897F8F'
 ```
 
 V předchozím příkladu `t1.c1` trvá `@p1` ale `t2.c2` pokračuje trvat identifikátor GUID jako literál. V takovém případě pokud se změní hodnota `c2`, dotaz bude zacházeno jako jiný dotaz, a dojde k nové kompilace. Pokud chcete snížit kompilace v předchozím příkladu, řešením je také parametrizovat identifikátor GUID.
@@ -120,24 +120,24 @@ V předchozím příkladu `t1.c1` trvá `@p1` ale `t2.c2` pokračuje trvat ident
 Následující dotaz zobrazí počet dotazů podle hodnota hash dotazu k určení, pokud dotaz nebo není správně parametrizované:
 
 ```sql
-   SELECT  TOP 10  
-      q.query_hash
-      , count (distinct p.query_id ) AS number_of_distinct_query_ids
-      , min(qt.query_sql_text) AS sampled_query_text
-   FROM sys.query_store_query_text AS qt
-      JOIN sys.query_store_query AS q
-         ON qt.query_text_id = q.query_text_id
-      JOIN sys.query_store_plan AS p 
-         ON q.query_id = p.query_id
-      JOIN sys.query_store_runtime_stats AS rs 
-         ON rs.plan_id = p.plan_id
-      JOIN sys.query_store_runtime_stats_interval AS rsi
-         ON rsi.runtime_stats_interval_id = rs.runtime_stats_interval_id
-   WHERE
-      rsi.start_time >= DATEADD(hour, -2, GETUTCDATE())
-      AND query_parameterization_type_desc IN ('User', 'None')
-   GROUP BY q.query_hash
-   ORDER BY count (distinct p.query_id) DESC
+SELECT  TOP 10  
+  q.query_hash
+  , count (distinct p.query_id ) AS number_of_distinct_query_ids
+  , min(qt.query_sql_text) AS sampled_query_text
+FROM sys.query_store_query_text AS qt
+  JOIN sys.query_store_query AS q
+     ON qt.query_text_id = q.query_text_id
+  JOIN sys.query_store_plan AS p 
+     ON q.query_id = p.query_id
+  JOIN sys.query_store_runtime_stats AS rs 
+     ON rs.plan_id = p.plan_id
+  JOIN sys.query_store_runtime_stats_interval AS rsi
+     ON rsi.runtime_stats_interval_id = rs.runtime_stats_interval_id
+WHERE
+  rsi.start_time >= DATEADD(hour, -2, GETUTCDATE())
+  AND query_parameterization_type_desc IN ('User', 'None')
+GROUP BY q.query_hash
+ORDER BY count (distinct p.query_id) DESC
 ```
 
 ### <a name="resolve-problem-queries-or-provide-more-resources"></a>Vyřešte problém dotazy nebo Poskytněte další zdroje informací
@@ -183,7 +183,7 @@ Ve scénářích vysoké využití procesoru Query Store a statistiky čekání 
 - Využívání dotazy vysoké využití procesoru může být stále provádí a dotazy nebylo dokončeno.
 - Vysoké využití procesoru náročné dotazy byly spuštěny při došlo k chybě převzetí služeb při selhání
 
-Query Store a zobrazení dynamické správy sledování statistiky čekání pouze zobrazit výsledky pro dotazy na úspěšně dokončené a časového limitu a nezobrazují data pro aktuálně spouští příkazy (až do dokončení).  Zobrazení dynamické správy [sys.dm_exec_requests](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-requests-transact-sql) umožňuje sledovat právě spouští dotazy a přidružené pracovní doby.
+Query Store a zobrazení dynamické správy sledování statistiky čekání pouze zobrazit výsledky pro dotazy na úspěšně dokončené a časového limitu a nezobrazují data pro aktuálně spouští příkazy (až do dokončení). Zobrazení dynamické správy [sys.dm_exec_requests](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-requests-transact-sql) umožňuje sledovat právě spouští dotazy a přidružené pracovní doby.
 
 Jak je znázorněno v předchozí tabulce, jsou nejčastěji používané čeká:
 
@@ -198,6 +198,8 @@ Jak je znázorněno v předchozí tabulce, jsou nejčastěji používané čeká
 > - [Identifikace problémů s výkonem vstupně-výstupních operací](sql-database-monitoring-with-dmvs.md#identify-io-performance-issues)
 > - [Identifikujte `tempdb` problémy s výkonem](sql-database-monitoring-with-dmvs.md#identify-io-performance-issues)
 > - [Identifikujte paměti udělení čeká](sql-database-monitoring-with-dmvs.md#identify-memory-grant-wait-performance-issues)
+> - [TigerToolbox – čeká a zámky](https://github.com/Microsoft/tigertoolbox/tree/master/Waits-and-Latches)
+> - [TigerToolbox - usp_whatsup](https://github.com/Microsoft/tigertoolbox/tree/master/usp_WhatsUp)
 
 ## <a name="improving-database-performance-with-more-resources"></a>Zlepšení výkonu databáze s více prostředky
 

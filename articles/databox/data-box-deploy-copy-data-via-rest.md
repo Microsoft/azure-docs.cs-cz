@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: tutorial
-ms.date: 01/24/2019
+ms.date: 04/19/2019
 ms.author: alkohli
-ms.openlocfilehash: 79854c71410c7e796961f23c8c31a4d0809cd69c
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
-ms.translationtype: MT
+ms.openlocfilehash: 2a4c4c7431752ade60161af84b4cc15f010af656
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59527978"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59995740"
 ---
 # <a name="tutorial-copy-data-to-azure-data-box-blob-storage-via-rest-apis"></a>Kurz: Kopírování dat do úložiště objektů Blob v Azure Data Box přes rozhraní REST API  
 
@@ -39,9 +39,14 @@ Než začnete, ujistěte se, že:
 5. [Stáhněte si nástroj AzCopy 7.1.0](https://aka.ms/azcopyforazurestack20170417) v hostitelském počítači. AzCopy budete používat ke kopírování dat do úložiště objektů Blob v Azure Data Box z hostitelského počítače.
 
 
-## <a name="connect-to-data-box-blob-storage"></a>Připojení k úložišti objektů Blob Data Box
+## <a name="connect-via-http-or-https"></a>Připojení přes protokol http nebo https
 
-Můžete připojit k úložišti objektů Blob Data Box přes *http* nebo *https*. Obecně platí *https* je zabezpečené a doporučený způsob, jak připojit k úložišti objektů Blob Data Box. *Http* se používá při připojení přes důvěryhodné sítě. V závislosti na tom, jestli se připojujete k poli datový objekt Blob úložiště přes *http* nebo *https*, postup může být jiný.
+Můžete připojit k úložišti objektů Blob Data Box přes *http* nebo *https*.
+
+- *HTTPS* je zabezpečené a doporučený způsob, jak připojit k úložišti objektů Blob Data Box.
+- *Http* se používá při připojení přes důvěryhodné sítě.
+
+Kroky pro připojení se liší při připojování k úložišti objektů Blob Data Box přes *http* nebo *https*,.
 
 ## <a name="connect-via-http"></a>Připojení přes protokol http
 
@@ -52,11 +57,11 @@ Připojení k úložišti objektů Blob Data pole rozhraní REST API přes *http
 
 Každý z těchto kroků je popsán v následujících částech.
 
-#### <a name="add-device-ip-address-and-blob-service-endpoint-to-the-remote-host"></a>Přidat IP adresu zařízení a na vzdáleného hostitele koncového bodu služby objektů blob
+### <a name="add-device-ip-address-and-blob-service-endpoint"></a>Přidat IP adresu zařízení a koncový bod služby blob
 
 [!INCLUDE [data-box-add-device-ip](../../includes/data-box-add-device-ip.md)]
 
-#### <a name="configure-partner-software-and-verify-connection"></a>Nakonfigurujte partnerský software a ověření připojení
+### <a name="configure-partner-software-and-verify-connection"></a>Nakonfigurujte partnerský software a ověření připojení
 
 [!INCLUDE [data-box-configure-partner-software](../../includes/data-box-configure-partner-software.md)]
 
@@ -67,8 +72,8 @@ Každý z těchto kroků je popsán v následujících částech.
 Připojení k úložišti objektů Blob v Azure storage rozhraní REST API přes protokol https vyžaduje následující kroky:
 
 - Stáhněte si certifikát z webu Azure portal
-- Příprava hostitelském počítači pro vzdálenou správu
-- Přidat IP adresu zařízení a na vzdáleného hostitele koncového bodu služby objektů blob
+- Naimportujte certifikát klienta nebo na vzdáleného hostitele
+- Přidat IP adresu zařízení a koncový bod služby klienta nebo vzdálený hostitel služby blob
 - Konfigurace softwaru třetích stran a ověření připojení
 
 Každý z těchto kroků je popsán v následujících částech.
@@ -83,20 +88,15 @@ Stáhněte si certifikát pomocí webu Azure portal.
 
     ![Stáhněte si certifikát na webu Azure portal](media/data-box-deploy-copy-data-via-rest/download-cert-1.png)
  
-### <a name="prepare-the-host-for-remote-management"></a>Příprava hostitelském pro vzdálenou správu
+### <a name="import-certificate"></a>Importovat certifikát 
 
-Následující postup použijte k připravit klienta Windows pro vzdálené připojení, které používá *https* relace:
+Přístup k poli datový objekt Blob úložiště prostřednictvím protokolu HTTPS vyžaduje certifikát SSL pro zařízení. Způsob, ve kterém tento certifikát je k dispozici do klientské aplikace se liší od aplikací a různé operační systémy a distribuce. Některé aplikace mají přístup k certifikátu, až po importu do úložiště certifikátů systému, zatímco jiné aplikace neukládejte pomocí tohoto mechanismu.
 
-- Importujte soubor .cer do kořenového úložiště klienta nebo na vzdáleného hostitele.
-- Přidat IP adresu zařízení a objektů blob koncového bodu služby do souboru hostitelů na klientovi Windows.
+Konkrétní informace u některých aplikací je uvedený v této části. Další informace o dalších použitích najdete v dokumentaci pro aplikace a operační systém používá.
 
-Každá z předchozích postupů, je popsána níže.
+Následující postup použijte k importu `.cer` souboru do kořenového úložiště klienta Windows nebo Linux. V systému Windows můžete použít prostředí Windows PowerShell nebo uživatelské rozhraní serveru systému Windows k importu a nainstalovat certifikát do vašeho systému.
 
-#### <a name="import-the-certificate-on-the-remote-host"></a>Importujte certifikát na vzdáleném hostiteli
-
-Prostředí Windows PowerShell nebo uživatelské rozhraní systému Windows Server můžete použít k importu a nainstalujte certifikát na hostitelském systému.
-
-**Pomocí PowerShellu**
+#### <a name="use-windows-powershell"></a>Pomocí Windows Powershellu
 
 1. Spusťte relaci prostředí Windows PowerShell jako správce.
 2. Na příkazovém řádku zadejte:
@@ -105,9 +105,9 @@ Prostředí Windows PowerShell nebo uživatelské rozhraní systému Windows Ser
     Import-Certificate -FilePath C:\temp\localuihttps.cer -CertStoreLocation Cert:\LocalMachine\Root
     ```
 
-**Pomocí uživatelského rozhraní systému Windows Server**
+#### <a name="use-windows-server-ui"></a>Windows Server pomocí uživatelského rozhraní
 
-1.  Klikněte pravým tlačítkem na soubor .cer a vyberte **instalace certifikátu**. Otevře se Průvodce importem certifikátu.
+1.  Klikněte pravým tlačítkem myši `.cer` a vyberte možnost **instalace certifikátu**. Tato akce spustí Průvodce importem certifikátu.
 2.  Pro **Store umístění**vyberte **místního počítače**a potom klikněte na tlačítko **Další**.
 
     ![Import certifikátu pomocí Powershellu](media/data-box-deploy-copy-data-via-rest/import-cert-ws-1.png)
@@ -120,13 +120,29 @@ Prostředí Windows PowerShell nebo uživatelské rozhraní systému Windows Ser
 
     ![Import certifikátu pomocí Powershellu](media/data-box-deploy-copy-data-via-rest/import-cert-ws-3.png)
 
-### <a name="to-add-device-ip-address-and-blob-service-endpoint-to-the-remote-host"></a>Přidat IP adresu zařízení a na vzdáleného hostitele koncového bodu služby objektů blob
+#### <a name="use-a-linux-system"></a>Používat systém Linux
 
-Jak postupovat, jsou shodné s co jste použili při připojování přes *http*.
+Metoda Import certifikátu se liší podle distribuce.
 
-### <a name="configure-partner-software-to-establish-connection"></a>Nakonfigurujte partnerský software k navázání připojení
+Několik, jako je Ubuntu nebo Debian, použijte `update-ca-certificates` příkazu.  
 
-Jak postupovat, jsou shodné s co jste použili při připojování přes *http*. Jediným rozdílem je, že byste měli nechat *možnost protokolu http použijte* nezaškrtnuté.
+- Přejmenovat soubor certifikátu s kódováním Base64 mít `.crt` rozšíření a zkopírujte ho do `/usr/local/share/ca-certificates directory`.
+- Spusťte příkaz `update-ca-certificates`.
+
+Použít nejnovější verze RHEL, Fedora a CentOS `update-ca-trust` příkazu.
+
+- Zkopírujte soubor certifikátu do `/etc/pki/ca-trust/source/anchors` adresáře.
+- Spusťte `update-ca-trust`.
+
+Najdete v dokumentaci, které jsou specifické pro vaši distribuci podrobnosti.
+
+### <a name="add-device-ip-address-and-blob-service-endpoint"></a>Přidat IP adresu zařízení a koncový bod služby blob 
+
+Použijte stejný postup [přidat IP adresu zařízení a koncový bod služby blob, při připojení přes *http*](#add-device-ip-address-and-blob-service-endpoint).
+
+### <a name="configure-partner-software-and-verify-connection"></a>Nakonfigurujte partnerský software a ověření připojení
+
+Uvedený postup [nakonfigurovat partnerský software, který jste použili při připojování přes *http*](#configure-partner-software-and-verify-connection). Jediným rozdílem je, že byste měli nechat *možnost protokolu http použijte* nezaškrtnuté.
 
 ## <a name="copy-data-to-data-box"></a>Kopírování dat do Data Boxu
 
@@ -199,7 +215,6 @@ Pokud chcete zkopírovat pouze zdrojové prostředky, které neexistují v cíli
 #### <a name="windows"></a>Windows
 
     AzCopy /Source:C:\myfolder /Dest:https://data-box-storage-account-name.blob.device-serial-no.microsoftdatabox.com/container-name/files/ /DestKey:<key> /S /XO
-
 
 Dalším krokem je k přípravě na odeslání vašeho zařízení.
 

@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 03/21/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 329782a436924355dbdfbb5db260e88795394697
-ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
-ms.translationtype: MT
+ms.openlocfilehash: 74be21629a884313e74a824bb34fb5b66f5db61d
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58650117"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60005982"
 ---
 # <a name="azure-storage-security-guide"></a>Průvodci zabezpečením Azure Storage
 
@@ -302,7 +302,7 @@ Pro šifrování, sama můžete vygenerovat a spravovat vlastní šifrovací kl�
   Tento článek poskytuje vysvětlení šifrování na straně klienta a poskytuje příklady použití klientskou knihovnu pro úložiště k šifrování a dešifrování prostředky ze čtyř služeb úložiště. Také hovoří o službě Azure Key Vault.
 
 ### <a name="using-azure-disk-encryption-to-encrypt-disks-used-by-your-virtual-machines"></a>Použití Azure Disk Encryption pro šifrování disků, které jsou používány virtuálními počítači
-Azure Disk Encryption je nová funkce. Tato funkce umožňuje šifrovat disky s operačním systémem a datové disky použít tak virtuální počítač IaaS. Pro Windows jsou šifrované jednotky pomocí standardní technologie šifrování nástrojem BitLocker. Pro Linux disky jsou šifrované pomocí technologii DM-Crypt. To je integrovaná s Azure Key Vault, aby bylo možné řídit a spravovat klíče pro šifrování disků.
+Azure Disk Encryption umožňuje šifrovat disky s operačním systémem a datové disky použít tak virtuální počítač IaaS. Pro Windows jsou šifrované jednotky pomocí standardní technologie šifrování nástrojem BitLocker. Pro Linux disky jsou šifrované pomocí technologii DM-Crypt. To je integrovaná s Azure Key Vault, aby bylo možné řídit a spravovat klíče pro šifrování disků.
 
 Řešení podporuje následující scénáře pro virtuální počítače IaaS, pokud je povolen v Microsoft Azure:
 

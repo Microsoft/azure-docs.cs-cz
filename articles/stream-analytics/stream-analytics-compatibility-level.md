@@ -6,12 +6,12 @@ ms.author: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 04/12/2019
-ms.openlocfilehash: b5c833798f8533e7c6fbe3595a726ac6ce56e2d2
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
+ms.openlocfilehash: e4bbfdbcf7a295089570d4c8b77b07fd7270b3fd
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59682810"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59998256"
 ---
 # <a name="compatibility-level-for-azure-stream-analytics-jobs"></a>Úroveň kompatibility pro úlohy Azure Stream Analytics
 
@@ -75,7 +75,7 @@ Další informace najdete v tématu [aktualizuje geoprostorové funkce ve služb
 
 **Předchozí úrovně:** Chování upsert byl *vložit nebo sloučit*.
 
-**1.2 úroveň:** Nativní integrace rozhraní API hromadného s výkonem CosmosDB maximalizuje propustnost a efektivně zvládne omezování požadavků.
+**1.2 úroveň:** Nativní integrace rozhraní API hromadného s výkonem CosmosDB maximalizuje propustnost a efektivně zvládne omezování požadavků. Další informace najdete v tématu [výstupu Azure Stream Analytics na stránku služby Azure Cosmos DB](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-documentdb-output#improved-throughput-with-compatibility-level-12).
 
 Chování upsert je *vložení nebo nahrazení*.
 

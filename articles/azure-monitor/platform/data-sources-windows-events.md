@@ -14,11 +14,11 @@ ms.workload: infrastructure-services
 ms.date: 11/28/2018
 ms.author: bwren
 ms.openlocfilehash: 8fcab1ead4ab6135e715dc173829178e43f8af2a
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59522706"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60236908"
 ---
 # <a name="windows-event-log-data-sources-in-azure-monitor"></a>Zdroje dat protokolu událostí Windows ve službě Azure Monitor
 Protokoly událostí Windows jsou jedním z nejčastěji používaných [zdroje dat](agent-data-sources.md) pro shromažďování dat pomocí agentů Windows, protože mnoho aplikací se zapisují do protokolu událostí Windows.  Kromě zadání jakékoli vlastní protokoly vytvořené pomocí aplikací, které potřebujete k monitorování může shromažďovat události z standardní protokoly jako je například systém a aplikace.
@@ -46,7 +46,7 @@ Záznamy událostí Windows mají typ **události** a mít vlastnosti v následu
 
 | Vlastnost | Popis |
 |:--- |:--- |
-| Počítač |Název počítače, který událost byla shromážděna z. |
+| Computer |Název počítače, který událost byla shromážděna z. |
 | EventCategory |Kategorie události. |
 | EventData |Všechna data události v nezpracovaném formátu. |
 | ID události |Počet události. |

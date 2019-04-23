@@ -14,11 +14,11 @@ ms.workload: na
 ms.date: 09/29/2018
 ms.author: tomfitz
 ms.openlocfilehash: 0412d55fe60524cde404e6a640723d3259e020e1
-ms.sourcegitcommit: 5843352f71f756458ba84c31f4b66b6a082e53df
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/01/2018
-ms.locfileid: "47586236"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60251385"
 ---
 # <a name="microsoftcomputecredentialscombo-ui-element"></a>Prvek uživatelského rozhraní Microsoft.Compute.CredentialsCombo
 Skupina ovládacích prvků pomocí integrované ověřování Windows a Linuxem hesla a veřejného klíče SSH.

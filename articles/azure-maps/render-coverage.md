@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
-ms.openlocfilehash: 536a74046f46c7f83907833846e9ec99e8d8a289
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
-ms.translationtype: MT
+ms.openlocfilehash: 36879ad070848f1779804d4eb3958058b9b86689
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58370274"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59996573"
 ---
 # <a name="azure-maps-render-coverage"></a>Zajištění vykreslování Azure Maps
 
@@ -169,7 +169,7 @@ Mapy, ale nemá stejnou úroveň informací a přesnost pro všechny oblasti. N�
 | Kokosové ostrovy (Keeling)   |   | Ø |
 | Korejská lidově demokratická republika |   | Ø |
 | Dokdo a Takeshima       |   | Ø |
-| Hongkong                 | ✓ | ✓ |
+| Hongkong – zvláštní správní oblast             | ✓ | ✓ |
 | Indie                     | Ø | ✓ | 
 | Indonésie                 | ✓ | ✓ |
 | Írán                      |   | Ø |
@@ -182,7 +182,7 @@ Mapy, ale nemá stejnou úroveň informací a přesnost pro všechny oblasti. N�
 | Kyrgyzstán                |   | Ø |
 | Laoská lidově demokratická republika |   | Ø |
 | Libanon                   | ✓ | ✓ |
-| Macao                     | ✓ | ✓ |
+| Macao – zvláštní administrativní oblast                 | ✓ | ✓ |
 | Malajsie                  | ✓ | ✓ |
 | Maledivy                  |   | Ø |
 | Mongolsko                  |   | Ø |
@@ -276,7 +276,7 @@ Mapy, ale nemá stejnou úroveň informací a přesnost pro všechny oblasti. N�
 | Lichtenštejnsko             | ✓ | ✓ |
 | Litva                 | ✓ | ✓ |
 | Lucembursko                | ✓ | ✓ |
-| Makedonie                 | ✓ | ✓ |
+| Severní Makedonie           | ✓ | ✓ |
 | Malta                     | ✓ | ✓ |
 | Moldavsko                   | ✓ | ✓ |
 | Monako                    | ✓ | ✓ |

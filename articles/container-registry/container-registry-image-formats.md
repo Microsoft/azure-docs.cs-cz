@@ -6,14 +6,14 @@ author: dlepow
 manager: jeconnoc
 ms.service: container-registry
 ms.topic: article
-ms.date: 10/31/2018
+ms.date: 04/18/2019
 ms.author: danlep
-ms.openlocfilehash: e7155604339bc634078fd022e05ede5f902bc0d8
-ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
-ms.translationtype: MT
+ms.openlocfilehash: fe129847e685c7151a9b7ad7ea65abbd38530733
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51634697"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59997066"
 ---
 # <a name="content-formats-supported-in-azure-container-registry"></a>Obsahu formáty podporované ve službě Azure Container Registry
 
@@ -21,16 +21,19 @@ Ke správě jednoho z následujících formátů obsahu použijte soukromé úlo
 
 ## <a name="docker-compatible-container-images"></a>Image kontejnerů kompatibilní s dockerem
 
+Jsou podporovány následující formáty image kontejneru Dockeru:
+
 * [Verze 2 manifestu Image dockeru, schéma 1](https://docs.docker.com/registry/spec/manifest-v2-1/)
 
 * [V2 Manifest Image dockeru, schéma 2](https://docs.docker.com/registry/spec/manifest-v2-2/) – obsahuje Manifest uvádí, která jim umožňují registry k ukládání imagí více platforem v rámci jedné "image: tag" odkaz
 
-* [Otevřete specifikace formátu Image kontejneru iniciativy (OCI)](https://github.com/opencontainers/image-spec/blob/master/spec.md) 
+## <a name="oci-images"></a>OCI imagí
 
+Služba Azure Container Registry podporuje také bitové kopie, které splňují [specifikace formátu Image iniciativy otevřete kontejner (OCI)](https://github.com/opencontainers/image-spec/blob/master/spec.md). Balení formáty [Singularity bitové kopie formátu (FSP)](https://www.sylabs.io/2018/03/sif-containing-your-containers/).
 
 ## <a name="helm-charts"></a>Helmu
 
-Služba Azure Container Registry se můžou hostovat taky úložiště pro [grafy Helm](https://helm.sh/), balení formát používaný k rychlému spravovat a nasazovat aplikace pro Kubernetes. [Příkaz Helm klienta](https://docs.helm.sh/using_helm/#installing-helm) verze 2.11.0 nebo novější není podporováno.
+Služba Azure Container Registry můžete hostovat úložiště pro [grafy Helm](https://helm.sh/), balení formát používaný k rychlému spravovat a nasazovat aplikace pro Kubernetes. [Příkaz Helm klienta](https://docs.helm.sh/using_helm/#installing-helm) verze 2.11.0 nebo novější není podporováno.
 
 ## <a name="next-steps"></a>Další postup
 
