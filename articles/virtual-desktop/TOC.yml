@@ -1,61 +1,54 @@
-items:
 - name: Windows Virtual Desktop
   href: index.yml
 - name: Přehled
   items:
-  - name: Co je Windows Virtual Desktop?
-    href: overview.md
+    - name: Co je Windows Virtual Desktop?
+      href: overview.md
 - name: Kurzy
   items:
-  - name: 1. Vytvoření klienta ve Windows Virtual Desktop
-    href: tenant-setup-azure-active-directory.md
-  - name: 2. Vytvoření fondu hostitelů pomocí Azure Marketplace
-    href: create-host-pools-azure-marketplace.md
-  - name: 3. Správa skupin aplikací
-    href: manage-app-groups.md
-  - name: 4. Vytvoření objektů služby a přiřazení rolí pomocí PowerShellu
-    href: create-service-principal-role-powershell.md
+    - name: 1. Vytvoření klienta ve Windows Virtual Desktop
+      href: tenant-setup-azure-active-directory.md
+    - name: 2. Vytvoření fondu hostitelů pomocí Azure Marketplace
+      href: create-host-pools-azure-marketplace.md
+    - name: 3. Správa skupin aplikací
+      href: manage-app-groups.md
+    - name: 4. Vytvoření objektů služby a přiřazení rolí pomocí PowerShellu
+      href: create-service-principal-role-powershell.md
 - name: Postupy
   items:
-  - name: Připojení k prostředkům Windows Virtual Desktop
-    items:
-    - name: Připojení k Windows 7 a Windows 10
-      href: connect-windows-7-and-10.md
-    - name: Připojení k webovému klientovi
-      href: connect-web.md
-  - name: Vytvoření fondu hostitelů pomocí šablony Azure Resource Manageru
-    href: create-host-pools-arm-template.md
-  - name: Vytvoření fondu hostitelů pomocí PowerShellu
-    href: create-host-pools-powershell.md
-  - name: Nastavení sdílení profilu uživatele pro fond hostitelů
-    href: create-host-pools-user-profile.md
-  - name: Konfigurace metody vyrovnávání zatížení Windows Virtual Desktop
-    href: configure-host-pool-load-balancing.md
-  - name: Identifikace problémů pomocí diagnostické funkce
-    href: diagnostics-role-service.md
-  - name: Příprava a přizpůsobení hlavní image VHD
-    href: set-up-customize-master-image.md
-  - name: Automatické škálování hostitelů relace
-    href: set-up-scaling-script.md
+    - name: Připojení k prostředkům Windows Virtual Desktop
+      items:
+        - name: Připojení k Windows 7 a Windows 10
+          href: connect-windows-7-and-10.md
+        - name: Připojení k webovému klientovi
+          href: connect-web.md
+    - name: Vytvoření fondu hostitelů pomocí šablony Azure Resource Manageru
+      href: create-host-pools-arm-template.md
+    - name: Vytvoření fondu hostitelů pomocí PowerShellu
+      href: create-host-pools-powershell.md
+    - name: Nastavení sdílení profilu uživatele pro fond hostitelů
+      href: create-host-pools-user-profile.md
+    - name: Konfigurace metody vyrovnávání zatížení Windows Virtual Desktop
+      href: configure-host-pool-load-balancing.md
+    - name: Identifikace problémů pomocí diagnostické funkce
+      href: diagnostics-role-service.md
+    - name: Příprava a přizpůsobení hlavní image VHD
+      href: set-up-customize-master-image.md
+    - name: Automatické škálování hostitelů relace
+      href: set-up-scaling-script.md
 - name: Koncepty
   items:
-  - name: Prostředí Windows Virtual Desktop
-    href: environment-setup.md
-  - name: Delegovaný přístup ve Windows Virtual Desktop
-    href: delegated-access-virtual-desktop.md
-  - name: Metody vyrovnávání zatížení fondu hostitelů
-    href: host-pool-load-balancing.md
+    - name: Prostředí Windows Virtual Desktop
+      href: environment-setup.md
+    - name: Delegovaný přístup ve Windows Virtual Desktop
+      href: delegated-access-virtual-desktop.md
+    - name: Metody vyrovnávání zatížení fondu hostitelů
+      href: host-pool-load-balancing.md
 - name: Referenční informace
   items:
-  - name: PowerShell
-    href: /powershell/windows-virtual-desktop/overview
+    - name: PowerShell
+      href: /powershell/windows-virtual-desktop/overview
 - name: Zdroje a prostředky
   items:
-  - name: Skupina podpory technické komunity
-    href: https://techcommunity.microsoft.com/t5/Windows-Virtual-Desktop/bd-p/WindowsVirtualDesktop
-ms.openlocfilehash: 3f3f332f8ab9b2764dd513777860627dda9b4c45
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
-ms.translationtype: HT
-ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/11/2019
-ms.locfileid: "59496331"
+    - name: Skupina podpory technické komunity
+      href: 'https://techcommunity.microsoft.com/t5/Windows-Virtual-Desktop/bd-p/WindowsVirtualDesktop'

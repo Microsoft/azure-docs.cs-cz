@@ -15,11 +15,11 @@ ms.topic: article
 ms.author: jowargo
 ms.date: 04/08/2019
 ms.openlocfilehash: 559dd5ecfa4615e42e4f7ac40008e69c9210e2a4
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
-ms.translationtype: MT
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59260444"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59799469"
 ---
 # <a name="registration-management"></a>Správa registrací
 

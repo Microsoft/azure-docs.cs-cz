@@ -15,11 +15,11 @@ ms.workload: NA
 ms.date: 02/13/2019
 ms.author: aljo
 ms.openlocfilehash: e6b429189491af71f6215f1c7660be5965741bf7
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/05/2019
-ms.locfileid: "59044822"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59798209"
 ---
 # <a name="scale-up-a-service-fabric-cluster-primary-node-type"></a>Vertikálně navýšit kapacitu typ primárního uzlu clusteru Service Fabric
 Tento článek popisuje, jak škálovat typ primárního uzlu clusteru Service Fabric zvýšením prostředky virtuálních počítačů. Cluster Service Fabric je síťově propojená sada virtuálních nebo fyzických počítačů, do které se nasazují a spravují mikroslužby. Počítač nebo virtuální počítač, který je součástí clusteru, se nazývá uzel. Škálovací sady virtuálních počítačů jsou výpočetním prostředkem Azure, který použijete k nasazení a správě kolekce virtuálních počítačů jako sady. Každý typ uzlu, který je definován v clusteru Azure je [nastavit jako samostatné škálovací sada](service-fabric-cluster-nodetypes.md). Každý typ uzlu je pak spravovat samostatně. Po vytvoření clusteru Service Fabric, je možné škálovat typ uzlu clusteru svisle (změnit prostředky z uzlů) nebo upgradovat operační systém typu uzlu virtuálních počítačů.  Je možné škálovat cluster v okamžiku, i když spouštění úloh v clusteru.  Škálování clusteru, vaše aplikace automaticky škálovat směrem také.
