@@ -13,11 +13,11 @@ ms.topic: article
 ms.date: 03/25/2019
 ms.author: spelluru
 ms.openlocfilehash: 51c45fdb0c96e84d3f37f485279aa805361f3818
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
-ms.translationtype: MT
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/05/2019
-ms.locfileid: "59051202"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59798925"
 ---
 # <a name="use-command-line-tools-to-start-and-stop-azure-devtest-labs-virtual-machines"></a>Pomocí nástrojů příkazového řádku spouštět a zastavovat virtuální počítače Azure DevTest Labs
 V tomto článku se dozvíte, jak pomocí Azure Powershellu nebo Azure CLI spuštěním a zastavením virtuálních počítačů v testovacím prostředí ve službě Azure DevTest Labs. Můžete vytvořit skripty Powershellu/CLI k automatizaci těchto operací. 

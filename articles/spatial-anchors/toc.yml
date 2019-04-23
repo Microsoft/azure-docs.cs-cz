@@ -1,90 +1,83 @@
-items:
 - name: Dokumentace ke Spatial Anchors
   href: index.yml
 - name: Přehled
   items:
-  - name: Informace o Spatial Anchors
-    href: overview.md
+    - name: Informace o Spatial Anchors
+      href: overview.md
 - name: Šablony Rychlý start
   items:
-  - name: Vytvoření aplikace Unity
-    href: unity-overview.yml
-    items:
-    - name: HoloLens
-      href: quickstarts/get-started-unity-hololens.md
-    - name: Android
-      href: quickstarts/get-started-unity-android.md
-    - name: iOS
-      href: quickstarts/get-started-unity-ios.md
-    expanded: true
-  - name: Vytvoření aplikace pro iOS
-    href: quickstarts/get-started-ios.md
-  - name: Vytvoření aplikace pro Android
-    href: quickstarts/get-started-android.md
-  - name: Vytvoření aplikace HoloLens
-    href: quickstarts/get-started-hololens.md
+    - name: Vytvoření aplikace Unity
+      href: unity-overview.yml
+      expanded: true
+      items:
+        - name: HoloLens
+          href: quickstarts/get-started-unity-hololens.md
+        - name: Android
+          href: quickstarts/get-started-unity-android.md
+        - name: iOS
+          href: quickstarts/get-started-unity-ios.md
+    - name: Vytvoření aplikace pro iOS
+      href: quickstarts/get-started-ios.md
+    - name: Vytvoření aplikace pro Android
+      href: quickstarts/get-started-android.md
+    - name: Vytvoření aplikace HoloLens
+      href: quickstarts/get-started-hololens.md
 - name: Kurzy
   items:
-  - name: Sdílení v Unity
-    href: tutorials/tutorial-share-anchors-across-devices.md
-  - name: Sdílení v Unity s využitím Azure Cosmos DB
-    href: tutorials/tutorial-use-cosmos-db-to-store-anchors.md
-  - name: Spuštění nové aplikace pro Android
-    href: tutorials/tutorial-new-android-app.md
+    - name: Sdílení v Unity
+      href: tutorials/tutorial-share-anchors-across-devices.md
+    - name: Sdílení v Unity s využitím Azure Cosmos DB
+      href: tutorials/tutorial-use-cosmos-db-to-store-anchors.md
+    - name: Spuštění nové aplikace pro Android
+      href: tutorials/tutorial-new-android-app.md
 - name: Postupy
   items:
-  - name: Vytvoření a zjištění kotev
-    href: create-locate-anchors-overview.md
-    items:
-    - name: V Unity
-      href: how-tos/create-locate-anchors-unity.md
-    - name: V Objective-C
-      href: how-tos/create-locate-anchors-objc.md
-    - name: Ve Swiftu
-      href: how-tos/create-locate-anchors-swift.md
-    - name: V Javě
-      href: how-tos/create-locate-anchors-java.md
-    - name: V C++/NDK
-      href: how-tos/create-locate-anchors-cpp-ndk.md
-    - name: V C++/WinRT
-      href: how-tos/create-locate-anchors-cpp-winrt.md
+    - name: Vytvoření a zjištění kotev
+      href: create-locate-anchors-overview.md
+      items:
+        - name: V Unity
+          href: how-tos/create-locate-anchors-unity.md
+        - name: V Objective-C
+          href: how-tos/create-locate-anchors-objc.md
+        - name: Ve Swiftu
+          href: how-tos/create-locate-anchors-swift.md
+        - name: V Javě
+          href: how-tos/create-locate-anchors-java.md
+        - name: V C++/NDK
+          href: how-tos/create-locate-anchors-cpp-ndk.md
+        - name: V C++/WinRT
+          href: how-tos/create-locate-anchors-cpp-winrt.md
 - name: Ukázky
   items:
-  - name: Ukázky Azure Spatial Anchors (GitHub)
-    href: https://github.com/Azure/azure-spatial-anchors-samples
+    - name: Ukázky Azure Spatial Anchors (GitHub)
+      href: 'https://github.com/Azure/azure-spatial-anchors-samples'
 - name: Koncepty
   items:
-  - name: Relace mezi kotvami
-    href: concepts/anchor-relationships-way-finding.md
-  - name: Pokyny k prostředí
-    href: concepts/guidelines-effective-anchor-experiences.md
-  - name: Protokolování a diagnostika
-    href: concepts/logging-diagnostics.md
+    - name: Relace mezi kotvami
+      href: concepts/anchor-relationships-way-finding.md
+    - name: Pokyny k prostředí
+      href: concepts/guidelines-effective-anchor-experiences.md
+    - name: Protokolování a diagnostika
+      href: concepts/logging-diagnostics.md
 - name: Odkazy
   items:
-  - name: SDK pro Unity
-    href: https://docs.microsoft.com/dotnet/api/Microsoft.Azure.SpatialAnchors/
-  - name: SDK pro iOS Objective-C
-    href: https://docs.microsoft.com/objectivec/api/spatial-anchors/
-  - name: SDK pro Android Javu
-    href: https://docs.microsoft.com/java/api/com.microsoft.azure.spatialanchors/
-  - name: SDK pro Android NDK
-    href: https://docs.microsoft.com/cpp/api/spatial-anchors/ndk/
-  - name: SDK pro HoloLens C++/WinRT
-    href: https://docs.microsoft.com/cpp/api/spatial-anchors/winrt/
+    - name: SDK pro Unity
+      href: 'https://docs.microsoft.com/dotnet/api/Microsoft.Azure.SpatialAnchors/'
+    - name: SDK pro iOS Objective-C
+      href: 'https://docs.microsoft.com/objectivec/api/spatial-anchors/'
+    - name: SDK pro Android Javu
+      href: 'https://docs.microsoft.com/java/api/com.microsoft.azure.spatialanchors/'
+    - name: SDK pro Android NDK
+      href: 'https://docs.microsoft.com/cpp/api/spatial-anchors/ndk/'
+    - name: SDK pro HoloLens C++/WinRT
+      href: 'https://docs.microsoft.com/cpp/api/spatial-anchors/winrt/'
 - name: Zdroje a prostředky
   items:
-  - name: Nejčastější dotazy
-    href: spatial-anchor-faq.md
-  - name: Poskytnutí zpětné vazby k produktu
-    href: https://feedback.azure.com/forums/919252-azure-spatial-anchors
-  - name: Stack Overflow
-    href: https://stackoverflow.com/questions/tagged/azure-spatial-anchors
-  - name: Podpora
-    href: spatial-anchor-support.md
-ms.openlocfilehash: 69465b1f2184476f8c18738474a6585fdd681bb2
-ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
-ms.translationtype: HT
-ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/04/2019
-ms.locfileid: "58915845"
+    - name: Nejčastější dotazy
+      href: spatial-anchor-faq.md
+    - name: Poskytnutí zpětné vazby k produktu
+      href: 'https://feedback.azure.com/forums/919252-azure-spatial-anchors'
+    - name: Stack Overflow
+      href: 'https://stackoverflow.com/questions/tagged/azure-spatial-anchors'
+    - name: Podpora
+      href: spatial-anchor-support.md

@@ -1,57 +1,50 @@
-items:
 - name: Dokumentace k Avere vFXT
   href: index.yml
 - name: Přehled
   items:
-  - name: Co je Avere vFXT for Azure?
-    href: avere-vfxt-overview.md
+    - name: Co je Avere vFXT for Azure?
+      href: avere-vfxt-overview.md
 - name: Koncepty
   items:
-  - name: Plánování systému Avere vFXT
-    href: avere-vfxt-deploy-plan.md
-  - name: Přehled nasazení Avere vFXT
-    href: avere-vfxt-deploy-overview.md
+    - name: Plánování systému Avere vFXT
+      href: avere-vfxt-deploy-plan.md
+    - name: Přehled nasazení Avere vFXT
+      href: avere-vfxt-deploy-overview.md
 - name: Návody
   items:
-  - name: Příprava k vytvoření Avere vFXT
-    href: avere-vfxt-prereqs.md
-  - name: Nasazení clusteru vFXT
-    href: avere-vfxt-deploy.md
-  - name: Přístup k nástroji pro konfiguraci clusteru
-    href: avere-vfxt-cluster-gui.md
-  - name: Povolení nahrávání podpory
-    href: avere-vfxt-enable-support.md
-  - name: Konfigurace úložiště
-    href: avere-vfxt-add-storage.md
-  - name: Připojení clusteru Avere vFXT
-    href: avere-vfxt-mount-clients.md
-  - name: Přesun dat do clusteru Avere vFXT
-    href: avere-vfxt-data-ingest.md
-  - name: Správa clusteru Avere vFXT
-    href: avere-vfxt-manage-cluster.md
-  - name: Přizpůsobení vyladění clusteru
-    href: avere-vfxt-tuning.md
+    - name: Příprava k vytvoření Avere vFXT
+      href: avere-vfxt-prereqs.md
+    - name: Nasazení clusteru vFXT
+      href: avere-vfxt-deploy.md
+    - name: Přístup k nástroji pro konfiguraci clusteru
+      href: avere-vfxt-cluster-gui.md
+    - name: Povolení nahrávání podpory
+      href: avere-vfxt-enable-support.md
+    - name: Konfigurace úložiště
+      href: avere-vfxt-add-storage.md
+    - name: Připojení clusteru Avere vFXT
+      href: avere-vfxt-mount-clients.md
+    - name: Přesun dat do clusteru Avere vFXT
+      href: avere-vfxt-data-ingest.md
+    - name: Správa clusteru Avere vFXT
+      href: avere-vfxt-manage-cluster.md
+    - name: Přizpůsobení vyladění clusteru
+      href: avere-vfxt-tuning.md
 - name: Zdroje a prostředky
   items:
-  - name: Pomoc se systémem
-    href: avere-vfxt-open-ticket.md
-  - name: Ukázkové projekty
-    href: avere-vfxt-demo-links.md
-  - name: Avere vFXT for Azure – nejčastější dotazy
-    href: avere-vfxt-faq.md
-  - name: Další dokumentace
-    items:
-    - name: Doprovodná dokumentace
-      href: avere-vfxt-additional-resources.md
-    - name: Konfigurace DNS clusteru Avere
-      href: avere-vfxt-configure-dns.md
-    - name: Oprávnění k nasazení Avere vFXT pro jiné uživatele než vlastníky
-      href: avere-vfxt-non-owner.md
-  - name: Dokumenty white paper
-    href: avere-vfxt-whitepapers.md
-ms.openlocfilehash: df511c29ca2477206e2e4ddf9e1fd440da47dedc
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
-ms.translationtype: HT
-ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59257548"
+    - name: Pomoc se systémem
+      href: avere-vfxt-open-ticket.md
+    - name: Ukázkové projekty
+      href: avere-vfxt-demo-links.md
+    - name: Avere vFXT for Azure – nejčastější dotazy
+      href: avere-vfxt-faq.md
+    - name: Další dokumentace
+      items:
+        - name: Doprovodná dokumentace
+          href: avere-vfxt-additional-resources.md
+        - name: Konfigurace DNS clusteru Avere
+          href: avere-vfxt-configure-dns.md
+        - name: Oprávnění k nasazení Avere vFXT pro jiné uživatele než vlastníky
+          href: avere-vfxt-non-owner.md
+    - name: Dokumenty white paper
+      href: avere-vfxt-whitepapers.md

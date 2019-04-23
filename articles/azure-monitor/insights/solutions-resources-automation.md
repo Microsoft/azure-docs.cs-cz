@@ -243,7 +243,7 @@ Vlastnosti pro plány úloh jsou popsány v následující tabulce.
 | Vlastnost | Popis |
 |:--- |:--- |
 | schedule name |Jeden **název** entitě s názvem podle plánu. |
-| runbook name |Jeden **název** entitě s názvem sady runbook.  |
+| runbook name  |Jeden **název** entitě s názvem sady runbook.  |
 
 
 

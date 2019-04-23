@@ -1,85 +1,78 @@
-items:
 - name: Dokumentace k Azure Databricks
   href: index.yml
 - name: Přehled
   items:
-  - name: Co je Azure Databricks?
-    href: what-is-azure-databricks.md
+    - name: Co je Azure Databricks?
+      href: what-is-azure-databricks.md
 - name: Šablony Rychlý start
-  items:
-  - name: Vytvoření pracovního prostoru Databricks – portál
-    href: quickstart-create-databricks-workspace-portal.md
-  - name: Vytvoření pracovního prostoru Databricks – šablona Resource Manageru
-    href: quickstart-create-databricks-workspace-resource-manager-template.md
-  - name: Vytvoření pracovního prostoru Databricks – virtuální síť
-    href: quickstart-create-databricks-workspace-vnet-injection.md
   expanded: true
+  items:
+    - name: Vytvoření pracovního prostoru Databricks – portál
+      href: quickstart-create-databricks-workspace-portal.md
+    - name: Vytvoření pracovního prostoru Databricks – šablona Resource Manageru
+      href: quickstart-create-databricks-workspace-resource-manager-template.md
+    - name: Vytvoření pracovního prostoru Databricks – virtuální síť
+      href: quickstart-create-databricks-workspace-vnet-injection.md
 - name: Kurzy
   items:
-  - name: Dotazování SQL Serveru spuštěného v kontejneru Docker
-    href: vnet-injection-sql-server.md
-  - name: Provádění operací ETL
-    href: databricks-extract-load-sql-data-warehouse.md
-  - name: Streamování dat s využitím Event Hubs
-    href: databricks-stream-from-eventhubs.md
-  - name: Analýza mínění s využitím Cognitive Services
-    href: databricks-sentiment-analysis-cognitive-services.md
-  - name: Streamování dat z HDInsight Kafka
-    href: https://docs.azuredatabricks.net/spark/latest/structured-streaming/kafka.html
+    - name: Dotazování SQL Serveru spuštěného v kontejneru Docker
+      href: vnet-injection-sql-server.md
+    - name: Provádění operací ETL
+      href: databricks-extract-load-sql-data-warehouse.md
+    - name: Streamování dat s využitím Event Hubs
+      href: databricks-stream-from-eventhubs.md
+    - name: Analýza mínění s využitím Cognitive Services
+      href: databricks-sentiment-analysis-cognitive-services.md
+    - name: Streamování dat z HDInsight Kafka
+      href: 'https://docs.azuredatabricks.net/spark/latest/structured-streaming/kafka.html'
 - name: Návody
   items:
-  - name: Vytvoření clusteru Spark
-    href: https://docs.azuredatabricks.net/user-guide/clusters/index.html
-  - name: Práce s poznámkovými bloky
-    href: https://docs.azuredatabricks.net/user-guide/notebooks/index.html
-  - name: Spouštění sparkových úloh
-    href: https://docs.azuredatabricks.net/user-guide/jobs.html
-  - name: Připojení ke zdrojům dat
-    href: databricks-connect-to-data-sources.md
-  - name: Použití injektáže virtuální sítě
-    href: vnet-injection.md
-  - name: Použití se službou Azure Data Factory
-    href: ../data-factory/transform-data-using-databricks-notebook.md
-    maintainContext: true
-  - name: Propojení s využitím Excelu, R a Pythonu
-    href: connect-databricks-excel-python-r.md
-  - name: Použití rozhraní příkazového řádku Databricks z Azure Cloud Shellu
-    href: databricks-cli-from-azure-cloud-shell.md
-  - name: Použití nástrojů BI
-    href: https://docs.azuredatabricks.net/user-guide/bi/index.html
-  - name: Plánovaní zotavení po havárii
-    href: howto-regional-disaster-recovery.md
-  - name: Příručka k MLflow
-    href: https://docs.azuredatabricks.net/applications/mlflow/index.html
+    - name: Vytvoření clusteru Spark
+      href: 'https://docs.azuredatabricks.net/user-guide/clusters/index.html'
+    - name: Práce s poznámkovými bloky
+      href: 'https://docs.azuredatabricks.net/user-guide/notebooks/index.html'
+    - name: Spouštění sparkových úloh
+      href: 'https://docs.azuredatabricks.net/user-guide/jobs.html'
+    - name: Připojení ke zdrojům dat
+      href: databricks-connect-to-data-sources.md
+    - name: Použití injektáže virtuální sítě
+      href: vnet-injection.md
+    - name: Použití se službou Azure Data Factory
+      href: ../data-factory/transform-data-using-databricks-notebook.md
+      maintainContext: true
+    - name: 'Propojení s využitím Excelu, R a Pythonu'
+      href: connect-databricks-excel-python-r.md
+    - name: Použití rozhraní příkazového řádku Databricks z Azure Cloud Shellu
+      href: databricks-cli-from-azure-cloud-shell.md
+    - name: Použití nástrojů BI
+      href: 'https://docs.azuredatabricks.net/user-guide/bi/index.html'
+    - name: Plánovaní zotavení po havárii
+      href: howto-regional-disaster-recovery.md
+    - name: Příručka k MLflow
+      href: 'https://docs.azuredatabricks.net/applications/mlflow/index.html'
 - name: Referenční informace
   items:
-  - name: REST API
-    href: /rest/api/databricks
-  - name: Šablona Resource Manageru
-    href: /azure/templates/microsoft.databricks/workspaces
+    - name: REST API
+      href: /rest/api/databricks
+    - name: Šablona Resource Manageru
+      href: /azure/templates/microsoft.databricks/workspaces
 - name: Zdroje a prostředky
   items:
-  - name: Časté dotazy
-    href: frequently-asked-questions-databricks.md
-  - name: Poznámky k verzi
-    href: https://docs.azuredatabricks.net/release-notes/index.html
-  - name: Dokumentace k Databricks
-    href: https://docs.azuredatabricks.net/user-guide/index.html
-  - name: Příručka pro vývojáře v R
-    href: ../machine-learning/r-developers-guide.md
-  - name: Plány Azure do budoucna
-    href: https://azure.microsoft.com/roadmap/?category=analytics
-  - name: Ceny
-    href: https://azure.microsoft.com/pricing/details/databricks/
-  - name: Stack Overflow
-    href: https://stackoverflow.com/questions/tagged/azure-databricks
-  - name: Dostupnost v oblastech
-    href: https://azure.microsoft.com/regions/services/
-  - name: Možnosti podpory
-    href: https://azure.microsoft.com/support/options/
-ms.openlocfilehash: 1f0b7bcc369a3f857fe974f8b8ec68b801516589
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
-ms.translationtype: HT
-ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59256392"
+    - name: Časté dotazy
+      href: frequently-asked-questions-databricks.md
+    - name: "Poznámky k\_verzi"
+      href: 'https://docs.azuredatabricks.net/release-notes/index.html'
+    - name: Dokumentace k Databricks
+      href: 'https://docs.azuredatabricks.net/user-guide/index.html'
+    - name: Příručka pro vývojáře v R
+      href: ../machine-learning/r-developers-guide.md
+    - name: Plány Azure do budoucna
+      href: 'https://azure.microsoft.com/roadmap/?category=analytics'
+    - name: Ceny
+      href: 'https://azure.microsoft.com/pricing/details/databricks/'
+    - name: Stack Overflow
+      href: 'https://stackoverflow.com/questions/tagged/azure-databricks'
+    - name: Dostupnost v oblastech
+      href: 'https://azure.microsoft.com/regions/services/'
+    - name: Možnosti podpory
+      href: 'https://azure.microsoft.com/support/options/'

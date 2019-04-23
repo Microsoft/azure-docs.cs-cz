@@ -153,7 +153,7 @@ GO
 | rejectSampleValue |Určuje počet řádků, načtěte před PolyBase přepočítá procento pozice zamítnutých řádků. |1, 2, … |Ano, pokud **rejectType** je **procento** |
 | useTypeDefault |Určuje způsob zpracování chybějící hodnoty v textových souborů s oddělovači, když PolyBase načte data z textového souboru.<br/><br/>Další informace o této vlastnosti v části argumenty [CREATE EXTERNAL FILE FORMAT (Transact-SQL)](https://msdn.microsoft.com/library/dn935026.aspx). |Hodnota TRUE, False (výchozí) |Ne |
 | writeBatchSize |Vloží data do tabulky SQL writeBatchSize dosáhne velikosti vyrovnávací paměti |Celé číslo (počet řádků) |Ne (výchozí: 10000) |
-| writeBatchTimeout |Čekací doba pro dávkové operace insert dokončit před vypršením časového limitu. |Časový interval<br/><br/> Příklad: "00: 30:00" (30 minut). |Ne |
+| writeBatchTimeout |Čekací doba pro dávkové operace insert dokončit před vypršením časového limitu. |TimeSpan<br/><br/> Příklad: "00: 30:00" (30 minut). |Ne |
 
 #### <a name="sqldwsink-example"></a>Příklad SqlDWSink
 
@@ -276,10 +276,10 @@ Následující tabulka obsahuje příklady o tom, jak zadat **tableName** vlastn
 
 | Schéma databáze | Název tabulky | Vlastnost tableName JSON |
 | --- | --- | --- |
-| dbo |MyTable |MyTable nebo dbo.MyTable nebo [dbo].[MyTable] |
-| dbo1 |MyTable |dbo1.MyTable nebo [dbo1].[MyTable] |
-| dbo |My.Table |[My.Table] nebo [dbo].[My.Table] |
-| dbo1 |My.Table |[dbo1].[My.Table] |
+| vlastník databáze |Tabulka |Tabulka nebo vlastník databáze. Tabulka nebo [dbo]. [MyTable] |
+| dbo1 |Tabulka |dbo1. Tabulka nebo [dbo1]. [MyTable] |
+| vlastník databáze |My.Table |[My.Table] nebo [dbo]. [My.Table] |
+| dbo1 |My.Table |[dbo1]. [My.Table] |
 
 Pokud se zobrazí následující chyba, můžou být problémy s hodnotou, kterou jste zadali pro vlastnost tableName. Viz tabulka pro správný způsob, jak určit hodnoty pro vlastnost tableName JSON.
 
@@ -306,27 +306,27 @@ Data Factory vytvoří v cílové úložiště se stejným názvem tabulky v úl
 | BigInt | BigInt |
 | SmallInt | SmallInt |
 | TinyInt | TinyInt |
-| Bit | Bit |
+| bit | bit |
 | Decimal | Decimal |
 | Numeric | Decimal |
 | Float | Float |
-| Money | Money |
-| Real | Real |
+| money | money |
+| real | real |
 | SmallMoney | SmallMoney |
-| Binary | Binary |
+| Binární hodnota | Binární hodnota |
 | Varbinary | Varbinary (až 8000) |
-| Date | Date |
+| Datum | Datum |
 | DateTime | DateTime |
 | DateTime2 | DateTime2 |
-| Time | Time |
-| DateTimeOffset | DateTimeOffset |
+| Čas | Čas |
+| Datetimeoffset | Datetimeoffset |
 | SmallDateTime | SmallDateTime |
 | Text | Varchar (až 8000) |
 | NText | NVarChar (až 4000) |
 | Image | VarBinary (až 8000) |
-| UniqueIdentifier | UniqueIdentifier |
-| Char | Char |
-| NChar | NChar |
+| uniqueidentifier | uniqueidentifier |
+| char | char |
+| nChar | nChar |
 | VarChar | VarChar (až 8000) |
 | NVarChar | NVarChar (až 4000) |
 | Xml | Varchar (až 8000) |
@@ -352,9 +352,9 @@ Mapování je stejné jako [mapování datového typu aplikace SQL Server pro te
 | date |DateTime |
 | Datetime |DateTime |
 | datetime2 |DateTime |
-| Datetimeoffset |DateTimeOffset |
+| Datetimeoffset |Datetimeoffset |
 | Decimal |Decimal |
-| FILESTREAM attribute (varbinary(max)) |Byte[] |
+| Atribut FILESTREAM (varbinary(max)) |Byte[] |
 | Float |Double |
 | image |Byte[] |
 | int |Int32 |
@@ -364,17 +364,17 @@ Mapování je stejné jako [mapování datového typu aplikace SQL Server pro te
 | numeric |Decimal |
 | nvarchar |String, Char[] |
 | real |Single |
-| rowversion |Byte[] |
+| ROWVERSION |Byte[] |
 | smalldatetime |DateTime |
 | smallint |Int16 |
 | smallmoney |Decimal |
 | sql_variant |Object * |
 | text |String, Char[] |
 | time |TimeSpan |
-| timestamp |Byte[] |
+| časové razítko |Byte[] |
 | tinyint |Byte |
 | uniqueidentifier |Guid |
-| varbinary |Byte[] |
+| Varbinary |Byte[] |
 | varchar |String, Char[] |
 | xml |Xml |
 
