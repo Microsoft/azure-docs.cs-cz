@@ -32,10 +32,10 @@ Data pro monitorové geografické zóny nebo sadu monitorovaná geografická zó
 
 | Název | Type | Povinné  | Popis |
 | :------------ |:------------: |:---------------:| :-----|
-| startTime | Datum a čas  | true (pravda) | Počáteční datum a čas platnosti časového období. |
-| endTime   | Datum a čas  | true (pravda) |  Koncové datum a čas platnosti časového období. |
+| startTime | DateTime  | true (pravda) | Počáteční datum a čas platnosti časového období. |
+| endTime   | DateTime  | true (pravda) |  Koncové datum a čas platnosti časového období. |
 | recurrenceType | string | false (nepravda) |   Typ opakování období. Hodnota může být `Daily`, `Weekly`, `Monthly`, nebo `Yearly`. Výchozí hodnota je `Daily`.|
-| businessDayOnly | Logická hodnota | false (nepravda) |  Označuje, zda data pouze platné během pracovních dnů. Výchozí hodnota je `false`.|
+| businessDayOnly | Boolean | false (nepravda) |  Označuje, zda data pouze platné během pracovních dnů. Výchozí hodnota je `false`.|
 
 
 * Všechny hodnoty souřadnic jsou reprezentovány ve formě [latitude, longitude] definované v `WGS84`.
