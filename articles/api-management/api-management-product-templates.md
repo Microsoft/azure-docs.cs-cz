@@ -80,9 +80,9 @@ Azure API Management poskytuje schopnost přizpůsobit obsah stránek portálu p
   
 |Vlastnost|Typ|Popis|  
 |--------------|----------|-----------------|  
-|Stránkování|[Stránkování](api-management-template-data-model-reference.md#Paging) entity.|Informace o stránkování pro kolekci produktů.|  
-|Filtrování|[Filtrování](api-management-template-data-model-reference.md#Filtering) entity.|Informace o filtrování pro stránku se seznamem produktů.|  
-|Produkty|Kolekce [produktu](api-management-template-data-model-reference.md#Product) entity.|Produkty viditelné pro aktuálního uživatele.|  
+|Paging|[Stránkování](api-management-template-data-model-reference.md#Paging) entity.|Informace o stránkování pro kolekci produktů.|  
+|Filtering|[Filtrování](api-management-template-data-model-reference.md#Filtering) entity.|Informace o filtrování pro stránku se seznamem produktů.|  
+|Products|Kolekce [produktu](api-management-template-data-model-reference.md#Product) entity.|Produkty viditelné pro aktuálního uživatele.|  
   
 ### <a name="sample-template-data"></a>Ukázková data šablony  
   
@@ -205,15 +205,15 @@ Azure API Management poskytuje schopnost přizpůsobit obsah stránek portálu p
   
 |Vlastnost|Typ|Popis|  
 |--------------|----------|-----------------|  
-|Produkt|[Produkt](api-management-template-data-model-reference.md#Product)|Zadaný produkt.|  
+|Product|[Produkt](api-management-template-data-model-reference.md#Product)|Zadaný produkt.|  
 |IsDeveloperSubscribed|Boolean|Určuje, zda má aktuální uživatel je přihlášen k tomuto produktu.|  
 |SubscriptionState|číslo|Stav odběru. Možné stavy jsou:<br /><br /> -   `0 - suspended` – předplatného je zablokovaná a odběrateli nelze volat jakékoli rozhraní API produktu.<br />-   `1 - active` – je předplatné aktivní.<br />-   `2 - expired` – předplatné dosáhlo datum vypršení platnosti a bylo deaktivováno.<br />-   `3 - submitted` – žádost o odběr provedl pro vývojáře, ale má ještě se schválením nebo zamítnutím.<br />-   `4 - rejected` – předplatné žádost byla zamítnuta správcem.<br />-   `5 - cancelled` – předplatné zrušil vývojáři nebo správci.|  
-|Omezení|pole|Tato vlastnost je zastaralý a neměl by se používat.|  
+|Limits|pole|Tato vlastnost je zastaralý a neměl by se používat.|  
 |DelegatedSubscriptionEnabled|Boolean|Zda [delegování](https://azure.microsoft.com/documentation/articles/api-management-howto-setup-delegation/) je pro toto předplatné povolená.|  
 |DelegatedSubscriptionUrl|řetězec|Pokud je povoleno delegování, adresa URL delegované předplatné.|  
 |IsAgreed|Boolean|Pokud produkt má podmínky, zda má aktuální uživatel souhlasit s podmínkami.|  
-|Předplatná|Kolekce [předplatné Souhrn](api-management-template-data-model-reference.md#SubscriptionSummary) entity.|Předplatná produktu.|  
-|rozhraní API|Kolekce [API](api-management-template-data-model-reference.md#API) entity.|Rozhraní API v tomto produktu.|  
+|Subscriptions|Kolekce [předplatné Souhrn](api-management-template-data-model-reference.md#SubscriptionSummary) entity.|Předplatná produktu.|  
+|Apis|Kolekce [API](api-management-template-data-model-reference.md#API) entity.|Rozhraní API v tomto produktu.|  
 |CannotAddBecauseSubscriptionNumberLimitReached|Boolean|Určuje, zda má aktuální uživatel vás opravňuje k odběru tohoto produktu s ohledem na omezení předplatného.|  
 |CannotAddBecauseMultipleSubscriptionsNotAllowed|Boolean|Určuje, zda má aktuální uživatel vás opravňuje k odběru tohoto produktu s ohledem na několik předplatných, nebo není povolené.|  
   
