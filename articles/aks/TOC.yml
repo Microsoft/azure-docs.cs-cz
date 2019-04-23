@@ -1,330 +1,324 @@
-items:
 - name: Azure Kubernetes Service (AKS)
   href: ./index.yml
 - name: Přehled
   items:
-  - name: Informace o AKS
-    href: intro-kubernetes.md
+    - name: Informace o AKS
+      href: intro-kubernetes.md
 - name: Šablony Rychlý start
-  items:
-  - name: Vytvoření clusteru AKS – rozhraní příkazového řádku
-    href: kubernetes-walkthrough.md
-  - name: Vytvoření clusteru AKS – portál
-    href: kubernetes-walkthrough-portal.md
-  - name: Vývoj aplikací
-    items:
-    - name: Použití jazyka Java (VS Code a CLI)
-      href: ../dev-spaces/quickstart-java.md
-      maintainContext: true
-    - name: Použití .NET Core (VS Code a CLI)
-      href: ../dev-spaces/quickstart-netcore.md
-      maintainContext: true
-    - name: Použití .NET Core (Visual Studio 2017)
-      href: ../dev-spaces/quickstart-netcore-visualstudio.md
-      maintainContext: true
-    - name: Použití Node.js (VS Code a CLI)
-      href: ../dev-spaces/quickstart-nodejs.md
-      maintainContext: true
-    expanded: true
   expanded: true
+  items:
+    - name: Vytvoření clusteru AKS – rozhraní příkazového řádku
+      href: kubernetes-walkthrough.md
+    - name: Vytvoření clusteru AKS – portál
+      href: kubernetes-walkthrough-portal.md
+    - name: Vývoj aplikací
+      expanded: true
+      items:
+        - name: Použití jazyka Java (VS Code a CLI)
+          href: ../dev-spaces/quickstart-java.md
+          maintainContext: true
+        - name: Použití .NET Core (VS Code a CLI)
+          href: ../dev-spaces/quickstart-netcore.md
+          maintainContext: true
+        - name: Použití .NET Core (Visual Studio 2017)
+          href: ../dev-spaces/quickstart-netcore-visualstudio.md
+          maintainContext: true
+        - name: Použití Node.js (VS Code a CLI)
+          href: ../dev-spaces/quickstart-nodejs.md
+          maintainContext: true
 - name: Kurzy
   items:
-  - name: 1. Příprava aplikace pro AKS
-    href: tutorial-kubernetes-prepare-app.md
-  - name: 2. Vytvoření registru kontejneru
-    href: tutorial-kubernetes-prepare-acr.md
-  - name: 3. Vytvoření clusteru Kubernetes
-    href: tutorial-kubernetes-deploy-cluster.md
-  - name: 4. Spuštění aplikace
-    href: tutorial-kubernetes-deploy-application.md
-  - name: 5. Škálování aplikace
-    href: tutorial-kubernetes-scale.md
-  - name: 6. Aktualizace aplikace
-    href: tutorial-kubernetes-app-update.md
-  - name: 7. Upgrade clusteru
-    href: tutorial-kubernetes-upgrade-cluster.md
+    - name: 1. Příprava aplikace pro AKS
+      href: tutorial-kubernetes-prepare-app.md
+    - name: 2. Vytvoření registru kontejneru
+      href: tutorial-kubernetes-prepare-acr.md
+    - name: 3. Vytvoření clusteru Kubernetes
+      href: tutorial-kubernetes-deploy-cluster.md
+    - name: 4. Spuštění aplikace
+      href: tutorial-kubernetes-deploy-application.md
+    - name: 5. Škálování aplikace
+      href: tutorial-kubernetes-scale.md
+    - name: 6. Aktualizace aplikace
+      href: tutorial-kubernetes-app-update.md
+    - name: 7. Upgrade clusteru
+      href: tutorial-kubernetes-upgrade-cluster.md
 - name: Koncepty
   items:
-  - name: Clustery a úlohy
-    href: concepts-clusters-workloads.md
-  - name: Přístup a identita
-    href: concepts-identity.md
-  - name: Zabezpečení
-    href: concepts-security.md
-  - name: Sítě
-    href: concepts-network.md
-  - name: Storage
-    href: concepts-storage.md
-  - name: Měřítko
-    href: concepts-scale.md
-  - name: Osvědčené postupy
-    href: best-practices.md
-    items:
-    - name: Pro operátory clusteru
+    - name: Clustery a úlohy
+      href: concepts-clusters-workloads.md
+    - name: Přístup a identita
+      href: concepts-identity.md
+    - name: Zabezpečení
+      href: concepts-security.md
+      items: null
+    - name: Sítě
+      href: concepts-network.md
+    - name: Storage
+      href: concepts-storage.md
+    - name: Měřítko
+      href: concepts-scale.md
+    - name: Osvědčené postupy
+      href: best-practices.md
       items:
-      - name: Víceklientská architektura a izolace clusteru
-        href: operator-best-practices-cluster-isolation.md
-      - name: Základní funkce plánovače
-        href: operator-best-practices-scheduler.md
-      - name: Pokročilé funkce plánovače
-        href: operator-best-practices-advanced-scheduler.md
-      - name: Ověřování a autorizace
-        href: operator-best-practices-identity.md
-      - name: Zabezpečení clusteru
-        href: operator-best-practices-cluster-security.md
-      - name: Správa imagí kontejnerů
-        href: operator-best-practices-container-image-management.md
-      - name: Sítě
-        href: operator-best-practices-network.md
-      - name: Úložiště
-        href: operator-best-practices-storage.md
-      - name: Provozní kontinuita a zotavení po havárii
-        href: operator-best-practices-multi-region.md
-    - name: Pro vývojáře aplikací
-      items:
-      - name: Správa prostředků
-        href: developer-best-practices-resource-management.md
-      - name: Zabezpečení podů
-        href: developer-best-practices-pod-security.md
-  - name: Kvóty a místní omezení
-    href: container-service-quotas.md
-  - name: Migrace z ACS do AKS
-    href: acs-aks-migration.md
-  - name: Podporovaná verze Kubernetes
-    href: supported-kubernetes-versions.md
+        - name: Pro operátory clusteru
+          items:
+            - name: Víceklientská architektura a izolace clusteru
+              href: operator-best-practices-cluster-isolation.md
+            - name: Základní funkce plánovače
+              href: operator-best-practices-scheduler.md
+            - name: Pokročilé funkce plánovače
+              href: operator-best-practices-advanced-scheduler.md
+            - name: Ověřování a autorizace
+              href: operator-best-practices-identity.md
+            - name: Zabezpečení clusteru
+              href: operator-best-practices-cluster-security.md
+            - name: Správa imagí kontejnerů
+              href: operator-best-practices-container-image-management.md
+            - name: Sítě
+              href: operator-best-practices-network.md
+            - name: Úložiště
+              href: operator-best-practices-storage.md
+            - name: Provozní kontinuita a zotavení po havárii
+              href: operator-best-practices-multi-region.md
+        - name: Pro vývojáře aplikací
+          items:
+            - name: Správa prostředků
+              href: developer-best-practices-resource-management.md
+            - name: Zabezpečení podů
+              href: developer-best-practices-pod-security.md
+    - name: Kvóty a místní omezení
+      href: container-service-quotas.md
+    - name: Migrace z ACS do AKS
+      href: acs-aks-migration.md
+    - name: Podporovaná verze Kubernetes
+      href: supported-kubernetes-versions.md
 - name: Návody
   items:
-  - name: Operace clusteru
-    items:
-    - name: Vytvoření clusteru AKS
-      href: /cli/azure/aks#az-aks-create
-      maintainContext: true
-    - name: Škálování clusteru AKS
-      href: scale-cluster.md
-    - name: Upgrade clusteru AKS
-      href: upgrade-cluster.md
-    - name: Aktualizace operačního systému procesních uzlů
-      href: node-updates-kured.md
-    - name: Odstranění clusteru AKS
-      href: /cli/azure/aks#az-aks-delete
-      maintainContext: true
-    - name: AKS s podporou Azure AD
-      href: aad-integration.md
-    - name: Vytváření virtuálních uzlů (Preview)
+    - name: Operace clusteru
       items:
-      - name: Azure CLI
-        href: virtual-nodes-cli.md
-      - name: portál Azure
-        href: virtual-nodes-portal.md
-    - name: Použití Virtual Kubeletu
-      href: virtual-kubelet.md
-    - name: Použití automatického škálování clusteru (Preview)
-      href: cluster-autoscaler.md
-    - name: Nasazení AKS s Terraformem
-      href: ../terraform/terraform-create-k8s-cluster-with-tf-and-aks.md
-      maintainContext: true
-  - name: Konfigurace svazků s daty
-    items:
-    - name: Disky Azure – dynamické
-      href: azure-disks-dynamic-pv.md
-    - name: Disky Azure – statické
-      href: azure-disk-volume.md
-    - name: Soubory Azure – dynamické
-      href: azure-files-dynamic-pv.md
-    - name: Soubory Azure – statické
-      href: azure-files-volume.md
-  - name: Konfigurace sítí
-    items:
-    - name: Vytvoření nebo použití existující virtuální sítě
+        - name: Vytvoření clusteru AKS
+          href: '/cli/azure/aks#az-aks-create'
+          maintainContext: true
+        - name: Škálování clusteru AKS
+          href: scale-cluster.md
+        - name: Upgrade clusteru AKS
+          href: upgrade-cluster.md
+        - name: Aktualizace operačního systému procesních uzlů
+          href: node-updates-kured.md
+        - name: Odstranění clusteru AKS
+          href: '/cli/azure/aks#az-aks-delete'
+          maintainContext: true
+        - name: AKS s podporou Azure AD
+          href: aad-integration.md
+        - name: Vytváření virtuálních uzlů (Preview)
+          items:
+            - name: Azure CLI
+              href: virtual-nodes-cli.md
+            - name: portál Azure
+              href: virtual-nodes-portal.md
+        - name: Použití Virtual Kubeletu
+          href: virtual-kubelet.md
+        - name: Použití automatického škálování clusteru (Preview)
+          href: cluster-autoscaler.md
+        - name: Nasazení AKS s Terraformem
+          href: ../terraform/terraform-create-k8s-cluster-with-tf-and-aks.md
+          maintainContext: true
+    - name: Konfigurace svazků s daty
       items:
-      - name: Použití Kubenet
-        href: configure-kubenet.md
-      - name: Použití Azure-CNI
-        href: configure-azure-cni.md
-    - name: Vytvořte interní nástroj pro vyrovnávání zatížení.
-      href: internal-lb.md
-    - name: Použití statických IP adres
-      href: static-ip.md
-    - name: Příchozí přenos dat
+        - name: Disky Azure – dynamické
+          href: azure-disks-dynamic-pv.md
+        - name: Disky Azure – statické
+          href: azure-disk-volume.md
+        - name: Soubory Azure – dynamické
+          href: azure-files-dynamic-pv.md
+        - name: Soubory Azure – statické
+          href: azure-files-volume.md
+    - name: Konfigurace sítí
       items:
-      - name: Vytvoření základního kontroleru
-        href: ingress-basic.md
-      - name: Použití směrování aplikace HTTP
-        href: http-application-routing.md
-      - name: Použití interní sítě
-        href: ingress-internal-ip.md
-      - name: Použití TLS a vlastních certifikátů
-        href: ingress-own-tls.md
-      - name: Použití TLS a Let's Encrypt
-        href: ingress-tls.md
-        items:
-        - name: Použití statické veřejné IP adresy
-          href: ingress-static-ip.md
-    - name: Výchozí přenos
-      href: egress.md
-    - name: Přizpůsobení CoreDNS
-      href: coredns-custom.md
-  - name: Zabezpečení a ověřování
-    items:
-    - name: Vytvoření instančního objektu
-      href: kubernetes-service-principal.md
-    - name: Omezení přístupu ke konfiguračnímu souboru clusteru
-      href: control-kubeconfig-access.md
-    - name: Zabezpečení přenosu podů s využitím síťových zásad (Preview)
-      href: use-network-policies.md
-    - name: Aktualizace přihlašovacích údajů instančního objektu clusteru
-      href: update-credentials.md
-    - name: Ověřování pomocí ACR
-      href: ../container-registry/container-registry-auth-aks.md
-      maintainContext: true
-  - name: Monitorování a protokolování
-    items:
-    - name: Azure Monitor pro kontejnery
-      href: ../azure-monitor/insights/container-insights-overview.md
-      maintainContext: true
-    - name: Zobrazení protokolů hlavních komponent
-      href: view-master-logs.md
-    - name: Zobrazení protokolů Kubelet
-      href: kubelet-logs.md
-    - name: Zobrazení protokolů kontejneru v reálném čase (preview)
-      href: ../azure-monitor/insights/container-insights-live-logs.md
-      maintainContext: true
-  - name: Vývoj a spouštění aplikací
-    items:
-    - name: Vývoj s využitím Dev Spaces
-      href: ../dev-spaces/azure-dev-spaces.md
+        - name: Vytvoření nebo použití existující virtuální sítě
+          items:
+            - name: Použití Kubenet
+              href: configure-kubenet.md
+            - name: Použití Azure-CNI
+              href: configure-azure-cni.md
+        - name: Vytvořte interní nástroj pro vyrovnávání zatížení.
+          href: internal-lb.md
+        - name: Použití statických IP adres
+          href: static-ip.md
+        - name: Příchozí přenos dat
+          items:
+            - name: Vytvoření základního kontroleru
+              href: ingress-basic.md
+            - name: Použití směrování aplikace HTTP
+              href: http-application-routing.md
+            - name: Použití interní sítě
+              href: ingress-internal-ip.md
+            - name: Použití TLS a vlastních certifikátů
+              href: ingress-own-tls.md
+            - name: Použití TLS a Let's Encrypt
+              href: ingress-tls.md
+              items:
+                - name: Použití statické veřejné IP adresy
+                  href: ingress-static-ip.md
+        - name: Výchozí přenos
+          href: egress.md
+        - name: Přizpůsobení CoreDNS
+          href: coredns-custom.md
+    - name: Zabezpečení a ověřování
       items:
-      - name: Java (VS Code a CLI)
-        items:
-        - name: 1. Začínáme
-          href: ../dev-spaces/get-started-java.md
+        - name: Vytvoření instančního objektu
+          href: kubernetes-service-principal.md
+        - name: Omezení přístupu ke konfiguračnímu souboru clusteru
+          href: control-kubeconfig-access.md
+        - name: Zabezpečení přenosu podů s využitím síťových zásad (Preview)
+          href: use-network-policies.md
+        - name: Aktualizace přihlašovacích údajů instančního objektu clusteru
+          href: update-credentials.md
+        - name: Ověřování pomocí ACR
+          href: ../container-registry/container-registry-auth-aks.md
           maintainContext: true
-        - name: 2. Vývoj více služeb
-          href: ../dev-spaces/multi-service-java.md
-          maintainContext: true
-        - name: 3. Týmový vývoj
-          href: ../dev-spaces/team-development-java.md
-          maintainContext: true
-      - name: .NET Core (VS Code a CLI)
-        items:
-        - name: 1. Začínáme
-          href: ../dev-spaces/get-started-netcore.md
-          maintainContext: true
-        - name: 2. Vývoj více služeb
-          href: ../dev-spaces/multi-service-netcore.md
-          maintainContext: true
-        - name: 3. Týmový vývoj
-          href: ../dev-spaces/team-development-netcore.md
-          maintainContext: true
-      - name: .NET Core (Visual Studio 2017)
-        items:
-        - name: 1. Začínáme
-          href: ../dev-spaces/get-started-netcore-visualstudio.md
-          maintainContext: true
-        - name: 2. Vývoj více služeb
-          href: ../dev-spaces/multi-service-netcore-visualstudio.md
-          maintainContext: true
-        - name: 3. Týmový vývoj
-          href: ../dev-spaces/team-development-netcore-visualstudio.md
-          maintainContext: true
-      - name: Node.js (VS Code a CLI)
-        items:
-        - name: 1. Začínáme
-          href: ../dev-spaces/get-started-nodejs.md
-          maintainContext: true
-        - name: 2. Vývoj více služeb
-          href: ../dev-spaces/multi-service-nodejs.md
-          maintainContext: true
-        - name: 3. Týmový vývoj
-          href: ../dev-spaces/team-development-nodejs.md
-          maintainContext: true
-      maintainContext: true
-    - name: Spouštění aplikací pomocí Helm
-      href: kubernetes-helm.md
-    - name: Vývoj aplikací pomocí Draft
-      href: kubernetes-draft.md
-    - name: Použití technologie Open Service Broker for Azure
-      href: integrate-azure.md
-    - name: Použití rozhraní API Cosmos DB pro MongoDB s využitím OSBA
-      href: use-cosmosdb-osba-mongo-app.md
-    - name: Použití OpenFaaS
-      href: openfaas.md
-    - name: Spouštění sparkových úloh
-      href: spark-job.md
-    - name: Použití GPU
-      href: gpu-cluster.md
-    - name: Použití Istio
+    - name: Monitorování a protokolování
       items:
-      - name: Instalace a konfigurace
-        href: istio-install.md
-      - name: Inteligentní směrování a testovací verze
-        href: istio-scenario-routing.md
-    - name: Použití služby Azure Database for PostgreSQL
-      href: ../postgresql/concepts-aks.md
-      maintainContext: true
-  - name: DevOps
-    items:
-    - name: Použití Ansible k vytvoření clusteru AKS
-      href: /azure/ansible/ansible-create-configure-aks
-      maintainContext: true
-    - name: Průběžné nasazování Jenkins
-      href: jenkins-continuous-deployment.md
-    - name: Azure DevOps Project
-      href: ../devops-project/azure-devops-project-aks.md
-      maintainContext: true
-  - name: Základy Kubernetes
-    items:
-    - name: Použití řídicího panelu Kubernetes
-      href: kubernetes-dashboard.md
-  - name: Řešení potíží
-    items:
-    - name: Běžné problémy
-      href: troubleshooting.md
-    - name: Kontrola osvědčených postupů
-      href: kube-advisor-tool.md
-    - name: Přístup k uzlu SSH
-      href: ssh.md
+        - name: Azure Monitor pro kontejnery
+          href: ../azure-monitor/insights/container-insights-overview.md
+          maintainContext: true
+        - name: Zobrazení protokolů hlavních komponent
+          href: view-master-logs.md
+        - name: Zobrazení protokolů Kubelet
+          href: kubelet-logs.md
+        - name: Zobrazení protokolů kontejneru v reálném čase (preview)
+          href: ../azure-monitor/insights/container-insights-live-logs.md
+          maintainContext: true
+    - name: Vývoj a spouštění aplikací
+      items:
+        - name: Vývoj s využitím Dev Spaces
+          href: ../dev-spaces/azure-dev-spaces.md
+          maintainContext: true
+          items:
+            - name: Java (VS Code a CLI)
+              items:
+                - name: 1. Začínáme
+                  href: ../dev-spaces/get-started-java.md
+                  maintainContext: true
+                - name: 2. Vývoj více služeb
+                  href: ../dev-spaces/multi-service-java.md
+                  maintainContext: true
+                - name: 3. Týmový vývoj
+                  href: ../dev-spaces/team-development-java.md
+                  maintainContext: true
+            - name: .NET Core (VS Code a CLI)
+              items:
+                - name: 1. Začínáme
+                  href: ../dev-spaces/get-started-netcore.md
+                  maintainContext: true
+                - name: 2. Vývoj více služeb
+                  href: ../dev-spaces/multi-service-netcore.md
+                  maintainContext: true
+                - name: 3. Týmový vývoj
+                  href: ../dev-spaces/team-development-netcore.md
+                  maintainContext: true
+            - name: .NET Core (Visual Studio 2017)
+              items:
+                - name: 1. Začínáme
+                  href: ../dev-spaces/get-started-netcore-visualstudio.md
+                  maintainContext: true
+                - name: 2. Vývoj více služeb
+                  href: ../dev-spaces/multi-service-netcore-visualstudio.md
+                  maintainContext: true
+                - name: 3. Týmový vývoj
+                  href: ../dev-spaces/team-development-netcore-visualstudio.md
+                  maintainContext: true
+            - name: Node.js (VS Code a CLI)
+              items:
+                - name: 1. Začínáme
+                  href: ../dev-spaces/get-started-nodejs.md
+                  maintainContext: true
+                - name: 2. Vývoj více služeb
+                  href: ../dev-spaces/multi-service-nodejs.md
+                  maintainContext: true
+                - name: 3. Týmový vývoj
+                  href: ../dev-spaces/team-development-nodejs.md
+                  maintainContext: true
+        - name: Spouštění aplikací pomocí Helm
+          href: kubernetes-helm.md
+        - name: Vývoj aplikací pomocí Draft
+          href: kubernetes-draft.md
+        - name: Použití technologie Open Service Broker for Azure
+          href: integrate-azure.md
+        - name: Použití rozhraní API Cosmos DB pro MongoDB s využitím OSBA
+          href: use-cosmosdb-osba-mongo-app.md
+        - name: Použití OpenFaaS
+          href: openfaas.md
+        - name: Spouštění sparkových úloh
+          href: spark-job.md
+        - name: Použití GPU
+          href: gpu-cluster.md
+        - name: Použití Istio
+          items:
+            - name: Instalace a konfigurace
+              href: istio-install.md
+            - name: Inteligentní směrování a testovací verze
+              href: istio-scenario-routing.md
+        - name: Použití služby Azure Database for PostgreSQL
+          href: ../postgresql/concepts-aks.md
+          maintainContext: true
+    - name: DevOps
+      items:
+        - name: Použití Ansible k vytvoření clusteru AKS
+          href: /azure/ansible/ansible-create-configure-aks
+          maintainContext: true
+        - name: Průběžné nasazování Jenkins
+          href: jenkins-continuous-deployment.md
+        - name: Azure DevOps Project
+          href: ../devops-project/azure-devops-project-aks.md
+          maintainContext: true
+    - name: Základy Kubernetes
+      items:
+        - name: Použití řídicího panelu Kubernetes
+          href: kubernetes-dashboard.md
+    - name: Řešení potíží
+      items:
+        - name: Běžné problémy
+          href: troubleshooting.md
+        - name: Kontrola osvědčených postupů
+          href: kube-advisor-tool.md
+        - name: Přístup k uzlu SSH
+          href: ssh.md
 - name: Referenční informace
   items:
-  - name: Azure CLI
-    href: /cli/azure/aks
-  - name: REST
-    href: /rest/api/aks
-  - name: PowerShell
-    href: /powershell/module/az.aks#aks
-  - name: .NET
-    href: /dotnet/api/overview/azure/containerservice
-  - name: Python
-    href: /python/api/overview/azure/containerservice
-  - name: Java
-    href: /java/api/overview/azure/containerservice
-  - name: Node.js
-    href: /javascript/api/overview/azure/container-service
-  - name: Šablona Resource Manageru
-    href: /azure/templates/microsoft.containerservice/managedclusters
+    - name: Azure CLI
+      href: /cli/azure/aks
+    - name: REST
+      href: /rest/api/aks
+    - name: PowerShell
+      href: '/powershell/module/az.aks#aks'
+    - name: .NET
+      href: /dotnet/api/overview/azure/containerservice
+    - name: Python
+      href: /python/api/overview/azure/containerservice
+    - name: Java
+      href: /java/api/overview/azure/containerservice
+    - name: Node.js
+      href: /javascript/api/overview/azure/container-service
+    - name: Šablona Resource Manageru
+      href: /azure/templates/microsoft.containerservice/managedclusters
 - name: Zdroje a prostředky
   items:
-  - name: Získávání dovedností pomocí Microsoft Learn
-    href: /learn/browse/?products=azure-container-instances&azure-container-registry
-  - name: Dostupnost v oblastech
-    href: https://azure.microsoft.com/regions/services/
-  - name: Ceny
-    href: https://azure.microsoft.com/pricing/details/container-service/
-  - name: Zásady podpory
-    href: support-policies.md
-  - name: Plán
-    href: https://azure.microsoft.com/roadmap/
-  - name: Poskytnutí zpětné vazby k produktu
-    href: https://feedback.azure.com/forums/914020-azure-kubernetes-service-aks
-  - name: Stack Overflow
-    href: https://stackoverflow.com/questions/tagged/azure-container-service
-  - name: Videa
-    href: https://azure.microsoft.com/resources/videos/index/?services=container-service&sort=newest
-  - name: Nejčastější dotazy
-    href: faq.md
-ms.openlocfilehash: 900af8f0b09ee19b6f49cbec39bb535e9ba3b385
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
-ms.translationtype: HT
-ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/11/2019
-ms.locfileid: "59488998"
+    - name: Získávání dovedností pomocí Microsoft Learn
+      href: /learn/browse/?products=azure-container-instances&azure-container-registry
+    - name: Dostupnost v oblastech
+      href: 'https://azure.microsoft.com/regions/services/'
+    - name: Ceny
+      href: 'https://azure.microsoft.com/pricing/details/container-service/'
+    - name: Zásady podpory
+      href: support-policies.md
+    - name: Plán
+      href: 'https://azure.microsoft.com/roadmap/'
+    - name: Poskytnutí zpětné vazby k produktu
+      href: 'https://feedback.azure.com/forums/914020-azure-kubernetes-service-aks'
+    - name: Stack Overflow
+      href: 'https://stackoverflow.com/questions/tagged/azure-container-service'
+    - name: Videa
+      href: 'https://azure.microsoft.com/resources/videos/index/?services=container-service&sort=newest'
+    - name: Nejčastější dotazy
+      href: faq.md

@@ -1,94 +1,87 @@
-items:
 - name: Kubernetes v Azure
   href: ./index.yml
 - name: Přehled
   items:
-  - name: Kubernetes v Azure
-    href: container-service-intro-kubernetes.md
+    - name: Kubernetes v Azure
+      href: container-service-intro-kubernetes.md
 - name: Šablony Rychlý start
-  items:
-  - name: Kubernetes v Azure
-    href: container-service-kubernetes-walkthrough.md
   expanded: true
+  items:
+    - name: Kubernetes v Azure
+      href: container-service-kubernetes-walkthrough.md
 - name: Kurzy
   items:
-  - name: 1. Vytvoření imagí kontejneru
-    href: container-service-tutorial-kubernetes-prepare-app.md
-  - name: 2. Vytvoření registru kontejneru
-    href: container-service-tutorial-kubernetes-prepare-acr.md
-  - name: 3. Vytvoření clusteru Kubernetes
-    href: container-service-tutorial-kubernetes-deploy-cluster.md
-  - name: 4. Spuštění aplikace
-    href: container-service-tutorial-kubernetes-deploy-application.md
-  - name: 5. Škálování aplikace
-    href: container-service-tutorial-kubernetes-scale.md
-  - name: 6. Aktualizace aplikace
-    href: container-service-tutorial-kubernetes-app-update.md
-  - name: 7. Monitorování pomocí Log Analytics
-    href: container-service-tutorial-kubernetes-monitor.md
+    - name: 1. Vytvoření imagí kontejneru
+      href: container-service-tutorial-kubernetes-prepare-app.md
+    - name: 2. Vytvoření registru kontejneru
+      href: container-service-tutorial-kubernetes-prepare-acr.md
+    - name: 3. Vytvoření clusteru Kubernetes
+      href: container-service-tutorial-kubernetes-deploy-cluster.md
+    - name: 4. Spuštění aplikace
+      href: container-service-tutorial-kubernetes-deploy-application.md
+    - name: 5. Škálování aplikace
+      href: container-service-tutorial-kubernetes-scale.md
+    - name: 6. Aktualizace aplikace
+      href: container-service-tutorial-kubernetes-app-update.md
+    - name: 7. Monitorování pomocí Log Analytics
+      href: container-service-tutorial-kubernetes-monitor.md
 - name: Koncepty
   items:
-  - name: Instanční objekt – Kubernetes
-    href: container-service-kubernetes-service-principal.md
+    - name: Instanční objekt – Kubernetes
+      href: container-service-kubernetes-service-principal.md
 - name: Návody
   items:
-  - name: Kubernetes s Windows
-    href: container-service-kubernetes-windows-walkthrough.md
-  - name: Webové rozhraní Kubernetes
-    href: container-service-kubernetes-ui.md
-  - name: Použití diagramů Helmu
-    href: container-service-kubernetes-helm.md
-  - name: Zachování data s Azure Files
-    href: ../../aks/azure-files.md?toc=%2fazure%2fcontainer-service%2fkubernetes%2ftoc.json
-  - name: Použití konceptu s ACS
-    href: container-service-draft-up.md
-  - name: Škálování clusteru
-    href: container-service-scale.md
-  - name: Monitorování
-    items:
-    - name: Monitorování pomocí Log Analytics
-      href: container-service-kubernetes-oms.md
-    - name: Monitorování pomocí služby Datadog
-      href: container-service-kubernetes-datadog.md
-    - name: Monitorování pomocí služby Sysdig
-      href: container-service-kubernetes-sysdig.md
-    - name: Monitorování pomocí služby CoScale
-      href: container-service-kubernetes-coscale.md
-  - name: Nasazení aplikací Spring Boot
-    items:
-    - name: Nasazení aplikace Spring Boot Application v Linuxu ve službě Azure Container Service
-      href: container-service-deploy-spring-boot-app-on-linux.md
-    - name: Nasazení aplikace Spring Boot Application v clusteru Kubernetes ve službě Azure Container Service
-      href: container-service-deploy-spring-boot-app-on-kubernetes.md
-    - name: Nasazení aplikace Spring Boot s využitím modulu plug-in fabric8 Maven
-      href: container-service-deploy-spring-boot-app-using-fabric8-maven-plugin.md
+    - name: Kubernetes s Windows
+      href: container-service-kubernetes-windows-walkthrough.md
+    - name: Webové rozhraní Kubernetes
+      href: container-service-kubernetes-ui.md
+    - name: Použití diagramů Helmu
+      href: container-service-kubernetes-helm.md
+    - name: Zachování data s Azure Files
+      href: ../../aks/azure-files.md?toc=%2fazure%2fcontainer-service%2fkubernetes%2ftoc.json
+    - name: Použití konceptu s ACS
+      href: container-service-draft-up.md
+    - name: Škálování clusteru
+      href: container-service-scale.md
+    - name: Monitorování
+      items:
+        - name: Monitorování pomocí Log Analytics
+          href: container-service-kubernetes-oms.md
+        - name: Monitorování pomocí služby Datadog
+          href: container-service-kubernetes-datadog.md
+        - name: Monitorování pomocí služby Sysdig
+          href: container-service-kubernetes-sysdig.md
+        - name: Monitorování pomocí služby CoScale
+          href: container-service-kubernetes-coscale.md
+    - name: Nasazení aplikací Spring Boot
+      items:
+        - name: Nasazení aplikace Spring Boot Application v Linuxu ve službě Azure Container Service
+          href: container-service-deploy-spring-boot-app-on-linux.md
+        - name: Nasazení aplikace Spring Boot Application v clusteru Kubernetes ve službě Azure Container Service
+          href: container-service-deploy-spring-boot-app-on-kubernetes.md
+        - name: Nasazení aplikace Spring Boot s využitím modulu plug-in fabric8 Maven
+          href: container-service-deploy-spring-boot-app-using-fabric8-maven-plugin.md
 - name: Referenční informace
   items:
-  - name: Azure CLI
-    href: /cli/azure/acs
-  - name: PowerShell
-    href: /powershell/module/az.compute
-  - name: REST
-    href: /rest/api/container-service
+    - name: Azure CLI
+      href: /cli/azure/acs
+    - name: PowerShell
+      href: /powershell/module/az.compute
+    - name: REST
+      href: /rest/api/container-service
 - name: Zdroje a prostředky
   items:
-  - name: Plány Azure do budoucna
-    href: https://azure.microsoft.com/roadmap/
-  - name: Nejčastější dotazy
-    href: container-service-faq.md
-  - name: Šablony – modul ACS
-    href: https://github.com/Azure/acs-engine
-  - name: Ceny
-    href: https://azure.microsoft.com/pricing/details/container-service/
-  - name: Dostupnost v oblastech
-    href: https://azure.microsoft.com/regions/services/
-  - name: Stack Overflow
-    href: https://stackoverflow.com/questions/tagged/azure-container-service
-  - name: Videa
-    href: https://azure.microsoft.com/resources/videos/index/?services=container-service&sort=newest
-ms.openlocfilehash: 5761772088553029232eca9c8e0fe9ecff30fa43
-ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
-ms.translationtype: HT
-ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/02/2019
-ms.locfileid: "58850966"
+    - name: Plány Azure do budoucna
+      href: 'https://azure.microsoft.com/roadmap/'
+    - name: Nejčastější dotazy
+      href: container-service-faq.md
+    - name: Šablony – modul ACS
+      href: 'https://github.com/Azure/acs-engine'
+    - name: Ceny
+      href: 'https://azure.microsoft.com/pricing/details/container-service/'
+    - name: Dostupnost v oblastech
+      href: 'https://azure.microsoft.com/regions/services/'
+    - name: Stack Overflow
+      href: 'https://stackoverflow.com/questions/tagged/azure-container-service'
+    - name: Videa
+      href: 'https://azure.microsoft.com/resources/videos/index/?services=container-service&sort=newest'

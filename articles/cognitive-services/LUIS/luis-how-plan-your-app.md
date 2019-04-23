@@ -12,11 +12,11 @@ ms.topic: conceptual
 ms.date: 01/02/2019
 ms.author: diberry
 ms.openlocfilehash: 9d54cff81f39f41b60800e9b33f3b4da1a735d85
-ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58893420"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59794980"
 ---
 # <a name="plan-your-luis-app-with-subject-domain-intents-and-entities"></a>Plánování aplikace LUIS s využitím domény předmětu, záměry a entity
 

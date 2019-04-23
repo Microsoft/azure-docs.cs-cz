@@ -1,109 +1,102 @@
-items:
 - name: Dokumentace ke Custom Vision Service
   href: index.yml
 - name: Přehled
   items:
-  - name: Co je Custom Vision?
-    href: home.md
+    - name: Co je Custom Vision?
+      href: home.md
 - name: Šablony Rychlý start
   items:
-  - name: S využitím .NET SDK
-    items:
-    - name: Klasifikace obrázků
-      href: csharp-tutorial.md
-    - name: Detekce objektů
-      href: csharp-tutorial-od.md
-  - name: Používání sady Python SDK
-    items:
-    - name: Klasifikace obrázků
-      href: python-tutorial.md
-    - name: Detekce objektů
-      href: python-tutorial-od.md
-  - name: Používání sady Java SDK
-    items:
-    - name: Klasifikace obrázků
-      href: java-tutorial.md
-    - name: Detekce objektů
-      href: java-tutorial-od.md
-  - name: Použití Node.js SDK
-    items:
-    - name: Klasifikace obrázků
-      href: node-tutorial.md
-    - name: Detekce objektů
-      href: node-tutorial-object-detection.md
-  - name: Použití sady Go SDK
-    items:
-    - name: Klasifikace obrázků
-      href: go-tutorial.md
-    - name: Detekce objektů
-      href: go-tutorial-object-detection.md
+    - name: S využitím .NET SDK
+      items:
+        - name: Klasifikace obrázků
+          href: csharp-tutorial.md
+        - name: Detekce objektů
+          href: csharp-tutorial-od.md
+    - name: Používání sady Python SDK
+      items:
+        - name: Klasifikace obrázků
+          href: python-tutorial.md
+        - name: Detekce objektů
+          href: python-tutorial-od.md
+    - name: Používání sady Java SDK
+      items:
+        - name: Klasifikace obrázků
+          href: java-tutorial.md
+        - name: Detekce objektů
+          href: java-tutorial-od.md
+    - name: Použití Node.js SDK
+      items:
+        - name: Klasifikace obrázků
+          href: node-tutorial.md
+        - name: Detekce objektů
+          href: node-tutorial-object-detection.md
+    - name: Použití sady Go SDK
+      items:
+        - name: Klasifikace obrázků
+          href: go-tutorial.md
+        - name: Detekce objektů
+          href: go-tutorial-object-detection.md
 - name: Kurzy
   items:
-  - name: Detektor log pro mobilní zařízení
-    href: logo-detector-mobile.md
+    - name: Detektor log pro mobilní zařízení
+      href: logo-detector-mobile.md
 - name: Návody
   items:
-  - name: Sestavení klasifikátoru
-    href: getting-started-build-a-classifier.md
-  - name: Testování modelu
-    href: test-your-model.md
-  - name: Vylepšení klasifikátoru
-    href: getting-started-improving-your-classifier.md
-  - name: Použití prediktivního rozhraní API
-    href: use-prediction-api.md
-  - name: Export modelů
-    items:
-    - name: Export modelu do mobilní verze
-      href: export-your-model.md
-    - name: Použití modelu ONNX s Windows ML
-      href: custom-vision-onnx-windows-ml.md
-    - name: Spuštění modelu TensorFlow v Pythonu
-      href: export-model-python.md
-  - name: Export nebo odstranění dat účtu
-    href: ./export-delete-data.md
-  - name: Přesun projektu omezené zkušební verze do Azure
-    href: ./move-your-project-to-azure.md
-  - name: Aktualizace aplikace na rozhraní API 3.0
-    href: ./update-application-to-3.0-sdk.md
+    - name: Sestavení klasifikátoru
+      href: getting-started-build-a-classifier.md
+    - name: Testování modelu
+      href: test-your-model.md
+    - name: Vylepšení klasifikátoru
+      href: getting-started-improving-your-classifier.md
+    - name: Použití prediktivního rozhraní API
+      href: use-prediction-api.md
+    - name: Export modelů
+      items:
+        - name: Export modelu do mobilní verze
+          href: export-your-model.md
+        - name: Použití modelu ONNX s Windows ML
+          href: custom-vision-onnx-windows-ml.md
+        - name: Spuštění modelu TensorFlow v Pythonu
+          href: export-model-python.md
+    - name: Export nebo odstranění dat účtu
+      href: ./export-delete-data.md
+    - name: Přesun projektu omezené zkušební verze do Azure
+      href: ./move-your-project-to-azure.md
+    - name: Aktualizace aplikace na rozhraní API 3.0
+      href: ./update-application-to-3.0-sdk.md
 - name: Referenční informace
   items:
-  - name: Rozhraní API Custom Vision pro trénování
-    href: https://go.microsoft.com/fwlink/?linkid=865446
-  - name: Rozhraní API Custom Vision pro predikce
-    href: https://go.microsoft.com/fwlink/?linkid=865445
-  - name: Glosář
-    href: glossary-of-terms.md
-  - name: Sady SDK
-    items:
-    - name: .NET
-      href: https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/customvision?view=azure-dotnet
-    - name: Java
-      href: https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/customvision?view=azure-java-stable
-    - name: Python
-      href: https://docs.microsoft.com/python/api/overview/azure/cognitiveservices/customvision?view=azure-python
-    - name: Go – trénování
-      href: https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.1/customvision/training
-    - name: Go – předpověď
-      href: https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.1/customvision/prediction
+    - name: Rozhraní API Custom Vision pro trénování
+      href: 'https://go.microsoft.com/fwlink/?linkid=865446'
+    - name: Rozhraní API Custom Vision pro predikce
+      href: 'https://go.microsoft.com/fwlink/?linkid=865445'
+    - name: Glosář
+      href: glossary-of-terms.md
+    - name: Sady SDK
+      items:
+        - name: .NET
+          href: 'https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/customvision?view=azure-dotnet'
+        - name: Java
+          href: 'https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/customvision?view=azure-java-stable'
+        - name: Python
+          href: 'https://docs.microsoft.com/python/api/overview/azure/cognitiveservices/customvision?view=azure-python'
+        - name: Go – trénování
+          href: 'https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.1/customvision/training'
+        - name: Go – předpověď
+          href: 'https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.1/customvision/prediction'
 - name: Zdroje a prostředky
   items:
-  - name: Ukázky
-    href: https://azure.microsoft.com/resources/samples/?service=cognitive-services&term=vision
-  - name: Omezení a kvóty
-    href: limits-and-quotas.md
-  - name: UserVoice
-    href: https://cognitive.uservoice.com/forums/598141-custom-vision-service
-  - name: Stack Overflow
-    href: https://stackoverflow.com/questions/tagged/microsoft-cognitive
-  - name: Plány Azure do budoucna
-    href: https://azure.microsoft.com/updates/?product=cognitive-services
-  - name: Regionální dostupnost
-    href: https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services
-  - name: Poznámky k verzi
-    href: release-notes.md
-ms.openlocfilehash: df39e49ac586fc8e74a0b94074d94e7a6293e4e5
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
-ms.translationtype: HT
-ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/05/2019
-ms.locfileid: "59044755"
+    - name: Ukázky
+      href: 'https://azure.microsoft.com/resources/samples/?service=cognitive-services&term=vision'
+    - name: Omezení a kvóty
+      href: limits-and-quotas.md
+    - name: UserVoice
+      href: 'https://cognitive.uservoice.com/forums/598141-custom-vision-service'
+    - name: Stack Overflow
+      href: 'https://stackoverflow.com/questions/tagged/microsoft-cognitive'
+    - name: Plány Azure do budoucna
+      href: 'https://azure.microsoft.com/updates/?product=cognitive-services'
+    - name: Regionální dostupnost
+      href: 'https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services'
+    - name: Poznámky k verzi
+      href: release-notes.md
