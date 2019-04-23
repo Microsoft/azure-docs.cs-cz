@@ -11,11 +11,11 @@ ms.date: 02/19/2019
 ms.author: martinle
 ms.reviewer: jrasnick
 ms.openlocfilehash: a8bd260db7a141ce845ce7fb5b7e10f642907b82
-ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/02/2019
-ms.locfileid: "58851091"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59788164"
 ---
 # <a name="optimize-performance-by-upgrading-sql-data-warehouse"></a>Optimalizace výkonu díky upgradu SQL Data Warehouse
 
@@ -31,7 +31,7 @@ Nově můžete bez problémů upgradovat na úroveň SQL Data Warehouse – Comp
 
 Tento upgrade se vztahuje na – Compute optimalizované Gen1 úroveň datové sklady v [podporované oblasti](gen2-migration-schedule.md#automated-schedule-and-region-availability-table).
 
-## <a name="before-you-begin"></a>Před zahájením
+## <a name="before-you-begin"></a>Než začnete
 
 1. Zkontrolujte, jestli vaše [oblasti](gen2-migration-schedule.md#automated-schedule-and-region-availability-table) se podporuje pro GEN1 GEN2 migrace. Poznamenejte si data automatickou migraci. Aby nedocházelo ke konfliktům s automatizovaným procesem, naplánujte si ruční migraci před datem zahájení automatizovaného procesu.
 2. Pokud jste v oblasti, která zatím není podporovaná, pokračovat ke kontrole vaší oblasti, které mají být přidány nebo [upgrade pomocí obnovení](#upgrade-from-an-azure-geographical-region-using-restore-through-the-azure-portal) v podporované oblasti.
@@ -58,7 +58,7 @@ Tento upgrade se vztahuje na – Compute optimalizované Gen1 úroveň datové s
 
 ## <a name="upgrade-in-a-supported-region-using-the-azure-portal"></a>Upgrade v podporované oblasti pomocí webu Azure portal
 
-## <a name="before-you-begin"></a>Před zahájením
+## <a name="before-you-begin"></a>Než začnete
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -205,7 +205,7 @@ WHERE  idx.type_desc = 'CLUSTERED COLUMNSTORE';
 
 4. Vyberte buď **body obnovení automaticky** nebo **uživatelem definované body obnovení**.
 
-    ![Body obnovení automaticky](./media/sql-data-warehouse-restore-database-portal/restoring_1.png)
+    ![Automatické body obnovení](./media/sql-data-warehouse-restore-database-portal/restoring_1.png)
 
 5. Pro body obnovení uživatelsky definovaná **vyberte bod obnovení** nebo **vytvořit nový bod obnovení uživatelem definované**. Vyberte zeměpisnou oblast podporovaném serveru Gen2. 
 

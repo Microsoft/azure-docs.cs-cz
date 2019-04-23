@@ -14,11 +14,11 @@ ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 3322e49c6fdc590b785806f67b5081700bf8b37b
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
-ms.translationtype: MT
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59264892"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59788619"
 ---
 # <a name="associate-or-add-an-azure-subscription-to-your-azure-active-directory-tenant"></a>Přiřazení nebo přidání předplatného Azure do svého tenanta Azure Active Directory
 
@@ -33,7 +33,7 @@ Všichni uživatelé mají jeden *domácí* adresáře pro ověřování. Uživa
 > 
 > Kromě toho přesunout cluster Azure Kubernetes Service (AKS) do jiného předplatného nebo přesun předplatného vlastnící clusteru do nového tenanta, způsobí, že cluster tak, aby funkce z důvodu přiřazení rolí ke ztrátě a práva objekty zabezpečení služby by nebyla dostupná. Další informace o službě AKS najdete v tématu [Azure Kubernetes Service (AKS)](https://docs.microsoft.com/en-us/azure/aks/).
 
-## <a name="before-you-begin"></a>Před zahájením
+## <a name="before-you-begin"></a>Než začnete
 
 Předtím, než můžete přiřadit nebo přidejte svoje předplatné, je třeba provést následující úkoly:
 

@@ -14,11 +14,11 @@ ms.workload: infrastructure-services
 ms.date: 01/18/2019
 ms.author: borisb
 ms.openlocfilehash: fb3c0e46324a22bdd95bf7d93c28e69c195927e8
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/05/2019
-ms.locfileid: "59045418"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59786017"
 ---
 # <a name="red-hat-enterprise-linux-images-in-azure"></a>Image Red Hat Enterprise Linux v Azure
 Tento článek popisuje dostupných imagí Red Hat Enterprise Linux (RHEL) na webu Azure Marketplace spolu s zásady po jejich názvy a uchování.

@@ -12,11 +12,11 @@ ms.workload: infrastructure-services
 ms.date: 04/02/2019
 ms.author: kumud;tyao
 ms.openlocfilehash: 05d01851d0a3dc9df6c396e862ce93defd957c70
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59255916"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59788917"
 ---
 # <a name="frequently-asked-questions-for-azure-web-application-firewall"></a>Nejčastější dotazy ke službě Azure web application firewall
 
