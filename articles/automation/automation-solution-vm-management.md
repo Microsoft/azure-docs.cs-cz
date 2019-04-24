@@ -248,8 +248,8 @@ Služba Automation vytváří dva typy záznamů v pracovním prostoru Log Analy
 
 |Vlastnost | Popis|
 |----------|----------|
-|Volající |  Kdo operaci zahájil. Možnou hodnotou je e-mailová adresa nebo systém pro naplánované úlohy.|
-|Kategorie | Klasifikace typu dat. Službě Automation odpovídá hodnota JobLogs.|
+|Caller |  Kdo operaci zahájil. Možnou hodnotou je e-mailová adresa nebo systém pro naplánované úlohy.|
+|Category | Klasifikace typu dat. Službě Automation odpovídá hodnota JobLogs.|
 |CorrelationId | Identifikátor GUID, který se o ID korelace úlohy runbooku.|
 |JobId | Identifikátor GUID, který představuje ID úlohy runbooku.|
 |operationName | Určuje typ operace prováděné v Azure. Hodnota pro automatizaci, je úloha.|
@@ -269,8 +269,8 @@ Služba Automation vytváří dva typy záznamů v pracovním prostoru Log Analy
 
 |Vlastnost | Popis|
 |----------|----------|
-|Volající |  Kdo operaci zahájil. Možnou hodnotou je e-mailová adresa nebo systém pro naplánované úlohy.|
-|Kategorie | Klasifikace typu dat. Službě Automation odpovídá hodnota JobStreams.|
+|Caller |  Kdo operaci zahájil. Možnou hodnotou je e-mailová adresa nebo systém pro naplánované úlohy.|
+|Category | Klasifikace typu dat. Službě Automation odpovídá hodnota JobStreams.|
 |JobId | Identifikátor GUID, který představuje ID úlohy runbooku.|
 |operationName | Určuje typ operace prováděné v Azure. Hodnota pro automatizaci, je úloha.|
 |ResourceGroup | Určuje název skupiny prostředků příslušné úlohy runbooku.|
@@ -282,7 +282,7 @@ Služba Automation vytváří dva typy záznamů v pracovním prostoru Log Analy
 |RunbookName | Název runbooku.|
 |SourceSystem | Určuje zdrojový systém pro odeslaná data. Pro službu Automation je hodnota OpsManager.|
 |StreamType | Typ datového proudu úlohy. Možné hodnoty:<br>-Průběh<br>- Výstup<br>- Varování<br>- Chyba<br>- Ladění<br>- Podrobné|
-|Čas | Datum a čas provedení úlohy runbooku.|
+|Time | Datum a čas provedení úlohy runbooku.|
 
 Při provádění jakékoli hledání v protokolu, které vrací záznamy kategorie **JobLogs** nebo **JobStreams**, můžete vybrat **JobLogs** nebo **JobStreams**zobrazení, které obsahuje sadu dlaždic se souhrnem aktualizací vrácených hledáním.
 
