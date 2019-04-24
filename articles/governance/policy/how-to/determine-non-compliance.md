@@ -3,16 +3,16 @@ title: Určení příčiny nedodržování předpisů
 description: Pokud prostředek je nedodržují předpisy, existuje mnoho důvodů, proč je to možné. Zjistěte, jak zjistit, co způsobilo nedodržení předpisů.
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 02/26/2019
+ms.date: 03/30/2019
 ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
-ms.openlocfilehash: 8a593e92d7f24885c35043b874528e881d2e021e
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: HT
+ms.openlocfilehash: 0af3fd8596bf558f9d5cc97c95be773aa40954cc
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59276095"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60499324"
 ---
 # <a name="determine-causes-of-non-compliance"></a>Určení příčiny nedodržování předpisů
 
@@ -124,6 +124,8 @@ Jako součást nového **ve verzi public preview**, posledních 14 dní změny n
    ![Historie změn zásad na stránce historie změn Visual rozdíl.](../media/determine-non-compliance/change-history-visual-diff.png)
 
 _Visual diff_ formě identifikovat změny prostředku. Byly zjištěny změny nemusí souviset s aktuální stav dodržování předpisů prostředku.
+
+Poskytuje data o historii změn [Azure Graph prostředků](../../resource-graph/overview.md). Pro dotazy, tyto informace mimo na webu Azure portal, najdete v článku [získat změn prostředků](../../resource-graph/how-to/get-resource-changes.md).
 
 ## <a name="next-steps"></a>Další postup
 

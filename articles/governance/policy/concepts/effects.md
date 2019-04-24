@@ -9,11 +9,11 @@ ms.service: azure-policy
 manager: carmonm
 ms.custom: seodec18
 ms.openlocfilehash: 67a195932ad1afc3c93a94dfcbda8ab8a47760b2
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59793940"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60498810"
 ---
 # <a name="understand-azure-policy-effects"></a>Principy Azure Policy efekty
 

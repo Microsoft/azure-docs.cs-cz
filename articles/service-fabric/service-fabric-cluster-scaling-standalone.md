@@ -15,11 +15,11 @@ ms.workload: NA
 ms.date: 11/13/2018
 ms.author: dekapur
 ms.openlocfilehash: 05049b9b08b4630c4299a6d3054c7815b082af52
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58663379"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60516040"
 ---
 # <a name="scaling-service-fabric-standalone-clusters"></a>Škálování samostatných clusterů Service Fabric
 Cluster Service Fabric je síťově propojená sada virtuálních nebo fyzických počítačů, do které se nasazují a spravují mikroslužby. Počítač nebo virtuální počítač, který je součástí clusteru, se nazývá uzel. Clustery můžou potenciálně obsahovat tisících uzlech. Po vytvoření clusteru Service Fabric, je možné škálovat cluster vodorovně (změnit počet uzlů), nebo svisle (změnit prostředky uzly).  Je možné škálovat cluster v okamžiku, i když spouštění úloh v clusteru.  Škálování clusteru, vaše aplikace automaticky škálovat směrem také.

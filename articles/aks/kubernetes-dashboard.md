@@ -8,11 +8,11 @@ ms.topic: article
 ms.date: 10/08/2018
 ms.author: iainfou
 ms.openlocfilehash: e831979e0a9f9c8b4d812f682403ecf466abbd13
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57993886"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60465436"
 ---
 # <a name="access-the-kubernetes-web-dashboard-in-azure-kubernetes-service-aks"></a>Přístup k řídicímu panelu Kubernetes web ve službě Azure Kubernetes Service (AKS)
 
@@ -20,7 +20,7 @@ Kubernetes zahrnuje webové řídicí panel, který lze použít pro operací z�
 
 Další informace na řídicí panel Kubernetes najdete v tématu [řídicí panel Kubernetes webové uživatelské rozhraní][kubernetes-dashboard].
 
-## <a name="before-you-begin"></a>Před zahájením
+## <a name="before-you-begin"></a>Než začnete
 
 Kroky popsané v tomto dokumentu předpokládají, že jste vytvořili AKS cluster a navázali `kubectl` připojení ke clusteru. Pokud potřebujete k vytvoření clusteru AKS, přečtěte si [AKS quickstart][aks-quickstart].
 

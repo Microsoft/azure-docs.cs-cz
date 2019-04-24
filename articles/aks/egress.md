@@ -8,11 +8,11 @@ ms.topic: article
 ms.date: 03/04/2019
 ms.author: iainfou
 ms.openlocfilehash: 6612d801804cdd1e092b50977230f24b378e64ba
-ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57407132"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60466422"
 ---
 # <a name="use-a-static-public-ip-address-for-egress-traffic-in-azure-kubernetes-service-aks"></a>Používat statickou veřejnou IP adresu pro výchozí přenos ve službě Azure Kubernetes Service (AKS)
 
@@ -20,7 +20,7 @@ Ve výchozím nastavení se náhodně přiřadí IP adresu výchozí přenos dat
 
 V tomto článku se dozvíte, jak vytvořit a používat statickou veřejnou IP adresu pro použití s výchozí přenos v clusteru AKS.
 
-## <a name="before-you-begin"></a>Před zahájením
+## <a name="before-you-begin"></a>Než začnete
 
 Tento článek předpokládá, že máte existující cluster AKS. Pokud potřebujete AKS cluster, najdete v tomto rychlém startu AKS [pomocí Azure CLI] [ aks-quickstart-cli] nebo [pomocí webu Azure portal][aks-quickstart-portal].
 

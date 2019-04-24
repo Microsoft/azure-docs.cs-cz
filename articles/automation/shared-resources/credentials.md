@@ -10,11 +10,11 @@ ms.date: 04/12/2019
 ms.topic: conceptual
 manager: carmonm
 ms.openlocfilehash: 6465fd069e73a571e0671d528f5d0b4da4602dc7
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59551184"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60499389"
 ---
 # <a name="credential-assets-in-azure-automation"></a>Assety přihlašovacích údajů ve službě Azure Automation
 

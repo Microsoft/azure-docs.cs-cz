@@ -14,11 +14,11 @@ ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
 ms.openlocfilehash: 6b16b6c4de8c8d2d7a821dd476f07c8ab1135408
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57433429"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60487248"
 ---
 # <a name="datasets-in-azure-data-factory"></a>Datové sady ve službě Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -316,7 +316,7 @@ Externích datových sad, jsou ty, které nejsou od spuštění kanálu v datov�
 
 Pokud datové sady se vytvořil objekt pro vytváření dat, by měla být označena jako **externí**. Toto nastavení platí obecně pro vstupy první aktivitu v kanálu, pokud používá aktivitu nebo řetězení kanálu.
 
-| Název | Popis | Požaduje se | Výchozí hodnota |
+| Name | Popis | Požaduje se | Výchozí hodnota |
 | --- | --- | --- | --- |
 | dataDelay |Doba zpoždění kontroly dostupnosti externích dat pro danou řez. Například můžete kontrolu hodinové pozdržet pomocí tohoto nastavení.<br/><br/>Toto nastavení platí pouze pro aktuální čas. Například pokud je 1:00 PM hned teď a tato hodnota je 10 minut, ověření se spustí v 13:10.<br/><br/>Všimněte si, že toto nastavení nemá vliv na kolekce obsahuje nějaké řezy v minulosti. Řezy s **koncový čas řezu** + **dataDelay** < **nyní** zpracovávají bez jakéhokoli zpoždění.<br/><br/>Krát větší než 23:59 hodin zadat pomocí `day.hours:minutes:seconds` formátu. Například pokud chcete zadat 24 hodin, nepoužívejte 24:00:00. Místo toho použijte 1.00:00:00. Pokud používáte 24:00:00, je považován za 24 dní (24.00:00:00). 1 den a 4 hodiny zadejte 1:04:00:00. |Ne |0 |
 | retryInterval |Doba čekání mezi selhání a dalším pokusem. Toto nastavení platí pro aktuální čas. Pokud předchozí akci se nezdařilo, je dalším pokusu o po **retryInterval** období. <br/><br/>Pokud je 1:00 PM teď začneme první pokus. Pokud doba trvání dokončení první ověření je 1 minuta a operace se nezdařila, další opakování je v 1:00 + 1 min (doba trvání) + 1 minuta (interval opakování) = 1:02 odp. <br/><br/>Řezy v minulosti neexistuje žádné zpoždění. Opakování dojde okamžitě. |Ne |00:01:00 (1 minuta) |

@@ -14,11 +14,11 @@ ms.author: lizross
 ms.reviewer: richagi
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 77e3e07be7abaa6e91d8f3909f5271dfc263be17
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56162301"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60475365"
 ---
 # <a name="what-does-azure-multi-factor-authentication-mean-for-me"></a>Co pro mě Azure Multi-Factor Authentication znamená?
 Od někoho z IT nebo od šéfa jste dostali e-mail s informací, že k vašemu účtu přidali další ověřování zabezpečení.  Co to tedy znamená?

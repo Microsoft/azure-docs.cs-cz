@@ -1,7 +1,6 @@
 ---
 title: Strukturované streamování ze systému Apache Kafka pro Azure Cosmos DB – Azure HDInsight Apache Sparku
 description: Zjistěte, jak používat strukturované streamování Apache Sparku číst data ze systému Apache Kafka a uloží je do služby Azure Cosmos DB. V tomto příkladu budete streamovat data pomocí poznámkového bloku Jupyter ze Sparku ve službě HDInsight.
-services: hdinsight
 author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
@@ -10,11 +9,11 @@ ms.topic: conceptual
 ms.date: 11/06/2018
 ms.author: hrasheed
 ms.openlocfilehash: 9d29608ded920b14af1be6d4d68ab1d77c3c8cb5
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
-ms.translationtype: MT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58099150"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60538044"
 ---
 # <a name="use-apache-spark-structured-streaming-with-apache-kafka-and-azure-cosmos-db"></a>Použití Apache strukturovaného streamování Sparku s využitím Apache Kafka a Azure Cosmos DB
 

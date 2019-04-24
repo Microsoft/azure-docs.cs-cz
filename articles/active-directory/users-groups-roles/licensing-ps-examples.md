@@ -15,11 +15,11 @@ ms.author: curtand
 ms.reviewer: sumitp
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 70e4e56742f45e0f6bfd80455e4d7545523a478b
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59265776"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60469608"
 ---
 # <a name="powershell-examples-for-group-based-licensing-in-azure-ad"></a>Příklady prostředí PowerShell pro licencování na základě skupiny ve službě Azure AD
 

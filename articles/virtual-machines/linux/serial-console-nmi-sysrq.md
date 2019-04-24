@@ -14,17 +14,17 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 08/14/2018
 ms.author: alsin
-ms.openlocfilehash: 6ca4156c19adbeea72ae268fe62638d40919b08f
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: 5a97a40ba48db9f73471d5fd778ceb5cb9070964
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55699612"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60542641"
 ---
 # <a name="use-serial-console-for-sysrq-and-nmi-calls"></a>Použít pro volání SysRq a NMI konzoly sériového portu
 
 ## <a name="system-request-sysrq"></a>Požadavek na systém (SysRq)
-SysRq je posloupnost kláves srozumitelné pro linuxového jádra systému operace, které můžete aktivovat sadu předdefinovaných akcí. Tyto příkazy jsou často používány při řešení potíží s virtuálního počítače nebo obnovení nelze provést prostřednictvím tradiční správy (například pokud je zablokovaná virtuálního počítače). Pomocí funkce SysRq konzoly sériového portu Azure bude napodobovat stisknutí SysRq klíče a znaky zadané na fyzické klávesnice.
+SysRq je posloupnost kláves srozumitelné pro linuxového jádra systému operace, které můžete aktivovat sadu předdefinovaných akcí. Tyto příkazy jsou často používány při řešení potíží s virtuálního počítače nebo obnovení nelze provést prostřednictvím tradiční správy (například pokud virtuální počítač neodpovídá). Pomocí funkce SysRq konzoly sériového portu Azure bude napodobovat stisknutí SysRq klíče a znaky zadané na fyzické klávesnice.
 
 Jakmile se doručí SysRq pořadí, bude konfigurace jádra řídit, jak systém reaguje. Informace o povolení a zakázání SysRq, najdete v článku *příručky pro správce SysRq* [text](https://aka.ms/kernelorgsysreqdoc) | [markdownu](https://aka.ms/linuxsysrq).  
 
@@ -99,7 +99,7 @@ Distribuce příslušnou část dokumentace na SysRq a kroky konfigurace Linux p
 - [Shromažďování údajů o protokoly chyb](https://coreos.com/os/docs/latest/collecting-crash-logs.html)
 
 ## <a name="non-maskable-interrupt-nmi"></a>Maskable přerušení (NMI) 
-Maskable přerušení (NMI) slouží k vytvoření signál, který nebude ignorovat softwaru na virtuálním počítači. V minulosti NMIs se používají ke sledování hardwarových problémů v systémech, které vyžaduje konkrétní odezvy.  Dnes, programátoři a správce systému často používají NMI jako mechanismus pro ladění nebo řešení potíží s systémy, které jsou zablokovaná.
+Maskable přerušení (NMI) slouží k vytvoření signál, který nebude ignorovat softwaru na virtuálním počítači. V minulosti NMIs se používají ke sledování hardwarových problémů v systémech, které vyžaduje konkrétní odezvy.  Dnes, programátoři a správce systému často používají NMI jako mechanismus pro ladění nebo řešení potíží s systémy, které nereagují.
 
 Konzole sériového portu je možné odeslat NMI na virtuálním počítači Azure pomocí klávesnice ikony na příkazovém řádku je uvedeno níže. Jakmile se doručí NMI, konfigurace virtuálního počítače bude řídit, jak systém reaguje.  Operační systémy lze nakonfigurovat, aby při selhání a vytvořit výpis stavu paměti operačního systému Linux dostane NMI.
 

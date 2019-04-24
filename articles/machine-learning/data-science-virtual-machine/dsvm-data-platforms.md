@@ -17,11 +17,11 @@ ms.topic: conceptual
 ms.date: 03/16/2018
 ms.author: gokuma
 ms.openlocfilehash: 27e0deae9c35ad8fa00659e3e3e505cace6e9014
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55733429"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60516502"
 ---
 # <a name="data-platforms-supported-on-the-data-science-virtual-machine"></a>Datové platformy podporované na virtuální počítač pro datové vědy
 

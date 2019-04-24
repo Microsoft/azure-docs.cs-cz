@@ -11,11 +11,11 @@ ms.topic: quickstart
 ms.date: 4/02/2019
 ms.author: rosh
 ms.openlocfilehash: a0d7c1611f7c6851d98fea734dfdbd3940b59b89
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59784701"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60508656"
 ---
 # <a name="quickstart-get-image-insights-using-the-bing-visual-search-rest-api-and-go"></a>Rychlý start: Získejte přehledy obrázků pomocí API REST pro vizuální vyhledávání Bingu a Go
 

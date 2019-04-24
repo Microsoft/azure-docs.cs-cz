@@ -7,11 +7,11 @@ ms.topic: conceptual
 ms.date: 03/13/2019
 ms.author: raynew
 ms.openlocfilehash: dff3c96cf3ac8eea7c1160ee1834cc70390c0333
-ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58652633"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60533193"
 ---
 # <a name="troubleshoot-azure-migrate"></a>Řešení problémů s Azure Migrate
 
@@ -21,13 +21,13 @@ ms.locfileid: "58652633"
 
 ### <a name="i-am-using-the-ova-that-continuously-discovers-my-on-premises-environment-but-the-vms-that-are-deleted-in-my-on-premises-environment-are-still-being-shown-in-the-portal"></a>Používám soubor OVA, které průběžně zjistí Moje v místním prostředí, ale virtuální počítače, které jsou odstraněny do mého v místním prostředí stále se zobrazují na portálu.
 
-Průběžná zjišťování zařízení průběžně pouze shromažďuje údaje o výkonu, nezjistí změny konfigurace v místním prostředí (tj. Přidání virtuálního počítače, odstranění, přidání disku atd.). Pokud dojde ke změně konfigurace v místním prostředí, následujícím způsobem můžete zajistit, že se změny projeví na portálu:
+Zařízení pro průběžné zjišťování shromažďuje data o výkonu pouze průběžně a nezjistí žádné změny konfigurace v místním prostředí (tj. přidání nebo odstranění virtuálního počítače, přidání disku atd.). Pokud dojde ke změně konfigurace v místním prostředí, následujícím způsobem můžete zajistit, že se změny projeví na portálu:
 
-- Přidání položek (virtuálních počítačů, disků, jader atd.): Pro provedení těchto změn na webu Azure Portal, můžete zastavit zjišťování ze zařízení a znovu spustit. Tím se zajistí, že se změny aktualizují v projektu Azure Migrate.
+- Přidání položek (virtuální počítače, disky, jádra atd.): Pokud chcete, aby se tyto změny projevily na webu Azure Portal, můžete na zařízení zastavit zjišťování a pak ho spustit znovu. Tím se zajistí, že se změny aktualizují v projektu Azure Migrate.
 
    ![Zastavit zjišťování](./media/troubleshooting-general/stop-discovery.png)
 
-- Odstranění virtuálních počítačů: Kvůli způsobu, jakým je navržena na zařízení se neprojeví odstranění virtuálních počítačů i v případě zastavení a spuštění zjišťování. Důvodem je, že se data z dalších zjišťování připojují ke starším zjišťováním, a nepřepisují se. V takovém případě můžete virtuální počítač na portálu jednoduše ignorovat tak, že ho odeberete ze své skupiny a přepočítáte posouzení.
+- Odstranění virtuálních počítačů: Vzhledem ke způsobu, jakým je zařízení navržené, se odstranění virtuálních počítačů neprojeví ani v případě, že zastavíte a znovu spustíte zjišťování. Důvodem je, že se data z dalších zjišťování připojují ke starším zjišťováním, a nepřepisují se. V takovém případě můžete virtuální počítač na portálu jednoduše ignorovat tak, že ho odeberete ze své skupiny a přepočítáte posouzení.
 
 ### <a name="deletion-of-azure-migrate-projects-and-associated-log-analytics-workspace"></a>Odstranění projektů Azure Migrate a přidružené pracovní prostor Log Analytics
 
@@ -82,7 +82,7 @@ Pokud nemůžete exportovat sestavu posouzení je z portálu, zkuste použít n�
 
 ### <a name="performance-data-for-cpu-memory-and-disks-is-showing-up-as-zeroes"></a>Údaje o výkonu pro využití procesoru, paměti a disky zobrazují jako nuly
 
-Azure Migrate průběžně profily v místním prostředí pro shromažďování dat z místních virtuálních počítačů. Pokud jste právě spustili zjišťování prostředí, budete muset počkat aspoň jeden den pro shromažďování dat výkonu provádět. Pokud posouzení se vytvoří bez čekání na jeden den, metriky výkonu se zobrazí jako nuly. Po uplynutí za den, můžete vytvořit nové posouzení nebo aktualizovat existující posouzení pomocí možnosti "Přepočítat" v sestavě posouzení.
+Azure Migrate průběžně profiluje místní prostředí a shromažďuje data o výkonu místních virtuálních počítačů. Pokud jste zjišťování ve svém prostředí právě spustili, musíte alespoň den počkat, než se dokončí shromažďování dat o výkonu. Pokud vytvoříte posouzení, aniž byste jeden den počkali, metriky výkonu se zobrazí jako nuly. Po uplynutí jednoho dne můžete vytvořit nové posouzení nebo pomocí možnosti Přepočítat v sestavě posouzení aktualizovat stávající posouzení.
 
 ### <a name="i-specified-an-azure-geography-while-creating-a-migration-project-how-do-i-find-out-the-exact-azure-region-where-the-discovered-metadata-would-be-stored"></a>Zeměpisná oblast Azure, zadané při vytváření projektu migrace, jak zjistím přesné oblast Azure, kde budou uloženy zjištěná metadata?
 

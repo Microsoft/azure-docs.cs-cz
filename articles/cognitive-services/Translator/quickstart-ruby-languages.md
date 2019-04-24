@@ -11,11 +11,11 @@ ms.topic: quickstart
 ms.date: 02/08/2019
 ms.author: erhopf
 ms.openlocfilehash: 1b92adcf528a1ccd00983e6c0dd952fefab5dd7d
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55975462"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60509897"
 ---
 # <a name="quickstart-get-supported-languages-with-the-translator-text-rest-api-ruby"></a>Rychlý start: Získejte seznam podporovaných jazyků s rozhraním Translator Text REST API (Ruby)
 

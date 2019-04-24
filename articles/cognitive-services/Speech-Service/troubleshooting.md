@@ -12,11 +12,11 @@ ms.date: 12/06/2018
 ms.author: wolfma
 ms.custom: seodec18
 ms.openlocfilehash: a3741cb351b11b8cfd7c5d38713bb71232cf010e
-ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56446524"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60515438"
 ---
 # <a name="troubleshoot-the-speech-sdk"></a>Řešení potíží se sadou Speech SDK
 

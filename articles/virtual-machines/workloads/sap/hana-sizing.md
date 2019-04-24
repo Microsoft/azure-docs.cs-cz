@@ -14,14 +14,14 @@ ms.workload: infrastructure
 ms.date: 09/04/2018
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: d0d72a9ef592579b21d082111ab8ad00f8995de2
-ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
+ms.openlocfilehash: 7d403c284eefc1351aabb632977832f2bf11757a
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "44028061"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60477118"
 ---
-# <a name="sizing"></a>Velikost
+# <a name="sizing"></a>Velikosti
 
 Nastavení velikosti pro velké Instance HANA se nijak neliší od změny velikosti pro HANA obecně. U stávajících a nasadit systémy, které chcete přesunout z jiných relační databázový systém k HANA, SAP poskytuje řadu sestav, které běží na vašich stávajících systémů SAP. Pokud databáze byla převedena do platformy HANA, tyto sestavy zkontrolujte data a výpočet požadavků na paměť pro instanci HANA. Další informace o tom, jak spustit tyto sestavy a získat jeho nejnovější opravy nebo verze si přečtěte následující poznámky SAP:
 

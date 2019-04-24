@@ -15,11 +15,11 @@ ms.workload: tbd
 ms.date: 5/21/2017
 ms.author: raiye
 ms.openlocfilehash: d6429766b6aac547fd99279659acb1067298e77c
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51244674"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60518970"
 ---
 # <a name="guest-os-family-1-retirement-notice"></a>Oznámení o vyřazení hostovaného operačního systému řady 1
 Vyřazení operačního systému řady 1 bylo poprvé oznámena v 1. června 2013.
@@ -37,7 +37,7 @@ Cloud Services se týká, pokud platí některý z následujících akcí:
 2. Nemáte hodnotu pro atribut osFamily explicitně zadané v souboru ServiceConfiguration.cscfg souboru pro Cloudovou službu. V současné době systém použije výchozí hodnotu "1" v tomto případě.
 3. Na webu Azure portal obsahuje hodnotu řady hostovaného operačního systému jako "Systém Windows Server 2008".
 
-Pokud chcete zjistit, které z vašich cloudových služeb jsou spuštěny které řada operačního systému, můžete spustit následující skript v prostředí Azure PowerShell, i když je potřeba [nastavení prostředí Azure PowerShell](/powershell/azureps-cmdlets-docs) první. Další informace o skriptu najdete v tématu [Azure hostovaného operačního systému řady 1 koncový z života: červen 2014](https://blogs.msdn.com/b/ryberry/archive/2014/04/02/azure-guest-os-family-1-end-of-life-june-2014.aspx).
+Pokud chcete zjistit, které z vašich cloudových služeb jsou spuštěny které řada operačního systému, můžete spustit následující skript v prostředí Azure PowerShell, i když je potřeba [nastavení prostředí Azure PowerShell](/powershell/azureps-cmdlets-docs) první. Další informace o skriptu najdete v tématu [Azure hostovaného operačního systému řady 1 koncový z života: Červen 2014](https://blogs.msdn.com/b/ryberry/archive/2014/04/02/azure-guest-os-family-1-end-of-life-june-2014.aspx).
 
 ```Powershell
 foreach($subscription in Get-AzureSubscription) {

@@ -11,11 +11,11 @@ ms.topic: tutorial
 ms.date: 06/25/2018
 ms.author: panosper
 ms.openlocfilehash: f2a111558fa3f515b797745dc51e32f625bbd91f
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57844020"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60539120"
 ---
 # <a name="tutorial-create-a-custom-acoustic-model"></a>Kurz: Vytvoření vlastního akustického modelu
 
@@ -63,7 +63,7 @@ Akustický datové sady pro přizpůsobení akustického modelu se skládá ze d
 > Importy dat přes webový portál jsou momentálně omezené na 2 GB, což je maximální velikost sady akustických dat. Tato velikost odpovídá přibližně 17 hodinám zvukového záznamu na frekvenci 16 kHz nebo 34 hodinám zvukového záznamu na frekvenci 8 kHz. Následující tabulka obsahuje souhrn hlavních požadavků na zvuková data:
 >
 
-| Vlastnost | Hodnota |
+| Vlastnost | Value |
 |---------- |----------|
 | Formát souboru | RIFF (WAV) |
 | Vzorkovací frekvence | 8 000 hertzů (Hz) nebo 16 000 Hz |

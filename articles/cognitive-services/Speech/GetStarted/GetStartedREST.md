@@ -12,11 +12,11 @@ ms.date: 09/18/2018
 ms.author: zhouwang
 ROBOTS: NOINDEX,NOFOLLOW
 ms.openlocfilehash: ead4026ecec4878c69bc21a9ebc989eaf3d69a13
-ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58259937"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60515139"
 ---
 # <a name="quickstart-use-the-bing-speech-recognition-rest-api"></a>Rychlý start: Rozpoznávání řeči Bingu rozhraní REST API
 

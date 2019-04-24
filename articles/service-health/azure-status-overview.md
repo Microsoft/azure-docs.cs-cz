@@ -15,11 +15,11 @@ ms.workload: Supportability
 ms.date: 02/11/2019
 ms.author: stbaron
 ms.openlocfilehash: 6054b33e4068d36c5bfbb80120086a92a03525c8
-ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56097504"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60506764"
 ---
 # <a name="azure-status"></a>Stav Azure
 [Stav Azure](https://azure.microsoft.com/status/) vám poskytuje globální přehled o stavu služby a oblasti Azure. Stav služby Azure umožňuje získat nejčerstvější informace na dostupnost služby. Stav služby Azure je k dispozici všem uživatelům, chcete-li zobrazit všechny služby, které podléhají jejich stav služeb, jakož i incidenty s rozsáhlou dopad. Pokud jste uživatelem Azure, ale důrazně doporučujeme použít přizpůsobený vzhled v [Azure Service Health](https://aka.ms/azureservicehealth). Azure Service Health zahrnuje výpadky, aktivity chystanou plánovanou údržbu a poradci pro služby.

@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: quickstart
 ms.date: 02/21/2019
 ms.author: erhopf
-ms.openlocfilehash: e2988260902b645237ad26420435441622127f8a
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 6f89e1e89736929b7d50444800550708a55e45db
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58103413"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60509387"
 ---
 # <a name="quickstart-use-the-translator-text-api-to-detect-text-language-using-c"></a>Rychlý start: Použijte k detekci, jazyk textu s využitím rozhraní Translator Text APIC#
 
@@ -162,6 +162,8 @@ dotnet run
 ```
 
 ## <a name="sample-response"></a>Ukázková odpověď
+
+Najít – zkratka země v tomto [seznam jazyků](https://docs.microsoft.com/en-us/azure/cognitive-services/translator/language-support).
 
 ```json
 [

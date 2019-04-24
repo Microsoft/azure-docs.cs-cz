@@ -12,11 +12,11 @@ ms.date: 09/18/2018
 ms.author: zhouwang
 ROBOTS: NOINDEX,NOFOLLOW
 ms.openlocfilehash: d6601f57d87b518b2061df64174818432b822755
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58076186"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60515323"
 ---
 # <a name="bing-speech-websocket-protocol"></a>Protokol WebSocket pro zpracování řeči Bingu
 
@@ -78,7 +78,7 @@ Content-Length: 0
 
 Následující informace záhlaví jsou nezbytné k tokenu přístupu.
 
-| Název | Formát | Popis |
+| Name | Formát | Popis |
 |----|----|----|
 | OCP-Apim-Subscription-Key | ASCII | Váš klíč předplatného |
 
@@ -150,7 +150,7 @@ Hlavní zprávy odeslané klientem služby jsou `speech.config`, `audio`, a `tel
 
 Následující hlavičky jsou požadovány pro všechny zprávy klienta pochází.
 
-| Hlavička | Hodnota |
+| Hlavička | Value |
 |----|----|
 | Cesta | Cesta zprávy, jak je uvedeno v tomto dokumentu |
 | X-RequestId | Identifikátor UUID ve formátu "no-dash" |
@@ -179,7 +179,7 @@ Klienti *musí* odeslat `speech.config` zpráv okamžitě po navázání připoj
 
 #### <a name="required-message-headers"></a>Požadovaná zpráva hlavičky
 
-| Název hlavičky | Hodnota |
+| Název hlavičky | Value |
 |----|----|
 | Cesta | `speech.config` |
 | X-časové razítko | Časové razítko hodiny klienta UTC ve formátu ISO 8601 |
@@ -250,7 +250,7 @@ Speech Service používá první `audio` zprávu, která obsahuje identifikátor
 
 Následující hlavičky jsou potřebné pro všechny `audio` zprávy.
 
-| Hlavička         |  Hodnota     |
+| Hlavička         |  Value     |
 | ------------- | ---------------- |
 | Cesta | `audio` |
 | X-RequestId | Identifikátor UUID ve formátu "no-dash" |
@@ -508,7 +508,7 @@ Klienti musí obsahovat informace o událostech, ke kterým došlo během život
 
 | Pole | Popis | Využití |
 | ----- | ----------- | ----- |
-| Název | `Connection` | Požaduje se |
+| Name | `Connection` | Požaduje se |
 | ID | Hodnota identifikátoru připojení, která byla použita v *X ConnectionId* záhlaví pro tento požadavek na připojení | Požaduje se |
 | Start | Čas, kdy klient odešle požadavek na připojení | Požaduje se |
 | Konec | Čas při přijetí oznámení, že bylo připojení úspěšně vytvořeno klienta nebo v chybových případech, odmítnuto, odmítnuto nebo se nezdařilo | Požaduje se |
@@ -548,7 +548,7 @@ Použít následující příklady pouze jako vodítka pro záznam *Start* časo
 
 | Pole | Popis | Využití |
 | ----- | ----------- | ----- |
-| Název | Mikrofon | Požaduje se |
+| Name | Mikrofon | Požaduje se |
 | Start | Čas, kdy klient začít používat zvukového vstupu z mikrofon nebo jiných zvukový datový proud nebo aktivační událost poslal spotter – klíčové slovo | Požaduje se |
 | Konec | Čas, kdy klienta zastavena pomocí datového proudu mikrofon nebo ve zvukovém souboru | Požaduje se |
 | Chyba | Popis chyby, ke které došlo k chybě, pokud existuje. Operace mikrofon byly úspěšné, klienti by měl vynechat, nechte toto pole. Maximální délka tohoto pole je 50 znaků. | Vyžaduje se pro případy chyb, jinak tento parametr vynechán |
@@ -568,7 +568,7 @@ Použít následující příklady pouze jako vodítka pro záznam *Start* a *En
 
 | Pole | Popis | Využití |
 | ----- | ----------- | ----- |
-| Název | ListeningTrigger | Nepovinné |
+| Name | ListeningTrigger | Nepovinné |
 | Start | Čas zahájení aktivační událost pro naslouchání klienta | Požaduje se |
 | Konec | Čas dokončení aktivační událost pro naslouchání klienta | Požaduje se |
 | Chyba | Popis chyby, ke které došlo k chybě, pokud existuje. Pokud operace aktivační události byl úspěšný, klienti by měl vynechat, nechte toto pole. Maximální délka tohoto pole je 50 znaků. | Vyžaduje se pro případy chyb, jinak tento parametr vynechán |

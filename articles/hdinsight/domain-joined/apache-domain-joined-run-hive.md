@@ -1,7 +1,6 @@
 ---
 title: Konfigurace zásad Hivu ve s balíčkem Enterprise Security Package – Azure HDInsight
 description: Zjistěte, jak nakonfigurovat zásady Apache Rangeru pro Hive ve službě Azure HDInsight s balíčkem Enterprise Security Package.
-services: hdinsight
 ms.service: hdinsight
 author: omidm1
 ms.author: omidm
@@ -10,11 +9,11 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 09/24/2018
 ms.openlocfilehash: 8effa84c9d7adc14060fb00fae9915a04c1d04cc
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
-ms.translationtype: MT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55821214"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60536474"
 ---
 # <a name="configure-apache-hive-policies-in-hdinsight-with-enterprise-security-package"></a>Konfigurace zásad Apache Hivu ve službě HDInsight s balíčkem zabezpečení podniku
 Zjistěte, jak nakonfigurovat zásady Apache Rangeru pro Apache Hive. V tomto článku vytvoříte dvě zásady Ranger pro omezení přístupu k hivesampletable. Hivesampletable je součástí clusterů HDInsight. Po nakonfigurování zásad použijete Excel nebo ovladač ODBC a připojíte se k tabulkám Hivu ve službě HDInsight.

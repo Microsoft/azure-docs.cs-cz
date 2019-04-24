@@ -12,11 +12,11 @@ ms.topic: article
 ms.date: 01/30/2019
 ms.author: diberry
 ms.openlocfilehash: 314d121e8964ba1cdbb457260826d85bf8505fbc
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55883249"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60494868"
 ---
 # <a name="build-a-luis-app-programmatically-using-nodejs"></a>Sestavení aplikace LUIS programově pomocí Node.js
 

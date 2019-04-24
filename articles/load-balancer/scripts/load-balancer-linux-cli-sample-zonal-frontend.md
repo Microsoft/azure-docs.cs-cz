@@ -16,14 +16,14 @@ ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 ms.date: 06/14/2018
 ms.author: kumud
-ms.openlocfilehash: 888808c94115e2ea136e90eb635faf28e7d92fd2
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
-ms.translationtype: HT
+ms.openlocfilehash: 121d3f941f3d00373bd2821534c3e601107e97e6
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39431014"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60506956"
 ---
-# <a name="azure-cli-script-example-load-balance-traffic-to-vms-for-high-availability"></a>Ukázkový skript Azure CLI: Vyrovnávání zatížení provozu na virtuálních počítačích pro zajištění vysoké dostupnosti
+# <a name="azure-cli-script-example-load-balance-traffic-to-vms-for-high-availability"></a>Ukázkový skript Azure CLI: Vyrovnávání zatížení provozu do virtuálních počítačů pro zajištění vysoké dostupnosti
 
 Tento ukázkový skript Azure CLI vytvoří vše potřebné pro spuštění několika virtuálních počítačů s Ubuntu v konfiguraci s vysokou dostupností a vyrovnáváním zatížení v rámci konkrétní zóny dostupnosti. Po spuštění skriptu budete mít v jedné zóně dostupnosti v rámci oblasti tři virtuální počítače, které budou přístupné přes službu Azure Standard Load Balancer. 
 
@@ -183,7 +183,7 @@ Tento skript k vytvoření skupiny prostředků, virtuálního počítače, skup
 | [az vm create](/cli/azure/vm#az-vm-create) | Vytvoří virtuální počítač a připojí ho k síťové kartě, virtuální síti, podsíti a skupině NSG. Tento příkaz také určuje image virtuálního počítače, která se má použít, a přihlašovací údaje pro správu.  |
 | [az group delete](https://docs.microsoft.com/cli/azure/vm/extension#az-vm-extension-set) | Odstraní skupinu prostředků včetně všech vnořených prostředků. |
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Další informace o Azure CLI najdete v [dokumentaci k Azure CLI](https://docs.microsoft.com/cli/azure).
 

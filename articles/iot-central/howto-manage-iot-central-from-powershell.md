@@ -9,11 +9,11 @@ ms.date: 01/14/2019
 ms.topic: conceptual
 manager: philmea
 ms.openlocfilehash: 8d432d588cfd563ee48b93f9042339e9590bb5e2
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58481769"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60533260"
 ---
 # <a name="manage-iot-central-from-azure-powershell"></a>Správa řešení IoT Central z Azure PowerShellu
 
@@ -66,8 +66,8 @@ Skript nejprve vytvoří skupinu prostředků na východě USA oblast pro aplika
 |Parametr         |Popis |
 |------------------|------------|
 |ResourceGroupName |Skupina prostředků, která obsahuje aplikaci. Tato skupina prostředků musí existovat ve vašem předplatném. |
-|Umístění |Tato rutina se používá ve výchozím umístění, ze skupiny prostředků. V současné době můžete vytvořit aplikace IoT Central **USA – východ**, **USA – západ**, **Severní Evropa**, nebo **západní Evropa** oblastech. |
-|Název              |Název aplikace na webu Azure Portal. |
+|Location |Tato rutina se používá ve výchozím umístění, ze skupiny prostředků. V současné době můžete vytvořit aplikace IoT Central **USA – východ**, **USA – západ**, **Severní Evropa**, nebo **západní Evropa** oblastech. |
+|Name              |Název aplikace na webu Azure Portal. |
 |Subdoména         |Subdoména v adrese URL aplikace. V tomto příkladu je adresa URL aplikace https://mysubdomain.azureiotcentral.com. |
 |Skladová jednotka (SKU)               |V současné době je jediná hodnota **S1** (úrovně standard). Zobrazit [ceny Azure IoT Central](https://azure.microsoft.com/pricing/details/iot-central/). |
 |Šablona          | Šablony aplikace používat. Další informace najdete v tématu v následující tabulce: |

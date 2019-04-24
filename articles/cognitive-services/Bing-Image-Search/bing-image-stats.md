@@ -11,11 +11,11 @@ ms.topic: article
 ms.date: 03/04/2019
 ms.author: scottwhi
 ms.openlocfilehash: 43a6c221a08c926243d0fd5cb0ce97d5f0955f97
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57342271"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60520078"
 ---
 # <a name="add-analytics-to-the-bing-image-search-api"></a>Přidání analýzy do rozhraní API Bingu pro vyhledávání obrázků
 

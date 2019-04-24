@@ -11,14 +11,14 @@ ms.service: azure-monitor
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 04/09/2019
+ms.date: 04/17/2019
 ms.author: magoedte
-ms.openlocfilehash: 3261c2389a9706537366bcd60e00517bbcfb5f48
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 8fb1d0083796671119de2b4d7feefe738b602fe2
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59426388"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60497088"
 ---
 # <a name="understand-aks-cluster-performance-with-azure-monitor-for-containers"></a>Porozumět výkonu cluster AKS pomocí Azure monitoru pro kontejnery 
 Díky Azure monitoru pro kontejnery můžete použít grafy výkonu a stavu ke sledování těchto úloh své clustery Azure Kubernetes Service (AKS) za dvou hledisek, přímo z clusteru AKS nebo všechny AKS clusterů v rámci předplatného Azure Monitorování. Zobrazení služby Azure Container Instances (ACI) je také možné, při sledování konkrétní clusteru AKS.
@@ -40,8 +40,9 @@ Chcete-li zobrazit stav všech clusterech AKS nasadit, vyberte **monitorování*
 Na **monitorovat clustery** kartu, je možné získat následující:
 
 1. Kolik clustery jsou ve stavu kritický nebo není v pořádku, a kolik jsou v pořádku, či ne vytváření sestav (označované jako neznámém stavu)?
-1. Jsou všechny moje [modul Azure Kubernetes (AKS-engine)](https://github.com/Azure/aks-engine) nasazení v pořádku?
-1. Kolik uzlů, uživatele a podů systému jsou nasazené na clusteru.  
+2. Jsou všechny moje [modul Azure Kubernetes (AKS-engine)](https://github.com/Azure/aks-engine) nasazení v pořádku?
+3. Kolik uzlů, uživatele a podů systému jsou nasazené na clusteru?
+4. Kolik místa je k dispozici a je nějaký problém s kapacity?
 
 Zahrnuté stavy stavu jsou: 
 
@@ -55,7 +56,7 @@ Zahrnuté stavy stavu jsou:
 * **MIS nakonfigurované** – monitorování Azure pro kontejnery nebyla správně nakonfigurovaná v zadaný pracovní prostor.
 * **Žádná data** -Data neohlásil do pracovního prostoru v posledních 30 minut.
 
-Stav vypočítá celkový stav clusteru jako *nejhorší*"tři stavy s jednou výjimkou – Pokud je některá ze tří stavů *neznámý*, se zobrazí celkový stav clusteru **neznámý**.  
+Stav vypočítá celkový stav clusteru jako *nejhorší* tři stavy s jednou výjimkou – Pokud je některá ze tří stavů *neznámý*, se zobrazí celkový stav clusteru **neznámý**.  
 
 Následující tabulka uvádí výčet výpočtu řízení stavů pro cluster monitorovaných pro zobrazení více clusteru.
 
@@ -131,9 +132,9 @@ Když přejdete na **uzly**, **řadiče**, a **kontejnery** kartu, automaticky z
 
 ![Podokno vlastností perspektivy příklad Kubernetes](./media/container-insights-analyze/perspectives-preview-pane-01.png)
 
-Při rozbalení objekty v hierarchii, aktualizace podokna vlastností založené na vybraný objekt. V podokně můžete také zobrazit události Kubernetes pomocí prohledávání protokolu předem definovaných kliknutím na **protokoly událostí Kubernetes zobrazení** odkazu v horní části podokna. Další informace o zobrazování dat protokolu Kubernetes najdete v tématu [vyhledávání protokolů pro analýzu dat](#search-logs-to-analyze-data). Když kontrolujete kontejnery v **kontejnery** zobrazení, můžete zobrazit protokoly kontejneru v reálném čase. Další informace o této funkci a požadované konfigurace a řízení přístupu najdete v tématu [zobrazení kontejneru protokoly reálném čase pomocí Azure monitoru pro kontejnery](container-insights-live-logs.md). 
+Při rozbalení objekty v hierarchii, aktualizace podokna vlastností založené na vybraný objekt. V podokně můžete také zobrazit události Kubernetes pomocí prohledávání protokolu předem definovaných kliknutím na **protokoly událostí Kubernetes zobrazení** odkazu v horní části podokna. Další informace o zobrazování dat protokolu Kubernetes najdete v tématu [vyhledávání protokolů pro analýzu dat](container-insights-log-search.md). Když kontrolujete kontejnery v **kontejnery** zobrazení, můžete zobrazit protokoly kontejneru v reálném čase. Další informace o této funkci a požadované konfigurace a řízení přístupu najdete v tématu [zobrazení kontejneru protokoly reálném čase pomocí Azure monitoru pro kontejnery](container-insights-live-logs.md). 
 
-Použití **+ přidat filtr** možnost z horní části stránky filtrovat výsledky zobrazit podle **služby**, **uzel**, nebo **Namespace** a po provedení Výběr oboru filtru, potom vyberete jednu z hodnoty zobrazené v **vyberte hodnoty** pole.  Po dokončení konfigurace filtru se globálně použije při zobrazování všechny perspektivy clusteru AKS.  Vzorec podporuje pouze znaménko rovná se.  Můžete přidat další filtry na první z nich můžete dále zúžit výsledky.  Například, pokud jste zadali filtrovat podle **uzel**, druhý filtr by pouze umožňuje zvolit **služby** nebo **Namespace**.  
+Použití **+ přidat filtr** možnost z horní části stránky filtrovat výsledky zobrazit podle **služby**, **uzel**, **Namespace**, nebo  **Fond uzlů** a po výběru rozsah filtru, můžete pak vyberte jednu z hodnoty zobrazené **vyberte hodnoty** pole.  Po dokončení konfigurace filtru se globálně použije při zobrazování všechny perspektivy clusteru AKS.  Vzorec podporuje pouze znaménko rovná se.  Můžete přidat další filtry na první z nich můžete dále zúžit výsledky.  Například, pokud jste zadali filtrovat podle **uzel**, druhý filtr by pouze umožňuje zvolit **služby** nebo **Namespace**.  
 
 ![Příklad pomocí filtru, který můžete zúžit výsledky](./media/container-insights-analyze/add-filter-option-01.png)
 
@@ -258,49 +259,6 @@ Ikony v poli Stav označují online stavy podů, jak je popsáno v následujíc�
 | ![Ikona stavu ukončení](./media/container-insights-analyze/containers-terminated-icon.png) | Úspěšně zastaven nebo se nepovedlo zastavit|  
 | ![Ikona stavu se nezdařilo](./media/container-insights-analyze/containers-failed-icon.png) | Chybovém stavu |  
 
-
-## <a name="container-data-collection-details"></a>Podrobnosti o kontejneru shromažďování dat
-Přehledy o kontejnerech různých metrik a protokolů shromažďuje údaje o výkonu z hostitelů kontejnerů a kontejnery. Data jsou shromažďována každé 3 minuty.
-
-### <a name="container-records"></a>Záznamy kontejneru
-
-Příklady záznamů, které byly shromážděny sadou monitorování Azure pro kontejnery a datové typy, které se zobrazí ve výsledcích hledání protokolů, které jsou zobrazeny v následující tabulce:
-
-| Typ dat | Datový typ v prohledávání protokolu | Fields (Pole) |
-| --- | --- | --- |
-| Výkon pro hostitele a kontejnery | `Perf` | Počítače, název_objektu, CounterName &#40;% času procesoru, disku přečte MB, zapíše MB, MB využití paměti, disku sítě přijatých bajtů, síť posílat bajtů, procesor doby využití, sítě&#41;, CounterValue TimeGenerated, Cesta_k_čítači, SourceSystem |
-| Kontejner inventáře | `ContainerInventory` | TimeGenerated, počítače, název kontejneru, ContainerHostname, Image, ImageTag, ContainerState, ukončovací kód, EnvironmentVar, příkaz, čas vytvoření, StartedTime, FinishedTime, SourceSystem, identifikátor ContainerID, ID obrázku |
-| Inventář imagí kontejnerů | `ContainerImageInventory` | TimeGenerated, počítače, Image, ImageTag, ImageSize, VirtualSize, spuštění, pozastavení, zastavení, se nezdařilo, SourceSystem, ID obrázku, TotalContainer |
-| Protokol kontejneru | `ContainerLog` | TimeGenerated, počítač, ID bitové kopie, název kontejneru, LogEntrySource LogEntry, SourceSystem, identifikátor ContainerID |
-| Protokol služby kontejneru | `ContainerServiceLog`  | TimeGenerated, počítače, TimeOfCommand, Image, příkaz, SourceSystem, identifikátor ContainerID |
-| Inventář kontejnerových uzlů | `ContainerNodeInventory_CL`| TimeGenerated, počítače, ClassName_s, DockerVersion_s, OperatingSystem_s, Volume_s, Network_s, NodeRole_s, OrchestratorType_s, InstanceID_g, SourceSystem|
-| Kontejnerový proces | `ContainerProcess_CL` | TimeGenerated, počítače, Pod_s, Namespace_s, ClassName_s, InstanceID_s, Uid_s, PID_s, PPID_s, C_s, STIME_s, Tty_s, TIME_s, Cmd_s, Id_s, Name_s, SourceSystem |
-| Inventář podů v clusteru Kubernetes | `KubePodInventory` | TimeGenerated, počítače, ClusterId, ContainerCreationTimeStamp, PodUid, PodCreationTimeStamp, ContainerRestartCount, PodRestartCount, PodStartTime, ContainerStartTime, ServiceName, ControllerKind, parametr ControllerName, ContainerStatus, Identifikátor ContainerID, ContainerName, název, PodLabel, Namespace, PodStatus, název clusteru, PodIp, SourceSystem |
-| Seznam uzlů nepatří do clusteru Kubernetes | `KubeNodeInventory` | TimeGenerated, počítače, název clusteru, ClusterId, LastTransitionTimeReady, popisky, stav, KubeletVersion, KubeProxyVersion, CreationTimeStamp, SourceSystem | 
-| Události Kubernetes | `KubeEvents_CL` | TimeGenerated, počítače, ClusterId_s, FirstSeen_t, LastSeen_t, Count_d, ObjectKind_s, Namespace_s, Name_s, Reason_s, Type_s, TimeGenerated_s, SourceComponent_s, ClusterName_s, zprávy, SourceSystem | 
-| Služby v clusteru Kubernetes | `KubeServices_CL` | TimeGenerated, ServiceName_s, Namespace_s, SelectorLabels_s, ClusterId_s, ClusterName_s, ClusterIP_s, ServiceType_s, SourceSystem | 
-| Metriky výkonu pro uzly jsou součástí clusteru Kubernetes | Perf &#124; kde ObjectName == "K8SNode" | Počítače, název_objektu, CounterName &#40;cpuUsageNanoCores, memoryWorkingSetBytes memoryRssBytes, networkRxBytes, networkTxBytes, restartTimeEpoch, networkRxBytesPerSec, networkTxBytesPerSec cpuAllocatableNanoCores, memoryAllocatableBytes cpuCapacityNanoCores, memoryCapacityBytes&#41;, CounterValue TimeGenerated, Cesta_k_čítači, SourceSystem | 
-| Metriky výkonu pro kontejnery jsou součástí clusteru Kubernetes | Perf &#124; kde ObjectName == "K8SContainer" | Hodnota counterName &#40;cpuUsageNanoCores memoryWorkingSetBytes, memoryRssBytes, restartTimeEpoch, cpuRequestNanoCores, memoryRequestBytes, cpuLimitNanoCores, memoryLimitBytes&#41;, CounterValue, TimeGenerated, Cesta_k_čítači, SourceSystem | 
-
-## <a name="search-logs-to-analyze-data"></a>Hledání protokolů pro analýzu dat
-Log Analytics můžete hledat trendy, diagnostikovat problémových míst, předpovědi nebo korelovat data, která vám může pomoct určit, zda je aktuální konfiguraci clusteru optimální výkon. Prohledávání protokolů předem definovaných jsou k dispozici pro vás okamžitě začít využívat nebo přizpůsobit vrátit informace způsobem, jaký požadujete. 
-
-Můžete provádět interaktivní analýzu dat v pracovním prostoru tak, že vyberete **protokoly událostí Kubernetes zobrazení** nebo **zobrazit protokoly kontejneru** možnost v podokně náhledu. **Prohledávání protokolů** pravé části stránky Azure portal, který jste byli, zobrazí se stránka.
-
-![Analýza dat v Log Analytics](./media/container-insights-analyze/container-health-log-search-example.png)   
-
-Výstup protokoly kontejneru, který se předávají do Log Analytics jsou STDOUT a STDERR. Protože Azure Monitor je monitorování Azure managed Kubernetes (AKS), Kube-system nejsou ještě dnes shromažďovány z důvodu velkého objemu generovaná data. 
-
-### <a name="example-log-search-queries"></a>Příklad protokolu vyhledávacích dotazů
-Často je užitečné k sestavování dotazů, které začínají s příkladem jedné až dvou a následnou úpravou podle svých požadavků. Které vám pomůžou vytvářet složitější dotazy, můžete experimentovat s následující ukázkové dotazy:
-
-| Dotaz | Popis | 
-|-------|-------------|
-| ContainerInventory<br> &#124;Projekt počítače, jméno, obrázek, ImageTag, ContainerState, čas vytvoření, StartedTime, FinishedTime<br> &#124;vykreslit tabulku | Seznam všech informací o životním cyklu kontejneru| 
-| KubeEvents_CL<br> &#124;kde not(isempty(Namespace_s))<br> &#124;Seřadit podle TimeGenerated desc<br> &#124;vykreslit tabulku | Události Kubernetes|
-| ContainerImageInventory<br> &#124;summarize AggregatedValue = count() by bitové kopie, ImageTag, spuštění | Inventář imagí | 
-| **Vyberte možnosti spojnicový graf zobrazení**:<br> Výkonu<br> &#124;kde ObjectName == "K8SContainer" a hodnota CounterName == "cpuUsageNanoCores" &#124; shrnout AvgCPUUsageNanoCores = avg(CounterValue) podle bin (TimeGenerated, 30 min), InstanceName | Procesoru kontejneru | 
-| **Vyberte možnosti spojnicový graf zobrazení**:<br> Výkonu<br> &#124;kde ObjectName == "K8SContainer" a hodnota CounterName == "memoryRssBytes" &#124; shrnout AvgUsedRssMemoryBytes = avg(CounterValue) podle bin (TimeGenerated, 30 min), InstanceName | Paměti kontejneru |
-
 ## <a name="next-steps"></a>Další postup
-Azure Monitor pro kontejnery nezahrnuje předdefinovanou sadu upozornění, která zkopírovat a upravit podle vašich podpůrné procesy a postupy. Zkontrolujte [vytvoření výstrahy související s výkonem pomocí Azure monitoru pro kontejnery](container-insights-alerts.md) se naučíte vytvořit doporučené výstrahy pro vysoké využití procesoru a paměti.  
+- Zkontrolujte [vytvoření výstrahy související s výkonem pomocí Azure monitoru pro kontejnery](container-insights-alerts.md) se naučíte vytvářet upozornění na vysoké využití procesoru a paměti pro podporu DevOps nebo provozní procesy a postupy. 
+- Zobrazení [protokolu Příklady dotazů](container-insights-log-search.md#search-logs-to-analyze-data) předem definovaných dotazů a příklady, které vyhodnotí nebo přizpůsobení pro výstrahy vizualizace a analýza vašich clusterů.

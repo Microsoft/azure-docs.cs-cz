@@ -18,11 +18,11 @@ ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 32efe76ac2fce4c4541287e96c3a495f3eb9031b
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56161487"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60455801"
 ---
 # <a name="determine-incident-response-requirements-for-your-hybrid-identity-solution"></a>Určení požadavků na reakce na incidenty pro vaše řešení hybridní identity
 Střední a velké organizace pravděpodobně budou mít [reakce na incidenty zabezpečení](https://technet.microsoft.com/library/cc700825.aspx) která vám pomůžou IT odpovídajícím způsobem provést akce na úrovni incident. Systém správy identit je důležitou součástí procesu reakce na incidenty, protože ho lze použít k určení, kdo provedl konkrétní akce s cílem pomoct. Řešení hybridní identity musí být schopný poskytnout možnosti monitorování a vytváření sestav, které mohou využívat IT k provádění akcí na identifikaci a zmírnění potenciální hrozbu. V plánu reakcí na incidenty typické máte následující fáze jako součást plánu:

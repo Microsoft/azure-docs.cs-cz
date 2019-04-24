@@ -11,11 +11,11 @@ ms.topic: quickstart
 ms.date: 4/02/2019
 ms.author: scottwhi
 ms.openlocfilehash: 7ec37b4c3bdeb924b3e35dbcb5d07a478611f631
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59047122"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60510849"
 ---
 # <a name="quickstart-get-image-insights-using-the-bing-visual-search-rest-api-and-python"></a>Rychlý start: Získejte přehledy obrázků pomocí API REST pro vizuální vyhledávání Bingu a Pythonu
 

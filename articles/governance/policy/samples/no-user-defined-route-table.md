@@ -8,11 +8,11 @@ ms.topic: sample
 ms.date: 01/23/2019
 ms.author: dacoulte
 ms.openlocfilehash: 330ffc8451f538e5765425522b37f83231d782c0
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59275857"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60510169"
 ---
 # <a name="sample---no-user-defined-route-table"></a>Ukázkový – žádné uživatelsky definované tabulce směrování
 

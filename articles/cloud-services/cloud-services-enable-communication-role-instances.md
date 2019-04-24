@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 12/14/2016
 ms.author: jeconnoc
 ms.openlocfilehash: 8b521ebe869210b66ac3b3efeebda873f7c0e50b
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59792468"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60519439"
 ---
 # <a name="enable-communication-for-role-instances-in-azure"></a>Povolit komunikaci pro instance rolí v azure
 Role cloudové služby komunikují prostřednictvím interní a externí připojení. Externí připojení, se nazývají **vstupní koncové body** při interní připojení se nazývají **koncovým bodům s interním**. Toto téma popisuje postup úpravy [služby definice](cloud-services-model-and-package.md#csdef) k vytvoření koncových bodů.

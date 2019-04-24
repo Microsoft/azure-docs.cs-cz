@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 06/20/2018
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: a66969504dee5ba526cdccbbb39471ef5af971c0
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 0e0c83d411242be38992dd763dea72eda70ffbf4
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57439328"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60531846"
 ---
 # <a name="manage-access-to-azure-resources-using-rbac-and-the-rest-api"></a>Správa přístupu k prostředkům Azure pomocí RBAC a rozhraní REST API
 
@@ -28,7 +28,7 @@ ms.locfileid: "57439328"
 
 ## <a name="list-access"></a>Výpis přístupu
 
-V RBAC pro přístup k seznamu, můžete seznam přiřazení rolí. Chcete-li seznam přiřazení rolí, použijte jednu z [přiřazení rolí – seznam](/rest/api/authorization/roleassignments/list) rozhraní REST API. K upřesnění výsledků, zadejte obor a volitelný filtr. Pro volání rozhraní API, musíte mít přístup k `Microsoft.Authorization/roleAssignments/read` operace v zadaném oboru. Několik [předdefinované role pro prostředky Azure](built-in-roles.md) je udělen přístup k této operace.
+V RBAC pro přístup k seznamu, můžete seznam přiřazení rolí. Chcete-li seznam přiřazení rolí, použijte jednu z [přiřazení rolí – seznam](/rest/api/authorization/roleassignments/list) rozhraní REST API. K upřesnění výsledků, zadejte obor a volitelný filtr.
 
 1. Začněte s následující žádosti:
 

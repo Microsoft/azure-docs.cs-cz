@@ -14,11 +14,11 @@ ms.topic: conceptual
 ms.date: 03/27/2019
 ms.author: bwren
 ms.openlocfilehash: 481b643f2f7201a2a1745c7aef9ddd81883da020
-ms.sourcegitcommit: 956749f17569a55bcafba95aef9abcbb345eb929
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58629277"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60498344"
 ---
 # <a name="azure-key-vault-analytics-solution-in-azure-monitor"></a>Řešení Azure Key Vault Analytics ve službě Azure Monitor
 
@@ -108,7 +108,7 @@ Po klepnutí **Key Vault Analytics** dlaždici můžete zobrazení souhrnných i
 | Type |*AzureDiagnostics* |
 | SourceSystem |*Azure* |
 | CallerIpAddress |IP adresa klienta, který vytvořil požadavek |
-| Kategorie | *AuditEvent* |
+| Category | *AuditEvent* |
 | CorrelationId |Volitelný GUID, který může klient předat pro korelaci protokolů na straně klienta s protokoly na straně služby (Key Vault). |
 | DurationMs |Doba trvání obsloužení požadavku REST API v milisekundách. Tentokrát nezahrnuje latenci sítě, takže čas, který budete vyhodnocovat na straně klienta se nemusí shodovat této doby. |
 | httpStatusCode_d |Stavový kód HTTP vrácený z požadavku (například *200*) |

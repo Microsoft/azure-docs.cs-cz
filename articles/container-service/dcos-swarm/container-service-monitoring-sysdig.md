@@ -10,11 +10,11 @@ ms.date: 08/08/2016
 ms.author: saudas
 ms.custom: mvc
 ms.openlocfilehash: 39cd5a3fe7db0c442608e7943e7cbd6e3198edfb
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57547780"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60509511"
 ---
 # <a name="deprecated-monitor-an-azure-container-service-cluster-with-sysdig"></a>(NEPOUŽÍVANÉ) Monitorování clusteru služby Azure Container Service pomocí služby Sysdig
 

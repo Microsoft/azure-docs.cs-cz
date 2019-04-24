@@ -13,11 +13,11 @@ ms.topic: conceptual
 ms.date: 01/16/2019
 ms.author: bwren
 ms.openlocfilehash: dc3a754bd1a9f689f4b24b9ee2c1e4cbc0611684
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55751357"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60519896"
 ---
 # <a name="transition-from-log-analytics-log-search-to-azure-monitor-logs"></a>Přechod z prohledávání protokolu log Analytics do protokoly Azure monitoru
 Prohledávání protokolů v Log Analytics se nedávno nahrazena nové prostředí pro analýzy protokolů Azure Monitor. Na stránce vyhledávání protokolu je aktuálně stále přístupné prostřednictvím **protokoly (classic)** položky nabídky v **pracovních prostorů Log Analytics** stránky v Azure portal, ale odebere 15. února 2019. Tento článek popisuje rozdíly mezi oběma prostředími usnadňují přechod z prohledávání protokolů. 

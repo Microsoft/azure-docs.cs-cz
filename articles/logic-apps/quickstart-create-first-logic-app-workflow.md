@@ -12,11 +12,11 @@ ms.date: 07/20/2018
 ms.reviewer: klam, LADocs
 ms.suite: integration
 ms.openlocfilehash: 577a047fb88208d7e14e8ba06a1b9e7e87c5ef91
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58884226"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60510597"
 ---
 # <a name="quickstart-create-your-first-automated-workflow-with-azure-logic-apps---azure-portal"></a>Rychlý start: Vytvoření prvního automatizovaného pracovního postupu pomocí Azure Logic Apps – Azure portal
 
@@ -42,7 +42,7 @@ Přihlaste se k webu <a href="https://portal.azure.com" target="_blank">Azure Po
 
    ![Zadání podrobností o aplikaci logiky](./media/quickstart-create-first-logic-app-workflow/create-logic-app-settings.png)
 
-   | Vlastnost | Hodnota | Popis | 
+   | Vlastnost | Value | Popis | 
    |----------|-------|-------------| 
    | **Název** | MyFirstLogicApp | Název vaší aplikace logiky | 
    | **Předplatné** | <*název_vašeho_předplatného_Azure*> | Název vašeho předplatného Azure | 
@@ -69,7 +69,7 @@ Dále přidejte [trigger](../logic-apps/logic-apps-overview.md#logic-app-concept
 
    ![Nastavení triggeru s informačním kanálem RSS, frekvencí a intervalem](./media/quickstart-create-first-logic-app-workflow/add-trigger-rss-settings.png)
 
-   | Vlastnost | Hodnota | Popis | 
+   | Vlastnost | Value | Popis | 
    |----------|-------|-------------| 
    | **Adresa URL informačního kanálu RSS** | ```http://feeds.reuters.com/reuters/topNews``` | Odkaz na informační kanál RSS, který chcete monitorovat | 
    | **Interval** | 1 | Počet intervalů, po které se má čekat mezi kontrolami | 

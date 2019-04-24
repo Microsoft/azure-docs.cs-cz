@@ -12,11 +12,11 @@ ms.date: 01/10/2019
 ms.author: scottwhi
 ms.custom: seodec2018
 ms.openlocfilehash: a28445199c47c666fb2323a70317f81f3302c765
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55877095"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60539158"
 ---
 # <a name="what-is-the-bing-news-search-api"></a>Co je rozhraní API Bingu pro vyhledávání zpráv?
 

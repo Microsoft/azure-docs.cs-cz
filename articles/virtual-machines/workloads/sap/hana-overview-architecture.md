@@ -15,21 +15,21 @@ ms.date: 09/04/2018
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: c177dbad1145dee6eda3202d8076997cc7673dfc
-ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "44026917"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60477796"
 ---
-#  <a name="what-is-sap-hana-on-azure-large-instances"></a>Co je SAP HANA v Azure (velké instance)?
+#  <a name="what-is-sap-hana-on-azure-large-instances"></a>Co je SAP HANA ve velkých instancích Azure?
 
 SAP HANA v Azure (velké instance) je jedinečné řešení na Azure. Kromě toho, že virtuální počítače pro nasazování a spouštění SAP HANA, Azure vám nabízí možnost spouštět a nasazovat SAP HANA na holých serverů, které jsou vyhrazené. SAP HANA v Azure (velké instance) řešení je založena na nesdílený hostitele nebo server holého hardwaru, který je vám přiřazena. Hardware serveru je součástí větší razítek, které obsahují výpočty/server, sítí a infrastruktury úložiště. Jako kombinace je HANA přizpůsobené integrace System center data (TDI) certified. SAP HANA v Azure (velké instance) nabízí jiný server SKU nebo velikosti. Jednotky může mít 36 Intel Procesorových jader a o velikosti 768 GB paměti a přejděte do jednotky, které mají až 480 Intel Procesorových jader a až 24 TB paměti.
 
 Izolace zákazníka v rámci razítka infrastruktury se provádí v tenantech, který bude vypadat takto:
 
-- **Sítě**: izolace zákazníků v rámci zásobníku infrastruktury prostřednictvím virtuální sítě na tenantovi zákazníka, které jsou přiřazeny. Tenant se přiřadí pro jediného zákazníka. Zákazník může mít více tenantů. Izolace sítě tenantů zakazuje síťové komunikace mezi klienty na úrovni razítka infrastruktury i v případě, že klienti patřit do stejné zákazníka.
-- **Úložiště komponent**: izolace prostřednictvím úložiště virtuálních počítačů, které mají svazky úložiště, které jsou jim přiřazeny. Svazky úložiště je přiřadit pouze jeden úložiště virtuálního počítače. Úložiště virtuálního počítače je exkluzivně přiřazená jedna jednoho tenanta v zásobníku certifikovaných infrastrukturu SAP HANA TDI. V důsledku toho svazky úložiště přiřazené k virtuálnímu počítači úložiště přístupné v jedné konkrétní a související tenanta pouze. Nejsou viditelné mezi různé nasazené tenanty.
-- **Server nebo hostitele**: jednotka serveru nebo hostitele není sdílena mezi zákazníky nebo tenantů. Server nebo hostitele nasazený pro zákazníka, je jednotka atomic výpočetní úplné obnovení systému, který je přiřazen do jednoho jednoho tenanta. *Ne* dělení hardwarové nebo softwarové dělení se používá, který může způsobit sdílíte s odběratele jiného hostitele nebo server. Úložné svazky, které jsou přiřazeny k z konkrétního tenanta úložiště virtuálního počítače jsou připojené taková na server. Klient může mít jeden na mnoho server jednotek z různých skladových položkách exkluzivně přiřazená.
+- **Sítě**: Izolace zákazníků v rámci zásobníku infrastruktury prostřednictvím virtuálních sítí na zákazníka přiřazené tenanta. Tenant se přiřadí pro jediného zákazníka. Zákazník může mít více tenantů. Izolace sítě tenantů zakazuje síťové komunikace mezi klienty na úrovni razítka infrastruktury i v případě, že klienti patřit do stejné zákazníka.
+- **Úložiště komponent**: Izolace pomocí úložiště virtuálních počítačů, které mají svazky úložiště, které jsou jim přiřazeny. Svazky úložiště je přiřadit pouze jeden úložiště virtuálního počítače. Úložiště virtuálního počítače je exkluzivně přiřazená jedna jednoho tenanta v zásobníku certifikovaných infrastrukturu SAP HANA TDI. V důsledku toho svazky úložiště přiřazené k virtuálnímu počítači úložiště přístupné v jedné konkrétní a související tenanta pouze. Nejsou viditelné mezi různé nasazené tenanty.
+- **Server nebo hostitele**: Server nebo jednotku hostitele není sdílena mezi zákazníky nebo tenantů. Server nebo hostitele nasazený pro zákazníka, je jednotka atomic výpočetní úplné obnovení systému, který je přiřazen do jednoho jednoho tenanta. *Ne* dělení hardwarové nebo softwarové dělení se používá, který může způsobit sdílíte s odběratele jiného hostitele nebo server. Úložné svazky, které jsou přiřazeny k z konkrétního tenanta úložiště virtuálního počítače jsou připojené taková na server. Klient může mít jeden na mnoho server jednotek z různých skladových položkách exkluzivně přiřazená.
 - V rámci SAP HANA na razítku infrastruktury Azure (velké instance) mnoho různých tenantů se nasazují a izolované proti sobě základními pojmy tenanta na sítě, úložiště a výpočetní úrovně. 
 
 
@@ -46,7 +46,7 @@ Jiné dokumenty velká Instance HANA pokyny zahrnují následující oblasti:
 - [SAP HANA (velké instance) vysokou dostupnost a zotavení po havárii v Azure](hana-overview-high-availability-disaster-recovery.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 - [Řešení potíží s SAP HANA (velké instance) a monitorování v Azure](troubleshooting-monitoring.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 - [Vysoká dostupnost v SUSE lze nastavit pomocí využitím techniky STONITH](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/ha-setup-with-stonith)
-- [Operační systém zálohování a obnovení pro SKU typu II](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/os-backup-type-ii-skus)
+- [Zálohování a obnovení operačního systému pro skladové položky typu II](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/os-backup-type-ii-skus)
 
 **Další kroky**
 - Přečtěte si [vědět podmínky](hana-know-terms.md)

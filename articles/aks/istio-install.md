@@ -8,11 +8,11 @@ ms.topic: article
 ms.date: 12/3/2018
 ms.author: pabouwer
 ms.openlocfilehash: d85b830b63e2d52f3eeb5df8645edccfccf43c76
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58138146"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60465338"
 ---
 # <a name="install-and-use-istio-in-azure-kubernetes-service-aks"></a>Nainstalovat a používat Istio ve službě Azure Kubernetes Service (AKS)
 
@@ -28,7 +28,7 @@ V tomto článku získáte informace o těchto tématech:
 > * Nainstalujte součásti Istio Kubernetes
 > * Ověření instalace
 
-## <a name="before-you-begin"></a>Před zahájením
+## <a name="before-you-begin"></a>Než začnete
 
 Kroky popsané v tomto článku se předpokládá jste vytvořili AKS cluster (Kubernetes 1.10 a vyšších povolena pomocí RBAC) a navázali `kubectl` připojení ke clusteru. Pokud potřebujete pomoc s libovolnou z těchto položek, přejděte na téma [AKS quickstart][aks-quickstart].
 

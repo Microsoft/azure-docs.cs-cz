@@ -8,11 +8,11 @@ ms.topic: article
 ms.date: 02/28/2019
 ms.author: iainfou
 ms.openlocfilehash: 75057f6bd92fbdc805da2e0e36dc2bff7b069f26
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57243325"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60464985"
 ---
 # <a name="apply-security-and-kernel-updates-to-nodes-in-azure-kubernetes-service-aks"></a>Použít zabezpečení a aktualizace jádra na uzly ve službě Azure Kubernetes Service (AKS)
 
@@ -23,7 +23,7 @@ V tomto článku se dozvíte, jak používat open source [kured (KUbernetes rest
 > [!NOTE]
 > `Kured` je open source projekt podle Weaveworks. Na základě best effort poskytuje podporu pro tento projekt ve službě AKS. Další podpora lze nalézt v slackový kanál # úřady weave
 
-## <a name="before-you-begin"></a>Před zahájením
+## <a name="before-you-begin"></a>Než začnete
 
 Tento článek předpokládá, že máte existující cluster AKS. Pokud potřebujete AKS cluster, najdete v tomto rychlém startu AKS [pomocí Azure CLI] [ aks-quickstart-cli] nebo [pomocí webu Azure portal][aks-quickstart-portal].
 

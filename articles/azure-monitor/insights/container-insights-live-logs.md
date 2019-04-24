@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/09/2019
 ms.author: magoedte
-ms.openlocfilehash: 6fe8cccf60e60ada34e3b7847964958cf6e03c4a
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: HT
+ms.openlocfilehash: c8baa4d2355adf99ce188d632ac50901db29a758
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59788831"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60497632"
 ---
 # <a name="how-to-view-container-logs-real-time-with-azure-monitor-for-containers-preview"></a>Postup zobrazení kontejneru protokoly reálném čase pomocí Azure monitoru pro kontejnery (preview)
 Tuto funkci, která je aktuálně ve verzi preview, poskytuje v reálném čase přehled o vaše protokoly kontejneru Azure Kubernetes Service (AKS) (stdout/stderr) bez nutnosti spuštění příkazů kubectl. Když vyberete tuto možnost, nové podokno se zobrazí pod tabulkou dat výkonu kontejnery na **kontejnery** zobrazení.  Zobrazuje se v live protokolování vygenerované modulem kontejneru pro další pomoc při řešení problémů v reálném čase. **Přispěvatel** přístup k prostředku clusteru se vyžaduje pro tuto funkci používat.
@@ -65,7 +65,7 @@ Pokud jste povolili Kubernetes RBAC se podařilo autorizovat, je potřeba použ�
 2. Vytvořit vazbu pravidla cluster spuštěním následujícího příkazu: `kubectl create -f LogReaderRBAC.yaml`. 
 
 ## <a name="configure-aks-with-azure-active-directory"></a>Konfigurace AKS pomocí Azure Active Directory
-AKS je nakonfigurovat pro ověřování uživatelů pomocí Azure Active Directory (AD). Pokud je konfigurujete poprvé, přečtěte si téma [integrace Azure Active Directory pomocí služby Azure Kubernetes Service](../../aks/aad-integration.md). Během postupu vytvořte [klientská aplikace](../../aks/aad-integration.md#create-client-application) a zadejte **identifikátor URI pro přesměrování**, je třeba přidat do seznamu jiném identifikátoru URI `https://ininprodeusuxbase.microsoft.com/*`.  
+AKS je nakonfigurovat pro ověřování uživatelů pomocí Azure Active Directory (AD). Pokud je konfigurujete poprvé, přečtěte si téma [integrace Azure Active Directory pomocí služby Azure Kubernetes Service](../../aks/azure-ad-integration.md). Během postupu vytvořte [klientská aplikace](../../aks/azure-ad-integration.md#create-client-application) a zadejte **identifikátor URI pro přesměrování**, je třeba přidat do seznamu jiném identifikátoru URI `https://ininprodeusuxbase.microsoft.com/*`.  
 
 >[!NOTE]
 >Konfigurace ověřování pomocí Azure Active Directory pro jednotné přihlašování na lze provést pouze během počáteční nasazení nového clusteru AKS. Nelze nakonfigurovat jednotné přihlašování v pro cluster AKS, už nasazená.  
@@ -92,4 +92,5 @@ Pozastavení Automatické posunování a řídit chování v podokně a bylo mo�
 ![Živé protokoly podokna pozastavení živé zobrazení](./media/container-insights-live-logs/live-logs-pane-pause-01.png)
 
 ## <a name="next-steps"></a>Další postup
-Chcete-li pokračovat v učení, jak používat Azure Monitor a monitorovat další aspekty vašeho clusteru AKS, přečtěte si téma [zobrazení Azure Kubernetes Service health](container-insights-analyze.md).
+- Chcete-li pokračovat v učení, jak používat Azure Monitor a monitorovat další aspekty vašeho clusteru AKS, přečtěte si téma [zobrazení Azure Kubernetes Service health](container-insights-analyze.md).
+- Zobrazení [protokolu Příklady dotazů](container-insights-log-search.md#search-logs-to-analyze-data) předem definovaných dotazů a příklady, které vyhodnotí nebo přizpůsobení pro výstrahy vizualizace a analýza vašich clusterů.

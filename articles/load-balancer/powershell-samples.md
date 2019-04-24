@@ -14,11 +14,11 @@ ms.workload: infrastructure
 ms.date: 12/10/2018
 ms.author: kumud
 ms.openlocfilehash: cf4e0346a93961df14afe48ec767e383f92eab3b
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53253710"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60507551"
 ---
 # <a name="azure-powershell-samples-for-load-balancer"></a>Ukázky Azure Powershellu pro nástroj pro vyrovnávání zatížení
 

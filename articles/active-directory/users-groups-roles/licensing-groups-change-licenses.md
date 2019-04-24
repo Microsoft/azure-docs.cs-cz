@@ -17,11 +17,11 @@ ms.reviewer: sumitp
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 4b65eb38b6c8102295f40b5e169ae7c32a2342a2
-ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58201360"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60471133"
 ---
 # <a name="change-the-license-for-a-single-user-in-a-licensed-group-in-azure-active-directory"></a>Změnit licenci pro jednoho uživatele v licencované skupiny v Azure Active Directory
 
@@ -33,7 +33,7 @@ Tento článek popisuje doporučenou metodou pro přesun uživatelů mezi licenc
 
 Tento článek obsahuje ukázkový kód Powershellu, který slouží k provedení kroků migrace a ověření. Kód je užitečné zejména pro rozsáhlé operace, kde není praktické kroky provést ručně.
 
-## <a name="before-you-begin"></a>Před zahájením
+## <a name="before-you-begin"></a>Než začnete
 Než začnete s migrací, je důležité ověřit, že některé předpoklady platí pro všechny uživatele, které chcete migrovat. Nejsou-li předpoklady platí pro všechny uživatele, může migrace selhat pro některé. Díky tomu někteří uživatelé možná ztratíte přístup ke službám nebo datům. Je třeba ověřit následující předpoklady:
 
 - Uživatelé mají *zdroj licence* , která je přiřazena pomocí licencování na základě skupiny. Licence k produktu pro přesun směrem z dědí z jedné zdrojové skupiny a nejsou přímo přiřadit.

@@ -12,11 +12,11 @@ ms.date: 03/13/2019
 ms.author: erhopf
 ms.custom: seodec18
 ms.openlocfilehash: baaa7b1068e13863293e0968cb0bf1ffb198882b
-ms.sourcegitcommit: b8f9200112cae265155b8877f7e1621c4bcc53fc
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/14/2019
-ms.locfileid: "57894962"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60487227"
 ---
 # <a name="speech-to-text-rest-api"></a>Rozhraní REST Speech to text API
 

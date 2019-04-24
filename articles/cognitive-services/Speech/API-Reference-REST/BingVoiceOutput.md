@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 09/18/2018
 ms.author: priyar
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: 8f7de542610731f88104591dc27baac1406a9514
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: a046bec5d81d828d88716d31c84e9cbcdcea1a08
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57548400"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60515426"
 ---
 # <a name="bing-text-to-speech-api"></a>Převod textu na řeč z Bingu rozhraní API
 
@@ -41,7 +41,7 @@ Content-Length: 0
 
 Informace o požadované záhlaví pro přístup pomocí tokenu je následujícím způsobem.
 
-Název| Formát | Popis
+Name| Formát | Popis
 ----|----|----
 OCP-Apim-Subscription-Key | ASCII | Váš klíč předplatného
 
@@ -60,7 +60,7 @@ Následující koncový bod musí ho klienti používat pro přístup k převod 
 
 V následující tabulce jsou uvedeny hlavičky protokolu HTTP, které se používají pro hlasové požadavky syntézu.
 
-Hlavička |Hodnota |Komentáře
+Hlavička |Value |Komentáře
 ----|----|----
 Typ obsahu | aplikace/ssml + xml | Vstupní typ obsahu.
 X-Microsoft-OutputFormat | **1.** ssml – 16 khz – 16 bitů-mono – převod textu na řeč <br> **2.** nezpracovaná – 16 khz – 16 bitů-mono-pcm <br>**3.** audio-16khz-16kbps-mono-siren <br> **4.** riff-16khz-16kbps-mono-siren <br> **5.** riff – 16 khz – 16 bitů-mono-pcm <br> **6.** audio-16khz-128kbitrate-mono-mp3 <br> **7.** audio-16khz-64kbitrate-mono-mp3 <br> **8.** audio-16khz-32kbitrate-mono-mp3 | Zvukový formát výstupu.
@@ -145,39 +145,39 @@ Rozhraní API pro převod textu na řeč k Microsoft podporuje SSML 1.0 podle W3
 
 1. Přidání přerušení
 
-  ```
-  <speak version='1.0' xmlns="https://www.w3.org/2001/10/synthesis" xml:lang='en-US'><voice  name='Microsoft Server Speech Text to Speech Voice (en-US, BenjaminRUS)'> Welcome to use Microsoft Cognitive Services <break time="100ms" /> Text-to-Speech API.</voice> </speak>
-  ```
+   ```
+   <speak version='1.0' xmlns="https://www.w3.org/2001/10/synthesis" xml:lang='en-US'><voice  name='Microsoft Server Speech Text to Speech Voice (en-US, BenjaminRUS)'> Welcome to use Microsoft Cognitive Services <break time="100ms" /> Text-to-Speech API.</voice> </speak>
+   ```
 
 2. Mluvy frekvence změny
 
-  ```
-  <speak version='1.0' xmlns="https://www.w3.org/2001/10/synthesis" xml:lang='en-US'><voice  name='Microsoft Server Speech Text to Speech Voice (en-US, JessaRUS)'><prosody rate="+30.00%">Welcome to use Microsoft Cognitive Services Text-to-Speech API.</prosody></voice> </speak>
-  ```
+   ```
+   <speak version='1.0' xmlns="https://www.w3.org/2001/10/synthesis" xml:lang='en-US'><voice  name='Microsoft Server Speech Text to Speech Voice (en-US, JessaRUS)'><prosody rate="+30.00%">Welcome to use Microsoft Cognitive Services Text-to-Speech API.</prosody></voice> </speak>
+   ```
 
 3. Výslovnost
 
-  ```
-  <speak version='1.0' xmlns="https://www.w3.org/2001/10/synthesis" xml:lang='en-US'><voice  name='Microsoft Server Speech Text to Speech Voice (en-US, JessaRUS)'> <phoneme alphabet="ipa" ph="t&#x259;mei&#x325;&#x27E;ou&#x325;"> tomato </phoneme></voice> </speak>
-  ```
+   ```
+   <speak version='1.0' xmlns="https://www.w3.org/2001/10/synthesis" xml:lang='en-US'><voice  name='Microsoft Server Speech Text to Speech Voice (en-US, JessaRUS)'> <phoneme alphabet="ipa" ph="t&#x259;mei&#x325;&#x27E;ou&#x325;"> tomato </phoneme></voice> </speak>
+   ```
 
 4. Změnit svazek
 
-  ```
-  <speak version='1.0' xmlns="https://www.w3.org/2001/10/synthesis" xml:lang='en-US'><voice  name='Microsoft Server Speech Text to Speech Voice (en-US, JessaRUS)'><prosody volume="+20.00%">Welcome to use Microsoft Cognitive Services Text-to-Speech API.</prosody></voice> </speak>
-  ```
+   ```
+   <speak version='1.0' xmlns="https://www.w3.org/2001/10/synthesis" xml:lang='en-US'><voice  name='Microsoft Server Speech Text to Speech Voice (en-US, JessaRUS)'><prosody volume="+20.00%">Welcome to use Microsoft Cognitive Services Text-to-Speech API.</prosody></voice> </speak>
+   ```
 
 5. Změnit výšku
 
-  ```
-  <speak version='1.0' xmlns="https://www.w3.org/2001/10/synthesis" xml:lang='en-US'><voice  name='Microsoft Server Speech Text to Speech Voice (en-US, JessaRUS)'>Welcome to use <prosody pitch="high">Microsoft Cognitive Services Text-to-Speech API.</prosody></voice> </speak>
-  ```
+   ```
+   <speak version='1.0' xmlns="https://www.w3.org/2001/10/synthesis" xml:lang='en-US'><voice  name='Microsoft Server Speech Text to Speech Voice (en-US, JessaRUS)'>Welcome to use <prosody pitch="high">Microsoft Cognitive Services Text-to-Speech API.</prosody></voice> </speak>
+   ```
 
 6. Změna prosody obrysu
 
-  ```
-  <speak version='1.0' xmlns="https://www.w3.org/2001/10/synthesis" xml:lang='en-US'><voice  name='Microsoft Server Speech Text to Speech Voice (en-US, JessaRUS)'><prosody contour="(80%,+20%) (90%,+30%)" >Good morning.</prosody></voice> </speak>
-  ```
+   ```
+   <speak version='1.0' xmlns="https://www.w3.org/2001/10/synthesis" xml:lang='en-US'><voice  name='Microsoft Server Speech Text to Speech Voice (en-US, JessaRUS)'><prosody contour="(80%,+20%) (90%,+30%)" >Good morning.</prosody></voice> </speak>
+   ```
 
 > [!NOTE]
 > Poznámka: zvukových dat musí být 8 kB nebo 16 kB wav zaznamenaná v následujícím formátu: **Kód CRC** (CRC-32): 4 bajty (DWORD) s platným rozsahem 0x00000000 ~ 0xFFFFFFFF; **Zvuk formátu příznak**: 4 bajty (DWORD) s platným rozsahem 0x00000000 ~ 0xFFFFFFFF; **Počet vzorků**: 4 bajty (DWORD) s platným rozsahem 0x00000000 ~ 0x7FFFFFFF; **Velikost binární tělo**: 4 bajty (DWORD) s platným rozsahem 0x00000000 ~ 0x7FFFFFFF; **Binární tělo**: n bajtů.
@@ -270,6 +270,7 @@ zh-HK | Muž | "Microsoft serveru řeči Text na řeč hlas (zh-HK, Danny, Apoll
 zh-TW | Žena | "Microsoft serveru řeči Text na řeč hlas (zh-TW, Yating, Apollo)"
 zh-TW | Žena | "Microsoft serveru řeči Text na řeč hlas (zh-TW, HanHanRUS)"
 zh-TW | Muž | "Microsoft serveru řeči Text na řeč hlas (zh-TW, Zhiwei, Apollo)"
+
  * ar – třeba podporuje moderní standardní Arabština (MSA).
 
 > [!NOTE]

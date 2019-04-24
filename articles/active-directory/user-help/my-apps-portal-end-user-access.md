@@ -14,11 +14,11 @@ ms.reviewer: kasimpso
 ms.custom: user-help, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: eaed7357221f5b766bfb8b9e1a9031c08854ac9a
-ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58340121"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60477238"
 ---
 # <a name="access-and-use-apps-on-the-my-apps-portal"></a>Přístup a používání aplikací na portálu Moje aplikace
 Můžete použít pracovní nebo školní účet s webovou **Moje aplikace** portál, zobrazit a spustit řadu aplikace vaší organizace založené na cloudu, chcete-li aktualizovat některé z vašeho profilu a účtu informace zobrazíte vaše **skupiny** informace a k provádění **kontrol přístupu** vašich aplikací a skupin. Pokud nemáte přístup k **Moje aplikace** portálu, musíte požádat o Helpdesk oprávnění.

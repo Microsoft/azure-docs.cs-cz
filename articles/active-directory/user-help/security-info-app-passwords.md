@@ -13,11 +13,11 @@ ms.date: 02/13/2018
 ms.author: lizross
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 55dfab0c60e77b86157a005db34c37917a5e08d2
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57341098"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60475087"
 ---
 # <a name="manage-app-passwords-from-your-security-info-preview-page"></a>Správa hesel aplikací ze stránky zabezpečení informací (preview)
 Některé aplikace, jako je například Outlook 2010, nepodporují dvoustupňové ověřování. Tato nedostatečná podpora znamená, že pokud dvoustupňové ověřování při použití ve vaší organizaci, aplikace nebude fungovat. Chcete-li tento problém vyřešit, můžete vytvořit automaticky vytvořené heslo pro použití s každou aplikaci nezaložené na prohlížeči, nezávisle na normální heslo.

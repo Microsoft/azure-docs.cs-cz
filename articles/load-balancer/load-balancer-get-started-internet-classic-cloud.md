@@ -15,11 +15,11 @@ ms.workload: infrastructure-services
 ms.date: 01/23/2017
 ms.author: genli
 ms.openlocfilehash: 66c978a7eb151ce9df939a11e2e3c0016c8e7c9e
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53138088"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60532521"
 ---
 # <a name="get-started-creating-an-internet-facing-load-balancer-for-cloud-services"></a>Začínáme vytvářet internetový nástroj pro vyrovnávání zatížení pro cloudové služby
 
@@ -31,7 +31,7 @@ ms.locfileid: "53138088"
 [!INCLUDE [load-balancer-get-started-internet-intro-include.md](../../includes/load-balancer-get-started-internet-intro-include.md)]
 
 > [!IMPORTANT]
-> Než začnete pracovat s prostředky Azure, je potřeba si uvědomit, že Azure má v současné době dva modely nasazení: Azure Resource Manager a klasický. Před zahájením práce s jakýmikoli prostředky Azure se ujistěte, že rozumíte [modelům nasazení a příslušným nástrojům](../azure-classic-rm.md). Dokumentaci k různým nástrojům můžete zobrazit kliknutím na karty v horní části tohoto článku. Tento článek se týká modelu nasazení Classic. Případně [zjistěte, jak vytvořit internetový nástroj pro vyrovnávání zatížení pomocí Azure Resource Manageru](load-balancer-get-started-internet-arm-ps.md).
+> Než začnete pracovat s prostředky Azure, je důležité si uvědomit, že Azure aktuálně má dva modely nasazení: Azure Resource Manager a classic. Před zahájením práce s jakýmikoli prostředky Azure se ujistěte, že rozumíte [modelům nasazení a příslušným nástrojům](../azure-classic-rm.md). Dokumentaci k různým nástrojům můžete zobrazit kliknutím na karty v horní části tohoto článku. Tento článek se týká modelu nasazení Classic. Případně [zjistěte, jak vytvořit internetový nástroj pro vyrovnávání zatížení pomocí Azure Resource Manageru](load-balancer-get-started-internet-arm-ps.md).
 
 Cloudové služby jsou automaticky nakonfigurované s nástrojem pro vyrovnávání zatížení a lze je přizpůsobit prostřednictvím modelu služby.
 

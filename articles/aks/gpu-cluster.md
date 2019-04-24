@@ -9,11 +9,11 @@ ms.topic: article
 ms.date: 02/28/2019
 ms.author: zarhoads
 ms.openlocfilehash: 150eaa6a4df558ed0c737d99cbcc8010baf63e96
-ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58758227"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60466388"
 ---
 # <a name="use-gpus-for-compute-intensive-workloads-on-azure-kubernetes-service-aks"></a>Použití GPU pro úlohy náročné na výpočetní prostředky ve službě Azure Kubernetes Service (AKS)
 
@@ -22,7 +22,7 @@ Grafických procesorů (GPU) se často používají pro úlohy náročné na vý
 > [!NOTE]
 > Virtuální počítače s podporou grafického procesoru obsahovat specializovaném hardwaru, který je v souladu s vyšší ceny a regionální dostupnosti. Další informace najdete v tématu [ceny] [ azure-pricing] nástroj a [dostupnost v oblastech][azure-availability].
 
-## <a name="before-you-begin"></a>Před zahájením
+## <a name="before-you-begin"></a>Než začnete
 
 Tento článek předpokládá, že máte existující cluster AKS pomocí uzlů, které podporují GPU. AKS cluster musí používat Kubernetes 1.10 nebo novější. Pokud potřebujete cluster AKS, který splňuje tyto požadavky, najdete v první části tohoto článku [vytvoření clusteru AKS](#create-an-aks-cluster).
 

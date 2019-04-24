@@ -12,11 +12,11 @@ ms.date: 09/18/2018
 ms.author: zhouwang
 ROBOTS: NOINDEX,NOFOLLOW
 ms.openlocfilehash: 7b7a286bb3f38982f6c55e37e186c524a8a92266
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56671349"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60515274"
 ---
 # <a name="get-started-with-bing-speech"></a>Začínáme s pro zpracování řeči Bingu
 

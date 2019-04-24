@@ -8,11 +8,11 @@ ms.topic: article
 ms.date: 12/3/2018
 ms.author: pabouwer
 ms.openlocfilehash: 0a4e5e7e310a9949ee59291c2032eafda46955a9
-ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/05/2018
-ms.locfileid: "52892161"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60465826"
 ---
 # <a name="use-intelligent-routing-and-canary-releases-with-istio-in-azure-kubernetes-service-aks"></a>Použijte inteligentní směrování a testovací verze s Istio ve službě Azure Kubernetes Service (AKS)
 

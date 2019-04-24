@@ -11,11 +11,11 @@ ms.topic: quickstart
 ms.date: 04/15/2019
 ms.author: aahi
 ms.openlocfilehash: b1660034f1937d2d8ff9e70139407619626886a8
-ms.sourcegitcommit: 5f348bf7d6cf8e074576c73055e17d7036982ddb
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2019
-ms.locfileid: "59606799"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60498861"
 ---
 # <a name="quickstart-use-the-bing-web-search-sdk-for-c"></a>Rychlý start: Použití sady SDK pro vyhledávání na webu BinguC#
 

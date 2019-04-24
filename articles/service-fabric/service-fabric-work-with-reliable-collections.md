@@ -15,11 +15,11 @@ ms.workload: NA
 ms.date: 02/22/2019
 ms.author: aljo
 ms.openlocfilehash: bb99e5984f91edb0cf40f3bdc485624b9ec59833
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57872683"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60506735"
 ---
 # <a name="working-with-reliable-collections"></a>Práce s Reliable Collections
 Service Fabric nabízí stavový programovací model k dispozici pro vývojáře na platformě .NET pomocí spolehlivých kolekcí. Konkrétně Service Fabric poskytuje spolehlivé fronty třídy a spolehlivého slovníku. Při použití těchto tříd je svůj stav rozdělit na oddíly (pro zajištění škálovatelnosti), replikuje (dostupnosti) a nepodporuje transakce v rámci oddílu (pro odpovídající zásadám ACID sémantiku). Pojďme podívat se na Typickým použitím spolehlivého slovníku objektu a zobrazit, co se skutečně dělají.

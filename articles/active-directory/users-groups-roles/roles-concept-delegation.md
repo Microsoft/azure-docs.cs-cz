@@ -16,11 +16,11 @@ ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: b0cb6e2b1df062c3d056bd9a5aa0c1ff89f6636a
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56201461"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60469107"
 ---
 # <a name="delegate-administration-in-azure-active-directory"></a>Delegování správy v Azure Active Directory
 

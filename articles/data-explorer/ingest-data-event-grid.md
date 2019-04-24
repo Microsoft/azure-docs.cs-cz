@@ -8,11 +8,11 @@ ms.service: data-explorer
 ms.topic: quickstart
 ms.date: 01/30/2019
 ms.openlocfilehash: 19db47610449ced45fa61610bbe964042e815c7a
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59051848"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60446381"
 ---
 # <a name="quickstart-ingest-blobs-into-azure-data-explorer-by-subscribing-to-event-grid-notifications"></a>Rychlý start: Ingestování objekty BLOB do Průzkumníku dat Azure pomocí přihlášení k odběru oznámení služby Event Grid
 
@@ -38,7 +38,7 @@ V tomto rychlém startu se dozvíte, jak nastavit [Azure Event Grid](/azure/even
 
     **Nastavení** | **Navrhovaná hodnota** | **Popis pole**
     |---|---|---|
-    | Název | *test-grid-connection* | Název služby event grid, který chcete vytvořit.|
+    | Name | *test-grid-connection* | Název služby event grid, který chcete vytvořit.|
     | Schéma událostí | *Schéma událostí mřížky* | Schéma, který se má použít pro event grid. |
     | Typ tématu | *Účet úložiště* | Typ tématu event gridu. |
     | Prostředek tématu | *gridteststorage* | Název účtu úložiště. |

@@ -11,17 +11,17 @@ ms.topic: conceptual
 ms.date: 03/23/2017
 ms.author: alch
 ms.openlocfilehash: 183a307159adb5dfdb248eb0cf4862462a626db6
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55879186"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60498742"
 ---
 # <a name="conference-instance-entity"></a>Konference Instance Entity
 
 <sub> * Následující atributy jsou specifická pro instanci entity místa konání konference. (Ty = "4") </sub>
 
-Název    |Popis                            |Type       | Operace
+Name    |Popis                            |Type       | Operace
 ------- | ------------------------------------- | --------- | ----------------------------
 ID      |ID entity                              |Int64      |Rovná se
 CIN     |Konference normalizovaný název instance ({ConferenceSeriesNormalizedName} {ConferenceInstanceYear})        |String     |Rovná se
@@ -43,6 +43,6 @@ ECC     |Počet celkový odhadovaný citace konference instancí |Int32      |ž
 
 ## <a name="extended-metadata-attributes"></a>Rozšířené atributy metadat ##
 
-Název    | Popis               
+Name    | Popis               
 --------|---------------------------    
 FN      | Celý název instance konference

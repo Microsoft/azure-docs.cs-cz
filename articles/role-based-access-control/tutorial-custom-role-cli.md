@@ -14,11 +14,11 @@ ms.workload: identity
 ms.date: 02/20/2019
 ms.author: rolyon
 ms.openlocfilehash: de1805d91f48b5718ecf293c2b8672ba40fb81a9
-ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56588156"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60531805"
 ---
 # <a name="tutorial-create-a-custom-role-for-azure-resources-using-azure-cli"></a>Kurz: Vytvoření vlastní role pro prostředky Azure pomocí Azure CLI
 
@@ -269,4 +269,4 @@ Pokud chcete aktualizovat vlastní roli, aktualizujte soubor JSON a pak aktualiz
 ## <a name="next-steps"></a>Další postup
 
 > [!div class="nextstepaction"]
-> [Vytvoření vlastních rolí pro prostředky Azure pomocí Azure CLI](custom-roles-cli.md)
+> [Vytváření vlastních rolí pro prostředky Azure pomocí Azure CLI](custom-roles-cli.md)

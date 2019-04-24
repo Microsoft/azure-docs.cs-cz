@@ -11,11 +11,11 @@ ms.topic: conceptual
 ms.date: 01/31/2019
 ms.author: aahi
 ms.openlocfilehash: 5575668f164b97142e7c4b2ddb2608c3173426a6
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56738721"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60499881"
 ---
 # <a name="bing-search-api-use-and-display-requirements"></a>Požadavky rozhraní API pro vyhledávání Bingu na zobrazení a použití
 

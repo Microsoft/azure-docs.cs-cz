@@ -16,11 +16,11 @@ ms.date: 11/29/2017
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017, mvc
 ms.openlocfilehash: a5203d75e673a7b8206446553414ff933e00b0b6
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58008943"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60542522"
 ---
 # <a name="azure-and-linux"></a>Azure a Linux
 Microsoft Azure je rostoucí kolekce integrovaných veřejných cloudových služeb včetně analýz, virtuálních počítačů, databází, mobilních a síťových služeb, úložiště a webu &mdash; je tak ideální pro hostování vašich řešení.  Microsoft Azure poskytuje škálovatelnou výpočetní platformu, s kterou můžete platit jenom za to, co používáte a když to potřebujete – nemusíte tak investovat do hardwaru místně ve své firmě.  Platforma Azure dokáže flexibilně reagovat na vaše potřeby. Můžete tak libovolně škálovat kapacitu (vertikálně i horizontálně) pro svá řešení podle požadavků svých klientů.

@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 11/26/2018
 ms.author: iainfou
 ms.openlocfilehash: 27c9c872f4dfb82b4a1389189d62c4e1f06ee272
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58175977"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60464964"
 ---
 # <a name="best-practices-for-advanced-scheduler-features-in-azure-kubernetes-service-aks"></a>Osvědčené postupy pro Plánovač pokročilé funkce ve službě Azure Kubernetes Service (AKS)
 

@@ -10,17 +10,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 01/31/2019
+ms.date: 03/18/2019
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9aba12a2bca882b5f0e6e95d8e4f6014b318a12e
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 58ca814551d8c7d309328f236052e1d07ac6f035
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58119723"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60469124"
 ---
 # <a name="delegate-app-administrator-roles-in-azure-active-directory"></a>Delegovat role správce aplikace v Azure Active Directory
 
@@ -58,7 +58,7 @@ Když se uživatel zaregistruje aplikace, jsou automaticky přidány jako první
 
 ## <a name="delegate-app-ownership"></a>Delegovat vlastnictví aplikace
 
-Vlastníci aplikace a vlastníci registrace aplikací můžou každý spravovat jenom aplikace aplikace nebo registrace aplikací, které vlastní. Například když přidáte vlastníka aplikace Salesforce, tento vlastník můžete spravovat přístup k a konfigurace pro Salesforce, ale ne všech ostatních aplikací. Aplikace může mít mnoho vlastníků a uživatel může být vlastníkem velký počet aplikací.
+Vlastníci aplikace a vlastníci registrace aplikací můžou každý spravovat jenom aplikace nebo registrace aplikací, které vlastní. Například když přidáte vlastníka aplikace Salesforce, tento vlastník můžete spravovat přístup k a konfigurace pro Salesforce, ale ne všech ostatních aplikací. Aplikace může mít mnoho vlastníků a uživatel může být vlastníkem velký počet aplikací.
 
 Vlastníka aplikace provádět následující akce:
 

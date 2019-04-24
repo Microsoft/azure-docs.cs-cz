@@ -14,11 +14,11 @@ ms.date: 07/31/2018
 ms.author: tarcher
 ms.custom: jenkins
 ms.openlocfilehash: 7cd7b8f7b49915db9fcf17602429e47c1b9da95d
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57901419"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60478370"
 ---
 # <a name="tutorial-deploy-your-app-to-linux-virtual-machines-in-azure-with-using-jenkins-and-azure-devops-services"></a>Kurz: Nasazení aplikace do virtuálních počítačů s Linuxem v Azure s využitím Jenkinse a Azure DevOps služby
 
@@ -38,7 +38,7 @@ do [skupiny nasazení](https://docs.microsoft.com/azure/devops/pipelines/release
 > * Vytvoření kanálu Azure kanálů verze.
 > * Ruční nasazení nebo nasazení aktivované přes CI
 
-## <a name="before-you-begin"></a>Před zahájením
+## <a name="before-you-begin"></a>Než začnete
 
 * Potřebujete přístup k serveru Jenkins. Pokud jste ještě nevytvořili server Jenkins, přečtěte si článek o [vytvoření hlavní databáze Jenkins ve virtuálním počítači Azure](https://docs.microsoft.com/azure/jenkins/install-jenkins-solution-template). 
 

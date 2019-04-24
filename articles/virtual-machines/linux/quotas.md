@@ -16,13 +16,13 @@ ms.topic: article
 ms.date: 05/31/2018
 ms.author: cynthn
 ms.openlocfilehash: b7ec3a6919a27633fc36ba7fb1551ead10e06ffe
-ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55769437"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60542709"
 ---
-# <a name="virtual-machine-vcpu-quotas"></a>Kvóty virtuálních procesorů virtuálního počítače
+# <a name="virtual-machine-vcpu-quotas"></a>Kvóty virtuálních procesorů pro virtuální počítače
 
 Kvóty virtuálních procesorů pro virtuální počítače a škálovací sady virtuálních počítačů jsou uspořádány ve dvou úrovních pro každé předplatné, v jednotlivých oblastech. První vrstva je celkový počet místních virtuálních procesorů a druhé vrstvy je různé velikost řady počet jader virtuálního počítače jako je například virtuální procesory řady D-series. Pokaždé, když je nový virtuální počítač nasazený virtuálních procesorů pro virtuální počítač nesmí překročit kvóty virtuálních procesorů pro řadu velikostí virtuálních počítačů nebo celkový počet virtuálních procesorů regionální kvóta. Pokud některý z těchto kvót je překročena, nasazení virtuálního počítače nebude možné. Je také kvóty pro celkový počet virtuálních počítačů v oblasti. Podrobnosti o každé z těchto kvót si můžete prohlédnout ve **využití a kvóty** část **předplatné** stránku [webu Azure portal](https://portal.azure.com), nebo můžete zadat dotaz na hodnoty pomocí Azure ROZHRANÍ PŘÍKAZOVÉHO ŘÁDKU.
 

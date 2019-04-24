@@ -10,12 +10,12 @@ ms.subservice: bing-visual-search
 ms.topic: article
 ms.date: 09/25/2018
 ms.author: scottwhi
-ms.openlocfilehash: 8181fc259ffbed11672fe64a8fc821e234183b72
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 511a95eaea65c1a0e67973ef56942bc05bb43f81
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55856848"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60511331"
 ---
 # <a name="language-and-region-support-for-the-bing-visual-search-api"></a>Podpora jazyka a oblasti pro rozhraní API vizuální vyhledávání Bingu
 
@@ -49,7 +49,7 @@ Alternativně můžete zadat pomocí země/oblast `cc` parametr dotazu. Pokud ch
 |Finsko|FI|
 |Francie|FR|
 |Německo|DE|
-|Hongkong|HK|
+|Hongkong – zvláštní správní oblast|HK|
 |Indie|IN|
 |Indonésie|ID|
 |Itálie|IT|
@@ -93,7 +93,7 @@ Alternativně můžete zadat pomocí země/oblast `cc` parametr dotazu. Pokud ch
 |Finsko|Finština|fi-FI|
 |Francie|Francouzština|fr-FR|
 |Německo|Němčina|de-DE|
-|Hongkong|Tradiční čínština|zh-HK|
+|Hongkong – zvláštní správní oblast|Tradiční čínština|zh-HK|
 |Indie|Angličtina|en-IN|
 |Indonésie|Angličtina|cs ID|
 |Itálie|italština|IT-IT|

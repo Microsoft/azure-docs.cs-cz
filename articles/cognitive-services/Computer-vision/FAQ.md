@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: conceptual
-ms.date: 03/21/2019
+ms.date: 04/17/2019
 ms.author: kefre
 ms.custom: seodec18
-ms.openlocfilehash: 2e04d86e7067db98c8399cfc3e202457b8f253d6
-ms.sourcegitcommit: 87bd7bf35c469f84d6ca6599ac3f5ea5545159c9
+ms.openlocfilehash: 579a47e70f292222914723606d032737b98822bc
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58351945"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60498776"
 ---
 # <a name="computer-vision-api-frequently-asked-questions"></a>Computer Vision API na nejčastější dotazy
 
@@ -37,28 +37,9 @@ ms.locfileid: "58351945"
 
 -----
 
-**Dotaz**: *Jaké jazyky jsou podporovány s pro počítačové zpracování obrazu?*
-
-**Odpověď**: Mezi podporované jazyky patří:
-
-| | | Podporované jazyky | | |
-|---------------- |------------------ |------------------ |--------------------------- |--------------------
-| Dánština (da-DK)  | Holandština (nl-NL)     | Angličtina           | Finština (fi-FI)            |Francouzština (fr-FR)
-| Němčina (de-DE)  | Řečtina (el-GR)     | Maďarština (hu-HU) | Italština (it-IT)            | Japonština (ja-JP)
-| Korejština (ko-KR)  | Norština (nb-NO) | Polština (pl-PL)    | Portugalština (pt-BR) (pt-PT) | Ruština (ru-RU)
-| Španělština (es-ES)   | Švédština (sv-SV)     | Turečtina (tr-TR)   |                            |
-
------
-
 **Dotaz**: *Pro počítačové zpracování obrazu umožňuje číst talířů licence?*
 
 **Odpověď**: Rozhraní API pro zpracování obrazu nabízí dobrý duplicit text pomocí technologie OCR, ale není aktuálně optimalizované pro licence talířů. Pokoušíme se neustále vylepšovat naše služby a přidali OCR pro automatické rozpoznávání registrační na našem seznamu požadovaných funkcí.
-
------
-
-**Dotaz**: *Jaké jazyky jsou podporovány pro rozpoznávání textu psaného rukou?*
-
-**Odpověď**: V současné době se podporuje jenom v angličtině.
 
 -----
 

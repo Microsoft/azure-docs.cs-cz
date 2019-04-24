@@ -12,11 +12,11 @@ ms.date: 3/5/2018
 ms.author: v-jaswel
 ROBOTS: NOINDEX,NOFOLLOW
 ms.openlocfilehash: b9cf9a5e60ff5f66a3956170b4f5fb41d4b6d66c
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57551037"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60537492"
 ---
 # <a name="quickstart-translator-speech-api-with-java"></a>Rychlý start: Translator Speech API s využitím Javy
 <a name="HOLTop"></a>

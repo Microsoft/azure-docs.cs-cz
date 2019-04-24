@@ -17,11 +17,11 @@ ms.date: 04/24/2018
 ms.author: jdial
 ms.custom: mvc
 ms.openlocfilehash: 0eb27e997d39ceb82098b63de607d3529ccc53b4
-ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56984381"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60532254"
 ---
 # <a name="what-is-azure-network-watcher"></a>Co je Azure Network Watcher?
 

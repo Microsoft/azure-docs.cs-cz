@@ -15,11 +15,11 @@ ms.date: 09/10/2018
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 690f41e941f2d1db8fc92d225a54d07570299222
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58313131"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60478013"
 ---
 # <a name="set-up-smt-server-for-suse-linux"></a>Nastavení serveru SMT operačním systémem SUSE Linux
 Velké instance SAP HANA nemají přímé připojení k Internetu. Není jednoduchý proces registrace jako jednotek s poskytovateli operačního systému a ke stažení a použití aktualizací. Řešení SUSE Linux je nastavení serveru SMT ve virtuálním počítači Azure. Hostování tohoto virtuálního počítače ve službě Azure virtual network, která je připojena k velká Instance HANA. Pomocí těchto SMT serveru může jednotka velká Instance HANA zaregistrovat a stáhnout aktualizace. 

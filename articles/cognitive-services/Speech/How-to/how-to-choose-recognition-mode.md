@@ -12,11 +12,11 @@ ms.date: 09/18/2018
 ms.author: zhouwang
 ROBOTS: NOINDEX,NOFOLLOW
 ms.openlocfilehash: 99e69691d9904285ecff356523813b426c98fca2
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56669716"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60515022"
 ---
 # <a name="bing-speech-recognition-modes"></a>Režimy rozpoznávání řeči Bingu
 

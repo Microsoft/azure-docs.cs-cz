@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 04/11/2019
 ms.author: panosper
 ms.custom: seodec18
-ms.openlocfilehash: 7b47d4fc3aa4a1a50e441e668a856703c67045ae
-ms.sourcegitcommit: 48a41b4b0bb89a8579fc35aa805cea22e2b9922c
+ms.openlocfilehash: 3ceaed2b1e27a1f5b910865f6e9d0e70ef347b71
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/15/2019
-ms.locfileid: "59581004"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60515395"
 ---
 # <a name="webhooks-for-speech-services"></a>Webhooky pro hlasové služby
 
@@ -38,6 +38,8 @@ V dalším kroku vytvoříme webhooku.
 ## <a name="create-a-webhook"></a>Vytvořit webhook
 
 Pojďme vytvořit webhook pro offline přepis. Scénář: uživatel má dlouho spuštěná zvukový soubor, který by chtěli přepisy asynchronně pomocí rozhraní API služby Batch určené k transkripci. 
+
+K vytvoření web hook příspěvek https://<region>.cris.ai/api/speechtotext/v2.1/transcriptions/hooks
 
 Parametry konfigurace pro žádost se poskytují jako JSON:
 
@@ -133,6 +135,50 @@ Pokud entitu pro typ předplacenému události (určené k transkripci) je k dis
 ### <a name="run-a-test"></a>Spuštění testu
 
 Akci můžete udělat rychle otestovat na webu https://bin.webhookrelay.com. Odtud můžete získat volání zpět adresy URL pro předání jako parametru HTTP POST pro vytvoření webhooku je popsáno výše v dokumentu.
+
+Klikněte na "Vytvoření kontejneru a použijte na obrazovce pokyny, jak získat hák. Potom použijte informace uvedené na této stránce k registraci háku službou Speech. Datová část přenos zprávy – v reakci na dokončení určené k transkripci – vypadá takto:
+
+```json
+{
+    "results": [],
+    "recordingsUrls": [
+        "my recording URL"
+    ],
+    "models": [
+        {
+            "modelKind": "AcousticAndLanguage",
+            "datasets": [],
+            "id": "a09c8c8b-1090-443c-895c-3b1cf442dec4",
+            "createdDateTime": "2019-03-26T12:48:46Z",
+            "lastActionDateTime": "2019-03-26T14:04:47Z",
+            "status": "Succeeded",
+            "locale": "en-US",
+            "name": "v4.13 Unified",
+            "description": "Unified",
+            "properties": {
+                "Purpose": "OnlineTranscription,BatchTranscription,LanguageAdaptation",
+                "ModelClass": "unified-v4"
+            }
+        }
+    ],
+    "statusMessage": "None.",
+    "id": "d41615e1-a60e-444b-b063-129649810b3a",
+    "createdDateTime": "2019-04-16T09:35:51Z",
+    "lastActionDateTime": "2019-04-16T09:38:09Z",
+    "status": "Succeeded",
+    "locale": "en-US",
+    "name": "Simple transcription",
+    "description": "Simple transcription description",
+    "properties": {
+        "PunctuationMode": "DictatedAndAutomatic",
+        "ProfanityFilterMode": "Masked",
+        "AddWordLevelTimestamps": "True",
+        "AddSentiment": "True",
+        "Duration": "00:00:02"
+    }
+}
+```
+Zpráva obsahuje adresu URL záznam a modely pro přepisy tohoto záznamu.
 
 ## <a name="next-steps"></a>Další postup
 

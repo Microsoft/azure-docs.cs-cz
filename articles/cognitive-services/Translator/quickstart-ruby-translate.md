@@ -11,11 +11,11 @@ ms.topic: quickstart
 ms.date: 02/08/2019
 ms.author: erhopf
 ms.openlocfilehash: f54421460e3af46570b67bb541df3afb755a1347
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55979288"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60509404"
 ---
 # <a name="quickstart-translate-text-with-the-translator-text-rest-api-ruby"></a>Rychlý start: Přeložení textu s rozhraním Translator Text REST API (Ruby)
 

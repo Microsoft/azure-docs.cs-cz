@@ -10,11 +10,11 @@ ms.topic: article
 ms.date: 03/12/2018
 ms.author: panosper
 ms.openlocfilehash: 1f7a84d187ba6279caad4926d54bfc56254152af
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57862994"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60539022"
 ---
 # <a name="create-a-custom-speech-to-text-endpoint"></a>Vytvoření vlastního koncového bodu pro převod řeči na text
 

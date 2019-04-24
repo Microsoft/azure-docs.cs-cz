@@ -14,11 +14,11 @@ ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
 ms.openlocfilehash: 00c8d7cefd7539cd53de8081f44fe861bd063bee
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58487783"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60489414"
 ---
 # <a name="data-management-gateway"></a>Brána správy dat
 > [!NOTE]
@@ -365,9 +365,9 @@ Následující tabulka obsahuje popis sloupců **uzly brány** seznamu:
 
 Vlastnosti monitorování | Popis
 :------------------ | :----------
-Název | Název logické brány a uzly, které jsou přidružená k bráně. Uzel je místní počítač Windows, která je brána nainstalovaná na něm. Informace o tom, že máte více než jeden uzel (až čtyři uzly) v jedné logické brány, naleznete v tématu [brána správy dat – vysoká dostupnost a škálovatelnost](data-factory-data-management-gateway-high-availability-scalability.md).
+Name | Název logické brány a uzly, které jsou přidružená k bráně. Uzel je místní počítač Windows, která je brána nainstalovaná na něm. Informace o tom, že máte více než jeden uzel (až čtyři uzly) v jedné logické brány, naleznete v tématu [brána správy dat – vysoká dostupnost a škálovatelnost](data-factory-data-management-gateway-high-availability-scalability.md).
 Status | Stav logické brány a uzly brány. Příklad: Online/Offline/Limited/atd. Informace o těchto stavů najdete v tématu [stav brány](#gateway-status) oddílu.
-Verze | Zobrazuje verzi logické brány a každý uzel brány. Verze logické brány je určena na základě verze Většina uzlů ve skupině. Pokud nejsou správně uzly s různými verzemi v nastavení logické brány pouze uzly se stejným číslem verze jako funkci logické brány. Ostatní jsou v režimu omezen a potřeba ručně aktualizovat (pouze v případě automatických aktualizací selže).
+Version | Zobrazuje verzi logické brány a každý uzel brány. Verze logické brány je určena na základě verze Většina uzlů ve skupině. Pokud nejsou správně uzly s různými verzemi v nastavení logické brány pouze uzly se stejným číslem verze jako funkci logické brány. Ostatní jsou v režimu omezen a potřeba ručně aktualizovat (pouze v případě automatických aktualizací selže).
 Dostupná paměť | Dostupná paměť na uzel brány. Tato hodnota je snímek téměř v reálném čase.
 Využití procesoru | Využití procesoru uzlu brány. Tato hodnota je snímek téměř v reálném čase.
 Síť (vstup/výstup) | Využití brány uzlu sítě. Tato hodnota je snímek téměř v reálném čase.

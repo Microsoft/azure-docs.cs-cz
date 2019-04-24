@@ -12,11 +12,11 @@ ms.custom: mvc
 ms.topic: article
 ms.date: 03/12/2019
 ms.openlocfilehash: 884af4624c1e92ee765353c90fd189220664381d
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58183420"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60532454"
 ---
 # <a name="migrate-sql-server-integration-services-packages-to-azure"></a>Migrace balíčků SQL Server Integration Services do Azure
 Pokud používáte SQL Server Integration Services (SSIS) a chcete provést migraci vašich projektů/balíčků služby SSIS ze zdroje databází SSISDB hostovanou službou SQL Server do cílového umístění databází SSISDB hostovanou ve serveru Azure SQL Database nebo Azure SQL Database Managed Instance, můžete znovu nasadit pomocí Průvodce nasazením integračního služby. Můžete spustit Průvodce spustíte z v rámci SQL Server Management Studio (SSMS).

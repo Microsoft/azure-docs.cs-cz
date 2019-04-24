@@ -15,11 +15,11 @@ ms.workload: infrastructure-services
 ms.date: 06/25/2018
 ms.author: kumud
 ms.openlocfilehash: 1caa8e7554024c3b2e3d86436d3d494d7995169a
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53142015"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60516677"
 ---
 # <a name="create-a-public-load-balancer-with-ipv6-using-azure-cli"></a>Vytvoření veřejného load balanceru s protokolem IPv6 pomocí rozhraní příkazového řádku Azure
 
@@ -46,11 +46,11 @@ Následující kroky ukazují postup vytvoření veřejného load balanceru úro
 
 Pokud chcete nasadit nástroj pro vyrovnávání zatížení, vytvořte a nakonfigurujte následující objekty:
 
-* **Front-endové konfigurace protokolu IP**: obsahuje veřejné IP adresy pro příchozí síťový provoz.
-* **Back endový fond adres**: obsahuje síťová rozhraní (NIC) pro virtuální počítače přijímají síťový provoz z nástroje pro vyrovnávání zatížení.
-* **Pravidla Vyrovnávání zatížení**: obsahuje pravidla, která mapují veřejný port v nástroji pro vyrovnávání zatížení na port ve fondu back endových adres.
-* **Příchozí pravidla NAT**: obsahuje pravidel překladu adres (NAT), která mapují veřejný port v nástroji pro vyrovnávání zatížení na port konkrétního virtuálního počítače ve fondu back endových adres.
-* **Sondy**: obsahuje testy stavu, které se používají ke kontrole dostupnosti instancí virtuálních počítačů ve fondu back endových adres.
+* **Front-endové konfigurace protokolu IP**: Obsahuje veřejné IP adresy pro příchozí síťový provoz.
+* **Back endový fond adres**: Obsahuje síťová rozhraní (NIC) pro virtuální počítače přijímají síťový provoz z nástroje pro vyrovnávání zatížení.
+* **Pravidla Vyrovnávání zatížení**: Obsahuje pravidla, která mapují veřejný port v nástroji pro vyrovnávání zatížení na port ve fondu back endových adres.
+* **Příchozí pravidla NAT**: Obsahuje pravidel překladu adres (NAT), která mapují veřejný port v nástroji pro vyrovnávání zatížení na port konkrétního virtuálního počítače ve fondu back endových adres.
+* **Sondy**: Obsahuje testy stavu, které se používají ke kontrole dostupnosti instancí virtuálních počítačů ve fondu back endových adres.
 
 ## <a name="set-up-azure-cli"></a>Nastavení rozhraní příkazového řádku Azure
 

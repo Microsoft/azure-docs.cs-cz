@@ -12,11 +12,11 @@ ms.custom: mvc
 ms.topic: article
 ms.date: 03/12/2019
 ms.openlocfilehash: ed0d65a0f00bd5ebc3227a249beec6bafd791347
-ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58335925"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60532553"
 ---
 # <a name="migrate-sql-server-on-premises-to-azure-sql-database-managed-instance-using-azure-powershell"></a>Migrace místního SQL serveru do Azure SQL Database Managed Instance pomocí Azure Powershellu
 V tomto článku, migrujete **Adventureworks2012** databáze obnovit k místní instanci systému SQL Server 2005 nebo novější do Azure SQL Database Managed Instance pomocí prostředí Azure PowerShell. Můžete migrovat databáze z místní instance systému SQL Server do Azure SQL Database Managed Instance pomocí `Az.DataMigration` modulu v prostředí Azure PowerShell.

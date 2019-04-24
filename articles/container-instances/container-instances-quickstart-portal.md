@@ -5,15 +5,15 @@ services: container-instances
 author: dlepow
 ms.service: container-instances
 ms.topic: quickstart
-ms.date: 03/21/2019
+ms.date: 04/17/2019
 ms.author: danlep
 ms.custom: seodec18, mvc
-ms.openlocfilehash: f4d232d4d6043ede3979db67e5cd35130d931bef
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.openlocfilehash: 008d6d2a9a4a20e9fd083e9e2f009396a7f14df2
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58369441"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60519615"
 ---
 # <a name="quickstart-deploy-a-container-instance-in-azure-using-the-azure-portal"></a>Rychlý start: Nasadit instanci kontejneru v Azure pomocí webu Azure portal
 
@@ -35,31 +35,29 @@ Vyberte **Vytvořit prostředek** > **Kontejnery** > **Container Instances**.
 
 ![Zahájení vytváření nové instance kontejneru na webu Azure Portal][aci-portal-01]
 
-Do textových polí **Název kontejneru**, **Image kontejneru** a **Skupina prostředků** zadejte následující hodnoty. U ostatních hodnot ponechte výchozí nastavení a vyberte **OK**.
+Na **Základy** stránky, zadejte následující hodnoty **skupiny prostředků**, **název kontejneru**, a **image kontejneru** textová pole. U ostatních hodnot ponechte výchozí nastavení a vyberte **OK**.
 
+* Skupina zdrojů: **Vytvořit nový** > `myresourcegroup`
 * Název kontejneru: `mycontainer`
 * Image kontejneru: `mcr.microsoft.com/azuredocs/aci-helloworld`
-* Skupina zdrojů: **Vytvořit nový** > `myResourceGroup`
 
 ![Konfigurace základního nastavení pro novou instanci kontejneru na webu Azure Portal][aci-portal-03]
 
-Pro účely tohoto rychlého startu ponechte výchozí nastavení **veřejné** nasazení veřejné Microsoft `aci-helloworld` bitové kopie. Tento obrázek balíčky malé webové aplikace napsané v Node.js, která slouží jako statická stránka HTML.
+Pro účely tohoto rychlého startu použijte výchozí **Image type** nastavení **veřejné** nasazení veřejné Microsoft `aci-helloworld` bitové kopie. Tato image Linuxu balíčky malé webové aplikace napsané v Node.js, která slouží jako statická stránka HTML.
 
-V části **Konfigurace** zadejte **Popisek názvu DNS** pro váš kontejner. Název musí být jedinečný v rámci oblasti Azure, ve kterém vytváříte instanci kontejneru. Váš kontejner bude veřejně dostupný na adrese `<dns-name-label>.<region>.azurecontainer.io`. Pokud se zobrazí chybová zpráva „Popisek názvu DNS není dostupný“, zkuste jiný popisek názvu DNS.
-
-U ostatních nastavení v části **Konfigurace** ponechte jejich výchozí hodnoty a výběrem **OK** ověřte konfiguraci.
+Na **sítě** určete, **popisku názvu DNS** pro váš kontejner. Název musí být jedinečný v rámci oblasti Azure, ve kterém vytváříte instanci kontejneru. Váš kontejner bude veřejně dostupný na adrese `<dns-name-label>.<region>.azurecontainer.io`. Pokud se zobrazí chybová zpráva „Popisek názvu DNS není dostupný“, zkuste jiný popisek názvu DNS.
 
 ![Konfigurace nové instance kontejneru na webu Azure Portal][aci-portal-04]
 
-Po dokončení ověření se zobrazí souhrn nastavení kontejneru. Vyberte **OK** a odešlete žádost o nasazení kontejneru.
+Další nastavení ponechte jejich výchozí hodnoty a pak vyberte **revize + vytvořit**.
+
+Po dokončení ověření se zobrazí souhrn nastavení kontejneru. Vyberte **vytvořit** k odeslání vaší žádosti o nasazení kontejneru.
 
 ![Souhrn nastavení pro novou instanci kontejneru na webu Azure Portal][aci-portal-05]
 
 Po zahájení nasazení se zobrazí oznámení, které informuje o průběhu nasazení. Po nasazení skupiny kontejnerů se zobrazí další oznámení.
 
-![Průběh vytváření nové instance kontejneru na webu Azure Portal][aci-portal-08]
-
-Přechodem na položky **Skupiny prostředků** > **myResourceGroup** > **mycontainer** otevřete přehled skupiny kontejnerů. Poznamenejte si **Plně kvalifikovaný název domény** instance kontejneru a také její **Stav**.
+Přehled skupiny kontejnerů otevřete tak, že přejdete do **skupiny prostředků** > **myresourcegroup** > **mycontainer**. Poznamenejte si **Plně kvalifikovaný název domény** instance kontejneru a také její **Stav**.
 
 ![Přehled skupiny kontejnerů na webu Azure Portal][aci-portal-06]
 

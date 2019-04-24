@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: troubleshooting
 ms.date: 11/05/2018
 ms.author: seanmck
-ms.openlocfilehash: 01095ac4ed8e362f1a89a53b10b5da6a547feb57
-ms.sourcegitcommit: 1b186301dacfe6ad4aa028cfcd2975f35566d756
+ms.openlocfilehash: 29f98e334b0d2527b5159e1a5394109c5041024a
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51218627"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60465359"
 ---
 # <a name="checking-for-kubernetes-best-practices-in-your-cluster"></a>Kontrola osvědčených postupů Kubernetes v clusteru
 
@@ -27,7 +27,7 @@ Existuje několik osvědčených postupů, které byste měli postupovat na vaš
 
 ## <a name="running-kube-advisor"></a>Spuštění kube advisor
 
-Ke spuštění nástroje na cluster, který je nakonfigurovaný pro [řízení přístupu na základě role (RBAC)](aad-integration.md), pomocí následujících příkazů. První příkaz vytvoří účet služby Kubernetes. Druhý příkaz spustí nástroj v podu pomocí tohoto účtu služby a nakonfiguruje pod k odstranění po jeho ukončení. 
+Ke spuštění nástroje na cluster, který je nakonfigurovaný pro [řízení přístupu na základě role (RBAC)](azure-ad-integration.md), pomocí následujících příkazů. První příkaz vytvoří účet služby Kubernetes. Druhý příkaz spustí nástroj v podu pomocí tohoto účtu služby a nakonfiguruje pod k odstranění po jeho ukončení. 
 
 ```bash
 kubectl apply -f https://raw.githubusercontent.com/Azure/kube-advisor/master/sa.yaml

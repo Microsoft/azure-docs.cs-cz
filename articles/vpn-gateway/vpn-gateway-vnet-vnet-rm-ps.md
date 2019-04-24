@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 02/15/2019
 ms.author: cherylmc
 ms.openlocfilehash: 6ea919a4c9554584e0da79739d3465586ae43227
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58075147"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60456355"
 ---
 # <a name="configure-a-vnet-to-vnet-vpn-gateway-connection-using-powershell"></a>Konfigurace připojení brány VPN typu VNet-to-VNet pomocí PowerShellu
 
@@ -75,7 +75,7 @@ Pro toto cvičení můžete konfigurace kombinovat nebo prostě vybrat tu, se kt
 
 ## <a name="samesub"></a>Postup při propojování virtuálních sítí patřících ke stejnému předplatnému
 
-### <a name="before-you-begin"></a>Před zahájením
+### <a name="before-you-begin"></a>Než začnete
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 

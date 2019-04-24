@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 03/05/2019
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 0960977a17925ffd922e75fa03847b7023241c4e
-ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
+ms.openlocfilehash: a147d95701af166c650411a91fb24e3448cfec09
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58201496"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60465525"
 ---
 # <a name="azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS)
 
@@ -125,7 +125,7 @@ Další informace o nasazení a správě AKS najdete v rychlých startech pro Az
 
 <!-- LINKS - internal -->
 [acr-docs]: ../container-registry/container-registry-intro.md
-[aks-aad]: ./aad-integration.md
+[aks-aad]: ./azure-ad-integration.md
 [aks-cli]: ./kubernetes-walkthrough.md
 [aks-gpu]: ./gpu-cluster.md
 [aks-http-routing]: ./http-application-routing.md

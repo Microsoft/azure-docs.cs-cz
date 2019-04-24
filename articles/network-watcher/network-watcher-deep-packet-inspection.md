@@ -15,17 +15,17 @@ ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: jdial
 ms.openlocfilehash: 1c30e679b250c2d6c6b03a1fe5d70dbd06acf052
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55818358"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60535652"
 ---
 # <a name="packet-inspection-with-azure-network-watcher"></a>Kontrolu paketů pomocí služby Azure Network Watcher
 
 Funkce zachytávání paketů služby Network Watcher můžete spustit a spravovat relace zachycení snímku na virtuálních počítačích Azure na portálu, Powershellu, rozhraní příkazového řádku a programově prostřednictvím sady SDK a rozhraní REST API. Zachytávání paketů se můžete k řešení scénářů, které vyžadují dat na úrovni paketů tím, že poskytuje informace ve snadno použitelného formátu. Využívání volně dostupných nástrojů ke kontrole dat, můžete prozkoumat komunikace do a z vašich virtuálních počítačů a získat přehled o provozu vaší sítě. Mezi příklad použití paketů zachycení dat patří: zkoumání potíží s sítě nebo aplikace, zjišťování sítě pokusy o zneužití a narušení nebo udržování dodržování legislativních předpisů. V tomto článku vám ukážeme, jak otevřít soubor zachycení paketu poskytuje sledovací proces sítě pomocí nástroje, Oblíbené open source. Poskytneme také příklady ukazující, jak vypočítat latence připojení, identifikovat abnormální provoz a zkontrolovat sítě statistiky.
 
-## <a name="before-you-begin"></a>Před zahájením
+## <a name="before-you-begin"></a>Než začnete
 
 Tento článek probírá některé předkonfigurovaných scénářů v zachytávání paketů, které bylo předchozí spuštění úspěšné. Tyto scénáře ukazují možnosti, které mohou být přístupné kontrolou zachytávání paketů. Tento scénář využívá [WireShark](https://www.wireshark.org/) ke kontrole zachytávání paketů.
 

@@ -16,11 +16,11 @@ ms.date: 11/03/2017
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 11138857e33eec0f854ddb61956ea24c858c49a5
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51258982"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60530996"
 ---
 # <a name="update-12-release-notes-for-your-storsimple-8000-series-device"></a>Aktualizace 1.2 zpráva k vydání verze pro vaše zařízení řady StorSimple 8000
 
@@ -67,7 +67,7 @@ Následující tabulka obsahuje souhrn problémy, které byly opraveny v aktuali
 | Ne. | Funkce | Problém | Opraveno v aktualizaci | Platí pro fyzické zařízení | Platí pro virtuální zařízení |
 | --- | --- | --- | --- | --- | --- |
 | 1 |Prostředí Windows PowerShell pro StorSimple |Když uživatel vzdálený přístup zařízení StorSimple pomocí prostředí Windows PowerShell pro StorSimple a potom spustit Průvodce instalací, selhání došlo k co nejdříve IP se vstupní Data 0. Tato chyba je opravená ve verzi Update 1. |Update 1 |Ano |Ano |
-| 2 |Obnovení do výrobního nastavení |V některých případech se při provedení obnovení do výrobního nastavení zařízení StorSimple se zablokuje a zobrazí tuto zprávu: **resetování k objektu pro vytváření probíhá (fáze 8)**. K tomu dojít, pokud stisknutí kombinace kláves CTRL + C, zatímco rutina probíhala. Tato chyba je opravená. |Update 1 |Ano |Ne |
+| 2 |Obnovení do výrobního nastavení |V některých případech se při provedení obnovení do výrobního nastavení zařízení StorSimple se zablokuje a zobrazí tato zpráva: **Obnovení k objektu pro vytváření probíhá (fáze 8)**. K tomu dojít, pokud stisknutí kombinace kláves CTRL + C, zatímco rutina probíhala. Tato chyba je opravená. |Update 1 |Ano |Ne |
 | 3 |Obnovení do výrobního nastavení |Po obnovení objekt factory kontroleru, který selhal duální bylo povoleno pokračovat s registrací zařízení. Kvůli tomu nepodporované konfiguraci systému. Ve verzi Update 1 se zobrazí chybová zpráva a registrace je blokována v zařízení, že má neúspěšné obnovení továrního nastavení. |Update 1 |Ano |Ne |
 | 4 |Obnovení do výrobního nastavení |V některých případech byly vyvolány neshoda falešně pozitivní výstrahy. Nesprávný neshoda výstrahy se vygeneruje už na zařízení se softwarem Update 1. |Update 1 |Ano |Ne |
 | 5 |Obnovení do výrobního nastavení |Pokud při obnovení továrního nastavení byl přerušen před dokončením, zařízení zadat režim obnovení a nepovolil vám přístup k prostředí Windows PowerShell pro StorSimple. Tato chyba je opravená. |Update 1 |Ano |Ne |
@@ -92,7 +92,7 @@ V následující tabulce je uveden seznam známých problémů v této verzi.
 | 6 |Webový proxy server |Pokud vaše konfigurace webového proxy serveru má jako zadaný protokol HTTPS, bude mít vliv na vaši komunikaci služby zařízení a zařízení bude přejdou do režimu offline. Podpora balíčky také vygeneruje v procesu spotřebovávat značné množství prostředků vašeho zařízení. |Ujistěte se, že má adresu URL webového proxy serveru HTTP jako zadaný protokol. Další informace najdete v článku [Konfigurace webového proxy serveru pro zařízení](storsimple-configure-web-proxy.md). |Ano |Ne |
 | 7 |Webový proxy server |Pokud nakonfigurujete a povolíte webový proxy server na registrovaná zařízení, je potřeba restartovat aktivní kontroler na vašem zařízení. | |Ano |Ne |
 | 8 |Cloud vysokou latencí a vysokou vstupně-výstupní úlohy |Když v zařízení StorSimple dojde ke kombinaci komponent cloudu velmi vysoké latenci (pořadí sady sekund) a vysoké vstupně-výstupní úlohy, svazky zařízení přejde do ke špatnému stavu a vstupně-výstupních operací může selhat s chybou "zařízení není připraveno". |Je potřeba ručně restartovat řadiče zařízení nebo převzetí služeb zařízení k této situace. |Ano |Ne |
-| 9 |Azure PowerShell |Když použijete rutinu StorSimple **Get-AzureStorSimpleStorageAccountCredential &#124; Select-Object - nejprve 1 - Wait** vyberte první objekt tak, že můžete vytvořit nový **ke kontejneru svazků** objekt, rutina vrátí všechny objekty. |Zabalit rutinu v závorkách následujícím způsobem: **(Get-Azure-StorSimpleStorageAccountCredential) &#124; Select-Object - First 1 - Wait** |Ano |Ano |
+| 9 |Azure PowerShell |Když použijete rutinu StorSimple **Get-AzureStorSimpleStorageAccountCredential &#124; Select-Object - nejprve 1 - Wait** vyberte první objekt tak, že můžete vytvořit nový **ke kontejneru svazků** objekt, rutina vrátí všechny objekty. |Zabalte rutinu v závorkách následujícím způsobem: **(Get-Azure-StorSimpleStorageAccountCredential) &#124; Select-Object - nejprve 1 - Wait** |Ano |Ano |
 | 10 |Migrace |Při předávání několika kontejnerů svazků pro migraci, je přesné jenom pro první kontejner svazků odhadovaným časem doručení pro poslední zálohy. Kromě toho paralelní migraci se spustí po první 4 zálohy v prvním kontejner svazků se migrují. |Doporučujeme migrovat jeden kontejner svazků najednou. |Ano |Ne |
 | 11 |Migrace |Po obnovení svazky nejsou přidány do zásad zálohování nebo skupinu virtuálního disku. |Je potřeba přidat tyto svazky do zásady zálohování k vytvoření zálohy. |Ano |Ano |
 | 12 |Migrace |Po dokončení migrace se nesmí řady 5000/7000 zařízení přístup k kontejnery migrovaná data. |Doporučujeme odstranit kontejnery migrovaná data po migraci je kompletní a potvrzené. |Ano |Ne |

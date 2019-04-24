@@ -15,11 +15,11 @@ ms.workload: TBD
 ms.date: 11/03/2017
 ms.author: alkohli
 ms.openlocfilehash: 12d11cddf077d4d07732490255d44e89ddaf3217
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59527111"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60531056"
 ---
 # <a name="storsimple-8000-series-update-22-release-notes"></a>Poznámky k verzi StorSimple 8000 Series Update 2.2
 

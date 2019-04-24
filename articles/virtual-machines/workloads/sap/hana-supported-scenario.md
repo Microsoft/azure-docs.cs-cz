@@ -15,11 +15,11 @@ ms.date: 07/06/2018
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 501c5ffa86f2360e44c187e087f7285bbf4084fd
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58482959"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60477637"
 ---
 # <a name="supported-scenarios-for-hana-large-instances"></a>Podporované scénáře pro velké instance HANA
 Tento dokument popisuje podporované scénáře a jejich podrobnosti architektury pro HANA velké instance (HLI).
@@ -50,7 +50,7 @@ Návrh architektury odvozené je výhradně z hlediska infrastruktury a musí ko
 Tento dokument popisuje podrobnosti ze dvou částí v jednotlivé podporované architektury:
 
 - Ethernet
-- Storage
+- Úložiště
 
 ### <a name="ethernet"></a>Ethernet
 
@@ -97,7 +97,7 @@ V případech nasazení HANA System Replication nebo horizontální navýšení 
 - Ethernet "D" by měla sloužit pouze pro přístup k zařízení využitím techniky STONITH pro pacemaker. Toto rozhraní se ale vyžaduje při konfiguraci HANA System Replication (HSR) a chcete dosáhnout automatického převzetí služeb při selhání na operační systém pomocí SBD na základě zařízení.
 
 
-### <a name="storage"></a>Storage
+### <a name="storage"></a>Úložiště
 Úložiště je předem nakonfigurován založeny na topologii požadavku. Velikosti svazku a přípojný bod se liší v závislosti na počet serverů, SKU a topologii nakonfigurována. Zkontrolujte požadované scénáře (dále v tomto dokumentu) Chcete-li získat další informace. Pokud je potřeba větší úložiště, můžete ji zakoupit v TB přírůstcích.
 
 >[!NOTE]
@@ -147,7 +147,7 @@ Následující síťová rozhraní jsou předem nakonfigurovány:
 | C | TYP II | síť VLAN\<tenantNo + 1 > | team0.tenant + 1 | Uzel úložiště |
 | D | TYP II | síť VLAN\<tenantNo + 3 > | team0.tenant + 3 | Nakonfigurované ale nepoužívá |
 
-### <a name="storage"></a>Storage
+### <a name="storage"></a>Úložiště
 Je předem nakonfigurované následující přípojné body:
 
 | Přípojný bod | Případ použití | 
@@ -182,7 +182,7 @@ Následující síťová rozhraní jsou předem nakonfigurovány:
 | C | TYP II | síť VLAN\<tenantNo + 1 > | team0.tenant + 1 | Uzel úložiště |
 | D | TYP II | síť VLAN\<tenantNo + 3 > | team0.tenant + 3 | Nakonfigurované ale nepoužívá |
 
-### <a name="storage"></a>Storage
+### <a name="storage"></a>Úložiště
 Je předem nakonfigurované následující přípojné body:
 
 | Přípojný bod | Případ použití | 
@@ -222,7 +222,7 @@ Následující síťová rozhraní jsou předem nakonfigurovány:
 | C | TYP II | síť VLAN\<tenantNo + 1 > | team0.tenant + 1 | Uzel úložiště |
 | D | TYP II | síť VLAN\<tenantNo + 3 > | team0.tenant + 3 | Nakonfigurované ale nepoužívá |
 
-### <a name="storage"></a>Storage
+### <a name="storage"></a>Úložiště
 Je předem nakonfigurované následující přípojné body:
 
 | Přípojný bod | Případ použití | 
@@ -263,7 +263,7 @@ Následující síťová rozhraní jsou předem nakonfigurovány:
 | C | TYP II | síť VLAN\<tenantNo + 1 > | team0.tenant + 1 | Uzel úložiště |
 | D | TYP II | síť VLAN\<tenantNo + 3 > | team0.tenant + 3 | Nakonfigurované ale nepoužívá |
 
-### <a name="storage"></a>Storage
+### <a name="storage"></a>Úložiště
 Je předem nakonfigurované následující přípojné body:
 
 | Přípojný bod | Případ použití | 
@@ -317,7 +317,7 @@ Následující síťová rozhraní jsou předem nakonfigurovány:
 | C | TYP II | síť VLAN\<tenantNo + 1 > | team0.tenant + 1 | Uzel úložiště |
 | D | TYP II | síť VLAN\<tenantNo + 3 > | team0.tenant + 3 | Používá pro využitím techniky STONITH |
 
-### <a name="storage"></a>Storage
+### <a name="storage"></a>Úložiště
 Je předem nakonfigurované následující přípojné body:
 
 | Přípojný bod | Případ použití | 
@@ -365,7 +365,7 @@ Následující síťová rozhraní jsou předem nakonfigurovány:
 | C | TYP II | síť VLAN\<tenantNo + 1 > | team0.tenant + 1 | Uzel úložiště |
 | D | TYP II | síť VLAN\<tenantNo + 3 > | team0.tenant + 3 | Používá pro využitím techniky STONITH |
 
-### <a name="storage"></a>Storage
+### <a name="storage"></a>Úložiště
 Je předem nakonfigurované následující přípojné body:
 
 | Přípojný bod | Případ použití | 
@@ -424,7 +424,7 @@ Následující síťová rozhraní jsou předem nakonfigurovány:
 | C | TYP II | síť VLAN\<tenantNo + 1 > | team0.tenant + 1 | Uzel úložiště |
 | D | TYP II | síť VLAN\<tenantNo + 3 > | team0.tenant + 3 | Nakonfigurované ale nepoužívá |
 
-### <a name="storage"></a>Storage
+### <a name="storage"></a>Úložiště
 Je předem nakonfigurované následující přípojné body:
 
 | Přípojný bod | Případ použití | 
@@ -465,7 +465,7 @@ Následující síťová rozhraní jsou předem nakonfigurovány:
 | C | TYP II | síť VLAN\<tenantNo + 1 > | team0.tenant + 1 | Uzel úložiště |
 | D | TYP II | síť VLAN\<tenantNo + 3 > | team0.tenant + 3 | Nakonfigurované ale nepoužívá |
 
-### <a name="storage"></a>Storage
+### <a name="storage"></a>Úložiště
 Je předem nakonfigurované následující přípojné body:
 
 | Přípojný bod | Případ použití | 
@@ -501,7 +501,7 @@ Následující síťová rozhraní jsou předem nakonfigurovány:
 | C | TYP II | síť VLAN\<tenantNo + 1 > | team0.tenant + 1 | Uzel úložiště |
 | D | TYP II | síť VLAN\<tenantNo + 3 > | team0.tenant + 3 | Nakonfigurované ale nepoužívá |
 
-### <a name="storage"></a>Storage
+### <a name="storage"></a>Úložiště
 Je předem nakonfigurované následující přípojné body:
 
 | Přípojný bod | Případ použití | 
@@ -540,7 +540,7 @@ Následující síťová rozhraní jsou předem nakonfigurovány:
 | C | TYP II | síť VLAN\<tenantNo + 1 > | team0.tenant + 1 | Uzel úložiště |
 | D | TYP II | síť VLAN\<tenantNo + 3 > | team0.tenant + 3 | Nakonfigurované ale nepoužívá |
 
-### <a name="storage"></a>Storage
+### <a name="storage"></a>Úložiště
 Je předem nakonfigurované následující přípojné body:
 
 | Přípojný bod | Případ použití | 

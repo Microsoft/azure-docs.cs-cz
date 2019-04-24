@@ -14,11 +14,11 @@ ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
 ms.openlocfilehash: 08e7341bfd1c384e41e6d3f1bd7810552899849a
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58092187"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60488411"
 ---
 # <a name="data-management-gateway---high-availability-and-scalability-preview"></a>Brána správy dat – vysoká dostupnost a škálovatelnost (Preview)
 > [!NOTE]
@@ -170,7 +170,7 @@ Tady jsou požadavky na certifikát TLS/SSL, který se používá k zabezpečen�
 - Podporuje všechny klíče velikost podporovaná ve Windows serveru 2012 R2 pro certifikáty SSL.
 - Certifikátů CNG pomocí klíče nejsou podporovány.
 
-#### <a name="faq-when-would-i-not-enable-this-encryption"></a>NEJČASTĚJŠÍ DOTAZY: Pokud by povolit šifrování?
+#### <a name="faq-when-would-i-not-enable-this-encryption"></a>Nejčastější dotazy: Pokud by povolit šifrování?
 Povolení šifrování můžete přidat určité náklady na infrastrukturu (vlastnící veřejného certifikátu), proto můžete přeskočit povolení šifrování v následující případy:
 - Když se prostředí integration runtime běží v důvěryhodné síti, nebo v síti pomocí transparentního šifrování, jako jsou IP/s. Protože je tento komunikační kanál mezi pouze omezený ve vaší důvěryhodné síti, možná nebudete potřebovat další šifrování.
 - Když se prostředí integration runtime neběží v produkčním prostředí. To může pomoct snížit náklady na certifikát TLS/SSL.
@@ -186,9 +186,9 @@ Můžete povolit **upřesňující nastavení** v **brány** stránku, abyste zo
 
 Vlastnosti monitorování | Popis
 :------------------ | :---------- 
-Název | Název logické brány a uzly, které jsou přidružená k bráně.  
+Name | Název logické brány a uzly, které jsou přidružená k bráně.  
 Status | Stav logické brány a uzly brány. Příklad: Online/Offline/Limited/atd. Informace o těchto stavů najdete v tématu [stav brány](#gateway-status) oddílu. 
-Verze | Zobrazuje verzi logické brány a každý uzel brány. Verze logické brány je určena na základě verze Většina uzlů ve skupině. Pokud nejsou správně uzly s různými verzemi v nastavení logické brány pouze uzly se stejným číslem verze jako funkci logické brány. Ostatní jsou v režimu omezen a potřeba ručně aktualizovat (pouze v případě automatických aktualizací selže). 
+Version | Zobrazuje verzi logické brány a každý uzel brány. Verze logické brány je určena na základě verze Většina uzlů ve skupině. Pokud nejsou správně uzly s různými verzemi v nastavení logické brány pouze uzly se stejným číslem verze jako funkci logické brány. Ostatní jsou v režimu omezen a potřeba ručně aktualizovat (pouze v případě automatických aktualizací selže). 
 Dostupná paměť | Dostupná paměť na uzel brány. Tato hodnota je snímek téměř v reálném čase. 
 Využití procesoru | Využití procesoru uzlu brány. Tato hodnota je snímek téměř v reálném čase. 
 Síť (vstup/výstup) | Využití brány uzlu sítě. Tato hodnota je snímek téměř v reálném čase. 

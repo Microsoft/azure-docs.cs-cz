@@ -4,7 +4,7 @@ description: Přehled OpenShift v Azure.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: haroldwongms
-manager: joraio
+manager: mdotson
 editor: ''
 tags: azure-resource-manager
 ms.assetid: ''
@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 03/01/2019
+ms.date: 04/19/2019
 ms.author: haroldw
-ms.openlocfilehash: 826085df8d928cab0a05527be8c464af5f4e9180
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 53bed2131e81ee5ed0f46bde389262ee8349339a
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58002511"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60542420"
 ---
 # <a name="openshift-in-azure"></a>OpenShift v Azure
 
@@ -32,15 +32,7 @@ OpenShift zahrnuje pro správu a Orchestrace kontejnerů Kubernetes. Přidá zam
 - Snadné nasazení a škálování.
 - Dlouhodobé životní cyklus údržby pro týmy a aplikace.
 
-Nejsou k dispozici více verzí OpenShift:
-
-- OpenShift Container Platform
-- OpenShift v Azure (plně spravovanou OpenShift už po konci Q1 CY2019)
-- OKD (dříve OpenShift Origin)
-- OpenShift Dedicated
-- OpenShift Online
-
-Pět verzí popsaná v tomto článku pouze dva jsou dnes dostupná pro zákazníky, kteří nasazují v Azure: OpenShift Container Platform a OKD.
+Nejsou k dispozici více verzí OpenShift.  Z těchto verzí jsou pouze dva jsou v současnosti dostupné pro zákazníky, kteří nasazují v Azure: OpenShift Container Platform a OKD (dříve OpenShift Origin).
 
 ## <a name="openshift-container-platform"></a>OpenShift Container Platform
 
@@ -48,29 +40,19 @@ Container Platform je připravená pro podnikové [komerční verze](https://www
 
 Protože zákazníkům "vlastní" celou platformu, jejich ji nainstalujte ve svém místním datovém centru, nebo ve veřejném cloudu (jako je Azure).
 
-## <a name="openshift-on-azure"></a>OpenShift v Azure
+## <a name="azure-red-hat-openshift"></a>Azure Red Hat OpenShift
 
-OpenShift v Azure je plně spravovaná nabídka služby OpenShift v Azure. Tato služba je společně spravované a podporované společností Microsoft a Red Hat. Cluster se nasadí do předplatného Azure zákazníka. Služba je aktuálně ve verzi Private Preview a bude GA po konci Q1 CY2019. Pro zákazníky, kteří chtěli zúčastnit ve verzi Private Preview, vyplňte prosím [Nominační formulář](https://aka.ms/openshiftazureinterest).  Další informace vám poskytneme jako nabídka získá blíž ke zveřejnění obecné dostupnosti
+Azure Red Hat OpenShift je plně spravovaná nabídka služby OpenShift v Azure. Tato služba je společně spravované a podporované společností Microsoft a Red Hat. Cluster se nasadí do předplatného Azure zákazníka. Plánování služby bude GA kolem. května 2019. Speciální dokumentace pro spravované služby budou dostupné po zavedení všeobecné dostupnosti služby
 
-## <a name="okd-formerly-openshift-origin"></a>OKD (dříve OpenShift Origin)
+## <a name="okd"></a>OKD
 
 Je OKD [open source](https://www.okd.io/) nadřazený projekt OpenShift, která je podporovaná komunitou. OKD můžete nainstalovat na CentOS nebo Red Hat Enterprise Linux (RHEL).
-
-## <a name="openshift-dedicated"></a>OpenShift Dedicated
-
-Vyhrazené je Red Hat spravovaná *jednoho tenanta* OpenShift, který používá OpenShift Container Platform. Red Hat spravuje všechny základní infrastruktury (virtuální počítače, OpenShift clusteru, sítě, úložiště atd.). Cluster je specifická pro jednoho zákazníka a spouští ve veřejném cloudu (jako je Azure). Počáteční cluster obsahuje čtyři uzly aplikace a všechny poplatky jsou předem roční a placené.
-
-## <a name="openshift-online"></a>OpenShift Online
-
-Online je Red Hat spravovaná *víceklientské* OpenShift, který používá kontejnerovou platformu. Red Hat spravuje všechny základní infrastruktury (třeba virtuální počítače, OpenShift clusteru, sítě a úložiště). 
-
-S touto verzí se zákazník nasadí kontejnery, ale nemá žádnou kontrolu nad hostitele spouštět kontejnery. Protože Online je víceklientská, kontejnery, může být umístěna na stejného hostitele virtuálního počítače jako kontejnery od ostatních zákazníků. Náklady se děje u každého kontejneru.
 
 ## <a name="next-steps"></a>Další postup
 
 - [Konfigurace běžných požadavků pro OpenShift v Azure](./openshift-prerequisites.md)
 - [Nasazení OpenShift Container Platform v Azure](./openshift-container-platform.md)
-- [Nasazení OKD v Azure](./openshift-okd.md)
+- [Nasazení OpenShift Container platformy samosprávné Marketplace nabídku](./openshift-marketplace-self-managed.md)
 - [Nasadit OpenShift v Azure stacku](./openshift-azure-stack.md)
 - [Úlohy po nasazení](./openshift-post-deployment.md)
 - [Řešení potíží s nasazení Openshiftu](./openshift-troubleshooting.md)

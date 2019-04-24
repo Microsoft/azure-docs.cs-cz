@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: jdial
-ms.openlocfilehash: 4995d7ae846652c374a289603f29f88f6f56dfef
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.openlocfilehash: 476fc9aa98eef300b981d2009fcee9244db25e8a
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58485489"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60532944"
 ---
 # <a name="monitor-vpn-gateways-with-network-watcher-troubleshooting"></a>Monitorování bran VPN s řešením potíží Network Watcher
 
@@ -37,7 +37,7 @@ Tento scénář bude:
 - Vytvoření volání sady runbook `Start-AzureRmNetworkWatcherResourceTroubleshooting` rutiny pro řešení potíží se stavem připojení
 - Připojení plánu k runbooku
 
-## <a name="before-you-begin"></a>Před zahájením
+## <a name="before-you-begin"></a>Než začnete
 
 Než začnete tento scénář, musíte mít následující předpoklady:
 

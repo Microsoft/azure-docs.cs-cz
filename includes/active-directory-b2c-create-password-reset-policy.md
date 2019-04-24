@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 11/30/2018
 ms.author: patricka
 ms.openlocfilehash: 78abb190dccd27c5bf70dfe12f978e1118601815
-ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54355469"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60456935"
 ---
 Pokud chcete povolit jemné resetování hesla na aplikace, použijete **resetování hesla** tok uživatele. Všimněte si, že možnost resetování hesel v rámci celého tenanta je zadán [tady](../articles/active-directory-b2c/active-directory-b2c-reference-sspr.md). Tento tok uživatele popisuje prostředí, které zákazníci budou procházet při resetování hesla a obsah tokenů, které bude aplikace přijímat po úspěšném dokončení.
 
@@ -39,7 +39,7 @@ Klikněte na tlačítko **spustit tok uživatele**. Ověřte nastavení uvedená
 
 ![Vyberte tok uživatele a spusťte jej](media/active-directory-b2c-create-password-reset-policy/add-b2c-sspr-run-user-flow.png)
 
-| Nastavení      | Hodnota  |
+| Nastavení      | Value  |
 | ------------ | ------ |
 | **Aplikace** | Aplikace Contoso B2C |
 | **Výběr adresy URL odpovědi** | `https://localhost:44316/` |

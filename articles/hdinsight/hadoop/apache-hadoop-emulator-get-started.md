@@ -3,7 +3,6 @@ title: Zjistěte, používá Apache Hadoop izolovaného prostoru - emulátor –
 description: 'Pokud chcete začít seznamování se se používat v ekosystému Apache Hadoop, můžete nastavit izolovaného prostoru Hadoop od Hortonworks na virtuálním počítači Azure. '
 keywords: emulátor systému hadoop, hadoop sandboxu
 ms.reviewer: jasonh
-services: hdinsight
 author: hrasheed-msft
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
@@ -11,11 +10,11 @@ ms.topic: conceptual
 ms.date: 12/11/2017
 ms.author: hrasheed
 ms.openlocfilehash: 1da676787eeee1eb75095a5e3a6b3f40056567ad
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
-ms.translationtype: MT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58005769"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60536229"
 ---
 # <a name="get-started-with-an-apache-hadoop-sandbox-an-emulator-on-a-virtual-machine"></a>Začínáme s Apache Hadoop sandboxu, emulátoru na virtuálním počítači
 

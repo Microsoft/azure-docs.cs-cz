@@ -16,11 +16,11 @@ ms.workload: infrastructure-services
 ms.date: 10/01/2018
 ms.author: jonbeck
 ms.openlocfilehash: 14bc1943a10de1d8a7fe7f8a703f4a6f89994d60
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48854027"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60542100"
 ---
 # <a name="general-purpose-virtual-machine-sizes"></a>Velikosti virtuálních počítačů pro obecné účely
 

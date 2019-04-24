@@ -1,7 +1,6 @@
 ---
 title: Nakonfigurovat zásady Apache Kafka v HDInsight s balíčkem Enterprise Security Package - Azure
 description: Zjistěte, jak nakonfigurovat zásady Apache Ranger pro systém Kafka v Azure HDInsight s balíčkem zabezpečení podniku.
-services: hdinsight
 ms.service: hdinsight
 author: mamccrea
 ms.author: mamccrea
@@ -9,11 +8,11 @@ ms.reviewer: mamccrea
 ms.topic: tutorial
 ms.date: 01/14/2019
 ms.openlocfilehash: 381958b462b668447a6548029a1be616df7a3a4b
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
-ms.translationtype: MT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55750218"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60536398"
 ---
 # <a name="tutorial-configure-apache-kafka-policies-in-hdinsight-with-enterprise-security-package-preview"></a>Kurz: Nakonfigurovat zásady Apache Kafka v HDInsight s balíčkem Enterprise Security Package (Preview)
 
@@ -27,7 +26,7 @@ V tomto kurzu se naučíte:
 > * Vytvoření témat v clusteru Kafka
 > * Testování zásad Ranger
 
-## <a name="before-you-begin"></a>Před zahájením
+## <a name="before-you-begin"></a>Než začnete
 
 * Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/).
 

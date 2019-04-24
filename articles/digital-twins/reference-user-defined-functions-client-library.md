@@ -10,11 +10,11 @@ ms.date: 12/27/2018
 ms.author: alinast
 ms.custom: seodec18
 ms.openlocfilehash: d309765e6c4b0b0cc8a7e92977134d4135a69a13
-ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "53995481"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60535579"
 ---
 # <a name="user-defined-functions-client-library-reference"></a>Uživatelem definované funkce Klientská knihovna – referenční informace
 
@@ -30,7 +30,7 @@ Zadaný identifikátor místa, načte tuto funkci místo z grafu.
 
 **Druh**: globální funkce
 
-| Parametr  | Typ                | Popis  |
+| Parametr  | Type                | Popis  |
 | ---------- | ------------------- | ------------ |
 | *id*  | `guid` | identifikátor místa |
 
@@ -40,7 +40,7 @@ Zadaný identifikátor senzor, tato funkce načte senzor z grafu.
 
 **Druh**: globální funkce
 
-| Parametr  | Typ                | Popis  |
+| Parametr  | Type                | Popis  |
 | ---------- | ------------------- | ------------ |
 | *id*  | `guid` | identifikátor senzor |
 
@@ -50,7 +50,7 @@ Zadaný identifikátor zařízení, tato funkce načítá zařízení z grafu.
 
 **Druh**: globální funkce
 
-| Parametr  | Typ                | Popis  |
+| Parametr  | Type                | Popis  |
 | ------ | ------------------- | ------------ |
 | *id* | `guid` | Identifikátor zařízení: |
 
@@ -60,10 +60,10 @@ Zadaný identifikátor ze senzorů a jeho datového typu, tato funkce načte akt
 
 **Druh**: globální funkce
 
-| Parametr  | Typ                | Popis  |
+| Parametr  | Type                | Popis  |
 | ------ | ------------------- | ------------ |
 | *sensorId*  | `guid` | identifikátor senzor |
-| *Datový typ*  | `string` | Typ dat ze senzorů |
+| *dataType*  | `string` | Typ dat ze senzorů |
 
 ### <a name="getspacevaluespaceid-valuename--value"></a>⇒ getSpaceValue (spaceId, valueName) `value`
 
@@ -71,10 +71,10 @@ Zadaný identifikátor místa a název hodnoty, tato funkce načte aktuální ho
 
 **Druh**: globální funkce
 
-| Parametr  | Typ                | Popis  |
+| Parametr  | Type                | Popis  |
 | ------ | ------------------- | ------------ |
 | *spaceId*  | `guid` | identifikátor místa |
-| *Název hodnoty* | `string` | Název vlastnosti místa |
+| *valueName* | `string` | Název vlastnosti místa |
 
 ### <a name="getsensorhistoryvaluessensorid-datatype--value"></a>⇒ getSensorHistoryValues (sensorId, datový typ) `value[]`
 
@@ -82,10 +82,10 @@ Zadaný identifikátor ze senzorů a jeho datového typu, tato funkce načte his
 
 **Druh**: globální funkce
 
-| Parametr  | Typ                | Popis  |
+| Parametr  | Type                | Popis  |
 | ------ | ------------------- | ------------ |
 | *sensorId* | `guid` | identifikátor senzor |
-| *Datový typ* | `string` | Typ dat ze senzorů |
+| *dataType* | `string` | Typ dat ze senzorů |
 
 ### <a name="getspacehistoryvaluesspaceid-datatype--value"></a>⇒ getSpaceHistoryValues (spaceId, datový typ) `value[]`
 
@@ -93,10 +93,10 @@ Zadaný identifikátor místa a název hodnoty, tato funkce načte historickými
 
 **Druh**: globální funkce
 
-| Parametr  | Typ                | Popis  |
+| Parametr  | Type                | Popis  |
 | ------ | ------------------- | ------------ |
 | *spaceId* | `guid` | identifikátor místa |
-| *Název hodnoty* | `string` | Název vlastnosti místa |
+| *valueName* | `string` | Název vlastnosti místa |
 
 ### <a name="getspacechildspacesspaceid--space"></a>getSpaceChildSpaces(spaceId) ⇒ `space[]`
 
@@ -104,7 +104,7 @@ Zadaný identifikátor místo, tato funkce načte podřízený prostory pro toto
 
 **Druh**: globální funkce
 
-| Parametr  | Typ                | Popis  |
+| Parametr  | Type                | Popis  |
 | ------ | ------------------- | ------------ |
 | *spaceId* | `guid` | identifikátor místa |
 
@@ -114,7 +114,7 @@ Zadaný identifikátor místo, tato funkce načte podřízený senzory pro toto 
 
 **Druh**: globální funkce
 
-| Parametr  | Typ                | Popis  |
+| Parametr  | Type                | Popis  |
 | ------ | ------------------- | ------------ |
 | *spaceId* | `guid` | identifikátor místa |
 
@@ -124,7 +124,7 @@ Zadaný identifikátor místa, tato funkce načte podřízený zařízení pro t
 
 **Druh**: globální funkce
 
-| Parametr  | Typ                | Popis  |
+| Parametr  | Type                | Popis  |
 | ------ | ------------------- | ------------ |
 | *spaceId* | `guid` | identifikátor místa |
 
@@ -134,9 +134,9 @@ Zadaný identifikátor zařízení, tato funkce načítá podřízené senzory p
 
 **Druh**: globální funkce
 
-| Parametr  | Typ                | Popis  |
+| Parametr  | Type                | Popis  |
 | ------ | ------------------- | ------------ |
-| *ID zařízení* | `guid` | Identifikátor zařízení: |
+| *deviceId* | `guid` | Identifikátor zařízení: |
 
 ### <a name="getspaceparentspacechildspaceid--space"></a>getSpaceParentSpace(childSpaceId) ⇒ `space`
 
@@ -144,7 +144,7 @@ Zadaný identifikátor místo, tato funkce načítá prostor jeho nadřazené.
 
 **Druh**: globální funkce
 
-| Parametr  | Typ                | Popis  |
+| Parametr  | Type                | Popis  |
 | ------ | ------------------- | ------------ |
 | *childSpaceId* | `guid` | identifikátor místa |
 
@@ -154,7 +154,7 @@ Zadaný identifikátor senzor, tato funkce načítá prostor jeho nadřazené.
 
 **Druh**: globální funkce
 
-| Parametr  | Typ                | Popis  |
+| Parametr  | Type                | Popis  |
 | ------ | ------------------- | ------------ |
 | *childSensorId* | `guid` | identifikátor senzor |
 
@@ -164,7 +164,7 @@ Zadaný identifikátor zařízení, tato funkce načítá prostor jeho nadřazen
 
 **Druh**: globální funkce
 
-| Parametr  | Typ                | Popis  |
+| Parametr  | Type                | Popis  |
 | ------ | ------------------- | ------------ |
 | *childDeviceId* | `guid` | Identifikátor zařízení: |
 
@@ -174,7 +174,7 @@ Zadaný identifikátor senzor, tato funkce načítá nadřazeného zařízení.
 
 **Druh**: globální funkce
 
-| Parametr  | Typ                | Popis  |
+| Parametr  | Type                | Popis  |
 | ------ | ------------------- | ------------ |
 | *childSensorId* | `guid` | identifikátor senzor |
 
@@ -184,18 +184,18 @@ Zadaný identifikátor místa, tato funkce načte vlastnosti a její hodnotu z p
 
 **Druh**: globální funkce
 
-| Parametr  | Typ                | Popis  |
+| Parametr  | Type                | Popis  |
 | ------ | ------------------- | ------------ |
 | *spaceId* | `guid` | identifikátor místa |
 | *propertyName* | `string` | Název vlastnosti místa |
 
-### <a name="getsensorextendedpropertysensorid-propertyname--extendedproperty"></a>⇒ getSensorExtendedProperty (sensorId, propertyName) `extendedProperty`
+### <a name="getsensorextendedpropertysensorid-propertyname--extendedproperty"></a>getSensorExtendedProperty(sensorId, propertyName) ⇒ `extendedProperty`
 
 Zadaný identifikátor senzor, tato funkce načte vlastnosti a její hodnotu z senzoru.
 
 **Druh**: globální funkce
 
-| Parametr  | Typ                | Popis  |
+| Parametr  | Type                | Popis  |
 | ------ | ------------------- | ------------ |
 | *sensorId* | `guid` | identifikátor senzor |
 | *propertyName* | `string` | Název vlastnosti senzor |
@@ -206,9 +206,9 @@ Zadaný identifikátor zařízení, tato funkce použije vlastnost a její hodno
 
 **Druh**: globální funkce
 
-| Parametr  | Typ                | Popis  |
+| Parametr  | Type                | Popis  |
 | ------ | ------------------- | ------------ |
-| *ID zařízení* | `guid` | Identifikátor zařízení: |
+| *deviceId* | `guid` | Identifikátor zařízení: |
 | *propertyName* | `string` | Název vlastnosti zařízení |
 
 ### <a name="setsensorvaluesensorid-datatype-value"></a>setSensorValue (sensorId, datový typ, hodnoty)
@@ -217,11 +217,11 @@ Tato funkce nastaví hodnotu v objektu ze senzorů pomocí daného datového typ
 
 **Druh**: globální funkce
 
-| Parametr  | Typ                | Popis  |
+| Parametr  | Type                | Popis  |
 | ------ | ------------------- | ------------ |
 | *sensorId* | `guid` | identifikátor senzor |
-| *Datový typ*  | `string` | Typ dat ze senzorů |
-| *value*  | `string` | Hodnota |
+| *dataType*  | `string` | Typ dat ze senzorů |
+| *value*  | `string` | Value |
 
 ### <a name="setspacevaluespaceid-datatype-value"></a>setSpaceValue (spaceId, datový typ, hodnoty)
 
@@ -229,11 +229,11 @@ Tato funkce nastaví hodnotu na objekt prostoru s danou datovým typem.
 
 **Druh**: globální funkce
 
-| Parametr  | Typ                | Popis  |
+| Parametr  | Type                | Popis  |
 | ------ | ------------------- | ------------ |
 | *spaceId* | `guid` | identifikátor místa |
-| *Datový typ* | `string` | Typ dat |
-| *value* | `string` | Hodnota |
+| *dataType* | `string` | Typ dat |
+| *value* | `string` | Value |
 
 ### <a name="logmessage"></a>log(Message)
 
@@ -241,7 +241,7 @@ Tato funkce protokolů následující zprávu do uživatelem definované funkce.
 
 **Druh**: globální funkce
 
-| Parametr  | Typ                | Popis  |
+| Parametr  | Type                | Popis  |
 | ------ | ------------------- | ------------ |
 | *Zpráva* | `string` | zaznamenávané zprávy |
 
@@ -251,7 +251,7 @@ Tato funkce odesílá vlastní oznámení k odeslání.
 
 **Druh**: globální funkce
 
-| Parametr  | Typ                | Popis  |
+| Parametr  | Type                | Popis  |
 | ------ | ------------------- | ------------ |
 | *topologyObjectId*  | `guid` | Identifikátor objektu grafu. Příklady jsou místa, ze senzorů a ID zařízení.|
 | *topologyObjectType*  | `string` | Příklady jsou ze senzorů a zařízení.|
@@ -292,7 +292,7 @@ Tato funkce vrací podřízeného zařízení aktuálního místa.
 
 Tato funkce vrací rozšířené vlastnosti a její hodnotu aktuálního místa.
 
-| Parametr  | Typ                | Popis  |
+| Parametr  | Type                | Popis  |
 | ------ | ------------------- | ------------ |
 | *propertyName* | `string` | Název rozšířené vlastnosti |
 
@@ -300,23 +300,23 @@ Tato funkce vrací rozšířené vlastnosti a její hodnotu aktuálního místa.
 
 Tato funkce vrací hodnotu aktuálního místa.
 
-| Parametr  | Typ                | Popis  |
+| Parametr  | Type                | Popis  |
 | ------ | ------------------- | ------------ |
-| *Název hodnoty* | `string` | Název hodnoty |
+| *valueName* | `string` | Název hodnoty |
 
 #### <a name="historyvaluename--value"></a>History(VALUENAME) ⇒ `value[]`
 
 Tato funkce vrací historickými hodnotami aktuálního místa.
 
-| Parametr  | Typ                | Popis  |
+| Parametr  | Type                | Popis  |
 | ------ | ------------------- | ------------ |
-| *Název hodnoty* | `string` | Název hodnoty |
+| *valueName* | `string` | Název hodnoty |
 
 #### <a name="notifypayload"></a>Notify(Payload)
 
 Tato funkce odesílá oznámení se zadanou datovou část.
 
-| Parametr  | Typ                | Popis  |
+| Parametr  | Type                | Popis  |
 | ------ | ------------------- | ------------ |
 | *datová část* | `string` | Datová část JSON zahrnout oznámení |
 
@@ -352,7 +352,7 @@ Tato funkce vrací podřízeného senzorů aktuální zařízení.
 
 Tato funkce vrací rozšířené vlastnosti a její hodnotu pro aktuální zařízení.
 
-| Parametr  | Typ                | Popis  |
+| Parametr  | Type                | Popis  |
 | ------ | ------------------- | ------------ |
 | *propertyName* | `string` | Název rozšířené vlastnosti |
 
@@ -360,7 +360,7 @@ Tato funkce vrací rozšířené vlastnosti a její hodnotu pro aktuální zař�
 
 Tato funkce odesílá oznámení se zadanou datovou část.
 
-| Parametr  | Typ                | Popis  |
+| Parametr  | Type                | Popis  |
 | ------ | ------------------- | ------------ |
 | *datová část* | `string` | Datová část JSON zahrnout oznámení |
 
@@ -400,7 +400,7 @@ Tato funkce vrací nadřazené zařízení aktuální ze souboru.
 
 Tato funkce vrací rozšířené vlastnosti a její hodnotu aktuální senzoru.
 
-| Parametr  | Typ                | Popis  |
+| Parametr  | Type                | Popis  |
 | ------ | ------------------- | ------------ |
 | *propertyName* | `string` | Název rozšířené vlastnosti |
 
@@ -416,11 +416,11 @@ Tato funkce vrací historickými hodnotami aktuální senzoru.
 
 Tato funkce odesílá oznámení se zadanou datovou část.
 
-| Parametr  | Typ                | Popis  |
+| Parametr  | Type                | Popis  |
 | ------ | ------------------- | ------------ |
 | *datová část* | `string` | Datová část JSON zahrnout oznámení |
 
-### <a name="value"></a>Hodnota
+### <a name="value"></a>Value
 
 ```JSON
 {

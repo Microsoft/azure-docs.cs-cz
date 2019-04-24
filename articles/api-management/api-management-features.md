@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 11/26/2018
 ms.author: apimpm
 ms.openlocfilehash: eae36aa6e60e3da03c59952a1d9e035e6a773d2d
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54156693"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60531079"
 ---
 # <a name="feature-based-comparison-of-the-azure-api-management-tiers"></a>Na základě funkcí porovnání úrovních služby Azure API Management
 

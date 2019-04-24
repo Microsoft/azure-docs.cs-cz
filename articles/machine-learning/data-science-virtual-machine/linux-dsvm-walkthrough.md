@@ -18,11 +18,11 @@ ms.topic: conceptual
 ms.date: 07/16/2018
 ms.author: gokuma
 ms.openlocfilehash: 6e8883870cc0f035df5122e91449f04203836218
-ms.sourcegitcommit: 5e4ca656baf3c7d370ab3c0fbad0278aa2c9f1e6
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58319461"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60516859"
 ---
 # <a name="data-science-with-a-linux-data-science-virtual-machine-on-azure"></a>Pro datovou vědu Data Science virtuálním počítačem s Linuxem v Azure
 Tento návod ukazuje, jak provádět několik běžných úloh vědeckého zpracování virtuálního počítače s Linuxem datové vědy. Systému Linux dat virtuálního počítače VĚDY je image virtuálního počítače k dispozici v Azure, který může být předinstalovaný s kolekcí nástrojů používaných pro analýzu dat a strojové učení. Klíčové softwarové komponenty je uvedeno v [zřídit virtuální počítač Linux datové vědy](linux-dsvm-intro.md) tématu. Image virtuálního počítače umožňuje snadno a rychle začít, datových věd v řádech minut, aniž byste museli instalovat a konfigurovat každý z nástrojů jednotlivě. Můžete snadno vertikálně navýšit kapacitu virtuálních počítačů, v případě potřeby a zastavte ji není při použití. Proto tento prostředek je elastická a nákladově efektivní.

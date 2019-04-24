@@ -11,11 +11,11 @@ ms.topic: conceptual
 ms.date: 01/10/2019
 ms.author: scottwhi
 ms.openlocfilehash: 83c97069a9fad3bffde2f38dd33083ab02de2b87
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55867898"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60527892"
 ---
 # <a name="using-decoration-markers-to-highlight-text"></a>Pomocí značek dekorace zvýraznění textu
 

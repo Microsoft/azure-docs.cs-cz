@@ -11,11 +11,11 @@ ms.date: 04/17/2018
 ms.author: kevin
 ms.reviewer: igorstan
 ms.openlocfilehash: f0489d9c018abac380cd0f8b1aa51fa5bb81707a
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55463612"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60531188"
 ---
 # <a name="data-warehouse-workload"></a>Úlohy datového skladu
 Úlohami datového skladu se rozumí všechny operace, které na datovém skladu probíhají. Úlohy datového skladu zahrnují celý proces načtení dat do skladu, provedení analýzy a vytvoření sestav na datovém skladu, správy dat v datovém skladu a exportu dat z datového skladu. Hloubka a šířka těchto složek je často úměrná úrovni vyspělosti datového skladu.

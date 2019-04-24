@@ -9,11 +9,11 @@ ms.date: 05/01/2018
 ms.author: vinagara
 ms.subservice: alerts
 ms.openlocfilehash: 2307fa985c88608d80400c8951c47b9f20caa1dc
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59799299"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60515529"
 ---
 # <a name="webhook-actions-for-log-alert-rules"></a>Akce Webhooku pro pravidla upozornění protokolů
 Když [upozornění protokolu se vytvoří v Azure](alerts-log.md), máte možnost [konfigurace pomocí skupin akcí](action-groups.md) provést jednu nebo více akcí.  Tento článek popisuje různé webhooku akce, které jsou k dispozici a podrobnosti o tom, jak nakonfigurovat vlastní webhooku založenými na JSON.

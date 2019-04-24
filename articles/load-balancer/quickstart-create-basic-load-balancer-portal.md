@@ -16,11 +16,11 @@ ms.date: 02/26/2019
 ms.author: kumud
 ms.custom: seodec18
 ms.openlocfilehash: fe095b8f5a0080c0f28ec570303c9dc23962dfc8
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57869808"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60507878"
 ---
 # <a name="quickstart-create-a-basic-load-balancer-by-using-the-azure-portal"></a>Rychlý start: Vytvoření Load Balanceru úrovně Basic pomocí webu Azure portal
 
@@ -37,11 +37,11 @@ Nejprve vytvořte veřejný Load balancer úrovně Basic prostřednictvím port�
 1. V levém horním rohu obrazovky klikněte na **Vytvořit prostředek** > **Sítě** > **Load Balancer**.
 2. V **Základy** karty **vytvořit nástroj pro vyrovnávání zatížení** stránky, zadejte nebo vyberte následující informace, přijměte výchozí hodnoty pro zbývající nastavení a pak vyberte **revize + vytvořit**:
 
-    | Nastavení                 | Hodnota                                              |
+    | Nastavení                 | Value                                              |
     | ---                     | ---                                                |
     | Předplatné               | Vyberte své předplatné.    |    
     | Skupina prostředků         | Vyberte **vytvořit nový** a typ *MyResourceGroupLB* v textovém poli.|
-    | Název                   | *myLoadBalancer*                                   |
+    | Name                   | *myLoadBalancer*                                   |
     | Oblast         | Vyberte **Západní Evropa**.                                        |
     | Type          | Vyberte **veřejné**.                                        |
     | Skladová jednotka (SKU)           | Vyberte **Basic**.                          |

@@ -9,17 +9,17 @@ ms.service: iot-central
 services: iot-central
 manager: philmea
 ms.openlocfilehash: c8444fd57fe939dfb212d88c22a071c13dac691e
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57767324"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60519221"
 ---
 # <a name="prepare-and-upload-images-to-your-azure-iot-central-application"></a>Přípravě a nahrávání imagí do aplikace Azure IoT Central
 
 Tento článek popisuje, jak, jako tvůrce, můžete přizpůsobit aplikaci Azure IoT Central tak, že nahrajete vlastní Image. Například můžete přizpůsobit řídicí panel zařízení se obrázek zařízení.
 
-## <a name="before-you-begin"></a>Před zahájením
+## <a name="before-you-begin"></a>Než začnete
 
 K dokončení kroků v tomto článku budete potřebovat následující:
 
@@ -56,7 +56,7 @@ Ve všech čtyřech umístěních můžete použít obrázky PNG, ve formátu GI
 
 Následující tabulka shrnuje velikosti obrázků, které můžete použít:
 
-| Umístění | Velikosti |
+| Location | Velikosti |
 | -------- | ------ |
 | Správce aplikací | 268x160 px |
 | Šablona zařízení | 64x64 px |

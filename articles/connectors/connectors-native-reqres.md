@@ -16,11 +16,11 @@ ms.workload: na
 ms.date: 07/18/2016
 ms.author: jehollan
 ms.openlocfilehash: 0f6ee8729cbed9cb8baf3668f7b1a332bc5eddc1
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58892819"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60538099"
 ---
 # <a name="get-started-with-the-request-and-response-components"></a>Začínáme s komponentami žádostí a odpovědí
 Součástí požadavků a odpovědí v aplikaci logiky můžete v reálném čase reagovat na události.

@@ -11,11 +11,11 @@ ms.topic: conceptual
 ms.date: 06/11/2018
 ms.author: panosper
 ms.openlocfilehash: 29ec50a1d2e0aebb1aeb73b38c662f4a18624754
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57431984"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60539056"
 ---
 # <a name="speech-to-text-frequently-asked-questions"></a>Převod řeči na Text – nejčastější dotazy
 

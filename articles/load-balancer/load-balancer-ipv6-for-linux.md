@@ -15,11 +15,11 @@ ms.workload: infrastructure-services
 ms.date: 03/22/2019
 ms.author: kumud
 ms.openlocfilehash: 66777ec314e95d81a4be57082f06ef16dc170186
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58369628"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60516552"
 ---
 # <a name="configure-dhcpv6-for-linux-vms"></a>Konfigurace protokolu DHCPv6 pro virtuální počítače s Linuxem
 

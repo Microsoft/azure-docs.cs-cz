@@ -12,11 +12,11 @@ ms.topic: article
 ms.date: 02/19/2019
 ms.author: diberry
 ms.openlocfilehash: c49090a5563a6d63c90b29cc7442c1e4ed9886e0
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58091575"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60495813"
 ---
 # <a name="tutorial-group-and-extract-related-data"></a>Kurz: Seskupení a extrakce souvisejících dat
 V tomto kurzu přidáte složené entitu seskupit do jedné entity obsahující extrahované data různých typů. Seskupí dat, klientská aplikace snadno extrahovat souvisejících dat v různých datových typů.

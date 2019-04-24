@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 03/04/2019
 ms.author: iainfou
 ms.openlocfilehash: dc2e2f010de3dfe265cddbbaa6c050d081bd05dc
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57778548"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60464917"
 ---
 # <a name="service-principals-with-azure-kubernetes-service-aks"></a>Instanční objekty se službou Azure Kubernetes Service (AKS)
 
@@ -20,7 +20,7 @@ Pro interakci s rozhraními API Azure vyžaduje cluster AKS [instanční objekt 
 
 Tento článek ukazuje, jak vytvořit a používat instanční objekt pro vaše clustery služby AKS.
 
-## <a name="before-you-begin"></a>Před zahájením
+## <a name="before-you-begin"></a>Než začnete
 
 Abyste mohli vytvořit instanční objekt služby Azure AD, musíte mít oprávnění k registraci aplikace v tenantu Azure AD a přiřazení aplikace k roli v předplatném. Pokud nemáte potřebná oprávnění, možná budete muset požádat správce služby Azure AD nebo předplatného o jejich přiřazení nebo vytvořit instanční objekt pro použití se službou AKS předem.
 
@@ -105,7 +105,7 @@ Můžete použít rozšířeného sítě kde virtuální sítě a podsítě nebo
   - *Microsoft.Network/publicIPAddresses/join/action*
 - Nebo přiřadit [Přispěvatel sítě] [ rbac-network-contributor] předdefinovaná role v podsíti ve virtuální síti
 
-### <a name="storage"></a>Storage
+### <a name="storage"></a>Úložiště
 
 Potřebujete přístup k existující prostředky disku v jiné skupině prostředků. Přiřadíte jednu z následující sadu oprávnění role:
 

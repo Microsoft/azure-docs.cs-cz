@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 11/26/2018
 ms.author: iainfou
 ms.openlocfilehash: 94aaa72497a8a5f171d6b42f59a3c5b507c71492
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55494999"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60465277"
 ---
 # <a name="best-practices-for-cluster-isolation-in-azure-kubernetes-service-aks"></a>Osvědčené postupy pro zajištění izolace clusteru ve službě Azure Kubernetes Service (AKS)
 

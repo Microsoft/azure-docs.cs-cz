@@ -1,20 +1,19 @@
 ---
 title: Úvod do Apache Hadoop zabezpečení s balíčkem Enterprise Security Package
 description: Zjistěte, jak Enterprise Security Package podporuje čtyři pilíře podnikového zabezpečení.
-services: hdinsight
 ms.service: hdinsight
 author: omidm1
 ms.author: omidm
 ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 09/24/2018
-ms.openlocfilehash: f3d9a2447bdbc2a1a5ce930ffa161d5a9e30069b
-ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
-ms.translationtype: MT
+ms.date: 04/19/2019
+ms.openlocfilehash: 8a568302b2fd8ed0140c2ad084495d41cc09ed8f
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58225055"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60536848"
 ---
 # <a name="an-introduction-to-apache-hadoop-security-with-enterprise-security-package"></a>Úvod do Apache Hadoop zabezpečení s balíčkem Enterprise Security Package
 

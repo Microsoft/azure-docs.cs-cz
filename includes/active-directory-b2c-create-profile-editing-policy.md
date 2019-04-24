@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 11/30/2018
 ms.author: patricka
 ms.openlocfilehash: 0d9f0a24d84bd18bdf1fac84c744cc34a7d89ab3
-ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54355464"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60456030"
 ---
 Pokud chcete povolit upravování profilu ve své aplikaci, můžete použít **upravování profilu** tok uživatele. Tento tok uživatele popisuje prostředí, které zákazníci budou procházet při upravování profilu a obsah tokenů, které bude aplikace přijímat po úspěšném dokončení.
 
@@ -41,7 +41,7 @@ Vyberte **spustit tok uživatele**. Ověřte nastavení uvedená v tabulce a kli
 
 ![Vyberte tok uživatele a spusťte jej](media/active-directory-b2c-create-profile-editing-policy/add-b2c-profile-editing-run-user-flow.png)
 
-| Nastavení      | Hodnota  |
+| Nastavení      | Value  |
 | ------------ | ------ |
 | **Aplikace** | Aplikace Contoso B2C |
 | **Adresa URL odpovědi** | `https://localhost:44316/` |

@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 06/20/2018
 ms.author: apimpm
 ms.openlocfilehash: 69f36773b702d9f0059e0cd27dbb864ccd7f7b2b
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54262757"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60527623"
 ---
 # <a name="how-to-integrate-azure-api-management-with-azure-application-insights"></a>Jak integrovat Azure API Management s využitím Azure Application Insights
 

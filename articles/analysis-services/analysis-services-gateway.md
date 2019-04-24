@@ -9,11 +9,11 @@ ms.date: 12/19/2018
 ms.author: owend
 ms.reviewer: minewiskan
 ms.openlocfilehash: f13dd1282a6384a0acca4c6936fe7900a051795f
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58896019"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60497386"
 ---
 # <a name="connecting-to-on-premises-data-sources-with-on-premises-data-gateway"></a>Připojení k místním zdrojům dat s místní bránou dat
 Místní brána dat zajišťuje zabezpečený přenos dat mezi místním zdrojům dat a vaše servery Azure Analysis Services v cloudu. Kromě práce s více servery služby Azure Analysis Services ve stejné oblasti, nejnovější verzi brány také funguje s Azure Logic Apps, Power BI, Powerapps a Microsoft Flow. Více služeb ve stejném předplatném a stejné oblasti můžete přidružit jednu bránu. 
