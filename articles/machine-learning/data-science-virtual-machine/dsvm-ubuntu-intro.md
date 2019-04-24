@@ -17,11 +17,11 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/16/2018
 ms.openlocfilehash: 9d48f47f66bea0bb8c5e3c982f983f3673bcb157
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58316991"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60516517"
 ---
 # <a name="provision-the-data-science-virtual-machine-for-linux-ubuntu"></a>Zřízení virtuálního počítače pro datové vědy pro Linux (Ubuntu)
 

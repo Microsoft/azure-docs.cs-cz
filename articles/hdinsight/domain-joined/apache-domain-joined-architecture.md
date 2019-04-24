@@ -1,7 +1,6 @@
 ---
 title: Architektura služby Azure HDInsight s balíčkem Enterprise Security Package
 description: Informace o plánování zabezpečení HDInsight s balíčkem Enterprise Security Package.
-services: hdinsight
 ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
@@ -10,11 +9,11 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 09/24/2018
 ms.openlocfilehash: 7e71f27ab8d577602dd4b02f83d57ff84a92858a
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
-ms.translationtype: MT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58088090"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60535998"
 ---
 # <a name="use-enterprise-security-package-in-hdinsight"></a>Použít balíček zabezpečení podniku v HDInsight
 
