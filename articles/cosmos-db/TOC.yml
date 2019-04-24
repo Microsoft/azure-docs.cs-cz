@@ -138,15 +138,11 @@
         - name: Indexování
           items:
             - name: Přehled
+              displayName: 'range, spatial'
               href: index-overview.md
-            - name: Zásady indexů
+            - name: Zásady indexování
               displayName: 'consistent, none'
               href: index-policy.md
-            - name: Typy indexů
-              displayName: 'hash, range, spatial'
-              href: index-types.md
-            - name: Cesty indexů
-              href: index-paths.md
         - name: Změna kanálu
           items:
             - name: Přehled
@@ -165,6 +161,17 @@
           href: unique-keys.md
         - name: Řízení optimistické souběžnosti a transakce
           href: database-transactions-optimistic-concurrency.md
+    - name: Změna kanálu
+      items:
+        - name: Přehled
+          href: change-feed.md
+        - name: Čtení kanálu změn
+          href: read-change-feed.md
+        - name: Procesor kanálu změn
+          href: change-feed-processor.md
+        - name: Aktivace Azure Functions
+          displayName: change feed
+          href: change-feed-functions.md
     - name: Programování na straně serveru
       items:
         - name: 'Uložené procedury, triggery a systémy souborů UDF'
@@ -216,7 +223,61 @@
 - name: 'Cassandra, MongoDB a další rozhraní API'
   expanded: true
   items:
-    - name: Rozhraní API služby Azure Cosmos DB pro MongoDB
+    - name: Rozhraní Cassandra API
+      items:
+        - name: Úvod
+          href: cassandra-introduction.md
+        - name: Podpora přenosového protokolu
+          href: cassandra-support.md
+        - name: Šablony Rychlý start
+          items:
+            - name: .NET
+              href: create-cassandra-dotnet.md
+            - name: Java
+              href: create-cassandra-java.md
+            - name: Node.js
+              href: create-cassandra-nodejs.md
+            - name: Python
+              href: create-cassandra-python.md
+        - name: Kurzy
+          items:
+            - name: 1. Vytvoření a správa dat
+              href: create-cassandra-api-account-java.md
+            - name: 2. Načtení dat
+              href: cassandra-api-load-data.md
+            - name: 3. Dotazování dat
+              href: cassandra-api-query-data.md
+            - name: 4. Migrace dat
+              displayName: import
+              href: cassandra-import-data.md
+        - name: Návody
+          items:
+            - name: Ukládání a správa služby Spring Data
+              href: /java/azure/spring-framework/configure-spring-data-apache-cassandra-with-cosmos-db
+              maintainContext: true
+            - name: Cassandra a Spark
+              items:
+                - name: Úvod
+                  href: cassandra-spark-generic.md
+                - name: Připojení pomocí Databricks
+                  href: cassandra-spark-databricks.md
+                - name: Připojení pomocí HDInsightu
+                  href: cassandra-spark-hdinsight.md
+                - name: Vytvoření tabulky a prostoru klíčů
+                  href: cassandra-spark-ddl-ops.md
+                - name: Vložení dat
+                  href: cassandra-spark-create-ops.md
+                - name: Čtení dat
+                  href: cassandra-spark-read-ops.md
+                - name: Upsert dat
+                  href: cassandra-spark-upsert-ops.md
+                - name: Odstranění dat
+                  href: cassandra-spark-delete-ops.md
+                - name: Operace agregace
+                  href: cassandra-spark-aggregation-ops.md
+                - name: Kopírování dat tabulek
+                  href: cassandra-spark-table-copy-ops.md
+    - name: Rozhraní MongoDB API
       items:
         - name: Úvod
           href: mongodb-introduction.md
@@ -260,13 +321,18 @@
                   href: tutorial-develop-mongodb-react.md
             - name: 2. Migrace dat
               displayName: import
-              href: 'https://docs.microsoft.com/azure/dms/tutorial-mongodb-cosmos-db?toc=/azure/cosmos-db/toc.json'
+              href: /azure/dms/tutorial-mongodb-cosmos-db
+              maintainContext: true
             - name: 3. Dotazování dat
               href: tutorial-query-mongodb.md
             - name: 4. Globální distribuce dat
               href: tutorial-global-distribution-mongodb.md
         - name: Návody
           items:
+            - name: Průvodce před migrací
+              href: mongodb-pre-migration.md
+            - name: Průvodce po migraci
+              href: mongodb-post-migration.md
             - name: Získání připojovacího řetězce
               href: connect-mongodb-account.md
             - name: Připojení s využitím Studia 3T
@@ -324,60 +390,6 @@
             - name: Ukládání a správa služby Spring Data
               href: /java/azure/spring-framework/configure-spring-data-gremlin-java-app-with-cosmos-db
               maintainContext: true
-    - name: Rozhraní Cassandra API
-      items:
-        - name: Úvod
-          href: cassandra-introduction.md
-        - name: Podpora přenosového protokolu
-          href: cassandra-support.md
-        - name: Šablony Rychlý start
-          items:
-            - name: .NET
-              href: create-cassandra-dotnet.md
-            - name: Java
-              href: create-cassandra-java.md
-            - name: Node.js
-              href: create-cassandra-nodejs.md
-            - name: Python
-              href: create-cassandra-python.md
-        - name: Kurzy
-          items:
-            - name: 1. Vytvoření a správa dat
-              href: create-cassandra-api-account-java.md
-            - name: 2. Načtení dat
-              href: cassandra-api-load-data.md
-            - name: 3. Dotazování dat
-              href: cassandra-api-query-data.md
-            - name: 4. Migrace dat
-              displayName: import
-              href: cassandra-import-data.md
-        - name: Návody
-          items:
-            - name: Ukládání a správa služby Spring Data
-              href: /java/azure/spring-framework/configure-spring-data-apache-cassandra-with-cosmos-db
-              maintainContext: true
-            - name: Cassandra a Spark
-              items:
-                - name: Úvod
-                  href: cassandra-spark-generic.md
-                - name: Připojení pomocí Databricks
-                  href: cassandra-spark-databricks.md
-                - name: Připojení pomocí HDInsightu
-                  href: cassandra-spark-hdinsight.md
-                - name: Vytvoření tabulky a prostoru klíčů
-                  href: cassandra-spark-ddl-ops.md
-                - name: Vložení dat
-                  href: cassandra-spark-create-ops.md
-                - name: Čtení dat
-                  href: cassandra-spark-read-ops.md
-                - name: Upsert dat
-                  href: cassandra-spark-upsert-ops.md
-                - name: Odstranění dat
-                  href: cassandra-spark-delete-ops.md
-                - name: Operace agregace
-                  href: cassandra-spark-aggregation-ops.md
-                - name: Kopírování dat tabulek
-                  href: cassandra-spark-table-copy-ops.md
     - name: Rozhraní Table API
       items:
         - name: Úvod
@@ -420,7 +432,8 @@
             - name: Ruby
               href: table-storage-how-to-use-ruby.md
             - name: 'F#'
-              href: 'https://docs.microsoft.com/dotnet/articles/fsharp/using-fsharp-on-azure/table-storage'
+              href: /dotnet/articles/fsharp/using-fsharp-on-azure/table-storage
+              maintainContext: true
         - name: Návody
           items:
             - name: Vytváření aplikací s využitím Table API
@@ -483,10 +496,8 @@
           href: storage-explorer.md
         - name: Práce s daty s využitím průzkumníka Azure Cosmos
           href: data-explorer.md
-        - name: Indexování
-          items:
-            - name: Správa indexování
-              href: how-to-manage-indexing-policy.md
+        - name: Správa zásad indexování
+          href: how-to-manage-indexing-policy.md
     - name: Kanál změn
       items:
         - name: Několik triggerů Azure Cosmos DB
@@ -526,7 +537,8 @@
         - name: Protokolování diagnostiky
           href: logging.md
         - name: Protokolování aplikací pomocí funkce Logic Apps
-          href: 'https://docs.microsoft.com/azure/logic-apps/logic-apps-scenario-error-and-exception-handling?toc=/azure/cosmos-db/toc.json'
+          href: /azure/logic-apps/logic-apps-scenario-error-and-exception-handling
+          maintainContext: true
     - name: Monitorování
       items:
         - name: Monitorování s využitím metrik
@@ -578,17 +590,21 @@
         - name: Azure App Service
           href: create-website.md
         - name: Indexer Azure Search
-          href: 'https://docs.microsoft.com/azure/search/search-howto-index-cosmosdb?toc=/azure/cosmos-db/toc.json'
+          href: /azure/search/search-howto-index-cosmosdb
+          maintainContext: true
         - name: Azure Functions
           items:
             - name: Bezserverová architektura
               href: serverless-computing-database.md
             - name: Vazby Azure Functions
-              href: 'https://docs.microsoft.com/azure/azure-functions/functions-bindings-cosmosdb?toc=/azure/cosmos-db/toc.json'
+              href: /azure/azure-functions/functions-bindings-cosmosdb
+              maintainContext: true
         - name: Azure Data Factory
-          href: 'https://docs.microsoft.com/azure/data-factory/connector-azure-cosmos-db?toc=/azure/cosmos-db/toc.json'
+          href: /azure/data-factory/connector-azure-cosmos-db
+          maintainContext: true
         - name: Azure Stream Analytics
-          href: '../stream-analytics/stream-analytics-define-outputs.md#azure-cosmos-db'
+          href: '/azure/stream-analytics/stream-analytics-define-outputs#azure-cosmos-db'
+          maintainContext: true
         - name: Logic Apps a Service Bus
           href: change-feed-hl7-fhir-logic-apps.md
         - name: Azure Event Hubs a Azure Storage
@@ -601,7 +617,8 @@
         - name: Azure Databricks (konektor Spark)
           href: spark-connector.md
         - name: Spark a Kafka
-          href: 'https://docs.microsoft.com/azure/hdinsight/apache-kafka-spark-structured-streaming-cosmosdb?toc=/azure/cosmos-db/toc.json'
+          href: /azure/hdinsight/apache-kafka-spark-structured-streaming-cosmosdb
+          maintainContext: true
         - name: Ovladač ODBC
           href: odbc-driver.md
     - name: Knihovna Bulk Executor

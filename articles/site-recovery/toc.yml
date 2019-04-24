@@ -29,6 +29,8 @@
           href: azure-to-azure-tutorial-migrate.md
         - name: Přesun virtuálních počítačů Azure do zón dostupnosti
           href: move-Azure-VMs-AVset-Azone.md
+        - name: Přesun virtuálních počítačů Azure mezi oblastmi Government a veřejnými oblastmi
+          href: region-move-cross-geos.md
     - name: Zotavení po havárii virtuálního počítače VMware do Azure
       items:
         - name: Příprava Azure
@@ -175,6 +177,10 @@
               href: azure-to-azure-autoupdate.md
             - name: Aktualizace ve službě Azure Site Recovery
               href: service-updates-how-to.md
+            - name: Odebrání serverů a zakázání ochrany
+              href: site-recovery-manage-registration-and-protection.md
+            - name: Odstranění trezoru
+              href: delete-vault.md
     - name: Zotavení po havárii VMware do Azure
       items:
         - name: Nastavení síťových služeb

@@ -1,15 +1,9 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 77c69ea24adeef7960b1f16670a2e34ffaf5aca7
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
-ms.translationtype: HT
-ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56728252"
 documentType: LandingData
 title: Dokumentace k rozhraní Text Analytics API
 metadata:
-  title: Dokumentace k rozhraní Text Analytics API – kurzy, reference k rozhraní API – Azure Cognitive Services | Microsoft Docs
-  description: Zjistěte, jak provádět pokročilé zpracování textu přirozeného jazyka pomocí rozhraní API pro analýzu textu. Kurzy vám ukážou, jak psát kód, který využívá službu Analýza textu.
+  title: 'Dokumentace k rozhraní Text Analytics API – kurzy, reference k rozhraní API – Azure Cognitive Services | Microsoft Docs'
+  description: 'Rozhraní API pro analýzu textu je cloudová služba, která poskytuje rozšířené zpracování přirozeného jazyka pro nezpracovaný text a zahrnuje čtyři hlavní funkce: analýzu mínění, extrakci klíčových frází, rozpoznávání pojmenovaných entit a rozpoznávání jazyka.'
   services: cognitive-services
   author: nitinme
   manager: cgronlun
@@ -22,76 +16,76 @@ metadata:
   ms.date: 09/24/2018
   ms.author: nitinme
 abstract:
-  description: 'Rozhraní API pro analýzu textu je cloudová služba, která poskytuje rozšířené zpracování přirozeného jazyka pro nezpracovaný text a zahrnuje tři hlavní funkce: analýzu mínění, extrakci klíčových frází a rozpoznávání jazyka. Pomocí našich šablon Rychlý start, kurzů a ukázek se naučíte různými způsoby analyzovat obsah.'
+  description: 'Rozhraní API pro analýzu textu je cloudová služba, která poskytuje rozšířené zpracování přirozeného jazyka pro nezpracovaný text a zahrnuje čtyři hlavní funkce: analýzu mínění, extrakci klíčových frází, rozpoznávání pojmenovaných entit a rozpoznávání jazyka. Pomocí našich šablon Rychlý start, kurzů a ukázek se naučíte různými způsoby analyzovat obsah.'
 sections:
-- items:
-  - type: list
-    style: cards
-    className: cardsM
-    columns: 3
+  - items:
+      - type: list
+        style: cards
+        className: cardsM
+        columns: 3
+        items:
+          - href: /azure/cognitive-services/text-analytics/overview
+            html: <p>Přečtěte si o rozhraní API pro analýzu textu.</p>
+            image:
+              src: ../media/index/i_overview.svg
+            title: Co je Analýza textu?
+          - href: /azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-signup
+            html: '<p>Přečtěte si, jak si zaregistrovat rozhraní API pro analýzu textu.</p>'
+            image:
+              src: ../media/index/i_get-started.svg
+            title: Registrace rozhraní API pro analýzu textu
+          - href: /azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-access-key
+            html: '<p>Přečtěte si, jak získat přístupové klíče a koncové body pro rozhraní API pro analýzu textu.</p>'
+            image:
+              src: ../media/index/i_tasks.svg
+            title: Přístupové klíče pro rozhraní API pro analýzu textu
+  - title: Zprovoznění během 5 minut
     items:
-    - href: /azure/cognitive-services/text-analytics/overview
-      html: <p>Přečtěte si o rozhraní API pro analýzu textu.</p>
-      image:
-        src: ../media/index/i_overview.svg
-      title: Co je Analýza textu?
-    - href: /azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-signup
-      html: <p>Přečtěte si, jak si zaregistrovat rozhraní API pro analýzu textu.</p>
-      image:
-        src: ../media/index/i_get-started.svg
-      title: Registrace rozhraní API pro analýzu textu
-    - href: /azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-access-key
-      html: <p>Přečtěte si, jak získat přístupové klíče a koncové body pro rozhraní API pro analýzu textu.</p>
-      image:
-        src: ../media/index/i_tasks.svg
-      title: Přístupové klíče pro rozhraní API pro analýzu textu
-- title: Zprovoznění během 5 minut
-  items:
-  - type: paragraph
-    text: 'Začněte při detekci jazyka, analýze mínění a extrakci klíčových frází používat rozhraní API pro analýzu textu:'
-  - type: list
-    style: icon48
+      - type: paragraph
+        text: 'Začněte při detekci jazyka, analýze mínění, extrakci klíčových frází a rozpoznávání entit používat rozhraní API pro analýzu textu:'
+      - type: list
+        style: icon48
+        items:
+          - image:
+              src: media/index/logo_csharp.svg
+            text: 'C&#35;'
+            href: quickstarts/csharp
+          - image:
+              src: media/index/logo_java.svg
+            text: Java
+            href: quickstarts/java
+          - image:
+              src: media/index/logo_nodejs.svg
+            text: Node.js
+            href: quickstarts/nodejs
+          - image:
+              src: media/index/logo_python.svg
+            text: Python
+            href: quickstarts/python
+          - image:
+              src: media/index/logo_go.svg
+            text: Přejít
+            href: quickstarts/go
+  - title: Podrobné kurzy
     items:
-    - image:
-        src: media/index/logo_csharp.svg
-      text: C&#35;
-      href: quickstarts/csharp
-    - image:
-        src: media/index/logo_java.svg
-      text: Java
-      href: quickstarts/java
-    - image:
-        src: media/index/logo_nodejs.svg
-      text: Node.js
-      href: quickstarts/nodejs
-    - image:
-        src: media/index/logo_python.svg
-      text: Python
-      href: quickstarts/python
-    - image:
-        src: media/index/logo_go.svg
-      text: Přejít
-      href: quickstarts/go
-- title: Podrobné kurzy
-  items:
-  - type: paragraph
-    text: 'Naučte se vyvíjet aplikace s využitím rozhraní API pro analýzu textu:'
-  - type: list
-    style: unordered
+      - type: paragraph
+        text: 'Naučte se vyvíjet aplikace s využitím rozhraní API pro analýzu textu:'
+      - type: list
+        style: unordered
+        items:
+          - html: <a href="tutorials/tutorial-power-bi-key-phrases.md">Analýza textu s využitím Power BI</a>
+          - html: '<a href="https://powerapps.microsoft.com/tutorials/cognitive-services-api/">Analýza textu v PowerApps</a>'
+  - title: Referenční informace
     items:
-    - html: <a href="tutorials/tutorial-power-bi-key-phrases.md">Analýza textu s využitím Power BI</a>
-    - html: <a href="https://powerapps.microsoft.com/tutorials/cognitive-services-api/">Analýza textu v PowerApps</a>
-- title: Referenční informace
-  items:
-  - type: list
-    style: cards
-    className: cardsD
-    items:
-    - title: REST
-      html: <p><a href="https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c7">Referenční materiály k rozhraní API</a></p>
-    - title: Sady SDK
-      html: <p><a href="https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/textanalytics?view=azure-dotnet">.NET</a></p> <p><a href="https://docs.microsoft.com/javascript/api/overview/azure/cognitiveservices/textanalytics?view=azure-node-latest">Node.js</a></p> <p><a href="https://docs.microsoft.com/python/api/overview/azure/cognitiveservices/textanalytics?view=azure-python">Python</a></p> <p><a href="https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.0/textanalytics">Go</a></p> <p><a href="https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/textanalytics?view=azure-java-stable">Java</a></p>
-    - title: PowerShell
-      html: <p><a href=https://docs.microsoft.com/powershell/module/az.cognitiveservices/#cognitive_services">Azure PowerShell</a></p>
-    - title: Rozhraní příkazového řádku
-      html: <p><a href="https://docs.microsoft.com/cli/azure/cognitiveservices?view=azure-cli-latest">Azure CLI</a></p>
+      - type: list
+        style: cards
+        className: cardsD
+        items:
+          - title: REST
+            html: '<p><a href="https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c7">Referenční materiály k rozhraní API</a></p>'
+          - title: Sady SDK
+            html: '<p><a href="https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/textanalytics?view=azure-dotnet">.NET</a></p> <p><a href="https://docs.microsoft.com/javascript/api/azure-cognitiveservices-textanalytics?view=azure-node-latest">Node.js</a></p> <p><a href="https://docs.microsoft.com/python/api/overview/azure/cognitiveservices/textanalytics?view=azure-python">Python</a></p> <p><a href="https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.1/textanalytics">Go</a></p> <p><a href="https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/textanalytics?view=azure-java-stable">Java</a></p>'
+          - title: PowerShell
+            html: '<p><a href=https://docs.microsoft.com/powershell/module/az.cognitiveservices/#cognitive_services">Azure PowerShell</a></p>'
+          - title: Rozhraní příkazového řádku
+            html: '<p><a href="https://docs.microsoft.com/cli/azure/cognitiveservices?view=azure-cli-latest">Azure CLI</a></p>'

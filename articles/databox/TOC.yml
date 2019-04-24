@@ -1,130 +1,127 @@
-items:
 - name: Dokumentace ke službě Azure Data Box – offline přenos
   href: /azure/databox
   items:
-  - name: Data Box
-    items:
-    - name: Přehled
+    - name: Data Box
       items:
-      - name: Co je Data Box?
-        href: data-box-overview.md
-    - name: Šablony Rychlý start
+        - name: Přehled
+          items:
+            - name: Co je Data Box?
+              href: data-box-overview.md
+        - name: Šablony Rychlý start
+          expanded: true
+          items:
+            - name: Nastavení – Azure Portal
+              href: data-box-quickstart-portal.md
+        - name: Kurzy
+          items:
+            - name: 1 – Objednání
+              href: data-box-deploy-ordered.md
+            - name: 2 – Nastavení
+              href: data-box-deploy-set-up.md
+            - name: 3 – Připojení a kopírování
+              items:
+                - name: Přes SMB
+                  href: data-box-deploy-copy-data.md
+                - name: Přes NFS
+                  href: data-box-deploy-copy-data-via-nfs.md
+                - name: Přes REST
+                  href: data-box-deploy-copy-data-via-rest.md
+                - name: Prostřednictvím služby kopírování dat
+                  href: data-box-deploy-copy-data-via-copy-service.md
+                - name: Na spravované disky
+                  href: data-box-deploy-copy-data-from-vhds.md
+            - name: '4 – Vrácení, odeslání, ověření'
+              href: data-box-deploy-picked-up.md
+        - name: Koncepty
+          items:
+            - name: Přečtěte si bezpečnostní pokyny
+              href: data-box-safety.md
+            - name: Kontrola požadavků
+              items:
+                - name: Pro Data Box
+                  href: data-box-system-requirements.md
+                - name: Pro úložiště objektů blob Data Boxu
+                  href: data-box-system-requirements-rest.md
+            - name: Pochopení limitů
+              href: data-box-limits.md
+            - name: Revize zabezpečení
+              href: data-box-security.md
+            - name: Nejčastější dotazy
+              href: data-box-faq.md
+        - name: Postup
+          items:
+            - name: Správa prostřednictvím portálu Azure Portal
+              href: data-box-portal-admin.md
+            - name: Správa prostřednictvím místního webového uživatelského rozhraní
+              href: data-box-local-web-ui-admin.md
+            - name: Přesun dat do úrovně objektu blob
+              href: data-box-how-to-set-data-tier.md
+            - name: Zapojení kabeláže zařízení
+              href: data-box-cable-options.md
+            - name: Kontaktování podpory
+              href: data-box-disk-contact-microsoft-support.md
+            - name: Migrace
+              items:
+                - name: To SharePoint Online
+                  href: 'https://docs.microsoft.com/sharepointmigration/how-to-migrate-file-share-content-to-spo-using-azuredatabox?context=/azure/databox/context/context'
+                - name: Do funkce Synchronizace souborů Azure
+                  href: ../storage/files/storage-sync-offline-data-transfer.md?toc=/azure/databox/toc.json&bc=/azure/databox/breadcrumb/toc.json
+                - name: Z úložiště HDFS
+                  href: ../storage/blobs/data-lake-storage-migrate-on-premises-hdfs-cluster.md?toc=/azure/databox/toc.json&bc=/azure/databox/breadcrumb/toc.json
+            - name: Řešení potíží
+              items:
+                - name: Problémy úložiště objektů blob Data Boxu
+                  href: data-box-troubleshoot-rest.md
+    - name: Data Box Disk
       items:
-      - name: Nastavení – Azure Portal
-        href: data-box-quickstart-portal.md
-      expanded: true
-    - name: Kurzy
+        - name: Přehled
+          items:
+            - name: Co je disk Data Box?
+              href: data-box-disk-overview.md
+        - name: Šablony Rychlý start
+          expanded: true
+          items:
+            - name: Nastavení – Azure Portal
+              href: data-box-disk-quickstart-portal.md
+        - name: Kurzy
+          items:
+            - name: 1 – Objednání
+              href: data-box-disk-deploy-ordered.md
+            - name: 2 – Nastavení
+              href: data-box-disk-deploy-set-up.md
+            - name: 3 – Kopírování a ověření
+              href: data-box-disk-deploy-copy-data.md
+            - name: '4 – Vrácení, odeslání, ověření'
+              href: data-box-disk-deploy-picked-up.md
+        - name: Koncepty
+          items:
+            - name: Kontrola požadavků
+              href: data-box-disk-system-requirements.md
+            - name: Pochopení limitů
+              href: data-box-disk-limits.md
+            - name: Revize zabezpečení
+              href: data-box-disk-security.md
+            - name: Nejčastější dotazy
+              href: data-box-disk-faq.md
+        - name: Postup
+          items:
+            - name: Správa prostřednictvím portálu Azure Portal
+              href: data-box-portal-ui-admin.md
+            - name: Řešení potíží s diskem
+              href: data-box-disk-troubleshoot.md
+            - name: Kontaktování podpory
+              href: data-box-disk-contact-microsoft-support.md
+    - name: Data Box Heavy
       items:
-      - name: 1 – Objednání
-        href: data-box-deploy-ordered.md
-      - name: 2 – Nastavení
-        href: data-box-deploy-set-up.md
-      - name: 3 – Připojení a kopírování
-        items:
-        - name: Přes SMB
-          href: data-box-deploy-copy-data.md
-        - name: Přes NFS
-          href: data-box-deploy-copy-data-via-nfs.md
-        - name: Přes REST
-          href: data-box-deploy-copy-data-via-rest.md
-        - name: Prostřednictvím služby kopírování dat
-          href: data-box-deploy-copy-data-via-copy-service.md
-        - name: Na spravované disky
-          href: data-box-deploy-copy-data-from-vhds.md
-      - name: 4 – Vrácení, odeslání, ověření
-        href: data-box-deploy-picked-up.md
-    - name: Koncepty
+        - name: Přehled
+          items:
+            - name: Co je Data Box Heavy?
+              href: data-box-heavy-overview.md
+    - name: Zdroje a prostředky
       items:
-      - name: Přečtěte si bezpečnostní pokyny
-        href: data-box-safety.md
-      - name: Kontrola požadavků
-        items:
-        - name: Pro Data Box
-          href: data-box-system-requirements.md
-        - name: Pro úložiště objektů blob Data Boxu
-          href: data-box-system-requirements-rest.md
-      - name: Pochopení limitů
-        href: data-box-limits.md
-      - name: Revize zabezpečení
-        href: data-box-security.md
-      - name: Nejčastější dotazy
-        href: data-box-faq.md
-    - name: Postup
-      items:
-      - name: Správa prostřednictvím portálu Azure Portal
-        href: data-box-portal-admin.md
-      - name: Správa prostřednictvím místního webového uživatelského rozhraní
-        href: data-box-local-web-ui-admin.md
-      - name: Přesun dat do úrovně objektu blob
-        href: data-box-how-to-set-data-tier.md
-      - name: Zapojení kabeláže zařízení
-        href: data-box-cable-options.md
-      - name: Kontaktování podpory
-        href: data-box-disk-contact-microsoft-support.md
-      - name: Migrace
-        items:
-        - name: To SharePoint Online
-          href: https://docs.microsoft.com/sharepointmigration/how-to-migrate-file-share-content-to-spo-using-azuredatabox?context=/azure/databox/context/context
-        - name: Do funkce Synchronizace souborů Azure
-          href: ../storage/files/storage-sync-offline-data-transfer.md?toc=/azure/databox/toc.json&bc=/azure/databox/breadcrumb/toc.json
-        - name: Z úložiště HDFS
-          href: ../storage/blobs/data-lake-storage-migrate-on-premises-hdfs-cluster.md?toc=/azure/databox/toc.json&bc=/azure/databox/breadcrumb/toc.json
-  - name: Data Box Disk
-    items:
-    - name: Přehled
-      items:
-      - name: Co je disk Data Box?
-        href: data-box-disk-overview.md
-    - name: Šablony Rychlý start
-      items:
-      - name: Nastavení – Azure Portal
-        href: data-box-disk-quickstart-portal.md
-      expanded: true
-    - name: Kurzy
-      items:
-      - name: 1 – Objednání
-        href: data-box-disk-deploy-ordered.md
-      - name: 2 – Nastavení
-        href: data-box-disk-deploy-set-up.md
-      - name: 3 – Kopírování a ověření
-        href: data-box-disk-deploy-copy-data.md
-      - name: 4 – Vrácení, odeslání, ověření
-        href: data-box-disk-deploy-picked-up.md
-    - name: Koncepty
-      items:
-      - name: Kontrola požadavků
-        href: data-box-disk-system-requirements.md
-      - name: Pochopení limitů
-        href: data-box-disk-limits.md
-      - name: Revize zabezpečení
-        href: data-box-disk-security.md
-      - name: Nejčastější dotazy
-        href: data-box-disk-faq.md
-    - name: Postup
-      items:
-      - name: Správa prostřednictvím portálu Azure Portal
-        href: data-box-portal-ui-admin.md
-      - name: Řešení potíží s diskem
-        href: data-box-disk-troubleshoot.md
-      - name: Kontaktování podpory
-        href: data-box-disk-contact-microsoft-support.md
-  - name: Data Box Heavy
-    items:
-    - name: Přehled
-      items:
-      - name: Co je Data Box Heavy?
-        href: data-box-heavy-overview.md
-  - name: Zdroje a prostředky
-    items:
-    - name: Produkt Data Box
-      href: https://azure.microsoft.com/services/storage/databox/data/
-    - name: Ceny Data Boxu
-      href: https://azure.microsoft.com/pricing/details/storage/databox/
-    - name: Ceny Data Box Disku
-      href: https://azure.microsoft.com/pricing/details/storage/databox/disk/
-ms.openlocfilehash: 159fbf5782e51cc316e2b7f4474a5ddc94cf8a59
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: HT
-ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59794002"
+        - name: Produkt Data Box
+          href: 'https://azure.microsoft.com/services/storage/databox/data/'
+        - name: Ceny Data Boxu
+          href: 'https://azure.microsoft.com/pricing/details/storage/databox/'
+        - name: Ceny Data Box Disku
+          href: 'https://azure.microsoft.com/pricing/details/storage/databox/disk/'

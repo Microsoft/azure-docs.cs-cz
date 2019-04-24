@@ -17,6 +17,8 @@
   items:
     - name: Dotazování SQL Serveru spuštěného v kontejneru Docker
       href: vnet-injection-sql-server.md
+    - name: Použití koncového bodu služby Cosmos DB
+      href: service-endpoint-cosmosdb.md
     - name: Provádění operací ETL
       href: databricks-extract-load-sql-data-warehouse.md
     - name: Streamování dat s využitím Event Hubs

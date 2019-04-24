@@ -1,221 +1,210 @@
-items:
 - name: Dokumentace ke službě Azure Machine Learning
   href: index.yml
 - name: Přehled
-  items:
-  - name: Co je služba Azure Machine Learning?
-    displayName: AML services overview
-    href: overview-what-is-azure-ml.md
-  - name: Co se stalo s Workbenchem
-    displayName: desktop ui Workbench upgrade update transfer
-    href: overview-what-happened-to-workbench.md
   expanded: true
+  items:
+    - name: Co je služba Azure Machine Learning?
+      displayName: AML services overview
+      href: overview-what-is-azure-ml.md
+    - name: Co se stalo s Workbenchem
+      displayName: desktop ui Workbench upgrade update transfer
+      href: overview-what-happened-to-workbench.md
 - name: Nastavení
   items:
-  - name: Vytvoření pracovního prostoru
-    displayName: install sdk workspace
-    href: setup-create-workspace.md
+    - name: Vytvoření pracovního prostoru
+      displayName: install sdk workspace
+      href: setup-create-workspace.md
 - name: Šablony Rychlý start
   items:
-  - name: Experimentování s cloudovým poznámkovým blokem
-    displayName: workspace
-    href: quickstart-run-cloud-notebook.md
-  - name: Experimentování s místním poznámkovým blokem
-    displayName: workspace, install, sdk
-    href: quickstart-run-local-notebook.md
+    - name: Experimentování s cloudovým poznámkovým blokem
+      displayName: workspace
+      href: quickstart-run-cloud-notebook.md
+    - name: Experimentování s místním poznámkovým blokem
+      displayName: 'workspace, install, sdk'
+      href: quickstart-run-local-notebook.md
 - name: Kurzy
   items:
-  - name: Klasifikace obrázků (data MNIST)
-    items:
-    - name: 1. Učení modelu
-      displayName: build modeling
-      href: tutorial-train-models-with-aml.md
-    - name: 2. Nasazení modelu
-      href: tutorial-deploy-models-with-aml.md
-  - name: Regrese (data newyorské taxislužby)
-    items:
-    - name: 1. Příprava dat pro modelování
-      displayName: data prep
-      href: tutorial-data-prep.md
-    - name: 2. Automatické trénování modelu ML
-      displayName: automl, automated, auto ml,
-      href: tutorial-auto-train-models.md
+    - name: Klasifikace obrázků (data MNIST)
+      items:
+        - name: 1. Učení modelu
+          displayName: build modeling
+          href: tutorial-train-models-with-aml.md
+        - name: 2. Nasazení modelu
+          href: tutorial-deploy-models-with-aml.md
+    - name: Regrese (data newyorské taxislužby)
+      items:
+        - name: 1. Příprava dat pro modelování
+          displayName: data prep
+          href: tutorial-data-prep.md
+        - name: 2. Automatické trénování modelu ML
+          displayName: 'automl, automated, auto ml,'
+          href: tutorial-auto-train-models.md
 - name: Ukázky
-  displayName: example, examples, Jupyter, azure notebooks, python, notebook, GitHub
+  displayName: 'example, examples, Jupyter, azure notebooks, python, notebook, GitHub'
   href: samples-notebooks.md
 - name: Koncepty
   items:
-  - name: Jak služba funguje
-    displayName: architecture concepts definitions
-    href: concept-azure-machine-learning-architecture.md
-  - name: Automatizované strojové učení
-    displayName: automl, auto ml
-    href: concept-automated-ml.md
-  - name: Správa modelů
-    displayName: deploy, deployment
-    href: concept-model-management-and-deployment.md
-  - name: Interpretovatelnost modelů
-    displayName: explainability
-    href: machine-learning-interpretability-explainability.md
-  - name: Zrychlení pomocí FPGA
-    href: concept-accelerate-with-fpgas.md
-  - name: Kanály Machine Learningu
-    href: concept-ml-pipelines.md
-  - name: Zabezpečení
-    items:
-    - name: Přehled zabezpečení podniku
-      displayName: authorization authentication encryption
-      href: concept-enterprise-security.md
-    - name: Správa uživatelů a skupin
-      href: how-to-assign-roles.md
-    - name: Použití virtuálních sítí
-      displayName: vnet
-      href: how-to-enable-virtual-network.md
-    - name: Zabezpečení webových služeb pomocí SSL
-      href: how-to-secure-web-service.md
+    - name: Jak služba funguje
+      displayName: architecture concepts definitions
+      href: concept-azure-machine-learning-architecture.md
+    - name: Automatizované strojové učení
+      displayName: 'automl, auto ml'
+      href: concept-automated-ml.md
+    - name: Správa modelů
+      displayName: 'deploy, deployment'
+      href: concept-model-management-and-deployment.md
+    - name: Interpretovatelnost modelů
+      displayName: explainability
+      href: machine-learning-interpretability-explainability.md
+    - name: Zrychlení pomocí FPGA
+      href: concept-accelerate-with-fpgas.md
+    - name: Kanály Machine Learningu
+      href: concept-ml-pipelines.md
+    - name: Zabezpečení
+      items:
+        - name: Přehled zabezpečení podniku
+          displayName: authorization authentication encryption
+          href: concept-enterprise-security.md
+        - name: Správa uživatelů a skupin
+          href: how-to-assign-roles.md
+        - name: Použití virtuálních sítí
+          displayName: vnet
+          href: how-to-enable-virtual-network.md
+        - name: Zabezpečení webových služeb pomocí SSL
+          href: how-to-secure-web-service.md
 - name: Návody
   items:
-  - name: Správa pracovních prostorů
-    items:
-    - name: Použití portálu pro pracovní prostory
-      href: how-to-manage-workspace.md
-    - name: Použití šablony Resource Manageru
-      href: how-to-create-workspace-template.md
-  - name: Nastavení vývojového prostředí 
-    items:
-    - name: Konfigurace vývojových prostředí
-      displayName: local, remote, azure notebooks, notebook, Jupyter, dsvm, Databricks, ADB
-      href: how-to-configure-environment.md
-    - name: Rozšíření editoru Visual Studio Code
-      displayName: Visual Studio Code, VSCode, tools, ai, vs
+    - name: Správa pracovních prostorů
       items:
-      - name: Začínáme
-        href: how-to-vscode-tools.md
-      - name: Trénování a nasazení
-        href: how-to-vscode-train-deploy.md
-  - name: Práce s daty
-    displayName: data prep, ETL, ELT, data preparation
-    items:
-    - name: Procházení a příprava dat
-      displayName: data prep, ETL, ELT, data preparation
+        - name: Použití portálu pro pracovní prostory
+          href: how-to-manage-workspace.md
+        - name: Použití šablony Resource Manageru
+          href: how-to-create-workspace-template.md
+    - name: "Nastavení vývojového prostředí\_"
       items:
-      - name: Načtení dat
-        href: how-to-load-data.md
-      - name: Transformace dat
-        href: how-to-transform-data.md
-      - name: Zápis dat
-        href: how-to-write-data.md
-  - name: Získání dat v úložišti dat
-    displayName: blob get fileshare access storage
-    href: how-to-access-data.md
-  - name: Trénování modelů
-    items:
-    - name: Nastavení prostředí trénování
-      displayName: compute target, dsvm, Data Science Virtual Machine, local, cluster, ACI, container instance, Databricks, data lake, lake, HDI, HDInsight
-      href: how-to-set-up-training-targets.md
-    - name: Vytváření odhadů při trénování
-      href: how-to-train-ml-models.md
-    - name: Použití PyTorchu
-      href: how-to-train-pytorch.md
-    - name: Použití TensorFlow a Keras
-      href: how-to-train-tensorflow.md
-    - name: Ladění hyperparametrů
-      displayName: parameter
-      href: how-to-tune-hyperparameters.md
-  - name: Sledování a monitorování experimentů
-    items:
-    - name: Spuštění, monitorování nebo zrušení běhů
-      displayName: cancel, fail, status, child run
-      href: how-to-manage-runs.md
-    - name: Protokolování metrik pro tréninková spuštění
-      href: how-to-track-experiments.md
-  - name: Automatizace strojového učení
-    displayName: automl, auto ml
-    items:
-    - name: Použití automatizovaného strojového učení (Python)
-      displayName: SDK automl
-      href: how-to-configure-auto-train.md
-    - name: Použití vzdálených cílových výpočetních prostředí
-      displayName: automl automated auto ml
-      href: how-to-auto-train-remote.md
-    - name: Automatické trénování modelu prognóz
-      displayName: time series
-      href: how-to-auto-train-forecast.md
-  - name: Modely ONNX
-    href: how-to-build-deploy-onnx.md
-  - name: Modely nasazení
-    items:
-    - name: Kde a jak nasadit
-      displayName: publish azure kubernetes azure container instances
-      href: how-to-deploy-and-where.md
-    - name: FPGA
-      href: how-to-deploy-fpga-web-service.md
-    - name: Řešení potíží
-      href: how-to-troubleshoot-deployment.md
-  - name: Využívání webových služeb
-    items:
-    - name: Využívání v reálném čase
-      displayName: create client consume request response synchronous
-      href: how-to-consume-web-service.md
-    - name: Spuštění dávkových predikcí
-      displayName: score scoring asynchronous consume pipeline
-      href: how-to-run-batch-predictions.md
-  - name: Monitorování webových služeb
-    items:
-    - name: Shromažďování a vyhodnocování dat modelů
-      displayName: track production
-      href: how-to-enable-data-collection.md
-    - name: Monitorování pomocí Application Insights
-      href: how-to-enable-app-insights.md
-  - name: Vytvoření prvního kanálu
-    href: how-to-create-your-first-pipeline.md
-  - name: Povolit protokolování
-    displayName: logging
-    href: how-to-enable-logging.md
-  - name: Správa kvót prostředků
-    displayName: limits
-    href: how-to-manage-quotas.md
-  - name: Použití CLI služby Machine Learning
-    displayName: cli extension command line command-line az ci/cd automate automated
-    href: reference-azure-machine-learning-cli.md
-  - name: Export a odstranění dat
-    displayName: GDPR
-    href: how-to-export-delete-data.md
+        - name: Konfigurace vývojových prostředí
+          displayName: 'local, remote, azure notebooks, notebook, Jupyter, dsvm, Databricks, ADB'
+          href: how-to-configure-environment.md
+        - name: Použití rozšíření editoru Visual Studio Code
+          displayName: 'Visual Studio Code, VSCode, tools, ai, vs'
+          href: how-to-vscode-tools.md
+    - name: Práce s daty
+      displayName: 'data prep, ETL, ELT, data preparation'
+      items:
+        - name: Procházení a příprava dat
+          displayName: 'data prep, ETL, ELT, data preparation'
+          items:
+            - name: Načtení dat
+              href: how-to-load-data.md
+            - name: Transformace dat
+              href: how-to-transform-data.md
+            - name: Zápis dat
+              href: how-to-write-data.md
+    - name: Získání dat v úložišti dat
+      displayName: blob get fileshare access storage
+      href: how-to-access-data.md
+    - name: Trénování modelů
+      items:
+        - name: Nastavení prostředí trénování
+          displayName: 'compute target, dsvm, Data Science Virtual Machine, local, cluster, ACI, container instance, Databricks, data lake, lake, HDI, HDInsight'
+          href: how-to-set-up-training-targets.md
+        - name: Vytváření odhadů při trénování
+          href: how-to-train-ml-models.md
+        - name: Použití PyTorchu
+          href: how-to-train-pytorch.md
+        - name: Použití TensorFlow a Keras
+          href: how-to-train-tensorflow.md
+        - name: Ladění hyperparametrů
+          displayName: parameter
+          href: how-to-tune-hyperparameters.md
+    - name: Sledování a monitorování experimentů
+      items:
+        - name: 'Spuštění, monitorování nebo zrušení běhů'
+          displayName: 'cancel, fail, status, child run'
+          href: how-to-manage-runs.md
+        - name: Protokolování metrik pro tréninková spuštění
+          href: how-to-track-experiments.md
+    - name: Automatizace strojového učení
+      displayName: 'automl, auto ml'
+      items:
+        - name: Použití automatizovaného strojového učení (Python)
+          displayName: SDK automl
+          href: how-to-configure-auto-train.md
+        - name: Použití vzdálených cílových výpočetních prostředí
+          displayName: automl automated auto ml
+          href: how-to-auto-train-remote.md
+        - name: Automatické trénování modelu prognóz
+          displayName: time series
+          href: how-to-auto-train-forecast.md
+    - name: Modely ONNX
+      href: how-to-build-deploy-onnx.md
+    - name: Modely nasazení
+      items:
+        - name: Kde a jak nasadit
+          displayName: publish azure kubernetes azure container instances
+          href: how-to-deploy-and-where.md
+        - name: FPGA
+          href: how-to-deploy-fpga-web-service.md
+        - name: Řešení potíží
+          href: how-to-troubleshoot-deployment.md
+    - name: Využívání webových služeb
+      items:
+        - name: Využívání v reálném čase
+          displayName: create client consume request response synchronous
+          href: how-to-consume-web-service.md
+        - name: Spuštění dávkových predikcí
+          displayName: score scoring asynchronous consume pipeline
+          href: how-to-run-batch-predictions.md
+    - name: Monitorování webových služeb
+      items:
+        - name: Shromažďování a vyhodnocování dat modelů
+          displayName: track production
+          href: how-to-enable-data-collection.md
+        - name: Monitorování pomocí Application Insights
+          href: how-to-enable-app-insights.md
+    - name: Vytvoření prvního kanálu
+      href: how-to-create-your-first-pipeline.md
+    - name: Povolit protokolování
+      displayName: logging
+      href: how-to-enable-logging.md
+    - name: Správa kvót prostředků
+      displayName: limits
+      href: how-to-manage-quotas.md
+    - name: Použití CLI služby Machine Learning
+      displayName: cli extension command line command-line az ci/cd automate automated
+      href: reference-azure-machine-learning-cli.md
+    - name: Export a odstranění dat
+      displayName: GDPR
+      href: how-to-export-delete-data.md
 - name: Referenční informace
   items:
-  - name: Sada Machine Learning SDK
-    displayName: api core package python
-    href: https://aka.ms/aml-sdk
-  - name: Sada SDK pro přípravu dat
-    displayName: api preparation package python
-    href: https://aka.ms/data-prep-sdk
-  - name: Sada SDK pro monitorování
-    displayName: api package python monitor
-    href: https://aka.ms/aml-monitoring-sdk
+    - name: Sada Machine Learning SDK
+      displayName: api core package python
+      href: 'https://aka.ms/aml-sdk'
+    - name: Sada SDK pro přípravu dat
+      displayName: api preparation package python
+      href: 'https://aka.ms/data-prep-sdk'
+    - name: Sada SDK pro monitorování
+      displayName: api package python monitor
+      href: 'https://aka.ms/aml-monitoring-sdk'
 - name: Zdroje a prostředky
   items:
-  - name: Poznámky k verzi
-    displayName: what's new issues bugs
-    href: azure-machine-learning-release-notes.md
-  - name: Plány Azure do budoucna
-    href: https://azure.microsoft.com/roadmap/
-  - name: Ceny
-    href: https://azure.microsoft.com/pricing/details/machine-learning-services/
-  - name: Regionální dostupnost
-    href: https://azure.microsoft.com/regions/services/
-  - name: Známé problémy
-    displayName: bugs errors troubleshoot
-    href: resource-known-issues.md
-  - name: Uživatelské fórum
-    href: https://aka.ms/aml-forum-service
-  - name: Stack Overflow
-    href: https://stackoverflow.com/questions/tagged/azure-machine-learning
-  - name: Porovnání našich produktů ML
-    href: /azure/architecture/data-guide/technology-choices/data-science-and-machine-learning
-    maintainContext: true
-ms.openlocfilehash: 647c949a8f999a34963ddfa49f1df8a1606a1295
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
-ms.translationtype: HT
-ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59521763"
+    - name: "Poznámky k\_verzi"
+      displayName: what's new issues bugs
+      href: azure-machine-learning-release-notes.md
+    - name: Plány Azure do budoucna
+      href: 'https://azure.microsoft.com/roadmap/'
+    - name: Ceny
+      href: 'https://azure.microsoft.com/pricing/details/machine-learning-services/'
+    - name: Regionální dostupnost
+      href: 'https://azure.microsoft.com/regions/services/'
+    - name: Známé problémy
+      displayName: bugs errors troubleshoot
+      href: resource-known-issues.md
+    - name: Uživatelské fórum
+      href: 'https://aka.ms/aml-forum-service'
+    - name: Stack Overflow
+      href: 'https://stackoverflow.com/questions/tagged/azure-machine-learning'
+    - name: Porovnání našich produktů ML
+      href: /azure/architecture/data-guide/technology-choices/data-science-and-machine-learning
+      maintainContext: true

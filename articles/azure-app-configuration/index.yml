@@ -15,11 +15,20 @@ metadata:
   ms.author: yegu
 abstract:
   description: 'Azure App Configuration je spravovaná služba, která vývojářům pomáhá jednoduše a bezpečně centralizovat konfigurace aplikací.'
+  aside:
+    image:
+      alt: null
+      height: 110
+      src: media/videos/getting-started.png
+      width: 250
+    title: 'Začínáme (14:41)'
+    href: 'https://channel9.msdn.com/Shows/Azure-Friday/Getting-started-with-Azure-App-Configuration'
+    width: 250
 sections:
   - title: Zprovoznění během 5 minut
     items:
       - type: paragraph
-        text: 'Naučíte se vyvinout svou první webovou aplikaci pomocí služby Azure App Configuration:'
+        text: 'Zjistíte, jak vyvinout svou první aplikaci pomocí služby Azure App Configuration:'
       - type: list
         style: icon48
         items:
