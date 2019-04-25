@@ -129,15 +129,15 @@ Diagnostika ve službě Azure Automation vytvoří dvě kategorie záznamy v pro
 | --- | --- |
 | TimeGenerated |Datum a čas, kdy se spustila kontrola dodržování předpisů. |
 | OperationName |DscNodeStatusData |
-| Hodnota resultType |Určuje, zda je uzel kompatibilní. |
+| ResultType |Určuje, zda je uzel kompatibilní. |
 | NodeName_s |Název spravovaných uzlů. |
 | NodeComplianceStatus_s |Určuje, zda je uzel kompatibilní. |
 | DscReportStatus |Kontrola dodržování předpisů, jestli proběhla úspěšně. |
 | ConfigurationMode | Jak tato konfigurace používá k uzlu. Možné hodnoty jsou __"ApplyOnly"__,__"ApplyandMonitior"__, a __"ApplyandAutoCorrect"__. <ul><li>__ApplyOnly__: DSC aplikuje konfiguraci a neprovede žádnou další akci, pokud nová konfigurace se vloží do cílového uzlu nebo když nová konfigurace se načítají ze serveru. Po počáteční použití nové konfigurace DSC nekontroluje odchylky od dříve nakonfigurované stavu. DSC se pokusí použít konfiguraci, dokud nebude úspěšná, až poté __ApplyOnly__ projeví. </li><li> __ApplyAndMonitor__: Toto je výchozí hodnota. LCM platí všechny nové konfigurace. Po počáteční aplikaci novou konfiguraci Pokud cílový uzel drifts z požadovaného stavu sestavy DSC nesrovnalosti v protokolech. DSC se pokusí použít konfiguraci, dokud nebude úspěšná, až poté __ApplyAndMonitor__ projeví.</li><li>__ApplyAndAutoCorrect__: DSC platí všechny nové konfigurace. Po počáteční aplikaci novou konfiguraci Pokud cílový uzel drifts z požadovaného stavu DSC sestavy nesrovnalosti v protokolech a pak znovu použije aktuální konfiguraci.</li></ul> |
 | HostName_s | Název spravovaných uzlů. |
 | IP adresa | Adresa IPv4 spravovaných uzlů. |
-| Kategorie | DscNodeStatus |
-| Prostředek | Název účtu Azure Automation. |
+| Category | DscNodeStatus |
+| Resource | Název účtu Azure Automation. |
 | Tenant_g | Identifikátor GUID, který identifikuje klienta pro volajícího. |
 | NodeId_g |Identifikátor GUID, který identifikuje spravovaných uzlů. |
 | DscReportId_g |Identifikátor GUID, který identifikuje sestavy. |
@@ -160,10 +160,10 @@ Diagnostika ve službě Azure Automation vytvoří dvě kategorie záznamy v pro
 | --- | --- |
 | TimeGenerated |Datum a čas, kdy se spustila kontrola dodržování předpisů. |
 | OperationName |DscResourceStatusData|
-| Hodnota resultType |Určuje, zda je zdroj kompatibilní. |
+| ResultType |Určuje, zda je zdroj kompatibilní. |
 | NodeName_s |Název spravovaných uzlů. |
-| Kategorie | DscNodeStatus |
-| Prostředek | Název účtu Azure Automation. |
+| Category | DscNodeStatus |
+| Resource | Název účtu Azure Automation. |
 | Tenant_g | Identifikátor GUID, který identifikuje klienta pro volajícího. |
 | NodeId_g |Identifikátor GUID, který identifikuje spravovaných uzlů. |
 | DscReportId_g |Identifikátor GUID, který identifikuje sestavy. |
