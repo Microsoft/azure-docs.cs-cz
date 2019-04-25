@@ -213,13 +213,13 @@ API Management v současné době poskytuje diagnostické protokoly (dávkované
 | userId | string | Identifikátor entity uživatele pro aktuální požadavek. | 
 | apimSubscriptionId | string | Identifikátor entity předplatného pro aktuální požadavek. | 
 | backendId | string | Identifikátor entity back-endu pro aktuální požadavek. | 
-| LastError | objekt | Poslední chyba zpracování požadavku. | 
+| lastError | objekt | Poslední chyba zpracování požadavku. | 
 | elapsed | integer | Počet milisekund, které uplynuly od přijetí požadavku bránou do chvíle, kdy došlo k chybě. | 
 | source | string | Název zásady nebo interní obslužné rutiny zpracování, která způsobila chybu. | 
 | scope | string | Obor dokumentu zásad obsahující zásadu, která způsobila chybu. | 
 | section | string | Část dokumentu zásad obsahující zásadu, která způsobila chybu. | 
 | reason | string | Důvod chyby | 
-| zpráva | string | Chybová zpráva | 
+| message | string | Chybová zpráva | 
 
 ## <a name="next-steps"></a>Další postup
 
