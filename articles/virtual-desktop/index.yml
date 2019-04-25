@@ -1,14 +1,8 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: b9f4cd78288d1b9868a823c5e0ccd0b68b324229
-ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
-ms.translationtype: HT
-ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58400244"
 documentType: LandingData
 title: Dokumentace ke službě Windows Virtual Desktop verze Preview
 metadata:
-  title: Dokumentace ke službě Windows Virtual Desktop verze Preview – kurzy, šablony Rychlý start, reference k rozhraní API | Microsoft Docs
+  title: 'Dokumentace ke službě Windows Virtual Desktop verze Preview – kurzy, šablony Rychlý start, reference k rozhraní API | Microsoft Docs'
   description: Windows Virtual Desktop verze Preview pro Azure je prostředí Windows 10 Enterprise pro více uživatelů virtualizované v cloudu.
   author: Heidilohr
   manager: daveba
@@ -18,30 +12,30 @@ metadata:
   ms.date: 02/20/2019
   ms.author: helohr
 abstract:
-  description: Doručujte virtuální desktopové prostředí a vzdálené aplikace na jakékoli zařízení. Spojte dohromady Microsoft 365 a Azure a poskytněte uživatelům jediné prostředí Windows 10 pro více relací, a to s mimořádným škálováním a nižšími náklady na IT.
+  description: 'Doručujte virtuální desktopové prostředí a vzdálené aplikace na jakékoli zařízení. Spojte dohromady Microsoft 365 a Azure a poskytněte uživatelům jediné prostředí Windows 10 pro více relací, a to s mimořádným škálováním a nižšími náklady na IT.'
 sections:
-- title: Přehled
-  items:
-  - type: paragraph
-    text: Další informace o službě Windows Virtual Desktop a jejím použití Kurzy, postupy, referenční obsah a další položky vám ukážou, jak nastavit fondy hostitelů a klienty a přiřadit role uživatelům pro prostředí Windows Virtual Desktop.
-  - type: list
-    style: unordered
+  - title: Přehled
     items:
-    - html: <a href="/azure/virtual-desktop/overview">Co je Windows Virtual Desktop verze Preview?</a>
-- title: Podrobné kurzy
-  items:
-  - type: paragraph
-    text: Informace o instalaci a konfiguraci Windows Virtual Desktop a připojení k připravenému klientovi.
-  - type: list
-    style: ordered
+      - type: paragraph
+        text: 'Další informace o službě Windows Virtual Desktop a jejím použití Kurzy, postupy, referenční obsah a další položky vám ukážou, jak nastavit fondy hostitelů a klienty a přiřadit role uživatelům pro prostředí Windows Virtual Desktop.'
+      - type: list
+        style: unordered
+        items:
+          - html: <a href="/azure/virtual-desktop/overview">Co je Windows Virtual Desktop verze Preview?</a>
+  - title: Podrobné kurzy
     items:
-    - html: <a href="/azure/virtual-desktop/tenant-setup-azure-active-directory">Vytvoření klienta v Windows Virtual Desktop</a>
-    - html: <a href="/azure/virtual-desktop/create-host-pools-azure-marketplace">Vytvoření fondu hostitelů pomocí Azure Marketplace</a>
-    - html: <a href="/azure/virtual-desktop/manage-app-groups">Správa skupin aplikaci pro Windows Virtual Desktop</a>
-    - html: <a href="/azure/virtual-desktop/create-service-principal-role-powershell">Vytvoření objektů služby a přiřazení rolí pomocí PowerShellu</a>
-- title: Referenční informace
-  items:
-  - type: list
-    style: unordered
+      - type: paragraph
+        text: Informace o instalaci a konfiguraci Windows Virtual Desktop a připojení k připravenému klientovi.
+      - type: list
+        style: ordered
+        items:
+          - html: <a href="/azure/virtual-desktop/tenant-setup-azure-active-directory">Vytvoření klienta v Windows Virtual Desktop</a>
+          - html: <a href="/azure/virtual-desktop/create-host-pools-azure-marketplace">Vytvoření fondu hostitelů pomocí Azure Marketplace</a>
+          - html: <a href="/azure/virtual-desktop/manage-app-groups">Správa skupin aplikaci pro Windows Virtual Desktop</a>
+          - html: <a href="/azure/virtual-desktop/create-service-principal-role-powershell">Vytvoření objektů služby a přiřazení rolí pomocí PowerShellu</a>
+  - title: Referenční informace
     items:
-    - html: <a href="/powershell/windows-virtual-desktop/overview">PowerShell</a>
+      - type: list
+        style: unordered
+        items:
+          - html: <a href="/powershell/windows-virtual-desktop/overview">PowerShell</a>

@@ -1,127 +1,120 @@
-items:
 - name: Azure Digital Twins
   href: index.yml
 - name: Přehled
   items:
-  - name: Informace o službě Azure Digital Twins
-    href: about-digital-twins.md
+    - name: Informace o službě Azure Digital Twins
+      href: about-digital-twins.md
 - name: Šablony Rychlý start
   items:
-  - name: Zjištění dostupných místností
-    href: quickstart-view-occupancy-dotnet.md
+    - name: Zjištění dostupných místností
+      href: quickstart-view-occupancy-dotnet.md
 - name: Kurzy
   items:
-  - name: Monitorování budovy s využitím Digital Twins
-    items:
-    - name: Nasazení a konfigurace
-      href: tutorial-facilities-setup.md
-    - name: Zřízení a monitorování podmínek
-      href: tutorial-facilities-udf.md
-    - name: Upozornění s využitím služby Logic Apps
-      href: tutorial-facilities-events.md
-    - name: Vizualizace událostí s využitím TSI
-      href: tutorial-facilities-analyze.md
+    - name: Monitorování budovy s využitím Digital Twins
+      items:
+        - name: Nasazení a konfigurace
+          href: tutorial-facilities-setup.md
+        - name: Zřízení a monitorování podmínek
+          href: tutorial-facilities-udf.md
+        - name: Upozornění s využitím služby Logic Apps
+          href: tutorial-facilities-events.md
+        - name: Vizualizace událostí s využitím TSI
+          href: tutorial-facilities-analyze.md
 - name: Koncepty
   items:
-  - name: Graf prostorové inteligence a objektový model Digital Twins
-    href: concepts-objectmodel-spatialgraph.md
-  - name: Možnosti připojení zařízení a příchozí přenos telemetrických dat
-    href: concepts-device-ingress.md
-  - name: Zpracování dat a uživatelsky definované funkce
-    href: concepts-user-defined-functions.md
-  - name: Směrování událostí a zpráv
-    href: concepts-events-routing.md
-  - name: Omezení služby ve verzi Public Preview
-    href: concepts-service-limits.md
-  - name: Zabezpečení
-    items:
-    - name: Osvědčené postupy zabezpečení
-      href: security-best-practices.md
-    - name: Řízení přístupu na základě rolí
-      href: security-role-based-access-control.md
-    - name: Vytváření a správa přiřazení rolí
-      href: security-create-manage-role-assignments.md
-    - name: Ověřování rozhraní API pro správu
-      href: security-authenticating-apis.md
+    - name: Graf prostorové inteligence a objektový model Digital Twins
+      href: concepts-objectmodel-spatialgraph.md
+    - name: Možnosti připojení zařízení a příchozí přenos telemetrických dat
+      href: concepts-device-ingress.md
+    - name: Zpracování dat a uživatelsky definované funkce
+      href: concepts-user-defined-functions.md
+    - name: Směrování událostí a zpráv
+      href: concepts-events-routing.md
+    - name: Omezení služby ve verzi Public Preview
+      href: concepts-service-limits.md
+    - name: Zabezpečení
+      items:
+        - name: Osvědčené postupy zabezpečení
+          href: security-best-practices.md
+        - name: Řízení přístupu na základě rolí
+          href: security-role-based-access-control.md
+        - name: Vytváření a správa přiřazení rolí
+          href: security-create-manage-role-assignments.md
+        - name: Ověřování rozhraní API pro správu
+          href: security-authenticating-apis.md
 - name: Návody
   items:
-  - name: Povolení víceklientských aplikací
-    href: how-to-multitenant-applications.md
-  - name: Vytváření uživatelsky definovaných funkcí
-    href: how-to-user-defined-functions.md
-  - name: Směrování událostí a zpráv přes koncové body
-    href: how-to-egress-endpoints.md
-  - name: Přidání objektů blob do objektů
-    href: how-to-add-blobs.md
-  - name: Použití Swaggeru služby Digital Twins
-    href: how-to-use-swagger.md
-  - name: Ladění uživatelsky definovaných funkcí
-    href: how-to-diagnose-user-defined-functions.md
-  - name: Konfigurace sledování
-    href: how-to-configure-monitoring.md
-  - name: Dotazování rozhraní API služby Digital Twins
-    items:
-    - name: Nastavení nástroje Postman
-      href: how-to-configure-postman.md
-    - name: Použití rozhraní API služby Digital Twins
-      href: how-to-navigate-apis.md
-    - name: Běžné vzory dotazů
-      href: how-to-query-common-apis.md
+    - name: Povolení víceklientských aplikací
+      href: how-to-multitenant-applications.md
+    - name: Vytváření uživatelsky definovaných funkcí
+      href: how-to-user-defined-functions.md
+    - name: Směrování událostí a zpráv přes koncové body
+      href: how-to-egress-endpoints.md
+    - name: Přidání objektů blob do objektů
+      href: how-to-add-blobs.md
+    - name: Použití Swaggeru služby Digital Twins
+      href: how-to-use-swagger.md
+    - name: Ladění uživatelsky definovaných funkcí
+      href: how-to-diagnose-user-defined-functions.md
+    - name: Konfigurace sledování
+      href: how-to-configure-monitoring.md
+    - name: Dotazování rozhraní API služby Digital Twins
+      items:
+        - name: Nastavení nástroje Postman
+          href: how-to-configure-postman.md
+        - name: Použití rozhraní API služby Digital Twins
+          href: how-to-navigate-apis.md
+        - name: Běžné vzory dotazů
+          href: how-to-query-common-apis.md
 - name: Referenční informace
   items:
-  - name: Klientská knihovna uživatelem definovaných funkcí
-    href: reference-user-defined-functions-client-library.md
+    - name: Klientská knihovna uživatelem definovaných funkcí
+      href: reference-user-defined-functions-client-library.md
 - name: Související
   items:
-  - name: Řešení
-    items:
-    - name: Akcelerátory řešení IoT
-      href: /azure/iot-accelerators
-    - name: IoT Central
-      href: https://docs.microsoft.com/microsoft-iot-central/
-  - name: Služby platformy
-    items:
-    - name: IoT Hub
-      href: /azure/iot-hub
-    - name: Služba IoT Hub Device Provisioning
-      href: /azure/iot-dps
-    - name: Sady SDK pro služby IoT
-      href: /azure/iot-hub/iot-hub-devguide-sdks#azure-iot-service-sdks
-    - name: Maps
-      href: /azure/azure-maps
-    - name: Time Series Insights
-      href: /azure/time-series-insights
-  - name: Edge
-    items:
-    - name: IoT Edge
-      href: /azure/iot-edge
-    - name: Sady SDK pro zařízení IoT
-      href: /azure/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks
+    - name: Řešení
+      items:
+        - name: Akcelerátory řešení IoT
+          href: /azure/iot-accelerators
+        - name: IoT Central
+          href: 'https://docs.microsoft.com/microsoft-iot-central/'
+    - name: Služby platformy
+      items:
+        - name: IoT Hub
+          href: /azure/iot-hub
+        - name: Služba IoT Hub Device Provisioning
+          href: /azure/iot-dps
+        - name: Sady SDK pro služby IoT
+          href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-service-sdks'
+        - name: Maps
+          href: /azure/azure-maps
+        - name: Time Series Insights
+          href: /azure/time-series-insights
+    - name: Edge
+      items:
+        - name: IoT Edge
+          href: /azure/iot-edge
+        - name: Sady SDK pro zařízení IoT
+          href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks'
 - name: Zdroje a prostředky
   items:
-  - name: Ukázky Azure Digital Twins pro C# (.NET)
-    href: https://github.com/Azure-Samples/digital-twins-samples-csharp
-  - name: Rozhraní REST API služby Azure Digital Twins
-    href: https://docs.westcentralus.azuresmartspaces.net/management/swagger
-  - name: Ceny
-    href: https://azure.microsoft.com/pricing/details/digital-twins/
-  - name: Cenová kalkulačka
-    href: https://azure.microsoft.com/pricing/calculator/
-  - name: Prohlížeč grafů služby Azure Digital Twins
-    href: https://github.com/Azure/azure-digital-twins-graph-viewer
-  - name: Stack Overflow
-    href: https://stackoverflow.com/questions/tagged/azure-digital-twins
-  - name: Příběhy zákazníků
-    href: https://blogs.microsoft.com/iot/2018/09/24/announcing-azure-digital-twins-create-digital-replicas-of-spaces-and-infrastructure-using-cloud-ai-and-iot/
-  - name: Centrum pro vývojáře Azure IoT
-    href: https://azure.microsoft.com/develop/iot/
-  - name: Plány Azure do budoucna
-    href: https://azure.microsoft.com/roadmap/?category=iot
-  - name: Videa
-    href: https://channel9.msdn.com/Search?term=%22Azure%20Digital%20Twins%22&lang-en=true
-ms.openlocfilehash: 0a76dbffc41106af5df540d29c1d7171f1506202
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
-ms.translationtype: HT
-ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58664858"
+    - name: 'Ukázky Azure Digital Twins pro C# (.NET)'
+      href: 'https://github.com/Azure-Samples/digital-twins-samples-csharp'
+    - name: Rozhraní REST API služby Azure Digital Twins
+      href: 'https://docs.westcentralus.azuresmartspaces.net/management/swagger'
+    - name: Ceny
+      href: 'https://azure.microsoft.com/pricing/details/digital-twins/'
+    - name: Cenová kalkulačka
+      href: 'https://azure.microsoft.com/pricing/calculator/'
+    - name: Prohlížeč grafů služby Azure Digital Twins
+      href: 'https://github.com/Azure/azure-digital-twins-graph-viewer'
+    - name: Stack Overflow
+      href: 'https://stackoverflow.com/questions/tagged/azure-digital-twins'
+    - name: Příběhy zákazníků
+      href: 'https://blogs.microsoft.com/iot/2018/09/24/announcing-azure-digital-twins-create-digital-replicas-of-spaces-and-infrastructure-using-cloud-ai-and-iot/'
+    - name: Centrum pro vývojáře Azure IoT
+      href: 'https://azure.microsoft.com/develop/iot/'
+    - name: Plány Azure do budoucna
+      href: 'https://azure.microsoft.com/roadmap/?category=iot'
+    - name: Videa
+      href: 'https://channel9.msdn.com/Search?term=%22Azure%20Digital%20Twins%22&lang-en=true'

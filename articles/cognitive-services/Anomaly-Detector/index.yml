@@ -1,15 +1,9 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 7b7305a84ac8600629ce27551c0243c427082e5e
-ms.sourcegitcommit: fbfe56f6069cba027b749076926317b254df65e5
-ms.translationtype: HT
-ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58473362"
 documentType: LandingData
 title: Dokumentace k rozhraní API Detektoru anomálií
 metadata:
-  title: Dokumentace k rozhraní API Detektoru anomálií – rychlá zprovoznění, reference k rozhraní API – Azure Cognitive Services | Microsoft Docs
-  description: Rozhraní API Detektoru anomálií můžete využít k monitorování dat v čase a k detekci anomálií s využitím strojového učení. Získáte přehled o vašich darech, bez ohledu na objem, obor nebo scénář.
+  title: 'Dokumentace k rozhraní API Detektoru anomálií – rychlá zprovoznění, reference k rozhraní API – Azure Cognitive Services | Microsoft Docs'
+  description: 'Rozhraní API Detektoru anomálií můžete využít k monitorování dat v čase a k detekci anomálií s využitím strojového učení. Získáte přehled o vašich darech, bez ohledu na objem, obor nebo scénář.'
   services: cognitive-services
   author: aahill
   manager: cgronlun
@@ -21,45 +15,45 @@ metadata:
   ms.date: 03/26/2019
   ms.author: aahi
 abstract:
-  description: Rozhraní API Detektoru anomálií vám pomůže snadno vložit možnosti detekce anomálií do své aplikace, takže vaši uživatelé mohou rychle identifikovat problémy. Minimalizují se tak ztráty i negativní dopad na zákazníka. Nejsou potřeba žádné zkušenosti se strojovým učením. Prostřednictvím jednoho volání rozhraní API můžete aktivovat předem natrénovaný model AI, který ingestuje data časových řad libovolného typu a objemu, pro zajištění vysoké přesnosti vybere nejvhodnější model detekce anomálií pro vaše data a automaticky zobrazí incidenty, jakmile k nim dojde. Tuto službu můžete upravit pro detekci anomálií libovolné velikosti.  Detektor anomálií se dá využít ke zjišťování obchodních incidentů, monitorování provozu zařízení IoT, reakcím na měnící se trhy a dalším účelům.
+  description: 'Rozhraní API Detektoru anomálií vám pomůže snadno vložit možnosti detekce anomálií do své aplikace, takže vaši uživatelé mohou rychle identifikovat problémy. Minimalizují se tak ztráty i negativní dopad na zákazníka. Nejsou potřeba žádné zkušenosti se strojovým učením. Prostřednictvím jednoho volání rozhraní API můžete aktivovat předem natrénovaný model AI, který ingestuje data časových řad libovolného typu a objemu, pro zajištění vysoké přesnosti vybere nejvhodnější model detekce anomálií pro vaše data a automaticky zobrazí incidenty, jakmile k nim dojde. Tuto službu můžete upravit pro detekci anomálií libovolné velikosti.  Detektor anomálií se dá využít ke zjišťování obchodních incidentů, monitorování provozu zařízení IoT, reakcím na měnící se trhy a dalším účelům.'
 sections:
-- items:
-  - type: list
-    style: cards
-    className: cardsM
-    columns: 3
+  - items:
+      - type: list
+        style: cards
+        className: cardsM
+        columns: 3
+        items:
+          - href: /azure/cognitive-services/anomaly-detector/overview
+            html: <p>Další informace o rozhraní API Detektoru anomálií</p>
+            image:
+              src: ../media/index/i_overview.svg
+            title: Co je rozhraní API Detektoru anomálií?
+          - href: /azure/cognitive-services/anomaly-detector/concepts/anomaly-detection-best-practices
+            html: <p>Optimalizace výsledků detekce anomálií využitím osvědčených postupů pro API</p>
+            image:
+              src: ../media/index/i_guidelines.svg
+            title: Osvědčené postupy při používání rozhraní API Detektoru anomálií
+          - href: /azure/cognitive-services/anomaly-detector/how-to/identify-anomalies
+            html: '<p>Můžete upravit citlivost detekce anomálií, použít jiné režimy detekce a nejenom to.</p>'
+            image:
+              src: ../media/index/i_guidelines.svg
+            title: Použití rozhraní API pro detekci anomálií
+  - title: Zprovoznění během 5 minut
     items:
-    - href: /azure/cognitive-services/anomaly-detector/overview
-      html: <p>Další informace o rozhraní API Detektoru anomálií</p>
-      image:
-        src: ../media/index/i_overview.svg
-      title: Co je rozhraní API Detektoru anomálií?
-    - href: /azure/cognitive-services/anomaly-detector/concepts/anomaly-detection-best-practices
-      html: <p>Optimalizace výsledků detekce anomálií využitím osvědčených postupů pro API</p>
-      image:
-        src: ../media/index/i_guidelines.svg
-      title: Osvědčené postupy při používání rozhraní API Detektoru anomálií
-    - href: /azure/cognitive-services/anomaly-detector/how-to/identify-anomalies
-      html: <p>Můžete upravit citlivost detekce anomálií, použít jiné režimy detekce a nejenom to.</p>
-      image:
-        src: ../media/index/i_guidelines.svg
-      title: Použití rozhraní API pro detekci anomálií
-- title: Zprovoznění během 5 minut
-  items:
-  - type: paragraph
-    text: 'K detekci anomálií v datech časových řad můžete využít:'
-  - type: list
-    style: icon48
-    items:
-    - image:
-        src: media/logo_Csharp.svg
-      href: quickstarts/detect-data-anomalies-csharp
-      text: C#
-    - image:
-        src: media/logo_Java.svg
-      href: quickstarts/detect-data-anomalies-java
-      text: Java
-    - image:
-        src: media/logo_python.svg
-      href: quickstarts/detect-data-anomalies-python
-      text: Python
+      - type: paragraph
+        text: 'K detekci anomálií v datech časových řad můžete využít:'
+      - type: list
+        style: icon48
+        items:
+          - image:
+              src: media/logo_Csharp.svg
+            href: quickstarts/detect-data-anomalies-csharp
+            text: 'C#'
+          - image:
+              src: media/logo_Java.svg
+            href: quickstarts/detect-data-anomalies-java
+            text: Java
+          - image:
+              src: media/logo_python.svg
+            href: quickstarts/detect-data-anomalies-python
+            text: Python

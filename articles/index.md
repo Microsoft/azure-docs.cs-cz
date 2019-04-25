@@ -6,12 +6,12 @@ description: Naučte se vytvářet a spravovat výkonné aplikace pomocí cloudo
 ms.topic: hub-page
 featureFlags:
 - clicktale
-ms.openlocfilehash: 3b35608c30262f633af073daacc8795f8eca1e7e
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: b9234814404194364f775add87f865170747220a
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59496501"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61469726"
 ---
 <div id="main" class="v2">
     <div class="container">
@@ -1106,7 +1106,7 @@ Automatizace úloh Azure pomocí skriptů s využitím PowerShellu </a>
                                         <li>
                                             <a href="/azure/virtual-machines/windows/managed-disks-overview">
                                                 <img src="media/index/managed-disks.svg" alt="" />
-                                                <p>Managed Disks</p>
+                                                <p>Spravované disky</p>
                                             </a>
                                         </li>
                                         <li>
@@ -2477,7 +2477,7 @@ Automatizace úloh Azure pomocí skriptů s využitím PowerShellu </a>
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>Managed Disks</h3>
+                                                    <h3>Spravované disky</h3>
                                                     <p>Trvalá a zabezpečená disková úložiště pro virtuální počítače Azure</p>
                                                 </div>
                                             </div>

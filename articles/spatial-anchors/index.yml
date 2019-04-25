@@ -1,15 +1,9 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: df4684f9e7fd57c5a7600b26505413d60417043e
-ms.sourcegitcommit: e88188bc015525d5bead239ed562067d3fae9822
-ms.translationtype: HT
-ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/24/2019
-ms.locfileid: "56753378"
 documentType: LandingData
 title: Dokumentace k Azure Spatial Anchors
 metadata:
   document_id: 8ba93ac8-1984-48d5-8944-329e6653e39d
-  title: Dokumentace k Azure Spatial Anchors – kurzy, reference k rozhraní API
+  title: 'Dokumentace k Azure Spatial Anchors – kurzy, reference k rozhraní API'
   meta.description: Learn how to use Azure Spatial Anchors to build apps with durable spatial anchors.
   services: azure-spatial-anchors
   author: craigktreasure
@@ -21,51 +15,51 @@ metadata:
   ms.date: 02/24/2019
   ms.author: crtreasu
 abstract:
-  description: Spatial Anchors je vývojářská služba pro různé platformy, která umožňuje vytvářet prostředí smíšené reality s využitím objektů, které si v průběhu času zachovávají své umístění napříč zařízeními***.
+  description: 'Spatial Anchors je vývojářská služba pro různé platformy, která umožňuje vytvářet prostředí smíšené reality s využitím objektů, které si v průběhu času zachovávají své umístění napříč zařízeními***.'
 sections:
-- title: Zprovoznění během 5 minut
-  items:
-  - type: paragraph
-    text: 'Podívejte se, jak vytvořit vaši první aplikaci s využitím Azure Spatial Anchors:'
-  - type: list
-    style: icon48
+  - title: Zprovoznění během 5 minut
     items:
-    - image:
-        src: /media/logos/logo_android.svg
-        alt: 
-      text: Android
-      href: quickstarts/get-started-android.md
-    - image:
-        src: /media/logos/logo_Windows.svg
-        alt: 
-      text: HoloLens
-      href: quickstarts/get-started-hololens.md
-    - image:
-        src: /media/logos/logo_ios.svg
-        alt: 
-      text: iOS
-      href: quickstarts/get-started-ios.md
-    - image:
-        src: /media/logos/logo_android.svg
-        alt: 
-      text: Unity pro Android
-      href: quickstarts/get-started-unity-android.md
-    - image:
-        src: /media/logos/logo_Windows.svg
-        alt: 
-      text: Unity HoloLens
-      href: quickstarts/get-started-unity-hololens.md
-    - image:
-        src: /media/logos/logo_ios.svg
-        alt: 
-      text: Unity pro iOS
-      href: quickstarts/get-started-unity-ios.md
-- title: Podrobné kurzy
-  items:
-  - type: paragraph
-    text: Naučíte se, jak nastavovat, spravovat, sestavovat a nasazovat aplikace s využitím Azure Spatial Anchors.
-  - type: list
-    style: ordered
+      - type: paragraph
+        text: 'Podívejte se, jak vytvořit vaši první aplikaci s využitím Azure Spatial Anchors:'
+      - type: list
+        style: icon48
+        items:
+          - image:
+              src: /media/logos/logo_android.svg
+              alt: null
+            text: Android
+            href: quickstarts/get-started-android.md
+          - image:
+              src: /media/logos/logo_Windows.svg
+              alt: null
+            text: HoloLens
+            href: quickstarts/get-started-hololens.md
+          - image:
+              src: /media/logos/logo_ios.svg
+              alt: null
+            text: iOS
+            href: quickstarts/get-started-ios.md
+          - image:
+              src: /media/logos/logo_android.svg
+              alt: null
+            text: Unity pro Android
+            href: quickstarts/get-started-unity-android.md
+          - image:
+              src: /media/logos/logo_Windows.svg
+              alt: null
+            text: Unity HoloLens
+            href: quickstarts/get-started-unity-hololens.md
+          - image:
+              src: /media/logos/logo_ios.svg
+              alt: null
+            text: Unity pro iOS
+            href: quickstarts/get-started-unity-ios.md
+  - title: Podrobné kurzy
     items:
-    - html: <a href="/azure/spatial-anchors/tutorials/tutorial-share-anchors-across-devices">Sdílení v Unity</a>
-    - html: <a href="/azure/spatial-anchors/tutorials/tutorial-use-cosmos-db-to-store-anchors">Sdílení v Unity s využitím Azure Cosmos DB</a>
+      - type: paragraph
+        text: 'Naučíte se, jak nastavovat, spravovat, sestavovat a nasazovat aplikace s využitím Azure Spatial Anchors.'
+      - type: list
+        style: ordered
+        items:
+          - html: <a href="/azure/spatial-anchors/tutorials/tutorial-share-anchors-across-devices">Sdílení v Unity</a>
+          - html: <a href="/azure/spatial-anchors/tutorials/tutorial-use-cosmos-db-to-store-anchors">Sdílení v Unity s využitím Azure Cosmos DB</a>

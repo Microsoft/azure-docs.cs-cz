@@ -1,553 +1,546 @@
-items:
 - name: Dokumentace ke službě Stream Analytics
   href: index.yml
 - name: Přehled
   items:
-  - name: Co je služba Stream Analytics?
-    href: stream-analytics-introduction.md
+    - name: Co je služba Stream Analytics?
+      href: stream-analytics-introduction.md
 - name: Šablony Rychlý start
   items:
-  - name: Vytvoření úlohy – Azure Portal
-    href: stream-analytics-quick-create-portal.md
-  - name: Vytvoření úlohy – PowerShell
-    href: stream-analytics-quick-create-powershell.md
-  - name: Vytvoření úlohy – Visual Studio
-    href: stream-analytics-quick-create-vs.md
+    - name: Vytvoření úlohy – Azure Portal
+      href: stream-analytics-quick-create-portal.md
+    - name: Vytvoření úlohy – PowerShell
+      href: stream-analytics-quick-create-powershell.md
+    - name: Vytvoření úlohy – Visual Studio
+      href: stream-analytics-quick-create-vs.md
 - name: Kurzy
   items:
-  - name: 1. Vytvoření a správa úlohy
-    href: stream-analytics-manage-job.md
-  - name: 2. Spuštění Azure Functions
-    href: stream-analytics-with-azure-functions.md
-  - name: 3. Spuštění UDF JavaScriptu
-    href: stream-analytics-javascript-user-defined-functions.md
-  - name: 4. Nasazení s využitím průběžné integrace a doručování v Azure Pipelines
-    href: stream-analytics-tools-visual-studio-cicd-vsts.md
-  - name: 5. Spuštění UDF C# na IoT Edge
-    href: stream-analytics-edge-csharp-udf.md
+    - name: 1. Vytvoření a správa úlohy
+      href: stream-analytics-manage-job.md
+    - name: 2. Spuštění Azure Functions
+      href: stream-analytics-with-azure-functions.md
+    - name: 3. Spuštění UDF JavaScriptu
+      href: stream-analytics-javascript-user-defined-functions.md
+    - name: 4. Nasazení s využitím průběžné integrace a doručování v Azure Pipelines
+      href: stream-analytics-tools-visual-studio-cicd-vsts.md
+    - name: '5. Spuštění UDF C# na IoT Edge'
+      href: stream-analytics-edge-csharp-udf.md
 - name: Ukázky
   items:
-  - name: Ukázky kódů
-    href: https://azure.microsoft.com/resources/samples/?service=stream-analytics
+    - name: Ukázky kódů
+      href: 'https://azure.microsoft.com/resources/samples/?service=stream-analytics'
 - name: Koncepty
   items:
-  - name: Vstupní typy pro úlohu
-    items:
-    - name: Přehled vstupů
-      href: stream-analytics-add-inputs.md
-    - name: Streamování datových výstupů
-      href: stream-analytics-define-inputs.md
-    - name: Referenční datové výstupy
-      href: stream-analytics-use-reference-data.md
-  - name: Výstupní typy pro úlohu
-    items:
-    - name: Přehled výstupů
-      href: stream-analytics-define-outputs.md
-    - name: Výstup do Cosmos DB
-      href: stream-analytics-documentdb-output.md
-    - name: Výstup do Azure SQL DB
-      href: stream-analytics-sql-output-perf.md
-    - name: Vzory vlastních cest objektů blob
-      href: stream-analytics-custom-path-patterns-blob-storage-output.md
-  - name: Stavy úlohy
-    href: job-states.md
-  - name: Funkce okna
-    href: stream-analytics-window-functions.md
-  - name: Geoprostorové funkce
-    href: stream-analytics-geospatial-functions.md
-  - name: Úroveň kompatibility
-    href: stream-analytics-compatibility-level.md
-  - name: Běžné vzory dotazů
-    href: stream-analytics-stream-analytics-query-patterns.md
-  - name: Parsování dat JSON a AVRO
-    href: stream-analytics-parsing-json.md
-  - name: Důležité informace o práci s časem
-    href: stream-analytics-time-handling.md
-  - name: Kontrolní bod a opětovného přehrání
-    href: stream-analytics-concepts-checkpoint-replay.md
-  - name: Chybové zásady
-    href: stream-analytics-output-error-policy.md
-- name: Návody
-  items:
-  - name: Spravovat
-    items:
-    - name: Aktualizace přihlašovacích údajů
-      href: stream-analytics-login-credentials-inputs-outputs.md
-    - name: Konfigurace zásad řazení událostí
-      href: event-ordering.md
-    - name: Konfigurace upozornění
-      href: stream-analytics-set-up-alerts.md
-    - name: Spuštění úlohy
-      href: start-job.md
-    - name: Testování úlohy
-      href: stream-analytics-test-query.md
-    - name: Zobrazení výsledků na řídicím panelu
-      href: stream-analytics-power-bi-dashboard.md
-    - name: Vyčištění úlohy
-      href: stream-analytics-clean-up-your-job.md
-    - name: Párování úloh z důvodů spolehlivosti
-      href: stream-analytics-job-reliability.md
-    - name: Ověřování pomocí spravované identity
-      href: stream-analytics-managed-identities-adls.md
-    - name: Použití referenčních dat SQL
-      href: sql-reference-data.md
-  - name: Vytváření řešení
-    items:
-    - name: Analýza subjektivního hodnocení na Twitteru
-      href: stream-analytics-twitter-sentiment-analysis-trends.md
-    - name: Zjišťování možných podvodů v reálném čase
-      href: stream-analytics-real-time-fraud-detection.md
-    - name: Spouštění úloh ve službě IoT Edge
-      href: stream-analytics-edge.md
-    - name: Analýza dat snímačů z mýtných bran
-      href: stream-analytics-build-an-iot-solution-using-stream-analytics.md
-    - name: Spuštění UDA JavaScriptu
-      href: stream-analytics-javascript-user-defined-aggregates.md
-    - name: Vysokofrekvenční obchodování
-      href: stream-analytics-high-frequency-trading.md
-    - name: Zpracování streamovaných dat IoT
-      href: stream-analytics-get-started-with-azure-stream-analytics-to-process-data-from-iot-devices.md
-    - name: Pravidla založená na prahových hodnotách
-      href: stream-analytics-threshold-based-rules.md
-    - name: Zpracování událostí Kafka
-      href: ../event-hubs/event-hubs-kafka-stream-analytics.md
-      maintainContext: true
-    - name: Geoprostorové scénáře
-      href: geospatial-scenarios.md
-  - name: Monitorování
-    items:
-    - name: Monitorování úloh – Azure Portal
-      href: stream-analytics-monitoring.md
-    - name: Monitorování úloh – PowerShell
-      href: stream-analytics-monitor-and-manage-jobs-use-powershell.md
-    - name: Monitorování úloh – Azure .NET SDK
-      href: stream-analytics-monitor-jobs.md
-    - name: Monitorování úloh – Visual Studio
-      href: stream-analytics-monitor-jobs-use-vs.md
-  - name: Měřítko
-    items:
-    - name: Škálování využitím s jednotek streamování
-      href: stream-analytics-streaming-unit-consumption.md
-    - name: Škálování s využitím paralelizace
+    - name: Vstupní typy pro úlohu
       items:
-      - name: Paralelizace dotazů
-        href: stream-analytics-parallelization.md
-      - name: Zvýšení prostupnosti
-        href: stream-analytics-scale-jobs.md
-    - name: Škálování s využitím funkcí ML
-      href: stream-analytics-scale-with-machine-learning-functions.md
-  - name: Automatizace
-    items:
-    - name: Pomocí sady .NET SDK
-      href: stream-analytics-dotnet-management-sdk.md
-    - name: Použití Azure Powershell
-      href: https://github.com/Azure/azure-stream-analytics/tree/master/Samples/ASAOneClick
-    - name: Použití rozhraní API pro úlohy IoT Edge
-      href: stream-analytics-cicd-api.md
-  - name: Nástroje sady Visual Studio
-    items:
-    - name: Instalace nástrojů
-      href: stream-analytics-tools-for-visual-studio-install.md
-    - name: Testování s ukázkovými daty
-      href: stream-analytics-vs-tools-local-run.md
-    - name: Testování s živými daty
-      href: stream-analytics-live-data-local-testing.md
-    - name: Zobrazení úloh v sadě Visual Studio
-      href: stream-analytics-vs-tools.md
-    - name: Vývoj hraniční úlohy
-      href: stream-analytics-tools-for-visual-studio-edge-jobs.md
-    - name: Nastavení kanálu CI/CD
-      href: stream-analytics-tools-for-visual-studio-cicd.md
-    - name: Zápis UDF .NET pro Edge
-      href: stream-analytics-edge-csharp-udf-methods.md
-  - name: Řešení potíží
-    items:
-    - name: Vstup
-      href: stream-analytics-troubleshoot-input.md
-    - name: Výstup
-      href: stream-analytics-troubleshoot-output.md
-    - name: Logika dotazování
-      href: stream-analytics-troubleshoot-query.md
-    - name: Protokoly aktivit a diagnostické protokoly
-      href: stream-analytics-job-diagnostic-logs.md
-  - name: Integrace se strojovým učením
-    items:
-    - name: Analýza subjektivního hodnocení s využitím modelů ML
-      href: stream-analytics-machine-learning-integration-tutorial.md
-    - name: Detekce anomálií
-      href: stream-analytics-machine-learning-anomaly-detection.md
-    - name: Použití rozhraní REST API
-      href: stream-analytics-how-to-configure-azure-machine-learning-endpoints-in-stream-analytics.md
-  - name: Ladění s využitím diagramu úloh
-    href: stream-analytics-job-diagram-with-metrics.md
-- name: Dotazovací jazyk Stream Analytics
-  items:
-  - name: Předdefinované funkce
-    items:
-    - name: Přehled předdefinovaných funkcí
-      href: /stream-analytics-query/built-in-functions-azure-stream-analytics
-      maintainContext: true
-    - name: Agregační funkce
+        - name: Přehled vstupů
+          href: stream-analytics-add-inputs.md
+        - name: Streamování datových výstupů
+          href: stream-analytics-define-inputs.md
+        - name: Referenční datové výstupy
+          href: stream-analytics-use-reference-data.md
+    - name: Výstupní typy pro úlohu
       items:
-      - name: Přehled agregačních funkcí
-        href: /stream-analytics-query/aggregate-functions-azure-stream-analytics
-        maintainContext: true
-      - name: PRŮMĚR
-        href: /stream-analytics-query/avg-azure-stream-analytics
-        maintainContext: true
-      - name: POČET
-        href: /stream-analytics-query/count-azure-stream-analytics
-        maintainContext: true
-      - name: Shromáždění
-        href: /stream-analytics-query/collect-azure-stream-analytics
-        maintainContext: true
-      - name: CollectTOP
-        href: /stream-analytics-query/collecttop-azure-stream-analytics
-        maintainContext: true
-      - name: MAX
-        href: /stream-analytics-query/max-azure-stream-analytics
-        maintainContext: true
-      - name: MIN
-        href: /stream-analytics-query/min-azure-stream-analytics
-        maintainContext: true
-      - name: Percentile_Cont
-        href: /stream-analytics-query/percentile-cont-azure-stream-analytics
-        maintainContext: true
-      - name: Percentile_Disc
-        href: /stream-analytics-query/percentile-disc-azure-stream-analytics
-        maintainContext: true
-      - name: STDEV
-        href: /stream-analytics-query/stdev-azure-stream-analytics
-        maintainContext: true
-      - name: STDEVP
-        href: /stream-analytics-query/stdevp-azure-stream-analytics
-        maintainContext: true
-      - name: SUM
-        href: /stream-analytics-query/sum-azure-stream-analytics
-        maintainContext: true
-      - name: TopOne
-        href: /stream-analytics-query/topone-azure-stream-analytics
-        maintainContext: true
-      - name: VAR
-        href: /stream-analytics-query/var-azure-stream-analytics
-        maintainContext: true
-      - name: VARP
-        href: /stream-analytics-query/varp-azure-stream-analytics
-        maintainContext: true
-    - name: Analytické funkce
-      items:
-      - name: Přehled analytických funkcí
-        href: /stream-analytics-query/analytic-functions-azure-stream-analytics
-        maintainContext: true
-      - name: AnomalyDetection_SpikeAndDip
-        href: /stream-analytics-query/anomalydetection-spikeanddip-azure-stream-analytics
-        maintainContext: true
-      - name: AnomalyDetection_ChangePoint
-        href: /stream-analytics-query/anomalydetection-changepoint-azure-stream-analytics
-        maintainContext: true
-      - name: ISFIRST
-        href: /stream-analytics-query/isfirst-azure-stream-analytics
-        maintainContext: true
-      - name: LAG
-        href: /stream-analytics-query/lag-azure-stream-analytics
-        maintainContext: true
-      - name: LAST
-        href: /stream-analytics-query/last-azure-stream-analytics
-        maintainContext: true
-    - name: Funkce pro práci s poli
-      items:
-      - name: Přehled funkcí pro práci s poli
-        href: /stream-analytics-query/array-functions-stream-analytics
-        maintainContext: true
-      - name: GetArrayLength
-        href: /stream-analytics-query/getarraylength-azure-stream-analytics
-        maintainContext: true
-      - name: GetArrayElement
-        href: /stream-analytics-query/getarrayelement-azure-stream-analytics
-        maintainContext: true
-      - name: GetArrayElements
-        href: /stream-analytics-query/getarrayelements-azure-stream-analytics
-        maintainContext: true
-    - name: Převodní funkce
-      items:
-      - name: Přehled převodních funkcí
-        href: /stream-analytics-query/conversion-functions-azure-stream-analytics
-        maintainContext: true
-      - name: CAST
-        href: /stream-analytics-query/cast-azure-stream-analytics
-        maintainContext: true
-      - name: GetType
-        href: /stream-analytics-query/gettype-azure-stream-analytics
-        maintainContext: true
-      - name: TRY_CAST
-        href: /stream-analytics-query/try-cast-azure-stream-analytics
-        maintainContext: true
-    - name: Funkce data a času
-      items:
-      - name: Přehled funkcí data a času
-        href: /stream-analytics-query/date-and-time-functions-azure-stream-analytics
-        maintainContext: true
-      - name: DATEADD
-        href: /stream-analytics-query/dateadd-azure-stream-analytics
-        maintainContext: true
-      - name: DATEDIFF
-        href: /stream-analytics-query/datediff-azure-stream-analytics
-        maintainContext: true
-      - name: DATENAME
-        href: /stream-analytics-query/datename-azure-stream-analytics
-        maintainContext: true
-      - name: DATEPART
-        href: /stream-analytics-query/datepart-azure-stream-analytics
-        maintainContext: true
-      - name: DATETIMEFROMPARTS
-        href: /stream-analytics-query/datetimefromparts-azure-stream-analytics
-        maintainContext: true
-      - name: DAY
-        href: /stream-analytics-query/day-azure-stream-analytics
-        maintainContext: true
-      - name: MONTH
-        href: /stream-analytics-query/month-azure-stream-analytics
-        maintainContext: true
-      - name: YEAR
-        href: /stream-analytics-query/year-azure-stream-analytics
-        maintainContext: true
+        - name: Přehled výstupů
+          href: stream-analytics-define-outputs.md
+        - name: Výstup do Cosmos DB
+          href: stream-analytics-documentdb-output.md
+        - name: Výstup do Azure SQL DB
+          href: stream-analytics-sql-output-perf.md
+        - name: Vzory vlastních cest objektů blob
+          href: stream-analytics-custom-path-patterns-blob-storage-output.md
+    - name: Stavy úlohy
+      href: job-states.md
+    - name: Funkce okna
+      href: stream-analytics-window-functions.md
     - name: Geoprostorové funkce
-      items:
-      - name: Přehled geoprostorových funkcí
-        href: /stream-analytics-query/geospatial-functions
-        maintainContext: true
-      - name: CreateLineString
-        href: /stream-analytics-query/createlinestring
-        maintainContext: true
-      - name: CreatePoint
-        href: /stream-analytics-query/createpoint
-        maintainContext: true
-      - name: CreatePolygon
-        href: /stream-analytics-query/createpolygon
-        maintainContext: true
-      - name: ST_DISTANCE
-        href: /stream-analytics-query/st-distance
-        maintainContext: true
-      - name: ST_OVERLAPS
-        href: /stream-analytics-query/st-overlaps
-        maintainContext: true
-      - name: ST_INTERSECTS
-        href: /stream-analytics-query/st-intersects
-        maintainContext: true
-      - name: ST_WITHIN
-        href: /stream-analytics-query/st-within
-        maintainContext: true
-    - name: Funkce pro práci se vstupními metadaty
-      items:
-      - name: Přehled funkcí pro práci se vstupními metadaty
-        href: /stream-analytics-query/input-metadata-functions
-        maintainContext: true
-      - name: GetMetadataPropertyValue
-        href: /stream-analytics-query/getmetadatapropertyvalue
-        maintainContext: true
-    - name: Matematické funkce
-      items:
-      - name: Přehled matematických funkcí
-        href: /stream-analytics-query/mathematical-functions-azure-stream-analytics
-        maintainContext: true
-      - name: ABS
-        href: /stream-analytics-query/abs-azure-stream-analytics
-        maintainContext: true
-      - name: CEILING
-        href: /stream-analytics-query/ceiling-azure-stream-analytics
-        maintainContext: true
-      - name: EXP
-        href: /stream-analytics-query/exp-azure-stream-analytics
-        maintainContext: true
-      - name: FLOOR
-        href: /stream-analytics-query/floor-azure-stream-analytics
-        maintainContext: true
-      - name: POWER
-        href: /stream-analytics-query/power-azure-stream-analytics
-        maintainContext: true
-      - name: ROUND
-        href: /stream-analytics-query/round-azure-stream-analytics.md
-        maintainContext: true
-      - name: SIGN
-        href: /stream-analytics-query/sign-azure-stream-analytics
-        maintainContext: true
-      - name: SQUARE
-        href: /stream-analytics-query/square-azure-stream-analytics
-        maintainContext: true
-      - name: SQRT
-        href: /stream-analytics-query/sqrt-azure-stream-analytics
-        maintainContext: true
-    - name: Funkce pro práci se záznamy
-      items:
-      - name: Přehled funkcí pro práci se záznamy
-        href: /stream-analytics-query/record-functions-azure-stream-analytics
-        maintainContext: true
-      - name: GetRecordProperties
-        href: /stream-analytics-query/getrecordproperties-azure-stream-analytics
-        maintainContext: true
-      - name: GetRecordPropertyValue
-        href: /stream-analytics-query/getrecordpropertyvalue-azure-stream-analytics
-        maintainContext: true
-    - name: Funkce pro práci s řetězci
-      items:
-      - name: Přehled funkcí pro práci s řetězci
-        href: /stream-analytics-query/string-functions-azure-stream-analytics
-        maintainContext: true
-      - name: CHARINDEX
-        href: /stream-analytics-query/charindex-azure-stream-analytics
-        maintainContext: true
-      - name: CONCAT
-        href: /stream-analytics-query/concat-azure-stream-analytics
-        maintainContext: true
-      - name: LEN
-        href: /stream-analytics-query/len-azure-stream-analytics
-        maintainContext: true
-      - name: LOWER
-        href: /stream-analytics-query/lower-azure-stream-analytics
-        maintainContext: true
-      - name: PATINDEX
-        href: /stream-analytics-query/patindex-azure-stream-analytics
-        maintainContext: true
-      - name: REGEXMATCH
-        href: /stream-analytics-query/regexmatch-azure-stream-analytics
-        maintainContext: true
-      - name: REPLACE
-        href: /stream-analytics-query/replace-azure-stream-analytics.md
-        maintainContext: true
-      - name: SUBSTRING
-        href: /stream-analytics-query/substring-azure-stream-analytics
-        maintainContext: true
-      - name: UPPER
-        href: /stream-analytics-query/upper-azure-stream-analytics
-        maintainContext: true
-    - name: Funkce pro práci s okny
-      items:
-      - name: Přehled funkcí pro práci s okny
-        href: /stream-analytics-query/windowing-azure-stream-analytics
-        maintainContext: true
-      - name: Skákající okno
-        href: /stream-analytics-query/hopping-window-azure-stream-analytics
-        maintainContext: true
-      - name: Okno relace
-        href: /stream-analytics-query/session-window-azure-stream-analytics
-        maintainContext: true
-      - name: Posuvné okno
-        href: /stream-analytics-query/sliding-window-azure-stream-analytics
-        maintainContext: true
-      - name: Přeskakující okno
-        href: /stream-analytics-query/tumbling-window-azure-stream-analytics
-        maintainContext: true
-  - name: Typy dat
-    items:
-    - name: Přehled typů dat
-      href: /stream-analytics-query/data-types-azure-stream-analytics
-      maintainContext: true
+      href: stream-analytics-geospatial-functions.md
+    - name: Úroveň kompatibility
+      href: stream-analytics-compatibility-level.md
+    - name: Běžné vzory dotazů
+      href: stream-analytics-stream-analytics-query-patterns.md
     - name: Parsování dat JSON a AVRO
       href: stream-analytics-parsing-json.md
+    - name: Důležité informace o práci s časem
+      href: stream-analytics-time-handling.md
+    - name: Kontrolní bod a opětovného přehrání
+      href: stream-analytics-concepts-checkpoint-replay.md
+    - name: Chybové zásady
+      href: stream-analytics-output-error-policy.md
+- name: Návody
+  items:
+    - name: Spravovat
+      items:
+        - name: Aktualizace přihlašovacích údajů
+          href: stream-analytics-login-credentials-inputs-outputs.md
+        - name: Konfigurace zásad řazení událostí
+          href: event-ordering.md
+        - name: Konfigurace upozornění
+          href: stream-analytics-set-up-alerts.md
+        - name: Spuštění úlohy
+          href: start-job.md
+        - name: Testování úlohy
+          href: stream-analytics-test-query.md
+        - name: Zobrazení výsledků na řídicím panelu
+          href: stream-analytics-power-bi-dashboard.md
+        - name: Vyčištění úlohy
+          href: stream-analytics-clean-up-your-job.md
+        - name: Párování úloh z důvodů spolehlivosti
+          href: stream-analytics-job-reliability.md
+        - name: Ověřování pomocí spravované identity
+          href: stream-analytics-managed-identities-adls.md
+        - name: Použití referenčních dat SQL
+          href: sql-reference-data.md
+    - name: Vytváření řešení
+      items:
+        - name: Analýza subjektivního hodnocení na Twitteru
+          href: stream-analytics-twitter-sentiment-analysis-trends.md
+        - name: Zjišťování možných podvodů v reálném čase
+          href: stream-analytics-real-time-fraud-detection.md
+        - name: Spouštění úloh ve službě IoT Edge
+          href: stream-analytics-edge.md
+        - name: Analýza dat snímačů z mýtných bran
+          href: stream-analytics-build-an-iot-solution-using-stream-analytics.md
+        - name: Spuštění UDA JavaScriptu
+          href: stream-analytics-javascript-user-defined-aggregates.md
+        - name: Vysokofrekvenční obchodování
+          href: stream-analytics-high-frequency-trading.md
+        - name: Zpracování streamovaných dat IoT
+          href: stream-analytics-get-started-with-azure-stream-analytics-to-process-data-from-iot-devices.md
+        - name: Pravidla založená na prahových hodnotách
+          href: stream-analytics-threshold-based-rules.md
+        - name: Zpracování událostí Kafka
+          href: ../event-hubs/event-hubs-kafka-stream-analytics.md
+          maintainContext: true
+        - name: Geoprostorové scénáře
+          href: geospatial-scenarios.md
+    - name: Monitorování
+      items:
+        - name: Monitorování úloh – Azure Portal
+          href: stream-analytics-monitoring.md
+        - name: Monitorování úloh – PowerShell
+          href: stream-analytics-monitor-and-manage-jobs-use-powershell.md
+        - name: Monitorování úloh – Azure .NET SDK
+          href: stream-analytics-monitor-jobs.md
+        - name: Monitorování úloh – Visual Studio
+          href: stream-analytics-monitor-jobs-use-vs.md
+    - name: Měřítko
+      items:
+        - name: Škálování využitím s jednotek streamování
+          href: stream-analytics-streaming-unit-consumption.md
+        - name: Škálování s využitím paralelizace
+          items:
+            - name: Paralelizace dotazů
+              href: stream-analytics-parallelization.md
+            - name: Zvýšení prostupnosti
+              href: stream-analytics-scale-jobs.md
+        - name: Škálování s využitím funkcí ML
+          href: stream-analytics-scale-with-machine-learning-functions.md
+    - name: Automatizace
+      items:
+        - name: Pomocí sady .NET SDK
+          href: stream-analytics-dotnet-management-sdk.md
+        - name: Použití Azure Powershell
+          href: 'https://github.com/Azure/azure-stream-analytics/tree/master/Samples/ASAOneClick'
+        - name: Použití rozhraní API pro úlohy IoT Edge
+          href: stream-analytics-cicd-api.md
+    - name: Nástroje sady Visual Studio
+      items:
+        - name: Instalace nástrojů
+          href: stream-analytics-tools-for-visual-studio-install.md
+        - name: Testování s ukázkovými daty
+          href: stream-analytics-vs-tools-local-run.md
+        - name: Testování s živými daty
+          href: stream-analytics-live-data-local-testing.md
+        - name: Zobrazení úloh v sadě Visual Studio
+          href: stream-analytics-vs-tools.md
+        - name: Vývoj hraniční úlohy
+          href: stream-analytics-tools-for-visual-studio-edge-jobs.md
+        - name: Nastavení kanálu CI/CD
+          href: stream-analytics-tools-for-visual-studio-cicd.md
+        - name: Zápis UDF .NET pro Edge
+          href: stream-analytics-edge-csharp-udf-methods.md
+    - name: Řešení potíží
+      items:
+        - name: Vstup
+          href: stream-analytics-troubleshoot-input.md
+        - name: Výstup
+          href: stream-analytics-troubleshoot-output.md
+        - name: Logika dotazování
+          href: stream-analytics-troubleshoot-query.md
+        - name: Protokoly aktivit a diagnostické protokoly
+          href: stream-analytics-job-diagnostic-logs.md
+    - name: Integrace se strojovým učením
+      items:
+        - name: Analýza subjektivního hodnocení s využitím modelů ML
+          href: stream-analytics-machine-learning-integration-tutorial.md
+        - name: Detekce anomálií
+          href: stream-analytics-machine-learning-anomaly-detection.md
+        - name: Použití rozhraní REST API
+          href: stream-analytics-how-to-configure-azure-machine-learning-endpoints-in-stream-analytics.md
+    - name: Ladění s využitím diagramu úloh
+      href: stream-analytics-job-diagram-with-metrics.md
+- name: Dotazovací jazyk Stream Analytics
+  items:
+    - name: Předdefinované funkce
+      items:
+        - name: Přehled předdefinovaných funkcí
+          href: /stream-analytics-query/built-in-functions-azure-stream-analytics
+          maintainContext: true
+        - name: Agregační funkce
+          items:
+            - name: Přehled agregačních funkcí
+              href: /stream-analytics-query/aggregate-functions-azure-stream-analytics
+              maintainContext: true
+            - name: PRŮMĚR
+              href: /stream-analytics-query/avg-azure-stream-analytics
+              maintainContext: true
+            - name: POČET
+              href: /stream-analytics-query/count-azure-stream-analytics
+              maintainContext: true
+            - name: Shromáždění
+              href: /stream-analytics-query/collect-azure-stream-analytics
+              maintainContext: true
+            - name: CollectTOP
+              href: /stream-analytics-query/collecttop-azure-stream-analytics
+              maintainContext: true
+            - name: MAX
+              href: /stream-analytics-query/max-azure-stream-analytics
+              maintainContext: true
+            - name: MIN
+              href: /stream-analytics-query/min-azure-stream-analytics
+              maintainContext: true
+            - name: Percentile_Cont
+              href: /stream-analytics-query/percentile-cont-azure-stream-analytics
+              maintainContext: true
+            - name: Percentile_Disc
+              href: /stream-analytics-query/percentile-disc-azure-stream-analytics
+              maintainContext: true
+            - name: STDEV
+              href: /stream-analytics-query/stdev-azure-stream-analytics
+              maintainContext: true
+            - name: STDEVP
+              href: /stream-analytics-query/stdevp-azure-stream-analytics
+              maintainContext: true
+            - name: SUM
+              href: /stream-analytics-query/sum-azure-stream-analytics
+              maintainContext: true
+            - name: TopOne
+              href: /stream-analytics-query/topone-azure-stream-analytics
+              maintainContext: true
+            - name: VAR
+              href: /stream-analytics-query/var-azure-stream-analytics
+              maintainContext: true
+            - name: VARP
+              href: /stream-analytics-query/varp-azure-stream-analytics
+              maintainContext: true
+        - name: Analytické funkce
+          items:
+            - name: Přehled analytických funkcí
+              href: /stream-analytics-query/analytic-functions-azure-stream-analytics
+              maintainContext: true
+            - name: AnomalyDetection_SpikeAndDip
+              href: /stream-analytics-query/anomalydetection-spikeanddip-azure-stream-analytics
+              maintainContext: true
+            - name: AnomalyDetection_ChangePoint
+              href: /stream-analytics-query/anomalydetection-changepoint-azure-stream-analytics
+              maintainContext: true
+            - name: ISFIRST
+              href: /stream-analytics-query/isfirst-azure-stream-analytics
+              maintainContext: true
+            - name: LAG
+              href: /stream-analytics-query/lag-azure-stream-analytics
+              maintainContext: true
+            - name: LAST
+              href: /stream-analytics-query/last-azure-stream-analytics
+              maintainContext: true
+        - name: Funkce pro práci s poli
+          items:
+            - name: Přehled funkcí pro práci s poli
+              href: /stream-analytics-query/array-functions-stream-analytics
+              maintainContext: true
+            - name: GetArrayLength
+              href: /stream-analytics-query/getarraylength-azure-stream-analytics
+              maintainContext: true
+            - name: GetArrayElement
+              href: /stream-analytics-query/getarrayelement-azure-stream-analytics
+              maintainContext: true
+            - name: GetArrayElements
+              href: /stream-analytics-query/getarrayelements-azure-stream-analytics
+              maintainContext: true
+        - name: Převodní funkce
+          items:
+            - name: Přehled převodních funkcí
+              href: /stream-analytics-query/conversion-functions-azure-stream-analytics
+              maintainContext: true
+            - name: CAST
+              href: /stream-analytics-query/cast-azure-stream-analytics
+              maintainContext: true
+            - name: GetType
+              href: /stream-analytics-query/gettype-azure-stream-analytics
+              maintainContext: true
+            - name: TRY_CAST
+              href: /stream-analytics-query/try-cast-azure-stream-analytics
+              maintainContext: true
+        - name: Funkce data a času
+          items:
+            - name: Přehled funkcí data a času
+              href: /stream-analytics-query/date-and-time-functions-azure-stream-analytics
+              maintainContext: true
+            - name: DATEADD
+              href: /stream-analytics-query/dateadd-azure-stream-analytics
+              maintainContext: true
+            - name: DATEDIFF
+              href: /stream-analytics-query/datediff-azure-stream-analytics
+              maintainContext: true
+            - name: DATENAME
+              href: /stream-analytics-query/datename-azure-stream-analytics
+              maintainContext: true
+            - name: DATEPART
+              href: /stream-analytics-query/datepart-azure-stream-analytics
+              maintainContext: true
+            - name: DATETIMEFROMPARTS
+              href: /stream-analytics-query/datetimefromparts-azure-stream-analytics
+              maintainContext: true
+            - name: DAY
+              href: /stream-analytics-query/day-azure-stream-analytics
+              maintainContext: true
+            - name: MONTH
+              href: /stream-analytics-query/month-azure-stream-analytics
+              maintainContext: true
+            - name: YEAR
+              href: /stream-analytics-query/year-azure-stream-analytics
+              maintainContext: true
+        - name: Geoprostorové funkce
+          items:
+            - name: Přehled geoprostorových funkcí
+              href: /stream-analytics-query/geospatial-functions
+              maintainContext: true
+            - name: CreateLineString
+              href: /stream-analytics-query/createlinestring
+              maintainContext: true
+            - name: CreatePoint
+              href: /stream-analytics-query/createpoint
+              maintainContext: true
+            - name: CreatePolygon
+              href: /stream-analytics-query/createpolygon
+              maintainContext: true
+            - name: ST_DISTANCE
+              href: /stream-analytics-query/st-distance
+              maintainContext: true
+            - name: ST_OVERLAPS
+              href: /stream-analytics-query/st-overlaps
+              maintainContext: true
+            - name: ST_INTERSECTS
+              href: /stream-analytics-query/st-intersects
+              maintainContext: true
+            - name: ST_WITHIN
+              href: /stream-analytics-query/st-within
+              maintainContext: true
+        - name: Funkce pro práci se vstupními metadaty
+          items:
+            - name: Přehled funkcí pro práci se vstupními metadaty
+              href: /stream-analytics-query/input-metadata-functions
+              maintainContext: true
+            - name: GetMetadataPropertyValue
+              href: /stream-analytics-query/getmetadatapropertyvalue
+              maintainContext: true
+        - name: Matematické funkce
+          items:
+            - name: Přehled matematických funkcí
+              href: /stream-analytics-query/mathematical-functions-azure-stream-analytics
+              maintainContext: true
+            - name: ABS
+              href: /stream-analytics-query/abs-azure-stream-analytics
+              maintainContext: true
+            - name: CEILING
+              href: /stream-analytics-query/ceiling-azure-stream-analytics
+              maintainContext: true
+            - name: EXP
+              href: /stream-analytics-query/exp-azure-stream-analytics
+              maintainContext: true
+            - name: FLOOR
+              href: /stream-analytics-query/floor-azure-stream-analytics
+              maintainContext: true
+            - name: POWER
+              href: /stream-analytics-query/power-azure-stream-analytics
+              maintainContext: true
+            - name: ROUND
+              href: /stream-analytics-query/round-azure-stream-analytics.md
+              maintainContext: true
+            - name: SIGN
+              href: /stream-analytics-query/sign-azure-stream-analytics
+              maintainContext: true
+            - name: SQUARE
+              href: /stream-analytics-query/square-azure-stream-analytics
+              maintainContext: true
+            - name: SQRT
+              href: /stream-analytics-query/sqrt-azure-stream-analytics
+              maintainContext: true
+        - name: Funkce pro práci se záznamy
+          items:
+            - name: Přehled funkcí pro práci se záznamy
+              href: /stream-analytics-query/record-functions-azure-stream-analytics
+              maintainContext: true
+            - name: GetRecordProperties
+              href: /stream-analytics-query/getrecordproperties-azure-stream-analytics
+              maintainContext: true
+            - name: GetRecordPropertyValue
+              href: /stream-analytics-query/getrecordpropertyvalue-azure-stream-analytics
+              maintainContext: true
+        - name: Funkce pro práci s řetězci
+          items:
+            - name: Přehled funkcí pro práci s řetězci
+              href: /stream-analytics-query/string-functions-azure-stream-analytics
+              maintainContext: true
+            - name: CHARINDEX
+              href: /stream-analytics-query/charindex-azure-stream-analytics
+              maintainContext: true
+            - name: CONCAT
+              href: /stream-analytics-query/concat-azure-stream-analytics
+              maintainContext: true
+            - name: LEN
+              href: /stream-analytics-query/len-azure-stream-analytics
+              maintainContext: true
+            - name: LOWER
+              href: /stream-analytics-query/lower-azure-stream-analytics
+              maintainContext: true
+            - name: PATINDEX
+              href: /stream-analytics-query/patindex-azure-stream-analytics
+              maintainContext: true
+            - name: REGEXMATCH
+              href: /stream-analytics-query/regexmatch-azure-stream-analytics
+              maintainContext: true
+            - name: REPLACE
+              href: /stream-analytics-query/replace-azure-stream-analytics.md
+              maintainContext: true
+            - name: SUBSTRING
+              href: /stream-analytics-query/substring-azure-stream-analytics
+              maintainContext: true
+            - name: UPPER
+              href: /stream-analytics-query/upper-azure-stream-analytics
+              maintainContext: true
+        - name: Funkce pro práci s okny
+          items:
+            - name: Přehled funkcí pro práci s okny
+              href: /stream-analytics-query/windowing-azure-stream-analytics
+              maintainContext: true
+            - name: Skákající okno
+              href: /stream-analytics-query/hopping-window-azure-stream-analytics
+              maintainContext: true
+            - name: Okno relace
+              href: /stream-analytics-query/session-window-azure-stream-analytics
+              maintainContext: true
+            - name: Posuvné okno
+              href: /stream-analytics-query/sliding-window-azure-stream-analytics
+              maintainContext: true
+            - name: Přeskakující okno
+              href: /stream-analytics-query/tumbling-window-azure-stream-analytics
+              maintainContext: true
+    - name: Typy dat
+      items:
+        - name: Přehled typů dat
+          href: /stream-analytics-query/data-types-azure-stream-analytics
+          maintainContext: true
+        - name: Parsování dat JSON a AVRO
+          href: stream-analytics-parsing-json.md
+          maintainContext: true
+    - name: Elementy dotazovacího jazyka
+      items:
+        - name: Přehled elementů dotazovacího jazyka
+          href: /stream-analytics-query/query-language-elements-azure-stream-analytics
+          maintainContext: true
+        - name: APPLY
+          href: /stream-analytics-query/apply-azure-stream-analytics
+          maintainContext: true
+        - name: CASE
+          href: /stream-analytics-query/case-azure-stream-analytics
+          maintainContext: true
+        - name: COALESCE
+          href: /stream-analytics-query/coalesce-azure-stream-analytics.md
+          maintainContext: true
+        - name: CREATE TABLE
+          href: /stream-analytics-query/create-table-stream-analytics
+          maintainContext: true
+        - name: FROM
+          href: /stream-analytics-query/from-azure-stream-analytics
+          maintainContext: true
+        - name: GROUP BY
+          href: /stream-analytics-query/group-by-azure-stream-analytics
+          maintainContext: true
+        - name: HAVING
+          href: /stream-analytics-query/having-azure-stream-analytics
+          maintainContext: true
+        - name: INTO
+          href: /stream-analytics-query/into-azure-stream-analytics
+          maintainContext: true
+        - name: JOIN
+          href: /stream-analytics-query/join-azure-stream-analytics
+          maintainContext: true
+        - name: JOIN pro referenční data
+          href: /stream-analytics-query/reference-data-join-azure-stream-analytics
+          maintainContext: true
+        - name: SELECT
+          href: /stream-analytics-query/select-azure-stream-analytics
+          maintainContext: true
+        - name: UNION
+          href: /stream-analytics-query/union-azure-stream-analytics
+          maintainContext: true
+        - name: WHERE
+          href: /stream-analytics-query/where-azure-stream-analytics
+          maintainContext: true
+        - name: WITH
+          href: /stream-analytics-query/with-azure-stream-analytics
+          maintainContext: true
+    - name: Časová správa
+      items:
+        - name: Přehled časové správy
+          href: /stream-analytics-query/time-management-azure-stream-analytics
+          maintainContext: true
+        - name: System.Timestamp
+          href: /stream-analytics-query/system-timestamp-stream-analytics
+          maintainContext: true
+        - name: TIMESTAMP BY
+          href: /stream-analytics-query/timestamp-by-azure-stream-analytics
+          maintainContext: true
+        - name: Zásady nerovnoměrného rozdělení času
+          href: /stream-analytics-query/time-skew-policies-azure-stream-analytics
+          maintainContext: true
+    - name: Záruky doručení událostí
+      href: /stream-analytics-query/event-delivery-guarantees-azure-stream-analytics
       maintainContext: true
-  - name: Elementy dotazovacího jazyka
-    items:
-    - name: Přehled elementů dotazovacího jazyka
-      href: /stream-analytics-query/query-language-elements-azure-stream-analytics
-      maintainContext: true
-    - name: APPLY
-      href: /stream-analytics-query/apply-azure-stream-analytics
-      maintainContext: true
-    - name: CASE
-      href: /stream-analytics-query/case-azure-stream-analytics
-      maintainContext: true
-    - name: COALESCE
-      href: /stream-analytics-query/coalesce-azure-stream-analytics.md
-      maintainContext: true
-    - name: CREATE TABLE
-      href: /stream-analytics-query/create-table-stream-analytics
-      maintainContext: true
-    - name: FROM
-      href: /stream-analytics-query/from-azure-stream-analytics
-      maintainContext: true
-    - name: GROUP BY
-      href: /stream-analytics-query/group-by-azure-stream-analytics
-      maintainContext: true
-    - name: HAVING
-      href: /stream-analytics-query/having-azure-stream-analytics
-      maintainContext: true
-    - name: INTO
-      href: /stream-analytics-query/into-azure-stream-analytics
-      maintainContext: true
-    - name: JOIN
-      href: /stream-analytics-query/join-azure-stream-analytics
-      maintainContext: true
-    - name: JOIN pro referenční data
-      href: /stream-analytics-query/reference-data-join-azure-stream-analytics
-      maintainContext: true
-    - name: SELECT
-      href: /stream-analytics-query/select-azure-stream-analytics
-      maintainContext: true
-    - name: UNION
-      href: /stream-analytics-query/union-azure-stream-analytics
-      maintainContext: true
-    - name: WHERE
-      href: /stream-analytics-query/where-azure-stream-analytics
-      maintainContext: true
-    - name: WITH
-      href: /stream-analytics-query/with-azure-stream-analytics
-      maintainContext: true
-  - name: Časová správa
-    items:
-    - name: Přehled časové správy
-      href: /stream-analytics-query/time-management-azure-stream-analytics
-      maintainContext: true
-    - name: System.Timestamp
-      href: /stream-analytics-query/system-timestamp-stream-analytics
-      maintainContext: true
-    - name: TIMESTAMP BY
-      href: /stream-analytics-query/timestamp-by-azure-stream-analytics
-      maintainContext: true
-    - name: Zásady nerovnoměrného rozdělení času
-      href: /stream-analytics-query/time-skew-policies-azure-stream-analytics
-      maintainContext: true
-  - name: Záruky doručení událostí
-    href: /stream-analytics-query/event-delivery-guarantees-azure-stream-analytics
-    maintainContext: true
 - name: Referenční informace
   items:
-  - name: Azure PowerShell
-    href: /powershell/module/az.streamanalytics
-  - name: .NET
-    href: /dotnet/api/microsoft.azure.management.streamanalytics
-  - name: REST
-    href: /rest/api/streamanalytics
-  - name: Šablona Resource Manageru
-    href: /azure/templates/microsoft.streamanalytics/allversions
+    - name: Azure PowerShell
+      href: /powershell/module/az.streamanalytics
+    - name: .NET
+      href: /dotnet/api/microsoft.azure.management.streamanalytics
+    - name: REST
+      href: /rest/api/streamanalytics
+    - name: Šablona Resource Manageru
+      href: /azure/templates/microsoft.streamanalytics/allversions
 - name: Zdroje a prostředky
   items:
-  - name: Stream Analytics (Preview)
-    href: stream-analytics-previews.md
-  - name: Plány Azure do budoucna
-    href: https://azure.microsoft.com/roadmap/
-  - name: Blog
-    href: https://azure.microsoft.com/blog/tag/azure-stream-analytics/
-  - name: Fórum pro názory
-    href: https://feedback.azure.com/forums/270577-azure-stream-analytics
-  - name: Fórum
-    href: https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics
-  - name: Ceny
-    href: https://azure.microsoft.com/pricing/details/stream-analytics/
-  - name: Cenová kalkulačka
-    href: https://azure.microsoft.com/pricing/calculator/
-  - name: Aktualizace služeb
-    href: https://azure.microsoft.com/updates/?product=stream-analytics
-  - name: Stack Overflow
-    href: https://stackoverflow.com/questions/tagged/azure-stream-analytics
-  - name: Videa
-    href: https://azure.microsoft.com/resources/videos/index/?services=stream-analytics&sort=newest
-  - name: Zákaznické případové studie
-    href: https://azure.microsoft.com/case-studies/?service=stream-analytics
-  - name: Dokument white paper – Zpracování událostí v reálném čase
-    href: stream-analytics-real-time-event-processing-reference-architecture.md
-ms.openlocfilehash: ddb035686e8788710aeea5c6dc532ef6a87310a0
-ms.sourcegitcommit: 5f348bf7d6cf8e074576c73055e17d7036982ddb
-ms.translationtype: HT
-ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2019
-ms.locfileid: "59609349"
+    - name: Stream Analytics (Preview)
+      href: stream-analytics-previews.md
+    - name: Plány Azure do budoucna
+      href: 'https://azure.microsoft.com/roadmap/'
+    - name: Blog
+      href: 'https://azure.microsoft.com/blog/tag/azure-stream-analytics/'
+    - name: Fórum pro názory
+      href: 'https://feedback.azure.com/forums/270577-azure-stream-analytics'
+    - name: Fórum
+      href: 'https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics'
+    - name: Ceny
+      href: 'https://azure.microsoft.com/pricing/details/stream-analytics/'
+    - name: Cenová kalkulačka
+      href: 'https://azure.microsoft.com/pricing/calculator/'
+    - name: Aktualizace služeb
+      href: 'https://azure.microsoft.com/updates/?product=stream-analytics'
+    - name: Stack Overflow
+      href: 'https://stackoverflow.com/questions/tagged/azure-stream-analytics'
+    - name: Videa
+      href: 'https://azure.microsoft.com/resources/videos/index/?services=stream-analytics&sort=newest'
+    - name: Zákaznické případové studie
+      href: 'https://azure.microsoft.com/case-studies/?service=stream-analytics'
+    - name: Dokument white paper – Zpracování událostí v reálném čase
+      href: stream-analytics-real-time-event-processing-reference-architecture.md

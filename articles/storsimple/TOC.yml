@@ -1,434 +1,427 @@
-items:
 - name: Dokumentace ke službě StorSimple
   href: index.md
 - name: StorSimple Virtual Array
   items:
-  - name: Přehled
-    items:
-    - name: Informace o řešení
-      href: storsimple-ova-overview.md
-  - name: Začínáme
-    items:
-    - name: Plánování
+    - name: Přehled
       items:
-      - name: Kontrola požadavků
-        href: storsimple-ova-system-requirements.md
-      - name: Pochopení limitů
-        href: storsimple-ova-limits.md
-      - name: Kontrola osvědčených postupů
-        href: storsimple-ova-best-practices.md
-    - name: Nasazení
+        - name: Informace o řešení
+          href: storsimple-ova-overview.md
+    - name: Začínáme
       items:
-      - name: Příprava nasazení
-        href: storsimple-virtual-array-deploy1-portal-prep.md
-        items:
-        - name: Nasazení služby StorSimple Manager
-          href: storsimple-virtual-array-manage-service.md
-        - name: Nové ověřování
-          href: storsimple-virtual-array-aad-registration-key.md
-      - name: Zřizování v prostředí Hyper-V
-        href: storsimple-virtual-array-deploy2-provision-hyperv.md
-      - name: Zřizování v prostředí VMWare
-        href: storsimple-virtual-array-deploy2-provision-vmware.md
-      - name: Nastavení jako souborového serveru
-        href: storsimple-virtual-array-deploy3-fs-setup.md
-      - name: Nastavení jako serveru iSCSI
-        href: storsimple-virtual-array-deploy3-iscsi-setup.md
-  - name: Postup
-    items:
-    - name: Správa prostřednictvím portálu Azure Portal
-      href: storsimple-virtual-array-manager-service-administration.md
+        - name: Plánování
+          items:
+            - name: Kontrola požadavků
+              href: storsimple-ova-system-requirements.md
+            - name: Pochopení limitů
+              href: storsimple-ova-limits.md
+            - name: Kontrola osvědčených postupů
+              href: storsimple-ova-best-practices.md
+        - name: Nasazení
+          items:
+            - name: Příprava nasazení
+              href: storsimple-virtual-array-deploy1-portal-prep.md
+              items:
+                - name: Nasazení služby StorSimple Manager
+                  href: storsimple-virtual-array-manage-service.md
+                - name: Nové ověřování
+                  href: storsimple-virtual-array-aad-registration-key.md
+            - name: Zřizování v prostředí Hyper-V
+              href: storsimple-virtual-array-deploy2-provision-hyperv.md
+            - name: Zřizování v prostředí VMWare
+              href: storsimple-virtual-array-deploy2-provision-vmware.md
+            - name: Nastavení jako souborového serveru
+              href: storsimple-virtual-array-deploy3-fs-setup.md
+            - name: Nastavení jako serveru iSCSI
+              href: storsimple-virtual-array-deploy3-iscsi-setup.md
+    - name: Postup
       items:
-      - name: Instalace nejnovější aktualizace
-        href: storsimple-virtual-array-install-update-11.md
-        items:
-        - name: Instalace aktualizace 1
-          href: storsimple-virtual-array-install-update-1.md
-        - name: Instalace aktualizace 0.6
-          href: storsimple-virtual-array-install-update-06.md
+        - name: Správa prostřednictvím portálu Azure Portal
+          href: storsimple-virtual-array-manager-service-administration.md
+          items:
+            - name: Instalace nejnovější aktualizace
+              href: storsimple-virtual-array-install-update-11.md
+              items:
+                - name: Instalace aktualizace 1
+                  href: storsimple-virtual-array-install-update-1.md
+                - name: Instalace aktualizace 0.6
+                  href: storsimple-virtual-array-install-update-06.md
+                - name: Archiv
+                  items:
+                    - name: Instalace aktualizace 0.5
+                      href: storsimple-virtual-array-install-update-05.md
+                    - name: Instalace aktualizace 0.4
+                      href: storsimple-virtual-array-install-update-04.md
+                    - name: Instalace aktualizace 0.3
+                      href: storsimple-virtual-array-install-update.md
+            - name: Vytvoření a správa záloh
+              href: storsimple-virtual-array-backup.md
+            - name: Klonování ze zálohy
+              href: storsimple-virtual-array-clone.md
+            - name: Převzetí služeb při selhání a zotavení po havárii
+              href: storsimple-virtual-array-failover-dr.md
+            - name: Deaktivace a odstranění
+              href: storsimple-virtual-array-deactivate-and-delete-device.md
+            - name: Správa sdílených složek
+              href: storsimple-virtual-array-manage-shares.md
+            - name: Správa svazků
+              href: storsimple-virtual-array-manage-volumes.md
+            - name: Zobrazení přehledu služby
+              href: storsimple-virtual-array-service-summary.md
+            - name: Zobrazení přehledu zařízení
+              href: storsimple-virtual-array-device-summary.md
+            - name: Správa účtů úložiště
+              href: storsimple-virtual-array-manage-storage-accounts.md
+            - name: Správa záznamů ACR
+              href: storsimple-virtual-array-manage-acrs.md
+            - name: Správa úloh
+              href: storsimple-virtual-array-manage-jobs.md
+            - name: Změna hesla zařízení
+              href: storsimple-virtual-array-change-device-admin-password.md
+            - name: Monitorování s využitím upozornění
+              href: storsimple-virtual-array-manage-alerts.md
+            - name: Diagnostika a řešení potíží
+              href: storsimple-virtual-array-diagnose-problems.md
+            - name: Protokolování žádosti o podporu
+              href: storsimple-virtual-array-log-support-ticket.md
+        - name: Konfigurace prostřednictvím místního webového uživatelského rozhraní
+          href: storsimple-ova-web-ui-admin.md
+    - name: "Poznámky k\_verzi"
+      items:
+        - name: Aktualizace 1.1 – aktuální
+          href: storsimple-virtual-array-update-11-release-notes.md
+        - name: Update 1
+          href: storsimple-virtual-array-update-1-release-notes.md
+        - name: Aktualizace 0.6
+          href: storsimple-virtual-array-update-06-release-notes.md
         - name: Archiv
           items:
-          - name: Instalace aktualizace 0.5
-            href: storsimple-virtual-array-install-update-05.md
-          - name: Instalace aktualizace 0.4
-            href: storsimple-virtual-array-install-update-04.md
-          - name: Instalace aktualizace 0.3
-            href: storsimple-virtual-array-install-update.md
-      - name: Vytvoření a správa záloh
-        href: storsimple-virtual-array-backup.md
-      - name: Klonování ze zálohy
-        href: storsimple-virtual-array-clone.md
-      - name: Převzetí služeb při selhání a zotavení po havárii
-        href: storsimple-virtual-array-failover-dr.md
-      - name: Deaktivace a odstranění
-        href: storsimple-virtual-array-deactivate-and-delete-device.md
-      - name: Správa sdílených složek
-        href: storsimple-virtual-array-manage-shares.md
-      - name: Správa svazků
-        href: storsimple-virtual-array-manage-volumes.md
-      - name: Zobrazení přehledu služby
-        href: storsimple-virtual-array-service-summary.md
-      - name: Zobrazení přehledu zařízení
-        href: storsimple-virtual-array-device-summary.md
-      - name: Správa účtů úložiště
-        href: storsimple-virtual-array-manage-storage-accounts.md
-      - name: Správa záznamů ACR
-        href: storsimple-virtual-array-manage-acrs.md
-      - name: Správa úloh
-        href: storsimple-virtual-array-manage-jobs.md
-      - name: Změna hesla zařízení
-        href: storsimple-virtual-array-change-device-admin-password.md
-      - name: Monitorování s využitím upozornění
-        href: storsimple-virtual-array-manage-alerts.md
-      - name: Diagnostika a řešení potíží
-        href: storsimple-virtual-array-diagnose-problems.md
-      - name: Protokolování žádosti o podporu
-        href: storsimple-virtual-array-log-support-ticket.md
-    - name: Konfigurace prostřednictvím místního webového uživatelského rozhraní
-      href: storsimple-ova-web-ui-admin.md
-  - name: Poznámky k verzi
-    items:
-    - name: Aktualizace 1.1 – aktuální
-      href: storsimple-virtual-array-update-11-release-notes.md
-    - name: Update 1
-      href: storsimple-virtual-array-update-1-release-notes.md
-    - name: Aktualizace 0.6
-      href: storsimple-virtual-array-update-06-release-notes.md
-    - name: Archiv
-      items:
-      - name: Aktualizace 0.5
-        href: storsimple-virtual-array-update-05-release-notes.md
-      - name: Aktualizace 0.4
-        href: storsimple-virtual-array-update-04-release-notes.md
-      - name: Aktualizace 0.3
-        href: storsimple-ova-update-03-release-notes.md
-      - name: Aktualizace 0.2 a 0.1
-        href: storsimple-ova-update-01-release-notes.md
+            - name: Aktualizace 0.5
+              href: storsimple-virtual-array-update-05-release-notes.md
+            - name: Aktualizace 0.4
+              href: storsimple-virtual-array-update-04-release-notes.md
+            - name: Aktualizace 0.3
+              href: storsimple-ova-update-03-release-notes.md
+            - name: Aktualizace 0.2 a 0.1
+              href: storsimple-ova-update-01-release-notes.md
 - name: Řada StorSimple 8000 (Azure Portal)
   items:
-  - name: Přehled
-    items:
-    - name: Informace o řešení
-      href: storsimple-overview.md
-    - name: Porovnání možností přenosu dat
-      href: storsimple-8000-choose-storage-solution.md
-    - name: Mapa kurzů StorSimple
-      href: https://azure.microsoft.com/documentation/learning-paths/storsimple-typical/
-    - name: Aspekty zabezpečení
-      href: storsimple-8000-security.md
-    - name: Dostupnost v oblastech
-      href: storsimple-regions.md
-  - name: Začínáme
-    items:
-    - name: Plánování
+    - name: Přehled
       items:
-      - name: Kontrola požadavků
-        href: storsimple-8000-system-requirements.md
-      - name: Kontrola technických specifikací
-        href: storsimple-8000-technical-specifications-and-compliance.md
-      - name: Pochopení limitů
-        href: storsimple-8000-limits.md
-      - name: Osvědčené postupy
-        href: https://gallery.technet.microsoft.com/Azure-StorSimple-8000-72b01b68
-    - name: Instalace
+        - name: Informace o řešení
+          href: storsimple-overview.md
+        - name: Porovnání možností přenosu dat
+          href: storsimple-8000-choose-storage-solution.md
+        - name: Mapa kurzů StorSimple
+          href: 'https://azure.microsoft.com/documentation/learning-paths/storsimple-typical/'
+        - name: Aspekty zabezpečení
+          href: storsimple-8000-security.md
+        - name: Dostupnost v oblastech
+          href: storsimple-regions.md
+    - name: Začínáme
       items:
-      - name: Kontrola zabezpečení
-        href: storsimple-8000-safety.md
-      - name: Rozbalení modelu 8100, jeho usazení do racku a propojení kabely
-        href: storsimple-8100-hardware-installation.md
-      - name: Rozbalení modelu 8600, jeho usazení do racku a propojení kabely
-        href: storsimple-8600-hardware-installation.md
-      - name: Podporovaný hardware pro rozhraní sítí 10 GbE
-        href: storsimple-supported-hardware-for-10-gbe-network-interfaces.md
-    - name: Nasazení
-      items:
-      - name: Služba Správce zařízení StorSimple
-        href: storsimple-8000-manage-service.md
-      - name: Nové ověřování pro službu
-        href: storsimple-8000-aad-registration-key.md
-      - name: Fyzické zařízení v Azure
-        href: storsimple-8000-deployment-walkthrough-u2.md
-      - name: Fyzické zařízení na portálu Government
-        href: storsimple-8000-deployment-walkthrough-gov-u2.md
-      - name: Cloudové zařízení v Azure
-        href: storsimple-8000-cloud-appliance-u2.md
-      - name: StorSimple Snapshot Manager
-        href: storsimple-snapshot-manager-deployment.md
-      - name: StorSimple Adapter pro SharePoint
-        href: storsimple-adapter-for-sharepoint.md
-  - name: Postup
-    items:
-    - name: Spravovat
-      items:
-      - name: Používání služby StorSimple Manager
-        href: storsimple-8000-manager-service-administration.md
-        items:
-        - name: Obnovení ze zálohy
-          href: storsimple-8000-restore-from-backup-set-u2.md
-        - name: Klonování svazku
-          href: storsimple-8000-clone-volume-u2.md
-        - name: Vzdálené připojení k zařízení
-          href: storsimple-8000-remote-connect.md
-        - name: Deaktivace a odstranění zařízení
-          href: storsimple-8000-deactivate-and-delete-device.md
-        - name: Převzetí služeb při selhání zařízení
-          href: storsimple-8000-device-failover-disaster-recovery.md
+        - name: Plánování
           items:
-          - name: Převzetí služeb při selhání do fyzického zařízení
-            href: storsimple-8000-device-failover-physical-device.md
-          - name: Převzetí služeb při selhání do cloudového zařízení
-            href: storsimple-8000-device-failover-cloud-appliance.md
-          - name: Převzetí služeb při selhání do stejného zařízení
-            href: storsimple-8000-device-failover-same-device.md
-        - name: Správa katalogu záloh
-          href: storsimple-8000-manage-backup-catalog.md
-        - name: Správa zásad zálohování
-          href: storsimple-8000-manage-backup-policies-u2.md
-        - name: Správa účtů úložiště
-          href: storsimple-8000-manage-storage-accounts.md
-        - name: Správa kontejnerů svazků
-          href: storsimple-8000-manage-volume-containers.md
-        - name: Správa svazků – aktuální
-          href: storsimple-8000-manage-volumes-u2.md
+            - name: Kontrola požadavků
+              href: storsimple-8000-system-requirements.md
+            - name: Kontrola technických specifikací
+              href: storsimple-8000-technical-specifications-and-compliance.md
+            - name: Pochopení limitů
+              href: storsimple-8000-limits.md
+            - name: Osvědčené postupy
+              href: 'https://gallery.technet.microsoft.com/Azure-StorSimple-8000-72b01b68'
+        - name: Instalace
           items:
-          - name: 'Nejčastější dotazy: Místně připojené svazky'
-            href: storsimple-8000-local-volume-faq.md
-        - name: Řízení přístupu na základě rolí
-          href: storsimple-8000-role-based-access-control.md
-        - name: Správa záznamů ACR
-          href: storsimple-8000-manage-acrs.md
-        - name: Správa šablon šířky pásma
-          href: storsimple-8000-manage-bandwidth-templates.md
-        - name: Zobrazení a správa úloh
-          href: storsimple-8000-manage-jobs-u2.md
-        - name: Změna režimu zařízení
-          href: storsimple-8000-device-modes.md
-        - name: Změna hesla zařízení
-          href: storsimple-8000-change-passwords.md
-        - name: Úprava konfigurace zařízení
-          href: storsimple-8000-modify-device-config.md
-        - name: Zapnutí a vypnutí
-          href: storsimple-turn-device-on-or-off.md
-        - name: Konfigurace funkce MPIO na hostiteli s Windows Serverem
-          href: storsimple-8000-configure-mpio-windows-server.md
-        - name: Konfigurace funkce MPIO na hostiteli s Linuxem
-          href: storsimple-configure-mpio-on-linux.md
-        - name: Konfigurace protokolu CHAP
-          href: storsimple-8000-configure-chap.md
-      - name: Použití Windows PowerShellu pro StorSimple
-        href: storsimple-8000-windows-powershell-administration.md
-        items:
-        - name: Správa kontroleru zařízení
-          href: storsimple-8000-manage-device-controller.md
-        - name: Konfigurace webového proxy serveru
-          href: storsimple-8000-configure-web-proxy.md
-        - name: Úprava nastavení DATA 0
-          href: storsimple-8000-modify-data-0.md
-      - name: Používání StorSimple Snapshot Manageru
-        href: storsimple-snapshot-manager-admin.md
-        items:
-        - name: Co je StorSimple Snapshot Manager?
-          href: storsimple-what-is-snapshot-manager.md
-        - name: O rozhraní StorSimple Snapshot Manageru
-          href: storsimple-use-snapshot-manager.md
-        - name: Správa zařízení prostřednictvím StorSimple Snapshot Manageru
-          href: storsimple-snapshot-manager-manage-devices.md
-        - name: Správa zásad zálohování prostřednictvím StorSimple Snapshot Manageru
-          href: storsimple-snapshot-manager-manage-backup-policies.md
-        - name: Správa skupin svazků prostřednictvím StorSimple Snapshot Manageru
-          href: storsimple-snapshot-manager-manage-volume-groups.md
-        - name: Správa katalogu záloh prostřednictvím StorSimple Snapshot Manageru
-          href: storsimple-snapshot-manager-manage-backup-catalog.md
-        - name: Správa úloh zálohování prostřednictvím StorSimple Snapshot Manageru
-          href: storsimple-snapshot-manager-manage-backup-jobs.md
-        - name: Správa svazků prostřednictvím StorSimple Snapshot Manageru
-          href: storsimple-snapshot-manager-manage-volumes.md
-        - name: Správa akcí MMC prostřednictvím StorSimple Snapshot Manageru
-          href: storsimple-snapshot-manager-mmc-menu.md
-    - name: Automatizace
+            - name: Kontrola zabezpečení
+              href: storsimple-8000-safety.md
+            - name: 'Rozbalení modelu 8100, jeho usazení do racku a propojení kabely'
+              href: storsimple-8100-hardware-installation.md
+            - name: 'Rozbalení modelu 8600, jeho usazení do racku a propojení kabely'
+              href: storsimple-8600-hardware-installation.md
+            - name: Podporovaný hardware pro rozhraní sítí 10 GbE
+              href: storsimple-supported-hardware-for-10-gbe-network-interfaces.md
+        - name: Nasazení
+          items:
+            - name: Služba Správce zařízení StorSimple
+              href: storsimple-8000-manage-service.md
+            - name: Nové ověřování pro službu
+              href: storsimple-8000-aad-registration-key.md
+            - name: Fyzické zařízení v Azure
+              href: storsimple-8000-deployment-walkthrough-u2.md
+            - name: Fyzické zařízení na portálu Government
+              href: storsimple-8000-deployment-walkthrough-gov-u2.md
+            - name: Cloudové zařízení v Azure
+              href: storsimple-8000-cloud-appliance-u2.md
+            - name: StorSimple Snapshot Manager
+              href: storsimple-snapshot-manager-deployment.md
+            - name: StorSimple Adapter pro SharePoint
+              href: storsimple-adapter-for-sharepoint.md
+    - name: Postup
       items:
-      - name: Použití ukázkových skriptů Azure PowerShellu
-        href: storsimple-8000-automation-azurerm-scripts.md
-      - name: Použití runbooků Azure Automation
-        href: storsimple-8000-automation-azurerm-runbook.md
-    - name: Vytváření řešení
+        - name: Spravovat
+          items:
+            - name: Používání služby StorSimple Manager
+              href: storsimple-8000-manager-service-administration.md
+              items:
+                - name: Obnovení ze zálohy
+                  href: storsimple-8000-restore-from-backup-set-u2.md
+                - name: Klonování svazku
+                  href: storsimple-8000-clone-volume-u2.md
+                - name: Vzdálené připojení k zařízení
+                  href: storsimple-8000-remote-connect.md
+                - name: Deaktivace a odstranění zařízení
+                  href: storsimple-8000-deactivate-and-delete-device.md
+                - name: Převzetí služeb při selhání zařízení
+                  href: storsimple-8000-device-failover-disaster-recovery.md
+                  items:
+                    - name: Převzetí služeb při selhání do fyzického zařízení
+                      href: storsimple-8000-device-failover-physical-device.md
+                    - name: Převzetí služeb při selhání do cloudového zařízení
+                      href: storsimple-8000-device-failover-cloud-appliance.md
+                    - name: Převzetí služeb při selhání do stejného zařízení
+                      href: storsimple-8000-device-failover-same-device.md
+                - name: Správa katalogu záloh
+                  href: storsimple-8000-manage-backup-catalog.md
+                - name: Správa zásad zálohování
+                  href: storsimple-8000-manage-backup-policies-u2.md
+                - name: Správa účtů úložiště
+                  href: storsimple-8000-manage-storage-accounts.md
+                - name: Správa kontejnerů svazků
+                  href: storsimple-8000-manage-volume-containers.md
+                - name: Správa svazků – aktuální
+                  href: storsimple-8000-manage-volumes-u2.md
+                  items:
+                    - name: 'Nejčastější dotazy: Místně připojené svazky'
+                      href: storsimple-8000-local-volume-faq.md
+                - name: Řízení přístupu na základě rolí
+                  href: storsimple-8000-role-based-access-control.md
+                - name: Správa záznamů ACR
+                  href: storsimple-8000-manage-acrs.md
+                - name: Správa šablon šířky pásma
+                  href: storsimple-8000-manage-bandwidth-templates.md
+                - name: Zobrazení a správa úloh
+                  href: storsimple-8000-manage-jobs-u2.md
+                - name: Změna režimu zařízení
+                  href: storsimple-8000-device-modes.md
+                - name: Změna hesla zařízení
+                  href: storsimple-8000-change-passwords.md
+                - name: Úprava konfigurace zařízení
+                  href: storsimple-8000-modify-device-config.md
+                - name: Zapnutí a vypnutí
+                  href: storsimple-turn-device-on-or-off.md
+                - name: Konfigurace funkce MPIO na hostiteli s Windows Serverem
+                  href: storsimple-8000-configure-mpio-windows-server.md
+                - name: Konfigurace funkce MPIO na hostiteli s Linuxem
+                  href: storsimple-configure-mpio-on-linux.md
+                - name: Konfigurace protokolu CHAP
+                  href: storsimple-8000-configure-chap.md
+            - name: Použití Windows PowerShellu pro StorSimple
+              href: storsimple-8000-windows-powershell-administration.md
+              items:
+                - name: Správa kontroleru zařízení
+                  href: storsimple-8000-manage-device-controller.md
+                - name: Konfigurace webového proxy serveru
+                  href: storsimple-8000-configure-web-proxy.md
+                - name: Úprava nastavení DATA 0
+                  href: storsimple-8000-modify-data-0.md
+            - name: Používání StorSimple Snapshot Manageru
+              href: storsimple-snapshot-manager-admin.md
+              items:
+                - name: Co je StorSimple Snapshot Manager?
+                  href: storsimple-what-is-snapshot-manager.md
+                - name: O rozhraní StorSimple Snapshot Manageru
+                  href: storsimple-use-snapshot-manager.md
+                - name: Správa zařízení prostřednictvím StorSimple Snapshot Manageru
+                  href: storsimple-snapshot-manager-manage-devices.md
+                - name: Správa zásad zálohování prostřednictvím StorSimple Snapshot Manageru
+                  href: storsimple-snapshot-manager-manage-backup-policies.md
+                - name: Správa skupin svazků prostřednictvím StorSimple Snapshot Manageru
+                  href: storsimple-snapshot-manager-manage-volume-groups.md
+                - name: Správa katalogu záloh prostřednictvím StorSimple Snapshot Manageru
+                  href: storsimple-snapshot-manager-manage-backup-catalog.md
+                - name: Správa úloh zálohování prostřednictvím StorSimple Snapshot Manageru
+                  href: storsimple-snapshot-manager-manage-backup-jobs.md
+                - name: Správa svazků prostřednictvím StorSimple Snapshot Manageru
+                  href: storsimple-snapshot-manager-manage-volumes.md
+                - name: Správa akcí MMC prostřednictvím StorSimple Snapshot Manageru
+                  href: storsimple-snapshot-manager-mmc-menu.md
+        - name: Automatizace
+          items:
+            - name: Použití ukázkových skriptů Azure PowerShellu
+              href: storsimple-8000-automation-azurerm-scripts.md
+            - name: Použití runbooků Azure Automation
+              href: storsimple-8000-automation-azurerm-runbook.md
+        - name: Vytváření řešení
+          items:
+            - name: StorSimple s Veeam
+              href: storsimple-configure-backup-target-veeam.md
+            - name: StorSimple s Veritas Backup Exec
+              href: storsimple-configure-backup-target-using-backup-exec.md
+            - name: StorSimple s Veritas NetBackup
+              href: storsimple-configure-backuptarget-netbackup.md
+            - name: Automatizované zotavení souborového serveru po havárii do Azure
+              href: storsimple-disaster-recovery-using-azure-site-recovery.md
+            - name: StorSimple se službou Express Route
+              href: 'https://gallery.technet.microsoft.com/STORESIMPLE-CONFIGURATION-86c04c3b/view/Discussions#content'
+            - name: StorSimple s VMware
+              href: 'https://gallery.technet.microsoft.com/VMWARE-DEPLOYMENT-WITH-2921b463'
+            - name: StorSimple s Hyper-V
+              href: 'https://gallery.technet.microsoft.com/Deploy-Hyper-V-with-Azure-0d1c6df6'
+            - name: Distribuovaný globální obor názvů
+              href: 'https://www.microsoft.com/download/details.aspx?id=45507'
+        - name: Monitorování
+          items:
+            - name: Použití přehledu služby
+              href: storsimple-8000-service-dashboard.md
+            - name: Použití přehledu zařízení
+              href: storsimple-8000-device-dashboard.md
+            - name: Použití grafů sledování
+              href: storsimple-8000-monitor-device.md
+            - name: Použití upozornění služby
+              href: storsimple-8000-manage-alerts.md
+            - name: Použití stavu hardwaru
+              href: storsimple-8000-monitor-hardware-status.md
+            - name: Použití monitorovacích indikátorů LED
+              href: storsimple-monitoring-indicators.md
+        - name: Řešení potíží
+          items:
+            - name: Problémy při nasazení
+              href: storsimple-8000-troubleshoot-deployment.md
+            - name: Použití diagnostických nástrojů
+              href: storsimple-8000-diagnostics.md
+            - name: Provozní problémy
+              href: storsimple-troubleshoot-operational-device.md
+            - name: Výměna hardwaru
+              href: storsimple-8000-hardware-component-replacement.md
+              items:
+                - name: Výměna kontroleru zařízení
+                  href: storsimple-8000-controller-replacement.md
+                - name: Výměna kontroleru EBOD
+                  href: storsimple-8000-ebod-controller-replacement.md
+                - name: Výměna PCM
+                  href: storsimple-8000-power-cooling-module-replacement.md
+                - name: Výměna diskové jednotky
+                  href: storsimple-8000-disk-drive-replacement.md
+                - name: Výměna záložní baterie
+                  href: storsimple-8000-battery-replacement.md
+                - name: Výměna skříně
+                  href: storsimple-8000-chassis-replacement.md
+            - name: Kontaktování podpory
+              href: storsimple-8000-contact-microsoft-support.md
+              items:
+                - name: Vytvoření balíčku pro podporu
+                  href: storsimple-8000-create-manage-support-package.md
+        - name: Migrace
+          items:
+            - name: Předplatná a účty úložiště
+              href: storsimple-8000-migrate-classic-azure-portal.md
+            - name: Ze zařízení řady 5000/7000
+              href: storsimple-8000-migration-options.md
+              items:
+                - name: Do zařízení řady StorSimple 8000
+                  href: storsimple-8000-migrate-from-5000-7000.md
+                - name: Do funkce Synchronizace souborů Azure
+                  href: storsimple-5000-7000-afs-migration.md
+            - name: Z jiných zařízení úložišť
+              href: 'https://download.microsoft.com/download/9/4/A/94AB8165-CCC4-430B-801B-9FD40C8DA340/Migrating Data to StorSimple Volumes_09-02-15.pdf'
+        - name: Aktualizace
+          items:
+            - name: Instalace aktualizace 5 – aktuální
+              href: storsimple-8000-install-update-5.md
+            - name: Instalace aktualizace 4
+              href: storsimple-8000-install-update-4.md
+    - name: "Poznámky k\_verzi"
       items:
-      - name: StorSimple s Veeam
-        href: storsimple-configure-backup-target-veeam.md
-      - name: StorSimple s Veritas Backup Exec
-        href: storsimple-configure-backup-target-using-backup-exec.md
-      - name: StorSimple s Veritas NetBackup
-        href: storsimple-configure-backuptarget-netbackup.md
-      - name: Automatizované zotavení souborového serveru po havárii do Azure
-        href: storsimple-disaster-recovery-using-azure-site-recovery.md
-      - name: StorSimple se službou Express Route
-        href: https://gallery.technet.microsoft.com/STORESIMPLE-CONFIGURATION-86c04c3b/view/Discussions#content
-      - name: StorSimple s VMware
-        href: https://gallery.technet.microsoft.com/VMWARE-DEPLOYMENT-WITH-2921b463
-      - name: StorSimple s Hyper-V
-        href: https://gallery.technet.microsoft.com/Deploy-Hyper-V-with-Azure-0d1c6df6
-      - name: Distribuovaný globální obor názvů
-        href: https://www.microsoft.com/download/details.aspx?id=45507
-    - name: Monitorování
+        - name: Aktualizace 5 – aktuální
+          href: storsimple-update5-release-notes.md
+        - name: Aktualizace 4
+          href: storsimple-update4-release-notes.md
+        - name: Archiv
+          items:
+            - name: Aktualizace 3
+              href: storsimple-update3-release-notes.md
+            - name: Aktualizace 2.2
+              href: storsimple-update21-release-notes.md
+            - name: Update 2
+              href: storsimple-update2-release-notes.md
+            - name: Update 1
+              href: storsimple-update1-release-notes.md
+            - name: Aktualizace 0.3
+              href: storsimple-february-2015-release-notes.md
+            - name: Aktualizace 0.2
+              href: storsimple-january-2015-release-notes.md
+            - name: Aktualizace 0.1
+              href: storsimple-october-2014-release-notes.md
+            - name: Vydání – GA
+              href: storsimple-july-2014-release-notes.md
+    - name: Referenční informace
       items:
-      - name: Použití přehledu služby
-        href: storsimple-8000-service-dashboard.md
-      - name: Použití přehledu zařízení
-        href: storsimple-8000-device-dashboard.md
-      - name: Použití grafů sledování
-        href: storsimple-8000-monitor-device.md
-      - name: Použití upozornění služby
-        href: storsimple-8000-manage-alerts.md
-      - name: Použití stavu hardwaru
-        href: storsimple-8000-monitor-hardware-status.md
-      - name: Použití monitorovacích indikátorů LED
-        href: storsimple-monitoring-indicators.md
-    - name: Řešení potíží
-      items:
-      - name: Problémy při nasazení
-        href: storsimple-8000-troubleshoot-deployment.md
-      - name: Použití diagnostických nástrojů
-        href: storsimple-8000-diagnostics.md
-      - name: Provozní problémy
-        href: storsimple-troubleshoot-operational-device.md
-      - name: Výměna hardwaru
-        href: storsimple-8000-hardware-component-replacement.md
-        items:
-        - name: Výměna kontroleru zařízení
-          href: storsimple-8000-controller-replacement.md
-        - name: Výměna kontroleru EBOD
-          href: storsimple-8000-ebod-controller-replacement.md
-        - name: Výměna PCM
-          href: storsimple-8000-power-cooling-module-replacement.md
-        - name: Výměna diskové jednotky
-          href: storsimple-8000-disk-drive-replacement.md
-        - name: Výměna záložní baterie
-          href: storsimple-8000-battery-replacement.md
-        - name: Výměna skříně
-          href: storsimple-8000-chassis-replacement.md
-      - name: Kontaktování podpory
-        href: storsimple-8000-contact-microsoft-support.md
-        items:
-        - name: Vytvoření balíčku pro podporu
-          href: storsimple-8000-create-manage-support-package.md
-    - name: Migrace
-      items:
-      - name: Předplatná a účty úložiště
-        href: storsimple-8000-migrate-classic-azure-portal.md
-      - name: Ze zařízení řady 5000/7000
-        href: storsimple-8000-migration-options.md
-        items:
-        - name: Do zařízení řady StorSimple 8000
-          href: storsimple-8000-migrate-from-5000-7000.md
-        - name: Do funkce Synchronizace souborů Azure
-          href: storsimple-5000-7000-afs-migration.md
-      - name: Z jiných zařízení úložišť
-        href: https://download.microsoft.com/download/9/4/A/94AB8165-CCC4-430B-801B-9FD40C8DA340/Migrating Data to StorSimple Volumes_09-02-15.pdf
-    - name: Aktualizace
-      items:
-      - name: Instalace aktualizace 5 – aktuální
-        href: storsimple-8000-install-update-5.md
-      - name: Instalace aktualizace 4
-        href: storsimple-8000-install-update-4.md
-  - name: Poznámky k verzi
-    items:
-    - name: Aktualizace 5 – aktuální
-      href: storsimple-update5-release-notes.md
-    - name: Aktualizace 4
-      href: storsimple-update4-release-notes.md
-    - name: Archiv
-      items:
-      - name: Aktualizace 3
-        href: storsimple-update3-release-notes.md
-      - name: Aktualizace 2.2
-        href: storsimple-update21-release-notes.md
-      - name: Update 2
-        href: storsimple-update2-release-notes.md
-      - name: Update 1
-        href: storsimple-update1-release-notes.md
-      - name: Aktualizace 0.3
-        href: storsimple-february-2015-release-notes.md
-      - name: Aktualizace 0.2
-        href: storsimple-january-2015-release-notes.md
-      - name: Aktualizace 0.1
-        href: storsimple-october-2014-release-notes.md
-      - name: Vydání – GA
-        href: storsimple-july-2014-release-notes.md
-  - name: Referenční informace
-    items:
-    - name: REST API
-      href: https://docs.microsoft.com/rest/api/storsimple
-    - name: Rutiny prostředí Windows PowerShell pro StorSimple
-      href: https://technet.microsoft.com/library/dn688168.aspx
-    - name: Šablona Resource Manageru
-      href: /azure/templates/microsoft.storsimple/allversions
+        - name: REST API
+          href: 'https://docs.microsoft.com/rest/api/storsimple'
+        - name: Rutiny prostředí Windows PowerShell pro StorSimple
+          href: 'https://technet.microsoft.com/library/dn688168.aspx'
+        - name: Šablona Resource Manageru
+          href: /azure/templates/microsoft.storsimple/allversions
 - name: Správce dat StorSimple
   items:
-  - name: Přehled
-    items:
-    - name: Informace o řešení
-      href: storsimple-data-manager-overview.md
-  - name: Začínáme
-    items:
-    - name: Použití StorSimple Data Manageru
-      href: storsimple-data-manager-ui.md
-  - name: Postup
-    items:
-    - name: Použití .NET ke spuštění úloh
-      href: storsimple-data-manager-dotnet-jobs.md
-    - name: Použití služby Automation ke spuštění úloh
-      href: storsimple-data-manager-job-using-automation.md
-    - name: Změna výchozí cesty objektu blob
-      href: storsimple-data-manager-change-default-blob-path.md
+    - name: Přehled
+      items:
+        - name: Informace o řešení
+          href: storsimple-data-manager-overview.md
+    - name: Začínáme
+      items:
+        - name: Použití StorSimple Data Manageru
+          href: storsimple-data-manager-ui.md
+    - name: Postup
+      items:
+        - name: Použití .NET ke spuštění úloh
+          href: storsimple-data-manager-dotnet-jobs.md
+        - name: Použití služby Automation ke spuštění úloh
+          href: storsimple-data-manager-job-using-automation.md
+        - name: Změna výchozí cesty objektu blob
+          href: storsimple-data-manager-change-default-blob-path.md
 - name: StorSimple pro partnery
   items:
-  - name: Přehled
-    items:
-    - name: Informace o řešení
-      href: storsimple-partner-csp-overview.md
-  - name: Začínáme
-    items:
-    - name: Nasazení virtuálního pole pro CSP
-      href: storsimple-partner-csp-deploy.md
-  - name: Poznámky k verzi
-    items:
-    - name: Poznámky k verzi StorSimple
-      href: https://aka.ms/storsimple-virtual-array-latest-relnote
-    - name: Poznámky k verzi CSP
-      href: https://partner.microsoft.com/Support/whats-new
-    - name: 'StorSimple pro CSP: Nejčastější dotazy'
-      href: storsimple-partner-csp-faq.md
+    - name: Přehled
+      items:
+        - name: Informace o řešení
+          href: storsimple-partner-csp-overview.md
+    - name: Začínáme
+      items:
+        - name: Nasazení virtuálního pole pro CSP
+          href: storsimple-partner-csp-deploy.md
+    - name: "Poznámky k\_verzi"
+      items:
+        - name: Poznámky k verzi StorSimple
+          href: 'https://aka.ms/storsimple-virtual-array-latest-relnote'
+        - name: Poznámky k verzi CSP
+          href: 'https://partner.microsoft.com/Support/whats-new'
+        - name: 'StorSimple pro CSP: Nejčastější dotazy'
+          href: storsimple-partner-csp-faq.md
 - name: Související
   items:
-  - name: StorSimple 5000-7000 Series
-    href: http://onlinehelp.storsimple.com
+    - name: StorSimple 5000-7000 Series
+      href: 'http://onlinehelp.storsimple.com'
 - name: Zdroje a prostředky
   items:
-  - name: Plány Azure do budoucna
-    href: https://azure.microsoft.com/roadmap/
-  - name: Marketingový blog
-    href: http://blogs.technet.com/b/cis/
-  - name: Marketing
-    href: https://www.microsoft.com/server-cloud/products/storsimple/explore.aspx
-  - name: Možnosti podpory StorSimple
-    href: storsimple-8000-support-options.md
-  - name: Fórum MSDN
-    href: https://social.msdn.microsoft.com/Forums/azure/home?forum=StorSimple
-  - name: Ceny
-    href: https://azure.microsoft.com/pricing/details/storsimple/
-  - name: Cenová kalkulačka
-    href: https://azure.microsoft.com/pricing/calculator/
-  - name: Aktualizace služeb
-    href: https://azure.microsoft.com/updates/?product=storsimple
-  - name: Blog podpory
-    href: https://blogs.msdn.com/b/storsimple/
-  - name: Oznámení třetích stran
-    href: https://download.microsoft.com/download/2/0/0/2003271D-69D5-4143-85A2-F1D8EA058F52/StorSimple TPNs.zip
-  - name: Videa
-    href: https://azure.microsoft.com/documentation/videos/index/?services=storsimple
-ms.openlocfilehash: 6879dd240dc070483a7d97536a5fa365108af5f1
-ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
-ms.translationtype: HT
-ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58341131"
+    - name: Plány Azure do budoucna
+      href: 'https://azure.microsoft.com/roadmap/'
+    - name: Marketingový blog
+      href: 'http://blogs.technet.com/b/cis/'
+    - name: Marketing
+      href: 'https://www.microsoft.com/server-cloud/products/storsimple/explore.aspx'
+    - name: Možnosti podpory StorSimple
+      href: storsimple-8000-support-options.md
+    - name: Fórum MSDN
+      href: 'https://social.msdn.microsoft.com/Forums/azure/home?forum=StorSimple'
+    - name: Ceny
+      href: 'https://azure.microsoft.com/pricing/details/storsimple/'
+    - name: Cenová kalkulačka
+      href: 'https://azure.microsoft.com/pricing/calculator/'
+    - name: Aktualizace služeb
+      href: 'https://azure.microsoft.com/updates/?product=storsimple'
+    - name: Blog podpory
+      href: 'https://blogs.msdn.com/b/storsimple/'
+    - name: Oznámení třetích stran
+      href: 'https://download.microsoft.com/download/2/0/0/2003271D-69D5-4143-85A2-F1D8EA058F52/StorSimple TPNs.zip'
+    - name: Videa
+      href: 'https://azure.microsoft.com/documentation/videos/index/?services=storsimple'

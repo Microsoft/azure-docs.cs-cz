@@ -1,77 +1,70 @@
-items:
 - name: Dokumentace ke službě Azure Security Center (ASC) for IoT Preview
   href: index.yml
 - name: Přehled
   href: overview.md
   items:
-  - name: Architektura řešení
-    href: architecture.md
-  - name: Agenti zabezpečení
-    href: security-agent-architecture.md
-  - name: Modul zabezpečení hraničních zařízení
-    href: security-edge-architecture.md
-  - name: Požadavky služeb
-    href: service-prerequisites.md
-  - name: Začínáme s ASC for IoT
-    href: getting-started.md
+    - name: Architektura řešení
+      href: architecture.md
+    - name: Agenti zabezpečení
+      href: security-agent-architecture.md
+    - name: Modul zabezpečení hraničních zařízení
+      href: security-edge-architecture.md
+    - name: Požadavky služeb
+      href: service-prerequisites.md
+    - name: Začínáme s ASC for IoT
+      href: getting-started.md
 - name: Šablony Rychlý start
-  items:
-  - name: Povolení ASC for IoT v IoT Hubu
-    href: quickstart-onboard-iot-hub.md
-  - name: Konfigurace vašeho řešení
-    href: quickstart-configure-your-solution.md
-  - name: Vytvoření dvojčete modulu ASC for IoT
-    href: quickstart-create-security-twin.md
-  - name: Vytváření vlastních výstrah zabezpečení
-    href: quickstart-create-custom-alerts.md
   expanded: true
+  items:
+    - name: Povolení ASC for IoT v IoT Hubu
+      href: quickstart-onboard-iot-hub.md
+    - name: Konfigurace vašeho řešení
+      href: quickstart-configure-your-solution.md
+    - name: Vytvoření dvojčete modulu ASC for IoT
+      href: quickstart-create-security-twin.md
+    - name: Vytváření vlastních výstrah zabezpečení
+      href: quickstart-create-custom-alerts.md
 - name: Koncepty
   items:
-  - name: Ověřování agentů zabezpečení
-    href: concept-security-agent-authentication-methods.md
-  - name: Modul zabezpečení
-    href: concept-security-module.md
-  - name: Výstrahy zabezpečení
-    href: concept-security-alerts.md
-  - name: Doporučení zabezpečení
-    href: concept-recommendations.md
-  - name: Ceny a související náklady
-    href: concept-pricing.md
+    - name: Ověřování agentů zabezpečení
+      href: concept-security-agent-authentication-methods.md
+    - name: Modul zabezpečení
+      href: concept-security-module.md
+    - name: Výstrahy zabezpečení
+      href: concept-security-alerts.md
+    - name: Doporučení zabezpečení
+      href: concept-recommendations.md
+    - name: Ceny a související náklady
+      href: concept-pricing.md
 - name: Návody
   items:
-  - name: Kterého agenta mám nasadit?
-    items:
-    - name: Výběr agenta pro nasazení
-      href: how-to-deploy-agent.md
-    - name: Nasazení agenta zabezpečení založeného na C# v zařízení s Windows
-      href: how-to-deploy-windows-cs.md
-    - name: Nasazení agenta zabezpečení založeného na C# v zařízení s Linuxem
-      href: how-to-deploy-linux-cs.md
-    - name: Nasazení agenta zabezpečení založeného na C v zařízení s Linuxem
-      href: how-to-deploy-linux-c.md
-  - name: Nasazení modulu zabezpečení hraničních zařízení
-    href: how-to-deploy-edge.md
-  - name: Konfigurace agentů zabezpečení
-    href: how-to-agent-configuration.md
-  - name: Odesílání vlastních zpráv zabezpečení
-    href: how-to-send-security-messages.md
-  - name: Přístup k nezpracovaným datům zabezpečení
-    href: how-to-security-data-access.md
-  - name: Prozkoumání zařízení
-    href: how-to-investigate-device.md
+    - name: Kterého agenta mám nasadit?
+      items:
+        - name: Výběr agenta pro nasazení
+          href: how-to-deploy-agent.md
+        - name: 'Nasazení agenta zabezpečení založeného na C# v zařízení s Windows'
+          href: how-to-deploy-windows-cs.md
+        - name: 'Nasazení agenta zabezpečení založeného na C# v zařízení s Linuxem'
+          href: how-to-deploy-linux-cs.md
+        - name: Nasazení agenta zabezpečení založeného na C v zařízení s Linuxem
+          href: how-to-deploy-linux-c.md
+    - name: Nasazení modulu zabezpečení hraničních zařízení
+      href: how-to-deploy-edge.md
+    - name: Konfigurace agentů zabezpečení
+      href: how-to-agent-configuration.md
+    - name: Odesílání vlastních zpráv zabezpečení
+      href: how-to-send-security-messages.md
+    - name: Přístup k nezpracovaným datům zabezpečení
+      href: how-to-security-data-access.md
+    - name: Prozkoumání zařízení
+      href: how-to-investigate-device.md
 - name: Zdroje a prostředky
   items:
-  - name: Nejčastější dotazy
-    href: resources-frequently-asked-questions.md
-  - name: Plány Azure do budoucna
-    href: https://azure.microsoft.com/roadmap/?category=security-identity
-  - name: Blog věnovaný zabezpečení, ochraně osobních údajů a dodržování předpisů v Azure
-    href: http://blogs.msdn.com/b/azuresecurity/
-  - name: Regionální dostupnost
-    href: https://azure.microsoft.com/regions/services/
-ms.openlocfilehash: 1d9d2b51fb1a07081c4ac2f4b115363c74cca6d0
-ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
-ms.translationtype: HT
-ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58754581"
+    - name: Nejčastější dotazy
+      href: resources-frequently-asked-questions.md
+    - name: Plány Azure do budoucna
+      href: 'https://azure.microsoft.com/roadmap/?category=security-identity'
+    - name: 'Blog věnovaný zabezpečení, ochraně osobních údajů a dodržování předpisů v Azure'
+      href: 'http://blogs.msdn.com/b/azuresecurity/'
+    - name: Regionální dostupnost
+      href: 'https://azure.microsoft.com/regions/services/'

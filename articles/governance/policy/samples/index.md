@@ -1,18 +1,20 @@
 ---
 title: Index ukázek zásad
 description: Index ukázek pro Azure Policy Mezi dostupné kategorie patří pojmenování, značky, Key Vault, sítě, úložiště a další.
+services: azure-policy
 author: DCtheGeek
 manager: carmonm
 ms.service: azure-policy
 ms.topic: sample
-ms.date: 03/19/2019
-ms.author: dacoulte
+origin.date: 01/17/2018
+ms.date: 04/15/2019
+ms.author: v-biyu
 ms.openlocfilehash: 5a39614d544157695b8b2f02ab5f1fe4427d5ca5
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59796897"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60865807"
 ---
 # <a name="azure-policy-samples"></a>Ukázky Azure Policy
 
@@ -23,8 +25,6 @@ Následující tabulka obsahuje odkazy na ukázky pro Azure Policy. Tyto ukázky
 [!INCLUDE [azure-policy-samples-compute](../../../../includes/azure-policy-samples-compute.md)]
 
 [!INCLUDE [azure-policy-samples-datalake](../../../../includes/azure-policy-samples-datalake.md)]
-
-[!INCLUDE [azure-policy-samples-guest-configuration](../../../../includes/azure-policy-samples-guest-configuration.md)]
 
 [!INCLUDE [azure-policy-samples-keyvault](../../../../includes/azure-policy-samples-keyvault.md)]
 

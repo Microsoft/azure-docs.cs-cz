@@ -1,483 +1,476 @@
-items:
 - name: Dokumentace ke službě Media Services
   href: index.md
 - name: Přehled
   href: media-services-overview.md
   items:
-  - name: Scénáře a dostupnost
-    href: scenarios-and-availability.md
-  - name: Koncepty
-    href: media-services-concepts.md
+    - name: Scénáře a dostupnost
+      href: scenarios-and-availability.md
+    - name: Koncepty
+      href: media-services-concepts.md
 - name: Začínáme
   items:
-  - name: Vytvoření a správa účtu
-    href: media-services-portal-create-account.md
-  - name: Vytvoření a nastavení vývojového prostředí
-    href: media-services-set-up-computer.md
-    items:
-    - name: .NET
-      href: media-services-dotnet-how-to-use.md
-    - name: REST
-      href: media-services-rest-how-to-use.md
-  - name: Přístup k rozhraní API pomocí ověřování Azure AD
-    href: media-services-use-aad-auth-to-access-ams-api.md
-    items:
-    - name: Správa ověřování Azure AD pomocí portálu
-      href: media-services-portal-get-started-with-aad.md
-    - name: Přístup k rozhraní API pomocí .NET
-      href: media-services-dotnet-get-started-with-aad.md
-    - name: Přístup k rozhraní API pomocí REST
-      href: media-services-rest-connect-with-aad.md
-    - name: Vytvoření a konfigurace aplikace Azure AD pomocí rozhraní příkazového řádku Azure
-      href: media-services-cli-create-and-configure-aad-app.md
-    - name: Vytvoření a konfigurace aplikace Azure AD pomocí Azure PowerShellu
-      href: media-services-powershell-create-and-configure-aad-app.md
-  - name: Doručování videa na vyžádání
-    items:
-    - name: portál Azure
-      href: media-services-portal-vod-get-started.md
-    - name: .NET SDK
-      href: media-services-dotnet-get-started.md
-    - name: Java
-      href: media-services-java-how-to-use.md
-    - name: REST
-      href: media-services-rest-get-started.md
-  - name: Zajištění živého streamování
-    items:
-    - name: portál Azure
-      href: media-services-portal-live-passthrough-get-started.md
-    - name: .NET
-      href: media-services-dotnet-live-encode-with-onpremises-encoders.md
+    - name: Vytvoření a správa účtu
+      href: media-services-portal-create-account.md
+    - name: Vytvoření a nastavení vývojového prostředí
+      href: media-services-set-up-computer.md
+      items:
+        - name: .NET
+          href: media-services-dotnet-how-to-use.md
+        - name: REST
+          href: media-services-rest-how-to-use.md
+    - name: Přístup k rozhraní API pomocí ověřování Azure AD
+      href: media-services-use-aad-auth-to-access-ams-api.md
+      items:
+        - name: Správa ověřování Azure AD pomocí portálu
+          href: media-services-portal-get-started-with-aad.md
+        - name: Přístup k rozhraní API pomocí .NET
+          href: media-services-dotnet-get-started-with-aad.md
+        - name: Přístup k rozhraní API pomocí REST
+          href: media-services-rest-connect-with-aad.md
+        - name: Vytvoření a konfigurace aplikace Azure AD pomocí rozhraní příkazového řádku Azure
+          href: media-services-cli-create-and-configure-aad-app.md
+        - name: Vytvoření a konfigurace aplikace Azure AD pomocí Azure PowerShellu
+          href: media-services-powershell-create-and-configure-aad-app.md
+    - name: Doručování videa na vyžádání
+      items:
+        - name: portál Azure
+          href: media-services-portal-vod-get-started.md
+        - name: .NET SDK
+          href: media-services-dotnet-get-started.md
+        - name: Java
+          href: media-services-java-how-to-use.md
+        - name: REST
+          href: media-services-rest-get-started.md
+    - name: Zajištění živého streamování
+      items:
+        - name: portál Azure
+          href: media-services-portal-live-passthrough-get-started.md
+        - name: .NET
+          href: media-services-dotnet-live-encode-with-onpremises-encoders.md
 - name: Postup
   items:
-  - name: Spravovat
-    items:
-    - name: Entity
+    - name: Spravovat
       items:
-      - name: .NET
-        href: media-services-dotnet-manage-entities.md
-      - name: REST
-        href: media-services-rest-manage-entities.md
-    - name: Koncové body streamování
-      href: media-services-streaming-endpoints-overview.md
+        - name: Entity
+          items:
+            - name: .NET
+              href: media-services-dotnet-manage-entities.md
+            - name: REST
+              href: media-services-rest-manage-entities.md
+        - name: Koncové body streamování
+          href: media-services-streaming-endpoints-overview.md
+          items:
+            - name: portál Azure
+              href: media-services-portal-manage-streaming-endpoints.md
+            - name: .NET
+              href: media-services-dotnet-manage-streaming-endpoints.md
+        - name: Úložiště
+          items:
+            - name: Aktualizace Media Services po postupném zavedení přístupových klíčů k úložišti
+              href: media-services-roll-storage-access-keys.md
+            - name: Správa prostředků ve více účtech úložiště
+              href: meda-services-managing-multiple-storage-accounts.md
+        - name: Kvóty a omezení
+          href: media-services-quotas-and-limitations.md
+    - name: Konfigurace nástroje Postman
+      href: media-rest-apis-with-postman.md
       items:
-      - name: portál Azure
-        href: media-services-portal-manage-streaming-endpoints.md
-      - name: .NET
-        href: media-services-dotnet-manage-streaming-endpoints.md
-    - name: Úložiště
+        - name: Kolekce streamingu na vyžádání
+          href: postman-collection.md
+        - name: Kolekce živého streamování
+          href: postman-live-streaming-collection.md
+        - name: Prostředí
+          href: postman-environment.md
+    - name: Nahrání obsahu
       items:
-      - name: Aktualizace Media Services po postupném zavedení přístupových klíčů k úložišti
-        href: media-services-roll-storage-access-keys.md
-      - name: Správa prostředků ve více účtech úložiště
-        href: meda-services-managing-multiple-storage-accounts.md
-    - name: Kvóty a omezení
-      href: media-services-quotas-and-limitations.md
-  - name: Konfigurace nástroje Postman
-    href: media-rest-apis-with-postman.md
-    items:
-    - name: Kolekce streamingu na vyžádání
-      href: postman-collection.md
-    - name: Kolekce živého streamování
-      href: postman-live-streaming-collection.md
-    - name: Prostředí
-      href: postman-environment.md
-  - name: Nahrání obsahu
-    items:
-    - name: Nahrání souborů do účtu
+        - name: Nahrání souborů do účtu
+          items:
+            - name: portál Azure
+              href: media-services-portal-upload-files.md
+            - name: .NET
+              href: media-services-dotnet-upload-files.md
+            - name: REST
+              href: media-services-rest-upload-files.md
+        - name: Nahrávání velkých souborů pomocí Aspery
+          href: media-services-upload-files-with-aspera.md
+        - name: Nahrávání souborů pomocí StorSimple
+          href: media-services-upload-files-from-storsimple.md
+        - name: Kopírování existujících objektů blob
+          href: media-services-copying-existing-blob.md
+    - name: Kódování obsahu
+      href: media-services-encode-asset.md
       items:
-      - name: portál Azure
-        href: media-services-portal-upload-files.md
-      - name: .NET
-        href: media-services-dotnet-upload-files.md
-      - name: REST
-        href: media-services-rest-upload-files.md
-    - name: Nahrávání velkých souborů pomocí Aspery
-      href: media-services-upload-files-with-aspera.md
-    - name: Nahrávání souborů pomocí StorSimple
-      href: media-services-upload-files-from-storsimple.md
-    - name: Kopírování existujících objektů blob
-      href: media-services-copying-existing-blob.md
-  - name: Kódování obsahu
-    href: media-services-encode-asset.md
-    items:
-    - name: Porovnání kodérů
-      href: media-services-compare-encoders.md
-    - name: Správa rychlosti a souběžného zpracování vašeho kódování
-      href: media-services-manage-encoding-speed.md
-    - name: Media Encoder Standard (MES)
-      items:
-      - name: Kodeky a standardní formáty kodéru médií
-        href: media-services-media-encoder-standard-formats.md
-      - name: Použití MES k automatickému vygenerování žebříčku přenosových rychlostí
-        href: media-services-autogen-bitrate-ladder-with-mes.md
-      - name: Kódování pomocí Media Encoderu Standard
-        items:
-        - name: portál Azure
-          href: media-services-portal-encode.md
-        - name: .NET
-          href: media-services-dotnet-encode-with-media-encoder-standard.md
-        - name: REST
-          href: media-services-rest-encode-asset.md
-      - name: Pokročilé kódování pomocí MES
-        href: media-services-advanced-encoding-with-mes.md
-        items:
-        - name: Přizpůsobení předvoleb Media Encoderu Standard
-          href: media-services-custom-mes-presets-with-dotnet.md
-        - name: Postup generování miniatur pomocí kodéru Media Encoder Standard a .NET
-          href: media-services-dotnet-generate-thumbnail-with-mes.md
-        - name: Oříznutí videa pomocí kodéru Media Encoder Standard
-          href: media-services-crop-video.md
-        - name: Vytvoření spritu miniatury
-          href: generate-thumbnail-sprite.md
-      - name: Schémata MES
-        items:
-        - name: Schéma Media Encoderu Standard
-          href: media-services-mes-schema.md
-        - name: Vstupní metadata
-          href: media-services-input-metadata-schema.md
-        - name: Výstupní metadata
-          href: media-services-output-metadata-schema.md
-      - name: Přednastavení MES
-        href: media-services-mes-presets-overview.md
-        items:
-        - name: H264 Multiple Bitrate 1080p Audio 5.1
-          href: media-services-mes-preset-H264-Multiple-Bitrate-1080p-Audio-5.1.md
-        - name: H264 Multiple Bitrate 1080p
-          href: media-services-mes-preset-H264-Multiple-Bitrate-1080p.md
-        - name: H264 Multiple Bitrate 16x9 SD Audio 5.1
-          href: media-services-mes-preset-H264-Multiple-Bitrate-16x9-SD-Audio-5.1.md
-        - name: H264 Multiple Bitrate 16x9 SD
-          href: media-services-mes-preset-H264-Multiple-Bitrate-16x9-SD.md
-        - name: H264 Multiple Bitrate 16x9 for iOS
-          href: media-services-mes-preset-H264-Multiple-Bitrate-16x9-for-iOS.md
-        - name: H264 Multiple Bitrate 4K Audio 5.1
-          href: media-services-mes-preset-H264-Multiple-Bitrate-4K-Audio-5.1.md
-        - name: H264 Multiple Bitrate 4K
-          href: media-services-mes-preset-H264-Multiple-Bitrate-4K.md
-        - name: H264 Multiple Bitrate 4x3 SD Audio 5.1
-          href: media-services-mes-preset-H264-Multiple-Bitrate-4x3-SD-Audio-5.1.md
-        - name: H264 Multiple Bitrate 4x3 SD
-          href: media-services-mes-preset-H264-Multiple-Bitrate-4x3-SD.md
-        - name: H264 Multiple Bitrate 4x3 for iOS
-          href: media-services-mes-preset-H264-Multiple-Bitrate-4x3-for-iOS.md
-        - name: H264 Multiple Bitrate 720p Audio 5.1
-          href: media-services-mes-preset-H264-Multiple-Bitrate-720p-Audio-5.1.md
-        - name: H264 Multiple Bitrate 720p
-          href: media-services-mes-preset-H264-Multiple-Bitrate-720p.md
-        - name: H264 Single Bitrate 1080p Audio 5.1
-          href: media-services-mes-preset-H264-Single-Bitrate-1080p-Audio-5.1.md
-        - name: H264 Single Bitrate 1080p
-          href: media-services-mes-preset-H264-Single-Bitrate-1080p.md
-        - name: H264 Single Bitrate 16x9 SD Audio 5.1
-          href: media-services-mes-preset-H264-Single-Bitrate-16x9-SD-Audio-5.1.md
-        - name: H264 Single Bitrate 16x9 SD
-          href: media-services-mes-preset-H264-Single-Bitrate-16x9-SD.md
-        - name: H264 Single Bitrate 4K Audio 5.1
-          href: media-services-mes-preset-H264-Single-Bitrate-4K-Audio-5.1.md
-        - name: H264 Single Bitrate 4K
-          href: media-services-mes-preset-H264-Single-Bitrate-4K.md
-        - name: H264 Single Bitrate 4x3 SD Audio 5.1
-          href: media-services-mes-preset-H264-Single-Bitrate-4x3-SD-Audio-5.1.md
-        - name: H264 Single Bitrate 4x3 SD
-          href: media-services-mes-preset-H264-Single-Bitrate-4x3-SD.md
-        - name: H264 Single Bitrate 720p Audio 5.1
-          href: media-services-mes-preset-H264-Single-Bitrate-720p-Audio-5.1.md
-        - name: H264 Single Bitrate 720p
-          href: media-services-mes-preset-H264-Single-Bitrate-720p.md
-        - name: H264 Single Bitrate 720p for Android
-          href: media-services-mes-preset-H264-Single-Bitrate-720p-for-Android.md
-        - name: H264 Single Bitrate High Quality SD for Android
-          href: media-services-mes-preset-H264-Single-Bitrate-High-Quality-SD-for-Android.md
-        - name: H264 Single Bitrate Low Quality SD for Android
-          href: media-services-mes-preset-H264-Single-Bitrate-Low-Quality-SD-for-Android.md
-    - name: Pracovní postup kodéru Media Encoder Premium
-      items:
-      - name: Pracovní postup, formáty a kodeky kodéru Media Encoder Premium
-        href: media-services-premium-workflow-encoder-formats.md
-      - name: Kódování pomocí pracovního postupu kodéru Media Encoder Premium
-        items:
+        - name: Porovnání kodérů
+          href: media-services-compare-encoders.md
+        - name: Správa rychlosti a souběžného zpracování vašeho kódování
+          href: media-services-manage-encoding-speed.md
+        - name: Media Encoder Standard (MES)
+          items:
+            - name: Kodeky a standardní formáty kodéru médií
+              href: media-services-media-encoder-standard-formats.md
+            - name: Použití MES k automatickému vygenerování žebříčku přenosových rychlostí
+              href: media-services-autogen-bitrate-ladder-with-mes.md
+            - name: Kódování pomocí Media Encoderu Standard
+              items:
+                - name: portál Azure
+                  href: media-services-portal-encode.md
+                - name: .NET
+                  href: media-services-dotnet-encode-with-media-encoder-standard.md
+                - name: REST
+                  href: media-services-rest-encode-asset.md
+            - name: Pokročilé kódování pomocí MES
+              href: media-services-advanced-encoding-with-mes.md
+              items:
+                - name: Přizpůsobení předvoleb Media Encoderu Standard
+                  href: media-services-custom-mes-presets-with-dotnet.md
+                - name: Postup generování miniatur pomocí kodéru Media Encoder Standard a .NET
+                  href: media-services-dotnet-generate-thumbnail-with-mes.md
+                - name: Oříznutí videa pomocí kodéru Media Encoder Standard
+                  href: media-services-crop-video.md
+                - name: Vytvoření spritu miniatury
+                  href: generate-thumbnail-sprite.md
+            - name: Schémata MES
+              items:
+                - name: Schéma Media Encoderu Standard
+                  href: media-services-mes-schema.md
+                - name: Vstupní metadata
+                  href: media-services-input-metadata-schema.md
+                - name: Výstupní metadata
+                  href: media-services-output-metadata-schema.md
+            - name: Přednastavení MES
+              href: media-services-mes-presets-overview.md
+              items:
+                - name: H264 Multiple Bitrate 1080p Audio 5.1
+                  href: media-services-mes-preset-H264-Multiple-Bitrate-1080p-Audio-5.1.md
+                - name: H264 Multiple Bitrate 1080p
+                  href: media-services-mes-preset-H264-Multiple-Bitrate-1080p.md
+                - name: H264 Multiple Bitrate 16x9 SD Audio 5.1
+                  href: media-services-mes-preset-H264-Multiple-Bitrate-16x9-SD-Audio-5.1.md
+                - name: H264 Multiple Bitrate 16x9 SD
+                  href: media-services-mes-preset-H264-Multiple-Bitrate-16x9-SD.md
+                - name: H264 Multiple Bitrate 16x9 for iOS
+                  href: media-services-mes-preset-H264-Multiple-Bitrate-16x9-for-iOS.md
+                - name: H264 Multiple Bitrate 4K Audio 5.1
+                  href: media-services-mes-preset-H264-Multiple-Bitrate-4K-Audio-5.1.md
+                - name: H264 Multiple Bitrate 4K
+                  href: media-services-mes-preset-H264-Multiple-Bitrate-4K.md
+                - name: H264 Multiple Bitrate 4x3 SD Audio 5.1
+                  href: media-services-mes-preset-H264-Multiple-Bitrate-4x3-SD-Audio-5.1.md
+                - name: H264 Multiple Bitrate 4x3 SD
+                  href: media-services-mes-preset-H264-Multiple-Bitrate-4x3-SD.md
+                - name: H264 Multiple Bitrate 4x3 for iOS
+                  href: media-services-mes-preset-H264-Multiple-Bitrate-4x3-for-iOS.md
+                - name: H264 Multiple Bitrate 720p Audio 5.1
+                  href: media-services-mes-preset-H264-Multiple-Bitrate-720p-Audio-5.1.md
+                - name: H264 Multiple Bitrate 720p
+                  href: media-services-mes-preset-H264-Multiple-Bitrate-720p.md
+                - name: H264 Single Bitrate 1080p Audio 5.1
+                  href: media-services-mes-preset-H264-Single-Bitrate-1080p-Audio-5.1.md
+                - name: H264 Single Bitrate 1080p
+                  href: media-services-mes-preset-H264-Single-Bitrate-1080p.md
+                - name: H264 Single Bitrate 16x9 SD Audio 5.1
+                  href: media-services-mes-preset-H264-Single-Bitrate-16x9-SD-Audio-5.1.md
+                - name: H264 Single Bitrate 16x9 SD
+                  href: media-services-mes-preset-H264-Single-Bitrate-16x9-SD.md
+                - name: H264 Single Bitrate 4K Audio 5.1
+                  href: media-services-mes-preset-H264-Single-Bitrate-4K-Audio-5.1.md
+                - name: H264 Single Bitrate 4K
+                  href: media-services-mes-preset-H264-Single-Bitrate-4K.md
+                - name: H264 Single Bitrate 4x3 SD Audio 5.1
+                  href: media-services-mes-preset-H264-Single-Bitrate-4x3-SD-Audio-5.1.md
+                - name: H264 Single Bitrate 4x3 SD
+                  href: media-services-mes-preset-H264-Single-Bitrate-4x3-SD.md
+                - name: H264 Single Bitrate 720p Audio 5.1
+                  href: media-services-mes-preset-H264-Single-Bitrate-720p-Audio-5.1.md
+                - name: H264 Single Bitrate 720p
+                  href: media-services-mes-preset-H264-Single-Bitrate-720p.md
+                - name: H264 Single Bitrate 720p for Android
+                  href: media-services-mes-preset-H264-Single-Bitrate-720p-for-Android.md
+                - name: H264 Single Bitrate High Quality SD for Android
+                  href: media-services-mes-preset-H264-Single-Bitrate-High-Quality-SD-for-Android.md
+                - name: H264 Single Bitrate Low Quality SD for Android
+                  href: media-services-mes-preset-H264-Single-Bitrate-Low-Quality-SD-for-Android.md
         - name: Pracovní postup kodéru Media Encoder Premium
-          href: media-services-encode-with-premium-workflow.md
-        - name: Výukové kurzy k pracovním postupům kodéru Media Encoder Premium
-          href: media-services-media-encoder-premium-workflow-tutorials.md
-        - name: Vytváření pokročilých pracovních postupů kódování pomocí Návrháře postupu provádění
-          href: media-services-workflow-designer.md
-        - name: Pracovní postup Premium s více vstupy
-          href: media-services-media-encoder-premium-workflow-multiplefilesinput.md
-    - name: Vytvoření úlohy, která generuje bloky fMP4
-      href: media-services-generate-fmp4-chunks.md
-    - name: Procesory médií
+          items:
+            - name: 'Pracovní postup, formáty a kodeky kodéru Media Encoder Premium'
+              href: media-services-premium-workflow-encoder-formats.md
+            - name: Kódování pomocí pracovního postupu kodéru Media Encoder Premium
+              items:
+                - name: Pracovní postup kodéru Media Encoder Premium
+                  href: media-services-encode-with-premium-workflow.md
+                - name: Výukové kurzy k pracovním postupům kodéru Media Encoder Premium
+                  href: media-services-media-encoder-premium-workflow-tutorials.md
+                - name: Vytváření pokročilých pracovních postupů kódování pomocí Návrháře postupu provádění
+                  href: media-services-workflow-designer.md
+                - name: Pracovní postup Premium s více vstupy
+                  href: media-services-media-encoder-premium-workflow-multiplefilesinput.md
+        - name: 'Vytvoření úlohy, která generuje bloky fMP4'
+          href: media-services-generate-fmp4-chunks.md
+        - name: Procesory médií
+          items:
+            - name: .NET
+              href: media-services-get-media-processor.md
+            - name: REST
+              href: media-services-rest-get-media-processor.md
+        - name: Kódy chyb
+          href: media-services-encoding-error-codes.md
+        - name: Zastaralé
+          items:
+            - name: Statické balení a šifrování
+              href: media-services-static-packaging.md
+    - name: Živé streamování
+      href: media-services-manage-channels-overview.md
       items:
-      - name: .NET
-        href: media-services-get-media-processor.md
-      - name: REST
-        href: media-services-rest-get-media-processor.md
-    - name: Kódy chyb
-      href: media-services-encoding-error-codes.md
-    - name: Zastaralé
+        - name: Místní kodéry
+          href: media-services-live-streaming-with-onprem-encoders.md
+          items:
+            - name: Doporučené místní kodéry
+              href: media-services-recommended-encoders.md
+            - name: portál Azure
+              href: media-services-portal-live-passthrough-get-started.md
+            - name: .NET
+              href: media-services-dotnet-live-encode-with-onpremises-encoders.md
+        - name: Živé streamování s použitím cloudového kodéru
+          href: media-services-manage-live-encoder-enabled-channels.md
+          items:
+            - name: portál Azure
+              href: media-services-portal-creating-live-encoder-enabled-channel.md
+            - name: .NET
+              href: media-services-dotnet-creating-live-encoder-enabled-channel.md
+        - name: Konfigurace místních kodérů pro použití s cloudovým kodérem
+          href: media-services-live-encoders-overview.md
+          items:
+            - name: Kodér FMLE
+              href: media-services-configure-fmle-live-encoder.md
+            - name: Kodér Haivision KB
+              href: media-services-configure-kb-live-encoder.md
+            - name: Kodér NewTek TriCaster
+              href: media-services-configure-tricaster-live-encoder.md
+            - name: Kodér Wirecast
+              href: media-services-configure-wirecast-live-encoder.md
+        - name: Zpracování dlouhotrvajících operací
+          href: media-services-dotnet-long-operations.md
+        - name: Specifikace živého ingestování fragmentovaného MP4
+          href: media-services-fmp4-live-ingest-overview.md
+        - name: Začínáme
+          href: media-services-azure-media-clipper-getting-started.md
+        - name: Načtení videa
+          href: media-services-azure-media-clipper-load-assets.md
+        - name: Konfigurace klávesových zkratek
+          href: media-services-azure-media-clipper-keyboard-shortcuts.md
+        - name: Konfigurace lokalizace
+          href: media-services-azure-media-clipper-localization.md
+        - name: Odesílání úloh oříznutí
+          href: media-services-azure-media-clipper-submit-job.md
+        - name: portál Azure
+          href: media-services-azure-media-clipper-portal.md
+    - name: Ochrana obsahu
+      href: media-services-content-protection-overview.md
       items:
-      - name: Statické balení a šifrování
-        href: media-services-static-packaging.md
-  - name: Živé streamování
-    href: media-services-manage-channels-overview.md
-    items:
-    - name: Místní kodéry
-      href: media-services-live-streaming-with-onprem-encoders.md
+        - name: Šifrování úložiště
+          href: media-services-rest-storage-encryption.md
+        - name: Šifrování AES-128
+          href: media-services-protect-with-aes128.md
+        - name: PlayReady/Widevine pro streamování
+          href: media-services-protect-with-playready-widevine.md
+        - name: FairPlay pro streamování
+          href: media-services-protect-hls-with-fairplay.md
+        - name: PlayReady pro Windows 10 v offline režimu
+          href: offline-playready-streaming-windows-10.md
+        - name: FairPlay pro iOS v offline režimu
+          href: media-services-protect-hls-with-offline-fairplay.md
+        - name: Widevine pro Android v offline režimu
+          href: offline-widevine-for-android.md
+        - name: Konfigurace na webu Azure Portal
+          href: media-services-portal-protect-content.md
+        - name: Doručování licencí DRM
+          href: media-services-deliver-keys-and-licenses.md
+        - name: Vytvoření klíčů ContentKeys
+          items:
+            - name: .NET
+              href: media-services-dotnet-create-contentkey.md
+            - name: REST
+              href: media-services-rest-create-contentkey.md
+        - name: Přehledy šablon licencování
+          items:
+            - name: Šablona licencování PlayReady
+              href: media-services-playready-license-template-overview.md
+            - name: Šablona licencování Widevine
+              href: media-services-widevine-license-template-overview.md
+        - name: Konfigurace zásad doručování prostředků
+          items:
+            - name: .NET
+              href: media-services-dotnet-configure-asset-delivery-policy.md
+            - name: REST
+              href: media-services-rest-configure-asset-delivery-policy.md
+        - name: Konfigurace zásad autorizace klíčů obsahu
+          items:
+            - name: portál Azure
+              href: media-services-portal-configure-content-key-auth-policy.md
+            - name: .NET
+              href: media-services-dotnet-configure-content-key-auth-policy.md
+            - name: REST
+              href: media-services-rest-configure-content-key-auth-policy.md
+        - name: Předání ověřovacích tokenů do AMS
+          href: media-services-pass-authentication-tokens.md
+        - name: Referenční návrhy
+          items:
+            - name: Hybridní návrh systému DRM
+              href: hybrid-design-drm-sybsystem.md
+            - name: Referenční návrh s více variantami DRM
+              href: media-services-cenc-with-multidrm-access-control.md
+    - name: Analýza
+      href: media-services-analytics-overview.md
       items:
-      - name: Doporučené místní kodéry
-        href: media-services-recommended-encoders.md
-      - name: portál Azure
-        href: media-services-portal-live-passthrough-get-started.md
-      - name: .NET
-        href: media-services-dotnet-live-encode-with-onpremises-encoders.md
-    - name: Živé streamování s použitím cloudového kodéru
-      href: media-services-manage-live-encoder-enabled-channels.md
+        - name: Analýza médií s využitím webu Azure Portal
+          href: media-services-portal-analyze.md
+        - name: Zpracování pomocí Indexeru 2
+          href: media-services-process-content-with-indexer2.md
+        - name: Zpracování pomocí Indexeru
+          href: media-services-index-content.md
+          items:
+            - name: Předvolby úloh
+              href: indexer-task-preset.md
+        - name: Zpracování pomocí Face Detectoru
+          href: media-services-face-and-emotion-detection.md
+        - name: Zpracování pomocí Motion Detectoru
+          href: media-services-motion-detection.md
+        - name: Zpracování pomocí Face Redactoru
+          href: media-services-face-redaction.md
+          items:
+            - name: Názorný postup práce s Face Redactorem
+              href: media-services-redactor-walkthrough.md
+        - name: Zpracování pomocí Video Thumbnails
+          href: media-services-video-summarization.md
+        - name: Zpracování pomocí technologie OCR
+          href: media-services-video-optical-character-recognition.md
+        - name: Zpracování pomocí Content Moderatoru
+          href: media-services-content-moderation.md
+    - name: Konfigurace telemetrie
+      href: media-services-telemetry-overview.md
       items:
-      - name: portál Azure
-        href: media-services-portal-creating-live-encoder-enabled-channel.md
-      - name: .NET
-        href: media-services-dotnet-creating-live-encoder-enabled-channel.md
-    - name: Konfigurace místních kodérů pro použití s cloudovým kodérem
-      href: media-services-live-encoders-overview.md
+        - name: .NET
+          href: media-services-dotnet-telemetry.md
+        - name: REST
+          href: media-services-rest-telemetry.md
+    - name: Měřítko
       items:
-      - name: Kodér FMLE
-        href: media-services-configure-fmle-live-encoder.md
-      - name: Kodér Haivision KB
-        href: media-services-configure-kb-live-encoder.md
-      - name: Kodér NewTek TriCaster
-        href: media-services-configure-tricaster-live-encoder.md
-      - name: Kodér Wirecast
-        href: media-services-configure-wirecast-live-encoder.md
-    - name: Zpracování dlouhotrvajících operací
-      href: media-services-dotnet-long-operations.md
-    - name: Specifikace živého ingestování fragmentovaného MP4
-      href: media-services-fmp4-live-ingest-overview.md
-    - name: Začínáme
-      href: media-services-azure-media-clipper-getting-started.md
-    - name: Načtení videa
-      href: media-services-azure-media-clipper-load-assets.md
-    - name: Konfigurace klávesových zkratek
-      href: media-services-azure-media-clipper-keyboard-shortcuts.md
-    - name: Konfigurace lokalizace
-      href: media-services-azure-media-clipper-localization.md
-    - name: Odesílání úloh oříznutí
-      href: media-services-azure-media-clipper-submit-job.md
-    - name: portál Azure
-      href: media-services-azure-media-clipper-portal.md
-  - name: Ochrana obsahu
-    href: media-services-content-protection-overview.md
-    items:
-    - name: Šifrování úložiště
-      href: media-services-rest-storage-encryption.md
-    - name: Šifrování AES-128
-      href: media-services-protect-with-aes128.md
-    - name: PlayReady/Widevine pro streamování
-      href: media-services-protect-with-playready-widevine.md
-    - name: FairPlay pro streamování
-      href: media-services-protect-hls-with-fairplay.md
-    - name: PlayReady pro Windows 10 v offline režimu
-      href: offline-playready-streaming-windows-10.md
-    - name: FairPlay pro iOS v offline režimu
-      href: media-services-protect-hls-with-offline-fairplay.md
-    - name: Widevine pro Android v offline režimu
-      href: offline-widevine-for-android.md
-    - name: Konfigurace na webu Azure Portal
-      href: media-services-portal-protect-content.md
-    - name: Doručování licencí DRM
-      href: media-services-deliver-keys-and-licenses.md
-    - name: Vytvoření klíčů ContentKeys
+        - name: Zpracování médií
+          href: media-services-scale-media-processing-overview.md
+          items:
+            - name: portál Azure
+              href: media-services-portal-scale-media-processing.md
+            - name: .NET
+              href: media-services-dotnet-encoding-units.md
+        - name: Koncové body streamování
+          items:
+            - name: portál Azure
+              href: media-services-portal-scale-streaming-endpoints.md
+    - name: Doručování obsahu
+      href: media-services-deliver-content-overview.md
       items:
-      - name: .NET
-        href: media-services-dotnet-create-contentkey.md
-      - name: REST
-        href: media-services-rest-create-contentkey.md
-    - name: Přehledy šablon licencování
+        - name: Dynamické balení
+          href: media-services-dynamic-packaging-overview.md
+        - name: Přehled filtrů a dynamických manifestů
+          href: media-services-dynamic-manifest-overview.md
+          items:
+            - name: Vytváření filtrů pomocí .NET
+              href: media-services-dotnet-dynamic-manifest.md
+            - name: Vytváření filtrů pomocí REST
+              href: media-services-rest-dynamic-manifest.md
+        - name: Zásady ukládání do mezipaměti CDN ve službě Media Services Extension
+          href: ../../cdn/cdn-caching-policy.md?toc=%2fazure%2fmedia-services%2ftoc.json
+        - name: Publikování obsahu
+          items:
+            - name: portál Azure
+              href: media-services-portal-publish.md
+            - name: .NET
+              href: media-services-deliver-streaming-content.md
+            - name: REST
+              href: media-services-rest-deliver-streaming-content.md
+        - name: Doručení materiálu stažením
+          href: media-services-deliver-asset-download.md
+        - name: Scénář streamování při selhání
+          href: media-services-implement-failover.md
+    - name: Konzumace
       items:
-      - name: Šablona licencování PlayReady
-        href: media-services-playready-license-template-overview.md
-      - name: Šablona licencování Widevine
-        href: media-services-widevine-license-template-overview.md
-    - name: Konfigurace zásad doručování prostředků
+        - name: Přehrávání médií pomocí stávajících přehrávačů
+          href: media-services-playback-content-with-existing-players.md
+        - name: Přehrávání médií pomocí funkce Media Player
+          href: media-services-develop-video-players.md
+        - name: Další možnosti přehrávání
+          items:
+            - name: Aplikace pro Windows Store využívající Smooth Streaming
+              href: media-services-build-smooth-streaming-apps.md
+            - name: Aplikace HTML5 využívající DASH.js
+              href: media-services-embed-mpeg-dash-in-html5.md
+            - name: Přehrávače Adobe Open Source Media Framework
+              href: media-services-use-osmf-smooth-streaming-client-plugin.md
+        - name: Vkládání reklam na straně klienta
+          href: media-services-inserting-ads-on-client-side.md
+        - name: Licencování sady pro portování klienta Microsoft†" Smooth Streaming
+          href: media-services-sspk.md
+    - name: Integrace
       items:
-      - name: .NET
-        href: media-services-dotnet-configure-asset-delivery-policy.md
-      - name: REST
-        href: media-services-rest-configure-asset-delivery-policy.md
-    - name: Konfigurace zásad autorizace klíčů obsahu
+        - name: Použití Azure Functions se službou Media Services
+          href: media-services-dotnet-how-to-use-azure-functions.md
+        - name: Příklady Azure Functions se službou Media Services
+          href: 'https://github.com/Azure-Samples/media-services-dotnet-functions-integration'
+    - name: Monitorování
       items:
-      - name: portál Azure
-        href: media-services-portal-configure-content-key-auth-policy.md
-      - name: .NET
-        href: media-services-dotnet-configure-content-key-auth-policy.md
-      - name: REST
-        href: media-services-rest-configure-content-key-auth-policy.md
-    - name: Předání ověřovacích tokenů do AMS
-      href: media-services-pass-authentication-tokens.md
-    - name: Referenční návrhy
+        - name: Kontrola průběhu úlohy
+          items:
+            - name: REST
+              href: media-services-rest-check-job-progress.md
+            - name: portál Azure
+              href: media-services-portal-check-job-progress.md
+            - name: .NET
+              href: media-services-check-job-progress.md
+        - name: Monitorování oznámení úloh pomocí Queue Storage
+          href: media-services-dotnet-check-job-progress-with-queues.md
+        - name: Monitorování oznámení úloh pomocí webhooků
+          href: media-services-dotnet-check-job-progress-with-webhooks.md
+    - name: Řešení potíží
       items:
-      - name: Hybridní návrh systému DRM
-        href: hybrid-design-drm-sybsystem.md
-      - name: Referenční návrh s více variantami DRM
-        href: media-services-cenc-with-multidrm-access-control.md
-  - name: Analýza
-    href: media-services-analytics-overview.md
-    items:
-    - name: Analýza médií s využitím webu Azure Portal
-      href: media-services-portal-analyze.md
-    - name: Zpracování pomocí Indexeru 2
-      href: media-services-process-content-with-indexer2.md
-    - name: Zpracování pomocí Indexeru
-      href: media-services-index-content.md
-      items:
-      - name: Předvolby úloh
-        href: indexer-task-preset.md
-    - name: Zpracování pomocí Face Detectoru
-      href: media-services-face-and-emotion-detection.md
-    - name: Zpracování pomocí Motion Detectoru
-      href: media-services-motion-detection.md
-    - name: Zpracování pomocí Face Redactoru
-      href: media-services-face-redaction.md
-      items:
-      - name: Názorný postup práce s Face Redactorem
-        href: media-services-redactor-walkthrough.md
-    - name: Zpracování pomocí Video Thumbnails
-      href: media-services-video-summarization.md
-    - name: Zpracování pomocí technologie OCR
-      href: media-services-video-optical-character-recognition.md
-    - name: Zpracování pomocí Content Moderatoru
-      href: media-services-content-moderation.md
-  - name: Konfigurace telemetrie
-    href: media-services-telemetry-overview.md
-    items:
-    - name: .NET
-      href: media-services-dotnet-telemetry.md
-    - name: REST
-      href: media-services-rest-telemetry.md
-  - name: Měřítko
-    items:
-    - name: Zpracování médií
-      href: media-services-scale-media-processing-overview.md
-      items:
-      - name: portál Azure
-        href: media-services-portal-scale-media-processing.md
-      - name: .NET
-        href: media-services-dotnet-encoding-units.md
-    - name: Koncové body streamování
-      items:
-      - name: portál Azure
-        href: media-services-portal-scale-streaming-endpoints.md
-  - name: Doručování obsahu
-    href: media-services-deliver-content-overview.md
-    items:
-    - name: Dynamické balení
-      href: media-services-dynamic-packaging-overview.md
-    - name: Přehled filtrů a dynamických manifestů
-      href: media-services-dynamic-manifest-overview.md
-      items:
-      - name: Vytváření filtrů pomocí .NET
-        href: media-services-dotnet-dynamic-manifest.md
-      - name: Vytváření filtrů pomocí REST
-        href: media-services-rest-dynamic-manifest.md
-    - name: Zásady ukládání do mezipaměti CDN ve službě Media Services Extension
-      href: ../../cdn/cdn-caching-policy.md?toc=%2fazure%2fmedia-services%2ftoc.json
-    - name: Publikování obsahu
-      items:
-      - name: portál Azure
-        href: media-services-portal-publish.md
-      - name: .NET
-        href: media-services-deliver-streaming-content.md
-      - name: REST
-        href: media-services-rest-deliver-streaming-content.md
-    - name: Doručení materiálu stažením
-      href: media-services-deliver-asset-download.md
-    - name: Scénář streamování při selhání
-      href: media-services-implement-failover.md
-  - name: Konzumace
-    items:
-    - name: Přehrávání médií pomocí stávajících přehrávačů
-      href: media-services-playback-content-with-existing-players.md
-    - name: Přehrávání médií pomocí funkce Media Player
-      href: media-services-develop-video-players.md
-    - name: Další možnosti přehrávání
-      items:
-      - name: Aplikace pro Windows Store využívající Smooth Streaming
-        href: media-services-build-smooth-streaming-apps.md
-      - name: Aplikace HTML5 využívající DASH.js
-        href: media-services-embed-mpeg-dash-in-html5.md
-      - name: Přehrávače Adobe Open Source Media Framework
-        href: media-services-use-osmf-smooth-streaming-client-plugin.md
-    - name: Vkládání reklam na straně klienta
-      href: media-services-inserting-ads-on-client-side.md
-    - name: Licencování sady pro portování klienta Microsoft†" Smooth Streaming
-      href: media-services-sspk.md
-  - name: Integrace
-    items:
-    - name: Použití Azure Functions se službou Media Services
-      href: media-services-dotnet-how-to-use-azure-functions.md
-    - name: Příklady Azure Functions se službou Media Services
-      href: https://github.com/Azure-Samples/media-services-dotnet-functions-integration
-  - name: Monitorování
-    items:
-    - name: Kontrola průběhu úlohy
-      items:
-      - name: REST
-        href: media-services-rest-check-job-progress.md
-      - name: portál Azure
-        href: media-services-portal-check-job-progress.md
-      - name: .NET
-        href: media-services-check-job-progress.md
-    - name: Monitorování oznámení úloh pomocí Queue Storage
-      href: media-services-dotnet-check-job-progress-with-queues.md
-    - name: Monitorování oznámení úloh pomocí webhooků
-      href: media-services-dotnet-check-job-progress-with-webhooks.md
-  - name: Řešení potíží
-    items:
-    - name: Nejčastější dotazy
-      href: media-services-frequently-asked-questions.md
-    - name: Průvodce řešením potíží s živým streamováním
-      href: media-services-troubleshooting-live-streaming.md
-    - name: Kódy chyb
-      href: media-services-error-codes.md
-    - name: Logika opakování
-      href: media-services-retry-logic-in-dotnet-sdk.md
+        - name: Nejčastější dotazy
+          href: media-services-frequently-asked-questions.md
+        - name: Průvodce řešením potíží s živým streamováním
+          href: media-services-troubleshooting-live-streaming.md
+        - name: Kódy chyb
+          href: media-services-error-codes.md
+        - name: Logika opakování
+          href: media-services-retry-logic-in-dotnet-sdk.md
 - name: Referenční informace
   items:
-  - name: Ukázky kódů
-    href: https://azure.microsoft.com/resources/samples/?service=media-services
-  - name: Azure PowerShell (Resource Manager)
-    href: /powershell/module/az.media
-  - name: Azure PowerShell
-    href: /powershell/module/servicemanagement/azure/?view=azuresmps-3.7.0
-  - name: .NET
-    href: /dotnet/api/microsoft.windowsazure.mediaservices.client
-  - name: REST
-    href: https://docs.microsoft.com/rest/api/media/operations/azure-media-services-rest-api-reference
-  - name: Specifikace
-    items:
-    - name: Živé ingestování – specifikace živého ingestování fragmentovaného MP4
-      href: media-services-fmp4-live-ingest-overview.md
-    - name: Živé ingestování – signalizace časovaných metadat v živém streamování
-      href: media-services-specifications-live-timed-metadata.md
-    - name: Smooth Streaming HEVC
-      href: media-services-specifications-ms-sstr-amendment-hevc.md
+    - name: Ukázky kódů
+      href: 'https://azure.microsoft.com/resources/samples/?service=media-services'
+    - name: Azure PowerShell (Resource Manager)
+      href: /powershell/module/az.media
+    - name: Azure PowerShell
+      href: /powershell/module/servicemanagement/azure/?view=azuresmps-3.7.0
+    - name: .NET
+      href: /dotnet/api/microsoft.windowsazure.mediaservices.client
+    - name: REST
+      href: 'https://docs.microsoft.com/rest/api/media/operations/azure-media-services-rest-api-reference'
+    - name: Specifikace
+      items:
+        - name: Živé ingestování – specifikace živého ingestování fragmentovaného MP4
+          href: media-services-fmp4-live-ingest-overview.md
+        - name: Živé ingestování – signalizace časovaných metadat v živém streamování
+          href: media-services-specifications-live-timed-metadata.md
+        - name: Smooth Streaming HEVC
+          href: media-services-specifications-ms-sstr-amendment-hevc.md
 - name: Zdroje a prostředky
   items:
-  - name: Komunita Azure Media Services
-    href: media-services-community.md
-  - name: Plány Azure do budoucna
-    href: https://azure.microsoft.com/roadmap/?category=web-mobile
-  - name: Ceny
-    href: https://azure.microsoft.com/pricing/details/media-services/
-  - name: Cenová kalkulačka
-    href: https://azure.microsoft.com/pricing/calculator/
-  - name: Poznámky k verzi
-    href: media-services-release-notes.md
-  - name: Videa
-    href: https://azure.microsoft.com/resources/videos/index/?services=media-services
-ms.openlocfilehash: 900902a111a7b67a2b235d3a069542e2242fac07
-ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
-ms.translationtype: HT
-ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58621511"
+    - name: Komunita Azure Media Services
+      href: media-services-community.md
+    - name: Plány Azure do budoucna
+      href: 'https://azure.microsoft.com/roadmap/?category=web-mobile'
+    - name: Ceny
+      href: 'https://azure.microsoft.com/pricing/details/media-services/'
+    - name: Cenová kalkulačka
+      href: 'https://azure.microsoft.com/pricing/calculator/'
+    - name: "Poznámky k\_verzi"
+      href: media-services-release-notes.md
+    - name: Videa
+      href: 'https://azure.microsoft.com/resources/videos/index/?services=media-services'

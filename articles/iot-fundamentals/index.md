@@ -11,11 +11,11 @@ ms.topic: landing-page
 ms.date: 02/12/2019
 ms.author: dkshir
 ms.openlocfilehash: d19b6fff3bf2b43ecb692bd8d8e33a202e969570
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57343768"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61216488"
 ---
 <div id="main" class="v2">
     <div class="container">
@@ -134,7 +134,7 @@ ms.locfileid: "57343768"
                             <div class="cardText">
                                 <h3>Použití akcelerátorů řešení Azure IoT k přizpůsobení předem připravených řešení IoT</h3><br>
                                 <p><a href="../iot-accelerators/about-iot-accelerators.md">Co jsou akcelerátory řešení Azure IoT?</a></p>
-                                <p><a href="../iot-accelerators/quickstart-remote-monitoring-deploy.md">Vyzkoušení řešení vzdáleného monitorování</a></p>
+                                <p><a href="../iot-accelerators/quickstart-remote-monitoring-deploy.md">Vyzkoušení řešení pro vzdálené monitorování</a></p>
                                 <p><a href="../iot-accelerators/quickstart-connected-factory-deploy.md">Vyzkoušení řešení propojené továrny</a></p>
                                 <p><a href="../iot-accelerators/index.md"><i>Další informace&gt;</i></a></p>
                             </div>

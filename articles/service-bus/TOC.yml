@@ -1,4 +1,3 @@
-items:
 - name: Dokumentace ke službě Service Bus
   href: index.md
 - name: Service Bus
@@ -7,13 +6,7 @@ items:
   href: /azure/service-bus-relay
 - name: Zdroje a prostředky
   items:
-  - name: Plány Azure do budoucna
-    href: https://azure.microsoft.com/roadmap/?category=enterprise-integration
-  - name: Cenová kalkulačka
-    href: https://azure.microsoft.com/pricing/calculator/
-ms.openlocfilehash: 0c2db791f9e9419216868b15fe833327bf20202e
-ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
-ms.translationtype: HT
-ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58340876"
+    - name: Plány Azure do budoucna
+      href: 'https://azure.microsoft.com/roadmap/?category=enterprise-integration'
+    - name: Cenová kalkulačka
+      href: 'https://azure.microsoft.com/pricing/calculator/'

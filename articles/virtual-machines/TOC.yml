@@ -1,4 +1,3 @@
-items:
 - name: Dokumentace k Virtual Machines
   href: index.yml
 - name: Linux Virtual Machines v Azure
@@ -9,29 +8,23 @@ items:
   href: extensions/overview.md
 - name: Úlohy
   items:
-  - name: Oracle
-    href: workloads/oracle/oracle-considerations.md
-  - name: SAP
-    href: workloads/sap/get-started.md
-  - name: Změna hostování mainframů
-    href: workloads/mainframe-rehosting/overview.md
+    - name: Oracle
+      href: workloads/oracle/oracle-considerations.md
+    - name: SAP
+      href: workloads/sap/get-started.md
+    - name: Změna hostování mainframů
+      href: workloads/mainframe-rehosting/overview.md
 - name: Nasazení Classic
   items:
-  - name: Virtuální počítače s Linuxem používající nasazení Classic
-    href: linux/overview.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json
-  - name: Virtuální počítače s Windows používající nasazení Classic
-    href: windows/overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json
+    - name: Virtuální počítače s Linuxem používající nasazení Classic
+      href: linux/overview.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json
+    - name: Virtuální počítače s Windows používající nasazení Classic
+      href: windows/overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json
 - name: Zdroje a prostředky
   items:
-  - name: Získávání dovedností pomocí Microsoft Learn
-    href: /learn/browse/?products=azure-virtual-machines
-  - name: Plány Azure do budoucna
-    href: https://azure.microsoft.com/roadmap/?category=compute
-  - name: Cenová kalkulačka
-    href: https://azure.microsoft.com/pricing/calculator/
-ms.openlocfilehash: 7f253c1ed2b4910e18acd65367cd8e0e10574c0d
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
-ms.translationtype: HT
-ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56737743"
+    - name: Získávání dovedností pomocí Microsoft Learn
+      href: /learn/browse/?products=azure-virtual-machines
+    - name: Plány Azure do budoucna
+      href: 'https://azure.microsoft.com/roadmap/?category=compute'
+    - name: Cenová kalkulačka
+      href: 'https://azure.microsoft.com/pricing/calculator/'

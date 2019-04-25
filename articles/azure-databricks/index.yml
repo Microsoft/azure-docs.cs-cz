@@ -1,15 +1,9 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 0a1c495362ef38723c61eace25ebb13ec9ed3a6a
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
-ms.translationtype: HT
-ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57883640"
 documentType: LandingData
 title: Dokumentace k Azure Databricks
 metadata:
   title: Dokumentace k Azure Databricks
-  description: Zjistěte, jak používat Azure Databricks, pomocí zde uvedeného Rychlého startu a dalších odkazů. Azure Databricks je analytická platforma založená na Apache Spark a optimalizovaná pro platformu cloudových služeb Microsoft Azure.
+  description: 'Zjistěte, jak používat Azure Databricks, pomocí zde uvedeného Rychlého startu a dalších odkazů. Azure Databricks je analytická platforma založená na Apache Spark a optimalizovaná pro platformu cloudových služeb Microsoft Azure.'
   services: azure-databricks
   author: mamccrea
   ms.service: azure-databricks
@@ -17,48 +11,48 @@ metadata:
   ms.date: 03/19/2018
   ms.author: mamccrea
 abstract:
-  description: Zjistěte, jak používat Azure Databricks. Tato analytická platforma založená na Apache Sparku nabízí nastavení jedním kliknutím, zjednodušené pracovní postupy a interaktivní pracovní prostor, který umožňuje spolupráci mezi odborníky na data, datovými architekty a obchodními analytiky. Rychlá zprovoznění a kurzy ukazují, jak začít pracovat s Azure Databricks a využít integraci s dalšími službami Azure.
+  description: 'Zjistěte, jak používat Azure Databricks. Tato analytická platforma založená na Apache Sparku nabízí nastavení jedním kliknutím, zjednodušené pracovní postupy a interaktivní pracovní prostor, který umožňuje spolupráci mezi odborníky na data, datovými architekty a obchodními analytiky. Rychlá zprovoznění a kurzy ukazují, jak začít pracovat s Azure Databricks a využít integraci s dalšími službami Azure.'
   aside:
     image:
-      alt: 
+      alt: null
       height: 110
       src: media/index/video.png
       width: 250
-    title: Seznámení s Azure Databricks (3:38)
-    href: https://azure.microsoft.com/resources/videos/connect-2017-introduction-to-azure-databricks/
+    title: 'Seznámení s Azure Databricks (3:38)'
+    href: 'https://azure.microsoft.com/resources/videos/connect-2017-introduction-to-azure-databricks/'
     width: 250
 sections:
-- title: Zprovoznění během 5 minut
-  items:
-  - type: paragraph
-    text: 'Zjistěte, jak vytvořit pracovní prostor Azure Databricks a cluster Spark a jak následně spouštět úlohy s použitím:'
-  - type: list
-    style: icon48
+  - title: Zprovoznění během 5 minut
     items:
-    - image:
-        src: /azure/azure-databricks/media/index/portal.svg
-      text: portál Azure
-      href: /azure/azure-databricks/quickstart-create-databricks-workspace-portal
-    - image:
-        src: /azure/azure-databricks/media/index/logo_azure_resource_manager.svg
-      text: Šablona Resource Manageru
-      href: /azure/azure-databricks/quickstart-create-databricks-workspace-resource-manager-template
-- title: Podrobné kurzy
-  items:
-  - type: paragraph
-    text: 'Informace o práci s Azure Databricks:'
-  - type: list
-    style: ordered
+      - type: paragraph
+        text: 'Zjistěte, jak vytvořit pracovní prostor Azure Databricks a cluster Spark a jak následně spouštět úlohy s použitím:'
+      - type: list
+        style: icon48
+        items:
+          - image:
+              src: /azure/azure-databricks/media/index/portal.svg
+            text: portál Azure
+            href: /azure/azure-databricks/quickstart-create-databricks-workspace-portal
+          - image:
+              src: /azure/azure-databricks/media/index/logo_azure_resource_manager.svg
+            text: Šablona Resource Manageru
+            href: /azure/azure-databricks/quickstart-create-databricks-workspace-resource-manager-template
+  - title: Podrobné kurzy
     items:
-    - html: <a href="/azure/azure-databricks/databricks-extract-load-sql-data-warehouse">Extrakce, transformace a načtení dat</a>
-    - html: <a href="/azure/azure-databricks/databricks-stream-from-eventhubs">Streamování dat z Event Hubs</a>
-    - html: <a href="/azure/azure-databricks/databricks-sentiment-analysis-cognitive-services">Analýza mínění s využitím Cognitive Services</a>
-    - html: <a href="https://docs.azuredatabricks.net/spark/latest/structured-streaming/kafka.html" target="_blank">Streamování dat z HDInsight Kafka</a>
-- title: Referenční informace
-  items:
-  - type: list
-    style: cards
-    className: cardsD
+      - type: paragraph
+        text: 'Informace o práci s Azure Databricks:'
+      - type: list
+        style: ordered
+        items:
+          - html: '<a href="/azure/azure-databricks/databricks-extract-load-sql-data-warehouse">Extrakce, transformace a načtení dat</a>'
+          - html: <a href="/azure/azure-databricks/databricks-stream-from-eventhubs">Streamování dat z Event Hubs</a>
+          - html: <a href="/azure/azure-databricks/databricks-sentiment-analysis-cognitive-services">Analýza mínění s využitím Cognitive Services</a>
+          - html: '<a href="https://docs.azuredatabricks.net/spark/latest/structured-streaming/kafka.html" target="_blank">Streamování dat z HDInsight Kafka</a>'
+  - title: Referenční informace
     items:
-    - title: REST
-      html: <p><a href="/rest/api/databricks">REST API</a></p>
+      - type: list
+        style: cards
+        className: cardsD
+        items:
+          - title: REST
+            html: <p><a href="/rest/api/databricks">REST API</a></p>

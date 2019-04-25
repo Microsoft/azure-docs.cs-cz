@@ -1,14 +1,8 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 5f1d6005dd94bc700682e749f08c47356fcdc829
-ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
-ms.translationtype: HT
-ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56993329"
 documentType: LandingData
 title: Dokumentace k Azure Sentinelu verze Preview
 metadata:
-  title: Dokumentace k Azure Sentinelu verze Preview – kurzy, rychlá zprovoznění | Microsoft Doc
+  title: 'Dokumentace k Azure Sentinelu verze Preview – kurzy, rychlá zprovoznění | Microsoft Doc'
   meta.description: Azure Sentinel is a cloud-native SIEM that provides intelligent security analytics for your entire enterprise at cloud scale.
   services: sentinel
   author: cmcclister
@@ -20,49 +14,49 @@ metadata:
   ms.date: 02/28/19
   ms.author: cmcclister
 abstract:
-  description: Azure Sentinel Preview je správa akcí a informací o zabezpečení (SIEM) nativní v cloudu, která poskytuje inteligentní bezpečnostní analýzy pro celou firmu na úrovni cloudu. Získáte neomezenou rychlost a škálování v cloudu a budete se tak moci soustředit na to, na čem opravdu záleží. Můžete snadno shromažďovat data ze všech vašich cloudových nebo místních prostředků, Office 365, prostředků Azure a dalších cloudů. Integrované strojové učení od odborníků Microsoftu na bezpečnostní analýzy vám umožní efektivně detekovat hrozby. Díky integrovaným playbookům pro automatizaci a orchestraci můžete automatizovat reakce na hrozby.
+  description: 'Azure Sentinel Preview je správa akcí a informací o zabezpečení (SIEM) nativní v cloudu, která poskytuje inteligentní bezpečnostní analýzy pro celou firmu na úrovni cloudu. Získáte neomezenou rychlost a škálování v cloudu a budete se tak moci soustředit na to, na čem opravdu záleží. Můžete snadno shromažďovat data ze všech vašich cloudových nebo místních prostředků, Office 365, prostředků Azure a dalších cloudů. Integrované strojové učení od odborníků Microsoftu na bezpečnostní analýzy vám umožní efektivně detekovat hrozby. Díky integrovaným playbookům pro automatizaci a orchestraci můžete automatizovat reakce na hrozby.'
 sections:
-- title: Zprovoznění během 5 minut
-  items:
-  - type: paragraph
-    text: Naučte se, jak onboardovat data do Azure Sentinelu a získat přehled o vašich datech i potenciálních hrozbách.
-  - type: list
-    style: icon48
+  - title: Zprovoznění během 5 minut
     items:
-    - image:
-        src: media/index/deploy.svg
-      text: Onboarding Azure Sentinelu
-      href: /azure/sentinel/quickstart-onboard
-    - image:
-        src: media/index/get-started.svg
-      text: Začínáme s Azure Sentinelem
-      href: /azure/sentinel/quickstart-get-visibility
-- title: Podrobné kurzy
-  items:
-  - type: paragraph
-    text: Naučíte se definovat zásady zabezpečení, chránit prostředky před škodlivými aktivitami a reagovat na incidenty a výstrahy zabezpečení.
-  - type: list
-    style: ordered
+      - type: paragraph
+        text: 'Naučte se, jak onboardovat data do Azure Sentinelu a získat přehled o vašich datech i potenciálních hrozbách.'
+      - type: list
+        style: icon48
+        items:
+          - image:
+              src: media/index/deploy.svg
+            text: Onboarding Azure Sentinelu
+            href: /azure/sentinel/quickstart-onboard
+          - image:
+              src: media/index/get-started.svg
+            text: Začínáme s Azure Sentinelem
+            href: /azure/sentinel/quickstart-get-visibility
+  - title: Podrobné kurzy
     items:
-    - html: <a href="/azure/sentinel/tutorial-detect-threats">Detekce hrozeb s využitím Azure Sentinelu</a>
-    - html: <a href="/azure/sentinel/tutorial-respond-threats-playbook">Nastavení automatizovaných reakcí na hrozby</a>
-- title: Získávání dovedností pomocí Microsoft Learn
-  items:
-  - type: list
-    style: cards
-    className: cardsFTitle
+      - type: paragraph
+        text: 'Naučíte se definovat zásady zabezpečení, chránit prostředky před škodlivými aktivitami a reagovat na incidenty a výstrahy zabezpečení.'
+      - type: list
+        style: ordered
+        items:
+          - html: <a href="/azure/sentinel/tutorial-detect-threats">Detekce hrozeb s využitím Azure Sentinelu</a>
+          - html: <a href="/azure/sentinel/tutorial-respond-threats-playbook">Nastavení automatizovaných reakcí na hrozby</a>
+  - title: Získávání dovedností pomocí Microsoft Learn
     items:
-    - title: Úvod do zabezpečení v Azure
-      href: https://docs.microsoft.com/learn/azure
-      image:
-        src: media/index/tutorial.svg
-        href: https://docs.microsoft.com/learn/azure
-  - type: paragraph
-    text: <a href="/learn/browse/?term=security">Další interaktivní výuka...</a>
-- title: Referenční informace
-  items:
-  - type: list
-    style: cards
-    className: cardsD
+      - type: list
+        style: cards
+        className: cardsFTitle
+        items:
+          - title: Úvod do zabezpečení v Azure
+            href: 'https://docs.microsoft.com/learn/azure'
+            image:
+              src: media/index/tutorial.svg
+              href: 'https://docs.microsoft.com/learn/azure'
+      - type: paragraph
+        text: <a href="/learn/browse/?term=security">Další interaktivní výuka...</a>
+  - title: Referenční informace
     items:
-    - html: <a href="https://azure.microsoft.com/updates/?product=sentinel">Aktualizace služeb</a>
+      - type: list
+        style: cards
+        className: cardsD
+        items:
+          - html: '<a href="https://azure.microsoft.com/updates/?product=sentinel">Aktualizace služeb</a>'

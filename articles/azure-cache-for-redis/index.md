@@ -13,11 +13,11 @@ ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: yegu
 ms.openlocfilehash: c5de77f3862f3ca315c586e1ec1cbfc7b5b453a1
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56234845"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60829879"
 ---
 # <a name="azure-cache-for-redis-documentation"></a>Dokumentace ke službě Azure Cache for Redis
 

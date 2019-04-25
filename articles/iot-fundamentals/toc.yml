@@ -1,25 +1,18 @@
-items:
 - name: Internet věcí Azure
   href: index.md
 - name: Přehled
   items:
-  - name: Úvod
-    href: iot-introduction.md
-  - name: Technologie a služby Azure IoT
-    href: iot-services-and-technologies.md
+    - name: Úvod
+      href: iot-introduction.md
+    - name: Technologie a služby Azure IoT
+      href: iot-services-and-technologies.md
 - name: Zabezpečení
   items:
-  - name: Architektura zabezpečení
-    href: iot-security-architecture.md
-  - name: Osvědčené postupy zabezpečení
-    href: iot-security-best-practices.md
-  - name: Zabezpečené nasazení
-    href: iot-security-deployment.md
-  - name: Zabezpečení od počátku
-    href: iot-security-ground-up.md
-ms.openlocfilehash: dc5c08ea2a3376b4213e83495ff1dce697338d82
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
-ms.translationtype: HT
-ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57336712"
+    - name: Architektura zabezpečení
+      href: iot-security-architecture.md
+    - name: Osvědčené postupy zabezpečení
+      href: iot-security-best-practices.md
+    - name: Zabezpečené nasazení
+      href: iot-security-deployment.md
+    - name: Zabezpečení od počátku
+      href: iot-security-ground-up.md

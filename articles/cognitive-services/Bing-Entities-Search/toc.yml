@@ -1,102 +1,95 @@
-items:
 - name: Dokumentace k Vyhledávání entit Bingu
   href: index.yml
 - name: Přehled
   items:
-  - name: Co je Vyhledávání entit Bingu?
-    href: overview.md
-  - name: Porovnání rozhraní API pro vyhledávání Bingu
-    href: ../Bing-Web-Search/bing-api-comparison.md
-    maintainContext: true
+    - name: Co je Vyhledávání entit Bingu?
+      href: overview.md
+    - name: Porovnání rozhraní API pro vyhledávání Bingu
+      href: ../Bing-Web-Search/bing-api-comparison.md
+      maintainContext: true
 - name: Rychlá zprovoznění pro REST API
-  items:
-  - name: REST API
-    items:
-    - name: Pomocí C#
-      href: quickstarts/csharp.md
-    - name: Pomocí Javy
-      href: quickstarts/java.md
-    - name: Pomocí Node.js
-      href: quickstarts/nodejs.md
-    - name: Pomocí PHP
-      href: quickstarts/php.md
-    - name: Pomocí Pythonu
-      href: quickstarts/python.md
-    - name: Pomocí Ruby
-      href: quickstarts/ruby.md
-  - name: Sada SDK
-    items:
-    - name: Pomocí C#
-      href: quickstarts/entity-sdk-csharp-quickstart.md
-    - name: Pomocí Node.js
-      href: quickstarts/entity-sdk-node-quickstart.md
-    - name: Pomocí Pythonu
-      href: quickstarts/entity-sdk-python-quickstart.md
-    - name: Pomocí Javy
-      href: quickstarts/entity-sdk-java-quickstart.md
   expanded: true
+  items:
+    - name: REST API
+      items:
+        - name: 'Pomocí C#'
+          href: quickstarts/csharp.md
+        - name: Pomocí Javy
+          href: quickstarts/java.md
+        - name: Pomocí Node.js
+          href: quickstarts/nodejs.md
+        - name: Pomocí PHP
+          href: quickstarts/php.md
+        - name: Pomocí Pythonu
+          href: quickstarts/python.md
+        - name: Pomocí Ruby
+          href: quickstarts/ruby.md
+    - name: Sada SDK
+      items:
+        - name: 'Pomocí C#'
+          href: quickstarts/entity-sdk-csharp-quickstart.md
+        - name: Pomocí Node.js
+          href: quickstarts/entity-sdk-node-quickstart.md
+        - name: Pomocí Pythonu
+          href: quickstarts/entity-sdk-python-quickstart.md
+        - name: Pomocí Javy
+          href: quickstarts/entity-sdk-java-quickstart.md
 - name: Kurzy
   items:
-  - name: Sestavení jednostránkové webové aplikace
-    href: tutorial-bing-entities-search-single-page-app.md
+    - name: Sestavení jednostránkové webové aplikace
+      href: tutorial-bing-entities-search-single-page-app.md
 - name: Ukázky
   items:
-  - name: Ukázky kódů
-    href: https://azure.microsoft.com/resources/samples/?sort=0&service=cognitive-services&term=Bing+Entity+Search
+    - name: Ukázky kódů
+      href: 'https://azure.microsoft.com/resources/samples/?sort=0&service=cognitive-services&term=Bing+Entity+Search'
 - name: Návody
   items:
-  - name: Změna velikosti a oříznutí miniatur
-    href: resize-and-crop-thumbnails.md
+    - name: Změna velikosti a oříznutí miniatur
+      href: resize-and-crop-thumbnails.md
 - name: Koncepty
   items:
-  - name: Hledání entit
-    href: concepts/search-for-entities.md
-  - name: Odesílání žádostí o vyhledávání
-    href: concepts/sending-requests.md
+    - name: Hledání entit
+      href: concepts/search-for-entities.md
+    - name: Odesílání žádostí o vyhledávání
+      href: concepts/sending-requests.md
 - name: Referenční informace
   items:
-  - name: Požadavky rozhraní API pro vyhledávání Bingu na zobrazení a použití
-    href: ../Bing-Web-Search/use-display-requirements.md
-    maintainContext: true
-  - name: Rozhraní API Bingu pro vyhledávání entit v7
-    href: https://docs.microsoft.com/rest/api/cognitiveservices/bing-entities-api-v7-reference
-  - name: Sady SDK
-    items:
-    - name: .NET
-      href: https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/bingentitysearchapi?view=azure-dotnet
-    - name: Java
-      href: https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/entitysearch?view=azure-java-stable
-    - name: Python
-      href: https://docs.microsoft.com/python/api/overview/azure/cognitiveservices/entitysearch?view=azure-python
-    - name: Node.js
-      href: https://docs.microsoft.com/javascript/api/overview/azure/cognitiveservices/entitysearch?view=azure-node-latest
-    - name: Přejít
-      href: https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/entitysearch
+    - name: Požadavky rozhraní API pro vyhledávání Bingu na zobrazení a použití
+      href: ../Bing-Web-Search/use-display-requirements.md
+      maintainContext: true
+    - name: Rozhraní API Bingu pro vyhledávání entit v7
+      href: 'https://docs.microsoft.com/rest/api/cognitiveservices/bing-entities-api-v7-reference'
+    - name: Sady SDK
+      items:
+        - name: .NET
+          href: 'https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/bingentitysearchapi?view=azure-dotnet'
+        - name: Java
+          href: 'https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/entitysearch?view=azure-java-stable'
+        - name: Python
+          href: 'https://docs.microsoft.com/python/api/overview/azure/cognitiveservices/entitysearch?view=azure-python'
+        - name: Node.js
+          href: 'https://docs.microsoft.com/javascript/api/overview/azure/cognitiveservices/entitysearch?view=azure-node-latest'
+        - name: Přejít
+          href: 'https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/entitysearch'
 - name: Zdroje a prostředky
   items:
-  - name: Ceny
-    href: https://azure.microsoft.com/pricing/details/cognitive-services/bing-entity-search-api/
-  - name: UserVoice
-    href: https://cognitive.uservoice.com/forums/601036-bing-entity-search-api
-  - name: Stack Overflow
-    href: https://stackoverflow.com/search?q=bing+entity+search
-  - name: Regionální dostupnost
-    href: https://azure.microsoft.com/global-infrastructure/services/
-  - name: Plány Azure do budoucna
-    href: https://azure.microsoft.com/roadmap/
-  - name: Znalostní báze
-    href: https://cognitive.uservoice.com/knowledgebase/topics/127875-bing-search-web-image-video-news-autosuggest
-  - name: Získání klíče rozhraní API
-    href: https://azure.microsoft.com/try/cognitive-services/?api=bing-entities-search-api
-  - name: Vyzkoušejte si to!
-    href: https://dev.cognitive.microsoft.com/docs/services/7a3fb374be374859a823b79fd938cc65/
-  - name: Koncové body Vyhledávání entit Bingu
-    href: entity-search-endpoint.md
-  - name: Analýzy pro rozhraní API Bingu pro vyhledávání entit
-    href: bing-entity-stats.md
-ms.openlocfilehash: 6574b06a9aced43f381bcb106e0b6426bd6f4fd7
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
-ms.translationtype: HT
-ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55755787"
+    - name: Ceny
+      href: 'https://azure.microsoft.com/pricing/details/cognitive-services/bing-entity-search-api/'
+    - name: UserVoice
+      href: 'https://cognitive.uservoice.com/forums/601036-bing-entity-search-api'
+    - name: Stack Overflow
+      href: 'https://stackoverflow.com/search?q=bing+entity+search'
+    - name: Regionální dostupnost
+      href: 'https://azure.microsoft.com/global-infrastructure/services/'
+    - name: Plány Azure do budoucna
+      href: 'https://azure.microsoft.com/roadmap/'
+    - name: Znalostní báze
+      href: 'https://cognitive.uservoice.com/knowledgebase/topics/127875-bing-search-web-image-video-news-autosuggest'
+    - name: Získání klíče rozhraní API
+      href: 'https://azure.microsoft.com/try/cognitive-services/?api=bing-entities-search-api'
+    - name: Vyzkoušejte si to!
+      href: 'https://dev.cognitive.microsoft.com/docs/services/7a3fb374be374859a823b79fd938cc65/'
+    - name: Koncové body Vyhledávání entit Bingu
+      href: entity-search-endpoint.md
+    - name: Analýzy pro rozhraní API Bingu pro vyhledávání entit
+      href: bing-entity-stats.md

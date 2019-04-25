@@ -1,15 +1,9 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: a97c11b49574d0014ea7fa97f42420b22f9568d7
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
-ms.translationtype: HT
-ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58371152"
 documentType: LandingData
 title: Dokumentace ke službě Azure Machine Learning
 metadata:
-  title: Dokumentace ke službě Azure Machine Learning – kurzy, reference k rozhraní API | Microsoft Docs
-  description: Služba Azure Machine Learning poskytuje sady SDK a služby pro rychlou přípravu dat, trénování a nasazení modelů strojového učení. Zlepšete produktivitu a snižte náklady díky automatickému škálování výpočetního výkonu a kanálů. K těmto funkcím můžete přistupovat z opensourcových architektur Pythonu, jako jsou PyTorch, TensorFlow a scikit-learn. Pusťte se do práce pomocí rychlých zprovoznění a kurzů.
+  title: 'Dokumentace ke službě Azure Machine Learning – kurzy, reference k rozhraní API | Microsoft Docs'
+  description: 'Služba Azure Machine Learning poskytuje sady SDK a služby pro rychlou přípravu dat, trénování a nasazení modelů strojového učení. Zlepšete produktivitu a snižte náklady díky automatickému škálování výpočetního výkonu a kanálů. K těmto funkcím můžete přistupovat z opensourcových architektur Pythonu, jako jsou PyTorch, TensorFlow a scikit-learn. Pusťte se do práce pomocí rychlých zprovoznění a kurzů.'
   services: machine-learning
   ms.service: machine-learning
   ms.subservice: core
@@ -22,60 +16,60 @@ metadata:
   ms.tgt_pltfrm: na
   ms.devlang: na
 abstract:
-  description: Služba Azure Machine Learning poskytuje sady SDK a služby pro rychlou přípravu dat, trénování a nasazení modelů strojového učení. Zlepšete produktivitu a snižte náklady díky automatickému škálování výpočetních funkcí a kanálů. K těmto funkcím můžete přistupovat z opensourcových architektur Pythonu, jako jsou PyTorch, TensorFlow a scikit-learn. Pusťte se do práce pomocí rychlých zprovoznění a kurzů.
+  description: 'Služba Azure Machine Learning poskytuje sady SDK a služby pro rychlou přípravu dat, trénování a nasazení modelů strojového učení. Zlepšete produktivitu a snižte náklady díky automatickému škálování výpočetních funkcí a kanálů. K těmto funkcím můžete přistupovat z opensourcových architektur Pythonu, jako jsou PyTorch, TensorFlow a scikit-learn. Pusťte se do práce pomocí rychlých zprovoznění a kurzů.'
   aside:
     image:
-      alt: 
+      alt: null
       height: 130
       src: media/index/video.png
       width: 250
-    title: Přehrát video (9:58)
-    href: https://www.youtube.com/watch?v=GBDSBInvz08
+    title: 'Přehrát video (9:58)'
+    href: 'https://www.youtube.com/watch?v=GBDSBInvz08'
     width: 250
 sections:
-- title: Zprovoznění během 5 minut
-  items:
-  - type: paragraph
-    text: 'Po   <a href="setup-create-workspace">vytvoření pracovního prostoru</a> pro službu Azure Machine Learning můžete začít s využitím těchto rychlých zprovoznění:'
-  - type: list
-    style: unordered
+  - title: Zprovoznění během 5 minut
     items:
-    - html: <a href="quickstart-run-cloud-notebook">Spuštění experimentu v cloudu</a> (nevyžaduje se žádná instalace)
-    - html: <a href="quickstart-run-local-notebook">Spuštění experimentu s využitím místního serveru poznámkového bloku</a> (místní instalace SDK)
-- title: Podrobné kurzy
-  items:
-  - type: paragraph
-    text: 'Naučte se připravovat data, nastavovat experimenty, trénovat a zprovoznit vaše modely strojového učení:'
-  - type: list
-    style: unordered
+      - type: paragraph
+        text: "Po \_ <a href=\"setup-create-workspace\">vytvoření pracovního prostoru</a> pro službu Azure Machine Learning můžete začít s využitím těchto rychlých zprovoznění:"
+      - type: list
+        style: unordered
+        items:
+          - html: <a href="quickstart-run-cloud-notebook">Spuštění experimentu v cloudu</a> (nevyžaduje se žádná instalace)
+          - html: <a href="quickstart-run-local-notebook">Spuštění experimentu s využitím místního serveru poznámkového bloku</a> (místní instalace SDK)
+  - title: Podrobné kurzy
     items:
-    - html: <a href="tutorial-train-models-with-aml">Trénování</a> a <a href="tutorial-deploy-models-with-aml">nasazování</a> modelů klasifikace obrázků (<b>dvoudílná série</b>)
-    - html: <a href="tutorial-data-prep">Příprava dat</a> a <a href="tutorial-auto-train-models">použití automatizovaného strojového učení</a> k trénování a vyladění regresních modelů (<b>dvoudílná série</b>)
-- title: Ukázky
-  items:
-  - type: paragraph
-    text: <a href="samples-notebooks">Poznámkové bloky Jupyter</a> vám pomohou projít si tuto službu na Githubu.
-- title: Referenční informace
-  items:
-  - type: list
-    style: unordered
+      - type: paragraph
+        text: 'Naučte se připravovat data, nastavovat experimenty, trénovat a zprovoznit vaše modely strojového učení:'
+      - type: list
+        style: unordered
+        items:
+          - html: <a href="tutorial-train-models-with-aml">Trénování</a> a <a href="tutorial-deploy-models-with-aml">nasazování</a> modelů klasifikace obrázků (<b>dvoudílná série</b>)
+          - html: <a href="tutorial-data-prep">Příprava dat</a> a <a href="tutorial-auto-train-models">použití automatizovaného strojového učení</a> k trénování a vyladění regresních modelů (<b>dvoudílná série</b>)
+  - title: Ukázky
     items:
-    - html: '<a href="https://aka.ms/aml-sdk">Hlavní sada Python SDK:</a>: Základní funkce, automatizované strojové učení, kanály a další'
-    - html: '<a href="https://aka.ms/data-prep-sdk">Sada Data Prep</a> Python SDK: Příprava a transformace dat'
-    - html: '<a href="https://aka.ms/aml-monitoring-sdk">Sada Monitoring</a> Python SDK: Shromažďování dat z nasazených webových služeb'
-- title: Další technologie Azure Machine Learning
-  items:
-  - type: list
-    style: cards
-    className: cardsFTitle
+      - type: paragraph
+        text: <a href="samples-notebooks">Poznámkové bloky Jupyter</a> vám pomohou projít si tuto službu na Githubu.
+  - title: Referenční informace
     items:
-    - title: Azure Machine Learning Studio
-      href: /azure/machine-learning/studio/
-      image:
-        src: media/index/machine-learning-studio.svg
-        href: /azure/machine-learning/studio/
-    - title: Virtuální počítač pro datové vědy
-      href: /azure/machine-learning/data-science-virtual-machine/
-      image:
-        src: media/index/virtual-machines.svg
-        href: /azure/machine-learning/data-science-virtual-machine/
+      - type: list
+        style: unordered
+        items:
+          - html: '<a href="https://aka.ms/aml-sdk">Hlavní sada Python SDK:</a>: Základní funkce, automatizované strojové učení, kanály a další'
+          - html: '<a href="https://aka.ms/data-prep-sdk">Sada Data Prep</a> Python SDK: Příprava a transformace dat'
+          - html: '<a href="https://aka.ms/aml-monitoring-sdk">Sada Monitoring</a> Python SDK: Shromažďování dat z nasazených webových služeb'
+  - title: Další technologie Azure Machine Learning
+    items:
+      - type: list
+        style: cards
+        className: cardsFTitle
+        items:
+          - title: Azure Machine Learning Studio
+            href: /azure/machine-learning/studio/
+            image:
+              src: media/index/machine-learning-studio.svg
+              href: /azure/machine-learning/studio/
+          - title: Virtuální počítač pro datové vědy
+            href: /azure/machine-learning/data-science-virtual-machine/
+            image:
+              src: media/index/virtual-machines.svg
+              href: /azure/machine-learning/data-science-virtual-machine/

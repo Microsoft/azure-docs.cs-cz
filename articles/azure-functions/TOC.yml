@@ -1,309 +1,302 @@
-items:
 - name: Dokumentace ke službě Functions
   href: index.yml
 - name: Přehled
   items:
-  - name: Informace o službě Azure Functions
-    href: functions-overview.md
-  - name: Odolná služba Functions
-    href: durable/durable-functions-overview.md
-  - name: Porovnání bez serveru
-    href: functions-compare-logic-apps-ms-flow-webjobs.md
+    - name: Informace o službě Azure Functions
+      href: functions-overview.md
+    - name: Odolná služba Functions
+      href: durable/durable-functions-overview.md
+    - name: Porovnání bez serveru
+      href: functions-compare-logic-apps-ms-flow-webjobs.md
 - name: Šablony Rychlý start
-  items:
-  - name: Vytvoření funkce – Visual Studio
-    href: functions-create-your-first-function-visual-studio.md
-  - name: Vytvoření funkce – Visual Studio Code
-    href: functions-create-first-function-vs-code.md
-  - name: Vytvoření funkce – Java/Maven
-    href: functions-create-first-java-maven.md
-  - name: Vytvoření funkce – Python
-    href: functions-create-first-function-python.md
-  - name: Vytvoření funkce – Azure CLI
-    href: functions-create-first-azure-function-azure-cli.md
-  - name: Vytvoření funkce – portál
-    href: functions-create-first-azure-function.md
-  - name: Vytvoření funkce – Linux
-    href: functions-create-first-azure-function-azure-cli-linux.md
-  - name: Aktivační události
-    items:
-    - name: Azure Cosmos DB
-      href: functions-create-cosmos-db-triggered-function.md
-    - name: Blob Storage
-      href: functions-create-storage-blob-triggered-function.md
-    - name: Queue Storage
-      href: functions-create-storage-queue-triggered-function.md
-    - name: Časovač
-      href: functions-create-scheduled-function.md
-  - name: Integrace
-    items:
-    - name: Azure Cosmos DB
-      href: functions-integrate-store-unstructured-data-cosmosdb.md
-    - name: Úložiště
-      href: functions-integrate-storage-queue-output-binding.md
   expanded: true
+  items:
+    - name: Vytvoření funkce – Visual Studio
+      href: functions-create-your-first-function-visual-studio.md
+    - name: Vytvoření funkce – Visual Studio Code
+      href: functions-create-first-function-vs-code.md
+    - name: Vytvoření funkce – Java/Maven
+      href: functions-create-first-java-maven.md
+    - name: Vytvoření funkce – Python
+      href: functions-create-first-function-python.md
+    - name: Vytvoření funkce – Azure CLI
+      href: functions-create-first-azure-function-azure-cli.md
+    - name: Vytvoření funkce – portál
+      href: functions-create-first-azure-function.md
+    - name: Vytvoření funkce – Linux
+      href: functions-create-first-azure-function-azure-cli-linux.md
+    - name: Aktivační události
+      items:
+        - name: Azure Cosmos DB
+          href: functions-create-cosmos-db-triggered-function.md
+        - name: Blob Storage
+          href: functions-create-storage-blob-triggered-function.md
+        - name: Queue Storage
+          href: functions-create-storage-queue-triggered-function.md
+        - name: Časovač
+          href: functions-create-scheduled-function.md
+    - name: Integrace
+      items:
+        - name: Azure Cosmos DB
+          href: functions-integrate-store-unstructured-data-cosmosdb.md
+        - name: Úložiště
+          href: functions-integrate-storage-queue-output-binding.md
 - name: Kurzy
   items:
-  - name: Služba Functions s Logic Apps
-    href: functions-twitter-email.md
-  - name: Vytvoření rozhraní API bez serveru
-    href: functions-create-serverless-api.md
-  - name: Vytvoření definice OpenAPI
-    href: functions-openapi-definition.md
-  - name: Změna velikosti obrázků s využitím služby Event Grid
-    href: ../event-grid/resize-images-on-storage-blob-upload-event.md?toc=%2fazure%2fazure-functions%2ftoc.json
-  - name: Vytvoření webové aplikace bez serveru
-    href: https://docs.microsoft.com/azure/functions/tutorial-static-website-serverless-api-with-database
-  - name: Vytvoření vlastní linuxové image
-    href: functions-create-function-linux-custom-image.md
-  - name: Functions na zařízení IoT Edge
-    href: ../iot-edge/tutorial-deploy-function.md?toc=%2fazure%2fazure-functions%2ftoc.json
+    - name: Služba Functions s Logic Apps
+      href: functions-twitter-email.md
+    - name: Vytvoření rozhraní API bez serveru
+      href: functions-create-serverless-api.md
+    - name: Vytvoření definice OpenAPI
+      href: functions-openapi-definition.md
+    - name: Změna velikosti obrázků s využitím služby Event Grid
+      href: ../event-grid/resize-images-on-storage-blob-upload-event.md?toc=%2fazure%2fazure-functions%2ftoc.json
+    - name: Vytvoření webové aplikace bez serveru
+      href: 'https://docs.microsoft.com/azure/functions/tutorial-static-website-serverless-api-with-database'
+    - name: Vytvoření vlastní linuxové image
+      href: functions-create-function-linux-custom-image.md
+    - name: Functions na zařízení IoT Edge
+      href: ../iot-edge/tutorial-deploy-function.md?toc=%2fazure%2fazure-functions%2ftoc.json
 - name: Ukázky
   items:
-  - name: Ukázky kódů
-    href: https://azure.microsoft.com/resources/samples/?service=functions
-  - name: Azure CLI
-    href: functions-cli-samples.md
+    - name: Ukázky kódů
+      href: 'https://azure.microsoft.com/resources/samples/?service=functions'
+    - name: Azure CLI
+      href: functions-cli-samples.md
 - name: Koncepty
   items:
-  - name: Porovnání verze 1.x a 2.x
-    displayName: migrate, migration
-    href: functions-versions.md
-  - name: Plán Premium
-    href: functions-premium-plan.md
-  - name: Škálování a hostování
-    href: functions-scale.md
-  - name: Triggery a vazby
-    items:
+    - name: Porovnání verze 1.x a 2.x
+      href: functions-versions.md
+      displayName: 'migrate, migration'
+    - name: Plán Premium
+      href: functions-premium-plan.md
+    - name: Škálování a hostování
+      href: functions-scale.md
     - name: Triggery a vazby
-      href: functions-triggers-bindings.md
-    - name: Příklad vazby
-      href: functions-bindings-example.md
-    - name: Registrace rozšíření vazeb
-      href: functions-bindings-register.md
-    - name: Vzory výrazů vazeb
-      href: functions-bindings-expressions-patterns.md
-    - name: Použití návratových hodnot vazeb
-      href: functions-bindings-return-value.md
-    - name: Zpracování chyb vazeb
-      href: functions-bindings-errors.md
-  - name: Jazyky
-    items:
-    - name: Podporované jazyky
-      href: supported-languages.md
-    - name: Jazyk C# (knihovna tříd)
-      href: functions-dotnet-class-library.md
-    - name: Skript jazyka C# (.csx)
-      href: functions-reference-csharp.md
-    - name: F#
-      href: functions-reference-fsharp.md
-    - name: JavaScript
-      href: functions-reference-node.md
-    - name: Java
-      href: functions-reference-java.md
-    - name: Python
-      href: functions-reference-python.md
-  - name: Diagnostika
-    href: ../app-service/overview-diagnostics.md
-  - name: Otázky výkonu
-    href: functions-best-practices.md
-  - name: Proxy servery služby Functions
-    href: functions-proxies.md
-  - name: Možnosti sítí
-    href: functions-networking-options.md
-  - name: IP adresy
-    href: ip-addresses.md
-  - name: Místní funkce
-    href: functions-runtime-overview.md
+      items:
+        - name: Triggery a vazby
+          href: functions-triggers-bindings.md
+        - name: Příklad vazby
+          href: functions-bindings-example.md
+        - name: Registrace rozšíření vazeb
+          href: functions-bindings-register.md
+        - name: Vzory výrazů vazeb
+          href: functions-bindings-expressions-patterns.md
+        - name: Použití návratových hodnot vazeb
+          href: functions-bindings-return-value.md
+        - name: Zpracování chyb vazeb
+          href: functions-bindings-errors.md
+    - name: Jazyky
+      items:
+        - name: Podporované jazyky
+          href: supported-languages.md
+        - name: 'Jazyk C# (knihovna tříd)'
+          href: functions-dotnet-class-library.md
+        - name: 'Skript jazyka C# (.csx)'
+          href: functions-reference-csharp.md
+        - name: 'F#'
+          href: functions-reference-fsharp.md
+        - name: JavaScript
+          href: functions-reference-node.md
+        - name: Java
+          href: functions-reference-java.md
+        - name: Python
+          href: functions-reference-python.md
+    - name: Diagnostika
+      href: ../app-service/overview-diagnostics.md
+    - name: Otázky výkonu
+      href: functions-best-practices.md
+    - name: Proxy servery služby Functions
+      href: functions-proxies.md
+    - name: Možnosti sítí
+      href: functions-networking-options.md
+    - name: IP adresy
+      href: ip-addresses.md
+    - name: Místní funkce
+      href: functions-runtime-overview.md
 - name: Návody
   items:
-  - name: Vývoj
-    items:
-    - name: Příručka pro vývojáře
-      href: functions-reference.md
-    - name: Testování funkcí
-      href: functions-test-a-function.md
-    - name: Místní vývoj a ladění
-      href: functions-develop-local.md
-    - name: Vývoj sady Visual Studio
-      href: functions-develop-vs.md
-    - name: Vývoj s využitím základních nástrojů
-      href: functions-run-local.md
-    - name: Vývoj s využitím IntelliJ IDEA
-      href: functions-create-maven-intellij.md
-    - name: Vývoj s využitím Eclipse
-      href: functions-create-maven-eclipse.md
-    - name: Vytvoření linuxové aplikace funkcí
-      href: create-function-app-linux-app-service-plan.md
-    - name: Správa připojení
-      href: manage-connections.md
-    - name: Zpracování chyb
-      href: functions-bindings-error-pages.md
-    - name: Ruční spuštění funkce neaktivované protokolem HTTP
-      href: functions-manually-run-non-http.md
-    - name: Ladění triggeru Event Grid v místním prostředí
-      href: functions-debug-event-grid-trigger-local.md
-    - name: Azure for Students Starter
-      href: functions-create-student-starter.md
-  - name: Nasazení
-    items:
-    - name: Průběžné nasazování
-      href: functions-continuous-deployment.md
-    - name: Nasazení souboru Zip
-      href: deployment-zip-push.md
-    - name: Spuštění z balíčku
-      href: run-functions-from-deployment-package.md
-    - name: Automatizace nasazení prostředků
-      href: functions-infrastructure-as-code.md
-    - name: Místní funkce
-      href: functions-runtime-install.md
-    - name: Nasazení s využitím modulu plug-in Jenkinse
-      href: /azure/jenkins/jenkins-azure-functions-deploy
-      maintainContext: true
-  - name: Konfigurace
-    items:
-    - name: Správa aplikace funkcí
-      href: functions-how-to-use-azure-function-app-settings.md
-    - name: Nastavení verze modulu runtime
-      href: set-runtime-version.md
-    - name: Ruční registrace rozšíření
-      href: install-update-binding-extensions-manual.md
-    - name: Vypnutí funkce
-      href: disable-function.md
-  - name: Monitorování
-    href: functions-monitoring.md
-  - name: Zabezpečení
-    items:
-    - name: Zakoupení certifikátů SSL
-      href: ../app-service/web-sites-purchase-ssl-web-site.md?toc=%2fazure%2fazure-functions%2ftoc.json
-    - name: Ověřování uživatelů
+    - name: Vývoj
       items:
-      - name: Ověřování pomocí Azure AD
-        href: ../app-service/configure-authentication-provider-aad.md?toc=%2fazure%2fazure-functions%2ftoc.json
-      - name: Ověřování pomocí Facebooku
-        href: ../app-service/configure-authentication-provider-facebook.md?toc=%2fazure%2fazure-functions%2ftoc.json
-      - name: Ověřování pomocí Googlu
-        href: ../app-service/configure-authentication-provider-google.md?toc=%2fazure%2fazure-functions%2ftoc.json
-      - name: Ověřování pomocí účtu Microsoft
-        href: ../app-service/configure-authentication-provider-microsoft.md?toc=%2fazure%2fazure-functions%2ftoc.json
-      - name: Ověřování pomocí Twitteru
-        href: ../app-service/configure-authentication-provider-twitter.md?toc=%2fazure%2fazure-functions%2ftoc.json
-    - name: Pokročilé ověřování
-      href: ../app-service/app-service-authentication-how-to.md?toc=%2fazure%2fazure-functions%2ftoc.json
-    - name: Omezení IP adres
-      href: ../app-service/app-service-ip-restrictions.md?toc=%2fazure%2fazure-functions%2ftoc.json
-    - name: Použití spravované identity
-      href: ../app-service/overview-managed-identity.md?toc=%2fazure%2fazure-functions%2ftoc.json
-    - name: Odkazování na tajné klíče ze služby Key Vault
-      href: ../app-service/app-service-key-vault-references.md?toc=%2fazure%2fazure-functions%2ftoc.json
-  - name: Integrace
-    items:
-    - name: Připojení ke službě SQL Database
-      href: functions-scenario-database-table-cleanup.md
-    - name: Připojení k virtuální síti
-      href: functions-create-vnet.md
-    - name: Vytvoření definice OpenAPI 2.0
-      href: functions-api-definition-getting-started.md
-    - name: Export do PowerApps a Microsoft Flow
-      href: app-service-export-api-to-powerapps-and-flow.md
-    - name: Volání funkce z PowerApps
-      href: functions-powerapps-scenario.md
-    - name: Volání funkce z Microsoft Flow
-      href: functions-flow-scenario.md
-    - name: Použití spravované identity
-      href: ../app-service/overview-managed-identity.md?toc=%2fazure%2fazure-functions%2ftoc.json
-  - name: Řešení potíží
-    items:
-    - name: Řešení potíží s úložištěm
-      href: functions-recover-storage-account.md
+        - name: Příručka pro vývojáře
+          href: functions-reference.md
+        - name: Testování funkcí
+          href: functions-test-a-function.md
+        - name: Místní vývoj a ladění
+          href: functions-develop-local.md
+        - name: Vývoj sady Visual Studio
+          href: functions-develop-vs.md
+        - name: Vývoj s využitím základních nástrojů
+          href: functions-run-local.md
+        - name: Vývoj s využitím IntelliJ IDEA
+          href: functions-create-maven-intellij.md
+        - name: Vývoj s využitím Eclipse
+          href: functions-create-maven-eclipse.md
+        - name: Vytvoření linuxové aplikace funkcí
+          href: create-function-app-linux-app-service-plan.md
+        - name: Správa připojení
+          href: manage-connections.md
+        - name: Zpracování chyb
+          href: functions-bindings-error-pages.md
+        - name: Ruční spuštění funkce neaktivované protokolem HTTP
+          href: functions-manually-run-non-http.md
+        - name: Ladění triggeru Event Grid v místním prostředí
+          href: functions-debug-event-grid-trigger-local.md
+        - name: Azure for Students Starter
+          href: functions-create-student-starter.md
+    - name: Nasazení
+      items:
+        - name: Průběžné nasazování
+          href: functions-continuous-deployment.md
+        - name: Nasazení souboru Zip
+          href: deployment-zip-push.md
+        - name: Spuštění z balíčku
+          href: run-functions-from-deployment-package.md
+        - name: Automatizace nasazení prostředků
+          href: functions-infrastructure-as-code.md
+        - name: Místní funkce
+          href: functions-runtime-install.md
+        - name: Nasazení s využitím modulu plug-in Jenkinse
+          href: /azure/jenkins/jenkins-azure-functions-deploy
+          maintainContext: true
+    - name: Konfigurace
+      items:
+        - name: Správa aplikace funkcí
+          href: functions-how-to-use-azure-function-app-settings.md
+        - name: Nastavení verze modulu runtime
+          href: set-runtime-version.md
+        - name: Ruční registrace rozšíření
+          href: install-update-binding-extensions-manual.md
+        - name: Vypnutí funkce
+          href: disable-function.md
+    - name: Monitorování
+      href: functions-monitoring.md
+    - name: Zabezpečení
+      items:
+        - name: Zakoupení certifikátů SSL
+          href: ../app-service/web-sites-purchase-ssl-web-site.md?toc=%2fazure%2fazure-functions%2ftoc.json
+        - name: Ověřování uživatelů
+          items:
+            - name: Ověřování pomocí Azure AD
+              href: ../app-service/configure-authentication-provider-aad.md?toc=%2fazure%2fazure-functions%2ftoc.json
+            - name: Ověřování pomocí Facebooku
+              href: ../app-service/configure-authentication-provider-facebook.md?toc=%2fazure%2fazure-functions%2ftoc.json
+            - name: Ověřování pomocí Googlu
+              href: ../app-service/configure-authentication-provider-google.md?toc=%2fazure%2fazure-functions%2ftoc.json
+            - name: Ověřování pomocí účtu Microsoft
+              href: ../app-service/configure-authentication-provider-microsoft.md?toc=%2fazure%2fazure-functions%2ftoc.json
+            - name: Ověřování pomocí Twitteru
+              href: ../app-service/configure-authentication-provider-twitter.md?toc=%2fazure%2fazure-functions%2ftoc.json
+        - name: Pokročilé ověřování
+          href: ../app-service/app-service-authentication-how-to.md?toc=%2fazure%2fazure-functions%2ftoc.json
+        - name: Omezení IP adres
+          href: ../app-service/app-service-ip-restrictions.md?toc=%2fazure%2fazure-functions%2ftoc.json
+        - name: Použití spravované identity
+          href: ../app-service/overview-managed-identity.md?toc=%2fazure%2fazure-functions%2ftoc.json
+        - name: Odkazování na tajné klíče ze služby Key Vault
+          href: ../app-service/app-service-key-vault-references.md?toc=%2fazure%2fazure-functions%2ftoc.json
+    - name: Integrace
+      items:
+        - name: Připojení ke službě SQL Database
+          href: functions-scenario-database-table-cleanup.md
+        - name: Připojení k virtuální síti
+          href: functions-create-vnet.md
+        - name: Vytvoření definice OpenAPI 2.0
+          href: functions-api-definition-getting-started.md
+        - name: Export do PowerApps a Microsoft Flow
+          href: app-service-export-api-to-powerapps-and-flow.md
+        - name: Volání funkce z PowerApps
+          href: functions-powerapps-scenario.md
+        - name: Volání funkce z Microsoft Flow
+          href: functions-flow-scenario.md
+        - name: Použití spravované identity
+          href: ../app-service/overview-managed-identity.md?toc=%2fazure%2fazure-functions%2ftoc.json
+    - name: Řešení potíží
+      items:
+        - name: Řešení potíží s úložištěm
+          href: functions-recover-storage-account.md
 - name: Referenční informace
   items:
-  - name: Referenční informace k rozhraní API
-    items:
-    - name: Java
-      href: https://docs.microsoft.com/java/api/overview/azure/functions/runtime?view=azure-java-stable
-    - name: Python
-      href: https://docs.microsoft.com/python/api/azure-functions/azure.functions?view=azure-python
-  - name: Reference k nastavení aplikací
-    href: functions-app-settings.md
-  - name: Vazby
-    items:
-    - name: Blob Storage
-      href: functions-bindings-storage-blob.md
-    - name: Azure Cosmos DB
+    - name: Referenční informace k rozhraní API
       items:
-      - name: Functions 1.x
-        href: functions-bindings-cosmosdb.md
-      - name: Functions 2.x
-        href: functions-bindings-cosmosdb-v2.md
-    - name: Event Grid
-      href: functions-bindings-event-grid.md
-    - name: Event Hubs
-      href: functions-bindings-event-hubs.md
-    - name: IoT Hub
-      href: functions-bindings-event-iot.md
-    - name: HTTP a webhooky
-      href: functions-bindings-http-webhook.md
-    - name: Microsoft Graph
-      href: functions-bindings-microsoft-graph.md
-    - name: Mobile Apps
-      href: functions-bindings-mobile-apps.md
-    - name: Notification Hubs
-      href: functions-bindings-notification-hubs.md
-    - name: Queue Storage
-      href: functions-bindings-storage-queue.md
-    - name: SendGrid
-      href: functions-bindings-sendgrid.md
-    - name: Service Bus
-      href: functions-bindings-service-bus.md
-    - name: Služba SignalR
-      href: functions-bindings-signalr-service.md
-    - name: Úložiště Table
-      href: functions-bindings-storage-table.md
-    - name: Časovač
-      href: functions-bindings-timer.md
-    - name: Twilio
-      href: functions-bindings-twilio.md
-  - name: Reference k host.json
-    href: functions-host-json.md
-    items:
-    - name: Functions 2.x
+        - name: Java
+          href: 'https://docs.microsoft.com/java/api/overview/azure/functions/runtime?view=azure-java-stable'
+        - name: Python
+          href: 'https://docs.microsoft.com/python/api/azure-functions/azure.functions?view=azure-python'
+    - name: Reference k nastavení aplikací
+      href: functions-app-settings.md
+    - name: Vazby
+      items:
+        - name: Blob Storage
+          href: functions-bindings-storage-blob.md
+        - name: Azure Cosmos DB
+          items:
+            - name: Functions 1.x
+              href: functions-bindings-cosmosdb.md
+            - name: Functions 2.x
+              href: functions-bindings-cosmosdb-v2.md
+        - name: Event Grid
+          href: functions-bindings-event-grid.md
+        - name: Event Hubs
+          href: functions-bindings-event-hubs.md
+        - name: IoT Hub
+          href: functions-bindings-event-iot.md
+        - name: HTTP a webhooky
+          href: functions-bindings-http-webhook.md
+        - name: Microsoft Graph
+          href: functions-bindings-microsoft-graph.md
+        - name: Mobile Apps
+          href: functions-bindings-mobile-apps.md
+        - name: Notification Hubs
+          href: functions-bindings-notification-hubs.md
+        - name: Queue Storage
+          href: functions-bindings-storage-queue.md
+        - name: SendGrid
+          href: functions-bindings-sendgrid.md
+        - name: Service Bus
+          href: functions-bindings-service-bus.md
+        - name: Služba SignalR
+          href: functions-bindings-signalr-service.md
+        - name: Úložiště Table
+          href: functions-bindings-storage-table.md
+        - name: Časovač
+          href: functions-bindings-timer.md
+        - name: Twilio
+          href: functions-bindings-twilio.md
+    - name: Reference k host.json
       href: functions-host-json.md
-    - name: Functions 1.x
-      href: functions-host-json-v1.md
-  - name: Nejčastější dotazy k sítím
-    href: functions-networking-faq.md
-  - name: Reference k OpenAPI
-    href: functions-api-definition.md
+      items:
+        - name: Functions 2.x
+          href: functions-host-json.md
+        - name: Functions 1.x
+          href: functions-host-json-v1.md
+    - name: Nejčastější dotazy k sítím
+      href: functions-networking-faq.md
+    - name: Reference k OpenAPI
+      href: functions-api-definition.md
 - name: Zdroje a prostředky
   items:
-  - name: Získávání dovedností pomocí Microsoft Learn
-    href: /learn/browse/?products=azure-functions
-  - name: Plány Azure do budoucna
-    href: https://azure.microsoft.com/roadmap/?category=compute
-  - name: Ceny
-    href: https://azure.microsoft.com/pricing/details/functions/
-  - name: Cenová kalkulačka
-    href: https://azure.microsoft.com/pricing/calculator/
-  - name: Regionální dostupnost
-    href: https://azure.microsoft.com/regions/services/
-  - name: Videa
-    href: https://www.youtube.com/c/AzureFunctions
-  - name: Fórum MSDN
-    href: https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureFunctions
-  - name: Stack Overflow
-    href: https://stackoverflow.com/questions/tagged/azure-functions
-  - name: Twitter
-    href: https://twitter.com/azurefunctions
-  - name: Poskytnutí zpětné vazby k produktu
-    href: https://feedback.azure.com/forums/355860-azure-functions
-  - name: Úložiště GitHub – Azure Functions
-    href: https://github.com/Azure/Azure-Functions/
-  - name: Aktualizace služeb
-    href: https://azure.microsoft.com/updates/?product=functions&updatetype=&platform=
-ms.openlocfilehash: b8f86a7da1e083e222c20c49af4f66add8790cda
-ms.sourcegitcommit: b8a8d29fdf199158d96736fbbb0c3773502a092d
-ms.translationtype: HT
-ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/15/2019
-ms.locfileid: "59564937"
+    - name: Získávání dovedností pomocí Microsoft Learn
+      href: /learn/browse/?products=azure-functions
+    - name: Plány Azure do budoucna
+      href: 'https://azure.microsoft.com/roadmap/?category=compute'
+    - name: Ceny
+      href: 'https://azure.microsoft.com/pricing/details/functions/'
+    - name: Cenová kalkulačka
+      href: 'https://azure.microsoft.com/pricing/calculator/'
+    - name: Regionální dostupnost
+      href: 'https://azure.microsoft.com/regions/services/'
+    - name: Videa
+      href: 'https://www.youtube.com/c/AzureFunctions'
+    - name: Fórum MSDN
+      href: 'https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureFunctions'
+    - name: Stack Overflow
+      href: 'https://stackoverflow.com/questions/tagged/azure-functions'
+    - name: Twitter
+      href: 'https://twitter.com/azurefunctions'
+    - name: Poskytnutí zpětné vazby k produktu
+      href: 'https://feedback.azure.com/forums/355860-azure-functions'
+    - name: Úložiště GitHub – Azure Functions
+      href: 'https://github.com/Azure/Azure-Functions/'
+    - name: Aktualizace služeb
+      href: 'https://azure.microsoft.com/updates/?product=functions&updatetype=&platform='

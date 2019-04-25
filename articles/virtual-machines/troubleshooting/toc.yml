@@ -1,112 +1,113 @@
-items:
 - name: Řešení potíží s virtuálními počítači Azure
   href: index.md
 - name: Selhání přidělení
   items:
-  - name: Selhání přidělení
-    href: allocation-failure.md
-  - name: Selhání přidělení pro klasická nasazení
-    href: allocation-failure-classic.md
+    - name: Selhání přidělení
+      href: allocation-failure.md
+    - name: Selhání přidělení pro klasická nasazení
+      href: allocation-failure-classic.md
 - name: Protokol RDP
   href: rdp.md
   items:
-  - name: Resetování protokolu RDP
-    href: reset-rdp.md
-  - name: Řešení potíží s protokolem RDP
-    href: troubleshoot-rdp-connection.md
-  - name: Podrobné řešení potíží s protokolem RDP
-    href: detailed-troubleshoot-rdp.md
-  - name: Řešení chyby protokolu RDP kvůli zablokování DHCP
-    href: troubleshoot-rdp-dhcp-disabled.md
-  - name: Řešení chyby protokolu RDP kvůli nastavení NSG
-    href: troubleshoot-rdp-nsg-problem.md
-  - name: Řešení konkrétních chyb
-    href: troubleshoot-specific-rdp-errors.md
-  - name: Řešení potíží s chybějícími licenčními servery
-    href: troubleshoot-rdp-no-license-server.md
-  - name: Řešení potíží se službami vzdálené plochy
-    href: troubleshoot-remote-desktop-services-issues.md
-  - name: Řešení potíží s vnitřní chybou
-    href: Troubleshoot-rdp-internal-error.md
-  - name: Řešení potíží s častým odpojováním připojení
-    href: troubleshoot-rdp-intermittent-connectivity.md
-  - name: Řešení potíží s obecnou chybou
-    href: troubleshoot-rdp-general-error.md
-  - name: Řešení chyb ověřování
-    href: troubleshoot-authentication-error-rdp-vm.md
-  - name: Řešení potíží s připojením RDP virtuálních počítačů Azure podle ID události
-    href: event-id-troubleshoot-vm-rdp-connecton.md
-  - name: Řešení chyby protokolu RDP na virtuálním počítači kvůli statické adrese IP
-    href: troubleshoot-rdp-static-ip.md
-  - name: Řešení chyby protokolu RDP na virtuálním počítači kvůli zablokování síťové karty
-    href: troubleshoot-rdp-nic-disabled.md
-  - name: Řešení chyby protokolu RDP způsobené bezpečným režimem
-    href: troubleshoot-rdp-safe-mode.md
-  - name: Zakázání brány firewall hostovaného operačního systému na virtuálním počítači Azure
-    href: disable-guest-os-firewall-windows.md
-  - name: Povolení nebo zakázání pravidla brány firewall na hostovaném operačním systému
-    href: enable-disable-firewall-rule-guest-os.md
-  - name: Brána firewall hostovaného operačního systému blokuje příchozí provoz
-    href: guest-os-firewall-blocking-inbound-traffic.md
-  - name: Brána firewall hostovaného operačního systému je chybně nakonfigurovaná
-    href: guest-os-firewall-misconfigured.md
-  - name: Řešení chyby protokolu RDP způsobené netvsc.sys
-    href: troubleshoot-rdp-driver-netvsc.md
+    - name: Resetování protokolu RDP
+      href: reset-rdp.md
+    - name: Řešení potíží s protokolem RDP
+      href: troubleshoot-rdp-connection.md
+    - name: Podrobné řešení potíží s protokolem RDP
+      href: detailed-troubleshoot-rdp.md
+    - name: Řešení chyby protokolu RDP kvůli zablokování DHCP
+      href: troubleshoot-rdp-dhcp-disabled.md
+    - name: Řešení chyby protokolu RDP kvůli nastavení NSG
+      href: troubleshoot-rdp-nsg-problem.md
+    - name: Řešení konkrétních chyb
+      href: troubleshoot-specific-rdp-errors.md
+    - name: Řešení potíží s chybějícími licenčními servery
+      href: troubleshoot-rdp-no-license-server.md
+    - name: Řešení potíží se službami vzdálené plochy
+      href: troubleshoot-remote-desktop-services-issues.md
+    - name: Řešení potíží s vnitřní chybou
+      href: Troubleshoot-rdp-internal-error.md
+    - name: Řešení potíží s častým odpojováním připojení
+      href: troubleshoot-rdp-intermittent-connectivity.md
+    - name: Řešení potíží s obecnou chybou
+      href: troubleshoot-rdp-general-error.md
+    - name: Řešení chyb ověřování
+      href: troubleshoot-authentication-error-rdp-vm.md
+    - name: Řešení potíží s připojením RDP virtuálních počítačů Azure podle ID události
+      href: event-id-troubleshoot-vm-rdp-connecton.md
+    - name: Řešení chyby protokolu RDP na virtuálním počítači kvůli statické adrese IP
+      href: troubleshoot-rdp-static-ip.md
+    - name: Řešení chyby protokolu RDP na virtuálním počítači kvůli zablokování síťové karty
+      href: troubleshoot-rdp-nic-disabled.md
+    - name: Řešení chyby protokolu RDP způsobené bezpečným režimem
+      href: troubleshoot-rdp-safe-mode.md
+    - name: Zakázání brány firewall hostovaného operačního systému na virtuálním počítači Azure
+      href: disable-guest-os-firewall-windows.md
+    - name: Povolení nebo zakázání pravidla brány firewall na hostovaném operačním systému
+      href: enable-disable-firewall-rule-guest-os.md
+    - name: Brána firewall hostovaného operačního systému blokuje příchozí provoz
+      href: guest-os-firewall-blocking-inbound-traffic.md
+    - name: Brána firewall hostovaného operačního systému je chybně nakonfigurovaná
+      href: guest-os-firewall-misconfigured.md
+    - name: Řešení chyby protokolu RDP způsobené netvsc.sys
+      href: troubleshoot-rdp-driver-netvsc.md
 - name: SSH
   items:
-  - name: Řešení potíží s protokolem SSH
-    href: troubleshoot-ssh-connection.md
-  - name: Řešení potíží s chybami systému souborů
-    href: https://support.microsoft.com/help/3213321
-  - name: Řešení potíží při spuštění souvisejících s jádrem
-    href: https://support.microsoft.com/help/4091524
-  - name: Řešení potíží s chybami fstab
-    href: https://support.microsoft.com/help/3206699
-  - name: Podrobné řešení potíží s protokolem SSH
-    href: detailed-troubleshoot-ssh-connection.md
+    - name: Řešení potíží s protokolem SSH
+      href: troubleshoot-ssh-connection.md
+    - name: Řešení potíží s chybami systému souborů
+      href: 'https://support.microsoft.com/help/3213321'
+    - name: Řešení potíží při spuštění souvisejících s jádrem
+      href: 'https://support.microsoft.com/help/4091524'
+    - name: Řešení potíží s chybami fstab
+      href: 'https://support.microsoft.com/help/3206699'
+    - name: Podrobné řešení potíží s protokolem SSH
+      href: detailed-troubleshoot-ssh-connection.md
 - name: Běžné chybové zprávy
   href: error-messages.md
 - name: Problémy s výkonem virtuálních počítačů Windows
   href: performance-diagnostics.md
   items:
-  - name: Použití PerfInsights
-    href: how-to-use-perfInsights.md
-  - name: Rozšíření Diagnostika výkonu
-    href: performance-diagnostics-vm-extension.md
+    - name: Použití PerfInsights
+      href: how-to-use-perfInsights.md
+    - name: Rozšíření Diagnostika výkonu
+      href: performance-diagnostics-vm-extension.md
 - name: Offline instalace agenta virtuálního počítače s Windows
   href: install-vm-agent-offline.md
 - name: Znovunasazení virtuálního počítače
   items:
-  - name: Linux
-    href: redeploy-to-new-node-linux.md
-  - name: Windows
-    href: redeploy-to-new-node-windows.md
+    - name: Linux
+      href: redeploy-to-new-node-linux.md
+    - name: Windows
+      href: redeploy-to-new-node-windows.md
 - name: Resetování hesla pro virtuální počítač
   items:
-  - name: Windows
-    href: reset-local-password-without-agent.md
-  - name: Linux
-    href: reset-password.md
+    - name: Windows
+      href: reset-local-password-without-agent.md
+    - name: Linux
+      href: reset-password.md
 - name: Resetování síťové karty
   href: reset-network-interface.md
 - name: Restartování nebo změna velikosti virtuálního počítače
   href: restart-resize-error-troubleshooting.md
 - name: Použití sériové konzoly
   items:
-  - name: Virtuální počítači s Linuxem
-    href: serial-console-linux.md
-    items:
-    - name: Sériová konzola – GRUB / režim jednoho uživatele
-      href: serial-console-grub-single-user-mode.md
-    - name: Sériová konzola – NMI/SysRq
-      href: serial-console-nmi-sysrq.md
-  - name: Virtuální počítač s Windows
-    href: serial-console-windows.md
-    items:
-    - name: Příkazy PowerShellu a CMD
-      href: serial-console-cmd-ps-commands.md
+    - name: Virtuální počítači s Linuxem
+      href: serial-console-linux.md
+      items:
+        - name: Sériová konzola – GRUB / režim jednoho uživatele
+          href: serial-console-grub-single-user-mode.md
+        - name: Sériová konzola – NMI/SysRq
+          href: serial-console-nmi-sysrq.md
+    - name: Virtuální počítač s Windows
+      href: serial-console-windows.md
+      items:
+        - name: Příkazy PowerShellu a CMD
+          href: serial-console-cmd-ps-commands.md
 - name: Chyby při odstraňování prostředků úložiště
   href: storage-resource-deletion-errors.md
+- name: Chyby při odstraňování klasických prostředků úložiště
+  href: storage-classic-cannot-delete-storage-account-container-vhd.md
 - name: Neočekávaná restartování virtuálních počítačů s připojenými virtuálními pevnými disky
   href: unexpected-reboots-attached-vhds.md
 - name: Problémy s aktivací Windows
@@ -117,51 +118,51 @@ items:
   href: troubleshoot-app-connection.md
 - name: Nová nasazení virtuálních počítačů
   items:
-  - name: Linux
-    href: troubleshoot-deployment-new-vm-linux.md
-  - name: Windows
-    href: troubleshoot-deployment-new-vm-windows.md
+    - name: Linux
+      href: troubleshoot-deployment-new-vm-linux.md
+    - name: Windows
+      href: troubleshoot-deployment-new-vm-windows.md
 - name: Řešení potíží s nasazeními
   items:
-  - name: Linux
-    href: troubleshoot-deploy-vm-linux.md
-  - name: Windows
-    href: troubleshoot-deploy-vm-windows.md
+    - name: Linux
+      href: troubleshoot-deploy-vm-linux.md
+    - name: Windows
+      href: troubleshoot-deploy-vm-windows.md
 - name: Změna názvů zařízení
   href: troubleshoot-device-names-problems.md
 - name: Přístup k obnovení virtuálního počítače
   items:
-  - name: Windows
-    items:
-    - name: PowerShell
-      href: troubleshoot-recovery-disks-windows.md
-    - name: portál Azure
-      href: troubleshoot-recovery-disks-portal-windows.md
-  - name: Linux
-    items:
-    - name: Rozhraní příkazového řádku
-      href: troubleshoot-recovery-disks-linux.md
-    - name: portál Azure
-      href: troubleshoot-recovery-disks-portal-linux.md
+    - name: Windows
+      items:
+        - name: PowerShell
+          href: troubleshoot-recovery-disks-windows.md
+        - name: portál Azure
+          href: troubleshoot-recovery-disks-portal-windows.md
+    - name: Linux
+      items:
+        - name: Rozhraní příkazového řádku
+          href: troubleshoot-recovery-disks-linux.md
+        - name: portál Azure
+          href: troubleshoot-recovery-disks-portal-linux.md
 - name: Chyby spouštění
   href: boot-error-troubleshoot.md
   items:
-  - name: Diagnostika spouštění
-    href: boot-diagnostics.md
-  - name: Chyby nástroje BitLocker
-    href: troubleshoot-bitlocker-boot-error.md
-  - name: Kontrola chyb systému souborů
-    href: troubleshoot-check-disk-boot-error.md
-  - name: Chyby typu modrá obrazovka
-    href: troubleshoot-common-blue-screen-error.md
-  - name: Spuštění virtuálního počítače je zablokované
-    href: troubleshoot-vm-boot-configure-update.md
-  - name: Selhání klíčových služeb
-    href: troubleshoot-critical-service-failed-boot-error.md
-  - name: Smyčka restartování
-    href: troubleshoot-reboot-loop.md
-  - name: Zablokování v aktualizaci Windows
-    href: troubleshoot-stuck-updating-boot-error.md
+    - name: Diagnostika spouštění
+      href: boot-diagnostics.md
+    - name: Chyby nástroje BitLocker
+      href: troubleshoot-bitlocker-boot-error.md
+    - name: Kontrola chyb systému souborů
+      href: troubleshoot-check-disk-boot-error.md
+    - name: Chyby typu modrá obrazovka
+      href: troubleshoot-common-blue-screen-error.md
+    - name: Spuštění virtuálního počítače je zablokované
+      href: troubleshoot-vm-boot-configure-update.md
+    - name: Selhání klíčových služeb
+      href: troubleshoot-critical-service-failed-boot-error.md
+    - name: Smyčka restartování
+      href: troubleshoot-reboot-loop.md
+    - name: Zablokování v aktualizaci Windows
+      href: troubleshoot-stuck-updating-boot-error.md
 - name: Chyby způsobené omezením provozu
   href: troubleshooting-throttling-errors.md
 - name: Použití vnořené virtualizace
@@ -170,9 +171,3 @@ items:
   href: understand-vm-reboot.md
 - name: Nástroje pro řešení potíží
   href: remote-tools-troubleshoot-azure-vm-issues.md
-ms.openlocfilehash: b745b9e42c700ea446d934df7d2e3201b555f075
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
-ms.translationtype: HT
-ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53976320"

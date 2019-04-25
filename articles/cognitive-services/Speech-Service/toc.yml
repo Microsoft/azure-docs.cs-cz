@@ -1,273 +1,267 @@
-items:
+# displayName: additional text for filtering down the ToC in meaningful way.
 - name: Dokumentace ke službám Speech
   href: index.yml
 - name: Přehled
-  items:
-  - name: Co jsou služby Speech?
-    href: overview.md
-  - name: Převod řeči na text
-    displayName: recognize speech, speech recognition, speech-to-text, stt
-    href: speech-to-text.md
-  - name: Převod textu na řeč
-    displayName: synthesize speech, speech synthesis, text-to-speech, tts
-    href: text-to-speech.md
-  - name: Překlad řeči
-    displayName: translate speech, speech translation, translator, s2s, speech to speech
-    href: speech-translation.md
   expanded: true
+  items:
+    - name: Co jsou služby Speech?
+      href: overview.md
+    - name: Převod řeči na text
+      href: speech-to-text.md
+      displayName: 'recognize speech, speech recognition, speech-to-text, stt'
+    - name: Převod textu na řeč
+      href: text-to-speech.md
+      displayName: 'synthesize speech, speech synthesis, text-to-speech, tts'
+    - name: Překlad řeči
+      href: speech-translation.md
+      displayName: 'translate speech, speech translation, translator, s2s, speech to speech'
 - name: Šablony Rychlý start
   items:
-  - name: Speech SDK
-    items:
-    - name: Převod řeči na text
+    - name: Speech SDK
       items:
-      - name: C# (.NET Framework Windows)
-        displayName: recognize speech, speech recognition, speech-to-text, stt
-        href: quickstart-csharp-dotnet-windows.md
-      - name: C# (.NET Core Windows)
-        displayName: recognize speech, speech recognition, speech-to-text, stt
-        href: quickstart-csharp-dotnetcore-windows.md
-      - name: C# (UPW)
-        displayName: recognize speech, speech recognition, speech-to-text, stt, C#, universal windows platform
-        href: quickstart-csharp-uwp.md
-      - name: C# (Unity)
-        displayName: recognize speech, speech recognition, speech-to-text, stt, C#, unity 3d, windows, android, universal windows platform, uwp
-        href: quickstart-csharp-unity.md
-      - name: C++ (Windows)
-        displayName: recognize speech, speech recognition, speech-to-text, stt
-        href: quickstart-cpp-windows.md
-      - name: C++ (Linux)
-        displayName: recognize speech, speech recognition, speech-to-text, stt
-        href: quickstart-cpp-linux.md
-      - name: C++ (macOS)
-        displayName: recognize speech, speech recognition, speech-to-text, stt
-        href: quickstart-cpp-macos.md
-      - name: Java (Android)
-        displayName: recognize speech, speech recognition, speech-to-text, stt
-        href: quickstart-java-android.md
-      - name: Java (Windows, macOS, Linux)
-        displayName: recognize speech, speech recognition, speech-to-text, stt, jre, jvm
-        href: quickstart-java-jre.md
-      - name: JavaScript (prohlížeč)
-        href: quickstart-js-browser.md
-      - name: JavaScript (Node.js)
-        displayName: recognize speech, speech recognition, speech-to-text, stt
-        href: quickstart-js-node.md
-      - name: Objective-C (iOS)
-        displayName: recognize speech, speech recognition, speech-to-text, stt, xcode
-        href: quickstart-objectivec-ios.md
-      - name: Objective-C (macOS)
-        displayName: recognize speech, speech recognition, speech-to-text, stt, xcode
-        href: quickstart-objective-c-macos.md
-      - name: Python
-        displayName: recognize speech, speech recognition, speech-to-text, stt
-        href: quickstart-python.md
-    - name: Překlad řeči
+        - name: Převod řeči na text
+          items:
+            - name: 'C# (.NET Framework Windows)'
+              href: quickstart-csharp-dotnet-windows.md
+              displayName: 'recognize speech, speech recognition, speech-to-text, stt'
+            - name: 'C# (.NET Core Windows)'
+              href: quickstart-csharp-dotnetcore-windows.md
+              displayName: 'recognize speech, speech recognition, speech-to-text, stt'
+            - name: 'C# (UPW)'
+              href: quickstart-csharp-uwp.md
+              displayName: 'recognize speech, speech recognition, speech-to-text, stt, C#, universal windows platform'
+            - name: 'C# (Unity)'
+              href: quickstart-csharp-unity.md
+              displayName: 'recognize speech, speech recognition, speech-to-text, stt, C#, unity 3d, windows, android, universal windows platform, uwp'
+            - name: C++ (Windows)
+              href: quickstart-cpp-windows.md
+              displayName: 'recognize speech, speech recognition, speech-to-text, stt'
+            - name: C++ (Linux)
+              href: quickstart-cpp-linux.md
+              displayName: 'recognize speech, speech recognition, speech-to-text, stt'
+            - name: C++ (macOS)
+              href: quickstart-cpp-macos.md
+              displayName: 'recognize speech, speech recognition, speech-to-text, stt'
+            - name: Java (Android)
+              href: quickstart-java-android.md
+              displayName: 'recognize speech, speech recognition, speech-to-text, stt'
+            - name: 'Java (Windows, macOS, Linux)'
+              href: quickstart-java-jre.md
+              displayName: 'recognize speech, speech recognition, speech-to-text, stt, jre, jvm'
+            - name: JavaScript (prohlížeč)
+              href: quickstart-js-browser.md
+            - name: JavaScript (Node.js)
+              href: quickstart-js-node.md
+              displayName: 'recognize speech, speech recognition, speech-to-text, stt'
+            - name: Objective-C (iOS)
+              href: quickstart-objectivec-ios.md
+              displayName: 'recognize speech, speech recognition, speech-to-text, stt, xcode'
+            - name: Objective-C (macOS)
+              href: quickstart-objective-c-macos.md
+              displayName: 'recognize speech, speech recognition, speech-to-text, stt, xcode'
+            - name: Python
+              href: quickstart-python.md
+              displayName: 'recognize speech, speech recognition, speech-to-text, stt'
+        - name: Překlad řeči
+          items:
+            - name: 'C# (.NET Core Windows)'
+              href: quickstart-translate-speech-dotnetcore-windows.md
+            - name: 'C# (.NET Framework Windows)'
+              href: quickstart-translate-speech-dotnetframework-windows.md
+            - name: 'C# (UPW)'
+              href: quickstart-translate-speech-uwp.md
+              displayName: 'recognize speech, speech recognition, speech-to-text, stt, C#, universal windows platform'
+            - name: C++ (Windows)
+              href: quickstart-translate-speech-cpp-windows.md
+            - name: 'Java (Windows, Linux)'
+              href: quickstart-translate-speech-java-jre.md
+        - name: Převod textu na řeč
+          items:
+            - name: 'C# (.NET Framework Windows)'
+              href: quickstart-text-to-speech-dotnet-windows.md
+              displayName: 'synthesize speech, speech synthesis, text-to-speech, tts'
+            - name: C++ (Windows)
+              href: quickstart-text-to-speech-cpp-windows.md
+              displayName: 'synthesize speech, speech synthesis, text-to-speech, tts'
+            - name: C++ (Linux)
+              href: quickstart-text-to-speech-cpp-linux.md
+              displayName: 'synthesize speech, speech synthesis, text-to-speech, tts'
+    - name: Rozhraní REST API
       items:
-      - name: C# (.NET Core Windows)
-        href: quickstart-translate-speech-dotnetcore-windows.md
-      - name: C# (.NET Framework Windows)
-        href: quickstart-translate-speech-dotnetframework-windows.md
-      - name: C# (UPW)
-        displayName: recognize speech, speech recognition, speech-to-text, stt, C#, universal windows platform
-        href: quickstart-translate-speech-uwp.md
-      - name: C++ (Windows)
-        href: quickstart-translate-speech-cpp-windows.md
-      - name: Java (Windows, Linux)
-        href: quickstart-translate-speech-java-jre.md
-    - name: Převod textu na řeč
-      items:
-      - name: C# (.NET Framework Windows)
-        displayName: synthesize speech, speech synthesis, text-to-speech, tts
-        href: quickstart-text-to-speech-dotnet-windows.md
-      - name: C++ (Windows)
-        displayName: synthesize speech, speech synthesis, text-to-speech, tts
-        href: quickstart-text-to-speech-cpp-windows.md
-      - name: C++ (Linux)
-        displayName: synthesize speech, speech synthesis, text-to-speech, tts
-        href: quickstart-text-to-speech-cpp-linux.md
-  - name: Rozhraní REST API
-    items:
-    - name: Seznam podporovaných hlasů podle oblasti
-      items:
-      - name: Node.js
-        href: quickstart-nodejs-get-text-to-speech-voices.md
-      - name: Python
-        href: quickstart-python-get-text-to-speech-voices.md
-    - name: Převod textu na řeč
-      items:
-      - name: C# (.NET Core)
-        href: quickstart-dotnet-text-to-speech.md
-      - name: Node.js
-        href: quickstart-nodejs-text-to-speech.md
-      - name: Python
-        href: quickstart-python-text-to-speech.md
-  - name: Speech Devices SDK
-    displayName: roobo, speech devices sdk
-    href: speech-devices-sdk-qsg.md
+        - name: Seznam podporovaných hlasů podle oblasti
+          items:
+            - name: Node.js
+              href: quickstart-nodejs-get-text-to-speech-voices.md
+            - name: Python
+              href: quickstart-python-get-text-to-speech-voices.md
+        - name: Převod textu na řeč
+          items:
+            - name: 'C# (.NET Core)'
+              href: quickstart-dotnet-text-to-speech.md
+            - name: Node.js
+              href: quickstart-nodejs-text-to-speech.md
+            - name: Python
+              href: quickstart-python-text-to-speech.md
+    - name: Speech Devices SDK
+      href: speech-devices-sdk-qsg.md
+      displayName: 'roobo, speech devices sdk'
 - name: Kurzy
   items:
-  - name: Rozpoznávání záměru řeči s využitím LUIS, C#
-    displayName: recognize intent, intent recognition, language understanding service, luis
-    href: how-to-recognize-intents-from-speech-csharp.md
-  - name: Sestavení aplikace Flask pro překlad a syntetizaci textu, REST
-    href: ../translator/tutorial-build-flask-app-translation-synthesis.md?toc=%2fazure%2fcognitive-services%2fspeech-service%2ftoc.json&bc=%2fazure%2fcognitive-services%2fspeech-service%2fbreadcrumb%2ftoc.json
-    maintainContext: true
+    - name: 'Rozpoznávání záměru řeči s využitím LUIS, C#'
+      href: how-to-recognize-intents-from-speech-csharp.md
+      displayName: 'recognize intent, intent recognition, language understanding service, luis'
+    - name: 'Sestavení aplikace Flask pro překlad a syntetizaci textu, REST'
+      maintainContext: true
+      href: ../translator/tutorial-build-flask-app-translation-synthesis.md?toc=%2fazure%2fcognitive-services%2fspeech-service%2ftoc.json&bc=%2fazure%2fcognitive-services%2fspeech-service%2fbreadcrumb%2ftoc.json
 - name: Návody
   items:
-  - name: Registrace do služeb Speech
-    href: get-started.md
-  - name: Dávkový přepis (REST)
-    displayName: recognize speech, speech recognition, speech-to-text, stt
-    href: batch-transcription.md
-  - name: Využívání datových proudů zvukového vstupu (SDK)
-    href: how-to-use-audio-input-streams.md
-  - name: Využívání komprimovaných datových proudů zvukového vstupu (SDK)
-    displayName: mp3, opus, ogg, flac
-    href: how-to-use-compressed-audio-input-streams.md
-  - name: Výběr vstupního zvukového zařízení (SDK)
-    displayName: audio, microphone, input, device
-    href: how-to-select-audio-input-devices.md
-  - name: Povolení protokolování (SDK)
-    displayName: debug, log, logging
-    href: how-to-use-logging.md
-  - name: Přizpůsobení
-    items:
-    - name: Převod řeči na text
+    - name: Registrace do služeb Speech
+      href: get-started.md
+    - name: Dávkový přepis (REST)
+      href: batch-transcription.md
+      displayName: 'recognize speech, speech recognition, speech-to-text, stt'
+    - name: Využívání datových proudů zvukového vstupu (SDK)
+      href: how-to-use-audio-input-streams.md
+    - name: Využívání komprimovaných datových proudů zvukového vstupu (SDK)
+      href: how-to-use-compressed-audio-input-streams.md
+      displayName: 'mp3, opus, ogg, flac'
+    - name: Výběr vstupního zvukového zařízení (SDK)
+      href: how-to-select-audio-input-devices.md
+      displayName: 'audio, microphone, input, device'
+    - name: Povolení protokolování (SDK)
+      href: how-to-use-logging.md
+      displayName: 'debug, log, logging'
+    - name: Přizpůsobení
       items:
-      - name: Příprava přepisů pro vlastní nastavení
-        href: prepare-transcription.md
-      - name: Přizpůsobení akustických modelů
-        href: how-to-customize-acoustic-models.md
-      - name: Přizpůsobení jazykových modelů
-        href: how-to-customize-language-model.md
-      - name: Přizpůsobení výslovnosti
-        href: how-to-customize-pronunciation.md
-      - name: Vytvoření vlastního koncového bodu rozpoznávání
-        href: how-to-create-custom-endpoint.md
-    - name: Převod textu na řeč
+        - name: Převod řeči na text
+          items:
+            - name: Příprava přepisů pro vlastní nastavení
+              href: prepare-transcription.md
+            - name: Přizpůsobení akustických modelů
+              href: how-to-customize-acoustic-models.md
+            - name: Přizpůsobení jazykových modelů
+              href: how-to-customize-language-model.md
+            - name: Přizpůsobení výslovnosti
+              href: how-to-customize-pronunciation.md
+            - name: Vytvoření vlastního koncového bodu rozpoznávání
+              href: how-to-create-custom-endpoint.md
+        - name: Převod textu na řeč
+          items:
+            - name: Vytváření hlasových písem (rozpoznatelný hlas robota)
+              href: how-to-customize-voice-font.md
+            - name: Záznam hlasových ukázek
+              href: record-custom-voice-samples.md
+        - name: Vytvoření vlastního aktivačního slova (Devices SDK)
+          href: speech-devices-sdk-create-kws.md
+          displayName: 'roobo, speech devices sdk, wake word, keyword spotting, kws'
+    - name: Migrace
       items:
-      - name: Vytváření hlasových písem (rozpoznatelný hlas robota)
-        href: how-to-customize-voice-font.md
-      - name: Záznam hlasových ukázek
-        href: record-custom-voice-samples.md
-    - name: Vytvoření vlastního aktivačního slova (Devices SDK)
-      displayName: roobo, speech devices sdk, wake word, keyword spotting, kws
-      href: speech-devices-sdk-create-kws.md
-  - name: Migrace
-    items:
-    - name: Z rozhraní API pro zpracování řeči Bingu
-      href: how-to-migrate-from-bing-speech.md
-    - name: Ze služby Custom Speech
-      href: how-to-migrate-from-custom-speech-service.md
-    - name: Z rozhraní Translator Speech API
-      href: how-to-migrate-from-translator-speech-api.md
+        - name: Z rozhraní API pro zpracování řeči Bingu
+          href: how-to-migrate-from-bing-speech.md
+        - name: Ze služby Custom Speech
+          href: how-to-migrate-from-custom-speech-service.md
+        - name: Z rozhraní Translator Speech API
+          href: how-to-migrate-from-translator-speech-api.md
 - name: Ukázky
   items:
-  - name: Speech SDK
-    href: https://github.com/Azure-Samples/cognitive-services-speech-sdk
-  - name: Speech Devices SDK
-    href: https://github.com/Azure-Samples/Cognitive-Services-Speech-Devices-SDK
-  - name: Převod textu na řeč (REST)
-    href: https://github.com/Azure-Samples/Cognitive-Speech-TTS
-  - name: Dávkový přepis (REST)
-    href: https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/samples/batch
+    - name: Speech SDK
+      href: 'https://github.com/Azure-Samples/cognitive-services-speech-sdk'
+    - name: Speech Devices SDK
+      href: 'https://github.com/Azure-Samples/Cognitive-Services-Speech-Devices-SDK'
+    - name: Převod textu na řeč (REST)
+      href: 'https://github.com/Azure-Samples/Cognitive-Speech-TTS'
+    - name: Dávkový přepis (REST)
+      href: 'https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/samples/batch'
 - name: Referenční informace
   items:
-  - name: Speech SDK
-    items:
-    - name: Přehled
-      displayName: C#, C++, Java, .NET, .NET Core, UWP, Android, Linux, Windows
-      href: speech-sdk.md
-    - name: Poznámky k verzi
-      href: releasenotes.md
-    - name: C++
-      href: https://aka.ms/csspeech/cppref
-    - name: C#
-      href: https://aka.ms/csspeech/csharpref
-    - name: Java/Android
-      href: https://aka.ms/csspeech/javaref
-    - name: JavaScript/Node.js
-      href: https://aka.ms/csspeech/javascriptref
-    - name: Objective-C
-      href: https://aka.ms/csspeech/objectivecref
-    - name: Python
-      href: https://aka.ms/csspeech/pythonref
-  - name: Speech Devices SDK
-    items:
-    - name: Získání sady Speech Devices SDK
-      href: get-speech-devices-sdk.md#download-the-speech-devices-sdk
-    - name: Poznámky k verzi
-      href: devices-sdk-release-notes.md
-  - name: Rozhraní REST API
-    items:
-    - name: Převod řeči na text
-      displayName: speech-to-text, speech recognition
-      href: rest-speech-to-text.md
-    - name: Převod textu na řeč
-      displayName: text-to-speech, speech synthesis
-      href: rest-text-to-speech.md
-    - name: Dávkový přepis a vlastní nastavení
-      displayName: Batch transcription, transcription, custom models, customization, model management
-      href: https://westus.cris.ai/swagger/ui/index
-    - name: Webhooky
-      displayName: Webhooks
-      href: webhooks.md
-  - name: Dokumentace ke Swaggeru
-    href: swagger-documentation.md
-  - name: Jazyk SSML (Speech Synthesis Markup Language)
-    href: speech-synthesis-markup.md
-  - name: PowerShell
-    href: https://aka.ms/azure-powershell-cognitiveservices
-  - name: Azure CLI
-    href: https://docs.microsoft.com/cli/azure/cognitiveservices?view=azure-cli-latest#az_cognitiveservices_list
-  - name: Podpora jazyků
-    href: language-support.md
-  - name: Oblasti
-    href: regions.md
+    - name: Speech SDK
+      items:
+        - name: Přehled
+          href: speech-sdk.md
+          displayName: 'C#, C++, Java, .NET, .NET Core, UWP, Android, Linux, Windows'
+        - name: "Poznámky k\_verzi"
+          href: releasenotes.md
+        - name: C++
+          href: 'https://aka.ms/csspeech/cppref'
+        - name: 'C#'
+          href: 'https://aka.ms/csspeech/csharpref'
+        - name: Java/Android
+          href: 'https://aka.ms/csspeech/javaref'
+        - name: JavaScript/Node.js
+          href: 'https://aka.ms/csspeech/javascriptref'
+        - name: Objective-C
+          href: 'https://aka.ms/csspeech/objectivecref'
+        - name: Python
+          href: 'https://aka.ms/csspeech/pythonref'
+    - name: Speech Devices SDK
+      items:
+        - name: Získání sady Speech Devices SDK
+          href: 'get-speech-devices-sdk.md#download-the-speech-devices-sdk'
+        - name: "Poznámky k\_verzi"
+          href: devices-sdk-release-notes.md
+    - name: Rozhraní REST API
+      items:
+        - name: Převod řeči na text
+          href: rest-speech-to-text.md
+          displayName: 'speech-to-text, speech recognition'
+        - name: Převod textu na řeč
+          href: rest-text-to-speech.md
+          displayName: 'text-to-speech, speech synthesis'
+        - name: Dávkový přepis a vlastní nastavení
+          href: 'https://westus.cris.ai/swagger/ui/index'
+          displayName: 'Batch transcription, transcription, custom models, customization, model management'
+        - name: Webhooky
+          href: webhooks.md
+          displayName: Webhooks
+    - name: Dokumentace ke Swaggeru
+      href: swagger-documentation.md
+    - name: Jazyk SSML (Speech Synthesis Markup Language)
+      href: speech-synthesis-markup.md
+    - name: PowerShell
+      href: 'https://aka.ms/azure-powershell-cognitiveservices'
+    - name: Azure CLI
+      href: 'https://docs.microsoft.com/cli/azure/cognitiveservices?view=azure-cli-latest#az_cognitiveservices_list'
+    - name: Podpora jazyků
+      href: language-support.md
+    - name: Oblasti
+      href: regions.md
 - name: Zdroje a prostředky
   items:
-  - name: Nejčastější dotazy
-    items:
-    - name: Převod řeči na text
-      displayName: recognize speech, speech recognition, speech-to-text, stt
-      href: faq-stt.md
-    - name: Převod textu na řeč
-      displayName: synthesize speech, speech synthesis, text-to-speech, tts
-      href: faq-text-to-speech.md
-    - name: Překlad řeči
-      displayName: translate speech, speech translation, translator, s2s, speech to speech
-      href: https://www.microsoft.com/translator/faq.aspx
-  - name: Licence pro sadu Speech SDK
-    displayName: C#, C++, Java, .NET, .NET Core, UWP, Android, Linux, Windows, NuGet, Maven, download, install, sample
-    items:
-    - name: Licence
-      href: https://aka.ms/csspeech/license201809
-    - name: Oznámení třetích stran
-      href: https://aka.ms/csspeech/toctpn
-  - name: Speech Devices SDK
-    displayName: roobo, speech devices sdk
-    href: speech-devices-sdk.md
-    items:
-    - name: Licence
-      displayName: roobo, speech devices sdk
-      href: speech-devices-sdk-license.md
-    - name: Oznámení třetích stran
-      displayName: roobo, speech devices sdk
-      href: devices-sdk-third-party-notices.md
-  - name: Řešení potíží se sadou Speech SDK
-    href: troubleshooting.md
-  - name: Podpora
-    href: support.md
-  - name: Ceny a omezení
-    href: https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/
-  - name: Plány Azure do budoucna
-    href: https://azure.microsoft.com/roadmap/?category=ai-machine-learning
-  - name: Ochrana osobních údajů a soubory cookie
-    href: https://privacy.microsoft.com/privacystatement
-ms.openlocfilehash: d1efcf30314e5afdaec6906493e2c083f3e0701e
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
-ms.translationtype: HT
-ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59679360"
+    - name: Nejčastější dotazy
+      items:
+        - name: Převod řeči na text
+          href: faq-stt.md
+          displayName: 'recognize speech, speech recognition, speech-to-text, stt'
+        - name: Převod textu na řeč
+          href: faq-text-to-speech.md
+          displayName: 'synthesize speech, speech synthesis, text-to-speech, tts'
+        - name: Překlad řeči
+          href: 'https://www.microsoft.com/translator/faq.aspx'
+          displayName: 'translate speech, speech translation, translator, s2s, speech to speech'
+    - name: Licence pro sadu Speech SDK
+      displayName: 'C#, C++, Java, .NET, .NET Core, UWP, Android, Linux, Windows, NuGet, Maven, download, install, sample'
+      items:
+        - name: Licence
+          href: 'https://aka.ms/csspeech/license201809'
+        - name: Oznámení třetích stran
+          href: 'https://aka.ms/csspeech/toctpn'
+    - name: Speech Devices SDK
+      href: speech-devices-sdk.md
+      displayName: 'roobo, speech devices sdk'
+      items:
+        - name: Licence
+          href: speech-devices-sdk-license.md
+          displayName: 'roobo, speech devices sdk'
+        - name: Oznámení třetích stran
+          href: devices-sdk-third-party-notices.md
+          displayName: 'roobo, speech devices sdk'
+    - name: Řešení potíží se sadou Speech SDK
+      href: troubleshooting.md
+    - name: Podpora
+      href: support.md
+    - name: Ceny a omezení
+      href: 'https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/'
+    - name: Plány Azure do budoucna
+      href: 'https://azure.microsoft.com/roadmap/?category=ai-machine-learning'
+    - name: Ochrana osobních údajů a soubory cookie
+      href: 'https://privacy.microsoft.com/privacystatement'

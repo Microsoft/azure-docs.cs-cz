@@ -1,69 +1,63 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 8ca48ec812c2c9ea4b6aac814c77f0554bd9ae0a
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
-ms.translationtype: HT
-ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57765694"
 documentType: LandingData
 title: Dokumentace k Terraformu v Azure
 metadata:
-  title: Dokumentace k Terraformu v Azure – kurzy, ukázky, odkazy a zdroje informací
+  title: 'Dokumentace k Terraformu v Azure – kurzy, ukázky, odkazy a zdroje informací'
   description: Naučte se využívat Terraform ke spolehlivému zřizování virtuálních počítačů a další infrastruktury v Azure.
   services: terraform
   ms.service: azure
-  keywords: terraform, azure, devops, tutorials, samples, reference
+  keywords: 'terraform, azure, devops, tutorials, samples, reference'
   author: tomarchermsft
   manager: jeconnoc
   ms.author: tarcher
   ms.topic: landing-page
   ms.date: 08/31/2018
 abstract:
-  description: Použijte Terraform ke spolehlivé správě verzí a vytvoření infrastruktury v Azure. Prostřednictvím našich šablon Rychlý start a kurzů se naučíte vytvářet prostředky, používat moduly Terraformu pro Azure a udržovat infrastrukturu pomocí kódu.
+  description: 'Použijte Terraform ke spolehlivé správě verzí a vytvoření infrastruktury v Azure. Prostřednictvím našich šablon Rychlý start a kurzů se naučíte vytvářet prostředky, používat moduly Terraformu pro Azure a udržovat infrastrukturu pomocí kódu.'
 sections:
-- title: Šablony Rychlý start
-  items:
-  - type: paragraph
-    text: Nakonfigurujte Terraform a použijte ho k vytvoření virtuálního počítače s Linuxem v Azure.
-  - type: list
-    style: icon48
+  - title: Šablony Rychlý start
     items:
-    - image:
-        src: https://docs.microsoft.com/azure/media/index/azure_dev-9.svg
-      text: Instalace a konfigurace Terraformu
-      href: https://docs.microsoft.com/azure/virtual-machines/linux/terraform-install-configure
-    - image:
-        src: https://docs.microsoft.com/azure/media/index/VirtualMachine.svg
-      text: Vytvoření virtuálního počítače s Linuxem
-      href: https://docs.microsoft.com/azure/virtual-machines/linux/terraform-create-complete-vm
-- title: Podrobné kurzy
-  items:
-  - type: paragraph
-    text: Zjistěte, jak vytvořit výpočetní a síťovou infrastrukturu Azure prostřednictvím kódu pomocí Terraformu.
-  - type: list
-    style: unordered
+      - type: paragraph
+        text: Nakonfigurujte Terraform a použijte ho k vytvoření virtuálního počítače s Linuxem v Azure.
+      - type: list
+        style: icon48
+        items:
+          - image:
+              src: 'https://docs.microsoft.com/azure/media/index/azure_dev-9.svg'
+            text: Instalace a konfigurace Terraformu
+            href: 'https://docs.microsoft.com/azure/virtual-machines/linux/terraform-install-configure'
+          - image:
+              src: 'https://docs.microsoft.com/azure/media/index/VirtualMachine.svg'
+            text: Vytvoření virtuálního počítače s Linuxem
+            href: 'https://docs.microsoft.com/azure/virtual-machines/linux/terraform-create-complete-vm'
+  - title: Podrobné kurzy
     items:
-    - html: <a href="/azure/terraform/terraform-create-k8s-cluster-with-tf-and-aks">Vytvoření clusteru Kubernetes s využitím AKS</a>.
-    - html: <a href="/azure/terraform/terraform-create-k8s-cluster-with-aks-applicationgateway-ingress">Vytvoření clusteru Kubernetes se službou Application Gateway jako kontrolerem příchozího přenosu dat s využitím AKS</a>.
-    - html: <a href="/azure/terraform/terraform-vm-msi">Vytvoření virtuálního počítače Terraform s povoleným ověřováním MSI pomocí image z Azure Marketplace</a>
-    - html: <a href="/azure/terraform/terraform-create-vm-cluster-module">Vytvoření clusteru virtuálních počítačů s vyrovnáváním zatížení pomocí modulů Terraformu pro Azure</a>
-    - html: <a href="/azure/terraform/terraform-create-vm-cluster-with-infrastructure">Vytvoření clusteru virtuálních počítačů s vyrovnáváním zatížení ve službě Azure Cloud Shell</a>
-    - html: <a href="/azure/terraform/terraform-create-vm-scaleset-network-disks-hcl">Konfigurace škálovací sady virtuálních počítačů se síťovými službami a úložištěm</a>
-    - html: <a href="/azure/terraform/terraform-create-vm-scaleset-network-disks-using-packer-hcl">Zřízení škálovací sady virtuálních počítačů z vlastní image Packeru</a>
-- title: Ukázky
-  items:
-  - type: paragraph
-    text: Ukázkové šablony konfigurace pro běžné úlohy nasazení.
-  - type: list
-    style: unordered
-    className: spaced noBullet
+      - type: paragraph
+        text: 'Zjistěte, jak vytvořit výpočetní a síťovou infrastrukturu Azure prostřednictvím kódu pomocí Terraformu.'
+      - type: list
+        style: unordered
+        items:
+          - html: <a href="/azure/terraform/terraform-create-k8s-cluster-with-tf-and-aks">Vytvoření clusteru Kubernetes s využitím AKS</a>.
+          - html: <a href="/azure/terraform/terraform-create-k8s-cluster-with-aks-applicationgateway-ingress">Vytvoření clusteru Kubernetes se službou Application Gateway jako kontrolerem příchozího přenosu dat s využitím AKS</a>.
+          - html: <a href="/azure/terraform/terraform-vm-msi">Vytvoření virtuálního počítače Terraform s povoleným ověřováním MSI pomocí image z Azure Marketplace</a>
+          - html: <a href="/azure/terraform/terraform-create-vm-cluster-module">Vytvoření clusteru virtuálních počítačů s vyrovnáváním zatížení pomocí modulů Terraformu pro Azure</a>
+          - html: <a href="/azure/terraform/terraform-create-vm-cluster-with-infrastructure">Vytvoření clusteru virtuálních počítačů s vyrovnáváním zatížení ve službě Azure Cloud Shell</a>
+          - html: <a href="/azure/terraform/terraform-create-vm-scaleset-network-disks-hcl">Konfigurace škálovací sady virtuálních počítačů se síťovými službami a úložištěm</a>
+          - html: <a href="/azure/terraform/terraform-create-vm-scaleset-network-disks-using-packer-hcl">Zřízení škálovací sady virtuálních počítačů z vlastní image Packeru</a>
+  - title: Ukázky
     items:
-    - html: <a href="https://github.com/terraform-providers/terraform-provider-azurerm/tree/master/examples">GitHub</a>
-- title: Referenční informace
-  items:
-  - type: list
-    style: cards
-    className: cardsD
+      - type: paragraph
+        text: Ukázkové šablony konfigurace pro běžné úlohy nasazení.
+      - type: list
+        style: unordered
+        className: spaced noBullet
+        items:
+          - html: '<a href="https://github.com/terraform-providers/terraform-provider-azurerm/tree/master/examples">GitHub</a>'
+  - title: Referenční informace
     items:
-    - title: Moduly Terraformu pro Azure
-      html: <p><a href="https://registry.terraform.io/modules/Azure/database/azurerm">Azure RM pro databázi</a></p><p><a href="https://registry.terraform.io/modules/Azure/loadbalancer">Azure RM pro Load Balancer</a></p><p><a href="https://registry.terraform.io/modules/Azure/computegroup">Výpočetní skupina Azure RM</a></p><p><a href="https://registry.terraform.io/modules/Azure/network">Síť Azure RM</a></p><p><a href="https://registry.terraform.io/modules/Azure/compute">Výpočetní prostředek Azure RM</a></p>
+      - type: list
+        style: cards
+        className: cardsD
+        items:
+          - title: Moduly Terraformu pro Azure
+            html: '<p><a href="https://registry.terraform.io/modules/Azure/database/azurerm">Azure RM pro databázi</a></p><p><a href="https://registry.terraform.io/modules/Azure/loadbalancer">Azure RM pro Load Balancer</a></p><p><a href="https://registry.terraform.io/modules/Azure/computegroup">Výpočetní skupina Azure RM</a></p><p><a href="https://registry.terraform.io/modules/Azure/network">Síť Azure RM</a></p><p><a href="https://registry.terraform.io/modules/Azure/compute">Výpočetní prostředek Azure RM</a></p>'

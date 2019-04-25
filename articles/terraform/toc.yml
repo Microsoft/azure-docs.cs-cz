@@ -1,96 +1,89 @@
-items:
 - name: Dokumentace k Terraformu v Azure
   href: index.yml
 - name: Přehled
   items:
-  - name: Informace o Terraformu v Azure
-    href: terraform-overview.md
+    - name: Informace o Terraformu v Azure
+      href: terraform-overview.md
 - name: Šablony Rychlý start
-  items:
-  - name: Vytvoření aplikace s více službami
-    href: terrafom-quickstart.md
-  - name: Instalace a konfigurace Terraformu
-    href: /azure/virtual-machines/linux/terraform-install-configure
-    maintainContext: true
-  - name: Vytvoření virtuálního počítače s Linuxem
-    href: /azure/virtual-machines/linux/terraform-create-complete-vm
-    maintainContext: true
   expanded: true
+  items:
+    - name: Vytvoření aplikace s více službami
+      href: terrafom-quickstart.md
+    - name: Instalace a konfigurace Terraformu
+      href: /azure/virtual-machines/linux/terraform-install-configure
+      maintainContext: true
+    - name: Vytvoření virtuálního počítače s Linuxem
+      href: /azure/virtual-machines/linux/terraform-create-complete-vm
+      maintainContext: true
 - name: Kurzy
   items:
-  - name: App Service
-    items:
-    - name: Terraform a sloty nasazení zprostředkovatele Azure
-      href: terraform-slot-walkthru.md
-  - name: Containers
-    items:
-    - name: Vytvoření clusteru Kubernetes s využitím AKS
-      href: terraform-create-k8s-cluster-with-tf-and-aks.md
-    - name: Vytvoření clusteru Kubernetes se službou Application Gateway jako kontrolerem příchozího přenosu dat s využitím AKS
-      href: terraform-create-k8s-cluster-with-aks-applicationgateway-ingress.md
-  - name: Infrastruktura
-    items:
-    - name: Vytvoření virtuálního počítače Terraform s povolenou službou MSI
-      href: terraform-vm-msi.md
-    - name: Vytvoření clusteru virtuálních počítačů s využitím modulů Terraformu
-      href: terraform-create-vm-cluster-module.md
-    - name: Vytvoření clusteru virtuálních počítačů pomocí Terraformu a HCL
-      href: terraform-create-vm-cluster-with-infrastructure.md
-    - name: Zřízení škálovací sady virtuálních počítačů s infrastrukturou
-      href: terraform-create-vm-scaleset-network-disks-hcl.md
-    - name: Zřízení škálovací sady virtuálních počítačů z vlastní image Packeru
-      href: terraform-create-vm-scaleset-network-disks-using-packer-hcl.md
-  - name: Sítě
-    items:
-    - name: Topologie hvězdicové architektury
+    - name: App Service
       items:
-      - name: 1. Vytvoření topologie hvězdicové architektury
-        href: terraform-hub-spoke-introduction.md
-      - name: 2. Vytvoření místní virtuální sítě
-        href: terraform-hub-spoke-on-prem.md
-      - name: 3. Vytvoření virtuální sítě rozbočovače
-        href: terraform-hub-spoke-hub-network.md
-      - name: 4. Vytvoření zařízení virtuální sítě rozbočovače
-        href: terraform-hub-spoke-hub-nva.md
-      - name: 5. Vytvoření sítě paprsků
-        href: terraform-hub-spoke-spoke-network.md
-      - name: 6. Ověření možností připojení síťové topologie
-        href: terraform-hub-spoke-validation.md
-  - name: Nástroje
-    items:
-    - name: Instalace rozšíření Terraform editoru Visual Studio Code
-      href: terraform-vscode-extension.md
-    - name: Vytvoření základní šablony Terraformu pomocí Yeomanu
-      href: terraform-vscode-module-generator.md
-    - name: Testování modulů Terraform pomocí Terratestu
-      href: terratest-in-terraform-modules.md
+        - name: Terraform a sloty nasazení zprostředkovatele Azure
+          href: terraform-slot-walkthru.md
+    - name: Containers
+      items:
+        - name: Vytvoření clusteru Kubernetes s využitím AKS
+          href: terraform-create-k8s-cluster-with-tf-and-aks.md
+        - name: Vytvoření clusteru Kubernetes se službou Application Gateway jako kontrolerem příchozího přenosu dat s využitím AKS
+          href: terraform-create-k8s-cluster-with-aks-applicationgateway-ingress.md
+    - name: Infrastruktura
+      items:
+        - name: Vytvoření virtuálního počítače Terraform s povolenou službou MSI
+          href: terraform-vm-msi.md
+        - name: Vytvoření clusteru virtuálních počítačů s využitím modulů Terraformu
+          href: terraform-create-vm-cluster-module.md
+        - name: Vytvoření clusteru virtuálních počítačů pomocí Terraformu a HCL
+          href: terraform-create-vm-cluster-with-infrastructure.md
+        - name: Zřízení škálovací sady virtuálních počítačů s infrastrukturou
+          href: terraform-create-vm-scaleset-network-disks-hcl.md
+        - name: Zřízení škálovací sady virtuálních počítačů z vlastní image Packeru
+          href: terraform-create-vm-scaleset-network-disks-using-packer-hcl.md
+    - name: Sítě
+      items:
+        - name: Topologie hvězdicové architektury
+          items:
+            - name: 1. Vytvoření topologie hvězdicové architektury
+              href: terraform-hub-spoke-introduction.md
+            - name: 2. Vytvoření místní virtuální sítě
+              href: terraform-hub-spoke-on-prem.md
+            - name: 3. Vytvoření virtuální sítě rozbočovače
+              href: terraform-hub-spoke-hub-network.md
+            - name: 4. Vytvoření zařízení virtuální sítě rozbočovače
+              href: terraform-hub-spoke-hub-nva.md
+            - name: 5. Vytvoření sítě paprsků
+              href: terraform-hub-spoke-spoke-network.md
+            - name: 6. Ověření možností připojení síťové topologie
+              href: terraform-hub-spoke-validation.md
+    - name: Nástroje
+      items:
+        - name: Instalace rozšíření Terraform editoru Visual Studio Code
+          href: terraform-vscode-extension.md
+        - name: Vytvoření základní šablony Terraformu pomocí Yeomanu
+          href: terraform-vscode-module-generator.md
+        - name: Testování modulů Terraform pomocí Terratestu
+          href: terratest-in-terraform-modules.md
 - name: Ukázky
   items:
-  - name: Šablony konfigurace
-    href: https://github.com/terraform-providers/terraform-provider-azurerm/tree/master/examples
+    - name: Šablony konfigurace
+      href: 'https://github.com/terraform-providers/terraform-provider-azurerm/tree/master/examples'
 - name: Koncepty
   items:
-  - name: Integrace Azure Cloud Shellu
-    href: terraform-cloud-shell.md
+    - name: Integrace Azure Cloud Shellu
+      href: terraform-cloud-shell.md
 - name: Návody
   items:
-  - name: Ukládání stavu ve službě Azure Storage
-    href: terraform-backend.md
+    - name: Ukládání stavu ve službě Azure Storage
+      href: terraform-backend.md
 - name: Referenční informace
   items:
-  - name: Registr modulů Azure
-    href: https://registry.terraform.io/modules/Azure
-  - name: Reference k Terraformu
-    href: https://aka.ms/terraform
+    - name: Registr modulů Azure
+      href: 'https://registry.terraform.io/modules/Azure'
+    - name: Reference k Terraformu
+      href: 'https://aka.ms/terraform'
 - name: Zdroje a prostředky
   items:
-  - name: Azure a Terraform
-    href: https://azure.microsoft.com/solutions/devops/terraform/
-  - name: Plány Azure do budoucna
-    href: https://azure.microsoft.com/roadmap/
-ms.openlocfilehash: d83e1cbd4f3cd5d8a0a9ec167e197b53f20e0630
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
-ms.translationtype: HT
-ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57999441"
+    - name: Azure a Terraform
+      href: 'https://azure.microsoft.com/solutions/devops/terraform/'
+    - name: Plány Azure do budoucna
+      href: 'https://azure.microsoft.com/roadmap/'

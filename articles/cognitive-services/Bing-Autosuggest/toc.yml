@@ -1,84 +1,77 @@
-items:
 - name: Dokumentace k Automatickým návrhům Bingu
   href: index.yml
 - name: Přehled
   items:
-  - name: Co jsou Automatické návrhy Bingu?
-    href: get-suggested-search-terms.md
-  - name: Porovnání rozhraní API pro vyhledávání Bingu
-    href: ../Bing-Web-Search/bing-api-comparison.md
-    maintainContext: true
+    - name: Co jsou Automatické návrhy Bingu?
+      href: get-suggested-search-terms.md
+    - name: Porovnání rozhraní API pro vyhledávání Bingu
+      href: ../Bing-Web-Search/bing-api-comparison.md
+      maintainContext: true
 - name: Rychlá zprovoznění pro REST API
-  items:
-  - name: C#
-    href: quickstarts/csharp.md
-  - name: Java
-    href: quickstarts/java.md
-  - name: Node.js
-    href: quickstarts/nodejs.md
-  - name: PHP
-    href: quickstarts/php.md
-  - name: Python
-    href: quickstarts/python.md
-  - name: Ruby
-    href: quickstarts/ruby.md
   expanded: true
+  items:
+    - name: 'C#'
+      href: quickstarts/csharp.md
+    - name: Java
+      href: quickstarts/java.md
+    - name: Node.js
+      href: quickstarts/nodejs.md
+    - name: PHP
+      href: quickstarts/php.md
+    - name: Python
+      href: quickstarts/python.md
+    - name: Ruby
+      href: quickstarts/ruby.md
 - name: Kurzy
   items:
-  - name: Jednostránková webová aplikace
-    href: tutorials/autosuggest.md
+    - name: Jednostránková webová aplikace
+      href: tutorials/autosuggest.md
 - name: Návody
   items:
-  - name: Upgrade z v5 na v7
-    href: bing-autosuggest-upgrade-guide-v5-to-v7.md
+    - name: Upgrade z v5 na v7
+      href: bing-autosuggest-upgrade-guide-v5-to-v7.md
 - name: Koncepty
   items:
-  - name: Návrhy termínů dotazu
-    href: concepts/get-suggestions.md
-  - name: Odesílání požadavků
-    href: concepts/sending-requests.md
+    - name: Návrhy termínů dotazu
+      href: concepts/get-suggestions.md
+    - name: Odesílání požadavků
+      href: concepts/sending-requests.md
 - name: Referenční informace
   items:
-  - name: Rozhraní API pro automatické návrhy Bingu v7
-    href: https://docs.microsoft.com/rest/api/cognitiveservices/bing-autosuggest-api-v7-reference
-  - name: Rozhraní API pro automatické návrhy Bingu v5
-    href: https://docs.microsoft.com/rest/api/cognitiveservices/bing-autosuggest-api-v5-reference
-  - name: Sady SDK
-    items:
-    - name: .NET
-      href: https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/bingautosuggest?view=azure-dotnet
-    - name: Java
-      href: https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/autosuggest?view=azure-java-stable
-    - name: Přejít
-      href: https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/autosuggest
-  - name: Požadavky na zobrazení a použití
-    href: ../Bing-Web-Search/use-display-requirements.md
-    maintainContext: true
+    - name: Rozhraní API pro automatické návrhy Bingu v7
+      href: 'https://docs.microsoft.com/rest/api/cognitiveservices/bing-autosuggest-api-v7-reference'
+    - name: Rozhraní API pro automatické návrhy Bingu v5
+      href: 'https://docs.microsoft.com/rest/api/cognitiveservices/bing-autosuggest-api-v5-reference'
+    - name: Sady SDK
+      items:
+        - name: .NET
+          href: 'https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/bingautosuggest?view=azure-dotnet'
+        - name: Java
+          href: 'https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/autosuggest?view=azure-java-stable'
+        - name: Přejít
+          href: 'https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/autosuggest'
+    - name: Požadavky na zobrazení a použití
+      href: ../Bing-Web-Search/use-display-requirements.md
+      maintainContext: true
 - name: Zdroje a prostředky
   items:
-  - name: Ceny
-    href: https://azure.microsoft.com/pricing/details/cognitive-services/autosuggest-api/
-  - name: UserVoice
-    href: https://cognitive.uservoice.com/forums/598198-bing-autosuggest
-  - name: Stack Overflow
-    href: https://stackoverflow.com/search?q=bing+autosuggest
-  - name: Regionální dostupnost
-    href: https://azure.microsoft.com/global-infrastructure/services/
-  - name: Plány Azure do budoucna
-    href: https://azure.microsoft.com/roadmap/
-  - name: Znalostní báze
-    href: https://cognitive.uservoice.com/knowledgebase/topics/127875-bing-search-web-image-video-news-autosuggest
-  - name: Získání klíče rozhraní API
-    href: https://azure.microsoft.com/try/cognitive-services/?api=autosuggest-api
-  - name: Vyzkoušejte si to!
-    href: https://azure.microsoft.com/services/cognitive-services/autosuggest/
-  - name: Podpora jazyků a oblastí
-    href: language-support.md
-  - name: Analýzy pro rozhraní API pro automatické návrhy Bingu
-    href: bing-autosuggest-stats.md
-ms.openlocfilehash: 5e0a0f0734b694a098cc6685e337aa24b41962d5
-ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
-ms.translationtype: HT
-ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "57011530"
+    - name: Ceny
+      href: 'https://azure.microsoft.com/pricing/details/cognitive-services/autosuggest-api/'
+    - name: UserVoice
+      href: 'https://cognitive.uservoice.com/forums/598198-bing-autosuggest'
+    - name: Stack Overflow
+      href: 'https://stackoverflow.com/search?q=bing+autosuggest'
+    - name: Regionální dostupnost
+      href: 'https://azure.microsoft.com/global-infrastructure/services/'
+    - name: Plány Azure do budoucna
+      href: 'https://azure.microsoft.com/roadmap/'
+    - name: Znalostní báze
+      href: 'https://cognitive.uservoice.com/knowledgebase/topics/127875-bing-search-web-image-video-news-autosuggest'
+    - name: Získání klíče rozhraní API
+      href: 'https://azure.microsoft.com/try/cognitive-services/?api=autosuggest-api'
+    - name: Vyzkoušejte si to!
+      href: 'https://azure.microsoft.com/services/cognitive-services/autosuggest/'
+    - name: Podpora jazyků a oblastí
+      href: language-support.md
+    - name: Analýzy pro rozhraní API pro automatické návrhy Bingu
+      href: bing-autosuggest-stats.md

@@ -1,119 +1,112 @@
-items:
 - name: Dokumentace k Vlastnímu vyhledávání Bingu
   href: index.yml
 - name: Přehled
-  items:
-  - name: Co je rozhraní API pro vlastní vyhledávání Bingu?
-    href: overview.md
-  - name: Porovnání rozhraní API pro vyhledávání Bingu
-    href: ../Bing-Web-Search/bing-api-comparison.md
-    maintainContext: true
   expanded: true
+  items:
+    - name: Co je rozhraní API pro vlastní vyhledávání Bingu?
+      href: overview.md
+    - name: Porovnání rozhraní API pro vyhledávání Bingu
+      href: ../Bing-Web-Search/bing-api-comparison.md
+      maintainContext: true
 - name: Šablony Rychlý start
-  items:
-  - name: Vytvoření instance vlastního vyhledávání
-    href: quick-start.md
-  - name: Získání výsledků hledání z vaší instance
-    items:
-    - name: REST API
-      items:
-      - name: Pomocí C#
-        href: call-endpoint-csharp.md
-      - name: Pomocí Javy
-        href: call-endpoint-java.md
-      - name: Pomocí Node.js
-        href: call-endpoint-nodejs.md
-      - name: Pomocí Pythonu
-        href: call-endpoint-python.md
-    - name: Sada SDK
-      items:
-      - name: Pomocí C#
-        href: sdk-csharp-quick-start.md
-      - name: Pomocí Pythonu
-        href: sdk-python-quickstart.md
   expanded: true
+  items:
+    - name: Vytvoření instance vlastního vyhledávání
+      href: quick-start.md
+    - name: Získání výsledků hledání z vaší instance
+      items:
+        - name: REST API
+          items:
+            - name: 'Pomocí C#'
+              href: call-endpoint-csharp.md
+            - name: Pomocí Javy
+              href: call-endpoint-java.md
+            - name: Pomocí Node.js
+              href: call-endpoint-nodejs.md
+            - name: Pomocí Pythonu
+              href: call-endpoint-python.md
+        - name: Sada SDK
+          items:
+            - name: 'Pomocí C#'
+              href: sdk-csharp-quick-start.md
+            - name: Pomocí Pythonu
+              href: sdk-python-quickstart.md
 - name: Kurzy
   items:
-  - name: Vytvoření webové stránky pro vlastní vyhledávání
-    href: ./tutorials/custom-search-web-page.md
+    - name: Vytvoření webové stránky pro vlastní vyhledávání
+      href: ./tutorials/custom-search-web-page.md
 - name: Ukázky
   items:
-  - name: Ukázky kódů
-    href: https://azure.microsoft.com/resources/samples/?sort=0&service=cognitive-services&term=Bing+Custom+Search
+    - name: Ukázky kódů
+      href: 'https://azure.microsoft.com/resources/samples/?sort=0&service=cognitive-services&term=Bing+Custom+Search'
 - name: Návody
   items:
-  - name: Konfigurace vlastního vyhledávacího prostředí
-    href: define-your-custom-view.md
-  - name: Volání instance vlastního vyhledávání
-    href: search-your-custom-view.md
-  - name: Konfigurace a integrace hostovaného uživatelského rozhraní
-    href: hosted-ui.md
-  - name: Sdílení instance vlastního vyhledávání
-    href: share-your-custom-search.md
-  - name: Získání obrázků z vaší instance vyhledávání
-    href: get-images-from-instance.md
-  - name: Získání videí z vaší instance vyhledávání
-    href: get-videos-from-instance.md
-  - name: Konfigurace prostředí pro vlastní automatické návrhy
-    href: define-custom-suggestions.md
-  - name: Zpracování zvýrazňování nalezených položek
-    href: hit-highlighting.md
-  - name: Procházení webových stránek
-    href: page-webpages.md
+    - name: Konfigurace vlastního vyhledávacího prostředí
+      href: define-your-custom-view.md
+    - name: Volání instance vlastního vyhledávání
+      href: search-your-custom-view.md
+    - name: Konfigurace a integrace hostovaného uživatelského rozhraní
+      href: hosted-ui.md
+    - name: Sdílení instance vlastního vyhledávání
+      href: share-your-custom-search.md
+    - name: Získání obrázků z vaší instance vyhledávání
+      href: get-images-from-instance.md
+    - name: Získání videí z vaší instance vyhledávání
+      href: get-videos-from-instance.md
+    - name: Konfigurace prostředí pro vlastní automatické návrhy
+      href: define-custom-suggestions.md
+    - name: Zpracování zvýrazňování nalezených položek
+      href: hit-highlighting.md
+    - name: Procházení webových stránek
+      href: page-webpages.md
 - name: Referenční informace
   items:
-  - name: Referenční informace k rozhraní API pro vlastní automatické návrhy Bingu
-    href: https://docs.microsoft.com/rest/api/cognitiveservices/bing-custom-autosuggest-api-v7-reference
-  - name: Referenční informace k rozhraní API pro vlastní vyhledávání obrázků Bingu
-    href: https://docs.microsoft.com/rest/api/cognitiveservices/bing-custom-images-api-v7-reference
-  - name: Referenční informace k rozhraní API pro vlastní vyhledávání Bingu
-    href: https://docs.microsoft.com/rest/api/cognitiveservices/bing-custom-search-api-v7-reference
-  - name: Referenční informace k rozhraní API pro vlastní vyhledávání videí Bingu
-    href: https://docs.microsoft.com/rest/api/cognitiveservices/bing-custom-videos-api-v7-reference
-  - name: Požadavky rozhraní API pro vyhledávání Bingu na zobrazení a použití
-    href: ../Bing-Web-Search/use-display-requirements.md
-    maintainContext: true
-  - name: Sady SDK
-    items:
-    - name: .NET
-      href: https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/bingcustomsearch?view=azure-dotnet
-    - name: Java – vlastní vyhledávání
-      href: https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/customsearch?view=azure-java-stable
-    - name: Java – vlastní vyhledávání obrázků
-      href: https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/customimagesearch?view=azure-java-stable
-    - name: Python
-      href: https://docs.microsoft.com/python/api/overview/azure/cognitiveservices/customsearch?view=azure-python
-    - name: Node.js
-      href: https://docs.microsoft.com/javascript/api/overview/azure/cognitiveservices/customsearch?view=azure-node-latest
-    - name: Go – vlastní vyhledávání
-      href: https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/customsearch
-    - name: Go – vlastní vyhledávání obrázků
-      href: https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/customimagesearch
+    - name: Referenční informace k rozhraní API pro vlastní automatické návrhy Bingu
+      href: 'https://docs.microsoft.com/rest/api/cognitiveservices/bing-custom-autosuggest-api-v7-reference'
+    - name: Referenční informace k rozhraní API pro vlastní vyhledávání obrázků Bingu
+      href: 'https://docs.microsoft.com/rest/api/cognitiveservices/bing-custom-images-api-v7-reference'
+    - name: Referenční informace k rozhraní API pro vlastní vyhledávání Bingu
+      href: 'https://docs.microsoft.com/rest/api/cognitiveservices/bing-custom-search-api-v7-reference'
+    - name: Referenční informace k rozhraní API pro vlastní vyhledávání videí Bingu
+      href: 'https://docs.microsoft.com/rest/api/cognitiveservices/bing-custom-videos-api-v7-reference'
+    - name: Požadavky rozhraní API pro vyhledávání Bingu na zobrazení a použití
+      href: ../Bing-Web-Search/use-display-requirements.md
+      maintainContext: true
+    - name: Sady SDK
+      items:
+        - name: .NET
+          href: 'https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/bingcustomsearch?view=azure-dotnet'
+        - name: Java – vlastní vyhledávání
+          href: 'https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/customsearch?view=azure-java-stable'
+        - name: Java – vlastní vyhledávání obrázků
+          href: 'https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/customimagesearch?view=azure-java-stable'
+        - name: Python
+          href: 'https://docs.microsoft.com/python/api/overview/azure/cognitiveservices/customsearch?view=azure-python'
+        - name: Node.js
+          href: 'https://docs.microsoft.com/javascript/api/overview/azure/cognitiveservices/customsearch?view=azure-node-latest'
+        - name: Go – vlastní vyhledávání
+          href: 'https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/customsearch'
+        - name: Go – vlastní vyhledávání obrázků
+          href: 'https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/customimagesearch'
 - name: Zdroje a prostředky
   items:
-  - name: Ceny
-    href: https://azure.microsoft.com/pricing/details/cognitive-services/bing-custom-search/
-  - name: UserVoice
-    href: https://cognitive.uservoice.com/forums/598147-bing-custom-search-api
-  - name: Stack Overflow
-    href: https://stackoverflow.com/search?q=bing+custom+search
-  - name: Regionální dostupnost
-    href: https://azure.microsoft.com/global-infrastructure/services/
-  - name: Plány Azure do budoucna
-    href: https://azure.microsoft.com/roadmap/
-  - name: Znalostní báze
-    href: https://cognitive.uservoice.com/knowledgebase/topics/127875-bing-search-web-image-video-news-autosuggest
-  - name: Získání klíče rozhraní API
-    href: https://azure.microsoft.com/try/cognitive-services/?api=bing-custom-search-api
-  - name: Vyzkoušejte si to!
-    href: https://aka.ms/bingcustomsearchtryit
-  - name: Koncový bod Vlastního vyhledávání Bingu
-    href: endpoint-custom.md
-  - name: Podpora jazyků a oblastí
-    href: language-support.md
-ms.openlocfilehash: eee327b77fa3c0d46d47bb3ac6644fb175249618
-ms.sourcegitcommit: dd1a9f38c69954f15ff5c166e456fda37ae1cdf2
-ms.translationtype: HT
-ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57568874"
+    - name: Ceny
+      href: 'https://azure.microsoft.com/pricing/details/cognitive-services/bing-custom-search/'
+    - name: UserVoice
+      href: 'https://cognitive.uservoice.com/forums/598147-bing-custom-search-api'
+    - name: Stack Overflow
+      href: 'https://stackoverflow.com/search?q=bing+custom+search'
+    - name: Regionální dostupnost
+      href: 'https://azure.microsoft.com/global-infrastructure/services/'
+    - name: Plány Azure do budoucna
+      href: 'https://azure.microsoft.com/roadmap/'
+    - name: Znalostní báze
+      href: 'https://cognitive.uservoice.com/knowledgebase/topics/127875-bing-search-web-image-video-news-autosuggest'
+    - name: Získání klíče rozhraní API
+      href: 'https://azure.microsoft.com/try/cognitive-services/?api=bing-custom-search-api'
+    - name: Vyzkoušejte si to!
+      href: 'https://aka.ms/bingcustomsearchtryit'
+    - name: Koncový bod Vlastního vyhledávání Bingu
+      href: endpoint-custom.md
+    - name: Podpora jazyků a oblastí
+      href: language-support.md

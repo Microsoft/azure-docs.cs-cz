@@ -1,15 +1,9 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 376f2bd792cb1b3190507f5571a8b7a33daf2542
-ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
-ms.translationtype: HT
-ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58439106"
 documentType: LandingData
 title: Dokumentace ke službě Azure Data Box – online přenos
 metadata:
   title: Dokumentace ke službě Azure Data Box – online přenos
-  description: Zařízení Data Box můžete využít k vysoce výkonným přenosům dat přes síť do Azure, a to rychle, levně a spolehlivě.
+  description: 'Zařízení Data Box můžete využít k vysoce výkonným přenosům dat přes síť do Azure, a to rychle, levně a spolehlivě.'
   services: databox
   author: alkohli
   manager: twooley
@@ -19,27 +13,27 @@ metadata:
   ms.date: 03/25/2019
   ms.author: alkohli
 abstract:
-  description: Řada služeb Azure Data Box umožňuje přenášet stovky terabajtů dat do Azure rychlým, cenově dostupným a spolehlivým způsobem. Zařízení Data Box použijte pro velké datové přenosy prostřednictvím sítě.<p>Pokud chcete odesílat data pro cloudovou archivaci nebo zotavení po havárii nebo zpracovávat data v cloudovém měřítku, zvolte Data Box Gateway.  Pokud chcete během přenosu do Azure filtrovat, analyzovat a transformovat data, použijte Data Box Edge.</p><p>V našich kurzech se dozvíte, jak se Data Box Gateway a Data Box Edge dají použít pro síťové přenosy dat.</p>
+  description: 'Řada služeb Azure Data Box umožňuje přenášet stovky terabajtů dat do Azure rychlým, cenově dostupným a spolehlivým způsobem. Zařízení Data Box použijte pro velké datové přenosy prostřednictvím sítě.<p>Pokud chcete odesílat data pro cloudovou archivaci nebo zotavení po havárii nebo zpracovávat data v cloudovém měřítku, zvolte Data Box Gateway.  Pokud chcete během přenosu do Azure filtrovat, analyzovat a transformovat data, použijte Data Box Edge.</p><p>V našich kurzech se dozvíte, jak se Data Box Gateway a Data Box Edge dají použít pro síťové přenosy dat.</p>'
 sections:
-- title: Kurzy
-  items:
-  - type: paragraph
-    text: <b>Pro Data Box Gateway</b>
-  - type: list
-    style: ordered
+  - title: Kurzy
     items:
-    - html: <a href="data-box-gateway-deploy-prep">Příprava k nasazení služby Azure Data Box Gateway</a>
-    - html: <a href="data-box-gateway-deploy-provision-hyperv">Zřízení služby Azure Data Box Gateway v Hyper-V</a>
-    - html: <a href="data-box-gateway-deploy-provision-vmware">Zřízení služby Azure Data Box Gateway ve VMWare</a>
-    - html: <a href="data-box-gateway-deploy-connect-setup-activate">Připojení, nastavení a aktivace služby Azure Data Box Gateway</a>
-    - html: <a href="data-box-gateway-deploy-add-shares">Přenos dat pomocí služby Azure Data Box Gateway</a>
-  - type: paragraph
-    text: <b>Pro Data Box Edge</b>
-  - type: list
-    style: ordered
-    items:
-    - html: <a href="data-box-edge-deploy-prep">Příprava k nasazení služby Azure Data Box Edge</a>
-    - html: <a href="data-box-edge-deploy-install">Instalace služby Azure Data Box Edge</a>
-    - html: <a href="data-box-edge-deploy-connect-setup-activate">Připojení, nastavení a aktivace služby Azure Data Box Edge</a>
-    - html: <a href="data-box-edge-deploy-add-shares">Přenos dat pomocí služby Azure Box Edge</a>
-    - html: <a href="data-box-edge-deploy-configure-compute">Transformace dat pomocí služby Azure Box Edge</a>
+      - type: paragraph
+        text: <b>Pro Data Box Gateway</b>
+      - type: list
+        style: ordered
+        items:
+          - html: <a href="data-box-gateway-deploy-prep">Příprava k nasazení služby Azure Data Box Gateway</a>
+          - html: <a href="data-box-gateway-deploy-provision-hyperv">Zřízení služby Azure Data Box Gateway v Hyper-V</a>
+          - html: <a href="data-box-gateway-deploy-provision-vmware">Zřízení služby Azure Data Box Gateway ve VMWare</a>
+          - html: '<a href="data-box-gateway-deploy-connect-setup-activate">Připojení, nastavení a aktivace služby Azure Data Box Gateway</a>'
+          - html: <a href="data-box-gateway-deploy-add-shares">Přenos dat pomocí služby Azure Data Box Gateway</a>
+      - type: paragraph
+        text: <b>Pro Data Box Edge</b>
+      - type: list
+        style: ordered
+        items:
+          - html: <a href="data-box-edge-deploy-prep">Příprava k nasazení služby Azure Data Box Edge</a>
+          - html: <a href="data-box-edge-deploy-install">Instalace služby Azure Data Box Edge</a>
+          - html: '<a href="data-box-edge-deploy-connect-setup-activate">Připojení, nastavení a aktivace služby Azure Data Box Edge</a>'
+          - html: <a href="data-box-edge-deploy-add-shares">Přenos dat pomocí služby Azure Box Edge</a>
+          - html: <a href="data-box-edge-deploy-configure-compute">Transformace dat pomocí služby Azure Box Edge</a>

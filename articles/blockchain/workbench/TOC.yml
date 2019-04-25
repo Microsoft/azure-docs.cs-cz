@@ -1,80 +1,73 @@
-items:
 - name: Azure Blockchain Workbench (Public Preview)
   href: index.yml
 - name: Přehled
-  items:
-  - name: Informace o aplikaci Azure Blockchain Workbench
-    href: overview.md
   expanded: true
+  items:
+    - name: Informace o aplikaci Azure Blockchain Workbench
+      href: overview.md
 - name: Kurzy
-  items:
-  - name: Vytvoření blockchainové aplikace
-    href: create-app.md
-  - name: Použití blockchainové aplikace
-    href: use.md
   expanded: true
+  items:
+    - name: Vytvoření blockchainové aplikace
+      href: create-app.md
+    - name: Použití blockchainové aplikace
+      href: use.md
 - name: Koncepty
   items:
-  - name: Architektura
-    href: architecture.md
-  - name: Vzory integrace
-    href: integration-patterns.md
+    - name: Architektura
+      href: architecture.md
+    - name: Vzory integrace
+      href: integration-patterns.md
 - name: Návody
-  items:
-  - name: Nasazení Workbenche
-    href: deploy.md
-  - name: Správa uživatelů Workbenche
-    href: manage-users.md
-  - name: Aplikace pro správu verzí
-    href: version-app.md
-  - name: Použití rozhraní API Workbenche
-    href: use-api.md
-  - name: Řešení potíží s aplikacemi
-    href: troubleshooting.md
-  - name: Použití dat Workbenche
-    items:
-    - name: Konfigurace brány firewall databáze
-      href: database-firewall.md
-    - name: Získání podrobností o databázi
-      href: getdb-details.md
-    - name: Použití dat v Excelu
-      href: data-excel.md
-    - name: Použití dat v Power BI
-      href: data-powerbi.md
-    - name: Použití dat v sadě SQL Management Studio
-      href: data-sql-management-studio.md
   expanded: true
+  items:
+    - name: Nasazení Workbenche
+      href: deploy.md
+    - name: Správa uživatelů Workbenche
+      href: manage-users.md
+    - name: Aplikace pro správu verzí
+      href: version-app.md
+    - name: Použití rozhraní API Workbenche
+      href: use-api.md
+    - name: Řešení potíží s aplikacemi
+      href: troubleshooting.md
+    - name: Použití dat Workbenche
+      items:
+        - name: Konfigurace brány firewall databáze
+          href: database-firewall.md
+        - name: Získání podrobností o databázi
+          href: getdb-details.md
+        - name: Použití dat v Excelu
+          href: data-excel.md
+        - name: Použití dat v Power BI
+          href: data-powerbi.md
+        - name: Použití dat v sadě SQL Management Studio
+          href: data-sql-management-studio.md
 - name: Referenční informace
   items:
-  - name: Konfigurace
-    href: configuration.md
-  - name: Zobrazení databáze
-    href: database-views.md
-  - name: Rozhraní API pro zasílání zpráv
-    href: messages-overview.md
-  - name: REST API
-    href: https://docs.microsoft.com/rest/api/azure-blockchain-workbench
+    - name: Konfigurace
+      href: configuration.md
+    - name: Zobrazení databáze
+      href: database-views.md
+    - name: Rozhraní API pro zasílání zpráv
+      href: messages-overview.md
+    - name: REST API
+      href: 'https://docs.microsoft.com/rest/api/azure-blockchain-workbench'
 - name: Zdroje a prostředky
   items:
-  - name: Blog
-    href: https://azure.microsoft.com/blog/topics/blockchain/
-  - name: Ukázky kódů
-    href: https://github.com/Azure-Samples/blockchain
-  - name: Komunita
-    href: https://techcommunity.microsoft.com/t5/Blockchain/bd-p/AzureBlockchain
-  - name: Fórum
-    href: https://aka.ms/workbenchforum
-  - name: Zpětná vazba k produktu
-    href: https://aka.ms/blockchainuservoice
+    - name: Blog
+      href: 'https://azure.microsoft.com/blog/topics/blockchain/'
+    - name: Ukázky kódů
+      href: 'https://github.com/Azure-Samples/blockchain'
+    - name: Komunita
+      href: 'https://techcommunity.microsoft.com/t5/Blockchain/bd-p/AzureBlockchain'
+    - name: Fórum
+      href: 'https://aka.ms/workbenchforum'
+    - name: Zpětná vazba k produktu
+      href: 'https://aka.ms/blockchainuservoice'
 - name: Šablony řešení
   items:
-  - name: Konsorcium PoA Ethereum
-    href: ../templates/ethereum-poa-deployment.md
-  - name: Konsorcium Hyperledger Fabric
-    href: ../templates/hyperledger-fabric-consortium-blockchain.md
-ms.openlocfilehash: b0426cc5dfbac62657ad172f5fa73586e6214601
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
-ms.translationtype: HT
-ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58001925"
+    - name: Konsorcium PoA Ethereum
+      href: ../templates/ethereum-poa-deployment.md
+    - name: Konsorcium Hyperledger Fabric
+      href: ../templates/hyperledger-fabric-consortium-blockchain.md

@@ -1,148 +1,141 @@
-items:
 - name: Dokumentace ke službě Traffic Manager
   href: index.yml
 - name: Přehled
   items:
-  - name: Co je Traffic Manager?
-    href: traffic-manager-overview.md
+    - name: Co je Traffic Manager?
+      href: traffic-manager-overview.md
 - name: Rychlý start
   items:
-  - name: Vytvoření profilu služby Traffic Manager – Portal
-    href: quickstart-create-traffic-manager-profile.md
-  - name: Vytvoření profilu služby Traffic Manager – PowerShell
-    href: quickstart-create-traffic-manager-profile-powershell.md
+    - name: Vytvoření profilu služby Traffic Manager – Portal
+      href: quickstart-create-traffic-manager-profile.md
+    - name: Vytvoření profilu služby Traffic Manager – PowerShell
+      href: quickstart-create-traffic-manager-profile-powershell.md
 - name: Kurzy
   items:
-  - name: Směrování provozu pro zajištění nízké latence
-    href: tutorial-traffic-manager-improve-website-response.md
-  - name: Směrování provozu na základě geografického umístění koncového bodu
-    href: traffic-manager-configure-geographic-routing-method.md
-  - name: Distribuce provozu do sady koncových bodů
-    href: traffic-manager-configure-weighted-routing-method.md
-  - name: Směrování provozu do prioritního koncového bodu
-    href: traffic-manager-configure-priority-routing-method.md
-  - name: Řízení provozu s váženými koncovými body
-    href: tutorial-traffic-manager-weighted-endpoint-routing.md
-  - name: Směrování provozu na základě podsítě uživatele
-    href: tutorial-traffic-manager-subnet-routing.md
-  - name: Záznamy aliasů pro Traffic Manager
-    href: ../dns/tutorial-alias-tm.md?toc=%2fazure%2ftraffic-manager%2ftoc.json
+    - name: Směrování provozu pro zajištění nízké latence
+      href: tutorial-traffic-manager-improve-website-response.md
+    - name: Směrování provozu na základě geografického umístění koncového bodu
+      href: traffic-manager-configure-geographic-routing-method.md
+    - name: Distribuce provozu do sady koncových bodů
+      href: traffic-manager-configure-weighted-routing-method.md
+    - name: Směrování provozu do prioritního koncového bodu
+      href: traffic-manager-configure-priority-routing-method.md
+    - name: Řízení provozu s váženými koncovými body
+      href: tutorial-traffic-manager-weighted-endpoint-routing.md
+    - name: Směrování provozu na základě podsítě uživatele
+      href: tutorial-traffic-manager-subnet-routing.md
+    - name: Záznamy aliasů pro Traffic Manager
+      href: ../dns/tutorial-alias-tm.md?toc=%2fazure%2ftraffic-manager%2ftoc.json
 - name: Ukázky
   items:
-  - name: Azure CLI
-    href: cli-samples.md
-  - name: Azure PowerShell
-    href: powershell-samples.md
+    - name: Azure CLI
+      href: cli-samples.md
+    - name: Azure PowerShell
+      href: powershell-samples.md
 - name: Koncepty
   items:
-  - name: Metody směrování
-    href: traffic-manager-routing-methods.md
-    items:
-    - name: Hierarchie zemí/oblastí používaná Traffic Managerem
-      href: traffic-manager-geographic-regions.md
-  - name: Vnořené profily Traffic Manageru
-    href: traffic-manager-nested-profiles.md
-  - name: Typy koncových bodů
-    href: traffic-manager-endpoint-types.md
-  - name: Monitorování koncových bodů
-    href: traffic-manager-monitoring.md
-  - name: Měření reálných uživatelů
-    href: traffic-manager-rum-overview.md
-  - name: Zobrazení přenosů
-    href: traffic-manager-traffic-view-overview.md
-  - name: Metriky a upozornění
-    href: traffic-manager-metrics-alerts.md
-  - name: Zotavení po havárii s využitím Azure DNS a Traffic Manageru
-    href: ../networking/disaster-recovery-dns-traffic-manager.md
-  - name: Jak funguje Traffic Manager
-    href: traffic-manager-how-it-works.md
-  - name: Nejčastější dotazy
-    href: traffic-manager-FAQs.md
+    - name: Metody směrování
+      href: traffic-manager-routing-methods.md
+      items:
+        - name: Hierarchie zemí/oblastí používaná Traffic Managerem
+          href: traffic-manager-geographic-regions.md
+    - name: Vnořené profily Traffic Manageru
+      href: traffic-manager-nested-profiles.md
+    - name: Typy koncových bodů
+      href: traffic-manager-endpoint-types.md
+    - name: Monitorování koncových bodů
+      href: traffic-manager-monitoring.md
+    - name: Měření reálných uživatelů
+      href: traffic-manager-rum-overview.md
+    - name: Zobrazení přenosů
+      href: traffic-manager-traffic-view-overview.md
+    - name: Metriky a upozornění
+      href: traffic-manager-metrics-alerts.md
+    - name: Zotavení po havárii s využitím Azure DNS a Traffic Manageru
+      href: ../networking/disaster-recovery-dns-traffic-manager.md
+    - name: Jak funguje Traffic Manager
+      href: traffic-manager-how-it-works.md
+    - name: Nejčastější dotazy
+      href: traffic-manager-FAQs.md
 - name: Postup
   items:
-  - name: Konfigurace směrování podle výkonu v Traffic Manageru
-    href: traffic-manager-configure-performance-routing-method.md
-  - name: Konfigurace směrování MultiValue v Traffic Manageru
-    href: traffic-manager-configure-multivalue-routing-method.md
-  - name: Konfigurace směrování Subnet v Traffic Manageru
-    href: traffic-manager-configure-subnet-routing-method.md
-  - name: Odeslání Real User Measurements do Traffic Manageru
-    items:
-    - name: Pomocí sady Visual Studio SDK
-      href: traffic-manager-create-rum-visual-studio.md
-    - name: Pomocí webových stránek
-      href: traffic-manager-create-rum-web-pages.md
-  - name: Správa koncových bodů
-    href: traffic-manager-manage-endpoints.md
-  - name: Správa profilů
-    href: traffic-manager-manage-profiles.md
-  - name: Ověření nastavení Traffic Manageru
-    href: traffic-manager-testing-settings.md
-  - name: Kombinace služeb pro vyrovnávání zatížení
-    href: traffic-manager-load-balancing-azure.md
-  - name: Měření výkonu Traffic Manageru
-    href: traffic-manager-performance-considerations.md
-  - name: Povolení diagnostických protokolů
-    href: traffic-manager-diagnostic-logs.md
-  - name: Použití Azure PowerShellu ke správě Traffic Manageru
-    href: traffic-manager-powershell-arm.md
-  - name: Nasměrování internetové domény na Traffic Manager
-    href: traffic-manager-point-internet-domain.md
-  - name: Řešení potíží
-    items:
-    - name: Řešení potíží při sníženém výkonu Azure Traffic Manageru
-      href: traffic-manager-troubleshooting-degraded.md
+    - name: Konfigurace směrování podle výkonu v Traffic Manageru
+      href: traffic-manager-configure-performance-routing-method.md
+    - name: Konfigurace směrování MultiValue v Traffic Manageru
+      href: traffic-manager-configure-multivalue-routing-method.md
+    - name: Konfigurace směrování Subnet v Traffic Manageru
+      href: traffic-manager-configure-subnet-routing-method.md
+    - name: Odeslání Real User Measurements do Traffic Manageru
+      items:
+        - name: Pomocí sady Visual Studio SDK
+          href: traffic-manager-create-rum-visual-studio.md
+        - name: Pomocí webových stránek
+          href: traffic-manager-create-rum-web-pages.md
+    - name: Správa koncových bodů
+      href: traffic-manager-manage-endpoints.md
+    - name: Správa profilů
+      href: traffic-manager-manage-profiles.md
+    - name: Ověření nastavení Traffic Manageru
+      href: traffic-manager-testing-settings.md
+    - name: Kombinace služeb pro vyrovnávání zatížení
+      href: traffic-manager-load-balancing-azure.md
+    - name: Měření výkonu Traffic Manageru
+      href: traffic-manager-performance-considerations.md
+    - name: Povolení diagnostických protokolů
+      href: traffic-manager-diagnostic-logs.md
+    - name: Použití Azure PowerShellu ke správě Traffic Manageru
+      href: traffic-manager-powershell-arm.md
+    - name: Nasměrování internetové domény na Traffic Manager
+      href: traffic-manager-point-internet-domain.md
+    - name: Řešení potíží
+      items:
+        - name: Řešení potíží při sníženém výkonu Azure Traffic Manageru
+          href: traffic-manager-troubleshooting-degraded.md
 - name: Referenční informace
   items:
-  - name: Ukázky kódů
-    href: https://azure.microsoft.com/resources/samples/?service=traffic-manager
-  - name: Azure PowerShell
-    href: /powershell/module/az.trafficmanager
-  - name: Azure CLI
-    href: /cli/azure/network/traffic-manager
-  - name: Java
-    href: /java/api/com.microsoft.azure.management.trafficmanager
-  - name: Node.js
-    href: https://azure.github.io/azure-sdk-for-node/azure-arm-trafficmanager/latest/
-  - name: Ruby
-    href: http://www.rubydoc.info/gems/azure_mgmt_traffic_manager
-  - name: Python
-    href: http://azure-sdk-for-python.readthedocs.io/en/latest/sample_azure-mgmt-trafficmanager.html
-  - name: REST
-    href: https://msdn.microsoft.com/library/mt163667.aspx
-  - name: Šablona Resource Manageru
-    href: /azure/templates/microsoft.network/trafficmanagerprofiles
+    - name: Ukázky kódů
+      href: 'https://azure.microsoft.com/resources/samples/?service=traffic-manager'
+    - name: Azure PowerShell
+      href: /powershell/module/az.trafficmanager
+    - name: Azure CLI
+      href: /cli/azure/network/traffic-manager
+    - name: Java
+      href: /java/api/com.microsoft.azure.management.trafficmanager
+    - name: Node.js
+      href: 'https://azure.github.io/azure-sdk-for-node/azure-arm-trafficmanager/latest/'
+    - name: Ruby
+      href: 'http://www.rubydoc.info/gems/azure_mgmt_traffic_manager'
+    - name: Python
+      href: 'http://azure-sdk-for-python.readthedocs.io/en/latest/sample_azure-mgmt-trafficmanager.html'
+    - name: REST
+      href: 'https://msdn.microsoft.com/library/mt163667.aspx'
+    - name: Šablona Resource Manageru
+      href: /azure/templates/microsoft.network/trafficmanagerprofiles
 - name: Související
   items:
-  - name: Application Gateway
-    href: /azure/application-gateway/
-  - name: Load Balancer
-    href: /azure/load-balancer/
-  - name: Azure DNS
-    href: /azure/dns/
+    - name: Application Gateway
+      href: /azure/application-gateway/
+    - name: Load Balancer
+      href: /azure/load-balancer/
+    - name: Azure DNS
+      href: /azure/dns/
 - name: Zdroje a prostředky
   items:
-  - name: Plány Azure do budoucna
-    href: https://azure.microsoft.com/roadmap/
-  - name: Blog
-    href: https://azure.microsoft.com/blog/topics/networking/
-  - name: Fórum MSDN
-    href: https://social.msdn.microsoft.com/Forums/en-US/home?forum=WAVirtualMachinesVirtualNetwork
-  - name: Ceny
-    href: https://azure.microsoft.com/pricing/details/traffic-manager/
-  - name: Cenová kalkulačka
-    href: https://azure.microsoft.com/pricing/calculator/
-  - name: Omezení služby
-    href: ../azure-subscription-service-limits.md#traffic-manager-limits
-  - name: Aktualizace služeb
-    href: https://azure.microsoft.com/updates/?product=traffic-manager
-  - name: SLA
-    href: https://azure.microsoft.com/support/legal/sla/traffic-manager/
-  - name: Videa
-    href: https://azure.microsoft.com/resources/videos/index/?services=traffic-manager
-ms.openlocfilehash: cca0930c6314f15dfd33a32bd6f5cb5ad6da0134
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: HT
-ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59785704"
+    - name: Plány Azure do budoucna
+      href: 'https://azure.microsoft.com/roadmap/'
+    - name: Blog
+      href: 'https://azure.microsoft.com/blog/topics/networking/'
+    - name: Fórum MSDN
+      href: 'https://social.msdn.microsoft.com/Forums/en-US/home?forum=WAVirtualMachinesVirtualNetwork'
+    - name: Ceny
+      href: 'https://azure.microsoft.com/pricing/details/traffic-manager/'
+    - name: Cenová kalkulačka
+      href: 'https://azure.microsoft.com/pricing/calculator/'
+    - name: Omezení služby
+      href: '../azure-subscription-service-limits.md#traffic-manager-limits'
+    - name: Aktualizace služeb
+      href: 'https://azure.microsoft.com/updates/?product=traffic-manager'
+    - name: SLA
+      href: 'https://azure.microsoft.com/support/legal/sla/traffic-manager/'
+    - name: Videa
+      href: 'https://azure.microsoft.com/resources/videos/index/?services=traffic-manager'

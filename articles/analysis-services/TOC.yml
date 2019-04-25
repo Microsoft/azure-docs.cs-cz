@@ -1,168 +1,161 @@
-items:
 - name: Dokumentace ke službě Analysis Services
   href: index.md
 - name: Přehled
   items:
-  - name: Co je služba Analysis Services?
-    href: analysis-services-overview.md
+    - name: Co je služba Analysis Services?
+      href: analysis-services-overview.md
 - name: Šablony Rychlý start
   items:
-  - name: Vytvoření serveru – portál
-    href: analysis-services-create-server.md
-  - name: Vytvoření serveru – PowerShell
-    href: analysis-services-create-powershell.md
-  - name: Konfigurace brány firewall serveru – portál
-    href: analysis-services-qs-firewall.md
+    - name: Vytvoření serveru – portál
+      href: analysis-services-create-server.md
+    - name: Vytvoření serveru – PowerShell
+      href: analysis-services-create-powershell.md
+    - name: Konfigurace brány firewall serveru – portál
+      href: analysis-services-qs-firewall.md
 - name: Kurzy
   items:
-  - name: 1. Přidání ukázkového modelu z portálu
-    href: analysis-services-create-sample-model.md
-  - name: 2. Konfigurace správce serveru a uživatelských rolí
-    href: tutorials/analysis-services-tutorial-roles.md
-  - name: 3. Propojení s Power BI Desktopem
-    href: tutorials/analysis-services-tutorial-pbid.md
+    - name: 1. Přidání ukázkového modelu z portálu
+      href: analysis-services-create-sample-model.md
+    - name: 2. Konfigurace správce serveru a uživatelských rolí
+      href: tutorials/analysis-services-tutorial-roles.md
+    - name: 3. Propojení s Power BI Desktopem
+      href: tutorials/analysis-services-tutorial-pbid.md
 - name: Koncepty
   items:
-  - name: Ověřování a uživatelská oprávnění
-    href: analysis-services-manage-users.md
-  - name: Automatizace s využitím instančních objektů
-    href: analysis-services-service-principal.md
-  - name: Klientské knihovny
-    href: analysis-services-data-providers.md
-  - name: Úroveň kompatibility
-    href: analysis-services-compat-level.md
-  - name: Připojení k místním zdrojům dat
-    href: analysis-services-gateway.md
-  - name: Připojení k serverům
-    href: analysis-services-connect.md
-  - name: Vysoká dostupnost
-    href: analysis-services-bcdr.md
-  - name: Podporované zdroje dat
-    href: analysis-services-datasource.md
+    - name: Ověřování a uživatelská oprávnění
+      href: analysis-services-manage-users.md
+    - name: Automatizace s využitím instančních objektů
+      href: analysis-services-service-principal.md
+    - name: Klientské knihovny
+      href: analysis-services-data-providers.md
+    - name: Úroveň kompatibility
+      href: analysis-services-compat-level.md
+    - name: Připojení k místním zdrojům dat
+      href: analysis-services-gateway.md
+    - name: Připojení k serverům
+      href: analysis-services-connect.md
+    - name: Vysoká dostupnost
+      href: analysis-services-bcdr.md
+    - name: Podporované zdroje dat
+      href: analysis-services-datasource.md
 - name: Postupy
   items:
-  - name: Server
-    items:
-    - name: Zálohování a obnovení
-      href: analysis-services-backup.md
-    - name: Konfigurace aliasu názvu souboru
-      href: analysis-services-server-alias.md
-    - name: Konfigurace škálování na více instancí
-      href: analysis-services-scale-out.md
-    - name: Instalace a konfigurace místní brány dat
-      href: analysis-services-gateway-install.md
-    - name: Použití brány pro zdroje dat ve službě Azure Virtual Network
-      href: analysis-services-vnet-gateway.md
-    - name: Správa serveru
-      href: analysis-services-manage.md
-    - name: Monitorování metrik serveru
-      href: analysis-services-monitor.md
-    - name: Nastavení protokolování diagnostiky
-      href: analysis-services-logging.md
-    - name: Vytvoření instančního objektu – Azure Portal
-      href: ../active-directory/develop/howto-create-service-principal-portal.md
-    - name: Vytvoření instančního objektu – PowerShell
-      href: ../active-directory/develop/howto-authenticate-service-principal-powershell.md
-    - name: Přidání instančního objektu k roli správce serveru
-      href: analysis-services-addservprinc-admins.md
-  - name: Model
-    items:
-    - name: Nasazení ze sady Visual Studio (SSDT)
-      href: analysis-services-deploy.md
-    - name: Aktualizace pomocí REST API
-      href: analysis-services-async-refresh.md
-    - name: Modelování dat v sadě Visual Studio – Kurz k Adventure Works (1400)
-      href: tutorials/aas-adventure-works-tutorial.md
+    - name: Server
       items:
-      - name: 1 – Vytvoření projektu s tabelárním modelem
-        href: tutorials/aas-lesson-1-create-a-new-tabular-model-project.md
-      - name: 2 – Získání dat
-        href: tutorials/aas-lesson-2-get-data.md
-      - name: 3 – Označit jako tabulku kalendářních dat
-        href: tutorials/aas-lesson-3-mark-as-date-table.md
-      - name: 4 – Vytvoření relací
-        href: tutorials/aas-lesson-4-create-relationships.md
-      - name: 5 – Vytvoření počítaných sloupců
-        href: tutorials/aas-lesson-5-create-calculated-columns.md
-      - name: 6 – Vytvoření měr
-        href: tutorials/aas-lesson-6-create-measures.md
-      - name: 7 – Vytvoření klíčových ukazatelů výkonu
-        href: tutorials/aas-lesson-7-create-key-performance-indicators.md
-      - name: 8 – Vytvoření perspektiv
-        href: tutorials/aas-lesson-8-create-perspectives.md
-      - name: 9 – Vytvoření hierarchií
-        href: tutorials/aas-lesson-9-create-hierarchies.md
-      - name: 10 – Vytvoření oddílů
-        href: tutorials/aas-lesson-10-create-partitions.md
-      - name: 11 – Vytvoření rolí
-        href: tutorials/aas-lesson-11-create-roles.md
-      - name: 12 – Analýza v aplikaci Excel
-        href: tutorials/aas-lesson-12-analyze-in-excel.md
-      - name: 13 – Nasazení
-        href: tutorials/aas-lesson-13-deploy.md
-      - name: Doplňková lekce – Řádky podrobností
-        href: tutorials/aas-supplemental-lesson-detail-rows.md
-      - name: Doplňková lekce – Dynamické zabezpečení
-        href: tutorials/aas-supplemental-lesson-dynamic-security.md
-      - name: Doplňková lekce – Nepravidelné hierarchie
-        href: tutorials/aas-supplemental-lesson-ragged-hierarchies.md
-  - name: Zabezpečení
-    items:
-    - name: Správa uživatelů databáze
-      href: analysis-services-database-users.md
-    - name: Správa správců serveru
-      href: analysis-services-server-admins.md
-  - name: Připojení
-    items:
-    - name: Propojení s Excelem
-      href: analysis-services-connect-excel.md
-    - name: Propojení s Power BI
-      href: analysis-services-connect-pbi.md
-    - name: Vytvoření souboru .odc
-      href: analysis-services-odc.md
+        - name: Zálohování a obnovení
+          href: analysis-services-backup.md
+        - name: Konfigurace aliasu názvu souboru
+          href: analysis-services-server-alias.md
+        - name: Konfigurace škálování na více instancí
+          href: analysis-services-scale-out.md
+        - name: Instalace a konfigurace místní brány dat
+          href: analysis-services-gateway-install.md
+        - name: Použití brány pro zdroje dat ve službě Azure Virtual Network
+          href: analysis-services-vnet-gateway.md
+        - name: Správa serveru
+          href: analysis-services-manage.md
+        - name: Monitorování metrik serveru
+          href: analysis-services-monitor.md
+        - name: Nastavení protokolování diagnostiky
+          href: analysis-services-logging.md
+        - name: Vytvoření instančního objektu – Azure Portal
+          href: ../active-directory/develop/howto-create-service-principal-portal.md
+        - name: Vytvoření instančního objektu – PowerShell
+          href: ../active-directory/develop/howto-authenticate-service-principal-powershell.md
+        - name: Přidání instančního objektu k roli správce serveru
+          href: analysis-services-addservprinc-admins.md
+    - name: Model
+      items:
+        - name: Nasazení ze sady Visual Studio (SSDT)
+          href: analysis-services-deploy.md
+        - name: Aktualizace pomocí REST API
+          href: analysis-services-async-refresh.md
+        - name: Modelování dat v sadě Visual Studio – Kurz k Adventure Works (1400)
+          href: tutorials/aas-adventure-works-tutorial.md
+          items:
+            - name: 1 – Vytvoření projektu s tabelárním modelem
+              href: tutorials/aas-lesson-1-create-a-new-tabular-model-project.md
+            - name: 2 – Získání dat
+              href: tutorials/aas-lesson-2-get-data.md
+            - name: 3 – Označit jako tabulku kalendářních dat
+              href: tutorials/aas-lesson-3-mark-as-date-table.md
+            - name: 4 – Vytvoření relací
+              href: tutorials/aas-lesson-4-create-relationships.md
+            - name: 5 – Vytvoření počítaných sloupců
+              href: tutorials/aas-lesson-5-create-calculated-columns.md
+            - name: 6 – Vytvoření měr
+              href: tutorials/aas-lesson-6-create-measures.md
+            - name: 7 – Vytvoření klíčových ukazatelů výkonu
+              href: tutorials/aas-lesson-7-create-key-performance-indicators.md
+            - name: 8 – Vytvoření perspektiv
+              href: tutorials/aas-lesson-8-create-perspectives.md
+            - name: 9 – Vytvoření hierarchií
+              href: tutorials/aas-lesson-9-create-hierarchies.md
+            - name: 10 – Vytvoření oddílů
+              href: tutorials/aas-lesson-10-create-partitions.md
+            - name: 11 – Vytvoření rolí
+              href: tutorials/aas-lesson-11-create-roles.md
+            - name: 12 – Analýza v aplikaci Excel
+              href: tutorials/aas-lesson-12-analyze-in-excel.md
+            - name: 13 – Nasazení
+              href: tutorials/aas-lesson-13-deploy.md
+            - name: Doplňková lekce – Řádky podrobností
+              href: tutorials/aas-supplemental-lesson-detail-rows.md
+            - name: Doplňková lekce – Dynamické zabezpečení
+              href: tutorials/aas-supplemental-lesson-dynamic-security.md
+            - name: Doplňková lekce – Nepravidelné hierarchie
+              href: tutorials/aas-supplemental-lesson-ragged-hierarchies.md
+    - name: Zabezpečení
+      items:
+        - name: Správa uživatelů databáze
+          href: analysis-services-database-users.md
+        - name: Správa správců serveru
+          href: analysis-services-server-admins.md
+    - name: Připojení
+      items:
+        - name: Propojení s Excelem
+          href: analysis-services-connect-excel.md
+        - name: Propojení s Power BI
+          href: analysis-services-connect-pbi.md
+        - name: Vytvoření souboru .odc
+          href: analysis-services-odc.md
 - name: Referenční informace
   items:
-  - name: PowerShell
-    href: analysis-services-powershell.md
-  - name: REST
-    href: /rest/api/analysisservices
-  - name: Šablona Resource Manageru
-    href: /azure/templates/microsoft.analysisservices/servers
-  - name: DAX
-    href: https://msdn.microsoft.com/library/gg413422.aspx
-  - name: Power Query M
-    href: https://msdn.microsoft.com/library/mt211003.aspx
-  - name: Jazyk TMSL (Tabular Model Scripting Language)
-    href: https://docs.microsoft.com/bi-reference/tmsl/tabular-model-scripting-language-tmsl-reference
-  - name: Tabulkový objektový model (TOM)
-    href: https://docs.microsoft.com/sql/analysis-services/tabular-model-programming-compatibility-level-1200/introduction-to-the-tabular-object-model-tom-in-analysis-services-amo
-  - name: Omezení prostředků a objektů
-    href: analysis-services-capacity-limits.md
+    - name: PowerShell
+      href: analysis-services-powershell.md
+    - name: REST
+      href: /rest/api/analysisservices
+    - name: Šablona Resource Manageru
+      href: /azure/templates/microsoft.analysisservices/servers
+    - name: DAX
+      href: 'https://msdn.microsoft.com/library/gg413422.aspx'
+    - name: Power Query M
+      href: 'https://msdn.microsoft.com/library/mt211003.aspx'
+    - name: Jazyk TMSL (Tabular Model Scripting Language)
+      href: 'https://docs.microsoft.com/bi-reference/tmsl/tabular-model-scripting-language-tmsl-reference'
+    - name: Tabulkový objektový model (TOM)
+      href: 'https://docs.microsoft.com/sql/analysis-services/tabular-model-programming-compatibility-level-1200/introduction-to-the-tabular-object-model-tom-in-analysis-services-amo'
+    - name: Omezení prostředků a objektů
+      href: analysis-services-capacity-limits.md
 - name: Zdroje a prostředky
   items:
-  - name: Ukázky
-    href: analysis-services-samples.md
-  - name: Blog týmu Analysis Services
-    href: https://blogs.msdn.microsoft.com/analysisservices/
-  - name: Fórum Azure Analysis Services
-    href: https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureAnalysisServices
-  - name: Plány Azure do budoucna
-    href: https://azure.microsoft.com/roadmap/?category=intelligence-analytics
-  - name: Stav Azure
-    href: https://azure.microsoft.com/status/
-  - name: Váš názor
-    href: https://feedback.azure.com/forums/556165-azure-analysis-services
-  - name: Ceny
-    href: https://azure.microsoft.com/pricing/details/analysis-services/
-  - name: Cenová kalkulačka
-    href: https://azure.microsoft.com/pricing/calculator/
-  - name: Stack Overflow
-    href: https://stackoverflow.com/questions/tagged/azure-analysis-services
-  - name: Videa
-    href: https://azure.microsoft.com/resources/videos/index/?services=analysis-services&sort=newest
-ms.openlocfilehash: 4d3a592d4d0d9bd0a75dcd1cc76deb2a273bdf09
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
-ms.translationtype: HT
-ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59525258"
+    - name: Ukázky
+      href: analysis-services-samples.md
+    - name: Blog týmu Analysis Services
+      href: 'https://blogs.msdn.microsoft.com/analysisservices/'
+    - name: Fórum Azure Analysis Services
+      href: 'https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureAnalysisServices'
+    - name: Plány Azure do budoucna
+      href: 'https://azure.microsoft.com/roadmap/?category=intelligence-analytics'
+    - name: Stav Azure
+      href: 'https://azure.microsoft.com/status/'
+    - name: Váš názor
+      href: 'https://feedback.azure.com/forums/556165-azure-analysis-services'
+    - name: Ceny
+      href: 'https://azure.microsoft.com/pricing/details/analysis-services/'
+    - name: Cenová kalkulačka
+      href: 'https://azure.microsoft.com/pricing/calculator/'
+    - name: Stack Overflow
+      href: 'https://stackoverflow.com/questions/tagged/azure-analysis-services'
+    - name: Videa
+      href: 'https://azure.microsoft.com/resources/videos/index/?services=analysis-services&sort=newest'

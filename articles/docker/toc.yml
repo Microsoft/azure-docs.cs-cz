@@ -1,40 +1,33 @@
-items:
 - name: Dokumentace k Dockeru
   href: index.md
 - name: Rychlý start
-  items:
-  - name: Šablona Marketplace pro Docker
-    href: https://azuremarketplace.microsoft.com/en-us/marketplace/apps/CanonicalandMSOpenTech.DockerOnUbuntuServer1404LTS
   expanded: true
+  items:
+    - name: Šablona Marketplace pro Docker
+      href: 'https://azuremarketplace.microsoft.com/en-us/marketplace/apps/CanonicalandMSOpenTech.DockerOnUbuntuServer1404LTS'
 - name: Kurzy
   items:
-  - name: Webová aplikace v Pythonu s Dockerem a PostgreSQL
-    href: ../app-service/containers/tutorial-python-postgresql-app.md?toc=%2fazure%2fpostgresql%2ftoc.json
-  - name: Průběžná integrace a doručování s využitím Dockeru Swarm a Azure DevOps
-    href: /azure/container-service/container-service-docker-swarm-mode-setup-ci-cd-acs-engine
-  - name: Průběžná integrace a doručování s využitím Dockeru, Jenkinse a Linuxu
-    href: /azure/virtual-machines/linux/tutorial-jenkins-github-docker-cicd
+    - name: Webová aplikace v Pythonu s Dockerem a PostgreSQL
+      href: ../app-service/containers/tutorial-python-postgresql-app.md?toc=%2fazure%2fpostgresql%2ftoc.json
+    - name: Průběžná integrace a doručování s využitím Dockeru Swarm a Azure DevOps
+      href: /azure/container-service/container-service-docker-swarm-mode-setup-ci-cd-acs-engine
+    - name: 'Průběžná integrace a doručování s využitím Dockeru, Jenkinse a Linuxu'
+      href: /azure/virtual-machines/linux/tutorial-jenkins-github-docker-cicd
 - name: Návody
   items:
-  - name: Rozšíření Docker VM
-    href: /azure/virtual-machines/linux/dockerextension
-  - name: Docker Machine
-    href: /azure/virtual-machines/linux/docker-machine
-  - name: Registr kontejneru Dockeru
-    href: /azure/container-registry/container-registry-get-started-portal
+    - name: Rozšíření Docker VM
+      href: /azure/virtual-machines/linux/dockerextension
+    - name: Docker Machine
+      href: /azure/virtual-machines/linux/docker-machine
+    - name: Registr kontejneru Dockeru
+      href: /azure/container-registry/container-registry-get-started-portal
 - name: Zdroje a prostředky
   items:
-  - name: Plány Azure do budoucna
-    href: https://azure.microsoft.com/roadmap/
-  - name: Ovladač Dockeru pro Azure
-    href: https://docs.docker.com/machine/drivers/azure/
-  - name: Web Dockeru pro Azure
-    href: https://www.docker.com/docker-azure
-  - name: Web Dockeru
-    href: https://docker.com
-ms.openlocfilehash: 79a7bf072be65038000cbcbc17983b4d3b80684f
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
-ms.translationtype: HT
-ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47433765"
+    - name: Plány Azure do budoucna
+      href: 'https://azure.microsoft.com/roadmap/'
+    - name: Ovladač Dockeru pro Azure
+      href: 'https://docs.docker.com/machine/drivers/azure/'
+    - name: Web Dockeru pro Azure
+      href: 'https://www.docker.com/docker-azure'
+    - name: Web Dockeru
+      href: 'https://docker.com'
