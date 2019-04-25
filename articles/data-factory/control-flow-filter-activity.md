@@ -39,10 +39,10 @@ Můžete použít aktivitu filtr v kanálu použít výraz filtru do vstupního 
 
 Vlastnost | Popis | Povolené hodnoty | Požaduje se
 -------- | ----------- | -------------- | --------
-jméno | Název `Filter` aktivity. | Řetězec | Ano
+name | Název `Filter` aktivity. | Řetězec | Ano
 type | Musí být nastaveno na **filtr**. | Řetězec | Ano
 condition | Podmínku, která má použít pro filtrování vstupu. | Výraz | Ano
-položek | Vstupní pole, na které bude použito filtru. | Výraz | Ano
+items | Vstupní pole, na které bude použito filtru. | Výraz | Ano
 
 ## <a name="example"></a>Příklad:
 
