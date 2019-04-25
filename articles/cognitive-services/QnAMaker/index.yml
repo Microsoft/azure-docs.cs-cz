@@ -1,15 +1,9 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 8eb7d6e920f09d6ad230813503a7cf942427ea80
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
-ms.translationtype: HT
-ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55227842"
 documentType: LandingData
 title: Dokumentace ke QnA Makeru
 metadata:
   title: Dokumentace ke QnA Makeru – Microsoft Cognitive Services | Microsoft Docs
-  description: Přečtěte si víc o službě QnA Maker a o tom, jak znalostní báze této služby zpracovávají vaše otázky a odpovědi.
+  description: 'Přečtěte si víc o službě QnA Maker a o tom, jak znalostní báze této služby zpracovávají vaše otázky a odpovědi.'
   services: cognitive-services
   author: tulasim88
   manager: cgronlun
@@ -21,79 +15,79 @@ metadata:
   ms.date: 12/18/2018
   ms.author: tulasim
 abstract:
-  description: QnA Maker je cloudová služba API, která nad vašimi daty vytváří konverzační vrstvu otázek a odpovědí. QnA Maker umožňuje provozovat službu otázek a odpovědí na základě částečně strukturovaného obsahu, jako jsou dokumenty s nejčastějšími dotazy, adresy URL a příručky k produktům. Služba QnA Maker odpovídá na otázky uživatelů v přirozeném jazyce tak, že je porovnává s nejlepší možnou odpovědí v otázkách a odpovědích ve znalostní bázi.
+  description: 'QnA Maker je cloudová služba API, která nad vašimi daty vytváří konverzační vrstvu otázek a odpovědí. QnA Maker umožňuje provozovat službu otázek a odpovědí na základě částečně strukturovaného obsahu, jako jsou dokumenty s nejčastějšími dotazy, adresy URL a příručky k produktům. Služba QnA Maker odpovídá na otázky uživatelů v přirozeném jazyce tak, že je porovnává s nejlepší možnou odpovědí v otázkách a odpovědích ve znalostní bázi.'
   aside:
     image:
-      alt: 
+      alt: null
       height: 110
       src: ../media/index/qnamaker-landing-page-video.png
       width: 250
-    title: Sestavení robota s využitím QnA Makeru během několika minut (8:54)
-    href: https://channel9.msdn.com/Shows/AI-Show/Build-a-Bot-in-Minutes-with-QnA-Maker
+    title: 'Sestavení robota s využitím QnA Makeru během několika minut (8:54)'
+    href: 'https://channel9.msdn.com/Shows/AI-Show/Build-a-Bot-in-Minutes-with-QnA-Maker'
     width: 250
 sections:
-- items:
-  - type: list
-    style: cards
-    className: cardsM
-    columns: 3
+  - items:
+      - type: list
+        style: cards
+        className: cardsM
+        columns: 3
+        items:
+          - href: /azure/cognitive-services/qnamaker/overview/overview
+            html: <p>Další informace o QnA Makeru</p>
+            image:
+              src: ../media/index/i_overview.svg
+            title: Co je QnA Maker?
+          - href: /azure/cognitive-services/qnamaker/quickstarts/create-publish-knowledge-base
+            html: '<p>Naučte se vytvářet, trénovat a publikovat znalostní báze.</p>'
+            image:
+              src: ../media/index/i_tasks.svg
+            title: 'Vytvoření, trénování a publikování znalostní báze'
+          - href: /azure/cognitive-services/qnamaker/concepts/data-sources-supported
+            html: <p>Naučte se publikovat znalostní báze.</p>
+            image:
+              src: ../media/index/i_tasks.svg
+            title: Principy zdrojů dat
+  - title: Zprovoznění během 5 minut
     items:
-    - href: /azure/cognitive-services/qnamaker/overview/overview
-      html: <p>Další informace o QnA Makeru</p>
-      image:
-        src: ../media/index/i_overview.svg
-      title: Co je QnA Maker?
-    - href: /azure/cognitive-services/qnamaker/quickstarts/create-publish-knowledge-base
-      html: <p>Naučte se vytvářet, trénovat a publikovat znalostní báze.</p>
-      image:
-        src: ../media/index/i_tasks.svg
-      title: Vytvoření, trénování a publikování znalostní báze
-    - href: /azure/cognitive-services/qnamaker/concepts/data-sources-supported
-      html: <p>Naučte se publikovat znalostní báze.</p>
-      image:
-        src: ../media/index/i_tasks.svg
-      title: Principy zdrojů dat
-- title: Zprovoznění během 5 minut
-  items:
-  - type: paragraph
-    text: 'Vytvoření znalostní báze pro váš obsah otázek a odpovědí:'
-  - type: list
-    style: icon48
+      - type: paragraph
+        text: 'Vytvoření znalostní báze pro váš obsah otázek a odpovědí:'
+      - type: list
+        style: icon48
+        items:
+          - image:
+              src: media/index/logo_Csharp.svg
+            text: 'C&#35;'
+            href: Quickstarts/create-new-kb-csharp
+          - image:
+              src: media/index/Go-Logo_Blue.svg
+            text: Přejít
+            href: Quickstarts/create-new-kb-go
+          - image:
+              src: media/index/logo_java.svg
+            text: Java
+            href: Quickstarts/create-new-kb-java
+          - image:
+              src: media/index/logo_nodejs.svg
+            text: Node.js
+            href: Quickstarts/create-new-kb-nodejs
+          - image:
+              src: media/index/logo_python.svg
+            text: Python
+            href: Quickstarts/create-new-kb-python
+  - title: Podrobné kurzy
     items:
-    - image:
-        src: media/index/logo_Csharp.svg
-      text: C&#35;
-      href: Quickstarts/create-new-kb-csharp
-    - image:
-        src: media/index/Go-Logo_Blue.svg
-      text: Přejít
-      href: Quickstarts/create-new-kb-go
-    - image:
-        src: media/index/logo_java.svg
-      text: Java
-      href: Quickstarts/create-new-kb-java
-    - image:
-        src: media/index/logo_nodejs.svg
-      text: Node.js
-      href: Quickstarts/create-new-kb-nodejs
-    - image:
-        src: media/index/logo_python.svg
-      text: Python
-      href: Quickstarts/create-new-kb-python
-- title: Podrobné kurzy
-  items:
-  - type: paragraph
-    text: 'Naučte se vyvíjet aplikace s využitím QnA Makeru:'
-  - type: list
-    style: unordered
+      - type: paragraph
+        text: 'Naučte se vyvíjet aplikace s využitím QnA Makeru:'
+      - type: list
+        style: unordered
+        items:
+          - html: <a href="/azure/cognitive-services/qnamaker/tutorials/create-publish-query-in-portal">Vytvoření znalostní báze a zodpovídání dotazů</a></li>
+          - html: <a href="/azure/cognitive-services/qnamaker/tutorials/create-qna-bot">Vytvoření robota QnA Makeru</a></li>
+  - title: Referenční informace
     items:
-    - html: <a href="/azure/cognitive-services/qnamaker/tutorials/create-publish-query-in-portal">Vytvoření znalostní báze a zodpovídání dotazů</a></li>
-    - html: <a href="/azure/cognitive-services/qnamaker/tutorials/create-qna-bot">Vytvoření robota QnA Makeru</a></li>
-- title: Referenční informace
-  items:
-  - type: list
-    style: cards
-    className: cardsD
-    items:
-    - title: Rozhraní API
-      html: <p><a href="https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75ff">Rozhraní API služby QnA Maker</a></p>
+      - type: list
+        style: cards
+        className: cardsD
+        items:
+          - title: Rozhraní API
+            html: '<p><a href="https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75ff">Rozhraní API služby QnA Maker</a></p>'

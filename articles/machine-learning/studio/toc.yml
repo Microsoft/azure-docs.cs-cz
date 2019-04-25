@@ -1,197 +1,190 @@
-items:
 - name: Dokumentace k nástroji Machine Learning Studio
   href: index.yml
 - name: Přehled
-  items:
-  - name: Machine Learning Studio
-    displayName: overview
-    href: what-is-ml-studio.md
-  - name: Porovnání našich produktů ML
-    href: /azure/architecture/data-guide/technology-choices/data-science-and-machine-learning
-    maintainContext: true
   expanded: true
+  items:
+    - name: Machine Learning Studio
+      displayName: overview
+      href: what-is-ml-studio.md
+    - name: Porovnání našich produktů ML
+      href: /azure/architecture/data-guide/technology-choices/data-science-and-machine-learning
+      maintainContext: true
 - name: Kurzy
   items:
-  - name: Vytvoření prvního experimentu
-    displayName: quickstart
-    href: create-experiment.md
-  - name: Vytvoření prediktivního řešení
-    items:
-    - name: 1. Vytvoření experimentu
-      href: tutorial-part1-credit-risk.md
-    - name: 2. Trénování a vyhodnocení
-      href: tutorial-part2-credit-risk-train.md
-    - name: 3. Nasazení webové služby
-      href: tutorial-part3-credit-risk-deploy.md
+    - name: Vytvoření prvního experimentu
+      displayName: quickstart
+      href: create-experiment.md
+    - name: Vytvoření prediktivního řešení
+      items:
+        - name: 1. Vytvoření experimentu
+          href: tutorial-part1-credit-risk.md
+        - name: 2. Trénování a vyhodnocení
+          href: tutorial-part2-credit-risk-train.md
+        - name: 3. Nasazení webové služby
+          href: tutorial-part3-credit-risk-deploy.md
 - name: Ukázky
   items:
-  - name: Dostupné datové sady
-    href: use-sample-datasets.md
-  - name: Galerie Azure AI
-    href: gallery-how-to-use-contribute-publish.md
+    - name: Dostupné datové sady
+      href: use-sample-datasets.md
+    - name: Galerie Azure AI
+      href: gallery-how-to-use-contribute-publish.md
 - name: Koncepty
   items:
-  - name: Vědecké zpracování dat pro začátečníky
-    items:
-    - name: 1. Pět dotazů
-      href: data-science-for-beginners-the-5-questions-data-science-answers.md
-    - name: 2. Jsou vaše data připravená?
-      href: data-science-for-beginners-is-your-data-ready-for-data-science.md
-    - name: 3. Položení toho správného dotazu
-      href: data-science-for-beginners-ask-a-question-you-can-answer-with-data.md
-    - name: 4. Odhad odpovědi
-      href: data-science-for-beginners-predict-an-answer-with-a-simple-model.md
-    - name: 5. Kopírování práce jiných
-      href: data-science-for-beginners-copy-other-peoples-work-to-do-data-science.md
-  - name: Správa modelů
-    displayName: deploy, consume, web service
-    href: deploy-consume-web-service-guide.md
+    - name: Vědecké zpracování dat pro začátečníky
+      items:
+        - name: 1. Pět dotazů
+          href: data-science-for-beginners-the-5-questions-data-science-answers.md
+        - name: 2. Jsou vaše data připravená?
+          href: data-science-for-beginners-is-your-data-ready-for-data-science.md
+        - name: 3. Položení toho správného dotazu
+          href: data-science-for-beginners-ask-a-question-you-can-answer-with-data.md
+        - name: 4. Odhad odpovědi
+          href: data-science-for-beginners-predict-an-answer-with-a-simple-model.md
+        - name: 5. Kopírování práce jiných
+          href: data-science-for-beginners-copy-other-peoples-work-to-do-data-science.md
+    - name: Správa modelů
+      displayName: 'deploy, consume, web service'
+      href: deploy-consume-web-service-guide.md
 - name: Návody
   items:
-  - name: Správa pracovního prostoru
-    items:
-    - name: Vytvořit
-      href: create-workspace.md
-    - name: Spravovat
-      href: manage-workspace.md
-    - name: Řešení potíží
-      href: troubleshooting-creating-ml-workspace.md
-    - name: Nasazení pomocí architektury ARM
-      href: deploy-with-resource-manager-template.md
-  - name: Import trénovacích dat
-    items:
-    - name: Import dat
-      href: import-data.md
-    - name: Použití dat z místního SQL
-      displayName: on-premises
-      href: use-data-from-an-on-premises-sql-server.md
-  - name: Trénování modelů
-    items:
-    - name: Správa životního cyklu experimentů
-      href: version-control.md
-    - name: Správa iterací experimentu
-      href: manage-experiment-iterations.md
-    - name: Vytváření modelů s využitím PowerShellu
-      displayName: endpoint, endpoints
-      href: create-models-and-endpoints-with-powershell.md
-    - name: Experimentování v AI Gallery
-      displayName: gallery
-      href: sample-experiments.md
-    - name: Vyhodnocování a interpretace výsledků
+    - name: Správa pracovního prostoru
       items:
-      - name: Vyhodnocení výkonu
-        href: evaluate-model-performance.md
-      - name: Optimalizace parametrů
-        displayName: optimization
-        href: algorithm-parameters-optimize.md
-      - name: Interpretace výsledků
-        href: interpret-model-results.md
-      - name: Ladění
-        href: debug-models.md
-    - name: Přeučování modelů
+        - name: Vytvořit
+          href: create-workspace.md
+        - name: Spravovat
+          href: manage-workspace.md
+        - name: Řešení potíží
+          href: troubleshooting-creating-ml-workspace.md
+        - name: Nasazení pomocí architektury ARM
+          href: deploy-with-resource-manager-template.md
+    - name: Import trénovacích dat
       items:
-      - name: „Nové“ webové služby
-        href: retrain-machine-learning-model.md
-      - name: Klasické webové služby
-        href: retrain-classic-web-service.md
-    - name: Použití R a Pythonu
+        - name: Import dat
+          href: import-data.md
+        - name: Použití dat z místního SQL
+          displayName: on-premises
+          href: use-data-from-an-on-premises-sql-server.md
+    - name: Trénování modelů
       items:
-      - name: Začínáme v R
-        href: r-get-started.md
-      - name: Spouštění skriptů R
-        href: extend-your-experiment-with-r.md
-      - name: Tvorba vlastních modulů R
-        href: custom-r-modules.md
-      - name: Spouštění skriptů Pythonu
-        href: execute-python-scripts.md
-  - name: Výběr algoritmu
-    items:
-    - name: Volba algoritmů
-      href: algorithm-choice.md
-    - name: Tahák s algoritmy
-      href: algorithm-cheat-sheet.md
-    - name: Příklady algoritmů
-      displayName: infographic, studio basics
-      href: basics-infographic-with-algorithm-examples.md
-  - name: Modely nasazení
-    items:
-    - name: Nasazení webové služby
-      displayName: publish, multiple regions
-      href: publish-a-machine-learning-web-service.md
-    - name: Jak to funguje
-      href: model-progression-experiment-to-web-service.md
-    - name: Příprava nasazení
-      href: convert-training-experiment-to-scoring-experiment.md
-    - name: Použití externích dat
-      displayName: import, export
-      href: web-services-that-use-import-export-modules.md
-    - name: Použití parametrů webové služby
-      href: web-service-parameters.md
-    - name: Povolit protokolování
-      href: web-services-logging.md
-  - name: Správa webových služeb
-    items:
-    - name: Použití portálu webových služeb
-      href: manage-new-webservice.md
-    - name: Správa s využitím rozhraní API
-      displayName: endpoint, endpoints
-      href: manage-web-service-endpoints-using-api-management.md
-    - name: Vytváření koncových bodů
-      displayName: scale, scaling
-      href: create-endpoint.md
-  - name: Použití modelů
-    items:
-    - name: Přehled
-      href: consume-web-services.md
-    - name: Použití Excelu
-      href: consuming-from-excel.md
-    - name: Použití doplňků Excelu
-      href: excel-add-in-for-web-services.md
-    - name: Použití fondu Batch
-      href: dedicated-capacity-for-bes-jobs.md
-  - name: Případy použití
-    items:
-    - name: Výpovědi zákazníků
-      href: azure-ml-customer-churn-scenario.md
-    - name: Analýza mínění
-      href: text-analytics-module-tutorial.md
-    - name: Migrace analýzy z Excelu do sady Studio
-      href: linear-regression-in-azure.md
-  - name: Odstranění a export zákaznických dat
-    items:
-    - name: Data sady Studio
-      displayName: export
-      href: export-delete-personal-data-dsr.md
-    - name: Data galerie
-      displayName: export
-      href: ai-gallery-control-personal-data-dsr.md
+        - name: Správa životního cyklu experimentů
+          href: version-control.md
+        - name: Správa iterací experimentu
+          href: manage-experiment-iterations.md
+        - name: Vytváření modelů s využitím PowerShellu
+          displayName: 'endpoint, endpoints'
+          href: create-models-and-endpoints-with-powershell.md
+        - name: Experimentování v AI Gallery
+          displayName: gallery
+          href: sample-experiments.md
+        - name: Vyhodnocování a interpretace výsledků
+          items:
+            - name: Vyhodnocení výkonu
+              href: evaluate-model-performance.md
+            - name: Optimalizace parametrů
+              displayName: optimization
+              href: algorithm-parameters-optimize.md
+            - name: Interpretace výsledků
+              href: interpret-model-results.md
+            - name: Ladění
+              href: debug-models.md
+        - name: Přeučování modelů
+          items:
+            - name: „Nové“ webové služby
+              href: retrain-machine-learning-model.md
+            - name: Klasické webové služby
+              href: retrain-classic-web-service.md
+        - name: Použití R a Pythonu
+          items:
+            - name: Začínáme v R
+              href: r-get-started.md
+            - name: Spouštění skriptů R
+              href: extend-your-experiment-with-r.md
+            - name: Tvorba vlastních modulů R
+              href: custom-r-modules.md
+            - name: Spouštění skriptů Pythonu
+              href: execute-python-scripts.md
+    - name: Výběr algoritmu
+      items:
+        - name: Volba algoritmů
+          href: algorithm-choice.md
+        - name: Tahák s algoritmy
+          href: algorithm-cheat-sheet.md
+        - name: Příklady algoritmů
+          displayName: 'infographic, studio basics'
+          href: basics-infographic-with-algorithm-examples.md
+    - name: Modely nasazení
+      items:
+        - name: Nasazení webové služby
+          displayName: 'publish, multiple regions'
+          href: publish-a-machine-learning-web-service.md
+        - name: Jak to funguje
+          href: model-progression-experiment-to-web-service.md
+        - name: Příprava nasazení
+          href: convert-training-experiment-to-scoring-experiment.md
+        - name: Použití externích dat
+          displayName: 'import, export'
+          href: web-services-that-use-import-export-modules.md
+        - name: Použití parametrů webové služby
+          href: web-service-parameters.md
+        - name: Povolit protokolování
+          href: web-services-logging.md
+    - name: Správa webových služeb
+      items:
+        - name: Použití portálu webových služeb
+          href: manage-new-webservice.md
+        - name: Správa s využitím rozhraní API
+          displayName: 'endpoint, endpoints'
+          href: manage-web-service-endpoints-using-api-management.md
+        - name: Vytváření koncových bodů
+          displayName: 'scale, scaling'
+          href: create-endpoint.md
+    - name: Použití modelů
+      items:
+        - name: Přehled
+          href: consume-web-services.md
+        - name: Použití Excelu
+          href: consuming-from-excel.md
+        - name: Použití doplňků Excelu
+          href: excel-add-in-for-web-services.md
+        - name: Použití fondu Batch
+          href: dedicated-capacity-for-bes-jobs.md
+    - name: Případy použití
+      items:
+        - name: Výpovědi zákazníků
+          href: azure-ml-customer-churn-scenario.md
+        - name: Analýza mínění
+          href: text-analytics-module-tutorial.md
+        - name: Migrace analýzy z Excelu do sady Studio
+          href: linear-regression-in-azure.md
+    - name: Odstranění a export zákaznických dat
+      items:
+        - name: Data sady Studio
+          displayName: export
+          href: export-delete-personal-data-dsr.md
+        - name: Data galerie
+          displayName: export
+          href: ai-gallery-control-personal-data-dsr.md
 - name: Referenční informace
   items:
-  - name: Referenční informace k modulům a algoritmům
-    href: /azure/machine-learning/studio-module-reference/machine-learning-studio-algorithm-and-module-help
-  - name: Moduly Azure PowerShellu
-    href: powershell-module.md
-  - name: Kódy chyb webových služeb
-    href: web-service-error-codes.md
-  - name: Rozhraní PRI pro správu REST
-    href: /rest/api/machinelearning
+    - name: Referenční informace k modulům a algoritmům
+      href: /azure/machine-learning/studio-module-reference/machine-learning-studio-algorithm-and-module-help
+    - name: Moduly Azure PowerShellu
+      href: powershell-module.md
+    - name: Kódy chyb webových služeb
+      href: web-service-error-codes.md
+    - name: Rozhraní PRI pro správu REST
+      href: /rest/api/machinelearning
 - name: Zdroje a prostředky
   items:
-  - name: Aktualizace služeb
-    href: https://azure.microsoft.com/updates/?product=machine-learning-studio
-  - name: Získat podporu
-    href: support-aml-studio.md
-  - name: Plány Azure do budoucna
-    href: https://azure.microsoft.com/roadmap/
-  - name: Regionální dostupnost
-    href: https://azure.microsoft.com/regions/services/
-  - name: Ceny
-    href: https://azure.microsoft.com/pricing/details/machine-learning/
-  - name: Vlastní neurální sítě (Net#)
-    href: azure-ml-netsharp-reference-guide.md
-ms.openlocfilehash: 4dacfd217bf089dac87128107901a17805117b4e
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
-ms.translationtype: HT
-ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58183777"
+    - name: Aktualizace služeb
+      href: 'https://azure.microsoft.com/updates/?product=machine-learning-studio'
+    - name: Získat podporu
+      href: support-aml-studio.md
+    - name: Plány Azure do budoucna
+      href: 'https://azure.microsoft.com/roadmap/'
+    - name: Regionální dostupnost
+      href: 'https://azure.microsoft.com/regions/services/'
+    - name: Ceny
+      href: 'https://azure.microsoft.com/pricing/details/machine-learning/'
+    - name: 'Vlastní neurální sítě (Net#)'
+      href: azure-ml-netsharp-reference-guide.md

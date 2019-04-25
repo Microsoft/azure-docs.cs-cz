@@ -1,424 +1,417 @@
-items:
 - name: Dokumentace k LUIS
   href: index.yml
 - name: Přehled
-  items:
-  - name: Co je Language Understanding?
-    href: what-is-luis.md
   expanded: true
+  items:
+    - name: Co je Language Understanding?
+      href: what-is-luis.md
 - name: Šablony Rychlý start
   items:
-  - name: Sestavení aplikace předem připravené domény
-    href: luis-get-started-create-app.md
-  - name: Použití portálu LUIS
-    items:
-    - name: 1. Vytvoření aplikace
-      displayName: intent, entity, create app, test, example utterance
-      href: get-started-portal-build-app.md
-    - name: 2. Nasazení aplikace
-      displayName: assign key, assign resource, add key, add resource, test, deploy, endpoint, query, publish
-      href: get-started-portal-deploy-app.md
-  - name: Použití sady .NET SDK
-    items:
-    - name: Koncový bod předpovědi dotazů
-      href: sdk-csharp-quickstart-query-prediction-endpoint.md
-  - name: Použití rozhraní REST API
-    items:
-    - name: Získání záměru
+    - name: Sestavení aplikace předem připravené domény
+      href: luis-get-started-create-app.md
+    - name: Použití portálu LUIS
       items:
-      - name: C#
-        href: luis-get-started-cs-get-intent.md
-      - name: Přejít
-        href: luis-get-started-go-get-intent.md
-      - name: Java
-        href: luis-get-started-java-get-intent.md
-      - name: Node.js
-        href: luis-get-started-node-get-intent.md
-      - name: Python
-        href: luis-get-started-python-get-intent.md
-    - name: Změna modelu
+        - name: 1. Vytvoření aplikace
+          href: get-started-portal-build-app.md
+          displayName: 'intent, entity, create app, test, example utterance'
+        - name: 2. Nasazení aplikace
+          href: get-started-portal-deploy-app.md
+          displayName: 'assign key, assign resource, add key, add resource, test, deploy, endpoint, query, publish'
+    - name: Použití sady .NET SDK
       items:
-      - name: C#
-        href: luis-get-started-cs-add-utterance.md
-      - name: Přejít
-        href: luis-get-started-go-add-utterance.md
-      - name: Java
-        href: luis-get-started-java-add-utterance.md
-      - name: Node.js
-        href: luis-get-started-node-add-utterance.md
-      - name: Python
-        href: luis-get-started-python-add-utterance.md
+        - name: Koncový bod předpovědi dotazů
+          href: sdk-csharp-quickstart-query-prediction-endpoint.md
+    - name: Použití rozhraní REST API
+      items:
+        - name: Získání záměru
+          items:
+            - name: 'C#'
+              href: luis-get-started-cs-get-intent.md
+            - name: Přejít
+              href: luis-get-started-go-get-intent.md
+            - name: Java
+              href: luis-get-started-java-get-intent.md
+            - name: Node.js
+              href: luis-get-started-node-get-intent.md
+            - name: Python
+              href: luis-get-started-python-get-intent.md
+        - name: Změna modelu
+          items:
+            - name: 'C#'
+              href: luis-get-started-cs-add-utterance.md
+            - name: Přejít
+              href: luis-get-started-go-add-utterance.md
+            - name: Java
+              href: luis-get-started-java-add-utterance.md
+            - name: Node.js
+              href: luis-get-started-node-add-utterance.md
+            - name: Python
+              href: luis-get-started-python-add-utterance.md
 - name: Kurzy
   items:
-  - name: Sestavování aplikací
-    items:
-    - name: Určení záměrů uživatele
-      href: luis-quickstart-intents-only.md
-    - name: Identifikace běžných uživatelských dat s využitím předem připravených modelů
-      href: luis-tutorial-prebuilt-intents-entities.md
-    - name: Zjištění mínění z projevů uživatele
-      href: luis-quickstart-intent-and-sentiment-analysis.md
-    - name: Získání správně formátovaných dat s využitím regulárních výrazů
-      href: luis-quickstart-intents-regex-entity.md
-    - name: Získání přesné shody textu s využitím seznamů
-      href: luis-quickstart-intent-and-list-entity.md
-    - name: Získání souvisejících dat s využitím rolí entit
-      displayName: roles, geographyV2, context
-      href: tutorial-entity-roles.md
-    - name: Seskupení a extrakce souvisejících dat s využitím složených entit
-      displayName: roles
-      href: luis-tutorial-composite-entity.md
-    - name: Získání názvů s využitím jednoduchých entit
-      displayName: roles
-      href: luis-quickstart-primary-and-secondary-data.md
-  - name: Vylepšení aplikace
-    items:
-    - name: Oprava nejistých předpovědí
-      href: luis-tutorial-review-endpoint-utterances.md
-    - name: Dávkový test datových sad
-      href: luis-tutorial-batch-testing.md
-    - name: Přidání běžných formátů promluv
-      href: luis-tutorial-pattern.md
-    - name: Extrakce vzorů souvisejících s kontextem
-      displayName: roles
-      href: luis-tutorial-pattern-roles.md
-    - name: Extrakce dat volného tvaru
-      href: luis-tutorial-pattern-any.md
-  - name: Použití robota
-    items:
-    - name: Pomocí jazyka C#
-      href: luis-csharp-tutorial-bf-v4.md
-    - name: Pomocí Node.js
-      href: luis-nodejs-tutorial-bf-v4.md
+    - name: Sestavování aplikací
+      items:
+        - name: Určení záměrů uživatele
+          href: luis-quickstart-intents-only.md
+        - name: Identifikace běžných uživatelských dat s využitím předem připravených modelů
+          href: luis-tutorial-prebuilt-intents-entities.md
+        - name: Zjištění mínění z projevů uživatele
+          href: luis-quickstart-intent-and-sentiment-analysis.md
+        - name: Získání správně formátovaných dat s využitím regulárních výrazů
+          href: luis-quickstart-intents-regex-entity.md
+        - name: Získání přesné shody textu s využitím seznamů
+          href: luis-quickstart-intent-and-list-entity.md
+        - name: Získání souvisejících dat s využitím rolí entit
+          href: tutorial-entity-roles.md
+          displayName: 'roles, geographyV2, context'
+        - name: Seskupení a extrakce souvisejících dat s využitím složených entit
+          href: luis-tutorial-composite-entity.md
+          displayName: roles
+        - name: Získání názvů s využitím jednoduchých entit
+          href: luis-quickstart-primary-and-secondary-data.md
+          displayName: roles
+    - name: Vylepšení aplikace
+      items:
+        - name: Oprava nejistých předpovědí
+          href: luis-tutorial-review-endpoint-utterances.md
+        - name: Dávkový test datových sad
+          href: luis-tutorial-batch-testing.md
+        - name: Přidání běžných formátů promluv
+          href: luis-tutorial-pattern.md
+        - name: Extrakce vzorů souvisejících s kontextem
+          href: luis-tutorial-pattern-roles.md
+          displayName: roles
+        - name: Extrakce dat volného tvaru
+          href: luis-tutorial-pattern-any.md
+    - name: Použití robota
+      items:
+        - name: 'Pomocí jazyka C#'
+          href: luis-csharp-tutorial-bf-v4.md
+        - name: Pomocí Node.js
+          href: luis-nodejs-tutorial-bf-v4.md
 - name: Ukázky
   items:
-  - name: Ukázky kódů
-    href: https://github.com/Azure-Samples/cognitive-services-language-understanding
+    - name: Ukázky kódů
+      href: 'https://github.com/Azure-Samples/cognitive-services-language-understanding'
 - name: Koncepty
   items:
-  - name: Osvědčené postupy
-    displayName: phrase list, pattern, intent, utterance, version, do, don't, example utterances, iteration, cycle, correct, right
-    href: luis-concept-best-practices.md
-  - name: Plánování aplikace
-    displayName: simple, hierarchical, composite, prebuilt, list, regex, regular expression
-    href: luis-how-plan-your-app.md
-  - name: Vytváření aplikací
-    items:
-    - name: Cyklus vytváření
-      href: luis-concept-app-iteration.md
-    - name: Spolupráce
-      displayName: shared, transfer, ownership, author, access, import
-      href: luis-concept-collaborator.md
-    - name: Správa verzí
-      displayName: import
-      href: luis-concept-version.md
-  - name: Model návrhu
-    items:
-    - name: Záměry
-      href: luis-concept-intent.md
-    - name: Entity
-      displayName: prebuilt, custom, regular expression, regex, simple, list, pattern.any, composite, hierarchical, machine-learn, exact, mixed, roles
-      href: luis-concept-entity-types.md
-    - name: Projevy
-      href: luis-concept-utterance.md
-    - name: Role
-      href: luis-concept-roles.md
-    - name: Předem připravené modely
-      href: luis-concept-prebuilt-model.md
-  - name: Zvýšení výkonu aplikací
-    items:
-    - name: Skóre předpovědi
-      href: luis-concept-prediction-score.md
-    - name: Kontrola promluv koncového bodu
-      href: luis-concept-review-endpoint-utterances.md
-    - name: Seznamy frází
-      href: luis-concept-feature.md
-    - name: Vzory
-      displayName: roles
-      href: luis-concept-patterns.md
-  - name: Správa dat
-    items:
-    - name: Změna dat
-      href: luis-concept-data-alteration.md
-    - name: Převod dat
-      href: luis-concept-data-conversion.md
-    - name: Extrakce dat
-      displayName: roles
-      href: luis-concept-data-extraction.md
-    - name: Úložiště dat
-      href: luis-concept-data-storage.md
-  - name: Test
-    items:
-    - name: Interaktivní testování
-      href: luis-concept-test.md
-    - name: Dávkové testování
-      href: luis-concept-batch-test.md
-  - name: Enterprise
-    items:
-    - name: Strategie návrhu
-      displayName: import
-      href: luis-concept-enterprise.md
-  - name: Zabezpečení
-    items:
-    - name: Přístup k aplikacím
-      displayName: public, public app, AAD, compliance, ISO, certification, trust center, import
-      href: luis-concept-security.md
-    - name: Vytváření a klíče koncových bodů
-      href: luis-concept-keys.md
+    - name: Osvědčené postupy
+      href: luis-concept-best-practices.md
+      displayName: 'phrase list, pattern, intent, utterance, version, do, don''t, example utterances, iteration, cycle, correct, right'
+    - name: Plánování aplikace
+      displayName: 'simple, hierarchical, composite, prebuilt, list, regex, regular expression'
+      href: luis-how-plan-your-app.md
+    - name: Vytváření aplikací
+      items:
+        - name: Cyklus vytváření
+          href: luis-concept-app-iteration.md
+        - name: Spolupráce
+          displayName: 'shared, transfer, ownership, author, access, import'
+          href: luis-concept-collaborator.md
+        - name: Správa verzí
+          href: luis-concept-version.md
+          displayName: import
+    - name: Model návrhu
+      items:
+        - name: Záměry
+          href: luis-concept-intent.md
+        - name: Entity
+          displayName: 'prebuilt, custom, regular expression, regex, simple, list, pattern.any, composite, hierarchical, machine-learn, exact, mixed, roles'
+          href: luis-concept-entity-types.md
+        - name: Projevy
+          href: luis-concept-utterance.md
+        - name: Role
+          href: luis-concept-roles.md
+        - name: Předem připravené modely
+          href: luis-concept-prebuilt-model.md
+    - name: Zvýšení výkonu aplikací
+      items:
+        - name: Skóre předpovědi
+          href: luis-concept-prediction-score.md
+        - name: Kontrola promluv koncového bodu
+          href: luis-concept-review-endpoint-utterances.md
+        - name: Seznamy frází
+          href: luis-concept-feature.md
+        - name: Vzory
+          href: luis-concept-patterns.md
+          displayName: roles
+    - name: Správa dat
+      items:
+        - name: Změna dat
+          href: luis-concept-data-alteration.md
+        - name: Převod dat
+          href: luis-concept-data-conversion.md
+        - name: Extrakce dat
+          href: luis-concept-data-extraction.md
+          displayName: roles
+        - name: Úložiště dat
+          href: luis-concept-data-storage.md
+    - name: Test
+      items:
+        - name: Interaktivní testování
+          href: luis-concept-test.md
+        - name: Dávkové testování
+          href: luis-concept-batch-test.md
+    - name: Enterprise
+      items:
+        - name: Strategie návrhu
+          href: luis-concept-enterprise.md
+          displayName: import
+    - name: Zabezpečení
+      items:
+        - name: Přístup k aplikacím
+          displayName: 'public, public app, AAD, compliance, ISO, certification, trust center, import'
+          href: luis-concept-security.md
+        - name: Vytváření a klíče koncových bodů
+          href: luis-concept-keys.md
 - name: Návody
   items:
-  - name: Vytvoření nové aplikace
-    displayName: import, export, container
-    href: luis-how-to-start-new-app.md
-  - name: Vytvoření modelu
-    items:
-    - name: Přidání záměru
-      href: luis-how-to-add-intents.md
-    - name: Přidání entity do promluvy
-      href: luis-how-to-add-example-utterances.md
-    - name: Přidání entity bez promluvy
-      displayName: roles, import
-      href: luis-how-to-add-entities.md
-    - name: Použití předem připravených modelů
+    - name: Vytvoření nové aplikace
+      href: luis-how-to-start-new-app.md
+      displayName: 'import, export, container'
+    - name: Vytvoření modelu
       items:
-      - name: Použití domén
-        href: luis-prebuilt-domains.md
-      - name: Záměry použití
-        href: luis-prebuilt-intent.md
-      - name: Použití entit
-        href: luis-prebuilt-entities.md
-    - name: S využitím REST API
+        - name: Přidání záměru
+          href: luis-how-to-add-intents.md
+        - name: Přidání entity do promluvy
+          href: luis-how-to-add-example-utterances.md
+        - name: Přidání entity bez promluvy
+          href: luis-how-to-add-entities.md
+          displayName: 'roles, import'
+        - name: Použití předem připravených modelů
+          items:
+            - name: Použití domén
+              href: luis-prebuilt-domains.md
+            - name: Záměry použití
+              href: luis-prebuilt-intent.md
+            - name: Použití entit
+              href: luis-prebuilt-entities.md
+        - name: S využitím REST API
+          items:
+            - name: Programové sestavení aplikace s využitím Node.js
+              href: luis-tutorial-node-import-utterances-csv.md
+            - name: Použití entity seznamu k hledání přesné shody textu s využitím Node.js
+              href: luis-tutorial-list-entity.md
+    - name: Integrace
       items:
-      - name: Programové sestavení aplikace s využitím Node.js
-        href: luis-tutorial-node-import-utterances-csv.md
-      - name: Použití entity seznamu k hledání přesné shody textu s využitím Node.js
-        href: luis-tutorial-list-entity.md
-  - name: Integrace
-    items:
-    - name: S využitím Kontroly pravopisu Bingu v7
-      href: luis-tutorial-bing-spellcheck.md
-    - name: S využitím služby Speech
-      href: luis-tutorial-speech-to-intent.md
-    - name: S využitím robotu
+        - name: S využitím Kontroly pravopisu Bingu v7
+          href: luis-tutorial-bing-spellcheck.md
+        - name: S využitím služby Speech
+          href: luis-tutorial-speech-to-intent.md
+        - name: S využitím robotu
+          items:
+            - name: Robot webové aplikace
+              items:
+                - name: Node.js
+                  displayName: 'ABS, azure bot, service'
+                  href: luis-nodejs-tutorial-build-bot-framework-sample.md
+                - name: 'C#'
+                  displayName: 'ABS, azure bot, service'
+                  href: luis-csharp-tutorial-build-bot-framework-sample.md
+            - name: Application Insights
+              items:
+                - name: Node.js
+                  displayName: 'Application insight, kusto'
+                  href: luis-tutorial-function-appinsights.md
+                - name: 'C#'
+                  displayName: 'Application insight, kusto'
+                  href: luis-tutorial-bot-csharp-appinsights.md
+    - name: Zlepšení přesnosti předpovědi
       items:
-      - name: Robot webové aplikace
-        items:
-        - name: Node.js
-          displayName: ABS, azure bot, service
-          href: luis-nodejs-tutorial-build-bot-framework-sample.md
-        - name: C#
-          displayName: ABS, azure bot, service
-          href: luis-csharp-tutorial-build-bot-framework-sample.md
-      - name: Application Insights
-        items:
-        - name: Node.js
-          displayName: Application insight, kusto
-          href: luis-tutorial-function-appinsights.md
-        - name: C#
-          displayName: Application insight, kusto
-          href: luis-tutorial-bot-csharp-appinsights.md
-  - name: Zlepšení přesnosti předpovědi
-    items:
-    - name: Kontrola promluv koncového bodu
-      displayName: active learning
-      href: luis-how-to-review-endpoint-utterances.md
-    - name: Přidání seznamu frází
-      displayName: synonym, interchange
-      href: luis-how-to-add-features.md
-    - name: Přidání vzorů
-      displayName: syntax, template, roles
-      href: luis-how-to-model-intent-pattern.md
-  - name: Trénování
-    href: luis-how-to-train.md
-  - name: Test
-    items:
-    - name: Interaktivní testování
-      href: luis-interactive-test.md
-    - name: Dávkové testování
-      displayName: import
-      href: luis-how-to-batch-test.md
-  - name: Publikování
-    href: luis-how-to-publish-app.md
-  - name: Správa aplikace
-    items:
-    - name: S využitím řídicího panelu
-      displayName: analytics, usage
-      href: luis-how-to-use-dashboard.md
-    - name: Použití klíčů předplatného s aplikací LUIS
-      displayName: azure portal, resource, assign key, add key, out of quota, 403, 429, luis portal, key assignment, subscription
-      href: luis-how-to-azure-subscription.md
-    - name: Správa verzí
-      href: luis-how-to-manage-versions.md
-      diplayName: import, export, container
-    - name: Správa autorů a spolupracovníků
-      displayName: access, transfer, AAD, tenant, Azure AD, consent, RBAC, admin, role-based access control, ownership, import
-      href: luis-how-to-collaborate.md
-    - name: Správa klíčů pro vytváření obsahu
-      href: luis-how-to-account-settings.md
-    - name: Rozložení kvóty koncových bodů napříč klíči s využitím Traffic Manageru
-      href: luis-traffic-manager.md
-  - name: Migrace na REST API V2
-    href: luis-migration-api-v1-to-v2.md
-  - name: Použití kontejnerů
-    items:
-    - name: Instalace a spuštění kontejnerů
-      displayName: docker, container, package, packaged app, swagger, open api, openapi, train, publish, az, acr, cli, tps, core, curl, try it now, import, pull
-      href: luis-container-howto.md
-    - name: Konfigurace kontejnerů
-      href: luis-container-configuration.md
+        - name: Kontrola promluv koncového bodu
+          displayName: active learning
+          href: luis-how-to-review-endpoint-utterances.md
+        - name: Přidání seznamu frází
+          displayName: 'synonym, interchange'
+          href: luis-how-to-add-features.md
+        - name: Přidání vzorů
+          displayName: 'syntax, template, roles'
+          href: luis-how-to-model-intent-pattern.md
+    - name: Trénování
+      href: luis-how-to-train.md
+    - name: Test
+      items:
+        - name: Interaktivní testování
+          href: luis-interactive-test.md
+        - name: Dávkové testování
+          href: luis-how-to-batch-test.md
+          displayName: import
+    - name: Publikování
+      href: luis-how-to-publish-app.md
+    - name: Správa aplikace
+      items:
+        - name: S využitím řídicího panelu
+          displayName: 'analytics, usage'
+          href: luis-how-to-use-dashboard.md
+        - name: Použití klíčů předplatného s aplikací LUIS
+          displayName: 'azure portal, resource, assign key, add key, out of quota, 403, 429, luis portal, key assignment, subscription'
+          href: luis-how-to-azure-subscription.md
+        - name: Správa verzí
+          href: luis-how-to-manage-versions.md
+          diplayName: 'import, export, container'
+        - name: Správa autorů a spolupracovníků
+          displayName: 'access, transfer, AAD, tenant, Azure AD, consent, RBAC, admin, role-based access control, ownership, import'
+          href: luis-how-to-collaborate.md
+        - name: Správa klíčů pro vytváření obsahu
+          href: luis-how-to-account-settings.md
+        - name: Rozložení kvóty koncových bodů napříč klíči s využitím Traffic Manageru
+          href: luis-traffic-manager.md
+    - name: Migrace na REST API V2
+      href: luis-migration-api-v1-to-v2.md
+    - name: Použití kontejnerů
+      items:
+        - name: Instalace a spuštění kontejnerů
+          displayName: 'docker, container, package, packaged app, swagger, open api, openapi, train, publish, az, acr, cli, tps, core, curl, try it now, import, pull'
+          href: luis-container-howto.md
+        - name: Konfigurace kontejnerů
+          href: luis-container-configuration.md
 - name: Referenční informace
   items:
-  - name: Ochrana osobních údajů uživatele
-    href: luis-user-privacy.md
-  - name: Oblasti vytváření a publikování
-    displayName: failover, fail-over, fail over, Europe, EU, Australia, business continuity, bcdr
-    href: luis-reference-regions.md
-  - name: Hranice
-    href: luis-boundaries.md
-  - name: Referenční informace k předem připraveným entitám
-    items:
-    - name: Entity pro jednotlivé jazykové verze
-      href: luis-reference-prebuilt-entities.md
-    - name: Entita Age
-      href: luis-reference-prebuilt-age.md
-    - name: Entita Currency
-      href: luis-reference-prebuilt-currency.md
-    - name: Entita DatetimeV2
-      href: luis-reference-prebuilt-datetimev2.md
-    - name: Entita Dimension
-      href: luis-reference-prebuilt-dimension.md
-    - name: Zastaralé entity
-      href: luis-reference-prebuilt-deprecated.md
-    - name: Entita Email
-      href: luis-reference-prebuilt-email.md
-    - name: Entita GeographyV2
-      href: luis-reference-prebuilt-geographyV2.md
-    - name: Entita klíčové fráze
-      href: luis-reference-prebuilt-keyphrase.md
-    - name: Entita Number
-      href: luis-reference-prebuilt-number.md
-    - name: Entita Ordinal
-      href: luis-reference-prebuilt-ordinal.md
-    - name: Entita Percentage
-      href: luis-reference-prebuilt-percentage.md
-    - name: Entita PersonName
-      href: luis-reference-prebuilt-person.md
-    - name: Entita Phonenumber
-      href: luis-reference-prebuilt-phonenumber.md
-    - name: Entita Temperature
-      href: luis-reference-prebuilt-temperature.md
-    - name: Entita URL
-      href: luis-reference-prebuilt-url.md
-  - name: Referenční informace k předem připraveným doménám
-    href: luis-reference-prebuilt-domains.md
-  - name: Azure CLI
-    href: https://aka.ms/az-cli-cognitiveservices
-  - name: Azure RM PowerShell
-    href: https://aka.ms/azure-powershell-cognitiveservices
-  - name: Rozhraní REST API
-    items:
-    - name: Vytváření rozhraní REST API V2
-      href: https://aka.ms/luis-authoring-apis
-    - name: Rozhraní REST API V2 koncového bodu
-      href: https://aka.ms/luis-endpoint-apis
-    - name: Kódy HTTP
-      displayName: 400, 401, 403, 409, 410, 414, 429
-      href: luis-reference-response-codes.md
-  - name: Sady SDK
-    items:
-    - name: C#
+    - name: Ochrana osobních údajů uživatele
+      href: luis-user-privacy.md
+    - name: Oblasti vytváření a publikování
+      href: luis-reference-regions.md
+      displayName: 'failover, fail-over, fail over, Europe, EU, Australia, business continuity, bcdr'
+    - name: Hranice
+      href: luis-boundaries.md
+    - name: Referenční informace k předem připraveným entitám
       items:
-      - name: NuGet – vytváření obsahu
-        href: https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Language.LUIS.Authoring/
-      - name: NuGet – modul runtime
-        href: https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Language.LUIS.Runtime/
-      - name: Referenční informace
-        href: https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/languageunderstanding?view=azure-dotnet
-      - name: Ukázky
-        href: https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/LUIS
-    - name: Přejít
+        - name: Entity pro jednotlivé jazykové verze
+          href: luis-reference-prebuilt-entities.md
+        - name: Entita Age
+          href: luis-reference-prebuilt-age.md
+        - name: Entita Currency
+          href: luis-reference-prebuilt-currency.md
+        - name: Entita DatetimeV2
+          href: luis-reference-prebuilt-datetimev2.md
+        - name: Entita Dimension
+          href: luis-reference-prebuilt-dimension.md
+        - name: Zastaralé entity
+          href: luis-reference-prebuilt-deprecated.md
+        - name: Entita Email
+          href: luis-reference-prebuilt-email.md
+        - name: Entita GeographyV2
+          href: luis-reference-prebuilt-geographyV2.md
+        - name: Entita klíčové fráze
+          href: luis-reference-prebuilt-keyphrase.md
+        - name: Entita Number
+          href: luis-reference-prebuilt-number.md
+        - name: Entita Ordinal
+          href: luis-reference-prebuilt-ordinal.md
+        - name: Entita Percentage
+          href: luis-reference-prebuilt-percentage.md
+        - name: Entita PersonName
+          href: luis-reference-prebuilt-person.md
+        - name: Entita Phonenumber
+          href: luis-reference-prebuilt-phonenumber.md
+        - name: Entita Temperature
+          href: luis-reference-prebuilt-temperature.md
+        - name: Entita URL
+          href: luis-reference-prebuilt-url.md
+    - name: Referenční informace k předem připraveným doménám
+      href: luis-reference-prebuilt-domains.md
+    - name: Azure CLI
+      href: 'https://aka.ms/az-cli-cognitiveservices'
+    - name: Azure RM PowerShell
+      href: 'https://aka.ms/azure-powershell-cognitiveservices'
+    - name: Rozhraní REST API
       items:
-      - name: SDK – vytváření obsahu
-        href: https://github.com/Azure/azure-sdk-for-go/tree/master/services/cognitiveservices/v2.0/luis/authoring
-      - name: SDK – modul runtime
-        href: https://github.com/Azure/azure-sdk-for-go/tree/master/services/cognitiveservices/v2.0/luis/runtime
-      - name: Referenční informace
-        href: https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.0/luis/
-    - name: Java
+        - name: Vytváření rozhraní REST API V2
+          href: 'https://aka.ms/luis-authoring-apis'
+        - name: Rozhraní REST API V2 koncového bodu
+          href: 'https://aka.ms/luis-endpoint-apis'
+        - name: Kódy HTTP
+          displayName: '400, 401, 403, 409, 410, 414, 429'
+          href: luis-reference-response-codes.md
+    - name: Sady SDK
       items:
-      - name: Maven – vytváření obsahu
-        href: https://search.maven.org/artifact/com.microsoft.azure.cognitiveservices/azure-cognitiveservices-luis-authoring
-      - name: Maven – modul runtime
-        href: https://search.maven.org/artifact/com.microsoft.azure.cognitiveservices/azure-cognitiveservices-luis-runtime
-      - name: Referenční informace
-        href: https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/languageunderstanding?view=azure-java-stable
-      - name: Ukázky
-        href: https://github.com/Azure-Samples/cognitive-services-java-sdk-samples/tree/master/Language/LanguageUnderstanding
-    - name: Node.js
-      items:
-      - name: NPM – vytváření obsahu
-        href: https://www.npmjs.com/package/azure-cognitiveservices-luis-authoring
-      - name: NPM – modul runtime
-        href: https://www.npmjs.com/package/azure-cognitiveservices-luis-runtime
-      - name: Ukázky
-        href: https://github.com/Azure-Samples/cognitive-services-node-sdk-samples/tree/master/Samples/luis
-    - name: Python
-      items:
-      - name: Pip SDK
-        href: https://pypi.org/project/azure-cognitiveservices-language-luis/
-      - name: Referenční informace
-        href: https://docs.microsoft.com/python/api/azure-cognitiveservices-language-luis/index?view=azure-python
-      - name: Ukázky
-        href: https://github.com/Azure-Samples/cognitive-services-python-sdk-samples/tree/master/samples/language/luis
+        - name: 'C#'
+          items:
+            - name: NuGet – vytváření obsahu
+              href: 'https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Language.LUIS.Authoring/'
+            - name: NuGet – modul runtime
+              href: 'https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Language.LUIS.Runtime/'
+            - name: Referenční informace
+              href: 'https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/languageunderstanding?view=azure-dotnet'
+            - name: Ukázky
+              href: 'https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/LUIS'
+        - name: Přejít
+          items:
+            - name: SDK – vytváření obsahu
+              href: 'https://github.com/Azure/azure-sdk-for-go/tree/master/services/cognitiveservices/v2.0/luis/authoring'
+            - name: SDK – modul runtime
+              href: 'https://github.com/Azure/azure-sdk-for-go/tree/master/services/cognitiveservices/v2.0/luis/runtime'
+            - name: Referenční informace
+              href: 'https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.0/luis/'
+        - name: Java
+          items:
+            - name: Maven – vytváření obsahu
+              href: 'https://search.maven.org/artifact/com.microsoft.azure.cognitiveservices/azure-cognitiveservices-luis-authoring'
+            - name: Maven – modul runtime
+              href: 'https://search.maven.org/artifact/com.microsoft.azure.cognitiveservices/azure-cognitiveservices-luis-runtime'
+            - name: Referenční informace
+              href: 'https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/languageunderstanding?view=azure-java-stable'
+            - name: Ukázky
+              href: 'https://github.com/Azure-Samples/cognitive-services-java-sdk-samples/tree/master/Language/LanguageUnderstanding'
+        - name: Node.js
+          items:
+            - name: NPM – vytváření obsahu
+              href: 'https://www.npmjs.com/package/azure-cognitiveservices-luis-authoring'
+            - name: NPM – modul runtime
+              href: 'https://www.npmjs.com/package/azure-cognitiveservices-luis-runtime'
+            - name: Ukázky
+              href: 'https://github.com/Azure-Samples/cognitive-services-node-sdk-samples/tree/master/Samples/luis'
+        - name: Python
+          items:
+            - name: Pip SDK
+              href: 'https://pypi.org/project/azure-cognitiveservices-language-luis/'
+            - name: Referenční informace
+              href: 'https://docs.microsoft.com/python/api/azure-cognitiveservices-language-luis/index?view=azure-python'
+            - name: Ukázky
+              href: 'https://github.com/Azure-Samples/cognitive-services-python-sdk-samples/tree/master/samples/language/luis'
 - name: Související
   items:
-  - name: Azure Bot Service
-    href: https://dev.botframework.com/
-  - name: Bot Builder 3.x SDK C#
-    href: https://github.com/Microsoft/BotBuilder
-  - name: Bot Builder 4.x SDK C#
-    href: https://github.com/Microsoft/botbuilder-dotnet
-  - name: QnA Maker
-    href: https://qnamaker.ai/
-  - name: Rozhraní API pro zpracování řeči Bingu
-    href: https://azure.microsoft.com/services/cognitive-services/speech/
-  - name: Rozhraní API pro kontrolu pravopisu Bingu
-    href: https://azure.microsoft.com/services/cognitive-services/spell-check/
-  - name: Analýza textu
-    href: https://azure.microsoft.com/services/cognitive-services/text-analytics/
-  - name: Recognizers-Text
-    href: https://github.com/Microsoft/Recognizers-Text
-  - name: Inteligentní veřejný terminál
-    href: https://github.com/Microsoft/Cognitive-Samples-IntelligentKiosk
+    - name: Azure Bot Service
+      href: 'https://dev.botframework.com/'
+    - name: 'Bot Builder 3.x SDK C#'
+      href: 'https://github.com/Microsoft/BotBuilder'
+    - name: 'Bot Builder 4.x SDK C#'
+      href: 'https://github.com/Microsoft/botbuilder-dotnet'
+    - name: QnA Maker
+      href: 'https://qnamaker.ai/'
+    - name: Rozhraní API pro zpracování řeči Bingu
+      href: 'https://azure.microsoft.com/services/cognitive-services/speech/'
+    - name: Rozhraní API pro kontrolu pravopisu Bingu
+      href: 'https://azure.microsoft.com/services/cognitive-services/spell-check/'
+    - name: Analýza textu
+      href: 'https://azure.microsoft.com/services/cognitive-services/text-analytics/'
+    - name: Recognizers-Text
+      href: 'https://github.com/Microsoft/Recognizers-Text'
+    - name: Inteligentní veřejný terminál
+      href: 'https://github.com/Microsoft/Cognitive-Samples-IntelligentKiosk'
 - name: Zdroje a prostředky
   items:
-  - name: Regionální dostupnost
-    href: https://azure.microsoft.com/global-infrastructure/services/
-  - name: Podpora jazyků a oblastí
-    displayName: phrase list recommendations, multi-language, translator, locale, language, English, Chinese, Dutch, French, Germain, Italian, Japanese, Korean, Portuguese, Spanish, Turkish, Keigo, informal Japanese, subculture, dictation, speech, Bing Spell Check, foreign words, Hybrid languages, Tokenization, space, special character, compound words, tokens
-    href: luis-language-support.md
-  - name: Plány Azure do budoucna
-    href: https://aka.ms/luis-roadmap
-  - name: Glosář
-    href: luis-glossary.md
-  - name: Řešení potíží
-    displayName: FAQ, import
-    href: troubleshooting.md
-  - name: Ceny a omezení
-    href: https://azure.microsoft.com/pricing/details/cognitive-services/language-understanding-intelligent-services/
-  - name: Stack Overflow
-    href: https://stackoverflow.com/questions/tagged/LUIS
-  - name: UserVoice
-    href: https://aka.ms/luis-uservoice-forum
-  - name: Search
-    href: https://docs.microsoft.com/search/index?search=LUIS
-  - name: Blog
-    href: https://blog.botframework.com/category/luis/
-  - name: Znalostní báze
-    href: https://cognitive.uservoice.com/knowledgebase/topics/127872-luis-language-understanding-intelligent-service
-ms.openlocfilehash: 7ab39cc6ff0badeb784e38e47cae4cbeb36556e5
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
-ms.translationtype: HT
-ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59678841"
+    - name: Regionální dostupnost
+      href: 'https://azure.microsoft.com/global-infrastructure/services/'
+    - name: Podpora jazyků a oblastí
+      href: luis-language-support.md
+      displayName: 'phrase list recommendations, multi-language, translator, locale, language, English, Chinese, Dutch, French, Germain, Italian, Japanese, Korean, Portuguese, Spanish, Turkish, Keigo, informal Japanese, subculture, dictation, speech, Bing Spell Check, foreign words, Hybrid languages, Tokenization, space, special character, compound words, tokens'
+    - name: Plány Azure do budoucna
+      href: 'https://aka.ms/luis-roadmap'
+    - name: Glosář
+      href: luis-glossary.md
+    - name: Řešení potíží
+      href: troubleshooting.md
+      displayName: 'FAQ, import'
+    - name: Ceny a omezení
+      href: 'https://azure.microsoft.com/pricing/details/cognitive-services/language-understanding-intelligent-services/'
+    - name: Stack Overflow
+      href: 'https://stackoverflow.com/questions/tagged/LUIS'
+    - name: UserVoice
+      href: 'https://aka.ms/luis-uservoice-forum'
+    - name: Search
+      href: 'https://docs.microsoft.com/search/index?search=LUIS'
+    - name: Blog
+      href: 'https://blog.botframework.com/category/luis/'
+    - name: Znalostní báze
+      href: 'https://cognitive.uservoice.com/knowledgebase/topics/127872-luis-language-understanding-intelligent-service'

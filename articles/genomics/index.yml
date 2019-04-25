@@ -1,10 +1,4 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 3fa75710adacf71214c977465bcd696500c55e32
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
-ms.translationtype: HT
-ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45733442"
 documentType: LandingData
 title: Dokumentace k Microsoft Genomics
 metadata:
@@ -18,16 +12,16 @@ metadata:
   ms.topic: landing-page
   ms.date: 12/07/2017
 abstract:
-  description: Seznamte se s tím, jak Microsoft Genomics může zajistit výkonné sekvenování genomu s využitím cloudové implementace nástrojů Burrows-Wheeler Aligner (BWA) a Genome Analysis Toolkit (GATK) pro sekundární analýzy.
+  description: 'Seznamte se s tím, jak Microsoft Genomics může zajistit výkonné sekvenování genomu s využitím cloudové implementace nástrojů Burrows-Wheeler Aligner (BWA) a Genome Analysis Toolkit (GATK) pro sekundární analýzy.'
 sections:
-- title: Zprovoznění během 5 minut
-  items:
-  - type: paragraph
-    text: Odešlete pracovní postup prostřednictvím služby Microsoft Genomics.
-  - type: list
-    style: icon48
+  - title: Zprovoznění během 5 minut
     items:
-    - image:
-        src: media/index/helix-blue-orange.svg
-      text: Odeslání pracovního postupu
-      href: quickstart-run-genomics-workflow-portal
+      - type: paragraph
+        text: Odešlete pracovní postup prostřednictvím služby Microsoft Genomics.
+      - type: list
+        style: icon48
+        items:
+          - image:
+              src: media/index/helix-blue-orange.svg
+            text: Odeslání pracovního postupu
+            href: quickstart-run-genomics-workflow-portal

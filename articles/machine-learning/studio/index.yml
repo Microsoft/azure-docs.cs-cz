@@ -1,15 +1,9 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 4428bf710df5eae3b06c8abd38eb85d6128a574d
-ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
-ms.translationtype: HT
-ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56959421"
 documentType: LandingData
 title: Dokumentace k nástroji Machine Learning Studio
 metadata:
-  title: Dokumentace k nástroji Azure Machine Learning Studio – kurzy, reference | Microsoft Docs
-  description: Machine Learning Studio je nástroj pro spolupráci, ve kterém je možné přetahováním vytvářet, testovat a nasazovat řešení prediktivní analýzy dat. Kurzy, videa a ukázkové modely ukazují, jak pomocí nástroje Studio vytvářet a nasazovat modely Machine Learningu.
+  title: 'Dokumentace k nástroji Azure Machine Learning Studio – kurzy, reference | Microsoft Docs'
+  description: 'Machine Learning Studio je nástroj pro spolupráci, ve kterém je možné přetahováním vytvářet, testovat a nasazovat řešení prediktivní analýzy dat. Kurzy, videa a ukázkové modely ukazují, jak pomocí nástroje Studio vytvářet a nasazovat modely Machine Learningu.'
   services: machine-learning
   ms.service: machine-learning
   ms.subservice: studio
@@ -20,44 +14,44 @@ metadata:
   ms.devlang: na
   ms.date: 02/24/2019
 abstract:
-  description: Azure Machine Learning Studio je nástroj pro spolupráci, ve kterém je možné přetahováním sestavovat, testovat a nasazovat řešení prediktivní analýzy dat. Kurzy, videa a ukázkové modely ukazují, jak pomocí nástroje Studio vytvářet a nasazovat modely Machine Learningu.
+  description: 'Azure Machine Learning Studio je nástroj pro spolupráci, ve kterém je možné přetahováním sestavovat, testovat a nasazovat řešení prediktivní analýzy dat. Kurzy, videa a ukázkové modely ukazují, jak pomocí nástroje Studio vytvářet a nasazovat modely Machine Learningu.'
 sections:
-- title: Podrobné kurzy
-  items:
-  - type: paragraph
-    text: 'Postupujte podle rozšířených kurzů, které vás provedou vytvořením a nasazením modelů:'
-  - type: list
-    style: unordered
+  - title: Podrobné kurzy
     items:
-    - html: <a href="create-experiment">Vytvoření prvního experimentu s využitím Studia</a>
-    - html: <a href="tutorial-part1-credit-risk">Vytvoření a nasazení prediktivního řešení pro úvěrová rizika</a>
-- title: Referenční informace
-  items:
-  - type: list
-    style: cards
-    className: cardsD
+      - type: paragraph
+        text: 'Postupujte podle rozšířených kurzů, které vás provedou vytvořením a nasazením modelů:'
+      - type: list
+        style: unordered
+        items:
+          - html: <a href="create-experiment">Vytvoření prvního experimentu s využitím Studia</a>
+          - html: <a href="tutorial-part1-credit-risk">Vytvoření a nasazení prediktivního řešení pro úvěrová rizika</a>
+  - title: Referenční informace
     items:
-    - title: Příkazový řádek
-      html: <p><a href="powershell-module">Moduly PowerShellu</a></p>
-    - title: Moduly
-      html: <p><a href="https://msdn.microsoft.com/library/azure/dn905974.aspx">Referenční materiály k modulům a algoritmům</a></p>
-    - title: REST
-      html: <p><a href="https://docs.microsoft.com/rest/api/machinelearning/">Rozhraní API pro správu REST</a></p><p><a href="web-service-error-codes">Kódy chyb webových služeb</a></p>
-- title: Další technologie Azure Machine Learningu
-  items:
-  - type: paragraph
-    text: 'Další technologie dostupné ve službách Azure Machine Learning:'
-  - type: list
-    style: cards
-    className: cardsFTitle
+      - type: list
+        style: cards
+        className: cardsD
+        items:
+          - title: Příkazový řádek
+            html: <p><a href="powershell-module">Moduly PowerShellu</a></p>
+          - title: Moduly
+            html: '<p><a href="https://msdn.microsoft.com/library/azure/dn905974.aspx">Referenční materiály k modulům a algoritmům</a></p>'
+          - title: REST
+            html: '<p><a href="https://docs.microsoft.com/rest/api/machinelearning/">Rozhraní API pro správu REST</a></p><p><a href="web-service-error-codes">Kódy chyb webových služeb</a></p>'
+  - title: Další technologie Azure Machine Learningu
     items:
-    - title: Služba Azure Machine Learning
-      href: /azure/machine-learning/service/
-      image:
-        src: media/index/i_machine-learning.svg
-        href: /azure/machine-learning/service/
-    - title: Virtuální počítač pro datové vědy
-      href: /azure/machine-learning/data-science-virtual-machine/
-      image:
-        src: media/index/virtual-machines.svg
-        href: /azure/machine-learning/data-science-virtual-machine/
+      - type: paragraph
+        text: 'Další technologie dostupné ve službách Azure Machine Learning:'
+      - type: list
+        style: cards
+        className: cardsFTitle
+        items:
+          - title: Služba Azure Machine Learning
+            href: /azure/machine-learning/service/
+            image:
+              src: media/index/i_machine-learning.svg
+              href: /azure/machine-learning/service/
+          - title: Virtuální počítač pro datové vědy
+            href: /azure/machine-learning/data-science-virtual-machine/
+            image:
+              src: media/index/virtual-machines.svg
+              href: /azure/machine-learning/data-science-virtual-machine/

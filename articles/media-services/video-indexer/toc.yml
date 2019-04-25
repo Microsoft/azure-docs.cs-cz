@@ -1,97 +1,90 @@
-items:
 - name: Dokumentace ke službě Video Indexer
   href: ./index.yml
 - name: Přehled
   items:
-  - name: Co je Video Indexer?
-    href: video-indexer-overview.md
+    - name: Co je Video Indexer?
+      href: video-indexer-overview.md
 - name: Šablony Rychlý start
-  items:
-  - name: Začínáme
-    href: video-indexer-get-started.md
   expanded: true
+  items:
+    - name: Začínáme
+      href: video-indexer-get-started.md
 - name: Kurzy
   items:
-  - name: Použití rozhraní API Video Indexeru
-    href: video-indexer-use-apis.md
+    - name: Použití rozhraní API Video Indexeru
+      href: video-indexer-use-apis.md
 - name: Koncepty
   href: video-indexer-concepts.md
   items:
-  - name: Porovnání předvoleb Media Services a Video Indexeru
-    href: compare-video-indexer-with-media-services-presets.md
-  - name: Správa několika klientů
-    href: manage-multiple-tenants.md
-  - name: Přizpůsobení modelů obsahu
-    items:
-    - name: Značky
-      href: customize-brands-model-overview.md
-    - name: Jazyk
-      href: customize-language-model-overview.md
-    - name: Person (Osoba)
-      href: customize-person-model-overview.md
+    - name: Porovnání předvoleb Media Services a Video Indexeru
+      href: compare-video-indexer-with-media-services-presets.md
+    - name: Správa několika klientů
+      href: manage-multiple-tenants.md
+    - name: Přizpůsobení modelů obsahu
+      items:
+        - name: Značky
+          href: customize-brands-model-overview.md
+        - name: Jazyk
+          href: customize-language-model-overview.md
+        - name: Person (Osoba)
+          href: customize-person-model-overview.md
 - name: Průvodce postupy
   items:
-  - name: Připojení k Azure
-    href: connect-to-azure.md
-  - name: Správa účtu připojeného k Azure
-    href: manage-account-connected-to-azure.md
-  - name: Použití rozhraní API k nahrávání a indexování videí
-    href: upload-index-videos.md
-  - name: Prozkoumání výstupu služby Video Indexer
-    href: video-indexer-output-json-v2.md
-  - name: Vyhledání určitých momentů ve videích
-    href: video-indexer-search.md
-  - name: Scény, snímky a klíčové snímky
-    href: scenes-shots-keyframes.md
-  - name: Zobrazení a úprava přehledů služby Video Indexer
-    href: video-indexer-view-edit.md
-  - name: Použití editoru k vytváření projektů
-    href: use-editor-create-project.md
-  - name: Vytváření přehledů z existujících videí
-    href: video-indexer-create-new.md
-  - name: Vložení widgetů do aplikace
-    href: video-indexer-embed-widgets.md
-  - name: Přizpůsobení modelů obsahu
-    items:
-    - name: Person (Osoba)
+    - name: Připojení k Azure
+      href: connect-to-azure.md
+    - name: Správa účtu připojeného k Azure
+      href: manage-account-connected-to-azure.md
+    - name: Použití rozhraní API k nahrávání a indexování videí
+      href: upload-index-videos.md
+    - name: Prozkoumání výstupu služby Video Indexer
+      href: video-indexer-output-json-v2.md
+    - name: Vyhledání určitých momentů ve videích
+      href: video-indexer-search.md
+    - name: 'Scény, snímky a klíčové snímky'
+      href: scenes-shots-keyframes.md
+    - name: Zobrazení a úprava přehledů služby Video Indexer
+      href: video-indexer-view-edit.md
+    - name: Použití editoru k vytváření projektů
+      href: use-editor-create-project.md
+    - name: Vytváření přehledů z existujících videí
+      href: video-indexer-create-new.md
+    - name: Vložení widgetů do aplikace
+      href: video-indexer-embed-widgets.md
+    - name: Přizpůsobení modelů obsahu
       items:
-      - name: s využitím webu Video Indexeru
-        href: customize-person-model-with-website.md
-      - name: s využitím rozhraní API Video Indexeru
-        href: customize-person-model-with-api.md
-    - name: Značky
-      items:
-      - name: s využitím webu Video Indexeru
-        href: customize-brands-model-with-website.md
-      - name: s využitím rozhraní API Video Indexeru
-        href: customize-brands-model-with-api.md
-    - name: Jazyk
-      items:
-      - name: s využitím webu Video Indexeru
-        href: customize-language-model-with-website.md
-      - name: s využitím rozhraní API Video Indexeru
-        href: customize-language-model-with-api.md
+        - name: Person (Osoba)
+          items:
+            - name: s využitím webu Video Indexeru
+              href: customize-person-model-with-website.md
+            - name: s využitím rozhraní API Video Indexeru
+              href: customize-person-model-with-api.md
+        - name: Značky
+          items:
+            - name: s využitím webu Video Indexeru
+              href: customize-brands-model-with-website.md
+            - name: s využitím rozhraní API Video Indexeru
+              href: customize-brands-model-with-api.md
+        - name: Jazyk
+          items:
+            - name: s využitím webu Video Indexeru
+              href: customize-language-model-with-website.md
+            - name: s využitím rozhraní API Video Indexeru
+              href: customize-language-model-with-api.md
 - name: Referenční informace
   items:
-  - name: Rozhraní API služby Video Indexer
-    href: https://api-portal.videoindexer.ai/
+    - name: Rozhraní API služby Video Indexer
+      href: 'https://api-portal.videoindexer.ai/'
 - name: Zdroje a prostředky
   items:
-  - name: Plány Azure do budoucna
-    href: https://azure.microsoft.com/roadmap/?category=web-mobile
-  - name: Ceny
-    href: https://azure.microsoft.com/pricing/details/media-services/
-  - name: Regionální dostupnost
-    href: https://azure.microsoft.com/regions/services/
-  - name: Oblasti
-    href: regions.md
-  - name: Nejčastější dotazy
-    href: faq.md
-  - name: Dodržování předpisů
-    href: https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942
-ms.openlocfilehash: f6caade807d37dfbf38e3f0dd47ab7f801c36a9a
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: HT
-ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59793332"
+    - name: Plány Azure do budoucna
+      href: 'https://azure.microsoft.com/roadmap/?category=web-mobile'
+    - name: Ceny
+      href: 'https://azure.microsoft.com/pricing/details/media-services/'
+    - name: Regionální dostupnost
+      href: 'https://azure.microsoft.com/regions/services/'
+    - name: Oblasti
+      href: regions.md
+    - name: Nejčastější dotazy
+      href: faq.md
+    - name: Dodržování předpisů
+      href: 'https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942'

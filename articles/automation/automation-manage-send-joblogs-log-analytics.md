@@ -11,7 +11,7 @@ ms.topic: conceptual
 manager: carmonm
 ms.openlocfilehash: 82baef7ce0d91713c8bef202ab0ea0925d290f3a
 ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/18/2019
 ms.locfileid: "59496586"
@@ -96,10 +96,10 @@ Diagnostika ve službě Azure Automation vytvoří dva typy záznamů v protokol
 | Caller_s |Kdo operaci zahájil. Možnou hodnotou je e-mailová adresa nebo systém pro naplánované úlohy. |
 | Tenant_g | Identifikátor GUID, který identifikuje klienta pro volajícího. |
 | JobId_g |Identifikátor GUID, který představuje ID úlohy runbooku. |
-| ResultType resultType |Stav úlohy runbooku. Možné hodnoty:<br>– Nové<br>- Spuštěno<br>- Zastaveno<br>- Pozastaveno<br>- Neúspěch<br>– Dokončení |
-| Category | Klasifikace typu dat. Službě Automation odpovídá hodnota JobLogs. |
+| Hodnota resultType |Stav úlohy runbooku. Možné hodnoty:<br>– Nové<br>- Spuštěno<br>- Zastaveno<br>- Pozastaveno<br>- Neúspěch<br>– Dokončení |
+| Kategorie | Klasifikace typu dat. Službě Automation odpovídá hodnota JobLogs. |
 | OperationName | Určuje typ operace prováděné v Azure. Hodnota pro automatizaci, je úloha. |
-| Resource | Název účtu služby Automation |
+| Prostředek | Název účtu služby Automation |
 | SourceSystem | Jak protokoly Azure monitoru shromažďuje data. Vždy *Azure* Azure Diagnostics. |
 | resultDescription |Popisuje výsledný stav úlohy runbooku. Možné hodnoty:<br>- Úloha se spustila<br>- Zpracování úlohy se nezdařilo<br>- Úloha je dokončená |
 | CorrelationId |Identifikátor GUID, který představuje ID korelace úlohy runbooku. |
@@ -119,10 +119,10 @@ Diagnostika ve službě Azure Automation vytvoří dva typy záznamů v protokol
 | StreamType_s |Typ datového proudu úlohy. Možné hodnoty:<br>- Průběh<br>- Výstup<br>- Varování<br>- Chyba<br>- Ladění<br>- Podrobné |
 | Tenant_g | Identifikátor GUID, který identifikuje klienta pro volajícího. |
 | JobId_g |Identifikátor GUID, který představuje ID úlohy runbooku. |
-| ResultType |Stav úlohy runbooku. Možné hodnoty:<br>– Probíhá |
-| Category | Klasifikace typu dat. Službě Automation odpovídá hodnota JobStreams. |
+| Hodnota resultType |Stav úlohy runbooku. Možné hodnoty:<br>– Probíhá |
+| Kategorie | Klasifikace typu dat. Službě Automation odpovídá hodnota JobStreams. |
 | OperationName | Určuje typ operace prováděné v Azure. Hodnota pro automatizaci, je úloha. |
-| Resource | Název účtu služby Automation |
+| Prostředek | Název účtu služby Automation |
 | SourceSystem | Jak protokoly Azure monitoru shromažďuje data. Vždy *Azure* Azure Diagnostics. |
 | resultDescription |Zahrnuje výstupní datový proud z runbooku. |
 | CorrelationId |Identifikátor GUID, který představuje ID korelace úlohy runbooku. |

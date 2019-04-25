@@ -1,61 +1,54 @@
-items:
 - name: Dokumentace k virtuální síti WAN
   href: index.yml
 - name: Přehled
   items:
-  - name: Informace o virtuální síti WAN
-    href: virtual-wan-about.md
+    - name: Informace o virtuální síti WAN
+      href: virtual-wan-about.md
 - name: Kurzy
   items:
-  - name: Vytvoření připojení typu Site-to-Site
-    href: virtual-wan-site-to-site-portal.md
-  - name: Vytvoření připojení ExpressRoute
-    href: virtual-wan-expressroute-portal.md
-  - name: Vytvoření připojení typu Point-to-Site
-    href: virtual-wan-point-to-site-portal.md
+    - name: Vytvoření připojení typu Site-to-Site
+      href: virtual-wan-site-to-site-portal.md
+    - name: Vytvoření připojení ExpressRoute
+      href: virtual-wan-expressroute-portal.md
+    - name: Vytvoření připojení typu Point-to-Site
+      href: virtual-wan-point-to-site-portal.md
 - name: Koncepty
   items:
-  - name: Umístění a partneři
-    href: virtual-wan-locations-partners.md
-  - name: Rovina řízení Office 365 ve službě Virtual WAN
-    href: virtual-wan-office365-overview.md
+    - name: Umístění a partneři
+      href: virtual-wan-locations-partners.md
+    - name: Rovina řízení Office 365 ve službě Virtual WAN
+      href: virtual-wan-office365-overview.md
 - name: Návody
   items:
-  - name: Směrování provozu z virtuálního rozbočovače do síťového virtuálního zařízení
-    items:
-    - name: portál Azure
-      href: virtual-wan-route-table-portal.md
-    - name: Azure PowerShell
-      href: virtual-wan-route-table.md
-  - name: Partneři služby Virtual WAN – automatizace
-    href: virtual-wan-configure-automation-providers.md
+    - name: Směrování provozu z virtuálního rozbočovače do síťového virtuálního zařízení
+      items:
+        - name: portál Azure
+          href: virtual-wan-route-table-portal.md
+        - name: Azure PowerShell
+          href: virtual-wan-route-table.md
+    - name: Partneři služby Virtual WAN – automatizace
+      href: virtual-wan-configure-automation-providers.md
 - name: Referenční informace
   items:
-  - name: Azure PowerShell
-    href: /powershell/module/az.network#networking
-  - name: REST
-    href: /rest/api/azure
-  - name: Azure CLI
-    href: /cli/azure/ext/virtual-wan
+    - name: Azure PowerShell
+      href: '/powershell/module/az.network#networking'
+    - name: REST
+      href: /rest/api/azure
+    - name: Azure CLI
+      href: /cli/azure/ext/virtual-wan
 - name: Zdroje a prostředky
   items:
-  - name: Nejčastější dotazy
-    href: virtual-wan-faq.md
-  - name: Plány Azure do budoucna
-    href: https://azure.microsoft.com/roadmap/?category=networking
-  - name: Blog
-    href: https://azure.microsoft.com/blog/topics/networking
-  - name: Omezení služeb a předplatných
-    href: ../azure-subscription-service-limits.md?toc=%2fazure%2fvpn-gateway%2ftoc.json
-  - name: Ceny
-    href: https://azure.microsoft.com/pricing/details/virtual-wan
-  - name: Cenová kalkulačka
-    href: https://azure.microsoft.com/pricing/calculator/
-  - name: SLA
-    href: https://azure.microsoft.com/support/legal/sla
-ms.openlocfilehash: 555af48950df4afab512951a7c3ae53e41663427
-ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
-ms.translationtype: HT
-ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2019
-ms.locfileid: "58579729"
+    - name: Nejčastější dotazy
+      href: virtual-wan-faq.md
+    - name: Plány Azure do budoucna
+      href: 'https://azure.microsoft.com/roadmap/?category=networking'
+    - name: Blog
+      href: 'https://azure.microsoft.com/blog/topics/networking'
+    - name: Omezení služeb a předplatných
+      href: ../azure-subscription-service-limits.md?toc=%2fazure%2fvpn-gateway%2ftoc.json
+    - name: Ceny
+      href: 'https://azure.microsoft.com/pricing/details/virtual-wan'
+    - name: Cenová kalkulačka
+      href: 'https://azure.microsoft.com/pricing/calculator/'
+    - name: SLA
+      href: 'https://azure.microsoft.com/support/legal/sla'

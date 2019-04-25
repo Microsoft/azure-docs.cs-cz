@@ -49,7 +49,7 @@
       items:
         - name: Zabezpečení služby Azure Storage
           href: ../common/storage-security-guide.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
-        - name: Šifrování pro neaktivní uložená data
+        - name: Šifrování účtu úložiště
           href: ../common/storage-service-encryption.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
         - name: Ověřování Azure AD přes SMB
           href: storage-files-active-directory-overview.md

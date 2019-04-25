@@ -1,15 +1,9 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 53f9fbdf06958189a40f78b1b8d68b8fb02b7133
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
-ms.translationtype: HT
-ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58176748"
 documentType: LandingData
 title: Dokumentace k Azure Event Grid
 metadata:
-  title: Dokumentace k Azure Event Grid – kurzy, reference k rozhraní API
-  description: Azure Event Grid vám umožní reagovat na relevantní události služeb Azure i mimo Azure, a to téměř v reálném čase.
+  title: 'Dokumentace k Azure Event Grid – kurzy, reference k rozhraní API'
+  description: 'Azure Event Grid vám umožní reagovat na relevantní události služeb Azure i mimo Azure, a to téměř v reálném čase.'
   services: event-grid
   author: czeumault
   manager: carolz
@@ -20,72 +14,72 @@ metadata:
   ms.date: 08/10/2017
   ms.author: carolz
 abstract:
-  description: Azure Event Grid je plně spravovaná služba inteligentního směrování událostí, která umožňuje jednotnou spotřebu událostí s využitím modelu publikování a odběru. Azure Event Grid vám umožní reagovat na relevantní události služeb Azure i mimo Azure, a to téměř v reálném čase. Naučte se používat Azure Event Grid prostřednictvím našich šablon Rychlý start, výukových kurzů a ukázek.
+  description: 'Azure Event Grid je plně spravovaná služba inteligentního směrování událostí, která umožňuje jednotnou spotřebu událostí s využitím modelu publikování a odběru. Azure Event Grid vám umožní reagovat na relevantní události služeb Azure i mimo Azure, a to téměř v reálném čase. Naučte se používat Azure Event Grid prostřednictvím našich šablon Rychlý start, výukových kurzů a ukázek.'
 sections:
-- title: Zprovoznění během 5 minut
-  items:
-  - type: paragraph
-    text: Naučte se vytvářet vlastní události a přihlašovat se k jejich odběru.
-  - type: list
-    style: icon48
+  - title: Zprovoznění během 5 minut
     items:
-    - image:
-        src: /azure/event-grid/media/index/cli.svg
-      text: Azure CLI
-      href: /azure/event-grid/custom-event-quickstart
-    - image:
-        src: /azure/event-grid/media/index/logo_powershell.svg
-      text: Azure PowerShell
-      href: /azure/event-grid/custom-event-quickstart-powershell
-    - image:
-        src: /azure/event-grid/media/index/portal.svg
-      text: Azure Portal
-      href: /azure/event-grid/custom-event-quickstart-portal
-  - type: paragraph
-    text: Naučte se směrovat události služby Blob Storage.
-  - type: list
-    style: icon48
+      - type: paragraph
+        text: Naučte se vytvářet vlastní události a přihlašovat se k jejich odběru.
+      - type: list
+        style: icon48
+        items:
+          - image:
+              src: /azure/event-grid/media/index/cli.svg
+            text: Azure CLI
+            href: /azure/event-grid/custom-event-quickstart
+          - image:
+              src: /azure/event-grid/media/index/logo_powershell.svg
+            text: Azure PowerShell
+            href: /azure/event-grid/custom-event-quickstart-powershell
+          - image:
+              src: /azure/event-grid/media/index/portal.svg
+            text: Azure Portal
+            href: /azure/event-grid/custom-event-quickstart-portal
+      - type: paragraph
+        text: Naučte se směrovat události služby Blob Storage.
+      - type: list
+        style: icon48
+        items:
+          - image:
+              src: /azure/event-grid/media/index/cli.svg
+            text: Azure CLI
+            href: /azure/storage/blobs/storage-blob-event-quickstart?toc=%2fazure%2fevent-grid%2ftoc.json
+          - image:
+              src: /azure/event-grid/media/index/logo_powershell.svg
+            text: Azure PowerShell
+            href: /azure/storage/blobs/storage-blob-event-quickstart-powershell?toc=%2fazure%2fevent-grid%2ftoc.json
+  - title: Podrobné kurzy
     items:
-    - image:
-        src: /azure/event-grid/media/index/cli.svg
-      text: Azure CLI
-      href: /azure/storage/blobs/storage-blob-event-quickstart?toc=%2fazure%2fevent-grid%2ftoc.json
-    - image:
-        src: /azure/event-grid/media/index/logo_powershell.svg
-      text: Azure PowerShell
-      href: /azure/storage/blobs/storage-blob-event-quickstart-powershell?toc=%2fazure%2fevent-grid%2ftoc.json
-- title: Podrobné kurzy
-  items:
-  - type: paragraph
-    text: Naučte se vyvíjet aplikace, které reagují na události.
-  - type: list
-    style: ordered
+      - type: paragraph
+        text: 'Naučte se vyvíjet aplikace, které reagují na události.'
+      - type: list
+        style: ordered
+        items:
+          - html: <a href="/azure/event-grid/monitor-virtual-machine-changes-event-grid-logic-app">Monitorování změn ve virtuálních počítačích pomocí aplikací logiky</a>
+          - html: <a href="/azure/event-grid/resize-images-on-storage-blob-upload-event">Změna velikosti nahraných obrázků</a>
+          - html: <a href="/azure/event-grid/ensure-tags-exists-on-new-virtual-machines">Integrace Azure Automation se službou Event Grid</a>
+  - title: Získávání dovedností pomocí Microsoft Learn
     items:
-    - html: <a href="/azure/event-grid/monitor-virtual-machine-changes-event-grid-logic-app">Monitorování změn ve virtuálních počítačích pomocí aplikací logiky</a>
-    - html: <a href="/azure/event-grid/resize-images-on-storage-blob-upload-event">Změna velikosti nahraných obrázků</a>
-    - html: <a href="/azure/event-grid/ensure-tags-exists-on-new-virtual-machines">Integrace Azure Automation se službou Event Grid</a>
-- title: Získávání dovedností pomocí Microsoft Learn
-  items:
-  - type: list
-    style: cards
-    className: cardsFTitle
+      - type: list
+        style: cards
+        className: cardsFTitle
+        items:
+          - title: Vyberte model zasílání zpráv v Azure pro volné připojení služeb.
+            href: /learn/modules/choose-a-messaging-model-in-azure-to-connect-your-services/
+            image:
+              src: /learn/achievements/choose-a-messaging-model-in-azure-to-connect-your-services.svg
+              href: /learn/modules/choose-a-messaging-model-in-azure-to-connect-your-services/
+      - type: paragraph
+        text: <a href="/learn/browse/?products=azure-event-grid">Další interaktivní výuka...</a>
+  - title: Referenční informace
     items:
-    - title: Vyberte model zasílání zpráv v Azure pro volné připojení služeb.
-      href: /learn/modules/choose-a-messaging-model-in-azure-to-connect-your-services/
-      image:
-        src: /learn/achievements/choose-a-messaging-model-in-azure-to-connect-your-services.svg
-        href: /learn/modules/choose-a-messaging-model-in-azure-to-connect-your-services/
-  - type: paragraph
-    text: <a href="/learn/browse/?products=azure-event-grid">Další interaktivní výuka...</a>
-- title: Referenční informace
-  items:
-  - type: list
-    style: cards
-    className: cardsD
-    items:
-    - title: Příkazový řádek
-      html: <p><a href="/cli/azure/eventgrid">Azure CLI</a></p><p><a href="/powershell/module/az.eventgrid">PowerShell</a></p>
-    - title: Rozhraní REST API
-      html: <p><a href="/rest/api/eventgrid">REST</a></p>
-    - title: Schémata
-      html: <p><a href="/azure/event-grid/subscription-creation-schema ">Schéma předplatného</a></p><p><a href="/azure/event-grid/event-schema">Schéma událostí</a></p>
+      - type: list
+        style: cards
+        className: cardsD
+        items:
+          - title: Příkazový řádek
+            html: <p><a href="/cli/azure/eventgrid">Azure CLI</a></p><p><a href="/powershell/module/az.eventgrid">PowerShell</a></p>
+          - title: Rozhraní REST API
+            html: <p><a href="/rest/api/eventgrid">REST</a></p>
+          - title: Schémata
+            html: <p><a href="/azure/event-grid/subscription-creation-schema ">Schéma předplatného</a></p><p><a href="/azure/event-grid/event-schema">Schéma událostí</a></p>
