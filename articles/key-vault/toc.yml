@@ -74,7 +74,7 @@
       href: key-vault-ovw-soft-delete.md
     - name: Throttling
       href: key-vault-ovw-throttling.md
-    - name: Koncové body služby virtuální sítě
+    - name: Koncové body služby pro virtuální síť
       href: key-vault-overview-vnet-service-endpoints.md
     - name: 'Ověřování, požadavky a odpovědi'
       href: authentication-requests-and-responses.md
