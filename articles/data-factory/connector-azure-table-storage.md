@@ -49,7 +49,7 @@ Můžete vytvořit propojenou službu Azure Storage s použitím klíče účtu.
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
 | type | Vlastnost type musí být nastavená na **AzureTableStorage**. |Ano |
-| připojovací řetězec | Zadejte informace potřebné pro připojení k úložišti pro vlastnost připojovací řetězec. <br/>Označte toto pole jako SecureString bezpečně uložit ve službě Data Factory. Klíč účtu můžete také vložit do služby Azure Key Vault a o přijetí změn `accountKey` konfigurace z připojovacího řetězce. Podívejte se na následující ukázky a [Store přihlašovacích údajů ve službě Azure Key Vault](store-credentials-in-key-vault.md) článku s dalšími podrobnostmi. |Ano |
+| connectionString  | Zadejte informace potřebné pro připojení k úložišti pro vlastnost připojovací řetězec. <br/>Označte toto pole jako SecureString bezpečně uložit ve službě Data Factory. Klíč účtu můžete také vložit do služby Azure Key Vault a o přijetí změn `accountKey` konfigurace z připojovacího řetězce. Podívejte se na následující ukázky a [Store přihlašovacích údajů ve službě Azure Key Vault](store-credentials-in-key-vault.md) článku s dalšími podrobnostmi. |Ano |
 | connectVia | [Prostředí integration runtime](concepts-integration-runtime.md) se použije k připojení k úložišti. (Pokud je vaše úložiště dat se nachází v privátní síti), můžete použít prostředí Azure Integration Runtime nebo modul Integration Runtime. Pokud není zadán, použije výchozí prostředí Azure Integration Runtime. |Ne |
 
 >[!NOTE]
@@ -266,7 +266,7 @@ Ke zkopírování dat do tabulky Azure, nastavte typ jímky v aktivitě kopírov
 | azureTablePartitionKeyName |Zadejte název sloupce, jejichž hodnoty se používají jako klíče oddílu. Pokud není zadán, "AzureTableDefaultPartitionKeyValue" slouží jako klíč oddílu. |Ne |
 | azureTableRowKeyName |Zadejte název sloupce, jejichž hodnoty sloupce se používají jako klíč řádku. Pokud není zadán, použijte identifikátor GUID pro každý řádek. |Ne |
 | azureTableInsertType |Režim, který chcete vložit data do tabulky Azure. Tato vlastnost určuje, zda existující řádky v tabulce výstup s odpovídajícími klíče oddílu a řádku mají jejich hodnoty, nahrazení nebo sloučení. <br/><br/>Povolené hodnoty jsou **sloučení** (výchozí) a **nahradit**. <br/><br> Toto nastavení se vztahuje na úrovni řádků nejsou úrovni tabulky. Žádná možnost odstraní řádky ve výstupní tabulce, které neexistují ve vstupu. Další informace o fungování sloučení a nahradit nastavení najdete v tématu [entity Insert nebo merge](https://msdn.microsoft.com/library/azure/hh452241.aspx) a [vložení nebo nahrazení entity](https://msdn.microsoft.com/library/azure/hh452242.aspx). |Ne |
-| WriteBatchSize |Při dosažení writeBatchSize nebo writeBatchTimeout vloží data do tabulek Azure.<br/>Povolené hodnoty jsou integer (počet řádků). |Ne (výchozí hodnota je 10 000) |
+| writeBatchSize |Při dosažení writeBatchSize nebo writeBatchTimeout vloží data do tabulek Azure.<br/>Povolené hodnoty jsou integer (počet řádků). |Ne (výchozí hodnota je 10 000) |
 | writeBatchTimeout |Při dosažení writeBatchSize nebo writeBatchTimeout vloží data do tabulek Azure.<br/>Povolené jsou hodnoty timespan. Příkladem je "00:20:00" (20 minut). |Ne (výchozí hodnota je 90 sekund, výchozí hodnota časového limitu klienta úložiště) |
 
 **Příklad:**
