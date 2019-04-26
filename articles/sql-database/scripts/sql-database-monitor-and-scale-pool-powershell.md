@@ -14,14 +14,14 @@ manager: craigg
 ms.date: 03/12/2019
 ms.openlocfilehash: 5e4887c3b736c13977d50cb395a9ac7661815d0d
 ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/18/2019
 ms.locfileid: "59356605"
 ---
 # <a name="use-powershell-to-monitor-and-scale-an-elastic-pool-in-azure-sql-database"></a>Monitorování a škálování elastického fondu ve službě Azure SQL Database pomocí Powershellu
 
-Tento ukázkový skript PowerShellu monitoruje metriky výkonu elastického fondu, škáluje ho na vyšší velikost výpočetního prostředku a vytvoří pravidlo upozornění na jednu z metrik výkonu.
+Tento ukázkový skript PowerShellu monitoruje metriky výkonu elastického fondu, škáluje ho na vyšší velikost výpočetních prostředků a vytvoří pravidlo upozornění na jednu z metrik výkonu.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]

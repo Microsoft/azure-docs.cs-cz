@@ -16,7 +16,7 @@ ms.date: 05/18/2018
 ms.author: aljo
 ms.openlocfilehash: 33f742c7de340df41f5d946c891e9896d7d2a012
 ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/18/2019
 ms.locfileid: "59048465"
@@ -183,7 +183,7 @@ Při vytváření clusteru
     
 
 ## <a name="allow-your-application-running-in-azure-to-access-the-sql-db"></a>Povolení přístupu k databázi SQL pro aplikaci spuštěnou v Azure
-V předchozích krocích jste vytvořili pravidlo brány firewall pro SQL, a zajistili jste tak přístup pro vaši místní aplikaci.  Teď je potřeba povolit přístup k databázi SQL i pro aplikaci spuštěnou v Azure.  Vytvořte [koncový bod služby virtuální sítě](/azure/sql-database/sql-database-vnet-service-endpoint-rule-overview) pro cluster Service Fabricu a pak vytvořte pravidlo, které pro tento koncový bod povolí přístup k databázi SQL. Nezapomeňte zadat proměnné skupiny prostředků clusteru, kterou trvalo poznamenejte si při vytváření clusteru. 
+V předchozích krocích jste vytvořili pravidlo brány firewall pro SQL, a zajistili jste tak přístup pro vaši místní aplikaci.  Teď je potřeba povolit přístup k databázi SQL i pro aplikaci spuštěnou v Azure.  Vytvořte [koncový bod služby pro virtuální síť](/azure/sql-database/sql-database-vnet-service-endpoint-rule-overview) pro cluster Service Fabricu a pak vytvořte pravidlo, které pro tento koncový bod povolí přístup k databázi SQL. Nezapomeňte zadat proměnné skupiny prostředků clusteru, kterou trvalo poznamenejte si při vytváření clusteru. 
 
 ```powershell
 # Create a virtual network service endpoint

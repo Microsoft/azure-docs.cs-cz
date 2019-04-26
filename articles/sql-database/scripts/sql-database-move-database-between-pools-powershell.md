@@ -14,14 +14,14 @@ manager: craigg
 ms.date: 03/12/2019
 ms.openlocfilehash: 27a2eb025db014a1c71152a13339bc46510eae77
 ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/18/2019
 ms.locfileid: "59357802"
 ---
 # <a name="use-powershell-to-create-elastic-pools-and-move-databases-between-elastic-pools"></a>Vytvoření elastických fondů a přesun databází mezi elastickými fondy pomocí PowerShellu
 
-Tento ukázkový skript PowerShellu vytvoří dva elastické fondy, přesune databázi z jednoho elastického fondu do druhého elastického fondu a pak přesune databázi z elastického fondu na velikost výpočetního prostředku izolované databáze.
+Tento ukázkový skript PowerShellu vytvoří dva elastické fondy, přesune databázi z jednoho elastického fondu do druhého elastického fondu a pak přesune databázi z elastického fondu na velikost výpočetních prostředků izolované databáze.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]

@@ -1,60 +1,55 @@
-items:
 - name: Dokumentace ke službě Azure NetApp Files
   href: index.yml
 - name: Přehled
   items:
-  - name: Seznámení se službou Azure NetApp Files
-    href: azure-netapp-files-introduction.md
-  - name: Vysvětlení hierarchie úložiště
-    href: azure-netapp-files-understand-storage-hierarchy.md
+    - name: Seznámení se službou Azure NetApp Files
+      href: azure-netapp-files-introduction.md
+    - name: Vysvětlení hierarchie úložiště
+      href: azure-netapp-files-understand-storage-hierarchy.md
 - name: Šablony Rychlý start
-  items:
-  - name: Nastavení služby Azure NetApp Files a vytvoření svazku
-    href: azure-netapp-files-quickstart-set-up-account-create-volumes.md
   expanded: true
+  items:
+    - name: Nastavení služby Azure NetApp Files a vytvoření svazku
+      href: azure-netapp-files-quickstart-set-up-account-create-volumes.md
 - name: Koncepty
   items:
-  - name: Úrovně služeb pro Azure NetApp Files
-    href: azure-netapp-files-service-levels.md
-  - name: Omezení prostředků pro Azure NetApp Files
-    href: azure-netapp-files-resource-limits.md
-  - name: Metriky pro Azure NetApp Files
-    href: azure-netapp-files-metrics.md
+    - name: Úrovně služeb pro Azure NetApp Files
+      href: azure-netapp-files-service-levels.md
+    - name: Omezení prostředků pro Azure NetApp Files
+      href: azure-netapp-files-resource-limits.md
+    - name: Metriky pro Azure NetApp Files
+      href: azure-netapp-files-metrics.md
+    - name: Řešení potíží s chybami poskytovatele prostředků Azure NetApp Files
+      href: azure-netapp-files-troubleshoot-resource-provider-errors.md
 - name: Návody
   items:
-  - name: Registrace pro Azure NetApp Files
-    href: azure-netapp-files-register.md
-  - name: Vytvoření účtu NetApp
-    href: azure-netapp-files-create-netapp-account.md
-  - name: Nastavení fondu kapacity
-    href: azure-netapp-files-set-up-capacity-pool.md
-  - name: Delegování podsítě do Azure NetApp Files
-    href: azure-netapp-files-delegate-subnet.md
-  - name: Vytvoření svazku pro Azure NetApp Files
-    href: azure-netapp-files-create-volumes.md
-  - name: Konfigurace zásad exportu pro svazek NFS
-    href: azure-netapp-files-configure-export-policy.md
-  - name: Správa svazků
-    href: azure-netapp-files-manage-volumes.md
-  - name: Připojování nebo odpojování svazku pro virtuální počítače s Windows nebo Linuxem
-    href: azure-netapp-files-mount-unmount-volumes-for-virtual-machines.md
-  - name: Správa snímků
-    href: azure-netapp-files-manage-snapshots.md
-  - name: Změna velikosti fondu kapacity nebo svazku
-    href: azure-netapp-files-resize-capacity-pools-or-volumes.md
-  - name: Vývoj
-    items:
-    - name: REST
-      href: azure-netapp-files-develop-with-rest-api.md
+    - name: Registrace pro Azure NetApp Files
+      href: azure-netapp-files-register.md
+    - name: Vytvoření účtu NetApp
+      href: azure-netapp-files-create-netapp-account.md
+    - name: Nastavení fondu kapacity
+      href: azure-netapp-files-set-up-capacity-pool.md
+    - name: Delegování podsítě do Azure NetApp Files
+      href: azure-netapp-files-delegate-subnet.md
+    - name: Vytvoření svazku pro Azure NetApp Files
+      href: azure-netapp-files-create-volumes.md
+    - name: Konfigurace zásad exportu pro svazek NFS
+      href: azure-netapp-files-configure-export-policy.md
+    - name: Správa svazků
+      href: azure-netapp-files-manage-volumes.md
+    - name: Připojování nebo odpojování svazku pro virtuální počítače s Windows nebo Linuxem
+      href: azure-netapp-files-mount-unmount-volumes-for-virtual-machines.md
+    - name: Správa snímků
+      href: azure-netapp-files-manage-snapshots.md
+    - name: Změna velikosti fondu kapacity nebo svazku
+      href: azure-netapp-files-resize-capacity-pools-or-volumes.md
+    - name: Vývoj
+      items:
+        - name: REST
+          href: azure-netapp-files-develop-with-rest-api.md
 - name: Referenční informace
   items:
-  - name: REST
-    href: https://docs.microsoft.com/rest/api/netapp/
-  - name: Šablona Resource Manageru
-    href: /azure/templates/microsoft.netapp/allversions
-ms.openlocfilehash: 1380aa56161e7c1f0f3d72aae36c834a087e1040
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
-ms.translationtype: HT
-ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59545923"
+    - name: REST
+      href: 'https://docs.microsoft.com/rest/api/netapp/'
+    - name: Šablona Resource Manageru
+      href: /azure/templates/microsoft.netapp/allversions

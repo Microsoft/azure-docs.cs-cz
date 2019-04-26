@@ -16,7 +16,7 @@ ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 13f67bfe0902a528d16b6a967f9d4ac189100406
 ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 03/26/2019
 ms.locfileid: "58482399"
@@ -220,7 +220,7 @@ V tomto kroku se svým objektem pro vytváření dat propojíte svou databázi S
     ProvisioningState : Succeeded
     ```
 
-   Ujistěte se, že nastavení **Povolit přístup ke službám Azure** je pro server SQL Database zapnuté. Chcete-li to ověřit a zapnout ho, proveďte následující kroky:
+   Ujistěte se, že nastavení **Povolit přístup ke službám Azure** je pro server služby SQL Database zapnuté. Chcete-li to ověřit a zapnout ho, proveďte následující kroky:
 
     1. Přihlaste se k portálu [Azure Portal](https://portal.azure.com).
     1. Vlevo klikněte na možnost **Další služby** a potom na **Servery SQL** v kategorii **DATABÁZE**.

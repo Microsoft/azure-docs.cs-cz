@@ -1,70 +1,64 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: ca77662e7756d74f8f939e78af626b7f2da2a3c4
-ms.sourcegitcommit: d89b679d20ad45d224fd7d010496c52345f10c96
-ms.translationtype: HT
-ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57792714"
 documentType: LandingData
 title: Dokumentace k Ansible v Azure
 metadata:
-  title: Dokumentace k Ansible v Azure – kurzy, ukázky, odkazy a zdroje informací
-  description: Zjistěte, jak použít Ansible k automatizaci zřizování cloudu, správě konfigurací a nasazování aplikací.
+  title: 'Dokumentace k Ansible v Azure – kurzy, ukázky, odkazy a zdroje informací'
+  description: 'Zjistěte, jak použít Ansible k automatizaci zřizování cloudu, správě konfigurací a nasazování aplikací.'
   ms.service: azure
-  keywords: ansible, azure, devops, tutorials, samples, reference
+  keywords: 'ansible, azure, devops, tutorials, samples, reference'
   author: tomarchermsft
   manager: jeconnoc
   ms.author: tarcher
   ms.topic: landing-page
-  ms.date: 08/27/2018
+  ms.date: 04/22/2019
 abstract:
-  description: Použití <a href="https://www.ansible.com">Ansible</a> k automatizaci zřizování cloudu, správě konfigurací a nasazení aplikací.
+  description: 'Použití <a href="https://www.ansible.com">Ansible</a> k automatizaci zřizování cloudu, správě konfigurací a nasazení aplikací.'
 sections:
-- title: Zprovoznění během 5 minut
-  items:
-  - type: paragraph
-    text: Nainstalujte Ansible a použijte ho k vytváření a správě virtuálních počítačů s Linuxem v Azure.
-  - type: list
-    style: icon48
+  - title: Zprovoznění během 5 minut
     items:
-    - image:
-        src: /azure/media/index/azure_dev-9.svg
-      text: Instalace Ansible
-      href: /azure/virtual-machines/linux/ansible-install-configure?toc=%2Fen-us%2Fazure%2Fansible%2Ftoc.json&bc=%2Fen-us%2Fazure%2Fbread%2Ftoc.json
-    - image:
-        src: /azure/media/index/VirtualMachine.svg
-      text: Vytvoření virtuálního počítače s Linuxem
-      href: /azure/virtual-machines/linux/ansible-create-vm?toc=%2Fen-us%2Fazure%2Fansible%2Ftoc.json&bc=%2Fen-us%2Fazure%2Fbread%2Ftoc.json
-    - image:
-        src: /azure/media/index/VirtualMachine.svg
-      text: Správa virtuálního počítače s Linuxem
-      href: /azure/virtual-machines/linux/ansible-manage-linux-vm?toc=%2Fen-us%2Fazure%2Fansible%2Ftoc.json&bc=%2Fen-us%2Fazure%2Fbread%2Ftoc.json
-- title: Podrobné kurzy
-  items:
-  - type: paragraph
-    text: Zjistěte, jak použít Ansible k vytvoření a správě výpočetní, síťové a ukládací infrastruktury Azure.
-  - type: list
-    style: unordered
+      - type: paragraph
+        text: Nainstalujte Ansible a použijte ho k vytváření a správě virtuálních počítačů s Linuxem v Azure.
+      - type: list
+        style: icon48
+        items:
+          - image:
+              src: /azure/media/index/azure_dev-9.svg
+            text: Instalace Ansible
+            href: /azure/virtual-machines/linux/ansible-install-configure?toc=%2Fen-us%2Fazure%2Fansible%2Ftoc.json&bc=%2Fen-us%2Fazure%2Fbread%2Ftoc.json
+          - image:
+              src: /azure/media/index/VirtualMachine.svg
+            text: Konfigurace virtuálního počítače s Linuxem
+            href: /azure/virtual-machines/linux/ansible-create-vm?toc=%2Fen-us%2Fazure%2Fansible%2Ftoc.json&bc=%2Fen-us%2Fazure%2Fbread%2Ftoc.json
+          - image:
+              src: /azure/media/index/VirtualMachine.svg
+            text: Správa virtuálního počítače s Linuxem
+            href: /azure/virtual-machines/linux/ansible-manage-linux-vm?toc=%2Fen-us%2Fazure%2Fansible%2Ftoc.json&bc=%2Fen-us%2Fazure%2Fbread%2Ftoc.json
+  - title: Podrobné kurzy
     items:
-    - html: <a href="/azure/virtual-machines/linux/ansible-create-complete-vm?toc=%2Fen-us%2Fazure%2Fansible%2Ftoc.json&bc=%2Fen-us%2Fazure%2Fbread%2Ftoc.json">Vytvořte virtuální počítač s Linuxem, včetně virtuální sítě, veřejné IP adresy a virtuální síťové karty.</a>
-    - html: <a href="./ansible-run-playbook-in-cloudshell">Spusťte Ansible s využitím Bashe v Azure Cloud Shellu.</a>
-    - html: <a href="./ansible-manage-azure-dynamic-inventories">Vytvořte a spravujte dynamický inventář vašich prostředků Azure.</a>
-    - html: <a href="./ansible-create-configure-vmss">Vytvořte a spravujte škálovací sady virtuálních počítačů v Azure.</a>
-    - html: <a href="./ansible-deploy-app-vmss">Nasaďte aplikace do škálovacích sad virtuálních počítačů v Azure.</a>
-    - html: <a href="./ansible-create-configure-aks">Vytvářejte a spravujte clustery Azure Kubernetes Service.</a>
-    - html: <a href="./ansible-create-configure-application-gateway">Spravujte webový provoz s využitím služby Azure Application Gateway.</a>
-    - html: <a href="./ansible-auto-scale-vmss">Automatické škálování škálovací sady virtuálních počítačů v Azure pomocí Ansible.</a>
-    - html: <a href="./ansible-scale-azure-web-apps">Škálování webových aplikací Azure App Service pomocí Ansible.</a>
-    - html: <a href="./ansible-create-configure-route-table">Vytvoření, změna nebo odstranění směrovací tabulky Azure pomocí Ansible.</a>
-- title: Referenční informace
-  items:
-  - type: list
-    style: cards
-    className: cardsD
+      - type: paragraph
+        text: 'Zjistěte, jak použít Ansible k vytvoření a správě výpočetní, síťové a ukládací infrastruktury Azure.'
+      - type: list
+        style: unordered
+        items:
+          - html: '<a href="/azure/virtual-machines/linux/ansible-create-complete-vm?toc=%2Fen-us%2Fazure%2Fansible%2Ftoc.json&bc=%2Fen-us%2Fazure%2Fbread%2Ftoc.json">Vytvořte virtuální počítač s Linuxem, včetně virtuální sítě, veřejné IP adresy a virtuální síťové karty.</a>'
+          - html: <a href="./ansible-run-playbook-in-cloudshell">Spusťte Ansible s využitím Bashe v Azure Cloud Shellu.</a>
+          - html: <a href="./ansible-manage-azure-dynamic-inventories">Vytvořte a spravujte dynamický inventář vašich prostředků Azure.</a>
+          - html: <a href="./ansible-create-configure-vmss">Vytvořte a spravujte škálovací sady virtuálních počítačů v Azure.</a>
+          - html: <a href="./ansible-deploy-app-vmss">Nasaďte aplikace do škálovacích sad virtuálních počítačů v Azure.</a>
+          - html: <a href="./ansible-create-configure-aks">Vytvářejte a spravujte clustery Azure Kubernetes Service.</a>
+          - html: <a href="./ansible-create-configure-application-gateway">Spravujte webový provoz s využitím služby Azure Application Gateway.</a>
+          - html: <a href="./ansible-auto-scale-vmss">Automatické škálování škálovacích sad virtuálních počítačů v Azure pomocí Ansible.</a>
+          - html: <a href="./ansible-scale-azure-web-apps">Škálování webových aplikací Azure App Service pomocí Ansible.</a>
+          - html: '<a href="./ansible-create-configure-route-table">Vytvoření, změna nebo odstranění směrovací tabulky Azure pomocí Ansible.</a>'
+  - title: Referenční informace
     items:
-    - title: Role playbooku
-      html: <p><a href="https://galaxy.ansible.com/Azure/azure_preview_modules/">azure_preview_module</a></p>
-    - title: Verze a funkce
-      html: <p><a href="./ansible-matrix.md">Matice funkcí pro moduly a role</a></p>
-    - title: Nástroje
-      html: <p><a href="https://marketplace.visualstudio.com/items?itemName=vscoss.vscode-ansible">Rozšíření editoru Visual Studio Code pro Ansible</a></p>
+      - type: list
+        style: cards
+        className: cardsD
+        items:
+          - title: Role playbooku
+            html: '<p><a href="https://galaxy.ansible.com/Azure/azure_preview_modules/">azure_preview_module</a></p>'
+          - title: Verze a funkce
+            html: <p><a href="./ansible-matrix.md">Matice funkcí pro moduly a role</a></p>
+          - title: Nástroje
+            html: '<p><a href="https://marketplace.visualstudio.com/items?itemName=vscoss.vscode-ansible">Rozšíření editoru Visual Studio Code pro Ansible</a></p>'

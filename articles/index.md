@@ -2421,7 +2421,7 @@ Automatizace úloh Azure pomocí skriptů s využitím PowerShellu </a>
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Data Lake Storage Gen1</h3>
-                                                    <p>Velkokapacitní úložiště pro velké objemy analytických dat</p>
+                                                    <p>Úložiště s možností hyperškálování pro velké objemy analytických dat</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -3605,7 +3605,7 @@ Automatizace úloh Azure pomocí skriptů s využitím PowerShellu </a>
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Data Lake Storage Gen1</h3>
-                                                    <p>Velkokapacitní úložiště pro velké objemy analytických dat</p>
+                                                    <p>Úložiště s možností hyperškálování pro velké objemy analytických dat</p>
                                                 </div>
                                             </div>
                                         </div>

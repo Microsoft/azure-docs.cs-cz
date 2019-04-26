@@ -14,7 +14,7 @@ manager: craigg
 ms.date: 02/03/2019
 ms.openlocfilehash: 7a1132b5857cf6c54d0566ca29bb76ce1ef88513
 ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/18/2019
 ms.locfileid: "59359446"
@@ -37,10 +37,10 @@ Následující tabulka obsahuje odkazy na ukázkové skripty Azure CLI pro služ
 |---|---|
 |**Vytvoření izolované databáze a elastického fondu**||
 | [Vytvoření izolované databáze a konfigurace pravidla brány firewall](scripts/sql-database-create-and-configure-database-cli.md?toc=%2fcli%2fazure%2ftoc.json) | Tento skript rozhraní příkazového řádku vytvoří izolovanou databázi SQL Azure a nakonfiguruje pravidlo brány firewall na úrovni serveru. |
-| [Vytváření elastických fondů a přesun databází ve fondu](scripts/sql-database-move-database-between-pools-cli.md?toc=%2fcli%2fazure%2ftoc.json) | Tento ukázkový skript rozhraní příkazového řádku vytvoří elastické fondy SQL, přesune databáze SQL Azure ve fondu a změní velikosti výpočetních prostředků.|
+| [Vytváření elastických fondů a přesun databází ve fondu](scripts/sql-database-move-database-between-pools-cli.md?toc=%2fcli%2fazure%2ftoc.json) | Tento ukázkový skript rozhraní příkazového řádku vytvoří elastické fondy SQL, přesune databáze Azure SQL ve fondu a změní velikost výpočetních prostředků.|
 |**Škálování izolované databáze a elastického fondu**||
-| [Škálování izolované databáze](scripts/sql-database-monitor-and-scale-database-cli.md?toc=%2fcli%2fazure%2ftoc.json) | Tento ukázkový skript rozhraní příkazového řádku škáluje izolovanou databázi SQL Azure na jinou velikost výpočetního prostředku po provedení dotazu na informace o velikosti databáze. |
-| [Škálování elastického fondu](scripts/sql-database-scale-pool-cli.md?toc=%2fcli%2fazure%2ftoc.json) | Tento skript rozhraní příkazového řádku škáluje elastický fond SQL na jinou velikost výpočetního prostředku.  |
+| [Škálování izolované databáze](scripts/sql-database-monitor-and-scale-database-cli.md?toc=%2fcli%2fazure%2ftoc.json) | Tento ukázkový skript rozhraní příkazového řádku škáluje izolovanou databázi Azure SQL na jinou velikost výpočetních prostředků po provedení dotazu na informace o velikosti databáze. |
+| [Škálování elastického fondu](scripts/sql-database-scale-pool-cli.md?toc=%2fcli%2fazure%2ftoc.json) | Tento skript rozhraní příkazového řádku škáluje elastický fond SQL na jinou velikost výpočetních prostředků.  |
 |||
 
 Další informace o [jediné databáze rozhraní API Azure CLI](sql-database-single-databases-manage.md#azure-cli-manage-sql-database-servers-and-single-databases).

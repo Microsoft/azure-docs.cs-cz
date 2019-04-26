@@ -10,7 +10,7 @@ ms.topic: tutorial
 ms.date: 04/01/2018
 ms.openlocfilehash: eba1ffcbe07c617661d902de0726f17e4fec0a00
 ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 03/18/2019
 ms.locfileid: "57992085"
@@ -76,7 +76,7 @@ az postgres server firewall-rule create --resource-group myresourcegroup --serve
 Pokud chcete přístup k serveru Azure PostgreSQL omezit pouze na vaši síť, můžete v pravidlu brány firewall nastavit pokrytí pouze rozsahu IP adres vaší podnikové sítě.
 
 > [!NOTE]
-> Server Azure PostgreSQL komunikuje přes port 5432. Pokud se připojujete z podnikové sítě, nemusí být odchozí provoz přes port 5432 bránou firewall vaší sítě povolený. Pořádejte oddělení IT, aby otevřeli port 5432 pro připojení k vašemu serveru Azure SQL Database.
+> Server Azure PostgreSQL komunikuje přes port 5432. Pokud se připojujete z podnikové sítě, nemusí být odchozí provoz přes port 5432 bránou firewall vaší sítě povolený. Pořádejte oddělení IT, aby otevřeli port 5432 pro připojení k vašemu serveru služby Azure SQL Database.
 >
 
 ## <a name="get-the-connection-information"></a>Získání informací o připojení
