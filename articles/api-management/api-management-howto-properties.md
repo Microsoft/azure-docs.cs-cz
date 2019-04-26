@@ -27,10 +27,10 @@ Každá instance služby API Management má vlastnosti kolekce párů klíč/hod
 
 | Atribut | Type | Popis |
 | --- | --- | --- |
-| Zobrazované jméno |string |Alfanumerický řetězec, který se používá jako odkaz na vlastnost v zásadách |
-| Hodnota |string |Hodnota vlastnosti Nesmí být prázdný nebo obsahovat jen mezerové znaky. |
-|Tajný kód|Boolean|Určuje, zda hodnota je tajný kód a měla šifrovat, nebo ne.|
-| Značky |pole řetězce |Volitelné značky, pokud je zadaný, můžete použít k filtrování seznamu vlastností. |
+| `Display name` |string |Alfanumerický řetězec, který se používá jako odkaz na vlastnost v zásadách |
+| `Value` |string |Hodnota vlastnosti Nesmí být prázdný nebo obsahovat jen mezerové znaky. |
+| `Secret` |Boolean|Určuje, zda hodnota je tajný kód a měla šifrovat, nebo ne.|
+| `Tags` |pole řetězce |Volitelné značky, pokud je zadaný, můžete použít k filtrování seznamu vlastností. |
 
 ![Pojmenované hodnoty](./media/api-management-howto-properties/named-values.png)
 
