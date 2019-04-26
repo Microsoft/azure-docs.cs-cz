@@ -79,13 +79,13 @@ Během zpracování požadavku, provádění předdefinované kroků spolu se v�
   
 | Název     | Typ   | Popis                                                                                               | Požaduje se |
 |----------|--------|-----------------------------------------------------------------------------------------------------------|----------|
-| Zdroj   | řetězec | Názvy elementu, kde došlo k chybě. Může být zásady nebo název kroku předdefinované kanálu.     | Ano      |
-| Důvod   | řetězec | Kód chyby popisný počítače, které by mohly být použity v zpracování chyb.                                       | Ne       |
-| Zpráva  | řetězec | Popis chyby čitelná pro člověka.                                                                         | Ano      |
-| Rozsah    | řetězec | Název oboru, kde chybovou zprávu a může mít jednu z "globální", "produkt", "api" nebo "operace" | Ne       |
-| Sekce  | řetězec | Název oddílu, kde došlo k chybě. Možné hodnoty: "příchozí", "back-end", "odchozí" nebo "na chyba".       | Ne       |
-| Cesta     | řetězec | Určuje vnořené zásad, například "[3] zvolte / při [2]".                                                        | Ne       |
-| PolicyId | řetězec | Hodnota `id` atribut, pokud zadaný zákazník na zásadu, kde došlo k chybě             | Ne       |
+| `Source`   | řetězec | Názvy elementu, kde došlo k chybě. Může být zásady nebo název kroku předdefinované kanálu.     | Ano      |
+| `Reason`   | řetězec | Kód chyby popisný počítače, které by mohly být použity v zpracování chyb.                                       | Ne       |
+| `Message`  | řetězec | Popis chyby čitelná pro člověka.                                                                         | Ano      |
+| `Scope`    | řetězec | Název oboru, kde chybovou zprávu a může mít jednu z "globální", "produkt", "api" nebo "operace" | Ne       |
+| `Section`  | řetězec | Název oddílu, kde došlo k chybě. Možné hodnoty: "příchozí", "back-end", "odchozí" nebo "na chyba".       | Ne       |
+| `Path`     | řetězec | Určuje vnořené zásad, například "[3] zvolte / při [2]".                                                        | Ne       |
+| `PolicyId` | řetězec | Hodnota `id` atribut, pokud zadaný zákazník na zásadu, kde došlo k chybě             | Ne       |
 
 > [!TIP]
 > Stavový kód můžete přistupovat prostřednictvím kontextu. Response.StatusCode.  
