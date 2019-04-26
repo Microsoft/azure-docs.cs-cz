@@ -158,7 +158,7 @@ Zásady ovlivňují chování za běhu aktivity, konkrétně v případě, že z
 | longRetryInterval |TimeSpan |00:00:00 |Prodleva mezi pokusy o opakování po delší době |
 
 ## <a name="sample-copy-pipeline"></a>Ukázkový kanál kopírování
-V následujícím ukázkovém kanálu je v části **activities** jedna aktivita typu **Kopírování**. V této ukázce [aktivita kopírování](data-factory-data-movement-activities.md) kopíruje data ze služby Azure Blob Storage do služby Azure SQL Database.
+V následujícím ukázkovém kanálu je v části **activities** jedna aktivita typu **Kopírování**. V této ukázce [aktivita kopírování](data-factory-data-movement-activities.md) kopíruje data ze služby Azure Blob Storage do databáze Azure SQL.
 
 ```json
 {

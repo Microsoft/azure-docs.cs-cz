@@ -1,5 +1,5 @@
 ---
-title: Příklad PowerShellu – Zkopírování databáze SQL Azure na nový server | Microsoft Docs
+title: Příklad PowerShellu – Zkopírování databáze Azure SQL na nový server | Microsoft Docs
 description: Ukázkový skript Azure PowerShellu pro zkopírování databáze SQL na nový server
 services: sql-database
 ms.service: sql-database
