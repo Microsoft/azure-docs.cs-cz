@@ -14,7 +14,7 @@ ms.date: 01/22/2018
 ms.author: yexu
 ms.openlocfilehash: 52dee0ee60c111c56c42e0452f8f8750ea9ea4e6
 ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 03/06/2019
 ms.locfileid: "57436540"
@@ -47,7 +47,7 @@ Tady jsou obvyklé kroky uceleného pracovního postupu pro přírůstkové nač
 1. **Počáteční načtení historických dat** (spouští se jednou):
     1. Povolte technologii Change Tracking ve zdrojové databázi Azure SQL.
     2. Získejte počáteční hodnotu SYS_CHANGE_VERSION v databázi Azure SQL jako základ pro zaznamenávání změněných dat.
-    3. Načtěte kompletní data z Azure SQL Database do Azure Blob Storage. 
+    3. Načtěte kompletní data z databáze Azure SQL do Azure Blob Storage. 
 2. **Přírůstkové načítání rozdílových dat podle plánu** (spouští se pravidelně po počátečním načtení dat):
     1. Získejte starou a novou hodnotu SYS_CHANGE_VERSION.
     3. Načtěte rozdílová data připojením primárních klíčů změněných řádků (mezi dvěma hodnotami SYS_CHANGE_VERSION) ze **sys.change_tracking_tables** k datům ve **zdrojové tabulce** a potom přesuňte rozdílová data do cíle.
@@ -233,7 +233,7 @@ V tomto kroku s datovou továrnou propojíte svůj účet služby Azure Storage.
     ```
 
 ### <a name="create-azure-sql-database-linked-service"></a>Vytvoření propojené služby Azure SQL Database
-V tomto kroku propojíte databázi SQL Azure s datovou továrnou.
+V tomto kroku propojíte databázi Azure SQL s datovou továrnou.
 
 1. Vytvořte soubor JSON s názvem **AzureSQLDatabaseLinkedService.json** v **C:\ADFTutorials\IncCopyChangeTrackingTutorial** složka s následujícím obsahem: Než soubor uložíte, položky server, název databáze **, &lt;id_uživatele&gt; a &lt;heslo&gt;** nahraďte názvem vašeho serveru Azure SQL, názvem databáze, ID uživatele a heslem. 
 
@@ -468,7 +468,7 @@ Ve složce `incchgtracking` kontejneru `adftutorial` uvidíte soubor s názvem `
 
 ![Výstupní soubor pro úplné kopírování](media/tutorial-incremental-copy-change-tracking-feature-powershell/full-copy-output-file.png)
 
-Tento soubor by měl obsahovat data z databáze SQL Azure:
+Tento soubor by měl obsahovat data z databáze Azure SQL:
 
 ```
 1,aaaa,21
@@ -646,7 +646,7 @@ Ve složce `incchgtracking` kontejneru `adftutorial` uvidíte druhý soubor.
 
 ![Výstupní soubor pro přírůstkové kopírování](media/tutorial-incremental-copy-change-tracking-feature-powershell/incremental-copy-output-file.png)
 
-Tento soubor by měl obsahovat jenom rozdílová data z databáze SQL Azure. Záznam s `U` je aktualizovaný řádek v databázi a `I` je přidaný řádek. 
+Tento soubor by měl obsahovat jenom rozdílová data z databáze Azure SQL. Záznam s `U` je aktualizovaný řádek v databázi a `I` je přidaný řádek. 
 
 ```
 1,update,10,2,U

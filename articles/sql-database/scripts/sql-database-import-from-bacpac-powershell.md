@@ -1,5 +1,5 @@
 ---
-title: Příklad PowerShellu – Import souboru BACPAC do databáze SQL Azure | Microsoft Docs
+title: Příklad PowerShellu – Import souboru BACPAC do databáze Azure SQL | Microsoft Docs
 description: Ukázkový skript Azure PowerShellu pro import souboru BACPAC do databáze SQL
 services: sql-database
 ms.service: sql-database
@@ -14,14 +14,14 @@ manager: craigg
 ms.date: 03/12/2019
 ms.openlocfilehash: 6d6fadc1508df63fdc4062bd45a98e31c1f1674f
 ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/18/2019
 ms.locfileid: "59361228"
 ---
-# <a name="use-powershell-to-import-a-bacpac-file-into-an-azure-sql-database"></a>Import souboru BACPAC do databáze SQL Azure pomocí PowerShellu
+# <a name="use-powershell-to-import-a-bacpac-file-into-an-azure-sql-database"></a>Import souboru BACPAC do databáze Azure SQL pomocí PowerShellu
 
-Tento ukázkový skript PowerShellu importuje databázi ze souboru BACPAC do databáze SQL Azure.  
+Tento ukázkový skript PowerShellu importuje databázi ze souboru BACPAC do databáze Azure SQL.  
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]

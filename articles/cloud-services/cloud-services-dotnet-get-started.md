@@ -107,9 +107,9 @@ V následující části budete konfigurovat řešení tak, aby při spuštění
 Pokud chcete aplikaci spustit v cloudu, proveďte následující kroky:
 
 * Vytvoření cloudové služby Azure
-* Vytvoření databáze SQL Azure
+* Vytvoření databáze Azure SQL
 * Vytvoření účtu úložiště Azure
-* Nakonfigurujte řešení, aby při spuštění v Azure používalo databázi SQL Azure.
+* Nakonfigurujte řešení, aby při spuštění v Azure používalo databázi Azure SQL.
 * Nakonfigurujte řešení, aby při spuštění v Azure používalo účet úložiště Azure.
 * Nasaďte projekt do cloudové služby Azure.
 
@@ -133,7 +133,7 @@ Cloudová služba Azure je prostředí, ve kterém bude aplikace spuštěna.
 
     ![Nová cloudová služba](./media/cloud-services-dotnet-get-started/newcs.png)
 
-### <a name="create-an-azure-sql-database"></a>Vytvoření databáze SQL Azure
+### <a name="create-an-azure-sql-database"></a>Vytvoření databáze Azure SQL
 Když aplikace běží v cloudu, používá cloudovou databázi.
 
 1. Na webu [Azure Portal](https://portal.azure.com) klikněte na **Vytvořit prostředek > Databáze > Databáze SQL**.
@@ -185,8 +185,8 @@ V reálné aplikaci byste obvykle vytvořili samostatné účty pro data aplikac
 
     Na obrázku vidíte vytvoření účtu úložiště s adresou URL `csvccontosoads.core.windows.net`.
 
-### <a name="configure-the-solution-to-use-your-azure-sql-database-when-it-runs-in-azure"></a>Konfigurace řešení, aby při spuštění v Azure používalo databázi SQL Azure
-Webový projekt a projekt role pracovního procesu mají každý svůj vlastní připojovací řetězec k databázi a každý musí při spuštění aplikace v Azure odkazovat na databázi SQL Azure.
+### <a name="configure-the-solution-to-use-your-azure-sql-database-when-it-runs-in-azure"></a>Konfigurace řešení, aby při spuštění v Azure používalo databázi Azure SQL
+Webový projekt a projekt role pracovního procesu mají každý svůj vlastní připojovací řetězec k databázi a každý musí při spuštění aplikace v Azure odkazovat na databázi Azure SQL.
 
 Pro webovou roli a nastavení prostředí cloudové služby pro roli pracovního procesu budete používat [transformaci Web.config](https://www.asp.net/mvc/tutorials/deployment/visual-studio-web-deployment/web-config-transformations).
 

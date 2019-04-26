@@ -39,7 +39,7 @@ Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https
 Pro absolvování tohoto kurzu, ujistěte se, že jste nainstalovali následující položky:
 
 - [Azure PowerShell](/powershell/azureps-cmdlets-docs)
-- Databázi SQL Azure. Vytvořte jedno použití
+- Databázi Azure SQL. Vytvořte jedno použití
   - [Azure Portal](sql-database-single-database-get-started.md)
   - [Rozhraní příkazového řádku](sql-database-cli-samples.md)
   - [PowerShell](sql-database-powershell-samples.md)

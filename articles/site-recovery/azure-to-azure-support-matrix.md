@@ -10,7 +10,7 @@ ms.date: 04/22/2019
 ms.author: raynew
 ms.openlocfilehash: c64148fbc0432bd25c5b02fb20b3e44134c1d9d5
 ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/23/2019
 ms.locfileid: "60502082"
@@ -243,7 +243,7 @@ Neověřené proxy | Podporováno | [Další informace]. (site-recovery-azure-to
 Ověřený proxy server | Nepodporuje se | Pokud virtuální počítač používá ověřený proxy server pro odchozí připojení, nelze replikovat, pomocí Azure Site Recovery.    
 Připojení VPN typu site-to-site k místní<br/><br/>(s nebo bez ExpressRoute)| Podporováno | Ujistěte se, že trasy definované uživatelem a skupin zabezpečení sítě jsou nakonfigurovány tak, že provoz obnovení lokality se nesměruje na místní. [Další informace](site-recovery-azure-to-azure-networking-guidance.md)    
 Připojení mezi virtuálními SÍTĚMI | Podporováno | [Další informace](site-recovery-azure-to-azure-networking-guidance.md)  
-Koncové body služby virtuální sítě | Podporováno | Pokud pro přístup k virtuální síti se omezení pro účty úložiště, ujistěte se, že jsou povolena důvěryhodným službám Microsoftu přístup k účtu úložiště.
+Koncové body služby pro virtuální síť | Podporováno | Pokud pro přístup k virtuální síti se omezení pro účty úložiště, ujistěte se, že jsou povolena důvěryhodným službám Microsoftu přístup k účtu úložiště.
 Urychlení sítě | Podporováno | Akcelerované síťové služby musí být povolené na zdrojovém virtuálním počítači. [Další informace](azure-vm-disaster-recovery-with-accelerated-networking.md).
 
 

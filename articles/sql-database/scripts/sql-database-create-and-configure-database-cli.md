@@ -1,5 +1,5 @@
 ---
-title: Příklad rozhraní příkazového řádku – Vytvoření databáze SQL Azure | Microsoft Docs
+title: Příklad rozhraní příkazového řádku – Vytvoření databáze Azure SQL | Microsoft Docs
 description: Pomocí tohoto ukázkového skriptu Azure CLI vytvoříte databázi SQL.
 services: sql-database
 ms.service: sql-database
@@ -14,14 +14,14 @@ ms.reviewer: ''
 ms.date: 02/08/2019
 ms.openlocfilehash: 9ed1512053c06108178275b0523beede470325a5
 ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/18/2019
 ms.locfileid: "59361435"
 ---
-# <a name="use-cli-to-create-a-single-azure-sql-database-and-configure-a-firewall-rule"></a>Použití rozhraní příkazového řádku k vytvoření jedné databáze SQL Azure a konfiguraci pravidla brány firewall
+# <a name="use-cli-to-create-a-single-azure-sql-database-and-configure-a-firewall-rule"></a>Použití rozhraní příkazového řádku k vytvoření jedné databáze Azure SQL a konfiguraci pravidla brány firewall
 
-Tento ukázkový skript Azure CLI vytvoří databázi SQL Azure a nakonfiguruje pravidlo brány firewall na úrovni serveru. Po úspěšném spuštění skriptu bude služba SQL Database přístupná ze všech služeb Azure a nakonfigurovaných IP adres.
+Tento ukázkový skript Azure CLI vytvoří databázi Azure SQL a nakonfiguruje pravidlo brány firewall na úrovni serveru. Po úspěšném spuštění skriptu bude služba SQL Database přístupná ze všech služeb Azure a nakonfigurovaných IP adres.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 

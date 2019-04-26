@@ -1,6 +1,6 @@
 ---
-title: Příklad rozhraní příkazového řádku – Monitorování a škálování izolované databáze SQL Azure | Microsoft Docs
-description: Ukázkový skript Azure CLI pro monitorování a škálování izolované databáze SQL Azure
+title: Příklad rozhraní příkazového řádku – Monitorování a škálování izolované databáze Azure SQL | Microsoft Docs
+description: Ukázkový skript Azure CLI pro monitorování a škálování izolované databáze Azure SQL
 services: sql-database
 ms.service: sql-database
 ms.subservice: performance
@@ -14,14 +14,14 @@ manager: craigg
 ms.date: 01/25/2019
 ms.openlocfilehash: eeb932123e57dcb10fce3baf9670d8c1ae961fb8
 ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/18/2019
 ms.locfileid: "59361602"
 ---
 # <a name="use-cli-to-monitor-and-scale-a-single-sql-database"></a>Monitorování a škálování izolované databáze SQL pomocí rozhraní příkazového řádku
 
-Tento ukázkový skript Azure CLI škáluje izolovanou databázi SQL Azure na jinou velikost výpočetního prostředku poté, co se odeslal dotaz na informace o velikosti databáze.
+Tento ukázkový skript Azure CLI škáluje izolovanou databázi Azure SQL na jinou velikost výpočetních prostředků poté, co se odeslal dotaz na informace o velikosti databáze.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
@@ -53,7 +53,7 @@ Tento skript používá následující příkazy. Každý příkaz v tabulce odk
 | [az group create](https://docs.microsoft.com/cli/azure/group#az-group-create) | Vytvoří skupinu prostředků, ve které se ukládají všechny prostředky. |
 | [az sql server create](https://docs.microsoft.com/cli/azure/sql/server#az-sql-server-create) | Vytvoří server služby SQL Database, který je hostitelem izolovaných databází a elastických fondů. |
 | [az sql db show-usage](https://docs.microsoft.com/cli/azure/sql#az-sql-show-usage) | Zobrazuje informace o využití velikosti databáze jedné nebo ve fondu. |
-| [az sql db update](https://docs.microsoft.com/cli/azure/sql/db#az-sql-db-update) | Aktualizuje vlastnosti databáze (například úroveň služby nebo velikost počítače) nebo přesune databázi do nebo z elastického fondu nebo mezi elastickými fondy. |
+| [az sql db update](https://docs.microsoft.com/cli/azure/sql/db#az-sql-db-update) | Aktualizuje vlastnosti databáze (například úroveň služby nebo velikost výpočetních prostředků) nebo přesune databázi do nebo z elastického fondu nebo mezi elastickými fondy. |
 | [az group delete](https://docs.microsoft.com/cli/azure/vm/extension#az-vm-extension-set) | Odstraní skupinu prostředků včetně všech vnořených prostředků. |
 |||
 

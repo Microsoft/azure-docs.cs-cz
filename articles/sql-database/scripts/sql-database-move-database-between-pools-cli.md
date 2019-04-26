@@ -1,5 +1,5 @@
 ---
-title: Příklad rozhraní příkazového řádku – Přesun databáze SQL Azure – Elastický fond SQL | Microsoft Docs
+title: Příklad rozhraní příkazového řádku – Přesun databáze Azure SQL – Elastický fond SQL | Microsoft Docs
 description: Ukázkový skript Azure CLI pro přesun databáze SQL v elastickém fondu SQL
 services: sql-database
 ms.service: sql-database
@@ -14,12 +14,12 @@ manager: craigg
 ms.date: 01/25/2019
 ms.openlocfilehash: 6fa21c0fea2eeacd17cfe9f0d7ba58d55ed60af1
 ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/18/2019
 ms.locfileid: "59357588"
 ---
-# <a name="use-cli-to-move-an-azure-sql-database-in-a-sql-elastic-pool"></a>Přesun databáze SQL Azure v elastickém fondu SQL pomocí rozhraní příkazového řádku
+# <a name="use-cli-to-move-an-azure-sql-database-in-a-sql-elastic-pool"></a>Přesun databáze Azure SQL v elastickém fondu SQL pomocí rozhraní příkazového řádku
 
 Tento ukázkový skript Azure CLI vytvoří dva elastické fondy a přesune databázi Azure SQL z jednoho elastického fondu SQL do druhého elastického fondu SQL a pak přesune databázi z elastického fondu pro izolované databáze vypočítat velikost.
 

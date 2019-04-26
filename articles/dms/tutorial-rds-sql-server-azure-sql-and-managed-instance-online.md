@@ -99,7 +99,7 @@ Pro absolvování tohoto kurzu je potřeba provést následující:
 Migrace schématu do služby Azure SQL Database pomocí DMA.
 
 > [!NOTE]
-> Před vytvořením projektu migrace v DMA se ujistěte, že už máte zřízenou službu Azure SQL Database, jak je uvedeno v požadavcích. Pro účely tohoto kurzu, název služby Azure SQL Database je považován za **AdventureWorks2012**, ale můžete zadat jakýkoli název, který chcete.
+> Před vytvořením projektu migrace v DMA se ujistěte, že už máte zřízenou databázi Azure SQL, jak je uvedeno v požadavcích. Pro účely tohoto kurzu, název služby Azure SQL Database je považován za **AdventureWorks2012**, ale můžete zadat jakýkoli název, který chcete.
 
 Pokud chcete migrovat schéma **AdventureWorks2012** do služby Azure SQL Database, proveďte následující kroky:
 

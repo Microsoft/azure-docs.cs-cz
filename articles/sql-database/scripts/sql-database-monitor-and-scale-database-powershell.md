@@ -1,6 +1,6 @@
 ---
-title: Příklad PowerShellu – Monitorování a škálování izolované databáze SQL Azure | Microsoft Docs
-description: Ukázkový skript Azure PowerShellu pro monitorování a škálování izolované databáze SQL Azure
+title: Příklad PowerShellu – Monitorování a škálování izolované databáze Azure SQL | Microsoft Docs
+description: Ukázkový skript Azure PowerShellu pro monitorování a škálování izolované databáze Azure SQL
 services: sql-database
 ms.service: sql-database
 ms.subservice: performance
@@ -14,14 +14,14 @@ manager: craigg
 ms.date: 03/12/2019
 ms.openlocfilehash: 34e5876df36a48b0ca70979346afdd89b674a813
 ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/18/2019
 ms.locfileid: "59359485"
 ---
 # <a name="use-powershell-to-monitor-and-scale-a-single-sql-database"></a>Monitorování a škálování izolované databáze SQL pomocí PowerShellu
 
-Tento ukázkový skript PowerShellu monitoruje metriky výkonu databáze, škáluje ji na větší velikost výpočetního prostředku a vytvoří pravidlo upozornění na jednu z metrik výkonu.
+Tento ukázkový skript PowerShellu monitoruje metriky výkonu databáze, škáluje ji na větší velikost výpočetních prostředků a vytvoří pravidlo upozornění na jednu z metrik výkonu.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]

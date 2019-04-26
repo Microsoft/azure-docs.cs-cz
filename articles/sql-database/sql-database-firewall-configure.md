@@ -14,7 +14,7 @@ manager: craigg
 ms.date: 03/12/2019
 ms.openlocfilehash: 513836257a292069da709ad7a71e480f2b4d069d
 ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/13/2019
 ms.locfileid: "59549725"
@@ -251,7 +251,7 @@ Pokud se přístup ke službě Microsoft Azure SQL Database nechová podle oček
 
 - Potvrďte, že vaše podnikové síťové prostředí umožňuje příchozí komunikaci z rozsahů adres Compute IP (včetně rozsahů SQL) používají datová centra Microsoft Azure. Může být nutné přidat na seznam povolených tyto IP adresy, naleznete v tématu [Microsoft Azure Datacenter rozsahy IP adres](https://www.microsoft.com/download/details.aspx?id=41653)  
 - Rychlý start k vytvoření pravidla brány firewall na úrovni serveru IP, naleznete v tématu [vytvoření Azure SQL database](sql-database-single-database-get-started.md).
-- S připojováním k databázi SQL Azure z open source aplikací nebo aplikací třetích stran vám pomůžou [Ukázky kódu pro rychlý start klientů se službou SQL Database](https://msdn.microsoft.com/library/azure/ee336282.aspx).
+- S připojováním k databázi Azure SQL z open source aplikací nebo aplikací třetích stran vám pomůžou [Ukázky kódu pro rychlý start klientů se službou SQL Database](https://msdn.microsoft.com/library/azure/ee336282.aspx).
 - Informace o další porty, které budete muset otevřít, najdete v článku **SQL Database: Vnější vs. vnitřní** část [porty nad 1433 pro ADO.NET 4.5 a službu SQL Database](sql-database-develop-direct-route-ports-adonet-v12.md)
 - Přehled zabezpečení služby Azure SQL Database najdete v tématu [zabezpečení databáze](sql-database-security-overview.md)
 

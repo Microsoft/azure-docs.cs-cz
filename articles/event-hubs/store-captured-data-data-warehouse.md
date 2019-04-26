@@ -62,7 +62,7 @@ Následující části obsahují příkazy Azure CLI a Azure PowerShellu pro nas
 - Centrum událostí
 - Server SQL Azure
 - Uživatel SQL (a heslo)
-- Databáze SQL Azure
+- Databáze Azure SQL
 - Azure Storage 
 - Aplikace Azure Functions
 

@@ -59,7 +59,7 @@ Následující seznam obsahuje doporučení pro zajištění nejlepšího výkon
 - Zakažte během migrace automatické statistiky.
 - Rozdělte tabulky a indexy na oddíly.
 - Zrušte indexovaná zobrazení a po dokončení je znovu vytvořte.
-- Odeberte zřídka dotazovaná historická data do jiné databáze a migrujte je do samostatné databáze SQL Azure. Potom můžete historická data dotazovat pomocí [elastických dotazů](sql-database-elastic-query-overview.md).
+- Odeberte zřídka dotazovaná historická data do jiné databáze a migrujte je do samostatné databáze Azure SQL. Potom můžete historická data dotazovat pomocí [elastických dotazů](sql-database-elastic-query-overview.md).
 
 ### <a name="optimize-performance-after-the-migration-completes"></a>Optimalizace výkonu po dokončení migrace
 

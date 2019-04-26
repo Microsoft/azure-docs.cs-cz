@@ -160,7 +160,7 @@ Potom zobrazte seznam dostupných tříd služeb. Zobrazené třídy služeb jso
 ./svcat get classes
 ```
 
-Nakonec zobrazte seznam všech dostupných plánů služeb. Plány služeb jsou úrovně pro služby spravované Azure. Například plány pro Azure Database for MySQL mají rozsah od `basic50` pro úroveň Basic s 50 jednotkami přenosu dat (DTU) až po `standard800` pro úroveň Standard s 800 DTU.
+Nakonec zobrazte seznam všech dostupných plánů služeb. Plány služeb jsou úrovně služby pro služby spravované Azure. Například plány pro Azure Database for MySQL mají rozsah od `basic50` pro úroveň Basic s 50 jednotkami přenosu dat (DTU) až po `standard800` pro úroveň Standard s 800 DTU.
 
 ```azurecli-interactive
 ./svcat get plans
