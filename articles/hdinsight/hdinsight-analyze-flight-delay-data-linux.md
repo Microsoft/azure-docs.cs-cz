@@ -1,6 +1,6 @@
 ---
 title: 'Kurz: Provedení extrakce, transformace a načítání (ETL) operací s použitím Hive v HDInsight – Azure '
-description: Zjistěte, jak extrahovat data z nezpracované datové sady CSV, transformovat je pomocí Hivu ve službě HDInsight a pak transformovaná data načíst do databáze SQL Azure pomocí Apache Sqoopu.
+description: Zjistěte, jak extrahovat data z nezpracované datové sady CSV, transformovat je pomocí Hivu ve službě HDInsight a pak transformovaná data načíst do databáze Azure SQL pomocí Apache Sqoopu.
 services: hdinsight
 author: hrasheed-msft
 ms.reviewer: jasonh
@@ -11,7 +11,7 @@ ms.author: hrasheed
 ms.custom: H1Hack27Feb2017,hdinsightactive,mvc
 ms.openlocfilehash: b8a45f3014b3fd5d0f5592b3f9bd408fc37b387b
 ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 03/18/2019
 ms.locfileid: "57999950"
@@ -29,8 +29,8 @@ Tento kurz se zabývá následujícími úkony:
 > * Stažení ukázkových údajů o letech
 > * Nahrání dat do clusteru HDInsight
 > * Transformace dat pomocí Hivu
-> * Vytvoření tabulky v databázi SQL Azure
-> * Export dat do databáze SQL Azure pomocí Sqoopu
+> * Vytvoření tabulky v databázi Azure SQL
+> * Export dat do databáze Azure SQL pomocí Sqoopu
 
 
 Následující obrázek ukazuje obvyklý běh aplikace ETL.
@@ -43,7 +43,7 @@ Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https
 
 * **Cluster Hadoop s Linuxem ve službě HDInsight**. Zobrazit [začněte používat Apache Hadoop v HDInsight](hadoop/apache-hadoop-linux-tutorial-get-started.md) pokyny o tom, jak vytvořit nový cluster HDInsight se systémem Linux.
 
-* **Azure SQL Database**. Databázi SQL Azure použijete jako cílové úložiště dat. Pokud databázi SQL nemáte, přečtěte si téma [Vytvoření databáze SQL Azure na webu Azure Portal](../sql-database/sql-database-get-started.md).
+* **Azure SQL Database**. Databázi Azure SQL použijete jako cílové úložiště dat. Pokud databázi SQL nemáte, přečtěte si téma [Vytvoření databáze Azure SQL na webu Azure Portal](../sql-database/sql-database-get-started.md).
 
 * **Rozhraní příkazového řádku Azure**. Pokud ještě nemáte nainstalované Azure CLI, přečtěte si téma [Instalace Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest), kde najdete další postup.
 
@@ -207,7 +207,7 @@ V rámci úlohy Hive provedete import dat ze souboru .csv do tabulky Hive s náz
 
 ## <a name="create-a-sql-database-table"></a>Vytvoření tabulky databáze SQL
 
-V této části se předpokládá, že už máte vytvořenou databázi SQL Azure. Pokud ještě databázi SQL nemáte, vytvořte si ji podle pokynů v tématu [Vytvoření databáze SQL na webu Azure Portal](../sql-database/sql-database-get-started.md).
+V této části se předpokládá, že už máte vytvořenou databázi Azure SQL. Pokud ještě databázi SQL nemáte, vytvořte si ji podle pokynů v tématu [Vytvoření databáze Azure SQL na webu Azure Portal](../sql-database/sql-database-get-started.md).
 
 Pokud už máte databázi SQL, musíte získat název serveru. Název serveru můžete vyhledat na webu [Azure Portal](https://portal.azure.com) tak, že vyberete **Databáze SQL** a vyfiltrujete název databáze, kterou chcete použít. Název serveru se zobrazí ve sloupci **Název serveru**.
 
@@ -272,7 +272,7 @@ Pokud už máte databázi SQL, musíte získat název serveru. Název serveru m�
 
 ## <a name="export-data-to-sql-database-using-apache-sqoop"></a>Export dat do SQL database s použitím Apache Sqoop
 
-V předchozích částech jste zkopírovali transformovaná data do umístění `/tutorials/flightdelays/output`. V této části použijete Sqoop k exportu dat z umístění /tutorials/flightdelays/output do tabulky, kterou jste vytvořili v databázi SQL Azure. 
+V předchozích částech jste zkopírovali transformovaná data do umístění `/tutorials/flightdelays/output`. V této části použijete Sqoop k exportu dat z umístění /tutorials/flightdelays/output do tabulky, kterou jste vytvořili v databázi Azure SQL. 
 
 1. Pomocí následujícího příkazu ověřte, že má Sqoop vhled do vaší databáze SQL:
 

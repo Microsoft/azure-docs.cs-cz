@@ -14,7 +14,7 @@ ms.date: 01/12/2018
 ms.author: yexu
 ms.openlocfilehash: 41f8769aea841e05887feb6a44511cbf444a7acf
 ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 03/26/2019
 ms.locfileid: "58449160"
@@ -45,7 +45,7 @@ Tady jsou obvyklé kroky uceleného pracovního postupu pro přírůstkové nač
 1. **Počáteční načtení historických dat** (spouští se jednou):
     1. Povolte technologii Change Tracking ve zdrojové databázi Azure SQL.
     2. Získejte počáteční hodnotu SYS_CHANGE_VERSION v databázi Azure SQL jako základ pro zaznamenávání změněných dat.
-    3. Načtěte kompletní data z Azure SQL Database do Azure Blob Storage. 
+    3. Načtěte kompletní data z databáze Azure SQL do Azure Blob Storage. 
 2. **Přírůstkové načítání rozdílových dat podle plánu** (spouští se pravidelně po počátečním načtení dat):
     1. Získejte starou a novou hodnotu SYS_CHANGE_VERSION.
     3. Načtěte rozdílová data připojením primárních klíčů změněných řádků (mezi dvěma hodnotami SYS_CHANGE_VERSION) ze **sys.change_tracking_tables** k datům ve **zdrojové tabulce** a potom přesuňte rozdílová data do cíle.
@@ -207,7 +207,7 @@ V tomto kroku s datovou továrnou propojíte svůj účet služby Azure Storage.
 
 
 ### <a name="create-azure-sql-database-linked-service"></a>Vytvoření propojené služby Azure SQL Database
-V tomto kroku propojíte databázi SQL Azure s datovou továrnou.
+V tomto kroku propojíte databázi Azure SQL s datovou továrnou.
 
 1. Klikněte na **Připojení** a pak na **+ Nové**.
 2. V okně **Nová propojená služba** vyberte **Azure SQL Database** a klikněte na **Pokračovat**. 
@@ -215,7 +215,7 @@ V tomto kroku propojíte databázi SQL Azure s datovou továrnou.
 
     1. Do pole **Název** zadejte **AzureSqlDatabaseLinkedService**. 
     2. V poli **Název serveru** vyberte váš server SQL Azure.
-    4. V poli **Název databáze** vyberte vaši databázi SQL Azure. 
+    4. V poli **Název databáze** vyberte vaši databázi Azure SQL. 
     5. Do pole **Uživatelské jméno** zadejte jméno uživatele. 
     6. Do pole **Heslo** zadejte heslo pro tohoto uživatele. 
     7. Klikněte na **Test připojení** a otestujte připojení.
@@ -327,7 +327,7 @@ Ve složce `incchgtracking` kontejneru `adftutorial` uvidíte soubor s názvem `
 
 ![Výstupní soubor pro úplné kopírování](media/tutorial-incremental-copy-change-tracking-feature-portal/full-copy-output-file.png)
 
-Tento soubor by měl obsahovat data z databáze SQL Azure:
+Tento soubor by měl obsahovat data z databáze Azure SQL:
 
 ```
 1,aaaa,21
@@ -450,7 +450,7 @@ Ve složce `incchgtracking` kontejneru `adftutorial` uvidíte druhý soubor.
 
 ![Výstupní soubor pro přírůstkové kopírování](media/tutorial-incremental-copy-change-tracking-feature-portal/incremental-copy-output-file.png)
 
-Tento soubor by měl obsahovat jenom rozdílová data z databáze SQL Azure. Záznam s `U` je aktualizovaný řádek v databázi a `I` je přidaný řádek. 
+Tento soubor by měl obsahovat jenom rozdílová data z databáze Azure SQL. Záznam s `U` je aktualizovaný řádek v databázi a `I` je přidaný řádek. 
 
 ```
 1,update,10,2,U

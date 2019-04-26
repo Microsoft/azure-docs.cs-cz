@@ -14,7 +14,7 @@ manager: craigg
 ms.date: 04/12/2019
 ms.openlocfilehash: f0cff30f246bfeec528f440b507da9248ebbea9f
 ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/17/2019
 ms.locfileid: "59678594"
@@ -61,7 +61,7 @@ Výchozí době uchování databáze vytvořené využitím nákupní model zalo
 - Úrovně služeb Standard je 5 týdnů.
 - Úroveň Premium služby je 5 týdnů.
 
-#### <a name="vcore-based-purchasing-model"></a>Model nákupu na základě virtuálních jader
+#### <a name="vcore-based-purchasing-model"></a>Nákupní model založený na virtuálních jádrech
 
 Pokud používáte [nákupní model založený na virtuálních jádrech](sql-database-service-tiers-vcore.md), období uchování zálohy výchozí nastavení je 7 dnů (jednou, ve fondu a instanci databáze). Pro všechny databáze Azure SQL (jednoduché, ve fondu, a instance databáze, můžete [změnit období uchování zálohy 35 dnů](#how-to-change-the-pitr-backup-retention-period).
 

@@ -29,7 +29,7 @@ V tomto kurzu se naučíte:
 
 > [!div class="checklist"]
 > * Kontejnerizovat existující aplikaci pomocí sady Visual Studio
-> * Vytvoření databáze SQL Azure
+> * Vytvoření databáze Azure SQL
 > * Vytvořit registr kontejneru Azure
 > * Nasadit aplikaci Service Fabricu v Azure
 
@@ -265,7 +265,7 @@ V tomto kurzu jste se naučili:
 
 > [!div class="checklist"]
 > * Kontejnerizovat existující aplikaci pomocí sady Visual Studio
-> * Vytvoření databáze SQL Azure
+> * Vytvoření databáze Azure SQL
 > * Vytvořit registr kontejneru Azure
 > * Nasadit aplikaci Service Fabricu v Azure
 
