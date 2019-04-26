@@ -1,6 +1,6 @@
 ---
 title: Indexery pro procházení zdroje dat během indexování – vyhledávání Azure
-description: Procházejte databázi SQL Azure, službu Azure Cosmos DB nebo úložiště Azure, extrahujte prohledávatelná data a naplňte jimi index služby Azure Search.
+description: Procházejte databázi Azure SQL, službu Azure Cosmos DB nebo úložiště Azure, extrahujte prohledávatelná data a naplňte jimi index služby Azure Search.
 author: HeidiSteen
 manager: cgronlun
 services: search

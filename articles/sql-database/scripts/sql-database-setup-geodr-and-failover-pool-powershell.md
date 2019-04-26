@@ -1,5 +1,5 @@
 ---
-title: Příklad PowerShellu – Aktivní geografická replikace databáze SQL Azure ve fondu | Microsoft Docs
+title: Příklad PowerShellu – Aktivní geografická replikace databáze Azure SQL ve fondu | Microsoft Docs
 description: Ukázkový skript Azure Powershellu nastavit aktivní geografickou replikaci pro databázi ve fondu ve službě Azure SQL Database a převzetí služeb při selhání.
 services: sql-database
 ms.service: sql-database

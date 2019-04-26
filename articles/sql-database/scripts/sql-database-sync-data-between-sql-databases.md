@@ -1,6 +1,6 @@
 ---
-title: Příklad PowerShellu – Synchronizace mezi několika databázemi SQL Azure | Microsoft Docs
-description: Ukázkový skript Azure PowerShellu pro synchronizaci mezi několika databázemi SQL Azure
+title: Příklad PowerShellu – Synchronizace mezi několika databázemi Azure SQL | Microsoft Docs
+description: Ukázkový skript Azure PowerShellu pro synchronizaci mezi několika databázemi Azure SQL
 services: sql-database
 ms.service: sql-database
 ms.subservice: data-movement
@@ -21,7 +21,7 @@ ms.locfileid: "60387872"
 ---
 # <a name="use-powershell-to-sync-between-multiple-sql-databases"></a>Synchronizace mezi několika databázemi SQL pomocí PowerShellu
  
-Tento příklad PowerShellu konfiguruje Synchronizaci dat pro synchronizaci mezi několika databázemi SQL Azure.
+Tento příklad PowerShellu konfiguruje Synchronizaci dat pro synchronizaci mezi několika databázemi Azure SQL.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
