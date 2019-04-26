@@ -26,7 +26,7 @@
           href: sql-database-managed-instance-get-started.md
     - name: Konfigurace
       items:
-        - name: Pravidla brány firewall protokolu IP na úrovni serveru
+        - name: Pravidla firewallu protokolu IP na úrovni serveru
           href: sql-database-server-level-firewall-rule.md
         - name: Připojení klientského virtuálního počítače ke spravované instanci
           href: sql-database-managed-instance-configure-vm.md
@@ -112,27 +112,30 @@
       href: sql-database-resource-manager-samples.md
 - name: Koncepty
   items:
-    - name: Modely nákupu
+    - name: Nákupní modely
       items:
         - name: Přehled
           href: sql-database-purchase-models.md
         - name: Model na základě virtuálních jader
           href: sql-database-service-tiers-vcore.md
-        - name: Úrovně služeb DTU
+        - name: Úrovně služby DTU
           href: sql-database-service-tiers-dtu.md
+        - name: Bezserverová výpočetní úroveň
+          href: sql-database-serverless.md
         - name: Předplacení záložní kapacity
           href: sql-database-reserved-capacity.md
-        - name: Migrace z úrovně služeb Premium RS
+        - name: Migrace z úrovně služby Premium RS
           href: sql-database-service-tiers-prs.md
     - name: Výpočetní prostředky a úložiště
       items:
         - name: Přehled
           href: sql-database-service-tiers-general-purpose-business-critical.md
-        - name: Úrovně služeb Pro obecné účely / Standard
+          displayName: provisioned compute tier
+        - name: Úrovně služby Pro obecné účely / Standard
           href: sql-database-service-tier-general-purpose.md
-        - name: Úrovně služeb Pro důležité obchodní informace / Premium
+        - name: Úrovně služby Pro důležité obchodní informace / Premium
           href: sql-database-service-tier-business-critical.md
-        - name: Hyperškálování úrovně služeb
+        - name: Hyperškálování úrovně služby
           href: sql-database-service-tier-hyperscale.md
         - name: Nejčastější dotazy k hyperškálování
           href: sql-database-service-tier-hyperscale-faq.md
@@ -245,7 +248,7 @@
               href: sql-vulnerability-assessment.md
             - name: Rozšířená ochrana před internetovými útoky
               href: sql-database-threat-detection-overview.md
-        - name: Pravidla brány firewall protokolu IP na úrovni serveru
+        - name: Pravidla firewallu protokolu IP na úrovni serveru
           items:
             - name: Vytvoření a správa
               href: sql-database-firewall-configure.md

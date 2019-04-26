@@ -21,7 +21,7 @@ Azure SQL Database je relační databáze jako služba (DBaaS) pro obecné úče
 
 ## <a name="5-minute-quickstarts"></a>Zprovoznění během 5 minut
 
-Azure SQL Database umožňuje snadno provádět základní úlohy správy pomocí webu Azure Portal, rozhraní příkazového řádku Azure a prostředí Azure PowerShell. Naučte se provádět základní úlohy správy pomocí následujících ukázek rychlého zprovoznění:
+Azure SQL Database umožňuje snadno provádět základní úlohy správy pomocí webu Azure Portal, rozhraní příkazového řádku Azure a Azure PowerShellu. Naučte se provádět základní úlohy správy pomocí následujících ukázek rychlého zprovoznění:
 
 - [Azure Portal](/azure/sql-database/sql-database-single-database-get-started)
 - [Azure PowerShell](/azure/sql-database/sql-database-get-started-powershell)
