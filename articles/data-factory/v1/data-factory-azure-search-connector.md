@@ -100,13 +100,13 @@ Následující tabulka určuje, zda je nebo není podporováno typem dat Azure S
 
 | Azure Search datový typ | Podporované v Azure Search jímky |
 | ---------------------- | ------------------------------ |
-| Řetězec | Ano |
-| Datový typ Int32 | Ano |
+| String | Ano |
+| Int32 | Ano |
 | Int64 | Ano |
 | Double | Ano |
-| Logická hodnota | Ano |
+| Boolean | Ano |
 | DataTimeOffset | Ano |
-| Pole řetězců | Ne |
+| String Array | Ne |
 | GeographyPoint | Ne |
 
 ## <a name="json-example-copy-data-from-on-premises-sql-server-to-azure-search-index"></a>Příklad JSON: Kopírování dat z místního SQL serveru do indexu Azure Search
