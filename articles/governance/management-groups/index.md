@@ -4,15 +4,15 @@ description: Další informace o skupinách pro správu, fungování jejich opr�
 author: rthorn17
 ms.assetid: 482191ac-147e-4eb6-9655-c40c13846672
 ms.service: azure-resource-manager
-ms.date: 04/17/2019
+ms.date: 04/22/2019
 ms.author: rithorn
 ms.topic: overview
-ms.openlocfilehash: 157701e826d6a281a60393e1ec270cf061be8214
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: ceb606f2243ef723866e485c6580a6323c1c92ec
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59699377"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60874322"
 ---
 # <a name="organize-your-resources-with-azure-management-groups"></a>Uspořádání vašich prostředků s využitím skupin pro správu Azure
 
@@ -47,9 +47,8 @@ Tato kořenová skupina pro správu je integrovaná do hierarchie tak, aby pod n
 
 ### <a name="important-facts-about-the-root-management-group"></a>Důležité informace o kořenových skupinách pro správu
 
-- Název a ID kořenové skupiny pro správu jsou ve výchozím nastavení dané. Zobrazovaný název je možné kdykoli aktualizovat, aby se na webu Azure Portal zobrazoval jinak. Pokud chcete [změnit název](manage.md#change-the-name-of-a-management-group), musí váš účet mít pro příslušnou kořenovou skupinu pro správu roli Vlastník nebo Přispěvatel.
-  - Název bude „Kořenová skupina tenanta“.
-  - ID bude ID služby Azure Active Directory.
+- Zobrazovaný název kořenové skupiny pro správu ve výchozím nastavení je **Kořenová skupina tenanta**. ID je ID služby Azure Active Directory.
+- Pokud chcete tento zobrazovaný název změnit, musí váš účet mít pro příslušnou kořenovou skupinu pro správu roli Vlastník nebo Přispěvatel. Postup při změně názvu najdete v tématu věnovaném [změně názvu skupiny pro správu](manage.md#change-the-name-of-a-management-group).
 - Kořenová skupina pro správu se na rozdíl od ostatních skupin pro správu nedá přesunout ani odstranit.  
 - Všechna předplatná a skupiny pro správu v rámci adresáře spadají do jedné kořenové skupina pro správu.
   - Všechny prostředky v adresáři spadají do kořenové skupiny pro správu, která umožňuje globální správu.

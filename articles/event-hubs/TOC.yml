@@ -129,7 +129,7 @@
           href: event-hubs-messaging-exceptions.md
     - name: Použití bran firewall
       href: event-hubs-ip-filtering.md
-    - name: Použití koncových bodů služby virtuální sítě
+    - name: Použití koncových bodů služby pro virtuální síť
       href: event-hubs-service-endpoints.md
     - name: Automatické škálování jednotek propustnosti
       href: event-hubs-auto-inflate.md
