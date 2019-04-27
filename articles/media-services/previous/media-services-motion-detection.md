@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 03/19/2019
 ms.author: milanga;juliako;
 ms.openlocfilehash: e0b083cba575f4d1c0eb19afb76fca29431ae75e
-ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58259090"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61463527"
 ---
 # <a name="detect-motions-with-azure-media-analytics"></a>Zjištění mají s Azure Media Analytics
 ## <a name="overview"></a>Přehled
@@ -94,9 +94,9 @@ Následující tabulka popisuje prvky výstupního souboru JSON.
 
 | Element | Popis |
 | --- | --- |
-| Verze |To se vztahuje na verzi rozhraní API pro Video. Aktuální verze je 2. |
+| Version |To se vztahuje na verzi rozhraní API pro Video. Aktuální verze je 2. |
 | Timescale |"Značky" za sekundu videa. |
-| Posun |Posun času pro časová razítka v "impulzech." Ve verzi 1.0 rozhraní API pro Video bude vždy 0. V budoucnu scénáře, které podporujeme, tato hodnota se může změnit. |
+| Offset |Posun času pro časová razítka v "impulzech." Ve verzi 1.0 rozhraní API pro Video bude vždy 0. V budoucnu scénáře, které podporujeme, tato hodnota se může změnit. |
 | Framerate |Počet snímků ve videu za sekundu. |
 | Šířka, Výška |Odkazuje na šířku a výšku v pixelech. |
 | Start |Časové razítko zahájení v "impulzech". |

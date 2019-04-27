@@ -7,11 +7,11 @@ ms.service: mysql
 ms.topic: conceptual
 ms.date: 02/28/2018
 ms.openlocfilehash: 6d6f24475497382dd9e04d3335fb89d6f0bdd514
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57528674"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61459438"
 ---
 # <a name="create-and-manage-azure-database-for-mysql-server-using-azure-portal"></a>Vytvoření a správa Azure Database for MySQL pomocí webu Azure portal
 Toto téma popisuje, jak můžete rychle vytvořit nový server Azure Database for MySQL. Obsahuje také informace o tom, jak spravovat server s využitím webu Azure portal. Správa serveru obsahuje zobrazení Podrobnosti o serveru a databáze, resetuje se heslo, škálování prostředků a odstraněním serveru.

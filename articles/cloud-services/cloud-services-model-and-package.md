@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 07/05/2017
 ms.author: jeconnoc
 ms.openlocfilehash: 9c9f7dfd9ecbf085da19fc010e497caef8c18629
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58917307"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61432632"
 ---
 # <a name="what-is-the-cloud-service-model-and-how-do-i-package-it"></a>Jaký je model cloudové služby a jak ho balíček?
 Cloudové služby je vytvořen z tři komponenty, definice služby *(.csdef)*, konfigurace služby *(.cscfg)* a balíček služby *(.cspkg)*. Oba **ServiceDefinition.csdef** a **ServiceConfig.cscfg** soubory jsou založené na XML a popisují strukturu cloudové služby a jak je nakonfigurován; nazývají modelu. **ServicePackage.cspkg** je soubor zip, který je generován z **ServiceDefinition.csdef** a mimo jiné obsahuje všechny požadované závislosti založené na binární soubor. Azure vytvoří cloudovou službu z obou **ServicePackage.cspkg** a **ServiceConfig.cscfg**.

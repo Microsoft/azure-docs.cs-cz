@@ -16,11 +16,11 @@ ms.date: 03/27/2019
 ms.author: cephalin
 ms.custom: seodec18
 ms.openlocfilehash: c0dde4c59c2fe9cde23a9f88c69f3e2673942812
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59546807"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62117675"
 ---
 # <a name="create-a-php-app-in-app-service-on-linux"></a>Vytvoření aplikace v PHP ve službě App Service v Linuxu
 

@@ -1,5 +1,5 @@
 ---
-title: 'Kurz: Povolení vlastní doménu s protokolem SSL na statický web využívající Azure CDN – Azure Storage'
+title: 'Kurz: Povolit vlastní doménu s protokolem SSL na statický web využívající Azure CDN – Azure Storage'
 description: Zjistěte, jak nakonfigurovat vlastní doménu hostoval statický Web.
 services: storage
 author: tamram
@@ -9,11 +9,11 @@ ms.date: 12/07/2018
 ms.author: tamram
 ms.custom: seodec18
 ms.openlocfilehash: 6ccd33805fe4b62d3456121321edc4eec3bff2e5
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53109445"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61427506"
 ---
 # <a name="tutorial-use-azure-cdn-to-enable-a-custom-domain-with-ssl-for-a-static-website"></a>Kurz: Použití Azure CDN umožňuje vlastní doménu s protokolem SSL pro statický Web
 
@@ -29,7 +29,7 @@ Ve druhé části této série se naučíte:
 
 ## <a name="prerequisites"></a>Požadavky
 
-Než začnete tento kurz, proveďte první částí, [kurz: hostování statického webu ve službě Blob Storage](storage-blob-static-website-host.md). 
+Než začnete tento kurz, proveďte první částí, [kurzu: Hostování statického webu ve službě Blob Storage](storage-blob-static-website-host.md). 
 
 ## <a name="sign-in-to-the-azure-portal"></a>Přihlášení k webu Azure Portal
 

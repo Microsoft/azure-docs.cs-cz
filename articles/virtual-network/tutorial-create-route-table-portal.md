@@ -4,8 +4,8 @@ titlesuffix: Azure Virtual Network
 description: V tomto kurzu zjistíte, jak směrovat síťový provoz s využitím směrovací tabulky pomocí webu Azure Portal.
 services: virtual-network
 documentationcenter: virtual-network
-author: jimdial
-manager: jeconnoc
+author: KumudD
+manager: twooley
 editor: ''
 tags: azure-resource-manager
 Customer intent: I want to route traffic from one subnet, to a different subnet, through a network virtual appliance.
@@ -16,14 +16,14 @@ ms.topic: tutorial
 ms.tgt_pltfrm: virtual-network
 ms.workload: infrastructure
 ms.date: 12/12/2018
-ms.author: jdial
+ms.author: kumud
 ms.custom: mvc
 ms.openlocfilehash: 855adccf036f731de12810fe0f5287186048ddb0
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
-ms.translationtype: MT
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55095953"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62098637"
 ---
 # <a name="tutorial-route-network-traffic-with-a-route-table-using-the-azure-portal"></a>Kurz: Směrování síťového provozu s využitím směrovací tabulky pomocí webu Azure portal
 
@@ -52,12 +52,12 @@ Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 
 1. V **vytvořit směrovací tabulku**, zadejte nebo vyberte tyto informace:
 
-    | Nastavení | Value |
+    | Nastavení | Hodnota |
     | ------- | ----- |
-    | Name | Zadejte *myRouteTablePublic*. |
+    | Název | Zadejte *myRouteTablePublic*. |
     | Předplatné | Vyberte své předplatné. |
     | Skupina prostředků | Vyberte **vytvořit nový**, zadejte *myResourceGroup*a vyberte *OK*. |
-    | Umístění | Ponechte výchozí nastavení **USA – východ**.
+    | Location | Ponechte výchozí nastavení **USA – východ**.
     | Šíření tras protokolu BGP | Ponechte výchozí nastavení **povoleno**. |
 
 1. Vyberte **Vytvořit**.
@@ -74,7 +74,7 @@ Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 
 1. V **trasy přidat**, zadejte nebo vyberte tyto informace:
 
-    | Nastavení | Value |
+    | Nastavení | Hodnota |
     | ------- | ----- |
     | Název trasy | Zadejte *ToPrivateSubnet*. |
     | Předpona adresy | Zadejte *10.0.1.0/24*. |
@@ -93,13 +93,13 @@ Než budete moct přidružit směrovací tabulky k podsíti, budete muset vytvo�
 
 1. V **vytvořit virtuální síť**, zadejte nebo vyberte tyto informace:
 
-    | Nastavení | Value |
+    | Nastavení | Hodnota |
     | ------- | ----- |
-    | Name | Enter *myVirtualNetwork*. |
+    | Název | Enter *myVirtualNetwork*. |
     | Adresní prostor | Zadejte *10.0.0.0/16*. |
     | Předplatné | Vyberte své předplatné. |
     | Skupina prostředků | Vyberte ***vybrat existující*** > **myResourceGroup**. |
-    | Umístění | Ponechte výchozí nastavení **USA – východ**. |
+    | Location | Ponechte výchozí nastavení **USA – východ**. |
     | Podsíť - Name | Zadejte *veřejné*. |
     | Podsíť – Rozsah adres | Zadejte *10.0.0.0/24*. |
 
@@ -117,18 +117,18 @@ Než budete moct přidružit směrovací tabulky k podsíti, budete muset vytvo�
 
 1. V **přidat podsíť**, zadejte tyto informace:
 
-    | Nastavení | Value |
+    | Nastavení | Hodnota |
     | ------- | ----- |
-    | Name | Zadejte *privátní*. |
+    | Název | Zadejte *privátní*. |
     | Adresní prostor | Zadejte *10.0.1.0/24*. |
 
 1. Pro ostatní nastavení nechte zvolené výchozí hodnoty a vyberte **OK**.
 
 1. Vyberte **+ podsíť** znovu. Tentokrát, zadejte tyto informace:
 
-    | Nastavení | Value |
+    | Nastavení | Hodnota |
     | ------- | ----- |
-    | Name | Enter *DMZ*. |
+    | Název | Enter *DMZ*. |
     | Adresní prostor | Zadejte *10.0.2.0/24*. |
 
 1. Čas poslední, jako jsou, ponechejte zbývající výchozí hodnoty a vyberte **OK**.
@@ -151,7 +151,7 @@ Síťová virtuální zařízení se softwarem Oracle, které pomáhají s síť
 
 1. V **vytvořit virtuální počítač – základní informace o**, zadejte nebo vyberte tyto informace:
 
-    | Nastavení | Value |
+    | Nastavení | Hodnota |
     | ------- | ----- |
     | **PODROBNOSTI O PROJEKTU** | |
     | Předplatné | Vyberte své předplatné. |
@@ -179,7 +179,7 @@ Síťová virtuální zařízení se softwarem Oracle, které pomáhají s síť
 
 1. V **vytvoření virtuálního počítače – sítě**, vyberte tyto informace:
 
-    | Nastavení | Value |
+    | Nastavení | Hodnota |
     | ------- | ----- |
     | Virtuální síť | Ponechte výchozí nastavení **myVirtualNetwork**. |
     | Podsíť | Vyberte **DMZ (10.0.2.0/24)**. |
@@ -191,9 +191,9 @@ Síťová virtuální zařízení se softwarem Oracle, které pomáhají s síť
 
 1. V **vytvořit účet úložiště**, zadejte nebo vyberte tyto informace:
 
-    | Nastavení | Value |
+    | Nastavení | Hodnota |
     | ------- | ----- |
-    | Name | Zadejte *mynvastorageaccount*. |
+    | Název | Zadejte *mynvastorageaccount*. |
     | Account kind (Druh účtu) | Ponechte výchozí nastavení **úložiště (verze 1 pro obecné účely)**. |
     | Výkon | Ponechte výchozí nastavení **standardní**. |
     | Replikace | Ponechte výchozí nastavení **místně redundantní úložiště (LRS)**.
@@ -230,7 +230,7 @@ Vytvoření veřejné virtuální počítač a privátní virtuální počítač
 
 Proveďte kroky 1 až 12 z [vytvoření síťového virtuálního zařízení](#create-an-nva). Používat většinu stejné nastavení. Tyto hodnoty jsou ty, které musí být jiné:
 
-| Nastavení | Value |
+| Nastavení | Hodnota |
 | ------- | ----- |
 | **VEŘEJNÉ VIRTUÁLNÍ POČÍTAČ** | |
 | ZÁKLADY |  |

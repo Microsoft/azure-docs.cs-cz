@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 02/05/2019
 ms.author: sedusch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: d4798f8c3e262129135a6677ccf90dc0fb3be7f2
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
-ms.translationtype: HT
+ms.openlocfilehash: 097b5e8ee69d945e0a9e24ba1c62b0ae82dd896b
+ms.sourcegitcommit: a95dcd3363d451bfbfea7ec1de6813cad86a36bb
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "59999531"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62732413"
 ---
 # <a name="azure-virtual-machines-planning-and-implementation-for-sap-netweaver"></a>Azure Virtual Machines, plánování a implementace SAP NetWeaver
 
@@ -451,7 +451,11 @@ Tento scénář je mezi různými místy scénář s mnoha možných nasazení v
 >
 > Důvod pro tato omezení je požadavkem pro vysoce výkonné sítě s nízkou latencí v rámci jednoho systému SAP, zejména mezi instancemi aplikace a systém DBMS vrstvy systému SAP.
 >
->
+> Speciální plánování systémů a oblastí se musí vyskytovat při použití více systémů SAP, které jsou vysoce integrované. Ujistěte se, že při nasazování těchto systémů co nejblíže k sobě navzájem kvůli minimalizaci latence sítě. Příklady vysoce integrovaných systémů SAP jsou:
+> * Čtení dat ze systémů SAP OLTP, jako je ERP a CRM nebo SRM; SAP BW nebo
+> * SAP SLT používá k replikaci dat mezi několika systémy SPA nebo dokonce i mezi SAPEM a mimo systém SAP systémů: nebo
+> * SAP s/4 připojení k systému SAP ERP; atd.
+
 
 ### <a name="supported-os-and-database-releases"></a>Podporované operační systém a verze databáze
 * Serverového softwaru Microsoftu pro služby virtuálního počítače Azure je uvedené v tomto článku nepodporuje: <https://support.microsoft.com/kb/2721672>.

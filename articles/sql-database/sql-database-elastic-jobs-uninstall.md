@@ -13,11 +13,11 @@ ms.reviewer: ''
 manager: craigg
 ms.date: 12/04/2018
 ms.openlocfilehash: 12f923724616378a6ea6c83a947bd5362840a697
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57768860"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61435389"
 ---
 # <a name="uninstall-elastic-database-jobs-components"></a>Odinstalovat součásti úlohy elastické databáze
 

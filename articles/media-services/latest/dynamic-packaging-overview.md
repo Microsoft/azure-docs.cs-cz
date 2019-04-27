@@ -11,14 +11,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/25/2019
+ms.date: 04/21/2019
 ms.author: juliako
-ms.openlocfilehash: c9254c8dd629230a549dd95aba9afbd932746007
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: MT
+ms.openlocfilehash: 90af9d40f797e493696d52e4cd744b99e3b57911
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58886450"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62104118"
 ---
 # <a name="dynamic-packaging"></a>Dynamické balení
 
@@ -73,7 +73,7 @@ Tady jsou kroky pro pracovní postup živého streamování:
 
 Následující diagram znázorňuje živé streamování s dynamickým vytvářením paketů pracovního postupu.
 
-![Předávací](./media/live-streaming/pass-through.svg)
+![Průchozí](./media/live-streaming/pass-through.svg)
 
 ## <a name="delivery-protocols"></a>Doručovací protokoly
 
@@ -197,6 +197,10 @@ Dynamické filtrování se používá k řízení počet stop, formáty, přenos
 
 > [!NOTE]
 > Aktuálně nemůžete spravovat prostředky v3 pomocí webu Azure Portal. Použijte rozhraní [REST API](https://aka.ms/ams-v3-rest-ref), [rozhraní příkazového řádku](https://aka.ms/ams-v3-cli-ref) nebo některou z podporovaných sad [SDK](developers-guide.md).
+
+## <a name="provide-feedback"></a>Poskytnutí zpětné vazby
+
+Podívejte se [komunita Azure Media Services](media-services-community.md) článek a zobrazit různé způsoby můžete klást otázky, poskytnout zpětnou vazbu a aktualizace o Media Services.
 
 ## <a name="next-steps"></a>Další postup
 

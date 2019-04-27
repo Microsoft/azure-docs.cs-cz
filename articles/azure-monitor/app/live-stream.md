@@ -10,15 +10,15 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 01/28/2019
+ms.date: 04/22/2019
 ms.reviewer: sdash
 ms.author: mbullwin
-ms.openlocfilehash: 588b8b11a02551a790145aafb013759699004267
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: bc85de0c8ec89ea88d2bae8e3f226da7d3163f53
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59009961"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62115322"
 ---
 # <a name="live-metrics-stream-monitor--diagnose-with-1-second-latency"></a>Live Metrics Stream: Monitorování a Diagnostika s latencí 1 sekundu
 
@@ -50,10 +50,13 @@ Live Metrics Stream můžete:
 
 4. [Zabezpečený kanál ovládací prvek](#secure-the-control-channel) používáte může být citlivá data, jako jsou jména zákazníků v svoje filtry.
 
+### <a name="nodejs"></a>Node.js
+
+Použití Live Metrics s Node.js, je nutné aktualizovat na verzi 1,30 nebo větší sady SDK. Ve výchozím nastavení je zakázána Live Metrics v SDK pro Node.js. Chcete-li přidat Live Metrics `setSendLiveMetrics(true)` do vaší [metody konfigurace](https://github.com/Microsoft/ApplicationInsights-node.js#configuration) jako inicializujte sadu SDK.
+
 ### <a name="no-data-check-your-server-firewall"></a>Žádná data? Zkontrolujte bránu firewall serveru
 
 Zkontrolujte [výchozí porty pro Live Metrics Stream](../../azure-monitor/app/ip-addresses.md#outgoing-ports) jsou otevřeny v bráně firewall vašich serverů. 
-
 
 ## <a name="how-does-live-metrics-stream-differ-from-metrics-explorer-and-analytics"></a>Jak Live Metrics Stream se liší od Průzkumníka metrik a Analytics?
 
@@ -65,7 +68,6 @@ Zkontrolujte [výchozí porty pro Live Metrics Stream](../../azure-monitor/app/i
 |Free|Neexistuje žádné poplatky za data Live Stream|Podléhají [ceny](../../azure-monitor/app/pricing.md)
 |Vzorkování|Všechny vybrané metriky a čítače přenosu. Chyby a trasování zásobníku jsou vzorkovány. TelemetryProcessors se nepoužijí.|Události mohou být [vzorkováno](../../azure-monitor/app/api-filtering-sampling.md)|
 |Řídicí kanál|Signály ovládací prvek filtru se odesílají do sady SDK. Doporučujeme, abyste že zabezpečení tohoto kanálu.|Komunikace je jednosměrná k portálu|
-
 
 ## <a name="select-and-filter-your-metrics"></a>Výběr a filtrování metriky
 

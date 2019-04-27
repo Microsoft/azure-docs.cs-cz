@@ -13,11 +13,11 @@ ms.topic: conceptual
 ms.date: 12/20/2018
 ms.author: jingwang
 ms.openlocfilehash: 86dcd39ad7b9f1e207e9254ec72698db3998bbd6
-ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54320476"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61400470"
 ---
 # <a name="copy-data-from-mongodb-using-azure-data-factory"></a>Kopírování dat z MongoDB pomocí Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -60,7 +60,7 @@ Pro MongoDB propojené služby jsou podporovány následující vlastnosti:
 | databaseName |Název databáze MongoDB, které chcete získat přístup. |Ano |
 | authenticationType. | Typ ověřování používaný pro připojení k databázi MongoDB.<br/>Povolené hodnoty jsou: **Základní**, a **anonymní**. |Ano |
 | uživatelské jméno |Uživatelský účet pro přístup k MongoDB. |Ano (Pokud se používá základní ověřování). |
-| heslo |Heslo pro tohoto uživatele. Označte toto pole jako SecureString bezpečně uložit ve službě Data Factory nebo [odkazovat tajného klíče do služby Azure Key Vault](store-credentials-in-key-vault.md). |Ano (Pokud se používá základní ověřování). |
+| password |Heslo pro tohoto uživatele. Označte toto pole jako SecureString bezpečně uložit ve službě Data Factory nebo [odkazovat tajného klíče do služby Azure Key Vault](store-credentials-in-key-vault.md). |Ano (Pokud se používá základní ověřování). |
 | authSource |Název databáze MongoDB, kterou chcete použít ke kontrole přihlašovacích údajů pro ověřování. |Ne. Pro základní ověřování výchozí hodnota je používat účet správce a databáze určená vlastnost databaseName. |
 | enableSsl | Určuje, zda jsou šifrované připojení k serveru pomocí SSL. Výchozí hodnota je false.  | Ne |
 | allowSelfSignedServerCert | Určuje, jestli se má povolit certifikáty podepsané svým držitelem ze serveru. Výchozí hodnota je false.  | Ne |
@@ -176,16 +176,16 @@ Při kopírování dat z MongoDB, se používají následující mapování z Mo
 
 | Datový typ MongoDB | Data factory dočasné datový typ |
 |:--- |:--- |
-| Binární hodnota |Byte] |
-| Logická hodnota |Logická hodnota |
+| Binární hodnota |Byte[] |
+| Boolean |Boolean |
 | Datum |DateTime |
 | NumberDouble |Double |
-| NumberInt |Datový typ Int32 |
+| NumberInt |Int32 |
 | NumberLong |Int64 |
-| ObjectID |Řetězec |
-| Řetězec |Řetězec |
+| ObjectID |String |
+| Řetězec |String |
 | UUID |Guid |
-| Objekt |Renormalized do sloučit sloupce s "_" jako vnořené oddělovač |
+| Object |Renormalized do sloučit sloupce s "_" jako vnořené oddělovač |
 
 > [!NOTE]
 > Další informace o podpoře pro pole pomocí virtuální tabulky, najdete v tématu [podporu pro komplexní typy s použitím virtuální tabulky](#support-for-complex-types-using-virtual-tables) oddílu.

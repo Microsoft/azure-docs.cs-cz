@@ -14,11 +14,11 @@ ms.date: 05/15/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 4ff7f92d1d13966be5d17f37210bef961f64faf2
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58084602"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61462381"
 ---
 # <a name="copy-data-to-or-from-oracle-on-premises-by-using-azure-data-factory"></a>Kopírování dat do nebo z Oracle místní pomocí služby Azure Data Factory
 
@@ -104,7 +104,7 @@ Následující tabulka popisuje elementy JSON, které jsou specifické pro Oracl
 | --- | --- | --- |
 | type |**Typ** musí být vlastnost nastavena na **OnPremisesOracle**. |Ano |
 | driverType | Určete, který ovladač určený ke kopírování dat z nebo do databáze Oracle. Povolené hodnoty jsou **Microsoft** a **ODP** (výchozí). Zobrazit [podporované verze a instalace](#supported-versions-and-installation) pro podrobnosti o ovladači. | Ne |
-| připojovací řetězec | Zadejte informace potřebné pro připojení k instanci databáze Oracle **connectionString** vlastnost. | Ano |
+| connectionString | Zadejte informace potřebné pro připojení k instanci databáze Oracle **connectionString** vlastnost. | Ano |
 | gatewayName | Název brány, který se používá pro připojení k místnímu serveru Oracle. |Ano |
 
 **Příklad: Pomocí ovladače Microsoft**
@@ -181,7 +181,7 @@ V aktivitě kopírování, pokud je zdroj **OracleSource** typu, jsou k dispozic
 | Vlastnost | Popis | Povolené hodnoty | Požaduje se |
 | --- | --- | --- | --- |
 | writeBatchTimeout |Doba čekání pro dávku vložte na dokončení před vypršením časového limitu operace. |**timespan**<br/><br/> Příklad: 00:30:00 (30 minut) |Ne |
-| WriteBatchSize |Vloží data do tabulky SQL, když velikost vyrovnávací paměti dosáhne hodnoty **writeBatchSize**. |Celé číslo (počet řádků) |Ne (výchozí: 100) |
+| writeBatchSize |Vloží data do tabulky SQL, když velikost vyrovnávací paměti dosáhne hodnoty **writeBatchSize**. |Celé číslo (počet řádků) |Ne (výchozí: 100) |
 | sqlWriterCleanupScript |Určuje dotaz pro aktivitu kopírování ke spuštění tak, aby se vyčistit data určitý řez. |Příkaz dotazu. |Ne |
 | sliceIdentifierColumnName |Určuje název sloupce pro aktivitu kopírování k vyplnění s identifikátorem automaticky generované řez. Hodnota pro **sliceIdentifierColumnName** se používá k vyčištění dat určitý řez, kdy se znovu spustit. |Název sloupce, který má datový typ sloupce **binary(32)**. |Ne |
 

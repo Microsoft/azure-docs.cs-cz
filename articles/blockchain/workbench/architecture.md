@@ -11,11 +11,11 @@ ms.service: azure-blockchain
 ms.reviewer: zeyadr
 manager: femila
 ms.openlocfilehash: 83c5e1405c402a1c6c98f9dbcaaf74891eb75e6d
-ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54330632"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61437752"
 ---
 # <a name="azure-blockchain-workbench-architecture"></a>Architektura služby Azure Blockchain Workbench
 
@@ -99,7 +99,7 @@ Události zahrnují informace, které jsou relevantní pro jednotlivce a systém
 
 Například SQL příjemce sleduje události, je využívá a naplní databázi SQL s hodnotách zahrnutých. Kopie umožňuje opětovnému vytvoření repliky ve řetězu dat v úložišti mimo řetězec.
 
-## <a name="azure-sql-database"></a>Databáze SQL Azure
+## <a name="azure-sql-database"></a>Databáze Azure SQL
 
 Azure SQL database, připojené k Blockchain Workbench ukládá definice kontraktu, konfigurace metadat a přístupná pro SQL repliku dat uložených v blockchainu. Tato data můžete snadno být dotazována, vizualizovat nebo analyzovaným přímý přístup k databázi. Vývojářům a dalším uživatelům můžete použít databázi pro vytváření sestav, analytics nebo jiné datově orientovaných integrace. Uživatelům například můžete vizualizovat data transakcí pomocí Power BI.
 

@@ -13,11 +13,11 @@ ms.reviewer: sstein
 manager: craigg
 ms.date: 01/25/2019
 ms.openlocfilehash: 59e0e4cf82af9851dacf3ec030575ed392571331
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59523762"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61475809"
 ---
 # <a name="use-transact-sql-t-sql-to-create-and-manage-elastic-database-jobs"></a>Použití příkazů jazyka Transact-SQL (T-SQL) k vytvoření a správa Elastických úloh databáze
 
@@ -1213,12 +1213,12 @@ Zobrazí historii spuštění úlohy.
 
 |Název sloupce|   Typ dat   |Popis|
 |---------|---------|---------|
-|**job_execution_id**   |UniqueIdentifier|  Jedinečné ID instance provádění úlohy.
+|**job_execution_id**   |uniqueidentifier|  Jedinečné ID instance provádění úlohy.
 |**hodnotu job_name**   |nvarchar(128)  |Název úlohy.
-|**job_id** |UniqueIdentifier|  Jedinečné ID úlohy.
+|**job_id** |uniqueidentifier|  Jedinečné ID úlohy.
 |**job_version**    |int    |Verze úlohy (automaticky aktualizuje pokaždé, když se upraví úlohy).
 |**step_id**    |int|   (Pro tuto úlohu) Jedinečný identifikátor pro krok. Hodnota NULL znamená, že to je provádění nadřazené úlohy.
-|**is_active**| Bit |Určuje, zda informace jsou aktivní nebo neaktivní. 1 označuje aktivní úlohy a 0 označuje neaktivní.
+|**is_active**| bit |Určuje, zda informace jsou aktivní nebo neaktivní. 1 označuje aktivní úlohy a 0 označuje neaktivní.
 |**lifecycle**| nvarchar(50)|Hodnotu označující stav úlohy: 'Vytvořit', v průběhu, 'se nezdařil., "Bylo úspěšné", "Bylo přeskočeno", "SucceededWithSkipped"|
 |**create_time**|   datetime2(7)|   Datum a čas vytvoření úlohy.
 |**start_time** |datetime2(7)|  Datum a čas spuštění úlohy spuštění. Hodnota NULL, pokud úloha ještě nebyla spuštěna.
@@ -1227,7 +1227,7 @@ Zobrazí historii spuštění úlohy.
 |**current_attempt_start_time** |datetime2(7)|  Datum a čas spuštění úlohy spuštění. Hodnota NULL znamená, že to je provádění nadřazené úlohy.
 |**last_message**   |nvarchar(max)| Zpráva historie úloh nebo krok. 
 |**target_type**|   nvarchar(128)   |Typ cílové databázi nebo kolekci databází, včetně všech databází serveru, všechny databáze v Elastickém fondu nebo v databázi. Valid values for target_type are ‘SqlServer’, ‘SqlElasticPool’ or ‘SqlDatabase’. Hodnota NULL znamená, že to je provádění nadřazené úlohy.
-|**target_id**  |UniqueIdentifier|  Jedinečné ID člena cílové skupiny.  Hodnota NULL znamená, že to je provádění nadřazené úlohy.
+|**target_id**  |uniqueidentifier|  Jedinečné ID člena cílové skupiny.  Hodnota NULL znamená, že to je provádění nadřazené úlohy.
 |**target_group_name**  |nvarchar(128)  |Název cílové skupiny. Hodnota NULL znamená, že to je provádění nadřazené úlohy.
 |**target_server_name**|    nvarchar(256)|  Název databáze SQL serveru, obsažené v cílové skupině. Zadat jenom v případě target_type – je "Systému SQL Server". Hodnota NULL znamená, že to je provádění nadřazené úlohy.
 |**target_database_name**   |nvarchar(128)| Název databáze, které jsou obsaženy v cílové skupině. Zadat, jenom když target_type – je "SqlDatabase". Hodnota NULL znamená, že to je provádění nadřazené úlohy.
@@ -1242,7 +1242,7 @@ Zobrazí všechny úlohy.
 |Název sloupce|   Typ dat|  Popis|
 |------|------|-------|
 |**hodnotu job_name**|  nvarchar(128)   |Název úlohy.|
-|**job_id**|    UniqueIdentifier    |Jedinečné ID úlohy.|
+|**job_id**|    uniqueidentifier    |Jedinečné ID úlohy.|
 |**job_version**    |int    |Verze úlohy (automaticky aktualizuje pokaždé, když se upraví úlohy).|
 |**description**    |nvarchar(512)| Popis pro úlohu. povolené bit označuje, zda je povoleno úlohy. 1 znamená povolené úlohy a 0 znamená zakázané úlohy.|
 |**schedule_interval_type** |nvarchar(50)   |Hodnota určující, kdy úloha má být provedena: "Po", 'Minuty', 'Hodiny', ' dnů","Týden","měsíců.
@@ -1260,7 +1260,7 @@ Zobrazí všechny verze úlohy.
 |Název sloupce|   Typ dat|  Popis|
 |------|------|-------|
 |**hodnotu job_name**|  nvarchar(128)   |Název úlohy.|
-|**job_id**|    UniqueIdentifier    |Jedinečné ID úlohy.|
+|**job_id**|    uniqueidentifier    |Jedinečné ID úlohy.|
 |**job_version**    |int    |Verze úlohy (automaticky aktualizuje pokaždé, když se upraví úlohy).|
 
 
@@ -1273,7 +1273,7 @@ Zobrazí všechny kroky v aktuální verzi každou úlohu.
 |Název sloupce    |Typ dat| Popis|
 |------|------|-------|
 |**hodnotu job_name**   |nvarchar(128)| Název úlohy.|
-|**job_id** |UniqueIdentifier   |Jedinečné ID úlohy.|
+|**job_id** |uniqueidentifier   |Jedinečné ID úlohy.|
 |**job_version**|   int|    Verze úlohy (automaticky aktualizuje pokaždé, když se upraví úlohy).|
 |**step_id**    |int    |(Pro tuto úlohu) Jedinečný identifikátor pro krok.|
 |**STEP_NAME**  |nvarchar(128)  |(Pro tuto úlohu) jedinečný název kroku.|
@@ -1282,15 +1282,15 @@ Zobrazí všechny kroky v aktuální verzi každou úlohu.
 |**Příkaz**|   nvarchar(max)|  Příkazy mají být provedeny pomocí Elastických úloh prostřednictvím command_type.|
 |**credential_name**|   nvarchar(128)   |Název přihlašovacích údajů s rozsahem databáze použitý k provádění úlohy.|
 |**target_group_name**| nvarchar(128)   |Název cílové skupiny.|
-|**target_group_id**|   UniqueIdentifier|   Jedinečné ID cílové skupiny.|
+|**target_group_id**|   uniqueidentifier|   Jedinečné ID cílové skupiny.|
 |**initial_retry_interval_seconds**|    int |Zpoždění před první pokus o opakování. Výchozí hodnota je 1.|
 |**maximum_retry_interval_seconds** |int|   Maximální zpoždění mezi opakovanými pokusy. Pokud by růst větší než tato hodnota zpoždění mezi opakovanými pokusy, to je se na tuto hodnotu místo toho uzavřeny. Výchozí hodnota je 120.|
-|**retry_interval_backoff_multiplier**  |Real|  Násobitel použít na zpoždění opakování, pokud více úloh kroku spuštění pokusí selhání. Výchozí hodnota je 2.0.|
+|**retry_interval_backoff_multiplier**  |real|  Násobitel použít na zpoždění opakování, pokud více úloh kroku spuštění pokusí selhání. Výchozí hodnota je 2.0.|
 |**retry_attempts** |int|   Počet opakovaných pokusů použít, pokud tento krok nezdaří. Výchozí hodnota 10, označující žádné pokusy o opakování.|
 |**step_timeout_seconds**   |int|   Množství času během několika minut mezi pokusy o opakování. Výchozí hodnota je 0, což označuje 0 minut.|
 |**output_type**    |nvarchar(11)|  Umístění příkazu. "Vložené" v aktuální verzi preview, je výchozí a přijatelný jenom hodnoty.|
 |**output_credential_name**|    nvarchar(128)   |Nastavit název přihlašovacích údajů, který se má použít pro připojení k cílovému serveru můžete ukládat výsledky.|
-|**output_subscription_id**|    UniqueIdentifier|   Jedinečné ID předplatného cílového server\database výsledků nastavit na spuštění dotazu.|
+|**output_subscription_id**|    uniqueidentifier|   Jedinečné ID předplatného cílového server\database výsledků nastavit na spuštění dotazu.|
 |**output_resource_group_name** |nvarchar(128)| Název skupiny prostředků, ve které se nachází cílový server.|
 |**output_server_name**|    nvarchar(256)   |Název cílového serveru pro sadu výsledků.|
 |**output_database_name**   |nvarchar(128)| Název cílové databáze sady výsledků.|
@@ -1314,7 +1314,7 @@ Uvádí všechny cílové skupiny.
 |Název sloupce|Typ dat| Popis|
 |-----|-----|-----|
 |**target_group_name**| nvarchar(128)   |Název cílové skupiny, kolekce databází. 
-|**target_group_id**    |UniqueIdentifier   |Jedinečné ID cílové skupiny.
+|**target_group_id**    |uniqueidentifier   |Jedinečné ID cílové skupiny.
 
 ### <a name="targetgroupsmembers-view"></a>target_groups_members view
 
@@ -1325,12 +1325,12 @@ Zobrazuje všechny členy všechny cílové skupiny.
 |Název sloupce|Typ dat| Popis|
 |-----|-----|-----|
 |**target_group_name**  |nvarchar (128|Název cílové skupiny, kolekce databází. |
-|**target_group_id**    |UniqueIdentifier   |Jedinečné ID cílové skupiny.|
+|**target_group_id**    |uniqueidentifier   |Jedinečné ID cílové skupiny.|
 |**membership_type**    |int|   Určuje, zda je cílový člen skupiny zahrnuty nebo vyloučeny v cílové skupině. Platné hodnoty pro target_group_name jsou "Zahrnutí" nebo "Vyloučit".|
 |**target_type**    |nvarchar(128)| Typ cílové databázi nebo kolekci databází, včetně všech databází serveru, všechny databáze v Elastickém fondu nebo v databázi. Target_type – platné hodnoty jsou "Systému SQL Server", "SqlElasticPool", "SqlDatabase" nebo "SqlShardMap".|
-|**target_id**  |UniqueIdentifier|  Jedinečné ID člena cílové skupiny.|
+|**target_id**  |uniqueidentifier|  Jedinečné ID člena cílové skupiny.|
 |**refresh_credential_name**    |nvarchar(128)  |Název databáze s rozsahem přihlašovací údaje použité pro připojení k cílové člena skupiny.|
-|**subscription_id**    |UniqueIdentifier|  Jedinečné ID předplatného.|
+|**subscription_id**    |uniqueidentifier|  Jedinečné ID předplatného.|
 |**resource_group_name**    |nvarchar(128)| Název skupiny prostředků, ve kterém se nachází cílový člen skupiny.|
 |**server_name**    |nvarchar(128)  |Název databáze SQL serveru, obsažené v cílové skupině. Zadat jenom v případě target_type – je "Systému SQL Server". |
 |**database_name**  |nvarchar(128)  |Název databáze, které jsou obsaženy v cílové skupině. Zadat, jenom když target_type – je "SqlDatabase".|

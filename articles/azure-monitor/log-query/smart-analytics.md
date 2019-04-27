@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 01/15/2019
 ms.author: bwren
 ms.openlocfilehash: f6617a504bbda666ce9ece018ccb0cf02635c360
-ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54355465"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61425800"
 ---
 # <a name="log-analytics-smart-analytics-examples"></a>Log Analytics inteligentní analýzy příklady
 Tento článek obsahuje příklady, které používají funkce Inteligentní analýzy v Log Analytics k analýze aktivity uživatelů. Můžete použít k analýze vlastní aplikace služba Application Insights monitorovat tyto příklady nebo použít koncepty v těchto dotazů pro analýzu podobně jako na další data. 

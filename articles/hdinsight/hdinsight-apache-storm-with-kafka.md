@@ -1,7 +1,6 @@
 ---
 title: 'Kurz: Použití Apache Storm pro čtení a zápis dat s využitím Apache Kafka – Azure HDInsight'
 description: Přečtěte si, jak vytvořit streamovací kanál pomocí systémů Apache Storm a Apache Kafka ve službě HDInsight. V tomto kurzu použijete komponenty KafkaBolt a KafkaSpout ke streamování dat ze systému Kafka.
-services: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -9,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: tutorial
 ms.date: 12/06/2018
-ms.openlocfilehash: dca789a850e5df58024d13b8f592765e55c39485
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: bf62b4f8f8dbfc7df73102bb06e4f16c0fdb806c
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58316945"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62097306"
 ---
 # <a name="tutorial-use-apache-storm-with-apache-kafka-on-hdinsight"></a>Kurz: Použití Apache Stormu s Apache Kafka v HDInsight
 
@@ -411,7 +410,7 @@ K vytvoření virtuální sítě Azure a následnému vytvoření clusterů Kafk
       | --- | --- |
       | Předplatné | Vaše předplatné Azure |
       | Skupina prostředků | Skupina prostředků obsahující prostředky. |
-      | Umístění | Oblast Azure, ve které se prostředky vytvoří. |
+      | Location | Oblast Azure, ve které se prostředky vytvoří. |
       | Název clusteru Kafka | Název clusteru Kafka. |
       | Název clusteru Storm | Název clusteru Storm. |
       | Uživatelské jméno přihlášení clusteru | Uživatelské jméno správce clusterů. |

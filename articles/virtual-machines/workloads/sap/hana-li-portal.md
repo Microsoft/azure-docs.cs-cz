@@ -17,11 +17,11 @@ ms.date: 04/02/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 8240308b3e0955b1d4d3ef2e82cad215daf95b00
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59009364"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61482145"
 ---
 # <a name="azure-hana-large-instances-control-through-azure-portal"></a>Řízení velkých instancí Azure HANA prostřednictvím webu Azure Portal
 Tento dokument popisuje způsob, jak [velkých instancích HANA](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture) jsou uvedeny v [webu Azure portal](https://portal.azure.com) a jaké činnosti mohou být prováděna prostřednictvím webu Azure portal s jednotkami velká Instance HANA, které jsou pro vás nasazeny. Viditelnost velkých instancích HANA na webu Azure portal je k dispozici prostřednictvím poskytovatele prostředků Azure pro velké instance HANA, která je aktuálně ve verzi public preview

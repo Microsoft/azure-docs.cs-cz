@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.service: resource-graph
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: 9a243dd236a8c499602a9070a7dd61e69541d58d
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 7684ae6b4ddb6320efc62ef6f9963bef1b9a66fa
+ms.sourcegitcommit: a95dcd3363d451bfbfea7ec1de6813cad86a36bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59256817"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62732362"
 ---
 # <a name="advanced-resource-graph-queries"></a>Pokročilé dotazy na Resource Graph
 
@@ -22,7 +22,7 @@ Prvním krokem k porozumění dotazům s Azure Resource Graph jsou základní zn
 Projdeme následující rozšířené dotazy:
 
 > [!div class="checklist"]
-> - [Získání kapacity a velikosti VMSS](#vmss-capacity)
+> - [Získání kapacity škálovací sady virtuálních počítačů a velikost](#vmss-capacity)
 > - [Vypsat všechny názvy značek](#list-all-tags)
 > - [Virtuální počítače odpovídající regulárnímu výrazu](#vm-regex)
 
@@ -38,7 +38,7 @@ Azure PowerShell (prostřednictvím modulu) a Azure CLI (prostřednictvím rozš
 
 Tento dotaz hledá prostředky škálovací sady virtuálních počítačů a získá různé podrobnosti, včetně velikosti virtuálních počítačů a kapacity škálovací sady. Dotaz pomocí funkce `toint()` přetypuje kapacitu na číslo, aby bylo možné ji řadit. Nakonec se sloupce přejmenují na vlastní pojmenované vlastnosti.
 
-```Query
+```kusto
 where type=~ 'microsoft.compute/virtualmachinescalesets'
 | where name contains 'contoso'
 | project subscriptionId, name, location, resourceGroup, Capacity = toint(sku.capacity), Tier = sku.name
@@ -57,7 +57,7 @@ Search-AzGraph -Query "where type=~ 'microsoft.compute/virtualmachinescalesets' 
 
 Tento dotaz spustí se značkou a vytvoří objekt JSON obsahující všechny jedinečné názvy značek a jejich odpovídající typy.
 
-```Query
+```kusto
 project tags
 | summarize buildschema(tags)
 ```
@@ -86,7 +86,7 @@ Tento dotaz vyhledá virtuální počítače, které odpovídají [regulárnímu
 
 Po porovnání podle názvu, dotaz promítne název a pořadí vzestupně podle názvu.
 
-```Query
+```kusto
 where type =~ 'microsoft.compute/virtualmachines' and name matches regex @'^Contoso(.*)[0-9]+$'
 | project name
 | order by name asc

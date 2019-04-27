@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/05/2017
 ms.author: jeconnoc
-ms.openlocfilehash: e9f4153c68f0a2a4ce83f900ff63152311163ff6
-ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
+ms.openlocfilehash: d3d1ae759f0f3fa5edd417da61f1fa50b5d9cde7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/10/2018
-ms.locfileid: "42055229"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61433898"
 ---
 # <a name="manage-cloud-services-in-the-azure-portal"></a>Správa cloudové služby na webu Azure Portal
 V **Cloud Services** oblast na webu Azure portal, můžete:

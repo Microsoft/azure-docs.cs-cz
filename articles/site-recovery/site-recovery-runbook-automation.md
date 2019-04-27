@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: rajanaki
-ms.openlocfilehash: 5587d86cb4b3a213961ce46e77c75e947de2d29e
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 26c3466080cb356ca3610d42eaaf5ee4975d3731
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52866368"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61471880"
 ---
 # <a name="add-azure-automation-runbooks-to-recovery-plans"></a>Přidání runbooků Azure Automation do plánů obnovení
 V tomto článku popisujeme, jak Azure Site Recovery se integruje s Azure Automation, aby vám pomohla rozšířit plány obnovení. Plány obnovení můžete orchestrovat obnovení virtuálních počítačů, které jsou chráněné pomocí služby Site Recovery. Plány obnovení fungovat i pro replikaci do sekundárního cloudu a pro replikaci do Azure. Plány obnovení také pomoci, ujistěte se, obnovení **přesné**, **opakovatelné**, a **automatizované**. Pokud převzetí služeb při selhání virtuálních počítačů do Azure, rozšiřuje integrace s Azure Automation plánech obnovení. Můžete ho použít ke spuštění sady runbook, který nabízí výkonné automatizaci úkolů.
@@ -27,7 +27,7 @@ V tomto článku popisujeme, jak integrovat Azure Automation. runbooky plány ob
     ![Klikněte na tlačítko Přizpůsobit](media/site-recovery-runbook-automation-new/essentials-rp.png)
 
 
-2. Klikněte pravým tlačítkem na **skupiny 1: Start**a pak vyberte **přidat akci po**.
+2. Klikněte pravým tlačítkem na **skupina 1: Spustit**a pak vyberte **přidat akci po**.
 
     ![Klikněte pravým tlačítkem na skupinu 1: Spuštění a přidat akci po](media/site-recovery-runbook-automation-new/customize-rp.png)
 
@@ -43,7 +43,7 @@ V tomto článku popisujeme, jak integrovat Azure Automation. runbooky plány ob
 
 6. Ve vašem účtu Automation vyberte sadu runbook. Tato sada runbook je skript, který se spustí při spuštění plánu zotavení po obnovení do první skupiny.
 
-7. Pokud chcete uložit skript, klikněte na tlačítko **OK**. Skript se přidá do **1. skupina: kroky prováděné po zpracování**.
+7. Pokud chcete uložit skript, klikněte na tlačítko **OK**. Skript se přidá do **1. skupina: Kroky prováděné po zpracování**.
 
     ![Akce po skupiny 1:Start](media/site-recovery-runbook-automation-new/addedscript-rp.PNG)
 
@@ -87,7 +87,7 @@ V tomto článku popisujeme, jak integrovat Azure Automation. runbooky plány ob
     | RecoveryPlanName |Název plánu spuštěn. Tato proměnná umožňuje provést různé akce na základě názvu plánu obnovení. Také můžete znovu použít skript. |
     | FailoverType |Určuje, zda je převzetí služeb při selhání testu, plánované nebo neplánované. |
     | FailoverDirection |Určuje, zda probíhá obnovení do primární nebo sekundární lokality. |
-    | ID skupiny |Označuje číslo skupiny v plánu obnovení při spuštění plánu. |
+    | GroupID |Označuje číslo skupiny v plánu obnovení při spuštění plánu. |
     | VmMap |Pole všech virtuálních počítačů ve skupině. |
     | Klíč VMMap |Jedinečný klíč (GUID) pro každý virtuální počítač. Je stejný jako Azure Virtual Machine Manager (VMM) ID virtuálního počítače, kde je to možné. |
     | SubscriptionId |ID předplatného Azure, ve kterém byl virtuální počítač vytvořen. |
@@ -250,7 +250,7 @@ Další příklad najdete v následujícím videu. Ukazuje, jak obnovit dvouvrst
 > [!VIDEO https://channel9.msdn.com/Series/Azure-Site-Recovery/One-click-failover-of-a-2-tier-WordPress-application-using-Azure-Site-Recovery/player]
 
 
-## <a name="additional-resources"></a>Další zdroje informací:
+## <a name="additional-resources"></a>Další materiály
 * [Azure Automation spustit jako účet služby](../automation/automation-create-runas-account.md)
 * [Přehled Azure Automation](https://msdn.microsoft.com/library/azure/dn643629.aspx "přehled Azure Automation.")
 * [Azure Automation ukázkové skripty](https://gallery.technet.microsoft.com/scriptcenter/site/search?f\[0\].Type=User&f\[0\].Value=SC%20Automation%20Product%20Team&f\[0\].Text=SC%20Automation%20Product%20Team "ukázkové skripty Azure Automation.")

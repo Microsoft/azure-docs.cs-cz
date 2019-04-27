@@ -9,11 +9,11 @@ ms.date: 03/11/2019
 ms.author: fryu
 ms.subservice: common
 ms.openlocfilehash: 09a5a6d823240b724e6ec88de38df068a58982d9
-ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58652055"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61483498"
 ---
 # <a name="azure-storage-analytics-logging"></a>Azure Storage analytics protokolování
 

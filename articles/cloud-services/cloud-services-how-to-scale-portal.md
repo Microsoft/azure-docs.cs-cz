@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/18/2017
 ms.author: jeconnoc
-ms.openlocfilehash: 29ee71e7946145e50cc875df96b674abec3e12df
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: f5597773b3127852481d5e14844bed889c4d6f83
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39004332"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61435237"
 ---
 # <a name="how-to-configure-auto-scaling-for-a-cloud-service-in-the-portal"></a>Konfigurace automatického škálování pro Cloudovou službu na portálu
 
@@ -41,14 +41,14 @@ Před konfigurací škálování pro vaši aplikaci, byste měli zvážit násle
 
 * Pokud chcete povolit vysokou dostupnost vaší aplikace, měli byste zajistit, že je nasazen s dvě nebo víc instancí rolí. Další informace najdete v tématu [smlouvy o úrovni služeb](https://azure.microsoft.com/support/legal/sla/).
 
-* Automatické škálování pouze se stane, když jsou všechny role v **připravené** stavu.  
+* Automatické škálování pouze se stane, když jsou všechny role v **připravené** stavu.  
 
 
 ## <a name="where-scale-is-located"></a>Kde se nachází škálování
 Po výběru cloudové služby byste měli mít okna služby cloud viditelné.
 
 1. V okně cloudové služby na **rolemi a instancemi** dlaždice, vyberte název cloudové služby.   
-   **Důležité**: Ujistěte se, že klikněte na tlačítko role cloudové služby, není instancí role, která je nižší než roli.
+   **DŮLEŽITÉ:** Ujistěte se, že klikněte na tlačítko role cloudové služby, není instancí role, která je nižší než roli.
 
     ![](./media/cloud-services-how-to-scale-portal/roles-instances.png)
 2. Vyberte **škálování** dlaždici.

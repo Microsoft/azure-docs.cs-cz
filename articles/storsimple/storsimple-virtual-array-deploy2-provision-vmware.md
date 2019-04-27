@@ -16,11 +16,11 @@ ms.date: 01/11/2019
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 3c9fe597957057dc61da5c2b1cf6f9216711764a
-ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/12/2019
-ms.locfileid: "54247839"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61418823"
 ---
 # <a name="deploy-storsimple-virtual-array---provision-in-vmware"></a>Nasazení virtuálních polí StorSimple – zřizování v prostředí VMware
 ![](./media/storsimple-virtual-array-deploy2-provision-vmware/vmware4.png)

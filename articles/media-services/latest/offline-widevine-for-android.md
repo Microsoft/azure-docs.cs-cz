@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 01/08/2019
 ms.author: willzhan
 ms.openlocfilehash: 5d7dccfecc47b14be62a78600561a8ff0f7ca501
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58312253"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62111944"
 ---
 # <a name="offline-widevine-streaming-for-android"></a>Offline Widevine streamování pro Android
 
@@ -44,8 +44,8 @@ V článku najdete tady také odpovědi některé běžné dotazy týkající se
 Před implementací offline DRM pro Widevine na zařízeních s Androidem, měli byste nejdřív:
 
 - Seznamte se s koncepty představenými pro online ochrany obsahu pomocí Widevine DRM. To je podrobně popsána v následujících dokumentech/samples:
-    - [Návrh systému s více variantami DRM ochrany obsahu pomocí řízení přístupu](design-multi-drm-system-with-access-control.md)
-    - [Pomocí DRM dynamického šifrování a licence služby pro doručování](protect-with-drm.md)
+    - [Návrh systému ochrany obsahu s více variantami DRM s využitím řízení přístupu](design-multi-drm-system-with-access-control.md)
+    - [Použití ochrany DRM s dynamickým šifrováním a služby doručování licencí](protect-with-drm.md)
 - Klonování https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials.git.
 
     Budete muset upravit kód v [šifrovat pomocí DRM pomocí .NET](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/tree/master/AMSV3Tutorials/EncryptWithDRM) přidání konfigurace Widevine.  

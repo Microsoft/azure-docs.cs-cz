@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 04/04/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d4bda20d9ce06f756913e6dfb3e980399ac7e0a6
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 32aa7a531de2e236e3941bbe8afd84d845f80f99
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/23/2019
-ms.locfileid: "60348110"
+ms.locfileid: "62104744"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-rstudio-connect"></a>Kurz: Integrace Azure Active Directory s prostředím RStudio Connect
 
@@ -40,7 +40,7 @@ Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https
 Konfigurace integrace Azure AD s prostředím RStudio Connect, potřebujete následující položky:
 
 * Předplatné služby Azure AD. Pokud nemáte prostředí Azure AD, můžete získat [bezplatný účet](https://azure.microsoft.com/free/)
-* Připojení k RStudio jednotného přihlašování povolená předplatného
+* RStudio připojení. Je [45 dnů zdarma hodnocení.](https://www.rstudio.com/products/connect/)
 
 ## <a name="scenario-description"></a>Popis scénáře
 
@@ -104,22 +104,22 @@ Ke konfiguraci Azure AD jednotné přihlašování s prostředím RStudio Connec
 
     ![Upravit konfiguraci základní SAML](common/edit-urls.png)
 
-4. Na **základní konfiguraci SAML** části, pokud chcete nakonfigurovat aplikace v **IDP** iniciované režimu, proveďte následující kroky:
+4. Na **základní konfiguraci SAML** části, pokud chcete nakonfigurovat aplikace v **IDP** iniciované režimu, proveďte následující kroky nahrazení `<example.com>` s RStudio serveru připojení Adresa a port:
 
     ![RStudio připojení domény a adresy URL jednotného přihlašování – informace](common/idp-intiated.png)
 
-    a. V **identifikátor** textové pole, zadejte adresu URL, pomocí následujícího vzorce: `https://connect.<example>.com/__login__/saml`
+    a. V **identifikátor** textové pole, zadejte adresu URL, pomocí následujícího vzorce: `https://<example.com>/__login__/saml`
 
-    b. V **adresy URL odpovědi** textové pole, zadejte adresu URL, pomocí následujícího vzorce: `https://connect.<example>.com/__login__/saml/acs`
+    b. V **adresy URL odpovědi** textové pole, zadejte adresu URL, pomocí následujícího vzorce: `https://<example.com>/__login__/saml/acs`
 
 5. Klikněte na tlačítko **nastavit další adresy URL** a provést následující krok, pokud chcete nakonfigurovat aplikace v **SP** iniciované režimu:
 
     ![RStudio připojení domény a adresy URL jednotného přihlašování – informace](common/metadata-upload-additional-signon.png)
 
-    V **přihlašovací adresa URL** textové pole, zadejte adresu URL, pomocí následujícího vzorce:  `https://connect.<example>.com/`
+    V **přihlašovací adresa URL** textové pole, zadejte adresu URL, pomocí následujícího vzorce:  `https://<example.com>/`
 
     > [!NOTE]
-    > Tyto hodnoty nejsou skutečný. Aktualizujte tyto hodnoty skutečnou adresu URL identifikátor, adresa URL odpovědi a přihlašování. Kontakt [tým podpory RStudio připojení klienta](mailto:support@rstudio.com) k získání těchto hodnot. Můžete také odkazovat na tyto vzory se dají ukazuje **základní konfiguraci SAML** části webu Azure Portal.
+    > Tyto hodnoty nejsou skutečný. Aktualizujte tyto hodnoty skutečnou adresu URL identifikátor, adresa URL odpovědi a přihlašování. Určují se z adresy serveru připojit RStudio (`https://example.com` ve výše uvedených příkladech). Obraťte se [připojení RStudio tým podpory](mailto:support@rstudio.com) Pokud máte potíže s. Můžete také odkazovat na tyto vzory se dají ukazuje **základní konfiguraci SAML** části webu Azure Portal.
 
 6. RStudio připojit aplikace očekává, že kontrolní výrazy SAML v určitém formátu, který je potřeba přidat vlastní atribut mapování konfigurace atributy tokenu SAML. Následující snímek obrazovky ukazuje seznam výchozích atributů, přičemž **nameidentifier** je namapována na žádnou **user.userprincipalname**. Očekává, že RStudio připojit aplikace **nameidentifier** namapovat s **user.mail**, takže budete muset kliknout na Upravit mapování atributů **upravit** ikonu a změňte mapování atributů.
 
@@ -131,7 +131,36 @@ Ke konfiguraci Azure AD jednotné přihlašování s prostředím RStudio Connec
 
 ### <a name="configure-rstudio-connect-single-sign-on"></a>Nakonfigurujte přihlašovací stránce RStudio připojení jednotného přihlašování
 
-Ke konfiguraci jednotného přihlašování na **RStudio připojení** straně, je nutné odeslat **adresa Url federačních metadat aplikace** k [RStudio připojení tým podpory](mailto:support@rstudio.com). Nastavují tohoto nastavení můžete mít správně nastavené na obou stranách připojení SAML SSO.
+Konfigurace jednotného přihlašování na pro **RStudio připojení**, budete muset použít **adresa Url federačních metadat aplikace** a **adresa serveru** využité nad. To se provádí v konfiguračním souboru nástroje RStudio připojení na `/etc/rstudio-connect.rstudio-connect.gcfg`.
+
+Toto je příklad konfigurace souboru:
+
+```
+[Server]
+SenderEmail =
+
+; Important! The user-facing URL of your RStudio Connect server.
+Address = 
+
+[Http]
+Listen = :3939
+
+[Authentication]
+Provider = saml
+
+[SAML]
+Logging = true
+
+; Important! The URL where your IdP hosts the SAML metadata or the path to a local copy of it placed in the RStudio Connect server.
+IdPMetaData = 
+
+IdPAttributeProfile = azure
+SSOInitiated = IdPAndSP
+```
+
+Store vaše **adresa serveru** v `Server.Address` hodnotu a **adresa Url federačních metadat aplikace** v `SAML.IdPMetaData` hodnotu.
+
+Pokud máte potíže s konfigurací, si můžete přečíst [příručky pro správce připojení RStudio](https://docs.rstudio.com/connect/admin/authentication.html#authentication-saml) nebo e-mailem [tým podpory RStudio](mailto:support@rstudio.com) nápovědu.
 
 ### <a name="create-an-azure-ad-test-user"></a>Vytvořit testovacího uživatele Azure AD 
 

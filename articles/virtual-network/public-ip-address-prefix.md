@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/24/2018
 ms.author: anavin
-ms.openlocfilehash: 5496be93a5241621cd4dc5e873e4386f8ed6c992
-ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
+ms.openlocfilehash: 3cc4933ae70ad1d661835749dd23e7e634ab54f0
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57195213"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61474432"
 ---
 # <a name="public-ip-address-prefix"></a>Předpona veřejné IP adresy
 

@@ -12,12 +12,12 @@ ms.author: danil
 ms.reviewer: jrasnik, carlrab
 manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: 0c93888af16ed7f7162f38c73be5f6330c886c65
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
-ms.translationtype: HT
+ms.openlocfilehash: 2a7a6ed5bd28bcc83500da6e82b6c4ff48b2989c
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60001571"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62097772"
 ---
 # <a name="monitoring-and-performance-tuning"></a>Sledování a ladění výkonu
 
@@ -87,7 +87,7 @@ Pokud zjistíte, že máte problém s výkonem souvisejících s běží, je va�
 
 ### <a name="ParamSniffing"></a> Řešení potíží s dotazy s problémy plán spuštění závislé na parametru dotazu
 
-Potíže s parametrem citlivé plán (PSP) odkazuje na scénáři, kde Optimalizátor dotazů generuje plán provádění dotazu, který je ideální jenom pro konkrétní parametr (nebo sadu hodnot) a bude plánů v mezipaměti optimální zadání hodnot parametrů používaných pro počet po sobě jdoucích spuštění. Optimální jiné plány může pak způsobit problémy s výkonem dotazů a celkovou propustnost snížení zatížení. Další informace o parametru pro analýzu sítě a zpracování dotazů, najdete v článku [Průvodce architekturou zpracování dotazu](https://docs.microsoft.com/sql/relational-databases/query-processing-architecture-guide.md7#ParamSniffing).
+Potíže s parametrem citlivé plán (PSP) odkazuje na scénáři, kde Optimalizátor dotazů generuje plán provádění dotazu, který je ideální jenom pro konkrétní parametr (nebo sadu hodnot) a bude plánů v mezipaměti optimální zadání hodnot parametrů používaných pro počet po sobě jdoucích spuštění. Optimální jiné plány může pak způsobit problémy s výkonem dotazů a celkovou propustnost snížení zatížení. Další informace o parametru pro analýzu sítě a zpracování dotazů, najdete v článku [Průvodce architekturou zpracování dotazu](/sql/relational-databases/query-processing-architecture-guide#ParamSniffing).
 
 Existuje několik řešení zmírnit problémy, každá má přidružené kompromisy a nevýhody:
 

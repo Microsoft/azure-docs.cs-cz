@@ -8,12 +8,12 @@ ms.service: service-bus-messaging
 ms.topic: quickstart
 ms.date: 04/15/2019
 ms.author: spelluru
-ms.openlocfilehash: 2af346b2c9fa5c46593aa9421c3a762bda78dc2f
-ms.sourcegitcommit: 5f348bf7d6cf8e074576c73055e17d7036982ddb
+ms.openlocfilehash: e943dbff71fdbd98773587c8ac5a62dd081b49a2
+ms.sourcegitcommit: a95dcd3363d451bfbfea7ec1de6813cad86a36bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2019
-ms.locfileid: "59610302"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62739560"
 ---
 # <a name="quickstart-use-the-azure-portal-to-create-a-service-bus-topic-and-subscriptions-to-the-topic"></a>Rychlý start: Vytvoření tématu služby Service Bus a odběrů tématu pomocí webu Azure portal
 V tomto rychlém startu použijete Azure portal k vytvoření tématu služby Service Bus a pak vytvořte odběry tohoto tématu. 
@@ -34,7 +34,7 @@ Témata a odběry Service Bus umožňují škálovat pro zpracování velkého p
 
 
 ## <a name="next-steps"></a>Další postup
-Zjistěte, jak odesílat zprávy do tématu a reiceve tyto zprávy přes předplatné, najdete v následujícím článku: vyberte programovací jazyk v obsahu. 
+Zjistěte, jak odesílat zprávy do tématu a příjem těchto zpráv prostřednictvím předplatného, najdete v následujícím článku: vyberte programovací jazyk v obsahu. 
 
 > [!div class="nextstepaction"]
 > [Publikování a odběr zpráv](service-bus-dotnet-how-to-use-topics-subscriptions.md)

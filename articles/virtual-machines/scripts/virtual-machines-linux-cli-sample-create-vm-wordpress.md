@@ -17,11 +17,11 @@ ms.date: 02/27/2017
 ms.author: cynthn
 ms.custom: mvc
 ms.openlocfilehash: 3e4410a5acb852ea9cd7f5ca24e67e8335a45e30
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55692660"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61462773"
 ---
 # <a name="create-a-vm-with-wordpress"></a>Vytvoření virtuálního počítače s WordPressem
 

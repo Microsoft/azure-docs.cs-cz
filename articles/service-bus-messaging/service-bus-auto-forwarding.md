@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/23/2019
 ms.author: aschhab
-ms.openlocfilehash: 85ab5e3bb963ee692e5b70af3eb90cc68cec361f
-ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
+ms.openlocfilehash: 86fa7f62230c0ae0530b67ff2384942c876083d4
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56593382"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62098588"
 ---
 # <a name="chaining-service-bus-entities-with-autoforwarding"></a>Řetězení entit služby Service Bus s autoforwarding
 
@@ -47,6 +47,10 @@ Můžete také použít autoforwarding oddělit odesílatelé zpráv od příjem
 
 Pokud Alice přejde na dovolenou, své osobní fronty, nikoli tématu ERP, zaplní. V tomto scénáři protože obchodní zástupce nedostal žádné zprávy, žádná témata ERP někdy dosažení kvóty.
 
+> [!NOTE]
+> Instalační program po autoforwarding hodnota AutoDeleteOnIdle v cíli automaticky nastaví maximální hodnotu datového typu.
+> To se provádí, aby se zajistilo, že vždy cíl, aby zpráva přepošle.
+
 ## <a name="autoforwarding-considerations"></a>Důležité informace o Autoforwarding
 
 Pokud Cílová entita nahromadí příliš velkého počtu zpráv a překračuje kvótu nebo Cílová entita je zakázaná, zdrojové entitě přidá zprávy, které mají jeho [fronty nedoručených zpráv](service-bus-dead-letter-queues.md) až do místa v cílovém umístění (nebo entitu nebude znovu povoleno). Tyto zprávy se nadále live ve frontě nedoručených zpráv, takže se musí explicitně zobrazí a jejich zpracování z fronty nedoručených zpráv.
@@ -67,7 +71,7 @@ Podrobné informace o autoforwarding najdete v těchto tématech:
 
 Další informace o vylepšení výkonu služby Service Bus, najdete v článku 
 
-* [Osvědčené postupy pro zlepšení výkonu pomocí zasílání zpráv Service Bus](service-bus-performance-improvements.md)
+* [Doporučené postupy pro zlepšení výkonu pomocí zasílání zpráv Service Bus](service-bus-performance-improvements.md)
 * [Segmentované entity zasílání zpráv][Partitioned messaging entities].
 
 [QueueDescription.ForwardTo]: /dotnet/api/microsoft.servicebus.messaging.queuedescription.forwardto#Microsoft_ServiceBus_Messaging_QueueDescription_ForwardTo

@@ -9,11 +9,11 @@ ms.date: 03/29/2018
 ms.author: alkohli;
 ms.subservice: common
 ms.openlocfilehash: b01c8a3fe9b0c0856dceb5c05f449504ce8c75d6
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58120359"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61483216"
 ---
 # <a name="open-a-support-ticket-for-an-importexport-job"></a>Vytvořit lístek podpory pro úlohu importu/exportu
 
@@ -22,7 +22,7 @@ Pokud narazíte na případné problémy s vaší službou Import/Export, může
 * Jak vytvořit žádost o podporu.
 * Jak spravovat životní cyklus žádost o podporu z v rámci portálu.
 
-## <a name="create-a-support-request"></a>Vytvořit žádost o podporu
+## <a name="create-a-support-request"></a>Vytvoření žádosti o podporu
 
 Proveďte následující kroky a vytvoříte žádost o podporu:
 

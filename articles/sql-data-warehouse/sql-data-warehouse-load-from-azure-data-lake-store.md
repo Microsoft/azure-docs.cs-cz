@@ -11,11 +11,11 @@ ms.date: 04/17/2018
 ms.author: cakarst
 ms.reviewer: igorstan
 ms.openlocfilehash: 32ac5b0841365acfc0a52e343eafc4f3760dffaa
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55472218"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61476132"
 ---
 # <a name="load-data-from-azure-data-lake-storage-gen1-to-sql-data-warehouse"></a>Načtení dat z Azure Data Lake Storage Gen1 do SQL Data Warehouse
 Načtení dat z Azure Data Lake Storage Gen1 do Azure SQL Data Warehouse pomocí PolyBase externí tabulky. Ačkoli můžete spustit ad hoc dotazy na datech uložených v Data Lake Storage Gen1, doporučujeme importování dat do SQL Data Warehouse pro zajištění nejlepšího výkonu.
@@ -27,7 +27,7 @@ Načtení dat z Azure Data Lake Storage Gen1 do Azure SQL Data Warehouse pomocí
 
 Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
-## <a name="before-you-begin"></a>Před zahájením
+## <a name="before-you-begin"></a>Než začnete
 Než začnete s tímto kurzem, stáhněte a nainstalujte nejnovější verzi aplikace [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms) (SSMS).
 
 Ke spuštění v tomto kurzu, budete potřebovat:

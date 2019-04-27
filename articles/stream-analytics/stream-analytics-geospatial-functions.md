@@ -9,11 +9,11 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.openlocfilehash: ad789a597da759b9a2d58138c7ed441389a12adb
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53103120"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61479979"
 ---
 # <a name="introduction-to-stream-analytics-geospatial-functions"></a>Úvod do služby Stream Analytics geoprostorové funkce
 
@@ -27,7 +27,7 @@ Příklady scénářů, které může přinést geoprostorové funkce:
 * Geograficky monitorování geografických zón
 * Sledování Phone napříč lokalitami buňky
 
-Dotazovací jazyk Stream Analytics je sedm geoprostorové funkce: **CreateLineString**, **CreatePoint**, **: CreatePolygon**, **ST_DISTANCE** , **ST_OVERLAPS**, **ST_INTERSECTS**, a **ST_WITHIN**.
+Dotazovací jazyk Stream Analytics je sedm geoprostorové funkce: **CreateLineString**, **CreatePoint**, **: CreatePolygon**, **ST_DISTANCE**, **ST_OVERLAPS**, **ST_ PROTÍNÁ**, a **ST_WITHIN**.
 
 ## <a name="createlinestring"></a>CreateLineString
 

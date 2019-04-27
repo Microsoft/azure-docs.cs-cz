@@ -6,14 +6,14 @@ author: sogup
 manager: vijayts
 ms.service: backup
 ms.topic: conceptual
-ms.date: 04/05/2019
+ms.date: 04/23/2019
 ms.author: sogup
-ms.openlocfilehash: 3aceffa719ef8938aa049f126231f8628822566b
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: HT
+ms.openlocfilehash: c375eac0de3dd89986421f8c6628d0a13784a60d
+ms.sourcegitcommit: a95dcd3363d451bfbfea7ec1de6813cad86a36bb
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59794773"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62733869"
 ---
 # <a name="get-improved-backup-and-restore-performance-with-azure-backup-instant-restore-capability"></a>Získejte lepší zálohování a obnovení výkonu pomocí funkce Azure Backup rychlé obnovení
 
@@ -24,7 +24,7 @@ Nový model pro rychlé obnovení obsahuje následující vylepšení funkcí:
 
 * Možnost používat snímkům pořízeným jako součást, která je k dispozici pro obnovení bez čekání na přenos dat do trezoru na dokončení úlohy zálohování. Snižuje dobu čekání pro snímky ke zkopírování do trezoru před aktivace operace obnovení.
 * Zkracuje dobu zálohování a obnovení tak, že zachová snímky místně, ve výchozím nastavení dva dny. Tuto výchozí hodnotu uchování snímků je možné konfigurovat na libovolnou hodnotu mezi 1 až 5 dnů uvolní.
-* Podporuje disk o velikosti až 4 TB. Azure Backup nepodporuje disky prokládané. Změna velikosti disku se nedoporučuje službou Azure Backup.
+* Podporuje disk o velikosti až 4 TB. Změna velikosti disku se nedoporučuje službou Azure Backup.
 * Podporuje disky SSD na úrovni Standard spolu s standardní HDD disky a disky Premium SSD.
 *   Možnost používat nespravovaného virtuálního počítače na původní účty úložiště (na disk), při obnovování. Tato schopnost existuje i v případě, že virtuální počítač obsahuje disky, které jsou distribuovány mezi různými účty úložiště. Urychluje operace obnovení pro celou řadu konfigurací virtuálních počítačů.
 
@@ -47,15 +47,15 @@ Ve výchozím nastavení snímky zůstanou zachovány dva dny. Tato funkce umož
 * Snímky se ukládají společně s disky, a zvýšit tak vytvoření bodu obnovení a to ke zrychlení operací obnovení. V důsledku toho se zobrazí náklady na úložiště, které odpovídají snímkům pořízeným během tohoto období.
 * Přírůstkové snímky se ukládají jako objekty BLOB stránky. Všichni uživatelé používali nespravované disky se vám účtuje snímky uloženým v jejich účtu místní úložiště. Protože kolekce bodů obnovení, který se používá záloh virtuálních počítačů spravovaných pomocí snímky objektů blob na základní úrovni úložiště, za spravované disky se zobrazí náklady odpovídající do objektu blob ceny snímků a jsou přírůstkové.
 * Pro účty služby premium storage snímkům pořízeným pro okamžité obnovení počet bodů vůči limit 10 TB přidělené místo.
-* Získáte možnost konfigurace uchovávání snímku na základě potřeb obnovení. V závislosti na požadavku můžete nastavit uchování snímků pro minimálně jeden den v okně zásady zálohování, jak je popsáno níže. To vám umožňují snížení nákladů pro uchovávání dat snímku, pokud nechcete provádět obnovení často.
-* Toto je jeden směrové upgradu po upgradu na rychlé obnovení, budete se moci vrátit.
+* Získáte možnost konfigurace uchovávání snímku na základě potřeb obnovení. V závislosti na požadavku můžete nastavit uchování snímků pro minimálně jeden den v okně zásady zálohování, jak je popsáno níže. To vám pomůže snížení nákladů pro uchovávání dat snímku, pokud nechcete provádět obnovení často.
+* Jedná se o jeden směrové upgrade po upgradu na rychlé obnovení, budete se moci vrátit.
 
 >[!NOTE]
 >Pomocí této rychlé obnovení upgradu, doba uchovávání snímek u všech zákazníků (**nové i stávající zahrnuté obě**) se nastaví na výchozí hodnotu dvou dnů. Však můžete nastavit dobu trvání podle vašich požadavků na libovolnou hodnotu mezi 1 až 5 dnů uvolní.
 
 ## <a name="cost-impact"></a>Cenově dopad
 
-Přírůstkovými snímky se ukládají v účtu úložiště Virtuálního počítače, které se používají pro rychlé obnovení. Přírůstkový snímek znamená, že místo obsazené snímku je rovna místo obsazené stránky, které jsou zapsány po vytvoření snímku. Fakturace je stále za GB je stejný, jak je uvedeno v využité místo obsazena snímek a cena za GB [stránce s cenami](https://azure.microsoft.com/pricing/details/managed-disks/).
+Přírůstkové snímky se ukládají v účtu úložiště virtuálních počítačů, který se používá pro rychlé obnovení. Přírůstkový snímek znamená, že místo obsazené snímku je rovna místo obsazené stránky, které jsou zapsány po vytvoření snímku. Fakturace je stále za GB je stejný, jak je uvedeno v využité místo obsazena snímek a cena za GB [stránce s cenami](https://azure.microsoft.com/pricing/details/managed-disks/).
 
 >[!NOTE]
 > Je pevně snímku uchování 5 dní pro týdenní zásady.

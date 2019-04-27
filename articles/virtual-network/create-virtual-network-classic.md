@@ -17,16 +17,16 @@ ms.date: 10/31/2018
 ms.author: genli
 ms.custom: ''
 ms.openlocfilehash: e40648ef47b108050486d43eefdb1564786c053e
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50421386"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62098112"
 ---
 # <a name="create-a-virtual-network-classic-with-multiple-subnets"></a>Vytvoření virtuální sítě (klasické) s několika podsítěmi
 
 > [!IMPORTANT]
-> Azure má dva [různých modelů nasazení](../azure-resource-manager/resource-manager-deployment-model.md?toc=%2fazure%2fvirtual-network%2ftoc.json) pro vytváření a práci s nimi: Resource Manager a classic. Tento článek se věnuje použití klasického modelu nasazení. Microsoft doporučuje vytváření většina nové virtuální sítě [Resource Manageru](quick-create-portal.md) modelu nasazení.
+> Azure má dva [různých modelů nasazení](../azure-resource-manager/resource-manager-deployment-model.md?toc=%2fazure%2fvirtual-network%2ftoc.json) pro vytváření a práci s prostředky: Resource Manager a classic. Tento článek se věnuje použití klasického modelu nasazení. Microsoft doporučuje vytváření většina nové virtuální sítě [Resource Manageru](quick-create-portal.md) modelu nasazení.
 
 V tomto kurzu zjistěte, jak vytvořit základní virtuální síť Azure (classic), který má samostatné veřejné a privátní podsítě. Nemůžete vytvářet prostředky Azure, jako jsou virtuální počítače a cloudové služby v podsíti. Prostředky vytvořené v rámci virtuální sítě (classic) můžou komunikovat mezi sebou a s prostředky v jiných sítích připojené k virtuální síti.
 
@@ -98,7 +98,7 @@ Můžete vytvořit virtuální síť (classic) pomocí [webu Azure portal](#port
     azure network vnet show --vnet myVnet
     ```
 
-7. **Volitelné**: můžete chtít odstranit prostředky, které jste vytvořili po dokončení tohoto kurzu, aby se vám neúčtovaly poplatky za využívání:
+7. **Volitelné**: Můžete chtít odstranit prostředky, které jste vytvořili po dokončení tohoto kurzu, aby se vám neúčtovaly poplatky za využívání:
 
     ```azurecli-interactive
     azure network vnet delete --vnet myVnet --quiet
@@ -153,7 +153,7 @@ Můžete vytvořit virtuální síť (classic) pomocí [webu Azure portal](#port
     Get-AzureVNetSite -VNetName "myVnet"
     ```
 
-8. **Volitelné**: můžete chtít odstranit prostředky, které jste vytvořili po dokončení tohoto kurzu, aby se vám neúčtovaly poplatky za využívání. Odstranit virtuální síť, dokončete kroků 4 až 6 znovu odebrat tento čas **VirtualNetworkSite** elementu, které jste přidali v kroku 5.
+8. **Volitelné**: Můžete chtít odstranit prostředky, které jste vytvořili po dokončení tohoto kurzu, aby se vám neúčtovaly poplatky za využívání. Odstranit virtuální síť, dokončete kroků 4 až 6 znovu odebrat tento čas **VirtualNetworkSite** elementu, které jste přidali v kroku 5.
  
 > [!NOTE]
 > I když nelze zadat skupinu prostředků k vytvoření virtuální sítě (classic) v powershellu, Azure vytvoří virtuální síť ve skupině prostředků s názvem *výchozí sítě*.

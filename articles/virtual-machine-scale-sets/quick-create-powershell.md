@@ -17,11 +17,11 @@ ms.custom: mvc
 ms.date: 11/08/2018
 ms.author: cynthn
 ms.openlocfilehash: ac350ac890b747d332f60909e03995a14d813b33
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56668766"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61471498"
 ---
 # <a name="quickstart-create-a-virtual-machine-scale-set-with-azure-powershell"></a>Rychlý start: Vytvoření virtuálního počítače škálovací sady pomocí Azure Powershellu
 

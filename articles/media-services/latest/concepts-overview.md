@@ -9,22 +9,22 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 03/20/2019
+ms.date: 04/21/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: 8f21374ae5da76c9954acc5227f593ab4be19ce9
-ms.sourcegitcommit: 956749f17569a55bcafba95aef9abcbb345eb929
-ms.translationtype: MT
+ms.openlocfilehash: 74a4ee03562963c8a50159f085e4b76b6d461ed9
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58630555"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62103832"
 ---
 # <a name="media-services-concepts"></a>Koncepty služby Media Services
 
 Toto téma nabízí stručný přehled o konceptech Azure Media Services a obsahuje odkazy na články s podrobnější vysvětlení Media Services v3 koncepty a funkce. Základní koncepty popsané v těchto témat byste měli zkontrolovat před spuštěním vývoje.
 
 > [!NOTE]
-> V současné době nelze použít na webu Azure portal ke správě prostředků v3. Použití [rozhraní REST API](https://aka.ms/ams-v3-rest-ref), [rozhraní příkazového řádku](https://aka.ms/ams-v3-cli-ref), nebo jeden z podporovaných [sady SDK](developers-guide.md).
+> Aktuálně nemůžete spravovat prostředky v3 pomocí webu Azure Portal. Použijte rozhraní [REST API](https://aka.ms/ams-v3-rest-ref), [rozhraní příkazového řádku](https://aka.ms/ams-v3-cli-ref) nebo některou z podporovaných sad [SDK](developers-guide.md).
 
 ## <a name="cloud-upload-and-storage"></a>Nahrávání na cloud a úložiště
 
@@ -89,7 +89,7 @@ Azure Media Services umožňuje doručovat živé události do vašich zákazní
 
 Následující obrázek ukazuje pracovní postup předávací typu:
 
-![Předávací](./media/live-streaming/pass-through.svg)
+![Průchozí](./media/live-streaming/pass-through.svg)
 
 - [Přehled živého streamování](live-streaming-overview.md)
 - [Živé události a výstupy](live-events-outputs-concept.md)
@@ -115,6 +115,10 @@ Monitorování metrik a diagnostické protokoly, které vám pomohou pochopit, j
 Azure Media Player můžete použít k přehrávání mediálního obsahu, které streamují Media Services na širokou škálu prohlížečů a zařízení. Azure Media Player využívá oborové standardy, jako je HTML5, rozšíření zdroj média (MSE) a rozšíření eme (Encrypted Media Extensions), k poskytování bohatších možností adaptivního streamování. 
 
 - [Přehled Azure Media Playeru](use-azure-media-player.md)
+
+## <a name="provide-feedback"></a>Poskytnutí zpětné vazby
+
+Podívejte se [komunita Azure Media Services](media-services-community.md) článek a zobrazit různé způsoby můžete klást otázky, poskytnout zpětnou vazbu a aktualizace o Media Services.
 
 ## <a name="next-steps"></a>Další postup
 

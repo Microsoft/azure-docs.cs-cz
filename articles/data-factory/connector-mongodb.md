@@ -3,21 +3,22 @@ title: Kopírování dat z MongoDB pomocí Azure Data Factory | Dokumentace Micr
 description: Zjistěte, jak kopírovat data z Mongo DB do úložišť dat podporovaných jímky pomocí aktivity kopírování v kanálu Azure Data Factory.
 services: data-factory
 documentationcenter: ''
-author: linda33wj
-manager: craigg
+author: WenJason
+manager: digimobile
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 12/20/2018
-ms.author: jingwang
+origin.date: 12/20/2018
+ms.date: 04/22/2019
+ms.author: v-jay
 ms.openlocfilehash: ca6040bb74839f30a2f1b13297f6037f05240c67
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55562201"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61400436"
 ---
 # <a name="copy-data-from-mongodb-using-azure-data-factory"></a>Kopírování dat z MongoDB pomocí Azure Data Factory
 
@@ -49,7 +50,7 @@ Pro MongoDB propojené služby jsou podporovány následující vlastnosti:
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
 | type |Vlastnost type musí být nastavená na: **MongoDbV2** |Ano |
-| připojovací řetězec |Například zadejte připojovací řetězec MongoDB `mongodb://[username:password@]host[:port][/[database][?options]]`. Odkazovat na [ruční MongoDB v připojovacím řetězci](https://docs.mongodb.com/manual/reference/connection-string/) další podrobnosti. <br/><br />Označte toto pole jako **SecureString** typ bezpečně uložit ve službě Data Factory. Můžete také [odkazovat tajného klíče do služby Azure Key Vault](store-credentials-in-key-vault.md). |Ano |
+| connectionString |Například zadejte připojovací řetězec MongoDB `mongodb://[username:password@]host[:port][/[database][?options]]`. Odkazovat na [ruční MongoDB v připojovacím řetězci](https://docs.mongodb.com/manual/reference/connection-string/) další podrobnosti. <br/><br />Označte toto pole jako **SecureString** typ bezpečně uložit ve službě Data Factory. Můžete také [odkazovat tajného klíče do služby Azure Key Vault](store-credentials-in-key-vault.md). |Ano |
 | databáze | Název databáze, které chcete získat přístup. | Ano |
 | connectVia | [Prostředí Integration Runtime](concepts-integration-runtime.md) se použije k připojení k úložišti. Můžete použít modul Integration Runtime nebo prostředí Azure Integration Runtime (Pokud vaše úložiště dat je veřejně dostupná). Pokud není zadán, použije výchozí prostředí Azure Integration Runtime. |Ne |
 

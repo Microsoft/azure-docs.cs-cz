@@ -14,11 +14,11 @@ ms.reviwer: ''
 manager: craigg
 ms.date: 03/08/2019
 ms.openlocfilehash: 5226ec05af95cf305008968cf945070532274ee5
-ms.sourcegitcommit: 235cd1c4f003a7f8459b9761a623f000dd9e50ef
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/11/2019
-ms.locfileid: "57726936"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61419997"
 ---
 # <a name="always-encrypted-protect-sensitive-data-and-store-encryption-keys-in-the-windows-certificate-store"></a>Funkce Always Encrypted: Ochrana citlivých dat a ukládání šifrovacích klíčů v úložišti certifikátů Windows
 
@@ -60,7 +60,7 @@ Připojovací řetězec budete potřebovat v pozdější části kurzu. Po vytvo
 
     ![Zkopírování připojovacího řetězce](./media/sql-database-always-encrypted/connection-strings.png)
 
-## <a name="connect-to-the-database-with-ssms"></a>Připojit se k databázi pomocí SSMS
+## <a name="connect-to-the-database-with-ssms"></a>Připojení k databázi pomocí SSMS
 
 Otevřete SSMS a připojte se k serveru databáze Clinic.
 

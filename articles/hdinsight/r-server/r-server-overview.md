@@ -1,7 +1,6 @@
 ---
 title: Úvod do služby ML v Azure HDInsight
 description: Zjistěte, jak vytvářet aplikace pro analýzy velkých objemů dat pomocí služby ML na HDInsight.
-services: hdinsight
 ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
@@ -9,12 +8,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/27/2018
-ms.openlocfilehash: a07f052cf89da039bb9fe091f1cd997c19d2fcc7
-ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
+ms.openlocfilehash: 56a11a17de3c66a3d45edb71c72be20ce1a1c89e
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53584526"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62124726"
 ---
 # <a name="introduction-to-ml-services-and-open-source-r-capabilities-on-hdinsight"></a>Úvod do služby ML a možnosti open-source jazyka R v HDInsight
 
@@ -64,7 +63,7 @@ Následující funkce jsou součástí služby ML v HDInsight.
 | Kategorie funkce | Popis |
 |------------------|-------------|
 | Povolené R | [Balíčky R](https://docs.microsoft.com/machine-learning-server/r-reference/introducing-r-server-r-package-reference) pro řešeními napsanými v jazyce R, rozdělení opensourcového jazyka R a za běhu infrastruktury pro spuštění skriptu. |
-| Python – povoleno | [Moduly Pythonu](https://docs.microsoft.com/machine-learning-server/python-reference/introducing-python-package-reference) pro řešení, které jsou napsané v Pythonu, rozdělení opensourcových Pythonu a infrastrukturu run-time pro spuštění skriptu.
+| Python-enabled | [Moduly Pythonu](https://docs.microsoft.com/machine-learning-server/python-reference/introducing-python-package-reference) pro řešení, které jsou napsané v Pythonu, rozdělení opensourcových Pythonu a infrastrukturu run-time pro spuštění skriptu.
 | [Předem natrénovaných modelů](https://docs.microsoft.com/machine-learning-server/install/microsoftml-install-pretrained-models) | Pro vizuální analýzu a analýza mínění v textu připravené ke stanovení skóre dat zadáte. |
 | [Nasazení a využití](r-server-operationalize.md) | Zprovoznění serveru a nasadit řešení jako webovou službu. |
 | [Vzdálené spuštění](r-server-hdinsight-manage.md#connect-remotely-to-microsoft-ml-services) | Spuštění vzdálené relace v clusteru služby ML ve vaší síti z pracovní stanice klienta. |

@@ -11,11 +11,11 @@ ms.subservice: studio
 ms.topic: tutorial
 ms.date: 02/11/2019
 ms.openlocfilehash: 6cdccd54546296c85864f1588b71109ed8b8f79f
-ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58620503"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60734714"
 ---
 # <a name="tutorial-3-deploy-credit-risk-model---azure-machine-learning-studio"></a>Kurz 3: Nasadit model rizika kredit – Azure Machine Learning Studio
 

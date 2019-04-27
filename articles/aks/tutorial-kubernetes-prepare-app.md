@@ -9,11 +9,11 @@ ms.date: 12/19/2018
 ms.author: iainfou
 ms.custom: mvc
 ms.openlocfilehash: 9212e065ff7f6b0e3df1b90296f54159762bdaf9
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58002008"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61030524"
 ---
 # <a name="tutorial-prepare-an-application-for-azure-kubernetes-service-aks"></a>Kurz: Příprava aplikace pro Azure Kubernetes Service (AKS)
 
@@ -30,7 +30,7 @@ Po dokončení bude ve vašem místním vývojovém prostředí spuštěná nás
 
 V dalších kurzech se image kontejneru nahraje do služby Azure Container Registry a pak nasadí do clusteru AKS.
 
-## <a name="before-you-begin"></a>Před zahájením
+## <a name="before-you-begin"></a>Než začnete
 
 V tomto kurzu se předpokládá základní znalost klíčových konceptů Dockeru, jako jsou kontejnery, image kontejnerů a příkazy `docker`. Základní informace o kontejnerech najdete v článku [Get started with Docker][docker-get-started] (Začínáme s Dockerem).
 

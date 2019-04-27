@@ -14,11 +14,11 @@ ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: bd39b0aae5b76f37e2153f8e4c4502be994fa5b5
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58081827"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61461999"
 ---
 # <a name="move-data-from-postgresql-using-azure-data-factory"></a>Přesun dat z PostgreSQL pomocí Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -80,7 +80,7 @@ Následující tabulka obsahuje popis JSON elementy, které jsou specifické pro
 | schema |Název schématu databáze. Název schématu je velká a malá písmena. |Ne |
 | authenticationType. |Typ ověřování používaný pro připojení k databázi PostgreSQL. Možné hodnoty: Anonymní, základní a Windows. |Ano |
 | uživatelské jméno |Zadejte uživatelské jméno, pokud se používá ověřování Basic nebo Windows. |Ne |
-| heslo |Zadejte heslo pro uživatelský účet, který jste zadali pro uživatelské jméno. |Ne |
+| password |Zadejte heslo pro uživatelský účet, který jste zadali pro uživatelské jméno. |Ne |
 | gatewayName |Název brány, který služba Data Factory měla použít pro připojení k místní databázi PostgreSQL. |Ano |
 
 ## <a name="dataset-properties"></a>Vlastnosti datové sady
@@ -306,12 +306,12 @@ Při přesouvání dat k PostgreSQL, se používají následující mapování z
 
 | Typ databáze PostgreSQL | Aliasy PostgresSQL | Typ rozhraní .NET framework |
 | --- | --- | --- |
-| abstime | |Datum a čas |
+| abstime | |DateTime |
 | bigint |int8 |Int64 |
 | bigserial |serial8 |Int64 |
 | bit [(n)] | |Byte [], řetězce |
 | bit různou [(n)] |varbit |Byte [], řetězce |
-| Boolean |bool |Logická hodnota |
+| Boolean |bool |Boolean |
 | box | |Byte [], řetězce |
 | bytea | |Byte [], řetězce |
 | znak [(n)] |char [(n)] |String |
@@ -319,7 +319,7 @@ Při přesouvání dat k PostgreSQL, se používají následující mapování z
 | CID | |String |
 | cidr | |String |
 | Kruh | |Byte [], řetězce |
-| date | |Datum a čas |
+| date | |DateTime |
 | DateRange | |String |
 | dvojitou přesností |float8 |Double |
 | inet | |Byte [], řetězce |
@@ -333,7 +333,7 @@ Při přesouvání dat k PostgreSQL, se používají následující mapování z
 | řádek | |Byte [], řetězce |
 | lseg | |Byte [], řetězce |
 | macaddr | |Byte [], řetězce |
-| peníze | |Decimal |
+| money | |Decimal |
 | numerické [(p, s)] |desetinné číslo [(p, s)] |Decimal |
 | numrange | |String |
 | identifikátor objektu | |Int32 |
@@ -341,7 +341,7 @@ Při přesouvání dat k PostgreSQL, se používají následující mapování z
 | pg_lsn | |Int64 |
 | bod | |Byte [], řetězce |
 | Mnohoúhelník | |Byte [], řetězce |
-| Real |FLOAT4 |Single |
+| real |FLOAT4 |Single |
 | smallint |int2 |Int16 |
 | smallserial |serial2 |Int16 |
 | sériové |serial4 |Int32 |

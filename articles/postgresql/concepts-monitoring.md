@@ -7,11 +7,11 @@ ms.service: postgresql
 ms.topic: conceptual
 ms.date: 11/05/2018
 ms.openlocfilehash: 0d5508fe6b07bd5664bd0708960559537d8f6be1
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58098487"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61456219"
 ---
 # <a name="monitor-and-tune"></a>Monitorování a ladění
 Data o vašich serverech monitorování vám pomůže řešit a optimalizovat pro vaši úlohu. Azure Database for PostgreSQL nabízí různé možnosti monitorování k poskytování přehledů o chování vašeho serveru.
@@ -34,7 +34,7 @@ Tyto metriky jsou k dispozici pro službu Azure Database for PostgreSQL:
 |serverlog_storage_usage|Využité úložiště protokolů serveru|B|Množství využívaného úložiště protokolu serveru.|
 |serverlog_storage_limit|Limit úložiště protokolů serveru|B|Maximální serverové úložiště protokolu pro tento server.|
 |active_connections|Aktivní připojení|Počet|Počet aktivních připojení k serveru.|
-|connections_failed|Chyba připojení|Počet|Počet selhání připojení k serveru.|
+|connections_failed|Neúspěšná připojení|Počet|Počet selhání připojení k serveru.|
 |network_bytes_egress|Síťové výstupy|B|Odchozí síťový provoz mezi aktivních připojení.|
 |network_bytes_ingress|Síťové vstupy|B|Sítě v rámci aktivních připojení.|
 |backup_storage_used|Využité úložiště záloh|B|Velikost úložiště záloh používá.|

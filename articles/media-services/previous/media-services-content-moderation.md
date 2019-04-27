@@ -15,16 +15,16 @@ ms.topic: article
 ms.date: 03/14/2019
 ms.author: sajagtap
 ms.openlocfilehash: eb16f5e1e72e5a9379ad530ab9677adba2ccbbcd
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57899559"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61465673"
 ---
 # <a name="use-azure-media-content-moderator-to-detect-possible-adult-and-racy-content"></a>Použití Azure Media Content Moderator rozpoznat možné obsahu pro dospělé nebo pikantního obsahu 
 
 ## <a name="overview"></a>Přehled
-**Azure Media Content Moderator** procesor médií (PP) vám umožní použít moderování s podporou počítače pro svá videa. Můžete například zjistit možné obsahu pro dospělé nebo pikantního obsahu ve videích a zkontrolovat obsah s příznakem vaše týmy lidské moderování.
+**Azure Media Content Moderator** procesor médií (PP) vám umožní použít moderování s podporou počítače pro svá videa. Ve videích například můžete chtít detekovat potenciálně nevhodný obsah nebo obsah pro dospělé a označený obsah nechat zkontrolovat týmy lidského moderování.
 
 **Azure Media Content Moderator** sady Management Pack je aktuálně ve verzi Preview.
 

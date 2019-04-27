@@ -6,18 +6,22 @@ author: sachdevaswati
 manager: vijayts
 ms.service: backup
 ms.topic: conceptual
-ms.date: 03/19/2019
+ms.date: 04/23/2019
 ms.author: sachdevaswati
-ms.openlocfilehash: 8d6323c73e5313a29b7b0df09ebdd24a190879f5
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 649e50634d901ab48f1cb36c39d7331401c0cc51
+ms.sourcegitcommit: a95dcd3363d451bfbfea7ec1de6813cad86a36bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59791889"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62733544"
 ---
 # <a name="faq-about-sql-server-databases-that-are-running-on-an-azure-vm-backup"></a>Nejčastější dotazy týkající se databáze SQL serveru, na kterých běží zálohování virtuálních počítačů Azure
 
 Tento článek odpovědi na běžné dotazy o zálohování databáze systému SQL Server, ve kterých běží na Azure virtual machines (VM) a které používají [Azure Backup](backup-overview.md) služby.
+
+## <a name="can-i-use-azure-backup-for-iaas-vm-as-well-as-sql-server-on-the-same-machine"></a>Můžu používat Azure backup pro virtuální počítač IaaS, stejně jako SQL Server na stejném počítači?
+Ano, může mít zálohování virtuálních počítačů a zálohování SQL na jednom virtuálním počítači. V takovém případě aktivujeme interně úplné zálohy na virtuálním počítači není zkrátit protokoly.
+
 
 ## <a name="does-the-solution-retry-or-auto-heal-the-backups"></a>Řešení znovu nebo automatické opravy zálohy?
 
@@ -45,7 +49,8 @@ Ano. Můžete omezit rychlost, jakou zásadu zálohování, která spouští k m
   `{"DefaultBackupTasksThreshold": 5}`
 
 3. Uložte změny a zavřete soubor.
-4. Na instanci serveru SQL Server otevřete **Správce úloh**. Restartujte **AzureWLBackupCoordinatorSvc** služby.
+4. Na instanci serveru SQL Server otevřete **Správce úloh**. Restartujte **AzureWLBackupCoordinatorSvc** služby.<br/> <br/>
+ Zatímco tato metoda je výhodné, pokud aplikaci Zálohování, která spotřebovává velké množství prostředků, SQL Server [správce zdrojů](https://docs.microsoft.com/sql/relational-databases/resource-governor/resource-governor?view=sql-server-2017) je obecnějším způsobem, jak zadat omezení množství procesoru, vstupně-výstupních operací fyzické a paměti, která se dá příchozí žádosti o aplikace použití.
 
 > [!NOTE]
 > V uživatelském prostředí stále můžete pokračovat a naplánování záloh v každém okamžiku ale budou zpracovány v posuvné okno Řekněme, 5, podle výše uvedeném příkladu.

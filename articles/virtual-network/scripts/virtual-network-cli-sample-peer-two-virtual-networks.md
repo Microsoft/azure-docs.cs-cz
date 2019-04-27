@@ -3,8 +3,8 @@ title: Ukázkový skript Azure CLI – Vytvoření partnerského vztahu mezi dv�
 description: Ukázkový skript Azure CLI – Vytvoření partnerského vztahu mezi dvěma virtuálními sítěmi
 services: virtual-network
 documentationcenter: virtual-network
-author: jimdial
-manager: jeconnoc
+author: KumudD
+manager: twooley
 editor: ''
 tags: ''
 ms.assetid: ''
@@ -14,13 +14,13 @@ ms.topic: sample
 ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 ms.date: 03/20/2018
-ms.author: jdial
+ms.author: kumud
 ms.openlocfilehash: 142b36e5c1f0908ccfc1bf2e475442028e02edf7
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
-ms.translationtype: MT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55728448"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61488227"
 ---
 # <a name="peer-two-virtual-networks-script-sample"></a>Ukázkový skript pro vytvoření partnerského vztahu mezi dvěma virtuálními sítěmi
 

@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 02/10/2019
 ms.author: juliako
 ms.openlocfilehash: a241f66adecbab1d0b1462f379d3765d6c1de252
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55995386"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61466769"
 ---
 # <a name="upload-files-into-a-media-services-account-using-rest"></a>Nahrání souborů do účtu Azure Media Services pomocí rozhraní REST
 
@@ -63,4 +63,4 @@ Pomocí rozhraní API služby Azure Storage nebo sady SDK (například [REST API
 
 ## <a name="next-steps"></a>Další postup
 
-[Kurz: Vzdálený soubor na základě adresy URL kódování a streamování videa – REST](stream-files-tutorial-with-rest.md)
+[Kurz: Kódování vzdáleného souboru na základě adresy URL a streamování videa – REST](stream-files-tutorial-with-rest.md)

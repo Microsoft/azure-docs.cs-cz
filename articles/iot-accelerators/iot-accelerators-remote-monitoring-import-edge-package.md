@@ -3,17 +3,18 @@ title: Řešení vzdáleného monitorování importovat balíček Edge – Azure
 description: Tento článek popisuje, jak importovat balíček IoT Edge do akcelerátoru řešení vzdáleného monitorování
 author: dominicbetts
 manager: timlt
-ms.author: dobett
+ms.author: v-yiso
 ms.service: iot-accelerators
 services: iot-accelerators
-ms.date: 10/10/2018
+origin.date: 10/10/2018
+ms.date: 12/17/2018
 ms.topic: conceptual
 ms.openlocfilehash: 34222f396ed3c43932371aa9f64a459bb2a5dd0e
-ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/16/2018
-ms.locfileid: "51828192"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61442935"
 ---
 # <a name="import-an-iot-edge-package-into-your-remote-monitoring-solution-accelerator"></a>Importovat balíček IoT Edge do akcelerátor řešení vzdálené monitorování
 
@@ -31,9 +32,9 @@ Export manifest nasazení z vývojového prostředí pomocí webu Azure portal:
 
 1. Na webu Azure Portal přejděte k centru IoT, které používáte pro vývoj a testování vašeho zařízení IoT Edge. Klikněte na tlačítko **IoT Edge** a potom **nasazení IoT Edge**: ![IoT Edge](media/iot-accelerators-remote-monitoring-import-edge-package/iotedge.png)
 
-1. Klikněte na nasazení, jehož konfigurace nasazení, který chcete použít. **Podrobnosti o nasazení** zobrazí se stránka: ![podrobnosti o nasazení IoT Edge](media/iot-accelerators-remote-monitoring-import-edge-package/deploymentdetails.png)
+1. Klikněte na nasazení, jehož konfigurace nasazení, který chcete použít. **Podrobnosti o nasazení** zobrazí se stránka: ![Podrobnosti o nasazení IoT Edge](media/iot-accelerators-remote-monitoring-import-edge-package/deploymentdetails.png)
 
-1. Klikněte na tlačítko **IoT Edge stáhnout manifest**: ![stáhnout manifest nasazení](media/iot-accelerators-remote-monitoring-import-edge-package/download.png)
+1. Klikněte na tlačítko **IoT Edge stáhnout manifest**:  ![Stáhnout manifest nasazení](media/iot-accelerators-remote-monitoring-import-edge-package/download.png)
 
 1. Uložení souboru JSON jako místní soubor s názvem **deploymentmanifest.json**.
 
@@ -43,11 +44,11 @@ Nyní máte soubor obsahující manifest nasazení. V další části importu ma
 
 Podle následujících pokynů k importu manifestu nasazení Edge jako balíček do vašeho řešení:
 
-1. Přejděte na **balíčky** stránky ve vzdálené monitorování webového uživatelského rozhraní: ![balíčky stránky](media/iot-accelerators-remote-monitoring-import-edge-package/packagespage.png)
+1. Přejděte **balíčky** stránky ve vzdálené monitorování webového uživatelského rozhraní:  ![Stránka balíčky](media/iot-accelerators-remote-monitoring-import-edge-package/packagespage.png)
 
-1. Klikněte na tlačítko **+ nový balíček pro**, zvolte **Edge Manifest** typ balíčku, a klikněte na **Procházet** vyberte **deploymentmanifest.json** souboru jste si uložili v předchozí části: ![manifestu vyberte](media/iot-accelerators-remote-monitoring-import-edge-package/selectmanifest.png)
+1. Klikněte na tlačítko **+ nový balíček pro**, zvolte **Edge Manifest** typ balíčku, a klikněte na **Procházet** vyberte **deploymentmanifest.json** souboru jste si uložili v předchozí části:  ![Vyberte manifestu](media/iot-accelerators-remote-monitoring-import-edge-package/selectmanifest.png)
 
-1. Klikněte na tlačítko **nahrát** přidání balíčku do vašeho řešení vzdáleného monitorování: ![nahrané balíčku](media/iot-accelerators-remote-monitoring-import-edge-package/uploadedpackage.png)
+1. Klikněte na tlačítko **nahrát** přidání balíčku do vašeho řešení vzdáleného monitorování:  ![Nahraný balíček](media/iot-accelerators-remote-monitoring-import-edge-package/uploadedpackage.png)
 
 Teď když jste odeslali manifest nasazení IoT Edge jako balíček. Na **nasazení** stránce tento balíček můžete nasadit do připojených zařízení IoT Edge.
 

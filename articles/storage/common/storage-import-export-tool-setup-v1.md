@@ -9,11 +9,11 @@ ms.date: 01/15/2017
 ms.author: muralikk
 ms.subservice: common
 ms.openlocfilehash: aafff208b9de2ae485fb84be428cf77f237e022e
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58087444"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61477565"
 ---
 # <a name="setting-up-the-azure-importexport-tool"></a>Nastavení nástroje Import/Export Azure
 Nástroje Microsoft Azure Import/Export je jednotka přípravy a opravit nástroj, který vám pomůže se služby Microsoft Azure Import/Export. Nástroj můžete použít pro následující funkce:  

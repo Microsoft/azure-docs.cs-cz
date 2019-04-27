@@ -4,20 +4,20 @@ description: Přehled způsob uložení dat konfigurace v konfiguraci aplikací 
 services: azure-app-configuration
 documentationcenter: ''
 author: yegu-ms
-manager: balans
+manager: maiye
 editor: ''
 ms.service: azure-app-configuration
 ms.devlang: na
 ms.topic: overview
 ms.workload: tbd
-ms.date: 02/24/2019
+ms.date: 04/19/2019
 ms.author: yegu
-ms.openlocfilehash: 24216d1bf82789d2d0fc312d9af4c06fa3c8cf4e
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
-ms.translationtype: HT
+ms.openlocfilehash: 39367cbe6c001fc782fd899ee3a99b37ece70a77
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60011278"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60741185"
 ---
 # <a name="key-value-store"></a>Ukládání hodnot klíče
 
@@ -45,29 +45,27 @@ Můžete uspořádat klíče v konfiguraci aplikace hierarchicky mnoha způsoby.
 
 Tady je několik příkladů můžete jak strukturovat vaše názvy klíčů do hierarchie:
 
-* Podle prostředí
-
-        AppName:Test:DB:Endpoint
-        AppName:Staging:DB:Endpoint
-        AppName:Production:DB:Endpoint
-
 * Podle služby komponent
 
-        AppName:Service1:Test:DB:Endpoint
-        AppName:Service1:Staging:DB:Endpoint
-        AppName:Service1:Production:DB:Endpoint
-        AppName:Service2:Test:DB:Endpoint
-        AppName:Service2:Staging:DB:Endpoint
-        AppName:Service2:Production:DB:Endpoint
+        AppName:Service1:ApiEndpoint
+        AppName:Service2:ApiEndpoint
 
 * Podle oblastí nasazení
 
-        AppName:Production:Region1:DB:Endpoint
-        AppName:Production:Region2:DB:Endpoint
+        AppName:Region1:DbEndpoint
+        AppName:Region2:DbEndpoint
+
+### <a name="label-keys"></a>Popis klíče
+
+Hodnoty klíče v konfiguraci aplikace můžou mít atribut label. Popisky se používají k odlišení hodnoty klíče se stejným klíčem. Klíč *app1* popisky *A* a *B* tvoří dvě různé klíče v obchodě s aplikacemi konfigurace. Ve výchozím nastavení, popisek s hodnotou klíče je prázdný, nebo `null`.
+
+Popisek poskytuje pohodlný způsob, jak vytvořit varianty klíče. Běžné použití popisků, které je k určení více prostředí pro stejný klíč:
+
+    Key = AppName:DbEndpoint & Label = Test
+    Key = AppName:DbEndpoint & Label = Staging
+    Key = AppName:DbEndpoint & Label = Production
 
 ### <a name="version-key-values"></a>Hodnoty klíče verze
-
-Hodnoty klíče v konfiguraci aplikace můžou mít atribut label. Popisky se používají k odlišení hodnoty klíče se stejným klíčem. Klíč *app1* popisky *v1* a *v2* tvoří dvě samostatné hodnoty klíče v obchodě s aplikacemi konfigurace. Ve výchozím nastavení, popisek s hodnotou klíče je prázdný, nebo `null`.
 
 Konfigurace aplikace není hodnoty klíče verze automaticky podle jejich. Použití popisků jako způsob, jak vytvořit více verzí modulu hodnotu klíče. Například můžete zadat číslo verze aplikace nebo Identifikátor potvrzení Git v popiscích k identifikaci hodnoty klíče přidružené k sestavení určitého softwaru.
 

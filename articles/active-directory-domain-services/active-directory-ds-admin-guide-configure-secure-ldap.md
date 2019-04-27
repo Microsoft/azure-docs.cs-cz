@@ -16,18 +16,18 @@ ms.topic: conceptual
 ms.date: 11/02/2018
 ms.author: ergreenl
 ms.openlocfilehash: 66c50d7ec9948b1f2447aadcef4a4a8f321204ef
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55177386"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62104023"
 ---
 # <a name="configure-secure-ldap-ldaps-for-an-azure-ad-domain-services-managed-domain"></a>Konfigurace zabezpečeného protokolu LDAP (LDAPS) pro spravované domény služby Azure AD Domain Services
 Tento článek popisuje, jak můžete zajistit zabezpečení Lightweight Directory Access protokolu (LDAPS) pro spravované domény služby Azure AD Domain Services. Protokol Secure LDAP se také označuje jako "Directory přístup protokolu LDAP (Lightweight) přes vrstvy SSL (Secure Sockets) / zabezpečení TLS (Transport Layer)".
 
 [!INCLUDE [active-directory-ds-prerequisites.md](../../includes/active-directory-ds-prerequisites.md)]
 
-## <a name="before-you-begin"></a>Před zahájením
+## <a name="before-you-begin"></a>Než začnete
 K provádění úkolů uvedených v tomto článku, budete potřebovat:
 
 1. Platný **předplatného Azure**.

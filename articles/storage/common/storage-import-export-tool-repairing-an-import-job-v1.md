@@ -9,11 +9,11 @@ ms.date: 01/23/2017
 ms.author: muralikk
 ms.subservice: common
 ms.openlocfilehash: fda1d3d626c91ba984f08b96c79ab6a2fd2ec74b
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55471727"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61477582"
 ---
 # <a name="repairing-an-import-job"></a>Oprava úlohy importu
 Služba Microsoft Azure Import/Export nemusí podařit zkopírujte některé soubory nebo části souborů do služby Windows Azure Blob service. Mezi důvody pro selhání patří:  

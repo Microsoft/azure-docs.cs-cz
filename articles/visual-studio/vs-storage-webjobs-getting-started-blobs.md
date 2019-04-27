@@ -13,11 +13,11 @@ ms.topic: conceptual
 ms.date: 12/02/2016
 ms.author: ghogen
 ms.openlocfilehash: 5a7c16e6ac565d1660fee02cb7df178344b195e7
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51254396"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62122919"
 ---
 # <a name="get-started-with-azure-blob-storage-and-visual-studio-connected-services-webjob-projects"></a>Začínáme s Azure Blob storage a Visual Studio připojené služby (webové úlohy projektů)
 [!INCLUDE [storage-try-azure-tools-blobs](../../includes/storage-try-azure-tools-blobs.md)]
@@ -28,7 +28,7 @@ Tento článek obsahuje ukázky kódu C#, které ukazují, jak aktivovat proces 
 ## <a name="how-to-trigger-a-function-when-a-blob-is-created-or-updated"></a>Jak aktivovat funkci, když se vytvoří nebo aktualizuje objekt blob
 Tato část ukazuje způsob použití **BlobTrigger** atribut.
 
- **Poznámka:** sada WebJobs SDK kontroluje soubory protokolů, které chcete sledovat pro nové nebo změněné objekty BLOB. Tento proces je ze své podstaty pomalé. funkce nemusí se aktivují až několik minut nebo i déle po vytvoření objektu blob.  Pokud vaše aplikace potřebuje pro zpracování objektů BLOB okamžitě, doporučujeme k vytvoření zprávy fronty při vytvoření objektu blob a použít **QueueTrigger** atribut místo **BlobTrigger** atribut na funkci, která zpracovává objekt blob.
+ **Poznámka:** Sada WebJobs SDK kontroluje soubory protokolů, které chcete sledovat pro nové nebo změněné objekty BLOB. Tento proces je ze své podstaty pomalé. funkce nemusí se aktivují až několik minut nebo i déle po vytvoření objektu blob.  Pokud vaše aplikace potřebuje pro zpracování objektů BLOB okamžitě, doporučujeme k vytvoření zprávy fronty při vytvoření objektu blob a použít **QueueTrigger** atribut místo **BlobTrigger** atribut na funkci, která zpracovává objekt blob.
 
 ### <a name="single-placeholder-for-blob-name-with-extension"></a>Jeden zástupný symbol pro název objektu blob s příponou
 Zkopíruje text objekty BLOB, které se zobrazují v následujícím příkladu kódu *vstupní* kontejneru *výstup* kontejneru:
@@ -193,7 +193,7 @@ Sada WebJobs SDK, zajišťuje, že žádné **BlobTrigger** funkce volána více
 
 Potvrzení objektu BLOB se ukládají v kontejneru nazvaném *azure – webjobs – hostitelé* v určeném AzureWebJobsStorage připojovací řetězec účtu úložiště Azure. Potvrzení objektu blob obsahuje následující informace:
 
-* Funkce, která byla volána pro objekt blob ("*{název úlohy WebJob}*. Funkce. *{Název funkce}*", například:"WebJob1.Functions.CopyBlob")
+* Funkce, která byla volána pro objekt blob ("*{název úlohy WebJob}*. Funkce. *{Název funkce}*", například: "WebJob1.Functions.CopyBlob")
 * Název kontejneru
 * Typ objektu blob ("BlockBlob" nebo "PageBlob")
 * Název objektu blob
@@ -207,7 +207,7 @@ Informace o tom, jak zpracovat zpracování objektu blob aktivuje zpráv fronty,
 Související témata v tomto článku zahrnují následující:
 
 * Asynchronní funkce
-* Více instancí
+* Několik instancí
 * Řádné vypnutí
 * Použití sady WebJobs SDK atributů v těle funkce
 * Nastavení sady SDK připojovacích řetězců v kódu.

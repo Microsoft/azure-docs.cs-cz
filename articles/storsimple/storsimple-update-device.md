@@ -14,16 +14,16 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 01/23/2018
 ms.author: v-sharos
-ms.openlocfilehash: 412978d2c343394f295e336690ec72153dda4b79
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: d973a16c121a1e8ebee10826d135bcbb33ef748c
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38452613"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61409930"
 ---
 # <a name="update-your-storsimple-8000-series-device"></a>Aktualizace zařízení StorSimple řady 8000
 > [!NOTE]
-> Portál Classic pro StorSimple je zastaralý. Vaši Správci zařízení StorSimple se automaticky přesunou na nový Azure Portal podle plánu ukončování používání. O tomto přesunu vás budeme informovat prostřednictvím e-mailu a oznámení na portálu. Tento dokument zanedlouho také nebude k dispozici. Pokud máte jakékoli dotazy k tomuto přesunu, přečtěte si [Nejčastější dotazy: Přesun na Azure Portal](storsimple-8000-move-azure-portal-faq.md).
+> Portál Classic pro StorSimple je zastaralý. Vaši Správci zařízení StorSimple se automaticky přesunou na nový Azure Portal podle plánu ukončování používání. O tomto přesunu vás budeme informovat prostřednictvím e-mailu a oznámení na portálu. Tento dokument zanedlouho také nebude k dispozici. Dotazy týkající se přesunu, naleznete v tématu [– nejčastější dotazy: Přesunout na webu Azure portal](storsimple-8000-move-azure-portal-faq.md).
 
 ## <a name="overview"></a>Přehled
 Funkce aktualizace StorSimple umožňují snadno aktualizovat zařízení StorSimple. V závislosti na typu aktualizací můžete použít aktualizace na zařízení prostřednictvím portálu Azure classic nebo prostřednictvím rozhraní Windows PowerShell. Tento kurz popisuje typy aktualizací a jak nainstalovat každou z nich.
@@ -49,7 +49,7 @@ Pravidelné aktualizace jsou nenarušující aktualizace, které mohou být nain
 * Můžete také nainstalovat pravidelné aktualizace přes Windows PowerShell pro StorSimple. Podrobnosti najdete v tématu [instalace pravidelné aktualizace přes Windows PowerShell pro StorSimple](#install-regular-updates-via-windows-powershell-for-storsimple).
 
 ### <a name="maintenance-mode-updates"></a>Aktualizace režimu údržby
-Aktualizace režimu údržby se o narušující aktualizace, jako je například upgrady firmwaru disku. Tyto aktualizace vyžadují zařízení uvést do režimu údržby. Podrobnosti najdete v tématu [krok 2: Zadejte údržbu](#step2). Na portálu Azure classic nelze použít k instalaci aktualizací režimu údržby. Místo toho musíte použít Windows PowerShell pro StorSimple. 
+Aktualizace režimu údržby se o narušující aktualizace, jako je například upgrady firmwaru disku. Tyto aktualizace vyžadují zařízení uvést do režimu údržby. Podrobnosti najdete v tématu [krok 2: Spustit režim údržby](#step2). Na portálu Azure classic nelze použít k instalaci aktualizací režimu údržby. Místo toho musíte použít Windows PowerShell pro StorSimple. 
 
 Podrobnosti o tom, jak nainstalovat aktualizace režimu údržby, najdete v článku [aktualizace režimu údržby nainstalovat přes Windows PowerShell pro StorSimple](#install-maintenance-mode-updates-via-windows-powershell-for-storsimple).
 
@@ -76,7 +76,7 @@ Alternativně můžete použít Windows PowerShell pro StorSimple na standardní
 ## <a name="install-maintenance-mode-updates-via-windows-powershell-for-storsimple"></a>Nainstalovat aktualizace režimu údržby pomocí prostředí Windows PowerShell pro StorSimple
 Nainstalovat aktualizace režimu údržby na zařízení StorSimple pomocí prostředí Windows PowerShell pro StorSimple. V tomto režimu jsou pozastaveny všechny vstupně-výstupní požadavky. Zastaví se také služby, jako je paměť s náhodným přístupem stálé (paměti NVRAM) nebo službu clusteringu. Oba kontrolery se restartují, když zadáte nebo tento režim ukončit. Při ukončení tento režim všechny služby bude pokračovat a musí být v pořádku. (To může trvat několik minut.)
 
-Pokud je potřeba nainstalovat aktualizace režimu údržby, dostanete upozornění, že máte aktualizace, které musí být nainstalován prostřednictvím portálu Azure classic. Tato výstraha bude obsahovat pokyny k instalaci aktualizací pomocí Windows Powershellu pro StorSimple. Po aktualizaci vašich zařízení, použijte stejný postup a změňte zařízení do normálního režimu. Podrobné pokyny najdete v tématu [krok 4: režim údržby ukončovací](#step4).
+Pokud je potřeba nainstalovat aktualizace režimu údržby, dostanete upozornění, že máte aktualizace, které musí být nainstalován prostřednictvím portálu Azure classic. Tato výstraha bude obsahovat pokyny k instalaci aktualizací pomocí Windows Powershellu pro StorSimple. Po aktualizaci vašich zařízení, použijte stejný postup a změňte zařízení do normálního režimu. Podrobné pokyny najdete v tématu [krok 4: Ukončete režim údržby](#step4).
 
 > [!IMPORTANT]
 > * Před přechod do režimu údržby, ověřte, že oba kontrolery zařízení jsou v dobrém stavu tak, že zkontrolujete **stav hardwaru** na **údržby** stránky na portálu Azure classic. Pokud kontroler není v pořádku, obraťte se na Microsoft Support pro další kroky. Další informace přejděte na kontaktujte podporu Microsoftu. 
@@ -84,12 +84,12 @@ Pokud je potřeba nainstalovat aktualizace režimu údržby, dostanete upozorně
 > 
 > 
 
-### <a name="step-1-connect-to-the-serial-console-a-namestep1"></a>Krok 1: Připojení ke konzole sériového portu <a name="step1">
+### <a name="step-1-connect-to-the-serial-console-a-namestep1"></a>Krok 1: Připojte se ke konzole sériového portu <a name="step1">
 Nejprve použijte aplikaci, jako je například PuTTY pro přístup ke konzole sériového portu. Následující postup vysvětluje, jak pomocí PuTTY k připojení ke konzole sériového portu.
 
 [!INCLUDE [storsimple-use-putty](../../includes/storsimple-use-putty.md)]
 
-### <a name="step-2-enter-maintenance-mode-a-namestep2"></a>Krok 2: Zadejte režim údržby <a name="step2">
+### <a name="step-2-enter-maintenance-mode-a-namestep2"></a>Krok 2: Spustit režim údržby <a name="step2">
 Po připojení ke konzole, určete, jestli existují aktualizace nainstalovat a spustit režim údržby k instalaci.
 
 [!INCLUDE [storsimple-enter-maintenance-mode](../../includes/storsimple-enter-maintenance-mode.md)]
@@ -99,7 +99,7 @@ V dalším kroku nainstalujte aktualizace.
 
 [!INCLUDE [storsimple-install-maintenance-mode-updates](../../includes/storsimple-install-maintenance-mode-updates.md)]
 
-### <a name="step-4-exit-maintenance-mode-a-namestep4"></a>Krok 4: Režim údržby ukončení <a name="step4">
+### <a name="step-4-exit-maintenance-mode-a-namestep4"></a>Krok 4: Ukončete režim údržby <a name="step4">
 A konečně ukončete režim údržby.
 
 [!INCLUDE [storsimple-exit-maintenance-mode](../../includes/storsimple-exit-maintenance-mode.md)]

@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: johndeu;
 ms.openlocfilehash: 10dbf7e8cf67ab721cf525d4a1e7594473592bd4
-ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58295162"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61459109"
 ---
 # <a name="signaling-timed-metadata-in-live-streaming"></a>Signalizace časovaných metadat v živém streamování 
 
@@ -103,7 +103,7 @@ Zhuštěný sledování musí být deklarována v poli Live Server Manifest s \<
 |--------------------|----------------|---------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | systemBitrate      | Číslo         | Požaduje se      | MUSÍ být "0", určující stopy s neznámým, proměnné s přenosovou rychlostí.                                                                                                                                                                                                 |
 | parentTrackName    | String         | Požaduje se      | MUSÍ být název dráhy nadřazené časové kódy zhuštěné sledování jsou zarovnána časový rámec. Jeden směr určený nadřazený nemůže být zhuštěné sledování.                                                                                                                    |
-| manifestOutput     | Logická hodnota        | Požaduje se      | MUSÍ být "true", označíte, že zhuštěné sledování vloží v manifestu klienta funkce Smooth.                                                                                                                                                               |
+| manifestOutput     | Boolean        | Požaduje se      | MUSÍ být "true", označíte, že zhuštěné sledování vloží v manifestu klienta funkce Smooth.                                                                                                                                                               |
 | Podtyp            | String         | Požaduje se      | MUSÍ být čtyři kód znaku "DATA".                                                                                                                                                                                                                         |
 | Schéma             | String         | Požaduje se      | MUSÍ být název URN nebo adresa URL identifikaci schéma zprávy. Zprávy [SCTE – 35] musí být "urn: scte:scte35:2013a:bin" zprávy k odeslání HLS, Smooth a Dash klientům v souladu s [SCTE 67]. |
 | TrackName          | String         | Požaduje se      | MUSÍ být název zhuštěné sledování. TrackName slouží k rozlišení více datových proudů událostí se stejným schématem. Každého datového proudu událostí jedinečný, musí mít název jedinečný sledování.                                                                           |
@@ -283,7 +283,7 @@ EventStream element má následující atributy:
 | **Název atributu** | **Typ**                | **Vyžaduje?** | **Popis**                                                                                                                                                                                                                                                                                   |
 |--------------------|-------------------------|---------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | scheme_id_uri      | string                  | Požaduje se      | Určuje schéma zprávy. Schéma nastavena na hodnotu atributu schéma do pole Live manifestu serveru. Hodnota musí být název URN nebo adresa URL identifikaci schéma zprávy; například "urn: scte:scte35:2013a:bin".                                                                |
-| hodnota              | string                  | Nepovinné      | Další řetězcová hodnota, vlastníky schéma používané k úpravám sémantiku zprávy. Rozlišení více datových proudů událostí se stejným schématem, musí být hodnota nastavena na název datového proudu událostí (trackName pro protokol Smooth ingestování nebo tuk název zprávy pro RTMP ingestování). |
+| value              | string                  | Nepovinné      | Další řetězcová hodnota, vlastníky schéma používané k úpravám sémantiku zprávy. Rozlišení více datových proudů událostí se stejným schématem, musí být hodnota nastavena na název datového proudu událostí (trackName pro protokol Smooth ingestování nebo tuk název zprávy pro RTMP ingestování). |
 | Timescale          | 32bitové celé číslo bez znaménka | Požaduje se      | Časové osy v taktech za sekundu, časy a doba trvání polí v rámci pole "emsg".                                                                                                                                                                                                       |
 
 

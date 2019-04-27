@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 04/19/2019
+ms.date: 04/23/2019
 ms.author: jingwang
-ms.openlocfilehash: b97d21503e8dcd75906581faf1851533bcd69fa6
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 8f1e2aebae88d34334200504915be4043f32013b
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/23/2019
-ms.locfileid: "60203373"
+ms.locfileid: "62107375"
 ---
 # <a name="copy-data-to-or-from-azure-sql-data-warehouse-by-using-azure-data-factory"></a>Kopírování dat do nebo z Azure SQL Data Warehouse pomocí Azure Data Factory 
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you're using:"]
@@ -35,9 +35,6 @@ Konkrétně tento konektor Azure SQL Data Warehouse podporuje tyto funkce:
 - Kopírování dat pomocí ověřování SQL a ověřování pomocí tokenu aplikace Azure Active Directory (Azure AD) pomocí identity objektu zabezpečení nebo spravované služby pro prostředky Azure.
 - Jako zdroj načtení dat pomocí jazyka SQL nebo uloženou proceduru.
 - Jako jímka načítání dat pomocí PolyBase nebo hromadného vložení. PolyBase vám doporučujeme pro lepší výkon kopírování.
-
-> [!IMPORTANT]
-> Všimněte si, že PolyBase podporuje jenom ověřování SQL, ale ověřování AD Azure to neplatí.
 
 > [!IMPORTANT]
 > Pokud zkopírujete data pomocí Azure Data Factory Integration Runtime, nakonfigurujte [brány firewall serveru Azure SQL](https://msdn.microsoft.com/library/azure/ee621782.aspx#ConnectingFromAzure) tak, aby službám Azure přístup k serveru.
@@ -539,8 +536,8 @@ V následující tabulce jsou uvedené příklady toho, jak zadat **tableName** 
 
 | Schéma databáze | Název tabulky | **tableName** vlastnost JSON |
 | --- | --- | --- |
-| dbo | Tabulka | MyTable nebo dbo.MyTable nebo [dbo].[MyTable] |
-| dbo1 | Tabulka | dbo1. Tabulka nebo [dbo1].[MyTable] |
+| dbo | MyTable | MyTable nebo dbo.MyTable nebo [dbo].[MyTable] |
+| dbo1 | MyTable | dbo1. Tabulka nebo [dbo1].[MyTable] |
 | dbo | My.Table | [My.Table] nebo [dbo].[My.Table] |
 | dbo1 | My.Table | [dbo1].[My.Table] |
 

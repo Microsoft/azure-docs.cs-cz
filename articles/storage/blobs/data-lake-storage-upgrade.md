@@ -8,12 +8,12 @@ ms.author: normesta
 ms.date: 02/07/2019
 ms.service: storage
 ms.subservice: data-lake-storage-gen2
-ms.openlocfilehash: 1a9d26736a444efb83f9040b51676202b1ea4450
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
-ms.translationtype: HT
+ms.openlocfilehash: 84e3aff9c1c8cb3e7fe399c861c2c7d58c278fed
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60006110"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62107869"
 ---
 # <a name="upgrade-your-big-data-analytics-solutions-from-azure-data-lake-storage-gen1-to-azure-data-lake-storage-gen2"></a>Upgradovat řešení analýzy velkých objemů dat z Azure Data Lake Storage Gen1 na Azure Data Lake Storage Gen2
 
@@ -249,7 +249,7 @@ Hlavního úkolu je převod identifikátorů URI, které mají předponu `adl://
 
 Schéma identifikátoru URI pro Data Lake Storage Gen1 je uvedený [tady](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-use-data-lake-store) podrobností, ale zhruba řečeno, je *adl://mydatalakestore.azuredatalakestore.net/\<cesta_k_souboru\>.*
 
-Schéma identifikátoru URI pro přístup k souborům Data Lake Storage Gen2 je vysvětleno [tady](https://docs.microsoft.com/azure/storage/data-lake-storage/use-hdi-cluster) podrobností, ale zhruba řečeno, je `abfss://<FILE_SYSTEM_NAME>@<ACCOUNT_NAME>.dfs.core.widows.net/<PATH>`.
+Schéma identifikátoru URI pro přístup k souborům Data Lake Storage Gen2 je vysvětleno [tady](../../hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2.md) podrobností, ale zhruba řečeno, je `abfss://<FILE_SYSTEM_NAME>@<ACCOUNT_NAME>.dfs.core.widows.net/<PATH>`.
 
 Budete muset projít vašimi stávajícími aplikacemi a ujistěte se, že jste změnili identifikátory URI odpovídajícím způsobem tak, aby odkazoval na Gen2 úložiště Data Lake těch, které jsou. Kromě toho budete muset přidat příslušné přihlašovací údaje. A konečně jak vyřadit původní aplikace a nahraďte novou aplikaci muset nezarovnají úzce ke strategii zachování celkové upgradu.
 

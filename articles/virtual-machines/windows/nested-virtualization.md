@@ -12,11 +12,11 @@ ms.service: virtual-machines-windows
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.openlocfilehash: f90ca51349eef92bd25095f5a2a10d7d181fdb2c
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57766525"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61488286"
 ---
 # <a name="how-to-enable-nested-virtualization-in-an-azure-vm"></a>Povolení vnořené virtualizace ve Virtuálním počítači Azure
 

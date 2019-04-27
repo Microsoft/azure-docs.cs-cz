@@ -16,11 +16,11 @@ ms.date: 10/04/2016
 ms.author: stefsch
 ms.custom: seodec18
 ms.openlocfilehash: aea51234d26e5dbaef836419c2a13a12f8083e6f
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53315855"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62130700"
 ---
 # <a name="connect-securely-to-back-end-resources-from-an-app-service-environment"></a>Připojujte se bezpečně k back end prostředky ze služby App Service environment
 ## <a name="overview"></a>Přehled
@@ -46,7 +46,7 @@ Doporučuje se také, že všechny vlastní servery DNS ve virtuální síti se 
 ## <a name="connecting-to-a-sql-server"></a>Připojení k SQL serveru
 Běžné konfigurace systému SQL Server má naslouchat na portu 1433 koncový bod:
 
-![Koncový bod SQL serveru][SqlServerEndpoint]
+![SQL Server Endpoint][SqlServerEndpoint]
 
 Existují dvě metody pro omezujete provoz směřující do tohoto koncového bodu:
 

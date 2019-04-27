@@ -6,14 +6,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: backup
 ms.topic: conceptual
-ms.date: 02/24/2019
+ms.date: 04/23/2019
 ms.author: raynew
-ms.openlocfilehash: aacfe725310b3c8e4785e24b80728f0e60694814
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: eaad582dc6484cb62d0bebf1af447ff61301a3bb
+ms.sourcegitcommit: a95dcd3363d451bfbfea7ec1de6813cad86a36bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59496091"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62733963"
 ---
 # <a name="support-matrix-for-azure-vm-backup"></a>Matice podpory pro zálohování virtuálních počítačů Azure
 Můžete použít [služby Azure Backup](backup-overview.md) pro zálohování místních počítačů a úlohy a Azure virtual machines (VM). Tento článek shrnuje podporu nastavení a omezení při zálohování virtuálních počítačů Azure pomocí Azure Backup.
@@ -168,7 +168,7 @@ Změna velikosti disku v chráněném virtuálním počítači | Podporuje se.
 Sdílené úložiště| Zálohování virtuálních počítačů pomocí sdíleného svazku clusteru (CSV) nebo souborového serveru se Škálováním se nedoporučuje. Jsou pravděpodobně selže během zálohování sdíleného svazku clusteru zapisovače. Při obnovování disky obsahující Sdílené svazky clusteru nemusí přijde nahoru.
 
 > [!NOTE]
-> Azure Backup nepodporuje disky prokládané. Změna velikosti disku se nedoporučuje službou Azure Backup.
+> Změna velikosti disku se nedoporučuje službou Azure Backup.
 
 
 ## <a name="vm-network-support"></a>Podpora sítě virtuálních počítačů
@@ -187,7 +187,7 @@ Azure Traffic Manager   | Podporuje se.<br/><br/>Pokud je zálohování virtuál
 Azure DNS | Podporuje se.
 Vlastní DNS |    Podporuje se.
 Odchozí připojení přes server proxy protokolu HTTP | Podporuje se.<br/><br/> Ověřený proxy server nepodporuje.
-Koncové body služby virtuální sítě   | Podporuje se.<br/><br/> Brány firewall a nastavení účtu úložiště virtuální sítě by měly umožnit přístup ze všech sítí.
+Koncové body služby pro virtuální síť   | Podporuje se.<br/><br/> Brány firewall a nastavení účtu úložiště virtuální sítě by měly umožnit přístup ze všech sítí.
 
 
 

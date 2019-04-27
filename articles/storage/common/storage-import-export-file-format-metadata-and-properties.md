@@ -9,11 +9,11 @@ ms.date: 01/23/2017
 ms.author: muralikk
 ms.subservice: common
 ms.openlocfilehash: 2066d4a2ed6db97285d92d15e14dbd21629dbdfa
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55456999"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61478551"
 ---
 # <a name="azure-importexport-service-metadata-and-properties-file-format"></a>Azure Import/Export metadat a vlastností formát souborů služby
 Jako součást úlohy importu nebo úlohy exportu můžete zadat vlastnosti pro minimálně jeden objekt BLOB a metadat. K nastavení metadat nebo vlastností pro objekty BLOB jsou vytvořené jako součást úlohy importu, zadat soubor metadat nebo vlastností na pevný disk obsahující data, která mají být importována. Pro úlohu exportu metadat a vlastností se zapisují do souboru metadat nebo vlastností, který je zahrnut na pevném disku vrátil vám.  

@@ -1,6 +1,6 @@
 ---
-title: Nahraďte řadič zařízení řady StorSimple 8000 | Microsoft Docs
-description: Vysvětluje, jak odeberete a nahradíte jeden nebo oba řadiče modulů ve vašem zařízení řady StorSimple 8000.
+title: Nahraďte kontroleru zařízení StorSimple 8000 series | Dokumentace Microsoftu
+description: Vysvětluje, jak odstranit a nahradit jeden nebo oba moduly řadiče na zařízení řady StorSimple 8000.
 services: storsimple
 documentationcenter: ''
 author: alkohli
@@ -14,81 +14,81 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 06/05/2017
 ms.author: alkohli
-ms.openlocfilehash: 849eccff114c2fd6d952e44d095d0cc89a238675
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: dd2f6fcc9b2f5d716566e91e89487969613d1005
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23875386"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61482790"
 ---
-# <a name="replace-a-controller-module-on-your-storsimple-device"></a>Nahraďte modul řadiče zařízení StorSimple
+# <a name="replace-a-controller-module-on-your-storsimple-device"></a>Nahraďte modul řadiče na zařízení StorSimple
 ## <a name="overview"></a>Přehled
-Tento kurz vysvětluje, jak odeberete a nahradíte jeden nebo oba řadiče modulů v zařízení StorSimple. Popisuje také základní logiku pro scénáře nahrazení jednoduchá a Duální řadiče.
+Tento kurz vysvětluje, jak odstranit a nahradit jeden nebo oba řadiče modulů v zařízení StorSimple. Popisuje také základní logiku pro scénáře nahrazení jednoduchá a duální kontroleru.
 
 > [!NOTE]
-> Před provedením nahrazení řadiče, doporučujeme vždy aktualizujte firmware řadiče na nejnovější verzi.
+> Před provedením nahrazení řadiče, doporučujeme vám vždy aktualizovat firmware řadiče na nejnovější verzi.
 > 
-> Chcete-li zabránit poškození do zařízení StorSimple, není vysunutí řadičem dokud indikátory LED zobrazují jako jednu z následujících:
+> Aby nedošlo k poškození ke svému zařízení StorSimple, vysunout kontroleru dokud indikátorů LED se zobrazují jako jedna z následujících akcí:
 > 
-> * Všechny indikátory jsou OFF.
-> * Indikátor 3, ![zelená ikona zaškrtnutí](./media/storsimple-controller-replacement/HCS_GreenCheckIcon.png), a ![ikonu Red mezi](./media/storsimple-controller-replacement/HCS_RedCrossIcon.png) jsou přerušované, a jsou DIODU 0 a 7 DIODU **ON**.
+> * Všechny světla jsou OFF.
+> * Indikátor 3 ![zelená ikona zaškrtnutí](./media/storsimple-controller-replacement/HCS_GreenCheckIcon.png), a ![červený křížek ikonu](./media/storsimple-controller-replacement/HCS_RedCrossIcon.png) se začne blikat, a LED 0 a LED 7 **ON**.
 
 
-Následující tabulka uvádí scénáře nahrazení podporované řadiče.
+Následující tabulka uvádí scénáře podporované řadiče nahrazení.
 
-| Případ | Scénář nahrazení | Příslušný postup popsaný |
+| Případ | Scénáře s výměnou | Příslušný postup popsaný |
 |:--- |:--- |:--- |
-| 1 |Jeden řadič je ve stavu selhání, jiný řadič je v pořádku a aktivní. |[Jednotné nahrazení řadiče](#replace-a-single-controller), který popisuje [logiku za náhradní jediného kontroleru](#single-controller-replacement-logic), a taky [kroky nahrazení](#single-controller-replacement-steps). |
-| 2 |Oběma řadičům selhaly a vyžadovat nahrazení. Skříň, disky a skříně disku jsou v pořádku. |[Dva řadiče nahrazení](#replace-both-controllers), který popisuje [logiku za náhradní dva řadiče](#dual-controller-replacement-logic), společně s [kroky nahrazení](#dual-controller-replacement-steps). |
-| 3 |Řadiče ze stejné zařízení nebo z různých zařízení jsou vzájemně zaměněny. Skříň, disky a skříně disku jsou v pořádku. |Zobrazí se zpráva upozornění neshoda slot. |
-| 4 |Chybí jeden řadič a jiný řadič se nezdaří. |[Dva řadiče nahrazení](#replace-both-controllers), který popisuje [logiku za náhradní dva řadiče](#dual-controller-replacement-logic), společně s [kroky nahrazení](#dual-controller-replacement-steps). |
-| 5 |Jeden nebo oba řadiče se nezdařilo. Zařízení nelze přistupovat prostřednictvím konzoly sériového portu nebo vzdálenou komunikaci prostředí Windows PowerShell. |[Kontaktujte Microsoft Support](storsimple-8000-contact-microsoft-support.md) postup nahrazení ruční řadiče. |
-| 6 |V řadičích mít verzi různých sestavení, který může být z důvodu:<ul><li>Mají řadiče verze jiný software.</li><li>Verze firmwaru různých mají řadiče.</li></ul> |Pokud verze softwaru řadiče liší, logiku nahrazení rozpozná, že a aktualizací softwaru verze na nahrazení řadiče.<br><br>Pokud se liší verze firmwaru řadiče a je starší verze firmwaru **není** automaticky rozšiřitelný, se zobrazí zpráva s upozorněním na portálu Azure. Doporučujeme vyhledávání aktualizací a nainstalovat aktualizace firmwaru.</br></br>Pokud verze firmwaru řadiče se liší a je automaticky rozšiřitelný starší verze firmwaru, logice kontroleru nahrazení to zjistí a po spuštění kontroleru, firmwaru, bude automaticky aktualizovat. |
+| 1 |Jeden kontroler je v chybovém stavu, druhý kontroler je v pořádku a aktivní. |[Jeden kontroler nahrazení](#replace-a-single-controller), která popisuje [logice nahrazení jedním řadičem](#single-controller-replacement-logic), stejně jako [kroky nahrazení](#single-controller-replacement-steps). |
+| 2 |Oba kontrolery selhat a vyžadovat nahrazení. Skříň, disky a skříně disku jsou v pořádku. |[Nahrazení dvěma řadiči](#replace-both-controllers), vystihuje [logiku za dvěma řadiči nahrazení](#dual-controller-replacement-logic), stejně jako [kroky nahrazení](#dual-controller-replacement-steps). |
+| 3 |Jsou přehozeny řadiče ze stejné zařízení nebo z různých zařízení. Skříň, disky a skříně disku jsou v pořádku. |Zobrazí se zpráva upozornění neshoda slot. |
+| 4 |Chybí jeden kontroler a druhý řadič se nezdaří. |[Nahrazení dvěma řadiči](#replace-both-controllers), vystihuje [logiku za dvěma řadiči nahrazení](#dual-controller-replacement-logic), stejně jako [kroky nahrazení](#dual-controller-replacement-steps). |
+| 5 |Jeden nebo oba kontrolery se nezdařilo. Zařízení nemůže přistupovat prostřednictvím konzoly sériového portu nebo vzdálenou komunikaci prostředí Windows PowerShell. |[Obraťte se na Microsoft Support](storsimple-8000-contact-microsoft-support.md) postup nahrazení ruční kontroleru. |
+| 6 |Kontrolery mají jiné sestavení verze, které mohou být z důvodu:<ul><li>Verze různých softwarových mají řadiče.</li><li>Verze firmwaru různých mají řadiče.</li></ul> |Pokud verze softwaru kontroleru se liší, náhradní logiku zjistí, že a aktualizuje verze softwaru na řadiči nahrazení.<br><br>Pokud verze firmwaru řadič se liší a je starší verze firmwaru **není** automaticky je možné upgradovat, se zobrazí zpráva s upozorněním na webu Azure Portal. By měla vyhledávat aktualizace a nainstalujte aktualizace firmwaru.</br></br>Pokud verze firmwaru řadič se liší a je automaticky je možné upgradovat staré verze firmwaru, nahrazení logice kontroleru zjistí a po spuštění kontroleru firmware se automaticky aktualizují. |
 
-Je třeba odebrat modul řadiče, pokud se nezdařila. Jeden nebo oba řadiče moduly může selhat, což může vést ke jediného kontroleru náhrada nebo duální řadiče nahrazení. Náhradní postupy a logiku za je naleznete v následujících tématech:
+Budete muset odebrat řadič modulu, pokud se nezdařilo. Jeden nebo oba řadiče moduly může selhat, což může znamenat jeden řadič nahrazení nebo nahradit aktuální soubor dvěma řadiči. Náhradní postupy a logiku za nimi stojí naleznete v následujících tématech:
 
 * [Výměna jednoho kontroleru](#replace-a-single-controller)
-* [Nahraďte oba řadiče](#replace-both-controllers)
+* [Nahraďte oba kontrolery](#replace-both-controllers)
 * [Odebrání zařízení](#remove-a-controller)
-* [Vložit řadič](#insert-a-controller)
-* [Identifikovat řadič active na zařízení](#identify-the-active-controller-on-your-device)
+* [Vložit kontroleru](#insert-a-controller)
+* [Identifikace aktivního kontroleru na vašem zařízení](#identify-the-active-controller-on-your-device)
 
 > [!IMPORTANT]
-> Před odebráním a nahrazení řadiče, informace zabezpečení v [StorSimple hardwarové součásti nahrazení](storsimple-8000-hardware-component-replacement.md).
+> Před odebírání a nahrazování kontroleru, přečtěte si informace bezpečnost v [StorSimple hardwarové komponenty nahrazení](storsimple-8000-hardware-component-replacement.md).
 > 
 > 
 
-## <a name="replace-a-single-controller"></a>Nahraďte jediného kontroleru
-Pokud jeden ze dvou řadičů v Microsoft Azure StorSimple zařízení se nezdařila, pracuje správně nebo chybí, je třeba nahradit jediného kontroleru.
+## <a name="replace-a-single-controller"></a>Výměna jednoho kontroleru
+Pokud mezi dva řadiče na zařízení Microsoft Azure StorSimple se nezdařila, nefunguje nebo chybí, je nutné k výměna jednoho kontroleru.
 
-### <a name="single-controller-replacement-logic"></a>Nahrazení logiku jediného kontroleru
-V náhradní jediného kontroleru byste měli nejdřív odebrat řadičem se nezdařilo. (Zbývající řadič v zařízení je aktivní.) Když vložíte nahrazení řadiče, provedou se tyto akce:
+### <a name="single-controller-replacement-logic"></a>Jedním řadičem náhradní logiku
+V nahrazení jedním řadičem byste měli nejprve odebrat kontroleru, který selhal. (Zbývající řadiče na zařízení je aktivní kontroler.) Když vložíte nahrazení řadiče, provedou se tyto akce:
 
 1. Nahrazení řadiče okamžitě spustí komunikaci se zařízením StorSimple.
-2. Snímek virtuálního pevného disku (VHD) pro aktivní řadič se zkopíruje na nahrazení řadiče.
-3. Snímek se upravují tak, aby při nahrazení řadiče spuštění z tohoto virtuálního pevného disku, bude rozpoznán jako pohotovostní řadiče.
-4. Po dokončení změny nahrazení řadiče se spustí jako pohotovostní řadič.
-5. Pokud oběma řadičům spuštěné, cluster přepne do režimu online.
+2. Na řadiči nahrazení se zkopíruje snímek virtuálního pevného disku (VHD) pro aktivní kontroler.
+3. Snímek se mění tak, aby při nahrazení řadiče se spouští z tohoto virtuálního pevného disku, bude rozpoznán jako kontroler v pohotovostním režimu.
+4. Po dokončení změn se nahrazení řadiče se spustí jako kontroler v pohotovostním režimu.
+5. Po obou řadičích spuštěna, obsahuje clusteru online.
 
-### <a name="single-controller-replacement-steps"></a>Kroky nahrazení jediného kontroleru
-Pokud dojde k selhání jednoho z řadičů v zařízení s Microsoft Azure StorSimple, proveďte následující kroky. (Další řadič musí být aktivní a spuštěná. Pokud oba řadiče selhat nebo nebude fungovat správně, přejděte na [kroky nahrazení duální řadiče](#dual-controller-replacement-steps).)
+### <a name="single-controller-replacement-steps"></a>Jedním řadičem nahrazení kroky
+Pokud selže některý kontroler v zařízení Microsoft Azure StorSimple, proveďte následující kroky. (Druhý kontroler musí být aktivní a v chodu. Pokud oba kontrolery selhat nebo selhání, přejděte na [kroky nahrazení dvěma řadiči](#dual-controller-replacement-steps).)
 
 > [!NOTE]
-> Může trvat 30 – 45 minut pro řadič restartovat a zcela obnovit z procedury nahrazení jediného kontroleru. Celkový čas pro celý postup, včetně připojení kabely, je přibližně 2 hodiny.
+> Může trvat 30 – 45 minut kontroleru restartovat a zcela obnovit z procedury nahrazení jediného kontroleru. Celkový čas pro celý postup, včetně připojení kabely, je přibližně 2 hodiny.
 
 
-#### <a name="to-remove-a-single-failed-controller-module"></a>Chcete-li odebrat modul jeden řadič se nezdařilo
-1. Na portálu Azure přejděte do služby Správce zařízení StorSimple, klikněte na tlačítko **zařízení**a potom klikněte na název zařízení, které chcete monitorovat.
-2. Přejděte na **sledování > Stav hardwaru**. Stav řadič 0 a řadič 1 musí být red, což naznačuje selhání.
+#### <a name="to-remove-a-single-failed-controller-module"></a>Pro odebrání modulu jednoho kontroleru, který selhal
+1. Na webu Azure Portal, přejděte do služby Správce zařízení StorSimple, klikněte na tlačítko **zařízení**a pak klikněte na název zařízení, které chcete monitorovat.
+2. Přejděte na **sledování > Stav hardwaru**. Stav řadič 0 a řadič 1 by měla být červená, což znamená selhání.
    
    > [!NOTE]
-   > Selhání řadiče v náhradní jediného kontroleru je vždy řadič pohotovostní.
+   > Selhal řadič v nahrazení jedním řadičem je vždy kontroler v pohotovostním režimu.
    
-3. Pomocí obrázku 1 a v následující tabulce vyhledejte modul řadič se nezdařilo.
+3. Obrázek 1 a v následující tabulce použijte k vyhledání modulu kontroleru, který selhal.
    
-    ![Propojovací rozhraní systému modulů skříň primární zařízení](./media/storsimple-controller-replacement/IC740994.png)
+    ![Propojovací rozhraní modulů primární skříň zařízení](./media/storsimple-controller-replacement/IC740994.png)
    
-    **Obrázek 1** zařízení StorSimple of zpět
+    **Obrázek 1** zařízení StorSimple z zpět
    
    | Štítek | Popis |
    |:--- |:--- |
@@ -96,146 +96,146 @@ Pokud dojde k selhání jednoho z řadičů v zařízení s Microsoft Azure Stor
    | 2 |PCM 1 |
    | 3 |Řadič 0 |
    | 4 |Řadič 1 |
-4. Odeberte všechny připojené síťové kabely z portů, data na řadičem se nezdařilo. Pokud používáte 8600 model, také odeberte SAS kabely, které se připojují k řadiči EBOD řadičem.
-5. Postupujte podle kroků v [odebrání řadiče](#remove-a-controller) odebrat řadič se nezdařilo.
-6. Nainstalujte nahrazení objektu pro vytváření stejný slot, ze kterého byl odebrán řadičem se nezdařilo. Tím se spustí logiku nahrazení jediného kontroleru. Další informace najdete v tématu [jednotné logiku nahrazení řadiče](#single-controller-replacement-logic).
-7. Při nahrazení logiku jediného kontroleru hodnoty na pozadí, znovu se připojte kabely. Vezměte v potaz připojení všech kabelů přesně stejným způsobem, aby byly připojené před nahrazení.
-8. Po restartování kontroleru, zkontrolujte **stav řadiče** a **clusteru stav** na portálu Azure k ověření, že je řadič je zpět do stavu v pořádku a v pohotovostním režimu.
+4. Na řadiči selhalo odeberte všechny připojené síťové kabely z portů, data. Pokud používáte modelu 8600, také odeberte SAS kabely, které se připojují ke kontroleru EBOD kontroleru.
+5. Postupujte podle kroků v [odebrat řadič](#remove-a-controller) odebrání kontroleru, který selhal.
+6. Nainstalujte náhradní objekt pro vytváření stejný slot, ze kterého byla odebrána kontroleru, který selhal. Tím se aktivuje jedním řadičem náhradní logiku. Další informace najdete v tématu [jeden kontroler náhradní logiku](#single-controller-replacement-logic).
+7. Při nahrazení logiky jedním řadičem přejde na pozadí, znovu připojte kabely. Pečlivě připojte všechny kabely přesně stejným způsobem, že byly připojené před nahrazení.
+8. Po restartování kontroleru, zkontrolujte **řadič** a **clusteru stav** na webu Azure Portal a ověřte, že kontroler je zpět do stavu v pořádku a je v pohotovostním režimu.
 
 > [!NOTE]
-> Pokud sledujete zařízení prostřednictvím konzoly sériového portu, může se zobrazit více restartování při kontroleru je obnovení v postupu nahrazení. Když se v nabídce konzoly sériového portu, pak víte, že nahrazení je dokončen. Pokud nabídka se nezobrazí v rámci dvou hodin od nahrazení řadiče, [kontaktovat Microsoft Support](storsimple-8000-contact-microsoft-support.md).
+> Pokud monitorujete zařízení prostřednictvím konzoly sériového portu, může zobrazit vícenásobné restartování, zatímco kontroler se zotavuje ze postup nahrazení. Když se zobrazí v nabídce konzoly sériového portu, pak víte, že nahrazení je kompletní. Pokud se nezobrazí v nabídce v rámci dvou hodin od nahrazení řadiče [obraťte se na Microsoft Support](storsimple-8000-contact-microsoft-support.md).
 >
-> Spuštění aktualizace 4, můžete také použít rutinu `Get-HCSControllerReplacementStatus` v rozhraní Windows PowerShell zařízení k monitorování stavu procesu nahrazení řadiče.
+> Počínaje verzí Update 4, můžete taky použít rutinu `Get-HCSControllerReplacementStatus` v rozhraní Windows PowerShell zařízení k monitorování stavu procesu nahrazení řadiče.
 > 
 
-## <a name="replace-both-controllers"></a>Nahraďte oba řadiče
-Pokud oba řadiče v zařízení Microsoft Azure StorSimple se nezdařilo, jsou nepracuje správně nebo chybí, je třeba nahradit oba řadiče. 
+## <a name="replace-both-controllers"></a>Nahraďte oba kontrolery
+Když oba kontrolery zařízení Microsoft Azure StorSimple selhaly, jsou nefunguje správně nebo chybí, je třeba nahradit oba kontrolery. 
 
-### <a name="dual-controller-replacement-logic"></a>Dva řadiče nahrazení logiky
-V náhradní duální řadiče nejprve odeberte oba selhání řadiče a potom vložte náhrady. Při dvou nahrazení řadiče jsou vloženy, provedou následující akce:
+### <a name="dual-controller-replacement-logic"></a>Duální kontroleru náhradní logiku
+V nahrazení dvěma řadiči nejprve odeberte oba kontrolery se nezdařilo a vložte nahrazení. Po vložení dvou nahrazení řadiče, provedou se tyto akce:
 
-1. Nahrazení řadiče do přihrádky 0 zkontroluje následující:
+1. Nahrazení řadiče ve slotu 0 zkontroluje následující:
    
-   1. Ji používá aktuální verze firmwaru a softwaru?
+   1. Používá aktuální verze firmwaru a softwaru?
    2. Je součástí clusteru?
-   3. Je řadič sdílené s a je v clusteru?
+   3. Je řadič peer spuštěna a je v clusteru?
       
-      Pokud žádná z těchto podmínek jsou splněny, řadičem hledá nejnovější denní zálohování (umístěný ve **nonDOMstorage** na jednotce S). Řadičem zkopíruje nejnovější snímek virtuálního pevného disku ze zálohy.
-2. Řadič do přihrádky 0 používá snímku se image sám sebe.
-3. Mezitím řadičem do přihrádky 1 čeká řadič 0 pro dokončení vytvoření bitové kopie a spustit.
-4. Po spuštění řadič 0, zjistí řadič 1 clusteru vytvořené řadič 0, který aktivuje logiku nahrazení jednoho řadiče. Další informace najdete v tématu [jednotné logiku nahrazení řadiče](#single-controller-replacement-logic).
-5. Pak se bude používat oba řadiče a clusteru přejde do režimu online.
+      Pokud žádná z těchto podmínek jsou splněny, kontroler hledá nejnovější denní zálohování (umístěný ve **nonDOMstorage** na jednotku S). Kontroler zkopíruje nejnovější snímek virtuálního pevného disku ze zálohy.
+2. Kontroler do přihrádky 0 použitím snímku do vlastní image.
+3. Mezitím adaptéru ve slotu 1 čeká řadič 0 pro dokončení vytvoření bitové kopie a spustit.
+4. Po spuštění řadič 0 zjistí řadiče 1 vytvořené řadič 0, clusteru, který aktivuje jedním řadičem náhradní logiku. Další informace najdete v tématu [jeden kontroler náhradní logiku](#single-controller-replacement-logic).
+5. Později poběží oba kontrolery a cluster se převede do online režimu.
 
 > [!IMPORTANT]
-> Následující dva řadiče náhradní po dokončení konfigurace zařízení StorSimple je nutné podniknout ruční zálohování zařízení. Denní zálohy konfigurace zařízení nejsou spustí až po uplynutí 24 hodin. Práce s [Microsoft Support](storsimple-8000-contact-microsoft-support.md) vytvářet ruční zálohu vašeho zařízení.
+> Po nahrazení dvěma řadiči po dokončení konfigurace zařízení StorSimple je nezbytné, že provedete ruční zálohování zařízení. Denní zálohy konfigurace zařízení se aktivuje až po uplynutí 24 hodin. Práce s [Microsoft Support](storsimple-8000-contact-microsoft-support.md) provést ruční zálohování vašeho zařízení.
 
 
-### <a name="dual-controller-replacement-steps"></a>Dva řadiče kroky nahrazení
-Tento pracovní postup je potřeba při obě řadičů v zařízení Microsoft Azure StorSimple se nezdařilo. Toto může nastat v datacentru, ve kterém chladicí systém přestane fungovat, a v důsledku toho oběma řadičům selhání během krátké doby. Jinou sadu kroků je zapotřebí, v závislosti na tom, jestli zařízení StorSimple je vypnutý nebo v, a jestli používáte 8600 nebo 8100 model.
+### <a name="dual-controller-replacement-steps"></a>Kroky nahrazení duální kontroleru
+Tento pracovní postup je potřeba při oba řadiče v zařízení Microsoft Azure StorSimple, které selhaly. To může nastat v datacentru, ve kterém chladicí systém přestane fungovat, a v důsledku toho selžou oba kontrolery v krátké době. V závislosti na tom, jestli zařízení StorSimple je vypnutý, nebo na a určuje, zda používáte 8600 nebo 8100 model, různé sady kroků je povinný.
 
 > [!IMPORTANT]
-> 45 minut může trvat 1 hodinu řadiče pro restartování a zcela obnovit z procedury nahrazení duální řadiče. Celkový čas pro celý postup, včetně připojení kabely, je přibližně 2,5 hodin.
+> Může trvat 45 minut na 1 hodinu pro kontroler, restartování a zcela obnovit z procedury nahrazení dvěma řadiči. Celkový čas pro celý postup, včetně připojení kabely, je přibližně 2,5 hodin.
 
-#### <a name="to-replace-both-controller-modules"></a>Chcete-li nahradit oba řadiče moduly
-1. Pokud zařízení je vypnutý, tento krok přeskočit a přejít k dalšímu kroku. Pokud je zařízení zapnuté, vypněte zařízení.
+#### <a name="to-replace-both-controller-modules"></a>Chcete-li nahradit oba moduly kontroleru
+1. Pokud se zařízení vypne, tento krok přeskočit a pokračovat k dalšímu kroku. Pokud je zařízení zapnuté, vypněte zařízení.
    
-   1. Pokud používáte 8600 model, nejprve vypnout primární skříň a vypněte EBOD skříň.
-   2. Počkejte, dokud se úplně vypnout zařízení. Všechny LED zadní zařízení bude vypnuto.
-2. Odeberte všechny síťové kabely, které jsou připojené k portům data. Pokud používáte 8600 model, také odeberte SAS kabely, které se připojují ke skříni EBOD primární skříň.
-3. Odebrání oba řadiče zařízení StorSimple. Další informace najdete v tématu [odebrání řadiče](#remove-a-controller).
-4. Nejprve vložte nahrazení objektu pro vytváření pro řadič 0 a potom vložte řadič 1. Další informace najdete v tématu [vložit řadič](#insert-a-controller). Tím se spustí logiku nahrazení duální řadiče. Další informace najdete v tématu [duální řadiče nahrazení logiku](#dual-controller-replacement-logic).
-5. Při nahrazení logice kontroleru hodnoty na pozadí, znovu se připojte kabely. Vezměte v potaz připojení všech kabelů přesně stejným způsobem, aby byly připojené před nahrazení. V části Podrobné pokyny pro váš model v kabel vaše zařízení s [instalace zařízení StorSimple 8100](storsimple-8100-hardware-installation.md) nebo [instalace zařízení StorSimple 8600](storsimple-8600-hardware-installation.md).
-6. Zapněte zařízení StorSimple. Pokud používáte 8600 model:
+   1. Pokud používáte modelu 8600, nejprve vypnout primární skříň a vypněte EBOD skříň.
+   2. Počkejte, dokud zařízení se úplně vypnout. Indikátorů LED zadní zařízení bude vypnuto.
+2. Odeberte všechny síťové kabely, které jsou připojené k portům data. Pokud používáte modelu 8600, také odeberte SAS kabely, které se připojují ke skříni EBOD primární skříň.
+3. Odebrání oba kontrolery zařízení StorSimple. Další informace najdete v tématu [odebrat řadič](#remove-a-controller).
+4. Nejprve vložit objekt pro vytváření nahrazení pro řadič 0 a vložte řadič 1. Další informace najdete v tématu [vložit kontroleru](#insert-a-controller). Aktivuje se dvěma řadiči náhradní logiku. Další informace najdete v tématu [dvěma řadiči náhradní logiku](#dual-controller-replacement-logic).
+5. Při nahrazení logice kontroleru přejde na pozadí, znovu připojte kabely. Pečlivě připojte všechny kabely přesně stejným způsobem, že byly připojené před nahrazení. V části Podrobné pokyny pro váš model v kabel vaše zařízení s [instalaci zařízení StorSimple 8100](storsimple-8100-hardware-installation.md) nebo [instalaci zařízení StorSimple 8600](storsimple-8600-hardware-installation.md).
+6. Zapnutí zařízení StorSimple. Pokud používáte 8600 model:
    
-   1. Ujistěte se, že skříň EBOD zapnutá první.
-   2. Počkejte, dokud skříni EBOD běží.
+   1. Ujistěte se, jestli skříň EBOD je zapnutá první.
+   2. Počkejte, dokud běží EBOD skříň.
    3. Zapněte primární skříň.
-   4. Po první řadič restartuje a je ve stavu v pořádku, bude spuštěna v systému.
+   4. Po prvním řadiči restartuje a je v pořádku, systém bude spuštěn.
       
       > [!NOTE]
-      > Pokud sledujete zařízení prostřednictvím konzoly sériového portu, může se zobrazit více restartování při kontroleru je obnovení v postupu nahrazení. Jakmile se zobrazí v nabídce konzoly sériového portu, pak víte, pokud chcete nahrazení je dokončena. Pokud nabídka se nezobrazí v rámci 2,5 hodin od nahrazení řadiče, [kontaktovat Microsoft Support](storsimple-8000-contact-microsoft-support.md).
+      > Pokud monitorujete zařízení prostřednictvím konzoly sériového portu, může zobrazit vícenásobné restartování, zatímco kontroler se zotavuje ze postup nahrazení. Jakmile se zobrazí v nabídce konzoly sériového portu, pak víte, že nahrazení je kompletní. Pokud se nezobrazí v nabídce v rámci 2,5 hodin od nahrazení řadiče [obraťte se na Microsoft Support](storsimple-8000-contact-microsoft-support.md).
      
 ## <a name="remove-a-controller"></a>Odebrání zařízení
-Použijte následující postup k odebrání modul vadný řadiče zařízení StorSimple.
+Pomocí následujícího postupu pro odebrání modulu vadným kontroleru z vašeho zařízení StorSimple.
 
 > [!NOTE]
-> Následující ilustrace jsou pro řadič 0. Pro řadič 1 ty by vrátit zpět.
+> Na následujících obrázcích jsou pro řadič 0. Pro řadič 1 ty by vrátit zpět.
 
 
-#### <a name="to-remove-a-controller-module"></a>Chcete-li odebrat modul řadiče
-1. Pochopit západky modulu mezi Flash a ukazováčkem.
-2. Jemně vměstnat Flash a ukazováčkem společně k uvolnění západky řadiče.
+#### <a name="to-remove-a-controller-module"></a>Pro odebrání modulu kontroleru
+1. Pochopit její podstatu západku modulu mezi thumb a ukazováčkem.
+2. Jemně vměstnat thumb a ukazováčkem dohromady a uvolnit zámek kontroleru.
    
-    ![Uvolnění západky řadiče](./media/storsimple-controller-replacement/IC741047.png)
+    ![Uvolnění kontroleru západky](./media/storsimple-controller-replacement/IC741047.png)
    
-    **Obrázek 2** uvolnění řadiče západky
-3. Vysuňte řadičem mimo skříň pomocí zámek jako popisovač.
+    **Obrázek 2** uvolnění kontroleru západky
+3. Použijte zámek jako popisovač snímku odjede stranou kontroleru mimo skříni.
    
-    ![Klouzavé řadiče mimo skříň](./media/storsimple-controller-replacement/IC741048.png)
+    ![Klouzavé kontroleru mimo skříně](./media/storsimple-controller-replacement/IC741048.png)
    
-    **Obrázek 3** klouzavé řadičem mimo skříň.
+    **Obrázek 3** klouzavé kontroleru mimo skříň.
 
-## <a name="insert-a-controller"></a>Vložit řadič
-Použijte následující postup k instalaci modulu zadaný objekt factory kontroleru po odebrání modul vadný z zařízení StorSimple.
+## <a name="insert-a-controller"></a>Vložit kontroleru
+Použijte následující postup k instalaci modulu zadaný objekt pro vytváření adaptéru vadným modulu odebrali z vašeho zařízení StorSimple.
 
-#### <a name="to-install-a-controller-module"></a>Chcete-li nainstalovat modul řadiče
-1. Zkontrolujte, jestli jsou všechna poškození rozhraní konektory. Všechny kódy PIN konektor poškození nebo ohnuty není nainstalovaný modul.
-2. Vysuňte modul řadiče do skříň. Když zámek plně vydání.
+#### <a name="to-install-a-controller-module"></a>Chcete-li nainstalovat řadič modulu
+1. Zkontrolujte, jestli je škody s konektory rozhraní. Pokud některé konektor PIN kódy jsou poškozeny nebo ohnuty není nainstalovaný modul.
+2. Ukázat modulu řadič ve skříni a plně se uvolní zámek.
    
     ![Klouzavé řadiče do skříně](./media/storsimple-controller-replacement/IC741053.png)
    
     **Obrázek 4** posuvné řadiče do skříň.
-3. S modulem řadiče vložit začněte zavření západky přitom dál tak, aby nabízel modul řadiče do skříň. Zámek se vymění Průvodce řadičem do místní.
+3. S modulem kontroleru vložen proces zavření západku přitom pro nasdílení změn do skříni modulu kontroleru. Zámek se spojí vodítko kontroleru na místě.
    
-    ![Zavření západky řadiče](./media/storsimple-controller-replacement/IC741054.png)
+    ![Zavření kontroleru západky](./media/storsimple-controller-replacement/IC741054.png)
    
-    **Obrázek 5** zavření západky řadiče
-4. Jste hotovi, když přichytí zámek. **OK** DIODU by teď měly být na.
+    **Obrázek 5** zavření západku kontroleru
+4. Pak budete hotovi, když přichytí zámek. **OK** LED by měla nyní být na.
    
    > [!NOTE]
-   > To může trvat až 5 minut pro kontroler a DIODU aktivovat.
+   > Může trvat až 5 minut pro kontroler a LED k aktivaci.
   
-5. Ověřte, že nahrazení úspěšná, na portálu Azure, přejděte na zařízení a pak přejděte do **monitorování** > **stavu hardwaru**a ujistěte se, že jsou v pořádku řadič 0 a řadič 1 (stav je zelená).
+5. Pokud chcete ověřit, jestli nahrazení se úspěšně dokončila, na webu Azure Portal, přejděte do svého zařízení a potom přejděte na **monitorování** > **stav hardwaru**a ujistěte se, že řadič 0 a řadič 1 jsou v pořádku (stav je zelená).
 
-## <a name="identify-the-active-controller-on-your-device"></a>Identifikovat řadič active na zařízení
-Je v mnoha situacích, jako je registrace nebo řadič nahrazení prvního zařízení, které vyžadují, abyste na zařízení StorSimple najít řadič služby active. Řadič active zpracovává všechny disku firmwaru a síťové operace. K identifikaci řadič active můžete použít některou z následujících metod:
+## <a name="identify-the-active-controller-on-your-device"></a>Identifikace aktivního kontroleru na vašem zařízení
+Existuje mnoho situací, jako je například zařízení první registraci nebo řadič nahrazení, které vyžadují, abyste na zařízení StorSimple k aktivním řadiči. Aktivní kontroler zpracovává všechny disku firmwaru a síťové operace. Můžete použít některý z následujících metod k identifikace aktivního kontroleru:
 
-* [Pomocí portálu Azure k identifikaci řadič active](#use-the-azure-portal-to-identify-the-active-controller)
-* [Pomocí Windows Powershellu pro StorSimple k identifikaci řadič active](#use-windows-powershell-for-storsimple-to-identify-the-active-controller)
-* [Zkontrolujte fyzického zařízení k identifikaci řadič active](#check-the-physical-device-to-identify-the-active-controller)
+* [Identifikace aktivního kontroleru pomocí webu Azure portal](#use-the-azure-portal-to-identify-the-active-controller)
+* [Identifikace aktivního kontroleru pomocí prostředí Windows PowerShell pro StorSimple](#use-windows-powershell-for-storsimple-to-identify-the-active-controller)
+* [Zkontrolujte fyzické zařízení identifikace aktivního kontroleru](#check-the-physical-device-to-identify-the-active-controller)
 
-Každý z těchto postupů je popsána dále.
+Každá z těchto postupů je popsána dále.
 
-### <a name="use-the-azure-portal-to-identify-the-active-controller"></a>Pomocí portálu Azure k identifikaci řadič active
-Na portálu Azure přejděte do zařízení a pak na **monitorování** > **stavu hardwaru**a přejděte k položce **řadiče** části. Zde můžete ověřit, řadič, který je aktivní.
+### <a name="use-the-azure-portal-to-identify-the-active-controller"></a>Identifikace aktivního kontroleru pomocí webu Azure portal
+Na webu Azure Portal, přejděte do svého zařízení a potom do **monitorování** > **stav hardwaru**a přejděte k položce **řadiče** oddílu. Zde můžete ověřit, který řadič není aktivní.
 
-![Vyhledejte active řadič v portálu Azure](./media/storsimple-controller-replacement/IC752072.png)
+![Identifikace aktivního kontroleru na webu Azure portal](./media/storsimple-controller-replacement/IC752072.png)
 
-**Obrázek 6** portálu Azure znázorňující řadič active
+**Obrázek 6** webu Azure portal zobrazující aktivní kontroler
 
-### <a name="use-windows-powershell-for-storsimple-to-identify-the-active-controller"></a>Pomocí Windows Powershellu pro StorSimple k identifikaci řadič active
-Při přístupu k zařízení prostřednictvím konzoly sériového portu, se zobrazí zpráva hlavičky. Zpráva hlavičky obsahuje základní informace, jako je model, název, verze nainstalovaného softwaru a stavu na zařízení, které se připojujete. Následující obrázek ukazuje příklad zpráva hlavičky:
+### <a name="use-windows-powershell-for-storsimple-to-identify-the-active-controller"></a>Identifikace aktivního kontroleru pomocí prostředí Windows PowerShell pro StorSimple
+Při přístupu k zařízení prostřednictvím konzoly sériového portu, se zobrazí zpráva hlavičky. Zpráva hlavičky obsahuje základní informace, jako je model, název, verze nainstalovaného softwaru a stav řadiče, ke kterému přistupujete. Následující obrázek ukazuje příklad zpráva hlavičky:
 
-![Zpráva sériové hlavičky](./media/storsimple-controller-replacement/IC741098.png)
+![Zpráva hlavičky sériového portu](./media/storsimple-controller-replacement/IC741098.png)
 
-**Obrázek 7** Banner zpráva zobrazující řadič 0 jako aktivní
+**Obrázek 7** Banner zpráva zobrazující řadiče 0 jako aktivní
 
-Zpráva hlavičky můžete určit, zda je na zařízení, které jste připojeni k aktivní nebo pasivní.
+Zprávě můžete zjistit, jestli je na zařízení, které jsou připojené k aktivní nebo pasivní.
 
-### <a name="check-the-physical-device-to-identify-the-active-controller"></a>Zkontrolujte fyzického zařízení k identifikaci řadič active
-K identifikaci řadič active na vašem zařízení, vyhledejte blue DIODU výše DATA 5 port na zadní straně primární skříň.
+### <a name="check-the-physical-device-to-identify-the-active-controller"></a>Zkontrolujte fyzické zařízení identifikace aktivního kontroleru
+Identifikace aktivního kontroleru na vašem zařízení, vyhledejte modrá VEDLA nad DATY 5 port na zadní straně primární skříň.
 
-Pokud tento indikátor LED bliká, kontroleru je aktivní a jiný řadič je v pohotovostním režimu. Použijte následující obrázek a tabulka jako pomocný.
+Pokud tento Indikátor je bliká vám kontrolka, kontroleru je aktivní a druhý kontroler je v pohotovostním režimu. Jako vodítko použijte následující diagram a tabulky.
 
 ![Propojovací rozhraní systému primární skříň zařízení s datové porty](./media/storsimple-controller-replacement/IC741055.png)
 
-**Obrázek 8** zadní primární skříň s porty dat a monitorování LED
+**Obrázek 8** zadní primární skříň s porty dat a monitorování indikátorů LED
 
 | Štítek | Popis |
 |:--- |:--- |
 | 1-6 |DATA 0 – 5 síťové porty |
-| 7 |Modré DIODU |
+| 7 |Modrý indikátor LED |
 
-## <a name="next-steps"></a>Další kroky
-Další informace o [StorSimple hardwarové součásti nahrazení](storsimple-8000-hardware-component-replacement.md).
+## <a name="next-steps"></a>Další postup
+Další informace o [StorSimple hardwarové komponenty nahrazení](storsimple-8000-hardware-component-replacement.md).
 

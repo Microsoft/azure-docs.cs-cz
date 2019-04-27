@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.date: 4/9/2019
 ms.topic: conceptual
 ms.author: ramamill
-ms.openlocfilehash: c198e6cd9d5c5e0aca69491db9df5d0ab8e08c7a
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 7b10db06ab4ade1b23985b1a259d82d4818941b1
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59358010"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62124962"
 ---
 # <a name="plan-capacity-and-scaling-for-vmware-disaster-recovery-to-azure"></a>Plánování kapacity a škálování pro zotavení po havárii VMware do Azure
 
@@ -120,7 +120,7 @@ Před nastavením infrastruktura Site Recovery, přístup k prostředí k měře
 
 ## <a name="deploy-additional-process-servers"></a>Nasazení dalších procesových serverů
 
-Pokud horizontální navýšení kapacity nasazení nad 200 zdrojové počítače nebo pokud máte celkem denní četnost více než 2 TB změn dat, je nutné přidat procesní servery pro zpracování objem přenosů. Zjistěte, jak nastavit službu na procesovém serveru, najdete v článku [škálování pro navrácení služeb po obnovení s použitím dalších procesových serverů](vmware-azure-set-up-process-server-scale.md). Po nastavení procesový server, můžete provést migraci zdrojové počítače jeho použití.
+Pokud horizontální navýšení kapacity nasazení nad 200 zdrojové počítače nebo pokud máte celkem denní četnost více než 2 TB změn dat, je nutné přidat procesní servery pro zpracování objem přenosů. Vylepšili jsme produktu v 9.24 verze, kterou chcete zadat [doprovodné materiály v rámci produktu](vmware-azure-manage-process-server.md#process-server-selection-guidance) na tom, kdy k nastavení horizontální navýšení kapacity procesového serveru. [Nastavit procesový server](vmware-azure-set-up-process-server-scale.md) k ochraně nové zdrojové počítače nebo [Vyrovnávání zatížení](vmware-azure-manage-process-server.md#balance-the-load-on-process-server).
 
 ### <a name="migrate-machines-to-use-the-new-process-server"></a>Migrace počítačů používat nový procesový server
 

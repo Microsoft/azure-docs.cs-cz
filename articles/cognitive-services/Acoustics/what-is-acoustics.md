@@ -11,11 +11,11 @@ ms.topic: overview
 ms.date: 03/20/2019
 ms.author: kegodin
 ms.openlocfilehash: 1fc125322b83a0eb51095fac21dee05c7ffb39c1
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58313613"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61432419"
 ---
 # <a name="what-is-project-acoustics"></a>Co je Project Acoustics?
 Projekt Akustika je modul Akustika wave pro 3D interaktivní prostředí. Bez nutnosti ruční zóny značek modeluje wave účinky jako diffraction, portaling a dozvuku efekty při vytváření složitých scén. Zahrnuje také herní engine a zvukové middleware integrace. Projekt Akustika filozofií je podobný statické osvětlení: zanést do offline režimu podrobné fyzika zajistit fyzické směrný plán a využití jednoduché modulu runtime s ovládacími prvky návrhu výrazové ke splnění svých cílů umělecký.

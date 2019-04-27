@@ -3,17 +3,18 @@ title: Přidání vyskakovacího informačního rámečku do řešení vzdálen�
 description: Tento článek ukazuje, jak přidat nový informační rámeček na stránce v vzdálené monitorování řešení akcelerátoru webového uživatelského rozhraní.
 author: dominicbetts
 manager: timlt
-ms.author: dobett
+ms.author: v-yiso
 ms.service: iot-accelerators
 services: iot-accelerators
-ms.date: 10/05/2018
+origin.date: 10/05/2018
+ms.date: 11/26/2018
 ms.topic: conceptual
 ms.openlocfilehash: ccb1a7ff6abbc68f42c7632a8ba7a392b2c48794
-ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/12/2018
-ms.locfileid: "49167422"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61447110"
 ---
 # <a name="add-a-custom-flyout-to-the-remote-monitoring-solution-accelerator-web-ui"></a>Přidat vlastní rozevírací nabídka pro vzdálené monitorování řešení akcelerátoru webového uživatelského rozhraní
 
@@ -39,7 +40,7 @@ Než budete pokračovat, by měl proveďte kroky v následujících článcích:
 - [Přidat vlastní služby do vzdáleného monitorování řešení akcelerátoru webového uživatelského rozhraní](iot-accelerators-remote-monitoring-customize-service.md)
 - [Přidat vlastní mřížky do vzdáleného monitorování řešení akcelerátoru webového uživatelského rozhraní](iot-accelerators-remote-monitoring-customize-grid.md)
 
-## <a name="add-a-flyout"></a>Přidání vyskakovacího informačního rámečku
+## <a name="add-a-flyout"></a>Přidání informačního rámečku
 
 Přidání vyskakovacího informačního rámečku do webového uživatelského rozhraní, budete muset přidat zdrojové soubory, které definují informační rámeček a změnit některé existující soubory ve webovém uživatelském rozhraní používající nové komponenty.
 
@@ -49,11 +50,11 @@ Abyste mohli začít, **src/návod/součásti/stránek/pageWithFlyout/kontextov�
 
 **exampleFlyout.container.js**
 
-[!code-javascript[Example flyout container](~/remote-monitoring-webui/src/walkthrough/components/pages/pageWithFlyout/flyouts/exampleFlyout/exampleFlyout.container.js?name=flyoutcontainer "Example flyout container")]
+
 
 **exampleFlyout.js**
 
-[!code-javascript[Example flyout](~/remote-monitoring-webui/src/walkthrough/components/pages/pageWithFlyout/flyouts/exampleFlyout/exampleFlyout.js?name=flyout "Example flyout")]
+
 
 Kopírovat **src/návod/součásti/stránek/pageWithFlyout/kontextové nabídky** složku **src/součásti/stránek/příklad** složky.
 

@@ -16,11 +16,11 @@ ms.date: 01/11/2019
 ms.author: dekapur
 ms.custom: mvc, devcenter
 ms.openlocfilehash: 31b1e7a777c65a270b7b08673fcd73a5ab63f11f
-ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58337761"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60810430"
 ---
 # <a name="tutorial-scale-an-application-running-in-service-fabric-mesh"></a>Kurz: Škálovat aplikaci spuštěnou ve službě Service Fabric Mesh
 

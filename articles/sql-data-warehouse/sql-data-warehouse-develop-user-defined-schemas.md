@@ -2,20 +2,21 @@
 title: Pomocí schémat definovaných uživateli ve službě SQL Data Warehouse | Dokumentace Microsoftu
 description: Tipy pro používání schémat definovaných uživateli T-SQL ve službě Azure SQL Data Warehouse pro vývoj řešení.
 services: sql-data-warehouse
-author: ronortloff
-manager: craigg
+author: WenJason
+manager: digimobile
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.subservice: implement
-ms.date: 04/17/2018
-ms.author: rortloff
+ms.component: implement
+origin.date: 04/17/2018
+ms.date: 10/15/2018
+ms.author: v-jay
 ms.reviewer: igorstan
 ms.openlocfilehash: ae017461767a207deae1d990980258a1f661df3d
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55468440"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61439141"
 ---
 # <a name="using-user-defined-schemas-in-sql-data-warehouse"></a>Pomocí schémat definovaných uživateli ve službě SQL Data Warehouse
 Tipy pro používání schémat definovaných uživateli T-SQL ve službě Azure SQL Data Warehouse pro vývoj řešení.

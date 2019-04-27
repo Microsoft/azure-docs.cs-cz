@@ -16,11 +16,11 @@ ms.topic: article
 ms.date: 09/12/2018
 ms.author: cynthn
 ms.openlocfilehash: d2d3f36c9b4ee0557f9e060bec762877a94ea637
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55734177"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61473926"
 ---
 # <a name="move-a-linux-vm-to-another-subscription-or-resource-group"></a>Přesunout na jiné předplatné nebo skupinu prostředků virtuálního počítače s Linuxem
 Tento článek vás provede přesun virtuálního počítače s Linuxem (VM) mezi skupinami prostředků nebo předplatných. Přesun virtuálního počítače mezi předplatnými může být užitečné, pokud jste vytvořili virtuální počítač v rámci osobní předplatného a teď chcete přesunout do předplatného ve vaší společnosti.

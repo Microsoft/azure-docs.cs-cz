@@ -11,11 +11,11 @@ ms.topic: overview
 ms.date: 12/22/2018
 ms.author: azfuncdf, glenga
 ms.openlocfilehash: 4c7b4733d05f18d3c30e45fd08c3cf9c50354ebc
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55816085"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60730595"
 ---
 # <a name="what-are-durable-functions"></a>Co jsou odolná služba Functions?
 

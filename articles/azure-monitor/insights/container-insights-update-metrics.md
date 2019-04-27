@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/27/2019
 ms.author: magoedte
-ms.openlocfilehash: 2f500ea127d3f2042e7c97eeace592b4da8d8d0e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: f0c9b84f31810a4b0cec93738f7ce327bc24d8d0
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/23/2019
-ms.locfileid: "60494830"
+ms.locfileid: "62101604"
 ---
 # <a name="how-to-update-azure-monitor-for-containers-to-enable-metrics"></a>Postup aktualizace Azure Monitor k zapnutí metrik pro kontejnery
 Azure Monitor pro kontejnery zavádí podporu pro shromažďování metrik z uzlů clusterů služby Kubernetes v Azure (AKS) a podů a jejich zápis do úložiště metrik Azure monitoru. Tato změna má poskytovat vylepšené včasnosti při zobrazení agregační výpočty (průměr, počet, Max, Min, součet) v grafech výkonu, podpory připínat grafy výkonu v Azure portal řídicí panely a podporují upozornění na metriku.
@@ -35,7 +35,7 @@ Aktualizuje se cluster pro podporu těchto nových funkcí lze provést z webu A
 Buď zpracování přiřadí **monitorování metrik vydavatele** roli instančnímu objektu služby clusteru tak, aby se data shromažďují pomocí agenta mohou být publikovány na váš prostředek clustery. Monitorování metrik vydavatele má oprávnění pouze pro nabízené metriky pro prostředek, ho nelze změnit jakýkoliv stav, aktualizovat prostředek ani načíst žádná data. Další informace o roli najdete v tématu [role vydavatele monitorování metrik](../../role-based-access-control/built-in-roles.md#monitoring-metrics-publisher).
 
 ## <a name="prerequisites"></a>Požadavky 
-Než začnete, ujistěte se, že jste členem **[vlastníka](https://docs.microsoft.com/en-us/azure/role-based-access-control/built-in-role.md#owner)** role v prostředku clusteru AKS a Povolit shromažďování uzlu pod metrik výkonu. 
+Než začnete, ujistěte se, že jste členem **[vlastníka](../../role-based-access-control/built-in-roles.md#owner)** role v prostředku clusteru AKS a Povolit shromažďování uzlu pod metrik výkonu. 
 
 Pokud se rozhodnete používat rozhraní příkazového řádku Azure, musíte nejprve nainstalovat a používat rozhraní příkazového řádku místně. Musíte používat Azure CLI verze 2.0.59 nebo novější. Zjistěte verzi, spusťte `az --version`. Pokud potřebujete instalaci nebo upgrade rozhraní příkazového řádku Azure, najdete v článku [instalace rozhraní příkazového řádku Azure](https://docs.microsoft.com/cli/azure/install-azure-cli). 
 

@@ -13,11 +13,11 @@ ms.reviewers: billgib,ayolubek
 manager: craigg
 ms.date: 01/25/2019
 ms.openlocfilehash: 9562d0cd1ad97a459c3630456a6070ac2b6e63f3
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58096023"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61484661"
 ---
 # <a name="cross-tenant-reporting-using-distributed-queries"></a>Vytváření sestav pomocí služby napříč tenanty distribuovaných dotazů
 

@@ -13,11 +13,11 @@ ms.reviewer: vanto
 manager: craigg
 ms.date: 01/03/2019
 ms.openlocfilehash: 0fefe01e413e30e4aa3c1fa90de77cbdece39c38
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58001691"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61417384"
 ---
 # <a name="sql-database-audit-log-format"></a>Formát protokolu auditování databáze SQL
 
@@ -62,7 +62,7 @@ Události auditu se zapisují do definovaného během konfigurace auditování d
 | duration_milliseconds | duration_milliseconds_d | Doba trvání spuštění dotazu v milisekundách | bigint | int |
 | event_time | event_time_t | Datum a čas, kdy se spustí auditovatelných akce | datetime2 | datetime |
 | název_hostitele | neuvedeno | Název hostitele klienta | string | neuvedeno |
-| is_column_permission | is_column_permission_s | Příznak označující, jestli jde úrovně oprávnění sloupců. 1 = true, 0 = false | Bit | string |
+| is_column_permission | is_column_permission_s | Příznak označující, jestli jde úrovně oprávnění sloupců. 1 = true, 0 = false | bit | string |
 | neuvedeno | is_server_level_audit_s | Příznak označující, jestli je toto auditování na úrovni serveru | neuvedeno | string |
 | object_ – id | object_id_d | ID entity, na kterém došlo k auditu. Jedná se o: objekty serveru, databází, databázové objekty a objekty schématu. 0, pokud entita je samotný server nebo pokud je auditování provést na úrovni objektu | int | int |
 | object_name | object_name_s | Název entity, na kterém došlo k auditu. Jedná se o: objekty serveru, databází, databázové objekty a objekty schématu. 0, pokud entita je samotný server nebo pokud je auditování provést na úrovni objektu | sysname | string |
@@ -79,7 +79,7 @@ Události auditu se zapisují do definovaného během konfigurace auditování d
 | session_id | session_id_d | ID relace, ve kterém došlo k události | smallint | int |
 | session_server_principal_name | session_server_principal_name_s | Objekt zabezpečení serveru pro relaci | sysname | string |
 | – Příkaz | statement_s | Příkaz T-SQL, který se spustil (pokud existuje) | nvarchar(4000) | string |
-| Bylo úspěšně dokončeno | succeeded_s | Určuje, jestli akce, který spustil danou událost byla úspěšná. Pro události než přihlášení a služby batch to podává zprávy pouze zda kontrola oprávnění úspěšné nebo neúspěšné, není operace. 1 = úspěch, 0 = selhání | Bit | string |
+| Bylo úspěšně dokončeno | succeeded_s | Určuje, jestli akce, který spustil danou událost byla úspěšná. Pro události než přihlášení a služby batch to podává zprávy pouze zda kontrola oprávnění úspěšné nebo neúspěšné, není operace. 1 = úspěch, 0 = selhání | bit | string |
 | target_database_principal_id | target_database_principal_id_d | Objekt zabezpečení databáze GRANT/DENY/REVOKE operace se provádí na. 0, pokud není k dispozici | int | int |
 | target_database_principal_name | target_database_principal_name_s | Cílový uživatel akce. Hodnota NULL, pokud není k dispozici | string | string |
 | target_server_principal_id | target_server_principal_id_d | Hlavní server, který provádí operace GRANT/DENY/REVOKE na. Vrátí hodnotu 0, pokud není k dispozici | int | int |

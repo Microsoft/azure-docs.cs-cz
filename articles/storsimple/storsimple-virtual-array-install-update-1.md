@@ -15,11 +15,11 @@ ms.workload: TBD
 ms.date: 11/02/2017
 ms.author: alkohli
 ms.openlocfilehash: fa53213e577028628d48db91704578e23888f2a8
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58013854"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61411404"
 ---
 # <a name="install-update-10-on-your-storsimple-virtual-array"></a>Instalace Update 1.0 na StorSimple Virtual Array
 

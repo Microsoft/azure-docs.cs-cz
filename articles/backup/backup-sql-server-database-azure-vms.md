@@ -6,14 +6,14 @@ author: sachdevaswati
 manager: vijayts
 ms.service: backup
 ms.topic: conceptual
-ms.date: 03/19/2019
+ms.date: 03/23/2019
 ms.author: sachdevaswati
-ms.openlocfilehash: 5e4bd3647b557b260e65e3fb1ce297892f5d7d78
-ms.sourcegitcommit: 48a41b4b0bb89a8579fc35aa805cea22e2b9922c
+ms.openlocfilehash: 08eff24dc42f594424d109b82933b01b5c1be454
+ms.sourcegitcommit: a95dcd3363d451bfbfea7ec1de6813cad86a36bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/15/2019
-ms.locfileid: "59578820"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62733896"
 ---
 # <a name="back-up-sql-server-databases-in-azure-vms"></a>Zálohování databází SQL Serveru ve virtuálních počítačích Azure
 
@@ -40,12 +40,12 @@ Zálohujte databázi SQL serveru, zkontrolujte následující podmínky:
 
 ### <a name="establish-network-connectivity"></a>Vytvoření připojení k síti
 
-Pro všechny operace virtuálního počítače s SQL serverem virtuální počítač vyžaduje připojení k veřejným IP adresám Azure. Operace virtuálního počítače (databáze zjišťování, konfigurace zálohování, plánovat zálohy, obnovit body obnovení a tak dále) selhání bez připojení k veřejné IP adresy. Navázat spojení s některou z těchto možností:
+Pro všechny operace virtuálního počítače s SQL serverem virtuální počítač vyžaduje připojení k veřejným IP adresám Azure. Operace virtuálního počítače (zjišťování databází, konfigurace zálohování, naplánovat zálohování, obnovení body obnovení a tak dále) nezdaří bez připojení k veřejné IP adresy. Navázat spojení s některou z těchto možností:
 
 - **Povolit rozsahy IP adres Azure datacenter**: Povolit [rozsahy IP adres](https://www.microsoft.com/download/details.aspx?id=41653) v souboru pro stažení. Chcete-li získat přístup k skupina zabezpečení sítě (NSG), použijte **Set-AzureNetworkSecurityRule** rutiny.
 - **Nasazení HTTP proxy server pro směrování provozu**: Při zálohování databáze serveru SQL Server na Virtuálním počítači Azure, rozšíření zálohování na virtuálním počítači pomocí protokolu HTTPS rozhraní API odesílat příkazy pro správu Azure Backup a dat do služby Azure Storage. Rozšíření zálohování také používá pro ověřování Azure Active Directory (Azure AD). Směrování provozu linka záložního telefonu pro tyto tři služby prostřednictvím proxy serveru HTTP. Rozšíření jsou jedinou komponentou, která je nakonfigurovaná pro přístup k veřejnému Internetu.
 
-Každé možnosti má své výhody a nevýhody
+Každá možnost má výhody a nevýhody
 
 **Možnost** | **Výhody** | **Nevýhody**
 --- | --- | ---
@@ -60,11 +60,11 @@ Azure Backup nemá řada věcí, při konfiguraci zálohování pro databázi se
 - Azure Backup se zjistit databáze na virtuálním počítači, vytvoří účet **NT SERVICE\AzureWLBackupPluginSvc**. Tento účet se používá pro zálohování a obnovení a vyžaduje oprávnění správce systému SQL.
 - Využívá službu Azure Backup **NT AUTHORITY\SYSTEM** účet za databázi zjišťování nebo dotaz, aby tento účet musí být veřejné přihlášení na SQL.
 
-Pokud jste nevytvořili virtuální počítač SQL Server na Azure Marketplace, k chybě může dojít **UserErrorSQLNoSysadminMembership**. V tomto případě [postupujte podle těchto pokynů](backup-azure-sql-database.md#fix-sql-sysadmin-permissions).
+Pokud jste nevytvořili virtuální počítač SQL Server na Azure Marketplace, k chybě může dojít **UserErrorSQLNoSysadminMembership**. V tomto případě [tento pokynů](backup-azure-sql-database.md#fix-sql-sysadmin-permissions).
 
 ### <a name="verify-database-naming-guidelines-for-azure-backup"></a>Zkontrolujte pokyny pro pojmenování databáze pro službu Azure Backup
 
-Nepoužívejte následující názvy databází:
+Vyhněte se níže pro názvy databází:
 
   * Na konci/úvodní mezery
   * Na konci '!'
@@ -106,7 +106,7 @@ Zjistěte databáze spuštěné na virtuálním počítači.
 
     ![Zpráva o úspěšném nasazení](./media/backup-azure-sql-database/notifications-db-discovered.png)
 
-8. Azure Backup zjistí všechny databáze SQL serveru na virtuálním počítači. Během zjišťování dojde k následujícímu na pozadí:
+8. Azure Backup zjistí všechny databáze SQL serveru na virtuálním počítači. Během zjišťování dál probíhá na pozadí:
 
     - Azure Backup zaregistrujete pomocí úložiště pro úlohy zálohování virtuálního počítače. Všechny databáze na registrované virtuálních počítačů můžete zálohovat jenom k tomuto trezoru.
     - Azure Backup nainstaluje **AzureBackupWindowsWorkload** rozšíření ve virtuálním počítači. V SQL database se neinstaluje žádný agent.
@@ -179,7 +179,7 @@ Vytvoření zásady zálohování:
 4. V **úplná záloha zásad**, vyberte **četnost záloh**, zvolte **denní** nebo **týdenní**.
 
    - Pro **denní**, vyberte hodiny a časové pásmo po zahájení úlohy zálohování.
-   - Je nutné spustit úplné zálohy, nejde vypnout **úplné zálohování** možnost.
+   - Jak se nedá vypnout, je nutné spustit úplné zálohování **úplné zálohování** možnost.
    - Klikněte na tlačítko **úplná záloha** zásadách.
    - Nelze vytvořit rozdílové zálohování pro denní úplná zálohování.
    - Pro **týdenní**, vyberte den v týdnu, hodiny a časové pásmo po zahájení úlohy zálohování.
@@ -238,7 +238,7 @@ Povolte automatickou ochranu automaticky zálohovat všechny existující datab�
 
 - Neexistuje žádné omezení počtu databází, které můžete vybrat pro automatickou ochranu najednou.
 - Selektivně nemůže chránit nebo vyloučit databáze z ochrany v instanci v době povolení automatické ochrany.
-- Pokud vaše instance již obsahuje některé chráněné databáze, by nadále chráněné v rámci svých odpovídajících zásad, i když zapnete automatickou ochranu. Však všechny bez chráněných databází a databází, které budou nechejte se přidat v budoucnosti, budou mít pouze jednu zásadu, která definujete v době v části Povolení automatické ochrany, **konfigurace zálohování**. Můžete však změnit zásady přidružené k databázi automaticky chráněny později.  
+- Pokud vaše instance již obsahuje některé chráněné databáze, by nadále chráněné v rámci svých odpovídajících zásad, i když zapnete automatickou ochranu. Ale nechráněných databází a databází, které budou nechejte se přidat v budoucnosti, budou mít jenom jednu zásadu, která definujete v době v části Povolení automatické ochrany, **konfigurace zálohování**. Můžete však změnit zásady přidružené k databázi automaticky chráněny později.  
 
 Postup povolení automatické ochrany jsou následující:
 

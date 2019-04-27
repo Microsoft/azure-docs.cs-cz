@@ -16,11 +16,11 @@ ms.date: 12/12/2017
 ms.author: mathoma
 ms.reviewer: jroth
 ms.openlocfilehash: a33525e44b2e294b7ce85c7081864dbef0856588
-ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58650849"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62130806"
 ---
 # <a name="connect-to-a-sql-server-virtual-machine-on-azure"></a>Připojte se k virtuálnímu počítači SQL serveru v Azure
 

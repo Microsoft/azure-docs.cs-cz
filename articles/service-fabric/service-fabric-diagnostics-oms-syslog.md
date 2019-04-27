@@ -15,11 +15,11 @@ ms.workload: NA
 ms.date: 10/23/2018
 ms.author: srrengar
 ms.openlocfilehash: 402e3dfe018c94ef068caf918b38aaad00064a49
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58670366"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62118374"
 ---
 # <a name="service-fabric-linux-cluster-events-in-syslog"></a>Události clusteru Service Fabric s Linuxem v procesu Syslog
 

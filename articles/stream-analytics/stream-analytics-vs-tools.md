@@ -9,12 +9,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 07/10/2018
-ms.openlocfilehash: f9bc9bf540f7f44e07bc4bb0ae8ef6910ae78476
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: 1c7133801eb0d95616cacf501162e6cee3da7c80
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47222382"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61477827"
 ---
 # <a name="use-visual-studio-to-view-azure-stream-analytics-jobs"></a>Chcete-li zobrazit úlohy Azure Stream Analytics pomocí sady Visual Studio
 
@@ -87,6 +87,6 @@ Vstupní a výstupní připojení můžete otestovat z **zobrazení úloh** výb
 ## <a name="next-steps"></a>Další postup
 
 * [Monitorování a Správa úloh Azure Stream Analytics pomocí sady Visual Studio](stream-analytics-monitor-jobs-use-vs.md)
-* [Rychlý start: Vytvoření úlohy Stream Analytics pomocí sady Visual Studio](stream-analytics-quick-create-vs.md)
-* [Kurz: Nasazení úlohy Azure Stream Analytics s CI/CD s využitím Azure kanály](stream-analytics-tools-visual-studio-cicd-vsts.md)
+* [Rychlé zprovoznění: Vytvoření úlohy Stream Analytics pomocí sady Visual Studio](stream-analytics-quick-create-vs.md)
+* [Kurz: Nasazení úlohy Azure Stream Analytics pomocí Azure kanálů CI/CD](stream-analytics-tools-visual-studio-cicd-vsts.md)
 * [Průběžná integrace a vývoj s použitím nástrojů Stream Analytics](stream-analytics-tools-for-visual-studio-cicd.md)

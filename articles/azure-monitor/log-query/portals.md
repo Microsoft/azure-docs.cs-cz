@@ -13,11 +13,11 @@ ms.topic: conceptual
 ms.date: 04/05/2019
 ms.author: bwren
 ms.openlocfilehash: 0e5b9b43e528b37fd994f9131f145abadb33c53b
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59798472"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61425928"
 ---
 # <a name="viewing-and-analyzing-log-data-in-azure-monitor"></a>Zobrazení a analýza dat protokolu ve službě Azure Monitor
 Log Analytics je primární prostředí pro práci s daty protokolů a vytváření dotazů ve službě Azure Monitor. Otevřete Log Analytics z **protokoly** v **Azure Monitor** nabídky. Můžete získat Úvod k tomuto portálu a zkontrolujte jeho funkce v [Začínáme se službou Log Analytics na portálu Azure portal](get-started-portal.md).

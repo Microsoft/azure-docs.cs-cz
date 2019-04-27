@@ -11,11 +11,11 @@ ms.topic: tutorial
 ms.date: 09/12/2018
 ms.author: aahi
 ms.openlocfilehash: 6c28b02d68239bac658954caf447b6ff738c1b65
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55881235"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62122519"
 ---
 # <a name="tutorial-create-a-single-page-app-using-the-bing-web-search-api"></a>Kurz: Vytvoření jednostránkové aplikace pomocí rozhraní API webové vyhledávání Bingu
 

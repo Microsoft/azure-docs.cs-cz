@@ -12,12 +12,12 @@ ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
 ms.date: 03/26/2019
-ms.openlocfilehash: 7261a25251e93035c31004c9255612a0e3b45a2f
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
-ms.translationtype: MT
+ms.openlocfilehash: 7746d7256add185be0c67123edf63ea09b6b05a4
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59680893"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62111828"
 ---
 # <a name="faq-about-azure-sql-hyperscale-databases"></a>Nejčastější dotazy týkající se databáze Azure SQL Hyperškálováním
 
@@ -132,7 +132,7 @@ Ne.
 
 ### <a name="can-i-provision-a-compute-with-extra-ram-for-my-memory-intensive-workload"></a>Můžete zřídit výpočetní prostředí s další paměti RAM pro úlohy náročné na paměť
 
-Ne. Chcete-li získat více paměti RAM, budete muset upgradovat na vyšší výpočetní velikost. Gen4 hardware poskytuje víc paměti RAM ve srovnání s Gen5 hardwaru. Další informace najdete v tématu [velkokapacitní úložiště a objem výpočtů velikostí](sql-database-vcore-resource-limits-single-databases.md#hyperscale-service-tier-preview).
+Ne. Chcete-li získat více paměti RAM, budete muset upgradovat na vyšší výpočetní velikost. Gen4 hardware poskytuje víc paměti RAM ve srovnání s Gen5 hardwaru. Další informace najdete v tématu [velkokapacitní úložiště a objem výpočtů velikostí](sql-database-vcore-resource-limits-single-databases.md#hyperscale-service-tier-preview-for-provisioned-compute-tier).
 
 ### <a name="can-i-provision-multiple-compute-nodes-of-different-sizes"></a>Můžete zřídit několika výpočetních uzlech různých velikostí
 

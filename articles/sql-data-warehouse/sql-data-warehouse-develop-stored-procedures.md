@@ -11,11 +11,11 @@ ms.date: 04/02/2019
 ms.author: cakarst
 ms.reviewer: igorstan
 ms.openlocfilehash: 8a53a63b7425935e117d7af951717999bc9340b7
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59794824"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61439692"
 ---
 # <a name="using-stored-procedures-in-sql-data-warehouse"></a>Použití uložených procedur ve službě SQL Data Warehouse
 Tipy pro provádění uložené procedury pro vývoj řešení ve službě Azure SQL Data Warehouse.

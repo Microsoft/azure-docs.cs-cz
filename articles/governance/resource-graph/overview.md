@@ -8,11 +8,11 @@ ms.topic: overview
 ms.service: resource-graph
 manager: carmonm
 ms.openlocfilehash: d76a5b32403bd14f18181580f891925130808922
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60002880"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60622792"
 ---
 # <a name="overview-of-the-azure-resource-graph-service"></a>Přehled služby Azure Graph prostředků
 

@@ -10,11 +10,11 @@ ms.date: 08/26/2016
 ms.author: saudas
 ms.custom: mvc
 ms.openlocfilehash: 3e4ba15fa1925ca40ad7760acbd14331fbdd1343
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52996598"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61457322"
 ---
 # <a name="deprecated-enable-public-access-to-an-azure-container-service-application"></a>(NEPOUŽÍVANÉ) Povolení veřejného přístupu k aplikaci Azure Container Service
 
@@ -41,7 +41,7 @@ Nejdřív potřebujeme pro otevření portu, jaké chceme.
    | Port |Port kontejneru pro testování. |
    | Cesta |(Pokud v režimu HTTP) Cesta relativní webu do testu. HTTPS se nepodporuje. |
    | Interval |Množství času mezi test pokusí v řádu sekund. |
-   | Prahová hodnota špatného stavu |Počet po sobě jdoucích test pokusí předtím, než kontejneru není v pořádku. |
+   | Prahová hodnota pro poškozený stav |Počet po sobě jdoucích test pokusí předtím, než kontejneru není v pořádku. |
 6. Zpět na vlastnosti nástroje pro vyrovnávání zatížení agenta, klikněte na tlačítko **pravidla Vyrovnávání zatížení** a potom **přidat**.
    
     ![Pravidla nástroje pro vyrovnávání zatížení Azure container service](./media/container-service-enable-public-access/add-balancer-rule.png)
@@ -54,7 +54,7 @@ Nejdřív potřebujeme pro otevření portu, jaké chceme.
    | Back-endový port |Interní veřejný port kontejneru pro směrování provozu do. |
    | Back-endový fond |Kontejnery v tomto fondu budou cílem pro tento nástroj pro vyrovnávání zatížení. |
    | Test paměti |Používá k určení, zda cíl v testu **back-endový fond** je v pořádku. |
-   | Trvalost relace |Určuje, jak by měl zpracovávat přenosy z klienta po dobu trvání relace.<br><br>**Žádný**: po sobě jdoucí požadavky ze stejného klienta může být zpracována kontejneru.<br>**Klient IP**: po sobě jdoucí požadavky ze stejné IP adresa klienta jsou zpracovávány stejného kontejneru.<br>**Klient IP, protokol**: po sobě jdoucí požadavky ze stejné kombinaci IP adresy a protokol klienta jsou zpracovávány stejného kontejneru. |
+   | Trvalost relace |Určuje, jak by měl zpracovávat přenosy z klienta po dobu trvání relace.<br><br>**Žádný**: Po sobě jdoucí požadavky ze stejného klienta může být zpracována kontejneru.<br>**Klient IP**: Po sobě jdoucí požadavky ze stejné IP adresa klienta jsou zpracovávány stejného kontejneru.<br>**Klient protokolu IP, protokol**: Po sobě jdoucí požadavky ze stejné kombinaci IP adresy a protokol klienta jsou zpracovávány stejného kontejneru. |
    | Časový limit nečinnosti |(Pouze TCP) Během několika minut, dobu k aktualizacím klienta TCP/HTTP otevřené bez nutnosti spoléhat se na *keep-alive* zprávy. |
 
 ## <a name="add-a-security-rule-portal"></a>Přidat pravidlo zabezpečení (portál)

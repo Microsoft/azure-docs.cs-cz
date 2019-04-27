@@ -11,11 +11,11 @@ ms.topic: quickstart
 ms.date: 12/13/2018
 ms.author: aahi
 ms.openlocfilehash: 1521799eacb0ec240a17e8c11dfff617fc59b772
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55860486"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61389213"
 ---
 # <a name="sending-queries-to-the-bing-news-search-api"></a>Odesílání dotazů do rozhraní API pro vyhledávání zpráv Bingu
 

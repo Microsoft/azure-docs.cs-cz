@@ -1,10 +1,4 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 18be472dfc6a9928b8ceea72fe1b277d77311a63
-ms.sourcegitcommit: b8f9200112cae265155b8877f7e1621c4bcc53fc
-ms.translationtype: MT
-ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/14/2019
-ms.locfileid: "57909098"
 documentType: LandingData
 title: Azure SQL Database – funkce
 metadata:
@@ -16,41 +10,41 @@ metadata:
   manager: craigg
   ms.service: sql-database
   ms.tgt_pltfrm: na
-  ms.devlang: 
+  ms.devlang: null
   ms.topic: overview
   ms.date: 02/06/2019
   ms.author: jovanpop-msft
 sections:
-- items:
-  - type: paragraph
-    text: Azure SQL Database je větší než classic relačním databázovém stroji, který umožňuje dotazování dat pomocí jazyka SQL. Funkce databáze ve službě Azure SQL Database umožňují provádět další operace výkonných a implementace pokročilých scénářů.
-  - type: list
-    style: cards
-    className: cardsM
-    columns: 3
+  - items:
+      - type: paragraph
+        text: 'Azure SQL Database je větší než classic relačním databázovém stroji, který umožňuje dotazování dat pomocí jazyka SQL. Funkce databáze ve službě Azure SQL Database umožňují provádět další operace výkonných a implementace pokročilých scénářů.'
+      - type: list
+        style: cards
+        className: cardsM
+        columns: 3
+        items:
+          - title: V začleňování paměťových technologií
+            href: /azure/sql-database/sql-database-in-memory
+            html: <p>Implementujte vysoce výkonné aplikace pomocí technologií v paměti.</p>
+          - title: Možnosti s více modely
+            href: /azure/sql-database/sql-database-multi-model-features
+            html: '<p>Další informace o grafu, JSON, XML, prostorových funkcí ve službě Azure SQL Database.</p>'
+          - title: Transakční replikace
+            href: /azure/sql-database/sql-database-managed-instance-transactional-replication
+            html: <p>Replikujte data mezi tabulky Azure SQL Database a SQL Server.</p>
+          - title: Synchronizace dat
+            href: /azure/sql-database/sql-database-sync-data
+            html: <p>Synchronizace dat mezi několika databázemi SQL a instance systému SQL Server.</p>
+          - title: Automatizace úloh
+            href: /azure/sql-database/sql-database-job-automation-overview
+            html: <p>Naplánujte opakované úlohy pomocí agenta SQL a elastické úlohy.</p>
+          - title: Dočasné tabulky
+            href: /azure/sql-database/sql-database-temporal-tables
+            html: <p>Sledovat a analyzovat kompletní historii změn ve vašich datech.</p>
+  - title: Další zdroje informací
     items:
-    - title: V začleňování paměťových technologií
-      href: /azure/sql-database/sql-database-in-memory
-      html: <p>Implementujte vysoce výkonné aplikace pomocí technologií v paměti.</p>
-    - title: Možnosti s více modely
-      href: /azure/sql-database/sql-database-multi-model-features
-      html: <p>Další informace o grafu, JSON, XML, prostorových funkcí ve službě Azure SQL Database.</p>
-    - title: Transakční replikace
-      href: /azure/sql-database/sql-database-managed-instance-transactional-replication
-      html: <p>Replikujte data mezi tabulky Azure SQL Database a SQL Server.</p>
-    - title: Synchronizace dat
-      href: /azure/sql-database/sql-database-sync-data
-      html: <p>Synchronizace dat mezi několika databázemi SQL a instance systému SQL Server.</p>
-    - title: Automatizace úloh
-      href: /azure/sql-database/sql-database-job-automation-overview
-      html: <p>Naplánujte opakované úlohy pomocí agenta SQL a elastické úlohy.</p>
-    - title: Dočasné tabulky
-      href: /azure/sql-database/sql-database-temporal-tables
-      html: <p>Sledovat a analyzovat kompletní historii změn ve vašich datech.</p>
-- title: Další zdroje informací
-  items:
-  - type: list
-    style: ordered
-    items:
-    - html: Další informace o <a href="/azure/sql-database/sql-database-features">rozdíly mezi SQL serverem a Azure SQL database funkce</a>.
-    - html: Další informace o použití těchto funkcí v <a href="/azure/sql-database/sql-database-howto">postupy vodítka</a>.
+      - type: list
+        style: ordered
+        items:
+          - html: Další informace o <a href="/azure/sql-database/sql-database-features">rozdíly mezi SQL serverem a Azure SQL database funkce</a>.
+          - html: Další informace o použití těchto funkcí v <a href="/azure/sql-database/sql-database-howto">postupy vodítka</a>.

@@ -13,11 +13,11 @@ ms.reviewer: vanto
 manager: craigg
 ms.date: 02/25/2019
 ms.openlocfilehash: 2c95ec4d88e55af0becc73719bcc6126501267db
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56866823"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61416522"
 ---
 # <a name="sql-database----downlevel-clients-support-and-ip-endpoint-changes-for-table-auditing"></a>SQL Database – podpora klientů nižší úrovně a změny koncových bodů IP pro auditování tabulek
 

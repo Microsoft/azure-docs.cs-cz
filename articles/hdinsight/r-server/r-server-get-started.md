@@ -1,7 +1,6 @@
 ---
 title: Začínáme se službou ML Services ve službě HDInsight – Azure
 description: Naučíte se vytvořit Apache Spark v clusteru HDInsight, který obsahuje službu ML Services, a odeslat do clusteru skript R.
-services: hdinsight
 ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
@@ -9,12 +8,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/27/2018
-ms.openlocfilehash: 474048bc9f31e4630110ea099f3e0b375ad74e51
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 465b53e1c5f56c5c05c860ebd69a825141f7e703
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58087580"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62124607"
 ---
 # <a name="get-started-with-ml-services-on-azure-hdinsight"></a>Začínáme se službou ML Services v Azure HDInsight
 

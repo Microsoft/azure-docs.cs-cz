@@ -18,11 +18,11 @@ ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: c851b5ef024e6584e6f8c93995208b08a91fbb60
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58096669"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62095485"
 ---
 # <a name="azure-ad-connect-sync-handling-largeobject-errors-caused-by-usercertificate-attribute"></a>Synchronizace Azure AD Connect: Zpracování chyb LargeObject způsobených atributem userCertificate
 
@@ -92,7 +92,7 @@ Měla by existovat existující synchronizační pravidlo, které je povolená a
 
     | Atribut | Hodnota |
     | --- | --- |
-    | Směr |**Odchozí** |
+    | Direction |**Odchozí** |
     | Typ objektu MV |**Osoba** |
     | Spojovací čára |*název konektoru Azure AD* |
     | Typ objektu konektoru |**Uživatel** |

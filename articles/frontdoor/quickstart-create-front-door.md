@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/31/2018
 ms.author: sharadag
-ms.openlocfilehash: 39e7626e6b4c545649e39ff2120d1f1fd105d764
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
-ms.translationtype: HT
+ms.openlocfilehash: 6bcd5bcc2463ec1ab9dcc97644d5046c31bfc78b
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46994662"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61461982"
 ---
-# <a name="quickstart-create-a-front-door-for-a-highly-available-global-web-application"></a>Rychlý start: Vytvoření Front Dooru pro vysoce dostupnou globální webovou aplikaci
+# <a name="quickstart-create-a-front-door-for-a-highly-available-global-web-application"></a>Rychlý start: Vytvoření branou pro vysoce dostupná globální webové aplikace
 
 Tento rychlý start popisuje, jak vytvořit profil služby Front Door zajišťující vysokou dostupnost a vysoký výkon globální webové aplikace. 
 
@@ -28,7 +28,7 @@ Scénář popsaný v tomto rychlém startu zahrnuje dvě instance webové aplika
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
-## <a name="sign-in-to-azure"></a>Přihlášení k Azure 
+## <a name="sign-in-to-azure"></a>Přihlásit se k Azure 
 Přihlaste se k webu Azure Portal na adrese https://portal.azure.com.
 
 ## <a name="prerequisites"></a>Požadavky
@@ -42,7 +42,7 @@ Tento rychlý start vyžaduje dvě instance webové aplikace nasazené a běží
      | Název           | Zadejte jedinečný název vaší webové aplikace.  |
      | Skupina prostředků          | Vyberte **Nová** a zadejte *myResourceGroupFD1*. |
      | Plán služby App Service / umístění         | Vyberte **Nový**.  Jako plán služby App Service zadejte *myAppServicePlanEastUS* a pak vyberte **OK**. 
-     |      Umístění  |   USA – východ        |
+     |      Location  |   USA – východ        |
     |||
 
 3. Vyberte **Vytvořit**.
@@ -54,7 +54,7 @@ Tento rychlý start vyžaduje dvě instance webové aplikace nasazené a běží
      | Název           | Zadejte jedinečný název vaší webové aplikace.  |
      | Skupina prostředků          | Vyberte **Nová** a zadejte *myResourceGroupFD2*. |
      | Plán služby App Service / umístění         | Vyberte **Nový**.  Jako plán služby App Service zadejte *myAppServicePlanWestEurope* a pak vyberte **OK**. 
-     |      Umístění  |   Západní Evropa      |
+     |      Location  |   Západní Evropa      |
     |||
 
 
@@ -75,7 +75,7 @@ Dále je potřeba nakonfigurovat back-end(y) aplikace v back-endovém fondu, aby
 3. Jako **Typ cílového hostitele** vyberte App Service, vyberte předplatné, ve kterém jste web vytvořili, a pak v poli **Název cílového hostitele** zvolte první web, to znamená *myAppServicePlanEastUS.azurewebsites.net*.
 4. Zbývající pole ponechejte v tuto chvíli tak, jak jsou, a klikněte na **Přidat**.
 5. Opakováním kroků 2 až 4 přidejte druhý web, to znamená *myAppServicePlanWestEurope.azurewebsites.net*.
-6. Pro back-endový fond můžete volitelně změnit nastavení Sondy stavu a Vyrovnávání zatížení, ale výchozí hodnoty by také měly fungovat. Klikněte na **Přidat**.
+6. Pro back-endový fond můžete volitelně změnit nastavení Sondy stavu a Vyrovnávání zatížení, ale výchozí hodnoty by také měly fungovat. Klikněte na tlačítko **Add** (Přidat).
 
 
 ### <a name="c-add-a-routing-rule"></a>C. Přidání pravidla směrování
@@ -93,5 +93,5 @@ Pokud chcete otestovat okamžité globální převzetí služeb Front Dooru při
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 Pokud už je nepotřebujete, odstraňte skupiny prostředků, webové aplikace a všechny související prostředky.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 V tomto rychlém startu jste vytvořili Front Door umožňující směrovat uživatelský provoz pro webové aplikace, které vyžadují vysokou dostupnost a maximální výkon. Další informace o směrování provozu najdete v tématu o [metodách směrování](front-door-routing-methods.md) používaných službou Front Door.

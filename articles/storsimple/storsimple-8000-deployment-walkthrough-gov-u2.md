@@ -15,11 +15,11 @@ ms.workload: NA
 ms.date: 06/22/2017
 ms.author: alkohli
 ms.openlocfilehash: 4f093251ce3c711cc060369abb27770157024d91
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51238688"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61488627"
 ---
 # <a name="deploy-your-on-premises-storsimple-device-in-the-government-portal"></a>Nasazení místního zařízení StorSimple na portálu Government
 
@@ -49,12 +49,12 @@ Pomocí níže uvedených požadovaných kroků zařízení StorSimple nakonfigu
 | **PODROBNÝ POSTUP NASAZENÍ** |Tyto kroky jsou požadované k produkčnímu nasazení zařízení StorSimple. |
 | [Krok 1: Vytvoření nové služby](#step-1-create-a-new-service) |Nastavte správu cloudu a úložiště pro zařízení StorSimple. *Pokud máte existující službu pro jiná zařízení StorSimple, tento krok přeskočte*. |
 | [Krok 2: Získání registračního klíče služby](#step-2-get-the-service-registration-key) |Tento klíč slouží k registraci a připojení zařízení StorSimple ve službě správy. |
-| [Krok 3: Konfigurace a registrace zařízení pomocí Windows PowerShellu pro StorSimple](#step-3-configure-and-register-the-device-through-windows-powershell-for-storsimple) |Připojte zařízení k síti, zaregistrujte je v Azure a dokončete instalaci pomocí služby pro správu. |
-| [Krok 4: Dokončení minimální instalace zařízení](#step-4-complete-minimum-device-setup) </br>Volitelné: Aktualizace zařízení StorSimple |Pomocí služby pro správu dokončete instalaci zařízení a aktivujte je k poskytování úložiště. |
+| [Krok 3: Konfigurace a registrace zařízení pomocí Windows Powershellu pro StorSimple](#step-3-configure-and-register-the-device-through-windows-powershell-for-storsimple) |Připojte zařízení k síti, zaregistrujte je v Azure a dokončete instalaci pomocí služby pro správu. |
+| [Krok 4: Dokončení minimální instalace zařízení](#step-4-complete-minimum-device-setup) </br>Volitelné: Aktualizace zařízení StorSimple. |Pomocí služby pro správu dokončete instalaci zařízení a aktivujte je k poskytování úložiště. |
 | [Krok 5: Vytvoření kontejneru svazků](#step-5-create-a-volume-container) |Vytvořte kontejner ke zřízení svazků. Kontejner svazků obsahuje účet úložiště, šířku pásma a nastavení šifrování pro všechny svazky, které jsou v něm obsažené. |
 | [Krok 6: Vytvoření svazku](#step-6-create-a-volume) |V zařízení StorSimple zřiďte svazky úložiště pro své servery. |
-| [Krok 7: Připojení, inicializace a formátování svazků](#step-7-mount-initialize-and-format-a-volume) </br>Volitelné: Konfigurace funkce MPIO |Připojte své servery k úložišti iSCSI poskytovanému zařízením. Volitelně konfigurujte funkci MPIO zajistit, že vaše servery budou tolerovat chyby připojení, sítě a interface selhání. |
-| [Krok 8: Provedení zálohy](#step-8-take-a-backup) |Nastavte zásady zálohování pro ochranu dat. |
+| [Krok 7: Připojení, inicializace a formátování svazků](#step-7-mount-initialize-and-format-a-volume) </br>Volitelné: Konfigurace funkce MPIO. |Připojte své servery k úložišti iSCSI poskytovanému zařízením. Volitelně konfigurujte funkci MPIO zajistit, že vaše servery budou tolerovat chyby připojení, sítě a interface selhání. |
+| [Krok 8: Vytvořit zálohu](#step-8-take-a-backup) |Nastavte zásady zálohování pro ochranu dat. |
 |  | |
 | **DALŠÍ POSTUPY** |Tyto postupy můžete někdy potřebovat při nasazování svého řešení. |
 | [Konfigurace nového účtu úložiště pro službu](#configure-a-new-storage-account-for-the-service) | |
@@ -105,7 +105,7 @@ Služba Správce zařízení StorSimple může spravovat více zařízení StorS
 > Pokud jste nepovolili automatické vytvoření účtu úložiště při vytvoření služby, po úspěšném vytvoření služby bude nutné vytvořit alespoň jeden účet úložiště. Tento účet úložiště se použije při vytváření kontejneru svazku.
 > 
 > * Pokud jste nevytvořili účet úložiště automaticky, najdete podrobné pokyny k vytvoření účtu v tématu [Konfigurace nového účtu úložiště pro službu](#configure-a-new-storage-account-for-the-service).
-> * Pokud jste automatické vytvoření účtu úložiště povolili, pokračujte na [krok 2: Získání registračního klíče služby](#step-2-get-the-service-registration-key).
+> * Pokud jste nepovolili automatické vytvoření účtu úložiště, přejděte na [krok 2: Získání registračního klíče služby](#step-2-get-the-service-registration-key).
 
 
 ## <a name="step-2-get-the-service-registration-key"></a>Krok 2: Získání registračního klíče služby
@@ -115,7 +115,7 @@ Pomocí následujících kroků na portálu Government.
 
 [!INCLUDE [storsimple-8000-get-service-registration-key](../../includes/storsimple-8000-get-service-registration-key.md)]
 
-## <a name="step-3-configure-and-register-the-device-through-windows-powershell-for-storsimple"></a>Krok 3: Konfigurace a registrace zařízení pomocí Windows PowerShellu pro StorSimple
+## <a name="step-3-configure-and-register-the-device-through-windows-powershell-for-storsimple"></a>Krok 3: Konfigurace a registrace zařízení pomocí Windows Powershellu pro StorSimple
 Pomocí Windows PowerShellu pro StorSimple dokončete počáteční nastavení zařízení StorSimple, jak je popsáno v následujícím postupu. K dokončení tohoto kroku budete potřebovat software pro emulaci terminálu. Další informace naleznete v tématu [Použití klienta PuTTY k připojení ke konzole sériového portu zařízení](#use-putty-to-connect-to-the-device-serial-console).
 
 [!INCLUDE [storsimple-8000-configure-and-register-device-gov](../../includes/storsimple-8000-configure-and-register-device-gov-u2.md)]
@@ -158,7 +158,7 @@ Pokud se rozhodnete, že funkci MPIO konfigurovat nebudete, připojte, inicializ
 
 [!INCLUDE [storsimple-mount-initialize-format-volume](../../includes/storsimple-mount-initialize-format-volume.md)]
 
-## <a name="step-8-take-a-backup"></a>Krok 8: Provedení zálohy
+## <a name="step-8-take-a-backup"></a>Krok 8: Vytvořit zálohu
 Zálohy vytvořené v určitých časových bodech poskytují ochranu a zvyšují možnost jejich obnovení při současném zkrácení doby potřebné k obnovení. Zařízení StorSimple lze zálohovat dvěma různými způsoby: pomocí místních snímků nebo pomocí cloudových snímků. Každý z těchto typů zálohování může být **naplánovaný** nebo **ruční**.
 
 Pomocí následujících kroků na portálu Government k vytvoření naplánovaného zálohování.

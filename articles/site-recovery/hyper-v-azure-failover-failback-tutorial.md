@@ -10,11 +10,11 @@ ms.date: 03/18/2019
 ms.author: raynew
 ms.custom: MVC
 ms.openlocfilehash: 53b2c2945062ef348104e24a352895a14eed1a04
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58314837"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60748998"
 ---
 # <a name="fail-over-and-fail-back-hyper-v-vms-replicated-to-azure"></a>Převzetí služeb při selhání a navrácení služeb po obnovení virtuálních počítačů Hyper-V replikovaných do Azure
 

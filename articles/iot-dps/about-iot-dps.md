@@ -3,17 +3,17 @@ title: Přehled služby Azure IoT Hub Device Provisioning Service | Microsoft Do
 description: Popis zřizování zařízení v Azure pomocí služeb Device Provisioning a IoT Hub
 author: nberdy
 ms.author: nberdy
-ms.date: 04/04/2019
+ms.date: 12/05/2017
 ms.topic: overview
 ms.service: iot-dps
 services: iot-dps
 manager: briz
 ms.openlocfilehash: 89e0b6b5bedf36c89bf3a54f4baf42f7019625c0
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59051459"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60746043"
 ---
 # <a name="provisioning-devices-with-azure-iot-hub-device-provisioning-service"></a>Zřizování zařízení pomocí služby Azure IoT Hub Device Provisioning Service
 Microsoft Azure poskytuje bohatou sadu integrovaných veřejných cloudových služeb pro všechny potřeby vašeho řešení IoT. IoT Hub Device Provisioning Service je pomocná služba pro IoT Hub. Umožňuje plně automatizované zřizování za běhu ve správném centru IoT, které nevyžaduje zásah člověka. Zákazníci tak můžou bezpečným a škálovatelným způsobem zřizovat miliony zařízení.

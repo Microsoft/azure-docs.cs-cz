@@ -10,11 +10,11 @@ ms.workload: infrastructure-services
 ms.date: 04/07/2019
 ms.author: kumud;tyao
 ms.openlocfilehash: 744c6fb9235c9daa2d5239ef9fd13679db943650
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59783963"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61459704"
 ---
 #  <a name="custom-rules-for-web-application-firewall-with-azure-front-door"></a>Vlastní pravidla pro firewall webových aplikací s Azure branou
 Firewall webových aplikací (WAF) s branou služby umožňuje řídit přístup k webovým aplikacím na základě podmínek, které definujete. Vlastní pravidlo WAF se skládá z priorita, typ pravidla, podmínky shody a akci. Existují dva typy vlastních pravidel: odpovídat pravidla a pravidla omezení přenosové rychlosti. Pravidla shody řídí přístup na základě porovnání podmínky, když pravidlo limit frekvence řídí přístup na základě porovnání podmínky a míry příchozí požadavky. Můžete zakázat vlastní pravidlo, které brání jeho právě vyhodnocuje, ale stále zachovat konfiguraci. Tento článek popisuje pravidla shody, založené na protokolu http parametry.

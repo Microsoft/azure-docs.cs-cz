@@ -8,14 +8,15 @@ manager: jeconnoc
 ms.service: azure-functions
 ms.devlang: multiple
 ms.topic: reference
-ms.date: 01/14/2019
-ms.author: cshoe
+origin.date: 01/14/2019
+ms.date: 03/04/2019
+ms.author: v-junlch
 ms.openlocfilehash: 4ccfe192eaea94cb9b199bd3c6f0bdacf1685519
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56739554"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61437714"
 ---
 # <a name="using-the-azure-function-return-value"></a>Používat návratovou hodnotu funkce Azure
 
@@ -23,8 +24,8 @@ Tento článek vysvětluje, jak vrátit hodnoty pracovní uvnitř funkce.
 
 V jazycích, které mají návratovou hodnotu, můžete vytvořit vazbu funkce [výstupní vazby](./functions-triggers-bindings.md#binding-direction) návratovou hodnotu:
 
-* V knihovně tříd jazyka C# použijte atribut vazby výstupu pro návratovou hodnotu metody.
-* V jiných jazycích, nastavte `name` vlastnost *function.json* k `$return`.
+- V knihovně tříd jazyka C# použijte atribut vazby výstupu pro návratovou hodnotu metody.
+- V jiných jazycích, nastavte `name` vlastnost *function.json* k `$return`.
 
 Pokud existuje více výstupní vazby, použijte vrácenou hodnotu pouze pro jeden z nich.
 
@@ -32,11 +33,11 @@ V jazyce C# a skript jazyka C#, jsou alternativní způsoby, jak odesílat data 
 
 Podívejte se na konkrétní jazyk příklad znázorňující použití návratovou hodnotu:
 
-* [C#](#c-example)
-* [C# skript (.csx)](#c-script-example)
-* [F#](#f-example)
-* [JavaScript](#javascript-example)
-* [Python](#python-example)
+- [C#](#c-example)
+- [C# skript (.csx)](#c-script-example)
+- [F#](#f-example)
+- [JavaScript](#javascript-example)
+- [Python](#python-example)
 
 ## <a name="c-example"></a>Příklad jazyka C#
 
@@ -169,3 +170,4 @@ def main(input: azure.functions.InputStream) -> str:
 
 > [!div class="nextstepaction"]
 > [Zpracování chyb vazeb Azure Functions](./functions-bindings-errors.md)
+

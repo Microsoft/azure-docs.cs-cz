@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 11/06/2018
 ms.author: spelluru
 ms.openlocfilehash: 4ed45e1ed18ad630831772997b1fc150882731bd
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57847962"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62123395"
 ---
 # <a name="azure-wcf-relay-rest-tutorial"></a>Kurz pro Azure WCF Relay REST
 Tento kurz popisuje, jak vytvořit jednoduchou hostitelskou aplikaci Azure Relay, která vystavuje rozhraní založené na protokolu REST. REST webovému klientovi, jako je třeba webový prohlížeč, umožňuje přístup k API pro Service Bus přes požadavky HTTP.

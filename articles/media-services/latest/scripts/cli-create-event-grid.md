@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 01/25/2019
 ms.author: juliako
 ms.openlocfilehash: 2fcacd559db0ab143ffa7ed49bbd546785765154
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55098901"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60762024"
 ---
 # <a name="cli-example-create-an-azure-event-grid-subscription"></a>Příklad rozhraní příkazového řádku: Vytvořit odběr služby Azure Event Grid 
 

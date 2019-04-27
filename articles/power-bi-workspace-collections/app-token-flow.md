@@ -2,18 +2,18 @@
 title: Ověřování a autorizace pomocí kolekcí pracovních prostorů Power BI | Dokumentace Microsoftu
 description: Ověřování a autorizace pomocí kolekcí pracovních prostorů Power BI.
 services: power-bi-workspace-collections
-author: markingmyname
-ms.author: maghan
+author: rkarlin
+ms.author: rkarlin
 ms.service: power-bi-workspace-collections
 ms.topic: article
 ms.workload: powerbi
 ms.date: 09/20/2017
-ms.openlocfilehash: 5d7b5f2655fc94b9a060c30e11be66bd2eacdee8
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.openlocfilehash: 5fbe08bb9ebc355074a790f7732c9de10eaad859
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58520611"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62110678"
 ---
 # <a name="authenticating-and-authorizing-with-power-bi-workspace-collections"></a>Ověřování a autorizace pomocí kolekcí pracovních prostorů Power BI
 

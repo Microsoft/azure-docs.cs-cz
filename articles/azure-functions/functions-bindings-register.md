@@ -8,14 +8,15 @@ manager: jeconnoc
 ms.service: azure-functions
 ms.devlang: multiple
 ms.topic: reference
-ms.date: 02/18/2019
-ms.author: cshoe
+origin.date: 02/18/2019
+ms.date: 04/26/2019
+ms.author: v-junlch
 ms.openlocfilehash: 5534086d5754691f650370e465fa2c63210e0dc7
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
-ms.translationtype: MT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56739458"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61437850"
 ---
 # <a name="register-azure-functions-binding-extensions"></a>Registrace rozšíření vazby Azure Functions
 
@@ -37,7 +38,7 @@ Výjimky, které nevyžadují explicitní registraci, protože jsou automaticky 
 
 ## <a name="azure-portal-development"></a>Vývoj pro Azure portal
 
-Při vytváření funkce nebo přidat vazbu, zobrazí se výzva při rozšíření pro triggerem nebo vazbou vyžaduje registrace. Na výzvy odpovíte kliknutím **nainstalovat** k registraci rozšíření. Instalace může trvat až 10 minut, než v plánu consumption.
+Při vytváření funkce nebo přidat vazbu, zobrazí se výzva při rozšíření pro triggerem nebo vazbou vyžaduje registrace. Na výzvy odpovíte kliknutím **nainstalovat** k registraci rozšíření. Instalace může trvat až 10 minut, než v plánu consumption. 
 
 Každé rozšíření musí nainstalovat pouze jednou pro danou funkci aplikace. U podporovaných vazeb, které nejsou k dispozici na portálu nebo aktualizovat nainstalovaného rozšíření můžete také [ruční instalaci nebo aktualizaci vazby rozšíření z portálu Azure Functions](install-update-binding-extensions-manual.md).  
 
@@ -75,4 +76,5 @@ Nahraďte `<target_version>` v příkladu nahraďte konkrétní verzi balíčku,
 ## <a name="next-steps"></a>Další postup
 > [!div class="nextstepaction"]
 > [Příklad aktivační události a vazby Azure – funkce](./functions-bindings-example.md)
+
 

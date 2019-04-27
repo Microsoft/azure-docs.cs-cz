@@ -16,11 +16,11 @@ ms.date: 11/30/2018
 ms.author: cephalin;dariac
 ms.custom: seodec18
 ms.openlocfilehash: db8445ec2b3dd8bdefa661d7f186e720c6fada09
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57858873"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62130105"
 ---
 # <a name="deploy-your-app-to-azure-app-service-using-ftps"></a>Nasazení aplikace do Azure App Service pomocí FTP/S
 
@@ -89,7 +89,7 @@ Pro nasazení pomocí FTP [prostředí Azure PowerShell](/cli/azure), naleznete 
 ## <a name="troubleshoot-ftp-deployment"></a>Řešení potíží s nasazení FTP
 
 - [Jak můžete řešit potíže s FTP nasazení?](#how-can-i-troubleshoot-ftp-deployment)
-- [Můžu nejste schopni FTP a publikování vlastní kód. Jak lze problém vyřešit?](#im-not-able-to-ftp-and-publish-my-code-how-can-i-resolve-the-issue)
+- [Nemůžu se připojit přes protokol FTP a publikovat kód. Jak lze problém vyřešit?](#im-not-able-to-ftp-and-publish-my-code-how-can-i-resolve-the-issue)
 - [Jak se můžete připojit k serveru FTP ve službě Azure App Service prostřednictvím pasivní režim?](#how-can-i-connect-to-ftp-in-azure-app-service-via-passive-mode)
 
 ### <a name="how-can-i-troubleshoot-ftp-deployment"></a>Jak můžete řešit potíže s FTP nasazení?

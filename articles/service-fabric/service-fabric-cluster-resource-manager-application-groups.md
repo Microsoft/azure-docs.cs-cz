@@ -15,11 +15,11 @@ ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
 ms.openlocfilehash: 7e90dc00a8e042e48d8016e25dda04c15ce9f619
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58670630"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62114069"
 ---
 # <a name="introduction-to-application-groups"></a>Úvod do skupiny aplikací
 Service Fabric Cluster Resource Manageru obvykle spravuje prostředky clusteru rozložení zátěže (reprezentované prostřednictvím [metriky](service-fabric-cluster-resource-manager-metrics.md)) rovnoměrně v celém clusteru. Service Fabric spravuje kapacity uzlů v clusteru a clusteru jako celek prostřednictvím [kapacity](service-fabric-cluster-resource-manager-cluster-description.md). Metriky a kapacitu fungují velmi vhodné pro mnoho úloh, ale vzorce, které se hojně používají různé instance aplikace Service Fabric v některých případech umožňuje přinést si další požadavky. Například můžete chtít:

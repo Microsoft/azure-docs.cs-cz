@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 11/25/2014
 ms.author: MicrosoftHelp@twilio.com
 ms.openlocfilehash: 40b633c4e51a34e6640a9557be49bbe30543daf5
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52426431"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61457647"
 ---
 # <a name="how-to-use-twilio-for-voice-and-sms-capabilities-in-ruby"></a>Postup použití Twilia pro hlasové hovory a SMS v Ruby
 Tato příručka ukazuje, jak k provádění běžných programovacích úloh pomocí služby Twilio API v Azure. Pokryté scénáře zahrnují vytváření telefonních hovorů a posílání zpráv služby krátké zprávy (SMS). Další informace o Twilio a používání hlasové hovory a SMS ve svých aplikacích najdete v tématu [další kroky](#NextSteps) oddílu.
@@ -52,16 +52,16 @@ Twilio příkazy jsou značky XML, které informují Twilio, jak **proveďte**. 
 
 Následuje seznam příkazů Twilio.
 
-* **&lt;Volání&gt;**: volající se připojí k jiný telefon.
-* **&lt;Shromážděte&gt;**: shromažďuje číslice zadané na klávesnici telefonu.
-* **&lt;Zavěšení&gt;**: ukončení volání.
-* **&lt;Přehrát&gt;**: přehraje zvukový soubor.
-* **&lt;Pozastavit&gt;**: bezobslužná čeká na zadaný počet sekund.
-* **&lt;Záznam&gt;**: zaznamenává hlasové volajícího a vrátí adresu URL souboru, který obsahuje záznam.
-* **&lt;Přesměrovat&gt;**: převede ovládací prvek hovoru nebo SMS TwiML na jinou adresu URL.
-* **&lt;Odmítnout&gt;**: bez fakturace je odmítne příchozí volání na vaše číslo Twilio
-* **&lt;Řekněme, že&gt;**: převede text na řeč, který je k volání.
-* **&lt;SMS&gt;**: odešle zprávu SMS.
+* **&lt;Volání&gt;**: Volající se připojí k jiný telefon.
+* **&lt;Shromážděte&gt;**: Shromažďuje číslice zadané na klávesnici telefonu.
+* **&lt;Zavěšení&gt;**: Ukončí volání.
+* **&lt;Přehrát&gt;**: Přehraje zvukový soubor.
+* **&lt;Pause&gt;**: Bezobslužná počká zadaný počet sekund.
+* **&lt;Record&gt;**: Zaznamenává hlasové volajícího a vrátí adresu URL souboru, který obsahuje záznam.
+* **&lt;Přesměrovat&gt;**: Řízení přenosů volání nebo odeslání SMS TwiML na jinou adresu URL.
+* **&lt;Odmítnout&gt;**: Odmítne příchozí volání na vaše číslo Twilio bez vám fakturace
+* **&lt;Řekněme, že&gt;**: Převede text na řeč, který je k volání.
+* **&lt;Sms&gt;**: Odešle zprávu SMS.
 
 Další informace o Twilio příkazů, jejich atributy a TwiML najdete v tématu [TwiML][twiml]. Další informace o rozhraní API Twilia najdete v tématu [Twilio API][twilio_api].
 
@@ -109,7 +109,7 @@ Na příkazovém řádku spusťte `bundle install`. Nyní otevřete `web.rb` a t
 
 Všechno teď je nastavené na použití pomocné knihovny Twilio pro Ruby ve vaší webové aplikaci.
 
-## <a id="howto_make_call"></a>Postupy: volání odchozí
+## <a id="howto_make_call"></a>Jak: Ujistěte se, odchozí volání
 Následující ukazuje, jak provést odchozích volání. Klíčové koncepty zahrnout pomocí Twilio pomocné knihovny pro Ruby k volání rozhraní REST API a vykreslování TwiML. Dosaďte svoje hodnoty **z** a **k** telefonní čísla a ujistěte se, abyste ověřili **z** telefonní číslo pro svůj účet Twilio před spuštěním kódu.
 
 Přidejte tuto funkci, která `web.md`:
@@ -146,7 +146,7 @@ Pokud otevřete nahoru `http://yourdomain.cloudapp.net/make_call` v prohlížeč
 
 Třetí parametr (`url`) je adresa URL, která se zobrazí pokyny o tom, jak udělat po připojení volání vyžaduje Twilio. V tomto případě můžeme nastavit adresu URL (`http://yourdomain.cloudapp.net`), který vrací jednoduchý TwiML dokumentu a používá `<Say>` příkaz některé převod textu na řeč a říct "Dobrý den opic" příjemce volání.
 
-## <a id="howto_receive_sms"></a>Postupy: Zobrazí se zpráva SMS
+## <a id="howto_receive_sms"></a>Jak: Zobrazí se zpráva SMS
 V předchozím příkladu jsme spustili **odchozí** telefonního hovoru. Tento čas, použijeme zadané telefonní číslo Twilio nemusíme během procesu registrace **příchozí** SMS zprávy.
 
 První, přihlaste se k vaší [řídicí panel Twilio][twilio_account]. Klikněte na "Čísla" v horním navigačním podokně a potom klikněte na číslo Twilio, které bylo zadáno. Uvidíte dvě adresy URL, které můžete nakonfigurovat. Adresa URL požadavku na adrese URL žádosti hlasu a zprávu SMS. Toto jsou adresy URL, které Twilio volá vždy, když proběhne telefonický hovor nebo zprávu SMS je odeslána na vaše číslo. Adresy URL jsou také označovány jako "web hooks".
@@ -161,7 +161,7 @@ Rádi bychom se zpracování příchozích zpráv SMS, můžeme aktualizovat adr
 
 Po provedení změn, ujistěte se, že znovu spustit webové aplikace. Nyní vyjměte telefonu a odeslat zprávu SMS na vaše číslo Twilio. O tom bezodkladně informuje byste měli získat odpověď serveru SMS, že "Hey, Děkujeme, že příkaz ping! Twilio a Azure rock! ".
 
-## <a id="additional_services"></a>Postupy: použití služby Twilio další
+## <a id="additional_services"></a>Jak: Použití služby Twilio další
 Kromě příkladů uvedených v tomto poli Twilio nabízí rozhraní API založeného na webu, která vám umožní využívat další funkce platformy Twilio vaše aplikace Azure. Úplné podrobnosti najdete v tématu [dokumentace k rozhraní API Twilia][twilio_api_documentation].
 
 ### <a id="NextSteps"></a>Další kroky

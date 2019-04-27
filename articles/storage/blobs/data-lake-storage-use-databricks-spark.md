@@ -9,11 +9,11 @@ ms.topic: tutorial
 ms.date: 03/11/2019
 ms.author: dineshm
 ms.openlocfilehash: 7f712bcf3e82005480d4960484cb0ea3ad51fbff
-ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58226755"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61482668"
 ---
 # <a name="tutorial-access-data-lake-storage-gen2-data-with-azure-databricks-using-spark"></a>Kurz: Data Lake Storage Gen2 pro přístup k datům Azure Databricks pomocí Spark
 

@@ -15,11 +15,11 @@ ms.workload: iaas-sql-server
 ms.date: 12/05/2017
 ms.author: ninarn
 ms.openlocfilehash: da850b8ff9174fa310c5247cd7e99af69db28a8b
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56328431"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61477414"
 ---
 # <a name="storage-configuration-for-sql-server-vms"></a>Konfigurace úložiště pro virtuální počítače s SQL serverem
 
@@ -69,7 +69,7 @@ Pokud použijete následující šablony Resource Manageru, jsou ve výchozím n
 
 Pro existující virtuální počítače SQL serveru můžete upravit některá nastavení úložiště na webu Azure Portal. Vyberte svůj virtuální počítač, přejděte do oblasti nastavení a pak vyberte konfiguraci systému SQL Server. Konfigurace systému SQL Server okno aktuální využití úložiště virtuálního počítače. V tomto grafu se zobrazují všechny jednotky, které existují na vašem virtuálním počítači. Pro každou jednotku v prostoru úložiště zobrazí v čtyři části:
 
-* SQL data
+* Data SQL
 * Protokol SQL
 * Ostatní (úložiště bez SQL)
 * K dispozici.
@@ -129,8 +129,8 @@ Azure používá následující nastavení k vytvoření fondu úložiště na v
 | Velikost disků |1 TB |
 | Mezipaměť |Čtení |
 | Velikost alokační |Velikost alokační jednotky 64 KB systému souborů NTFS |
-| Inicializace rychlé souboru |Povoleno |
-| Uzamknout stránky v paměti |Povoleno |
+| Inicializace rychlé souboru |Enabled |
+| Uzamknout stránky v paměti |Enabled |
 | Obnovení |Jednoduché obnovení (bez odolnosti) |
 | Počet sloupců |Počet datových disků<sup>1</sup> |
 | Umístění databáze TempDB |Uložené na datové disky<sup>2</sup> |

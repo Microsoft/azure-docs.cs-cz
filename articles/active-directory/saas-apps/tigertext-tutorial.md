@@ -15,73 +15,71 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/29/2019
 ms.author: jeedes
-ms.openlocfilehash: 55d8ec8f0f767aef27266aa8ea9ddcc40b7da6ed
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 7507e5d23898fd069797c14d0fa18419b8345d78
+ms.sourcegitcommit: a95dcd3363d451bfbfea7ec1de6813cad86a36bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/23/2019
-ms.locfileid: "60339019"
+ms.locfileid: "62736289"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-tigertext-secure-messenger"></a>Kurz: Integrace Azure Active Directory s TigerText zabezpečení Messenger
 
 V tomto kurzu se dozvíte, jak integrovat Messenger TigerText zabezpečení Azure Active Directory (Azure AD).
+
 Integrace zabezpečení Messenger TigerText s Azure AD poskytuje následující výhody:
 
 * Můžete řídit ve službě Azure AD, který má přístup ke službě Messenger zabezpečení TigerText.
-* Uživatelům se automaticky přihlášeni TigerText zabezpečení Messenger (Single Sign-On) můžete povolit pomocí jejich účtů služby Azure AD.
-* Můžete spravovat své účty na jediném místě – na webu Azure portal.
+* Můžete povolit uživatelům, aby se automaticky přihlášeni k TigerText zabezpečení Messenger (jednotné přihlašování) s jejich účty Azure AD.
+* Můžete spravovat své účty v jednom centrálním místě: na webu Azure portal.
 
-Pokud chcete zjistit další podrobnosti o integraci aplikací SaaS v Azure AD, přečtěte si téma [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
+Podrobnosti o softwaru, integraci služby (SaaS) aplikací s Azure AD najdete v tématu [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
 ## <a name="prerequisites"></a>Požadavky
 
 Konfigurace integrace Azure AD s TigerText zabezpečení Messenger, potřebujete následující položky:
 
-* Předplatné služby Azure AD. Pokud nemáte prostředí Azure AD, můžete získat měsíční zkušební verze [zde](https://azure.microsoft.com/pricing/free-trial/)
-* Zabezpečení Messenger TigerText jednotného přihlašování povolená předplatného
+* Předplatné služby Azure AD. Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
+* Předplatné TigerText zabezpečení Messenger pomocí jednotného přihlašování povolená.
 
 ## <a name="scenario-description"></a>Popis scénáře
 
-V tomto kurzu konfigurace a testování v testovacím prostředí Azure AD jednotného přihlašování.
+V tomto kurzu se konfigurace a testování v testovacím prostředí Azure AD jednotného přihlašování a zabezpečení Messenger TigerText integrace s Azure AD.
 
-* Podporuje zabezpečení Messenger TigerText **SP** jednotné přihlašování zahájené pomocí
+Zabezpečení Messenger TigerText podporuje iniciovaného Zprostředkovatelem přihlašování jednotné přihlašování (SSO).
 
-## <a name="adding-tigertext-secure-messenger-from-the-gallery"></a>Přidání zabezpečení Messenger TigerText z Galerie
+## <a name="add-tigertext-secure-messenger-from-the-azure-marketplace"></a>Přidejte zabezpečenou Messenger TigerText na webu Azure Marketplace
 
-Pokud chcete nakonfigurovat integraci Messenger TigerText zabezpečení do služby Azure AD, budete muset TigerText zabezpečení Messenger přidat z Galerie na váš seznam spravovaných aplikací SaaS.
+Ke konfiguraci integrace Messenger TigerText zabezpečení do služby Azure AD, budete muset přidat Messenger TigerText zabezpečení z Azure Marketplace na váš seznam spravovaných aplikací SaaS:
 
-**Pro přidání zabezpečení Messenger TigerText z galerie, postupujte následovně:**
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com?azure-portal=true).
+1. V levém podokně vyberte **Azure Active Directory**.
 
-1. V **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
+    ![Možnost Azure Active Directory](common/select-azuread.png)
 
-    ![Tlačítko Azure Active Directory](common/select-azuread.png)
+1. Přejděte na **podnikové aplikace**a pak vyberte **všechny aplikace**.
 
-2. Přejděte do **podnikové aplikace** a pak vyberte **všechny aplikace** možnost.
+    ![V podokně podnikových aplikací](common/enterprise-applications.png)
 
-    ![V okně podnikové aplikace](common/enterprise-applications.png)
+1. Chcete-li přidat novou aplikaci, **+ nová aplikace** v horní části podokna.
 
-3. Chcete-li přidat novou aplikaci, klikněte na tlačítko **novou aplikaci** tlačítko v horní části dialogového okna.
+    ![Nová možnost aplikace](common/add-new-app.png)
 
-    ![Tlačítko nové aplikace](common/add-new-app.png)
+1. Do vyhledávacího pole zadejte **TigerText zabezpečení Messenger**. Ve výsledcích hledání vyberte **TigerText zabezpečení Messenger**a pak vyberte **přidat** pro přidání aplikace.
 
-4. Do vyhledávacího pole zadejte **TigerText zabezpečení Messenger**vyberte **TigerText zabezpečení Messenger** z panelu výsledků klikněte **přidat** tlačítko pro přidání aplikace.
-
-     ![TigerText zabezpečení Messenger v seznamu výsledků](common/search-new-app.png)
+    ![TigerText zabezpečení Messenger v seznamu výsledků](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a otestování služby Azure AD jednotného přihlašování
 
-V této části je konfigurace a testování Azure AD jednotné přihlašování pomocí Messenger TigerText zabezpečení na základě testovací uživatele volá **Britta Simon**.
-Pro jednotné přihlašování pro práci je potřeba navázat vztah odkazu mezi uživatele služby Azure AD a související uživatelské TigerText zabezpečení Messenger.
+V této části, konfigurace a testování Azure AD jednotné přihlašování s Messenger TigerText zabezpečení na základě testovací uživatele s názvem **Britta Simon**. Pro jednotné přihlašování pro práci je potřeba vytvořit propojení mezi uživatele služby Azure AD a související uživatelské TigerText zabezpečení Messenger.
 
 Nakonfigurovat a otestovat Azure AD jednotné přihlašování s Messenger TigerText zabezpečení, které potřebujete k dokončení následujících stavebních bloků:
 
-1. **[Konfigurovat Azure AD Single Sign-On](#configure-azure-ad-single-sign-on)**  – Pokud chcete, aby uživatelé mohli tuto funkci používat.
-2. **[Konfigurace TigerText zabezpečení Messenger Single Sign-On](#configure-tigertext-secure-messenger-single-sign-on)**  – ke konfiguraci nastavení jednotného přihlašování na straně aplikace.
-3. **[Vytvořit testovacího uživatele Azure AD](#create-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
-4. **[Přiřadit uživatele Azure AD](#assign-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotného přihlašování.
-5. **[Vytvořit testovacího uživatele TigerText zabezpečení Messenger](#create-tigertext-secure-messenger-test-user)**  – Pokud chcete mít protějšek Britta Simon ve TigerText zabezpečené službě Messenger, který je propojený s Azure AD reprezentace uživatele.
-6. **[Otestovat jednotné přihlašování](#test-single-sign-on)**  – Pokud chcete ověřit, jestli funguje v konfiguraci.
+1. **[Konfigurace služby Azure AD jednotného přihlašování](#configure-azure-ad-single-sign-on)**  aby uživatelé mohli tuto funkci používat.
+1. **[Konfigurace zabezpečení Messenger TigerText jednotného přihlašování](#configure-tigertext-secure-messenger-single-sign-on)**  ke konfiguraci nastavení jednotného přihlašování na straně aplikace.
+1. **[Vytvořit testovacího uživatele Azure AD](#create-an-azure-ad-test-user)**  k otestování služby Azure AD jednotné přihlašování s Britta Simon.
+1. **[Přiřadit uživatele Azure AD](#assign-the-azure-ad-test-user)**  umožňující Britta Simon používat Azure AD jednotného přihlašování.
+1. **[Vytvoření zkušebního uživatele TigerText zabezpečení Messenger](#create-a-tigertext-secure-messenger-test-user)**  tak, aby se uživatel s názvem Britta Simon TigerText zabezpečení Messenger, který je spojen s uživatele Azure AD s názvem Britta Simon.
+1. **[Otestovat jednotné přihlašování](#test-single-sign-on)**  ověřit, jestli funguje v konfiguraci.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurace služby Azure AD jednotného přihlašování
 
@@ -91,110 +89,111 @@ Ke konfiguraci Azure AD jednotné přihlašování s TigerText zabezpečení Mes
 
 1. V [webu Azure portal](https://portal.azure.com/)na **TigerText zabezpečení Messenger** integrace stránce aplikace vyberte **jednotného přihlašování**.
 
-    ![Nakonfigurovat jednotné přihlašování – odkaz](common/select-sso.png)
+    ![Nakonfigurujte možnost přihlašování](common/select-sso.png)
 
-2. Na **vybrat jedinou metodu přihlašování** dialogového okna, vyberte **SAML/WS-Fed** chcete povolit jednotné přihlašování.
+1. Na **vybrat jedinou metodu přihlašování** podokně, vyberte **SAML/WS-Fed** chcete povolit jednotné přihlašování.
 
     ![Jednotné přihlašování režim výběru](common/select-saml-option.png)
 
-3. Na **nastavte si jednotné přihlašování pomocí SAML** klikněte na **upravit** ikony otevřete **základní konfiguraci SAML** dialogového okna.
+1. Na **nastavte si jednotné přihlašování pomocí SAML** vyberte **upravit** (ikonu tužky) Chcete-li otevřít **základní konfiguraci SAML** podokně.
 
     ![Upravit konfiguraci základní SAML](common/edit-urls.png)
 
-4. Na **základní konfiguraci SAML** části, proveďte následující kroky:
+1. V **základní konfiguraci SAML** podokno, proveďte následující kroky:
 
-    ![TigerText zabezpečení Messenger domény a adresy URL jednotného přihlašování – informace](common/sp-identifier.png)
+    ![Messenger TigerText zabezpečení domény a adresy URL jednotného přihlašování – informace](common/sp-identifier.png)
 
-    a. V **přihlašovací adresa URL** textové pole, zadejte adresu URL: `https://home.tigertext.com`
+    1. V **přihlašovací adresa URL** pole, zadejte adresu URL:
 
-    b. V **identifikátor (Entity ID)** textové pole, zadejte adresu URL, pomocí následujícího vzorce: `https://saml-lb.tigertext.me/v1/organization/<instance Id>`
+       `https://home.tigertext.com`
+
+    1. V **identifikátor (Entity ID)** pole, zadejte adresu URL pomocí následujícího vzorce:
+
+       `https://saml-lb.tigertext.me/v1/organization/<instance ID>`
 
     > [!NOTE]
-    > Hodnota identifikátoru není skutečný. Aktualizujte tuto hodnotu skutečné identifikátor. Kontakt [tým podpory klient Messenger zabezpečení TigerText](mailto:prosupport@tigertext.com) má být získána hodnota. Můžete také odkazovat na tyto vzory se dají ukazuje **základní konfiguraci SAML** části webu Azure Portal.
+    > **Identifikátor (Entity ID)** není skutečnou hodnotu. Aktualizujte tuto hodnotu skutečné identifikátor. K získání hodnoty, obraťte se [tým podpory zabezpečení Messenger TigerText](mailto:prosupport@tigertext.com). Můžete také odkazovat na tyto vzory se dají ukazuje **základní konfiguraci SAML** podokně webu Azure Portal.
 
-5. Na **nastavte si jednotné přihlašování pomocí SAML** stránku, **podpisový certifikát SAML** klikněte na tlačítko **Stáhnout** ke stažení **kód XML metadat federace**  z se zadanými možnostmi podle vašich požadavků a uložit je ve vašem počítači.
+1. Na **nastavte si jednotné přihlašování pomocí SAML** podokno v **podpisový certifikát SAML** vyberte **Stáhnout** ke stažení **kód XML metadat federace**  z se zadanými možnostmi a uložit je ve vašem počítači.
 
-    ![Odkaz ke stažení certifikátu](common/metadataxml.png)
+    ![Možnost stažení kód XML metadat federace](common/metadataxml.png)
 
-6. Na **nastavení zabezpečení Messenger TigerText** tématu, zkopírujte příslušné adresy URL podle vašich požadavků.
+1. V **nastavení zabezpečení Messenger TigerText** tématu, zkopírujte adresu URL nebo adresy URL, které budete potřebovat:
+
+   * **Adresa URL pro přihlášení**
+   * **Azure AD Identifier**
+   * **Odhlašovací adresa URL**
 
     ![Zkopírování adresy URL konfigurace](common/copy-configuration-urls.png)
 
-    a. Přihlašovací adresa URL
+### <a name="configure-tigertext-secure-messenger-single-sign-on"></a>Konfigurace zabezpečení Messenger TigerText jednotného přihlašování
 
-    b. Identifikátor Azure AD
+Konfigurace jednotného přihlašování na straně TigerText zabezpečení Messenger, je nutné odeslat stažené kód XML metadat federace a příslušné adresy URL zkopírovanou ze na webu Azure portal [tým podpory zabezpečení Messenger TigerText](mailto:prosupport@tigertext.com). Tým zabezpečení Messenger TigerText zajistit, aby že SAML SSO připojení správně nastavena na obou stranách.
 
-    c. Adresa URL – odhlášení
+### <a name="create-an-azure-ad-test-user"></a>Vytvořit testovacího uživatele Azure AD
 
-### <a name="configure-tigertext-secure-messenger-single-sign-on"></a>Configure TigerText Secure Messenger Single Sign-On
+V této části vytvoříte testovacího uživatele s názvem Britta Simon na webu Azure Portal.
 
-Ke konfiguraci jednotného přihlašování na **TigerText zabezpečení Messenger** straně, je nutné odeslat na stažený **kód XML metadat federace** a vhodné zkopírovaný adresy URL z webu Azure portal [TigerText Zabezpečení tým podpory Messenger](mailto:prosupport@tigertext.com). Nastavují tohoto nastavení můžete mít správně nastavené na obou stranách připojení SAML SSO.
+1. Na webu Azure Portal, v levém podokně vyberte **Azure Active Directory**   > **uživatelé** > **všichni uživatelé**.
 
-### <a name="create-an-azure-ad-test-user"></a>Vytvořit testovacího uživatele Azure AD 
+    ![Uživatele a "Všechny uživatele" možnosti](common/users.png)
 
-Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal volá Britta Simon.
+1. V horní části obrazovky vyberte **+ nový uživatel**.
 
-1. Na webu Azure Portal, v levém podokně vyberte **Azure Active Directory**vyberte **uživatelé**a pak vyberte **všichni uživatelé**.
+    ![Nová možnost uživatele](common/new-user.png)
 
-    !["Uživatele a skupiny" a "Všechny uživatele" odkazy](common/users.png)
+1. V **uživatele** podokno, proveďte následující kroky:
 
-2. Vyberte **nového uživatele** v horní části obrazovky.
+    ![V podokně uživatele](common/user-properties.png)
 
-    ![Tlačítko Nový uživatel](common/new-user.png)
-
-3. Ve vlastnosti uživatele proveďte následující kroky.
-
-    ![Dialogové okno uživatele](common/user-properties.png)
-
-    a. V **název** zadat **BrittaSimon**.
+    1. V **název** zadejte **BrittaSimon**.
   
-    b. V **uživatelské jméno** typ pole brittasimon@yourcompanydomain.extension. Například BrittaSimon@contoso.com.
+    1. V **uživatelské jméno** zadejte **BrittaSimon\@\<doména_společnosti >.\< Rozšíření >**. Například **BrittaSimon\@contoso.com**.
 
-    c. Vyberte **zobrazit heslo** zaškrtněte políčko a zapište si hodnotu, která se zobrazí v poli heslo.
+    1. Vyberte **zobrazit heslo** zaškrtněte políčko a zapište si hodnotu, která se zobrazí **heslo** pole.
 
-    d. Klikněte na možnost **Vytvořit**.
+    1. Vyberte **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřadit uživatele Azure AD
 
-V této části je povolit Britta Simon používat jednotné přihlašování Azure díky udělení přístupu ke službě Messenger zabezpečení TigerText.
+V této části je povolit Britta Simon používat jednotné přihlašování Azure tím, že uděluje přístup ke službě Messenger zabezpečení TigerText.
 
-1. Na webu Azure Portal, vyberte **podnikové aplikace**vyberte **všechny aplikace**a pak vyberte **TigerText zabezpečení Messenger**.
+1. Na webu Azure Portal, vyberte **podnikové aplikace** > **všechny aplikace** > **TigerText zabezpečení Messenger**.
 
-    ![Okno aplikace organizace](common/enterprise-applications.png)
+    ![Podokno podnikových aplikací](common/enterprise-applications.png)
 
-2. V seznamu aplikací vyberte **TigerText zabezpečení Messenger**.
+1. V seznamu aplikací vyberte **TigerText zabezpečení Messenger**.
 
-    ![Odkaz TigerText zabezpečení Messenger v seznamu aplikací](common/all-applications.png)
+    ![TigerText zabezpečení Messenger v seznamu aplikací](common/all-applications.png)
 
-3. V nabídce na levé straně vyberte **uživatelů a skupin**.
+1. V levém podokně v části **SPRAVOVAT**vyberte **uživatelů a skupin**.
 
-    ![Odkaz "Uživatele a skupiny"](common/users-groups-blade.png)
+    ![Možnost "Uživatele a skupiny"](common/users-groups-blade.png)
 
-4. Klikněte na tlačítko **přidat uživatele** tlačítko a pak vyberte **uživatelů a skupin** v **přidat přiřazení** dialogového okna.
+1. Vyberte **+ přidat uživatele**a pak vyberte **uživatelů a skupin** v **přidat přiřazení** podokně.
 
     ![Podokno Přidat přiřazení](common/add-assign-user.png)
 
-5. V **uživatelů a skupin** dialogové okno Vybrat **Britta Simon** v seznamu uživatelů, klikněte **vyberte** tlačítko v dolní části obrazovky.
+1. V **uživatelů a skupin** vyberte **Britta Simon** v **uživatelé** seznamu a klikněte na tlačítko **vyberte** v dolní části podokna.
 
-6. Pokud očekáváte libovolnou hodnotu role v kontrolní výraz SAML a potom v **vybrat roli** dialogové okno vybrat vhodnou roli pro uživatele ze seznamu, klikněte **vyberte** tlačítko v dolní části obrazovky.
+1. Pokud očekáváte hodnotu do role kontrolní výraz SAML, pak v **vybrat roli** podokně, vyberte vhodnou roli pro uživatele ze seznamu. V dolní části podokna, zvolte **vyberte**.
 
-7. V **přidat přiřazení** dialogové okno kliknutím **přiřadit** tlačítko.
+1. V **přidat přiřazení** vyberte **přiřadit**.
 
-### <a name="create-tigertext-secure-messenger-test-user"></a>Vytvoření zabezpečené Messenger TigerText testovacího uživatele
+### <a name="create-a-tigertext-secure-messenger-test-user"></a>Vytvoření zkušebního uživatele TigerText zabezpečení Messenger
 
-V této části vytvořte uživatele Britta Simon TigerText zabezpečení Messenger. Práce s [tým podpory zabezpečení Messenger TigerText](mailto:prosupport@tigertext.com) přidat uživatele na platformě TigerText zabezpečení Messenger. Uživatelé musí vytvořit a aktivovat, než použití jednotného přihlašování.
+V této části vytvořte uživatele Britta Simon TigerText zabezpečení Messenger. Práce s [tým podpory zabezpečení Messenger TigerText](mailto:prosupport@tigertext.com) přidat jako uživatel ve službě Messenger zabezpečení TigerText Britta Simon. Uživatelé musí vytvořit a aktivovat, než použití jednotného přihlašování.
 
-### <a name="test-single-sign-on"></a>Test jednotného přihlašování 
+### <a name="test-single-sign-on"></a>Test jednotného přihlašování
 
-V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
+V této části Testování služby Azure AD jednotné přihlašování – konfigurace s použitím portálu Moje aplikace.
 
-Po kliknutí na dlaždici Messenger TigerText zabezpečení na přístupovém panelu, vám by měl být automaticky přihlášeni ke Messenger zabezpečení TigerText, u kterého nastavíte jednotné přihlašování. Další informace o přístupovém panelu, naleznete v tématu [Úvod k přístupovému panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Když vyberete **TigerText zabezpečení Messenger** na portálu Moje aplikace vám by měl být automaticky přihlášeni k zabezpečení Messenger TigerText předplatného, u kterého nastavíte jednotné přihlašování. Další informace o portálu Moje aplikace najdete v tématu [přístup a používání aplikací na portálu Moje aplikace](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Další prostředky
+## <a name="additional-resources"></a>Další materiály
 
-- [Seznam kurzů o integraci aplikací SaaS pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+* [Seznam kurzů integrace aplikací SaaS pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+* [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-
+* [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

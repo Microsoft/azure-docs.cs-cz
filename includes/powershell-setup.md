@@ -13,11 +13,11 @@ ms.workload: infrastructure
 ms.date: 05/12/2015
 ms.author: rasquill
 ms.openlocfilehash: b96e8e6e31817f6d261f41dbf3b3047dd49c29ba
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51258241"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61485351"
 ---
 ## <a name="setting-up-powershell"></a>Nastavení prostředí PowerShell
 Předtím, než budete moct použít Azure PowerShell, postupujte podle těchto kroků.
@@ -82,5 +82,5 @@ Spuštěním těchto příkazů na příkazovém řádku prostředí Azure Power
     $subscr="<SubscriptionName from the display of Get-AzureSubscription>"
     Select-AzureSubscription -SubscriptionName $subscr -Current    
 
-Další informace o účtů a předplatných Azure, najdete v části [postupy: připojení k vašemu předplatnému](/powershell/azureps-cmdlets-docs#Connect).
+Další informace o účtů a předplatných Azure, najdete v části [jak: Připojení k vašemu předplatnému](/powershell/azureps-cmdlets-docs#Connect).
 

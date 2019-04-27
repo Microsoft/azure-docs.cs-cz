@@ -9,11 +9,11 @@ ms.date: 01/23/2017
 ms.author: muralikk
 ms.subservice: common
 ms.openlocfilehash: 915cf1e66ec400e0d2461873d9fb3d66be9883fb
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55756746"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61477939"
 ---
 # <a name="repairing-an-export-job"></a>Oprava úlohy exportu
 Po dokončení úlohy exportu, můžete spustit nástroj Microsoft Azure Import/Export místní pro:  

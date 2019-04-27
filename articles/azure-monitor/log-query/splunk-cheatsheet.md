@@ -14,11 +14,11 @@ ms.topic: conceptual
 ms.date: 08/21/2018
 ms.author: bwren
 ms.openlocfilehash: fb637197139001c67a4cfa773f897e6701dc1e9c
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58100645"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61425130"
 ---
 # <a name="splunk-to-azure-monitor-log-query"></a>Splunk dotazu protokolu Azure Monitor
 
@@ -56,7 +56,7 @@ Následující tabulka obsahuje funkce ve službě Azure Monitor, která jsou ro
 | ToLower |  tolower() | (1) |
 | ToUpper | toupper() | (1) |
 | shoda | odpovídá regulárnímu |  (2)  |
-| regex | odpovídá regulárnímu | Ve Splunku `regex` je operátor. Ve službě Azure Monitor je relační operátor. |
+| reg. výr. | odpovídá regulárnímu | Ve Splunku `regex` je operátor. Ve službě Azure Monitor je relační operátor. |
 | searchmatch | == | Ve Splunku `searchmatch` umožňuje vyhledat přesný řetězec.
 | náhodná | rand()<br>rand(n) | Splunk vaší funkce vrátí číslo od nuly do 2<sup>31</sup>-1. Azure Monitor "vrátí číslo v rozsahu od 0,0 do 1,0, nebo pokud parametr zadán, mezi 0 a n-1.
 | teď | now() | (1)

@@ -16,11 +16,11 @@ ms.date: 02/22/2019
 ms.author: banders
 ms.custom: seodec18
 ms.openlocfilehash: d4c64433089f14d845cea8be9adf0ef13675cfd1
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57892468"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62127629"
 ---
 # <a name="view-and-download-your-organizations-azure-pricing"></a>Zobrazovat a stahovat, ceny za Azure vaší organizace
 
@@ -51,7 +51,7 @@ Musí být fakturační profil vlastníkem, přispěvatelem, Čtenář nebo spr�
 ### <a name="download-price-sheets-for-the-current-billing-period"></a>Stáhněte si ceníky pro aktuální fakturační období
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
-1. Hledat na **Cost Management a fakturace**.
+1. Vyhledejte **Cost Management a fakturace**.
 1. Vyberte fakturační profil. V závislosti na přístup potřebujete nejprve vybrat fakturační účet.
 1. V **přehled** okně Najít odkazy ke stažení pod poplatky za měsíc k datu.
 1. Vyberte **Azure ceníku**.
@@ -60,9 +60,9 @@ Musí být fakturační profil vlastníkem, přispěvatelem, Čtenář nebo spr�
 ### <a name="download-price-sheets-for-billed-charges"></a>Stáhněte si ceníky se fakturuje za
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
-1. Hledat na **Cost Management a fakturace**.
+1. Vyhledejte **Cost Management a fakturace**.
 1. Vyberte fakturační profil. V závislosti na přístup potřebujete nejprve vybrat fakturační účet.
-1. Vyberte **faktury**.
+1. Vyberte **Faktury**.
 1. V mřížce faktury nalezen řádek odpovídající ceníku, který chcete stáhnout fakturu.
 1. Klikněte na symbol tří teček (`...`) na konci řádku.
 ![Snímek obrazovky zobrazující se třemi tečkami vybrané](./media/billing-ea-pricing/billingprofile-invoicegrid.png)

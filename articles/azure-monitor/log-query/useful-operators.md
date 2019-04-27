@@ -14,11 +14,11 @@ ms.topic: conceptual
 ms.date: 08/21/2018
 ms.author: bwren
 ms.openlocfilehash: d11445c3f31f9aced6fdb9783575d10a026de1f0
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56000144"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61424134"
 ---
 # <a name="useful-operators-in-azure-monitor-log-queries"></a>Užitečné operátorů v dotazech protokolu Azure Monitor
 

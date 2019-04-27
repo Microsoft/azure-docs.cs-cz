@@ -2,24 +2,18 @@
 title: Začínáme s Průzkumníkem služby Storage | Dokumentace Microsoftu
 description: Správa prostředků Azure storage pomocí Průzkumníka služby Storage
 services: storage
-documentationcenter: na
 author: cawaMS
-manager: paulyuk
-editor: ''
-ms.assetid: 1ed0f096-494d-49c4-ab71-f4164ee19ec8
 ms.service: storage
 ms.devlang: multiple
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 07/17/2017
+ms.date: 04/22/2019
 ms.author: cawa
-ms.openlocfilehash: 38a857b1d309b92c48137a46655155e0e131908c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 3db1d638aa1e0d8488c310593a593465c2b9b336
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/23/2019
-ms.locfileid: "60459241"
+ms.locfileid: "62128275"
 ---
 # <a name="get-started-with-storage-explorer"></a>Začínáme se Storage Explorerem
 
@@ -115,7 +109,9 @@ Kromě toho můžete pracovat s účty úložiště v globálním i národním A
 
 Pomocí Průzkumníka služby Storage můžete pracovat s místním úložištěm pomocí emulátoru. Tento přístup umožňuje simulovat práci s Azure Storage, aniž byste museli mít nasazený v Azure účet úložiště.
 
-Od verze 1.1.0, emulátor místního úložiště se podporuje na všech platformách. Průzkumník služby Storage můžete připojit k libovolné emulované služby naslouchání na jeho výchozí koncové body místní úložiště.
+Od verze 1.1.0, podporuje Průzkumník služby Storage pomocí emulátoru lokálního úložiště na všech platformách. Průzkumník služby Storage můžete připojit k libovolné emulované služby naslouchání na jeho výchozí koncové body místní úložiště.
+
+[Emulátoru úložiště Azure](storage/common/storage-use-emulator.md) aktuálně běží pouze na Windows. Pro ty, které zvažují emulátor úložiště pro Linux, jednou z možností je komunita zachována, emulátor úložiště opensourcových [Azurite](https://github.com/azure/azurite).
 
 > [!NOTE]
 > Podpora pro funkce a služby úložiště může výrazně lišit podle svého výběru: emulátoru. Zajistěte, aby že vaše emulátor podporuje služby a funkce, které máte v úmyslu pracovat.

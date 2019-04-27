@@ -13,11 +13,11 @@ ms.topic: article
 ms.date: 06/30/2017
 ms.author: stewu
 ms.openlocfilehash: a8a50db5ece242bc00a28e66e21c863388950d6f
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55756831"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61437597"
 ---
 # <a name="tuning-azure-data-lake-storage-gen1-for-performance"></a>Optimalizace výkonu pro Azure Data Lake Storage Gen1
 
@@ -47,7 +47,7 @@ Připojení k síti mezi zdrojem dat a Data Lake Storage Gen1 může být někdy
 
 Jakmile vyřešili zdrojového hardwaru a výše kritické body připojení k síti, jste připraveni ke konfiguraci nástroje pro ingestování. Následující tabulka shrnuje nastavení klíče pro nástroje pro několik oblíbených ingestování a poskytuje podrobné výkonů články pro ně.  Další informace o nástroji pro váš scénář, navštivte tuto [článku](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-data-scenarios).
 
-| Nástroj               | Nastavení     | Další podrobnosti                                                                 |
+| Tool               | Nastavení     | Další podrobnosti                                                                 |
 |--------------------|------------------------------------------------------|------------------------------|
 | PowerShell       | PerFileThreadCount, ConcurrentFileCount |  [Odkaz](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-get-started-powershell) |
 | AdlCopy    | Jednotky Azure Data Lake Analytics  |   [Odkaz](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-copy-data-azure-storage-blob#performance-considerations-for-using-adlcopy)         |

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/19/2018
 ms.author: kumud
-ms.openlocfilehash: 7a0b679ef7a1a468c8a849b0a3fb9f744a392dd3
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: 52fafa7e9dd46b6c78af3776797bae48b22ea8df
+ms.sourcegitcommit: a95dcd3363d451bfbfea7ec1de6813cad86a36bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56243599"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62736660"
 ---
 # <a name="load-balancer-outbound-rules"></a>Odchozí pravidla nástroje pro vyrovnávání zatížení
 
@@ -84,7 +84,7 @@ Použijte tento parametr k přidělení 10 000 SNAT porty na virtuálním počí
 
           "allocatedOutboundPorts": 10000
 
-Každá veřejná IP adresa ze všech front-endů odchozí pravidla přispívá 51 až 200 dočasné porty pro použití jako porty SNAT.  Nástroj pro vyrovnávání zatížení přiděluje SNAT porty v násobcích po 8. Pokud zadáte hodnotu není dělitelná 8, operace konfigurace byl odmítnut.  Při pokusu o přidělení více SNAT porty, než je k dispozici na základě počtu veřejných IP adres, operace konfigurace byl odmítnut.  Pokud přidělíte 10 000 porty na virtuálním počítači a 7 virtuálních počítačů v back-end fondu by sdílet jednu veřejnou IP adresu, je konfigurace odmítnuté (7 x 10,0000 SNAT porty > 51,200 SNAT porty).  Můžete přidat více veřejné IP adresy pro front-endu odchozí pravidla povolit tento scénář.
+Každá veřejná IP adresa ze všech front-endů odchozí pravidla přispívá 51 až 200 dočasné porty pro použití jako porty SNAT.  Nástroj pro vyrovnávání zatížení přiděluje SNAT porty v násobcích po 8. Pokud zadáte hodnotu není dělitelná 8, operace konfigurace byl odmítnut.  Při pokusu o přidělení více SNAT porty, než je k dispozici na základě počtu veřejných IP adres, operace konfigurace byl odmítnut.  Pokud přidělíte 10 000 porty na virtuálním počítači a 7 virtuálních počítačů v back-end fondu by sdílet jednu veřejnou IP adresu, je konfigurace odmítnuté (7 × 10 000 SNAT porty > 51,200 SNAT porty).  Můžete přidat více veřejné IP adresy pro front-endu odchozí pravidla povolit tento scénář.
 
 Můžete se vrátit zpět k [automatické přidělování port SNAT podle velikosti fondu back-endu](load-balancer-outbound-connections.md#preallocatedports) zadáním 0 pro čísla portů.
 

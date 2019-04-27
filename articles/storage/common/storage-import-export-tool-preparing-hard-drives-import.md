@@ -9,11 +9,11 @@ ms.date: 06/29/2017
 ms.author: muralikk
 ms.subservice: common
 ms.openlocfilehash: 777e0aac46dbffb1e491874b5889667a888aadf5
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57898682"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61478504"
 ---
 # <a name="preparing-hard-drives-for-an-import-job"></a>Příprava pevných disků pro úlohu importu
 
@@ -107,7 +107,7 @@ H,Format,SilentMode,Encrypt,
 
 ### <a name="driveset-csv-file-fields"></a>Pole souborů Driveset sdíleného svazku clusteru
 
-| Pole | Hodnota |
+| Fields (Pole) | Hodnota |
 | --- | --- |
 | Písmeno_jednotky | **[Povinné]**<br/> Každé jednotky, který se právě poskytuje nástroje, jako cíl musí mít jednoduchý svazek NTFS na ně a písmeno jednotky přiřazené k němu.<br/> <br/>**Příklad**: R nebo r |
 | FormatOption | **[Povinné]**  Formátu &#124; AlreadyFormatted<br/><br/> **Formát**: Určení tohoto naformátuje všechna data na disku. <br/>**AlreadyFormatted**: Nástroj se přeskočí, formátování, pokud je zadána tato hodnota. |
@@ -366,7 +366,7 @@ Všechny verze rozhraní Microsoft .NET Framework jsou nainstalovány v následu
 
 Přejděte do části výše uvedené na vaší cílovém počítači, kde je potřeba spustit nástroj. Vyhledejte název složky počínaje "v4". Absence takových adresáře znamená, že rozhraní .NET 4 není na vašem počítači nainstalovaný. Můžete si stáhnout rozhraní .NET 4 počítače [rozhraní Microsoft .NET Framework 4 (Webová instalační služba)](https://www.microsoft.com/download/details.aspx?id=17851).
 
-### <a name="limits"></a>Omezení
+### <a name="limits"></a>Limits
 
 #### <a name="how-many-drives-can-i-preparesend-at-the-same-time"></a>Kolik jednotek můžete I připravit/odesílání ve stejnou dobu?
 

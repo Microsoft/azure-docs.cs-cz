@@ -13,11 +13,11 @@ ms.reviewer: MightyPen
 manager: craigg
 ms.date: 02/12/2019
 ms.openlocfilehash: 0014dc0edde0eafc153b40eec06c6bd6dc8446b5
-ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58447874"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61409101"
 ---
 # <a name="quickstart-use-golang-to-query-an-azure-sql-database"></a>Rychlý start: Použití jazyka go k dotazování Azure SQL database
 
@@ -27,7 +27,7 @@ V tomto rychlém startu použijete [Golang](https://godoc.org/github.com/denisen
 
 Pro absolvování tohoto kurzu potřebujete:
 
-- Databázi SQL Azure. Jeden z těchto rychlých startech můžete vytvořit a potom nakonfigurovat databázi ve službě Azure SQL Database:
+- Databázi Azure SQL. Jeden z těchto rychlých startech můžete vytvořit a potom nakonfigurovat databázi ve službě Azure SQL Database:
 
   || Izolovaná databáze | Spravovaná instance |
   |:--- |:--- |:---|
@@ -328,7 +328,7 @@ Získejte informace o připojení potřebné pro připojení k databázi Azure S
 
 ## <a name="next-steps"></a>Další postup
 
-- [Návrh první databáze SQL Azure](sql-database-design-first-database.md)
+- [Návrh první databáze Azure SQL](sql-database-design-first-database.md)
 - [Ovladač go pro Microsoft SQL Server](https://github.com/denisenkom/go-mssqldb)
 - [Hlášení problémů nebo kladení dotazů](https://github.com/denisenkom/go-mssqldb/issues)
 

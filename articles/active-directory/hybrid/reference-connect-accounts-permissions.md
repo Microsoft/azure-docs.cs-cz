@@ -18,11 +18,11 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: d145407331ed652f21510483b51a4617bf28e2fa
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
-ms.translationtype: MT
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56879114"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62096163"
 ---
 # <a name="azure-ad-connect-accounts-and-permissions"></a>Azure AD Connect: Účty a oprávnění
 
@@ -73,7 +73,7 @@ Tyto přihlašovací údaje se používají jenom při instalaci a nepoužívaj�
 ### <a name="ad-ds-connector-account-required-permissions-for-express-settings"></a>Účet AD DS konektoru požadovaná oprávnění pro expresní nastavení
 Konektor služby AD DS účet je vytvořený pro čtení a zápis do systému Windows Server AD a tato oprávnění při vytvoření pomocí expresního nastavení:
 
-| Oprávnění | Používá pro |
+| Oprávnění | Použití |
 | --- | --- |
 | <li>Replikace změn adresáře</li><li>Replikace adresáře se změní všechny |Synchronizace hodnot hash hesel |
 | Čtení a zápis všech vlastností uživatele |Import a serveru Exchange hybridní |
@@ -146,7 +146,7 @@ Když upgradujete z jedné verze nástroje Azure AD Connect na novou verzi, pot�
 >Od verze sestavení 1.1.484, Azure AD Connect zavedené regrese chybu, která vyžaduje oprávnění správce systému pro upgrade databáze SQL.  Tato chyba se vyřeší v sestavení 1.1.647.  Pokud provádíte upgrade na toto sestavení, budete potřebovat oprávnění správce.  Nejsou dostatečná oprávnění dbo.  Pokud se pokusíte upgradovat bez oprávnění správce služby Azure AD Connect, dojde k selhání a Azure AD Connect se už nebude správně fungovat později.  Společnost Microsoft je tomu věnovat pozornost a funguje to pokud chcete opravit.
 
 
-| Objekt zabezpečení | Oprávnění vyžadovaná | Používá pro |
+| Objekt zabezpečení | Oprávnění vyžadovaná | Použití |
 | --- | --- | --- |
 | Uživatel, který spouští Průvodce instalací |Správce místního serveru |Aktualizujte binární soubory. |
 | Uživatel, který spouští Průvodce instalací |Člen ADSyncAdmins |Změny synchronizační pravidla a další konfiguraci. |

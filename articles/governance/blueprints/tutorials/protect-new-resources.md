@@ -8,11 +8,11 @@ ms.topic: tutorial
 ms.service: blueprints
 manager: carmonm
 ms.openlocfilehash: d315fb5fe3ce7844946e6a9405a9a5f6a0be8b9d
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59791605"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60874525"
 ---
 # <a name="protect-new-resources-with-azure-blueprints-resource-locks"></a>Ochrana nové prostředky podle zámky prostředků Azure podrobné plány
 
@@ -152,7 +152,7 @@ Jakmile se definice podrobného plánu se úspěšně **publikováno**, je možn
      |Název artefaktu|Typ artefaktu|Název parametru|Hodnota|Popis|
      |-|-|-|-|-|
      |Skupina prostředků RGtoLock|Skupina prostředků|Název|TestingBPLocks|Definuje název nové skupiny prostředků podrobného plánu zámků za účelem použití.|
-     |Skupina prostředků RGtoLock|Skupina prostředků|Umístění|Západní USA 2|Definuje umístění novou skupinu prostředků chcete použít podrobný plán zámků za účelem.|
+     |Skupina prostředků RGtoLock|Skupina prostředků|Location|Západní USA 2|Definuje umístění novou skupinu prostředků chcete použít podrobný plán zámků za účelem.|
      |StorageAccount|Šablona Resource Manageru|storageAccountType (účet úložiště)|Standard_GRS|Vyberte SKU úložiště. Výchozí hodnota je _Standard_LRS_.|
 
 1. Po zadání všech parametrů se vyberte **přiřadit** v dolní části stránky.

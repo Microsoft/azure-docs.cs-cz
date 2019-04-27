@@ -9,11 +9,11 @@ ms.date: 12/13/2018
 ms.author: alkohli
 ms.subservice: common
 ms.openlocfilehash: ee2917c64843c8ab137e0122d63a328d6c19fedb
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56867571"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61478568"
 ---
 # <a name="azure-importexport-service-frequently-asked-questions"></a>Služba Azure Import/Export: Nejčastější dotazy 
 Níže jsou dotazy a odpovědi, které můžou mít při použití služby Azure Import/Export pro přenos dat do služby Azure storage. Otázky a odpovědi jsou uspořádané do těchto kategorií:

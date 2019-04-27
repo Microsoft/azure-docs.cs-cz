@@ -2,19 +2,20 @@
 title: Převzetí služeb při selhání a znovunastavení ochrany virtuálních počítačů Azure replikovaných do sekundární oblasti Azure pro zotavení po havárii pomocí služby Azure Site Recovery.
 description: Zjistěte, jak převzetí služeb při selhání a znovunastavení ochrany virtuálních počítačů Azure replikovaných do sekundární oblasti Azure pro zotavení po havárii pomocí služby Azure Site Recovery.
 services: site-recovery
-author: rayne-wiselman
-manager: carmonm
+author: rockboyfor
+manager: digimobile
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 04/08/2019
-ms.author: raynew
+origin.date: 04/08/2019
+ms.date: 04/22/2019
+ms.author: v-yeche
 ms.custom: mvc
 ms.openlocfilehash: 96e3c0b761a9ed4c5f84d8ece1ba504bd5aacf6f
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: HT
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59797563"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62115954"
 ---
 # <a name="fail-over-and-reprotect-azure-vms-between-regions"></a>Převzetí služeb při selhání a znovunastavení ochrany virtuálních počítačů Azure mezi oblastmi
 
@@ -34,17 +35,18 @@ Tento kurz popisuje, jak převzít služby při selhání virtuálního počíta
 - Ujistěte se, že jste dokončením [postupu zotavení po havárii](azure-to-azure-tutorial-dr-drill.md) zkontrolovali, že vše funguje podle očekávání.
 - Před spuštěním testovacího převzetí služeb při selhání ověřte vlastnosti virtuálního počítače. Virtuální počítač musí splňovat [požadavky Azure](azure-to-azure-support-matrix.md#replicated-machine-operating-systems).
 
+<a name="run-a-failover"></a>
 ## <a name="run-a-failover-to-the-secondary-region"></a>Spuštění převzetí služeb při selhání do sekundární oblasti
 
 1. V části **Replikované položky** vyberte virtuální počítač, u kterého chcete provést převzetí služeb při selhání, a vyberte **Převzít služby při selhání**.
 
-   ![Převzetí služeb při selhání](./media/azure-to-azure-tutorial-failover-failback/failover.png)
+    ![Převzetí služeb při selhání](./media/azure-to-azure-tutorial-failover-failback/failover.png)
 
 2. V části **Převzetí služeb při selhání** vyberte **Bod obnovení**, ke kterému se mají převzít služby při selhání. Můžete použít jednu z následujících možností:
 
-   * **Nejnovější** (výchozí): Zpracuje všechna data ve službě Site Recovery a poskytuje nejnižší cíl bodu obnovení (RPO).
-   * **Nejnovější zpracovaný**: Obnoví virtuální počítač k nejnovějšímu bodu obnovení zpracovanému službou Site Recovery.
-   * **Vlastní**: Převezme služby při selhání do konkrétnímu bodu obnovení. Tato možnost je užitečná při provádění testovacího převzetí služeb při selhání.
+    * **Nejnovější** (výchozí): Zpracuje všechna data ve službě Site Recovery a poskytuje nejnižší cíl bodu obnovení (RPO).
+    * **Nejnovější zpracovaný**: Obnoví virtuální počítač k nejnovějšímu bodu obnovení zpracovanému službou Site Recovery.
+    * **Vlastní**: Převezme služby při selhání do konkrétnímu bodu obnovení. Tato možnost je užitečná při provádění testovacího převzetí služeb při selhání.
 
 3. Vyberte **před spuštěním převzetí služeb při selhání vypnout počítač** Pokud chcete, aby Site Recovery chcete pokusit před aktivací převzetí služeb při selhání vypnout zdrojové virtuální počítače. Převzetí služeb při selhání bude pokračovat i v případě, že se vypnutí nepovede. Site Recovery čištění zdroji po převzetí služeb při selhání.
 
@@ -62,7 +64,7 @@ Po převzetí služeb při selhání virtuálního počítače pro něj musíte 
 1. Ujistěte se, že je virtuální počítač ve stavu **Převzetí služeb při selhání potvrzeno**, zkontrolujte dostupnost primární oblasti a ověřte, že v ní můžete vytvářet nové prostředky a přistupovat k nim.
 2. V části **Trezor** > **Replikované položky** klikněte pravým tlačítkem na virtuální počítač, u kterého došlo k převzetí služeb při selhání, a pak vyberte **Znovu nastavit ochranu**.
 
-   ![Kliknutí pravým tlačítkem a znovunastavení ochrany](./media/azure-to-azure-tutorial-failover-failback/reprotect.png)
+    ![Kliknutí pravým tlačítkem a znovunastavení ochrany](./media/azure-to-azure-tutorial-failover-failback/reprotect.png)
 
 2. Ověřte, že směr ochrany ze sekundární do primární oblasti, je už vybraná.
 3. Zkontrolujte informace o **skupině prostředků, síti, úložišti a skupinách dostupnosti**. Všechny prostředky označené jako nové jsou vytvořeny v rámci operace znovunastavení ochrany.
@@ -71,3 +73,5 @@ Po převzetí služeb při selhání virtuálního počítače pro něj musíte 
 ## <a name="next-steps"></a>Další postup
 - Po znovunastavení ochrany [zjistěte, jak](azure-to-azure-tutorial-failback.md) zpět do primární oblasti selžou, až bude k dispozici.
 - [Další informace](azure-to-azure-how-to-reprotect.md#what-happens-during-reprotection) o opětovného nastavování ochrany toku.
+
+<!-- Update_Description: update meta properties, wording update -->

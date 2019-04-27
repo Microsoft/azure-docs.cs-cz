@@ -10,11 +10,11 @@ services: iot-central
 ms.custom: mvc
 manager: timlt
 ms.openlocfilehash: 571c703609bac2e4414baf19edc39cf5e9f8820a
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57759772"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60746152"
 ---
 # <a name="compare-azure-iot-central-and-azure-iot-options"></a>Porovnání Azure IoT Central a Azure IoT Suite
 

@@ -9,11 +9,11 @@ ms.service: iot-industrialiot
 services: iot-industrialiot
 manager: philmea
 ms.openlocfilehash: 9daf1a7e58af23cb78705691217bf9709359c4d5
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: MT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59496807"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60889858"
 ---
 # <a name="what-is-azure-iot-open-platform-communications-opc-device-management"></a>Co je Správa zařízení Azure IoT otevřené platformy komunikací OPC ()?
 

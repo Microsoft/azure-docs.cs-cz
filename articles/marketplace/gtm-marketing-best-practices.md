@@ -15,13 +15,13 @@ ms.topic: article
 ms.date: 12/21/2018
 ms.author: ellacroi
 ms.openlocfilehash: bdae273506a238c4d47c1cdce004cdd92b2d58a1
-ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54355489"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62121020"
 ---
-# <a name="marketing-best-practices"></a>Osvědčené postupy marketing
+# <a name="marketing-best-practices"></a>Marketingové osvědčené postupy
 
 Publikování vaší nabídky na webu marketplace je jenom prvním krokem. Kromě toho budete muset určit, jak optimalizovat svůj výpis na disk pro maximální dopad. Dobrou zprávou je, že výpis publikováním na webu marketplace, začnete k odemknutí významné společné aktivity uvedení na trh (GTM) se společností Microsoft.  Abyste mohli na maximum této nové iniciativy GTM a skutečně rozvíjet vaše podnikání, které chcete zahrnout váš nový výpis jako součást stávajících marketingové a prodejní činnosti.
 

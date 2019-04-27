@@ -11,11 +11,11 @@ ms.topic: tutorial
 ms.date: 03/20/2019
 ms.author: kegodin
 ms.openlocfilehash: 01783aa12f586f61583b1503c796f9b523770104
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58310621"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61433025"
 ---
 # <a name="project-acoustics-unity-design-tutorial"></a>Projekt Akustika Unity návrhu kurz
 Tento kurz popisuje nástroje pro návrh a pracovní postup pro projekt Akustika v Unity.

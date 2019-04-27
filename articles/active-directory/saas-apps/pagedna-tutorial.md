@@ -16,75 +16,75 @@ ms.topic: tutorial
 ms.date: 04/03/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2f01529af7725cded6e73c17b9c3f7b0b9b34dec
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 11cb309e6c49ed36247398909e5e1b7ad9f7bc42
+ms.sourcegitcommit: a95dcd3363d451bfbfea7ec1de6813cad86a36bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59287403"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62736422"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-pagedna"></a>Kurz: Integrace Azure Active Directory s PageDNA
 
 V tomto kurzu se dozvíte, jak integrovat PageDNA s Azure Active Directory (Azure AD).
+
 PageDNA integraci se službou Azure AD poskytuje následující výhody:
 
-* Můžete řídit ve službě Azure AD, který má přístup k PageDNA.
-* Můžete povolit uživatelům být automaticky přihlášeni k PageDNA (Single Sign-On) s jejich účty Azure AD.
-* Můžete spravovat své účty na jediném místě – na webu Azure portal.
+* Ve službě Azure AD můžete řídit, kdo má přístup k PageDNA.
+* Můžete povolit uživatelům, aby se automaticky přihlášeni k PageDNA (jednotné přihlašování) s jejich účty Azure AD.
+* Můžete spravovat své účty v jednom centrálním místě: na webu Azure portal.
 
-Pokud chcete zjistit další podrobnosti o integraci aplikací SaaS v Azure AD, přečtěte si téma [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
+Podrobnosti o softwaru, integraci služby (SaaS) aplikací s Azure AD najdete v tématu [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
 ## <a name="prerequisites"></a>Požadavky
 
 Konfigurace integrace Azure AD s PageDNA, potřebujete následující položky:
 
-* Předplatné služby Azure AD. Pokud nemáte prostředí Azure AD, můžete získat [bezplatný účet](https://azure.microsoft.com/free/)
-* PageDNA jednotného přihlašování povolená předplatného
+* Předplatné služby Azure AD. Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
+* Předplatné PageDNA pomocí jednotného přihlašování povolená.
 
 ## <a name="scenario-description"></a>Popis scénáře
 
-V tomto kurzu konfigurace a testování v testovacím prostředí Azure AD jednotného přihlašování.
+V tomto kurzu konfigurace a testování v testovacím prostředí Azure AD jednotného přihlašování a PageDNA integrace s Azure AD.
 
-* Podporuje PageDNA **SP** jednotné přihlašování zahájené pomocí
+PageDNA podporuje následující funkce:
 
-* Podporuje PageDNA **JIT** zřizování uživatelů
+* Iniciovaného Zprostředkovatelem přihlašování jednotné přihlašování (SSO).
 
-## <a name="adding-pagedna-from-the-gallery"></a>Přidání PageDNA z Galerie
+* Zřizování uživatelů just-in-time.
 
-Konfigurace integrace PageDNA do služby Azure AD, budete muset přidat PageDNA z Galerie na váš seznam spravovaných aplikací SaaS.
+## <a name="add-pagedna-from-the-azure-marketplace"></a>Přidat PageDNA na webu Azure Marketplace
 
-**Chcete-li přidat PageDNA z galerie, postupujte následovně:**
+Konfigurace integrace PageDNA do služby Azure AD, budete muset přidat PageDNA z Azure Marketplace na váš seznam spravovaných aplikací SaaS:
 
-1. V **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com?azure-portal=true).
+1. V levém podokně vyberte **Azure Active Directory**.
 
-    ![Tlačítko Azure Active Directory](common/select-azuread.png)
+    ![Možnost Azure Active Directory](common/select-azuread.png)
 
-2. Přejděte do **podnikové aplikace** a pak vyberte **všechny aplikace** možnost.
+1. Přejděte na **podnikové aplikace**a pak vyberte **všechny aplikace**.
 
-    ![V okně podnikové aplikace](common/enterprise-applications.png)
+    ![V podokně podnikových aplikací](common/enterprise-applications.png)
 
-3. Chcete-li přidat novou aplikaci, klikněte na tlačítko **novou aplikaci** tlačítko v horní části dialogového okna.
+1. Chcete-li přidat novou aplikaci, **+ nová aplikace** v horní části podokna.
 
-    ![Tlačítko nové aplikace](common/add-new-app.png)
+    ![Nová možnost aplikace](common/add-new-app.png)
 
-4. Do vyhledávacího pole zadejte **PageDNA**vyberte **PageDNA** z panelu výsledků klikněte **přidat** tlačítko pro přidání aplikace.
+1. Do vyhledávacího pole zadejte **PageDNA**. Ve výsledcích hledání vyberte **PageDNA**a pak vyberte **přidat** pro přidání aplikace.
 
     ![PageDNA v seznamu výsledků](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a otestování služby Azure AD jednotného přihlašování
 
-V této části je konfigurace a testování Azure AD jednotné přihlašování pomocí PageDNA podle testovacího uživatele volá **Britta Simon**.
-Pro jednotné přihlašování pro práci je potřeba navázat vztah odkazu mezi uživatele služby Azure AD a související uživatelské v PageDNA.
+V této části, konfigurace a testování Azure AD jednotné přihlašování s PageDNA podle testovacího uživatele s názvem **Britta Simon**. Pro jednotné přihlašování pro práci je potřeba vytvořit propojení mezi uživatele služby Azure AD a související uživatel v PageDNA.
 
 Nakonfigurovat a otestovat Azure AD jednotné přihlašování s PageDNA, které potřebujete k dokončení následujících stavebních bloků:
 
-1. **[Konfigurovat Azure AD Single Sign-On](#configure-azure-ad-single-sign-on)**  – Pokud chcete, aby uživatelé mohli tuto funkci používat.
-2. **[Konfigurace PageDNA Single Sign-On](#configure-pagedna-single-sign-on)**  – ke konfiguraci nastavení jednotného přihlašování na straně aplikace.
-3. **[Vytvořit testovacího uživatele Azure AD](#create-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
-4. **[Přiřadit uživatele Azure AD](#assign-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotného přihlašování.
-5. **[Vytvořit testovacího uživatele PageDNA](#create-pagedna-test-user)**  – Pokud chcete mít protějšek Britta Simon PageDNA, který je propojený s Azure AD reprezentace uživatele.
-6. **[Otestovat jednotné přihlašování](#test-single-sign-on)**  – Pokud chcete ověřit, jestli funguje v konfiguraci.
+1. **[Konfigurace služby Azure AD jednotného přihlašování](#configure-azure-ad-single-sign-on)**  aby uživatelé mohli tuto funkci používat.
+1. **[Konfigurace PageDNA jednotného přihlašování](#configure-pagedna-single-sign-on)**  ke konfiguraci nastavení jednotného přihlašování na straně aplikace.
+1. **[Vytvořit testovacího uživatele Azure AD](#create-an-azure-ad-test-user)**  k otestování služby Azure AD jednotné přihlašování s Britta Simon.
+1. **[Přiřadit uživatele Azure AD](#assign-the-azure-ad-test-user)**  umožňující Britta Simon používat Azure AD jednotného přihlašování.
+1. **[Vytvoření zkušebního uživatele PageDNA](#create-a-pagedna-test-user)**  tak, aby se uživatel s názvem Britta Simon v PageDNA, který je spojen s uživatele Azure AD s názvem Britta Simon.
+1. **[Otestovat jednotné přihlašování](#test-single-sign-on)**  ověřit, jestli funguje v konfiguraci.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurace služby Azure AD jednotného přihlašování
 
@@ -94,124 +94,121 @@ Ke konfiguraci Azure AD jednotné přihlašování s PageDNA, proveďte následu
 
 1. V [webu Azure portal](https://portal.azure.com/)na **PageDNA** integrace stránce aplikace vyberte **jednotného přihlašování**.
 
-    ![Nakonfigurovat jednotné přihlašování – odkaz](common/select-sso.png)
+    ![Nakonfigurujte možnost přihlašování](common/select-sso.png)
 
-2. Na **vybrat jedinou metodu přihlašování** dialogového okna, vyberte **SAML/WS-Fed** chcete povolit jednotné přihlašování.
+1. V **vybrat jedinou metodu přihlašování** podokně, vyberte **SAML/WS-Fed** chcete povolit jednotné přihlašování.
 
     ![Jednotné přihlašování režim výběru](common/select-saml-option.png)
 
-3. Na **nastavte si jednotné přihlašování pomocí SAML** klikněte na **upravit** ikony otevřete **základní konfiguraci SAML** dialogového okna.
+1. Na **nastavte si jednotné přihlašování pomocí SAML** vyberte **upravit** (ikonu tužky) Chcete-li otevřít **základní konfiguraci SAML** podokně.
 
     ![Upravit konfiguraci základní SAML](common/edit-urls.png)
 
-4. Na **základní konfiguraci SAML** části, proveďte následující kroky:
+1. V **základní konfiguraci SAML** podokno, proveďte následující kroky:
 
     ![PageDNA domény a adresy URL jednotného přihlašování – informace](common/sp-identifier.png)
 
-    a. V **přihlašovací adresa URL** textové pole, zadejte adresu URL, pomocí následujícího vzorce:
+    1. V **přihlašovací adresa URL** pole, zadejte adresu URL pomocí jedné z následujících vzorů:
 
-    ||
-    |--|
-    | `https://stores.pagedna.com/<your site>` |
-    | `https://<your domain>` |
-    | `https://<your domain>/<your site>` |
-    | `https://www.nationsprint.com/<your site>` |
-    | |
-    
-    b. V **identifikátor (Entity ID)** textové pole, zadejte adresu URL, pomocí následujícího vzorce:
+        ||
+        |--|
+        | `https://stores.pagedna.com/<your site>` |
+        | `https://<your domain>` |
+        | `https://<your domain>/<your site>` |
+        | `https://www.nationsprint.com/<your site>` |
+        | |
 
-    ||
-    |--|
-    | `https://stores.pagedna.com/<your site>/saml2ep.cgi` |
-    | `https://www.nationsprint.com/<your site>/saml2ep.cgi` |
-    | |
+    1. V **identifikátor (Entity ID)** pole, zadejte adresu URL pomocí jedné z následujících vzorů:
+
+        ||
+        |--|
+        | `https://stores.pagedna.com/<your site>/saml2ep.cgi` |
+        | `https://www.nationsprint.com/<your site>/saml2ep.cgi` |
+        | |
 
     > [!NOTE]
-    > Tyto hodnoty nejsou skutečný. Aktualizujte tyto hodnoty skutečné přihlašovací adresu URL a identifikátor. Kontakt [tým podpory PageDNA klienta](mailto:success@pagedna.com) k získání těchto hodnot. Můžete také odkazovat na tyto vzory se dají ukazuje **základní konfiguraci SAML** části webu Azure Portal.
+    > Tyto hodnoty nejsou skutečný. Aktualizujte tyto hodnoty se skutečné přihlašovací adresu URL a identifikátor. K získání těchto hodnot, obraťte se [tým podpory PageDNA](mailto:success@pagedna.com). Můžete také odkazovat na tyto vzory se dají ukazuje **základní konfiguraci SAML** podokně webu Azure Portal.
 
-5. Na **nastavte si jednotné přihlašování pomocí SAML** stránku, **podpisový certifikát SAML** klikněte na tlačítko **Stáhnout** ke stažení **certifikát (Raw)** z se zadanými možnostmi podle vašich požadavků a uložit je ve vašem počítači.
+1. V **nastavte si jednotné přihlašování pomocí SAML** podokno v **podpisový certifikát SAML** vyberte **Stáhnout** Stáhnout **certifikát (Raw)** z se zadanými možnostmi a uložit je ve vašem počítači.
 
-    ![Odkaz ke stažení certifikátu](common/certificateraw.png)
+    ![Certifikát (nekódovaný) možnost](common/certificateraw.png)
 
-6. Na **nastavení PageDNA** tématu, zkopírujte příslušné adresy URL podle vašich požadavků.
+1. V **nastavení PageDNA** tématu, zkopírujte adresu URL nebo adresy URL, které budete potřebovat:
+
+   * **Adresa URL pro přihlášení**
+   * **Azure AD Identifier**
+   * **Odhlašovací adresa URL**
 
     ![Zkopírování adresy URL konfigurace](common/copy-configuration-urls.png)
 
-    a. Přihlašovací adresa URL
+### <a name="configure-pagedna-single-sign-on"></a>Konfigurace PageDNA jednotného přihlašování
 
-    b. Identifikátor Azure AD
+Konfigurace jednotného přihlašování na straně PageDNA, odeslat staženého certifikátu (Raw) a odpovídající zkopírovaný adresy URL z webu Azure portal [tým podpory PageDNA](mailto:success@pagedna.com). Tým PageDNA zajistit, aby že SAML SSO připojení správně nastavena na obou stranách.
 
-    c. Adresa URL – odhlášení
+### <a name="create-an-azure-ad-test-user"></a>Vytvořit testovacího uživatele Azure AD
 
-### <a name="configure-pagedna-single-sign-on"></a>Konfigurace PageDNA jednotné přihlašování
+V této části vytvoříte testovacího uživatele na webu Azure Portal s názvem Britta Simon.
 
-Ke konfiguraci jednotného přihlašování na **PageDNA** straně, je nutné odeslat na stažený **certifikát (Raw)** a vhodné zkopírovaný adresy URL z webu Azure portal [tým podpory PageDNA](mailto:success@pagedna.com). Nastavují tohoto nastavení můžete mít správně nastavené na obou stranách připojení SAML SSO.
+1. Na webu Azure Portal, v levém podokně vyberte **Azure Active Directory**   > **uživatelé** > **všichni uživatelé**.
 
-### <a name="create-an-azure-ad-test-user"></a>Vytvořit testovacího uživatele Azure AD 
+    ![Uživatele a "Všechny uživatele" možnosti](common/users.png)
 
-Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal volá Britta Simon.
+1. V horní části obrazovky vyberte **+ nový uživatel**.
 
-1. Na webu Azure Portal, v levém podokně vyberte **Azure Active Directory**vyberte **uživatelé**a pak vyberte **všichni uživatelé**.
+    ![Nová možnost uživatele](common/new-user.png)
 
-    !["Uživatele a skupiny" a "Všechny uživatele" odkazy](common/users.png)
+1. V **uživatele** podokno, proveďte následující kroky:
 
-2. Vyberte **nového uživatele** v horní části obrazovky.
+    ![V podokně uživatele](common/user-properties.png)
 
-    ![Tlačítko Nový uživatel](common/new-user.png)
-
-3. Ve vlastnosti uživatele proveďte následující kroky.
-
-    ![Dialogové okno uživatele](common/user-properties.png)
-
-    a. V **název** zadat **BrittaSimon**.
+    1. V **název** zadejte **BrittaSimon**.
   
-    b. V **uživatelské jméno** typ pole `brittasimon@yourcompanydomain.extension`. Například BrittaSimon@contoso.com.
+    1. V **uživatelské jméno** zadejte **BrittaSimon\@\<doména_společnosti >.\< Rozšíření >**. Například **BrittaSimon\@contoso.com**.
 
-    c. Vyberte **zobrazit heslo** zaškrtněte políčko a zapište si hodnotu, která se zobrazí v poli heslo.
+    1. Vyberte **zobrazit heslo** zaškrtněte políčko a zapište si hodnotu, která se zobrazí **heslo** pole.
 
-    d. Klikněte na možnost **Vytvořit**.
+    1. Vyberte **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřadit uživatele Azure AD
 
-V této části je povolit Britta Simon k udělení přístupu k PageDNA použití Azure jednotného přihlašování.
+V této části je povolit Britta Simon používat jednotné přihlašování Azure tím, že udělíte přístup k PageDNA.
 
-1. Na webu Azure Portal, vyberte **podnikové aplikace**vyberte **všechny aplikace**a pak vyberte **PageDNA**.
+1. Na webu Azure Portal, vyberte **podnikové aplikace** > **všechny aplikace** > **PageDNA**.
 
-    ![Okno aplikace organizace](common/enterprise-applications.png)
+    ![Podokno podnikových aplikací](common/enterprise-applications.png)
 
-2. V seznamu aplikací vyberte **PageDNA**.
+1. V seznamu aplikací vyberte **PageDNA**.
 
-    ![Odkaz PageDNA v seznamu aplikací](common/all-applications.png)
+    ![PageDNA v seznamu aplikací](common/all-applications.png)
 
-3. V nabídce na levé straně vyberte **uživatelů a skupin**.
+1. V levém podokně v části **SPRAVOVAT**vyberte **uživatelů a skupin**.
 
-    ![Odkaz "Uživatele a skupiny"](common/users-groups-blade.png)
+    ![Možnost "Uživatele a skupiny"](common/users-groups-blade.png)
 
-4. Klikněte na tlačítko **přidat uživatele** tlačítko a pak vyberte **uživatelů a skupin** v **přidat přiřazení** dialogového okna.
+1. Vyberte **+ přidat uživatele**a pak vyberte **uživatelů a skupin** v **přidat přiřazení** podokně.
 
     ![Podokno Přidat přiřazení](common/add-assign-user.png)
 
-5. V **uživatelů a skupin** dialogové okno Vybrat **Britta Simon** v seznamu uživatelů, klikněte **vyberte** tlačítko v dolní části obrazovky.
+1. V **uživatelů a skupin** vyberte **Britta Simon** v **uživatelé** seznamu a klikněte na tlačítko **vyberte** v dolní části podokna.
 
-6. Pokud očekáváte libovolnou hodnotu role v kontrolní výraz SAML a potom v **vybrat roli** dialogové okno vybrat vhodnou roli pro uživatele ze seznamu, klikněte **vyberte** tlačítko v dolní části obrazovky.
+1. Pokud očekáváte hodnotu do role kontrolní výraz SAML, pak v **vybrat roli** podokně, vyberte vhodnou roli pro uživatele ze seznamu. V dolní části podokna, zvolte **vyberte**.
 
-7. V **přidat přiřazení** dialogové okno kliknutím **přiřadit** tlačítko.
+1. V **přidat přiřazení** vyberte **přiřadit**.
 
-### <a name="create-pagedna-test-user"></a>Vytvoření PageDNA testovacího uživatele
+### <a name="create-a-pagedna-test-user"></a>Vytvoření zkušebního uživatele PageDNA
 
-V této části se vytvoří uživateli Britta Simon v PageDNA. PageDNA podporuje zřizování uživatelů v čase, který je ve výchozím nastavení povolené. Neexistuje žádná položka akce pro vás v této části. Pokud uživatel již neexistuje mezi PageDNA, vytvoří se nový po ověření.
+Uživatel se jménem Britta Simon se teď vytvoří v PageDNA. Nemusíte dělat nic k vytvoření tohoto uživatele. PageDNA podporuje zřizování uživatelů v čase, který je ve výchozím nastavení povolené. Pokud uživatel se jménem Britta Simon již neexistuje mezi PageDNA, vytvoří se nový po ověření.
 
-### <a name="test-single-sign-on"></a>Test jednotného přihlašování 
+### <a name="test-single-sign-on"></a>Test jednotného přihlašování
 
-V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
+V této části Testování služby Azure AD jednotné přihlašování – konfigurace s použitím portálu Moje aplikace.
 
-Po kliknutí na dlaždici PageDNA na přístupovém panelu, můžete by měl být automaticky přihlášeni k PageDNA, u kterého nastavíte jednotné přihlašování. Další informace o přístupovém panelu, naleznete v tématu [Úvod k přístupovému panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Když vyberete **PageDNA** na portálu Moje aplikace vám by měl být automaticky přihlášeni k PageDNA předplatného, u kterého nastavíte jednotné přihlašování. Další informace o portálu Moje aplikace najdete v tématu [přístup a používání aplikací na portálu Moje aplikace](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Další prostředky
+## <a name="additional-resources"></a>Další materiály
 
-- [Seznam kurzů o integraci aplikací SaaS pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+* [Seznam kurzů integrace aplikací SaaS pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+* [Jednotné přihlašování k aplikacím v Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-
+* [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

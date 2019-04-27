@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 10/28/2018
 ms.author: rkarlin
 ms.openlocfilehash: ebd9939128d1f2b870541e82710792d13b69728e
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58098997"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62095437"
 ---
 # <a name="apply-system-updates-in-azure-security-center"></a>Použít aktualizace systému ve službě Azure Security Center
 Azure Security Center monitoruje denní Windows a Linuxem a virtuální počítače (VM) pro chybějící aktualizace operačního systému. Security Center načte seznam dostupných zabezpečení a kritických aktualizací ze služby Windows Update nebo Windows Server Update Services (WSUS), podle toho, která služba je nakonfigurována na počítači Windows. Security Center také vyhledává nejnovější aktualizace v systémech Linux. Pokud virtuální počítač nebo počítači chybí aktualizace systému, Security Center vám doporučí použít aktualizace systému.

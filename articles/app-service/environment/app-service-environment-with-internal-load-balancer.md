@@ -16,11 +16,11 @@ ms.date: 07/11/2017
 ms.author: ccompy
 ms.custom: seodec18
 ms.openlocfilehash: 88f100bc780d8df0202cfcce9b390085a71fc905
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53310466"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62130598"
 ---
 # <a name="using-an-internal-load-balancer-with-an-app-service-environment"></a>Službě interní služby Load Balancer pomocí služby App Service Environment
 
@@ -33,9 +33,9 @@ Funkce App Service Environment (ASE) je možnost Premium služby Azure App Servi
 ## <a name="overview"></a>Přehled
 Služba ASE je možné nasadit pomocí Internetu přístupném koncovém bodu nebo s IP adresou ve vaší virtuální síti. Pokud chcete nastavit IP adresu na adresu ve virtuální síti je potřeba nasadit službu ASE s interním Balancer(ILB) zatížení. Pokud vaše služba ASE je nakonfigurovaná s ILB, zadejte:
 
-* vlastní domény nebo subdomény. Abyste usnadnili snadnou, tento dokument předpokládá subdoménu můžete ji ale konfigurovat v obou případech. 
+* your own domain or subdomain. Abyste usnadnili snadnou, tento dokument předpokládá subdoménu můžete ji ale konfigurovat v obou případech. 
 * certifikát používaný pro protokol HTTPS.
-* Správa služby DNS pro vaši subdomény. 
+* DNS management for your subdomain. 
 
 Díky tomu budete moct provádět třeba tyto úkony:
 
@@ -100,7 +100,7 @@ Pokud chcete akci toku s vlastní certifikáty a otestovat přístup protokolu H
 3. Získat adresu ILB vaší služby ase (**ASE -> Vlastnosti -> virtuální IP adresu**).
 4. Vytvoření webové aplikace ve službě ASE po jeho vytvoření. 
 5. Vytvoření virtuálního počítače, pokud nemáte v dané virtuální síti (není ve stejné podsíti jako službu ASE nebo věci konec).
-6. Nastavení DNS pro vaši subdomény. Můžete použít zástupný znak vaše subdoménu ve službě DNS nebo pokud chcete provést několik jednoduchých testů, upravte soubor hostitelů na vašem virtuálním počítači nastavit název webové aplikace na virtuální IP adresu. Pokud vaše služba ASE název subdomény. ilbase.com a tak, že by se řešit v mytestapp.ilbase.com, provedli mytestapp webové aplikace, které nastavíte v souboru hostitelů. (Na Windows, je soubor hostitelů v C:\Windows\System32\drivers\etc\)
+6. Set DNS for your subdomain. Můžete použít zástupný znak vaše subdoménu ve službě DNS nebo pokud chcete provést několik jednoduchých testů, upravte soubor hostitelů na vašem virtuálním počítači nastavit název webové aplikace na virtuální IP adresu. Pokud vaše služba ASE název subdomény. ilbase.com a tak, že by se řešit v mytestapp.ilbase.com, provedli mytestapp webové aplikace, které nastavíte v souboru hostitelů. (Na Windows, je soubor hostitelů v C:\Windows\System32\drivers\etc\)
 7. Na tomto virtuálním počítači prohlížeč a přejděte na https://mytestapp.ilbase.com (nebo cokoli, co je název vaší webové aplikace s vaší subdoménu).
 8. V prohlížeči na tomto virtuálním počítači přejděte na adresu https://mytestapp.ilbase.com. Pokud používáte certifikát podepsaný svým držitelem, musíte přijmout chybějící zabezpečení. 
 

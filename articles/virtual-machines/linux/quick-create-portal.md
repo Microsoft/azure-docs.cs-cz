@@ -17,11 +17,11 @@ ms.date: 10/12/2018
 ms.author: cynthn
 ms.custom: mvc
 ms.openlocfilehash: 693f9144d1cb454b0a9dd98b5ae63938abd7d26d
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50420400"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61473805"
 ---
 # <a name="quickstart-create-a-linux-virtual-machine-in-the-azure-portal"></a>Rychlý start: Vytvoření virtuálního počítače s Linuxem na webu Azure Portal
 
@@ -51,7 +51,7 @@ Podrobnější informace o vytváření párů klíčů SSH, včetně použití 
 
 Pokud pár klíčů SSH vytvoříte pomocí služby Cloud Shell, uloží se do sdílené složky Azure, kterou služba [Cloud Shell automaticky připojí](https://docs.microsoft.com/azure/cloud-shell/persisting-shell-storage). Tuto sdílenou složku ani účet úložiště neodstraňujte,dokud nenačtete své klíče, jinak ztratíte přístup k virtuálnímu počítači. 
 
-## <a name="sign-in-to-azure"></a>Přihlášení k Azure
+## <a name="sign-in-to-azure"></a>Přihlásit se k Azure
 
 Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 
@@ -122,7 +122,7 @@ V libovolném webovém prohlížeči zobrazte výchozí úvodní stránku server
 
 Pokud už je nepotřebujete, můžete odstranit skupinu prostředků, virtuální počítač a všechny související prostředky. Provedete to tak, že vyberete skupinu prostředků pro příslušný virtuální počítač, vyberete **Odstranit** a pak potvrdíte název skupiny prostředků, kterou chcete odstranit.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 V tomto rychlém startu jste nasadili jednoduchý virtuální počítač, vytvořili jste skupinu zabezpečení sítě a pravidlo a nainstalovali jste základní webový server. Další informace o virtuálních počítačích Azure najdete v kurzu pro virtuální počítače s Linuxem.
 

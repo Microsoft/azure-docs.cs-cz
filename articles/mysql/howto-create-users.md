@@ -7,11 +7,11 @@ ms.service: mysql
 ms.topic: conceptual
 ms.date: 02/28/2018
 ms.openlocfilehash: 4cd2305ed3d7f88f6c3825d8f7cdb5d81f9a0f6b
-ms.sourcegitcommit: 87bd7bf35c469f84d6ca6599ac3f5ea5545159c9
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58351248"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61460180"
 ---
 # <a name="create-users-in-azure-database-for-mysql-server"></a>Vytvoření uživatelů ve službě Azure Database pro MySQL server 
 Tento článek popisuje, jak vytvořit uživatele v serveru Azure Database for MySQL.

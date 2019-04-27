@@ -1,6 +1,6 @@
 ---
-title: Přehled možností zálohování pro virtuální počítače Windows Azure | Microsoft Docs
-description: Přehled zálohování možnosti pro virtuální počítače s Azure Windows.
+title: Přehled možností zálohování pro virtuální počítače Azure s Windows | Dokumentace Microsoftu
+description: Přehled zálohování možnosti pro virtuální počítače s Windows Azure.
 services: virtual-machines-windows
 documentationcenter: virtual-machines
 author: cynthn
@@ -15,14 +15,14 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 09/13/2017
 ms.author: cynthn
-ms.openlocfilehash: ec3bd5666e6282554e3d242f8ff56019ee41011b
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: b8f63d2a0f69f1eb1b8a1b9c645b1a0bcb3d9469
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2018
-ms.locfileid: "30915214"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61456304"
 ---
-# <a name="backup-and-restore-options-for-virtual-machines-in-azure"></a>Možnosti zálohování a obnovení pro virtuální počítače v Azure
-Svá data můžete chránit prováděním záloh v pravidelných intervalech. Nejsou k dispozici pro virtuální počítače, v závislosti na váš případ použití několik možností zálohování.
+# <a name="backup-and-restore-options-for-virtual-machines-in-azure"></a>Možnosti zálohování a obnovení virtuálních počítačů v Azure
+Svá data můžete chránit prováděním záloh v pravidelných intervalech. Nejsou k dispozici pro virtuální počítače, v závislosti na vašemu případu použití několik možností zálohování.
 
 [!INCLUDE [virtual-machines-common-backup-recovery](../../../includes/virtual-machines-common-backup-recovery.md)]

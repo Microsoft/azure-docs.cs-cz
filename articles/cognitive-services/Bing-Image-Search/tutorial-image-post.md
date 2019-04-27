@@ -11,11 +11,11 @@ ms.topic: tutorial
 ms.date: 9/14/2018
 ms.author: aahi
 ms.openlocfilehash: 567a220ce9adcb3cca9c70cef6a7058a85789eb7
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55861737"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60809266"
 ---
 # <a name="tutorial-extract-image-details-using-the-bing-image-search-api-and-c"></a>Kurz: Extrahovat obrázek podrobně popisuje použití rozhraní API Bingu pro vyhledávání obrázků aC#
 

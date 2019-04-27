@@ -9,11 +9,11 @@ editor: edprice
 tags: ''
 keywords: ''
 ms.openlocfilehash: ccecfd6abe0e9418e217ad7f200ce980d73c7b45
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56739476"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61468325"
 ---
 # <a name="ibm-workloads-on-azure"></a>IBM úloh v Azure
 

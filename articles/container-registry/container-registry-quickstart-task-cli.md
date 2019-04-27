@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 04/02/2019
 ms.author: danlep
 ms.custom: ''
-ms.openlocfilehash: 61a17842158326c927f049af893a00818f3acc55
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: be120ea8ae588da486c9a5acd4eb7bfdb4e45dee
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59793382"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62109813"
 ---
 # <a name="quickstart-build-and-run-a-container-image-using-azure-container-registry-tasks"></a>Rychlý start: Sestavte a spusťte image kontejneru pomocí Azure Container Registry úlohy
 
@@ -52,7 +52,7 @@ Tento příklad vytvoří *základní* registru, možnost pro vývojáře, dalš
 Teď pomocí Azure Container Registry k sestavení image. Nejprve vytvořte pracovní adresář a potom vytvořte soubor Dockerfile s názvem *soubor Dockerfile* s následujícím obsahem. Toto je jednoduchý příklad k vytvoření image kontejneru Linuxu, ale můžete vytvořit vlastní standardní soubor Dockerfile a tvorbě bitových kopií pro jiné platformy.
 
 ```bash
-echo "FROM hello-world" > Dockerfile
+echo FROM hello-world > Dockerfile
 ```
 
 Spustit [az acr sestavení] [ az-acr-build] příkazu k sestavení image. Po úspěšném sestavení, je na obrázku nahrány do vašeho registru. Následující příklad nabízených oznámení `sample/hello-world:v1` bitové kopie. `.` Na konci příkaz nastaví umístění souboru Dockerfile, v tomto případě aktuální adresář.

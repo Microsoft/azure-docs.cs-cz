@@ -15,11 +15,11 @@ ms.workload: iaas-sql-server
 ms.date: 01/31/2017
 ms.author: mikeray
 ms.openlocfilehash: 1b6660a1565b3c119cc1dec0823870c7dd5bd24f
-ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/20/2018
-ms.locfileid: "53654083"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61477140"
 ---
 # <a name="use-azure-storage-for-sql-server-backup-and-restore"></a>Použití služby Azure Storage pro zálohování SQL serveru a obnovení
 ## <a name="overview"></a>Přehled
@@ -37,7 +37,7 @@ Existuje několik problémy, se kterými se setkáváte při zálohování serve
 * **Spravovat hardware**: Neexistuje žádné nároky na správu hardwaru se službami Azure. Služby Azure spravovat hardware a geografická replikace zajistit redundanci a ochranu proti selhání hardwaru.
 * **Neomezené úložiště**: Tím, že umožňuje přímé zálohování na objektech BLOB Azure, máte přístup k prakticky neomezené úložiště. Alternativně zálohování disk pro virtuální počítač Azure má omezení na základě velikosti počítačů. Platí omezení na počet disků, které lze připojit k virtuálnímu počítači Azure pro zálohy. Toto omezení je 16 disků pro velmi velká instance a méně pro menší instance.
 * **Zálohování dostupnosti**: Zálohy uložené v objektech BLOB Azure jsou k dispozici odkudkoli a kdykoli a snadno přístupný pro obnovení do SQL Server v místním nebo jiný Server SQL spuštěný ve virtuálním počítači Azure, bez nutnosti databáze připojení a odpojení nebo stahování a znovu připojit virtuální pevný disk.
-* **Náklady na**: Platíte jenom za služby, který se používá. Můžou být nákladově efektivní jako archiv mimo pracoviště a záložní možnost. Najdete v článku [cenovou kalkulačku Azure](https://go.microsoft.com/fwlink/?LinkId=277060 "cenovou kalkulačku funkcí")a [ceny za Azure článku](https://go.microsoft.com/fwlink/?LinkId=277059 "ceny článku") Další informace.
+* **Náklady:** Platíte jenom za služby, který se používá. Můžou být nákladově efektivní jako archiv mimo pracoviště a záložní možnost. Najdete v článku [cenovou kalkulačku Azure](https://go.microsoft.com/fwlink/?LinkId=277060 "cenovou kalkulačku funkcí")a [ceny za Azure článku](https://go.microsoft.com/fwlink/?LinkId=277059 "ceny článku") Další informace.
 * **Snímky úložiště**: Když používáte SQL Server 2016 databázové soubory jsou uloženy v objektu blob Azure, můžete použít [zálohy snímků souborů](https://msdn.microsoft.com/library/mt169363.aspx) provádět téměř okamžité zálohování a mimořádně rychlé obnovení.
 
 Další podrobnosti najdete v tématu [SQL zálohování a obnovení serveru pomocí služby Azure Blob Storage](https://go.microsoft.com/fwlink/?LinkId=271617).

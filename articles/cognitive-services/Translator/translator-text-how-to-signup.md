@@ -12,11 +12,11 @@ ms.date: 02/21/2019
 ms.author: erhopf
 ms.custom: seodec18
 ms.openlocfilehash: 6bd7a014e765d32349951d99d3027c90f61f7eb7
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56726129"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62118005"
 ---
 # <a name="how-to-sign-up-for-the-translator-text-api"></a>Jak se zaregistrovat pro rozhraní Translator Text API
 

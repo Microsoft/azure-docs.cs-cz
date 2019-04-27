@@ -9,12 +9,12 @@ ms.assetid: 1e1d443a-48a2-47fb-bc00-bf88274222de
 ms.service: data-lake-analytics
 ms.topic: overview
 ms.date: 06/23/2017
-ms.openlocfilehash: ec0e8c11a1d60d4454d962b8ec4c363e35d1182a
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
-ms.translationtype: HT
+ms.openlocfilehash: 1f798917548f4a744518b12ba1e2be2095bdf1c2
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46988746"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60811634"
 ---
 # <a name="what-is-azure-data-lake-analytics"></a>Co je Azure Data Lake Analytics?
 
@@ -44,7 +44,7 @@ Služba Data Lake Analytics je nákladově efektivní řešení pro spouštění
   
 Data Lake Analytics spolupracuje s Azure Data Lake Store na zajištění nejvyššího výkonu, propustnosti a paralelizace a funguje s objekty blob Azure Storage, službou Azure SQL Database a datovým skladem Azure.
 
-### <a name="next-steps"></a>Další kroky
+### <a name="next-steps"></a>Další postup
  
   * Začínáme se službou Data Lake Analytics pomocí webu [Azure Portal](data-lake-analytics-get-started-portal.md) | [Azure PowerShell](data-lake-analytics-get-started-powershell.md) | [CLI](data-lake-analytics-get-started-cli.md)
   * Správa služby Azure Data Lake Analytics pomocí webu [Azure Portal](data-lake-analytics-manage-use-portal.md) | [Azure PowerShell](data-lake-analytics-manage-use-powershell.md) | [CLI](data-lake-analytics-manage-use-cli.md) | [Azure .NET SDK](data-lake-analytics-manage-use-dotnet-sdk.md) | [Node.js](data-lake-analytics-manage-use-nodejs.md)

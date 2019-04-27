@@ -11,11 +11,11 @@ ms.topic: tutorial
 ms.date: 03/20/2019
 ms.author: michem
 ms.openlocfilehash: 48a1c4350b438761aa2e2d8c7e57a872c86ca292
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59797171"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61433336"
 ---
 # <a name="project-acoustics-unreal-bake-tutorial"></a>Kurz Unreal která má označení vytvoření Akustika projektu
 Tento dokument popisuje proces odesílání Akustika která má označení vytvoření pomocí rozšíření Unreal editoru.

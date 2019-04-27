@@ -1,15 +1,16 @@
 ---
-author: cynthn
+author: rockboyfor
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 10/26/2018
-ms.author: cynthn
+origin.date: 10/26/2018
+ms.date: 11/26/2018
+ms.author: v-yeche
 ms.openlocfilehash: 361d0ce5091d80198d47e4ad164f7cba8e21a55d
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58099511"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61485270"
 ---
 *Vlastní* virtuální počítač znamená jednoduše virtuální počítač, který vytvoříte pomocí **vybrané aplikace** z **Marketplace**, protože za vás udělá velkou část práce. I tak ale můžete upravovat konfiguraci včetně následujících položek:
 
@@ -28,9 +29,11 @@ ms.locfileid: "58099511"
 
 > [!IMPORTANT]
 > Pokud chcete, aby virtuální počítač používal virtuální síť, ujistěte se, že je virtuální síť určena při vytváření virtuálního počítače.
-> 
 > * Dvě výhody používání virtuální sítě představují připojení přímo k virtuálnímu počítači a nastavení připojení mezi různými místy.
-> 
 > * Virtuální počítač je možné konfigurovat tak, aby se k virtuální síti připojil jen tehdy, když virtuální počítač vytvoříte. Podrobnosti týkající se virtuálních sítí najdete v tématu [Přehled Azure Virtual Network](../articles/virtual-network/virtual-networks-overview.md).
+>
+>
 
 ## <a name="to-create-the-virtual-machine"></a>Vytvoření virtuálního počítače
+
+<!-- Update_Description: update meta properties -->

@@ -11,11 +11,11 @@ ms.date: 09/04/2018
 ms.author: rortloff
 ms.reviewer: igorstan
 ms.openlocfilehash: 1682a26ba713db564484e8984010e9c12ce9d79e
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57838506"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61421422"
 ---
 # <a name="development-best-practices-for-azure-sql-data-warehouse"></a>Osvědčené postupy pro vývoj pro Azure SQL Data Warehouse
 Tento článek popisuje pokyny a osvědčené postupy při vývoji řešení vašeho datového skladu. 

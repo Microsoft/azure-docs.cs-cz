@@ -3,8 +3,8 @@ title: Propojení virtuálních sítí s využitím partnerského vztahu virtuá
 description: V tomto kurzu zjistíte, jak propojit virtuální sítě s využitím partnerského vztahu virtuálních sítí pomocí webu Azure Portal.
 services: virtual-network
 documentationcenter: virtual-network
-author: jimdial
-manager: jeconnoc
+author: KumudD
+manager: twooley
 editor: ''
 tags: azure-resource-manager
 Customer intent: I want to connect two virtual networks so that virtual machines in one virtual network can communicate with virtual machines in the other virtual network.
@@ -15,14 +15,14 @@ ms.topic: tutorial
 ms.tgt_pltfrm: virtual-network
 ms.workload: infrastructure
 ms.date: 08/16/2018
-ms.author: jdial
+ms.author: kumud
 ms.custom: ''
 ms.openlocfilehash: e66747cd350d10a5a66ec54b9aae9e9b485b0ba2
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
-ms.translationtype: MT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58014504"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61487724"
 ---
 # <a name="tutorial-connect-virtual-networks-with-virtual-network-peering-using-the-azure-portal"></a>Kurz: Propojení virtuálních sítí pomocí partnerského vztahu virtuálních sítí pomocí webu Azure portal
 
@@ -54,7 +54,7 @@ Přihlaste se k webu Azure Portal na adrese https://portal.azure.com.
     |Adresní prostor|10.0.0.0/16|
     |Předplatné| Vyberte své předplatné.|
     |Skupina prostředků| Vyberte **Vytvořit novou** a zadejte *myResourceGroup*.|
-    |Umístění| Vyberte **USA – východ**.|
+    |Location| Vyberte **USA – východ**.|
     |Název podsítě|Podsíť Subnet1|
     |Rozsah adres podsítě|10.0.0.0/24|
 
@@ -118,7 +118,7 @@ Vytvořte v obou virtuálních sítích virtuální počítač, abyste mezi nimi
     |Uživatelské jméno| Zadejte libovolné uživatelské jméno.|
     |Heslo| Zadejte libovolné heslo. Heslo musí obsahovat nejméně 12 znaků a musí splňovat [zadané požadavky na složitost](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm).|
     |Skupina prostředků| Vyberte **Použít existující** a pak vyberte **myResourceGroup**.|
-    |Umístění| Vyberte **USA – východ**.|
+    |Location| Vyberte **USA – východ**.|
 4. V části **Zvolte velikost** vyberte velikost virtuálního počítače.
 5. V části **Nastavení** vyberte následující hodnoty a pak vyberte **OK**:
 

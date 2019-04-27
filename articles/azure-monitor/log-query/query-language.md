@@ -14,11 +14,11 @@ ms.topic: conceptual
 ms.date: 01/11/2019
 ms.author: bwren
 ms.openlocfilehash: ecbea91cef69c80975dd105c35f526b357033a6b
-ms.sourcegitcommit: e88188bc015525d5bead239ed562067d3fae9822
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/24/2019
-ms.locfileid: "56749814"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61425958"
 ---
 # <a name="azure-monitor-log-queries"></a>Dotazů na protokoly Azure monitoru
 Protokoly služby Azure Monitor jsou postavené na Průzkumník dat Azure a použít verzi jazyka stejný dotaz Kusto dotazů na protokoly Azure monitoru. [Dokumentace k jazyku dotaz Kusto](/azure/kusto/query) má všechny informace pro jazyk a musí být váš primární prostředek pro psaní dotazů na protokoly Azure monitoru. Tato stránka obsahuje odkazy na další zdroje pro učit, jak psát dotazy a rozdíly mezi Azure Monitor implementace jazyka.

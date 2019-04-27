@@ -2,7 +2,6 @@
 title: Vizualizace dat pomocí Power BI – Azure HDInsight s Apache Hive
 description: Zjistěte, jak použít Microsoft Power BI k vizualizaci dat Hive zpracovává Azure HDInsight.
 keywords: hdinsight hadoop, hive, interaktivní dotazy, interaktivní hive, LLAP, odbc
-services: hdinsight
 author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
@@ -10,12 +9,12 @@ ms.custom: hdinsightactive,
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: hrasheed
-ms.openlocfilehash: 9fa1d0efc98627b976118a9e81ca430e1645a946
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: ac5ca3d9501718cd5b538f6bb8c1fafee78063b2
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53437422"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62122094"
 ---
 # <a name="visualize-apache-hive-data-with-microsoft-power-bi-using-odbc-in-azure-hdinsight"></a>Vizualizace dat Apache Hive pomocí Microsoft Power BI v Azure HDInsight pomocí ovladače ODBC
 

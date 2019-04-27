@@ -11,11 +11,11 @@ ms.topic: quickstart
 ms.date: 01/24/2019
 ms.author: diberry
 ms.openlocfilehash: 766fe32736ae0d8ea23805ea017d93b32119636a
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55873117"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60919983"
 ---
 # <a name="quickstart-create-a-knowledge-base-in-qna-maker-using-python"></a>Rychlý start: Vytvoření znalostní báze v nástroje QnA Maker pomocí Pythonu
 
