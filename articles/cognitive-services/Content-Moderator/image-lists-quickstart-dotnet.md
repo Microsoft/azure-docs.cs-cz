@@ -11,11 +11,11 @@ ms.topic: quickstart
 ms.date: 10/10/2018
 ms.author: sajagtap
 ms.openlocfilehash: ded5b097e7c8feab56e2d82cb44f92e3127519e2
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55881787"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60699116"
 ---
 # <a name="quickstart-moderate-with-custom-image-lists-in-c"></a>Rychlý start: Střední s vlastním seznamem obrázků vC#
 

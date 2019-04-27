@@ -3,8 +3,8 @@ title: Ukázka odebrání skriptu Azure Service Fabric CLI (sfctl)
 description: Odebrání aplikace z clusteru služby Azure Service Fabric pomocí rozhraní příkazového řádku Azure Service Fabric CLI
 services: service-fabric
 documentationcenter: ''
-author: aljo-microsoft
-manager: chackdan
+author: rockboyfor
+manager: digimobile
 editor: ''
 tags: azure-service-management
 ms.assetid: ''
@@ -12,15 +12,16 @@ ms.service: service-fabric
 ms.workload: multiple
 ms.devlang: na
 ms.topic: sample
-ms.date: 12/06/2017
-ms.author: aljo
+origin.date: 12/06/2017
+ms.date: 03/04/2019
+ms.author: v-yeche
 ms.custom: mvc
 ms.openlocfilehash: 4e0f4f7f4b8bfc643f0680b7fa1d1fc5b063eb5a
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58665878"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60621960"
 ---
 # <a name="remove-an-application-from-a-service-fabric-cluster"></a>Odebrání aplikace z clusteru Service Fabric
 
@@ -30,10 +31,33 @@ V případě potřeby nainstalujte [Service Fabric CLI](../service-fabric-cli.md
 
 ## <a name="sample-script"></a>Ukázkový skript
 
-[!code-sh[main](../../../cli_scripts/service-fabric/remove-application/remove-application.sh "Remove an application from a cluster")]
+```sh
+#!/bin/bash
+
+# Select cluster
+sfctl cluster select \
+    --endpoint http://svcfab1.chinanorth.cloudapp.chinacloudapi.cn:19080
+
+# Delete the application
+sfctl application delete \
+    --application-id svcfab_app \
+    --timeout 500
+
+# Unprovision the application type
+sfctl application unprovision \
+    --application-type-name svcfab_appType \
+    --application-type-version 1.0.0 \
+    --timeout 500
+
+# Delete the application files from the image store
+sfctl store delete \
+    --content-path myappfolder
+```
 
 ## <a name="next-steps"></a>Další postup
 
 Další informace najdete v [dokumentaci k rozhraní Service Fabric CLI](../service-fabric-cli.md).
 
 Další ukázky rozhraní Service Fabric CLI pro Azure Service Fabric najdete v [ukázkách rozhraní Service Fabric CLI](../samples-cli.md).
+
+<!--Update_Description: update meta properties, update link -->

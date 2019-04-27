@@ -16,11 +16,11 @@ ms.workload: na
 ms.date: 04/02/2019
 ms.author: fiseraci
 ms.openlocfilehash: 7a630acee079301b95e7e05f5c5333dd116abb68
-ms.sourcegitcommit: b8a8d29fdf199158d96736fbbb0c3773502a092d
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/15/2019
-ms.locfileid: "59563790"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60706410"
 ---
 # <a name="quickstart--onboard-your-azure-stack-virtual-machines-to-security-center"></a>Rychlý start:  Připojení virtuálních počítačů Azure Stack vám Security Center
 Jakmile připojíte svým předplatným Azure, můžete povolit Security Center k ochraně vašich virtuálních počítačů spuštěných ve službě Azure Stack tak, že přidáte **Azure Monitor, aktualizace a správa konfigurace** rozšíření virtuálního počítače z Tržiště Azure Stack.

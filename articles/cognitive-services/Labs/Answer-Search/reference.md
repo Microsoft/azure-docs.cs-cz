@@ -11,11 +11,11 @@ ms.topic: reference
 ms.date: 04/13/2018
 ms.author: rosh, v-gedod
 ms.openlocfilehash: 09fab691ea04ad98472abc4f4dee5ecb4d22e660
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59527315"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60721007"
 ---
 # <a name="project-answer-search-v7-reference"></a>Odkaz na projekt hledání odpovědí v7
 
@@ -96,7 +96,7 @@ Níže jsou hlavičky, které mohou zahrnovat požadavek a odpověď.
 Schéma odpovědi je buď [webové stránky] nebo ErrorResponse, stejně jako v hledání webového rozhraní API. Pokud požadavek selže, je objekt nejvyšší úrovně [ErrorResponse](#errorresponse) objektu.
 
 
-|Objekt|Popis|  
+|Object|Popis|  
 |------------|-----------------|  
 |[Webové stránky]|Nejvyšší úroveň objektu JSON, který obsahuje atributy ve verzi preview.|  
 |[Fakt]|Nejvyšší úrovně objekt JSON, který obsahuje fakta.| 
@@ -143,7 +143,7 @@ Definuje smluvní pravidlo pro přiřazení licence.
 |_type|Typ pomocného parametru, která je nastavena na LicenseAttribution.|String|  
 |licence|Licence, pod kterým mohou být použity obsah.|[Licence](#license)|  
 |licenseNotice|Licence, který se zobrazí vedle cílové pole. Například "Text v rámci licence kopie SA".<br /><br /> Použijte název a adresu URL licenci `license` pole, které chcete vytvořit hypertextový odkaz na web, který popisuje podrobnosti o licenci. Potom nahraďte název licence v `licenseNotice` řetězec (například CC-podle-SA) s odkazem, který jste právě vytvořili.|String|  
-|mustBeCloseToContent|Logická hodnota, která určuje, zda obsah pravidlo musí být umístěn v blízkosti pole, které se pravidlo vztahuje. Pokud **true**, obsah musí být umístěn v těsné blízkosti. Pokud **false**, nebo tato pole neexistuje, můžete umístit obsah na základě vlastního uvážení volajícího.|Logická hodnota|  
+|mustBeCloseToContent|Logická hodnota, která určuje, zda obsah pravidlo musí být umístěn v blízkosti pole, které se pravidlo vztahuje. Pokud **true**, obsah musí být umístěn v těsné blízkosti. Pokud **false**, nebo tato pole neexistuje, můžete umístit obsah na základě vlastního uvážení volajícího.|Boolean|  
 |targetPropertyName|Název pole, které se pravidlo vztahuje.|String|  
   
 
@@ -163,7 +163,7 @@ Definuje pravidlo smluvní pro přidělení odkazu.
 |Název|Hodnota|Type|  
 |----------|-----------|----------|  
 |_type|Typ pomocného parametru, která je nastavena na LinkAttribution.|String|  
-|mustBeCloseToContent|Logická hodnota, která určuje, zda obsah pravidlo musí být umístěn v blízkosti pole, které se pravidlo vztahuje. Pokud **true**, obsah musí být umístěn v těsné blízkosti. Pokud **false**, nebo tato pole neexistuje, můžete umístit obsah na základě vlastního uvážení volajícího.|Logická hodnota|  
+|mustBeCloseToContent|Logická hodnota, která určuje, zda obsah pravidlo musí být umístěn v blízkosti pole, které se pravidlo vztahuje. Pokud **true**, obsah musí být umístěn v těsné blízkosti. Pokud **false**, nebo tato pole neexistuje, můžete umístit obsah na základě vlastního uvážení volajícího.|Boolean|  
 |targetPropertyName|Název pole, které se pravidlo vztahuje.<br /><br /> Pokud cíl není zadán, platí pro entity jako celek přidělení a měla by se zobrazit okamžitě po prezentace entity. Pokud existuje více text a odkaz attribution pravidla, která není zadejte cíl, by je zřetězit a jejich zobrazení pomocí "Data z:" popisek. Například "Data z < název1 poskytovatele\> &#124; < name2 poskytovatele\>".|String|  
 |text|Attribution text.|String|  
 |url|Adresa URL webu poskytovatele. Použití `text` a adresu URL pro vytvoření hypertextového odkazu.|String|  
@@ -175,7 +175,7 @@ Definuje smluvní pravidlo pro attribution média.
 |Název|Hodnota|Type|  
 |----------|-----------|----------|  
 |_type|Typ pomocného parametru, která je nastavena na MediaAttribution.|String|  
-|mustBeCloseToContent|Logická hodnota, která určuje, zda obsah pravidlo musí být umístěn v blízkosti pole, které se pravidlo vztahuje. Pokud **true**, obsah musí být umístěn v těsné blízkosti. Pokud **false**, nebo tato pole neexistuje, můžete umístit obsah na základě vlastního uvážení volajícího.|Logická hodnota|  
+|mustBeCloseToContent|Logická hodnota, která určuje, zda obsah pravidlo musí být umístěn v blízkosti pole, které se pravidlo vztahuje. Pokud **true**, obsah musí být umístěn v těsné blízkosti. Pokud **false**, nebo tato pole neexistuje, můžete umístit obsah na základě vlastního uvážení volajícího.|Boolean|  
 |targetPropertyName|Název pole, které se pravidlo vztahuje.|String|  
 |url|Adresa URL, který použijete k vytvoření hypertextového odkazu mediálního obsahu. Například pokud je cílem bitovou kopii, použijete adresu URL k pořízení snímku po kliknutí.|String|  
   
@@ -210,10 +210,10 @@ Definuje kontext dotazu, který používá Bing pro daný požadavek.
   
 |Element|Popis|Type|  
 |-------------|-----------------|----------|  
-|adultIntent|Logická hodnota, která určuje, zda má zadaný dotaz dospělé. Hodnota je **true** Pokud dotaz obsahuje dospělé; v opačném případě **false**.|Logická hodnota|  
+|adultIntent|Logická hodnota, která určuje, zda má zadaný dotaz dospělé. Hodnota je **true** Pokud dotaz obsahuje dospělé; v opačném případě **false**.|Boolean|  
 |alterationOverrideQuery|Řetězec dotazu, který se má použít k vynucení Bingu použít původní řetězec. Například, pokud je řetězec dotazu *saling po směru větru*, bude přepsání řetězce dotazu *+ saling po směru větru*. Nezapomeňte zakódujte řetězec dotazu, což vede k *% 2Bsaling + po směru větru*.<br /><br /> Toto pole je zahrnuta pouze v případě, že původní řetězec dotazu obsahuje pravopisné chyby.|String|  
 |alteredQuery|Řetězec dotazu použitý bingem k provedení dotazu. Bing používá řetězec upravený dotaz, pokud původní řetězce dotazu obsažené pravopisné chyby hned. Například, pokud je řetězec dotazu `saling downwind`, řetězec upravený dotaz bude `sailing downwind`.<br /><br /> Toto pole je zahrnuta pouze v případě, že původní řetězec dotazu obsahuje pravopisné chyby.|String|  
-|askUserForLocation|Logická hodnota, která určuje, zda vyžaduje Bing podle umístění uživatele poskytnou přesné výsledky. Pokud jste zadali umístění uživatele pomocí [X-MSEdge ClientIP](#clientip) a [X-Search-umístění](#location) záhlaví, můžete ignorovat toto pole.<br /><br /> Umístění vědět dotazů, jako je například "dnešní počasí" nebo "restaurace v okolí", které je třeba podle umístění uživatele poskytnou přesné výsledky, toto pole je nastaven na **true**.<br /><br /> Umístění vědět dotazů, které obsahují umístění (například "Seattle počasí"), toto pole je nastaven na **false**. Toto pole je také nastavena na **false** pro dotazy, které nejsou místem, jako je například "nejpopulárnější".|Logická hodnota|  
+|askUserForLocation|Logická hodnota, která určuje, zda vyžaduje Bing podle umístění uživatele poskytnou přesné výsledky. Pokud jste zadali umístění uživatele pomocí [X-MSEdge ClientIP](#clientip) a [X-Search-umístění](#location) záhlaví, můžete ignorovat toto pole.<br /><br /> Umístění vědět dotazů, jako je například "dnešní počasí" nebo "restaurace v okolí", které je třeba podle umístění uživatele poskytnou přesné výsledky, toto pole je nastaven na **true**.<br /><br /> Umístění vědět dotazů, které obsahují umístění (například "Seattle počasí"), toto pole je nastaven na **false**. Toto pole je také nastavena na **false** pro dotazy, které nejsou místem, jako je například "nejpopulárnější".|Boolean|  
 |originalQuery|Řetězec dotazu jako zadaný v požadavku.|String|  
 
 ### <a name="identifiable"></a>Údaje
@@ -237,7 +237,7 @@ Definuje položku výsledek vyhledávání k zobrazení.
 |resultIndex|Z nuly vycházející index položky v odpovědi na dotaz k zobrazení. Pokud položka neobsahuje toto pole, zobrazí všechny položky v odpovědi na dotaz. Například zobrazte všechny články o novinkách v zpráv odpovědí.|Integer|
 |answerType|Odpověď obsahující položku k zobrazení. Například příspěvky.<br /><br />Použijte typ odpovědi SearchResponse objektu. Typ je název SearchResponse pole.<br /><br /> Pouze v případě, že tento objekt obsahuje pole hodnoty; však použijte typ odpovědi v opačném případě ji ignorujte.|String|
 |textualIndex|Index odpovědí v textualAnswers k zobrazení.| Celé číslo bez znaménka|
-|hodnota|Identifikátor, který identifikuje odpověď zobrazíte nebo položku odpověď zobrazíte. Pokud ID identifikuje odpověď, zobrazení všech položek odpovědi.|Údaje|
+|value|Identifikátor, který identifikuje odpověď zobrazíte nebo položku odpověď zobrazíte. Pokud ID identifikuje odpověď, zobrazení všech položek odpovědi.|Údaje|
 
 ### <a name="rankingresponse"></a>RankingResponse  
 Definuje, kde na hledání by měl být umístěn obsah stránky výsledků a v jakém pořadí.  

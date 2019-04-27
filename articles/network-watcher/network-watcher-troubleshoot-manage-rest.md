@@ -3,8 +3,8 @@ title: Řešení potíží s brány virtuální sítě a připojení pomocí Azu
 description: Tato stránka vysvětluje, jak řešit potíže brány virtuální sítě a připojení pomocí služby Azure Network Watcher pomocí rozhraní REST
 services: network-watcher
 documentationcenter: na
-author: jimdial
-manager: timlt
+author: KumudD
+manager: twooley
 editor: ''
 ms.assetid: e4d5f195-b839-4394-94ef-a04192766e55
 ms.service: network-watcher
@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/19/2017
-ms.author: jdial
+ms.author: kumud
 ms.openlocfilehash: 1276d1e581caf477449ce9a4c928d4493a6354d3
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
-ms.translationtype: MT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58487596"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60683202"
 ---
 # <a name="troubleshoot-virtual-network-gateway-and-connections-using-azure-network-watcher"></a>Řešení potíží s brány virtuální sítě a připojení pomocí Azure Network Watcher
 
@@ -36,7 +36,7 @@ Tento článek vás provede jiné úlohy, které jsou aktuálně k dispozici pro
 - [**Řešení potíží s bránu virtuální sítě**](#troubleshoot-a-virtual-network-gateway)
 - [**Řešení potíží s připojení**](#troubleshoot-connections)
 
-## <a name="before-you-begin"></a>Před zahájením
+## <a name="before-you-begin"></a>Než začnete
 
 ARMclient slouží k volání rozhraní REST API pomocí Powershellu. ARMClient se nachází na chocolatey na [ARMClient v Chocolatey](https://chocolatey.org/packages/ARMClient)
 

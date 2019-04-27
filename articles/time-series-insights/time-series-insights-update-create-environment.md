@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: tutorial
 ms.date: 12/12/2018
 ms.custom: seodec18
-ms.openlocfilehash: 1b09c0e31b217d7d67f936aefe9045d190241389
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
-ms.translationtype: MT
+ms.openlocfilehash: 75ab3baf8638a387defd0e367b4a61c3746794f3
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53633109"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60544201"
 ---
 # <a name="tutorial-set-up-an-azure-time-series-insights-preview-environment"></a>Kurz: Nastavení prostředí Azure čas Series Insights ve verzi Preview
 
@@ -110,7 +110,7 @@ Tato část popisuje, jak vytvořit prostředí Azure čas Series Insights ve ve
    | **Předplatné** | Zadejte vaše předplatné, ve kterém chcete vytvořit prostředí Azure čas Series Insights ve verzi Preview. Je vhodné používat stejné předplatné jako v ostatních vašich IoT prostředků vytvořených v simulátoru zařízení. |
    | **Skupina prostředků** | Skupina prostředků představuje kontejner prostředků Azure. Zvolte existující skupinu prostředků nebo vytvořte novou pro prostředek prostředí Azure čas Series Insights ve verzi Preview. Je osvědčeným postupem použít stejnou skupinu prostředků jako v ostatních vašich IoT prostředků vytvořených v simulátoru zařízení. |
    | **Umístění** | Vyberte oblast datového centra pro prostředí Azure čas Series Insights ve verzi Preview. Aby se zabránilo náklady na přidání šířku pásma a čekací doba, je nejlepší mít prostředí Azure čas Series Insights ve verzi Preview ve stejné oblasti jako ostatní prostředky IoT. |
-   | **Úroveň** |  Vyberte **PAYG**, což je zkratka pro plán průběžných plateb. Toto je SKU produktu Azure čas Series Insights ve verzi Preview. |
+   | **Tier** |  Vyberte **PAYG**, což je zkratka pro plán průběžných plateb. Toto je SKU produktu Azure čas Series Insights ve verzi Preview. |
    | **ID vlastnosti** | Zadejte objekt, který jednoznačně identifikuje časové řady. Mějte na paměti, že toto pole je neměnná a není možné později změnit. Pro účely tohoto kurzu použijte **iothub připojení zařízení id**. Další informace o ID řady času, [návodu k výběru ID řady času](./time-series-insights-update-how-to-id.md). |
    | **Název účtu úložiště** | Zadejte globálně jedinečný název pro nový účet úložiště, který se má vytvořit. |
 

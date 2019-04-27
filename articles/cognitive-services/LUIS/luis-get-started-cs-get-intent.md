@@ -12,11 +12,11 @@ ms.topic: quickstart
 ms.date: 01/23/2019
 ms.author: diberry
 ms.openlocfilehash: 6d72299e4350c472ef552fa6afd96e48fd1869b9
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55876960"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60710318"
 ---
 # <a name="quickstart-get-intent-using-c"></a>Rychlý start: Získání záměru pomocíC#
 

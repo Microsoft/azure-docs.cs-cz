@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.date: 2/14/2018
 ms.author: saurse
 ms.custom: mvc
-ms.openlocfilehash: e05c80e52605e051bdd6815608ca8c12e1393727
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
-ms.translationtype: HT
+ms.openlocfilehash: b01811d9c933802263e975b23b5d40cd77303766
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34607017"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60722867"
 ---
 # <a name="recover-files-from-azure-to-a-windows-server"></a>Obnovení souborů z Azure do Windows Serveru
 
@@ -70,7 +70,7 @@ Součástí instalace agenta služby Microsoft Azure Recovery Services (MARS) je
 
     Po odpojení snímku se v podokně **Úlohy** v konzole agenta zobrazí **Úloha dokončena**.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Toto je konec kurzů věnovaných zálohování a obnovení dat Windows Serveru do Azure. Další informace o službě Azure Backup najdete v ukázce PowerShellu pro zálohování šifrovaných virtuálních počítačů.
 

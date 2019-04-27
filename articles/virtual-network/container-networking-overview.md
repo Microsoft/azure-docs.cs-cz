@@ -17,11 +17,11 @@ ms.date: 9/18/2018
 ms.author: aanandr
 ms.custom: ''
 ms.openlocfilehash: 2ebc678bffbbbe5d512d620b8f77ac0a245c0aff
-ms.sourcegitcommit: 48a41b4b0bb89a8579fc35aa805cea22e2b9922c
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/15/2019
-ms.locfileid: "59579117"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60713813"
 ---
 # <a name="enable-containers-to-use-azure-virtual-network-capabilities"></a>Zprovoznění funkcí služby Azure Virtual Network v kontejnerech
 
@@ -29,7 +29,7 @@ Bohatou sadu síťových funkcí Azure můžete přenést do kontejnerů a přit
 
 - IP adresa virtuální sítě se přiřadí ke každému podu, který může obsahovat jeden nebo více kontejnerů.
 - Pody se můžou připojovat k partnerským virtuálním sítím a k místní infrastruktuře přes ExpressRoute nebo přes síť VPN typu site-to-site. Pody jsou také dostupné z partnerských a místních sítí.
-- Pody mají přístup ke službám, jako je například Azure Storage a Azure SQL Database, které jsou chráněné koncovými body služeb virtuální sítě.
+- Pody mají přístup ke službám, jako je například Azure Storage a Azure SQL Database, které jsou chráněné koncovými body služby pro virtuální síť.
 - U těchto podů je možné použít přímo skupiny zabezpečení sítě a trasy.
 - Pody (stejně jako virtuální počítače) je možné umístit přímo za nástroj pro vyrovnávání zatížení, který je interní v rámci Azure nebo veřejný.
 - Podům lze přiřadit veřejné IP adresy, které jsou přímo přístupné z internetu. I samotné pody mají přístup k internetu.
@@ -51,7 +51,7 @@ Pody poskytuje virtuální počítač, který je součástí virtuální sítě.
 
 Modul plug-in nakonfiguruje pravidla *iptables* pro překlad síťových adres (NAT) u přenosů z podů do internetu, aby podům umožnil přístup k internetu. Zdrojová IP adresa paketu se přeloží na primární IP adresu síťového rozhraní virtuálního počítače. Virtuální počítače s Windows automaticky provádějí překlad adres na základě zdroje (SNAT) u přenosů mířících mimo podsíť, ve které se virtuální počítač nachází. Obvykle se překládají všechny přenosy směřující na IP adresu mimo rozsah IP adres ve virtuální síti.
 
-## <a name="limits"></a>Omezení
+## <a name="limits"></a>Limits
 
 Modul plug-in podporuje až 250 podů na virtuální počítač a až 16 000 podů ve virtuální síti. Tato omezení se liší u [Azure Kubernetes Service](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-kubernetes-service-limits).
 

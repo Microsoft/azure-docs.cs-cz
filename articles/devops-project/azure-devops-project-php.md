@@ -18,11 +18,11 @@ ms.author: mlearned
 ms.custom: mvc
 monikerRange: vsts
 ms.openlocfilehash: 82310857276c53c85af033ae32a3aeef4f33c8da
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58109371"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60555021"
 ---
 # <a name="create-a-cicd-pipeline-for-php-with-azure-devops-projects"></a>Vytvoření kanálu CI/CD pro jazyk PHP s projekty Azure DevOps
 

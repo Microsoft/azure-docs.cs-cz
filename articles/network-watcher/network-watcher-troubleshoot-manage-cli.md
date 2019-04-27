@@ -3,8 +3,8 @@ title: Řešení potíží s brány virtuální sítě Azure a připojení – r
 description: Tato stránka vysvětluje, jak používat Azure Network Watcher Poradce při potížích s Azure CLI
 services: network-watcher
 documentationcenter: na
-author: jimdial
-manager: timlt
+author: KumudD
+manager: twooley
 editor: ''
 ms.assetid: 2838bc61-b182-4da8-8533-27db8fdbd177
 ms.service: network-watcher
@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/19/2017
-ms.author: jdial
+ms.author: kumud
 ms.openlocfilehash: 8910b4963c7f40b5b6ecdde06c7c7a0c9b86e97a
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
-ms.translationtype: MT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57899107"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60680331"
 ---
 # <a name="troubleshoot-virtual-network-gateway-and-connections-using-azure-network-watcher-azure-cli"></a>Řešení potíží s brány virtuální sítě a připojení pomocí rozhraní příkazového řádku Azure Network Watcher Azure
 
@@ -33,7 +33,7 @@ Sledovací proces sítě poskytuje mnoho funkcí, jako má vztah k pochopení s�
 
 K provedení kroků v tomto článku, budete muset [instalace rozhraní příkazového řádku Azure pro Mac, Linux a Windows (CLI)](/cli/azure/install-azure-cli).
 
-## <a name="before-you-begin"></a>Před zahájením
+## <a name="before-you-begin"></a>Než začnete
 
 Tento scénář předpokládá, že už jste udělali kroky v [vytvořit Network Watcher](network-watcher-create.md) vytvořit Network Watcher.
 

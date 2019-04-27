@@ -11,11 +11,11 @@ ms.topic: quickstart
 ms.date: 04/13/2018
 ms.author: rosh
 ms.openlocfilehash: 2eaf07e041998efade1091861144a2dc4d78c56d
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55860299"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60721534"
 ---
 # <a name="quickstart-project-answer-search-with-python"></a>Rychlý start: Project Answer Search s jazykem Python
 

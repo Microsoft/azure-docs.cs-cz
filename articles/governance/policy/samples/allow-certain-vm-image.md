@@ -8,11 +8,11 @@ ms.topic: sample
 ms.date: 01/23/2019
 ms.author: dacoulte
 ms.openlocfilehash: 8ec4bdc7e360c9f53a95280827a2a0ea8ab97c4d
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59272797"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60546667"
 ---
 # <a name="sample---only-allow-a-certain-vm-platform-image"></a>Ukázkový – Povolit jenom určité platformy image virtuálního počítače
 

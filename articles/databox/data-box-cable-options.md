@@ -2,18 +2,19 @@
 title: Možnosti zapojení kabeláže Azure Data Boxu | Microsoft Docs
 description: Popisuje různé možnosti zapojení kabeláže Azure Data Boxu.
 services: databox
-author: alkohli
+author: WenJason
 ms.service: databox
 ms.subservice: pod
 ms.topic: overview
-ms.date: 10/24/2018
-ms.author: alkohli
+origin.date: 10/24/2018
+ms.date: 02/25/2019
+ms.author: v-jay
 ms.openlocfilehash: 4759676eff03606998759a586f758b7a26ead23d
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58077543"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60728643"
 ---
 # <a name="cabling-options-for-your-azure-data-box"></a>Možnosti zapojení kabeláže Azure Data Boxu
 
@@ -67,8 +68,8 @@ Při zapojování kabeláže zařízení postupujte následovně.
 
      ![Nastavení se dvěma porty](media/data-box-cable-options/cabling-2-port-setup.png)
 
-3. Přístup k místní webové uživatelské rozhraní zařízení: 192.168.100.10. Přihlaste se k Data Boxu a odemkněte ho pomocí hesla pro odemčení z webu Azure Portal.
-4. K datovým portům, které jste nakonfigurovali, přiřaďte statické IP adresy.
+4. Přístup k místní webové uživatelské rozhraní zařízení: 192.168.100.10. Přihlaste se k Data Boxu a odemkněte ho pomocí hesla pro odemčení z webu Azure Portal.
+5. K datovým portům, které jste nakonfigurovali, přiřaďte statické IP adresy.
 
 ### <a name="option-2---initial-setup-via-separate-computer"></a>Možnost 2 – Počáteční nastavení prostřednictvím samostatného počítače
 
@@ -83,8 +84,8 @@ Při zapojování kabeláže zařízení postupujte následovně.
 
      ![Nastavení se dvěma porty a přepínačem](media/data-box-cable-options/cabling-with-static-ip.png)
 
-3. Přístup k místní webové uživatelské rozhraní zařízení: 192.168.100.10. Přihlaste se k Data Boxu a odemkněte ho pomocí hesla pro odemčení z webu Azure Portal.
-4. Zjistěte IP adresy přiřazené serverem DHCP.
+4. Přístup k místní webové uživatelské rozhraní zařízení: 192.168.100.10. Přihlaste se k Data Boxu a odemkněte ho pomocí hesla pro odemčení z webu Azure Portal.
+5. Zjistěte IP adresy přiřazené serverem DHCP.
 
 ## <a name="transfer-via-data-port-with-static-ips-using-a-switch"></a>Přenos přes datový port se statickými IP adresami s využitím přepínače 
 
@@ -107,8 +108,8 @@ Při zapojování kabeláže zařízení postupujte následovně.
 
      ![Nastavení se dvěma porty a přepínačem](media/data-box-cable-options/cabling-with-switch-static-ip.png)
 
-3. Přístup k místní webové uživatelské rozhraní zařízení: 192.168.100.10. Přihlaste se k Data Boxu a odemkněte ho pomocí hesla pro odemčení z webu Azure Portal.
-4. K datovým portům, které jste nakonfigurovali, přiřaďte statické IP adresy.
+4. Přístup k místní webové uživatelské rozhraní zařízení: 192.168.100.10. Přihlaste se k Data Boxu a odemkněte ho pomocí hesla pro odemčení z webu Azure Portal.
+5. K datovým portům, které jste nakonfigurovali, přiřaďte statické IP adresy.
 
 
 ## <a name="transfer-via-data-port-in-a-dhcp-environment"></a>Přenos přes datový port v prostředí DHCP

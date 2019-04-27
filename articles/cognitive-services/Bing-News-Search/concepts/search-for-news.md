@@ -11,11 +11,11 @@ ms.topic: overview
 ms.date: 01/11/2019
 ms.author: scottwhi
 ms.openlocfilehash: 612a3961d901f53147ab2f3cfeea20f9c11d96b7
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58087852"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60648427"
 ---
 # <a name="search-for-news-with-the-bing-news-search-api"></a>Hledání zpráv pomocí rozhraní API pro vyhledávání zpráv Bingu
 

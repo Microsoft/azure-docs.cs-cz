@@ -11,11 +11,11 @@ ms.topic: article
 ms.date: 04/30/2018
 ms.author: v-jaswel
 ms.openlocfilehash: cca7b42c83be3ca428509ea48c387a1c35ddb35a
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55206726"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60640184"
 ---
 # <a name="how-to-use-branching-and-undo-operations"></a>Jak používat větvení a operace vrátit zpět
 V tomto kurzu jsme přejděte zpět a větvení operace.
