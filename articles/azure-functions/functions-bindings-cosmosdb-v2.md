@@ -260,7 +260,7 @@ Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastav
 |---------|---------|----------------------|
 |**type** || Musí být nastaveno na `cosmosDBTrigger`. |
 |**direction** || Musí být nastaveno na `in`. Tento parametr je nastavena automaticky, když vytvoříte aktivační událost na webu Azure Portal. |
-|**Jméno** || Název této proměnné v kódu funkce, která představuje seznam dokumentů se změnami. |
+|**name** || Název této proměnné v kódu funkce, která představuje seznam dokumentů se změnami. |
 |**connectionStringSetting**|**connectionStringSetting** | Název nastavení aplikace, které obsahuje připojovací řetězec použitý pro připojení k účtu Azure Cosmos DB, který je monitorován. |
 |**databaseName**|**DatabaseName**  | Název databáze Azure Cosmos DB s kolekcí monitorovány. |
 |**collectionName** |**collectionName** | Název kolekce monitorovány. |
@@ -1713,7 +1713,7 @@ Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastav
 |---------|---------|----------------------|
 |**type**     || Musí být nastaveno na `cosmosDB`.        |
 |**direction**     || Musí být nastaveno na `in`.         |
-|**Jméno**     || Název parametru vazby, který představuje dokument ve funkci.  |
+|**name**     || Název parametru vazby, který představuje dokument ve funkci.  |
 |**databaseName** |**DatabaseName** |Databáze obsahující dokumentu.        |
 |**collectionName** |**collectionName** | Název, který bude obsahovat dokumentu. |
 |**id**    | **ID** | ID dokumentu má načíst. Tato vlastnost podporuje [výrazy vazeb](./functions-bindings-expressions-patterns.md). Obě nemají nastavený **id** a **sqlQuery** vlastnosti. Pokud nemají nastavený buď jeden, načte celou kolekci. |
@@ -2298,7 +2298,7 @@ Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastav
 |---------|---------|----------------------|
 |**type**     || Musí být nastaveno na `cosmosDB`.        |
 |**direction**     || Musí být nastaveno na `out`.         |
-|**Jméno**     || Název parametru vazby, který představuje dokument ve funkci.  |
+|**name**     || Název parametru vazby, který představuje dokument ve funkci.  |
 |**databaseName** | **DatabaseName**|Databáze obsahující kolekci, do které se vytvoří dokument.     |
 |**collectionName** |**collectionName**  | Název kolekce, ve kterém se vytvoří dokument. |
 |**createIfNotExists**  |**createIfNotExists**    | Logická hodnota označující, zda kolekce je vytvořena při neexistuje. Výchozí hodnota je *false* protože nové kolekce se vytvoří s vyhrazenou propustností, která má vliv na náklady. Další informace najdete na [stránce s cenami](https://azure.microsoft.com/pricing/details/cosmos-db/).  |
