@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.service: iot-accelerators
 services: iot-accelerators
 ms.openlocfilehash: 4cc9b0051eaa12eee07f067352126ad159107a83
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60007470"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61442922"
 ---
 # <a name="integrate-azure-time-series-insights-with-remote-monitoring"></a>Integrace služby Azure Time Series Insights se vzdáleným monitorováním
 
@@ -57,7 +57,7 @@ V dalším kroku nasaďte Time Series Insights jako zdroj dalších do vašeho �
 
 1. Pokud chcete vytvořit prostředí Time Series Insights, použijte hodnoty v následující tabulce:
 
-    | Nastavení | Value |
+    | Nastavení | Hodnota |
     | ------- | ----- |
     | Název prostředí | Na následujícím snímku obrazovky používá název **contorosrmtsi**. Po dokončení tohoto kroku, zvolte svůj vlastní jedinečný název. |
     | Předplatné | Z rozevíracího seznamu vyberte své předplatné Azure. |
@@ -86,7 +86,7 @@ Vytvořte nový zdroj událostí k připojení ke službě IoT hub. Ujistěte se
 
 1. Pokud chcete nakonfigurovat službu IoT hub jako nový zdroj událostí, použijte hodnoty v následující tabulce:
 
-    | Nastavení | Value |
+    | Nastavení | Hodnota |
     | ------- | ----- |
     | Název zdroje událostí | Na následujícím snímku obrazovky používá název **contosorm-iot-hub**. Po dokončení tohoto kroku, použijte vlastní jedinečný název. |
     | Zdroj | **IoT Hub** |

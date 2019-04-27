@@ -16,11 +16,11 @@ ms.workload: iaas-sql-server
 ms.date: 06/27/2017
 ms.author: mikeray
 ms.openlocfilehash: 463ef5f4a655617074915078fb4ced9e596f8957
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51257710"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61478285"
 ---
 # <a name="high-availability-and-disaster-recovery-for-sql-server-in-azure-virtual-machines"></a>Vysoká dostupnost a zotavení po havárii pro SQL Server v Azure Virtual Machines
 
@@ -44,7 +44,7 @@ SQL Server HADR technologií, které se podporují v Azure zahrnují:
 
 Je možné kombinovat technologie společně k implementaci řešení systému SQL Server, který má vysokou dostupnost a možnosti zotavení po havárii. V závislosti na technologii, kterou používáte může vyžadovat hybridního nasazení tunelové připojení VPN s Azure virtual network. Následující části popisují, můžete některé příklady architektur nasazení.
 
-## <a name="azure-only-high-availability-solutions"></a>Jenom pro Azure: řešení s vysokou dostupností
+## <a name="azure-only-high-availability-solutions"></a>Azure-only: Řešení s vysokou dostupností
 
 Řešení vysoké dostupnosti pro SQL Server může mít na úrovni databáze pomocí skupin dostupnosti Always On - nazývají skupiny dostupnosti. Můžete také vytvořit řešení vysoké dostupnosti na úrovni instance instancemi vždy na převzetí služeb při selhání clusteru – převzetí služeb při selhání instance clusteru. Pro zajištění další redundance můžete vytvořit redundanci na obou úrovních vytvořením skupiny dostupnosti na převzetí služeb při selhání instance clusteru. 
 
@@ -53,7 +53,7 @@ Je možné kombinovat technologie společně k implementaci řešení systému S
 | **Skupiny dostupnosti** |Repliky dostupnosti spuštěných na virtuálních počítačích Azure ve stejné oblasti zajištění vysoké dostupnosti. Musíte nakonfigurovat řadič domény virtuálního počítače, protože Windows failover clustering vyžaduje doménu služby Active Directory.<br/> ![Skupiny dostupnosti](./media/virtual-machines-windows-sql-high-availability-dr/azure_only_ha_always_on.gif)<br/>Další informace najdete v tématu [konfigurace skupiny dostupnosti v Azure (GUI)](virtual-machines-windows-portal-sql-alwayson-availability-groups.md). |
 | **Instance clusteru převzetí služeb při selhání** |Instance clusteru převzetí služeb při selhání (FCI), které vyžadují sdílené úložiště, můžete vytvořit 3 různými způsoby.<br/><br/>1. Převzetí služeb při selhání uzlu clusteru se systémem na virtuálních počítačích Azure s používáním připojené služby storage [systému Windows Server 2016 prostory úložiště – přímé \(S2D\) ](virtual-machines-windows-portal-sql-create-failover-cluster.md) k poskytování softwarových virtuální síť SAN.<br/><br/>2. Převzetí služeb při selhání uzlu clusteru se systémem na virtuálních počítačích Azure s úložištěm podporuje Clusterové řešení třetí strany. Konkrétní příklad, který používá SIOS DataKeeper, naleznete v tématu [vysoká dostupnost pro sdílenou složku pomocí clusteringu převzetí služeb při selhání a 3. stran software SIOS DataKeeper](https://azure.microsoft.com/blog/high-availability-for-a-file-share-using-wsfc-ilb-and-3rd-party-software-sios-datakeeper/).<br/><br/>3. Převzetí služeb při selhání uzlu clusteru se systémem na virtuálních počítačích Azure s vzdálené iSCSI Target sdílené blokové úložiště přes ExpressRoute. Například NetApp Private Storage (NPS) poskytuje cíl iSCSI prostřednictvím ExpressRoute s Equinix na virtuální počítače Azure.<br/><br/>Pro sdílené úložiště jiných výrobců a řešení replikace dat byste požádat dodavatele pro všechny problémy související se přístup k datům na převzetí služeb při selhání.<br/><br/>Všimněte si, že při použití FCI nad [Azure File storage](https://azure.microsoft.com/services/storage/files/) se zatím nepodporuje, protože toto řešení nevyužívá Premium Storage. Pracujeme na tom pro podporu tohoto brzy. |
 
-## <a name="azure-only-disaster-recovery-solutions"></a>Jenom pro Azure: řešení zotavení po havárii
+## <a name="azure-only-disaster-recovery-solutions"></a>Azure-only: Řešení zotavení po havárii
 Můžete mít řešení zotavení po havárii pro databáze SQL serveru v Azure pomocí skupin dostupnosti, zrcadlení databáze nebo zálohování a obnovení s využitím úložiště objektů BLOB.
 
 | Technologie | Příklady architektur |
@@ -69,7 +69,7 @@ Můžete mít řešení zotavení po havárii pro databáze SQL serveru v hybrid
 
 | Technologie | Příklady architektur |
 | --- | --- |
-| **Skupiny dostupnosti** |Některé repliky dostupnosti používané virtuálními počítači Azure a ostatními replikami, místní zotavení po havárii mezi weby. Produkční lokality může být buď místně nebo v datovém centru Azure.<br/>![Skupiny dostupnosti](./media/virtual-machines-windows-sql-high-availability-dr/hybrid_dr_alwayson.gif)<br/>Protože všechny repliky dostupnosti musí být ve stejném clusteru převzetí služeb při selhání, clusteru musí zahrnovat model obě sítě (cluster převzetí služeb při selhání více podsítí). Tato konfigurace vyžaduje propojení VPN mezi Azure a v místní síti.<br/><br/>Pro zotavení po havárii úspěšné vašich databází nainstalujete také repliky řadiče domény v lokalitě zotavení po havárii.<br/><br/>Je možné použít Průvodce přidáním repliky v aplikaci SSMS přidání Azure repliky existující skupiny dostupnosti Always On. Další informace najdete v článku kurz: rozšíření vaší skupiny dostupnosti Always On do Azure. |
+| **Skupiny dostupnosti** |Některé repliky dostupnosti používané virtuálními počítači Azure a ostatními replikami, místní zotavení po havárii mezi weby. Produkční lokality může být buď místně nebo v datovém centru Azure.<br/>![Skupiny dostupnosti](./media/virtual-machines-windows-sql-high-availability-dr/hybrid_dr_alwayson.gif)<br/>Protože všechny repliky dostupnosti musí být ve stejném clusteru převzetí služeb při selhání, clusteru musí zahrnovat model obě sítě (cluster převzetí služeb při selhání více podsítí). Tato konfigurace vyžaduje propojení VPN mezi Azure a v místní síti.<br/><br/>Pro zotavení po havárii úspěšné vašich databází nainstalujete také repliky řadiče domény v lokalitě zotavení po havárii.<br/><br/>Je možné použít Průvodce přidáním repliky v aplikaci SSMS přidání Azure repliky existující skupiny dostupnosti Always On. Další informace najdete v kurzu: Rozšíření skupiny dostupnosti Always On do Azure. |
 | **Zrcadlení databáze** |Jeden partnerovi běžet ve Virtuálním počítači Azure a další spuštění on-premises pro zotavení po havárii webů pomocí certifikátů serveru. Partneři nemusí být ve stejné doméně služby Active Directory a bez připojení k síti VPN je povinný.<br/>![Zrcadlení databáze](./media/virtual-machines-windows-sql-high-availability-dr/hybrid_dr_dbmirroring.gif)<br/>Jiné databáze zrcadlení scénář zahrnuje jeden partnerovi běžet ve Virtuálním počítači Azure a dalších spuštěné místně ve stejné doméně služby Active Directory pro zotavení po havárii mezi weby. A [připojení VPN mezi virtuální sítí Azure a v místní síti](../../../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md) je povinný.<br/><br/>Pro zotavení po havárii úspěšné vašich databází nainstalujete také repliky řadiče domény v lokalitě zotavení po havárii. |
 | **Přesouvání protokolu** |Jeden server spuštěný ve Virtuálním počítači Azure a další spuštění on-premises pro zotavení po havárii mezi weby. Přesouvání protokolu, závisí na sdílení souborů Windows, takže je nutné připojení VPN mezi virtuální sítí Azure a v místní síti.<br/>![Přesouvání protokolu](./media/virtual-machines-windows-sql-high-availability-dr/hybrid_dr_log_shipping.gif)<br/>Pro zotavení po havárii úspěšné vašich databází nainstalujete také repliky řadiče domény v lokalitě zotavení po havárii. |
 | **Zálohování a obnovení pomocí služby Azure Blob Storage** |Místní provozních databází zálohují přímo na úložiště objektů blob v Azure pro zotavení po havárii.<br/>![Zálohování a obnovení](./media/virtual-machines-windows-sql-high-availability-dr/hybrid_dr_backup_restore.gif)<br/>Další informace najdete v tématu [zálohování a obnovení pro SQL Server ve službě Azure Virtual Machines](virtual-machines-windows-sql-backup-recovery.md). |

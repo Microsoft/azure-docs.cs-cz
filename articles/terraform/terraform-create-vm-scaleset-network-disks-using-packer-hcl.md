@@ -10,11 +10,11 @@ ms.author: tarcher
 ms.topic: tutorial
 ms.date: 10/29/2017
 ms.openlocfilehash: 5aff45b4a6b5da62569e0a39c13239a726e6b80b
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58001988"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60884882"
 ---
 # <a name="use-terraform-to-create-an-azure-virtual-machine-scale-set-from-a-packer-custom-image"></a>Použití Terraformu k vytvoření škálovací sady virtuálních počítačů Azure z vlastní image Packeru
 
@@ -32,7 +32,7 @@ V tomto kurzu se naučíte:
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
-## <a name="before-you-begin"></a>Před zahájením
+## <a name="before-you-begin"></a>Než začnete
 > * [Nainstalujte Terraform a nakonfigurujte přístup k Azure](https://docs.microsoft.com/azure/virtual-machines/linux/terraform-install-configure).
 > * [Vytvořte pár klíčů SSH](https://docs.microsoft.com/azure/virtual-machines/linux/mac-create-ssh-keys), pokud ho ještě nemáte.
 > * [Nainstalujte Packer](https://www.packer.io/docs/install/index.html), pokud ho ještě na svém místním počítači nainstalovaný nemáte.

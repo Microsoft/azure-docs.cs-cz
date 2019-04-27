@@ -11,11 +11,11 @@ ms.topic: quickstart
 ms.date: 02/01/2019
 ms.author: v-gedod
 ms.openlocfilehash: a5a3bb38f832d13a39a061453e6ef7910ba5cccf
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58094105"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61473344"
 ---
 # <a name="quickstart-send-a-search-request-with-the-bing-entity-search-sdk-for-java"></a>Rychlý start: Odeslat žádost o vyhledávání sadou SDK vyhledávání entit Bingu pro Javu
 

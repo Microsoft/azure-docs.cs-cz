@@ -17,11 +17,11 @@ ms.date: 03/27/2017
 ms.author: cynthn
 ms.custom: mvc
 ms.openlocfilehash: 6c6510113710ea19128fcd27adbf8671a8f083bc
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57996502"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62122699"
 ---
 # <a name="tutorial-create-a-development-infrastructure-on-a-linux-vm-in-azure-with-jenkins-github-and-docker"></a>Kurz: Vytváření vývojové infrastruktury na virtuální počítač s Linuxem v Azure pomocí Jenkinse, Githubu a Dockeru
 

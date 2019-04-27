@@ -9,11 +9,11 @@ ms.topic: article
 ms.date: 02/05/2019
 ms.author: rajanaki
 ms.openlocfilehash: e27dee213baf8365c3ad4efc69602f66e2081abe
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
-ms.translationtype: MT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58311148"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61036007"
 ---
 # <a name="service-updates-in-azure-site-recovery"></a>Aktualizace služeb ve službě Azure Site Recovery
 Jako organizace budete muset zjistit, jak budete bezpečnost vašich dat a aplikací a úloh v případě plánovaných a neplánovaných výpadků. Azure Site Recovery přispívá ke strategii BCDR tím, že vaše aplikace běžící na virtuálních počítačích a fyzických serverů, které jsou k dispozici, pokud web přestane fungovat. Site Recovery replikuje úlohy spuštěné na virtuálních počítačích a fyzických serverech, aby zůstaly dostupné v sekundárním umístění v případě, že je primární lokalita nedostupná. Po opětovném zprovoznění primární lokality do ní úlohy obnoví.

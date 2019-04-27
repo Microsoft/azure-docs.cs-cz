@@ -10,11 +10,11 @@ ms.reviewer: mamccrea
 ms.custom: mvc
 ms.date: 04/01/2018
 ms.openlocfilehash: ff8e61c53774429087ffe1a9137d40b155eb3f68
-ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57192271"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61479537"
 ---
 # <a name="tutorial-azure-stream-analytics-javascript-user-defined-functions"></a>Kurz: Azure uživatelem definované funkce jazyka JavaScript v Stream Analytics
  

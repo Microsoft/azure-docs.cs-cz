@@ -13,11 +13,11 @@ ms.topic: quickstart
 ms.date: 02/22/2019
 ms.author: alkarche
 ms.openlocfilehash: 5fd9f51185b8461269d498b254d9e9d9f4118270
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57344592"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62107138"
 ---
 # <a name="create-a-function-using-azure-for-students-starter"></a>Vytvoření funkce pomocí Azure for Students Starter
 
@@ -56,7 +56,7 @@ K hostování provádění funkcí musíte mít aplikaci Function App. Aplikace 
     | **[Skupina prostředků](../azure-resource-manager/resource-group-overview.md)** |  myResourceGroup | Název nové skupiny prostředků, ve které chcete vytvořit aplikaci Function App. |
    | **[Plán služby App Service/umístění](./functions-scale.md)** | Nová | Hostování plánování, které řídí, jaké oblasti nasazuje se do aplikace function app a s velkou hustotou vašich prostředků. Všechny více aplikací funkcí, které jsou nasazené na stejný plán, který bude sdílet stejnou instanci jeden bezplatný. Toto je omezení plánu Student Starter ještě dnes. Úplné možnosti hostování jsou [je popsáno zde.](./functions-scale.md)|
     | **Zásobník modulu runtime** | Upřednostňovaný jazyk | Vyberte modul runtime, který podporuje váš oblíbený programovací jazyk funkcí. Zvolte **.NET** pro funkce C# a F#. |
-    |**[Application Insights](./functions-monitoring.md)**| Povoleno | Application Insights se používá k ukládání a analýza protokolů aplikace funkcí. Pokud se rozhodnete umístění, které podporuje Application Insights je povolen ve výchozím nastavení. Application Insights můžete povolit pro všechny funkce ručně výběrem nejbližší oblast k nasazení služby Application Insights. Bez služby Application Insights pouze budete moct zobrazit protokoly pro živé streamování.
+    |**[Application Insights](./functions-monitoring.md)**| Enabled | Application Insights se používá k ukládání a analýza protokolů aplikace funkcí. Pokud se rozhodnete umístění, které podporuje Application Insights je povolen ve výchozím nastavení. Application Insights můžete povolit pro všechny funkce ručně výběrem nejbližší oblast k nasazení služby Application Insights. Bez služby Application Insights pouze budete moct zobrazit protokoly pro živé streamování.
 
 3. Vyberte **plán služby App Service/umístění** výše a vyberte jiné umístění
 

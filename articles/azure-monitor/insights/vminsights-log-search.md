@@ -14,11 +14,11 @@ ms.workload: infrastructure-services
 ms.date: 04/10/2019
 ms.author: magoedte
 ms.openlocfilehash: 8b6745a2b9afe8d3101585e3f7a13f2fc978c84a
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: MT
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59492084"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62122587"
 ---
 # <a name="how-to-query-logs-from-azure-monitor-for-vms-preview"></a>Jak provádět dotazy protokolů ze služby Azure Monitor pro virtuální počítače (preview)
 Azure Monitor pro virtuální počítače shromažďuje výkonu a metrik připojení, počítače a zpracování dat inventáře a informace o stavu a předá ji do pracovního prostoru Log Analytics ve službě Azure Monitor.  Tato data jsou k dispozici pro [dotazu](../../azure-monitor/log-query/log-query-overview.md) ve službě Azure Monitor. Tato data můžete použít scénáře, které zahrnují plánování migrace, kapacitu analýza, zjišťování a řešení potíží s výkonem na vyžádání.
@@ -53,7 +53,7 @@ Pokud chcete spravovat náklady a složitost, záznamy o připojení nepředstav
 | Vlastnost | Popis |
 |:--|:--|
 |Direction |Směr připojení, je hodnota *příchozí* nebo *odchozí* |
-|Machine |Plně kvalifikovaný název domény počítače |
+|Počítač |Plně kvalifikovaný název domény počítače |
 |Proces |Identita procesu nebo skupin procesů, inicializace a přijímá připojení |
 |SourceIp |IP adresa zdroje |
 |DestinationIp |Cílové IP adresy |
@@ -112,9 +112,9 @@ Každá vlastnost RemoteIp v *VMConnection* tabulky je porovnávána s sadu IP a
 |:--|:--|
 |MaliciousIp |Vzdálená adresa IP adres |
 |IndicatorThreadType |Indikátor hrozeb zjistila je jeden z následujících hodnot *Botnet*, *C2*, *CryptoMining*, *Darknet*, *před útoky DDos* , *MaliciousUrl*, *Malware*, *Phishing*, *Proxy*, *PUA*, *Seznamu ke zhlédnutí*.   |
-|Description |Popis zjištěných hrozeb. |
+|Popis |Popis zjištěných hrozeb. |
 |TLPLevel |Úroveň protokolu semaforu (algoritmus TLP) je jedna z definovaných hodnot *prázdné*, *zelená*, *žlutou*, *Red*. |
-|Confidence |Hodnoty jsou *0 – 100*. |
+|Spolehlivost |Hodnoty jsou *0 – 100*. |
 |Severity |Hodnoty jsou *0 – 5*, kde *5* je nejzávažnější a *0* není natolik vůbec. Výchozí hodnota je *3*.  |
 |FirstReportedDateTime |První zprostředkovatel ohlásil indikátoru. |
 |LastReportedDateTime |Čas posledního ukazatele viděla Interflow. |
@@ -137,7 +137,7 @@ Každý záznam v VMBoundPort je identifikován následující pole:
 | Vlastnost | Popis |
 |:--|:--|
 |Proces | Identita procesu (nebo skupiny procesů) se kterými port, který je přidružen.|
-|Ip | Port IP adresa (může být zástupný znak IP *0.0.0.0*) |
+|IP adresa | Port IP adresa (může být zástupný znak IP *0.0.0.0*) |
 |Port |Číslo portu |
 |Protocol (Protokol) | Protokol.  Například *tcp* nebo *udp* (pouze *tcp* momentálně se podporuje).|
  

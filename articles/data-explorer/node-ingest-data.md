@@ -8,11 +8,11 @@ ms.service: data-explorer
 ms.topic: quickstart
 ms.date: 10/25/2018
 ms.openlocfilehash: d530ed3710a3406e5cd8115d615e91d5056a5f8c
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59047649"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60827183"
 ---
 # <a name="quickstart-ingest-data-using-the-azure-data-explorer-node-library"></a>Rychlý start: Ingestování dat pomocí knihovny Azure uzlu Průzkumníka dat
 

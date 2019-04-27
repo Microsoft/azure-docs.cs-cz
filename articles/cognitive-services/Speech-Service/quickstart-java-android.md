@@ -11,11 +11,11 @@ ms.topic: quickstart
 ms.date: 2/20/2019
 ms.author: wolfma
 ms.openlocfilehash: 690656449fdb86c200a8978f0e17db562e4abbca
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59009174"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62118208"
 ---
 # <a name="quickstart-recognize-speech-in-java-on-android-by-using-the-speech-sdk"></a>Rychlý start: Rozpoznávání řeči v jazyce Java v Androidu pomocí sadou SDK pro řeč
 

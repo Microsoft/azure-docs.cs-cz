@@ -7,12 +7,12 @@ ms.service: firewall
 ms.topic: conceptual
 ms.date: 4/17/2019
 ms.author: victorh
-ms.openlocfilehash: fcff4ff141dbac84d0b96c166c36018b0cc09d8e
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
-ms.translationtype: HT
+ms.openlocfilehash: 5e009d5659a503fe8168f21a26939acff9944f2f
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "59997559"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62125251"
 ---
 # <a name="azure-firewall-faq"></a>Nejčastější dotazy k Azure bránu Firewall
 
@@ -40,7 +40,7 @@ Výhodou tohoto modelu je schopnost centrálně získat ovládací prvek na víc
 
 ## <a name="how-can-i-install-the-azure-firewall"></a>Jak nainstalovat Azure bránu Firewall?
 
-Brána Firewall služby Azure můžete nastavit pomocí webu Azure portal, Powershellu, rozhraní REST API nebo pomocí šablon. Zobrazit [kurzu: Nasazení a konfiguraci brány Firewall Azure pomocí webu Azure portal](/articles/firewall/tutorial-firewall-deploy-portal.md) podrobné pokyny.
+Brána Firewall služby Azure můžete nastavit pomocí webu Azure portal, Powershellu, rozhraní REST API nebo pomocí šablon. Zobrazit [kurzu: Nasazení a konfiguraci brány Firewall Azure pomocí webu Azure portal](tutorial-firewall-deploy-portal.md) podrobné pokyny.
 
 ## <a name="what-are-some-azure-firewall-concepts"></a>Jaké jsou některé pojmy Brána Firewall služby Azure?
 
@@ -58,7 +58,7 @@ Azure Brána Firewall podporuje filtrování příchozího a odchozího. Přích
 
 ## <a name="which-logging-and-analytics-services-are-supported-by-the-azure-firewall"></a>Které protokolování a analýza služby jsou podporovány bránou Azure Firewall?
 
-Brány Firewall na Azure je integrovaná se službou Azure Monitor pro zobrazení a analýza protokolů brány firewall. Protokoly můžete odeslat do Log Analytics, Azure Storage nebo služby Event Hubs. Mohou být analyzovány v Log Analytics, nebo prostřednictvím různých nástrojů, jako je Excel a Power BI. Další informace najdete v tématu [kurzu: Monitorujte protokoly brány Firewall Azure](/articles/firewall/tutorial-diagnostics.md).
+Brány Firewall na Azure je integrovaná se službou Azure Monitor pro zobrazení a analýza protokolů brány firewall. Protokoly můžete odeslat do Log Analytics, Azure Storage nebo služby Event Hubs. Mohou být analyzovány v Log Analytics, nebo prostřednictvím různých nástrojů, jako je Excel a Power BI. Další informace najdete v tématu [kurzu: Monitorujte protokoly brány Firewall Azure](tutorial-diagnostics.md).
 
 ## <a name="how-does-azure-firewall-work-differently-from-existing-services-such-as-nvas-in-the-marketplace"></a>Jak se Brána Firewall služby Azure z existujících služeb, jako je například síťová virtuální zařízení na webu Marketplace funguje jinak?
 
@@ -109,7 +109,7 @@ Set-AzFirewall -AzureFirewall $azfw
 
 ## <a name="what-are-the-known-service-limits"></a>Jaká jsou omezení služeb?
 
-Omezení služby Brána Firewall služby Azure najdete v tématu [předplatného Azure a limity, kvóty a omezení](/articles/azure-subscription-service-limits.md#azure-firewall-limits).
+Omezení služby Brána Firewall služby Azure najdete v tématu [předplatného Azure a limity, kvóty a omezení](../azure-subscription-service-limits.md#azure-firewall-limits).
 
 ## <a name="can-azure-firewall-in-a-hub-virtual-network-forward-and-filter-network-traffic-between-two-spoke-virtual-networks"></a>Brána Firewall služby Azure můžete ve virtuální síti centra vpřed a filtrování síťového provozu mezi dvěma virtuálními sítěmi paprsků?
 
@@ -135,7 +135,7 @@ Ano. Brána firewall, podsítě, virtuální sítě a veřejné IP adresy musí 
 
 ## <a name="when-configuring-dnat-for-inbound-network-traffic-do-i-also-need-to-configure-a-corresponding-network-rule-to-allow-that-traffic"></a>Při konfiguraci DNAT pro příchozí síťový provoz, také potřeba nakonfigurovat odpovídající pravidlo sítě, které umožňují tento přenos dat?
 
-Ne. Pravidla NAT implicitně přidat odpovídající pravidlo sítě přeložené provoz. Toto chování můžete přepsat explicitním přidáním kolekce pravidel sítě s pravidly pro odepření, která odpovídají přeloženému provozu. Další informace najdete v článku, který pojednává o [logice zpracování pravidel služby Azure Firewall](/articles/firewall/rule-processing.md).
+Ne. Pravidla NAT implicitně přidat odpovídající pravidlo sítě přeložené provoz. Toto chování můžete přepsat explicitním přidáním kolekce pravidel sítě s pravidly pro odepření, která odpovídají přeloženému provozu. Další informace najdete v článku, který pojednává o [logice zpracování pravidel služby Azure Firewall](rule-processing.md).
 
 ## <a name="how-do-wildcards-work-in-an-application-rule-target-fqdn"></a>Jak fungují zástupné znaky v cíli pravidla aplikace plně kvalifikovaný název domény?
 

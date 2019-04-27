@@ -1,7 +1,6 @@
 ---
 title: Vytvořte clustery systému Apache Hadoop pomocí webového prohlížeče, Azure HDInsight
 description: Zjistěte, jak vytvářet clustery Apache Hadoop, Apache HBase, Apache Storm nebo Apache Spark v Linuxu pro HDInsight pomocí webového prohlížeče a na portálu Azure preview.
-services: hdinsight
 author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
@@ -9,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 12/28/2018
 ms.author: hrasheed
-ms.openlocfilehash: 13d053c14b083390bfdd28fdad616caf13e7e4e0
-ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
+ms.openlocfilehash: 9da9c6c438aac2c160a9ec7bc658e5d7b4ea207e
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54911553"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62124794"
 ---
 # <a name="create-linux-based-clusters-in-hdinsight-by-using-the-azure-portal"></a>Vytvoření clusterů se systémem Linux v HDInsight pomocí webu Azure portal
 [!INCLUDE [selector](../../includes/hdinsight-create-linux-cluster-selector.md)]
@@ -81,7 +80,7 @@ Na webu Azure portal poskytuje většinu vlastností clusteru. Pomocí šablon A
 
      ![Nastavení úložiště](./media/hdinsight-hadoop-create-linux-clusters-portal/hdinsight-create-cluster-storage.png "vytvoření nového clusteru na portálu Azure portal")
 
-     | Storage                                      | Popis |
+     | Úložiště                                      | Popis |
      |----------------------------------------------|-------------|
      | **Azure Storage BLOB jako výchozí úložiště**   | <ul><li>Pro **typ primárního úložiště**vyberte **služby Azure Storage**. Pro **metodu výběru**, zvolte **mé odběry** Pokud chcete zadat účet úložiště, který je součástí vašeho předplatného Azure. Pak vyberte účet úložiště. V opačném případě vyberte **přístupový klíč**. Zadejte informace pro účet úložiště, který chcete vybrat z mimo vašeho předplatného Azure.</li><li>Pro **výchozí kontejner**, zvolte výchozí název kontejneru navrhl na portálu nebo zadat vlastní.</li><li>Pokud Azure Blob storage je výchozí úložiště, můžete také vybrat **další účty úložiště** k určení dalších účtů úložiště pro přidružení ke clusteru. Pro **klíčů k úložišti Azure**vyberte **přidat klíč úložiště**. Můžete zadat účet úložiště z vašich předplatných Azure nebo z jiných předplatných. Zadejte přístupový klíč účtu úložiště.</li><li>Pokud úložiště objektů Blob je výchozí úložiště, můžete také vybrat **přístupu k Data Lake Storage** určit úložiště Azure Data Lake jako další úložiště. Další informace najdete v tématu [rychlý start: Nastavení clusterů v HDInsight](../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md).</li></ul> |
      | **Azure Data Lake Storage jako výchozí úložiště** | Pro **typ primárního úložiště**vyberte **Azure Data Lake Storage Gen1** nebo **Azure Data Lake Storage Gen2**. Přečtěte si informace v článku [rychlý start: Nastavení clusterů v HDInsight](../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md) pokyny. |

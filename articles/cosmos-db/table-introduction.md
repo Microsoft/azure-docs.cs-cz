@@ -8,11 +8,11 @@ ms.topic: overview
 ms.date: 11/20/2017
 ms.author: sngun
 ms.openlocfilehash: 68190ad15ed70ac831c21582d60bc54da5d3c14b
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54043919"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60913476"
 ---
 # <a name="introduction-to-azure-cosmos-db-table-api"></a>Úvod do služby Azure Cosmos DB: Rozhraní Table API
 

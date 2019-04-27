@@ -15,11 +15,11 @@ ms.workload: infrastructure-services
 ms.date: 01/23/2017
 ms.author: victorh
 ms.openlocfilehash: 89a88d79b6b93a233dbd4f335d0eb449e49d5289
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "53001779"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62122196"
 ---
 # <a name="configure-an-application-gateway-for-ssl-offload-by-using-the-classic-deployment-model"></a>Konfigurace aplikační brány pro přesměrování zpracování SSL pomocí modelu nasazení classic
 
@@ -99,17 +99,17 @@ Konfigurace aplikační brány se skládá z více hodnot. Hodnotami může být
 
 Hodnoty jsou:
 
-* **Fond back-end serverů**: seznam IP adres back-end serverů. Uvedené IP adresy by měly patřit do podsítě virtuální sítě nebo by měla být veřejná adresa IP nebo virtuální IP adresy.
-* **Nastavení fondu back endového serveru**: každý fond má nastavení, jako je port, protokol a spřažení na základě souborů cookie. Tato nastavení se vážou na fond a používají se na všechny servery v rámci fondu.
+* **Fond back-end serverů**: Seznam IP adres back-end serverů. Uvedené IP adresy by měly patřit do podsítě virtuální sítě nebo by měla být veřejná adresa IP nebo virtuální IP adresy.
+* **Nastavení fondu back endového serveru**: Každý fond má nastavení, jako je port, protokol a spřažení na základě souborů cookie. Tato nastavení se vážou na fond a používají se na všechny servery v rámci fondu.
 * **Front-endový port**: Toto je veřejný port, který se otevírá ve službě application gateway. Když datový přenos dorazí na tento port, přesměruje se na některý back-end server.
-* **Naslouchací proces**: naslouchací proces má front-end port, protokol (Http nebo Https; tyto hodnoty jsou malá a velká písmena) a název certifikátu SSL (Pokud je konfigurace přesměrování zpracování SSL).
-* **Pravidlo**: pravidlo váže naslouchací proces a fond back-end serverů a definuje, kterému fondu back endového serveru pro směrování provozu do při volání příslušného naslouchacího procesu. V tuhle chvíli se podporuje jenom *základní* pravidlo. *Základní* pravidlo je distribuce zatížení pomocí kruhového dotazování.
+* **Naslouchací proces**: Naslouchací proces má front-end port, protokol (Http nebo Https; tyto hodnoty jsou malá a velká písmena) a název certifikátu SSL (Pokud je konfigurace přesměrování zpracování SSL).
+* **Pravidlo**: Pravidlo váže naslouchací proces a fond back-end serverů a definuje, kterému fondu back endového serveru pro směrování provozu do při volání příslušného naslouchacího procesu. V tuhle chvíli se podporuje jenom *základní* pravidlo. *Základní* pravidlo je distribuce zatížení pomocí kruhového dotazování.
 
 **Další poznámky ke konfiguraci**
 
 Pro konfiguraci certifikátů SSL by se měl změnit protokol v **HttpListener** na **Https** (rozlišování velkých a malých písmen). Přidat **SslCert** elementu **HttpListener** s hodnotou nastavenou na stejný název používá v [certifikáty SSL nahrát](#upload-ssl-certificates) oddílu. Front-end port se musí aktualizovat na **443**.
 
-**Chcete povolit spřažení na základě souborů cookie**: můžete nakonfigurovat službu application gateway k zajištění, že žádost od klientské relace vždy směrovala na stejný virtuální počítač ve webové farmě. Chcete-li to provést, vložte souboru cookie relace, který umožňuje bráně řízení provozu odpovídajícím způsobem. Když chcete povolit spřažení na základě souboru cookie, nastavte **CookieBasedAffinity** na **Povoleno** v elementu **BackendHttpSettings**.
+**Chcete povolit spřažení na základě souborů cookie**: Můžete nakonfigurovat službu application gateway k zajištění, že žádost od klientské relace vždy směrovala na stejný virtuální počítač ve webové farmě. Chcete-li to provést, vložte souboru cookie relace, který umožňuje bráně řízení provozu odpovídajícím způsobem. Když chcete povolit spřažení na základě souboru cookie, nastavte **CookieBasedAffinity** na **Povoleno** v elementu **BackendHttpSettings**.
 
 Konfiguraci lze vytvořit buď tím, že vytvoříte objekt konfigurace, nebo pomocí konfiguračního souboru XML.
 Vytvořit konfiguraci pomocí konfiguračního souboru XML, zadejte následující ukázce:

@@ -1,7 +1,6 @@
 ---
 title: Apache Storm zapsat do úložiště a Data Lake Storage – Azure HDInsight
 description: Další informace o použití Apache Storm pro HDInsight zapsat do úložiště kompatibilního se systémem HDFS.
-services: hdinsight
 ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
@@ -9,12 +8,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/27/2018
-ms.openlocfilehash: 34056b3a562d3110569e05c5c50ae4d9dae2375a
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 4ba0c861674eb2308cf1f96c33d0792f3e1a0f94
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56868132"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62109459"
 ---
 # <a name="write-to-apache-hadoop-hdfs-from-apache-storm-on-hdinsight"></a>Zápis do Apache Hadoop HDFS z Apache Storm v HDInsight
 

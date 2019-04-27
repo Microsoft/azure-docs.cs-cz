@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 07/30/2018
 ms.author: spelluru
 ms.openlocfilehash: 9634c70566aba21bdd28ee016c9fa94464ec9c1b
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52956326"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62127408"
 ---
 # <a name="delete-a-lab-or-vm-in-a-lab-in-azure-devtest-labs"></a>Odstranění testovacího prostředí nebo virtuálních počítačů v testovacím prostředí ve službě Azure DevTest Labs
 Tento článek ukazuje, jak odstranění testovacího prostředí nebo virtuálních počítačů v testovacím prostředí.

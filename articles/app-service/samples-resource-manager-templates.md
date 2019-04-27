@@ -14,11 +14,11 @@ ms.date: 01/04/2019
 ms.author: tomfitz
 ms.custom: mvc
 ms.openlocfilehash: 842ec98245522095334b9f17e8c12292b7c1dda8
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54035436"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60835426"
 ---
 # <a name="azure-resource-manager-templates-for-app-service"></a>Šablony Azure Resource Manageru pro službu App Service
 

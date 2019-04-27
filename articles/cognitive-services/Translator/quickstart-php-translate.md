@@ -8,14 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: quickstart
-ms.date: 02/08/2019
-ms.author: erhopf
+origin.date: 02/08/2019
+ms.date: 03/12/2019
+ms.author: v-junlch
 ms.openlocfilehash: f8c5f3ae48d0695f19699a5dfd1c956492bb128d
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57534697"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60879655"
 ---
 # <a name="quickstart-translate-text-with-the-translator-text-rest-api-php"></a>Rychlý start: Přeložení textu s Translator Text REST API (PHP)
 
@@ -48,8 +49,8 @@ Následující kód překládá zdrojový text z jednoho jazyka do jiného pomoc
 
 // Replace the subscriptionKey string value with your valid subscription key.
 $key = 'ENTER KEY HERE';
-
-$host = "https://api.cognitive.microsofttranslator.com";
+$region = 'your region';
+$host = "https://api.translator.azure.cn";
 $path = "/translate?api-version=3.0";
 
 // Translate to German and Italian.
@@ -69,11 +70,12 @@ if (!function_exists('com_create_guid')) {
   }
 }
 
-function Translate ($host, $path, $key, $params, $content) {
+function Translate ($host, $path, $key, $params, $content, $region) {
 
     $headers = "Content-type: application/json\r\n" .
         "Content-length: " . strlen($content) . "\r\n" .
         "Ocp-Apim-Subscription-Key: $key\r\n" .
+        "Ocp-Apim-Subscription-Region: $region\r\n" .
         "X-ClientTraceId: " . com_create_guid() . "\r\n";
 
     // NOTE: Use the key 'http' even if you are making an HTTPS request. See:
@@ -97,7 +99,7 @@ $requestBody = array (
 );
 $content = json_encode($requestBody);
 
-$result = Translate ($host, $path, $key, $params, $content);
+$result = Translate ($host, $path, $key, $params, $content, $region);
 
 // Note: We convert result, which is JSON, to and from an object so we can pretty-print it.
 // We want to avoid escaping any Unicode characters that result contains. See:
@@ -138,3 +140,4 @@ Prozkoumejte vzorový kód pro tento a další rychlé starty, včetně transkri
 
 > [!div class="nextstepaction"]
 > [Prozkoumejte příklady PHP na GitHubu](https://aka.ms/TranslatorGitHub?type=&language=php)
+

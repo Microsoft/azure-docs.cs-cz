@@ -4,20 +4,21 @@ titlesuffix: Azure Virtual Network
 description: Další informace o veřejných a privátních IP adresách v Azure
 services: virtual-network
 documentationcenter: na
-author: jimdial
+author: KumudD
+manager: twooley
 ms.service: virtual-network
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/05/2019
-ms.author: jdial
-ms.openlocfilehash: 929c8808721140d5275cba4bcf3fbaa567f961e0
-ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
-ms.translationtype: MT
+ms.author: kumud
+ms.openlocfilehash: 69fd70fc45f734f8267db6d770d09b14f3a071f5
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58652021"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62108140"
 ---
 # <a name="ip-address-types-and-allocation-methods-in-azure"></a>Typy IP adres a metody přidělování v Azure
 
@@ -78,6 +79,9 @@ Veřejné IP adresy standardních SKU jsou:
  
 > [!NOTE]
 > Příchozí komunikace s prostředkem standardní SKU selhávat, dokud se můžete vytvořit a přidružit [skupinu zabezpečení sítě](security-overview.md#network-security-groups) a explicitně nepovolíte požadovaný příchozí provoz.
+
+> [!NOTE]
+> Pouze pro veřejné IP adresy se základní SKU jsou k dispozici při použití [instance služby metadata IMDS](../virtual-machines/windows/instance-metadata-service.md). Standardní SKU se nepodporuje.
 
 ### <a name="allocation-method"></a>Metoda přidělování
 
@@ -180,7 +184,7 @@ Následující tabulka ukazuje konkrétní vlastnost, jejímž prostřednictvím
 | Nástroj pro vyrovnávání zatížení |Konfigurace front-endu |Ano |Ano |
 | Application Gateway |Konfigurace front-endu |Ano |Ano |
 
-## <a name="limits"></a>Omezení
+## <a name="limits"></a>Limits
 Omezení IP adresování jsou uvedená v kompletní sadě [omezení sítě](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#networking-limits) v Azure. Omezení platí pro jednotlivé oblasti a jednotlivá předplatná. Pokud chcete v závislosti na svých obchodních potřebách zvýšit výchozí omezení na povolené maximum, [kontaktujte podporu](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
 
 ## <a name="pricing"></a>Ceny

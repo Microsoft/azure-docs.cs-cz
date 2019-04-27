@@ -11,11 +11,11 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 11/12/2018
 ms.openlocfilehash: bee2be55ef34de90d7fec23844e5a2604e6a1294
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
-ms.translationtype: HT
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60008938"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62126711"
 ---
 # <a name="quickstart-run-a-spark-job-on-azure-databricks-using-the-azure-resource-manager-template"></a>Rychlý start: Spuštění úlohy Spark job v Azure Databricks pomocí šablony Azure Resource Manageru
 

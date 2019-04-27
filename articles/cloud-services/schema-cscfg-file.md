@@ -1,8 +1,9 @@
 ---
 title: Definice schématu (soubor .cscfg) služby Azure Cloud Services | Dokumentace Microsoftu
-services: cloud-services
 ms.custom: ''
-ms.date: 12/07/2016
+origin.date: 12/07/2016
+ms.date: 11/06/2017
+ms.prod: azure
 ms.reviewer: ''
 ms.service: cloud-services
 ms.suite: ''
@@ -10,15 +11,15 @@ ms.tgt_pltfrm: ''
 ms.topic: reference
 ms.assetid: 3ddc7fea-3339-4fc0-bdf9-853c32b25f69
 caps.latest.revision: 35
-author: jpconnock
-ms.author: jeconnoc
+author: thraka
+ms.author: v-yiso
 manager: timlt
-ms.openlocfilehash: 96df87a0d49296280140e392509c0d735f904957
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: 424381e2c243420cc2a68dc776d249cb17574f98
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39007018"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62130309"
 ---
 # <a name="azure-cloud-services-config-schema-cscfg-file"></a>Konfigurační schéma (soubor .cscfg) služby Azure Cloud Services
 Konfigurační soubor služby definuje počet instancí role pro nasazení pro každou roli ve službě, hodnoty nastavení konfigurace a kryptografický otisk pro jakékoli certifikáty přidružené k roli. Pokud služba není součástí virtuální sítě, musí být uvedeny informace o konfiguraci sítě v konfiguračním souboru služby, stejně jako v konfiguračním souboru virtuální sítě. Výchozí přípona pro konfigurační soubor služby je .cscfg.

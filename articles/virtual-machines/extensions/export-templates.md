@@ -16,11 +16,11 @@ ms.workload: infrastructure-services
 ms.date: 12/05/2016
 ms.author: roiyz
 ms.openlocfilehash: f56cfeeede393dbdb9632ea4120d3a81e89f3f7c
-ms.sourcegitcommit: f31bfb398430ed7d66a85c7ca1f1cc9943656678
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47451965"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61484014"
 ---
 # <a name="exporting-resource-groups-that-contain-vm-extensions"></a>Export skupiny prostředků, které obsahují rozšíření virtuálních počítačů
 
@@ -38,8 +38,8 @@ Následující rozšíření je možné exportovat skript funkce automatizace.
 |---|---|---|---|
 | Acronis zálohování | Agent Windows služby Datadog | Opravy operačního systému pro Linux | Linux snímku virtuálního počítače
 | Zálohování Acronis Linux | Rozšíření docker | Puppet agenta |
-| Informace o BG | Rozšíření DSC | 24 x 7 webu Apm Insight |
-| Linux agenta BMC CTM | Dynatrace Linux | Server lokality 24 x 7 Linux |
+| Informace o BG | Rozšíření DSC | Site 24x7 Apm Insight |
+| Linux agenta BMC CTM | Dynatrace Linux | Site 24x7 Linux Server |
 | Agent Windows BMC CTM | Dynatrace Windows | Site 24x7 Windows Server |
 | Chef klienta | HPE zabezpečení aplikace Defenderu | Trend Micro DSA |
 | Vlastní skript | IaaS Antimalware | Trend Micro DSA Linux |

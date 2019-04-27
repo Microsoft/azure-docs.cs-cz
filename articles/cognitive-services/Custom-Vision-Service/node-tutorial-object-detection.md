@@ -11,11 +11,11 @@ ms.topic: quickstart
 ms.date: 03/21/2019
 ms.author: areddish
 ms.openlocfilehash: 17b6e59e121b836823b9e86d0d60b91d93ba82f9
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58487256"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60816972"
 ---
 # <a name="quickstart-create-an-object-detection-project-with-the-custom-vision-nodejs-sdk"></a>Rychlý start: Vytvoření projektu zjišťování objektu sadou Custom Vision Node.js SDK
 

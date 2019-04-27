@@ -16,11 +16,11 @@ ms.topic: sample
 ms.date: 06/28/2017
 ms.author: tamram
 ms.openlocfilehash: 3cb1e35617a58fcde7968ab45d437d865c91f983
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55696928"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61245051"
 ---
 # <a name="calculate-the-size-of-a-blob-storage-container"></a>Výpočet velikosti kontejneru úložiště objektů blob
 

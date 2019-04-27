@@ -16,11 +16,11 @@ ms.date: 03/11/2019
 ms.author: kumud
 ms.custom: seodec18
 ms.openlocfilehash: 78266e447d1ddf6daf5a9b0ad9172ab6470bf0c6
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57845201"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61320616"
 ---
 # <a name="tutorial-load-balance-internet-traffic-to-vms-using-the-azure-portal"></a>Kurz: Zatížení vyrovnávat přenosy z Internetu k virtuálním počítačům pomocí webu Azure portal
 
@@ -128,7 +128,7 @@ V této části vytvořit virtuální síť, vytvořte tři virtuální počíta
     | Adresní prostor | Zadejte *10.1.0.0/16*. |
     | Předplatné | Vyberte své předplatné.|
     | Skupina prostředků | Vyberte existující prostředek - *myResourceGroupSLB*. |
-    | Umístění | Vyberte **Západní Evropa**.|
+    | Location | Vyberte **Západní Evropa**.|
     | Podsíť - Name | Zadejte *myBackendSubnet*. |
     | Podsíť – Rozsah adres | Zadejte *10.1.0.0/24*. |
     

@@ -15,11 +15,11 @@ ms.workload: infrastructure-services
 ms.date: 1/24/2018
 ms.author: xujing
 ms.openlocfilehash: 7f43528c55cd22c2649ca0f1208da6f41695b98e
-ms.sourcegitcommit: dd1a9f38c69954f15ff5c166e456fda37ae1cdf2
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57569973"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61485448"
 ---
 # <a name="how-to-deploy-windows-10-on-azure-with-multitenant-hosting-rights"></a>Jak nasadit Windows 10 v Azure s práv hostování více klientů 
 Víceklientská hostování práva pro Windows 10 pro zákazníky s Windows 10 Enterprise E3 nebo E5 na Windows Virtual Desktop přístup uživatele nebo na uživatele (licence uživatelského předplatného nebo licence uživatelského předplatného doplněk), umožňuje přenést vaše licence na Windows 10 do cloudu a spouštět virtuální počítače s Windows 10 v Azure bez nutnosti platit za další licenci. Další informace najdete v tématu [Multitenant hostování pro Windows 10](https://www.microsoft.com/en-us/CloudandHosting/licensing_sca.aspx).

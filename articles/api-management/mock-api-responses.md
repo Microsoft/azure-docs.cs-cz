@@ -15,11 +15,11 @@ ms.topic: tutorial
 ms.date: 06/15/2018
 ms.author: apimpm
 ms.openlocfilehash: 9b9a691cb2bce2357d184420912ab340aee534e8
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
-ms.translationtype: HT
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50412734"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62128079"
 ---
 # <a name="mock-api-responses"></a>Napodobení odpovědí API
 
@@ -42,7 +42,7 @@ V tomto kurzu se naučíte:
 
 + Seznamte se s [terminologií služby Azure API Management](api-management-terminology.md).
 + Seznamte se s [konceptem zásad ve službě Azure API Management](api-management-howto-policies.md).
-+ Projděte si následující rychlý start: [Vytvoření instance Azure API Managementu](get-started-create-service-instance.md).
++ Projděte si následující rychlý start: [Vytvoření instance Azure API Management](get-started-create-service-instance.md).
 
 ## <a name="create-a-test-api"></a>Vytvoření testovacího rozhraní API 
 
@@ -120,7 +120,7 @@ Postup v této části ukazuje, jak vytvořit prázdné rozhraní API bez jakéh
 
 > [!VIDEO https://www.youtube.com/embed/i9PjUAvw7DQ]
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 V tomto kurzu jste se naučili:
 

@@ -7,11 +7,11 @@ ms.service: postgresql
 ms.topic: tutorial
 ms.date: 09/24/2018
 ms.openlocfilehash: f05e0eef7680b08ce116cc0243d944f6a1db597c
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53536437"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61091724"
 ---
 # <a name="tutorial-monitor-and-tune-azure-database-for-postgresql"></a>Kurz: Sledování a ladění – Azure Database for PostgreSQL
 
@@ -23,7 +23,7 @@ Azure Database for PostgreSQL obsahuje funkce, které vám pomohou pochopit a zl
 > * Analýza databáze a získání doporučení k výkonu
 > * Použití doporučení k výkonu
 
-## <a name="before-you-begin"></a>Před zahájením
+## <a name="before-you-begin"></a>Než začnete
 Musíte mít server Azure Database for PostgreSQL s PostgreSQL verze 9.6 nebo 10. Chcete-li vytvořit server, můžete sledovat postup v části [Vytvořit kurz](tutorial-design-database-using-azure-portal.md).
 
 > [!IMPORTANT]

@@ -13,12 +13,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 04/19/2019
 ms.author: juliako
-ms.openlocfilehash: ff5d6aef48542ee18f6de91ddc418c0fcab70ece
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 6a3c02c1f14c37317a03cb6ebe63bcddc92f3253
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/23/2019
-ms.locfileid: "60322398"
+ms.locfileid: "62117004"
 ---
 # <a name="azure-media-services-community"></a>Komunita Azure Media Services  
 
@@ -54,11 +54,9 @@ V následující tabulce jsou uvedeny e-mailu týmů dílčí funkce:
 
 | Funkce | Email |
 | --- | --- |
-| Azure Media Analytics |amsanalytics@microsoft.com |
 | Přehrávač médií Azure |ampinfo@microsoft.com |
 | Průzkumník médií Azure |amse@microsoft.com |
 | Návrhář postupu provádění |mepd@microsoft.com |
-| Balení a streamování souboru |amsstreaming@microsoft.com |
 | Živé streamování a balení |amslived@microsoft.com |
 
 ## <a name="next-steps"></a>Další postup

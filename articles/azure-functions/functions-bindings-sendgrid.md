@@ -11,11 +11,11 @@ ms.topic: conceptual
 ms.date: 11/29/2017
 ms.author: cshoe
 ms.openlocfilehash: 663283c4dff16194dea78afbf5dd393f1fa833b1
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
-ms.translationtype: MT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56823803"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61437922"
 ---
 # <a name="azure-functions-sendgrid-bindings"></a>Azure vazby služby SendGrid funkce
 
@@ -288,7 +288,7 @@ Tato část popisuje globální konfiguraci nastavení k dispozici pro tuto vazb
 
 |Vlastnost  |Výchozí | Popis |
 |---------|---------|---------| 
-|from|neuvedeno|E-mailová adresa odesílatele přes všechny funkce.| 
+|od|neuvedeno|E-mailová adresa odesílatele přes všechny funkce.| 
 
 
 ## <a name="next-steps"></a>Další postup

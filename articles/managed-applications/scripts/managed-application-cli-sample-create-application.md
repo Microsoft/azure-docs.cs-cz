@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/25/2017
 ms.author: tomfitz
-ms.openlocfilehash: 9939bfb08031b3062fd65fbdeed908a09e5e124c
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
-ms.translationtype: HT
+ms.openlocfilehash: f09d9dcb60370c2cc51f5652def92e5ad9c9b512
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39432221"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61226357"
 ---
 # <a name="deploy-a-managed-application-for-service-catalog-with-azure-cli"></a>Nasazení spravované aplikace pro katalog služeb pomocí Azure CLI
 
@@ -42,7 +42,7 @@ Tento skript k nasazení spravované aplikace používá následující příkaz
 | [az managedapp create](https://docs.microsoft.com/cli/azure/managedapp#az-managedapp-create) | Vytvoří spravovanou aplikaci. Zadejte pro šablonu parametry a ID definice. |
 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 * Úvod ke spravovaným aplikacím najdete v [přehledu spravovaných aplikací Azure](../overview.md).
 * Další informace o Azure CLI najdete v [dokumentaci k Azure CLI](https://docs.microsoft.com/cli/azure).

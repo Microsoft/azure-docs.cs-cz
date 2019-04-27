@@ -11,11 +11,11 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.custom: seodec18
 ms.openlocfilehash: 5df4c9dfe18b02ade3a37717da9c68acbfcf1853
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
-ms.translationtype: MT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53106596"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61480903"
 ---
 # <a name="develop-net-standard-user-defined-functions-for-azure-stream-analytics-edge-jobs-preview"></a>Vývoj .NET Standard uživatelsky definovaných funkcí pro úlohy Azure Stream Analytics Edge (Preview)
 
@@ -134,6 +134,6 @@ Ve verzi preview UDF aktuálně má následující omezení:
 
 ## <a name="next-steps"></a>Další postup
 
-* [Kurz: Psaní C# uživatelem definované funkce pro úlohu Azure Stream Analytics Edge (Preview)](stream-analytics-edge-csharp-udf.md)
-* [Kurzu: Uživatelem definované funkce jazyka JavaScript v Azure Stream Analytics](stream-analytics-javascript-user-defined-functions.md)
+* [Kurz: Zápis C# uživatelem definovanou funkci pro úlohu Azure Stream Analytics Edge (Preview)](stream-analytics-edge-csharp-udf.md)
+* [Kurz: Azure uživatelem definované funkce jazyka JavaScript v Stream Analytics](stream-analytics-javascript-user-defined-functions.md)
 * [Chcete-li zobrazit úlohy Azure Stream Analytics pomocí sady Visual Studio](stream-analytics-vs-tools.md)

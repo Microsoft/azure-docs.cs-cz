@@ -9,11 +9,11 @@ ms.tgt_pltfrm: arduino
 ms.date: 04/11/2018
 ms.author: robinsh
 ms.openlocfilehash: 070f37a969411cfc4caf5f2d2b089ccfae759ca2
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59683189"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62125708"
 ---
 # <a name="visualize-real-time-sensor-data-from-your-azure-iot-hub-by-using-the-web-apps-feature-of-azure-app-service"></a>Vizualizovat data ze senzorů v reálném čase ze služby Azure IoT hub pomocí funkce Web Apps služby Azure App Service
 

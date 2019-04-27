@@ -10,16 +10,20 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 08/07/2018
 ms.author: gracez
-ms.openlocfilehash: 4d802b9f71edee1eec4b2c92881e2a8796db2865
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 33a03b24de56ab1090cc8e07c9619eda17f33e27
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58005505"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61293531"
 ---
 # <a name="release-notes-of-cognitive-services-speech-devices-sdk"></a>Poznámky k verzi sady Cognitive Services zařízení sadou SDK pro řeč
 
 Následující změny části seznamu v nejnovější vydané verze.
+
+## <a name="cognitive-services-speech-devices-sdk-140-2019-apr-release"></a>Zařízení řeči služeb cognitive Services SDK 1.4.0: 2019 dubna vydání 
+
+* Aktualizuje [sadou SDK pro řeč](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk-reference) komponentu verze 1.4.0. Další informace najdete v tématu jeho [poznámky k verzi](https://aka.ms/csspeech/whatsnew). 
 
 ## <a name="cognitive-services-speech-devices-sdk-131-2019-mar-release"></a>Zařízení řeči služeb cognitive Services SDK 1.3.1: 2019 března vydání 
 

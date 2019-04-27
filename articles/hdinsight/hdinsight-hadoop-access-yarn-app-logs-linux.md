@@ -1,7 +1,6 @@
 ---
 title: Přístup aplikací Apache Hadoop YARN přihlášení založené na Linuxu HDInsight – Azure
 description: Zjistěte, jak získat přístup k protokolům aplikace YARN na cluster HDInsight založených na Linuxu (Apache Hadoop) pomocí příkazového řádku a webový prohlížeč.
-services: hdinsight
 author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
@@ -9,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 03/22/2018
 ms.author: hrasheed
-ms.openlocfilehash: 8412c82d460591cd3a9d2dc97d383a47e263fd50
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 0a3411cc4cc32c3e54583ab81ee98f2e151d4384
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53728172"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62098435"
 ---
 # <a name="access-apache-hadoop-yarn-application-logs-on-linux-based-hdinsight"></a>Přístup aplikací Apache Hadoop YARN přihlášení založené na Linuxu HDInsight
 
@@ -59,7 +58,7 @@ Tyto protokoly můžete zobrazit jako prostý text spuštěním jednoho z násle
 
 Zadejte &lt;applicationId >, &lt;uživatele kdo spuštění--aplikace >, &lt;containerId >, a &lt;adresa uzlu pracovního procesu > informace při spuštění těchto příkazů.
 
-## <a name="yarn-resourcemanager-ui"></a>Uživatelské rozhraní správce prostředků YARN
+## <a name="yarn-resourcemanager-ui"></a>YARN ResourceManager UI
 
 Uživatelské rozhraní správce prostředků YARN běží na hlavního uzlu clusteru. Je přístupný prostřednictvím webového uživatelského rozhraní Ambari. Chcete-li zobrazit protokoly YARN, postupujte následovně:
 

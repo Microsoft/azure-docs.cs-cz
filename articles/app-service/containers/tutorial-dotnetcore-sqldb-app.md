@@ -16,11 +16,11 @@ ms.date: 03/27/2019
 ms.author: cephalin
 ms.custom: seodec18
 ms.openlocfilehash: c90d0d2596eb6b8650e2d9809b23bb0e184d97c0
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59547823"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62117496"
 ---
 # <a name="build-an-aspnet-core-and-sql-database-app-in-azure-app-service-on-linux"></a>Vytvoření aplikace ASP.NET Core a SQL Database ve službě Azure App Service v Linuxu
 
@@ -129,7 +129,7 @@ Po vytvoření logického serveru databáze SQL se v rozhraní příkazového ř
 
 ### <a name="configure-a-server-firewall-rule"></a>Konfigurace pravidla brány firewall serveru
 
-Vytvoření [pravidla brány firewall na úrovni serveru Azure SQL Database](../../sql-database/sql-database-firewall-configure.md) pomocí příkazu [`az sql server firewall create`](/cli/azure/sql/server/firewall-rule?view=azure-cli-latest#az-sql-server-firewall-rule-create). Pokud je jako počáteční i koncová adresa IP nastavená hodnota 0.0.0.0, je brána firewall otevřená jen pro ostatní prostředky Azure. 
+Vytvoření [pravidla brány firewall na úrovni serveru služby Azure SQL Database](../../sql-database/sql-database-firewall-configure.md) pomocí příkazu [`az sql server firewall create`](/cli/azure/sql/server/firewall-rule?view=azure-cli-latest#az-sql-server-firewall-rule-create). Pokud je jako počáteční i koncová adresa IP nastavená hodnota 0.0.0.0, je brána firewall otevřená jen pro ostatní prostředky Azure. 
 
 ```azurecli-interactive
 az sql server firewall-rule create --resource-group myResourceGroup --server <server-name> --name AllowYourIp --start-ip-address 0.0.0.0 --end-ip-address 0.0.0.0

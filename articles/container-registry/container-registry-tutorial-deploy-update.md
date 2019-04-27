@@ -9,11 +9,11 @@ ms.date: 04/30/2018
 ms.author: danlep
 ms.custom: seodec18, mvc
 ms.openlocfilehash: d9faa89d33dde7da35ad4490b78b9a1d023274ae
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53256617"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61333379"
 ---
 # <a name="tutorial-push-an-updated-container-image-to-a-geo-replicated-container-registry-for-regional-web-app-deployments"></a>Kurz: Nahrání aktualizované image kontejneru do registru geograficky replikovaném kontejneru pro nasazení regionální webové aplikace
 
@@ -133,7 +133,7 @@ Jediným příkazem `docker push` jste automaticky aktualizovali webovou aplikac
 
 V tomto kurzu jste aktualizovali a nasadili novou verzi kontejneru webové aplikace do svého geograficky replikovaného registru. Webhooky ve službě Azure Container Registry zaslaly oznámení o aktualizaci službě Web App for Containers, která aktivovala načtení z nejbližší repliky registru.
 
-### <a name="acr-build-automated-image-build-and-patch"></a>Sestavení služby ACR: Automatizované bitové kopie sestavení a opravy
+### <a name="acr-build-automated-image-build-and-patch"></a>ACR Build: Automatizované bitové kopie sestavení a opravy
 
 Vedle geografické replikace je ACR Build další funkcí služby Azure Container Registry, která vám pomůže při optimalizaci kanálu nasazení kontejneru. Začněte přehledem ACR Build, abyste získali představu o možnostech této funkce:
 

@@ -17,11 +17,11 @@ ms.workload: na
 ms.date: 05/30/2017
 ms.author: iainfou
 ms.openlocfilehash: 11549e730e38c72e09ed2e94a72113c6e7e5bbb9
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52996274"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60901825"
 ---
 # <a name="deprecated-create-an-azure-container-service-kubernetes-linux-cluster"></a>(NEPOUŽÍVANÉ) Vytvoření clusteru Azure Container Service Kubernetes s Linuxem
 

@@ -8,11 +8,11 @@ ms.topic: sample
 ms.service: blueprints
 manager: carmonm
 ms.openlocfilehash: 78f608aedd53aa1071eaf88864f5a63f8f9e6072
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59791007"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60875987"
 ---
 # <a name="deploy-the-iso-27001-app-service-environmentsql-database-workload-blueprint-sample"></a>Nasazení ukázkové podrobného plánu úlohy ISO 27001 App Service prostředí/službou SQL Database
 
@@ -116,12 +116,12 @@ Následující tabulka obsahuje seznam podrobný plán artefaktů parametry:
 |Název artefaktu|Typ artefaktu|Název parametru|Popis|
 |-|-|-|-|
 |Skupina prostředků log Analytics|Skupina prostředků|Název|**Uzamčeno** – zřetězí **název organizace** s `-workload-log-rg` aby skupiny prostředků jedinečný.|
-|Skupina prostředků log Analytics|Skupina prostředků|Umístění|**Uzamčeno** -používá parametr podrobného plánu.|
+|Skupina prostředků log Analytics|Skupina prostředků|Location|**Uzamčeno** -používá parametr podrobného plánu.|
 |Šablona pro Log Analytics|Šablona Resource Manageru|Úroveň služeb|Nastaví úroveň pracovního prostoru Log Analytics. Výchozí hodnota je _PerNode_.|
 |Šablona pro Log Analytics|Šablona Resource Manageru|Doba uchovávání protokolu (dny)|Uchovávání dat ve dnech. Výchozí hodnota je _365_.|
-|Šablona pro Log Analytics|Šablona Resource Manageru|Umístění|Oblasti používané pro vytvoření pracovního prostoru Log Analytics. Výchozí hodnota je _USA – západ 2_.|
+|Šablona pro Log Analytics|Šablona Resource Manageru|Location|Oblasti používané pro vytvoření pracovního prostoru Log Analytics. Výchozí hodnota je _USA – západ 2_.|
 |Skupina síťových prostředků|Skupina prostředků|Název|**Uzamčeno** – zřetězí **název organizace** s `-workload-net-rg` aby skupiny prostředků jedinečný.|
-|Skupina síťových prostředků|Skupina prostředků|Umístění|**Uzamčeno** -používá parametr podrobného plánu.|
+|Skupina síťových prostředků|Skupina prostředků|Location|**Uzamčeno** -používá parametr podrobného plánu.|
 |Šablona skupiny zabezpečení sítě|Šablona Resource Manageru|Doba uchovávání protokolu (dny)|Uchovávání dat ve dnech. Výchozí hodnota je _365_.|
 |Šablona pro virtuální síť a tabulku směrování|Šablona Resource Manageru|Privátní IP adresa brány Azure Firewall|Nakonfiguruje privátní IP adresu [brány Azure](../../../../firewall/overview.md). Musí být součástí notaci CIDR definované v _ISO 27001: Sdílené služby_ artefaktů parametr **předponu adresy podsítě brány Firewall Azure**. Výchozí hodnota je _10.0.4.4_.|
 |Šablona pro virtuální síť a tabulku směrování|Šablona Resource Manageru|ID předplatného sdílených služeb|Hodnota slouží k povolení Partnerský vztah mezi sdílené služby a úlohy.|
@@ -129,13 +129,13 @@ Následující tabulka obsahuje seznam podrobný plán artefaktů parametry:
 |Šablona pro virtuální síť a tabulku směrování|Šablona Resource Manageru|Výchozí předpona adresy podsítě|Zápis CIDR pro výchozí podsíť virtuální sítě. Výchozí hodnota je _10.1.0.0/16_.|
 |Šablona pro virtuální síť a tabulku směrování|Šablona Resource Manageru|Přidá IP adresu|IP adresa z první virtuální počítač přidá. Tato hodnota se používá jako vlastní DNS virtuální sítě.|
 |Skupina prostředků trezoru klíčů|Skupina prostředků|Název|**Uzamčeno** – zřetězí **název organizace** s `-workload-kv-rg` aby skupiny prostředků jedinečný.|
-|Skupina prostředků trezoru klíčů|Skupina prostředků|Umístění|**Uzamčeno** -používá parametr podrobného plánu.|
+|Skupina prostředků trezoru klíčů|Skupina prostředků|Location|**Uzamčeno** -používá parametr podrobného plánu.|
 |Šablona pro Key Vault|Šablona Resource Manageru|ID objektu AAD|Identifikátor objektu AAD účtu, který vyžaduje přístup k instanci služby Key Vault. Žádné výchozí hodnoty a nemůže být ponecháno prázdné. K vyhledání této hodnoty na webu Azure Portal, vyhledejte a vyberte "Uživatelé" v části _služby_. Použití _název_ pole k filtrování pro název účtu a vyberte tento účet. Na _profilu uživatele_ stránky, vyberte ikonu "Kliknutím zkopírujete" vedle _ID objektu_.|
 |Šablona pro Key Vault|Šablona Resource Manageru|Doba uchovávání protokolu (dny)|Uchovávání dat ve dnech. Výchozí hodnota je _365_.|
 |Šablona pro Key Vault|Šablona Resource Manageru|Skladová jednotka (SKU) pro Key Vault|Určuje SKU služby Key Vault, který je vytvořen. Výchozí hodnota je _Premium_.|
 |Šablona pro Key Vault|Šablona Resource Manageru|Uživatelské jméno správce Azure SQL Serveru|Uživatelské jméno používané pro přístup k serveru SQL Azure. Musí odpovídat stejnou hodnotu vlastnosti v **šablony Azure SQL Database**. Výchozí hodnota je _správce sql_.|
 |Skupina prostředků Azure SQL Database|Skupina prostředků|Název|**Uzamčeno** – zřetězí **název organizace** s `-workload-azsql-rg` aby skupiny prostředků jedinečný.|
-|Skupina prostředků Azure SQL Database|Skupina prostředků|Umístění|**Uzamčeno** -používá parametr podrobného plánu.|
+|Skupina prostředků Azure SQL Database|Skupina prostředků|Location|**Uzamčeno** -používá parametr podrobného plánu.|
 |Šablona Microsoft Azure SQL Database|Šablona Resource Manageru|Uživatelské jméno správce Azure SQL Serveru|Uživatelské jméno pro Server Azure SQL. Musí odpovídat stejnou hodnotu vlastnosti v **šablony služby Key Vault**. Výchozí hodnota je _správce sql_.|
 |Šablona Microsoft Azure SQL Database|Šablona Resource Manageru|Správce hesel služby Azure SQL Server (ID prostředku trezoru klíč)|ID prostředku trezoru klíčů. Použití "/ subscription/{subscriptionId}/resourceGroups/{orgName}-workload-kv/providers/Microsoft.KeyVault/vaults/{orgName}-workload-kv" a nahraďte `{subscriptionId}` svým ID předplatného a `{orgName}` s  **Název organizace** podrobný plán parametru.|
 |Šablona Microsoft Azure SQL Database|Šablona Resource Manageru|Správce hesel služby Azure SQL Server (název pro Key Vault tajný klíč)|Uživatelské jméno SQL správce serveru. Musí odpovídat hodnotě ve **šablony služby Key Vault** vlastnost **uživatelské jméno správce serveru SQL Azure**.|
@@ -143,7 +143,7 @@ Následující tabulka obsahuje seznam podrobný plán artefaktů parametry:
 |Šablona Microsoft Azure SQL Database|Šablona Resource Manageru|ID objektu správce AAD|ID objektu AAD uživatele, který bude přiřadit jako správce služby Active Directory. Žádné výchozí hodnoty a nemůže být ponecháno prázdné. K vyhledání této hodnoty na webu Azure Portal, vyhledejte a vyberte "Uživatelé" v části _služby_. Použití _název_ pole k filtrování pro název účtu a vyberte tento účet. Na _profilu uživatele_ stránky, vyberte ikonu "Kliknutím zkopírujete" vedle _ID objektu_.|
 |Šablona Microsoft Azure SQL Database|Šablona Resource Manageru|Přihlašovací jméno správce AAD|V současné době nelze účty Microsoft (jako je live.com nebo outlook.com) nastavit jako správce. Jenom uživatelé a skupiny zabezpečení ve vaší organizaci je možné nastavit jako správce. Žádné výchozí hodnoty a nemůže být ponecháno prázdné. K vyhledání této hodnoty na webu Azure Portal, vyhledejte a vyberte "Uživatelé" v části _služby_. Použití _název_ pole k filtrování pro název účtu a vyberte tento účet. Na _profilu uživatele_ stránky, zkopírujte _uživatelské jméno_.|
 |Skupina prostředků App Service Environment|Skupina prostředků|Název|**Uzamčeno** – zřetězí **název organizace** s `-workload-ase-rg` aby skupiny prostředků jedinečný.|
-|Skupina prostředků App Service Environment|Skupina prostředků|Umístění|**Uzamčeno** -používá parametr podrobného plánu.|
+|Skupina prostředků App Service Environment|Skupina prostředků|Location|**Uzamčeno** -používá parametr podrobného plánu.|
 |Šablona funkce App Service Environment|Šablona Resource Manageru|Název domény|Název služby Active Directory vytvořené v rámci ukázky. Výchozí hodnota je _contoso.com_.|
 |Šablona funkce App Service Environment|Šablona Resource Manageru|Umístění služby ASE|Umístění app Service Environment. Výchozí hodnota je _USA – západ 2_.|
 |Šablona funkce App Service Environment|Šablona Resource Manageru|Doba uchovávání protokolů Application Gateway ve dnech|Uchovávání dat ve dnech. Výchozí hodnota je _365_.|

@@ -10,11 +10,11 @@ ms.author: tarcher
 ms.topic: tutorial
 ms.date: 10/19/2017
 ms.openlocfilehash: c6aa780b04c85b8156463011c2b90da2da4541f6
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57776270"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60885002"
 ---
 # <a name="create-a-vm-cluster-with-terraform-using-the-module-registry"></a>Vytvoření clusteru virtuálních počítačů pomocí Terraformu s využitím registru modulů
 

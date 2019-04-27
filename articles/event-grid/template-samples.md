@@ -11,11 +11,11 @@ ms.tgt_pltfrm: na
 ms.date: 01/04/2019
 ms.author: tomfitz
 ms.openlocfilehash: 788d23c7bddd90c1e12a118742c651eb9759529c
-ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/07/2019
-ms.locfileid: "54062957"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60822712"
 ---
 # <a name="azure-resource-manager-templates-for-event-grid"></a>Šablony Azure Resource Manageru pro Event Grid
 

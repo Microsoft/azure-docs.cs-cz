@@ -14,11 +14,11 @@ ms.workload: infrastructure-services
 ms.date: 11/28/2018
 ms.author: magoedte
 ms.openlocfilehash: 93f47529e3be44ff1db4e089bdcdca3eb1b4dea3
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56728339"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61363297"
 ---
 # <a name="windows-and-linux-performance-data-sources-in-azure-monitor"></a>Windows a Linuxem zdroje dat výkonu ve službě Azure Monitor
 Čítače výkonu ve Windows a Linuxu poskytují přehled o výkonu hardwarové součásti, operačních systémů a aplikací.  Azure Monitor může shromažďovat čítače výkonu v pravidelných intervalech pro analýzu v téměř reálném čase (NRT) kromě agregaci údajů o výkonu pro delší dlouhodobější analýzu a generování sestav.

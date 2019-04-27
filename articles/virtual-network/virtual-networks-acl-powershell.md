@@ -3,9 +3,7 @@ title: Spravovat seznamy řízení přístupu koncový bod Azure | Prostředí P
 description: Zjistěte, jak spravovat seznamy řízení přístupu pomocí Powershellu
 services: virtual-network
 documentationcenter: na
-author: jimdial
-manager: carmonm
-editor: tysonn
+author: genlin
 ms.assetid: c84e40af-f351-4572-b3f0-d572d46bafe7
 ms.service: virtual-network
 ms.devlang: na
@@ -13,13 +11,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/15/2016
-ms.author: jdial
+ms.author: genli
 ms.openlocfilehash: 1f6c14c15d4930902ced642bd02d1d1833e0b361
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
-ms.translationtype: MT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54154806"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61032533"
 ---
 # <a name="manage-endpoint-access-control-lists-using-powershell-in-the-classic-deployment-model"></a>Spravovat seznamy řízení přístupu koncový bod pomocí prostředí PowerShell v modelu nasazení classic
 Můžete vytvořit a spravovat síť seznamů řízení přístupu (ACL) pro koncové body pomocí prostředí Azure PowerShell nebo portálu pro správu. V tomto tématu najdete postupy pro seznam ACL běžné úkoly, které můžete absolvovat s použitím prostředí PowerShell. Seznam prostředí Azure PowerShell rutin najdete v části [rutiny pro správu Azure](https://go.microsoft.com/fwlink/?LinkId=317721). Další informace týkající se seznamů ACL, naleznete v tématu [co je seznamu pro řízení přístupu sítě (ACL)?](virtual-networks-acl.md). Pokud chcete spravovat vaše seznamy řízení přístupu pomocí portálu pro správu, najdete v článku [jak nastavit koncové body k virtuálnímu počítači](../virtual-machines/windows/classic/setup-endpoints.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json).

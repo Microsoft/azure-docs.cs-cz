@@ -10,11 +10,11 @@ ms.custom: mvc
 ms.date: 11/06/2018
 ms.author: dobett
 ms.openlocfilehash: c1f321f452b65016c11cb66d08ebab108509cc62
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51284884"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61448391"
 ---
 # <a name="deploy-a-custom-device-simulation-docker-image"></a>Nasadit vlastní image dockeru simulace zařízení
 
@@ -32,7 +32,7 @@ Kroky v tomto postupy-k-Průvodci ukazují, jak do:
 K dokončení kroků v této příručce s postupy, musíte:
 
 * Nasazený [simulace zařízení](quickstart-device-simulation-deploy.md) instance.
-* Docker. Stáhněte si [Docker Community Edition](https://www.docker.com/products/docker-engine#/download) pro vaši platformu.
+* Docker Stáhněte si [Docker Community Edition](https://www.docker.com/products/docker-engine#/download) pro vaši platformu.
 * A [účtu Docker Hubu](https://hub.docker.com/) kde můžete nahrát imagí Dockeru. Ve vašem účtu Docker Hubu vytvoření veřejného úložiště volána **simulace zařízení**.
 * A upravovat a testovat [řešení simulace zařízení](https://github.com/Azure/device-simulation-dotnet/archive/master.zip) na místním počítači. Například můžete upravit řešení tak, aby [serializovat telemetrie pomocí Protocol Buffers](iot-accelerators-device-simulation-protobuf.md).
 * Prostředí, které můžete spustit SSH. Pokud nainstalujete Git pro Windows, můžete použít **bash** prostředí, které je součástí instalace th. Můžete také použít vaše [Azure Cloud Shell](https://shell.azure.com/).

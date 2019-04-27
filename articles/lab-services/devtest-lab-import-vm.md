@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 06/11/2018
 ms.author: spelluru
 ms.openlocfilehash: cb4a3ec9be82957b4c0366ec232f1147c52d0251
-ms.sourcegitcommit: c884e2b3746d4d5f0c5c1090e51d2056456a1317
-ms.translationtype: HT
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60148768"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62125895"
 ---
 # <a name="import-vms-from-another-lab-in-azure-devtest-labs"></a>Import virtuálních počítačů z jiného testovacího prostředí ve službě Azure DevTest Labs
 Služba Azure DevTest Labs výrazně zlepšuje správu virtuálních počítačů (VM) pro vývoj a testování aktivity. Umožňuje přesunout virtuální počítač z jednoho prostředí do jiného jako tým, nebo změňte požadavky na infrastrukturu. Zde jsou uvedeny některé obvyklé scénáře, ve kterém budete muset udělat:

@@ -16,11 +16,11 @@ ms.date: 02/26/2019
 ms.author: kumud
 ms.custom: seodec18
 ms.openlocfilehash: db94f1d241223a9c54a6e3d516840dd17fd0c576
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60007504"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61322483"
 ---
 # <a name="tutorial-configure-port-forwarding-in-azure-load-balancer-using-the-portal"></a>Kurz: Konfigurace přesměrování portu ve službě Azure Load Balancer pomocí portálu
 
@@ -47,11 +47,11 @@ Nejprve vytvořte veřejný load balancer úrovně Standard, která můžou vyro
 1. V levém horním rohu obrazovky klikněte na **Vytvořit prostředek** > **Sítě** > **Load Balancer**.
 2. V **Základy** karty **vytvořit nástroj pro vyrovnávání zatížení** stránky, zadejte nebo vyberte následující informace, přijměte výchozí hodnoty pro zbývající nastavení a pak vyberte **revize + vytvořit**:
 
-    | Nastavení                 | Value                                              |
+    | Nastavení                 | Hodnota                                              |
     | ---                     | ---                                                |
     | Předplatné               | Vyberte své předplatné.    |    
     | Skupina prostředků         | Vyberte **vytvořit nový** a typ *MyResourceGroupLB* v textovém poli.|
-    | Name                   | *myLoadBalancer*                                   |
+    | Název                   | *myLoadBalancer*                                   |
     | Oblast         | Vyberte **Západní Evropa**.                                        |
     | Type          | Vyberte **veřejné**.                                        |
     | Skladová jednotka (SKU)           | Vyberte **standardní**.                          |

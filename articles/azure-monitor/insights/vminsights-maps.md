@@ -14,11 +14,11 @@ ms.workload: infrastructure-services
 ms.date: 10/25/2018
 ms.author: magoedte
 ms.openlocfilehash: 34e6ce7f3b38dfd583aa557d2f1d7340ea444da9
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: HT
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59798039"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62115770"
 ---
 # <a name="using-azure-monitor-for-vms-preview-map-to-understand-application-components"></a>Pro virtuální počítače (preview) mapy pochopit součásti aplikace pomocí Azure monitoru
 Zobrazení komponenty zjištěnou aplikaci virtuálních počítačích s Windows a Linuxem v Azure, prostředí můžete pozorovat dvě možnosti, jak pomocí Azure monitoru pro virtuální počítače z virtuálního počítače přímo nebo přes skupiny virtuálních počítačů ze služby Azure Monitor. 

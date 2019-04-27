@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 10/30/2016
 ms.author: crdun
 ms.openlocfilehash: 40a7552ffd0bfcab173d2e35c52313a94ec3d0bb
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52960324"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62114327"
 ---
 # <a name="add-push-notifications-to-your-apache-cordova-app"></a>Přidání nabízených oznámení do aplikace Apache Cordova
 
@@ -240,11 +240,11 @@ Aktuální požadované knihovny jsou uvedeny v [dokumentaci k instalaci nabíze
 
 Můžete teď nabízená oznámení tak, že aplikaci spustíte a vložení položky do tabulky TodoItem. Ze stejné zařízení nebo z druhé zařízení, můžete otestovat tak dlouho, dokud používáte stejnou back-endu. Otestujte aplikaci Cordova na platformě Android v jednom z následujících způsobů:
 
-* *Na fyzickém zařízení:* připojit zařízení s Androidem na vývojovém počítači pomocí kabelu USB.  Místo **emulátor Google Android**vyberte **zařízení**. Visual Studio nasadí aplikaci do zařízení a spuštění aplikace. Pak můžete pracovat s aplikací na zařízení.
+* *Na fyzickém zařízení:* Připojte zařízení s Androidem na vývojovém počítači pomocí kabelu USB.  Místo **emulátor Google Android**vyberte **zařízení**. Visual Studio nasadí aplikaci do zařízení a spuštění aplikace. Pak můžete pracovat s aplikací na zařízení.
 
   Sdílení obrazovky aplikací, jako [Mobizen] [ 20] vám může pomoci při vývoji aplikací pro Android. Mobizen projekty Android obrazovky do webového prohlížeče ve vašem počítači.
 
-* *V emulátoru Androidu:* existují další kroky konfigurace, které jsou požadovány, pokud používáte emulátor.
+* *V emulátoru Androidu:* Existují další kroky konfigurace, které jsou požadovány, pokud používáte emulátor.
 
     Ujistěte se, že nasazujete do virtuálního zařízení, která má rozhraní Google API nastavit jako cíl, jak je znázorněno v nástroji Android Virtual Device (AVD) manager.
 
@@ -384,7 +384,7 @@ Ověřte, že je přijato oznámení, když je položka přidána.
 
 Další informace o použití následujících sad SDK:
 
-* [Sada SDK Apache Cordova][15]
+* [Apache Cordova SDK][15]
 * [ASP.NET Server SDK][1]
 * [Node.js Server SDK][16]
 

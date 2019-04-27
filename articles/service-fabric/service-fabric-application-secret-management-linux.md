@@ -15,11 +15,11 @@ ms.workload: NA
 ms.date: 01/04/2019
 ms.author: shsha
 ms.openlocfilehash: 9589d6ea69a2293d592a9e63f2b726f1a620bb9e
-ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/07/2019
-ms.locfileid: "54068974"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62126983"
 ---
 # <a name="set-up-an-encryption-certificate-and-encrypt-secrets-on-linux-clusters"></a>Nastavit šifrovací certifikát a šifrování tajných kódů na clusterech s Linuxem
 Tento článek popisuje, jak nastavit šifrovací certifikát a jeho použití k šifrování tajných kódů na clusterech s Linuxem. V případě clusterů Windows najdete v článku [nastavit až šifrovací certifikát a šifrování tajných kódů v clusterech Windows][secret-management-windows-specific-link].

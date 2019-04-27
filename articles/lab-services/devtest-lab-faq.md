@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/19/2019
 ms.author: spelluru
-ms.openlocfilehash: c26418d36271b4d2d39a43eda7e8b23585d69f4a
-ms.sourcegitcommit: c884e2b3746d4d5f0c5c1090e51d2056456a1317
-ms.translationtype: HT
+ms.openlocfilehash: 91c598bde0912cffb8aa1dd7ba022c86a9084faa
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60149423"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62127391"
 ---
 # <a name="azure-devtest-labs-faq"></a>Nejčastější dotazy k Azure DevTest Labs
 Získejte odpovědi na některé nejběžnější otázky o Azure DevTest Labs.
@@ -350,7 +350,7 @@ Pro další kontinuální integrace (CI) / průběžné doručování (CD) sady 
 ### <a name="when-should-i-create-a-new-virtual-network-for-my-devtest-labs-environment-vs-using-an-existing-virtual-network"></a>Kdy je vhodné vytvořit novou virtuální síť pro Moje prostředí DevTest Labs oproti použití existující virtuální sítě?
 Pokud vaše virtuální počítače potřebují komunikovat s stávající infrastruktury, zvažte použití existující virtuální sítě v prostředí DevTest Labs. Pokud používáte ExpressRoute, můžete chtít minimalizovat množství virtuálních sítí / podsítí tak, aby váš adresní prostor IP adres, který získá přiřazen pro použití v předplatných nejsou fragment. 
 
-Zvažte použití vzoru partnerského vztahu virtuálních sítí tady ([centra s paprsky modelu](/architecture/reference-architectures/hybrid-networking/hub-spoke)) příliš. Tento přístup umožňuje komunikaci virtuálních sítí/podsítí napříč předplatnými. Každé prostředí DevTest Labs, jinak může mít svůj vlastní virtuální sítě. 
+Zvažte použití vzoru partnerského vztahu virtuálních sítí tady ([centra s paprsky modelu](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke)) příliš. Tento přístup umožňuje komunikaci virtuálních sítí/podsítí napříč předplatnými. Každé prostředí DevTest Labs, jinak může mít svůj vlastní virtuální sítě. 
 
 Existují [omezení](../azure-subscription-service-limits.md) na počet virtuálních sítí na jedno předplatné. Výchozí doba je 50, i když tento limit lze zvýšit na 100.
 

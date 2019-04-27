@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
 ms.openlocfilehash: 6f0d2d59ed50c743adb19027c404bfa83a1886f1
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58484861"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61485581"
 ---
 V závislosti na prostředí a možnosti můžete vytvořit skript všechny clusteru infrastrukturu, včetně virtuální sítě Azure, účty úložiště, cloudové služby, řadič domény, vzdálené nebo místní databáze SQL, hlavní uzel a další uzly clusteru. Skript můžete také použít už existující infrastrukturu Azure a vytvořit pouze uzly clusteru prostředí HPC.
 

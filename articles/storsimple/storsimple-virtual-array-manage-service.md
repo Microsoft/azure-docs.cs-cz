@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/29/2016
 ms.author: alkohli
-ms.openlocfilehash: 1881a0625b107ae1a90e5b772f5296a4d728973d
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 9f6e5b606caa661429a3c4d4a53e2021d57730aa
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38688149"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62116943"
 ---
 # <a name="deploy-the-storsimple-device-manager-service-for-storsimple-virtual-array"></a>Nasazení služby Správce zařízení StorSimple pro StorSimple Virtual Array
 ## <a name="overview"></a>Přehled
@@ -67,7 +67,7 @@ Proveďte následující kroky pro odstranění služby.
 
 #### <a name="to-delete-a-service"></a>Chcete-li odstranit službu
 
-1. Přejděte na **všechny prostředky**. Hledání služby Správce zařízení StorSimple. Vyberte službu, kterou chcete odstranit.
+1. Přejděte na **Všechny prostředky**. Hledání služby Správce zařízení StorSimple. Vyberte službu, kterou chcete odstranit.
    
     ![Vyberte službu odstranit](./media/storsimple-virtual-array-manage-service/deleteservice2.png)
 2. Přejdete na řídicí panel služby, abyste zajistili zde nejsou žádné zařízení připojená ke službě. Pokud nejsou žádná zařízení registrovaná ve službě, zobrazí se také zprávě o tom. Klikněte na **Odstranit**.

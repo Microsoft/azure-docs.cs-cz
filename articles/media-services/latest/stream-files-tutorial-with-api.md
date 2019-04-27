@@ -10,14 +10,14 @@ ms.service: media-services
 ms.workload: ''
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 02/18/2019
+ms.date: 03/22/2019
 ms.author: juliako
-ms.openlocfilehash: 82d8a8085ca285c95a550678cdc534e586a4faa7
-ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
+ms.openlocfilehash: 53f69b6b8eb6cbbb8082ea0777af9dbceb7bdba1
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56415960"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62125402"
 ---
 # <a name="tutorial-upload-encode-and-stream-videos-using-net"></a>Kurz: Nahrávání, kódování a streamování videí pomocí .NET
 
@@ -96,7 +96,7 @@ Výstupní [prostředek](https://docs.microsoft.com/rest/api/media/assets) ulož
 
 ### <a name="create-a-transform-and-a-job-that-encodes-the-uploaded-file"></a>Vytvoření transformace a úlohy, která nahraný soubor zakóduje
 
-Když kódujete nebo zpracováváte obsah v Media Services, kódování se obvykle nastaví jako předpis. Potom stačí odeslat **Úlohu**, která tento předpis použije pro video. Odešlete nové úlohy pro každé nové video, můžete se má použít tento předpisu pro všechna videa v knihovně. V Media Services se pro předpis používá označení **transformace**. Další informace najdete v tématu [transformuje a úlohy](transform-concept.md). Ukázka popsaná v tomto kurzu definuje předpis, který zakóduje video tak, aby se dalo streamovat na nejrůznějších zařízeních s iOSem a Androidem. 
+Když kódujete nebo zpracováváte obsah v Media Services, kódování se obvykle nastaví jako předpis. Potom stačí odeslat **Úlohu**, která tento předpis použije pro video. Odešlete nové úlohy pro každé nové video, můžete se má použít tento předpisu pro všechna videa v knihovně. V Media Services se pro předpis používá označení **transformace**. Další informace najdete v tématu [Transformace a úlohy](transform-concept.md). Ukázka popsaná v tomto kurzu definuje předpis, který zakóduje video tak, aby se dalo streamovat na nejrůznějších zařízeních s iOSem a Androidem. 
 
 #### <a name="transform"></a>Transformace
 
@@ -197,6 +197,10 @@ az group delete --name amsResourceGroup
 ## <a name="multithreading"></a>Multithreading
 
 Sady SDK služby Azure Media Services v3 nejsou bezpečné pro přístup z více vláken. Při vývoji vícevláknové aplikace byste měli pro každé vlákno vygenerovat a používat samostatný objekt AzureMediaServicesClient.
+
+## <a name="provide-feedback"></a>Poskytnutí zpětné vazby
+
+Podívejte se [komunita Azure Media Services](media-services-community.md) článek a zobrazit různé způsoby můžete klást otázky, poskytnout zpětnou vazbu a aktualizace o Media Services.
 
 ## <a name="next-steps"></a>Další postup
 

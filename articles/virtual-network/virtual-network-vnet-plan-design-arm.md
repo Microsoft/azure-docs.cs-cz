@@ -3,8 +3,8 @@ title: Plánování virtuální sítě Azure | Dokumentace Microsoftu
 description: Zjistěte, jak naplánovat pro virtuální sítě na základě izolace, připojení a požadavků na umístění.
 services: virtual-network
 documentationcenter: na
-author: jimdial
-manager: jeconnoc
+author: KumudD
+manager: twooley
 editor: ''
 ms.assetid: 3a4a9aea-7608-4d2e-bb3c-40de2e537200
 ms.service: virtual-network
@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/16/2018
-ms.author: jdial
+ms.author: kumud
 ms.openlocfilehash: acd7a88acb31b9d3bd3ba714387561e91b3524a6
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
-ms.translationtype: MT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56339512"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61034735"
 ---
 # <a name="plan-virtual-networks"></a>Plánování virtuální sítě
 
@@ -37,7 +37,7 @@ Všechny prostředky Azure se vytvoří v oblasti Azure a předplatné. Prostře
 - Máte požadavky na rezidenci, suverenitu, dodržování předpisů nebo odolnosti dat? Pokud ano, je výběr oblasti, která odpovídá požadavkům na kritické. Další informace najdete v tématu [zeměpisných oblastech Azure](https://azure.microsoft.com/global-infrastructure/geographies/).
 - Vyžadujete odolnost napříč zónami dostupnosti Azure v rámci stejné oblasti Azure pro prostředky, které můžete nasadit? Prostředky, jako jsou virtuální počítače (VM) můžete nasadit do různých zón dostupnosti ve stejné virtuální síti. Ne všechny oblasti Azure podporují zóny dostupnosti ale. Další informace o zónách dostupnosti a oblasti, které je podporují, najdete v článku [zóny dostupnosti](../availability-zones/az-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 
-## <a name="subscriptions"></a>Předplatná
+## <a name="subscriptions"></a>Subscriptions
 
 Můžete nasadit tolik virtuálních sítí podle potřeby v každém předplatném, až [limit](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#networking-limits). Některé organizace mají třeba různých předplatných pro různá oddělení. Další informace o kolem předplatná, najdete v článku [zásad správného řízení předplatné](/azure/architecture/cloud-adoption-guide/subscription-governance#define-your-hierarchy).
 

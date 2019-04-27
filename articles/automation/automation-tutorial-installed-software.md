@@ -12,11 +12,11 @@ ms.subservice: change-inventory-management
 ms.custom: mvc
 manager: carmonm
 ms.openlocfilehash: 2cce925f4b3e1acc6c93019615b81983a5c95f6f
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56815888"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61304875"
 ---
 # <a name="discover-what-software-is-installed-on-your-azure-and-non-azure-machines"></a>Zjišťování, jaký software je nainstalovaný na počítačích Azure a jiných počítačích než Azure
 

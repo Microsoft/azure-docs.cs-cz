@@ -2,7 +2,6 @@
 title: Připojení Excelu k systému Apache Hadoop pomocí ovladače ODBC Hive – Azure HDInsight
 description: Zjistěte, jak nastavit a používat pro aplikaci Excel ovladače Microsoft Hive ODBC k dotazování dat v clusterech HDInsight z Microsoft Excelu.
 keywords: excel hadoop, hive aplikace excel, hive odbc
-services: hdinsight
 author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
@@ -10,12 +9,12 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 01/29/2019
 ms.author: hrasheed
-ms.openlocfilehash: 3a47b18051036e925e54b9507bf2cb4e40aad844
-ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
+ms.openlocfilehash: 37fed781629351475b384ac843a588bdaf7b5b66
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58202518"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62121839"
 ---
 # <a name="connect-excel-to-apache-hadoop-in-azure-hdinsight-with-the-microsoft-hive-odbc-driver"></a>Připojení Excelu k systému Apache Hadoop v Azure HDInsight pomocí ovladače Microsoft Hive ODBC
 

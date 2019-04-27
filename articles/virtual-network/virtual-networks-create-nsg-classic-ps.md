@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/02/2016
 ms.author: genli
-ms.openlocfilehash: ecb977660ed99a3cea2a71a867f50822b23e568c
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: d685f395aa25580c009fe3be660a8afc42dc79d9
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38634192"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62125759"
 ---
 # <a name="create-a-network-security-group-classic-using-powershell"></a>Vytvořte skupinu zabezpečení sítě (classic) pomocí Powershellu
 [!INCLUDE [virtual-networks-create-nsg-selectors-classic-include](../../includes/virtual-networks-create-nsg-selectors-classic-include.md)]

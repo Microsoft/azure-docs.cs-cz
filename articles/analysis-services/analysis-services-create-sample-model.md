@@ -9,11 +9,11 @@ ms.date: 03/13/2019
 ms.author: owend
 ms.reviewer: minewiskan
 ms.openlocfilehash: 32c46f0a488d775275b3a367aa2913f034569041
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57903925"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61026230"
 ---
 # <a name="tutorial-add-a-sample-model-from-the-portal"></a>Kurz: Přidání ukázkového modelu z portálu
 
@@ -25,7 +25,7 @@ V tomto kurzu přidáte na server ukázkovou tabulkovou modelovou databázi Adve
 
 Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
-## <a name="before-you-begin"></a>Před zahájením
+## <a name="before-you-begin"></a>Než začnete
 
 Pro absolvování tohoto kurzu potřebujete:
 

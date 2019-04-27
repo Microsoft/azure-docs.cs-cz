@@ -9,11 +9,11 @@ ms.date: 12/19/2018
 ms.author: iainfou
 ms.custom: mvc
 ms.openlocfilehash: 1ba320a523d21beebe089084f40efff4b36dc4af
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55753567"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61032311"
 ---
 # <a name="tutorial-deploy-and-use-azure-container-registry"></a>Kurz: Nasazení a použití služby Azure Container Registry
 
@@ -27,7 +27,7 @@ Azure Container Registry (ACR) je privátní registr pro Image kontejneru. Priv�
 
 V dalších kurzech se tato instance služby ACR je integrovaná s clusterem Kubernetes ve službě AKS a nasazení aplikace z image.
 
-## <a name="before-you-begin"></a>Před zahájením
+## <a name="before-you-begin"></a>Než začnete
 
 V [předchozím kurzu][aks-tutorial-prepare-app] byla vytvořena image kontejneru pro jednoduchou hlasovací aplikaci v Azure. Pokud jste image hlasovací aplikace v Azure ještě nevytvořili, vraťte se ke [kurzu 1 – Vytváření imagí kontejneru][aks-tutorial-prepare-app].
 

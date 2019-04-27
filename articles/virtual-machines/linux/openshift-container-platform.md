@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 04/18/2019
 ms.author: haroldw
-ms.openlocfilehash: 39eea84cc9301263381533e03e8f783e0a73ea19
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
-ms.translationtype: HT
+ms.openlocfilehash: 296bc42313ef80425004d3c9b43c6792cbaf97f4
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "59999956"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62127000"
 ---
 # <a name="deploy-openshift-container-platform-in-azure"></a>Nasazení OpenShift Container Platform v Azure
 
@@ -251,7 +251,7 @@ Dvě různé verze může mít různé parametry, proto ověřte potřebné para
 
 | Vlastnost | Popis | Platné možnosti | Výchozí hodnota |
 |----------|-------------|---------------|---------------|
-| `_artifactsLocation`  | Adresa URL pro artefakty (json, skripty atd.) |  |  https://raw.githubusercontent.com/Microsoft/openshift-container-platform/master  |
+| `_artifactsLocation`  | Adresa URL pro artefakty (json, skripty atd.) |  |  https:\//raw.githubusercontent.com/Microsoft/openshift-container-platform/master  |
 | `location` | Oblasti Azure do nasazení prostředků do |  |  |
 | `masterVmSize` | Velikost hlavního virtuálního počítače. Vyberte jednu z povolených velikostí virtuálních počítačů, které jsou uvedené v souboru azuredeploy.json |  | Standard_E2s_v3 |
 | `infraVmSize` | Velikost infrastruktura virtuálního počítače. Vyberte jednu z povolených velikostí virtuálních počítačů, které jsou uvedené v souboru azuredeploy.json |  | Standard_D4s_v3 |

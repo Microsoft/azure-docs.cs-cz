@@ -11,13 +11,13 @@ ms.topic: overview
 ms.date: 04/12/2019
 ms.author: erhopf
 ms.openlocfilehash: 29fcbd058651c428b488f5ce1c767105cb7921a6
-ms.sourcegitcommit: 48a41b4b0bb89a8579fc35aa805cea22e2b9922c
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/15/2019
-ms.locfileid: "59580404"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61461659"
 ---
-# <a name="swagger-documentation"></a>Dokumentace ke službě swagger
+# <a name="swagger-documentation"></a>Dokumentace ke Swaggeru
 
 Hlasové služby nabízejí specifikace Swagger pro interakci s několika rozhraní REST API používá k umožňuje importovat data, vytvářet modely, testování přesnosti modelu, vytvořit vlastní koncové body, fronty batch přepisů a spravovat předplatná. Většinu operací, které jsou k dispozici prostřednictvím portálu pro Custom Speech je možné provést prostřednictvím kódu programu pomocí těchto rozhraní API. 
 

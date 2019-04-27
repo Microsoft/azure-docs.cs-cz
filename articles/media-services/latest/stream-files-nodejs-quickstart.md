@@ -14,13 +14,13 @@ ms.custom: mvc
 ms.date: 03/26/2019
 ms.author: juliako
 ms.openlocfilehash: 22b7f2380b509daa4cb9931d6fc57c1297628e3d
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58522849"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61233150"
 ---
-# <a name="quickstart-stream-video-files---nodejs"></a>Rychlý start: Stream video soubory – Node.js
+# <a name="quickstart-stream-video-files---nodejs"></a>Rychlý start: Streamování videosouborů – Node.js
 
 Toto rychlé zprovoznění předvádí, jak je jednoduché kódovat a začít se streamováním videí pomocí služby Azure Media Services v široké škále prohlížečů a zařízení. Vstupní obsah se dá specifikovat jako HTTPS, URL, SAS nebo cesta k souboru v úložišti objektů Blob Azure.
 Ukázka v tomto tématu kóduje obsah, který zpřístupníte prostřednictvím adresy URL protokolu HTTPS. Upozorňujeme, že AMS v3 v současné době nepodporuje blokového kódování přenosu prostřednictvím adresy URL HTTPS.

@@ -12,12 +12,12 @@ ms.workload: azure-vs
 ms.topic: conceptual
 ms.date: 11/14/2017
 ms.author: ghogen
-ms.openlocfilehash: b2b707585df4a7ec26f689b4213be74bdaab680d
-ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
+ms.openlocfilehash: 388c4d5f28e87f5cfe26336771d30fa44c6f9ef0
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2018
-ms.locfileid: "42058377"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62123004"
 ---
 # <a name="get-started-with-azure-blob-storage-and-visual-studio-connected-services-aspnet-core"></a>Začínáme s Azure Blob storage a Visual Studio připojené služby (ASP.NET Core)
 
@@ -27,7 +27,7 @@ Tento článek popisuje, jak začít používat Azure Blob storage v sadě Visua
 
 Azure Blob storage je služba pro ukládání velkých objemů nestrukturovaných dat, který je přístupný z kdekoli na světě prostřednictvím protokolu HTTP nebo HTTPS. Jeden objekt blob může být libovolné velikosti. Objekty BLOB může být třeba obrázky, zvukových souborů a videosouborů, nezpracovaná data a soubory dokumentů. Tento článek popisuje, jak začít pracovat s úložišti objektů blob po vytvoření účtu služby Azure storage pomocí sady Visual Studio **připojené služby** v projektu aplikace ASP.NET Core.
 
-Stejně jako živé soubory ve složkách, živé úložiště objektů BLOB v kontejnerech. Po vytvoření objektu blob, vytvořte jeden nebo více kontejnerů v tohoto objektu blob. Například v objektu blob, nazývá "Výstřižků", můžete vytvořit kontejnery nazývá "Image" k ukládání obrázků a druhý s názvem "zvuku" pro uložení zvukové soubory. Po vytvoření kontejnerů můžete nahrát jednotlivých souborů na ně. Zobrazit [rychlý start: nahrávání, stahování a výpis objektů BLOB pomocí .NET](../storage/blobs/storage-quickstart-blobs-dotnet.md) Další informace o programově manipulace s objekty BLOB.
+Stejně jako živé soubory ve složkách, živé úložiště objektů BLOB v kontejnerech. Po vytvoření objektu blob, vytvořte jeden nebo více kontejnerů v tohoto objektu blob. Například v objektu blob, nazývá "Výstřižků", můžete vytvořit kontejnery nazývá "Image" k ukládání obrázků a druhý s názvem "zvuku" pro uložení zvukové soubory. Po vytvoření kontejnerů můžete nahrát jednotlivých souborů na ně. Zobrazit [rychlý start: Nahrávání, stahování a výpis objektů BLOB pomocí .NET](../storage/blobs/storage-quickstart-blobs-dotnet.md) Další informace o programově manipulace s objekty BLOB.
 
 Některé z rozhraní API služby Azure Storage jsou asynchronní a kódu v tomto článku se předpokládá, že se používají asynchronní metody. Zobrazit [asynchronní programování](https://docs.microsoft.com/dotnet/csharp/async) Další informace.
 
@@ -140,7 +140,7 @@ do
 } while (token != null);
 ```
 
-Zobrazit [rychlý start: nahrávání, stahování a výpis objektů BLOB pomocí .NET](../storage/blobs/storage-quickstart-blobs-dotnet.md#list-the-blobs-in-a-container) pro další možnosti, jak zobrazit obsah kontejneru objektů blob.
+Zobrazit [rychlý start: Nahrávání, stahování a výpis objektů BLOB pomocí .NET](../storage/blobs/storage-quickstart-blobs-dotnet.md#list-the-blobs-in-a-container) pro další možnosti, jak zobrazit obsah kontejneru objektů blob.
 
 ## <a name="download-a-blob"></a>Stažení objektu blob
 
@@ -157,7 +157,7 @@ using (var fileStream = System.IO.File.OpenWrite(@"path\myfile"))
 }
 ```
 
-Zobrazit [rychlý start: nahrávání, stahování a výpis objektů BLOB pomocí .NET](../storage/blobs/storage-quickstart-blobs-dotnet.md#download-blobs) další možnosti pro ukládání objektů BLOB jako soubory.
+Zobrazit [rychlý start: Nahrávání, stahování a výpis objektů BLOB pomocí .NET](../storage/blobs/storage-quickstart-blobs-dotnet.md#download-blobs) další možnosti pro ukládání objektů BLOB jako soubory.
 
 ## <a name="delete-a-blob"></a>Odstranění objektu blob
 

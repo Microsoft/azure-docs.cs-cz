@@ -17,11 +17,11 @@ ms.date: 02/27/2017
 ms.author: cynthn
 ms.custom: mvc
 ms.openlocfilehash: 8c599aa1060b9f5f05518416d08b197d018aa3db
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55692835"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60863857"
 ---
 # <a name="create-a-highly-available-vm"></a>Vytvoření vysoce dostupného virtuálního počítače
 

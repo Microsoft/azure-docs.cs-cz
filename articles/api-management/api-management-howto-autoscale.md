@@ -9,14 +9,15 @@ editor: ''
 ms.service: api-management
 ms.workload: integration
 ms.topic: article
-ms.date: 06/20/2018
-ms.author: apimpm
+origin.date: 06/20/2018
+ms.date: 12/31/2018
+ms.author: v-yiso
 ms.openlocfilehash: a01e50debf11daf2f1163a56726f5574f7e3e379
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52444798"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62123463"
 ---
 # <a name="automatically-scale-an-azure-api-management-instance"></a>Automatické škálování instance služby Azure API Management  
 
@@ -79,7 +80,7 @@ Podle následujících pokynů ke konfiguraci automatického škálování pro s
     | Název metriky           | Kapacita          | Kapacitní metriky je metriku Azure API Management odráží využití prostředků, instance Azure API Management.                                                                                                                                                            |
     | Statistika agregačního intervalu  | Průměr           |                                                                                                                                                                                                                                                                                 |
     | Operátor              | Větší než      |                                                                                                                                                                                                                                                                                 |
-    | Prahová hodnota             | 80 %               | Prahové hodnoty pro metriku průměrné kapacity.                                                                                                                                                                                                                                 |
+    | Prahová hodnota             | 80 %               | Prahové hodnoty pro metriku průměrné kapacity.                                                                                                                                                                                                                                 |
     | Doba trvání (v minutách) | 30                | Časový interval pro výpočet průměru metriku kapacity přes je specifický pro vzorce používání. Čím delší je doba, tím hladší bude reakce – krátkodobých špiček bude mít menší dopad na rozhodnutí horizontální navýšení kapacity. Ale také způsobí zpoždění aktivační událost horizontální navýšení kapacity. |
     | *Akce*              |                   |                                                                                                                                                                                                                                                                                 |
     | Operace             | Zvýšit počet o |                                                                                                                                                                                                                                                                                 |
@@ -106,7 +107,7 @@ Podle následujících pokynů ke konfiguraci automatického škálování pro s
     | Název metriky           | Kapacita          | Stejné metriky, jako jste použili pro horizontální navýšení kapacity pravidlo.                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
     | Statistika agregačního intervalu  | Průměr           |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
     | Operátor              | Méně než         |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
-    | Prahová hodnota             | 35 %               | Podobně pro horizontální navýšení kapacity pravidla, tato hodnota silně závisí na vzory používání služby Azure API Management. |
+    | Prahová hodnota             | 35%               | Podobně pro horizontální navýšení kapacity pravidla, tato hodnota silně závisí na vzory používání služby Azure API Management. |
     | Doba trvání (v minutách) | 30                | Stejnou hodnotu jako jste použili pro horizontální navýšení kapacity pravidlo.                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
     | *Akce*              |                   |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
     | Operace             | Snížit počet o | Než jaký se použil pro horizontální navýšení kapacity pravidlo.                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
@@ -128,4 +129,4 @@ Podle následujících pokynů ke konfiguraci automatického škálování pro s
 
 ## <a name="next-steps"></a>Další postup
 
-+ [Jak nasadit instanci služby Azure API Management do několika oblastí Azure](api-management-howto-deploy-multi-region.md)
++ [Postup při nasazení instance služby Azure API Management do několika oblastí Azure](api-management-howto-deploy-multi-region.md)

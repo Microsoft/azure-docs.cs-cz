@@ -11,11 +11,11 @@ ms.topic: quickstart
 ms.date: 02/06/2019
 ms.author: aahi
 ms.openlocfilehash: b48d9a9d8c28173de90ed3d27bc67a383563550d
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57551180"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60916837"
 ---
 # <a name="quickstart-search-for-images-using-the-bing-image-search-rest-api-and-c"></a>Rychlý start: Vyhledávání obrázků s využitím REST API pro vyhledávání Bingu obrázků aC#
 

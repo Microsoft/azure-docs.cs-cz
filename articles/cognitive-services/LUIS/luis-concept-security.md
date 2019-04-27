@@ -12,11 +12,11 @@ ms.topic: conceptual
 ms.date: 12/18/2018
 ms.author: diberry
 ms.openlocfilehash: 5abc2026362e19b406b34a4321e766c3229cc0b4
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58894179"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60813632"
 ---
 # <a name="authoring-and-endpoint-user-access"></a>Vytváření a koncového bodu přístupu uživatelů
 Vytváření přístup je k dispozici pro vlastníky a spolupracovníky. Privátní aplikaci je k dispozici pro vlastníky a spolupracovníci přístup koncového bodu. Veřejné aplikace koncový bod přístup je k dispozici pro všechny uživatele, který má svůj vlastní účet služby LUIS a má ID veřejné aplikace. 

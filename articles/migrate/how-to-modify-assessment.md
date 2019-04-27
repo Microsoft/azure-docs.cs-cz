@@ -7,11 +7,11 @@ ms.topic: article
 ms.date: 01/10/2019
 ms.author: raynew
 ms.openlocfilehash: 8419d7e7a91e4cbfd0eebfe00d35bf498cf5998c
-ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54200305"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62129819"
 ---
 # <a name="customize-an-assessment"></a>Přizpůsobení posouzení
 
@@ -45,19 +45,19 @@ ms.locfileid: "54200305"
 
 ### <a name="what-is-the-difference-between-as-on-premises-sizing-and-performance-based-sizing"></a>Jaký je rozdíl mezi jako on-premises velikost a velikost na základě výkonu?
 
-Pokud určíte kritérium určení velikosti bude jako typu místní – místní změny velikosti, Azure Migrate nebere v úvahu data o výkonu virtuálních počítačů a velikosti virtuálních počítačů založených na místní konfiguraci. Pokud kritérium určení velikosti na základě výkonu, velikost se provádí na základě dat využití. Například, pokud existuje místní virtuální počítač se 4 jádry a 8 GB paměti s 50 % využití CPU a využití paměti 50 %. Pokud je kritérium určení velikosti jako místní změny velikosti skladovou Položku virtuálního počítače Azure se 4 jádry a 8 GB paměti se doporučuje, ale pokud je kritérium určení velikosti na základě výkonu jako skladovou Položku virtuálního počítače 2 jádra a 4 GB by se nedoporučuje používat jako procentuální hodnota využití se považuje za během Doporučujeme velikost.
+Pokud určíte kritérium určení velikosti bude jako typu místní – místní změny velikosti, Azure Migrate nebere v úvahu data o výkonu virtuálních počítačů a velikosti virtuálních počítačů založených na místní konfiguraci. Pokud kritérium určení velikosti na základě výkonu, velikost se provádí na základě dat využití. Příkladem je místní virtuální počítač se 4 jádry a 8 GB paměti s 50% využitím procesoru a 50% využitím paměti. Pokud je kritériem určení velikosti místní nastavení velikosti, doporučí se skladová položka virtuálního počítače Azure se 4 jádry a 8 GB paměti. Pokud je však kritériem určení velikosti výkon, doporučí se skladová položka virtuálního počítače se 2 jádry a 4 GB paměti, protože se v doporučení velikosti zohledňuje procentní využití.
 
-Podobně disků, velikosti disku závisí na dvě vlastnosti posouzení – Změna velikosti kritéria a úložiště typu. Pokud je kritérium určení velikosti na základě výkonu a úložiště typu je automatické, hodnoty IOPS a propustnost disku jsou považovány za identifikaci cílový typ disku (Standard nebo Premium). Pokud je kritérium určení velikosti na základě výkonu a premium je úložiště typu, se doporučuje disk úrovně premium, disk úrovně premium, které vybrali SKU v Azure na základě velikosti na místním disku. Stejnou logiku slouží k určení velikosti disku, pokud je kritérium určení velikosti jako v místním nastavení velikosti a typu úložiště je standard nebo premium.
+Podobně disků, velikosti disku závisí na dvě vlastnosti posouzení – Změna velikosti kritéria a úložiště typu. Pokud je kritériem určení velikosti výkon a typ úložiště se určuje automaticky, při určování typu cílového disku (Standard nebo Premium) se zohlední hodnoty IOPS a propustnosti disku. Pokud je kritériem určení velikosti výkon a typ úložiště je Premium, doporučí se disk Premium a v Azure se vybere skladová položka disku Premium na základě velikosti místního disku. Stejná logika se používá při určování velikosti disku, když je kritériem určení velikosti místní nastavení velikosti a typ úložiště je Standard nebo Premium.
 
 ### <a name="what-impact-does-performance-history-and-percentile-utilization-have-on-the-size-recommendations"></a>Doporučení velikosti jaký vliv má percentilu a historii využití výkonu?
 
-Tyto vlastnosti platí jenom pro určení velikosti na základě výkonu. Azure Migrate shromažďuje historie výkonu místních počítačů a použije ho k doporučujeme typ velikosti a disku virtuálního počítače v Azure.
+Tyto vlastnosti se zohledňují pouze při určování velikosti na základě výkonu. Azure Migrate shromažďuje historii výkonu místních počítačů a používá ji k doporučení typu disku a velikosti virtuálního počítače v Azure.
 
-- Zařízení kolektoru průběžně profily v místním prostředí pro shromažďování dat o využití v reálném čase každých 20 sekund.
-- Zařízení shrnuje ukázky 20 sekund a vytvoří jeden datový bod pro každých 15 minut. Pokud chcete vytvořit jeden datový bod, zařízení vybere nejvyšší hodnota ze všech ukázek 20 sekund a odesílá je do Azure.
-- Při vytváření posouzení v Azure, na základě dobu trvání výkonu a hodnota percentilu historie výkonu, Azure Migrate vypočítá hodnotu efektivní využití a použije ho k nastavení velikosti.
+- Zařízení kolektoru průběžně profiluje místní prostředí a každých 20 sekund shromažďuje data o využití v reálném čase.
+- Zařízení seskupuje 20sekundové vzorky a pro každých 15 minut vytvoří jeden datový bod. Jeden datový bod se vytvoří tak, že zařízení ze všech 20sekundových vzorků vybere maximální hodnotu a odešle ji do Azure.
+- Když v Azure vytvoříte posouzení, Azure Migrate na základě doby výkonu a hodnoty percentilu historie výkonu vypočítá hodnotu efektivního využití, kterou použije k určení velikosti.
 
-Například pokud nastavíte dobu trvání výkonu 1 den a percentil hodnoty 95. percentilu, Azure Migrate použije body 15 minut ukázka odesílaných kolekcí pro poslední den, seřazený ve vzestupném pořadí a vybere 95. percentil hodnoty jako efektivního využití. 95. percentil hodnoty zajistí, že se ignoruje všechny odlehlé hodnoty, které můžou mít, pokud vyberete 99. percentilu. Pokud chcete vybrat dobu využití ve špičce a nechcete neproběhly žádné odlehlé hodnoty, měli byste vybrat 99. percentilu.
+Pokud jste například nastavili dobu výkonu na 1 den a hodnotu percentilu na 95. percentil, Azure Migrate použije body 15minutových vzorků odeslané kolektorem za poslední den, seřadí je ve vzestupném pořadí a jako efektivní využití vyberte hodnotu 95. percentilu. Hodnota 95. percentilu zajistí, že se budou ignorovat případné odlehlé hodnoty, které by se mohly zohlednit, kdybyste vybrali 99. percentil. Pokud chcete vybrat maximální využití v určitém období a nechcete přijít o žádné odlehlé hodnoty, měli byste vybrat 99. percentil.
 
 ## <a name="next-steps"></a>Další postup
 

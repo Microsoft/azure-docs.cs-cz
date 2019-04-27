@@ -10,11 +10,11 @@ ms.custom: mvc
 ms.date: 10/25/2018
 ms.author: troyhop
 ms.openlocfilehash: 302b863e7ad7d6df286adf53342356f279ab92d2
-ms.sourcegitcommit: 3dcb1a3993e51963954194ba2a5e42260d0be258
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50756750"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61450543"
 ---
 # <a name="tutorial-create-a-custom-simulated-device"></a>Kurz: Vytvoření vlastního simulovaného zařízení
 
@@ -64,7 +64,7 @@ Do formuláře zadejte následující informace:
 | ------------------- | ---------------------------------------------------- |
 | Název modelu zařízení   | Lednice                                         |
 | Popis modelu   | Lednice se snímači teploty a vlhkosti |
-| Verze             | 1.0                                                  |
+| Version             | 1.0                                                  |
 
 > [!NOTE]
 > Název modelu zařízení musí být jedinečný.
@@ -96,7 +96,7 @@ Jakýkoli vlastní model zařízení můžete odstranit. Pokud chcete odstranit 
 
 ![Odstranění modelu zařízení](media/iot-accelerators-device-simulation-create-custom-device/deletedevice.png)
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 V tomto kurzu jste zjistili, jak vytvářet, klonovat a odstraňovat vlastní modely zařízení. Další informace o modelech zařízení najdete v následujícím článku s postupy:
 

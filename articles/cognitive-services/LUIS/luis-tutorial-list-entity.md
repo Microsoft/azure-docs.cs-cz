@@ -11,11 +11,11 @@ ms.topic: article
 ms.date: 01/23/2019
 ms.author: diberry
 ms.openlocfilehash: 929dc7a86d141446a2070b046c6febfda4a07f0f
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58092561"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62117444"
 ---
 # <a name="use-a-list-entity-to-increase-entity-detection"></a>Zvyšte zjišťování entit pomocí seznamu entit 
 Tento kurz ukazuje použití [seznam entit](luis-concept-entity-types.md) zvýšit zjišťování entit. Seznam entit není nutné popisek, protože jde o přesnou shodu podmínek.  

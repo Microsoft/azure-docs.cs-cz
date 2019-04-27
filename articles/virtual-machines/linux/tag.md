@@ -16,11 +16,11 @@ ms.workload: infrastructure-services
 ms.date: 02/28/2017
 ms.author: memccror
 ms.openlocfilehash: 297d3bc201b4bc9d9db0b0bed7a364769fa72859
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46993047"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62115970"
 ---
 # <a name="how-to-tag-a-linux-virtual-machine-in-azure"></a>Jak označit virtuální počítač s Linuxem v Azure
 Tento článek popisuje různé způsoby, jak označit virtuální počítač s Linuxem v Azure prostřednictvím modelu nasazení Resource Manager. Značky jsou páry klíč/hodnota definovaná uživatelem, které je možné použít přímo na prostředek nebo skupinu prostředků. Azure v současné době podporuje až 15 značek na prostředek a skupinu prostředků. Značky může být umístěné na zdroje v době vytvoření nebo přidat do existujícího prostředku. Mějte prosím na paměti, značky jsou podporované pro prostředky vytvořené prostřednictvím modelu nasazení Resource Manager pouze.

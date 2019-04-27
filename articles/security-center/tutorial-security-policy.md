@@ -16,11 +16,11 @@ ms.workload: na
 ms.date: 3/28/2019
 ms.author: monhaber
 ms.openlocfilehash: 1931026869e930caef2ff2f92fb85dade15a9c8c
-ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2019
-ms.locfileid: "58578437"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62111506"
 ---
 # <a name="working-with-security-policies"></a>Práce se zásadami zabezpečení
 
@@ -227,17 +227,17 @@ Tento příklad ukazuje, jak odebrat přiřazení:
 |----|----|----|
 |Šifrování SQL |Monitorovat nešifrovanou databázi SQL ve službě Azure Security Center |sqlEncryptionMonitoringEffect| 
 |SQL Auditing (Auditování SQL) |Monitorovat neauditovanou databázi SQL ve službě Azure Security Center |sqlAuditingMonitoringEffect|
-|Aktualizace systému |Monitorovat chybějící aktualizace systému ve službě Azure Security Center |systemUpdatesMonitoringEffect|
-|Šifrování úložiště |Auditovat chybějící šifrování objektů blob pro účty úložiště |storageEncryptionMonitoringEffect|
-|Přístup k síti JIT |Monitorovat možné síťový přístup pouze In Time (JIT) ve službě Azure Security Center |jitNetworkAccessMonitoringEffect |
-|Adaptivní řízení aplikací |Monitorovat možné přidávání aplikací na seznam povolených ve službě Azure Security Center |adaptiveApplicationControlsMonitoringEffect|
-|Skupiny zabezpečení sítě |Monitorovat benevolentní přístup k síti ve službě Azure Security Center |networkSecurityGroupsMonitoringEffect| 
+|Aktualizace systému |Monitorování chybějících aktualizací systému ve službě Azure Security Center |systemUpdatesMonitoringEffect|
+|Šifrování úložiště |Auditování chybějícího šifrování objektů blob pro účty úložiště |storageEncryptionMonitoringEffect|
+|Přístup k síti JIT |Monitorování možného přístupu k síti JIT ve službě Azure Security Center |jitNetworkAccessMonitoringEffect |
+|Adaptivní řízení aplikací |Monitorování seznamu přípustných povolených aplikací ve službě Azure Security Center |adaptiveApplicationControlsMonitoringEffect|
+|Skupiny zabezpečení sítě |Monitorování benevolentního přístupu k síti ve službě Azure Security Center |networkSecurityGroupsMonitoringEffect| 
 |Konfigurace zabezpečení |Monitorování ohrožení zabezpečení operačního systému ve službě Azure Security Center |systemConfigurationsMonitoringEffect| 
 |Ochrana koncových bodů |Monitorování chybějící služby Endpoint Protection ve službě Azure Security Center |endpointProtectionMonitoringEffect |
-|Šifrování disku |Monitorovat nešifrované disky virtuálních počítačů ve službě Azure Security Center |diskEncryptionMonitoringEffect|
+|Šifrování disku |Monitorování nešifrovaných disků virtuálních počítačů ve službě Azure Security Center |diskEncryptionMonitoringEffect|
 |Posouzení ohrožení zabezpečení |Monitorování ohrožení zabezpečení virtuálních počítačů ve službě Azure Security Center |vulnerabilityAssessmentMonitoringEffect|
 |Brána firewall webových aplikací |Monitorovat nechráněné webové aplikace ve službě Azure Security Center |webApplicationFirewallMonitoringEffect |
-|Brána firewall příští generace |Monitorovat nechráněné koncové body sítě ve službě Azure Security Center| |
+|Brána firewall příští generace |Monitorování nechráněných koncových bodů sítě ve službě Azure Security Center| |
 
 
 ### <a name="who-can-edit-security-policies"></a>Kdo může upravit zásady zabezpečení?

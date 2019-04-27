@@ -12,11 +12,11 @@ ms.date: 03/27/2019
 ms.author: cephalin
 ms.custom: seodec18
 ms.openlocfilehash: 6d9ef67f39a67fd06a5b42afe4432b5a0156fead
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59549827"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62130224"
 ---
 # <a name="build-a-php-and-mysql-app-in-azure-app-service-on-linux"></a>Vytvoření PHP a MySQL aplikaci ve službě Azure App Service v Linuxu
 

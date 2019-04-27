@@ -11,11 +11,11 @@ ms.topic: conceptual
 ms.date: 02/21/2019
 ms.author: v-jansko
 ms.openlocfilehash: ebc8b7ce4ed0242f1bc62e3b97b6594cfe810374
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58915743"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60880090"
 ---
 # <a name="how-to-translate-behind-ip-firewalls-with-the-translator-text-api"></a>Způsob převodu za branách firewall protokolu IP s rozhraním Translator Text API
 

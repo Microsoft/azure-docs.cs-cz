@@ -8,14 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: quickstart
-ms.date: 02/08/2019
-ms.author: erhopf
+origin.date: 02/08/2019
+ms.date: 03/12/2019
+ms.author: v-junlch
 ms.openlocfilehash: 2844017986b39b417407fc3da4b92af4aea51a42
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57542722"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60879672"
 ---
 # <a name="quickstart-get-sentence-lengths-with-the-translator-text-rest-api-php"></a>Rychlý start: Získání délky větu s Translator Text REST API (PHP)
 
@@ -48,8 +49,8 @@ Následující kód rozdělí zdrojový text do vět pomocí metody [BreakSenten
 
 // Replace the subscriptionKey string value with your valid subscription key.
 $key = 'ENTER KEY HERE';
-
-$host = "https://api.cognitive.microsofttranslator.com";
+$region = 'your region';
+$host = "https://api.translator.azure.cn";
 $path = "/breaksentence?api-version=3.0";
 
 $text = "How are you? I am fine. What did you do today?";
@@ -66,11 +67,12 @@ if (!function_exists('com_create_guid')) {
   }
 }
 
-function BreakSentences ($host, $path, $key, $params, $content) {
+function BreakSentences ($host, $path, $key, $params, $content, $region) {
 
     $headers = "Content-type: application/json\r\n" .
         "Content-length: " . strlen($content) . "\r\n" .
         "Ocp-Apim-Subscription-Key: $key\r\n" .
+        "Ocp-Apim-Subscription-Region: $region\r\n" .
         "X-ClientTraceId: " . com_create_guid() . "\r\n";
 
     // NOTE: Use the key 'http' even if you are making an HTTPS request. See:
@@ -94,7 +96,7 @@ $requestBody = array (
 );
 $content = json_encode($requestBody);
 
-$result = BreakSentences ($host, $path, $key, "", $content);
+$result = BreakSentences ($host, $path, $key, "", $content, $region);
 
 // Note: We convert result, which is JSON, to and from an object so we can pretty-print it.
 // We want to avoid escaping any Unicode characters that result contains. See:
@@ -130,3 +132,4 @@ Prozkoumejte vzorový kód pro tento rychlý start a další, včetně překladu
 
 > [!div class="nextstepaction"]
 > [Prozkoumejte příklady PHP na GitHubu](https://aka.ms/TranslatorGitHub?type=&language=php)
+

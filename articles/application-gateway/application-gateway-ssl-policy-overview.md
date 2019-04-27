@@ -12,14 +12,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure services
-ms.date: 08/03/2017
-ms.author: amsriva
+origin.date: 08/03/2017
+ms.date: 02/26/2019
+ms.author: v-junlch
 ms.openlocfilehash: 46a823e4e230656b53a93a97f195d0879fd08bf2
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56731952"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62122230"
 ---
 # <a name="application-gateway-ssl-policy-overview"></a>Přehled zásad protokolu SSL bránu aplikace
 
@@ -64,9 +65,9 @@ Pokud předdefinované zásady protokolu SSL je potřeba nakonfigurovat pro vaš
  
 ### <a name="ssl-protocol-versions"></a>Verze protokolu SSL
 
-* Protokol SSL 2.0 a 3.0 jsou zakázané ve výchozím nastavení pro všechny brány application Gateway. Tyto verze protokolu se nedají konfigurovat.
-* Vlastní zásady protokolu SSL umožňuje vybrat některou z těchto tří protokolů jako minimální verzi protokolu SSL pro bránu: TLSv1_0, TLSv1_1, TLSv1_2 a přání.
-* Pokud není nadefinovaná žádná zásada SSL, jsou povolené všechny tři protokoly (TLSv1_0, TLSv1_1 a TLSv1_2).
+- Protokol SSL 2.0 a 3.0 jsou zakázané ve výchozím nastavení pro všechny brány application Gateway. Tyto verze protokolu se nedají konfigurovat.
+- Vlastní zásady protokolu SSL umožňuje vybrat některou z těchto tří protokolů jako minimální verzi protokolu SSL pro bránu: TLSv1_0, TLSv1_1, TLSv1_2 a přání.
+- Pokud není nadefinovaná žádná zásada SSL, jsou povolené všechny tři protokoly (TLSv1_0, TLSv1_1 a TLSv1_2).
 
 ### <a name="cipher-suites"></a>Šifrovací sady
 
@@ -105,3 +106,5 @@ Služba Application Gateway podporuje následující šifrovací sada, z nichž 
 ## <a name="next-steps"></a>Další postup
 
 Pokud chcete další informace o konfiguraci zásad protokolu SSL najdete [zásady Konfigurace protokolu SSL ve službě application gateway](application-gateway-configure-ssl-policy-powershell.md).
+
+<!-- Update_Description: wording update -->

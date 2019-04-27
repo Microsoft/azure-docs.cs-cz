@@ -11,11 +11,11 @@ ms.date: 07/30/2018
 ms.reviewer: klam, LADocs
 ms.suite: integration
 ms.openlocfilehash: 93c24f88fcd6a002493933ef71c5c80bd2ff8c10
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50231640"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62120175"
 ---
 # <a name="perform-data-operations-in-azure-logic-apps"></a>Provádět operace s daty v Azure Logic Apps
 
@@ -62,7 +62,7 @@ V příkladech v tomto článku, budete potřebovat tyto položky:
 
 * Aplikace logiky, kde je třeba operace pro práci s daty 
 
-  Pokud se službou logic Apps teprve začínáte, přečtěte si [co je Azure Logic Apps](../logic-apps/logic-apps-overview.md) a [rychlý start: vytvoření první aplikace logiky](../logic-apps/quickstart-create-first-logic-app-workflow.md).
+  Pokud se službou logic Apps teprve začínáte, přečtěte si [co je Azure Logic Apps](../logic-apps/logic-apps-overview.md) a [rychlý start: Vytvořte svou první aplikaci logiky](../logic-apps/quickstart-create-first-logic-app-workflow.md).
 
 * A [aktivační událost](../logic-apps/logic-apps-overview.md#logic-app-concepts) jako první krok ve své aplikaci logiky 
 
@@ -82,7 +82,7 @@ a vytvoří tento výstup:
 
 `{"age":35,"fullName":"Owens,Sophie"}`
 
-Pokud chcete vyzkoušet příklad, následujícím postupem pomocí návrháře aplikace logiky. Nebo, pokud dáváte přednost práci v editoru kódu zobrazit, můžete zkopírovat v příkladu **Compose** a **inicializovat proměnnou** definice akce v tomto článku do aplikace logiky podkladového pracovního postupu definice: [operační kód příkladů dat - Compose](../logic-apps/logic-apps-data-operations-code-samples.md#compose-action-example) 
+Pokud chcete vyzkoušet příklad, následujícím postupem pomocí návrháře aplikace logiky. Nebo, pokud dáváte přednost práci v editoru kódu zobrazit, můžete zkopírovat v příkladu **Compose** a **inicializovat proměnnou** definice akce v tomto článku do aplikace logiky podkladového pracovního postupu definice: [Příklady kódu operace dat - Compose](../logic-apps/logic-apps-data-operations-code-samples.md#compose-action-example) 
 
 1. V <a href="https://portal.azure.com" target="_blank">webu Azure portal</a> nebo Visual Studio, otevřete v návrháři aplikace logiky aplikace logiky. 
 
@@ -95,12 +95,12 @@ Pokud chcete vyzkoušet příklad, následujícím postupem pomocí návrháře 
 
    * Chcete-li přidat akci v posledním kroku, zvolte **nový krok** > **přidat akci**.
 
-     ![Přidání akce](./media/logic-apps-perform-data-operations/add-compose-action.png)
+     ![Přidat akci](./media/logic-apps-perform-data-operations/add-compose-action.png)
 
    * Přidání akce mezi kroky, najeďte myší na připojení šipku, zobrazí se na symbol plus (+). 
    Vyberte znaménko plus a potom vyberte **přidat akci**.
 
-3. Do vyhledávacího pole zadejte jako filtr "vytváření". Ze seznamu akcí vyberte tuto akci: **Compose**
+3. Do vyhledávacího pole zadejte jako filtr "vytváření". Ze seznamu akcí vyberte tuto akci: **Vytvoření**
 
    ![Výběr akce "Vytvořit"](./media/logic-apps-perform-data-operations/select-compose-action.png)
 
@@ -142,7 +142,7 @@ Potvrďte, zda **Compose** akce vytvoří očekávané výsledky, poslat oznáme
 
 Chcete-li vytvořit tabulku hodnot oddělených čárkami (CSV) obsahující vlastnosti a hodnoty z objektu jazyka JavaScript Notation (JSON) objektů v poli, použijte **operace s daty – vytvoření tabulky CSV** akce. Pak můžete použít výslednou tabulku do akce, které následují **vytvoření tabulky CSV** akce. 
 
-Pokud dáváte přednost práci v editoru kódu zobrazit, můžete zkopírovat v příkladu **vytvoření tabulky CSV** a **inicializovat proměnnou** definice akce v tomto článku do aplikace logiky podkladového pracovního postupu definice: [operační kód příkladů dat – vytvoření tabulky CSV](../logic-apps/logic-apps-data-operations-code-samples.md#create-csv-table-action-example) 
+Pokud dáváte přednost práci v editoru kódu zobrazit, můžete zkopírovat v příkladu **vytvoření tabulky CSV** a **inicializovat proměnnou** definice akce v tomto článku do aplikace logiky podkladového pracovního postupu definice: [Příklady kódu operace dat – vytvoření tabulky CSV](../logic-apps/logic-apps-data-operations-code-samples.md#create-csv-table-action-example) 
 
 1. V <a href="https://portal.azure.com" target="_blank">webu Azure portal</a> nebo Visual Studio, otevřete v návrháři aplikace logiky aplikace logiky. 
 
@@ -156,12 +156,12 @@ Pokud dáváte přednost práci v editoru kódu zobrazit, můžete zkopírovat v
 
    * Chcete-li přidat akci v posledním kroku, zvolte **nový krok** > **přidat akci**.
 
-     ![Přidání akce](./media/logic-apps-perform-data-operations/add-create-table-action.png)
+     ![Přidat akci](./media/logic-apps-perform-data-operations/add-create-table-action.png)
 
    * Přidání akce mezi kroky, najeďte myší na připojení šipku, zobrazí se na symbol plus (+). 
    Vyberte znaménko plus a potom vyberte **přidat akci**.
 
-3. Do vyhledávacího pole zadejte "Vytvoření tabulky csv" jako filtr. Ze seznamu akcí vyberte tuto akci: **vytvoření tabulky CSV**
+3. Do vyhledávacího pole zadejte "Vytvoření tabulky csv" jako filtr. Ze seznamu akcí vyberte tuto akci: **Vytvoření tabulky CSV**
 
    ![Vyberte "sdíleného svazku clusteru vytvořit tabulku" akce](./media/logic-apps-perform-data-operations/select-create-csv-table-action.png)
 
@@ -211,7 +211,7 @@ Potvrďte, zda **vytvoření tabulky CSV** akce vytvoří očekávané výsledky
 
 K vytvoření tabulky HTML, který obsahuje vlastnosti a hodnoty z objektu jazyka JavaScript Notation (JSON) objektů v poli, použijte **operace s daty – vytvoření tabulky HTML** akce. Pak můžete použít výslednou tabulku do akce, které následují **vytvoření tabulky HTML** akce.
 
-Pokud dáváte přednost práci v editoru kódu zobrazit, můžete zkopírovat v příkladu **vytvoření tabulky HTML** a **inicializovat proměnnou** definice akce v tomto článku do aplikace logiky podkladového pracovního postupu definice: [operační kód příkladů dat – vytvoření tabulky HTML](../logic-apps/logic-apps-data-operations-code-samples.md#create-html-table-action-example) 
+Pokud dáváte přednost práci v editoru kódu zobrazit, můžete zkopírovat v příkladu **vytvoření tabulky HTML** a **inicializovat proměnnou** definice akce v tomto článku do aplikace logiky podkladového pracovního postupu definice: [Příklady kódu operace dat – vytvoření tabulky HTML](../logic-apps/logic-apps-data-operations-code-samples.md#create-html-table-action-example) 
 
 1. V <a href="https://portal.azure.com" target="_blank">webu Azure portal</a> nebo Visual Studio, otevřete v návrháři aplikace logiky aplikace logiky. 
 
@@ -225,12 +225,12 @@ Pokud dáváte přednost práci v editoru kódu zobrazit, můžete zkopírovat v
 
    * Chcete-li přidat akci v posledním kroku, zvolte **nový krok** > **přidat akci**.
 
-     ![Přidání akce](./media/logic-apps-perform-data-operations/add-create-table-action.png)
+     ![Přidat akci](./media/logic-apps-perform-data-operations/add-create-table-action.png)
 
    * Přidání akce mezi kroky, najeďte myší na připojení šipku, zobrazí se na symbol plus (+). 
    Vyberte znaménko plus a potom vyberte **přidat akci**.
 
-3. Do vyhledávacího pole zadejte "Vytvoření tabulky html" jako filtr. Ze seznamu akcí vyberte tuto akci: **vytvoření tabulky HTML**
+3. Do vyhledávacího pole zadejte "Vytvoření tabulky html" jako filtr. Ze seznamu akcí vyberte tuto akci: **Vytvoření tabulky HTML**
 
    ![Výběr akce "Vytvořit HTML tabulku"](./media/logic-apps-perform-data-operations/select-create-html-table-action.png)
 
@@ -288,7 +288,7 @@ Chcete-li vytvořit pole s menší obsahující položky, které splňují urči
 > 
 > Pro akce, které používají výstup pole **filtrování pole** akce, tyto akce, musíte přijmout pole jako vstup, nebo může být nutné transformovat pole výstup do jiného formátu kompatibilní. 
 
-Pokud dáváte přednost práci v editoru kódu zobrazit, můžete zkopírovat v příkladu **filtrování pole** a **inicializovat proměnnou** definice akce v tomto článku do aplikace logiky podkladového pracovního postupu definice: [operační kód příkladů dat – filtrování pole](../logic-apps/logic-apps-data-operations-code-samples.md#filter-array-action-example) 
+Pokud dáváte přednost práci v editoru kódu zobrazit, můžete zkopírovat v příkladu **filtrování pole** a **inicializovat proměnnou** definice akce v tomto článku do aplikace logiky podkladového pracovního postupu definice: [Příklady kódu operace dat – filtrování pole](../logic-apps/logic-apps-data-operations-code-samples.md#filter-array-action-example) 
 
 1. V <a href="https://portal.azure.com" target="_blank">webu Azure portal</a> nebo Visual Studio, otevřete v návrháři aplikace logiky aplikace logiky. 
 
@@ -304,12 +304,12 @@ Pokud dáváte přednost práci v editoru kódu zobrazit, můžete zkopírovat v
 
    * Chcete-li přidat akci v posledním kroku, zvolte **nový krok** > **přidat akci**.
 
-     ![Přidání akce](./media/logic-apps-perform-data-operations/add-filter-array-action.png)
+     ![Přidat akci](./media/logic-apps-perform-data-operations/add-filter-array-action.png)
 
    * Přidání akce mezi kroky, najeďte myší na připojení šipku, zobrazí se na symbol plus (+). 
    Vyberte znaménko plus a potom vyberte **přidat akci**.
 
-3. Do vyhledávacího pole zadejte jako filtr "filtrování pole". Ze seznamu akcí vyberte tuto akci: **filtrování pole**
+3. Do vyhledávacího pole zadejte jako filtr "filtrování pole". Ze seznamu akcí vyberte tuto akci: **Filtrování pole**
 
    ![Vyberte akci "Filtrování pole"](./media/logic-apps-perform-data-operations/select-filter-array-action.png)
 
@@ -357,7 +357,7 @@ Potvrďte, zda **filtrování pole** akce vytvoří očekávané výsledky, posl
 
 Chcete-li vytvořit řetězec, který obsahuje všechny položky z pole a tyto položky oddělujte konkrétní oddělovací znak, použijte **operace s daty – spojení** akce. Potom můžete řetězec v akce, které následují po **připojení** akce.
 
-Pokud dáváte přednost práci v editoru kódu zobrazit, můžete zkopírovat v příkladu **připojení** a **inicializovat proměnnou** definice akce v tomto článku do aplikace logiky podkladového definice pracovního postupu: [ Příklady kódu operace dat – připojení](../logic-apps/logic-apps-data-operations-code-samples.md#join-action-example) 
+Pokud dáváte přednost práci v editoru kódu zobrazit, můžete zkopírovat v příkladu **připojení** a **inicializovat proměnnou** definice akce v tomto článku do aplikace logiky podkladového definice pracovního postupu: [Příklady kódu operace dat – připojení](../logic-apps/logic-apps-data-operations-code-samples.md#join-action-example) 
 
 1. V <a href="https://portal.azure.com" target="_blank">webu Azure portal</a> nebo Visual Studio, otevřete v návrháři aplikace logiky aplikace logiky. 
 
@@ -371,12 +371,12 @@ Pokud dáváte přednost práci v editoru kódu zobrazit, můžete zkopírovat v
 
    * Chcete-li přidat akci v posledním kroku, zvolte **nový krok** > **přidat akci**.
 
-     ![Přidání akce](./media/logic-apps-perform-data-operations/add-join-action.png)
+     ![Přidat akci](./media/logic-apps-perform-data-operations/add-join-action.png)
 
    * Přidání akce mezi kroky, najeďte myší na připojení šipku, zobrazí se na symbol plus (+). 
    Vyberte znaménko plus a potom vyberte **přidat akci**.
 
-3. Do vyhledávacího pole zadejte jako filtr "join". Ze seznamu akcí vyberte tuto akci: **Join**
+3. Do vyhledávacího pole zadejte jako filtr "join". Ze seznamu akcí vyberte tuto akci: **Spojení**
 
    ![Vyberte akci "Data operace – spojení"](./media/logic-apps-perform-data-operations/select-join-action.png)
 
@@ -421,7 +421,7 @@ Potvrďte, zda **připojení** akce vytvoří očekávané výsledky, poslat ozn
 K odkazu nebo přístup k vlastnostem v zápisu JSON (JavaScript Object) obsah, uživatelsky přívětivé pole nebo tokenů pro tyto vlastnosti můžete vytvořit pomocí **operace s daty – Parsovat JSON** akce.
 Tímto způsobem můžete vybrat tyto vlastnosti ze seznamu dynamického obsahu při zadávání vstupy pro vaši aplikaci logiky. Tato akce zadejte schéma JSON nebo generování schématu JSON z ukázkový obsah JSON nebo datové části.
 
-Pokud dáváte přednost práci v editoru kódu zobrazit, můžete zkopírovat v příkladu **Parsovat JSON** a **inicializovat proměnnou** definice akce v tomto článku do aplikace logiky podkladového definice pracovního postupu : [Operační kód příkladů dat – Parsovat JSON](../logic-apps/logic-apps-data-operations-code-samples.md#parse-json-action-example) 
+Pokud dáváte přednost práci v editoru kódu zobrazit, můžete zkopírovat v příkladu **Parsovat JSON** a **inicializovat proměnnou** definice akce v tomto článku do aplikace logiky podkladového definice pracovního postupu : [Příklady kódu operace dat – Parsovat JSON](../logic-apps/logic-apps-data-operations-code-samples.md#parse-json-action-example) 
 
 1. V <a href="https://portal.azure.com" target="_blank">webu Azure portal</a> nebo Visual Studio, otevřete v návrháři aplikace logiky aplikace logiky. 
 
@@ -435,12 +435,12 @@ Pokud dáváte přednost práci v editoru kódu zobrazit, můžete zkopírovat v
 
    * Chcete-li přidat akci v posledním kroku, zvolte **nový krok** > **přidat akci**.
 
-     ![Přidání akce](./media/logic-apps-perform-data-operations/add-parse-json-action.png)
+     ![Přidat akci](./media/logic-apps-perform-data-operations/add-parse-json-action.png)
 
    * Přidání akce mezi kroky, najeďte myší na připojení šipku, zobrazí se na symbol plus (+). 
    Vyberte znaménko plus a potom vyberte **přidat akci**.
 
-3. Do vyhledávacího pole zadejte "parsování formátu json" jako filtr. Ze seznamu akcí vyberte tuto akci: **Parsovat JSON**
+3. Do vyhledávacího pole zadejte "parsování formátu json" jako filtr. Ze seznamu akcí vyberte tuto akci: **Parsování formátu JSON**
 
    ![Vyberte akci "Parsovat JSON"](./media/logic-apps-perform-data-operations/select-parse-json-action.png)
 
@@ -499,7 +499,7 @@ Chcete-li vytvořit pole, která je vytvořená z hodnoty existujícího pole ob
 > [!NOTE]
 > Pro akce, které používají výstup pole **vyberte** akce, tyto akce, musíte přijmout pole jako vstup, nebo může být nutné transformovat pole výstup do jiného formátu kompatibilní. 
 
-Pokud dáváte přednost práci v editoru kódu zobrazit, můžete zkopírovat v příkladu **vyberte** a **inicializovat proměnnou** definice akce v tomto článku do aplikace logiky podkladového definice pracovního postupu: [Operační kód příkladů dat – vyberte](../logic-apps/logic-apps-data-operations-code-samples.md#select-action-example) 
+Pokud dáváte přednost práci v editoru kódu zobrazit, můžete zkopírovat v příkladu **vyberte** a **inicializovat proměnnou** definice akce v tomto článku do aplikace logiky podkladového definice pracovního postupu: [Příklady kódu operace dat – výběr](../logic-apps/logic-apps-data-operations-code-samples.md#select-action-example) 
 
 1. V <a href="https://portal.azure.com" target="_blank">webu Azure portal</a> nebo Visual Studio, otevřete v návrháři aplikace logiky aplikace logiky. 
 
@@ -513,12 +513,12 @@ Pokud dáváte přednost práci v editoru kódu zobrazit, můžete zkopírovat v
 
    * Chcete-li přidat akci v posledním kroku, zvolte **nový krok** > **přidat akci**.
 
-     ![Přidání akce](./media/logic-apps-perform-data-operations/add-select-action.png)
+     ![Přidat akci](./media/logic-apps-perform-data-operations/add-select-action.png)
 
    * Přidání akce mezi kroky, najeďte myší na připojení šipku, zobrazí se na symbol plus (+). 
    Vyberte znaménko plus a potom vyberte **přidat akci**.
 
-3. Do vyhledávacího pole zadejte jako filtr "Vyberte". Ze seznamu akcí vyberte tuto akci: **vyberte**
+3. Do vyhledávacího pole zadejte jako filtr "Vyberte". Ze seznamu akcí vyberte tuto akci: **Výběr**
 
    ![Vyberte akci "Vyberte"](./media/logic-apps-perform-data-operations/select-select-action.png)
 

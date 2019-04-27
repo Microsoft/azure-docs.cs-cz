@@ -10,13 +10,13 @@ ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
 ms.date: 10/19/2018
 ms.openlocfilehash: 8cf5d9f3ee1503769a2ec199847175899bcd86bf
-ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57193207"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62120122"
 ---
-# <a name="track-b2b-messages-with-azure-monitor-logs"></a>Sledování zpráv B2B s protokoly Azure monitoru
+# <a name="track-b2b-messages-with-azure-monitor-logs"></a>Sledování zpráv B2B s využitím protokolů Azure Monitoru
 
 Po nastavení komunikace B2B mezi obchodními partnery v účtu integrace těchto partnerů si mohou vyměňovat zprávy s protokoly, například AS2, X 12 a EDIFACT. Pokud chcete zkontrolovat, že tyto zprávy jsou zpracovány správně, můžete sledovat tyto zprávy s [protokoly Azure monitoru](../log-analytics/log-analytics-overview.md). Například můžete použít tyto možnosti sledování založeného na webu pro sledování zpráv:
 
@@ -153,10 +153,10 @@ Tady jsou popisy vlastností pro každou zprávu AS2.
 | Aplikace logiky | Aplikace logiky, ve kterém jsou nastavené akce AS2 |
 | Status | Stav zprávy AS2 <br>Úspěch = přijatá nebo odeslaná platná zpráva AS2. Je nastavený žádný zprávy MDN. <br>Úspěch = přijatá nebo odeslaná platná zpráva AS2. Nastavení a obdrží zprávu MDN nebo se odesílají zprávy MDN. <br>Nepovedlo = přijatá neplatná zpráva AS2. Je nastavený žádný zprávy MDN. <br>Čekající = přijatá nebo odeslaná platná zpráva AS2. Je nastavený zprávy MDN a měl by zprávy MDN. |
 | Potvrzení | Stav zprávy MDN <br>Přijata = přijatých nebo odeslaných kladné zprávy MDN. <br>Čekající = přijímat nebo odesílat zprávy MDN. čekání. <br>Zamítnuto = přijatých nebo odeslaných negativní zprávy MDN. <br>Není nutné = MDN není nastavený ve smlouvě. |
-| Směr | Směr zprávy AS2 |
+| Direction | Směr zprávy AS2 |
 | ID korelace | ID, které souvisí všechny aktivační události a akce v aplikaci logiky |
 | ID zprávy | ID zprávy AS2 ze záhlaví zpráv AS2 |
-| Časové razítko | Čas, kdy akce AS2 zpracována zprávy |
+| Timestamp | Čas, kdy akce AS2 zpracována zprávy |
 |          |             |
 
 <a name="as2-folder-file-names"></a>
@@ -184,12 +184,12 @@ Tady jsou popisy vlastností pro každou X12 zprávy.
 | Aplikace logiky | Aplikace logiky kde X12 akce jsou nastavené. |
 | Status | X12 zpráv stavu <br>Úspěch = přijatých nebo odeslaných platný X12 zprávy. Je nastavený žádný funkční potvrzení. <br>Úspěch = přijatých nebo odeslaných platný X12 zprávy. Nastavení a obdrží funkční potvrzení nebo funkční potvrzení posílá. <br>Nepovedlo = přijatých nebo odeslaných x neplatný X12 zprávy. <br>Čekající = přijatých nebo odeslaných platný X12 zprávy. Funkční potvrzení je nastavena a funkční potvrzení se očekává. |
 | Potvrzení | Funkční stav Ack (997) <br>Přijata = přijatých nebo odeslaných kladné funkční potvrzení <br>Zamítnuto = přijatých nebo odeslaných negativní funkční potvrzení <br>Čekající = očekává funkční potvrzení, ale nebyl přijat. <br>Čekající = generované funkční potvrzení, ale nelze odeslat na partnera. <br>Není nutné = funkční potvrzení není nastavený. |
-| Směr | X12 zprávy směr |
+| Direction | X12 zprávy směr |
 | ID korelace | ID, které souvisí všechny aktivační události a akce v aplikaci logiky |
 | Typ zprávy | Typ zprávy 12 EDI X |
 | ICN | Kontrolní číslo výměny. pro X12 zprávy |
 | TSCN | Transakce nastavit kontrolní číslo pro X12 zprávy |
-| Časové razítko | Čas při X12 akci zpracovat zprávu |
+| Timestamp | Čas při X12 akci zpracovat zprávu |
 |          |             |
 
 <a name="x12-folder-file-names"></a>
@@ -217,12 +217,12 @@ Tady jsou popisy vlastností pro každou zprávu EDIFACT.
 | Aplikace logiky | Aplikace logiky, ve kterém jsou nastavené akce EDIFACT |
 | Status | Stav zprávy EDIFACT <br>Úspěch = přijatých nebo odeslaných platnou zprávu EDIFACT. Je nastavený žádný funkční potvrzení. <br>Úspěch = přijatých nebo odeslaných platnou zprávu EDIFACT. Nastavení a obdrží funkční potvrzení nebo funkční potvrzení posílá. <br>Nepovedlo = přijatých nebo odeslaných neplatná zpráva EDIFACT <br>Čekající = přijatých nebo odeslaných platnou zprávu EDIFACT. Funkční potvrzení je nastavena a funkční potvrzení se očekává. |
 | Potvrzení | Funkční stav Ack (997) <br>Přijata = přijatých nebo odeslaných kladné funkční potvrzení <br>Zamítnuto = přijatých nebo odeslaných negativní funkční potvrzení <br>Čekající = očekává funkční potvrzení, ale nebyl přijat. <br>Čekající = generované funkční potvrzení, ale nelze odeslat na partnera. <br>Není nutné = není nastavený funkční potvrzení. |
-| Směr | Směr zprávy EDIFACT |
+| Direction | Směr zprávy EDIFACT |
 | ID korelace | ID, které souvisí všechny aktivační události a akce v aplikaci logiky |
 | Typ zprávy | Typ zprávy EDIFACT |
 | ICN | Kontrolní číslo výměny. pro zprávy EDIFACT |
 | TSCN | Transakce nastavit kontrolní číslo pro zprávy EDIFACT |
-| Časové razítko | Čas, kdy akce EDIFACT zpracována zprávy |
+| Timestamp | Čas, kdy akce EDIFACT zpracována zprávy |
 |          |               |
 
 <a name="edifact-folder-file-names"></a>

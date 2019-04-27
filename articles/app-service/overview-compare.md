@@ -15,11 +15,11 @@ ms.date: 07/07/2016
 ms.author: cephalin
 ms.custom: seodec18
 ms.openlocfilehash: aac2a0b102d50c8d3f0506c2cc1469a838706703
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58793838"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60835545"
 ---
 # <a name="azure-app-service-virtual-machines-service-fabric-and-cloud-services-comparison"></a>Porovnání služeb App Service, Virtual Machines, Service Fabric a Cloud Services
 

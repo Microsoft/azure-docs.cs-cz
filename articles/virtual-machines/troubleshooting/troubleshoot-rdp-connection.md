@@ -15,19 +15,19 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 03/23/2018
 ms.author: roiyz
-ms.openlocfilehash: a4fb31721da679b21fa311340269cf07f93cd903
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: 50adab1eaa199473a8da857d38c3a08c424c677a
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55981260"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62123784"
 ---
 # <a name="troubleshoot-remote-desktop-connections-to-an-azure-virtual-machine"></a>Řešení potíží s připojením ke vzdálené ploše na virtuálním počítači Azure
-Připojení protokolu RDP (Remote Desktop) k založené na Windows Azure virtuálnímu počítači (VM) může selhat z různých důvodů, poskytne vám nelze získat přístup k vašemu virtuálnímu počítači. Pomocí služby Vzdálená plocha na virtuální počítač, síťové připojení nebo klient vzdálené plochy na hostitelském počítači může být problém. Tento článek vás provede některé z nejběžnějších metody k řešení problémů s připojením RDP. 
+Připojení RDP (Remote Desktop Protocol) k vašemu virtuálnímu počítači Azure s Windows může z různých důvodů selhat a vy tak k němu můžete ztratit přístup. Problém může být ve službě Vzdálená plocha na virtuálním počítači, v síťovém připojením nebo v klientovi vzdálené plochy na hostitelském počítači. Tento článek vás provede některé z nejběžnějších metody k řešení problémů s připojením RDP. 
 
 Pokud potřebujete další nápovědu v libovolném bodě v tomto článku, můžete se obrátit odborníků na Azure na [fóra MSDN Azure a Stack Overflow](https://azure.microsoft.com/support/forums/). Alternativně můžete soubor incidentu podpory Azure. Přejděte [web podpory Azure](https://azure.microsoft.com/support/options/) a vyberte **získat podporu**.
 
-[!INCLUDE [updated-for-az-vm.md](../../../includes/updated-for-az-vm.md)]
+[!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
 
 <a id="quickfixrdp"></a>
 

@@ -10,12 +10,12 @@ ms.subservice: academic-knowledge
 ms.topic: conceptual
 ms.date: 01/18/2017
 ms.author: alch
-ms.openlocfilehash: 44930ad0f941ea174d95658f220db7aa95012133
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 7f692c08f8af322bf7e6ab576e2e6f516594a6c4
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55868680"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61336513"
 ---
 # <a name="similarity-method"></a>Metoda podobnosti
 
@@ -28,26 +28,34 @@ https://westus.api.cognitive.microsoft.com/academic/v1.0/similarity?
 ```
 
 ## <a name="request-parameters"></a>Parametry žádosti
+
 Parametr        |Typ dat      |Požaduje se | Popis
 ----------|----------|----------|------------
 **s1**        |String   |Ano  |Řetězec * která se má porovnat
 **s2**        |String   |Ano  |Řetězec * která se má porovnat
+
 <sub> * Řetězce k porovnání mají maximální délky 1MB. </sub>
 <br>
+
 ## <a name="response"></a>Odpověď
+
 Název | Popis
 --------|---------
 **SimilarityScore**        |Představující kosinovou podobnost s1 a s2 s hodnotami blíž k 1.0 význam podobné a hodnoty blíže-1.0, což znamená menší hodnota s plovoucí desetinnou čárkou
+
 <br>
 
 ## <a name="successerror-conditions"></a>Úspěch/chybových podmínek
+
 Stav protokolu HTTP | Důvod | Odpověď
 -----------|----------|--------
 **200**         |Úspěch | Plovoucí desetinné číslo s desetinnou čárkou
 **400**         | Chybný požadavek nebo požadavek není platný | Chybová zpráva      
 **500**         |Vnitřní chyba serveru | Chybová zpráva
 **Vypršel časový limit**     | Vypršel časový limit žádosti.  | Chybová zpráva
+
 <br>
+
 ## <a name="example-calculate-similarity-of-two-partial-abstracts"></a>Příklad: Vypočítat podobnosti dvě částečné přehledů
 #### <a name="request"></a>Požadavek:
 ```

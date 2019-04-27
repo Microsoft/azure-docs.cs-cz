@@ -12,15 +12,15 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
 ms.openlocfilehash: 51aa33e4ff387a1030dac42bce8d12cf72343b35
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58317472"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61466727"
 ---
 # <a name="streaming-locators"></a>Lokátory streamování
 
-Chcete-li videa ve výstupu prostředek k dispozici pro klienty pro přehrávání, je nutné vytvořit [Lokátor streamování](https://docs.microsoft.com/rest/api/media/streaminglocators) a následně vytvořit adresy URL pro streamování. Ukázku .NET najdete v tématu [získat Lokátor streamování](stream-files-tutorial-with-api.md#get-a-streaming-locator).
+Pokud chcete, aby videa ve výstupním prostředku byla k dispozici klientům pro přehrávání, musíte vytvořit [lokátor streamování](https://docs.microsoft.com/rest/api/media/streaminglocators) a adresy URL pro streamování. Ukázku v .NET najdete v tématu věnovaném [získání lokátoru streamování](stream-files-tutorial-with-api.md#get-a-streaming-locator).
 
 Proces vytváření **Lokátor streamování** nazývá publikování. Ve výchozím nastavení **Lokátor streamování** platnost okamžitě po provedení volání rozhraní API a trvá, dokud je odstraníme, pokud nenakonfigurujete volitelné počáteční a koncový čas. 
 
@@ -43,4 +43,4 @@ Zobrazit [filtrování, řazení, stránkování, Media Services entit](entities
 ## <a name="next-steps"></a>Další postup
 
 * [Kurz: Nahrávání, kódování a streamování videí pomocí .NET](stream-files-tutorial-with-api.md)
-* [Pomocí DRM dynamického šifrování a licence služby pro doručování](protect-with-drm.md)
+* [Použití ochrany DRM s dynamickým šifrováním a služby doručování licencí](protect-with-drm.md)

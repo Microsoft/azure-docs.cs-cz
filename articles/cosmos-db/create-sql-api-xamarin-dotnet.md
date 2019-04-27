@@ -9,11 +9,11 @@ ms.topic: quickstart
 ms.date: 05/30/2018
 ms.author: masoucou
 ms.openlocfilehash: 1f86690b97fc7d65afed650664a76200ef490f33
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58517109"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60891251"
 ---
 # <a name="quickstart-build-a-todo-app-with-xamarin-using-azure-cosmos-db-sql-api-account"></a>Rychlý start: Vytvoření aplikace seznamu úkolů s využitím kódu Xamarin pomocí účtu rozhraní SQL API služby Azure Cosmos DB
 

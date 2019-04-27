@@ -11,11 +11,11 @@ ms.topic: reference
 ms.date: 06/25/2017
 ms.author: sajagtap
 ms.openlocfilehash: 320638c958799bbf7fea73880fd3e27b6d598d23
-ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58756061"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61269515"
 ---
 # <a name="content-moderator-api-reference"></a>Referenční informace k rozhraní API Content Moderatoru
 

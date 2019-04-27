@@ -9,12 +9,12 @@ ms.service: iot-dps
 services: iot-dps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 784fb99fc2cd721a43c9ca7c767b449a9d0d6cb3
-ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
-ms.translationtype: HT
+ms.openlocfilehash: 887bda92a1165a3dd17e9105e921a5df9e0c5534
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "41918317"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61248160"
 ---
 # <a name="provision-devices-across-load-balanced-iot-hubs"></a>Zřízení zařízení v několika centrech IoT s vyrovnáváním zatížení
 
@@ -46,11 +46,11 @@ Seznam registrací informuje službu Device Provisioning o tom, jaká metoda ov�
 
 ## <a name="set-the-device-provisioning-service-allocation-policy"></a>Nastavení zásad přidělování služby Device Provisioning
 
-Zásady přidělování jsou nastavením služby Device Provisioning, které určuje způsob přiřazování zařízení k centru IoT. Existují tři podporované zásady přidělování: 
+Zásady přidělování jsou nastavením služby Device Provisioning, které určuje způsob přiřazování zařízení k centru IoT. Existují tři podporované zásady přidělování: 
 
-1. **Nejnižší latence:** Zařízení se zřizují v centru IoT, které má se zařízením nejnižší latenci.
-2. **Rovnoměrně vážená distribuce (výchozí):** Zařízení se zřizují se stejnou pravděpodobností ve všech propojených centrech IoT. Toto je výchozí nastavení. Pokud zřizujete zařízení pouze v jednom centru IoT, můžete nechat toto nastavení. 
-3. **Statická konfigurace prostřednictvím seznamu registrací:** Specifikace požadovaného centra IoT v seznamu registrací má přednost před zásadami přidělování na úrovni služby Device Provisioning.
+1. **Nejnižší latence**: Zařízení se zřizují podle centra s nejnižší latenci do zařízení IoT hubu.
+2. **Rovnoměrně vážená distribuce** (výchozí): Propojená centra IoT hub se stejnou pravděpodobností zařízení se zřizují k nim. Toto je výchozí nastavení. Pokud zřizujete zařízení pouze v jednom centru IoT, můžete nechat toto nastavení. 
+3. **Statická konfigurace přes seznam registrací**: Specifikace požadovaného centra IoT v seznamu registrací má přednost před zásady přidělování Device Provisioning Service – úroveň.
 
 Postupujte podle těchto kroků k nastavení zásad přidělování:
 
@@ -58,7 +58,7 @@ Postupujte podle těchto kroků k nastavení zásad přidělování:
 2. Nastavte zásady přidělování na **Rovnoměrně vážená distribuce**.
 3. Klikněte na **Uložit**.
 
-## <a name="link-the-new-iot-hub-to-the-device-provisioning-service"></a>Propojení nového centra IoT se službou Device Provisioning
+## <a name="link-the-new-iot-hub-to-the-device-provisioning-service"></a>Propojit nové centrum IoT se službou Device Provisioning
 
 Propojte službu Device Provisioning a centrum IoT, aby služba Device Provisioning mohla do daného centra registrovat zařízení.
 
@@ -68,7 +68,7 @@ Propojte službu Device Provisioning a centrum IoT, aby služba Device Provision
 4. Na stránce **Přidat propojení s centrem IoT** pomocí přepínačů určete, jestli je propojené centrum IoT umístěné v aktuálním předplatném nebo v jiném předplatném. Pak v poli **Centrum IoT** zvolte název centra IoT.
 5. Klikněte na **Uložit**.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 V tomto kurzu jste se naučili:
 

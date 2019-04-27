@@ -1,7 +1,6 @@
 ---
 title: Přidejte knihovny Apache Hive při vytváření clusteru HDInsight – Azure
 description: Zjistěte, jak přidat Apache Hive knihovny (soubory jar) do clusteru během vytváření clusteru HDInsight.
-services: hdinsight
 author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
@@ -9,12 +8,12 @@ ms.topic: conceptual
 ms.date: 02/27/2018
 ms.author: hrasheed
 ms.custom: H1Hack27Feb2017,hdinsightactive
-ms.openlocfilehash: 6001d291581dc317da89cadbf3891e334362062b
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: fe8f97368531ed572083834256d84cd1ed6dd8a1
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57897584"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62098299"
 ---
 # <a name="add-custom-apache-hive-libraries-when-creating-your-hdinsight-cluster"></a>Přidat vlastní knihovny Apache Hive při vytváření clusteru HDInsight
 

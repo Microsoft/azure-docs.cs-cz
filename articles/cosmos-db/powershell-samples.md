@@ -7,11 +7,11 @@ ms.topic: sample
 ms.date: 10/16/2017
 ms.author: sngun
 ms.openlocfilehash: 3498ac6a2a4aaa1682d7b5bc5aae5383866d5bcd
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56873793"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60926152"
 ---
 # <a name="azure-powershell-samples-for-azure-cosmos-db"></a>Ukázky Azure PowerShellu pro službu Azure Cosmos DB
 

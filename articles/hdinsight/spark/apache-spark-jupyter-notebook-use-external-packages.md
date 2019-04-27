@@ -1,7 +1,6 @@
 ---
 title: Vlastní balíčky Maven pomocí Jupyter ve Sparku v Azure HDInsight
 description: Podrobné pokyny ke konfiguraci k dispozici poznámkové bloky Jupyter s clustery HDInsight Spark používat vlastní balíčky Maven.
-services: hdinsight
 author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
@@ -9,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/09/2018
 ms.author: hrasheed
-ms.openlocfilehash: c0394025fef15b987f0777d157c465e83d860601
-ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
+ms.openlocfilehash: 6af25b95aa3a38c4a2e9f3bd8147604dccae0abb
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/20/2018
-ms.locfileid: "53652128"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62124172"
 ---
 # <a name="use-external-packages-with-jupyter-notebooks-in-apache-spark-clusters-on-hdinsight"></a>Použití externích balíčků s poznámkovými bloky Jupyter v clusterech Apache Spark v HDInsight
 > [!div class="op_single_selector"]

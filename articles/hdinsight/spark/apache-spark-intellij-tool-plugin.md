@@ -1,7 +1,6 @@
 ---
 title: 'Azure Toolkit for IntelliJ: Vytvoření aplikací Spark pro HDInsight cluster '
 description: Pomocí sady Azure Toolkit pro IntelliJ můžete vyvíjet aplikace Spark napsané v jazyce Scala a odesílat je na cluster HDInsight Spark.
-services: hdinsight
 author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
@@ -9,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/15/2019
 ms.author: maxluk
-ms.openlocfilehash: 8fa3cd79011ab31349ec44edf52b8fd9048d0d37
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 682b2266442f3aba6696385862844e1b4b93aa3d
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58077968"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62124250"
 ---
 # <a name="use-azure-toolkit-for-intellij-to-create-apache-spark-applications-for-an-hdinsight-cluster"></a>Vytváření aplikací Apache Spark pro cluster služby HDInsight pomocí sady Azure Toolkit pro IntelliJ
 
@@ -238,7 +237,7 @@ Pomocí sady Azure Toolkit pro IntelliJ můžete provádět různé operace.  V�
 
 2. V pravém podokně klikněte **zobrazení úloh Spark** karta zobrazuje všechny aplikace, které byly spuštěny v clusteru. Vyberte název aplikace, pro kterou chcete zobrazit další podrobnosti.
 
-    ![Podrobnosti aplikace](./media/apache-spark-intellij-tool-plugin/view-job-logs.png)
+    ![Podrobnosti o aplikaci](./media/apache-spark-intellij-tool-plugin/view-job-logs.png)
 
 3. Zobrazit základní informace o úloze spuštěné, najeďte myší graf úlohy. Chcete-li zobrazit graf fází a informace, které generuje všechny úlohy, vyberte uzel v grafu úlohy.
 

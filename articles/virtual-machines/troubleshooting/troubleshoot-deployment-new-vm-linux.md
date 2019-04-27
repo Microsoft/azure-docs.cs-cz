@@ -16,11 +16,11 @@ ms.topic: troubleshooting
 ms.date: 09/09/2016
 ms.author: cjiang
 ms.openlocfilehash: 9fea914fdf9b025fd5d38219a6bfc81b4a9cc584
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57450275"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62125612"
 ---
 # <a name="troubleshoot-resource-manager-deployment-issues-with-creating-a-new-linux-virtual-machine-in-azure"></a>Potíží s nasazením Resource Manageru s vytvářením nového virtuálního počítače Linux v Azure
 [!INCLUDE [virtual-machines-troubleshoot-deployment-new-vm-opening](../../../includes/virtual-machines-troubleshoot-deployment-new-vm-opening-include.md)]
@@ -30,7 +30,7 @@ ms.locfileid: "57450275"
 ## <a name="top-issues"></a>Nejčastější problémy
 [!INCLUDE [support-disclaimer](../../../includes/virtual-machines-linux-troubleshoot-deploy-vm-top.md)]
 
-Jiné problémy při nasazení virtuálního počítače a dotazy, naleznete v tématu [řešení potíží s nasazením Linux virtuálního počítače v Azure](troubleshoot-deploy-vm-linux.md).
+Další dotazy a potíže s nasazením virtuálního počítače najdete v tématu [Řešení potíží s nasazením linuxového virtuálního počítače v Azure](troubleshoot-deploy-vm-linux.md).
 
 ## <a name="collect-activity-logs"></a>Protokoly aktivit shromažďování
 Proces řešení potíží, shromažďování protokolů aktivit k identifikaci chyby související s problémem. Následující odkazy obsahují podrobné informace o procesu dodržovat.

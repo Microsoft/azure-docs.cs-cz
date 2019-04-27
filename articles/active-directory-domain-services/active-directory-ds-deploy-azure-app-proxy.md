@@ -16,11 +16,11 @@ ms.topic: conceptual
 ms.date: 06/22/2018
 ms.author: ergreenl
 ms.openlocfilehash: 867d061e46494e5ef65340ce325a71638acc8dfa
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58099623"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62104047"
 ---
 # <a name="deploy-azure-ad-application-proxy-on-an-azure-ad-domain-services-managed-domain"></a>Nasazení Proxy aplikací Azure AD ve spravované doméně Azure AD Domain Services
 Proxy aplikací služby Azure Active Directory (AD) umožňuje podporu vzdálených pracovních procesů publikováním místních aplikací, aby byly přístupné přes internet. S Azure AD Domain Services můžete nyní lift and shift starší aplikace spuštěné v místním se službami infrastruktury Azure. Pak můžete publikovat tyto aplikace pomocí Azure AD Application Proxy, k zajištění bezpečného vzdáleného přístupu pro uživatele ve vaší organizaci.
@@ -29,7 +29,7 @@ Pokud začínáte Proxy aplikací služby Azure AD, přečtěte si informace o t
 
 [!INCLUDE [active-directory-ds-prerequisites.md](../../includes/active-directory-ds-prerequisites.md)]
 
-## <a name="before-you-begin"></a>Před zahájením
+## <a name="before-you-begin"></a>Než začnete
 K provádění úkolů uvedených v tomto článku, budete potřebovat:
 
 1. Platný **předplatného Azure**.
@@ -49,7 +49,7 @@ Proveďte následující kroky, aby Azure AD Application Proxy pro váš adresá
     ![Vyberte adresář Azure AD](./media/app-proxy/app-proxy-enable-start.png)
 3. Klikněte na tlačítko **proxy aplikací**. Pokud nemáte předplatné Azure AD Premium nebo Azure AD Basic, zobrazí se možnost povolit zkušební verzi. Přepnout **povolit Proxy aplikací?** k **povolit** a klikněte na tlačítko **Uložit**.
 
-    ![Povolení Proxy aplikace](./media/app-proxy/app-proxy-enable-proxy-blade.png)
+    ![Povolení proxy aplikace](./media/app-proxy/app-proxy-enable-proxy-blade.png)
 4. Chcete-li stáhnout konektor, klikněte na tlačítko **konektor** tlačítko.
 
     ![Stáhnout konektor](./media/app-proxy/app-proxy-enabled-download-connector.png)

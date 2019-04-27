@@ -11,11 +11,11 @@ ms.date: 04/17/2019
 ms.author: kgremban
 ms.custom: mvc
 ms.openlocfilehash: 70a8e17ecdd318a800c51e04b4453c182d1fbdc1
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59699145"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61248854"
 ---
 # <a name="what-is-azure-iot-edge"></a>Co je Azure IoT Edge
 

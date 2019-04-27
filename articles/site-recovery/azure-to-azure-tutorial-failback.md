@@ -2,19 +2,20 @@
 title: Selhání obnovení virtuálních počítačů Azure replikovaných do sekundární oblasti Azure pro zotavení po havárii pomocí služby Azure Site Recovery.
 description: Zjistěte, jak převzít služby při obnovení virtuálních počítačů Azure pomocí služby Azure Site Recovery.
 services: site-recovery
-author: rayne-wiselman
-manager: carmonm
+author: rockboyfor
+manager: digimobile
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 03/18/2019
-ms.author: raynew
+origin.date: 03/18/2019
+ms.date: 04/22/2019
+ms.author: v-yeche
 ms.custom: mvc
 ms.openlocfilehash: c8ce05e644ad556542314b17151b808586734824
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58315313"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62118175"
 ---
 # <a name="fail-back-azure-vms-between-azure-regions"></a>Selhání obnovení virtuálních počítačů Azure mezi oblastmi Azure
 
@@ -68,3 +69,6 @@ Po virtuální počítače se znovu zapnula, můžete navrátit služby zpět do
 ## <a name="next-steps"></a>Další postup
 
 [Další informace](azure-to-azure-how-to-reprotect.md#what-happens-during-reprotection) o opětovného nastavování ochrany toku.
+
+<!--Update_Description: new articles on azure to azure tutorial failback -->
+<!--ms.date: 04/22/2019-->

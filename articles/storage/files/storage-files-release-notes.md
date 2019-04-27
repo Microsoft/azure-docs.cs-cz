@@ -5,15 +5,15 @@ services: storage
 author: wmgries
 ms.service: storage
 ms.topic: article
-ms.date: 4/4/2019
+ms.date: 4/22/2019
 ms.author: wgries
 ms.subservice: files
-ms.openlocfilehash: e709ccee9dfcc6b6931df86b5dd38c7255baefdb
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 9a8fe1c083ab4e241cf236fd6f731fba1aa67f87
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59792569"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62112710"
 ---
 # <a name="release-notes-for-the-azure-file-sync-agent"></a>Poznámky k verzi pro agenta Azure File Sync
 Synchronizace souborů Azure umožňuje centralizovat sdílené složky organizace ve službě Soubory Azure bez ztráty flexibility, výkonu a kompatibility místního souborového serveru. Vaše instalace Windows Serveru se transformují na rychlou mezipaměť sdílené složky Azure. Pro místní přístup k datům můžete použít jakýkoli protokol dostupný ve Windows Serveru (včetně SMB, NFS a FTPS). Můžete mít libovolný počet mezipamětí po celém světě.
@@ -25,7 +25,8 @@ Agent Synchronizace souborů Azure podporuje následující verze:
 
 | Milník | Číslo verze agenta | Datum vydání | Status |
 |----|----------------------|--------------|------------------|
-| 2019 dubna kumulativní - [KB4481061](https://support.microsoft.com/help/4481061)| 5.2.0.0 | 4. dubna 2019 | Podporované (doporučená verze) |
+| V6 Release - [KB4489736](https://support.microsoft.com/help/4489736)| 6.0.0.0 | 21. dubna 2019 | Podporované (doporučená verze) |
+| 2019 dubna kumulativní - [KB4481061](https://support.microsoft.com/help/4481061)| 5.2.0.0 | 4. dubna 2019 | Podporováno |
 | Kumulativní – aktualizace březen 2019 [KB4481060](https://support.microsoft.com/help/4481060)| 5.1.0.0 | 7. března 2019 | Podporováno |
 | Verze 5 Release - [KB4459989](https://support.microsoft.com/help/4459989)| 5.0.2.0 | 12. února 2019 | Podporováno |
 | 2019 ledna kumulativní - [KB4481059](https://support.microsoft.com/help/4481059)| 4.3.0.0 | Od 14. května 2019 | Podporováno |
@@ -39,6 +40,82 @@ Agent Synchronizace souborů Azure podporuje následující verze:
 
 ### <a name="azure-file-sync-agent-update-policy"></a>Zásady aktualizace agenta Synchronizace souborů Azure
 [!INCLUDE [storage-sync-files-agent-update-policy](../../../includes/storage-sync-files-agent-update-policy.md)]
+
+## <a name="agent-version-6000"></a>Verze agenta 6.0.0.0
+Následující poznámky k verzi platí pro verzi 6.0.0.0 agenta Azure File Sync (vydané 22. dubna 2019).
+
+### <a name="improvements-and-issues-that-are-fixed"></a>Vylepšení a vyřešené problémy
+
+- Podporuje automatické aktualizace agenta
+  - Jsme slyšeli váš názor a rozrostl o funkci Automatické aktualizace na server agenta Azure File Sync. Další informace najdete v tématu [zásady aktualizace agenta Azure File Sync](https://docs.microsoft.com/azure/storage/files/storage-files-release-notes#azure-file-sync-agent-update-policy).
+- Podpora pro Azure file sdílet seznamy ACL
+  - Azure File Sync vždy podporuje synchronizaci mezi koncové body serveru seznamy ACL, ale nebyly synchronizovány seznamy ACL ke koncovým bodům cloudu (Azure file share). Tato verze přidává podporu pro synchronizaci seznamy řízení přístupu mezi serverem a koncové body cloudu.
+- Paralelní nahrávání a stahování relace synchronizace pro koncový bod serveru 
+  - Koncové body serveru teď podporují nahrávání a stahování souborů ve stejnou dobu. Žádné další čeká na stažení dokončete tak soubory můžete nahrát do sdílené složky Azure. 
+- Nové rutiny zobrazíte svazku a vrstvení stav vrstvení cloudu
+  - Dvě nové, místní server rutiny Powershellu teď umožňuje získat informace o odvolání cloudu ovládání datových vrstev a soubor. Protokolování informací z dvou kanálů událostí na serveru využívají k dispozici:
+    - Get-StorageSyncFileTieringResult zobrazí seznam všech souborů a jejich cesty, které nebyly vrstvené a zprávy o důvod proč.
+    - Get-StorageSyncFileRecallResult hlásí všechny události spojené s vracením souboru. Uvádí seznam všech souborů připomenout a jeho cesty a také úspěch nebo chyba pro tohoto odvolání.
+  - Ve výchozím nastavení jak události kanálů můžete uložit až 1MB – může se zvýšit množství souborů hlášené zvětšením velikosti kanálu událostí.
+- Podpora režimu FIPS
+  - Azure File Sync teď podporuje povolení režimu FIPS na serverech, které mají nainstalovaného agenta Azure File Sync.
+    - Před povolením režimu FIPS na serveru, nainstalujte agenta Azure File Sync a [modulu PackageManagement](https://www.powershellgallery.com/packages/PackageManagement/1.1.7.2) na vašem serveru. Pokud už je povolený standard FIPS na serveru, [ručně stáhnout](https://docs.microsoft.com/powershell/gallery/how-to/working-with-packages/manual-download) [modulu PackageManagement](https://www.powershellgallery.com/packages/PackageManagement/1.1.7.2) k vašemu serveru.
+- Různé vyšší spolehlivost pro ovládání datových vrstev a synchronizace cloudu
+
+### <a name="evaluation-tool"></a>Nástroj pro vyhodnocení
+Před nasazením Azure File Sync, byste měli předem zvážit, jestli je kompatibilní s nástrojem pro vyhodnocení Azure File Sync systémem. Tento nástroj je rutiny Azure Powershellu, který kontroluje potenciální problémy s systému souborů a datové sady, jako jsou nepodporované znaky nebo Nepodporovaná verze operačního systému. Pokyny pro instalaci a použití, naleznete v tématu [nástroj pro vyhodnocení](https://docs.microsoft.com/azure/storage/files/storage-sync-files-planning#evaluation-tool) části v Průvodci plánem. 
+
+### <a name="agent-installation-and-server-configuration"></a>Instalace agenta a konfigurace serveru
+Další informace o tom, jak nainstalovat a nakonfigurovat agenta Azure File Sync se systémem Windows Server najdete v tématu [plánování nasazení služby Azure File Sync](storage-sync-files-planning.md) a [postup nasazení služby Azure File Sync](storage-sync-files-deployment-guide.md).
+
+- Instalační balíček agenta musí být nainstalovaný oprávnění se zvýšenými oprávněními (správce).
+- Agent se nepodporuje na možnosti nasazení Nano serveru.
+- Agent se podporuje jenom u 2019 serveru systému Windows, Windows Server 2016 a Windows Server 2012 R2.
+- Agent vyžaduje alespoň 2 GB paměti. Pokud na serveru běží na virtuálním počítači s povolenou dynamickou paměť, musí být virtuální počítač nakonfigurovaný s minimální MiB 2048 paměti.
+- Služba agenta synchronizace úložiště (FileSyncSvc) nepodporuje koncové body serveru nachází na svazku, který má systémový svazek informace (SVI) adresář komprimované. Tato konfigurace bude vést k neočekávaným výsledkům.
+
+### <a name="interoperability"></a>Vzájemná funkční spolupráce
+- Antivirové, zálohovací a další aplikace s přístupem k vrstveným souborům můžou způsobit nežádoucí odvolání, pokud nerespektují atribut offline a přeskočí čtení obsahu těchto souborů. Další informace najdete v tématu [Poradce při potížích s Azure File Sync](storage-sync-files-troubleshoot.md).
+- Blokování souborů správce prostředků souborového serveru (FSRM) může způsobit chyby nekonečné synchronizace, pokud soubory jsou blokovány z důvodu blokování souborů.
+- Spuštění příkazu sysprep na serveru, který má nainstalovaného agenta Azure File Sync není podporováno a může vést k neočekávaným výsledkům. Po nasazení bitové kopie serveru a dokončení zkrácené instalace nástroje sysprep, je třeba nainstalovat agenta Azure File Sync.
+
+### <a name="sync-limitations"></a>Omezení synchronizace
+Následující položky se nesynchronizují, ale zbytek systému bude fungovat normálně dál:
+- Soubory s nepodporované znaky. Zobrazit [Průvodce odstraňováním potíží](storage-sync-files-troubleshoot.md#handling-unsupported-characters) seznam nepodporovaných znaků.
+- Soubory nebo adresáře, které končí tečkou.
+- Cesty delší než 2 048 znaků.
+- Část volitelného seznamu řízení přístupu (DACL) popisovače zabezpečení, pokud je větší než 2 kB. (To je problém pouze v případě, že pro jednu položku máte více než přibližně 40 položek řízení přístupu.)
+- Část seznamu řízení auditování přístupu (SACL) popisovače zabezpečení, která se používá se pro auditování.
+- Rozšířené atributy.
+- Alternativní datové proudy.
+- Body rozboru.
+- Pevné odkazy.
+- Komprese (pokud je nastavená pro soubor na serveru) se nezachová při synchronizaci změn do tohoto souboru z ostatních koncových bodů.
+- Všechny soubory šifrované pomocí systému souborů EFS (nebo jiného šifrování v uživatelském režimu), který brání službě ve čtení těchto dat.
+
+    > [!Note]  
+    > Synchronizace souborů Azure vždy šifruje přenášená data. Neaktivní uložená data se vždy šifrují v Azure.
+ 
+### <a name="server-endpoint"></a>Koncový bod serveru
+- Koncový bod serveru je možné vytvořit pouze na svazku NTFS. Synchronizace souborů Azure v současné době nepodporuje systémy souborů ReFS, FAT, FAT32 a jiné.
+- Vrstvené soubory bude nedostupná, pokud nejsou soubory připomenout, před odstraněním koncový bod serveru. Chcete-li obnovit přístup k souborům, znovu vytvořte koncový bod serveru. Pokud 30 dnů jste předali, protože se odstranil koncový bod serveru nebo koncového bodu cloudu byl odstraněn, nepoužitelné vrstvené soubory, které nebyly připomenout.
+- Cloud nepodporuje ovládání datových vrstev na systémovém svazku. Pokud chcete vytvořit koncový bod serveru na systémovém svazku, zakažte vrstvení cloudu po vytvoření koncového bodu serveru.
+- Clustering převzetí služeb při selhání se podporuje pouze s clusterovanými disky, nikoli však se sdílenými svazky clusteru (CSV).
+- Koncový bod serveru nemůže být vnořený. Může existovat paralelně na stejném svazku spolu s jiným koncovým bodem.
+- Neukládejte operačního systému nebo aplikace stránkovacího souboru v rámci umístění koncového bodu serveru.
+- Název serveru na portálu není aktualizován, pokud bylo přejmenováno na serveru.
+
+### <a name="cloud-endpoint"></a>Koncový bod cloudu.
+- Azure File Sync podporuje provádění změn přímo do sdílené složky Azure. Však všechny změny provedené na sdílenou složku Azure nejprve mají být zjišťované úlohou detekce změn v Azure File Sync. Pro koncový bod cloudu jednou za 24 hodin se spustí úloha zjišťování změn. Kromě toho změny provedené do sdílené složky Azure přes protokol REST neaktualizuje SMB čas poslední změny a se projeví jako změnu synchronizace.
+- Služba synchronizace úložiště a/nebo účtu úložiště lze přesunout do jiné skupiny prostředků nebo předplatného v rámci stávajícího tenanta Azure AD. Pokud účet úložiště se přesune, budete muset poskytnout přístup hybridní služby File Sync k účtu úložiště (viz [zajistit Azure File Sync má přístup k účtu úložiště](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cportal#troubleshoot-rbac)).
+
+    > [!Note]  
+    > Azure File Sync nepodporuje přesun předplatného na jinou v Azure AD tenanta.
+
+### <a name="cloud-tiering"></a>Vrstvení cloudu
+- Pokud se vrstvený soubor zkopíruje do nového umístění pomocí příkazu Robocopy, výsledný soubor nebude vrstvený. Může však mít nastavený atribut offline, protože příkaz Robocopy nesprávně zahrnuje tento atribut do operací kopírování.
+- Při kopírování souborů pomocí příkazu robocopy, použijte možnost/MIR zachovat časová razítka souborů. Tím se zajistí, že starší souborů proběhne rychleji než naposledy použitých souborů.
+- Při zobrazení vlastností souboru v klientovi SMB se může zobrazit nesprávně nastavený atribut offline. Důvodem je ukládání metadat souboru do mezipaměti protokolem SMB.
 
 ## <a name="agent-version-5200"></a>Verze agenta 5.2.0.0
 Následující poznámky k verzi platí pro verze 5.2.0.0 agenta Azure File Sync vydané 4. dubna 2019. Tyto poznámky doplňují uvedené verze 5.0.2.0 poznámky.

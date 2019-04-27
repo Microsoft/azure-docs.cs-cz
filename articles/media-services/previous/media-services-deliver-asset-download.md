@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.openlocfilehash: 21fcc6ae09718ffbb22e1d438926586dd3cde71d
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58182655"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61465656"
 ---
 # <a name="how-to-deliver-an-asset-by-download"></a>Postup: Prostředek doručení materiálu stažením  
 Tento článek popisuje možnosti pro poskytování mediálních materiálů nahráli do Media Services. V mnoha scénářích aplikací může doručovat obsah Media Services. Po kódování, stáhněte si vygenerované mediálních materiálů nebo k nim přistupovat pomocí Lokátor streamování. Vylepšení výkonu a škálovatelnosti může také doručovat obsah s využitím Content Delivery Network (CDN).

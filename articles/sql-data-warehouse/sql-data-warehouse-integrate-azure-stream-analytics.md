@@ -2,20 +2,21 @@
 title: Pomocí Azure Stream Analytics s využitím SQL Data Warehouse | Dokumentace Microsoftu
 description: Tipy pro používání Azure Stream Analytics s využitím Azure SQL Data Warehouse pro vývoj řešení.
 services: sql-data-warehouse
-author: KavithaJonnakuti
-manager: craigg
+author: WenJason
+manager: digimobile
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: consume
-ms.date: 03/22/2019
-ms.author: kavithaj
+origin.date: 03/22/2019
+ms.date: 04/01/2019
+ms.author: v-jay
 ms.reviewer: igorstan
 ms.openlocfilehash: 3a260102e9964cfc248ed3dbabab487bd1c5dfc2
-ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58403761"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61474304"
 ---
 # <a name="use-azure-stream-analytics-with-sql-data-warehouse"></a>Pomocí Azure Stream Analytics s využitím SQL Data Warehouse
 Azure Stream Analytics je plně spravovaná služba poskytuje nízkou latenci, vysoce dostupná a škálovatelná komplexní zpracování událostí přes streamovaných dat v cloudu. Seznámíte se základy načtením [Úvod do služby Azure Stream Analytics][Introduction to Azure Stream Analytics]. Můžete pak zjistěte, jak vytvořit-ucelené řešení Stream Analytics pomocí následujících [začít používat Azure Stream Analytics] [ Get started using Azure Stream Analytics] kurzu.
@@ -84,4 +85,6 @@ Další tipy pro vývoj najdete v části [Přehled vývoje SQL Data Warehouse][
 <!--MSDN references-->
 
 <!--Other Web references-->
-[Azure Stream Analytics documentation]: https://azure.microsoft.com/documentation/services/stream-analytics/
+[Azure Stream Analytics documentation]: /stream-analytics/
+
+<!-- Update_Description: update meta properties, wording update -->

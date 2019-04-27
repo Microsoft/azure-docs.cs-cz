@@ -11,11 +11,11 @@ ms.topic: conceptual
 ms.date: 10/19/2018
 ms.author: glenga
 ms.openlocfilehash: 44bc5a245d1bcbc8ff53991af4193ef86f7cd704
-ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58436315"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62107070"
 ---
 # <a name="hostjson-reference-for-azure-functions-1x"></a>referenční materiály k Host.JSON pro Azure Functions 1.x
 
@@ -165,7 +165,7 @@ Nastavení konfigurace pro [monitorování stavu hostitelů](https://github.com/
 
 |Vlastnost  |Výchozí | Popis |
 |---------|---------|---------| 
-|enabled|true (pravda)|Určuje, zda je povolena funkce. | 
+|povoleno|true (pravda)|Určuje, zda je povolena funkce. | 
 |healthCheckInterval|10 sekund|Časový interval mezi stavu na pozadí pravidelně kontroluje. | 
 |healthCheckWindow|2 minut|Použít ve spojení s klouzavého časového období `healthCheckThreshold` nastavení.| 
 |healthCheckThreshold|6|Maximální počet pokusů o kontrolu stavu může selhat, předtím, než je zahájeno recyklace hostitele.| 

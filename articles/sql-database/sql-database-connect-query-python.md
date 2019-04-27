@@ -13,21 +13,21 @@ ms.reviewer: ''
 manager: craigg
 ms.date: 03/25/2019
 ms.openlocfilehash: 788e21dc5d866bdd6641349ceeeeacbfab98c25c
-ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58444971"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60866169"
 ---
-# <a name="quickstart-use-python-to-query-an-azure-sql-database"></a>Rychlý start: Použití Pythonu k dotazování databáze SQL Azure
+# <a name="quickstart-use-python-to-query-an-azure-sql-database"></a>Rychlý start: Použití Pythonu k dotazování databáze Azure SQL
 
- Tento rychlý start ukazuje použití [Pythonu](https://python.org) pro připojení k databázi SQL Azure a použití příkazů jazyka Transact-SQL k dotazování dat. Další podrobnosti o sadě SDK, projděte si naše [odkaz](https://docs.microsoft.com/python/api/overview/azure/sql) dokumentaci, [úložiště GitHub pyodbc](https://github.com/mkleehammer/pyodbc/wiki/)a [pyodbc ukázka](https://github.com/mkleehammer/pyodbc/wiki/Getting-started).
+ Tento rychlý start ukazuje použití [Pythonu](https://python.org) pro připojení k databázi Azure SQL a použití příkazů jazyka Transact-SQL k dotazování dat. Další podrobnosti o sadě SDK, projděte si naše [odkaz](https://docs.microsoft.com/python/api/overview/azure/sql) dokumentaci, [úložiště GitHub pyodbc](https://github.com/mkleehammer/pyodbc/wiki/)a [pyodbc ukázka](https://github.com/mkleehammer/pyodbc/wiki/Getting-started).
 
 ## <a name="prerequisites"></a>Požadavky
 
 Abyste mohli absolvovat tento rychlý start, ujistěte se, že máte následující:
 
-- Databázi SQL Azure. Jeden z těchto rychlých startech můžete vytvořit a potom nakonfigurovat databázi ve službě Azure SQL Database:
+- Databázi Azure SQL. Jeden z těchto rychlých startech můžete vytvořit a potom nakonfigurovat databázi ve službě Azure SQL Database:
 
   || Izolovaná databáze | Spravovaná instance |
   |:--- |:--- |:---|
@@ -99,7 +99,7 @@ Získejte informace o připojení potřebné pro připojení k databázi Azure S
 
 ## <a name="next-steps"></a>Další postup
 
-- [Návrh první databáze SQL Azure](sql-database-design-first-database.md)
+- [Návrh první databáze Azure SQL](sql-database-design-first-database.md)
 - [Ovladače Microsoft Python pro SQL Server](https://docs.microsoft.com/sql/connect/python/python-driver-for-sql-server/)
 - [Středisko pro vývojáře v Pythonu](https://azure.microsoft.com/develop/python/?v=17.23h)
 

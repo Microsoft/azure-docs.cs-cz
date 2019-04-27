@@ -13,11 +13,11 @@ ms.workload: na
 ms.date: 12/07/2018
 ms.author: kgremban
 ms.openlocfilehash: 9c84e1a62ad8b67e398c62074c390711f4b0be28
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58079993"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60823702"
 ---
 # <a name="tutorial-send-email-notifications-about-azure-iot-hub-events-using-logic-apps"></a>Kurz: Posílání e-mailových oznámení o událostech Azure IoT Hub pomocí Logic Apps
 

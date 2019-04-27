@@ -1,7 +1,6 @@
 ---
 title: Migrace s místními clustery systému Apache Hadoop do HDInsight Azure - storage osvědčené postupy
 description: Přečtěte si osvědčené postupy úložiště migrace místních Hadoop clusterů pro Azure HDInsight.
-services: hdinsight
 author: hrasheed-msft
 ms.reviewer: ashishth
 ms.service: hdinsight
@@ -9,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 10/25/2018
 ms.author: hrasheed
-ms.openlocfilehash: f3ac60eb45c86b6cd2ded0340ac6bde478086464
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
-ms.translationtype: HT
+ms.openlocfilehash: c62a5384edf66fd9309bc7afcb50ada48e3fca7d
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60000058"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62095278"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---storage-best-practices"></a>Migrace s místními clustery systému Apache Hadoop do HDInsight Azure - storage osvědčené postupy
 
@@ -172,11 +171,11 @@ HDInsight ve výchozím nastavení má úplný přístup k datům v Azure Storag
 
 5. K omezení přístupu ke kontejneru pomocí sdíleného přístupového podpisu, přidejte vlastní položky ke konfiguraci základního webu pro cluster pod Ambari HDFS Configs Advanced vlastní základní web přidat vlastnost.
 
-6. Použijte následující hodnoty **klíč** a **hodnotu** pole:
+6. Použijte následující hodnoty **klíč** a **hodnotu** pole:
 
     **Klíč**: `fs.azure.sas.YOURCONTAINER.YOURACCOUNT.blob.core.windows.net` **Hodnota**: KLÍČ SAS pro vrácený Python aplikace od kroku 4 výše.
 
-7. Klikněte na tlačítko **přidat** tlačítko Uložit tento klíč a hodnotu a pak klikněte na tlačítko **Uložit** tlačítko Uložit změny konfigurace. Po zobrazení výzvy, přidejte popis změny ("Přidání přístup k úložišti SAS" příklad) a potom klikněte na **Uložit**.
+7. Klikněte na tlačítko **přidat** tlačítko Uložit tento klíč a hodnotu a pak klikněte na tlačítko **Uložit** tlačítko Uložit změny konfigurace. Po zobrazení výzvy, přidejte popis změny ("Přidání přístup k úložišti SAS" příklad) a potom klikněte na **Uložit**.
 
 8. V Ambari webového uživatelského rozhraní, HDFS vyberte ze seznamu na levé straně a pak vyberte **restartujte všechny ovlivněné** z akce služby rozevírací seznam na pravé straně. Po zobrazení výzvy vyberte **potvrďte restartování všech**.
 

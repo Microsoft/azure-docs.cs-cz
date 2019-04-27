@@ -15,11 +15,11 @@ ms.topic: conceptual
 ms.date: 03/28/2019
 ms.author: pbutlerm
 ms.openlocfilehash: fbc542ea2ed76d99d551d668b00bad1fb3719a9f
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59012932"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62101587"
 ---
 # <a name="register-a-saas-application"></a>Registrace aplikace SaaS
 

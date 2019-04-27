@@ -9,11 +9,11 @@ ms.topic: quickstart
 ms.date: 01/22/2018
 ms.author: lbosq
 ms.openlocfilehash: 5b76d7393e78b464227e93a4c7c8a3f22ccc169e
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58092527"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60891704"
 ---
 # <a name="quickstart-create-a-graph-database-in-azure-cosmos-db-using-python-and-the-azure-portal"></a>Rychlý start: Vytvořit databázi grafu ve službě Azure Cosmos DB pomocí Pythonu a webu Azure portal
 

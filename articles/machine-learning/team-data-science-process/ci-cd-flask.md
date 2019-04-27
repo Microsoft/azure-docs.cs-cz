@@ -12,11 +12,11 @@ ms.date: 05/22/2018
 ms.author: tdsp
 ms.custom: seodec18, previous-author=jainr, previous-ms.author=jainr
 ms.openlocfilehash: d99149f8112c19a07208523a1ee26ba1c36e5362
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55474220"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62103536"
 ---
 # <a name="creating-continuous-integration-pipeline-on-azure-using-docker-kubernetes-and-python-flask-application"></a>Vytvoření kanálu průběžné integrace v Azure s využitím aplikace Python Flask, Docker a Kubernetes
 Aplikace AI jsou často dvěma datovými proudy práce, datovým vědcům sestavování modelů strojového učení a vývojáře aplikací, vytváření aplikace, která bude vystavená koncovým uživatelům využívat. V tomto článku jsme ukazují, jak implementovat průběžné integrace (CI) / průběžné doručování (CD) kanálů pro aplikaci AI. Aplikace AI je kombinací kódu aplikace, které jsou vložené s modelem které je předem vytrénované machine learning (ML). Pro účely tohoto článku jsme pretrained modelu načítají z účtu úložiště objektů blob v Azure privátní, může to být účet AWS S3. Pro článek budeme používat webovou aplikaci flask python jednoduché.

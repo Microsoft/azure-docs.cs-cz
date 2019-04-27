@@ -10,13 +10,13 @@ ms.service: dms
 ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
-ms.date: 03/12/2019
-ms.openlocfilehash: 2f3a8237fff052779afee718837e2b72fc33d9a8
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.date: 04/23/2019
+ms.openlocfilehash: 2c8a3f36e04fbedfdd127939d55fab376e3e6b30
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/23/2019
-ms.locfileid: "60532180"
+ms.locfileid: "62097755"
 ---
 # <a name="known-issuesmigration-limitations-with-online-migrations-to-azure-db-for-postgresql"></a>Známé problémy a migrace omezení online migrace do Azure DB for PostgreSQL
 
@@ -25,6 +25,10 @@ Známé problémy a omezení související s online migraci z PostgreSQL do slu�
 ## <a name="online-migration-configuration"></a>Online migrace konfigurace
 - Zdrojový PostgreSQL Server musí běžet verze 9.5.11, 9.6.7 nebo 10.3 nebo novější. Další informace najdete v článku [podporované verze databáze PostgreSQL](../postgresql/concepts-supported-versions.md).
 - Jsou podporovány pouze stejné verze migrace. Například migrace PostgreSQL 9.5.11 ke službě Azure Database for PostgreSQL 9.6.7 nepodporuje.
+
+    > [!NOTE]
+    > Pro PostgreSQL verze 10 aktuálně DMS podporuje jenom migrace z verze 10.3 ke službě Azure Database for PostgreSQL. Plánujeme velmi brzy podporují novější verze PostgreSQL.
+
 - Povolení logické replikace v **source PostgreSQL postgresql.conf** souborů, nastavit následující parametry:
     - **wal_level** = logické
     - **max_replication_slots** = [maximální počet databází pro migraci]; Pokud chcete migrovat databáze s 4, nastavte hodnotu na 4

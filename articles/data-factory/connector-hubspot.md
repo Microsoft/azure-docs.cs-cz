@@ -13,11 +13,11 @@ ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: jingwang
 ms.openlocfilehash: 86c38818ee1632bf2d2f3fb1e1240954f3267887
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55567311"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62123699"
 ---
 # <a name="copy-data-from-hubspot-using-azure-data-factory-preview"></a>Kopírování dat z HubSpot pomocí Azure Data Factory (Preview)
 

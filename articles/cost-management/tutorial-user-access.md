@@ -11,11 +11,11 @@ ms.service: cost-management
 ms.custom: seodec18
 manager: benshy
 ms.openlocfilehash: e9bd7fb147f9789120776bc603768b4ace59e693
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58181074"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61003837"
 ---
 # <a name="tutorial-assign-access-to-cloudyn-data"></a>Kurz: Přiřazení přístupu k datům Cloudyn
 

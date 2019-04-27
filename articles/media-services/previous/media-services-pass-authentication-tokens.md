@@ -16,11 +16,11 @@ ms.topic: article
 ms.date: 03/19/2019
 ms.author: dwgeo
 ms.openlocfilehash: 71925a1ee67956df45901950b2a59fa4c1b458a7
-ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58260073"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61463221"
 ---
 # <a name="learn-how-clients-pass-tokens-to-the-azure-media-services-key-delivery-service"></a>Zjistěte, jak klienti předání tokenů ve službě Azure Media Services doručení klíče
 Zákazníci se často ptají, jak přehrávač můžete předat tokeny ke službě Azure Media Services doručení klíče pro ověření, přehrávače můžete získat klíč. Služba Media Services podporuje jednoduchý webový token (SWT) a formátů JSON Web Token (JWT). Ověření tokenu se použije na libovolný typ klíče, bez ohledu na to, jestli používat standard common encryption nebo Obálka šifrování Advanced Encryption (Standard AES) v systému.

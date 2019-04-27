@@ -10,11 +10,11 @@ services: iot-dps
 manager: timlt
 ms.custom: mvc
 ms.openlocfilehash: ef0a3d251679d7dd6760f1f928cbf0f0daf3db01
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58099133"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61248981"
 ---
 # <a name="create-and-provision-a-simulated-tpm-device-using-nodejs-device-sdk-for-iot-hub-device-provisioning-service"></a>Vytvoření a zřízení simulovaného zařízení TPM pomocí sady Node.js SDK pro zařízení pro službu IoT Hub Device Provisioning
 
@@ -47,19 +47,19 @@ V tomto článku si předvedeme jednotlivé registrace.
     git clone https://github.com/Azure/azure-utpm-c.git --recursive
     ```
 
-1. Přejděte do kořenové složky GitHub a spusťte simulátor [TPM](https://docs.microsoft.com/windows/device-security/tpm/trusted-platform-module-overview). Ten naslouchá přes soket na portech 2321 a 2322. Toto příkazové okno nezavírejte, simulátor je potřeba nechat spuštěný až do konce této úvodní příručky: 
+2. Přejděte do kořenové složky GitHub a spusťte simulátor [TPM](https://docs.microsoft.com/windows/device-security/tpm/trusted-platform-module-overview). Ten naslouchá přes soket na portech 2321 a 2322. Toto příkazové okno nezavírejte, simulátor je potřeba nechat spuštěný až do konce této úvodní příručky: 
 
     ```cmd/sh
     .\azure-utpm-c\tools\tpm_simulator\Simulator.exe
     ```
 
-1. Vytvořte novou prázdnou složku s názvem **registerdevice**. Ve složce **registerdevice** vytvořte soubor package.json pomocí následujícího příkazu na příkazovém řádku. Nezapomeňte zodpovědět všechny otázky, které `npm` zobrazí, nebo přijměte výchozí hodnoty, pokud vám vyhovují:
+3. Vytvořte novou prázdnou složku s názvem **registerdevice**. Ve složce **registerdevice** vytvořte soubor package.json pomocí následujícího příkazu na příkazovém řádku. Nezapomeňte zodpovědět všechny otázky, které `npm` zobrazí, nebo přijměte výchozí hodnoty, pokud vám vyhovují:
    
     ```cmd/sh
     npm init
     ```
 
-1. Nainstalujte následující balíčky prekurzorů:
+4. Nainstalujte následující balíčky prekurzorů:
 
     ```cmd/sh
     npm install node-gyp -g
@@ -70,7 +70,7 @@ V tomto článku si předvedeme jednotlivé registrace.
     > Při instalaci výše uvedených balíčků dochází k několika známým problémům. Tyto problémy vyřešíte tak, že na příkazovém řádku v režimu **Spustit jako správce** spustíte příkaz `npm install --global --production windows-build-tools`, pak spustíte příkaz `SET VCTargetsPath=C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V140`, ve kterém použijete cestu k vaší nainstalované verzi, a pak znovu spustíte výše uvedené příkazy pro instalaci.
     >
 
-1. Nainstalujte následující balíčky, které obsahují komponenty používané během instalace:
+5. Nainstalujte následující balíčky, které obsahují komponenty používané během instalace:
 
    - Klient zabezpečení, který funguje s TPM: `azure-iot-security-tpm`
    - Přenos umožňující připojení zařízení ke službě Device Provisioning: `azure-iot-provisioning-device-http` nebo `azure-iot-provisioning-device-amqp`
@@ -92,9 +92,9 @@ V tomto článku si předvedeme jednotlivé registrace.
        npm install --save azure-iot-device azure-iot-device-mqtt azure-iot-security-tpm azure-iot-provisioning-device-http azure-iot-provisioning-device
        ```
 
-1. Pomocí textového editoru vytvořte ve složce **registerdevice** nový soubor **ExtractDevice.js**.
+6. Pomocí textového editoru vytvořte ve složce **registerdevice** nový soubor **ExtractDevice.js**.
 
-1. Na začátek souboru **ExtractDevice.js** přidejte následující příkazy `require`:
+7. Na začátek souboru **ExtractDevice.js** přidejte následující příkazy `require`:
    
     ```
     'use strict';
@@ -105,7 +105,7 @@ V tomto článku si předvedeme jednotlivé registrace.
     var myTpm = new tpmSecurity.TpmSecurityClient(undefined, new tssJs.Tpm(true));
     ```
 
-1. Přidejte následující funkci, která metodu implementuje:
+8. Přidejte následující funkci, která metodu implementuje:
    
     ```
     myTpm.getEndorsementKey(function(err, endorsementKey) {
@@ -125,22 +125,22 @@ V tomto článku si předvedeme jednotlivé registrace.
     });
     ```
 
-1. Uložte a zavřete soubor **ExtractDevice.js**. Spusťte ukázku:
+9. Uložte a zavřete soubor **ExtractDevice.js**. Spusťte ukázku:
 
     ```cmd/sh
     node ExtractDevice.js
     ```
 
-1. V okně výstupu se zobrazí **_Ověřovací klíč_** a **_ID registrace_** potřebné pro registraci zařízení. Poznamenejte si tyto hodnoty. 
+10. V okně výstupu se zobrazí **_Ověřovací klíč_** a **_ID registrace_** potřebné pro registraci zařízení. Poznamenejte si tyto hodnoty. 
 
 
 ## <a name="create-a-device-entry"></a>Vytvoření položky zařízení
 
 1. Přihlaste se k webu Azure Portal, v nabídce vlevo klikněte na tlačítko **Všechny prostředky** a otevřete svou službu Device Provisioning.
 
-1. V okně s přehledem služby Device Provisioning vyberte **Správa registrací**. Vyberte kartu **Jednotlivé registrace** a nahoře klikněte na tlačítko **Přidat jednotlivou registraci**. 
+2. V okně s přehledem služby Device Provisioning vyberte **Správa registrací**. Vyberte kartu **Jednotlivé registrace** a nahoře klikněte na tlačítko **Přidat jednotlivou registraci**. 
 
-1. V části **Přidat registraci** zadejte následující informace:
+3. V části **Přidat registraci** zadejte následující informace:
    - Jako *Mechanismus* ověření identity vyberte **TPM**.
    - Zadejte *ID registrace* a *Ověřovací klíč* pro zařízení TPM.
    - Volitelně můžete zadat následující informace:

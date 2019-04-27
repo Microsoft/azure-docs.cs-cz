@@ -1,5 +1,5 @@
 ---
-title: Odesílání požadavků na rozhraní API Bingu pro kontrolu pravopisu zkontrolujte
+title: Odesílání požadavků do rozhraní API pro kontrolu pravopisu Bingu
 titlesuffix: Azure Cognitive Services
 description: Další informace o režimů pro kontrolu pravopisu Bingu, nastavení a další informace týkající se rozhraní API.
 services: cognitive-services
@@ -11,13 +11,13 @@ ms.topic: overview
 ms.date: 02/20/2019
 ms.author: aahi
 ms.openlocfilehash: 64025165a5a88370a02ba3b4554b1e12d36c8810
-ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56889948"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60895959"
 ---
-# <a name="sending-requests-to-the-bing-spell-check-api"></a>Odesílání požadavků na rozhraní API Bingu pro kontrolu pravopisu zkontrolujte
+# <a name="sending-requests-to-the-bing-spell-check-api"></a>Odesílání požadavků do rozhraní API pro kontrolu pravopisu Bingu
 
 Pokud chcete zkontrolovat pravopisné a gramatické chyby v textovém řetězci, odešlete požadavek GET do následujícího koncového bodu:  
   

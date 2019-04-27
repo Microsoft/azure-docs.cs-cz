@@ -16,11 +16,11 @@ ms.date: 07/11/2017
 ms.author: ccompy
 ms.custom: seodec18
 ms.openlocfilehash: 5c0b4117f6e7b48dce1746ad6eb3dbe29c0d16af
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53723208"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62130615"
 ---
 # <a name="configuring-an-app-service-environment-v1"></a>Konfigurace App Service Environment v1
 
@@ -32,7 +32,7 @@ ms.locfileid: "53723208"
 Na vysoké úrovni služby Azure App Service Environment se skládá z několika hlavní součásti:
 
 * Služba hostovaná výpočetní prostředky, které běží ve službě App Service Environment
-* Storage
+* Úložiště
 * Databáze
 * Classic(V1) nebo Azure Manager(V2) prostředku virtuální sítě (VNet) 
 * Podsítě ve službě App Service Environment hostované spuštěná v ní
@@ -73,7 +73,7 @@ Pokud vaše aplikace potřebuje větší velikost výpočetních prostředků, n
 
 Pokud chcete nastavit pravidla automatického škálování kolem metriky fondu výpočetních prostředků a vzít v úvahu čas, který vyžaduje zřizování. Další podrobnosti o automatické škálování služby App Service Environment najdete v tématu [postup konfigurace automatického škálování ve službě App Service Environment][ASEAutoscale].
 
-### <a name="storage"></a>Storage
+### <a name="storage"></a>Úložiště
 Každá služba ASE má nakonfigurovanou 500 GB úložiště. Zde se používá ve všech aplikacích v této službě ASE. Tento prostor úložiště je součástí služby ASE a aktuálně není možné přepnout na použití vašeho prostoru úložiště. Pokud provádíte úpravy směrování virtuální sítě nebo zabezpečení, budete muset přesto umožňuje přístup ke službě Azure Storage – nebo služby ASE nemůže fungovat.
 
 ### <a name="database"></a>Databáze

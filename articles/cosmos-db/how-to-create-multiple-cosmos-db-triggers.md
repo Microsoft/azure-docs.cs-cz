@@ -7,11 +7,11 @@ ms.topic: sample
 ms.date: 4/15/2019
 ms.author: maquaran
 ms.openlocfilehash: 7a47a928e97d52535a6d3baa808f1fcb81d9bb55
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59700129"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61056168"
 ---
 # <a name="create-multiple-azure-cosmos-db-triggers"></a>Vytvoření více Azure Cosmos DB aktivačních událostí
 

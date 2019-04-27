@@ -9,11 +9,11 @@ ms.service: iot-dps
 services: iot-dps
 manager: timlt
 ms.openlocfilehash: 51b072bfd0827528a5504133dff8c1cdd7a7ca86
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58089382"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62122767"
 ---
 # <a name="how-to-manage-device-enrollments-with-azure-portal"></a>Správa registrací zařízení pomocí webu Azure Portal
 
@@ -29,8 +29,8 @@ Existují dva způsoby, jak můžete zaregistrovat svoje zařízení pomocí zř
     Vytvořit skupinu registrací na portálu pro skupinu zařízení pomocí následujících kroků:
 
   1. Přihlaste se k webu Azure portal a klikněte na tlačítko **všechny prostředky** z nabídky na levé straně.  
-  1. Klikněte na službu Device Provisioning chcete zaregistrovat zařízení v seznamu prostředků.  
-  1. Ve vaší službě zřizování:  
+  2. Klikněte na službu Device Provisioning chcete zaregistrovat zařízení v seznamu prostředků.  
+  3. Ve vaší službě zřizování:  
      a. Klikněte na tlačítko **Správa registrací**a pak **skupiny registrací** kartu.  
      b. Klikněte na tlačítko **Přidat** v horní části.  
      c. Jakmile se zobrazí na panelu "Přidat skupinu registrací", zadejte informace pro položku seznamu registrací.  **Název skupiny** je povinný. Také vyberte "CA nebo zprostředkující" pro **typ certifikátu**a nahrajte kořenový adresář **primární certifikát** pro skupinu zařízení.  

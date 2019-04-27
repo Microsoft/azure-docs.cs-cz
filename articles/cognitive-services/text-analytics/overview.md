@@ -11,11 +11,11 @@ ms.topic: overview
 ms.date: 04/03/2019
 ms.author: aahi
 ms.openlocfilehash: ae1d8f18705b1058c10d4720c64f624ed0ef4a3d
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "59999055"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60829527"
 ---
 # <a name="what-is-text-analytics-api"></a>Co je API pro analýzu textu?
 
@@ -83,7 +83,7 @@ Tato část byla přesunuta do samostatného článku pro lepší vyhledatelnost
 
 Všechny koncové body rozhraní API pro analýzu textu přijímají data v podobě nezpracovaného textu. Současný limit je 5 120 znaků pro každý dokument; Pokud potřebujete analyzovat větší dokumenty, můžete je rozdělit do menších bloků. Pokud budete přesto potřebovat vyšší limit, [kontaktujte nás](https://azure.microsoft.com/overview/sales-number/), abychom mohli projednat vaše požadavky.
 
-| Omezení | Value |
+| Omezení | Hodnota |
 |------------------------|---------------|
 | Maximální velikost jednoho dokumentu | 5 120 znaků, měřený podle [ `StringInfo.LengthInTextElements` ](https://docs.microsoft.com/dotnet/api/system.globalization.stringinfo.lengthintextelements). |
 | Maximální velikost celého požadavku | 1 MB |

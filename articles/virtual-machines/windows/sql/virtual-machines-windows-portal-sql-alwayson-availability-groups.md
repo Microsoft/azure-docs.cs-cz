@@ -16,13 +16,13 @@ ms.workload: iaas-sql-server
 ms.date: 03/17/2017
 ms.author: mikeray
 ms.openlocfilehash: bddc83d55c8909412f7f935a4324a6f316a82cd7
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51238161"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62129549"
 ---
-# <a name="configure-always-on-availability-groups-in-azure-virtual-machines-automatically-resource-manager"></a>Ve službě Azure Virtual Machines Automatická konfigurace skupin dostupnosti Always On: Správce prostředků
+# <a name="configure-always-on-availability-groups-in-azure-virtual-machines-automatically-resource-manager"></a>Konfigurace skupin dostupnosti Always On v Azure Virtual Machines automaticky: Resource Manager
 
 V tomto kurzu se dozvíte, jak vytvořit skupinu dostupnosti systému SQL Server, který používá virtuální počítače Azure Resource Manageru. Tento kurz používá ke konfiguraci šablony oken webu Azure. Můžete zkontrolovat výchozí nastavení, zadejte požadovaná nastavení a aktualizujte oknech na portálu, jak si projdete tohoto kurzu.
 
@@ -115,7 +115,7 @@ Na **nastavení skupiny dostupnosti**, zkontrolujte přednastavených hodnoty pr
 
 V případě potřeby můžete změnit tyto hodnoty. Pro účely tohoto kurzu použijte přednastavených hodnoty.  
 
-![nastavení skupiny dostupnosti](./media/virtual-machines-windows-portal-sql-alwayson-availability-groups/3-availabilitygroup.png)
+![Nastavení skupiny dostupnosti](./media/virtual-machines-windows-portal-sql-alwayson-availability-groups/3-availabilitygroup.png)
 
 Klikněte na **OK**.
 

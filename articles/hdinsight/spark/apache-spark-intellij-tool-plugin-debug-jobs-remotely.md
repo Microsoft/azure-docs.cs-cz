@@ -1,7 +1,6 @@
 ---
-title: 'Sada Azure Toolkit pro IntelliJ: Ladění aplikací vzdáleně v HDInsight Spark '
+title: 'Azure Toolkit for IntelliJ: Ladění aplikací vzdáleně v HDInsight Spark '
 description: Další informace o použití nástrojů HDInsight v sadě Azure Toolkit pro IntelliJ pro vzdálené ladění aplikací Spark, které poběží na clusterech HDInsight prostřednictvím sítě VPN.
-services: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -9,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/28/2017
-ms.openlocfilehash: e57257c6965f0da8c2d6ce990d2425847b73884f
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: 30d52f1ac6a68a3202de59a0b4cab8edfb7ed042
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53605785"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62124328"
 ---
 # <a name="use-azure-toolkit-for-intellij-to-debug-apache-spark-applications-remotely-in-hdinsight-through-vpn"></a>Ladění aplikací Apache Spark v HDInsight pomocí sítě VPN vzdáleně pomocí sady Azure Toolkit pro IntelliJ
 

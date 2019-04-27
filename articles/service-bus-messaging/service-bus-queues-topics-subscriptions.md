@@ -11,11 +11,11 @@ ms.topic: article
 ms.date: 09/18/2018
 ms.author: aschhab
 ms.openlocfilehash: 7cacabf4f171189810e943043b5513e20113d962
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54847027"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62125810"
 ---
 # <a name="service-bus-queues-topics-and-subscriptions"></a>Fronty, témata a odběry služby Service Bus
 
@@ -55,7 +55,7 @@ Na rozdíl od front, ve kterých každou zprávu zpracuje jeden spotřebitel, *t
 
 Mimo jiné porovnání funkce zasílání zpráv pro fronty mapuje přímo na téma a jeho funkce přijímají zprávy se mapuje na předplatné. Tato funkce mimo jiné znamená, že předplatné podporovat stejné vzorce popsané dříve v této části s ohledem na front: konkurence, časové oddělení, Vyrovnávání zatížení a vyrovnávání zatížení.
 
-### <a name="create-topics-and-subscriptions"></a>Vytvoření témata a odběry
+### <a name="create-topics-and-subscriptions"></a>Vytvoření témat a odběrů
 
 Vytvoření tématu je podobné jako vytvoření fronty, jak je popsáno v předchozí části. Potom odesílání zpráv s použitím [TopicClient](/dotnet/api/microsoft.azure.servicebus.topicclient) třídy. Pokud chcete přijímat zprávy, můžete vytvořit jeden nebo více odběrů na téma. Podobně jako u front, jsou zprávy přijímány pomocí předplatného [SubscriptionClient](/dotnet/api/microsoft.azure.servicebus.subscriptionclient) místo objektu [QueueClient](/dotnet/api/microsoft.azure.servicebus.queueclient) objektu. Vytvoření klienta předplatného, předejte název tématu, název předplatného a (volitelně) režim receive jako parametry.
 

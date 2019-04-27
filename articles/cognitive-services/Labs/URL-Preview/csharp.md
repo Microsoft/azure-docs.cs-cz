@@ -11,11 +11,11 @@ ms.topic: quickstart
 ms.date: 03/16/2018
 ms.author: rosh
 ms.openlocfilehash: 0e2d4b783068cfd14385eb1712ea246c94dc9500
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55877265"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61335450"
 ---
 # <a name="quickstart-url-preview-query-in-c"></a>Rychlý start: Náhled adresy URL dotazu vC#
 

@@ -8,17 +8,17 @@ ms.service: service-health
 ms.workload: Supportability
 ms.date: 11/16/2018
 ms.openlocfilehash: d2a77e831290aa1ee0fcb6d4addf8f6e90786d52
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55858905"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62119841"
 ---
 # <a name="azure-resource-health-overview"></a>Přehled Azure Resource Health
  
 Azure Resource Health pomáhá při diagnostice a získání podpory v případě, že kvůli problému služba Azure ovlivňuje vaše prostředky. Informuje vás o aktuálním a minulém stavu vašich prostředků. A poskytuje technickou podporu, abychom vám zmírnit problémy.
 
-Vzhledem k tomu [stav Azure](https://status.azure.com) vás informuje o potíže se službou, které mají vliv široké škále zákazníků Azure, Resource Health poskytuje individuální řídicí panel stav svých prostředků. Služba Resource Health ukazuje všechny časy, které prostředky byly v minulosti k dispozici z důvodu problémů služby Azure. Pak je jednoduchý rozumět, pokud byl došlo k porušení smlouvy SLA. 
+Vzhledem k tomu [stav Azure](https://status.azure.com) vás informuje o potíže se službou, které mají vliv široké škále zákazníků Azure, Resource Health poskytuje individuální řídicí panel stav svých prostředků. Resource Health ukazuje všechny časy, kdy byly vaše prostředky v minulosti nedostupné kvůli problémům se službami Azure. Pak je jednoduchý rozumět, pokud byl došlo k porušení smlouvy SLA. 
 
 ## <a name="resource-definition-and-health-assessment"></a>Posouzení definice a stavu prostředků
 Prostředek je konkrétní instance služby Azure: například virtuální počítač, webové aplikace nebo databáze SQL.

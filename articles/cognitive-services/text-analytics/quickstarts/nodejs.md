@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: quickstart
 ms.date: 04/16/2019
 ms.author: aahi
-ms.openlocfilehash: a2fdeeab2e8027dc3b548f7004912906d4574ccc
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
-ms.translationtype: HT
+ms.openlocfilehash: 4c77477e31e7513cb806dda968a68fc1ac5030ed
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60007422"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62122130"
 ---
 # <a name="quickstart-using-nodejs-to-call-the-text-analytics-cognitive-service"></a>Rychlý start: Použití Node.js k volání Text Analytics služby Cognitive Services  
 <a name="HOLTop"></a>
@@ -156,7 +156,7 @@ get_language (documents);
 
 ## <a name="analyze-sentiment"></a>Analýza mínění
 
-Rozhraní API pro analýzu mínění rozpozná mínění sady textových záznamů pomocí [metody Sentiment](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2-1/operations/56f30ceeeda5650db055a3c9). Analýza subjektivního hodnocení umožňuje zjistit, co si vaši zákazníci myslí o vaší značce nebo téma díky analýze nezpracovaný text pro příčiny o pozitivní nebo negativní zabarvení. Následující příklad uvádí skóre pro dva dokumenty, jeden v angličtině a druhý ve španělštině.
+Rozhraní API pro analýzu mínění rozpozná mínění sady textových záznamů pomocí [metody Sentiment](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c9). Analýza subjektivního hodnocení umožňuje zjistit, co si vaši zákazníci myslí o vaší značce nebo téma díky analýze nezpracovaný text pro příčiny o pozitivní nebo negativní zabarvení. Následující příklad uvádí skóre pro dva dokumenty, jeden v angličtině a druhý ve španělštině.
 
 1. Vytvořte nový projekt Node.JS ve složce na vašem počítači nebo oblíbeného prostředí IDE.
 2. Přidejte níže uvedený na nový kód `.js` souboru.
@@ -252,7 +252,7 @@ Výsledek se měří jako kladná, pokud se vypočítává se skóre blíž ke 1
 
 ## <a name="extract-key-phrases"></a>Extrakce klíčových frází
 
-Rozhraní API pro extrakci klíčových frází extrahuje klíčové fráze z textového dokumentu pomocí [metody Key Phrases](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2-1/operations/56f30ceeeda5650db055a3c6). Extrakce klíčových frází slouží k rychlé zjištění hlavních bodů dokumentu nebo text. Následující příklad extrahuje klíčové fráze z anglického i španělského dokumentu.
+Rozhraní API pro extrakci klíčových frází extrahuje klíčové fráze z textového dokumentu pomocí [metody Key Phrases](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c6). Extrakce klíčových frází slouží k rychlé zjištění hlavních bodů dokumentu nebo text. Následující příklad extrahuje klíčové fráze z anglického i španělského dokumentu.
 
 1. Vytvořte nový projekt Node.JS ve složce na vašem počítači nebo oblíbeného prostředí IDE.
 2. Přidejte níže uvedený na nový kód `.js` souboru.

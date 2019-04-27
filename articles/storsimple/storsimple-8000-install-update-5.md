@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 11/13/2017
 ms.author: alkohli
-ms.openlocfilehash: d6e17c7609fd41b8f4457edda373f6882a1a9d2b
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: d86e77ef0148c0fac3dfa31153364de153b094ef
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38698706"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62126745"
 ---
 # <a name="install-update-5-on-your-storsimple-device"></a>Nainstalujte na zařízení StorSimple Update 5
 
@@ -61,7 +61,7 @@ Verze softwaru, které je možné upgradovat pomocí metody opravy hotfix jsou:
 * Aktualizace 1, 1.1, 1.2
 * Update 2, 2.1 nebo 2.2
 * Aktualizací Update 3, 3.1
-* Update 4
+* Aktualizace 4
 
 > [!NOTE] 
 > Doporučenou metodou pro instalaci aktualizace Update 5 je prostřednictvím portálu Azure portal, při pokusu o aktualizaci z aktualizace Update 3 a novější verze. Při aktualizaci zařízení se systémem verze starší než Update 3 se pomocí tohoto postupu. Tento postup můžete použít také, pokud selže kontrola brány při pokusu o instalaci aktualizace na webu Azure portal. Kontrola neúspěšná, když máte bránu přiřazená 0 síťové rozhraní než DATA a na zařízení běží software verze starší než Update 1.
@@ -76,28 +76,28 @@ Metoda oprav hotfix zahrnuje následující tři kroky:
 
 Je nutné stáhnout a nainstalovat následující opravy hotfix předepsané pořadí a navrhované složky:
 
-| Pořadí | kB | Popis | Typ aktualizace | Čas instalace |Instalovat do složky|
+| Objednání | kB | Popis | Typ aktualizace | Čas instalace |Instalovat do složky|
 | --- | --- | --- | --- | --- | --- |
-| 1. |KB4037264 |Aktualizace softwaru<br> Stáhněte si oba _HcsSoftwareUpdate.exe_ a _CisMSDAgent.exe_ |Pravidelné <br></br>Bez přerušení |~ 25 minut |FirstOrderUpdate|
+| 1. |KB4037264 |Aktualizace softwaru<br> Stáhněte si oba _HcsSoftwareUpdate.exe_ a _CisMSDAgent.exe_ |Normální <br></br>Bez přerušení |~ 25 minut |FirstOrderUpdate|
 
 Pokud aktualizace z zařízení s verzí Update 4, stačí nainstalovat kumulativní aktualizace operačního systému jako aktualizace druhého řádu.
 
-| Pořadí | kB | Popis | Typ aktualizace | Čas instalace |Instalovat do složky|
+| Objednání | kB | Popis | Typ aktualizace | Čas instalace |Instalovat do složky|
 | --- | --- | --- | --- | --- | --- |
-| 2A. |KB4025336 |Balíček kumulativních aktualizací operačního systému <br> Stáhněte si verzi systému Windows Server 2012 R2 |Pravidelné <br></br>Bez přerušení |- |SecondOrderUpdate|
+| 2A. |KB4025336 |Balíček kumulativních aktualizací operačního systému <br> Stáhněte si verzi systému Windows Server 2012 R2 |Normální <br></br>Bez přerušení |- |SecondOrderUpdate|
 
 Pokud instalace ze zařízení s aktualizací Update 3 nebo starší, nainstalujte následující kromě kumulativní aktualizace.
 
-| Pořadí | kB | Popis | Typ aktualizace | Čas instalace |Instalovat do složky|
+| Objednání | kB | Popis | Typ aktualizace | Čas instalace |Instalovat do složky|
 | --- | --- | --- | --- | --- | --- |
-| 2B. |KB4011841 <br> KB4011842 |Adaptér LSI ovladače a firmware aktualizace <br> Aktualizace firmwaru USM (verze 3.38) |Pravidelné <br></br>Bez přerušení |~ 3 hodiny <br> (včetně 2A. + 2B. + 2C.)|SecondOrderUpdate|
-| 2C. |KB3139398 <br> KB3142030 <br> KB3108381 <br> KB3153704 <br> KB3174644 <br> KB3139914   |Balíček aktualizace zabezpečení operačního systému <br> Stáhněte si verzi systému Windows Server 2012 R2 |Pravidelné <br></br>Bez přerušení |- |SecondOrderUpdate|
-| 2D. |KB3146621 <br> KB3103616 <br> KB3121261 <br> KB3123538 |Balíček aktualizací operačního systému <br> Stáhněte si verzi systému Windows Server 2012 R2 |Pravidelné <br></br>Bez přerušení |- |SecondOrderUpdate|
+| 2B. |KB4011841 <br> KB4011842 |Adaptér LSI ovladače a firmware aktualizace <br> Aktualizace firmwaru USM (verze 3.38) |Normální <br></br>Bez přerušení |~ 3 hodiny <br> (včetně 2A. + 2B. + 2C.)|SecondOrderUpdate|
+| 2C. |KB3139398 <br> KB3142030 <br> KB3108381 <br> KB3153704 <br> KB3174644 <br> KB3139914   |Balíček aktualizace zabezpečení operačního systému <br> Stáhněte si verzi systému Windows Server 2012 R2 |Normální <br></br>Bez přerušení |- |SecondOrderUpdate|
+| 2D. |KB3146621 <br> KB3103616 <br> KB3121261 <br> KB3123538 |Balíček aktualizací operačního systému <br> Stáhněte si verzi systému Windows Server 2012 R2 |Normální <br></br>Bez přerušení |- |SecondOrderUpdate|
 
 
 Budete také muset nainstalovat aktualizace firmwaru disku nad všechny aktualizace uvedené v předchozích tabulkách. Můžete ověřit, jestli potřebujete aktualizace firmwaru disku spuštěním `Get-HcsFirmwareVersion` rutiny. Pokud používáte tyto verze firmwaru: `XMGJ`, `XGEG`, `KZ50`, `F6C2`, `VR08`, `N003`, `0107`, potom není potřeba instalovat tyto aktualizace.
 
-| Pořadí | kB | Popis | Typ aktualizace | Čas instalace | Instalovat do složky|
+| Objednání | kB | Popis | Typ aktualizace | Čas instalace | Instalovat do složky|
 | --- | --- | --- | --- | --- | --- |
 | 3. |KB4037263 |Firmwaru disku |Údržba <br></br>Ničivé |~ 30 minut | ThirdOrderUpdate |
 

@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 03/20/2019
 ms.author: tomfitz
 ms.openlocfilehash: 91325b7884eae4c6f4c85c142b1e81cf2121c039
-ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58295330"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62103784"
 ---
 # <a name="define-the-order-for-deploying-resources-in-azure-resource-manager-templates"></a>Definovat pořadí pro nasazení prostředků do šablon Azure Resource Manageru
 Pro daný prostředek může být další prostředky, které musí existovat předtím, než se prostředek nasazuje. Například SQL server, musí existovat před pokusem o nasazení databáze SQL. Můžete definovat tuto relaci označením jeden prostředek jako závislé na jiný prostředek. Definování závislostí s **dependsOn** element, nebo pomocí **odkaz** funkce. 

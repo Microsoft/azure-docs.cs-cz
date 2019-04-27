@@ -9,11 +9,11 @@ ms.topic: quickstart
 ms.date: 02/06/2018
 ms.author: tamram
 ms.openlocfilehash: f16c4438dfb2feb70dece0b95f8afc701c5a3d66
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59009304"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62108689"
 ---
 # <a name="quickstart-use-net-to-create-a-queue-in-azure-storage"></a>Rychlý start: Vytvoření fronty ve službě Azure Storage pomocí .NET
 

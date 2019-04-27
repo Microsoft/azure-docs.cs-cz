@@ -1,6 +1,6 @@
 ---
-title: Připojit k Office 365 Video - Azure Logic Apps | Microsoft Docs
-description: Spravovat videa s Office 365 Video REST API a Azure Logic Apps
+title: Připojte se k Office 365 Video – Azure Logic Apps | Dokumentace Microsoftu
+description: Spravovat videa s využitím rozhraní API REST pro Office 365 Video a Azure Logic Apps
 author: ecfan
 manager: jeconnoc
 ms.author: estfan
@@ -11,34 +11,34 @@ services: logic-apps
 ms.reviewer: klam, LADocs
 ms.suite: integration
 tags: connectors
-ms.openlocfilehash: 44152101f1a2be6268d4e27430fdf60ef0131fae
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: c10a2aa097b63fd3751be01bbfeb6097080bbb9c
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35295774"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62105815"
 ---
-# <a name="get-started-with-the-office365-video-connector"></a>Začínáme s konektor Office 365 Video
-Připojte k Office 365 videu se získat informace o Office 365 videa, získat seznam videa a další. Video Office 365 můžete:
+# <a name="get-started-with-the-office365-video-connector"></a>Začínáme s konektorem Office 365 Video
+Připojte se k Office 365 Video na získání informací o Office 365 video, získání seznamu videa a další. Office 365 Video můžete:
 
-* Sestavení vaší firmy toku na základě dat, které můžete získat z Office 365 Video. 
-* Pomocí akcí, které zkontrolujte video portálu stav, získat seznam všech video v kanálu a další. Tyto akce se odpověď a pak proveďte výstup k dispozici pro další akce. Můžete například použít konektor Bing vyhledávání pro vyhledávání služeb Office 365 videa a pak použít video konektor Office 365 a získat informace o tomto video. Pokud se na video vyhovovat vašim požadavkům, můžete toto video účtovat ve službě Facebook. 
+* Vytvoření obchodní toku na základě dat, který jste získali z Office 365 Video. 
+* Pomocí akcí, které zkontrolovat stav, získání seznamu všech videa v kanálu a další. Tyto akce získat odpověď a poté zpřístupní výstup pro další akce. Můžete například použít konektor vyhledávání Bingu pro vyhledávání videí Office 365 a potom pomocí konektoru Office 365 video a získat informace o tomto videu. Pokud video vyhovuje vašim požadavkům, můžete toto video příspěvku na Facebooku. 
 
-Můžete začít s vytvářením aplikace logiky teď najdete v tématu [vytvoření aplikace logiky](../logic-apps/quickstart-create-first-logic-app-workflow.md).
+Můžete začít tak, že teď vytvoříte aplikaci logiky, najdete v článku [vytvoření aplikace logiky](../logic-apps/quickstart-create-first-logic-app-workflow.md).
 
-## <a name="create-a-connection-to-office365-video-connector"></a>Umožňuje vytvořit připojení k Office 365 Video konektoru
-Když přidáte tento konektor aplikace logiky, musíte přihlásit ke svému účtu Office 365 Video a povolit logic apps, abyste připojení k vašemu účtu.
+## <a name="create-a-connection-to-office365-video-connector"></a>Vytvořte připojení ke konektoru Office 365 Video
+Při přidání tohoto konektoru logic Apps musíte přihlásit ke svému účtu Office 365 Video a povolit aplikacím logiky připojíte ke svému účtu.
 
 > [!INCLUDE [Steps to create a connection to Office 365 Video](../../includes/connectors-create-api-office365video.md)]
 > 
 > 
 
-Po vytvoření připojení, zadejte vlastnosti videa Office 365, jako je název klienta nebo kanálu ID. 
+Po vytvoření připojení, zadejte vlastnosti Office 365 video, jako je název tenanta nebo ID kanálu 
 
 
-## <a name="connector-specific-details"></a>Podrobnosti o konkrétní konektor
+## <a name="connector-specific-details"></a>Podrobné informace specifické pro konektor
 
-Zobrazit všechny aktivační události a akce definované v swagger a také zobrazit žádné limity v [connector – podrobnosti](/connectors/office365videoconnector/).
+Zobrazit všechny aktivační události a akce definované ve swaggeru a také zjistit žádné omezení [podrobnosti o konektoru](/connectors/office365videoconnector/).
 
 ## <a name="more-connectors"></a>Více konektorů
 Přejděte zpět [rozhraní API seznamu](apis-list.md).

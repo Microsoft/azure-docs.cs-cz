@@ -1,7 +1,6 @@
 ---
 title: Phoenix Query Server REST SDK – Azure HDInsight
 description: Instalace a použití sady Phoenix Query Server v Azure HDInsight REST SDK.
-services: hdinsight
 ms.service: hdinsight
 author: ashishthaps
 ms.author: ashishth
@@ -9,12 +8,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 12/04/2017
-ms.openlocfilehash: b7c94fd2372f1d995c50439b2bd5eaefb237e175
-ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
+ms.openlocfilehash: 1f468cac29579d8748f61a47b548a67d36ff8279
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/20/2018
-ms.locfileid: "53651397"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62123055"
 ---
 # <a name="apache-phoenix-query-server-rest-sdk"></a>Apache Phoenix Query Server REST SDK
 
@@ -74,7 +73,7 @@ Tady jsou některé vlastnosti, které vás zajímají:
 
 | Vlastnost | Popis |
 | -- | -- |
-| Automatický zápis | Boolean označující, zda `autoCommit` je povolená pro Phoenix transakce. |
+| AutoCommit | Boolean označující, zda `autoCommit` je povolená pro Phoenix transakce. |
 | ReadOnly | Logická hodnota označující, zda je připojení jen pro čtení. |
 | TransactionIsolation | Celé číslo představující úroveň izolace transakce podle specifikace JDBC – viz následující tabulka.|
 | Katalog | Název katalogu pro použití při načítání vlastnosti připojení. |

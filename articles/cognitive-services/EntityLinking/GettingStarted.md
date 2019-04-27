@@ -11,11 +11,11 @@ ms.topic: tutorial
 ms.date: 07/06/2016
 ms.author: davl
 ms.openlocfilehash: fc1bdd5c6ad4829e22af9922c6749e60f842abaf
-ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56594028"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60816580"
 ---
 # <a name="tutorial-build-an-entity-linking-app-with-c"></a>Kurz: Vytvoření Entity propojení aplikace sC#
 

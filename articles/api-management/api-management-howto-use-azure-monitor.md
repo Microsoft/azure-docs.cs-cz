@@ -15,11 +15,11 @@ ms.topic: tutorial
 ms.date: 06/15/2018
 ms.author: apimpm
 ms.openlocfilehash: c3148adc42cb4f899a87d894909eedff4c798575
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59680230"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62127425"
 ---
 # <a name="monitor-published-apis"></a>Monitorování publikovaných rozhraní API
 
@@ -213,13 +213,13 @@ API Management v současné době poskytuje diagnostické protokoly (dávkované
 | userId | string | Identifikátor entity uživatele pro aktuální požadavek. | 
 | apimSubscriptionId | string | Identifikátor entity předplatného pro aktuální požadavek. | 
 | backendId | string | Identifikátor entity back-endu pro aktuální požadavek. | 
-| lastError | objekt | Poslední chyba zpracování požadavku. | 
+| LastError | objekt | Poslední chyba zpracování požadavku. | 
 | elapsed | integer | Počet milisekund, které uplynuly od přijetí požadavku bránou do chvíle, kdy došlo k chybě. | 
 | source | string | Název zásady nebo interní obslužné rutiny zpracování, která způsobila chybu. | 
 | scope | string | Obor dokumentu zásad obsahující zásadu, která způsobila chybu. | 
 | section | string | Část dokumentu zásad obsahující zásadu, která způsobila chybu. | 
 | reason | string | Důvod chyby | 
-| message | string | Chybová zpráva | 
+| zpráva | string | Chybová zpráva | 
 
 ## <a name="next-steps"></a>Další postup
 

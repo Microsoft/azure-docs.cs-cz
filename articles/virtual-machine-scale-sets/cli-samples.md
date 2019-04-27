@@ -17,11 +17,11 @@ ms.date: 03/27/2018
 ms.author: cynthn
 ms.custom: mvc
 ms.openlocfilehash: 1ea397616c7909283128118f66fc36218ff36d53
-ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54882570"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60872522"
 ---
 # <a name="azure-cli-samples-for-virtual-machine-scale-sets"></a>Ukázky Azure CLI pro škálovací sady virtuálních počítačů
 

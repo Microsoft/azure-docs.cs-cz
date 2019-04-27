@@ -12,11 +12,11 @@ ms.topic: article
 tags: connectors
 ms.date: 08/25/2018
 ms.openlocfilehash: 68378c87e18df874059579445352b8fd1b2b6c13
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50232711"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62105576"
 ---
 # <a name="exchange-messages-in-the-cloud-with-azure-service-bus-and-azure-logic-apps"></a>Výměna zpráv v cloudu pomocí služby Azure Service Bus a Azure Logic Apps
 
@@ -74,7 +74,7 @@ Ověřte, jestli aplikace logiky má oprávnění pro přístup k oboru názvů 
 
 1. Chcete-li přidat *aktivační událost* do prázdné aplikace logiky, do vyhledávacího pole zadejte "Azure Service Bus" jako filtr. V seznamu triggerů vyberte trigger, který chcete. 
 
-   Například při vytvoření nové položky se odešlou do fronty služby Service Bus, spustit aplikaci logiky, vyberte tento trigger: **při doručení zprávy do fronty (automatické dokončení)**
+   Například při vytvoření nové položky se odešlou do fronty služby Service Bus, aktivaci vaší aplikace logiky, vyberte tento trigger: **Při doručení zprávy do fronty (automatické dokončení)**
 
    ![Výběr triggeru služby Service Bus](./media/connectors-create-api-azure-service-bus/select-service-bus-trigger.png)
 
@@ -95,7 +95,7 @@ Ověřte, jestli aplikace logiky má oprávnění pro přístup k oboru názvů 
    1. Do vyhledávacího pole zadejte jako filtr "Azure Service Bus". 
    V seznamu akcí vyberte požadovanou akci. 
  
-      Například vyberte tuto akci: **odeslat zprávu**
+      Například vyberte tuto akci: **Odeslání zprávy**
 
       ![Výběr akce služby Service Bus](./media/connectors-create-api-azure-service-bus/select-service-bus-send-message-action.png) 
 
@@ -118,7 +118,7 @@ Ověřte, jestli aplikace logiky má oprávnění pro přístup k oboru názvů 
 
 1. Zadejte potřebné podrobnosti o triggeru nebo akce. V tomto příkladu postupujte podle příslušných kroků u triggeru nebo akce: 
 
-   * **Pro trigger ukázka**: nastavte interval cyklického dotazování a frekvenci kontroly fronty.
+   * **Pro trigger ukázka**: Nastavte interval cyklického dotazování a frekvenci kontroly fronty.
 
      ![Nastavit interval dotazování](./media/connectors-create-api-azure-service-bus/service-bus-trigger-details.png)
 

@@ -12,11 +12,11 @@ ms.topic: conceptual
 ms.date: 01/18/2019
 ms.author: diberry
 ms.openlocfilehash: 1f5aab607c5046df0dee4db5caf36b0b7de53c4d
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57998744"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60813942"
 ---
 # <a name="authoring-and-query-prediction-endpoint-keys-in-luis"></a>Vytváření obsahu a dotaz předpovědi klíče koncového bodu v LUIS
 Služba LUIS používá dva klíče: [vytváření](#programmatic-key) a [koncový bod](#endpoint-key). Vytváření klíč je vytvořen automaticky při vytvoření účtu služby LUIS. Až budete připraveni k publikování aplikace LUIS, budete muset [vytvořit klíče koncového bodu](luis-how-to-azure-subscription.md), [ji přiřadit](luis-how-to-azure-subscription.md) do vaší aplikace LUIS a [pomocí dotazu koncový bod](#use-endpoint-key-in-query). 

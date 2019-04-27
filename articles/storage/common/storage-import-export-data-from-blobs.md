@@ -9,11 +9,11 @@ ms.date: 04/08/2019
 ms.author: alkohli
 ms.subservice: common
 ms.openlocfilehash: fc02e830953f8612a077fb219c7fef4e86bc3827
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59263825"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61479222"
 ---
 # <a name="use-the-azure-importexport-service-to-export-data-from-azure-blob-storage"></a>Export dat z úložiště objektů Blob v Azure pomocí služby Azure Import/Export
 Tento článek obsahuje podrobné pokyny o tom, jak bezpečně export velkých objemů dat z úložiště objektů Blob v Azure pomocí služby Azure Import/Export. Služba vyžaduje, abyste zasílejte prázdné disky do datacentra Azure. Službu exportuje data z vašeho účtu úložiště do jednotky a potom odešle zpět jednotky.

@@ -9,12 +9,12 @@ ms.service: iot-dps
 services: iot-dps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 45558e25f2f61090cfb3ddb5c382170ab40792d0
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 3360bfa7eed15f72fb78f698e837d887e9c8aa85
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46999037"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62126473"
 ---
 # <a name="set-up-the-iot-hub-device-provisioning-service-with-an-azure-resource-manager-template"></a>Nastavení služby IoT Hub Device Provisioning pomocí šablony Azure Resource Manageru
 
@@ -342,7 +342,7 @@ az group delete --name {your resource group name}
 
 Skupiny prostředků i jednotlivé prostředky můžete odstranit také pomocí webu Azure Portal, PowerShellu nebo rozhraní REST API nebo podporovaných sad SDK platformy pro Azure Resource Manager nebo službu IoT Hub Device Provisioning.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 V tomto rychlém startu jste nasadili centrum IoT a instanci služby Device Provisioning a propojili jste tyto dva prostředky. Pokud chcete zjistit, jak pomocí tohoto nastavení zřídit simulované zařízení, pokračujte k rychlému startu pro vytvoření simulovaného zařízení.
 

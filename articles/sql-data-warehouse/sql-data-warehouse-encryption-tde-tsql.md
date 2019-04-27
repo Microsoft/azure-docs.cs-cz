@@ -2,20 +2,21 @@
 title: Transparentní šifrování dat v datovém skladu SQL (T-SQL) | Dokumentace Microsoftu
 description: Transparentní šifrování dat (TDE) ve službě SQL Data Warehouse (T-SQL)
 services: sql-data-warehouse
-author: KavithaJonnakuti
-manager: craigg
+author: WenJason
+manager: digimobile
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.subservice: security
-ms.date: 04/17/2018
-ms.author: kavithaj
+ms.subservice: implement
+origin.date: 04/17/2018
+ms.date: 03/25/2019
+ms.author: v-jay
 ms.reviewer: igorstan
 ms.openlocfilehash: 7908e6e0927357446ea45e16b7c44adb83ec1fd3
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57892434"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61439056"
 ---
 # <a name="get-started-with-transparent-data-encryption-tde"></a>Začínáme s transparentní šifrování dat (TDE)
 > [!div class="op_single_selector"]
@@ -76,7 +77,7 @@ Výsledkem ```1``` Určuje databázi šifrované ```0``` Určuje databázi bez �
 
 <!--Anchors-->
 [Transparent Data Encryption (TDE)]: https://msdn.microsoft.com/library/bb934049.aspx
-[sys.databases]: https://msdn.microsoft.com/library/ms178534.aspx  
+[sys.databases]: http://msdn.microsoft.com/library/ms178534.aspx  
 [sys.dm_pdw_nodes_database_encryption_keys]: https://msdn.microsoft.com/library/mt203922.aspx  
 
 <!--Image references-->

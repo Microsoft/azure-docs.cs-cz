@@ -11,11 +11,11 @@ ms.topic: quickstart
 ms.date: 04/15/2019
 ms.author: aahi
 ms.openlocfilehash: 2d3c5873c03023ceaf5b2cafa266ea627ea7df13
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60002422"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60828135"
 ---
 # <a name="quickstart-using-php-to-call-the-text-analytics-cognitive-service"></a>Rychlý start: Použití PHP k volání Text Analytics služby Cognitive Services
 <a name="HOLTop"></a>

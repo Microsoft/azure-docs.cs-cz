@@ -10,11 +10,11 @@ ms.date: 12/27/2018
 ms.author: raynew
 ms.custom: MVC
 ms.openlocfilehash: cccfc3d028cb2da9346e629a5aca080bedd7fee9
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53794511"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62124141"
 ---
 # <a name="set-up-disaster-recovery-for-hyper-v-vms-to-a-secondary-on-premises-site"></a>Nastavení zotavení po havárii do sekundární místní lokality pro virtuální počítače Hyper-V
 
@@ -96,7 +96,7 @@ Nainstalujte na servery VMM zprostředkovatele Azure Site Recovery a vyhledejte 
 5. Po dokončení instalace klikněte na **Zaregistrovat**, aby se server zaregistroval v trezoru.
 
     ![Umístění instalace](./media/hyper-v-vmm-disaster-recovery/provider-register.png)
-6. V poli **Název trezoru** ověřte název trezoru, ve kterém bude server zaregistrovaný. Klikněte na tlačítko **Další**.
+6. V poli **Název trezoru** ověřte název trezoru, ve kterém bude server zaregistrovaný. Klikněte na **Další**.
 7. V části **Připojení k proxy serveru** určete, jak se zprostředkovatel, který běží na serveru VMM, připojí k Azure.
    - Můžete určit, že se zprostředkovatel má k internetu připojit přímo nebo přes proxy server. Podle potřeby zadejte nastavení proxy serveru.
    - Pokud používáte proxy server, vytvoří se automaticky účet VMM RunAs (DRAProxyAccount) pomocí zadaných přihlašovacích údajů proxy serveru. Proxy server nakonfigurujte tak, aby tento účet bylo možné úspěšně ověřit. Nastavení účtu RunAs můžete upravovat v konzole VMM v části **Nastavení** > **Zabezpečení** > **Účty Spustit jako**.

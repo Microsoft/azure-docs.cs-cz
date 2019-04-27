@@ -9,11 +9,11 @@ ms.topic: tutorial
 ms.date: 12/03/2018
 ms.author: dech
 ms.openlocfilehash: bf1da7e8a1041b15076ebda6eeac9b0a75c567c0
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57857160"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61438876"
 ---
 # <a name="tutorial-develop-an-aspnet-mvc-web-application-with-azure-cosmos-db-by-using-net-preview-sdk"></a>Kurz: Vývoj webové aplikace ASP.NET MVC pomocí služby Azure Cosmos DB pomocí rozhraní .NET ve verzi preview SDK 
 

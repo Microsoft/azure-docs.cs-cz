@@ -1,7 +1,6 @@
 ---
 title: 'Kurz: Zpracování dat ze služby Azure Event Hubs s Apache Sparkem v Azure HDInsight '
 description: Připojení k Azure Event Hubs Apache Spark v Azure HDInsight a zpracovávat streamovaná data.
-services: hdinsight
 ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
@@ -9,12 +8,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive,mvc
 ms.topic: conceptual
 ms.date: 12/28/2018
-ms.openlocfilehash: 81104c7b206d4fe158df1ae9d329084ad88c3bdd
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: 02f7bbca127ba33fcfdd15d6f00d1660bf72970c
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53976626"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62124352"
 ---
 # <a name="tutorial-process-tweets-using-azure-event-hubs-and-apache-spark-in-hdinsight"></a>Kurz: Zpracování tweetů pomocí Azure Event Hubs a Apache Spark v HDInsight
 

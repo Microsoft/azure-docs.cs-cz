@@ -3,17 +3,18 @@ title: Přidání panelu do řešení vzdálené monitorování uživatelské ro
 description: Tento článek ukazuje, jak přidat na řídicí panel ve vzdálené monitorování řešení akcelerátoru webové uživatelské rozhraní nového panelu.
 author: dominicbetts
 manager: timlt
-ms.author: dobett
+ms.author: v-yiso
 ms.service: iot-accelerators
 services: iot-accelerators
-ms.date: 10/05/2018
+origin.date: 10/05/2018
+ms.date: 11/26/2018
 ms.topic: conceptual
 ms.openlocfilehash: 3b855c3bed75945f44b55463bdacd049b7930aa7
-ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/12/2018
-ms.locfileid: "49165874"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61447059"
 ---
 # <a name="add-a-custom-panel-to-the-dashboard-in-the-remote-monitoring-solution-accelerator-web-ui"></a>Přidat vlastní panel na řídicím panelu vzdáleného monitorování řešení akcelerátoru webového uživatelského rozhraní
 
@@ -45,7 +46,6 @@ Abyste mohli začít, **src/návod/součásti/stránek/řídicí panel/panely/ex
 
 **examplePanel.js**
 
-[!code-javascript[Example panel](~/remote-monitoring-webui/src/walkthrough/components/pages/dashboard/panels/examplePanel/examplePanel.js?name=panel "Example panel")]
 
 Kopírování **src/návod/součásti/stránek/řídicí panel/panely/examplePanel** složku **src/součásti/stránek/řídicí panel/panelů** složky.
 

@@ -7,11 +7,11 @@ ms.topic: sample
 ms.date: 04/17/2019
 ms.author: rimman
 ms.openlocfilehash: c075a801a877309709258dd6466e68e46d802eff
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59680430"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61056575"
 ---
 # <a name="create-an-azure-cosmos-container"></a>Vytvoření kontejneru Azure Cosmos
 

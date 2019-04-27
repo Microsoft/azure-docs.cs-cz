@@ -15,11 +15,11 @@ ms.date: 11/21/2017
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 3ef1656a7e8a66092de3050a8f14c5b38e0e2e6c
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59525462"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62123565"
 ---
 # <a name="high-availability-set-up-in-suse-using-the-stonith"></a>Vysoká dostupnost v SUSE pomocí využitím techniky STONITH
 Tento dokument obsahuje podrobné pokyny krok za krokem nastavit vysokou dostupnost v SUSE operačního systému pomocí využitím techniky STONITH zařízení.

@@ -15,11 +15,11 @@ ms.devlang: azurecli
 ms.date: 11/01/2018
 ms.author: delhan
 ms.openlocfilehash: 4c783c70217a84bbe5ccf15accc4a2bec0b7cca8
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52959678"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61485357"
 ---
 # <a name="troubleshoot-azure-vm-rdp-connection-issues-by-event-id"></a>Řešení potíží s připojením RDP virtuálních počítačů Azure podle ID události 
 
@@ -54,37 +54,37 @@ wevtutil qe system /c:1 /f:text /q:"Event[System[Provider[@Name='Microsoft-Windo
 wevtutil qe system /c:1 /f:text /q:"Event[System[Provider[@Name='Microsoft-Windows-TerminalServices-RemoteConnectionManager'] and EventID=1057 and TimeCreated[timediff(@SystemTime) <= 86400000]]]" | more
 ```
 
-**Název protokolu:** systému <br />
-**Zdroj:** Microsoft-Windows-TerminalServices-RemoteConnectionManager <br />
-**Datum:** *čas* <br />
-**ID události:** 1058 <br />
-**Kategorie úkolu:** None <br />
-**Úroveň:** chyba <br />
-**Klíčová slova:** Classic <br />
-**Uživatel:** není k dispozici <br />
-**Počítač:** *počítače* <br />
+**Název protokolu:**      Systémový <br />
+**Zdroj:**        Microsoft-Windows-TerminalServices-RemoteConnectionManager <br />
+**Datum:***čas* <br />
+**ID události:**      1058 <br />
+**Kategorie úkolu:** Žádný <br />
+**Úroveň:**         Chyba <br />
+**Klíčová slova:**      Classic <br />
+**Uživatel:**          neuvedeno <br />
+**Počítač:***počítače* <br />
 **Popis:** Server hostitele relace VP se nepodařilo nahradit neplatné vlastní podepsané certifikátu používaného pro ověřování serveru hostitele relace VP na připojení SSL. Příslušný kód stavu byl odepření přístupu.
 
-**Název protokolu:** systému <br />
-**Zdroj:** Microsoft-Windows-TerminalServices-RemoteConnectionManager <br />
-**Datum:** *čas* <br />
-**ID události:** 1058 <br />
-**Kategorie úkolu:** None <br />
-**Úroveň:** chyba <br />
-**Klíčová slova:** Classic <br />
-**Uživatel:** není k dispozici <br />
-**Počítač:** *počítače* <br />
-**Popis:** server hostitele relace VP se nepodařilo vytvořit nový certifikát podepsaný svým držitelem pro ověřování serveru hostitele relace VP na připojení SSL, příslušný kód stavu byl objekt již existuje.
+**Název protokolu:**      Systémový <br />
+**Zdroj:**        Microsoft-Windows-TerminalServices-RemoteConnectionManager <br />
+**Datum:***čas* <br />
+**ID události:**      1058 <br />
+**Kategorie úkolu:** Žádný <br />
+**Úroveň:**         Chyba <br />
+**Klíčová slova:**      Classic <br />
+**Uživatel:**          neuvedeno <br />
+**Počítač:***počítače* <br />
+**Popis:** Server hostitele relace VP se nepodařilo vytvořit nový certifikát podepsaný svým držitelem pro ověřování serveru hostitele relace VP na připojení SSL, příslušný kód stavu je, že objekt již existuje.
 
-**Název protokolu:** systému <br />
-**Zdroj:** Microsoft-Windows-TerminalServices-RemoteConnectionManager <br />
-**Datum:** *čas* <br />
-**ID události:** 1057 <br />
-**Kategorie úkolu:** None <br />
-**Úroveň:** chyba <br />
-**Klíčová slova:** Classic <br />
-**Uživatel:** není k dispozici <br />
-**Počítač:** *počítače* <br />
+**Název protokolu:**      Systémový <br />
+**Zdroj:**        Microsoft-Windows-TerminalServices-RemoteConnectionManager <br />
+**Datum:***čas* <br />
+**ID události:**      1057 <br />
+**Kategorie úkolu:** Žádný <br />
+**Úroveň:**         Chyba <br />
+**Klíčová slova:**      Classic <br />
+**Uživatel:**          neuvedeno <br />
+**Počítač:***počítače* <br />
 **Popis:** Server hostitele relace VP se nepodařilo vytvořit novou vlastní podepsaný certifikát, který se použije pro ověřování serveru hostitele relace VP na připojení SSL. Příslušný kód stavu byl kurzory neexistuje.
 
 Můžete také vyhledat SCHANNEL chybové události 36872 a 36870 spuštěním následujících příkazů:
@@ -94,16 +94,16 @@ wevtutil qe system /c:1 /f:text /q:"Event[System[Provider[@Name='Schannel'] and 
 wevtutil qe system /c:1 /f:text /q:"Event[System[Provider[@Name='Schannel'] and EventID=36872 and TimeCreated[timediff(@SystemTime) <= 86400000]]]" | more
 ```
 
-**Název protokolu:** systému <br />
-**Zdroj:** Schannel <br />
+**Název protokolu:**      Systémový <br />
+**Zdroj:**        Schannel <br />
 **Datum:** – <br />
-**ID události:** 36870 <br />
-**Kategorie úkolu:** None <br />
-**Úroveň:** chyba <br />
+**ID události:**      36870 <br />
+**Kategorie úkolu:** Žádný <br />
+**Úroveň:**         Chyba <br />
 **Klíčová slova:**       <br />
-**Uživatel:** systému <br />
-**Počítač:** *počítače* <br />
-**Popis:** při pokusu přistoupit k soukromému klíči pověření SSL serveru došlo k závažné chybě. Kód chyby vrácený kryptografickým modulem je 0x8009030D.  <br />
+**Uživatel:**          SYSTÉM <br />
+**Počítač:***počítače* <br />
+**Popis:** Při pokusu přistoupit k soukromému klíči pověření SSL serveru došlo k závažné chybě. Kód chyby vrácený kryptografickým modulem je 0x8009030D.  <br />
 Stav vnitřní chyba je 10001.
 
 ### <a name="cause"></a>Příčina
@@ -216,16 +216,16 @@ V instanci CMD spusťte následující příkazy ke kontrole, jestli se událost
 wevtutil qe system /c:1 /f:text /q:"Event[System[Provider[@Name='Schannel'] and EventID=36871 and TimeCreated[timediff(@SystemTime) <= 86400000]]]" | more
 ```
 
-**Název protokolu:** systému <br />
-**Zdroj:** Schannel <br />
+**Název protokolu:**      Systémový <br />
+**Zdroj:**        Schannel <br />
 **Datum:** – <br />
-**ID události:** 36871 <br />
-**Kategorie úkolu:** None <br />
-**Úroveň:** chyba <br />
+**ID události:**      36871 <br />
+**Kategorie úkolu:** Žádný <br />
+**Úroveň:**         Chyba <br />
 **Klíčová slova:**       <br />
-**Uživatel:** systému <br />
-**Počítač:** *počítače* <br />
-**Popis:** při vytváření pověření serveru TLS došlo k závažné chybě. Stav vnitřní chyba je 10013.
+**Uživatel:**          SYSTÉM <br />
+**Počítač:***počítače* <br />
+**Popis:** Při vytváření pověření serveru TLS došlo k závažné chybě. Stav vnitřní chyba je 10013.
  
 ### <a name="cause"></a>Příčina
 
@@ -246,32 +246,32 @@ wevtutil qe system /c:1 /f:text /q:"Event[System[Provider[@Name=' Microsoft-Wind
 wevtutil qe system /c:1 /f:text /q:"Event[System[Provider[@Name=' Microsoft-Windows-TerminalServices-SessionBroker-Client '] and EventID=1296 and TimeCreated[timediff(@SystemTime) <= 86400000]]]" | more
 ```
 
-**Název protokolu:** Microsoft-Windows-TerminalServices-SessionBroker/Operational <br />
-**Zdroj:** Microsoft-Windows-TerminalServices-SessionBroker <br />
-**Datum:** *čas* <br />
-**ID události:** 2056 <br />
+**Název protokolu:**      Microsoft-Windows-TerminalServices-SessionBroker/Operational <br />
+**Zdroj:**        Microsoft-Windows-TerminalServices-SessionBroker <br />
+**Datum:***čas* <br />
+**ID události:**      2056 <br />
 **Kategorie úkolu:** (109) <br />
-**Úroveň:** chyba <br />
+**Úroveň:**         Chyba <br />
 **Klíčová slova:**       <br />
-**Uživatel:** síťové služby <br />
-**Počítač:** *plně kvalifikovaný název domény počítače* <br />
-**Popis:** popis 2056 ID události ze zdroje Microsoft-Windows-TerminalServices-SessionBroker nebyl nalezen. Součást, která vyvolá tuto událost není nainstalována na místním počítači nebo že je poškozená instalace. Můžete nainstalovat nebo opravit součásti v místním počítači. <br />
+**Uživatel:**          SÍŤOVÉ SLUŽBY <br />
+**Počítač:***plně kvalifikovaný název domény počítače* <br />
+**Popis:** Popis pro 2056 ID události ze zdroje Microsoft-Windows-TerminalServices-SessionBroker nebyl nalezen. Součást, která vyvolá tuto událost není nainstalována na místním počítači nebo že je poškozená instalace. Můžete nainstalovat nebo opravit součásti v místním počítači. <br />
 Pokud událost pochází z jiného počítače, informace o zobrazení museli uložit s událostí. <br />
 Tyto informace je obsažena v události: <br />
 NULL <br />
 NULL <br />
 Přihlášení k databázi se nezdařilo.
 
-**Název protokolu:** Microsoft-Windows-TerminalServices-SessionBroker – klient/Operational <br />
-**Zdroj:** Microsoft-Windows-TerminalServices-SessionBroker-Client <br />
-**Datum:** *čas* <br />
-**ID události:** 1296 <br />
+**Název protokolu:**      Microsoft-Windows-TerminalServices-SessionBroker-Client/Operational <br />
+**Zdroj:**        Microsoft-Windows-TerminalServices-SessionBroker-Client <br />
+**Datum:***čas* <br />
+**ID události:**      1296 <br />
 **Kategorie úkolu:** (104) <br />
-**Úroveň:** chyba <br />
+**Úroveň:**         Chyba <br />
 **Klíčová slova:**       <br />
-**Uživatel:** síťové služby <br />
-**Počítač:** *plně kvalifikovaný název domény počítače* <br />
-**Popis:** popis 1296 ID události ze zdroje Microsoft-Windows-TerminalServices-SessionBroker – klient nebyl nalezen. Součást, která vyvolá tuto událost není nainstalována na místním počítači nebo že je poškozená instalace. Můžete nainstalovat nebo opravit součásti v místním počítači.
+**Uživatel:**          SÍŤOVÉ SLUŽBY <br />
+**Počítač:***plně kvalifikovaný název domény počítače* <br />
+**Popis:** Popis pro 1296 ID události ze zdroje Microsoft-Windows-TerminalServices-SessionBroker – klient nebyl nalezen. Součást, která vyvolá tuto událost není nainstalována na místním počítači nebo že je poškozená instalace. Můžete nainstalovat nebo opravit součásti v místním počítači.
 Pokud událost pochází z jiného počítače, informace o zobrazení museli uložit s událostí.
 Tyto informace je obsažena v události:  <br />
 *Text* <br />

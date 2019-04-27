@@ -9,11 +9,11 @@ ms.topic: quickstart
 ms.date: 01/08/2018
 ms.author: lbosq
 ms.openlocfilehash: b81cedc9376b33b27f3a742fbe5d7410535fa727
-ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56587799"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60891460"
 ---
 # <a name="quickstart-build-a-nodejs-application-by-using-azure-cosmos-db-gremlin-api-account"></a>Rychlý start: Vytvoření aplikace Node.js pomocí účtu Azure Cosmos DB Gremlin API
 

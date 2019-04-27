@@ -14,11 +14,11 @@ ms.date: 02/11/2019
 ms.author: spelluru
 ms.reviewer: christianreddington,anthdela,juselph
 ms.openlocfilehash: e0ac09a68bda539fe7abd05fce1739d1a58a3c99
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56242987"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62127340"
 ---
 # <a name="orchestrate-the-implementation-of-azure-devtest-labs"></a>Orchestrace implementace Azure DevTest Labs
 Tento článek poskytuje doporučený postup pro rychlé nasazení a implementaci služby Azure DevTest Labs. Následující obrázek zdůrazňuje celkový proces jako doporučený postup při sledování flexibilitu pro podporu různých oborovými požadavky a scénáře.

@@ -1,7 +1,6 @@
 ---
 title: Použití Pigu Apache Hadoop s využitím REST v HDInsight – Azure
 description: Zjistěte, jak spouštět úlohy Pig Latin na cluster Apache Hadoop v Azure HDInsight pomocí REST.
-services: hdinsight
 author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
@@ -9,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/10/2018
 ms.author: hrasheed
-ms.openlocfilehash: 52ad40a2521f21efee3b9f98b46c2e2e6343b656
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 690a4bf08c7bfd6ccc039fdd04a3dda26b5a9301
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58098300"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62124090"
 ---
 # <a name="run-apache-pig-jobs-with-apache-hadoop-on-hdinsight-by-using-rest"></a>Spouštět úlohy Apache Pig s Apache Hadoop v HDInsight pomocí REST
 

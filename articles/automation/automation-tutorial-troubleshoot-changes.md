@@ -12,11 +12,11 @@ ms.topic: tutorial
 ms.custom: mvc
 manager: carmonm
 ms.openlocfilehash: 77dda5f113a10f0bfb59457b1059563c58db0dde
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56816930"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62116630"
 ---
 # <a name="troubleshoot-changes-in-your-environment"></a>Řešení potíží se změnami ve vašem prostředí
 

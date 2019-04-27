@@ -10,11 +10,11 @@ ms.date: 02/26/2018
 ms.author: iainfou
 ms.custom: mvc
 ms.openlocfilehash: 961f09d7581a26596b03e7a2f8e97d98fe83e6aa
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57995372"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61217064"
 ---
 # <a name="deprecated-create-container-images-to-be-used-with-azure-container-service"></a>(NEPOUŽÍVANÉ) Vytváření imagí kontejneru pro použití s Azure Container Service
 
@@ -36,7 +36,7 @@ Po dokončení bude ve vašem místním vývojovém prostředí dostupná násle
 
 V následujících kurzech se image kontejneru nahraje do služby Azure Container Registry a pak se spustí v clusteru Kubernetes hostovaném v Azure.
 
-## <a name="before-you-begin"></a>Před zahájením
+## <a name="before-you-begin"></a>Než začnete
 
 V tomto kurzu se předpokládá základní znalost klíčových konceptů Dockeru, jako jsou kontejnery, image kontejnerů a základní příkazy Dockeru. V případě potřeby najdete základní informace o kontejnerech v článku [Get started with Docker]( https://docs.docker.com/get-started/) (Začínáme s Dockerem). 
 

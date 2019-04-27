@@ -1,7 +1,6 @@
 ---
 title: Nastavení replikace clusteru HBase ve virtuálních sítích Azure – Azure HDInsight
 description: Zjistěte, jak nastavit HBase replikace z jedné verze HDInsight do jiné služby Vyrovnávání zatížení, vysokou dostupnost, migrace s nulovými výpadky a aktualizace a zotavení po havárii.
-services: hdinsight,virtual-network
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -9,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 09/15/2018
-ms.openlocfilehash: d50c3f4452dd00b5656b6cde5e671caebcb4bb7c
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 95a1055df283765b24322f6f8efe3efcb9b19022
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58112530"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62123074"
 ---
 # <a name="set-up-apache-hbase-cluster-replication-in-azure-virtual-networks"></a>Nastavení replikace clusteru Apache HBase ve virtuálních sítích Azure
 

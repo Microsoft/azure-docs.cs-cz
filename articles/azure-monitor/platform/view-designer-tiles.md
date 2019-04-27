@@ -14,11 +14,11 @@ ms.topic: conceptual
 ms.date: 01/17/2018
 ms.author: bwren
 ms.openlocfilehash: 9c0283081bd7245b1b886ed82ba03130a7a3bf2c
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59495324"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61341737"
 ---
 # <a name="reference-guide-to-view-designer-tiles-in-azure-monitor"></a>Referenční příručka pro Návrhář zobrazení dlaždice ve službě Azure Monitor
 Pomocí návrháře zobrazení ve službě Azure Monitor můžete vytvořit řadu vlastních zobrazení na webu Azure Portal, který může pomoci vám vizualizovat data ve vašem pracovním prostoru Log Analytics. Tento článek je referenční příručka k nastavení pro dlaždice, které jsou k dispozici do vlastních zobrazení.
@@ -58,7 +58,7 @@ Následující části popisují typy dlaždic a jejich vlastnosti podrobně.
 | Legenda |Text, který se zobrazí pod hodnotou. |
 | Dotaz |Dotaz, který se spouští. Zobrazí se počet záznamů, které jsou vrácené dotazem. |
 | **Upřesnit** |**> Ověření toku dat** |
-| Povoleno |Pokud byste měli povolit ověření toku dat pro dlaždice, vyberte tento odkaz. Tento přístup poskytuje alternativní zprávu, pokud data nejsou dostupná. Obvykle použít přístup k poskytování zprávy během doby dočasné, při zobrazení je nainstalovaný a data bude k dispozici. |
+| Enabled |Pokud byste měli povolit ověření toku dat pro dlaždice, vyberte tento odkaz. Tento přístup poskytuje alternativní zprávu, pokud data nejsou dostupná. Obvykle použít přístup k poskytování zprávy během doby dočasné, při zobrazení je nainstalovaný a data bude k dispozici. |
 | Dotaz |Dotaz, který určuje, jestli je k dispozici pro zobrazení dat se spouští. Pokud dotaz nebyly vráceny žádné výsledky, zobrazí se zpráva místo hodnotu hlavního dotazu. |
 | Zpráva |Zpráva, která se zobrazí, pokud dotaz ověření toku dat nevrátí žádná data. Pokud zadáte žádná zpráva *provádění vyhodnocení* se zobrazí stavová zpráva. |
 
@@ -79,7 +79,7 @@ Tuto dlaždici se zobrazuje počet záznamů z dotazů na dva různé protokoly 
 | Legenda |Text, který se zobrazí pod hodnotou. |
 | Dotaz |Dotaz, který se spouští. Zobrazí se počet záznamů, které jsou vrácené dotazem. |
 | **Upřesnit** |**> Ověření toku dat** |
-| Povoleno |Pokud byste měli povolit ověření toku dat pro dlaždice, vyberte tento odkaz. Tento přístup poskytuje alternativní zprávu, pokud data nejsou dostupná. Obvykle použít přístup k poskytování zprávy během doby dočasné, při zobrazení je nainstalovaný a data bude k dispozici. |
+| Enabled |Pokud byste měli povolit ověření toku dat pro dlaždice, vyberte tento odkaz. Tento přístup poskytuje alternativní zprávu, pokud data nejsou dostupná. Obvykle použít přístup k poskytování zprávy během doby dočasné, při zobrazení je nainstalovaný a data bude k dispozici. |
 | Dotaz |Dotaz, který určuje, jestli je k dispozici pro zobrazení dat se spouští. Pokud dotaz nebyly vráceny žádné výsledky, zobrazí se zpráva místo hodnotu hlavního dotazu. |
 | Zpráva |Zpráva, která se zobrazí, pokud dotaz ověření toku dat nevrátí žádná data. Pokud zadáte žádná zpráva *provádění vyhodnocení* se zobrazí stavová zpráva. |
 
@@ -103,7 +103,7 @@ Tuto dlaždici se zobrazuje počet záznamů z dotazů na dva různé protokoly 
 | Barvy |Barva, která se zobrazí pro každé tři hlavní vlastnosti. Chcete-li určit alternativní barvy pro konkrétní hodnoty vlastností, použijte *rozšířené mapování barev*. |
 | Rozšířené mapování barev |Zobrazí barva, která představuje konkrétní hodnoty vlastností. Pokud je hodnota, kterou zadáte v první tři, zobrazí se místo standardní barvu Alternativní barva. Pokud není vlastnost v první tři, barva se nezobrazí. |
 | **Upřesnit** |**> Ověření toku dat** |
-| Povoleno |Pokud byste měli povolit ověření toku dat pro dlaždice, vyberte tento odkaz. Tento přístup poskytuje alternativní zprávu, pokud data nejsou dostupná. Obvykle použít přístup k poskytování zprávy během doby dočasné, při zobrazení je nainstalovaný a data bude k dispozici. |
+| Enabled |Pokud byste měli povolit ověření toku dat pro dlaždice, vyberte tento odkaz. Tento přístup poskytuje alternativní zprávu, pokud data nejsou dostupná. Obvykle použít přístup k poskytování zprávy během doby dočasné, při zobrazení je nainstalovaný a data bude k dispozici. |
 | Dotaz |Dotaz, který určuje, jestli je k dispozici pro zobrazení dat se spouští. Pokud dotaz nebyly vráceny žádné výsledky, zobrazí se zpráva místo hodnotu hlavního dotazu. |
 | Zpráva |Zpráva, která se zobrazí, pokud dotaz ověření toku dat nevrátí žádná data. Pokud zadáte žádná zpráva *provádění vyhodnocení* se zobrazí stavová zpráva. |
 
@@ -124,7 +124,7 @@ Tato dlaždice není spojnicový graf zobrazující více řad z dotazu protokol
 | Jednotky |Zadejte jednotky pro hodnoty vrácené dotazem. Tyto informace slouží k zobrazení popisků v grafu určující typy hodnot a volitelně pro převod hodnoty. **Typ jednotky** Určuje kategorii jednotky a definuje **aktuální typ jednotky** hodnoty, které jsou k dispozici. Pokud vyberete hodnotu v **převést na** pak číselné hodnoty jsou převedeny z **aktuální jednotky** typ, který **převést na** typu. |
 | Vlastní popisek |Text, který se zobrazí vedle popisku osy y *jednotky* typu. Pokud není zadán žádný popisek, pouze *jednotky* typ se zobrazí. |
 | **Upřesnit** |**> Ověření toku dat** |
-| Povoleno |Pokud byste měli povolit ověření toku dat pro dlaždice, vyberte tento odkaz. Tento přístup poskytuje alternativní zprávu, pokud data nejsou dostupná. Obvykle použít přístup k poskytování zprávy během doby dočasné, při zobrazení je nainstalovaný a data bude k dispozici. |
+| Enabled |Pokud byste měli povolit ověření toku dat pro dlaždice, vyberte tento odkaz. Tento přístup poskytuje alternativní zprávu, pokud data nejsou dostupná. Obvykle použít přístup k poskytování zprávy během doby dočasné, při zobrazení je nainstalovaný a data bude k dispozici. |
 | Dotaz |Dotaz, který určuje, jestli je k dispozici pro zobrazení dat se spouští. Pokud dotaz nebyly vráceny žádné výsledky, zobrazí se zpráva místo hodnotu hlavního dotazu. |
 | Zpráva |Zpráva, která se zobrazí, pokud dotaz ověření toku dat nevrátí žádná data. Pokud zadáte žádná zpráva *provádění vyhodnocení* se zobrazí stavová zpráva. |
 
@@ -149,7 +149,7 @@ Tuto dlaždici má oba řádek graf této zobrazí více řad z protokolu dotaz 
 | Jednotky |Zadejte jednotky pro hodnoty vrácené dotazem. Tyto informace slouží zobrazení popisků, které označují typy hodnot a volitelně pro převedení hodnot. *Jednotky* typ Určuje kategorii jednotky a definuje dostupných *aktuální jednotky* typ hodnoty. Pokud vyberete hodnotu v *převést na*, číselné hodnoty jsou převedeny z *aktuální jednotky* typ, který *převést na* typu. |
 | Vlastní popisek |Text, který se zobrazí vedle popisku osy y *jednotky* typu. Pokud není zadán žádný popisek, pouze *jednotky* typ se zobrazí. |
 | **Upřesnit** |**> Ověření toku dat** |
-| Povoleno |Pokud byste měli povolit ověření toku dat pro dlaždice, vyberte tento odkaz. Tento přístup poskytuje alternativní zprávu, pokud data nejsou dostupná. Obvykle použít přístup k poskytování zprávy během doby dočasné, při zobrazení je nainstalovaný a data bude k dispozici. |
+| Enabled |Pokud byste měli povolit ověření toku dat pro dlaždice, vyberte tento odkaz. Tento přístup poskytuje alternativní zprávu, pokud data nejsou dostupná. Obvykle použít přístup k poskytování zprávy během doby dočasné, při zobrazení je nainstalovaný a data bude k dispozici. |
 | Dotaz |Dotaz, který určuje, jestli je k dispozici pro zobrazení dat se spouští. Pokud dotaz nebyly vráceny žádné výsledky, zobrazí se zpráva místo hodnotu hlavního dotazu. |
 | Zpráva |Zpráva, která se zobrazí, pokud dotaz ověření toku dat nevrátí žádná data. Pokud zadáte žádná zpráva *provádění vyhodnocení* se zobrazí stavová zpráva. |
 
@@ -174,7 +174,7 @@ Tuto dlaždici má oba řádek graf této zobrazí více řad z protokolu dotaz 
 | Dotaz na graf |Dotaz, který se spouští pro druhé řady. Počet záznamů v každém časovém intervalu je reprezentován sloupců v grafu. |
 | Operace |Operace, která se provádí na vlastnost value slouží ke shrnutí jako jednu hodnotu pro popisek.<ul><li>Průměr: Průměr hodnot ze všech záznamů.</li><li>Počet: Počet všech záznamů, které jsou vrácené dotazem.</li><li>Poslední vzorek: Hodnota posledního intervalu, který je součástí grafu.</li><li>Max: Maximální hodnota intervalů, které jsou zahrnuty v grafu. |
 | **Upřesnit** |**> Ověření toku dat** |
-| Povoleno |Pokud byste měli povolit ověření toku dat pro dlaždice, vyberte tento odkaz. Tento přístup poskytuje alternativní zprávu, pokud data nejsou dostupná. Obvykle použít přístup k poskytování zprávy během doby dočasné, při zobrazení je nainstalovaný a data bude k dispozici. |
+| Enabled |Pokud byste měli povolit ověření toku dat pro dlaždice, vyberte tento odkaz. Tento přístup poskytuje alternativní zprávu, pokud data nejsou dostupná. Obvykle použít přístup k poskytování zprávy během doby dočasné, při zobrazení je nainstalovaný a data bude k dispozici. |
 | Dotaz |Dotaz, který určuje, jestli je k dispozici pro zobrazení dat se spouští. Pokud dotaz nebyly vráceny žádné výsledky, zobrazí se zpráva místo hodnotu hlavního dotazu. |
 | Zpráva |Zpráva, která se zobrazí, pokud dotaz ověření toku dat nevrátí žádná data. Pokud zadáte žádná zpráva *provádění vyhodnocení* se zobrazí stavová zpráva. |
 

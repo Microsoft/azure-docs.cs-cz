@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: jeedes
-ms.openlocfilehash: 743246881463d9cb5156677a0c3ec719d80a079c
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 18ee967d421eb2a170955a4b75939e5f084a65fb
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59264348"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62111402"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-promapp"></a>Kurz: Integrace Azure Active Directory s Promapp
 
@@ -121,7 +121,7 @@ Ke konfiguraci Azure AD jednotné přihlašování s Promapp, proveďte následu
     > [!NOTE] 
     > V současné době integrace Azure AD s Promapp pouze byl nakonfigurován pro ověřování služby spuštěné například přejdete na adresu URL Promapp zahájí proces ověřování. Adresa URL odpovědi je ale povinné pole.
 
-    b. V **adresy URL odpovědi** textové pole, zadejte adresu URL, pomocí následujícího vzorce: `https://<DOMAINNAME>.promapp.com/azuread/saml/authenticate.aspx`
+    b. V **adresy URL odpovědi** textové pole, zadejte adresu URL, pomocí následujícího vzorce: `https://<DOMAINNAME>.promapp.com/TENANTNAME/saml/authenticate.aspx`
 
 5. Klikněte na tlačítko **nastavit další adresy URL** a provést následující krok, pokud chcete nakonfigurovat aplikace v **SP** iniciované režimu:
 

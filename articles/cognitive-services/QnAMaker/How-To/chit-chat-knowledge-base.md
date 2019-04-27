@@ -12,11 +12,11 @@ ms.date: 01/14/2019
 ms.author: tulasim
 ms.custom: seodec18
 ms.openlocfilehash: d40330f257694e81704bf6fffa1fd2df8ed86c06
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
-ms.translationtype: MT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55858038"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61376073"
 ---
 # <a name="add-chit-chat-to-a-knowledge-base"></a>Přidat Chit chat znalostní báze
 
@@ -24,7 +24,8 @@ Přidání chit chat pro svého robota díky konverzační a poutavé. Funkci ch
 
 Tato datová sada obsahuje přibližně 100 scénáře chit chat v hlasu tři osob – The Comic The Professional, The typu Friend. Vyberte osoby, která se nejvíce podobá hlasové svého robota. Zadaný uživatelský dotaz, nástroje QnA Maker se pokusí shodovat s nejbližší QnA známé chit chat. 
 
-Několik příkladů různých osobnosti: <!-- added quotes so acrolinx doesn't score these sentences -->
+Několik příkladů různých osobnosti:
+<!-- added quotes so acrolinx doesn't score these sentences -->
 |Uživatelský dotaz|Profesionály|Spřátelené|Comic|
 |--|--|--|--|
 |`You are awesome`|`I aim to serve.`|`That's so nice of you!`|`Flattery. I like it.`|

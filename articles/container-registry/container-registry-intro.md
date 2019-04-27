@@ -9,11 +9,11 @@ ms.date: 04/03/2019
 ms.author: stevelas
 ms.custom: seodec18, mvc
 ms.openlocfilehash: ce870bfb8d29f7a808962e4d273388ab31186f10
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "59997395"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60828592"
 ---
 # <a name="introduction-to-private-docker-container-registries-in-azure"></a>Seznámení se soukromými registry kontejnerů Dockeru v Azure
 

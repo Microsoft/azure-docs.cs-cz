@@ -10,11 +10,11 @@ ms.date: 09/05/2017
 ms.author: jopapa
 ms.reviewer: sngun
 ms.openlocfilehash: ef245c2ef5da2b3dc9780e772a71e8ef896e1aff
-ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56959795"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60824265"
 ---
 # <a name="create-a-mongodb-app-with-react-and-azure-cosmos-db"></a>Vytvoření aplikace MongoDB s React a službou Azure Cosmos DB  
 

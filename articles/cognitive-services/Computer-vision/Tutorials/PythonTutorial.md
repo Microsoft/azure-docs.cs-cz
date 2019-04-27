@@ -12,11 +12,11 @@ ms.date: 11/06/2018
 ms.author: kefre
 ms.custom: seodec18
 ms.openlocfilehash: b55b1fdf3b93d3865bdb115e43ff8583af61b45d
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56326421"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61346305"
 ---
 # <a name="tutorial-computer-vision-api-python"></a>Kurz: Python API pro zpracování obrazu počítače
 

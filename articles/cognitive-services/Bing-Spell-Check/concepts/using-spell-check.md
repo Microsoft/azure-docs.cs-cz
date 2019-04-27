@@ -1,5 +1,5 @@
 ---
-title: Pomocí kontrolu pravopisu Bingu, rozhraní API
+title: Použití rozhraní API pro kontrolu pravopisu Bingu
 titlesuffix: Azure Cognitive Services
 description: Další informace o režimů pro kontrolu pravopisu Bingu, nastavení a další informace týkající se rozhraní API.
 services: cognitive-services
@@ -11,13 +11,13 @@ ms.topic: overview
 ms.date: 02/20/2019
 ms.author: aahi
 ms.openlocfilehash: 9544337ef1322e52cbdf123bb48d283485a8c7dd
-ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56889946"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60896134"
 ---
-# <a name="using-the-bing-spell-check-api"></a>Pomocí kontrolu pravopisu Bingu, rozhraní API
+# <a name="using-the-bing-spell-check-api"></a>Použití rozhraní API pro kontrolu pravopisu Bingu
 
 Další informace o použití rozhraní API Bingu pro kontrolu pravopisu zkontrolujte kontextové gramatiky a kontrola pravopisu pomocí tohoto článku. Zatímco většina pravopisu využívají sady pravidel na základě slovníku, kontrola pravopisu Bingu využívá strojové učení a statistické strojový překlad poskytnout přesné a kontextové opravy. 
 

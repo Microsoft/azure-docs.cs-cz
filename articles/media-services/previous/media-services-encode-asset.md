@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 04/01/2019
 ms.author: juliako
 ms.openlocfilehash: a976b7c1f697c09082ca0f7978bb23bb4e467e5d
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58801675"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61464177"
 ---
 # <a name="overview-and-comparison-of-azure-on-demand-media-encoders"></a>Přehled a porovnání Azure na vyžádání kodérů médií 
 

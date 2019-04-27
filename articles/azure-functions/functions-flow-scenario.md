@@ -12,12 +12,12 @@ ms.date: 12/14/2017
 ms.author: glenga
 ms.reviewer: sunayv
 ms.custom: ''
-ms.openlocfilehash: 662c78fc7074b0dafc53c393962aa4b578779095
-ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
+ms.openlocfilehash: 31e18285bf6211e73d994e037a91adc396972715
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44092254"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62106966"
 ---
 # <a name="call-a-function-from-microsoft-flow"></a>Volání funkce z Microsoft Flow
 
@@ -132,7 +132,7 @@ Vytvoření toku od začátku (bez šablony) a přidejte *aktivační událost* 
 
     ![Přidat podmínku](media/functions-flow-scenario/add-condition.png)
 
-    Microsoft Flow přidá dvě větve do toku: **Pokud Ano** a **Pokud žádná**. Přidat kroky do jednoho nebo obou větví, potom co definujete podmínku, kterou chcete porovnat.
+    Microsoft Flow přidá k toku dvě větve: **Pokud Ano** a **Pokud žádná**. Přidat kroky do jednoho nebo obou větví, potom co definujete podmínku, kterou chcete porovnat.
 
     ![Podmínka větve](media/functions-flow-scenario/condition-branches.png)
 

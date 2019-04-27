@@ -13,14 +13,14 @@ ms.topic: conceptual
 ms.date: 02/07/2018
 ms.author: jingwang
 ms.openlocfilehash: 55ff6d37f18f4ffa2f12e17bd33dd196b77f79af
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54025772"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61473055"
 ---
 # <a name="copy-data-from-sybase-using-azure-data-factory"></a>Kopírování dat z databáze Sybase pomocí Azure Data Factory
-> [!div class="op_single_selector" title1="Vyberte verzi služby Data Factory, kterou používáte:"]
+> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
 > * [Verze 1](v1/data-factory-onprem-sybase-connector.md)
 > * [Aktuální verze](connector-sybase.md)
 
@@ -59,7 +59,7 @@ Pro Sybase propojené služby jsou podporovány následující vlastnosti:
 | databáze | Název databáze Sybase. |Ano |
 | authenticationType. | Typ ověřování používaný pro připojení k databázi Sybase.<br/>Povolené hodnoty jsou: **Základní**, a **Windows**. |Ano |
 | uživatelské jméno | Zadejte uživatelské jméno pro připojení k databázi Sybase. |Ano |
-| heslo | Zadejte heslo pro uživatelský účet, který jste zadali pro uživatelské jméno. Označte toto pole jako SecureString bezpečně uložit ve službě Data Factory nebo [odkazovat tajného klíče do služby Azure Key Vault](store-credentials-in-key-vault.md). |Ano |
+| password | Zadejte heslo pro uživatelský účet, který jste zadali pro uživatelské jméno. Označte toto pole jako SecureString bezpečně uložit ve službě Data Factory nebo [odkazovat tajného klíče do služby Azure Key Vault](store-credentials-in-key-vault.md). |Ano |
 | connectVia | [Prostředí Integration Runtime](concepts-integration-runtime.md) se použije k připojení k úložišti. Modul Integration Runtime je povinný, jak je uvedeno v [požadavky](#prerequisites). |Ano |
 
 **Příklad:**

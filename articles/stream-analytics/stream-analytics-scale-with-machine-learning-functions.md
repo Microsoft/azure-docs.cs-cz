@@ -9,11 +9,11 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 03/28/2017
 ms.openlocfilehash: f11034a4970e3fb95333310af82a6b2a2551f1eb
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59257276"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61479107"
 ---
 # <a name="scale-your-stream-analytics-job-with-azure-machine-learning-functions"></a>Škálovat úlohy Stream Analytics s funkcemi Azure Machine Learning
 Nastavení úlohy Stream Analytics a spuštění ukázkových dat přes něj je snadná. Co máme dělat, když potřebujeme spustit stejná úloha s vyšší objem dat? Abychom mohli pochopit, jak nakonfigurovat úlohu Stream Analytics tak, aby škáluje se vyžaduje. V tomto dokumentu se zaměříme na zvláštní aspekty škálovat úlohy Stream Analytics s funkcemi Machine Learning. Informace o tom, jak škálovat úlohy Stream Analytics obecně najdete v článku [škálování úloh](stream-analytics-scale-jobs.md).

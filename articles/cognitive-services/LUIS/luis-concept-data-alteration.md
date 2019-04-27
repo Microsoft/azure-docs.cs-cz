@@ -12,11 +12,11 @@ ms.topic: conceptual
 ms.date: 01/23/2019
 ms.author: diberry
 ms.openlocfilehash: c43d3738b23037432ecdfe3aa872950f6a7b863e
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55860588"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60812797"
 ---
 # <a name="alter-utterance-data-before-or-during-prediction"></a>Příkaz ALTER utterance dat před nebo během predikcí
 Služba LUIS poskytuje možnosti pro manipulaci s utterance před nebo během do predikce. Patří mezi ně opravuje pravopis a opravit problémy časové pásmo pro události prebuild datetimeV2. 

@@ -18,13 +18,13 @@ ms.date: 02/03/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 3772dbdc8582eea1b2eac368784878a8a36d34ad
-ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58339478"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62125310"
 ---
-# <a name="sap-workload-configurations-with-azure-availability-zones"></a>Konfigurace úlohy SAP se zónami dostupnosti Azure
+# <a name="sap-workload-configurations-with-azure-availability-zones"></a>Konfigurace úloh SAP s využitím služby Zóny dostupnosti Azure
 [Zóny dostupnosti Azure](https://docs.microsoft.com/azure/availability-zones/az-overview) je jedna z funkcí vysoké dostupnosti, které poskytuje Azure. Použití zón dostupnosti zlepšuje celkovou dostupnost úloh SAP v Azure. Tato funkce je k dispozici v některých [oblastí Azure](https://azure.microsoft.com/global-infrastructure/regions/). V budoucnu bude k dispozici v dalších oblastech.
 
 Tento obrázek ukazuje základní architektury vysoké dostupnosti SAP:

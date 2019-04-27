@@ -12,11 +12,11 @@ ms.custom: mvc, fasttrack-edit
 ms.devlang: javascript
 manager: jeconnoc
 ms.openlocfilehash: 78c2f599ba7d22e6de070f5867398e111a396d45
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
-ms.translationtype: MT
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57849733"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62125633"
 ---
 # <a name="create-your-first-function-hosted-on-linux-using-core-tools-and-the-azure-cli-preview"></a>Vytvoření první funkce hostované v Linuxu pomocí Core Tools a Azure CLI (Preview)
 

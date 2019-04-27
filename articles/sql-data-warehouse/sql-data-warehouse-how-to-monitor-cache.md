@@ -11,11 +11,11 @@ ms.date: 09/06/2018
 ms.author: kevin
 ms.reviewer: igorstan
 ms.openlocfilehash: 26791aecb2ca57b31358d3385d07230c73c84904
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57903857"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61474389"
 ---
 # <a name="how-to-monitor-the-gen2-cache"></a>Jak monitorovat Gen2 cache
 Architektura úložiště Gen2 automaticky rozprostírá nejčastěji dotazované columnstore segmenty v mezipaměti na NVMe, které jsou založené na SSD určená pro datové sklady Gen2. Vyšší výkon začne vyplácet, když vaše dotazy načítají segmenty, které je umístěný v mezipaměti. Tento článek popisuje, jak monitorovat a řešení potíží s výkonem pomalých dotazů tak, že určíte, jestli vaše úlohy optimální využití mezipaměti Gen2.  

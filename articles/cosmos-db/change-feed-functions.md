@@ -7,16 +7,16 @@ ms.topic: conceptual
 ms.date: 04/12/2019
 ms.author: rimman
 ms.reviewer: sngun
-ms.openlocfilehash: 35639dac0eacd5eae04b7848bdbbc1bc30fbf214
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
+ms.openlocfilehash: 18780deba1910b3ea77f7313bfb6d204dacabd82
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59680770"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62112017"
 ---
 # <a name="serverless-event-based-architectures-with-azure-cosmos-db-and-azure-functions"></a>Architektur bez serveru založené na události s Azure Cosmos DB a Azure Functions
 
-Služba Azure Functions poskytuje nejjednodušší způsob, jak připojit [kanálu změn](). Můžete vytvořit malé reaktivní funkce Azure, která se spustí automaticky při každé nové události v kanálu změn váš kontejner Azure Cosmos.
+Služba Azure Functions poskytuje nejjednodušší způsob, jak připojit [kanálu změn](change-feed.md). Můžete vytvořit malé reaktivní funkce Azure, která se spustí automaticky při každé nové události v kanálu změn váš kontejner Azure Cosmos.
 
 ![Funkce bez serveru založené na událostech práce se aktivační událost Azure Cosmos DB](./media/change-feed-functions/functions.png)
 
