@@ -9,11 +9,11 @@ ms.author: tarcher
 ms.topic: quickstart
 ms.date: 6/7/2017
 ms.openlocfilehash: 6bc0d8a1e938f2b8a97cab486d4679bfc445f6fb
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58004072"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60642243"
 ---
 # <a name="create-a-jenkins-server-on-an-azure-linux-vm-from-the-azure-portal"></a>Vytvoření serveru Jenkins na virtuálním počítači Azure s Linuxem pomocí webu Azure Portal
 

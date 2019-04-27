@@ -11,11 +11,11 @@ ms.topic: overview
 ms.date: 04/13/2018
 ms.author: rosh
 ms.openlocfilehash: ac1717a8e8a08fcfedc3bc21bb0f03b3e3ca2511
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57548077"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60721818"
 ---
 # <a name="what-is-project-answer-search"></a>Co je Project Answer Search?
 Rozhraní API služby Project Answer Search používá k získání odpovědi na zvídavé dotazy koncový bod Bingu v7. Například na otázku „Jaký je obvod Země?“ vrátí odpověď s faktickými informacemi.  Na dotaz týkající se osoby, místa nebo věci, vrátí informace o entitě identifikované dotazem. Tyto scénáře můžou být užitečné v aplikacích, jako jsou například konverzační roboti,aplikace zasílání zpráv, čtenáři, atd.  

@@ -18,11 +18,11 @@ ms.author: mlearned
 ms.custom: mvc
 monikerRange: vsts
 ms.openlocfilehash: ca068b39c222a210e261234a132a0506f6b023bb
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52263747"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60554966"
 ---
 # <a name="create-a-cicd-pipeline-for-go-by-using-azure-devops-projects"></a>Vytvoření kanálu CI/CD pomocí projektů Azure DevOps for Go
 
@@ -30,7 +30,7 @@ Konfigurace kontinuální integrace (CI) a průběžné doručování (CD) pro v
 
 Pokud nemáte předplatné Azure, můžete ho získat zdarma prostřednictvím programu [Visual Studio Dev Essentials](https://visualstudio.microsoft.com/dev-essentials/).
 
-## <a name="sign-in-to-the-azure-portal"></a>Přihlásit se na Azure Portal
+## <a name="sign-in-to-the-azure-portal"></a>Přihlášení k webu Azure Portal
 
 Projekty DevOps vytvoří kanál CI/CD v kanálech Azure. Můžete vytvořit novou organizaci Azure DevOps nebo použít existující organizace. Prostředky Azure DevOps Projects také vytvoří v rámci předplatného Azure podle vašeho výběru.
 

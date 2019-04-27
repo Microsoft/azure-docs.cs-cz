@@ -12,11 +12,11 @@ ms.date: 01/24/2019
 ms.author: tulasim
 ms.custom: seodec18
 ms.openlocfilehash: a332d263526bb6507e7394c205caa1c4d1f9e3e6
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55873576"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60613275"
 ---
 # <a name="choosing-capacity-for-your-qna-maker-deployment"></a>Výběr kapacitu pro vaše nasazení nástroje QnA Maker
 

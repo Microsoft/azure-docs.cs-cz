@@ -1,10 +1,10 @@
 ---
-title: Úvod do zachytáváním paketů v sledovací proces sítě Azure | Microsoft Docs
-description: Tato stránka obsahuje přehled funkce zachytávání paketů sledovací proces sítě
+title: Úvod k zachytávání paketů ve službě Azure Network Watcher | Dokumentace Microsoftu
+description: Tato stránka obsahuje základní informace o funkci zachytávání paketů Network Watcher
 services: network-watcher
 documentationcenter: na
-author: jimdial
-manager: timlt
+author: KumudD
+manager: twooley
 editor: ''
 ms.assetid: 3a81afaa-ecd9-4004-b68e-69ab56913356
 ms.service: network-watcher
@@ -13,48 +13,48 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
-ms.author: jdial
-ms.openlocfilehash: 152cc8fb61aa6115c7b5863e4d798db9e7aa5b7c
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
-ms.translationtype: MT
+ms.author: kumud
+ms.openlocfilehash: 3ca9619dcfe9054ab69d248e20f6d8e59324d308
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23864291"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60727025"
 ---
-# <a name="introduction-to-variable-packet-capture-in-azure-network-watcher"></a>Úvod do proměnné paketu zachycení v sledovací proces sítě Azure
+# <a name="introduction-to-variable-packet-capture-in-azure-network-watcher"></a>Úvod do proměnné zachytávání paketů ve službě Azure Network Watcher
 
-Zachycení dat ze sítě sledovacích procesů proměnné paketů umožňuje vytvářet relace zachytávání paketů sledovat provoz do a z virtuálního počítače. Pomáhá zachytávání paketů při diagnostice sítě anomálií reaktivně a proactivity. Jiné účely zahrnují shromažďování statistiku sítě, získá informace o síti vniknutí, k ladění komunikaci klienta se serverem a mnoho dalšího.
+Network Watcher proměnné zachytávání paketů umožňuje vytvořit relace zachycení paketů sledujte provoz do a z virtuálního počítače. Pomáhá zachytávání paketů pro diagnostiku sítě anomálie reaktivně a proactivity. Mezi další použití patří shromažďování statistických údajů sítě získat informace o síti vniknutí, chcete-li ladit komunikaci klienta se serverem a spoustu dalších věcí.
 
-Zachytáváním paketů je rozšíření virtuálního počítače, který se spustil vzdáleně přes sledovací proces sítě. Tato funkce snižuje zátěž spuštěných zachytáváním paketů ručně na požadovaný virtuální počítač, který úspora času. Zachytáváním paketů můžete spustit prostřednictvím portálu, prostředí PowerShell, rozhraní příkazového řádku nebo REST API. Je jeden příklad, jak můžete spustit zachytáváním paketů s výstrahami virtuálního počítače. Filtry jsou k dispozici pro relaci zachytávání zajistit, že zaznamenávat provoz, který chcete monitorovat. Filtry jsou založené na 5-n-tice (protokol, místní IP adresu, vzdálené IP adresy, místního portu a vzdáleného portu) informace. Zachycená data se ukládají v místním disku nebo objekt blob úložiště. Existuje omezení 10 zachytávání relací paketů na oblast na předplatné. Toto omezení se vztahuje pouze na relací a nebude použitelná pro soubory uložené paketu zaznamenat místně na virtuálním počítači nebo v účtu úložiště.
+Zachytávání paketů se rozšíření virtuálního počítače, která je spuštěna vzdáleně prostřednictvím Network Watcher. Tato schopnost snižuje zátěž ručně spustit zachytávání paketů na požadovaný virtuální počítač, což šetří cenný čas. Zachytávání paketů se dá spouštět na portálu, Powershellu, rozhraní příkazového řádku nebo rozhraní REST API. Jeden příklad, jak se dá spouštět zachytávání paketů se virtuální počítač výstrahy. Filtry jsou k dispozici pro relace zachytávání zajistit, že zaznamenávat provoz, který chcete monitorovat. Filtry jsou založeny na 5-řazené kolekce členů (protokol, místní IP adresa, Vzdálená IP adresa, místní port a vzdálených portů) informace. Zachycená data se ukládají v místním disku nebo objekt blob úložiště. Existuje limit 10 relace zachycení paketů na oblast a předplatné. Toto omezení se vztahuje pouze na relace a neplatí pro soubory uložené paketů zachycení místně na virtuálním počítači nebo v účtu úložiště.
 
 > [!IMPORTANT]
-> Rozšíření virtuálního počítače vyžaduje zachytáváním paketů `AzureNetworkWatcherExtension`. Instalaci rozšíření na virtuální počítač s Windows najdete v článku [rozšíření virtuálního počítače Azure sítě sledovacích procesů agenta pro Windows](../virtual-machines/windows/extensions-nwa.md) a u virtuálního počítače s Linuxem, navštivte [rozšíření virtuálního počítače Azure sítě sledovacích procesů agenta pro Linux](../virtual-machines/linux/extensions-nwa.md).
+> Zachytávání paketů vyžaduje rozšíření virtuálního počítače `AzureNetworkWatcherExtension`. Instalaci rozšíření na virtuálním počítači s Windows najdete [rozšíření virtuálního počítače Azure Network Watcher Agent pro Windows](../virtual-machines/windows/extensions-nwa.md) a pro virtuální počítač s Linuxem, navštivte [rozšíření virtuálního počítače Azure Network Watcher Agent pro Linux](../virtual-machines/linux/extensions-nwa.md).
 
-Pokud chcete informace, které zaznamenáte na informace, které chcete zkrátit, jsou následující možnosti k dispozici pro relaci zachytávání paketů:
+Informace, které zaznamenáte pouze informací, které chcete omezit, následující možnosti jsou k dispozici pro relace zachytávání paketů:
 
 **Zachycení konfigurace**
 
 |Vlastnost|Popis|
 |---|---|
-|**Maximální počet bajtů paketu (bajty)** | Počet bajtů z jednotlivých paketů, které jsou zachyceny, všechny bajty zachyceny, pokud je ponecháno prázdné. Počet bajtů z jednotlivých paketů, které jsou zachyceny, všechny bajty zachyceny, pokud je ponecháno prázdné. Pokud budete potřebovat pouze hlavičce IPv4 – označuje 34 sem |
-|**Maximální počet bajtů za relace (bajty)** | Celkový počet bajtů v tom, že se zaznamená, hodnota v případě dosažení neukončí relace.|
-|**Časový limit (sekundy)** | Sady času omezení paketu zaznamenání relace. Výchozí hodnota je 18000 sekund nebo 5 hodin.|
+|**Maximální počet bajtů na paket (bajty)** | Počet bajtů z jednotlivých paketů, které jsou zachyceny, jsou zachyceny všechny bajty, pokud je ponecháno prázdné. Počet bajtů z jednotlivých paketů, které jsou zachyceny, jsou zachyceny všechny bajty, pokud je ponecháno prázdné. Pokud potřebujete pouze záhlaví protokolu IPv4 – označuje 34 zde |
+|**Maximální počet bajtů na relaci (bajty)** | Celkový počet bajtů, které jsou zachyceny hodnota po dosažení konce relace.|
+|**Časový limit (sekundy)** | Nastaví dobu omezení paketu relace zachycení. Výchozí hodnota je 18000 sekund nebo 5 hodin.|
 
-**Filtrování (volitelné)**
+**Filtrování (nepovinné)**
 
 |Vlastnost|Popis|
 |---|---|
-|**Protokol** | Protokol pro filtrování pro zachytávání paketů. Dostupné hodnoty jsou TCP, UDP a všechny.|
-|**Místní IP adresu** | Tato hodnota filtruje zachytáváním paketů na pakety, kde místní IP adresa odpovídá této hodnotě filtru.|
-|**Místního portu** | Tato hodnota filtruje zachytáváním paketů na pakety, kde místního portu odpovídá této hodnotě filtru.|
-|**Vzdálené IP adresy** | Tato hodnota filtruje zachytáváním paketů na pakety, kde vzdálené IP odpovídá této hodnotě filtru.|
-|**Vzdálený port** | Tato hodnota filtruje zachytáváním paketů na pakety, kde vzdálený port odpovídá této hodnotě filtru.|
+|**Protokol** | Protokol pro filtrování pro zachycení paketů. Dostupné hodnoty jsou TCP, UDP a všechny.|
+|**Místní IP adresa** | Tato hodnota filtry zachytávání paketů na pakety, kde místní IP adresa odpovídá této hodnotě filtru.|
+|**Místní port** | Tuto hodnotu filtry zachytávání paketů na pakety, kde na místní port odpovídá této hodnotě filtru.|
+|**Vzdálená IP adresa** | Tuto hodnotu filtry paketů zachycení paketů, kde vzdálené IP odpovídá této hodnotě filtru.|
+|**Vzdálený port** | Tuto hodnotu filtry paketů zachycení paketů, kde vzdálený port odpovídá této hodnotě filtru.|
 
-### <a name="next-steps"></a>Další kroky
+### <a name="next-steps"></a>Další postup
 
-Zjistěte, jak můžete spravovat zachycení paketů prostřednictvím portálu navštivte stránky [spravovat zachytáváním paketů na portálu Azure](network-watcher-packet-capture-manage-portal.md) nebo pomocí prostředí PowerShell, navštivte stránky [spravovat pomocí prostředí PowerShell zachytávání paketů](network-watcher-packet-capture-manage-powershell.md).
+Zjistěte, jak můžete spravovat zachytávání paketů prostřednictvím portálu návštěvou [Správa zachytávání paketů na webu Azure Portal](network-watcher-packet-capture-manage-portal.md) nebo pomocí Powershellu návštěvou [Správa zachytávání paketů pomocí prostředí PowerShell](network-watcher-packet-capture-manage-powershell.md).
 
-Naučte se vytvářet proaktivní paketu zachycení založeny na výstrahách virtuálního počítače, navštivte stránky [vytvořit zaznamenání výstrahy spouštěná paketu](network-watcher-alert-triggered-packet-capture.md)
+Zjistěte, jak vytvořit zachytávání proaktivní paketů, které jsou založeny na výstrahách virtuální počítač si [vytvořit zachytávání paketů upozornění aktivovaných](network-watcher-alert-triggered-packet-capture.md)
 
 <!--Image references-->
 [1]: ./media/network-watcher-packet-capture-overview/figure1.png

@@ -10,11 +10,11 @@ ms.author: ancav
 ms.custom: mvc
 ms.subservice: autoscale
 ms.openlocfilehash: 44fecf47ccd1ce07c7e51f7bcf51ef7823f2cf97
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58088345"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60637148"
 ---
 # <a name="create-an-autoscale-setting-for--azure-resources-based-on-performance-data-or-a-schedule"></a>Vytvoření nastavení automatického škálování prostředků Azure na základě údajů o výkonu nebo časového plánu
 

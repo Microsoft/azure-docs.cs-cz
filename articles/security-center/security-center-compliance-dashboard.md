@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 1/15/2019
 ms.author: rkarlin
 ms.openlocfilehash: 2e73cbd1de4336a08e26a609dfe704da0a068860
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56105998"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60705971"
 ---
 # <a name="tutorial-improve-your-regulatory-compliance"></a>Kurz: Vylepšené dodržování legislativních předpisů
 ---

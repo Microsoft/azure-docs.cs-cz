@@ -12,11 +12,11 @@ ms.date: 03/21/2016
 ms.author: davl
 ROBOTS: NOINDEX
 ms.openlocfilehash: 435513023cf74bbc259cb922220d5f9940452d79
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55879390"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60635462"
 ---
 # <a name="sentence-separation-and-tokenization"></a>Rozdělení a Tokenizace vět
 

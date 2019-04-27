@@ -9,11 +9,11 @@ ms.service: blueprints
 manager: carmonm
 ms.custom: seodec18
 ms.openlocfilehash: 28fef394ee400949f9911983bdbca41d6bfcb458
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59790116"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60683332"
 ---
 # <a name="define-and-assign-a-blueprint-in-the-portal"></a>Definujte a přiřaďte podrobný plán na portálu
 

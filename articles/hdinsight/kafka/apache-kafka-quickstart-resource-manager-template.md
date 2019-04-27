@@ -8,11 +8,11 @@ ms.custom: mvc
 ms.topic: quickstart
 ms.date: 04/16/2018
 ms.openlocfilehash: c1b8f711a6984a6134e6df0ae6ae12bf0b62cc0d
-ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58757672"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60640131"
 ---
 # <a name="quickstart-create-an-apache-kafka-on-hdinsight-cluster"></a>Rychlý start: Vytvoření Apache Kafka v clusteru HDInsight
 
@@ -56,7 +56,7 @@ V tomto rychlém startu se dozvíte, jak vytvořit cluster [Apache Kafka](https:
     | --- | --- |
     | Předplatné | Vaše předplatné Azure. |
     | Skupina prostředků | Skupina prostředků, ve které se cluster vytvoří. |
-    | Umístění | Oblast Azure, ve které se cluster vytvoří. |
+    | Location | Oblast Azure, ve které se cluster vytvoří. |
     | Název clusteru | Název clusteru Kafka. |
     | Uživatelské jméno přihlášení clusteru | Název účtu používaného pro přihlášení ke službám založeným na protokolu HTTPs hostovaným v clusteru. |
     | Heslo přihlášení clusteru | Heslo pro přihlašovací uživatelské jméno. |

@@ -8,11 +8,11 @@ ms.topic: sample
 ms.date: 01/23/2019
 ms.author: dacoulte
 ms.openlocfilehash: b4b6b2293952103bdcaccf11e8f7d528b33cbc46
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59270026"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60641258"
 ---
 # <a name="sample---use-approved-subnet-for-vm-network-interfaces"></a>Ukázkový – použití schváleno podsíť pro síťová rozhraní virtuálního počítače
 

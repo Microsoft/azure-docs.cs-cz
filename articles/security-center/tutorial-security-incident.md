@@ -16,11 +16,11 @@ ms.workload: na
 ms.date: 08/30/2018
 ms.author: rkarlin
 ms.openlocfilehash: d726006d3ecce69f129b1576c7c6d12833582873
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58081986"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60612715"
 ---
 # <a name="tutorial-respond-to-security-incidents"></a>Kurz: Reakce na incidenty zabezpečení
 Security Center nepřetržitě analyzuje vaše hybridní cloudové úlohy pomocí pokročilých analytických algoritmů a inteligentního rozpoznávání hrozeb a upozorní vás na škodlivé aktivity. Kromě toho můžete do Security Center integrovat výstrahy z jiných bezpečnostních produktů a služeb a vytvořit vlastní výstrahy na základě definovaných indikátorů nebo zdroje informací. Jakmile je vygenerována výstraha, je pro prozkoumání a nápravu nutná rychlá akce. V tomto kurzu se naučíte, jak:

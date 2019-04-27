@@ -15,11 +15,11 @@ ms.date: 11/13/2018
 ms.author: magoedte
 ms.custom: mvc
 ms.openlocfilehash: e135c7fa9907d218ed32b6bdb0fd60da0ecf1851
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58084704"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60540462"
 ---
 # <a name="collect-data-about-azure-virtual-machines"></a>Shromažďování dat o virtuálních počítačích Azure
 [Azure Log Analytics](../../azure-monitor/log-query/log-query-overview.md) může shromažďovat data přímo z virtuálních počítačů Azure a dalších prostředků ve vašem prostředí do jednoho úložiště pro účely podrobných analýz a korelace.  Tento rychlý start ukazuje, jak v několik snadných krocích nakonfigurovat virtuální počítače Azure s Linuxem nebo Windows a shromažďovat z nich data.  

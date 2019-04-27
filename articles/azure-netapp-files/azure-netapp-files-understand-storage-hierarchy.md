@@ -15,11 +15,11 @@ ms.topic: overview
 ms.date: 04/03/2019
 ms.author: b-juche
 ms.openlocfilehash: 357bd5eac41b0da50a1d7035e8e8045a9f21144c
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
-ms.translationtype: MT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59545518"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60691029"
 ---
 # <a name="understand-the-storage-hierarchy-of-azure-netapp-files"></a>Vysvětlení hierarchie úložiště služby Azure NetApp Files
 

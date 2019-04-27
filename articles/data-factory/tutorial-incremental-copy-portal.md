@@ -1,6 +1,6 @@
 ---
 title: Přírůstkové kopírování tabulky pomocí Azure Data Factory | Microsoft Docs
-description: V tomto kurzu vytvoříte kanál Azure Data Factory, který přírůstkově kopíruje data ze služby Azure SQL Database do úložiště Azure Blob Storage.
+description: V tomto kurzu vytvoříte kanál Azure Data Factory, který přírůstkově kopíruje data z databáze Azure SQL do úložiště Azure Blob Storage.
 services: data-factory
 documentationcenter: ''
 author: dearandyxu
@@ -13,14 +13,14 @@ ms.topic: tutorial
 ms.date: 01/11/2018
 ms.author: yexu
 ms.openlocfilehash: 1bc4bd9b95dc7e45b9b90fbe096ed71c5aa9bedf
-ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58447237"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60571029"
 ---
-# <a name="incrementally-load-data-from-an-azure-sql-database-to-azure-blob-storage"></a>Přírůstkové načtení dat ze služby Azure SQL Database do úložiště Azure Blob Storage
-V tomto kurzu vytvoříte službu Azure Data Factory s kanálem, který načítá rozdílová data z tabulky ve službě Azure SQL Database do úložiště Azure Blob Storage. 
+# <a name="incrementally-load-data-from-an-azure-sql-database-to-azure-blob-storage"></a>Přírůstkové načtení dat z databáze Azure SQL do úložiště Azure Blob Storage
+V tomto kurzu vytvoříte službu Azure Data Factory s kanálem, který načítá rozdílová data z tabulky v databázi Azure SQL do úložiště Azure Blob Storage. 
 
 V tomto kurzu provedete následující kroky:
 
@@ -201,7 +201,7 @@ V tomto kurzu vytvoříte kanál se dvěma aktivitami vyhledávání, jednou akt
 7. V okně Vlastnosti datové sady jako **Název** zadejte **WatermarkDataset**.
 
    ![Datová sada meze – název](./media/tutorial-incremental-copy-portal/watermark-dataset-name.png)
-8. Přepněte na kartu **Připojení** a kliknutím na **+ Nové** vytvořte připojení (vytvořte propojenou službu) k vaší databázi SQL Azure. 
+8. Přepněte na kartu **Připojení** a kliknutím na **+ Nové** vytvořte připojení (vytvořte propojenou službu) k vaší databázi Azure SQL. 
 
    ![Tlačítko Nová propojená služba](./media/tutorial-incremental-copy-portal/watermark-dataset-new-connection-button.png)
 9. V okně **Nová propojená služba** proveďte následující kroky:
@@ -210,7 +210,7 @@ V tomto kurzu vytvoříte kanál se dvěma aktivitami vyhledávání, jednou akt
     2. Jako **Název serveru** vyberte váš server SQL Azure.
     3. Zadejte **jméno uživatele** pro přístup k serveru SQL Azure. 
     4. Zadejte **heslo** pro tohoto uživatele. 
-    5. Pokud chcete otestovat připojení k databázi SQL Azure, klikněte na **Test připojení**.
+    5. Pokud chcete otestovat připojení k databázi Azure SQL, klikněte na **Test připojení**.
     6. Klikněte na **Uložit**.
     7. Na kartě **Připojení** ověřte, že jako **Propojená služba** je vybraná služba **AzureSqlDatabaseLinkedService**.
        

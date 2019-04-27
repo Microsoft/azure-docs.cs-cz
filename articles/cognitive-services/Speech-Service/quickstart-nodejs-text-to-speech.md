@@ -12,11 +12,11 @@ ms.date: 01/11/2019
 ms.author: erhopf
 ms.custom: seodec18
 ms.openlocfilehash: a7713576565ca2632d7d91857040ece4d02c411b
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58520832"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60621943"
 ---
 # <a name="quickstart-convert-text-to-speech-using-nodejs"></a>Rychlý start: Převést převod textu na řeč pomocí Node.js
 

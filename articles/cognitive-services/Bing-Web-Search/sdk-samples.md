@@ -11,11 +11,11 @@ ms.topic: sample
 ms.date: 03/16/2019
 ms.author: aahi
 ms.openlocfilehash: 0fcc11c2bea73bb9a5bfef7a9644f131d2821aa7
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58163816"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60646686"
 ---
 # <a name="bing-web-search-sdk-samples"></a>Ukázky sady SDK pro Vyhledávání na webu Bingu
 

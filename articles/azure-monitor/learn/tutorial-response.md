@@ -15,11 +15,11 @@ ms.date: 10/05/2018
 ms.author: magoedte
 ms.custom: mvc
 ms.openlocfilehash: 6521688e595230951e0753fd67c2bf9b02e0a6ec
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53102142"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60589894"
 ---
 # <a name="respond-to-events-with-azure-monitor-alerts"></a>Reakce na události s upozorněními služby Azure Monitor
 Upozornění služby Azure Monitor zjišťují důležité informace v úložišti Log Analytics. Vytvářejí se na základě pravidel upozornění, která automaticky v pravidelných intervalech spouští prohledávání protokolů. Pokud výsledky prohledávání protokolů odpovídají určitým kritériím, vytvoří se záznam upozornění, který je možné nakonfigurovat, aby reagoval automaticky.  Tento kurz je pokračováním kurzu [Vytváření a sdílení řídicích panelů s daty Log Analytics](tutorial-logs-dashboards.md).   

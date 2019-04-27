@@ -18,11 +18,11 @@ ms.author: mlearned
 ms.custom: mvc
 monikerRange: vsts
 ms.openlocfilehash: 5fabe9ba03c9516f5df41645fc6ab1b7a0cb2050
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52262172"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60555943"
 ---
 # <a name="create-a-cicd-pipeline-for-net-with-azure-devops-projects"></a>Vytvoření kanálu CI/CD pro .NET pomocí projektů Azure DevOps
 
@@ -30,7 +30,7 @@ Konfigurace kontinuální integrace (CI) a průběžné doručování (CD) pro .
 
 Pokud nemáte předplatné Azure, můžete ho získat zdarma prostřednictvím programu [Visual Studio Dev Essentials](https://visualstudio.microsoft.com/dev-essentials/).
 
-## <a name="sign-in-to-the-azure-portal"></a>Přihlásit se na Azure Portal
+## <a name="sign-in-to-the-azure-portal"></a>Přihlášení k webu Azure Portal
 
 Projekty DevOps vytvoří kanál CI/CD v Azure DevOps. Můžete vytvořit novou organizaci Azure DevOps nebo použít existující organizace. Prostředky Azure DevOps Projects také vytvoří v rámci předplatného Azure podle vašeho výběru.
 
@@ -157,6 +157,6 @@ Další informace o úpravě kanálu buildu a verze tak, aby splňovaly požada
 > [!div class="nextstepaction"]
 > [Přizpůsobení procesu CD](https://docs.microsoft.com/azure/devops/pipelines/release/define-multistage-release-process?view=vsts)
 
-## <a name="videos"></a>Video
+## <a name="videos"></a>Videa
 
 > [!VIDEO https://www.youtube.com/embed/itwqMf9aR0w]

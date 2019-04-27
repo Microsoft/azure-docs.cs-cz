@@ -16,11 +16,11 @@ ms.workload: na
 ms.date: 12/3/2018
 ms.author: rkarlin
 ms.openlocfilehash: bee4618ff08c89bbdab7413ca7f7f74a266d96dd
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58077900"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60706795"
 ---
 # <a name="quickstart-onboard-windows-computers-to-azure-security-center"></a>Rychlý start: Připojení počítače Windows ke službě Azure Security Center
 Po připojení předplatných Azure můžete zřízením agenta Microsoft Monitoring Agent povolit službu Security Center pro prostředky spuštěné mimo Azure, například v místním prostředí nebo jiných cloudech.

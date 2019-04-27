@@ -10,11 +10,11 @@ ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc, seodec18
 ms.openlocfilehash: 7a5a92635114be87e59fe8f779c36d4c401a1427
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
-ms.translationtype: MT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58087155"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60612915"
 ---
 # <a name="tutorial-perform-image-classification-at-the-edge-with-custom-vision-service"></a>Kurz: Provedení klasifikace obrázků na hraničních zařízeních pomocí služby Custom Vision Service
 

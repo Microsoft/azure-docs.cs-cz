@@ -12,11 +12,11 @@ ms.date: 01/23/2018
 ms.author: lahugh
 ms.custom: mvc
 ms.openlocfilehash: 557e7d9a35f012d65977d3e0654b55b15ff1e28f
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58106436"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60618905"
 ---
 # <a name="tutorial-run-a-parallel-r-simulation-with-azure-batch"></a>Kurz: Spuštění paralelní simulace jazyka R ve službě Azure Batch 
 

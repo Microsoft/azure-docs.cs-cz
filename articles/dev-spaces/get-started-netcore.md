@@ -10,11 +10,11 @@ ms.topic: tutorial
 description: Rychlý vývoj na platformě Kubernetes s využitím kontejnerů a mikroslužeb v Azure
 keywords: Docker, Kubernetes, Azure, AKS, službě Azure Kubernetes, kontejnery, Helm, služby sítě, směrování sítě služby, kubectl, k8s
 ms.openlocfilehash: 4c759462d603a35e738f76a505abd04b832afc3f
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59426337"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60687044"
 ---
 # <a name="get-started-on-azure-dev-spaces-with-net-core"></a>Začínáme s Azure Dev prostory s .NET Core
 

@@ -12,11 +12,11 @@ ms.topic: overview
 ms.date: 04/09/2018
 ms.author: makromer
 ms.openlocfilehash: 976724a40b604bcdc3c83ef1b3d2e95268f75304
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57432698"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60613848"
 ---
 # <a name="compare-azure-data-factory-with-data-factory-version-1"></a>Porovnání služby Azure Data Factory s verzí 1 služby Data Factory
 Tento článek porovnává Data Factory s verzí 1 služby Data Factory. Se službou Data Factory se můžete seznámit v článku [Úvod do Azure Data Factory](introduction.md). S verzí 1 této služby se můžete seznámit v článku [Úvod do Azure Data Factory](v1/data-factory-introduction.md). 

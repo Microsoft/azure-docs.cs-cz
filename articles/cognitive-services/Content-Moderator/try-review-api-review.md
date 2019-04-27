@@ -11,11 +11,11 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: sajagtap
 ms.openlocfilehash: 254269ccedc92b9dfc164cc4665a8a8513682773
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58882004"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60607503"
 ---
 # <a name="create-human-reviews-rest"></a>Vytvoření recenze prováděné lidmi (REST)
 

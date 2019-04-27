@@ -1,18 +1,20 @@
 ---
 title: Ukázkový - vyžadovat šifrování pro Data Lake Store
 description: Tato definice zásady ukázka vyžaduje šifrování Data Lake Store, aby byla povolená.
+services: azure-policy
 author: DCtheGeek
 manager: carmonm
 ms.service: azure-policy
 ms.topic: sample
-ms.date: 01/23/2019
-ms.author: dacoulte
+origin.date: 04/27/2018
+ms.date: 03/11/2019
+ms.author: v-biyu
 ms.openlocfilehash: f9e38b737cad255ef2d9802490b5d114950d01e6
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59785905"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60545346"
 ---
 # <a name="sample---require-data-lake-store-encryption"></a>Ukázkový - vyžadovat šifrování Data Lake Store
 
@@ -52,7 +54,7 @@ Při přiřazování zásad vyberte z dostupných integrovaných definic **Vynuc
 
 [!INCLUDE [sample-powershell-install](../../../../includes/sample-powershell-install-no-ssh-az.md)]
 
-```azurepowershell-interactive
+```powershell
 $definition = Get-AzPolicyDefinition -Id /providers/Microsoft.Authorization/policyDefinitions/a7ff3161-0087-490a-9ad9-ad6217f4f43a
 
 New-AzPolicyAssignment -name "Data Lake Store encryption" -PolicyDefinition $definition -Scope <scope>
@@ -62,7 +64,7 @@ New-AzPolicyAssignment -name "Data Lake Store encryption" -PolicyDefinition $def
 
 Pokud chcete odebrat přiřazení zásad, spusťte následující příkaz.
 
-```azurepowershell-interactive
+```powershell
 Remove-AzPolicyAssignment -Name "Data Lake Store encryption" -Scope <scope>
 ```
 
@@ -70,7 +72,7 @@ Remove-AzPolicyAssignment -Name "Data Lake Store encryption" -Scope <scope>
 
 [!INCLUDE [sample-cli-install](../../../../includes/sample-cli-install.md)]
 
-```azurecli-interactive
+```cli
 az policy assignment create --scope <scope> --name "Data Lake Store encryption" --policy a7ff3161-0087-490a-9ad9-ad6217f4f43a
 ```
 
@@ -78,7 +80,7 @@ az policy assignment create --scope <scope> --name "Data Lake Store encryption" 
 
 Pokud chcete odebrat přiřazení zásad, spusťte následující příkaz.
 
-```azurecli-interactive
+```cli
 az policy assignment delete --name "Data Lake Store encryption" --resource-group myResourceGroup
 ```
 

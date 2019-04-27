@@ -9,11 +9,11 @@ ms.devlang: csharp
 ms.topic: quickstart
 ms.date: 03/12/2019
 ms.openlocfilehash: 79f2749c9a1f5a6a34628087dc2fd22f6eab6d17
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57881346"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60623884"
 ---
 # <a name="azure-database-for-postgresql-use-net-c-to-connect-and-query-data"></a>Azure Database for PostgreSQL: Použití .NET (C#) k připojení a dotazování dat
 Tento rychlý start ukazuje, jak se připojit ke službě Azure Database for MySQL pomocí aplikace v C#. Ukazuje, jak pomocí příkazů jazyka SQL dotazovat, vkládat, aktualizovat a odstraňovat data v databázi. Kroky v tomto článku předpokládají, že máte zkušenosti s vývojem pomocí C# a teprve začínáte pracovat se službou Azure Database for PostgreSQL.

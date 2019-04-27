@@ -15,11 +15,11 @@ ms.date: 06/11/2018
 ms.author: magattus
 ms.custom: mvc
 ms.openlocfilehash: b80cb0d68e6875881f2a9fc97fa52531525c1cdc
-ms.sourcegitcommit: 48a41b4b0bb89a8579fc35aa805cea22e2b9922c
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/15/2019
-ms.locfileid: "59579185"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60636839"
 ---
 # <a name="tutorial-add-a-custom-domain-to-your-azure-cdn-endpoint"></a>Kurz: Přidat vlastní doménu do koncového bodu Azure CDN
 V tomto kurzu se dozvíte, jak přidat vlastní doménu do koncového bodu služby Azure Content Delivery Network (CDN). Pokud k doručování obsahu používáte síť CDN a chcete, aby se v adrese URL sítě CDN zobrazoval název vaší vlastní domény, potřebujete vlastní doménu. Srozumitelný název domény může být praktický pro vaše zákazníky a užitečný při budování značky. 

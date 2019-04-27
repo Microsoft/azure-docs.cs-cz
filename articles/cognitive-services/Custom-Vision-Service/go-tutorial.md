@@ -11,11 +11,11 @@ ms.topic: quickstart
 ms.date: 03/21/2019
 ms.author: areddish
 ms.openlocfilehash: f740974d17ad5f95bca6530a61619ee0283f819a
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58479976"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60610106"
 ---
 # <a name="quickstart-create-an-image-classification-project-with-the-custom-vision-go-sdk"></a>Rychlý start: Vytvoření projektu klasifikace obrázků s Custom Vision Go SDK
 

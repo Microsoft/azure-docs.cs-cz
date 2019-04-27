@@ -8,11 +8,11 @@ ms.topic: sample
 ms.date: 01/23/2019
 ms.author: dacoulte
 ms.openlocfilehash: 169f6d41df8ca01d82e41bd27ca37e80f26c4055
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59260642"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60547267"
 ---
 # <a name="sample---allowed-expressroute-bandwidth"></a>Ukázkový – povolené šířku pásma ExpressRoute
 

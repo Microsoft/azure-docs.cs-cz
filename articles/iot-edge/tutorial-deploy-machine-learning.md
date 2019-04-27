@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc, seodec18
-ms.openlocfilehash: 985f1f73fbfc8c75df8393615fca32f5d1c08b9d
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
-ms.translationtype: MT
+ms.openlocfilehash: 8b1036128755a5218afc35648dfd16f09f559908
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58078308"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60611766"
 ---
 # <a name="tutorial-deploy-azure-machine-learning-as-an-iot-edge-module-preview"></a>Kurz: Nasazení služby Azure Machine Learning jako modulu IoT Edge (preview)
 
@@ -102,7 +102,7 @@ sudo systemctl restart iotedge
 V této části převeďte trénovaného strojového učení soubory modelu a do Azure Machine Learning služby kontejneru. Veškeré komponenty potřebné pro image Dockeru najdete v [úložišti Git AI Toolkit pro Azure IoT Edge](https://github.com/Azure/ai-toolkit-iot-edge/tree/master/IoT%20Edge%20anomaly%20detection%20tutorial). Následujícím postupem nahrání daného úložiště do Microsoft poznámkových bloků Azure k vytvoření kontejneru a nasdílejte ji do Azure Container Registry.
 
 
-1. Přejděte do vašich projektů poznámkových bloků Azure. Můžete získat jejich z pracovního prostoru služby Azure Machine Learning v [webu Azure portal](https://portal.azure.com) nebo přihlášením k [poznámkových bloků Azure Microsoft](https://notebooks.azure.com/home/projects) pomocí svého účtu Azure.
+1. Přejděte do vašich projektů poznámkových bloků Azure. Můžete se tam dostat z pracovního prostoru služby Azure Machine Learning v [webu Azure portal](https://portal.azure.com) nebo přihlášením k [poznámkových bloků Azure Microsoft](https://notebooks.azure.com/home/projects) pomocí svého účtu Azure.
 
 2. Vyberte **nahrát úložiště GitHub se vzorovými**.
 

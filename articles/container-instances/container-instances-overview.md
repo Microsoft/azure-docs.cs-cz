@@ -10,11 +10,11 @@ ms.date: 11/30/2018
 ms.author: danlep
 ms.custom: seodec18, mvc
 ms.openlocfilehash: 91cf0986241a40c48430d8305849c12864d645fb
-ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58499552"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60582767"
 ---
 # <a name="what-is-azure-container-instances"></a>Co je Azure Container Instances?
 

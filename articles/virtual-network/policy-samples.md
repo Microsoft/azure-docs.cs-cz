@@ -3,8 +3,8 @@ title: Ukázkové šablony zásad | Microsoft Docs
 description: Ukázkové šablony služby Azure Policy pro Virtual Network
 services: virtual-network
 documentationcenter: ''
-author: jimdial
-manager: jeconnoc
+author: KumudD
+manager: twooley
 editor: ''
 tags: ''
 ms.assetid: ''
@@ -14,14 +14,14 @@ ms.topic: sample
 ms.tgt_pltfrm: ''
 ms.workload: ''
 ms.date: 05/02/2018
-ms.author: jdial
+ms.author: kumud
 ms.custom: mvc
 ms.openlocfilehash: b0b3b65ee2360a5cec32235f2ee5bf8d4839cc8b
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
-ms.translationtype: MT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56342073"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60679608"
 ---
 # <a name="azure-policy-sample-templates-for-virtual-network"></a>Ukázkové šablony služby Azure Policy pro Virtual Network
 

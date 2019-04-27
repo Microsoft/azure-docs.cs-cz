@@ -17,11 +17,11 @@ ms.date: 03/27/2018
 ms.author: cynthn
 ms.custom: mvc
 ms.openlocfilehash: 637a2e48ca95b5d1a456f9a48f7c8e9008b1d14d
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55697738"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60613970"
 ---
 # <a name="create-a-virtual-machine-scale-set-from-a-custom-vm-image-with-the-azure-cli"></a>Vytvoření škálovací sady virtuálních počítačů z vlastní image virtuálního počítače pomocí Azure CLI
 Tento skript vytvoří škálovací sadu virtuálních počítačů, která jako zdroj pro instance virtuálních počítačů používá vlastní image virtuálního počítače.

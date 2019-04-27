@@ -11,13 +11,13 @@ ms.topic: tutorial
 ms.date: 03/11/2019
 ms.author: pafarley
 ms.openlocfilehash: fc49081c765834a0ed0e5199923606ced7daa081
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58522073"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60608314"
 ---
-# <a name="tutorial-video-and-transcript-moderation"></a>Kurz: Moderování videa a přepis
+# <a name="tutorial-video-and-transcript-moderation"></a>Kurz: Moderování videí a přepisů
 
 V tomto kurzu se dozvíte, jak sestavit kompletní řešení moderování videa a přepis moderování s podporou počítače a vytvoření revize lidských v the smyčky.
 

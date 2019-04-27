@@ -8,11 +8,11 @@ ms.topic: sample
 ms.date: 01/23/2019
 ms.author: dacoulte
 ms.openlocfilehash: 12897d96869b359bc30726b89923afc400590dca
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59274973"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60630117"
 ---
 # <a name="sample---require-storage-account-encryption"></a>Ukázkový - vyžadovat šifrování účtu úložiště
 

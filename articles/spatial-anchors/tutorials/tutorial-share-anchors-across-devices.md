@@ -9,11 +9,11 @@ ms.date: 02/24/2019
 ms.topic: tutorial
 ms.service: azure-spatial-anchors
 ms.openlocfilehash: ff9868dd7347812eb6ef566288ec364bc89b6955
-ms.sourcegitcommit: 956749f17569a55bcafba95aef9abcbb345eb929
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58629310"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60681538"
 ---
 # <a name="tutorial-share-azure-spatial-anchors-across-sessions-and-devices"></a>Kurz: Sdílené složky Azure prostorových kotev vztahů mezi relacemi a zařízeními
 

@@ -15,11 +15,11 @@ ms.date: 01/22/2018
 ms.author: shlo
 robots: noindex
 ms.openlocfilehash: 11e92b4c6b8799cde489369a202f8f7c8c05ca6c
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
-ms.translationtype: MT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57535990"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60568260"
 ---
 # <a name="tutorial-build-your-first-data-factory-by-using-the-azure-portal"></a>Kurz: Sestavení prvního objektu pro vytváření dat s využitím webu Azure portal
 > [!div class="op_single_selector"]

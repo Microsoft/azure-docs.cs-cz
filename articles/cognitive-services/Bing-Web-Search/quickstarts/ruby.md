@@ -12,11 +12,11 @@ ms.date: 03/12/2019
 ms.author: aahi
 ms.custom: seodec2018
 ms.openlocfilehash: 9aa8fc4c6b27c2a2c7d11a95ddb2ecca347ec0e0
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57858823"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60646825"
 ---
 # <a name="quickstart-use-ruby-to-call-the-bing-web-search-api"></a>Rychlý start: Použití Ruby k volání rozhraní API webové vyhledávání Bingu  
 

@@ -11,11 +11,11 @@ ms.custom: mvc
 ms.topic: tutorial
 manager: carmonm
 ms.openlocfilehash: 267e790cec3c915330f8f72053458527ee7bfead
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58095564"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60637360"
 ---
 # <a name="find-and-diagnose-run-time-exceptions-with-azure-application-insights"></a>Vyhledání a diagnostika výjimek za běhu pomocí Azure Application Insights
 

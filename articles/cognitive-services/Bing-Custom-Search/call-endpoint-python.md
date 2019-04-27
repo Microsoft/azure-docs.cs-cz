@@ -11,11 +11,11 @@ ms.topic: quickstart
 ms.date: 03/04/2019
 ms.author: aahi
 ms.openlocfilehash: a6f8d3964c71d036053fe0d4136468fde690f872
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57337273"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60593161"
 ---
 # <a name="quickstart-call-your-bing-custom-search-endpoint-using-python"></a>Rychlý start: Volání vlastního vyhledávání Bingu koncový bod pomocí Pythonu
 

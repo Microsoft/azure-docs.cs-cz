@@ -12,11 +12,11 @@ ms.topic: article
 ms.date: 03/04/2019
 ms.author: diberry
 ms.openlocfilehash: 5fb62c38bde98d946694790adb860240eaa59fa9
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57530173"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60709708"
 ---
 # <a name="url-prebuilt-entity-for-a-luis-app"></a>Adresa URL předem připravených entit pro aplikace LUIS
 Adresa URL entity extrahuje adresy URL s názvy domény nebo IP adresy. Protože tato entita je už vytrénovaný, není potřeba přidat příklad projevy obsahující adresy URL do aplikace. Adresa URL entity se podporuje v `en-us` pouze jazykovou verzi. 

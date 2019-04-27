@@ -10,11 +10,11 @@ ms.date: 02/26/2018
 ms.author: iainfou
 ms.custom: mvc
 ms.openlocfilehash: 3c0be935a4ffb51c03d2f63b14ab7c0c713dd2ae
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58006265"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60576683"
 ---
 # <a name="deprecated-update-an-application-in-kubernetes"></a>(NEPOUŽÍVANÉ) Aktualizace aplikace v Kubernetes
 
@@ -35,7 +35,7 @@ V tomto kurzu, který je šestou částí sedmidílné série, se aktualizuje ap
 
 V dalších kurzech se služba Log Analytics konfiguruje pro monitorování clusteru Kubernetes.
 
-## <a name="before-you-begin"></a>Před zahájením
+## <a name="before-you-begin"></a>Než začnete
 
 V předchozích kurzech se aplikace zabalila do image kontejneru, tato image se odeslala do Azure Container Registry a vytvořil se cluster Kubernetes. Aplikace se potom spustila v tomto clusteru Kubernetes. 
 

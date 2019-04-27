@@ -12,11 +12,11 @@ ms.topic: article
 ms.date: 04/16/2019
 ms.author: diberry
 ms.openlocfilehash: 93803a7d885bb68c1d5d6637eaf90fb090dabeb2
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60000262"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60598781"
 ---
 # <a name="install-and-run-luis-docker-containers"></a>Nainstalujte a spusťte LUIS kontejnery dockeru
  
@@ -168,7 +168,7 @@ Host: {AZURE_REGION}.api.cognitive.microsoft.com
 Ocp-Apim-Subscription-Key: {AUTHORING_KEY}
 ```
 
-| Zástupný symbol | Value |
+| Zástupný symbol | Hodnota |
 |-------------|-------|
 |{APPLICATION_ID} | ID aplikace publikované aplikace LUIS. |
 |{APPLICATION_ENVIRONMENT} | Prostředí publikované aplikace LUIS. Použijte jednu z následujících hodnot:<br/>```PRODUCTION```<br/>```STAGING``` |
@@ -196,7 +196,7 @@ Host: {AZURE_REGION}.api.cognitive.microsoft.com
 Ocp-Apim-Subscription-Key: {AUTHORING_KEY}
 ```
 
-| Zástupný symbol | Value |
+| Zástupný symbol | Hodnota |
 |-------------|-------|
 |{APPLICATION_ID} | ID aplikace trénovaného aplikace LUIS. |
 |{APPLICATION_VERSION} | Verze aplikace trénovaného aplikace LUIS. |
@@ -218,7 +218,7 @@ V případě úspěchu je odpověď na soubor balíčku LUIS. Uložte soubor v z
 
 Použití [dockeru spustit](https://docs.docker.com/engine/reference/commandline/run/) příkaz ke spuštění kontejneru. Příkaz používá následující parametry:
 
-| Zástupný symbol | Value |
+| Zástupný symbol | Hodnota |
 |-------------|-------|
 |{ENDPOINT_KEY} | Tento klíč se používá ke spuštění kontejneru. Nepoužívejte klávesu starter. |
 |{BILLING_ENDPOINT} | Fakturační hodnota koncového bodu není k dispozici na webu Azure portal `Cognitive Services` stránka s přehledem. Je třeba přidat `luis/v2.0` směrování na identifikátor URI koncového bodu, jak je znázorněno v následujícím příkladu: `https://westus.api.cognitive.microsoft.com/luis/v2.0`.|

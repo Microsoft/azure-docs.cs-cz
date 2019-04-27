@@ -15,22 +15,22 @@ ms.date: 04/20/2018
 ms.author: magattus
 ms.custom: mvc
 ms.openlocfilehash: 10d06d2e792b476a4c973029241d6cb98c0dd444
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49094067"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60684297"
 ---
-# <a name="tutorial-set-azure-cdn-caching-rules"></a>Kurz: Nastavení pravidel ukládání do mezipaměti v Azure CDN
+# <a name="tutorial-set-azure-cdn-caching-rules"></a>Kurz: Nastavte pravidla ukládání do mezipaměti Azure CDN
 
 > [!NOTE] 
 > Pravidla ukládání do mezipaměti v Azure CDN jsou k dispozici pouze pro **Azure CDN Standard od Verizonu** a **Azure CDN Standard od Akamai**. U **Azure CDN Standard od Verizonu** na portálu **Správa** použijte [Stroj pravidel Azure CDN](cdn-rules-engine.md), abyste získali podobné funkce.
  
 
 Tento kurz popisuje, jak můžete použít pravidla ukládání do mezipaměti v Azure Content Delivery Network (CDN) k nastavení nebo úpravě výchozího chování při vypršení platnosti mezipaměti, a to jak u globálních, tak i u vlastních podmínek, jako je například cesta adresy URL nebo přípona souboru. Azure CDN nabízí dva typy pravidel ukládání do mezipaměti:
-- Globální pravidla ukládání do mezipaměti: Pro každý koncový bod ve vašem profilu můžete nastavit jedno globální pravidlo pro ukládání do mezipaměti, které se bude vztahovat na všechny požadavky na koncový bod. Pokud jsou HTTP hlavičky direktiv pro mezipaměť nastavené, globální pravidlo ukládání do mezipaměti je přepíše.
+- Globální pravidla ukládání do mezipaměti: Jedna globální pravidlo ukládání do mezipaměti pro každý koncový bod lze nastavit v profilu, které ovlivňují všechny požadavky na koncový bod. Pokud jsou HTTP hlavičky direktiv pro mezipaměť nastavené, globální pravidlo ukládání do mezipaměti je přepíše.
 
-- Vlastní pravidla ukládání do mezipaměti: pro každý koncový bod ve svém profilu můžete nastavit jedno nebo více vlastních pravidel ukládání do mezipaměti. Vlastní pravidla ukládání do mezipaměti se shodují s cestami a příponami souborů, zpracovávají se v daném pořadí, a pokud je nastavené globální pravidlo ukládání do mezipaměti, přepíší ho. 
+- Vlastní pravidla ukládání do mezipaměti: Jeden nebo více vlastní pravidla ukládání do mezipaměti pro každý koncový bod lze nastavit v profilu. Vlastní pravidla ukládání do mezipaměti se shodují s cestami a příponami souborů, zpracovávají se v daném pořadí, a pokud je nastavené globální pravidlo ukládání do mezipaměti, přepíší ho. 
 
 V tomto kurzu se naučíte:
 > [!div class="checklist"]
@@ -42,7 +42,7 @@ V tomto kurzu se naučíte:
 
 ## <a name="prerequisites"></a>Požadavky
 
-Před dokončením kroků v tomto kurzu musíte nejprve vytvořit profil CDN a alespoň jeden koncový bod CDN. Další informace najdete v tématu [Rychlý start: Vytvoření profilu a koncového bodu Azure CDN](cdn-create-new-endpoint.md).
+Před dokončením kroků v tomto kurzu musíte nejprve vytvořit profil CDN a alespoň jeden koncový bod CDN. Další informace najdete v tématu [rychlý start: Vytvoření koncového bodu a profilu Azure CDN](cdn-create-new-endpoint.md).
 
 ## <a name="open-the-azure-cdn-caching-rules-page"></a>Otevření stránky Pravidla ukládání do mezipaměti v Azure CDN
 
@@ -101,7 +101,7 @@ V předchozích krocích jste vytvořili pravidla ukládání do mezipaměti. Po
 6. V horní části stránky vyberte **Uložit**.
 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 V tomto kurzu jste se naučili:
 

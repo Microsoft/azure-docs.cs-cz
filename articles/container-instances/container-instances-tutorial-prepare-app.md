@@ -9,11 +9,11 @@ ms.date: 03/21/2018
 ms.author: danlep
 ms.custom: seodec18, mvc
 ms.openlocfilehash: f5d6ac81cc2553cc4a2d7b86c21417aa5ab1d572
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57990650"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60685689"
 ---
 # <a name="tutorial-create-a-container-image-for-deployment-to-azure-container-instances"></a>Kurz: Vytvoření image kontejneru pro nasazení do služby Azure Container Instances
 
@@ -28,7 +28,7 @@ V tomto článku, který je první částí série, se naučíte:
 
 V druhé a třetím kurzu nahrajete svou image do služby Azure Container Registry a potom ji nasadíte do služby Azure Container Instances.
 
-## <a name="before-you-begin"></a>Před zahájením
+## <a name="before-you-begin"></a>Než začnete
 
 [!INCLUDE [container-instances-tutorial-prerequisites](../../includes/container-instances-tutorial-prerequisites.md)]
 

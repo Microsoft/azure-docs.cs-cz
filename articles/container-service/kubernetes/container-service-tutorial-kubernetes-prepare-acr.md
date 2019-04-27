@@ -10,11 +10,11 @@ ms.date: 02/26/2018
 ms.author: iainfou
 ms.custom: mvc
 ms.openlocfilehash: d0107e09bf8706ba7d4c813814103ca109262d8d
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55657395"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60641173"
 ---
 # <a name="deprecated-deploy-and-use-azure-container-registry"></a>(NEPOUŽÍVANÉ) Nasazení a použití služby Azure Container Registry
 
@@ -32,7 +32,7 @@ Azure Container Registry (ACR) je privátní registr prostředí Azure pro image
 
 V následujících kurzech bude tato instance služby ACR integrována do clusteru Kubernetes v Azure Container Service. 
 
-## <a name="before-you-begin"></a>Před zahájením
+## <a name="before-you-begin"></a>Než začnete
 
 V [předchozím kurzu](./container-service-tutorial-kubernetes-prepare-app.md) byla vytvořena image kontejneru pro jednoduchou hlasovací aplikaci v Azure. Pokud jste image hlasovací aplikace v Azure ještě nevytvořili, vraťte se ke [kurzu 1 – Vytváření imagí kontejneru](./container-service-tutorial-kubernetes-prepare-app.md).
 

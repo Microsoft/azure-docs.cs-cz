@@ -10,11 +10,11 @@ ms.date: 09/14/2017
 ms.author: iainfou
 ms.custom: mvc
 ms.openlocfilehash: 58fef0357a903f2ab1d238bbab7b2d9dca673eb4
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55662053"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60576165"
 ---
 # <a name="deprecated-deploy-a-kubernetes-cluster-in-azure-container-service"></a>(NEPOUŽÍVANÉ) Nasazení clusteru Kubernetes ve službě Azure Container Service
 
@@ -32,7 +32,7 @@ Kubernetes poskytuje distribuovanou platformu pro kontejnerizované aplikace. Se
 
 V dalších kurzech se aplikace Azure Vote nasadí do clusteru a provede škálování a aktualizaci a služba Log Analytics se nakonfiguruje pro monitorování clusteru Kubernetes.
 
-## <a name="before-you-begin"></a>Před zahájením
+## <a name="before-you-begin"></a>Než začnete
 
 V předchozích kurzech se vytvořila image kontejneru a nahrála se do instance služby Azure Container Registry. Pokud jste tyto kroky neprovedli a chcete si je projít, vraťte se ke [kurzu 1 – Vytváření imagí kontejneru](./container-service-tutorial-kubernetes-prepare-app.md).
 

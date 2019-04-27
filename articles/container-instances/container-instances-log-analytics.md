@@ -8,11 +8,11 @@ ms.topic: overview
 ms.date: 07/17/2018
 ms.author: danlep
 ms.openlocfilehash: 13f1fa92365c284ed10bd7c0a1b2fdefef50b29e
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56879700"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60580272"
 ---
 # <a name="container-instance-logging-with-azure-monitor-logs"></a>Protokolování instanci kontejneru s protokoly Azure monitoru
 
@@ -132,7 +132,7 @@ ContainerInstanceLog_CL
 
 ## <a name="next-steps"></a>Další postup
 
-### <a name="azure-monitor-logs"></a>Protokoly Azure monitoru
+### <a name="azure-monitor-logs"></a>Protokoly služby Azure Monitor
 
 Další informace o dotazování protokolů a konfigurace upozornění protokolů Azure Monitor naleznete v tématu:
 

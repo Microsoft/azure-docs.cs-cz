@@ -13,11 +13,11 @@ ms.reviewer: carlrab
 manager: craigg
 ms.date: 04/09/2019
 ms.openlocfilehash: 8d060ce60194e47814308bfd67bd14db996650b0
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59425776"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60709016"
 ---
 # <a name="quickstart-create-a-single-database-in-azure-sql-database-using-the-azure-resource-manager-template"></a>Rychlý start: Vytvoření izolované databáze ve službě Azure SQL Database pomocí šablony Azure Resource Manageru
 

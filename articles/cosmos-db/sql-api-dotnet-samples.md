@@ -8,11 +8,11 @@ ms.topic: sample
 ms.date: 04/04/2019
 ms.author: sngun
 ms.openlocfilehash: cb132c8e36797e4ae089420e48d75271cddb5c04
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59270536"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60685845"
 ---
 # <a name="azure-cosmos-db-net-examples-for-the-sql-api"></a>Azure Cosmos DB: příklady v .NET pro rozhraní SQL API
 > [!div class="op_single_selector"]

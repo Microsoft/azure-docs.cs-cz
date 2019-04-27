@@ -11,11 +11,11 @@ ms.topic: overview
 ms.date: 02/20/2019
 ms.author: scottwhi
 ms.openlocfilehash: 669eaaf0eaf28c696a7ca368c02f5816054e5d10
-ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "57010102"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60546671"
 ---
 # <a name="what-is-bing-autosuggest"></a>Co jsou Automatické návrhy Bingu?
 

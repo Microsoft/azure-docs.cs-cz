@@ -3,7 +3,7 @@ title: Příklady Azure CLI – Batch | Microsoft Docs
 description: Příklady Azure CLI pro službu Batch
 services: batch
 documentationcenter: batch
-author: laurenhughes
+author: dlepow
 manager: jeconnoc
 editor: ''
 tags: ''
@@ -13,15 +13,16 @@ ms.devlang: na
 ms.topic: sample
 ms.tgt_pltfrm: ''
 ms.workload: ''
-ms.date: 01/29/2018
-ms.author: lahugh
+origin.date: 01/29/2018
+ms.date: 05/15/2018
+ms.author: v-junlch
 ms.custom: mvc
 ms.openlocfilehash: 58e9799becd3f150f6fadd932ff4b599da9432d1
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55468151"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60549729"
 ---
 # <a name="azure-cli-examples-for-azure-batch"></a>Příklady Azure CLI pro službu Azure Batch
 
@@ -40,3 +41,5 @@ Následující tabulka obsahuje odkazy na příklady Azure CLI pro službu Azure
 |**Spouštění úloh a úkolů**||
 | [Spuštění úlohy a úkolů pomocí služby Batch](./scripts/batch-cli-sample-run-job.md) | Ukazuje spuštění úlohy a přidávání úkolů. |
 
+
+<!-- Update_Description: update metedata properties -->

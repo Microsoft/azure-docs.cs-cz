@@ -12,11 +12,11 @@ ms.date: 10/10/2016
 ms.author: lesun
 ROBOTS: NOINDEX
 ms.openlocfilehash: c9a645a16a618ae075b9a0947f394e6833a14fb6
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55883164"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60635495"
 ---
 # <a name="what-is-the-linguistic-analysis-api-preview"></a>Co je rozhraní API pro jazykovou analýzu? (Preview)
 

@@ -11,11 +11,11 @@ ms.topic: reference
 ms.date: 03/29/2018
 ms.author: v-jansko
 ms.openlocfilehash: b844ac4018ef768527ca17bd68ca53baaf5d9552
-ms.sourcegitcommit: 48a41b4b0bb89a8579fc35aa805cea22e2b9922c
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/15/2019
-ms.locfileid: "59578335"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60605507"
 ---
 # <a name="translator-text-api-30-dictionary-lookup"></a>Translator Text API 3.0: Slovníkové vyhledávání
 

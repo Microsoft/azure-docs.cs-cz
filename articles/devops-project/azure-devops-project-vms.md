@@ -1,6 +1,6 @@
 ---
-title: Nasazení aplikace ASP.NET do virtuálních počítačů Azure pomocí projektu Azure DevOps | Kurz Azure DevOps Services
-description: Díky projektu DevOps můžete v Azure snadno začít pracovat. Projekt Azure DevOps umožňuje snadno a v několika rychlých krocích nasadit aplikaci ASP.NET do virtuálních počítačů Azure.
+title: 'Kurz: Nasazení aplikace v ASP.NET do virtuálních počítačů Azure pomocí projektů Azure DevOps'
+description: DevOps Projects umožňuje snadno začít používat Azure a nasazení aplikace v ASP.NET do virtuálních počítačů Azure v několika rychlých krocích.
 ms.author: mlearned
 ms.manager: douge
 ms.prod: devops
@@ -9,25 +9,31 @@ ms.topic: tutorial
 ms.date: 07/09/2018
 author: mlearned
 monikerRange: vsts
-ms.openlocfilehash: b05e2c2c46aa9bfa8c92d3d3c5c83d018c547b9f
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
-ms.translationtype: HT
+ms.openlocfilehash: 05643f342d51d99645d3c9204d6e63adcf2a0a73
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44299130"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60546447"
 ---
-# <a name="tutorial--deploy-your-aspnet-app-to-azure-virtual-machines-with-the-azure-devops-project"></a>Kurz: Nasazení aplikace ASP.NET do virtuálních počítačů Azure pomocí projektu Azure DevOps
+# <a name="tutorial-deploy-your-aspnet-app-to-azure-virtual-machines-by-using-azure-devops-projects"></a>Kurz: Nasazení aplikace v ASP.NET do virtuálních počítačů Azure pomocí projektů Azure DevOps
 
-Azure DevOps Project představuje zjednodušené prostředí, kam můžete přenést váš stávající kód a úložiště Git a kde si můžete vybrat jednu z ukázkových aplikací pro vytvoření kanálu průběžné integrace (CI) a průběžného doručování (CD) do Azure.  Projekt DevOps automaticky vytvoří prostředky Azure, jako je nový virtuální počítač Azure, vytvoří a nakonfiguruje kanál verze v Azure DevOps zahrnující kanál buildu pro kontinuální integraci, nastaví kanál verze pro průběžné nasazování a pak vytvoří prostředek Azure Application Insights pro účely monitorování.
+Projekty Azure DevOps představuje zjednodušené prostředí, ve kterém můžete přenést váš stávající kód a úložiště Git nebo jej vybrat ukázkovou aplikaci k vytvoření kanálu průběžného doručování (CD) do Azure a kontinuální integrace (CI). 
 
-Vaším úkolem je:
+Projekty DevOps také:
+* Automaticky vytváří prostředky Azure, jako je například nový Azure virtuální počítač (VM).
+* Vytvoří a nakonfiguruje kanál pro vydávání verzí v Azure DevOps, který obsahuje sestavení kanálu pro nepřetržitou Integraci.
+* Nastaví kanál pro vydávání verzí pro CD. 
+* Vytvoří prostředek služby Azure Application Insights pro monitorování.
+
+V tomto kurzu provedete následující:
 
 > [!div class="checklist"]
-> * Vytvoření projektu Azure DevOps pro aplikaci ASP.NET
-> * Konfigurace služby Azure DevOps Services a předplatného Azure 
-> * Prozkoumání kanálu CI služby Azure DevOps Services
-> * Prozkoumání kanálu CD služby Azure DevOps Services
-> * Potvrzení změn do služby Azure DevOps Services a automatické nasazení do Azure
+> * Nasazení aplikace v ASP.NET pomocí projekty DevOps
+> * Konfigurace Azure DevOps a předplatné Azure 
+> * Prozkoumání kanálu CI
+> * Prozkoumání kanálu CD
+> * Zapsat změny do úložiště Azure a automaticky nasadit do Azure
 > * Konfigurace monitorování pomocí Azure Application Insights
 > * Vyčištění prostředků
 
@@ -35,152 +41,185 @@ Vaším úkolem je:
 
 * Předplatné Azure. Můžete ho získat zdarma prostřednictvím programu [Visual Studio Dev Essentials](https://visualstudio.microsoft.com/dev-essentials/).
 
-## <a name="create-an-azure-devops-project-for-an-aspnet-app"></a>Vytvoření projektu Azure DevOps pro aplikaci ASP.NET
+## <a name="use-devops-projects-to-deploy-your-aspnet-app"></a>Nasazení aplikace v ASP.NET pomocí projekty DevOps
 
-Projekt Azure DevOps vytvoří kanál CI/CD v Azure.  Můžete vytvořit **novou organizaci služby Azure DevOps Services** nebo použít **existující organizaci**.  Azure DevOps Project také vytvoří **prostředky Azure**, jako jsou virtuální počítače, v **předplatném Azure** podle vašeho výběru.
+Projekty DevOps vytvoří kanál CI/CD v kanálech Azure. Můžete vytvořit novou organizaci Azure DevOps nebo použít existující organizace. Projekty DevOps také vytváří prostředky Azure, jako jsou virtuální počítače v rámci předplatného Azure podle vašeho výběru.
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 
-1. V levém navigačním panelu zvolte ikonu **+ Nový** a pak vyhledejte **Projekt DevOps**.  Zvolte **Vytvořit**.
+1. V levém podokně vyberte **nový**.
 
-    ![Zahájení průběžného doručování](_img/azure-devops-project-github/fullbrowser.png)
+1. Do vyhledávacího pole zadejte **DevOps Projects**a pak vyberte **vytvořit**.
 
-1. Vyberte **.NET** a pak zvolte **Další**.
+    ![Řídicí panel projekty DevOps](_img/azure-devops-project-github/fullbrowser.png)
 
-1. V části **Zvolte architekturu aplikace** vyberte **ASP.NET** a pak zvolte **Další**. 
+1. Vyberte **.NET**a pak vyberte **Další**.
 
-1. Architektura aplikace, kterou jste zvolili v předchozích krocích, určuje typ cíle nasazení služby Azure, který je zde k dispozici.  Vyberte **Virtuální počítač** a pak zvolte **Další**.
+1. V části **zvolte aplikaci Framework**vyberte **ASP.NET**a pak vyberte **Další**.  
+    Aplikační platformu, kterou jste zvolili v předchozím kroku, určí typ cíli pro nasazení služby Azure, který je zde k dispozici. 
 
-## <a name="configure-azure-devops-services-and-an-azure-subscription"></a>Konfigurace služby Azure DevOps Services a předplatného Azure
+1. Vyberte virtuální počítač a pak vyberte **Další**.
 
-1. Vytvořte **novou** organizaci služby Azure DevOps Services nebo zvolte některou **existující** organizaci.  Zvolte **název** projektu Azure DevOps.  
+## <a name="configure-azure-devops-and-an-azure-subscription"></a>Konfigurace Azure DevOps a předplatné Azure
 
-1. Vyberte své **předplatné služeb Azure**.  Volitelně můžete vybrat odkaz **Změnit** a pak zadat další podrobnosti konfigurace, jako například změnit umístění prostředků Azure.
+1. Vytvořte novou organizaci Azure DevOps nebo vyberte existující organizace. 
+
+1. Zadejte název pro váš projekt Azure DevOps. 
+
+1. Vyberte služby vašeho předplatného Azure.  
+    Volitelně můžete vybrat **změnu** a pak zadejte další podrobnosti konfigurace, jako je například umístění prostředků Azure.
  
-1. Zadejte **Název virtuálního počítače**, **Uživatelské jméno** a **Heslo** pro váš nový prostředek virtuálního počítače a pak zvolte **Hotovo**.
+1. Zadejte název virtuálního počítače, uživatelské jméno a heslo pro nový prostředek virtuálního počítače Azure a pak vyberte **provádí**.  
+    Po několika minutách bude virtuální počítač Azure připraven. Ukázkovou aplikaci technologie ASP.NET je nastavený v úložišti ve vaší organizaci Azure DevOps, sestavení a vydání je proveden a vaše aplikace bude nasazena k nově vytvořenému virtuálnímu počítači Azure. 
 
-1. Příprava virtuálního počítače Azure bude trvat několik minut.  V úložišti vaší organizace služby Azure DevOps Services se nastaví ukázková aplikace ASP.NET, spustí se build a vydání a vaše aplikace se nasadí do nově vytvořeného virtuálního počítače Azure.  
+    Po dokončení, řídicího panelu DevOps Projects se zobrazí na webu Azure Portal. Můžete také přejít na řídicí panel z **všechny prostředky** na webu Azure Portal. 
 
-    Po dokončení se na webu Azure Portal načte **řídicí panel projektu** Azure DevOps.  Na **řídicí panel Azure DevOps Project** můžete přejít také přímo z části **Všechny prostředky** na webu **Azure Portal**.  
-
-    Tento řídicí panel umožňuje zobrazit **úložiště kódu** Azure DevOps Services, **kanál Azure CI/CD** a spuštěnou **aplikaci v Azure**.    
+    Řídicí panel poskytuje přehled o úložišti kódu Azure DevOps, váš kanál CI/CD a aplikace běžící v Azure.   
 
     ![Zobrazení řídicího panelu](_img/azure-devops-project-vms/dashboardnopreview.png)
 
-1. Projekt Azure DevOps automaticky nakonfiguruje trigger CI pro build a verzi, který automaticky nasadí všechny změny kódu do vašeho úložiště.  V Azure DevOps můžete nakonfigurovat další možnosti.  Na pravé straně řídicího panelu vyberte **Procházet** a zobrazte vaši spuštěnou aplikaci.
+Projekty DevOps automaticky nakonfiguruje sestavení CI a verze triggeru, který se nasazuje kód změn v úložišti. V Azure DevOps můžete nakonfigurovat další možnosti. Pokud chcete zobrazit spuštěnou aplikaci, vyberte **Procházet**.
     
-## <a name="examine-the-azure-devops-services-ci-pipeline"></a>Prozkoumání kanálu CI služby Azure DevOps Services
+## <a name="examine-the-ci-pipeline"></a>Prozkoumání kanálu CI
  
-Projekt Azure DevOps ve vaší organizaci služby Azure DevOps Services automaticky nakonfiguruje úplný kanál Azure CI/CD.  Kanál můžete prozkoumat a upravit.  Pomocí následujícího postupu se seznamte s kanálem buildu služby Azure DevOps Services.
+Projekty DevOps automaticky nakonfiguruje kanál CI/CD v kanálech Azure. Kanál můžete prozkoumat a upravit. Seznamte se s kanálem sestavení, postupujte takto:
 
-1. V **horní** části **řídicího panelu projektu Azure DevOps** vyberte **Kanály sestavení**.  Tento odkaz otevře na nové záložce prohlížeče kanál buildu Azure DevOps Services pro váš nový projekt.
+1. V horní části řídicího panelu DevOps Projects, vyberte **vytvářet kanály**.  
+    Na kartě prohlížeče zobrazí kanálu sestavení pro nový projekt.
 
-1. Přesuňte kurzor myši napravo od kanálu buildu vedle pole **Stav**. Vyberte **tři tečky**, které se zobrazí.  Tato akce otevře nabídku, ve které můžete provést několik aktivit, jako je **zařazení nového buildu do fronty**, **pozastavení buildu** a **úprava kanálu buildu**.
+1. Přejděte **stav** pole a pak vyberte tři tečky (...).  
+    Nabídka obsahuje několik možností, jako je například přidávání nové sestavení, přerušení sestavení a úpravy kanálu sestavení do fronty.
 
 1. Vyberte **Upravit**.
 
-1. V tomto zobrazení můžete **prozkoumat různé úlohy** pro váš kanál buildu.  Tento build provádí různé úlohy, jako je načtení zdrojových kódů z úložiště Git Azure DevOps Services, obnovení závislostí a publikování výstupů používaných pro nasazení.
+1. V tomto podokně můžete prozkoumat různé úlohy pro vašeho kanálu sestavení.  
+    Sestavení provádí různé úlohy, jako je načítání zdroje z Gitu výstupy úložiště, obnovení závislostí a publikování použít pro nasazení.
 
-1. V horní části kanálu buildu vyberte **název kanálu buildu**.
+1. V horní části kanálu sestavení vyberte název kanálu sestavení.
 
-1. Změňte **název** kanálu buildu na něco výstižnějšího.  Vyberte **Uložit a zařadit do fronty** a pak vyberte **Uložit**.
+1. Změnit na něco více popisné, vyberte název vašeho kanálu sestavení **Uložit & frontu**a pak vyberte **Uložit**.
 
-1. Pod názvem kanálu buildu vyberte **Historie**.  Zobrazí se protokol auditu nedávno provedených změn sestavení.  Azure DevOps Services uchovává informace o všech změnách provedených v kanálu buildu a umožňuje porovnávat verze.
+1. Pod názvem kanálu buildu vyberte **Historie**.  
+    V tomto podokně se zobrazí záznam auditovaných nedávné změny pro sestavení. Azure DevOps sleduje změny provedené do kanálu sestavení, a umožňuje porovnání verzí.
 
-1. Vyberte **Triggery**.  Projekt Azure DevOps automaticky vytvořil trigger CI a každé potvrzení v úložišti spustí nový build.  Volitelně můžete zvolit, které větve se do procesu CI zahrnou nebo se z něj vyloučí.
+1. Vyberte **Triggery**.  
+    Projekty DevOps automaticky vytvoří aktivační událost CI, a každé potvrzení do úložiště spustí nové sestavení. Volitelně můžete zahrnout nebo vyloučit větve z položek konfigurace procesu.
 
-1. Vyberte **Uchování**.  V závislosti na vašem scénáři můžete určit zásady pro zachování nebo odebrání určitého počtu sestavení.
+1. Vyberte **Uchování**.  
+    V závislosti na vašem scénáři můžete zadat zásady, které chcete zachovat nebo odebrat počet sestavení.
 
-## <a name="examine-the-azure-devops-services-cd-pipeline"></a>Prozkoumání kanálu CD služby Azure DevOps Services
+## <a name="examine-the-cd-pipeline"></a>Prozkoumání kanálu CD
 
-Projekt Azure DevOps automaticky vytvoří a nakonfiguruje potřebné kroky pro nasazení z organizace služby Azure DevOps Services do předplatného Azure.  Mezi tyto kroky patří konfigurace připojení ke službě Azure za účelem ověření služby Azure DevOps Services vůči vašemu předplatnému Azure.  Automatizace také vytvoří kanál CD služby Azure DevOps Services, který poskytuje průběžné nasazování na virtuální počítač Azure.  Pomocí níže uvedeného postupu dále prozkoumejte kanál CD služby Azure DevOps Services.
+Projekty DevOps automaticky vytvoří a nakonfiguruje nezbytné kroky k nasazení z vaší organizace Azure DevOps se svým předplatným Azure. Tyto kroky zahrnují konfigurace připojení služby Azure k ověřování Azure DevOps se svým předplatným Azure. Automatizace také vytvoří kanál CD, který poskytuje CD na virtuálním počítači Azure. Další informace o kanálu Azure DevOps CD, postupujte takto:
 
-1. Vyberte **Sestavení a vydání** a zvolte **Verze**.  Projekt Azure DevOps vytvořil kanál verze služby Azure DevOps Services pro správu nasazení do Azure.
+1. Vyberte **sestavení a vydání**a pak vyberte **vydání**.  
+    Projekty DevOps vytvoří kanál pro vydávání verzí pro správu nasazení do Azure.
 
-1. Na levé straně prohlížeče vyberte **tři tečky** vedle kanálu verze a pak zvolte **Upravit**.
+1. Vyberte tři tečky (...) vedle kanálu pro vydávání verzí a pak vyberte **upravit**.  
+    Kanál verze obsahuje *kanál*, který definuje proces vydání.
 
-1. Kanál verze obsahuje **kanál**, který definuje proces vydání.  V části **Artefakty** vyberte **Zahodit**.  Kanál buildu, který jste prozkoumali v předchozích krocích, vytvoří výstup pro artefakt. 
+1. V části **Artefakty** vyberte **Zahodit**.  
+    Kanál sestavení, kterou můžete prozkoumat v předchozích krocích vytvoří výstup, který se používá pro artefakt. 
 
-1. Napravo od ikony **Zahodit** vyberte **Trigger průběžného nasazování** (**ikona** blesku).  Tento kanál verze obsahuje povolený trigger průběžného nasazování.  Tento trigger spustí nasazení pokaždé, když bude k dispozici nový artefakt sestavení.  Volitelně můžete trigger zakázat, aby pak vaše nasazení vyžadovala ruční spuštění. 
+1. Vedle položky **vyřadit** ikonu, vyberte **trigger průběžného nasazování**.  
+    Tento kanál pro vydávání verzí obsahuje aktivační událost CD povolené, která spustí nasazení pokaždé, když je k dispozici nové artefakt sestavení. Volitelně můžete zakázat aktivační událost tak, aby vaše nasazení vyžaduje ruční spuštění. 
 
-1. Na levé straně prohlížeče vyberte **Úlohy** a pak zvolte vaše **prostředí**.  
+1. Na levé straně vyberte **úlohy**a potom vyberte vaše prostředí.  
+    Úkoly jsou aktivity, které spustí proces nasazení, a jsou seskupeny ve fázích. Tento kanál pro vydávání verzí dojde ve dvou fázích:
+    * První fáze obsahuje úlohu nasazení skupiny prostředků Azure, který provede dvě věci:
+      * Nakonfiguruje virtuální počítač pro nasazení
+      * Přidá nový virtuální počítač do skupiny nasazení služby Azure DevOps. Skupina nasazení virtuálního počítače v Azure DevOps spravuje logické skupiny nasazení cílových počítačích.
+    * Ve druhé fázi vytvoří úlohu spravovat aplikace webové služby IIS webu služby IIS na virtuálním počítači. Nasazení webu se vytvoří druhý úkol nasazení aplikace Web služby IIS.
 
-1. Úlohy jsou aktivity, které se provádí ve vašem procesu nasazení a které se seskupují do **fází**.  Tento kanál verze obsahuje dvě **fáze**.  První fáze obsahuje úlohu **nasazení skupiny prostředků Azure**, která nakonfiguruje virtuální počítač pro nasazení a přidá nový virtuální počítač do **skupiny nasazení Azure DevOps**.  Skupina nasazení virtuálních počítačů v Azure DevOps spravuje logické skupiny počítačů **cílů nasazení**.
+1. Na pravé straně vyberte **zobrazit verze** zobrazíte historii verzí.
 
-1. V této druhé fázi se vytvořila úloha **správy webové aplikace IIS**, která na virtuálním počítači vytvoří web služby IIS.  Pro účely nasazení webu se vytvořila druhá úloha **nasazení webové aplikace IIS**.
+1. Vyberte tři tečky (...) vedle vydané verze a pak vyberte **otevřít**.  
+    Můžete si projít několik nabídek, jako je například souhrnu vydané verze, přidružené pracovní položky a testy.
 
-1. Na pravé straně prohlížeče vyberte **Zobrazit verze**.  Toto zobrazení ukazuje historii vydaných verzí.
+1. Vyberte **Potvrzení**.  
+    Toto zobrazení ukazuje potvrzení změn kódu, které jsou spojeny s tímto nasazením. Porovnejte vydané verze a zobrazte rozdíly v potvrzeních jednotlivých nasazení.
 
-1. Vyberte **tři tečky** vedle některé z vydaných verzí a zvolte **Otevřít**.  Toto zobrazení obsahuje několik nabídek, které můžete prozkoumat, například **souhrn verze**, **související pracovní položky** a **testy**.
+1. Vyberte **Protokoly**.  
+    Protokoly obsahují užitečné informace o procesu nasazení. Můžete je zobrazit během a po nasazení.
 
-1. Vyberte **Potvrzení**.  Toto zobrazení ukazuje potvrzení kódu související s konkrétním nasazením. Porovnejte vydané verze a zobrazte rozdíly v potvrzeních jednotlivých nasazení.
+## <a name="commit-changes-to-azure-repos-and-automatically-deploy-them-to-azure"></a>Zapsat změny do úložiště Azure a automaticky nasadit do Azure 
 
-1. Vyberte **Protokoly**.  Protokoly obsahují užitečné informace o procesu nasazení.  Můžete je zobrazit během nasazení i po nich.
+Teď jste připraveni spolupracovat s týmem ve vaší aplikaci pomocí procesu CI/CD, který automaticky nasadí nejnovější práci na váš web. Jednotlivé změny do úložiště Git v Azure DevOps spustí sestavení a kanál CD provede nasazení do Azure. Postupujte podle pokynů v této části, nebo použít jiné techniky se zapsat změny do úložiště. Změny kódu k zahájení procesu CI/CD a automaticky vaše změny nasadí na web služby IIS na virtuálním počítači Azure.
 
-## <a name="commit-changes-to-azure-devops-services-and-automatically-deploy-to-azure"></a>Potvrzení změn do služby Azure DevOps Services a automatické nasazení do Azure 
+1. V levém podokně vyberte **kód**a potom přejděte do úložiště.
 
-Teď jste připraveni při práci na vaší aplikaci spolupracovat s týmem s využitím procesu CI/CD, který automaticky nasazuje nejnovější práci na web.  Každá změna v úložišti Git Azure DevOps Services spustí build ve službě Azure DevOps Services a kanál průběžného nasazování služby Azure DevOps Services provede nasazení do virtuálního počítače Azure.  K potvrzení změn v úložišti můžete použít následující postup nebo jiné techniky.  Změny kódu zahájí proces CI/CD a vaše nové změny se automaticky nasadí na web služby IIS na virtuálním počítači Azure.
+1. Přejděte na *Views\Home* adresář, vyberte tři tečky (...) vedle položky *Index.cshtml* souboru a pak vyberte **upravit**.
 
-1. V nabídce Azure DevOps Services vyberte **Kód** a přejděte do svého úložiště.
+1. Proveďte změnu souboru, např. přidejte nějaký text v rámci jedné značky div. 
 
-1. Přejděte do adresáře **Views\Home**, vyberte **tři tečky** vedle souboru **Index.cshtml** a pak zvolte **Upravit**.
+1. V pravém horním rohu, vyberte **potvrzení**a pak vyberte **potvrzení** znovu, aby push změny.  
+    Po chvíli se sestavení začíná v Azure DevOps a provede vydání k nasazení změny. Sledování stavu sestavení v řídicím panelu projekty DevOps, nebo v prohlížeči ve vaší organizaci Azure DevOps.
 
-1. Proveďte změnu souboru například úpravou textu uvnitř některé ze **značek div**.  V pravém horním rohu vyberte **Potvrdit**.  Znovu vyberte **Potvrdit**, aby se změna nasdílela. 
-
-1. Za chvíli se **spustí build ve službě Azure DevOps Services** a pak se provede vydání za účelem nasazení změn.  **Stav buildu** můžete monitorovat na řídicím panelu projektu DevOps nebo v prohlížeči s vaší organizací služby Azure DevOps Services.
-
-1. Po dokončení vydání **aktualizujte aplikaci** v prohlížeči a ověřte, že se zobrazí provedené změny.
+1. Po vydání aktualizace aplikace, chcete-li ověřit změny.
 
 ## <a name="configure-azure-application-insights-monitoring"></a>Konfigurace monitorování pomocí Azure Application Insights
 
-Azure Application Insights umožňuje snadné monitorování výkonu a využití aplikace.  Projekt Azure DevOps automaticky nakonfiguroval prostředek Application Insights pro vaši aplikaci.  Podle potřeby můžete dále nakonfigurovat různá upozornění a možnosti monitorování.
+Azure Application Insights umožňuje snadné monitorování výkonu a využití aplikace. Projekty DevOps automaticky nakonfiguruje prostředek Application Insights pro vaši aplikaci. Podle potřeby můžete dále nakonfigurovat různá upozornění a možnosti monitorování.
 
-1. Na webu **Azure Portal** přejděte na řídicí panel **Azure DevOps Project**.  V pravé dolní části řídicího panelu zvolte odkaz **Application Insights** pro vaši aplikaci.
+1. Na webu Azure Portal přejděte do řídicího panelu DevOps Projects. 
 
-1. Na webu Azure Portal se otevře okno **Application Insights**.  Toto zobrazení obsahuje informace o monitorování využití, výkonu a dostupnosti vaší aplikace.
+1. V pravém dolním vyberte **Application Insights** odkaz pro vaši aplikaci.  
+    **Application Insights** se otevře podokno. Toto zobrazení obsahuje informace o monitorování využití, výkonu a dostupnosti vaší aplikace.
 
-    ![Application Insights](_img/azure-devops-project-github/appinsights.png) 
+    ![V podokně Application Insights](_img/azure-devops-project-github/appinsights.png) 
 
-1. Vyberte **Časový rozsah** a pak zvolte **Poslední hodina**.  Výběrem možnosti **Aktualizovat** vyfiltrujte výsledky.  Teď se zobrazí všechny aktivity za posledních 60 minut.  Výběrem **x** zavřete časový rozsah.
+1. Vyberte **časový rozsah**a pak vyberte **za poslední hodinu**. Chcete-li filtrovat výsledky, vyberte **aktualizace**.  
+    Teď si můžete zobrazit všechny aktivity z posledních 60 minut. 
+    
+1. Chcete-li ukončit časový rozsah, vyberte **x**.
 
-1. V horní části řídicího panelu najdete **Upozornění** a několik dalších užitečných odkazů.  Vyberte **Upozornění** a pak **+ Přidat upozornění na metriku**.
+1. Vyberte **výstrahy**a pak vyberte **přidat upozornění metriky**. 
 
-1. Zadejte **Název** upozornění.
+1. Zadejte název pro upozornění.
 
-1. Výchozí upozornění je na **dobu odezvy serveru delší než 1 sekunda**.  Vyberte rozevírací nabídku **Metrika** a prozkoumejte různé metriky upozornění.  Například pro aplikaci ASP.NET můžete nakonfigurovat metriku **Doba provádění požadavku ASP.NET**.  Snadno můžete nakonfigurovat různá upozornění a vylepšit tak možnosti monitorování vaší aplikace.
+1. V **metrika** rozevíracího seznamu, prozkoumejte různé metriky upozornění.  
+    Výchozí upozornění je na **dobu odezvy serveru delší než 1 sekunda**. Snadno můžete nakonfigurovat různá upozornění a vylepšit tak možnosti monitorování vaší aplikace.
 
-1. Zaškrtněte políčko u možnosti **Oznámit přes vlastníky, přispěvatele a čtenáře e-mailů**.  Volitelně můžete při aktivaci upozornění provádět další akce prostřednictvím spuštění aplikace logiky Azure.
+1. Vyberte **upozornění prostřednictvím e-mailu vlastníci, přispěvatelé a čtenáři** zaškrtávací políčko.  
+    Volitelně můžete provádět další akce, při upozornění se zobrazí při spuštění aplikace logiky Azure.
 
-1. Zvolte **Ok** a vytvořte upozornění.  Za chvíli se na řídicím panelu zobrazí aktivní upozornění.  **Opusťte** oblast Upozornění a vraťte se do **okna Application Insights**.
+1. Vyberte **OK** k vytvoření upozornění.  
+    Po chvíli se upozornění se zobrazí jako aktivní na řídicím panelu. 
 
-1. Vyberte **Dostupnost** a pak **+ Přidat test**. 
+1. Ukončení **výstrahy** oblasti a vraťte se zpět do **Application Insights** podokně.
 
-1. Zadejte **Název testu** a pak zvolte **Vytvořit**.  Tím se vytvoří jednoduchý test pomocí příkazu Ping, který ověří dostupnost vaší aplikace.  Po několika minutách budou k dispozici výsledky testu a na řídicím panelu Application Insights se zobrazí stav dostupnosti.
+1. Vyberte **dostupnosti**a pak vyberte **testu přidat**. 
+
+1. Zadejte název testu a pak vyberte **vytvořit**.  
+    Vytvoří se jednoduchý test pomocí příkazu Ping, který ověří dostupnost vaší aplikace. Po několika minutách budou k dispozici výsledky testu a na řídicím panelu Application Insights se zobrazí stav dostupnosti.
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
- > [!NOTE]
- > Následujícím postupem se trvale odstraní prostředky.  Tuto funkci použijte pouze po důkladném prostudování výzev.
+Pokud testujete, vyhnete se účtují poplatky podle údržbě vašich prostředků. Pokud už je nepotřebujete, můžete odstranit virtuální počítač Azure a související prostředky, které jste vytvořili v tomto kurzu. Chcete-li tak učinit, použijte **odstranit** funkce na řídicím panelu Projekt DevOps. 
 
-Pokud provádíte testování, můžete vyčistit prostředky a zamezit tak nabíhání poplatků.  Pokud už je nepotřebujete, můžete virtuální počítač Azure a související prostředky vytvořené v tomto kurzu odstranit pomocí funkce **Odstranit** na řídicím panelu Azure DevOps Project.  **Buďte opatrní**, protože funkce odstranění zničí všechna data vytvořená projektem Azure DevOps v Azure i Azure DevOps. Po odstranění dat je nebudete moct načíst.
+> [!IMPORTANT]
+> Následující postup se trvale odstraní prostředky. *Odstranit* funkcí zničí data, která se vytvoří v projektu v projektech pro DevOps v Azure i Azure DevOps a nebude možné ho načíst. Pomocí tohoto postupu, až poté, co jste pečlivě přečtěte si zobrazených výzev.
 
-1. Na webu **Azure Portal** přejděte do služby **Azure DevOps Project**.
-2. Na **pravé horní** straně řídicího panelu vyberte **Odstranit**.  Po přečtení výzvy vyberte **Ano** a **trvale odstraňte** prostředky.
+1. Na webu Azure Portal přejděte do řídicího panelu DevOps Projects.
+1. V pravém horním rohu, vyberte **odstranit**. 
+1. Do příkazového řádku vyberte **Ano** k *trvale odstranit* prostředky.
 
-## <a name="next-steps"></a>Další kroky
+Tyto kanály buildu a verze můžete volitelně upravit tak, aby splňovaly požadavky vašeho týmu. Tento vzor CI/CD můžete také použít jako šablonu pro své další kanály. 
 
-Tyto kanály buildu a verze můžete volitelně upravit tak, aby splňovaly požadavky vašeho týmu. Tento vzor CI/CD můžete také použít jako šablonu pro své další projekty.  Naučili jste se tyto postupy:
+## <a name="next-steps"></a>Další postup
+
+V tomto kurzu jste se naučili:
 
 > [!div class="checklist"]
-> * Vytvoření projektu Azure DevOps pro aplikaci ASP.NET
-> * Konfigurace služby Azure DevOps Services a předplatného Azure 
-> * Prozkoumání kanálu CI služby Azure DevOps Services
-> * Prozkoumání kanálu CD služby Azure DevOps Services
-> * Potvrzení změn do služby Azure DevOps Services a automatické nasazení do Azure
+> * Nasazení aplikace v ASP.NET pomocí projekty DevOps
+> * Konfigurace Azure DevOps a předplatné Azure 
+> * Prozkoumání kanálu CI
+> * Prozkoumání kanálu CD
+> * Zapsat změny do úložiště Azure a automaticky nasadit do Azure
 > * Konfigurace monitorování pomocí Azure Application Insights
 > * Vyčištění prostředků
 
-Další informace o kanálu Azure CI/CD najdete v tomto kurzu:
+Další informace o kanálu CI/CD, naleznete v tématu:
 
 > [!div class="nextstepaction"]
-> [Přizpůsobení procesu CD](https://docs.microsoft.com/azure/devops/pipelines/release/define-multistage-release-process?view=vsts)
+> [Definování kanálu vícefázové průběžného nasazování (CD)](https://docs.microsoft.com/azure/devops/pipelines/release/define-multistage-release-process?view=vsts)

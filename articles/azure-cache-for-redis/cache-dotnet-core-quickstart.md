@@ -16,11 +16,11 @@ ms.date: 05/18/2018
 ms.author: yegu
 ms.custom: mvc
 ms.openlocfilehash: df615b940873cd59341424d0b40a9e399d710126
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57896241"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60553478"
 ---
 # <a name="quickstart-use-azure-cache-for-redis-with-a-net-core-app"></a>Rychlý start: Použití mezipaměti Azure pro Redis s .NET Core aplikace
 

@@ -11,11 +11,11 @@ ms.topic: quickstart
 ms.date: 03/13/2019
 ms.author: erhopf
 ms.openlocfilehash: f7120e80d079723ed8265320ba4b38d76a825a00
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59499814"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60621326"
 ---
 # <a name="quickstart-translate-speech-with-the-speech-sdk-for-c"></a>Rychlý start: Překlad řeči se sadou SDK pro řeč pro C++
 
@@ -32,7 +32,7 @@ K tomuto rychlému startu potřebujete:
 
 ## <a name="create-a-visual-studio-project"></a>Vytvoření projektu ve Visual Studiu
 
-[!INCLUDE[](../../../includes/cognitive-services-speech-service-quickstart-cpp-create-proj.md)]
+[!INCLUDE [Quickstart C++ project](../../../includes/cognitive-services-speech-service-quickstart-cpp-create-proj.md)]
 
 ## <a name="add-sample-code"></a>Přidání ukázkového kódu
 

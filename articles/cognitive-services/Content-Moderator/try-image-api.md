@@ -11,11 +11,11 @@ ms.topic: conceptual
 ms.date: 01/10/2019
 ms.author: sajagtap
 ms.openlocfilehash: 1e4efa5e06525194bfdc7d1932fcfec5ec9f8c6b
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58093816"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60607418"
 ---
 # <a name="moderate-images-from-the-api-console"></a>Moderování obrázků z konzoly pro rozhraní API
 

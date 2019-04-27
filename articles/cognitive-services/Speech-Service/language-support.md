@@ -12,11 +12,11 @@ ms.date: 03/19/2019
 ms.author: erhopf
 ms.custom: seodec18
 ms.openlocfilehash: 0a82c2ba8bdf3d01041aa06f55eaaecab29817b2
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58803098"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60696779"
 ---
 # <a name="language-and-region-support-for-the-speech-services"></a>Podpora jazyka a oblasti pro hlasové služby
 

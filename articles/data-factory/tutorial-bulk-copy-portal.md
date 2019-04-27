@@ -13,11 +13,11 @@ ms.topic: tutorial
 ms.date: 06/22/2018
 ms.author: jingwang
 ms.openlocfilehash: 444269aa7ca2b0a82b78e8437b7884ef8833c665
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59279784"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60592557"
 ---
 # <a name="copy-multiple-tables-in-bulk-by-using-azure-data-factory"></a>Hromadné kopírování několika tabulek pomocí Azure Data Factory
 Tento kurz představuje **kopírování několika tabulek z Azure SQL Database do služby Azure SQL Data Warehouse**. Stejný vzor můžete využít i u dalších scénářů kopírování. Například při kopírování tabulek z SQL Serveru/Oraclu do služby Azure SQL Database/Data Warehouse/Azure Blob nebo při kopírování různých cest ze služby Blob do tabulek Azure SQL Database.
@@ -56,13 +56,13 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 **Příprava zdrojové databáze Azure SQL Database**:
 
-Podle postupu v článku [Vytvoření databáze SQL Azure](../sql-database/sql-database-get-started-portal.md) vytvořte Azure SQL Database s ukázkovými daty Adventure Works LT. V tomto kurzu se všechny tabulky z této ukázkové databáze zkopírují do datového skladu SQL.
+Podle postupu v článku [Vytvoření databáze Azure SQL](../sql-database/sql-database-get-started-portal.md) vytvořte Azure SQL Database s ukázkovými daty Adventure Works LT. V tomto kurzu se všechny tabulky z této ukázkové databáze zkopírují do datového skladu SQL.
 
 **Příprava jímky Azure SQL Data Warehouse**:
 
 1. Pokud Azure SQL Data Warehouse nemáte, přečtěte si článek věnovaný [vytvoření služby SQL Data Warehouse](../sql-data-warehouse/sql-data-warehouse-get-started-tutorial.md), kde najdete kroky pro její vytvoření.
 
-1. V SQL Data Warehouse vytvořte odpovídající schémata tabulek. K **migraci schémat** z Azure SQL Database do Azure SQL Data Warehouse můžete využít [nástroj pro migraci](https://www.microsoft.com/download/details.aspx?id=49100) . K migraci/kopírování dat v pozdějším kroku můžete použít Azure Data Factory.
+1. V SQL Data Warehouse vytvořte odpovídající schémata tabulek. K **migraci schémat** z Azure SQL Database do Azure SQL Data Warehouse můžete využít [nástroj pro migraci](https://www.microsoft.com/download/details.aspx?id=49100). K migraci/kopírování dat v pozdějším kroku můžete použít Azure Data Factory.
 
 ## <a name="azure-services-to-access-sql-server"></a>Služby Azure pro přístup k SQL serveru
 
@@ -113,7 +113,7 @@ Vytvoříte propojené služby, které propojí vaše úložiště dat a výpoč
 V tomto kurzu propojíte se svou datovou továrnou úložiště dat Azure SQL Database, Azure SQL Data Warehouse a Azure Blob Storage. Azure SQL Database je zdrojové úložiště dat. Azure SQL Data Warehouse je cílové úložiště dat jímky. Azure Blob Storage připraví data před nahráním do služby SQL Data Warehouse pomocí PolyBase. 
 
 ### <a name="create-the-source-azure-sql-database-linked-service"></a>Vytvoření propojené služby Azure SQL Database pro zdroj
-V tomto kroku vytvoříte propojenou službu, která propojí vaši databázi SQL Azure s datovou továrnou. 
+V tomto kroku vytvoříte propojenou službu, která propojí vaši databázi Azure SQL s datovou továrnou. 
 
 1. Klikněte na **Připojení** v dolní části okna a pak klikněte na **+ Nové** na panelu nástrojů. 
 
@@ -125,10 +125,10 @@ V tomto kroku vytvoříte propojenou službu, která propojí vaši databázi SQ
 
     1. Jako **Název** zadejte **AzureSqlDatabaseLinkedService**. 
     1. Jako **Název serveru** vyberte váš server SQL Azure.
-    1. Jako **Název databáze** vyberte vaši databázi SQL Azure. 
-    1. Zadejte **jméno uživatele** pro připojení k databázi SQL Azure. 
+    1. Jako **Název databáze** vyberte vaši databázi Azure SQL. 
+    1. Zadejte **jméno uživatele** pro připojení k databázi Azure SQL. 
     1. Zadejte **heslo** pro tohoto uživatele. 
-    1. Pokud chcete otestovat připojení k databázi SQL Azure s použitím zadaných informací, klikněte na **Test připojení**.
+    1. Pokud chcete otestovat připojení k databázi Azure SQL s použitím zadaných informací, klikněte na **Test připojení**.
     1. Klikněte na **Uložit**.
 
         ![Nastavení služby Azure SQL Database](./media/tutorial-bulk-copy-portal/azure-sql-database-settings.png)
@@ -141,10 +141,10 @@ V tomto kroku vytvoříte propojenou službu, která propojí vaši databázi SQ
 
     1. Jako **Název** zadejte **AzureSqlDWLinkedService**. 
     1. Jako **Název serveru** vyberte váš server SQL Azure.
-    1. Jako **Název databáze** vyberte vaši databázi SQL Azure. 
-    1. Zadejte **jméno uživatele** pro připojení k databázi SQL Azure. 
+    1. Jako **Název databáze** vyberte vaši databázi Azure SQL. 
+    1. Zadejte **jméno uživatele** pro připojení k databázi Azure SQL. 
     1. Zadejte **heslo** pro tohoto uživatele. 
-    1. Pokud chcete otestovat připojení k databázi SQL Azure s použitím zadaných informací, klikněte na **Test připojení**.
+    1. Pokud chcete otestovat připojení k databázi Azure SQL s použitím zadaných informací, klikněte na **Test připojení**.
     1. Klikněte na **Uložit**.
 
 ### <a name="create-the-staging-azure-storage-linked-service"></a>Vytvoření pracovní propojené služby Azure Storage
@@ -181,7 +181,7 @@ V tomto kurzu nejsou zdrojová a cílová tabulka SQL pevně zakódované v defi
 1. Přepněte na kartu **Připojení** a proveďte následující kroky: 
 
    1. Jako **Propojená služba** vyberte **AzureSqlDatabaseLinkedService**.
-   1. Jako **Tabulka** vyberte jakoukoli tabulku. Tato tabulka je fiktivní. Při vytváření kanálu zadáte dotaz na zdrojovou datovou sadu. Tento dotaz se použije k extrakci dat z databáze SQL Azure. Případně můžete kliknout na zaškrtávací políčko **Upravit** a jako název tabulky zadat **dummyName**. 
+   1. Jako **Tabulka** vyberte jakoukoli tabulku. Tato tabulka je fiktivní. Při vytváření kanálu zadáte dotaz na zdrojovou datovou sadu. Tento dotaz se použije k extrakci dat z databáze Azure SQL. Případně můžete kliknout na zaškrtávací políčko **Upravit** a jako název tabulky zadat **dummyName**. 
 
       ![Stránka Připojení ke zdrojové datové sadě](./media/tutorial-bulk-copy-portal/source-dataset-connection-page.png)
  
@@ -297,7 +297,7 @@ Tento kanál provádí dva kroky:
 1. Na panelu nástrojů **Aktivity** rozbalte nabídku **Obecné**, přetáhněte aktivitu **Vyhledávání** na plochu návrháře kanálu a pak postupujte takto:
 
     1. Jako **Název** zadejte **LookupTableList**. 
-    1. Jako **Popis** zadejte **Načtení seznamu tabulek z databáze SQL Azure**.
+    1. Jako **Popis** zadejte **Načtení seznamu tabulek z databáze Azure SQL**.
 
         ![Aktivita vyhledávání – stránka Obecné](./media/tutorial-bulk-copy-portal/lookup-general-page.png)
 1. Přepněte na stránku **Nastavení** a proveďte následující kroky:

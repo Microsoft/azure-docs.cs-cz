@@ -16,11 +16,11 @@ ms.topic: overview
 ms.date: 10/27/2017
 ms.author: gokuma
 ms.openlocfilehash: 74fe2345af5d1249d6704c7560b42323561bc623
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58918242"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60578432"
 ---
 # <a name="introduction-to-azure-data-science-virtual-machine-for-linux-and-windows"></a>Úvod k virtuálnímu počítači pro datové vědy pro Linux a Windows
 

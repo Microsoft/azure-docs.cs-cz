@@ -16,11 +16,11 @@ ms.workload: infrastructure
 ms.date: 04/20/2018
 ms.author: kumud
 ms.openlocfilehash: 41f8a403694eec897ba4a6eb147ab71757d5caa5
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54263930"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60605590"
 ---
 # <a name="azure-cli-script-example-load-balance-multiple-websites"></a>Ukázkový skript Azure CLI: Vyvažovat zatížení u více webů
 

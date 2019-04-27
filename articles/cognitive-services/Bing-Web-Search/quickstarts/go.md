@@ -13,11 +13,11 @@ ms.author: aahi
 ms.reviewer: nhoyadx@gmail.com, v-gedod, erhopf
 ms.custom: seodec2018
 ms.openlocfilehash: b7bf73c2948b302ec8294b7dc2ff2dc8f220c91b
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57843879"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60648444"
 ---
 # <a name="quickstart-search-the-web-using-the-bing-web-search-rest-api-and-go"></a>Rychlý start: Vyhledávání na webu pomocí API REST vyhledávání na webu Bingu a Go
 

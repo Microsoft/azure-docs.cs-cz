@@ -11,11 +11,11 @@ ms.topic: quickstart
 ms.date: 04/13/2018
 ms.author: rosh
 ms.openlocfilehash: fc0f8519644c5b9f722ab67f2e9d600a0be7960b
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55883521"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60708324"
 ---
 # <a name="quickstart-project-answer-search-query-in-java"></a>Rychlý start: Hledání odpovědí dotazu projektu v Javě
 Tento článek představuje použití rozhraní API Bingu pro vyhledávání odpovědí, které je součástí služeb Microsoft Cognitive Services v Azure, pomocí Javy. Rozhraní API je webová služba REST kompatibilní s každým programovacím jazykem, který dokáže provádět požadavky HTTP a parsovat JSON.

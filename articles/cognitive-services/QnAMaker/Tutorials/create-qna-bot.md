@@ -12,11 +12,11 @@ ms.topic: article
 ms.date: 04/08/2019
 ms.author: tulasim
 ms.openlocfilehash: 85b0004288a06a834b61f6e3d50017d35d66ce86
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59263872"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60599024"
 ---
 # <a name="tutorial-create-a-qna-bot-with-azure-bot-service-v4"></a>Kurz: Vytváření QnA robotů s využitím Azure Bot službu v4
 
@@ -52,7 +52,7 @@ Vytváření robotů jako klientskou aplikaci pro znalostní báze.
     |Bot name (Název robota)|`my-tutorial-kb-bot`|Toto je název prostředku Azure pro robota.|
     |Předplatné|Podívejte se na účel.|Vyberte stejné předplatné jako jste použili k vytvoření prostředků nástroje QnA Maker.|
     |Skupina prostředků|`my-tutorial-rg`|Skupina prostředků použitá pro všechny bot související prostředky Azure.|
-    |Umístění|`west us`|Umístění bodu robotů také prostředků Azure.|
+    |Location|`west us`|Umístění bodu robotů také prostředků Azure.|
     |Cenová úroveň|`F0`|Pro službu Azure bot service na úrovni free.|
     |App name (Název aplikace)|`my-tutorial-kb-bot-app`|Toto je webová aplikace pro podporu svého robota pouze. Jak už používá vaše služba QnA Maker nemělo by to být stejný název aplikace. Nástroj QnA Maker webovou aplikaci pro sdílení obsahu s jakýmikoli prostředky se nepodporuje.|
     |Jazykové sady SDK|C#|Toto je základní programovací jazyk používá rozhraní bot framework SDK. Jsou vaše volby C# nebo Node.js.|

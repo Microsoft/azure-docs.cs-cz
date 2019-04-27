@@ -10,11 +10,11 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: overview
 ms.date: 03/26/2019
 ms.openlocfilehash: a061c2705a5c0155b54dd2fa1e89f19223409a12
-ms.sourcegitcommit: 5f348bf7d6cf8e074576c73055e17d7036982ddb
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2019
-ms.locfileid: "59609436"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60696173"
 ---
 # <a name="what-are-the-apache-hadoop-components-and-versions-available-with-hdinsight"></a>Co je Apache Hadoop komponenty a verze, které jsou k dispozici s HDInsight?
 

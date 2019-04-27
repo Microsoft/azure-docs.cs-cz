@@ -12,11 +12,11 @@ ms.date: 03/13/2019
 ms.author: erhopf
 ms.custom: seodec18
 ms.openlocfilehash: 087440b60e1d5fecc668849bc1350d66988b16b9
-ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58339074"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60622486"
 ---
 # <a name="quickstart-convert-text-to-speech-using-python"></a>Rychlý start: Převést převod textu na řeč pomocí Pythonu
 

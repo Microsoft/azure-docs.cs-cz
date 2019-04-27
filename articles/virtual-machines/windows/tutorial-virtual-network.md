@@ -17,11 +17,11 @@ ms.date: 12/04/2018
 ms.author: cynthn
 ms.custom: mvc
 ms.openlocfilehash: 568631705b590bb2ee312b9519164be17c8443ab
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55984235"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60711179"
 ---
 # <a name="tutorial-create-and-manage-azure-virtual-networks-for-windows-virtual-machines-with-azure-powershell"></a>Kurz: Vytvoření a správa virtuálních sítí Azure pro virtuální počítače s Windows pomocí Azure Powershellu
 
@@ -37,7 +37,7 @@ Virtuální počítače Azure používají pro interní i externí síťovou kom
 
 ## <a name="vm-networking-overview"></a>Přehled sítí virtuálních počítačů
 
-Virtuální sítě Azure umožňují zabezpečená síťová připojení mezi virtuálními počítači, internetem a dalšími službami Azure, jako je Databáze SQL Azure. Virtuální sítě se skládají z logických segmentů zvaných podsítě. Podsítě se používají k řízení toku sítě a jako hranice zabezpečení. Když nasazujete virtuální počítač, obvykle zahrnuje virtuální síťové rozhraní, které je připojené k podsíti.
+Virtuální sítě Azure umožňují zabezpečená síťová připojení mezi virtuálními počítači, internetem a dalšími službami Azure, jako je databáze Azure SQL. Virtuální sítě se skládají z logických segmentů zvaných podsítě. Podsítě se používají k řízení toku sítě a jako hranice zabezpečení. Když nasazujete virtuální počítač, obvykle zahrnuje virtuální síťové rozhraní, které je připojené k podsíti.
 
 Při práci na tomto kurzu vytvoříte tyto prostředky:
 

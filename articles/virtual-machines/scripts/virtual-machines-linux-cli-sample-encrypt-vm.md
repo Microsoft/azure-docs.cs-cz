@@ -17,11 +17,11 @@ ms.date: 12/15/2017
 ms.author: cynthn
 ms.custom: mvc
 ms.openlocfilehash: 8f3e032d6723faf149faad039e3c3faff3e6d83a
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55731491"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60679889"
 ---
 # <a name="encrypt-a-linux-virtual-machine-in-azure"></a>Šifrování virtuálního počítače s Linuxem v Azure
 

@@ -9,11 +9,11 @@ ms.date: 03/21/2018
 ms.author: danlep
 ms.custom: seodec18, mvc
 ms.openlocfilehash: c1a4313f9a8174b9ea6e6cff694b9a0a9cf395d1
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57538149"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60685658"
 ---
 # <a name="tutorial-deploy-an-azure-container-registry-and-push-a-container-image"></a>Kurz: Nasazení služby Azure container registry a nahrání image kontejneru
 
@@ -28,7 +28,7 @@ Služba Azure Container Registry je vaším privátním registrem Dockeru v Azur
 
 V následujícím článku, který je posledním dílem série, nasadíte kontejner z privátního registru do služby Azure Container Instances.
 
-## <a name="before-you-begin"></a>Před zahájením
+## <a name="before-you-begin"></a>Než začnete
 
 [!INCLUDE [container-instances-tutorial-prerequisites](../../includes/container-instances-tutorial-prerequisites.md)]
 

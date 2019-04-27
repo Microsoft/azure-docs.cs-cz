@@ -11,11 +11,11 @@ ms.topic: tutorial
 ms.date: 01/18/2019
 ms.author: pafarley
 ms.openlocfilehash: 662eca2a727f3112f169ab8d669bf18c81700275
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57871024"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60699528"
 ---
 # <a name="tutorial-moderate-facebook-posts-and-commands-with-azure-content-moderator"></a>Kurz: Moderování příspěvků na Facebooku a příkazy s Azure Content Moderator
 
@@ -65,7 +65,7 @@ Přihlaste se k [webu Azure Portal](https://portal.azure.com/) a postupujte podl
 2. Přejděte do nově vytvořené aplikace Function App.
 3. V aplikaci, přejděte **funkce platformy** kartě a vyberte **nastavení aplikace**. V **nastavení aplikace** části na další stránku posunout na konec seznamu a klikněte na tlačítko **přidat nové nastavení**. Přidejte následující dvojice klíč/hodnota
     
-    | Název nastavení aplikace | hodnota   | 
+    | Název nastavení aplikace | value   | 
     | -------------------- |-------------|
     | cm:TeamId   | TeamId Content Moderatoru.  | 
     | cm:SubscriptionKey | Klíč předplatného Content Moderatoru – viz [přihlašovací údaje](review-tool-user-guide/credentials.md). | 

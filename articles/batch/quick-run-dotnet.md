@@ -11,11 +11,11 @@ ms.date: 11/29/2018
 ms.author: lahugh
 ms.custom: mvc
 ms.openlocfilehash: c13a01b392b9bbc93fff2e997cb6d168a441ad07
-ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52679915"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60616878"
 ---
 # <a name="quickstart-run-your-first-azure-batch-job-with-the-net-api"></a>Rychlý start: Spuštění první úlohy služby Azure Batch pomocí rozhraní API .NET
 
@@ -31,7 +31,7 @@ V rámci tohoto rychlého startu spustíte úlohu služby Azure Batch z aplikace
 
 * Účet Batch a propojený účet Azure Storage. Informace o vytvoření těchto účtů prostřednictvím [webu Azure Portal](quick-create-portal.md) nebo [rozhraní Azure CLI](quick-create-cli.md) najdete v rychlém startu služby Batch. 
 
-## <a name="sign-in-to-azure"></a>Přihlášení k Azure
+## <a name="sign-in-to-azure"></a>Přihlásit se k Azure
 
 Přihlaste se k webu Azure Portal na adrese [https://portal.azure.com](https://portal.azure.com).
 

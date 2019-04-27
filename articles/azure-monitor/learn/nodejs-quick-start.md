@@ -11,11 +11,11 @@ ms.custom: mvc
 ms.topic: quickstart
 manager: carmonm
 ms.openlocfilehash: c6979ce5cade09d4daa4e6eddd79fb69175ec902
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58849395"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60540224"
 ---
 # <a name="start-monitoring-your-nodejs-web-application"></a>Zahájení monitorování webové aplikace Node.js
 

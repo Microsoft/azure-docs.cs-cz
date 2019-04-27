@@ -10,11 +10,11 @@ ms.custom: mvc
 ms.date: 04/10/2019
 ms.author: spelluru
 ms.openlocfilehash: 05c84f91c960bbcf7383cd2164289c8398f8dc91
-ms.sourcegitcommit: 5f348bf7d6cf8e074576c73055e17d7036982ddb
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2019
-ms.locfileid: "59607751"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60594457"
 ---
 # <a name="quickstart-use-azure-portal-to-create-a-service-bus-queue"></a>Rychlý start: Vytvořit frontu služby Service Bus pomocí webu Azure portal
 Tento rychlý start popisuje, jak odesílat zprávy do fronty Service Bus a přijímat je. Používá se k tomu web [Azure Portal][Azure portal], kde se vytvoří obor názvů pro odesílání zpráv a v tomto oboru názvů fronta. Dále je třeba získat v oboru názvů přihlašovací údaje pro autorizaci. Postup pak ukazuje, jak do této fronty odesílat zprávy a přijímat je z ní pomocí [knihovny .NET Standard](https://www.nuget.org/packages/Microsoft.Azure.ServiceBus).

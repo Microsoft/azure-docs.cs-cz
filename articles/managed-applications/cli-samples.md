@@ -1,6 +1,6 @@
 ---
-title: Rozhraní příkazového řádku Azure vzorky – Azure spravovaných aplikací | Microsoft Docs
-description: Rozhraní příkazového řádku Azure vzorky – Azure spravované aplikace
+title: Ukázky Azure CLI – spravované aplikace Azure | Dokumentace Microsoftu
+description: Ukázky Azure CLI – spravované aplikace Azure
 services: managed-applications
 documentationcenter: na
 author: tfitzmac
@@ -12,22 +12,22 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/25/2017
 ms.author: tomfitz
-ms.openlocfilehash: 38ebea86783970e0b045dcf5a8a91f54ae6c6d6a
-ms.sourcegitcommit: 3ab5ea589751d068d3e52db828742ce8ebed4761
-ms.translationtype: HT
+ms.openlocfilehash: d8b7c645bd9ee87faf51eab58651ddc5c7cde46a
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2017
-ms.locfileid: "23939931"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60588879"
 ---
-# <a name="azure-cli-samples"></a>Ukázky rozhraní příkazového řádku Azure
+# <a name="azure-cli-samples"></a>Ukázky Azure CLI
 
-Následující tabulka obsahuje odkazy na bash skripty pro spravované aplikace Azure, který pomocí rozhraní příkazového řádku Azure.
+Následující tabulka obsahuje odkazy na skripty bash pro spravované aplikace Azure, který pomocí Azure CLI.
 
 | | |
 |-|-|
 |**Vytvoření spravované aplikace**||
-| [Vytvořit definici spravované aplikace](scripts/managed-application-cli-sample-create-definition.md) | Vytvoří definici spravované aplikaci v katalogu služeb.  |
-| [Nasadit spravované aplikace](scripts/managed-application-cli-sample-create-application.md) | Nasadí spravované aplikace z katalogu služeb.  |
+| [Vytvoření definice spravované aplikace](scripts/managed-application-cli-sample-create-definition.md) | Vytvoří definici spravované aplikace katalogu služeb.  |
+| [Nasazení spravované aplikace](scripts/managed-application-cli-sample-create-application.md) | Nasadí spravované aplikace z katalogu služeb.  |
 | | |
-|**Aktualizovat skupinu spravovaných prostředků**||
-| [Získat prostředky ve skupině spravovaných prostředků a změně velikosti virtuálních počítačů](scripts/managed-application-cli-sample-get-managed-group-resize-vm.md) | Získá prostředky ze skupiny spravovaných prostředků a změní velikost virtuálních počítačů. |
+|**Aktualizovat spravované skupiny prostředků**||
+| [Získání prostředků ve spravované skupině prostředků a změna velikosti virtuálních počítačů](scripts/managed-application-cli-sample-get-managed-group-resize-vm.md) | Načte prostředky ze spravované skupině prostředků a změní velikost virtuálních počítačů. |

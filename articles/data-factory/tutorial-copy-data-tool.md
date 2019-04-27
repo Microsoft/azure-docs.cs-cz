@@ -12,11 +12,11 @@ ms.topic: tutorial
 ms.date: 09/11/2018
 ms.author: jingwang
 ms.openlocfilehash: 553e87cacf407da2333da3105647719679feaabf
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57544201"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60624580"
 ---
 # <a name="copy-data-from-azure-blob-storage-to-a-sql-database-by-using-the-copy-data-tool"></a>Kopírování dat z úložiště objektů blob v Azure do databáze SQL pomocí nástroje pro kopírování dat
 > [!div class="op_single_selector" title1="Select the version of the Data Factory service that you're using:"]

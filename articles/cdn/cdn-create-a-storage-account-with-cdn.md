@@ -16,11 +16,11 @@ ms.date: 05/24/2018
 ms.author: magattus
 ms.custom: mvc
 ms.openlocfilehash: ea4134c486310592f1f0f344ae26a11276143faf
-ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57193360"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60680080"
 ---
 # <a name="quickstart-integrate-an-azure-storage-account-with-azure-cdn"></a>Rychlý start: Integrace účtu služby Azure storage s Azure CDN
 V tomto rychlém startu povolíte službě [Azure Content Delivery Network (CDN)](cdn-overview.md), aby obsah ze služby Azure Storage ukládala do mezipaměti. Azure CDN nabízí vývojářům globální řešení pro doručování širokopásmového obsahu. Do mezipaměti může ukládat objekty blob a statický obsah výpočetních instancí ve fyzických uzlech v USA, Evropě, Asii, Austrálii a Jižní Americe.

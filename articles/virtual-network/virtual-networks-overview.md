@@ -3,7 +3,8 @@ title: Azure Virtual Network | Microsoft Docs
 description: Seznamte se s koncepty a funkcemi služby Azure Virtual Network.
 services: virtual-network
 documentationcenter: na
-author: jimdial
+author: KumudD
+manager: twooley
 tags: azure-resource-manager
 Customer intent: As someone with a basic network background that is new to Azure, I want to understand the capabilities of Azure Virtual Network, so that my Azure resources such as VMs, can securely communicate with each other, the internet, and my on-premises resources.
 ms.service: virtual-network
@@ -12,13 +13,13 @@ ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/12/2018
-ms.author: jdial
+ms.author: kumud
 ms.openlocfilehash: 9fb6aa0c2bf585862f61d7c78bd09b340ff8a3ce
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
-ms.translationtype: MT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54015895"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60640340"
 ---
 # <a name="what-is-azure-virtual-network"></a>Co je Azure Virtual Network?
 

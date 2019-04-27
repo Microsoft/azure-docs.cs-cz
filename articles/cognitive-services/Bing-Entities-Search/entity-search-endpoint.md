@@ -11,11 +11,11 @@ ms.topic: conceptual
 ms.date: 02/01/2019
 ms.author: v-gedod
 ms.openlocfilehash: 3c2aa4b22c8e679f73692978d9e1f8009f11a46b
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55875225"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60598520"
 ---
 # <a name="bing-entity-search-api-endpoint"></a>Koncový bod rozhraní API pro vyhledávání entit Bingu
 

@@ -12,11 +12,11 @@ ms.topic: article
 ms.date: 02/28/2019
 ms.author: diberry
 ms.openlocfilehash: 9099cdbb91e41998065d953b9d48b3b501df7c10
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57336933"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60712759"
 ---
 # <a name="dimension-prebuilt-entity-for-a-luis-app"></a>Dimenze předem připravených entit pro aplikace LUIS
 Různé typy dimenzí, bez ohledu na jazykovou verzi aplikace LUIS rozpozná dimenze předem připravených entit. Protože tato entita je už vytrénovaný, není potřeba přidat příklad projevy obsahující rozměry záměry aplikace. Dimenze entity se podporuje v [mnoha jazykových verzí](luis-reference-prebuilt-entities.md). 

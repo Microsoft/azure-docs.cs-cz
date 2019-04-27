@@ -8,11 +8,11 @@ ms.author: markscu
 ms.date: 08/02/2018
 ms.topic: tutorial
 ms.openlocfilehash: 8a512676ab0e56f51c0fb9c59f2e530cfcf73333
-ms.sourcegitcommit: d89b679d20ad45d224fd7d010496c52345f10c96
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57791422"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60617487"
 ---
 # <a name="tutorial-render-a-blender-scene-using-batch-explorer"></a>Kurz: Vykreslení scény s blendrem. Tato použití Průzkumníka služby Batch
 

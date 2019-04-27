@@ -12,11 +12,11 @@ ms.topic: article
 ms.date: 02/28/2019
 ms.author: diberry
 ms.openlocfilehash: 9efaaa6bdd0f2b51efca398464dbf08de56d831d
-ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2019
-ms.locfileid: "58579270"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60712735"
 ---
 # <a name="currency-prebuilt-entity-for-a-luis-app"></a>Měna předem připravených entit pro aplikace LUIS
 Měny předem připravených entit rozpozná měny v mnoha označení a zemí, bez ohledu na jazykovou verzi aplikace LUIS. Protože tato entita je už vytrénovaný, není potřeba přidat příklad projevy obsahující Měna, která se záměry aplikace. Entita měny se podporuje v [mnoha jazykových verzí](luis-reference-prebuilt-entities.md). 
