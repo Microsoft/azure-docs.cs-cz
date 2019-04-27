@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 06/05/2015
 ms.author: wpickett
 ms.openlocfilehash: 342c7903e58a5c3bc41278152630187fa0c63b7b
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52425035"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62119142"
 ---
 # <a name="multitenant-applications-in-azure"></a>Víceklientské aplikace v Azure
 Víceklientské aplikace je sdílený prostředek, který umožňuje samostatné uživatele, nebo "klienti", chcete-li zobrazit aplikace, jako by byl své vlastní. Typický scénář, který slouží k víceklientské aplikaci je jedním ve kterém všichni uživatelé aplikace chtít přizpůsobit uživatelské prostředí, ale jinak mají stejný základní obchodní požadavky. Příkladem velké víceklientské aplikace jsou visualstudio.com, Office 365 a Outlook.com.
@@ -28,16 +28,16 @@ Z pohledu zprostředkovatele aplikace výhody víceklientskou architekturu nejč
 
 Následuje seznam nejvýznamnější cíle a požadavky z hlediska poskytovatele.
 
-* **Zřizování**: musíte být schopni zřízení nových tenantů pro aplikaci.  Pro víceklientské aplikace s velkým množstvím tenantů je obvykle nezbytná k automatizaci tohoto procesu tím, že umožňuje samoobslužné služby zřizování.
-* **Udržovatelnost**: musíte být schopni upgradovat aplikaci a provádět další úlohy údržby, zatímco se vytvářejí pomocí více tenantů.
-* **Monitorování**: musí být schopen monitorovat aplikace za všech okolností zjistit případné problémy a jejich řešení. To zahrnuje monitorování, jak každý klient používá aplikace.
+* **Zřizování**: Musíte být schopni zřízení nových tenantů pro aplikaci.  Pro víceklientské aplikace s velkým množstvím tenantů je obvykle nezbytná k automatizaci tohoto procesu tím, že umožňuje samoobslužné služby zřizování.
+* **Udržovatelnost**: Musíte být schopni upgradovat aplikaci a provádět další úlohy údržby, zatímco se vytvářejí pomocí více tenantů.
+* **Monitorování**: Musíte být schopni monitorování aplikace za všech okolností zjistit případné problémy a jejich řešení. To zahrnuje monitorování, jak každý klient používá aplikace.
 
 Správně implementovaná víceklientské aplikaci poskytuje následující výhody pro uživatele.
 
-* **Izolace**: aktivity jednotlivých tenantů nemají vliv na použití aplikace podle jiných tenantů. Klienty nelze přistupovat k datům uživatele toho druhého. Zobrazí se do tenanta jako kdyby všichni mají výhradní použití aplikace.
-* **Dostupnost**: jednotlivé tenanty chcete aplikaci, která bude stále k dispozici, například záruky, které jsou definovány v smlouvu SLA. Znovu aktivity z jiných tenantů nemělo ovlivnit dostupnost aplikace.
-* **Škálovatelnost**: aplikace se škáluje podle potřeby jednotlivých tenantů. Přítomnost a konání ostatních tenantů by neměla vliv na výkon aplikace.
-* **Náklady na**: náklady jsou nižší než systémem vyhrazené jednoho tenanta aplikaci, protože více tenantů umožňuje sdílení prostředků.
+* **Izolace**: Aktivity jednotlivých tenantů nemají vliv na použití aplikace podle jiných tenantů. Klienty nelze přistupovat k datům uživatele toho druhého. Zobrazí se do tenanta jako kdyby všichni mají výhradní použití aplikace.
+* **Dostupnost**: Jednotlivé tenanty chcete aplikaci, která bude stále k dispozici, například záruky, které jsou definovány v smlouvu SLA. Znovu aktivity z jiných tenantů nemělo ovlivnit dostupnost aplikace.
+* **Škálovatelnost**: Aplikace se škáluje podle potřeby jednotlivých tenantů. Přítomnost a konání ostatních tenantů by neměla vliv na výkon aplikace.
+* **Náklady na**: Náklady jsou nižší než systémem vyhrazené jednoho tenanta aplikaci, protože více tenantů umožňuje sdílení prostředků.
 * **Přizpůsobitelnost**. Možnost přizpůsobení aplikace pro jednoho klienta různými způsoby, například přidávání nebo odebírání funkcí, změna barev a loga nebo dokonce přidat vlastní kód nebo skript.
 
 Stručně řečeno i když existují mnoho důležité informace, které musí vzít v úvahu k poskytování vysoce škálovatelná služba, existují také řadu cíle a požadavky, které jsou společné pro mnoho víceklientské aplikace. Některé nemusí být v určitých situacích relevantní a závažnost jednotlivých cíle a požadavky se budou lišit v každém scénáři. Jako poskytovatel víceklientské aplikaci budete také mít cíle a požadavky, jako splnění klienty cíle a požadavky, ziskovosti, fakturace, více úrovní služeb, zřizování, udržovatelnost monitorování a automatizace.

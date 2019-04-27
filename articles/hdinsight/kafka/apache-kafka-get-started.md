@@ -7,12 +7,12 @@ ms.author: hrasheed
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 04/01/2019
-ms.openlocfilehash: 4099d6ea12774fec2b24895b42d8e780bd36e2a4
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 8600e9c9d8566d3b9f6cd0fbca60d7db904a6265
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58917341"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62115257"
 ---
 # <a name="quickstart-create-an-apache-kafka-on-hdinsight-cluster"></a>Rychlý start: Vytvoření Apache Kafka v clusteru HDInsight
 
@@ -59,7 +59,7 @@ K vytvoření clusteru Apache Kafka ve službě HDInsight použijte následujíc
     | Nastavení | Hodnota |
     | --- | --- |
     | Typ clusteru | Kafka |
-    | Verze | Kafka 1.1.0 (HDI 3.6) |
+    | Version | Kafka 1.1.0 (HDI 3.6) |
 
     Vyberte **vyberte** uložte nastavení typu clusteru a vraťte se do __Základy__.
 
@@ -73,7 +73,7 @@ K vytvoření clusteru Apache Kafka ve službě HDInsight použijte následujíc
     | Heslo přihlášení clusteru | Přihlašovací heslo pro přístup k webovým službám nebo rozhraním REST API hostovaným v clusteru. |
     | Uživatelské jméno Secure Shell (SSH) | Přihlašovací údaje používané pro přístup ke clusteru přes SSH. Ve výchozím nastavení je heslo stejné jako pro přihlášení ke clusteru. |
     | Skupina prostředků | Skupina prostředků, ve které se cluster vytváří. |
-    | Umístění | Oblast Azure, ve které se cluster vytváří. |
+    | Location | Oblast Azure, ve které se cluster vytváří. |
 
     > [!TIP]  
     > Každá oblast Azure (umístění) poskytuje _domény selhání_. Doména selhání je logické seskupení základního hardwaru v datovém centru Azure. Všechny domény selhání sdílí společný zdroje napájení a síťový přepínač. Virtuální počítače a spravované disky, které implementují uzly v clusteru služby HDInsight, jsou distribuované napříč těmito doménami selhání. Tato architektura omezuje potenciální dopad selhání fyzického hardwaru.

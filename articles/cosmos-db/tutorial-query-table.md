@@ -9,11 +9,11 @@ ms.topic: tutorial
 ms.date: 11/15/2017
 ms.reviewer: sngun
 ms.openlocfilehash: 28e9b420f3abc972e047af72e1b5bc755e7f9d2b
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58001637"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62115798"
 ---
 # <a name="tutorial-query-azure-cosmos-db-by-using-the-table-api"></a>Kurz: Dotazování služby Azure Cosmos DB pomocí rozhraní Table API
 

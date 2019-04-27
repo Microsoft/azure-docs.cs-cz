@@ -9,11 +9,11 @@ ms.date: 12/19/2018
 ms.author: zarhoads
 ms.custom: mvc
 ms.openlocfilehash: 5415778713261fbb3e57695573c8486cb32da781
-ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58756122"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61032253"
 ---
 # <a name="tutorial-update-an-application-in-azure-kubernetes-service-aks"></a>Kurz: Aktualizace aplikace ve službě Azure Kubernetes Service (AKS)
 
@@ -27,7 +27,7 @@ V tomto kurzu, který je šestou částí sedmidílné série, se aktualizuje ap
 > * Odeslání image kontejneru do služby Azure Container Registry
 > * Nasazení aktualizované image kontejneru
 
-## <a name="before-you-begin"></a>Před zahájením
+## <a name="before-you-begin"></a>Než začnete
 
 V předchozích kurzech se aplikace zabalila do image kontejneru. Tato image se odeslala do Azure Container Registry a vytvoření clusteru AKS. Aplikace se pak nasadí do clusteru AKS.
 

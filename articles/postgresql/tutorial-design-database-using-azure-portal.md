@@ -8,11 +8,11 @@ ms.custom: tutorial, mvc
 ms.topic: tutorial
 ms.date: 03/20/2018
 ms.openlocfilehash: aed539484ac01d1b18b8374ffb57456364f9bd2c
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58119256"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61091974"
 ---
 # <a name="tutorial-design-an-azure-database-for-postgresql-using-the-azure-portal"></a>Kurz: Návrh databáze Azure Database for PostgreSQL pomocí webu Azure portal
 
@@ -51,7 +51,7 @@ Server Azure Database for PostgreSQL vytvoříte pomocí tohoto postupu:
    - Předplatné: Pokud máte více předplatných, vyberte odpovídající předplatné, ve kterém tento prostředek existuje nebo ve kterém se fakturuje.
    - Skupina prostředků: **myresourcegroup**
    - Přihlašovací jméno správce serveru a heslo dle vašeho výběru
-   - Umístění
+   - Location
    - Verze PostgreSQL
 
    > [!IMPORTANT]
@@ -89,7 +89,7 @@ Služba Azure Database for PostgreSQL využívá bránu firewall na úrovni serv
 4. Klikněte na **Uložit** a pak kliknutím na **X** zavřete stránku **Zabezpečení připojení**.
 
    > [!NOTE]
-   > Server Azure PostgreSQL komunikuje přes port 5432. Pokud se pokoušíte připojit z podnikové sítě, nemusí být odchozí provoz přes port 5432 bránou firewall vaší sítě povolený. Pokud je to tak, nebudete se moct připojit k serveru Azure SQL Database, dokud vaše IT oddělení neotevře port 5432.
+   > Server Azure PostgreSQL komunikuje přes port 5432. Pokud se pokoušíte připojit z podnikové sítě, nemusí být odchozí provoz přes port 5432 bránou firewall vaší sítě povolený. Pokud je to tak, nebudete se moct připojit k serveru služby Azure SQL Database, dokud vaše IT oddělení neotevře port 5432.
    >
 
 ## <a name="get-the-connection-information"></a>Získání informací o připojení

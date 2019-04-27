@@ -13,11 +13,11 @@ ms.topic: conceptual
 ms.date: 04/08/2019
 ms.author: jingwang
 ms.openlocfilehash: cb1b8171dc45c286d3f87a3c33e366d818cfaad9
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59283405"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61456788"
 ---
 # <a name="copy-data-to-and-from-sql-server-using-azure-data-factory"></a>Kopírování dat do a z SQL serveru pomocí služby Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]

@@ -1,7 +1,6 @@
 ---
 title: Konfigurace nastavení Sparku – Azure HDInsight
 description: Postup konfigurace pro cluster Azure HDInsight Spark.
-services: hdinsight
 author: maxluk
 ms.author: maxluk
 ms.reviewer: jasonh
@@ -9,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/06/2018
-ms.openlocfilehash: 91f706b882c4f245dbd111b0f9cac269db6fd65f
-ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
+ms.openlocfilehash: 77f4ec9cce5d02ea4cbcc4968d02773a13edfe5b
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/20/2018
-ms.locfileid: "53652231"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62098370"
 ---
 # <a name="configure-apache-spark-settings"></a>Konfigurace nastavení Apache Sparku
 
@@ -111,8 +110,8 @@ Tady je příklad dvou uzlů pracovního procesu s jinou konfiguraci hodnoty:
 Následující seznam obsahuje parametry paměti klíče prováděcí modul Sparku.
 
 * `spark.executor.memory` Určuje celkovou velikost paměti, které jsou k dispozici pro vykonavatele.
-* `spark.storage.memoryFraction` (výchozí přibližně 60 %) definuje velikost paměti dostupné pro ukládání trvalých Rdd.
-* `spark.shuffle.memoryFraction` (výchozí přibližně 20 %) definuje velikost paměti, které jsou vyhrazené pro náhodné.
+* `spark.storage.memoryFraction` (výchozí hodnota přibližně 60 %) definuje velikost paměti dostupné pro ukládání trvalých Rdd.
+* `spark.shuffle.memoryFraction` (výchozí hodnota ~ 20 %) Určuje velikost paměti vyhrazená pro náhodné.
 * `spark.storage.unrollFraction` a `spark.storage.safetyFraction` (celkem tedy ~ 30 % z celkové paměti) – tyto hodnoty se používají interně ve Sparku a neměl měnit.
 
 YARN řídí maximální součtem velikostí paměti využívaných kontejnery na každém uzlu Spark. Následující diagram znázorňuje jeden uzel vztahy mezi objekty konfigurace YARN a Spark.

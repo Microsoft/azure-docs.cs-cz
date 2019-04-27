@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 02/27/2019
 ms.author: bwren
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: f8590c9ef89e68a823beefd7e74a894edd219359
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
-ms.translationtype: HT
+ms.openlocfilehash: 0975b23a8f96da6fc2dfcc8bd9ad046847a68aa9
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57779381"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62104818"
 ---
 # <a name="adding-log-analytics-saved-searches-and-alerts-to-management-solution-preview"></a>Přidání Log Analytics uložené hledání a výstrahy do řešení pro správu (Preview)
 
@@ -120,11 +120,13 @@ Uložené výsledky hledání může mít jeden nebo více plánů s každý pl�
         }
     }
 Vlastnosti pro plán prostředky jsou popsány v následující tabulce.
+
 | Název elementu | Požaduje se | Popis |
 |:--|:--|:--|
 | povoleno       | Ano | Určuje, zda je povoleno výstrahu, když se vytvoří. |
 | interval      | Ano | Jak často dotaz spustí během několika minut. |
 | queryTimeSpan | Ano | Časový interval v minutách, přes které se má vyhodnotit výsledky. |
+
 Plán prostředku by měl záviset na uložené výsledky hledání tak, aby se vytvořené před plán.
 > [!NOTE]
 > Název plánu musí být jedinečný v daném pracovním prostoru; dva plány nemůže mít stejné ID, i když jsou přidruženy k jiné uložená hledání. Název pro všechny uložené výsledky hledání, plány a akce, které jsou vytvořené pomocí rozhraní API pro analýzu protokolů také musí být malými písmeny.
@@ -231,8 +233,8 @@ Každý plán obsahuje jednu **výstrah** akce. Definuje podrobnosti výstrahy a
 
 | Název elementu | Požaduje se | Popis |
 |:--|:--|:--|
-| Příjemci | Ano | Čárkami oddělený seznam e-mailové adresy k odeslání oznámení, když výstraha se vytvoří, jako v následujícím příkladu.<br><br>**[ "recipient1@contoso.com", "recipient2@contoso.com" ]** |
-| Subjekt | Ano | Řádek předmětu e-mailu. |
+| Příjemci | Ano | Čárkami oddělený seznam e-mailové adresy k odeslání oznámení, když výstraha se vytvoří, jako v následujícím příkladu.<br><br>**["recipient1\@contoso.com", "recipient2\@contoso.com"]** |
+| Subject | Ano | Řádek předmětu e-mailu. |
 | Příloha | Ne | Přílohy se momentálně nepodporují. Pokud tento prvek je součástí, mělo by být **žádný**. |
 
 ##### <a name="remediation"></a>Náprava
@@ -266,6 +268,7 @@ Pokud bude zavolání webhooku po upozornění a bude je nutné prostředek akce
       }
     }
 Vlastnosti pro prostředky akce Webhooku jsou popsány v následujících tabulkách.
+
 | Název elementu | Požaduje se | Popis |
 |:--|:--|:--|
 | type | Ano | Typ akce. Toto je **Webhooku** pro akce webhooku. |

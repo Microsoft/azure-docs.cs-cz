@@ -10,11 +10,11 @@ ms.service: iot-accelerators
 services: iot-accelerators
 manager: philmea
 ms.openlocfilehash: ba5eb50dcf800c186124db348ac584ff6f55cebb
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54467311"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61450295"
 ---
 # <a name="introduction-to-the-azure-iot-reference-architecture"></a>Úvod do referenční architektura Azure IoT
 
@@ -81,7 +81,7 @@ Směrování můžete odesílat telemetrii na jeden nebo více koncových bodů 
 
 Řešení vzdáleného monitorování využívá [Azure Stream Analytics](/azure/stream-analytics/) ke zpracování datových proudů. Stroj pravidel v řešení dotazů Stream Analytics používá k vygenerování výstrahy a akce. Například můžete použít řešení dotazu k identifikaci průměrná teplota v prostoru úložiště truck více než pět minut klesne pod 36 stupňů.
 
-### <a name="storage"></a>Storage
+### <a name="storage"></a>Úložiště
 
 Řešení IoT může generovat velké objemy dat, což se často stává dat časových řad. Tato data musí být uložena, kde je možné pro vizualizaci a vytváření sestav. Řešení také potřebovat přístup k datům později pro analýzu nebo další zpracování. Je běžné mít data rozdělit do data warm i cold úložišť. Horké úložiště obsahuje nejnovější data pro přístup s nízkou latencí. Úložiště pro studená data obvykle ukládá historická data.
 

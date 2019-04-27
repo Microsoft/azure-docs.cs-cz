@@ -2,7 +2,6 @@
 title: 'Rychlý start: Vytvořte clustery systému Apache Hadoop pomocí Resource Manageru a dotazování dat pomocí Apache Hive – Azure HDInsight'
 description: Naučte se vytvářet clustery HDInsight a dotazy na data pomocí Hive.
 keywords: začínáme používat hadoop, hadoop linux, hadoop rychlý start, hive začínáme, hive rychlý start
-services: hdinsight
 ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
@@ -10,12 +9,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive,hdiseo17may2017,mvc,seodec18
 ms.topic: quickstart
 ms.date: 12/27/2018
-ms.openlocfilehash: 220549c4ac3b6db584654b2c8bf27d9b4519b54a
-ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
+ms.openlocfilehash: f192c0bcd11aacde90992e06c2736e1412f85505
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58225803"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62129358"
 ---
 # <a name="quickstart-get-started-with-apache-hadoop-and-apache-hive-in-azure-hdinsight-using-resource-manager-template"></a>Rychlý start: Začínáme s Apache Hadoop a Apache Hive v Azure HDInsight pomocí šablony Resource Manageru
 

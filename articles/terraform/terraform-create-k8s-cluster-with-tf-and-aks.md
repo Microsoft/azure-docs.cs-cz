@@ -10,11 +10,11 @@ ms.author: tarcher
 ms.topic: tutorial
 ms.date: 12/04/2018
 ms.openlocfilehash: d8438f5ddbbb3744811448aeb563be602b04516d
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58009090"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60885237"
 ---
 # <a name="create-a-kubernetes-cluster-with-azure-kubernetes-service-and-terraform"></a>Vytvoření clusteru Kubernetes pomocí služby Azure Kubernetes Service a Terraformu
 [Azure Kubernetes Service (AKS)](/azure/aks/) spravuje hostované prostředí Kubernetes a umožňuje rychle a snadno nasazovat a spravovat kontejnerizované aplikace bez znalosti orchestrace kontejnerů. Zároveň eliminuje režii spojenou s probíhajícími operacemi a údržbou díky zřizování, upgradování a škálování prostředků na vyžádání bez nutnosti odpojovat aplikace.

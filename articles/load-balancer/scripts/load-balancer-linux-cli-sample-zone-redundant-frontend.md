@@ -16,12 +16,12 @@ ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 ms.date: 06/14/2018
 ms.author: kumud
-ms.openlocfilehash: c6413f923ca39293951044694303c50c049511c0
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
-ms.translationtype: HT
+ms.openlocfilehash: fff34f6a36f9c01b1f28b6b1f13189537d8c9060
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39438364"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61322925"
 ---
 # <a name="azure-cli-script-example-load-balance-vms-across-availability-zones"></a>Ukázkový skript Azure CLI: Vyrovnávání zatížení virtuálních počítačů napříč zónami dostupnosti
 
@@ -182,7 +182,7 @@ Tento skript k vytvoření skupiny prostředků, virtuálního počítače, skup
 | [az vm create](/cli/azure/vm#az-vm-create) | Vytvoří virtuální počítač a připojí ho k síťové kartě, virtuální síti, podsíti a skupině NSG. Tento příkaz také určuje image virtuálního počítače, která se má použít, a přihlašovací údaje pro správu.  |
 | [az group delete](https://docs.microsoft.com/cli/azure/vm/extension#az-vm-extension-set) | Odstraní skupinu prostředků včetně všech vnořených prostředků. |
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Další informace o Azure CLI najdete v [dokumentaci k Azure CLI](https://docs.microsoft.com/cli/azure).
 

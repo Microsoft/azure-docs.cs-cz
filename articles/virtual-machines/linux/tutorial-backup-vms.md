@@ -16,14 +16,14 @@ ms.workload: infrastructure
 ms.date: 07/27/2017
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: c91e2b1380e5048fa1dfb7a0e028c88e589cbaa4
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
-ms.translationtype: HT
+ms.openlocfilehash: 99ec8ea6a5b08323021a168e8ec47b976e1ae7f9
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32190553"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60739377"
 ---
-# <a name="tutorial-back-up-and-restore-files-for-linux-virtual-machines-in-azure"></a>Kurz: Zálohování a obnova souborů pro virtuální počítače s Linuxem v Azure
+# <a name="tutorial-back-up-and-restore-files-for-linux-virtual-machines-in-azure"></a>Kurz: Zálohovat a obnovovat soubory pro virtuální počítače s Linuxem v Azure
 
 Svá data můžete chránit prováděním záloh v pravidelných intervalech. Azure Backup vytváří body obnovení, které se ukládají v geograficky redundantních trezorech obnovení. Při obnovení z bodu obnovení můžete obnovit celý virtuální počítač nebo určité soubory. Tento článek vysvětluje, jak obnovit jeden soubor na virtuální počítač s Linuxem a serverem NGINX. Pokud ještě nemáte virtuální počítač, který byste mohli použít, můžete si ho vytvořit pomocí postupu v [rychlém startu pro Linux](quick-create-cli.md). V tomto kurzu se naučíte:
 
@@ -94,8 +94,8 @@ V tomto příkladu ukazujeme obnovení výchozí webové stránky serveru NGINX 
 7. V seznamu vyberte virtuální počítač.
 8. V okně virtuálního počítače v části **Nastavení** klikněte na **Zálohování**. Otevře se okno **Zálohování**. 
 9. V nabídce v horní části okna vyberte **Obnovení souborů**. Otevře se okno **Obnovení souborů**.
-10. V části **Krok 1: Výběr bodu obnovení** vyberte z rozevíracího seznamu bod obnovení.
-11. V části **Krok 2: Stažení skriptu pro procházení a obnovení souborů** klikněte na tlačítko **Stáhnout spustitelný soubor**. Uložte stažený soubor na svůj místní počítač.
+10. V **krok 1: Vyberte bod obnovení**, vyberte bod obnovení z rozevíracího seznamu.
+11. V **krok 2: Stažení skriptu pro procházení a obnovení souborů**, klikněte na tlačítko **stáhnout spustitelný soubor** tlačítko. Uložte stažený soubor na svůj místní počítač.
 7. Kliknutím na **Stáhnout skript** místně stáhněte soubor skriptu.
 8. Otevřete příkazový řádek Bash a zadejte následující, přičemž nahraďte *Linux_myVM_05-05-2017.sh* za správnou cestu a název souboru staženého skriptu, *azureuser* za uživatelné jméno pro virtuální počítač a *13.69.75.209* za veřejnou IP adresu vašeho virtuálního počítače.
     
@@ -156,10 +156,10 @@ V tomto příkladu ukazujeme obnovení výchozí webové stránky serveru NGINX 
 
     ![Výchozí webová stránka serveru NGINX](./media/tutorial-backup-vms/nginx-working.png)
 
-18. Na svém místním počítači se vraťte na kartu prohlížeče s webem Azure Portal a v části **Krok 3: Odpojení disků po obnovení** klikněte na tlačítko **Odpojit disky**. Pokud tento krok zapomenete provést, připojení k přípojnému bodu se automaticky ukončí po 12 hodinách. Po těchto 12 hodinách musíte pro vytvoření nového přípojného bodu stáhnout nový skript.
+18. V místním počítači, přejděte zpět na kartu prohlížeče na webu Azure portal a v **krok 3: Odpojení disků po obnovení** klikněte na tlačítko **odpojit disky** tlačítko. Pokud tento krok zapomenete provést, připojení k přípojnému bodu se automaticky ukončí po 12 hodinách. Po těchto 12 hodinách musíte pro vytvoření nového přípojného bodu stáhnout nový skript.
 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 V tomto kurzu jste se naučili:
 

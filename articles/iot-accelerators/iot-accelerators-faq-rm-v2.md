@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.date: 02/15/2018
 ms.author: dobett
 ms.openlocfilehash: 746d21c7ff4d5b939eea7690193ac07425b4001c
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53602626"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61447902"
 ---
 # <a name="frequently-asked-questions-for-remote-monitoring-solution-accelerator"></a>Nejčastější dotazy k akcelerátoru řešení vzdáleného monitorování
 
@@ -32,7 +32,7 @@ Kromě toho, že dvě odlišné nasazení nové řešení vzdáleného monitorov
 
 ### <a name="what-is-the-difference-between-the-basic-and-standard-deployment-options-how-do-i-decide-between-the-two-deployment-options"></a>Jaký je rozdíl mezi možnostmi nasazení basic a standard? Jak se mám rozhodnout mezi možnostmi dvě nasazení?
 
-Jednotlivé možnosti nasazení jsou reaguje na různé potřeby. Základní nasazení slouží k zahájení práce a vývoj PoC a Windows. Poskytuje zjednodušenou architektura s minimální potřebné prostředky a s nižšími náklady. Standardní nasazení slouží k vytváření a přizpůsobení řešení připravené pro produkční prostředí a umožňuje nasazení s nezbytné prvky, které mají Pamatujte si, že. Spolehlivost a škálování mikroslužby aplikací jsou vytvořené jako kontejnery Dockeru a nasazují pomocí orchestrátoru (Kubernetes ve výchozím nastavení). Orchestrátor zodpovídá za nasazení, škálování a Správa aplikace. Měli byste zvolit možnost podle aktuální potřeby. Můžete použít jednu, druhý nebo kombinace obou v závislosti na fázi vašeho projektu.
+Jednotlivé možnosti nasazení jsou reaguje na různé potřeby. Základní nasazení slouží k zahájení práce a vývoj PoC a Windows. Poskytuje zjednodušenou architektura s minimální potřebné prostředky a s nižšími náklady. Standardní nasazení slouží k vytváření a přizpůsobení řešení připravené pro produkční prostředí a umožňuje nasazení s nezbytné prvky, které mají Pamatujte si, že. Spolehlivost a škálování mikroslužby aplikací jsou vytvořené jako kontejnery Dockeru a nasazují pomocí orchestrátoru (Kubernetes ve výchozím nastavení). Úkolem orchestrátoru je nasazení, škálování a správa aplikace. Měli byste zvolit možnost podle aktuální potřeby. Můžete použít jednu, druhý nebo kombinace obou v závislosti na fázi vašeho projektu.
 
 ### <a name="how-do-i-configure-a-dynamic-map-on-the-dashboard"></a>Jak konfigurovat dynamickou mapu na řídicím panelu
 

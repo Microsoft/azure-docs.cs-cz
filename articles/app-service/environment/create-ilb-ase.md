@@ -15,11 +15,11 @@ ms.date: 06/12/2018
 ms.author: ccompy
 ms.custom: seodec18
 ms.openlocfilehash: 01d982d91d772ccfd468ccdac6391f971be4f43b
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
-ms.translationtype: MT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59546538"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60765006"
 ---
 # <a name="create-and-use-an-internal-load-balancer-with-an-app-service-environment"></a>Vytvoření a používání interního nástroje pro vyrovnávání zatížení ve službě App Service Environment #
 

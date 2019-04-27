@@ -11,15 +11,15 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/20/2019
+ms.date: 04/21/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: 984c5d6b5e6e2010489533a3889501c5b524a6bd
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: 40e7ebcddb5cc215e071f1a34dfa8f3f4ea95141
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58311318"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62103711"
 ---
 # <a name="content-protection-with-dynamic-encryption"></a>Ochrana obsahu v případě dynamického šifrování
 
@@ -206,6 +206,9 @@ Pokud se zobrazí `MPE_ENC_ENCRYPTION_NOT_SET_IN_DELIVERY_POLICY` chybu, je nutn
 
 Pokud dojde k chybám, které končí `_NOT_SPECIFIED_IN_URL`, je nutné zadat formát šifrování v adrese URL. Například, `…/manifest(format=m3u8-cmaf,encryption=cbcs-aapl)`. Zobrazit [streamování protokolů a typy šifrování](#streaming-protocols-and-encryption-types).
 
+## <a name="provide-feedback"></a>Poskytnutí zpětné vazby
+
+Podívejte se [komunita Azure Media Services](media-services-community.md) článek a zobrazit různé způsoby můžete klást otázky, poskytnout zpětnou vazbu a aktualizace o Media Services.
 
 ## <a name="next-steps"></a>Další postup
 

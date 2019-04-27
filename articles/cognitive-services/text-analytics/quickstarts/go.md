@@ -11,11 +11,11 @@ ms.topic: quickstart
 ms.date: 04/16/2019
 ms.author: aahi
 ms.openlocfilehash: e6d641109bafdc3dba05a30fd627a3246c7edef5
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60002765"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60828626"
 ---
 # <a name="quickstart-using-go-to-call-the-text-analytics-cognitive-service"></a>Rychlý start: Pomocí jazyka Go k volání Text Analytics služby Cognitive Services 
 <a name="HOLTop"></a>

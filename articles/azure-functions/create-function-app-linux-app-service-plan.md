@@ -12,11 +12,11 @@ ms.date: 02/28/2019
 ms.author: glenga
 ms.custom: ''
 ms.openlocfilehash: cc99bc4345c388f22e72957590f3917a85e214e0
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57339804"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62126619"
 ---
 # <a name="create-a-function-app-on-linux-in-an-azure-app-service-plan"></a>Vytvoření aplikace funkcí v plánu služby Azure App Service v Linuxu
 
@@ -53,7 +53,7 @@ K hostování provádění funkcí v Linuxu musíte mít aplikaci funkcí. Aplik
     | **Plán služby App Service/umístění** | Vytvoření plánu | Zvolte **vytvořit nový** a zadat **plán služby App Service** název. Zvolte **umístění** v [oblasti](https://azure.microsoft.com/regions/) vaší blízkosti nebo v blízkosti jiných služeb vaše funkce využívají. Zvolte požadované  **[cenová úroveň](https://azure.microsoft.com/pricing/details/app-service/linux/)**. <br/>Aplikace function App Linux i Windows nelze spustit v rámci stejného plánu služby App Service. |
     | **Zásobník modulu runtime** | Upřednostňovaný jazyk | Vyberte modul runtime, který podporuje váš oblíbený programovací jazyk funkcí. Zvolte **.NET** pro funkce C# a F#. [Podpora jazyka Python](functions-reference-python.md) je ve verzi preview v současnosti. |
     | **[Úložiště](../storage/common/storage-quickstart-create-account.md)** |  Globálně jedinečný název |  Vytvořte účet úložiště používaný vaší aplikací funkcí. Názvy účtů úložiště musí mít délku 3 až 24 znaků a můžou obsahovat jenom číslice a malá písmena. Můžete použít také existující účet, který splňuje [požadavky na účet úložiště](functions-scale.md#storage-account-requirements). |
-    | **[Application Insights](functions-monitoring.md)** | Povoleno | Application Insights je ve výchozím nastavení zakázána. Doporučujeme, abyste povoluje se integrace služby Application Insights teď a výběr umístění pro hostování poblíž vaší aktuální polohy plán služby App Service. Pokud chcete udělat to později, přečtěte si téma [monitorování Azure Functions](functions-monitoring.md).  |
+    | **[Application Insights](functions-monitoring.md)** | Enabled | Application Insights je ve výchozím nastavení zakázána. Doporučujeme, abyste povoluje se integrace služby Application Insights teď a výběr umístění pro hostování poblíž vaší aktuální polohy plán služby App Service. Pokud chcete udělat to později, přečtěte si téma [monitorování Azure Functions](functions-monitoring.md).  |
 
 3. Aplikaci Function App zřídíte a nasadíte kliknutím na **Vytvořit**.
 

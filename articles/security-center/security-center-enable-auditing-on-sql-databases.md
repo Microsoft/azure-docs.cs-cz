@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 10/28/2018
 ms.author: rkarlin
 ms.openlocfilehash: 1108265101f37433860d0112e4e80aee0002ab5c
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56111567"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62127221"
 ---
 # <a name="enable-auditing-and-threat-detection-on-sql-databases-in-azure-security-center"></a>Povolení auditování a detekce hrozeb u databází SQL v Azure Security Center
 Azure Security Center vám doporučí, že můžete zapnout auditování a detekce hrozeb pro všechny databáze SQL, pokud auditování a detekce hrozeb ještě není povolené. Auditování a hrozeb, zjišťování vám mohou pomoci při zajistit dodržování předpisů, porozumět databázové aktivitě a proniknout do nesrovnalostí a anomálií, které můžou značit problémy obchodního charakteru nebo vzbuzovat podezření na narušení zabezpečení.

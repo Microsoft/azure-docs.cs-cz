@@ -1,6 +1,6 @@
 ---
-title: Omezení pole virtuální zařízení StorSimple | Microsoft Docs
-description: Popisuje omezení systému a doporučené velikosti pro komponenty Microsoft Azure StorSimple virtuální pole a připojení.
+title: StorSimple Virtual Array omezení | Dokumentace Microsoftu
+description: Popisuje omezení systému a doporučené velikosti pro připojení a komponenty Microsoft Azure StorSimple Virtual Array.
 services: storsimple
 documentationcenter: NA
 author: alkohli
@@ -15,18 +15,18 @@ ms.workload: TBD
 ms.date: 03/15/2017
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 43f8d338cf07999d7791cbd5d3e8ddcc0d6b2b59
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 43e8134ede0735c40b18be739f58b7b69e88fce1
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23875050"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62127858"
 ---
-# <a name="what-are-storsimple-virtual-array-limits"></a>Jaká jsou omezení pole virtuální zařízení StorSimple?
+# <a name="what-are-storsimple-virtual-array-limits"></a>Jaká jsou omezení StorSimple Virtual Array?
 
 ## <a name="overview"></a>Přehled
-Zvážit tyto limity při plánování, nasadit a provozovat virtuální pole Microsoft Azure StorSimple. Následující tabulka popisuje tyto limity pro virtuální zařízení.
+Tato omezení zvažte při plánování, nasazení a provozování Microsoft Azure StorSimple Virtual Array. Následující tabulka popisuje tyto limity pro virtuální zařízení.
 
-## <a name="storsimple-virtual-array-limits"></a>Omezení pole virtuální zařízení StorSimple
+## <a name="storsimple-virtual-array-limits"></a>StorSimple Virtual Array omezení
 [!INCLUDE [storsimple-virtual-array-limits](../../includes/storsimple-virtual-array-limits.md)]
 

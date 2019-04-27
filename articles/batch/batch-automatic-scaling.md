@@ -16,11 +16,11 @@ ms.date: 06/20/2017
 ms.author: lahugh
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: fdc2cd8f2218d50aa49d6b4eab2800eb6c92d9c9
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55869088"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62118107"
 ---
 # <a name="create-an-automatic-scaling-formula-for-scaling-compute-nodes-in-a-batch-pool"></a>Vytvořit vzorec automatického škálování pro škálování výpočetních uzlů ve fondu služby Batch
 
@@ -126,7 +126,7 @@ Podporovány jsou tyto typy ve vzorci:
 * double
 * doubleVec
 * doubleVecList
-* řetězec
+* string
 * časové razítko – časové razítko je složené strukturu, která obsahuje následující členy:
 
   * za rok

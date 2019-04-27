@@ -15,11 +15,11 @@ ms.date: 02/20/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.openlocfilehash: ebced83346a7b130598e4a5f49a72d51ffd18e4f
-ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56584892"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62118769"
 ---
 # <a name="create-custom-roles-for-azure-resources-using-azure-cli"></a>Vytvoření vlastních rolí pro prostředky Azure pomocí Azure CLI
 

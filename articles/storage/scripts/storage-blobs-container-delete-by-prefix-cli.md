@@ -16,11 +16,11 @@ ms.topic: sample
 ms.date: 06/22/2017
 ms.author: tamram
 ms.openlocfilehash: 01187a4dbcd8333f95cf20b5956b7b81559a19a8
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55730648"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61232271"
 ---
 # <a name="delete-containers-based-on-container-name-prefix"></a>Odstranění kontejnerů na základě předpony názvu kontejneru
 

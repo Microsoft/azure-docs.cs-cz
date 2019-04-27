@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.openlocfilehash: dbdfac143cb3254e558622fc1eecfdf95876240e
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58177734"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61465762"
 ---
 # <a name="use-media-services-to-deliver-drm-licenses-or-aes-keys"></a>Pomocí Media Services k doručování licencí DRM nebo AES klíče 
 
@@ -348,4 +348,4 @@ namespace DeliverDRMLicenses
 
 ## <a name="see-also"></a>Další informace najdete v tématech
 * [Použití běžného dynamického šifrování PlayReady nebo Widevine](media-services-protect-with-playready-widevine.md)
-* [Použití dynamického šifrování AES-128 a doručení klíče služby](media-services-protect-with-aes128.md)
+* [Použití dynamického šifrování AES-128 a služby doručování klíčů](media-services-protect-with-aes128.md)

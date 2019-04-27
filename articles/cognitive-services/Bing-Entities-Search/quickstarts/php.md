@@ -11,11 +11,11 @@ ms.topic: quickstart
 ms.date: 02/01/2019
 ms.author: aahi
 ms.openlocfilehash: f311216182f85da3dd6cf01269062cc9c555f868
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57538523"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60736985"
 ---
 # <a name="quickstart-send-a-search-request-to-the-bing-entity-search-rest-api-using-php"></a>Rychlý start: Odeslat žádost o vyhledávání Bingu Entity REST API služby Search pomocí PHP
 

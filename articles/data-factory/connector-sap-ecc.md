@@ -3,21 +3,22 @@ title: Kopírování dat z SAP ECC pomocí Azure Data Factory | Dokumentace Micr
 description: Zjistěte, jak kopírovat data ze SAP ECC úložišť dat podporovaných jímky pomocí aktivity kopírování v kanálu Azure Data Factory.
 services: data-factory
 documentationcenter: ''
-author: linda33wj
-manager: craigg
+author: WenJason
+manager: digimobile
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 04/26/2018
-ms.author: jingwang
+origin.date: 04/26/2018
+ms.date: 04/22/2019
+ms.author: v-jay
 ms.openlocfilehash: d86264b632daa09a899fae28e73e117b16322617
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58121957"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62128113"
 ---
 # <a name="copy-data-from-sap-ecc-using-azure-data-factory"></a>Kopírování dat z SAP ECC pomocí Azure Data Factory
 
@@ -56,7 +57,7 @@ Pro SAP ECC propojené služby jsou podporovány následující vlastnosti:
 | type | Vlastnost type musí být nastavená na: **SapEcc** | Ano |
 | url | Adresa url služby SAP ECC OData. | Ano |
 | uživatelské jméno | Uživatelské jméno pro připojení k SAP ECC. | Ne |
-| heslo | Heslo jako prostý text pro připojení k SAP ECC. | Ne |
+| password | Heslo jako prostý text pro připojení k SAP ECC. | Ne |
 | connectVia | [Prostředí Integration Runtime](concepts-integration-runtime.md) se použije k připojení k úložišti. Můžete použít modul Integration Runtime nebo prostředí Azure Integration Runtime (Pokud vaše úložiště dat je veřejně dostupná). Pokud není zadán, použije výchozí prostředí Azure Integration Runtime. |Ne |
 
 **Příklad:**
@@ -175,7 +176,7 @@ Kopírování dat ze SAP ECC, následující mapování se používají z datov�
 | Edm.SByte | Int16 |
 | Edm.String | String |
 | Edm.Time | TimeSpan |
-| Edm.DateTimeOffset | DateTimeOffset |
+| Edm.DateTimeOffset | Datetimeoffset |
 
 > [!NOTE]
 > Komplexní datové typy nejsou nyní podporovány.

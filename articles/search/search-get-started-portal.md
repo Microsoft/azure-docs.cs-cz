@@ -11,11 +11,11 @@ ms.date: 04/08/2019
 ms.author: heidist
 ms.custom: seodec2018
 ms.openlocfilehash: a1cf72d9e3f5c2c6e919304d4d886a607c54f359
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59282657"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61289358"
 ---
 # <a name="quickstart-use-built-in-portal-tools-for-azure-search-import-indexing-and-queries"></a>Rychlý start: Integrované nástroje portálu použijte pro import Azure Search, indexování a dotazy
 > [!div class="op_single_selector"]

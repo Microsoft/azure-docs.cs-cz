@@ -2,22 +2,19 @@
 title: Kurz – použití Azure Key Vault pomocí webové aplikace Azure v rozhraní .NET | Dokumentace Microsoftu
 description: V tomto kurzu nakonfigurujete aplikaci ASP.NET core pro čtení tajného klíče z trezoru klíčů.
 services: key-vault
-documentationcenter: ''
-author: prashanthyv
+author: mbaldwin
 manager: rajvijan
-ms.assetid: 0e57f5c7-6f5a-46b7-a18a-043da8ca0d83
 ms.service: key-vault
-ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/21/2018
 ms.author: pryerram
 ms.custom: mvc
 ms.openlocfilehash: 2c2bb3e4064294bb8d4a63b009069fd6834ca31e
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
-ms.translationtype: MT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58370886"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60777640"
 ---
 # <a name="tutorial-use-azure-key-vault-with-an-azure-web-app-in-net"></a>Kurz: Azure Key Vault používat s webovou aplikaci Azure v .NET
 

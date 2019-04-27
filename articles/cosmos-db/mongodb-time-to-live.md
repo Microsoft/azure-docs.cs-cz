@@ -1,18 +1,19 @@
 ---
 title: Funkce interval TTL, ZÍSKÁ každý dokument MongoDB ve službě Azure Cosmos DB
 description: Zjistěte, jak nastavit čas hodnotu TTL pro dokumenty pomocí rozhraní API služby Azure Cosmos DB pro MongoDB automaticky jejich vymazání ze systému po určitou dobu.
-author: sivethe
-ms.author: sivethe
+author: rockboyfor
+ms.author: v-yeche
 ms.service: cosmos-db
 ms.devlang: javascript
 ms.topic: quickstart
-ms.date: 12/26/2018
+origin.date: 12/26/2018
+ms.date: 03/18/2019
 ms.openlocfilehash: cd6cb68014eea00077328f39c2c9bf0a1f7fb679
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57436285"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61330678"
 ---
 # <a name="expire-data-with-azure-cosmos-dbs-api-for-mongodb"></a>Vypršení platnosti dat pomocí rozhraní API služby Azure Cosmos DB pro MongoDB
 
@@ -38,7 +39,7 @@ Příkaz v předchozím příkladu vytvoří index s funkcí TTL. Po vytvoření
 > [!NOTE]
 > Pole **_ts** je pole specifické pro službu Cosmos DB a není přístupné z klientů MongoDB. Jedná se o vyhrazenou (systémovou) vlastnost obsahující časové razítko poslední úpravy dokumentu.
 >
-    
+
 Tady je navíc příklad v jazyce C#: 
 
 ```csharp
@@ -72,6 +73,7 @@ globaldb:PRIMARY> db.coll.insert({id:1, location: "Paris", ttl: NumberLong(21474
 
 ## <a name="how-to-activate-the-per-document-ttl-feature"></a>Postup aktivace funkce TTL pro jednotlivé dokumenty
 
+<!-- Verify successfully on mongodb TTL-->
 Funkci interval TTL, ZÍSKÁ každý dokument můžete aktivovat pomocí rozhraní API služby Azure Cosmos DB pro MongoDB.
 
 ![Snímek obrazovky aktivace funkce TTL dokumentu na portálu](./media/mongodb-ttl/mongodb_portal_ttl.png) 
@@ -79,3 +81,5 @@ Funkci interval TTL, ZÍSKÁ každý dokument můžete aktivovat pomocí rozhran
 ## <a name="next-steps"></a>Další postup
 * [Vypršení platnosti dat v Azure Cosmos DB automaticky s časem TTL](../cosmos-db/time-to-live.md)
 * [Indexování databáze Cosmos nakonfigurovaný pro MongoDB API služby Azure Cosmos DB](../cosmos-db/mongodb-indexing.md)
+
+<!-- Update_Description: update meta properties, wording update -->

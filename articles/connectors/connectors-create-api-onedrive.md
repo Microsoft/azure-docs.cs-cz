@@ -1,6 +1,6 @@
 ---
-title: Připojte se ke Onedrivu - Azure Logic Apps | Microsoft Docs
-description: Odesílat a spravovat soubory s OneDrive REST API a Azure Logic Apps
+title: Připojte se k Onedrivu – Azure Logic Apps | Dokumentace Microsoftu
+description: Odesílat a spravovat soubory pomocí rozhraní REST API pro OneDrive a Azure Logic Apps
 author: ecfan
 manager: jeconnoc
 ms.author: estfan
@@ -11,81 +11,81 @@ services: logic-apps
 ms.reviewer: klam, LADocs
 ms.suite: integration
 tags: connectors
-ms.openlocfilehash: 50bd9ecdd665cf72c146c63ae25efa6773934a3e
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: 840a010f8606387a250552d884621a96d0031f90
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35295376"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62106223"
 ---
-# <a name="get-started-with-the-onedrive-connector"></a>Začínáme s konektorem OneDrive
-Připojte se ke Onedrivu spravovat vaše soubory, včetně nahrávání, získat, odstraňte soubory a další. 
+# <a name="get-started-with-the-onedrive-connector"></a>Začínáme s konektor OneDrive
+Připojte se k Onedrivu pro správu souborů, včetně odesílání, získávání, odstraňování souborů a dalších. 
 
-S OneDrive můžete: 
+S Onedrivem můžete: 
 
-* Vytvoření pracovního postupu uložením souborů na Onedrivu, nebo aktualizovat existující soubory na OneDrive. 
-* Spustit pracovní postup v případě, že soubor se vytvoří nebo aktualizuje v rámci OneDrive pomocí aktivační události.
-* Použijte k vytvoření souboru, odstraňte soubor a další akce. Například pokud byl přijat nový Office 365 e-mail s přílohou (aktivační události) vytvořte nový soubor ve Onedrivu (akce).
+* Vytvoření pracovního postupu uložením souborů na Onedrivu nebo aktualizovat stávající soubory v Onedrivu. 
+* Použití aktivačních procedur pro spuštění pracovního postupu při vytvoření nebo aktualizaci vašeho onedrivu soubor.
+* Pomocí akcí můžete vytvořit soubor, odstraňte soubor a další. Například při přijetí nového e-mailu Office 365 s přílohou (aktivační procedura) vytvořte nový soubor ve Onedrivu (akce).
 
-Tento článek ukazuje, jak k používání konektoru OneDrive v aplikaci logiky a taky seznam triggery a akce.
+V tomto článku se dozvíte, jak používat konektor OneDrive v aplikaci logiky a také obsahuje triggery a akce.
 
 Další informace o Logic Apps najdete v tématu [co jsou logic apps](../logic-apps/logic-apps-overview.md) a [vytvoření aplikace logiky](../logic-apps/quickstart-create-first-logic-app-workflow.md).
 
-## <a name="connect-to-onedrive"></a>Připojte se ke Onedrivu
-Než se aplikace logiky k jakékoli služby, nejprve vytvořit *připojení* ke službě. Připojení poskytuje připojení mezi aplikace logiky a jiné služby. Například pokud chcete připojit k Onedrivu, musíte nejdřív OneDrive *připojení*. Chcete-li vytvořit připojení, zadejte přihlašovací údaje, které standardně používáte k přístupu ke službě, který chcete připojit k. Ano s OneDrive, zadejte přihlašovací údaje ke svému účtu Onedrivu k vytvoření připojení.
+## <a name="connect-to-onedrive"></a>Připojte se k Onedrivu
+Aplikace logiky mohli získat přístup ke službám, nejprve vytvoříte *připojení* ke službě. Připojení poskytuje připojení mezi aplikace logiky a jiné služby. Například pokud chcete připojit k Onedrivu, musíte nejprve Onedrivu *připojení*. Chcete-li vytvořit připojení, zadejte přihlašovací údaje, které běžně používáte pro přístup ke službě, kterou chcete připojit k. Ano s Onedrivem, zadejte přihlašovací údaje ke svému účtu Onedrivu k vytvoření připojení.
 
 ### <a name="create-the-connection"></a>Vytvoření připojení
 > [!INCLUDE [Steps to create a connection to OneDrive](../../includes/connectors-create-api-onedrive.md)]
 > 
 > 
 
-## <a name="use-a-trigger"></a>Použít aktivační událost
-Aktivační událost je událost, která můžete použít ke spuštění pracovního postupu definované v aplikaci logiky. Aktivační události "dotazování" službu v intervalem a frekvenci, který chcete. [Další informace o aktivační události](../logic-apps/logic-apps-overview.md#logic-app-concepts).
+## <a name="use-a-trigger"></a>Pomocí aktivační události
+Trigger je událost, která umožňuje spustit pracovní postup definovaný v aplikaci logiky. Aktivační události "dotazovat" služba interval a frekvenci, kterou chcete. [Další informace o aktivačních událostech](../logic-apps/logic-apps-overview.md#logic-app-concepts).
 
-1. V aplikaci logiky zadejte "onedrive" získat seznam aktivačních událostí:  
+1. V aplikaci logiky zadejte "onedrivu" zobrazíte seznam aktivačních událostí:  
    
     ![](./media/connectors-create-api-onedrive/onedrive-1.png)
-2. Vyberte **změny souboru**. Pokud připojení již existuje, pak vyberte tlačítko Zobrazit výběr vyberte složku.
+2. Vyberte **při změně souboru**. Pokud už připojení existuje, pak vyberte tlačítko Zobrazit výběr a vyberte složku.
    
     ![](./media/connectors-create-api-onedrive/sample-folder.png)
    
-    Pokud budete vyzváni k přihlášení, pak zadejte přihlašovací údaje pro vytvoření připojení. [Vytvoření připojení](connectors-create-api-onedrive.md#create-the-connection) v tomto článku jsou uvedené kroky. 
+    Pokud se zobrazí výzva k přihlášení, zadejte přihlašovací podrobnosti k vytvoření připojení. [Vytvoření připojení](connectors-create-api-onedrive.md#create-the-connection) v tomto článku jsou uvedené kroky. 
    
    > [!NOTE]
-   > V tomto příkladu spustí aplikaci logiky při otevření souboru ve složce, kterou zvolíte, se aktualizuje. Pokud chcete zobrazit výsledky této aktivační události, přidejte další akci, která vám pošle e-mailu. Například přidejte Office 365 Outlook *e-mailovou zprávu* akci, která odešle e-mail, když se aktualizuje soubor. 
+   > V tomto příkladu spuštění aplikace logiky při otevření souboru ve složce, kterou zvolíte, se aktualizuje. Pokud chcete zobrazit výsledky této aktivační události, přidáte další akci, která odešle e-mail. Například přidejte Office 365 Outlook *odeslat e-mailu* akci, která odešle e-mail, pokud při aktualizaci souboru. 
 
-3. Vyberte **upravit** tlačítko a nastavte **frekvence** a **Interval** hodnoty. Například pokud chcete, aby aktivační událost pro cyklické dotazování každých 15 minut, nastavte **frekvence** k **minutu**a nastavte **Interval** k **15**. 
+3. Vyberte **upravit** tlačítko a nastavte **frekvence** a **Interval** hodnoty. Například pokud chcete, aby aktivační událost pro dotazování každých 15 minut, nastavte **frekvence** k **minutu**a nastavte **Interval** k **15**. 
    
     ![](./media/connectors-create-api-onedrive/trigger-properties.png)
-4. **Uložit** změny (levém horním rohu panelu nástrojů). Aplikace logiky je uloženo a automaticky povolí.
+4. **Uložit** změny (levém horním rohu panelu nástrojů). Aplikace logiky se uloží a automaticky povolí.
 
-## <a name="use-an-action"></a>Použít akci.
-Akce je operace prováděné definované v aplikaci logiky pracovního postupu. [Další informace o akcích](../logic-apps/logic-apps-overview.md#logic-app-concepts).
+## <a name="use-an-action"></a>Použít akci
+Akce je operace prováděné pracovním postupu definovaném v aplikaci logiky. [Další informace o akcích](../logic-apps/logic-apps-overview.md#logic-app-concepts).
 
-1. Vyberte znaménko plus. Zobrazí několik možností: **přidat akci**, **přidat podmínku**, nebo jeden z **Další** možnosti.
+1. Vyberte znaménko plus. Uvidíte několik možností: **Přidání akce**, **přidat podmínku**, nebo jeden z **Další** možnosti.
    
     ![](./media/connectors-create-api-onedrive/add-action.png)
 2. Zvolte **přidat akci**.
-3. Do textového pole zadejte "onedrive" získat seznam všechny dostupné akce.
+3. Do textového pole zadejte "onedrivu" zobrazíte seznam dostupných akcí.
    
     ![](./media/connectors-create-api-onedrive/onedrive-actions.png) 
-4. V našem příkladu zvolte **OneDrive – vytvoření souboru**. Pokud připojení již existuje, pak vyberte **cesta ke složce** uvést soubor, zadejte **název souboru**a vyberte **obsah souboru** chcete:  
+4. V našem příkladu zvolte **OneDrive – vytvořit soubor**. Pokud už připojení existuje, můžete vybrat **cesta ke složce** umístit soubor, zadejte **název souboru**a zvolte **obsah souboru** chcete:  
    
     ![](./media/connectors-create-api-onedrive/sample-action.png)
    
-    Pokud se zobrazí výzva pro informace o připojení, zadejte podrobnosti k vytvoření připojení. [Vytvoření připojení](connectors-create-api-onedrive.md#create-the-connection) v tomto článku popisuje tyto vlastnosti. 
+    Pokud se výzva k zadání informací o připojení, potom zadejte podrobnosti, které chcete vytvořit připojení. [Vytvoření připojení](connectors-create-api-onedrive.md#create-the-connection) v tomto článku popisuje tyto vlastnosti. 
    
    > [!NOTE]
-   > V tomto příkladu vytvoříme nový soubor ve složce OneDrive. Výstup z jiného aktivační událost můžete použít k vytvoření souboru OneDrive. Například přidejte Office 365 Outlook *při doručení nových e-mailů* aktivační události. Pak přidejte Onedrivu *vytvořit soubor* akci, která používá příloh a Content-Type pole v rámci příkazu ForEach k vytvoření nového souboru na Onedrivu. 
+   > V tomto příkladu vytvoříme nový soubor ve složce Onedrivu. Výstup z další trigger slouží k vytvoření souboru na Onedrivu. Například přidejte Office 365 Outlook *při přijetí nového e-mailu* aktivační události. Pak přidejte OneDrive *vytvořit soubor* akci, která používá přílohy a Content-Type pole v rámci příkazu ForEach k vytvoření nového souboru na Onedrivu. 
    > 
    > ![](./media/connectors-create-api-onedrive/foreach-action.png)
 
-5. **Uložit** změny (levém horním rohu panelu nástrojů). Aplikace logiky je uloženo a automaticky povolí.
+5. **Uložit** změny (levém horním rohu panelu nástrojů). Aplikace logiky se uloží a automaticky povolí.
 
 
-## <a name="connector-specific-details"></a>Podrobnosti o konkrétní konektor
+## <a name="connector-specific-details"></a>Podrobné informace specifické pro konektor
 
-Zobrazit všechny aktivační události a akce definované v swagger a také zobrazit žádné limity v [connector – podrobnosti](/connectors/onedriveconnector/).
+Zobrazit všechny aktivační události a akce definované ve swaggeru a také zjistit žádné omezení [podrobnosti o konektoru](/connectors/onedriveconnector/).
 
 ## <a name="more-connectors"></a>Více konektorů
 Přejděte zpět [rozhraní API seznamu](apis-list.md).

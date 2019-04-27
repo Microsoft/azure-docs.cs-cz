@@ -1,6 +1,6 @@
 ---
-title: Připojení ke Githubu – Azure Logic Apps | Microsoft Docs
-description: Sledování událostí Githubu s Githubu REST API a Azure Logic Apps
+title: Připojte se k GitHub – Azure Logic Apps | Dokumentace Microsoftu
+description: Sledování událostí GitHub pomocí rozhraní REST API pro GitHub a Azure Logic Apps
 author: ecfan
 manager: jeconnoc
 ms.author: estfan
@@ -11,36 +11,36 @@ services: logic-apps
 ms.reviewer: klam, LADocs
 ms.suite: integration
 tags: connectors
-ms.openlocfilehash: ce567dc631c3a147b795eb2355a4961faa8881d6
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: 0d2ff9368bc244a5afd6fafc40cf476b90a80a52
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35295808"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61462560"
 ---
 # <a name="connect-to-github"></a>Připojení ke Githubu
 
-Githubu je založené na webu Git úložiště hostování služba, která nabízí celou ovládacího prvku distribuované revize a funkce správy (SCM) zdrojového kódu v úložišti Git a další funkce.
+GitHub je webová Git úložiště hostitelská služba, která nabízí všechny revize distribuované řízení a funkce správy (SCM) zdrojového kódu v úložišti Git a další funkce.
 
-Začněte s konektorem Githubu [nejprve vytvořte aplikaci logiky](../logic-apps/quickstart-create-first-logic-app-workflow.md).
+Abyste mohli začít s konektorem Githubu [nejprve vytvořte aplikaci logiky](../logic-apps/quickstart-create-first-logic-app-workflow.md).
 
-## <a name="create-a-connection-to-github"></a>Umožňuje vytvořit připojení ke Githubu
+## <a name="create-a-connection-to-github"></a>Vytvořte připojení ke Githubu
 
-K používání konektoru Githubu v aplikaci logiky, musíte nejdřív vytvořit *připojení* a pak zadejte podrobnosti pro tyto vlastnosti: 
+Chcete-li použít konektor GitHub v aplikaci logiky, musíte nejdřív vytvořit *připojení* a pak zadejte podrobnosti pro tyto vlastnosti: 
 
 | Vlastnost | Požaduje se | Popis | 
 | -------- | -------- | ----------- | 
 | Podpisový | Ano | Zadejte svoje přihlašovací údaje Githubu. |
 
-Po vytvoření připojení, můžete provést akce a naslouchat aktivační události popsané v tomto článku.
+Po vytvoření připojení můžete provést akce a naslouchat aktivační procedury popsané v tomto článku.
 
 > [!INCLUDE [Steps to create a connection to GitHub](../../includes/connectors-create-api-github.md)]
 > 
 
-## <a name="connector-specific-details"></a>Podrobnosti o konkrétní konektor
+## <a name="connector-specific-details"></a>Podrobné informace specifické pro konektor
 
-Triggery a akce definované v Swagger a všechny limity, zkontrolujte [connector – podrobnosti](/connectors/github/).
+Triggery a akce definované ve Swaggeru a žádná omezení, najdete v tématu [podrobnosti o konektoru](/connectors/github/).
 
-## <a name="find-more-connectors"></a>Vyhledání konektorů pro další
+## <a name="find-more-connectors"></a>Najít další konektory
 
 * Zkontrolujte [seznam konektorů](apis-list.md).

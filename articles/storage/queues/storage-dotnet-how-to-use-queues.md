@@ -10,11 +10,11 @@ ms.date: 06/13/2018
 ms.author: tamram
 ms.subservice: queues
 ms.openlocfilehash: 5e61d346aab55f9b3c6dd136d3255f2afe0b8534
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57850883"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62109411"
 ---
 # <a name="get-started-with-azure-queue-storage-using-net"></a>Začínáme s úložištěm Azure Queue pomocí rozhraní .NET
 [!INCLUDE [storage-selector-queue-include](../../../includes/storage-selector-queue-include.md)]

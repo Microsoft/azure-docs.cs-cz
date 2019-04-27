@@ -15,11 +15,11 @@ ms.topic: overview
 ms.date: 03/28/2018
 ms.author: b-juche
 ms.openlocfilehash: d7eb73c8fb4573084ba0a213282fdb71e14ff5fa
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
-ms.translationtype: MT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59546736"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61086325"
 ---
 # <a name="introduction-to-azure-netapp-files"></a>Seznámení se službou Azure NetApp Files
 Azure NetApp Files je vysoce výkonná měřená služba úložiště souborů na podnikové úrovni. Služba Azure NetApp Files podporuje libovolný typ úloh a je ve výchozím nastavení vysoce dostupná. Prostřednictvím této služby můžete vybrat garantované úrovně výkonu a služeb a nastavit snímky. 

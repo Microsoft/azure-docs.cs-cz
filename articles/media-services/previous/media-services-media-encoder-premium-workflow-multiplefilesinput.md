@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: xpouyat;anilmur;juliako
 ms.openlocfilehash: 608ca4bc3b58dd3c718d6239f90260154d2f6c3a
-ms.sourcegitcommit: f331186a967d21c302a128299f60402e89035a8d
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58189474"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61465374"
 ---
 # <a name="using-multiple-input-files-and-component-properties-with-premium-encoder"></a>Použití několika vstupních souborů a vlastnosti komponent s kodér úrovně Premium
 ## <a name="overview"></a>Přehled
@@ -469,7 +469,7 @@ Ke kódování, postupujte podle těchto kroků:
 * [Úvod do Premium Encoding v Azure Media Services](https://azure.microsoft.com/blog/2015/03/05/introducing-premium-encoding-in-azure-media-services)
 * [Jak používat Premium Encoding v Azure Media Services](https://azure.microsoft.com/blog/2015/03/06/how-to-use-premium-encoding-in-azure-media-services)
 * [Kódování obsahu na vyžádání pomocí Azure Media Services](media-services-encode-asset.md#media-encoder-premium-workflow)
-* [Kodeky a formáty Media Encoderu Premium Workflow](media-services-premium-workflow-encoder-formats.md)
+* [Formáty a kodeky Media Encoderu Premium Workflow](media-services-premium-workflow-encoder-formats.md)
 * [Ukázkové soubory pracovního postupu](https://github.com/Azure/azure-media-services-samples)
 * [Nástroj Azure Media Services Explorer](https://aka.ms/amse)
 

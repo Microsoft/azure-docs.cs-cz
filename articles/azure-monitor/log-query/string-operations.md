@@ -14,11 +14,11 @@ ms.topic: conceptual
 ms.date: 08/16/2018
 ms.author: bwren
 ms.openlocfilehash: 4b2763629a3036551cb3d362e609c72737436f4a
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58012216"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61424699"
 ---
 # <a name="work-with-strings-in-azure-monitor-log-queries"></a>Práce s řetězci v dotazech protokolu Azure Monitor
 

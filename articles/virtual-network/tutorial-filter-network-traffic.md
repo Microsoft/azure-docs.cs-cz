@@ -4,7 +4,7 @@ titlesuffix: Azure Virtual Network
 description: V tomto kurzu se dozvíte, jak na webu Azure Portal použít skupinu zabezpečení sítě k filtrování síťového provozu do podsítě.
 services: virtual-network
 documentationcenter: virtual-network
-author: jimdial
+author: KumudD
 tags: azure-resource-manager
 Customer intent: I want to filter network traffic to virtual machines that perform similar functions, such as web servers.
 ms.service: virtual-network
@@ -13,13 +13,13 @@ ms.topic: tutorial
 ms.tgt_pltfrm: virtual-network
 ms.workload: infrastructure
 ms.date: 12/13/2018
-ms.author: jdial
+ms.author: kumud
 ms.openlocfilehash: caf9b91d5b98d028d7c9e971df30ad1f6ec448ad
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
-ms.translationtype: MT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54019023"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61456731"
 ---
 # <a name="tutorial-filter-network-traffic-with-a-network-security-group-using-the-azure-portal"></a>Kurz: Filtrování síťového provozu se skupinou zabezpečení sítě pomocí webu Azure Portal
 
@@ -51,7 +51,7 @@ Přihlaste se k webu Azure Portal na adrese https://portal.azure.com.
     | Adresní prostor           | 10.0.0.0/16                                        |
     | Předplatné            | Vyberte své předplatné.                          |
     | Skupina prostředků          | Vyberte **Vytvořit novou** a zadejte *myResourceGroup*. |
-    | Umístění                | Vyberte **USA – východ**.                                |
+    | Location                | Vyberte **USA – východ**.                                |
     | Podsíť – Název            | mySubnet                                           |
     | Podsíť – Rozsah adres  | 10.0.0.0/24                                        |
 
@@ -68,7 +68,7 @@ Skupina zabezpečení aplikací umožňuje seskupovat servery s podobnými funkc
     | Název           | myAsgWebServers                                               |
     | Předplatné   | Vyberte své předplatné.                                     |
     | Skupina prostředků | Vyberte **Použít existující** a pak vyberte **myResourceGroup**. |
-    | Umístění       | USA – východ                                                       |
+    | Location       | USA – východ                                                       |
 
 4. Zopakujte 3. krok s použitím následujících hodnot:
 
@@ -77,7 +77,7 @@ Skupina zabezpečení aplikací umožňuje seskupovat servery s podobnými funkc
     | Název           | myAsgMgmtServers                                              |
     | Předplatné   | Vyberte své předplatné.                                     |
     | Skupina prostředků | Vyberte **Použít existující** a pak vyberte **myResourceGroup**. |
-    | Umístění       | USA – východ                                                       |
+    | Location       | USA – východ                                                       |
 
 ## <a name="create-a-network-security-group"></a>Vytvoření skupiny zabezpečení sítě
 
@@ -90,7 +90,7 @@ Skupina zabezpečení aplikací umožňuje seskupovat servery s podobnými funkc
     |Název|myNsg|
     |Předplatné| Vyberte své předplatné.|
     |Skupina prostředků | Vyberte **Použít existující** a pak vyberte *myResourceGroup*.|
-    |Umístění|USA – východ|
+    |Location|USA – východ|
 
 ## <a name="associate-network-security-group-to-subnet"></a>Přidružení skupiny zabezpečení sítě k podsíti
 
@@ -149,7 +149,7 @@ Vytvořte ve virtuální síti dva virtuální počítače.
     |Heslo| Zadejte libovolné heslo. Heslo musí obsahovat nejméně 12 znaků a musí splňovat [zadané požadavky na složitost](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm).|
     |Předplatné| Vyberte své předplatné.|
     |Skupina prostředků| Vyberte **Použít existující** a pak vyberte **myResourceGroup**.|
-    |Umístění| Vyberte **USA – východ**.|
+    |Location| Vyberte **USA – východ**.|
 
 4. Vyberte velikost virtuálního počítače a pak vyberte **Vybrat**.
 5. V části **Nastavení** vyberte následující hodnoty, potvrďte zbývající výchozí hodnoty a vyberte **OK**:

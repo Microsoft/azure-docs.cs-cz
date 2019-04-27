@@ -10,12 +10,12 @@ ms.subservice: custom-vision
 ms.topic: tutorial
 ms.date: 03/21/2019
 ms.author: larryfr
-ms.openlocfilehash: af1b96b4ab47053a6737893832b484372ed37e99
-ms.sourcegitcommit: 87bd7bf35c469f84d6ca6599ac3f5ea5545159c9
+ms.openlocfilehash: ceb45048d160603a3ee619e3ea0e69a0c188a9ad
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58351860"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62098841"
 ---
 # <a name="tutorial-use-an-onnx-model-from-custom-vision-with-windows-ml-preview"></a>Kurz: Pomocí modelu ONNX ze Custom Vision ML Windows (preview)
 
@@ -85,4 +85,4 @@ Pokud chcete objevit další způsoby, jak exportovat a používat model služby
 * [Použití exportovaného modelu CoreML v aplikaci pro Swift iOS](https://go.microsoft.com/fwlink/?linkid=857726)
 * [Použití exportovaného modelu CoreML v aplikaci pro iOS s Xamarinem](https://github.com/xamarin/ios-samples/tree/master/ios11/CoreMLAzureModel)
 
-Další informace o používání modelů ONNX s Windows ML najdete v dokumentu týkajícím se [integrace modelu do aplikace s Windows ML](https://docs.microsoft.com/windows/uwp/machine-learning/integrate-model).
+Další informace o používání modelů ONNX s Windows ML najdete v dokumentu týkajícím se [integrace modelu do aplikace s Windows ML](/windows/ai/windows-ml/integrate-model).

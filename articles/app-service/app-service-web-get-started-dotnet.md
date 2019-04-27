@@ -16,11 +16,11 @@ ms.date: 09/05/2018
 ms.author: cephalin
 ms.custom: seodec18
 ms.openlocfilehash: 2762a81c9f366ad4a5d0d6d87cf04490fc10b23c
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53630580"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60854521"
 ---
 # <a name="create-an-aspnet-core-web-app-in-azure"></a>Vytvoření webové aplikace ASP.NET Core v Azure
 
@@ -73,7 +73,7 @@ Průvodce publikováním se spustí automaticky. Výběrem **App Service** > **P
 
 ![Publikování ze stránky přehledu projektu](./media/app-service-web-get-started-dotnet/publish-to-app-service.png)
 
-## <a name="sign-in-to-azure"></a>Přihlášení k Azure
+## <a name="sign-in-to-azure"></a>Přihlásit se k Azure
 
 V dialogovém okně **Vytvoření služby App Service** klikněte na **Přidat účet** a přihlaste se ke svému předplatnému Azure. Pokud už jste přihlášení, vyberte z rozevíracího seznamu požadovaný účet.
 
@@ -81,7 +81,7 @@ V dialogovém okně **Vytvoření služby App Service** klikněte na **Přidat �
 > Pokud už jste přihlášení, nevybírejte zatím možnost **Vytvořit**.
 >
    
-![Přihlášení k Azure](./media/app-service-web-get-started-dotnet/sign-in-azure.png)
+![Přihlásit se k Azure](./media/app-service-web-get-started-dotnet/sign-in-azure.png)
 
 ## <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
 
@@ -104,7 +104,7 @@ V dialogovém okně **Konfigurovat plán hostování** použijte nastavení podl
 | Nastavení | Navrhovaná hodnota | Popis |
 |-|-|-|
 |Plán služby App Service| myAppServicePlan | Název plánu služby App Service. |
-| Umístění | Západní Evropa | Datacentrum, které je hostitelem webové aplikace. |
+| Location | Západní Evropa | Datacentrum, které je hostitelem webové aplikace. |
 | Velikost | Free | [Cenová úroveň](https://azure.microsoft.com/pricing/details/app-service/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) určuje funkce hostování. |
 
 Vyberte **OK**.

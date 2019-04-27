@@ -14,11 +14,11 @@ ms.reviewer: ''
 manager: craigg
 ms.date: 03/25/2019
 ms.openlocfilehash: 8901855ad68a5edb4710853dcde9311216fa2d61
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59357098"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60862126"
 ---
 # <a name="quickstart-use-visual-studio-code-to-connect-and-query-an-azure-sql-database"></a>Rychlý start: Použití Visual Studio Code k připojení a dotazování Azure SQL Database
 
@@ -26,7 +26,7 @@ ms.locfileid: "59357098"
 
 ## <a name="prerequisites"></a>Požadavky
 
-- Databázi SQL Azure. Jeden z těchto rychlých startech můžete vytvořit a potom nakonfigurovat databázi ve službě Azure SQL Database:
+- Databázi Azure SQL. Jeden z těchto rychlých startech můžete vytvořit a potom nakonfigurovat databázi ve službě Azure SQL Database:
 
   || Izolovaná databáze | Spravovaná instance |
   |:--- |:--- |:---|

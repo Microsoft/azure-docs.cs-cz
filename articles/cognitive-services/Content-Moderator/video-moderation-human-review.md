@@ -11,11 +11,11 @@ ms.topic: conceptual
 ms.date: 01/20/2018
 ms.author: sajagtap
 ms.openlocfilehash: 43a43ddcbfc656a3eb5a274e1bb63a473b7c89a2
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55867711"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62098197"
 ---
 # <a name="video-moderation-with-human-review"></a>Moderování videa s recenze prováděné lidmi
 
@@ -25,7 +25,7 @@ Použití Content Moderator s podporou počítače [moderování videa](video-mo
 
 S podporou počítače videa klasifikace se buď dosahuje prostřednictvím image Trénink modelů nebo video trénované modely. Na rozdíl od školení obrázku videa třídění společnosti Microsoft pro dospělé nebo pikantního videa třídění natrénovaný pomocí videa. Tato metoda má za následek lepší kvalitu shody.
 
-## <a name="shot-detection"></a>Detekci
+## <a name="shot-detection"></a>Detekce snímku
 
 Při výstupu podrobnosti klasifikace, další videa inteligentní funkce pomáhají s větší flexibilitou videí analýzy. Místo výstupu pouze snímky, poskytuje služba moderování videa příliš informace na úrovni snímku. Teď máte možnost analyzovat vaše videa na úrovni snímek a snímek.
  

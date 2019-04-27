@@ -11,11 +11,11 @@ ms.topic: quickstart
 ms.date: 03/27/2019
 ms.author: pafarley
 ms.openlocfilehash: 57605f9bd1a39435e27a2f2c56c06cf3bfb38605
-ms.sourcegitcommit: 956749f17569a55bcafba95aef9abcbb345eb929
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58630703"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60815424"
 ---
 # <a name="quickstart-detect-faces-in-an-image-using-the-face-net-sdk"></a>Rychlý start: Rozpoznávání tváří v obrázku pomocí sady .NET SDK pro rozpoznávání tváře
 

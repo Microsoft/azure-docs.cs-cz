@@ -8,11 +8,11 @@ ms.custom: mvc
 ms.topic: quickstart
 ms.date: 01/09/2019
 ms.openlocfilehash: de0bd93b4cdd41ebd0ccc3aa89185e4501b711e1
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59524204"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61092178"
 ---
 # <a name="quickstart-create-an-azure-database-for-postgresql-server-in-the-azure-portal"></a>Rychlý start: Vytvoření serveru Azure Database for PostgreSQL na webu Azure Portal
 
@@ -46,8 +46,8 @@ Server Azure Database for PostgreSQL vytvoříte pomocí tohoto postupu:
     Výběr zdroje | *Prázdné* | Vyberte *Prázdné* a vytvořte nový server od začátku. (Pokud vytváříte server z geografické zálohy existujícího serveru Azure Database for PostgreSQL, vyberte *Záloha*.)
     Přihlašovací jméno správce serveru |*myadmin*| Váš vlastní přihlašovací účet, který budete používat pro připojení k serveru. Přihlašovací jméno správce nemůže být **azure_superuser**, **azure_pg_admin**, **admin**, **administrator**, **root**, **guest** ani **public**. Nemůže začínat na **pg_**.
     Heslo |Vaše heslo| Nové heslo pro účet správce serveru. Musí mít 8 až 128 znaků. Heslo musí obsahovat znaky ze tří z následujících kategorií: Velká písmena anglické abecedy, malá písmena, číslice (0 – 9) a jiné než alfanumerické znaky (!, $, #, % atd.).
-    Umístění|Oblast nejbližší vašim uživatelům| Umístění co nejblíže vašim uživatelům.
-    Verze|Nejnovější hlavní verze| Nejnovější hlavní verze PostgreSQL, pokud nemáte jiné specifické požadavky.
+    Location|Oblast nejbližší vašim uživatelům| Umístění co nejblíže vašim uživatelům.
+    Version|Nejnovější hlavní verze| Nejnovější hlavní verze PostgreSQL, pokud nemáte jiné specifické požadavky.
     Cenová úroveň | **Obecné účely**, **Gen 5**, **2 virtuální jádra**, **5 GB**, **7 dní**, **Geograficky redundantní** | Konfigurace výpočtů, úložiště a zálohování pro nový server. Vyberte **Cenová úroveň**. Potom vyberte kartu **Obecné účely**. *Gen 5*, *2 virtuální jádra*, *5 GB* a *7 dní* jsou výchozí hodnoty pro **Výpočetní generaci**, **Virtuální jádra**, **Úložiště** a **Období uchování zálohy**. Můžete ponechat tyto posuvníky tak, jak jsou. Pokud chcete povolit zálohování serveru v geograficky redundantním úložišti, vyberte v **Možnosti redundance zálohy** možnost **Geograficky redundantní**. Vyberte **OK** a uložte tento výběr cenové úrovně. Další snímek zachycuje tyto výběry.
 
    > [!NOTE]
@@ -123,7 +123,7 @@ Existuje řada aplikací, které můžete použít pro připojení k vašemu ser
 
     Parametr psql |Navrhovaná hodnota|Popis
     ---|---|---
-    heslo | Vaše heslo správce | Na příkazovém řádku Bash se zadávané znaky hesla nezobrazí. Po zadání všech znaků stiskněte klávesu Enter, abyste se ověřili a připojili.
+    password | Vaše heslo správce | Na příkazovém řádku Bash se zadávané znaky hesla nezobrazí. Po zadání všech znaků stiskněte klávesu Enter, abyste se ověřili a připojili.
 
     Jakmile budete připojeni, nástroj psql zobrazí příkazový řádek postgres, kde můžete zadávat příkazy jazyka SQL. Ve výstupu počátečního připojení se může zobrazit upozornění, protože nástroj psql, který používáte, může mít jinou verzi než na serveru Azure Database for PostgreSQL. 
     

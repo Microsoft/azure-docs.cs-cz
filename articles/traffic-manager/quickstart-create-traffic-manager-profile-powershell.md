@@ -12,11 +12,11 @@ ms.workload: infrastructure-services
 ms.date: 03/04/2019
 ms.author: kumud
 ms.openlocfilehash: 6ffecf973632911113608b7478d2af2aef036257
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57344589"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60884357"
 ---
 # <a name="quickstart-create-a-traffic-manager-profile-for-a-highly-available-web-application-using-azure-powershell"></a>Rychlý start: Vytvořit profil Traffic Manageru s vysokou dostupností webové aplikace s využitím Azure Powershellu
 

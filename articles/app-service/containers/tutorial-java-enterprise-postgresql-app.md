@@ -12,11 +12,11 @@ ms.date: 11/13/2018
 ms.author: jafreebe
 ms.custom: seodec18
 ms.openlocfilehash: 472ff85adaf72f91948c4072b12cca3ff8e59f37
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59545346"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60769963"
 ---
 # <a name="tutorial-build-a-java-ee-and-postgres-web-app-in-azure"></a>Kurz: Vytvoření webové aplikace v Azure platformě Java EE určený a Postgres
 

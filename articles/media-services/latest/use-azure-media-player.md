@@ -12,11 +12,11 @@ ms.topic: article
 ms.date: 01/03/2018
 ms.author: juliako
 ms.openlocfilehash: 6de626323c82689d0ead4f5aaad2a2e43187ebd0
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57896989"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61466616"
 ---
 # <a name="azure-media-player-overview"></a>Přehled služby Azure Media Player
 
@@ -50,5 +50,5 @@ Azure Media Player je snadné nastavení. Zabere jenom pár okamžiků získat z
 
 ## <a name="next-steps"></a>Další postup
 
-- [Dokumentace ke službě Azure Media Player](https://aka.ms/ampdocs)
+- [Dokumentace k Azure Media Playeru](https://aka.ms/ampdocs)
 - [Ukázky v Azure Media Player](https://aka.ms/ampsamples)

@@ -10,13 +10,13 @@ ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
 ms.date: 10/19/2018
 ms.openlocfilehash: 3f890e6cabd757fdd38374befaaccd1a10c9bd96
-ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57192458"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62106206"
 ---
-# <a name="monitor-logic-apps-with-azure-monitor-logs"></a>Monitorování logic apps s protokoly Azure monitoru
+# <a name="monitor-logic-apps-with-azure-monitor-logs"></a>Monitorování aplikací logiky s využitím protokolů Azure Monitoru
 
 Chcete-li sledovat a získat bohatší ladění podrobné informace o logic apps, zapněte [protokoly Azure monitoru](../log-analytics/log-analytics-overview.md) při vytváření aplikace logiky. Protokoly Azure monitoru poskytuje diagnostické protokolování a monitorování pro aplikace logiky při instalaci řešení Správa služby Logic Apps na webu Azure Portal. Toto řešení také poskytuje souhrnné informace pro vaši aplikaci logiky se spouští s konkrétní podrobnosti, jako je například stav, čas spuštění, opakovaným odesláním stav a ID korelace. Tento článek ukazuje, jak zapnout protokoly Azure monitoru, můžete zobrazit události modulu runtime a dat o vaší aplikace logiky spouští.
 

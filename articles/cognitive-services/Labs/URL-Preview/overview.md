@@ -11,11 +11,11 @@ ms.topic: overview
 ms.date: 03/16/2018
 ms.author: rosh
 ms.openlocfilehash: 7022c3b2d2f3618d55b0a70d2690abf1497ec6a6
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55865331"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61473163"
 ---
 # <a name="what-is-project-url-preview"></a>Co je Project URL Preview?
 Koncový bod rozhraní URL Preview přebírá parametr dotazu v podobě adresy URL a vrací odpověď ve formátu JSON s názvem cílového prostředku, stručným popisem a odkazem na obrázek, který se zobrazí v náhledu. Odpověď obsahuje také příznak [isFamilyFriendly](url-preview-reference.md#query-parameters), který označuje, zda se na adrese URL nachází obsah pro dospělé, obsah porušující autorská práva nebo jiný nelegální obsah. 

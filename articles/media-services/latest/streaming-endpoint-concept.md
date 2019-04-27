@@ -9,14 +9,14 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 04/16/2019
+ms.date: 04/21/2019
 ms.author: juliako
-ms.openlocfilehash: 4a29da2b070133f87ca5fdab0be607368c83790f
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: 8b6deadca610916a10f719d715fe6a17e29148bb
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "59999446"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62125419"
 ---
 # <a name="streaming-endpoints"></a>Koncové body streamování
 
@@ -149,6 +149,10 @@ Zavedené integraci CDN je povolena ve všech datových center Azure s výjimkou
 ### <a name="determine-if-dns-change-has-been-made"></a>Určit, pokud byla provedena změna DNS
 
 Pokud byla provedena změna DNS na koncový bod streamování (provoz směřuje na Azure CDN) můžete určit pomocí https://www.digwebinterface.com. Pokud výsledky obsahuje názvy domény azureedge.net ve výsledcích, provoz je nyní který ukazatel ukazuje CDN.
+
+## <a name="provide-feedback"></a>Poskytnutí zpětné vazby
+
+Podívejte se [komunita Azure Media Services](media-services-community.md) článek a zobrazit různé způsoby můžete klást otázky, poskytnout zpětnou vazbu a aktualizace o Media Services.
 
 ## <a name="next-steps"></a>Další postup
 

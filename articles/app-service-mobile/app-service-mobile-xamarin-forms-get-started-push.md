@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 10/12/2016
 ms.author: crdun
 ms.openlocfilehash: 99f2d9fb7c9a74e57eff3cd0b007fcee459cab88
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "53000197"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62098692"
 ---
 # <a name="add-push-notifications-to-your-xamarinforms-app"></a>Přidání nabízených oznámení do aplikace Xamarin.Forms
 
@@ -406,7 +406,7 @@ Tato část se týká s Xamarin.Forms WinApp a WinPhone81 projekty pro zařízen
 Další informace o nabízených oznámení:
 
 * [Odesílání nabízených oznámení z Azure Mobile Apps](https://developer.xamarin.com/guides/xamarin-forms/cloud-services/push-notifications/azure/)
-* [Služba firebase Cloud Messaging](https://developer.xamarin.com/guides/android/data-and-cloud-services/google-messaging/firebase-cloud-messaging/)
+* [Firebase Cloud Messaging](https://developer.xamarin.com/guides/android/data-and-cloud-services/google-messaging/firebase-cloud-messaging/)
 * [Vzdálená oznámení pomocí služby Firebase Cloud Messaging](https://developer.xamarin.com/guides/android/data-and-cloud-services/google-messaging/remote-notifications-with-fcm/)
 * [Diagnostikujte problémy nabízených oznámení](../notification-hubs/notification-hubs-push-notification-fixer.md)  
   Existují různé důvody, proč oznámení může získáte nebo nekončí na zařízeních. V tomto tématu se dozvíte, jak analyzovat a zjistěte příčinu selhání nabízené oznámení.

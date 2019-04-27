@@ -11,11 +11,11 @@ ms.topic: overview
 ms.date: 03/28/2016
 ms.author: davl
 ms.openlocfilehash: 4faeccb30e936177dfa993e912f597c44f8fac60
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55869768"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60816423"
 ---
 # <a name="what-is-the-entity-linking-intelligence-service-api"></a>Co je rozhraní API služby Entity Linking Intelligence Service?
 

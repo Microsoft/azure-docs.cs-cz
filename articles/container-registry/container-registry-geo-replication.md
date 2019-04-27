@@ -9,11 +9,11 @@ ms.topic: overview
 ms.date: 04/10/2018
 ms.author: stevelas
 ms.openlocfilehash: 2dc314dd1d1e728f03c1d0c660d9339254ddc462
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57541855"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60868913"
 ---
 # <a name="geo-replication-in-azure-container-registry"></a>Geografická replikace ve službě Azure Container Registry
 

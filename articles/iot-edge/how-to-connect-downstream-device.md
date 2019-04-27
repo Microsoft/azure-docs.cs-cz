@@ -10,11 +10,11 @@ ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
 ms.openlocfilehash: 5a05b8f0f9484ea49fbfb0bbe8818aa9cd0d66ee
-ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58757130"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62126422"
 ---
 # <a name="connect-a-downstream-device-to-an-azure-iot-edge-gateway"></a>Připojte zařízení za příjem dat k bráně Azure IoT Edge
 

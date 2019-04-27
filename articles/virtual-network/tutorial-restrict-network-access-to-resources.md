@@ -3,8 +3,8 @@ title: Omezení síťového přístupu k prostředkům PaaS – Kurz – Azure P
 description: V tomto kurzu zjistíte, jak pomocí webu Azure Portal omezit síťový přístup k prostředkům Azure, jako jsou služby Azure Storage a Azure SQL Database, s využitím koncových bodů služeb.
 services: virtual-network
 documentationcenter: virtual-network
-author: jimdial
-manager: jeconnoc
+author: KumudD
+manager: twooley
 editor: ''
 tags: azure-resource-manager
 Customer intent: I want only resources in a virtual network subnet to access an Azure PaaS resource, such as an Azure Storage account.
@@ -15,17 +15,17 @@ ms.topic: tutorial
 ms.tgt_pltfrm: virtual-network
 ms.workload: infrastructure
 ms.date: 08/23/2018
-ms.author: jdial
-ms.openlocfilehash: b951386fbeca883ae61a7f8040893e55467c8e5d
-ms.sourcegitcommit: 58c5cd866ade5aac4354ea1fe8705cee2b50ba9f
+ms.author: kumud
+ms.openlocfilehash: 31fe4c5cd2e61c3312532f05d310d652ecde7e95
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42810080"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60743804"
 ---
-# <a name="tutorial-restrict-network-access-to-paas-resources-with-virtual-network-service-endpoints-using-the-azure-portal"></a>Kurz: Omezení síťového přístupu k prostředkům PaaS s využitím koncových bodů služby virtuální sítě pomocí webu Azure Portal
+# <a name="tutorial-restrict-network-access-to-paas-resources-with-virtual-network-service-endpoints-using-the-azure-portal"></a>Kurz: Omezení síťového přístupu k prostředkům PaaS s koncovými body služby virtuální sítě pomocí webu Azure portal
 
-Koncové body služby virtuální sítě umožňují omezení síťového přístupu k prostředkům některých služeb Azure na podsíť virtuální sítě. Můžete také odebrat internetový přístup k prostředkům. Koncové body služeb poskytují přímé připojení z vaší virtuální sítě k podporovaným službám Azure a umožňují pro přístup ke službám Azure použít privátní adresní prostor virtuální sítě. Provoz směřující do prostředků Azure prostřednictvím koncových bodů služby zůstává vždy v páteřní síti Microsoft Azure. V tomto kurzu se naučíte:
+Koncové body služby pro virtuální síť umožňují omezení síťového přístupu k prostředkům některých služeb Azure na podsíť virtuální sítě. Můžete také odebrat internetový přístup k prostředkům. Koncové body služeb poskytují přímé připojení z vaší virtuální sítě k podporovaným službám Azure a umožňují pro přístup ke službám Azure použít privátní adresní prostor virtuální sítě. Provoz směřující do prostředků Azure prostřednictvím koncových bodů služby zůstává vždy v páteřní síti Microsoft Azure. V tomto kurzu se naučíte:
 
 > [!div class="checklist"]
 > * Vytvoření virtuální sítě s jednou podsítí
@@ -55,7 +55,7 @@ Přihlaste se k webu Azure Portal na adrese https://portal.azure.com.
    |Adresní prostor| 10.0.0.0/16|
    |Předplatné| Vyberte své předplatné.|
    |Skupina prostředků | Vyberte **Vytvořit novou** a zadejte *myResourceGroup*.|
-   |Umístění| Vyberte **USA – východ**. |
+   |Location| Vyberte **USA – východ**. |
    |Název podsítě| Public|
    |Rozsah adres podsítě| 10.0.0.0/24|
    |Koncové body služby| Zakázáno|
@@ -95,7 +95,7 @@ Ve výchozím nastavení mohou všechny virtuální počítače v podsíti komun
     |Název| myNsgPrivate |
     |Předplatné| Vyberte své předplatné.|
     |Skupina prostředků | Vyberte **Použít existující** a pak vyberte *myResourceGroup*.|
-    |Umístění| Vyberte **USA – východ**. |
+    |Location| Vyberte **USA – východ**. |
 
 4. Po vytvoření skupiny zabezpečení sítě do pole **Hledat prostředky, služby a dokumenty** v horní části portálu zadejte *myNsgPrivate*. Jakmile se ve výsledcích hledání zobrazí skupina zabezpečení sítě **myNsgPrivate**, vyberte ji.
 5. V části **NASTAVENÍ** vyberte **Odchozí pravidla zabezpečení**.
@@ -162,7 +162,7 @@ Kroky potřebné k omezení síťového přístupu k prostředkům vytvořeným 
     |----|----|
     |Název| Zadejte název, který je jedinečný ve všech umístěních Azure, je dlouhý 3 až 24 znaků a obsahuje pouze číslice a malá písmena.|
     |Account kind (Druh účtu)|StorageV2 (obecné účely v2)|
-    |Umístění| Vyberte **USA – východ**. |
+    |Location| Vyberte **USA – východ**. |
     |Replikace| Místně redundantní úložiště (LRS)|
     |Předplatné| Vyberte své předplatné.|
     |Skupina prostředků | Vyberte **Použít existující** a pak vyberte *myResourceGroup*.|
@@ -220,7 +220,7 @@ Pokud chcete otestovat síťový přístup k účtu úložiště, nasaďte do ka
    |Heslo| Zadejte libovolné heslo. Heslo musí obsahovat nejméně 12 znaků a musí splňovat [zadané požadavky na složitost](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm).|
    |Předplatné| Vyberte své předplatné.|
    |Skupina prostředků| Vyberte **Použít existující** a pak vyberte **myResourceGroup**.|
-   |Umístění| Vyberte **USA – východ**.|
+   |Location| Vyberte **USA – východ**.|
 
    ![Zadání základních informací o virtuálním počítači](./media/tutorial-restrict-network-access-to-resources/virtual-machine-basics.png)
 4. Vyberte velikost virtuálního počítače a pak vyberte **Vybrat**.
@@ -302,7 +302,7 @@ Pokud už je nepotřebujete, odstraňte skupinu prostředků a všechny prostře
 2. Vyberte **Odstranit skupinu prostředků**.
 3. V části **ZADEJTE NÁZEV SKUPINY PROSTŘEDKŮ** zadejte *myResourceGroup* a vyberte **Odstranit**.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 V tomto kurzu jste povolili koncový bod služby pro podsíť virtuální sítě. Dozvěděli jste se, že koncové body služeb můžete povolit pro prostředky nasazené z několika služeb Azure. Vytvořili jste účet služby Azure Storage a omezili jste síťový přístup k účtu úložiště pouze na prostředky v rámci podsítě virtuální sítě. Další informace o koncových bodech služeb najdete v tématech [Přehled koncových bodů služeb](virtual-network-service-endpoints-overview.md) a [Správa podsítí](virtual-network-manage-subnet.md).
 

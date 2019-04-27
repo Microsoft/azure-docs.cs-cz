@@ -8,11 +8,11 @@ ms.topic: tutorial
 ms.date: 04/15/2019
 ms.custom: mvc
 ms.openlocfilehash: 1eb24d90c3aefa81f53a3e31c0bd460f45e5a250
-ms.sourcegitcommit: fec96500757e55e7716892ddff9a187f61ae81f7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2019
-ms.locfileid: "59617695"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60626298"
 ---
 # <a name="tutorial-design-an-azure-database-for-mariadb-database-by-using-the-azure-portal"></a>Kurz: Návrh databáze Azure Database for MariaDB s využitím webu Azure portal
 
@@ -58,8 +58,8 @@ Server Azure Database for MariaDB vytvoříte s definovanou sadou [výpočetníc
     Přihlašovací jméno správce serveru | **myadmin** | Přihlašovací účet, který budete používat pro připojení k serveru. Přihlašovací jméno správce nemůže být **azure_superuser**, **admin**, **administrator**, **root**, **guest** ani **public**.
     Heslo | *Nějaké si zvolte* | Zadejte nové heslo pro účet správce serveru. Musí mít 8 až 128 znaků. Heslo musí obsahovat znaky ze tří z následujících kategorií: Velká písmena anglické abecedy, malá písmena, číslice (0 – 9) a jiné než alfanumerické znaky (!, $, #, % a tak dále).
     Potvrzení hesla | *Nějaké si zvolte*| Potvrďte heslo účtu správce.
-    Umístění | *Oblast nejbližší vašim uživatelům*| Vyberte umístění co nejblíže vašim uživatelům nebo vašim dalším aplikacím Azure.
-    Verze | *Nejnovější verze*| Nejnovější verze (pokud nemáte specifické požadavky vyžadující použití jiné verze).
+    Location | *Oblast nejbližší vašim uživatelům*| Vyberte umístění co nejblíže vašim uživatelům nebo vašim dalším aplikacím Azure.
+    Version | *Nejnovější verze*| Nejnovější verze (pokud nemáte specifické požadavky vyžadující použití jiné verze).
     Cenová úroveň | Viz popis. | Konfigurace výpočtů, úložiště a zálohování pro nový server. Vyberte **Cenová úroveň** > **Pro obecné účely**. U následujících nastavení ponechte výchozí hodnoty:<br><ul><li>**Výpočetní generace** (Gen 5)</li><li>**vCore** (4 virtuální jádra)</li><li>**Úložiště** (100 GB)</li><li>**Období uchování zálohy** (7 dnů)</li></ul><br>Pokud chcete povolit zálohování serveru v geograficky redundantním úložišti, v části **Možnosti redundance zálohy** vyberte **Geograficky redundantní**. <br><br>Vyberte **OK** a uložte tento výběr cenové úrovně. Další snímek zachycuje tyto výběry.
     
    ![Cenová úroveň](./media/tutorial-design-database-using-portal/3-pricing-tier.png)

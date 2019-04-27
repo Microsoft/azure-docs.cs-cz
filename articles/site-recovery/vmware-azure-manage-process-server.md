@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 03/11/2019
 ms.author: ramamill
-ms.openlocfilehash: ba80c8ce57495eaa46e915cb0c472eb4aabcee57
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 0a0b6c83f800c0a479ba7a16c91b497d1a11da9e
+ms.sourcegitcommit: a95dcd3363d451bfbfea7ec1de6813cad86a36bb
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/23/2019
-ms.locfileid: "60318528"
+ms.locfileid: "62732481"
 ---
 # <a name="manage-process-servers"></a>Správa procesních serverů
 
@@ -68,6 +68,19 @@ Pomocí této možnosti se celé zatížení chráněný v rámci procesu server
 2. Sledovat průběh úlohy v části **trezor služby Recovery Services** > **monitorování** > **úlohy Site Recovery**.
 3. Bude trvat 15 minut, než se změny tak, aby odrážely po úspěšném dokončení této operace nebo [aktualizovat konfigurační server](vmware-azure-manage-configuration-server.md#refresh-configuration-server) pro přímý vliv.
 
+## <a name="process-server-selection-guidance"></a>Výběr serveru doprovodným materiálům procesu
+
+Azure Site Recovery automaticky určuje, zda procesového serveru se blíží jeho limity využití. Když nastavíte Škálováním procesový server, poskytujeme pokyny.
+
+|Stav  |Vysvětlení  | Dostupnost prostředků  | Doporučení|
+|---------|---------|---------|---------|
+| V pořádku (zelený)    |   Procesový server je připojený a je v pořádku      |Využití procesoru a paměti je menší než 80 %. Dostupnost volného místa je vyšší než 30 %| Tento procesový server můžete použít pro ochranu dalších serverů. Ujistěte se, že nový pracovní postup v rámci [definované limity serveru procesu](vmware-azure-set-up-process-server-scale.md#sizing-requirements).
+|Upozornění (oranžová)    |   Procesový server je připojený, ale některé prostředky se dosažení maximálního omezení  |   Využití procesoru a paměti je mezi 80 – 95 %; Dostupnost volného místa je mezi 25 – 30 %       | Využití procesového serveru se blíží prahové hodnoty. Přidávání nových serverů do stejného procesový server povede k překračování mezní hodnoty a může mít vliv na stávající chráněné položky. Doporučujeme [nastavení horizontální navýšení kapacity procesového serveru](vmware-azure-set-up-process-server-scale.md#before-you-start) pro nové replikace.
+|Upozornění (oranžová)   |   Procesový server je připojený, ale nebyl nahrávaných dat do Azure v posledních 30 minut  |   Využití prostředků je v mezích limitů prahová hodnota       | Řešení potíží s [chyby odesílání dat](vmware-azure-troubleshoot-replication.md#monitor-process-server-health-to-avoid-replication-issues) před přidáním nových úloh **nebo** [nastavení horizontální navýšení kapacity procesového serveru](vmware-azure-set-up-process-server-scale.md#before-you-start) pro nové replikace.
+|Kritický (červený)    |     Procesový server může být odpojeno.  |  Využití prostředků je v mezích limitů prahová hodnota      | Řešení potíží s [zpracovat problémy s připojením serveru](vmware-azure-troubleshoot-replication.md#monitor-process-server-health-to-avoid-replication-issues) nebo [nastavení horizontální navýšení kapacity procesového serveru](vmware-azure-set-up-process-server-scale.md#before-you-start) pro nové replikace.
+|Kritický (červený)    |     Využití prostředků se překročí mezní hodnoty |  Využití procesoru a paměti je nad 95 %. Dostupnost volného místa je méně než 25 %.   | Přidání nových úloh do stejné procesový server je vypnuta, protože již omezení splnění prahové hodnoty prostředků. Ano [nastavení horizontální navýšení kapacity procesového serveru](vmware-azure-set-up-process-server-scale.md#before-you-start) pro nové replikace.
+Kritický (červený)    |     V posledních 45 minut, nebyl nahrávaných dat z Azure do Azure. |  Využití prostředků je v mezích limitů prahová hodnota      | Řešení potíží s [chyby odesílání dat](vmware-azure-troubleshoot-replication.md#monitor-process-server-health-to-avoid-replication-issues) před přidáním nových úloh do stejné procesový server nebo [nastavení horizontální navýšení kapacity procesového serveru](vmware-azure-set-up-process-server-scale.md#before-you-start)
+
 ## <a name="reregister-a-process-server"></a>Opětovná registrace procesového serveru
 
 Pokud je potřeba znovu zaregistrujte procesový server spuštěné místně nebo v Azure, s konfiguračním serverem, udělejte toto:
@@ -109,7 +122,6 @@ Pokud na procesovém serveru používá proxy server pro připojení k Site Reco
    exit
    ```
 
-
 ## <a name="remove-a-process-server"></a>Odebrat procesového serveru
 
 [!INCLUDE [site-recovery-vmware-unregister-process-server](../../includes/site-recovery-vmware-unregister-process-server.md)]
@@ -126,4 +138,3 @@ Pokud je na samostatný procesový server nebo hlavní cílový server aktivní 
 - C:\ProgramData\LogUploadServiceLogs
 - C:\ProgramData\Microsoft Azure Site Recovery
 - Proces serveru instalační adresář, například: C:\Program Files (x86)\Microsoft Azure Site Recovery
-

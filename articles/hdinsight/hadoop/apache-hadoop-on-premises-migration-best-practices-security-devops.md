@@ -1,7 +1,6 @@
 ---
 title: Migrace místních Apache Hadoop clusterů Azure HDInsight – zabezpečení a osvědčené postupy DevOps
 description: Zjistěte, zabezpečení a osvědčené postupy DevOps pro migrace místních Hadoop clusterů pro Azure HDInsight.
-services: hdinsight
 author: hrasheed-msft
 ms.reviewer: ashishth
 ms.service: hdinsight
@@ -9,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 10/25/2018
 ms.author: hrasheed
-ms.openlocfilehash: 7cfb327a3eb6cbf2ae90c9d258a470797732acaa
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: 1d13b52d253562a24946e6df2fc069f41b485fef
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53437499"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62095368"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---security-and-devops-best-practices"></a>Migrace místních Apache Hadoop clusterů Azure HDInsight – zabezpečení a osvědčené postupy DevOps
 

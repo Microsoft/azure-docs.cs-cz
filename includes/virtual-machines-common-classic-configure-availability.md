@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
 ms.openlocfilehash: 32f533d06b7db0284459951e65f9c04fe0bb0285
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55735841"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61485316"
 ---
 Skupinu dostupnosti pomáhá udržovat vaše virtuální počítače, které jsou k dispozici během výpadků, například při údržbě. Umístěním dvou nebo více podobně nakonfigurovaných virtuálních počítačů ve skupině dostupnosti vytvoří redundance potřebují zachovat dostupnost aplikace nebo služby, které běží ve virtuálním počítači. Podrobnosti o tom, jak to funguje, najdete v článku [Správa dostupnosti virtuálních počítačů][Manage the availability of virtual machines].
 

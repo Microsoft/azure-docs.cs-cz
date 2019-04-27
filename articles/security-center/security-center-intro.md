@@ -16,11 +16,11 @@ ms.workload: na
 ms.date: 1/15/2019
 ms.author: rkarlin
 ms.openlocfilehash: 13526268480c69798ee52078f7448605fc1afa9a
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57242033"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60910107"
 ---
 # <a name="what-is-azure-security-center"></a>Co je Azure Security Center?
 

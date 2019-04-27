@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.openlocfilehash: 48c09a6100586c0c99f3d54f9708c770488c681f
-ms.sourcegitcommit: f331186a967d21c302a128299f60402e89035a8d
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58189024"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61463835"
 ---
 #  <a name="create-an-encoding-task-that-generates-fmp4-chunks"></a>Vytvořit úlohu kódování, která generuje bloky fMP4
 

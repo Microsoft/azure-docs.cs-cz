@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
-ms.openlocfilehash: 6f76eea365311cd6c10dd39054187bf3a07bd595
-ms.sourcegitcommit: dd1a9f38c69954f15ff5c166e456fda37ae1cdf2
+ms.openlocfilehash: d4b6c8289ae7c22521fc433c928f2b25a56c87ef
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57568987"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62130207"
 ---
 # <a name="geofencing-geojson-data"></a>Monitorování geografických zón GeoJSON dat
 
-Azure Maps [získat monitorové geografické zóny](https://docs.microsoft.com/rest/api/maps/spatial/getgeofencepreview) a [monitorové geografické zóny příspěvek](https://docs.microsoft.com/rest/api/maps/spatial/postgeofencepreview) rozhraní API umožňují načíst blízkosti souřadnice vzhledem k zadané monitorové geografické zóny nebo sadu ohrazení. Tento článek podrobně popisuje, jak připravit data monitorové geografické zóny, který lze použít v Azure Maps GET a POST API.
+Azure Maps [získat monitorové geografické zóny](/rest/api/maps/spatial/getgeofence) a [monitorové geografické zóny příspěvek](/rest/api/maps/spatial/postgeofence) rozhraní API umožňují načíst blízkosti souřadnice vzhledem k zadané monitorové geografické zóny nebo sadu ohrazení. Tento článek podrobně popisuje, jak připravit data monitorové geografické zóny, který lze použít v Azure Maps GET a POST API.
 
 Data pro monitorové geografické zóny nebo sadu monitorovaná geografická zóna je reprezentována `Feature` objektu a `FeatureCollection` objekt `GeoJSON` formátu, který je definován v [rfc7946](https://tools.ietf.org/html/rfc7946). Kromě:
 

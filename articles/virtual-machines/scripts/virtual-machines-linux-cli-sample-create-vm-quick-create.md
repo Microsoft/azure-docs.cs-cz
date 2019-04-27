@@ -17,11 +17,11 @@ ms.date: 02/27/2017
 ms.author: cynthn
 ms.custom: mvc
 ms.openlocfilehash: ce424fcd7521893caf0dd0f7924c3021fb0f2599
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55695553"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61127718"
 ---
 # <a name="create-a-virtual-machine"></a>Vytvoření virtuálního počítače
 

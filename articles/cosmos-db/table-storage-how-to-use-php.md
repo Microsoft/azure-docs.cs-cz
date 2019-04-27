@@ -9,11 +9,11 @@ ms.devlang: php
 ms.topic: sample
 ms.date: 04/05/2018
 ms.openlocfilehash: aac6755ed90c795b8fff09d9ffde33878ad21a32
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58111493"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62130496"
 ---
 # <a name="how-to-use-azure-storage-table-service-or-the-azure-cosmos-db-table-api-from-php"></a>Jak používat službu Azure Table Storage nebo rozhraní Table API služby Azure Cosmos DB z PHP
 [!INCLUDE [storage-selector-table-include](../../includes/storage-selector-table-include.md)]

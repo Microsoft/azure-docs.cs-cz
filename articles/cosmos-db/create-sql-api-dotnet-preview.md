@@ -9,11 +9,11 @@ ms.topic: quickstart
 ms.date: 12/01/2018
 ms.author: dech
 ms.openlocfilehash: 1589c938e635ccff02f94a176b7fc886dbccb779
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57455764"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60894531"
 ---
 # <a name="quickstart-build-an-aspnet-web-app-using-azure-cosmos-db-sql-api-account"></a>Rychlý start: Vytvoření webové aplikace ASP.NET se pomocí účtu rozhraní SQL API služby Azure Cosmos DB
 

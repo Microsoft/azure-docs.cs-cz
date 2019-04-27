@@ -3,20 +3,21 @@ title: Připojte se k Office 365 Outlook – Azure Logic Apps | Dokumentace Micr
 description: Správa e-mailu, kontaktů a kalendáři pomocí rozhraní REST API Office 365 a Azure Logic Apps
 author: ecfan
 manager: jeconnoc
-ms.author: estfan
-ms.date: 10/18/2016
+ms.author: v-yiso
+origin.date: 10/18/2016
+ms.date: 09/03/2018
 ms.topic: article
 ms.service: logic-apps
 services: logic-apps
 ms.reviewer: klam, LADocs
 ms.suite: integration
 tags: connectors
-ms.openlocfilehash: 0355f121a09e1ba89f98a8af5037eb1371db2242
-ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
+ms.openlocfilehash: 52abf17e869216e65780129a7b48df79bd79f67a
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39215634"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62105050"
 ---
 # <a name="get-started-with-the-office-365-outlook-connector"></a>Začínáme s konektorem Office 365 Outlook
 Konektor Office 365 Outlooku umožňuje interakci s Outlookem v Office 365. Pomocí tohoto konektoru můžete vytvořit, upravit a aktualizovat kontakty a položky kalendáře a taky získat, odesílání a odpovědět na e-mail.
@@ -68,7 +69,7 @@ Trigger je událost, která umožňuje spustit pracovní postup definovaný v ap
 ## <a name="use-an-action"></a>Použít akci
 Akce je operace prováděné pracovním postupu definovaném v aplikaci logiky. [Další informace o akcích](../logic-apps/logic-apps-overview.md#logic-app-concepts).
 
-1. Vyberte znaménko plus. Uvidíte několik možností: **přidat akci**, **přidat podmínku**, nebo jeden z **Další** možnosti.
+1. Vyberte znaménko plus. Uvidíte několik možností: **Přidání akce**, **přidat podmínku**, nebo jeden z **Další** možnosti.
    
     ![](./media/connectors-create-api-office365-outlook/add-action.png)
 2. Zvolte **přidat akci**.

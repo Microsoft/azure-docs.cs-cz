@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
 ms.openlocfilehash: d14cfb82ae74f85425dbd3e8a365e8b99969641d
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55735904"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61485170"
 ---
 ## <a name="using-vm-extensions"></a>Pomocí rozšíření virtuálních počítačů
 Rozšíření Azure VM implementovat chování nebo funkce, které buď pomáhají další programy, které fungují na virtuálních počítačích Azure (třeba **WebDeployForVSDevTest** rozšíření umožňuje sadě Visual Studio do řešení pro nasazení webu na vašem virtuálním počítači Azure) nebo zadejte možnost interakce s virtuálním Počítačem pro podporu některých chování (například vám pomůže rozšíření přístup k virtuálním počítačům z prostředí PowerShell, rozhraní příkazového řádku Azure a ostatní klienti resetovat nebo změnit hodnoty vzdáleného přístupu na vašem virtuálním počítači Azure).

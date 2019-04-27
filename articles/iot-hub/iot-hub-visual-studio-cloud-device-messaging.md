@@ -5,14 +5,15 @@ author: shizn
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.date: 01/07/2018
+origin.date: 01/07/2018
+ms.date: 05/06/2019
 ms.author: xshi
 ms.openlocfilehash: ab3c02d7207bca70a90df8aa08c73c1484cd635d
-ms.sourcegitcommit: e89b9a75e3710559a9d2c705801c306c4e3de16c
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/15/2019
-ms.locfileid: "59571307"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61440626"
 ---
 # <a name="use-cloud-explorer-for-visual-studio-to-send-and-receive-messages-between-your-device-and-iot-hub"></a>Pomocí Průzkumníka cloudu sady Visual Studio k odesílání a příjem zpráv mezi zařízením a centrem IoT
 
@@ -48,14 +49,10 @@ Průzkumník cloudu komponenty z instalačního programu sady Visual Studio podp
 
     ![Klikněte na Správa účtů](media/iot-hub-visual-studio-cloud-device-messaging/click-account-management.png)
 
-
-2. Klikněte na tlačítko **spravovat účty** v Průzkumníku cloudu.
-
-3. Klikněte na tlačítko **přidat účet...**  v novém okně pro přihlášení do Azure poprvé.
-
-4. Po přihlášení, zobrazí se seznam vašich předplatných Azure. Vyberte předplatná Azure, kterou chcete zobrazit a klikněte na tlačítko **použít**.
-
-5. Rozbalte **předplatného** > **centra IoT hub** > **váš IoT Hub**, zobrazí se seznam zařízení uzlu služby IoT Hub.
+1. Klikněte na tlačítko **spravovat účty** v Průzkumníku cloudu.
+1. Klikněte na tlačítko **přidat účet...**  v novém okně pro přihlášení do Azure poprvé.
+1. Po přihlášení, zobrazí se seznam vašich předplatných Azure. Vyberte předplatná Azure, kterou chcete zobrazit a klikněte na tlačítko **použít**.
+1. Rozbalte **předplatného** > **centra IoT hub** > **váš IoT Hub**, zobrazí se seznam zařízení uzlu služby IoT Hub.
 
     ![Seznam zařízení](media/iot-hub-visual-studio-cloud-device-messaging/device-list.png)
 
@@ -67,11 +64,11 @@ Pokud chcete monitorovat zprávy odeslané ze zařízení do služby IoT Hub, po
 
     ![Začněte s monitorováním D2C zprávy](media/iot-hub-visual-studio-cloud-device-messaging/start-monitoring-d2c-message.png)
 
-2. Sledované zprávy zobrazí ve **služby IoT Hub** podokno výstup.
+1. Sledované zprávy zobrazí ve **služby IoT Hub** podokno výstup.
 
     ![Zpráva výsledku monitorování D2C](media/iot-hub-visual-studio-cloud-device-messaging/monitor-d2c-message-result.png)
 
-3. Chcete zastavit monitorování, klikněte pravým tlačítkem na jakékoli zařízení nebo službu IoT Hub a vyberte **zastavit monitorování zpráv D2C**.
+1. Chcete zastavit monitorování, klikněte pravým tlačítkem na jakékoli zařízení nebo službu IoT Hub a vyberte **zastavit monitorování zpráv D2C**.
 
 ## <a name="send-cloud-to-device-messages"></a>Odesílání zpráv z cloudu do zařízení
 
@@ -81,9 +78,8 @@ Odeslat zprávu na vaše zařízení ze služby IoT Hub, postupujte podle těcht
 
     ![Odeslat zprávu C2D](media/iot-hub-visual-studio-cloud-device-messaging/send-c2d-message.png)
 
-2. Zadejte zprávu vstupního pole.
-
-3. Výsledky se zobrazí v **služby IoT Hub** podokno výstup.
+1. Zadejte zprávu vstupního pole.
+1. Výsledky se zobrazí v **služby IoT Hub** podokno výstup.
 
     ![Odeslat C2D výsledek zprávy](media/iot-hub-visual-studio-cloud-device-messaging/send-c2d-message-result.png)
 

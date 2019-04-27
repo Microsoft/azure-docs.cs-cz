@@ -8,13 +8,13 @@ ms.topic: tutorial
 ms.date: 03/21/2019
 ms.author: helohr
 ms.openlocfilehash: 1bbe89484d72a21c4432d452d4ddae83ea2d2553
-ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58400033"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60870468"
 ---
-# <a name="tutorial-create-service-principals-and-role-assignments-with-powershell"></a>Kurz: Vytvoření instančních objektů a přiřazení role pomocí prostředí PowerShell
+# <a name="tutorial-create-service-principals-and-role-assignments-with-powershell"></a>Kurz: Vytvoření objektů služby a přiřazení rolí pomocí PowerShellu
 
 Instanční objekty jsou identit, které vytvoříte v Azure Active Directory a přiřadit role a oprávnění pro konkrétní účel. Windows virtuální Desktop ve verzi Preview je můžete vytvořit instanční objekt pro:
 

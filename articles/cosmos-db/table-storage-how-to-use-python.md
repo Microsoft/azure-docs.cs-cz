@@ -10,11 +10,11 @@ author: wmengmsft
 ms.author: wmeng
 ms.reviewer: sngun
 ms.openlocfilehash: 11b47483eaf39e7445ece8b9e38d81a6a2404cc6
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55756593"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62130464"
 ---
 # <a name="get-started-with-azure-table-storage-and-the-azure-cosmos-db-table-api-using-python"></a>Začínáme se službou Azure Table Storage a rozhraním Table API služby Azure Cosmos DB pomocí Pythonu
 

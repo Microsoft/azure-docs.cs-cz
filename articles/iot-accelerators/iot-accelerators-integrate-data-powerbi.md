@@ -9,11 +9,11 @@ services: iot-accelerators
 ms.date: 05/01/2018
 ms.topic: conceptual
 ms.openlocfilehash: 3398c6d318e0e3c51d3f6cfe8af651a6e3f55c9c
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58094816"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61448052"
 ---
 # <a name="visualize-remote-monitoring-data-using-power-bi"></a>Vizualizovat data vzdálené monitorování pomocí Power BI
 
@@ -55,7 +55,7 @@ Tento kurz vás provede jak k řešení vzdáleného monitorování dat z cosmos
 
 2. Když se zobrazí výzva k zadání dat, zvolte možnost Hledat "Azure Cosmos DB" a vyberte tento konektor. Tento konektor v podstatě čte data přímo z databáze cosmos vašeho řešení Azure IoT
   
-    ![Databáze Cosmos](./media/iot-accelerators-integrate-data-powerbi/cosmos_db.png)
+    ![Cosmos DB](./media/iot-accelerators-integrate-data-powerbi/cosmos_db.png)
   
 3. Zadejte informace, které jste pořídili jste výše:
 

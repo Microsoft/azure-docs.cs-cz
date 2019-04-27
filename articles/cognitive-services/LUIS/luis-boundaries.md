@@ -12,11 +12,11 @@ ms.date: 04/18/2019
 ms.author: diberry
 ms.custom: seodec18
 ms.openlocfilehash: 58f6d6cf8bf16f7c35bab35a69cfcdf8759f66ae
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60006824"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60814035"
 ---
 # <a name="boundaries-for-your-luis-model-and-keys"></a>Hranice pro LUIS model a klíče
 Služba LUIS má několik oblasti hranic. První je [modelu hranice](#model-boundaries), který určuje záměrů, entit a funkcí v LUIS. Druhá oblast je [kvóty](#key-limits) podle typu klíče. Je třetí oblasti hranic [klávesové kombinace](#keyboard-controls) pro řízení webu LUIS. Je čtvrtý oblast [mapování oblasti world](luis-reference-regions.md) mezi LUIS vytváření webu a LUIS [koncový bod](luis-glossary.md#endpoint) rozhraní API. 

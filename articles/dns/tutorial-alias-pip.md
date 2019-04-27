@@ -8,11 +8,11 @@ ms.topic: tutorial
 ms.date: 9/25/2018
 ms.author: victorh
 ms.openlocfilehash: 7dcbfdaf00b0e628541cfd1a3b79df8cf8334ed3
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57536874"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61430609"
 ---
 # <a name="tutorial-configure-an-alias-record-to-refer-to-an-azure-public-ip-address"></a>Kurz: Konfigurace záznamu o aliasu odkazovat na veřejnou IP adresu Azure 
 

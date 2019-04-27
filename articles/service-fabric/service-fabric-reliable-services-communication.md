@@ -15,11 +15,11 @@ ms.workload: required
 ms.date: 11/01/2017
 ms.author: vturecek
 ms.openlocfilehash: 15b45cadc69830827952d87ffc2315b06b07b02c
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58663396"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62124981"
 ---
 # <a name="how-to-use-the-reliable-services-communication-apis"></a>Jak používat rozhraní API komunikaci modelu Reliable Services
 Azure Service Fabric jako platforma je zcela bez o komunikaci mezi službami. Všechny protokoly a balíčky jsou přijatelné, z UDP pro HTTP. Záleží jen na vývojářské služby vybrat komunikaci služby. Rozhraní framework aplikace Reliable Services poskytuje integrované komunikační balíky, jakož i rozhraní API, která vám umožní vytvářet vlastní komunikační součásti.

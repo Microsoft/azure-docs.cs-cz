@@ -17,11 +17,11 @@ ms.topic: conceptual
 ms.date: 09/11/2017
 ms.author: gokuma
 ms.openlocfilehash: 59f88d54d3542738f1a500c8c476995eb1535ecf
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58006502"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62130264"
 ---
 # <a name="deep-learning-and-ai-frameworks"></a>Architektura AI a hloubkového učení
 [Virtuální počítač pro datové vědy](https://aka.ms/dsvm) (DSVM) a [hloubkového učení VM](https://aka.ms/dsvm/deeplearning) podporuje řadu architektury hloubkového učení, které vám pomůžou vytvářet aplikace umělou inteligenci (AI) k prediktivním analýzám a kognitivní možnosti, jako jsou bitové kopie a umožňující porozumět jazyku.

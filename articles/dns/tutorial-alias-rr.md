@@ -8,13 +8,13 @@ ms.topic: tutorial
 ms.date: 9/25/2018
 ms.author: victorh
 ms.openlocfilehash: 3b4ee688d6a5606ab6008b459fcf6331c24afaae
-ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50091636"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61429786"
 ---
-# <a name="tutorial-create-an-alias-record-to-refer-to-a-zone-resource-record"></a>Kurz: Vytvoření záznamu aliasu odkazujícího na záznam prostředku zóny
+# <a name="tutorial-create-an-alias-record-to-refer-to-a-zone-resource-record"></a>Kurz: Vytvoření záznamu o aliasu pro odkazování na záznam prostředku zóny
 
 Záznamy aliasů můžou odkazovat na jiné sady záznamů stejného typu. Můžete mít například sadu záznamů DNS CNAME nastavenou jako alias pro jinou sadu záznamů CNAME stejného typu. Tato možnosti je užitečná v případě, že chcete mít některé sady záznamů nastavené jako aliasy a jiné tak, aby se nechovaly jako aliasy.
 
@@ -30,7 +30,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 ## <a name="prerequisites"></a>Požadavky
 Musíte mít k dispozici název domény, kterou můžete hostovat v Azure DNS a použít k testování. Musíte mít úplnou kontrolu nad touto doménou. Úplná kontrola zahrnuje možnost nastavit pro doménu záznamy názvového serveru (NS).
 
-Pokyny k hostování domény v Azure DNS najdete v [kurzu hostování domény v Azure DNS](dns-delegate-domain-azure-dns.md).
+Pokyny k hostování domény v Azure DNS najdete v tématu [kurzu: Hostování domény v Azure DNS](dns-delegate-domain-azure-dns.md).
 
 
 ## <a name="create-an-alias-record"></a>Vytvoření záznamu aliasu
@@ -66,7 +66,7 @@ Vytvořte záznam aliasu, který odkazuje na záznam prostředku v zóně.
 Pokud už prostředky vytvořené pro účely tohoto kurzu nepotřebujete, odstraňte ve své zóně záznamy prostředků **server** a **test**.
 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 V tomto kurzu jste vytvořili záznam aliasu odkazující na záznam prostředku v rámci zóny. Další informace o Azure DNS a webových aplikacích získáte v kurzu o webových aplikacích.
 

@@ -1,6 +1,6 @@
 ---
 title: 'Kurz: Konfigurace Samanage pro automatické zřizování uživatelů pomocí Azure Active Directory | Dokumentace Microsoftu'
-description: Zjistěte, jak konfigurovat Azure Active Directory a automaticky zřizovat a rušit zřízení uživatelských účtů do Samanage.
+description: Zjistěte, jak konfigurovat Azure Active Directory a automaticky zřizovat a zrušit jejich zřízení uživatelských účtů do Samanage.
 services: active-directory
 documentationcenter: ''
 author: zchia
@@ -16,79 +16,77 @@ ms.topic: article
 ms.date: 03/28/2019
 ms.author: v-wingf-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ca43b62e66e3a736aa52fdd10fe36e635daba245
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: d474d9bfd6016885eaa21afcea5d44d39c624084
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59280345"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62104625"
 ---
 # <a name="tutorial-configure-samanage-for-automatic-user-provisioning"></a>Kurz: Konfigurace Samanage pro automatické zřizování uživatelů
 
-Cílem tohoto kurzu je předvést postup provést v Samanage a Azure Active Directory (Azure AD) ke konfiguraci Azure AD automaticky zřizovat a rušit zřízení uživatele a/nebo skupiny, které se Samanage.
+V tomto kurzu si ukážeme postup provést v Samanage a Azure Active Directory (Azure AD) ke konfiguraci Azure AD automaticky zřizovat a zrušit jejich zřízení uživatelů a skupin a Samanage.
 
 > [!NOTE]
-> Tento kurz popisuje konektor postavené na službě zřizování uživatelů služby Azure AD. Důležité podrobnosti o význam této služby, jak to funguje a nejčastější dotazy najdete v tématu [automatizace zřizování uživatelů a jeho rušení pro aplikace SaaS ve službě Azure Active Directory](../manage-apps/user-provisioning.md).
+> Tento kurz popisuje konektor, který je postavený na služba zřizování uživatelů Azure AD. Informace o význam této služby, jak to funguje a nejčastější dotazy, naleznete v tématu [automatizace zřizování uživatelů a jeho rušení pro software-as-a-service (SaaS) aplikací pomocí Azure Active Directory](../manage-apps/user-provisioning.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
-Scénář popsaný v tomto kurzu se předpokládá, že již máte následující:
+Scénář popsaný v tomto kurzu se předpokládá, že máte:
 
-* Klient služby Azure AD
-* A [Samanage tenanta](https://www.samanage.com/pricing/) s profesionální balíčku
-* Uživatelský účet v Samanage s oprávněními správce
+* Tenanta Azure AD.
+* A [Samanage tenanta](https://www.samanage.com/pricing/) s profesionální balíčku.
+* Účet uživatele s oprávněními správce v Samanage.
 
 > [!NOTE]
-> Zřizování integrace Azure AD spoléhá na [Samanage Rest API](https://www.samanage.com/api/), která je k dispozici pro vývojáře Samanage pro účty s profesionální balíčku.
+> Zřizování integrace Azure AD spoléhá na [rozhraní Rest API služby Samanage](https://www.samanage.com/api/). Toto rozhraní API je k dispozici pro vývojáře Samanage pro účty s profesionální balíčku.
 
-## <a name="adding-samanage-from-the-gallery"></a>Přidání Samanage z Galerie
+## <a name="add-samanage-from-the-azure-marketplace"></a>Přidat Samanage na webu Azure Marketplace
 
-Před konfigurací Samanage pro automatické zřizování uživatelů pomocí Azure AD, budete muset přidat Samanage z Galerie aplikací Azure AD na váš seznam spravovaných aplikací SaaS.
+Než začnete konfigurovat Samanage pro automatické zřizování uživatelů pomocí Azure AD, přidejte do seznamu spravovaných aplikací SaaS Samanage z Azure Marketplace.
 
-**Chcete-li přidat Samanage z Galerie aplikací Azure AD, postupujte následovně:**
+Chcete-li přidat Samanage z webu Marketplace, postupujte takto.
 
-1. V **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
+1. V [webu Azure portal](https://portal.azure.com), v navigačním podokně na levé straně vyberte **Azure Active Directory**.
 
-    ![Tlačítko Azure Active Directory](common/select-azuread.png)
+    ![Ikona služby Azure Active Directory](common/select-azuread.png)
 
-2. Přejděte do **podnikové aplikace** a pak vyberte **všechny aplikace** možnost.
+2. Přejděte na **podnikové aplikace**a pak vyberte **všechny aplikace**.
 
     ![V okně podnikové aplikace](common/enterprise-applications.png)
 
-3. Chcete-li přidat novou aplikaci, klikněte na tlačítko **novou aplikaci** tlačítko v horní části dialogového okna.
+3. Chcete-li přidat novou aplikaci, **novou aplikaci** v horní části dialogového okna.
 
     ![Tlačítko nové aplikace](common/add-new-app.png)
 
-4. Do vyhledávacího pole zadejte **Samanage**vyberte **Samanage** z panelu výsledků klikněte **přidat** tlačítko pro přidání aplikace.
+4. Do vyhledávacího pole zadejte **Samanage** a vyberte **Samanage** na panelu výsledků. Chcete-li přidat aplikaci, **přidat**.
 
     ![Samanage v seznamu výsledků](common/search-new-app.png)
 
-## <a name="assigning-users-to-samanage"></a>Přiřazování uživatelů k Samanage
+## <a name="assign-users-to-samanage"></a>Přiřazení uživatelů k Samanage
 
-Azure Active Directory používá koncept nazvaný "přiřazení" k určení, kteří uživatelé měli obdržet přístup k vybrané aplikace. V souvislosti s automatické zřizování uživatelů se synchronizují pouze uživatele a/nebo skupiny, které se "přiřadily" aplikace ve službě Azure AD.
+Azure Active Directory používá koncept volá *přiřazení* určit, kteří uživatelé měli obdržet přístup k vybrané aplikace. V souvislosti s automatické zřizování uživatelů se synchronizují pouze uživatele nebo skupiny, které byly přiřazeny k aplikaci ve službě Azure AD.
 
-Než nakonfigurujete a povolíte automatické zřizování uživatelů, byste měli rozhodnout, které uživatele a/nebo skupiny ve službě Azure AD potřebují přístup k Samanage. Jakmile se rozhodli, můžete přiřadit tyto uživatele a/nebo skupiny Samanage podle zde uvedených pokynů:
-
-*   [Přiřadit uživatele nebo skupiny k podnikové aplikace](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal)
+Než začnete konfigurovat a povolit automatické zřizování uživatelů, rozhodněte, které uživatele nebo skupiny ve službě Azure AD potřebují přístup k Samanage. Chcete-li přiřadit Samanage tyto uživatele nebo skupiny, postupujte podle pokynů v [přiřadit uživatele nebo skupiny k podnikové aplikace](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal).
 
 ### <a name="important-tips-for-assigning-users-to-samanage"></a>Důležité tipy pro přiřazování uživatelů k Samanage
 
-*    Samanage rolí se automaticky a dynamicky vyplní na webu Azure Portal uživatelského rozhraní ještě dnes. Před přiřazením Samanage role pro uživatele, ujistěte se, že počáteční synchronizace je dokončena proti Samanage načíst nejnovější role ve vašem tenantovi Samanage.
+*    V současné době Samanage role automaticky a dynamicky zaplnění na webu Azure Portal uživatelského rozhraní. Před přiřazením Samanage role pro uživatele, ujistěte se, že počáteční synchronizace je dokončena proti Samanage načíst nejnovější role ve vašem tenantovi Samanage.
 
-*    Dále je doporučeno jednoho uživatele Azure AD je přiřazená Samanage k testování vašich počáteční automatické zřizování uživatelů konfigurace. Další uživatele a/nebo skupiny může být přiřazena vyšší Jakmile testy jsou úspěšné.
+*    Doporučujeme vám, přiřadit jeden uživatele Azure AD k Samanage k testování vašich počáteční automatické zřizování uživatelů konfigurace. Můžete přiřadit dalším uživatelům a skupinám později po testy jsou úspěšné.
 
-*   Při přiřazení uživatele k Samanage, musíte vybrat libovolnou platnou roli specifické pro aplikaci (Pokud je k dispozici) v dialogovém okně přiřazení. Uživatelé s **výchozího přístupu k** role jsou vyloučené z zřizování.
+*    Když přiřadíte uživatele k Samanage, vyberte libovolný platný specifické pro aplikaci roli, pokud je k dispozici, v dialogovém okně přiřazení. Uživatelé s **výchozího přístupu k** role jsou vyloučené z zřizování.
 
-## <a name="configuring-automatic-user-provisioning-to-samanage"></a>Konfigurace automatické zřizování uživatelů pro Samanage
+## <a name="configure-automatic-user-provisioning-to-samanage"></a>Konfigurovat automatické zřizování uživatelů pro Samanage
 
-Tato část vás provede kroky pro konfiguraci Azure AD služby zřizování a vytvářet, aktualizovat a zakázat uživatele a/nebo skupiny v Samanage podle přiřazení uživatele a/nebo skupiny ve službě Azure AD.
+Tato část vás provede kroky konfigurace zřizování služby Azure AD. Umožňuje vytvářet, aktualizovat a zakázat uživatele nebo skupiny v Samanage podle přiřazení uživatele nebo skupinu ve službě Azure AD.
 
 > [!TIP]
-> Můžete také povolit založené na SAML jednotného přihlašování pro Samanage, postupujte podle pokynů uvedených v [Samanage jednotné přihlašování – kurz](samanage-tutorial.md). Jednotné přihlašování se dá nakonfigurovat nezávisle na automatické zřizování uživatelů, i když tyto dvě funkce návrzích mezi sebou.
+> Také můžete povolit na základě SAML jednotného přihlašování pro Samanage. Postupujte podle pokynů [Samanage jednotné přihlašování – kurz](samanage-tutorial.md). Jednotné přihlašování se dá nakonfigurovat nezávisle na automatické zřizování uživatelů, i když tyto dvě funkce se vzájemně doplňují.
 
-### <a name="to-configure-automatic-user-provisioning-for-samanage-in-azure-ad"></a>Konfigurace automatické zřizování uživatelů pro Samanage ve službě Azure AD:
+### <a name="configure-automatic-user-provisioning-for-samanage-in-azure-ad"></a>Konfigurovat automatické zřizování uživatelů pro Samanage ve službě Azure AD
 
-1. Přihlaste se k [webu Azure portal](https://portal.azure.com) a vyberte **podnikové aplikace**vyberte **všechny aplikace**a pak vyberte **Samanage**.
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com). Vyberte **podnikové aplikace** > **všechny aplikace** > **Samanage**.
 
     ![Okno aplikace organizace](common/enterprise-applications.png)
 
@@ -102,62 +100,66 @@ Tato část vás provede kroky pro konfiguraci Azure AD služby zřizování a v
 
 4. Nastavte **režim zřizování** k **automatické**.
 
-    ![Samanage zřizování](./media/samanage-provisioning-tutorial/ProvisioningCredentials.png)
+    ![Režim zřizování Samanage](./media/samanage-provisioning-tutorial/ProvisioningCredentials.png)
 
-5. V části **přihlašovacích údajů správce** části, zadejte **uživatelské jméno správce** a **heslo správce** Samanage účtu. Mezi tyto hodnoty patří:
+5. V části **přihlašovacích údajů správce** části, zadejte uživatelské jméno admin a heslo správce vašeho účtu Samanage. Mezi tyto hodnoty patří:
 
-   * V **uživatelské jméno správce** pole, uživatelské jméno účtu správce ve svém tenantovi Samanage naplnit. Příklad: admin@contoso.com.
+   * V **uživatelské jméno správce** pole, zadejte uživatelské jméno účtu správce ve svém tenantovi Samanage. Příklad: admin@contoso.com.
 
-   * V **heslo správce** pole, naplnění heslo účtu správce odpovídající uživatelské jméno správce.
+   * V **heslo správce** pole, zadejte heslo účtu správce, který odpovídá uživatelské jméno správce.
 
-6. Po vyplnění polí zobrazených v kroku 5, klikněte na tlačítko **Test připojení** aby Azure AD můžete připojit k Samanage. Pokud se nepovede, ujistěte se, že váš účet Samanage má oprávnění správce a zkuste to znovu.
+6. Po vyplnění polí uvedené v kroku 5, vyberte **Test připojení** Ujistěte se, že Azure AD můžete připojit k Samanage. Pokud se nepovede, ujistěte se, že váš účet Samanage má oprávnění správce a zkuste to znovu.
 
-    ![Samanage zřizování](./media/samanage-provisioning-tutorial/TestConnection.png)
+    ![Samanage Test připojení](./media/samanage-provisioning-tutorial/TestConnection.png)
 
-7. V **e-mailové oznámení** zadejte e-mailovou adresu osoby nebo skupiny, který by měla přijímat oznámení zřizování chyba a zaškrtněte políčko **odeslání e-mailové oznámení, když dojde k selhání**.
+7. V **e-mailové oznámení** pole, zadejte e-mailovou adresu osoby nebo skupiny, ke zřizování chyba oznámení vůbec dostat. Vyberte **odeslání e-mailové oznámení, když dojde k selhání** zaškrtávací políčko.
 
-    ![Samanage zřizování](./media/samanage-provisioning-tutorial/EmailNotification.png)
+    ![Samanage oznamovacího e-mailu](./media/samanage-provisioning-tutorial/EmailNotification.png)
 
-8. Klikněte na **Uložit**.
+8. Vyberte **Uložit**.
 
 9. V části **mapování** vyberte **synchronizace Azure Active Directory uživatelům Samanage**.
 
-    ![Samanage zřizování](./media/samanage-provisioning-tutorial/UserMappings.png)
+    ![Synchronizace uživatelů Samanage](./media/samanage-provisioning-tutorial/UserMappings.png)
 
-10. Zkontrolujte atributy uživatele, které se synchronizují ze služby Azure AD do Samanage v **mapování atributů** oddílu. Atributy vybrané jako **odpovídající** vlastnosti se používají tak, aby odpovídaly uživatelské účty v Samanage pro operace update. Vyberte **Uložit** tlačítko potvrďte všechny změny.
+10. Zkontrolujte atributy uživatele, které se synchronizují ze služby Azure AD do Samanage v **mapování atributů** oddílu. Atributy vybrané jako **odpovídající** vlastnosti se používají tak, aby odpovídaly uživatelské účty v Samanage pro operace update. Chcete-li uložit všechny změny, vyberte **Uložit**.
 
-    ![Samanage zřizování](./media/samanage-provisioning-tutorial/UserAttributeMapping.png)
+    ![Samanage odpovídající atributy uživatele](./media/samanage-provisioning-tutorial/UserAttributeMapping.png)
 
 11. V části Povolit mapování skupin **mapování** vyberte **synchronizaci skupinám Azure Active Directory k Samanage**.
 
-    ![Samanage zřizování](./media/samanage-provisioning-tutorial/GroupMappings.png)
+    ![Samanage skupiny synchronizace](./media/samanage-provisioning-tutorial/GroupMappings.png)
 
-12. Nastavte **povoleno** k **Ano** synchronizace skupiny. Zkontrolujte skupiny atributů, které se synchronizují ze služby Azure AD do Samanage v **mapování atributů** oddílu. Atributy vybrané jako **odpovídající** vlastnosti se používají tak, aby odpovídaly uživatelské účty v Samanage pro operace update. Vyberte **Uložit** tlačítko potvrďte všechny změny.
+12. Nastavte **povoleno** k **Ano** synchronizace skupiny. Zkontrolujte skupiny atributů, které se synchronizují ze služby Azure AD do Samanage v **mapování atributů** oddílu. Atributy vybrané jako **odpovídající** vlastnosti se používají tak, aby odpovídaly uživatelské účty v Samanage pro operace update. Chcete-li uložit všechny změny, vyberte **Uložit**.
 
-    ![Samanage zřizování](./media/samanage-provisioning-tutorial/GroupAttributeMapping.png)
+    ![Samanage odpovídající skupinu atributů](./media/samanage-provisioning-tutorial/GroupAttributeMapping.png)
 
-13. Konfigurace filtrů oborů, najdete v následující pokyny uvedené v [Scoping filtr kurzu](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md).
+13. Konfigurace filtrů oborů, postupujte podle pokynů [oboru filtru kurzu](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md).
 
-14. Služba pro Samanage zřizování Azure AD povolit, změňte **stavu zřizování** k **na** v **nastavení** oddílu.
+14. Povolit služba pro Samanage, zřizování v Azure AD **nastavení** oddíl, změna **stavu zřizování** k **na**.
 
-    ![Samanage zřizování](./media/samanage-provisioning-tutorial/ProvisioningStatus.png)
+    ![Stav zřizování Samanage](./media/samanage-provisioning-tutorial/ProvisioningStatus.png)
 
-15. Definovat uživatele a/nebo skupiny, které chcete k poskytování Samanage výběrem požadované hodnoty do **oboru** v **nastavení** oddílu. Při výběru **synchronizovat všechny uživatele a skupiny** možnost, zvažte omezení, jak je popsáno v **omezení konektoru** níže v části.
+15. Definujte uživatele nebo skupiny, které chcete k poskytování Samanage. V **nastavení** vyberte hodnoty, které chcete v **oboru**. Když vyberete **synchronizovat všechny uživatele a skupiny** možnost, zvažte omezení, jak je popsáno v části "Konektor omezení."
 
-    ![Samanage zřizování](./media/samanage-provisioning-tutorial/ScopeSync.png)
+    ![Samanage oboru](./media/samanage-provisioning-tutorial/ScopeSync.png)
 
-16. Až budete připravení ke zřízení, klikněte na tlačítko **Uložit**.
+16. Jakmile budete připraveni ke zřízení, vyberte **Uložit**.
 
-    ![Samanage zřizování](./media/samanage-provisioning-tutorial/SaveProvisioning.png)
+    ![Uložit Samanage](./media/samanage-provisioning-tutorial/SaveProvisioning.png)
 
 
-Tato operace spustí počáteční synchronizaci všech uživatelů a/nebo skupiny definované v **oboru** v **nastavení** oddílu. Počáteční synchronizace trvá déle než při následné synchronizace, ke kterým dochází přibližně každých 40 minut tak dlouho, dokud je spuštěna služba zřizování Azure AD. Můžete použít **podrobnosti synchronizace** části ke sledování průběhu a odkazech na zřizování sestava aktivity, která popisuje všechny akce, které provádí služba na Samanage zřizování Azure AD.
+Tato operace spustí počáteční synchronizaci všech uživatelů nebo skupinám definovaným v **oboru** v **nastavení** oddílu. Počáteční synchronizace trvá déle než novější se synchronizuje. Odehrávalo přibližně každých 40 minut za předpokladu, spustí služba zřizování Azure AD. 
 
-Další informace o tom, jak číst zřizování protokoly Azure AD najdete v tématu [hlášení o zřizování automatické uživatelských účtů](../manage-apps/check-status-user-account-provisioning.md).
+Můžete použít **podrobnosti synchronizace** části ke sledování průběhu a odkazech na sestavu aktivit zřizování. Sestava popisuje všechny akce prováděné služba na Samanage zřizování Azure AD.
+
+Informace o tom, jak číst zřizování protokoly Azure AD najdete v tématu [hlášení o zřizování automatické uživatelských účtů](../manage-apps/check-status-user-account-provisioning.md).
 
 ## <a name="connector-limitations"></a>Omezení konektoru
 
-* Pokud **synchronizovat všechny uživatele a skupiny** výběru a výchozí hodnota je nastavena pro Samanage **role** atribut, ujistěte se, že na požadovanou hodnotu v rámci **výchozí hodnotu, pokud má hodnotu null (je volitelné)** poli je vyjádřen v následujícím formátu **{"displayName": "role"}** kde role je požadovanou výchozí hodnotu.
+Pokud vyberete **synchronizovat všechny uživatele a skupiny** možnosti a hodnoty pro Samanage **role** hodnotu v rámci atributu **výchozí hodnotu, pokud má hodnotu null (je volitelný)** pole musí být vyjádřena v následujícím formátu:
+
+- {"displayName": "role"}, kde chcete, aby výchozí hodnota je role.
 
 ## <a name="additional-resources"></a>Další materiály
 

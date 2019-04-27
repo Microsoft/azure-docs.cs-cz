@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 01/09/2018
 ms.author: alkohli@microsoft.com
-ms.openlocfilehash: e6053ef9b5e1fc113e3bd3057d627347f285cd99
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 564c121aa90746498a94022fd0fb8d8529142c91
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58003122"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62128579"
 ---
 # <a name="use-windows-powershell-for-storsimple-to-administer-your-device"></a>Správa zařízení pomocí Windows Powershellu pro StorSimple
 
@@ -159,7 +159,7 @@ Následující tabulka uvádí přehled všechny běžné úlohy správy a kompl
 
 V prostředí Windows PowerShell pro StorSimple je k dispozici rutiny nápovědy. Online a aktuální verzi této nápovědy je také k dispozici, což vám umožní aktualizovat nápovědu ve vašem systému.
 
-Získání nápovědy v toto rozhraní je podobné jako v prostředí Windows PowerShell a většina rutin souvisejících s nápovědou bude fungovat. Nápověda pro Windows PowerShell online najdete v knihovně TechNet: [Skriptování v prostředí Windows PowerShell](https://go.microsoft.com/fwlink/?LinkID=108518).
+Získání nápovědy v toto rozhraní je podobné jako v prostředí Windows PowerShell a většina rutin souvisejících s nápovědou bude fungovat. Můžete najít online nápovědy pro Windows PowerShell: [Microsoft.PowerShell.Core](/powershell/module/Microsoft.PowerShell.Core/).
 
 Následuje stručný popis typů nápovědy pro toto rozhraní prostředí Windows PowerShell, včetně aktualizace v nápovědě.
 

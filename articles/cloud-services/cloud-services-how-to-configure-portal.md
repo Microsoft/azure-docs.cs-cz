@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/07/2016
 ms.author: jeconnoc
-ms.openlocfilehash: 904056363c685ef0a16b229ce72383eb80701a39
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: 4d8d3b93ef2a6347076fada53932b5fc56838d20
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39006409"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61435732"
 ---
 # <a name="how-to-configure-cloud-services"></a>Postup konfigurace služby Cloud Services
 
@@ -80,7 +80,7 @@ Můžete nastavit prostřednictvím vzdálené plochy [webu Azure portal (nastav
 
 K restartování, obnovení z Image nebo vzdáleně se připojte Cloudovou službu, vyberte instanci cloudové služby.
 
-![Instance cloudové služby](./media/cloud-services-how-to-configure-portal/cs-instance.png)
+![Cloud Service Instance](./media/cloud-services-how-to-configure-portal/cs-instance.png)
 
 Potom iniciovat připojení ke vzdálené ploše, vzdáleně restartovat instanci nebo vzdáleně obnovit z Image (začít s novou imagí) instance.
 

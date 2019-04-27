@@ -9,11 +9,11 @@ ms.date: 01/22/2019
 ms.author: danlep
 ms.custom: seodec18, H1Hack27Feb2017, mvc
 ms.openlocfilehash: 24bdd52673c65d039166dc28f9f0a0a784569a1a
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59678696"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60787376"
 ---
 # <a name="quickstart-create-a-private-container-registry-using-the-azure-cli"></a>Rychlý start: Vytvořit privátní registr pomocí rozhraní příkazového řádku Azure
 

@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 02/07/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3ad0c1ac2ce39fd919cb82ce2bdb0841edf9c777
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: e9fa951e50a38b8bc63cc4e26ef54c013531bd7d
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/23/2019
-ms.locfileid: "60278941"
+ms.locfileid: "62098475"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-factset"></a>Kurz: Integrace Azure Active Directory s FactSet
 
@@ -105,12 +105,12 @@ Ke konfiguraci Azure AD jednotné přihlašování s FactSet, proveďte následu
 
     ![FactSet domény a adresy URL jednotného přihlašování – informace](common/sp-identifier.png)
 
-    a. V **přihlašovací adresa URL** textové pole, zadejte adresu URL, pomocí následujícího vzorce: `https://login.factset.com/services/auth-test?idpid=<GUID>`
+    a. V **přihlašovací adresa URL** textové pole, zadejte adresu URL, pomocí následujícího vzorce: `https://<intendedDestinationURL>.factset.com?idpid=<GUID>`
 
     b. V **identifikátor (Entity ID)** textové pole, zadejte adresu URL, pomocí následujícího vzorce: `https://login.factset.com`
 
     > [!NOTE]
-    > Tyto hodnoty nejsou skutečný. Aktualizujte tyto hodnoty skutečné přihlašovací adresu URL a identifikátor. Kontakt [tým podpory FactSet klienta](mailto:support@factset.com) k získání těchto hodnot. Můžete také odkazovat na tyto vzory se dají ukazuje **základní konfiguraci SAML** části webu Azure Portal.
+    > Tyto hodnoty nejsou skutečný. Aktualizujte tyto hodnoty skutečné přihlašovací adresu URL a identifikátor. Obraťte se na svého správce účtu FactSet k získání těchto hodnot. Pokud si nejste jisti, který je zástupce FactSet, najdete pomoc na [stránku čísla podpory FactSet](https://www.factset.com/support-numbers). Můžete také odkazovat na tyto vzory se dají ukazuje **základní konfiguraci SAML** části webu Azure Portal.
 
 5. Na **nastavte si jednotné přihlašování pomocí SAML** stránku, **podpisový certifikát SAML** klikněte na tlačítko **Stáhnout** ke stažení **kód XML metadat federace**  z se zadanými možnostmi podle vašich požadavků a uložit je ve vašem počítači.
 
@@ -128,7 +128,7 @@ Ke konfiguraci Azure AD jednotné přihlašování s FactSet, proveďte následu
 
 ### <a name="configure-factset-single-sign-on"></a>Konfigurace FactSet jednotné přihlašování
 
-Ke konfiguraci jednotného přihlašování na **FactSet** straně, je nutné odeslat na stažený **kód XML metadat federace** a vhodné zkopírovaný adresy URL z webu Azure portal [tým podpory FactSet](mailto:support@factset.com). Nastavují tohoto nastavení můžete mít správně nastavené na obou stranách připojení SAML SSO.
+Ke konfiguraci jednotného přihlašování na **FactSet** straně, je nutné odeslat na stažený **kód XML metadat federace** a odpovídající zkopírovaný adresy URL z webu Azure portal pro podporu FactSet jednotlivce jste v kontaktu s. Nastavují tohoto nastavení můžete mít správně nastavené na obou stranách připojení SAML SSO.
 
 ### <a name="create-an-azure-ad-test-user"></a>Vytvořit testovacího uživatele Azure AD 
 
@@ -183,7 +183,7 @@ V této části je povolit Britta Simon k udělení přístupu k FactSet použit
 
 ### <a name="create-factset-test-user"></a>Vytvoření FactSet testovacího uživatele
 
-V této části vytvoříte uživatele v FactSet jako Britta Simon. Práce s [tým podpory FactSet](mailto:support@factset.com) přidat uživatele na platformě FactSet. Uživatelé musí vytvořit a aktivovat, než použití jednotného přihlašování.
+V této části vytvoříte uživatele v FactSet jako Britta Simon. Práce s vaší FactSet podporu manažeři zákaznických účtů přidat uživatele na platformě FactSet. Uživatelé musí vytvořit a aktivovat, než použití jednotného přihlašování.
 
 ### <a name="test-single-sign-on"></a>Test jednotného přihlašování 
 

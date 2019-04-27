@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.date: 12/13/2018
 ms.author: dobett
 ms.openlocfilehash: 87f6b9cef50e4b8c388be835b2aa7bed8177ac4b
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53601079"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61447424"
 ---
 # <a name="use-the-azureiotsolutionscom-site-to-deploy-your-solution-accelerator"></a>Použití azureiotsolutions.com webu nasadit akcelerátor řešení
 
@@ -26,7 +26,7 @@ Akcelerátory řešení Azure IoT můžete nasadit ke svému předplatnému Azur
 
 Můžete nasadit akcelerátory řešení v následující konfigurace:
 
-* **Standardní**: Nasazení rozšířené infrastruktury pro vývoj produkčního prostředí. Azure Container Service nasazuje mikroslužby do několika virtuálních počítačů Azure. Kubernetes orchestruje kontejnery Dockeru, které jsou hostiteli jednotlivých mikroslužeb.
+* **Standard**: Nasazení rozšířené infrastruktury pro vývoj produkčního prostředí. Azure Container Service nasazuje mikroslužby do několika virtuálních počítačů Azure. Kubernetes orchestruje kontejnery Dockeru, které jsou hostiteli jednotlivých mikroslužeb.
 * **Základní**: Verze nižšími náklady pro ukázku nebo otestování nasazení. Všechny mikroslužby se nasazují do jednoho virtuálního počítače Azure.
 * **Místní**: Nasazení místního počítače pro vývoj a testování. Tento přístup nasazuje mikroslužby do místní kontejner Dockeru a připojí ke službě IoT Hub, Azure Cosmos DB a služby Azure storage v cloudu.
 

@@ -11,11 +11,11 @@ ms.topic: tutorial
 ms.date: 02/13/2019
 ms.author: aahi
 ms.openlocfilehash: 24767f73e3e1409f81262ad57f3fd5152a4ec319
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60003460"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60828308"
 ---
 # <a name="tutorial-integrate-power-bi-with-the-text-analytics-cognitive-service"></a>Kurz: Integrace Power BI s Text Analytics služby Cognitive Services
 

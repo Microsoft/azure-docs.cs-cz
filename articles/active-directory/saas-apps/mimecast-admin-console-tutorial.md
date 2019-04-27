@@ -16,11 +16,11 @@ ms.date: 12/27/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 2019c61ccbffa1e68c1ef53c718d4839a604aa44
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57849954"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62123726"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-mimecast-admin-console"></a>Kurz: Integrace Azure Active Directory pomocí konzoly pro správu Mimecast
 

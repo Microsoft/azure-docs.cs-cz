@@ -16,11 +16,11 @@ ms.date: 10/31/2018
 ms.author: dekapur
 ms.custom: mvc, devcenter
 ms.openlocfilehash: bef86b189064a82b6605e8b99a374b1ee92682e2
-ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/25/2019
-ms.locfileid: "56805116"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60810409"
 ---
 # <a name="tutorial-debug-a-service-fabric-mesh-application-running-in-your-local-development-cluster"></a>Kurz: Ladění aplikace Service Fabric sítě ve vašem místním vývojovém clusteru spuštěná
 

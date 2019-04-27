@@ -12,15 +12,15 @@ ms.topic: quickstart
 ms.date: 11/07/2018
 ms.author: azfuncdf
 ms.openlocfilehash: 2a0cee1ad750144f30b9ab6732e0bbdf8138db28
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54038145"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60731518"
 ---
 # <a name="create-your-first-durable-function-in-c"></a>Vytvoření první funkce trvalý v jazyce C\#
 
-*Odolná služba Functions* je rozšířením [Azure Functions](../functions-overview.md) , který umožňuje zapisovat stavové funkce v prostředí bez serveru. Rozšíření spravuje stav, kontrolní body a restartuje za vás.
+*Odolná služba Functions* je rozšířením [Azure Functions](../functions-overview.md) , který umožňuje zapisovat stavové funkce v prostředí bez serveru. Toto rozšíření za vás spravuje stav, kontrolní body a restartování.
 
 V tomto článku se dozvíte, jak používat nástroje Visual Studio 2017 pro službu Azure Functions místně vytvořit a otestovat funkci "hello world" trvalý.  Tato funkce orchestruje a zřetězen dohromady volání dalších funkcí. Kód funkce potom publikujete do Azure. Tyto nástroje jsou dostupné jako součást sady funkcí Azure – vývoj v sadě Visual Studio 2017.
 
@@ -76,7 +76,7 @@ V následujících krocích používá šablony k vytvoření kódových odolné
 
 Nová funkce trvalý se přidá do aplikace.  Otevřete nový soubor .cs, chcete-li zobrazit obsah. Tato funkce trvalý je jednoduchou funkci příklad řetězení pomocí následujících metod:  
 
-| Metoda | functionName | Popis |
+| Metoda | FunctionName | Popis |
 | -----  | ------------ | ----------- |
 | **`RunOrchestrator`** | `<file-name>` | Spravuje trvalé Orchestrace. V tomto případě orchestraci spustí, vytvoří seznam a přidá výsledek tři funkce volání do seznamu.  Po dokončení tři volání se vrátí seznam. |
 | **`SayHello`** | `<file-name>_Hello` | Funkce vrátí hello. Toto je funkce, která obsahuje obchodní logiku, která je právě orchestrované. |

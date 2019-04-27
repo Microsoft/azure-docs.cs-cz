@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 11/22/2017
 ms.author: apimpm
-ms.openlocfilehash: 940756917c8f377e7d134818409e6287a4031e15
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
-ms.translationtype: HT
+ms.openlocfilehash: 0b120cedf35a6f88c880443dee626cce18835d42
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38239804"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60859247"
 ---
 # <a name="import-a-soap-api-and-convert-to-rest"></a>Import rozhraní API protokolu SOAP a převod na REST
 
@@ -33,7 +33,7 @@ V tomto článku získáte informace o těchto tématech:
 
 ## <a name="prerequisites"></a>Požadavky
 
-Projděte si následující rychlý start: [Vytvoření instance služby Azure API Management](get-started-create-service-instance.md)
+Projděte si následující rychlý start: [Vytvoření instance Azure API Managementu](get-started-create-service-instance.md)
 
 [!INCLUDE [api-management-navigate-to-instance.md](../../includes/api-management-navigate-to-instance.md)]
 
@@ -48,9 +48,9 @@ Projděte si následující rychlý start: [Vytvoření instance služby Azure A
 
     ![Ze SOAP do REST](./media/restify-soap-api/soap-to-rest.png)
 
-5. Stiskněte tabulátor.
+5. Stiskněte klávesu Tab.
 
-    Následující pole se vyplní informacemi z rozhraní API SOAP: Zobrazovaný název, Název, Popis.
+    Následující pole se vyplní údaje z rozhraní SOAP API: Zobrazované jméno, název, popis.
 6. Přidejte příponu adresy URL rozhraní API. Přípona je název, který identifikuje toto konkrétní rozhraní API v této instanci APIM. Musí být v této instanci APIM jedinečná.
 9. Publikujte rozhraní API jeho přidružením k produktu. V tomto případě se použije produkt *Unlimited*.  Pokud chcete, aby bylo rozhraní API publikované a k dispozici pro vývojáře, přidejte ho k produktu. Můžete to udělat při vytváření rozhraní API nebo nastavit později.
 
@@ -94,7 +94,7 @@ Pokud chcete otestovat rozhraní API, můžete operace volat také z **Portálu 
 
 [!INCLUDE [api-management-define-api-topics.md](../../includes/api-management-define-api-topics.md)]
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 > [!div class="nextstepaction"]
 > [Transformace a ochrana publikovaného rozhraní API](transform-api.md)

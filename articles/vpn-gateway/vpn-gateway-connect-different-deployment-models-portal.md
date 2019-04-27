@@ -9,11 +9,11 @@ ms.workload: infrastructure-services
 ms.date: 10/17/2018
 ms.author: cherylmc
 ms.openlocfilehash: bf7d80bbbe63204cda47719a7d7c019013ad800b
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58099167"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62124001"
 ---
 # <a name="connect-virtual-networks-from-different-deployment-models-using-the-portal"></a>Připojení virtuálních sítí z různých modelů nasazení pomocí portálu
 

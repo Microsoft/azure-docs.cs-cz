@@ -12,11 +12,11 @@ ms.topic: article
 ms.date: 04/16/2019
 ms.author: diberry
 ms.openlocfilehash: e0e8b9f767376db8028a3ac4a2d8659bab69268b
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60005863"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60829952"
 ---
 # <a name="install-and-run-text-analytics-containers"></a>Instalace a spouštění kontejnerů pro analýzu textu
 
@@ -110,7 +110,7 @@ Jakmile bude kontejner ve [hostitelský počítač](#the-host-computer), použij
 
 Použití [dockeru spustit](https://docs.docker.com/engine/reference/commandline/run/) příkaz ke spuštění tři kontejnery. Příkaz používá následující parametry:
 
-| Zástupný symbol | Value |
+| Zástupný symbol | Hodnota |
 |-------------|-------|
 |{BILLING_KEY} | Tento klíč se používá ke spuštění kontejneru a je k dispozici na webu Azure portal `Cognitive Services` stránka klíče.  |
 |{BILLING_ENDPOINT_URI} | Fakturační koncový bod hodnotu identifikátoru URI je k dispozici na Azure `Cognitive Services` stránka s přehledem. <br><br>Příklad:<br>`Billing=https://westus.api.cognitive.microsoft.com/text/analytics/v2.0`|

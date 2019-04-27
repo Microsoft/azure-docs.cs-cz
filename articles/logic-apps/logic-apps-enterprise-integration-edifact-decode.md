@@ -4,18 +4,18 @@ description: Ověřování EDI a generování potvrzení s dekodér zprávy EDIF
 services: logic-apps
 ms.service: logic-apps
 ms.suite: integration
-author: divyaswarnkar
-ms.author: divswa
-ms.reviewer: jonfan, estfan, LADocs
+author: ecfan
+ms.author: estfan
+ms.reviewer: jonfan, divswa, LADocs
 ms.topic: article
 ms.assetid: 0e61501d-21a2-4419-8c6c-88724d346e81
 ms.date: 01/27/2017
-ms.openlocfilehash: b101922d15a3f90c29eff51c223d2ea7dc30ddf2
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: ccad6eab68fff0891ba287a076692f9437495a4c
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43125348"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62097823"
 ---
 # <a name="decode-edifact-messages-for-azure-logic-apps-with-the-enterprise-integration-pack"></a>Dekódování zprávy EDIFACT pro Azure Logic Apps sadou Enterprise Integration Pack
 
@@ -81,13 +81,13 @@ Dekódování EDIFACT connector provádí tyto úlohy:
   * Ověří proti dalších kontrolních čísel skupiny v výměna kontrolní číslo skupiny. 
   * Ověří, že kontrolní číslo sady transakcí pro ostatní transakce sada kontrolních čísel v této skupině.
 * Rozdělí výměna do sady transakcí nebo zachová celý výměny:
-  * Rozdělit výměnu jako sady transakcí – pozastavit sady transakcí při chybě: Nastaví výměny rozdělí do transakce a Parsuje každá sada transakcí. 
+  * Rozdělit výměnu jako sady transakcí – pozastavit sady transakcí při chybě: Výměna rozdělí do transakce nastaví a Parsuje každá sada transakcí. 
   X12 dekódování akce vypíše pouze ty transakce sad, které neúspěšné ověření na `badMessages`a nastaví zbývající transakce na výstupy `goodMessages`.
-  * Rozdělit výměnu jako sady transakcí – pozastavit výměnu při chybě: Nastaví výměny rozdělí do transakce a Parsuje každá sada transakcí. 
+  * Rozdělit výměnu jako sady transakcí – pozastavit výměnu při chybě: Výměna rozdělí do transakce nastaví a Parsuje každá sada transakcí. 
   Pokud je jeden nebo více transakcí nastaví v výměna neúspěšné ověření, X12 dekódování akce vypíše všechny transakce nastaví v této výměny na `badMessages`.
-  * Zachovat výměnu – pozastavit sady transakcí při chybě: zachování výměna a celé výměně dávkové zpracování. 
+  * Zachovat výměnu – pozastavit sady transakcí při chybě: Zachovat výměnu a celé výměně dávkové zpracování. 
   X12 dekódování akce vypíše pouze ty transakce sad, které neúspěšné ověření na `badMessages`a nastaví zbývající transakce na výstupy `goodMessages`.
-  * Zachovat výměnu – pozastavit výměnu při chybě: zachování výměna a celé výměně dávkové zpracování. 
+  * Zachovat výměnu – pozastavit výměnu při chybě: Zachovat výměnu a celé výměně dávkové zpracování. 
   Pokud je jeden nebo více transakcí nastaví v výměna neúspěšné ověření, X12 dekódování akce vypíše všechny transakce nastaví v této výměny na `badMessages`.
 * Generuje technické (řízení) nebo funkční potvrzení (je-li konfigurováno).
   * Technické potvrzení nebo CONTRL ACK hlásí výsledky syntaktické kontrolu dokončení přijatý výměny.

@@ -9,11 +9,11 @@ ms.topic: quickstart
 ms.date: 12/26/2018
 ms.author: rimman
 ms.openlocfilehash: cc910359b5519d2cf1bd8a8bf019924dff660362
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57852276"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60891041"
 ---
 # <a name="quickstart-build-a-net-web-app-using-azure-cosmos-dbs-api-for-mongodb"></a>Rychlý start: Vytvoření webové aplikace .NET pomocí rozhraní API služby Azure Cosmos DB pro MongoDB 
 

@@ -3,8 +3,8 @@ title: Diagnostika problému s filtrováním síťového provozu virtuálního p
 description: V tomto rychlém startu zjistíte, jak diagnostikovat problém s filtrováním síťového provozu virtuálního počítače pomocí funkce ověření toku protokolů IP služby Azure Network Watcher.
 services: network-watcher
 documentationcenter: network-watcher
-author: jimdial
-manager: jeconnoc
+author: KumudD
+manager: twooley
 editor: ''
 tags: azure-resource-manager
 Customer intent: I need to diagnose a virtual machine (VM) network traffic filter problem that prevents communication to and from a VM.
@@ -15,14 +15,14 @@ ms.topic: quickstart
 ms.tgt_pltfrm: network-watcher
 ms.workload: infrastructure
 ms.date: 04/20/2018
-ms.author: jdial
+ms.author: kumud
 ms.custom: mvc
 ms.openlocfilehash: d469ee5148e3742f30795c09acf1a217db1b997a
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
-ms.translationtype: MT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58004647"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61065099"
 ---
 # <a name="quickstart-diagnose-a-virtual-machine-network-traffic-filter-problem-using-the-azure-portal"></a>Rychlý start: Diagnostikovat problém filtrování provozu sítě virtuálních počítačů pomocí webu Azure portal
 
@@ -47,7 +47,7 @@ Přihlaste se k webu Azure Portal na adrese https://portal.azure.com.
     |Heslo| Zadejte libovolné heslo. Heslo musí obsahovat nejméně 12 znaků a musí splňovat [zadané požadavky na složitost](../virtual-machines/windows/faq.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm).|
     |Předplatné| Vyberte své předplatné.|
     |Skupina prostředků| Vyberte **Vytvořit novou** a zadejte **myResourceGroup**.|
-    |Umístění| Vyberte **USA – východ**.|
+    |Location| Vyberte **USA – východ**.|
 
 4. Vyberte velikost virtuálního počítače a pak vyberte **Vybrat**.
 5. V části **Nastavení** přijměte všechny výchozí hodnoty a vyberte **OK**.
@@ -82,7 +82,7 @@ Když vytvoříte virtuální počítač, Azure u něj ve výchozím nastavení 
     | Virtuální počítač   | Vyberte myVm.                                                                                       |
     | Síťové rozhraní | myVm – název síťového rozhraní, které web Azure Portal vytvořil, když jste vytvořili virtuální počítač, je jiný. |
     | Protocol (Protokol)          | TCP                                                                                               |
-    | Směr         | Odchozí                                                                                          |
+    | Direction         | Odchozí                                                                                          |
     | Místní IP adresa  | 10.0.0.4                                                                                          |
     | Místní port      | 60000                                                                                                |
     | Vzdálená IP adresa | 13.107.21.200 – jeden z adresy < www.bing.com>.                                             |

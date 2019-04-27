@@ -8,12 +8,12 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 11/06/2018
 ms.author: hrasheed
-ms.openlocfilehash: aa9cdbaece2714dd4869268f394e6840fe42edda
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: df35ee9791dc1090385e2d2aed5966a1292ddc64
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/23/2019
-ms.locfileid: "60253519"
+ms.locfileid: "62097357"
 ---
 # <a name="use-empty-edge-nodes-on-apache-hadoop-clusters-in-hdinsight"></a>Použití prázdných hraničních uzlů v clusterech Apache Hadoop v HDInsight
 

@@ -11,11 +11,11 @@ ms.topic: quickstart
 ms.date: 02/21/2019
 ms.author: erhopf
 ms.openlocfilehash: cb5676b2609ffb16dd1ef5454ee443bc69fab782
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58182315"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60879817"
 ---
 # <a name="quickstart-use-the-translator-text-api-to-detect-text-language-using-go"></a>Rychlý start: Zjistit jazyk textu pomocí jazyka Go pomocí rozhraní Translator Text API
 

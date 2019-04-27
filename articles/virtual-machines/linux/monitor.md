@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.date: 08/14/2017
 ms.author: cynthn
 ms.topic: conceptual
-ms.openlocfilehash: dcc7cf71b7465534ab8e9f5f3479e00a8427d5da
-ms.sourcegitcommit: d89b679d20ad45d224fd7d010496c52345f10c96
+ms.openlocfilehash: 248a77ac0894cc8a360b9888983e082741e9cc55
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57790653"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61473959"
 ---
 # <a name="how-to-monitor-virtual-machines-in-azure"></a>Monitorování virtuálních počítačů v Azure
 

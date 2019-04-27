@@ -1,19 +1,27 @@
 ---
 title: Java uživatelem definované funkce (UDF) s Apache Hive v HDInsight – Azure
 description: Zjistěte, jak vytvořit založené na jazyce Java uživatelem definované funkce (UDF), která funguje s Apache Hive. Tento příklad převede UDF tabulku textové řetězce na malá písmena.
-author: hrasheed-msft
-ms.reviewer: jasonh
+services: hdinsight
+documentationcenter: ''
+author: Blackmist
+manager: jhubbard
+editor: cgronlun
+ms.assetid: 8d4f8efe-2f01-4a61-8619-651e873c7982
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
+ms.devlang: java
 ms.topic: conceptual
-ms.date: 03/21/2019
-ms.author: hrasheed
-ms.openlocfilehash: b8417fe4c15259a7fd485254cf9edd2c8c082e92
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.tgt_pltfrm: na
+ms.workload: big-data
+origin.date: 03/21/2019
+ms.date: 04/29/2019
+ms.author: v-yiso
+ms.openlocfilehash: 24c2e8b9600b3d622d3d6b42b3bc3615a87ff853
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/23/2019
-ms.locfileid: "60537628"
+ms.locfileid: "62122026"
 ---
 # <a name="use-a-java-udf-with-apache-hive-in-hdinsight"></a>Použijte Java UDF Apache Hive v HDInsight
 
@@ -193,13 +201,13 @@ V následujících příkazů nahraďte `sshuser` s skutečné uživatelské jm�
 2. Použití `scp` příkaz zkopírujte soubor do clusteru HDInsight tak, že zadáte následující příkaz:
 
     ```cmd
-    scp ./target/ExampleUDF-1.0-SNAPSHOT.jar sshuser@mycluster-ssh.azurehdinsight.net:
+    scp ./target/ExampleUDF-1.0-SNAPSHOT.jar sshuser@mycluster-ssh.azurehdinsight
     ```
 
 3. Připojte se ke clusteru pomocí SSH tak, že zadáte následující příkaz:
 
     ```cmd
-    ssh sshuser@mycluster-ssh.azurehdinsight.net
+    ssh sshuser@mycluster-ssh.azurehdinsight.cn
     ```
 
 4. Z otevřené relace SSH zkopírujte soubor jar do úložiště HDInsight.

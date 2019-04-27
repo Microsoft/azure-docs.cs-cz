@@ -10,11 +10,11 @@ ms.date: 03/03/2017
 ms.author: rogarana
 ms.subservice: common
 ms.openlocfilehash: eb85f8c756e7373a8dedabbce362cfa534e56fd8
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57849172"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61483532"
 ---
 # <a name="storage-analytics"></a>Storage Analytics
 

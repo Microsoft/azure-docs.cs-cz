@@ -16,11 +16,11 @@ ms.date: 12/12/2018
 ms.author: mathoma
 ms.reviewer: jroth
 ms.openlocfilehash: 99c4f0f99af61196cf1a12f2f68a7d10d8b2e6c7
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58481276"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61477157"
 ---
 # <a name="what-is-sql-server-on-azure-virtual-machines-windows"></a>Co je SQL Server na virtuálních počítačích Azure? (Windows)
 
@@ -58,7 +58,7 @@ Chcete-li začít, zvolte image virtuálního počítače s SQL Serverem s poža
 ### <a id="payasyougo"></a> Průběžné platby
 Následující tabulka obsahuje matici imagí SQL Serveru s průběžnými platbami.
 
-| Verze | Operační systém | Edice |
+| Version | Operační systém | Edice |
 | --- | --- | --- |
 | **SQL Server 2017** |Windows Server 2016 |[Enterprise](https://portal.azure.com/#create/Microsoft.SQLServer2017EnterpriseWindowsServer2016), [Standard](https://portal.azure.com/#create/Microsoft.SQLServer2017StandardonWindowsServer2016), [Web](https://portal.azure.com/#create/Microsoft.SQLServer2017WebonWindowsServer2016), [Express](https://portal.azure.com/#create/Microsoft.FreeSQLServerLicenseSQLServer2017ExpressonWindowsServer2016), [Developer](https://portal.azure.com/#create/Microsoft.FreeSQLServerLicenseSQLServer2017DeveloperonWindowsServer2016) |
 | **SQL Server 2016 SP2** |Windows Server 2016 |[Enterprise](https://portal.azure.com/#create/Microsoft.SQLServer2016SP2EnterpriseWindowsServer2016), [Standard](https://portal.azure.com/#create/Microsoft.SQLServer2016SP2StandardWindowsServer2016), [Web](https://portal.azure.com/#create/Microsoft.SQLServer2016SP2WebWindowsServer2016), [Express](https://portal.azure.com/#create/Microsoft.FreeLicenseSQLServer2016SP2ExpressWindowsServer2016), [Developer](https://portal.azure.com/#create/Microsoft.FreeLicenseSQLServer2016SP2DeveloperWindowsServer2016) |
@@ -76,7 +76,7 @@ Můžete také používat vlastní licenci (BYOL). V tomto scénáři zaplatíte
 
 Používání vlastní licence, můžete buď převést existující virtuální počítač SQL platby za využití nebo můžete nasadit bitovou kopii s předponou **{BYOL}**. Další informace o přepínání mezi platby za využití a BYOL váš licenční model, najdete v části [jak změnit licenční model virtuálního počítače SQL](virtual-machines-windows-sql-ahb.md). 
 
-| Verze | Operační systém | Edice |
+| Version | Operační systém | Edice |
 | --- | --- | --- |
 | **SQL Server 2017** |Windows Server 2016 |[Enterprise BYOL](https://portal.azure.com/#create/Microsoft.BYOLSQLServer2017EnterpriseWindowsServer2016), [Standard BYOL](https://portal.azure.com/#create/Microsoft.BYOLSQLServer2017StandardonWindowsServer2016) |
 | **SQL Server 2016 SP2** |Windows Server 2016 |[Enterprise BYOL](https://portal.azure.com/#create/Microsoft.BYOLSQLServer2016SP2EnterpriseWindowsServer2016), [Standard BYOL](https://portal.azure.com/#create/Microsoft.BYOLSQLServer2016SP2StandardWindowsServer2016) |
@@ -108,7 +108,7 @@ Program Zlepšování softwaru a služeb na základě zkušeností uživatelů (
 ### <a name="windows-virtual-machines"></a>Windows Virtual Machines
 * [Přehled služby Virtual Machines](../overview.md)
 
-### <a name="storage"></a>Storage
+### <a name="storage"></a>Úložiště
 * [Úvod do Microsoft Azure Storage](../../../storage/common/storage-introduction.md)
 
 ### <a name="networking"></a>Sítě

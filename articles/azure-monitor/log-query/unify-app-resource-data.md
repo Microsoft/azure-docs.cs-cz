@@ -13,11 +13,11 @@ ms.topic: conceptual
 ms.date: 02/19/2019
 ms.author: magoedte
 ms.openlocfilehash: 3f3de81197b05d4f025a3fd8638cffe4b07cecad
-ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56429512"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61424635"
 ---
 # <a name="unify-multiple-azure-monitor-application-insights-resources"></a>Sjednocení několik prostředků Azure monitoru Application Insights 
 Tento článek popisuje, jak dotaz a zobrazit všechna data protokolů Application Insights aplikaci na jednom místě, i když se nachází v různých předplatných Azure, jako náhrada vyřazení Application Insights Connector. Počet prostředků prostředky Application Insights, které mohou obsahovat v jediném dotazu je omezena na 100.  
@@ -112,7 +112,7 @@ V následující tabulce jsou uvedeny rozdíly ve schématu mezi Log Analytics a
 | Prohlížeč | client_browser |
 | Město | client_city |
 | Když | client_IP |
-| Počítač | cloud_RoleInstance | 
+| Computer | cloud_RoleInstance | 
 | Země | client_CountryOrRegion | 
 | CustomEventCount | itemCount | 
 | CustomEventDimensions | customDimensions |

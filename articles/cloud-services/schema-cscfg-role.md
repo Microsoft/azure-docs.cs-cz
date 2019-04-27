@@ -1,8 +1,9 @@
 ---
 title: Schéma rolí cloudové služby Azure Cloud Services | Dokumentace Microsoftu
 ms.custom: ''
-ms.date: 12/07/2016
-services: cloud-services
+origin.date: 12/07/2016
+ms.date: 11/06/2017
+ms.prod: azure
 ms.reviewer: ''
 ms.service: cloud-services
 ms.suite: ''
@@ -10,15 +11,15 @@ ms.tgt_pltfrm: ''
 ms.topic: reference
 ms.assetid: e4fbffc1-98eb-449c-971c-de415e45ab34
 caps.latest.revision: 12
-author: jpconnock
-ms.author: jeconnoc
+author: ''
+ms.author: adegeo
 manager: timlt
-ms.openlocfilehash: 20f4186426152d2dc9b445981a69881c35587eb6
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: aa6f8a821edea6261d64bb411154e82fdf212a8d
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39005777"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62130241"
 ---
 # <a name="azure-cloud-services-config-role-schema"></a>Schéma konfigurace rolí cloudové služby Azure Cloud Services
 

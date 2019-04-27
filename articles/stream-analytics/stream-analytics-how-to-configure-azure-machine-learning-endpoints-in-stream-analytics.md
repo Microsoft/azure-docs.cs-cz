@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/07/2018
-ms.openlocfilehash: c3b30085e1036e49706d73fd68b80221e5177d03
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: 4a360968285b91b00c8ca1999f81c11951e74482
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55095732"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61479843"
 ---
 # <a name="machine-learning-integration-in-stream-analytics"></a>Machine Learning integrace ve službě Stream Analytics
 Stream Analytics podporuje uživatelem definované funkce, které vyžadují ke koncovým bodům Azure Machine Learning. Podpora rozhraní REST API pro tuto funkci je podrobně popsaná v [knihovny rozhraní REST API pro Stream Analytics](https://msdn.microsoft.com/library/azure/dn835031.aspx). Tento článek obsahuje doplňující informace potřebné pro úspěšné implementaci této funkce ve Stream Analytics. Kurz také se zveřejní a je k dispozici [tady](stream-analytics-machine-learning-integration-tutorial.md).

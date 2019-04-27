@@ -12,11 +12,11 @@ ms.topic: article
 ms.date: 02/28/2019
 ms.author: diberry
 ms.openlocfilehash: 5ef7ccb58533161d8397ad42e70de1999908dc36
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57338310"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61473259"
 ---
 # <a name="keyphrase-prebuilt-entity-for-a-luis-app"></a>keyPhrase předem připravených entit pro aplikace LUIS
 keyPhrase extrahuje celou řadu klíčových frází z utterance. Nemusíte přidání projevů příklad obsahující keyPhrase do aplikace. keyPhrase entity se podporuje v [mnoha jazykových verzí](luis-language-support.md#languages-supported) jako součást [rozhraní text analytics](../text-analytics/overview.md) funkce. 

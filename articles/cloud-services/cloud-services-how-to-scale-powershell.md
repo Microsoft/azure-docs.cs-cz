@@ -1,6 +1,6 @@
 ---
-title: Škálování cloudové služby Azure v prostředí Windows PowerShell | Microsoft Docs
-description: (klasické) Zjistěte, jak pomocí prostředí PowerShell škálování webovou roli nebo role pracovního procesu příchozí nebo odchozí v Azure.
+title: Škálování cloudové služby Azure ve Windows Powershellu | Dokumentace Microsoftu
+description: (classic) Zjistěte, jak škálovat webovou roli nebo roli pracovního procesu snížení nebo navýšení kapacity v Azure pomocí Powershellu.
 services: cloud-services
 documentationcenter: ''
 author: mmccrory
@@ -14,26 +14,26 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/01/2016
 ms.author: mmccrory
-ms.openlocfilehash: a7ae8ff202d403dff19b8c9a6a09492235db27ac
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 240b34abd2f9b937c8a7ea449ad7f148870a9d33
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23842948"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61433222"
 ---
-# <a name="how-to-scale-a-cloud-service-in-powershell"></a>Postup škálování cloudové služby v prostředí PowerShell
+# <a name="how-to-scale-a-cloud-service-in-powershell"></a>Jak škálovat cloudové služby v prostředí PowerShell
 
-Prostředí Windows PowerShell můžete škálovat webovou roli nebo role pracovního procesu příchozí nebo odchozí přidáním nebo odebráním instancí.  
+Prostředí Windows PowerShell můžete škálovat přidáváním nebo odebíráním instancí webové role nebo role pracovního procesu snížení nebo navýšení kapacity.  
 
-## <a name="log-in-to-azure"></a>Přihlaste se k Azure.
+## <a name="log-in-to-azure"></a>Přihlášení k Azure
 
-Před provedením jakékoli operace na vaše předplatné pomocí prostředí PowerShell, musíte být přihlášení:
+Před provedením jakékoli operace v rámci předplatného pomocí Powershellu, musíte být přihlášení:
 
 ```powershell
 Add-AzureAccount
 ```
 
-Pokud máte více předplatných, které jsou spojené s vaším účtem, musíte změnit aktuální předplatné v závislosti na tom, kde se nachází cloudové služby. Pokud chcete zkontrolovat aktuální předplatné, spusťte příkaz:
+Pokud máte více předplatných, které jsou spojené s vaším účtem, budete muset změnit aktuální předplatné, v závislosti na tom, kde se nachází vaši cloudovou službu. Pokud chcete zkontrolovat aktuální předplatné, spusťte:
 
 ```powershell
 Get-AzureSubscription -Current
@@ -47,36 +47,36 @@ Set-AzureSubscription -SubscriptionId <subscription_id>
 
 ## <a name="check-the-current-instance-count-for-your-role"></a>Zkontrolujte aktuální počet instancí pro vaši roli
 
-Pokud chcete zkontrolovat aktuální stav role, spusťte příkaz:
+Pokud chcete zkontrolovat aktuální stav vaší role, spusťte:
 
 ```powershell
 Get-AzureRole -ServiceName '<your_service_name>' -RoleName '<your_role_name>'
 ```
 
-Informace o roli, včetně jeho aktuální počet verze a instance operačního systému by měla vrátit zpět. V takovém případě má roli jediné instance.
+Informace o roli, včetně jeho aktuální počet verze a instance operačního systému by měla vrátit zpět. V tomto případě roli má jednu instanci.
 
 ![Informace o roli](./media/cloud-services-how-to-scale-powershell/get-azure-role.png)
 
 ## <a name="scale-out-the-role-by-adding-more-instances"></a>Škálování role přidáním více instancí
 
-Chcete-li škálovat vaše role, předejte požadovaný počet instancí jako **počet** parametru **Set-AzureRole** rutiny:
+Chcete-li horizontálně navýšit kapacitu vaší role, předejte požadovaný počet instancí **počet** parametr **Set-AzureRole** rutiny:
 
 ```powershell
 Set-AzureRole -ServiceName '<your_service_name>' -RoleName '<your_role_name>' -Slot <target_slot> -Count <desired_instances>
 ```
 
-Rutiny bloky na okamžik při nové instance jsou zřízený a spuštěna. Během této doby, otevřete nové okno prostředí PowerShell a volání **Get-AzureRole** jako je uvedené výše, zobrazí se nové cílový počet instancí. A je-li si prohlédnout stav rolí na portálu, měli byste vidět novou instanci spuštění:
+Bloky rutiny okamžik při nové instance jsou zřízené a spustit. Během této doby, pokud otevřete nové okno Powershellu a volání **Get-AzureRole** jak je uvedeno výše, zobrazí se nový cílový počet instancí. A je-li si prohlédnout stav role na portálu, měli byste vidět nové instance spuštění:
 
 ![Instance virtuálního počítače od portálu](./media/cloud-services-how-to-scale-powershell/role-instance-starting.png)
 
-Jakmile nové instance spustili, rutina vrátí úspěšně:
+Po zahájení mají nové instance, rutina vrátí úspěšně:
 
 ![Úspěch zvýšení instance role](./media/cloud-services-how-to-scale-powershell/set-azure-role-success.png)
 
-## <a name="scale-in-the-role-by-removing-instances"></a>Škálování v roli odebráním instancí
+## <a name="scale-in-the-role-by-removing-instances"></a>Škálování v roli tak, že odeberete instance
 
-Je možné škálovat v roli odebráním instancí stejným způsobem. Nastavte **počet** parametr na **Set-AzureRole** na počet instancí, které chcete mít po dokončení měřítka v operaci.
+Je možné škálovat tak, že odeberete instance stejně jako v roli. Nastavte **počet** parametru u **Set-AzureRole** na počet instancí, které chcete mít po dokončení škálování v operaci.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
-Není možné nakonfigurovat automatické škálování pro cloudové služby z prostředí PowerShell. To lze provést, najdete v části [postup automatické škálování cloudové služby](cloud-services-how-to-scale-portal.md).
+Není možné nakonfigurovat automatické škálování pro cloud services z Powershellu. Chcete-li to mohli udělat, najdete v článku [jak automaticky škálovat cloudovou službu](cloud-services-how-to-scale-portal.md).

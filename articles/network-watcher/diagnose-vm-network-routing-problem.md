@@ -3,8 +3,8 @@ title: Diagnostika problému se směrováním sítě virtuálního počítače �
 description: V tomto kurzu zjistíte, jak diagnostikovat problém se směrováním sítě virtuálního počítače pomocí funkce dalšího směrování služby Azure Network Watcher.
 services: network-watcher
 documentationcenter: network-watcher
-author: jimdial
-manager: jeconnoc
+author: KumudD
+manager: twooley
 editor: ''
 tags: azure-resource-manager
 Customer intent: I need to diagnose virtual machine (VM) network routing problem that prevents communication to different destinations.
@@ -15,16 +15,16 @@ ms.topic: tutorial
 ms.tgt_pltfrm: network-watcher
 ms.workload: infrastructure
 ms.date: 04/20/2018
-ms.author: jdial
+ms.author: kumud
 ms.custom: mvc
-ms.openlocfilehash: ea64c93726c3bc5c5d60f35790bb337333d4d47a
-ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
+ms.openlocfilehash: 5a5a60ecb1861b63d9a37f65f471bfa3b8fc7fde
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/01/2018
-ms.locfileid: "32312191"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60790190"
 ---
-# <a name="tutorial-diagnose-a-virtual-machine-network-routing-problem-using-the-azure-portal"></a>Kurz: Diagnostika problému se směrováním sítě virtuálního počítače pomocí portálu Azure Portal
+# <a name="tutorial-diagnose-a-virtual-machine-network-routing-problem-using-the-azure-portal"></a>Kurz: Diagnostikovat problém směrování sítě virtuálních počítačů pomocí webu Azure portal
 
 Když nasadíte virtuální počítač, Azure pro něj vytvoří několik výchozích tras. Můžete vytvořit vlastní trasy a přepsat tak výchozí trasy Azure. Někdy se může stát, že vlastní trasa způsobí, že virtuální počítač nemůže komunikovat s ostatními prostředky. V tomto kurzu se naučíte:
 
@@ -45,7 +45,7 @@ Přihlaste se k webu Azure Portal na adrese https://portal.azure.com.
 ## <a name="create-a-vm"></a>Vytvoření virtuálního počítače
 
 1. V levém horním rohu webu Azure Portal vyberte **+ Vytvořit prostředek**.
-2. Vyberte **Compute** a pak **Windows Server 2016 Datacenter** nebo **Ubuntu Server 17.10 VM**.
+2. Vyberte **Compute** a pak vyberte **Windows Server 2016 Datacenter** nebo **Ubuntu Server 17.10 VM**.
 3. Zadejte nebo vyberte následující informace, u zbývajících nastavení přijměte výchozí hodnoty a pak vyberte **OK**:
 
     |Nastavení|Hodnota|
@@ -55,7 +55,7 @@ Přihlaste se k webu Azure Portal na adrese https://portal.azure.com.
     |Heslo| Zadejte libovolné heslo. Heslo musí obsahovat nejméně 12 znaků a musí splňovat [zadané požadavky na složitost](../virtual-machines/windows/faq.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm).|
     |Předplatné| Vyberte své předplatné.|
     |Skupina prostředků| Vyberte **Vytvořit novou** a zadejte **myResourceGroup**.|
-    |Umístění| Vyberte **USA – východ**.|
+    |Location| Vyberte **USA – východ**.|
 
 4. Vyberte velikost virtuálního počítače a pak vyberte **Vybrat**.
 5. V části **Nastavení** přijměte všechny výchozí hodnoty a vyberte **OK**.
@@ -69,8 +69,8 @@ Pokud chcete otestovat síťovou komunikaci pomocí Network Watcheru, nejprve ho
 
 Pokud už Network Watcher máte v alespoň jedné oblasti povolený, přeskočte na část [Použití dalšího směrování](#use-next-hop).
 
-1. Na portálu vyberte **Všechny služby**. Do **pole Filtr** zadejte *Network Watcher*. Jakmile se služba**Network Watcher** zobrazí ve výsledcích, vyberte ji.
-2. Rozbalte **Oblasti** a pak vedle **USA – východ** vyberte **...**, jak je vidět na obrázku:
+1. Na portálu vyberte **Všechny služby**. Do **pole filtru** zadejte *Network Watcher*. Jakmile se služba **Network Watcher** zobrazí ve výsledcích, vyberte ji.
+2. Rozbalte **Oblasti** a potom vedle **USA – východ** vyberte **...** (stejně jako v následujícím obrázku):
 
     ![Povolení Network Watcheru](./media/diagnose-vm-network-traffic-filtering-problem/enable-network-watcher.png)
 
@@ -89,7 +89,7 @@ Azure automaticky vytváří trasy pro výchozí cíle. Můžete vytvořit vlast
     | Virtuální počítač         | Vyberte myVm.                                            |
     | Síťové rozhraní       | myvm – Název vašeho síťového rozhraní se může lišit.   |
     | Zdrojová IP adresa       | 10.0.0.4                                               |
-    | Cílová IP adresa  | 13.107.21.200 – jedna z adres stránky www.bing.com. |
+    | Cílová IP adresa  | 13.107.21.200 – jeden z adresy < www.bing.com>. |
 
     ![Další směrování](./media/diagnose-vm-network-routing-problem/next-hop.png)
 
@@ -116,7 +116,7 @@ Pokud už je nepotřebujete, odstraňte skupinu prostředků a všechny prostře
 2. Vyberte **Odstranit skupinu prostředků**.
 3. V části **ZADEJTE NÁZEV SKUPINY PROSTŘEDKŮ** zadejte *myResourceGroup* a vyberte **Odstranit**.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 V tomto kurzu jste vytvořili virtuální počítač a diagnostikovali směrování síťového provozu z daného virtuálního počítače. Dozvěděli jste se, že Azure vytváří několik výchozích tras, a otestovali jste směrování na dva různé cíle. Přečtěte si i další informace o [směrování v Azure](../virtual-network/virtual-networks-udr-overview.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json) a o tom, jak [vytvářet vlastní trasy](../virtual-network/manage-route-table.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json#create-a-route).
 

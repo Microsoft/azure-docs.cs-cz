@@ -1,7 +1,6 @@
 ---
 title: Správa clusterů systému Apache Hadoop v HDInsight pomocí webu Azure portal
 description: Zjistěte, jak vytvořit a spravovat clustery HDInsight pomocí webu Azure portal.
-services: hdinsight
 author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
@@ -9,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 03/26/2019
 ms.author: hrasheed
-ms.openlocfilehash: 80c27d588bb8b4c60ae8432fbd3a2ac3d2db1394
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 003aeadba1f4683af40f390d40dd3bbe32e02a83
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58802656"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62096350"
 ---
 # <a name="manage-apache-hadoop-clusters-in-hdinsight-by-using-the-azure-portal"></a>Spravovat clustery systému Apache Hadoop v HDInsight pomocí webu Azure portal
 
@@ -107,7 +106,7 @@ Z [clusteru domovskou stránku](#homePage)v části **nastavení** vyberte **vla
 |Datum vytvoření|Datum, kdy byl nasazen clusteru.|
 |Operační systém|Buď **Windows** nebo **Linux**.|
 |Type|Hadoop, HBase, Storm, Spark.|
-|Verze|Zobrazit [HDInsight verze](hdinsight-component-versioning.md).|
+|Version|Zobrazit [HDInsight verze](hdinsight-component-versioning.md).|
 |Předplatné|Název předplatného|
 |Výchozí zdroj dat|Výchozí systém souborů clusteru.|
 |Velikost uzlů pracovního procesu|Velikost vybraného virtuálního počítače pracovních uzlů.|

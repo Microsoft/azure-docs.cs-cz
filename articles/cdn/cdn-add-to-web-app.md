@@ -16,11 +16,11 @@ ms.date: 05/14/2018
 ms.author: magattus
 ms.custom: mvc
 ms.openlocfilehash: 33b47d33262a4968a0eafb9ec70ef73e50975735
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53602813"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61462769"
 ---
 # <a name="tutorial-add-azure-cdn-to-an-azure-app-service-web-app"></a>Kurz: Přidat Azure CDN do webové aplikace Azure App Service
 
@@ -268,6 +268,6 @@ Naučili jste se:
 V následujících článcích se dozvíte, jak optimalizovat výkon sítě CDN:
 
 > [!div class="nextstepaction"]
-> [Kurz: Přidat vlastní doménu do koncového bodu Azure CDN](cdn-map-content-to-custom-domain.md)
+> [Kurz: Přidání vlastní domény do koncového bodu Azure CDN](cdn-map-content-to-custom-domain.md)
 
 

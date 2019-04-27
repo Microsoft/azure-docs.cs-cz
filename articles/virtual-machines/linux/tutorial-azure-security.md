@@ -17,11 +17,11 @@ ms.date: 06/11/2018
 ms.author: cynthn
 ms.custom: mvc
 ms.openlocfilehash: b4c484f3dd118a19291741b071432b09894e836c
-ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56593297"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60739673"
 ---
 # <a name="tutorial-use-azure-security-center-to-monitor-linux-virtual-machines"></a>Kurz: Použití služby Azure Security Center k monitorování virtuálních počítačů s Linuxem
 

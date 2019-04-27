@@ -9,11 +9,11 @@ services: iot-accelerators
 ms.date: 11/20/2018
 ms.topic: conceptual
 ms.openlocfilehash: 1bd08596a30db7322a72b4269fddfe0b9df19119
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54464217"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61447165"
 ---
 # <a name="remote-monitoring-architectural-choices"></a>Volby architektury vzdáleného monitorování
 
@@ -59,7 +59,7 @@ Připojení zařízení IoT můžete použít:
 
 Pro zpracování datového proudu, používá řešení vzdáleného monitorování Azure Stream Analytics pro zpracování složitých pravidla. Pokud chcete použít jednodušší pravidla, je vlastní mikroslužeb s podporou pro zpracování jednoduché pravidlo, i když toto nastavení není součástí nasazení out-of-the-box. Referenční architektura doporučuje Azure Functions pro zpracování jednoduché pravidlo a Azure Stream Analytics pro zpracování složitých pravidla.
 
-### <a name="storage"></a>Storage
+### <a name="storage"></a>Úložiště
 
 Akcelerátor řešení vzdálené monitorování pro úložiště, používá Azure Time Series Insights a Azure Cosmos DB. Azure Time Series Insights ukládá zprávy přicházející z připojených zařízení prostřednictvím služby IoT Hub. Akcelerátor řešení využívá Azure Cosmos DB pro všechna úložiště, jako je například studeného úložiště, definice pravidla, výstrahy a nastavení konfigurace.
 

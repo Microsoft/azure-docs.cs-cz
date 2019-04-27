@@ -12,11 +12,11 @@ ms.date: 1/10/2019
 ms.author: aahi
 ms.custom: seodec2018
 ms.openlocfilehash: f7c5ce2ce4725277fc08634a021d2b38d11abc1c
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58074791"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61384947"
 ---
 # <a name="quickstart-search-for-news-using-c-and-the-bing-news-search-rest-api"></a>Rychlý start: Hledání zpráv pomocí C# a rozhraní API REST vyhledávání zpráv Bingu
 

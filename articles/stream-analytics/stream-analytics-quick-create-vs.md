@@ -9,17 +9,17 @@ ms.topic: quickstart
 ms.service: stream-analytics
 ms.custom: mvc
 ms.openlocfilehash: 1a72e2874e28a2aa5b69866bd959743707ea9d99
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54021913"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62123648"
 ---
 # <a name="quickstart-create-a-stream-analytics-job-by-using-the-azure-stream-analytics-tools-for-visual-studio"></a>Rychlý start: Vytvoření úlohy Stream Analytics pomocí Azure Stream Analytics tools for Visual Studio
 
 V tomto rychlém startu se dozvíte, jak vytvořit a spustit úlohu Stream Analytics pomocí Azure Stream Analytics Tools for Visual Studio. Úlohy příklad přečte streamovaná data ze služby IoT Hub device. Můžete definovat úlohu, která vypočítá průměrná teplota, při více než 27° a zapíše výsledný výstup události do nového souboru v úložišti objektů blob.
 
-## <a name="before-you-begin"></a>Před zahájením
+## <a name="before-you-begin"></a>Než začnete
 
 * Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/).
 

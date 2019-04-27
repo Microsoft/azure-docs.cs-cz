@@ -16,11 +16,11 @@ ms.date: 01/04/2017
 ms.author: cephalin
 ms.custom: seodec18
 ms.openlocfilehash: a3ff9b6fc1abf36bf2feddf518e4e920f18a3c23
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54423676"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60835341"
 ---
 # <a name="app-service-overview"></a>Přehled App Service
 

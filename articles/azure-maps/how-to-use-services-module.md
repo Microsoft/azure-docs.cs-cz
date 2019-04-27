@@ -1,5 +1,5 @@
 ---
-title: Pomocí modulu Services – Azure Maps | Dokumentace Microsoftu
+title: Použít modul services – Azure Maps | Dokumentace Microsoftu
 description: Zjistěte, jak použít modul služby Azure Maps.
 author: rbrundritt
 ms.author: richbrun
@@ -8,95 +8,96 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: cpendleton
-ms.openlocfilehash: e89a4675f867e53c499bb82b239ddb9bec1aed6f
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.openlocfilehash: f3650d4db06a763308939e9fb1a98fddb0eaa04a
+ms.sourcegitcommit: a95dcd3363d451bfbfea7ec1de6813cad86a36bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59521195"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62738768"
 ---
-# <a name="using-the-azure-maps-services-module"></a>Pomocí modulu služby Azure Maps
+# <a name="use-the-azure-maps-services-module"></a>Použít modul služby Azure Maps
 
-Azure Maps Web SDK poskytuje služby modulu, který je pomocné knihovny, který usnadňuje použití služby Azure Maps REST ve webové nebo aplikací v Node.js pomocí jazyka JavaScript nebo TypeScript.
+Poskytuje sadu SDK Azure Maps webové *modul services*. Tento modul je pomocné knihovny, který usnadňuje použití služby Azure Maps REST ve webové nebo aplikací v Node.js s použitím jazyka JavaScript nebo TypeScript.
 
-## <a name="using-the-services-module-in-a-web-page"></a>Pomocí modulu services na webové stránce
+## <a name="use-the-services-module-in-a-webpage"></a>Použít modul služby na webové stránce
 
 1. Vytvořte nový soubor HTML.
-2. Načíst v modulu služby Azure Maps. To lze provést jedním ze dvou možností;
+1. Načtení modulu služby Azure Maps. Můžete načíst v jednom ze dvou způsobů:
+    - Použijte globálně prostředí Azure Content Delivery Network verze modulu služby Azure Maps. Přidejte odkaz na skript `<head>` prvek souboru:
 
-    a. Použít globálně hostované CDN verzi modulu Azure Maps služby tak, že přidáte odkaz na skript `<head>` prvek souboru:
-    
-    ```html
-    <script src="https://atlas.microsoft.com/sdk/javascript/mapcontrol/2/atlas-service.min.js"></script>
-    ```
-    
-    b. Můžete také načíst místně pomocí sady SDK webové mapy Azure zdrojový kód [klidovém stavu azure maps](https://www.npmjs.com/package/azure-maps-rest) NPM balíček a hostujte ho s vaší aplikací. Tento balíček obsahuje také definice TypeScript.
-    
-    > npm install azure map – rest
-    
-    Pak přidejte odkaz na skript `<head>` prvek souboru:
-    
-    ```html
-    <script src="node_modules/azure-maps-rest/dist/js/atlas-service.min.js"></script>
-    ```
+        ```html
+        <script src="https://atlas.microsoft.com/sdk/javascript/mapcontrol/2/atlas-service.min.js"></script>
+        ```
 
-3. Chcete-li inicializovat klienta koncový bod adresy URL služby, musíte nejdřív vytvořit kanál ověřování. Použijte vlastní klíč účtu Azure Maps nebo přihlašovací údaje Azure Active Directory (AAD) k ověření klienta služby search. V tomto příkladu se vytvoří adresa URL klienta služby search. Pokud používáte klíč předplatného pro ověřování:
+    - Můžete také načíst zdrojový kód sady SDK webové mapy Azure místně pomocí [klidovém stavu azure maps](https://www.npmjs.com/package/azure-maps-rest) npm balíček a hostujte ho s vaší aplikací. Tento balíček obsahuje také definice TypeScript. Použijte tento příkaz:
+    
+        > **npm install azure map – rest**
+    
+        Pak přidejte odkaz na skript `<head>` prvek souboru:
+
+         ```html
+        <script src="node_modules/azure-maps-rest/dist/js/atlas-service.min.js"></script>
+         ```
+
+1. Vytvoření kanálu ověřování. Kanál musíte vytvořit předtím, než bude možné inicializovat klienta koncový bod adresy URL služby. Použijte vlastní klíč účtu Azure Maps nebo přihlašovacích údajů Azure Active Directory (Azure AD) k ověření klienta služby Azure Search mapy. V tomto příkladu se vytvoří adresa URL klienta služby Search. 
+
+    Pokud použijete klíč předplatného pro ověřování:
 
     ```javascript
-    //Get an Azure Maps key at https://azure.com/maps
+    // Get an Azure Maps key at https://azure.com/maps.
     var subscriptionKey = '<Your Azure Maps Key>';
-    
-    //Use SubscriptionKeyCredential with a subscription key.
+
+    // Use SubscriptionKeyCredential with a subscription key.
     var subscriptionKeyCredential = new atlas.service.SubscriptionKeyCredential(subscriptionKey);
-    
-    //Use subscriptionKeyCredential to create a pipeline.
+
+    // Use subscriptionKeyCredential to create a pipeline.
     var pipeline = atlas.service.MapsURL.newPipeline(subscriptionKeyCredential, {
       retryOptions: { maxTries: 4 } // Retry options
     });
-    
-    //Create an instance of the SearchURL client.
+
+    // Create an instance of the SearchURL client.
     var searchURL = new atlas.service.SearchURL(pipeline);
     ```
-    
-    Pokud se používá pro ověřování Azure Active Directory (AAD):
+
+    Pokud používáte Azure AD pro ověřování:
 
     ```javascript
-    // Enter your Azure Actiuve Directory client ID.
+    // Enter your Azure AD client ID.
     var clientId = "<Your Azure Active Directory Client Id>";
-    
-    // Use TokenCredential with OAuth token (AAD or Anonymous).
+
+    // Use TokenCredential with OAuth token (Azure AD or Anonymous).
     var aadToken = await getAadToken();
     var tokenCredential = new atlas.service.TokenCredential(clientId, aadToken);
-    
-    // Create a repeating timeout that will renew the AAD token.
-    // This timeout must be cleared once the TokenCredential object is no longer needed.
-    // If the timeout is not cleared the memory used by the TokenCredential will never be reclaimed.
+
+    // Create a repeating time-out that will renew the Azure AD token.
+    // This time-out must be cleared when the TokenCredential object is no longer needed.
+    // If the time-out is not cleared, the memory used by the TokenCredential will never be reclaimed.
     var renewToken = async () => {
-        try {
-            console.log("Renewing token");
-            var token = await getAadToken();
-            tokenCredential.token = token;
-            tokenRenewalTimer = setTimeout(renewToken, getExpiration(token));
-        } catch (error) {
-            console.log("Caught error when renewing token");
-            clearTimeout(tokenRenewalTimer);
-            throw error;
-        }
+    try {
+      console.log("Renewing token");
+      var token = await getAadToken();
+      tokenCredential.token = token;
+      tokenRenewalTimer = setTimeout(renewToken, getExpiration(token));
+    } catch (error) {
+      console.log("Caught error when renewing token");
+      clearTimeout(tokenRenewalTimer);
+      throw error;
+    }
     }
     tokenRenewalTimer = setTimeout(renewToken, getExpiration(aadToken));
-    
-    // Use tokenCredential to create a pipeline
+
+    // Use tokenCredential to create a pipeline.
     var pipeline = atlas.service.MapsURL.newPipeline(tokenCredential, {
-        retryOptions: { maxTries: 4 } // Retry options
+    retryOptions: { maxTries: 4 } // Retry options
     });
-    
-    //Create an instance of the SearchURL client.
+
+    // Create an instance of the SearchURL client.
     var searchURL = new atlas.service.SearchURL(pipeline);
 
     function getAadToken() {
-        //Use the logged in auth context to get a token.
+        // Use the signed-in auth context to get a token.
         return new Promise((resolve, reject) => {
-            //The resource should always be https://atlas.microsoft.com/.
+            // The resource should always be https://atlas.microsoft.com/.
             const resource = "https://atlas.microsoft.com/";
             authContext.acquireToken(resource, (error, token) => {
                 if (error) {
@@ -109,13 +110,13 @@ Azure Maps Web SDK poskytuje služby modulu, který je pomocné knihovny, který
     }
 
     function getExpiration(jwtToken) {
-        //Decode the JWT token to get the expiration timestamp.
+        // Decode the JSON Web Token (JWT) to get the expiration time stamp.
         const json = atob(jwtToken.split(".")[1]);
         const decode = JSON.parse(json);
 
-        //Return the milliseconds until the token needs renewed.
-        //Reduce the time until renew by 5 minutes to avoid using an expired token.
-        //The exp property is the timestamp of the expiration in seconds.
+        // Return the milliseconds remaining until the token must be renewed.
+        // Reduce the time until renewal by 5 minutes to avoid using an expired token.
+        // The exp property is the time stamp of the expiration, in seconds.
         const renewSkew = 300000;
         return (1000 * decode.exp) - Date.now() - renewSkew;
     }
@@ -123,37 +124,37 @@ Azure Maps Web SDK poskytuje služby modulu, který je pomocné knihovny, který
 
     Další informace najdete v tématu [ověřování pomocí služby Azure Maps](azure-maps-authentication.md).
 
-4. Následující kód používá klient adresa URL služby nově vytvořené vyhledávání geokód na adresu, pomocí "1, Microsoft, způsob, Redmond, WA" `searchAddress` fungovat a zobrazí výsledky jako tabulku do těla stránky. 
+1. Následující kód používá nově vytvořený klienta adresy URL služby Azure Search k geokód adresu: "1 Microsoft způsobem, Redmond, WA". Tento kód použije `searchAddress` fungovat a zobrazí výsledky jako tabulku do těla stránky.
 
     ```javascript
-    //Search for "1 microsoft way, redmond, wa".
+    // Search for "1 microsoft way, redmond, wa".
     searchURL.searchAddress(atlas.service.Aborter.timeout(10000), '1 microsoft way, redmond, wa').then(response => {
       var html = [];
-      
-      //Display the total results.
+
+      // Display the total results.
       html.push('Total results: ', response.summary.numResults, '<br/><br/>');
-     
-      //Create a table of the results.
+
+      // Create a table of the results.
       html.push('<table><tr><td></td><td>Result</td><td>Latitude</td><td>Longitude</td></tr>');
-      
+
       for(var i=0;i<response.results.length;i++){
         html.push('<tr><td>', (i+1), '.</td><td>', 
-                    response.results[i].address.freeformAddress, 
-                    '</td><td>', 
-                    response.results[i].position.lat,
-                    '</td><td>', 
-                    response.results[i].position.lon,
-                    '</td></tr>');
+          response.results[i].address.freeformAddress, 
+          '</td><td>', 
+          response.results[i].position.lat,
+          '</td><td>', 
+          response.results[i].position.lon,
+          '</td></tr>');
       }
-      
+
       html.push('</table>');
-      
-      //Add the result HTML to the body of the page.
+
+      // Add the resulting HTML to the body of the page.
       document.body.innerHTML = html.join('');
     });
     ```
 
-    Toto je plně spuštěné ukázka kódu:
+    Tady je kompletní spuštěním ukázky kódu:
 
 <br/>
 
@@ -180,7 +181,7 @@ Další informace o třídy a metody používané v tomto článku:
 > [!div class="nextstepaction"]
 > [TokenCredential](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.tokencredential?view=azure-iot-typescript-latest)
 
-Naleznete v následujících článcích pro další ukázky kódu, které používají modul služby:
+Další ukázky kódu, které používají modul služby najdete v těchto článcích:
 
 > [!div class="nextstepaction"]
 > [Na mapě zobrazit výsledky hledání](./map-search-location.md)

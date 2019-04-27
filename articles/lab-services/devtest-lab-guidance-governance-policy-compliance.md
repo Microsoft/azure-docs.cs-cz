@@ -14,11 +14,11 @@ ms.date: 02/11/2019
 ms.author: spelluru
 ms.reviewer: christianreddington,anthdela,juselph
 ms.openlocfilehash: e02400ef940efdf42370fbdc1da75bdc7062a8ef
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56243701"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62127357"
 ---
 # <a name="governance-of-azure-devtest-labs-infrastructure---company-policy-and-compliance"></a>Zásady správného řízení infrastruktury Azure DevTest Labs – firemní zásady a dodržování předpisů
 Tento článek poskytuje pokyny pro firemní zásady a dodržování předpisů pro infrastrukturu Azure DevTest Labs. 

@@ -11,11 +11,11 @@ ms.topic: quickstart
 ms.date: 04/16/2019
 ms.author: aahi
 ms.openlocfilehash: 3163b58a9b325f28ab253ca090314515cf82ccb2
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60007997"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60828071"
 ---
 # <a name="quickstart-using-ruby-to-call-the-text-analytics-cognitive-service"></a>Rychlý start: Použití Ruby k volání Text Analytics služby Cognitive Services
 <a name="HOLTop"></a>

@@ -13,11 +13,11 @@ ms.topic: reference
 ms.date: 11/08/2017
 ms.author: cshoe
 ms.openlocfilehash: 7ca3ab8e3becf884fdba460f1981430e0c66ef99
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
-ms.translationtype: MT
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57433497"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62104448"
 ---
 # <a name="azure-event-hubs-bindings-for-azure-functions"></a>Azure Event Hubs vazby pro službu Azure Functions
 

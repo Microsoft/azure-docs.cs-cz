@@ -11,11 +11,11 @@ ms.topic: conceptual
 ms.date: 04/11/2018
 ms.author: wesmc
 ms.openlocfilehash: d1e9a6da399adcdca87c1d6dc30eaf425ec0541e
-ms.sourcegitcommit: 5f348bf7d6cf8e074576c73055e17d7036982ddb
-ms.translationtype: MT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2019
-ms.locfileid: "59609009"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61453521"
 ---
 # <a name="connect-raspberry-pi-to-azure-iot-hub-nodejs"></a>Připojte Raspberry Pi pro službu Azure IoT Hub (Node.js)
 

@@ -10,11 +10,11 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.custom: seodec18
 ms.openlocfilehash: 4fa4a9a8d01d499dc431c8b182401226aa72bf1f
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56732564"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61479996"
 ---
 # <a name="management-net-sdk-set-up-and-run-analytics-jobs-using-the-azure-stream-analytics-api-for-net"></a>Správa sady .NET SDK: Nastavení a spuštění úlohy analytics pomocí rozhraní API služby Azure Stream Analytics pro .NET
 Zjistěte, jak nastavit a spustit úlohy analytics pomocí rozhraní API pro Stream Analytics pro .NET pomocí sady .NET SDK správy. Nastavení projektu, vytvoření vstupní a výstupní zdroje, transformace a spuštění a zastavení úloh. Pro úlohy analýzy můžete Streamovat data z úložiště objektů Blob nebo z centra událostí.

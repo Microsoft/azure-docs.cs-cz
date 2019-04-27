@@ -1,7 +1,6 @@
 ---
 title: Použití MapReduce a Curl s Apache Hadoop v HDInsight – Azure
 description: Zjistěte, jak pro vzdáleně spouštět úlohy MapReduce s Apache Hadoop v HDInsight pomocí příkazu Curl.
-services: hdinsight
 author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
@@ -9,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/27/2018
 ms.author: hrasheed
-ms.openlocfilehash: b422074c33f52a6819d2a05144a85768a2e484a0
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: e4968310459097fc6a00f7c453846fe61726c3d5
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58011916"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62129259"
 ---
 # <a name="run-mapreduce-jobs-with-apache-hadoop-on-hdinsight-using-rest"></a>Spuštění úlohy mapreduce je možné s Apache Hadoop v HDInsight pomocí rozhraní REST
 

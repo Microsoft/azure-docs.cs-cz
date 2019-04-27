@@ -11,11 +11,11 @@ ms.topic: article
 ms.date: 03/25/2019
 ms.author: tulasim
 ms.openlocfilehash: cb38fdcfa8cbbfa0b90141c2de2280ff1ef08c3b
-ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58437983"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61372220"
 ---
 # <a name="share-or-upgrade-your-qna-maker-service"></a>Sdílet nebo upgradovat vaše služba QnA Maker
 Sdílet nebo upgradovat za účelem správy prostředků lepší služby QnA Maker. 

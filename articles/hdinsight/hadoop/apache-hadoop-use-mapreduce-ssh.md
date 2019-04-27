@@ -2,19 +2,27 @@
 title: MapReduce a SSH připojení s Apache Hadoop v HDInsight – Azure
 description: Zjistěte, jak spouštět úlohy mapreduce je možné pomocí Apache Hadoop v HDInsight pomocí SSH.
 services: hdinsight
-author: hrasheed-msft
-ms.reviewer: jasonh
+documentationcenter: ''
+author: Blackmist
+manager: cgronlunb
+editor: cgronlun
+tags: azure-portal
+ms.assetid: 844678ba-1e1f-4fda-b9ef-34df4035d547
 ms.service: hdinsight
 ms.custom: hdinsightactive
+ms.devlang: na
 ms.topic: conceptual
-ms.date: 04/10/2018
-ms.author: hrasheed
-ms.openlocfilehash: bce79aed49b94071b4e83524de2d599fca182256
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.tgt_pltfrm: na
+ms.workload: big-data
+origin.date: 04/10/2018
+ms.date: 01/14/2019
+ms.author: v-yiso
+ms.openlocfilehash: 3448a5e89f6930a5bdcb7d0d77b92576e58fc90b
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53438561"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62129378"
 ---
 # <a name="use-mapreduce-with-apache-hadoop-on-hdinsight-with-ssh"></a>Použití MapReduce se službou Apache Hadoop v HDInsight pomocí SSH
 
@@ -39,13 +47,13 @@ Zjistěte, jak odesílat úlohy MapReduce z připojení Secure Shell (SSH) k HDI
 Připojte se ke clusteru pomocí SSH. Například následující příkaz se připojí ke clusteru s názvem **myhdinsight** jako **sshuser** účtu:
 
 ```bash
-ssh sshuser@myhdinsight-ssh.azurehdinsight.net
+ssh sshuser@myhdinsight-ssh.azurehdinsight.cn
 ```
 
 **Pokud použijete klíč certifikátu pro ověřování SSH**, budete muset zadat umístění privátního klíče ve vašem systému klienta, například:
 
 ```bash
-ssh -i ~/mykey.key sshuser@myhdinsight-ssh.azurehdinsight.net
+ssh -i ~/mykey.key sshuser@myhdinsight-ssh.azurehdinsight.cn
 ```
 
 **Pokud použijete heslo pro ověřování SSH**, budete muset zadat heslo po zobrazení výzvy.
@@ -80,7 +88,7 @@ Další informace o použití SSH s HDInsight naleznete v tématu [použití SSH
 
     Tento příkaz zobrazí dva soubory `_SUCCESS` a `part-r-00000`. `part-r-00000` Soubor obsahuje výstup pro tuto úlohu.
 
-    > [!NOTE]  
+    > [!NOTE]
     > Některé úlohy mapreduce je možné může rozdělit mezi více výsledky **část. r ###** soubory. Pokud ano, použít ### příponu k určení pořadí souborů.
 
 4. Pokud chcete zobrazit výstup, použijte následující příkaz:

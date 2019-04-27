@@ -1,22 +1,22 @@
 ---
 title: Rychlý start pro Azure Application Insights | Dokumentace Microsoftu
-description: Pokyny pro rychlé nastavení mobilní aplikace pro monitorování s využitím Application Insights a App Center
+description: Pokyny pro rychlé nastavení mobilní aplikace pro monitorování pomocí Application Insights a App Center
 services: application-insights
 keywords: ''
 author: mrbullwinkle
 ms.author: mbullwin
-ms.date: 07/11/2018
+ms.date: 04/22/2019
 ms.service: application-insights
 ms.reviewer: daviste
 ms.custom: mvc
 ms.topic: quickstart
 manager: carmonm
-ms.openlocfilehash: 6f0a59d2b0954c9847219ad1ac8b2fa805767084
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: 67ddedbaca88d46e706c9a143100b215a0d16a90
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54081239"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62126788"
 ---
 # <a name="start-analyzing-your-mobile-app-with-app-center-and-application-insights"></a>Začínáme s analýzou mobilní aplikace pomocí App Center a Application Insights
 
@@ -87,7 +87,9 @@ Pokud vaše aplikace podporuje více platforem (iOS, Android atd.), je vhodné v
 
 ## <a name="export-to-application-insights"></a>Export do Application Insights
 
-Ve vašem novém prostředku Application Insights na stránce **Přehled** v části **Základy** v horní části zkopírujte instrumentační klíč pro tento prostředek.
+V nový prostředek Application Insights na **přehled** stránky. Zkopírujte klíč instrumentace z vašich prostředků.
+
+   ![Tlačítko Analytics v Application Insights](./media/mobile-center-quickstart/overview-01.png)
 
 V instanci App Center pro vaši aplikaci:
 
@@ -108,7 +110,7 @@ Nad rámec analytických nástrojů, které poskytuje App Center, může Applica
 
 1. **Dotazování vlastní telemetrie událostí.** Na stránce **Přehled** Application Insights zvolte **Analytics**. 
 
-   ![Tlačítko Analytics v Application Insights](./media/mobile-center-quickstart/analytics.png)
+   ![Tlačítko Analytics v Application Insights](./media/mobile-center-quickstart/analytics-001.png)
 
    Otevře se portál Application Insights Analytics přidružený k vašemu prostředku Application Insights. Portál Analytics umožňuje přímo dotazovat data pomocí dotazovacího jazyka Log Analytics, takže můžete pokládat libovolně složité dotazy na vaši aplikaci a její uživatele.
    
@@ -121,7 +123,7 @@ Nad rámec analytických nástrojů, které poskytuje App Center, může Applica
    | order by dcount_user_Id desc 
    ```
 
-   ![Portál Analytics](./media/mobile-center-quickstart/analytics-portal.png)
+   ![Portál Analytics](./media/mobile-center-quickstart/analytics-portal-001.png)
 
    1. Vyberte dotaz kliknutím na libovolnou část dotazu v textovém editoru.
    2. Pak dotaz spusťte kliknutím na **Přejít**. 
@@ -131,17 +133,17 @@ Nad rámec analytických nástrojů, které poskytuje App Center, může Applica
 
 2. **Segmentace a filtrování vlastní telemetrie událostí.** Na stránce **Přehled** Application Insights zvolte v obsahu **Uživatelé**.
 
-   ![Ikona nástroje Uživatelé](./media/mobile-center-quickstart/users-icon.png)
+   ![Ikona nástroje Uživatelé](./media/mobile-center-quickstart/users-icon-001.png)
 
    Nástroj Uživatelé ukazuje, kolik uživatelů vaší aplikace kliklo na určitá tlačítka, navštívilo určité obrazovky nebo provedlo jakoukoli jinou akci, kterou sledujete jako událost pomocí sady App Center SDK. Pokud jste hledali způsob, jak segmentovat a filtrovat události App Center, nástroj Uživatelé je skvělou volbou.
 
-   ![Nástroj Uživatelé](./media/mobile-center-quickstart/users.png) 
+   ![Nástroj Uživatelé](./media/mobile-center-quickstart/users-001.png) 
 
    Například můžete segmentovat využití podle zeměpisné oblasti tím, že v rozevírací nabídce **Rozdělit podle** zvolíte **Země nebo oblast**.
 
 3. **Analýza vzorů konverze, udržení a navigace ve vaší aplikaci.** Na stránce **Přehled** Application Insights zvolte v obsahu **Toky uživatelů**.
 
-   ![Nástroj Toky uživatelů](./media/mobile-center-quickstart/user-flows.png)
+   ![Nástroj Toky uživatelů](./media/mobile-center-quickstart/user-flows-001.png)
 
    Nástroj Toky uživatelů vizualizuje, jaké události uživatelé odesílají po nějaké počáteční události. To je užitečné k získání celkového přehledu o způsobu, jakým uživatelé procházejí vaši aplikaci. Nástroj může také odhalit některá místa, kde mnoho uživatelů z vaší aplikace odchází nebo kde opakované provádějí stejné akce.
 

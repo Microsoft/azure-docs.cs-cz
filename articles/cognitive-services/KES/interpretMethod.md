@@ -11,11 +11,11 @@ ms.topic: conceptual
 ms.date: 03/26/2016
 ms.author: paulhsu
 ms.openlocfilehash: 88776e2f4167c950d60c0405dcf950b5173fb989
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55870924"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60814135"
 ---
 # <a name="interpret-method"></a>interpretace – metoda
 

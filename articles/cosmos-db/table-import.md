@@ -1,20 +1,22 @@
 ---
 title: Migrace existujících dat na účet Table API ve službě Azure Cosmos DB
 description: Zjistěte, jak migrovat nebo importovat místních nebo cloudových dat do účtu Azure Table API ve službě Azure Cosmos DB.
-author: SnehaGunda
+author: rockboyfor
 ms.service: cosmos-db
 ms.subservice: cosmosdb-table
 ms.topic: tutorial
-ms.date: 12/07/2017
-ms.author: sngun
+origin.date: 12/07/2017
+ms.date: 04/15/2019
+ms.author: v-yeche
 ms.custom: seodec18
 ms.openlocfilehash: a0d2927024dff78021d433b965bb6c0149236ddd
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58876813"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60935810"
 ---
+<!--Verify sucessfully-->
 # <a name="migrate-your-data-to-azure-cosmos-db-table-api-account"></a>Migrace dat do účtu rozhraní Table API služby Azure Cosmos DB
 
 Tento kurz obsahuje pokyny k importování dat pro použití s rozhraním [Table API](table-introduction.md) služby Azure Cosmos DB. Pokud máte data uložená ve službě Azure Table Storage, můžete k importu dat do rozhraní Table API služby Azure Cosmos DB použít nástroj pro migraci dat nebo AzCopy. Pokud máte data uložená v účtu rozhraní Table API služby Azure Cosmos DB (Preview), musíte k migraci dat použít nástroj pro migraci dat. 
@@ -41,18 +43,18 @@ Pokud chcete provést migraci tabulkových dat, proveďte následující úlohy:
 1. Stáhněte si nástroj pro migraci z [GitHubu](https://github.com/azure/azure-documentdb-datamigrationtool).
 2. Spusťte `dt.exe` s použitím argumentů příkazového řádku pro váš scénář. `dt.exe` přijímá příkaz v následujícím formátu:
 
-   ```bash
+    ```bash
     dt.exe [/<option>:<value>] /s:<source-name> [/s.<source-option>:<value>] /t:<target-name> [/t.<target-option>:<value>] 
-   ```
+    ```
 
-Možnosti příkazu jsou:
+    Možnosti příkazu jsou:
 
-    /ErrorLog: Optional. Name of the CSV file to redirect data transfer failures
-    /OverwriteErrorLog: Optional. Overwrite error log file
-    /ProgressUpdateInterval: Optional, default is 00:00:01. Time interval to refresh on-screen data transfer progress
-    /ErrorDetails: Optional, default is None. Specifies that detailed error information should be displayed for the following errors: None, Critical, All
-    /EnableCosmosTableLog: Optional. Direct the log to a cosmos table account. If set, this defaults to destination account connection string unless /CosmosTableLogConnectionString is also provided. This is useful if multiple instances of DT are being run simultaneously.
-    /CosmosTableLogConnectionString: Optional. ConnectionString to direct the log to a remote cosmos table account. 
+        /ErrorLog: Optional. Name of the CSV file to redirect data transfer failures
+        /OverwriteErrorLog: Optional. Overwrite error log file
+        /ProgressUpdateInterval: Optional, default is 00:00:01. Time interval to refresh on-screen data transfer progress
+        /ErrorDetails: Optional, default is None. Specifies that detailed error information should be displayed for the following errors: None, Critical, All
+        /EnableCosmosTableLog: Optional. Direct the log to a cosmos table account. If set, this defaults to destination account connection string unless /CosmosTableLogConnectionString is also provided. This is useful if multiple instances of DT are being run simultaneously.
+        /CosmosTableLogConnectionString: Optional. ConnectionString to direct the log to a remote cosmos table account. 
 
 ### <a name="command-line-source-settings"></a>Nastavení zdroje na příkazovém řádku
 
@@ -90,21 +92,21 @@ Při definování rozhraní Table API služby Azure Storage jako cíle migrace p
     /t.Throughput: Optional, service defaults if not specified. Specifies throughput to configure for table
     /t.MaxBatchSize: Optional, default is 2MB. Specify the batch size in bytes
 
-<a id="azure-table-storage"></a>
+<a name="azure-table-storage"></a>
 ### <a name="sample-command-source-is-azure-table-storage"></a>Ukázka příkazu: Azure Table storage je zdroj
 
 Tady je ukázka příkazového řádku znázorňující provedení importu ze služby Azure Table Storage do rozhraní Table API:
 
 ```
-dt /s:AzureTable /s.ConnectionString:DefaultEndpointsProtocol=https;AccountName=<Azure Table storage account name>;AccountKey=<Account Key>;EndpointSuffix=core.windows.net /s.Table:<Table name> /t:TableAPIBulk /t.ConnectionString:DefaultEndpointsProtocol=https;AccountName=<Azure Cosmos DB account name>;AccountKey=<Azure Cosmos DB account key>;TableEndpoint=https://<Account name>.table.cosmosdb.azure.com:443 /t.TableName:<Table name> /t.Overwrite
+dt /s:AzureTable /s.ConnectionString:DefaultEndpointsProtocol=https;AccountName=<Azure Table storage account name>;AccountKey=<Account Key>;EndpointSuffix=core.chinacloudapi.cn /s.Table:<Table name> /t:TableAPIBulk /t.ConnectionString:DefaultEndpointsProtocol=https;AccountName=<Azure Cosmos DB account name>;AccountKey=<Azure Cosmos DB account key>;TableEndpoint=https://<Account name>.table.cosmosdb.azure.cn:443 /t.TableName:<Table name> /t.Overwrite
 ```
-<a id="table-api-preview"></a>
+<a name="table-api-preview"></a>
 ### <a name="sample-command-source-is-azure-cosmos-db-table-api-preview"></a>Ukázka příkazu: Zdroj je Azure Cosmos DB Table API (preview)
 
 Tady je ukázka příkazového řádku pro import z rozhraní Table API Preview do obecně dostupného rozhraní Table API:
 
 ```
-dt /s:AzureTable /s.ConnectionString:DefaultEndpointsProtocol=https;AccountName=<Table API preview account name>;AccountKey=<Table API preview account key>;TableEndpoint=https://<Account Name>.documents.azure.com; /s.Table:<Table name> /t:TableAPIBulk /t.ConnectionString:DefaultEndpointsProtocol=https;AccountName=<Azure Cosmos DB account name>;AccountKey=<Azure Cosmos DB account key>;TableEndpoint=https://<Account name>.table.cosmosdb.azure.com:443 /t.TableName:<Table name> /t.Overwrite
+dt /s:AzureTable /s.ConnectionString:DefaultEndpointsProtocol=https;AccountName=<Table API preview account name>;AccountKey=<Table API preview account key>;TableEndpoint=https://<Account Name>.documents.azure.cn; /s.Table:<Table name> /t:TableAPIBulk /t.ConnectionString:DefaultEndpointsProtocol=https;AccountName=<Azure Cosmos DB account name>;AccountKey=<Azure Cosmos DB account key>;TableEndpoint=https://<Account name>.table.cosmosdb.azure.cn:443 /t.TableName:<Table name> /t.Overwrite
 ```
 
 ## <a name="migrate-data-by-using-azcopy"></a>Migrace dat pomocí AzCopy
@@ -116,7 +118,7 @@ Při provádění importu do služby Azure Cosmos DB použijte jako referenci n�
 Ukázka příkazu pro import:
 
 ```
-AzCopy /Source:C:\myfolder\ /Dest:https://myaccount.table.cosmosdb.windows.net/mytable1/ /DestKey:key /Manifest:"myaccount_mytable_20140103T112020.manifest" /EntityOperation:InsertOrReplace
+AzCopy /Source:C:\myfolder\ /Dest:https://myaccount.table.cosmosdb.chinacloudapi.cn/mytable1/ /DestKey:key /Manifest:"myaccount_mytable_20140103T112020.manifest" /EntityOperation:InsertOrReplace
 ```
 
 ## <a name="migrate-from-table-api-preview-to-table-api"></a>Migrace z rozhraní Table API (Preview) na rozhraní Table API
@@ -148,3 +150,6 @@ Teď můžete pokračovat k dalšímu kurzu, kde zjistíte, jak dotazovat data p
 
 > [!div class="nextstepaction"]
 >[Jak dotazovat data?](../cosmos-db/tutorial-query-table.md)
+
+<!--Update_Description: new articles on table import -->
+<!--ms.date: 03/18/2019-->

@@ -12,11 +12,11 @@ ms.topic: article
 tags: connectors
 ms.date: 08/25/2018
 ms.openlocfilehash: 0fbd89202796cb4543dbecbeee605c9b87cc9d05
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50230654"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62104982"
 ---
 # <a name="monitor-and-manage-twitter-by-using-azure-logic-apps"></a>Monitorování a správa Twitteru s využitím Azure Logic Apps
 
@@ -70,7 +70,7 @@ Můžete použít aktivační události, které odpovědi z vašeho účtu na Tw
 
 ## <a name="examples"></a>Příklady
 
-### <a name="twitter-trigger-when-a-new-tweet-is-posted"></a>Trigger twitteru: když se nový tweet
+### <a name="twitter-trigger-when-a-new-tweet-is-posted"></a>Trigger twitteru: Když se publikuje nový tweet
 
 Tato aktivační událost se spustí pracovní postup aplikace logiky při trigger například rozpozná nový tweet s hashtagem, #Seattle. Takže například nalezený tyto tweety můžete přidat soubor s obsahem tweety do úložiště, například účtu Dropboxu pomocí konektor Dropbox. 
 
@@ -78,7 +78,7 @@ Volitelně může obsahovat podmínku, která oprávněné tweety musí pocháze
 
 **Příklad organizace**: Tato aktivační událost můžete použít ke sledování tweetů o vaší společnosti a nahrát obsah tweetů do služby SQL database.
 
-### <a name="twitter-action-post-a-tweet"></a>Akce na twitteru: publikování tweetu
+### <a name="twitter-action-post-a-tweet"></a>Akce Twitter: Publikovat tweet
 
 Tato akce publikuje tweet, ale akce můžete nastavit tak, aby tento tweet obsahuje obsah tweetů objevila dříve popsaná aktivační události. 
 
