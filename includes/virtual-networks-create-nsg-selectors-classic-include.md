@@ -2,22 +2,23 @@
 title: zahrnout soubor
 description: zahrnout soubor
 services: virtual-network
-author: genlin
+author: rockboyfor
 ms.service: virtual-network
 ms.topic: include
-ms.date: 03/30/2018
-ms.author: genli
+origin.date: 03/30/2018
+ms.date: 07/30/2018
+ms.author: v-yeche
 ms.custom: include file
-ms.openlocfilehash: 987ac064432dc823dad3b8df9d3b59e71b4c2ee9
-ms.sourcegitcommit: ea5193f0729e85e2ddb11bb6d4516958510fd14c
+ms.openlocfilehash: d5e8a53ca26248510b07c848c38d5a30535a18bc
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/21/2018
-ms.locfileid: "36313492"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60309946"
 ---
 > [!div class="op_single_selector"]
 > * [Azure Portal](../articles/virtual-network/tutorial-filter-network-traffic.md)
 > * [PowerShell](../articles/virtual-network/tutorial-filter-network-traffic.md)
 > * [Azure CLI](../articles/virtual-network/tutorial-filter-network-traffic-cli.md)
 > * [PowerShell (Classic)](../articles/virtual-network/virtual-networks-create-nsg-classic-ps.md)
-> * [Rozhraní příkazového řádku Azure (klasický)](../articles/virtual-network/virtual-networks-create-nsg-classic-cli.md)
+> * [Rozhraní příkazového řádku Azure (Classic)](../articles/virtual-network/virtual-networks-create-nsg-classic-cli.md)

@@ -2,18 +2,19 @@
 title: zahrnout soubor
 description: zahrnout soubor
 services: vpn-gateway
-author: cherylmc
+author: WenJason
 ms.service: vpn-gateway
 ms.topic: include
-ms.date: 03/21/2018
-ms.author: cherylmc
+origin.date: 03/21/2018
+ms.date: 12/24/2018
+ms.author: v-jay
 ms.custom: include file
-ms.openlocfilehash: 97d33bfcc8251b10ba121b7fb013800904450563
-ms.sourcegitcommit: baed5a8884cb998138787a6ecfff46de07b8473d
-ms.translationtype: HT
+ms.openlocfilehash: e2e91dc91cf0fbe6827808785a4c3cc25b06542b
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "30197072"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60320045"
 ---
 [!INCLUDE [P2S FAQ All](vpn-gateway-faq-p2s-all-include.md)]
 
@@ -27,11 +28,11 @@ Můžete využít vaše podnikové řešení infrastruktury veřejných klíčů
 
 ### <a name="certsettings"></a>Existují nějaké pokyny pro parametry a nastavení certifikátů?
 
-* **Interní / podnikové řešení PKI:** Projděte si kroky pro [vytvoření certifikátů](../articles/vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal.md#generatecert).
+* **Interní řešení infrastruktury veřejných KLÍČŮ/podnikové infrastruktury veřejných KLÍČŮ:** Postup [generování certifikátů](../articles/vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal.md#generatecert).
 
-* **Azure PowerShell:** Příslušné kroky najdete v článku pro [Azure PowerShell](../articles/vpn-gateway/vpn-gateway-certificates-point-to-site.md).
+* **Azure PowerShell:** Zobrazit [prostředí Azure PowerShell](../articles/vpn-gateway/vpn-gateway-certificates-point-to-site.md) kde najdete kroky.
 
-* **MakeCert:** Příslušné kroky najdete v článku pro [MakeCert](../articles/vpn-gateway/vpn-gateway-certificates-point-to-site-makecert.md).
+* **MakeCert:** Zobrazit [MakeCert](../articles/vpn-gateway/vpn-gateway-certificates-point-to-site-makecert.md) kde najdete kroky.
 
 * **OpenSSL:** 
 

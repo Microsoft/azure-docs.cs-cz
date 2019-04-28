@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 12/19/2018
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 54872a1c5a40cdb3f51c17362daed93c3892001e
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: 302947ae9e952c0ceb37d9ddbba5ccd3c33c53a2
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55754553"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61031067"
 ---
 # <a name="tutorial-deploy-an-azure-kubernetes-service-aks-cluster"></a>Kurz: Nasaďte cluster Azure Kubernetes Service (AKS)
 
@@ -27,7 +27,7 @@ Kubernetes poskytuje distribuovanou platformu pro kontejnerizované aplikace. D�
 
 V dalších kurzech je aplikace Azure Vote nasadí do clusteru, škálovat a aktualizovat.
 
-## <a name="before-you-begin"></a>Před zahájením
+## <a name="before-you-begin"></a>Než začnete
 
 V předchozích kurzech se vytvořila image kontejneru a nahrála se do instance služby Azure Container Registry. Pokud jste tyto kroky neprovedli a chcete postupovat s námi, začínají [kurzu 1 – vytváření imagí kontejneru][aks-tutorial-prepare-app].
 

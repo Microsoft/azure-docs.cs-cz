@@ -6,15 +6,16 @@ author: ggailey777
 manager: jeconnoc
 ms.service: functions
 ms.topic: include
-ms.date: 10/04/2018
-ms.author: glenga
+origin.date: 10/04/2018
+ms.date: 03/25/2019
+ms.author: v-junlch
 ms.custom: include file
 ms.openlocfilehash: 6a1819e0bbfb8a6ab277721e84dc08cd325c8460
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
-ms.translationtype: MT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58124572"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60306814"
 ---
 Následující tabulka obsahuje informace o přidání podpory pro tuto vazbu v jednotlivých prostředích pro vývoj.
 
@@ -25,3 +26,4 @@ Následující tabulka obsahuje informace o přidání podpory pro tuto vazbu v 
 |Vývoj pro portál| [Registrace rozšíření](../articles/azure-functions/install-update-binding-extensions-manual.md)  |
 
 Zjistěte, jak aktualizovat existující vazby rozšíření na portálu, aniž byste museli znovu publikovat projekt aplikace funkcí, najdete v článku [aktualizovat vaše rozšíření](../articles/azure-functions/install-update-binding-extensions-manual.md).
+

@@ -9,11 +9,11 @@ ms.date: 03/04/2019
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: de9bc91e438ff694c96966486908c54562e93902
-ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57410365"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60459831"
 ---
 Můžete zkontrolovat na odkazy v této části Další informace o službách prostřednictvím partnerů. Pokud váš partner větev zařízení není uvedené v následující části, mají poskytovatele větev zařízení, obraťte se na nás. Můžete nás kontaktovat na e-mailem azurevirtualwan@microsoft.com.
 

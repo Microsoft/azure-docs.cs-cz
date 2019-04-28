@@ -9,11 +9,11 @@ ms.date: 02/13/2019
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: c8f45e4bb16c05c9f322dd04d2c80f6144744e64
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56884028"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60320042"
 ---
 Tento článek používá rutiny prostředí PowerShell. Pokud chcete spustit rutiny, můžete použít Azure Cloud Shell. Azure Cloud Shell je bezplatné interaktivní prostředí, který má obecné nástroje Azure, které jsou předinstalované a nakonfigurovány pro použití s vaším účtem. Stačí kliknout na **kopírování** zkopírovat kód, vložte ho do Cloud Shellu a stiskněte klávesu enter k jeho spuštění. Existuje několik způsobů, jak Cloud Shell spustit:
 

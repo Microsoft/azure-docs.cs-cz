@@ -13,13 +13,13 @@ ms.reviewer: ''
 manager: craigg
 ms.date: 03/25/2019
 ms.openlocfilehash: 460f79eb0679dc7d71bc929e4e790b68bd0f6774
-ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58447394"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61410134"
 ---
-# <a name="quickstart-use-net-core-c-to-query-an-azure-sql-database"></a>Rychlý start: Použití .NET Core (jazyk C#) k dotazování databáze SQL Azure
+# <a name="quickstart-use-net-core-c-to-query-an-azure-sql-database"></a>Rychlý start: Použití .NET Core (jazyk C#) k dotazování databáze Azure SQL
 
 V tomto rychlém startu použijete [.NET Core](https://www.microsoft.com/net/) a C# kód k připojení k databázi Azure SQL. Pak je potřeba spustit příkaz jazyka Transact-SQL k dotazování dat.
 
@@ -27,7 +27,7 @@ V tomto rychlém startu použijete [.NET Core](https://www.microsoft.com/net/) a
 
 Pro účely tohoto kurzu potřebujete:
 
-- Databázi SQL Azure. Jeden z těchto rychlých startech můžete vytvořit a potom nakonfigurovat databázi ve službě Azure SQL Database:
+- Databázi Azure SQL. Jeden z těchto rychlých startech můžete vytvořit a potom nakonfigurovat databázi ve službě Azure SQL Database:
 
   || Izolovaná databáze | Spravovaná instance |
   |:--- |:--- |:---|

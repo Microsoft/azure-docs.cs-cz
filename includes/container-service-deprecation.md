@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 11/27/2018
 ms.author: iainfou
 ms.openlocfilehash: c7a34256bff46247ed6c97bc2931942f631bbf09
-ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56589481"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60430416"
 ---
 > [!WARNING]
 >  **Azure Container Service (ACS) je zastaralé. Žádné nové funkce nebo funkce se neustále přidávají do služby ACS. Všechna rozhraní API, prostředí portálu, příkazů rozhraní příkazového řádku a dokumentace jsou označené jako zastaralé.**

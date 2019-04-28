@@ -9,11 +9,11 @@ ms.date: 04/04/2018
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 7571b8fa8e842adfa3d5a9f127d3ecbebc6c340f
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53444050"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60407547"
 ---
 Na webu Azure Portal můžete zobrazit stav připojení VPN Gateway Resource Manageru otevřením připojení. Následující postup ukazuje jeden ze způsobů přechodu k připojení a jeho ověření.
 

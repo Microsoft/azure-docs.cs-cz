@@ -9,11 +9,11 @@ ms.date: 02/20/2019
 ms.author: spelluru
 ms.custom: include file
 ms.openlocfilehash: a95f5ee5105c45ba9e5b1705e83d60bf24b1dc12
-ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57457769"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60333439"
 ---
 ## <a name="create-a-namespace-in-the-azure-portal"></a>Vytvoření oboru názvů na webu Azure Portal
 Pokud chcete začít používat entity zasílání zpráv služby Service Bus v Azure, musíte nejprve vytvořit obor názvů s jedinečným názvem v rámci Azure. Obor názvů poskytuje kontejner oboru pro adresování prostředků služby Service Bus v rámci vaší aplikace.
@@ -35,7 +35,7 @@ Vytvoření oboru názvů:
     6. Pro **umístění**, vyberte oblast, ve kterém by měl váš obor názvů hostovat.
     7. Vyberte **Vytvořit**. Systém teď vytvoří obor názvů a povolí ho. Pravděpodobně budete muset několik minut počkat, než systém zřídí prostředky pro váš účet.
    
-        ![Vytvoření oboru názvů](./media/service-bus-create-namespace-portal/create-namespace.png)
+        ![Vytvořit obor názvů](./media/service-bus-create-namespace-portal/create-namespace.png)
 4. Potvrďte, že je obor názvů služby Service bus úspěšné nasazení. Pokud chcete zobrazit oznámení, vyberte **ikonu zvonku (výstrahy)** na panelu nástrojů. Vyberte **název skupiny prostředků** v oznámení, jak je znázorněno na obrázku. Zobrazí se skupiny prostředků, který obsahuje obor názvů služby Service bus.
 
     ![Výstraha nasazení](./media/service-bus-create-namespace-portal/deployment-alert.png)

@@ -14,11 +14,11 @@ ms.reviewer: davidph, carlrab
 manager: cgronlun
 ms.date: 04/11/2019
 ms.openlocfilehash: 2b1206e3087b0573736174d4eed502653d76f7a5
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60001181"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61408958"
 ---
 # <a name="quickstart-use-r-to-query-an-azure-sql-database-preview"></a>Rychlý start: Použití R k dotazování Azure SQL database (preview)
 
@@ -30,7 +30,7 @@ ms.locfileid: "60001181"
 
 Abyste mohli absolvovat tento rychlý start, ujistěte se, že máte následující:
 
-- Databázi SQL Azure. Jeden z těchto rychlých startech můžete vytvořit a potom nakonfigurovat databázi ve službě Azure SQL Database:
+- Databázi Azure SQL. Jeden z těchto rychlých startech můžete vytvořit a potom nakonfigurovat databázi ve službě Azure SQL Database:
 
   || Izolovaná databáze | Spravovaná instance |
   |:--- |:--- |:---|
@@ -83,7 +83,7 @@ Získejte informace o připojení potřebné pro připojení k databázi Azure S
 
 ## <a name="next-steps"></a>Další postup
 
-- [Návrh první databáze SQL Azure](sql-database-design-first-database.md)
+- [Návrh první databáze Azure SQL](sql-database-design-first-database.md)
 - [Azure SQL Database služby Machine Learning (s jazykem R)](sql-database-machine-learning-services-overview.md)
 - [Vytvořit a spustit jednoduché skripty jazyka R v Azure SQL Database Machine Learning Services (preview)](sql-database-quickstart-r-create-script.md)
 - [Zápis pokročilé funkce jazyka R ve službě Azure SQL Database pomocí služby Machine Learning (preview)](sql-database-machine-learning-services-functions.md)

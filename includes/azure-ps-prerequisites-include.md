@@ -5,13 +5,13 @@ ms.topic: include
 ms.date: 11/09/2018
 ms.author: victorh
 ms.openlocfilehash: 0c161510d106343d88e7c77c72a1d1750fe25040
-ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52279523"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60398767"
 ---
-## <a name="prerequisite-install-the-azure-powershell-module"></a>Požadavek: Instalace modulu Azure PowerShellu
+## <a name="prerequisite-install-the-azure-powershell-module"></a>Předpoklad: Instalace modulu Azure PowerShellu
 
 Pokud chcete provést kroky v tomto článku, musíte [nainstalovat a nakonfigurovat modul Azure PowerShellu](/powershell/azureps-cmdlets-docs). Ujistěte se, že dokončíte všechny pokyny. Po dokončení instalace se přihlaste do Azure a vyberte své předplatné.
 

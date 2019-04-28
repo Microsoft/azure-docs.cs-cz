@@ -12,13 +12,13 @@ ms.reviewer: v-masebo
 manager: craigg
 ms.date: 03/25/2019
 ms.openlocfilehash: 2d9ce34d52d08b4dd38caaadfab48b7a69870e9a
-ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58447926"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61408975"
 ---
-# <a name="quickstart-use-java-to-query-an-azure-sql-database"></a>Rychlý start: Použití Javy k dotazování databáze SQL Azure
+# <a name="quickstart-use-java-to-query-an-azure-sql-database"></a>Rychlý start: Použití Javy k dotazování databáze Azure SQL
 
 Tento článek ukazuje, jak používat [Java](/sql/connect/jdbc/microsoft-jdbc-driver-for-sql-server) pro připojení k databázi Azure SQL. Pak můžete použít příkazy jazyka T-SQL k dotazování dat.
 
@@ -26,7 +26,7 @@ Tento článek ukazuje, jak používat [Java](/sql/connect/jdbc/microsoft-jdbc-d
 
 K dokončení této ukázce, ujistěte se, že jsou splněné následující požadavky:
 
-- Databázi SQL Azure. Jeden z těchto rychlých startech můžete vytvořit a potom nakonfigurovat databázi ve službě Azure SQL Database:
+- Databázi Azure SQL. Jeden z těchto rychlých startech můžete vytvořit a potom nakonfigurovat databázi ve službě Azure SQL Database:
 
   || Izolovaná databáze | Spravovaná instance |
   |:--- |:--- |:---|
@@ -168,7 +168,7 @@ Získejte informace o připojení potřebné pro připojení k databázi Azure S
 
 ## <a name="next-steps"></a>Další postup
 
-- [Návrh první databáze SQL Azure](sql-database-design-first-database.md)  
+- [Návrh první databáze Azure SQL](sql-database-design-first-database.md)  
 
 - [Ovladač Microsoft JDBC pro SQL Server](https://github.com/microsoft/mssql-jdbc)  
 

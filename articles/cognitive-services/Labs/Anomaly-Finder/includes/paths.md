@@ -11,11 +11,11 @@ ms.date: 04/13/2018
 ms.author: chliang
 ms.custom: include file
 ms.openlocfilehash: 80503ad154a9fc4d01614ffd2816f9d5fd497fdb
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55228895"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60309483"
 ---
 <a name="paths"></a>
 ## <a name="paths"></a>Cesty
@@ -29,12 +29,12 @@ POST /anomalydetection
 
 #### <a name="parameters"></a>Parametry
 
-|Type|Name|Popis|Schéma|
+|Type|Název|Popis|Schéma|
 |---|---|---|---|
 |**Text**|**Text**  <br>*Vyžaduje*|Časové řady datových bodů a je-li potřeba.|[Požadavek](#request)|
 
 
-#### <a name="responses"></a>Odezvy
+#### <a name="responses"></a>Odpovědi
 
 |Kód HTTP|Popis|Schéma|
 |---|---|---|

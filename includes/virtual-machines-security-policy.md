@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
 ms.openlocfilehash: c44b39effdc6d8fcdc144915ec7b51489e3798cd
-ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55302355"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60405409"
 ---
 Je důležité k zabezpečení vašich virtuálních počítačů (VM) pro aplikace, které spustíte. Zabezpečení vašich virtuálních počítačů může obsahovat jednu nebo více služeb Azure a funkce, které se týkají zabezpečený přístup k virtuálním počítačům a zabezpečené ukládání vašich dat. Tento článek obsahuje informace, které umožňuje zabezpečit svůj virtuální počítač a aplikací.
 
@@ -47,7 +47,7 @@ Tento problém řeší funkce spravovaných identit prostředků Azure v Azure A
 
 [Zásady Azure](../articles/azure-policy/azure-policy-introduction.md) slouží k definování požadované chování pro vaši organizaci [virtuální počítače s Windows](../articles/virtual-machines/windows/policy.md) a [virtuální počítače s Linuxem](../articles/virtual-machines/linux/policy.md). Pomocí zásad můžete vynutit organizace různých konvencí a pravidla v rámci podniku. Vynucení požadované chování může pomoci zmírnit rizika při podílení se na úspěch organizace.
 
-## <a name="role-based-access-control"></a>Řízení přístupu na základě role
+## <a name="role-based-access-control"></a>Řízení přístupu založené na rolích
 
 Pomocí [řízení přístupu na základě role (RBAC)](../articles/role-based-access-control/overview.md), můžete v rámci týmu oddělit a udělit uživatelům jenom takový přístup na virtuálním počítači, které potřebují ke své práci. Ne všichni poskytuje neomezená oprávnění na virtuálním počítači, můžete povolit pouze určité akce. Řízení přístupu můžete nakonfigurovat pro virtuální počítač v [webu Azure portal](../articles/role-based-access-control/role-assignments-portal.md), použije [rozhraní příkazového řádku Azure](https://docs.microsoft.com/cli/azure/role), nebo[prostředí Azure PowerShell](../articles/role-based-access-control/role-assignments-powershell.md).
 

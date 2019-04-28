@@ -9,11 +9,11 @@ ms.date: 12/03/2018
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 72ddd0b6cd6c3e12417d3698c403f89312b531f4
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53111908"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60411794"
 ---
 Nejčastější dotazy týkající se připojení typu VNet-to-VNet se týká připojení brány VPN. Informace o metodě VNet peering najdete v tématu [partnerský vztah virtuálních sítí](../articles/virtual-network/virtual-network-peering-overview.md).
 

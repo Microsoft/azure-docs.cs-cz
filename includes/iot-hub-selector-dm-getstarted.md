@@ -1,15 +1,10 @@
 ---
-author: wesmc7777
-ms.author: wesmc
-ms.service: iot-hub
-ms.topic: include
-ms.date: 10/26/2018
 ms.openlocfilehash: 19331f35ea2fa773325ec61e728677e37767ab54
-ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
-ms.translationtype: MT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "57011811"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60346129"
 ---
 > [!div class="op_single_selector"]
 > * [Zařízení: Služby pro Node.js: Node.js](../articles/iot-hub/iot-hub-node-node-device-management-get-started.md)
@@ -20,7 +15,6 @@ ms.locfileid: "57011811"
 Back endové aplikace můžete použít Azure IoT Hub primitiv, například [dvojče zařízení] [ lnk-devtwin] a [přímé metody][lnk-c2dmethod], abyste vzdáleně spouštět a monitorovat zařízení akce správy na zařízeních. Tento kurz vám ukáže, jak back endové aplikace a aplikace pro zařízení vzájemně spolupracují na zahájení a monitorování restartování vzdálené zařízení pomocí služby IoT Hub.
 
 [!INCLUDE [iot-hub-basic](iot-hub-basic-whole.md)]
-
 Přímé metody použijte k zahájení akce správy zařízení (jako je restartování, obnovení továrního nastavení a aktualizaci firmwaru) z back endové aplikace v cloudu. Zařízení je zodpovědný za:
 
 * Zpracování metody požadavku odeslaného ze služby IoT Hub.

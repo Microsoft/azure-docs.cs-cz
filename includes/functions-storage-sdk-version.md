@@ -6,16 +6,19 @@ author: tdykstra
 manager: cfowler
 ms.service: functions
 ms.topic: include
-ms.date: 05/17/2018
-ms.author: tdykstra
+origin.date: 05/17/2018
+ms.date: 05/30/2018
+ms.author: v-junlch
 ms.custom: include file
-ms.openlocfilehash: 97c56b07833f7d93541bb0b3747889f5a50a8203
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: f8733ef907b8f31ace7ea72f705ba1b37d1adece
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34675271"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60306724"
 ---
-### <a name="azure-storage-sdk-version-in-functions-1x"></a>Verze sady SDK úložiště Azure ve funkcích 1.x
+### <a name="azure-storage-sdk-version-in-functions-1x"></a>Verze služby Azure Storage SDK ve funkcích 1.x
 
-Ve funkcích 1.x, úložiště triggerů a vazeb použijte 7.2.1 verzi sady SDK úložiště Azure ([WindowsAzure.Storage](https://www.nuget.org/packages/WindowsAzure.Storage/7.2.1) balíček NuGet). Pokud odkazujete na jiné verzi sady SDK úložiště a vytvoření vazby na typ sada SDK úložiště ve vaší podpis funkce, Functions runtime hlásit, že nelze vytvořit vazbu na daný typ. Řešení se přesvědčte, že vaše odkazy na projekt [WindowsAzure.Storage 7.2.1](https://www.nuget.org/packages/WindowsAzure.Storage/7.2.1).
+Ve funkcích 1.x, úložiště triggerů a vazeb použít 7.2.1 verzi sady SDK služby Azure Storage ([WindowsAzure.Storage](https://www.nuget.org/packages/WindowsAzure.Storage/7.2.1) balíček NuGet). Pokud budete odkazovat na jinou verzi sady SDK služby Storage a vytvoření vazby na typ sady SDK služby Storage ve vašich signatura funkce, modul runtime služby Functions zprávu, že nelze vytvořit vazbu k danému typu. Řešení se ujistěte se, že odkazy projektu [WindowsAzure.Storage 7.2.1](https://www.nuget.org/packages/WindowsAzure.Storage/7.2.1).
+
+<!-- ms.date: 05/30/2018 -->

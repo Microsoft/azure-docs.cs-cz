@@ -11,11 +11,11 @@ ms.date: 04/13/2018
 ms.author: chliang
 ms.custom: include file
 ms.openlocfilehash: 3cc0e521e43f6855397a19fe34fce99da3e20494
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55228848"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60408288"
 ---
 S [rozhraní API pro vyhledávač anomálií](https://labs.cognitive.microsoft.com/en-us/project-anomaly-finder), můžete nahrát data časových řad ve formátu JSON na koncový bod rozhraní API a pak si můžete přečíst výsledek z odpovědi rozhraní API. Můžete nahrát data časových řad, datových bodů zahrnuje:  
 * Časové razítko – časové razítko pro datový bod. Ujistěte se, že používá UTC řetězce data a času, například "2017-08-01T00:00:00Z"

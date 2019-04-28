@@ -9,15 +9,15 @@ ms.date: 03/30/2019
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: fe7a7a548050d8d5d81ccecf17b4240ebcea10b3
-ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58295942"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60459823"
 ---
 V následující tabulce jsou uvedeny dostupné oblasti jsou podporované pro funkce, které jsou obecné dostupnosti.
 
-|Geopolitická oblast | Oblast Azure|
+|Geopolitická oblast | Oblasti Azure|
 |---|---|
 |Severní Amerika | Východní USA, Západní USA, Východní USA 2, Západní USA 2, Střed USA, Střed USA – jih, Střed USA – sever, Střed USA – západ, Střední Kanada, Východní Kanada |
 |Jižní Amerika |Brazílie – jih |

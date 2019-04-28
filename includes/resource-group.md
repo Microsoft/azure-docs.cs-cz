@@ -8,11 +8,11 @@ ms.topic: include
 ms.date: 03/12/2018
 ms.author: cephalin
 ms.custom: include file
-ms.openlocfilehash: efaa23fdc0eb035147e191276e52cbc4a447511c
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
-ms.translationtype: HT
+ms.openlocfilehash: 9774de9e5a975439468e2619841608c8d02548b9
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38731898"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60342322"
 ---
 [Skupina prostředků](../articles/azure-resource-manager/resource-group-overview.md#terminology) je logický kontejner, ve kterém se nasazují a spravují prostředky Azure, jako například webové aplikace, databáze a účty úložiště. Později se například můžete rozhodnout odstranit celou skupinu prostředků v jednom jednoduchém kroku.

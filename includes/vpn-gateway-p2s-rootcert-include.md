@@ -2,18 +2,19 @@
 title: zahrnout soubor
 description: zahrnout soubor
 services: vpn-gateway
-author: cherylmc
+author: WenJason
 ms.service: vpn-gateway
 ms.topic: include
-ms.date: 12/11/2018
-ms.author: cherylmc
+origin.date: 12/11/2018
+ms.date: 12/24/2018
+ms.author: v-jay
 ms.custom: include file
 ms.openlocfilehash: 4c8e7e5272f180c482ca7fdd44302f49eb888b25
-ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53323667"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60320036"
 ---
 Použít buď kořenový certifikát vygenerovaný pomocí podnikového řešení (doporučeno) nebo vygenerovat certifikát podepsaný svým držitelem. Po vytvoření kořenového certifikátu exportujte data veřejného certifikátu (ne privátní klíč) jako soubor .cer X.509 s kódováním Base64. Nakonec odešlete data veřejného certifikátu na Azure server.
 

@@ -8,42 +8,42 @@ ms.topic: include
 ms.date: 03/21/2018
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: a79184a5e08aa43a4675194adf5f10b9807418db
-ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
+ms.openlocfilehash: 52084b065ef65a69a6691b6646d1e199f011910d
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/22/2018
-ms.locfileid: "36329548"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60419579"
 ---
-### <a name="gwipnoconnection"></a> Chcete-li upravit IP adresu brány místní sítě – žádné připojení brány
+### <a name="gwipnoconnection"></a> Úprava IP adresy brány místní sítě – žádné připojení brány
 
 Pomocí tohoto příkladu upravte bránu místní sítě, která nemá připojení brány. Při upravování této hodnoty můžete také zároveň upravit předpony adres.
 
-1. Na bráně místní sítě prostředku v **nastavení** klikněte na tlačítko **konfigurace**.
-2. V **IP adresu** pole, je třeba změnit IP adresu.
+1. V prostředku brány místní sítě v **nastavení** klikněte na tlačítko **konfigurace**.
+2. V **IP adresu** pole, změnit IP adresu.
 3. Kliknutím na **Uložit** nastavení uložte.
 
-### <a name="gwipwithconnection"></a>Chcete-li upravit místní síťová brána IP adresa - existující připojení brány
+### <a name="gwipwithconnection"></a>Úprava IP adresy místní síťové brány – existující připojení brány
 
-Pokud chcete upravit bránu místní sítě, který má připojení, musíte nejdříve odebrat připojení. Po odebrání připojení můžete upravit IP adresu brány a vytvořit nové připojení. Můžete také zároveň upravit předpony adresy. Způsobí to určitý výpadek připojení VPN. Při upravování IP adresy brány není potřeba odstraňovat bránu VPN. Stačí jenom odebrat připojení.
+Pokud chcete upravit bránu místní sítě, která nemá připojení, musíte nejprve odeberete připojení. Po odebrání připojení můžete upravit IP adresu brány a vytvořit nové připojení. Můžete také zároveň upravit předpony adresy. Způsobí to určitý výpadek připojení VPN. Při upravování IP adresy brány není potřeba odstraňovat bránu VPN. Stačí jenom odebrat připojení.
  
 #### <a name="1-remove-the-connection"></a>1. Odeberte připojení.
 
-1. Na bráně místní sítě prostředku v **nastavení** klikněte na tlačítko **připojení**.
-2. Klikněte **...**  na řádek pro připojení klikněte **odstranit**.
+1. V prostředku brány místní sítě v **nastavení** klikněte na tlačítko **připojení**.
+2. Klikněte na tlačítko **...**  na řádek pro připojení, potom klikněte na tlačítko **odstranit**.
 3. Klikněte na tlačítko **Uložit** uložte nastavení.
 
-#### <a name="2-modify-the-ip-address"></a>2. Upravte IP adresu.
+#### <a name="2-modify-the-ip-address"></a>2. Úprava IP adresy.
 
 Můžete také zároveň upravit předpony adresy.
 
-1. V **IP adresu** pole, je třeba změnit IP adresu.
+1. V **IP adresu** pole, změnit IP adresu.
 2. Kliknutím na **Uložit** nastavení uložte.
 
 #### <a name="3-recreate-the-connection"></a>3. Znovu vytvořte připojení.
 
-1. Přejděte k bráně virtuální sítě pro virtuální síť. (Nikoli brány místní sítě.)
-2. Na bráně virtuální sítě v **nastavení** klikněte na tlačítko **připojení**.
-3. Klikněte **+ přidat** otevřete **přidat připojení** okno.
+1. Přejděte k bráně virtuální sítě pro vaši virtuální síť. (Nikoli brány místní sítě.)
+2. Na Brána virtuální sítě v **nastavení** klikněte na tlačítko **připojení**.
+3. Klikněte na tlačítko **+ přidat** otevřít **přidat připojení** okno.
 4. Znovu vytvořte připojení.
 5. Klikněte na tlačítko **OK** k vytvoření připojení.
