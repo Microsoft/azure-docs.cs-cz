@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/16/2018
 ms.author: bwren
-ms.openlocfilehash: 37eb8ca3c25268dd7923087439a8fbf0fd1f168b
-ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
+ms.openlocfilehash: 56e87da0353a41504035a070d4c10bab0dda2279
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56269905"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60551749"
 ---
 # <a name="advanced-aggregations-in-azure-monitor-log-queries"></a>Pokročilé agregace v dotazů na protokoly Azure monitoru
 
@@ -38,7 +38,8 @@ Event
 | order by TimeGenerated desc
 | summarize makelist(EventID) by Computer
 ```
-|Počítač|list_EventID|
+
+|Computer|list_EventID|
 |---|---|
 | POČÍTAČ1 | [704,701,1501,1500,1085,704,704,701] |
 | computer2 | [326,105,302,301,300,102] |
@@ -54,7 +55,8 @@ Event
 | order by TimeGenerated desc
 | summarize makeset(EventID) by Computer
 ```
-|Počítač|list_EventID|
+
+|Computer|list_EventID|
 |---|---|
 | POČÍTAČ1 | [704,701,1501,1500,1085] |
 | computer2 | [326,105,302,301,300,102] |
@@ -71,12 +73,12 @@ Heartbeat
 | project Computer, Solutions
 ```
 
-| Počítač | Řešení | 
+| Computer | Řešení | 
 |--------------|----------------------|
 | POČÍTAČ1 | "security", "updates", "changeTracking" |
 | computer2 | "zabezpečení", "aktualizace" |
 | computer3 | "Antimalwarové", "sledování změn ve" |
-| ... | ... | ... |
+| ... | ... |
 
 Použití `mvexpand` zobrazíte každá hodnota na samostatném řádku namísto seznam oddělený čárkami:
 
@@ -87,7 +89,7 @@ Heartbeat
 | mvexpand Solutions
 ```
 
-| Počítač | Řešení | 
+| Computer | Řešení | 
 |--------------|----------------------|
 | POČÍTAČ1 | "zabezpečení" |
 | POČÍTAČ1 | "updates" |
@@ -96,7 +98,7 @@ Heartbeat
 | computer2 | "updates" |
 | computer3 | "Antimalwarové" |
 | computer3 | "changeTracking" |
-| ... | ... | ... |
+| ... | ... |
 
 
 Můžete pak použít `makelist` znovu k seskupení položek najednou a tentokrát naleznete v seznamu počítačů podle řešení:
@@ -108,6 +110,7 @@ Heartbeat
 | mvexpand Solutions
 | summarize makelist(Computer) by tostring(Solutions) 
 ```
+
 |Řešení | list_Computer |
 |--------------|----------------------|
 | "zabezpečení" | ["computer1", "computer2"] |
@@ -124,6 +127,7 @@ Heartbeat
 | where TimeGenerated > ago(12h)
 | summarize count() by Category, bin(TimeGenerated, 1h)
 ```
+
 | Kategorie | TimeGenerated | count_ |
 |--------------|----------------------|--------|
 | Přímý agent | 2017-06-06T17:00:00Z | 15 |
@@ -153,6 +157,7 @@ Heartbeat
 | mvexpand TimeGenerated, count_
 | project Category, TimeGenerated, count_
 ```
+
 | Kategorie | TimeGenerated | count_ |
 |--------------|----------------------|--------|
 | Přímý agent | 2017-06-06T17:00:00Z | 15 |

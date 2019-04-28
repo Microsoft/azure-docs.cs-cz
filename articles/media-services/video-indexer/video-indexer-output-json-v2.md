@@ -10,11 +10,11 @@ ms.topic: article
 ms.date: 04/07/2019
 ms.author: juliako
 ms.openlocfilehash: d55e246e6fc3a5eeb182a49d1e159887f66d6872
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60011313"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60560010"
 ---
 # <a name="examine-the-video-indexer-output-produced-by-api"></a>Prozkoumání výstupu funkce Video Indexer API vytvořené metodou
 
@@ -32,7 +32,7 @@ Tento článek zkoumá vrácený obsah JSON **získat Index Video** rozhraní AP
 
 ## <a name="root-elements"></a>Kořenové prvky
 
-|Name|Popis|
+|Název|Popis|
 |---|---|
 |accountId|ID účtu VI seznamu stop|
 |id|ID seznamu stop.|
@@ -92,7 +92,7 @@ Tato část uvádí přehled informací.
 
 ## <a name="videos"></a>videa
 
-|Name|Popis|
+|Název|Popis|
 |---|---|
 |accountId|ID účtu VI videa|
 |id|ID videa.|
@@ -197,7 +197,7 @@ instance|Seznam časových rozsahů tento blok.|
 
 #### <a name="transcript"></a>přepis
 
-|Name|Popis|
+|Název|Popis|
 |---|---|
 |id|ID řádku.|
 |text|Přepis samotný.|
@@ -235,7 +235,7 @@ Příklad:
 
 #### <a name="ocr"></a>optické rozpoznávání znaků
 
-|Name|Popis|
+|Název|Popis|
 |---|---|
 |id|ID OCR řádku.|
 |text|OCR textu.|
@@ -270,7 +270,7 @@ Příklad:
 
 #### <a name="keywords"></a>klíčová slova
 
-|Name|Popis|
+|Název|Popis|
 |---|---|
 |id|ID – klíčové slovo.|
 |text|Text – klíčové slovo.|
@@ -301,7 +301,7 @@ Příklad:
 
 #### <a name="faces"></a>tváří
 
-|Name|Popis|
+|Název|Popis|
 |---|---|
 |id|ID tváře.|
 |jméno|Název typ písma. Může být "Neznámý #0, identifikovaný celebrit nebo trénovaného osoby zákazníka.|
@@ -346,7 +346,7 @@ Příklad:
 
 #### <a name="labels"></a>popisky
 
-|Name|Popis|
+|Název|Popis|
 |---|---|
 |id|ID popisku.|
 |jméno|Název popisku (například "Computer", "TV").|
@@ -405,7 +405,7 @@ Příklad:
 
 #### <a name="scenes"></a>scén
 
-|Name|Popis|
+|Název|Popis|
 |---|---|
 |id|ID scény.|
 |instance|Seznam časových rozsahů tento scény (scény můžete mít jenom 1 instance).|
@@ -438,7 +438,7 @@ Příklad:
 
 #### <a name="shots"></a>snímky
 
-|Name|Popis|
+|Název|Popis|
 |---|---|
 |id|Snímek ID.|
 |keyFrames|Seznam klíčových snímků v rámci snímku (každý má ID a seznam instancí časových rozsahů). Každá instance klíčový snímek má thumbnailId pole, které obsahuje miniaturu na klíčový snímek ID.|
@@ -488,7 +488,7 @@ Příklad:
 
 Firmy a produktů názvy v převodu řeči na text přepisu a/nebo Video optické rozpoznávání znaků. To nezahrnuje visual rozpoznávání značky nebo detekce logo.
 
-|Name|Popis|
+|Název|Popis|
 |---|---|
 |id|ID značky.|
 |jméno|Název značky.|
@@ -547,7 +547,7 @@ Firmy a produktů názvy v převodu řeči na text přepisu a/nebo Video optick�
 
 #### <a name="statistics"></a>statistiky
 
-|Name|Popis|
+|Název|Popis|
 |---|---|
 |CorrespondenceCount|Počet srovnávací ve videu.|
 |SpeakerWordCount|Počet slov za mluvčího.|
@@ -557,7 +557,7 @@ Firmy a produktů názvy v převodu řeči na text přepisu a/nebo Video optick�
 
 #### <a name="a-idaudioeffectsaudioeffects"></a><a id="audioEffects"/>audioEffects
 
-|Name|Popis|
+|Název|Popis|
 |---|---|
 |id|ID zvukové efekty.|
 |type|Typ zvukové efekty (například nečinnosti Clapping, řeči,).|
@@ -586,7 +586,7 @@ Firmy a produktů názvy v převodu řeči na text přepisu a/nebo Video optick�
 
 Zabarvení se agregují podle jejich sentimentType pole (neutrální/kladné nebo záporné). Například 0 0.1, 0.2 0,1.
 
-|Name|Popis|
+|Název|Popis|
 |---|---|
 |id|ID mínění.|
 |averageScore |Průměr všech skóre všech instancí tohoto typu mínění – pozitivní nebo neutrální nebo negativní|
@@ -625,7 +625,7 @@ Blok visualContentModeration obsahuje časových rozsahů, které můžou mít o
 
 Videa, které se nacházejí na obsah pro dospělé nebo pikantního mohou být k dispozici pouze privátní zobrazení. Uživatelé mají možnost odeslat žádost pro lidskou kontrolu obsahu, ve kterém bude obsahovat případ atribut IsAdult výsledek kontrolu člověkem.
 
-|Name|Popis|
+|Název|Popis|
 |---|---|
 |id|ID visual moderování obsahu.|
 |adultScore|Hodnocení obsahu pro dospělé (z content moderatoru).|
@@ -661,7 +661,7 @@ Videa, které se nacházejí na obsah pro dospělé nebo pikantního mohou být 
 
 #### <a name="textualcontentmoderation"></a>textualContentModeration 
 
-|Name|Popis|
+|Název|Popis|
 |---|---|
 |id|ID textové moderování obsahu.|
 |bannedWordsCount |Počet zakázaných slov v příspěvcích.|
@@ -671,7 +671,7 @@ Videa, které se nacházejí na obsah pro dospělé nebo pikantního mohou být 
 
 Video Indexer identifikuje emoce podle pomůcky pro zpracování řeči a zvuku. Můžou být identifikované pro rozpoznávání emocí: radosti a velkou, smutek, hněv nebo strach.
 
-|Name|Popis|
+|Název|Popis|
 |---|---|
 |id|ID pro rozpoznávání emocí.|
 |type|Rozpoznávání emocí chvíli, kdy byl identifikován na základě rozpoznávání řeči a zvuku pomůcky. Rozpozná tyto emoce: radost, smutek, hněv nebo strach.|
@@ -761,7 +761,7 @@ Video Indexer identifikuje emoce podle pomůcky pro zpracování řeči a zvuku.
 
 Video Indexer umožňuje odvození hlavní témata z záznamy o studiu. Pokud je to možné, 1. úrovně [IPTC](https://iptc.org/standards/media-topics/) taxonomie zahrnuje epics zahrnuté. 
 
-|Name|Popis|
+|Název|Popis|
 |---|---|
 |id|ID tématu.|
 |jméno|Název tématu, například: "Pharmaceuticals".|

@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 01/09/2017
 ms.author: apimpm
 ms.openlocfilehash: 673dcbeb630899eebc328cd4fae16f7fe8f47a55
-ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58757592"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60557881"
 ---
 # <a name="azure-api-management-template-resources"></a>Šablony prostředků Azure API Management
 Azure API Management nabízí následující typy prostředků pro použití v vývojář šablon portálu.  
@@ -400,7 +400,7 @@ Podporovány jsou následující možnosti lokalizace:
   
 |Název|Text|  
 |----------|----------|  
-|PageTitleProducts|Produkty|  
+|PageTitleProducts|Products|  
   
 ###  <a name="ProviderInfoStrings"></a> ProviderInfoStrings  
   
@@ -481,7 +481,7 @@ Podporovány jsou následující možnosti lokalizace:
 |WebAuthenticationRequestIsNotValid|Žádost není platná.|  
 |WebAuthenticationUserIsNotConfirm|Předtím, než se pokusíte přihlásit, prosím potvrďte svou registraci.|  
 |WebAuthenticationInvalidEmailFormated|E-mailu je neplatný: {0}|  
-|WebAuthenticationUserNotFound|Uživatel se nenašel.|  
+|WebAuthenticationUserNotFound|Uživatel nenalezen|  
 |WebAuthenticationTenantNotRegistered|Váš účet patří do tenanta služby Azure Active Directory, který nemá autorizaci pro přístup na tento portál.|  
 |WebAuthenticationAuthenticationFailed|Ověřování selhalo.|  
 |WebAuthenticationGooglePlusNotEnabled|Ověřování selhalo. Pokud jste ověřovali aplikaci pak prosím požádejte správce, abyste měli jistotu, že ověřování Google je správně nakonfigurován.|  

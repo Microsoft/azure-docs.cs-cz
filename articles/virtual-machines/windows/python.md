@@ -16,11 +16,11 @@ ms.topic: article
 ms.date: 06/22/2017
 ms.author: cynthn
 ms.openlocfilehash: 748bc08e003d398e96ef55493e4f3b0bf6b7da28
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56326972"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61034752"
 ---
 # <a name="create-and-manage-windows-vms-in-azure-using-python"></a>Vytvoření a správa virtuálních počítačů s Windows v Azure pomocí Pythonu
 

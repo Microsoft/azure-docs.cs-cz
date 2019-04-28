@@ -14,11 +14,11 @@ ms.date: 02/11/2019
 ms.author: spelluru
 ms.reviewer: christianreddington,anthdela,juselph
 ms.openlocfilehash: 25a088686c739c53feadd6354baf75f3147bdc33
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57431186"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60561485"
 ---
 # <a name="scale-up-your-azure-devtest-labs-infrastructure"></a>Škálovat infrastrukturu s Azure DevTest Labs
 Ještě před jejich implementací DevTest Labs v podnikovém měřítku, se několik bodů klíčová rozhodnutí. Pochopení těchto rozhodovací body na vysoké úrovni pomáhá organizacím s rozhodováním ohledně návrhu v budoucnu. Ale tyto body by neměl Ponecháme organizace spuštění testování konceptu. První tři oblasti pro počáteční plánování vertikálně navýšit kapacitu, jsou:

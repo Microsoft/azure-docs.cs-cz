@@ -9,11 +9,11 @@ ms.date: 03/01/2019
 ms.author: vinagara
 ms.subservice: alerts
 ms.openlocfilehash: 1706fc050fecd2e4be3a40725ec3e63a9036b3a9
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58486626"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60995947"
 ---
 # <a name="switch-api-preference-for-log-alerts"></a>Přepnout předvoleb rozhraní API pro výstrahy protokolu
 

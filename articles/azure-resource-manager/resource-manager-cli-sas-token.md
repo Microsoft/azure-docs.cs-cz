@@ -1,6 +1,6 @@
 ---
-title: Nasazení šablony Azure s tokenu SAS a rozhraní příkazového řádku Azure | Microsoft Docs
-description: Pomocí Azure Resource Manager a rozhraní příkazového řádku Azure můžete nasadit prostředky do Azure ze šablony, která je chráněná pomocí tokenu SAS.
+title: Nasazení šablony Azure s tokenem SAS a rozhraní příkazového řádku Azure | Dokumentace Microsoftu
+description: Pomocí Azure Resource Manageru a Azure CLI k nasazení prostředků do Azure ze šablony, který je chráněný pomocí tokenu SAS.
 services: azure-resource-manager
 documentationcenter: na
 author: tfitzmac
@@ -14,27 +14,27 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/31/2017
 ms.author: tomfitz
-ms.openlocfilehash: d09aa46eabe705082edafe12da8442a79d1080b3
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: c869b76a0d1ba10bc27aefa60cbe4ed5b8d8201a
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34603192"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61061352"
 ---
-# <a name="deploy-private-resource-manager-template-with-sas-token-and-azure-cli"></a>Nasazení privátní šablony Resource Manageru pomocí tokenu SAS a rozhraní příkazového řádku Azure
+# <a name="deploy-private-resource-manager-template-with-sas-token-and-azure-cli"></a>Nasazení privátní šablony Resource Manageru s tokenem SAS a rozhraní příkazového řádku Azure
 
-Pokud vaše šablona se nachází v účtu úložiště, můžete omezit přístup k šabloně a během nasazení zadat token sdílený přístupový podpis (SAS). Toto téma vysvětluje, jak pomocí prostředí Azure PowerShell s Resource Manager šablony během nasazení zadat SAS token. 
+Pokud vaše šablona se nachází v účtu úložiště, můžete omezit přístup k šabloně a během nasazení zadat token sdíleného přístupového podpisu (SAS). Toto téma vysvětluje, jak pomocí Azure Powershellu pomocí šablon Resource Manageru během nasazení zadat SAS token. 
 
-## <a name="add-private-template-to-storage-account"></a>Přidání šablony privátní účet úložiště.
+## <a name="add-private-template-to-storage-account"></a>Přidejte privátní šablony do účtu úložiště
 
-Šablony můžete přidat k účtu úložiště a odkaz na jejich během nasazení s tokenem SAS.
+Šablony můžete přidat do účtu úložiště a propojit je během nasazení s tokenem SAS.
 
 > [!IMPORTANT]
-> Pomocí následujících kroků, je přístupné pouze majiteli účtu objekt blob obsahující šablony. Objekt blob je přístupný pro každý, kdo má tento identifikátor URI, ale při vytváření tokenu SAS pro tento objekt blob. Pokud jiný uživatel zabrání identifikátor URI, tento uživatel má přístup k šabloně. Použití SAS token je vhodný způsob omezení přístupu ke šablony, ale nesmí obsahovat citlivá data, jako jsou hesla přímo v šabloně.
+> Pomocí následujících kroků, objektů blob, který obsahuje šablonu je přístupná pouze vlastník účtu. Ale při vytváření tokenu SAS pro objekt blob, objekt blob je přístupný pro každý, kdo má tento identifikátor URI. Pokud jiný uživatel zachycuje identifikátor URI, je tomuto uživateli přístup k šabloně. Pomocí tokenu SAS je vhodný způsob omezení přístupu ke své šablony, ale by neměly obsahovat citlivá data, jako jsou hesla přímo v šabloně.
 > 
 > 
 
-Následující příklad nastaví kontejner privátní úložiště účet a odesílá šablonu:
+Následující příklad nastaví kontejner účtu úložiště. privátní a nahrávání šablony:
    
 ```azurecli
 az group create --name "ManageGroup" --location "South Central US"
@@ -59,8 +59,8 @@ az storage blob upload \
     --connection-string $connection
 ```
 
-### <a name="provide-sas-token-during-deployment"></a>Během nasazení zadat tokenu SAS
-Pokud chcete nasadit šablonu privátní v účtu úložiště, vygenerování tokenu SAS a její zahrnutí do identifikátor URI pro šablonu. Nastavte čas vypršení platnosti vyhradit dostatek času k dokončení nasazení.
+### <a name="provide-sas-token-during-deployment"></a>Během nasazení zadat SAS token
+Nasazení privátní šablony v účtu úložiště, vygenerujte SAS token a zahrnout do identifikátoru URI pro šablonu. Nastavte čas vypršení platnosti vyhradit dostatek času k dokončení nasazení.
    
 ```azurecli
 expiretime=$(date -u -d '30 minutes' +%Y-%m-%dT%H:%MZ)
@@ -83,9 +83,9 @@ url=$(az storage blob url \
 az group deployment create --resource-group ExampleGroup --template-uri $url?$token
 ```
 
-Příklad použití tokenu SAS s propojených šablon naleznete v části [použití propojených šablon s Azure Resource Manager](resource-group-linked-templates.md).
+Příklad pomocí tokenu SAS s propojenými šablonami najdete v tématu [použití propojených šablon s Azure Resource Managerem](resource-group-linked-templates.md).
 
 ## <a name="next-steps"></a>Další postup
-* Úvod do nasazení šablony, najdete v části [nasazení prostředků pomocí šablony Resource Manageru a prostředí Azure PowerShell](resource-group-template-deploy-cli.md).
-* Pro dokončení ukázkový skript, který nasadí šablonu, najdete v části [skript šablony nasazení Resource Manager](resource-manager-samples-cli-deploy.md)
+* Úvod do nasazení šablon najdete v tématu [nasazení prostředků pomocí šablon Resource Manageru a prostředí Azure PowerShell](resource-group-template-deploy-cli.md).
+* Úplný ukázkový skript, který se nasazuje šablony najdete v tématu [skript šablony nasazení Resource Manageru](resource-manager-samples-cli-deploy.md)
 * Chcete-li definovat parametry v šabloně, přečtěte si téma [vytváření šablon](resource-group-authoring-templates.md#parameters).

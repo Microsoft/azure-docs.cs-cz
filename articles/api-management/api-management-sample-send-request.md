@@ -12,14 +12,15 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/15/2016
-ms.author: apimpm
+origin.date: 12/15/2016
+ms.author: v-yiso
+ms.date: 04/22/2019
 ms.openlocfilehash: 2c4e5d0117f046343b140ef2b2c46c074c835075
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59796524"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60557910"
 ---
 # <a name="using-external-services-from-the-azure-api-management-service"></a>Použití externích služeb ze služby Azure API Management
 Zásady, které jsou k dispozici ve službě Azure API Management můžete provádět řadu užitečnou práci čistě na základě příchozího požadavku, odchozí odpovědi a informace o základní konfiguraci. Ale nebudou moct komunikovat s externími službami ze služby API Management otevře zásad a mnoho více příležitostí.
@@ -283,4 +284,5 @@ V konfiguraci operace zástupného symbolu můžete nakonfigurovat řídicí pan
 
 ## <a name="summary"></a>Souhrn
 Služba Azure API Management poskytuje flexibilní zásady, které je možné selektivně použít pro provoz protokolu HTTP a umožňuje složení back-endové služby. Určuje, zda chcete vylepšit brány rozhraní API s výstrahy funkce, ověřování, ověřování možností nebo vytvořit nový složené prostředky založené na několika službách back-endu `send-request` a odhalit tak svět možnosti související zásady.
+
 

@@ -4,17 +4,18 @@ description: Zjistěte, jak přidat markdownu dlaždici na řídicí panel Azure
 services: azure-portal
 keywords: ''
 author: kfollis
-ms.author: kfollis
-ms.date: 01/25/2019
+ms.author: v-biyu
+origin.date: 01/25/2019
+ms.date: 03/04/2019
 ms.topic: conceptual
 ms.service: azure-portal
 manager: mtillman
 ms.openlocfilehash: ec8cbddda4137656a53fd4968c451cd413959274
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58110779"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60551557"
 ---
 # <a name="use-a-markdown-tile-on-azure-dashboards-to-show-custom-content"></a>Zobrazit vlastní obsah pomocí markdownu dlaždice na řídicích panelů Azure
 
@@ -28,7 +29,7 @@ Dlaždice markdown můžete přidat na řídicí panely Azure k zobrazení vlast
 
 2. V **Galerie dlaždic**, vyhledejte dlaždici volá **Markdownu** a klikněte na tlačítko **přidat**. Přidání dlaždice na řídicí panel a **upravit Markdown** se otevře podokno.
 
-1. Upravit **Title**, **titulek**, a **obsahu** polí pro přizpůsobení na dlaždici. V tomto příkladu byl upraven dlaždicí markdown pro zobrazení informací helpdesku vlastní nápovědy.
+3. Upravit **Title**, **titulek**, a **obsahu** polí pro přizpůsobení na dlaždici. V tomto příkladu byl upraven dlaždicí markdown pro zobrazení informací helpdesku vlastní nápovědy.
 
    ![Snímek obrazovky zobrazení pro úpravy dlaždice markdown](./media/azure-portal-markdown-tile/azure-portal-edit-markdown-tile.png)
 

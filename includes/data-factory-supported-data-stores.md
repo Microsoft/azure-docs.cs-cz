@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 11/19/2018
 ms.author: jingwang
 ms.openlocfilehash: 0c381cc6e2e2957c946207491c666667821184ad
-ms.sourcegitcommit: 8314421d78cd83b2e7d86f128bde94857134d8e1
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/19/2018
-ms.locfileid: "52156748"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60486827"
 ---
 | Kategorie | Úložiště dat | Podporované jako zdroj | Podporované jako jímka |
 |:--- |:--- |:--- |:--- |

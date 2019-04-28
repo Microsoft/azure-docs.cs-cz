@@ -9,11 +9,11 @@ ms.topic: article
 ms.date: 08/14/2018
 ms.author: iainfou
 ms.openlocfilehash: a6a2fb246e407d6ea240ff40f4d2fa2b1b780931
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54054006"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61023712"
 ---
 # <a name="use-virtual-kubelet-with-azure-kubernetes-service-aks"></a>Virtual Kubelet pomocí služby Azure Kubernetes Service (AKS)
 
@@ -90,7 +90,7 @@ Tyto argumenty jsou k dispozici pro `aks install-connector` příkazu.
 | `--connector-name` | Název konektoru ACI.| Ano |
 | `--name` `-n` | Název spravovaného clusteru. | Ano |
 | `--resource-group` `-g` | Název skupiny prostředků. | Ano |
-| `--os-type` | Typ operačního systému instance kontejneru. Povolené hodnoty: Obě, Linuxu a Windows. Výchozí: Linux | Ne |
+| `--os-type` | Typ operačního systému instance kontejneru. Povolené hodnoty: Both, Linux, Windows. Výchozí: Linux | Ne |
 | `--aci-resource-group` | Skupina prostředků, ve kterém chcete vytvořit skupiny kontejnerů ACI. | Ne |
 | `--location` `-l` | Umístění pro vytvoření skupiny kontejnerů ACI. | Ne |
 | `--service-principal` | Instanční objekt služby používat k ověřování do rozhraní API Azure. | Ne |

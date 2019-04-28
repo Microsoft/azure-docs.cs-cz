@@ -12,11 +12,11 @@ ms.topic: conceptual
 ms.date: 02/11/2019
 ms.author: jgao
 ms.openlocfilehash: 20bf38b87ce29f8506a5611ecd25cf38f6d4ed61
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56825238"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60550639"
 ---
 # <a name="manage-azure-resources-by-using-the-azure-portal"></a>Správa prostředků Azure pomocí webu Azure portal
 
@@ -103,7 +103,7 @@ Další informace najdete v tématu [Zamknutí prostředků pomocí Azure Resour
 Označování pomáhá logicky uspořádání skupinu prostředků a prostředky. 
 
 1. Otevřete prostředek na portálu. Pokyny najdete v tématu [otevřete prostředky](#open-resources).
-2. Vyberte **značky**. Následující snímek obrazovky ukazuje možnosti správy účtu úložiště.
+2. Vyberte **Značky**. Následující snímek obrazovky ukazuje možnosti správy účtu úložiště.
 
     ![značky azure resource](./media/manage-resources-portal/manage-azure-resources-portal-tag-resource.png)
 3. Zadejte vlastnosti značky a pak vyberte **Uložit**.

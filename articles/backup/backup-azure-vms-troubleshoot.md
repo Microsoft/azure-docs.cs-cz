@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.date: 04/08/2019
 ms.author: srinathv
 ms.openlocfilehash: 6f10d8bc7f813245a66296988e4bb3792d898e08
-ms.sourcegitcommit: fec96500757e55e7716892ddff9a187f61ae81f7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2019
-ms.locfileid: "59618188"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60550018"
 ---
 # <a name="troubleshoot-azure-virtual-machine-backup"></a>Odstraňování potíží se zálohováním virtuálních počítačů Azure
 Řešení potíží s chybami při pomocí služby Azure Backup pomocí informací uvedených v následující tabulce došlo k chybě:
@@ -40,7 +40,7 @@ Operace zálohování se nezdařila, protože virtuální počítač je ve stavu
 ### <a name="usererrorfsfreezefailed---failed-to-freeze-one-or-more-mount-points-of-the-vm-to-take-a-file-system-consistent-snapshot"></a>UserErrorFsFreezeFailed – nepovedlo se zablokovat nejméně jeden přípojný bod virtuálního počítače na pořízení konzistentního snímku systému souborů
 
 Kód chyby: UserErrorFsFreezeFailed <br/>
-Chybová zpráva: Nepovedlo se zablokovat nejméně jeden přípojný bod virtuálního počítače na pořízení konzistentního snímku systému souborů.
+Chybová zpráva: Nejméně jeden přípojný bod virtuálního počítače se nepovedlo zablokovat a nešlo tak pořídit snímek konzistentní vzhledem k systému souborů.
 
 * Zkontrolujte stav systému souborů všech připojených zařízení používat **tune2fs** příkazu, například **tune2fs -l/dev/sdb1 \\** .\| grep **stavu systému souborů**.
 * Odpojte zařízení, u kterých nebyla vyčištěna stav systému souborů, pomocí **umount** příkazu.
@@ -82,7 +82,7 @@ Restartujte zapisovače služby VSS, které jsou v chybném stavu. Z příkazov�
 ### <a name="extensionconfigparsingfailure--failure-in-parsing-the-config-for-the-backup-extension"></a>ExtensionConfigParsingFailure - Chyba při analýze konfigurace zálohovacího rozšíření
 
 Kód chyby: ExtensionConfigParsingFailure<br/>
-Chybová zpráva: Při analýze konfigurace zálohovacího rozšíření se stala chyba.
+Chybová zpráva: Došlo k chybě při parsování konfigurace pro rozšíření zálohování.
 
 K této chybě dochází z důvodu změny oprávnění na **MachineKeys** adresáře: **%systemdrive%\programdata\microsoft\crypto\rsa\machinekeys**.
 Spusťte následující příkaz a zkontrolujte oprávnění na **MachineKeys** adresáře jsou výchozí hodnoty:**icacls %systemdrive%\programdata\microsoft\crypto\rsa\machinekeys**.

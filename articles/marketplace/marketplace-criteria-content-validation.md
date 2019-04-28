@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 10/05/2018
 ms.author: yijenj
 ms.openlocfilehash: e72b115420e49a50f18ae9a27c6243394427ea4a
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58000407"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61093195"
 ---
 # <a name="azure-marketplace-listing-guidelines"></a>Pokyny pro zařazení na Azure Marketplace
 
@@ -95,7 +95,7 @@ Musí splňovat všechny nabídky [všechny požadavky na výpis](https://docs.m
 | 7 | Zásady ochrany osobních údajů a podmínky použití k dispozici  |  Zásady nebo podmínky nepožaduje se  | | 
 | 8 | Typy služeb | Ujistěte se, že služby typu odpovídá názvu | |
 | 9 | Kompetence |<br>• Musí být alespoň jeden z následujících akcí:<br>Vývoj aplikací • <br>• Integrace aplikací <br>• Správa životního cyklu aplikací <br>• Cloudovou platformu <br>• Analýzu dat <br>• Datového centra <br>• Datová platforma <br>• DevOps |
-| 10 | Produkty | Musí být Azure | |
+| 10 | Products | Musí být Azure | |
 | 11 | Země/oblast | Zajištění shody zemí a oblastí zvolili měny | |
 | 12 | Další informace  | <br>• Odkazy dole (v části Popis není marketplace odkazy na levé straně) vede na další informace o řešení a jsou veřejně dostupné a zobrazování správně. <br>• Odkazy musí mít "popisný název" a nesmí být uvedené jako název souboru žádné soubory ke stažení | |
 

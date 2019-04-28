@@ -15,12 +15,12 @@ ms.custom: H1Hack27Feb2017
 ms.workload: infrastructure-services
 ms.date: 12/18/2017
 ms.author: victorh
-ms.openlocfilehash: 7f69d77ac7a6c2a17ef2568f0c7edaef2e1ee3f5
-ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
-ms.translationtype: MT
+ms.openlocfilehash: 7da382a644c1db92b9915f1d3f1f3a459e8893b8
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39174413"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60563367"
 ---
 # <a name="overview-of-dns-zones-and-records"></a>Přehled záznamů a zón DNS
 
@@ -34,13 +34,13 @@ Registrátora názvu domény je organizace, která umožňuje zakoupit název do
 
 Azure DNS poskytuje infrastrukturu serveru globálně distribuovaná, vysokou dostupnost názvu, který můžete použít k hostování vaší domény. Hostovat v Azure DNS, můžete spravovat svoje DNS záznamy pomocí stejných přihlašovacích údajů, rozhraní API, nástrojů, fakturace a podpory jako u ostatních služeb Azure.
 
-Azure DNS aktuálně nepodporuje nákup názvů domén. Pokud chcete zakoupit název domény, budete muset použít registrátora názvu domén třetí strany. Doménový Registrátor obvykle účtuje malý roční poplatek. Domény pak se dají hostovat v Azure DNS pro správu záznamů DNS. Zobrazit [delegování domény do Azure DNS](dns-domain-delegation.md) podrobnosti.
+Azure DNS aktuálně nepodporuje nákup názvů domén. Pokud chcete zakoupit název domény, budete muset použít registrátora názvu domén třetí strany. Doménový Registrátor obvykle účtuje malý roční poplatek. Domény pak se dají hostovat v Azure DNS pro správu záznamů DNS. Další informace najdete v tématu [Delegování zón DNS s využitím Azure DNS](dns-domain-delegation.md).
 
 ## <a name="dns-zones"></a>Zóny DNS
 
 [!INCLUDE [dns-create-zone-about](../../includes/dns-create-zone-about-include.md)]
 
-## <a name="dns-records"></a>Záznamy DNS
+## <a name="dns-records"></a>DNS records
 
 [!INCLUDE [dns-about-records-include](../../includes/dns-about-records-include.md)]
 
@@ -59,14 +59,14 @@ K vytvoření sady záznamů zástupných znaků, použijte název sady záznam�
 ### <a name="caa-records"></a>Záznamy CAA
 
 Záznamy CAA umožňuje vlastníkům domén určit, které certifikačními autoritami (CA) mají oprávnění k vystavování certifikátů pro jejich domény. To umožňuje certifikační autority, aby se zabránilo chybně vystavování certifikátů v některých případech. Záznamy CAA mají tři vlastnosti:
-* **Příznaky**: to je celé číslo mezi 0 a 255, používá k reprezentování kritické příznak, který má zvláštní význam za [RFC](https://tools.ietf.org/html/rfc6844#section-3)
+* **Příznaky**: To je celé číslo mezi 0 a 255, používá k reprezentování kritické příznak, který má zvláštní význam za [RFC](https://tools.ietf.org/html/rfc6844#section-3)
 * **Značka**: řetězec ASCII, který může být jedna z následujících akcí:
     * **problém**: použít, pokud chcete zadat certifikačních autorit, které jsou povolené pro vydávání certifikátů (všechny typy)
     * **issuewild**: použít, pokud chcete zadat certifikačních autorit, které jsou povolené pro vydávání certifikátů (pouze zástupné certifikáty)
     * **iodef**: Zadejte e-mailovou adresu nebo název hostitele, ke kterému může upozornit certifikačních autorit pro požadavky certifikátů neoprávněným problém
 * **Hodnota**: hodnota pro konkrétní značku zvolené
 
-### <a name="cname-records"></a>Záznamy CNAME
+### <a name="cname-records"></a>CNAME records
 
 Sady záznamů CNAME nemůžou existovat současně s jinými sadami záznamů se stejným názvem. Například nelze vytvořit sadu záznamů CNAME s relativním názvem "www" a záznam s relativním názvem "www", ve stejnou dobu.
 
@@ -74,7 +74,7 @@ Protože vrchol zóny (název = '\@") vždy obsahuje sady záznamů NS a SOA, kt
 
 Tato omezení vznikají z norem DNS a nejsou omezení Azure DNS.
 
-### <a name="ns-records"></a>Záznamy NS
+### <a name="ns-records"></a>NS records
 
 Sada ve vrcholu zóny záznamů NS (název "\@") se vytváří automaticky s každou zónou DNS a je automaticky odstraní při odstranění zóny (nelze jej odstranit samostatně).
 
@@ -92,14 +92,14 @@ Všechny vlastnosti záznamu SOA s výjimkou vlastnost "hostitel", která je př
 
 [!INCLUDE [dns-spf-include](../../includes/dns-spf-include.md)]
 
-### <a name="srv-records"></a>Vytvoření záznamů SRV služby
+### <a name="srv-records"></a>SRV records
 
 [Záznamy SRV](https://en.wikipedia.org/wiki/SRV_record) různých služeb používají k určení umístění serveru. Při zadávání záznam SRV v Azure DNS:
 
 * *Služby* a *protokol* musí být zadaný jako součást názvu sady záznamů s předponou podtržítka.  Například "\_sip.\_ TCP.Name ".  Pro záznam ve vrcholu zóny, je nutné určit "\@"v názvu záznamu jednoduše použít službu a protokol, například"\_sip.\_ TCP ".
 * *Priority*, *váha*, *port*, a *cílové* jsou zadány jako parametry každý záznam v sadě záznamů.
 
-### <a name="txt-records"></a>Záznamy TXT
+### <a name="txt-records"></a>TXT records
 
 Záznamy TXT se používají k mapování názvů domén na libovolných textových řetězců. Se používají ve více aplikacích, zejména související s konfigurací e-mailu, jako [odesílatele zásad Framework (SPF)](https://en.wikipedia.org/wiki/Sender_Policy_Framework) a [DomainKeys identifikovat e-mailu (DKIM)](https://en.wikipedia.org/wiki/DomainKeys_Identified_Mail).
 
@@ -131,7 +131,7 @@ Ve výchozím nastavení používá Azure DNS Powershellu značek entit k blokov
 
 Na úrovni rozhraní REST API pro Azure DNS značek etag určeny pomocí hlavičky protokolu HTTP.  Jejich chování je uveden v následující tabulce:
 
-| Záhlaví | Chování |
+| Hlavička | Chování |
 | --- | --- |
 | Žádný |PUT vždy úspěšné (žádné kontroly Etag) |
 | If-match <etag> |PUT úspěšná, pouze pokud prostředek existuje a Značka Etag odpovídá |
@@ -139,7 +139,7 @@ Na úrovni rozhraní REST API pro Azure DNS značek etag určeny pomocí hlavič
 | If-none-match * |PUT úspěšná, pouze pokud prostředek neexistuje. |
 
 
-## <a name="limits"></a>Omezení
+## <a name="limits"></a>Limits
 
 Následující výchozí omezení platí při používání Azure DNS:
 

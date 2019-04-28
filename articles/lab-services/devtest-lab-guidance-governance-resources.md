@@ -14,11 +14,11 @@ ms.date: 02/11/2019
 ms.author: spelluru
 ms.reviewer: christianreddington,anthdela,juselph
 ms.openlocfilehash: c5514a43602106cf045b575d289e02b591468359
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56338457"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60561642"
 ---
 # <a name="governance-of-azure-devtest-labs-infrastructure---resources"></a>Zásady správného řízení infrastruktury Azure DevTest Labs – prostředky
 Tento článek se zabývá zarovnání a správu prostředků pro DevTest Labs ve vaší organizaci. 
