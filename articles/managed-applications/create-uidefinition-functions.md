@@ -14,11 +14,11 @@ ms.workload: na
 ms.date: 10/12/2017
 ms.author: tomfitz
 ms.openlocfilehash: 80fd593eecf189d516a8c9d7ef2a94ec9f23fc39
-ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/07/2019
-ms.locfileid: "54063790"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60587916"
 ---
 # <a name="createuidefinition-functions"></a>Funkcí CreateUiDefinition
 Tato část obsahuje podpisy pro všechny podporované funkce CreateUiDefinition.
@@ -526,7 +526,7 @@ Následující příklad vrátí `2.9`:
 "[float(2.9)]"
 ```
 
-### <a name="string"></a>řetězec
+### <a name="string"></a>string
 Převede parametr na řetězec. Tato funkce podporuje parametry všech typů dat JSON.
 
 Následující příklad vrátí `"1"`:
@@ -553,7 +553,7 @@ Následující příklad vrátí `"{"foo":"bar"}"`:
 "[string({\"foo\":\"bar\"})]"
 ```
 
-### <a name="bool"></a>BOOL
+### <a name="bool"></a>bool
 Převede parametr na logickou hodnotu. Tato funkce podporuje parametry typu number, string a Boolean. Podobně jako u logických hodnot v jazyce JavaScript, hodnot s výjimkou `0` nebo `'false'` vrátí `true`.
 
 Následující příklad vrátí `true`:
@@ -625,7 +625,7 @@ Následující příklad vrátí `"foobar"`:
 "[decodeBase64('Zm9vYmFy')]"
 ```
 
-### <a name="encodeuricomponent"></a>encodeuricomponent –
+### <a name="encodeuricomponent"></a>encodeUriComponent
 Zakóduje parametr na řetězec kódování URL. Tato funkce podporuje jenom parametry typu string.
 
 Následující příklad vrátí `"https%3A%2F%2Fportal.azure.com%2F"`:
@@ -634,7 +634,7 @@ Následující příklad vrátí `"https%3A%2F%2Fportal.azure.com%2F"`:
 "[encodeUriComponent('https://portal.azure.com/')]"
 ```
 
-### <a name="decodeuricomponent"></a>decodeuricomponent –
+### <a name="decodeuricomponent"></a>decodeUriComponent
 Dekóduje parametr z řetězce kódování URL. Tato funkce podporuje jenom parametry typu string.
 
 Následující příklad vrátí `"https://portal.azure.com/"`:
@@ -759,7 +759,7 @@ Můžou se zobrazovat v následujícím příkladu `"1990-12-31T23:59:59.000Z"`:
 "[utcNow()]"
 ```
 
-### <a name="addseconds"></a>Přidat_sekundy
+### <a name="addseconds"></a>addSeconds
 Přidá celočíselný počet sekund do zadaného časového razítka.
 
 Následující příklad vrátí `"1991-01-01T00:00:00.000Z"`:

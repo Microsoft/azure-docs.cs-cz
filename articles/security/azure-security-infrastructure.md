@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 07/06/2018
 ms.author: terrylan
 ms.openlocfilehash: dc9b4db37e811d8bac6df2d532fd3629d98c9650
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56104759"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60586543"
 ---
 # <a name="azure-infrastructure-security"></a>Zabezpečení infrastruktury Azure
 Microsoft Azure je spuštěná v datacentrech spravovaná a provozované společností Microsoft. Tato datová centra rozptýlené v souladu s klíče oborové standardy, jako jsou ISO/IEC 27001: 2013 a SP NIST 800-53, zabezpečení a spolehlivost. Tato datová centra jsou spravovaná, monitorovat a spravovat prostřednictvím Microsoft provozní personál. Provozní personál se po několika letech zkušeností doručování největších světových online služeb s 24 x 7 kontinuity podnikových procesů.

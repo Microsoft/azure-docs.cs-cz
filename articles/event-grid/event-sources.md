@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 02/12/2019
 ms.author: spelluru
 ms.openlocfilehash: b6abb0048dcc722241a2cd87354224b0fd7fa2f9
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56234182"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60561541"
 ---
 # <a name="event-sources-in-azure-event-grid"></a>Zdroje událostí ve službě Azure Event Grid
 
@@ -117,7 +117,7 @@ Přihlášení k odběru služby Service Bus událostí reagovat na zprávy bez 
 | [Přehled: Azure Service Bus k integraci služby Event Grid](../service-bus-messaging/service-bus-to-event-grid-integration-concept.md) | Přehled integrace služby Service Bus s využitím služby Event Grid. |
 | [Schéma událostí](event-schema-service-bus.md) | Zobrazí pole v událostech služby Service Bus. |
 
-## <a name="storage"></a>Storage
+## <a name="storage"></a>Úložiště
 
 Přihlášení k odběru úložiště objektů Blob událostí reagovat na události vytvořené a odstraněných objektů blob.
 

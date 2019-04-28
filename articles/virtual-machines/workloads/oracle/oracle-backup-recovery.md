@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 08/02/2018
 ms.author: rogirdh
-ms.openlocfilehash: 93fbd5bbba91b45e1afd123a2466b249302e2354
-ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
+ms.openlocfilehash: c41f13a6437f69121d3bbb387c96d8e13f2be0b3
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39492836"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60566812"
 ---
 # <a name="back-up-and-recover-an-oracle-database-12c-database-on-an-azure-linux-virtual-machine"></a>Zálohování a obnovení databáze Oracle Database 12c na virtuálním počítači Azure s Linuxem
 
@@ -30,7 +30,7 @@ Než začnete, ujistěte se, že je nainstalované rozhraní příkazového řá
 
 ## <a name="prepare-the-environment"></a>Příprava prostředí
 
-### <a name="step-1-prerequisites"></a>Krok 1: požadavky
+### <a name="step-1-prerequisites"></a>Krok 1: Požadavky
 
 *   Chcete-li provést proces zálohování a obnovení, musíte nejdřív vytvořit virtuální počítač s Linuxem, který má nainstalované instance Oracle Database 12c. Název image Marketplace, který použijete k vytvoření virtuálního počítače *Oracle: Oracle – databáze-Ee:12.1.0.2:latest*.
 
@@ -266,7 +266,7 @@ Zálohy konzistentní s aplikací je nová funkce ve službě Azure Backup. Mů�
 Další informace najdete v tématu [konzistentní zálohování virtuálních počítačů s Linuxem](https://azure.microsoft.com/blog/announcing-application-consistent-backup-for-linux-vms-using-azure-backup/).
 
 
-### <a name="step-5-use-azure-recovery-services-vaults-to-back-up-the-vm"></a>Krok 5: Použití Azure trezory služby Recovery Services pro zálohování virtuálního počítače
+### <a name="step-5-use-azure-recovery-services-vaults-to-back-up-the-vm"></a>Krok 5: Trezory Recovery Services pomocí služby Azure Recovery Services pro zálohování virtuálního počítače
 
 1.  Na webu Azure Portal vyhledejte **trezory služby Recovery Services**.
 
@@ -307,7 +307,7 @@ Další informace najdete v tématu [konzistentní zálohování virtuálních p
 
     ![Příkaz Backup trezory služby Recovery Services](./media/oracle-backup-recovery/recovery_service_09.png)
 
-10. Klikněte na tlačítko **zálohování** tlačítko. Počkejte na dokončení procesu zálohování. Přejděte ke [krok 6: odebrat soubory databáze](#step-6-remove-the-database-files).
+10. Klikněte na tlačítko **zálohování** tlačítko. Počkejte na dokončení procesu zálohování. Přejděte ke [krok 6: Odebrat soubory databáze](#step-6-remove-the-database-files).
 
     Chcete-li zobrazit stav úlohy zálohování, klikněte na tlačítko **úlohy**.
 
@@ -452,7 +452,7 @@ Pokud chcete obnovit odstraněné soubory, proveďte následující kroky:
 
 Místo obnovení odstraněných souborů z trezorů služby Recovery Services, můžete obnovit celý virtuální počítač.
 
-### <a name="step-1-delete-myvm"></a>Krok 1: Odstranění myVM
+### <a name="step-1-delete-myvm"></a>Krok 1: Odstranit myVM
 
 *   Na webu Azure Portal, přejděte **myVM1** trezoru a pak vyberte **odstranit**.
 
@@ -527,7 +527,7 @@ Po obnovení virtuálního počítače nastavte veřejnou IP adresu.
     ssh <publicIpAddress>
     ```
 
-### <a name="step-5-test-whether-the-database-is-accessible"></a>Krok 5: Testování, zda databáze je přístupná
+### <a name="step-5-test-whether-the-database-is-accessible"></a>Krok 5: Otestujte, jestli je dostupná databáze
 *   K otestování přístupnost, použijte následující skript:
 
     ```bash 
@@ -537,9 +537,9 @@ Po obnovení virtuálního počítače nastavte veřejnou IP adresu.
     ```
 
     > [!IMPORTANT]
-    > Pokud databáze **spuštění** příkaz vygeneruje chybu, pokud chcete obnovit databázi, naleznete v tématu [krok 6: použití RMAN pro obnovení databáze](#step-6-optional-use-rman-to-recover-the-database).
+    > Pokud databáze **spuštění** příkaz vygeneruje chybu, pokud chcete obnovit databázi, naleznete v tématu [krok 6: Obnovení databáze pomocí RMAN](#step-6-optional-use-rman-to-recover-the-database).
 
-### <a name="step-6-optional-use-rman-to-recover-the-database"></a>Krok 6: (Volitelné) použít RMAN pro obnovení databáze
+### <a name="step-6-optional-use-rman-to-recover-the-database"></a>Krok 6: (Volitelné) Použití RMAN pro obnovení databáze
 *   Pokud chcete obnovit databázi, použijte tento skript:
 
     ```bash

@@ -1,6 +1,6 @@
 ---
-title: Deaktivovat a odstranit virtuální pole Microsoft Azure StorSimple | Microsoft Docs
-description: Popisuje postup odstranění zařízení StorSimple ze služby tak, že nejprve deaktivace služby a poté ji odstranit.
+title: Deaktivace a odstranění Microsoft Azure StorSimple Virtual Array | Dokumentace Microsoftu
+description: Popisuje postup odstranění zařízení StorSimple ze služby tak, že nejprve deaktivace a poté odstraní.
 services: storsimple
 documentationcenter: ''
 author: alkohli
@@ -14,51 +14,51 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2016
 ms.author: alkohli
-ms.openlocfilehash: 8dea36f92b034f8c6cdb6875634848d37f4c6606
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: bb1a56d204a46f89213f20e317494120f0ea565e
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23875827"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60580534"
 ---
-# <a name="deactivate-and-delete-a-storsimple-virtual-array"></a>Deaktivovat a odstranit pole virtuální zařízení StorSimple
+# <a name="deactivate-and-delete-a-storsimple-virtual-array"></a>Deaktivace a odstranění StorSimple Virtual Array
 
 ## <a name="overview"></a>Přehled
 
-Pokud deaktivujete o pole virtuální zařízení StorSimple, zrušení propojení mezi zařízením a odpovídající služby StorSimple Manager zařízení. Tento kurz vysvětluje postup:
+Když deaktivujete StorSimple Virtual Array přerušit připojení mezi zařízením a odpovídající služby Správce zařízení StorSimple. Tento kurz vysvětluje následující postupy:
 
 * Deaktivace zařízení 
 * Odstranit deaktivované zařízení
 
-Informace v tomto článku se vztahují pouze na pole virtuální zařízení StorSimple. Informace o řady 8000, přejděte na postup [deaktivujte nebo odstraňte zařízení](storsimple-deactivate-and-delete-device.md).
+Informace v tomto článku se vztahují pouze na virtuálních polí StorSimple. Informace o 8000 series, přejděte na tom, jak [deaktivovat nebo odstranit zařízení](storsimple-deactivate-and-delete-device.md).
 
-## <a name="when-to-deactivate"></a>Kdy deaktivovat?
+## <a name="when-to-deactivate"></a>Kdy se mají deaktivovat?
 
-Deaktivace je trvalé a nedá se vrátit zpátky. Deaktivované zařízení pomocí služby StorSimple Manager zařízení nelze zaregistrovat znovu. Může třeba deaktivovat a odstranit o virtuální zařízení StorSimple pole v následujících scénářích:
+Deaktivace je trvalé a není možné vrátit zpět. Deaktivované zařízení nelze ve službě Správce zařízení StorSimple zaregistrovat znovu. Budete muset deaktivace a odstranění StorSimple Virtual Array v následujících scénářích:
 
-* **Plánované převzetí služeb při selhání** : zařízení je online a chcete převzít zařízení. Pokud máte v úmyslu upgradovat na větší zařízení, musíte při selhání zařízení. Po převodu vlastnictví dat a dokončení převzetí služeb při selhání, zdrojového zařízení se automaticky odstraní.
-* **Neplánované převzetí služeb při selhání** : zařízení je offline a potřebujete převzít zařízení. Tento scénář může dojít při havárii, když je výpadek v datovém centru a primární zařízení je mimo provoz. Chcete převzít zařízení sekundární zařízení. Po převodu vlastnictví dat a dokončení převzetí služeb při selhání, zdrojového zařízení se automaticky odstraní.
-* **Vyřadit z provozu** : chcete vyřadit z provozu zařízení. To vyžaduje, abyste nejdřív deaktivovat zařízení a potom jej odstraňte. Po deaktivaci zařízení jste už mít přístup k všechna data, která je uložený místně. Je možné provádět pouze přístup a obnovit data uložená v cloudu. Pokud budete chtít zachovat data zařízení po deaktivaci, pak byste měli vzít cloudový snímek všechna vaše data před deaktivací zařízení. Tento snímek cloudu umožňuje obnovit všechna data v pozdější fázi.
+* **Plánované převzetí služeb při selhání** : Vaše zařízení je online a vy plánujete provést převzetí služeb při selhání zařízení. Pokud máte v úmyslu upgradovat na větší zařízení, budete muset převzetí služeb při selhání zařízení. Po převodu vlastnictví dat a dokončení převzetí služeb při selhání, se automaticky odstraní zdrojové zařízení.
+* **Neplánované převzetí služeb při selhání** : Vaše zařízení je offline a potřebujete převzít služby při selhání zařízení. Tento scénář může dojít při havárii, pokud dojde k výpadku v datovém centru a primární zařízení je mimo provoz. Máte v plánu převzetí služeb při selhání zařízení sekundární zařízení. Po převodu vlastnictví dat a dokončení převzetí služeb při selhání, se automaticky odstraní zdrojové zařízení.
+* **Vyřazení z provozu** : Chcete vyřadit z provozu zařízení. To vyžaduje, abyste nejprve deaktivovat a odstranit jej. Po deaktivaci zařízení už mít přístup k všechna data, která se ukládají místně. Je možné pouze přístup a obnovit data uložená v cloudu. Pokud budete chtít po deaktivaci zachovat data zařízení, musí před deaktivací zařízení pořídit snímek v cloudu všechna vaše data. Tento snímek v cloudu umožňuje obnovit všechna data v pozdější fázi.
 
 ## <a name="deactivate-a-device"></a>Deaktivace zařízení
 
-Chcete-li deaktivovat zařízení, proveďte následující kroky.
+Deaktivace zařízení, proveďte následující kroky.
 
-#### <a name="to-deactivate-the-device"></a>Chcete-li deaktivovat zařízení
+#### <a name="to-deactivate-the-device"></a>Deaktivace zařízení
 
-1. Ve službě, přejděte na **správy > zařízení**. V **zařízení** okně klikněte a vyberte zařízení, které chcete deaktivovat.
+1. Ve službě, přejděte na **správy > zařízení**. V **zařízení** okna, klikněte na tlačítko a vyberte zařízení, které chcete deaktivovat.
    
-    ![Vyberte zařízení deaktivace](./media/storsimple-virtual-array-deactivate-and-delete-device/deactivate-delete7.png)
-2. Ve vaší **řídicí panel zařízení** okně klikněte na tlačítko **... Další** a ze seznamu vyberte **deaktivovat**.
+    ![Vyberte zařízení k deaktivaci](./media/storsimple-virtual-array-deactivate-and-delete-device/deactivate-delete7.png)
+2. Ve vaší **řídicího panelu zařízení** okna, klikněte na tlačítko **... Další** ze seznamu vyberte **deaktivovat**.
    
-    ![Kliknutím na možnost deaktivovat](./media/storsimple-virtual-array-deactivate-and-delete-device/deactivate-delete8.png)
-3. V **deaktivovat** okno, zadejte název zařízení a pak klikněte na tlačítko **deaktivovat**. 
+    ![Klikněte na tlačítko deaktivace](./media/storsimple-virtual-array-deactivate-and-delete-device/deactivate-delete8.png)
+3. V **deaktivovat** okně zadejte název zařízení a potom klikněte na tlačítko **deaktivovat**. 
    
-    ![Potvrďte deaktivovat](./media/storsimple-virtual-array-deactivate-and-delete-device/deactivate-delete1.png)
+    ![Potvrďte deaktivaci](./media/storsimple-virtual-array-deactivate-and-delete-device/deactivate-delete1.png)
    
-    Proces deaktivovat spustí a trvá několik minut.
+    Proces deaktivovat začíná a trvá několik minut.
    
-    ![Deaktivace v průběhu](./media/storsimple-virtual-array-deactivate-and-delete-device/deactivate-delete2.png)
+    ![Probíhá deaktivace](./media/storsimple-virtual-array-deactivate-and-delete-device/deactivate-delete2.png)
 4. Po deaktivaci aktualizuje seznam zařízení.
    
     ![Deaktivovat dokončení](./media/storsimple-virtual-array-deactivate-and-delete-device/deactivate-delete3.png)
@@ -67,28 +67,28 @@ Chcete-li deaktivovat zařízení, proveďte následující kroky.
 
 ## <a name="delete-the-device"></a>Odstranění zařízení
 
-Zařízení musí nejprve deaktivovat ho odstranit. Odstranění zařízení odebere ze seznamu zařízení připojená ke službě. Služba poté již nebude možné spravovat zařízení. Data přidružená k zařízení, ale zůstává v cloudu. Tato data pak nabíhají poplatky.
+Zařízení má ho nejprve deaktivovat ho odstranit. Odstraňuje se zařízení odebere ze seznamu zařízení připojených ke službě. Služba potom již nemůže spravovat odstraněné zařízení. Data přidružená k zařízení ale zůstává v cloudu. Tato data pak nabíhají poplatky.
 
 Pokud chcete odstranit zařízení, proveďte následující kroky.
 
-#### <a name="to-delete-the-device"></a>Odstranění zařízení
+#### <a name="to-delete-the-device"></a>Chcete-li odstranit zařízení
 
-1. Přejděte ve vašem Správci zařízení StorSimple na **správy > zařízení**. V **zařízení** okně vyberte deaktivované zařízení, které chcete odstranit.
-2. V **řídicí panel zařízení** okně klikněte na tlačítko **... Další** a pak klikněte na **odstranit**.
+1. Přejděte do Správce zařízení StorSimple **správy > zařízení**. V **zařízení** okně Výběr deaktivovaného zařízení, kterou chcete odstranit.
+2. V **řídicího panelu zařízení** okna, klikněte na tlačítko **... Další** a potom klikněte na tlačítko **odstranit**.
    
    ![Vyberte zařízení k odstranění](./media/storsimple-virtual-array-deactivate-and-delete-device/deactivate-delete4.png)
-3. V **odstranit** okno, zadejte název zařízení pro potvrzení odstranění a pak klikněte na tlačítko **odstranit**. Odstraněním zařízení nedojde k odstranění dat cloud přidružené k zařízení. 
+3. V **odstranit** okně zadejte název vašeho zařízení k potvrzení odstranění a poté klikněte na tlačítko **odstranit**. Odstraněním tohoto zařízení nedojde k odstranění dat cloud přidružené k zařízení. 
    
    ![Potvrzení odstranění](./media/storsimple-virtual-array-deactivate-and-delete-device/deactivate-delete5.png) 
-4. Odstranění se spustí a trvá několik minut.
+4. Odstranění začíná a trvá několik minut.
    
    ![Probíhá odstraňování](./media/storsimple-virtual-array-deactivate-and-delete-device/deactivate-delete6.png)
    
     Po odstranění zařízení můžete zobrazit aktualizovaný seznam zařízení.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
-* Informace o tom, jak převzetí služeb při selhání, přejděte na [převzetí služeb při selhání a zotavení po havárii vaše pole virtuální zařízení StorSimple](storsimple-virtual-array-failover-dr.md).
+* Informace o tom, jak převzetí služeb při selhání najdete v části [převzetí služeb při selhání a zotavení po havárii StorSimple Virtual Array](storsimple-virtual-array-failover-dr.md).
 
-* Další informace o tom, jak používat službu StorSimple Manager zařízení, přejděte na [použít službu StorSimple Manager zařízení ke správě pole virtuální zařízení StorSimple](storsimple-virtual-array-manager-service-administration.md). 
+* Další informace o tom, jak použít službu Správce zařízení StorSimple, přejděte na [použít službu Správce zařízení StorSimple ke správě StorSimple Virtual Array](storsimple-virtual-array-manager-service-administration.md). 
 

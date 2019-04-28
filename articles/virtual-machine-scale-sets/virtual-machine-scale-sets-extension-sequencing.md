@@ -16,11 +16,11 @@ ms.topic: article
 ms.date: 01/30/2019
 ms.author: manayar
 ms.openlocfilehash: 2e5dfda16c4828b3113fc50d4cffc79fe6ff19e8
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55563996"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60620168"
 ---
 # <a name="sequence-extension-provisioning-in-virtual-machine-scale-sets"></a>Nastaví pořadí zřizování rozšíření virtuálního počítače škálovací
 Rozšíření virtuálního počítače Azure poskytují funkce, jako je například konfigurace po nasazení a správu, monitorování, zabezpečení a další. Nasazení v produkčním prostředí většinou pomocí kombinace více rozšíření, které jsou nakonfigurované pro instance virtuálních počítačů k dosažení požadovaných výsledků.

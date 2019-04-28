@@ -11,11 +11,11 @@ ms.date: 07/30/2018
 ms.author: liamca
 ms.custom: seodec2018
 ms.openlocfilehash: 58d7ca65a14f9f774b19796c9beae2a7c84102ad
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53632921"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61288698"
 ---
 # <a name="design-patterns-for-multitenant-saas-applications-and-azure-search"></a>Modely návrhu pro víceklientské aplikace SaaS a Azure Search
 Víceklientské aplikace je ten, který poskytuje stejné funkce a služby do libovolného počtu klientů, kteří nemohou zobrazovat ani sdílet data žádným jiným tenantem. Tento dokument popisuje strategie izolace tenanta pro víceklientské aplikace integrované s Azure Search.
@@ -39,7 +39,7 @@ Přidávání a odebírání oddílů a replik v vám umožní kapacita služby 
 ### <a name="service-and-index-limits-in-azure-search"></a>Omezení služby a indexu ve službě Azure Search
 Existuje několik různých [cenové úrovně](https://azure.microsoft.com/pricing/details/search/) ve službě Azure Search úrovně obsahují různé [omezení a kvóty](search-limits-quotas-capacity.md). Některé z těchto omezení jsou na úrovni služby, některé jsou na úrovni index a některé jsou na úrovni oddílu.
 
-|  | Basic | Standard1 | Standardní2 | Standardní3 | HD, High Density úrovni standardní3 |
+|  | Basic | Standard1 | Standardní2 | Standardní3 | Standard3 HD |
 | --- | --- | --- | --- | --- | --- |
 | Maximální repliky na službu |3 |12 |12 |12 |12 |
 | Maximální oddíly na službu |1 |12 |12 |12 |3 |

@@ -17,11 +17,11 @@ ms.date: 12/15/2017
 ms.author: cynthn
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: ddbaed6704fd32f7fd4fe5a790424cbf829d2f1c
-ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37932853"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60540373"
 ---
 # <a name="example-azure-infrastructure-walkthrough-for-windows-vms"></a>Průvodce ukázkovou infrastrukturou Azure pro virtuální počítače s Windows
 Tento článek vás provede vytvoření příkladu infrastruktury aplikace. Můžeme podrobně navrhování infrastruktury pro jednoduché online úložiště, který spojuje všechny zásady a rozhodnutí týkající se vytváření názvů, skupiny dostupnosti, virtuální sítě a nástroje pro vyrovnávání zatížení a skutečného nasazení virtuálních počítačů (VM).
@@ -72,14 +72,14 @@ Vzhledem k tomu, že virtuální sítě nemusí probíhající připojení k Adv
 
 Výhradně cloudový virtuální síť vytvořili s následujícím nastavením pomocí webu Azure portal:
 
-* Název: AZOS-použití VN01
+* Název: AZOS-USE-VN01
 * Umístění: Východní USA 2
-* Adresní prostor virtuální sítě: 10.0.0.0/8
+* adresní prostor virtuální sítě: 10.0.0.0/8
 * První podsíť:
-  * Název: front-endu
+  * Název: FrontEnd
   * Adresní prostor: 10.0.1.0/24
 * Druhou podsíť:
-  * Název: back-endu
+  * Název: BackEnd
   * Adresní prostor: 10.0.2.0/24
 
 ## <a name="availability-sets"></a>Skupiny dostupnosti
@@ -88,7 +88,7 @@ Kvůli udržení vysoké dostupnosti všechny čtyři úrovně jejich online úl
 * **azos použít jako webový** pro webové servery
 * **azos používání jako aplikace** pro aplikační servery
 * **azos použijte jako sql** pro servery SQL
-* **azos použijte jako dc** pro řadiče domény
+* **azos-use-as-dc** for the domain controllers
 
 ## <a name="virtual-machines"></a>Virtuální počítače
 Adventure Works Cycles jste se rozhodli následující názvy pro své virtuální počítače Azure:

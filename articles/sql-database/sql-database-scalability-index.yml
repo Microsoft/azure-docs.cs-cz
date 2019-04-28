@@ -1,10 +1,4 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 7ee79da6219452ace4f7e71bd670de3cfdc968fb
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
-ms.translationtype: MT
-ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56232360"
 documentType: LandingData
 title: Azure SQL Database – rozšiřitelnost
 metadata:
@@ -12,49 +6,49 @@ metadata:
   title: Azure SQL Database – rozšiřitelnost
   meta.description: Learn how to scale your Azure SQL Database.
   services: sql-database
-  ms.subservice: scale-out
-  author: jovanpop-msft
-  manager: craigg
+  author: WenJason
+  manager: digimobile
   requires-business-manager-approval: false
   ms.service: sql-database
   ms.tgt_pltfrm: na
-  ms.devlang: 
+  ms.devlang: null
   ms.topic: overview
-  ms.date: 01/25/2019
-  ms.author: jovanpop-msft
+  origin.date: 01/25/2019
+  ms.date: 02/25/2019
+  ms.author: v-jay
 sections:
-- items:
-  - type: paragraph
-    text: Azure SQL Database umožňuje snadno škálovat databáze můžete přidat další výpočetní výkon (škálování) nebo přidáním další jednotky databáze (horizontální navýšení kapacity).
-  - type: list
-    style: cards
-    className: cardsM
-    columns: 3
+  - items:
+      - type: paragraph
+        text: Azure SQL Database umožňuje snadno škálovat databáze můžete přidat další výpočetní výkon (škálování) nebo přidáním další jednotky databáze (horizontální navýšení kapacity).
+      - type: list
+        style: cards
+        className: cardsM
+        columns: 3
+        items:
+          - title: Vertikálně navýšit kapacitu
+            href: /sql-database/sql-database-scale-resources
+            html: '<p>Snadno přidávat nebo odebírat prostředky ve službě SQL Database, aby bylo možné najít nejlepší poměr cena/výkon nebo zmírnit problémy s výkonem.</p>'
+          - title: Přečtěte si horizontální navýšení kapacity
+            href: /sql-database/sql-database-read-scale-out
+            html: '<p>Úroveň pro důležité obchodní poskytuje zdarma z bezplatné repliku databáze na kopii dat, kde můžete spouštět sestavy, analýzy a další dotazy jen pro čtení.</p>'
+          - title: Sharding databází
+            href: /sql-database/sql-database-elastic-scale-introduction
+            html: <p>Horizontální navýšení kapacity databáze mimo maximální výpočetní prostředky a omezení úložiště pro izolované databáze můžete několika horizontálními oddíly databáze.</p>
+          - title: Elastické dotazy
+            href: /sql-database/sql-database-elastic-query-overview
+            html: <p>Elastické dotazy umožňují spuštění standardní dotazy Transact-SQL na sadu horizontálních oddílů globálně distribuované databáze.</p>
+          - title: Elastické transakce
+            href: /sql-database/sql-database-elastic-transactions-overview
+            html: <p>Použijte globálně distribuované transakce zajistit transakčně konzistentní vzhledem k aplikacím přístup na distribuovaných datech.</p>
+          - title: Úlohy napříč databázemi
+            href: /sql-database/elastic-jobs-overview
+            html: <p>Zachovat sadu databází pomocí Elastických úloh napříč databázemi.</p>
+  - title: Další zdroje informací
     items:
-    - title: Vertikálně navýšit kapacitu
-      href: /azure/sql-database/sql-database-scale-resources
-      html: <p>Snadno přidávat nebo odebírat prostředky ve službě SQL Database, aby bylo možné najít nejlepší poměr cena/výkon nebo zmírnit problémy s výkonem.</p>
-    - title: Přečtěte si horizontální navýšení kapacity
-      href: /azure/sql-database/sql-database-read-scale-out
-      html: <p>Úroveň pro důležité obchodní poskytuje zdarma z bezplatné repliku databáze na kopii dat, kde můžete spouštět sestavy, analýzy a další dotazy jen pro čtení.</p>
-    - title: Sharding databází
-      href: /azure/sql-database/sql-database-elastic-scale-introduction
-      html: <p>Horizontální navýšení kapacity databáze mimo maximální výpočetní prostředky a omezení úložiště pro izolované databáze můžete několika horizontálními oddíly databáze.</p>
-    - title: Elastické dotazy
-      href: /azure/sql-database/sql-database-elastic-query-overview
-      html: <p>Elastické dotazy umožňují spuštění standardní dotazy Transact-SQL na sadu horizontálních oddílů globálně distribuované databáze.</p>
-    - title: Elastické transakce
-      href: /azure/sql-database/sql-database-elastic-transactions-overview
-      html: <p>Použijte globálně distribuované transakce zajistit transakčně konzistentní vzhledem k aplikacím přístup na distribuovaných datech.</p>
-    - title: Úlohy napříč databázemi
-      href: /azure/sql-database/elastic-jobs-overview
-      html: <p>Zachovat sadu databází pomocí Elastických úloh napříč databázemi.</p>
-- title: Další zdroje informací
-  items:
-  - type: paragraph
-    text: Další informace o další funkce, které vám mohou pomoci při škálujte vaše data.
-  - type: list
-    style: ordered
-    items:
-    - html: <a href="https://docs.microsoft.com/sql/relational-databases/linked-servers/linked-servers-database-engine">Odkazovaný server</a> jsou funkce databázového stroje SQL Server core, umožňující spuštění distribuovaných dotazů z kódu jazyka Transact-SQL do jiné databázové stroje.
-    - html: <a href="sql-database-geo-replication-overview.md">Geografická replikace</a> umožňuje vložit libovolný počet replik pro čtení připravených v různých oblastech.
+      - type: paragraph
+        text: 'Další informace o další funkce, které vám mohou pomoci při škálujte vaše data.'
+      - type: list
+        style: ordered
+        items:
+          - html: '<a href="https://docs.microsoft.com/sql/relational-databases/linked-servers/linked-servers-database-engine">Odkazovaný server</a> jsou funkce databázového stroje SQL Server core, umožňující spuštění distribuovaných dotazů z kódu jazyka Transact-SQL do jiné databázové stroje.'
+          - html: <a href="sql-database-geo-replication-overview.md">Geografická replikace</a> umožňuje vložit libovolný počet replik pro čtení připravených v různých oblastech.

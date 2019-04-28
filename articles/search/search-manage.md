@@ -11,11 +11,11 @@ ms.date: 03/08/2019
 ms.author: heidist
 ms.custom: seodec2018
 ms.openlocfilehash: d5820c927b88eba37eaf092dfd4b209180bfc8eb
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57775590"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60565428"
 ---
 # <a name="service-administration-for-azure-search-in-the-azure-portal"></a>Správa služby Azure Search na webu Azure Portal
 > [!div class="op_single_selector"]
@@ -86,7 +86,7 @@ Opětovné sestavení indexu, by odstranit (za předpokladu, že existuje), znov
 
 <a id="scale"></a>
 
-## <a name="scale-up-or-down"></a>Vertikálně navýšit nebo snížit kapacitu
+## <a name="scale-up-or-down"></a>Vertikální navýšení nebo snížení kapacity
 Každá služba search začíná minimálně jednu repliku a jeden oddíl. Pokud jste [úroveň, která zajišťují vyhrazené prostředky](search-limits-quotas-capacity.md), klikněte na tlačítko **ŠKÁLOVÁNÍ** dlaždici na řídicím panelu služby a upravte využití prostředků.
 
 Když přidáte kapacitu prostřednictvím prostředku, služba používá je automaticky. Nevyžaduje žádnou další akci z vaší strany, ale neexistuje dojde k mírnému zpoždění, než začne vyplácet dopadu nový prostředek. Může trvat 15 minut nebo déle zřízení dalších prostředků.

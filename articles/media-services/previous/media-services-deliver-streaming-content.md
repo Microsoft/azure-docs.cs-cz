@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.openlocfilehash: 49e9fbc3f8d10dd1e272f5f9bc5a542328a3ddb4
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58181907"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61224221"
 ---
 # <a name="publish-media-services-content-using-net"></a>Publikovat obsah služby Media Services pomocí .NET  
 > [!div class="op_single_selector"]

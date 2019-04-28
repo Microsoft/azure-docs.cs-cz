@@ -15,11 +15,11 @@ ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: kumud
 ms.openlocfilehash: 4a8c7309a07238ef3410e42c3d631ad525f023cc
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54039788"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61216737"
 ---
 # <a name="deploy-an-internet-facing-load-balancer-solution-with-ipv6-using-a-template"></a>Nasazení řešení ve nástroje pro vyrovnávání zatížení přístupem k Internetu s protokolem IPv6 pomocí šablony
 
@@ -53,7 +53,7 @@ Tento článek odkazuje na šablonu, která je publikovaná v [šablony pro rych
 1. Otevřete na webu Azure portal a přihlaste se pomocí účtu, který má oprávnění k vytvoření virtuálních počítačů a síťových prostředků v rámci předplatného Azure. Pokud používáte existujících prostředků, účet musí oprávnění k vytvoření skupiny prostředků a účtu úložiště.
 2. Klikněte na tlačítko "+ nový" v nabídce a zadejte "Šablona" do vyhledávacího pole. Ve výsledcích hledání vyberte "Šablony nasazení".
 
-    ![LB-ipv6 – portal – krok 2](./media/load-balancer-ipv6-internet-template/lb-ipv6-portal-step2.png)
+    ![lb-ipv6-portal-step2](./media/load-balancer-ipv6-internet-template/lb-ipv6-portal-step2.png)
 
 3. Vše v okně klikněte na tlačítko "Šablony nasazení."
 
@@ -61,7 +61,7 @@ Tento článek odkazuje na šablonu, která je publikovaná v [šablony pro rych
 
 4. Klikněte na možnost "Vytvořit".
 
-    ![LB ipv6 portál step4](./media/load-balancer-ipv6-internet-template/lb-ipv6-portal-step4.png)
+    ![lb-ipv6-portal-step4](./media/load-balancer-ipv6-internet-template/lb-ipv6-portal-step4.png)
 
 5. Klikněte na tlačítko "Upravit šablonu." Odstraňte existující obsah a kopírování a vkládání v celý obsah souboru šablony (chcete zahrnout spuštění a ukončení {}) a pak klikněte na možnost "Uložit."
 
@@ -72,7 +72,7 @@ Tento článek odkazuje na šablonu, která je publikovaná v [šablony pro rych
 
 6. Klikněte na tlačítko "Upravit parametry." V okně Parametry zadejte hodnoty podle pokynů v oddílu parametry šablony a pak klikněte na "Save (Uložit) zavřete okno parametry. V okně Vlastní nasazení vyberte své předplatné, existující skupinu prostředků nebo vytvořit novou. Pokud vytvoříte skupinu prostředků, vyberte umístění pro skupinu prostředků. Klepnutím na tlačítko **právní podmínky**, pak klikněte na tlačítko **nákupní** pro právní podmínky. Azure zahájí nasazení prostředků. Trvá několik minut, do které prostředky nasadíte.
 
-    ![LB ipv6 portál step6](./media/load-balancer-ipv6-internet-template/lb-ipv6-portal-step6.png)
+    ![lb-ipv6-portal-step6](./media/load-balancer-ipv6-internet-template/lb-ipv6-portal-step6.png)
 
     Další informace o těchto parametrech najdete v tématu [šablonu parametry a proměnné](#template-parameters-and-variables) části dále v tomto článku.
 
@@ -89,7 +89,7 @@ Tento článek odkazuje na šablonu, která je publikovaná v [šablony pro rych
 
 9. Klikněte na tlačítko "myIPv6PublicIP" v seznamu prostředků. Uvidíte, že na něm adresu IPv6 v oblasti IP adresa a že jeho název DNS je hodnota zadaná pro parametr dnsNameforIPv6LbIP v kroku 6. Tento prostředek je veřejnou IPv6 adresu a název hostitele, který je přístupný pro internetové klienty.
 
-    ![LB ipv6 portál step9](./media/load-balancer-ipv6-internet-template/lb-ipv6-portal-step9.png)
+    ![lb-ipv6-portal-step9](./media/load-balancer-ipv6-internet-template/lb-ipv6-portal-step9.png)
 
 ## <a name="validate-connectivity"></a>Ověření připojení
 

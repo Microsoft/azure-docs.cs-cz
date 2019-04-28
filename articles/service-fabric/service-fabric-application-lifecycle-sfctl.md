@@ -2,18 +2,19 @@
 title: Správa aplikace Azure Service Fabric pomocí Azure Service Fabric CLI (sfctl)
 description: Zjistěte, jak nasadit a odebrání aplikace z clusteru služby Azure Service Fabric pomocí Azure Service Fabric CLI
 services: service-fabric
-author: Christina-Kang
-manager: chackdan
+author: rockboyfor
+manager: digimobile
 ms.service: service-fabric
 ms.topic: conceptual
-ms.date: 07/31/2018
-ms.author: bikang
+origin.date: 07/31/2018
+ms.date: 09/10/2018
+ms.author: v-yeche
 ms.openlocfilehash: 9b0f785a6a43f984708645084a8a8036326d3d24
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58662988"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60621373"
 ---
 # <a name="manage-an-azure-service-fabric-application-by-using-azure-service-fabric-cli-sfctl"></a>Spravovat aplikaci Azure Service Fabric pomocí Azure Service Fabric CLI (sfctl)
 
@@ -170,3 +171,5 @@ Nakonec, pokud je upgrade v průběhu a musí být zrušena, můžete použít `
 * [Základní informace o Service Fabric CLI](service-fabric-cli.md)
 * [Začínáme se službou Service Fabric v Linuxu](service-fabric-get-started-linux.md)
 * [Spouští se upgrade aplikace Service Fabric](service-fabric-application-upgrade.md)
+
+<!--Update_Description: update meta properties -->

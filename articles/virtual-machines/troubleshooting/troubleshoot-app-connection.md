@@ -17,11 +17,11 @@ ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: genli
 ms.openlocfilehash: 81535d51617a419174331dbf9b18ea558913dfa9
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50413158"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60922144"
 ---
 # <a name="troubleshoot-application-connectivity-issues-on-virtual-machines-in-azure"></a>Řešení problémů s připojením aplikace na virtuálních počítačích v Azure
 
@@ -69,7 +69,7 @@ Hlavní oblasti, které mohou způsobovat problémy pro klientské počítače, 
 
 K určení příčiny problému a jeho opravy, postupujte podle těchto kroků.
 
-## <a name="step-1-access-application-from-target-vm"></a>Krok 1: Přístup k aplikacím z cílového virtuálního počítače
+## <a name="step-1-access-application-from-target-vm"></a>Krok 1: Přístup k aplikaci z cílového virtuálního počítače
 Došlo k pokusu o přístup k aplikacím s programem příslušného klienta z virtuálního počítače, na kterém je spuštěný. Použijte název místního hostitele, IP adresu místního nebo adresu zpětné smyčky (127.0.0.1).
 
 ![Spusťte aplikaci přímo z virtuálního počítače](./media/virtual-machines-common-troubleshoot-app-connection/tshoot_app_access2.png)
@@ -85,7 +85,7 @@ Pokud nelze získat přístup k aplikaci, ověřte následující nastavení:
 
 Ve Windows a virtuální počítače se systémem Linux, použijte **netstat - a** příkazu zobrazte aktivní naslouchající porty. Prohlédněte si výstup pro očekávaných portech, na kterých by vaše aplikace naslouchá. Restartování aplikace nebo nakonfigurovat, aby podle potřeby použijte očekávaných portech a pokusí o přístup k aplikaci můžete lokálně spustit znovu.
 
-## <a id="step2"></a>Krok 2: Přístup k aplikacím z jiného virtuálního počítače ve stejné virtuální síti
+## <a id="step2"></a>Krok 2: Přístup k aplikaci z jiného virtuálního počítače ve stejné virtuální síti
 Došlo k pokusu o přístup k aplikaci z různých virtuálních počítačů, ale ve stejné virtuální síti pomocí názvu hostitele Virtuálního počítače nebo jeho Azure přiřazené veřejné, privátní nebo poskytovatele IP adresu. Pro virtuální počítače vytvořené pomocí modelu nasazení classic nepoužívejte veřejnou IP adresu z cloudové služby.
 
 ![Spusťte aplikaci z různých virtuálních počítačů](./media/virtual-machines-common-troubleshoot-app-connection/tshoot_app_access3.png)
@@ -141,7 +141,7 @@ Pokud přístup k aplikaci, ujistěte se, že povoluje hraniční zařízení na
 
 Další informace najdete v tématu [Přehled monitorování Azure network](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview). 
 
-## <a name="additional-resources"></a>Další zdroje informací:
+## <a name="additional-resources"></a>Další materiály
 [Řešení potíží s připojeními vzdálené plochy na na základě Windows virtuálním počítači Azure](troubleshoot-rdp-connection.md)
 
 [Řešení potíží s připojením Secure Shell (SSH) k virtuálnímu počítači s Linuxem v Azure](troubleshoot-ssh-connection.md)

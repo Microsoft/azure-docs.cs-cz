@@ -14,11 +14,11 @@ ms.reviewer: carlrab
 manager: craigg
 ms.date: 04/08/2019
 ms.openlocfilehash: ecfd0cbc3eaaae64a956568a506252fdbeddcac2
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59358330"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60580654"
 ---
 # <a name="what-is-azure-sql-database-service"></a>Co je služba Azure SQL Database
 
@@ -27,7 +27,7 @@ SQL Database je spravovaná služba relačních databází pro obecné účely v
 > [!NOTE]
 > Glosář termínů ve službě Azure SQL Database, najdete v části [SQL Database termíny glosáře](sql-database-glossary-terms.md)
 
-Azure SQL Database poskytuje následující možnosti nasazení databáze SQL Azure:
+Azure SQL Database poskytuje následující možnosti nasazení databáze Azure SQL:
 
 - Jako [izolované databáze](sql-database-single-database.md) s vlastní sadou prostředků spravovat přes server SQL Database. Izolovaná databáze je podobný [databáze s omezením](https://docs.microsoft.com/sql/relational-databases/databases/contained-databases) v systému SQL Server.
 - [Elastického fondu](sql-database-elastic-pool.md), což je kolekce databází se sdílenou sadou prostředků spravovat přes server SQL Database. Izolované databáze můžete přesunout do a z elastického fondu.

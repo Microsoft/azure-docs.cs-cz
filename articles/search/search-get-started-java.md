@@ -10,11 +10,11 @@ ms.date: 08/26/2018
 ms.author: jjed
 ms.custom: seodec2018
 ms.openlocfilehash: d16f20e3c2dfa3d670006e44f0072a3871d41c3f
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53629897"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61289716"
 ---
 # <a name="get-started-with-azure-search-in-java"></a>Začínáme s Azure Search v Javě
 > [!div class="op_single_selector"]
@@ -51,8 +51,8 @@ Následující seznam popisuje soubory, které se vztahují k tomuto příkladu.
 * SearchServiceClient.java: Zpracovává požadavky HTTP
 * SearchServiceHelper.java: Pomocná třída, která poskytuje statické metody
 * Document.Java: Poskytuje datový model.
-* config.Properties: Nastaví hledání služby adresy URL a klíč api-key
-* pom.XML: Závislost Maven
+* config.properties: Nastaví hledání služby adresy URL a klíč api-key
+* pom.xml: Závislost Maven
 
 <a id="sub-2"></a>
 
@@ -105,7 +105,7 @@ Všechny následné úpravy souborů a spouštěné příkazy se budou provádě
 7. Klikněte na **Dokončit**.
 8. Vyberte **Okno** > **Předvolby** > **Java** > **Nainstalovaná prostředí JRE** > **Přidat**.
 9. V okně **Přidat prostředí JRE**, vyberte **Standardní virtuální počítač**.
-10. Klikněte na tlačítko **Další**.
+10. Klikněte na **Další**.
 11. V definici prostředí JRE v kořenovém adresáři JRE klikněte na **Adresář**.
 12. Přejděte do adresáře **Program Files** > **Java** a vyberte sadu JDK, kterou jste dříve nainstalovali. Je důležité vybrat jako prostředí JRE sadu JDK.
 13. V okně Nainstalovaná prostředí JRE zvolte **JDK**. Vaše nastavení by mělo vypadat jako na následujícím snímku obrazovky.

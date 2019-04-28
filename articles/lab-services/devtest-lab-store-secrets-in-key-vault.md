@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2018
 ms.author: spelluru
-ms.openlocfilehash: d87c8a46459a9b4bf80bef895ec97e436d38e699
-ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
+ms.openlocfilehash: 17469d3602935715d570a496e12b6680269ff465
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39186828"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60622891"
 ---
 # <a name="store-secrets-in-a-key-vault-in-azure-devtest-labs"></a>Store tajné klíče v trezoru klíčů ve službě Azure DevTest Labs
 Budete muset zadat komplexní tajný klíč, když pomocí Azure DevTest Labs: heslo pro váš virtuální počítač Windows veřejný klíč SSH pro virtuální počítač s Linuxem nebo osobní přístupový token pro klonování úložiště Git pomocí artefakt. Tajné kódy jsou obvykle dlouhé a mají náhodných znaků. Proto je zadání může být složité a nepohodlná, zejména pokud používáte stejný tajný klíč více než jednou.

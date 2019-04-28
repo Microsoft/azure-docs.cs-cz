@@ -9,11 +9,11 @@ ms.service: iot-dps
 services: iot-dps
 manager: arjmands
 ms.openlocfilehash: c73a40e46d86632732454ae16ea4f83e3ffa0281
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56674748"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60627265"
 ---
 # <a name="how-to-manage-device-enrollments-with-azure-device-provisioning-service-sdks"></a>Správa registrací zařízení pomocí SDK služby zřizování zařízení Azure
 A *registrace zařízení* vytvoří záznam o jedno zařízení nebo skupině zařízení, která se v určitém okamžiku se můžou zaregistrovat do služby Device Provisioning. Záznam registrace obsahuje počáteční požadovanou konfiguraci zařízení jako součást registrace, včetně požadované centrum IoT hub. Tento článek ukazuje, jak Správa registrací zařízení pro vaši službu zřizování prostřednictvím kódu programu pomocí sad Azure IoT zřizování služby SDK.  Sady SDK jsou k dispozici na Githubu ve stejném úložišti jako sad SDK Azure IoT.

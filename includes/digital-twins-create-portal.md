@@ -9,11 +9,11 @@ ms.date: 12/17/2018
 ms.author: dkshir
 ms.custom: include file
 ms.openlocfilehash: 0c89c8353d410ddd54e8a59f3838c914702b96ca
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58124521"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60534506"
 ---
 1. Přihlaste se k webu [Azure Portal](http://portal.azure.com).
 

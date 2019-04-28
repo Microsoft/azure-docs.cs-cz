@@ -13,11 +13,11 @@ ms.workload: infrastructure-services
 ms.date: 01/24/2019
 ms.author: bwren
 ms.openlocfilehash: ba9a0ab775e062f21a058b537e289fe3ea2b40bb
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56000042"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61093960"
 ---
 # <a name="log-data-ingestion-time-in-azure-monitor"></a>Čas příjem dat protokolu ve službě Azure Monitor
 Azure Monitor je služba vysokou škálovatelností dat, která slouží tisíce zákazníků odesílání terabajty dat měsíčně rostoucí tempem. Jsou často dotazy týkající se čas potřebný pro data protokolu k dispozici po shromáždění zpracovat. Tento článek vysvětluje různé faktory ovlivňující tuto latenci.
@@ -30,7 +30,7 @@ Latence odkazuje na čas, který data se vytvoří v monitorovaném systému a �
 Ingestování celkový čas pro konkrétní sadu data dají rozdělit do následujících oblastech vyšší úrovně. 
 
 - Agent čas – čas zjištění událost, shromažďování vyžadováno a následně je odeslat do Azure monitoru bodem ingestování jako záznam protokolu. Ve většině případů se tento proces zařizuje Služba agenta.
-- Kanál čas – čas potřebný pro ingestování kanálu ke zpracování záznamu protokolu. Jedná se o analýze vlastnosti události a potenciálně přidáním počítaných informací.
+- Čas kanálu – doba, kterou kanálu příjmu dat trvá zpracovat záznam protokolu. Jedná se o analýze vlastnosti události a potenciálně přidáním počítaných informací.
 - Indexování čas – čas strávený na příjem záznam protokolu do služby Azure Monitor ukládat velké objemy dat.
 
 Podrobnosti o různých latencí v tomto procesu jsou popsané níže.

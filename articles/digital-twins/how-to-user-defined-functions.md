@@ -10,11 +10,11 @@ ms.date: 01/02/2019
 ms.author: alinast
 ms.custom: seodec18
 ms.openlocfilehash: 7208f96d99127247b51510e0c43c1733bb327dfb
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54076242"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60921810"
 ---
 # <a name="how-to-create-user-defined-functions-in-azure-digital-twins"></a>Vytvoření uživatelem definovaných funkcí v Azure digitální dvojče
 

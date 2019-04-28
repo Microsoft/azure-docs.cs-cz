@@ -16,11 +16,11 @@ ms.workload: traffic-manager
 ms.date: 06/26/2018
 ms.author: kumud
 ms.openlocfilehash: 3922eb76fa0954b9c02cc86f98acb142cc1d1fee
-ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58225242"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60565305"
 ---
 # <a name="route-traffic-for-high-availability-of-applications"></a>Směrování provozu pro zajištění vysoké dostupnosti aplikace
 

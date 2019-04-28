@@ -9,11 +9,11 @@ ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 01/18/2018
 ms.openlocfilehash: 1f62a5583b7beef2dc535065a6c0d3bcb34fe7b4
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60009629"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60582716"
 ---
 # <a name="data-catalog-developer-samples"></a>Ukázky pro vývojáře katalogu dat
 Začněte s vývojem aplikací katalogu Data Catalog pomocí REST API služby Data Catalog. REST API služby Data Catalog je rozhraní API založených na REST, které poskytuje programový přístup k prostředkům služby Data Catalog pro registraci, anotaci a vyhledávání datových prostředků prostřednictvím kódu programu.

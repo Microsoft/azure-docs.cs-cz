@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 06/11/2018
 ms.author: spelluru
 ms.openlocfilehash: 4500fcfa6fbfb346a6e5c7fd045ba0046a901b91
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57454251"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60561595"
 ---
 # <a name="redeploy-a-vm-in-a-lab-in-azure-devtest-labs"></a>Opětovné nasazení virtuálního počítače v testovacím prostředí ve službě Azure DevTest Labs
 Pokud se nemůžete připojit k virtuálnímu počítači (VM) v testovacím prostředí pomocí připojení ke vzdálené ploše, znovu nasadit virtuální počítač a zkuste se znovu připojit. Při opětovném nasazování virtuálního počítače s DevTest Labs přesune virtuální počítač z uzlu, na kterém běží do nového uzlu v rámci infrastruktury Azure. Pak spustí virtuální počítač při zachování všech možností konfigurace a přidružených prostředků. Tato funkce může ušetřit vám čas trvání řešení potíží s připojení ke vzdálené ploše nebo přístup k aplikaci do virtuálních počítačů s Windows v testovacím prostředí. 

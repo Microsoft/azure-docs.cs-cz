@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.date: 12/31/2018
 ms.author: alinast
 ms.openlocfilehash: e93811a56f934a95dde45633c4fb64312b3696df
-ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "53994810"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60924801"
 ---
 # <a name="egress-and-endpoints"></a>Koncové body a výchozí přenos dat
 
@@ -47,16 +47,16 @@ Události jsou odesílány IoT objektů (například zařízení a senzorů) pro
 }
 ```
 
-| Atribut | Typ | Popis |
+| Atribut | Type | Popis |
 | --- | --- | --- |
-| id | řetězec | Jedinečný identifikátor pro událost. |
-| předmět | řetězec | Vydavatel definované cesta předmět události. |
+| id | string | Jedinečný identifikátor pro událost. |
+| předmět | string | Vydavatel definované cesta předmět události. |
 | data | objekt | Data události specifické pro poskytovatele prostředků. |
-| Typ události | řetězec | Jeden z typů registrované události pro tento zdroj událostí. |
-| čas události | řetězec | Vygenerování události podle času UTC poskytovatele. |
-| dataVersion | řetězec | Verze schématu datového objektu Vydavatel Určuje verzi schématu. |
-| verze metadataVersion | řetězec | Verze schématu metadat události Event Grid definuje schéma vlastnosti nejvyšší úrovně. Event gridu poskytuje tuto hodnotu. |
-| téma | řetězec | Úplné prostředků cesta ke zdroji události. Toto pole není zapisovatelná. Event gridu poskytuje tuto hodnotu. |
+| eventType | string | Jeden z typů registrované události pro tento zdroj událostí. |
+| čas události | string | Vygenerování události podle času UTC poskytovatele. |
+| dataVersion | string | Verze schématu datového objektu Vydavatel Určuje verzi schématu. |
+| metadataVersion | string | Verze schématu metadat události Event Grid definuje schéma vlastnosti nejvyšší úrovně. Event gridu poskytuje tuto hodnotu. |
+| téma | string | Úplné prostředků cesta ke zdroji události. Toto pole není zapisovatelná. Event gridu poskytuje tuto hodnotu. |
 
 Další informace o schématu událostí služby Event Grid:
 
@@ -83,8 +83,8 @@ Formát událostí pro každý typ události jsou podrobně popsány v následuj
 - DeviceBlobMetadata
 - DeviceExtendedProperty
 - ExtendedPropertyKey
-- Hodnotu ExtendedType
-- Úložiště klíčů
+- ExtendedType
+- KeyStore
 - Sestava
 - Rutiny RoleDefinition
 - Senzor

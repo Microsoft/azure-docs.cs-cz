@@ -10,11 +10,11 @@ ms.date: 01/11/2019
 ms.author: adgera
 ms.custom: seodec18
 ms.openlocfilehash: ffd7d71c33b569b396b9f8babf8105968ee525b9
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54263063"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60926371"
 ---
 # <a name="add-blobs-to-objects-in-azure-digital-twins"></a>Přidat objekty BLOB na objekty v digitální dvojče Azure
 
@@ -51,16 +51,16 @@ Metadata objektu blob JSON odpovídá následující model:
   }
 ```
 
-| Atribut | Typ | Popis |
+| Atribut | Type | Popis |
 | --- | --- | --- |
-| **parentId** | Řetězec | Nadřazená entita přidružení objektu blob k (mezery, zařízení nebo uživatelů) |
-| **Jméno** |Řetězec | Lidské – popisný název pro objekt blob |
-| **type** | Řetězec | Nelze použít typ objektu blob - *typ* a *identifikátor typeId.*  |
+| **parentId** | String | Nadřazená entita přidružení objektu blob k (mezery, zařízení nebo uživatelů) |
+| **Jméno** |String | Lidské – popisný název pro objekt blob |
+| **type** | String | Nelze použít typ objektu blob - *typ* a *identifikátor typeId.*  |
 | **typeId** | Integer | ID typu objektu blob - nelze použít *typ* a *identifikátor typeId.* |
-| **Podtyp** | Řetězec | Nelze použít podtypu objektu blob - *podtyp* a *subtypeId* |
+| **Podtyp** | String | Nelze použít podtypu objektu blob - *podtyp* a *subtypeId* |
 | **subtypeId** | Integer | Podtyp ID pro tento objekt blob - nemůžou používat *podtyp* a *subtypeId* |
-| **description** | Řetězec | Vlastní popis objektu blob |
-| **sdílení** | Řetězec | Určuje, zda objekt blob může být na úrovni shared – výčet [`None`, `Tree`, `Global`] |
+| **description** | String | Vlastní popis objektu blob |
+| **sdílení** | String | Určuje, zda objekt blob může být na úrovni shared – výčet [`None`, `Tree`, `Global`] |
 
 Metadata objektu BLOB se vždy uvedené jako první blok s **Content-Type** `application/json` nebo stejně jako `.json` souboru. Data souborů zadaný v druhém bloků dat a může být libovolný podporovaný typ MIME.
 
@@ -108,20 +108,20 @@ Jednotlivě vrácené objekty BLOB splňovat následující schéma JSON:
 }
 ```
 
-| Atribut | Typ | Popis |
+| Atribut | Type | Popis |
 | --- | --- | --- |
-| **id** | Řetězec | Jedinečný identifikátor pro objekt blob |
-| **Jméno** |Řetězec | Lidské – popisný název pro objekt blob |
-| **parentId** | Řetězec | Nadřazená entita přidružení objektu blob k (mezery, zařízení nebo uživatelů) |
-| **type** | Řetězec | Nelze použít typ objektu blob - *typ* a *identifikátor typeId.*  |
+| **id** | String | Jedinečný identifikátor pro objekt blob |
+| **Jméno** |String | Lidské – popisný název pro objekt blob |
+| **parentId** | String | Nadřazená entita přidružení objektu blob k (mezery, zařízení nebo uživatelů) |
+| **type** | String | Nelze použít typ objektu blob - *typ* a *identifikátor typeId.*  |
 | **typeId** | Integer | ID typu objektu blob - nelze použít *typ* a *identifikátor typeId.* |
-| **Podtyp** | Řetězec | Nelze použít podtypu objektu blob - *podtyp* a *subtypeId* |
+| **Podtyp** | String | Nelze použít podtypu objektu blob - *podtyp* a *subtypeId* |
 | **subtypeId** | Integer | Podtyp ID pro tento objekt blob - nemůžou používat *podtyp* a *subtypeId* |
-| **sdílení** | Řetězec | Určuje, zda objekt blob může být na úrovni shared – výčet [`None`, `Tree`, `Global`] |
-| **description** | Řetězec | Vlastní popis objektu blob |
+| **sdílení** | String | Určuje, zda objekt blob může být na úrovni shared – výčet [`None`, `Tree`, `Global`] |
+| **description** | String | Vlastní popis objektu blob |
 | **contentInfos** | Pole | Určuje informace nestrukturovaných metadata, včetně verze |
-| **fullName** | Řetězec | Úplný název objektu blob |
-| **spacePaths** | Řetězec | Místo cesty |
+| **fullName** | String | Úplný název objektu blob |
+| **spacePaths** | String | Místo cesty |
 
 Metadata objektu BLOB se vždy uvedené jako první blok s **Content-Type** `application/json` nebo stejně jako `.json` souboru. Data souborů zadaný v druhém bloků dat a může být libovolný podporovaný typ MIME.
 

@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 04/30/2018
 ms.author: estfan
 ms.openlocfilehash: 43ecdafac4f0a5cdc9e619537cdbe2a42ff7fe1b
-ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57191914"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60999489"
 ---
 # <a name="create-and-manage-integration-accounts-for-b2b-solutions-with-logic-apps"></a>Vytvoření a Správa účtů pro integraci řešení B2B logic Apps
 
@@ -58,7 +58,7 @@ Přihlaste se k webu <a href="https://portal.azure.com" target="_blank">Azure Po
    | Předplatné | Ano | <*název_předplatného_Azure*> | Název předplatného Azure k použití | 
    | Skupina prostředků | Ano | test-integration-account-rg | Název [skupiny prostředků Azure](../azure-resource-manager/resource-group-overview.md) k uspořádání souvisejících prostředků použít. V tomto příkladu vytvořte novou skupinu prostředků se zadaným názvem. | 
    | Cenová úroveň | Ano | Free | Cenová úroveň, kterou chcete použít. V tomto příkladu vyberte **Free**, ale další informace najdete v tématu [Logic Apps omezení a konfigurace](../logic-apps/logic-apps-limits-and-config.md) a [ceny Logic Apps](https://azure.microsoft.com/pricing/details/logic-apps/). | 
-   | Umístění | Ano | Západní USA | Oblast kam se mají ukládat informace o vašem účtu integrace. Buď vyberte stejné umístění jako aplikace logiky, nebo vytvořte aplikaci logiky ve stejném umístění jako váš účet integrace. | 
+   | Location | Ano | Západní USA | Oblast kam se mají ukládat informace o vašem účtu integrace. Buď vyberte stejné umístění jako aplikace logiky, nebo vytvořte aplikaci logiky ve stejném umístění jako váš účet integrace. | 
    | Pracovní prostor Log Analytics | Ne | Vypnuto | Pokud chcete zapnout protokolování diagnostiky, ponechte nastavení **Vypnuto**. | 
    ||||| 
 

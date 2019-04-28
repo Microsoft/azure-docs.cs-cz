@@ -10,11 +10,11 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.custom: seodec18
 ms.openlocfilehash: 9dcfbd4b5fcc8462c88b16f585424166ecd3d499
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53088236"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61361876"
 ---
 # <a name="checkpoint-and-replay-concepts-in-azure-stream-analytics-jobs"></a>Kontrolní bod a opětovného přehrání koncepty v úlohách Azure Stream Analytics
 Tento článek popisuje interní kontrolní bod a opětovného přehrání koncepty v Azure Stream Analytics a sníží se dopad, že ty mají na úlohu obnovení. Pokaždé, když spustí úlohu Stream Analytics, informace o stavu se udržuje interně. Informace o tomto stavu se uloží do kontrolní bod pravidelně. V některých scénářích kontrolní bod informace slouží pro úlohu obnovení, pokud dojde k selhání úlohy nebo upgradu. Za jiných okolností kontrolní bod nelze použít pro obnovení a opakování hry je nezbytné.
@@ -70,6 +70,6 @@ Data kontrolního bodu nelze použít pro restartování úlohy iniciované uži
 
 ## <a name="next-steps"></a>Další postup
 Další informace o spolehlivosti a škálovatelnosti najdete v těchto článcích:
-- [Kurz: Nastavení výstrah pro úlohy Azure Stream Analytics](stream-analytics-set-up-alerts.md)
+- [Kurz: Nastavení upozornění pro úlohy Azure Stream Analytics](stream-analytics-set-up-alerts.md)
 - [Škálovat úlohy Azure Stream Analytics pro zvýšení prostupnosti](stream-analytics-scale-jobs.md)
 - [Záruka spolehlivosti úlohy Stream Analytics během aktualizace služeb](stream-analytics-job-reliability.md)

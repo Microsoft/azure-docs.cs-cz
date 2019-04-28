@@ -10,11 +10,11 @@ ms.date: 08/03/2017
 ms.author: heidist
 ms.custom: seodec2018
 ms.openlocfilehash: 9ea4e4ec78e5613758bd9e5ff7a4fbd3273208c6
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53312812"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61290444"
 ---
 # <a name="azure-search---frequently-asked-questions-faq"></a>Azure Search – nejčastější dotazy (FAQ)
 
@@ -96,6 +96,6 @@ Je vaše otázky týkající se chybějící funkce nebo funkce? Na žádost o f
 
 ## <a name="see-also"></a>Další informace najdete v tématech
 
- [StackOverflow: Služba Azure Search](https://stackoverflow.com/questions/tagged/azure-search)   
+ [StackOverflow: Azure Search](https://stackoverflow.com/questions/tagged/azure-search)   
  [Jak funguje fulltextové vyhledávání ve službě Azure Search](search-lucene-query-architecture.md)  
  [Co je Azure Search?](search-what-is-azure-search.md)

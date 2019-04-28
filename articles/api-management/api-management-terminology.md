@@ -1,6 +1,6 @@
 ---
-title: Terminologie služby Azure API Management | Microsoft Docs
-description: Tento článek poskytuje definice podmínek, které jsou specifické pro API Management.
+title: Terminologie služby Azure API Management | Dokumentace Microsoftu
+description: Tento článek obsahuje definice podmínek, které jsou specifické pro API Management.
 services: api-management
 documentationcenter: ''
 author: vladvino
@@ -11,26 +11,26 @@ ms.workload: integration
 ms.topic: article
 ms.date: 10/11/2017
 ms.author: apimpm
-ms.openlocfilehash: 81cf34cacdfe37e25d6b745304ab0879245fd8da
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: b99ca444532799d21850058eae0e3f40ed871135
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "33934590"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61074050"
 ---
 # <a name="terminology"></a>Terminologie
 
-Tento článek poskytuje definice podmínek, které jsou specifické pro správu rozhraní API (APIM).
+Tento článek obsahuje definice podmínek, které jsou specifické pro API Management (APIM).
 
-## <a name="term-definitions"></a>Definice podmínek
+## <a name="term-definitions"></a>Definice termínu
 
-* **Rozhraní API back-end** -služba HTTP, která implementuje rozhraní API a operace. 
-* **Rozhraní API front-endu**/**APIM API** -k rozhraní API APIM není hostitelem rozhraní API, vytvoří průčelí pro vaše rozhraní API, aby bylo možné přizpůsobit průčelí za podle vašich potřeb bez zásahu do zadní ukončení rozhraní API. Další informace najdete v tématu [importu a publikovat rozhraní API](import-and-publish.md).
-* **Produkt APIM** -produkt obsahuje jeden nebo více rozhraní API a také kvóty využití a podmínky použití. Může obsahovat několik rozhraní API a poskytněte jim pro vývojáře prostřednictvím portálu pro vývojáře. Další informace najdete v tématu [vytvoření a publikování produktu](api-management-howto-add-products.md).
-* **Operace rozhraní API APIM** -každý APIM API představuje sadu operací, které jsou k dispozici pro vývojáře. Každé rozhraní API APIM obsahuje odkaz na službu back-end, který implementuje rozhraní API a jeho operace se mapují na operace implementované back-end službu. Další informace najdete v tématu [model rozhraní API odpovědi](mock-api-responses.md).
-* **Verze** – někdy, kterou chcete publikovat nové nebo jiné rozhraní API funkce pro některé uživatele, zatímco ostatní chcete přilepit s rozhraním API, která aktuálně funguje pro ně. Další informace najdete v tématu [publikovat více verzí rozhraní API](api-management-get-started-publish-versions.md).
-* **Revize** – Pokud je vaše rozhraní API je připravena k přejděte a začne být používají vývojáři, je obvykle potřeba postará v provádění změn pro toto rozhraní API a současně nechcete přerušit volající rozhraní API. Také je užitečné informovat vývojáře o prováděných změnách. Další informace najdete v tématu [použít revize](api-management-get-started-revise-api.md).
-* **Portál pro vývojáře** -vašim zákazníkům (vývojáři) má použít portál pro vývojáře pro přístup vašich rozhraní API. Portál pro vývojáře můžete přizpůsobit. Další informace najdete v tématu [přizpůsobení portálu pro vývojáře](api-management-customize-styles.md).
+* **Rozhraní API back-endu** – služba HTTP, která implementuje rozhraní API a jeho operace. 
+* **Front-endové rozhraní API**/**API služby APIM** – k rozhraní API služby APIM nehostuje rozhraní API, vytvoří fasády pro vaše rozhraní API dokážeme průčelí podle vašich potřeb bez zásahu back end rozhraní API. Další informace najdete v tématu [Import a publikování rozhraní API](import-and-publish.md).
+* **APIM produktu** – obsahuje produkt jedno nebo více rozhraní API a také kvótu využití a podmínky použití. Můžete zahrnout několik rozhraní API a nabídnout je vývojářům prostřednictvím portálu pro vývojáře. Další informace najdete v tématu [vytvoření a publikování produktu](api-management-howto-add-products.md).
+* **Operace rozhraní API služby APIM** – každé rozhraní API služby APIM představuje sadu operací, které jsou k dispozici pro vývojáře. Každé rozhraní API služby APIM obsahuje odkaz na back-end služba, která implementuje rozhraní API a jeho operace se mapují na operace implementované back-end služby. Další informace najdete v tématu [API napodobení odpovědi](mock-api-responses.md).
+* **Verze** – někdy chcete publikovat nové nebo jiné rozhraní API funkce pro některé uživatele, zatímco jiné mají zůstat u rozhraní API, které pro ně v současné době používá. Další informace najdete v tématu [publikování několika verzí vašeho rozhraní API](api-management-get-started-publish-versions.md).
+* **Revize** – Pokud je vaše rozhraní API, jste připravení přejít a spustí ho využívat vývojáři, je obvykle potřeba starat o provádění změn rozhraní API a zároveň nechcete přerušit volající vašeho rozhraní API. Také je užitečné informovat vývojáře o prováděných změnách. Další informace najdete v tématu [použití revizí](api-management-get-started-revise-api.md).
+* **Portál pro vývojáře** – vaši zákazníci (vývojáři) by měl používat portál pro vývojáře pro přístup k rozhraní API. Je možné přizpůsobit portál pro vývojáře. Další informace najdete v tématu [přizpůsobení portálu pro vývojáře](api-management-customize-styles.md).
 
 ## <a name="next-steps"></a>Další postup
 

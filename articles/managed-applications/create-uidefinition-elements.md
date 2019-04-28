@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/19/2018
 ms.author: tomfitz
-ms.openlocfilehash: 895b5cfb121347f9400d1aa315fef05d9088c55c
-ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
+ms.openlocfilehash: 41a583a77f85bb1524112fa20d9098e18bc4f431
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46366467"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60587934"
 ---
 # <a name="createuidefinition-elements"></a>Prvky CreateUiDefinition
 Tento článek popisuje vlastnosti schématu a pro všechny podporované elementy tohoto CreateUiDefinition. 
@@ -44,7 +44,7 @@ Schéma pro většinu prvků vypadá takto:
 | type | Ano | Ovládací prvek uživatelského rozhraní pro vykreslení elementu. Seznam podporovaných typů najdete v tématu [prvky](#elements). |
 | label | Ano | Zobrazený text elementu. Některé typy prvků obsahovat více popisků, takže hodnota může být objekt, který obsahuje více řetězců. |
 | Výchozí hodnota | Ne | Výchozí hodnota elementu. Některé typy prvků podporu komplexní výchozí hodnoty, takže hodnota může být objekt. |
-| Popis tlačítka | Ne | Text zobrazený v popisu tlačítka prvku. Podobně jako `label`, některé prvky podporovat více řetězců tip nástroj. Vložených odkazů můžete vložit pomocí syntaxe Markdownu.
+| toolTip | Ne | Text zobrazený v popisu tlačítka prvku. Podobně jako `label`, některé prvky podporovat více řetězců tip nástroj. Vložených odkazů můžete vložit pomocí syntaxe Markdownu.
 | Omezení | Ne | Jednu nebo více vlastností, které se používají k přizpůsobení chování ověřování elementu. Podporované vlastnosti pro omezení se liší podle typu elementu. Některé typy prvků nepodporuje přizpůsobení chování ověřování a tedy mít žádnou vlastnost omezení. |
 | Možnosti | Ne | Další vlastnosti, které přizpůsobit chování element. Podobně jako `constraints`, podporovaných vlastností se liší podle typu elementu. |
 | Viditelné | Ne | Určuje, zda je zobrazen elementu. Pokud `true`, se zobrazí element a příslušných podřízených elementů. Výchozí hodnota je `true`. Použití [logické funkce](create-uidefinition-functions.md#logical-functions) dynamicky řídit hodnota této vlastnosti.

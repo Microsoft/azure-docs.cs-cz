@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.openlocfilehash: f3d1fb393138aeb590bc0645d6abe93652a52a5b
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54052577"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61247540"
 ---
 # <a name="prepare-your-development-and-test-environment-for-iot-edge"></a>Připravte vývojové a testovací prostředí pro IoT Edge
 
@@ -55,9 +55,9 @@ Modul šablon pro některé jazyky a služby mají požadavky, které jsou potř
 
 | Šablona modulu | Požadavek |
 | --------------- | ------------ |
-| Azure Functions | [.NET core 2.1 SDK](https://www.microsoft.com/net/download) |
+| Azure Functions | [.NET Core 2.1 SDK](https://www.microsoft.com/net/download) |
 | C | [Git](https://git-scm.com/) |
-| C# | [.NET core 2.1 SDK](https://www.microsoft.com/net/download) |
+| C# | [.NET Core 2.1 SDK](https://www.microsoft.com/net/download) |
 | Java | <ul><li>[Java SE Development Kit 10](https://aka.ms/azure-jdks) <li> [Nastavte proměnnou prostředí JAVA_HOME](https://docs.oracle.com/cd/E19182-01/820-7851/inst_cli_jdk_javahome_t/) <li> [Maven](https://maven.apache.org/)</ul> |
 | Node.js | <ul><li>[Node.js](https://nodejs.org/) <li> [Yeoman](https://www.npmjs.com/package/yo) <li> [Generátor modulu Azure IoT Edge Node.js](https://www.npmjs.com/package/generator-azure-iot-edge-module)</ul> |
 | Python |<ul><li> [Python](https://www.python.org/downloads/) <li> [PIP](https://pip.pypa.io/en/stable/installing/#installation) <li> [Cookiecutter](https://cookiecutter.readthedocs.io/en/latest/installation.html) <li> [Git](https://git-scm.com/) </ul> |
@@ -80,12 +80,12 @@ Několik testovacích nástrojů existovat pro simulaci zařízení IoT Edge neb
 
 Pro nasazení v produkčním prostředí je podporován pouze modul runtime IoT Edge, ale tyto nástroje umožňují simulaci nebo snadno vytvořit IoT Edge zařízení pro účely vývoje a testování. Tyto nástroje se vzájemně nevylučují, ale můžou spolupracovat kompletní vývojové prostředí. 
 
-| Nástroj | Označuje se taky jako | Podporované platformy | Nejvhodnější pro |
+| Tool | Označuje se taky jako | Podporované platformy | Nejvhodnější pro |
 | ---- | ------------- | ------------------- | --------- |
-| Nástroj pro vývojáře IoT EdgeHub  | iotedgehubdev | Windows, Linuxu a MacOS | Simulace zařízení za účelem ladění modulů. |
-| Kontejner vývoj IoT Edge | Microsoft/iotedgedev | Windows, Linuxu a MacOS | Vývoj bez instalování závislostí. |
+| Nástroj pro vývojáře IoT EdgeHub  | iotedgehubdev | Windows, Linux, MacOS | Simulace zařízení za účelem ladění modulů. |
+| Kontejner vývoj IoT Edge | microsoft/iotedgedev | Windows, Linux, MacOS | Vývoj bez instalování závislostí. |
 | Modul runtime IoT Edge v kontejneru | iotedgec | Windows, Linux, MacOS, ARM | Testování na zařízení, které nemusí podporovat modulu runtime. |
-| Kontejner zařízení IoT Edge | toolboc/azure-iot-edge zařízení – container | Windows, Linux, MacOS, ARM | Testuje scénář s mnoha hraniční zařízení IoT ve velkém měřítku. |
+| Kontejner zařízení IoT Edge | toolboc/azure-iot-edge-device-container | Windows, Linux, MacOS, ARM | Testuje scénář s mnoha hraniční zařízení IoT ve velkém měřítku. |
 
 ### <a name="iot-edgehub-dev-tool"></a>Nástroj pro vývojáře IoT EdgeHub
 

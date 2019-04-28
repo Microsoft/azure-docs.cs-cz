@@ -14,11 +14,11 @@ ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
 ms.openlocfilehash: 0e0a249c53c90d3d8d03dcdb5fbb4f11f31c54df
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57545143"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60565714"
 ---
 # <a name="compute-environments-supported-by-azure-data-factory"></a>Výpočetní prostředí podporovaných službou Azure Data Factory
 > [!NOTE]
@@ -262,7 +262,7 @@ Můžete vytvořit služby HDInsight propojený, můžete registrovat vlastní c
 | type              | Nastavit vlastnost typ **HDInsight**. | Ano      |
 | clusterUri        | Identifikátor URI clusteru HDInsight.        | Ano      |
 | uživatelské jméno          | Název uživatelského účtu pro připojení do existujícího clusteru HDInsight. | Ano      |
-| heslo          | Heslo pro uživatelský účet.   | Ano      |
+| password          | Heslo pro uživatelský účet.   | Ano      |
 | linkedServiceName | Název na propojenou službu storage, který odkazuje na objektu Blob úložiště používá HDInsight cluster. <p>V současné době není možné zadat že data Lake Store propojené služby pro tuto vlastnost. Pokud se HDInsight cluster má přístup k Data Lake Store, může přístup k datům v Data Lake Store pomocí skriptů Hive a Pig. </p> | Ano      |
 
 ## <a name="azure-batch-linked-service"></a>Služba Azure Batch propojené

@@ -9,11 +9,11 @@ ms.date: 11/30/2018
 ms.author: danlep
 ms.custom: mvc
 ms.openlocfilehash: 0a1e3c2facc10b68fe4b33d4cd0531f181b1e813
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57838135"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60581113"
 ---
 # <a name="azure-container-instances-and-container-orchestrators"></a>Služba Azure Container Instances a orchestrátorů kontejnerů
 

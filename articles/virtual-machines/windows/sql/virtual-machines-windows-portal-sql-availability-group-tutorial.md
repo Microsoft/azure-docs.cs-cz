@@ -17,11 +17,11 @@ ms.workload: iaas-sql-server
 ms.date: 08/30/2018
 ms.author: mikeray
 ms.openlocfilehash: d86538fca907f7181bf58ff236bba8de186641fb
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58003446"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60593416"
 ---
 # <a name="tutorial-configure-always-on-availability-group-in-azure-vm-manually"></a>Kurz: Konfigurace skupiny dostupnosti Always On na virtuálním počítači Azure ručně
 
@@ -426,7 +426,7 @@ Ke konfiguraci nástroje pro vyrovnávání zatížení, budete muset vytvořit 
    | **Test paměti** |Název, který jste zadali pro test paměti | SQLAlwaysOnEndPointProbe |
    | **Trvalost relace** | Rozevírací seznam | **Žádné** |
    | **Časový limit nečinnosti** | Otevřete minut pro uchování připojení TCP | 4 |
-   | **Plovoucí IP adresa (přímá odpověď ze serveru vrácené)** | |Povoleno |
+   | **Plovoucí IP adresa (přímá odpověď ze serveru vrácené)** | |Enabled |
 
    > [!WARNING]
    > Přímá odpověď ze serveru vrácené je nastavit během vytváření. Název není možné změnit.
@@ -467,7 +467,7 @@ Služby WSFC IP adresa musí být také v nástroji pro vyrovnávání zatížen
    | **Test paměti** |Název, který jste zadali pro test paměti | WSFCEndPointProbe |
    | **Trvalost relace** | Rozevírací seznam | **Žádné** |
    | **Časový limit nečinnosti** | Otevřete minut pro uchování připojení TCP | 4 |
-   | **Plovoucí IP adresa (přímá odpověď ze serveru vrácené)** | |Povoleno |
+   | **Plovoucí IP adresa (přímá odpověď ze serveru vrácené)** | |Enabled |
 
    > [!WARNING]
    > Přímá odpověď ze serveru vrácené je nastavit během vytváření. Název není možné změnit.

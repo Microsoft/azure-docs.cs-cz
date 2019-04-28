@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 10/07/2017
 ms.author: rogarana
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 05e687ab31b6c19193076033e1350952549d26e0
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
+ms.openlocfilehash: 42ad7bc10cb7b93bd4db9260f950ae4ca12aba44
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56330745"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61126874"
 ---
 # <a name="migrate-from-amazon-web-services-aws-and-other-platforms-to-managed-disks-in-azure"></a>Migrace z Amazon Web Services (AWS) a dalších platforem na Managed Disks v Azure
 
@@ -55,7 +55,7 @@ V této části vám umožní nejlepší rozhodnutí o typech virtuálních poč
 
 Pokud plánujete migraci z nespravovaných disků na managed disks, byste měli vědět, které uživatelé s [Přispěvatel virtuálních počítačů](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor) role nebude možné změnit velikost virtuálního počítače (jak se může před převod). Je to proto, že virtuální počítače se spravovanými disky vyžadují, aby uživatel měl oprávnění Microsoft.Compute/disks/write pro disky s operačním systémem.
 
-### <a name="location"></a>Umístění
+### <a name="location"></a>Location
 
 Vyberte umístění, kde jsou k dispozici Azure Managed Disks. Pokud provádíte migraci do služby Managed Disks úrovně Premium, ujistěte se také, že Premium storage je dostupné v oblasti, kde máte v úmyslu migrovat do. Zobrazit [služeb Azure podle oblasti](https://azure.microsoft.com/regions/#services) aktuální informace o dostupných umístění.
 

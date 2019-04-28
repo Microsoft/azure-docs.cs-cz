@@ -1,5 +1,5 @@
 ---
-title: Zásady koncových bodů služby Azure Virtual Network | Microsoft Docs
+title: Zásady koncových bodů služby pro virtuální síť Azure | Microsoft Docs
 description: Přečtěte si, jak používat zásady koncových bodů služby Azure Virtual Network k filtrování přenosů ve virtuální síti.
 services: virtual-network
 documentationcenter: na
@@ -12,13 +12,13 @@ ms.workload: infrastructure-services
 ms.date: 09/18/2018
 ms.author: sumeet.mittal
 ms.openlocfilehash: b39f365c8b66f7cab074a20bc574803e12f93422
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59494165"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61033896"
 ---
-# <a name="virtual-network-service-endpoint-policies-preview"></a>Zásady koncových bodů služby Virtual Network (Preview)
+# <a name="virtual-network-service-endpoint-policies-preview"></a>Zásady koncových bodů služby pro virtuální síť (Preview)
 
 Zásady koncových bodů služby Virtual Network (VNet) umožňují v provozu virtuální sítě filtrovat služby Azure, aby ke koncovým bodům služby měly přístup jenom určité prostředky služeb Azure. Zásady koncových bodů umožňují v provozu virtuální sítě podrobně řídit přístup ke službám Azure.
 
@@ -29,11 +29,11 @@ __Azure Storage__: WestCentralUS, WestUS2, NorthCentralUS, SouthCentralUS, Centr
 Aktuální oznámení o verzi Preview najdete na stránce s [aktuálními informacemi o službě Azure Virtual Network](https://azure.microsoft.com/updates/?product=virtual-network).
 
 > [!NOTE]  
-> Po dobu verze Preview nemusejí mít zásady koncových bodů služby virtuální sítě stejnou dostupnost a spolehlivost jako funkce vydané v obecně dostupné verzi. Další informace najdete v [dodatečných podmínkách použití systémů Microsoft Azure Preview](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Po dobu verze Preview nemusejí mít zásady koncových bodů služby pro virtuální síť stejnou dostupnost a spolehlivost jako funkce vydané v obecně dostupné verzi. Další informace najdete v [dodatečných podmínkách použití systémů Microsoft Azure Preview](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="key-benefits"></a>Klíčové výhody
 
-Zásady koncových bodů služby virtuální sítě nabízejí následující výhody:
+Zásady koncových bodů služby pro virtuální síť nabízejí následující výhody:
 
 - __Vylepšené zabezpečení provozu virtuální sítě pro služby Azure__
 

@@ -13,11 +13,11 @@ ms.topic: conceptual
 ms.date: 02/07/2018
 ms.author: jingwang
 ms.openlocfilehash: e9fd818990c8a985a77c2e7eeea19bf63c440e4e
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54018989"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61347645"
 ---
 # <a name="copy-data-from-teradata-using-azure-data-factory"></a>Kopírování dat z Teradata pomocí Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -58,7 +58,7 @@ Pro Teradata propojené služby jsou podporovány následující vlastnosti:
 | server | Název serveru Teradata. | Ano |
 | authenticationType. | Typ ověřování používaný pro připojení k databázi Teradata.<br/>Povolené hodnoty jsou: **Základní**, a **Windows**. | Ano |
 | uživatelské jméno | Zadejte uživatelské jméno pro připojení k databázi Teradata. | Ano |
-| heslo | Zadejte heslo pro uživatelský účet, který jste zadali pro uživatelské jméno. Označte toto pole jako SecureString bezpečně uložit ve službě Data Factory nebo [odkazovat tajného klíče do služby Azure Key Vault](store-credentials-in-key-vault.md). | Ano |
+| password | Zadejte heslo pro uživatelský účet, který jste zadali pro uživatelské jméno. Označte toto pole jako SecureString bezpečně uložit ve službě Data Factory nebo [odkazovat tajného klíče do služby Azure Key Vault](store-credentials-in-key-vault.md). | Ano |
 | connectVia | [Prostředí Integration Runtime](concepts-integration-runtime.md) se použije k připojení k úložišti. Modul Integration Runtime je povinný, jak je uvedeno v [požadavky](#prerequisites). |Ano |
 
 **Příklad:**
@@ -164,44 +164,44 @@ Při kopírování dat z Teradata, se používají následující mapování z T
 | Typ dat Teradata | Data factory dočasné datový typ |
 |:--- |:--- |
 | BigInt |Int64 |
-| Objekt blob |Byte] |
-| Bajt |Byte] |
+| Objekt blob |Byte[] |
+| Byte |Byte[] |
 | ByteInt |Int16 |
-| Char |Řetězec |
-| Datový typ CLOB |Řetězec |
+| char |String |
+| Clob |String |
 | Datum |DateTime |
-| Desítkově |Desítkově |
+| Decimal |Decimal |
 | Double |Double |
-| Obrázek |Řetězec |
-| Integer |Datový typ Int32 |
-| Interval den |Časový interval |
-| Interval den na hodinu |Časový interval |
-| Den intervalu minuty. |Časový interval |
-| Den intervalu sekundy. |Časový interval |
-| Interval hodin |Časový interval |
-| Interval hodinu, minutu |Časový interval |
-| Hodina intervalu sekundy. |Časový interval |
-| Interval minutu |Časový interval |
-| Interval minuty, sekundy. |Časový interval |
-| Interval měsíc |Řetězec |
-| Interval druhý |Časový interval |
-| Interval rok |Řetězec |
-| Interval rok měsíc |Řetězec |
+| Obrázek |String |
+| Integer |Int32 |
+| Interval den |TimeSpan |
+| Interval den na hodinu |TimeSpan |
+| Den intervalu minuty. |TimeSpan |
+| Den intervalu sekundy. |TimeSpan |
+| Interval Hour |TimeSpan |
+| Interval hodinu, minutu |TimeSpan |
+| Hodina intervalu sekundy. |TimeSpan |
+| Interval minutu |TimeSpan |
+| Interval minuty, sekundy. |TimeSpan |
+| Interval měsíc |String |
+| Interval druhý |TimeSpan |
+| Interval rok |String |
+| Interval rok měsíc |String |
 | Číslo |Double |
-| Period(Date) |Řetězec |
-| Period(Time) |Řetězec |
-| Období (čas s časovým pásmem) |Řetězec |
-| Period(Timestamp) |Řetězec |
-| Období (časové razítko s časovým pásmem) |Řetězec |
+| Period(Date) |String |
+| Period(Time) |String |
+| Období (čas s časovým pásmem) |String |
+| Period(Timestamp) |String |
+| Období (časové razítko s časovým pásmem) |String |
 | SmallInt |Int16 |
-| Čas |Časový interval |
-| Čas s časovým pásmem |Řetězec |
-| Časové razítko |DateTime |
-| Časové razítko s časovým pásmem |DateTimeOffset |
-| VarByte |Byte] |
-| VarChar |Řetězec |
-| VarGraphic |Řetězec |
-| XML |Řetězec |
+| Čas |TimeSpan |
+| Čas s časovým pásmem |String |
+| Timestamp |DateTime |
+| Časové razítko s časovým pásmem |Datetimeoffset |
+| VarByte |Byte[] |
+| VarChar |String |
+| VarGraphic |String |
+| Xml |String |
 
 
 ## <a name="next-steps"></a>Další postup

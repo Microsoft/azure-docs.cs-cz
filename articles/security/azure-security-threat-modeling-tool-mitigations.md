@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 08/17/2017
 ms.author: rodsan
 ms.openlocfilehash: 24aa49fd4ccccda372d2632ef4aee22bd5cb2bf6
-ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54359132"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60611319"
 ---
 # <a name="microsoft-threat-modeling-tool-mitigations"></a>Nástroj pro modelování hrozeb Microsoftu způsoby zmírnění rizik
 

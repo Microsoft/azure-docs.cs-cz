@@ -12,11 +12,11 @@ ms.date: 06/28/2018
 ms.author: cephalin
 ms.custom: seodec18
 ms.openlocfilehash: ac62217af096653d61a79ff29ae352c8e950f8af
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53719298"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61269725"
 ---
 # <a name="how-to-prepare-for-an-outbound-ip-address-change"></a>Postup přípravy na změnu odchozí IP adresy
 
@@ -24,9 +24,9 @@ Pokud jste dostali oznámení, že se mění odchozí IP adresy vaší aplikace 
 
 ## <a name="determine-if-you-have-to-do-anything"></a>Zjistit, pokud máte dělat nic.
 
-* Možnost 1: Pokud vaše aplikace app Service nepoužívá filtrování protokolu IP, explicitní zařazení seznamu nebo zvláštní zacházení odchozí provoz, jako je směrování nebo brány firewall, nemusíte nic dělat.
+* Option 1: Pokud vaše aplikace app Service nepoužívá filtrování protokolu IP, explicitní zařazení seznamu nebo zvláštní zacházení odchozí provoz, jako je směrování nebo brány firewall, nemusíte nic dělat.
 
-* Možnost 2: Pokud aplikace nemá zvláštní zacházení odchozí IP adresy (Další příklady naleznete níže), přidat nové odchozí IP adresy, bez ohledu na to se zobrazí ta stávající. Nemáte nahradit stávající IP adresy. Podle pokynů uvedených v následující části najdete nové odchozí IP adresy.
+* Option 2: Pokud aplikace nemá zvláštní zacházení odchozí IP adresy (Další příklady naleznete níže), přidat nové odchozí IP adresy, bez ohledu na to se zobrazí ta stávající. Nemáte nahradit stávající IP adresy. Podle pokynů uvedených v následující části najdete nové odchozí IP adresy.
 
   Například odchozí IP adresa může být výslovně zahrnuty v bráně firewall mimo vaši aplikaci nebo službě externí platby může mít seznamu povolených, který obsahuje odchozí IP adresa pro vaši aplikaci. Pokud odchozí adresy je nakonfigurované v seznamu kdekoli mimo aplikaci, který musí změnit.
 

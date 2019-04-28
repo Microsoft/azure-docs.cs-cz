@@ -13,11 +13,11 @@ ms.reviewer: ''
 manager: craigg
 ms.date: 12/04/2018
 ms.openlocfilehash: 446203b45744a95c32cd41d9ded26fd960ac8a22
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55561429"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60585583"
 ---
 # <a name="elastic-database-tools-glossary"></a>Glosář nástrojů elastické databáze
 
@@ -27,7 +27,7 @@ Tyto podmínky se používají v [přidání horizontálního oddílu používá
 
 ![Elastické škálování podmínky][1]
 
-**Database**: Databázi SQL Azure. 
+**Database**: Databázi Azure SQL. 
 
 **Směrování závislé na datech**: Funkce, které umožňuje připojení k horizontálnímu oddílu přiřazen klíč horizontálního dělení konkrétní aplikaci. Zobrazit [směrování závislé na datech](sql-database-elastic-scale-data-dependent-routing.md). Porovnat s  **[dotazování více horizontálních oddílů](sql-database-elastic-scale-multishard-querying.md)**.
 

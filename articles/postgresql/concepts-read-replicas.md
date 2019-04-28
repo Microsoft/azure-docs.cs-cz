@@ -1,17 +1,18 @@
 ---
 title: Repliky pro čtení v Azure Database for PostgreSQL
 description: Tento článek popisuje funkce repliky pro čtení ve službě Azure Database for PostgreSQL.
-author: rachel-msft
-ms.author: raagyema
+author: WenJason
+ms.author: v-jay
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 04/01/2019
+origin.date: 04/01/2019
+ms.date: 04/22/2019
 ms.openlocfilehash: f340f1e42b6993a1f834ab05570c669d4241222b
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59789970"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60564353"
 ---
 # <a name="read-replicas-in-azure-database-for-postgresql"></a>Repliky pro čtení v Azure Database for PostgreSQL
 
@@ -50,7 +51,7 @@ Replika dědí z hlavního serveru účet správce. Všechny uživatelské účt
 Můžete připojit k replice pomocí jeho názvu hostitele a platný uživatelský účet, jako byste to zvládli pravidelné serveru Azure Database for PostgreSQL. Pro server s názvem **myreplica** s uživatelským jménem správce **myadmin**, můžete se připojíte k replice pomocí nástroje psql:
 
 ```
-psql -h myreplica.postgres.database.azure.com -U myadmin@myreplica -d postgres
+psql -h myreplica.postgres.database.chinacloudapi.cn -U myadmin@myreplica -d postgres
 ```
 
 Do příkazového řádku zadejte heslo pro uživatelský účet.

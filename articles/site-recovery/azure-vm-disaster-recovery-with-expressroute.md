@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.date: 04/08/2019
 ms.author: mayg
 ms.openlocfilehash: 90388d570d027aea3c897f7306a1714fd7e847b3
-ms.sourcegitcommit: fec96500757e55e7716892ddff9a187f61ae81f7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2019
-ms.locfileid: "59618079"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60772378"
 ---
 # <a name="integrate-azure-expressroute-with-disaster-recovery-for-azure-vms"></a>Integrace Azure ExpressRoute se zotavení po havárii pro virtuální počítače Azure
 
@@ -106,10 +106,10 @@ V případě podnikového nasazení obvykle mají úlohy rozdělit mezi více vi
 
 **Směr** | **Nastavení** | **Stav**
 --- | --- | ---
-Od paprsku k centru | Povolit virtuální síťová adresa | Povoleno
-Od paprsku k centru | Povolit přesměrovaný přenos | Povoleno
+Od paprsku k centru | Povolit virtuální síťová adresa | Enabled
+Od paprsku k centru | Povolit přesměrovaný přenos | Enabled
 Od paprsku k centru | Povolit průchod bránou | Zakázáno
-Od paprsku k centru | Odebrání brány použít | Povoleno
+Od paprsku k centru | Odebrání brány použít | Enabled
 
  ![Paprsků centra konfigurace partnerského vztahu](./media/azure-vm-disaster-recovery-with-expressroute/spoke-to-hub-peering-configuration.png)
 
@@ -117,9 +117,9 @@ Od paprsku k centru | Odebrání brány použít | Povoleno
 
 **Směr** | **Nastavení** | **Stav**
 --- | --- | ---
-Od centra k paprsku | Povolit virtuální síťová adresa | Povoleno
-Od centra k paprsku | Povolit přesměrovaný přenos | Povoleno
-Od centra k paprsku | Povolit průchod bránou | Povoleno
+Od centra k paprsku | Povolit virtuální síťová adresa | Enabled
+Od centra k paprsku | Povolit přesměrovaný přenos | Enabled
+Od centra k paprsku | Povolit průchod bránou | Enabled
 Od centra k paprsku | Odebrání brány použít | Zakázáno
 
  ![Centrum paprsků konfigurace partnerského vztahu](./media/azure-vm-disaster-recovery-with-expressroute/hub-to-spoke-peering-configuration.png)

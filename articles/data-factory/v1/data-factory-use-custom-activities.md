@@ -14,11 +14,11 @@ ms.author: abnarain
 manager: craigg
 robots: noindex
 ms.openlocfilehash: 0ddc235064d99e9d6385ab48e78f893952eefa15
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58487477"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61254338"
 ---
 # <a name="use-custom-activities-in-an-azure-data-factory-pipeline"></a>Použití vlastních aktivit v kanálu Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -48,7 +48,7 @@ Následující návod obsahuje podrobné pokyny pro vytváření vlastní aktivi
 * Stáhněte sadu [Azure .NET SDK](https://azure.microsoft.com/downloads/) a nainstalujte ji.
 
 ### <a name="azure-batch-prerequisites"></a>Požadavky služby Azure Batch
-V tomto návodu spustit vaše vlastní aktivity .NET pomocí služby Azure Batch jako výpočetní prostředek. **Služba Azure Batch** je platformu, služby pro spouštění rozsáhlých paralelních a vysoce výkonné výpočetní (prostředí HPC) aplikace účinně v cloudu. Služba Azure Batch plánuje výpočetně náročné práce ke spuštění na spravované **kolekci virtuálních počítačů**, a dokáže automaticky škálovat výpočetní prostředky pro splnění požadavků vašich úloh. Zobrazit [Základy služby Azure Batch] [ batch-technical-overview] článku podrobnější přehled služby Azure Batch.
+V tomto návodu spustit vaše vlastní aktivity .NET pomocí služby Azure Batch jako výpočetní prostředek. **Azure Batch** je služba platformy pro efektivní spouštění rozsáhlých paralelních aplikací a aplikací vysoce výkonného výpočetního prostředí (HPC) v cloudu. Služba Azure Batch plánuje výpočetně náročné práce ke spuštění na spravované **kolekci virtuálních počítačů**, a dokáže automaticky škálovat výpočetní prostředky pro splnění požadavků vašich úloh. Zobrazit [Základy služby Azure Batch] [ batch-technical-overview] článku podrobnější přehled služby Azure Batch.
 
 Pro tento kurz vytvoření účtu Azure Batch s fondem virtuálních počítačů. Postup je následující:
 

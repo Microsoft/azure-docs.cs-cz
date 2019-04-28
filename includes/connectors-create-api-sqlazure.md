@@ -8,38 +8,38 @@ ms.topic: include
 ms.date: 05/15/2018
 ms.author: estfan
 ms.custom: include file
-ms.openlocfilehash: 4ffda692da0ab7b63f7376c36dfab0bec914e334
-ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
+ms.openlocfilehash: da03c5247b8ebe0a3305b08a05d661264497663f
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37138061"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60540783"
 ---
-* Pokud používáte Azure SQL Database, postupujte podle kroků v části [připojit k databázi SQL Azure](#connect-azure-sql-db). 
+* Pokud používáte Azure SQL Database, postupujte podle kroků v části [připojit ke službě Azure SQL Database](#connect-azure-sql-db). 
 
-* Pokud používáte systém SQL Server, postupujte podle kroků v části [připojit k serveru SQL](#connect-sql-server).
+* Pokud používáte systém SQL Server, postupujte podle kroků v části [připojit k SQL serveru](#connect-sql-server).
 
 <a name="connect-azure-sql-db"></a>
 
-### <a name="connect-to-azure-sql-database"></a>Připojení k databázi Azure SQL
+### <a name="connect-to-azure-sql-database"></a>Připojení ke službě Azure SQL Database
 
-1. Když aktivační události SQL nebo akce vás vyzve k zadání informací o připojení, postupujte takto:
+1. Když SQL triggeru nebo akce vás vyzve k zadání informací o připojení, postupujte podle těchto kroků:
 
-   1. Vytvořte název připojení.
+   1. Vytvořte název vašeho připojení.
 
-   2. Vyberte svůj server SQL a pak vyberte svou databázi. 
+   2. Vyberte váš server SQL a pak vyberte vaši databázi. 
 
-      Až po výběru systému SQL server, zobrazí se seznam databází.
+      Seznam databází se zobrazí pouze po vyberte váš server SQL.
  
    3. Zadejte uživatelské jméno a heslo pro váš server.
 
-      Tyto informace můžete najít buď na portálu Azure v rámci vaší vlastnosti databáze SQL nebo v připojovacím řetězci: 
+      Tyto informace můžete najít buď na portálu Azure portal ve vlastnostech vaší SQL database nebo v připojovacím řetězci: 
       
       "ID uživatele = <*uživatelské_jméno*>"
       <br>
-      "Heslo = <*yourPassword*>"
+      "Password=<*yourPassword*>"
 
-   Tento příklad ukazuje, informace o připojení pro aktivační událost, ale tento postup funguje pro akce příliš.
+   Tento příklad ukazuje informace o připojení pro aktivační událost, ale tento postup funguje pro akce příliš.
 
    ![Vytvoření připojení k databázi SQL Azure](./media/connectors-create-api-sqlazure/azure-sql-database-create-connection.png)
    <br>
@@ -47,67 +47,67 @@ ms.locfileid: "37138061"
 
    | Vlastnost | Hodnota | Podrobnosti | 
    |----------|-------|---------| 
-   | Název připojení | <*Moje připojení sql.*> | Název připojení | 
-   | Název serveru SQL | <*My sql server*> | Název systému SQL server |
-   | Název databáze SQL | <*Moje databáze sql*>  | Název databáze SQL | 
-   | Uživatelské jméno | <*Moje sql-username*> | Uživatelské jméno pro přístup k vaší databázi |
-   | Heslo | <*Moje heslo sql*> | Heslo pro přístup k vaší databázi | 
+   | Název připojení | <*my-sql-connection*> | Název připojení | 
+   | Název serveru SQL | <*my-sql-server*> | Název serveru SQL server |
+   | Název databáze SQL | <*my-sql-database*>  | Název pro vaši databázi SQL | 
+   | Uživatelské jméno | <*my-sql-username*> | Uživatelské jméno pro přístup k databázi |
+   | Heslo | <*my-sql-password*> | Heslo pro přístup k databázi | 
    |||| 
 
 2. Jakmile budete hotoví, vyberte **Vytvořit**.
 
-3. Po vytvoření připojení, pokračujte [aktivační události SQL přidat](#add-sql-trigger) nebo [přidat SQL akce](#add-sql-action).
+3. Po vytvoření připojení pokračujte [aktivační události SQL přidat](#add-sql-trigger) nebo [akci přidat SQL](#add-sql-action).
 
 <a name="connect-sql-server"></a>
 
 ### <a name="connect-to-sql-server"></a>Připojení k SQL Serveru
 
-Abyste mohli vybrat bránu, ujistěte se, že jste již [nastavit vaše brána data gateway](https://docs.microsoft.com/azure/logic-apps/logic-apps-gateway-connection). Tímto způsobem bránu se zobrazí v seznamu brány při vytváření připojení.
+Abyste mohli vybrat bránu, ujistěte se, že jste již [nastavit vaši bránu data gateway](https://docs.microsoft.com/azure/logic-apps/logic-apps-gateway-connection). Tímto způsobem, vaše brána zobrazí v seznamu brány při vytváření připojení.
 
-1. Když aktivační události SQL nebo akce vás vyzve k zadání informací o připojení, postupujte takto:
+1. Když SQL triggeru nebo akce vás vyzve k zadání informací o připojení, postupujte podle těchto kroků:
 
-   1. V aktivační události nebo akce, vyberte **připojit prostřednictvím místní brána dat** tak, aby se zobrazují možnosti serveru SQL.
+   1. V triggeru nebo akce, vyberte **připojit přes místní bránu dat** tak, aby se zobrazí možnosti SQL serveru.
 
-   2. Vytvořte název připojení.
+   2. Vytvořte název vašeho připojení.
 
    3. Zadejte adresu pro SQL server a pak zadejte název pro vaši databázi.
    
       Tyto informace můžete najít v připojovacím řetězci: 
       
-      * "Serveru = <*yourServerAddress*>"
-      * "Databáze = <*yourDatabaseName*>"
+      * "Server=<*yourServerAddress*>"
+      * "Database=<*yourDatabaseName*>"
 
    4. Zadejte uživatelské jméno a heslo pro váš server.
 
       Tyto informace můžete najít v připojovacím řetězci: 
       
       * "ID uživatele = <*uživatelské_jméno*>"
-      * "Heslo = <*yourPassword*>"
+      * "Password=<*yourPassword*>"
 
-   5. Pokud SQL server používá Windows nebo základní ověřování, vyberte typ ověřování.
+   5. Pokud váš SQL server používá Windows nebo základní ověřování, vyberte typ ověřování.
 
-   6. Vyberte název pro bránu místní dat, který jste dříve vytvořili.
+   6. Vyberte název místní brány dat, který jste dříve vytvořili.
    
-      Pokud vaše brána v seznamu nezobrazí, zkontrolujte, že jste správně [nastavili bránu](https://docs.microsoft.com/azure/logic-apps/logic-apps-gateway-connection).
+      Pokud vaše brána není zobrazená v seznamu, zkontrolujte, které jste správně [vaši bránu nastaví](https://docs.microsoft.com/azure/logic-apps/logic-apps-gateway-connection).
 
-   Tento příklad ukazuje, informace o připojení pro aktivační událost, ale tento postup funguje pro akce příliš.
+   Tento příklad ukazuje informace o připojení pro aktivační událost, ale tento postup funguje pro akce příliš.
 
-   ![Vytvoření připojení serveru SQL Server](./media/connectors-create-api-sqlazure/sql-server-create-connection.png)
+   ![Vytvoření připojení k SQL serveru](./media/connectors-create-api-sqlazure/sql-server-create-connection.png)
    <br>
    Hvězdičky (*) ukazují požadované hodnoty.
 
    | Vlastnost | Hodnota | Podrobnosti | 
    |----------|-------|---------| 
-   | Připojit prostřednictvím místní brány | Tuto možnost vyberte nejprve pro nastavení systému SQL Server. | | 
-   | Název připojení | <*Moje připojení sql.*> | Název připojení | 
-   | Název serveru SQL | <*My sql server*> | Název systému SQL server |
-   | Název databáze SQL | <*Moje databáze sql*>  | Název databáze SQL |
-   | Uživatelské jméno | <*Moje sql-username*> | Uživatelské jméno pro přístup k vaší databázi |
-   | Heslo | <*Moje heslo sql*> | Heslo pro přístup k vaší databázi | 
+   | Připojit přes místní bránu | Tuto možnost vyberte, nejdřív pro nastavení systému SQL Server. | | 
+   | Název připojení | <*my-sql-connection*> | Název připojení | 
+   | Název serveru SQL | <*my-sql-server*> | Název serveru SQL server |
+   | Název databáze SQL | <*my-sql-database*>  | Název pro vaši databázi SQL |
+   | Uživatelské jméno | <*my-sql-username*> | Uživatelské jméno pro přístup k databázi |
+   | Heslo | <*my-sql-password*> | Heslo pro přístup k databázi | 
    | Typ ověření | Windows nebo Basic | Volitelné: Typ ověřování používaný systémem SQL server | 
-   | Brány | <*Moje brány dat*> | Název pro vaše místní brána data gateway | 
+   | Brány | <*my-data-gateway*> | Název pro místní bránu dat | 
    |||| 
 
 2. Jakmile budete hotoví, vyberte **Vytvořit**. 
 
-3. Po vytvoření připojení, pokračujte [aktivační události SQL přidat](#add-sql-trigger) nebo [přidat SQL akce](#add-sql-action).
+3. Po vytvoření připojení pokračujte [aktivační události SQL přidat](#add-sql-trigger) nebo [akci přidat SQL](#add-sql-action).

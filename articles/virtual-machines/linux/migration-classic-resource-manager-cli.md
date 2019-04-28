@@ -16,11 +16,11 @@ ms.topic: article
 ms.date: 03/30/2017
 ms.author: kasing
 ms.openlocfilehash: 34dad39e3784dd0bc73e3be108d6b31d4f479a1e
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57543266"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60543138"
 ---
 # <a name="migrate-iaas-resources-from-classic-to-azure-resource-manager-by-using-azure-cli"></a>Migrovat prostředky IaaS z modelu nasazení classic do Azure Resource Manageru pomocí rozhraní příkazového řádku Azure
 Tyto kroky ukazují, jak migrovat infrastrukturu jako službu (IaaS) prostředky z modelu nasazení classic do modelu nasazení Azure Resource Manageru pomocí příkazů rozhraní příkazového řádku Azure (CLI). Tento článek vyžaduje [klasické rozhraní příkazového řádku Azure](../../cli-install-nodejs.md). Vzhledem k tomu, že rozhraní příkazového řádku Azure jde použít jenom pro prostředky Azure Resource Manageru, nelze použít pro tuto migraci.

@@ -16,11 +16,11 @@ ms.workload: infrastructure-services
 ms.date: 04/19/2017
 ms.author: jdial
 ms.openlocfilehash: 02db9f2b8cb2ec71d23ad077b90eeacb905d2a16
-ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58445639"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60565792"
 ---
 # <a name="azure-networking"></a>Sítě Azure
 
@@ -29,7 +29,7 @@ Azure nabízí širokou škálu možností sítě, které lze použít společn�
 - [Připojení k Internetu](#internet-connectivity): Z prostředků Azure a komunikují přes Internet.
 - [Místní připojení](#on-premises-connectivity): Připojení místní sítě k prostředkům Azure pomocí virtuální privátní sítě (VPN) přes Internet nebo prostřednictvím vyhrazené připojení k Azure.
 - [Směr provozu a vyrovnávání zatížení](#load-balancing): Vyrovnávání zatížení provozu na servery ve stejném umístění a směrovat přenos dat na servery v různých umístěních.
-- [Zabezpečení](#security): Filtrování síťového provozu mezi podsítěmi síť nebo jednotlivé virtuální počítače (VM).
+- [Zabezpečení:](#security) Filtrování síťového provozu mezi podsítěmi síť nebo jednotlivé virtuální počítače (VM).
 - [Směrování](#routing): Použít výchozí směrování nebo plně řídit směrování mezi Azure a místní prostředky.
 - [Možnosti správy](#manageability): Monitorování a Správa síťových prostředků Azure.
 - [Nasazení a konfigurace nástroje](#tools): Webový portál nebo nástrojů příkazového řádku pro různé platformy použijte k nasazení a konfiguraci síťových prostředků.

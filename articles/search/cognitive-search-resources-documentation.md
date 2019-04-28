@@ -11,11 +11,11 @@ ms.date: 05/04/2018
 ms.author: heidist
 ms.custom: seodec2018
 ms.openlocfilehash: 609b5d990cffce10733f6fc82e6b1032ad0f06bb
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53314597"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60951786"
 ---
 # <a name="documentation-resources-for-cognitive-search-workloads"></a>Dokumentační zdroje pro úlohy kognitivního vyhledávání
 
@@ -25,7 +25,7 @@ Následující články jsou kompletní dokumentaci k kognitivního vyhledáván
 
 ## <a name="getting-started"></a>Začínáme
 + [Co je kognitivního vyhledávání?](cognitive-search-concept-intro.md)
-+ [Rychlý start: Vyzkoušení kognitivního vyhledávání v portálu](cognitive-search-quickstart-blob.md)
++ [Rychlé zprovoznění: Vyzkoušení kognitivního vyhledávání v portálu](cognitive-search-quickstart-blob.md)
 + [Kurz: Další rozhraní API pro kognitivní vyhledávání](cognitive-search-tutorial-blob.md)
 + [Příklad: vytvoření vlastní dovednosti](cognitive-search-create-custom-skill-example.md)
 
@@ -52,8 +52,8 @@ Následující články jsou kompletní dokumentaci k kognitivního vyhledáván
   + [Microsoft.Skills.Util.ShaperSkill](cognitive-search-skill-shaper.md)
 
 + [Rozhraní REST API ve verzi Preview](search-api-2017-11-11-preview.md)
-  + [Vytvoření dovedností (api-version = 2017-11-11-Preview)](https://docs.microsoft.com/rest/api/searchservice/create-skillset)
-  + [Vytvoření indexeru (rozhraní api-version = 2017-11-11-Preview)](https://docs.microsoft.com/rest/api/searchservice/create-indexer)
+  + [Create Skillset (api-version=2017-11-11-Preview)](https://docs.microsoft.com/rest/api/searchservice/create-skillset)
+  + [Create Indexer (api-version=2017-11-11-Preview)](https://docs.microsoft.com/rest/api/searchservice/create-indexer)
 
 ## <a name="see-also"></a>Další informace najdete v tématech
 

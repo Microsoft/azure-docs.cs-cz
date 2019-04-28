@@ -7,11 +7,11 @@ ms.topic: conceptual
 ms.date: 03/28/2019
 ms.author: snehaa
 ms.openlocfilehash: 17cead93325da903161d95b315435d6e7b106dbb
-ms.sourcegitcommit: 48a41b4b0bb89a8579fc35aa805cea22e2b9922c
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/15/2019
-ms.locfileid: "59578913"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61292974"
 ---
 # <a name="azure-migrate---frequently-asked-questions-faq"></a>Azure Migrate – nejčastější dotazy (FAQ)
 
@@ -132,11 +132,11 @@ Data shromážděná agenty závislostí je také šifrovaný v přenosu (secure
 
 ### <a name="how-does-the-collector-communicate-with-the-vcenter-server-and-the-azure-migrate-service"></a>Způsob, jakým kolektoru komunikují pomocí systému vCenter Server a služby Azure Migrate?
 
-Zařízení kolektoru se připojuje k systému vCenter Server (port 443) pomocí přihlašovacích údajů, které zadal uživatel v zařízení. Vyžádá si vCenter Server s použitím VMware PowerCLI se získat metadata o virtuálních počítačích spravovaných přes vCenter Server. Shromažďuje obou konfiguračních dat o virtuálních počítačích (jader, paměti, disky, NIC atd.) a také historie výkonu každého virtuálního počítače za poslední měsíc z vCenter serveru. Shromážděná metadata se pak posílají do služby Azure Migrate (přes internet prostřednictvím protokolu https) pro posouzení. [Další informace](concepts-collector.md)
+Zařízení kolektoru se připojí k vCenter Serveru (na portu 443) s použitím přihlašovacích údajů, které v zařízení zadal uživatel. Pomocí VMware PowerCLI bude dotazovat vCenter Server a shromáždí metadata o virtuálních počítačích spravovaných vCenter Serverem. Z vCenter Serveru shromáždí jak konfigurační data o virtuálních počítačích (jádra, paměť, disky, síťová karta atd.), tak i historii výkonu jednotlivých virtuálních počítačů za poslední měsíc. Shromážděná metadata se pak odešlou k posouzení do služby Azure Migrate (přes internet a protokol HTTPS). [Další informace](concepts-collector.md)
 
 ### <a name="can-i-connect-the-same-collector-appliance-to-multiple-vcenter-servers"></a>Můžete připojit stejné zařízení kolektoru na několik serverů vCenter?
 
-Ano, jeden kolektor zařízení je možné zjistit více vCenter servery, ale ne současně. Budete muset spustit zjišťování jeden po druhém.
+Ano, jedno zařízení kolektoru je možné použít ke zjišťování několika vCenter Serverů, ale ne současně. Zjišťování je potřeba spustit jedno po druhém.
 
 ### <a name="is-the-ova-template-used-by-site-recovery-integrated-with-the-ova-used-by-azure-migrate"></a>Šablona OVA používané pro Site Recovery integrovaná OVA použít se službou Azure Migrate?
 
@@ -144,7 +144,7 @@ Aktuálně neexistuje žádná integrace. Na. Šablony pro soubory OVA ve služb
 
 ### <a name="i-changed-my-machine-size-can-i-rerun-the-assessment"></a>Můžu změnit svoji velikost počítače. Můžete znovu spustit posouzení?
 
-Pokud změníte nastavení na virtuálním počítači, kterou chcete posoudit, aktivační události zjišťování znovu pomocí zařízení kolektoru. V zařízení, použijte **spustit shromažďování znovu** možnost to udělat. Jakmile se shromažďování dokončí, vyberte možnost **Přepočítat** pro posouzení na portálu. Zobrazíte tak aktualizované výsledky posouzení.
+Pokud na virtuálním počítači, který chcete posoudit, změníte nastavení, znovu aktivujte zjišťování pomocí zařízení kolektoru. Na zařízení k tomu použijte možnost **Spustit shromažďování znovu**. Jakmile se shromažďování dokončí, vyberte možnost **Přepočítat** pro posouzení na portálu. Zobrazíte tak aktualizované výsledky posouzení.
 
 ### <a name="how-can-i-discover-a-multi-tenant-environment-in-azure-migrate"></a>Jak lze zjistit prostředí s více tenanty ve službě Azure Migrate?
 

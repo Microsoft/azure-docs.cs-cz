@@ -13,11 +13,11 @@ ms.topic: article
 ms.date: 03/25/2019
 ms.author: spelluru
 ms.openlocfilehash: abb85d568e26e4b6f85b960a2560aae570daf201
-ms.sourcegitcommit: c884e2b3746d4d5f0c5c1090e51d2056456a1317
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60149176"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61320312"
 ---
 # <a name="run-an-image-factory-from-azure-devops"></a>Spuštění objektu pro vytváření imagí z Azure DevOps
 Tento článek se týká všech přípravy potřebných ke spuštění objekt pro vytváření image z Azure DevOps (dřív Visual Studio Team Services).
@@ -78,7 +78,7 @@ V tomto okamžiku máte zdrojové soubory uložené v úložišti Git v Azure De
 Pro zjednodušení parametry příkazového řádku, zapouzdření klíčové hodnoty, které řídí objekt pro vytváření image pro sadu proměnných sestavení. Vyberte **proměnné** kartu a zobrazí se seznam několika výchozí proměnné. Tady je seznam proměnných, které zadáte v Azure DevOps:
 
 
-| Název proměnné | Value | Poznámky |
+| Název proměnné | Hodnota | Poznámky |
 | ------------- | ----- | ----- |
 | ConfigurationLocation | /Scripts/ImageFactory/Configuration | Jedná se o úplnou cestu v úložišti, abyste **konfigurace** složky. Pokud jste naimportovali celé úložiště výše, hodnotu na levé straně je správná. Jinak aktualizujte tak, aby odkazoval na umístění konfigurace. |
 | DevTestLabName | MyImageFactory | Název testovacího prostředí ve službě Azure DevTest Labs k vytvoření Image použít jako objekt pro vytváření. Pokud ho nemáte, vytvořte si ho. Ujistěte se, že je testovací prostředí v rámci stejného předplatného, který má přístup ke koncovému bodu služby. |

@@ -1,15 +1,16 @@
 ---
-author: MightyPen
+author: WenJason
 ms.service: sql-database
 ms.topic: include
-ms.date: 12/10/2018
-ms.author: genemi
+origin.date: 12/10/2018
+ms.date: 01/14/2019
+ms.author: v-jay
 ms.openlocfilehash: e30651cb0ed7d74082163a92acbc428c21018255
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53728542"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60553132"
 ---
 ## <a name="c-program-example"></a>C#Příklad programu
 
@@ -45,10 +46,10 @@ C# Programu je logicky jeden soubor .cs a fyzicky je rozdělen na několik blok�
 
     1. Změňte následující hodnoty `Main` metody:
 
-        - *označení CB. Zdroj dat*
-        - *označení CB. ID uživatele*
-        - *označení CB. Heslo*
-        - *označení CB. Počáteční katalog*
+        - *cb.DataSource*
+        - *cb.UserID*
+        - *cb.Password*
+        - *cb.InitialCatalog*
 
 1. Ověřte, sestavení *System.Data.dll* odkazuje. Chcete-li ověřit, rozbalte **odkazy** uzlu v **Průzkumníka řešení** podokně.
 
@@ -98,7 +99,7 @@ namespace csharp_db_test
             try
             {
                 var cb = new SqlConnectionStringBuilder();
-                cb.DataSource = "your_server.database.windows.net";
+                cb.DataSource = "your_server.database.chinacloudapi.cn";
                 cb.UserID = "your_user";
                 cb.Password = "your_password";
                 cb.InitialCatalog = "your_database";

@@ -17,11 +17,11 @@ ms.date: 10/31/2018
 ms.author: genli
 ms.custom: seodec18
 ms.openlocfilehash: ae59f54de9c02bfc4e538dd10c809ba398d599ee
-ms.sourcegitcommit: b8a8d29fdf199158d96736fbbb0c3773502a092d
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/15/2019
-ms.locfileid: "59565953"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61222227"
 ---
 > [!NOTE]
 > Část níže uvedených pokynů může fungovat jenom na Windows nebo Linuxem App Services. Například Linux App Services ve výchozím nastavení spouští v 64bitovém režimu.

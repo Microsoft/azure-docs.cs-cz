@@ -8,11 +8,11 @@ ms.topic: article
 ms.date: 04/17/2019
 ms.author: iainfou
 ms.openlocfilehash: 7ce311ab9c554481f64c6c9be40e2018893a0966
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60013608"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61027371"
 ---
 # <a name="preview---secure-your-cluster-using-pod-security-policies-in-azure-kubernetes-service-aks"></a>Ve verzi Preview – zabezpečení clusteru pomocí pod zásad zabezpečení ve službě Azure Kubernetes Service (AKS)
 

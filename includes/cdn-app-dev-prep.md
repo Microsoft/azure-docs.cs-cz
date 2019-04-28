@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 11/21/2018
 ms.author: mazha
 ms.openlocfilehash: 7f80c8f1773cfeb8ddfb222d068a5c6571c2e5c7
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52330858"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60564077"
 ---
 ## <a name="prerequisites"></a>Požadavky
 Před zápisem kód pro správu CDN, je nutné provést určitou přípravu umožňující kódu pracovat s Azure Resource Manageru. Tato příprava, budete muset:
@@ -32,7 +32,7 @@ Před zápisem kód pro správu CDN, je nutné provést určitou přípravu umo�
     ![Názvy skupiny prostředků](./media/cdn-app-dev-prep/cdn-subscription-id-include.png)
 
 ### <a name="creating-the-azure-ad-application-and-applying-permissions"></a>Vytvoření aplikace Azure AD a přiřazení oprávnění
-Existují dva přístupy k ověřování aplikace pomocí Azure Active Directory: jednotlivé uživatele nebo instanční objekt služby. Objekt služby je podobný účet služby ve Windows.  Namísto udělení oprávnění k interakci s profily CDN konkrétního uživatele, se místo toho udělení oprávnění instančnímu objektu služby.  Instanční objekty jsou obvykle používány pro automatizované neinteraktivní procesů.  I když v tomto kurzu je zápis aplikace interaktivní konzolu, zaměříme na přístup instančního objektu služby.
+Existují dva přístupy k ověřování aplikace pomocí Azure Active Directory: Jednotlivé uživatele nebo instanční objekt služby. Objekt služby je podobný účet služby ve Windows.  Namísto udělení oprávnění k interakci s profily CDN konkrétního uživatele, se místo toho udělení oprávnění instančnímu objektu služby.  Instanční objekty jsou obvykle používány pro automatizované neinteraktivní procesů.  I když v tomto kurzu je zápis aplikace interaktivní konzolu, zaměříme na přístup instančního objektu služby.
 
 Vytváří se instanční objekt služby se skládá z několika kroků, včetně vytvoření aplikace Azure Active Directory.  K jeho vytvoření, vytvoříme [v tomto kurzu](../articles/active-directory/develop/howto-create-service-principal-portal.md).
 

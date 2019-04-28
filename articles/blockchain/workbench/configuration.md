@@ -11,11 +11,11 @@ ms.service: azure-blockchain
 ms.reviewer: brendal
 manager: femila
 ms.openlocfilehash: 4d29d8e86a30f105c4aa50ec9615f8165fa238d3
-ms.sourcegitcommit: 48a41b4b0bb89a8579fc35aa805cea22e2b9922c
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/15/2019
-ms.locfileid: "59578743"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60578976"
 ---
 # <a name="azure-blockchain-workbench-configuration-reference"></a>Referenční informace pro konfiguraci Azure Blockchain Workbench
 
@@ -79,7 +79,7 @@ Podporované datové typy.
 | kontrakt | Adresa Typ kontraktu. |
 | Výčet     | Výčtové sadu pojmenovaných hodnot. Při použití typu výčtu, je také zadat seznam EnumKey provede. Každá hodnota je omezený na 255 znaků. Platná hodnota znaky patří velká a malá písmena (A-Z, a-z) a čísla (0-9). Zobrazit [příklad konfigurace a použili ji při Solidity](#example-configuration-of-type-enum). |
 | int      | Datový typ celé číslo. |
-| peníze    | Datový typ money. |
+| money    | Datový typ money. |
 | state    | Stav pracovního postupu. |
 | string  | Datový typ String. maximálně 4000 znaků. Zobrazit [Ukázková konfigurace](#example-configuration-of-type-string). |
 | uživatel     | Adresa Typ uživatele. |

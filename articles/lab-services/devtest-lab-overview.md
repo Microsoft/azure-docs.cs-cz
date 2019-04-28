@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 03/21/2019
 ms.author: spelluru
 ms.openlocfilehash: b7cd6bb1fd0377ca1440d9c667453df922aacbd4
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59698652"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60561451"
 ---
 # <a name="about-azure-devtest-labs"></a>Azure DevTest Labs
 Azure DevTest Labs umožňuje vývojářům na týmy efektivně samostatně spravovat virtuální počítače (VM) a prostředků PaaS bez čekání na schválení.

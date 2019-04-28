@@ -14,14 +14,14 @@ ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 96d16552cfadca9b345d0f0cd0a344249897f571
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54020944"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61258432"
 ---
 # <a name="move-data-from-sap-hana-using-azure-data-factory"></a>Přesouvání dat ze SAP HANA pomocí Azure Data Factory
-> [!div class="op_single_selector" title1="Vyberte verzi služby Data Factory, kterou používáte:"]
+> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
 > * [Verze 1](data-factory-sap-hana-connector.md)
 > * [Verze 2 (aktuální verze)](../connector-sap-hana.md)
 
@@ -60,12 +60,12 @@ Následující tabulka obsahuje popis JSON elementy, které jsou specifické pro
 
 Vlastnost | Popis | Povolené hodnoty | Požaduje se
 -------- | ----------- | -------------- | --------
-server | Název serveru, na kterém se nachází instance SAP HANA. Pokud váš server používá vlastní port, zadejte `server:port`. | řetězec | Ano
+server | Název serveru, na kterém se nachází instance SAP HANA. Pokud váš server používá vlastní port, zadejte `server:port`. | string | Ano
 authenticationType. | Typ ověřování. | řetězec. "Základní" nebo "Windows" | Ano 
-uživatelské jméno | Jméno uživatele, který má přístup k serveru SAP | řetězec | Ano
-heslo | Heslo pro tohoto uživatele. | řetězec | Ano
-Název brány | Název brány, který služba Data Factory měla použít pro připojení k místní instanci SAP HANA. | řetězec | Ano
-encryptedCredential | Řetězec, který šifrované přihlašovací údaje. | řetězec | Ne
+uživatelské jméno | Jméno uživatele, který má přístup k serveru SAP | string | Ano
+heslo | Heslo pro tohoto uživatele. | string | Ano
+gatewayName | Název brány, který služba Data Factory měla použít pro připojení k místní instanci SAP HANA. | string | Ano
+encryptedCredential | Řetězec, který šifrované přihlašovací údaje. | string | Ne
 
 ## <a name="dataset-properties"></a>Vlastnosti datové sady
 Úplný seznam oddílů & vlastnosti, které jsou k dispozici pro definování datové sady, najdete v článku [vytváření datových sad](data-factory-create-datasets.md) článku. Oddíly, jako je například struktura, dostupnost a zásad JSON datové sady jsou podobné pro všechny datové sady typy (Azure SQL, Azure blob, tabulky Azure, atd.).
@@ -284,21 +284,21 @@ Při přesouvání dat ze SAP HANA, se používají následující mapování z 
 
 Typ SAP HANA | Základní typ .NET
 ------------- | ---------------
-TINYINT | Bajt
+TINYINT | Byte
 SMALLINT | Int16
-INT | Datový typ Int32
+INT | Int32
 BIGINT | Int64
-REAL | Jednoduchá
-DOUBLE | Jednoduchá
-DECIMAL | Desítkově
-DATOVÝ TYP BOOLEAN | Bajt
-VARCHAR | Řetězec
-NVARCHAR | Řetězec
-DATOVÝ TYP CLOB | Byte]
-ALPHANUM | Řetězec
-OBJEKT BLOB | Byte]
+REAL | Single
+DOUBLE | Single
+DECIMAL | Decimal
+DATOVÝ TYP BOOLEAN | Byte
+VARCHAR | String
+NVARCHAR | String
+DATOVÝ TYP CLOB | Byte[]
+ALPHANUM | String
+BLOB | Byte[]
 DATE (Datum) | DateTime
-ČAS | Časový interval
+ČAS | TimeSpan
 ČASOVÉ RAZÍTKO | DateTime
 SECONDDATE | DateTime
 

@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 06/28/2018
 ms.author: terrylan
 ms.openlocfilehash: 5f8378de18796fd679354c88880942df83399ad5
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56112040"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60586781"
 ---
 # <a name="azure-facilities-premises-and-physical-security"></a>Zařízení Azure, místním prostředí a fyzické zabezpečení
 Azure se skládá z [infrastruktury globálně distribuovaných datacenter](https://azure.microsoft.com/global-infrastructure/), podporuje tisíce služeb online services a pokrývající více než 100 vysoce zabezpečenými zařízeními po celém světě.

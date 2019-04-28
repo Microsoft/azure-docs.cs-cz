@@ -11,11 +11,11 @@ ms.author: ghogen
 ms.custom: include file
 manager: douge
 ms.openlocfilehash: 892db95a3d8ebaf4d9d3339d4965ce96b1084537
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55252349"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60680178"
 ---
 ## <a name="install-the-cognitive-services-vsix-extension"></a>Instalace rozšíření VSIX služeb Cognitive Services
 

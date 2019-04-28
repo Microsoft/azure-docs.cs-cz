@@ -2,7 +2,7 @@
 title: Událost selhání úlohy služby Azure Batch | Dokumentace Microsoftu
 description: Referenční informace pro úlohy Batch selhání události.
 services: batch
-author: laurenhughes
+author: dlepow
 manager: jeconnoc
 ms.assetid: ''
 ms.service: batch
@@ -10,14 +10,15 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: big-compute
-ms.date: 04/20/2017
-ms.author: lahugh
+origin.date: 04/20/2017
+ms.date: 05/15/2018
+ms.author: v-junlch
 ms.openlocfilehash: f37769ceb761b8c8bc4834568813bb1b7af7f66a
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55458988"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60549984"
 ---
 # <a name="task-fail-event"></a>Událost selhání úlohy
 
@@ -92,3 +93,5 @@ ms.locfileid: "55458988"
 |exitCode|Int32|Ukončovací kód úkolu.|
 |retryCount|Int32|Počet pokusů, které úlohy se pokus o pomocí služby Batch. Úloha je opakovat, pokud ho ukončí s nenulový ukončovací kód, až do zadaného MaxTaskRetryCount.|
 |requeueCount|Int32|Počet pokusů, které úloha má byla znovu zařadit do fronty pomocí služby Batch jako výsledek požadavku uživatele.<br /><br /> Když uživatel odebere uzly z fondu (nebo změnou velikosti zmenšit fond) nebo při deaktivaci úlohy, uživatel může určit, že spuštěné úkoly na uzlech se zařadí do fronty pro spuštění. Tento počet sleduje, kolikrát úkol má byla znovu zařadit do fronty z těchto důvodů.|
+
+<!-- Update_Description: update metedata properties -->

@@ -15,17 +15,17 @@ ms.topic: conceptual
 ms.date: 01/30/2019
 ms.author: pbutlerm
 ms.openlocfilehash: 191f58252aadf776465bb097207a7e76c0f92003
-ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
-ms.translationtype: MT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56415166"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60594981"
 ---
 # <a name="power-bi-app-contacts-tab"></a>Power BI aplikace kontakty kartu
 
 Použití **kontakty** karty **nová nabídka** stránku s cílem poskytnout uživatele a technické podpory prostředků pro vaši nabídku. Je rozdělený do dvou částí: **Technické** a **zákaznickou podporu**.
 
-![Kartu kontakty](media/contacts-tab.png)
+![Karta Kontakty](media/contacts-tab.png)
 
 
 ## <a name="contacts-fields"></a>Pole kontakty 

@@ -7,17 +7,17 @@ ms.service: mariadb
 ms.topic: conceptual
 ms.date: 09/24/2018
 ms.openlocfilehash: 70cd25ff63101fa2a477cde2502d5d286b289366
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53536570"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61039674"
 ---
 # <a name="how-to-connect-applications-to-azure-database-for-mariadb"></a>Postup připojení aplikací ke službě Azure Database pro MariaDB
 Toto téma uvádí typy řetězce připojení, které jsou podporovány službou Azure Database pro MariaDB, spolu s příklady a šablony. V připojovacím řetězci může mít různé parametry a nastavení.
 
 - Pokud chcete získat certifikát, najdete v článku [konfigurace SSL](./howto-configure-ssl.md).
-- {your_host} =.mariadb.database.azure.com [servername]
+- {your_host} = [servername].mariadb.database.azure.com
 - {your_user}@{servername} správně = formát ID uživatele pro ověřování.  Pokud používáte pouze ID uživatele, ověření se nezdaří.
 
 ## <a name="adonet"></a>ADO.NET

@@ -4,16 +4,16 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 09/13/2018
 ms.author: wolfma
-ms.openlocfilehash: 7a028f65467c517be59be6f0c6d2c45ef9a7685e
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: afe6f1493c7fa8272c67f23d6708ad6e4eea9381
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51285727"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60619680"
 ---
 1. Spusťte Visual Studio 2017.
 
-1. V panelu nabídek v sadě Visual Studio vyberte **nástroje > získat nástroje** a ujistěte se, že **vývoj desktopových aplikací .net** úloh je k dispozici. Pokud zatížení není nainstalována, zaškrtněte políčko a potom klikněte na **změnit** spusťte instalaci. Může trvat pár minut a můžete stáhnout a nainstalovat.
+1. V panelu nabídek v sadě Visual Studio vyberte **nástroje > získat nástroje** a ujistěte se, že **vývoj desktopových aplikací .NET** úloh je k dispozici. Pokud zatížení není nainstalována, zaškrtněte políčko a potom klikněte na **změnit** spusťte instalaci. Může trvat pár minut a můžete stáhnout a nainstalovat.
 
    Pokud zaškrtávací políčko vedle **vývoj desktopových aplikací .NET** je vybrána, teď můžete zavřít dialogové okno.
 

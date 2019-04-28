@@ -13,11 +13,11 @@ ms.reviewer: ''
 manager: craigg
 ms.date: 01/25/2019
 ms.openlocfilehash: 9f61748a489987bf6c3f38e8ebfdab660198e10a
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55463017"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60585414"
 ---
 # <a name="scaling-out-with-azure-sql-database"></a>Horizontální navýšení kapacity s Azure SQL Database
 Můžete snadno škálovat databází Azure SQL Database pomocí **Elastic Database** nástroje. Tyto nástroje a funkce umožňují pracovat s prostředky databáze **Azure SQL Database** k vytváření řešení pro transakční úlohy a zvlášť Software jako služba (SaaS) aplikací. Funkce elastic Database se skládají z:

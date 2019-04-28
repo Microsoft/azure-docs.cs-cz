@@ -1,6 +1,6 @@
 ---
-title: Heslo správce zařízení změnu pole virtuální zařízení StorSimple | Microsoft Docs
-description: Popisuje, jak změnit heslo správce zařízení pomocí portálu Azure nebo pole virtuální zařízení StorSimple webového uživatelského rozhraní.
+title: Změna hesla správce zařízení StorSimple Virtual Array | Dokumentace Microsoftu
+description: Popisuje, jak můžete změnit heslo správce zařízení na portálu Azure nebo StorSimple Virtual Array webového uživatelského rozhraní.
 services: storsimple
 documentationcenter: NA
 author: alkohli
@@ -15,68 +15,68 @@ ms.workload: TBD
 ms.date: 02/27/2017
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 260a23003d705e6598da8c51bb5a96f2539a0014
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 5308badf439254062a8aefca1840eb21bc234ace
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23875568"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60580366"
 ---
-# <a name="change-the-storsimple-virtual-array-device-administrator-password-via-storsimple-device-manager"></a>Změna hesla správce zařízení pole virtuální zařízení StorSimple pomocí Správce zařízení StorSimple
+# <a name="change-the-storsimple-virtual-array-device-administrator-password-via-storsimple-device-manager"></a>Změna hesla správce zařízení StorSimple Virtual Array pomocí Správce zařízení StorSimple
 
 ## <a name="overview"></a>Přehled
 
-Pokud použijete rozhraní Windows PowerShell pro přístup k poli virtuální zařízení StorSimple, musíte k zadání hesla správce zařízení. Když zařízení StorSimple je nejdřív zřízený a spuštěna, je výchozí heslo *Heslo1*. Pro zabezpečení vašich dat výchozí heslo vyprší platnost při prvním přihlášení a je nutné toto heslo změnit.
+Při použití rozhraní Windows PowerShell pro StorSimple Virtual Array přístup, musíte k zadání hesla správce zařízení. Když zařízení StorSimple je nejprve zřízený a spuštěna, je výchozí heslo *Heslo1*. Pro zabezpečení vašich dat vyprší platnost hesla výchozí při prvním přihlášení a je nutné toto heslo změnit.
 
-Změna hesla správce zařízení kdykoli po nasazení zařízení v provozním prostředí můžete také použít místní webového uživatelského rozhraní nebo portálu Azure. Každá z těchto postupů je popsána v tomto článku.
+Chcete-li změnit heslo správce zařízení kdykoli po nasazení zařízení v provozním prostředí můžete také použít místního webového uživatelského rozhraní nebo na webu Azure portal. Každá z těchto postupů je popsána v tomto článku.
 
  ![Okno zařízení](./media/storsimple-virtual-array-change-device-admin-password/ova-devices-blade.png)
 
-## <a name="use-the-azure-portal-to-change-the-password"></a>Použijte portál Azure. Chcete-li změnit heslo
+## <a name="use-the-azure-portal-to-change-the-password"></a>Změna hesla pomocí webu Azure portal
 
-Proveďte následující kroky, chcete-li změnit heslo správce zařízení prostřednictvím portálu Azure.
+Proveďte následující kroky ke změně hesla správce zařízení na webu Azure portal.
 
-#### <a name="to-change-the-device-administrator-password-via-the-azure-portal"></a>Chcete-li změnit heslo správce zařízení prostřednictvím portálu Azure
+#### <a name="to-change-the-device-administrator-password-via-the-azure-portal"></a>Chcete-li změnit heslo správce zařízení prostřednictvím webu Azure portal
 
-1. Na stránce cílové služby, vyberte svoji službu, dvakrát klikněte na název služby a pak v rámci **správy** klikněte na tlačítko **zařízení**. Tím se otevře **zařízení** okno, které obsahuje seznamy všech zařízení StorSimple virtuální pole.
+1. Na úvodní stránce služby vyberte svoji službu, klikněte dvakrát na název služby a pak v rámci **správu** klikněte na tlačítko **zařízení**. Tím se otevře **zařízení** okno, které se zobrazí seznam všech zařízení StorSimple Virtual Array.
 
-2. V **zařízení** okno, dvakrát klikněte na zařízení, která vyžaduje změnu hesla.
+2. V **zařízení** okna, dvakrát klikněte na zařízení, která vyžaduje změnu hesla.
 
-3. V **nastavení** pro zařízení, klikněte na **zabezpečení**.
+3. V **nastavení** okna pro vaše zařízení, klikněte na tlačítko **zabezpečení**.
 
 4. V **nastavení zabezpečení** okno, postupujte takto:
    
-   1. Přejděte dolů k položce **heslo správce zařízení** části. Zadejte heslo správce, který obsahuje 8 až 15 znaků.
-   2. Potvrzení hesla.
-   3. Klikněte na tlačítko **Uložit** v horní části okna.
+   1. Přejděte dolů k položce **heslo správce zařízení** oddílu. Zadejte heslo správce, který obsahuje z 8 až 15 znaků.
+   2. Potvrďte heslo.
+   3. V horní části okna klikněte na **Uložit**.
 
-Heslo správce zařízení se nyní aktualizuje. Toto upravené heslo slouží k přístupu k zařízení místně.
+Heslo správce zařízení je teď aktualizovaný. Můžete použít toto změněné heslo pro přístup k zařízení místně.
 
 ![Okno nastavení zabezpečení](./media/storsimple-virtual-array-change-device-admin-password/ova-change-device-pwd.png)
 
-## <a name="use-the-local-web-ui-to-change-the-password"></a>Chcete-li změnit heslo použít místní webového uživatelského rozhraní
+## <a name="use-the-local-web-ui-to-change-the-password"></a>Pomocí místního webového uživatelského rozhraní můžete změnit heslo
 
-Proveďte následující kroky, chcete-li změnit heslo správce zařízení prostřednictvím místního webového uživatelského rozhraní.
+Proveďte následující kroky ke změně hesla správce zařízení prostřednictvím místního webového uživatelského rozhraní.
 
 #### <a name="to-change-the-device-administrator-password-via-the-local-web-ui"></a>Chcete-li změnit heslo správce zařízení prostřednictvím místního webového uživatelského rozhraní
 
-1. V místní webového uživatelského rozhraní, klikněte na **údržby** > **Změna hesla** pro vaše zařízení.
+1. V místním webovém uživatelském rozhraní, klikněte na tlačítko **údržby** > **změnu hesla** pro vaše zařízení.
    
     ![změnit Heslo1](./media/storsimple-virtual-array-change-device-admin-password/image40.png)
 2. Zadejte **aktuální heslo**.
-3. Zadejte **nové heslo**. Heslo musí být dlouhé alespoň 8 znaků. Musí obsahovat 3 z následujících 4: velká písmena, malá písmena, číselné a speciální znaky.
+3. Zadejte **nové heslo**. Heslo musí být aspoň 8 znaků dlouhá. Musí obsahovat 3 ze 4 z následujících možností: velká písmena, malá písmena, číselné a speciální znaky.
    
     Všimněte si, že vaše heslo nemůže být stejný jako poslední 24 hesla.
-4. Zadejte znovu heslo k potvrzení této akce.
+4. Znovu zadejte heslo, abyste ho potvrdili.
    
     ![změnit Heslo2](./media/storsimple-virtual-array-change-device-admin-password/image41.png)
-5. V dolní části stránky klikněte na tlačítko **použít**. Nové heslo se teď použijí. Pokud změna hesla se nepovedlo úspěšně dokončit, zobrazí se následující chyba:
+5. V dolní části stránky klikněte na tlačítko **použít**. Nové heslo se teď použijí. Změna hesla není úspěšné, zobrazí následující chyba:
    
     ![Chyba hesla](./media/storsimple-virtual-array-change-device-admin-password/image42.png)
    
-    Po úspěšné aktualizaci heslo, budete upozorněni. Pak můžete toto upravené heslo pro přístup k zařízení místně.
+    Po úspěšné aktualizaci hesla, budete upozorněni. Pak můžete toto změněné heslo pro přístup k zařízení místně.
 
 
-## <a name="next-steps"></a>Další kroky
-Zjistěte, jak [spravovat vaše pole virtuální zařízení StorSimple](storsimple-ova-web-ui-admin.md).
+## <a name="next-steps"></a>Další postup
+Zjistěte, jak [spravovat StorSimple Virtual Array](storsimple-ova-web-ui-admin.md).
 

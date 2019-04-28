@@ -13,11 +13,11 @@ ms.topic: conceptual
 ms.date: 03/28/2019
 ms.author: jingwang
 ms.openlocfilehash: ee47f464c59bd9deed98671f19cfcc6d2c3c1b39
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58762476"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60546620"
 ---
 # <a name="copy-data-from-a-rest-endpoint-by-using-azure-data-factory"></a>Kopírování dat z koncového bodu REST s využitím Azure Data Factory
 
@@ -67,8 +67,8 @@ Nastavte **authenticationType** vlastnost **základní**. Kromě generické vlas
 
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
-| uživatelské jméno | Uživatelské jméno pro použití pro přístup ke koncovému bodu REST. | Ano |
-| heslo | Heslo pro uživatele ( **uživatelské jméno** hodnota). Označte toto pole jako **SecureString** typ bezpečně uložit ve službě Data Factory. Můžete také [odkazovat tajného klíče do služby Azure Key Vault](store-credentials-in-key-vault.md). | Ano |
+| userName | Uživatelské jméno pro použití pro přístup ke koncovému bodu REST. | Ano |
+| password | Heslo pro uživatele ( **uživatelské jméno** hodnota). Označte toto pole jako **SecureString** typ bezpečně uložit ve službě Data Factory. Můžete také [odkazovat tajného klíče do služby Azure Key Vault](store-credentials-in-key-vault.md). | Ano |
 
 **Příklad**
 

@@ -15,11 +15,11 @@ ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: pbutlerm
 ms.openlocfilehash: 116eb48330381c7560c55ea9535b3c1b7c6a6a70
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48809314"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61094385"
 ---
 <a name="cloud-partner-portal-api-reference"></a>Reference k portálu rozhraní API cloud Partner
 ==================================
@@ -49,7 +49,7 @@ Tento odkaz obsahuje podrobnosti o rozhraní API k provádění následujících
 
 -   [Načíst všechny nabídky](./cloud-partner-portal-api-retrieve-offers.md)
 -   [Načtení konkrétní nabídky](./cloud-partner-portal-api-retrieve-specific-offer.md)
--   [Načíst stav nabídky](./cloud-partner-portal-api-retrieve-offer-status.md)
+-   [Načtení stavu nabídky](./cloud-partner-portal-api-retrieve-offer-status.md)
 -   [Vytvoření nabídky](./cloud-partner-portal-api-creating-offer.md)
 -   [Publikování nabídky](./cloud-partner-portal-api-publish-offer.md)
 
@@ -60,7 +60,7 @@ Tento odkaz obsahuje podrobnosti o rozhraní API k provádění následujících
 
 ### <a name="publish-an-app"></a>Publikování aplikace
 
--   [Přechod na živý přenos](./cloud-partner-portal-api-go-live.md)
+-   [Zveřejnění](./cloud-partner-portal-api-go-live.md)
 
 ### <a name="other-tasks"></a>Další úlohy
 
@@ -68,4 +68,4 @@ Tento odkaz obsahuje podrobnosti o rozhraní API k provádění následujících
 
 ### <a name="troubleshooting"></a>Řešení potíží
 
--   [Řešení chyb ověřování](./cloud-partner-portal-api-troubleshooting-authentication-errors.md)
+-   [Řešení potíží s chybami ověřování](./cloud-partner-portal-api-troubleshooting-authentication-errors.md)

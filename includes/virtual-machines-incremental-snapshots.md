@@ -9,11 +9,11 @@ ms.date: 09/15/2018
 ms.author: rogarana
 ms.custom: include file
 ms.openlocfilehash: 06e6e491fa1e9a047527efb78149855b125771ef
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49960302"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60543761"
 ---
 # <a name="back-up-azure-unmanaged-vm-disks-with-incremental-snapshots"></a>Zálohování Azure nespravovaných disků virtuálních počítačů s přírůstkovými snímky
 ## <a name="overview"></a>Přehled
@@ -58,7 +58,7 @@ Za předpokladu, že jsou splněny následující podmínky,
 * Objekt blob byl vytvořen v 1. ledna 2016 nebo novějším.
 * Objekt blob se přepíše s [PutPage](https://docs.microsoft.com/rest/api/storageservices/Put-Page) nebo [objekt Blob kopírování](https://docs.microsoft.com/rest/api/storageservices/Copy-Blob) mezi dvěma snímky.
 
-**Poznámka:**: Tato funkce je dostupná pro úrovně Premium a Standard objekty BLOB stránky Azure.
+**Poznámka:** Tato funkce je dostupná pro úrovně Premium a Standard objekty BLOB stránky Azure.
 
 Až budete mít vlastní strategii zálohování pomocí snímků, kopírování snímky z jednoho účtu úložiště do jiného může trvat dlouho a může využívat velké úložiště. Místo kopírování celý snímek do účtu úložiště pro zálohování, můžete napsat rozdíl mezi po sobě jdoucích snímků objektů blob zálohování stránky. Tímto způsobem je podstatně snížit čas kopírování a místa pro ukládání záloh.
 

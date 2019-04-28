@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: reference
 ms.date: 09/14/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 3f0f087c98f2b6594ab7e841f92ffac7ffe4003e
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.openlocfilehash: a7666ada6c4535010297415eac8b0bd9e5226d9e
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48809320"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61094199"
 ---
 <a name="retrieve-operations"></a>Načtení operací
 ===================
@@ -40,15 +40,15 @@ Načte všechny operace týkající se nabídky nebo na konkrétní operace pro 
 
 |  **Název**          |      **Popis**                                                                                           | **Datový typ** |
 |  ----------------  |     --------------------------------------------------------------------------------------------------------   |  -----------  |
-|  publisherId       |  Identifikátor vydavatel, například `Contoso`                                                                   |  Řetězec       |
-|  offerId           |  Identifikátor nabídky                                                                                              |  Řetězec       |
+|  publisherId       |  Identifikátor vydavatel, například `Contoso`                                                                   |  String       |
+|  offerId           |  Identifikátor nabídky                                                                                              |  String       |
 |  operationId       |  Identifikátor GUID, který jednoznačně identifikuje operace týkající se nabídky. OperationId může načíst s použitím tohoto rozhraní API a také dochází v hlavičce HTTP odpovědi pro jakékoli dlouho spuštěné operace, jako [nabídka publikovat](./cloud-partner-portal-api-publish-offer.md) rozhraní API.  |   Guid   |
-|  filteredStatus    | Nepovinný dotaz parametr slouží k filtrování podle stavu (třeba `running`) na kolekci vrácené poskytovatelem tohoto rozhraní API.  |   Řetězec |
+|  filteredStatus    | Nepovinný dotaz parametr slouží k filtrování podle stavu (třeba `running`) na kolekci vrácené poskytovatelem tohoto rozhraní API.  |   String |
 |  verze API-version       | Nejnovější verzi rozhraní API                                                                                           |    Datum      |
 |  |  |  |
 
 
-<a name="header"></a>Záhlaví
+<a name="header"></a>Hlavička
 ------
 
 |  **Název**          |  **Hodnota**           |
@@ -189,14 +189,14 @@ Načte všechny operace týkající se nabídky nebo na konkrétní operace pro 
 |  submissionType              | Určuje typ operace ohlašovaný nabídky, například `Publish/GGoLive`      |
 |  createdDateTime             | Datum a čas UTC při vytvoření operaci                                                       |
 |  lastActionDateTime          | Datum a čas UTC při byla provedena poslední aktualizace na operaci                                       |
-|  status                      | Stav operace, buď "nebylo zahájeno | spuštěno | neúspěšné | dokončení`. Only one operation can have status `systémem "v čase. |
+|  status                      | Stav operace, buď `not started` \| `running` \| `failed` \| `completed`. Pouze jedna operace může mít stav `running` najednou. |
 |  error                       | Chybová zpráva pro neúspěšné operace                                                               |
 |  |  |
 
 
 ### <a name="response-status-codes"></a>Stavové kódy odezvy
 
-| **kód**  |   **Popis**                                                                                  |
+| **Kód**  |   **Popis**                                                                                  |
 |  -------- |   -------------------------------------------------------------------------------------------------|
 |  200      | `OK` -Žádost byla úspěšně zpracována a byly vráceny požadované operace.        |
 |  400      | `Bad/Malformed request` Text – Chyba odpovědi může obsahovat další informace.                    |

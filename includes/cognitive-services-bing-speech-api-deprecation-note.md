@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 10/13/2018
 ms.author: nitinme
 ms.openlocfilehash: eedfd4e3b46a104fdfeed84034536e98b4c6ddaa
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50973738"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60513973"
 ---
 > [!NOTE] 
-> Zpracování řeči Bingu, které budou fungovat už od 15. října 2019 nahrazuje nová Speech Service a sady SDK. Informace o přepínání Speech Service najdete v tématu [migrace z pro zpracování řeči Bingu ve službě řeči](../articles/cognitive-services/Speech-Service/how-to-migrate-from-bing-speech.md).
+> Nová služba Speech a sada Speech SDK nahrazují zpracování řeči Bingu, které od 15. října 2019 přestane fungovat. Informace o přepínání Speech Service najdete v tématu [migrace z pro zpracování řeči Bingu ve službě řeči](../articles/cognitive-services/Speech-Service/how-to-migrate-from-bing-speech.md).

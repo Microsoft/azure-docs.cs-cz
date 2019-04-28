@@ -12,11 +12,11 @@ ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: tomfitz
 ms.openlocfilehash: 6554c05f40f580a6d7ae086e1d09834298f86621
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54108374"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60550763"
 ---
 # <a name="authenticate-requests-across-tenants"></a>Ověřování požadavků mezi tenanty
 
@@ -28,8 +28,8 @@ Požadavek má následující hodnoty hlavičky ověřování:
 
 | Název hlavičky | Popis | Příklad hodnoty |
 | ----------- | ----------- | ------------ |
-| Autorizace | Primární token | Nosiče &lt;primární token&gt; |
-| x-ms autorizace pomocných | Pomocné tokeny | Nosiče &lt;pomocné token1&gt;; EncryptedBearer &lt;pomocné token2&gt;; Nosiče &lt;pomocné token3&gt; |
+| Autorizace | Primární token | Bearer &lt;primary-token&gt; |
+| x-ms-authorization-auxiliary | Pomocné tokeny | Nosiče &lt;pomocné token1&gt;; EncryptedBearer &lt;pomocné token2&gt;; Nosiče &lt;pomocné token3&gt; |
 
 Pomocné záhlaví může obsahovat až tři pomocných tokenů. 
 

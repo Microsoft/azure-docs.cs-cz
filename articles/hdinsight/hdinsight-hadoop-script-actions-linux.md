@@ -1,27 +1,22 @@
 ---
-title: Vývoj skriptových akcí s Linuxovým systémem HDInsight – Azure
-description: Další informace o použití skripty Bash přizpůsobit clustery HDInsight založené na Linuxu. Funkci akce skriptu HDInsight umožňuje spouštět skripty během nebo po vytvoření clusteru. Skripty je možné změnit nastavení konfigurace clusteru nebo instalovat další software.
-services: hdinsight
+title: Vývoj akcí skriptů pro přizpůsobení clusterů Azure HDInsight
+description: Další informace o použití skripty Bash pro přizpůsobení clusterů HDInsight. Akce se skripty umožňují spouštění skriptů během nebo po vytvoření clusteru změnit nastavení konfigurace clusteru nebo instalovat další software.
 author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 02/15/2019
-ms.author: hrasheed
-ms.openlocfilehash: 0d56d901ca932f044ef71ef2bc24933bcf18c24a
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
-ms.translationtype: MT
+ms.date: 04/22/2019
+ms.openlocfilehash: 66132a2a6a7b5b89bca0767efe7c194ca3dec051
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59544581"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60590799"
 ---
 # <a name="script-action-development-with-hdinsight"></a>Vývoj skriptových akcí s HDInsight
 
 Zjistěte, jak přizpůsobit vašeho clusteru HDInsight pomocí skriptů prostředí Bash. Akce skriptů jsou způsob, jak přizpůsobit HDInsight během nebo po vytvoření clusteru.
-
-> [!IMPORTANT]  
-> Kroky v tomto dokumentu vyžadují cluster HDInsight s Linuxem. HDInsight od verze 3.4 výše používá výhradně operační systém Linux. Další informace najdete v tématu [Vyřazení prostředí HDInsight ve Windows](hdinsight-component-versioning.md#hdinsight-windows-retirement).
 
 ## <a name="what-are-script-actions"></a>Co jsou akce skriptu
 
@@ -61,13 +56,28 @@ Když vyvíjíte vlastní skript pro HDInsight cluster, existuje několik osvěd
 
 Různé verze HDInsight mají různé verze služby Hadoop a nainstalované součásti. Pokud váš skript očekává, že konkrétní verzi služby nebo komponenty, byste měli skript používat jenom s verzí služby HDInsight, který obsahuje požadované součásti. Můžete najít informace o verzích komponenty součástí pomocí HDInsight [Správa verzí komponenty HDInsight](hdinsight-component-versioning.md) dokumentu.
 
+### <a name="checking-the-operating-system-version"></a>Kontroluje se verze operačního systému
+
+Spolehněte se na konkrétní verze Ubuntu různých verzích HDInsight. Mohou existovat rozdíly mezi verzemi operačního systému, které musíte hledat ve skriptu. Například budete muset nainstalovat binární soubor, který se váže na verze Ubuntu.
+
+Pokud chcete zkontrolovat verzi operačního systému, použít `lsb_release`. Například následující skript ukazuje, jak odkazovat na konkrétní cíl soubor v závislosti na verzi operačního systému:
+
+```bash
+OS_VERSION=$(lsb_release -sr)
+if [[ $OS_VERSION == 14* ]]; then
+    echo "OS version is $OS_VERSION. Using hue-binaries-14-04."
+    HUE_TARFILE=hue-binaries-14-04.tgz
+elif [[ $OS_VERSION == 16* ]]; then
+    echo "OS version is $OS_VERSION. Using hue-binaries-16-04."
+    HUE_TARFILE=hue-binaries-16-04.tgz
+fi
+```
+
 ### <a name="bps10"></a> Cílení na verzi operačního systému
 
 HDInsight se systémem Linux je založená na Ubuntu Linuxovou distribuci. Spolehněte se na různé verze Ubuntu, které mohou změnit chování vašich skriptů různých verzích HDInsight. Například vycházejí HDInsight 3.4 a starší verze Ubuntu, které používají Upstart. Verze 3.5 a vyšší jsou založené na Ubuntu 16.04, který používá Systemd. Systemd a Upstart využívají různé příkazy, aby váš skript by měly být napsány pro práci s oběma.
 
-Další důležitý rozdíl mezi HDInsight 3.4 a 3.5 je, že `JAVA_HOME` nyní odkazuje na jazyce Java 8.
-
-Verze operačního systému můžete zkontrolovat pomocí `lsb_release`. Následující kód ukazuje, jak určit, zda je skript spuštěn na Ubuntu 14 nebo 16:
+Další důležitý rozdíl mezi HDInsight 3.4 a 3.5 je, že `JAVA_HOME` nyní odkazuje na jazyce Java 8. Následující kód ukazuje, jak určit, zda je skript spuštěn na Ubuntu 14 nebo 16:
 
 ```bash
 OS_VERSION=$(lsb_release -sr)
@@ -136,10 +146,10 @@ Založené na Linuxu clustery HDInsight poskytují dva hlavní uzly, které jsou
 
 Součásti, které instalujete na clusteru může být výchozí konfigurace, který používá Apache Hadoop Distributed File System (HDFS) úložiště. HDInsight používá jako výchozího úložiště Data Lake Storage nebo Azure Storage. Oba poskytují systému HDFS kompatibilní soubor, který bude zachován dat i v případě odstranění clusteru. Budete muset konfigurovat součásti instalujete používat WASB nebo ADL namísto HDFS.
 
-Pro většinu operací není potřeba zadat v systému souborů. Například následující zkopíruje giraph-examples.jar soubor z místního systému souborů do úložiště clusteru:
+Pro většinu operací není potřeba zadat v systému souborů. Například následující zkopíruje soubor hadoop common.jar z místního systému souborů do úložiště clusteru:
 
 ```bash
-hdfs dfs -put /usr/hdp/current/giraph/giraph-examples.jar /example/jars/
+hdfs dfs -put /usr/hdp/current/hadoop-client/hadoop-common.jar /example/jars/
 ```
 
 V tomto příkladu `hdfs` příkaz transparentně používá výchozí úložiště clusteru. Pro některé operace budete možná muset zadat identifikátor URI. Například `adl:///example/jars` pro Azure Data Lake Storage Gen1 `abfs:///example/jars` pro Data Lake Storage Gen2 nebo `wasb:///example/jars` pro službu Azure Storage.
@@ -289,23 +299,6 @@ Ukládání souborů do účtu Azure Storage nebo Azure Data Lake Storage poskyt
 
 > [!NOTE]  
 > Formát identifikátoru URI slouží jako odkaz na skript se liší v závislosti na používaných služeb. Pro účty úložiště přidružené ke clusteru HDInsight, použijte `wasb://` nebo `wasbs://`. Veřejně čitelné identifikátory URI, použijte `http://` nebo `https://`. Pro Data Lake Storage, použijte `adl://`.
-
-### <a name="checking-the-operating-system-version"></a>Kontroluje se verze operačního systému
-
-Spolehněte se na konkrétní verze Ubuntu různých verzích HDInsight. Mohou existovat rozdíly mezi verzemi operačního systému, které musíte hledat ve skriptu. Například budete muset nainstalovat binární soubor, který se váže na verze Ubuntu.
-
-Pokud chcete zkontrolovat verzi operačního systému, použít `lsb_release`. Například následující skript ukazuje, jak odkazovat na konkrétní cíl soubor v závislosti na verzi operačního systému:
-
-```bash
-OS_VERSION=$(lsb_release -sr)
-if [[ $OS_VERSION == 14* ]]; then
-    echo "OS version is $OS_VERSION. Using hue-binaries-14-04."
-    HUE_TARFILE=hue-binaries-14-04.tgz
-elif [[ $OS_VERSION == 16* ]]; then
-    echo "OS version is $OS_VERSION. Using hue-binaries-16-04."
-    HUE_TARFILE=hue-binaries-16-04.tgz
-fi
-```
 
 ## <a name="deployScript"></a>Kontrolní seznam pro nasazení skriptových akcí
 

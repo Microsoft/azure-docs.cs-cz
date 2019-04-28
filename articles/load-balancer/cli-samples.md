@@ -14,11 +14,11 @@ ms.workload: infrastructure
 ms.date: 06/14/2018
 ms.author: kumud
 ms.openlocfilehash: b66a61be8995806db60effcaf6c1c92ce6359164
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53084732"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60544983"
 ---
 # <a name="azure-cli-samples-for-load-balancer"></a>Ukázky Azure CLI pro nástroj pro vyrovnávání zatížení
 

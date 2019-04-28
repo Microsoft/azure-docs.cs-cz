@@ -9,11 +9,11 @@ ms.date: 11/06/2018
 ms.author: tomfitz
 ms.custom: include file
 ms.openlocfilehash: 85a1579e32b4c216f234f77c76316bedeaea77b0
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51285811"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60561742"
 ---
 Tato funkce je ve verzi Preview. Jeho použití, je nutné nainstalovat rozšíření ve verzi preview nebo modulu.
 
@@ -49,8 +49,8 @@ Pro místní instalaci:
 
 Pokud `-AllowPrerelease` parametru není k dispozici, použijte následující postup:
 
-1. Spustit `Install-Module PowerShellGet -Force`
-1. Spustit `Update-Module PowerShellGet`
+1. Spusťte `Install-Module PowerShellGet -Force`.
+1. Spusťte `Update-Module PowerShellGet`.
 1. Zavřete konzolu Powershellu
 1. Znovu spusťte PowerShell jako správce
 1. Instalace modulu `Install-Module -Name AzureRM.EventGrid -AllowPrerelease -Force -Repository PSGallery`

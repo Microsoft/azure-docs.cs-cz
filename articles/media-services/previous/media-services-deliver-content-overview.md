@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.openlocfilehash: 5db2cb983c0c3cd0e2194f7686964d9ec3828d6f
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59526601"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61232265"
 ---
 # <a name="deliver-content-to-customers"></a>Doručování obsahu zákazníkům
 Při dodáváte streamování nebo vod (Video-on-demand) obsah pro zákazníky, je vaším cílem poskytování vysoce kvalitního videa pro různá zařízení v různých síťových podmínkách.

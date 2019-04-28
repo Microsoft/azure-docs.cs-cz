@@ -15,11 +15,11 @@ ms.workload: NA
 ms.date: 11/02/2017
 ms.author: vturecek
 ms.openlocfilehash: 529c8d74b6e0a63a7969f31d5b5e8073ecb79411
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58665742"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60543219"
 ---
 # <a name="service-fabric-testability-scenarios-service-communication"></a>Service Fabric scénářů testovatelnosti: Komunikace služeb
 Mikroslužby a styly architektury orientované na služby plochy přirozeně v Azure Service Fabric. V těchto typech distribuované architektury se skládají z více služeb, které potřebují komunikovat mezi sebou obvykle komponentní vyladěných aplikací mikroslužeb. V případech i nejjednodušší obecně byste mít alespoň bezstavovou webovou službu a službu úložiště stavová data, která potřebují komunikovat.

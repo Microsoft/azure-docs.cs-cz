@@ -8,11 +8,11 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 04/08/2019
 ms.openlocfilehash: ac1a0e4eadc0b84fdd2a170c2e0f6e0a2f2af3a4
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: MT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59361779"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60921947"
 ---
 # <a name="compare-storage-options-for-use-with-azure-hdinsight-clusters"></a>Porovnání možností úložiště pro použití s clustery Azure HDInsight
 
@@ -29,9 +29,9 @@ V následující tabulce najdete souhrn služby Azure Storage, které jsou podpo
 | Služba úložiště | Typ účtu | Typ Namespace | Podporované služby | Úrovně výkonu podporované | Podporované přístupu | Verze služby HDInsight | Typ clusteru |
 |---|---|---|---|---|---|---|---|
 |Azure Data Lake Storage Gen2| Pro obecné účely V2 | Hierarchické (systém souborů) | Objekt blob | Standard | Horká, studená, archivní | 3.6 + | Vše |
-|Azure Storage| Pro obecné účely V2 | Objekt | Objekt blob | Standard | Horká, studená, archivní | 3.6 + | Vše |
-|Azure Storage| Pro obecné účely V1 | Objekt | Objekt blob | Standard | neuvedeno | Vše | Vše |
-|Azure Storage| Blob Storage | Objekt | Objekt blob | Standard | Horká, studená, archivní | Vše | Vše |
+|Azure Storage| Pro obecné účely V2 | Object | Objekt blob | Standard | Horká, studená, archivní | 3.6 + | Vše |
+|Azure Storage| Pro obecné účely V1 | Object | Objekt blob | Standard | neuvedeno | Vše | Vše |
+|Azure Storage| Blob Storage | Object | Objekt blob | Standard | Horká, studená, archivní | Vše | Vše |
 |Azure Data Lake Storage Gen1| neuvedeno | Hierarchické (systém souborů) | neuvedeno | neuvedeno | neuvedeno | Pouze 3.6 | Všechny s výjimkou HBase |
 
 Další informace o úrovních přístupu služby Azure Storage, najdete v části [úložiště objektů Blob v Azure: Premium (preview), vrstvy úložiště Hot, Cool a archiv](../storage/blobs/storage-blob-storage-tiers.md)

@@ -15,11 +15,11 @@ ms.workload: infrastructure-services
 ms.date: 10/31/2018
 ms.author: genli
 ms.openlocfilehash: b83a6e2c81eac9993c481561e3cebbed681d2c4a
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58096040"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60640323"
 ---
 # <a name="how-to-set-a-static-internal-private-ip-address-using-powershell-classic"></a>Postup nastavení statické interní privátní IP adresy pomocí prostředí PowerShell (Classic)
 Ve většině případů nebudete muset zadat statické interní IP adresu pro váš virtuální počítač. Virtuální počítače ve virtuální síti automaticky přijme vnitřní IP adresu z rozsahu, který zadáte. Ale v některých případech, určení statickou IP adresu pro konkrétní virtuální počítač má smysl. Pokud například váš virtuální počítač je teď spustíme DNS nebo bude řadič domény. Statické interní IP adresa zůstane s virtuálním Počítačem, klidně i prostřednictvím stavu zastavení nebo zrušení zřízení. 

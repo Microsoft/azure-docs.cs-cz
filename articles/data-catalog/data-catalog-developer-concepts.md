@@ -9,11 +9,11 @@ ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 01/18/2018
 ms.openlocfilehash: 42e4b545a48bcbd0ad4b7faf077ebdbfe21648b1
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60006688"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61002665"
 ---
 # <a name="azure-data-catalog-developer-concepts"></a>Koncepce pro vývojáře Azure Data Catalog
 Microsoft **Azure Data Catalog** je plně spravovaná Cloudová služba, která poskytuje možnosti pro zjišťování zdrojů dat a crowdsourcingová metadata zdroje dat. Vývojáři můžou využívat službu přes jeho rozhraní REST API. Vysvětlení pojmů implementované ve službě je důležité pro vývojáře úspěšně integrovat **Azure Data Catalog**.

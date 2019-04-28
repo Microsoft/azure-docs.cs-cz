@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 05/01/2018
 ms.author: magattus
 ms.openlocfilehash: 9793348b47763e6de10992b9a8a4606fc532cc4d
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49094016"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60636731"
 ---
 # <a name="large-file-download-optimization-with-azure-cdn"></a>Optimalizace velkých souborů ke stažení s Azure CDN
 
@@ -110,8 +110,8 @@ Optimalizace velkých souborů používá různé výchozí dobu ukládání do 
 
 |    | Obecné web | Optimalizace velkých souborů 
 --- | --- | --- 
-Ukládání do mezipaměti: pozitivní <br> HTTP 200, 203, 300, <br> 301, 302 a 410 | 7 dní |1 den  
-Ukládání do mezipaměti: záporná <br> HTTP 204, 305, 404, <br> a 405 | Žádný | 1 sekunda 
+Caching: Pozitivní <br> HTTP 200, 203, 300, <br> 301, 302 a 410 | 7 dní |1 den  
+Caching: Negativní <br> HTTP 204, 305, 404, <br> a 405 | Žádný | 1 sekunda 
 
 ### <a name="deal-with-origin-failure"></a>Řešení selhání původu
 
@@ -125,7 +125,7 @@ V následující tabulce jsou uvedeny sadu kritérií, které je třeba splnit p
 
 Podmínka | Hodnoty 
 --- | --- 
-Podporované typy souborů | 3g, 2, 3gp, amp, avi, bz2, dmg, exe, f4v, flv, <br> GZ, hdp, iso, jxr, m4v, mkv, mov, mp4, <br> MPEG, mpg, mts, balíčku, qt, rm, swf tar, <br> TGZ, wdp, webm, webp, wma, wmv, zip  
+Podporované typy souborů | 3g2, 3gp, asf, avi, bz2, dmg, exe, f4v, flv, <br> gz, hdp, iso, jxr, m4v, mkv, mov, mp4, <br> mpeg, mpg, mts, pkg, qt, rm, swf, tar, <br> TGZ, wdp, webm, webp, wma, wmv, zip  
 Minimální velikost souboru | 10 MB 
 Maximální velikost souboru | 150 GB 
 Vlastnosti serveru původu | Musí podporovat požadavky na zjištění rozsahu bajtů 

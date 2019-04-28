@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
 ms.openlocfilehash: ed57d72d32ba82a37036c9af77590bd4e93db8d9
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57904248"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60610519"
 ---
 # <a name="introduction-to-azure-security"></a>Úvod do zabezpečení Azure
 ## <a name="overview"></a>Přehled
@@ -149,7 +149,7 @@ V konzoli Application Diagnostics lze zobrazit události seskupené následujíc
 -   Chyby aplikace (zobrazí výjimka události)
 -   Výkon (zobrazí se události související s výkonem)
 
-## <a name="storage"></a>Storage
+## <a name="storage"></a>Úložiště
 V části poskytuje další informace o klíčových funkcí v Azure storage zabezpečení a souhrnné informace o těchto funkcích.
 
 ### <a name="role-based-access-control-rbac"></a>Řízení přístupu na základě role (RBAC)

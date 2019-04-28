@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 06/28/2018
 ms.author: terrylan
 ms.openlocfilehash: b390dc9bd2b690837a85a5bab361a534b9c9d5a5
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56118135"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60587196"
 ---
 # <a name="azure-information-system-components-and-boundaries"></a>Součásti systému Azure informace a hranice
 Tento článek obsahuje obecný popis Azure architekturu a správu. Prostředí systému Azure se skládá z následující sítě:
@@ -84,7 +84,7 @@ Týmy služeb jsou:
 - ISSD: Zabezpečení
 - Multi-factor Authentication
 - SQL Database
-- Storage
+- Úložiště
 
 ## <a name="types-of-users"></a>Typy uživatelů
 Zaměstnanci (nebo dodavatele) společnosti Microsoft jsou považovány za interní uživatele. Všichni ostatní uživatelé jsou považovány za externí uživatele. Všichni Azure interní uživatelé mají stav jejich zaměstnance zařazený do kategorie s úrovní citlivosti, který definuje přístup k zákaznickým datům (přístup nebo žádný přístup). Oprávnění uživatele pro Azure (povolení oprávnění po provedení ověřování) jsou popsány v následující tabulce:

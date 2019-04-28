@@ -9,11 +9,11 @@ ms.topic: article
 ms.date: 07/03/2018
 ms.author: meladie
 ms.openlocfilehash: 6a2ffef9a1384ac2e2a678404171f33312b5d63a
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57247439"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60609537"
 ---
 # <a name="azure-security-and-compliance-blueprint-analytics-for-pci-dss"></a>Zabezpečení Azure a dodržování předpisů: Analýza pro PCI DSS
 

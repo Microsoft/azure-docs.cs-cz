@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 06/13/2018
 ms.author: ellacroi
 ms.openlocfilehash: 2755232ea81f1551477431f4eb1f0aeab8b8bfe8
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56734033"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60726638"
 ---
 # <a name="determine-your-publishing-option"></a>Určení publikování možnost
 Přímo na požadavky zakládající nárok i na webu marketplace výhody GTM souvisí možnost publikování, který jste vybrali pro vaši nabídku. Důležitější je výběr publikování možnost a typ nabídky na portál Cloud Partner definuje interakci uživatele v rámci vaší nabídky na webu marketplace.

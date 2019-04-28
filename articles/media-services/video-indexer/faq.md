@@ -10,11 +10,11 @@ ms.topic: article
 ms.date: 02/10/2019
 ms.author: juliako
 ms.openlocfilehash: e85beea4250b5ac5f4defd0b918786079d3dbe3e
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57892655"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60553687"
 ---
 # <a name="frequently-asked-questions"></a>Nejčastější dotazy
 
@@ -160,7 +160,7 @@ Video Indexer využívá jednoduchou s průběžnými platbami cenový model zal
 
 ### <a name="when-am-i-billed-for-using-video-indexer"></a>Když se mi bude účtovat pro použití nástroje Video Indexer?
 
-Při odesílání video indexovaných, uživatel bude definovat indexování na analýzu videa, analýzu zvuku nebo obojí. Bude to určit, která bude účtovat skladové jednotky. Pokud během zpracování je kritická chyba na úrovni, vrátí se chybový kód jako odpověď. V takovém případě se vyvolá bez fakturace.  Kritickou chybu může způsobovat chyba v našem kódu nebo má kritickou chybu v vnitřní závislosti služby. Chyby jako např. nesprávný extrakce identifikace nebo vhled, se nepovažují za kritické a vracení odpovědi. V každém případě pokud se vrátí odpověď platný (kód bez chyb), dojde k fakturaci.
+Při odesílání videa k indexování bude uživatel definovat, jestli se použije analýza videa, analýza zvuku, nebo oboje. Tím se určí, které jednotky SKU se budou účtovat. Pokud během zpracování dojde k chybě kritické úrovně, jako odpověď se vrátí chybový kód. V takovém případě se nic neúčtuje.  Kritická chyba může být způsobená chybou v našem kódu nebo kritickým selháním v interní závislosti této služby. Chyby typu chybné identifikace nebo extrakce přehledů se nepovažují za kritické a bude vrácena odpověď. Účtovat se bude ve všech případech, kdy je vrácena platná odpověď (jiný než chybový kód).
  
 ### <a name="does-video-indexer-offer-a-free-trial"></a>Nabízí funkce Video Indexer bezplatnou zkušební verzi?
 

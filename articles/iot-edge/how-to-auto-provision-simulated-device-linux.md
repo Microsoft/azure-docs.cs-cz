@@ -3,18 +3,19 @@ title: Automatické zřizování zařízení Linux s DPS - Azure IoT Edge | Doku
 description: Použít čip TPM simulované na virtuální počítač s Linuxem k otestování služby Azure Device Provisioning Service pro Azure IoT Edge
 author: kgremban
 manager: philmea
-ms.author: kgremban
-ms.date: 03/01/2019
+ms.author: v-yiso
+origin.date: 03/01/2019
+ms.date: 03/25/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
 ms.openlocfilehash: 9a549221a9e1864e1b7565f35139cb4c2a6ca65e
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58093122"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61248109"
 ---
 # <a name="create-and-provision-an-iot-edge-device-with-a-virtual-tpm-on-a-linux-virtual-machine"></a>Vytvoření a zřízení zařízení IoT Edge s virtuální čip TPM na virtuální počítač s Linuxem
 

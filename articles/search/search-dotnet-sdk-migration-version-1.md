@@ -11,11 +11,11 @@ ms.date: 01/15/2018
 ms.author: brjohnst
 ms.custom: seodec2018
 ms.openlocfilehash: 82823bae76521080634d4f7ff285d94ce8495fbf
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53317283"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61292796"
 ---
 # <a name="upgrading-to-the-azure-search-net-sdk-version-11"></a>Upgrade na Azure Search .NET SDK verze 1.1
 

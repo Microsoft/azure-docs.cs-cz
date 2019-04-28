@@ -12,14 +12,15 @@ ms.workload: tbd
 ms.tgt_pltfrm: cache
 ms.devlang: na
 ms.topic: article
-ms.date: 07/31/2017
-ms.author: yegu
+origin.date: 07/31/2017
+ms.date: 02/27/2019
+ms.author: v-junlch
 ms.openlocfilehash: dfa8b47ced70386efa1daa44af318f1da55f49e1
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56235729"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60542178"
 ---
 # <a name="import-and-export-data-in-azure-cache-for-redis"></a>Importovat a exportovat data v mezipaměti Azure Redis
 Import/Export je Azure Cache pro operace správy dat Redis, který umožňuje importovat data do mezipaměti Azure Redis a export dat z mezipaměti Azure Redis import a export pro snímek Redis databáze (RDB) z mezipaměti úrovně premium pro Azure Cache objektů BLOB v účtu služby Azure Storage. 
@@ -99,16 +100,16 @@ Export umožňuje exportovat data uložená v mezipaměti Azure pro Redis k Redi
 ## <a name="importexport-faq"></a>Nejčastější dotazy týkající se importu/exportu
 Tento oddíl obsahuje nejčastější dotazy týkající se funkce importu a exportu.
 
-* [Jaké cenové úrovně můžete použít Import/Export?](#what-pricing-tiers-can-use-importexport)
-* [Můžete importovat data z jakéhokoli serveru Redis](#can-i-import-data-from-any-redis-server)
-* [Jaké verze RDB můžete importovat?](#what-rdb-versions-can-i-import)
-* [Je k dispozici mezipaměť během operace importu/exportu?](#is-my-cache-available-during-an-importexport-operation)
-* [Můžete použít Import/Export s clusterem Redis](#can-i-use-importexport-with-redis-cluster)
-* [Jak funguje Import/Export s vlastní databáze nastavení?](#how-does-importexport-work-with-a-custom-databases-setting)
-* [Čím se liší od trvalosti Redis Import/Export](#how-is-importexport-different-from-redis-persistence)
-* [Můžete automatizovat pomocí Powershellu, CLI nebo jiných klientů pro správu importu/exportu?](#can-i-automate-importexport-using-powershell-cli-or-other-management-clients)
-* [Vypršení časového limitu zobrazila se mi během Moje operace importu/exportu. Co znamená?](#i-received-a-timeout-error-during-my-importexport-operation-what-does-it-mean)
-* [Zobrazila se chyba při exportu dat do úložiště objektů Blob v Azure. Co se přihodilo?](#i-got-an-error-when-exporting-my-data-to-azure-blob-storage-what-happened)
+- [Jaké cenové úrovně můžete použít Import/Export?](#what-pricing-tiers-can-use-importexport)
+- [Můžete importovat data z jakéhokoli serveru Redis](#can-i-import-data-from-any-redis-server)
+- [Jaké verze RDB můžete importovat?](#what-rdb-versions-can-i-import)
+- [Je k dispozici mezipaměť během operace importu/exportu?](#is-my-cache-available-during-an-importexport-operation)
+- [Můžete použít Import/Export s clusterem Redis](#can-i-use-importexport-with-redis-cluster)
+- [Jak funguje Import/Export s vlastní databáze nastavení?](#how-does-importexport-work-with-a-custom-databases-setting)
+- [Čím se liší od trvalosti Redis Import/Export](#how-is-importexport-different-from-redis-persistence)
+- [Můžete automatizovat pomocí Powershellu, CLI nebo jiných klientů pro správu importu/exportu?](#can-i-automate-importexport-using-powershell-cli-or-other-management-clients)
+- [Vypršení časového limitu zobrazila se mi během Moje operace importu/exportu. Co znamená?](#i-received-a-timeout-error-during-my-importexport-operation-what-does-it-mean)
+- [Zobrazila se chyba při exportu dat do úložiště objektů Blob v Azure. Co se přihodilo?](#i-got-an-error-when-exporting-my-data-to-azure-blob-storage-what-happened)
 
 ### <a name="what-pricing-tiers-can-use-importexport"></a>Jaké cenové úrovně můžete použít Import/Export?
 Import/Export je k dispozici pouze v cenové úrovně premium.
@@ -126,8 +127,8 @@ Ano, kromě importovat data exportovaná z mezipaměti Azure pro instance Redis,
 Mezipaměť Azure pro Redis import RDB do podporuje až prostřednictvím RDB verze 7.
 
 ### <a name="is-my-cache-available-during-an-importexport-operation"></a>Je k dispozici mezipaměť během operace importu/exportu?
-* **Export** – mezipamětí nadále k dispozici a můžete nadále používat mezipaměť během operace exportu.
-* **Importovat** – mezipaměti k dispozici, když se spustí operace importu a budou k dispozici pro použití po dokončení operace importu.
+- **Export** – mezipamětí nadále k dispozici a můžete nadále používat mezipaměť během operace exportu.
+- **Importovat** – mezipaměti k dispozici, když se spustí operace importu a budou k dispozici pro použití po dokončení operace importu.
 
 ### <a name="can-i-use-importexport-with-redis-cluster"></a>Můžete použít Import/Export s clusterem Redis
 Ano, a je můžete import/export mezi Clusterové mezipaměti a neclusterovaných mezipaměť. Od Redis cluster [jen podporuje databáze 0](cache-how-to-premium-clustering.md#do-i-need-to-make-any-changes-to-my-client-application-to-use-clustering), není-li importovat všechna data v databázích než 0. Když se importují data v clusteru mezipaměti, jsou klíče rozloží mezi horizontální oddíly clusteru.
@@ -135,10 +136,10 @@ Ano, a je můžete import/export mezi Clusterové mezipaměti a neclusterovanýc
 ### <a name="how-does-importexport-work-with-a-custom-databases-setting"></a>Jak funguje Import/Export s vlastní databáze nastavení?
 Některé cenové úrovně mají odlišné [databáze omezení](cache-configure.md#databases), takže existují některé aspekty při importu, pokud jste nakonfigurovali vlastní hodnotu `databases` nastavení během vytváření mezipaměti.
 
-* Při importu na cenovou úroveň s nižší `databases` limit než na úrovni, ze kterého jste exportovali:
-  * Pokud používáte výchozí počet `databases`, což je 16 pro všechny cenové úrovně, se neztratila žádná data.
-  * Pokud použijete vlastní číslo `databases` této spadá do omezení pro vrstvu, na který importujete, se neztratila žádná data.
-  * Exportovaná data obsažená data v databázi, která překračuje omezení na nové úrovni, není k importu dat z těchto vyšší databází.
+- Při importu na cenovou úroveň s nižší `databases` limit než na úrovni, ze kterého jste exportovali:
+  - Pokud používáte výchozí počet `databases`, což je 16 pro všechny cenové úrovně, se neztratila žádná data.
+  - Pokud použijete vlastní číslo `databases` této spadá do omezení pro vrstvu, na který importujete, se neztratila žádná data.
+  - Exportovaná data obsažená data v databázi, která překračuje omezení na nové úrovni, není k importu dat z těchto vyšší databází.
 
 ### <a name="how-is-importexport-different-from-redis-persistence"></a>Čím se liší od trvalosti Redis Import/Export
 Mezipaměť Azure pro trvalost Redis umožňuje trvalé uchování dat uložených v Redis do služby Azure Storage. Trvalost je nakonfigurovaný, mezipaměti Azure Redis nevyřeší snímku ukládání do mezipaměti Azure pro Redis v binárním formátu Redis na disk na základě konfigurovatelných četnosti zálohování. Případě katastrofické události, která zakáže primárním i replikovaném mezipaměti, data v mezipaměti obnoví automaticky pomocí nejnovější snímek. Další informace najdete v tématu [konfigurace trvalosti dat pro Azure Cache úrovně Premium pro Redis](cache-how-to-premium-persistence.md).
@@ -161,7 +162,7 @@ Export funguje jenom s RDB soubory uložené jako objekty BLOB stránky. Jiné t
 ## <a name="next-steps"></a>Další postup
 Další informace o použití další prémiových funkcí mezipaměti.
 
-* [Úvod do mezipaměti Azure Redis na úrovni Premium](cache-premium-tier-intro.md)    
+- [Úvod do mezipaměti Azure Redis na úrovni Premium](cache-premium-tier-intro.md)    
 
 <!-- IMAGES -->
 [cache-settings-import-export-menu]: ./media/cache-how-to-import-export-data/cache-settings-import-export-menu.png
@@ -176,3 +177,6 @@ Další informace o použití další prémiových funkcí mezipaměti.
 [cache-import-choose-blobs]: ./media/cache-how-to-import-export-data/cache-import-choose-blobs.png
 [cache-import-blobs]: ./media/cache-how-to-import-export-data/cache-import-blobs.png
 [cache-import-data-import-complete]: ./media/cache-how-to-import-export-data/cache-import-data-import-complete.png
+
+
+<!-- Update_Description: update metedata properties -->

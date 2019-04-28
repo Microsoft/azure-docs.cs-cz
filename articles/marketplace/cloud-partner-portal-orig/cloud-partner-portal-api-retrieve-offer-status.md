@@ -15,13 +15,13 @@ ms.topic: reference
 ms.date: 09/13/2018
 ms.author: pbutlerm
 ms.openlocfilehash: 9233a5919ad86adcbb7947cd095945654ed015a7
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48809499"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61093977"
 ---
-<a name="retrieve-offer-status"></a>Načíst stav nabídky 
+<a name="retrieve-offer-status"></a>Načtení stavu nabídky 
 =====================
 
 Načte aktuální stav nabídky.
@@ -33,13 +33,13 @@ Načte aktuální stav nabídky.
 
 |  **Název**       |   **Popis**                            |  **Datový typ** |
 |  -------------  |  ------------------------------------------  |  ------------  |
-|  publisherId    | Identifikátor vydavatel, například `Contoso`  |     Řetězec     |
-|  offerId        | Identifikátor GUID, který jednoznačně identifikuje nabídky      |     Řetězec     |
+|  publisherId    | Identifikátor vydavatel, například `Contoso`  |     String     |
+|  offerId        | Identifikátor GUID, který jednoznačně identifikuje nabídky      |     String     |
 |  verze API-version    | Nejnovější verzi rozhraní API                        |     Datum       |
 |  |  |
 
 
-<a name="header"></a>Záhlaví
+<a name="header"></a>Hlavička
 ------
 
 |  Název           |  Hodnota               |
@@ -149,7 +149,7 @@ Načte aktuální stav nabídky.
 
 ### <a name="response-status-codes"></a>Stavové kódy odezvy
 
-| **kód** |   **Popis**                                                                                 |
+| **Kód** |   **Popis**                                                                                 |
 | -------  |   ----------------------------------------------------------------------------------------------- |
 |  200     |  `OK` -Žádost byla úspěšně zpracována a aktuální stav nabídka byla vrácena. |
 |  400     | `Bad/Malformed request` Text – Chyba odpovědi může obsahovat další informace.                 |
@@ -176,7 +176,7 @@ Načte aktuální stav nabídky.
 |  **Název**                    |    **Popis**                           |
 |  -------------------------   |  ------------------------------------------  |
 |  NotStarted                  | Krok nebyl spuštěn.                        |
-|  Probíhá zpracování.                  | Krok běží.                             |
+|  Probíhá                  | Krok běží.                             |
 |  WaitingForPublisherReview   | Krok je čekání na schválení vydavatele.      |
 |  WaitingForApproval          | Krok je čekání na schválení procesu.        |
 |  Blokováno                     | Krok blokovaný.                             |

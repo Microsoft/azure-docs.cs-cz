@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.date: 1/7/2019
 ms.author: dkshir
 ms.openlocfilehash: 9cfcdc879e36b93e21bff6f91886536d799553bb
-ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54200951"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60924490"
 ---
 # <a name="how-to-use-azure-digital-twins-management-apis"></a>Jak používat rozhraní API pro správu Azure digitální dvojče
 

@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 06/28/2018
 ms.author: terrylan
 ms.openlocfilehash: afae7cc6390ea4cd8c18c687e9d99400c8da9da4
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56116928"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60611346"
 ---
 # <a name="the-azure-production-network"></a>Produkční sítě Azure
 Uživatelé produkční sítě Azure zahrnují i externím zákazníkům, kteří přistupují k vlastní aplikace na platformě Azure a pracovníci podpory Azure, kteří spravují produkční sítě. Tento článek popisuje metody zabezpečení přístupu a ochrany mechanismy pro navázání připojení k Azure produkční sítě.

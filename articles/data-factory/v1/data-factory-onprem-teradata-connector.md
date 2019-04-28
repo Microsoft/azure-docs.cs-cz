@@ -14,11 +14,11 @@ ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: d22318f4d9e233a57d521fe36f0827b9fc3af3e0
-ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55746332"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60610743"
 ---
 # <a name="move-data-from-teradata-using-azure-data-factory"></a>Přesun dat z Teradata pomocí Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -68,7 +68,7 @@ Následující tabulka obsahuje popis JSON elementy, které jsou specifické pro
 | server |Název serveru Teradata. |Ano |
 | authenticationType. |Typ ověřování používaný pro připojení k databázi Teradata. Možné hodnoty: Anonymní, základní a Windows. |Ano |
 | uživatelské jméno |Zadejte uživatelské jméno, pokud se používá ověřování Basic nebo Windows. |Ne |
-| heslo |Zadejte heslo pro uživatelský účet, který jste zadali pro uživatelské jméno. |Ne |
+| password |Zadejte heslo pro uživatelský účet, který jste zadali pro uživatelské jméno. |Ne |
 | gatewayName |Název brány, který služba Data Factory měla použít pro připojení k místní databázi Teradata. |Ano |
 
 ## <a name="dataset-properties"></a>Vlastnosti datové sady
@@ -285,7 +285,7 @@ Při přesunu dat pro Teradata, se používají následující mapování z typu
 
 | Typ databáze Teradata | Typ rozhraní .NET framework |
 | --- | --- |
-| Char |String |
+| char |String |
 | Clob |String |
 | Obrázek |String |
 | VarChar |String |
@@ -303,8 +303,8 @@ Při přesunu dat pro Teradata, se používají následující mapování z typu
 | Datum |DateTime |
 | Čas |TimeSpan |
 | Čas s časovým pásmem |String |
-| Časové razítko |DateTime |
-| Časové razítko s časovým pásmem |DateTimeOffset |
+| Timestamp |DateTime |
+| Časové razítko s časovým pásmem |Datetimeoffset |
 | Interval den |TimeSpan |
 | Interval den na hodinu |TimeSpan |
 | Den intervalu minuty. |TimeSpan |
@@ -323,7 +323,7 @@ Při přesunu dat pro Teradata, se používají následující mapování z typu
 | Období (čas s časovým pásmem) |String |
 | Period(Timestamp) |String |
 | Období (časové razítko s časovým pásmem) |String |
-| XML |String |
+| Xml |String |
 
 ## <a name="map-source-to-sink-columns"></a>Mapování zdroje do jímky sloupce
 Další informace o mapování sloupců v datové sadě zdroje do sloupců v datové sadě jímky, najdete v článku [mapování sloupců v datové sadě ve službě Azure Data Factory](data-factory-map-columns.md).

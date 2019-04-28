@@ -15,11 +15,11 @@ ms.date: 02/24/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.openlocfilehash: bb23cbc275e01eab5361504c547c020b0a29f4c3
-ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/25/2019
-ms.locfileid: "56805286"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60533034"
 ---
 # <a name="manage-access-to-azure-resources-using-rbac-and-the-azure-portal"></a>Správa přístupu k prostředkům Azure pomocí RBAC a webu Azure portal
 
@@ -208,4 +208,4 @@ V RBAC se přístup odebírá odebrání přiřazení role. Postupujte podle tě
 * [Kurz: Udělení přístupu uživatelů k prostředkům Azure pomocí RBAC a webu Azure portal](quickstart-assign-role-user-portal.md)
 * [Kurz: Udělení přístupu uživatelů k prostředkům Azure pomocí RBAC a Azure Powershellu](tutorial-role-assignments-user-powershell.md)
 * [Řešení potíží s RBAC pro prostředky Azure](troubleshooting.md)
-* [Uspořádání prostředků se skupinami pro správu Azure](../governance/management-groups/index.md)
+* [Uspořádání prostředků s využitím skupin pro správu Azure](../governance/management-groups/index.md)

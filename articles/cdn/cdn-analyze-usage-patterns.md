@@ -1,6 +1,6 @@
 ---
 title: Základní sestavy od Verizonu | Dokumentace Microsoftu
-description: 'Můžete zobrazit vzorce používání vaší sítě CDN pomocí následující sestavy: šířky pásma, přenesená Data, přístupy, stavy mezipaměti, poměr přístupů do mezipaměti, přenesená Data IPV4/IPV6.'
+description: 'Vzorce používání vaší sítě CDN můžete zobrazit pomocí následující sestavy: Přenesená Data šířky pásma, přístupy, stavy mezipaměti, poměr, přenesená Data IPV4/IPV6 přístupů do mezipaměti.'
 services: cdn
 documentationcenter: ''
 author: zhangmanling
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: mazha
-ms.openlocfilehash: d10a40d03f0f76676e70afdec94e9adfaa0dd09f
-ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
+ms.openlocfilehash: 6eb0fe592196466f7f49c21ce38afdf13b254d86
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44162066"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61061480"
 ---
 # <a name="core-reports-from-verizon"></a>Základní sestavy od Verizonu
 
@@ -86,17 +86,17 @@ Chcete-li snížit přístupů k mezipaměti vypršela platnost, nastavte prost�
 ![Sestava stavy mezipaměti](./media/cdn-reports/cdn-cache-statuses.png)
 
 ### <a name="main-cache-statuses-include"></a>Hlavní mezipaměti stavy patří:
-* TCP_HIT: Obsluhovat z hraničního serveru. Objekt byl v mezipaměti a nebyla překročena jeho max-age.
+* TCP_HIT: Obsluhují z hraničního serveru. Objekt byl v mezipaměti a nebyla překročena jeho max-age.
 * TCP_MISS: Obsluhují ze zdrojového serveru. Objekt nebyl v mezipaměti a odpověď byla zpět na původní název.
-* TCP_EXPIRED _MISS: obsluhují ze zdrojového serveru po opětovné ověření s původu. Objekt byl v mezipaměti, ale překročil svůj max-age. Opětovné ověření s původem výsledkem objektu mezipaměti teď nahrazuje nová odpověď z původu.
-* TCP_EXPIRED _HIT: obsluhovat z hraničních po opětovné ověření s původu. Objekt byl v mezipaměti, ale překročil svůj max-age. Opětovné ověření je zdrojový server je v objektu mezipaměti je bez jakýchkoli úprav.
+* TCP_EXPIRED _MISS: Po opětovné ověření s původem obsluhují ze zdrojového serveru. Objekt byl v mezipaměti, ale překročil svůj max-age. Opětovné ověření s původem výsledkem objektu mezipaměti teď nahrazuje nová odpověď z původu.
+* TCP_EXPIRED _HIT: Po opětovné ověření s původem obsluhovat z Edge. Objekt byl v mezipaměti, ale překročil svůj max-age. Opětovné ověření je zdrojový server je v objektu mezipaměti je bez jakýchkoli úprav.
 
 ### <a name="full-list-of-cache-statuses"></a>Úplný seznam stavy mezipaměti
 * TCP_HIT – tento stav se zobrazí, když požadavek pochází přímo z POP klientovi. Prostředek okamžitě pochází z místní nabídky se uloží do mezipaměti na co nejblíže ke klientovi POP a má platný time to live (TTL). Hodnota TTL je určeno následující hlavičky odpovědi:
   
   * Cache-Control: s-maxage
   * Cache-Control: max-age
-  * Platnost vyprší
+  * Platí do
 * TCP_MISS: Tento stav indikuje, že verzi v mezipaměti požadovaný prostředek nebyl nalezen na nejbližší klientovi POP. Prostředek je požadováno ze zdrojového serveru nebo serveru shield původu. Pokud zdrojový server nebo server původu shield vrátí prostředek, je dodávat do klienta a ukládat do mezipaměti na klientovi a serveru edge. Jinak než 200 stavový kód (například 403 Zakázáno nebo 404 Nenalezeno) se vrátí.
 * TCP_EXPIRED_HIT: Tento stav je uveden při zpracování žádosti, která cílí na prostředek s vypršenou platností TTL přímo v lokalitě POP do klienta. Například když majetek společnosti max-age vypršela platnost. 
   
@@ -105,7 +105,7 @@ Chcete-li snížit přístupů k mezipaměti vypršela platnost, nastavte prost�
 * CONFIG_NOCACHE: Tento stav indikuje, že konfigurace specifické pro zákazníka na hraničních zařízeních POP zabránila asset ukládat do mezipaměti.
 * NONE – tento stav indikuje, že se neprovedla Kontrola aktuálnosti obsahu mezipaměti.
 * TCP_CLIENT_REFRESH_MISS: Tento stav je uveden při klientovi HTTP, jako je například prohlížeč, vynutí okraj POP k načtení nové verze zastaralé asset ze zdrojového serveru. Ve výchozím nastavení servery zabránit v klientovi HTTP vynucení hraniční servery, které chcete načíst ze zdrojového serveru na novou verzi prostředku.
-* TCP_PARTIAL_HIT: Tento stav je hlášené, když požadavek rozsahu bajtů výsledkem přístupů pro prostředek částečně uložené v mezipaměti. Požadovaný rozsah bajtů je okamžitě obsluhovat z POP do klienta.
+* TCP_PARTIAL_HIT: Tento stav je oznamují se žádost o rozsah bajtů výsledkem přístupů pro prostředek částečně uložené v mezipaměti. Požadovaný rozsah bajtů je okamžitě obsluhovat z POP do klienta.
 * UNCACHEABLE: Tento stav je uveden při prostředků `Cache-Control` a `Expires` záhlaví znamenat, že by neměl být uložené v mezipaměti, na místní nabídky nebo pomocí klienta HTTP. Tyto druhy požadavky se obsluhují ze zdrojového serveru.
 
 ## <a name="cache-hit-ratio"></a>Poměr přístupů do mezipaměti
@@ -123,7 +123,7 @@ Sestava neobsahuje:
 * Požadavky na prostředky, jejichž záhlaví znamenat, že by neměl být mezipaměti. Například `Cache-Control: private`, `Cache-Control: no-cache`, nebo `Pragma: no-cache` záhlaví zakázat prostředek ukládat do mezipaměti.
 * Požadavky na zjištění rozsahu bajtů pro částečně uložené v mezipaměti obsahu.
 
-Vzorec je: (stiskněte TCP_ / (TCP_ PŘÍSTUPŮ + TCP_MISS)) * 100
+Vzorec je: (TCP_ HIT/(TCP_ HIT+TCP_MISS))*100
 
 ![Sestava poměr přístupů do mezipaměti](./media/cdn-reports/cdn-cache-hit-ratio.png)
 

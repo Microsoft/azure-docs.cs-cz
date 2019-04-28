@@ -9,11 +9,11 @@ ms.date: 04/11/2019
 ms.author: owend
 ms.reviewer: minewiskan
 ms.openlocfilehash: 0ffbffc788baaffd4a0532c3918ed82cc3eaf5c3
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59527808"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61023541"
 ---
 # <a name="analysis-services-resource-and-object-limits"></a>Omezení prostředků a objektu služby analýzy
 
@@ -58,7 +58,7 @@ Tato úroveň je pro důležité produkční aplikace, které vyžadují elastic
 
 Tato omezení jsou teoretické. Výkon se snížila na nižší čísla.
 
-|Objekt|Maximální velikosti/čísla|  
+|Object|Maximální velikosti/čísla|  
 |------------|----------------------------|  
 |Databáze v instanci|16,000|  
 |Souhrnný počet tabulky a sloupce v databázi|16,000|  

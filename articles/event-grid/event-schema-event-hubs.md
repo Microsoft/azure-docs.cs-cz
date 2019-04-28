@@ -8,11 +8,11 @@ ms.topic: reference
 ms.date: 01/17/2019
 ms.author: spelluru
 ms.openlocfilehash: 9c0113687d27bf43375f298057129a5594ec0a06
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54475403"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60561824"
 ---
 # <a name="azure-event-grid-event-schema-for-event-hubs"></a>Schéma událostí Azure Event Grid pro službu event hubs
 
@@ -59,28 +59,28 @@ Událost má následující dat nejvyšší úrovně:
 
 | Vlastnost | Typ | Popis |
 | -------- | ---- | ----------- |
-| téma | řetězec | Úplné prostředků cesta ke zdroji události. Toto pole není zapisovatelná. Event gridu poskytuje tuto hodnotu. |
-| předmět | řetězec | Vydavatel definované cesta předmět události. |
-| eventType | řetězec | Jeden z typů registrované události pro tento zdroj událostí. |
-| čas události | řetězec | Vygenerování události podle času UTC poskytovatele. |
-| id | řetězec | Jedinečný identifikátor pro událost. |
+| téma | string | Úplné prostředků cesta ke zdroji události. Toto pole není zapisovatelná. Event gridu poskytuje tuto hodnotu. |
+| předmět | string | Vydavatel definované cesta předmět události. |
+| eventType | string | Jeden z typů registrované události pro tento zdroj událostí. |
+| čas události | string | Vygenerování události podle času UTC poskytovatele. |
+| id | string | Jedinečný identifikátor pro událost. |
 | data | objekt | Data události centra událostí. |
-| dataVersion | řetězec | Verze schématu datového objektu Vydavatel Určuje verzi schématu. |
-| metadataVersion | řetězec | Verze schématu metadat události Event Grid definuje schéma vlastnosti nejvyšší úrovně. Event gridu poskytuje tuto hodnotu. |
+| dataVersion | string | Verze schématu datového objektu Vydavatel Určuje verzi schématu. |
+| metadataVersion | string | Verze schématu metadat události Event Grid definuje schéma vlastnosti nejvyšší úrovně. Event gridu poskytuje tuto hodnotu. |
 
 Datový objekt má následující vlastnosti:
 
 | Vlastnost | Typ | Popis |
 | -------- | ---- | ----------- |
-| fileUrl | řetězec | Cesta k zachytávací soubor. |
-| fileType | řetězec | Typ souboru zachytávací soubor. |
-| ID oddílu | řetězec | ID horizontálního oddílu. |
+| fileUrl | string | Cesta k zachytávací soubor. |
+| fileType | string | Typ souboru zachytávací soubor. |
+| ID oddílu | string | ID horizontálního oddílu. |
 | sizeInBytes | integer | Velikost souboru. |
 | eventCount | integer | Počet událostí v souboru. |
 | firstSequenceNumber | integer | Nejmenší pořadové číslo z fronty. |
 | lastSequenceNumber | integer | Poslední pořadové číslo z fronty. |
-| firstEnqueueTime | řetězec | Při prvním z fronty. |
-| lastEnqueueTime | řetězec | Čas posledního z fronty. |
+| firstEnqueueTime | string | Při prvním z fronty. |
+| lastEnqueueTime | string | Čas posledního z fronty. |
 
 ## <a name="next-steps"></a>Další postup
 

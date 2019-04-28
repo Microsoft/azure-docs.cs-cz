@@ -15,11 +15,11 @@ ms.topic: reference
 ms.date: 09/13/2018
 ms.author: pbutlerm
 ms.openlocfilehash: cb1293a771a137f4df7e36a2b412f68b384f16ef
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48809557"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61094340"
 ---
 <a name="publish-an-offer"></a>Publikování nabídky
 ================
@@ -33,13 +33,13 @@ Spustí proces publikování pro zadaný nabídku. Toto volání je dlouho běž
 
 |  **Název**      |    **Popis**                               |  **Datový typ** |
 |  ------------- |  ------------------------------------            |   -----------  |
-|  publisherId   | Identifikátor vydavatel, například `contoso`      |   Řetězec       |
-|  offerId       | Identifikátor nabídky                                 |   Řetězec       |
+|  publisherId   | Identifikátor vydavatel, například `contoso`      |   String       |
+|  offerId       | Identifikátor nabídky                                 |   String       |
 |  verze API-version   | Nejnovější verzi rozhraní API                        |   Datum         |
 |  |  |
 
 
-<a name="header"></a>Záhlaví
+<a name="header"></a>Hlavička
 ------
 
 |  **Název**        |    **Hodnota**          |
@@ -86,7 +86,7 @@ Spustí proces publikování pro zadaný nabídku. Toto volání je dlouho běž
 
 ### <a name="response-status-codes"></a>Stavové kódy odezvy
 
-| **kód** |  **Popis**                                                                                                                           |
+| **Kód** |  **Popis**                                                                                                                           |
 | ------   |  ----------------------------------------------------------------------------------------------------------------------------------------- |
 | 202   | `Accepted` -Požadavek byl úspěšně přijat. Odpověď obsahuje umístění, které je možné sledovat operace, která se spustí. |
 | 400   | `Bad/Malformed request` Text odpovědi – chyba mohou poskytnout další informace.                                                               |

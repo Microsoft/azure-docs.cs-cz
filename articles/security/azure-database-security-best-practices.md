@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 09/20/2018
 ms.author: tomsh
 ms.openlocfilehash: 3e244f89904ce9aca161ed1ea435f4137e42bc5d
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56117965"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60587512"
 ---
 # <a name="azure-database-security-best-practices"></a>Osvědčené postupy zabezpečení Azure database
 Zabezpečení je velmi důležité pro správu databází a byl vždy prioritu [Azure SQL Database](https://docs.microsoft.com/azure/sql-database/). Vaše databáze je možné úzce svázat s pomáhají splňovat nejvíce zákonné nebo požadavky na zabezpečení, včetně HIPAA, ISO 27001/27002 a PCI DSS úrovně 1. Aktuální seznam certifikací dodržování předpisů zabezpečení je k dispozici na [webu Microsoft Trust Center](https://azure.microsoft.com/support/trust-center/services/). Můžete také umístit své databáze v určité síti datových center Azure na základě zákonných požadavků.

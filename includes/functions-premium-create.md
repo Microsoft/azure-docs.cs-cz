@@ -9,11 +9,11 @@ ms.date: 04/01/2019
 ms.author: jehollan
 ms.custom: include file
 ms.openlocfilehash: f01ad6e1e6444a417300b38009ac9fbbe5cdbc88
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60012553"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61031157"
 ---
 1. Přejděte na web Azure Portal.
 2. Přidat nový prostředek tak, že vyberete **vytvořit prostředek** tlačítko na webu Azure Portal.

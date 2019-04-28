@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 01/14/2019
 ms.author: terrylan
 ms.openlocfilehash: 76f5627a28c2c0ab326197893a9b9739628af0fb
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56108071"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60597841"
 ---
 # <a name="application-architecture-on-azure"></a>Aplikační architektura v Azure
 Pomáhají zabezpečit vaše Cloudová řešení v Microsoft Azure, základnu architektury je důležité. Architekty, návrháři a implementátoři výhodou silného znalosti architektury aplikací a služeb. Tyto základní znalosti vám pomůže seznámení s komponentami vaší cloudové řešení a bylo snazší integrovat do všech aspektů návrhu a implementaci zabezpečení.

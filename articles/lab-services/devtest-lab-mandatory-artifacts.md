@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 07/23/2018
 ms.author: spelluru
 ms.openlocfilehash: 090236ec3647c7c3e38eb862780a615f854e952b
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59795402"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60562142"
 ---
 # <a name="specify-mandatory-artifacts-for-your-lab-in-azure-devtest-labs"></a>Zadejte povinné artefakty testovacího prostředí ve službě Azure DevTest Labs
 Jako vlastník testovacího prostředí můžete zadat povinné artefakty, které se použijí na každém počítači v labu vytvoří. Představte si situaci, kde má každý počítač ve vaší laboratoři k připojení k vaší podnikové síti. Jednotliví uživatelé testovacího prostředí by v takovém případě muset přidat artefakt připojení k doméně při vytváření virtuálního počítače, abyste měli jistotu, že jejich počítač připojený k podnikové doméně. Jinými slovy uživatelé testovacího prostředí v podstatě musel znovu vytvořit počítač v případě, že zapomenete platí povinné artefakty na svém počítači. Jako vlastník testovacího prostředí provedete artefaktů připojení k doméně jako povinné artefaktů ve vaší laboratoři. Tento krok zajistí, že každý počítač připojený k podnikové síti a ukládá čas a úsilí pro uživatelům testovacího prostředí.

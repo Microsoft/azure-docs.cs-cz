@@ -8,11 +8,11 @@ ms.author: babanisa
 ms.topic: conceptual
 ms.date: 01/17/2019
 ms.openlocfilehash: c49044d8bd96efb7e86cf54509c32033900be305
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58180904"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60561743"
 ---
 # <a name="manage-topics-and-publish-events-using-event-domains"></a>Správa témat a publikovat události pomocí událostí domény
 
@@ -106,7 +106,7 @@ New-AzureRmRoleAssignment `
 
 Další informace o správě přístupu pro operace služby Event Grid najdete v tématu [ověřování a zabezpečení služby Event Grid](./security-authentication.md).
 
-## <a name="create-topics-and-subscriptions"></a>Vytvoření témata a odběry
+## <a name="create-topics-and-subscriptions"></a>Vytvoření témat a odběrů
 
 Služba Event Grid automaticky vytváří a spravuje odpovídajícím tématu v doméně podle volání za účelem vytvoření odběru událostí pro téma domény. Neexistuje žádný samostatný krok pro vytvoření tématu v doméně. Podobně když se odstraní poslední událost odběru tématu, téma je rovněž odstraněna.
 

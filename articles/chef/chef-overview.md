@@ -9,11 +9,11 @@ ms.author: tarcher
 ms.date: 05/15/2018
 ms.topic: article
 ms.openlocfilehash: 5c4e20177c1b334a34f7ce9328dfaa7bd8c66d3d
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57545731"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60656570"
 ---
 # <a name="using-chef-with-azure"></a>Azure pomocí Chefu
 [Chef](https://www.chef.io) je výkonným Automatizačním platforma, která transformuje infrastruktury virtuálních počítačů v Azure do kódu. Chef automatizuje, jak je infrastruktura nakonfigurované, nasazují a spravují v síti, bez ohledu na velikost.

@@ -11,16 +11,16 @@ ms.date: 04/17/2018
 ms.author: kevin
 ms.reviewer: igorstan
 ms.openlocfilehash: daf013472e5fa533912920e4c14a552905b5d333
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55241514"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60935683"
 ---
 # <a name="restore-an-azure-sql-data-warehouse-with-rest-apis"></a>Obnovení služby Azure SQL Data Warehouse pomocí rozhraní REST API
 Obnovení Azure SQL Data Warehouse pomocí rozhraní REST API.
 
-## <a name="before-you-begin"></a>Před zahájením
+## <a name="before-you-begin"></a>Než začnete
 **Ověřte kapacitu jednotek DTU.** Každý datový sklad SQL je hostitelem logického SQL serveru (např. myserver.database.windows.net), který má výchozí [kvóty DTU](../sql-database/sql-database-what-is-a-dtu.md).  Předtím, než bude možné obnovit SQL Data Warehouse, ověřte, že serveru SQL server má dostatek zbývající kvóta DTU databáze obnovena. Chcete-li požádat o další DTU, můžete [vytvořit lístek podpory](sql-data-warehouse-get-started-create-support-ticket.md).
 
 ## <a name="restore-an-active-or-paused-data-warehouse"></a>Obnovit aktivní nebo pozastaveného datového skladu

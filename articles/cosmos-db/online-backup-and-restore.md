@@ -8,11 +8,11 @@ ms.date: 11/15/2018
 ms.author: govindk
 ms.reviewer: sngun
 ms.openlocfilehash: 6ed968b1613a96a2f4ab449c7b52488e066a38ab
-ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56991814"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60930234"
 ---
 # <a name="online-backup-and-on-demand-data-restore-in-azure-cosmos-db"></a>Zálohování online a na vyžádání dat obnovení ve službě Azure Cosmos DB
 

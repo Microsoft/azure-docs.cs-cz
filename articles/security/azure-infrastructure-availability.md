@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 07/06/2018
 ms.author: terrylan
 ms.openlocfilehash: a9a55f61f032512be032897d5f21ece405844634
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56105871"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60587185"
 ---
 # <a name="azure-infrastructure-availability"></a>Dostupnost infrastruktury Azure
 Azure poskytuje robustní dostupnosti podle rozsáhlé redundance dosáhnout pomocí technologie virtualizace. Azure poskytuje mnoho úrovně redundance pro zajištění maximální dostupnosti dat zákazníků.

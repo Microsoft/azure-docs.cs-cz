@@ -15,11 +15,11 @@ ms.topic: conceptual
 ms.date: 10/19/2018
 ms.author: pbutlerm
 ms.openlocfilehash: 9cf363bc5f4230306c2fec99eb6287b23e598a4c
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57833497"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60744342"
 ---
 # <a name="configure-the-azure-hosted-vm"></a>Konfigurace virtuálních počítačů hostovaných v Azure
 
@@ -77,7 +77,7 @@ Další informace o spuštění příkazu sysprep najdete v tématu [postup gene
 
 ### <a name="linux"></a>Linux
 
-Následující dvoustupňový proces generalizace virtuálního počítače s Linuxem a znovu ji nasadíte jako samostatný virtuální počítač.  Další informace najdete v tématu [jak vytvořit image virtuálního počítače nebo virtuální pevný disk](../../../virtual-machines/linux/capture-image.md). 
+Následující dvoustupňový proces generalizace virtuálního počítače s Linuxem a znovu ji nasadíte jako samostatný virtuální počítač.  Další informace najdete v tématu [Vytvoření image virtuálního počítače nebo virtuálního pevného disku](../../../virtual-machines/linux/capture-image.md). 
 
 #### <a name="remove-the-azure-linux-agent"></a>Odebrat agenta Azure Linux
 1.  Připojte se k virtuálním počítačům s Linuxem pomocí klienta SSH.

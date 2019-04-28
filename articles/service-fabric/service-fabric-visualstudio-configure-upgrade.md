@@ -15,11 +15,11 @@ ms.workload: multiple
 ms.date: 06/29/2017
 ms.author: mikkelhegn
 ms.openlocfilehash: 79120371ca2a62e5ef9f2bf38476635db12e9fcc
-ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/10/2018
-ms.locfileid: "42058640"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61082833"
 ---
 # <a name="configure-the-upgrade-of-a-service-fabric-application-in-visual-studio"></a>Konfigurace upgradu aplikace Service Fabric v sadě Visual Studio
 Visual Studio tools pro Azure Service Fabric poskytuje podporu upgradu pro publikování do místního nebo vzdáleného clusteru. Existují tři scénáře, ve kterých chcete provést upgrade na novější verzi místo abyste jím nahrazovali aplikace v průběhu testování a ladění aplikace:
@@ -31,7 +31,7 @@ Visual Studio tools pro Azure Service Fabric poskytuje podporu upgradu pro publi
 ## <a name="parameters-needed-to-upgrade"></a>Parametry potřebné k upgradu
 Můžete vybrat ze dvou typů nasazení: normální nebo upgradu. Pravidelné nasazení vymaže všechny předchozí informace o nasazení a data v clusteru během nasazení upgradu zachová jej. Při upgradu aplikace Service Fabric v sadě Visual Studio, je třeba zadat, že parametry upgradu aplikace a stavu se podívejte na zásady. Parametry upgradu aplikace pomáhají řídit upgradu, zatímco zásady kontroly stavu určit, zda upgrade proběhl úspěšně. Zobrazit [upgrade aplikace Service Fabric: parametry upgradu](service-fabric-application-upgrade-parameters.md) další podrobnosti.
 
-Existují tři režimy upgradu: *monitorované*, *UnmonitoredAuto*, a *UnmonitoredManual*.
+Existují tři režimy upgradu: *Monitorované*, *UnmonitoredAuto*, a *UnmonitoredManual*.
 
 * Upgrade monitorované automatizuje inovace a kontrola stavu aplikace.
 * UnmonitoredAuto upgrade automatizuje upgrade, ale přeskočí kontrolu stavu aplikací.

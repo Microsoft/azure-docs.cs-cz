@@ -8,11 +8,11 @@ ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 01/18/2018
 ms.openlocfilehash: b01c328812113ad721b7632978ad28e54a6a3ef1
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "59996471"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61000099"
 ---
 # <a name="how-to-view-related-data-assets-in-azure-data-catalog"></a>Postup zobrazení souvisejících datových prostředků ve službě Azure Data Catalog?
 Azure Data Catalog vám umožní zobrazit datové prostředky související s vybraný datový asset a zobrazení vztahů mezi nimi. 

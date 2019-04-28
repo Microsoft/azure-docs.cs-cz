@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
 ms.openlocfilehash: 63715f668438519131eba5bfff7aa38fc73267d0
-ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58294480"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61094647"
 ---
 # <a name="retry-logic-in-the-media-services-sdk-for-net"></a>Logika opakování v sadě Media Services SDK pro .NET  
 
@@ -37,7 +37,7 @@ Při práci se službami Microsoft Azure, přechodné chyby můžou nastat. Poku
 ## <a name="exception-types"></a>Typy výjimek
 Následující tabulka popisuje výjimky, které Media Services SDK pro .NET, zpracovává nebo nezpracovává pro některé operace, které by mohly způsobit přechodné chyby.  
 
-| Výjimka | Webový požadavek | Storage | Dotaz | SaveChanges |
+| Výjimka | Webový požadavek | Úložiště | Dotaz | SaveChanges |
 | --- | --- | --- | --- | --- |
 | WebException<br/>Další informace najdete v tématu [o výjimku WebException stavové kódy](media-services-retry-logic-in-dotnet-sdk.md#WebExceptionStatus) oddílu. |Ano |Ano |Ano |Ano |
 | DataServiceClientException<br/> Další informace najdete v tématu [stavové kódy HTTP Chyba](media-services-retry-logic-in-dotnet-sdk.md#HTTPStatusCode). |Ne |Ano |Ano |Ano |
@@ -52,7 +52,7 @@ Následující tabulka popisuje výjimky, které Media Services SDK pro .NET, zp
 ### <a name="WebExceptionStatus"></a> O výjimku WebException stavové kódy
 V následující tabulce jsou uvedeny pro kódy chyb o výjimku WebException logika opakovaných pokusů implementovaná. [WebExceptionStatus](https://msdn.microsoft.com/library/system.net.webexceptionstatus.aspx) výčet definuje kódy stavu.  
 
-| Status | Webový požadavek | Storage | Dotaz | SaveChanges |
+| Status | Webový požadavek | Úložiště | Dotaz | SaveChanges |
 | --- | --- | --- | --- | --- |
 | ConnectFailure |Ano |Ano |Ano |Ano |
 | NameResolutionFailure |Ano |Ano |Ano |Ano |
@@ -70,7 +70,7 @@ V následující tabulce jsou uvedeny pro kódy chyb o výjimku WebException log
 ### <a name="HTTPStatusCode"></a> Stavové kódy chyb HTTP
 Když operace dotazů a SaveChanges throw DataServiceClientException, DataServiceQueryException nebo DataServiceQueryException, se ve vlastnosti StatusCode vrátí stavový kód chyby protokolu HTTP.  V následující tabulce jsou uvedeny pro kódy chyb se implementuje logika opakovaných pokusů.  
 
-| Status | Webový požadavek | Storage | Dotaz | SaveChanges |
+| Status | Webový požadavek | Úložiště | Dotaz | SaveChanges |
 | --- | --- | --- | --- | --- |
 | 401 |Ne |Ano |Ne |Ne |
 | 403 |Ne |Ano<br/>Zpracování opakovaných pokusů s delší dobu čekání. |Ne |Ne |

@@ -5,21 +5,23 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 04/11/2019
+ms.date: 04/22/2019
 ms.topic: conceptual
 ms.service: cost-management
 manager: micflan
 ms.custom: ''
-ms.openlocfilehash: 5c8f70ff76da458fcc1433226a51012fb7ccd18e
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
-ms.translationtype: MT
+ms.openlocfilehash: 81947baccf723ab759f2dc24df40b81af4502e09
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59544632"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61003985"
 ---
 # <a name="understand-cost-management-data"></a>Vysvětlení dat služby Cost Management
 
 Tento článek pomůže lépe pochopit, jaká data budou zahrnuta ve službě Azure Cost Management. A vysvětluje, jak často zpracování dat jsou shromažďovány, zobrazené a uzavřené. Bude se vám účtovat využití Azure každý měsíc. Typ vašeho předplatného Azure určuje po fakturačního měsíce ukončení. Jak často Cost Management přijímá využití dat se liší na základě různých faktorů. Tyto faktory zahrnují jak dlouho trvá zpracování dat a jak často služeb Azure generování informací o využití a fakturace systému.
+
+Služba Cost Management obsahuje veškeré použití a nákup, včetně rezervace a nabídky třetí strany pro účty Enterprise Agreement (EA). Smlouvy zákazníka Microsoftu (MCA) účtů a předplatných s průběžnými platbami zahrnout pouze pro použití služby Azure a Web Marketplace. Podpora a další náklady nejsou zahrnuty. Náklady se odhadují, dokud se vygeneruje faktury a není zvážit kredity.
 
 ## <a name="supported-microsoft-offers"></a>Podporované nabídky Microsoftu
 
@@ -86,6 +88,7 @@ Následující tabulky popisují data, která je součástí nebo není ve služ
 |   | Kredity – Další informace najdete v tématu [fakturovat podmínky je vysvětleno](../billing/billing-understand-your-invoice.md). |
 
 <sup>1</sup> využití služeb azure je založen na rezervaci a Vyjednaný ceny.
+
 <sup>2</sup> využití nabídky marketplace není k dispozici pro plán průběžných plateb, MSDN a Visual Studio nabízí v současnosti.
 
 **Metadata**

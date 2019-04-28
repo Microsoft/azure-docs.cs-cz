@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 10/12/2018
 ms.author: jonbeck
-ms.openlocfilehash: 70dca655d5300fcd34b4198093e136f6a971963b
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
-ms.translationtype: MT
+ms.openlocfilehash: 44b965bd60d976d4d28dc5e31d78a1c838d4ee02
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49344485"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60542254"
 ---
 # <a name="high-performance-compute-virtual-machine-sizes"></a>Vysokovýkonné výpočetní velikosti virtuálních počítačů
 
@@ -33,8 +33,10 @@ ms.locfileid: "49344485"
 
 ### <a name="mpi"></a>MPI 
 
-Podporovány jsou pouze verze 5.x Intel MPI. Novější verze (2017, 2018) Intel MPI knihovny modulu runtime nejsou kompatibilní s ovladači Azure Linux RDMA.
+Podporovány jsou pouze verze 5.x Intel MPI.
 
+> [!NOTE]
+> Novější verze (2017, 2018) Intel MPI Runtime knihovny může nebo nemusí být kompatibilní s ovladači Azure Linux RDMA.
 
 ### <a name="distributions"></a>Distribuce
  

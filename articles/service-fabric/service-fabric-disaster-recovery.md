@@ -15,11 +15,11 @@ ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
 ms.openlocfilehash: 7153a6ed4a91e59eea936f1e17d827a40bb99371
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58883237"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60948508"
 ---
 # <a name="disaster-recovery-in-azure-service-fabric"></a>Zotavení po havárii v Azure Service Fabric
 Důležitou součástí zajištění vysoké dostupnosti zajišťuje, že služby přežijí všechny různé druhy chyb. To je obzvláště důležité pro chyby, které neplánované a mimo vaši kontrolu. Tento článek popisuje některé běžné režimy selhání, které může být jiného problému ovlivňujícího není-li modelovat a spravovány správně. Je také zaměří na omezení rizik a akcí Pokud přesto došlo k havárii. Cílem je omezit nebo eliminovat riziko výpadkům nebo ztrátě, které se objeví chyby, plánované nebo jinak, mohlo dojít.

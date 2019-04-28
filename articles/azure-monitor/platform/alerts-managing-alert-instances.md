@@ -9,11 +9,11 @@ ms.date: 09/24/2018
 ms.author: anantr
 ms.subservice: alerts
 ms.openlocfilehash: cb93f38c05156d7ab5acb89ffff810949583e507
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58089399"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60551810"
 ---
 # <a name="manage-alert-instances"></a>Správa instancí upozornění
 S [sjednocené prostředí upozornění](https://aka.ms/azure-alerts-overview) ve službě Azure Monitor, nyní je vidět všechny různé typy výstrah v Azure, zahrnující více předplatných, v jednom jeden podokně ze skla. Tento článek vás provede s vaší výstrah instance, jak můžete zobrazit a tom, jak podrobně nyní popíšeme portál k vyhledání konkrétních instancí upozornění pro řešení potíží.

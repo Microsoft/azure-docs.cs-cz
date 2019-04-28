@@ -9,11 +9,11 @@ ms.topic: article
 ms.date: 02/13/2018
 ms.author: lahugh
 ms.openlocfilehash: a6c2c343b13b77048c772cb1e5c2ba06cf8add50
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55457611"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60616853"
 ---
 # <a name="configure-or-disable-remote-access-to-compute-nodes-in-an-azure-batch-pool"></a>Nastavit či vypnout vzdálený přístup k výpočetní uzlům ve fondu služby Azure Batch
 

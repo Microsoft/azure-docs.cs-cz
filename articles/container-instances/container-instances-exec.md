@@ -8,11 +8,11 @@ ms.topic: article
 ms.date: 03/30/2018
 ms.author: danlep
 ms.openlocfilehash: 577e2386c352798bc21a2c78b22726128ac7cf0a
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48854080"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60579742"
 ---
 # <a name="execute-a-command-in-a-running-azure-container-instance"></a>Provedení příkazu do funkční Azure container instance
 

@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 04/07/2019
 ms.author: rkarlin
 ms.openlocfilehash: bd6fe027da8c16157c7fce6c348e49c0a6b73ea3
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59791162"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60596619"
 ---
 # <a name="connect-data-from-azure-security-center"></a>Připojení dat ze služby Azure Security Center
 

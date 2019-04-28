@@ -1,6 +1,6 @@
 ---
-title: Protokolování lístek podpory událostí zabezpečení – Azure | Microsoft Docs
-description: Jako prodejce na webu Azure Marketplace s identifikovat potenciální událostí zabezpečení potřebuji vědět, jak se přihlásit na příslušné lístek.
+title: Jak odesláním lístku podpory zabezpečení události – Azure | Dokumentace Microsoftu
+description: Jako prodejce na Azure Marketplace, mají identifikovat potenciální událostí zabezpečení je třeba vědět jak odpovídající lístku.
 services: security
 documentationcenter: na
 author: DavidBosland
@@ -14,39 +14,39 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/13/2017
 ms.author: v-dabosl
-ms.openlocfilehash: 753d6abcdd063d5c092b0c90770396d176bc52e8
-ms.sourcegitcommit: b854df4fc66c73ba1dd141740a2b348de3e1e028
+ms.openlocfilehash: 243b6b7846719d3f848073e3aa973c9406ca59c7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2017
-ms.locfileid: "26129936"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60586560"
 ---
-# <a name="how-to-log-a-security-event-support-ticket"></a>Postup protokolu lístek podpory událostí zabezpečení
+# <a name="how-to-log-a-security-event-support-ticket"></a>Jak lístku podpory události zabezpečení
 
-1. Přejděte na [technickou podporu vydavatele](https://support.microsoft.com/en-us/getsupport?wf=0&tenant=ClassicCommercial&oaspworkflow=start_1.0.0.0&locale=en-us&supportregion=en-us&pesid=16230&ccsid=636450758943226673) a přihlaste se pomocí přihlašovacích údajů společnosti Microsoft.
-2. Vyberte jako typ problému "Událostí zabezpečení" a zvolte mezi kategorie "Incidentu zabezpečení" a "Chyba zabezpečení".
+1. Přejděte do [technickou podporu vydavatele](https://support.microsoft.com/en-us/getsupport?wf=0&tenant=ClassicCommercial&oaspworkflow=start_1.0.0.0&locale=en-us&supportregion=en-us&pesid=16230&ccsid=636450758943226673) a přihlaste se pomocí přihlašovacích údajů společnosti Microsoft.
+2. Jako typ problému vyberte "Událost zabezpečení" a vyberte si mezi kategorie "Bezpečnostních incidentů" a "Chyba".
 
     ![Typ události a definice][1]
 
-3. Jakmile vyberete typ problému a kategorie, klikněte na tlačítko '**žádost o spuštění**' tlačítko. Zadejte následující informace a pomoci tak lépe porozumět problému.
+3. Po výběru typ a kategorii problému, klikněte "**žádost o spuštění**' tlačítko. Zadejte následující informace pomáhají lépe porozumět danému problému.
 
-    i. Co je problém nebo ohrožení zabezpečení?
+    i. Co je problém a/nebo ohrožení zabezpečení?
 
-    II. Pro chyby Zadejte prosím CVE (mitre.org) nebo vyplněný out CVSS3 v3 kalkulačky (https://www.first.org/cvss/calculator/3.0).
+    ii. Ohrožení zabezpečení, zadejte prosím CVE (mitre.org) nebo vyplněné si CVSS3 v3 kalkulačky (https://www.first.org/cvss/calculator/3.0).
 
-    III. Je k dispozici řešení nebo zmírnění? Pokud ano, pak zadejte kroky nápravu.
+    III. Existuje omezení rizik a řešení? Pokud ano, uveďte nápravných kroků.
 
-    IV. Máte zprávu, která se mají posílat zákazníkům? Budeme pracovat s vám vytvořit odpovídající zprávu, pokud je k dispozici.
+    vektor IV. Máte zprávu, která chcete odeslat pro zákazníky? Budeme spolupracovat s vámi si poradit odpovídající zprávu, pokud je k dispozici.
 
-4. Odeslání potvrzení - po odeslání problém, jsme se na vědomí přijetí v rámci jednoho pracovního dne a přiřadit problém priority a závažnosti.
+4. Potvrzení příspěvku - po odeslání problém, budeme obdržel během jednoho pracovního dne a přiřadit problém, priority a závažnosti.
 
-    - Pokud potřebujete ke komunikaci s námi o problém, použijte v všechny korespondence číslo potvrzení.
-    - Kdykoli můžete sledovat průběh na problém.
+    - Pokud potřebujete ke komunikaci s námi o svém problému, použijte číslo potvrzení ve veškeré komunikaci.
+    - Kdykoli můžete zobrazit průběh na váš problém.
 
-5. Co se stane dále? V závislosti na problém a závažnost mohou být přijata následující kroky:
+5. Co bude dál? V závislosti na problému a závažnost může provést následující kroky:
 
-    - Výsledek naše assessment vám můžeme bude komunikovat. V závislosti na výsledek můžeme odebrat nebo úpravě vaší nabídky žádosti. V takovém případě budeme pracovat s můžete zajistit, že je minimalizován přerušení ovlivněné zákazníkům.
-    - Budeme pracovat s můžete pro zmírnění dopadu incidentu ohrožení zabezpečení pro naše zákazníky vzájemné.
+    - Výsledek naše posouzení vám oznámíme. V závislosti na výsledku můžeme odebrat nebo požádat o úpravě vaší nabídky. V takovém případě spolupráci s zajistíte, že je minimalizován přerušení ovlivněné zákazníkům.
+    - Budeme spolupracovat s vámi pro zmírnění dopadu incidentu ohrožení zabezpečení pro naše vzájemné zákazníky.
 
 
 [1]: ./media/azure-security-event-support-ticket/chart.png

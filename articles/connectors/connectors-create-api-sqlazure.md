@@ -11,12 +11,12 @@ services: logic-apps
 ms.reviewer: klam, LADocs
 ms.suite: integration
 tags: connectors
-ms.openlocfilehash: dccb91c782408a5fed5c3ef1b68f9918823ce402
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
-ms.translationtype: MT
+ms.openlocfilehash: 29d53c7fbd26d3c8e2356ce82ff25c7e1b165728
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38544019"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60540784"
 ---
 # <a name="connect-to-sql-server-or-azure-sql-database-from-azure-logic-apps"></a>Připojení k serveru SQL Server nebo databázi Azure SQL z Azure Logic Apps
 
@@ -24,7 +24,7 @@ Tento článek popisuje, jak můžete přistupovat k datům ve službě SQL data
 
 Můžete vytvářet aplikace logiky aktivovaného událostmi ve službě SQL database nebo v jiných systémech, jako je například Dynamics CRM Online. Logic apps můžete také získat, vložení a odstranění dat spolu s spouštění dotazů SQL a uložených procedur. Můžete například vytvořit aplikaci logiky, který automaticky zjišťuje nové záznamy v Dynamics CRM Online, přidá položky do databáze SQL pro nové záznamy a poté odešle e-mailové výstrahy.
 
-Pokud nemáte předplatné Azure, <a href="https://azure.microsoft.com/free/" target="_blank">zaregistrujte si bezplatný účet Azure</a>. Pokud se službou logic Apps teprve začínáte, přečtěte si [co je Azure Logic Apps](../logic-apps/logic-apps-overview.md) a [rychlý start: vytvoření první aplikace logiky](../logic-apps/quickstart-create-first-logic-app-workflow.md). Technické informace specifické pro konektor najdete v tématu <a href="https://docs.microsoft.com/connectors/sql/" target="blank">referenční informace ke konektorům systému SQL Server</a>.
+Pokud nemáte předplatné Azure, <a href="https://azure.microsoft.com/free/" target="_blank">zaregistrujte si bezplatný účet Azure</a>. Pokud se službou logic Apps teprve začínáte, přečtěte si [co je Azure Logic Apps](../logic-apps/logic-apps-overview.md) a [rychlý start: Vytvořte svou první aplikaci logiky](../logic-apps/quickstart-create-first-logic-app-workflow.md). Technické informace specifické pro konektor najdete v tématu <a href="https://docs.microsoft.com/connectors/sql/" target="blank">referenční informace ke konektorům systému SQL Server</a>.
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -42,7 +42,7 @@ Pokud nemáte předplatné Azure, <a href="https://azure.microsoft.com/free/" ta
 
   * Tyto podrobnosti můžete najít v připojovacím řetězci pro SQL Server: 
 
-    "Server = <*yourServerAddress*>; Database = <*yourDatabaseName*>; Id uživatele = <*uživatelské_jméno*>; Heslo = <*yourPassword*>; "
+    "Server=<*yourServerAddress*>;Database=<*yourDatabaseName*>;User Id=<*yourUserName*>;Password=<*yourPassword*>;"
 
 * Aplikace logiky se můžete připojit k místním systémům, jako je SQL Server, je nutné nejprve [nastavení místní brány dat](../logic-apps/logic-apps-gateway-install.md). Tímto způsobem brány můžete vybrat, když vytvoříte připojení SQL pro vaši aplikaci logiky.
 

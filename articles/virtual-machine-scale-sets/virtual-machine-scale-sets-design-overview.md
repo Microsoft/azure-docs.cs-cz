@@ -17,11 +17,11 @@ ms.topic: article
 ms.date: 06/01/2017
 ms.author: manayar
 ms.openlocfilehash: 67bbad7e73f33d73d4c3f1d4f7e5599d2ef914e3
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53791043"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60618468"
 ---
 # <a name="design-considerations-for-scale-sets"></a>Aspekty návrhu pro Škálovací sady
 Tento článek popisuje aspekty návrhu pro Škálovací sady virtuálních počítačů. Informace o tom, co jsou Škálovací sady virtuálních počítačů, [přehled škálovacích sad virtuálních počítačů](virtual-machine-scale-sets-overview.md).
@@ -45,7 +45,7 @@ Některé funkce jsou aktuálně dostupné pouze ve virtuálních počítačích
 - Konkrétního virtuálního počítače můžete migrovat z nativních disků na managed disks, ale nemůžete migrovat instance virtuálních počítačů ve škálovací sadě.
 - Můžete přiřadit veřejné IP adresy protokolu IPv6 pro jednotlivé virtuální počítač virtuální síťové karty (síťové adaptéry), ale nejde udělat pro instance virtuálních počítačů ve škálovací sadě. Můžete přiřadit veřejnou IP adresu IPv6 pro před buď jednotlivým virtuálním počítačům Vyrovnávání zatížení nebo škálovací sady virtuálních počítačů.
 
-## <a name="storage"></a>Storage
+## <a name="storage"></a>Úložiště
 
 ### <a name="scale-sets-with-azure-managed-disks"></a>Škálovací sady pomocí Azure Managed Disks
 Škálovací sady se dají vytvářet pomocí [Azure Managed Disks](../virtual-machines/windows/managed-disks-overview.md) místo účtů tradiční Azure storage. Spravované disky poskytují následující výhody:
@@ -66,7 +66,7 @@ Zatímco předimenzování zvýšit úspěšnost zřizování, může to způsob
 
 Pokud vaše škálovací sada používá cloudově spravovaného úložiště a vypnete předimenzování, může mít více než 20 virtuálními počítači na jeden účet úložiště, ale nedoporučuje ambice 40 z důvodů výkonu vstupně-výstupních operací. 
 
-## <a name="limits"></a>Omezení
+## <a name="limits"></a>Limits
 Škálovací sadu založenou na image Marketplace (také označovaný jako image platformy) a nakonfigurovat tak, aby používat službu Azure Managed Disks podporuje kapacitu až 1 000 virtuálních počítačů. Pokud nakonfigurujete svou škálovací sadu pro podporu více než 100 virtuálních počítačů, ne všechny scénáře fungovat stejně (pro příklad Vyrovnávání zatížení). Další informace najdete v tématu [práce se škálovacími sadami virtuálních počítačů velké](virtual-machine-scale-sets-placement-groups.md). 
 
 Škálovací sady nakonfigurovaný s účty úložiště spravovaného uživatele je aktuálně omezena na 100 virtuálních počítačů (a 5 účty úložiště se doporučují pro tuto škálovací).

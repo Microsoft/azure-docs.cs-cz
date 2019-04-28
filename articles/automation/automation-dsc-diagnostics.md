@@ -10,11 +10,11 @@ ms.date: 11/06/2018
 ms.topic: conceptual
 manager: carmonm
 ms.openlocfilehash: 0dad74f75fd7b73e7dab0b2dddbdfda193d5b2ec
-ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58445772"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61073935"
 ---
 # <a name="forward-azure-automation-state-configuration-reporting-data-to-azure-monitor-logs"></a>Předávání Azure Automation stavu konfigurační data pro generování sestav na protokoly Azure monitoru
 
@@ -129,15 +129,15 @@ Diagnostika ve službě Azure Automation vytvoří dvě kategorie záznamy v pro
 | --- | --- |
 | TimeGenerated |Datum a čas, kdy se spustila kontrola dodržování předpisů. |
 | OperationName |DscNodeStatusData |
-| ResultType |Určuje, zda je uzel kompatibilní. |
+| Hodnota resultType |Určuje, zda je uzel kompatibilní. |
 | NodeName_s |Název spravovaných uzlů. |
 | NodeComplianceStatus_s |Určuje, zda je uzel kompatibilní. |
 | DscReportStatus |Kontrola dodržování předpisů, jestli proběhla úspěšně. |
 | ConfigurationMode | Jak tato konfigurace používá k uzlu. Možné hodnoty jsou __"ApplyOnly"__,__"ApplyandMonitior"__, a __"ApplyandAutoCorrect"__. <ul><li>__ApplyOnly__: DSC aplikuje konfiguraci a neprovede žádnou další akci, pokud nová konfigurace se vloží do cílového uzlu nebo když nová konfigurace se načítají ze serveru. Po počáteční použití nové konfigurace DSC nekontroluje odchylky od dříve nakonfigurované stavu. DSC se pokusí použít konfiguraci, dokud nebude úspěšná, až poté __ApplyOnly__ projeví. </li><li> __ApplyAndMonitor__: Toto je výchozí hodnota. LCM platí všechny nové konfigurace. Po počáteční aplikaci novou konfiguraci Pokud cílový uzel drifts z požadovaného stavu sestavy DSC nesrovnalosti v protokolech. DSC se pokusí použít konfiguraci, dokud nebude úspěšná, až poté __ApplyAndMonitor__ projeví.</li><li>__ApplyAndAutoCorrect__: DSC platí všechny nové konfigurace. Po počáteční aplikaci novou konfiguraci Pokud cílový uzel drifts z požadovaného stavu DSC sestavy nesrovnalosti v protokolech a pak znovu použije aktuální konfiguraci.</li></ul> |
 | HostName_s | Název spravovaných uzlů. |
 | IP adresa | Adresa IPv4 spravovaných uzlů. |
-| Category | DscNodeStatus |
-| Resource | Název účtu Azure Automation. |
+| Kategorie | DscNodeStatus |
+| Prostředek | Název účtu Azure Automation. |
 | Tenant_g | Identifikátor GUID, který identifikuje klienta pro volajícího. |
 | NodeId_g |Identifikátor GUID, který identifikuje spravovaných uzlů. |
 | DscReportId_g |Identifikátor GUID, který identifikuje sestavy. |
@@ -160,10 +160,10 @@ Diagnostika ve službě Azure Automation vytvoří dvě kategorie záznamy v pro
 | --- | --- |
 | TimeGenerated |Datum a čas, kdy se spustila kontrola dodržování předpisů. |
 | OperationName |DscResourceStatusData|
-| ResultType |Určuje, zda je zdroj kompatibilní. |
+| Hodnota resultType |Určuje, zda je zdroj kompatibilní. |
 | NodeName_s |Název spravovaných uzlů. |
-| Category | DscNodeStatus |
-| Resource | Název účtu Azure Automation. |
+| Kategorie | DscNodeStatus |
+| Prostředek | Název účtu Azure Automation. |
 | Tenant_g | Identifikátor GUID, který identifikuje klienta pro volajícího. |
 | NodeId_g |Identifikátor GUID, který identifikuje spravovaných uzlů. |
 | DscReportId_g |Identifikátor GUID, který identifikuje sestavy. |

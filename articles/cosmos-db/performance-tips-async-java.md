@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 03/27/2018
 ms.author: sngun
 ms.openlocfilehash: 07da7f8905d7b8952db852d3da1dab12884de509
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54041794"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60932914"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-and-async-java"></a>Tipy ke zvýšení výkonu pro službu Azure Cosmos DB a Async Javu
 
@@ -151,7 +151,7 @@ Takže pokud máte s dotazem "Jak můžu vylepšit výkon Moje databáze?" Zvaž
 
 12. **Použít nativní implementace protokolu SSL pro netty** Netty můžete použít OpenSSL přímo pro zásobník implementace SSL můžete dosáhnout lepšího výkonu. Chybí tato konfigurace netty se vrátit zpět k implementaci protokolu SSL výchozí jazyka Java.
 
-    na Ubuntu:
+    on Ubuntu:
     ```bash
     sudo apt-get install openssl
     sudo apt-get install libapr1

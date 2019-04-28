@@ -1,5 +1,5 @@
 ---
-title: Zapisovat rozšířené funkce R
+title: Psaní pokročilých funkcí R
 titleSuffix: Azure SQL Database Machine Learning Services (preview)
 description: Další informace o zápisu funkce jazyka R pro pokročilé statistické výpočty v Azure SQL Database pomocí služby Machine Learning (preview).
 services: sql-database
@@ -14,11 +14,11 @@ ms.reviewer: davidph
 manager: cgronlun
 ms.date: 04/11/2019
 ms.openlocfilehash: 939798d5d9eb2843d7bbbbe74680342e4ce6ce95
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60013774"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60702448"
 ---
 # <a name="write-advanced-r-functions-in-azure-sql-database-using-machine-learning-services-preview"></a>Zápis pokročilé funkce jazyka R ve službě Azure SQL Database pomocí služby Machine Learning (preview)
 

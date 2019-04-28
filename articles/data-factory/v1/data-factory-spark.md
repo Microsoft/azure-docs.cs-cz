@@ -15,11 +15,11 @@ ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
 ms.openlocfilehash: 95c49eec6964984894f75ecd0a9e50c9c947683b
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54015810"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61257498"
 ---
 # <a name="invoke-spark-programs-from-azure-data-factory-pipelines"></a>Vyvolání programů Spark ze služby Azure Data Factory kanálů
 
@@ -267,7 +267,8 @@ V tomto kroku vytvoříte kanál s aktivitou HDInsightSpark. V současnosti urč
 
     ![Výsledky dotazu v Jupyter](media/data-factory-spark/jupyter-notebook-results.png)
 
-<!-- Removed bookmark #run-a-hive-query-using-spark-sql since it doesn't exist in the target article --> Podrobné pokyny najdete v části [spuštění dotazu Spark SQL](../../hdinsight/spark/apache-spark-jupyter-spark-sql.md). 
+<!-- Removed bookmark #run-a-hive-query-using-spark-sql since it doesn't exist in the target article -->
+Podrobné pokyny najdete v části [spuštění dotazu Spark SQL](../../hdinsight/spark/apache-spark-jupyter-spark-sql.md). 
 
 ### <a name="troubleshooting"></a>Řešení potíží
 Vzhledem k tomu, že nastavíte getDebugInfo **vždy**, najdete v protokolu podsložky ve složce pyFiles v kontejnerech objektů blob. Další informace najdete v souboru protokolu ve složce protokolů. Tento soubor protokolu je zvlášť užitečné, když dojde k chybě. V produkčním prostředí, můžete ji nastavit na hodnotu **selhání**.
@@ -334,7 +335,7 @@ Následující tabulka popisuje vlastnostech JSON použitých v definici JSON.
 | linkedServiceName | Název HDInsight propojené služby, na kterém se spustí program Sparku. | Ano |
 | rootPath | Kontejner objektů blob a složku obsahující soubor Spark. Název souboru je velká a malá písmena. | Ano |
 | entryFilePath | Relativní cesta ke kořenové složce kódu nebo balíčku, Spark. | Ano |
-| Název třídy | Hlavní třída Java/Spark vaší aplikace. | Ne |
+| className | Hlavní třída Java/Spark vaší aplikace. | Ne |
 | argumenty | Seznam argumentů příkazového řádku pro program Sparku. | Ne |
 | proxyUser | Uživatelský účet zosobnění spuštění programu Sparku. | Ne |
 | sparkConfig | Zadejte hodnoty pro vlastnosti konfigurace Spark uvedené v [Spark konfigurace: Vlastnosti aplikace](https://spark.apache.org/docs/latest/configuration.html#available-properties). | Ne |
@@ -346,7 +347,7 @@ Aktivita Spark nepodporuje vložený skript jako Pig a proveďte aktivity Hive. 
 
 Vytvořte následující strukturu složky v úložišti objektů blob odkazuje HDInsight propojené služby. Nahrajte závislé soubory odpovídající podsložek v kořenové složce reprezentována **entryFilePath**. Například nahrát soubory Pythonu do podsložky pyFiles a jar soubory do požadované podsložky kromě souborů JAR kořenové složky. V době běhu služba Data Factory očekává, že následující strukturu složek ve službě blob storage: 
 
-| Cesta | Popis | Požaduje se | Typ |
+| Cesta | Popis | Požaduje se | Type |
 | ---- | ----------- | -------- | ---- |
 | . | Kořenová cesta úlohy Sparku na propojenou službu storage. | Ano | Složka |
 | &lt;definováno uživatelem &gt; | Cesta, která odkazuje na vstupní soubor úlohy Spark. | Ano | File |

@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 11/09/2018
 ms.author: nitinme
 ms.openlocfilehash: fccc036a5e0422508f7ebc3370a4b5faa5176dc2
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51571951"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60527925"
 ---
 Bingu podporuje zvýraznění shod, které označí termíny dotazu (nebo jiné podmínky této Bingu najde relevantní) v zobrazení řetězce některé části odpovědi. Například na webové stránce společnosti `name`, `displayUrl`, a `snippet` pole označit termíny dotazu.
 
@@ -25,28 +25,28 @@ Pokud `textDecorations` je **true**, Bingu může zahrnovat následující znač
 
 |Kódování Unicode|HTML|Popis
 |-|-|-
-|U + E000|\<b >|Označuje začátek výrazu dotazu (zvýrazňování shod)
-|U + E001|\</b >|Označuje konec termín dotazu
-|U + E002|\<Můžu >|Označuje začátek kurzívou obsahu 
-|U + E003|\</i >|Označuje konec obsahu kurzívou
-|U + E004|\<br / >|Označuje konec řádku
-|U + E005||Označuje začátek telefonní číslo
-|U + E006||Označuje konec telefonní číslo
-|U + E007||Označuje začátek adresy
-|U + E008||Označuje konec adresu
-|U + E009|\&nbsp;|Označí pevná mezera
-|U + E00C|\<strong >|Označuje začátek tučného písma obsahu
-|U + E00D|\</ strong >|Označuje konec tučného písma obsahu
+|U + E000|\<b>|Označuje začátek výrazu dotazu (zvýrazňování shod)
+|U+E001|\</b>|Označuje konec termín dotazu
+|U+E002|\<i>|Označuje začátek kurzívou obsahu 
+|U+E003|\</i>|Označuje konec obsahu kurzívou
+|U+E004|\<br/>|Označuje konec řádku
+|U+E005||Označuje začátek telefonní číslo
+|U+E006||Označuje konec telefonní číslo
+|U+E007||Označuje začátek adresy
+|U+E008||Označuje konec adresu
+|U+E009|\&nbsp;|Označí pevná mezera
+|U + E00C|\<strong>|Označuje začátek tučného písma obsahu
+|U+E00D|\</strong>|Označuje konec tučného písma obsahu
 |U + E00E||Označuje konec obsahu, jehož pozadí by měla být nižší než jeho okolního pozadí
-|U + E00F||Označuje konec obsahu, jehož pozadí by měla být nižší než jeho okolního pozadí
-|U + E010||Označuje konec obsahu, jehož pozadí by měl být o něco tmavší než jeho okolního pozadí
+|U+E00F||Označuje konec obsahu, jehož pozadí by měla být nižší než jeho okolního pozadí
+|U+E010||Označuje konec obsahu, jehož pozadí by měl být o něco tmavší než jeho okolního pozadí
 |U + E011||Označuje konec obsahu, jehož pozadí by měl být o něco tmavší než jeho okolního pozadí
-|U + E012|\<del >|Označuje konec obsahu, který by měl být přeškrtnutá.
-|U + E013|\</ del >|Označuje konec obsahu, který by měl být přeškrtnutá.
-|U + E016|\<Sub >|Označuje začátek dolního indexu obsah
-|U + E017|\</ sub >|Označuje konec obsahu dolního indexu
-|U + E018|\<sup >|Označuje začátek horní index obsahu
-|U + E019|\</ sup >|Označuje konec obsahu horní index
+|U + E012|\<del>|Označuje konec obsahu, který by měl být přeškrtnutá.
+|U+E013|\</del>|Označuje konec obsahu, který by měl být přeškrtnutá.
+|U+E016|\<sub>|Označuje začátek dolního indexu obsah
+|U+E017|\</sub>|Označuje konec obsahu dolního indexu
+|U+E018|\<sup>|Označuje začátek horní index obsahu
+|U+E019|\</sup>|Označuje konec obsahu horní index
 
 Následující příklad ukazuje `Computation` odpověď, která obsahuje dolního indexu značky pro termín log(2) dotazu. `expression` Pole obsahuje značky pouze tehdy, pokud `textDecoration` je **true**.
 

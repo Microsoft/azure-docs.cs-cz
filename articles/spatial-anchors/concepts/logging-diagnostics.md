@@ -9,11 +9,11 @@ ms.date: 02/22/2019
 ms.topic: conceptual
 ms.service: azure-spatial-anchors
 ms.openlocfilehash: 134023c0884ce3a402b99806f1bf19dcb59ecc32
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57882824"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60564863"
 ---
 # <a name="logging-and-diagnostics-in-azure-spatial-anchors"></a>Protokolování a Diagnostika v Azure prostorových kotvy
 
@@ -44,7 +44,7 @@ Tato zpětná volání události jsou k dispozici pro zpracování chyb z relace
 
 - [LogLevel](https://docs.microsoft.com/dotnet/api/microsoft.azure.spatialanchors.cloudspatialanchorsession.loglevel): Určuje úroveň podrobností pro události, které mají přijímat z modulu runtime.
 - [OnLogDebug](https://docs.microsoft.com/dotnet/api/microsoft.azure.spatialanchors.cloudspatialanchorsession.onlogdebug): Poskytuje standardní ladění protokolu událostí.
-- [Chyba](https://docs.microsoft.com/dotnet/api/microsoft.azure.spatialanchors.cloudspatialanchorsession.error): Poskytuje události protokolu, které modul runtime bere v úvahu k dojít k chybám.
+- [Chyba:](https://docs.microsoft.com/dotnet/api/microsoft.azure.spatialanchors.cloudspatialanchorsession.error) Poskytuje události protokolu, které modul runtime bere v úvahu k dojít k chybám.
 
 ## <a name="diagnostics-logging"></a>Protokolování diagnostiky
 

@@ -14,11 +14,11 @@ ms.workload: infrastructure-services
 ms.date: 03/22/2018
 ms.author: chkuhtz
 ms.openlocfilehash: b9a140314b8eba6386c37bdbcf2bb3de58589335
-ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53163425"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60594120"
 ---
 # <a name="multiple-frontends-for-azure-load-balancer"></a>Několik front-Endů pro Azure Load Balancer
 
@@ -70,7 +70,7 @@ Definujeme dvě pravidla:
 
 Kompletní mapování ve službě Azure Load Balancer je teď následujícím způsobem:
 
-| Pravidlo | Front-endové IP adresy | Protokol | port | Cíl | port |
+| Pravidlo | IP adresa front-endu | Protokol | port | Cíl | port |
 | --- | --- | --- | --- | --- | --- |
 | ![zelená pravidlo](./media/load-balancer-multivip-overview/load-balancer-rule-green.png) 1 |65.52.0.1 |TCP |80 |Vyhrazené IP adresy IP adresa |80 |
 | ![fialový pravidlo](./media/load-balancer-multivip-overview/load-balancer-rule-purple.png) 2 |65.52.0.2 |TCP |80 |Vyhrazené IP adresy IP adresa |81 |
@@ -118,7 +118,7 @@ Definujeme dvě pravidla:
 
 Následující tabulka ukazuje kompletní mapování v nástroji pro vyrovnávání zatížení:
 
-| Pravidlo | Front-endové IP adresy | Protokol | port | Cíl | port |
+| Pravidlo | IP adresa front-endu | Protokol | port | Cíl | port |
 | --- | --- | --- | --- | --- | --- |
 | ![zelená pravidlo](./media/load-balancer-multivip-overview/load-balancer-rule-green.png) 1 |65.52.0.1 |TCP |80 |stejné jako front-endu (65.52.0.1) |stejné jako front-endu (80) |
 | ![fialový pravidlo](./media/load-balancer-multivip-overview/load-balancer-rule-purple.png) 2 |65.52.0.2 |TCP |80 |stejné jako front-endu (65.52.0.2) |stejné jako front-endu (80) |

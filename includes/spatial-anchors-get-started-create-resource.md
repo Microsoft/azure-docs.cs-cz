@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 12/13/2018
 ms.author: crtreasu
 ms.openlocfilehash: 32f4545a45eda8acddd7c93cc4917dbadca9ad4d
-ms.sourcegitcommit: 956749f17569a55bcafba95aef9abcbb345eb929
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58633036"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60681181"
 ---
 ## <a name="create-a-spatial-anchors-resource"></a>Vytvořit prostředek prostorových kotvy
 

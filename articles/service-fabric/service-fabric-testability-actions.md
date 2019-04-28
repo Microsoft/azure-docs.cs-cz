@@ -15,11 +15,11 @@ ms.workload: NA
 ms.date: 06/07/2017
 ms.author: motanv
 ms.openlocfilehash: 37a794387f3a2f02124805705d380ad9f1fc1270
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58662852"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60544772"
 ---
 # <a name="testability-actions"></a>Akce testovatelnosti
 K simulaci nespolehlivé infrastruktury Azure Service Fabric nabízí vás jako na vývojáři se způsoby, jak simulovat různých skutečná selhání a přechodů mezi stavy. Tyto jsou vystaveny jako akcemi testovatelnosti. Akce, které jsou nízké úrovně rozhraní API, která způsobí vkládání konkrétních chyb, přechod stavu nebo ověření. Díky kombinaci těchto akcí, můžete napsat komplexní testovací scénáře pro služby.
