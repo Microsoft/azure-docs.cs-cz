@@ -15,11 +15,11 @@ ms.topic: conceptual
 ms.date: 09/14/2018
 ms.author: pbutlerm
 ms.openlocfilehash: f9bcc05fb02d2324d0546f2ed8286b27e5f8e296
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48809335"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60745124"
 ---
 <a name="getting-started-with-seller-insights"></a>Začínáme s Insights prodejce
 ====================================
@@ -27,7 +27,7 @@ ms.locfileid: "48809335"
 Tento článek popisuje, k dispozici v rámci funkce prodejce přehledů [portál partnerů cloudu](https://cloudpartner.azure.com/#insights).
 
 
-<a name="insights-tour"></a>Prohlídka insights
+<a name="insights-tour"></a>Insights Tour
 -------------
 
 Portál partnerů cloudu nabízí přehledy související s: zákazníky Azure a Web Marketplace VS a použití. Tady je stručný přehled různých dat a přehledů, že budete pravděpodobně používat nejčastěji.

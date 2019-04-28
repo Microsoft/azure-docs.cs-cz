@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 01/23/2018
 ms.author: apimpm
 ms.openlocfilehash: c52a1942bda9881f8f782a227c81feaa4813722d
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58793625"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60656737"
 ---
 # <a name="monitor-your-apis-with-azure-api-management-event-hubs-and-moesif"></a>Sledování vašich rozhraní API pomocí Azure API Management, Event Hubs a Moesif
 [Služby API Management](api-management-key-concepts.md) poskytuje mnoho funkcí pro zvýšení zpracování požadavků HTTP odeslané do vašeho rozhraní API protokolu HTTP. Je však přechodné existenci požadavky a odpovědi. Požadavku a prochází přes službu API Management k rozhraní API back-endu. Vaše rozhraní API zpracuje požadavek a odpověď prochází zpět do rozhraní API příjemců. Služba API Management zajišťuje několik důležitých statistik o rozhraní API pro zobrazení v řídicím panelu portálu Azure, ale dalších fázích můžete využít, že podrobnosti jsou pryč.

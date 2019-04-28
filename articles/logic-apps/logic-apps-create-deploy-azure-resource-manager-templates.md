@@ -11,11 +11,11 @@ ms.topic: article
 ms.assetid: 7574cc7c-e5a1-4b7c-97f6-0cffb1a5d536
 ms.date: 10/15/2017
 ms.openlocfilehash: 21603ff213bc8babb4145209a76aee0b4150cc12
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "59997610"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60681735"
 ---
 # <a name="deploy-logic-apps-with-azure-resource-manager-templates"></a>Nasazení aplikací logiky s využitím šablon Azure Resource Manageru
 
@@ -67,7 +67,7 @@ New-AzDeployment -Location <location> -TemplateUri https://raw.githubusercontent
 ```
 
 * [Nasazení prostředků pomocí šablon Resource Manageru a Azure PowerShellu](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-deploy)
-* [`New-AzResourceGroupDeployment`](/powershell/module/az.resources/new-azresourcegroupdeployment)
+* [`New-AzResourceGroupDeployment`](https://docs.microsoft.com/powershell/module/azurerm.resources/new-azurermresourcegroupdeployment)
 * [`New-AzDeployment`](/powershell/module/az.resources/new-azdeployment)
 
 <a name="cli"></a>

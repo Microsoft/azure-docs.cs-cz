@@ -10,12 +10,12 @@ ms.topic: article
 ms.date: 07/20/2018
 ms.reviewer: klam, LADocs
 ms.suite: integration
-ms.openlocfilehash: 82eb9c895f016efe569651dc89885d2e4850fd59
-ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
+ms.openlocfilehash: 2a9318317d5a01136a42b4fb6d580bafaf53ec4e
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39159087"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60685722"
 ---
 # <a name="handle-content-types-in-azure-logic-apps"></a>Zpracování typů obsahu v Azure Logic Apps
 
@@ -140,14 +140,14 @@ Pokud chcete zachovat některé typy dat, Logic Apps převede obsah binárního 
 
 Seznam popisuje, jak Logic Apps převede obsah, když použijete tyto [funkce](../logic-apps/workflow-definition-language-functions-reference.md):
 
-* `json()`: Data přetypování `application/json`
-* `xml()`: Data přetypování `application/xml`
-* `binary()`: Data přetypování `application/octet-stream`
-* `string()`: Data přetypování `text/plain`
-* `base64()`: Obsah převede na řetězec ve formátu base64
+* `json()`: Přetypování data `application/json`
+* `xml()`: Přetypování data `application/xml`
+* `binary()`: Přetypování data `application/octet-stream`
+* `string()`: Přetypování data `text/plain`
+* `base64()`: Převede obsah na řetězec ve formátu base64
 * `base64toString()`: Převede řetězec kódovaný ve formátu base64 `text/plain`
 * `base64toBinary()`: Převede řetězec kódovaný ve formátu base64 `application/octet-stream`
-* `encodeDataUri()`: Kóduje řetězec jako parametr bajtové pole
+* `encodeDataUri()`: Zakóduje řetězec jako parametr bajtové pole
 * `decodeDataUri()`: Dekóduje `dataUri` do bajtového pole
 
 Například, pokud se zobrazí požadavek HTTP kde `Content-Type` nastavena na `application/xml`, jako je například tento obsah:

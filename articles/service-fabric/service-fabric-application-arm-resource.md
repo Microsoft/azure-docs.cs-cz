@@ -15,15 +15,15 @@ ms.workload: NA
 ms.date: 12/06/2017
 ms.author: dekapur
 ms.openlocfilehash: e2e1b2ae354d26c3d9729e3a3fdf39bee43647ca
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58663124"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60621458"
 ---
 # <a name="manage-applications-and-services-as-azure-resource-manager-resources"></a>Spravovat aplikace a služby jako prostředky Azure Resource Manageru
 
-Do vašeho clusteru Service Fabric pomocí Azure Resource Manageru můžete nasadit aplikace a služby. To znamená, že namísto nasazení a správě aplikací prostřednictvím Powershellu nebo rozhraní příkazového řádku po čekání z clusteru bude připravené, můžete nyní express, aplikace a služby ve formátu JSON a nasazení v šabloně Resource Manageru jako cluster. Proces registrace aplikace, zřizování a nasazování všechny se stane v jednom kroku.
+Aplikace a služby můžete do clusteru Service Fabric nasadit prostřednictvím Azure Resource Manageru. To znamená, že namísto nasazení a správě aplikací prostřednictvím Powershellu nebo rozhraní příkazového řádku po čekání z clusteru bude připravené, můžete nyní express, aplikace a služby ve formátu JSON a nasazení v šabloně Resource Manageru jako cluster. Proces registrace, zřizování a nasazování aplikací potom probíhá v jediném kroku.
 
 Toto je doporučený postup pro můžete nasadit libovolné instalační program, zásady správného řízení nebo aplikace pro správu clusteru, které potřebujete ve vašem clusteru. Jedná se o [aplikace orchestraci oprav](service-fabric-patch-orchestration-application.md), Watchdogs nebo aplikací, které je potřeba ve vašem clusteru spuštěná před samotným nasazením jinými aplikacemi nebo službami. 
 

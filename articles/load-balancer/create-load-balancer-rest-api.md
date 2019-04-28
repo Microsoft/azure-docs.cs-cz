@@ -14,11 +14,11 @@ ms.workload: load-balancer
 ms.date: 06/06/2018
 ms.author: kumud
 ms.openlocfilehash: 159fe9d6a891858d8d2cc2315e9544b79eb44cff
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53079717"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60884975"
 ---
 # <a name="create-an-azure-basic-load-balancer-using-rest-api"></a>Vytvoření Azure Load balancer úrovně Basic pomocí rozhraní REST API
 

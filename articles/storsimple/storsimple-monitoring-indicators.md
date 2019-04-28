@@ -1,6 +1,6 @@
 ---
-title: Monitorování indikátory StorSimple | Microsoft Docs
-description: Popisuje svítivé diody (LED) a zvukových výstrahy, které se používá k monitorování stavu zařízení StorSimple.
+title: StorSimple ukazatele monitorování | Dokumentace Microsoftu
+description: Popisuje světla – vysílání diody (LED) a zvukových alarmy používat s monitorováním stavu zařízení StorSimple.
 services: storsimple
 documentationcenter: NA
 author: alkohli
@@ -14,234 +14,234 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 11/03/2017
 ms.author: alkohli
-ms.openlocfilehash: 9ae0caec211dc1199f0abd2ce9bc0c7ad11c02ec
-ms.sourcegitcommit: 0930aabc3ede63240f60c2c61baa88ac6576c508
+ms.openlocfilehash: ef8acf1c3c9211168ebacc8d62647f6789c745a2
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2017
-ms.locfileid: "24030353"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60630560"
 ---
-# <a name="use-storsimple-monitoring-indicators-to-manage-your-device"></a>Používat ke správě zařízení StorSimple monitorování ukazatele
+# <a name="use-storsimple-monitoring-indicators-to-manage-your-device"></a>Pomocí monitorování indikátorů StorSimple ke správě vašeho zařízení
 
 
 ## <a name="overview"></a>Přehled
-Zařízení StorSimple zahrnuje svítivé diody (LED) a poplašná, můžete použít ke sledování celkového stavu zařízení StorSimple a modulů. Monitorování indikátory naleznete na hardwarové součásti skříň primární zařízení a EBOD skříň. Ukazatele monitorování může být LED nebo zvukové výstrahy.
+Zařízení StorSimple zahrnuje světla – vysílání diody (LED) a alarmů, můžete použít k monitorování modulů a celkového stavu zařízení StorSimple. Ukazatele monitorování můžete najít na primární zařízení zařízení a skříně EBOD hardwarové součásti. Monitorování ukazatele může být LED nebo zvukové alarmy.
 
-Existují tři stavy DIODU slouží k určení stavu modulu: zelená, blikající zelená red žlutou nebo žlutou red.  
+Existují tři stavy LED slouží k označení stavu modulu: zelená, začne blikat od zelené po červenou žlutou nebo žlutou red.  
 
-* Zelená LED představují provozní stav v pořádku.  
-* Blikající zelená k red žlutou LED představují přítomnost nekritické podmínky, které mohou vyžadovat zásah uživatele.  
-* Red žlutou LED znamenat, že existuje v rámci modulu kritickou chybu.  
+* Zelená LED představují dobrý stav.  
+* Blikající od zelené po red žlutou LED představují přítomnost z nekritické podmínek, které mohou vyžadovat zásah uživatele.  
+* Červená žlutou LED označení, že existuje kritické selhání k dispozici v rámci modulu.  
 
-Zbývající část tohoto článku popisuje různé monitorování indikátor LED, jejich umístění v zařízení StorSimple, stav zařízení na základě DIODU stavy a všechny přidružené zvukové výstrahy.
+Zbývající část tohoto článku popisuje různé monitorování indikátorů LED, jejich umístění na zařízení StorSimple, stav zařízení na základě Indikátor stavu a všechny přidružené zvukové alarmy.
 
-## <a name="front-panel-indicator-leds"></a>Přední panel indikátor LED
-Před panelu, také známé jako *operations panely* nebo *ops panely*, zobrazuje agregovaný stav všech modulů v systému. Přední panel je stejná na primární zařízení StorSimple a skříň EBOD a je zobrazený dole.  
+## <a name="front-panel-indicator-leds"></a>Přední panel indikátorů LED
+Přední panel, označované také jako *operace panel* nebo *ops panel*, zobrazuje agregovaný stav celé všechny moduly v systému. Přední panel je stejný jako primární StorSimple a skříně EBOD a je znázorněno níže.  
 
-   ![Zařízení předního panelu][1]
+   ![Předního panelu zařízení][1]
 
-Přední panel obsahuje následující ukazatele:  
+Přední panel obsahuje následujících ukazatelů:  
 
-1. Tlačítko pro ztlumení
-2. Indikátor Power DIODU (zelený/red žlutou)
-3. Indikátor selhání modulu VEDLA (na red oranžová/OFF)
-4. Logické chyby indikátor VEDLA (na red oranžová/OFF
+1. Ztlumit tlačítko
+2. Napájení indikátor LED (zelená/červená žlutá)
+3. Indikátor selhání modulu VEDL (červená žlutou/OFF)
+4. Indikátor logické chyby VEDL (červená žlutou VYPÍNÁNÍ
 5. Zobrazení ID jednotky  
 
-Hlavní rozdíl mezi přední panel LED pro zařízení a pro skříni EBOD je **systému jednotky identifikační číslo** zobrazený na displeji Indikátor. Výchozí jednotku ID zobrazí na zařízení je **00**, kdežto ID jednotky výchozí zobrazené na skříni EBOD **01**. To umožňuje rychle rozlišit mezi zařízením a skříň EBOD po zapnutí zařízení. Pokud vaše zařízení je vypnutý, použijte informace uvedené v [zapnout nové zařízení](storsimple-turn-device-on-or-off.md#turn-on-a-new-device) od skříně EBOD odlišit od zařízení.  
+Hlavní rozdíl mezi přední panel LED pro zařízení a pro skříň EBOD je **systémové jednotky identifikační číslo** zobrazený na displeji Indikátor. Výchozí jednotka je na zařízení zobrazí ID **00**, že je výchozí ID jednotka zobrazuje na skříň EBOD **01**. To vám umožní rychle rozlišovat mezi zařízením a skříně EBOD po zapnutí zařízení. Pokud vaše zařízení je vypnuté, použijte informace uvedené v [zapnout nové zařízení](storsimple-turn-device-on-or-off.md#turn-on-a-new-device) odlišili od EBOD skříň zařízení.  
 
 ## <a name="front-panel-led-status"></a>Přední panel Indikátor stavu
-Následující tabulku použijte k určení stavu indikován LED na přední panel pro zařízení nebo EBOD skříň.  
+Následující tabulku použijte k určení stavu indikován LED na přední panel EBOD skříň nebo zařízení.  
 
-| Napájení systému | Selhání modulu | Logické chyby | Výstrahy | Status |
+| Napájení systému | Chyby modulu | Logické chyby | Varování | Status |
 | --- | --- | --- | --- | --- |
-| Red oranžová |OFF |OFF |Není k dispozici |Napájení ze sítě ztratili, pracující na zálohování napájení nebo napájení ze sítě na a na zařízení, které byly odebrány moduly. |
-| Zelená |ON |ON |Není k dispozici |Test stavu OPS panely zapnutí (5s) |
-| Zelená |OFF |OFF |Není k dispozici |Zapnutí všechny funkce funkční |
-| Zelená |ON |Není k dispozici |Selhání PCM LED selhání ventilátor LED |Všechny chyby PCM ventilátor odolnost, nad nebo pod teploty |
-| Zelená |ON |Není k dispozici |Vstupně-výstupních operací modulu LED |Všechny řadiče selhání modulu |
-| Zelená |ON |Není k dispozici |Není k dispozici |Skříň logiku selhání |
-| Zelená |Flash |Není k dispozici |V modulu řadiče VEDLA stav modulu. Selhání PCM LED selhání ventilátor LED |Typ modulu neznámé řadiče nainstalovaná, I2C sběrnice selhání, Chyba konfigurace řadiče modulu produktu důležitých dat (VPD) |
+| Červená oranžová |OFF |OFF |neuvedeno |Napájení ze sítě ztrátě provozující na zálohování napájení nebo napájení ze sítě a zařízení, které moduly byly odebrány. |
+| Zelená |ON |ON |neuvedeno |Panel OPS pro zapnutí 5 (s) testu stavu |
+| Zelená |OFF |OFF |neuvedeno |Výkon na dobré všechny funkce |
+| Zelená |ON |neuvedeno |Selhání PCM LED selhání ventilátor indikátorů LED |Žádné chyby PCM ventilátor selhání, nad nebo pod teploty |
+| Zelená |ON |neuvedeno |Vstupně-výstupních operací modulu indikátorů LED |Modul závady kontroleru |
+| Zelená |ON |neuvedeno |neuvedeno |Chyby logiky skříň |
+| Zelená |Animace Flash |neuvedeno |Stav modulu VEDLA na kontroleru modulu. Selhání PCM LED selhání ventilátor indikátorů LED |Typ modulu Neznámý kontroleru nainstalované, I2C sběrnice selhání, Chyba konfigurace řadiče modulu důležité produktu data (VPD) |
 
-## <a name="power-cooling-module-pcm-indicator-leds"></a>Napájení chladicí modulu (PCM) indikátor LED
-Power chladicí modulu (PCM) indikátor LED naleznete na zadní straně primární skříň nebo EBOD skříň v každé PCM modulu. Toto téma popisuje, jak používat následující LED monitorovat stav zařízení StorSimple.  
+## <a name="power-cooling-module-pcm-indicator-leds"></a>Napájení, chlazení modulu (PCM) indikátorů LED
+Napájení chladicí modulu (PCM) indikátorů LED můžete najít na zadní primární skříň nebo EBOD skříň na každý modul PCM. Toto téma popisuje, jak používat následující LED s monitorováním stavu zařízení StorSimple.  
 
-* PCM LED pro primární skříň
-* PCM LED pro EBOD skříň
+* PCM LED pro primární zařízení
+* PCM LED pro skříň EBOD
 
-## <a name="pcm-leds-for-the-primary-enclosure"></a>PCM LED pro primární skříň
-Zařízení StorSimple má modul 764W PCM s další stav baterie. Následující obrázek znázorňuje DIODU panel pro zařízení.  
+## <a name="pcm-leds-for-the-primary-enclosure"></a>PCM LED pro primární zařízení
+Zařízení StorSimple nemá modul 764W PCM s další baterie. Následující obrázek znázorňuje panelu LED pro zařízení.  
 
-   ![PCM LED na primární skříň][2]
+   ![PCM LED na primární zařízení][2]
 
 Indikátor legendy:
 
-1. Výpadku napájení ze sítě
-2. Ventilátor selhání
-3. Selhání stav baterie.
+1. Výpadku napájení AC.
+2. Chyba větráku
+3. Selhání baterie
 4. PCM OK
 5. Řadič domény selhání
 6. Dobrý stav baterie  
 
-Stav PCM uvedené na panelu Indikátor. Panel PCM DIODU zařízení má šest LED. Čtyři tyto LED zobrazit stav napájení a ventilátoru. Zbývající dvě LED označují stav modulu zálohování baterie ve PCM. Následující tabulky můžete použít k určení stavu PCM.  
+Stav PCM je uveden na panelu LED. Indikátor PCM panelu zařízení má šest LED. Čtyři z těchto LED zobrazí stav napájení a ventilátor. Zbývající dvě LED informací o stavu modulu záložní baterie v PCM. Následující tabulky můžete použít k určení stavu PCM.  
 
-### <a name="pcm-indicator-leds-for-power-supply-and-fan"></a>Indikátor PCM LED pro napájení a ventilátor
-| Status | PCM OK (zelený) | Selhání AC (oranžové) | Ventilátor služeb při selhání (oranžové) | Řadič domény selhání (oranžové) |
+### <a name="pcm-indicator-leds-for-power-supply-and-fan"></a>PCM indikátorů LED pro zdroj napájení a ventilátoru
+| Status | PCM OK (zelený) | Selhání AC (oranžové) | Ventilátor selhání (oranžové) | Řadič domény selhání (oranžové) |
 | --- | --- | --- | --- | --- |
-| Žádné AC napájení (do skříně) |OFF |OFF |OFF |OFF |
-| Napájení (pouze tento PCM) žádné ze sítě |OFF |ON |OFF |ON |
+| Žádné napájení ze sítě (do skříně) |OFF |OFF |OFF |OFF |
+| Žádné napájení ze sítě (jenom tento PCM) |OFF |ON |OFF |ON |
 | AC prezentovat PCM ON - OK |ON |OFF |OFF |OFF |
-| Selhání PCM (ventilátor selhání) |OFF |OFF |ON |Není k dispozici |
-| Selhání PCM (přes amp přes napětí přes aktuální) |OFF |ON |ON |ON |
+| Selhání PCM (větráku) |OFF |OFF |ON |neuvedeno |
+| Selhání PCM (přes amp přes napětí nad aktuální) |OFF |ON |ON |ON |
 | PCM (ventilátor mimo toleranci) |ON |OFF |OFF |ON |
 | Pohotovostní režim |Blikání |OFF |OFF |OFF |
-| Stažení firmwaru PCM |OFF |Blikání |Blikání |Blikání |
+| Stahování firmwaru PCM |OFF |Blikání |Blikání |Blikání |
 
-### <a name="pcm-indicator-leds-for-the-backup-battery"></a>Indikátor PCM LED pro zálohování baterie
-| Status | Baterie dobrý (zelený) | Stav baterie. chyby (oranžová) |
+### <a name="pcm-indicator-leds-for-the-backup-battery"></a>PCM indikátorů LED pro záložní baterie
+| Status | Baterie dobrý (zelený) | Baterie selhání (oranžová) |
 | --- | --- | --- |
-| Nejsou k dispozici baterie |OFF |OFF |
-| Baterie přítomen a účtovat |ON |OFF |
-| Baterie poplatků nebo Údržba na vyřízení |Blikání |OFF |
-| Baterie "soft" selhání (obnovitelné) |OFF |Blikání |
+| Baterie není k dispozici. |OFF |OFF |
+| K dispozici a účtované baterie |ON |OFF |
+| Uvolnění účtování nebo údržby baterie |Blikání |OFF |
+| (Obnovit) "text soft" selhání baterie |OFF |Blikání |
 | "Pevné" selhání baterie (neobnovitelná) |OFF |ON |
-| S odstraněnými stav baterie. |Blikání |OFF |
+| S odstraněnými baterie |Blikání |OFF |
 
-## <a name="pcm-leds-for-the-ebod-enclosure"></a>PCM LED pro EBOD skříň
-Skříň EBOD má 580W PCM a žádná další baterie. Panel PCM pro skříni EBOD má kláves pouze pro zdroje napájení a ventilátoru. Následující obrázek znázorňuje tyto LED.
+## <a name="pcm-leds-for-the-ebod-enclosure"></a>PCM LED pro skříň EBOD
+Skříň EBOD má 580W PCM a žádná další baterie. Na panelu PCM skříň EBOD má indikátorů LED pouze pro dodávku napájení a ventilátor. Následující obrázek znázorňuje tyto LED.
 
-   ![PCM LED na skříni EBOD][3] 
+   ![PCM LED na skříň EBOD][3] 
 
-V následující tabulce slouží k určení stavu PCM.  
+V následující tabulce můžete použít k určení stavu PCM.  
 
-| Status | PCM OK (zelený) | Selhání AC (oranžové) | Ventilátor služeb při selhání (oranžové) | Řadič domény selhání (oranžové) |
+| Status | PCM OK (zelený) | Selhání AC (oranžové) | Ventilátor selhání (oranžové) | Řadič domény selhání (oranžové) |
 | --- | --- | --- | --- | --- |
-| Žádné AC napájení (do skříně) |OFF |OFF |OFF |OFF |
-| Napájení (pouze tento PCM) žádné ze sítě |OFF |ON |OFF |ON |
+| Žádné napájení ze sítě (do skříně) |OFF |OFF |OFF |OFF |
+| Žádné napájení ze sítě (jenom tento PCM) |OFF |ON |OFF |ON |
 | AC prezentovat PCM ON – OK |ON |OFF |OFF |OFF |
-| Selhání PCM (ventilátor selhání) |OFF |OFF |ON |X |
-| Selhání PCM (přes amp přes napětí přes aktuální |OFF |ON |ON |ON |
+| Selhání PCM (větráku) |OFF |OFF |ON |X |
+| Selhání PCM (přes amp přes napětí nad aktuální |OFF |ON |ON |ON |
 | PCM (ventilátor mimo toleranci) |ON |OFF |OFF |ON |
 | Pohotovostní modelu |Blikání |OFF |OFF |OFF |
-| Stažení firmwaru PCM |OFF |Blikání |Blikání |Blikání |
+| Stahování firmwaru PCM |OFF |Blikání |Blikání |Blikání |
 
-## <a name="controller-module-indicator-leds"></a>Řadič modulu indikátor LED
-Zařízení StorSimple obsahuje LED pro primární řadič a moduly EBOD řadiče.   
+## <a name="controller-module-indicator-leds"></a>Kontroler modulu indikátorů LED
+Zařízení StorSimple obsahuje LED pro primární kontroler a moduly řadiče EBOD.   
 
-### <a name="monitoring-leds-for-the-primary-controller"></a>Monitorování LED pro primární řadič
-Na následujícím obrázku pomáhá identifikovat LED na primárním řadiči. (Všechny součásti jsou uvedeny na podporu v orientaci).  
+### <a name="monitoring-leds-for-the-primary-controller"></a>Monitorovacích indikátorů LED pro primární kontroler
+Na následujícím obrázku vám pomůže určit LED na primární kontroler. (Všechny komponenty jsou uvedeny na podporu orientovaný).  
 
-   ![Monitorování LED - primární řadič][4]
+   ![Monitorovacích indikátorů LED – primární kontroler][4]
 
-Následující tabulku použijte k určení, zda modul řadiče pracuje správně.  
+Použijte následující tabulku k určení, zda modul kontroler pracuje správně.  
 
-### <a name="controller-indicator-leds"></a>Řadič indikátor LED
-| INDIKÁTOR | Popis |
+### <a name="controller-indicator-leds"></a>Kontroler indikátorů LED
+| INDIKÁTOR LED | Popis |
 | --- | --- |
-| ID DIODU (modrá) |Označuje, že modul je jsou označené. Pokud blue DIODU bliká na běžícího řadiče, řadič je aktivní a druhý je pohotovostní řadiče. Další informace najdete v tématu [identifikovat řadič active na vašem zařízení](storsimple-8000-controller-replacement.md#identify-the-active-controller-on-your-device). |
-| Selhání DIODU (oranžová) |Označuje chybu v kontroleru. |
-| Indikátor LED OK (zelený) |Konstantní zelená značí, zda je řadič OK. Blikající zelená značí řadič VPD Chyba konfigurace. |
-| Aktivita SAS LED (zelený) |Konstantní zelená značí, připojení se žádné aktuální aktivity. Blikající zelená značí, že připojení má probíhající aktivity. |
-| Stav Ethernet LED |Pravé straně označuje odkaz nebo síťové aktivity: active (blikající zelená) (konstantní zelený) odkaz síťové aktivity. Levé straně určuje rychlost sítě: (žlutý) 1000 Mb/s (zelený) 100 Mb/s a (OFF) 10 Mb/s. V závislosti na modelu součásti může tento lehký blink i v případě, že síťové rozhraní není povoleno. |
-| LED POST |Určuje spouštěcí průběh po zapnutí kontroleru. Pokud zařízení StorSimple se nepodaří spustit, vám pomůže tento DIODU Microsoft Support identifikovat bod v procesu spouštění, kdy došlo k selhání. |
+| Indikátor ID (modrá) |Označuje, že se modul rozpoznán. Pokud modrou Indikátor bliká na spuštěný řadič, kontroleru je aktivní kontroler a druhý je kontroler v pohotovostním režimu. Další informace najdete v tématu [identifikace aktivního kontroleru na vašem zařízení](storsimple-8000-controller-replacement.md#identify-the-active-controller-on-your-device). |
+| Selhání LED (oranžová) |Označuje chybu v kontroleru. |
+| Indikátor LED OK (zelený) |Konstantní zelená značí, že kontroler je v pořádku. Blikající zelená označuje kontroleru VPD Chyba konfigurace. |
+| Aktivita SAS LED (zelený) |Konstantní zelená značí připojení se žádná aktuální aktivity. Blikající zelená označuje, že připojení má probíhající činnosti. |
+| Stav sítě Ethernet indikátorů LED |Na pravé straně indikuje aktivitu odkaz/network: odkaz (konstantní zelená) aktivní, (začne blikat zelená) síťové aktivity. Na levé straně označuje rychlost sítě: 1000 Mb/s (žlutý), (zelená) 100 Mb/s a (vypnuto) 10 Mb/s. V závislosti na modelu může tento světle blikání i v případě, že síťové rozhraní není povolená. |
+| PŘÍSPĚVEK indikátorů LED |Označuje průběh spuštění po zapnutí kontroleru. Pokud zařízení StorSimple se nepodaří spustit, vám pomůže tento Indikátor Microsoft Support identifikovat bod v procesu spouštění, ve kterém došlo k chybě. |
 
 > [!IMPORTANT]
-> Pokud je lit LED selhání, došlo k potížím s modulem řadiče, která může vyřešit restartováním kontroleru. Pokud restartování řadičem tento problém nevyřeší, obraťte se na Microsoft Support.  
+> Pokud selhání Indikátor svítí, dojde k problému s modulem kontroler, který může vyřešit restartováním kontroleru. Pokud restartování kontroleru se tento problém nevyřeší, obraťte se na Microsoft Support.  
 > 
 > 
 
-### <a name="monitoring-leds-for-the-ebod-ebod-enclosure"></a>Monitorování LED EBOD (EBOD skříň)
-Každý 6 Gb/s SAS EBOD řadičů má LED, který indikuje její stav, jak je znázorněno na následujícím obrázku.  
+### <a name="monitoring-leds-for-the-ebod-ebod-enclosure"></a>Monitorovacích indikátorů LED pro EBOD (EBOD skříně)
+Každého 6 řadiče EBOD SAS Gb/s je LED, který indikuje její stav, jak je znázorněno na následujícím obrázku.  
 
-  ![Monitorování LED - EBOD skříň][5]
+  ![Monitorovacích indikátorů LED – EBOD skříň][5]
 
-Následující tabulku použijte k určení, zda modul řadiče EBOD pracuje normálně.  
+V následující tabulce použijte k určení, zda modul řadiče EBOD normálně.  
 
-### <a name="ebod-controller-module-indicator-leds"></a>EBOD řadiče modulu indikátor LED
-| Status | Vstupně-výstupních operací modulu OK (zelený) | Selhání modulu vstupně-výstupní operace (oranžová) | Aktivitu port hostitele (zelený) |
+### <a name="ebod-controller-module-indicator-leds"></a>EBOD řadič modulu indikátorů LED
+| Status | Vstupně-výstupních operací modulu OK (zelený) | Chyby modulu vstupně-výstupních operací (oranžová) | Aktivita port hostitele (zelený) |
 | --- | --- | --- | --- |
 | Modul řadiče OK |ON |OFF |- |
-| Selhání modulu řadiče |OFF |ON |- |
+| Chyby modulu kontroleru |OFF |ON |- |
 | Port připojení externího hostitele |- |- |OFF |
 | Port připojení externího hostitele – žádná aktivita |- |- |ON |
-| Připojení k externím hostiteli port - aktivity |- |- |Blikání |
+| Připojení k portu externího hostitele - aktivita |- |- |Blikání |
 | Chyba modulu metadat řadiče |Blikání |- |- |
 
-## <a name="disk-drive-indicator-leds-for-the-primary-enclosure-and-ebod-enclosure"></a>Disková jednotka indikátor LED pro primární skříně a EBOD skříň
-Zařízení StorSimple je umístěn ve skříni primární a skříň EBOD diskové jednotky. Každé diskové jednotce obsahuje monitorování kláves, jak je popsáno v této části. 
+## <a name="disk-drive-indicator-leds-for-the-primary-enclosure-and-ebod-enclosure"></a>Disková jednotka indikátorů LED pro primární skříň a skříně EBOD
+Zařízení StorSimple je umístěný ve primárního skříň a skříně EBOD diskové jednotky. Každé diskové jednotce obsahuje monitorování indikátorů LED, jak je popsáno v této části. 
 
-Pro diskové jednotky, disku stav je indikován zelená DIODU a červená oranžová DIODU připojena před každou jednotku poskytovatel modulu. Následující obrázek znázorňuje tyto LED.
+Pro diskové jednotky, je stav jednotky indikován zelený LED a červená žlutou Indikátor připojené na začátku každého modulu dopravce jednotky. Následující obrázek znázorňuje tyto LED.
 
-  ![LED diskovou jednotku][6]
+  ![Disková jednotka indikátorů LED][6]
 
-Pomocí následující tabulky můžete určit stav každého disku, který naopak ovlivňuje celkový předního panelu Indikátor stavu.  
+Pomocí následující tabulky můžete určit stav každého disku, který zase ovlivňuje celkový předního panelu Indikátor stavu.  
 
-### <a name="disk-drive-indicator-leds-for-the-ebod-enclosure"></a>Disková jednotka indikátor LED pro EBOD skříň
-| Status | Aktivita DIODU OK (zelený) | Selhání DIODU (červená oranžová) | Související ops panely DIODU |
+### <a name="disk-drive-indicator-leds-for-the-ebod-enclosure"></a>Disková jednotka indikátorů LED pro skříň EBOD
+| Status | Indikátor činnosti OK (zelený) | Selhání LED (červená žlutá) | Související ops panel LED |
 | --- | --- | --- | --- |
-| Žádné jednotky nainstalována |OFF |OFF |Žádný |
-| Jednotka nainstalovaný a funkční |Blikající zapnout nebo vypnout s aktivitou |X |Žádný |
-| Sada identity zařízení SCSI skříň služby (SES) |ON |Blikající 1 sekunda na/1 sekundu vypnuto |Žádný |
-| SES zařízení selhání bitová sada |ON |ON |Logické chyby (červený) |
-| Selhání okruh řízení spotřeby |OFF |ON |Selhání modulu (červený) |
+| Žádná jednotka nainstalovány |OFF |OFF |Žádný |
+| Jednotka nainstalovaný a funkční |Blikající zapnout nebo vypnout pomocí aktivity |X |Žádný |
+| Sada identit zařízení služeb skříně rozhraní SCSI (SES) |ON |Blikající 1 sekunda na/1 sekundu vypnuto |Žádný |
+| SES zařízení proti bitová sada |ON |ON |Logické selhání (červená) |
+| Ovládací prvek okruh výpadku |OFF |ON |Modul selhání (červená) |
 
-## <a name="audible-alarms"></a>Zvukové výstrahy
-Zařízení StorSimple obsahuje zvukové výstrahy související s skříni primární a EBOD skříň. Zvukové poplašné se nachází na přední panel (také označované jako panely ops) i skříně. Zvukové poplašné označuje, pokud je přítomen podmínku chyby. Tyto podmínky se aktivují upozornění:  
+## <a name="audible-alarms"></a>Zvukové upozornění
+Zařízení StorSimple obsahuje zvukové alarmy spojené s primární skříň a EBOD skříň. Akustický signál se nachází na přední panel (označované také jako panelu ops) i přílohy. Akustický signál označuje, kdy je přítomna podmínka selhání. Následující podmínky se budou aktivovat alarm:  
 
 * Ventilátor chyb nebo selhání
-* Napětí mimo rozsah.
-* Nad nebo pod teploty podmínky
+* Snímač napětí mimo rozsah.
+* Nad nebo pod teploty podmínku
 * Teplotní přetečení
-* Selhání systému
+* Poruchy systému
 * Logické chyby
-* Selhání napájení napájení
-* Odebrání napájení chlazení modulu (PCM)  
+* Dodávku napájení
+* Odebrání napájení, chlazení modulu (PCM)  
 
-Následující tabulka popisuje různé stavy výstrahy.  
+Následující tabulka popisuje různé stavy alarm.  
 
-### <a name="alarm-states"></a>Stavy výstrahy
-| Stav výstrahy | Akce | Akce s ztlumení stisknutí tlačítka |
+### <a name="alarm-states"></a>Stavy upozornění
+| Stav varování | Akce | Akce s Ztlumit stisknutí tlačítka |
 | --- | --- | --- |
-| S0 |Normálním režimu: tichou |Zvukový signál dvakrát |
-| S1 |Režim selhání: 1 sekunda na/1 sekundu vypnuto |Přechod do S2 nebo S3 (viz poznámky) |
-| S2 |Připomenout režim: přerušované zvukový signál |Žádný |
-| S3 |Muted režim: tichou |Žádný |
-| S4 |Kritické chyby režimu: průběžné výstrahy |Není k dispozici: ztlumení není aktivní |
+| S0 |Normální režim: tiché |Zvukový signál dvakrát |
+| S1 |Režim selhání: 1 sekunda/1 sekundu vypnuté. |Přechod na S2 nebo S3 (viz poznámky) |
+| S2 |Připomenout režimu: přerušované zvukový signál |Žádný |
+| S3 |Tlumených režimu: tiché |Žádný |
+| S4 |Režim kritické selhání: průběžné upozornění |Není k dispozici: ztlumení není aktivní |
 
 > [!NOTE]
-> * Ve stavu výstrahy S1 Pokud není stisknete ztlumení během 2 minut, stav automaticky přejde na S2 nebo S3.  
-> * Po je zrušen stav chyby, vraťte alarmů stavy S1 k S4 k S0.  
-> * Kritické chyby stavu S4 lze zadat z jiných stavu.  
+> * Ve stavu varování S1 Pokud jste nemačkejte klávesu Ztlumit během 2 minut, stav automaticky přejde do S2 nebo S3.  
+> * Stavy alarmů S1 na S4 vrátit S0 po vymazání stavu selhání.  
+> * Kritické chyby stavu S4 lze zadat z jakéhokoli jiného stavu.  
 
 
-Zvukové poplašné můžete ztlumení stisknutím ztlumení tlačítka v panelech ops. Automatické ztlumení bude po dvou minutách dojít, pokud není vypínač zvuku provozovat ručně. Pokud je ztlumen na upozornění, bude pokračovat zvuk s krátkou přerušované signálů k označení, že problém stále existuje. Upozornění bude tichou, když všechny problémy jsou odstraněny.
+Akustický signál můžete Ztlumit stisknutím klávesy Ztlumit tlačítko na panelu ops. Automatické ztlumení se vrátí po dvou minutách Ztlumit přepínač není provozované ručně. Když je ztlumen alarm, bude nadále zvuk s krátkou přerušované signálů k označení, že problém přetrvává. Zrušte zaškrtnutí všech problémů budou alarm silent.
 
-Následující tabulka popisuje různé podmínky výstrahy.
+Následující tabulka popisuje různé podmínky upozornění.
 
-### <a name="alarm-conditions"></a>Podmínky výstrahy
-| Status | Závažnost | Výstrahy | OPS panelu DIODU |
+### <a name="alarm-conditions"></a>Podmínky upozornění
+| Status | Severity | Varování | OPS panelu LED |
 | --- | --- | --- | --- |
-| Výstraha PCM – výpadku napájení řadiče domény z jedné PCM |Selhání – bez ztráty redundance |S1 |Selhání modulu |
-| Výstraha PCM – výpadku napájení řadiče domény z jedné PCM |Selhání – ztráta redundance |S1 |Selhání modulu |
-| Ventilátor selhání PCM |Selhání – ztráta redundance |S1 |Selhání modulu |
-| SBB modulu bylo zjištěno selhání PCM |Selhání |S1 |Selhání modulu |
-| Odebrat PCM |Chyba konfigurace. |Žádný |Selhání modulu |
-| Chyba konfigurace skříň |Selhání – kritická |S1 |Selhání modulu |
-| Teplotní nízkou upozornění |Upozornění |S1 |Selhání modulu |
-| Vysoké teploty upozornění |Upozornění |S1 |Selhání modulu |
-| Přes teplotní alarm |Selhání – kritická |S1 |Selhání modulu |
-| Selhání sběrnice I2C |Selhání – ztráta redundance |S1 |Selhání modulu |
-| OPS panelu došlo k chybě komunikace (I2C) |Selhání – kritická |S1 |Selhání modulu |
-| Chyba řadiče |Selhání – kritická |S1 |Selhání modulu |
-| Selhání modulu SBB rozhraní |Selhání – kritická |S1 |Selhání modulu |
-| Selhání modulu SBB rozhraní – bez funkční moduly zbývající |Selhání – kritická |S4 |Selhání modulu |
-| Odebere modul SBB rozhraní |Upozornění |Žádný |Selhání modulu |
-| Jednotka selhání řízení spotřeby |Upozornění – bez výpadku napájení jednotky |S1 |Selhání modulu |
-| Jednotka selhání řízení spotřeby |Selhání – kritická; výpadku napájení jednotky |S1 |Selhání modulu |
-| Jednotka byla odebrána. |Upozornění |Žádný |Selhání modulu |
-| Nedostatečné napájení, které jsou k dispozici |Upozornění |None |Selhání modulu |
+| Upozornění PCM – výpadku napájení řadiče domény z jedné PCM |Selhání – bez ztráty redundance |S1 |Chyby modulu |
+| Upozornění PCM – výpadku napájení řadiče domény z jedné PCM |Selhání – ztrátu redundance |S1 |Chyby modulu |
+| Větráku PCM |Selhání – ztrátu redundance |S1 |Chyby modulu |
+| Propojení sběrnice SBB modulu bylo zjištěno selhání PCM |Selhání |S1 |Chyby modulu |
+| Odebrat PCM |Chyba konfigurace |Žádný |Chyby modulu |
+| Chyba konfigurace skříň |Selhání – kritické |S1 |Chyby modulu |
+| Nízká výstraha teploty upozornění |Upozornění |S1 |Chyby modulu |
+| Vysoká upozornění teploty |Upozornění |S1 |Chyby modulu |
+| Přes teplotní alarm |Selhání – kritické |S1 |Chyby modulu |
+| Selhání I2C Service bus |Selhání – ztrátu redundance |S1 |Chyby modulu |
+| OPS panelu došlo k chybě komunikace (I2C) |Selhání – kritické |S1 |Chyby modulu |
+| Chyba řadiče |Selhání – kritické |S1 |Chyby modulu |
+| Propojení sběrnice SBB rozhraní modulu selhání |Selhání – kritické |S1 |Chyby modulu |
+| Propojení sběrnice SBB rozhraní modulu selhání – žádný funkční moduly zbývající |Selhání – kritické |S4 |Chyby modulu |
+| Propojení sběrnice SBB rozhraní modulu odebrat |Upozornění |Žádný |Chyby modulu |
+| Jednotka řízení napájení |Upozornění – bez výpadku napájení jednotky |S1 |Chyby modulu |
+| Jednotka řízení napájení |Selhání – kritická; výpadku napájení jednotky |S1 |Chyby modulu |
+| Jednotka byla odebrána. |Upozornění |Žádný |Chyby modulu |
+| Nedostatek energie k dispozici |Upozornění |žádný |Chyby modulu |
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 Další informace o [StorSimple hardwarové součásti a stav](storsimple-8000-monitor-hardware-status.md).
 
 [1]: ./media/storsimple-monitoring-indicators/storsimple-monitoring-indicators-IMAGE01.png

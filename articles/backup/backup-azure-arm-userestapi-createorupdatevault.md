@@ -11,11 +11,11 @@ ms.date: 08/21/2018
 ms.author: pullabhk
 ms.assetid: e54750b4-4518-4262-8f23-ca2f0c7c0439
 ms.openlocfilehash: 4f18b10ee3f4148badc8e53a9660c9f5c998aef7
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55734330"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60646703"
 ---
 # <a name="create-azure-recovery-services-vault-using-rest-api"></a>Vytvoření trezoru služeb zotavení Azure pomocí rozhraní REST API
 
@@ -50,7 +50,7 @@ Následující běžné definice slouží k sestavení hlavní část žádosti:
 |location     |  true (pravda)       |String         |   Umístění prostředku      |
 |properties     |         | [VaultProperties](https://docs.microsoft.com/rest/api/recoveryservices/vaults/createorupdate#vaultproperties)        |  Vlastnosti trezoru       |
 |SKU     |         |  [Sku](https://docs.microsoft.com/rest/api/recoveryservices/vaults/createorupdate#sku)       |    Určuje jedinečný identifikátor systému každého prostředku Azure     |
-|tags     |         | Objekt        |     Značky prostředků    |
+|tags     |         | Object        |     Značky prostředků    |
 
 Všimněte si, že název trezoru a název skupiny prostředků jsou k dispozici v identifikátoru URI PUT. Tělo požadavku určuje umístění.
 

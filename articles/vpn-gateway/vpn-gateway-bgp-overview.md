@@ -2,18 +2,19 @@
 title: Přehled protokolu BGP a sítě Azure VPN Gateway | Dokumentace Microsoftu
 description: Tento článek obsahuje přehled protokolu BGP se službou Azure VPN Gateways.
 services: vpn-gateway
-author: yushwang
-manager: rossort
+author: WenJason
+manager: digimobile
 ms.service: vpn-gateway
 ms.topic: article
-ms.date: 01/12/2017
-ms.author: yushwang
+origin.date: 01/12/2017
+ms.date: 03/04/2019
+ms.author: v-jay
 ms.openlocfilehash: 91e9fe1eb6b3df0b64d05f2b1e300403a9e01db9
-ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54306518"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60762261"
 ---
 # <a name="about-bgp-with-azure-vpn-gateway"></a>Informace o protokolu BGP se službou Azure VPN Gateway
 Tento článek poskytuje přehled podpory protokolu BGP (Border Gateway Protocol) ve službě Azure VPN Gateway.

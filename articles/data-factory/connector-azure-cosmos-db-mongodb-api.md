@@ -13,11 +13,11 @@ ms.topic: conceptual
 ms.date: 12/20/2018
 ms.author: jingwang
 ms.openlocfilehash: 82418c03039219adedf45828d769d278a14499ff
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55816165"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61259711"
 ---
 # <a name="copy-data-to-or-from-azure-cosmos-dbs-api-for-mongodb-by-using-azure-data-factory"></a>Kopírování dat do nebo z rozhraní API služby Azure Cosmos DB pro MongoDB pomocí Azure Data Factory
 
@@ -49,7 +49,7 @@ Pro rozhraní API Azure Cosmos DB pro MongoDB propojené služby jsou podporová
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
 | type | **Typ** musí být vlastnost nastavena na **CosmosDbMongoDbApi**. | Ano |
-| připojovací řetězec |Zadejte připojovací řetězec pro Azure Cosmos DB pro rozhraní API pro MongoDB. Najdete ho na webu Azure Portal -> okna vaší služby Cosmos DB -> primární nebo sekundární připojovací řetězec s vzor `mongodb://<cosmosdb-name>:<password>@<cosmosdb-name>.documents.azure.com:10255/?ssl=true&replicaSet=globaldb`. <br/><br />Označte toto pole jako **SecureString** typ bezpečně uložit ve službě Data Factory. Můžete také [odkazovat tajného klíče do služby Azure Key Vault](store-credentials-in-key-vault.md). |Ano |
+| connectionString |Zadejte připojovací řetězec pro Azure Cosmos DB pro rozhraní API pro MongoDB. Najdete ho na webu Azure Portal -> okna vaší služby Cosmos DB -> primární nebo sekundární připojovací řetězec s vzor `mongodb://<cosmosdb-name>:<password>@<cosmosdb-name>.documents.azure.com:10255/?ssl=true&replicaSet=globaldb`. <br/><br />Označte toto pole jako **SecureString** typ bezpečně uložit ve službě Data Factory. Můžete také [odkazovat tajného klíče do služby Azure Key Vault](store-credentials-in-key-vault.md). |Ano |
 | databáze | Název databáze, které chcete získat přístup. | Ano |
 | connectVia | [Prostředí Integration Runtime](concepts-integration-runtime.md) používat pro připojení k úložišti. (Pokud je vaše úložiště dat se nachází v privátní síti), můžete použít modul Runtime integrace v Azure nebo místního prostředí integration runtime. Pokud není tato vlastnost určena, použije se výchozí prostředí Azure Integration Runtime. |Ne |
 
@@ -171,7 +171,7 @@ Následující vlastnosti jsou podporovány v aktivitě kopírování **jímky**
 |:--- |:--- |:--- |
 | type | **Typ** vlastnost jímky aktivity kopírování musí být nastavena na **CosmosDbMongoDbApiSink**. |Ano |
 | WriteBehavior |Popisuje, jak zapsat data do služby Azure Cosmos DB. Povolené hodnoty: **vložit** a **upsert**.<br/><br/>Chování **upsert** nahrazuje dokumentu, pokud dokument se stejným ID už existuje; v opačném případě vložit dokument.<br /><br />**Poznámka:** Data Factory automaticky vygeneruje ID dokumentu, pokud ID není zadán, buď v původním dokumentu nebo mapování sloupců. To znamená, že musíte zajistit, aby, pro **upsert** fungovat podle očekávání, váš dokument nemá identifikátor. |Ne<br />(výchozí hodnota je **vložit**) |
-| WriteBatchSize | **WriteBatchSize** vlastnost určuje velikost dokumenty pro zápis v každé dávce. Můžete zkusit zvýšit hodnotu **writeBatchSize** ke zlepšení výkonu a snížení hodnoty, pokud probíhá velké velikosti vašeho dokumentu. |Ne<br />(výchozí hodnota je **10 000**) |
+| writeBatchSize | **WriteBatchSize** vlastnost určuje velikost dokumenty pro zápis v každé dávce. Můžete zkusit zvýšit hodnotu **writeBatchSize** ke zlepšení výkonu a snížení hodnoty, pokud probíhá velké velikosti vašeho dokumentu. |Ne<br />(výchozí hodnota je **10 000**) |
 | writeBatchTimeout | Doba čekání pro dávku vložte na dokončení před vypršením časového limitu operace. Povolená hodnota je časový interval. | Ne<br/>(výchozí hodnota je **00:30:00** – 30 minut) |
 
 **Příklad**

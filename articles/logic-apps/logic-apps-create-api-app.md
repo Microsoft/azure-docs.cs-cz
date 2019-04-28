@@ -11,11 +11,11 @@ ms.topic: article
 ms.assetid: bd229179-7199-4aab-bae0-1baf072c7659
 ms.date: 05/26/2017
 ms.openlocfilehash: 620ede672d71338abeff5198fd5f94e92dc193d0
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57895851"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60681829"
 ---
 # <a name="create-custom-apis-you-can-call-from-azure-logic-apps"></a>Vytvoření vlastních rozhraní API můžete volat z Azure Logic Apps
 
@@ -168,7 +168,7 @@ Tady jsou konkrétní kroky cyklického dotazování aktivační události, je p
 | Najít nová data nebo událost?  | Odpověď rozhraní API | 
 | ------------------------- | ------------ |
 | Nalezeno | Vrátí HTTP `200 OK` stavu datové části odpovědi (vstup pro další krok). <br/>Tato odpověď vytvoří instanci aplikace logiky a spustí pracovní postup. | 
-| Nenalezené | Vrátí HTTP `202 ACCEPTED` stavu `location` záhlaví a `retry-after` záhlaví. <br/>Aktivačních událostí `location` by měl také obsahovat záhlaví `triggerState` parametr dotazu, což je obvykle "timestamp." Vaše rozhraní API můžete použít tento identifikátor pro sledování posledního času, který se aktivuje aplikace logiky. | 
+| Nenalezeno | Vrátí HTTP `202 ACCEPTED` stavu `location` záhlaví a `retry-after` záhlaví. <br/>Aktivačních událostí `location` by měl také obsahovat záhlaví `triggerState` parametr dotazu, což je obvykle "timestamp." Vaše rozhraní API můžete použít tento identifikátor pro sledování posledního času, který se aktivuje aplikace logiky. | 
 ||| 
 
 Například aby pravidelně kontrolovaly vaši službu pro nové soubory, může sestavení cyklického dotazování aktivační událost, která má tyto chování:

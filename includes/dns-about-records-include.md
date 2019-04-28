@@ -1,15 +1,16 @@
 ---
-author: vhorne
+author: WenJason
 ms.service: dns
 ms.topic: include
-ms.date: 11/25/2018
-ms.author: victorh
+origin.date: 11/25/2018
+ms.date: 12/24/2018
+ms.author: v-jay
 ms.openlocfilehash: f7fa018225d82e2db4a3c51b333aea6fcb9a1514
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52330872"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60563354"
 ---
 ### <a name="record-names"></a>Názvy záznamů
 
@@ -21,7 +22,7 @@ Záznam *„vrcholu“* je záznam DNS v kořeni (nebo *„vrcholu“*) zóny DN
 
 Každý záznam DNS má název a typ. Záznamy jsou uspořádány do různých typů podle dat, která obsahují. Nejběžnějším typem je záznam „A“, který mapuje název na adresu IPv4. Dalším běžným typem záznamu je „MX“, který mapuje název na poštovní server.
 
-Azure DNS podporuje všechny běžné typy záznamů DNS: A, AAAA, CAA, CNAME, MX, NS, PTR, SOA, SRV a TXT. [Záznamy SPF se vyjadřují pomocí záznamů TXT](../articles/dns/dns-zones-records.md#spf-records).
+Azure DNS podporuje všechny běžné typy záznamů DNS: A, AAAA, CAA, CNAME, MX, NS, PTR, SOA, SRV, and TXT. [Záznamy SPF se vyjadřují pomocí záznamů TXT](../articles/dns/dns-zones-records.md#spf-records).
 
 ### <a name="record-sets"></a>Sady záznamů
 

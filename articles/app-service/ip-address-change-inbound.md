@@ -12,11 +12,11 @@ ms.date: 06/28/2018
 ms.author: cephalin
 ms.custom: seodec18
 ms.openlocfilehash: aaa89b5a3bb1af6878ed21e0160a534a1c989228
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53721355"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61270060"
 ---
 # <a name="how-to-prepare-for-an-inbound-ip-address-change"></a>Postup přípravy na změnu příchozí IP adresy
 
@@ -24,13 +24,13 @@ Pokud jste dostali oznámení, že se mění příchozí IP adresu vaší aplika
 
 ## <a name="determine-if-you-have-to-do-anything"></a>Zjistit, pokud máte dělat nic.
 
-* Možnost 1: Pokud vaše aplikace app Service nemá žádné vlastní domény, nemusíte nic dělat.
+* Option 1: Pokud vaše aplikace app Service nemá žádné vlastní domény, nemusíte nic dělat.
 
-* Možnost 2: Pokud pouze záznam CNAME (záznam DNS odkazuje na identifikátor URI) je nakonfigurován v portálu pro registraci vaší domény (třetích stran poskytovatele DNS nebo Azure DNS), nemusíte nic dělat.
+* Option 2: Pokud pouze záznam CNAME (záznam DNS odkazuje na identifikátor URI) je nakonfigurován v portálu pro registraci vaší domény (třetích stran poskytovatele DNS nebo Azure DNS), nemusíte nic dělat.
 
 * Možnost 3: Pokud záznam (záznam DNS odkazuje přímo na IP adresu) je nakonfigurován v portálu pro registraci vaší domény (třetích stran poskytovatele DNS nebo Azure DNS), nahraďte existující IP adresu nového. Podle pokynů uvedených v následující části najdete novou IP adresu.
 
-* Možnost 4: Pokud je vaše aplikace za nástroj pro vyrovnávání zatížení, filtr nebo jiný mechanismus IP, která vyžaduje vaše aplikace IP adresu, nahraďte existující IP adresu nového. Podle pokynů uvedených v následující části najdete novou IP adresu.
+* Option 4: Pokud je vaše aplikace za nástroj pro vyrovnávání zatížení, filtr nebo jiný mechanismus IP, která vyžaduje vaše aplikace IP adresu, nahraďte existující IP adresu nového. Podle pokynů uvedených v následující části najdete novou IP adresu.
 
 ## <a name="find-the-new-inbound-ip-address-in-the-azure-portal"></a>Zjistit novou příchozí IP adresu na webu Azure Portal
 

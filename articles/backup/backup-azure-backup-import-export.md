@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.date: 05/17/2018
 ms.author: saurse
 ms.openlocfilehash: b6f0ce1939b2a78ca191d2feb0140506d130b9b0
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58107453"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60648255"
 ---
 # <a name="offline-backup-workflow-in-azure-backup"></a>Pracovní postup offline zálohování ve službě Azure Backup
 Azure Backup obsahuje několik předdefinovaných úspor, které ukládají náklady na síť a úložiště během počáteční úplné zálohování dat do Azure. Počáteční úplné zálohování obvykle přenos velkých objemů dat a vyžadují větší šířku pásma sítě, ve srovnání s následné zálohy, které přenášejí pouze rozdíly/přírůstková. Procesem offline předvyplnění Azure Backup můžete používat disky k odesílání dat offline zálohování do Azure.
@@ -175,7 +175,7 @@ Následující postup aktualizuje přenosů podrobnosti úlohy Import úložišt
 5. Až budete mít sledovací číslo od přenosů operátora, klikněte na banner na stránce Přehled úlohy Import úložiště Azure a zadejte následující údaje:
 
    > [!IMPORTANT] 
-   > Ujistěte se, že jsou aktualizované informace dopravce a sledování Číslo během dvou týdnů od vytvoření úlohy importu do Azure. Selhání ověření tyto informace do dvou týdnů může způsobit odstranění úlohy a jednotky nejsou zpracována.
+   > Do dvou týdnů od vytvoření úlohy importu do Azure nezapomeňte aktualizovat informace o dopravci a sledovací číslo. Selhání ověření tyto informace do dvou týdnů může způsobit odstranění úlohy a jednotky nejsou zpracována.
 
    ![Ukládat informace o dopravě](./media/backup-azure-backup-import-export/joboverview.png)<br/>
 

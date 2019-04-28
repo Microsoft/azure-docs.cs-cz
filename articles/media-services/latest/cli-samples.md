@@ -13,11 +13,11 @@ ms.custom: seodec18
 ms.date: 03/11/2019
 ms.author: juliako
 ms.openlocfilehash: dee7f831562dc1f4b2478d13b204aab1d8455e1e
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57840626"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60733177"
 ---
 # <a name="azure-cli-examples-for-azure-media-services"></a>Příklady Azure CLI pro službu Azure Media Services
 
@@ -28,7 +28,7 @@ Následující tabulka obsahuje odkazy na příklady Azure CLI pro službu Azure
 |  |  |
 |---|---|
 |**Škálování**||
-| [Rezervované jednotky médií škálování](media-reserved-units-cli-how-to.md)|Pro analýzu zvuku a videa analytických úloh, které jsou aktivovány Media Services v3 nebo Video Indexer důrazně doporučujeme pro účet zřídit s 10 použité položky S3. <br/>Tento skript ukazuje, jak pomocí rozhraní příkazového řádku můžete škálovat rezervované jednotky médií (použité položky).|
+| [Rezervované jednotky médií škálování](media-reserved-units-cli-how-to.md)|Pro úlohy analýzy zvuku a analýzy videa, které jsou aktivované službou Media Services v3 nebo Video Indexerem, důrazně doporučujeme zřídit váš účet s 10 rezervovanými jednotkami S3. <br/>Tento skript ukazuje, jak pomocí rozhraní příkazového řádku můžete škálovat rezervované jednotky médií (použité položky).|
 |**Účet**||
 | [Vytvoření účtu Media Services](create-account-cli-how-to.md) | Tento skript vytvoří účet Azure Media Services. |
 | [Resetovat přihlašovací údaje k účtu](./scripts/cli-reset-account-credentials.md)|Resetování přihlašovacích údajů k účtu a získá zpět nastavení souboru app.config.|
@@ -47,4 +47,4 @@ Následující tabulka obsahuje odkazy na příklady Azure CLI pro službu Azure
 ## <a name="see-also"></a>Další informace najdete v tématech
 
 - [Azure CLI](https://docs.microsoft.com/cli/azure/ams?view=azure-cli-latest)
-- [Rychlé zprovoznění: Stream video soubory – rozhraní příkazového řádku](stream-files-cli-quickstart.md)
+- [Rychlé zprovoznění: Streamování videosouborů – CLI](stream-files-cli-quickstart.md)

@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 1/30/2019
 ms.author: rgarcia
 ms.openlocfilehash: 0dab71b6d169e26a3d7dc208dd09efe1143fbe13
-ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58305355"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60681182"
 ---
 ### <a name="open-the-publish-wizard"></a>Otevřete Průvodce publikováním
 
@@ -44,7 +44,7 @@ V **konfigurace plánu hostování** dialogovém okně pomocí těchto nastaven�
 | Nastavení | Navrhovaná hodnota | Popis |
 |-|-|-|
 |Plán služby App Service| MySharingServicePlan | Název plánu služby App Service. |
-| Umístění | Západní USA | Datacentrum, které je hostitelem webové aplikace. |
+| Location | Západní USA | Datacentrum, které je hostitelem webové aplikace. |
 | Velikost | Free | [Cenovou úroveň](https://azure.microsoft.com/pricing/details/app-service/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) , který určuje funkce hostování. |
 
 Vyberte **OK**.

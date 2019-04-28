@@ -12,11 +12,11 @@ ms.topic: article
 ms.date: 06/06/2017
 ms.author: KumudD
 ms.openlocfilehash: 9f5206ef5348ee8fd7b3fe981a9cfe4afc1367fb
-ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58337047"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60734537"
 ---
 # <a name="get-load-balancer-utilization-metrics-using-the-rest-api"></a>Získat metriky využití pro vyrovnávání zatížení pomocí rozhraní REST API
 
@@ -50,7 +50,7 @@ Vyžadují se následující hlavičky:
 | loadBalancerName | Název nástroje pro vyrovnávání zatížení Azure. |
 | metricnames | Čárkami oddělený seznam platných [metriky Load balanceru úrovně](/azure/load-balancer/load-balancer-standard-diagnostics). |
 | verze API-version | Verze rozhraní API, která se má použít pro daný požadavek.<br /><br /> Tento dokument popisuje verzi api-version `2018-01-01`, který je obsažen v adrese URL výše.  |
-| Časový interval | Časový interval dotazu. Jedná se o řetězec v následujícím formátu `startDateTime_ISO/endDateTime_ISO`. Tento nepovinný parametr je nastaven na vrátit data za jeden den v příkladu. |
+| TimeSpan | Časový interval dotazu. Jedná se o řetězec v následujícím formátu `startDateTime_ISO/endDateTime_ISO`. Tento nepovinný parametr je nastaven na vrátit data za jeden den v příkladu. |
 | &nbsp; | &nbsp; |
 
 ### <a name="request-body"></a>Text požadavku

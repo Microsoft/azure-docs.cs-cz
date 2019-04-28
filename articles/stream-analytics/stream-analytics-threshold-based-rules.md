@@ -2,19 +2,20 @@
 title: Pravidla ve službě Azure Stream Analytics na základě procesu konfigurovatelné prahové hodnoty
 description: Tento článek popisuje, jak použít referenční data k dosažení výstrah řešení, které se dají konfigurovat na základě prahových hodnot pravidla ve službě Azure Stream Analytics.
 services: stream-analytics
-author: zhongc
-ms.author: zhongc
-manager: kfile
+author: rockboyfor
+ms.author: v-yeche
+manager: digimobile
 ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 04/30/2018
+origin.date: 04/30/2018
+ms.date: 08/20/2018
 ms.openlocfilehash: ce2cf6ebdfd74549114e94e4c7356e387576d3c8
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56731187"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60761722"
 ---
 # <a name="process-configurable-threshold-based-rules-in-azure-stream-analytics"></a>Zpracovat konfigurovatelných pravidel založené na prahových hodnotách ve službě Azure Stream Analytics
 Tento článek popisuje, jak použít referenční data k dosažení řešení, která používá konfigurovatelných pravidel založené na prahových hodnotách ve službě Azure Stream Analytics.
@@ -46,7 +47,6 @@ Referenční data tento příklad ukazuje, jak můžou být reprezentované prav
 - Všimněte si, že má pravidlo **operátor** pole, které dynamicky interpretována v syntaxi dotazů později `AVGGREATEROREQUAL`. 
 - Pravidlo filtruje data na určitou klávesu dimenze `2` s hodnotou `C1`. Ostatní pole jsou prázdný řetězec označující není pro filtrování na základě těchto událostí polí vstupního datového proudu. Může nastavit další pravidla procesoru k filtrování další odpovídající pole, podle potřeby.
 - Ne všechny sloupce se mají být zahrnuty do výstupní událost upozornění. V takovém případě `includedDim` klíče číslo `2` zapnutý `TRUE` znázornit, že se data událostí v datovém proudu číslo 2 zahrnou kvalifikující události výstup. V ostatních polích nejsou součástí výstupu výstrahy, ale v seznamu polí je možné upravit.
-
 
 ```json
 {
@@ -292,3 +292,4 @@ Tento příklad výstupu JSON daty se dozvíte, které bylo vytvořeno jednu ud�
 "alert":"hot node AVG CPU over 90","avg":96.5,"min":95.0,"max":98.0,
 "dim0":null,"dim1":null,"dim2":"N024","dim3":null,"dim4":null}
 ```
+<!--Update_Description: updat meta properties, wording update-->

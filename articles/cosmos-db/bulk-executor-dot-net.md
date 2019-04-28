@@ -10,11 +10,11 @@ ms.date: 10/16/2018
 ms.author: ramkris
 ms.reviewer: sngun
 ms.openlocfilehash: cfb90dc31635001291b1661f31ec2ee1fc378404
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59523337"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60894437"
 ---
 # <a name="use-bulk-executor-net-library-to-perform-bulk-operations-in-azure-cosmos-db"></a>Pomocí knihovny .NET prováděcí modul hromadného budou provádět hromadné operace ve službě Azure Cosmos DB
 

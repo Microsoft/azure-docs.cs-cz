@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 10/28/2018
 ms.author: rkarlin
 ms.openlocfilehash: 28b4667a9ceb4b3534d85ba28668f06c750e22c5
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56112253"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60703849"
 ---
 # <a name="strengthen-your-security-posture-with-azure-security-center"></a>Posílení stavu zabezpečení v Azure Security Center
 Tento článek pomáhá posílení stavu zabezpečení. Ujistěte se, že je tak vysoké jako možné a monitorování dodržování předpisů se zásadami zabezpečení vašich prostředků pomocí funkce sledování v Azure Security Center.

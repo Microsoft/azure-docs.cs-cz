@@ -10,11 +10,11 @@ ms.service: data-lake-analytics
 ms.topic: conceptual
 ms.date: 05/20/2018
 ms.openlocfilehash: 5a2935d559a967151c5bdc01c4b0806fe52179b4
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51260036"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60629710"
 ---
 # <a name="troubleshoot-an-abnormal-recurring-job"></a>Řešení potíží s neobvykle se opakující úlohou
 
@@ -27,7 +27,7 @@ Opakující se úlohy obvykle sdílet stejnou logiku dotazu a podobně jako vstu
 
 **Související zobrazení úloh** v Azure Data Lake Tools pro Visual Studio vám pomáhá zrychlit postup řešení potíží s obou případech.
 
-## <a name="step-1-find-recurring-jobs-and-open-related-job-view"></a>Krok 1: Vyhledání opakující se úlohy a otevřete zobrazení související úlohy
+## <a name="step-1-find-recurring-jobs-and-open-related-job-view"></a>Krok 1: Vyhledejte opakující se úlohy a otevřete zobrazení související úlohy
 
 Použití zobrazení související úlohy k vyřešení problému opakované úlohy, musíte napřed zjistěte opakované úlohy v sadě Visual Studio a otevřete zobrazení související úlohy.
 
@@ -37,7 +37,7 @@ Prostřednictvím **nástroje** > **Data Lake** > **zobrazení úloh**, můžete
 
 ![Odkaz zobrazení související úlohy v nástrojích Data Lake Analytics](./media/data-lake-analytics-data-lake-tools-debug-recurring-job/view-related-job.png)
  
-### <a name="case-2-you-have-the-pipeline-for-the-recurring-job-but-not-the-url"></a>Případ 2: Máte kanál pro opakované úlohy, ale nikoliv adresu URL
+### <a name="case-2-you-have-the-pipeline-for-the-recurring-job-but-not-the-url"></a>Případ 2: Máte příležitost pro opakované úlohy, ale nikoliv adresu URL
 
 V sadě Visual Studio, můžete otevřít Prohlížeč kanálů prostřednictvím Průzkumníka serveru > váš účet Azure Data Lake Analytics > **kanály**. (Pokud tento uzel nejde najít v Průzkumníku serveru [stáhněte si nejnovější modul plug-in](https://aka.ms/adltoolsvs).) 
 
@@ -47,7 +47,7 @@ V prohlížeči kanálu jsou uvedeny všechny kanály pro účet Data Lake Analy
 
 ![Výběr kanálu a otevřete zobrazení související úlohy](./media/data-lake-analytics-data-lake-tools-debug-recurring-job/recurring-job-view.png)
 
-## <a name="step-2-analyze-a-statistics-report"></a>Krok 2: Analýza sestavy statistik
+## <a name="step-2-analyze-a-statistics-report"></a>Krok 2: Analýza sestavy statistiky
 
 Souhrn a statistiky sestavy se zobrazují v horní části zobrazení související úlohy. Tam si můžete najít hlavní příčinu problému. 
 

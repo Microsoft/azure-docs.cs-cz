@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 06/02/2017
 ms.author: alkohli
-ms.openlocfilehash: 855ea6c34082b859bb5b5b6e69b3e3f2fa54eb4a
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: b36d721896bd7b4f95d831eded500a96969937c5
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39056459"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60631885"
 ---
 # <a name="technical-specifications-and-compliance-for-the-storsimple-device"></a>Technické specifikace a dodržování předpisů pro zařízení StorSimple
 
@@ -37,13 +37,13 @@ Skříň EBOD používá 580 W PCM a 764 W PCM používá primární skříň. V
 | --- | --- | --- |
 | Maximální výstupní výkon |580 W |764 |
 | Frekvence |50/60 Hz |50/60 Hz |
-| Výběr rozsahu napětí |Automatické rozsahu: 47/63 Hz, V AC 90 – 264 |Automatické rozsahu: 90-264 V střídavý proud, Hz 47/63 |
+| Výběr rozsahu napětí |Automatické rozsahu: 90 – 264 V AC, Hz 47/63 |Automatické rozsahu: 90- 264 V AC, 47/63 Hz |
 | Maximální průvalu aktuální |20 A |20 A |
 | Korekce faktor výkonu |> 95 % nominální vstupní napětí |> 95 % nominální vstupní napětí |
 | Harmonické |Splňuje EN61000-3-2 |Splňuje EN61000-3-2 |
 | Výstup |Snímač 5v síťového napětí pohotovostní \@ 2.0 A |Snímač 5v síťového napětí pohotovostní \@ 2.7 A |
-| + 5 \@ 42 A |+ 5 \@ 40 A | |
-| SNÍMAČ 12V SÍŤOVÉHO + \@ 38 A |SNÍMAČ 12V SÍŤOVÉHO + \@ 38 A | |
+| +5V \@ 42 A |+5V \@ 40 A | |
+| +12V \@ 38 A |+12V \@ 38 A | |
 | Horká modulární |Ano |Ano |
 | Přepínače a indikátorů LED |Přepínač nebo vypnout AC a čtyři stav indikátorů LED |Přepínač nebo vypnout AC a šest stav indikátorů LED |
 | Chladicí zařízení |Axiální chladicí ventilátory, řízením ventilátoru proměnné rychlost |Axiální chladicí ventilátory, řízením ventilátoru proměnné rychlost |
@@ -54,12 +54,12 @@ Následující tabulka uvádí data o spotřebě typické napájení (skutečné
 
 | Podmínky | 240 V AC | 240 V AC | 240 V AC | 110 V AC | 110 V AC | 110 V AC |
 | --- | --- | --- | --- | --- | --- | --- |
-|  Pomalé, jednotky fanoušky nečinnosti |1,45 A |0.31 kW |1057.76 KJ/hod |3.19 A |0.34 kW |1160.13 KJ/hod |
-|  Přístup k pomalé, jednotky fanoušků. |1.54 A |0.33 kW |1126.01 KJ/hod |3.27 A |0.36 kW |1228.37 KJ/hod |
-|  S využitím dvou PSUs fanoušků rychlé, disky nečinné, |2.14 A |0.49 kW |1671.95 KJ/hod |4,99 A |0.54 kW |1842.56 KJ/hod |
-|  Rychlé, fanoušků jednotkami nečinné, jeden PSU využívající jednu nečinnosti |2.05 A |0.48 kW |1637.83 KJ/hod |4.58 A |0,50 kW |1706.07 KJ/hod |
-|  Přístup ke dvěma PSUs s využitím rychlé, jednotky fanoušků. |2.26 A |0,51 kW |1740.19 KJ/hod |4.95 A |0.54 kW |1842.56 KJ/hod |
-|  Rychlé ventilátory, jednotky přístup, jeden PSU využívající jednu nečinnosti |2.14 A |0.49 kW |1671.95 KJ/hod |4.81 A |0.53 kW |1808.44 KJ/hod |
+|  Pomalé, jednotky fanoušky nečinnosti |1,45 A |0.31 kW |1057.76 BTU/hr |3.19 A |0.34 kW |1160.13 BTU/hr |
+|  Přístup k pomalé, jednotky fanoušků. |1.54 A |0.33 kW |1126.01 BTU/hr |3.27 A |0.36 kW |1228.37 BTU/hr |
+|  S využitím dvou PSUs fanoušků rychlé, disky nečinné, |2.14 A |0.49 kW |1671.95 BTU/hr |4,99 A |0.54 kW |1842.56 BTU/hr |
+|  Rychlé, fanoušků jednotkami nečinné, jeden PSU využívající jednu nečinnosti |2.05 A |0.48 kW |1637.83 BTU/hr |4.58 A |0,50 kW |1706.07 BTU/hr |
+|  Přístup ke dvěma PSUs s využitím rychlé, jednotky fanoušků. |2.26 A |0,51 kW |1740.19 BTU/hr |4.95 A |0.54 kW |1842.56 BTU/hr |
+|  Rychlé ventilátory, jednotky přístup, jeden PSU využívající jednu nečinnosti |2.14 A |0.49 kW |1671.95 BTU/hr |4.81 A |0.53 kW |1808.44 BTU/hr |
 
 ## <a name="disk-drive-specifications"></a>Specifikace diskovou jednotku
 
@@ -104,7 +104,7 @@ V následující tabulce jsou uvedeny dimenze skříň v milimetrech a palců.
 
 V závislosti na konfiguraci úplným načtením primární skříně můžete naváží od 21 33 kg a vyžaduje dvě osoby, aby to zvládnul.
 
-| Skříň | Váha |
+| Skříň | Hmotnost |
 | --- | --- |
 | Maximální tloušťka (závisí na konfiguraci) |30 kg – 33 kg |
 | Prázdný (instalováno žádné jednotky) |21 – kg 23 |
@@ -150,7 +150,7 @@ Zařízení Microsoft Azure StorSimple splňuje následující mezinárodními s
 Vaše zařízení Microsoft Azure StorSimple splňuje následující bezpečnostní hodnocení:
 
 * Schválení typ produktu systému: UL cUL CE
-* Dodržování bezpečnostních předpisů: UL 60950 IEC 60950, cs 60950
+* Dodržování předpisů zabezpečení: UL 60950, IEC 60950, EN 60950
 
 ## <a name="emc-compliance"></a>Dodržování předpisů EMC
 
@@ -160,8 +160,8 @@ Vaše zařízení Microsoft Azure StorSimple splňuje následující hodnocení 
 
 Zařízení kompatibilní se standardem EMC provedeny a vyzářený emisí úrovní.
 
-* Provedeny emisí omezení úrovní: 47 CFR oddíl 15B třídy A EN55022 třídy A CISPR třída A
-* Vyzářený emisí omezení úrovní: 47 CFR oddíl 15B třídy A EN55022 třídy A CISPR třída A
+* Regulovat emisí omezení úrovní: EN55022 CFR 47 část 15B třídy A třídy CISPR třída A
+* Vyzářené emisí omezení úrovní: EN55022 CFR 47 část 15B třídy A třídy CISPR třída A
 
 ### <a name="harmonics-and-flicker"></a>Harmonické a blikání
 
@@ -181,14 +181,14 @@ Moduly a kabel sestavení dokončeno power musí splňovat standardy, které jso
 | --- | --- |
 | Typ kabel |SV nebo SVT 18 AWG minimální, 3 conductor maximální délku měřiče 2.0 |
 | Moduly |Moduly se seznámíte s obecnými typ přílohy 5 – 15P NEMA hodnocení 120 V, 10 A; nebo IEC 320 C14, 250 V, 10 A |
-| Soketu |IEC 320 C-13 250 V 10 A |
+| Soketu |IEC 320 C-13, 250 V, 10 A |
 
 ### <a name="ac-power-cords---europe"></a>Napájecích kabelů AC – Evropa
 
 | Komponenta | Specifikace |
 | --- | --- |
-| Typ kabel |Harmonizovaného H05. VVF 3G1.0 |
-| Soketu |IEC 320 C-13 250 V 10 A |
+| Typ kabel |Harmonized, H05-VVF-3G1.0 |
+| Soketu |IEC 320 C-13, 250 V, 10 A |
 
 ## <a name="supported-network-cables"></a>Podporované síťové kabely
 

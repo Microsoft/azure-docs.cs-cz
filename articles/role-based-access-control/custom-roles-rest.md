@@ -16,11 +16,11 @@ ms.date: 04/18/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.openlocfilehash: 4024f6fdb40c752ef61f348d15f681e81d81c08c
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "59999770"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60596678"
 ---
 # <a name="create-custom-roles-for-azure-resources-using-the-rest-api"></a>Vytvoření vlastních rolí pro prostředky Azure pomocí rozhraní REST API
 

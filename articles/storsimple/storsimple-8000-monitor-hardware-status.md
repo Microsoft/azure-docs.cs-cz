@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/15/2018
 ms.author: alkohli
-ms.openlocfilehash: 58007eea9ce25423bc3a9c2847de42db04be43eb
-ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
+ms.openlocfilehash: a987239669e7437a179f5f24034f4dbe45535663
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "42059082"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60632824"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-monitor-hardware-components-and-status"></a>Použití služby Správce zařízení StorSimple pro monitorování hardwarových součástí a stav
 
@@ -79,7 +79,7 @@ Proveďte následující kroky a zobrazení stavu hardwaru zařízení součást
 ## <a name="component-list-for-primary-enclosure-of-storsimple-device"></a>Seznam komponent pro primární skříň zařízení StorSimple
 Následující tabulka uvádí fyzické a logické součásti, které jsou obsažené ve primárního skříň (k dispozici v nástroji 8100 nebo 8600) vašeho místního zařízení StorSimple.
 
-| Komponenta | Modul | Typ | Umístění | Pole vyměnitelná jednotka (FRU)? | Popis |
+| Komponenta | Modul | Type | Location | Pole vyměnitelná jednotka (FRU)? | Popis |
 | --- | --- | --- | --- | --- | --- |
 | Jednotka ve slotu [0-11] |Diskové jednotky |Fyzické |Shared |Ano |Pro každou SSD nebo HDD disky ve primárního skříni se zobrazí jeden řádek. |
 | Snímač okolní teploty |Skříň |Fyzické |Shared |Ne |Měří teploty v rámci skříni. |
@@ -105,22 +105,22 @@ Následující tabulka uvádí fyzické a logické součásti, které jsou obsa�
 | Prostor NVRAM disku SSD |neuvedeno |Logické |Shared |neuvedeno |Prostor úložiště ve fondu úložiště SSD, který je vyhrazen pro NVRAM logiku. |
 | Fond úložiště pevného disku |neuvedeno |Logické |Shared |neuvedeno |Zobrazí stav logického úložiště fondu, který je vytvořen ze zařízení pevných disků. |
 | Fond úložiště disku SSD |neuvedeno |Logické |Shared |neuvedeno |Zobrazí stav logického úložiště fondu, který je vytvořen ze zařízení SSD. |
-| Řadič [0-1] [stav] |VSTUPNĚ-VÝSTUPNÍCH OPERACÍ |Fyzické |Kontroler |Ano |Zobrazuje stav řadiče, a zda je v režimu aktivní nebo pohotovostní ve skříni. |
-| Teploty senzorů v kontroleru |VSTUPNĚ-VÝSTUPNÍCH OPERACÍ |Fyzické |Kontroler |Ne |Mnoho senzorů teploty, jako je například modul vstupně-výstupních operací, teploty procesoru, DIMM a PCIe senzorů máte zobrazený, jejich stav označující, zda došlo k teplotu v rámci proti chybám. |
-| Rozšíření SAS |VSTUPNĚ-VÝSTUPNÍCH OPERACÍ |Fyzické |Kontroler |Ne |Označuje stav sériového portu připojený rozšíření SCSI (SAS), který se používá pro připojení integrované úložiště ke kontroleru. |
-| Konektor SAS [0-1] |VSTUPNĚ-VÝSTUPNÍCH OPERACÍ |Fyzické |Kontroler |Ne |Označuje stav každého konektoru SAS, který se používá pro připojení integrované úložiště k rozšířením SAS. |
-| Propojení sběrnice SBB uprostřed roviny propojení |VSTUPNĚ-VÝSTUPNÍCH OPERACÍ |Fyzické |Kontroler |Ne |Označuje stav uprostřed roviny konektor, který slouží k připojení každého řadiče se uprostřed rovinou. |
-| Jádro procesoru |VSTUPNĚ-VÝSTUPNÍCH OPERACÍ |Fyzické |Kontroler |Ne |Označuje stav jader procesoru v rámci každého řadiče. |
-| Napájení elektroniky skříně |VSTUPNĚ-VÝSTUPNÍCH OPERACÍ |Fyzické |Kontroler |Ne |Označuje stav napájení systému používá přílohu. |
-| Diagnostika elektroniky skříně |VSTUPNĚ-VÝSTUPNÍCH OPERACÍ |Fyzické |Kontroler |Ne |Označuje stav subsystémů diagnostiky poskytované kontroleru. |
-| Řadič pro správu základní desky (BMC) |VSTUPNĚ-VÝSTUPNÍCH OPERACÍ |Fyzické |Kontroler |Ne |Označuje stav řadič pro správu (BMC), což je specializovaná služba procesor, který monitoruje hardwarové zařízení prostřednictvím snímačů a komunikuje se na správce systému prostřednictvím připojení k nezávislé. |
-| Ethernet |VSTUPNĚ-VÝSTUPNÍCH OPERACÍ |Fyzické |Kontroler |Ne |Označuje stav jednotlivých síťových rozhraní, to znamená, správu a porty data k dispozici na kontroleru. |
-| NVRAM |VSTUPNĚ-VÝSTUPNÍCH OPERACÍ |Fyzické |Kontroler |Ne |Označuje stav NVRAM paměť s náhodným přístupem stálé zajištěná baterie, který slouží k uchování aplikace důležitých informací v případě výpadku napájení. |
+| Řadič [0-1] [stav] |VSTUPNĚ-VÝSTUPNÍCH OPERACÍ |Fyzické |Kontrolér |Ano |Zobrazuje stav řadiče, a zda je v režimu aktivní nebo pohotovostní ve skříni. |
+| Teploty senzorů v kontroleru |VSTUPNĚ-VÝSTUPNÍCH OPERACÍ |Fyzické |Kontrolér |Ne |Mnoho senzorů teploty, jako je například modul vstupně-výstupních operací, teploty procesoru, DIMM a PCIe senzorů máte zobrazený, jejich stav označující, zda došlo k teplotu v rámci proti chybám. |
+| Rozšíření SAS |VSTUPNĚ-VÝSTUPNÍCH OPERACÍ |Fyzické |Kontrolér |Ne |Označuje stav sériového portu připojený rozšíření SCSI (SAS), který se používá pro připojení integrované úložiště ke kontroleru. |
+| Konektor SAS [0-1] |VSTUPNĚ-VÝSTUPNÍCH OPERACÍ |Fyzické |Kontrolér |Ne |Označuje stav každého konektoru SAS, který se používá pro připojení integrované úložiště k rozšířením SAS. |
+| Propojení sběrnice SBB uprostřed roviny propojení |VSTUPNĚ-VÝSTUPNÍCH OPERACÍ |Fyzické |Kontrolér |Ne |Označuje stav uprostřed roviny konektor, který slouží k připojení každého řadiče se uprostřed rovinou. |
+| Jádro procesoru |VSTUPNĚ-VÝSTUPNÍCH OPERACÍ |Fyzické |Kontrolér |Ne |Označuje stav jader procesoru v rámci každého řadiče. |
+| Napájení elektroniky skříně |VSTUPNĚ-VÝSTUPNÍCH OPERACÍ |Fyzické |Kontrolér |Ne |Označuje stav napájení systému používá přílohu. |
+| Diagnostika elektroniky skříně |VSTUPNĚ-VÝSTUPNÍCH OPERACÍ |Fyzické |Kontrolér |Ne |Označuje stav subsystémů diagnostiky poskytované kontroleru. |
+| Řadič pro správu základní desky (BMC) |VSTUPNĚ-VÝSTUPNÍCH OPERACÍ |Fyzické |Kontrolér |Ne |Označuje stav řadič pro správu (BMC), což je specializovaná služba procesor, který monitoruje hardwarové zařízení prostřednictvím snímačů a komunikuje se na správce systému prostřednictvím připojení k nezávislé. |
+| Ethernet |VSTUPNĚ-VÝSTUPNÍCH OPERACÍ |Fyzické |Kontrolér |Ne |Označuje stav jednotlivých síťových rozhraní, to znamená, správu a porty data k dispozici na kontroleru. |
+| NVRAM |VSTUPNĚ-VÝSTUPNÍCH OPERACÍ |Fyzické |Kontrolér |Ne |Označuje stav NVRAM paměť s náhodným přístupem stálé zajištěná baterie, který slouží k uchování aplikace důležitých informací v případě výpadku napájení. |
 
 ## <a name="component-list-for-ebod-enclosure-of-storsimple-device"></a>Seznam komponent pro EBOD skříň zařízení StorSimple
 Následující tabulka uvádí fyzické a logické součásti, které jsou obsaženy ve skříni EBOD (k dispozici pouze v modelu 8600) z vašeho místního zařízení StorSimple.
 
-| Komponenta | Modul | Typ | Umístění | FRU? | Popis |
+| Komponenta | Modul | Type | Location | FRU? | Popis |
 | --- | --- | --- | --- | --- | --- |
 | Jednotka ve slotu [0-11] |Diskové jednotky |Fyzické |Shared |Ano |Pro každou HDD disků ve skříni EBOD se zobrazí jeden řádek. |
 | Snímač okolní teploty |Skříň |Fyzické |Shared |Ne |Měří teploty v rámci skříni. |
@@ -134,14 +134,14 @@ Následující tabulka uvádí fyzické a logické součásti, které jsou obsa�
 | Zdroj napájení [0-1] |PCM |Fyzické |Shared |Ano |Pro každou napájení ve dvou PCMs nachází zadní zařízení se zobrazí jeden řádek. |
 | Chlazení [0-1] |PCM |Fyzické |Shared |Ano |Pro každý ze čtyř chladicí ventilátory, které se nacházejí ve dvou PCMs se zobrazí jeden řádek. |
 | Místní úložiště [HDD] |neuvedeno |Logické |Shared |neuvedeno |Zobrazí stav logického úložiště fondu, který je vytvořen ze zařízení pevných disků. |
-| Řadič [0-1] [stav] |VSTUPNĚ-VÝSTUPNÍCH OPERACÍ |Fyzické |Kontroler |Ano |Zobrazuje stav řadiče EBOD modulu. |
-| Teploty senzorů v EBOD |VSTUPNĚ-VÝSTUPNÍCH OPERACÍ |Fyzické |Kontroler |Ne |Mnoho senzorů teploty z každého řadiče máte zobrazený, jejich stav označující, zda došlo k teplotu v rámci proti chybám. |
-| Rozšíření SAS |VSTUPNĚ-VÝSTUPNÍCH OPERACÍ |Fyzické |Kontroler |Ne |Označuje stav rozšíření SAS, který se používá pro připojení integrované úložiště ke kontroleru. |
-| Konektor SAS [0-2] |VSTUPNĚ-VÝSTUPNÍCH OPERACÍ |Fyzické |Kontroler |Ne |Označuje stav každého konektoru SAS, který se používá pro připojení integrované úložiště k rozšířením SAS. |
-| Propojení sběrnice SBB uprostřed roviny propojení |VSTUPNĚ-VÝSTUPNÍCH OPERACÍ |Fyzické |Kontroler |Ne |Označuje stav uprostřed roviny konektor, který slouží k připojení každého řadiče se uprostřed rovinou. |
-| Napájení elektroniky skříně |VSTUPNĚ-VÝSTUPNÍCH OPERACÍ |Fyzické |Kontroler |Ne |Označuje stav napájení systému používá přílohu. |
-| Diagnostika elektroniky skříně |VSTUPNĚ-VÝSTUPNÍCH OPERACÍ |Fyzické |Kontroler |Ne |Označuje stav subsystémů diagnostiky poskytované kontroleru. |
-| Připojení ke kontroleru zařízení |VSTUPNĚ-VÝSTUPNÍCH OPERACÍ |Fyzické |Kontroler |Ne |Označuje stav připojení mezi řadiči zařízení a modul EBOD vstupně-výstupních operací. |
+| Řadič [0-1] [stav] |VSTUPNĚ-VÝSTUPNÍCH OPERACÍ |Fyzické |Kontrolér |Ano |Zobrazuje stav řadiče EBOD modulu. |
+| Teploty senzorů v EBOD |VSTUPNĚ-VÝSTUPNÍCH OPERACÍ |Fyzické |Kontrolér |Ne |Mnoho senzorů teploty z každého řadiče máte zobrazený, jejich stav označující, zda došlo k teplotu v rámci proti chybám. |
+| Rozšíření SAS |VSTUPNĚ-VÝSTUPNÍCH OPERACÍ |Fyzické |Kontrolér |Ne |Označuje stav rozšíření SAS, který se používá pro připojení integrované úložiště ke kontroleru. |
+| Konektor SAS [0-2] |VSTUPNĚ-VÝSTUPNÍCH OPERACÍ |Fyzické |Kontrolér |Ne |Označuje stav každého konektoru SAS, který se používá pro připojení integrované úložiště k rozšířením SAS. |
+| Propojení sběrnice SBB uprostřed roviny propojení |VSTUPNĚ-VÝSTUPNÍCH OPERACÍ |Fyzické |Kontrolér |Ne |Označuje stav uprostřed roviny konektor, který slouží k připojení každého řadiče se uprostřed rovinou. |
+| Napájení elektroniky skříně |VSTUPNĚ-VÝSTUPNÍCH OPERACÍ |Fyzické |Kontrolér |Ne |Označuje stav napájení systému používá přílohu. |
+| Diagnostika elektroniky skříně |VSTUPNĚ-VÝSTUPNÍCH OPERACÍ |Fyzické |Kontrolér |Ne |Označuje stav subsystémů diagnostiky poskytované kontroleru. |
+| Připojení ke kontroleru zařízení |VSTUPNĚ-VÝSTUPNÍCH OPERACÍ |Fyzické |Kontrolér |Ne |Označuje stav připojení mezi řadiči zařízení a modul EBOD vstupně-výstupních operací. |
 
 ## <a name="next-steps"></a>Další postup
 * Pokud chcete použít ke správě zařízení ve službě Správce zařízení StorSimple, přejděte na [použití služby Správce zařízení StorSimple ke správě zařízení StorSimple](storsimple-8000-manager-service-administration.md).

@@ -15,11 +15,11 @@ ms.topic: reference
 ms.date: 09/13/2018
 ms.author: pbutlerm
 ms.openlocfilehash: 9484cf0f549db94be8f1ac2363addca952a3cff3
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48809498"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61096059"
 ---
 <a name="retrieve-a-specific-offer"></a>Načtení konkrétní nabídky
 =========================
@@ -47,15 +47,15 @@ Můžete také načíst konkrétní verzi nabídky nebo načíst nabídky v náv
 
 | **Název**    | **Popis**                                                                          | **Datový typ** |
 |-------------|------------------------------------------------------------------------------------------|---------------|
-| publisherId | publisherId. Například Contoso                                                        | Řetězec        |
-| offerId     | Identifikátor GUID, který jedinečně identifikuje tuto nabídku.                                                 | Řetězec        |
+| publisherId | publisherId. Například Contoso                                                        | String        |
+| offerId     | Identifikátor GUID, který jedinečně identifikuje tuto nabídku.                                                 | String        |
 | version     | Verze nabídky načítají. Ve výchozím nastavení se načte nejnovější nabídky. | Integer       |
-| ID      | Slot, ze kterého má být načtena, nabídka může být jedna z:      <br/>  - `Draft` (výchozí) načte verzi nabídky aktuálně v návrhu.  <br/>  -  `Preview` načte verzi nabídky aktuálně ve verzi preview.     <br/>  -  `Production` načte verzi nabídky aktuálně v produkčním prostředí.          |      Výčet |
+| slotId      | Slot, ze kterého má být načtena, nabídka může být jedna z:      <br/>  - `Draft` (výchozí) načte verzi nabídky aktuálně v návrhu.  <br/>  -  `Preview` načte verzi nabídky aktuálně ve verzi preview.     <br/>  -  `Production` načte verzi nabídky aktuálně v produkčním prostředí.          |      Výčet |
 | verze API-version | Nejnovější verzi rozhraní API                                                                    | Datum          |
 |  |  |  |
 
 
-<a name="header"></a>Záhlaví
+<a name="header"></a>Hlavička
 ------
 
 |  **Název**          |   **Hodnota**            |
@@ -189,7 +189,7 @@ Můžete také načíst konkrétní verzi nabídky nebo načíst nabídky v náv
 
 ### <a name="response-status-codes"></a>Stavové kódy odezvy
 
-| **kód**  | **Popis**                                                                                                                 |
+| **Kód**  | **Popis**                                                                                                                 |
 |  ------   | ------------------------------------------------------------------------------------------------------------------------------- |
 |  200      | `OK` -Žádost byla úspěšně zpracována a všechny nabídky v části vydavatele vrácených do klienta.               |
 |  400      | `Bad/Malformed request` Text – Chyba odpovědi může obsahovat další informace.                                                 |

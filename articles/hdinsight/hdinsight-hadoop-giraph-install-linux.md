@@ -1,27 +1,22 @@
 ---
-title: Instalace a použití Giraphu na HDInsight (Hadoop) – Azure
-description: Zjistěte, jak nainstalovat Giraph na clusterech HDInsight založených na Linuxu pomocí skriptových akcí. Akce se skripty umožňují přizpůsobit clusteru během vytváření, změny konfigurace clusteru nebo instalace služby a nástroje.
-services: hdinsight
+title: Instalace a použití Giraphu na Azure HDInsight
+description: Zjistěte, jak nainstalovat Giraph u clusterů HDInsight pomocí skriptových akcí. Použití Giraphu provedete grafu zpracování v Apache Hadoop v cloudu Azure.
 author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 04/23/2018
-ms.author: hrasheed
-ms.openlocfilehash: a2f964915efda6ce83439c3c1970de58b0467456
-ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
-ms.translationtype: MT
+ms.date: 04/22/2019
+ms.openlocfilehash: aa13d8dfc65f020f3f27183423913933cd0b9404
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58201717"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61395360"
 ---
 # <a name="install-apache-giraph-on-hdinsight-hadoop-clusters-and-use-giraph-to-process-large-scale-graphs"></a>Nainstalovat Apache Giraph v clusterech HDInsight Hadoop a použití Giraphu ke zpracování rozsáhlých grafů
 
 Zjistěte, jak clusteru služby HDInsight nainstalovat Apache Giraph. Funkci akce skriptu HDInsight umožňuje přizpůsobit cluster spuštěním skriptu bash. Skripty slouží k přizpůsobení clusterů, během a po vytvoření clusteru.
-
-> [!IMPORTANT]  
-> Kroky v tomto dokumentu vyžadují cluster HDInsight s Linuxem. HDInsight od verze 3.4 výše používá výhradně operační systém Linux. Další informace najdete v tématu [Vyřazení prostředí HDInsight ve Windows](hdinsight-component-versioning.md#hdinsight-windows-retirement).
 
 ## <a name="whatis"></a>Co je Giraph
 
@@ -58,7 +53,7 @@ Tato část obsahuje informace o tom, jak pomocí vzorového skriptu při vytvá
 > [!NOTE]  
 > Akce skriptu můžete použít některou z následujících metod:
 > * Azure PowerShell
-> * Azure Classic CLI
+> * Azure CLI
 > * Sady HDInsight .NET SDK
 > * Šablony Azure Resource Manageru
 > 
@@ -148,7 +143,7 @@ Po vytvoření clusteru použijte následující kroky ke spuštění příkladu
 
     Další informace o těchto a dalších parametrů použitých s ukázkami Giraph, najdete v článku [Giraph quickstart](https://giraph.apache.org/quick_start.html).
 
-6. Po dokončení úlohy se mají výsledky ukládat do **/example/out/shotestpaths** adresáře. Názvů výstupních souborů začínat **část-m -** a končit číslo označující první, druhý, soubor atd. Následujícím příkazem zobrazíte výstup:
+6. Po dokončení úlohy se mají výsledky ukládat do **/example/out/shortestpaths** adresáře. Názvů výstupních souborů začínat **část-m -** a končit číslo označující první, druhý, soubor atd. Následujícím příkazem zobrazíte výstup:
 
     ```bash
     hdfs dfs -text /example/output/shortestpaths/*

@@ -2,20 +2,21 @@
 title: Migrujte svoje schéma do SQL Data Warehouse | Dokumentace Microsoftu
 description: Tipy pro migraci vašeho schématu do služby Azure SQL Data Warehouse pro vývoj řešení.
 services: sql-data-warehouse
-author: jrowlandjones
-manager: craigg
+author: WenJason
+manager: digimobile
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.subservice: implement
-ms.date: 04/17/2018
-ms.author: jrj
+ms.component: implement
+origin.date: 04/17/2018
+ms.date: 10/15/2018
+ms.author: v-jay
 ms.reviewer: igorstan
 ms.openlocfilehash: 4139ea776f6947eeacf4620c3676606d6535dd2b
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55461680"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60748148"
 ---
 # <a name="migrate-your-schemas-to-sql-data-warehouse"></a>Migrace vaší schémata do SQL Data Warehouse
 Pokyny k migraci vašeho SQL schémata do služby SQL Data Warehouse. 
@@ -40,13 +41,6 @@ Pro nejlepší výkon minimalizujte délka řádku tabulky. Protože kratší d�
 
 Šířka řádku tabulky PolyBase má limit 1 MB.  Pokud budete chtít načíst data do SQL Data Warehouse pomocí PolyBase, aktualizujte tabulky má maximální šířku menší než 1 MB. 
 
-<!--
-- For example, this table uses variable length data but the largest possible size of the row is still less than 1 MB. PolyBase will load data into this table.
-
-- This table uses variable length data and the defined row width is less than one MB. When loading rows, PolyBase allocates the full length of the variable-length data. The full length of this row is greater than one MB.  PolyBase will not load data into this table.  
-
--->
-
 ## <a name="specify-the-distribution-option"></a>Zadejte možnosti distribuce
 SQL Data Warehouse je distribuovaný databázový systém. Každá tabulka je distribuované nebo replikovat na výpočetních uzlech. Je možnost tabulky, který umožňuje určit, jak se bude distribuovat data. K dispozici jsou možnosti kruhové dotazování, replikaci, nebo hodnoty hash distribuován. Každá obsahuje výhody a nevýhody. Pokud nezadáte možnost distribuce, SQL Data Warehouse použije jako výchozí kruhové dotazování.
 
@@ -55,7 +49,6 @@ SQL Data Warehouse je distribuovaný databázový systém. Každá tabulka je di
 - Provádět distribuci hodnot hash distribuuje řádky napříč všemi uzly pomocí funkce hash. Provádět distribuci hodnot hash tabulky jsou srdce služby SQL Data Warehouse, protože jsou určeny k poskytování vysokého výkonu dotazů na velké tabulky. Tato možnost vyžaduje některé plánování vybrat nejlepší sloupec na základě které chcete distribuovat data. Ale pokud se rozhodnete není nejlepší sloupec poprvé, můžete snadno znovu distribuovat data na jiný sloupec. 
 
 Vyberte si nejvhodnější plán distribuce pro každou tabulku, najdete v článku [distribuovaných tabulkách](sql-data-warehouse-tables-distribute.md).
-
 
 ## <a name="next-steps"></a>Další postup
 Jakmile se úspěšně migrovaly schématu databáze do SQL Data Warehouse, pokračujte na některý z následujících článků:
@@ -78,5 +71,6 @@ Další informace o osvědčených postupech pro SQL Data Warehouse, najdete v �
 
 <!--MSDN references-->
 
-
 <!--Other Web references-->
+
+<!--Update_Description: update meta properties, add new content about Migrate schemas to SQL Data Warehouse -->

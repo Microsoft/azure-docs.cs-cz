@@ -14,11 +14,11 @@ ms.date: 12/18/2018
 ms.reviewer: yossiy
 ms.author: mbullwin
 ms.openlocfilehash: cfa00504cd2a05985fde2af3357418eac8baceeb
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54117652"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61299059"
 ---
 # <a name="smart-detection---failure-anomalies"></a>Inteligentní zjišťování – anomálie selhání
 [Application Insights](../../azure-monitor/app/app-insights-overview.md) automaticky upozorní téměř v reálném čase, zda prostředích vašich webových aplikací neobvykle zvýší počet neúspěšných žádostí. Zjistí neobvyklý nárůst míry požadavků protokolu HTTP nebo volání závislostí, které se ohlásí jako neúspěšný. Pro požadavků neúspěšných požadavků jsou obvykle s kódy odpovědí 400 nebo vyšší. Umožňují posuzovat a diagnostikovat potíže, analýzu povaze chyby a související telemetrii najdete v oznámení. Existují také odkazy na portálu služby Application Insights pro další diagnostiku. Funkce potřebuje žádné instalace ani konfigurace, protože používá algoritmy strojového učení k předpovědi normální míra neúspěchů.

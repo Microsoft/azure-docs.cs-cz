@@ -15,11 +15,11 @@ ms.workload: NA
 ms.date: 10/26/2017
 ms.author: abhisram
 ms.openlocfilehash: 5f573db887b3acc2c4a668a8c19c7f8e3cb25019
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58670740"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60726566"
 ---
 # <a name="diagnostics-and-performance-monitoring-for-reliable-actors"></a>Diagnostika a sledování výkonu služby Reliable Actors
 Generuje runtime Reliable Actors [EventSource](https://msdn.microsoft.com/library/system.diagnostics.tracing.eventsource.aspx) události a [čítače výkonu](https://msdn.microsoft.com/library/system.diagnostics.performancecounter.aspx). Tyto poskytují přehled o jak modul runtime pracuje a pomoci při řešení potíží a monitorování výkonu.
@@ -32,7 +32,7 @@ Příklady nástrojů a technologií, které pomáhají při shromažďování n
 ### <a name="keywords"></a>Klíčová slova
 Všechny události, které patří k Reliable Actors EventSource jsou přidruženy k jedné nebo více klíčových slov. To umožňuje filtrování událostí, které byly shromážděny. Jsou definovány následující bits – klíčové slovo.
 
-| Bit | Popis |
+| bit | Popis |
 | --- | --- |
 | 0x1 |Nastavit o důležitých událostech, které shrnují operace Fabric Actors modulu runtime. |
 | 0x2 |Sadu událostí, které popisují volání metody objektu actor. Další informace najdete v tématu [úvodní téma na objekty actor](service-fabric-reliable-actors-introduction.md). |

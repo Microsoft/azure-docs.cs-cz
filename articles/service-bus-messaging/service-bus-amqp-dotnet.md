@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 01/23/2019
 ms.author: aschhab
 ms.openlocfilehash: 82301a17bb461b6d8733d5f046fe791ffbcf3ecb
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58885702"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60749253"
 ---
 # <a name="use-service-bus-from-net-with-amqp-10"></a>Použití služby Service Bus z .NET pomocí protokolu AMQP 1.0
 
@@ -75,24 +75,24 @@ Pro usnadnění vzájemná funkční spolupráce s klienty než .NET, používaj
 | float |float |Hodnota AMQP |
 | double |double |Hodnota AMQP |
 | decimal |decimal128 |Hodnota AMQP |
-| Char |Char |Hodnota AMQP |
+| char |char |Hodnota AMQP |
 | DateTime |časové razítko |Hodnota AMQP |
 | Guid |Uuid |Hodnota AMQP |
-| Byte |Binární |Hodnota AMQP |
+| Byte |binary |Hodnota AMQP |
 | string |string |Hodnota AMQP |
 | System.Collections.IList |list |Hodnota AMQP: položky obsažené v kolekci lze pouze ty, které jsou definovány v této tabulce. |
 | System.Array |pole |Hodnota AMQP: položky obsažené v kolekci lze pouze ty, které jsou definovány v této tabulce. |
 | System.Collections.IDictionary |map |Hodnota AMQP: položky obsažené v kolekci lze pouze ty, které jsou definovány v této tabulce. Poznámka: jsou podporovány pouze řetězec klíče. |
 | URI |Popisuje řetězec (viz následující tabulka) |Hodnota AMQP |
-| DateTimeOffset |Popisuje dlouho (viz následující tabulka) |Hodnota AMQP |
+| Datetimeoffset |Popisuje dlouho (viz následující tabulka) |Hodnota AMQP |
 | TimeSpan |Popisuje dlouho (viz následující) |Hodnota AMQP |
-| Datový proud |Binární |Data protokolu AMQP (může být více). Části Data obsahují nezpracované bajty přečtené z objektu Stream. |
-| Druhý objekt |Binární |Data protokolu AMQP (může být více). Obsahuje serializovaná binární soubor objektu, který používá objektu DataContractSerializer nebo serializátor poskytnuté aplikací. |
+| Datový proud |binary |Data protokolu AMQP (může být více). Části Data obsahují nezpracované bajty přečtené z objektu Stream. |
+| Druhý objekt |binary |Data protokolu AMQP (může být více). Obsahuje serializovaná binární soubor objektu, který používá objektu DataContractSerializer nebo serializátor poskytnuté aplikací. |
 
 | Typ formátu .NET | Mapovaná AMQP popsané typu | Poznámky |
 | --- | --- | --- |
 | URI |`<type name=”uri” class=restricted source=”string”> <descriptor name=”com.microsoft:uri” /></type>` |Uri.AbsoluteUri |
-| DateTimeOffset |`<type name=”datetime-offset” class=restricted source=”long”> <descriptor name=”com.microsoft:datetime-offset” /></type>` |DateTimeOffset.UtcTicks |
+| Datetimeoffset |`<type name=”datetime-offset” class=restricted source=”long”> <descriptor name=”com.microsoft:datetime-offset” /></type>` |DateTimeOffset.UtcTicks |
 | TimeSpan |`<type name=”timespan” class=restricted source=”long”> <descriptor name=”com.microsoft:timespan” /></type>` |TimeSpan.Ticks |
 
 ## <a name="behavioral-differences"></a>Behaviorální rozdíly

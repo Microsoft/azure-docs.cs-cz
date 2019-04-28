@@ -15,11 +15,11 @@ ms.workload: infrastructure-services
 ms.date: 07/27/2018
 ms.author: labattul
 ms.openlocfilehash: c5cb840035c5d0d5694982324c7237c58001e689
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57993870"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60731596"
 ---
 # <a name="set-up-dpdk-in-a-linux-virtual-machine"></a>Nastavit DPDK ve virtuálním počítači s Linuxem
 
@@ -152,7 +152,7 @@ Spuštění aplikace DPDK přes bezporuchový PMD zaručuje, že aplikace obdrž
 
 Ke spuštění v režimu kořenové testpmd, použijte `sudo` před *testpmd* příkazu.
 
-### <a name="basic-sanity-check-failsafe-adapter-initialization"></a>Basic: Kontrola správnosti, inicializace adaptéru bezporuchový
+### <a name="basic-sanity-check-failsafe-adapter-initialization"></a>Základní: Kontrola správnosti, inicializace adaptéru bezporuchový
 
 1. Spusťte následující příkazy a spusťte aplikaci testpmd jednoho portu:
 
@@ -180,7 +180,7 @@ Ke spuštění v režimu kořenové testpmd, použijte `sudo` před *testpmd* p�
 
 Předchozí příkazy Spustit *testpmd* v interaktivním režimu, který se doporučuje pro vyzkoušení testpmd příkazy.
 
-### <a name="basic-single-sendersingle-receiver"></a>Basic: Jednoho odesílatele/jednoho příjemce
+### <a name="basic-single-sendersingle-receiver"></a>Základní: Jednoho odesílatele/jednoho příjemce
 
 Následující příkazy pravidelně tisk pakety Statistika za sekundu:
 

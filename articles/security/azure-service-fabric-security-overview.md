@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 08/04/2017
 ms.author: tomsh
 ms.openlocfilehash: c5b5f80a43530fe6d0b90e65c3aef89a815157e4
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57241387"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60610890"
 ---
 # <a name="azure-service-fabric-security-overview"></a>Přehled zabezpečení služby Azure Service Fabric
 [Azure Service Fabric](https://docs.microsoft.com/azure/service-fabric/service-fabric-overview) je platforma distribuovaných systémů usnadňující balení, nasazování a spravování škálovatelných a spolehlivých mikroslužeb. Service Fabric řeší problematiku vývoje a správy cloudových aplikací. Vývojáři a správci můžou vyhnout komplexním problémům s infrastrukturou a soustředit na implementaci důležitějších a náročných úloh, které jsou škálovatelné a spolehlivé.

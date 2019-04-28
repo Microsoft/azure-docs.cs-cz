@@ -9,11 +9,11 @@ ms.date: 04/13/2018
 ms.author: sngun
 ms.custom: include file
 ms.openlocfilehash: 4fec9be34e390498b85ecfcb3f3b61055a08fdd2
-ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58305374"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60681159"
 ---
 1. V novém okně prohlížeče se přihlaste k webu [Azure Portal](https://portal.azure.com/).
 2. V levém navigačním podokně vyberte **vytvořit prostředek**. Vyberte **databází** a pak vyberte **služby Azure Cosmos DB**.
@@ -28,7 +28,7 @@ ms.locfileid: "58305374"
     Skupina prostředků|Vytvořit nový<br><br>Potom zadejte stejný jedinečný název, jako jste zadali v ID|Vyberte, že chcete **vytvořit novou** IP adresu. Zadejte nový název skupiny prostředků pro váš účet. Pro jednoduchost použijte stejný název jako vaše ID. 
     Název účtu|Zadejte jedinečný název.|Zadejte jedinečný název, který identifikuje váš účet služby Azure Cosmos DB.<br><br>ID můžete použít jenom malá písmena, číslice a znak spojovníku (-). Musí být dlouhý 3 až 31 znaků.
     Rozhraní API|Tabulka Azure|Rozhraní API určuje typ účtu, který se má vytvořit. Azure Cosmos DB nabízí pět rozhraní API: Core(SQL) pro databáze dokumentů, Gremlin databáze grafů, MongoDB, databáze dokumentů, tabulka Azure a Cassandra. V současné době musíte vytvořit samostatný účet pro každé rozhraní API. <br><br>Vyberte **Azure Table** vzhledem k tomu, že v tomto rychlém startu vytváříte tabulku pracující s rozhraním Table API. <br><br>[Další informace o rozhraní Table API](../articles/cosmos-db/table-introduction.md).|
-    Umístění|Vyberte oblast nejbližší vašim uživatelům.|Vyberte zeměpisné umístění, ve kterém chcete účet služby Azure Cosmos DB hostovat. Použijte umístění co nejblíže vašim uživatelům jim zajistili nejrychlejší přístup k datům.
+    Location|Vyberte oblast nejbližší vašim uživatelům.|Vyberte zeměpisné umístění, ve kterém chcete účet služby Azure Cosmos DB hostovat. Použijte umístění co nejblíže vašim uživatelům jim zajistili nejrychlejší přístup k datům.
 
     Můžete nechat **geografickou redundancí** a **zapíše více oblastí** možnosti výchozí hodnoty (**zakázat**) se vyhnout poplatkům za další RU. Můžete přeskočit **sítě** a **značky** oddíly.
 

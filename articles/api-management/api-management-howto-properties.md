@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 01/25/2018
 ms.author: apimpm
 ms.openlocfilehash: 478b80b021b4df36e2eccc37ac9c74f75e43a5bb
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: MT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58791622"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60657998"
 ---
 # <a name="how-to-use-named-values-in-azure-api-management-policies"></a>Jak používat s názvem hodnoty v zásadách Azure API Management
 Zásady služby API Management jsou vynikající funkcí systému, který chcete změnit chování rozhraní API prostřednictvím konfigurace webu Azure Portal. Zásady představují kolekci příkazů, které se postupně provádí na základě požadavku nebo odezvy z rozhraní API. Příkazy zásad lze sestavit pomocí literálu textové hodnoty. výrazy zásad a s názvem hodnoty. 
@@ -27,10 +27,10 @@ Každá instance služby API Management má vlastnosti kolekce párů klíč/hod
 
 | Atribut | Type | Popis |
 | --- | --- | --- |
-| `Display name` |string |Alfanumerický řetězec, který se používá jako odkaz na vlastnost v zásadách |
-| `Value` |string |Hodnota vlastnosti Nesmí být prázdný nebo obsahovat jen mezerové znaky. |
-| `Secret` |Boolean|Určuje, zda hodnota je tajný kód a měla šifrovat, nebo ne.|
-| `Tags` |pole řetězce |Volitelné značky, pokud je zadaný, můžete použít k filtrování seznamu vlastností. |
+| Zobrazované jméno |string |Alfanumerický řetězec, který se používá jako odkaz na vlastnost v zásadách |
+| Hodnota |string |Hodnota vlastnosti Nesmí být prázdný nebo obsahovat jen mezerové znaky. |
+|Tajný kód|Boolean|Určuje, zda hodnota je tajný kód a měla šifrovat, nebo ne.|
+| Značky |pole řetězce |Volitelné značky, pokud je zadaný, můžete použít k filtrování seznamu vlastností. |
 
 ![Pojmenované hodnoty](./media/api-management-howto-properties/named-values.png)
 

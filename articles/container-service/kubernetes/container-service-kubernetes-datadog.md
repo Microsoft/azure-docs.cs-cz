@@ -10,11 +10,11 @@ ms.date: 12/09/2016
 ms.author: bburns
 ms.custom: mvc
 ms.openlocfilehash: 6a682c199b40035bfd44fc5611a7d44b49f7b3ab
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52995358"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60712334"
 ---
 # <a name="deprecated-monitor-an-azure-container-service-cluster-with-datadog"></a>(NEPOUŽÍVANÉ) Monitorování clusteru služby Azure Container Service pomocí služby DataDog
 
@@ -45,7 +45,7 @@ Pokud nemáte `kubectl` nainstalované, můžete spustit:
 $ az acs kubernetes install-cli
 ```
 
-## <a name="datadog"></a>Služby DataDog
+## <a name="datadog"></a>DataDog
 Služby Datadog je monitorovací služba, která shromažďuje data monitorování z vašeho kontejnerů v clusteru Azure Container Service. Služby Datadog má řídicí panel integrace Dockeru ve kterém uvidíte konkrétní metriky v rámci kontejnerů. Metrik shromážděných z kontejnerů jsou uspořádané podle procesoru, paměti, síťové a vstupně-výstupních operací. Služby Datadog rozdělí metriky do kontejnerů a obrázky.
 
 Je nutné nejprve [vytvořit účet](https://www.datadoghq.com/lpg/)

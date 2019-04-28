@@ -9,11 +9,11 @@ ms.topic: reference
 ms.date: 01/17/2019
 ms.author: babanisa
 ms.openlocfilehash: f44d2c1c5be6ac895b6f5ea9feca29c0f8ed09f3
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54467736"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60561757"
 ---
 # <a name="azure-event-grid-event-schema-for-service-bus"></a>Schéma událostí Azure Event Grid pro Service Bus
 
@@ -82,25 +82,25 @@ Událost má následující dat nejvyšší úrovně:
 
 | Vlastnost | Typ | Popis |
 | -------- | ---- | ----------- |
-| téma | řetězec | Úplné prostředků cesta ke zdroji události. Toto pole není zapisovatelná. Event gridu poskytuje tuto hodnotu. |
-| předmět | řetězec | Vydavatel definované cesta předmět události. |
-| eventType | řetězec | Jeden z typů registrované události pro tento zdroj událostí. |
-| čas události | řetězec | Vygenerování události podle času UTC poskytovatele. |
-| id | řetězec | Jedinečný identifikátor pro událost. |
+| téma | string | Úplné prostředků cesta ke zdroji události. Toto pole není zapisovatelná. Event gridu poskytuje tuto hodnotu. |
+| předmět | string | Vydavatel definované cesta předmět události. |
+| eventType | string | Jeden z typů registrované události pro tento zdroj událostí. |
+| čas události | string | Vygenerování události podle času UTC poskytovatele. |
+| id | string | Jedinečný identifikátor pro událost. |
 | data | objekt | Data události úložiště objektů BLOB. |
-| dataVersion | řetězec | Verze schématu datového objektu Vydavatel Určuje verzi schématu. |
-| metadataVersion | řetězec | Verze schématu metadat události Event Grid definuje schéma vlastnosti nejvyšší úrovně. Event gridu poskytuje tuto hodnotu. |
+| dataVersion | string | Verze schématu datového objektu Vydavatel Určuje verzi schématu. |
+| metadataVersion | string | Verze schématu metadat události Event Grid definuje schéma vlastnosti nejvyšší úrovně. Event gridu poskytuje tuto hodnotu. |
 
 Datový objekt má následující vlastnosti:
 
 | Vlastnost | Typ | Popis |
 | -------- | ---- | ----------- |
-| namespaceName | řetězec | V existuje prostředek oboru názvů Service Bus. |
-| requestUri | řetězec | Identifikátor URI, do konkrétní fronty nebo předplatné, které vysílá události. |
-| entityType | řetězec | Typ entity služby Service Bus generování událostí (fronty nebo odběru). |
-| queueName | řetězec | Frontu s aktivní zprávy, pokud se přihlášení k odběru do fronty. Hodnota null, pokud používáte témata a odběry. |
-| topicName | řetězec | V tématu odběr služby Service Bus s aktivní zprávy patří. Hodnota null, pokud používáte fronty. |
-| subscriptionName | řetězec | Odběr služby Service Bus s aktivní zprávy. Hodnota null, pokud používáte fronty. |
+| namespaceName | string | V existuje prostředek oboru názvů Service Bus. |
+| requestUri | string | Identifikátor URI, do konkrétní fronty nebo předplatné, které vysílá události. |
+| entityType | string | Typ entity služby Service Bus generování událostí (fronty nebo odběru). |
+| queueName | string | Frontu s aktivní zprávy, pokud se přihlášení k odběru do fronty. Hodnota null, pokud používáte témata a odběry. |
+| topicName | string | V tématu odběr služby Service Bus s aktivní zprávy patří. Hodnota null, pokud používáte fronty. |
+| subscriptionName | string | Odběr služby Service Bus s aktivní zprávy. Hodnota null, pokud používáte fronty. |
 
 ## <a name="next-steps"></a>Další postup
 

@@ -1,6 +1,6 @@
 ---
-title: Ukázky rozhraní příkazového řádku Azure pro služby Azure testovacího prostředí | Microsoft Docs
-description: Ukázek Azure CLI - skripty, které vám pomohou při správě labs v prostředí služby Azure
+title: Ukázky Azure CLI pro službu Azure Lab Services | Dokumentace Microsoftu
+description: Ukázky Azure CLI – skripty, které vám pomohou při správě testovacích prostředí v Azure Lab Services
 services: lab-services
 author: spelluru
 manager: ''
@@ -13,19 +13,19 @@ ms.topic: article
 ms.date: 04/12/2018
 ms.author: spelluru
 ms.custom: mvc
-ms.openlocfilehash: 1caed6aa859b780648ac58e425ab52a030e9cc65
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 5c713215001c65c4bf735817f2e15caad0ae7eb8
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33788694"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61084844"
 ---
-# <a name="azure-cli-samples-for-azure-lab-services"></a>Ukázky rozhraní příkazového řádku Azure pro služby Azure testovacího prostředí
+# <a name="azure-cli-samples-for-azure-lab-services"></a>Ukázky Azure CLI pro službu Azure Lab Services
 
-Následující tabulka obsahuje odkazy na bash skripty, které jsou vytvořené pomocí skriptů rozhraní příkazového řádku Azure pro prostředí služby Azure. 
+Následující tabulka obsahuje odkazy na skripty bash vytvořené pomocí skriptů rozhraní příkazového řádku Azure pro Azure Lab Services. 
 
 | | |
 |---|---|
-| [Vytvoření a ověření dostupnosti virtuálního počítače](scripts/create-verify-virtual-machine-in-lab-cli.md?toc=%2fcli%2fazure%2ftoc.json) | Vytvoří virtuální počítač Windows s minimální konfigurací. |
+| [Vytvořit a ověřit dostupnost virtuálního počítače](scripts/create-verify-virtual-machine-in-lab-cli.md?toc=%2fcli%2fazure%2ftoc.json) | Vytvoří virtuální počítač Windows s minimální konfigurací. |
 | [Spuštění virtuálního počítače](scripts/start-connect-virtual-machine-in-lab-cli.md?toc=%2fcli%2fazure%2ftoc.json) | Spuštění virtuálního počítače. |
 | [Zastavení a odstranění virtuálního počítače](scripts/stop-delete-virtual-machine-in-lab-cli.md?toc=%2fcli%2fazure%2ftoc.json) | Zastaví a odstraní virtuální počítač. |

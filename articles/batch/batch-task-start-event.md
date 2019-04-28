@@ -2,7 +2,7 @@
 title: Událost zahájení úlohy služby Azure Batch | Dokumentace Microsoftu
 description: Referenční informace pro událost zahájení úlohy služby Batch.
 services: batch
-author: laurenhughes
+author: dlepow
 manager: jeconnoc
 ms.assetid: ''
 ms.service: batch
@@ -10,14 +10,15 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: big-compute
-ms.date: 04/20/2017
-ms.author: lahugh
+origin.date: 04/20/2017
+ms.date: 05/15/2018
+ms.author: v-junlch
 ms.openlocfilehash: d50a0a7082e409084fd966370934a638ca9bb013
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55474424"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60549865"
 ---
 # <a name="task-start-event"></a>Událost zahájení úlohy
 
@@ -83,3 +84,5 @@ ms.locfileid: "55474424"
 |Název elementu|Type|Poznámky|
 |------------------|----------|-----------|
 |retryCount|Int32|Počet pokusů, které úlohy se pokus o pomocí služby Batch. Úloha je opakovat, pokud ukončen s nenulový ukončovací kód, až do zadaného MaxTaskRetryCount|
+
+<!-- Update_Description: update metedata properties -->

@@ -15,11 +15,11 @@ ms.workload: NA
 ms.date: 09/04/2018
 ms.author: atsenthi
 ms.openlocfilehash: b066296ca52d3067f8985245161eb4fa7b484a07
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58669108"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60720123"
 ---
 # <a name="create-unit-tests-for-stateful-services"></a>Vytvoření testovaní částí pro stavové služby
 Testování stavové služby Service Fabric řešit běžné chyby, které nemusí nutně být zachycena konvenční aplikace nebo testování částí specifického pro doménu. Při vývoji, testování částí pro stavové služby, jsou některé důležité informace, které se uchovávají v úvahu.

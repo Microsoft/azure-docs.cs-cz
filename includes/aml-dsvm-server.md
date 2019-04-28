@@ -10,11 +10,11 @@ ms.custom: include file
 ms.topic: include
 ms.date: 01/25/2019
 ms.openlocfilehash: 12d1576c3bfbf96c0445fcd2a6f0bc37d6a68f11
-ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55302182"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60753349"
 ---
 1. Dokončení [rychlý start Python pro Azure Machine Learning](../articles/machine-learning/service/quickstart-create-workspace-with-python.md) vytvořit pracovní prostor.  Můžete přejít **použití poznámkového bloku** části, chcete-li.
 1. Naklonujte [úložiště GitHub](https://aka.ms/aml-notebooks).

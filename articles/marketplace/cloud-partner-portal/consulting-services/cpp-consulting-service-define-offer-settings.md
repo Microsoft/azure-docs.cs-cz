@@ -15,11 +15,11 @@ ms.topic: conceptual
 ms.date: 11/30/2018
 ms.author: pbutlerm
 ms.openlocfilehash: 590aa440f35f97e854fa827b0d8db1c3f9211faf
-ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
-ms.translationtype: MT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54231933"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60749635"
 ---
 # <a name="offer-settings-tab"></a>Karta nastavení nabídky
 
@@ -63,7 +63,7 @@ Následující seznam obsahuje několik názvů dobře pojmenované nabídky:
 -   Základy pro profesionální služby: Přehledové 1 hodina
 -   Cloudová platforma migrace: Přehledové 1 hodina
 -   PowerApps a Microsoft Flow: Seminář 1 den
--   Azure Machine Learning Services: PoC 3 týdny
+-   Azure Machine Learning Services: 3-Wk PoC
 -   Cihla a klikněte na maloobchodní řešení: Přehledové 1 hodina
 -   Přineste si vlastní Data: Seminář o 1 týden
 -   Cloudové analýzy: Seminář o 3 dny

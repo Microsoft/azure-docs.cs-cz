@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 01/23/2019
 ms.author: aschhab
 ms.openlocfilehash: c99f4491af8fe3e5f0f0ed7a264995ae3ec5911f
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55658262"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60749371"
 ---
 # <a name="amqp-10-in-azure-service-bus-and-event-hubs-protocol-guide"></a>V Azure Service Bus a Event Hubs Průvodce protokolem AMQP 1.0
 
@@ -361,9 +361,9 @@ Zpráva požadavku má následující vlastnosti aplikace:
 
 | Klíč | Nepovinné | Typ hodnoty | Hodnota obsahu |
 | --- | --- | --- | --- |
-| operace |Ne |řetězec |**put-token** |
-| type |Ne |řetězec |Typ tokenu uložením. |
-| jméno |Ne |řetězec |"Cílová skupina" na kterou se vztahuje token. |
+| operace |Ne |string |**put-token** |
+| type |Ne |string |Typ tokenu uložením. |
+| jméno |Ne |string |"Cílová skupina" na kterou se vztahuje token. |
 | konec platnosti |Ano |časové razítko |Čas vypršení platnosti tokenu. |
 
 *Název* vlastnost identifikují entitu, se kterým token musí být přidružené. Ve službě Service Bus je cesta k frontě nebo tématu nebo odběru. *Typ* vlastnost identifikuje typ tokenu:
@@ -381,7 +381,7 @@ Zprávy s odpovědí obsahuje následující *vlastnosti aplikace* hodnoty
 | Klíč | Nepovinné | Typ hodnoty | Hodnota obsahu |
 | --- | --- | --- | --- |
 | status-code |Ne |int |Kód odpovědi HTTP **[RFC2616]**. |
-| status-description |Ano |řetězec |Popis stavu. |
+| status-description |Ano |string |Popis stavu. |
 
 Klient může volat *put token* opakovaně a pro každou entitu v infrastruktura zasílání zpráv. Tokeny jsou omezená na aktuální klient a ukotven na aktuální připojení, což znamená, že server zahodí všechny tokeny zachované při připojení.
 

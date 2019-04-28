@@ -13,11 +13,11 @@ ms.topic: conceptual
 ms.date: 11/19/2018
 ms.author: jingwang
 ms.openlocfilehash: f14c8f8ef9f0e59ac35dd7346bf37cc07f2cfb19
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58163850"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60711454"
 ---
 # <a name="copy-data-from-and-to-odbc-data-stores-using-azure-data-factory"></a>Kopírování dat z a do úložiště dat rozhraní ODBC pomocí Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -52,10 +52,10 @@ Pro rozhraní ODBC propojené služby jsou podporovány následující vlastnost
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
 | type | Vlastnost type musí být nastavená na: **Odbc** | Ano |
-| připojovací řetězec | Připojovací řetězec, s výjimkou části přihlašovací údaje. Můžete zadat připojovací řetězec se vzorem jako `"Driver={SQL Server};Server=Server.database.windows.net; Database=TestDatabase;"`, nebo použít systém DSN (název zdroje dat) nastavíte na počítači modul Runtime integrace s `"DSN=<name of the DSN on IR machine>;"` (třeba stále zadáte části přihlašovací údaje v propojené službě odpovídajícím způsobem).<br>Označte toto pole jako SecureString bezpečně uložit ve službě Data Factory nebo [odkazovat tajného klíče do služby Azure Key Vault](store-credentials-in-key-vault.md).| Ano |
+| connectionString | Připojovací řetězec, s výjimkou části přihlašovací údaje. Můžete zadat připojovací řetězec se vzorem jako `"Driver={SQL Server};Server=Server.database.windows.net; Database=TestDatabase;"`, nebo použít systém DSN (název zdroje dat) nastavíte na počítači modul Runtime integrace s `"DSN=<name of the DSN on IR machine>;"` (třeba stále zadáte části přihlašovací údaje v propojené službě odpovídajícím způsobem).<br>Označte toto pole jako SecureString bezpečně uložit ve službě Data Factory nebo [odkazovat tajného klíče do služby Azure Key Vault](store-credentials-in-key-vault.md).| Ano |
 | authenticationType. | Typ ověřování používaný pro připojení k úložišti dat rozhraní ODBC.<br/>Povolené hodnoty jsou: **Základní** a **anonymní**. | Ano |
-| uživatelské jméno | Pokud používáte základní ověřování, zadejte uživatelské jméno. | Ne |
-| heslo | Zadejte heslo pro uživatelský účet, který jste zadali pro uživatelské jméno. Označte toto pole jako SecureString bezpečně uložit ve službě Data Factory nebo [odkazovat tajného klíče do služby Azure Key Vault](store-credentials-in-key-vault.md). | Ne |
+| userName | Pokud používáte základní ověřování, zadejte uživatelské jméno. | Ne |
+| password | Zadejte heslo pro uživatelský účet, který jste zadali pro uživatelské jméno. Označte toto pole jako SecureString bezpečně uložit ve službě Data Factory nebo [odkazovat tajného klíče do služby Azure Key Vault](store-credentials-in-key-vault.md). | Ne |
 | pověření | Část přístup přihlašovacích údajů z připojovacího řetězce zadaného ve vlastnosti specifické pro ovladač formátu. Příklad: `"RefreshToken=<secret refresh token>;"`. Toto pole můžete označte jako SecureString. | Ne |
 | connectVia | [Prostředí Integration Runtime](concepts-integration-runtime.md) se použije k připojení k úložišti. Modul Integration Runtime je povinný, jak je uvedeno v [požadavky](#prerequisites). |Ano |
 
@@ -194,7 +194,7 @@ Ke zkopírování dat do úložiště dat rozhraní ODBC kompatibilní, nastavte
 |:--- |:--- |:--- |
 | type | Vlastnost typ jímky aktivity kopírování musí být nastavena: **OdbcSink** | Ano |
 | writeBatchTimeout |Čekací doba pro dávkové operace insert dokončit před vypršením časového limitu.<br/>Povolené hodnoty jsou: časový interval. Příklad: "00: 30:00" (30 minut). |Ne |
-| WriteBatchSize |Vloží data do tabulky SQL writeBatchSize dosáhne velikosti vyrovnávací paměti.<br/>Povolené hodnoty jsou: celé číslo (počet řádků). |Ne (výchozí hodnota je 0 - zjistil automaticky) |
+| writeBatchSize |Vloží data do tabulky SQL writeBatchSize dosáhne velikosti vyrovnávací paměti.<br/>Povolené hodnoty jsou: celé číslo (počet řádků). |Ne (výchozí hodnota je 0 - zjistil automaticky) |
 | preCopyScript |Zadejte dotaz SQL pro aktivitu kopírování ke spuštění před zápis dat do úložiště dat při každém spuštění. Tato vlastnost slouží k vyčištění předem načtená data. |Ne |
 
 > [!NOTE]

@@ -14,11 +14,11 @@ ms.date: 12/13/2017
 ms.author: mathoma
 ms.reviewer: jroth
 ms.openlocfilehash: fb1cafcf9405576749ea91aeea033c6ee783a026
-ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54330428"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60739263"
 ---
 # <a name="frequently-asked-questions-for-sql-server-on-linux-azure-virtual-machines"></a>Nejčastější dotazy k SQL serveru v Azure virtuální počítače s Linuxem
 
@@ -63,7 +63,7 @@ Tento článek obsahuje odpovědi na některé nejběžnější otázky o spušt
 
 ## <a name="licensing"></a>Licencování
 
-1. **Jak mohu nainstalovat licencovanou kopii systému SQL Server na Virtuálním počítači Azure?**
+1. **Jak můžu na virtuální počítač Azure nainstalovat licencovanou kopii SQL Serveru?**
 
    Nejprve vytvořte pouze pro operační systém virtuálního počítače s Linuxem. Spusťte [pokynů k instalaci systému SQL Server](https://docs.microsoft.com/sql/linux/sql-server-linux-setup#platforms) pro vaši Linuxovou distribuci. Pokud instalujete některou z volně licencovaný edicí systému SQL Server, musíte mít také licenci systému SQL Server a [mobilitu licencí v rámci programu Software Assurance na Azure](https://azure.microsoft.com/pricing/license-mobility/).
 
@@ -71,7 +71,7 @@ Tento článek obsahuje odpovědi na některé nejběžnější otázky o spušt
 
    V tuto chvíli nejsou k dispozici žádné BYOL Linuxové Image virtuálních počítačů pro SQL Server. Však můžete ručně nainstalovat SQL Server na virtuálním počítači pouze pro Linux jak je popsáno v předchozí otázky.
 
-1. **Můžete změnit virtuálního počítače používat vlastní licenci na SQL Server, pokud byl vytvořen z některou k imagí s průběžnými platbami Galerie?**
+1. **Můžu změnit virtuální počítač tak, aby používal vlastní licenci SQL Serveru, pokud byl vytvořený z některé z imagí z galerie s průběžnými platbami?**
 
    Ne. Není možné přejít z licencí platit za sekundu na používání vlastní licence. Musíte vytvořit nový virtuální počítač s Linuxem, instalaci systému SQL Server a migrovat data. Viz předchozí otázce další podrobnosti o používáním vlastní licence.
 
@@ -81,15 +81,15 @@ Tento článek obsahuje odpovědi na některé nejběžnější otázky o spušt
 
    Ano, ale aplikace SSMS je aktuálně nástroj jen pro Windows. Musíte se připojit vzdáleně z počítače s Windows pomocí aplikace SSMS virtuální počítače s Linuxem SQL serveru. Místně v Linuxu nové [mssql conf.](https://docs.microsoft.com/sql/linux/sql-server-linux-configure-mssql-conf) nástroje můžete provádět mnoho úloh správy. Nástroj pro správu databáze pro více platforem, naleznete v tématu [Azure Data Studio](https://docs.microsoft.com/sql/azure-data-studio/what-is).
 
-1. **Můžu odebrat systému SQL Server zcela z virtuálního počítače s SQL?**
+1. **Můžu z virtuálního počítače SQL zcela odebrat SQL Server?**
 
-   Ano, ale bude nadále účtovat virtuálního počítače s SQL, jak je popsáno v [doprovodné materiály k pro virtuální počítače Azure s SQL serverem cenám](../../windows/sql/virtual-machines-windows-sql-server-pricing-guidance.md?toc=%2fazure%2fvirtual-machines%2flinux%2fsql%2ftoc.json). Pokud už nepotřebujete systému SQL Server, můžete nasadit nový virtuální počítač a migraci dat a aplikací do nového virtuálního počítače. Pak můžete odebrat virtuální počítač s SQL serverem.
+   Ano, ale bude nadále účtovat virtuálního počítače s SQL, jak je popsáno v [doprovodné materiály k pro virtuální počítače Azure s SQL serverem cenám](../../windows/sql/virtual-machines-windows-sql-server-pricing-guidance.md?toc=%2fazure%2fvirtual-machines%2flinux%2fsql%2ftoc.json). Pokud už SQL Server nepotřebujete, můžete nasadit nový virtuální počítač a migrovat na něj data a aplikace. Pak můžete odebrat virtuální počítač s SQL Serverem.
 
 ## <a name="updating-and-patching"></a>Aktualizace a opravy chyb
 
 1. **Jak upgradovat na novou verzi nebo edici SQL serveru na Virtuálním počítači Azure?**
 
-   V současné době neexistuje žádný místní upgrade SQL serveru běžícího na Virtuálním počítači Azure. Vytvořit nový virtuální počítač Azure s požadovanou verzí/edicí systému SQL Server, a potom migrovat databáze do nového serveru pomocí [standardních technik migrace dat](https://docs.microsoft.com/sql/linux/sql-server-linux-migrate-overview).
+   Aktuálně není dostupný místní upgrade pro SQL Server spuštěný ve virtuálním počítači Azure. Vytvořte nový virtuální počítač Azure s požadovanou verzí/edicí SQL Serveru a potom pomocí [standardních technik migrace dat](https://docs.microsoft.com/sql/linux/sql-server-linux-migrate-overview) proveďte migraci databází na tento nový server.
 
 ## <a name="general"></a>Obecné
 

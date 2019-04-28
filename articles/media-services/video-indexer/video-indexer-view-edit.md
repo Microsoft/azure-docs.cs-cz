@@ -10,11 +10,11 @@ ms.topic: article
 ms.date: 04/02/2019
 ms.author: juliako
 ms.openlocfilehash: 8c1e50064491032d78e467496f0c53300dd6acd1
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58892785"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60559976"
 ---
 # <a name="view-and-edit-video-indexer-insights"></a>Zobrazení a úprava přehledů služby Video Indexer
 

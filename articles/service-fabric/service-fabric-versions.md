@@ -15,11 +15,11 @@ ms.workload: NA
 ms.date: 9/24/2018
 ms.author: aljo
 ms.openlocfilehash: 75e95737eecb9407a80103d1cad00d4987fe7091
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "59998817"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60716077"
 ---
 # <a name="supported-service-fabric-versions"></a>Podporované verze Service Fabric
 

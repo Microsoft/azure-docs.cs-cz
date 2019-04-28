@@ -9,11 +9,11 @@ ms.topic: article
 ms.date: 01/23/2019
 ms.author: alkohli
 ms.openlocfilehash: 7d52af9e3948f40936795efab5b6671c3f71007a
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55206743"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60746926"
 ---
 # <a name="azure-data-box-system-requirements"></a>Požadavky na systém Azure Data Box
 
@@ -44,7 +44,7 @@ Tady je seznam podporovaných operačních systémech pro kopírování dat pros
 | **Protokoly** | **Verze** | 
 | --- | --- | 
 | SMB |2.X a novější |
-| Systém souborů NFS | Všechny verze až po a včetně 4.1|
+| NFS | Všechny verze až po a včetně 4.1|
 
 ### <a name="supported-storage-accounts"></a>Účty úložiště podporuje
 

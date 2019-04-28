@@ -12,11 +12,11 @@ ms.date: 06/28/2018
 ms.author: cephalin
 ms.custom: seodec18
 ms.openlocfilehash: 6c8c86ff6212acc31e961d6ae62836ca2b7b7380
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53714215"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61268894"
 ---
 # <a name="how-to-prepare-for-an-ssl-ip-address-change"></a>Postup přípravy na změnu adresy SSL IP
 

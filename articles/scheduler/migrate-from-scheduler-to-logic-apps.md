@@ -9,12 +9,12 @@ ms.author: deli
 ms.reviewer: klam, LADocs
 ms.topic: article
 ms.date: 09/20/2018
-ms.openlocfilehash: c841f29adbe9911193227cced2856d953d820b08
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 25ed66fd75301475542dbac8e8a01670ee37563c
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46997269"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60531777"
 ---
 # <a name="migrate-azure-scheduler-jobs-to-azure-logic-apps"></a>Migrace úloh Azure Scheduleru na Azure Logic Apps
 
@@ -29,7 +29,7 @@ Tento článek popisuje, jak můžete naplánovat jednorázové a opakovaných �
 
 * Služba Azure Logic Apps podporuje časové pásmo a letní čas (DST).
 
-Další informace najdete v tématu [co je Azure Logic Apps?](../logic-apps/logic-apps-overview.md) nebo zkuste vytvořit svou první aplikaci logiky v rámci tohoto rychlého startu: [vytvořit svou první aplikaci logiky](../logic-apps/quickstart-create-first-logic-app-workflow.md).
+Další informace najdete v tématu [co je Azure Logic Apps?](../logic-apps/logic-apps-overview.md) nebo zkuste vytvořit svou první aplikaci logiky v rámci tohoto rychlého startu: [Vytvořte svou první aplikaci logiky](../logic-apps/quickstart-create-first-logic-app-workflow.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -45,9 +45,9 @@ Více jednorázové úlohy můžete spustit tak, že vytvoříte pouze jeden log
 
 1. V [webu Azure portal](https://portal.azure.com), vytvoření prázdné aplikace logiky v návrháři aplikace logiky. 
 
-   Základní kroky, postupujte podle [rychlý start: vytvoření první aplikace logiky](../logic-apps/quickstart-create-first-logic-app-workflow.md).
+   Základní kroky, postupujte podle [rychlý start: Vytvořte svou první aplikaci logiky](../logic-apps/quickstart-create-first-logic-app-workflow.md).
 
-1. Do vyhledávacího pole zadejte jako filtr "při požadavku http". Ze seznamu triggerů vyberte tento trigger: **přijetí požadavku HTTP je při** 
+1. Do vyhledávacího pole zadejte jako filtr "při požadavku http". Ze seznamu triggerů vyberte tento trigger: **Při přijetí požadavku HTTP** 
 
    ![Přidání triggeru "Request"](./media/migrate-from-scheduler-to-logic-apps/request-trigger.png)
 
@@ -67,7 +67,7 @@ Více jednorázové úlohy můžete spustit tak, že vytvoříte pouze jeden log
 
 1. Pod triggerem zvolte **další krok**. 
 
-1. Do vyhledávacího pole zadejte "zpoždění do" jako filtr. V seznamu akcí vyberte tuto akci: **zpoždění do**
+1. Do vyhledávacího pole zadejte "zpoždění do" jako filtr. V seznamu akcí vyberte tuto akci: **Zpoždění do**
 
    Tato akce pozastavení pracovního postupu aplikace logiky do zadaného data a času.
 
@@ -104,7 +104,7 @@ Například pomocí aplikace Postman, můžete vytvořit požadavek POST s nasta
 
 | Metoda žádosti | zprostředkovatele identity | Tělo | Hlavičky |
 |----------------|-----|------|---------| 
-| **POST** | <*Adresa URL koncového bodu*> | **nezpracované** <p>**JSON(Application/JSON)** <p>V **nezpracovaná** zadejte datovou část je vhodné odesílat v požadavku. <p>**Poznámka:**: Toto nastavení automaticky nakonfiguruje **záhlaví** hodnoty. | **Klíč**: Content-Type <br>**Hodnota**: application/json
+| **POST** | <*endpoint-URL*> | **nezpracované** <p>**JSON(application/json)** <p>V **nezpracovaná** zadejte datovou část je vhodné odesílat v požadavku. <p>**Poznámka:** Tato nastavení automaticky nakonfiguruje **záhlaví** hodnoty. | **Klíč**: Typ obsahu <br>**Hodnota**: application/json
  |||| 
 
 ![Odeslat žádost o ruční spuštění aplikace logiky](./media/migrate-from-scheduler-to-logic-apps/postman-send-post-request.png)
@@ -129,9 +129,9 @@ Ve službě Logic Apps každý Jednorázová úloha spustí jako jeden prostřed
 
 1. V [webu Azure portal](https://portal.azure.com), vytvoření prázdné aplikace logiky v návrháři aplikace logiky. 
 
-   Základní kroky, postupujte podle [rychlý start: vytvoření první aplikace logiky](../logic-apps/quickstart-create-first-logic-app-workflow.md).
+   Základní kroky, postupujte podle [rychlý start: Vytvořte svou první aplikaci logiky](../logic-apps/quickstart-create-first-logic-app-workflow.md).
 
-1. Do vyhledávacího pole zadejte jako filtr "opakování". Ze seznamu triggerů vyberte tento trigger: **opakování** 
+1. Do vyhledávacího pole zadejte jako filtr "opakování". Ze seznamu triggerů vyberte tento trigger: **Opakování** 
 
    ![Přidání triggeru "Recurrence"](./media/migrate-from-scheduler-to-logic-apps/recurrence-trigger.png)
 
@@ -187,7 +187,7 @@ V Azure Scheduleru výchozí akce se nezdaří spuštění, můžete spustit v.4
 
    ![Nastavení vlastnosti "spustit po"](./media/migrate-from-scheduler-to-logic-apps/select-run-after-properties.png)
 
-1. Jakmile budete hotovi, zvolte **provádí**.
+1. Jakmile budete hotovi, zvolte **Done** (Hotovo).
 
 Další informace o zpracování výjimek, naleznete v tématu [zpracování chyb a výjimek – vlastnost RunAfter](../logic-apps/logic-apps-exception-handling.md#catch-and-handle-failures-with-the-runafter-property).
 
@@ -195,20 +195,20 @@ Další informace o zpracování výjimek, naleznete v tématu [zpracování chy
 
 <a name="retire-date"></a> 
 
-**Q**: když je Azure Scheduler vyřazení z provozu? <br>
+**Q**: Když je Azure Scheduler vyřazení z provozu? <br>
 **A**: Azure Scheduler plánuje vyřadit z provozu 30. září 2019.
 
-**Q**: co se stane se Moje kolekce úloh Scheduleru a úlohy poté, co vyřadí službu? <br>
-**A**: kolekce všechny plánovače úloh a úloh se odstraní ze systému.
+**Q**: Co se stane Moje kolekce úloh Scheduleru a úlohy poté, co vyřadí službu? <br>
+**A**: Všechny kolekce úloh Scheduleru a úlohy se odstraní ze systému.
 
-**Q**: je nutné zálohovat nebo provádět další úlohy před migrací Moje úlohy Scheduleru do Logic Apps? <br>
-**A**: jako osvědčený postup, vždy zálohovat svou práci. Zkontrolujte, jestli aplikace logiky, kterou jste vytvořili fungují podle očekávání před odstraněním nebo zakázání Plánovač úloh. 
+**Q**: Je nutné zálohovat nebo provádět další úlohy před migrací Moje úlohy Scheduleru do Logic Apps? <br>
+**A**: Jako osvědčený postup vždy zálohujte svou práci. Zkontrolujte, jestli aplikace logiky, kterou jste vytvořili fungují podle očekávání před odstraněním nebo zakázání Plánovač úloh. 
 
-**Q**: je existuje nástroj, který mi může pomoci migrovat Moje úlohy z plánovače pro Logic Apps? <br>
-**A**: každý Plánovač úloh je jedinečný, tak, že neexistuje univerzální nástroj. Různé skripty, ale bude k dispozici pro úpravy pro vaše potřeby. Pro skript dostupnost vrátit se sem později.
+**Q**: Je nástroj, který může pomoct migraci Moje úlohy ze služby Plánovač na Logic Apps? <br>
+**A**: Každá úloha Scheduleru je jedinečný, takže neexistuje univerzální nástroj. Různé skripty, ale bude k dispozici pro úpravy pro vaše potřeby. Pro skript dostupnost vrátit se sem později.
 
-**Q**: kde lze získat podporu pro migraci Moje úlohy Scheduleru? <br>
-**A**: Zde jsou některé způsoby, jak získat podporu: 
+**Q**: Kde lze získat podporu pro migraci Moje úlohy Scheduleru? <br>
+**A**: Tady jsou některé způsoby, jak získat podporu: 
 
 **Azure Portal**
 
@@ -221,7 +221,7 @@ Pokud vaše předplatné Azure má placený plán podpory, můžete vytvořit ž
    | Nastavení | Hodnota |
    |---------|-------|
    | **Typ problému** | **Technické** | 
-   | **Předplatné** | <*Vaše předplatné Azure*> | 
+   | **Předplatné** | <*your-Azure-subscription*> | 
    | **Služba** | V části **monitorování a správa**vyberte **Plánovač**. | 
    ||| 
 

@@ -9,11 +9,11 @@ ms.topic: article
 ms.date: 06/20/2018
 ms.author: dlap
 ms.openlocfilehash: bb186ab2700b147bee3a7dd81474409ccafb76fc
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56341708"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60607899"
 ---
 # <a name="trusted-internet-connections-guidance"></a>Pokyny k důvěryhodné připojení k Internetu
 
@@ -264,10 +264,10 @@ Můžete snadno nakonfigurovat přístup pro Microsoft Azure, Office 365 a Dynam
 | Databáze | Azure SQL Data Warehouse | | | Ano |
 | Databáze | Azure Cosmos DB | | | Ano |
 | Databáze | Azure Cache for Redis | | Ano | |
-| Storage | Azure Blob Storage | Ano | | |
-| Storage | Soubory Azure | Ano | | |
-| Storage | Azure Queue storage | Ano | | |
-| Storage | Azure Table Storage | Ano | | |
-| Storage | Azure Disk storage | Ano | | |
+| Úložiště | Azure Blob Storage | Ano | | |
+| Úložiště | Soubory Azure | Ano | | |
+| Úložiště | Azure Queue storage | Ano | | |
+| Úložiště | Azure Table Storage | Ano | | |
+| Úložiště | Azure Disk storage | Ano | | |
 
 \* Chcete-li verzi Public preview ve službě Azure Government. května 2018.

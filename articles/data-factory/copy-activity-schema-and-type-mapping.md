@@ -13,11 +13,11 @@ ms.topic: conceptual
 ms.date: 12/20/2018
 ms.author: jingwang
 ms.openlocfilehash: 99798b35419ec9574c99aaba42803fbeeb1555f1
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59267119"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60615619"
 ---
 # <a name="schema-mapping-in-copy-activity"></a>Mapování schématu v aktivitě kopírování
 Tento článek popisuje, jak funguje Azure Data Factory za kopírování schématu mapování a mapování datového typu z datového zdroje do jímky dat při spuštění kopírovat data.
@@ -229,9 +229,9 @@ Můžete najít mapování mezi nativní typ pro pomocný typ v části "Mapová
 Data Factory podporuje následující typy dočasné dat: Můžete zadat následující hodnoty při Konfigurace informací o typu v [struktury datové sady](concepts-datasets-linked-services.md#dataset-structure) konfigurace:
 
 * Byte[]
-* Logická hodnota
-* Datum a čas
-* DateTimeOffset
+* Boolean
+* DateTime
+* Datetimeoffset
 * Decimal
 * Double
 * Guid

@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 10/05/2017
 ms.author: rkarlin
 ms.openlocfilehash: 01f6da4f5ad6b618c444949fce8d2b7aa3367e17
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
-ms.translationtype: MT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58075761"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60705082"
 ---
 # <a name="monitoring-and-processing-security-events-in-azure-security-center"></a>Sledování a zpracování událostí zabezpečení v Azure Security Center
 Řídicí panel události poskytuje přehled o počet událostí zabezpečení, které jsou shromážděné v průběhu času a seznam významné události, které mohou vyžadovat vaši pozornost.  

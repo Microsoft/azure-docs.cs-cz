@@ -13,11 +13,11 @@ ms.topic: conceptual
 ms.date: 06/07/2018
 ms.author: jingwang
 ms.openlocfilehash: 743dad6032547f8f535543413adff416efb56ac0
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57998389"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60640074"
 ---
 # <a name="copy-data-from-cassandra-using-azure-data-factory"></a>Kopírování dat z Cassandry pomocí Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -59,7 +59,7 @@ Cassandra propojené služby jsou podporovány následující vlastnosti:
 | port |Port TCP, který Cassandra server používá k naslouchání pro připojení klientů. |Ne (výchozí hodnota je 9042) |
 | authenticationType. | Typ ověřování používaný pro připojení k databázi Cassandra.<br/>Povolené hodnoty jsou: **Základní**, a **anonymní**. |Ano |
 | uživatelské jméno |Zadejte uživatelské jméno uživatelského účtu. |Ano, pokud typ ověřování je nastavena na Basic. |
-| heslo |Zadejte heslo pro uživatelský účet. Označte toto pole jako SecureString bezpečně uložit ve službě Data Factory nebo [odkazovat tajného klíče do služby Azure Key Vault](store-credentials-in-key-vault.md). |Ano, pokud typ ověřování je nastavena na Basic. |
+| password |Zadejte heslo pro uživatelský účet. Označte toto pole jako SecureString bezpečně uložit ve službě Data Factory nebo [odkazovat tajného klíče do služby Azure Key Vault](store-credentials-in-key-vault.md). |Ano, pokud typ ověřování je nastavena na Basic. |
 | connectVia | [Prostředí Integration Runtime](concepts-integration-runtime.md) se použije k připojení k úložišti. Můžete použít modul Integration Runtime nebo prostředí Azure Integration Runtime (Pokud vaše úložiště dat je veřejně dostupná). Pokud není zadán, použije výchozí prostředí Azure Integration Runtime. |Ne |
 
 >[!NOTE]
@@ -176,7 +176,7 @@ Při kopírování dat z Cassandry, se používají následující mapování z 
 | ASCII |String |
 | BIGINT |Int64 |
 | BLOB |Byte[] |
-| DATOVÝ TYP BOOLEAN |Logická hodnota |
+| DATOVÝ TYP BOOLEAN |Boolean |
 | DECIMAL |Decimal |
 | DOUBLE |Double |
 | PLOVOUCÍ DESETINNOU ČÁRKOU |Single |

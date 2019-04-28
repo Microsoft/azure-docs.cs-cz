@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/27/2017
 ms.author: victorh
-ms.openlocfilehash: 7f132c513354a87b4f1bd37db4c6c6ed8e0fd041
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: df741b34e1268c547723af87401760197d395780
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46949957"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61293825"
 ---
 # <a name="how-to-manage-dns-zones-in-azure-dns-using-the-azure-cli"></a>Správa zón DNS v DNS Azure pomocí Azure CLI
 
@@ -68,7 +68,7 @@ Zvolte předplatné Azure, které chcete použít.
 az account set --subscription "subscription name"
 ```
 
-### <a name="optional-to-installuse-azure-dns-private-zones-feature-public-preview"></a>Volitelné: Instalace nebo použití Azure DNS Private Zones funkcí (Public Preview)
+### <a name="optional-to-installuse-azure-dns-private-zones-feature-public-preview"></a>Volitelné: Instalace nebo použití funkce Azure DNS Private Zones (Public Preview)
 Funkce Azure DNS Private Zones je vydaná ve verzi Public Preview prostřednictvím rozšíření Azure CLI. Nainstalujte rozšíření Azure CLI dns. 
 ```
 az extension add --name dns

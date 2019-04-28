@@ -9,11 +9,11 @@ ms.service: iot-dps
 services: iot-dps
 manager: arjmands
 ms.openlocfilehash: dc8c29b1c7d4e5056cb6aeee6335e32687fd547f
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58123670"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60627305"
 ---
 # <a name="how-to-use-tools-provided-in-the-sdks-to-simplify-development-for-provisioning"></a>Jak použít nástroje poskytované v sadách SDK pro zjednodušení vývoje pro zřizování
 IoT Hub Device Provisioning Service zjednodušuje proces s plně automatizované zřizování za běhu [automatického zřizování](concepts-auto-provisioning.md) bezpečným a škálovatelným způsobem.  Vyžaduje se ověření zabezpečení ve formě certifikátu X.509 nebo Trusted Platform Module (TPM).  Microsoft je také partnerství s [jiných hardwarových partnerů zabezpečení](https://azure.microsoft.com/blog/azure-iot-supports-new-security-hardware-to-strengthen-iot-security/) k vylepšení spolehlivosti při zabezpečení nasazení IoT. Principy hardwarový požadavek zabezpečení může být poměrně obtížné pro vývojáře. Sada SDK služby zřizování prostředí Azure IoT jsou k dispozici tak, aby vývojáři můžou pomocí vrstvy usnadnění psaní klienty, kteří mluví ke službě zřizování. Sady SDK také poskytnout ukázky pro běžné scénáře, jakož i sadu nástrojů pro zjednodušení ověření zabezpečení při vývoji.

@@ -14,11 +14,11 @@ ms.topic: conceptual
 ms.date: 06/22/2018
 ms.author: bwren
 ms.openlocfilehash: 31a902302ba806889854330c6517d9f5745f1c0c
-ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56888334"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60551693"
 ---
 # <a name="filters-in-azure-monitor-views"></a>Filtry v zobrazení monitorování Azure
 A **filtr** v [zobrazení monitorování Azure](view-designer.md) umožňuje uživatelům k filtrování dat v zobrazení podle hodnoty určité vlastnosti beze změny samotného zobrazení.  Například můžete umožnit uživatelům zobrazení filtrovat zobrazení dat jenom z určitého počítače nebo sadu počítačů.  Na jedno zobrazení umožňuje uživatelům můžete filtrovat podle několika vlastností můžete vytvořit více filtrů.  Tento článek popisuje, jak pomocí filtru a přidejte ho do vlastního zobrazení.
@@ -56,7 +56,7 @@ Následující tabulka obsahuje několik příkladů běžných filtry.
 
 | Název pole | Dotaz na hodnoty | Značka |
 |:--|:--|:--|
-| Počítač   | Prezenční signál &#124; distinct Computer &#124; seřadit podle počítače asc | Počítače |
+| Computer   | Prezenční signál &#124; distinct Computer &#124; seřadit podle počítače asc | Počítače |
 | EventLevelName | Event &#124; distinct EventLevelName | Severity |
 | SeverityLevel | Syslog &#124; distinct SeverityLevel | Severity |
 | SvcChangeType | ConfigurationChange &#124; distinct svcChangeType | ChangeType |

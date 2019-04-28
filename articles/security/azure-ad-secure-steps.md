@@ -11,11 +11,11 @@ ms.workload: identity
 ms.date: 06/18/2018
 ms.author: martincoetzer
 ms.openlocfilehash: 92546e6aabdf43c2f9cb0339fb21dd2dfc641d44
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57314309"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60587827"
 ---
 # <a name="five-steps-to-securing-your-identity-infrastructure"></a>Zabezpečení vaší infrastruktury identit v pěti krocích
 
@@ -36,7 +36,7 @@ Tento kontrolní seznam vám pomůže rychle nasadit důležité doporučené ak
 
 Doporučení v tomto dokumentu jsou v souladu s [skóre zabezpečení Identity](https://docs.microsoft.com/azure/active-directory/fundamentals/identity-secure-score), automatizované posuzování konfigurace zabezpečení identity tenanta Azure AD. Organizace můžete použít stránku skóre zabezpečení identit na portálu Azure AD najít mezery v jejich aktuální konfigurace zabezpečení a ujistěte se, že řídí aktuální Microsoft osvědčené postupy pro zabezpečení. Implementace jednotlivých doporučení na stránce zabezpečení skóre zvýší vaše skóre a umožňují sledovat svůj postup a navíc můžete porovnat vaše implementace proti jiné podobné velikost organizace nebo vaše odvětví.
 
-![Skóre zabezpečení identit](media/azure-ad/azure-ad-sec-steps0.png)
+![Identity Secure Score](media/azure-ad/azure-ad-sec-steps0.png)
 
 ## <a name="before-you-begin-protect-privileged-accounts-with-mfa"></a>Než začnete: Ochranu privilegovaných účtů s MFA
 

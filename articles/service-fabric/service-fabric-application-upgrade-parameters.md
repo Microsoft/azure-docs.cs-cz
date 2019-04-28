@@ -15,11 +15,11 @@ ms.workload: NA
 ms.date: 11/08/2018
 ms.author: subramar
 ms.openlocfilehash: 9a93c0993ee45e72b11b023982dfbbe8c6528272
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58670613"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60614401"
 ---
 # <a name="application-upgrade-parameters"></a>Parametry upgradu aplikace
 Tento článek popisuje různé parametry, které se použijí při upgradu aplikace Azure Service Fabric. Parametry upgradu aplikace řídit vypršení časových limitů a kontroly stavu, které se použijí při upgradu a určují zásady, které se musí použít při upgradu se nezdaří. Parametry aplikace použít k upgradu pomocí:

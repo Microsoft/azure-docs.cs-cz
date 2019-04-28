@@ -13,11 +13,11 @@ ms.topic: conceptual
 ms.date: 02/03/2017
 ms.author: mbullwin
 ms.openlocfilehash: b81a555111ff49fcf2e14a75afdce81835d151bb
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54038545"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60691168"
 ---
 # <a name="more-telemetry-from-application-insights"></a>Další telemetrická data ze služby Application Insights
 Až budete mít [přidat Application Insights do kódu ASP.NET](../../azure-monitor/app/asp-net.md), existuje několik věcí, které můžete udělat, abyste získali další telemetrické údaje. 

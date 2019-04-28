@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 10/03/2018
 ms.author: bwren
 ms.openlocfilehash: 2c35bc4026c81cbc8b95225e688a3922bc320554
-ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56416645"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60759907"
 ---
 # <a name="azure-monitor-log-query-examples"></a>Příklady dotazů protokolu Azure Monitor
 Tento článek obsahuje příklady různých [dotazy](log-query-overview.md) pomocí [Kusto dotazovací jazyk](/azure/kusto/query/) načíst různé typy dat protokolu z Azure monitoru. Různé metody slouží ke konsolidaci a analýzu dat, takže tyto ukázky můžete použít k identifikaci různé strategie, které můžete použít pro vaše požadavky.  

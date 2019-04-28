@@ -15,11 +15,11 @@ ms.workload: NA
 ms.date: 11/08/2018
 ms.author: alkohli
 ms.openlocfilehash: b8e9f12a549f71971c2da3b9865f6a74dad58f61
-ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51300910"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60630134"
 ---
 # <a name="storsimple-virtual-array-best-practices"></a>Osvědčené postupy pro StorSimple Virtual Array
 ## <a name="overview"></a>Přehled
@@ -44,7 +44,7 @@ Implementujte následující osvědčené postupy při zřizování virtuálníh
 | **Datový typ disku** |Zřízení jako **dynamicky se zvětšující**.<br></br> **Pevná velikost** trvá moc dlouho. <br></br> Nepoužívejte **rozdílové** možnost. |Použití **dynamicky zřizovat** možnost. |
 | **Úprava dat disku** |Rozšíření nebo zmenšení není povolený. Pokus o Uděláte to tak vede ke ztrátě všech místních dat na zařízení. |Rozšíření nebo zmenšení není povolený. Pokus o Uděláte to tak vede ke ztrátě všech místních dat na zařízení. |
 
-### <a name="sizing"></a>Velikost
+### <a name="sizing"></a>Velikosti
 Při nastavování velikosti StorSimple Virtual Array, vezměte v úvahu následující faktory:
 
 * Místní rezervace pro svazky nebo sdílené složky. Přibližně 12 % prostor je vyhrazeno u místní vrstvy pro každý zřízené vrstvený svazek nebo sdílenou složku. Přibližně 10 % prostoru je také rezervovaná pro místně vázaný svazek systému souborů.
@@ -77,7 +77,7 @@ Nejprve pro každý vrstvený svazek nebo sdílenou složku, místní rezervace 
 
 Celkové požadované místo na u místní vrstvy zatím je: 240 GB + 120 GB + 330 GB = 690 GB.
 
-Za druhé potřebujeme alespoň tolik místa na místní úrovni jako největší jednu rezervaci. Tuto další dobu se používá v případě, že potřebujete obnovit ze snímku cloudu. V tomto příkladu je největší místní rezervace 330 GB (včetně rezervace pro systém souborů), takže přidejte, že do těchto 690 GB: 690 GB + 330 GB = 1020 GB.
+Za druhé potřebujeme alespoň tolik místa na místní úrovni jako největší jednu rezervaci. Tuto další dobu se používá v případě, že potřebujete obnovit ze snímku cloudu. V tomto příkladu je největší místní rezervace 330 GB (včetně rezervace pro systém souborů), takže by, který přidat 690 GB: 690 GB + 330 GB = 1020 GB.
 Pokud jsme provedli následující další obnovení, jsme vždy uvolněte místo z předchozí operace obnovení.
 
 Pak potřebujeme 15 % této vaše celkové volné místo zatím k uložení místní snímky, tak, aby byla k dispozici pouze 85 %. V tomto příkladu by kolem 1020 GB = než 0,85&ast;zřízené datový disk TB. Proto, by se zřízené datový disk (1020&ast;(1/než 0,85)) = 1 200 GB = 1,20 TB ~ 1,25 TB (zaokrouhlení na nejbližší QUARTIL)

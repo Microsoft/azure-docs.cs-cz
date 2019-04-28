@@ -8,11 +8,11 @@ ms.date: 03/26/2019
 ms.author: snehaa
 services: azure-migrate
 ms.openlocfilehash: 224511b9748c540f2cd48a3d8393a9c74f76ce32
-ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
-ms.translationtype: MT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58498413"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60679251"
 ---
 # <a name="about-the-collector-appliance"></a>Informace o zařízení Kolektoru
 
@@ -36,9 +36,9 @@ Zařízení kolektoru je trvalým připojením k projektu Azure Migrate a průb�
 
 Zařízení průběžně pouze shromažďuje údaje o výkonu, nezjistí změny konfigurace v místním prostředí (tj. Přidání virtuálního počítače, odstranění, přidání disku atd.). Pokud dojde ke změně konfigurace v místním prostředí, následujícím způsobem můžete zajistit, že se změny projeví na portálu:
 
-- Přidání položek (virtuálních počítačů, disků, jader atd.): Pro provedení těchto změn na webu Azure Portal, můžete zastavit zjišťování ze zařízení a znovu spustit. Tím se zajistí, že se změny aktualizují v projektu Azure Migrate.
+- Přidání položek (virtuální počítače, disky, jádra atd.): Pokud chcete, aby se tyto změny projevily na webu Azure Portal, můžete na zařízení zastavit zjišťování a pak ho spustit znovu. Tím se zajistí, že se změny aktualizují v projektu Azure Migrate.
 
-- Odstranění virtuálních počítačů: Kvůli způsobu, jakým je navržena na zařízení se neprojeví odstranění virtuálních počítačů i v případě zastavení a spuštění zjišťování. Důvodem je, že se data z dalších zjišťování připojují ke starším zjišťováním, a nepřepisují se. V takovém případě můžete virtuální počítač na portálu jednoduše ignorovat tak, že ho odeberete ze své skupiny a přepočítáte posouzení.
+- Odstranění virtuálních počítačů: Vzhledem ke způsobu, jakým je zařízení navržené, se odstranění virtuálních počítačů neprojeví ani v případě, že zastavíte a znovu spustíte zjišťování. Důvodem je, že se data z dalších zjišťování připojují ke starším zjišťováním, a nepřepisují se. V takovém případě můžete virtuální počítač na portálu jednoduše ignorovat tak, že ho odeberete ze své skupiny a přepočítáte posouzení.
 
 > [!NOTE]
 > Jednorázové zjišťování zařízení je nyní zastaralý a tato metoda spoléhal na vCenter serveru nastavení statistiky dostupnosti bodu dat výkonu shromážděných čítačů průměrný výkon, které umožňují snížení velikosti virtuálních počítačů pro migraci do Azure.
@@ -242,11 +242,11 @@ Kolektor se dodává s zkušební licence Windows serveru 2012 R2, který je pla
 
 ## <a name="updating-the-os-of-the-collector-vm"></a>Aktualizujte operační systém virtuálního počítače Kolektoru
 
-I když zařízení kolektoru zkušební licence po dobu 180 dnů, je potřeba průběžně aktualizovat operačního systému na zařízení, aby se zabránilo automatické vypnutí dolů na zařízení.
+Přestože k zařízení kolektoru náleží zkušební licence na 180 dnů, je potřeba na zařízení pravidelně aktualizovat operační systém, abyste se vyhnuli automatickému vypnutí zařízení.
 
-- Pokud kolekce není aktualizován po dobu 60 dnů, se spustí automaticky vypnutí počítače.
-- Pokud je funkce zjišťování spuštěna, počítače nebudou vypnout, i v případě, že jste předali 60 dnů. Tento počítač bude vypnutý, po dokončení zjišťování.
-- Pokud po dobu více než 60 dnů jste použili Kolektoru, doporučujeme počítač aktualizoval na celou dobu spuštění aktualizace Windows.
+- Pokud kolektor 60 dnů neaktualizujete, začne počítač automaticky vypínat.
+- Pokud je spuštěné zjišťování, počítač se ani po uplynutí 60 dnů nevypne. Počítač se vypne po dokončení zjišťování.
+- Pokud kolektor používáte déle než 60 dnů, doporučujeme udržovat počítač aktualizovaný spouštěním aktualizace Windows.
 
 ## <a name="upgrading-the-collector-appliance-version"></a>Upgrade verze zařízení Kolektoru
 

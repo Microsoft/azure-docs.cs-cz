@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 1/29/2019
 ms.author: barclayn
 ms.openlocfilehash: 13183282e5e607f0052194a474203f97e0160adb
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57246130"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60610916"
 ---
 # <a name="security-services-and-technologies-available-on-azure"></a>Zabezpečení služeb a technologií, které jsou k dispozici v Azure
 
@@ -91,4 +91,4 @@ Tento seznam bude v průběhu času změnit a růst, stejně jako Azure. Ujistě
 | [Proxy aplikací Azure](../active-directory/active-directory-application-proxy-get-started.md)| Ověřování front-endu používá k zabezpečení vzdáleného přístupu pro webové aplikace hostované místně. |
 |[Brány Firewall na Azure](../firewall/overview.md)|Služba zabezpečení spravované sítě založené na cloudu, která chrání vaše prostředky Azure Virtual Network.|
 |[Azure DDoS protection](../virtual-network/ddos-protection-overview.md)|V kombinaci s osvědčené postupy pro navrhování aplikací, poskytuje ochranu před útoky DDoS.|
-|[Koncové body služby virtuální sítě](../virtual-network/virtual-network-service-endpoints-overview.md)|Rozšiřují privátní adresní prostor vaší virtuální sítě a identitu vaší virtuální sítě do služeb Azure přes přímé připojení.|
+|[Koncové body služby pro virtuální síť](../virtual-network/virtual-network-service-endpoints-overview.md)|Rozšiřují privátní adresní prostor vaší virtuální sítě a identitu vaší virtuální sítě do služeb Azure přes přímé připojení.|

@@ -13,13 +13,13 @@ ms.workload: na
 ms.date: 04/12/2019
 ms.author: banders
 ms.openlocfilehash: e15dcdbbcaed32d836bb751ef93ce17e90bd6905
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60011091"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60771239"
 ---
-# <a name="prepay-for-azure-software-plans"></a>Předplatíte plány softwaru Azure
+# <a name="prepay-for-azure-software-plans"></a>Předplacení softwarových plánů Azure
 
 Když si Předplatíte využití softwaru SUSE a Red Hat v Azure, můžete ušetřit peníze za vaše platili s průběžnými platbami. Tyto slevy uplatňují měřiče SUSE a Red Hat a ne na využívání virtuálních počítačů. Můžete si koupit rezervace pro virtuální počítače si zajistíte další úspory samostatně.
 

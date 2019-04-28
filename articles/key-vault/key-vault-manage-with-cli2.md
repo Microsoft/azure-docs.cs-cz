@@ -2,23 +2,19 @@
 title: Správa služby Azure Key Vault pomocí rozhraní příkazového řádku – Azure Key Vault | Dokumentace Microsoftu
 description: V tomto článku použijte k automatizaci běžných úkolů ve službě Key Vault pomocí rozhraní příkazového řádku Azure
 services: key-vault
-documentationcenter: ''
 author: barclayn
 manager: barbkess
 tags: azure-resource-manager
-ms.assetid: ''
 ms.service: key-vault
-ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/10/2019
 ms.author: barclayn
 ms.openlocfilehash: 1679fbe0dedc88ca3e8293512f9a79bb7da69790
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
-ms.translationtype: MT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56115619"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60641020"
 ---
 # <a name="manage-key-vault-using-the-azure-cli"></a>Správa služby Key Vault pomocí rozhraní příkazového řádku Azure 
 

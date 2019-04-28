@@ -13,11 +13,11 @@ ms.workload: infrastructure-services
 ms.date: 10/26/2017
 ms.author: malop;kumud
 ms.openlocfilehash: ad35d440904c7b65e27b4ead75cec00daa20f8ff
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58878498"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60596291"
 ---
 # <a name="virtual-network-traffic-routing"></a>Směrování provozu virtuální sítě
 
@@ -65,7 +65,7 @@ Azure přidá další výchozí systémové trasy pro různé možnosti Azure. P
 
 - **Partnerské vztahy virtuálních sítí (VNet)**: Když vytvoříte virtuální síť vytvoření partnerského vztahu mezi dvěma virtuálními sítěmi, se přidá trasu pro každý rozsah adres v rámci adresního prostoru obou virtuálních sítích, které pro partnerský vztah se vytvoří. Další informace o [partnerském vztahu virtuálních sítí](virtual-network-peering-overview.md).  
 - **Brána virtuální sítě**: Jeden nebo více tras s *Brána virtuální sítě* uvedeným typem dalšího segmentu směrování se přidají při přidání brány virtuální sítě k virtuální síti. Zdrojem je také *brána virtuální sítě*, protože brána přidá trasy do podsítě. Pokud si vaše místní síťová brána vyměňuje trasy protokolu [BGP](#border-gateway-protocol) (Border Gateway Protocol) s bránou virtuální sítě Azure, přidá se trasa pro každou trasu rozšířenou z místní síťové brány. Doporučuje se shrnout místní trasy do největších možných rozsahů adres, aby se do brány virtuální sítě Azure šířilo co nejméně tras. Počet tras, které můžete rozšířit do brány virtuální sítě Azure, je omezený. Podrobnosti najdete v tématu věnovaném [omezením Azure](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#networking-limits).
-- **VirtualNetworkServiceEndpoint**: Veřejné IP adresy pro určité služby jsou přidány do směrovací tabulky Azure při povolení koncového bodu služby do služby. Koncové body služby se povolují pro jednotlivé podsítě v rámci virtuální sítě, takže se trasa přidá pouze do směrovací tabulky podsítě, pro kterou je koncový bod služby povolený. Veřejné IP adresy služeb Azure se pravidelně mění. Azure při změně adres spravuje adresy ve směrovací tabulce automaticky. Další informace o [koncových bodech služby virtuální sítě](virtual-network-service-endpoints-overview.md) a službách, pro které můžete koncové body služby vytvořit. 
+- **VirtualNetworkServiceEndpoint**: Veřejné IP adresy pro určité služby jsou přidány do směrovací tabulky Azure při povolení koncového bodu služby do služby. Koncové body služby se povolují pro jednotlivé podsítě v rámci virtuální sítě, takže se trasa přidá pouze do směrovací tabulky podsítě, pro kterou je koncový bod služby povolený. Veřejné IP adresy služeb Azure se pravidelně mění. Azure při změně adres spravuje adresy ve směrovací tabulce automaticky. Další informace o [koncových bodech služby pro virtuální síť](virtual-network-service-endpoints-overview.md) a službách, pro které můžete koncové body služby vytvořit. 
 
 > [!NOTE]
 > Typy dalších segmentů směrování **Partnerský vztah virtuálních sítí** a **VirtualNetworkServiceEndpoint** se přidají pouze do směrovacích tabulek podsítí v rámci virtuálních sítí vytvořených prostřednictvím modelu nasazení Azure Resource Manager. Tyto typy dalších segmentů směrování se nepřidají do směrovacích tabulek přidružených k podsítím virtuálních sítí vytvořeným prostřednictvím modelu nasazení Classic. Další informace o [modelech nasazení](../azure-resource-manager/resource-manager-deployment-model.md?toc=%2fazure%2fvirtual-network%2ftoc.json) Azure.
@@ -110,7 +110,7 @@ Zobrazené a odkazované názvy typů dalších segmentů směrování se liší
 |Virtuální zařízení               |VirtualAppliance                                |VirtualAppliance|
 |Žádný                            |Žádný                                            |Null (není dostupné v Classic CLI v režimu asm)|
 |Partnerské vztahy virtuálních sítí         |Partnerské vztahy virtuálních sítí                                    |Neuvedeno|
-|Koncový bod služby virtuální sítě|VirtualNetworkServiceEndpoint                   |Neuvedeno|
+|Koncový bod služby pro virtuální síť|VirtualNetworkServiceEndpoint                   |Neuvedeno|
 
 ### <a name="border-gateway-protocol"></a>Protokol BGP (Border Gateway Protocol)
 
@@ -134,7 +134,7 @@ Pokud několik tras obsahuje stejnou předponu adresy, Azure vybere typ trasy na
 3. Systémová trasa
 
 > [!NOTE]
-> Pro provoz související s virtuální sítí, partnerskými vztahy virtuálních sítí nebo koncovými body služby virtuální sítě doporučujeme používat systémové trasy, i když jsou trasy protokolu BGP konkrétnější.
+> Pro provoz související s virtuální sítí, partnerskými vztahy virtuálních sítí nebo koncovými body služby pro virtuální síť doporučujeme používat systémové trasy, i když jsou trasy protokolu BGP konkrétnější.
 
 Směrovací tabulka obsahuje například následující trasy:
 

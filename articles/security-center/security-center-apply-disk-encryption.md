@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 10/28/2018
 ms.author: rkarlin
 ms.openlocfilehash: d285461aef1e56dfd08a162e51ada0340d6eeae4
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56108267"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62095417"
 ---
 # <a name="apply-disk-encryption-in-azure-security-center"></a>Použít šifrování disku ve službě Azure Security Center
 Azure Security Center doporučuje použít šifrování disku, pokud máte Windows nebo virtuální počítač s Linuxem disky, které nejsou šifrované službou Azure Disk Encryption. Disk Encryption umožňuje šifrování disků Windows a virtuálních počítačů IaaS s Linuxem.  Na virtuálním počítači se doporučuje šifrování svazku operačního systému i svazku s daty.

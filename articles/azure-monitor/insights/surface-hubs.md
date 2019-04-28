@@ -14,11 +14,11 @@ ms.topic: conceptual
 ms.date: 01/16/2018
 ms.author: magoedte
 ms.openlocfilehash: 902cf62e53581785caf2730f63af3633d8e1e498
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56005433"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60596210"
 ---
 # <a name="monitor-surface-hubs-with-azure-monitor-to-track-their-health"></a>Díky Azure monitoru ke sledování jejich stavu monitorování Surface Huby
 

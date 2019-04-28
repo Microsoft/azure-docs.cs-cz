@@ -15,11 +15,11 @@ ms.workload: TBD
 ms.date: 02/08/2017
 ms.author: alkohli
 ms.openlocfilehash: 0dac86a696599a391cb243ad11e16931e00b8921
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51238926"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60629894"
 ---
 # <a name="deploy-storsimple-virtual-array-for-cloud-solution-provider-program"></a>Nasazení virtuálních polí StorSimple pro programu Cloud Solution Provider
 
@@ -44,7 +44,7 @@ Pokud chcete přidat odběratele, předplatné se automaticky vytvoří. Přidej
 
      ![Řídicí panel v partnerském centru](./media/storsimple-partner-csp-deploy/image1.png)
                               
-2. V levém podokně klikněte na tlačítko **zákazníkům**. V pravém podokně klikněte na tlačítko **přidáním zákazníků**. Zadejte podrobnosti o zákazníkovi. Klikněte na tlačítko **Další: předplatná** k vytvoření předplatného zákazníka.
+2. V levém podokně klikněte na tlačítko **zákazníkům**. V pravém podokně klikněte na tlačítko **přidáním zákazníků**. Zadejte podrobnosti o zákazníkovi. Klikněte na tlačítko **Další: Předplatná** k vytvoření předplatného zákazníka.
 
     ![Přidejte zákazníka](./media/storsimple-partner-csp-deploy/image2.png)
 

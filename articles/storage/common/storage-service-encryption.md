@@ -1,90 +1,61 @@
 ---
 title: Šifrování služby Azure Storage pro neaktivní uložená data | Dokumentace Microsoftu
-description: Pomocí funkce Azure Storage Service Encryption pro šifrování Azure Managed Disks, úložiště objektů Blob v Azure, soubory Azure, Azure Queue storage a Azure Table storage na straně služby při ukládání dat a při získávání data dešifrovat.
+description: Úložiště Azure chrání vaše data tím, že automaticky šifruje před uložením do cloudu. Všechna data ve službě Azure Storage v objekty BLOB, disky, soubory, fronty nebo tabulky, je šifrovaný a dešifrovat transparentně pomocí 256bitového šifrování AES a je kompatibilní s FIPS 140-2.
 services: storage
-author: lakasa
+author: tamram
 ms.service: storage
 ms.topic: article
-ms.date: 08/01/2018
-ms.author: lakasa
+ms.date: 04/16/2019
+ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 059091315c378ab6e2bb857e580c02df968b5092
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
-ms.translationtype: MT
+ms.openlocfilehash: 211cfeb3aba29245e154f4a7db86fb4a3659c36f
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55457169"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60730820"
 ---
-# <a name="azure-storage-service-encryption-for-data-at-rest"></a>Šifrování služby Azure Storage pro neaktivní uložená data
-Šifrování služby Azure Storage pro neaktivní uložená data vám pomůže chránit vaše data pro splnění vaší organizace na zabezpečení a závazky dodržování předpisů. Pomocí této funkce platformy Azure storage automaticky šifruje vaše data před uložením do Azure Managed Disks, tabulky, fronty nebo Azure Blob storage nebo Azure Files a dešifruje před načítání. Správa šifrování, šifrování neaktivních uložených dat, dešifrování a správu klíčů v šifrování služby Storage je pro uživatele transparentní. Všechna data zapsaná do platformy úložiště Azure je zašifrovaná pomocí 256bitových [šifrování AES](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard), jednu z nejsilnějších bloku šifer k dispozici.
+# <a name="azure-storage-encryption-for-data-at-rest"></a>Šifrování služby Azure Storage pro neaktivní uložená data
 
-Šifrování služby Storage je povolená pro všechny účty nová a existující úložiště a nejde zakázat. Vzhledem k tomu, že ve výchozím nastavení jsou vaše data zabezpečená, není nutné upravovat kód vaší aplikace a chcete využít výhod šifrování služby Storage.
+Azure Storage automaticky šifruje vaše data při zachování do cloudu. Šifrování chrání vaše data a také jí pomohou zvládnout organizační závazky zabezpečení a dodržování předpisů. Data ve službě Azure Storage je šifrovaný a dešifrovat transparentně pomocí 256bitového [šifrování AES](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard), jedna z nejsilnějších bloku šifer k dispozici a je kompatibilní s FIPS 140-2. Šifrování Azure Storage je podobný šifrování nástroje BitLocker v Windows.
 
-Tato funkce automaticky šifruje data na:
+Šifrování Azure Storage je povolená pro všechny účty nová a existující úložiště a nejde zakázat. Vzhledem k tomu, že ve výchozím nastavení jsou vaše data zabezpečená, není nutné upravovat kód vaší aplikace a chcete využít výhod šifrování služby Azure Storage. Účty úložiště se zašifrují bez ohledu na jejich úroveň výkonu (standard nebo premium) nebo model nasazení (Azure Resource Manager nebo classic). Všechny možnosti redundance Azure Storage podporují šifrování, a zašifrují veškeré kopie tohoto účtu úložiště. Všechny prostředky služby Azure Storage jsou zašifrovaná, včetně objektů BLOB, disky, soubory, fronty a tabulky.
 
-- Služby Azure storage:
-    - Spravované disky Azure
-    - Azure Blob Storage
-    - Soubory Azure
-    - Azure Queue storage
-    - Azure Table storage.  
-- Obě úrovně výkonu (Standard a Premium).
-- Oba modely nasazení (Azure Resource Manageru a Klasický model).
+Šifrování nemá vliv na výkon služby Azure Storage. Se neúčtují žádné další poplatky pro šifrování Azure Storage.
 
-Šifrování služby Storage nemá vliv na výkon služby Azure storage.
+Další informace o kryptografických modulů základní šifrovací služby Azure Storage najdete v tématu [rozhraní API kryptografických služeb: Další generace](https://docs.microsoft.com/windows/desktop/seccng/cng-portal).
 
-Můžete použít šifrovací klíče s Šifrováním služby Storage spravované Microsoftem nebo vlastní šifrovací klíče. Další informace o použití vlastních klíčů najdete v tématu [šifrování služby Storage pomocí klíčů spravovaných zákazníkem ve službě Azure Key Vault](storage-service-encryption-customer-managed-keys.md).
+## <a name="key-management"></a>Správa klíčů
 
-## <a name="view-encryption-settings-in-the-azure-portal"></a>Nastavení šifrování zobrazení na webu Azure Portal
-Chcete-li zobrazit nastavení pro šifrování služby Storage, přihlaste se k [webu Azure portal](https://portal.azure.com) a vyberte účet úložiště. V **nastavení** podokně, vyberte **šifrování** nastavení.
+Můžete se spolehnout na spravovaných microsoftem klíče pro šifrování vašeho účtu úložiště, nebo je můžete spravovat šifrování vlastní klíče, společně s Azure Key Vault.
 
-![Portálu snímek obrazovky zobrazující nastavení šifrování](./media/storage-service-encryption/image1.png)
+### <a name="microsoft-managed-keys"></a>Klíče spravované zákazníkem společnosti Microsoft
 
-## <a name="faq-for-storage-service-encryption"></a>Nejčastější dotazy k šifrování služby Storage
-**Jak šifrují data v účtu úložiště Resource Manageru?**  
-Šifrování služby Storage je povolená pro všechny účty úložiště – classic a Resource Manageru, veškeré stávající soubory v účtu úložiště, vytvořili před povolením šifrování se zpětně získat zašifrovaná pomocí šifrování proces na pozadí.
+Ve výchozím nastavení používá řízených šifrovací klíče účtu úložiště. Zobrazí se nastavení šifrování pro účet úložiště v **šifrování** část [webu Azure portal](https://portal.azure.com), jak je znázorněno na následujícím obrázku.
 
-**Šifrování služby Storage zapnutá ve výchozím nastavení při vytváření účtu úložiště?**  
-Ano, je povolené šifrování služby úložiště pro všechny účty úložiště a pro všechny služby Azure storage.
+![Zobrazit účet zašifrovaný pomocí klíčů spravovaných microsoftem](media/storage-service-encryption/encryption-microsoft-managed-keys.png)
 
-**Mám účtu úložiště Resource Manageru. Můžete povolit šifrování služby Storage na něm?**  
-Ve výchozím nastavení na všechny existující účty úložiště Resource Manageru je povoleno šifrování služby Storage. To platí pro Azure Blob storage, Azure Files a Azure Queue storage, Table storage. 
+### <a name="customer-managed-keys"></a>Klíče spravované zákazníkem
 
-**Můžete zakázat šifrování na svůj účet úložiště?**  
-Ve výchozím nastavení je povolené šifrování, a není možné zakázat šifrování pro účet úložiště. 
+Správa šifrování služby Azure Storage pomocí klíčů spravovaných zákazníkem. Klíče spravované zákazníkem získáte větší flexibilitu při vytvoření, otáčení, zakázat a odvolat přístup k ovládacím prvkům. Šifrovací klíče použité k ochraně vašich dat můžete také auditovat. 
 
-**Jak Azure Storage stát Pokud je povolené šifrování služby Storage?**  
-Se neúčtují žádné další poplatky.
+Spravovat klíče a auditovat využití klíčů pomocí Azure Key Vault. Můžete vytvořit vlastní klíče a uložit je do trezoru klíčů, nebo rozhraní API služby Azure Key Vault můžete použít ke generování klíčů. Účet úložiště a trezoru klíčů musí být ve stejné oblasti, ale mohou být v různých předplatných. Další informace o službě Azure Key Vault najdete v tématu [co je Azure Key Vault?](../../key-vault/key-vault-overview.md).
 
-**Můžete použít vlastní šifrovací klíče?**  
-Pro úložiště objektů Blob v Azure a službou soubory Azure Ano, můžete použít vlastní šifrovací klíče. Klíče spravované zákazníkem nejsou aktuálně podporovány službou Azure Managed Disks. Další informace najdete v tématu [šifrování služby Storage pomocí klíčů spravovaných zákazníkem ve službě Azure Key Vault](storage-service-encryption-customer-managed-keys.md).
+Odvolání přístupu k klíčů spravovaných zákazníkem najdete v článku [Azure Key Vault prostředí PowerShell](https://docs.microsoft.com/powershell/module/azurerm.keyvault/) a [příkazového řádku Azure Key Vault](https://docs.microsoft.com/cli/azure/keyvault). Odvolání přístupu efektivně blokuje přístup ke všem datům v účtu úložiště, jako šifrovací klíč je pravděpodobně nepřístupný pomocí služby Azure Storage.
 
-**Můžete odvolat přístup k šifrovacím klíčům?**  
-Ano, pokud jste [pomocí vlastních šifrovacích klíčů](storage-service-encryption-customer-managed-keys.md) ve službě Azure Key Vault.
+Zjistěte, jak používat klíče spravované zákazníkem služby Azure Storage, najdete v některém z těchto článků:
 
-**Čím se liší od Azure Disk Encryption šifrování služby Storage?**  
-Azure Disk Encryption poskytuje integraci řešení na základě operačního systému, jako je BitLocker a DM-Crypt a Azure Key Vaultu. Šifrování služby Storage poskytuje šifrování nativně ve vrstvě platformy Azure storage, níže virtuálního počítače.
+- [Konfigurovat klíče spravované zákazníkem pro šifrování Azure Storage na webu Azure Portal](storage-encryption-keys-portal.md)
+- [Konfigurovat klíče spravované zákazníkem pro šifrování Azure Storage z prostředí PowerShell](storage-encryption-keys-powershell.md)
+- [Používat klíče spravované zákazníkem pomocí šifrování úložiště Azure z příkazového řádku Azure](storage-encryption-keys-cli.md)
 
-**Mám klasický účet úložiště. Můžete povolit šifrování služby Storage na něm?**  
-Šifrování služby Storage je povolená pro všechny účty úložiště (classic a Resource Manager).
+> [!NOTE]  
+> Klíče spravované zákazníkem nejsou podporovány pro [Azure managed disks](../../virtual-machines/windows/managed-disks-overview.md).
 
-**Jak můžete šifrovat data ve svém účtu klasického úložiště?**  
-S šifrováním ve výchozím nastavení povolené všechna data uložená ve službě Azure storage services automaticky šifrována. 
+## <a name="azure-storage-encryption-versus-disk-encryption"></a>Šifrování služby Azure Storage a šifrování disku
 
-**Můžete vytvořit účty úložiště pomocí šifrování služby Storage povolit pomocí Azure Powershellu a rozhraní příkazového řádku Azure?**  
-V době vytváření všechny účty úložiště ve výchozím nastavení povoleno šifrování služby Storage (classic nebo Resource Manager). Vlastnosti účtu můžete ověřit pomocí Azure Powershellu a rozhraní příkazového řádku Azure.
-
-**Svůj účet úložiště je nastavený na geo redundantně replikaci. Pomocí šifrování služby Storage budou Moje redundantní kopie také zašifrovaná?**  
-Ano, jsou šifrovány veškeré kopie tohoto účtu úložiště. Všechny redundance možnosti jsou podporovány – místně redundantní úložiště, zónově redundantní úložiště, geograficky redundantní úložiště a geograficky redundantní úložiště jen pro čtení.
-
-**Je pouze v konkrétní oblasti povolené šifrování služby Storage?**  
-Šifrování služby Storage je k dispozici ve všech oblastech.
-
-**Storage Service Encryption FIPS 140-2 je kompatibilní?**  
-Ano, je šifrování služby Storage podle standardu FIPS 140-2 kompatibilní. Další informace o kryptografických modulů základní šifrování služby Storage najdete v tématu [rozhraní API kryptografických služeb: Další generace](https://docs.microsoft.com/windows/desktop/seccng/cng-portal).
-
-**Jak se mám obrátit někdo Pokud můžu mít jakékoli problémy nebo chcete poskytnout zpětnou vazbu?**  
-Kontakt [ ssediscussions@microsoft.com ](mailto:ssediscussions@microsoft.com) pro nějaké problémy nebo zpětnou vazbu související s šifrování služby Storage.
+Pomocí šifrování služby Azure Storage, všechny účty úložiště Azure a prostředky, které obsahují se šifrují, včetně objektů BLOB stránky, které zálohují disky virtuálních počítačů Azure. Kromě toho může šifrovat disky virtuálních počítačů Azure s [Azure Disk Encryption](../../security/azure-security-disk-encryption-overview.md). Azure Disk Encryption používá standardní [BitLocker](https://docs.microsoft.com/windows/security/information-protection/bitlocker/bitlocker-overview) na Windows a [DM-Crypt](https://en.wikipedia.org/wiki/Dm-crypt) na platformě Linux k zajištění řešení šifrování podle operačního systému, které jsou integrované s Azure Key Vault.
 
 ## <a name="next-steps"></a>Další postup
-Azure Storage nabízí že komplexní sadu funkcí zabezpečení tohoto vám společně pomohou vývojářům vytvářet zabezpečené aplikace. Další informace najdete v tématu [Příručka zabezpečení úložiště](../storage-security-guide.md).
+
+- [Co je Azure Key Vault?](../../key-vault/key-vault-overview.md)

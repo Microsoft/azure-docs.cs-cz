@@ -11,11 +11,11 @@ ms.date: 08/03/2018
 ms.author: pullabhk
 ms.assetid: b234533e-ac51-4482-9452-d97444f98b38
 ms.openlocfilehash: eb8b7dc77d180eb56c2585e93e60a36742f6c84c
-ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51289677"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60646618"
 ---
 # <a name="track-backup-and-restore-jobs-using-rest-api"></a>Sledování úloh zálohování a obnovení pomocí rozhraní REST API
 
@@ -23,7 +23,7 @@ Služba Azure Backup spustí úlohy, které je spustit na pozadí v různých sc
 
 ## <a name="fetch-job-information-from-operations"></a>Načíst informace o úlohách z operací
 
-Určité operace, například spouští se záloha vždy vrátí ID úlohy. Pro např: konečné odpovědi [spustit operaci zálohování rozhraní REST API](backup-azure-arm-userestapi-backupazurevms.md#example-responses-3) vypadá takto:
+Určité operace, například spouští se záloha vždy vrátí ID úlohy. Pro např: Poslední reakce [spustit operaci zálohování rozhraní REST API](backup-azure-arm-userestapi-backupazurevms.md#example-responses-3) vypadá takto:
 
 ```http
 {

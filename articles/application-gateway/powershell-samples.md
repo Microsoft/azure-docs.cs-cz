@@ -1,6 +1,6 @@
 ---
-title: Ukázky aplikací Azure brány PowerShell | Microsoft Docs
-description: Ukázky PowerShell brány aplikace Azure
+title: Ukázky Powershellu Azure Application Gateway | Dokumentace Microsoftu
+description: Ukázky Powershellu Azure Application Gateway
 services: application-gateway
 documentationcenter: networking
 author: vhorne
@@ -11,23 +11,25 @@ ms.service: application-gateway
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
-ms.date: 01/29/2018
-ms.author: victorh
+origin.date: 01/29/2018
+ms.date: 07/02/2018
+ms.author: v-junlch
 ms.custom: mvc
-ms.openlocfilehash: 54505f108757fc67b07e44ef3b603bc353b9aec5
-ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
+ms.openlocfilehash: 1616d153dbf27912757eb88fdfc6c4196f3d3a87
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/04/2018
-ms.locfileid: "33200650"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60715703"
 ---
-# <a name="azure-application-gateway-powershell-samples"></a>Ukázek Azure Application Gateway prostředí PowerShell
+# <a name="azure-application-gateway-powershell-samples"></a>Ukázky Azure Powershellu pro bránu aplikace
 
-Následující tabulka obsahuje odkazy na ukázky skriptu prostředí Azure PowerShell, které vytvořit application Gateway.
+Následující tabulka obsahuje odkazy na ukázkové skripty Azure Powershellu, které vytvoření služby application Gateway.
 
 | | |
 |---|---|
-| [Správa webové přenosy](./scripts/create-vmss-powershell.md) | Vytvoří aplikační bránu a všechny související prostředky.|
-| [Omezit webový provoz](./scripts/create-vmss-waf-powershell.md) | Vytvoří aplikační bránu, která omezuje provoz použití OWASP pravidel.|
+| [Správa webového provozu](./scripts/create-vmss-powershell.md) | Vytvoří aplikační bránu a všechny související prostředky.|
+| [Omezení webového provozu](./scripts/create-vmss-waf-powershell.md) | Vytvoří aplikační bránu, která omezuje provoz pomocí pravidel OWASP.|
 | | |
+
 

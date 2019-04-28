@@ -8,14 +8,15 @@ keywords: ''
 ms.service: azure-functions
 ms.devlang: multiple
 ms.topic: conceptual
-ms.date: 12/07/2017
-ms.author: azfuncdf
+origin.date: 12/07/2017
+ms.date: 02/21/2019
+ms.author: v-junlch
 ms.openlocfilehash: 596eedab39ff926fcdc880c82c49ac464b7ff23b
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55753461"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60730259"
 ---
 # <a name="task-hubs-in-durable-functions-azure-functions"></a>Centra úloh v Durable Functions (Azure Functions)
 
@@ -29,11 +30,11 @@ Pokud sdílet více aplikací funkcí účet úložiště, každá aplikace func
 
 Centra úloh se skládá z následujících prostředků služby storage:
 
-* Jednu či více front ovládacího prvku.
-* Jedna fronta pracovní položky.
-* Tabulky historie jeden.
-* Jedna instance tabulka.
-* Jeden kontejner úložiště obsahuje minimálně jeden objekt BLOB zapůjčení.
+- Jednu či více front ovládacího prvku.
+- Jedna fronta pracovní položky.
+- Tabulky historie jeden.
+- Jedna instance tabulka.
+- Jeden kontejner úložiště obsahuje minimálně jeden objekt BLOB zapůjčení.
 
 Všechny tyto prostředky se vytvoří automaticky v účtu Azure Storage výchozí při orchestrator nebo funkce aktivity spustit nebo jsou naplánovány ke spuštění. [Výkon a škálování](durable-functions-perf-and-scale.md) článek vysvětluje, jak se používají tyto prostředky.
 
@@ -140,3 +141,5 @@ Centrum názvy úloh musí začínat písmenem a obsahovat jenom písmena a čí
 
 > [!div class="nextstepaction"]
 > [Zjistěte, jak zpracovat správy verzí](durable-functions-versioning.md)
+
+<!-- Update_Description: wording update -->

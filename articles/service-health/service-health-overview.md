@@ -10,11 +10,11 @@ ms.topic: article
 ms.workload: Supportability
 ms.date: 03/27/2018
 ms.openlocfilehash: 465e8751d02692648234a7a90b84b68f41522cb2
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56328261"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60620728"
 ---
 # <a name="service-health"></a>Service Health
 Service Health vám poskytne přizpůsobitelný řídicí panel, který sleduje stav služby Azure v oblastech, kde je používáte. V tomto řídicím panelu můžete sledovat aktivní události, jako jsou problémy s probíhající služby, nadcházející plánované údržbě nebo poradci pro stav relevantní. Když nenechávali události, získejte vystavili v historii stavu po dobu 90 dnů. A konečně mohou pomocí řídicího panelu stavu služby k vytváření a správě výstrah stavu služby, které proaktivně upozorňují na problémy se službou ovlivňují.

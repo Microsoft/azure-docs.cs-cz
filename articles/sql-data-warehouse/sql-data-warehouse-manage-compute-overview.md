@@ -11,11 +11,11 @@ ms.date: 04/17/2018
 ms.author: kevin
 ms.reviewer: igorstan
 ms.openlocfilehash: 47be738a4e5dcec144d482c28e39cbe950bba3e7
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55460382"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60748930"
 ---
 # <a name="manage-compute-in-azure-sql-data-warehouse"></a>Správa výpočetních služeb v Azure SQL Data Warehouse
 Další informace o správě výpočetních prostředků ve službě Azure SQL Data Warehouse. Nižší náklady pomocí pozastavení datového skladu nebo škálovat datový sklad na splňovat požadavky na výkon. 

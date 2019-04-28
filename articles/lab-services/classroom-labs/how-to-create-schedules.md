@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 01/30/2019
 ms.author: spelluru
 ms.openlocfilehash: 34bc8263053cd4a701c16ee1832cf1b27340a345
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55501358"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60695949"
 ---
 # <a name="create-and-manage-schedules-for-classroom-labs-in-azure-lab-services"></a>Vytvořit a spravovat plány pro testovací prostředí v učebnách ve službě Azure Lab Services 
 Plány umožňují konfigurovat testovacího prostředí v učebně, tak, aby virtuální počítače v testovacím prostředí automaticky spuštění a vypnutí v určenou dobu. Můžete definovat jednorázového plánu nebo plánu opakování. Následující postupy vám postup vytvoření a správě plánů pro prostředí v učebně: 

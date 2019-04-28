@@ -14,11 +14,11 @@ ms.workload: tbd
 ms.date: 3/26/2019
 ms.author: raiye
 ms.openlocfilehash: 42c241ce6b14eac2f76785b7b16b537d3e88bd8d
-ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58500606"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60623064"
 ---
 # <a name="azure-guest-os"></a>Azure hostovaného operačního systému
 Microsoft Security Response Center (MSRC) aktualizací nainstalovaných do hostovaného operačního systému Azure v následujících tabulkách. Hledání Tento článek k určení, pokud platí konkrétní aktualizace do hostovaného operačního systému, kterou používáte. Aktualizace vždy převést do dalšího období pro konkrétní [řady] [ family-explain] byly zavedeny v.
@@ -487,7 +487,7 @@ Microsoft Security Response Center (MSRC) aktualizací nainstalovaných do hosto
 | Rel 17-09 | [4038779], [4038786], [4038793] |Pouze zabezpečení Windows |2.66, 3.53, 4.46 |12. září 2017 |
 | Rel 17-09 | [4040966], [4040960], [4040965], [4040959], [4033988], [4040955], [4040967], [4040958]|Aktualizace .NET září |2.66, 3.53, 4.46 |12. září 2017 |
 | Rel 17-09 | [4036586] |Aplikace Internet explorer |2.66, 3.53, 4.46 |12. září 2017 |
-| CVE-2017-8704 | [4038782] |Útok DoS |5.11 |12. září 2017 |
+| CVE-2017-8704 | [4038782] |Odepření služby |5.11 |12. září 2017 |
 | neuvedeno | [4034664] |Souhrn nesouvisí se zabezpečením. srpna  |2.66 |8. srpna 2017 |
 | neuvedeno | [4034665] |Souhrn nesouvisí se zabezpečením. srpna |5.11 |8. srpna 2017 |
 | neuvedeno | [4034681] |Souhrn nesouvisí se zabezpečením. srpna |4.46 |8. srpna 2017 |

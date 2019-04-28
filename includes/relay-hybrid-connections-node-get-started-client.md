@@ -1,15 +1,10 @@
 ---
-author: clemensv
-ms.service: service-bus-relay
-ms.topic: include
-ms.date: 11/09/2018
-ms.author: clemensv
 ms.openlocfilehash: 9d4f7faa18ee7fae158afb42b8c42287e61dd103
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51571931"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60553808"
 ---
 ### <a name="create-a-nodejs-application"></a>Vytvoření aplikace Node.js
 
@@ -20,7 +15,6 @@ Vytvořte nový soubor JavaScript s názvem `sender.js`.
 Spusťte z příkazového řádku uzlu ve složce projektu příkaz `npm install hyco-ws`.
 
 ### <a name="write-some-code-to-send-messages"></a>Napsání kódu pro odesílání zpráv
-
 1. Na začátek souboru `sender.js` přidejte následující konstanty (`constants`):
    
     ```js

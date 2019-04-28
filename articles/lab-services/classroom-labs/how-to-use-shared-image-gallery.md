@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 03/28/2019
 ms.author: spelluru
 ms.openlocfilehash: 93136c7d685bd9fc8ec4bcdea3a900b28029059b
-ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58652982"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60695167"
 ---
 # <a name="use-a-shared-image-gallery-in-azure-lab-services"></a>Pomocí Galerie sdílené bitové kopie v Azure Lab Services
 Tento článek popisuje, jak správce učitelé/testovacího prostředí můžete uložit image šablony virtuálního počítače, aby se znovu použít jiní. Tyto Image se ukládají v Azure [sdílené bitové kopie Galerie](../../virtual-machines/windows/shared-image-galleries.md). Správce testovacího prostředí jako první krok, připojí existující Galerie sdílené bitové kopie k účtu testovacího prostředí. Po připojení galerii sdílené bitové kopie labs vytvořené v účtu testovacího prostředí můžete uložit obrázky v galerii sdílené bitové kopie. Další učitelé můžete vybrat tuto image z Galerie sdílené bitové kopie k vytvoření šablony pro své třídy. 

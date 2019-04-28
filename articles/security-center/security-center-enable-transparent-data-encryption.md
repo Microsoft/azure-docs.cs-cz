@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 10/28/2018
 ms.author: rkarlin
 ms.openlocfilehash: d5ddec40a1b20e377ec18ce871018f674557e7b4
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56111760"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60703995"
 ---
 # <a name="enable-transparent-data-encryption-in-azure-security-center"></a>Povolit transparentní šifrování dat ve službě Azure Security Center
 Azure Security Center vám doporučí povolit transparentní šifrování dat (TDE) u databází SQL, pokud již není povolené šifrování TDE. Transparentní šifrování dat chrání vaše data a pomáhá splnit požadavky na dodržování předpisů tím, že šifruje vaše databáze, přidružené zálohy a soubory protokolů transakcí v klidovém stavu, bez nutnosti změn do vaší aplikace. Další informace najdete tady [transparentního šifrování dat s využitím Azure SQL Database](https://msdn.microsoft.com/library/dn948096).

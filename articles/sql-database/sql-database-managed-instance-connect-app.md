@@ -13,11 +13,11 @@ ms.reviewer: sstein, bonova, carlrab
 manager: craigg
 ms.date: 11/09/2018
 ms.openlocfilehash: ed9fbdd3e999cfd262ecbcf05a843c19cc969ed1
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59360417"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60701262"
 ---
 # <a name="connect-your-application-to-azure-sql-database-managed-instance"></a>Připojit vaši aplikaci ke spravované instanci Azure SQL Database
 
@@ -138,7 +138,7 @@ Pro řešení potíží s připojením, zkontrolujte následující položky:
 
 Následující minimální verze nástrojů a ovladačů se doporučuje, pokud se chcete připojit k Managed Instance:
 
-| Ovladač nebo nástroj | Verze |
+| Ovladač nebo nástroj | Version |
 | --- | --- |
 |.NET Framework | 4.6.1 (nebo .NET Core) |
 |Ovladač ODBC| v17 |

@@ -9,12 +9,12 @@ ms.reviewer: jasonwhowell
 ms.assetid: 5366d852-e7d6-44cf-a88c-e9f52f15f7df
 ms.topic: conceptual
 ms.date: 10/13/2016
-ms.openlocfilehash: 9f834d697c0d3fe537bbdb190b0ba0d0f294ac87
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: 73314c5864e3036d102deee2792021345b80bf2e
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43041009"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60687759"
 ---
 # <a name="use-the-vertex-execution-view-in-data-lake-tools-for-visual-studio"></a>Použití zobrazení provádění vrcholů v Data Lake Tools pro Visual Studio
 Další informace o použití zobrazení provádění vrcholů na zkoušku úloh Data Lake Analytics.
@@ -40,12 +40,12 @@ Zobrazí se podokno nahoře uprostřed **stav všech vrcholů spuštění**.
 
 V dolním podokně center zobrazí informace o všech vrcholů:
 * Název procesu: Název instance vrcholů. Se skládá z různých částí v StageName | VertexName | VertexRunInstance. Například vrcholu [62] .v1 SV7_Split zastupuje druhý spuštěné instance (.v1, index počínaje 0) čísla vrcholu 62 v SV7_Split fázi.
-* Celkový počet dat pro čtení/Written: Data byla načtených/zapsaných pomocí tohoto vrcholu.
+* Celkové množství dat načtených/zapsaných: Data byla načtených/zapsaných pomocí tohoto vrcholu.
 * Stav a její opuštění stavu: Konečný stav po ukončení vrchol.
-* Ukončovací kód nebo selhání typ: Chyba při vrcholu se nepovedlo.
-* Důvod vytvoření: Proč vrchol byl vytvořen.
+* Ukončovací kód/chyba typu: Chyba při vrcholu se nepovedlo.
+* Důvod vytvoření: Proč byla vytvořena vrchol.
 * Latence fronty latence/PN prostředků latence/Process: čas potřebný pro vrchol k čekání na prostředky, ke zpracování dat a zůstat ve frontě.
-* GUID procesu nebo Tvůrce: Identifikátor GUID aktuálního vrcholu spuštěné nebo jeho autor.
+* GUID procesu/Tvůrce: Identifikátor GUID aktuálního vrcholu spuštěné nebo jeho autor.
 * Verze: N-tém instance spuštěné vrcholu (v systému naplánovat nové instance vrcholu pro mnoho důvodů, třeba převzetí služeb při selhání, výpočetní redundance, atd.)
 * Čas vytvoření verze.
 * Zpracování vytvořit počáteční čas/Process zařazeno do fronty čas/Process počáteční čas a zpracovávat Complete čas: při vytváření; spuštění procesu vrcholu Při spuštění procesu vrcholů do fronty Při spuštění určitého vrcholu postupu; Po dokončení některých vrcholu.

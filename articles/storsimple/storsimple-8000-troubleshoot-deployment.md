@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 07/03/2017
 ms.author: alkohli
-ms.openlocfilehash: 61719d482a4db1c737bbe38277f2ac3b2d684b63
-ms.sourcegitcommit: 4597964eba08b7e0584d2b275cc33a370c25e027
-ms.translationtype: MT
+ms.openlocfilehash: 6bb587de2f0f3ef9c4e8c4a856ee4b7430e9b9cf
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37342421"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60631545"
 ---
 # <a name="troubleshoot-storsimple-device-deployment-issues"></a>Řešení potíží s problémy při nasazení zařízení StorSimple
 ## <a name="overview"></a>Přehled
@@ -73,20 +73,20 @@ Následující tabulky obsahují seznam běžných chyb, že můžete setkat, kd
 | --- | --- | --- | --- |
 | 1 |Invoke-HcsSetupWizard: Tento příkaz lze spustit pouze na aktivním řadiči. |Konfigurace se právě provádí na pasivním kontroleru. |Spusťte tento příkaz z aktivního kontroleru. Další informace najdete v tématu [identifikace aktivního kontroleru na vašem zařízení](storsimple-8000-controller-replacement.md#identify-the-active-controller-on-your-device). |
 | 2 |Invoke-HcsSetupWizard: Zařízení není připraveno. |Dochází k problémům s připojením k síti na DATA 0. |Zkontrolujte připojení k fyzické síti na DATA 0. |
-| 3 |Invoke-HcsSetupWizard: Existuje konflikt IP adres s jiným systémem v síti (výjimka z HRESULT: 0x80070263). |IP adresa zadaná pro DATA 0 se již používá jiný systém. |Zadejte novou IP adresu, která se nepoužívá. |
+| 3 |Invoke-HcsSetupWizard: Dojde ke konfliktu IP adres s jiným systémem v síti (výjimka z HRESULT: 0x80070263). |IP adresa zadaná pro DATA 0 se již používá jiný systém. |Zadejte novou IP adresu, která se nepoužívá. |
 | 4 |Invoke-HcsSetupWizard: Prostředek clusteru selhal. (Výjimka z HRESULT: 0x800713AE). |Duplicitní virtuální IP adresy. Zadaná IP adresa se už používá. |Zadejte novou IP adresu, která se nepoužívá. |
-| 5 |Invoke-HcsSetupWizard: Neplatná IPv4 adresa. |IP adresy se poskytuje v nesprávném formátu. |Zkontrolujte formát a znovu zadejte IP adresu. Další informace najdete v tématu [adresování protokolu Ipv4][1]. |
-| 6 |Invoke-HcsSetupWizard: Neplatná IPv6 adresa. |IP adresy se poskytuje v nesprávném formátu. |Zkontrolujte formát a znovu zadejte IP adresu. Další informace najdete v tématu [adresování Ipv6][2]. |
-| 7 |Invoke-HcsSetupWizard: Žádné další koncové body nejsou k dispozici z mapovač koncových bodů. (Výjimka z HRESULT: 0x800706D9) |Fungování clusteru není funkční. |[Obraťte se na Microsoft Support](storsimple-8000-contact-microsoft-support.md) o dalších krocích. |
+| 5 |Invoke-HcsSetupWizard: Neplatná adresa protokolu IPv4. |IP adresy se poskytuje v nesprávném formátu. |Zkontrolujte formát a znovu zadejte IP adresu. Další informace najdete v tématu [adresování protokolu Ipv4][1]. |
+| 6 |Invoke-HcsSetupWizard: Neplatná adresa protokolu IPv6. |IP adresy se poskytuje v nesprávném formátu. |Zkontrolujte formát a znovu zadejte IP adresu. Další informace najdete v tématu [adresování Ipv6][2]. |
+| 7 |Invoke-HcsSetupWizard: Další koncové body nejsou k dispozici z mapovač koncových bodů. (Výjimka z HRESULT: 0x800706D9) |Fungování clusteru není funkční. |O dalším postupu se [poraďte s podporou Microsoftu](storsimple-8000-contact-microsoft-support.md). |
 
 ## <a name="errors-during-the-optional-web-proxy-settings"></a>Chyby při nastavení volitelné webového proxy serveru
 | Ne. | Chybová zpráva | Možné příčiny | Doporučená akce |
 | --- | --- | --- | --- |
 | 1 |Invoke-HcsSetupWizard: Neplatný parametr (výjimka z HRESULT: 0x80070057) |Jeden z parametrů stanovených nastavení proxy serveru není platný. |Není k dispozici identifikátor URI ve správném formátu. Použijte následující formát: http://*<IP address or FQDN of the web proxy server>*:*<TCP port number>* |
-| 2 |Invoke-HcsSetupWizard: Server vzdáleného volání Procedur není k dispozici (výjimka z HRESULT: 0x800706ba) |Hlavní příčinou je jeden z následujících akcí:<ol><li>Až cluster není.</li><li>Pasivní kontroler nemůže komunikovat s aktivním řadiči. proto se příkaz spustí z pasivní kontroler.</li></ol> |V závislosti na hlavní příčina:<ol><li>[Obraťte se na Microsoft Support](storsimple-8000-contact-microsoft-support.md) abyste měli jistotu, že cluster běží.</li><li>Spusťte příkaz z aktivního kontroleru. Pokud chcete spustit příkaz z pasivního kontroleru, je potřeba zajistit, že pasivní kontroler může komunikovat s aktivním řadiči. Budete muset [obraťte se na Microsoft Support](storsimple-8000-contact-microsoft-support.md) Pokud tyto možnosti připojení bylo přerušeno.</li></ol> |
+| 2 |Invoke-HcsSetupWizard: Server RPC není k dispozici (výjimka z HRESULT: 0x800706ba) |Hlavní příčinou je jeden z následujících akcí:<ol><li>Až cluster není.</li><li>Pasivní kontroler nemůže komunikovat s aktivním řadiči. proto se příkaz spustí z pasivní kontroler.</li></ol> |V závislosti na hlavní příčina:<ol><li>[Obraťte se na Microsoft Support](storsimple-8000-contact-microsoft-support.md) abyste měli jistotu, že cluster běží.</li><li>Spusťte příkaz z aktivního kontroleru. Pokud chcete spustit příkaz z pasivního kontroleru, je potřeba zajistit, že pasivní kontroler může komunikovat s aktivním řadiči. Budete muset [obraťte se na Microsoft Support](storsimple-8000-contact-microsoft-support.md) Pokud tyto možnosti připojení bylo přerušeno.</li></ol> |
 | 3 |Invoke-HcsSetupWizard: Volání RPC se nezdařilo (výjimka z HRESULT: 0x800706be) |Clusteru je mimo provoz. |[Obraťte se na Microsoft Support](storsimple-8000-contact-microsoft-support.md) abyste měli jistotu, že cluster běží. |
-| 4 |Invoke-HcsSetupWizard: Cluster prostředek se nenašel (výjimka z HRESULT: 0x8007138f) |Prostředek clusteru se nenašel. To může nastat při instalaci není správný. |Budete muset obnovit zařízení do výchozího továrního nastavení. [Obraťte se na Microsoft Support](storsimple-8000-contact-microsoft-support.md) k vytvoření prostředku clusteru. |
-| 5 |Invoke-HcsSetupWizard: Cluster zdroj není online (výjimka z HRESULT: 0x8007138c) |Prostředky clusteru nejsou online. |[Obraťte se na Microsoft Support](storsimple-8000-contact-microsoft-support.md) o dalších krocích. |
+| 4 |Invoke-HcsSetupWizard: Nebyl nalezen prostředek clusteru (výjimka z HRESULT: 0x8007138f) |Prostředek clusteru se nenašel. To může nastat při instalaci není správný. |Budete muset obnovit zařízení do výchozího továrního nastavení. [Obraťte se na Microsoft Support](storsimple-8000-contact-microsoft-support.md) k vytvoření prostředku clusteru. |
+| 5 |Invoke-HcsSetupWizard: Cluster resource není online (výjimka z HRESULT: 0x8007138c) |Prostředky clusteru nejsou online. |O dalším postupu se [poraďte s podporou Microsoftu](storsimple-8000-contact-microsoft-support.md). |
 
 ## <a name="errors-related-to-device-administrator-password"></a>Chyby související s hesla správce zařízení
 Výchozí heslo správce zařízení je **Heslo1**. Toto heslo vyprší po prvním přihlášení; Proto je potřeba ji změnit pomocí Průvodce instalací. Při první registraci zařízení je nutné zadat nové heslo správce zařízení. 
@@ -130,13 +130,13 @@ Použijte ve službě Správce zařízení StorSimple běží v Microsoft Azure 
 | --- | --- | --- | --- |
 | 1 |Chyba 350027: Nepovedlo se zaregistrovat zařízení pomocí Správce zařízení StorSimple. | |Počkejte pár minut a opakujte operaci znovu. Pokud se problém nevyřeší, [obraťte se na Microsoft Support](storsimple-8000-contact-microsoft-support.md). |
 | 2 |Chyba 350013: Při registraci zařízení došlo k chybě. To může být nesprávný registrační klíč služby. | |Zaregistrujte prosím zařízení znovu s použitím správného registračního klíče služby. Další informace najdete v tématu [získat registrační klíč služby.](storsimple-8000-manage-service.md#get-the-service-registration-key) |
-| 3 |Chyba 350063: Selhalo ověřování do služby Správce zařízení StorSimple předán, ale registrace. Zkuste prosím operaci zopakovat později. |Tato chyba označuje, že uplynutí ověřování pomocí služby ACS, ale volání registrace ke službě se nezdařila. To může být výsledkem poruchu sporadické sítě. |Pokud se problém nevyřeší, prosím [obraťte se na Microsoft Support](storsimple-8000-contact-microsoft-support.md). |
-| 4 |Chyba 350049: Služba není dosažitelná během registrace. |Když při volání do služby, webové výjimce přijetí. V některých případech to může získat opraven budete pokoušet operaci později. |Zkontrolujte prosím IP adresu a název DNS a zkuste operaci zopakovat. Pokud se problém nevyřeší, [obraťte se na Microsoft Support.](storsimple-8000-contact-microsoft-support.md) |
+| 3 |Chyba 350063: Ověření služby Správce zařízení StorSimple předán, ale registrace se nezdařilo. Zkuste prosím operaci zopakovat později. |Tato chyba označuje, že uplynutí ověřování pomocí služby ACS, ale volání registrace ke službě se nezdařila. To může být výsledkem poruchu sporadické sítě. |Pokud se problém nevyřeší, prosím [obraťte se na Microsoft Support](storsimple-8000-contact-microsoft-support.md). |
+| 4 |Chyba 350049: Během registrace se nepodařilo službu kontaktovat. |Když při volání do služby, webové výjimce přijetí. V některých případech to může získat opraven budete pokoušet operaci později. |Zkontrolujte prosím IP adresu a název DNS a zkuste operaci zopakovat. Pokud se problém nevyřeší, [obraťte se na Microsoft Support.](storsimple-8000-contact-microsoft-support.md) |
 | 5 |Chyba 350031: Zařízení je již zaregistrován. | |Není potřeba žádná akce. |
 | 6 |Chyba 350016: Registrace zařízení se nezdařila. | |Ujistěte se prosím, že registrační klíč je správný. |
 | 7 |Invoke-HcsSetupWizard: Došlo k chybě při registraci zařízení; To může být způsobeno nesprávná IP adresa nebo název DNS. Zkontrolujte nastavení sítě a zkuste to znovu. Pokud se problém nevyřeší, [obraťte se na Microsoft Support](storsimple-8000-contact-microsoft-support.md). (Chyba 350050) |Ujistěte se, že vaše zařízení příkazem ping vnější síti. Pokud nemáte připojení k vnější síti, registrace může selhat s touto chybou. Tato chyba může být kombinací jeden nebo více z následujících akcí:<ul><li>Nesprávná IP</li><li>Nesprávný podsítě</li><li>Nesprávný brány</li><li>Nesprávné nastavení DNS</li></ul> |Podívejte se na postup v [podrobný Poradce při potížích příklad](#step-by-step-storsimple-troubleshooting-example). |
 | 8 |Invoke-HcsSetupWizard: Aktuální operace selhala kvůli vnitřní chybě služby [0x1FBE2]. Zkuste operaci po nějaké době zopakovat. Pokud se problém nevyřeší, obraťte se na Microsoft Support. |Toto je obecná chyba vyvolána pro všechny uživatele neviditelné chyby ze služby nebo agenta. Nejběžnějším Důvodem může být, že ověřování ACS se nezdařilo. Možná příčina selhání je, že dojde k problémům s konfigurací serveru NTP a čas na zařízení není správně nastaven. |Opravte čas (Pokud dojde k problémům) a pak zkuste operaci zopakovat registraci. Pokud pomocí příkazu Set-HcsSystem - Timezone upravte časové pásmo, velké první písmeno každého slova v časovém pásmu (například "Tichomoří (běžný čas").  Pokud se problém nevyřeší, [obraťte se na Microsoft Support](storsimple-8000-contact-microsoft-support.md) o dalších krocích. |
-| 9 |Upozornění: Nebylo možné aktivovat zařízení. Správce zařízení a hesla Snapshot Manageru zařízení StorSimple se nezměnily. |Pokud se registrace nezdaří, Správce zařízení a hesla Snapshot Manageru zařízení StorSimple se nezmění. | |
+| 9 |Upozornění: Zařízení nebylo možné aktivovat. Správce zařízení a hesla Snapshot Manageru zařízení StorSimple se nezměnily. |Pokud se registrace nezdaří, Správce zařízení a hesla Snapshot Manageru zařízení StorSimple se nezmění. | |
 
 ## <a name="tools-for-troubleshooting-storsimple-deployments"></a>Nástroje pro řešení potíží s nasazeními StorSimple
 StorSimple obsahuje několik nástrojů, které můžete použít k řešení vašeho řešení StorSimple. Mezi ně patří:
@@ -170,10 +170,10 @@ Balíček pro podporu obsahuje všechny relevantní protokoly, které mohou pomo
 Následující rutiny prostředí Windows PowerShell použijte k detekci chyb připojení.
 
 * `Get-NetAdapter`: Tuto rutinu použijte k detekci stavu síťových rozhraní.
-* `Test-Connection`: Pomocí této rutiny zkontrolujte připojení k síti uvnitř i mimo síť.
-* `Test-HcsmConnection`: Pomocí této rutiny aby se ověřilo připojení úspěšně registrovaná zařízení.
+* `Test-Connection`: Tuto rutinu použijte k zkontrolujte síťové připojení uvnitř i mimo síť.
+* `Test-HcsmConnection`: Aby se ověřilo připojení úspěšně registrovaná zařízení, použijte tuto rutinu.
 * `Sync-HcsTime`: Tuto rutinu použijte k zobrazení času zařízení a vynucení synchronizace času se serverem NTP.
-* `Enable-HcsPing` a `Disable-HcsPing`: použijte tyto rutiny umožňující hostitele pro odeslání příkazu ping síťových rozhraní na zařízení StorSimple. Ve výchozím nastavení síťová rozhraní StorSimple není reagovat na žádosti příkazu ping.
+* `Enable-HcsPing` a `Disable-HcsPing`: Tyto rutiny můžete povolit hostitele pro odeslání příkazu ping síťových rozhraní na zařízení StorSimple. Ve výchozím nastavení síťová rozhraní StorSimple není reagovat na žádosti příkazu ping.
 * `Trace-HcsRoute`: Pomocí této rutiny jako nástroj pro sledování postupu. Odešle pakety každý směrovač na cestě do konečného místa určení po určitou dobu a pak vypočítá výsledky podle paketů vrácených z každého směrování. Protože `Trace-HcsRoute` ukazuje stupeň ztráta paketů v jakékoli dané směrovače nebo odkaz, můžete určit které směrovače nebo odkazy by mohly způsobovat problémy se sítí.
 * `Get-HcsRoutingTable`: Tuto rutinu použijte k zobrazení místní směrovací tabulce IP.
 

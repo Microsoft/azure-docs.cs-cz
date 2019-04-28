@@ -1,6 +1,6 @@
 ---
-title: 'Zabezpečení clusteru Service Fabric: rolí klienta | Microsoft Docs'
-description: Tento článek popisuje dva klientské role a oprávnění poskytované role.
+title: 'Zabezpečení clusteru Service Fabric: klientské role | Dokumentace Microsoftu'
+description: Tento článek popisuje dva klientské role a oprávnění k dispozici k rolím.
 services: service-fabric
 documentationcenter: .net
 author: mani-ramaswamy
@@ -14,93 +14,93 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 2/23/2018
 ms.author: subramar
-ms.openlocfilehash: 39b77813e3494e809b92738924544e196d89a166
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: ed000dc4be1ae45382d688d4a596ec745c69d0bb
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34204647"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60711149"
 ---
 # <a name="role-based-access-control-for-service-fabric-clients"></a>Řízení přístupu na základě rolí pro klienty Service Fabric
-Azure Service Fabric podporuje dva typy ovládacích prvků různý přístup pro klienty, kteří jsou připojené ke clusteru Service Fabric: správce a uživatele. Řízení přístupu umožňuje omezit přístup k určité operace clusteru pro různé skupiny uživatelů, lepší zabezpečení clusteru pomocí Správce clusteru.  
+Azure Service Fabric podporuje dva typy ovládacích prvků jiný přístup pro klienty, kteří jsou připojené ke clusteru Service Fabric: správce a uživatele. Řízení přístupu umožňuje omezit přístup k určité operace clusteru pro různé skupiny uživatelů, lepší zabezpečení clusteru pomocí Správce clusteru.  
 
-**Správci** mají úplný přístup k funkcím správy (včetně možnosti pro čtení i zápis). Ve výchozím nastavení **uživatelé** mít pouze pro čtení přístup k možnosti správy (například možnosti dotazu) a možnost řešení aplikace a služby.
+**Správci** úplný přístup k funkcím správy (včetně možností pro čtení a zápis). Ve výchozím nastavení **uživatelé** pouze mají přístup pro čtení k funkce pro správu (například schopnosti příkazů jazyka) a schopnost řešení aplikací a služeb.
 
-Tím, že poskytuje samostatné certifikáty pro každou zadáte dva klientské role (správce a klient) v době vytváření clusteru. V tématu [zabezpečení clusteru Service Fabric](service-fabric-cluster-security.md) podrobnosti o nastavení zabezpečení clusteru Service Fabric.
+Dva klientské role (správce a klient) je zadat v době vytváření clusteru poskytnutím samostatné certifikáty pro každý. Zobrazit [zabezpečení clusteru Service Fabric](service-fabric-cluster-security.md) podrobné informace o vytvoření zabezpečeného clusteru Service Fabric.
 
 ## <a name="default-access-control-settings"></a>Výchozí nastavení řízení přístupu
-Typ ovládacího prvku správce přístupu má úplný přístup k rozhraní API FabricClient. Můžete provádět žádné čtení a zápisy na cluster Service Fabric, včetně následujících operací:
+Typ řízení přístupu správce má úplný přístup ke všem rozhraním API FabricClient. Můžete provádět všechny operace čtení a zápisů v clusteru Service Fabric, včetně následujících operací:
 
 ### <a name="application-and-service-operations"></a>Operace služby a aplikace
-* **CreateService**: vytváření služby                             
-* **CreateServiceFromTemplate**: vytváření ze šablony služby                             
-* **UpdateService**: servis aktualizací                             
-* **DeleteService**: Služba odstranění                             
-* **ProvisionApplicationType**: zřizování typ aplikace                             
+* **CreateService**: vytvořit službu                             
+* **CreateServiceFromTemplate**: vytvoření ze šablony služby                             
+* **UpdateService**: aktualizace služeb                             
+* **DeleteService**: odstranění služby                             
+* **ProvisionApplicationType**: zřízení typu aplikace                             
 * **CreateApplication**: vytvoření aplikace                               
 * **DeleteApplication**: odstranění aplikace                             
-* **UpgradeApplication**: spuštění nebo přerušení upgradů aplikací                             
-* **UnprovisionApplicationType**: rušení zajišťování typ aplikace                             
-* **MoveNextUpgradeDomain**: obnovení upgradů aplikací s doménou explicitní aktualizace                             
-* **ReportUpgradeHealth**: obnovení upgradů aplikací s aktuální průběh upgradu                             
+* **UpgradeApplication**: spuštění nebo by bylo třeba přerušit upgrady aplikací                             
+* **UnprovisionApplicationType**: zrušení zřízení typu aplikace                             
+* **MoveNextUpgradeDomain**: obnovení upgrady aplikací s explicitní aktualizační doména                             
+* **ReportUpgradeHealth**: obnovení upgrady aplikací s aktuální průběh upgradu                             
 * **ReportHealth**: generování sestav stavu                             
 * **PredeployPackageToNode**: před nasazením rozhraní API                            
 * **CodePackageControl**: restartování balíčky kódu                             
-* **RecoverPartition**: obnovení oddíl                             
-* **RecoverPartitions**: obnovení oddíly                             
+* **RecoverPartition**: obnovení oddílu                             
+* **RecoverPartitions**: obnovení oddílů                             
 * **RecoverServicePartitions**: obnovení oddílů služby                             
-* **RecoverSystemPartitions**: obnovení systému oddílů služby                             
+* **RecoverSystemPartitions**: obnovení oddílů systémové služby                             
 
 ### <a name="cluster-operations"></a>Operace clusteru
-* **ProvisionFabric**: MSI nebo clusteru manifest zřizování                             
-* **UpgradeFabric**: spouštění upgrade clusteru                             
-* **UnprovisionFabric**: MSI nebo clusteru manifest rušení zajišťování                         
-* **MoveNextFabricUpgradeDomain**: obnovení upgradu clusteru s doménou explicitní aktualizace                             
-* **ReportFabricUpgradeHealth**: obnovení upgradu clusteru s aktuální průběh upgradu                             
-* **StartInfrastructureTask**: spouštění úlohy infrastruktury                             
+* **ProvisionFabric**: MSI a/nebo clusteru manifest zřizování                             
+* **UpgradeFabric**: spouští se upgrade clusteru                             
+* **UnprovisionFabric**: MSI a/nebo clusteru manifest zrušení zřízení                         
+* **MoveNextFabricUpgradeDomain**: obnovení inovace clusteru se explicitní aktualizační doména                             
+* **ReportFabricUpgradeHealth**: obnovení inovace clusteru se aktuální průběh upgradu                             
+* **StartInfrastructureTask**: spuštění úlohy infrastruktury                             
 * **FinishInfrastructureTask**: dokončení úlohy infrastruktury                             
-* **InvokeInfrastructureCommand**: příkazy pro správu infrastruktury úloh                              
+* **InvokeInfrastructureCommand**: příkazy pro správu úloh infrastruktury                              
 * **ActivateNode**: Aktivace uzlu                             
 * **DeactivateNode**: deaktivace uzlu                             
-* **DeactivateNodesBatch**: deaktivace několika uzly                             
-* **RemoveNodeDeactivations**: navrácení deaktivace ve více uzlech                             
+* **DeactivateNodesBatch**: deaktivace více uzlů                             
+* **RemoveNodeDeactivations**: vrací deaktivaci na několika uzlech                             
 * **GetNodeDeactivationStatus**: Kontrola stavu deaktivace                             
-* **NodeStateRemoved**: generování sestav stav uzlu odebrat                             
-* **ReportFault**: generování sestav chyb                             
-* **FileContent**: obrázek přenos souborů klienta úložiště (externí do clusteru)                             
-* **FileDownload**: image store klienta soubor stažení spuštění (externí do clusteru)                             
-* **InternalList**: image store klienta soubor seznamu operaci (interní)                             
-* **Odstranit**: operace odstranění klienta úložiště image                              
-* **Nahrát**: operace nahrávání klienta úložiště image                             
+* **NodeStateRemoved**: generování sestav stavu uzel odebrán                             
+* **ReportFault**: hlášení chyb                             
+* **Vlastností FileContent**: image store přenos souborů klienta (externí do clusteru)                             
+* **FileDownload**: image store klienta soubor ke stažení zahájení (mimo cluster)                             
+* **InternalList**: image store klienta soubor seznamu operace (interní)                             
+* **Odstranit**: operace odstranění klienta úložiště obrázků                              
+* **Nahrát**: operace nahrávání klienta úložiště obrázků                             
 * **NodeControl**: spuštění, zastavení a restartování uzlů                             
-* **MoveReplicaControl**: přesunutí repliky z jednoho uzlu do jiného                             
+* **MoveReplicaControl**: přesunutí repliky z jednoho uzlu do druhého                             
 
-### <a name="miscellaneous-operations"></a>Různým operacím
-* **Příkaz ping**: příkazy ping klienta                             
-* **Dotaz**: všechny dotazy na povoleno
-* **NameExists**: pojmenování URI existence kontroly                             
+### <a name="miscellaneous-operations"></a>Různé operace
+* **Příkaz ping**: příkazy ping pro zjištění klienta                             
+* **Dotaz**: všechny dotazy, které jsou povoleny
+* **NameExists**: pojmenování kontroly existence identifikátoru URI                             
 
-Typ řízení přístupu uživatele je ve výchozím nastavení omezen na následující operace: 
+Typ ovládacího prvku přístupu uživatele je ve výchozím nastavení omezen na tyto operace: 
 
-* **EnumerateSubnames**: pojmenování URI – výčet                             
-* **EnumerateProperties**: názvy vlastností – výčet                             
+* **EnumerateSubnames**: pojmenování výčtu identifikátoru URI                             
+* **EnumerateProperties**: pojmenování výčet vlastností                             
 * **PropertyReadBatch**: názvy vlastností operace čtení                             
 * **GetServiceDescription**: oznámení služby dlouho dotazování a čtení služby popisy                             
-* **ResolveService**: řešení služeb na základě předpisy                             
-* **ResolveNameOwner**: řešení pojmenování URI vlastníka                             
+* **ResolveService**: služba založená na stížnosti řešení                             
+* **ResolveNameOwner**: řešení názvů identifikátoru URI vlastníka                             
 * **ResolvePartition**: řešení systémových služeb                             
-* **ServiceNotifications**: oznámení služeb na základě událostí                             
-* **GetUpgradeStatus**: dotazování na stav upgradu aplikace                             
-* **GetFabricUpgradeStatus**: dotazování na stav upgradu clusteru                             
-* **InvokeInfrastructureQuery**: dotazování úlohy infrastruktury                             
-* **Seznam**: operace seznamu soubor klienta úložiště image                             
+* **ServiceNotifications**: oznámení služby založené na událostech                             
+* **GetUpgradeStatus**: dotazování stav upgradu aplikace                             
+* **GetFabricUpgradeStatus**: dotazování stav upgradu clusteru                             
+* **InvokeInfrastructureQuery**: dotazování infrastrukturních úloh                             
+* **Seznam**: operace seznam souborů klienta úložiště obrázků                             
 * **ResetPartitionLoad**: resetování zatížení jednotky převzetí služeb při selhání                             
-* **ToggleVerboseServicePlacementHealthReporting**: přepnutím stavu umístění podrobné služby generování sestav                             
+* **ToggleVerboseServicePlacementHealthReporting**: Přepnutí stavu umístění podrobné služby generování sestav                             
 
-Řízení přístupu správce má také přístup k předchozí operace.
+Správce řízení přístupu má také přístup k předchozí operace.
 
-## <a name="changing-default-settings-for-client-roles"></a>Změna výchozí nastavení klienta rolí
-V souboru manifestu clusteru můžete zadat možnosti Správce klienta v případě potřeby. Výchozí nastavení můžete změnit tak, že přejdete do **nastavení prostředků infrastruktury** možnost během [vytvoření clusteru](service-fabric-cluster-creation-via-portal.md)a poskytuje předchozí nastavení v **název**,  **správce**, **uživatele**, a **hodnotu** pole.
+## <a name="changing-default-settings-for-client-roles"></a>Změna výchozího nastavení pro klientské role
+V souboru manifestu clusteru můžete zadat možnosti Správce klienta v případě potřeby. Výchozí nastavení můžete změnit tak, že přejdete **nastavení prostředků infrastruktury** možnost během [vytvoření clusteru](service-fabric-cluster-creation-via-portal.md)a zadání předchozích nastavení v **název**,  **správce**, **uživatele**, a **hodnotu** pole.
 
 ## <a name="next-steps"></a>Další postup
 [Zabezpečení clusteru Service Fabric](service-fabric-cluster-security.md)

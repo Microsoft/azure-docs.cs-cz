@@ -3,21 +3,22 @@ title: Kopírování dat z/do cloudu SAP pro zákazníka pomocí Azure Data Fact
 description: Zjistěte, jak kopírovat data z cloudu SAP pro zákazníka do úložišť dat jímky podporované (nebo) z podporované zdrojové úložiště dat do cloudu SAP pro zákazníka pomocí služby Data Factory.
 services: data-factory
 documentationcenter: ''
-author: linda33wj
-manager: craigg
+author: WenJason
+manager: digimobile
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 04/17/2018
-ms.author: jingwang
+origin.date: 04/17/2018
+ms.date: 04/22/2019
+ms.author: v-jay
 ms.openlocfilehash: e4625b934f9e1cf98254f3dee59f9c26e8e16fb5
-ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54353375"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60578704"
 ---
 # <a name="copy-data-from-sap-cloud-for-customer-c4c-using-azure-data-factory"></a>Kopírování dat z cloudu SAP pro zákazníka (C4C) pomocí služby Azure Data Factory
 
@@ -44,7 +45,7 @@ Pro SAP cloudem pro zákaznické propojené služby jsou podporovány následuj�
 | type | Vlastnost type musí být nastavená na: **SapCloudForCustomer**. | Ano |
 | url | Adresa URL služby SAP C4C OData. | Ano |
 | uživatelské jméno | Zadejte uživatelské jméno pro připojení k SAP C4C. | Ano |
-| heslo | Zadejte heslo pro uživatelský účet, který jste zadali pro uživatelské jméno. Označte toto pole jako SecureString bezpečně uložit ve službě Data Factory nebo [odkazovat tajného klíče do služby Azure Key Vault](store-credentials-in-key-vault.md). | Ano |
+| password | Zadejte heslo pro uživatelský účet, který jste zadali pro uživatelské jméno. Označte toto pole jako SecureString bezpečně uložit ve službě Data Factory nebo [odkazovat tajného klíče do služby Azure Key Vault](store-credentials-in-key-vault.md). | Ano |
 | connectVia | [Prostředí Integration Runtime](concepts-integration-runtime.md) se použije k připojení k úložišti. Pokud není zadán, použije výchozí prostředí Azure Integration Runtime. | Ne pro zdroj, Ano pro jímku |
 
 >[!IMPORTANT]
@@ -58,7 +59,7 @@ Pro SAP cloudem pro zákaznické propojené služby jsou podporovány následuj�
     "properties": {
         "type": "SapCloudForCustomer",
         "typeProperties": {
-            "url": "https://<tenantname>.crm.ondemand.com/sap/c4c/odata/v1/c4codata/" ,
+            "url": "https://<tenantname>.crm.ondemand.cn/sap/c4c/odata/v1/c4codata/" ,
             "username": "<username>",
             "password": {
                 "type": "SecureString",
@@ -156,8 +157,8 @@ Ke zkopírování dat do cloudu SAP pro zákazníka, nastavte typ jímky v aktiv
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
 | type | Vlastnost type musí být nastavená na: **SapCloudForCustomerSink**  | Ano |
-| WriteBehavior | Chování zápisu operace. Může být "Vložit", "Úpravy". | Ne. Výchozí "Vložit". |
-| WriteBatchSize | Velikost dávky zápisu operace. Velikost dávky získat nejlepší výkon se může lišit pro jiné tabulky nebo serveru. | Ne. Výchozí hodnota 10. |
+| writeBehavior | Chování zápisu operace. Může být "Vložit", "Úpravy". | Ne. Výchozí "Vložit". |
+| writeBatchSize | Velikost dávky zápisu operace. Velikost dávky získat nejlepší výkon se může lišit pro jiné tabulky nebo serveru. | Ne. Výchozí hodnota 10. |
 
 **Příklad:**
 
@@ -204,21 +205,21 @@ Při kopírování dat z cloudu SAP pro zákazníka, následující mapování u
 
 | SAP C4C OData datový typ | Data factory dočasné datový typ |
 |:--- |:--- |
-| Edm.Binary | Byte] |
-| Edm.Boolean | BOOL |
-| Edm.Byte | Byte] |
+| Edm.Binary | Byte[] |
+| Edm.Boolean | Bool |
+| Edm.Byte | Byte[] |
 | Edm.DateTime | DateTime |
-| Edm.Decimal | Desítkově |
+| Edm.Decimal | Decimal |
 | Edm.Double | Double |
-| Edm.Single | Jednoduchá |
+| Edm.Single | Single |
 | Edm.Guid | Guid |
 | Edm.Int16 | Int16 |
-| Edm.Int32 | Datový typ Int32 |
+| Edm.Int32 | Int32 |
 | Edm.Int64 | Int64 |
 | Edm.SByte | Int16 |
-| Edm.String | Řetězec |
-| Edm.Time | Časový interval |
-| Edm.DateTimeOffset | DateTimeOffset |
+| Edm.String | String |
+| Edm.Time | TimeSpan |
+| Edm.DateTimeOffset | Datetimeoffset |
 
 
 ## <a name="next-steps"></a>Další postup

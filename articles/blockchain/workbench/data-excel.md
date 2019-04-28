@@ -11,11 +11,11 @@ ms.service: azure-blockchain
 ms.reviewer: mmercuri
 manager: femila
 ms.openlocfilehash: 560958c2b420d3a1ec592e6bd7e0124ecad7c984
-ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54332349"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60715297"
 ---
 # <a name="view-azure-blockchain-workbench-data-with-microsoft-excel"></a>Zobrazení dat služby Azure Blockchain Workbench v Microsoft Excelu
 
@@ -33,7 +33,7 @@ Postup připojení k databázi Blockchain Workbench:
 2. Na kartě **Data** zvolte **Načíst data**.
 3. Vyberte **Z Azure** a potom vyberte **Ze služby Azure SQL Database**.
 
-   ![Připojení k Azure SQL Database](./media/data-excel/connect-sql-db.png)
+   ![Připojení k databázi Azure SQL](./media/data-excel/connect-sql-db.png)
 
 4. V dialogovém okně **Databáze SQL Serveru**:
 

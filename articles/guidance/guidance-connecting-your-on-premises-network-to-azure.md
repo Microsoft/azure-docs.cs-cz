@@ -16,11 +16,11 @@ ms.workload: na
 ms.date: 08/25/2016
 ms.author: cherylmc
 ms.openlocfilehash: 9361c0b2ee84d7459bd432f5a8ce13fc5fd85ef8
-ms.sourcegitcommit: f331186a967d21c302a128299f60402e89035a8d
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "23851012"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60583511"
 ---
 # <a name="connecting-your-on-premises-network-to-azure"></a>Připojení místní sítě k Azure
 Společnost Microsoft poskytuje několik typů cloudových služeb. Zatímco přes veřejný Internet, můžete se připojit ke všem službám, můžete také připojit k některým službám přes tunelové připojení virtuální privátní sítě (VPN) přes Internet nebo přes vyhrazené soukromé připojení k Microsoft. Tento článek pomůže určit, jaké možnosti připojení bude nejlépe vyhovovat vašim potřebám na základě typů cloudovým službám Microsoftu, které skutečně využijete. Většina organizací využívat několik typů připojení je popsáno níže.

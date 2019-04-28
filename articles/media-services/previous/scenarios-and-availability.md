@@ -14,11 +14,11 @@ ms.topic: conceptual
 ms.date: 03/20/2019
 ms.author: juliako
 ms.openlocfilehash: 3576a50cd1510a4da562981ff9ae98e12a357fc9
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
-ms.translationtype: MT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58316986"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60638182"
 ---
 # <a name="scenarios-and-availability-of-media-services-features-across-datacenters"></a>Scénáře a dostupnost funkcí služby Media Services v datových centrech
 
@@ -222,7 +222,7 @@ Microsoft Azure Media Services umožňuje zabezpečení médií od okamžiku opu
 
 |Šifrování|Status|Datová centra|
 |---|---|---| 
-|Storage|GA|Vše|
+|Úložiště|GA|Vše|
 |Klíče AES-128|GA|Vše|
 |FairPlay|GA|Vše|
 |PlayReady|GA|Vše|

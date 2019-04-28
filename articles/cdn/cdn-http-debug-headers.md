@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 04/12/2018
 ms.author: magattus
 ms.openlocfilehash: 4ba42850ee28e2e212d9bc2b7b64be103218757c
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49094220"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60736968"
 ---
 # <a name="x-ec-debug-http-headers-for-azure-cdn-rules-engine"></a>Hlavičky HTTP X-ES-ladění pro Azure CDN stroje pravidel
 Hlavičky žádosti ladění mezipaměti `X-EC-Debug`, poskytuje další informace o zásady ukládání do mezipaměti, který se použije pro požadovaný prostředek. Tyto hlavičky jsou specifické pro **Azure CDN Premium od Verizonu** produktů.
@@ -37,8 +37,8 @@ Hlavička požadavku | Popis |
 ---------------|-------------|
 X-ES ladění: x ES cache | [Kód stavu mezipaměti](#cache-status-code-information)
 X-ES ladění: x ES cache-remote | [Kód stavu mezipaměti](#cache-status-code-information)
-X-ES ladění: x ES kontrola-možné ukládat do mezipaměti | [Možné ukládat do mezipaměti](#cacheable-response-header)
-X-ES ladění: x ES mezipaměti – klíč | [Klíč mezipaměti](#cache-key-response-header)
+X-ES ladění: x ES kontrola-možné ukládat do mezipaměti | [Cacheable](#cacheable-response-header)
+X-ES ladění: x ES mezipaměti – klíč | [Cache-key](#cache-key-response-header)
 X-ES ladění: x ES cache stav | [Stav mezipaměti](#cache-state-response-header)
 
 ### <a name="syntax"></a>Syntaxe
@@ -76,8 +76,8 @@ Termíny používané v syntaxi výše uvedené hlavičky odpovědi jsou definov
 
     Kód  | Platforma
     ------| --------
-    Banky ECAcc | Velké HTTP
-    ECS   | HTTP (krátkodobé používání)
+    ECAcc | Velké HTTP
+    ECS   | HTTP Small
     ECD   | Síť pro doručování aplikací (ADN)
 
 - POP: Označuje, [POP](cdn-pop-abbreviations.md) , který zpracovává požadavek. 
@@ -106,7 +106,7 @@ Termín, který se v syntaxi výše uvedené hlavičky odpovědi je definovaná 
 Hodnota  | Popis
 -------| --------
 ANO    | Označuje, že požadovaný obsah byl způsobilý pro ukládání do mezipaměti.
-NE     | Označuje, že se požadovaný obsah nemá nárok na ukládání do mezipaměti. Tento stav může být způsobené jedním z následujících důvodů: <br /> – Konfigurace zákaznické: konfigurace specifické pro váš účet dokážou zabránit zahlcení serverů pop z ukládání do mezipaměti prostředek. Stroj pravidel může například zabránit prostředek ukládat do mezipaměti povolíte funkci mezipaměti jednorázové přihlášení pro oprávněné požadavky.<br /> -Hlavičky odpovědi cache: Požadovaný prostředek hlavičky Cache-Control a Expires zabránit POP servery ukládání do mezipaměti.
+NO     | Označuje, že se požadovaný obsah nemá nárok na ukládání do mezipaměti. Tento stav může být způsobené jedním z následujících důvodů: <br /> -Zákaznického konfigurace: Konfigurace specifické pro váš účet můžete zabránit ukládání do mezipaměti prostředek pop servery. Stroj pravidel může například zabránit prostředek ukládat do mezipaměti povolíte funkci mezipaměti jednorázové přihlášení pro oprávněné požadavky.<br /> -Hlavičky odpovědi do mezipaměti: Požadovaný prostředek hlavičky Cache-Control a Expires dokážou zabránit zahlcení serverů POP z ukládání do mezipaměti.
 NEZNÁMÝ | Označuje, že servery nám k vyhodnocení, zda požadovaný prostředek je možné ukládat do mezipaměti. Tento stav obvykle dochází, když požadavek byl odepřen v důsledku ověřování založené na tokenech.
 
 ### <a name="sample-response-header"></a>Hlavička odpovědi vzorku
@@ -147,13 +147,13 @@ Následující ukázkové odpovědi záhlaví označuje fyzické klíč mezipam�
 
 Termíny používané v syntaxi výše uvedené hlavičky odpovědi jsou definovány takto:
 
-- MASeconds: Označuje max-age (v sekundách), podle definovaných hlavičkami Cache-Control požadovaný obsah.
+- MASeconds: Označuje max-age (v sekundách), tak jak je definoval požadovaný obsah hlavičky Cache-Control.
 
 - MATimePeriod: Převede hodnotu max-age (MASeconds) na přibližně ekvivalentem větší jednotky (například ve dnech). 
 
 - UnixTime: Určuje časové razítko mezipaměti požadovaného obsahu v Unixový čas (označovaný také jako POSIX čas nebo Unix epocha). Časové razítko mezipaměti označuje počáteční datum/čas ze kterého se vypočte hodnota TTL prostředků. 
 
-    Pokud zdrojový server nevyužívá třetích stran HTTP, ukládání do mezipaměti serveru nebo pokud tento server nevrací hlavička odpovědi věk, pak časové razítko mezipaměti bude mít vždy datum a čas, kdy byl asset načíst nebo ověřit. V opačném případě servery POP použije pole stáří k výpočtu hodnoty TTL prostředku následujícím způsobem: načítání/RevalidateDateTime - věku.
+    Pokud zdrojový server nevyužívá třetích stran HTTP, ukládání do mezipaměti serveru nebo pokud tento server nevrací hlavička odpovědi věk, pak časové razítko mezipaměti bude mít vždy datum a čas, kdy byl asset načíst nebo ověřit. V opačném případě servery POP použije pole stáří k výpočtu hodnoty TTL prostředku následujícím způsobem: Načítání/RevalidateDateTime - věku.
 
 - ddd, dd MMM yyyy HH: mm: GMT: Určuje časové razítko mezipaměti požadovaného obsahu. Další informace najdete v tématu UnixTime termín výše.
 
@@ -161,7 +161,7 @@ Termíny používané v syntaxi výše uvedené hlavičky odpovědi jsou definov
 
 - RTSeconds: Určuje počet sekund pro kterou obsah uložený v mezipaměti bude považovat za čerstvý. Tato hodnota se vypočítá následovně: RTSeconds = max-age – mezipaměť: age.
 
-- RTTimePeriod: Zbývající hodnota TTL (RTSeconds) převede na přibližně ekvivalentem větší jednotky (například ve dnech).
+- RTTimePeriod: Převede zbývající hodnota TTL (RTSeconds) na přibližně ekvivalentem větší jednotky (například ve dnech).
 
 - ExpiresSeconds: Určuje počet sekund, než budou data a času podle `Expires` hlavičky odpovědi. Pokud `Expires` v odpovědi nebyla zahrnuta hlavička odpovědi a pak je hodnota tento termín *žádný*.
 

@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 11/25/2014
 ms.author: microsofthelp@twilio.com
 ms.openlocfilehash: 386b4b8440c74f6599e7147996b5843ea0f67e68
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52423360"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60623948"
 ---
 # <a name="how-to-use-twilio-for-voice-and-sms-capabilities-in-java"></a>Postup použití Twilia pro hlasové hovory a SMS v jazyce Java
 Tato příručka ukazuje, jak k provádění běžných programovacích úloh pomocí služby Twilio API v Azure. Pokryté scénáře zahrnují vytváření telefonních hovorů a posílání zpráv služby krátké zprávy (SMS). Další informace o Twilio a používání hlasové hovory a SMS ve svých aplikacích najdete v tématu [další kroky](#NextSteps) oddílu.
@@ -42,17 +42,17 @@ Rozhraní API využívá Twilio příkazů například **&lt;Say&gt;** příkaz 
 
 Následuje seznam příkazů Twilio.
 
-* **&lt;Volání&gt;**: volající se připojí k jiný telefon.
-* **&lt;Shromážděte&gt;**: shromažďuje číslice zadané na klávesnici telefonu.
-* **&lt;Zavěšení&gt;**: ukončení volání.
-* **&lt;Přehrát&gt;**: přehraje zvukový soubor.
-* **&lt;Fronty&gt;**: přidejte do fronty pro volající.
-* **&lt;Pozastavit&gt;**: bezobslužná čeká na zadaný počet sekund.
-* **&lt;Záznam&gt;**: zaznamenává hlasové volajícího a vrátí adresu URL souboru, který obsahuje záznam.
-* **&lt;Přesměrovat&gt;**: převede ovládací prvek hovoru nebo SMS TwiML na jinou adresu URL.
-* **&lt;Odmítnout&gt;**: bez fakturace je odmítne příchozí volání na vaše číslo Twilio.
-* **&lt;Řekněme, že&gt;**: převede text na řeč, který je k volání.
-* **&lt;SMS&gt;**: odešle zprávu SMS.
+* **&lt;Volání&gt;**: Volající se připojí k jiný telefon.
+* **&lt;Shromážděte&gt;**: Shromažďuje číslice zadané na klávesnici telefonu.
+* **&lt;Zavěšení&gt;**: Ukončí volání.
+* **&lt;Přehrát&gt;**: Přehraje zvukový soubor.
+* **&lt;Fronty&gt;**: Přidejte do fronty pro volající.
+* **&lt;Pause&gt;**: Bezobslužná počká zadaný počet sekund.
+* **&lt;Record&gt;**: Zaznamenává hlasové volajícího a vrátí adresu URL souboru, který obsahuje záznam.
+* **&lt;Přesměrovat&gt;**: Řízení přenosů volání nebo odeslání SMS TwiML na jinou adresu URL.
+* **&lt;Odmítnout&gt;**: Odmítne příchozí volání na vaše číslo Twilio bez fakturace je.
+* **&lt;Řekněme, že&gt;**: Převede text na řeč, který je k volání.
+* **&lt;Sms&gt;**: Odešle zprávu SMS.
 
 ### <a id="TwiML"></a>TwiML
 TwiML je sada instrukcí založený na formátu XML podle Twilio příkazy, které informují o Twilio, jak zpracovat hovor nebo SMS.
@@ -104,7 +104,7 @@ Pro zdrojové soubory stránky serveru Java (JSP):
  
 V závislosti na tom, které balíčky Twilio nebo třídy, kterou chcete použít, vaše **importovat** příkazy se můžou lišit.
 
-## <a id="howto_make_call"></a>Postupy: volání odchozí
+## <a id="howto_make_call"></a>Jak: Ujistěte se, odchozí volání
 Následující ukazuje, jak provádět volání pomocí odchozí **volání** třídy. Tento kód také používá k vrácení odpovědi Twilio Markup Language (TwiML) poskytované Twilio lokality. Dosaďte svoje hodnoty **z** a **k** telefonní čísla a ujistěte se, abyste ověřili **z** telefonní číslo pro svůj účet Twilio před spuštěním kódu.
 
 ```java
@@ -133,7 +133,7 @@ Další informace o parametrech předaná **Call.creator** metodu, najdete v čl
 
 Jak už bylo zmíněno, tento kód používá poskytované Twilio webu vrátit TwiML odpovědi. Můžete místo toho použít svůj vlastní web k poskytování odezvy TwiML; Další informace najdete v tématu [jak poskytnout TwiML odpovědi v aplikace v Javě v Azure](#howto_provide_twiml_responses).
 
-## <a id="howto_send_sms"></a>Postupy: odeslání SMS zprávy
+## <a id="howto_send_sms"></a>Jak: Odeslat zprávu SMS
 Následující ukazuje, jak odeslat zprávu SMS pomocí **zpráva** třídy. **z** číslo, **4155992671**, poskytuje Twilio pro účty posílat SMS zprávy. **k** číslo musí být ověřený pro váš účet Twilio před spuštěním kódu.
 
 ```java
@@ -157,7 +157,7 @@ Následující ukazuje, jak odeslat zprávu SMS pomocí **zpráva** třídy. **z
 
 Další informace o parametrech předaná **Message.creator** metodu, najdete v článku [ https://www.twilio.com/docs/api/rest/sending-sms ] [ twilio_rest_sending_sms].
 
-## <a id="howto_provide_twiml_responses"></a>Postupy: poskytování TwiML odezvy z vlastního webu
+## <a id="howto_provide_twiml_responses"></a>Jak: Poskytování TwiML odezvy z vlastního webu
 Pokud aplikace zahájí volání rozhraní API Twilia například prostřednictvím **CallCreator.create** metoda, Twilio odešlete žádost na adresu URL, která se očekává navrácení TwiML odpovědi. Výše uvedený příklad používá adresu URL poskytnutou Twilio [ https://twimlets.com/message ] [ twimlet_message_url]. (TwiML je určen k použití webových služeb, ale když zobrazíte TwiML v prohlížeči. Klikněte například na [ https://twimlets.com/message ] [ twimlet_message_url] zobrazíte prázdná **&lt;odpovědi&gt;** element; další příklad, klikněte na tlačítko [ https://twimlets.com/message?Message%5B0%5D=Hello%20World%21 ] [ twimlet_message_url_hello_world] zobrazíte **&lt;odpovědi&gt;** element, který obsahuje **&lt;Say&gt;** elementu.)
 
 Aniž byste museli spoléhat na URL poskytnutou Twilio, můžete vytvořit vlastní adresu URL webu, který vrací odpovědi protokolu HTTP. Můžete vytvořit web v jakémkoli jazyce, který vrací odpovědi HTTP; Toto téma předpokládá, že budete hostovat na adresu URL v JSP stránky.
@@ -204,7 +204,7 @@ Další možností pro odpovědi s TwiML je prostřednictvím **VoiceResponse** 
 
 Další informace o používání Twilio v Azure pomocí Javy najdete v tématu [jak provádět v aplikaci Java v Azure Twilio pomocí telefonního hovoru][howto_phonecall_java].
 
-## <a id="AdditionalServices"></a>Postupy: použití služby Twilio další
+## <a id="AdditionalServices"></a>Jak: Použití služby Twilio další
 Kromě příkladů uvedených v tomto poli Twilio nabízí rozhraní API založeného na webu, která vám umožní využívat další funkce platformy Twilio vaše aplikace Azure. Úplné podrobnosti najdete v tématu [dokumentace k rozhraní API Twilia][twilio_api_documentation].
 
 ## <a id="NextSteps"></a>Další kroky

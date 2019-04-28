@@ -17,11 +17,11 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: ca481d50efb99d6e36c66388192e9f27cd66bf45
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56217186"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62096092"
 ---
 # <a name="azure-ad-connect-special-considerations-for-instances"></a>Azure AD Connect: Speciální aspekty pro instance
 Azure AD Connect je nejčastěji používaná celosvětové instance služby Azure AD a Office 365. Ale existují také jiné instance a ty mají různé požadavky na adresy URL a další důležité.

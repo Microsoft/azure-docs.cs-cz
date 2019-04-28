@@ -11,11 +11,11 @@ description: Rychlý vývoj na platformě Kubernetes s využitím kontejnerů a 
 keywords: 'Docker, Kubernetes, Azure, AKS, službě Azure Kubernetes, kontejnery, Helm, služby sítě, směrování sítě služby, kubectl, k8s '
 manager: jeconnoc
 ms.openlocfilehash: 7b463be143ed3f89c1b10424dafc7a0e841ecbfc
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57775634"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60686969"
 ---
 # <a name="business-continuity-and-disaster-recovery-in-azure-dev-spaces"></a>Obchodní kontinuity podnikových procesů a zotavení po havárii v Azure Dev mezery
 
