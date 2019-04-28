@@ -11,11 +11,11 @@ ms.topic: quickstart
 ms.date: 02/07/2019
 ms.author: pafarley
 ms.openlocfilehash: 752f15fd730f1244f44ba3749bff3c5bb85ca02b
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56312595"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60815292"
 ---
 # <a name="quickstart-detect-faces-in-an-image-using-the-rest-api-and-go"></a>Rychlý start: Rozpoznávání tváří v obrázku pomocí rozhraní REST API a Go
 
