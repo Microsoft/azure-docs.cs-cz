@@ -5,19 +5,19 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: tutorial
-ms.date: 02/26/2019
+ms.date: 04/23/2019
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to connect my local site to my VNets using Virtual WAN and I don't want to go through a Virtual WAN partner.
-ms.openlocfilehash: 4b44eec5557d2083c38fe2714d93800f79b21b0f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: e8e251aa5031a8eadd2d567bff2830449c7decc3
+ms.sourcegitcommit: 37343b814fe3c95f8c10defac7b876759d6752c3
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60457875"
+ms.lasthandoff: 04/24/2019
+ms.locfileid: "63766655"
 ---
 # <a name="tutorial-create-a-site-to-site-connection-using-azure-virtual-wan"></a>Kurz: Vytvoření připojení typu Site-to-Site pomocí Azure virtuální sítě WAN
 
-V tomto kurzu se dozvíte, jak se pomocí služby Virtual WAN připojit ke svým prostředkům v Azure přes připojení VPN IPsec/IKE (IKEv1 a IKEv2). Tento typ připojení vyžaduje místní zařízení VPN, které má přiřazenou veřejnou IP adresu. Další informace o službě Virtual WAN najdete v článku [Přehled služby Virtual WAN](virtual-wan-about.md)
+V tomto kurzu se dozvíte, jak se pomocí služby Virtual WAN připojit ke svým prostředkům v Azure přes připojení VPN IPsec/IKE (IKEv1 a IKEv2). Tento typ připojení vyžaduje místní zařízení VPN, které má přiřazenou veřejnou IP adresu. Další informace o službě Virtual WAN najdete v tématu [Přehled služby Virtual WAN](virtual-wan-about.md).
 
 > [!NOTE]
 > Pokud máte hodně lokalit, doporučujeme využít k vytvoření této konfigurace [partnera pro Virtual WAN](https://aka.ms/virtualwan). Pokud se ale vyznáte ve vytváření sítí a umíte nakonfigurovat vlastní zařízení VPN, můžete tuto konfiguraci vytvořit sami.
@@ -32,6 +32,7 @@ V tomto kurzu se naučíte:
 > * Vytvoření lokality
 > * Vytvoření rozbočovače
 > * Připojení rozbočovače k lokalitě
+> * Vytvořit kompatibilní virtuální síť (pokud ho ještě nemáte)
 > * Připojení virtuální sítě k rozbočovači
 > * Stažení a použití konfigurace zařízení VPN
 > * Zobrazení virtuální sítě WAN
@@ -40,21 +41,15 @@ V tomto kurzu se naučíte:
 
 ## <a name="before-you-begin"></a>Než začnete
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
-
 [!INCLUDE [Before you begin](../../includes/virtual-wan-tutorial-vwan-before-include.md)]
 
-## <a name="vnet"></a>1. Vytvoření virtuální sítě
-
-[!INCLUDE [Create a virtual network](../../includes/virtual-wan-tutorial-vnet-include.md)]
-
-## <a name="openvwan"></a>2. Vytvoření virtuální sítě WAN
+## <a name="openvwan"></a>1. Vytvoření virtuální sítě WAN
 
 V prohlížeči přejděte na web [Azure Portal](https://aka.ms/azurevirtualwanpreviewfeatures) a přihlaste se pomocí svého účtu Azure.
 
 [!INCLUDE [Create a virtual WAN](../../includes/virtual-wan-tutorial-vwan-include.md)]
 
-## <a name="site"></a>3. Vytvoření lokality
+## <a name="site"></a>2. Vytvoření lokality
 
 Můžete vytvořit libovolný počet lokalit odpovídajících fyzickým umístěním. Pokud máte třeba jednu pobočku v New Yorku, jednu v Londýně a jednu v Los Angeles, vytvoříte tři oddělené lokality. Tyto lokality obsahují koncové body místních zařízení VPN. V tuto chvíli můžete pro každou lokalitu určit jenom jeden privátní adresní prostor.
 
@@ -62,21 +57,21 @@ Můžete vytvořit libovolný počet lokalit odpovídajících fyzickým umíst�
 2. Na stránce **Lokality VPN** klikněte na **+Vytvořit lokalitu**.
 3. Na stránce **Create site** (Vytvořit lokalitu) zadejte údaje do následujících polí:
 
-   * **Name** (Název) – název, kterým chcete odkazovat na místní lokalitu.
-   * **Public IP address** (Veřejná IP adresa) – veřejná IP adresa zařízení VPN, které se nachází v místní lokalitě.
+   * **Název** -název, podle kterého chcete odkazovat na místní lokalitu.
+   * **Veřejná IP adresa** -veřejnou IP adresu zařízení VPN, které se nacházejí ve vaší místní lokalitě.
    * **Private address space** (Privátní adresní prostor) – prostor IP adres, který se nachází v místní lokalitě. Provoz určený do tohoto adresního prostoru se přesměruje do místní lokality.
    * **Subscription** (Předplatné) – ověřte předplatné.
    * **Resource Group** (Skupina prostředků) – skupina prostředků, kterou chcete použít.
-   * **Umístění**.
-4. Další nastavení zobrazíte kliknutím na **Show advanced** (Zobrazit rozšířené nastavení). Výběrem možnosti **BGP** můžete povolit BGP. Tím se tato funkce povolí pro všechna připojení vytvořená pro tuto lokalitu v Azure. Můžete také zadat **Informace o zařízení** (volitelná pole). Týmu Azure to může pomoct lépe pochopit vaše prostředí a v budoucnu přidávat další možnosti optimalizace, případně vám asistovat při řešení potíží.
+   * **Umístění**
+4. Další nastavení zobrazíte kliknutím na **Show advanced** (Zobrazit rozšířené nastavení). Můžete vybrat **BGP** se povolit protokol BGP, která vám umožní funkce protokolu BGP na všech připojení vytvořených pro tento webový server v Azure. Můžete také zadat **Informace o zařízení** (volitelná pole). To může pomoct lépe porozuměli svému prostředí pro přidání možností další optimalizace v budoucnu, nebo pomocný při řešení problémů týmu Azure.
 5. Klikněte na **Confirm** (Potvrdit).
 6. Po kliknutí na **Potvrdit** se podívejte na stav na stránce Lokality VPN. Stav lokality se změní ze **Zřizování** na **Zřízeno**.
 
-## <a name="hub"></a>4. Vytvoření rozbočovače
+## <a name="hub"></a>3. Vytvoření rozbočovače
 
 [!INCLUDE [Create a hub](../../includes/virtual-wan-tutorial-hub-include.md)]
 
-## <a name="associate"></a>5. Přidružení lokalit k rozbočovači
+## <a name="associate"></a>4. Přidružení lokalit k rozbočovači
 
 Rozbočovače by se obecně měly přidružovat k lokalitám ve stejné oblasti jako virtuální síť.
 
@@ -85,6 +80,12 @@ Rozbočovače by se obecně měly přidružovat k lokalitám ve stejné oblasti 
 3. Tady můžete také přidat konkrétní **předsdílený klíč** nebo použít výchozí.
 4. Klikněte na **Confirm** (Potvrdit).
 5. Stav připojení můžete zobrazit na stránce **Lokality VPN**.
+
+## <a name="vnet"></a>5. Vytvoření virtuální sítě
+
+Pokud ještě nemáte virtuální síť, můžete rychle vytvořit jeden pomocí Powershellu nebo na webu Azure portal. Pokud už virtuální síť máte, ověřte si, jestli splňuje povinná kritéria a nemá bránu virtuální sítě.
+
+[!INCLUDE [Create a virtual network](../../includes/virtual-wan-tutorial-vnet-include.md)]
 
 ## <a name="vnet"></a>6. Připojení virtuální sítě k rozbočovači
 
@@ -100,7 +101,7 @@ V tomto kroku vytvoříte partnerské připojení mezi rozbočovačem a určitou
     * **Virtual network** (Virtuální síť) – vyberte virtuální síť, kterou chcete připojit k tomuto rozbočovači. Virtuální síť nesmí mít existující bránu virtuální sítě.
 4. Kliknutím na **OK** vytvořte partnerské propojení.
 
-## <a name="device"></a>7. Stažení konfigurace zařízení VPN
+## <a name="device"></a>7. Stáhnout konfiguraci sítě VPN
 
 Nakonfigurujte místní zařízení VPN pomocí konfigurace zařízení VPN.
 
@@ -114,7 +115,7 @@ Nakonfigurujte místní zařízení VPN pomocí konfigurace zařízení VPN.
 Konfigurační soubor zařízení obsahuje nastavení, které se má použít při konfiguraci místního zařízení VPN. Při prohlížení souboru si všimněte následujících informací:
 
 * **vpnSiteConfiguration** – tato část udává podrobnosti o zařízení nastaveném jako lokalita, která se připojuje k virtuální síti WAN. Obsahuje název a veřejnou IP adresu zařízení pobočky.
-* **vpnSiteConnections** – tato část obsahuje následující informace:
+* **vpnSiteConnections -** Tato část obsahuje informace o následující nastavení:
 
     * **Adresní prostor** virtuální sítě virtuálních rozbočovačů<br>Příklad:
  
@@ -126,7 +127,7 @@ Konfigurační soubor zařízení obsahuje nastavení, které se má použít p�
          ```
         "ConnectedSubnets":["10.2.0.0/16","10.30.0.0/16"]
          ```
-    * **IP adresy** brány sítě VPN virtuálního rozbočovače. Vzhledem k tomu, že každé připojení brány sítě VPN se skládá ze 2 tunelů v konfiguraci aktivní-aktivní, uvidíte v tomto souboru uvedené obě IP adresy. V tomto příkladu vidíte pro každou lokalitu položky Instance0 a Instance1.<br>Příklad:
+    * **IP adresy** brány sítě VPN virtuálního rozbočovače. Protože každé připojení Brána VPN se skládá ze dvou tunelů v konfiguraci aktivní aktivní, zobrazí se vám obě IP adresy uvedené v tomto souboru. V tomto příkladu vidíte pro každou lokalitu položky Instance0 a Instance1.<br>Příklad:
 
         ``` 
         "Instance0":"104.45.18.186"

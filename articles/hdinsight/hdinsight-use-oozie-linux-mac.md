@@ -1,7 +1,6 @@
 ---
 title: Využijte pracovní postupy Hadoop Oozie v Azure HDInsight založených na Linuxu
 description: Použití Hadoop Oozie v HDInsight se systémem Linux. Zjistěte, jak definovat pracovní postup Oozie a odešlete úlohu Oozie.
-services: hdinsight
 ms.service: hdinsight
 ms.custom: hdinsightactive
 author: omidm1
@@ -9,12 +8,12 @@ ms.author: omidm
 ms.reviewer: jasonh
 ms.topic: conceptual
 ms.date: 02/28/2019
-ms.openlocfilehash: daee7ddd0a09d43132bbcf0f4553601846d31433
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: 97e1836952020723c1043617d74a96471ae07aad
+ms.sourcegitcommit: 37343b814fe3c95f8c10defac7b876759d6752c3
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60486659"
+ms.lasthandoff: 04/24/2019
+ms.locfileid: "63765765"
 ---
 # <a name="use-apache-oozie-with-apache-hadoop-to-define-and-run-a-workflow-on-linux-based-azure-hdinsight"></a>Použití Apache Oozie s Hadoopem Apache k definování a spuštění workflowu v Azure HDInsight založených na Linuxu
 
@@ -672,7 +671,7 @@ Níže jsou uvedeny konkrétní chyby, které se můžete setkat a způsob jejic
 
 **Příčina:** Adresy objektů Blob v Azure storage, které se používá v **job.xml** soubor neobsahuje kontejner úložiště nebo název účtu úložiště. Musí být ve formátu adresa úložiště objektů Blob `wasbs://containername@storageaccountname.blob.core.windows.net`.
 
-**Řešení:** Změna adresy úložiště objektů Blob, které používá úlohy.
+**Rozlišení**: Změna adresy úložiště objektů Blob, které používá úlohy.
 
 ### <a name="ja002-oozie-is-not-allowed-to-impersonate-ltusergt"></a>JA002: Není povoleno zosobnit Oozie &lt;uživatele&gt;
 
@@ -682,7 +681,7 @@ Níže jsou uvedeny konkrétní chyby, které se můžete setkat a způsob jejic
 
 **Příčina:** Aktuální nastavení oprávnění neumožňují Oozie zosobnit zadaný uživatelský účet.
 
-**Řešení:** Oozie můžou vydávat za uživatele v **uživatelé** skupiny. Použití `groups USERNAME` zobrazíte skupiny, ke kterým je uživatelský účet členem. Pokud uživatel není členem **uživatelé** skupině, použijte následující příkaz pro přidání uživatele do skupiny:
+**Rozlišení**: Oozie můžou vydávat za uživatele v **uživatelé** skupiny. Použití `groups USERNAME` zobrazíte skupiny, ke kterým je uživatelský účet členem. Pokud uživatel není členem **uživatelé** skupině, použijte následující příkaz pro přidání uživatele do skupiny:
 
     sudo adduser USERNAME users
 
@@ -697,7 +696,7 @@ Níže jsou uvedeny konkrétní chyby, které se můžete setkat a způsob jejic
 
 **Příčina:** Sqoop není schopen načíst ovladač databáze vyžadované pro přístup k databázi.
 
-**Řešení:** Při použití Sqoopu z úlohu Oozie musí zahrnovat ovladač databáze s další prostředky, jako je například workflow.xml, tato úloha používá. Také odkazovat na archiv, který obsahuje databázi ovladače z `<sqoop>...</sqoop>` část workflow.xml.
+**Rozlišení**: Při použití Sqoopu z úlohu Oozie musí zahrnovat ovladač databáze s další prostředky, jako je například workflow.xml, tato úloha používá. Také odkazovat na archiv, který obsahuje databázi ovladače z `<sqoop>...</sqoop>` část workflow.xml.
 
 Například pro úlohy v tomto dokumentu použijete následující kroky:
 

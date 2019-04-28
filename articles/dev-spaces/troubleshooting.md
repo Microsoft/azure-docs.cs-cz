@@ -9,14 +9,14 @@ ms.date: 09/11/2018
 ms.topic: conceptual
 description: Rychlý vývoj na platformě Kubernetes s využitím kontejnerů a mikroslužeb v Azure
 keywords: 'Docker, Kubernetes, Azure, AKS, službě Azure Kubernetes, kontejnery, Helm, služby sítě, směrování sítě služby, kubectl, k8s '
-ms.openlocfilehash: 4617e878f2af446608ede4e0aed644848564a074
-ms.sourcegitcommit: 5f348bf7d6cf8e074576c73055e17d7036982ddb
-ms.translationtype: MT
+ms.openlocfilehash: 044e997703f5b274215fb05c7152186948b331b4
+ms.sourcegitcommit: 37343b814fe3c95f8c10defac7b876759d6752c3
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2019
-ms.locfileid: "59609071"
+ms.lasthandoff: 04/24/2019
+ms.locfileid: "63761399"
 ---
-# <a name="troubleshooting-guide"></a>Průvodce odstraňováním potíží
+# <a name="troubleshooting-guide"></a>Průvodce řešením potíží
 
 Tato příručka obsahuje informace o běžných problémů, možná bude při používání Azure Dev mezery.
 
@@ -143,7 +143,7 @@ Spusťte VS Code z příkazového řádku, kde je správně nastavit proměnné 
 
 Pokud máte novější verzi rozšíření VS Codu pro Azure Dev mezery, ale starší verzi rozhraní příkazového řádku Azure Dev prostory se zobrazí tato chyba ve Visual Studio Code.
 
-### <a name="try"></a>Vyzkoušení
+### <a name="try"></a>Vyzkoušet
 
 Stáhněte a nainstalujte nejnovější verzi rozhraní příkazového řádku Azure Dev mezery:
 
@@ -296,7 +296,7 @@ Obvykle restartování agentské uzly v clusteru vyřeší tento problém.
 ## <a name="azure-dev-spaces-proxy-can-interfere-with-other-pods-running-in-a-dev-space"></a>Proxy služby Azure Dev mezer může narušovat dalších podů se spuštěnou v prostoru vývoj
 
 ### <a name="reason"></a>Důvod
-Když povolíte prostory vývoj oboru názvů v clusteru AKS, volá se kontejnerem Další _mindaro proxy_ je nainstalován ve všech pody spuštěné v tomto oboru názvů. Tento kontejner zachycuje volání služeb v podu, která je nedílnou součástí vývoje prostorů týmu vývojářských funkcí; Nicméně by mohl narušovat určité služby spuštěné v tyto pody. Je známo ovlivňovat podů běží mezipaměti Azure Redis, příčinou chyb připojení a chyby v komunikaci typu hlavní/podřízený.
+Když povolíte prostory vývoj oboru názvů v clusteru AKS, volá se kontejnerem Další _mindaro proxy_ je nainstalován ve všech pody spuštěné v tomto oboru názvů. Tento kontejner zachycuje volání služeb v podu, která je nedílnou součástí vývoje prostorů týmu vývojářských funkcí; Nicméně by mohl narušovat určité služby spuštěné v tyto pody. Je známo ovlivňovat podů běží mezipaměti Azure Redis, což připojení chyby a selhání ve primárního a sekundárního komunikace.
 
 ### <a name="try"></a>Zkuste:
 Ovlivněné podů můžete přesunout do oboru názvů v clusteru, který nemá _není_ Dev prostory povolena. Zbytek aplikace můžete dál ke spouštění uvnitř oboru názvů s povoleným Dev mezery. Vývoj prostory nelze nainstalovat _mindaro proxy_ kontejneru uvnitř Dev prostory povolených oborů názvů.
@@ -323,7 +323,7 @@ configurations:
 
 Byla překročena uzlu spuštěn pod aplikaci Node.js se pokoušíte připojit se ladicí program *fs.inotify.max_user_watches* hodnotu. V některých případech [na výchozí hodnotu *fs.inotify.max_user_watches* pravděpodobně příliš malá pro zpracování, ladicí program se připojuje přímo k pod](https://github.com/Azure/AKS/issues/772).
 
-### <a name="try"></a>Vyzkoušení
+### <a name="try"></a>Vyzkoušet
 Dočasným řešením tohoto problému je zvýšení hodnoty *fs.inotify.max_user_watches* na každém uzlu v clusteru a tento uzel restartovat, aby se změny projevily.
 
 ## <a name="new-pods-are-not-starting"></a>Nejsou od nových podů
@@ -338,7 +338,7 @@ kubectl get pods --all-namespaces --include-uninitialized
 
 Tento problém může mít vliv na podů v *všechny obory názvů* v clusteru, včetně oborů názvů, ve kterém není povoleno Azure Dev prostory.
 
-### <a name="try"></a>Vyzkoušení
+### <a name="try"></a>Vyzkoušet
 
 [Aktualizace na nejnovější verzi rozhraní příkazového řádku vývojáře prostory](./how-to/upgrade-tools.md#update-the-dev-spaces-cli-extension-and-command-line-tools) a její následné odstranění *azds InitializerConfiguration* z řadiče Azure Dev mezery:
 
@@ -363,7 +363,7 @@ Po přeinstalaci řadiče znovu nasaďte pody.
 ### <a name="reason"></a>Důvod
 Uživatele, kteří používají Azure Dev prostory kontroleru musí mít přístup ke čtení správce *kubeconfig* v clusteru AKS. Například je k dispozici v toto oprávnění [předdefinovaná Azure Kubernetes Service clusteru správce Role](../aks/control-kubeconfig-access.md#available-cluster-roles-permissions). Musí také mít uživatele, kteří používají Azure Dev prostory kontroleru *Přispěvatel* nebo *vlastníka* role RBAC pro kontroler.
 
-### <a name="try"></a>Vyzkoušení
+### <a name="try"></a>Vyzkoušet
 Další podrobnosti o aktualizaci oprávnění uživatele pro AKS cluster jsou k dispozici [tady](../aks/control-kubeconfig-access.md#assign-role-permissions-to-a-user).
 
 Aktualizace uživatelské role RBAC pro kontroler:

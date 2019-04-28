@@ -15,11 +15,11 @@ ms.date: 09/19/2018
 ms.author: dadobali
 ms.custom: include file
 ms.openlocfilehash: 9782c6c2024c5cf490f207bb12a214c93a53b813
-ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58203465"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60250493"
 ---
 ## <a name="register-your-application"></a>Registrace vaší aplikace
 

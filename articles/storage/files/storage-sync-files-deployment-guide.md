@@ -2,18 +2,18 @@
 title: Nasazení služby Azure File Sync | Dokumentace Microsoftu
 description: Zjistěte, jak nasadit Azure File Sync, a to od začátku do konce.
 services: storage
-author: wmgries
+author: roygara
 ms.service: storage
 ms.topic: article
 ms.date: 07/19/2018
-ms.author: wgries
+ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: a5d6f7757b5a4a5a2048c9822c4f52bee6d19bfe
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: 2213cf30384f7069b3862ddd61aceae1bd46d82d
+ms.sourcegitcommit: 37343b814fe3c95f8c10defac7b876759d6752c3
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60443979"
+ms.lasthandoff: 04/24/2019
+ms.locfileid: "63763572"
 ---
 # <a name="deploy-azure-file-sync"></a>Nasazení Synchronizace souborů Azure
 Azure File Sync umožňuje centralizovat sdílené složky organizace ve službě soubory Azure, při zachování flexibility, výkonu a kompatibility s místními souborového serveru. Azure File Sync transformuje serveru systému Windows na rychlou mezipaměť sdílené složky Azure. Můžete použít jakýkoli protokol dostupný ve Windows serveru pro přístup k datům místně, včetně SMB, NFS a FTPS. Můžete mít libovolný počet mezipamětí po celém světě potřebujete.
@@ -21,7 +21,7 @@ Azure File Sync umožňuje centralizovat sdílené složky organizace ve služb�
 Důrazně doporučujeme, abyste si přečetli [plánování nasazení služby soubory Azure](storage-files-planning.md) a [plánování nasazení služby Azure File Sync](storage-sync-files-planning.md) před provedením kroků popsaných v tomto článku.
 
 ## <a name="prerequisites"></a>Požadavky
-* Účet úložiště Azure a Azure soubor sdílet ve stejné oblasti, kterou chcete nasazení služby Azure File Sync. Další informace naleznete v tématu:
+* Účet úložiště Azure a Azure soubor sdílet ve stejné oblasti, kterou chcete nasazení služby Azure File Sync. Další informace:
     - [Dostupnost v oblastech](storage-sync-files-planning.md#region-availability) pro Azure File Sync.
     - [Vytvoření účtu úložiště](../common/storage-create-storage-account.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json) podrobný popis toho, jak vytvořit účet úložiště.
     - [Vytvoření sdílené složky](storage-how-to-create-file-share.md) podrobný popis toho, jak vytvořit sdílenou složku.

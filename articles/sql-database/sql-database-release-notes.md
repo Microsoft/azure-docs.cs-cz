@@ -8,14 +8,14 @@ ms.service: sql-database
 ms.subservice: service
 ms.devlang: ''
 ms.topic: conceptual
-ms.date: 04/10/2019
+ms.date: 04/23/2019
 ms.author: carlrab
-ms.openlocfilehash: 9b961436c81282381f963d16c6c6dd5f289d1259
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: MT
+ms.openlocfilehash: e6d702c7a3194f07f9d04139acbc9b6101b296ea
+ms.sourcegitcommit: 37343b814fe3c95f8c10defac7b876759d6752c3
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59495101"
+ms.lasthandoff: 04/24/2019
+ms.locfileid: "63759450"
 ---
 # <a name="sql-database-release-notes"></a>Zpráva k vydání verze SQL Database
 
@@ -25,7 +25,7 @@ Tento článek obsahuje seznam nových funkcí a vylepšení ve službě SQL Dat
 
 | Funkce | Podrobnosti |
 | ---| --- |
-| Úlohy elastické databáze | Informace najdete v tématu [vytvoření, konfigurace a správa elastických úloh](elastic-jobs-overview.md) |
+| Elastické úlohy databáze | Informace najdete v tématu [vytvoření, konfigurace a správa elastických úloh](elastic-jobs-overview.md) |
 | Elastické transakce | [Distribuované transakce v cloudových databázích](sql-database-elastic-transactions-overview.md) |
 | Elastické dotazy | Informace najdete v tématu [přehled elastického dotazu](sql-database-elastic-query-overview.md) |
 | Replikace se spravované instance |Informace najdete v tématu [konfigurace replikace databáze spravované instance Azure SQL Database](replication-with-sql-database-managed-instance.md)|
@@ -45,6 +45,22 @@ Tento článek obsahuje seznam nových funkcí a vylepšení ve službě SQL Dat
 |SQL Analytics|Informace najdete v tématu [Azure SQL Analytics](../azure-monitor/insights/azure-sql.md)|
 | Podpora časové pásmo pro spravované instance|Další informace najdete v tématu [časové pásmo v Azure SQL Database Managed Instance](sql-database-managed-instance-timezone.md)|
 |||
+
+## <a name="april-2019"></a>2019. dubna
+
+### <a name="service-improvements"></a>Vylepšení služby
+
+| Vylepšení služby | Podrobnosti |
+| --- | --- |
+| Veřejné koncové body pro spravovanou instanci | Další informace najdete v tématu [pomocí Azure SQL Database managed instance bezpečně s veřejným koncovým bodem](sql-database-managed-instance-public-endpoint-securely.md)
+| Podpora časové pásmo pro spravovanou instanci | Další informace najdete v tématu [časové pásmo v Azure SQL Database Managed Instance (Preview)](sql-database-managed-instance-timezone.md)
+
+### <a name="documentation-improvements"></a>Dokumentace k vylepšení
+
+| Dokumentace k vylepšení | Podrobnosti |
+| --- | --- |
+| Veřejné koncové body pro spravovanou instanci | Další informace najdete v tématu [pomocí Azure SQL Database managed instance bezpečně s veřejným koncovým bodem](sql-database-managed-instance-public-endpoint-securely.md)
+| Podpora časové pásmo pro spravovanou instanci | Další informace najdete v tématu [časové pásmo v Azure SQL Database Managed Instance (Preview)](sql-database-managed-instance-timezone.md)
 
 ## <a name="march-2019"></a>2019. března
 

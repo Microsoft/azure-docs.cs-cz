@@ -1,7 +1,6 @@
 ---
 title: Vysvětlení a řešení chyb WebHCat na HDInsight – Azure
 description: Zjistěte, jak o běžné chyby vrácené WebHCat na HDInsight a jejich řešení.
-services: hdinsight
 author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
@@ -9,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/16/2018
 ms.author: hrasheed
-ms.openlocfilehash: f158e08f0f882801dc488721013e9705ea4ff738
-ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
-ms.translationtype: MT
+ms.openlocfilehash: 683580ba65ad775ccec105c78cc1af66fbb63c37
+ms.sourcegitcommit: 37343b814fe3c95f8c10defac7b876759d6752c3
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58448318"
+ms.lasthandoff: 04/24/2019
+ms.locfileid: "63761110"
 ---
 # <a name="understand-and-resolve-errors-received-from-webhcat-on-hdinsight"></a>Pochopení a vyřešení chyb přijatých z WebHCat v HDInsight
 
@@ -40,9 +39,9 @@ Další informace o chyb oznámených při použití WebHCat s HDInsight a způs
 
 Překročení následujících výchozích hodnot může snížit výkon WebHCat nebo dojít k chybám:
 
-| Nastavení | Co dělá | Výchozí hodnota |
+| Nastavení | Výsledek | Výchozí hodnota |
 | --- | --- | --- |
-| [yarn.scheduler.capacity.maximum-applications][maximum-applications] |Maximální počet úloh, které mohou být souběžně aktivní (čekající na vyřízení nebo spuštěné) |10 000 |
+| [yarn.scheduler.capacity.maximum-applications][maximum-applications] |Maximální počet úloh, které mohou být souběžně aktivní (čekající na vyřízení nebo spuštěné) |10,000 |
 | [templeton.exec.max-procs][max-procs] |Maximální počet požadavků, které se dají obsluhovat současně |20 |
 | [mapreduce.jobhistory.max-age-ms][max-age-ms] |Počet dní, které historie úlohy se zachovají. |7 dní |
 
@@ -50,7 +49,7 @@ Překročení následujících výchozích hodnot může snížit výkon WebHCat
 
 **Kód stavu HTTP**: 429
 
-| Příčina | Řešení |
+| Příčina | Rozlišení |
 | --- | --- |
 | Překročili jste maximální souběžných žádostí za minutu (20 výchozí nastavení) obsluhovat WebHCat |Snižte úloh, abyste zajistili, že neodešlete více než maximální počet souběžných požadavků nebo zvyšte limit souběžných žádostí úpravou `templeton.exec.max-procs`. Další informace najdete v tématu [změna konfigurace](#modifying-configuration) |
 
@@ -58,7 +57,7 @@ Překročení následujících výchozích hodnot může snížit výkon WebHCat
 
 **Kód stavu HTTP**: 503
 
-| Příčina | Řešení |
+| Příčina | Rozlišení |
 | --- | --- |
 | Tento kód stavu obvykle dochází při převzetí služeb při selhání mezi primární a sekundární hlavní uzel clusteru |Počkejte 2 minuty a potom operaci opakujte |
 
@@ -66,7 +65,7 @@ Překročení následujících výchozích hodnot může snížit výkon WebHCat
 
 **Kód stavu HTTP**: 400
 
-| Příčina | Řešení |
+| Příčina | Rozlišení |
 | --- | --- |
 | Podrobnosti úlohy nebyly vyčištěny pomocí historie úloh čisticí |Výchozí době uchování historie úlohy je 7 dní. Úpravou můžete změnit výchozí dobu uchování `mapreduce.jobhistory.max-age-ms`. Další informace najdete v tématu [změna konfigurace](#modifying-configuration) |
 | Úlohy byl ukončen z důvodu převzetí služeb při selhání |Opakujte odeslání úlohy pro až dvě minuty |
@@ -76,7 +75,7 @@ Překročení následujících výchozích hodnot může snížit výkon WebHCat
 
 **Kód stavu HTTP**: 502
 
-| Příčina | Řešení |
+| Příčina | Rozlišení |
 | --- | --- |
 | Interní uvolňování paměti dochází v rámci procesu WebHCat |Počkejte, uvolňování paměti na dokončení nebo restartujte službu WebHCat |
 | Časový limit čekání na odpověď ze služby Správce prostředků. Této chybě může dojít, když se počet aktivních aplikací dostane nakonfigurované maximum (výchozí hodnota 10 000) |Počkejte právě probíhajících úloh dokončíte. nebo zvýšení limitu souběžných úloh tak, že upravíte `yarn.scheduler.capacity.maximum-applications`. Další informace najdete v tématu [změna konfigurace](#modifying-configuration) oddílu. |

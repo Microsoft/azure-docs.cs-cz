@@ -2,18 +2,18 @@
 title: Rychlý start pro správu sdílených složek Azure pomocí webu Azure Portal
 description: V tomto rychlém startu zjistíte, jak pomocí webu Azure Portal spravovat službu Soubory Azure.
 services: storage
-author: wmgries
+author: roygara
 ms.service: storage
 ms.topic: quickstart
 ms.date: 10/18/2018
-ms.author: wgries
+ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: ac78510a3f736d9d5a3f2aafcc1f77ef20e6d81a
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
-ms.translationtype: MT
+ms.openlocfilehash: 69e7dba06fce14c2411a82dfade344ba1b14a6d3
+ms.sourcegitcommit: 37343b814fe3c95f8c10defac7b876759d6752c3
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55467761"
+ms.lasthandoff: 04/24/2019
+ms.locfileid: "63763883"
 ---
 # <a name="quickstart-create-and-manage-azure-file-shares-with-the-azure-portal"></a>Rychlý start: Vytváření a správě sdílených složek Azure pomocí webu Azure portal 
 Služba [Soubory Azure](storage-files-introduction.md) je snadno použitelný cloudový systém souborů od Microsoftu. Sdílené složky Azure je možné připojit v systémech Windows, Linux a macOS. Tato příručka vás provede základy práce se sdílenými složkami Azure pomocí webu [Azure Portal](https://portal.azure.com/).
@@ -64,7 +64,7 @@ Vytvoření nového adresáře *myDirectory* v kořenovém adresáři sdílené 
 2. V nabídce v horní části stránky vyberte **+ Přidat adresář**. Rozbalí se stránka **Nový adresář**.
 3. Zadejte *myDirectory* a pak klikněte na **OK**.
 
-#### <a name="upload-a-file"></a>Nahrání souboru 
+#### <a name="upload-a-file"></a>Nahrát soubor 
 Abychom si předvedli nahrání souboru, nejprve musíte vytvořit nebo vybrat soubor k nahrání. Můžete to provést jakýmkoli způsobem, který vám vyhovuje. Po výběru souboru, který chcete nahrát:
 
 1. Klikněte na adresář **myDirectory**. Otevře se panel **myDirectory**.
@@ -76,7 +76,7 @@ Abychom si předvedli nahrání souboru, nejprve musíte vytvořit nebo vybrat s
 5. Na stránce **Nahrání souborů** ověřte název souboru a pak klikněte na **Nahrát**.
 6. Po dokončení by se soubor měl zobrazit v seznamu na stránce **myDirectory**.
 
-#### <a name="download-a-file"></a>Stažení souboru
+#### <a name="download-a-file"></a>Stáhnout soubor
 Kliknutím pravým tlačítkem na soubor, který jste nahráli, můžete stáhnout jeho kopii. Po kliknutí na tlačítko pro stažení bude konkrétní prostředí záviset na operačním systému a prohlížeči, které používáte.
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků

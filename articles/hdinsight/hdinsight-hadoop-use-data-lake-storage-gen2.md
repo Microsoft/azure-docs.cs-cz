@@ -1,19 +1,18 @@
 ---
 title: Použití Azure Data Lake Storage Gen2 s clustery Azure HDInsight
 description: Další informace o použití Azure Data Lake Storage Gen2 s využitím clusterů Azure HDInsight.
-services: hdinsight
 author: hrasheed-msft
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/19/2019
 ms.author: hrasheed
-ms.openlocfilehash: 43f335bdd8b918fa717d9084d3c9c30d97920c10
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: 6452e73b2429ab89a466b1c3b59cc892eca31205
+ms.sourcegitcommit: 37343b814fe3c95f8c10defac7b876759d6752c3
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60004954"
+ms.lasthandoff: 04/24/2019
+ms.locfileid: "63766924"
 ---
 # <a name="use-azure-data-lake-storage-gen2-with-azure-hdinsight-clusters"></a>Použití Azure Data Lake Storage Gen2 s clustery Azure HDInsight
 
@@ -69,7 +68,7 @@ Přiřazení spravovaných identit k **vlastník dat objektů Blob úložiště*
         ![Nastavení identity pro Azure HDInsight pomocí Data Lake Storage Gen2](./media/hdinsight-hadoop-data-lake-storage-gen2/managed-identity-cluster-creation.png)
         
 > [!Note]
-> Můžete přidat jeden nebo více účtů Data Lake Storage Gen2 jako sekundární úložiště ve stejném clusteru. Právě opakujte předchozí postup u každého účtu Data Lake Storage Gen2, který chcete přidat direktivu using stejnou identitou.
+> Chcete-li přidat sekundární účet Data Lake Storage Gen2 na úrovni účtu úložiště, jednoduše přiřadíte spravovanou identitu vytvořili nový účet úložiště Data Lake Storage Gen2, který chcete přidat. Mějte na paměti, že se nepodporuje přidání sekundární účet Data Lake Storage Gen2 prostřednictvím okna "dalších účtů úložiště" v HDInsight. 
 
 ## <a name="create-a-cluster-with-data-lake-storage-gen2-through-the-azure-cli"></a>Vytvoření clusteru s Data Lake Storage Gen2 přes rozhraní příkazového řádku Azure
 

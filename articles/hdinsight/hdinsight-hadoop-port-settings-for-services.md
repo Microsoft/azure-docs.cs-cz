@@ -1,7 +1,6 @@
 ---
 title: Porty používané služby Hadoop v HDInsight – Azure
 description: Seznam portů používaných služby Hadoop spuštěné v HDInsight.
-services: hdinsight
 author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
@@ -9,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/06/2018
 ms.author: hrasheed
-ms.openlocfilehash: be264be41b198e95dae64730ef31f431ec06a2e7
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
-ms.translationtype: MT
+ms.openlocfilehash: 2d0b8aba95787f179733dd596e783f097cba4299
+ms.sourcegitcommit: 37343b814fe3c95f8c10defac7b876759d6752c3
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53715456"
+ms.lasthandoff: 04/24/2019
+ms.locfileid: "63761251"
 ---
 # <a name="ports-used-by-apache-hadoop-services-on-hdinsight"></a>Porty používané služby Apache Hadoop v HDInsight
 
@@ -36,20 +35,20 @@ K připojení dalších počítačů k virtuální síti, musíte nejprve vytvo�
 
 Všechny uzly v clusteru HDInsight se nacházejí ve službě Azure Virtual Network a nelze přistupovat přímo z Internetu. Veřejné brána poskytuje přístup k Internetu pro následující porty, které jsou společné pro všechny typy clusterů HDInsight.
 
-| Služba | Port | Protocol (Protokol) | Popis |
+| Služba | Port | Protokol | Popis |
 | --- | --- | --- | --- |
 | sshd |22 |SSH |Klienti se připojí k sshd na primárnímu hlavnímu uzlu. Další informace najdete v tématu [Použití SSH se službou HDInsight](hdinsight-hadoop-linux-use-ssh-unix.md). |
 | sshd |22 |SSH |Klienti se připojí k sshd na hraničním uzlu. Další informace najdete v tématu [Použití SSH se službou HDInsight](hdinsight-hadoop-linux-use-ssh-unix.md). |
 | sshd |23 |SSH |Klienti se připojí k sshd na sekundární hlavní uzel. Další informace najdete v tématu [Použití SSH se službou HDInsight](hdinsight-hadoop-linux-use-ssh-unix.md). |
 | Ambari |443 |HTTPS |Webové uživatelské rozhraní Ambari. Zobrazit [Správa HDInsight pomocí webového uživatelského rozhraní Apache Ambari](hdinsight-hadoop-manage-ambari.md) |
-| Ambari |443 |HTTPS |Rozhraní Ambari REST API. Zobrazit [Správa HDInsight pomocí rozhraní Apache Ambari REST API](hdinsight-hadoop-manage-ambari-rest-api.md) |
+| Ambari |443 |HTTPS |Ambari REST API. Zobrazit [Správa HDInsight pomocí rozhraní Apache Ambari REST API](hdinsight-hadoop-manage-ambari-rest-api.md) |
 | WebHCat |443 |HTTPS |HCatalog REST API. Zobrazit [použití Apache Hivu pomocí Curl](hadoop/apache-hadoop-use-pig-curl.md), [pomocí Apache Pig nástroj Curl](hadoop/apache-hadoop-use-pig-curl.md), [použití MapReduce se Curl](hadoop/apache-hadoop-use-mapreduce-curl.md) |
 | HiveServer2 |443 |ODBC |Se připojí k Hive pomocí ovladače ODBC. Zobrazit [připojení Excelu k HDInsight pomocí ovladače Microsoft ODBC](hadoop/apache-hadoop-connect-excel-hive-odbc-driver.md). |
 | HiveServer2 |443 |JDBC |Se připojí k ApacheHive pomocí JDBC. Zobrazit [připojit k Apache Hive v HDInsight pomocí ovladače Hive JDBC](hadoop/apache-hadoop-connect-hive-jdbc-driver.md) |
 
 Tady jsou k dispozici pro specifické typy clusterů:
 
-| Služba | Port | Protocol (Protokol) | Typ clusteru | Popis |
+| Služba | Port | Protokol | Typ clusteru | Popis |
 | --- | --- | --- | --- | --- |
 | Stargate |443 |HTTPS |HBase |Rozhraní REST API HBase. Zobrazit [začněte používat Apache HBase](hbase/apache-hbase-tutorial-get-started-linux.md) |
 | Livy |443 |HTTPS |Spark |Rozhraní Spark REST API. Zobrazit [úlohy odeslání Apache Spark vzdáleně pomocí Apache Livy](spark/apache-spark-livy-rest-interface.md) |
@@ -75,18 +74,18 @@ Všechny služby veřejně zpřístupnit v síti internet musí být ověřené:
 
 ### <a name="ambari"></a>Ambari
 
-| Služba | Uzly | Port | Cesta URL | Protocol (Protokol) | 
+| Služba | Uzly | Port | Cesta URL | Protokol | 
 | --- | --- | --- | --- | --- |
 | Webové uživatelské rozhraní Ambari | Hlavní uzly | 8080 | / | HTTP |
-| Rozhraní Ambari REST API | Hlavní uzly | 8080 | / api/v1 | HTTP |
+| Ambari REST API | Hlavní uzly | 8080 | /api/v1 | HTTP |
 
 Příklady:
 
-* Rozhraní Ambari REST API: `curl -u admin "http://10.0.0.11:8080/api/v1/clusters"`
+* Ambari REST API: `curl -u admin "http://10.0.0.11:8080/api/v1/clusters"`
 
 ### <a name="hdfs-ports"></a>Porty HDFS
 
-| Služba | Uzly | Port | Protocol (Protokol) | Popis |
+| Služba | Uzly | Port | Protokol | Popis |
 | --- | --- | --- | --- | --- |
 | NameNode webového uživatelského rozhraní |Hlavní uzly |30070 |HTTPS |Webové uživatelské rozhraní k zobrazení stavu |
 | NameNode metadat služby |Hlavní uzly |8020 |IPC |Metadatech systému souborů |
@@ -97,7 +96,7 @@ Příklady:
 
 ### <a name="yarn-ports"></a>Porty YARN
 
-| Služba | Uzly | Port | Protocol (Protokol) | Popis |
+| Služba | Uzly | Port | Protokol | Popis |
 | --- | --- | --- | --- | --- |
 | Webové uživatelské rozhraní správce prostředků |Hlavní uzly |8088 |HTTP |Webové uživatelské rozhraní pro Resource Manager |
 | Webové uživatelské rozhraní správce prostředků |Hlavní uzly |8090 |HTTPS |Webové uživatelské rozhraní pro Resource Manager |
@@ -111,42 +110,42 @@ Příklady:
 
 ### <a name="hive-ports"></a>Porty Hive
 
-| Služba | Uzly | Port | Protocol (Protokol) | Popis |
+| Služba | Uzly | Port | Protokol | Popis |
 | --- | --- | --- | --- | --- |
 | HiveServer2 |Hlavní uzly |10001 |Thrift |Služby pro připojení k Hivu (Thrift/JDBC) |
-| Hive Metastore |Hlavní uzly |9083 |Thrift |Služby pro připojení k metadata Hive (Thrift/JDBC) |
+| Metastore Hive |Hlavní uzly |9083 |Thrift |Služby pro připojení k metadata Hive (Thrift/JDBC) |
 
-### <a name="webhcat-ports"></a>Porty WebHCat
+### <a name="webhcat-ports"></a>WebHCat ports
 
-| Služba | Uzly | Port | Protocol (Protokol) | Popis |
+| Služba | Uzly | Port | Protokol | Popis |
 | --- | --- | --- | --- | --- |
 | WebHCat server |Hlavní uzly |30111 |HTTP |Webových rozhraní API jako nadstavby HCatalog a dalším službám Hadoop |
 
 ### <a name="mapreduce-ports"></a>Porty MapReduce
 
-| Služba | Uzly | Port | Protocol (Protokol) | Popis |
+| Služba | Uzly | Port | Protokol | Popis |
 | --- | --- | --- | --- | --- |
 | JobHistory |Hlavní uzly |19888 |HTTP |MapReduce JobHistory webového uživatelského rozhraní |
-| JobHistory |Hlavní uzly |10020 |&nbsp; |Server MapReduce JobHistory |
+| JobHistory |Hlavní uzly |10020 |&nbsp; |MapReduce JobHistory server |
 | ShuffleHandler |&nbsp; |13562 |&nbsp; |Přenosy zprostředkující mapy výstupy k vyžádání Reduktorů |
 
 ### <a name="oozie"></a>Oozie
 
-| Služba | Uzly | Port | Protocol (Protokol) | Popis |
+| Služba | Uzly | Port | Protokol | Popis |
 | --- | --- | --- | --- | --- |
 | Oozie server |Hlavní uzly |11000 |HTTP |Adresa URL služby Oozie |
 | Oozie server |Hlavní uzly |11001 |HTTP |Port pro správce Oozie |
 
 ### <a name="ambari-metrics"></a>Metriky Ambari
 
-| Služba | Uzly | Port | Protocol (Protokol) | Popis |
+| Služba | Uzly | Port | Protokol | Popis |
 | --- | --- | --- | --- | --- |
 | Časová osa (historie aplikace) |Hlavní uzly |6188 |HTTP |Časová osa služby webového uživatelského rozhraní |
 | Časová osa (historie aplikace) |Hlavní uzly |30200 |RPC |Časová osa služby webového uživatelského rozhraní |
 
 ### <a name="hbase-ports"></a>Porty HBase
 
-| Služba | Uzly | Port | Protocol (Protokol) | Popis |
+| Služba | Uzly | Port | Protokol | Popis |
 | --- | --- | --- | --- | --- |
 | HMaster |Hlavní uzly |16000 |&nbsp; |&nbsp; |
 | Informace o HMaster webového uživatelského rozhraní |Hlavní uzly |16010 |HTTP |Port pro hlavní server HBase webového uživatelského rozhraní |
@@ -155,14 +154,14 @@ Příklady:
 
 ### <a name="kafka-ports"></a>Porty systému Kafka
 
-| Služba | Uzly | Port | Protocol (Protokol) | Popis |
+| Služba | Uzly | Port | Protokol | Popis |
 | --- | --- | --- | --- | --- |
 | Service Broker |Pracovní uzly |9092 |[Kafka přenosový protokol](https://kafka.apache.org/protocol.html) |Používá pro komunikaci klientů |
 | &nbsp; |Uzly Zookeeper |2181 |&nbsp; |Port, který klienti používají pro připojení k Zookeeper |
 
 ### <a name="spark-ports"></a>Porty Spark
 
-| Služba | Uzly | Port | Protocol (Protokol) | Cesta URL | Popis |
+| Služba | Uzly | Port | Protokol | Cesta URL | Popis |
 | --- | --- | --- | --- | --- | --- |
 | Spark Thrift servery |Hlavní uzly |10002 |Thrift | &nbsp; | Služby pro připojení ke Spark SQL (Thrift/JDBC) |
 | Livy server | Hlavní uzly | 8998 | HTTP | &nbsp; | Služba pro spouštění příkazů, úlohy a aplikace |

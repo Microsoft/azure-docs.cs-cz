@@ -11,14 +11,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
-ms.date: 01/28/2019
+ms.date: 04/22/2019
 ms.author: juliako
-ms.openlocfilehash: 30cd77799837f9b1ef08a9c609e518fd679b9b15
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 393b87aeed759950b946ccb45a008da9af4b7ebe
+ms.sourcegitcommit: 37343b814fe3c95f8c10defac7b876759d6752c3
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60322297"
+ms.lasthandoff: 04/24/2019
+ms.locfileid: "63766839"
 ---
 # <a name="live-event-latency-in-media-services"></a>Živé události latence ve službě Media Services
 
@@ -27,7 +27,7 @@ Tento článek popisuje, jak nastavit na nízkou latenci [živá událost](https
 Použití nového **LowLatency** funkci, můžete nastavit **StreamOptionsFlag** k **LowLatency** na **Livestream**. Při vytváření [LiveOutput](https://docs.microsoft.com/rest/api/media/liveoutputs) přehrávání HLS, nastavte [LiveOutput.Hls.fragmentsPerTsSegment](https://docs.microsoft.com/rest/api/media/liveoutputs/create#hls) na hodnotu 1. Po vytvoření a spuštění je datový proud, můžete [Azure Media Player](https://ampdemo.azureedge.net/) (AMP ukázkové stránky) a nastavte možnosti přehrávání použít "S nízkou latencí heuristiky profil".
 
 > [!NOTE]
-> V současné době LowLatency HeuristicProfile v Azure Media Player je navržen pro přehrávání datových proudů v protokolu DASH nebo HLS s CMAF. Pokud cílíte na zařízení s MacOS nebo iOS přes HLS pomocí Terminálové služby (například `format=m3u8-aapl` nebo `format=m3u8-aapl-v3`), neměli byste používat toto nastavení, protože AMP přímo používá nativní přehrávač, v tomto případě poskytované operačním systémem.
+> V současné době LowLatency HeuristicProfile v Azure Media Player je navržená pro přehrávání datových proudů MPEG-DASH protokol CSF nebo CMAF formátu (například `format=mdp-time-csf` nebo `format=mdp-time-cmaf`). 
 
 Následující příklad .NET ukazuje, jak nastavit **LowLatency** na **Livestream**:
 

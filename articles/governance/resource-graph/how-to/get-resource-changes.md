@@ -1,5 +1,5 @@
 ---
-title: Získat změn prostředků
+title: Získání změn prostředků
 description: Pochopit postup k zjištění, kdy se prostředek změnil a získat seznam vlastností, které se změnily.
 services: resource-graph
 author: DCtheGeek
@@ -8,20 +8,20 @@ ms.date: 04/20/2019
 ms.topic: conceptual
 ms.service: resource-graph
 manager: carmonm
-ms.openlocfilehash: f4618e945db443e8d7cf9fdcc49e20e5a09ebd39
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: 0ae85b45dfcd80056316ed5f2099aab4057d24c8
+ms.sourcegitcommit: 37343b814fe3c95f8c10defac7b876759d6752c3
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60013667"
+ms.lasthandoff: 04/24/2019
+ms.locfileid: "63760809"
 ---
-# <a name="get-resource-changes"></a>Získat změn prostředků
+# <a name="get-resource-changes"></a>Získání změn prostředků
 
 Získejte prostředky změnit prostřednictvím kurzu denním, konfigurace a dokonce i opakované nasazení.
 Změna mohou pocházet od jednotlivce nebo pomocí automatizovaného procesu. Většina změnit chování je záměrné, ale v některých případech tomu tak není. Posledních 14 dní historie změn Graph prostředků Azure umožňují:
 
-- Najdete v Azure Resource Manageru vlastnosti byly zjištěny změny.
-- Zobrazit vlastnosti změnit jako součást této změny události.
+- Zjistit, kdy byly změny detekovány vlastností Azure Resource Manageru.
+- Podívat se, které vlastnosti se v rámci této změnové události změnily.
 
 Detekce změn a podrobnosti jsou důležité pro následující ukázkové scénáře:
 
@@ -39,7 +39,7 @@ Tento článek ukazuje, jak shromažďování těchto informací prostřednictv�
 
 ## <a name="find-when-changes-were-detected"></a>Najít, když byly zjištěny změny
 
-Prvním krokem vidět, co se změnilo na prostředek je najít události změn souvisejících s tímto prostředkem v rámci časové okno. Tento krok se provádí prostřednictvím [resourceChanges](/rest/api/azureresourcegraph/resourceChanges) koncového bodu REST.
+Prvním krokem vidět, co se změnilo na prostředek je najít události změn souvisejících s tímto prostředkem v rámci časové okno. Tento krok se provádí prostřednictvím **resourceChanges** koncového bodu REST.
 
 **ResourceChanges** koncového bodu vyžaduje dva parametry v textu požadavku:
 
@@ -95,7 +95,7 @@ Došlo k události změny v určitém okamžiku v tomto okně.
 
 ## <a name="see-what-properties-changed"></a>Zjistit, co změnil vlastnosti
 
-S **changeId** z **resourceChanges** koncového bodu, [resourceChangeDetails](/rest/api/azureresourcegraph/resourceChangeDetails) koncový bod REST se pak použije k získání podrobností o události změny.
+S **changeId** z **resourceChanges** koncového bodu, **resourceChangeDetails** koncový bod REST se pak použije k získání podrobností o události změny.
 
 **ResourceChangeDetails** koncového bodu vyžaduje dva parametry v textu požadavku:
 
@@ -108,7 +108,6 @@ Text požadavku příkladu:
 {
     "resourceId": "/subscriptions/{subscriptionId}/resourceGroups/MyResourceGroup/providers/Microsoft.Storage/storageAccounts/mystorageaccount",
     "changeId": "53dc0515-b86b-4bc2-979b-e4694ab4a556"
-    }
 }
 ```
 

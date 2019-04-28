@@ -1,7 +1,6 @@
 ---
 title: Monitorování a správa Azure HDInsight pomocí webového uživatelského rozhraní Ambari
 description: Další informace o použití Ambari monitorovat a spravovat clustery HDInsight založené na Linuxu. V tomto dokumentu zjistíte, jak pomocí webového uživatelského rozhraní Ambari součástí clusterů HDInsight.
-services: hdinsight
 author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
@@ -9,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/06/2018
 ms.author: hrasheed
-ms.openlocfilehash: 738ef5df0b2e2a7f31a7316a1d2ef4395168d41e
-ms.sourcegitcommit: 30a0007f8e584692fe03c0023fe0337f842a7070
-ms.translationtype: MT
+ms.openlocfilehash: 1659ab72620b6bf91eb932f8414a0f6600350e37
+ms.sourcegitcommit: 37343b814fe3c95f8c10defac7b876759d6752c3
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57576952"
+ms.lasthandoff: 04/24/2019
+ms.locfileid: "63761096"
 ---
 # <a name="manage-hdinsight-clusters-by-using-the-apache-ambari-web-ui"></a>Správa clusterů HDInsight pomocí webového uživatelského rozhraní Apache Ambari
 

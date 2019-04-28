@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 10/01/2016
 ms.author: crdun
 ms.openlocfilehash: b6f93cc3c35ab18ecd50ccd6b3090985497baabf
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54121766"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62122451"
 ---
 # <a name="how-to-use-ios-client-library-for-azure-mobile-apps"></a>Jak iOS použijte klientskou knihovnu pro Azure Mobile Apps
 
@@ -51,7 +51,7 @@ Pokud chcete získat přístup k back-endu Azure Mobile Apps ve vašem projektu,
 MSClient *client = [MSClient clientWithApplicationURLString:@"AppUrl"];
 ```
 
-**Kód SWIFT**:
+**Swift**:
 
 ```swift
 let client = MSClient(applicationURLString: "AppUrl")
@@ -67,7 +67,7 @@ Pro přístup k datům a jejich aktualizaci vytvořte odkaz na back-endovou tabu
 MSTable *table = [client tableWithName:@"TodoItem"];
 ```
 
-**Kód SWIFT**:
+**Swift**:
 
 ```swift
 let table = client.tableWithName("TodoItem")
@@ -91,7 +91,7 @@ Chcete-li vytvořit dotaz na databázi, dotazování `MSTable` objektu. Následu
 }];
 ```
 
-**Kód SWIFT**:
+**Swift**:
 
 ```swift
 table.readWithCompletion { (result, error) in
@@ -128,7 +128,7 @@ NSPredicate * predicate = [NSPredicate predicateWithFormat:@"complete == NO"];
 }];
 ```
 
-**Kód SWIFT**:
+**Swift**:
 
 ```swift
 // Create a predicate that finds items where complete is false
@@ -156,7 +156,7 @@ MSQuery *query = [table query];
 MSQuery *query = [table queryWithPredicate: [NSPredicate predicateWithFormat:@"complete == NO"]];
 ```
 
-**Kód SWIFT**:
+**Swift**:
 
 ```swift
 let query = table.query()
@@ -194,7 +194,7 @@ Chcete-li seřadit výsledky, Podívejme se na příklad. Seřadit podle pole te
 }];
 ```
 
-**Kód SWIFT**:
+**Swift**:
 
 ```swift
 query.orderByAscending("text")
@@ -220,7 +220,7 @@ Chcete-li omezit pole, který se má vrátit v dotazu, zadejte názvy polí v **
 query.selectFields = @[@"text", @"complete"];
 ```
 
-**Kód SWIFT**:
+**Swift**:
 
 ```swift
 query.selectFields = ["text", "complete"]
@@ -237,7 +237,7 @@ query.parameters = @{
 };
 ```
 
-**Kód SWIFT**:
+**Swift**:
 
 ```swift
 query.parameters = ["myKey1": "value1", "myKey2": "value2"]
@@ -269,7 +269,7 @@ Pokud zvýšíte velikost stránky klienta, by měl také zvýšit velikost str�
                            }];
 ```
 
-**Kód SWIFT**:
+**Swift**:
 
 ```swift
 let pullSettings = MSPullSettings(pageSize: 3)
@@ -301,7 +301,7 @@ NSDictionary *newItem = @{@"id": @"custom-id", @"text": @"my new item", @"comple
 }];
 ```
 
-**Kód SWIFT**:
+**Swift**:
 
 ```swift
 let newItem = ["id": "custom-id", "text": "my new item", "complete": false]
@@ -332,7 +332,7 @@ NSMutableDictionary *newItem = [oldItem mutableCopy]; // oldItem is NSDictionary
 }];
 ```
 
-**Kód SWIFT**:
+**Swift**:
 
 ```swift
 if let newItem = oldItem.mutableCopy() as? NSMutableDictionary {
@@ -361,7 +361,7 @@ Můžete také zadejte ID řádku a aktualizované pole:
 }];
 ```
 
-**Kód SWIFT**:
+**Swift**:
 
 ```swift
 table.update(["id": "custom-id", "text": "my EDITED item"]) { (result, error) in
@@ -391,7 +391,7 @@ Odstranit položku, vyvolat `delete` s položkou:
 }];
 ```
 
-**Kód SWIFT**:
+**Swift**:
 
 ```swift
 table.delete(newItem as [NSObject: AnyObject]) { (itemId, error) in
@@ -417,7 +417,7 @@ Můžete také odstraňte zadáním ID řádku:
 }];
 ```
 
-**Kód SWIFT**:
+**Swift**:
 
 ```swift
 table.deleteWithId("37BBF396-11F0-4B39-85C8-B319C729AF6D") { (itemId, error) in
@@ -454,7 +454,7 @@ Chcete-li volat vlastní API, zavolejte `MSClient.invokeAPI`. Žádost a odpově
             }];
 ```
 
-**Kód SWIFT**:
+**Swift**:
 
 ```swift
 client.invokeAPI("sendEmail",
@@ -486,7 +486,7 @@ Chcete-li zaregistrovat šablony, předejte šablony s vaší **client.push regi
 }];
 ```
 
-**Kód SWIFT**:
+**Swift**:
 
 ```swift
 client.push?.registerDeviceToken(NSData(), template: iOSTemplate, completion: { (error) in
@@ -504,7 +504,7 @@ client.push?.registerDeviceToken(NSData(), template: iOSTemplate, completion: { 
 NSDictionary *iOSTemplate = @{ @"templateName": @{ @"body": @{ @"aps": @{ @"alert": @"$(message)" } } } };
 ```
 
-**Kód SWIFT**:
+**Swift**:
 
 ```swift
 let iOSTemplate = ["templateName": ["body": ["aps": ["alert": "$(message)"]]]]
@@ -524,7 +524,7 @@ Soubor [ `<WindowsAzureMobileServices/MSError.h>` ] [ 6] definuje konstanty `MSE
 NSDictionary *serverItem = [error.userInfo objectForKey:MSErrorServerItemKey];
 ```
 
-**Kód SWIFT**:
+**Swift**:
 
 ```swift
 let serverItem = error.userInfo[MSErrorServerItemKey]
@@ -538,7 +538,7 @@ Kromě toho soubor definuje konstanty pro každý kód chyby:
 if (error.code == MSErrorPreconditionFailed) {
 ```
 
-**Kód SWIFT**:
+**Swift**:
 
 ```swift
 if (error.code == MSErrorPreconditionFailed) {
@@ -603,7 +603,7 @@ Můžete používat Active Directory Authentication Library (ADAL) pro přihlá�
 }
 ```
 
-**Kód SWIFT**:
+**Swift**:
 
 ```swift
 // add the following imports to your bridging header:
@@ -686,7 +686,7 @@ Sady SDK Facebooku pro iOS můžete použít pro přihlášení uživatelů do v
     }
     ```
 
-    **Kód SWIFT**:
+    **Swift**:
 
     ```swift
     // Add the following imports to your bridging header:
@@ -737,7 +737,7 @@ Prostředky infrastruktury pro iOS můžete použít pro přihlášení uživate
     }
     ```
 
-    **Kód SWIFT**:
+    **Swift**:
 
     ```swift
     import Fabric
@@ -774,7 +774,7 @@ Prostředky infrastruktury pro iOS můžete použít pro přihlášení uživate
     }
     ```
 
-    **Kód SWIFT**:
+    **Swift**:
 
     ```swift
     import TwitterKit
@@ -812,7 +812,7 @@ Google přihlášení SDK pro iOS můžete použít pro přihlášení uživatel
     }];
     ```
 
-    **Kód SWIFT**:
+    **Swift**:
 
     ```swift
     let payload: [String: String] = ["id_token": user.authentication.idToken, "authorization_code": user.serverAuthCode]
@@ -829,7 +829,7 @@ Google přihlášení SDK pro iOS můžete použít pro přihlášení uživatel
     [GIDSignIn sharedInstance].serverClientID = @"SERVER_CLIENT_ID";
     ```
 
-     **Kód SWIFT**:
+     **Swift**:
 
     ```swift
     GIDSignIn.sharedInstance().serverClientID = "SERVER_CLIENT_ID"
@@ -850,7 +850,7 @@ Google přihlášení SDK pro iOS můžete použít pro přihlášení uživatel
     }
     ```
 
-   **Kód SWIFT**:
+   **Swift**:
 
     ```swift
     // ...

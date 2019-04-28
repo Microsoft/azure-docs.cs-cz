@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: article
 ms.date: 03/19/2019
 ms.author: alkohli
-ms.openlocfilehash: 522dddde4994bb019e6547fcd18465b201f048d8
-ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
-ms.translationtype: MT
+ms.openlocfilehash: c2803ba598895834bb197f4a06ff0635354fcaca
+ms.sourcegitcommit: 37343b814fe3c95f8c10defac7b876759d6752c3
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58401735"
+ms.lasthandoff: 04/24/2019
+ms.locfileid: "63759985"
 ---
 # <a name="develop-a-c-iot-edge-module-to-move-files-on-data-box-edge"></a>Vývoj C# modul IoT Edge pro přesun souborů na hraničních zařízeních Data Box
 
@@ -36,7 +36,7 @@ Vaše zařízení Data Box Edge můžete nasadit a spustit moduly IoT Edge. Modu
 2. Generátor souboru události vytvoří událost souboru pro každý soubor zapsán do místní sdílené složky. Soubor události jsou také generovány, pokud při změně souboru na. Soubor událostí se pak odesílají do služby IoT Edge Hub (v modul runtime IoT Edge).
 3. Vlastní modul IoT Edge zpracovává událost souboru k vytvoření souboru událostí objektu, který také obsahuje relativní cestu k souboru. Modul generuje absolutní cesta pomocí relativní cesta k souboru a zkopíruje soubor z místní sdílené složky ke sdílené složce cloudu. V modulu pak odstraní soubor z místní sdílené složky.
 
-![Jak funguje Azure IoT Edge module na hraničních zařízeních Data Box](./media/data-box-edge-create-iot-edge-module/how-module-works.png)
+![Jak funguje Azure IoT Edge module na hraničních zařízeních Data Box](./media/data-box-edge-create-iot-edge-module/how-module-works-1.png)
 
 Jakmile je soubor ve sdílené složce cloudu, automaticky získá nahrát ho do svého účtu Azure Storage.
 
@@ -73,7 +73,7 @@ Registr kontejnerů Azure je privátním registrem Dockeru v Azure, kde můžete
    5. Přepněte přepínač **Uživatel s rolí správce** na **Povolit**.
    6. Nastavte skladovou Položku **základní**.
 
-      ![Vytvoření registru kontejneru](./media/data-box-edge-create-iot-edge-module/create-container-registry-1.png)
+      ![Vytvořit registr kontejneru](./media/data-box-edge-create-iot-edge-module/create-container-registry-1.png)
  
 4. Vyberte **Vytvořit**.
 5. Po vytvoření registru kontejneru do něj přejděte a vyberte **Přístupové klíče**.
@@ -87,7 +87,7 @@ Registr kontejnerů Azure je privátním registrem Dockeru v Azure, kde můžete
 
 Následujícím postupem se vytvoří projekt modul IoT Edge založené na sadě SDK .NET Core 2.1. Projekt používá Visual Studio Code a rozšíření Azure IoT Edge.
 
-### <a name="create-a-new-solution"></a>Vytvoření nového řešení
+### <a name="create-a-new-solution"></a>Vytvořit nové řešení
 
 Vytvořte šablonu řešení v jazyce C#, kterou můžete přizpůsobit pomocí vlastního kódu.
 

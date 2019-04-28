@@ -9,12 +9,12 @@ ms.reviewer: klam, LADocs
 ms.suite: integration
 ms.topic: article
 ms.date: 08/23/2018
-ms.openlocfilehash: 59c8effb4c5feae99755b7937f4796e8f11fde46
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: MT
+ms.openlocfilehash: 221bcbfb2517efae41005641321a651dfdf8e39f
+ms.sourcegitcommit: 37343b814fe3c95f8c10defac7b876759d6752c3
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58895879"
+ms.lasthandoff: 04/24/2019
+ms.locfileid: "63759439"
 ---
 # <a name="connectors-for-azure-logic-apps"></a>Konektory pro Azure Logic Apps
 
@@ -117,7 +117,7 @@ Tady jsou konektorů pro sestavování řešení business-to-business (B2B) s lo
 
 |   |   |   |   | 
 |---|---|---|---| 
-| [![Ikona rozhraní API][as2-icon]<br/>**AS2</br> – dekódování**][as2-decode-doc] | [![Ikona rozhraní API][as2-icon]<br/>**AS2</br> kódování**][as2-encode-doc] | [![Ikona rozhraní API][edifact-icon]<br/>**EDIFACT</br> – dekódování**][edifact-decode-doc] | [![Ikona rozhraní API][edifact-icon]<br/>**EDIFACT</br> kódování**][edifact-encode-doc] | 
+| [![Ikona rozhraní API][as2-icon]<br/>**AS2</br> – dekódování**][as2-doc] | [![Ikona rozhraní API][as2-icon]<br/>**AS2</br> kódování**][as2-doc] | [![Ikona rozhraní API][edifact-icon]<br/>**EDIFACT</br> – dekódování**][edifact-decode-doc] | [![Ikona rozhraní API][edifact-icon]<br/>**EDIFACT</br> kódování**][edifact-encode-doc] | 
 | [![Ikona rozhraní API][flat-file-decode-icon]<br/>**plochého souboru</br> – dekódování**][flat-file-decode-doc] | [![Ikona rozhraní API][flat-file-encode-icon]<br/>**plochého souboru</br> kódování**][flat-file-encode-doc] | [![Ikona rozhraní API][integration-account-icon]<br/>**integrace<br/>účtu**][integration-account-doc] | [![Ikona rozhraní API][liquid-icon]<br/>**Liquid**</br>**transformace**][json-liquid-transform-doc] | 
 | [![Ikona rozhraní API][x12-icon]<br/>**X12</br> – dekódování**][x12-decode-doc] | [![Ikona rozhraní API][x12-icon]<br/>**X12</br> kódování**][x12-encode-doc] | [![Ikona rozhraní API][xml-transform-icon]<br/>**XML**</br>**transformace**][xml-transform-doc] | [![Ikona rozhraní API][xml-validate-icon]<br/>**XML <br/>ověření**][xml-validate-doc] |  
 ||||| 
@@ -257,8 +257,6 @@ Chcete-li zveřejnit vlastní aplikace API nebo konektory pro každého, kdo pro
 
 <!--Enterprise Intregation Pack doc links-->
 [as2-doc]: ../logic-apps/logic-apps-enterprise-integration-as2.md "Přečtěte si víc o podnikové integraci AS2."
-[as2-decode-doc]: ../logic-apps/logic-apps-enterprise-integration-as2-decode.md "Přečtěte si víc o dekódování pro podnikovou integraci AS2."
-[as2-encode-doc]:../logic-apps/logic-apps-enterprise-integration-as2-encode.md "Přečtěte si víc o kódování pro podnikovou integraci AS2."
 [edifact-decode-doc]: ../logic-apps/logic-apps-enterprise-integration-EDIFACT-decode.md "Přečtěte si víc o dekódování pro podnikovou integraci EDIFACT."
 [edifact-encode-doc]: ../logic-apps/logic-apps-enterprise-integration-EDIFACT-encode.md "Přečtěte si víc o kódování pro podnikovou integraci EDIFACT."
 [flat-file-decode-doc]:../logic-apps/logic-apps-enterprise-integration-flatfile.md "Přečtěte si víc o plochém souboru podnikové integrace."

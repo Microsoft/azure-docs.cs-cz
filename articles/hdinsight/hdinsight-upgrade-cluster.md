@@ -4,22 +4,25 @@ description: Zjistěte, jak do clusteru HDInsight Upgrade na novější verzi.
 services: hdinsight
 ms.service: hdinsight
 author: omidm1
-ms.author: omidm
+ms.author: v-yiso
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 04/04/2017
-ms.openlocfilehash: 266de596633201b5590a6433d078cc05f2a267b4
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+origin.date: 04/04/2017
+ms.date: 02/04/2019
+ms.openlocfilehash: b5048266fe17bc16fba8228f7cc17d0ee9f3bc0b
+ms.sourcegitcommit: 37343b814fe3c95f8c10defac7b876759d6752c3
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60306162"
+ms.lasthandoff: 04/24/2019
+ms.locfileid: "63763992"
 ---
 # <a name="upgrade-hdinsight-cluster-to-a-newer-version"></a>Upgrade clusteru HDInsight na novější verzi
 Abyste mohli využívat nejnovější funkce HDInsight, doporučujeme, abyste clustery HDInsight upgradovali na nejnovější verzi. Postupujte níže uvedených pokynů k upgradu vašeho HDInsight clusteru verze.
 
-> [!NOTE]  
+> [!NOTE]
 > Informace o podporovaných verzích HDInsight najdete v tématu [verzí komponenty HDInsight](hdinsight-component-versioning.md#supported-hdinsight-versions).
+>
+>
 
 ## <a name="upgrade-tasks"></a>Úlohy upgradu
 Pracovní postup pro upgrade clusteru HDInsight je následujícím způsobem.

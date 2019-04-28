@@ -7,14 +7,15 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 02/05/2018
-ms.author: maxluk
-ms.openlocfilehash: 8c37093b5369d2390942bc00c1531248bc4424c8
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
-ms.translationtype: MT
+orgin.date: 02/05/2018
+ms.date: 04/01/2019
+ms.author: v-yiso
+ms.openlocfilehash: 0e9d87e5b344b7091a2a0cf41d6f7fa3484dfcf3
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56869084"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62098571"
 ---
 # <a name="overview-of-apache-spark-structured-streaming"></a>Přehled strukturovaného streamování Apache Sparku
 
@@ -24,9 +25,9 @@ Strukturované streamování aplikace poběží na clusterech HDInsight Spark a 
 
 Strukturované streamování vytvoří dlouho běžící dotaz, během které použijete pro vstupní data, jako je například výběr, projekce, agregace, oken a propojení datových proudů datový rámec s odkazem na datových rámců operace. V dalším kroku vypíše výsledky do služby file storage (objekty BLOB Azure Storage nebo Data Lake Storage) nebo na jakékoli úložiště dat pomocí vlastního kódu (jako je SQL Database nebo Power BI). Strukturované streamování také poskytuje výstup do konzoly pro ladění místně a do tabulky v paměti, abyste si mohli zobrazit data generovaná pro ladění v HDInsight. 
 
-![Stream zpracování ve službě HDInsight a strukturovaného streamování Sparku](./media/apache-spark-structured-streaming-overview/hdinsight-spark-structured-streaming.png)
+![Stream zpracování ve službě HDInsight a strukturovaného streamování Sparku ](./media/apache-spark-structured-streaming-overview/hdinsight-spark-structured-streaming.png)
 
-> [!NOTE]  
+> [!NOTE]
 > Strukturované streamování Sparku nahrazuje Spark Streaming (diskretizovanými streamy). Od této chvíle, strukturované streamování obdrží vylepšení a údržbu, zatímco diskretizovanými streamy bude v pouze v režimu údržby. Strukturované streamování není aktuálně jako plně funkční jako diskretizovanými streamy pro zdroje a jímky, podporuje úprav, takže vyhodnotit požadavky na odpovídající Spark zvolit možnost zpracování datového proudu. 
 
 ## <a name="streams-as-tables"></a>Datové proudy jako tabulky

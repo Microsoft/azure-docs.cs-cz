@@ -6,14 +6,14 @@ author: laurenhughes
 manager: jeconnoc
 ms.service: batch
 ms.topic: article
-ms.date: 10/04/2018
+ms.date: 04/15/2019
 ms.author: lahugh
-ms.openlocfilehash: 0bc43b82a987ab065677bdbb56de73ef341c249d
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
-ms.translationtype: MT
+ms.openlocfilehash: 233b26b330fabe7da8664114ba1857f74feea4bc
+ms.sourcegitcommit: 37343b814fe3c95f8c10defac7b876759d6752c3
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55752122"
+ms.lasthandoff: 04/24/2019
+ms.locfileid: "63764280"
 ---
 # <a name="use-a-custom-image-to-create-a-pool-of-virtual-machines"></a>Použití vlastní image k vytvoření fondu virtuálních počítačů 
 
@@ -48,9 +48,9 @@ Použití vlastní image nakonfigurovaný pro váš scénář poskytují několi
 
 V Azure můžete připravit spravované image ze snímků operační systém virtuálním počítači Azure a datových disků, generalizovaného virtuálního počítače Azure se spravovanými disky nebo virtuální pevný disk zobecněný lokálně, který nahrajete. Škálování fondů služby Batch spolehlivě s použitím vlastní image, doporučujeme vytvoření spravované image pomocí *pouze* první metoda: pomocí funkce vytváření snímků disků Virtuálního počítače. Podívejte se na následující postup k přípravě virtuálního počítače, pořízení snímku a vytvořit image ze snímku. 
 
-### <a name="prepare-a-vm"></a>Příprava virtuálního počítače 
+### <a name="prepare-a-vm"></a>Příprava virtuálního počítače
 
-Pokud vytváříte nový virtuální počítač pro bitovou kopii, a použít image Azure Marketplace podporované službou Batch jako základní image pro spravované image a pak ji přizpůsobit.  Pokud chcete získat seznam odkazů na obrázky Azure Marketplace podporuje služby Azure Batch, najdete v článku [SKU agenta uzlu seznamu](/rest/api/batchservice/account/listnodeagentskus) operace. 
+Pokud vytváříte nový virtuální počítač pro bitovou kopii, použijte první image Azure Marketplace stran podporované službou Batch jako základní image pro spravované image. Image Microsoftu můžou použít jenom jako základní image. Pokud chcete získat úplný seznam odkazů na obrázky Azure Marketplace podporuje služby Azure Batch, najdete v článku [SKU agenta uzlu seznamu](/rest/api/batchservice/account/listnodeagentskus) operace.
 
 > [!NOTE]
 > Nelze použít bitovou kopii třetí strany, který má další licenci a podmínky nákupu jako základní image. Informace o těchto imagí Marketplace najdete v tématu pokyny pro [Linux](../virtual-machines/linux/cli-ps-findimage.md#deploy-an-image-with-marketplace-terms
@@ -78,6 +78,7 @@ Jakmile jste uložili vlastní image a znáte jeho ID nebo název, vytvoření f
 > [!NOTE]
 > Pokud vytváříte fond pomocí jednoho z rozhraní API služby Batch, ujistěte se, že identita, kterou používáte pro ověřování AAD má oprávnění pro prostředek obrázku. Zobrazit [ověřování řešení služby Batch pomocí Active Directory](batch-aad-auth.md).
 >
+> Životnost fondu zdrojů pro spravované image musí existovat. Pokud se odstraní tento základní prostředek spravovat, nelze škálovat fond. 
 
 1. Na webu Azure Portal přejděte ke svému účtu Batch. Tento účet musí být ve stejném předplatném a oblasti jako skupinu prostředků obsahující vlastní image. 
 2. V **nastavení** na levé straně vyberte okno **fondy** položky nabídky.
@@ -109,6 +110,16 @@ Mějte také na paměti následující:
 - **Změnit velikost časového limitu** – Pokud jej váš fond obsahuje pevný počet uzlů (ne automatického škálování), zvyšte resizeTimeout vlastnost fondu, aby hodnota jako například 20 – 30 minut. Pokud váš fond nemá přístup do jeho velikost cíle v rámci časového limitu, provedete další [změnit velikost operace](/rest/api/batchservice/pool/resize).
 
   Pokud máte v plánu s více než 300 výpočetní uzly fondu, můžete potřebovat pro změnu velikosti fondu více než jednou k dosažení cílovou velikost.
+
+## <a name="considerations-for-using-packer"></a>Důležité informace týkající se pomocí Packeru
+
+Vytváří se prostředek spravované image pomocí Packeru přímo lze provést pouze s účty Batch režimu předplatného uživatele. Pro účty režimu služby Batch je potřeba nejprve vytvořit virtuální pevný disk a potom importování disku VHD do spravované bitové kopie prostředku. V závislosti na vaší režim přidělování fondů (předplatné uživatele nebo služby Batch) se budou lišit kroky k vytvoření spravované image prostředku.
+
+Ujistěte se, že existuje prostředek použitý k vytvoření spravované image pro životní cyklus jakýkoli fond odkazování na vlastní image. Pokud tak neučiníte může mít za následek chyby v přidělení fondu nebo změna velikosti selhání. 
+
+Pokud obrázek nebo tento základní prostředek se odebere, obdržet chybu podobný: `There was an error encountered while performing the last resize on the pool. Please try resizing the pool again. Code: AllocationFailed`. Pokud k tomu dojde, ujistěte se, že tento základní prostředek nebyla odebrána.
+
+Další informace o použití Packeru pro vytvoření virtuálního počítače najdete v tématu [sestavení Linux image pomocí Packeru](../virtual-machines/linux/build-image-with-packer.md) nebo [sestavení Windows image pomocí Packeru](../virtual-machines/windows/build-image-with-packer.md).
 
 ## <a name="next-steps"></a>Další postup
 

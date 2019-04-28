@@ -9,12 +9,12 @@ ms.service: marketplace
 ms.topic: article
 ms.date: 02/28/2019
 ms.author: ellacroi
-ms.openlocfilehash: 5a07ea4d1d27dcc054d64cb4ce8893a13adc4aad
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: 394ec230b836d55e4ce29a444566221c14efe296
+ms.sourcegitcommit: 37343b814fe3c95f8c10defac7b876759d6752c3
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60007657"
+ms.lasthandoff: 04/24/2019
+ms.locfileid: "63762792"
 ---
 # <a name="geographic-availability-and-currency-support"></a>Geografická dostupnost a podpora měny
 
@@ -28,7 +28,7 @@ Nabídky Azure Marketplace se dají koupit 141 geografické oblasti definované 
 | Andorra                             | AD        | EUR          |
 | Angola                              | AO        | USD          |
 | Argentina                           | AR        | USD          |
-| Arménie                             | AM        | USD          |
+| Arménie                             | dop.        | USD          |
 | Austrálie                           | AU        | AUD          |
 | Rakousko                             | AT        | EUR          |
 | Ázerbájdžán                          | AZ        | USD          |
@@ -69,7 +69,7 @@ Nabídky Azure Marketplace se dají koupit 141 geografické oblasti definované 
 | Finsko                             | FI        | EUR          |
 | Francie                              | FR        | EUR          |
 | Gruzie                             | GE        | USD          |
-| Německo                             | DE        | EUR          |
+| Německo                             | Německo        | EUR          |
 | Ghana                               | GH        | USD          |
 | Řecko                              | GR        | EUR          |
 | Guatemala                           | GT        | USD          |
@@ -114,10 +114,10 @@ Nabídky Azure Marketplace se dají koupit 141 geografické oblasti definované 
 | Nikaragua                           | NI        | USD          |
 | Nový Zéland                         | NZ        | NZD          |
 | Nigérie                             | NG        | USD          |
-| Norsko                              | NO        | NOK          |
+| Norsko                              | NE        | NOK          |
 | Omán                                | OM        | USD          |
 | Pákistán                            | PK        | USD          |
-| Palestinská                           | PS        | USD          |
+| Palestinská samospráva               | PS        | USD          |
 | Panama                              | PA        | USD          |
 | Paraguay                            | PY        | USD          |
 | Peru                                | PE        | USD          |
@@ -136,7 +136,7 @@ Nabídky Azure Marketplace se dají koupit 141 geografické oblasti definované 
 | Singapur                           | SG        | USD          |
 | Slovensko                            | SK        | EUR          |
 | Slovinsko                            | SI        | EUR          |
-| Jižní Afrika                        | ZA        | USD          |
+| Jihoafrická republika                        | ZA        | USD          |
 | Španělsko                               | ES        | EUR          |
 | Srí Lanka                           | LK        | USD          |
 | Švédsko                              | SE        | SEK          |
@@ -155,7 +155,7 @@ Nabídky Azure Marketplace se dají koupit 141 geografické oblasti definované 
 | Ukrajina                             | UA        | USD          |
 | Spojené arabské emiráty                | AE        | USD          |
 | Spojené království                      | GB        | GBP          |
-| Spojené státy                       | USA        | USD          |
+| Spojené státy                       | Spojené státy        | USD          |
 | Uruguay                             | UY        | USD          |
 | Uzbekistán                          | UZ        | USD          |
 | Venezuela                           | VE        | USD          |

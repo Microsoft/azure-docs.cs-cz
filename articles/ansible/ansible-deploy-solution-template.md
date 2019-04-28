@@ -1,21 +1,22 @@
 ---
-title: Nasazení šablony Ansible řešení pro Azure a CentOS
-description: Zjistěte, jak nasadit šablonu řešení Ansible na virtuálním počítači s CentOS hostovaný v Azure, společně s nástroji, které jsou nakonfigurovány pro práci s Azure.
-ms.service: azure
+title: Rychlý start – nasazení Ansible šablonu řešení pro Azure a CentOS | Dokumentace Microsoftu
+description: V tomto rychlém startu zjistěte, jak nasadit šablonu řešení Ansible na virtuálním počítači s CentOS hostovaný v Azure, společně s nástroji, které jsou nakonfigurovány pro práci s Azure.
 keywords: ansible, azure, devops, šablona řešení, virtuálních počítačů spravovaných identit pro prostředky azure, centos, red hat
+ms.topic: quickstart
+ms.service: ansible
 author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
-ms.topic: tutorial
-ms.date: 01/28/2019
-ms.openlocfilehash: 78fe5211f135b4a4c7d0fd21c66340025ad2d05d
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
-ms.translationtype: MT
+ms.date: 04/22/2019
+ms.openlocfilehash: 2d2ab769c2d4c5a594cb57f2fa9dfed599578506
+ms.sourcegitcommit: 37343b814fe3c95f8c10defac7b876759d6752c3
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58104212"
+ms.lasthandoff: 04/24/2019
+ms.locfileid: "63764578"
 ---
-# <a name="deploy-the-ansible-solution-template-for-azure-to-centos"></a>Nasazení šablony Ansible řešení pro Azure a CentOS
+# <a name="quickstart-deploy-the-ansible-solution-template-for-azure-to-centos"></a>Rychlý start: Nasazení šablony Ansible řešení pro Azure a CentOS
+
 Ansible šablona řešení pro Azure slouží ke konfiguraci Ansible instance virtuálního počítače CentOS spolu s Ansible a sada nástrojů, které jsou nakonfigurovány pro práci s Azure. Mezi tyto nástroje patří:
 
 - **Ansible modulů pro službu Azure** – [Ansible modulů pro službu Azure](./ansible-matrix.md) jsou sada modulů, které vám umožní vytvářet a spravovat vaši infrastrukturu v Azure. Nejnovější verzi tyto moduly se nasadí ve výchozím nastavení. Během procesu nasazení šablony řešení ale můžete zadat číslo verze, která je vhodná pro vaše prostředí.
@@ -23,15 +24,16 @@ Ansible šablona řešení pro Azure slouží ke konfiguraci Ansible instance vi
 - **spravované identity pro prostředky Azure** – [spravovaných identit pro prostředky Azure](/azure/active-directory/managed-identities-azure-resources/overview) funkce řeší problém ze zabezpečení cloudu přihlašovací údaje aplikací.
 
 ## <a name="prerequisites"></a>Požadavky
-- **Předplatné Azure** – Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) před tím, než začnete.
 
-## <a name="deploy-the-ansible-solution-template-from-the-azure-marketplace"></a>Nasazení šablony řešení Ansible v Azure Marketplace
+- [!INCLUDE [open-source-devops-prereqs-azure-subscription.md](../../includes/open-source-devops-prereqs-azure-subscription.md)]
+
+## <a name="deploy-the-ansible-solution-template"></a>Nasazení šablony řešení Ansible
 
 1. Přejděte [šablonu řešení Ansible v Azure Marketplace](https://azuremarketplace.microsoft.com/en-%20%20us/marketplace/apps/azure-oss.ansible?tab=Overview).
 
 1. Vyberte **získat teď**.
 
-1. Zobrazí se okno s podrobnostmi o podmínkách použití, zásady ochrany osobních údajů a podmínky použití z Azure Marketplace. Vyberte **Pokračovat**.
+1. Zobrazí se okno s podrobnostmi o podmínkách použití, zásady ochrany osobních údajů a podmínky použití z Azure Marketplace. Vyberte **pokračovat**.
 
 1. Na webu Azure portal se zobrazí a zobrazí stránku Ansible, který popisuje šablonu řešení. Vyberte **Vytvořit**.
 
@@ -46,7 +48,7 @@ Ansible šablona řešení pro Azure slouží ke konfiguraci Ansible instance vi
    - **Skupina prostředků** – z rozevíracího seznamu vyberte existující skupinu prostředků nebo vyberte **vytvořit nový** a zadejte název pro novou skupinu prostředků. Pro účely ukázky novou skupinu prostředků s názvem `ansiblerg` se používá.
    - **Umístění** – vyberte umístění, z rozevíracího seznamu, která je vhodná pro váš scénář.
 
-     ![Azure portal kartu pro základní nastavení Ansible](./media/ansible-deploy-solution-template/portal-ansible-setup-tab-1.png)
+     ![Azure portal kartu pro základní nastavení Ansible](./media/ansible-quick-deploy-solution-template/portal-ansible-setup-tab-1.png)
 
 1. Vyberte **OK**.
 
@@ -60,19 +62,19 @@ Ansible šablona řešení pro Azure slouží ke konfiguraci Ansible instance vi
    - **Popisek názvu domény** – zadejte název domény veřejně přístupných virtuálního počítače. Název musí být jedinečný a musí splňovat požadavky na pojmenování. Další informace o zadávání názvu virtuálního počítače najdete v tématu [zásady vytváření názvů pro prostředky Azure](/azure/architecture/best-practices/naming-conventions).
    - **Verze Ansible** – zadejte číslo verze nebo hodnotu `latest` k nasazení nejnovější verze. Vyberte ikonu informace vedle **Ansible verze** zobrazíte další informace o dostupných verzí.
 
-     ![Azure portal kartu pro další nastavení Ansible](./media/ansible-deploy-solution-template/portal-ansible-setup-tab-2.png)
+     ![Azure portal kartu pro další nastavení Ansible](./media/ansible-quick-deploy-solution-template/portal-ansible-setup-tab-2.png)
 
 1. Vyberte **OK**.
 
 1. V **nastavení integrace Ansible** kartu, zadejte typ ověřování. Další informace o zabezpečení prostředků Azure najdete v tématu [co je spravované identity pro prostředky Azure?](/azure/active-directory/managed-identities-azure-resources/overview).
 
-    ![Azure portal kartu pro nastavení Ansible integrace](./media/ansible-deploy-solution-template/portal-ansible-setup-tab-3.png)
+    ![Azure portal kartu pro nastavení Ansible integrace](./media/ansible-quick-deploy-solution-template/portal-ansible-setup-tab-3.png)
 
 1. Vyberte **OK**.
 
 1. **Souhrn** znázorňující postup ověření a výpis zadaná kritéria pro nastavení Ansible, zobrazí se stránka. Odkaz v dolní části karty umožňuje **stáhnout šablonu a parametry** pro použití se službou Azure podporované jazyky a platformy. 
 
-     ![Azure portal kartu karta se souhrnem Ansible](./media/ansible-deploy-solution-template/portal-ansible-setup-tab-4.png)
+     ![Azure portal kartu karta se souhrnem Ansible](./media/ansible-quick-deploy-solution-template/portal-ansible-setup-tab-4.png)
 
 1. Vyberte **OK**.
 
@@ -80,10 +82,11 @@ Ansible šablona řešení pro Azure slouží ke konfiguraci Ansible instance vi
 
 1. Vyberte **oznámení** ikonu v horní části stránky portálu ke sledování nasazení Ansible. Po dokončení nasazení vyberte **přejít ke skupině prostředků**. 
 
-     ![Azure portal kartu karta se souhrnem Ansible](./media/ansible-deploy-solution-template/portal-ansible-setup-complete.png)
+     ![Azure portal kartu karta se souhrnem Ansible](./media/ansible-quick-deploy-solution-template/portal-ansible-setup-complete.png)
 
 1. Na stránce skupiny prostředků získejte IP adresu hostitele Ansible a přihlaste se ke správě prostředků Azure pomocí Ansible.
 
 ## <a name="next-steps"></a>Další postup
+
 > [!div class="nextstepaction"] 
-> [Použití Ansible k vytvoření virtuálního počítače s Linuxem v Azure](/azure/virtual-machines/linux/ansible-create-vm)
+> [Rychlé zprovoznění: Konfigurace virtuálního počítače s Linuxem v Azure pomocí Ansible](/azure/virtual-machines/linux/ansible-create-vm)

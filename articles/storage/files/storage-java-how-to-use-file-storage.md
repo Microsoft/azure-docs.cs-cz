@@ -2,19 +2,19 @@
 title: Vývoj pro soubory Azure pomocí Javy | Dokumentace Microsoftu
 description: Další informace jak vyvíjet aplikace v Javě a služeb, které používají soubory Azure k ukládání dat souborů.
 services: storage
-author: wmgries
+author: roygara
 ms.service: storage
 ms.devlang: Java
 ms.topic: article
 ms.date: 09/19/2017
-ms.author: renash
+ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 62a771b831c88f73df91c50f34ba6de0d95b832e
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
-ms.translationtype: MT
+ms.openlocfilehash: 238e5971e79b192e0ef422dcd452859ff7566580
+ms.sourcegitcommit: 37343b814fe3c95f8c10defac7b876759d6752c3
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55453089"
+ms.lasthandoff: 04/24/2019
+ms.locfileid: "63763477"
 ---
 # <a name="develop-for-azure-files-with-java"></a>Vývoj pro soubory Azure pomocí Javy
 [!INCLUDE [storage-selector-file-include](../../../includes/storage-selector-file-include.md)]
@@ -167,7 +167,7 @@ for ( ListFileItem fileItem : rootDir.listFilesAndDirectories() ) {
 }
 ```
 
-## <a name="upload-a-file"></a>Nahrání souboru
+## <a name="upload-a-file"></a>Nahrát soubor
 V této části se dozvíte, jak nahrát soubor z místního úložiště na kořenovém adresáři sdílené složky.
 
 Prvním krokem při nahrání souboru se k získání odkazu na adresář, ve kterém by měl být uložený. To provedete voláním **getRootDirectoryReference** metodu objektu sdílené složky.
@@ -187,7 +187,7 @@ Teď, když máte odkaz na kořenovém adresáři sdílené složky, můžete na
         cloudFile.uploadFromFile(filePath);
 ```
 
-## <a name="download-a-file"></a>Stažení souboru
+## <a name="download-a-file"></a>Stáhnout soubor
 Jednou z častější operace, které provedete před soubory Azure je ke stažení souborů. V následujícím příkladu kódu stáhne SampleFile.txt a zobrazí jeho obsah.
 
 ```java

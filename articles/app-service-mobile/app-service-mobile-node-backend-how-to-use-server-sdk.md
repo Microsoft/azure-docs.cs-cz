@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 10/01/2016
 ms.author: crdun
 ms.openlocfilehash: 831f6b4bdc99e63859b390f8a9bb88d74301284e
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57997524"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62128096"
 ---
 # <a name="how-to-use-the-mobile-apps-nodejs-sdk"></a>Jak používat Mobile Apps Node.js SDK
 
@@ -426,7 +426,7 @@ Můžete nastavit připojení k back-endu Mobile Apps existující databázi SQL
 1. V **přidat datové připojení** vyberte **SQL Database – konfigurovat požadované nastavení** > **vytvořit novou databázi**. Zadejte název nové databáze v **název** pole.
 1. Vyberte **Server**. V **nový server** podokně zadejte jedinečný název serveru v **název serveru** pole a zadejte vhodný server pro přihlašovací jméno správce a heslo. Ujistěte se, že **povolit službám azure přístup k serveru** zaškrtnuto. Vyberte **OK**.
 
-   ![Vytvoření databáze SQL Azure][6]
+   ![Vytvoření databáze Azure SQL][6]
 1. V **novou databázi** vyberte **OK**.
 1. Zpátky **přidat datové připojení** vyberte **připojovací řetězec**a zadejte přihlašovací jméno a heslo, které jste zadali při vytváření databáze. Pokud používáte existující databázi, zadejte přihlašovací údaje pro tuto databázi. Vyberte **OK**.
 1. Zpátky **přidat datové připojení** podokně znovu, vyberte **OK** k vytvoření databáze.

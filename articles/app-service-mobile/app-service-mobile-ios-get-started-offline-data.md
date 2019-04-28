@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 10/01/2016
 ms.author: crdun
 ms.openlocfilehash: 1283f812799fe71ef6987dbc7fab092aed4d3417
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57435129"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62112646"
 ---
 # <a name="enable-offline-syncing-with-ios-mobile-apps"></a>Povolení offline synchronizace u mobilních aplikací pro iOS
 [!INCLUDE [app-service-mobile-selector-offline](../../includes/app-service-mobile-selector-offline.md)]
@@ -189,7 +189,7 @@ Když použijete funkci offline synchronizace, definujte tři systémové tabulk
 | key |String |
 | keyType |Integer 64 |
 | tabulka |String |
-| hodnota |String |
+| value |String |
 
 ### <a name="data-table"></a>Tabulka dat
 
@@ -198,7 +198,7 @@ Když použijete funkci offline synchronizace, definujte tři systémové tabulk
 | Atribut | Type | Poznámka |
 | --- | --- | --- |
 | id | Řetězec, označen jako požadovaný |primární klíč do vzdáleného úložiště |
-| Dokončení | Logická hodnota | Pole položky seznamu úkolů |
+| Dokončení | Boolean | Pole položky seznamu úkolů |
 | text |String |Pole položky seznamu úkolů |
 | createdAt | Datum | (volitelné) Mapuje **createdAt** vlastnost systému |
 | updatedAt | Datum | (volitelné) Mapuje **updatedAt** vlastnost systému |

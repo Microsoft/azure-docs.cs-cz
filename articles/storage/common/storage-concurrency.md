@@ -9,19 +9,19 @@ ms.topic: article
 ms.date: 05/11/2017
 ms.author: jasontang501
 ms.subservice: common
-ms.openlocfilehash: c45061db77c21b82744f69f00265870d5e1a8d00
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
-ms.translationtype: MT
+ms.openlocfilehash: 9e786aed031d528b8ae574444b71753ac538cf47
+ms.sourcegitcommit: 37343b814fe3c95f8c10defac7b876759d6752c3
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56883837"
+ms.lasthandoff: 04/24/2019
+ms.locfileid: "63766194"
 ---
 # <a name="managing-concurrency-in-microsoft-azure-storage"></a>Správa souběžnosti v Microsoft Azure Storage
 ## <a name="overview"></a>Přehled
 Moderní aplikace na základě Internet obvykle mít více uživatelů, zobrazování a aktualizace dat současně. To vyžaduje, aby pečlivě zvážit, jak poskytnout předvídatelný prostředí pro koncové uživatele, zejména pro scénáře, kde můžete víc uživatelů aktualizovat stejná data vývojáři aplikace. Existují tři hlavní data souběžnosti strategie, které vývojáři obvykle vezměte v úvahu:  
 
 1. Optimistická souběžnost – provádění aplikace, které aktualizace jako součást její aktualizace ověří, pokud se data změnila od aplikace posledního čtení tato data. Například pokud dvě uživatelům, kteří zobrazují wikistránky provést aktualizaci na stejnou stránku pak platformu wiki musíte zajistit, že druhý aktualizace nepřepisuje první aktualizace – a, že oba uživatelům pochopit, jestli jejich aktualizace byla úspěšná, či nikoli. Tato strategie je nejčastěji používají ve webových aplikacích.
-2. Pesimistická souběžnost – aplikace hledání se provede aktualizaci se zámek objektu bránit ostatním uživatelům v aktualizaci dat, dokud se zámek je uvolněn. Například ve scénáři model hlavní/podřízený se data replikace, kde pouze hlavní provede aktualizace hlavní bude obvykle obsahovat výhradní zámek pro delší dobu na data, která mají Ujistěte se, že nikdo jiný ji aktualizovat.
+2. Pesimistická souběžnost – aplikace hledání se provede aktualizaci se zámek objektu bránit ostatním uživatelům v aktualizaci dat, dokud se zámek je uvolněn. Například ve scénáři hlavní/podřízený data replikace, kde pouze hlavní provede aktualizace hlavní server bude obvykle obsahovat výhradní zámek pro delší dobu na data, která mají Ujistěte se, že nikdo jiný ji aktualizovat.
 3. Poslední zápis – přístup, který umožňuje všechny operace aktualizace pokračovat bez ověření, pokud všechny ostatní aplikace se aktualizovala data od aplikace nejprve číst data. Tato strategie (nebo chybějící formální strategie) se obvykle používá kde data jsou rozdělená tak, že neexistuje žádná pravděpodobnost, že více uživatelů se přístup ke stejným datům. To může být také užitečné kde krátkodobou datových proudů zpracovává.  
 
 Tento článek obsahuje přehled, jak platformy úložiště Azure usnadňuje vývoj tím, že poskytuje prvotřídní podporu pro všechny tři z těchto strategií souběžnosti.  
@@ -189,7 +189,7 @@ Následující operace kontejnerů můžete použít ke správě Pesimistická s
 * Nastavení ACL kontejneru
 * Zapůjčení kontejneru  
 
-Další informace naleznete v tématu:  
+Další informace:  
 
 * [Určení podmíněné záhlaví pro operace služby objektů Blob](https://msdn.microsoft.com/library/azure/dd179371.aspx)
 * [Zapůjčení kontejneru](https://msdn.microsoft.com/library/azure/jj159103.aspx)
@@ -249,7 +249,7 @@ Všimněte si, že **vložení nebo nahrazení Entity** a **vložení nebo slou�
 
 Vývojářům, kteří používají tabulky obecně by se neměla spoléhat na optimistického řízení souběžnosti, při vytváření škálovatelných aplikací. V případě potřeby pesimistické zamykání můžete jedním z přístupů vývojáři si při přístupu k tabulek je přiřadit určeného objektu blob pro každou tabulku a pokuste se provést zapůjčení pro objekt blob před fungujícími v tabulce. Tento přístup vyžaduje, aby aplikace k zajištění všechny cesty k datům přístup získat zapůjčení před fungujícími v tabulce. Také nezapomeňte přitom, že doba zapůjčení minimální je 15 sekund, které vyžaduje důkladné zvážení pro zajištění škálovatelnosti.  
 
-Další informace naleznete v tématu:  
+Další informace:  
 
 * [Operace s entitami](https://msdn.microsoft.com/library/azure/dd179375.aspx)  
 
@@ -258,7 +258,7 @@ Jeden scénář, ve které souběžnosti je problém v jejich zařazování do f
 
 Služba fronty nemá podporu pro optimistického nebo pesimistického souběžnosti a pro tuto klientů z důvodu zpracování zprávy načtené z fronty by měl zajistit zpracování zpráv způsobem idempotentní. Poslední strategie wins zapisovače se používá pro operace aktualizace, jako je například SetQueueServiceProperties, SetQueueMetaData, UpdateMessage a SetQueueACL.  
 
-Další informace naleznete v tématu:  
+Další informace:  
 
 * [Rozhraní REST API služby front](https://msdn.microsoft.com/library/azure/dd179363.aspx)
 * [Získání zprávy](https://msdn.microsoft.com/library/azure/dd179474.aspx)  
@@ -268,7 +268,7 @@ Služba souborů lze přistupovat pomocí dva koncové body jiný protokol – S
 
 Když klientovi SMB se otevře soubor pro odstranění, označí soubor jako čekající na odstranění do jiných klientů protokolu SMB jsou uzavřené otevřenými popisovači v tomto souboru. Když soubor je označená jako probíhající odstranění, všechny operace REST na tento soubor vrátí stavový kód 409 (konflikt) s kódem chyby SMBDeletePending. Protože je možné, klient SMB můžete odebrat příznak čeká na odstranění před zavřením souboru není vrátil stavový kód 404 (Nenalezeno). Jinými slovy stavový kód 404 (Nenalezeno) se očekávají jenom, když se ho odebral. Všimněte si, že soubor je v SMB odstranit stav Čekání na vyřízení, nebude zahrnutý ve výsledcích seznam souborů. Nezapomeňte, že operace REST odstranit soubor a adresář odstraňte REST usilujeme o to atomicky se výsledek není ve stavu čekající na odstranění.  
 
-Další informace naleznete v tématu:  
+Další informace:  
 
 * [Správa souborů uzamkne](https://msdn.microsoft.com/library/azure/dn194265.aspx)  
 

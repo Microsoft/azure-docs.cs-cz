@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 3/17/2019
+ms.date: 4/12/2019
 ms.author: b-juche
-ms.openlocfilehash: 3c59fb6abe9c26e6886706dae360ff40787e8faa
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
-ms.translationtype: MT
+ms.openlocfilehash: fc748ee993855c77f25f9b115ea472df4281acec
+ms.sourcegitcommit: 37343b814fe3c95f8c10defac7b876759d6752c3
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59549180"
+ms.lasthandoff: 04/24/2019
+ms.locfileid: "63764356"
 ---
 # <a name="create-a-volume-for-azure-netapp-files"></a>Vytvoření svazku pro Azure NetApp Files
 
@@ -65,7 +65,7 @@ Podsíť je potřeba delegovat do služby soubory Azure NetApp.
         
         Pokud jste ještě nedelegovali podsítě, můžete kliknout na **vytvořit nový** na vytvořit svazek stránky. Na stránce vytvořit podsítě, pak zadejte informace o podsíti a vyberte **Microsoft.NetApp/volumes** delegovat podsíť pro soubory Azure NetApp. V každé virtuální síti je možné jenom jednu podsíť delegovat do služby soubory Azure NetApp.   
  
-        ![Vytvoření svazku](../media/azure-netapp-files/azure-netapp-files-new-volume.png)
+        ![Vytvořit svazek](../media/azure-netapp-files/azure-netapp-files-new-volume.png)
     
         ![Vytvoření podsítě](../media/azure-netapp-files/azure-netapp-files-create-subnet.png)
 
@@ -160,7 +160,7 @@ Služba soubory Azure NetApp podporuje SMBv3 svazky. Je potřeba vytvořit přip
         
         Pokud jste ještě nedelegovali podsítě, můžete kliknout na **vytvořit nový** na vytvořit svazek stránky. Na stránce vytvořit podsítě, pak zadejte informace o podsíti a vyberte **Microsoft.NetApp/volumes** delegovat podsíť pro soubory Azure NetApp. V každé virtuální síti je možné jenom jednu podsíť delegovat do služby soubory Azure NetApp.   
  
-        ![Vytvoření svazku](../media/azure-netapp-files/azure-netapp-files-new-volume.png)
+        ![Vytvořit svazek](../media/azure-netapp-files/azure-netapp-files-new-volume.png)
     
         ![Vytvoření podsítě](../media/azure-netapp-files/azure-netapp-files-create-subnet.png)
 

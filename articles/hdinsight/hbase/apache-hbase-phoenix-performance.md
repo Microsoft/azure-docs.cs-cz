@@ -2,19 +2,27 @@
 title: Phoenix výkon v Azure HDInsight
 description: Osvědčené postupy pro optimalizaci výkonu Phoenix.
 services: hdinsight
+documentationcenter: ''
+tags: azure-portal
 author: ashishthaps
-ms.reviewer: jasonh
+manager: jhubbard
+editor: cgronlun
+ms.assetid: ''
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.topic: conceptual
-ms.date: 01/22/2018
-ms.author: ashishth
-ms.openlocfilehash: da227151dd056dd5e852ae8790b6f20ac3c0c790
-ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
-ms.translationtype: MT
+ms.workload: big-data
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: article
+origin.date: 01/22/2018
+ms.date: 01/14/2019
+ms.author: v-yiso
+ms.openlocfilehash: 4fc4d1843ddb8d007ca062d928ebbddf90909583
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/20/2018
-ms.locfileid: "53653301"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62114303"
 ---
 # <a name="apache-phoenix-performance-best-practices"></a>Osvědčené postupy pro Apache Phoenix z hlediska výkonu
 
@@ -32,32 +40,32 @@ Primární klíč pro tabulku Phoenix definované určuje způsob uložení dat 
 
 Například tabulku kontaktů má křestní jméno, poslední název, telefonní číslo a adresu, všechny ve stejné rodině sloupců. Můžete definovat primární klíč založený na rostoucí pořadové číslo:
 
-|rowkey|       Adresa|   telefon| Jméno| Příjmení|
+|rowkey|       adresa|   telefon| Jméno| Příjmení|
 |------|--------------------|--------------|-------------|--------------|
-|  1000|1111 San Gabriel Dr.|1-425-000-0002|    Jan|Dole|
+|  1000|1111 San Gabriel Dr.|1-425-000-0002|    John|Dole|
 |  8396|5415 San Gabriel Dr.|1-230-555-0191|  Calvinovým|Raji|
 
 Ale pokud často dotazování podle příjmení tento primární klíč nemusí provést, protože každý dotaz vyžaduje ke skenování celé tabulky načíst hodnotu každé příjmení. Místo toho můžete definovat primární klíč na lastName, firstName a sloupce číslo sociálního pojištění. K rozlišení dvou pobytem na stejné adrese se stejným názvem, jako je například otcem a tak je tento poslední sloupec.
 
-|rowkey|       Adresa|   telefon| Jméno| Příjmení| socialSecurityNum |
+|rowkey|       adresa|   telefon| Jméno| Příjmení| socialSecurityNum |
 |------|--------------------|--------------|-------------|--------------| ---|
-|  1000|1111 San Gabriel Dr.|1-425-000-0002|    Jan|Dole| 111 |
+|  1000|1111 San Gabriel Dr.|1-425-000-0002|    John|Dole| 111 |
 |  8396|5415 San Gabriel Dr.|1-230-555-0191|  Calvinovým|Raji| 222 |
 
 Pomocí tohoto nového primárního klíče řádku by generovaných Phoenix klíče:
 
-|rowkey|       Adresa|   telefon| Jméno| Příjmení| socialSecurityNum |
+|rowkey|       adresa|   telefon| Jméno| Příjmení| socialSecurityNum |
 |------|--------------------|--------------|-------------|--------------| ---|
-|  Dole – John-111|1111 San Gabriel Dr.|1-425-000-0002|    Jan|Dole| 111 |
+|  Dole – John-111|1111 San Gabriel Dr.|1-425-000-0002|    John|Dole| 111 |
 |  Raji-Calvin-222|5415 San Gabriel Dr.|1-230-555-0191|  Calvinovým|Raji| 222 |
 
 V prvním řádku výše je reprezentována data rowkey jak je znázorněno:
 
-|rowkey|       key|   hodnota| 
+|rowkey|       key|   value| 
 |------|--------------------|---|
-|  Dole – John-111|Adresa |1111 San Gabriel Dr.|  
+|  Dole – John-111|adresa |1111 San Gabriel Dr.|  
 |  Dole – John-111|telefon |1-425-000-0002|  
-|  Dole – John-111|Jméno |Jan|  
+|  Dole – John-111|Jméno |John|  
 |  Dole – John-111|Příjmení |Dole|  
 |  Dole – John-111|socialSecurityNum |111| 
 
@@ -114,9 +122,9 @@ Zahrnuté indexy jsou indexy, které zahrnují data z řádků kromě hodnoty, k
 
 Například v příkladu obraťte se na tabulku může vytvořit sekundární index pro pouze sloupec socialSecurityNum. Tento sekundární index by zrychlení dotazů, které filtrovat podle hodnoty socialSecurityNum, ale načítají se další pole hodnoty bude vyžadovat další čtení s hlavní tabulkou.
 
-|rowkey|       Adresa|   telefon| Jméno| Příjmení| socialSecurityNum |
+|rowkey|       adresa|   telefon| Jméno| Příjmení| socialSecurityNum |
 |------|--------------------|--------------|-------------|--------------| ---|
-|  Dole – John-111|1111 San Gabriel Dr.|1-425-000-0002|    Jan|Dole| 111 |
+|  Dole – John-111|1111 San Gabriel Dr.|1-425-000-0002|    John|Dole| 111 |
 |  Raji-Calvin-222|5415 San Gabriel Dr.|1-230-555-0191|  Calvinovým|Raji| 222 |
 
 Ale pokud chcete obvykle vyhledat firstName a lastName zadaný socialSecurityNum, můžete vytvořit zahrnuté indexu, která bude obsahovat skutečná data v tabulce indexu firstName a lastName:

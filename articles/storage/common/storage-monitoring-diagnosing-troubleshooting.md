@@ -9,11 +9,11 @@ ms.date: 05/11/2017
 ms.author: fhryo-msft
 ms.subservice: common
 ms.openlocfilehash: 6edb1abae91a675a3fe47b417a112f0951886aaf
-ms.sourcegitcommit: 87bd7bf35c469f84d6ca6599ac3f5ea5545159c9
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58351911"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62103839"
 ---
 # <a name="monitor-diagnose-and-troubleshoot-microsoft-azure-storage"></a>Monitorování, diagnostika a řešení problémů s Microsoft Azure Storage
 [!INCLUDE [storage-selector-portal-monitoring-diagnosing-troubleshooting](../../../includes/storage-selector-portal-monitoring-diagnosing-troubleshooting.md)]
@@ -625,7 +625,7 @@ Pokud k tomuto problému dochází často, byste měli prozkoumat, proč klient 
 ### <a name="the-client-is-receiving-409-messages"></a>Klient dostává zprávy HTTP 409 (konflikt)
 V následující tabulce jsou uvedeny extrakci z protokolu na straně serveru pro dva klientské operace: **DeleteIfExists** a potom hned za **CreateIfNotExists** pomocí stejného názvu kontejneru objektů blob. Výsledkem každého klienta operace dva požadavky odeslané na server, nejprve **GetContainerProperties** požadavek na zkontrolovat, zda kontejner existuje, za nímž následuje **DeleteContainer** nebo  **CreateContainer** požadavku.
 
-| Časové razítko | Operace | Výsledek | Název kontejneru | ID požadavku klienta |
+| Timestamp | Operace | Výsledek | Název kontejneru | ID požadavku klienta |
 | --- | --- | --- | --- | --- |
 | 05:10:13.7167225 |GetContainerProperties |200 |mmcont |c9f52c89-… |
 | 05:10:13.8167325 |DeleteContainer |202 |mmcont |c9f52c89-… |

@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 02/01/2019
 ms.author: v-jansko
-ms.openlocfilehash: f69fd7af23c360edc208561f915bd351c3fd373c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: 593cd83dab6e0cd93cdd1aedac278f4d94a27cc5
+ms.sourcegitcommit: 37343b814fe3c95f8c10defac7b876759d6752c3
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60336792"
+ms.lasthandoff: 04/24/2019
+ms.locfileid: "63760582"
 ---
 # <a name="translator-text-api-30-translate"></a>Translator Text API 3.0: Translate
 
@@ -42,11 +42,11 @@ https://api.cognitive.microsofttranslator.com/translate?api-version=3.0
   </tr>
   <tr>
     <td>od</td>
-    <td><em>Volitelný parametr</em>.<br/>Určuje jazyk, který vstupního textu. Najít jazyky, které jsou k dispozici pro převod z vyhledáním [podporované jazyky](./v3-0-languages.md) pomocí <code>translation</code> oboru. Pokud <code>from</code> parametr není zadán, automatické rozpoznávání jazyka se použije k určení zdrojového jazyka.</td>
+    <td><em>Volitelný parametr</em>.<br/>Určuje jazyk, který vstupního textu. Najít jazyky, které jsou k dispozici pro převod z vyhledáním <a href="./v3-0-languages.md">podporované jazyky</a> pomocí <code>translation</code> oboru. Pokud <code>from</code> parametr není zadán, automatické rozpoznávání jazyka se použije k určení zdrojového jazyka.</td>
   </tr>
   <tr>
-    <td>na</td>
-    <td><em>Povinný parametr</em>.<br/>Určuje jazyk text výstupu. Cílový jazyk musí být jedna z [podporované jazyky](./v3-0-languages.md) součástí <code>translation</code> oboru. Například použít <code>to=de</code> pro převod na němčinu.<br/>Je možné převést na různých jazycích současně opakováním parametr v řetězci dotazu. Například použít <code>to=de&to=it</code> pro převod a němčina, italština.</td>
+    <td>do</td>
+    <td><em>Povinný parametr</em>.<br/>Určuje jazyk text výstupu. Cílový jazyk musí být jedna z <a href="./v3-0-languages.md">podporované jazyky</a> součástí <code>translation</code> oboru. Například použít <code>to=de</code> pro převod na němčinu.<br/>Je možné převést na různých jazycích současně opakováním parametr v řetězci dotazu. Například použít <code>to=de&to=it</code> pro převod a němčina, italština.</td>
   </tr>
   <tr>
     <td>textType</td>
@@ -54,15 +54,15 @@ https://api.cognitive.microsofttranslator.com/translate?api-version=3.0
   </tr>
   <tr>
     <td>category</td>
-    <td><em>Volitelný parametr</em>.<br/>Řetězec určující kategorie překladu (domény). Tento parametr slouží k získání překlady z přizpůsobené systému vytvořených pomocí [vlastní Translator](../customization.md). Přidáte ID kategorie z projektu vlastní překladač pro tento parametr použijte vaše nasazené přizpůsobený systém. Výchozí hodnota je: <code>general</code>.</td>
+    <td><em>Volitelný parametr</em>.<br/>Řetězec určující kategorie překladu (domény). Tento parametr slouží k získání překlady z přizpůsobené systému vytvořených pomocí <a href="../customization.md">vlastní Translator</a>. Přidáte ID kategorie z projektu vlastní překladač pro tento parametr použijte vaše nasazené přizpůsobený systém. Výchozí hodnota je: <code>general</code>.</td>
   </tr>
   <tr>
     <td>profanityAction</td>
-    <td><em>Volitelný parametr</em>.<br/>Určuje, jak bude pracovat profanities překlady. Možné hodnoty jsou: <code>NoAction</code> (výchozí), <code>Marked</code> nebo <code>Deleted</code>. Způsoby, jak nakládat s vulgárních výrazů najdete v tématu [vulgárních výrazů zpracování](#handle-profanity).</td>
+    <td><em>Volitelný parametr</em>.<br/>Určuje, jak bude pracovat profanities překlady. Možné hodnoty jsou: <code>NoAction</code> (výchozí), <code>Marked</code> nebo <code>Deleted</code>. Způsoby, jak nakládat s vulgárních výrazů najdete v tématu <a href="#handle-profanity">vulgárních výrazů zpracování</a>.</td>
   </tr>
   <tr>
     <td>profanityMarker</td>
-    <td><em>Volitelný parametr</em>.<br/>Určuje, jak by měla být označena profanities v překlady. Možné hodnoty jsou: <code>Asterisk</code> (výchozí) nebo <code>Tag</code>. Způsoby, jak nakládat s vulgárních výrazů najdete v tématu [vulgárních výrazů zpracování](#handle-profanity).</td>
+    <td><em>Volitelný parametr</em>.<br/>Určuje, jak by měla být označena profanities v překlady. Možné hodnoty jsou: <code>Asterisk</code> (výchozí) nebo <code>Tag</code>. Způsoby, jak nakládat s vulgárních výrazů najdete v tématu <a href="#handle-profanity">vulgárních výrazů zpracování</a>.</td>
   </tr>
   <tr>
     <td>includeAlignment</td>
@@ -94,7 +94,7 @@ https://api.cognitive.microsofttranslator.com/translate?api-version=3.0
 Hlavičky žádosti patří:
 
 <table width="100%">
-  <th width="20%">Hlavičky</th>
+  <th width="20%">Záhlaví</th>
   <th>Popis</th>
   <tr>
     <td>Ověřovací hlavičky</td>
@@ -114,7 +114,7 @@ Hlavičky žádosti patří:
   </tr>
 </table> 
 
-## <a name="request-body"></a>Text požadavku
+## <a name="request-body"></a>Tělo požadavku
 
 Text požadavku je pole JSON. Každý prvek pole je objekt JSON s řetězcovou vlastnost s názvem `Text`, která představuje řetězec, který má přeložit.
 
@@ -172,7 +172,7 @@ Jsou k dispozici v příkladu odpověďmi ve formátu JSON [příklady](#example
 ## <a name="response-headers"></a>Hlavičky odpovědi
 
 <table width="100%">
-  <th width="20%">Hlavičky</th>
+  <th width="20%">Záhlaví</th>
   <th>Popis</th>
     <tr>
     <td>X-RequestId</td>
@@ -193,7 +193,7 @@ Tady jsou možné stavové kódy HTTP, které vrátí žádost o.
   <th>Popis</th>
   <tr>
     <td>200</td>
-    <td>Úspěch</td>
+    <td>Úspěšné</td>
   </tr>
   <tr>
     <td>400</td>

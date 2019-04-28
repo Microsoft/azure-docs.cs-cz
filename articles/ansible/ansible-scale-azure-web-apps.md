@@ -1,34 +1,52 @@
 ---
-title: Škálování aplikací Azure App Service web apps pomocí Ansible
-description: Zjistěte, jak pomocí Ansible vytvořit webovou aplikaci s modulem runtime kontejnerů Java 8 a Tomcat ve službě App Service v Linuxu.
-ms.service: azure
+title: Kurz – škálování aplikace ve službě Azure App Service pomocí Ansible | Dokumentace Microsoftu
+description: Zjistěte, jak škálovat aplikaci ve službě Azure App Service
 keywords: ansible, azure, devops, bash, playbooku, Azure App Service, Web Apps, škálování, Java
+ms.topic: tutorial
+ms.service: ansible
 author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
-ms.topic: tutorial
-ms.date: 12/08/2018
-ms.openlocfilehash: 2bafb73afa35c7670ac45f7027545277c70075ef
-ms.sourcegitcommit: d89b679d20ad45d224fd7d010496c52345f10c96
-ms.translationtype: MT
+ms.date: 04/22/2019
+ms.openlocfilehash: 213c4e086db8b40fdec26ce9fb3e0be5ad055cbc
+ms.sourcegitcommit: 37343b814fe3c95f8c10defac7b876759d6752c3
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57792272"
+ms.lasthandoff: 04/24/2019
+ms.locfileid: "63764308"
 ---
-# <a name="scale-azure-app-service-web-apps-by-using-ansible"></a>Škálování aplikací Azure App Service web apps pomocí Ansible
-[Azure App Service Web Apps](https://docs.microsoft.com/azure/app-service/overview) (nebo jenom Web Apps) hostitele webové aplikace, rozhraní REST API a mobilní back-endu. Můžete vyvíjet ve svém oblíbeném jazyce &mdash; .NET, .NET Core, Java, Ruby, Node.js, PHP nebo Python.
+# <a name="tutorial-scale-apps-in-azure-app-service-using-ansible"></a>Kurz: Škálování aplikací ve službě Azure App Service pomocí Ansible
 
-Ansible umožňuje automatizovat nasazování a konfiguraci prostředků ve vašem prostředí. V tomto článku se dozvíte, jak použít Ansible umožní škálování vaší aplikace ve službě Azure App Service.
+[!INCLUDE [ansible-27-note.md](../../includes/ansible-27-note.md)]
+
+[!INCLUDE [open-source-devops-intro-app-service.md](../../includes/open-source-devops-intro-app-service.md)]
+
+[!INCLUDE [ansible-tutorial-goals.md](../../includes/ansible-tutorial-goals.md)]
+
+> [!div class="checklist"]
+>
+> * Získat faktů existující plán služby App Service
+> * Vertikální navýšení kapacity plánu služby App Service na S2 s tři pracovní procesy
 
 ## <a name="prerequisites"></a>Požadavky
-- **Předplatné Azure** – Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) před tím, než začnete.
-- [!INCLUDE [ansible-prereqs-for-cloudshell-use-or-vm-creation1.md](../../includes/ansible-prereqs-for-cloudshell-use-or-vm-creation1.md)] [!INCLUDE [ansible-prereqs-for-cloudshell-use-or-vm-creation2.md](../../includes/ansible-prereqs-for-cloudshell-use-or-vm-creation2.md)]
-- **Azure App Service Web Apps** – Pokud ještě nemáte webová aplikace služby Azure app service, můžete si [vytvoření webové aplikace Azure pomocí Ansible](ansible-create-configure-azure-web-apps.md).
 
-## <a name="scale-up-an-app-in-app-service"></a>Vertikální navýšení kapacity aplikace ve službě App Service
-Je možné škálovat i změnou cenové úrovně plánu služby App Service, které vaše aplikace patří. Tato část nabízí ukázkové playbook Ansible, který definuje následující operace:
-- Získat faktů existující plán služby App Service
-- Aktualizovat plán služby App service na S2 tři pracovní procesy
+- [!INCLUDE [open-source-devops-prereqs-azure-subscription.md](../../includes/open-source-devops-prereqs-azure-subscription.md)]
+- [!INCLUDE [ansible-prereqs-cloudshell-use-or-vm-creation1.md](../../includes/ansible-prereqs-cloudshell-use-or-vm-creation1.md)] [!INCLUDE [ansible-prereqs-cloudshell-use-or-vm-creation2.md](../../includes/ansible-prereqs-cloudshell-use-or-vm-creation2.md)]
+- **Aplikace Azure App Service** – Pokud nemáte aplikaci služby Azure App Service [aplikaci nakonfigurovat ve službě Azure App Service pomocí Ansible](ansible-create-configure-azure-web-apps.md).
+
+## <a name="scale-up-an-app"></a>Vertikální navýšení kapacity aplikace
+
+Existují dva pracovní postupy pro škálování: *vertikálně navýšit kapacitu* a *horizontální navýšení kapacity*.
+
+**Vertikální navýšení kapacity:** Vertikální navýšení kapacity znamená, že chcete získat více prostředků. Tyto prostředky zahrnují procesor, paměti, místa na disku, virtuální počítače a další. Vertikálně navýšit kapacitu aplikace změnou cenové úrovně plánu služby App Service, ke kterému aplikace patří. 
+**Horizontální navýšení kapacity:** Horizontální navýšení kapacity znamená zvýšit počet instancí virtuálních počítačů, na kterých běží vaše aplikace. V závislosti na vaší cenové úrovně plánu služby App Service můžete horizontální navýšení kapacity na až 20 instancí. [Automatické škálování](/azure/azure-monitor/platform/autoscale-get-started) umožňuje škálovat počet instancí automaticky na základě předdefinovaných pravidel a plány.
+
+Playbook kód v této části definuje následující operace:
+
+* Získat faktů existující plán služby App Service
+* Aktualizovat plán služby App service na S2 tři pracovní procesy
+
+Uložte následující ukázkový playbook jako `webapp_scaleup.yml`:
 
 ```yml
 - hosts: localhost
@@ -66,26 +84,26 @@ Je možné škálovat i změnou cenové úrovně plánu služby App Service, kte
       var: facts.appserviceplans[0].sku
 ```
 
-Uložit tento playbook jako *webapp_scaleup.yml*.
+Spuštění playbooku pomocí `ansible-playbook` příkaz:
 
-Playbook spustíte pomocí příkazu **ansible-playbook** následujícím způsobem:
 ```bash
 ansible-playbook webapp_scaleup.yml
 ```
 
-Po spuštění playbooku, výstup podobný následující příklad ukazuje, že plán služby App service se úspěšně aktualizoval na S2 s tři pracovní procesy:
-```Output
-PLAY [localhost] **************************************************************
+Po spuštění playbooku, se zobrazí výstup podobný následující výsledky:
 
-TASK [Gathering Facts] ********************************************************
+```Output
+PLAY [localhost] 
+
+TASK [Gathering Facts] 
 ok: [localhost]
 
-TASK [Get facts of existing App service plan] **********************************************************
+TASK [Get facts of existing App service plan] 
  [WARNING]: Azure API profile latest does not define an entry for WebSiteManagementClient
 
 ok: [localhost]
 
-TASK [debug] ******************************************************************
+TASK [debug] 
 ok: [localhost] => {
     "facts.appserviceplans[0].sku": {
         "capacity": 1,
@@ -96,13 +114,13 @@ ok: [localhost] => {
     }
 }
 
-TASK [Scale up the App service plan] *******************************************
+TASK [Scale up the App service plan] 
 changed: [localhost]
 
-TASK [Get facts] ***************************************************************
+TASK [Get facts] 
 ok: [localhost]
 
-TASK [debug] *******************************************************************
+TASK [debug] 
 ok: [localhost] => {
     "facts.appserviceplans[0].sku": {
         "capacity": 3,
@@ -113,10 +131,11 @@ ok: [localhost] => {
     }
 }
 
-PLAY RECAP **********************************************************************
+PLAY RECAP 
 localhost                  : ok=6    changed=1    unreachable=0    failed=0 
 ```
 
 ## <a name="next-steps"></a>Další postup
+
 > [!div class="nextstepaction"] 
-> [Ansible v Azure](https://docs.microsoft.com/azure/ansible/)
+> [Ansible v Azure](/azure/ansible/)

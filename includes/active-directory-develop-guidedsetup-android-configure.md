@@ -15,11 +15,11 @@ ms.date: 09/13/2018
 ms.author: dadobali
 ms.custom: include file
 ms.openlocfilehash: 2b30f95e050887130db1b2395f51e543a50e25d0
-ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58203692"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60250541"
 ---
 ## <a name="register-your-application"></a>Registrace vaší aplikace
 
@@ -32,7 +32,7 @@ Můžete zaregistrovat aplikaci v některém ze dvou způsobů, jak je popsáno 
 3. Ujistěte se, že **instalační program s asistencí** zaškrtávací políčko je vybrané a pak vyberte **vytvořit**.
 4. Postupujte podle pokynů pro získání ID aplikace a vložte ho do svého kódu.
 
-### <a name="option-2-advanced"></a>Option 2: Upřesňující
+### <a name="option-2-advanced"></a>Option 2: Rozšířený 
 
 1. Přejděte na portál [Microsoft Application Registration Portal](https://apps.dev.microsoft.com/portal/register-app).
 2. Do pole **Application Name** (Název aplikace) zadejte název vaší aplikace.

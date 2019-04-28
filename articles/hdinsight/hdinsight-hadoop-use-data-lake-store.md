@@ -1,7 +1,6 @@
 ---
 title: Použití Data Lake Storage Gen1 se systémem Hadoop v Azure HDInsight
 description: Zjistěte, jak k dotazování dat ze služby Azure Data Lake Storage Gen1 a k ukládání výsledků analýzy.
-services: hdinsight,storage
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -9,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 11/06/2018
-ms.openlocfilehash: ed8884462030e10625f332b182bd900e833f34f4
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: MT
+ms.openlocfilehash: 067bdcfc496fc986ae87620b7d57d7cad3a0f734
+ms.sourcegitcommit: 37343b814fe3c95f8c10defac7b876759d6752c3
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59272729"
+ms.lasthandoff: 04/24/2019
+ms.locfileid: "63766977"
 ---
 # <a name="use-data-lake-storage-gen1-with-azure-hdinsight-clusters"></a>Pomocí Data Lake Storage Gen1 s využitím clusterů Azure HDInsight
 
@@ -240,7 +239,7 @@ Invoke-AzResourceAction `
 ## <a name="next-steps"></a>Další postup
 V tomto článku jste zjistili, jak používat HDFS kompatibilní s Azure Data Lake Gen1 Storage s HDInsight. To umožňuje vytvářet škálovatelná a dlouhodobá řešení pro získávání archivovaných dat a používat službu HDInsight k odemčení informací uvnitř uložených strukturovaných a nestrukturovaných dat.
 
-Další informace naleznete v tématu:
+Další informace:
 
 * [Začínáme se službou Azure HDInsight][hdinsight-get-started]
 * [Rychlé zprovoznění: Nastavení clusterů v HDInsight](../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md)

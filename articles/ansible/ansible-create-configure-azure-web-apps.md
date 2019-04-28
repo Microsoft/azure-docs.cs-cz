@@ -1,36 +1,47 @@
 ---
-title: Vytvoření webové aplikace Azure pomocí Ansible
-description: Zjistěte, jak pomocí Ansible vytvořit webovou aplikaci s modulem runtime kontejnerů Java 8 a Tomcat ve službě App Service v Linuxu.
-ms.service: azure
+title: Kurz – konfigurace aplikací ve službě Azure App Service pomocí Ansible | Dokumentace Microsoftu
+description: Zjistěte, jak vytvořit aplikaci ve službě Azure App Service s Javou 8 a Tomcat modul runtime kontejneru
 keywords: ansible, azure, devops, bash, playbook, Azure App Service, Web App, Java
+ms.topic: tutorial
+ms.service: ansible
 author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
-ms.topic: tutorial
-ms.date: 12/08/2018
-ms.openlocfilehash: 5f67a9f7d629eec9ab1462a25940355869c1cd28
-ms.sourcegitcommit: d89b679d20ad45d224fd7d010496c52345f10c96
-ms.translationtype: MT
+ms.date: 04/22/2019
+ms.openlocfilehash: 357dfd9c840b0235ab9576a6448e2b5a3b89abee
+ms.sourcegitcommit: 37343b814fe3c95f8c10defac7b876759d6752c3
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57791218"
+ms.lasthandoff: 04/24/2019
+ms.locfileid: "63763663"
 ---
-# <a name="create-azure-app-service-web-apps-by-using-ansible"></a>Vytvoření webové aplikace Azure App Service web apps pomocí Ansible
-[Azure App Service Web Apps](https://docs.microsoft.com/azure/app-service/overview) (nebo jenom Web Apps) hostitele webové aplikace, rozhraní REST API a mobilní back-EndY. Můžete vyvíjet ve svém oblíbeném jazyce &mdash; .NET, .NET Core, Java, Ruby, Node.js, PHP nebo Python.
+# <a name="tutorial-configure-apps-in-azure-app-service-using-ansible"></a>Kurz: Konfigurace aplikací ve službě Azure App Service pomocí Ansible
 
-Ansible umožňuje automatizovat nasazování a konfiguraci prostředků ve vašem prostředí. V tomto článku se dozvíte, jak pomocí Ansible vytvořit webovou aplikaci s použitím modulu runtime Java. 
+[!INCLUDE [ansible-27-note.md](../../includes/ansible-27-note.md)]
+
+[!INCLUDE [open-source-devops-intro-app-service.md](../../includes/open-source-devops-intro-app-service.md)]
+
+[!INCLUDE [ansible-tutorial-goals.md](../../includes/ansible-tutorial-goals.md)]
+
+> [!div class="checklist"]
+>
+> * Vytvoření aplikace ve službě Azure App Service s Javou 8 a Tomcat modul runtime kontejneru
+> * Vytvoření profilu Azure Traffic Manageru
+> * Definice koncových bodů Traffic Manageru pomocí vytvořené aplikace
 
 ## <a name="prerequisites"></a>Požadavky
-- **Předplatné Azure** – Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) před tím, než začnete.
-- [!INCLUDE [ansible-prereqs-for-cloudshell-use-or-vm-creation1.md](../../includes/ansible-prereqs-for-cloudshell-use-or-vm-creation1.md)] [!INCLUDE [ansible-prereqs-for-cloudshell-use-or-vm-creation2.md](../../includes/ansible-prereqs-for-cloudshell-use-or-vm-creation2.md)]
 
-> [!Note]
-> Ke spuštění následujících ukázkových playbooků v tomto kurzu se vyžaduje Ansible 2.7.
+- [!INCLUDE [open-source-devops-prereqs-azure-subscription.md](../../includes/open-source-devops-prereqs-azure-subscription.md)]
+- [!INCLUDE [ansible-prereqs-cloudshell-use-or-vm-creation1.md](../../includes/ansible-prereqs-cloudshell-use-or-vm-creation1.md)] [!INCLUDE [ansible-prereqs-cloudshell-use-or-vm-creation2.md](../../includes/ansible-prereqs-cloudshell-use-or-vm-creation2.md)]
 
-## <a name="create-a-simple-app-service"></a>Vytvoření jednoduché služby App Service
-Tato část představuje ukázkový playbook Ansible, který definuje následující prostředky:
-- Skupina prostředků, do které se nasadí váš plán služby App Service a webová aplikace
-- Webová aplikace s modulem runtime kontejnerů Java 8 a Tomcat ve službě App Service v Linuxu
+## <a name="create-a-basic-app-service"></a>Vytvoření základní aplikace služby
+
+Playbook kód v této části definuje následující prostředky:
+
+* Skupina prostředků Azure v rámci které jsou nasazené plán služby App Service a aplikace
+* App service v Linuxu s Javou 8 a Tomcat modul runtime kontejneru
+
+Uložte následující ukázkový playbook jako `firstwebapp.yml`:
 
 ```yml
 - hosts: localhost
@@ -63,46 +74,49 @@ Tato část představuje ukázkový playbook Ansible, který definuje následuj�
               java_container: tomcat
               java_container_version: 8.5
 ```
-Uložte předchozí playbook jako **firstwebapp.yml**.
 
-Playbook spustíte pomocí příkazu **ansible-playbook** následujícím způsobem:
+Spuštění playbooku pomocí `ansible-playbook` příkaz:
+
 ```bash
 ansible-playbook firstwebapp.yml
 ```
 
-Výstup spuštění playbooku Ansible ukazuje úspěšné vytvoření webové aplikace:
+Po spuštění playbooku, se zobrazí výstup podobný následující výsledky:
 
 ```Output
-PLAY [localhost] *************************************************
+PLAY [localhost] 
 
-TASK [Gathering Facts] *************************************************
+TASK [Gathering Facts] 
 ok: [localhost]
 
-TASK [Create a resource group] *************************************************
+TASK [Create a resource group] 
 changed: [localhost]
 
-TASK [Create App Service on Linux with Java Runtime] *************************************************
+TASK [Create App Service on Linux with Java Runtime] 
  [WARNING]: Azure API profile latest does not define an entry for WebSiteManagementClient
 
 changed: [localhost]
 
-PLAY RECAP *************************************************
+PLAY RECAP 
 localhost                  : ok=3    changed=2    unreachable=0    failed=0
 ```
 
-## <a name="create-an-app-service-by-using-traffic-manager"></a>Vytvoření služby App Service pomocí služby Traffic Manager
-Pomocí služby [Azure Traffic Manager](https://docs.microsoft.com/azure/app-service/web-sites-traffic-manager) můžete řídit způsob distribuce požadavků z webových klientů do aplikací ve službě Azure App Service. Pokud do profilu služby Azure Traffic Manager přidáte koncové body služby App Service, Traffic Manager bude sledovat stav vašich aplikací App Service. Mezi stavy patří Spuštěno, Zastaveno nebo Odstraněno. Traffic Manager se pak může rozhodnout, do kterého z těchto koncových bodů se má směrovat provoz.
+## <a name="create-an-app-and-use-azure-traffic-manager"></a>Vytvořte aplikaci a pomocí Azure Traffic Manageru
 
-Ve službě App Service se aplikace spouští v rámci [plánu služby App Service](https://docs.microsoft.com/azure/app-service/overview-hosting-plans
-). Plán služby App Service definuje sadu výpočetních prostředků pro provozování webové aplikace. Plán služby App Service a webovou aplikaci můžete spravovat v různých skupinách.
+[Azure Traffic Manager](/azure/app-service/web-sites-traffic-manager) vám umožňuje řídit, jak se distribuují požadavky z webových klientů pro aplikace ve službě Azure App Service. Pokud do profilu služby Azure Traffic Manager přidáte koncové body služby App Service, Traffic Manager bude sledovat stav vašich aplikací App Service. Mezi stavy patří Spuštěno, Zastaveno nebo Odstraněno. Traffic Manager umožňuje rozhodnout, jaké koncové body by měla přijímat provoz.
 
-Tato část představuje ukázkový playbook Ansible, který definuje následující prostředky:
-- Skupina prostředků, do které se nasadí váš plán služby App Service
-- Plán služby App Service
-- Sekundární skupina prostředků, do které se nasadí vaše webová aplikace
-- Webová aplikace s modulem runtime kontejnerů Java 8 a Tomcat ve službě App Service v Linuxu
-- Profil služby Traffic Manager
-- Koncový bod služby Traffic Manager s využitím vytvořeného webu
+Ve službě App Service se aplikace spouští v rámci [plánu služby App Service](/azure/app-service/overview-hosting-plans). Plán služby App Service definuje sadu výpočetních prostředků pro spouštění aplikace. Plán služby App Service a webovou aplikaci můžete spravovat v různých skupinách.
+
+Playbook kód v této části definuje následující prostředky:
+
+* Skupina prostředků Azure, ve kterém je nasazená plán služby App Service
+* Plán služby App Service
+* Skupina prostředků Azure, ve kterém je nasazená aplikace
+* App service v Linuxu s Javou 8 a Tomcat modul runtime kontejneru
+* Profil služby Traffic Manager
+* Aplikace vytvořené pomocí koncových bodů Traffic Manageru
+
+Uložte následující ukázkový playbook jako `webapp.yml`:
 
 ```yml
 - hosts: localhost
@@ -184,52 +198,54 @@ Tato část představuje ukázkový playbook Ansible, který definuje následuj�
       location: "{{ location }}"
       target_resource_id: "{{ webapp.webapps[0].id }}"
 ```
-Uložte předchozí playbook jako **webapp.yml** nebo si [playbook stáhněte](https://github.com/Azure-Samples/ansible-playbooks/blob/master/webapp.yml).
 
-Playbook spustíte pomocí příkazu **ansible-playbook** následujícím způsobem:
+Spuštění playbooku pomocí `ansible-playbook` příkaz:
+
 ```bash
 ansible-playbook webapp.yml
 ```
 
-Výstup spuštění playbooku Ansible ukazuje úspěšné vytvoření plánu služby App Service, webové aplikace a profilu a koncového bodu služby Traffic Manager:
-```Output
-PLAY [localhost] *************************************************
+Po spuštění playbooku, se zobrazí výstup podobný následující výsledky:
 
-TASK [Gathering Facts] *************************************************
+```Output
+PLAY [localhost] 
+
+TASK [Gathering Facts] 
 ok: [localhost]
 
-TASK [Create resource group] ****************************************************************************
+TASK [Create resource group] 
 changed: [localhost]
 
-TASK [Create resource group for app service plan] ****************************************************************************
+TASK [Create resource group for app service plan] 
 changed: [localhost]
 
-TASK [Create App Service Plan] ****************************************************************************
+TASK [Create App Service Plan] 
  [WARNING]: Azure API profile latest does not define an entry for WebSiteManagementClient
 
 changed: [localhost]
 
-TASK [Create App Service on Linux with Java Runtime] ****************************************************************************
+TASK [Create App Service on Linux with Java Runtime] 
 changed: [localhost]
 
-TASK [Get web app facts] *****************************************************************************
+TASK [Get web app facts] 
 ok: [localhost]
 
-TASK [Create Traffic Manager Profile] *****************************************************************************
+TASK [Create Traffic Manager Profile] 
  [WARNING]: Azure API profile latest does not define an entry for TrafficManagerManagementClient
 
 changed: [localhost]
 
-TASK [Add endpoint to traffic manager profile, using the web site created above] *****************************************************************************
+TASK [Add endpoint to traffic manager profile, using the web site created above] 
 changed: [localhost]
 
-TASK [Get Traffic Manager Profile facts] ******************************************************************************
+TASK [Get Traffic Manager Profile facts] 
 ok: [localhost]
 
-PLAY RECAP ******************************************************************************
+PLAY RECAP 
 localhost                  : ok=9    changed=6    unreachable=0    failed=0
 ```
 
 ## <a name="next-steps"></a>Další postup
+
 > [!div class="nextstepaction"] 
-> [Škálování aplikací Azure App Service web apps pomocí Ansible](https://docs.microsoft.com/azure/ansible/ansible-scale-azure-web-apps)
+> [Kurz: Škálování aplikací ve službě Azure App Service pomocí Ansible](/azure/ansible/ansible-scale-azure-web-apps)

@@ -12,12 +12,12 @@ ms.author: aliceku
 ms.reviewer: vanto, carlrab, emlisa
 manager: craigg
 ms.date: 04/11/2019
-ms.openlocfilehash: cb4ff203a69e04aeaff6d446d6ce3719f4158305
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: f466a1c3fd0b2d527fc4ab407d096f6bb9b7d8b9
+ms.sourcegitcommit: 37343b814fe3c95f8c10defac7b876759d6752c3
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60001078"
+ms.lasthandoff: 04/24/2019
+ms.locfileid: "63766903"
 ---
 # <a name="an-overview-of-azure-sql-database-security-capabilities"></a>Přehled možností zabezpečení Azure SQL Database
 
@@ -66,19 +66,17 @@ Ověřování je proces kontroly uživatel koho se. Azure SQL Database podporuje
 > [!IMPORTANT]
 > Správa databází a serverů v rámci Azure se řídí rolemi uživatelský účet na portálu společnosti. Další informace v tomto článku najdete v tématu [řízení přístupu na základě rolí na webu Azure portal](../role-based-access-control/overview.md). Řízení přístupu pomocí pravidel brány firewall nemá *není* platí pro **spravovanou instanci**. Podrobnosti najdete v následujícím článku na [připojení k managed instance](sql-database-managed-instance-connect-app.md) Další informace o konfiguraci sítě potřeba.
 
-Povolení odkazuje na oprávnění přiřazená uživateli ve službě Azure SQL Database a určuje, co uživatel může udělat. Oprávnění se řídí přidání uživatelských účtů do [databázové role](/sql/relational-databases/security/authentication-access/database-level-roles) , které definují oprávnění na úrovni databáze nebo udělení uživatele určité [oprávnění na úrovni objektu](/sql/relational-databases/security/permissions-database-engine). Další informace najdete v tématu [přihlašovacích údajů a uživatelů](sql-database-manage-logins.md)
+## <a name="authorization"></a>Autorizace
 
-Jako osvědčený postup přidání uživatelů do role s nejnižšími oprávněními, které jsou potřebné pro jejich pracovní funkci. Účet správce serveru je členem role db_owner, která má rozsáhlé oprávnění a mají udělit uživatelům s rozvahou. Při používání aplikací s Azure SQL Database, použijte [aplikační role](/sql/relational-databases/security/authentication-access/application-roles) s omezenými oprávněními. Tím se zajistí, že má aplikace s připojením k databázi nejnižšími oprávněními, aplikací.
+Povolení odkazuje na oprávnění přiřazená uživateli ve službě Azure SQL Database a určuje, co uživatel může udělat. Oprávnění se řídí přidání uživatelských účtů do [databázové role](/sql/relational-databases/security/authentication-access/database-level-roles) a přiřazení oprávnění na úrovni databáze pro tyto role nebo tím, že uděluje uživateli určité [oprávnění na úrovni objektu](/sql/relational-databases/security/permissions-database-engine). Další informace najdete v tématu [přihlašovacích údajů a uživatelů](sql-database-manage-logins.md)
+
+Osvědčeným postupem je vytvoření vlastních rolí v případě potřeby. Přidání uživatelů do role s nejnižšími oprávněními, které jsou potřebné pro jejich pracovní funkci. Nepřiřazujte přímo uživatelům oprávnění. Účet správce serveru je členem role db_owner integrované, má rozsáhlé oprávnění, která by měla lze udělit pouze několik uživatelů pomocí Správce povinnosti. Pro aplikace Azure SQL Database, použijte [EXECUTE AS](/sql/t-sql/statements/execute-as-clause-transact-sql) určit kontextu spuštění modulu volané nebo pomocí [aplikační role](/sql/relational-databases/security/authentication-access/application-roles) s omezenými oprávněními. Tento postup zajišťuje, že má aplikace, která se připojuje k databázi nejnižšími oprávněními, aplikací. Také řídit těmito osvědčenými postupy podporovalo oddělení povinností.
 
 ### <a name="row-level-security"></a>Zabezpečení na úrovni řádku
 
-Zabezpečení na úrovni řádku umožňuje řízení přístupu k řádkům v databázové tabulce na základě charakteristiky uživatele spouštějícího dotaz (například skupiny členství nebo kontext spuštění). Další informace najdete v tématu [Zabezpečení na úrovni řádku](/sql/relational-databases/security/row-level-security).
+Zabezpečení na úrovni řádku umožňuje řízení přístupu k řádkům v databázové tabulce na základě charakteristiky uživatele spouštějícího dotaz (například skupiny členství nebo kontext spuštění). Zabezpečení na úrovní řádků lze také implementovat vlastní zabezpečení na základě popisek koncepty. Další informace najdete v tématu [Zabezpečení na úrovni řádku](/sql/relational-databases/security/row-level-security).
 
 ![azure-database-rls.png](media/sql-database-security-overview/azure-database-rls.png)
-
-  Tuto metodu ověřování pomocí uživatelského jména a hesla. 
-
-Přehled oprávnění ve službě Azure SQL Database najdete v tématu [přihlašovacích údajů a uživatelů](sql-database-manage-logins.md#permissions)
 
 ## <a name="threat-protection"></a>Ochrana před hrozbami
 
@@ -88,7 +86,7 @@ SQL Database chrání vaše zákaznická data tím, že poskytuje možnosti dete
 
 Auditování služby SQL Database sleduje databázové aktivity a pomáhá udržovat dodržování standardů zabezpečení díky zaznamenávání databázových událostí k auditu protokolu v účtu úložiště Azure vlastněné zákazníkem. Auditování umožňuje uživatelům sledovat probíhající databázové aktivity a pomocí analýzy a zkoumání historické aktivity identifikovat potenciální hrozby nebo možné zneužití a narušení zabezpečení. Další informace najdete v článku s [auditování služby SQL Database](sql-database-auditing.md).  
 
-### <a name="advanced-threat-protection"></a>Rozšířená ochrana před internetovými útoky
+### <a name="advanced-threat-protection"></a>Advanced Threat Protection
 
 Rozšířená ochrana před internetovými útoky analyzuje vaše protokoly SQL serveru ke zjištění neobvyklé chování a potenciálně nebezpečné pokusy o přístup k databázím nebo jejich zneužití. Upozornění se vytvářejí pro podezřelé aktivity, jako jsou Injektáž SQL, potenciální data po infiltraci a hrubou vynutit útoků nebo anomálií v přístupu vzory pro zachycení eskalaci oprávnění a ohrožených pověření použít. Výstrahy jsou z pohledu [Azure Security Center](https://azure.microsoft.com/services/security-center/), kde jsou uvedeny podrobnosti o podezřelých aktivitách a doporučení pro další šetření uveden spolu s akce ke zmírnění hrozby. Je možné povolit rozšířené ochrany před internetovými útoky na serveru pro žádné další poplatky. Další informace najdete v tématu [Začínáme s SQL Database Advanced Threat Protection](sql-database-threat-detection.md).
 

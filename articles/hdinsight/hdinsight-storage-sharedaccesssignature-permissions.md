@@ -1,7 +1,6 @@
 ---
 title: Omezení přístupu pomocí sdílených přístupových podpisů – Azure HDInsight
 description: Další informace o použití sdílených přístupových podpisů omezit HDInsight přístup k datům uloženým v objektech BLOB Azure storage.
-services: hdinsight
 author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
@@ -9,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/23/2018
 ms.author: hrasheed
-ms.openlocfilehash: d248db787db1e3945fb632c6770d45e4bf9a8f02
-ms.sourcegitcommit: 223604d8b6ef20a8c115ff877981ce22ada6155a
-ms.translationtype: MT
+ms.openlocfilehash: 7fa46e3a5f0ed6504e4bc927caa0378d75fcc4a7
+ms.sourcegitcommit: 37343b814fe3c95f8c10defac7b876759d6752c3
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58360992"
+ms.lasthandoff: 04/24/2019
+ms.locfileid: "63763392"
 ---
 # <a name="use-azure-storage-shared-access-signatures-to-restrict-access-to-data-in-hdinsight"></a>Omezení přístupu k datům v HDInsight pomocí Azure Storage sdílených přístupových podpisů
 
@@ -284,7 +283,7 @@ Po připojení ke clusteru, postupujte následovně Chcete-li ověřit, že je m
 
 **Příčina:** K této chybě může dojít, pokud uživatele SSH můžete použít heslo uživatele správce nebo HTTP pro cluster nebo (u clusterů se systémem Linux).
 
-**Řešení:** Použijte heslo, které splňuje následující kritéria:
+**Rozlišení**: Použijte heslo, které splňuje následující kritéria:
 
 * Musí být minimálně 10 znaků.
 * Musí obsahovat alespoň jednu číslici.

@@ -1,14 +1,12 @@
 ---
-ms.openlocfilehash: a1a57cbcd9284489e00bf36b25baf7e04fbea9e6
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: 55adc512447160b409af0002a72ec2473409d796
+ms.sourcegitcommit: 37343b814fe3c95f8c10defac7b876759d6752c3
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60306796"
+ms.lasthandoff: 04/24/2019
+ms.locfileid: "63759505"
 ---
 # <a name="contributing-to-microsoft-azure-documentation"></a>Přispívání do dokumentace k Microsoft Azure
-
-> V období mezi 5. a 9. březnem 2019 dojde k migraci úložiště MicrosoftDocs/azure-docs z aktuálního markdownového modulu na markdownový modul [Markdig](https://github.com/lunet-io/markdig). Během tohoto období vypneme možnost pozastavit slučování veřejných žádostí o přijetí změn, aby bylo možné tuto migraci dokončit.
 
 Děkujeme, že jste si udělali čas, abyste mohli přispívat do dokumentace k Microsoft Azure.
 

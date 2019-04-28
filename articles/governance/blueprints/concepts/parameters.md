@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: blueprints
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: 9b5b151c62c4294563f704dc9a0cf7daeaca874f
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: MT
+ms.openlocfilehash: ac7b662bc9ef4f3ae675c4cbde18e159383d3d8e
+ms.sourcegitcommit: 37343b814fe3c95f8c10defac7b876759d6752c3
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59279971"
+ms.lasthandoff: 04/24/2019
+ms.locfileid: "63767010"
 ---
 # <a name="creating-dynamic-blueprints-through-parameters"></a>Vytváření dynamických plány prostřednictvím parametrů
 
@@ -169,7 +169,7 @@ Vytváření **statické parametry** na artefakt je podobné, ale má hodnotu p�
 
 ### <a name="dynamic-parameters"></a>Dynamické parametry
 
-Je opakem statický parametr **dynamického parametru**. Tento parametr není definován na podrobný plán, ale místo toho je definován při každé přiřazení podrobný plán. V příkladu skupiny prostředků, použití **dynamického parametru** dává smysl pro název skupiny prostředků. Poskytuje pro každé přiřazení podrobný plán jiný název.
+Je opakem statický parametr **dynamického parametru**. Tento parametr není definován na podrobný plán, ale místo toho je definován při každé přiřazení podrobný plán. V příkladu skupiny prostředků, použití **dynamického parametru** dává smysl pro název skupiny prostředků. Poskytuje pro každé přiřazení podrobný plán jiný název. Seznam funkcí podrobného plánu, najdete v článku [podrobný plán funkce](../reference/blueprint-functions.md) odkaz.
 
 #### <a name="setting-dynamic-parameters-in-the-portal"></a>Nastavení dynamické parametry na portálu
 
@@ -185,9 +185,7 @@ Je opakem statický parametr **dynamického parametru**. Tento parametr není de
 
 #### <a name="setting-dynamic-parameters-from-rest-api"></a>Nastavení dynamických parametrů z rozhraní REST API
 
-Nastavení **dynamických parametrů** během přiřazení, které se provádí tak, že zadáte hodnotu přímo.
-Namísto použití funkce, jako například `parameters()`, poskytnutá hodnota je odpovídající řetězec.
-Artefakty pro skupinu prostředků, které jsou definovány pomocí "název šablony," **název**, a **umístění** vlastnosti. Všechny ostatní parametry pro artefakt součástí jsou definovány v části **parametry** s **\<název\>** a **hodnotu** pár klíčů. Pokud podrobný plán je nakonfigurovaný pro dynamický parametr, který není k dispozici během přiřazení, přiřazení selže.
+Nastavení **dynamických parametrů** během přiřazení, které se provádí tak, že zadáte hodnotu přímo. Namísto použití funkce, jako například [parameters()](../reference/blueprint-functions.md#parameters), poskytnutá hodnota je odpovídající řetězec. Artefakty pro skupinu prostředků, které jsou definovány pomocí "název šablony," **název**, a **umístění** vlastnosti. Všechny ostatní parametry pro artefakt součástí jsou definovány v části **parametry** s **\<název\>** a **hodnotu** pár klíčů. Pokud podrobný plán je nakonfigurovaný pro dynamický parametr, který není k dispozici během přiřazení, přiřazení selže.
 
 - Identifikátor URI v REST API
 
@@ -240,6 +238,7 @@ Artefakty pro skupinu prostředků, které jsou definovány pomocí "název šab
 
 ## <a name="next-steps"></a>Další postup
 
+- Zobrazit seznam [podrobný plán funkce](../reference/blueprint-functions.md).
 - Další informace o [životním cyklu podrobného plánu](lifecycle.md)
 - Další informace o přizpůsobení [pořadí podrobných plánů](sequencing-order.md)
 - Použití [zamykání prostředků podrobného plánu](resource-locking.md)

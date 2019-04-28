@@ -1,7 +1,6 @@
 ---
 title: Migrace z HDInsight se systémem Windows k Linuxovým systémem HDInsight – Azure
 description: Zjistěte, jak provést migraci z clusteru HDInsight se systémem Windows do clusteru se systémem Linux HDInsight.
-services: hdinsight
 author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
@@ -9,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/30/2018
 ms.author: hrasheed
-ms.openlocfilehash: ec40c587ea4c609b1f8201e9860eb0e98e06ec62
-ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
-ms.translationtype: MT
+ms.openlocfilehash: 49f55416cb9224736acd7b8ac5eac5b6c5ba5979
+ms.sourcegitcommit: 37343b814fe3c95f8c10defac7b876759d6752c3
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58448179"
+ms.lasthandoff: 04/24/2019
+ms.locfileid: "63766698"
 ---
 # <a name="migrate-from-a-windows-based-hdinsight-cluster-to-a-linux-based-cluster"></a>Migrace z clusteru HDInsight se systémem Windows do clusteru se systémem Linux
 
@@ -137,13 +136,13 @@ Další přizpůsobení funkcí je **bootstrap**. V případě clusterů Windows
 
 Spuštění funkce pro clustery založené na Linuxu nenabízí tuto funkci. Místo toho použijte akci skriptu dokumentovány v článku [přidat Apache Hive knihovny během vytváření clusteru](hdinsight-hadoop-add-hive-libraries.md).
 
-### <a name="virtual-networks"></a>Virtuální sítě
+### <a name="virtual-networks"></a>Služby Virtual Networks
 
 HDInsight se systémem Windows clusterů fungují jenom u klasických virtuálních sítí, zatímco clustery HDInsight založené na Linuxu vyžadují virtuální sítě Resource Manageru. Pokud máte prostředky v klasickou virtuální síť, ke kterému musí připojit ke clusteru HDInsight Linux, přečtěte si téma [připojit klasickou virtuální síť k virtuální síti správce prostředků](../vpn-gateway/vpn-gateway-connect-different-deployment-models-portal.md).
 
 Další informace o požadavcích na konfiguraci, najdete v článku [HDInsight rozšířit možnosti pomocí virtuální sítě](hdinsight-extend-hadoop-virtual-network.md) dokumentu.
 
-## <a name="management-and-monitoring"></a>Správa a monitorování
+## <a name="management-and-monitoring"></a>Monitorování a správa
 
 Mnoho webových uživatelských rozhraní, které jste mohli použít s HDInsight založené na Windows, jako je historie úlohy nebo uživatelském rozhraní Yarn, jsou k dispozici prostřednictvím Apache Ambari. Kromě toho zobrazení Ambari Hive poskytuje způsob, jak spouštět dotazy Hive pomocí webového prohlížeče. Webové uživatelské rozhraní Ambari je k dispozici v clusterech založených na Linuxu v https://CLUSTERNAME.azurehdinsight.net.
 

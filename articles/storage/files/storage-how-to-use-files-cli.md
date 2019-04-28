@@ -2,18 +2,18 @@
 title: Rychlý start pro správu sdílených složek Azure pomocí Azure CLI
 description: V tomto rychlém startu zjistíte, jak pomocí Azure CLI spravovat službu Soubory Azure.
 services: storage
-author: wmgries
+author: roygara
 ms.service: storage
 ms.topic: quickstart
 ms.date: 10/26/2018
-ms.author: wgries
+ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: f18b2cbf31b50b27c1ae8a6d4fa4a6510781cb12
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
-ms.translationtype: MT
+ms.openlocfilehash: 43a5a72ac32d8ed3510cecb505f5e62cf91d7106
+ms.sourcegitcommit: 37343b814fe3c95f8c10defac7b876759d6752c3
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57886479"
+ms.lasthandoff: 04/24/2019
+ms.locfileid: "63766889"
 ---
 # <a name="quickstart-create-and-manage-azure-file-shares-using-azure-cli"></a>Rychlý start: Vytváření a správě sdílených složek Azure pomocí Azure CLI
 Tato příručka vás provede základy práce se [sdílenými složkami Azure](storage-files-introduction.md) pomocí Azure CLI. Sdílené složky Azure jsou stejné jako ostatní sdílené složky, ale jsou uložené v cloudu a využívají platformu Azure. Sdílené složky Azure podporují standardní průmyslový protokol SMB a umožňují sdílení souborů mezi různými počítači, aplikacemi a instancemi. 
@@ -108,7 +108,7 @@ az storage directory create \
    --name "myDirectory" 
 ```
 
-### <a name="upload-a-file"></a>Nahrání souboru
+### <a name="upload-a-file"></a>Nahrát soubor
 Abychom mohli ukázat, jak soubor pomocí příkazu [`az storage file upload`](/cli/azure/storage/file) nahrát, musíte nejprve vytvořit soubor, který potom nahrajete do pomocné jednotky služby Cloud Shell. V následujícím příkladu soubor vytvoříte a potom ho nahrajete:
 
 ```azurecli-interactive
@@ -135,7 +135,7 @@ az storage file list \
     --output table
 ```
 
-### <a name="download-a-file"></a>Stažení souboru
+### <a name="download-a-file"></a>Stáhnout soubor
 Pomocí příkazu [`az storage file download`](/cli/azure/storage/file) můžete stáhnout kopii souboru, který jste nahráli do pomocné jednotky služby Cloud Shell:
 
 ```azurecli-interactive

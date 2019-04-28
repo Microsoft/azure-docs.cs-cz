@@ -7,18 +7,20 @@ ms.service: container-service
 ms.topic: article
 ms.date: 04/16/2019
 ms.author: iainfou
-ms.openlocfilehash: 86b9609d5141798be40f53aab8b18897484bbef8
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: c403d809aa1fc6cdbb0555eef414f79b02ab5a8a
+ms.sourcegitcommit: 37343b814fe3c95f8c10defac7b876759d6752c3
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60467574"
+ms.lasthandoff: 04/24/2019
+ms.locfileid: "63764118"
 ---
 # <a name="integrate-azure-active-directory-with-azure-kubernetes-service-using-the-azure-cli"></a>Integrace Azure Active Directory s Azure Kubernetes Service pomocí Azure CLI
 
 Azure Kubernetes Service (AKS) je nakonfigurovat pro ověřování uživatelů pomocí Azure Active Directory (AD). V této konfiguraci se můžete přihlásit cluster AKS pomocí tokenu ověřování Azure AD. Operátory clusteru můžete také nakonfigurovat Kubernetes řízení přístupu na základě rolí (RBAC) na základě členství ve skupině uživatelské identity nebo adresáře.
 
 V tomto článku se dozvíte, jak vytvořit požadované součásti služby Azure AD, pak Nasaďte cluster Azure AD povolené a vytvoření základní role RBAC v clusteru AKS. Můžete také [proveďte následující kroky pomocí webu Azure portal][azure-ad-portal].
+
+Úplný ukázkový skript, používané v tomto článku najdete v tématu [ukázky Azure CLI – AKS integrace se službou Azure AD][complete-script].
 
 Platí následující omezení:
 

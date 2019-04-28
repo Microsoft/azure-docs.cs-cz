@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 03/05/2018
-ms.openlocfilehash: 2a59a81b0894cbf58c5d3ab5a5569f4749b64b00
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
-ms.translationtype: MT
+ms.openlocfilehash: 0eb4b77964aa3c07bac2af615a26c3a9199525de
+ms.sourcegitcommit: 37343b814fe3c95f8c10defac7b876759d6752c3
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57543283"
+ms.lasthandoff: 04/24/2019
+ms.locfileid: "63760845"
 ---
 # <a name="understand-time-handling-in-azure-stream-analytics"></a>Vysvětlení čas zpracování ve službě Azure Stream Analytics
 
@@ -26,7 +26,7 @@ Na lepší rámec diskuse nadefinujeme některé koncepty:
 
 - **Doba zpracování**: Čas události dosáhne systému zpracování a se vyskytuje. Například když snímačů z mýtných bran linka uvidí Auto a počítači chvíli trvá zpracovat data.
 
-- **Vodoznak**: Značka čas události, která označuje všechny události až do bodu byl příchozího přenosu dat do datového proudu procesoru. Vodoznaky nechejte systém indikoval průběh vymazat ingestuje události. Vzhledem k povaze datové proudy příchozích dat událostí nikdy nezastaví, takže vodoznaky informace o průběhu do určité míry v datovém proudu.
+- **Vodoznak**: Značka čas události, která určuje až chvíle, jaké byly události ingressed do datového proudu procesoru. Vodoznaky nechejte systém indikoval průběh vymazat ingestuje události. Vzhledem k povaze datové proudy příchozích dat událostí nikdy nezastaví, takže vodoznaky informace o průběhu do určité míry v datovém proudu.
 
    Vodoznak koncept je důležitý. Vodoznaky povolit Stream Analytics můžete určit, kdy systém může vytvářet kompletní a správný a opakovatelné výsledky, které nemusí být stažen. Zaručené tak, aby je předvídatelný a Opakovatelný může dokončení zpracování. Například pokud počet slov je třeba udělat pro podmínku ošetření některých chyb, vodoznaky jsou bezpečné počáteční a koncové body.
 

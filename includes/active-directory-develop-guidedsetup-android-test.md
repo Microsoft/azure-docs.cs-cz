@@ -15,11 +15,11 @@ ms.date: 09/13/2018
 ms.author: dadobali
 ms.custom: include file
 ms.openlocfilehash: c8e5e4f826d7835a1fd38d1db5bfeab19b679b30
-ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58203689"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60250589"
 ---
 ## <a name="test-your-app"></a>Testování aplikace
 
@@ -36,7 +36,7 @@ Při prvním přihlášení uživatele do vaší aplikace, uživatelé budou vyz
 
 ![Zadejte svůj souhlas pro přístup k aplikaci](media/active-directory-develop-guidedsetup-android-test/androidconsent.png)
 
-### <a name="success"></a>Výborně!
+### <a name="success"></a>Úspěch!
 
 Po přihlášení a vyjádření souhlasu, aplikace se zobrazí odpověď z rozhraní Microsoft Graph API. Je toto specifické volání **/me** koncový bod a vrátí [profilu uživatele](https://developer.microsoft.com/graph/docs/api-reference/v1.0/api/user_get). Seznam dalších koncových bodů Microsoft Graphu najdete v tématu [dokumentaci pro vývojáře Microsoft Graph API](https://developer.microsoft.com/graph/docs#common-microsoft-graph-queries).
 

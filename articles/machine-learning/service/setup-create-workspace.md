@@ -10,12 +10,12 @@ ms.reviewer: sgilley
 ms.author: sgilley
 author: sdgilley
 ms.date: 04/19/2019
-ms.openlocfilehash: cc6c93420e939e90e12b989def491199fd2c6b15
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: ca43a6cff6a32a30d93e42f6a6624439b2fe83a7
+ms.sourcegitcommit: 37343b814fe3c95f8c10defac7b876759d6752c3
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60006994"
+ms.lasthandoff: 04/24/2019
+ms.locfileid: "63766796"
 ---
 # <a name="create-an-azure-machine-learning-service-workspace"></a>Vytvořit pracovní prostor služby Azure Machine Learning
 
@@ -73,7 +73,7 @@ Pokyny v tomto článku se nainstaluje všechny balíčky, které potřebujete m
 
 ### <a name="create-an-isolated-python-environment"></a>Vytvoření izolovaného prostředí Pythonu
 
-1. Otevřete okno příkazového řádku a pak vytvořte nové prostředí conda s názvem *myenv* a nainstalujte Python 3.6.5. Azure Machine Learning SDK bude pracovat s Python verze 3.5.2 nebo novější, ale automatizované strojového učení komponenty nejsou plně funkční na Python 3.7.  To bude trvat několik minut vytvořit prostředí, zatímco se stáhnou součásti a balíčky.
+1. Otevřete příkazový řádek programu Anaconda a pak vytvořte nové prostředí conda s názvem *myenv* a nainstalujte Python 3.6.5. Azure Machine Learning SDK bude pracovat s Python verze 3.5.2 nebo novější, ale automatizované strojového učení komponenty nejsou plně funkční na Python 3.7.  To bude trvat několik minut vytvořit prostředí, zatímco se stáhnou součásti a balíčky. 
 
     ```shell
     conda create -n myenv python=3.6.5

@@ -2,19 +2,19 @@
 title: Vývoj pro Soubory Azure pomocí .NET | Dokumentace Microsoftu
 description: Zjistěte, jak vyvíjet aplikace a služby .NET, které používají Soubory Azure k ukládání dat souborů.
 services: storage
-author: RenaShahMSFT
+author: roygara
 ms.service: storage
 ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 11/22/2017
-ms.author: renash
+ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 9238b1dfc697f9efae723aba787982ae1493a608
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
-ms.translationtype: MT
+ms.openlocfilehash: 2b615bbe7ffdf2f709cd7d7b0add4f956bec6a84
+ms.sourcegitcommit: 37343b814fe3c95f8c10defac7b876759d6752c3
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57762258"
+ms.lasthandoff: 04/24/2019
+ms.locfileid: "63763447"
 ---
 # <a name="develop-for-azure-files-with-net"></a>Vývoj pro Soubory Azure pomocí .NET
 
@@ -473,7 +473,7 @@ Další informace o službě Soubory Azure najdete na těchto odkazech.
 * [Klientská knihovna Storage pro .NET – referenční informace](https://msdn.microsoft.com/library/azure/dn261237.aspx)
 * [REST API služby File – referenční informace](https://msdn.microsoft.com/library/azure/dn167006.aspx)
 
-### <a name="blog-posts"></a>Příspěvky na blozích
+### <a name="blog-posts"></a>Blogové příspěvky
 * [Služba Soubory Azure je teď obecně dostupná](https://azure.microsoft.com/blog/azure-file-storage-now-generally-available/)
 * [Uvnitř služby Soubory Azure](https://azure.microsoft.com/blog/inside-azure-file-storage/)
 * [Představujeme službu Microsoft Azure File](https://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/12/introducing-microsoft-azure-file-service.aspx)

@@ -1,31 +1,29 @@
 ---
-title: Instalace Ansible na virtuálních počítačích Azure
-description: Zjistěte, jak nainstalovat a nakonfigurovat Ansible pro správu prostředků Azure v Ubuntu, CentOS a SLES.
-ms.service: virtual-machines-linux
+title: Rychlý start – Ansible instalace na virtuální počítače s Linuxem v Azure | Dokumentace Microsoftu
+description: V tomto rychlém startu zjistěte, jak nainstalovat a nakonfigurovat pro správu prostředků Azure na Ubuntu, CentOS a SLES Ansible
 keywords: ansible, azure, devops, bash, cloudshell, playbook, bash
+ms.topic: quickstart
+ms.service: ansible
 author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
-ms.topic: quickstart
-ms.date: 08/21/2018
-ms.openlocfilehash: 38a1ffdc815b357f7bb7ebe2c337b55a738fb6b5
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.date: 04/22/2019
+ms.openlocfilehash: e7a664be48d1e26e09faf4f330fd1267ec003315
+ms.sourcegitcommit: 37343b814fe3c95f8c10defac7b876759d6752c3
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60187728"
+ms.lasthandoff: 04/24/2019
+ms.locfileid: "63760743"
 ---
-# <a name="install-ansible-on-azure-virtual-machines"></a>Instalace Ansible na virtuálních počítačích Azure
+# <a name="quickstart-install-ansible-on-linux-virtual-machines-in-azure"></a>Rychlý start: Ansible nainstalovat na virtuální počítače s Linuxem v Azure
 
-Ansible umožňuje automatizovat nasazování a konfiguraci prostředků ve vašem prostředí. Pomocí Ansible můžete spravovat virtuální počítače v Azure stejně jako jakékoli jiné prostředky. Tento článek podrobně popisuje, jak nainstalovat Ansible a požadované moduly Azure Python SDK pro několik nejběžnějších distribucí Linuxu. V ostatních distribucích můžete Ansible nainstalovat tak, že upravíte nainstalované balíčky, aby odpovídaly vaší konkrétní platformě. Abyste mohli prostředky Azure vytvářet bezpečným způsobem, naučíte se také vytvořit a definovat přihlašovací údaje, které bude Ansible používat. Seznam dalších nástrojů dostupných ve službě Cloud Shell najdete v tématu [Funkce a nástroje pro Bash ve službě Azure Cloud Shell](../../cloud-shell/features.md#tools).
+Ansible umožňuje automatizovat nasazování a konfiguraci prostředků ve vašem prostředí. Tento článek popisuje postup konfigurace Ansible pro některé nejběžnější distribuce Linuxu. Pokud chcete nainstalovat další distribuce Ansible, upravte nainstalovaných balíčků pro konkrétní platformu. 
 
 ## <a name="prerequisites"></a>Požadavky
 
-- **Předplatné Azure** – Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
-
-- **Přístup k Linuxu nebo virtuálnímu počítači s Linuxem** – Pokud nemáte počítač s Linuxem, vytvořte si [virtuální počítač s Linuxem](https://docs.microsoft.com/azure/virtual-network/quick-create-cli).
-
-- **Instanční objekt Azure**: Postupujte podle pokynů v části **vytvořit instanční objekt** části tohoto článku věnované [vytvoření instančního objektu Azure pomocí příkazového řádku Azure CLI 2.0](/cli/azure/create-an-azure-service-principal-azure-cli?view=azure-cli-latest). Poznamenejte si hodnoty **appId**, **displayName**, **password** a **tenant**.
+- [!INCLUDE [open-source-devops-prereqs-azure-sub.md](../../../includes/open-source-devops-prereqs-azure-subscription.md)]
+- [!INCLUDE [open-source-devops-prereqs-create-sp.md](../../../includes/open-source-devops-prereqs-create-service-principal.md)]
+- **Přístup k Linuxu nebo virtuálnímu počítači s Linuxem** – Pokud nemáte počítač s Linuxem, vytvořte si [virtuální počítač s Linuxem](/azure/virtual-network/quick-create-cli).
 
 ## <a name="install-ansible-on-an-azure-linux-virtual-machine"></a>Instalace Ansible na virtuálním počítači Azure s Linuxem
 
@@ -37,103 +35,133 @@ Přihlaste se ke svému počítači s Linuxem a výběrem některé z následuj�
 
 ### <a name="centos-74"></a>CentOS 7.4
 
-Nainstalujte požadované balíčky pro moduly Azure Python SDK a Ansible zadáním následujících příkazů v okně terminálu nebo prostředí Bash:
+V této části nakonfigurujete CentOS použít Ansible.
 
-```bash
-## Install pre-requisite packages
-sudo yum check-update; sudo yum install -y gcc libffi-devel python-devel openssl-devel epel-release
-sudo yum install -y python-pip python-wheel
+1. Otevřete okno terminálu.
 
-## Install Ansible and Azure SDKs via pip
-sudo pip install ansible[azure]
-```
+1. Zadejte následující příkaz k instalaci požadované balíčky pro moduly sady Azure Python SDK:
 
-Postupujte podle pokynů uvedených v části [Vytvoření přihlašovacích údajů Azure](#create-azure-credentials).
+    ```bash
+    sudo yum check-update; sudo yum install -y gcc libffi-devel python-devel openssl-devel epel-release
+    sudo yum install -y python-pip python-wheel
+    ```
+
+1. Zadejte následující příkaz k instalaci požadovaných balíčků Ansible:
+
+    ```bash
+    sudo pip install ansible[azure]
+    ```
+
+1. [Vytvoření přihlašovacích údajů Azure](#create-azure-credentials).
 
 ### <a name="ubuntu-1604-lts"></a>Ubuntu 16.04 LTS
 
-Nainstalujte požadované balíčky pro moduly Azure Python SDK a Ansible zadáním následujících příkazů v okně terminálu nebo prostředí Bash:
+V této části nakonfigurujete Ubuntu pomocí Ansible.
 
+1. Otevřete okno terminálu.
 
-```bash
-## Install pre-requisite packages
-sudo apt-get update && sudo apt-get install -y libssl-dev libffi-dev python-dev python-pip
+1. Zadejte následující příkaz k instalaci požadované balíčky pro moduly sady Azure Python SDK:
 
-## Install Ansible and Azure SDKs via pip
-sudo pip install ansible[azure]
-```
+    ```bash
+    sudo apt-get update && sudo apt-get install -y libssl-dev libffi-dev python-dev python-pip
+    ```
 
-Postupujte podle pokynů uvedených v části [Vytvoření přihlašovacích údajů Azure](#create-azure-credentials).
+1. Zadejte následující příkaz k instalaci požadovaných balíčků Ansible:
+
+    ```bash
+    sudo pip install ansible[azure]
+    ```
+
+1. [Vytvoření přihlašovacích údajů Azure](#create-azure-credentials).
 
 ### <a name="sles-12-sp2"></a>SLES 12 SP2
 
-Nainstalujte požadované balíčky pro moduly Azure Python SDK a Ansible zadáním následujících příkazů v okně terminálu nebo prostředí Bash:
+V této části nakonfigurujete SLES použít Ansible.
 
-```bash
-## Install pre-requisite packages
-sudo zypper refresh && sudo zypper --non-interactive install gcc libffi-devel-gcc5 make \
-    python-devel libopenssl-devel libtool python-pip python-setuptools
+1. Otevřete okno terminálu.
 
-## Install Ansible and Azure SDKs via pip
-sudo pip install ansible[azure]
+1. Zadejte následující příkaz k instalaci požadované balíčky pro moduly sady Azure Python SDK:
 
-# Remove conflicting Python cryptography package
-sudo pip uninstall -y cryptography
-```
+    ```bash
+    sudo zypper refresh && sudo zypper --non-interactive install gcc libffi-devel-gcc5 make \
+        python-devel libopenssl-devel libtool python-pip python-setuptools
+    ```
 
-Postupujte podle pokynů uvedených v části [Vytvoření přihlašovacích údajů Azure](#create-azure-credentials).
+1. Zadejte následující příkaz k instalaci požadovaných balíčků Ansible:
+
+    ```bash
+    sudo pip install ansible[azure]
+    ```
+
+1. Zadejte následující příkaz k odebrání konfliktní balíček Python cryptography:
+
+    ```bash
+    sudo pip uninstall -y cryptography
+    ```
+
+1. [Vytvoření přihlašovacích údajů Azure](#create-azure-credentials).
 
 ## <a name="create-azure-credentials"></a>Vytvoření přihlašovacích údajů Azure
 
-Kombinace ID předplatného a informací vrácených při vytváření instančního objektu slouží ke konfiguraci přihlašovacích údajů Ansible jedním ze dvou způsobů:
+Pokud chcete nakonfigurovat přihlašovací údaje Ansible, budete potřebovat následující informace:
+
+* ID vašeho předplatného Azure 
+* Hodnoty instančního objektu služby
+
+Pokud používáte Ansible Tower nebo Jenkinse, deklarujte hodnoty instančního objektu služby jako proměnné prostředí.
+
+Nakonfigurujte Ansible pověření pomocí jedné z následujících postupů:
 
 - [Vytvoření souboru s přihlašovacími údaji Ansible](#file-credentials)
 - [Použití proměnných prostředí Ansible](#env-credentials)
 
-Pokud plánujete používat nástroje, jako je Ansible Tower nebo Jenkins, budete muset využít možnost deklarovat hodnoty instančního objektu jako proměnné prostředí.
-
 ### <a name="span-idfile-credentials-create-ansible-credentials-file"></a><span id="file-credentials"/>Vytvoření souboru s přihlašovacími údaji Ansible
 
-Tato část vysvětluje, jak vytvořit místní soubor s přihlašovacími údaji, který bude poskytovat přihlašovací údaje Ansible. Další informace o definování přihlašovacích údajů Ansible najdete v článku věnovaném [poskytování přihlašovacích údajů modulům Azure](https://docs.ansible.com/ansible/guide_azure.html#providing-credentials-to-azure-modules).
+V této části vytvoříte soubor místní přihlašovací údaje k zadání přihlašovacích údajů Ansible. 
 
-V případě vývojového prostředí následujícím způsobem vytvořte pro Ansible na virtuálním počítači hostitele soubor *credentials*:
+Další informace o definování Ansible přihlašovací údaje, najdete v části [poskytuje přihlašovací údaje pro moduly Azure](https://docs.ansible.com/ansible/guide_azure.html#providing-credentials-to-azure-modules).
 
-```bash
-mkdir ~/.azure
-vi ~/.azure/credentials
-```
+1. Pro vývojové prostředí vytvořte soubor s názvem `credentials` na hostitele virtuálního počítače:
 
-Do souboru *credentials* vložte následující řádky a zástupné hodnoty nahraďte informacemi, které jste použili při vytváření instančního objektu.
+    ```bash
+    mkdir ~/.azure
+    vi ~/.azure/credentials
+    ```
 
-```bash
-[default]
-subscription_id=<your-subscription_id>
-client_id=<security-principal-appid>
-secret=<security-principal-password>
-tenant=<security-principal-tenant>
-```
+1. Vložte následující řádky do souboru. Nahraďte zástupné symboly hodnotami instančního objektu služby.
 
-Uložte soubor a zavřete ho.
+    ```bash
+    [default]
+    subscription_id=<your-subscription_id>
+    client_id=<security-principal-appid>
+    secret=<security-principal-password>
+    tenant=<security-principal-tenant>
+    ```
+
+1. Uložte soubor a zavřete ho.
 
 ### <a name="span-idenv-credentialsuse-ansible-environment-variables"></a><span id="env-credentials"/>Použití proměnných prostředí Ansible
 
-Tato část vysvětluje, jak nakonfigurovat přihlašovací údaje Ansible tím, že je exportujete jako proměnné prostředí.
+V této části exportujete hodnoty instančního objektu služby tak, aby nakonfigurujete své přihlašovací údaje Ansible.
 
-V okně terminálu nebo prostředí Bash zadejte následující příkazy:
+1. Otevřete okno terminálu.
 
-```bash
-export AZURE_SUBSCRIPTION_ID=<your-subscription_id>
-export AZURE_CLIENT_ID=<security-principal-appid>
-export AZURE_SECRET=<security-principal-password>
-export AZURE_TENANT=<security-principal-tenant>
-```
+1. Exportujte hodnoty instančního objektu služby:
 
-## <a name="verify-the-configuration"></a>Ověření konfigurace
-Pokud chcete ověřit úspěšnou konfiguraci, můžete teď pomocí Ansible vytvořit skupinu prostředků.
+    ```bash
+    export AZURE_SUBSCRIPTION_ID=<your-subscription_id>
+    export AZURE_CLIENT_ID=<security-principal-appid>
+    export AZURE_SECRET=<security-principal-password>
+    export AZURE_TENANT=<security-principal-tenant>
+    ```
 
-[!INCLUDE [create-resource-group-with-ansible.md](../../../includes/ansible-create-resource-group.md)]
+## <a name="verify-the-configuration"></a>Zkontrolujte konfiguraci
+
+Pokud chcete ověřit úspěšné konfiguraci, použijte Ansible k vytvoření skupiny prostředků Azure.
+
+[!INCLUDE [create-resource-group-with-ansible.md](../../../includes/ansible-snippet-create-resource-group.md)]
 
 ## <a name="next-steps"></a>Další postup
 
 > [!div class="nextstepaction"] 
-> [Použití Ansible k vytvoření virtuálního počítače s Linuxem v Azure](./ansible-create-vm.md)
+> [Rychlé zprovoznění: Konfigurace virtuálního počítače s Linuxem v Azure pomocí Ansible](./ansible-create-vm.md)

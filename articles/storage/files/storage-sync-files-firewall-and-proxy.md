@@ -2,18 +2,18 @@
 title: Azure File Sync v místním nastavení brány firewall a proxy | Dokumentace Microsoftu
 description: Azure File Sync místní konfigurace sítě
 services: storage
-author: fauhse
+author: roygara
 ms.service: storage
 ms.topic: article
 ms.date: 11/26/2018
-ms.author: fauhse
+ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 35904c3854ddbcf3648c8a226d56f73be890b6ad
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: d9b7296a116ebd06542a53087afbd083dbd3a7eb
+ms.sourcegitcommit: 37343b814fe3c95f8c10defac7b876759d6752c3
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60460477"
+ms.lasthandoff: 04/24/2019
+ms.locfileid: "63766875"
 ---
 # <a name="azure-file-sync-proxy-and-firewall-settings"></a>Nastavení proxy a firewallu Synchronizace souborů Azure
 Azure File Sync se připojí k Azure Files umožňuje synchronizaci více webů a funkce vrstvení cloudu na místních serverech. V důsledku toho musí být na místním serveru připojený k Internetu. Správce IT je potřeba rozhodnout nejlepší cestu pro server k získání přístupu do cloudových služeb Azure.
@@ -111,20 +111,20 @@ Pro provozní kontinuitu a po havárii (BCDR) obnovení důvodů jste zadali, ž
 
 | Cloud  | Oblast | Primární koncový bod adresy URL | Spárovaná oblast | Adresa URL pro zjišťování |
 |--------|--------|----------------------|---------------|---------------|
-| Public |Austrálie – východ | https://kailani-aue.one.microsoft.com | Austrálie – jihovýchod | https://kailani-aue.one.microsoft.com |
-| Public |Austrálie – jihovýchod | https://kailani-aus.one.microsoft.com | Austrálie – východ | https://tm-kailani-aus.one.microsoft.com |
-| Public | Kanada – střed | https://kailani-cac.one.microsoft.com | Kanada – východ | https://tm-kailani-cac.one.microsoft.com |
-| Public | Kanada – východ | https://kailani-cae.one.microsoft.com | Kanada – střed | https://tm-kailani.cae.one.microsoft.com |
-| Public | USA – střed | https://kailani-cus.one.microsoft.com | Východní USA 2 | https://tm-kailani-cus.one.microsoft.com |
-| Public | Východní Asie | https://kailani11.one.microsoft.com | Jihovýchodní Asie | https://tm-kailani11.one.microsoft.com |
-| Public | USA – východ | https://kailani1.one.microsoft.com | Západní USA | https://tm-kailani1.one.microsoft.com |
-| Public | Východní USA 2 | https://kailani-ess.one.microsoft.com | USA – střed | https://tm-kailani-ess.one.microsoft.com |
-| Public | Severní Evropa | https://kailani7.one.microsoft.com | Západní Evropa | https://tm-kailani7.one.microsoft.com |
-| Public | Jihovýchodní Asie | https://kailani10.one.microsoft.com | Východní Asie | https://tm-kailani10.one.microsoft.com |
-| Public | Velká Británie – jih | https://kailani-uks.one.microsoft.com | Spojené království – západ | https://tm-kailani-uks.one.microsoft.com |
-| Public | Spojené království – západ | https://kailani-ukw.one.microsoft.com | Velká Británie – jih | https://tm-kailani-ukw.one.microsoft.com |
-| Public | Západní Evropa | https://kailani6.one.microsoft.com | Severní Evropa | https://tm-kailani6.one.microsoft.com |
-| Public | Západní USA | https://kailani.one.microsoft.com | USA – východ | https://tm-kailani.one.microsoft.com |
+| Veřejné |Austrálie – východ | https://kailani-aue.one.microsoft.com | Austrálie – jihovýchod | https://kailani-aue.one.microsoft.com |
+| Veřejné |Austrálie – jihovýchod | https://kailani-aus.one.microsoft.com | Austrálie – východ | https://tm-kailani-aus.one.microsoft.com |
+| Veřejné | Kanada – střed | https://kailani-cac.one.microsoft.com | Kanada – východ | https://tm-kailani-cac.one.microsoft.com |
+| Veřejné | Kanada – východ | https://kailani-cae.one.microsoft.com | Kanada – střed | https://tm-kailani.cae.one.microsoft.com |
+| Veřejné | USA – střed | https://kailani-cus.one.microsoft.com | Východní USA 2 | https://tm-kailani-cus.one.microsoft.com |
+| Veřejné | Východní Asie | https://kailani11.one.microsoft.com | Jihovýchodní Asie | https://tm-kailani11.one.microsoft.com |
+| Veřejné | USA – východ | https://kailani1.one.microsoft.com | Západní USA | https://tm-kailani1.one.microsoft.com |
+| Veřejné | Východní USA 2 | https://kailani-ess.one.microsoft.com | USA – střed | https://tm-kailani-ess.one.microsoft.com |
+| Veřejné | Severní Evropa | https://kailani7.one.microsoft.com | Západní Evropa | https://tm-kailani7.one.microsoft.com |
+| Veřejné | Jihovýchodní Asie | https://kailani10.one.microsoft.com | Východní Asie | https://tm-kailani10.one.microsoft.com |
+| Veřejné | Velká Británie – jih | https://kailani-uks.one.microsoft.com | Spojené království – západ | https://tm-kailani-uks.one.microsoft.com |
+| Veřejné | Spojené království – západ | https://kailani-ukw.one.microsoft.com | Velká Británie – jih | https://tm-kailani-ukw.one.microsoft.com |
+| Veřejné | Západní Evropa | https://kailani6.one.microsoft.com | Severní Evropa | https://tm-kailani6.one.microsoft.com |
+| Veřejné | Západní USA | https://kailani.one.microsoft.com | USA – východ | https://tm-kailani.one.microsoft.com |
 | Státní správa | USA (Gov) – Arizona | https://usgovarizona01.afs.azure.us | USA (Gov) – Texas | https://tm-usgovarizona01.afs.azure.us |
 | Státní správa | USA (Gov) – Texas | https://usgovtexas01.afs.azure.us | USA (Gov) – Arizona | https://tm-usgovtexas01.afs.azure.us |
 

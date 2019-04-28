@@ -2,18 +2,18 @@
 title: Kurz – rozšíření souborové servery Windows pomocí služby Azure File Sync | Dokumentace Microsoftu
 description: Zjistěte, jak rozšířit souborové servery Windows pomocí služby Azure File Sync, od začátku do konce.
 services: storage
-author: wmgries
+author: roygara
 ms.service: storage
 ms.topic: tutorial
 ms.date: 10/23/2018
-ms.author: wgries
+ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 9d7162eca3c2979b1dd333bdaf95c7c43e875b9d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: df3850a839ac789957a9adffb7122a0b58987781
+ms.sourcegitcommit: 37343b814fe3c95f8c10defac7b876759d6752c3
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60461780"
+ms.lasthandoff: 04/24/2019
+ms.locfileid: "63763011"
 ---
 # <a name="tutorial-extend-windows-file-servers-with-azure-file-sync"></a>Kurz: Rozšíření souborových serverů Windows s využitím Synchronizace souborů Azure
 
@@ -70,7 +70,7 @@ Poté, co nasadíte účet úložiště Azure, vytvořte sdílenou složku.
 
 1. Vyberte nové sdílené složky. Na umístění sdílené složky souboru, vyberte **nahrát**.
 
-    ![Nahrání souboru](./media/storage-sync-files-extend-servers/create-file-share-portal5.png)
+    ![Nahrát soubor](./media/storage-sync-files-extend-servers/create-file-share-portal5.png)
 
 1. Přejděte _FilesToSync_ složku, ve které jste vytvořili svůj soubor .txt, vyberte _mytestdoc.txt_ a vyberte **nahrát**.
 
@@ -218,7 +218,7 @@ K nasazení služby Azure File Sync, je třeba nejprve umístit **služba synchr
 
    V podokně, které se otevře, zadejte následující informace:
 
-   | Value | Popis |
+   | Hodnota | Popis |
    | ----- | ----- |
    | **Název** | Jedinečný název (pro každé předplatné) služby synchronizace úložiště.<br><br>Použití _afssyncservice02_ pro účely tohoto kurzu. |
    | **Předplatné** | Předplatné Azure, které používáte pro účely tohoto kurzu. |
@@ -264,7 +264,7 @@ Uživatelské rozhraní serveru registrace otvírat automaticky po instalaci age
 
    | | |
    | ----- | ----- |
-   | Value | Popis |
+   | Hodnota | Popis |
    | **Předplatné Azure** | Předplatné, které obsahuje službu synchronizace úložiště pro účely tohoto kurzu. |
    | **Skupina prostředků** | Skupina prostředků, která obsahuje službu synchronizace úložiště. Použití _afsresgroup101918_ pro účely tohoto kurzu. |
    | **Služba synchronizace úložiště** | Název služby synchronizace úložiště. Použití _afssyncservice02_ pro účely tohoto kurzu. |
@@ -283,7 +283,7 @@ Skupina synchronizace definuje topologii synchronizace sady souborů. Skupina sy
 
 1. Zadejte následující informace, chcete-li vytvořit skupinu synchronizace s koncovým bodem cloudové:
 
-   | Value | Popis |
+   | Hodnota | Popis |
    | ----- | ----- |
    | **Název skupiny synchronizace** | Tento název musí být jedinečný v rámci služby synchronizace úložiště, ale může to být libovolný název, který vám dává smysl. Použití *afssyncgroup* pro účely tohoto kurzu.|
    | **Předplatné** | Předplatné, do kterého jste nasadili službu synchronizace úložiště pro účely tohoto kurzu. |
@@ -306,7 +306,7 @@ Koncový bod serveru představuje určitého umístění na registrovaném serve
 
    | | |
    | ----- | ----- |
-   | Value | Popis |
+   | Hodnota | Popis |
    | **Zaregistrovaný server** | Název serveru, který jste vytvořili. Použití *afsvm101918* pro účely tohoto kurzu. |
    | **Cesta** | Cesta Windows serveru na jednotku, kterou jste vytvořili. Použití *f:\filestosync* v tomto kurzu. |
    | **Vrstvení cloudu** | Pro účely tohoto kurzu nechte tuto možnost zakázanou. |

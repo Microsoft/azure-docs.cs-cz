@@ -1,6 +1,6 @@
 ---
-title: Zprávy AS2 pro podnikovou integraci B2B – Azure Logic Apps | Dokumentace Microsoftu
-description: Výměna zpráv AS2 pro podnikovou integraci B2B v Azure Logic Apps sadou Enterprise Integration Pack
+title: Zprávy AS2 pro podnikovou integraci B2B – Azure Logic Apps
+description: Výměna zpráv AS2 v Azure Logic Apps sadou Enterprise Integration Pack
 services: logic-apps
 ms.service: logic-apps
 ms.suite: integration
@@ -8,170 +8,122 @@ author: divyaswarnkar
 ms.author: divswa
 ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
-ms.assetid: c9b7e1a9-4791-474c-855f-988bd7bf4b7f
-ms.date: 06/08/2017
-ms.openlocfilehash: 3413b235d9202530eb1a3129637e3746bbe6585b
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
-ms.translationtype: MT
+ms.date: 04/22/2019
+ms.openlocfilehash: b494f6524e5105a95bc8a24a6fa2521abcca3f7b
+ms.sourcegitcommit: 37343b814fe3c95f8c10defac7b876759d6752c3
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57872553"
+ms.lasthandoff: 04/24/2019
+ms.locfileid: "63760166"
 ---
 # <a name="exchange-as2-messages-for-b2b-enterprise-integration-in-azure-logic-apps-with-enterprise-integration-pack"></a>Výměna zpráv AS2 pro podnikovou integraci B2B v Azure Logic Apps sadou Enterprise Integration Pack
 
-Předtím, než pro Azure Logic Apps můžou vyměňovat zprávy AS2, musíte vytvořit smlouvy AS2 a uložení této smlouvy v účtu integrace. Tady jsou kroky pro vytvoření smlouvy AS2.
+Pro práci s zprávy AS2 v Azure Logic Apps, můžete použít konektor AS2, který poskytuje triggery a akce pro správu komunikace AS2. Například k vytvoření, zabezpečení a spolehlivost při přenosu zprávy, můžete použít tyto akce:
 
-## <a name="before-you-start"></a>Než začnete
+* [**Zakódovat do zprávy AS2** akce](#encode) pro poskytování, digitální podepisování a šifrování potvrzení zprávy oznámení pomocí zprávy dispozice (MDN), které bylo možné podporovat nepopiratelnosti. Například tato akce platí hlavičky AS2/HTTP a provede tyto úlohy při konfiguraci:
 
-Tady je položky, které budete potřebovat:
+  * Příznaky odchozích zpráv.
+  * Šifruje odchozí zprávy.
+  * Komprimuje zprávy.
+  * Název souboru v hlavičce MIME přenáší.
 
-* [Účtu pro integraci](../logic-apps/logic-apps-enterprise-integration-accounts.md) , který již má definovaný a spojené s předplatným Azure
-* Alespoň dva [partneři](logic-apps-enterprise-integration-partners.md) , které jsou již definovány v účtu integrace a nakonfigurovanou kvalifikátor AS2 v rámci **obchodní identity**
+* [**Dekódovat zprávu AS2** akce](#decode) pro poskytování dešifrování, digitálnímu podepisování a potvrzování prostřednictvím zprávy dispozice upozornění (zprávy MDN.). Například tato akce provede tyto úlohy: 
 
-> [!NOTE]
-> Když vytvoříte smlouvu, obsah v souboru smlouvy musí odpovídat typ smlouvy.    
+  * Zpracovává hlavičky AS2/HTTP.
+  * Sloučí přijatý něho s původní odchozích zpráv.
+  * Aktualizace a koreluje záznamy v databázi – popírání odpovědnosti.
+  * Zapíše záznamy pro generování sestav o stavu AS2.
+  * Datová část obsahu výstupy jako s kódováním base64.
+  * Určuje, zda jsou vyžadovány něho. Podle AS2 smlouvy, určuje, zda něho by měl být synchronní nebo asynchronní.
+  * Generuje synchronní nebo asynchronní něho na základě smlouvy AS2.
+  * Nastaví vlastnosti a tokenů korelace na něho.
 
-Poté co [vytvořit integrační účet](../logic-apps/logic-apps-enterprise-integration-accounts.md) a [přidání partnerů](logic-apps-enterprise-integration-partners.md), smlouvy AS2 můžete vytvořit pomocí následujících kroků.
+  Tato akce také provádí tyto úlohy při konfiguraci:
 
-## <a name="create-an-as2-agreement"></a>Vytvoření smlouvy AS2
+  * Ověří podpis.
+  * Dešifruje zprávy.
+  * Dekomprimuje zprávy. 
+  * Zkontrolujte a zakázat duplicity ID zpráv.
 
-1.  Přihlaste se na web [Azure Portal](https://portal.azure.com "Azure Portal").  
+Tento článek popisuje, jak přidat AS2 kódování a dekódování akce do existující aplikace logiky.
 
-2. V hlavní nabídce Azure zvolte **všechny služby**. Do vyhledávacího pole zadejte "integrace" a pak vyberte **účty pro integraci**.
+## <a name="prerequisites"></a>Požadavky
 
-   ![Vyhledejte svůj účet integrace](./media/logic-apps-enterprise-integration-as2/overview-1.png)
+* Předplatné Azure. Pokud nemáte ještě předplatné Azure [zaregistrovat si bezplatný účet Azure](https://azure.microsoft.com/free/).
 
-   > [!TIP]
-   > Pokud nevidíte **všechny služby**, možná budete muset nejprve rozbalte nabídku. V horní nabídce sbalený vyberte **zobrazit textové popisky**.
+* Aplikace logiky ve které chcete použít konektoru AS2 a aktivační události, která spustí pracovní postup aplikace logiky. Konektor AS2 poskytuje jenom akce, triggery nejsou. Pokud se službou logic Apps teprve začínáte, přečtěte si [co je Azure Logic Apps](../logic-apps/logic-apps-overview.md) a [rychlý start: Vytvořte svou první aplikaci logiky](../logic-apps/quickstart-create-first-logic-app-workflow.md).
 
-3. V části **účty pro integraci**, vyberte účet integrace, ve kterém chcete vytvořit smlouvu.
+* [Účtu pro integraci](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md) , který je přidružený k vašemu předplatnému Azure a propojený na aplikaci logiky, jež k používání konektoru AS2. Obě vaše logiku aplikace a účet pro integraci musí existovat ve stejném umístění nebo oblasti Azure.
 
-   ![Vyberte místo pro vytvoření smlouvu účtu integrace](./media/logic-apps-enterprise-integration-overview/overview-3.png)
+* Alespoň dva [obchodními partnery](../logic-apps/logic-apps-enterprise-integration-partners.md) , že už máte definované ve vašem účtu integrace pomocí AS2 kvalifikátor identity.
 
-4. Zvolte **smlouvy** dlaždici. Pokud nemáte k dispozici dlaždici smlouvy, přidejte nejprve na dlaždici.
+* Před použitím konektoru AS2, je nutné vytvořit AS2 [smlouvy](../logic-apps/logic-apps-enterprise-integration-agreements.md) mezi vašimi obchodními partnery a úložiště tuto smlouvu v účtu integrace.
 
-    ![Zvolte dlaždici "smlouvy o"](./media/logic-apps-enterprise-integration-as2/agreement-1.png)
+* Pokud používáte [Azure Key Vault](../key-vault/key-vault-overview.md) pro certifikát správy, zkontrolujte, že váš trezor klíčů povolit **šifrovat** a **dešifrovat** operace. V opačném případě kódování a dekódování akce nezdaří.
 
-5. V části **smlouvy**, zvolte **přidat**.
+  Na webu Azure Portal, přejděte k trezoru klíčů, zobrazit klíč trezoru **povolené operace**a ujistěte se, že **šifrovat** a **dešifrovat** operace jsou vybrány.
 
-    ![Zvolte "Přidat"](./media/logic-apps-enterprise-integration-as2/agreement-2.png)
+  ![Zkontrolujte operací trezoru klíčů](media/logic-apps-enterprise-integration-as2/vault-key-permitted-operations.png)
 
-6. V části **přidat**, zadejte **název** pro vaši smlouvu. Pro **typ smlouvy**vyberte **AS2**. Vyberte **partner s identitou hostitele**, **identita hostitele**, **partner s identitou hosta**, a **identita hosta** pro vaši smlouvu.
+<a name="encode"></a>
 
-    ![Zadejte podrobnosti o smlouvě](./media/logic-apps-enterprise-integration-as2/agreement-3.png)  
+## <a name="encode-as2-messages"></a>Kódování zpráv AS2
 
-    | Vlastnost | Popis |
-    | --- | --- |
-    | Název |Název smlouvy |
-    | Typ smlouvy | By měl být AS2 |
-    | Partner s identitou hostitele |Smlouvu musí hostitelské i hostující partnera. Partner hostitele představuje organizace, který konfiguruje smlouvy. |
-    | Identita hostitele |Identifikátor pro hostitele partnera |
-    | Partner s identitou hosta |Smlouvu musí hostitelské i hostující partnera. Partner s identitou hosta představuje organizace, která je podnikající s partnerem hostitele. |
-    | Identita hosta |Identifikátor partner s identitou hosta |
-    | Nastavení příjmu |Tyto vlastnosti se vztahují na všechny zprávy přijaté službou smlouvu. |
-    | Nastavení odesílání |Tyto vlastnosti se vztahují na všechny zprávy odeslané dohodou. |
+1. Pokud jste tak dosud neučinili, v [webu Azure portal](https://portal.azure.com), otevřete v návrháři aplikace logiky aplikace logiky.
 
-## <a name="configure-how-your-agreement-handles-received-messages"></a>Nakonfigurujte, jak vaše smlouvy popisovače přijatých zpráv
+1. V Návrháři přidejte novou akci do aplikace logiky. 
 
-Teď, když jste nastavili vlastnosti smlouvy, můžete nakonfigurovat, jak tato smlouva identifikuje a zpracovává příchozí zprávy přijaté od svého partnera prostřednictvím této smlouvy.
+1. V části **zvolte akci** a vyhledávání vyberte **všechny**. Do vyhledávacího pole zadejte "kódování as2" a vyberte tuto akci: **Zakódovat do zprávy AS2**.
 
-1.  V části **přidat**vyberte **přijímat nastavení**.
-Konfigurovat tyto vlastnosti závislosti na vaší smlouvě s partnerem, který vyměňuje zprávy s vámi. Popisy vlastností najdete v tabulce v této části.
+   ![Vyberte "Kódovat do zprávy AS2"](./media/logic-apps-enterprise-integration-as2/select-as2-encode.png)
 
-    ![Konfigurace "Obdrží nastavení"](./media/logic-apps-enterprise-integration-as2/agreement-4.png)
+1. Pokud nemáte stávající připojení k účtu pro integraci, budete vyzváni k vytvoření tohoto připojení. Název připojení, vyberte účet pro integraci, kterou chcete připojit a zvolte **vytvořit**.
 
-2. Volitelně můžete přepsat vlastnosti příchozí zprávy tak, že vyberete **přepsat vlastnosti zprávy**.
+   ![Vytvoření připojení k účtu pro integraci](./media/logic-apps-enterprise-integration-as2/as2-create-connection.png)  
+ 
+1. Nyní obsahují informace pro tyto vlastnosti:
 
-3. Chcete-li vyžadovat všechny příchozí zprávy podepsané, vyberte **zprávu je nutné podepsat**. Z **certifikát** seznamu, vyberte existující [veřejný certifikát partnera hosta](../logic-apps/logic-apps-enterprise-integration-certificates.md) pro ověření podpisu na zprávy. Nebo vytvořte certifikát, pokud ho nemáte.
+   | Vlastnost | Popis |
+   |----------|-------------|
+   | **AS2-od** | Identifikátor odesílatele zprávy podle vaší smlouvy AS2 |
+   | **AS2-do** | Identifikátor příjemce zprávy podle vaší smlouvy AS2 |
+   | **Text** | Datovou část zprávy |
+   |||
 
-4.  Chcete-li vyžadovat všechny příchozí zprávy šifrování, vyberte **zprávu je nutné zašifrovat**. Z **certifikát** seznamu, vyberte existující [privátní certifikát hostitele partnera](../logic-apps/logic-apps-enterprise-integration-certificates.md) pro dešifrování příchozí zprávy. Nebo vytvořte certifikát, pokud ho nemáte.
+   Příklad:
 
-5. Požadovat zprávy, aby se komprimoval, vyberte **zprávu je nutné zkomprimovat**.
+   ![Kódování vlastnosti zprávy](./media/logic-apps-enterprise-integration-as2/as2-message-encoding-details.png)
 
-6. Chcete-li odeslat oznámení dispozice synchronní zprávy (MDN) pro přijaté zprávy, vyberte **odesílat zprávy MDN**.
+<a name="decode"></a>
 
-7. Chcete-li odeslat podepsaný něho pro přijaté zprávy, vyberte **odeslat podepsanou zprávu MDN**.
+## <a name="decode-as2-messages"></a>Dekódování zprávy AS2
 
-8. Pokud chcete odesílat asynchronní něho pro přijaté zprávy, vyberte **odesílat asynchronní zprávy MDN**.
+1. Pokud jste tak dosud neučinili, v [webu Azure portal](https://portal.azure.com), otevřete v návrháři aplikace logiky aplikace logiky.
 
-9. Až budete hotovi, ujistěte se, že uložte nastavení výběrem **OK**.
+1. V Návrháři přidejte novou akci do aplikace logiky. 
 
-Smlouvy o je nyní připravena ke zpracování příchozích zpráv, které v souladu s vámi vybrané nastavení.
+1. V části **zvolte akci** a vyhledávání vyberte **všechny**. Do vyhledávacího pole zadejte "dekódování as2" a vyberte tuto akci: **Dekódovat zprávu AS2**
 
-| Vlastnost | Popis |
-| --- | --- |
-| Přepsat vlastnosti zprávy |Označuje, že se dá přepsat vlastnosti v přijaté zprávy. |
-| Zprávu je nutné podepsat. |Vyžaduje zprávy digitálně podepsané. Nakonfigurujte partnerské hosta veřejný certifikát pro ověření podpisu.  |
-| Zprávu je nutné zašifrovat. |Vyžaduje šifrování zpráv. Zprávy šifrované bez odmítají. Nakonfigurujte privátní certifikát hostitele partnera pro dešifrování zprávy.  |
-| Zprávu je nutné zkomprimovat. |Vyžaduje zprávy, aby se komprimoval. Bez komprimované zprávy jsou odmítnuta. |
-| Text zprávy MDN |Výchozí zprávu dispozice oznámení (MDN) k odeslání do odesílatele zprávy. |
-| Odeslat zprávu MDN |Vyžaduje něho k odeslání. |
-| Odeslat podepsanou zprávu MDN |Vyžaduje něho podepsat. |
-| Algoritmus MIC |Vyberte algoritmus použitý k podepsání zprávy. |
-| Odeslat asynchronní zprávu MDN | Vyžaduje zpráv k odeslání asynchronně. |
-| zprostředkovatele identity | Zadejte adresu URL, kam má odesílat něho. |
+   ![Vyberte "Dekódování AS2 zprávu"](media/logic-apps-enterprise-integration-as2/select-as2-decode.png)
 
-## <a name="configure-how-your-agreement-sends-messages"></a>Nakonfigurujte, jak vaši smlouvu odesílá zprávy
+1. Pokud nemáte stávající připojení k účtu pro integraci, budete vyzváni k vytvoření tohoto připojení. Název připojení, vyberte účet pro integraci, kterou chcete připojit a zvolte **vytvořit**.
 
-Můžete nakonfigurovat, jak tato smlouva identifikuje a zpracovává odchozí zprávy, které jste odeslali partnerům prostřednictvím této smlouvy.
+   ![Vytvoření připojení k účtu pro integraci](./media/logic-apps-enterprise-integration-as2/as2-create-connection.png)  
 
-1.  V části **přidat**vyberte **odeslat nastavení**.
-Konfigurovat tyto vlastnosti závislosti na vaší smlouvě s partnerem, který vyměňuje zprávy s vámi. Popisy vlastností najdete v tabulce v této části.
+1. Pro **tělo** a **záhlaví**, vyberte tyto hodnoty z předchozí výstupů triggeru nebo akce.
 
-    ![Nastavte "Odeslat" nastavení](./media/logic-apps-enterprise-integration-as2/agreement-51.png)
+   Předpokládejme například, že aplikace logiky přijme zprávy prostřednictvím triggeru požadavku. Výstupy můžete vybrat z této aktivační události.
 
-2. Chcete-li odeslat podepsané zprávy svého partnera, vyberte **povolit podepisování zpráv**. Pro podepisování zpráv, v **algoritmus MIC** seznamu, vyberte *privátní certifikát hostitele partnera algoritmus MIC*. A **certifikát** seznamu, vyberte existující [privátní certifikát hostitele partnera](../logic-apps/logic-apps-enterprise-integration-certificates.md).
+   ![Vyberte záhlaví a text z výstupů žádosti](media/logic-apps-enterprise-integration-as2/as2-message-decoding-details.png) 
 
-3. K odesílání šifrovaných zpráv partnerovi, vyberte **povolit šifrování zpráv**. Pro šifrování zpráv, v **šifrovací algoritmus** seznamu, vyberte *algoritmus veřejný certifikát partnera hosta*.
-A **certifikát** seznamu, vyberte existující [veřejný certifikát partnera hosta](../logic-apps/logic-apps-enterprise-integration-certificates.md).
+## <a name="sample"></a>Ukázka
 
-4. Komprimují se zpráva, vyberte **povolit kompresi zpráv**.
+Vyzkoušejte si nasazení scénář plně funkční logiku aplikace a ukázky AS2, najdete v článku [AS2 šablony aplikace logiky a scénář](https://azure.microsoft.com/documentation/templates/201-logic-app-as2-send-receive/).
 
-5. Chcete-li rozbalit hlavičku HTTP content-type na jeden řádek, vyberte **hlavičky protokolu HTTP při rozvinutí**.
+## <a name="connector-reference"></a>Referenční informace ke konektorům
 
-6. Chcete-li přijímat synchronní něho pro odeslané zprávy, vyberte **požadovat zprávy MDN**.
-
-7. Pro příjem podepsaný něho pro odeslané zprávy, vyberte **požadovat podepsané zprávy MDN**.
-
-8. Pokud chcete přijímat asynchronní něho pro odeslané zprávy, vyberte **požadovat asynchronní zprávy MDN**. Pokud vyberete tuto možnost, zadejte adresu URL, kam můžete odeslat něho.
-
-9. Chcete-li vyžadovat neodvolatelnost příjmu, vyberte **povolit NRR**.  
-
-10. Chcete-li určit formát algoritmus MIC nebo podepisování v odchozích hlavičkách MDN nebo zprávy AS2, vyberte **formát algoritmu SHA2**.  
-
-11. Až budete hotovi, ujistěte se, že uložte nastavení výběrem **OK**.
-
-Nyní je připravená pro zpracování odchozích zpráv, které v souladu s vámi vybrané nastavení smlouvy.
-
-| Vlastnost | Popis |
-| --- | --- |
-| Povolit podepisování zpráv |Vyžaduje všechny zprávy odeslané z dohody podepsat. |
-| Algoritmus MIC |Algoritmus použitý k podepsání zprávy. Nakonfiguruje privátní certifikát hostitele partnera algoritmus MIC k podepsání zprávy. |
-| Certifikát |Vyberte certifikát, který chcete použít pro podepisování zpráv. Nakonfiguruje hostitele partnera privátní certifikát pro podpis zprávy. |
-| Povolit šifrování zpráv |Vyžaduje šifrování všechny zprávy odeslané z této smlouvy. Nakonfiguruje algoritmus hosta partnera veřejný certifikát pro šifrování zprávy. |
-| Šifrovací algoritmus |Šifrovací algoritmus pro šifrování zpráv. Nakonfiguruje hosta partnera veřejný certifikát pro šifrování zprávy. |
-| Certifikát |Certifikát, který se má použít k šifrování zpráv. Konfiguruje partnerské hostovaného privátního certifikátu pro šifrování zprávy. |
-| Povolit kompresi zpráv |Vyžaduje komprese všechny zprávy odeslané z této smlouvy. |
-| Rozbalit hlavičky HTTP |Umístí hlavičku HTTP content-type na jednom řádku. |
-| Požadovat zprávy MDN |Vyžaduje zprávy MDN. pro všechny zprávy odeslané z této smlouvy. |
-| Požadovat podepsané zprávy MDN |Vyžaduje všechny něho, které se odesílají na tuto smlouvu podepsat. |
-| Požadovat asynchronní zprávy MDN |Vyžaduje asynchronní něho k odeslání do této smlouvy. |
-| zprostředkovatele identity |Zadejte adresu URL, kam má odesílat něho. |
-| Povolit NRR |Vyžaduje neodvolatelnost příjmu (NRR) komunikaci atribut, který poskytuje důkazy, který uživateli přišel data, jak je řešit. |
-| Formát algoritmu SHA2 |Vyberte formát algoritmus MIC nebo podepisování v odchozích hlavičkách MDN nebo zprávy AS2 |
-
-## <a name="find-your-created-agreement"></a>Najít vytvořený smlouvy
-
-1. Po dokončení nastavení na všechny vlastnosti vaší smlouvy **přidat** zvolte **OK** dokončit vytváření vaší smlouvě a vrátit ke svému účtu integrace.
-
-    Smlouvy nově přidané se zobrazí ve vašich **smlouvy** seznamu.
-
-2. Můžete také zobrazit vaše smlouvy v přehled vašeho účtu integrace. V nabídce účtu integrace, zvolte **přehled**a pak **smlouvy** dlaždici. 
-
-   ![Zvolte dlaždici "smlouvy o" Chcete-li zobrazit všechny smlouvy](./media/logic-apps-enterprise-integration-as2/agreement-6.png)
-
-## <a name="view-the-swagger"></a>Zobrazení swaggeru
-Zobrazit [swagger podrobnosti](/connectors/as2/). 
+Technické podrobnosti, jako jsou triggery, akce a omezení, jak je popsáno v konektoru OpenAPI (dříve Swagger) souboru, najdete v článku [konektoru referenční stránce](/connectors/as2/).
 
 ## <a name="next-steps"></a>Další postup
-* [Další informace o Enterprise Integration Pack](logic-apps-enterprise-integration-overview.md "přečtěte si víc o Enterprise Integration Pack")  
+
+Další informace o [Enterprise Integration Pack](logic-apps-enterprise-integration-overview.md)

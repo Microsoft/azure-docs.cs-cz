@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: f7a14e975a5ca3aee5588f55f43b28081c100074
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: MT
+ms.openlocfilehash: e60b202a32745062d2078d9721dfeba7aba69bda
+ms.sourcegitcommit: 37343b814fe3c95f8c10defac7b876759d6752c3
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59358146"
+ms.lasthandoff: 04/24/2019
+ms.locfileid: "63763902"
 ---
 # <a name="best-practices-to-use-azure-maps-search-service"></a>Osvědčené postupy k používání služby vyhledávání Azure Maps
 
@@ -132,9 +132,9 @@ https://atlas.microsoft.com/search/address/reverse/json?api-version=1.0&subscrip
 
 ### <a name="predictive-mode-auto-suggest"></a>Prediktivní režimu (automatické návrhy)
 
-K vyhledání odpovídající položky pro částečné dotazy `typeHead` parametr by měl být nastaven na hodnotu "true". Dotaz, který bude vyhodnocen jako částečné vstup a hledání zadá prediktivní režimu. Jinak služby bude předpokládat, že byl předaný všechny relevantní informace.
+K vyhledání odpovídající položky pro částečné dotazy `typeahead` parametr by měl být nastaven na hodnotu "true". Dotaz, který bude vyhodnocen jako částečné vstup a hledání zadá prediktivní režimu. Jinak služby bude předpokládat, že byl předaný všechny relevantní informace.
 
-V ukázce dotazu níže můžete vidět, že adresa služby search se dotazují pro "Microso" s `typehead` parametr nastaven na **true**. Pokud zjistíte odpovědi, uvidíte, že službu search interpretován dotazu jako částečné dotazu a odpovědi obsahuje výsledků dotazu navrhované automaticky.
+V ukázce dotazu níže můžete vidět, že adresa služby search se dotazují pro "Microso" s `typeahead` parametr nastaven na **true**. Pokud zjistíte odpovědi, uvidíte, že službu search interpretován dotazu jako částečné dotazu a odpovědi obsahuje výsledků dotazu navrhované automaticky.
 
 **Ukázkový dotaz:**
 

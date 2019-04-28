@@ -1,7 +1,6 @@
 ---
 title: Monitorování výkonu clusteru – Azure HDInsight
 description: Postup monitorování clusteru služby HDInsight pro kapacitu a výkon.
-services: hdinsight
 author: maxluk
 ms.reviewer: jasonh
 ms.service: hdinsight
@@ -9,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/06/2018
 ms.author: arindamc
-ms.openlocfilehash: 83cbb2a54ed712f8aa5084408ab852432470b73c
-ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
-ms.translationtype: MT
+ms.openlocfilehash: 22484885663a4f9a908ae988882b87612129251a
+ms.sourcegitcommit: 37343b814fe3c95f8c10defac7b876759d6752c3
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53742469"
+ms.lasthandoff: 04/24/2019
+ms.locfileid: "63763775"
 ---
 # <a name="monitor-cluster-performance"></a>Monitorování výkonu clusteru
 
@@ -57,7 +56,7 @@ Když několik tenantů sdílí velký cluster, je konkurenční žádosti o pro
 
 YARN, umožníte nám přidělení prostředků na tyto fronty a ukazuje, zda jsou přiřazeny všechny dostupné prostředky. Chcete-li zobrazit informace o vašich front, přihlaste se k webovému uživatelskému rozhraní Ambari a pak vyberte **správce fronty YARN** z hlavní nabídky.
 
-![Správce fronty YARN](./media/hdinsight-key-scenarios-to-monitor/yarn-queue-manager.png)
+![YARN Queue Manager](./media/hdinsight-key-scenarios-to-monitor/yarn-queue-manager.png)
 
 Na stránce Správce fronty YARN zobrazí seznam vašich front na levé straně společně s procento kapacity přiřazené ke každému.
 

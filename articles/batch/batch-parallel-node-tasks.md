@@ -12,15 +12,15 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: big-compute
-ms.date: 05/22/2017
+ms.date: 04/17/2019
 ms.author: lahugh
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 5583ccb6076dae2f33e265b95387bcd35aa9fa4d
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
-ms.translationtype: MT
+ms.openlocfilehash: 79b45bd423ed6715cdb7cc7c0e079c150eefede5
+ms.sourcegitcommit: 37343b814fe3c95f8c10defac7b876759d6752c3
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57547278"
+ms.lasthandoff: 04/24/2019
+ms.locfileid: "63763699"
 ---
 # <a name="run-tasks-concurrently-to-maximize-usage-of-batch-compute-nodes"></a>Spuštění úloh souběžně, což umožňuje maximalizovat využití služby Batch výpočetních uzlů 
 
@@ -41,7 +41,7 @@ Namísto použití standardní\_uzly D1, které mají 1 jádra procesoru, které
 ## <a name="enable-parallel-task-execution"></a>Povolit paralelní zpracování úkolů
 Konfigurace výpočetních uzlů pro paralelní zpracování úkolů na úrovni fondu. Pomocí knihovny Batch .NET, nastavte [CloudPool.MaxTasksPerComputeNode] [ maxtasks_net] při vytváření fondu. Pokud používáte rozhraní REST API služby Batch, nastavte [maxTasksPerNode] [ rest_addpool] element v textu požadavku během vytváření fondu.
 
-Služba Azure Batch umožňuje nastavit maximální úkolů na uzel až čtyřikrát (4 x) počet jader na uzel. Například pokud je nakonfigurovaný fond s uzly velikosti "Velký" (4 jádra), pak `maxTasksPerNode` může být nastaven na hodnotu 16. Podrobnosti na počet jader pro jednotlivé velikosti uzlů najdete v tématu [velikosti pro Cloud Services](../cloud-services/cloud-services-sizes-specs.md). Další informace o omezení služby najdete v tématu [kvóty a omezení pro službu Azure Batch](batch-quota-limit.md).
+Služba Azure Batch vám umožní nastavit úkolů na uzel až (4 x) počet jader uzlů. Například pokud je nakonfigurovaný fond s uzly velikosti "Velký" (4 jádra), pak `maxTasksPerNode` může být nastaven na hodnotu 16. Bez ohledu na to, kolik jader uzel nemá, však nemůže mít více než 256 úkolů na uzlu. Podrobnosti na počet jader pro jednotlivé velikosti uzlů najdete v tématu [velikosti pro Cloud Services](../cloud-services/cloud-services-sizes-specs.md). Další informace o omezení služby najdete v tématu [kvóty a omezení pro službu Azure Batch](batch-quota-limit.md).
 
 > [!TIP]
 > Je potřeba vzít v úvahu `maxTasksPerNode` hodnotu při vytváření [vzorec automatického škálování] [ enable_autoscaling] pro váš fond. Například vzorec, který se vyhodnotí `$RunningTasks` může výrazně ovlivňovat prodloužením úkolů na uzlu. Zobrazit [automatické škálování výpočetních uzlů ve fondu služby Azure Batch](batch-automatic-scaling.md) Další informace.

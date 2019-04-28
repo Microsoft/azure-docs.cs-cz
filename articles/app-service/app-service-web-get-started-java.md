@@ -12,19 +12,19 @@ ms.workload: web
 ms.tgt_pltfrm: na
 ms.devlang: java
 ms.topic: quickstart
-ms.date: 03/26/2018
+ms.date: 04/23/2019
 ms.author: cephalin;robmcm
 ms.custom: seodec18
-ms.openlocfilehash: 3af585ede27536dfb644dd374e54183c3539d585
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: f1411ee28ca4e371f68c375242a2445c8b48f8d7
+ms.sourcegitcommit: 37343b814fe3c95f8c10defac7b876759d6752c3
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60007351"
+ms.lasthandoff: 04/24/2019
+ms.locfileid: "63760036"
 ---
 # <a name="create-your-first-java-web-app-in-azure"></a>Vytvoření první webové Java aplikace ve službě Azure
 
-[Azure App Service ](overview.md) je vysoce škálovatelná služba s automatickými opravami pro hostování webů. Tento kurz Rychlý start ukazuje, jak nasadit webovou Java aplikaci do služby App Service pomocí [integrovaného vývojového prostředí Eclipse pro vývojáře na platformě Java EE](https://www.eclipse.org/).
+Azure App Service poskytuje je vysoce škálovatelnou a automatickými opravami pro hostování webů služby. Tento rychlý start ukazuje, jak nasadit webové aplikace v Javě do služby App Service pomocí integrovaného vývojového prostředí Eclipse pro vývojáře na platformě Java EE.
 
 > [!IMPORTANT]
 > Azure App Service v Linuxu je také možnost hostitel webové aplikace v Javě v Linuxu pomocí spravované nabídky Tomcat, Java SE a WildFly nativně. Pokud vás zajímá Začínáme se službou App Service v Linuxu, přečtěte si téma [rychlý start: Vytvoření aplikace v Javě ve službě App Service v Linuxu](containers/quickstart-java.md).
@@ -121,7 +121,7 @@ V dialogovém okně **Create App Service** (Vytvoření služby App Service):
 
 * Zadejte jedinečný název své webové aplikace nebo ponechte vygenerovaný název. Tento název musí být v rámci služby Azure jedinečný. Název je součástí adresy URL webové aplikace. Příklad: Pokud je název webové aplikace **MyJavaWebApp**, bude adresa URL *myjavawebapp.azurewebsites.net*.
 * Pro účely tohoto rychlého startu ponechte výchozí webový kontejner.
-* Vyberte předplatné služby Azure.
+* Vyberte předplatné Azure.
 * Na kartě **App service plan** (Plán služby App Service):
 
   * **Vytvořit nový**: Ponechte výchozí, což je název plánu služby App Service.

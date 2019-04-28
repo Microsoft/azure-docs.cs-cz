@@ -1,18 +1,17 @@
 ---
 title: Řešení potíží s YARN v Azure HDInsight
 description: Získejte odpovědi na běžné dotazy týkající se práce s Apache Hadoop YARN a Azure HDInsight.
-services: hdinsight
 ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
 ms.topic: conceptual
 ms.date: 12/06/2018
-ms.openlocfilehash: d5582038c35ba3b599be89b7b7939e644d55ea78
-ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
-ms.translationtype: MT
+ms.openlocfilehash: 4ca3dddb2b5ea4897ff82f1d91e88dc656305453
+ms.sourcegitcommit: 37343b814fe3c95f8c10defac7b876759d6752c3
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53408826"
+ms.lasthandoff: 04/24/2019
+ms.locfileid: "63764301"
 ---
 # <a name="troubleshoot-apache-hadoop-yarn-by-using-azure-hdinsight"></a>Řešení potíží s Apache Hadoop YARN pomocí Azure HDInsight
 
@@ -25,8 +24,9 @@ Další informace o nejčastější problémy a jejich řešení při práci s d
 Pomocí následujícího postupu Ambari vytvořit novou frontu YARN a potom vyrovnávat přidělení kapacity mezi všechny fronty. 
 
 V tomto příkladu dvě existující fronty (**výchozí** a **thriftsvr**) jsou změněny z 50 % kapacity ke kapacitě 25 %, která poskytuje novou kapacitu 50 % fronty (spark).
+
 | Fronta | Kapacita | Maximální kapacita |
-| --- | --- | --- | --- |
+| --- | --- | --- |
 | default | 25 % | 50% |
 | thrftsvr | 25 % | 50% |
 | Spark | 50% | 50% |

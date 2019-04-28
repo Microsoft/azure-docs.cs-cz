@@ -2,7 +2,6 @@
 title: Odstín, který se systémem Hadoop v clusterech se systémem HDInsight Linux – Azure
 description: Zjistěte, jak instalace aplikace Hue v clusterech HDInsight a směrovat požadavky na odstín, který pomocí tunelové propojení. Použití Hue procházet úložiště a spuštění Hive a Pig.
 keywords: HUE hadoop
-services: hdinsight
 author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
@@ -10,12 +9,12 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 12/11/2017
 ms.author: hrasheed
-ms.openlocfilehash: 9a5a3e7354d3d89a53e94553ed504df7c8117922
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
-ms.translationtype: MT
+ms.openlocfilehash: b0354803a117e8e2c2382ae888bde94a502f24c6
+ms.sourcegitcommit: 37343b814fe3c95f8c10defac7b876759d6752c3
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58314989"
+ms.lasthandoff: 04/24/2019
+ms.locfileid: "63760631"
 ---
 # <a name="install-and-use-hue-on-hdinsight-hadoop-clusters"></a>Nainstalovat a používat rozhraní Hue v clusterech HDInsight Hadoop
 
@@ -65,9 +64,9 @@ Tato část obsahuje informace o tom, jak pomocí skriptu při zřizování clus
    * **NÁZEV**: Zadejte popisný název akce skriptu.
    * **IDENTIFIKÁTOR URI SKRIPTU**: https://hdiconfigactions.blob.core.windows.net/linuxhueconfigactionv02/install-hue-uber-v02.sh
    * **HLAVNÍ**: Zaškrtněte tuto možnost.
-   * **PRACOVNÍK**: Ponechte toto nastavení prázdné.
-   * **ZOOKEEPER**: Ponechte toto nastavení prázdné.
-   * **PARAMETRY**: Ponechte toto nastavení prázdné.
+   * **PRACOVNÍK**: Nechte prázdné.
+   * **ZOOKEEPER**: Nechte prázdné.
+   * **PARAMETRY**: Nechte prázdné.
 3. V dolní části **akcí skriptů**, použijte **vyberte** tlačítko, čímž konfiguraci uložíte. Nakonec použijte **vyberte** tlačítko v dolní části **volitelná konfigurace** okno a uložte informace o konfiguraci volitelné.
 4. Pokračovat zřizování clusteru, jak je popsáno v [zřídit HDInsight clustery v Linuxu](hdinsight-hadoop-provision-linux-clusters.md).
 

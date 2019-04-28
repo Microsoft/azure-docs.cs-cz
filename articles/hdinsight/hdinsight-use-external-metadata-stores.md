@@ -1,19 +1,28 @@
 ---
 title: Použití externích úložišť metadat – Azure HDInsight
 description: Použití externích úložišť metadat s clustery HDInsight.
-author: hrasheed-msft
-ms.reviewer: jasonh
-ms.author: hrasheed
+services: hdinsight
+documentationcenter: ''
+author: jasonwhowell
+manager: cgronlun
+tags: azure-portal
+editor: cgronlun
+ms.assetid: ''
 ms.service: hdinsight
 ms.custom: hdinsightactive
+ms.devlang: na
 ms.topic: conceptual
-ms.date: 09/14/2018
-ms.openlocfilehash: 3daa71c91d1e49a497a979b9b5b89df1fcb9418c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.tgt_pltfrm: na
+ms.workload: big-data
+origin.date: 09/14/2018
+ms.author: v-yiso
+ms.date: 04/01/2019
+ms.openlocfilehash: 0a6bcb3fb94df56caf4d095097572dd8a704f856
+ms.sourcegitcommit: 37343b814fe3c95f8c10defac7b876759d6752c3
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60486417"
+ms.lasthandoff: 04/24/2019
+ms.locfileid: "63763876"
 ---
 # <a name="use-external-metadata-stores-in-azure-hdinsight"></a>Použití externích úložišť metadat v Azure HDInsight
 

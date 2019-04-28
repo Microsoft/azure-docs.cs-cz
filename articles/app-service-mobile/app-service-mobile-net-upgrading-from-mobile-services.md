@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 10/01/2016
 ms.author: crdun
 ms.openlocfilehash: f5ffc795e6469971d1eaf335d6683f94d05f0807
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53278595"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62122434"
 ---
 # <a name="upgrade-your-existing-net-azure-mobile-service-to-app-service"></a>Upgrade existující mobilní služby Azure .NET do služby App Service
 Mobile App Service je nový způsob vytváření mobilních aplikací pomocí Microsoft Azure. Další informace najdete v tématu [co jsou Mobile Apps?].
@@ -92,7 +92,7 @@ ConfigOptions options = new ConfigOptions();
 HttpConfiguration config = ServiceConfig.Initialize(new ConfigBuilder(options));
 ```
 
-with
+s
 
 ```csharp
 HttpConfiguration config = new HttpConfiguration();
@@ -160,12 +160,12 @@ Pokud klientská aplikace se upgraduje z Mobile Services na Mobile Apps i když 
 
 V systémech iOS měli byste změnit schéma základních dat pro entity dat tak, aby odpovídala následující. Všimněte si, že vlastnosti `createdAt`, `updatedAt` a `version` už nebude mít `ms_` předpona:
 
-| Atribut | Typ | Poznámka |
+| Atribut | Type | Poznámka |
 | --- | --- | --- |
 | id |Řetězec, označen jako požadovaný |primární klíč do vzdáleného úložiště |
 | createdAt |Datum |(volitelné) mapuje na vlastnost createdAt systému |
 | updatedAt |Datum |(volitelné) mapuje na vlastnost updatedAt systému |
-| version |Řetězec |(volitelné) použít k detekci konfliktů, mapuje se na verzi |
+| version |String |(volitelné) použít k detekci konfliktů, mapuje se na verzi |
 
 #### <a name="querying-system-properties"></a>Dotazování na vlastnosti systému
 Ve službě Azure Mobile Services se neodesílají vlastnosti systému, ve výchozím nastavení, ale pouze v případě, že pochází pomocí řetězce dotazu `__systemProperties`. Naproti tomu v systému Azure Mobile Apps jsou vlastnosti **vždycky vybraná** vzhledem k tomu, že jsou součástí objektového modelu serveru SDK.

@@ -11,18 +11,82 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 03/30/2018
+ms.date: 04/23/2019
 ms.author: magoedte
-ms.openlocfilehash: de27d5c4fd65515e25319f9e7ac3eafc4110b137
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
-ms.translationtype: MT
+ms.openlocfilehash: 19530aa676e681f9a6ec50d2cacf77711dcb0110
+ms.sourcegitcommit: 37343b814fe3c95f8c10defac7b876759d6752c3
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58481559"
+ms.lasthandoff: 04/24/2019
+ms.locfileid: "63764085"
 ---
 # <a name="managing-and-maintaining-the-log-analytics-agent-for-windows-and-linux"></a>Správu a údržbu agenta Log Analytics pro Windows a Linux
 
-Po počátečním nasazení nástroje Windows Log Analytics nebo agenta pro Linux ve službě Azure Monitor budete muset změnit konfiguraci agenta nebo ji odeberte z počítače, pokud bylo dosaženo vyřazení z provozu fázi životního cyklu. Tyto úlohy běžné údržby můžete snadno spravovat ručně nebo pomocí automatizace, což snižuje provozní chyby a výdaje.
+Po počátečním nasazení nástroje Windows Log Analytics nebo agenta pro Linux ve službě Azure Monitor budete muset změnit konfiguraci agenta, upgradovat nebo ji odeberte z počítače, pokud bylo dosaženo vyřazení z provozu fázi životního cyklu. Tyto úlohy běžné údržby můžete snadno spravovat ručně nebo pomocí automatizace, což snižuje provozní chyby a výdaje.
+
+## <a name="upgrading-agent"></a>Upgrade agenta
+
+Agenta Log Analytics pro Windows a Linux se je upgradovat na nejnovější verzi, ručně nebo automaticky v závislosti na scénáři nasazení a prostředí, ve kterém je virtuální počítač spuštěný v. Následující metody můžete použít k upgradu agenta.
+
+| Prostředí | Metoda instalace | Upgrade – metoda |
+|--------|----------|-------------|
+| Virtuální počítač Azure | Log Analytics rozšíření virtuálního počítače agenta pro Windows/Linux | Agent je automaticky upgradovány ve výchozím nastavení, pokud jste nakonfigurovali šablonu Azure Resource Manageru se chcete odhlásit tak, že nastavíte vlastnost *autoUpgradeMinorVersion* k **false**. |
+| Vlastní Image virtuálního počítače Azure | Ruční instalace agenta Log Analytics pro Windows/Linux | Aktualizuje se virtuální počítače na nejnovější verzi agenta je třeba provést z příkazového řádku Instalační služby systému Windows nebo Linux samorozbalovací a Instalovatelné prostředí skript sady.|
+| Virtuální počítače umístěné mimo Azure | Ruční instalace agenta Log Analytics pro Windows/Linux | Aktualizuje se virtuální počítače na nejnovější verzi agenta je třeba provést z příkazového řádku Instalační služby systému Windows nebo Linux samorozbalovací a Instalovatelné prostředí skript sady. |
+
+### <a name="upgrade-windows-agent"></a>Upgrade agenta pro Windows 
+
+Aktualizace agenta na virtuálním počítači s Windows na nejnovější verzi není nainstalován pomocí rozšíření virtuálního počítače Log Analytics, můžete buď spustit z příkazového řádku, skriptu nebo jiného řešení automatizace, nebo pomocí MMASetup -\<platformy\>MSI Instalační program Průvodce.  
+
+Pomocí následujícího postupu můžete stáhnout nejnovější verzi agenta Windows z pracovního prostoru Log Analytics.
+
+1. Přihlaste se k portálu Azure.
+
+2. Na webu Azure Portal klikněte na **Všechny služby**. V seznamu prostředků zadejte **Log Analytics**. Seznam se průběžně filtruje podle zadávaného textu. Vyberte **pracovních prostorů Log Analytics**.
+
+3. V seznamu pracovních prostorů Log Analytics vyberte pracovní prostor.
+
+4. V pracovním prostoru Log Analytics vyberte **upřesňující nastavení**a pak vyberte **připojené zdroje**a nakonec **servery Windows**.
+
+5. Z **servery Windows** stránky, vyberte odpovídající **stáhnout agenta Windows** verze ke stažení v závislosti na architektuře procesoru operačního systému Windows.
+
+>[!NOTE]
+>Při upgradu agenta Log Analytics pro Windows nepodporuje konfiguraci nebo opětovná konfigurace pracovního prostoru pro hlášení. Postup konfigurace agenta, budete muset proveďte jeden z podporovaných metod uvedených v části [přidání nebo odebrání pracovního prostoru](#adding-or-removing-a-workspace).
+>
+
+#### <a name="to-upgrade-using-the-setup-wizard"></a>Upgrade pomocí Průvodce instalací
+
+1. Přihlaste se k počítači pomocí účtu, který má práva správce.
+
+2. Spustit **MMASetup -\<platformy\>.exe** spusťte Průvodce instalací.
+
+3. Na první stránce Průvodce instalací, klikněte na tlačítko **Další**.
+
+4. V **instalace agenta Microsoft Monitoring Agent** dialogové okno, klikněte na tlačítko **souhlasím** přijmout licenční smlouvu.
+
+5. V **instalace agenta Microsoft Monitoring Agent** dialogové okno, klikněte na tlačítko **upgradovat**. Stavové stránce se zobrazuje průběh upgradu.
+
+6. Když **konfigurace agenta Microsoft Monitoring Agent byla úspěšně dokončena.** Zobrazí se stránka, klikněte na tlačítko **Dokončit**.
+
+#### <a name="to-upgrade-from-the-command-line"></a>Upgrade z příkazového řádku
+
+1. Přihlaste se k počítači pomocí účtu, který má práva správce.
+
+2. K extrakci instalačních souborů agenta z příkazového řádku se zvýšenými oprávněními spusťte `MMASetup-<platform>.exe /c` a zobrazí výzvu pro cestu k extrakci souborů. Případně lze zadat cestu předáním argumentů `MMASetup-<platform>.exe /c /t:<Full Path>`.
+
+3. Spusťte následující příkaz, přičemž D:\ označuje umístění souboru protokolu upgradu.
+
+    ```dos
+    setup.exe /qn /l*v D:\logs\AgentUpgrade.log AcceptEndUserLicenseAgreement=1
+    ```
+
+### <a name="upgrade-linux-agent"></a>Upgrade agenta pro Linux 
+
+Upgrade z předchozí verze (> 1.0.0-47) se nepodporuje. Instalace pomocí provádí `--upgrade` příkaz upgraduje všechny komponenty agenta na nejnovější verzi.
+
+Spusťte následující příkaz pro upgrade agenta.
+
+`sudo sh ./omsagent-*.universal.x64.sh --upgrade`
 
 ## <a name="adding-or-removing-a-workspace"></a>Přidání nebo odebrání pracovního prostoru
 
@@ -31,10 +95,15 @@ Po počátečním nasazení nástroje Windows Log Analytics nebo agenta pro Linu
 #### <a name="update-settings-from-control-panel"></a>Aktualizovat nastavení v Ovládacích panelech
 
 1. Přihlaste se k počítači pomocí účtu, který má práva správce.
+
 2. Otevřete **Ovládací panely**.
+
 3. Vyberte **agenta Microsoft Monitoring Agent** a potom klikněte na tlačítko **Azure Log Analytics** kartu.
+
 4. Pokud odebrání pracovního prostoru, vyberte ji a pak klikněte na **odebrat**. Tento krok opakujte pro všechny ostatní pracovní prostor má agent přestanou předávat hlášení.
+
 5. Pokud přidáváte pracovní prostor, klikněte na tlačítko **přidat** a na **přidat pracovní prostor Log Analytics** dialogové okno, vložení ID pracovního prostoru a klíč pracovního prostoru (primární klíč). Pokud má počítač hlásit do pracovního prostoru Log Analytics v cloudu Azure Government, vyberte z rozevíracího seznamu Azure Cloud Azure US Government.
+
 6. Klikněte na tlačítko **OK** a uložte změny.
 
 #### <a name="remove-a-workspace-using-powershell"></a>Odebrat pracovní prostor pomocí Powershellu
@@ -109,9 +178,12 @@ Konfigurace agenta pro komunikaci ve službě pomocí proxy serveru nebo [Log An
 #### <a name="update-settings-using-control-panel"></a>Nastavení aktualizace pomocí ovládacích panelů
 
 1. Přihlaste se k počítači pomocí účtu, který má práva správce.
+
 2. Otevřete **Ovládací panely**.
+
 3. Vyberte **agenta Microsoft Monitoring Agent** a potom klikněte na tlačítko **nastavení proxy serveru** kartu.
-4. Klikněte na tlačítko **používat proxy server** a zadejte adresu URL a port číslo proxy serveru nebo brány. Pokud váš proxy server nebo brána Log Analytics vyžaduje ověření, zadejte uživatelské jméno a heslo k ověření a potom klikněte na tlačítko **OK**.
+
+4. Klikněte na **Použít proxy server** a zadejte adresu URL a číslo portu proxy serveru nebo brány. Pokud váš proxy server nebo brána Log Analytics vyžaduje ověření, zadejte uživatelské jméno a heslo pro ověření a pak klikněte na **OK**.
 
 #### <a name="update-settings-using-powershell"></a>Aktualizovat nastavení pomocí Powershellu
 
@@ -165,7 +237,9 @@ Pomocí jednoho z následujících postupů odinstalujte agenta Windows nebo Lin
 
 #### <a name="uninstall-from-control-panel"></a>Odinstalujte z ovládacích panelů
 1. Přihlaste se k počítači pomocí účtu, který má práva správce.
+
 2. V **ovládací panely**, klikněte na tlačítko **programy a funkce**.
+
 3. V **programy a funkce**, klikněte na tlačítko **agenta Microsoft Monitoring Agent**, klikněte na tlačítko **odinstalovat**a potom klikněte na tlačítko **Ano**.
 
 >[!NOTE]
@@ -175,7 +249,9 @@ Pomocí jednoho z následujících postupů odinstalujte agenta Windows nebo Lin
 Stažený soubor pro agenta je samostatný instalační balíček vytvořen s IExpress. Instalační program pro agenta a jeho podpůrné soubory jsou obsažené v balíčku a potřeba extrahovat, aby bylo možné správně, odinstalujte ji pomocí příkazového řádku je znázorněno v následujícím příkladu.
 
 1. Přihlaste se k počítači pomocí účtu, který má práva správce.
+
 2. K extrakci instalačních souborů agenta z příkazového řádku se zvýšenými oprávněními spusťte `extract MMASetup-<platform>.exe` a zobrazí výzvu pro cestu k extrakci souborů. Případně lze zadat cestu předáním argumentů `extract MMASetup-<platform>.exe /c:<Path> /t:<Path>`. Další informace o podporovaných IExpress přepínače příkazového řádku najdete v tématu [přepínače příkazového řádku pro IExpress](https://support.microsoft.com/help/197147/command-line-switches-for-iexpress-software-update-packages) a pak aktualizujte příklad tak, aby odpovídala vašim potřebám.
+
 3. Na příkazovém řádku zadejte `%WinDir%\System32\msiexec.exe /x <Path>:\MOMAgent.msi /qb`.
 
 ### <a name="linux-agent"></a>Agenta pro Linux
@@ -191,14 +267,23 @@ Proveďte následující kroky konfigurace agenta Log Analytics pro Windows ozna
 [!INCLUDE [log-analytics-agent-note](../../../includes/log-analytics-agent-note.md)]
 
 1. Přihlaste se k počítači pomocí účtu, který má práva správce.
+
 2. Otevřete **Ovládací panely**.
+
 3. Klikněte na tlačítko **agenta Microsoft Monitoring Agent** a potom klikněte na tlačítko **nástroje Operations Manager** kartu.
+
 4. Pokud vaše servery nástroje Operations Manager mají integrace se službou Active Directory, klikněte na tlačítko **automaticky aktualizovat přiřazení skupin pro správu ze služby AD DS**.
+
 5. Klikněte na tlačítko **přidat** otevřít **přidat skupinu pro správu** dialogové okno.
+
 6. V **název skupiny pro správu** pole, zadejte název skupiny pro správu.
+
 7. V **primární server pro správu** pole, zadejte název počítače z primární server pro správu.
+
 8. V **port serveru pro správu** zadejte číslo portu TCP.
+
 9. V části **účet Agent Action Account**, zvolte účet místní systém nebo účet místní domény.
+
 10. Klikněte na tlačítko **OK** zavřete **přidat skupinu pro správu** dialogové okno a potom klikněte na **OK** zavřete **vlastnosti služby Microsoft Monitoring Agent** Dialogové okno.
 
 ### <a name="linux-agent"></a>Agenta pro Linux
@@ -207,7 +292,9 @@ Proveďte následující kroky konfigurace agenta Log Analytics pro Linux pro hl
 [!INCLUDE [log-analytics-agent-note](../../../includes/log-analytics-agent-note.md)]
 
 1. Upravte soubor `/etc/opt/omi/conf/omiserver.conf`
+
 2. Ujistěte se, že řádek začínající příkazem `httpsport=` definuje port 1270. Například: `httpsport=1270`
+
 3. Restartujte OMI server: `sudo /opt/omi/bin/service_control restart`
 
 ## <a name="next-steps"></a>Další postup

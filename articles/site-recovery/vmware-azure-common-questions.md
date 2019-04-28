@@ -5,15 +5,15 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 services: site-recovery
-ms.date: 04/18/2019
+ms.date: 04/23/2019
 ms.topic: conceptual
 ms.author: raynew
-ms.openlocfilehash: d0e39f9e24b3c486eccd71eb1c19823cfd33391a
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: dffbb2c52b4e43eefe6b4f377bd7af529bae8cc5
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60004767"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62125555"
 ---
 # <a name="common-questions---vmware-to-azure-replication"></a>Časté otázky – VMware pro replikaci Azure
 
@@ -245,11 +245,15 @@ Ano, ale mějte na paměti, že tento fyzický počítač lze pouze se zpět do 
 
 V trezoru služby Recovery Services klikněte na tlačítko **konfigurační servery** v **infrastruktura Site Recovery** > **spravovat**. Potom v **servery**vyberte **stáhnout registrační klíč** ke stažení souboru s přihlašovacími údaji.
 
+## <a name="process-server"></a>Procesový server
 
+### <a name="unable-to-select-process-server-during-enable-replication"></a>Nelze vybrat procesový server při povolení replikace
 
+Z 9.24 verzi se provedly poskytují vylepšení [doprovodné materiály v rámci produktu](vmware-azure-manage-process-server.md#process-server-selection-guidance) na tom, kdy k nastavení horizontální navýšení kapacity procesového serveru. Toto je chcete zabránit omezování procesu serveru a vyhněte se použití není v pořádku procesový server.
 
+### <a name="what-should-i-do-to-obtain-accurate-health-status-of-process-server"></a>Co mám dělat získat přesné stav procesového serveru?
 
-
+Upgrade součásti Site Recovery na [nejnovější verze](service-updates-how-to.md#links-to-currently-supported-update-rollups) (nejméně 9.24 nebo vyšší).
 
 ## <a name="failover-and-failback"></a>Převzetí služeb při selhání a navrácení služeb po obnovení
 ### <a name="can-i-use-the-process-server-at-on-premises-for-failback"></a>Můžu použít procesový server na místní navrácení služeb po obnovení?

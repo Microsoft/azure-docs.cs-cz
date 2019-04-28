@@ -11,18 +11,18 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 02/09/2018
 ms.custom: seodec18
-ms.openlocfilehash: c44b09e15a227e11426d2798fc071778ca47ebd3
-ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
-ms.translationtype: MT
+ms.openlocfilehash: b230ac48cf2ca14c9ed988f869b5abba3e347215
+ms.sourcegitcommit: 37343b814fe3c95f8c10defac7b876759d6752c3
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53557459"
+ms.lasthandoff: 04/24/2019
+ms.locfileid: "63761574"
 ---
 # <a name="understand-data-retention-in-time-series-insights"></a>Vysvětlení uchovávání dat v Time Series Insights
 
 Tento článek popisuje dvě nastavení, které ovlivňují uchovávání dat ve vašem prostředí Time Series Insights (TSI).
 
-## <a name="video"></a>Video: 
+## <a name="video"></a>Video
 
 ### <a name="in-this-video-we-cover-time-series-insights-data-retention-and-how-to-plan-for-itbr"></a>V tomto videu se budeme zabývat uchovávání dat Time Series Insights a jak ji plánovat.</br>
 
@@ -41,25 +41,29 @@ Informace o přepínání chování uchovávání dat najdete v tématu [konfigu
 
 Porovnejte chování uchovávání dat:
 
-## <a name="purge-old-data"></a>Vymazat stará data
+## <a name="purge-old-data"></a>Vyprázdnit stará data
+
 - Toto chování je výchozí chování pro prostředí TSI a dodatků stejné prostředí TSI chování vystavoval od spuštěna ve verzi public preview.  
 - Toto chování se upřednostňuje v případě uživatelů chcete vždy zobrazit jejich *nejnovější data* ve svém prostředí TSI. 
 - Toto chování *vymaže* dat jednou prostředí je dosaženo omezení (doba uchovávání, velikost nebo count, podle toho, co nastane dřív). Ve výchozím nastavení do 30 dnů uchovávání informací. 
 - Nejstarší přijatých dat se vyprazdňují první (FIFO přístup).
 
-### <a name="example-1"></a>Příklad 1:
-Vezměte v úvahu příklad prostředí s uchování chování **pokračovat příchozího přenosu dat a vymazat stará data**: V tomto příkladu **doby uchování dat** je nastavena na 400 dnů. **Kapacita** nastavená na jednotka S1, která obsahuje 30 GB celkové kapacity.   Předpokládejme, že příchozí data hromadí na 500 MB denně v průměru. Toto prostředí pouze uchovávat 60 dní, po který dat zadaný počet příchozích dat, protože na 60 dní je dosaženo maximální kapacity. Příchozí data hromadí jako: 500 MB každý den x 60 dnů = 30 GB. 
+### <a name="example-one"></a>Příklad jednoho
+
+Vezměte v úvahu příklad prostředí s uchování chování **pokračovat příchozího přenosu dat a vymazat stará data**: V tomto příkladu **doby uchování dat** je nastavena na 400 dnů. **Kapacita** nastavená na jednotka S1, která obsahuje 30 GB celkové kapacity.   Předpokládejme, že příchozí data hromadí na 500 MB denně v průměru. Toto prostředí pouze uchovávat 60 dní, po který dat zadaný počet příchozích dat, protože na 60 dní je dosaženo maximální kapacity. Příchozí data hromadí jako: 500 MB každý den x 60 dnů = 30 GB.
 
 V tomto příkladu 61st dne prostředí ukazuje nejčerstvější data, ale odstraní nejstarší data starší než 60 dnů. K vyprázdnění díky prostor pro nová data streamování, tak, aby nová data může dál prozkoumat. 
 
 Pokud uživatel chce uchovávat data déle, můžete zvýšit velikost prostředí přidáním dalších jednotek nebo méně data můžete nabízet.  
 
-### <a name="example-2"></a>Příklad 2:
+### <a name="example-two"></a>Příklad 2
+
 Vezměte v úvahu prostředí také nakonfigurována uchování chování **pokračovat příchozího přenosu dat a vymazat stará data**. V tomto příkladu **doby uchování dat** je nastavena na hodnotu nižší než 180 dnů. **Kapacita** nastavená na jednotka S1, která obsahuje 30 GB celkové kapacity. Jen tak půjde ukládat data pro úplné 180 dnů, denní příchozí přenos dat nemůže být delší než 0.166 GB (166 MB) za den.  
 
 Pokaždé, když se toto prostředí denní rychlost příchozího přenosu dat překročí 0.166 GB za den, data nelze ukládat na 180 dnů, protože některá data získá odstraněna. Vezměte v úvahu tato stejné prostředí během zaneprázdněný časového rámce. Předpokládejme, že průměrná 0.189 GB za den může zvýšit rychlost příchozího přenosu dat prostředí. V tomto zaneprázdněný časovém rámci, se zachovají data o 158 dnů (30GB/0.189 = 158,73 dnů uchovávání). Tentokrát je menší než požadovaná data uchování časový rámec.
 
-## <a name="pause-ingress"></a>Pozastavit příchozího přenosu dat
+## <a name="pause-ingress"></a>Pozastavit příchozí přenos dat
+
 - Toto chování je navržený tak, aby, že data se vymazat, pokud je dosaženo omezení velikosti a počtu před jejich doba uchování.  
 - Toto chování poskytuje další čas pro uživatele, které chcete zvýšit kapacitu prostředí před data se vyprázdní se kvůli porušení doby uchování
 - Toto chování pomáhá chránit před únikem informací, ale vytvoří příležitost ztráty nejnovější data, pokud je pozastaven příchozího přenosu dat nad rámec doby uchování váš zdroj událostí.
@@ -67,10 +71,12 @@ Pokaždé, když se toto prostředí denní rychlost příchozího přenosu dat 
    - Můžete zvýšit maximální kapacitu prostředí. Další informace najdete v tématu [jak škálovat vaše prostředí Time Series Insights](time-series-insights-how-to-scale-your-environment.md) přidáte další jednotky škálování.
    - Je dosaženo období uchovávání dat a vymazat data tedy přináší prostředí pod maximální kapacitě.
 
-### <a name="example-3"></a>Příklad 3:
+### <a name="example-three"></a>Příklad tří
+
 Vezměte v úvahu prostředí díky uchování chování nakonfigurovat tak, aby **pozastavit příchozího přenosu dat**. V tomto příkladu **období uchovávání dat** nastaven na 60 dnů. **Kapacita** nastavená na 3 jednotky S1. Předpokládejme, že toto prostředí má 2GB dat denně. V tomto prostředí se pozastaví příchozího přenosu dat po dosažení maximální kapacity. V tu chvíli prostředí zobrazuje stejné datové sady až do obnoví příchozího přenosu dat nebo dokud 'příkaz continue příchozího přenosu dat"je povoleno (což by vymazat starších dat, aby uvolnil prostor pro nová data). 
 
 Když se obnoví příchozího přenosu dat:
+
 - Datové toky v pořadí, ve kterém byla přijata podle zdroje události
 - Události jsou indexovány podle časové značky, pokud jste nepřekročili zásady uchovávání informací na váš zdroj událostí. Další informace o konfiguraci uchování zdroje událostí [nejčastější dotazy k Event Hubs](../event-hubs/event-hubs-faq.md)
 
@@ -86,4 +92,5 @@ Pokud žádné vlastnosti, které jsou nakonfigurované u zdroje události (time
 Pokud je potřeba škálovat vaše prostředí a přizpůsobit další kapacitu nebo chcete zvýšit dobu uchování, přečtěte si téma [jak škálovat vaše prostředí Time Series Insights](time-series-insights-how-to-scale-your-environment.md) Další informace.  
 
 ## <a name="next-steps"></a>Další postup
-Informace o přepínání chování uchovávání dat najdete v tématu [konfigurace uchovávání naleznete v Time Series Insights](time-series-insights-how-to-configure-retention.md).
+
+- Informace o přepínání chování uchovávání dat najdete v tématu [konfigurace uchovávání naleznete v Time Series Insights](time-series-insights-how-to-configure-retention.md).

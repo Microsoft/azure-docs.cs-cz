@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/27/2017
 ms.author: apimpm
-ms.openlocfilehash: 9ee4a9fb5c63061eed32389b5672652aad01208a
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: c0f8da779ca656cf357c418b8766a53307643695
+ms.sourcegitcommit: 37343b814fe3c95f8c10defac7b876759d6752c3
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "59994932"
+ms.lasthandoff: 04/24/2019
+ms.locfileid: "63764342"
 ---
 # <a name="api-management-authentication-policies"></a>Zásady ověřování služby API Management
 Toto téma obsahuje odkaz pro následující zásady služby API Management. Informace o přidávání a konfiguraci zásad najdete v tématu [zásady ve službě API Management](https://go.microsoft.com/fwlink/?LinkID=398186).  
@@ -49,13 +49,13 @@ Toto téma obsahuje odkaz pro následující zásady služby API Management. Inf
   
 ### <a name="elements"></a>Elementy  
   
-|Name|Popis|Požaduje se|  
+|Název|Popis|Požaduje se|  
 |----------|-----------------|--------------|  
 |authentication-basic|Kořenový element.|Ano|  
   
 ### <a name="attributes"></a>Atributy  
   
-|Name|Popis|Požaduje se|Výchozí|  
+|Název|Popis|Požaduje se|Výchozí|  
 |----------|-----------------|--------------|-------------|  
 |uživatelské jméno|Určuje uživatelské jméno základní přihlašovací údaje.|Ano|neuvedeno|  
 |password|Určuje heslo základní přihlašovací údaje.|Ano|neuvedeno|  
@@ -73,26 +73,32 @@ Toto téma obsahuje odkaz pro následující zásady služby API Management. Inf
 ### <a name="policy-statement"></a>Prohlášení o zásadách  
   
 ```xml  
-<authentication-certificate thumbprint="thumbprint" />  
+<authentication-certificate thumbprint="thumbprint" certificate-id="resource name"/>  
 ```  
   
-### <a name="example"></a>Příklad:  
+### <a name="examples"></a>Příklady  
   
+V tomto příkladu klientovi certifikátu je identifikován jeho kryptografický otisk.
 ```xml  
-<authentication-certificate thumbprint="....." />  
+<authentication-certificate thumbprint="CA06F56B258B7A0D4F2B05470939478651151984" />  
+``` 
+V tomto příkladu se klientský certifikát identifikovat podle názvu prostředku.
+```xml  
+<authentication-certificate certificate-id="544fe9ddf3b8f30fb490d90f" />  
 ```  
-  
+
 ### <a name="elements"></a>Elementy  
   
-|Name|Popis|Požaduje se|  
+|Název|Popis|Požaduje se|  
 |----------|-----------------|--------------|  
 |authentication-certificate|Kořenový element.|Ano|  
   
 ### <a name="attributes"></a>Atributy  
   
-|Name|Popis|Požaduje se|Výchozí|  
+|Název|Popis|Požaduje se|Výchozí|  
 |----------|-----------------|--------------|-------------|  
-|thumbprint|Kryptografický otisk certifikátu klienta.|Ano|neuvedeno|  
+|thumbprint|Kryptografický otisk certifikátu klienta.|Buď `thumbprint` nebo `certificate-id` musí být k dispozici.|neuvedeno|  
+|id certifikátu|Název prostředku certifikátu.|Buď `thumbprint` nebo `certificate-id` musí být k dispozici.|neuvedeno|  
   
 ### <a name="usage"></a>Využití  
  Tyto zásady můžete použít v následujících zásad [oddíly](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) a [obory](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).  
@@ -118,13 +124,13 @@ Toto téma obsahuje odkaz pro následující zásady služby API Management. Inf
   
 ### <a name="elements"></a>Elementy  
   
-|Name|Popis|Požaduje se|  
+|Název|Popis|Požaduje se|  
 |----------|-----------------|--------------|  
 |authentication-managed-identity |Kořenový element.|Ano|  
   
 ### <a name="attributes"></a>Atributy  
   
-|Name|Popis|Požaduje se|Výchozí|  
+|Název|Popis|Požaduje se|Výchozí|  
 |----------|-----------------|--------------|-------------|  
 |prostředek|řetězec. Identifikátor URI ID aplikace z cílové webové rozhraní API (zabezpečené prostředků) v Azure Active Directory.|Ano|neuvedeno|  
 |výstup token proměnnou název|řetězec. Název kontextové proměnné, která se zobrazí hodnota tokenu jako typ objektu, který `string`.|Ne|neuvedeno|  

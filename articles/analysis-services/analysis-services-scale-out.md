@@ -5,15 +5,15 @@ author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 03/25/2019
+ms.date: 04/23/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 6a69d8d60b2e588ded9ccca20521195ae11ff136
-ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
-ms.translationtype: MT
+ms.openlocfilehash: 8c226608f6c1c776463aa05c02b1d3cc04b699ec
+ms.sourcegitcommit: 37343b814fe3c95f8c10defac7b876759d6752c3
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58449427"
+ms.lasthandoff: 04/24/2019
+ms.locfileid: "63766825"
 ---
 # <a name="azure-analysis-services-scale-out"></a>Horizontální navýšení kapacity Azure Analysis Services
 
@@ -108,10 +108,10 @@ Návratové kódy stavu:
 
 |Kód  |Popis  |
 |---------|---------|
-|-1     |  Neplatný       |
+|-1     |  Neplatné       |
 |0     | Replikování        |
 |1     |  Rehydratace       |
-|2     |   Dokončeno       |
+|2     |   Dokončené       |
 |3     |   Selhalo      |
 |4     |    Finalizace     |
 |||
@@ -128,6 +128,8 @@ Chcete-li spustit synchronizaci, použijte [synchronizace AzAnalysisServicesInst
 Pokud chcete nastavit počet replik dotazu, použijte [Set-AzAnalysisServicesServer](https://docs.microsoft.com/powershell/module/az.analysisservices/set-azanalysisservicesserver). Zadejte nepovinný `-ReadonlyReplicaCount` parametru.
 
 Chcete-li oddělte server pro zpracování od fondu dotazů, použijte [Set-AzAnalysisServicesServer](https://docs.microsoft.com/powershell/module/az.analysisservices/set-azanalysisservicesserver). Zadejte nepovinný `-DefaultConnectionMode` parametr, který se `Readonly`.
+
+Další informace najdete v tématu [pomocí instančního objektu s modulem Az.AnalysisServices](analysis-services-service-principal.md#azmodule).
 
 ## <a name="connections"></a>Připojení
 

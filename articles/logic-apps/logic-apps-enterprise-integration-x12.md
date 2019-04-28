@@ -10,12 +10,12 @@ ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
 ms.assetid: 7422d2d5-b1c7-4a11-8c9b-0d8cfa463164
 ms.date: 01/31/2017
-ms.openlocfilehash: 6665ea8bc4016c9d64005f9c742115cf785ed5ba
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
-ms.translationtype: MT
+ms.openlocfilehash: f06e213dbae31c9d7c4e212d605cc962aba71d2d
+ms.sourcegitcommit: 37343b814fe3c95f8c10defac7b876759d6752c3
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57842130"
+ms.lasthandoff: 04/24/2019
+ms.locfileid: "63766518"
 ---
 # <a name="exchange-x12-messages-for-b2b-enterprise-integration-in-azure-logic-apps-with-enterprise-integration-pack"></a>Výměna X12 zpráv pro podnikovou integraci B2B v Azure Logic Apps sadou Enterprise Integration Pack
 
@@ -53,11 +53,11 @@ Poté co [vytvořit integrační účet](../logic-apps/logic-apps-enterprise-int
 4. Vyberte **přehled**a pak **smlouvy** dlaždici. 
    Pokud nemáte k dispozici dlaždici smlouvy, přidejte nejprve na dlaždici. 
 
-   ![Zvolte dlaždici "smlouvy o"](./media/logic-apps-enterprise-integration-as2/agreement-1.png)
+   ![Zvolte dlaždici "smlouvy o"](./media/logic-apps-enterprise-integration-x12/agreement-1.png)
 
 5. V části **smlouvy**, zvolte **přidat**.
 
-   ![Zvolte "Přidat"](./media/logic-apps-enterprise-integration-as2/agreement-2.png)     
+   ![Zvolte "Přidat"](./media/logic-apps-enterprise-integration-x12/agreement-2.png)     
 
 6. V části **přidat**, zadejte **název** pro vaši smlouvu. 
    Typ smlouvy, vyberte **X12**. 
@@ -122,7 +122,7 @@ Vyberte schéma pro každý typ transakce (ST1) a u aplikace odesílatele (GS2).
 
 | Vlastnost | Popis |
 | --- | --- |
-| Verze |Vyberte X12 verze |
+| Version |Vyberte X12 verze |
 | Typ transakce (ST01) |Vyberte typ transakce |
 | Aplikace odesílatele (GS02) |Vyberte aplikace odesílatele |
 | Schéma |Vyberte soubor schématu, které chcete použít. Schémata jsou přidány do účtu pro integraci. |
@@ -216,7 +216,7 @@ Nyní je připravená pro zpracování odchozích zpráv, které v souladu s vá
 
 | Vlastnost | Popis |
 | --- | --- |
-| Verze |Vyberte X12 verze |
+| Version |Vyberte X12 verze |
 | Typ transakce (ST01) |Vyberte typ transakce |
 | SCHEMA |Vyberte schéma používat. Schémata se nacházejí v účtu integrace. Pokud nejprve vyberte schéma automaticky konfiguruje verze a transakce typu  |
 
@@ -273,7 +273,7 @@ Jiné než znakové sady, můžete zadat jinou sadu oddělovačů pro každý ty
 > [!TIP]
 > Zadejte hodnoty speciální znak, upravit smlouvu jako dokumenty JSON a zadejte hodnotu ASCII speciální znak.
 
-### <a name="validation"></a>Ověření
+### <a name="validation"></a>Ověřování
 
 ![Nastavení vlastností ověřování pro odesílání zpráv](./media/logic-apps-enterprise-integration-x12/x12-10.png) 
 

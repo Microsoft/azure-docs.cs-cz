@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: overview
 ms.date: 03/21/2019
 ms.author: helohr
-ms.openlocfilehash: 58fb1d73509ab52551bead4526dfb47588cf1ec6
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: 379b8ee4a78cd8b487407e92ae32a7525f428bf0
+ms.sourcegitcommit: 37343b814fe3c95f8c10defac7b876759d6752c3
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60004580"
+ms.lasthandoff: 04/24/2019
+ms.locfileid: "63763854"
 ---
 # <a name="what-is-windows-virtual-desktop-preview"></a>Co je Windows Virtual Desktop Preview? 
 
@@ -55,22 +55,24 @@ Můžete také přiřadit a připojení uživatelů k virtuálním klientům:
 Existuje několik věcí, které je potřeba nastavit virtuální plochy Windows a úspěšně připojit vaše uživatele pro své stolní počítače Windows a aplikací.
 
 Virtuální Desktop Windows aktuálně podporuje pouze následující dva operační systémy:
-- Windows 10 Enterprise více relací
-- Windows Server 2016
+
+* Windows 10 Enterprise více relací
+* Windows Server 2016
 
 Plánujeme přidat podporu pro následující operační systémy, takže se ujistěte, že máte [odpovídající licence](https://azure.microsoft.com/pricing/details/virtual-desktop/) pro vaše uživatele, založené na stolní počítače a aplikace, máte v úmyslu nasadit:
 
 |Operační systém|Požadovaná licence|
 |---|---|
-
-| Více relací Windows 10 Enterprise nebo Windows 10 Enterprise | Microsoft E3, E5, A3, A5, firmy<br>Windows E3, E5, A3, A5| |Windows 7 Enterprise |Microsoft E3, E5, A3, A5, Business<br>A3 E3 a E5, Windows, A5 | | Windows Server 2012 R2, 2016, 2019 | Licence VP licence pro klientský přístup (CAL) s programem Software Assurance |
+|Více relací Windows 10 Enterprise nebo Windows 10 Enterprise|Microsoft E3, E5, A3, A5, Business<br>Windows E3, E5, A3, A5|
+|Windows 7 Enterprise |Microsoft E3, E5, A3, A5, Business<br>Windows E3, E5, A3, A5|
+|Windows Server 2012 R2, 2016, 2019|Licence VP licence pro klientský přístup (CAL) s programem Software Assurance|
 
 Vaše infrastruktura potřebuje následující akce pro podporu virtuální plochy Windows:
 
 * [Azure Active Directory](https://docs.microsoft.com/azure/active-directory/)
 * Windows Server Active Directory synchronizované se službou Azure Active Directory. To se dá nastavit pomocí:
   * Azure AD Connect
-  * Azure AD Domain Services
+  * Služba Azure AD Domain Services
 * Předplatné Azure, který obsahuje virtuální síť, která obsahuje nebo je připojený ke službě Windows Server Active Directory
   
 Virtuální počítače Azure, které vytvoříte pro virtuální plochy Windows musí být:
@@ -91,7 +93,7 @@ Pro optimální výkon Ujistěte se, že vaše síť splňuje následující po�
 * Síťový provoz může tok mimo hranice země, připojíte ke službě správy virtuálních počítačů, které hostování desktopů a aplikací.
 * Pokud chcete optimalizovat výkon sítě, doporučujeme, že jsou seřazena relace hostování virtuálních počítačů ve stejné oblasti Azure jako službu pro správu.
 
-## <a name="provide-feedback"></a>Poskytnutí zpětné vazby
+## <a name="provide-feedback"></a>Poskytnout zpětnou vazbu
 
 Přejděte [technické komunitě virtuální plochy Windows](https://techcommunity.microsoft.com/t5/Windows-Virtual-Desktop/bd-p/WindowsVirtualDesktop) fattica virtuální plochy Windows service s produktovým týmem a aktivní komunitě členy. Můžeme aktuálně nejsou trvá případy podpory virtuální plochy Windows je ve verzi preview.
 

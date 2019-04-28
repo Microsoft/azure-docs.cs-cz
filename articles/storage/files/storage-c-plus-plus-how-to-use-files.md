@@ -2,18 +2,18 @@
 title: Vývoj pro soubory Azure pomocí C++ | Dokumentace Microsoftu
 description: Informace o vývoji aplikací v jazyce C++ a služeb, které používají soubory Azure k ukládání dat souborů.
 services: storage
-author: renashahmsft
+author: roygara
 ms.service: storage
 ms.topic: article
 ms.date: 09/19/2017
-ms.author: renashahmsft
+ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 3432794c6b6d2323392f0b56b364400d05b10afc
-ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
-ms.translationtype: MT
+ms.openlocfilehash: 424db4435c569475f9463894b5364fc22190689a
+ms.sourcegitcommit: 37343b814fe3c95f8c10defac7b876759d6752c3
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58649693"
+ms.lasthandoff: 04/24/2019
+ms.locfileid: "63766361"
 ---
 # <a name="develop-for-azure-files-with-c"></a>Vývoj pro soubory Azure pomocí C++
 
@@ -186,7 +186,7 @@ for (auto it = directory.list_files_and_directories(); it != end_of_results; ++i
 }
 ```
 
-## <a name="upload-a-file"></a>Nahrání souboru
+## <a name="upload-a-file"></a>Nahrát soubor
 
 Přinejmenším sdílené složky Azure obsahuje kořenový adresář, kde mohou být soubory umístěny. V této části se dozvíte, jak nahrát soubor z místního úložiště na kořenovém adresáři sdílené složky.
 
@@ -219,7 +219,7 @@ azure::storage::cloud_file file4 =
 file4.upload_from_file(_XPLATSTR("DataFile.txt"));
 ```
 
-## <a name="download-a-file"></a>Stažení souboru
+## <a name="download-a-file"></a>Stáhnout soubor
 
 Ke stažení souborů, nejdřív načtěte odkaz na soubor a poté zavolejte **download_to_stream** způsob přenosu obsahu souboru na objekt datového proudu, který je pak možné zachovat do místního souboru. Alternativně můžete použít **download_to_file** metody ke stahování obsahu souboru do místního souboru. Můžete použít **download_text** metody ke stahování obsahu soubor jako textový řetězec.
 

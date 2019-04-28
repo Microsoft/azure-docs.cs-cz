@@ -15,12 +15,12 @@ ms.date: 09/09/2018
 ms.author: celested
 ms.reviewer: asmalser
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0a6d1684c4bc0031978fb5e76548a3112b0f1ef2
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: e293eb555269a1f8beeeccd74000358abe1ef5c8
+ms.sourcegitcommit: 37343b814fe3c95f8c10defac7b876759d6752c3
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60441986"
+ms.lasthandoff: 04/24/2019
+ms.locfileid: "63759759"
 ---
 # <a name="tutorial-reporting-on-automatic-user-account-provisioning"></a>Kurz: Vytváření sestav o zřizování automatické uživatelských účtů
 
@@ -43,7 +43,7 @@ Tento článek používá následující podmínky, definovaná níže:
 
 * **Zdrojový systém** -úložišti uživatelů, pro které služba zřizování Azure AD se synchronizuje z. Azure Active Directory je zdrojový systém pro většinu předem integrovaných konektorů, zřizování, ale existují některé výjimky (Příklad: WORKDAY synchronizace příchozích dat).
 
-* **Cíl systému** -úložišti uživatelů, které se synchronizuje služba zřizování Azure AD. Toto je obvykle aplikace SaaS (příklady: Salesforce, ServiceNow, Google Apps, Dropbox for Business), ale v některých případech může být místnímu systému, jako je Active Directory (Příklad: WORKDAY synchronizace příchozích dat do služby Active Directory).
+* **Cíl systému** -úložišti uživatelů, které se synchronizuje služba zřizování Azure AD. Toto je obvykle aplikace SaaS (příklady: Salesforce, ServiceNow, G Suite, Dropbox for Business), ale v některých případech může být místnímu systému, jako je Active Directory (Příklad: WORKDAY synchronizace příchozích dat do služby Active Directory).
 
 
 ## <a name="getting-provisioning-reports-from-the-azure-management-portal"></a>Načítání, vytváření sestav z portálu pro správu Azure
@@ -135,7 +135,7 @@ Zřizování souhrnné sestavy a auditu protokoly sami hrát klíčovou roli pom
 Založené na scénářích informace o odstraňování potíží automatické zřizování uživatelů najdete v tématu [problémy konfigurace a zřizování uživatelů pro aplikaci](application-provisioning-config-problem.md).
 
 
-## <a name="additional-resources"></a>Další prostředky
+## <a name="additional-resources"></a>Další materiály
 
 * [Správa zřizování uživatelských účtů pro podnikové aplikace](configure-automatic-user-provisioning-portal.md)
 * [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](what-is-single-sign-on.md)

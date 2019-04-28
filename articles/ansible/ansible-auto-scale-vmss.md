@@ -1,47 +1,63 @@
 ---
-title: Automatické škálování virtuálního počítače škálovací sady v Azure pomocí Ansible
-description: Zjistěte, jak použít Ansible k škálování virtuálního počítače škálovací sady s automatickým Škálováním v Azure
-ms.service: azure
+title: Kurz – automatické škálování škálovací sady virtuálních počítačů v Azure pomocí Ansible | Dokumentace Microsoftu
+description: Zjistěte, jak použít Ansible k škálování škálovací sady virtuálních počítačů s automatickým Škálováním v Azure
 keywords: ansible, azure, devops, bash, playbook, škálování, automatické škálování, virtuálních počítačů, škálovací sadu virtuálních počítačů, vmss
+ms.topic: tutorial
+ms.service: ansible
 author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
-ms.topic: tutorial
-ms.date: 12/10/2018
-ms.openlocfilehash: 578ad3207f62e74805be056ca11d3bd9b46513da
-ms.sourcegitcommit: d89b679d20ad45d224fd7d010496c52345f10c96
-ms.translationtype: MT
+ms.date: 04/22/2019
+ms.openlocfilehash: a5cba405e75994ac97a60d3d73839e2a3d670451
+ms.sourcegitcommit: 37343b814fe3c95f8c10defac7b876759d6752c3
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57792425"
+ms.lasthandoff: 04/24/2019
+ms.locfileid: "63763959"
 ---
-# <a name="automatically-scale-a-virtual-machine-scale-set-in-azure-using-ansible"></a>Automatické škálování virtuálního počítače škálovací sady v Azure pomocí Ansible
-Ansible umožňuje automatizovat nasazování a konfiguraci prostředků ve vašem prostředí. Pomocí Ansible můžete spravovat škálovací sadu virtuálních počítačů v Azure stejně jako jakékoli jiné prostředky Azure. 
+# <a name="tutorial-autoscale-virtual-machine-scale-sets-in-azure-using-ansible"></a>Kurz: Automatické škálování škálovací sady virtuálních počítačů v Azure pomocí Ansible
 
-Při vytváření škálovací sady definujete počet instancí virtuálních počítačů, které chcete spouštět. S měnícími se požadavky na aplikaci můžete počet instancí virtuálních počítačů automaticky zvyšovat nebo snižovat. Možnost automatického škálování umožňuje držet krok s požadavky zákazníků nebo reagovat na změny výkonu aplikace v průběhu jejího životního cyklu. V tomto článku vytvoříte nastavení automatického škálování a přidružte ji k existující škálovací sady virtuálních počítačů. V nastavení automatického škálování můžete nakonfigurovat pravidlo pro horizontální navýšení kapacity nebo horizontálně, jak chcete.
+[!INCLUDE [ansible-27-note.md](../../includes/ansible-27-note.md)]
+
+[!INCLUDE [open-source-devops-intro-vmss.md](../../includes/open-source-devops-intro-vmss.md)]
+
+Funkce automaticky úpravy počtu instancí virtuálních počítačů se nazývá [automatického škálování](/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-autoscale-overview). Výhodou automatického škálování je, že snižuje režie na správu pro monitorování a optimalizace výkonu vaší aplikace. Automatické škálování je možné nakonfigurovat jako reakce na vyžádání nebo podle daného plánu. Pomocí Ansible, můžete zadat pravidla automatického škálování, které definují přijatelný výkon pro pozitivní zkušenosti.
+
+[!INCLUDE [ansible-tutorial-goals.md](../../includes/ansible-tutorial-goals.md)]
+
+> [!div class="checklist"]
+>
+> * Definice profilu automatického škálování
+> * Automatické škálování podle plánu opakování
+> * Automatické škálování na základě výkonu aplikace
+> * Načíst informace o nastavení automatického škálování 
+> * Zakázání nastavení automatického škálování
 
 ## <a name="prerequisites"></a>Požadavky
-- **Předplatné Azure** – Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) před tím, než začnete.
-- [!INCLUDE [ansible-prereqs-for-cloudshell-use-or-vm-creation1.md](../../includes/ansible-prereqs-for-cloudshell-use-or-vm-creation1.md)] [!INCLUDE [ansible-prereqs-for-cloudshell-use-or-vm-creation2.md](../../includes/ansible-prereqs-for-cloudshell-use-or-vm-creation2.md)]
-- Existující škálovací sady virtuálních počítačů Azure. – Pokud nemáte některou, [vytvoření škálovací sady virtuálních počítačů v Azure pomocí Ansible](https://docs.microsoft.com/azure/ansible/ansible-create-configure-vmss).
 
-> [!Note]
-> Ke spuštění následujících ukázkových playbooků v tomto kurzu se vyžaduje Ansible 2.7. 
+- [!INCLUDE [open-source-devops-prereqs-azure-subscription.md](../../includes/open-source-devops-prereqs-azure-subscription.md)]
+- [!INCLUDE [ansible-prereqs-cloudshell-use-or-vm-creation1.md](../../includes/ansible-prereqs-cloudshell-use-or-vm-creation1.md)] [!INCLUDE [ansible-prereqs-cloudshell-use-or-vm-creation2.md](../../includes/ansible-prereqs-cloudshell-use-or-vm-creation2.md)]
+- [!INCLUDE [ansible-prereqs-vm-scale-set.md](../../includes/ansible-prereqs-vm-scale-set.md)]
 
-## <a name="auto-scale-based-on-a-schedule"></a>Automatické škálování podle plánu   
+## <a name="autoscale-based-on-a-schedule"></a>Automatické škálování podle plánu
+
 Pokud chcete povolit automatické škálování na škálovací sadě, je nejdříve potřeba definovat profil automatického škálování. Tento profil definuje výchozí, minimální a maximální kapacitu škálovací sady. Tato omezení umožňují řídit náklady tím, že vytvoříte ne průběžně instancí virtuálních počítačů a vyvážení přijatelný výkon s minimální počet instancí, které zůstávají v případě škálování na méně instancí. 
 
-Můžete škálovat v a škálování na více instancí ve Škálovací sady virtuálních počítačů podle opakovaného plánu nebo podle konkrétního data. Tato část představuje playbook Ansible vzorku, který vytvoří nastavení automatického škálování, které zvýší počet instancí virtuálních počítačů na tři ve vaší škálovací sady na 10:00 každé pondělí tichomořském časovém pásmu. 
+Ansible umožňuje škálování škálovací sady na konkrétní datum nebo opakovaně.
+
+Playbook kód v této části zvýší počet instancí virtuálních počítačů na tři v každé pondělí 10:00.
+
+Uložte následující ukázkový playbook jako `vmss-auto-scale.yml`:
 
 ```yml
 ---
 - hosts: localhost
   vars:
     resource_group: myResourceGroup
-    vmss_name: myVMSS
+    vmss_name: myScaleSet
     name: autoscalesetting
   tasks: 
-    - name: Create auto scaling
+    - name: Create autoscaling
       azure_rm_autoscale:
          resource_group: "{{ resource_group }}"
          name: "{{ name }}"
@@ -65,23 +81,31 @@ Můžete škálovat v a škálování na více instancí ve Škálovací sady vi
               - '10'
 ```
 
-Uložit tento playbook jako *vmss. automatické scale.yml*. Playbook Ansible spustíte pomocí příkazu **ansible-playbook** následujícím způsobem:
+Spuštění playbooku pomocí `ansible-playbook` příkaz:
 
 ```bash
 ansible-playbook vmss-auto-scale.yml
 ```
 
-## <a name="auto-scale-based-on-performance-data"></a>Automatické škálování na základě dat výkonu
-Hodnota se zvyšuje vaši aplikace vyžadují, nastaví zatížení v instancích virtuálních počítačů ve škálovací zvyšuje. Pokud je toto zvýšené zatížení konzistentní, a nejedná se pouze o krátkou poptávku, můžete nakonfigurovat pravidla automatického škálování pro zvýšení počtu instancí virtuálních počítačů ve škálovací sadě. Po vytvoření těchto instancí virtuálních počítačů a nasazení aplikací do nich začne škálovací sada distribuovat provoz prostřednictvím nástroje pro vyrovnávání zatížení. Můžete řídit, které metriky se mají monitorovat, například CPU nebo disk, jak dlouho musí zatížení aplikace dosahovat dané prahové hodnoty a kolik instancí virtuálních počítačů se má do škálovací sady přidat.
+## <a name="autoscale-based-on-performance-data"></a>Automatické škálování podle data o výkonu
 
-Můžete škálovat v a škálování na více instancí ve Škálovací sady virtuálních počítačů na základě výkonu metriky prahových hodnot, podle opakovaného plánu nebo podle konkrétního data. Tato část nabízí ukázkové playbook Ansible, který kontroluje úlohy za posledních 10 minut na 18:00 každé pondělí, tichomořské časové pásmo a škálovat počet instancí virtuálních počítačů ve škálovací sadě na čtyři nebo škáluje na jednu instanci podle procentuální využití procesoru v metriky. 
+Hodnota se zvyšuje vaši aplikace vyžadují, nastaví zatížení v instancích virtuálních počítačů ve škálovací zvyšuje. Pokud je toto zvýšené zatížení konzistentní, a nejedná se pouze o krátkou poptávku, můžete nakonfigurovat pravidla automatického škálování pro zvýšení počtu instancí virtuálních počítačů ve škálovací sadě. Po vytvoření těchto instancí virtuálních počítačů a nasazení aplikací do nich začne škálovací sada distribuovat provoz prostřednictvím nástroje pro vyrovnávání zatížení. Ansible umožňuje řídit, které metriky pro monitorování, jako je například využití procesoru, využití disku a doba načtení aplikace. Je možné škálovat v a horizontální navýšení kapacity škálovací nastaví na základě výkonu prahové hodnoty metrik, podle opakovaného plánu nebo podle konkrétního data. 
+
+Playbook kódu v této části pracovního vytížení procesoru vyhledá předchozí 10 minut v každé pondělí 18:00. 
+
+Podle metrik procento využití procesoru, provede playbook jednu z následujících akcí:
+
+- Škáluje počet instancí virtuálních počítačů na čtyři
+- Škálování počtu instancí virtuálních počítačů na jeden
+
+Uložte následující ukázkový playbook jako `vmss-auto-scale-metrics.yml`:
 
 ```yml
 ---
 - hosts: localhost
   vars:
     resource_group: myResourceGroup
-    vmss_name: myVMSS
+    vmss_name: myScaleSet
     name: autoscalesetting
   tasks:
   - name: Get facts of the resource group
@@ -89,11 +113,11 @@ Můžete škálovat v a škálování na více instancí ve Škálovací sady vi
       name: "{{ resource_group }}"
     register: rg
 
-  - name: Get VMSS resource uri
+  - name: Get scale set resource uri
     set_fact:
       vmss_id: "{{ rg.ansible_facts.azure_resourcegroups[0].id }}/providers/Microsoft.Compute/virtualMachineScaleSets/{{ vmss_name }}"
     
-  - name: Create auto scaling
+  - name: Create autoscaling
     azure_rm_autoscale:
       resource_group: "{{ resource_group }}"
       name: "{{ name }}"
@@ -151,14 +175,17 @@ Můžete škálovat v a škálování na více instancí ve Škálovací sady vi
             value: '1'
 ```
 
-Uložit tento playbook jako *vmss automatické škálování metrics.yml*. Playbook Ansible spustíte pomocí příkazu **ansible-playbook** následujícím způsobem:
+Spuštění playbooku pomocí `ansible-playbook` příkaz:
 
 ```bash
 ansible-playbook vmss-auto-scale-metrics.yml
 ```
 
-## <a name="get-information-for-existing-autoscale-settings"></a>Získejte informace pro stávající nastavení automatického škálování
-Můžete získat podrobnosti o všech nastavení automatického škálování prostřednictvím *azure_rm_autoscale_facts* modul s playbook následujícím způsobem:
+## <a name="get-autoscale-settings-information"></a>Získejte informace o nastavení automatického škálování 
+
+Playbook kód v této části používá `azure_rm_autoscale_facts` modul načíst podrobnosti o nastavení automatického škálování.
+
+Uložte následující ukázkový playbook jako `vmss-auto-scale-get-settings.yml`:
 
 ```yml
 - hosts: localhost
@@ -166,7 +193,7 @@ Můžete získat podrobnosti o všech nastavení automatického škálování pr
     resource_group: myResourceGroup
     name: autoscalesetting
   tasks: 
-    - name: Retrieve auto scale settings information
+    - name: Retrieve autoscale settings information
       azure_rm_autoscale_facts:
         resource_group: "{{ resource_group }}"
         name: "{{ name }}"
@@ -176,8 +203,19 @@ Můžete získat podrobnosti o všech nastavení automatického škálování pr
         var: autoscale_query.autoscales[0]
 ```
 
-## <a name="disable-the-autoscale-settings"></a>Zakázat nastavením automatického škálování
-Zadané nastavení automatického škálování můžete zakázat tak, že změníte `enabled: true` k `enabled: false`, nebo odstranění nastavení automatického škálování pomocí playbooku následujícím způsobem:
+Spuštění playbooku pomocí `ansible-playbook` příkaz:
+
+```bash
+ansible-playbook vmss-auto-scale-get-settings.yml
+```
+
+## <a name="disable-autoscale-settings"></a>Zakázat nastavením automatického škálování
+
+Existují dva způsoby, jak zakázat nastavením automatického škálování. Jedním ze způsobů je změnit `enabled` klíče z `true` k `false`. Druhý způsob je odstranit nastavení.
+
+Playbook kódu v této části odstraní zadané nastavení automatického škálování. 
+
+Uložte následující ukázkový playbook jako `vmss-auto-scale-delete-setting.yml`:
 
 ```yml
 - hosts: localhost
@@ -185,13 +223,20 @@ Zadané nastavení automatického škálování můžete zakázat tak, že změn
     resource_group: myResourceGroup
     name: autoscalesetting
   tasks: 
-    - name: Delete auto scaling
+    - name: Delete autoscaling
       azure_rm_autoscale:
          resource_group: "{{ resource_group }}"
          name: "{{ name }}"
          state: absent
 ```
 
+Spuštění playbooku pomocí `ansible-playbook` příkaz:
+
+```bash
+vmss-auto-scale-delete-setting.yml
+```
+
 ## <a name="next-steps"></a>Další postup
+
 > [!div class="nextstepaction"] 
-> [Nastaví playbook Ansible vzorku pro škálování virtuálních počítačů](https://github.com/Azure-Samples/ansible-playbooks/tree/master/vmss)
+> [Kurz: Nastaví vlastní obrázek aktualizace sady škálování virtuálních počítačů Azure pomocí Ansible](./ansible-vmss-update-image.md)

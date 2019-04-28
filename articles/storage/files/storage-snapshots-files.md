@@ -2,18 +2,18 @@
 title: Přehled snímků sdílených složek pro soubory Azure | Dokumentace Microsoftu
 description: Snímek sdílené složky je jen pro čtení verze do sdílené složky Azure Files, která je provedena v bodě v čase, jako způsob, jak zálohovat sdílenou složku.
 services: storage
-author: RenaShahMSFT
+author: roygara
 ms.service: storage
 ms.topic: article
 ms.date: 01/17/2018
-ms.author: renash
+ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 8d6bca12ae1df0cab7be3e1c54467d32063bacaf
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: 7305c6a5047bd09f6c9bda018748643ff81fe893
+ms.sourcegitcommit: 37343b814fe3c95f8c10defac7b876759d6752c3
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60444091"
+ms.lasthandoff: 04/24/2019
+ms.locfileid: "63763511"
 ---
 # <a name="overview-of-share-snapshots-for-azure-files"></a>Přehled snímků sdílených složek pro soubory Azure 
 Služba soubory Azure umožňuje využít snímky sdílené složky nebo sdílené složky. Sdílejte zachytávání snímků sdílené složky stavu v daném okamžiku v čase. V tomto článku popisujeme, jaké možnosti poskytuje snímky sdílené složky a jak můžete využít z nich ve vašem případě vlastní použití.
@@ -58,7 +58,7 @@ I v případě, že snímky sdílené složky jsou postupně uloženy, je potře
 
 Snímky se nepočítají směrem k vaší sdílené složky 5 TB omezení. Neexistuje žádné omezení, kolik místa na snímky sdílené složky zabírat celkem. Stále platí omezení účtu úložiště.
 
-## <a name="limits"></a>Omezení
+## <a name="limits"></a>Limits
 Maximální počet snímků sdílené složky, které Azure Files umožňuje ještě dnes je 200. Po snímků 200 sdílených složek je nutné odstranit starší snímků sdílené složky chcete-li vytvořit nové. 
 
 Neexistuje žádné omezení souběžných volání pro vytvoření snímků sdílené složky. Neexistuje žádné omezení množství místa na tuto sdílenou složku, kterou můžete využívat snímky sdílené složky konkrétní. 

@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 10/30/2016
 ms.author: crdun
 ms.openlocfilehash: 44c54b570a38eb1a3b9ca773893599d1d497dfa2
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52972146"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62110979"
 ---
 # <a name="enable-offline-sync-for-your-cordova-mobile-app"></a>Povolení offline synchronizace pro mobilní aplikaci Cordova
 [!INCLUDE [app-service-mobile-selector-offline](../../includes/app-service-mobile-selector-offline.md)]
@@ -186,7 +186,7 @@ V této části můžete aplikaci znovu připojte mobilní back-endu, který sim
 
     Všimněte si, že data se synchronizovala mezi databází a místní úložiště a obsahuje položky, které jste přidali, zatímco aplikace byl odpojen.
 
-## <a name="additional-resources"></a>Další zdroje informací:
+## <a name="additional-resources"></a>Další materiály
 * [Synchronizace offline dat v prostředí Azure Mobile Apps]
 * [Visual Studio Tools for Apache Cordova]
 

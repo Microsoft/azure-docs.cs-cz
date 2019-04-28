@@ -5,15 +5,15 @@ author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 12/06/2018
+ms.date: 04/23/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: b10be061e015686c68684723fd2d73c1431c7266
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: MT
+ms.openlocfilehash: a440494b183d18c1d888b5d39836eb4317190d02
+ms.sourcegitcommit: 37343b814fe3c95f8c10defac7b876759d6752c3
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59699402"
+ms.lasthandoff: 04/24/2019
+ms.locfileid: "63764319"
 ---
 # <a name="automation-with-service-principals"></a>Automatizace s využitím instančních objektů
 
@@ -47,13 +47,37 @@ ID aplikace instančního objektu služby a heslo nebo certifikát je možné v 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-Při použití instančního objektu pro operace správy zdrojů se [Az.AnalysisServices](/powershell/module/az.analysisservices) modul, použijte `Connect-AzAccount` rutiny. Při použití instančního objektu pro operace serveru se [SQLServer](https://www.powershellgallery.com/packages/SqlServer) modul, použijte `Add-AzAnalysisServicesAccount` rutiny. 
+#### <a name="a-nameazmodule-using-azanalysisservices-module"></a><a name="azmodule" />Pomocí modulu Az.AnalysisServices
+
+Při použití instančního objektu pro operace správy zdrojů se [Az.AnalysisServices](/powershell/module/az.analysisservices) modul, použijte `Connect-AzAccount` rutiny. 
+
+V následujícím příkladu appID a heslo slouží k provedení operace roviny řízení pro synchronizaci, aby se repliky jen pro čtení a škálovat nahoru/out:
+
+```powershell
+Param (
+        [Parameter(Mandatory=$true)] [String] $AppId,
+        [Parameter(Mandatory=$true)] [String] $PlainPWord,
+        [Parameter(Mandatory=$true)] [String] $TenantId
+       )
+$PWord = ConvertTo-SecureString -String $PlainPWord -AsPlainText -Force
+$Credential = New-Object -TypeName "System.Management.Automation.PSCredential" -ArgumentList $AppId, $PWord
+
+# Connect using Az module
+Connect-AzAccount -Credential $Credential -SubscriptionId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxxx"
+
+# Syncronize a database for query scale out
+Sync-AzAnalysisServicesInstance -Instance "asazure://westus.asazure.windows.net/testsvr" -Database "testdb"
+
+# Scale up the server to an S1, set 2 read-only replicas, and remove the primary from the query pool. The new replicas will hydrate from the synchronized data.
+Set-AzAnalysisServicesServer -Name "testsvr" -ResourceGroupName "testRG" -Sku "S1" -ReadonlyReplicaCount 2 -DefaultConnectionMode Readonly
+```
+
+#### <a name="using-sqlserver-module"></a>Pomocí modulu SQLServer
 
 V následujícím příkladu appID a heslo slouží k provedení operace obnovení databáze modelu:
 
 ```powershell
 Param (
-
         [Parameter(Mandatory=$true)] [String] $AppId,
         [Parameter(Mandatory=$true)] [String] $PlainPWord,
         [Parameter(Mandatory=$true)] [String] $TenantId

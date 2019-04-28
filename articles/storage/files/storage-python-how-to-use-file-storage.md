@@ -2,19 +2,19 @@
 title: Vývoj pro soubory Azure pomocí Pythonu | Dokumentace Microsoftu
 description: Informace o vývoji aplikací v Pythonu a služby, které používají soubory Azure k ukládání dat souborů.
 services: storage
-author: wmgries
+author: roygara
 ms.service: storage
 ms.devlang: python
 ms.topic: article
 ms.date: 12/14/2018
-ms.author: tamram
+ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 06c0256043ef27e6298cc4e30dc3f372e6bd3959
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
-ms.translationtype: MT
+ms.openlocfilehash: ecb3ef82196c3b6febd44850b47f467ba37facc2
+ms.sourcegitcommit: 37343b814fe3c95f8c10defac7b876759d6752c3
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55456591"
+ms.lasthandoff: 04/24/2019
+ms.locfileid: "63763523"
 ---
 # <a name="develop-for-azure-files-with-python"></a>Vývoj pro soubory Azure pomocí Pythonu
 [!INCLUDE [storage-selector-file-include](../../../includes/storage-selector-file-include.md)]
@@ -90,7 +90,7 @@ for file_or_dir in generator:
     print(file_or_dir.name)
 ```
 
-## <a name="upload-a-file"></a>Nahrání souboru 
+## <a name="upload-a-file"></a>Nahrát soubor 
 Sdílené složky Azure obsahuje přinejmenším, kořenový adresář, kde mohou být soubory umístěny. V této části se dozvíte, jak nahrát soubor z místního úložiště na kořenovém adresáři sdílené složky.
 
 Chcete-li vytvořit soubor a nahrát data, použijte `create_file_from_path`, `create_file_from_stream`, `create_file_from_bytes` nebo `create_file_from_text` metody. Jsou to základní metody, které provádějí nezbytné bloků, když velikost dat je větší než 64 MB.
@@ -109,7 +109,7 @@ file_service.create_file_from_path(
     content_settings=ContentSettings(content_type='image/png'))
 ```
 
-## <a name="download-a-file"></a>Stažení souboru
+## <a name="download-a-file"></a>Stáhnout soubor
 Chcete-li stáhnout data ze souboru, použijte `get_file_to_path`, `get_file_to_stream`, `get_file_to_bytes`, nebo `get_file_to_text`. Jsou to základní metody, které provádějí nezbytné bloků, když velikost dat je větší než 64 MB.
 
 Následující příklad ukazuje použití `get_file_to_path` stáhnout obsah **myfile** soubor a uložte ho do **mimo sunset.png** souboru.

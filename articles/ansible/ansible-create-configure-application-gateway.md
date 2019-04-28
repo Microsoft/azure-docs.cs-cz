@@ -1,46 +1,44 @@
 ---
-title: Správa webového provozu s využitím Azure Application Gateway pomocí Ansible
+title: Kurz – Správa webového provozu s využitím Azure Application Gateway pomocí Ansible | Dokumentace Microsoftu
 description: Zjistěte, jak pomocí Ansible vytvořit a nakonfigurovat službu Azure Application Gateway pro správu webového provozu.
-ms.service: azure
 keywords: ansible, azure, devops, bash, playbooku, aplikační bránu, nástroj pro vyrovnávání zatížení, webového provozu
+ms.topic: tutorial
+ms.service: ansible
 author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
-ms.topic: tutorial
-ms.date: 09/20/2018
-ms.openlocfilehash: 83f21573af7ec523acc376c4b3364cdcfb47f96f
-ms.sourcegitcommit: d89b679d20ad45d224fd7d010496c52345f10c96
-ms.translationtype: MT
+ms.date: 04/22/2019
+ms.openlocfilehash: 3fd16381aba87b711e799835c9f069e9c53a02ce
+ms.sourcegitcommit: 37343b814fe3c95f8c10defac7b876759d6752c3
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57792136"
+ms.lasthandoff: 04/24/2019
+ms.locfileid: "63765935"
 ---
-# <a name="manage-web-traffic-with-azure-application-gateway-by-using-ansible"></a>Správa webového provozu s využitím Azure Application Gateway pomocí Ansible
+# <a name="tutorial-manage-web-traffic-with-azure-application-gateway-using-ansible"></a>Kurz: Správa webového provozu s využitím Azure Application Gateway pomocí Ansible
 
-[Azure Application Gateway](https://docs.microsoft.com/azure/application-gateway/) je nástroj pro vyrovnávání zatížení webových přenosů, který vám umožní spravovat provoz do webových aplikací.
+[!INCLUDE [ansible-27-note.md](../../includes/ansible-27-note.md)]
 
-Ansible pomáhá automatizovat nasazování a konfiguraci prostředků ve vašem prostředí. V tomto článku se dozvíte, jak pomocí Ansible vytvořit aplikační bránu. Zjistíte také, jak pomocí této brány spravovat provoz do dvou webových serverů spuštěných v instancích kontejnerů Azure.
+[Azure Application Gateway](/azure/application-gateway/overview) je nástroj pro vyrovnávání zatížení webových přenosů, který vám umožní spravovat provoz do webových aplikací. Na základě zdrojové IP adresy a portu, nástroje pro vyrovnávání zatížení směrování provozu do cílové IP adresy a portu. Služba Application Gateway poskytuje jemnější stupeň řízení, kde je možné směrovat provoz podle zadané adresy URL. Například můžete definovat, že pokud `images` je cesta adresy URL, provoz se směruje na konkrétní sadu serverů (označované jako fond) nakonfigurovaný pro bitové kopie.
 
-V tomto kurzu získáte informace o následujících postupech:
+[!INCLUDE [ansible-tutorial-goals.md](../../includes/ansible-tutorial-goals.md)]
 
 > [!div class="checklist"]
+>
 > * Nastavit síť
 > * Vytvoření dvou instancí kontejnerů Azure s imagemi HTTPD
 > * Vytvoření aplikační brány, která funguje s instancemi kontejnerů Azure ve fondu serverů
 
 ## <a name="prerequisites"></a>Požadavky
 
-- **Předplatné Azure** – Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) před tím, než začnete.
-- [!INCLUDE [ansible-prereqs-for-cloudshell-use-or-vm-creation1.md](../../includes/ansible-prereqs-for-cloudshell-use-or-vm-creation1.md)] [!INCLUDE [ansible-prereqs-for-cloudshell-use-or-vm-creation2.md](../../includes/ansible-prereqs-for-cloudshell-use-or-vm-creation2.md)]
-
-> [!Note]
-> Ke spuštění následujících ukázkových playbooků v tomto kurzu se vyžaduje Ansible 2.7. 
+* [!INCLUDE [open-source-devops-prereqs-azure-subscription.md](../../includes/open-source-devops-prereqs-azure-subscription.md)]
+* [!INCLUDE [ansible-prereqs-cloudshell-use-or-vm-creation1.md](../../includes/ansible-prereqs-cloudshell-use-or-vm-creation1.md)] [!INCLUDE [ansible-prereqs-cloudshell-use-or-vm-creation2.md](../../includes/ansible-prereqs-cloudshell-use-or-vm-creation2.md)]
 
 ## <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
 
-Skupina prostředků je logický kontejner, ve kterém se nasazují a spravují prostředky Azure.  
+Playbook kód v této části se vytvoří skupina prostředků Azure. Skupina prostředků je logický kontejner, ve které jsou nakonfigurované prostředky.  
 
-Následující příklad vytvoří skupinu prostředků **myResourceGroup** v umístění **eastus**.
+Uložte následující ukázkový playbook jako `rg.yml`:
 
 ```yml
 - hosts: localhost
@@ -54,7 +52,12 @@ Následující příklad vytvoří skupinu prostředků **myResourceGroup** v um
         location: "{{ location }}"
 ```
 
-Uložte tento playbook jako *rg.yml*. Playbook spustíte pomocí příkazu **ansible-playbook** následujícím způsobem:
+Před spuštěním playbooku, viz následující poznámky:
+
+- Název skupiny prostředků je `myResourceGroup`. Tato hodnota se používá v rámci tohoto kurzu.
+- Skupina prostředků se vytvořila v `eastus` umístění.
+
+Spuštění playbooku pomocí `ansible-playbook` příkaz:
 
 ```bash
 ansible-playbook rg.yml
@@ -62,9 +65,9 @@ ansible-playbook rg.yml
 
 ## <a name="create-network-resources"></a>Vytvoření síťových prostředků
 
-Nejprve vytvořte virtuální síť, aby aplikační brána mohla komunikovat s ostatními prostředky.
+Playbook kódu v této části se vytvoří virtuální síť umožňuje komunikovat s ostatními prostředky application gateway.
 
-Následující příklad vytvoří virtuální síť **myVNet**, podsíť **myAGSubnet** a veřejnou IP adresu **myAGPublicIPAddress** s doménou **mydomain**.
+Uložte následující ukázkový playbook jako `vnet_create.yml`:
 
 ```yml
 - hosts: localhost
@@ -102,7 +105,12 @@ Následující příklad vytvoří virtuální síť **myVNet**, podsíť **myAG
         domain_name_label: "{{ publicip_domain }}"
 ```
 
-Uložte tento playbook jako *vnet_create.yml*. Playbook spustíte pomocí příkazu **ansible-playbook** následujícím způsobem:
+Před spuštěním playbooku, viz následující poznámky:
+
+* `vars` Oddíl obsahuje hodnoty, které se používají k vytvoření síťových prostředků. 
+* Bude potřeba změnit tyto hodnoty pro konkrétní prostředí.
+
+Spuštění playbooku pomocí `ansible-playbook` příkaz:
 
 ```bash
 ansible-playbook vnet_create.yml
@@ -110,7 +118,9 @@ ansible-playbook vnet_create.yml
 
 ## <a name="create-servers"></a>Vytvoření serverů
 
-Následující příklad ukazuje, jak vytvořit dvě instance kontejnerů Azure s imagemi HTTPD, které se použijí jako webové servery pro aplikační bránu.  
+Playbook kód v této části vytvoří dvě instance kontejneru Azure s imagí HTTPD má být použit jako webových serverů pro službu application gateway.  
+
+Uložte následující ukázkový playbook jako `aci_create.yml`:
 
 ```yml
 - hosts: localhost
@@ -153,7 +163,7 @@ Následující příklad ukazuje, jak vytvořit dvě instance kontejnerů Azure 
               - 80
 ```
 
-Uložte tento playbook jako *aci_create.yml*. Playbook spustíte pomocí příkazu **ansible-playbook** následujícím způsobem:
+Spuštění playbooku pomocí `ansible-playbook` příkaz:
 
 ```bash
 ansible-playbook aci_create.yml
@@ -161,14 +171,9 @@ ansible-playbook aci_create.yml
 
 ## <a name="create-the-application-gateway"></a>Vytvoření služby Application Gateway
 
-Následující příklad vytvoří aplikační bránu **myAppGateway** s konfiguracemi back-endu, front-endu a HTTP.  
+Playbook kódu v této části se vytvoří aplikační brána s názvem `myAppGateway`.  
 
-* **appGatewayIP** se definuje v bloku **gateway_ip_configurations**. Pro konfiguraci IP adresy brány se vyžaduje odkaz na podsíť.
-* **appGatewayBackendPool** se definuje v bloku **backend_address_pools**. Aplikační brána musí mít alespoň jeden back-endový fond adres.
-* **appGatewayBackendHttpSettings** se definuje v bloku **backend_http_settings_collection**. Určuje, že se ke komunikaci používá port 80 a protokol HTTP.
-* **appGatewayHttpListener** se definuje v bloku **backend_http_settings_collection**. Jedná se o výchozí naslouchací proces přidružený k fondu appGatewayBackendPool.
-* **appGatewayFrontendIP** se definuje v bloku **frontend_ip_configurations**. Přiřadí adresu myAGPublicIPAddress k naslouchacímu procesu appGatewayHttpListener.
-* **rule1** se definuje v bloku **request_routing_rules**. Jedná se o výchozí pravidlo směrování přidružené k naslouchacímu procesu appGatewayHttpListener.
+Uložte následující ukázkový playbook jako `appgw_create.yml`:
 
 ```yml
 - hosts: localhost
@@ -252,7 +257,16 @@ Následující příklad vytvoří aplikační bránu **myAppGateway** s konfigu
             name: rule1
 ```
 
-Uložte tento playbook jako *appgw_create.yml*. Playbook spustíte pomocí příkazu **ansible-playbook** následujícím způsobem:
+Před spuštěním playbooku, viz následující poznámky:
+
+* `appGatewayIP` je definován v `gateway_ip_configurations` bloku. Pro konfiguraci IP adresy brány se vyžaduje odkaz na podsíť.
+* `appGatewayBackendPool` je definován v `backend_address_pools` bloku. Aplikační brána musí mít alespoň jeden back-endový fond adres.
+* `appGatewayBackendHttpSettings` je definován v `backend_http_settings_collection` bloku. Určuje, že port 80 a protokol HTTP se používají ke komunikaci.
+* `appGatewayHttpListener` je definován v `backend_http_settings_collection` bloku. Jedná se o výchozí naslouchací proces přidružený k fondu appGatewayBackendPool.
+* `appGatewayFrontendIP` je definován v `frontend_ip_configurations` bloku. Přiřadí adresu myAGPublicIPAddress k naslouchacímu procesu appGatewayHttpListener.
+* `rule1` je definován v `request_routing_rules` bloku. Jedná se o výchozí pravidlo směrování přidružené k naslouchacímu procesu appGatewayHttpListener.
+
+Spuštění playbooku pomocí `ansible-playbook` příkaz:
 
 ```bash
 ansible-playbook appgw_create.yml
@@ -262,13 +276,23 @@ Vytvoření aplikační brány může trvat několik minut.
 
 ## <a name="test-the-application-gateway"></a>Otestování aplikační brány
 
-V ukázkovém playbooku pro síťové prostředky jste vytvořili doménu **mydomain** v oblasti **eastus**. V prohlížeči přejděte na adresu `http://mydomain.eastus.cloudapp.azure.com`. Pokud se zobrazí následující stránka, znamená to, že aplikační brána funguje očekávaným způsobem.
+1. V [vytvořte skupinu prostředků](#create-a-resource-group) části, zadejte umístění. Poznamenejte si jeho hodnotu.
 
-![Úspěšný test fungující aplikační brány](media/ansible-create-configure-application-gateway/applicationgateway.PNG)
+1. V [vytvoření síťových prostředků](#create-network-resources) části, zadejte doménu. Poznamenejte si jeho hodnotu.
+
+1. Pro testovací adresa URL umístění a domény nahrazením následujícímu vzoru: `http://<domain>.<location>.cloudapp.azure.com`.
+
+1. Přejděte na adresu URL testu.
+
+1. Pokud se zobrazí následující stránka, znamená to, že aplikační brána funguje očekávaným způsobem.
+
+    ![Úspěšný test fungující aplikační brány](media/ansible-application-gateway-configure/application-gateway.png)
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Pokud tyto prostředky nepotřebujete, můžete je odstranit spuštěním následujícího kódu. Ten odstraní skupinu prostředků **myResourceGroup**.
+Pokud už je nepotřebujete, odstraňte prostředky vytvořené v tomto článku. 
+
+Uložte následující kód jako `cleanup.yml`:
 
 ```yml
 - hosts: localhost
@@ -281,13 +305,13 @@ Pokud tyto prostředky nepotřebujete, můžete je odstranit spuštěním násle
         state: absent
 ```
 
-Uložte tento playbook jako *rg_delete.yml*. Playbook spustíte pomocí příkazu **ansible-playbook** následujícím způsobem:
+Spuštění playbooku pomocí `ansible-playbook` příkaz:
 
 ```bash
-ansible-playbook rg_delete.yml
+ansible-playbook cleanup.yml
 ```
 
 ## <a name="next-steps"></a>Další postup
 
 > [!div class="nextstepaction"]
-> [Ansible v Azure](https://docs.microsoft.com/azure/ansible/)
+> [Ansible v Azure](/azure/ansible/)

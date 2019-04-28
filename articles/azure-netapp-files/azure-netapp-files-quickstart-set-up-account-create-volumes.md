@@ -1,5 +1,5 @@
 ---
-title: Nastavení souborů NetApp Azure a vytvořte svazek | Dokumentace Microsoftu
+title: Nastavení souborů NetApp Azure a vytvoření svazku systému souborů NFS | Dokumentace Microsoftu
 description: Popisuje, jak rychle nastavit NetApp soubory Azure a vytvořte svazek.
 services: azure-netapp-files
 documentationcenter: ''
@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: quickstart
 ms.date: 2/20/2019
 ms.author: b-juche
-ms.openlocfilehash: 634f23cf3161fff09f21c79fd8300cb269dcc5b7
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: 5b9e85da29b3130d5183f577a7d83d164e217310
+ms.sourcegitcommit: 37343b814fe3c95f8c10defac7b876759d6752c3
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60454371"
+ms.lasthandoff: 04/24/2019
+ms.locfileid: "63759865"
 ---
-# <a name="set-up-azure-netapp-files-and-create-a-volume"></a>Nastavení služby Azure NetApp Files a vytvoření svazku 
+# <a name="set-up-azure-netapp-files-and-create-an-nfs-volume"></a>Nastavení souborů NetApp Azure a vytvoření svazku systému souborů NFS 
 
 Tento článek ukazuje, jak rychle nastavit NetApp soubory Azure a vytvořte svazek. 
 
@@ -88,7 +88,7 @@ Musíte být součástí programu ve verzi Public Preview a pro přístup k posk
 
 5. Klikněte na **OK**.
 
-## <a name="create-a-volume-for-azure-netapp-files"></a>Vytvoření svazku pro Azure NetApp Files
+## <a name="create-an-nfs-volume-for-azure-netapp-files"></a>Vytvoření svazku systému souborů NFS pro soubory Azure NetApp
 
 1. Z okna správy souborů NetApp Azure svého účtu NetApp, klikněte na tlačítko **svazky**.
 
@@ -100,7 +100,6 @@ Musíte být součástí programu ve verzi Public Preview a pro přístup k posk
 
 3. V části Vytvoření svazku okna poskytují informace o svazku: 
    1. Zadejte **myvol1** jako název svazku. 
-   2. Zadejte **myfilepath1** jako cesta k souboru, který se použije k vytvoření cesty exportu svazku.
    3. Vyberte kapacitu fondu (**mypool1**).
    4. Použijte výchozí hodnotu pro kvótu. 
    5. V rámci virtuální sítě, klikněte na tlačítko **vytvořit nový** vytvořit novou virtuální síť Azure (Vnet).  Potom zadejte následující informace:
@@ -116,7 +115,13 @@ Musíte být součástí programu ve verzi Public Preview a pro přístup k posk
 
       ![Vytvořit okno virtuální sítě](../media/azure-netapp-files/azure-netapp-files-create-virtual-network-window.png)  
 
-4. Klikněte na **Zkontrolovat a vytvořit**.
+4. Klikněte na tlačítko **protokol**a pak vyberte **systému souborů NFS** jako typ protokolu pro daný svazek.   
+
+    Zadejte **myfilepath1** jako cesta k souboru, který se použije k vytvoření cesty exportu svazku. 
+
+    ![Zadejte protokol NFS pro rychlý start](../media/azure-netapp-files/azure-netapp-files-quickstart-protocol-nfs.png)
+
+5. Klikněte na **Zkontrolovat a vytvořit**.
 
     ![Zkontrolovat a vytvořit okno](../media/azure-netapp-files/azure-netapp-files-review-and-create-window.png)  
 

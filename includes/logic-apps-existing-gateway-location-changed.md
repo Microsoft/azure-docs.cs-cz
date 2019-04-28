@@ -1,15 +1,10 @@
 ---
-author: ecfan
-ms.service: logic-apps
-ms.topic: include
-ms.date: 11/09/2018
-ms.author: estfan
 ms.openlocfilehash: 0bed11921c94776aa6b7e52c9154cf6a00c89333
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52269628"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60304064"
 ---
-**Q**: Proč umístění pro mé existující bránu změn? <br/>
-**A**: Brána prostředky vytvořené před 3. května 2017 byly přesunuty do původního umístění tenanta Azure AD pro pracovní nebo školní účet, který vytvořili těchto bran. Tyto změny by neměla mít vliv aktuálně spuštěné aplikace logiky, které by měl dál fungovat obvyklým způsobem. Obecná dostupnost brány v květnu umístění prostředků brány se může lišit od umístění aplikace logiky.
+**Q**: Změnily se umístění pro mé existující brány <br/>
+**A**: Prostředky brány vytvořili předtím, než 3. května 2017 byly přesunuty do původního umístění tenanta Azure AD pro pracovní nebo školní účet, který vytvoří těchto bran. Tyto změny by neměla mít vliv aktuálně spuštěné aplikace logiky, které by měl dál fungovat obvyklým způsobem. Obecná dostupnost brány v květnu umístění prostředků brány se může lišit od umístění aplikace logiky.

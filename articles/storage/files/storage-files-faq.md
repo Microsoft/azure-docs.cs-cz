@@ -2,18 +2,18 @@
 title: Nejčastější dotazy (FAQ) pro Azure Files | Dokumentace Microsoftu
 description: Najděte odpovědi na nejčastější dotazy o službě soubory Azure.
 services: storage
-author: RenaShahMSFT
+author: roygara
 ms.service: storage
 ms.date: 01/02/2019
-ms.author: renash
+ms.author: rogarana
 ms.subservice: files
 ms.topic: conceptual
-ms.openlocfilehash: 561c8c9d942210a9bbdc70feff9bc468fa69967e
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
-ms.translationtype: MT
+ms.openlocfilehash: 77f07394eb895c08ef3e366bd486b4270714c2fc
+ms.sourcegitcommit: 37343b814fe3c95f8c10defac7b876759d6752c3
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57995863"
+ms.lasthandoff: 04/24/2019
+ms.locfileid: "63766259"
 ---
 # <a name="frequently-asked-questions-faq-about-azure-files"></a>O službě soubory Azure – nejčastější dotazy (FAQ)
 [Služba soubory Azure](storage-files-introduction.md) nabízí plně spravované sdílené složky v cloudu, které jsou přístupné prostřednictvím standardních průmyslových [zprávy bloku SMB (Server) protokol](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx). Sdílené složky Azure je možné připojit současně v cloudových i místních nasazení systémů Windows, Linux a macOS. Také můžete ukládat do mezipaměti sdílených složek Azure v počítačích s Windows serverem pomocí Azure File Sync pro rychlý přístup blízko, ve kterém jsou využívány.
@@ -382,7 +382,7 @@ Tento článek obsahuje odpovědi na běžné otázky o Azure Files funkce a fun
 
 * <a id="rest-rename"></a>
 **Je k dispozici v rozhraní REST API operaci přejmenovat?**  
-    V tuto chvíli to není možné.
+    V současnosti ne.
 
 * <a id="nested-shares"></a>
 **Můžete nastavit vnořené sdílené složky? Jinými slovy sdílenou složku ve sdílené složce?**  

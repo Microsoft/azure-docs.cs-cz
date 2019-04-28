@@ -15,11 +15,11 @@ ms.date: 04/19/2018
 ms.author: jmprieur
 ms.custom: include file
 ms.openlocfilehash: 8795c9ab0a4dbb76327d0ead48ed33fb0cff9e86
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59528526"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60298106"
 ---
 ## <a name="test-your-code"></a>Testování kódu
 
@@ -47,7 +47,7 @@ Až přejdete na zobrazení kontroleru, byste měli vidět tabulku, která obsah
 |---|---|---|
 |**Název** |Celé jméno uživatele | Uživatel a příjmení název.
 |**Uživatelské jméno** |Uživatel<span>@domain.com</span> | Uživatelské jméno, který se používá k identifikaci uživatele.
-|**Předmět** |Subjekt |Řetězec, který jednoznačně identifikuje uživatele na webu.|
+|**Předmět** |Subject |Řetězec, který jednoznačně identifikuje uživatele na webu.|
 |**ID tenanta** |Guid | A **guid** , který jedinečně reprezentuje uživatele Azure AD organizace.|
 
 Kromě toho byste měli vidět tabulku všechny deklarace identity, které jsou v žádosti o ověření. Další informace najdete v tématu [seznam deklarací identity, které jsou v tokenu ID pro Azure AD](https://docs.microsoft.com/azure/active-directory/develop/active-directory-token-and-claims).

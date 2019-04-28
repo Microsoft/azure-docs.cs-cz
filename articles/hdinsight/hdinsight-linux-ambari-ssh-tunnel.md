@@ -7,14 +7,15 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 12/15/2018
+origin.date: 04/30/2018
+ms.date: 02/04/2019
 ms.author: hrasheed
-ms.openlocfilehash: 03c86aa069300f88b61752ebd3223e424f6e9c96
-ms.sourcegitcommit: ba9f95cf821c5af8e24425fd8ce6985b998c2982
-ms.translationtype: MT
+ms.openlocfilehash: 0361539cefbacb8fc0473a1f863cf2ae4638b444
+ms.sourcegitcommit: 37343b814fe3c95f8c10defac7b876759d6752c3
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54382613"
+ms.lasthandoff: 04/24/2019
+ms.locfileid: "63766755"
 ---
 # <a name="use-ssh-tunneling-to-access-apache-ambari-web-ui-jobhistory-namenode-apache-oozie-and-other-web-uis"></a>Použití tunelování SSH pro přístup k webové uživatelské rozhraní Apache Ambari, JobHistory, NameNode, Apache Oozie a dalším webovým uživatelským rozhraním
 
@@ -34,7 +35,7 @@ Následující webových uživatelských rozhraní vyžadovat tunelu SSH:
 
 Přizpůsobení clusteru pomocí akce skriptu, žádné služby ani nástroje, které nainstalujete, která zpřístupňují webové služby vyžadovat tunelu SSH. Například pokud instalace aplikace Hue pomocí akce skriptu musíte použít tunelového propojení SSH pro přístup k uživatelské rozhraní webu Hue.
 
-> [!IMPORTANT]  
+> [!IMPORTANT]
 > Pokud budete mít přímý přístup k HDInsight prostřednictvím virtuální sítě, není potřeba použít tunelových propojení SSH. Příklad přímý přístup k HDInsight prostřednictvím virtuální sítě, najdete v článku [HDInsight připojit k místní síti](connect-on-premises-network.md) dokumentu.
 
 ## <a name="what-is-an-ssh-tunnel"></a>Co je tunelové propojení SSH
@@ -47,7 +48,7 @@ Přizpůsobení clusteru pomocí akce skriptu, žádné služby ani nástroje, k
 
 * Webový prohlížeč, který může být nakonfigurován pro použití SOCKS5 proxy.
 
-    > [!WARNING]  
+    > [!WARNING]
     > Podpora proxy SOCKS integrovaný do Windows Internet nastavení nepodporuje SOCKS5 a nefunguje s kroky v tomto dokumentu. Následující prohlížeče závisí na nastavení proxy serveru Windows a aktuálně nefungují s kroky v tomto dokumentu:
     >
     > * Microsoft Edge
@@ -110,14 +111,14 @@ Po dokončení příkazu se směruje provoz odeslaný na portu 9876 místního p
 
 ## <a name="use-the-tunnel-from-your-browser"></a>Použití tunelového propojení z prohlížeče
 
-> [!IMPORTANT]  
+> [!IMPORTANT]
 > Kroky v této části pomocí prohlížeče Mozilla FireFox, protože nabízí stejné nastavení proxy serveru na všech platformách. Další moderních prohlížečů, jako je například Google Chrome, můžou vyžadovat rozšíření například FoxyProxy pro práci s tunelové propojení.
 
 1. Prohlížeč nakonfigurovat pro použití **localhost** a port, který jste použili při vytváření tunelového propojení jako **SOCKS v5** proxy serveru. Tady je vypadat nastavení Firefox. Pokud jste použili jiný port než 9876, změňte port, který jste použili:
    
     ![Obrázek nastavení Firefox](./media/hdinsight-linux-ambari-ssh-tunnel/firefoxproxy.png)
    
-   > [!NOTE]  
+   > [!NOTE]
    > Výběr **vzdálený DNS** řeší požadavky systému DNS (Domain Name) pomocí clusteru HDInsight. Toto nastavení řeší DNS pomocí hlavního uzlu clusteru.
 
 2. Zkontrolujte, jestli funguje tunelu návštěvou webu [ https://www.whatismyip.com/ ](https://www.whatismyip.com/). Vrácená IP adresa by měl být použitý v datacentru Microsoft Azure.
@@ -139,7 +140,7 @@ Po vytvoření clusteru ověřte, že se dá dostat služby webovým uživatelsk
 
     ![Image rozbalila se nabídka rychlé odkazy](./media/hdinsight-linux-ambari-ssh-tunnel/namenodedropdown.png)
 
-   > [!NOTE]  
+   > [!NOTE]
    > Když vyberete __rychlé odkazy__, můžete obdržet ukazatele čekání. K tomuto stavu může dojít, pokud máte pomalé připojení k Internetu. Počkejte minutu nebo dvě data, která mají být přijata ze serveru, a akci opakujte seznamu.
    >
    > Některé položky v **rychlé odkazy** nabídky může být oříznou podle pravé straně obrazovky. Pokud ano, rozbalte nabídku pomocí myši a použijte klávesy se šipkou doprava přejděte na obrazovce doprava a zobrazit zbývající nabídky.

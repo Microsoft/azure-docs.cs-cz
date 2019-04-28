@@ -2,18 +2,18 @@
 title: Použití služby soubory Azure s Linuxem | Dokumentace Microsoftu
 description: Informace o připojení sdílené složky Azure přes protokol SMB v systému Linux.
 services: storage
-author: RenaShahMSFT
+author: roygara
 ms.service: storage
 ms.topic: article
 ms.date: 03/29/2018
-ms.author: renash
+ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: c79c405c81d6e89314a765ea45d83cc46eb804cd
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
-ms.translationtype: MT
+ms.openlocfilehash: 75987c7838846aacb099b725e2a222967b32fe64
+ms.sourcegitcommit: 37343b814fe3c95f8c10defac7b876759d6752c3
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57834945"
+ms.lasthandoff: 04/24/2019
+ms.locfileid: "63763808"
 ---
 # <a name="use-azure-files-with-linux"></a>Použití služby Soubory Azure s Linuxem
 
@@ -148,4 +148,4 @@ Další informace o službě Soubory Azure najdete na těchto odkazech:
 
 * [Plánování nasazení služby Soubory Azure](storage-files-planning.md)
 * [Nejčastější dotazy](../storage-files-faq.md)
-* [Řešení potíží](storage-troubleshoot-linux-file-connection-problems.md)
+* [Odstraňování potíží](storage-troubleshoot-linux-file-connection-problems.md)

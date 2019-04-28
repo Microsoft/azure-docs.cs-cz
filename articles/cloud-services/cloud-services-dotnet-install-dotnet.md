@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/22/2018
 ms.author: jeconnoc
-ms.openlocfilehash: 4b6aeb2968d7642881535753cb6c8434cfe10886
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: bc861b6730e8bf9db6ba2ab005496914f7b9ed89
+ms.sourcegitcommit: 37343b814fe3c95f8c10defac7b876759d6752c3
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60409281"
+ms.lasthandoff: 04/24/2019
+ms.locfileid: "63759815"
 ---
 # <a name="install-net-on-azure-cloud-services-roles"></a>Instalace rozhraní .NET pro role Azure Cloud Services
 Tento článek popisuje, jak nainstalovat verze rozhraní .NET Framework, které nejsou součástí hostovaného operačního systému Azure. .NET na hostovaný operační systém můžete nakonfigurovat role cloudové služby webové a pracovní proces.
@@ -34,6 +34,7 @@ Instalace rozhraní .NET pro webové a pracovní role, zahrňte projekt cloudov�
 ## <a name="add-the-net-installer-to-your-project"></a>Přidání instalačního programu .NET do projektu
 Pokud chcete stáhnout webovou Instalační službu pro rozhraní .NET Framework, zvolte verzi, kterou chcete nainstalovat:
 
+* [.NET 4.8 Webová instalační služba](https://dotnet.microsoft.com/download/thank-you/net48)
 * [.NET 4.7.2 Webová instalační služba](https://go.microsoft.com/fwlink/?LinkId=863262)
 * [.NET 4.6.2 Webová instalační služba](https://www.microsoft.com/download/details.aspx?id=53345)
 
@@ -102,7 +103,8 @@ Když se přidají soubory do složky obsahu role tímto způsobem, automaticky 
    REM ***** To install .NET 4.7.1 set the variable netfx to "NDP471" ***** https://go.microsoft.com/fwlink/?LinkId=852095
    REM ***** To install .NET 4.7.2 set the variable netfx to "NDP472" ***** https://go.microsoft.com/fwlink/?LinkId=863262
    set netfx="NDP472"
-   
+   REM ***** To install .NET 4.8 set the variable netfx to "NDP48" ***** https://dotnet.microsoft.com/download/thank-you/net48
+      
    REM ***** Set script start timestamp *****
    set timehour=%time:~0,2%
    set timestamp=%date:~-4,4%%date:~-10,2%%date:~-7,2%-%timehour: =0%%time:~3,2%

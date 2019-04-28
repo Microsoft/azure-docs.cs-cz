@@ -11,55 +11,54 @@ ms.workload: big-data
 ms.topic: troubleshooting
 ms.date: 04/09/2018
 ms.custom: seodec18
-ms.openlocfilehash: 36ea2b8d3649fbda5a5cd6cc5f2cd05cdc095902
-ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
-ms.translationtype: MT
+ms.openlocfilehash: ad739041ebd20f9940e305efb19807df4c73cb8e
+ms.sourcegitcommit: 37343b814fe3c95f8c10defac7b876759d6752c3
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53555808"
+ms.lasthandoff: 04/24/2019
+ms.locfileid: "63759731"
 ---
 # <a name="diagnose-and-solve-issues-in-your-time-series-insights-environment"></a>Diagnostikovat a řešit problémy ve vašem prostředí Time Series Insights
 
 Tento článek popisuje některé problémy, které můžete narazit ve vašem prostředí Azure Time Series Insights. Tento článek nabízí možné příčiny a řešení pro řešení.
 
-## <a name="video"></a>Video: 
+## <a name="video"></a>Video
 
-V tomto videu se budeme zabývat běžné problémy zákazníků služby Time Series Insights a způsoby zmírnění rizik:</br>
+### <a name="in-this-video-we-cover-common-time-series-insights-customer-challenges-and-mitigationsbr"></a>V tomto videu se budeme zabývat běžné problémy zákazníků služby Time Series Insights a způsoby zmírnění rizik:</br>
 
 > [!VIDEO https://www.youtube.com/embed/7U0SwxAVSKw]
 
-## <a name="problem-1-no-data-is-shown"></a>Problém č. 1: Žádná data se zobrazí.
+## <a name="problem-one-no-data-is-shown"></a>Problém, jeden: žádná data se zobrazí.
 
 Žádná data v [Průzkumníka služby Azure Time Series Insights](https://insights.timeseries.azure.com) může dojít k několika běžných důvodů:
 
-### <a name="cause-a-event-source-data-isnt-in-json-format"></a>Příčina A: Události zdroje dat není ve formátu JSON
+### <a name="cause-a-event-source-data-isnt-in-json-format"></a>Příčina A: události zdroje dat není ve formátu JSON
 
 Azure Time Series Insights podporuje jenom JSON data. Ukázky JSON najdete v tématu [tvary JSON nepodporuje](./how-to-shape-query-json.md).
 
-### <a name="cause-b-the-event-source-key-is-missing-a-required-permission"></a>Příčina B: Klíč zdroje událostí chybí požadovaná oprávnění
+### <a name="cause-b-the-event-source-key-is-missing-a-required-permission"></a>Příčina B: klíč zdroje událostí chybí požadovaná oprávnění
 
 * Pro službu IoT hub ve službě Azure IoT Hub, je nutné zadat klíč, který má **služba připojit** oprávnění. Buď z **iothubowner** nebo **služby** zásad bude fungovat, protože obě mají **připojení služby** oprávnění.
 
    ![Oprávnění k připojení služby Azure IoT Hub](media/diagnose-and-solve-problems/iothub-serviceconnect-permissions.png)
 
-
 * Pro Centrum událostí ve službě Azure Event Hubs, je nutné zadat klíč, který má **naslouchání** oprávnění. Některé z **čtení** nebo **spravovat** zásad bude fungovat, protože obě mají **naslouchání** oprávnění.
 
    ![Oprávnění naslouchat centra událostí](media/diagnose-and-solve-problems/eventhub-listen-permissions.png)
 
-### <a name="cause-c-the-consumer-group-provided-isnt-exclusive-to-time-series-insights"></a>Příčina C: Skupina uživatelů, které jsou k dispozici není výhradně pro Time Series Insights
+### <a name="cause-c-the-consumer-group-provided-isnt-exclusive-to-time-series-insights"></a>Příčina C: se skupina uživatelů, které jsou k dispozici není výhradně pro Time Series Insights
 
 Při registraci služby IoT hub nebo centra událostí, je třeba nastavit skupinu příjemců, který chcete použít k načtení dat. Tuto skupinu příjemců *nemohou být sdíleny*. Pokud se skupina uživatelů se sdílí, základní služby IoT hub nebo event hub automaticky a náhodně Odpojí jeden čtecích zařízení. Zadejte skupinu příjemců jedinečný pro čtení ze služby Time Series Insights.
 
-## <a name="problem-2-some-data-is-shown-but-data-is-missing"></a>Problém č. 2: Některá data se zobrazí, ale chybí data
+## <a name="problem-two-some-data-is-shown-but-data-is-missing"></a>Problém dvou: některá data se zobrazí, ale chybí data
 
 Když se zobrazí data jenom částečně a data jsou pravděpodobně se vzhledem, měli byste zvážit několik možností.
 
-### <a name="cause-a-your-environment-is-being-throttled"></a>Příčina A: Prostředí je omezovaná
+### <a name="cause-a-your-environment-is-being-throttled"></a>Způsobit, že A: je omezovaná prostředí
 
-Omezení šířky pásma je běžný problém při zřizování prostředí po vytvoření zdroje událostí, který obsahuje data. Azure IoT Hub a centra událostí Azure ukládat data po dobu až sedmi dnů. Time Series Insights vždy začínají nejstarší událost v případě zdroje (první dovnitř, první ven nebo *FIFO*). 
+Omezení šířky pásma je běžný problém při zřizování prostředí po vytvoření zdroje událostí, který obsahuje data. Azure IoT Hub a centra událostí Azure ukládat data po dobu až sedmi dnů. Time Series Insights vždy začínají nejstarší událost v případě zdroje (první dovnitř, první ven nebo *FIFO*).
 
-Například pokud máte 5 milionů událostí ve zdroji událostí při připojování k S1, přečte jedné jednotky Time Series Insights prostředí Time Series Insights přibližně 1 milion událostí za den. Může vypadat jako Time Series Insights dochází k pět dní latence. Co se děje se ale, že je omezovaná prostředí. 
+Například pokud máte 5 milionů událostí ve zdroji událostí při připojování k S1, přečte jedné jednotky Time Series Insights prostředí Time Series Insights přibližně 1 milion událostí za den. Může vypadat jako Time Series Insights dochází k pět dní latence. Co se děje se ale, že je omezovaná prostředí.
 
 Pokud máte staré události ve zdroji událostí, můžete přistupovat, omezení šířky pásma v jednom ze dvou způsobů:
 
@@ -84,7 +83,7 @@ Přehled, jak sloučení logiky funguje, najdete v části [tvary JSON nepodporu
 
 K vyřešení je zpoždění, zvýšit kapacitu skladové položky vašeho prostředí. Další informace najdete v tématu [škálování prostředí Time Series Insights](time-series-insights-how-to-scale-your-environment.md).
 
-### <a name="cause-b-initial-ingestion-of-historical-data-slows-ingress"></a>Příčina B: Počáteční ingestování historických dat zpomaluje příchozího přenosu dat
+### <a name="cause-b-initial-ingestion-of-historical-data-slows-ingress"></a>Příčina B: počáteční ingestování historických dat zpomaluje příchozího přenosu dat
 
 Pokud se připojíte existujícímu zdroji událostí, je pravděpodobné, že službě IoT hub nebo event hub již obsahuje data. Prostředí spustí načítání dat ze začátku období uchování zpráv zdroje událostí. Toto je výchozí zpracování a nedají se přepsat. Můžete zapojit, omezení šířky pásma. Omezení využití sítě může chvíli trvat dohnat ingestuje historická data.
 
@@ -96,23 +95,25 @@ Chcete-li vyřešit je zpoždění:
 
 2. Pokud je zpoždění je zachycena, snížit kapacita skladové položky na vaše rychlost příchozího přenosu normální dat.
 
-## <a name="problem-3-my-event-sources-timestamp-property-name-setting-doesnt-work"></a>Potíže s 3: Nastavení názvu vlastnosti časového razítka zdroj události nefunguje
+## <a name="problem-three-my-event-sources-timestamp-property-name-setting-doesnt-work"></a>Problém tři: nastavení názvu vlastnosti časového razítka zdroj události nefunguje
 
 Ujistěte se, že název vlastnosti časového razítka a hodnotu v souladu s těmito pravidly:
+
 * Název vlastnosti časového razítka je velká a malá písmena.
 * Hodnota vlastnosti časového razítka, která se dodává ze zdroje událostí jako řetězec formátu JSON by měl mít formát _rrrr-MM-ddTHH. FFFFFFFK_. Příkladem je **2008-04-12T12:53Z**.
 
 Nejjednodušší způsob, jak zajistit, že váš název vlastnosti časového razítka se zaznamenávají a funguje správně, je použít Průzkumníka služby Time Series Insights. V Průzkumníku Time Series Insights pomocí grafu vyberte určité době po zadání názvu vlastnosti časového razítka. Klikněte pravým tlačítkem na výběr a potom vyberte **zkoumat události** možnost. 
 
-První záhlaví sloupce by měl být název vlastnosti časového razítka. Vedle slovo **časové razítko**, měli byste vidět **($ts)**. 
+První záhlaví sloupce by měl být název vlastnosti časového razítka. Vedle slovo **časové razítko**, měli byste vidět **($ts)**.
 
 Neměli vidět následující hodnoty:
-- *(abc)* : Označuje, že Time Series Insights čte hodnoty dat jako řetězce.
+
+- *(abc)*: Označuje, že Time Series Insights čte hodnoty dat jako řetězce.
 - *Ikonu kalendáře*: Označuje, že Time Series Insights je čtení data hodnoty jako *data a času*.
 - *#*: Označuje, že Time Series Insights čte hodnoty dat jako celé číslo.
 
-
 ## <a name="next-steps"></a>Další postup
 
-- Potřebujete pomoc, zahájit konverzaci [fórum na webu MSDN](https://social.msdn.microsoft.com/Forums/home?forum=AzureTimeSeriesInsights) nebo [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-timeseries-insights). 
+- Potřebujete pomoc, zahájit konverzaci [fórum na webu MSDN](https://social.msdn.microsoft.com/Forums/home?forum=AzureTimeSeriesInsights) nebo [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-timeseries-insights).
+
 - Možnosti podpory s asistencí, použijte [podpory Azure](https://azure.microsoft.com/support/options/).

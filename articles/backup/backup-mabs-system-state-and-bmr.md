@@ -10,26 +10,26 @@ ms.topic: conceptual
 ms.date: 05/15/2017
 ms.author: raynew
 ms.openlocfilehash: 35ab150670cdc27efcedca233928e0c2184aeca6
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52880093"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62116171"
 ---
 # <a name="back-up-system-state-and-restore-to-bare-metal-with-azure-backup-server"></a>Zálohování stavu systému a obnovit do holých počítačů pomocí Azure Backup serveru
 
 Azure Backup Server zálohuje stav systému a poskytuje ochranu úplné obnovení systému (BMR).
 
-*   **Zálohování stavu systému**: zálohuje soubory operačního systému, tak můžete obnovit při spuštění počítače, ale systém souborů a registr se ztratí. Zahrnuje i zálohu stavu systému:
-    * Člen domény: spouštěcí soubory, registrační databáze třídy modelu COM +, registr
+*   **Zálohování stavu systému**: Zálohuje soubory operačního systému, tak můžete obnovit při spuštění počítače, ale systém souborů a registr se ztratí. Zahrnuje i zálohu stavu systému:
+    * Člen domény: Spouštěcí soubory, registrační databáze třídy modelu COM +, registr
     * Řadič domény: Windows Server Active Directory (NTDS), spouštěcí soubory, registrační databáze třídy modelu COM +, registr, systémový svazek (SYSVOL)
-    * Počítač, na kterém běží služba cluster services: metadata clusterového serveru
-    * Počítač, který spouští služby certificate services: data certifikátu
-* **Úplné zálohování**: zálohuje soubory operačního systému a všechna data na klíčové svazky (s výjimkou uživatelských dat). Podle definice zahrnuje BMR i zálohu stavu systému. Poskytuje ochranu, když se počítač nespustí a je nutné obnovit vše.
+    * Počítač, na kterém běží služba cluster services: Metadata clusterového serveru
+    * Počítač, na kterém běží služba certificate services: Data certifikátu
+* **Úplné zálohování**: Zálohuje soubory operačního systému a všechna data na klíčové svazky (s výjimkou uživatelských dat). Podle definice zahrnuje BMR i zálohu stavu systému. Poskytuje ochranu, když se počítač nespustí a je nutné obnovit vše.
 
 Následující tabulka shrnuje možnosti zálohování a obnovení. Podrobné informace o verzích aplikací, které se dají chránit pomocí stavu systému a BMR, najdete v části [čemu zálohování Azure Backup serveru?](backup-mabs-protection-matrix.md).
 
-|Backup|Problém|Obnovení ze zálohy Azure Backup serveru|Obnovení ze zálohy stavu systému|ÚPLNÉ OBNOVENÍ SYSTÉMU|
+|Backup|Problém|Obnovení ze zálohy Azure Backup serveru|Obnovení ze zálohy stavu systému|BMR|
 |----------|---------|---------------------------|------------------------------------|-------|
 |**Data souborů**<br /><br />Zálohování běžných dat<br /><br />BMR nebo záloha stavu systému|Ztracená data souborů|Ano|Ne|Ne|
 |**Data souborů**<br /><br />Azure Backup Server zálohování dat souborů<br /><br />BMR nebo záloha stavu systému|Ztracený nebo poškozený operační systém|Ne|Ano|Ano|

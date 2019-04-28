@@ -15,15 +15,15 @@ ms.date: 04/03/2019
 ms.author: celested
 ms.custom: H1Hack27Feb2017
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8a2965fecd3aca17d6c4df7e49ad466377de9762
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: b63118a7c5fae49edebe4ae4976a1362781ae8cf
+ms.sourcegitcommit: 37343b814fe3c95f8c10defac7b876759d6752c3
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60291631"
+ms.lasthandoff: 04/24/2019
+ms.locfileid: "63759773"
 ---
 # <a name="customizing-user-provisioning-attribute-mappings-for-saas-applications-in-azure-active-directory"></a>Přizpůsobení mapování atributů zřizování pro aplikace SaaS ve službě Azure Active Directory uživatelů
-Microsoft Azure AD poskytuje podporu pro zřizování uživatelů pro aplikace SaaS třetích stran, jako je například Salesforce, Google Apps a jiná. Pokud povolíte zřizování uživatelů pro aplikaci SaaS třetí strany, řídí na webu Azure portal jeho hodnoty atributů pomocí mapování atributů.
+Microsoft Azure AD poskytuje podporu pro zřizování uživatelů pro aplikace SaaS třetích stran, jako je například Salesforce, G Suite a dalších. Pokud povolíte zřizování uživatelů pro aplikaci SaaS třetí strany, řídí na webu Azure portal jeho hodnoty atributů pomocí mapování atributů.
 
 Je předem nakonfigurované sady atributů a atributů mapování mezi objekty uživatele služby Azure AD a příslušné aplikace SaaS uživatelské objekty. Některé aplikace spravovat další typy objektů spolu s uživateli, jako jsou skupiny.
 
@@ -84,7 +84,7 @@ Mapování atributů spolu se tato vlastnost také podporují následující atr
 
 ## <a name="editing-group-attribute-mappings"></a>Úpravy skupiny – mapování atributů
 
-Vybraný počet aplikací, jako je například Google Apps, ServiceNow a pole podporují možnost zřizování virtuálních počítačů a uživatelských objektů skupiny objektů. Objekty skupiny může obsahovat vlastnosti skupiny, jako je zobrazované názvy a aliasy, spolu se členy skupiny e-mailu.
+Vybraný počet aplikací, jako je například ServiceNow, pole a G Suite, podporují možnost zřizování virtuálních počítačů a uživatelských objektů skupiny objektů. Objekty skupiny může obsahovat vlastnosti skupiny, jako je zobrazované názvy a aliasy, spolu se členy skupiny e-mailu.
 
 ![ServiceNow](./media/customize-application-attributes/24.png)
 

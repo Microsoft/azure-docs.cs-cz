@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
-ms.openlocfilehash: 64b28fc0db56be77bce9c22f9332110205a42b1d
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
-ms.translationtype: MT
+ms.openlocfilehash: 4d854aef62af1004faacf73c11bb417cf508a727
+ms.sourcegitcommit: 37343b814fe3c95f8c10defac7b876759d6752c3
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57437339"
+ms.lasthandoff: 04/24/2019
+ms.locfileid: "63763569"
 ---
 # <a name="azure-maps-supported-categories"></a>Azure Maps podporované kategorie
 
@@ -105,7 +105,7 @@ Při provádění [vyhledávání kategorie](https://docs.microsoft.com/rest/api
 | OPRAVA\_ZAŘÍZENÍ | bodyshops, služby pneumatiky (můžete zadat), opravny, car skla nahrazení kavárnách, opravy obecné auta, údržbě, prodej instalace car příslušenství, motocykl opravit, servis nákladní vůz, opravte zařízení |
 | VÝZKUM\_ZAŘÍZENÍ | výzkum zařízení |
 | DOMÁCÍ\_UBYTOVACÍ | vyřazení komunity, městský dům komplexní, bytů/komplexu apartmánů, condominium komplexní, bydliště portfolia, ubytování bydliště |
-| RESTAURACE | Němčina kreolština Cajun, Nizozemské, banket místnosti, bistro, izraelským, slovenština, Jamajský, vegetarian, ryby, vietnamština, Maltština, Sichuan, welsh, čínština, japonština, alžírská, Californian fusion, Shandong, polníček panelu Savoie, španělština, Etiopský, tchajwanských, prstence, Íránu, Kanada, American, norština, francouzština, Hunan, Polynéský, afghan, silniční, východní, Švýcarsko, erotic, crêperie, Surinamese Egyptian, maďarština, Nepálská, táborák, pot aktivní, hamburgers, Středozemního, Latinské Ameriky, tapas, British, Mexico, Guangdongu, Asie (ostatní), Švédský stůl sushi, Mongolské písmo, mezinárodní, slávek, thajština, Venezuelský, Rumanian, kuřecí, polévky kosher, steak house, panel jogurt z/džusu, italština, korejština, Cypriot, Bosenština, Bolívijský, Dominikánská, Belgie, tuniská, Skotská, Angličtina, pákistánský, čeština, Havajština, Maghrib, Tibetština, SA, Střední východ, Chilské, Šanghaj, polské, Filipínština, súdánský, arménština, Barmština, Brazílie, skandinávské, bulharština, soul food, Kolumbijském, židovský, pizza Sicilian, organické, řečtina, Baskiètina, Uruguayské, cafeterias, finština, Středoafrická, Korsičtina, Syrská, Karibská oblast, Dongbei, ruština, gril, odnést, rychlého občerstvení, Austrálie, Irská, publikování a odběru food, fondue Libanonská, indonéština, dánština, Provençal, teppanyaki, Indie, Mauricijská, západní kontinentální části Peruánský Kambodžský, občerstvení, švédština, macrobiotic, ice cream parlor, Slovanské jazyky, turečtina, Argentiské, Rakousko, exotické, portugalština, Lucembursko –, Maroko, Cuban, restaurace Sandwichovy, |
+| RESTAURACE | Němčina kreolština Cajun, Nizozemské, banket místnosti, bistro, izraelským, slovenština, Jamajský, vegetarian, ryby, vietnamština, Maltština, Sichuan, welsh, čínština, japonština, alžírská, Californian fusion, Shandong, polníček panelu Savoie, španělština, Etiopský, tchajwanských, prstence, Íránu, Kanada, American, norština, francouzština, Hunan, Polynéský, afghan, silniční, Asie, Švýcarsko, erotic, crêperie, Surinamese Egyptian, maďarština, Nepálská, táborák, pot aktivní, hamburgers, Středozemního, Latinské Ameriky, tapas, British, Mexico, Guangdongu, Asie (ostatní), Švédský stůl sushi, Mongolské písmo, mezinárodní, slávek, thajština, Venezuelský, Rumanian, kuřecí, polévky kosher, steak house, panel jogurt z/džusu, italština, korejština, Cypriot, Bosenština, Bolívijský, Dominikánská, Belgie, tuniská, Skotská, Angličtina, pákistánský, čeština, Havajština, Maghrib, Tibetština, SA, Střední východ, Chilské, Šanghaj, polské, Filipínština, súdánský, arménština, Barmština, Brazílie, skandinávské, bulharština, soul food, Kolumbijském, židovský, pizza Sicilian, organické, řečtina, Baskiètina, Uruguayské, cafeterias, finština, Středoafrická, Korsičtina, Syrská, Karibská oblast, Dongbei, ruština, gril, odnést, rychlého občerstvení, Austrálie, Irská, publikování a odběru food, fondue Libanonská, indonéština, dánština, Provençal, teppanyaki, Indie, Mauricijská, západní kontinentální části Peruánský Kambodžský, občerstvení, švédština, macrobiotic, ice cream parlor, Slovanské jazyky, turečtina, Argentiské, Rakousko, exotické, portugalština, Lucembursko –, Maroko, Cuban, restaurace Sandwichovy, |
 | RESTAURACE\_OBLASTI | restaurace oblasti |
 | REST\_AREA | oblast REST, místo zastavení |
 | SCENIC\_PANORAMIC\_ZOBRAZENÍ | krajiny/panoramatické zobrazení, bodu zjišťování |
