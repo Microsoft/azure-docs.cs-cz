@@ -85,7 +85,7 @@ Během zpracování žádosti o provádění předdefinované kroků spolu se v�
 | Rozsah    | string | Název oboru, ve kterém chyba došlo k chybě a můžou mít jednu z "globální", "produkt", "rozhraní api" nebo "operace" | Ne       |
 | Sekce  | string | Název oddílu, ve kterém došlo k chybě. Možné hodnoty: "příchozí", "backend", "výstupní" nebo "na chybu".       | Ne       |
 | Cesta     | string | Určuje vnořené zásady, třeba "zvolte [3] / při [2]".                                                        | Ne       |
-| PolicyId | string | Hodnota `id` atribut, pokud zadaný výhradně zákazník, a to na zásadách, kde došlo k chybě             | Ne       |
+| `PolicyId` | string | Hodnota `id` atribut, pokud zadaný výhradně zákazník, a to na zásadách, kde došlo k chybě             | Ne       |
 
 > [!TIP]
 > Stavový kód můžete přistupovat prostřednictvím kontextu. Response.StatusCode.  
